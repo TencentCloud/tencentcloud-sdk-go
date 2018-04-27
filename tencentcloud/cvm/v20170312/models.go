@@ -944,15 +944,15 @@ type Image struct {
 	// 镜像描述
 	ImageDescription *string `json:"ImageDescription" name:"ImageDescription"`
 	// 镜像大小
-	ImageSize *string `json:"ImageSize" name:"ImageSize"`
+	ImageSize *int64 `json:"ImageSize" name:"ImageSize"`
 	// 镜像架构
 	Architecture *string `json:"Architecture" name:"Architecture"`
 	// 镜像状态
 	ImageState *string `json:"ImageState" name:"ImageState"`
 	// 镜像来源平台
-	Platform []*string `json:"Platform" name:"Platform" list`
+	Platform *string `json:"Platform" name:"Platform"`
 	// 镜像创建者
-	ImageCreator []*string `json:"ImageCreator" name:"ImageCreator" list`
+	ImageCreator *string `json:"ImageCreator" name:"ImageCreator"`
 	// 镜像来源
 	ImageSource *string `json:"ImageSource" name:"ImageSource"`
 }
