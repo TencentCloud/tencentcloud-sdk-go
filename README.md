@@ -27,6 +27,8 @@
 
 # 示例
 
+每个接口都有一个对应的 Request 结构和一个 Response 结构。例如查询可用区 DescribeZones 有对应的请求结构体 DescribeZonesRequest 和返回结构体 DescribeZonesResponse 。
+
 下面以查询可用区为例，介绍 SDK 的基础用法。
 
 ```
@@ -73,3 +75,5 @@ func main() {
         fmt.Printf("%s", response.ToJsonString())
 }
 ```
+
+更多示例参见examples目录。对于复杂接口的 Request 初始化例子，可以参考 examples/cvm/v20170312/run_instances.go 。对于使用json字符串初始化 Request 的例子，可以参考 examples/cvm/v20170312/describe_instances.go 。

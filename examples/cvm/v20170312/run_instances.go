@@ -25,20 +25,31 @@ func main() {
 
 	client, _ := cvm.NewClient(credential, "ap-guangzhou", cpf)
 	request := cvm.NewRunInstancesRequest()
-	request.DataDisks = nil
-	request.EnhancedService = &cvm.EnhancedService{nil, nil}
 	request.ImageId = common.StringPtr("img-8toqc6s3")
+	request.Placement = &cvm.Placement{
+		Zone: common.StringPtr("ap-guangzhou-3"),
+	}
 	request.InstanceChargeType = common.StringPtr("POSTPAID_BY_HOUR")
-	request.InstanceChargePrepaid = &cvm.InstanceChargePrepaid{common.Int64Ptr(1), common.StringPtr("NOTIFY_AND_MANUAL_RENEW")}
 	request.InstanceCount = common.Int64Ptr(1)
 	request.InstanceName = common.StringPtr("API-SDK-GO")
-	request.InstanceType = common.StringPtr("S1.SMALL1")
-	request.InternetAccessible = &cvm.InternetAccessible{common.StringPtr("BANDWIDTH_POSTPAID_BY_HOUR"), common.Int64Ptr(10), common.BoolPtr(true)}
-	request.LoginSettings = &cvm.LoginSettings{nil, nil, common.StringPtr("passw0rdExample")}
-	request.Placement = &cvm.Placement{nil, nil, common.StringPtr("ap-guangzhou-3")}
+	request.InstanceType = common.StringPtr("S2.SMALL1")
+	request.InternetAccessible = &cvm.InternetAccessible{
+		InternetChargeType:      common.StringPtr("BANDWIDTH_POSTPAID_BY_HOUR"),
+		InternetMaxBandwidthOut: common.Int64Ptr(10),
+		PublicIpAssigned:        common.BoolPtr(true),
+	}
+	request.LoginSettings = &cvm.LoginSettings{
+		Password: common.StringPtr("passw0rdExample"),
+	}
 	request.SecurityGroupIds = common.StringPtrs([]string{"sg-icy671l9"})
-	request.SystemDisk = &cvm.SystemDisk{nil, common.Int64Ptr(50), common.StringPtr("CLOUD_BASIC")}
-	request.VirtualPrivateCloud = &cvm.VirtualPrivateCloud{nil, nil, common.StringPtr("subnet-b1wk8b10"), common.StringPtr("vpc-8ek64x3d")}
+	request.SystemDisk = &cvm.SystemDisk{
+		DiskSize: common.Int64Ptr(50),
+		DiskType: common.StringPtr("CLOUD_BASIC"),
+	}
+	request.VirtualPrivateCloud = &cvm.VirtualPrivateCloud{
+		SubnetId: common.StringPtr("subnet-b1wk8b10"),
+		VpcId:    common.StringPtr("vpc-8ek64x3d"),
+	}
 
 	// get response structure
 	response, err := client.RunInstances(request)
