@@ -56,7 +56,7 @@ type AddDeviceRequest struct {
 	*tchttp.BaseRequest
 	// 产品Id
 	ProductId *string `json:"ProductId" name:"ProductId"`
-	// 设备名称
+	// 设备名称，唯一标识某产品下的一个设备
 	DeviceName *string `json:"DeviceName" name:"DeviceName"`
 }
 
@@ -92,9 +92,9 @@ type AddProductRequest struct {
 	*tchttp.BaseRequest
 	// 产品名称
 	Name *string `json:"Name" name:"Name"`
-	// 产品类型
+	// 产品描述
 	Description *string `json:"Description" name:"Description"`
-	// 产品鉴权类型（0：直连，1：Token）
+	// 产品鉴权类型（0：直连，1：动态令牌），推荐使用动态令牌
 	AuthType *uint64 `json:"AuthType" name:"AuthType"`
 	// 数据模版（json数组）
 	DataTemplate []*string `json:"DataTemplate" name:"DataTemplate" list`
@@ -202,6 +202,89 @@ func (r *AddTopicResponse) ToJsonString() string {
 
 func (r *AddTopicResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
+}
+
+type AddUserRequest struct {
+	*tchttp.BaseRequest
+}
+
+func (r *AddUserRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *AddUserRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type AddUserResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+		// 用户信息
+		User *User `json:"User" name:"User"`
+		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		RequestId *string `json:"RequestId" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *AddUserResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *AddUserResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type AppAddUserRequest struct {
+	*tchttp.BaseRequest
+	// 用户名
+	UserName *string `json:"UserName" name:"UserName"`
+	// 密码
+	Password *string `json:"Password" name:"Password"`
+}
+
+func (r *AppAddUserRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *AppAddUserRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type AppAddUserResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+		// 应用用户
+		AppUser *AppUser `json:"AppUser" name:"AppUser"`
+		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		RequestId *string `json:"RequestId" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *AppAddUserResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *AppAddUserResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type AppUser struct {
+	// 应用Id
+	ApplicationId *string `json:"ApplicationId" name:"ApplicationId"`
+	// 用户名
+	UserName *string `json:"UserName" name:"UserName"`
+	// 昵称
+	NickName *string `json:"NickName" name:"NickName"`
+	// 绑定设备列表
+	Devices []*Object `json:"Devices" name:"Devices" list`
+	// 创建时间
+	CreateTime *string `json:"CreateTime" name:"CreateTime"`
+	// 修改时间
+	UpdateTime *string `json:"UpdateTime" name:"UpdateTime"`
 }
 
 type DeactivateRuleRequest struct {
@@ -562,7 +645,7 @@ type GetDeviceStatusesRequest struct {
 	*tchttp.BaseRequest
 	// 产品ID
 	ProductId *string `json:"ProductId" name:"ProductId"`
-	// 设备名称列表（单次限制1000个）
+	// 设备名称列表（单次限制1000个设备）
 	DeviceNames []*string `json:"DeviceNames" name:"DeviceNames" list`
 }
 
@@ -960,7 +1043,7 @@ type PublishMsgRequest struct {
 	Topic *string `json:"Topic" name:"Topic"`
 	// 消息内容
 	Message *string `json:"Message" name:"Message"`
-	// Qos
+	// Qos(目前QoS支持0与1)
 	Qos *int64 `json:"Qos" name:"Qos"`
 }
 
@@ -1087,6 +1170,8 @@ type UpdateProductRequest struct {
 	Name *string `json:"Name" name:"Name"`
 	// 产品描述
 	Description *string `json:"Description" name:"Description"`
+	// 数据模版（json）
+	DataTemplate *string `json:"DataTemplate" name:"DataTemplate"`
 }
 
 func (r *UpdateProductRequest) ToJsonString() string {

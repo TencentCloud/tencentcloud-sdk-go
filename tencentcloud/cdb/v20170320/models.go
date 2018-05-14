@@ -230,7 +230,7 @@ type CreateDBInstanceHourRequest struct {
 	Port *int64 `json:"Port" name:"Port"`
 	// 设置root帐号密码，密码规则：8-64个字符，至少包含字母、数字、字符（支持的字符：_+-&=!@#$%^*()）中的两种，购买主实例时可指定该参数，购买只读实例或者灾备实例时指定该参数无意义
 	Password *string `json:"Password" name:"Password"`
-	// 参数列表，参数格式如ParamList.0.Name=auto_increment&ParamList.0.Value=1。可通过<a href='/document/product/236/6921' title='查询默认的参数列表'>查询默认的参数列表</a>查询支持设置的参数
+	// 参数列表，参数格式如ParamList.0.Name=auto_increment&ParamList.0.Value=1。可通过[查询参数列表](/document/product/236/6369)查询支持设置的参数
 	ParamList []*ParamInfo `json:"ParamList" name:"ParamList" list`
 	// 数据复制方式，默认为0，支持值包括：0-表示异步复制，1-表示半同步复制，2-表示强同步复制，购买主实例时可指定该参数，购买只读实例或者灾备实例时指定该参数无意义
 	ProtectMode *int64 `json:"ProtectMode" name:"ProtectMode"`
@@ -314,7 +314,7 @@ type CreateDBInstanceRequest struct {
 	DeployMode *int64 `json:"DeployMode" name:"DeployMode"`
 	// 备库1的可用区信息，默认为zone的值
 	SlaveZone *string `json:"SlaveZone" name:"SlaveZone"`
-	// 参数列表，参数格式如ParamList.0.Name=auto_increment&ParamList.0.Value=1。可通过<a href='/document/product/236/6921' title='查询默认的参数列表'>查询默认的参数列表</a>查询支持设置的参数
+	// 参数列表，参数格式如ParamList.0.Name=auto_increment&ParamList.0.Value=1。可通过[查询参数列表](/document/product/236/6369)查询支持设置的参数
 	ParamList []*ParamInfo `json:"ParamList" name:"ParamList" list`
 	// 备库2的可用区ID，默认为0，购买主实例时可指定该参数，购买只读实例或者灾备实例时指定该参数无意义
 	BackupZone *string `json:"BackupZone" name:"BackupZone"`
@@ -1198,7 +1198,7 @@ type InstanceInfo struct {
 	// 初始化标志
 	InitFlag *int64 `json:"InitFlag" name:"InitFlag"`
 	// 只读vip信息
-	RoVipInfo *RoVipInfo `json:"RoVipInfo" name:"RoVipInfo"`
+	RoVipInfo []*RoVipInfo `json:"RoVipInfo" name:"RoVipInfo" list`
 	// 内存容量
 	Memory *int64 `json:"Memory" name:"Memory"`
 	// 实例状态

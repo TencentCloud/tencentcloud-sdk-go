@@ -11,6 +11,7 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
+
 package v20180123
 
 import (
@@ -80,7 +81,7 @@ func NewAddDeviceResponse() (response *AddDeviceResponse) {
     return
 }
 
-// 新增设备
+// 提供在指定的产品Id下创建一个设备的能力，生成设备名称与设备秘钥。
 func (c *Client) AddDevice(request *AddDeviceRequest) (response *AddDeviceResponse, err error) {
     if request == nil {
         request = NewAddDeviceRequest()
@@ -105,7 +106,7 @@ func NewAddProductResponse() (response *AddProductResponse) {
     return
 }
 
-// 新增产品
+// 为用户提供创建某型号物联网产品的能力。
 func (c *Client) AddProduct(request *AddProductRequest) (response *AddProductResponse, err error) {
     if request == nil {
         request = NewAddProductRequest()
@@ -165,6 +166,56 @@ func (c *Client) AddTopic(request *AddTopicRequest) (response *AddTopicResponse,
     return
 }
 
+func NewAddUserRequest() (request *AddUserRequest) {
+    request = &AddUserRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iot", APIVersion, "AddUser")
+    return
+}
+
+func NewAddUserResponse() (response *AddUserResponse) {
+    response = &AddUserResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 注册用户
+func (c *Client) AddUser(request *AddUserRequest) (response *AddUserResponse, err error) {
+    if request == nil {
+        request = NewAddUserRequest()
+    }
+    response = NewAddUserResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewAppAddUserRequest() (request *AppAddUserRequest) {
+    request = &AppAddUserRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iot", APIVersion, "AppAddUser")
+    return
+}
+
+func NewAppAddUserResponse() (response *AppAddUserResponse) {
+    response = &AppAddUserResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 注册应用用户
+func (c *Client) AppAddUser(request *AppAddUserRequest) (response *AppAddUserResponse, err error) {
+    if request == nil {
+        request = NewAppAddUserRequest()
+    }
+    response = NewAppAddUserResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeactivateRuleRequest() (request *DeactivateRuleRequest) {
     request = &DeactivateRuleRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -205,7 +256,7 @@ func NewDeleteDeviceResponse() (response *DeleteDeviceResponse) {
     return
 }
 
-// 删除设备
+// 提供在指定的产品Id下删除一个设备的能力。
 func (c *Client) DeleteDevice(request *DeleteDeviceRequest) (response *DeleteDeviceResponse, err error) {
     if request == nil {
         request = NewDeleteDeviceRequest()
@@ -230,7 +281,7 @@ func NewDeleteProductResponse() (response *DeleteProductResponse) {
     return
 }
 
-// 删除产品
+// 删除用户指定的产品Id对应的信息。
 func (c *Client) DeleteProduct(request *DeleteProductRequest) (response *DeleteProductResponse, err error) {
     if request == nil {
         request = NewDeleteProductRequest()
@@ -330,7 +381,7 @@ func NewGetDeviceResponse() (response *GetDeviceResponse) {
     return
 }
 
-// 获取设备信息
+// 提供查询某个设备详细信息的能力。
 func (c *Client) GetDevice(request *GetDeviceRequest) (response *GetDeviceResponse, err error) {
     if request == nil {
         request = NewGetDeviceRequest()
@@ -405,7 +456,7 @@ func NewGetDeviceStatusesResponse() (response *GetDeviceStatusesResponse) {
     return
 }
 
-// 批量获取设备状态
+// 批量获取设备的当前状态，状态包括在线、离线或未激活状态。
 func (c *Client) GetDeviceStatuses(request *GetDeviceStatusesRequest) (response *GetDeviceStatusesResponse, err error) {
     if request == nil {
         request = NewGetDeviceStatusesRequest()
@@ -430,7 +481,7 @@ func NewGetDevicesResponse() (response *GetDevicesResponse) {
     return
 }
 
-// 获取设备列表
+// 提供分页查询某个产品Id下设备信息的能力。
 func (c *Client) GetDevices(request *GetDevicesRequest) (response *GetDevicesResponse, err error) {
     if request == nil {
         request = NewGetDevicesRequest()
@@ -455,7 +506,7 @@ func NewGetProductResponse() (response *GetProductResponse) {
     return
 }
 
-// 获取产品信息
+// 获取产品定义的详细信息，包括产品名称、产品描述，鉴权模式等信息。
 func (c *Client) GetProduct(request *GetProductRequest) (response *GetProductResponse, err error) {
     if request == nil {
         request = NewGetProductRequest()
@@ -480,7 +531,7 @@ func NewGetProductsResponse() (response *GetProductsResponse) {
     return
 }
 
-// 获取用户名下的产品列表
+// 获取用户在物联网套件所创建的所有产品信息。
 func (c *Client) GetProducts(request *GetProductsRequest) (response *GetProductsResponse, err error) {
     if request == nil {
         request = NewGetProductsRequest()
@@ -630,7 +681,7 @@ func NewIssueDeviceControlResponse() (response *IssueDeviceControlResponse) {
     return
 }
 
-// 下发设备控制指令
+// 提供下发控制指令到指定设备的能力。
 func (c *Client) IssueDeviceControl(request *IssueDeviceControlRequest) (response *IssueDeviceControlResponse, err error) {
     if request == nil {
         request = NewIssueDeviceControlRequest()
@@ -655,7 +706,7 @@ func NewPublishMsgResponse() (response *PublishMsgResponse) {
     return
 }
 
-// 向Topic发布消息
+// 提供向指定的Topic发布消息的能力。
 func (c *Client) PublishMsg(request *PublishMsgRequest) (response *PublishMsgResponse, err error) {
     if request == nil {
         request = NewPublishMsgRequest()
@@ -705,7 +756,7 @@ func NewUpdateProductResponse() (response *UpdateProductResponse) {
     return
 }
 
-// 更新产品信息
+// 提供修改产品信息及数据模板的能力。
 func (c *Client) UpdateProduct(request *UpdateProductRequest) (response *UpdateProductResponse, err error) {
     if request == nil {
         request = NewUpdateProductRequest()

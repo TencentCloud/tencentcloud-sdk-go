@@ -486,6 +486,8 @@ func (r *CreateSecurityGroupRequest) FromJsonString(s string) error {
 type CreateSecurityGroupResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
+		// 安全组对象。
+		SecurityGroup *SecurityGroup `json:"SecurityGroup" name:"SecurityGroup"`
 		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
@@ -620,6 +622,10 @@ type CreateVpcRequest struct {
 	CidrBlock *string `json:"CidrBlock" name:"CidrBlock"`
 	// 是否开启组播。true: 开启, false: 不开启。
 	EnableMulticast *string `json:"EnableMulticast" name:"EnableMulticast"`
+	// DNS地址，最多支持4个，第1个默认为主，其余为备
+	DnsServers []*string `json:"DnsServers" name:"DnsServers" list`
+	// 域名
+	DomainName *string `json:"DomainName" name:"DomainName"`
 }
 
 func (r *CreateVpcRequest) ToJsonString() string {
@@ -1323,6 +1329,8 @@ func (r *DescribeSecurityGroupPoliciesRequest) FromJsonString(s string) error {
 type DescribeSecurityGroupPoliciesResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
+		// 安全组规则集合。
+		SecurityGroupPolicySet *SecurityGroupPolicySet `json:"SecurityGroupPolicySet" name:"SecurityGroupPolicySet"`
 		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
@@ -1363,6 +1371,10 @@ func (r *DescribeSecurityGroupsRequest) FromJsonString(s string) error {
 type DescribeSecurityGroupsResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
+		// 安全组对象。
+		SecurityGroupSet []*SecurityGroup `json:"SecurityGroupSet" name:"SecurityGroupSet" list`
+		// 符合条件的实例数量。
+		TotalCount *uint64 `json:"TotalCount" name:"TotalCount"`
 		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
@@ -1494,7 +1506,7 @@ type DescribeSubnetsResponse struct {
 		// 符合条件的实例数量。
 		TotalCount *uint64 `json:"TotalCount" name:"TotalCount"`
 		// 子网对象。
-		DescribeSubnets []*Subnet `json:"DescribeSubnets" name:"DescribeSubnets" list`
+		SubnetSet []*Subnet `json:"SubnetSet" name:"SubnetSet" list`
 		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
@@ -2148,6 +2160,10 @@ type ModifyVpcAttributeRequest struct {
 	VpcName *string `json:"VpcName" name:"VpcName"`
 	// 是否开启组播。true: 开启, false: 关闭。
 	EnableMulticast *string `json:"EnableMulticast" name:"EnableMulticast"`
+	// DNS地址，最多支持4个，第1个默认为主，其余为备
+	DnsServers []*string `json:"DnsServers" name:"DnsServers" list`
+	// 域名
+	DomainName *string `json:"DomainName" name:"DomainName"`
 }
 
 func (r *ModifyVpcAttributeRequest) ToJsonString() string {
@@ -2434,6 +2450,21 @@ type RouteTableAssociation struct {
 	SubnetId *string `json:"SubnetId" name:"SubnetId"`
 	// 路由表实例ID。
 	RouteTableId *string `json:"RouteTableId" name:"RouteTableId"`
+}
+
+type SecurityGroup struct {
+	// 项目id，默认0。可在qcloud控制台项目管理页面查询到。
+	ProjectId *string `json:"ProjectId" name:"ProjectId"`
+	// 安全组实例ID，例如：sg-ohuuioma。
+	SecurityGroupId *string `json:"SecurityGroupId" name:"SecurityGroupId"`
+	// 安全组名称，可任意命名，但不得超过60个字符。
+	SecurityGroupName *string `json:"SecurityGroupName" name:"SecurityGroupName"`
+	// 安全组备注，最多100个字符。
+	SecurityGroupDesc *string `json:"SecurityGroupDesc" name:"SecurityGroupDesc"`
+	// 是否是默认安全组，默认安全组不支持删除。
+	IsDefault *bool `json:"IsDefault" name:"IsDefault"`
+	// 安全组创建时间。
+	CreatedTime *string `json:"CreatedTime" name:"CreatedTime"`
 }
 
 type SecurityGroupPolicy struct {
