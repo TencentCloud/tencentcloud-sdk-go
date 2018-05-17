@@ -20,6 +20,76 @@ import (
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
+type ImageRecord struct {
+	// 图片翻译结果
+	Value []*ItemValue `json:"Value" name:"Value" list`
+}
+
+type ImageTranslateRequest struct {
+	*tchttp.BaseRequest
+	// 唯一id，返回时原样返回
+	SessionUuid *string `json:"SessionUuid" name:"SessionUuid"`
+	// doc:文档扫描
+	Scene *string `json:"Scene" name:"Scene"`
+	// 图片数据的Base64字符串
+	Data *string `json:"Data" name:"Data"`
+	// 源语言，支持语言列表<li> zh : 中文 </li> <li> en : 英文 </li>
+	Source *string `json:"Source" name:"Source"`
+	// 目标语言，支持语言列表<li> zh : 中文 </li> <li> en : 英文 </li>
+	Target *string `json:"Target" name:"Target"`
+	// 项目id
+	ProjectId *int64 `json:"ProjectId" name:"ProjectId"`
+}
+
+func (r *ImageTranslateRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ImageTranslateRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ImageTranslateResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+		// 请求的SessionUuid返回
+		SessionUuid *string `json:"SessionUuid" name:"SessionUuid"`
+		// 源语言
+		Source *string `json:"Source" name:"Source"`
+		// 目标语言
+		Target *string `json:"Target" name:"Target"`
+		// 图片翻译结果
+		ImageRecord *ImageRecord `json:"ImageRecord" name:"ImageRecord"`
+		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		RequestId *string `json:"RequestId" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ImageTranslateResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ImageTranslateResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ItemValue struct {
+	// 识别出的源文
+	SourceText *string `json:"SourceText" name:"SourceText"`
+	// 翻译后的译文
+	TargetText *string `json:"TargetText" name:"TargetText"`
+	// X坐标
+	X *int64 `json:"X" name:"X"`
+	// Y坐标
+	Y *int64 `json:"Y" name:"Y"`
+	// 宽度
+	W *int64 `json:"W" name:"W"`
+	// 高度
+	H *int64 `json:"H" name:"H"`
+}
+
 type LanguageDetectRequest struct {
 	*tchttp.BaseRequest
 	// 待识别的文本
@@ -59,20 +129,22 @@ func (r *LanguageDetectResponse) FromJsonString(s string) error {
 
 type SpeechTranslateRequest struct {
 	*tchttp.BaseRequest
-	// 一段完整的语⾳音对应⼀一个sessionUuid
+	// 一段完整的语音对应一个SessionUuid
 	SessionUuid *string `json:"SessionUuid" name:"SessionUuid"`
-	// 音频中的语⾔言类型，支持语言列表<li> zh : 中文 </li> <li> en : 英文 </li>
+	// 音频中的语言类型，支持语言列表<li> zh : 中文 </li> <li> en : 英文 </li>
 	Source *string `json:"Source" name:"Source"`
-	// 翻译⽬目标语⾔言类型 ，支持的语言列表<li> zh : 中文 </li> <li> en : 英文 </li>
+	// 翻译目标语⾔言类型 ，支持的语言列表<li> zh : 中文 </li> <li> en : 英文 </li>
 	Target *string `json:"Target" name:"Target"`
 	// pcm : 146   amr : 33554432   mp3 : 83886080
 	AudioFormat *int64 `json:"AudioFormat" name:"AudioFormat"`
-	// 语⾳音分⽚片后的第⼏几⽚片
+	// 语音分片后的第几片
 	Seq *int64 `json:"Seq" name:"Seq"`
-	// 是否最后⼀片
+	// 是否最后一片
 	IsEnd *int64 `json:"IsEnd" name:"IsEnd"`
-	// 语⾳音分⽚片内容的 base64字符串串
+	// 语音分片内容的base64字符串
 	Data *string `json:"Data" name:"Data"`
+	// 项目id
+	ProjectId *int64 `json:"ProjectId" name:"ProjectId"`
 }
 
 func (r *SpeechTranslateRequest) ToJsonString() string {
@@ -87,6 +159,20 @@ func (r *SpeechTranslateRequest) FromJsonString(s string) error {
 type SpeechTranslateResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
+		// 请求的SessionUuid直接返回
+		SessionUuid *string `json:"SessionUuid" name:"SessionUuid"`
+		// 语音识别状态 1-进行中 0-完成
+		RecognizeStatus *int64 `json:"RecognizeStatus" name:"RecognizeStatus"`
+		// 识别出的源文
+		SourceText *string `json:"SourceText" name:"SourceText"`
+		// 翻译出的译文
+		TargetText *string `json:"TargetText" name:"TargetText"`
+		// 第几个语音分片
+		Seq *int64 `json:"Seq" name:"Seq"`
+		// 源语言
+		Source *string `json:"Source" name:"Source"`
+		// 目标语言
+		Target *string `json:"Target" name:"Target"`
 		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`

@@ -204,7 +204,7 @@ func (r *CreateDBImportJobResponse) FromJsonString(s string) error {
 
 type CreateDBInstanceHourRequest struct {
 	*tchttp.BaseRequest
-	// MySQL版本，值包括：5.5、5.6和5.7，请使用[查询可创建规格（支持可用区、配置自定义）](https://cloud.tencent.com/document/api/253/6109)接口获取可创建的实例版本
+	// MySQL版本，值包括：5.5、5.6和5.7，请使用[获取云数据库可售卖规格](https://cloud.tencent.com/document/api/236/17229)接口获取可创建的实例版本
 	EngineVersion *string `json:"EngineVersion" name:"EngineVersion"`
 	// 私有网络ID，如果不传则默认选择基础网络，请使用[查询私有网络列表](/document/api/215/15778)
 	UniqVpcId *string `json:"UniqVpcId" name:"UniqVpcId"`
@@ -214,11 +214,11 @@ type CreateDBInstanceHourRequest struct {
 	ProjectId *int64 `json:"ProjectId" name:"ProjectId"`
 	// 实例数量，默认值为1, 最小值1，最大值为100
 	GoodsNum *int64 `json:"GoodsNum" name:"GoodsNum"`
-	// 实例内存大小，单位：MB，请使用[查询可创建规格（支持可用区、配置自定义）](https://cloud.tencent.com/document/api/253/6109)接口获取可创建的内存规格
+	// 实例内存大小，单位：MB，请使用[获取云数据库可售卖规格](https://cloud.tencent.com/document/api/236/17229)接口获取可创建的内存规格
 	Memory *int64 `json:"Memory" name:"Memory"`
-	// 实例硬盘大小，单位：GB，请使用[查询可创建规格（支持可用区、配置自定义）](https://cloud.tencent.com/document/api/253/6109)接口获取可创建的硬盘范围
+	// 实例硬盘大小，单位：GB，请使用[获取云数据库可售卖规格](https://cloud.tencent.com/document/api/236/17229)接口获取可创建的硬盘范围
 	Volume *int64 `json:"Volume" name:"Volume"`
-	// 可用区信息，该参数缺省时，系统会自动选择一个可用区，请使用[查询可创建规格（支持可用区、配置自定义）](https://cloud.tencent.com/document/api/253/6109)接口获取可创建的可用区
+	// 可用区信息，该参数缺省时，系统会自动选择一个可用区，请使用[获取云数据库可售卖规格](https://cloud.tencent.com/document/api/236/17229)接口获取可创建的可用区
 	Zone *string `json:"Zone" name:"Zone"`
 	// 实例ID，购买只读实例或者灾备实例时必填，该字段表示只读实例或者灾备实例的主实例ID，请使用[查询实例列表](https://cloud.tencent.com/document/api/236/15872)接口查询云数据库实例ID
 	MasterInstanceId *string `json:"MasterInstanceId" name:"MasterInstanceId"`
@@ -282,15 +282,15 @@ func (r *CreateDBInstanceHourResponse) FromJsonString(s string) error {
 
 type CreateDBInstanceRequest struct {
 	*tchttp.BaseRequest
-	// 实例内存大小，单位：MB，请使用[查询可创建规格（支持可用区、配置自定义）](https://cloud.tencent.com/document/api/253/6109)接口获取可创建的内存规格
+	// 实例内存大小，单位：MB，请使用[获取云数据库可售卖规格](https://cloud.tencent.com/document/api/236/17229)接口获取可创建的内存规格
 	Memory *int64 `json:"Memory" name:"Memory"`
-	// 实例硬盘大小，单位：GB，请使用[查询可创建规格（支持可用区、配置自定义）](https://cloud.tencent.com/document/api/253/6109)接口获取可创建的硬盘范围
+	// 实例硬盘大小，单位：GB，请使用[获取云数据库可售卖规格](https://cloud.tencent.com/document/api/236/17229)接口获取可创建的硬盘范围
 	Volume *int64 `json:"Volume" name:"Volume"`
 	// 实例时长，单位：月，可选值包括[1,2,3,4,5,6,7,8,9,10,11,12,24,36]
 	Period *int64 `json:"Period" name:"Period"`
 	// 实例数量，默认值为1, 最小值1，最大值为100
 	GoodsNum *int64 `json:"GoodsNum" name:"GoodsNum"`
-	// 可用区信息，该参数缺省时，系统会自动选择一个可用区，请使用[查询可创建规格（支持可用区、配置自定义）](https://cloud.tencent.com/document/api/253/6109)接口获取可创建的可用区
+	// 可用区信息，该参数缺省时，系统会自动选择一个可用区，请使用[获取云数据库可售卖规格](https://cloud.tencent.com/document/api/236/17229)接口获取可创建的可用区
 	Zone *string `json:"Zone" name:"Zone"`
 	// 私有网络ID，如果不传则默认选择基础网络，请使用[查询私有网络列表](/document/api/215/15778)
 	UniqVpcId *string `json:"UniqVpcId" name:"UniqVpcId"`
@@ -304,7 +304,7 @@ type CreateDBInstanceRequest struct {
 	InstanceRole *string `json:"InstanceRole" name:"InstanceRole"`
 	// 实例ID，购买只读实例时必填，该字段表示只读实例的主实例ID，请使用[查询实例列表](https://cloud.tencent.com/document/api/236/15872)接口查询云数据库实例ID
 	MasterInstanceId *string `json:"MasterInstanceId" name:"MasterInstanceId"`
-	// MySQL版本，值包括：5.5、5.6和5.7，请使用[查询可创建规格（支持可用区、配置自定义）](https://cloud.tencent.com/document/api/253/6109)接口获取可创建的实例版本
+	// MySQL版本，值包括：5.5、5.6和5.7，请使用[获取云数据库可售卖规格](https://cloud.tencent.com/document/api/236/17229)接口获取可创建的实例版本
 	EngineVersion *string `json:"EngineVersion" name:"EngineVersion"`
 	// 设置root帐号密码，密码规则：8-64个字符，至少包含字母、数字、字符（支持的字符：_+-&=!@#$%^*()）中的两种，购买主实例时可指定该参数，购买只读实例或者灾备实例时指定该参数无意义
 	Password *string `json:"Password" name:"Password"`
@@ -922,6 +922,40 @@ func (r *DescribeDBSecurityGroupsResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeDBZoneConfigRequest struct {
+	*tchttp.BaseRequest
+}
+
+func (r *DescribeDBZoneConfigRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeDBZoneConfigRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeDBZoneConfigResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+		// 可售卖地域配置数量
+		TotalCount *int64 `json:"TotalCount" name:"TotalCount"`
+		// 可售卖地域配置详情
+		Items []*RegionSellConf `json:"Items" name:"Items" list`
+		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		RequestId *string `json:"RequestId" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeDBZoneConfigResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeDBZoneConfigResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeProjectSecurityGroupsRequest struct {
 	*tchttp.BaseRequest
 	// 项目ID。
@@ -1255,6 +1289,10 @@ type InstanceInfo struct {
 	Vport *int64 `json:"Vport" name:"Vport"`
 	// 实例状态
 	CdbError *int64 `json:"CdbError" name:"CdbError"`
+	// 私有网络描述符
+	UniqVpcId *string `json:"UniqVpcId" name:"UniqVpcId"`
+	// 子网描述符
+	UniqSubnetId *string `json:"UniqSubnetId" name:"UniqSubnetId"`
 }
 
 type InstanceRebootTime struct {
@@ -1345,7 +1383,7 @@ type ModifyBackupConfigRequest struct {
 	ExpireDays *int64 `json:"ExpireDays" name:"ExpireDays"`
 	// 备份时间范围，格式为：02:00-06:00，起点和终点时间目前限制为整点，目前可以选择的范围为： 02:00-06:00，06：00-10：00，10:00-14:00，14:00-18:00，18:00-22:00，22:00-02:00。
 	StartTime *string `json:"StartTime" name:"StartTime"`
-	// 目标备份方法，可选的值：logical - 逻辑冷备，physical - 物理冷备。
+	// 目标备份方法，可选的值：logical - 逻辑冷备，physical - 物理冷备；默认备份方法为 逻辑冷备。
 	BackupMethod *string `json:"BackupMethod" name:"BackupMethod"`
 }
 
@@ -1616,6 +1654,19 @@ type Parameter struct {
 	CurrentValue *string `json:"CurrentValue" name:"CurrentValue"`
 }
 
+type RegionSellConf struct {
+	// 地域中文名称
+	RegionName *string `json:"RegionName" name:"RegionName"`
+	// 所属大区
+	Area *string `json:"Area" name:"Area"`
+	// 是否为默认地域
+	IsDefaultRegion *int64 `json:"IsDefaultRegion" name:"IsDefaultRegion"`
+	// 地域名称
+	Region *string `json:"Region" name:"Region"`
+	// 可用区售卖配置
+	ZonesConf []*ZoneSellConf `json:"ZonesConf" name:"ZonesConf" list`
+}
+
 type RoGroup struct {
 	// 只读组ID
 	RoGroupId *string `json:"RoGroupId" name:"RoGroupId"`
@@ -1663,6 +1714,44 @@ type SecurityGroup struct {
 	SecurityGroupName *string `json:"SecurityGroupName" name:"SecurityGroupName"`
 	// 安全组备注
 	SecurityGroupRemark *string `json:"SecurityGroupRemark" name:"SecurityGroupRemark"`
+}
+
+type SellConfig struct {
+	// 设备类型
+	Device *string `json:"Device" name:"Device"`
+	// 售卖规格描述
+	Type *string `json:"Type" name:"Type"`
+	// 实例类型
+	CdbType *string `json:"CdbType" name:"CdbType"`
+	// 内存大小，单位为MB
+	Memory *int64 `json:"Memory" name:"Memory"`
+	// CPU核心数
+	Cpu *int64 `json:"Cpu" name:"Cpu"`
+	// 磁盘最小规格，单位为GB
+	VolumeMin *int64 `json:"VolumeMin" name:"VolumeMin"`
+	// 磁盘最大规格，单位为GB
+	VolumeMax *int64 `json:"VolumeMax" name:"VolumeMax"`
+	// 磁盘步长，单位为GB
+	VolumeStep *int64 `json:"VolumeStep" name:"VolumeStep"`
+	// 链接数
+	Connection *int64 `json:"Connection" name:"Connection"`
+	// 每秒查询数量
+	Qps *int64 `json:"Qps" name:"Qps"`
+	// 每秒IO数量
+	Iops *int64 `json:"Iops" name:"Iops"`
+	// 应用场景描述
+	Info *string `json:"Info" name:"Info"`
+	// 状态值
+	Status *int64 `json:"Status" name:"Status"`
+}
+
+type SellType struct {
+	// 售卖实例名称
+	TypeName *string `json:"TypeName" name:"TypeName"`
+	// 内核版本号
+	EngineVersion []*string `json:"EngineVersion" name:"EngineVersion" list`
+	// 售卖规格详细配置
+	Configs []*SellConfig `json:"Configs" name:"Configs" list`
 }
 
 type SlaveInfo struct {
@@ -1848,4 +1937,44 @@ func (r *UpgradeDBInstanceResponse) ToJsonString() string {
 
 func (r *UpgradeDBInstanceResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
+}
+
+type ZoneConf struct {
+	// 可用区部署方式，可能的值为：0-单可用区；1-多可用区
+	DeployMode []*int64 `json:"DeployMode" name:"DeployMode" list`
+	// 主实例所在的可用区
+	MasterZone []*string `json:"MasterZone" name:"MasterZone" list`
+	// 实例为多可用区部署时，备库1所在的可用区
+	SlaveZone []*string `json:"SlaveZone" name:"SlaveZone" list`
+	// 实例为多可用区部署时，备库2所在的可用区
+	BackupZone []*string `json:"BackupZone" name:"BackupZone" list`
+}
+
+type ZoneSellConf struct {
+	// 可用区状态。可能的返回值为：0-未上线；1-上线；2-开放；3-停售；4-不展示
+	Status *int64 `json:"Status" name:"Status"`
+	// 可用区中文名称
+	ZoneName *string `json:"ZoneName" name:"ZoneName"`
+	// 实例类型是否为自定义类型
+	IsCustom *bool `json:"IsCustom" name:"IsCustom"`
+	// 是否支持灾备
+	IsSupportDr *bool `json:"IsSupportDr" name:"IsSupportDr"`
+	// 是否支持私有网络
+	IsSupportVpc *bool `json:"IsSupportVpc" name:"IsSupportVpc"`
+	// 小时计费实例最大售卖数量
+	HourInstanceSaleMaxNum *int64 `json:"HourInstanceSaleMaxNum" name:"HourInstanceSaleMaxNum"`
+	// 是否为默认可用区
+	IsDefaultZone *bool `json:"IsDefaultZone" name:"IsDefaultZone"`
+	// 是否为黑石区
+	IsBm *bool `json:"IsBm" name:"IsBm"`
+	// 支持的付费类型。可能的返回值为：0-包年包月；1-小时计费；2-后付费
+	PayType []*string `json:"PayType" name:"PayType" list`
+	// 数据复制类型。0-异步复制；1-半同步复制；2-强同步复制
+	ProtectMode []*string `json:"ProtectMode" name:"ProtectMode" list`
+	// 可用区名称
+	Zone *string `json:"Zone" name:"Zone"`
+	// 售卖实例类型数组
+	SellType []*SellType `json:"SellType" name:"SellType" list`
+	// 多可用区信息
+	ZoneConf *ZoneConf `json:"ZoneConf" name:"ZoneConf"`
 }

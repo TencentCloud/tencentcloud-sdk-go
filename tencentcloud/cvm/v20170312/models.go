@@ -564,7 +564,7 @@ func (r *DescribeInstanceOperationLogsResponse) FromJsonString(s string) error {
 type DescribeInstanceTypeConfigsRequest struct {
 	*tchttp.BaseRequest
 	// 过滤条件。
-	// <li> zone - String - 是否必填：否 -（过滤条件）按照[可用区](document/api/213/9452#zone)过滤。</li>
+	// <li> zone - String - 是否必填：否 -（过滤条件）按照[可用区](https://cloud.tencent.com/document/api/213/9452#zone)过滤。</li>
 	// <li> instance-family - String - 是否必填：否 -（过滤条件）按照实例机型系列过滤。实例机型系列形如：S1、I1、M1等。</li>
 	// 每次请求的`Filters`的上限为10，`Filter.Values`的上限为1。
 	Filters []*Filter `json:"Filters" name:"Filters" list`
@@ -611,6 +611,9 @@ type DescribeInstancesRequest struct {
 	// <li> instance-charge-type - String - 是否必填：否 -（过滤条件）按照实例计费模式过滤。 (PREPAID：表示预付费，即包年包月 | POSTPAID_BY_HOUR：表示后付费，即按量计费 | CDHPAID：表示[CDH](https://cloud.tencent.com/document/product/416)付费，即只对[CDH](https://cloud.tencent.com/document/product/416)计费，不对[CDH](https://cloud.tencent.com/document/product/416)上的实例计费。 )  </li>
 	// <li> private-ip-address - String - 是否必填：否 - （过滤条件）按照实例主网卡的内网IP过滤。</li>
 	// <li> public-ip-address - String - 是否必填：否 - （过滤条件）按照实例主网卡的公网IP过滤，包含实例创建时自动分配的IP和实例创建后手动绑定的弹性IP。</li>
+	// <li> tag-key - String - 是否必填：否 - （过滤条件）按照标签键进行过滤。</li>
+	// <li> tag-value - String - 是否必填：否 - （过滤条件）按照标签值进行过滤。</li>
+	// <li> tag:tag-key - String - 是否必填：否 - （过滤条件）按照标签键值对进行过滤。 tag-key使用具体的标签键进行替换。使用请参考示例2</li>
 	// 每次请求的`Filters`的上限为10，`Filter.Values`的上限为5。参数不支持同时指定`InstanceIds`和`Filters`。
 	Filters []*Filter `json:"Filters" name:"Filters" list`
 	// 偏移量，默认为0。关于`Offset`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
@@ -1247,7 +1250,7 @@ type InquiryPriceRunInstancesRequest struct {
 	InstanceChargePrepaid *InstanceChargePrepaid `json:"InstanceChargePrepaid" name:"InstanceChargePrepaid"`
 	// 实例所在的位置。通过该参数可以指定实例所属可用区，所属项目等属性。
 	Placement *Placement `json:"Placement" name:"Placement"`
-	// 实例机型。不同实例机型指定了不同的资源规格，具体取值可通过调用接口[DescribeInstanceTypeConfigs](https://cloud.tencent.com/document/api/213/9391)来获得最新的规格表或参见[CVM实例配置](https://cloud.tencent.com/document/product/213/2177)描述。若不指定该参数，则默认机型为S1.SMALL1。
+	// 实例机型。不同实例机型指定了不同的资源规格，具体取值可通过调用接口[DescribeInstanceTypeConfigs](https://cloud.tencent.com/document/api/213/15749)来获得最新的规格表或参见[CVM实例配置](https://cloud.tencent.com/document/product/213/2177)描述。若不指定该参数，则默认机型为S1.SMALL1。
 	InstanceType *string `json:"InstanceType" name:"InstanceType"`
 	// 指定有效的[镜像](https://cloud.tencent.com/document/product/213/4940)ID，格式形如`img-xxx`。镜像类型分为四种：<br/><li>公共镜像</li><li>自定义镜像</li><li>共享镜像</li><li>服务市场镜像</li><br/>可通过以下方式获取可用的镜像ID：<br/><li>`公共镜像`、`自定义镜像`、`共享镜像`的镜像ID可通过登录[控制台](https://console.cloud.tencent.com/cvm/image?rid=1&imageType=PUBLIC_IMAGE)查询；`服务镜像市场`的镜像ID可通过[云市场](https://market.cloud.tencent.com/list)查询。</li><li>通过调用接口 [DescribeImages](https://cloud.tencent.com/document/api/213/15715) ，取返回信息中的`ImageId`字段。</li>
 	ImageId *string `json:"ImageId" name:"ImageId"`
@@ -1261,11 +1264,11 @@ type InquiryPriceRunInstancesRequest struct {
 	InternetAccessible *InternetAccessible `json:"InternetAccessible" name:"InternetAccessible"`
 	// 购买实例数量。取值范围：[1，100]。默认取值：1。指定购买实例的数量不能超过用户所能购买的剩余配额数量，具体配额相关限制详见[CVM实例购买限制](https://cloud.tencent.com/document/product/213/2664)。
 	InstanceCount *int64 `json:"InstanceCount" name:"InstanceCount"`
-	// 实例显示名称。如果不指定则默认显示
+	// 实例显示名称。<br><li>不指定实例显示名称则默认显示‘未命名’。</li><li>购买多台实例，如果指定模式串`{R:x}`，表示生成数字`[x, x+n-1]`，其中`n`表示购买实例的数量，例如`server_{R:3}`，购买1台时，实例显示名称为`server_3`；购买2台时，实例显示名称分别为`server_3`，`server_4`。支持指定多个模式串`{R:x}`。</li><li>购买多台实例，如果不指定模式串，则在实例显示名称添加后缀`1、2...n`，其中`n`表示购买实例的数量，例如`server_`，购买2台时，实例显示名称分别为`server_1`，`server_2`。
 	InstanceName *string `json:"InstanceName" name:"InstanceName"`
 	// 实例登录设置。通过该参数可以设置实例的登录方式密码、密钥或保持镜像的原始登录设置。默认情况下会随机生成密码，并以站内信方式知会到用户。
 	LoginSettings *LoginSettings `json:"LoginSettings" name:"LoginSettings"`
-	// 实例所属安全组。该参数可以通过调用[DescribeSecurityGroups](https://cloud.tencent.com/document/api/215/15808)的返回值中的sgId字段来获取。若不指定该参数，则默认不绑定安全组<font style=
+	// 实例所属安全组。该参数可以通过调用 [DescribeSecurityGroups](https://cloud.tencent.com/document/api/215/15808) 的返回值中的sgId字段来获取。若不指定该参数，则默认不绑定安全组。
 	SecurityGroupIds []*string `json:"SecurityGroupIds" name:"SecurityGroupIds" list`
 	// 增强服务。通过该参数可以指定是否开启云安全、云监控等服务。若不指定该参数，则默认开启云监控、云安全服务。
 	EnhancedService *EnhancedService `json:"EnhancedService" name:"EnhancedService"`
@@ -1275,6 +1278,8 @@ type InquiryPriceRunInstancesRequest struct {
 	HostName *string `json:"HostName" name:"HostName"`
 	// 标签描述列表。通过指定该参数可以同时绑定标签到相应的资源实例，当前仅支持绑定标签到云主机实例。
 	TagSpecification []*TagSpecification `json:"TagSpecification" name:"TagSpecification" list`
+	// 实例的市场相关选项，如竞价实例相关参数
+	InstanceMarketOptions *InstanceMarketOptionsRequest `json:"InstanceMarketOptions" name:"InstanceMarketOptions"`
 }
 
 func (r *InquiryPriceRunInstancesRequest) ToJsonString() string {
@@ -1342,6 +1347,12 @@ type Instance struct {
 	CreatedTime *string `json:"CreatedTime" name:"CreatedTime"`
 	// 到期时间。按照`ISO8601`标准表示，并且使用`UTC`时间。格式为：`YYYY-MM-DDThh:mm:ssZ`。
 	ExpiredTime *string `json:"ExpiredTime" name:"ExpiredTime"`
+	// 操作系统名称。
+	OsName *string `json:"OsName" name:"OsName"`
+	// 实例所属安全组。该参数可以通过调用 [DescribeSecurityGroups](https://cloud.tencent.com/document/api/215/15808) 的返回值中的sgId字段来获取。
+	SecurityGroupIds []*string `json:"SecurityGroupIds" name:"SecurityGroupIds" list`
+	// 实例登录设置。目前只返回实例所关联的密钥。
+	LoginSettings *LoginSettings `json:"LoginSettings" name:"LoginSettings"`
 }
 
 type InstanceChargePrepaid struct {
@@ -1356,6 +1367,23 @@ type InstanceFamilyConfig struct {
 	InstanceFamilyName *string `json:"InstanceFamilyName" name:"InstanceFamilyName"`
 	// 机型族名称的英文简称。
 	InstanceFamily *string `json:"InstanceFamily" name:"InstanceFamily"`
+}
+
+type InstanceMarketOptionsRequest struct {
+	*tchttp.BaseRequest
+	// 市场选项类型，当前只支持取值：spot
+	MarketType *string `json:"MarketType" name:"MarketType"`
+	// 竞价相关选项
+	SpotOptions *SpotMarketOptions `json:"SpotOptions" name:"SpotOptions"`
+}
+
+func (r *InstanceMarketOptionsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *InstanceMarketOptionsRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
 }
 
 type InstanceStatus struct {
@@ -2052,7 +2080,7 @@ type RunInstancesRequest struct {
 	// 实例所在的位置。通过该参数可以指定实例所属可用区，所属项目，专用宿主机（对于独享母机付费模式的子机创建）等属性。
 	Placement *Placement `json:"Placement" name:"Placement"`
 	// 实例机型。不同实例机型指定了不同的资源规格。
-	// <br><li>对于付费模式为PREPAID或POSTPAID_BY_HOUR的子机创建，具体取值可通过调用接口[DescribeInstanceTypeConfigs](https://cloud.tencent.com/document/api/213/9391)来获得最新的规格表或参见[实例类型](https://cloud.tencent.com/document/product/213/11518)描述。若不指定该参数，则默认机型为S1.SMALL1。<br><li>对于付费模式为CDHPAID的子机创建，该参数以"CDH_"为前缀，根据cpu和内存配置生成，具体形式为：CDH_XCXG，例如对于创建cpu为1核，内存为1G大小的专用宿主机的子机，该参数应该为CDH_1C1G。
+	// <br><li>对于付费模式为PREPAID或POSTPAID_BY_HOUR的子机创建，具体取值可通过调用接口[DescribeInstanceTypeConfigs](https://cloud.tencent.com/document/api/213/15749)来获得最新的规格表或参见[实例类型](https://cloud.tencent.com/document/product/213/11518)描述。若不指定该参数，则默认机型为S1.SMALL1。<br><li>对于付费模式为CDHPAID的子机创建，该参数以"CDH_"为前缀，根据cpu和内存配置生成，具体形式为：CDH_XCXG，例如对于创建cpu为1核，内存为1G大小的专用宿主机的子机，该参数应该为CDH_1C1G。
 	InstanceType *string `json:"InstanceType" name:"InstanceType"`
 	// 指定有效的[镜像](https://cloud.tencent.com/document/product/213/4940)ID，格式形如`img-xxx`。镜像类型分为四种：<br/><li>公共镜像</li><li>自定义镜像</li><li>共享镜像</li><li>服务市场镜像</li><br/>可通过以下方式获取可用的镜像ID：<br/><li>`公共镜像`、`自定义镜像`、`共享镜像`的镜像ID可通过登录[控制台](https://console.cloud.tencent.com/cvm/image?rid=1&imageType=PUBLIC_IMAGE)查询；`服务镜像市场`的镜像ID可通过[云市场](https://market.cloud.tencent.com/list)查询。</li><li>通过调用接口 [DescribeImages](https://cloud.tencent.com/document/api/213/15715) ，取返回信息中的`ImageId`字段。</li>
 	ImageId *string `json:"ImageId" name:"ImageId"`
@@ -2060,13 +2088,13 @@ type RunInstancesRequest struct {
 	SystemDisk *SystemDisk `json:"SystemDisk" name:"SystemDisk"`
 	// 实例数据盘配置信息。若不指定该参数，则默认不购买数据盘，当前仅支持购买的时候指定一个数据盘。
 	DataDisks []*DataDisk `json:"DataDisks" name:"DataDisks" list`
-	// 私有网络相关信息配置。通过该参数可以指定私有网络的ID，子网ID等信息。若不指定该参数，则默认使用基础网络。若在此参数中指定了私有网络ip，那么InstanceCount参数只能为1。
+	// 私有网络相关信息配置。通过该参数可以指定私有网络的ID，子网ID等信息。若不指定该参数，则默认使用基础网络。若在此参数中指定了私有网络ip，表示每个实例的主网卡ip，而且InstanceCount参数必须与私有网络ip的个数一致。
 	VirtualPrivateCloud *VirtualPrivateCloud `json:"VirtualPrivateCloud" name:"VirtualPrivateCloud"`
 	// 公网带宽相关信息设置。若不指定该参数，则默认公网带宽为0Mbps。
 	InternetAccessible *InternetAccessible `json:"InternetAccessible" name:"InternetAccessible"`
 	// 购买实例数量。取值范围：[1，100]。默认取值：1。指定购买实例的数量不能超过用户所能购买的剩余配额数量，具体配额相关限制详见[CVM实例购买限制](https://cloud.tencent.com/document/product/213/2664)。
 	InstanceCount *int64 `json:"InstanceCount" name:"InstanceCount"`
-	// 实例显示名称。如果不指定则默认显示
+	// 实例显示名称。<br><li>不指定实例显示名称则默认显示‘未命名’。</li><li>购买多台实例，如果指定模式串`{R:x}`，表示生成数字`[x, x+n-1]`，其中`n`表示购买实例的数量，例如`server_{R:3}`，购买1台时，实例显示名称为`server_3`；购买2台时，实例显示名称分别为`server_3`，`server_4`。支持指定多个模式串`{R:x}`。</li><li>购买多台实例，如果不指定模式串，则在实例显示名称添加后缀`1、2...n`，其中`n`表示购买实例的数量，例如`server_`，购买2台时，实例显示名称分别为`server_1`，`server_2`。
 	InstanceName *string `json:"InstanceName" name:"InstanceName"`
 	// 实例登录设置。通过该参数可以设置实例的登录方式密码、密钥或保持镜像的原始登录设置。默认情况下会随机生成密码，并以站内信方式知会到用户。
 	LoginSettings *LoginSettings `json:"LoginSettings" name:"LoginSettings"`
@@ -2127,6 +2155,13 @@ type SharePermission struct {
 	CreateTime *string `json:"CreateTime" name:"CreateTime"`
 	// 镜像分享的账户ID
 	Account *string `json:"Account" name:"Account"`
+}
+
+type SpotMarketOptions struct {
+	// 竞价出价
+	MaxPrice *string `json:"MaxPrice" name:"MaxPrice"`
+	// 竞价请求类型
+	SpotInstanceType *string `json:"SpotInstanceType" name:"SpotInstanceType"`
 }
 
 type StartInstancesRequest struct {
@@ -2260,8 +2295,6 @@ type TerminateInstancesRequest struct {
 	*tchttp.BaseRequest
 	// 一个或多个待操作的实例ID。可通过[`DescribeInstances`](https://cloud.tencent.com/document/api/213/15728)接口返回值中的`InstanceId`获取。每次请求批量实例的上限为100。
 	InstanceIds []*string `json:"InstanceIds" name:"InstanceIds" list`
-	// 试运行。
-	DryRun *bool `json:"DryRun" name:"DryRun"`
 }
 
 func (r *TerminateInstancesRequest) ToJsonString() string {
@@ -2333,7 +2366,7 @@ type VirtualPrivateCloud struct {
 	SubnetId *string `json:"SubnetId" name:"SubnetId"`
 	// 是否用作公网网关。公网网关只有在实例拥有公网IP以及处于私有网络下时才能正常使用。取值范围：<br><li>TRUE：表示用作公网网关<br><li>FALSE：表示不用作公网网关<br><br>默认取值：FALSE。
 	AsVpcGateway *bool `json:"AsVpcGateway" name:"AsVpcGateway"`
-	// 私有子网ip数组，目前只支持一个ip。在创建实例、修改实例vpc属性操作中可使用此参数。
+	// 私有网络子网 IP 数组，在创建实例、修改实例vpc属性操作中可使用此参数。当前仅批量创建多台实例时支持传入相同子网的多个 IP。
 	PrivateIpAddresses []*string `json:"PrivateIpAddresses" name:"PrivateIpAddresses" list`
 }
 

@@ -11,6 +11,7 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
+
 package v20180321
 
 import (
@@ -39,6 +40,31 @@ func NewClient(credential *common.Credential, region string, clientProfile *prof
     return
 }
 
+
+func NewImageTranslateRequest() (request *ImageTranslateRequest) {
+    request = &ImageTranslateRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tmt", APIVersion, "ImageTranslate")
+    return
+}
+
+func NewImageTranslateResponse() (response *ImageTranslateResponse) {
+    response = &ImageTranslateResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 提供中文到英文、英文到中文两种语言的图片翻译服务，可自动识别图片中的文本内容并翻译成目标语言
+func (c *Client) ImageTranslate(request *ImageTranslateRequest) (response *ImageTranslateResponse, err error) {
+    if request == nil {
+        request = NewImageTranslateRequest()
+    }
+    response = NewImageTranslateResponse()
+    err = c.Send(request, response)
+    return
+}
 
 func NewLanguageDetectRequest() (request *LanguageDetectRequest) {
     request = &LanguageDetectRequest{
