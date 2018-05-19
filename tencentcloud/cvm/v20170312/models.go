@@ -1342,6 +1342,8 @@ type Instance struct {
 	CreatedTime *string `json:"CreatedTime" name:"CreatedTime"`
 	// 到期时间。按照`ISO8601`标准表示，并且使用`UTC`时间。格式为：`YYYY-MM-DDThh:mm:ssZ`。
 	ExpiredTime *string `json:"ExpiredTime" name:"ExpiredTime"`
+	// 系统名称
+	OsName *string `json:"OsName" name:"OsName"`
 }
 
 type InstanceChargePrepaid struct {
