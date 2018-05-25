@@ -1738,40 +1738,6 @@ type Price struct {
 	BandwidthPrice *ItemPrice `json:"BandwidthPrice" name:"BandwidthPrice"`
 }
 
-type QueryMigrateTaskRequest struct {
-	*tchttp.BaseRequest
-	// 任务Id
-	TaskId *string `json:"TaskId" name:"TaskId"`
-}
-
-func (r *QueryMigrateTaskRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-func (r *QueryMigrateTaskRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
-}
-
-type QueryMigrateTaskResponse struct {
-	*tchttp.BaseResponse
-	Response *struct {
-		// 任务状态
-		Status *string `json:"Status" name:"Status"`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
-		RequestId *string `json:"RequestId" name:"RequestId"`
-	} `json:"Response"`
-}
-
-func (r *QueryMigrateTaskResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-func (r *QueryMigrateTaskResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
-}
-
 type RebootInstancesRequest struct {
 	*tchttp.BaseRequest
 	// 一个或多个待操作的实例ID。可通过[`DescribeInstances`](https://cloud.tencent.com/document/api/213/9388)接口返回值中的`InstanceId`获取。每次请求批量实例的上限为100。

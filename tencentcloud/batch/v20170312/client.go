@@ -11,6 +11,7 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
+
 package v20170312
 
 import (
@@ -539,6 +540,31 @@ func (c *Client) TerminateComputeNode(request *TerminateComputeNodeRequest) (res
         request = NewTerminateComputeNodeRequest()
     }
     response = NewTerminateComputeNodeResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewTerminateComputeNodesRequest() (request *TerminateComputeNodesRequest) {
+    request = &TerminateComputeNodesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("batch", APIVersion, "TerminateComputeNodes")
+    return
+}
+
+func NewTerminateComputeNodesResponse() (response *TerminateComputeNodesResponse) {
+    response = &TerminateComputeNodesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 用于批量销毁计算节点，不允许重复销毁同一个节点。
+func (c *Client) TerminateComputeNodes(request *TerminateComputeNodesRequest) (response *TerminateComputeNodesResponse, err error) {
+    if request == nil {
+        request = NewTerminateComputeNodesRequest()
+    }
+    response = NewTerminateComputeNodesResponse()
     err = c.Send(request, response)
     return
 }

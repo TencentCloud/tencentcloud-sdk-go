@@ -58,7 +58,7 @@ type AttachDisksRequest struct {
 	*tchttp.BaseRequest
 	// 将要被挂载的弹性云盘ID。通过[DescribeDisks](/document/product/362/16315)接口查询。单次最多可挂载10块弹性云盘。
 	DiskIds []*string `json:"DiskIds" name:"DiskIds" list`
-	// 云服务器实例ID。云盘将被挂载到此云服务器上，通过[DescribeInstances](/document/api/213/9388)接口查询。
+	// 云服务器实例ID。云盘将被挂载到此云服务器上，通过[DescribeInstances](/document/product/213/15728)接口查询。
 	InstanceId *string `json:"InstanceId" name:"InstanceId"`
 }
 
@@ -217,14 +217,14 @@ type DescribeDiskConfigQuotaRequest struct {
 	// 付费模式。取值范围：<br><li>PREPAID：预付费<br><li>POSTPAID_BY_HOUR：后付费。
 	DiskChargeType *string `json:"DiskChargeType" name:"DiskChargeType"`
 	// 硬盘介质类型。取值范围：<br><li>CLOUD_BASIC：表示普通云硬盘<br><li>CLOUD_PREMIUM：表示高性能云硬盘<br><li>CLOUD_SSD：表示SSD云硬盘。
-	DiskType *string `json:"DiskType" name:"DiskType"`
+	DiskTypes []*string `json:"DiskTypes" name:"DiskTypes" list`
 	// 系统盘或数据盘。取值范围：<br><li>SYSTEM_DISK：表示系统盘<br><li>DATA_DISK：表示数据盘。
 	DiskUsage *string `json:"DiskUsage" name:"DiskUsage"`
 	// 按照实例机型系列过滤。实例机型系列形如：S1、I1、M1等。详见[实例类型](https://cloud.tencent.com/document/product/213/11518)
 	InstanceFamilies []*string `json:"InstanceFamilies" name:"InstanceFamilies" list`
-	// 子机CPU核数。
+	// 实例CPU核数。
 	CPU *uint64 `json:"CPU" name:"CPU"`
-	// 子机内存大小。
+	// 实例内存大小。
 	Memory *uint64 `json:"Memory" name:"Memory"`
 }
 
@@ -258,17 +258,17 @@ func (r *DescribeDiskConfigQuotaResponse) FromJsonString(s string) error {
 
 type DescribeDisksRequest struct {
 	*tchttp.BaseRequest
-	// 按照一个或者多个云硬盘ID查询。云硬盘ID形如：`disk-11112222`，此参数的具体格式可参考API[简介](/document/362/15633)的ids.N一节）。参数不支持同时指定`DiskIds`和`Filters`。
+	// 按照一个或者多个云硬盘ID查询。云硬盘ID形如：`disk-11112222`，此参数的具体格式可参考API[简介](/document/product/362/15633)的ids.N一节）。参数不支持同时指定`DiskIds`和`Filters`。
 	DiskIds []*string `json:"DiskIds" name:"DiskIds" list`
-	// 过滤条件。参数不支持同时指定`DiskIds`和`Filters`。<br><li>disk-usage - Array of String - 是否必填：否 -（过滤条件）按云盘类型过滤。 (SYSTEM_DISK：表示系统盘 | DATA_DISK：表示数据盘)<br><li>disk-charge-type - Array of String - 是否必填：否 -（过滤条件）按照云硬盘计费模式过滤。 (PREPAID：表示预付费，即包年包月 | POSTPAID_BY_HOUR：表示后付费，即按量计费。)<br><li>portable - Array of Bool - 是否必填：否 -（过滤条件）按是否为弹性云盘过滤。 (TRUE：表示弹性云盘 | FALSE：表示非弹性云盘。)<br><li>project-id - Array of Integer - 是否必填：否 -（过滤条件）按云硬盘所属项目ID过滤。<br><li>disk-id - Array of String - 是否必填：否 -（过滤条件）按照云硬盘ID过滤。云盘ID形如：`disk-11112222`。<br><li>disk-name - Array of String - 是否必填：否 -（过滤条件）按照云盘名称过滤。<br><li>disk-type - Array of String - 是否必填：否 -（过滤条件）按照云盘介质类型过滤。(CLOUD_BASIC：表示普通云硬盘 | CLOUD_PREMIUM：表示高性能云硬盘。| CLOUD_SSD：SSD表示SSD云硬盘。)<br><li>disk-state - Array of String - 是否必填：否 -（过滤条件）按照云盘介质类型过滤。(UNATTACHED：未挂载 | ATTACHING：挂载中 | ATTACHED：已挂载 | DETACHING：解挂中 | EXPANDING：扩容中 | ROLLBACKING：回滚中 | TORECYCLE：待回收。)<br><li>instance-id - Array of String - 是否必填：否 -（过滤条件）按照云盘挂载的云主机实例ID过滤。可根据此参数查询挂载在指定云主机下的云硬盘。<br><li>zone - Array of String - 是否必填：否 -（过滤条件）按照[可用区](/document/api/213/9452#zone)过滤。<br><li>instance-ip-address - Array of String - 是否必填：否 -（过滤条件）按云盘所挂载云主机的内网或外网IP过滤。<br><li>instance-name - Array of String - 是否必填：否 -（过滤条件）按云盘所挂载的实例名称过滤。
+	// 过滤条件。参数不支持同时指定`DiskIds`和`Filters`。<br><li>disk-usage - Array of String - 是否必填：否 -（过滤条件）按云盘类型过滤。 (SYSTEM_DISK：表示系统盘 | DATA_DISK：表示数据盘)<br><li>disk-charge-type - Array of String - 是否必填：否 -（过滤条件）按照云硬盘计费模式过滤。 (PREPAID：表示预付费，即包年包月 | POSTPAID_BY_HOUR：表示后付费，即按量计费。)<br><li>portable - Array of Bool - 是否必填：否 -（过滤条件）按是否为弹性云盘过滤。 (TRUE：表示弹性云盘 | FALSE：表示非弹性云盘。)<br><li>project-id - Array of Integer - 是否必填：否 -（过滤条件）按云硬盘所属项目ID过滤。<br><li>disk-id - Array of String - 是否必填：否 -（过滤条件）按照云硬盘ID过滤。云盘ID形如：`disk-11112222`。<br><li>disk-name - Array of String - 是否必填：否 -（过滤条件）按照云盘名称过滤。<br><li>disk-type - Array of String - 是否必填：否 -（过滤条件）按照云盘介质类型过滤。(CLOUD_BASIC：表示普通云硬盘 | CLOUD_PREMIUM：表示高性能云硬盘。| CLOUD_SSD：SSD表示SSD云硬盘。)<br><li>disk-state - Array of String - 是否必填：否 -（过滤条件）按照云盘状态过滤。(UNATTACHED：未挂载 | ATTACHING：挂载中 | ATTACHED：已挂载 | DETACHING：解挂中 | EXPANDING：扩容中 | ROLLBACKING：回滚中 | TORECYCLE：待回收。)<br><li>instance-id - Array of String - 是否必填：否 -（过滤条件）按照云盘挂载的云主机实例ID过滤。可根据此参数查询挂载在指定云主机下的云硬盘。<br><li>zone - Array of String - 是否必填：否 -（过滤条件）按照[可用区](/document/api/213/9452#zone)过滤。<br><li>instance-ip-address - Array of String - 是否必填：否 -（过滤条件）按云盘所挂载云主机的内网或外网IP过滤。<br><li>instance-name - Array of String - 是否必填：否 -（过滤条件）按云盘所挂载的实例名称过滤。
 	Filters []*Filter `json:"Filters" name:"Filters" list`
-	// 偏移量，默认为0。关于`Offset`的更进一步介绍请参考API[简介](/document/362/15633)中的相关小节。
+	// 偏移量，默认为0。关于`Offset`的更进一步介绍请参考API[简介](/document/product/362/15633)中的相关小节。
 	Offset *uint64 `json:"Offset" name:"Offset"`
-	// 返回数量，默认为20，最大值为100。关于`Limit`的更进一步介绍请参考 API [简介](/document/362/15633)中的相关小节。
+	// 返回数量，默认为20，最大值为100。关于`Limit`的更进一步介绍请参考 API [简介](/document/product/362/15633)中的相关小节。
 	Limit *uint64 `json:"Limit" name:"Limit"`
 	// 输出云盘列表的排列顺序。取值范围：<br><li>ASC：升序排列<br><li>DESC：降序排列。
 	Order *string `json:"Order" name:"Order"`
-	// 云盘列表排序的依据字段。取值范围：<br><li>CREATETIME：依据云盘的创建时间排序<br><li>DEADLINE：依据云盘的到期时间排序<br>默认按云盘创建时间排序。
+	// 云盘列表排序的依据字段。取值范围：<br><li>CREATE_TIME：依据云盘的创建时间排序<br><li>DEADLINE：依据云盘的到期时间排序<br>默认按云盘创建时间排序。
 	OrderField *string `json:"OrderField" name:"OrderField"`
 	// 云盘详情中是否需要返回云盘绑定的定期快照策略ID，TRUE表示需要返回，FALSE表示不返回。
 	ReturnBindAutoSnapshotPolicy *bool `json:"ReturnBindAutoSnapshotPolicy" name:"ReturnBindAutoSnapshotPolicy"`
@@ -306,7 +306,7 @@ func (r *DescribeDisksResponse) FromJsonString(s string) error {
 
 type DescribeInstancesDiskNumRequest struct {
 	*tchttp.BaseRequest
-	// 云服务器实例ID，通过[DescribeInstances](/document/api/213/9388)接口查询。
+	// 云服务器实例ID，通过[DescribeInstances](/document/product/213/15728)接口查询。
 	InstanceIds []*string `json:"InstanceIds" name:"InstanceIds" list`
 }
 
@@ -346,13 +346,13 @@ type DescribeSnapshotsRequest struct {
 	SnapshotIds []*string `json:"SnapshotIds" name:"SnapshotIds" list`
 	// 过滤条件。参数不支持同时指定`SnapshotIds`和`Filters`。<br><li>snapshot-id - Array of String - 是否必填：否 -（过滤条件）按照快照的ID过滤。快照ID形如：`snap-11112222`。<br><li>snapshot-name - Array of String - 是否必填：否 -（过滤条件）按照快照名称过滤。<br><li>snapshot-state - Array of String - 是否必填：否 -（过滤条件）按照快照状态过滤。 (NORMAL：正常 | CREATING：创建中 | ROLLBACKING：回滚中。)<br><li>disk-usage - Array of String - 是否必填：否 -（过滤条件）按创建快照的云盘类型过滤。 (SYSTEM_DISK：代表系统盘 | DATA_DISK：代表数据盘。)<br><li>project-id  - Array of String - 是否必填：否 -（过滤条件）按云硬盘所属项目ID过滤。<br><li>disk-id  - Array of String - 是否必填：否 -（过滤条件）按照创建快照的云硬盘ID过滤。<br><li>zone - Array of String - 是否必填：否 -（过滤条件）按照[可用区](/document/api/213/9452#zone)过滤。
 	Filters []*Filter `json:"Filters" name:"Filters" list`
-	// 偏移量，默认为0。关于`Offset`的更进一步介绍请参考API[简介](/document/362/15633)中的相关小节。
+	// 偏移量，默认为0。关于`Offset`的更进一步介绍请参考API[简介](/document/product/362/15633)中的相关小节。
 	Offset *uint64 `json:"Offset" name:"Offset"`
-	// 返回数量，默认为20，最大值为100。关于`Limit`的更进一步介绍请参考 API [简介](/document/362/15633)中的相关小节。
+	// 返回数量，默认为20，最大值为100。关于`Limit`的更进一步介绍请参考 API [简介](/document/product/362/15633)中的相关小节。
 	Limit *uint64 `json:"Limit" name:"Limit"`
 	// 输出云盘列表的排列顺序。取值范围：<br><li>ASC：升序排列<br><li>DESC：降序排列。
 	Order *string `json:"Order" name:"Order"`
-	// 快照列表排序的依据字段。取值范围：<br><li>CREATETIME：依据快照的创建时间排序<br>默认按创建时间排序。
+	// 快照列表排序的依据字段。取值范围：<br><li>CREATE_TIME：依据快照的创建时间排序<br>默认按创建时间排序。
 	OrderField *string `json:"OrderField" name:"OrderField"`
 }
 
@@ -425,7 +425,7 @@ type Disk struct {
 	DiskUsage *string `json:"DiskUsage" name:"DiskUsage"`
 	// 付费模式。取值范围：<br><li>PREPAID：预付费，即包年包月<br><li>POSTPAID_BY_HOUR：后付费，即按量计费。
 	DiskChargeType *string `json:"DiskChargeType" name:"DiskChargeType"`
-	// 是否为弹性云盘，false表示非弹性云盘，true表示弹性云盘。仅支持非弹性云盘修改为弹性云盘。
+	// 是否为弹性云盘，false表示非弹性云盘，true表示弹性云盘。
 	Portable *bool `json:"Portable" name:"Portable"`
 	// 云硬盘所在的位置。
 	Placement *Placement `json:"Placement" name:"Placement"`
@@ -437,9 +437,9 @@ type Disk struct {
 	DiskSize *uint64 `json:"DiskSize" name:"DiskSize"`
 	// 云盘状态。取值范围：<br><li>UNATTACHED：未挂载<br><li>ATTACHING：挂载中<br><li>ATTACHED：已挂载<br><li>DETACHING：解挂中<br><li>EXPANDING：扩容中<br><li>ROLLBACKING：回滚中。
 	DiskState *string `json:"DiskState" name:"DiskState"`
-	// 云盘介质类型。取值范围：<br><li>CLOUD_BASIC：表示普通云硬<br><li>CLOUD_PREMIUM：表示高效云硬盘<br><li>CLOUD_SSD：SSD表示SSD云硬盘。
+	// 云盘介质类型。取值范围：<br><li>CLOUD_BASIC：表示普通云硬<br><li>CLOUD_PREMIUM：表示高性能云硬盘<br><li>CLOUD_SSD：SSD表示SSD云硬盘。
 	DiskType *string `json:"DiskType" name:"DiskType"`
-	// 云盘是否挂载到云主机上。取值范围：<br><li>false表示未挂载<br><li>true表示已挂载。
+	// 云盘是否挂载到云主机上。取值范围：<br><li>false:表示未挂载<br><li>true:表示已挂载。
 	Attached *bool `json:"Attached" name:"Attached"`
 	// 云硬盘挂载的云主机ID。
 	InstanceId *string `json:"InstanceId" name:"InstanceId"`
@@ -447,17 +447,17 @@ type Disk struct {
 	CreateTime *string `json:"CreateTime" name:"CreateTime"`
 	// 云硬盘的到期时间。
 	DeadlineTime *string `json:"DeadlineTime" name:"DeadlineTime"`
-	// 云盘是否处于快照回滚状态。取值范围：<br><li>false表示不处于快照回滚状态<br><li>true表示处于快照回滚状态。
+	// 云盘是否处于快照回滚状态。取值范围：<br><li>false:表示不处于快照回滚状态<br><li>true:表示处于快照回滚状态。
 	Rollbacking *bool `json:"Rollbacking" name:"Rollbacking"`
 	// 云盘快照回滚的进度。
 	RollbackPercent *uint64 `json:"RollbackPercent" name:"RollbackPercent"`
-	// 云盘是否为加密盘。取值范围：<br><li>false表示非加密盘<br><li>true表示加密盘。
+	// 云盘是否为加密盘。取值范围：<br><li>false:表示非加密盘<br><li>true:表示加密盘。
 	Encrypt *bool `json:"Encrypt" name:"Encrypt"`
 	// 云盘已挂载到子机，且子机与云盘都是包年包月。<br><li>true：子机设置了自动续费标识，但云盘未设置<br><li>false：云盘自动续费标识正常。
 	AutoRenewFlagError *bool `json:"AutoRenewFlagError" name:"AutoRenewFlagError"`
 	// 自动续费标识。取值范围：<br><li>NOTIFY_AND_AUTO_RENEW：通知过期且自动续费<br><li>NOTIFY_AND_MANUAL_RENEW：通知过期不自动续费<br><li>DISABLE_NOTIFY_AND_MANUAL_RENEW：不通知过期不自动续费。
 	RenewFlag *string `json:"RenewFlag" name:"RenewFlag"`
-	// 云盘已挂载到子机，且子机与云盘都是包年包月。<br><li>true:云盘到期时间早于子机。false：云盘到期时间晚于子机。
+	// 在云盘已挂载到实例，且实例与云盘都是包年包月的条件下，此字段才有意义。<br><li>true:云盘到期时间早于实例。<br><li>false：云盘到期时间晚于实例。
 	DeadlineError *bool `json:"DeadlineError" name:"DeadlineError"`
 	// 判断预付费的云盘是否支持主动退还。<br><li>true:支持主动退还<br><li>false:不支持主动退还。
 	IsReturnable *bool `json:"IsReturnable" name:"IsReturnable"`
@@ -470,7 +470,7 @@ type Disk struct {
 type DiskChargePrepaid struct {
 	// 购买云盘的时长，默认单位为月，此时，取值范围：1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 24, 36。
 	Period *uint64 `json:"Period" name:"Period"`
-	// 自动续费标识。取值范围：<br><li>NOTIFY_AND_AUTO_RENEW：通知过期且自动续费<br><li>NOTIFY_AND_MANUAL_RENEW：通知过期不自动续费<br><li>DISABLE_NOTIFY_AND_MANUAL_RENEW：不通知过期不自动续费<br><br>默认取值：NOTIFY_AND_AUTO_RENEW。若该参数指定为NOTIFY_AND_AUTO_RENEW，在账户余额充足的情况下，云盘到期后将按月自动续费。
+	// 自动续费标识。取值范围：<br><li>NOTIFY_AND_AUTO_RENEW：通知过期且自动续费<br><li>NOTIFY_AND_MANUAL_RENEW：通知过期不自动续费<br><li>DISABLE_NOTIFY_AND_MANUAL_RENEW：不通知过期不自动续费<br><br>默认取值：NOTIFY_AND_MANUAL_RENEW：通知过期不自动续费。
 	RenewFlag *string `json:"RenewFlag" name:"RenewFlag"`
 	// 需要将云盘的到期时间与挂载的子机对齐时，可传入该参数。该参数表示子机当前的到期时间，此时Period如果传入，则表示子机需要续费的时长，云盘会自动按对齐到子机续费后的到期时间续费。
 	CurInstanceDeadline *string `json:"CurInstanceDeadline" name:"CurInstanceDeadline"`
@@ -506,9 +506,9 @@ type Filter struct {
 
 type InquiryPriceCreateDisksRequest struct {
 	*tchttp.BaseRequest
-	// 云硬盘类型。取值范围：<br><li>普通云硬盘：CLOUD_BASIC<br><li>高效云盘：CLOUD_PREMIUM<br><li>SSD云硬盘：CLOUD_SSD。
+	// 云硬盘类型。取值范围：<br><li>普通云硬盘：CLOUD_BASIC<br><li>高性能云硬盘：CLOUD_PREMIUM<br><li>SSD云硬盘：CLOUD_SSD。
 	DiskType *string `json:"DiskType" name:"DiskType"`
-	// 云硬盘大小，单位为GB。普通云硬盘最小10GB，SSD云硬盘最小100GB，步长均为10GB。
+	// 云盘大小，取值范围： 普通云硬盘:10GB ~ 4000G；高性能云硬盘:50GB ~ 4000GB；SSD云硬盘:100GB ~ 4000GB，步长均为10GB。
 	DiskSize *uint64 `json:"DiskSize" name:"DiskSize"`
 	// 付费模式，目前只有预付费，即只能取值为PREPAID。
 	DiskChargeType *string `json:"DiskChargeType" name:"DiskChargeType"`
@@ -592,7 +592,7 @@ type InquiryPriceResizeDiskRequest struct {
 	*tchttp.BaseRequest
 	// 云硬盘ID， 通过[DescribeDisks](/document/product/362/16315)接口查询。
 	DiskId *string `json:"DiskId" name:"DiskId"`
-	// 云硬盘扩容后的大小，单位为GB，不得小于当前云硬盘大小。
+	// 云硬盘扩容后的大小，单位为GB，不得小于当前云硬盘大小。取值范围： 普通云硬盘:10GB ~ 4000G；高性能云硬盘:50GB ~ 4000GB；SSD云硬盘:100GB ~ 4000GB，步长均为10GB。
 	DiskSize *uint64 `json:"DiskSize" name:"DiskSize"`
 	// 云盘所属项目ID。 如传入则仅用于鉴权。
 	ProjectId *uint64 `json:"ProjectId" name:"ProjectId"`
@@ -735,7 +735,7 @@ func (r *ModifySnapshotAttributeResponse) FromJsonString(s string) error {
 }
 
 type Placement struct {
-	// 实例所属的[可用区](/document/api/213/9452#zone)ID。该参数也可以通过调用  [DescribeZones](/document/api/213/9455) 的返回值中的Zone字段来获取。
+	// 实例所属的[可用区](/document/api/213/9452#zone)ID。该参数也可以通过调用  [DescribeZones](/document/product/213/15707) 的返回值中的Zone字段来获取。
 	Zone *string `json:"Zone" name:"Zone"`
 	// 实例所属项目ID。该参数可以通过调用 [DescribeProject](/document/api/378/4400) 的返回值中的 projectId 字段来获取。不填为默认项目。
 	ProjectId *uint64 `json:"ProjectId" name:"ProjectId"`
@@ -786,7 +786,7 @@ type ResizeDiskRequest struct {
 	*tchttp.BaseRequest
 	// 云硬盘ID， 通过[DescribeDisks](/document/product/362/16315)接口查询。
 	DiskId *string `json:"DiskId" name:"DiskId"`
-	// 扩容后的磁盘大小。必须大于当前值，最大值为4000G，步长为10G。
+	// 云硬盘扩容后的大小，单位为GB，必须大于当前云硬盘大小。取值范围： 普通云硬盘:10GB ~ 4000G；高性能云硬盘:50GB ~ 4000GB；SSD云硬盘:100GB ~ 4000GB，步长均为10GB。
 	DiskSize *uint64 `json:"DiskSize" name:"DiskSize"`
 }
 
@@ -841,6 +841,10 @@ type Snapshot struct {
 	Encrypt *bool `json:"Encrypt" name:"Encrypt"`
 	// 是否为永久快照。取值范围：<br><li>true：永久快照<br><li>false：非永久快照。
 	IsPermanent *bool `json:"IsPermanent" name:"IsPermanent"`
+	// 快照正在跨地域复制的目的地域，默认取值为[]。
+	CopyingToRegions []*string `json:"CopyingToRegions" name:"CopyingToRegions" list`
+	// 是否为跨地域复制的快照。取值范围：<br><li>true：表示为跨地域复制的快照。<br><li>false:本地域的快照。
+	CopyFromRemote *bool `json:"CopyFromRemote" name:"CopyFromRemote"`
 }
 
 type TerminateDisksRequest struct {

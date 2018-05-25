@@ -138,6 +138,10 @@ type ComputeNode struct {
 	TaskInstanceNumAvailable *uint64 `json:"TaskInstanceNumAvailable" name:"TaskInstanceNumAvailable"`
 	// Batch Agent 版本
 	AgentVersion *string `json:"AgentVersion" name:"AgentVersion"`
+	// 实例内网IP
+	PrivateIpAddresses []*string `json:"PrivateIpAddresses" name:"PrivateIpAddresses" list`
+	// 实例公网IP
+	PublicIpAddresses []*string `json:"PublicIpAddresses" name:"PublicIpAddresses" list`
 }
 
 type ComputeNodeMetrics struct {
@@ -648,6 +652,8 @@ type DescribeJobResponse struct {
 		TaskMetrics *TaskMetrics `json:"TaskMetrics" name:"TaskMetrics"`
 		// 任务实例统计指标
 		TaskInstanceMetrics *TaskInstanceView `json:"TaskInstanceMetrics" name:"TaskInstanceMetrics"`
+		// 作业失败原因
+		StateReason *string `json:"StateReason" name:"StateReason"`
 		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
@@ -961,6 +967,8 @@ type Job struct {
 	Notifications []*Notification `json:"Notifications" name:"Notifications" list`
 	// 对于存在依赖关系的任务中，后序任务执行对于前序任务的依赖条件。取值范围包括 PRE_TASK_SUCCEED，PRE_TASK_AT_LEAST_PARTLY_SUCCEED，PRE_TASK_FINISHED，默认值为PRE_TASK_SUCCEED。
 	TaskExecutionDependOn *string `json:"TaskExecutionDependOn" name:"TaskExecutionDependOn"`
+	// 表示创建 CVM 失败按照何种策略处理。取值范围包括 FAILED，RUNNABLE。FAILED 表示创建 CVM 失败按照一次执行失败处理，RUNNABLE 表示创建 CVM 失败按照继续等待处理。默认值为FAILED。StateIfCreateCvmFailed对于提交的指定计算环境的作业无效。
+	StateIfCreateCvmFailed *string `json:"StateIfCreateCvmFailed" name:"StateIfCreateCvmFailed"`
 }
 
 type JobView struct {
@@ -1091,6 +1099,8 @@ type NamedComputeEnv struct {
 	AgentRunningMode *AgentRunningMode `json:"AgentRunningMode" name:"AgentRunningMode"`
 	// 通知信息
 	Notifications *Notification `json:"Notifications" name:"Notifications"`
+	// 非活跃节点处理策略，默认“RECREATE”，即对于实例创建失败或异常退还的计算节点，定期重新创建实例资源。
+	ActionIfComputeNodeInactive *string `json:"ActionIfComputeNodeInactive" name:"ActionIfComputeNodeInactive"`
 }
 
 type Notification struct {
@@ -1277,6 +1287,8 @@ type TaskInstanceView struct {
 	EndTime *string `json:"EndTime" name:"EndTime"`
 	// 重定向信息
 	RedirectInfo *RedirectInfo `json:"RedirectInfo" name:"RedirectInfo"`
+	// 任务实例状态原因详情，任务实例失败时，会记录失败原因
+	StateDetailedReason *string `json:"StateDetailedReason" name:"StateDetailedReason"`
 }
 
 type TaskMetrics struct {
@@ -1356,6 +1368,40 @@ func (r *TerminateComputeNodeResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type TerminateComputeNodesRequest struct {
+	*tchttp.BaseRequest
+	// 计算环境ID
+	EnvId *string `json:"EnvId" name:"EnvId"`
+	// 计算节点ID列表
+	ComputeNodeIds []*string `json:"ComputeNodeIds" name:"ComputeNodeIds" list`
+}
+
+func (r *TerminateComputeNodesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *TerminateComputeNodesRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type TerminateComputeNodesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		RequestId *string `json:"RequestId" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *TerminateComputeNodesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *TerminateComputeNodesResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type TerminateJobRequest struct {
 	*tchttp.BaseRequest
 	// 作业ID
@@ -1431,6 +1477,6 @@ type VirtualPrivateCloud struct {
 	SubnetId *string `json:"SubnetId" name:"SubnetId"`
 	// 是否用作公网网关。公网网关只有在实例拥有公网IP以及处于私有网络下时才能正常使用。取值范围：<br><li>TRUE：表示用作公网网关<br><li>FALSE：表示不用作公网网关<br><br>默认取值：FALSE。
 	AsVpcGateway *bool `json:"AsVpcGateway" name:"AsVpcGateway"`
-	// 私有子网ip数组，目前只支持一个ip。在创建实例、修改实例vpc属性操作中可使用此参数。
+	// 私有网络子网 IP 数组，在创建实例、修改实例vpc属性操作中可使用此参数。当前仅批量创建多台实例时支持传入相同子网的多个 IP。
 	PrivateIpAddresses []*string `json:"PrivateIpAddresses" name:"PrivateIpAddresses" list`
 }

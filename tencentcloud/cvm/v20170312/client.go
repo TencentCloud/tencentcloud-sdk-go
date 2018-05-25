@@ -514,7 +514,7 @@ func NewDescribeInternetChargeTypeConfigsResponse() (response *DescribeInternetC
     return
 }
 
-// 查询网络计费的类型
+// 本接口（DescribeInternetChargeTypeConfigs）用于查询网络的计费类型。
 func (c *Client) DescribeInternetChargeTypeConfigs(request *DescribeInternetChargeTypeConfigsRequest) (response *DescribeInternetChargeTypeConfigsResponse, err error) {
     if request == nil {
         request = NewDescribeInternetChargeTypeConfigsRequest()
@@ -1045,31 +1045,6 @@ func (c *Client) ModifyKeyPairAttribute(request *ModifyKeyPairAttributeRequest) 
         request = NewModifyKeyPairAttributeRequest()
     }
     response = NewModifyKeyPairAttributeResponse()
-    err = c.Send(request, response)
-    return
-}
-
-func NewQueryMigrateTaskRequest() (request *QueryMigrateTaskRequest) {
-    request = &QueryMigrateTaskRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    request.Init().WithApiInfo("cvm", APIVersion, "QueryMigrateTask")
-    return
-}
-
-func NewQueryMigrateTaskResponse() (response *QueryMigrateTaskResponse) {
-    response = &QueryMigrateTaskResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    }
-    return
-}
-
-// 查询迁移任务进度。
-func (c *Client) QueryMigrateTask(request *QueryMigrateTaskRequest) (response *QueryMigrateTaskResponse, err error) {
-    if request == nil {
-        request = NewQueryMigrateTaskRequest()
-    }
-    response = NewQueryMigrateTaskResponse()
     err = c.Send(request, response)
     return
 }

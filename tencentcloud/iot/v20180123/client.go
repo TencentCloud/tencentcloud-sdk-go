@@ -106,7 +106,7 @@ func NewAddProductResponse() (response *AddProductResponse) {
     return
 }
 
-// 为用户提供创建某型号物联网产品的能力。
+// 本接口(AddProduct)用于创建、定义某款硬件产品。
 func (c *Client) AddProduct(request *AddProductRequest) (response *AddProductResponse, err error) {
     if request == nil {
         request = NewAddProductRequest()
@@ -156,7 +156,7 @@ func NewAddTopicResponse() (response *AddTopicResponse) {
     return
 }
 
-// 新增Topic
+// 新增Topic，用于设备或应用发布消息至该Topic或订阅该Topic的消息。
 func (c *Client) AddTopic(request *AddTopicRequest) (response *AddTopicResponse, err error) {
     if request == nil {
         request = NewAddTopicRequest()
@@ -356,7 +356,7 @@ func NewGetDataHistoryResponse() (response *GetDataHistoryResponse) {
     return
 }
 
-// 获取数据历史
+// 批量获取设备某一段时间范围的设备上报数据。该接口只允许使用数据模板类型的产品通过REST API方式同步设备上报数据至用户的应用系统。
 func (c *Client) GetDataHistory(request *GetDataHistoryRequest) (response *GetDataHistoryResponse, err error) {
     if request == nil {
         request = NewGetDataHistoryRequest()
@@ -406,7 +406,7 @@ func NewGetDeviceDataResponse() (response *GetDeviceDataResponse) {
     return
 }
 
-// 获取设备数据
+// 获取某个设备当前上报到云端的数据，该接口适用于使用数据模板协议的产品。
 func (c *Client) GetDeviceData(request *GetDeviceDataRequest) (response *GetDeviceDataResponse, err error) {
     if request == nil {
         request = NewGetDeviceDataRequest()
@@ -431,7 +431,7 @@ func NewGetDeviceLogResponse() (response *GetDeviceLogResponse) {
     return
 }
 
-// 获取设备日志
+// 批量获取设备与云端的详细通信日志，该接口适用于使用数据模板类型的产品。
 func (c *Client) GetDeviceLog(request *GetDeviceLogRequest) (response *GetDeviceLogResponse, err error) {
     if request == nil {
         request = NewGetDeviceLogRequest()
@@ -681,7 +681,7 @@ func NewIssueDeviceControlResponse() (response *IssueDeviceControlResponse) {
     return
 }
 
-// 提供下发控制指令到指定设备的能力。
+// 提供下发控制指令到指定设备的能力，该接口适用于使用数据模板类型的产品。
 func (c *Client) IssueDeviceControl(request *IssueDeviceControlRequest) (response *IssueDeviceControlResponse, err error) {
     if request == nil {
         request = NewIssueDeviceControlRequest()
@@ -706,7 +706,7 @@ func NewPublishMsgResponse() (response *PublishMsgResponse) {
     return
 }
 
-// 提供向指定的Topic发布消息的能力。
+// 提供向指定的Topic发布消息的能力，常用于向设备下发控制指令；该接口只适用于数据协议为“自定义”类型的产品，使用数据模板类型的产品需使用IssueDeviceControl接口
 func (c *Client) PublishMsg(request *PublishMsgRequest) (response *PublishMsgResponse, err error) {
     if request == nil {
         request = NewPublishMsgRequest()
@@ -731,7 +731,7 @@ func NewResetDeviceResponse() (response *ResetDeviceResponse) {
     return
 }
 
-// 重置设备
+// 重置设备操作，将会为设备生成新的证书及清空最新数据，需谨慎操作。
 func (c *Client) ResetDevice(request *ResetDeviceRequest) (response *ResetDeviceResponse, err error) {
     if request == nil {
         request = NewResetDeviceRequest()

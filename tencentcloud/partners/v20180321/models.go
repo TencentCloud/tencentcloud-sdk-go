@@ -39,6 +39,8 @@ type AgentBillElem struct {
 	SettleMonth *string `json:"SettleMonth" name:"SettleMonth"`
 	// 支付金额，单位分
 	Amt *uint64 `json:"Amt" name:"Amt"`
+	// agentpay：代付；selfpay：自付
+	PayerMode *string `json:"PayerMode" name:"PayerMode"`
 }
 
 type AgentClientElem struct {

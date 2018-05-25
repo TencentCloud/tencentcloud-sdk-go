@@ -90,14 +90,16 @@ func (r *AddDeviceResponse) FromJsonString(s string) error {
 
 type AddProductRequest struct {
 	*tchttp.BaseRequest
-	// 产品名称
+	// 产品名称，同一区域产品名称需唯一，支持中文、英文字母、中划线和下划线，长度不超过31个字符，中文占两个字符
 	Name *string `json:"Name" name:"Name"`
 	// 产品描述
 	Description *string `json:"Description" name:"Description"`
-	// 产品鉴权类型（0：直连，1：动态令牌），推荐使用动态令牌
+	// 鉴权模式（1：动态令牌，推荐使用动态令牌）
 	AuthType *uint64 `json:"AuthType" name:"AuthType"`
 	// 数据模版（json数组）
 	DataTemplate []*string `json:"DataTemplate" name:"DataTemplate" list`
+	// 数据协议（native表示自定义，template表示数据模板，默认值为template）
+	DataProtocol *string `json:"DataProtocol" name:"DataProtocol"`
 }
 
 func (r *AddProductRequest) ToJsonString() string {
@@ -477,7 +479,7 @@ type GetDataHistoryRequest struct {
 	*tchttp.BaseRequest
 	// 产品Id
 	ProductId *string `json:"ProductId" name:"ProductId"`
-	// 设备名称列表
+	// 设备名称列表，允许最多一次100台
 	DeviceNames []*string `json:"DeviceNames" name:"DeviceNames" list`
 	// 查询开始时间
 	StartTime *string `json:"StartTime" name:"StartTime"`
@@ -561,7 +563,7 @@ type GetDeviceLogRequest struct {
 	*tchttp.BaseRequest
 	// 产品Id
 	ProductId *string `json:"ProductId" name:"ProductId"`
-	// 设备名称列表
+	// 设备名称列表，最大支持100台
 	DeviceNames []*string `json:"DeviceNames" name:"DeviceNames" list`
 	// 查询开始时间
 	StartTime *string `json:"StartTime" name:"StartTime"`
@@ -573,6 +575,8 @@ type GetDeviceLogRequest struct {
 	Order *string `json:"Order" name:"Order"`
 	// 查询游标
 	ScrollId *string `json:"ScrollId" name:"ScrollId"`
+	// 日志类型（comm/status）
+	Type *string `json:"Type" name:"Type"`
 }
 
 func (r *GetDeviceLogRequest) ToJsonString() string {

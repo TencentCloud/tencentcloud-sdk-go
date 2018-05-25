@@ -587,7 +587,7 @@ func (r *ModifySiteAttributeResponse) FromJsonString(s string) error {
 
 type Monitor struct {
 	// 监控任务ID。
-	ID *uint64 `json:"ID" name:"ID"`
+	Id *uint64 `json:"Id" name:"Id"`
 	// 监控名称。
 	Name *string `json:"Name" name:"Name"`
 	// 监测状态：1-监测中；2-暂停监测。
@@ -612,6 +612,8 @@ type Monitor struct {
 	CreatedAt *string `json:"CreatedAt" name:"CreatedAt"`
 	// UpdatedAt。
 	UpdatedAt *string `json:"UpdatedAt" name:"UpdatedAt"`
+	// 云用户appid。
+	Appid *uint64 `json:"Appid" name:"Appid"`
 }
 
 type MonitorMiniSite struct {
@@ -693,6 +695,12 @@ type Site struct {
 	LastScanNoticeNum *uint64 `json:"LastScanNoticeNum" name:"LastScanNoticeNum"`
 	// 扫描进度，百分比整数
 	Progress *uint64 `json:"Progress" name:"Progress"`
+	// 最近一次扫描各个类型风险漏洞数量，存储的是json对象
+	LastScanExtsCount *string `json:"LastScanExtsCount" name:"LastScanExtsCount"`
+	// 云用户appid。
+	Appid *uint64 `json:"Appid" name:"Appid"`
+	// 云用户标识。
+	Uin *string `json:"Uin" name:"Uin"`
 }
 
 type SitesVerification struct {
@@ -710,6 +718,10 @@ type SitesVerification struct {
 	CreatedAt *string `json:"CreatedAt" name:"CreatedAt"`
 	// UpdatedAt。
 	UpdatedAt *string `json:"UpdatedAt" name:"UpdatedAt"`
+	// ID。
+	Id *uint64 `json:"Id" name:"Id"`
+	// 云用户appid
+	Appid *uint64 `json:"Appid" name:"Appid"`
 }
 
 type VerifySitesRequest struct {

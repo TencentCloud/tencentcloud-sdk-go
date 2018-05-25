@@ -26,7 +26,7 @@ type Address struct {
 	// `EIP`名称。
 	AddressName *string `json:"AddressName" name:"AddressName"`
 	// `EIP`状态。
-	AddressState *string `json:"AddressState" name:"AddressState"`
+	AddressStatus *string `json:"AddressStatus" name:"AddressStatus"`
 	// 弹性外网IP
 	AddressIp *string `json:"AddressIp" name:"AddressIp"`
 	// 绑定的资源实例`ID`。可能是一个`CVM`，`NAT`，或是弹性网卡。
@@ -622,7 +622,7 @@ type CreateVpcRequest struct {
 	CidrBlock *string `json:"CidrBlock" name:"CidrBlock"`
 	// 是否开启组播。true: 开启, false: 不开启。
 	EnableMulticast *string `json:"EnableMulticast" name:"EnableMulticast"`
-	// DNS地址，最多支持4个，第1个默认为主，其余为备
+	// DNS地址，最多支持4个
 	DnsServers []*string `json:"DnsServers" name:"DnsServers" list`
 	// 域名
 	DomainName *string `json:"DomainName" name:"DomainName"`
