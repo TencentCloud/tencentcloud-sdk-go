@@ -77,3 +77,22 @@ func main() {
 ```
 
 更多示例参见 [examples](https://github.com/TencentCloud/tencentcloud-sdk-go/tree/master/examples) 目录。对于复杂接口的 Request 初始化例子，可以参考 examples/cvm/v20170312/run_instances.go 。对于使用json字符串初始化 Request 的例子，可以参考 examples/cvm/v20170312/describe_instances.go 。
+
+# 支持产品列表
+
+| 产品中文名 | 对应模块 |
+|------------|------|
+| 云服务器 | cvm |
+| 云硬盘 | cbs |
+| 无服务器云函数 | scf |
+| 私有网络 | vpc |
+| 批量计算 | batch |
+| 数据库 MySQL | cdb |
+| 数据库 MariaDB(TDSQL) | mariadb |
+| 数据库 PostgreSQL | postgres |
+| 分布式数据库 DCDB | dcdb |
+| Web 漏洞扫描 | cws |
+| 加速物联网套件 | iot |
+| 智能语音服务 | aai |
+| 腾讯机器翻译 | tmt |
+| 渠道合作伙伴 | partners |
