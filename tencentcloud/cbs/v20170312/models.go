@@ -465,6 +465,8 @@ type Disk struct {
 	ReturnFailCode *uint64 `json:"ReturnFailCode" name:"ReturnFailCode"`
 	// 云盘关联的定期快照ID。只有在调用DescribeDisks接口时，入参ReturnBindAutoSnapshotPolicy取值为TRUE才会返回该参数。
 	AutoSnapshotPolicyIds []*string `json:"AutoSnapshotPolicyIds" name:"AutoSnapshotPolicyIds" list`
+	// 与云盘绑定的标签，云盘未绑定标签则取值为空。
+	Tags []*Tag `json:"Tags" name:"Tags" list`
 }
 
 type DiskChargePrepaid struct {
@@ -845,6 +847,13 @@ type Snapshot struct {
 	CopyingToRegions []*string `json:"CopyingToRegions" name:"CopyingToRegions" list`
 	// 是否为跨地域复制的快照。取值范围：<br><li>true：表示为跨地域复制的快照。<br><li>false:本地域的快照。
 	CopyFromRemote *bool `json:"CopyFromRemote" name:"CopyFromRemote"`
+}
+
+type Tag struct {
+	// 标签健。
+	Key *string `json:"Key" name:"Key"`
+	// 标签值。
+	Value *string `json:"Value" name:"Value"`
 }
 
 type TerminateDisksRequest struct {

@@ -91,6 +91,31 @@ func (c *Client) CloseWanService(request *CloseWanServiceRequest) (response *Clo
     return
 }
 
+func NewCreateAccountsRequest() (request *CreateAccountsRequest) {
+    request = &CreateAccountsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cdb", APIVersion, "CreateAccounts")
+    return
+}
+
+func NewCreateAccountsResponse() (response *CreateAccountsResponse) {
+    response = &CreateAccountsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口(CreateAccounts)用于创建云数据库的账户，需要指定新的账户名和域名，以及所对应的密码，同时可以设置账号的备注信息。
+func (c *Client) CreateAccounts(request *CreateAccountsRequest) (response *CreateAccountsResponse, err error) {
+    if request == nil {
+        request = NewCreateAccountsRequest()
+    }
+    response = NewCreateAccountsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateBackupRequest() (request *CreateBackupRequest) {
     request = &CreateBackupRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -208,6 +233,31 @@ func (c *Client) CreateDBInstanceHour(request *CreateDBInstanceHourRequest) (res
     return
 }
 
+func NewDeleteAccountsRequest() (request *DeleteAccountsRequest) {
+    request = &DeleteAccountsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cdb", APIVersion, "DeleteAccounts")
+    return
+}
+
+func NewDeleteAccountsResponse() (response *DeleteAccountsResponse) {
+    response = &DeleteAccountsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口(DeleteAccounts)用于删除云数据库的账户。
+func (c *Client) DeleteAccounts(request *DeleteAccountsRequest) (response *DeleteAccountsResponse, err error) {
+    if request == nil {
+        request = NewDeleteAccountsRequest()
+    }
+    response = NewDeleteAccountsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteBackupRequest() (request *DeleteBackupRequest) {
     request = &DeleteBackupRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -229,6 +279,56 @@ func (c *Client) DeleteBackup(request *DeleteBackupRequest) (response *DeleteBac
         request = NewDeleteBackupRequest()
     }
     response = NewDeleteBackupResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeAccountPrivilegesRequest() (request *DescribeAccountPrivilegesRequest) {
+    request = &DescribeAccountPrivilegesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cdb", APIVersion, "DescribeAccountPrivileges")
+    return
+}
+
+func NewDescribeAccountPrivilegesResponse() (response *DescribeAccountPrivilegesResponse) {
+    response = &DescribeAccountPrivilegesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口(DescribeAccountPrivileges)用于查询云数据库账户支持的权限信息。
+func (c *Client) DescribeAccountPrivileges(request *DescribeAccountPrivilegesRequest) (response *DescribeAccountPrivilegesResponse, err error) {
+    if request == nil {
+        request = NewDescribeAccountPrivilegesRequest()
+    }
+    response = NewDescribeAccountPrivilegesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeAccountsRequest() (request *DescribeAccountsRequest) {
+    request = &DescribeAccountsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cdb", APIVersion, "DescribeAccounts")
+    return
+}
+
+func NewDescribeAccountsResponse() (response *DescribeAccountsResponse) {
+    response = &DescribeAccountsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口(DescribeAccounts)用于查询云数据库的所有账户信息。
+func (c *Client) DescribeAccounts(request *DescribeAccountsRequest) (response *DescribeAccountsResponse, err error) {
+    if request == nil {
+        request = NewDescribeAccountsRequest()
+    }
+    response = NewDescribeAccountsResponse()
     err = c.Send(request, response)
     return
 }
@@ -433,6 +533,31 @@ func (c *Client) DescribeDBInstanceCharset(request *DescribeDBInstanceCharsetReq
     return
 }
 
+func NewDescribeDBInstanceConfigRequest() (request *DescribeDBInstanceConfigRequest) {
+    request = &DescribeDBInstanceConfigRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cdb", APIVersion, "DescribeDBInstanceConfig")
+    return
+}
+
+func NewDescribeDBInstanceConfigResponse() (response *DescribeDBInstanceConfigResponse) {
+    response = &DescribeDBInstanceConfigResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口(DescribeDBInstanceConfig)用于云数据库实例的配置信息，包括同步模式，部署模式等。
+func (c *Client) DescribeDBInstanceConfig(request *DescribeDBInstanceConfigRequest) (response *DescribeDBInstanceConfigResponse, err error) {
+    if request == nil {
+        request = NewDescribeDBInstanceConfigRequest()
+    }
+    response = NewDescribeDBInstanceConfigResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeDBInstanceGTIDRequest() (request *DescribeDBInstanceGTIDRequest) {
     request = &DescribeDBInstanceGTIDRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -536,6 +661,31 @@ func (c *Client) DescribeDBSecurityGroups(request *DescribeDBSecurityGroupsReque
     return
 }
 
+func NewDescribeDBSwitchRecordsRequest() (request *DescribeDBSwitchRecordsRequest) {
+    request = &DescribeDBSwitchRecordsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cdb", APIVersion, "DescribeDBSwitchRecords")
+    return
+}
+
+func NewDescribeDBSwitchRecordsResponse() (response *DescribeDBSwitchRecordsResponse) {
+    response = &DescribeDBSwitchRecordsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口(DescribeDBSwitchRecords)用于查询云数据库实例切换记录。
+func (c *Client) DescribeDBSwitchRecords(request *DescribeDBSwitchRecordsRequest) (response *DescribeDBSwitchRecordsResponse, err error) {
+    if request == nil {
+        request = NewDescribeDBSwitchRecordsRequest()
+    }
+    response = NewDescribeDBSwitchRecordsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeDBZoneConfigRequest() (request *DescribeDBZoneConfigRequest) {
     request = &DescribeDBZoneConfigRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -557,6 +707,31 @@ func (c *Client) DescribeDBZoneConfig(request *DescribeDBZoneConfigRequest) (res
         request = NewDescribeDBZoneConfigRequest()
     }
     response = NewDescribeDBZoneConfigResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeDatabasesRequest() (request *DescribeDatabasesRequest) {
+    request = &DescribeDatabasesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cdb", APIVersion, "DescribeDatabases")
+    return
+}
+
+func NewDescribeDatabasesResponse() (response *DescribeDatabasesResponse) {
+    response = &DescribeDatabasesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口(DescribeDatabases)用于查询云数据库实例的数据库信息。
+func (c *Client) DescribeDatabases(request *DescribeDatabasesRequest) (response *DescribeDatabasesResponse, err error) {
+    if request == nil {
+        request = NewDescribeDatabasesRequest()
+    }
+    response = NewDescribeDatabasesResponse()
     err = c.Send(request, response)
     return
 }
@@ -713,6 +888,81 @@ func (c *Client) IsolateDBInstance(request *IsolateDBInstanceRequest) (response 
     return
 }
 
+func NewModifyAccountDescriptionRequest() (request *ModifyAccountDescriptionRequest) {
+    request = &ModifyAccountDescriptionRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cdb", APIVersion, "ModifyAccountDescription")
+    return
+}
+
+func NewModifyAccountDescriptionResponse() (response *ModifyAccountDescriptionResponse) {
+    response = &ModifyAccountDescriptionResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口(ModifyAccountDescription)用于修改云数据库账户的备注信息。
+func (c *Client) ModifyAccountDescription(request *ModifyAccountDescriptionRequest) (response *ModifyAccountDescriptionResponse, err error) {
+    if request == nil {
+        request = NewModifyAccountDescriptionRequest()
+    }
+    response = NewModifyAccountDescriptionResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyAccountPasswordRequest() (request *ModifyAccountPasswordRequest) {
+    request = &ModifyAccountPasswordRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cdb", APIVersion, "ModifyAccountPassword")
+    return
+}
+
+func NewModifyAccountPasswordResponse() (response *ModifyAccountPasswordResponse) {
+    response = &ModifyAccountPasswordResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口(ModifyAccountPassword)用于修改云数据库账户的密码。
+func (c *Client) ModifyAccountPassword(request *ModifyAccountPasswordRequest) (response *ModifyAccountPasswordResponse, err error) {
+    if request == nil {
+        request = NewModifyAccountPasswordRequest()
+    }
+    response = NewModifyAccountPasswordResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyAccountPrivilegesRequest() (request *ModifyAccountPrivilegesRequest) {
+    request = &ModifyAccountPrivilegesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cdb", APIVersion, "ModifyAccountPrivileges")
+    return
+}
+
+func NewModifyAccountPrivilegesResponse() (response *ModifyAccountPrivilegesResponse) {
+    response = &ModifyAccountPrivilegesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口(ModifyAccountPrivileges)用于修改云数据库的账户的权限信息。
+func (c *Client) ModifyAccountPrivileges(request *ModifyAccountPrivilegesRequest) (response *ModifyAccountPrivilegesResponse, err error) {
+    if request == nil {
+        request = NewModifyAccountPrivilegesRequest()
+    }
+    response = NewModifyAccountPrivilegesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyBackupConfigRequest() (request *ModifyBackupConfigRequest) {
     request = &ModifyBackupConfigRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -863,6 +1113,31 @@ func (c *Client) ModifyInstanceParam(request *ModifyInstanceParamRequest) (respo
     return
 }
 
+func NewOpenDBInstanceGTIDRequest() (request *OpenDBInstanceGTIDRequest) {
+    request = &OpenDBInstanceGTIDRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cdb", APIVersion, "OpenDBInstanceGTID")
+    return
+}
+
+func NewOpenDBInstanceGTIDResponse() (response *OpenDBInstanceGTIDResponse) {
+    response = &OpenDBInstanceGTIDResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口(OpenDBInstanceGTID)用于开启云数据库实例的GTID，只支持版本为5.6以及以上的实例。
+func (c *Client) OpenDBInstanceGTID(request *OpenDBInstanceGTIDRequest) (response *OpenDBInstanceGTIDResponse, err error) {
+    if request == nil {
+        request = NewOpenDBInstanceGTIDRequest()
+    }
+    response = NewOpenDBInstanceGTIDResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewOpenWanServiceRequest() (request *OpenWanServiceRequest) {
     request = &OpenWanServiceRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -884,6 +1159,35 @@ func (c *Client) OpenWanService(request *OpenWanServiceRequest) (response *OpenW
         request = NewOpenWanServiceRequest()
     }
     response = NewOpenWanServiceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewRestartDBInstancesRequest() (request *RestartDBInstancesRequest) {
+    request = &RestartDBInstancesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cdb", APIVersion, "RestartDBInstances")
+    return
+}
+
+func NewRestartDBInstancesResponse() (response *RestartDBInstancesResponse) {
+    response = &RestartDBInstancesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口(RestartDBInstances)用于重启云数据库实例。
+// 
+// 注意：
+// 1、本接口只支持主实例进行重启操作；
+// 2、实例状态必须为正常，并且没有其他异步任务在执行中。
+func (c *Client) RestartDBInstances(request *RestartDBInstancesRequest) (response *RestartDBInstancesResponse, err error) {
+    if request == nil {
+        request = NewRestartDBInstancesRequest()
+    }
+    response = NewRestartDBInstancesResponse()
     err = c.Send(request, response)
     return
 }
@@ -984,6 +1288,31 @@ func (c *Client) UpgradeDBInstanceEngineVersion(request *UpgradeDBInstanceEngine
         request = NewUpgradeDBInstanceEngineVersionRequest()
     }
     response = NewUpgradeDBInstanceEngineVersionResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewVerifyRootAccountRequest() (request *VerifyRootAccountRequest) {
+    request = &VerifyRootAccountRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cdb", APIVersion, "VerifyRootAccount")
+    return
+}
+
+func NewVerifyRootAccountResponse() (response *VerifyRootAccountResponse) {
+    response = &VerifyRootAccountResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口(VerifyRootAccount)用于校验云数据库实例的ROOT账号是否有足够的权限进行授权操作。
+func (c *Client) VerifyRootAccount(request *VerifyRootAccountRequest) (response *VerifyRootAccountResponse, err error) {
+    if request == nil {
+        request = NewVerifyRootAccountRequest()
+    }
+    response = NewVerifyRootAccountResponse()
     err = c.Send(request, response)
     return
 }

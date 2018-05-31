@@ -20,6 +20,28 @@ import (
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
+type Account struct {
+	// 新账户的名称
+	User *string `json:"User" name:"User"`
+	// 新账户的域名
+	Host *string `json:"Host" name:"Host"`
+}
+
+type AccountInfo struct {
+	// 账号备注信息
+	Notes *string `json:"Notes" name:"Notes"`
+	// 账号的域名
+	Host *string `json:"Host" name:"Host"`
+	// 账号的名称
+	User *string `json:"User" name:"User"`
+	// 账号信息修改时间
+	ModifyTime *string `json:"ModifyTime" name:"ModifyTime"`
+	// 修改密码的时间
+	ModifyPasswordTime *string `json:"ModifyPasswordTime" name:"ModifyPasswordTime"`
+	// 账号的创建时间
+	CreateTime *string `json:"CreateTime" name:"CreateTime"`
+}
+
 type AssociateSecurityGroupsRequest struct {
 	*tchttp.BaseRequest
 	// 安全组Id。
@@ -52,6 +74,17 @@ func (r *AssociateSecurityGroupsResponse) ToJsonString() string {
 
 func (r *AssociateSecurityGroupsResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
+}
+
+type BackupConfig struct {
+	// 第二个从库复制方式，可能的返回值：aysnc-异步，semisync-半同步
+	ReplicationMode *string `json:"ReplicationMode" name:"ReplicationMode"`
+	// 第二个从库可用区的正式名称，如ap-shanghai-1
+	Zone *string `json:"Zone" name:"Zone"`
+	// 第二个从库内网IP地址
+	Vip *string `json:"Vip" name:"Vip"`
+	// 第二个从库访问端口
+	Vport *string `json:"Vport" name:"Vport"`
 }
 
 type BackupInfo struct {
@@ -123,6 +156,57 @@ func (r *CloseWanServiceResponse) ToJsonString() string {
 }
 
 func (r *CloseWanServiceResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ColumnPrivilege struct {
+	// 数据库名
+	Database *string `json:"Database" name:"Database"`
+	// 数据库表名
+	Table *string `json:"Table" name:"Table"`
+	// 数据库列名
+	Column *string `json:"Column" name:"Column"`
+	// 权限信息
+	Privileges []*string `json:"Privileges" name:"Privileges" list`
+}
+
+type CreateAccountsRequest struct {
+	*tchttp.BaseRequest
+	// 实例ID，格式如：cdb-c1nl9rpv，与云数据库控制台页面中显示的实例ID相同。
+	InstanceId *string `json:"InstanceId" name:"InstanceId"`
+	// 云数据库账号。
+	Accounts []*Account `json:"Accounts" name:"Accounts" list`
+	// 新账户的密码。
+	Password *string `json:"Password" name:"Password"`
+	// 备注信息。
+	Description *string `json:"Description" name:"Description"`
+}
+
+func (r *CreateAccountsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateAccountsRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateAccountsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+		// 异步任务的请求ID，可使用此ID查询异步任务的执行结果。
+		AsyncRequestId *string `json:"AsyncRequestId" name:"AsyncRequestId"`
+		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		RequestId *string `json:"RequestId" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateAccountsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateAccountsResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -360,9 +444,23 @@ func (r *CreateDBInstanceResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DBSwitchInfo struct {
+	// 切换时间，格式为：2017-09-03 01:34:31
+	SwitchTime *string `json:"SwitchTime" name:"SwitchTime"`
+	// 切换类型，可能的返回值为：TRANSFER - 数据迁移；MASTER2SLAVE - 主备切换；RECOVERY - 主从恢复
+	SwitchType *string `json:"SwitchType" name:"SwitchType"`
+}
+
 type DatabaseName struct {
 	// 数据库表名
 	DatabaseName *string `json:"DatabaseName" name:"DatabaseName"`
+}
+
+type DatabasePrivilege struct {
+	// 权限信息
+	Privileges []*string `json:"Privileges" name:"Privileges" list`
+	// 数据库名
+	Database *string `json:"Database" name:"Database"`
 }
 
 type DatabaseTableList struct {
@@ -370,6 +468,42 @@ type DatabaseTableList struct {
 	DatabaseName *string `json:"DatabaseName" name:"DatabaseName"`
 	// 数据表数组
 	TableList []*string `json:"TableList" name:"TableList" list`
+}
+
+type DeleteAccountsRequest struct {
+	*tchttp.BaseRequest
+	// 实例ID，格式如：cdb-c1nl9rpv，与云数据库控制台页面中显示的实例ID相同。
+	InstanceId *string `json:"InstanceId" name:"InstanceId"`
+	// 云数据库账号。
+	Accounts []*Account `json:"Accounts" name:"Accounts" list`
+}
+
+func (r *DeleteAccountsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteAccountsRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteAccountsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+		// 异步任务的请求ID，可使用此ID查询异步任务的执行结果。
+		AsyncRequestId *string `json:"AsyncRequestId" name:"AsyncRequestId"`
+		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		RequestId *string `json:"RequestId" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DeleteAccountsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteAccountsResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
 }
 
 type DeleteBackupRequest struct {
@@ -403,6 +537,90 @@ func (r *DeleteBackupResponse) ToJsonString() string {
 }
 
 func (r *DeleteBackupResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeAccountPrivilegesRequest struct {
+	*tchttp.BaseRequest
+	// 实例ID，格式如：cdb-c1nl9rpv，与云数据库控制台页面中显示的实例ID相同。
+	InstanceId *string `json:"InstanceId" name:"InstanceId"`
+	// 数据库的账号名称。
+	User *string `json:"User" name:"User"`
+	// 数据库的账号域名。
+	Host *string `json:"Host" name:"Host"`
+}
+
+func (r *DescribeAccountPrivilegesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeAccountPrivilegesRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeAccountPrivilegesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+		// 全局权限数组。
+		GlobalPrivileges []*string `json:"GlobalPrivileges" name:"GlobalPrivileges" list`
+		// 数据库权限数组。
+		DatabasePrivileges []*DatabasePrivilege `json:"DatabasePrivileges" name:"DatabasePrivileges" list`
+		// 数据库中的表权限数组。
+		TablePrivileges []*TablePrivilege `json:"TablePrivileges" name:"TablePrivileges" list`
+		// 数据库表中的列权限数组。
+		ColumnPrivileges []*ColumnPrivilege `json:"ColumnPrivileges" name:"ColumnPrivileges" list`
+		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		RequestId *string `json:"RequestId" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeAccountPrivilegesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeAccountPrivilegesResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeAccountsRequest struct {
+	*tchttp.BaseRequest
+	// 实例ID，格式如：cdb-c1nl9rpv，与云数据库控制台页面中显示的实例ID相同。
+	InstanceId *string `json:"InstanceId" name:"InstanceId"`
+	// 记录偏移量，默认值为0。
+	Offset *int64 `json:"Offset" name:"Offset"`
+	// 单次请求返回的数量，默认值为20，最大值为100。
+	Limit *int64 `json:"Limit" name:"Limit"`
+}
+
+func (r *DescribeAccountsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeAccountsRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeAccountsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+		// 符合查询条件的账号数量。
+		TotalCount *int64 `json:"TotalCount" name:"TotalCount"`
+		// 符合查询条件的账号详细信息。
+		Items []*AccountInfo `json:"Items" name:"Items" list`
+		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		RequestId *string `json:"RequestId" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeAccountsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeAccountsResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -734,6 +952,48 @@ func (r *DescribeDBInstanceCharsetResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeDBInstanceConfigRequest struct {
+	*tchttp.BaseRequest
+	// 实例ID，格式如：cdb-c1nl9rpv，与云数据库控制台页面中显示的实例ID相同。
+	InstanceId *string `json:"InstanceId" name:"InstanceId"`
+}
+
+func (r *DescribeDBInstanceConfigRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeDBInstanceConfigRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeDBInstanceConfigResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+		// 主库数据保护方式，主实例属性，可能的返回值：0-异步复制方式，1-半同步复制方式，2-强同步复制方式。
+		ProtectMode *int64 `json:"ProtectMode" name:"ProtectMode"`
+		// 主库部署方式，主实例属性，可能的返回值：0-单可用部署，1-多可用区部署。
+		DeployMode *int64 `json:"DeployMode" name:"DeployMode"`
+		// 主库可用区的正式名称，如ap-shanghai-1。
+		Zone *string `json:"Zone" name:"Zone"`
+		// 从库的配置信息。
+		SlaveConfig *SlaveConfig `json:"SlaveConfig" name:"SlaveConfig"`
+		// ECDB第二个从库的配置信息，只有ECDB实例才有这个字段。
+		BackupConfig *BackupConfig `json:"BackupConfig" name:"BackupConfig"`
+		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		RequestId *string `json:"RequestId" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeDBInstanceConfigResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeDBInstanceConfigResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeDBInstanceGTIDRequest struct {
 	*tchttp.BaseRequest
 	// 实例ID，格式如：cdb-c1nl9rpv，与云数据库控制台页面中显示的实例ID相同，可使用[查询实例列表](https://cloud.tencent.com/document/api/236/15872) 接口获取，其值为输出参数中字段 InstanceId 的值。
@@ -922,6 +1182,46 @@ func (r *DescribeDBSecurityGroupsResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeDBSwitchRecordsRequest struct {
+	*tchttp.BaseRequest
+	// 实例ID，格式如：cdb-c1nl9rpv或者cdbro-c1nl9rpv，与云数据库控制台页面中显示的实例ID相同。
+	InstanceId *string `json:"InstanceId" name:"InstanceId"`
+	// 分页参数，偏移量。
+	Offset *int64 `json:"Offset" name:"Offset"`
+	// 分页参数，单次请求数量限制。
+	Limit *int64 `json:"Limit" name:"Limit"`
+}
+
+func (r *DescribeDBSwitchRecordsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeDBSwitchRecordsRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeDBSwitchRecordsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+		// 实例切换记录的总数。
+		TotalCount *int64 `json:"TotalCount" name:"TotalCount"`
+		// 实例切换记录详情。
+		Items []*DBSwitchInfo `json:"Items" name:"Items" list`
+		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		RequestId *string `json:"RequestId" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeDBSwitchRecordsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeDBSwitchRecordsResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeDBZoneConfigRequest struct {
 	*tchttp.BaseRequest
 }
@@ -953,6 +1253,48 @@ func (r *DescribeDBZoneConfigResponse) ToJsonString() string {
 }
 
 func (r *DescribeDBZoneConfigResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeDatabasesRequest struct {
+	*tchttp.BaseRequest
+	// 实例ID，格式如：cdb-c1nl9rpv，与云数据库控制台页面中显示的实例ID相同。
+	InstanceId *string `json:"InstanceId" name:"InstanceId"`
+	// 偏移量，最小值为0。
+	Offset *int64 `json:"Offset" name:"Offset"`
+	// 单次请求数量，取值范围：[0-100]。
+	Limit *int64 `json:"Limit" name:"Limit"`
+	// 匹配数据库库名的正则表达式，规则同MySQL官网
+	DatabaseRegexp *string `json:"DatabaseRegexp" name:"DatabaseRegexp"`
+}
+
+func (r *DescribeDatabasesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeDatabasesRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeDatabasesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+		// 符合查询条件的实例总数。
+		TotalCount *int64 `json:"TotalCount" name:"TotalCount"`
+		// 返回的实例信息。
+		Items []*string `json:"Items" name:"Items" list`
+		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		RequestId *string `json:"RequestId" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeDatabasesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeDatabasesResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -1375,6 +1717,126 @@ type MasterInfo struct {
 	ExClusterName *string `json:"ExClusterName" name:"ExClusterName"`
 }
 
+type ModifyAccountDescriptionRequest struct {
+	*tchttp.BaseRequest
+	// 实例ID，格式如：cdb-c1nl9rpv，与云数据库控制台页面中显示的实例ID相同。
+	InstanceId *string `json:"InstanceId" name:"InstanceId"`
+	// 数据库账号的备注信息。
+	Description *string `json:"Description" name:"Description"`
+	// 云数据库账号。
+	Accounts []*Account `json:"Accounts" name:"Accounts" list`
+}
+
+func (r *ModifyAccountDescriptionRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyAccountDescriptionRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyAccountDescriptionResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+		// 异步任务的请求ID，可使用此ID查询异步任务的执行结果。
+		AsyncRequestId *string `json:"AsyncRequestId" name:"AsyncRequestId"`
+		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		RequestId *string `json:"RequestId" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifyAccountDescriptionResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyAccountDescriptionResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyAccountPasswordRequest struct {
+	*tchttp.BaseRequest
+	// 实例ID，格式如：cdb-c1nl9rpv，与云数据库控制台页面中显示的实例ID相同。
+	InstanceId *string `json:"InstanceId" name:"InstanceId"`
+	// 数据库账号的新密码。
+	NewPassword *string `json:"NewPassword" name:"NewPassword"`
+	// 云数据库账号。
+	Accounts []*Account `json:"Accounts" name:"Accounts" list`
+}
+
+func (r *ModifyAccountPasswordRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyAccountPasswordRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyAccountPasswordResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+		// 异步任务的请求ID，可使用此ID查询异步任务的执行结果。
+		AsyncRequestId *string `json:"AsyncRequestId" name:"AsyncRequestId"`
+		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		RequestId *string `json:"RequestId" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifyAccountPasswordResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyAccountPasswordResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyAccountPrivilegesRequest struct {
+	*tchttp.BaseRequest
+	// 实例ID，格式如：cdb-c1nl9rpv，与云数据库控制台页面中显示的实例ID相同。
+	InstanceId *string `json:"InstanceId" name:"InstanceId"`
+	// 数据库的账号，包括用户名和域名。
+	Accounts []*Account `json:"Accounts" name:"Accounts" list`
+	// 全局权限。其中，GlobalPrivileges 中权限的可选值为："SELECT","INSERT","UPDATE","DELETE","CREATE",	"DROP","REFERENCES","INDEX","ALTER","SHOW DATABASES","CREATE TEMPORARY TABLES","LOCK TABLES","EXECUTE","CREATE VIEW","SHOW VIEW","CREATE ROUTINE","ALTER ROUTINE","EVENT","TRIGGER"。
+	GlobalPrivileges []*string `json:"GlobalPrivileges" name:"GlobalPrivileges" list`
+	// 数据库的权限。Privileges权限的可选值为："SELECT","INSERT","UPDATE","DELETE","CREATE",	"DROP","REFERENCES","INDEX","ALTER","CREATE TEMPORARY TABLES","LOCK TABLES","EXECUTE","CREATE VIEW","SHOW VIEW","CREATE ROUTINE","ALTER ROUTINE","EVENT","TRIGGER"。
+	DatabasePrivileges []*DatabasePrivilege `json:"DatabasePrivileges" name:"DatabasePrivileges" list`
+	// 数据库中表的权限。Privileges权限的可选值为：权限的可选值为："SELECT","INSERT","UPDATE","DELETE","CREATE",	"DROP","REFERENCES","INDEX","ALTER","CREATE VIEW","SHOW VIEW", "TRIGGER"。
+	TablePrivileges []*TablePrivilege `json:"TablePrivileges" name:"TablePrivileges" list`
+	// 数据库表中列的权限。Privileges权限的可选值为："SELECT","INSERT","UPDATE","REFERENCES"。
+	ColumnPrivileges []*ColumnPrivilege `json:"ColumnPrivileges" name:"ColumnPrivileges" list`
+}
+
+func (r *ModifyAccountPrivilegesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyAccountPrivilegesRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyAccountPrivilegesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+		// 异步任务的请求ID，可使用此ID查询异步任务的执行结果。
+		AsyncRequestId *string `json:"AsyncRequestId" name:"AsyncRequestId"`
+		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		RequestId *string `json:"RequestId" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifyAccountPrivilegesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyAccountPrivilegesResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type ModifyBackupConfigRequest struct {
 	*tchttp.BaseRequest
 	// 实例ID，格式如：cdb-c1nl9rpv。与云数据库控制台页面中显示的实例ID相同。
@@ -1593,6 +2055,40 @@ func (r *ModifyInstanceParamResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type OpenDBInstanceGTIDRequest struct {
+	*tchttp.BaseRequest
+	// 实例ID，格式如：cdb-c1nl9rpv，与云数据库控制台页面中显示的实例ID相同。
+	InstanceId *string `json:"InstanceId" name:"InstanceId"`
+}
+
+func (r *OpenDBInstanceGTIDRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *OpenDBInstanceGTIDRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type OpenDBInstanceGTIDResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+		// 异步任务的请求ID，可使用此ID查询异步任务的执行结果。
+		AsyncRequestId *string `json:"AsyncRequestId" name:"AsyncRequestId"`
+		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		RequestId *string `json:"RequestId" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *OpenDBInstanceGTIDResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *OpenDBInstanceGTIDResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type OpenWanServiceRequest struct {
 	*tchttp.BaseRequest
 	// 实例ID，格式如：cdb-c1nl9rpv，与云数据库控制台页面中显示的实例ID相同，可使用[查询实例列表](https://cloud.tencent.com/document/api/236/15872) 接口获取，其值为输出参数中字段 InstanceId 的值
@@ -1665,6 +2161,40 @@ type RegionSellConf struct {
 	Region *string `json:"Region" name:"Region"`
 	// 可用区售卖配置
 	ZonesConf []*ZoneSellConf `json:"ZonesConf" name:"ZonesConf" list`
+}
+
+type RestartDBInstancesRequest struct {
+	*tchttp.BaseRequest
+	// 实例ID数组，格式如：cdb-c1nl9rpv，与云数据库控制台页面中显示的实例ID相同。
+	InstanceIds []*string `json:"InstanceIds" name:"InstanceIds" list`
+}
+
+func (r *RestartDBInstancesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *RestartDBInstancesRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type RestartDBInstancesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+		// 异步任务的请求ID，可使用此ID查询异步任务的执行结果。
+		AsyncRequestId *string `json:"AsyncRequestId" name:"AsyncRequestId"`
+		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		RequestId *string `json:"RequestId" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *RestartDBInstancesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *RestartDBInstancesResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
 }
 
 type RoGroup struct {
@@ -1752,6 +2282,13 @@ type SellType struct {
 	EngineVersion []*string `json:"EngineVersion" name:"EngineVersion" list`
 	// 售卖规格详细配置
 	Configs []*SellConfig `json:"Configs" name:"Configs" list`
+}
+
+type SlaveConfig struct {
+	// 从库复制方式，可能的返回值：aysnc-异步，semisync-半同步
+	ReplicationMode *string `json:"ReplicationMode" name:"ReplicationMode"`
+	// 从库可用区的正式名称，如ap-shanghai-1
+	Zone *string `json:"Zone" name:"Zone"`
 }
 
 type SlaveInfo struct {
@@ -1845,6 +2382,15 @@ type TableName struct {
 	TableName *string `json:"TableName" name:"TableName"`
 }
 
+type TablePrivilege struct {
+	// 数据库名
+	Database *string `json:"Database" name:"Database"`
+	// 数据库表名
+	Table *string `json:"Table" name:"Table"`
+	// 权限信息
+	Privileges []*string `json:"Privileges" name:"Privileges" list`
+}
+
 type UpgradeDBInstanceEngineVersionRequest struct {
 	*tchttp.BaseRequest
 	// 实例ID，格式如：cdb-c1nl9rpv或者cdbro-c1nl9rpv。与云数据库控制台页面中显示的实例ID相同，可使用[查询实例列表](https://cloud.tencent.com/document/api/236/15872) 接口获取，其值为输出参数中字段 InstanceId 的值
@@ -1936,6 +2482,42 @@ func (r *UpgradeDBInstanceResponse) ToJsonString() string {
 }
 
 func (r *UpgradeDBInstanceResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type VerifyRootAccountRequest struct {
+	*tchttp.BaseRequest
+	// 实例ID，格式如：cdb-c1nl9rpv，与云数据库控制台页面中显示的实例ID相同。
+	InstanceId *string `json:"InstanceId" name:"InstanceId"`
+	// 实例ROOT账号的密码。
+	Password *string `json:"Password" name:"Password"`
+}
+
+func (r *VerifyRootAccountRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *VerifyRootAccountRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type VerifyRootAccountResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+		// 异步任务的请求ID，可使用此ID查询异步任务的执行结果
+		AsyncRequestId *string `json:"AsyncRequestId" name:"AsyncRequestId"`
+		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		RequestId *string `json:"RequestId" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *VerifyRootAccountResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *VerifyRootAccountResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 

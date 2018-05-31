@@ -21,9 +21,9 @@ import (
 )
 
 type ActionTimer struct {
-	// 定时器
+	// 定时器名称，目前仅支持销毁一个值：TerminateInstances。
 	TimerAction *string `json:"TimerAction" name:"TimerAction"`
-	// 执行时间
+	// 执行时间，格式形如：2018/5/29 11:26:40,执行时间必须大于当前时间5分钟。
 	ActionTime *string `json:"ActionTime" name:"ActionTime"`
 	// 扩展数据
 	Externals *Externals `json:"Externals" name:"Externals"`
@@ -802,6 +802,48 @@ func (r *DescribeRegionsResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeZoneInstanceConfigInfosRequest struct {
+	*tchttp.BaseRequest
+	// 过滤条件。
+	// 
+	// <li> zone - String - 是否必填：否 -（过滤条件）按照可用区过滤。</li>
+	// 
+	// <li> instance-family String - 是否必填：否 -（过滤条件）按照机型系列过滤。按照实例机型系列过滤。实例机型系列形如：S1、I1、M1等。</li>
+	// 
+	// <li> instance-type - String - 是否必填：否 - （过滤条件）按照机型过滤。按照实例机型过滤。不同实例机型指定了不同的资源规格，具体取值可通过调用接口 DescribeInstanceTypeConfigs 来获得最新的规格表或参见实例类型描述。若不指定该参数，则默认机型为S1.SMALL1。</li>
+	// 
+	// <li> instance-charge-type - String - 是否必填：否 -（过滤条件）按照实例计费模式过滤。 (PREPAID：表示预付费，即包年包月 | POSTPAID_BY_HOUR：表示后付费，即按量计费 | CDHPAID：表示CDH付费，即只对CDH计费，不对CDH上的实例计费。 )  </li>
+	Filters []*Filter `json:"Filters" name:"Filters" list`
+}
+
+func (r *DescribeZoneInstanceConfigInfosRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeZoneInstanceConfigInfosRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeZoneInstanceConfigInfosResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+		// 可用区机型配置列表。
+		InstanceTypeQuotaSet []*InstanceTypeQuotaItem `json:"InstanceTypeQuotaSet" name:"InstanceTypeQuotaSet" list`
+		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		RequestId *string `json:"RequestId" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeZoneInstanceConfigInfosResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeZoneInstanceConfigInfosResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeZonesRequest struct {
 	*tchttp.BaseRequest
 }
@@ -882,6 +924,10 @@ type EnhancedService struct {
 type Externals struct {
 	// 释放地址
 	ReleaseAddress *bool `json:"ReleaseAddress" name:"ReleaseAddress"`
+	// 不支持的网络类型
+	UnsupportNetworks []*string `json:"UnsupportNetworks" name:"UnsupportNetworks" list`
+	// HDD本地存储属性
+	StorageBlockAttr *StorageBlock `json:"StorageBlockAttr" name:"StorageBlockAttr"`
 }
 
 type Filter struct {
@@ -1412,6 +1458,33 @@ type InstanceTypeConfig struct {
 	InstanceTypeState *string `json:"InstanceTypeState" name:"InstanceTypeState"`
 }
 
+type InstanceTypeQuotaItem struct {
+	// 可用区。
+	Zone *string `json:"Zone" name:"Zone"`
+	// 实例机型。
+	InstanceType *string `json:"InstanceType" name:"InstanceType"`
+	// 实例计费模式。取值范围： <br>*`PREPAID`：表示预付费，即包年包月 <br>* `POSTPAID_BY_HOUR`：表示后付费，即按量计费 * `CDHPAID`：[CDH](/document/product/416)付费，即只对[CDH(/document/product/416)]计费，不对[CDH](/document/product/416)上的实例计费。
+	InstanceChargeType *string `json:"InstanceChargeType" name:"InstanceChargeType"`
+	// 网卡类型，例如：25代表25G网卡
+	NetworkCard *int64 `json:"NetworkCard" name:"NetworkCard"`
+	// 扩展属性。
+	Externals *Externals `json:"Externals" name:"Externals"`
+	// 实例的CPU核数，单位：核。
+	Cpu *int64 `json:"Cpu" name:"Cpu"`
+	// 实例内存容量，单位：`GB`。
+	Memory *int64 `json:"Memory" name:"Memory"`
+	// 实例机型系列。
+	InstanceFamily *string `json:"InstanceFamily" name:"InstanceFamily"`
+	// 机型名称。
+	TypeName *string `json:"TypeName" name:"TypeName"`
+	// 本地磁盘规格列表。
+	LocalDiskTypeList []*LocalDiskType `json:"LocalDiskTypeList" name:"LocalDiskTypeList" list`
+	// 实例是否售卖。
+	Status *string `json:"Status" name:"Status"`
+	// 实例的售卖价格。
+	Price *ItemPrice `json:"Price" name:"Price"`
+}
+
 type InternetAccessible struct {
 	// 网络计费类型。取值范围：<br><li>BANDWIDTH_PREPAID：预付费按带宽结算<br><li>TRAFFIC_POSTPAID_BY_HOUR：流量按小时后付费<br><li>BANDWIDTH_POSTPAID_BY_HOUR：带宽按小时后付费<br><li>BANDWIDTH_PACKAGE：带宽包用户<br>默认取值：TRAFFIC_POSTPAID_BY_HOUR。
 	InternetChargeType *string `json:"InternetChargeType" name:"InternetChargeType"`
@@ -1465,6 +1538,17 @@ type KeyPair struct {
 	AssociatedInstanceIds []*string `json:"AssociatedInstanceIds" name:"AssociatedInstanceIds" list`
 	// 创建时间。按照`ISO8601`标准表示，并且使用`UTC`时间。格式为：`YYYY-MM-DDThh:mm:ssZ`。
 	CreatedTime *string `json:"CreatedTime" name:"CreatedTime"`
+}
+
+type LocalDiskType struct {
+	// 本地磁盘类型。
+	Type *string `json:"Type" name:"Type"`
+	// 本地磁盘属性。
+	PartitionType *string `json:"PartitionType" name:"PartitionType"`
+	// 本地磁盘最小值。
+	MinSize *int64 `json:"MinSize" name:"MinSize"`
+	// 本地磁盘最大值。
+	MaxSize *int64 `json:"MaxSize" name:"MaxSize"`
 }
 
 type LoginSettings struct {
@@ -2198,6 +2282,15 @@ func (r *StopInstancesResponse) ToJsonString() string {
 
 func (r *StopInstancesResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
+}
+
+type StorageBlock struct {
+	// HDD本地存储类型，值为：LOCAL_PRO.
+	Type *string `json:"Type" name:"Type"`
+	// HDD本地存储的最小容量
+	MinSize *int64 `json:"MinSize" name:"MinSize"`
+	// HDD本地存储的最大容量
+	MaxSize *int64 `json:"MaxSize" name:"MaxSize"`
 }
 
 type SyncImagesRequest struct {

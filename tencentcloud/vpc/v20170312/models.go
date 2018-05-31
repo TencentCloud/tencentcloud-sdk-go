@@ -314,6 +314,42 @@ func (r *CreateAddressTemplateResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type CreateCustomerGatewayRequest struct {
+	*tchttp.BaseRequest
+	// 对端网关名称，可任意命名，但不得超过60个字符。
+	CustomerGatewayName *string `json:"CustomerGatewayName" name:"CustomerGatewayName"`
+	// 对端网关公网IP。
+	IpAddress *string `json:"IpAddress" name:"IpAddress"`
+}
+
+func (r *CreateCustomerGatewayRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateCustomerGatewayRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateCustomerGatewayResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+		// 对端网关对象
+		CustomerGateway *CustomerGateway `json:"CustomerGateway" name:"CustomerGateway"`
+		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		RequestId *string `json:"RequestId" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateCustomerGatewayResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateCustomerGatewayResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type CreateNetworkInterfaceRequest struct {
 	*tchttp.BaseRequest
 	// VPC实例ID。可通过DescribeVpcs接口返回值中的VpcId获取。
@@ -656,6 +692,116 @@ func (r *CreateVpcResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type CreateVpnConnectionRequest struct {
+	*tchttp.BaseRequest
+	// VPC实例ID。可通过DescribeVpcs接口返回值中的VpcId获取。
+	VpcId *string `json:"VpcId" name:"VpcId"`
+	// VPN网关实例ID。
+	VpnGatewayId *string `json:"VpnGatewayId" name:"VpnGatewayId"`
+	// 对端网关ID，例如：cgw-2wqq41m9，可通过DescribeCustomerGateways接口查询对端网关。
+	CustomerGatewayId *string `json:"CustomerGatewayId" name:"CustomerGatewayId"`
+	// 通道名称，可任意命名，但不得超过60个字符。
+	VpnConnectionName *string `json:"VpnConnectionName" name:"VpnConnectionName"`
+	// 预共享密钥。
+	PreShareKey *string `json:"PreShareKey" name:"PreShareKey"`
+	// SPD策略组，例如：{"10.0.0.5/24":["172.123.10.5/16"]}，10.0.0.5/24是vpc内网段172.123.10.5/16是IDC网段。用户指定VPC内哪些网段可以和您IDC中哪些网段通信。
+	SecurityPolicyDatabases []*SecurityPolicyDatabase `json:"SecurityPolicyDatabases" name:"SecurityPolicyDatabases" list`
+	// IKE配置（Internet Key Exchange，因特网密钥交换），IKE具有一套自保护机制，用户配置网络安全协议
+	IKEOptionsSpecification *IKEOptionsSpecification `json:"IKEOptionsSpecification" name:"IKEOptionsSpecification"`
+	// IPSec配置，腾讯云提供IPSec安全会话设置
+	IPSECOptionsSpecification *IPSECOptionsSpecification `json:"IPSECOptionsSpecification" name:"IPSECOptionsSpecification"`
+}
+
+func (r *CreateVpnConnectionRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateVpnConnectionRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateVpnConnectionResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+		// 通道实例对象。
+		VpnConnection *VpnConnection `json:"VpnConnection" name:"VpnConnection"`
+		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		RequestId *string `json:"RequestId" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateVpnConnectionResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateVpnConnectionResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateVpnGatewayRequest struct {
+	*tchttp.BaseRequest
+	// VPC实例ID。可通过DescribeVpcs接口返回值中的VpcId获取。
+	VpcId *string `json:"VpcId" name:"VpcId"`
+	// VPN网关名称，最大长度不能超过60个字节。
+	VpnGatewayName *string `json:"VpnGatewayName" name:"VpnGatewayName"`
+	// VPN网关计费模式，PREPAID：表示预付费，即包年包月，POSTPAID_BY_HOUR：表示后付费，即按量计费。默认：POSTPAID_BY_HOUR，如果指定预付费模式，参数InstanceChargePrepaid必填。
+	InstanceChargeType *string `json:"InstanceChargeType" name:"InstanceChargeType"`
+	// 公网带宽设置。可选带宽规格：5, 10, 20, 50, 100；单位：Mbps
+	InternetMaxBandwidthOut *uint64 `json:"InternetMaxBandwidthOut" name:"InternetMaxBandwidthOut"`
+	// 预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月实例的购买时长、是否设置自动续费等属性。若指定实例的付费模式为预付费则该参数必传。
+	InstanceChargePrepaid *InstanceChargePrepaid `json:"InstanceChargePrepaid" name:"InstanceChargePrepaid"`
+}
+
+func (r *CreateVpnGatewayRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateVpnGatewayRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateVpnGatewayResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+		// VPN网关对象
+		VpnGateway *VpnGateway `json:"VpnGateway" name:"VpnGateway"`
+		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		RequestId *string `json:"RequestId" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateVpnGatewayResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateVpnGatewayResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CustomerGateway struct {
+	// 用户网关唯一ID
+	CustomerGatewayId *string `json:"CustomerGatewayId" name:"CustomerGatewayId"`
+	// 网关名称
+	CustomerGatewayName *string `json:"CustomerGatewayName" name:"CustomerGatewayName"`
+	// 公网地址
+	IpAddress *string `json:"IpAddress" name:"IpAddress"`
+	// 创建时间
+	CreatedTime *string `json:"CreatedTime" name:"CreatedTime"`
+}
+
+type CustomerGatewayVendor struct {
+	// 平台。
+	Platform *string `json:"Platform" name:"Platform"`
+	// 软件版本。
+	SoftwareVersion *string `json:"SoftwareVersion" name:"SoftwareVersion"`
+	// 供应商名称。
+	VendorName *string `json:"VendorName" name:"VendorName"`
+}
+
 type DeleteAddressTemplateGroupRequest struct {
 	*tchttp.BaseRequest
 	// IP地址模板集合实例ID，例如：ipmg-90cex8mq。
@@ -717,6 +863,38 @@ func (r *DeleteAddressTemplateResponse) ToJsonString() string {
 }
 
 func (r *DeleteAddressTemplateResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteCustomerGatewayRequest struct {
+	*tchttp.BaseRequest
+	// 对端网关ID，例如：cgw-2wqq41m9，可通过DescribeCustomerGateways接口查询对端网关。
+	CustomerGatewayId *string `json:"CustomerGatewayId" name:"CustomerGatewayId"`
+}
+
+func (r *DeleteCustomerGatewayRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteCustomerGatewayRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteCustomerGatewayResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		RequestId *string `json:"RequestId" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DeleteCustomerGatewayResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteCustomerGatewayResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -1012,6 +1190,72 @@ func (r *DeleteVpcResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DeleteVpnConnectionRequest struct {
+	*tchttp.BaseRequest
+	// VPN网关实例ID。
+	VpnGatewayId *string `json:"VpnGatewayId" name:"VpnGatewayId"`
+	// VPN通道实例ID。形如：vpnx-f49l6u0z。
+	VpnConnectionId *string `json:"VpnConnectionId" name:"VpnConnectionId"`
+}
+
+func (r *DeleteVpnConnectionRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteVpnConnectionRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteVpnConnectionResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		RequestId *string `json:"RequestId" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DeleteVpnConnectionResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteVpnConnectionResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteVpnGatewayRequest struct {
+	*tchttp.BaseRequest
+	// VPN网关实例ID。
+	VpnGatewayId *string `json:"VpnGatewayId" name:"VpnGatewayId"`
+}
+
+func (r *DeleteVpnGatewayRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteVpnGatewayRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteVpnGatewayResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		RequestId *string `json:"RequestId" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DeleteVpnGatewayResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteVpnGatewayResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeAddressQuotaRequest struct {
 	*tchttp.BaseRequest
 }
@@ -1068,6 +1312,10 @@ func (r *DescribeAddressTemplateGroupsRequest) FromJsonString(s string) error {
 type DescribeAddressTemplateGroupsResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
+		// 符合条件的实例数量。
+		TotalCount *uint64 `json:"TotalCount" name:"TotalCount"`
+		// IP地址模板。
+		AddressTemplateGroupSet []*AddressTemplateGroup `json:"AddressTemplateGroupSet" name:"AddressTemplateGroupSet" list`
 		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
@@ -1216,6 +1464,80 @@ func (r *DescribeClassicLinkInstancesResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeCustomerGatewayVendorsRequest struct {
+	*tchttp.BaseRequest
+}
+
+func (r *DescribeCustomerGatewayVendorsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeCustomerGatewayVendorsRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeCustomerGatewayVendorsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+		// 对端网关厂商信息对象。
+		CustomerGatewayVendorSet []*CustomerGatewayVendor `json:"CustomerGatewayVendorSet" name:"CustomerGatewayVendorSet" list`
+		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		RequestId *string `json:"RequestId" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeCustomerGatewayVendorsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeCustomerGatewayVendorsResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeCustomerGatewaysRequest struct {
+	*tchttp.BaseRequest
+	// 对端网关ID，例如：cgw-2wqq41m9。每次请求的实例的上限为100。参数不支持同时指定CustomerGatewayIds和Filters。
+	CustomerGatewayIds []*string `json:"CustomerGatewayIds" name:"CustomerGatewayIds" list`
+	// 过滤条件，详见下表：实例过滤条件表。每次请求的Filters的上限为10，Filter.Values的上限为5。参数不支持同时指定CustomerGatewayIds和Filters。
+	Filters []*Filter `json:"Filters" name:"Filters" list`
+	// 偏移量，默认为0。关于Offset的更进一步介绍请参考 API 简介中的相关小节。
+	Offset *uint64 `json:"Offset" name:"Offset"`
+	// 返回数量，默认为20，最大值为100。
+	Limit *uint64 `json:"Limit" name:"Limit"`
+}
+
+func (r *DescribeCustomerGatewaysRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeCustomerGatewaysRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeCustomerGatewaysResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+		// 对端网关对象列表
+		CustomerGatewaySet []*CustomerGateway `json:"CustomerGatewaySet" name:"CustomerGatewaySet" list`
+		// 符合条件的实例数量。
+		TotalCount *uint64 `json:"TotalCount" name:"TotalCount"`
+		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		RequestId *string `json:"RequestId" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeCustomerGatewaysResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeCustomerGatewaysResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeNetworkInterfacesRequest struct {
 	*tchttp.BaseRequest
 	// 弹性网卡实例ID查询。形如：eni-pxir56ns。每次请求的实例的上限为100。参数不支持同时指定NetworkInterfaceIds和Filters。
@@ -1273,7 +1595,7 @@ type DescribeRouteTablesRequest struct {
 	// <li>route-table-id - String - （过滤条件）路由表实例ID。</li>
 	// <li>route-table-name - String - （过滤条件）路由表名称。</li>
 	// <li>vpc-id - String - （过滤条件）VPC实例ID，形如：vpc-f49l6u0z。</li>
-	// <li>association.main - Boolean - （过滤条件）是否主路由表。</li>
+	// <li>association.main - String - （过滤条件）是否主路由表。</li>
 	Filters []*Filter `json:"Filters" name:"Filters" list`
 	// 偏移量。
 	Offset *string `json:"Offset" name:"Offset"`
@@ -1567,6 +1889,90 @@ func (r *DescribeVpcsResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeVpnConnectionsRequest struct {
+	*tchttp.BaseRequest
+	// VPN通道实例ID。形如：vpnx-f49l6u0z。每次请求的实例的上限为100。参数不支持同时指定VpnConnectionIds和Filters。
+	VpnConnectionIds []*string `json:"VpnConnectionIds" name:"VpnConnectionIds" list`
+	// 过滤条件，详见下表：实例过滤条件表。每次请求的Filters的上限为10，Filter.Values的上限为5。参数不支持同时指定VpnConnectionIds和Filters。
+	Filters []*Filter `json:"Filters" name:"Filters" list`
+	// 偏移量，默认为0。关于Offset的更进一步介绍请参考 API 简介中的相关小节。
+	Offset *uint64 `json:"Offset" name:"Offset"`
+	// 返回数量，默认为20，最大值为100。
+	Limit *uint64 `json:"Limit" name:"Limit"`
+}
+
+func (r *DescribeVpnConnectionsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeVpnConnectionsRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeVpnConnectionsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+		// 符合条件的实例数量。
+		TotalCount *uint64 `json:"TotalCount" name:"TotalCount"`
+		// VPN通道实例。
+		VpnConnectionSet []*VpnConnection `json:"VpnConnectionSet" name:"VpnConnectionSet" list`
+		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		RequestId *string `json:"RequestId" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeVpnConnectionsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeVpnConnectionsResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeVpnGatewaysRequest struct {
+	*tchttp.BaseRequest
+	// VPN网关实例ID。形如：vpngw-f49l6u0z。每次请求的实例的上限为100。参数不支持同时指定VpnGatewayIds和Filters。
+	VpnGatewayIds []*string `json:"VpnGatewayIds" name:"VpnGatewayIds" list`
+	// 过滤器对象属性
+	Filters []*FilterObject `json:"Filters" name:"Filters" list`
+	// 偏移量
+	Offset *uint64 `json:"Offset" name:"Offset"`
+	// 请求对象个数
+	Limit *uint64 `json:"Limit" name:"Limit"`
+}
+
+func (r *DescribeVpnGatewaysRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeVpnGatewaysRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeVpnGatewaysResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+		// 符合条件的实例数量。
+		TotalCount *uint64 `json:"TotalCount" name:"TotalCount"`
+		// VPN网关实例详细信息列表。
+		VpnGatewaySet []*VpnGateway `json:"VpnGatewaySet" name:"VpnGatewaySet" list`
+		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		RequestId *string `json:"RequestId" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeVpnGatewaysResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeVpnGatewaysResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DetachClassicLinkVpcRequest struct {
 	*tchttp.BaseRequest
 	// VPC实例ID。可通过DescribeVpcs接口返回值中的VpcId获取。
@@ -1669,6 +2075,46 @@ func (r *DisassociateAddressResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DownloadCustomerGatewayConfigurationRequest struct {
+	*tchttp.BaseRequest
+	// VPN网关实例ID。
+	VpnGatewayId *string `json:"VpnGatewayId" name:"VpnGatewayId"`
+	// VPN通道实例ID。形如：vpnx-f49l6u0z。
+	VpnConnectionId *string `json:"VpnConnectionId" name:"VpnConnectionId"`
+	// 对端网关厂商信息对象，可通过DescribeCustomerGatewayVendors获取。
+	CustomerGatewayVendor *CustomerGatewayVendor `json:"CustomerGatewayVendor" name:"CustomerGatewayVendor"`
+	// 通道接入设备物理接口名称。
+	InterfaceName *string `json:"InterfaceName" name:"InterfaceName"`
+}
+
+func (r *DownloadCustomerGatewayConfigurationRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DownloadCustomerGatewayConfigurationRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DownloadCustomerGatewayConfigurationResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+		// XML格式配置信息。
+		CustomerGatewayConfiguration *string `json:"CustomerGatewayConfiguration" name:"CustomerGatewayConfiguration"`
+		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		RequestId *string `json:"RequestId" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DownloadCustomerGatewayConfigurationResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DownloadCustomerGatewayConfigurationResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type Filter struct {
 	// 属性名称, 若存在多个Filter时，Filter间的关系为逻辑与（AND）关系。
 	Name *string `json:"Name" name:"Name"`
@@ -1683,11 +2129,172 @@ type FilterObject struct {
 	Values []*string `json:"Values" name:"Values" list`
 }
 
+type IKEOptionsSpecification struct {
+	// 加密算法，可选值：'3DES-CBC', 'AES-CBC-128', 'AES-CBS-192', 'AES-CBC-256', 'DES-CBC'，默认为3DES-CBC
+	PropoEncryAlgorithm *string `json:"PropoEncryAlgorithm" name:"PropoEncryAlgorithm"`
+	// 认证算法：可选值：'MD5', 'SHA1'，默认为MD5
+	PropoAuthenAlgorithm *string `json:"PropoAuthenAlgorithm" name:"PropoAuthenAlgorithm"`
+	// 协商模式：可选值：'AGGRESSIVE', 'MAIN'，默认为MAIN
+	ExchangeMode *string `json:"ExchangeMode" name:"ExchangeMode"`
+	// 本端标识类型：可选值：'ADDRESS', 'FQDN'，默认为ADDRESS
+	LocalIdentity *string `json:"LocalIdentity" name:"LocalIdentity"`
+	// 对端标识类型：可选值：'ADDRESS', 'FQDN'，默认为ADDRESS
+	RemoteIdentity *string `json:"RemoteIdentity" name:"RemoteIdentity"`
+	// 本端标识，当LocalIdentity选为ADDRESS时，LocalAddress必填。localAddress默认为vpn网关公网IP
+	LocalAddress *string `json:"LocalAddress" name:"LocalAddress"`
+	// 对端标识，当RemoteIdentity选为ADDRESS时，RemoteAddress必填
+	RemoteAddress *string `json:"RemoteAddress" name:"RemoteAddress"`
+	// 本端标识，当LocalIdentity选为FQDN时，LocalFqdnName必填
+	LocalFqdnName *string `json:"LocalFqdnName" name:"LocalFqdnName"`
+	// 对端标识，当remoteIdentity选为FQDN时，RemoteFqdnName必填
+	RemoteFqdnName *string `json:"RemoteFqdnName" name:"RemoteFqdnName"`
+	// DH group，指定IKE交换密钥时使用的DH组，可选值：'GROUP1', 'GROUP2', 'GROUP5', 'GROUP14', 'GROUP24'，
+	DhGroupName *string `json:"DhGroupName" name:"DhGroupName"`
+	// IKE SA Lifetime，单位：秒，设置IKE SA的生存周期，取值范围：60-604800
+	IKESaLifetimeSeconds *uint64 `json:"IKESaLifetimeSeconds" name:"IKESaLifetimeSeconds"`
+	// IKE版本
+	IKEVersion *string `json:"IKEVersion" name:"IKEVersion"`
+}
+
+type IPSECOptionsSpecification struct {
+	// 加密算法，可选值：'3DES-CBC', 'AES-CBC-128', 'AES-CBC-192', 'AES-CBC-256', 'DES-CBC', 'NULL'， 默认为AES-CBC-128
+	EncryptAlgorithm *string `json:"EncryptAlgorithm" name:"EncryptAlgorithm"`
+	// 认证算法：可选值：'MD5', 'SHA1'，默认为
+	IntegrityAlgorith *string `json:"IntegrityAlgorith" name:"IntegrityAlgorith"`
+	// IPsec SA lifetime(s)：单位秒，取值范围：180-604800
+	IPSECSaLifetimeSeconds *uint64 `json:"IPSECSaLifetimeSeconds" name:"IPSECSaLifetimeSeconds"`
+	// PFS：可选值：'NULL', 'DH-GROUP1', 'DH-GROUP2', 'DH-GROUP5', 'DH-GROUP14', 'DH-GROUP24'，默认为NULL
+	PfsDhGroup *string `json:"PfsDhGroup" name:"PfsDhGroup"`
+	// IPsec SA lifetime(KB)：单位KB，取值范围：2560-604800
+	IPSECSaLifetimeTraffic *uint64 `json:"IPSECSaLifetimeTraffic" name:"IPSECSaLifetimeTraffic"`
+}
+
+type InquiryPriceCreateVpnGatewayRequest struct {
+	*tchttp.BaseRequest
+	// VPN网关计费模式，PREPAID：表示预付费，即包年包月，POSTPAID_BY_HOUR：表示后付费，即按量计费。默认：POSTPAID_BY_HOUR，如果指定预付费模式，参数InstanceChargePrepaid必填。
+	InstanceChargeType *string `json:"InstanceChargeType" name:"InstanceChargeType"`
+	// 预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月实例的购买时长、是否设置自动续费等属性。若指定实例的付费模式为预付费则该参数必传。
+	InstanceChargePrepaid *InstanceChargePrepaid `json:"InstanceChargePrepaid" name:"InstanceChargePrepaid"`
+	// 公网带宽设置。可选带宽规格：5, 10, 20, 50, 100；单位：Mbps。
+	InternetMaxBandwidthOut *uint64 `json:"InternetMaxBandwidthOut" name:"InternetMaxBandwidthOut"`
+}
+
+func (r *InquiryPriceCreateVpnGatewayRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *InquiryPriceCreateVpnGatewayRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type InquiryPriceCreateVpnGatewayResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+		// 商品价格。
+		Price *Price `json:"Price" name:"Price"`
+		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		RequestId *string `json:"RequestId" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *InquiryPriceCreateVpnGatewayResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *InquiryPriceCreateVpnGatewayResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type InquiryPriceRenewVpnGatewayRequest struct {
+	*tchttp.BaseRequest
+	// VPN网关实例ID。
+	VpnGatewayId *string `json:"VpnGatewayId" name:"VpnGatewayId"`
+	// 预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月实例的购买时长、是否设置自动续费等属性。若指定实例的付费模式为预付费则该参数必传。
+	InstanceChargePrepaid *InstanceChargePrepaid `json:"InstanceChargePrepaid" name:"InstanceChargePrepaid"`
+}
+
+func (r *InquiryPriceRenewVpnGatewayRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *InquiryPriceRenewVpnGatewayRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type InquiryPriceRenewVpnGatewayResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+		// 商品价格。
+		Price *Price `json:"Price" name:"Price"`
+		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		RequestId *string `json:"RequestId" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *InquiryPriceRenewVpnGatewayResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *InquiryPriceRenewVpnGatewayResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type InquiryPriceResetVpnGatewayInternetMaxBandwidthRequest struct {
+	*tchttp.BaseRequest
+	// VPN网关实例ID。
+	VpnGatewayId *string `json:"VpnGatewayId" name:"VpnGatewayId"`
+	// 公网带宽设置。可选带宽规格：5, 10, 20, 50, 100；单位：Mbps。
+	InternetMaxBandwidthOut *uint64 `json:"InternetMaxBandwidthOut" name:"InternetMaxBandwidthOut"`
+}
+
+func (r *InquiryPriceResetVpnGatewayInternetMaxBandwidthRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *InquiryPriceResetVpnGatewayInternetMaxBandwidthRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type InquiryPriceResetVpnGatewayInternetMaxBandwidthResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+		// 商品价格。
+		Price *Price `json:"Price" name:"Price"`
+		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		RequestId *string `json:"RequestId" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *InquiryPriceResetVpnGatewayInternetMaxBandwidthResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *InquiryPriceResetVpnGatewayInternetMaxBandwidthResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type InstanceChargePrepaid struct {
 	// 购买实例的时长，单位：月。取值范围：1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 24, 36。
 	Period *uint64 `json:"Period" name:"Period"`
 	// 自动续费标识。取值范围： NOTIFY_AND_AUTO_RENEW：通知过期且自动续费， NOTIFY_AND_MANUAL_RENEW：通知过期不自动续费。默认：NOTIFY_AND_MANUAL_RENEW
 	RenewFlag *string `json:"RenewFlag" name:"RenewFlag"`
+}
+
+type ItemPrice struct {
+	// 按量计费后付费单价，单位：元。
+	UnitPrice *float64 `json:"UnitPrice" name:"UnitPrice"`
+	// 按量计费后付费计价单元，可取值范围： HOUR：表示计价单元是按每小时来计算。当前涉及该计价单元的场景有：实例按小时后付费（POSTPAID_BY_HOUR）、带宽按小时后付费（BANDWIDTH_POSTPAID_BY_HOUR）： GB：表示计价单元是按每GB来计算。当前涉及该计价单元的场景有：流量按小时后付费（TRAFFIC_POSTPAID_BY_HOUR）。
+	ChargeUnit *string `json:"ChargeUnit" name:"ChargeUnit"`
+	// 预付费商品的原价，单位：元。
+	OriginalPrice *float64 `json:"OriginalPrice" name:"OriginalPrice"`
+	// 预付费商品的折扣价，单位：元。
+	DiscountPrice *float64 `json:"DiscountPrice" name:"DiscountPrice"`
 }
 
 type MigrateNetworkInterfaceRequest struct {
@@ -1865,6 +2472,40 @@ func (r *ModifyAddressTemplateGroupAttributeResponse) ToJsonString() string {
 }
 
 func (r *ModifyAddressTemplateGroupAttributeResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyCustomerGatewayAttributeRequest struct {
+	*tchttp.BaseRequest
+	// 对端网关ID，例如：cgw-2wqq41m9，可通过DescribeCustomerGateways接口查询对端网关。
+	CustomerGatewayId *string `json:"CustomerGatewayId" name:"CustomerGatewayId"`
+	// 对端网关名称，可任意命名，但不得超过60个字符。
+	CustomerGatewayName *string `json:"CustomerGatewayName" name:"CustomerGatewayName"`
+}
+
+func (r *ModifyCustomerGatewayAttributeRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyCustomerGatewayAttributeRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyCustomerGatewayAttributeResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		RequestId *string `json:"RequestId" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifyCustomerGatewayAttributeResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyCustomerGatewayAttributeResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -2192,6 +2833,84 @@ func (r *ModifyVpcAttributeResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type ModifyVpnConnectionAttributeRequest struct {
+	*tchttp.BaseRequest
+	// VPN通道实例ID。形如：vpnx-f49l6u0z。
+	VpnConnectionId *string `json:"VpnConnectionId" name:"VpnConnectionId"`
+	// VPN通道名称，可任意命名，但不得超过60个字符。
+	VpnConnectionName *string `json:"VpnConnectionName" name:"VpnConnectionName"`
+	// 预共享密钥。
+	PreShareKey *string `json:"PreShareKey" name:"PreShareKey"`
+	// SPD策略组，例如：{"10.0.0.5/24":["172.123.10.5/16"]}，10.0.0.5/24是vpc内网段172.123.10.5/16是IDC网段。用户指定VPC内哪些网段可以和您IDC中哪些网段通信。
+	SecurityPolicyDatabases []*SecurityPolicyDatabase `json:"SecurityPolicyDatabases" name:"SecurityPolicyDatabases" list`
+	// IKE配置（Internet Key Exchange，因特网密钥交换），IKE具有一套自保护机制，用户配置网络安全协议。
+	IKEOptionsSpecification *IKEOptionsSpecification `json:"IKEOptionsSpecification" name:"IKEOptionsSpecification"`
+	// IPSec配置，腾讯云提供IPSec安全会话设置。
+	IPSECOptionsSpecification *IPSECOptionsSpecification `json:"IPSECOptionsSpecification" name:"IPSECOptionsSpecification"`
+}
+
+func (r *ModifyVpnConnectionAttributeRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyVpnConnectionAttributeRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyVpnConnectionAttributeResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		RequestId *string `json:"RequestId" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifyVpnConnectionAttributeResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyVpnConnectionAttributeResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyVpnGatewayAttributeRequest struct {
+	*tchttp.BaseRequest
+	// VPN网关实例ID。
+	VpnGatewayId *string `json:"VpnGatewayId" name:"VpnGatewayId"`
+	// VPN网关名称，最大长度不能超过60个字节。
+	VpnGatewayName *string `json:"VpnGatewayName" name:"VpnGatewayName"`
+	// VPN网关计费模式，目前只支持预付费（即包年包月）到后付费（即按量计费）的转换。即参数只支持：POSTPAID_BY_HOUR。
+	InstanceChargeType *string `json:"InstanceChargeType" name:"InstanceChargeType"`
+}
+
+func (r *ModifyVpnGatewayAttributeRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyVpnGatewayAttributeRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyVpnGatewayAttributeResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		RequestId *string `json:"RequestId" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifyVpnGatewayAttributeResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyVpnGatewayAttributeResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type NetworkInterface struct {
 	// 弹性网卡实例ID，例如：eni-f1xjkw1b。
 	NetworkInterfaceId *string `json:"NetworkInterfaceId" name:"NetworkInterfaceId"`
@@ -2219,6 +2938,13 @@ type NetworkInterface struct {
 	Zone *string `json:"Zone" name:"Zone"`
 	// 创建时间。
 	CreatedTime *string `json:"CreatedTime" name:"CreatedTime"`
+}
+
+type Price struct {
+	// 实例价格。
+	InstancePrice *ItemPrice `json:"InstancePrice" name:"InstancePrice"`
+	// 网络价格。
+	BandwidthPrice *ItemPrice `json:"BandwidthPrice" name:"BandwidthPrice"`
 }
 
 type PrivateIpAddressSpecification struct {
@@ -2277,9 +3003,43 @@ func (r *ReleaseAddressesResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type RenewVpnGatewayRequest struct {
+	*tchttp.BaseRequest
+	// VPN网关实例ID。
+	VpnGatewayId *string `json:"VpnGatewayId" name:"VpnGatewayId"`
+	// 预付费计费模式。
+	InstanceChargePrepaid *InstanceChargePrepaid `json:"InstanceChargePrepaid" name:"InstanceChargePrepaid"`
+}
+
+func (r *RenewVpnGatewayRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *RenewVpnGatewayRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type RenewVpnGatewayResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		RequestId *string `json:"RequestId" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *RenewVpnGatewayResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *RenewVpnGatewayResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type ReplaceRouteTableAssociationRequest struct {
 	*tchttp.BaseRequest
-	// 子网实例ID，例如：subnet-3x5lf5q0。可通过DescribeSubnetEx接口查询。
+	// 子网实例ID，例如：subnet-3x5lf5q0。可通过DescribeSubnets接口查询。
 	SubnetId *string `json:"SubnetId" name:"SubnetId"`
 	// 路由表实例ID，例如：rtb-azd4dt1c。
 	RouteTableId *string `json:"RouteTableId" name:"RouteTableId"`
@@ -2316,7 +3076,7 @@ type ReplaceRoutesRequest struct {
 	// 路由表实例ID，例如：rtb-azd4dt1c。
 	RouteTableId *string `json:"RouteTableId" name:"RouteTableId"`
 	// 路由策略对象。只需要指定路由策略ID（RouteId）。
-	Routes []*string `json:"Routes" name:"Routes" list`
+	Routes []*Route `json:"Routes" name:"Routes" list`
 }
 
 func (r *ReplaceRoutesRequest) ToJsonString() string {
@@ -2386,7 +3146,7 @@ type ResetRoutesRequest struct {
 	// 路由表名称，最大长度不能超过60个字节。
 	RouteTableName *string `json:"RouteTableName" name:"RouteTableName"`
 	// 路由策略。
-	Routes []*string `json:"Routes" name:"Routes" list`
+	Routes []*Route `json:"Routes" name:"Routes" list`
 }
 
 func (r *ResetRoutesRequest) ToJsonString() string {
@@ -2415,9 +3175,77 @@ func (r *ResetRoutesResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type ResetVpnConnectionRequest struct {
+	*tchttp.BaseRequest
+	// VPN网关实例ID。
+	VpnGatewayId *string `json:"VpnGatewayId" name:"VpnGatewayId"`
+	// VPN通道实例ID。形如：vpnx-f49l6u0z。
+	VpnConnectionId *string `json:"VpnConnectionId" name:"VpnConnectionId"`
+}
+
+func (r *ResetVpnConnectionRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ResetVpnConnectionRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ResetVpnConnectionResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		RequestId *string `json:"RequestId" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ResetVpnConnectionResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ResetVpnConnectionResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ResetVpnGatewayInternetMaxBandwidthRequest struct {
+	*tchttp.BaseRequest
+	// VPN网关实例ID。
+	VpnGatewayId *string `json:"VpnGatewayId" name:"VpnGatewayId"`
+	// 公网带宽设置。可选带宽规格：5, 10, 20, 50, 100；单位：Mbps。
+	InternetMaxBandwidthOut *uint64 `json:"InternetMaxBandwidthOut" name:"InternetMaxBandwidthOut"`
+}
+
+func (r *ResetVpnGatewayInternetMaxBandwidthRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ResetVpnGatewayInternetMaxBandwidthRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ResetVpnGatewayInternetMaxBandwidthResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		RequestId *string `json:"RequestId" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ResetVpnGatewayInternetMaxBandwidthResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ResetVpnGatewayInternetMaxBandwidthResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type Route struct {
 	// 路由策略ID。
-	RouteId *string `json:"RouteId" name:"RouteId"`
+	RouteId *uint64 `json:"RouteId" name:"RouteId"`
 	// 目的网段，取值不能在私有网络网段内，例如：112.20.51.0/24。
 	DestinationCidrBlock *string `json:"DestinationCidrBlock" name:"DestinationCidrBlock"`
 	// 下一跳类型，目前我们支持的类型有：CVM：公网网关类型的云主机；VPN：vpn网关； DIRECTCONNECT：专线网关；PEERCONNECTION：对等连接；SSLVPN：sslvpn网关；NAT：nat网关; NORMAL_CVM：普通云主机。
@@ -2497,6 +3325,13 @@ type SecurityGroupPolicySet struct {
 	Ingress []*SecurityGroupPolicy `json:"Ingress" name:"Ingress" list`
 }
 
+type SecurityPolicyDatabase struct {
+	// 本端网段
+	LocalCidrBlock *string `json:"LocalCidrBlock" name:"LocalCidrBlock"`
+	// 对端网段
+	RemoteCidrBlock []*string `json:"RemoteCidrBlock" name:"RemoteCidrBlock" list`
+}
+
 type ServiceTemplate struct {
 	// 协议端口实例ID，例如：ppm-f5n1f8da。
 	ServiceTemplateId *string `json:"ServiceTemplateId" name:"ServiceTemplateId"`
@@ -2538,6 +3373,8 @@ type Subnet struct {
 	RouteTableId *string `json:"RouteTableId" name:"RouteTableId"`
 	// 创建时间。
 	CreatedTime *string `json:"CreatedTime" name:"CreatedTime"`
+	// 可用IP数。
+	AvailableIpAddressCount *uint64 `json:"AvailableIpAddressCount" name:"AvailableIpAddressCount"`
 }
 
 type TransformAddressRequest struct {
@@ -2619,4 +3456,68 @@ type Vpc struct {
 	EnableMulticast *bool `json:"EnableMulticast" name:"EnableMulticast"`
 	// 创建时间。
 	CreatedTime *string `json:"CreatedTime" name:"CreatedTime"`
+}
+
+type VpnConnection struct {
+	// 通道实例ID。
+	VpnConnectionId *string `json:"VpnConnectionId" name:"VpnConnectionId"`
+	// 通道名称。
+	VpnConnectionName *string `json:"VpnConnectionName" name:"VpnConnectionName"`
+	// VPC实例ID。
+	VpcId *string `json:"VpcId" name:"VpcId"`
+	// VPN网关实例ID。
+	VpnGatewayId *string `json:"VpnGatewayId" name:"VpnGatewayId"`
+	// 对端网关实例ID。
+	CustomerGatewayId *string `json:"CustomerGatewayId" name:"CustomerGatewayId"`
+	// 预共享密钥。
+	PreShareKey *string `json:"PreShareKey" name:"PreShareKey"`
+	// 通道传输协议。
+	VpnProto *string `json:"VpnProto" name:"VpnProto"`
+	// 通道加密协议。
+	EncryptProto *string `json:"EncryptProto" name:"EncryptProto"`
+	// 路由类型。
+	RouteType *string `json:"RouteType" name:"RouteType"`
+	// 创建时间。
+	CreatedTime *string `json:"CreatedTime" name:"CreatedTime"`
+	// 通道的生产状态，PENDING：生产中，AVAILABLE：运行中，DELETING：删除中。
+	State *string `json:"State" name:"State"`
+	// 通道连接状态，AVAILABLE：已连接。
+	NetStatus *string `json:"NetStatus" name:"NetStatus"`
+	// SPD。
+	SecurityPolicyDatabaseSet []*SecurityPolicyDatabase `json:"SecurityPolicyDatabaseSet" name:"SecurityPolicyDatabaseSet" list`
+	// IKE选项。
+	IKEOptionsSpecification *IKEOptionsSpecification `json:"IKEOptionsSpecification" name:"IKEOptionsSpecification"`
+	// IPSEC选择。
+	IPSECOptionsSpecification *IPSECOptionsSpecification `json:"IPSECOptionsSpecification" name:"IPSECOptionsSpecification"`
+}
+
+type VpnGateway struct {
+	// 网关实例ID。
+	VpnGatewayId *string `json:"VpnGatewayId" name:"VpnGatewayId"`
+	// VPC实例ID。
+	VpcId *string `json:"VpcId" name:"VpcId"`
+	// 网关实例名称。
+	VpnGatewayName *string `json:"VpnGatewayName" name:"VpnGatewayName"`
+	// 网关实例类型：'IPSEC', 'SSL'。
+	Type *string `json:"Type" name:"Type"`
+	// 网关实例状态， 'PENDING'：生产中，'DELETING'：删除中，'AVAILABLE'：运行中。
+	State *string `json:"State" name:"State"`
+	// 网关公网IP。
+	PublicIpAddress *string `json:"PublicIpAddress" name:"PublicIpAddress"`
+	// 网关续费类型：'NOTIFY_AND_MANUAL_RENEW'：手动续费，'NOTIFY_AND_AUTO_RENEW'：自动续费
+	RenewFlag *string `json:"RenewFlag" name:"RenewFlag"`
+	// 网关付费类型：POSTPAID_BY_HOUR：按小时后付费，PREPAID：包年包月预付费，
+	InstanceChargeType *string `json:"InstanceChargeType" name:"InstanceChargeType"`
+	// 网关出带宽。
+	InternetMaxBandwidthOut *uint64 `json:"InternetMaxBandwidthOut" name:"InternetMaxBandwidthOut"`
+	// 创建时间。
+	CreatedTime *string `json:"CreatedTime" name:"CreatedTime"`
+	// 预付费网关过期时间。
+	ExpiredTime *string `json:"ExpiredTime" name:"ExpiredTime"`
+	// 公网IP是否被封堵。
+	IsAddressBlocked *bool `json:"IsAddressBlocked" name:"IsAddressBlocked"`
+	// 计费模式变更，PREPAID_TO_POSTPAID：包年包月预付费到期转按小时后付费。
+	NewPurchasePlan *string `json:"NewPurchasePlan" name:"NewPurchasePlan"`
+	// 网关计费装，PROTECTIVELY_ISOLATED：被安全隔离的实例，NORMAL：正常。
+	RestrictState *string `json:"RestrictState" name:"RestrictState"`
 }

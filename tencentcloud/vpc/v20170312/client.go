@@ -233,6 +233,31 @@ func (c *Client) CreateAddressTemplateGroup(request *CreateAddressTemplateGroupR
     return
 }
 
+func NewCreateCustomerGatewayRequest() (request *CreateCustomerGatewayRequest) {
+    request = &CreateCustomerGatewayRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "CreateCustomerGateway")
+    return
+}
+
+func NewCreateCustomerGatewayResponse() (response *CreateCustomerGatewayResponse) {
+    response = &CreateCustomerGatewayResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（CreateCustomerGateway）用于创建对端网关。
+func (c *Client) CreateCustomerGateway(request *CreateCustomerGatewayRequest) (response *CreateCustomerGatewayResponse, err error) {
+    if request == nil {
+        request = NewCreateCustomerGatewayRequest()
+    }
+    response = NewCreateCustomerGatewayResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateNetworkInterfaceRequest() (request *CreateNetworkInterfaceRequest) {
     request = &CreateNetworkInterfaceRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -483,6 +508,56 @@ func (c *Client) CreateVpc(request *CreateVpcRequest) (response *CreateVpcRespon
     return
 }
 
+func NewCreateVpnConnectionRequest() (request *CreateVpnConnectionRequest) {
+    request = &CreateVpnConnectionRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "CreateVpnConnection")
+    return
+}
+
+func NewCreateVpnConnectionResponse() (response *CreateVpnConnectionResponse) {
+    response = &CreateVpnConnectionResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（CreateVpnConnection）用于创建VPN通道。
+func (c *Client) CreateVpnConnection(request *CreateVpnConnectionRequest) (response *CreateVpnConnectionResponse, err error) {
+    if request == nil {
+        request = NewCreateVpnConnectionRequest()
+    }
+    response = NewCreateVpnConnectionResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateVpnGatewayRequest() (request *CreateVpnGatewayRequest) {
+    request = &CreateVpnGatewayRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "CreateVpnGateway")
+    return
+}
+
+func NewCreateVpnGatewayResponse() (response *CreateVpnGatewayResponse) {
+    response = &CreateVpnGatewayResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（CreateVpnGateways）用于创建VPN网关。
+func (c *Client) CreateVpnGateway(request *CreateVpnGatewayRequest) (response *CreateVpnGatewayResponse, err error) {
+    if request == nil {
+        request = NewCreateVpnGatewayRequest()
+    }
+    response = NewCreateVpnGatewayResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteAddressTemplateRequest() (request *DeleteAddressTemplateRequest) {
     request = &DeleteAddressTemplateRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -529,6 +604,31 @@ func (c *Client) DeleteAddressTemplateGroup(request *DeleteAddressTemplateGroupR
         request = NewDeleteAddressTemplateGroupRequest()
     }
     response = NewDeleteAddressTemplateGroupResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteCustomerGatewayRequest() (request *DeleteCustomerGatewayRequest) {
+    request = &DeleteCustomerGatewayRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "DeleteCustomerGateway")
+    return
+}
+
+func NewDeleteCustomerGatewayResponse() (response *DeleteCustomerGatewayResponse) {
+    response = &DeleteCustomerGatewayResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（DeleteCustomerGateway）用于删除对端网关。
+func (c *Client) DeleteCustomerGateway(request *DeleteCustomerGatewayRequest) (response *DeleteCustomerGatewayResponse, err error) {
+    if request == nil {
+        request = NewDeleteCustomerGatewayRequest()
+    }
+    response = NewDeleteCustomerGatewayResponse()
     err = c.Send(request, response)
     return
 }
@@ -767,6 +867,56 @@ func (c *Client) DeleteVpc(request *DeleteVpcRequest) (response *DeleteVpcRespon
     return
 }
 
+func NewDeleteVpnConnectionRequest() (request *DeleteVpnConnectionRequest) {
+    request = &DeleteVpnConnectionRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "DeleteVpnConnection")
+    return
+}
+
+func NewDeleteVpnConnectionResponse() (response *DeleteVpnConnectionResponse) {
+    response = &DeleteVpnConnectionResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口(DeleteVpnConnection)用于删除VPN通道。
+func (c *Client) DeleteVpnConnection(request *DeleteVpnConnectionRequest) (response *DeleteVpnConnectionResponse, err error) {
+    if request == nil {
+        request = NewDeleteVpnConnectionRequest()
+    }
+    response = NewDeleteVpnConnectionResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteVpnGatewayRequest() (request *DeleteVpnGatewayRequest) {
+    request = &DeleteVpnGatewayRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "DeleteVpnGateway")
+    return
+}
+
+func NewDeleteVpnGatewayResponse() (response *DeleteVpnGatewayResponse) {
+    response = &DeleteVpnGatewayResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（DeleteVpnGateway）用于删除VPN网关。目前只支持删除运行中的按量计费的IPSEC网关实例。
+func (c *Client) DeleteVpnGateway(request *DeleteVpnGatewayRequest) (response *DeleteVpnGatewayResponse, err error) {
+    if request == nil {
+        request = NewDeleteVpnGatewayRequest()
+    }
+    response = NewDeleteVpnGatewayResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeAddressQuotaRequest() (request *DescribeAddressQuotaRequest) {
     request = &DescribeAddressQuotaRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -889,6 +1039,56 @@ func (c *Client) DescribeClassicLinkInstances(request *DescribeClassicLinkInstan
         request = NewDescribeClassicLinkInstancesRequest()
     }
     response = NewDescribeClassicLinkInstancesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeCustomerGatewayVendorsRequest() (request *DescribeCustomerGatewayVendorsRequest) {
+    request = &DescribeCustomerGatewayVendorsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "DescribeCustomerGatewayVendors")
+    return
+}
+
+func NewDescribeCustomerGatewayVendorsResponse() (response *DescribeCustomerGatewayVendorsResponse) {
+    response = &DescribeCustomerGatewayVendorsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（DescribeCustomerGatewayVendors）用于查询可支持的对端网关厂商信息。
+func (c *Client) DescribeCustomerGatewayVendors(request *DescribeCustomerGatewayVendorsRequest) (response *DescribeCustomerGatewayVendorsResponse, err error) {
+    if request == nil {
+        request = NewDescribeCustomerGatewayVendorsRequest()
+    }
+    response = NewDescribeCustomerGatewayVendorsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeCustomerGatewaysRequest() (request *DescribeCustomerGatewaysRequest) {
+    request = &DescribeCustomerGatewaysRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "DescribeCustomerGateways")
+    return
+}
+
+func NewDescribeCustomerGatewaysResponse() (response *DescribeCustomerGatewaysResponse) {
+    response = &DescribeCustomerGatewaysResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（DescribeCustomerGateways）用于查询对端网关列表。
+func (c *Client) DescribeCustomerGateways(request *DescribeCustomerGatewaysRequest) (response *DescribeCustomerGatewaysResponse, err error) {
+    if request == nil {
+        request = NewDescribeCustomerGatewaysRequest()
+    }
+    response = NewDescribeCustomerGatewaysResponse()
     err = c.Send(request, response)
     return
 }
@@ -1093,6 +1293,56 @@ func (c *Client) DescribeVpcs(request *DescribeVpcsRequest) (response *DescribeV
     return
 }
 
+func NewDescribeVpnConnectionsRequest() (request *DescribeVpnConnectionsRequest) {
+    request = &DescribeVpnConnectionsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "DescribeVpnConnections")
+    return
+}
+
+func NewDescribeVpnConnectionsResponse() (response *DescribeVpnConnectionsResponse) {
+    response = &DescribeVpnConnectionsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+//  本接口（DescribeVpnConnections）查询VPN通道列表。
+func (c *Client) DescribeVpnConnections(request *DescribeVpnConnectionsRequest) (response *DescribeVpnConnectionsResponse, err error) {
+    if request == nil {
+        request = NewDescribeVpnConnectionsRequest()
+    }
+    response = NewDescribeVpnConnectionsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeVpnGatewaysRequest() (request *DescribeVpnGatewaysRequest) {
+    request = &DescribeVpnGatewaysRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "DescribeVpnGateways")
+    return
+}
+
+func NewDescribeVpnGatewaysResponse() (response *DescribeVpnGatewaysResponse) {
+    response = &DescribeVpnGatewaysResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（DescribeVpnGateways）用于查询VPN网关列表。
+func (c *Client) DescribeVpnGateways(request *DescribeVpnGatewaysRequest) (response *DescribeVpnGatewaysResponse, err error) {
+    if request == nil {
+        request = NewDescribeVpnGatewaysRequest()
+    }
+    response = NewDescribeVpnGatewaysResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDetachClassicLinkVpcRequest() (request *DetachClassicLinkVpcRequest) {
     request = &DetachClassicLinkVpcRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1166,6 +1416,106 @@ func (c *Client) DisassociateAddress(request *DisassociateAddressRequest) (respo
         request = NewDisassociateAddressRequest()
     }
     response = NewDisassociateAddressResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDownloadCustomerGatewayConfigurationRequest() (request *DownloadCustomerGatewayConfigurationRequest) {
+    request = &DownloadCustomerGatewayConfigurationRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "DownloadCustomerGatewayConfiguration")
+    return
+}
+
+func NewDownloadCustomerGatewayConfigurationResponse() (response *DownloadCustomerGatewayConfigurationResponse) {
+    response = &DownloadCustomerGatewayConfigurationResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口(DownloadCustomerGatewayConfiguration)用于下载VPN通道配置。
+func (c *Client) DownloadCustomerGatewayConfiguration(request *DownloadCustomerGatewayConfigurationRequest) (response *DownloadCustomerGatewayConfigurationResponse, err error) {
+    if request == nil {
+        request = NewDownloadCustomerGatewayConfigurationRequest()
+    }
+    response = NewDownloadCustomerGatewayConfigurationResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewInquiryPriceCreateVpnGatewayRequest() (request *InquiryPriceCreateVpnGatewayRequest) {
+    request = &InquiryPriceCreateVpnGatewayRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "InquiryPriceCreateVpnGateway")
+    return
+}
+
+func NewInquiryPriceCreateVpnGatewayResponse() (response *InquiryPriceCreateVpnGatewayResponse) {
+    response = &InquiryPriceCreateVpnGatewayResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（InquiryPriceCreateVpnGateway）用于创建VPN网关询价。
+func (c *Client) InquiryPriceCreateVpnGateway(request *InquiryPriceCreateVpnGatewayRequest) (response *InquiryPriceCreateVpnGatewayResponse, err error) {
+    if request == nil {
+        request = NewInquiryPriceCreateVpnGatewayRequest()
+    }
+    response = NewInquiryPriceCreateVpnGatewayResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewInquiryPriceRenewVpnGatewayRequest() (request *InquiryPriceRenewVpnGatewayRequest) {
+    request = &InquiryPriceRenewVpnGatewayRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "InquiryPriceRenewVpnGateway")
+    return
+}
+
+func NewInquiryPriceRenewVpnGatewayResponse() (response *InquiryPriceRenewVpnGatewayResponse) {
+    response = &InquiryPriceRenewVpnGatewayResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（InquiryPriceRenewVpnGateway）用于续费VPN网关询价。目前仅支持IPSEC类型网关的询价。
+func (c *Client) InquiryPriceRenewVpnGateway(request *InquiryPriceRenewVpnGatewayRequest) (response *InquiryPriceRenewVpnGatewayResponse, err error) {
+    if request == nil {
+        request = NewInquiryPriceRenewVpnGatewayRequest()
+    }
+    response = NewInquiryPriceRenewVpnGatewayResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewInquiryPriceResetVpnGatewayInternetMaxBandwidthRequest() (request *InquiryPriceResetVpnGatewayInternetMaxBandwidthRequest) {
+    request = &InquiryPriceResetVpnGatewayInternetMaxBandwidthRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "InquiryPriceResetVpnGatewayInternetMaxBandwidth")
+    return
+}
+
+func NewInquiryPriceResetVpnGatewayInternetMaxBandwidthResponse() (response *InquiryPriceResetVpnGatewayInternetMaxBandwidthResponse) {
+    response = &InquiryPriceResetVpnGatewayInternetMaxBandwidthResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（InquiryPriceResetVpnGatewayInternetMaxBandwidth）调整VPN网关带宽上限询价。
+func (c *Client) InquiryPriceResetVpnGatewayInternetMaxBandwidth(request *InquiryPriceResetVpnGatewayInternetMaxBandwidthRequest) (response *InquiryPriceResetVpnGatewayInternetMaxBandwidthResponse, err error) {
+    if request == nil {
+        request = NewInquiryPriceResetVpnGatewayInternetMaxBandwidthRequest()
+    }
+    response = NewInquiryPriceResetVpnGatewayInternetMaxBandwidthResponse()
     err = c.Send(request, response)
     return
 }
@@ -1294,6 +1644,31 @@ func (c *Client) ModifyAddressTemplateGroupAttribute(request *ModifyAddressTempl
         request = NewModifyAddressTemplateGroupAttributeRequest()
     }
     response = NewModifyAddressTemplateGroupAttributeResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyCustomerGatewayAttributeRequest() (request *ModifyCustomerGatewayAttributeRequest) {
+    request = &ModifyCustomerGatewayAttributeRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "ModifyCustomerGatewayAttribute")
+    return
+}
+
+func NewModifyCustomerGatewayAttributeResponse() (response *ModifyCustomerGatewayAttributeResponse) {
+    response = &ModifyCustomerGatewayAttributeResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（ModifyCustomerGatewayAttribute）用于修改对端网关信息。
+func (c *Client) ModifyCustomerGatewayAttribute(request *ModifyCustomerGatewayAttributeRequest) (response *ModifyCustomerGatewayAttributeResponse, err error) {
+    if request == nil {
+        request = NewModifyCustomerGatewayAttributeRequest()
+    }
+    response = NewModifyCustomerGatewayAttributeResponse()
     err = c.Send(request, response)
     return
 }
@@ -1532,6 +1907,56 @@ func (c *Client) ModifyVpcAttribute(request *ModifyVpcAttributeRequest) (respons
     return
 }
 
+func NewModifyVpnConnectionAttributeRequest() (request *ModifyVpnConnectionAttributeRequest) {
+    request = &ModifyVpnConnectionAttributeRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "ModifyVpnConnectionAttribute")
+    return
+}
+
+func NewModifyVpnConnectionAttributeResponse() (response *ModifyVpnConnectionAttributeResponse) {
+    response = &ModifyVpnConnectionAttributeResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（ModifyVpnConnectionAttribute）用于修改VPN通道。
+func (c *Client) ModifyVpnConnectionAttribute(request *ModifyVpnConnectionAttributeRequest) (response *ModifyVpnConnectionAttributeResponse, err error) {
+    if request == nil {
+        request = NewModifyVpnConnectionAttributeRequest()
+    }
+    response = NewModifyVpnConnectionAttributeResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyVpnGatewayAttributeRequest() (request *ModifyVpnGatewayAttributeRequest) {
+    request = &ModifyVpnGatewayAttributeRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "ModifyVpnGatewayAttribute")
+    return
+}
+
+func NewModifyVpnGatewayAttributeResponse() (response *ModifyVpnGatewayAttributeResponse) {
+    response = &ModifyVpnGatewayAttributeResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（ModifyVpnGatewayAttribute）用于修改VPN网关属性。
+func (c *Client) ModifyVpnGatewayAttribute(request *ModifyVpnGatewayAttributeRequest) (response *ModifyVpnGatewayAttributeResponse, err error) {
+    if request == nil {
+        request = NewModifyVpnGatewayAttributeRequest()
+    }
+    response = NewModifyVpnGatewayAttributeResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewReleaseAddressesRequest() (request *ReleaseAddressesRequest) {
     request = &ReleaseAddressesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1555,6 +1980,31 @@ func (c *Client) ReleaseAddresses(request *ReleaseAddressesRequest) (response *R
         request = NewReleaseAddressesRequest()
     }
     response = NewReleaseAddressesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewRenewVpnGatewayRequest() (request *RenewVpnGatewayRequest) {
+    request = &RenewVpnGatewayRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "RenewVpnGateway")
+    return
+}
+
+func NewRenewVpnGatewayResponse() (response *RenewVpnGatewayResponse) {
+    response = &RenewVpnGatewayResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（RenewVpnGateway）用于预付费（包年包月）VPN网关续费。目前只支持IPSEC网关。
+func (c *Client) RenewVpnGateway(request *RenewVpnGatewayRequest) (response *RenewVpnGatewayResponse, err error) {
+    if request == nil {
+        request = NewRenewVpnGatewayRequest()
+    }
+    response = NewRenewVpnGatewayResponse()
     err = c.Send(request, response)
     return
 }
@@ -1658,6 +2108,56 @@ func (c *Client) ResetRoutes(request *ResetRoutesRequest) (response *ResetRoutes
         request = NewResetRoutesRequest()
     }
     response = NewResetRoutesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewResetVpnConnectionRequest() (request *ResetVpnConnectionRequest) {
+    request = &ResetVpnConnectionRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "ResetVpnConnection")
+    return
+}
+
+func NewResetVpnConnectionResponse() (response *ResetVpnConnectionResponse) {
+    response = &ResetVpnConnectionResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口(ResetVpnConnection)用于重置VPN通道。
+func (c *Client) ResetVpnConnection(request *ResetVpnConnectionRequest) (response *ResetVpnConnectionResponse, err error) {
+    if request == nil {
+        request = NewResetVpnConnectionRequest()
+    }
+    response = NewResetVpnConnectionResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewResetVpnGatewayInternetMaxBandwidthRequest() (request *ResetVpnGatewayInternetMaxBandwidthRequest) {
+    request = &ResetVpnGatewayInternetMaxBandwidthRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "ResetVpnGatewayInternetMaxBandwidth")
+    return
+}
+
+func NewResetVpnGatewayInternetMaxBandwidthResponse() (response *ResetVpnGatewayInternetMaxBandwidthResponse) {
+    response = &ResetVpnGatewayInternetMaxBandwidthResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（ResetVpnGatewayInternetMaxBandwidth）调整VPN网关带宽上限。目前支持升级配置，如果是包年包月VPN网关需要在有效期内。
+func (c *Client) ResetVpnGatewayInternetMaxBandwidth(request *ResetVpnGatewayInternetMaxBandwidthRequest) (response *ResetVpnGatewayInternetMaxBandwidthResponse, err error) {
+    if request == nil {
+        request = NewResetVpnGatewayInternetMaxBandwidthRequest()
+    }
+    response = NewResetVpnGatewayInternetMaxBandwidthResponse()
     err = c.Send(request, response)
     return
 }
