@@ -195,7 +195,7 @@ func flatStructure(value reflect.Value, request Request, prefix string) (err err
 		} else if kind == reflect.Uint || kind == reflect.Uint64 {
 			request.GetParams()[key] = strconv.FormatUint(field.Uint(), 10)
 		} else if kind == reflect.Float64 {
-			request.GetParams()[key] = strconv.FormatFloat(field.Float(), 'f', 4, 64)
+			request.GetParams()[key] = strconv.FormatFloat(field.Float(), 'f', -1, 64)
 		} else if kind == reflect.Slice {
 			list := value.Field(i)
 			for j := 0; j < list.Len(); j++ {
@@ -218,7 +218,7 @@ func flatStructure(value reflect.Value, request Request, prefix string) (err err
 				} else if kind == reflect.Uint || kind == reflect.Uint64 {
 					request.GetParams()[key] = strconv.FormatUint(vj.Uint(), 10)
 				} else if kind == reflect.Float64 {
-					request.GetParams()[key] = strconv.FormatFloat(vj.Float(), 'f', 4, 64)
+					request.GetParams()[key] = strconv.FormatFloat(vj.Float(), 'f', -1, 64)
 				} else {
 					flatStructure(vj, request, key+".")
 				}
