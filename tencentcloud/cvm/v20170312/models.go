@@ -528,39 +528,6 @@ func (r *DescribeInstanceInternetBandwidthConfigsResponse) FromJsonString(s stri
     return json.Unmarshal([]byte(s), &r)
 }
 
-type DescribeInstanceOperationLogsRequest struct {
-	*tchttp.BaseRequest
-	// 每次请求的`Filters`的上限为1，`Filter.Values`的上限为1。
-	// Filters.1.Name目前支持“instance-id”，即根据实例 ID 过滤。实例 ID 形如：ins-1w2x3y4z。
-	Filters []*Filter `json:"Filters" name:"Filters" list`
-}
-
-func (r *DescribeInstanceOperationLogsRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-func (r *DescribeInstanceOperationLogsRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
-}
-
-type DescribeInstanceOperationLogsResponse struct {
-	*tchttp.BaseResponse
-	Response *struct {
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
-		RequestId *string `json:"RequestId" name:"RequestId"`
-	} `json:"Response"`
-}
-
-func (r *DescribeInstanceOperationLogsResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-func (r *DescribeInstanceOperationLogsResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
-}
-
 type DescribeInstanceTypeConfigsRequest struct {
 	*tchttp.BaseRequest
 	// 过滤条件。
@@ -880,7 +847,7 @@ func (r *DescribeZonesResponse) FromJsonString(s string) error {
 
 type DisassociateInstancesKeyPairsRequest struct {
 	*tchttp.BaseRequest
-	// 一个或多个待操作的实例ID，每次请求批量实例的上限为100。<br><br>可以通过以下方式获取可用的实例ID：<br><li>通过登录[控制台](https://console.cloud.tencent.com/cvm/index)查询实例ID。<br><li>通过调用接口 [DescribeInstances](https://cloud.tencent.com/document/api/213/15728) ，取返回信息中的 `InstanceId` 获取密钥对ID。
+	// 一个或多个待操作的实例ID，每次请求批量实例的上限为100。<br><br>可以通过以下方式获取可用的实例ID：<br><li>通过登录[控制台](https://console.cloud.tencent.com/cvm/index)查询实例ID。<br><li>通过调用接口 [DescribeInstances](https://cloud.tencent.com/document/api/213/15728) ，取返回信息中的 `InstanceId` 获取实例ID。
 	InstanceIds []*string `json:"InstanceIds" name:"InstanceIds" list`
 	// 密钥对ID列表，每次请求批量密钥对的上限为100。密钥对ID形如：`skey-11112222`。<br><br>可以通过以下方式获取可用的密钥ID：<br><li>通过登录[控制台](https://console.cloud.tencent.com/cvm/sshkey)查询密钥ID。<br><li>通过调用接口 [DescribeKeyPairs](https://cloud.tencent.com/document/api/213/15699) ，取返回信息中的 `KeyId` 获取密钥对ID。
 	KeyIds []*string `json:"KeyIds" name:"KeyIds" list`
@@ -1399,6 +1366,8 @@ type Instance struct {
 	SecurityGroupIds []*string `json:"SecurityGroupIds" name:"SecurityGroupIds" list`
 	// 实例登录设置。目前只返回实例所关联的密钥。
 	LoginSettings *LoginSettings `json:"LoginSettings" name:"LoginSettings"`
+	// 实例状态。取值范围：<br><li>PENDING：表示创建中<br></li><li>LAUNCH_FAILED：表示创建失败<br></li><li>RUNNING：表示运行中<br></li><li>STOPPED：表示关机<br></li><li>STARTING：表示开机中<br></li><li>STOPPING：表示关机中<br></li><li>REBOOTING：表示重启中<br></li><li>SHUTDOWN：表示停止待销毁<br></li><li>TERMINATING：表示销毁中。<br></li>
+	InstanceState *string `json:"InstanceState" name:"InstanceState"`
 }
 
 type InstanceChargePrepaid struct {
@@ -1674,6 +1643,8 @@ type ModifyInstancesAttributeRequest struct {
 	InstanceIds []*string `json:"InstanceIds" name:"InstanceIds" list`
 	// 实例名称。可任意命名，但不得超过60个字符。
 	InstanceName *string `json:"InstanceName" name:"InstanceName"`
+	// 指定实例的安全组Id列表。
+	SecurityGroups []*string `json:"SecurityGroups" name:"SecurityGroups" list`
 }
 
 func (r *ModifyInstancesAttributeRequest) ToJsonString() string {
@@ -2160,6 +2131,11 @@ type RunInstancesRequest struct {
 	ActionTimer *ActionTimer `json:"ActionTimer" name:"ActionTimer"`
 	// 标签描述列表。通过指定该参数可以同时绑定标签到相应的资源实例，当前仅支持绑定标签到云主机实例。
 	TagSpecification []*TagSpecification `json:"TagSpecification" name:"TagSpecification" list`
+	// 实例的市场相关选项，如竞价实例相关参数
+	InstanceMarketOptions *InstanceMarketOptionsRequest `json:"InstanceMarketOptions" name:"InstanceMarketOptions"`
+	// 提供给实例使用的用户数据，需要以 base64 方式编码，支持的最大数据大小为 16KB。关于获取此参数的详细介绍，请参阅[Windows](https://cloud.tencent.com/document/product/213/17526
+	// )和[Linux](https://cloud.tencent.com/document/product/213/17525)启动时运行命令。
+	UserData *string `json:"UserData" name:"UserData"`
 }
 
 func (r *RunInstancesRequest) ToJsonString() string {
@@ -2379,42 +2355,6 @@ func (r *TerminateInstancesResponse) ToJsonString() string {
 }
 
 func (r *TerminateInstancesResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
-}
-
-type UpdateInstanceVpcConfigRequest struct {
-	*tchttp.BaseRequest
-	// 待操作的实例ID。可通过[`DescribeInstances`](document/api/213/9388)接口返回值中的`InstanceId`获取。
-	InstanceId *string `json:"InstanceId" name:"InstanceId"`
-	// 私有网络相关信息配置。通过该参数指定私有网络的ID，子网ID，私有网络ip等信息。
-	VirtualPrivateCloud *VirtualPrivateCloud `json:"VirtualPrivateCloud" name:"VirtualPrivateCloud"`
-	// 是否对运行中的实例选择强制关机。默认为TRUE。
-	ForceStop *bool `json:"ForceStop" name:"ForceStop"`
-}
-
-func (r *UpdateInstanceVpcConfigRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-func (r *UpdateInstanceVpcConfigRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
-}
-
-type UpdateInstanceVpcConfigResponse struct {
-	*tchttp.BaseResponse
-	Response *struct {
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
-		RequestId *string `json:"RequestId" name:"RequestId"`
-	} `json:"Response"`
-}
-
-func (r *UpdateInstanceVpcConfigResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-func (r *UpdateInstanceVpcConfigResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 

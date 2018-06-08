@@ -390,31 +390,6 @@ func (c *Client) DescribeInstanceInternetBandwidthConfigs(request *DescribeInsta
     return
 }
 
-func NewDescribeInstanceOperationLogsRequest() (request *DescribeInstanceOperationLogsRequest) {
-    request = &DescribeInstanceOperationLogsRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    request.Init().WithApiInfo("cvm", APIVersion, "DescribeInstanceOperationLogs")
-    return
-}
-
-func NewDescribeInstanceOperationLogsResponse() (response *DescribeInstanceOperationLogsResponse) {
-    response = &DescribeInstanceOperationLogsResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    }
-    return
-}
-
-// 本接口（DescribeInstanceOperationLogs）查询指定实例操作记录。
-func (c *Client) DescribeInstanceOperationLogs(request *DescribeInstanceOperationLogsRequest) (response *DescribeInstanceOperationLogsResponse, err error) {
-    if request == nil {
-        request = NewDescribeInstanceOperationLogsRequest()
-    }
-    response = NewDescribeInstanceOperationLogsResponse()
-    err = c.Send(request, response)
-    return
-}
-
 func NewDescribeInstanceTypeConfigsRequest() (request *DescribeInstanceTypeConfigsRequest) {
     request = &DescribeInstanceTypeConfigsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1452,33 +1427,6 @@ func (c *Client) TerminateInstances(request *TerminateInstancesRequest) (respons
         request = NewTerminateInstancesRequest()
     }
     response = NewTerminateInstancesResponse()
-    err = c.Send(request, response)
-    return
-}
-
-func NewUpdateInstanceVpcConfigRequest() (request *UpdateInstanceVpcConfigRequest) {
-    request = &UpdateInstanceVpcConfigRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    request.Init().WithApiInfo("cvm", APIVersion, "UpdateInstanceVpcConfig")
-    return
-}
-
-func NewUpdateInstanceVpcConfigResponse() (response *UpdateInstanceVpcConfigResponse) {
-    response = &UpdateInstanceVpcConfigResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    }
-    return
-}
-
-// 本接口(UpdateInstanceVpcConfig)用于修改实例vpc属性，如私有网络ip。
-// * 此操作默认会关闭实例，完成后再启动。
-// * 不支持跨VpcId操作。
-func (c *Client) UpdateInstanceVpcConfig(request *UpdateInstanceVpcConfigRequest) (response *UpdateInstanceVpcConfigResponse, err error) {
-    if request == nil {
-        request = NewUpdateInstanceVpcConfigRequest()
-    }
-    response = NewUpdateInstanceVpcConfigResponse()
     err = c.Send(request, response)
     return
 }

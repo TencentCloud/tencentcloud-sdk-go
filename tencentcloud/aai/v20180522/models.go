@@ -30,13 +30,13 @@ type SentenceRecognitionRequest struct {
 	EngSerViceType *string `json:"EngSerViceType" name:"EngSerViceType"`
 	// 语音数据来源。0：语音 URL；1：语音数据（post body）。
 	SourceType *uint64 `json:"SourceType" name:"SourceType"`
-	// 语音 URL，公网可下载。当 SourceType 值为 0 时须填写该字段，为 1 时不填；URL 的长度大于 0，小于 2048。
+	// 语音 URL，公网可下载。当 SourceType 值为 0 时须填写该字段，为 1 时不填；URL 的长度大于 0，小于 2048，需进行urlencode编码。
 	Url *string `json:"Url" name:"Url"`
 	// 识别音频的音频格式（支持mp3,wav）。
 	VoiceFormat *string `json:"VoiceFormat" name:"VoiceFormat"`
 	// 用户端对此任务的唯一标识，用户自助生成，用于用户查找识别结果。
 	UsrAudioKey *string `json:"UsrAudioKey" name:"UsrAudioKey"`
-	// 语音数据，当SourceType 值为1时必须填写，为0可不写。
+	// 语音数据，当SourceType 值为1时必须填写，为0可不写。要base64编码
 	Data *string `json:"Data" name:"Data"`
 	// 数据长度，当 SourceType 值为1时必须填写，为0可不写。
 	DataLen *int64 `json:"DataLen" name:"DataLen"`

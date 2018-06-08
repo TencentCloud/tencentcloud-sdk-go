@@ -1633,6 +1633,40 @@ func (r *DescribeRouteTablesResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeSecurityGroupAssociationStatisticsRequest struct {
+	*tchttp.BaseRequest
+	// 安全实例ID，例如sg-33ocnj9n，可通过DescribeSecurityGroups获取。
+	SecurityGroupIds []*string `json:"SecurityGroupIds" name:"SecurityGroupIds" list`
+}
+
+func (r *DescribeSecurityGroupAssociationStatisticsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeSecurityGroupAssociationStatisticsRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeSecurityGroupAssociationStatisticsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+		// 安全组关联实例统计。
+		SecurityGroupAssociationStatisticsSet []*SecurityGroupAssociationStatistics `json:"SecurityGroupAssociationStatisticsSet" name:"SecurityGroupAssociationStatisticsSet" list`
+		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		RequestId *string `json:"RequestId" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeSecurityGroupAssociationStatisticsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeSecurityGroupAssociationStatisticsResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeSecurityGroupPoliciesRequest struct {
 	*tchttp.BaseRequest
 	// 安全组实例ID，例如：sg-33ocnj9n，可通过DescribeSecurityGroups获取。
@@ -3293,6 +3327,19 @@ type SecurityGroup struct {
 	IsDefault *bool `json:"IsDefault" name:"IsDefault"`
 	// 安全组创建时间。
 	CreatedTime *string `json:"CreatedTime" name:"CreatedTime"`
+}
+
+type SecurityGroupAssociationStatistics struct {
+	// 安全组实例ID。
+	SecurityGroupId *string `json:"SecurityGroupId" name:"SecurityGroupId"`
+	// 云主机实例数。
+	CVM *uint64 `json:"CVM" name:"CVM"`
+	// 数据库实例数。
+	CDB *uint64 `json:"CDB" name:"CDB"`
+	// 弹性网卡实例数。
+	ENI *uint64 `json:"ENI" name:"ENI"`
+	// 被安全组引用数。
+	SG *uint64 `json:"SG" name:"SG"`
 }
 
 type SecurityGroupPolicy struct {

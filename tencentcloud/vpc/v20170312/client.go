@@ -1143,6 +1143,31 @@ func (c *Client) DescribeRouteTables(request *DescribeRouteTablesRequest) (respo
     return
 }
 
+func NewDescribeSecurityGroupAssociationStatisticsRequest() (request *DescribeSecurityGroupAssociationStatisticsRequest) {
+    request = &DescribeSecurityGroupAssociationStatisticsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "DescribeSecurityGroupAssociationStatistics")
+    return
+}
+
+func NewDescribeSecurityGroupAssociationStatisticsResponse() (response *DescribeSecurityGroupAssociationStatisticsResponse) {
+    response = &DescribeSecurityGroupAssociationStatisticsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（DescribeSecurityGroupAssociationStatistics）用于查询安全组关联的实例统计。
+func (c *Client) DescribeSecurityGroupAssociationStatistics(request *DescribeSecurityGroupAssociationStatisticsRequest) (response *DescribeSecurityGroupAssociationStatisticsResponse, err error) {
+    if request == nil {
+        request = NewDescribeSecurityGroupAssociationStatisticsRequest()
+    }
+    response = NewDescribeSecurityGroupAssociationStatisticsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeSecurityGroupPoliciesRequest() (request *DescribeSecurityGroupPoliciesRequest) {
     request = &DescribeSecurityGroupPoliciesRequest{
         BaseRequest: &tchttp.BaseRequest{},
