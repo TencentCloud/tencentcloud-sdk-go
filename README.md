@@ -85,6 +85,7 @@ func main() {
 | 云服务器 | cvm |
 | 云硬盘 | cbs |
 | 无服务器云函数 | scf |
+| 容器实例服务 | cis |
 | 私有网络 | vpc |
 | 批量计算 | batch |
 | 数据库 MySQL | cdb |
@@ -92,7 +93,9 @@ func main() {
 | 数据库 PostgreSQL | postgres |
 | 分布式数据库 DCDB | dcdb |
 | Web 漏洞扫描 | cws |
+| 应用安全 | ms |
 | 加速物联网套件 | iot |
 | 智能语音服务 | aai |
 | 腾讯机器翻译 | tmt |
+| 电子合同服务 | ds |
 | 渠道合作伙伴 | partners |
