@@ -230,6 +230,8 @@ func (r *CreateBackupRequest) FromJsonString(s string) error {
 type CreateBackupResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
+		// 备份任务ID。
+		BackupId *uint64 `json:"BackupId" name:"BackupId"`
 		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
@@ -347,7 +349,7 @@ type CreateDBInstanceHourResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 		// 短订单ID，用于调用云API相关接口，如[获取订单信息](https://cloud.tencent.com/document/api/403/4392)
-		DealIds *string `json:"DealIds" name:"DealIds"`
+		DealIds []*string `json:"DealIds" name:"DealIds" list`
 		// 实例ID列表
 		InstanceIds []*string `json:"InstanceIds" name:"InstanceIds" list`
 		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
@@ -427,7 +429,7 @@ type CreateDBInstanceResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 		// 短订单ID，用于调用云API相关接口，如[获取订单信息](https://cloud.tencent.com/document/api/403/4392)
-		DealIds *string `json:"DealIds" name:"DealIds"`
+		DealIds []*string `json:"DealIds" name:"DealIds" list`
 		// 实例ID列表
 		InstanceIds []*string `json:"InstanceIds" name:"InstanceIds" list`
 		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
@@ -510,7 +512,7 @@ type DeleteBackupRequest struct {
 	*tchttp.BaseRequest
 	// 实例ID，格式如：cdb-c1nl9rpv。与云数据库控制台页面中显示的实例ID相同。
 	InstanceId *string `json:"InstanceId" name:"InstanceId"`
-	// 备份任务Id。
+	// 备份任务ID。该任务ID为[创建云数据库备份](https://cloud.tencent.com/document/api/236/15844)接口返回的任务ID。
 	BackupId *int64 `json:"BackupId" name:"BackupId"`
 }
 
@@ -757,7 +759,7 @@ type DescribeBackupTablesRequest struct {
 	// 指定的数据库名。
 	DatabaseName *string `json:"DatabaseName" name:"DatabaseName"`
 	// 要查询的数据表名前缀。
-	SearchTable []*string `json:"SearchTable" name:"SearchTable" list`
+	SearchTable *string `json:"SearchTable" name:"SearchTable"`
 	// 分页偏移。
 	Offset *int64 `json:"Offset" name:"Offset"`
 	// 分页大小，最大值为2000。
@@ -1981,9 +1983,9 @@ type ModifyDBInstanceVipVportRequest struct {
 	*tchttp.BaseRequest
 	// 实例ID，格式如：cdb-c1nl9rpv，与云数据库控制台页面中显示的实例ID相同，可使用[查询实例列表](https://cloud.tencent.com/document/api/236/15872) 接口获取，其值为输出参数中字段 InstanceId 的值。
 	InstanceId *string `json:"InstanceId" name:"InstanceId"`
-	// 目标IP。
+	// 目标IP。该参数和DstPort参数，两者必传一个。
 	DstIp *string `json:"DstIp" name:"DstIp"`
-	// 目标端口，支持范围为：[1024-65535]。
+	// 目标端口，支持范围为：[1024-65535]。该参数和DstIp参数，两者必传一个。
 	DstPort *int64 `json:"DstPort" name:"DstPort"`
 	// 私有网络统一ID。
 	UniqVpcId *string `json:"UniqVpcId" name:"UniqVpcId"`
@@ -2465,10 +2467,8 @@ func (r *UpgradeDBInstanceRequest) FromJsonString(s string) error {
 type UpgradeDBInstanceResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
-		// 短订单ID，用于调用云API相关接口，如[获取订单信息](https://cloud.tencent.com/document/api/403/4392)
+		// 订单ID，用于调用云API相关接口，如[获取订单信息](https://cloud.tencent.com/document/api/403/4392)
 		DealIds []*string `json:"DealIds" name:"DealIds" list`
-		// 长订单ID，用于反馈订单问题给腾讯云官方客服
-		DealNames []*string `json:"DealNames" name:"DealNames" list`
 		// 异步任务的请求ID，可使用此ID查询异步任务的执行结果
 		AsyncRequestId *string `json:"AsyncRequestId" name:"AsyncRequestId"`
 		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。

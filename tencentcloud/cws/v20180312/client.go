@@ -256,7 +256,7 @@ func NewDescribeSiteQuotaResponse() (response *DescribeSiteQuotaResponse) {
     return
 }
 
-// 本接口 (DescribeSiteQuota) 用于查询用户购买的站点总数和已使用数。
+// 本接口 (DescribeSiteQuota) 用于查询用户购买的扫描次数总数和已使用数。
 func (c *Client) DescribeSiteQuota(request *DescribeSiteQuotaRequest) (response *DescribeSiteQuotaResponse, err error) {
     if request == nil {
         request = NewDescribeSiteQuotaRequest()

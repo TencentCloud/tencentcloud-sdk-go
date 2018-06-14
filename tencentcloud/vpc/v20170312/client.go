@@ -258,6 +258,39 @@ func (c *Client) CreateCustomerGateway(request *CreateCustomerGatewayRequest) (r
     return
 }
 
+func NewCreateDefaultVpcRequest() (request *CreateDefaultVpcRequest) {
+    request = &CreateDefaultVpcRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "CreateDefaultVpc")
+    return
+}
+
+func NewCreateDefaultVpcResponse() (response *CreateDefaultVpcResponse) {
+    response = &CreateDefaultVpcResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口(CreateDefaultVpc)用于创建默认私有网络(VPC)。
+// 
+// 默认VPC适用于快速入门和启动公共实例，您可以像使用任何其他VPC一样使用默认VPC。如果你想创建标准VPC，即指定VPC名称、VPC网段、子网网段、子网可用区，请使用常规创建VPC接口(CreateVpc)
+// 
+// 正常情况，本接口并不一定生产默认VPC，而是根据用户账号的网络属性(DescribeAccountVpcAttributes)来决定的
+// * 支持基础网络（classic），返回VpcId为0
+// * 只支持VPC（only-vpc），生产默认VPC，并返回VPC信息
+// 
+// 你也可以通过 Force 参数，强制生产默认VPC
+func (c *Client) CreateDefaultVpc(request *CreateDefaultVpcRequest) (response *CreateDefaultVpcResponse, err error) {
+    if request == nil {
+        request = NewCreateDefaultVpcRequest()
+    }
+    response = NewCreateDefaultVpcResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateNetworkInterfaceRequest() (request *CreateNetworkInterfaceRequest) {
     request = &CreateNetworkInterfaceRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -913,6 +946,31 @@ func (c *Client) DeleteVpnGateway(request *DeleteVpnGatewayRequest) (response *D
         request = NewDeleteVpnGatewayRequest()
     }
     response = NewDeleteVpnGatewayResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeAccountAttributesRequest() (request *DescribeAccountAttributesRequest) {
+    request = &DescribeAccountAttributesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "DescribeAccountAttributes")
+    return
+}
+
+func NewDescribeAccountAttributesResponse() (response *DescribeAccountAttributesResponse) {
+    response = &DescribeAccountAttributesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口(DescribeAccountAttributes)用于查询用户账号私有属性。
+func (c *Client) DescribeAccountAttributes(request *DescribeAccountAttributesRequest) (response *DescribeAccountAttributesResponse, err error) {
+    if request == nil {
+        request = NewDescribeAccountAttributesRequest()
+    }
+    response = NewDescribeAccountAttributesResponse()
     err = c.Send(request, response)
     return
 }

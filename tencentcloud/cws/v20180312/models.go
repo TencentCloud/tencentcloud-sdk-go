@@ -66,6 +66,8 @@ type CreateSitesRequest struct {
 	*tchttp.BaseRequest
 	// 站点的url列表
 	Urls []*string `json:"Urls" name:"Urls" list`
+	// 访问网站的客户端标识
+	UserAgent *string `json:"UserAgent" name:"UserAgent"`
 }
 
 func (r *CreateSitesRequest) ToJsonString() string {
@@ -252,6 +254,8 @@ type DescribeConfigResponse struct {
 		CreatedAt *string `json:"CreatedAt" name:"CreatedAt"`
 		// 记录更新新建。
 		UpdatedAt *string `json:"UpdatedAt" name:"UpdatedAt"`
+		// 云用户appid。
+		Appid *uint64 `json:"Appid" name:"Appid"`
 		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
@@ -324,11 +328,11 @@ func (r *DescribeSiteQuotaRequest) FromJsonString(s string) error {
 type DescribeSiteQuotaResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
-		// 已购买的站点数。
+		// 已购买的扫描次数。
 		Total *uint64 `json:"Total" name:"Total"`
-		// 已使用的站点数。
+		// 已使用的扫描次数。
 		Used *uint64 `json:"Used" name:"Used"`
-		// 剩余可用的站点数。
+		// 剩余可用的扫描次数。
 		Available *uint64 `json:"Available" name:"Available"`
 		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
@@ -407,7 +411,7 @@ type DescribeSitesVerificationResponse struct {
 		// 验证信息数量。
 		TotalCount *uint64 `json:"TotalCount" name:"TotalCount"`
 		// 验证信息列表。
-		SitesVerification *SitesVerification `json:"SitesVerification" name:"SitesVerification"`
+		SitesVerification []*SitesVerification `json:"SitesVerification" name:"SitesVerification" list`
 		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
@@ -557,6 +561,16 @@ type ModifySiteAttributeRequest struct {
 	SiteId *uint64 `json:"SiteId" name:"SiteId"`
 	// 站点名称
 	Name *string `json:"Name" name:"Name"`
+	// 网站是否需要登录扫描：0-未知；-1-不需要；1-需要
+	NeedLogin *int64 `json:"NeedLogin" name:"NeedLogin"`
+	// 登录后的cookie
+	LoginCookie *string `json:"LoginCookie" name:"LoginCookie"`
+	// 用于测试cookie是否有效的URL
+	LoginCheckUrl *string `json:"LoginCheckUrl" name:"LoginCheckUrl"`
+	// 用于测试cookie是否有效的关键字
+	LoginCheckKw *string `json:"LoginCheckKw" name:"LoginCheckKw"`
+	// 禁止扫描器扫描的目录关键字
+	ScanDisallow *string `json:"ScanDisallow" name:"ScanDisallow"`
 }
 
 func (r *ModifySiteAttributeRequest) ToJsonString() string {
@@ -695,12 +709,24 @@ type Site struct {
 	LastScanNoticeNum *uint64 `json:"LastScanNoticeNum" name:"LastScanNoticeNum"`
 	// 扫描进度，百分比整数
 	Progress *uint64 `json:"Progress" name:"Progress"`
-	// 最近一次扫描各个类型风险漏洞数量，存储的是json对象
-	LastScanExtsCount *string `json:"LastScanExtsCount" name:"LastScanExtsCount"`
 	// 云用户appid。
 	Appid *uint64 `json:"Appid" name:"Appid"`
 	// 云用户标识。
 	Uin *string `json:"Uin" name:"Uin"`
+	// 网站是否需要登录扫描：0-未知；-1-不需要；1-需要。
+	NeedLogin *int64 `json:"NeedLogin" name:"NeedLogin"`
+	// 登录后的cookie。
+	LoginCookie *string `json:"LoginCookie" name:"LoginCookie"`
+	// 登录后的cookie是否有效：0-无效；1-有效。
+	LoginCookieValid *uint64 `json:"LoginCookieValid" name:"LoginCookieValid"`
+	// 用于测试cookie是否有效的URL。
+	LoginCheckUrl *string `json:"LoginCheckUrl" name:"LoginCheckUrl"`
+	// 用于测试cookie是否有效的关键字。
+	LoginCheckKw *string `json:"LoginCheckKw" name:"LoginCheckKw"`
+	// 禁止扫描器扫描的目录关键字。
+	ScanDisallow *string `json:"ScanDisallow" name:"ScanDisallow"`
+	// 访问网站的客户端标识。
+	UserAgent *string `json:"UserAgent" name:"UserAgent"`
 }
 
 type SitesVerification struct {
@@ -722,6 +748,10 @@ type SitesVerification struct {
 	Id *uint64 `json:"Id" name:"Id"`
 	// 云用户appid
 	Appid *uint64 `json:"Appid" name:"Appid"`
+	// 用于验证站点的url，即访问该url获取验证数据。
+	VerifyUrl *string `json:"VerifyUrl" name:"VerifyUrl"`
+	// 获取验证验证文件的url。
+	VerifyFileUrl *string `json:"VerifyFileUrl" name:"VerifyFileUrl"`
 }
 
 type VerifySitesRequest struct {
@@ -793,4 +823,8 @@ type Vul struct {
 	UpdatedAt *string `json:"UpdatedAt" name:"UpdatedAt"`
 	// 是否已经添加误报，0-否，1-是。
 	IsReported *uint64 `json:"IsReported" name:"IsReported"`
+	// 云用户appid。
+	Appid *uint64 `json:"Appid" name:"Appid"`
+	// 云用户标识。
+	Uin *string `json:"Uin" name:"Uin"`
 }

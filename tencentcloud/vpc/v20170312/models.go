@@ -20,6 +20,13 @@ import (
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
+type AccountAttribute struct {
+	// 属性名
+	AttributeName *string `json:"AttributeName" name:"AttributeName"`
+	// 属性值
+	AttributeValues []*string `json:"AttributeValues" name:"AttributeValues" list`
+}
+
 type Address struct {
 	// `EIP`的`ID`，是`EIP`的唯一标识。
 	AddressId *string `json:"AddressId" name:"AddressId"`
@@ -347,6 +354,42 @@ func (r *CreateCustomerGatewayResponse) ToJsonString() string {
 }
 
 func (r *CreateCustomerGatewayResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateDefaultVpcRequest struct {
+	*tchttp.BaseRequest
+	// 子网所在的可用区ID，不指定将随机选择可用区
+	Zone *string `json:"Zone" name:"Zone"`
+	// 是否强制返回默认VPC
+	Force *bool `json:"Force" name:"Force"`
+}
+
+func (r *CreateDefaultVpcRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateDefaultVpcRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateDefaultVpcResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+		// 默认VPC和子网ID
+		Vpc *DefaultVpcSubnet `json:"Vpc" name:"Vpc"`
+		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		RequestId *string `json:"RequestId" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateDefaultVpcResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateDefaultVpcResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -802,6 +845,13 @@ type CustomerGatewayVendor struct {
 	VendorName *string `json:"VendorName" name:"VendorName"`
 }
 
+type DefaultVpcSubnet struct {
+	// 默认VpcId
+	VpcId *string `json:"VpcId" name:"VpcId"`
+	// 默认SubnetId
+	SubnetId *string `json:"SubnetId" name:"SubnetId"`
+}
+
 type DeleteAddressTemplateGroupRequest struct {
 	*tchttp.BaseRequest
 	// IP地址模板集合实例ID，例如：ipmg-90cex8mq。
@@ -1253,6 +1303,38 @@ func (r *DeleteVpnGatewayResponse) ToJsonString() string {
 }
 
 func (r *DeleteVpnGatewayResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeAccountAttributesRequest struct {
+	*tchttp.BaseRequest
+}
+
+func (r *DescribeAccountAttributesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeAccountAttributesRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeAccountAttributesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+		// 用户账号私有属性对象
+		AccountAttributeSet []*AccountAttribute `json:"AccountAttributeSet" name:"AccountAttributeSet" list`
+		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		RequestId *string `json:"RequestId" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeAccountAttributesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeAccountAttributesResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -2967,11 +3049,22 @@ type NetworkInterface struct {
 	// 内网IP信息。
 	PrivateIpAddressSet []*PrivateIpAddressSpecification `json:"PrivateIpAddressSet" name:"PrivateIpAddressSet" list`
 	// 绑定的云服务器对象。
-	Attachment []*InstanceChargePrepaid `json:"Attachment" name:"Attachment" list`
+	Attachment *NetworkInterfaceAttachment `json:"Attachment" name:"Attachment"`
 	// 可用区。
 	Zone *string `json:"Zone" name:"Zone"`
 	// 创建时间。
 	CreatedTime *string `json:"CreatedTime" name:"CreatedTime"`
+}
+
+type NetworkInterfaceAttachment struct {
+	// 云主机实例ID。
+	InstanceId *string `json:"InstanceId" name:"InstanceId"`
+	// 网卡在云主机实例内的序号。
+	DeviceIndex *uint64 `json:"DeviceIndex" name:"DeviceIndex"`
+	// 云主机所有者账户信息。
+	InstanceAccountId *string `json:"InstanceAccountId" name:"InstanceAccountId"`
+	// 绑定时间。
+	AttachTime *string `json:"AttachTime" name:"AttachTime"`
 }
 
 type Price struct {
@@ -3340,6 +3433,8 @@ type SecurityGroupAssociationStatistics struct {
 	ENI *uint64 `json:"ENI" name:"ENI"`
 	// 被安全组引用数。
 	SG *uint64 `json:"SG" name:"SG"`
+	// 负载均衡实例数。
+	CLB *uint64 `json:"CLB" name:"CLB"`
 }
 
 type SecurityGroupPolicy struct {

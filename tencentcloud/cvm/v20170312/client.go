@@ -97,6 +97,31 @@ func (c *Client) AssociateInstancesKeyPairs(request *AssociateInstancesKeyPairsR
     return
 }
 
+func NewCreateDisasterRecoverGroupRequest() (request *CreateDisasterRecoverGroupRequest) {
+    request = &CreateDisasterRecoverGroupRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cvm", APIVersion, "CreateDisasterRecoverGroup")
+    return
+}
+
+func NewCreateDisasterRecoverGroupResponse() (response *CreateDisasterRecoverGroupResponse) {
+    response = &CreateDisasterRecoverGroupResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口 (CreateDisasterRecoverGroup)用于创建[分散置放群组](https://cloud.tencent.com/document/product/213/15486)。创建好的置放群组，可在[创建实例](https://cloud.tencent.com/document/api/213/15730)时指定。
+func (c *Client) CreateDisasterRecoverGroup(request *CreateDisasterRecoverGroupRequest) (response *CreateDisasterRecoverGroupResponse, err error) {
+    if request == nil {
+        request = NewCreateDisasterRecoverGroupRequest()
+    }
+    response = NewCreateDisasterRecoverGroupResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateImageRequest() (request *CreateImageRequest) {
     request = &CreateImageRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -148,6 +173,31 @@ func (c *Client) CreateKeyPair(request *CreateKeyPairRequest) (response *CreateK
         request = NewCreateKeyPairRequest()
     }
     response = NewCreateKeyPairResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteDisasterRecoverGroupsRequest() (request *DeleteDisasterRecoverGroupsRequest) {
+    request = &DeleteDisasterRecoverGroupsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cvm", APIVersion, "DeleteDisasterRecoverGroups")
+    return
+}
+
+func NewDeleteDisasterRecoverGroupsResponse() (response *DeleteDisasterRecoverGroupsResponse) {
+    response = &DeleteDisasterRecoverGroupsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口 (DeleteDisasterRecoverGroups)用于删除[分散置放群组](https://cloud.tencent.com/document/product/213/15486)。只有空的置放群组才能被删除，非空的群组需要先销毁组内所有云主机，才能执行删除操作，不然会产生删除置放群组失败的错误。
+func (c *Client) DeleteDisasterRecoverGroups(request *DeleteDisasterRecoverGroupsRequest) (response *DeleteDisasterRecoverGroupsResponse, err error) {
+    if request == nil {
+        request = NewDeleteDisasterRecoverGroupsRequest()
+    }
+    response = NewDeleteDisasterRecoverGroupsResponse()
     err = c.Send(request, response)
     return
 }
@@ -205,6 +255,56 @@ func (c *Client) DeleteKeyPairs(request *DeleteKeyPairsRequest) (response *Delet
         request = NewDeleteKeyPairsRequest()
     }
     response = NewDeleteKeyPairsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeDisasterRecoverGroupQuotaRequest() (request *DescribeDisasterRecoverGroupQuotaRequest) {
+    request = &DescribeDisasterRecoverGroupQuotaRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cvm", APIVersion, "DescribeDisasterRecoverGroupQuota")
+    return
+}
+
+func NewDescribeDisasterRecoverGroupQuotaResponse() (response *DescribeDisasterRecoverGroupQuotaResponse) {
+    response = &DescribeDisasterRecoverGroupQuotaResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口 (DescribeDisasterRecoverGroupQuota)用于查询[分散置放群组](https://cloud.tencent.com/document/product/213/15486)配额。
+func (c *Client) DescribeDisasterRecoverGroupQuota(request *DescribeDisasterRecoverGroupQuotaRequest) (response *DescribeDisasterRecoverGroupQuotaResponse, err error) {
+    if request == nil {
+        request = NewDescribeDisasterRecoverGroupQuotaRequest()
+    }
+    response = NewDescribeDisasterRecoverGroupQuotaResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeDisasterRecoverGroupsRequest() (request *DescribeDisasterRecoverGroupsRequest) {
+    request = &DescribeDisasterRecoverGroupsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cvm", APIVersion, "DescribeDisasterRecoverGroups")
+    return
+}
+
+func NewDescribeDisasterRecoverGroupsResponse() (response *DescribeDisasterRecoverGroupsResponse) {
+    response = &DescribeDisasterRecoverGroupsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口 (DescribeDisasterRecoverGroups)用于查询[分散置放群组](https://cloud.tencent.com/document/product/213/15486)信息。
+func (c *Client) DescribeDisasterRecoverGroups(request *DescribeDisasterRecoverGroupsRequest) (response *DescribeDisasterRecoverGroupsResponse, err error) {
+    if request == nil {
+        request = NewDescribeDisasterRecoverGroupsRequest()
+    }
+    response = NewDescribeDisasterRecoverGroupsResponse()
     err = c.Send(request, response)
     return
 }
@@ -848,6 +948,31 @@ func (c *Client) InquiryPriceRunInstances(request *InquiryPriceRunInstancesReque
         request = NewInquiryPriceRunInstancesRequest()
     }
     response = NewInquiryPriceRunInstancesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyDisasterRecoverGroupAttributeRequest() (request *ModifyDisasterRecoverGroupAttributeRequest) {
+    request = &ModifyDisasterRecoverGroupAttributeRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cvm", APIVersion, "ModifyDisasterRecoverGroupAttribute")
+    return
+}
+
+func NewModifyDisasterRecoverGroupAttributeResponse() (response *ModifyDisasterRecoverGroupAttributeResponse) {
+    response = &ModifyDisasterRecoverGroupAttributeResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口 (ModifyDisasterRecoverGroupAttribute)用于修改[分散置放群组](https://cloud.tencent.com/document/product/213/15486)属性。
+func (c *Client) ModifyDisasterRecoverGroupAttribute(request *ModifyDisasterRecoverGroupAttributeRequest) (response *ModifyDisasterRecoverGroupAttributeResponse, err error) {
+    if request == nil {
+        request = NewModifyDisasterRecoverGroupAttributeRequest()
+    }
+    response = NewModifyDisasterRecoverGroupAttributeResponse()
     err = c.Send(request, response)
     return
 }

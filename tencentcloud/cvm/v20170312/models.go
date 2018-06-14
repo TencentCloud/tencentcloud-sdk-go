@@ -23,7 +23,7 @@ import (
 type ActionTimer struct {
 	// 定时器名称，目前仅支持销毁一个值：TerminateInstances。
 	TimerAction *string `json:"TimerAction" name:"TimerAction"`
-	// 执行时间，格式形如：2018/5/29 11:26:40,执行时间必须大于当前时间5分钟。
+	// 执行时间，格式形如：2018-5-29 11:26:40,执行时间必须大于当前时间5分钟。
 	ActionTime *string `json:"ActionTime" name:"ActionTime"`
 	// 扩展数据
 	Externals *Externals `json:"Externals" name:"Externals"`
@@ -116,6 +116,52 @@ type ChargePrepaid struct {
 	RenewFlag *string `json:"RenewFlag" name:"RenewFlag"`
 }
 
+type CreateDisasterRecoverGroupRequest struct {
+	*tchttp.BaseRequest
+	// 分散置放群组名称，长度1-60个字符，支持中、英文。
+	Name *string `json:"Name" name:"Name"`
+	// 分散置放群组类型，取值范围：<br><li>HOST：物理机<br><li>SW：交换机<br><li>RACK：机架
+	Type *string `json:"Type" name:"Type"`
+}
+
+func (r *CreateDisasterRecoverGroupRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateDisasterRecoverGroupRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateDisasterRecoverGroupResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+		// 分散置放群组ID列表。
+		DisasterRecoverGroupId *string `json:"DisasterRecoverGroupId" name:"DisasterRecoverGroupId"`
+		// 分散置放群组类型，取值范围：<br><li>HOST：物理机<br><li>SW：交换机<br><li>RACK：机架
+		Type *string `json:"Type" name:"Type"`
+		// 分散置放群组名称，长度1-60个字符，支持中、英文。
+		Name *string `json:"Name" name:"Name"`
+		// 置放群组内可容纳的云主机数量。
+		CvmQuotaTotal *int64 `json:"CvmQuotaTotal" name:"CvmQuotaTotal"`
+		// 置放群组内已有的云主机数量。
+		CurrentNum *int64 `json:"CurrentNum" name:"CurrentNum"`
+		// 置放群组创建时间。
+		CreateTime *string `json:"CreateTime" name:"CreateTime"`
+		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		RequestId *string `json:"RequestId" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateDisasterRecoverGroupResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateDisasterRecoverGroupResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type CreateImageRequest struct {
 	*tchttp.BaseRequest
 	// 需要制作镜像的实例ID
@@ -200,10 +246,42 @@ func (r *CreateKeyPairResponse) FromJsonString(s string) error {
 type DataDisk struct {
 	// 数据盘类型。数据盘类型限制详见[CVM实例配置](/document/product/213/2177)。取值范围：<br><li>LOCAL_BASIC：本地硬盘<br><li>LOCAL_SSD：本地SSD硬盘<br><li>CLOUD_BASIC：普通云硬盘<br><li>CLOUD_PREMIUM：高性能云硬盘<br><li>CLOUD_SSD：SSD云硬盘<br><br>默认取值：LOCAL_BASIC。<br><br>该参数对`ResizeInstanceDisk`接口无效。
 	DiskType *string `json:"DiskType" name:"DiskType"`
-	// 系统盘ID。LOCAL_BASIC 和 LOCAL_SSD 类型没有ID。暂时不支持该参数。
+	// 数据盘ID。LOCAL_BASIC 和 LOCAL_SSD 类型没有ID。暂时不支持该参数。
 	DiskId *string `json:"DiskId" name:"DiskId"`
 	// 数据盘大小，单位：GB。最小调整步长为10G，不同数据盘类型取值范围不同，具体限制详见：[CVM实例配置](/document/product/213/2177)。默认值为0，表示不购买数据盘。更多限制详见产品文档。
 	DiskSize *int64 `json:"DiskSize" name:"DiskSize"`
+}
+
+type DeleteDisasterRecoverGroupsRequest struct {
+	*tchttp.BaseRequest
+	// 分散置放群组ID列表，可通过[DescribeDisasterRecoverGroups](https://cloud.tencent.com/document/api/213/17810)接口获取。
+	DisasterRecoverGroupIds []*string `json:"DisasterRecoverGroupIds" name:"DisasterRecoverGroupIds" list`
+}
+
+func (r *DeleteDisasterRecoverGroupsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteDisasterRecoverGroupsRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteDisasterRecoverGroupsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		RequestId *string `json:"RequestId" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DeleteDisasterRecoverGroupsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteDisasterRecoverGroupsResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
 }
 
 type DeleteImagesRequest struct {
@@ -267,6 +345,88 @@ func (r *DeleteKeyPairsResponse) ToJsonString() string {
 }
 
 func (r *DeleteKeyPairsResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeDisasterRecoverGroupQuotaRequest struct {
+	*tchttp.BaseRequest
+}
+
+func (r *DescribeDisasterRecoverGroupQuotaRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeDisasterRecoverGroupQuotaRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeDisasterRecoverGroupQuotaResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+		// 可创建置放群组数量的上限。
+		GroupQuota *int64 `json:"GroupQuota" name:"GroupQuota"`
+		// 当前用户已经创建的置放群组数量。
+		CurrentNum *int64 `json:"CurrentNum" name:"CurrentNum"`
+		// 物理机类型容灾组内实例的配额数。
+		CvmInHostGroupQuota *int64 `json:"CvmInHostGroupQuota" name:"CvmInHostGroupQuota"`
+		// 交换机类型容灾组内实例的配额数。
+		CvmInSwGroupQuota *int64 `json:"CvmInSwGroupQuota" name:"CvmInSwGroupQuota"`
+		// 机架类型容灾组内实例的配额数。
+		CvmInRackGroupQuota *int64 `json:"CvmInRackGroupQuota" name:"CvmInRackGroupQuota"`
+		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		RequestId *string `json:"RequestId" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeDisasterRecoverGroupQuotaResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeDisasterRecoverGroupQuotaResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeDisasterRecoverGroupsRequest struct {
+	*tchttp.BaseRequest
+	// 分散置放群组ID列表。
+	DisasterRecoverGroupIds []*string `json:"DisasterRecoverGroupIds" name:"DisasterRecoverGroupIds" list`
+	// 分散置放群组名称，支持模糊匹配。
+	Name *string `json:"Name" name:"Name"`
+	// 偏移量，默认为0。关于`Offset`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
+	Offset *int64 `json:"Offset" name:"Offset"`
+	// 返回数量，默认为20，最大值为100。关于`Limit`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
+	Limit *int64 `json:"Limit" name:"Limit"`
+}
+
+func (r *DescribeDisasterRecoverGroupsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeDisasterRecoverGroupsRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeDisasterRecoverGroupsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+		// 分散置放群组信息列表。
+		DisasterRecoverGroupSet []*DisasterRecoverGroup `json:"DisasterRecoverGroupSet" name:"DisasterRecoverGroupSet" list`
+		// 用户置放群组总量。
+		TotalCount *int64 `json:"TotalCount" name:"TotalCount"`
+		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		RequestId *string `json:"RequestId" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeDisasterRecoverGroupsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeDisasterRecoverGroupsResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -444,10 +604,10 @@ func (r *DescribeImportImageOsRequest) FromJsonString(s string) error {
 type DescribeImportImageOsResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
-		// 支持的导入镜像的操作系统类型
-		ImportImageOsListSupported []*string `json:"ImportImageOsListSupported" name:"ImportImageOsListSupported" list`
-		// 支持的导入镜像的操作系统版本
-		ImportImageOsVersionSupported []*string `json:"ImportImageOsVersionSupported" name:"ImportImageOsVersionSupported" list`
+		// 支持的导入镜像的操作系统类型。
+		ImportImageOsListSupported *ImageOsList `json:"ImportImageOsListSupported" name:"ImportImageOsListSupported"`
+		// 支持的导入镜像的操作系统版本。
+		ImportImageOsVersionSet []*OsVersion `json:"ImportImageOsVersionSet" name:"ImportImageOsVersionSet" list`
 		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
@@ -881,6 +1041,23 @@ func (r *DisassociateInstancesKeyPairsResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DisasterRecoverGroup struct {
+	// 分散置放群组id。
+	DisasterRecoverGroupId *string `json:"DisasterRecoverGroupId" name:"DisasterRecoverGroupId"`
+	// 分散置放群组名称，长度1-60个字符。
+	Name *string `json:"Name" name:"Name"`
+	// 分散置放群组类型，取值范围：<br><li>HOST：物理机<br><li>SW：交换机<br><li>RACK：机架
+	Type *string `json:"Type" name:"Type"`
+	// 分散置放群组内最大容纳云主机数量。
+	CvmQuotaTotal *int64 `json:"CvmQuotaTotal" name:"CvmQuotaTotal"`
+	// 分散置放群组内云主机当前数量。
+	CurrentNum *int64 `json:"CurrentNum" name:"CurrentNum"`
+	// 分散置放群组内，云主机id列表。
+	InstanceIds []*string `json:"InstanceIds" name:"InstanceIds" list`
+	// 分散置放群组创建时间。
+	CreateTime *string `json:"CreateTime" name:"CreateTime"`
+}
+
 type EnhancedService struct {
 	// 开启云安全服务。若不指定该参数，则默认开启云安全服务。
 	SecurityService *RunSecurityServiceEnabled `json:"SecurityService" name:"SecurityService"`
@@ -922,7 +1099,7 @@ type HostItem struct {
 	// cdh实例过期时间
 	ExpiredTime *string `json:"ExpiredTime" name:"ExpiredTime"`
 	// cdh实例上已创建云子机的实例id列表
-	InstanceIds *string `json:"InstanceIds" name:"InstanceIds"`
+	InstanceIds []*string `json:"InstanceIds" name:"InstanceIds" list`
 	// cdh实例状态
 	HostState *string `json:"HostState" name:"HostState"`
 	// cdh实例ip
@@ -971,6 +1148,13 @@ type Image struct {
 	ImageCreator *string `json:"ImageCreator" name:"ImageCreator"`
 	// 镜像来源
 	ImageSource *string `json:"ImageSource" name:"ImageSource"`
+}
+
+type ImageOsList struct {
+	// 支持的windows操作系统。
+	Windows []*string `json:"Windows" name:"Windows" list`
+	// 支持的linux操作系统
+	Linux []*string `json:"Linux" name:"Linux" list`
 }
 
 type ImportImageRequest struct {
@@ -1529,6 +1713,40 @@ type LoginSettings struct {
 	KeepImageLogin *string `json:"KeepImageLogin" name:"KeepImageLogin"`
 }
 
+type ModifyDisasterRecoverGroupAttributeRequest struct {
+	*tchttp.BaseRequest
+	// 分散置放群组ID，可使用[DescribeDisasterRecoverGroups](https://cloud.tencent.com/document/api/213/17810)接口获取。
+	DisasterRecoverGroupId *string `json:"DisasterRecoverGroupId" name:"DisasterRecoverGroupId"`
+	// 分散置放群组名称，长度1-60个字符，支持中、英文。
+	Name *string `json:"Name" name:"Name"`
+}
+
+func (r *ModifyDisasterRecoverGroupAttributeRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyDisasterRecoverGroupAttributeRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyDisasterRecoverGroupAttributeResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		RequestId *string `json:"RequestId" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifyDisasterRecoverGroupAttributeResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyDisasterRecoverGroupAttributeResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type ModifyHostsAttributeRequest struct {
 	*tchttp.BaseRequest
 	// 一个或多个待操作的CDH实例ID。
@@ -1775,6 +1993,13 @@ func (r *ModifyKeyPairAttributeResponse) ToJsonString() string {
 
 func (r *ModifyKeyPairAttributeResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
+}
+
+type OsVersion struct {
+	// 操作系统类型
+	OsName *string `json:"OsName" name:"OsName"`
+	// 支持的操作系统版本
+	OsVersions []*string `json:"OsVersions" name:"OsVersions" list`
 }
 
 type Placement struct {
@@ -2304,7 +2529,7 @@ func (r *SyncImagesResponse) FromJsonString(s string) error {
 }
 
 type SystemDisk struct {
-	// 系统盘类型。系统盘类型限制详见[CVM实例配置](/document/product/213/2177)。取值范围：<br><li>LOCAL_BASIC：本地硬盘<br><li>LOCAL_SSD：本地SSD硬盘<br><li>CLOUD_BASIC：普通云硬盘<br><li>CLOUD_SSD：SSD云硬盘<br><br>默认取值：LOCAL_BASIC。
+	// 系统盘类型。系统盘类型限制详见[CVM实例配置](/document/product/213/2177)。取值范围：<br><li>LOCAL_BASIC：本地硬盘<br><li>LOCAL_SSD：本地SSD硬盘<br><li>CLOUD_BASIC：普通云硬盘<br><li>CLOUD_SSD：SSD云硬盘<br><li>CLOUD_PREMIUM：高效云硬盘<br><br>默认取值：LOCAL_BASIC。
 	DiskType *string `json:"DiskType" name:"DiskType"`
 	// 系统盘ID。LOCAL_BASIC 和 LOCAL_SSD 类型没有ID。暂时不支持该参数。
 	DiskId *string `json:"DiskId" name:"DiskId"`
@@ -2361,7 +2586,7 @@ func (r *TerminateInstancesResponse) FromJsonString(s string) error {
 type VirtualPrivateCloud struct {
 	// 私有网络ID，形如`vpc-xxx`。有效的VpcId可通过登录[控制台](https://console.cloud.tencent.com/vpc/vpc?rid=1)查询；也可以调用接口 [DescribeVpcEx](/document/api/215/1372) ，从接口返回中的`unVpcId`字段获取。
 	VpcId *string `json:"VpcId" name:"VpcId"`
-	// 私有网络子网ID，形如`subnet-xxx`。有效的私有网络子网ID可通过登录[控制台](https://console.cloud.tencent.com/vpc/subnet?rid=1)查询；也可以调用接口  [DescribeSubnetEx](/document/api/215/1371) ，从接口返回中的`unSubnetId`字段获取。
+	// 私有网络子网ID，形如`subnet-xxx`。有效的私有网络子网ID可通过登录[控制台](https://console.cloud.tencent.com/vpc/subnet?rid=1)查询；也可以调用接口  [DescribeSubnets](/document/api/215/15784) ，从接口返回中的`unSubnetId`字段获取。
 	SubnetId *string `json:"SubnetId" name:"SubnetId"`
 	// 是否用作公网网关。公网网关只有在实例拥有公网IP以及处于私有网络下时才能正常使用。取值范围：<br><li>TRUE：表示用作公网网关<br><li>FALSE：表示不用作公网网关<br><br>默认取值：FALSE。
 	AsVpcGateway *bool `json:"AsVpcGateway" name:"AsVpcGateway"`
