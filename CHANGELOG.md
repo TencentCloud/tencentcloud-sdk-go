@@ -1,3 +1,12 @@
+## 3.0.7 (2018-06-14)
+
+* update apis
+	* batch
+	* cdb
+	* cvm
+	* cws
+	* vpc
+
 ## 3.0.6 (2018-06-08)
 
 * api new
