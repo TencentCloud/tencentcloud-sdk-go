@@ -1,3 +1,7 @@
+## latest
+
+* add predefined region info
+
 ## 3.0.7 (2018-06-14)
 
 * update apis

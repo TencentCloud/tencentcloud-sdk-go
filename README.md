@@ -40,6 +40,7 @@ import (
         "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
         "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/errors"
         "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
+        "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/regions"
         cvm "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cvm/v20170312"
 )
 
@@ -57,7 +58,8 @@ func main() {
         cpf.SignMethod = "HmacSHA1"
 
         // 实例化要请求产品(以cvm为例)的client对象
-        client, _ := cvm.NewClient(credential, "ap-beijing", cpf)
+        // 第二个参数是地域信息，可以直接填写字符串ap-guangzhou，或者引用预设的常量
+        client, _ := cvm.NewClient(credential, regions.Guangzhou, cpf)
         // 实例化一个请求对象，根据调用的接口和实际情况，可以进一步设置请求参数
         request := cvm.NewDescribeZonesRequest()
         // 通过client对象调用想要访问的接口，需要传入请求对象
