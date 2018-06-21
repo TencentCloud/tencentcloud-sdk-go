@@ -210,7 +210,7 @@ type CreateSealRequest struct {
 	Operation *string `json:"Operation" name:"Operation"`
 	// 帐号ID
 	AccountResId *string `json:"AccountResId" name:"AccountResId"`
-	// 签章链接
+	// 签章链接，图片必须为png格式
 	ImgUrl *string `json:"ImgUrl" name:"ImgUrl"`
 }
 
@@ -448,7 +448,7 @@ type SignContractByCoordinateRequest struct {
 	ContractResId *string `json:"ContractResId" name:"ContractResId"`
 	// 帐户ID
 	AccountResId *string `json:"AccountResId" name:"AccountResId"`
-	// 授权时间，格式20160801095509
+	// 授权时间，格式为年月日时分秒，例20160801095509
 	AuthorizationTime *string `json:"AuthorizationTime" name:"AuthorizationTime"`
 	// 授权IP地址
 	Position *string `json:"Position" name:"Position"`
@@ -484,9 +484,78 @@ func (r *SignContractByCoordinateResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type SignContractByKeywordRequest struct {
+	*tchttp.BaseRequest
+	// 模块名
+	Module *string `json:"Module" name:"Module"`
+	// 操作名
+	Operation *string `json:"Operation" name:"Operation"`
+	// 合同ID
+	ContractResId *string `json:"ContractResId" name:"ContractResId"`
+	// 账户ID
+	AccountResId *string `json:"AccountResId" name:"AccountResId"`
+	// 授权时间，格式为年月日时分秒，例20160801095509
+	AuthorizationTime *string `json:"AuthorizationTime" name:"AuthorizationTime"`
+	// 授权IP地址
+	Position *string `json:"Position" name:"Position"`
+	// 签章ID
+	SealResId *string `json:"SealResId" name:"SealResId"`
+	// 签署关键字，坐标和范围不得超过合同文件边界
+	SignKeyword *SignKeyword `json:"SignKeyword" name:"SignKeyword"`
+}
+
+func (r *SignContractByKeywordRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *SignContractByKeywordRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type SignContractByKeywordResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		RequestId *string `json:"RequestId" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *SignContractByKeywordResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *SignContractByKeywordResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type SignInfo struct {
 	// 账户ID
 	AccountResId *string `json:"AccountResId" name:"AccountResId"`
+	// 授权时间，格式为年月日时分秒，例20160801095509
+	AuthorizationTime *string `json:"AuthorizationTime" name:"AuthorizationTime"`
+	// 授权IP地址
+	Location *string `json:"Location" name:"Location"`
+	// 签章ID
+	SealId *string `json:"SealId" name:"SealId"`
+	// 签名图片，优先级比SealId高
+	ImageData *string `json:"ImageData" name:"ImageData"`
+	// 默认值：1  表示RSA证书， 2 表示国密证书， 参数不传时默认为1
+	CertType *int64 `json:"CertType" name:"CertType"`
+}
+
+type SignKeyword struct {
+	// 关键字
+	Keyword *string `json:"Keyword" name:"Keyword"`
+	// X轴偏移坐标
+	OffsetCoordX *string `json:"OffsetCoordX" name:"OffsetCoordX"`
+	// Y轴偏移坐标
+	OffsetCoordY *string `json:"OffsetCoordY" name:"OffsetCoordY"`
+	// 签章突破宽度
+	ImageWidth *string `json:"ImageWidth" name:"ImageWidth"`
+	// 签章图片高度
+	ImageHeight *string `json:"ImageHeight" name:"ImageHeight"`
 }
 
 type SignLocation struct {

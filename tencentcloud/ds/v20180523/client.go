@@ -317,3 +317,28 @@ func (c *Client) SignContractByCoordinate(request *SignContractByCoordinateReque
     err = c.Send(request, response)
     return
 }
+
+func NewSignContractByKeywordRequest() (request *SignContractByKeywordRequest) {
+    request = &SignContractByKeywordRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ds", APIVersion, "SignContractByKeyword")
+    return
+}
+
+func NewSignContractByKeywordResponse() (response *SignContractByKeywordResponse) {
+    response = &SignContractByKeywordResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 此接口适用于：客户平台在创建好合同后，由合同签署方对创建的合同内容进行确认，无误后再进行签署。客户平台使用该接口对PDF合同文档按照关键字和坐标进行签署。
+func (c *Client) SignContractByKeyword(request *SignContractByKeywordRequest) (response *SignContractByKeywordResponse, err error) {
+    if request == nil {
+        request = NewSignContractByKeywordRequest()
+    }
+    response = NewSignContractByKeywordResponse()
+    err = c.Send(request, response)
+    return
+}

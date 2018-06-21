@@ -374,7 +374,7 @@ func NewDescribeImageSharePermissionResponse() (response *DescribeImageSharePerm
     return
 }
 
-// 本接口（ModifyImageSharePermission）用于修改镜像分享信息。
+// 本接口（DescribeImageSharePermission）用于查询镜像分享信息。
 func (c *Client) DescribeImageSharePermission(request *DescribeImageSharePermissionRequest) (response *DescribeImageSharePermissionResponse, err error) {
     if request == nil {
         request = NewDescribeImageSharePermissionRequest()
@@ -785,6 +785,34 @@ func (c *Client) ImportKeyPair(request *ImportKeyPairRequest) (response *ImportK
     return
 }
 
+func NewInquiryPriceModifyInstancesChargeTypeRequest() (request *InquiryPriceModifyInstancesChargeTypeRequest) {
+    request = &InquiryPriceModifyInstancesChargeTypeRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cvm", APIVersion, "InquiryPriceModifyInstancesChargeType")
+    return
+}
+
+func NewInquiryPriceModifyInstancesChargeTypeResponse() (response *InquiryPriceModifyInstancesChargeTypeResponse) {
+    response = &InquiryPriceModifyInstancesChargeTypeResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口 (InquiryPriceModifyInstancesChargeType) 用于切换实例的计费模式询价。
+// 
+// * 只支持从 `POSTPAID_BY_HOUR` 计费模式切换为`PREPAID`计费模式。
+// * 关机不收费的实例、`BC1`和`BS1`机型族的实例、设置定时销毁的实例不支持该操作。
+func (c *Client) InquiryPriceModifyInstancesChargeType(request *InquiryPriceModifyInstancesChargeTypeRequest) (response *InquiryPriceModifyInstancesChargeTypeResponse, err error) {
+    if request == nil {
+        request = NewInquiryPriceModifyInstancesChargeTypeRequest()
+    }
+    response = NewInquiryPriceModifyInstancesChargeTypeResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewInquiryPriceRenewInstancesRequest() (request *InquiryPriceRenewInstancesRequest) {
     request = &InquiryPriceRenewInstancesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1083,6 +1111,34 @@ func (c *Client) ModifyInstancesAttribute(request *ModifyInstancesAttributeReque
         request = NewModifyInstancesAttributeRequest()
     }
     response = NewModifyInstancesAttributeResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyInstancesChargeTypeRequest() (request *ModifyInstancesChargeTypeRequest) {
+    request = &ModifyInstancesChargeTypeRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cvm", APIVersion, "ModifyInstancesChargeType")
+    return
+}
+
+func NewModifyInstancesChargeTypeResponse() (response *ModifyInstancesChargeTypeResponse) {
+    response = &ModifyInstancesChargeTypeResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口 (ModifyInstancesChargeType) 用于切换实例的计费模式。
+// 
+// * 只支持从 `POSTPAID_BY_HOUR` 计费模式切换为`PREPAID`计费模式。
+// * 关机不收费的实例、`BC1`和`BS1`机型族的实例、设置定时销毁的实例不支持该操作。
+func (c *Client) ModifyInstancesChargeType(request *ModifyInstancesChargeTypeRequest) (response *ModifyInstancesChargeTypeResponse, err error) {
+    if request == nil {
+        request = NewModifyInstancesChargeTypeRequest()
+    }
+    response = NewModifyInstancesChargeTypeResponse()
     err = c.Send(request, response)
     return
 }

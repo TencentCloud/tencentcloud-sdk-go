@@ -102,7 +102,7 @@ type CreateDisksRequest struct {
 	DiskChargePrepaid *DiskChargePrepaid `json:"DiskChargePrepaid" name:"DiskChargePrepaid"`
 	// 实例所在的位置。通过该参数可以指定实例所属可用区，所属项目。若不指定项目，将在默认项目下进行创建。
 	Placement *Placement `json:"Placement" name:"Placement"`
-	// 云硬盘大小，单位为GB。<br><li>如果传入`SnapshotId`则可不传`DiskSize`，此时新建云盘的大小为快照大小<br><li>如果传入`SnapshotId`同时传入`DiskSize`，则云盘大小必须大于或等于快照大小<br><li>云盘大小取值范围： 普通云硬盘:10GB ~ 4000G；高性能云硬盘:50GB ~ 4000GB；SSD云硬盘:100GB ~ 4000GB。步长均为10GB
+	// 云硬盘大小，单位为GB。<br><li>如果传入`SnapshotId`则可不传`DiskSize`，此时新建云盘的大小为快照大小<br><li>如果传入`SnapshotId`同时传入`DiskSize`，则云盘大小必须大于或等于快照大小<br><li>云盘大小取值范围参见云硬盘[产品分类](/document/product/362/2353)的说明。
 	DiskSize *uint64 `json:"DiskSize" name:"DiskSize"`
 	// 快照ID，如果传入则根据此快照创建云硬盘，快照类型必须为数据盘快照，可通过[DescribeSnapshots](/document/product/362/15647)接口查询快照，见输出参数DiskUsage解释。
 	SnapshotId *string `json:"SnapshotId" name:"SnapshotId"`
@@ -110,6 +110,8 @@ type CreateDisksRequest struct {
 	ClientToken *string `json:"ClientToken" name:"ClientToken"`
 	// 传入该参数用于创建加密云盘，取值固定为ENCRYPT。
 	Encrypt *string `json:"Encrypt" name:"Encrypt"`
+	// 云盘绑定的标签。
+	Tags []*Tag `json:"Tags" name:"Tags" list`
 }
 
 func (r *CreateDisksRequest) ToJsonString() string {
@@ -433,7 +435,7 @@ type Disk struct {
 	SnapshotAbility *bool `json:"SnapshotAbility" name:"SnapshotAbility"`
 	// 云硬盘名称。
 	DiskName *string `json:"DiskName" name:"DiskName"`
-	// 云硬盘大小。
+	// 云硬盘大小，单位GB。
 	DiskSize *uint64 `json:"DiskSize" name:"DiskSize"`
 	// 云盘状态。取值范围：<br><li>UNATTACHED：未挂载<br><li>ATTACHING：挂载中<br><li>ATTACHED：已挂载<br><li>DETACHING：解挂中<br><li>EXPANDING：扩容中<br><li>ROLLBACKING：回滚中。
 	DiskState *string `json:"DiskState" name:"DiskState"`
@@ -470,7 +472,7 @@ type Disk struct {
 }
 
 type DiskChargePrepaid struct {
-	// 购买云盘的时长，默认单位为月，此时，取值范围：1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 24, 36。
+	// 购买云盘的时长，默认单位为月，取值范围：1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 24, 36。
 	Period *uint64 `json:"Period" name:"Period"`
 	// 自动续费标识。取值范围：<br><li>NOTIFY_AND_AUTO_RENEW：通知过期且自动续费<br><li>NOTIFY_AND_MANUAL_RENEW：通知过期不自动续费<br><li>DISABLE_NOTIFY_AND_MANUAL_RENEW：不通知过期不自动续费<br><br>默认取值：NOTIFY_AND_MANUAL_RENEW：通知过期不自动续费。
 	RenewFlag *string `json:"RenewFlag" name:"RenewFlag"`
@@ -487,9 +489,9 @@ type DiskConfig struct {
 	DiskUsage *string `json:"DiskUsage" name:"DiskUsage"`
 	// 付费模式。取值范围：<br><li>PREPAID：表示预付费，即包年包月<br><li>POSTPAID_BY_HOUR：表示后付费，即按量计费。
 	DiskChargeType *string `json:"DiskChargeType" name:"DiskChargeType"`
-	// 最大可配置云盘大小。
+	// 最大可配置云盘大小，单位GB。
 	MaxDiskSize *uint64 `json:"MaxDiskSize" name:"MaxDiskSize"`
-	// 最小可配置云盘大小。
+	// 最小可配置云盘大小，单位GB。
 	MinDiskSize *uint64 `json:"MinDiskSize" name:"MinDiskSize"`
 	// 所在[可用区](/document/api/213/9452#zone)。
 	Zone *string `json:"Zone" name:"Zone"`
@@ -594,7 +596,7 @@ type InquiryPriceResizeDiskRequest struct {
 	*tchttp.BaseRequest
 	// 云硬盘ID， 通过[DescribeDisks](/document/product/362/16315)接口查询。
 	DiskId *string `json:"DiskId" name:"DiskId"`
-	// 云硬盘扩容后的大小，单位为GB，不得小于当前云硬盘大小。取值范围： 普通云硬盘:10GB ~ 4000G；高性能云硬盘:50GB ~ 4000GB；SSD云硬盘:100GB ~ 4000GB，步长均为10GB。
+	// 云硬盘扩容后的大小，单位为GB，不得小于当前云硬盘大小。云盘大小取值范围参见云硬盘[产品分类](/document/product/362/2353)的说明。
 	DiskSize *uint64 `json:"DiskSize" name:"DiskSize"`
 	// 云盘所属项目ID。 如传入则仅用于鉴权。
 	ProjectId *uint64 `json:"ProjectId" name:"ProjectId"`
@@ -788,7 +790,7 @@ type ResizeDiskRequest struct {
 	*tchttp.BaseRequest
 	// 云硬盘ID， 通过[DescribeDisks](/document/product/362/16315)接口查询。
 	DiskId *string `json:"DiskId" name:"DiskId"`
-	// 云硬盘扩容后的大小，单位为GB，必须大于当前云硬盘大小。取值范围： 普通云硬盘:10GB ~ 4000G；高性能云硬盘:50GB ~ 4000GB；SSD云硬盘:100GB ~ 4000GB，步长均为10GB。
+	// 云硬盘扩容后的大小，单位为GB，必须大于当前云硬盘大小。云盘大小取值范围参见云硬盘[产品分类](/document/product/362/2353)的说明。
 	DiskSize *uint64 `json:"DiskSize" name:"DiskSize"`
 }
 
@@ -827,7 +829,7 @@ type Snapshot struct {
 	DiskUsage *string `json:"DiskUsage" name:"DiskUsage"`
 	// 创建此快照的云硬盘ID。
 	DiskId *string `json:"DiskId" name:"DiskId"`
-	// 创建此快照的云硬盘大小。
+	// 创建此快照的云硬盘大小，单位GB。
 	DiskSize *uint64 `json:"DiskSize" name:"DiskSize"`
 	// 快照的状态。取值范围：<br><li>NORMAL：正常<br><li>CREATING：创建中<br><li>ROLLBACKING：回滚中<br><li>COPYING_FROM_REMOTE：跨地域复制快照拷贝中。
 	SnapshotState *string `json:"SnapshotState" name:"SnapshotState"`
