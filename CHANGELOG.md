@@ -1,5 +1,12 @@
 ## latest
 
+## 3.0.8 (2018-06-21)
+
+* update apis
+	* batch
+	* cbs
+	* cvm
+	* ds
 * add predefined region info
 
 ## 3.0.7 (2018-06-14)
