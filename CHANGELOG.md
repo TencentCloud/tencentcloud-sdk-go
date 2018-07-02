@@ -1,5 +1,15 @@
 ## latest
 
+## 3.0.9 (2018-07-02)
+
+* update apis
+    * aai
+    * cbs
+    * cws
+    * postgres
+* add new product
+    * dts
+
 ## 3.0.8 (2018-06-21)
 
 * update apis
