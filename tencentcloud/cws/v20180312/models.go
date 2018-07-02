@@ -166,6 +166,42 @@ func (r *CreateVulsMisinformationResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type CreateVulsReportRequest struct {
+	*tchttp.BaseRequest
+	// 站点ID
+	SiteId *uint64 `json:"SiteId" name:"SiteId"`
+	// 监控任务ID
+	MonitorId *uint64 `json:"MonitorId" name:"MonitorId"`
+}
+
+func (r *CreateVulsReportRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateVulsReportRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateVulsReportResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+		// 报告下载地址
+		ReportFileUrl *string `json:"ReportFileUrl" name:"ReportFileUrl"`
+		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		RequestId *string `json:"RequestId" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateVulsReportResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateVulsReportResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DeleteMonitorsRequest struct {
 	*tchttp.BaseRequest
 	// 监控任务ID列表
@@ -426,6 +462,88 @@ func (r *DescribeSitesVerificationResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeVulsNumberRequest struct {
+	*tchttp.BaseRequest
+}
+
+func (r *DescribeVulsNumberRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeVulsNumberRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeVulsNumberResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+		// 受影响的网站总数。
+		ImpactSiteNumber *uint64 `json:"ImpactSiteNumber" name:"ImpactSiteNumber"`
+		// 已验证的网站总数。
+		SiteNumber *uint64 `json:"SiteNumber" name:"SiteNumber"`
+		// 高风险漏洞总数。
+		VulsHighNumber *uint64 `json:"VulsHighNumber" name:"VulsHighNumber"`
+		// 中风险漏洞总数。
+		VulsMiddleNumber *uint64 `json:"VulsMiddleNumber" name:"VulsMiddleNumber"`
+		// 低高风险漏洞总数。
+		VulsLowNumber *uint64 `json:"VulsLowNumber" name:"VulsLowNumber"`
+		// 风险提示总数。
+		VulsNoticeNumber *uint64 `json:"VulsNoticeNumber" name:"VulsNoticeNumber"`
+		// 扫描页面总数。
+		PageCount *uint64 `json:"PageCount" name:"PageCount"`
+		// 已验证的网站列表。
+		Sites []*MonitorMiniSite `json:"Sites" name:"Sites" list`
+		// 受影响的网站列表。
+		ImpactSites []*MonitorMiniSite `json:"ImpactSites" name:"ImpactSites" list`
+		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		RequestId *string `json:"RequestId" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeVulsNumberResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeVulsNumberResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeVulsNumberTimelineRequest struct {
+	*tchttp.BaseRequest
+}
+
+func (r *DescribeVulsNumberTimelineRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeVulsNumberTimelineRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeVulsNumberTimelineResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+		// 统计数据记录数量。
+		TotalCount *uint64 `json:"TotalCount" name:"TotalCount"`
+		// 用户漏洞数随时间变化统计数据。
+		VulsTimeline []*VulsTimeline `json:"VulsTimeline" name:"VulsTimeline" list`
+		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		RequestId *string `json:"RequestId" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeVulsNumberTimelineResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeVulsNumberTimelineResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeVulsRequest struct {
 	*tchttp.BaseRequest
 	// 站点ID
@@ -600,6 +718,8 @@ func (r *ModifySiteAttributeResponse) FromJsonString(s string) error {
 }
 
 type Monitor struct {
+	// 云用户appid。
+	Appid *uint64 `json:"Appid" name:"Appid"`
 	// 监控任务ID。
 	Id *uint64 `json:"Id" name:"Id"`
 	// 监控名称。
@@ -626,8 +746,6 @@ type Monitor struct {
 	CreatedAt *string `json:"CreatedAt" name:"CreatedAt"`
 	// UpdatedAt。
 	UpdatedAt *string `json:"UpdatedAt" name:"UpdatedAt"`
-	// 云用户appid。
-	Appid *uint64 `json:"Appid" name:"Appid"`
 }
 
 type MonitorMiniSite struct {
@@ -638,6 +756,10 @@ type MonitorMiniSite struct {
 }
 
 type MonitorsDetail struct {
+	// 监控任务包含的站点列表的平均扫描进度。
+	Progress *uint64 `json:"Progress" name:"Progress"`
+	// 扫描页面总数。
+	PageCount *uint64 `json:"PageCount" name:"PageCount"`
 	// 监控任务基础信息。
 	Basic *Monitor `json:"Basic" name:"Basic"`
 	// 监控任务包含的站点列表。
@@ -656,13 +778,29 @@ type MonitorsDetail struct {
 	VulsLowNumber *uint64 `json:"VulsLowNumber" name:"VulsLowNumber"`
 	// 提示数量。
 	VulsNoticeNumber *uint64 `json:"VulsNoticeNumber" name:"VulsNoticeNumber"`
-	// 监控任务包含的站点列表的平均扫描进度。
-	Progress *uint64 `json:"Progress" name:"Progress"`
-	// 扫描页面总数。
-	PageCount *uint64 `json:"PageCount" name:"PageCount"`
 }
 
 type Site struct {
+	// 扫描进度，百分比整数
+	Progress *uint64 `json:"Progress" name:"Progress"`
+	// 云用户appid。
+	Appid *uint64 `json:"Appid" name:"Appid"`
+	// 云用户标识。
+	Uin *string `json:"Uin" name:"Uin"`
+	// 网站是否需要登录扫描：0-未知；-1-不需要；1-需要。
+	NeedLogin *int64 `json:"NeedLogin" name:"NeedLogin"`
+	// 登录后的cookie。
+	LoginCookie *string `json:"LoginCookie" name:"LoginCookie"`
+	// 登录后的cookie是否有效：0-无效；1-有效。
+	LoginCookieValid *uint64 `json:"LoginCookieValid" name:"LoginCookieValid"`
+	// 用于测试cookie是否有效的URL。
+	LoginCheckUrl *string `json:"LoginCheckUrl" name:"LoginCheckUrl"`
+	// 用于测试cookie是否有效的关键字。
+	LoginCheckKw *string `json:"LoginCheckKw" name:"LoginCheckKw"`
+	// 禁止扫描器扫描的目录关键字。
+	ScanDisallow *string `json:"ScanDisallow" name:"ScanDisallow"`
+	// 访问网站的客户端标识。
+	UserAgent *string `json:"UserAgent" name:"UserAgent"`
 	// 站点ID。
 	Id *uint64 `json:"Id" name:"Id"`
 	// 监控任务ID，为0时表示未加入监控任务。
@@ -707,29 +845,17 @@ type Site struct {
 	LastScanVulsNum *uint64 `json:"LastScanVulsNum" name:"LastScanVulsNum"`
 	// 最近一次扫描提示总数量
 	LastScanNoticeNum *uint64 `json:"LastScanNoticeNum" name:"LastScanNoticeNum"`
-	// 扫描进度，百分比整数
-	Progress *uint64 `json:"Progress" name:"Progress"`
-	// 云用户appid。
-	Appid *uint64 `json:"Appid" name:"Appid"`
-	// 云用户标识。
-	Uin *string `json:"Uin" name:"Uin"`
-	// 网站是否需要登录扫描：0-未知；-1-不需要；1-需要。
-	NeedLogin *int64 `json:"NeedLogin" name:"NeedLogin"`
-	// 登录后的cookie。
-	LoginCookie *string `json:"LoginCookie" name:"LoginCookie"`
-	// 登录后的cookie是否有效：0-无效；1-有效。
-	LoginCookieValid *uint64 `json:"LoginCookieValid" name:"LoginCookieValid"`
-	// 用于测试cookie是否有效的URL。
-	LoginCheckUrl *string `json:"LoginCheckUrl" name:"LoginCheckUrl"`
-	// 用于测试cookie是否有效的关键字。
-	LoginCheckKw *string `json:"LoginCheckKw" name:"LoginCheckKw"`
-	// 禁止扫描器扫描的目录关键字。
-	ScanDisallow *string `json:"ScanDisallow" name:"ScanDisallow"`
-	// 访问网站的客户端标识。
-	UserAgent *string `json:"UserAgent" name:"UserAgent"`
 }
 
 type SitesVerification struct {
+	// ID。
+	Id *uint64 `json:"Id" name:"Id"`
+	// 云用户appid
+	Appid *uint64 `json:"Appid" name:"Appid"`
+	// 用于验证站点的url，即访问该url获取验证数据。
+	VerifyUrl *string `json:"VerifyUrl" name:"VerifyUrl"`
+	// 获取验证验证文件的url。
+	VerifyFileUrl *string `json:"VerifyFileUrl" name:"VerifyFileUrl"`
 	// 根域名。
 	Domain *string `json:"Domain" name:"Domain"`
 	// txt解析域名验证的name。
@@ -744,14 +870,6 @@ type SitesVerification struct {
 	CreatedAt *string `json:"CreatedAt" name:"CreatedAt"`
 	// UpdatedAt。
 	UpdatedAt *string `json:"UpdatedAt" name:"UpdatedAt"`
-	// ID。
-	Id *uint64 `json:"Id" name:"Id"`
-	// 云用户appid
-	Appid *uint64 `json:"Appid" name:"Appid"`
-	// 用于验证站点的url，即访问该url获取验证数据。
-	VerifyUrl *string `json:"VerifyUrl" name:"VerifyUrl"`
-	// 获取验证验证文件的url。
-	VerifyFileUrl *string `json:"VerifyFileUrl" name:"VerifyFileUrl"`
 }
 
 type VerifySitesRequest struct {
@@ -791,6 +909,12 @@ func (r *VerifySitesResponse) FromJsonString(s string) error {
 }
 
 type Vul struct {
+	// 是否已经添加误报，0-否，1-是。
+	IsReported *uint64 `json:"IsReported" name:"IsReported"`
+	// 云用户appid。
+	Appid *uint64 `json:"Appid" name:"Appid"`
+	// 云用户标识。
+	Uin *string `json:"Uin" name:"Uin"`
 	// 漏洞ID。
 	Id *uint64 `json:"Id" name:"Id"`
 	// 站点ID。
@@ -821,10 +945,31 @@ type Vul struct {
 	CreatedAt *string `json:"CreatedAt" name:"CreatedAt"`
 	// UpdatedAt。
 	UpdatedAt *string `json:"UpdatedAt" name:"UpdatedAt"`
-	// 是否已经添加误报，0-否，1-是。
-	IsReported *uint64 `json:"IsReported" name:"IsReported"`
+}
+
+type VulsTimeline struct {
+	// ID。
+	Id *uint64 `json:"Id" name:"Id"`
 	// 云用户appid。
 	Appid *uint64 `json:"Appid" name:"Appid"`
-	// 云用户标识。
-	Uin *string `json:"Uin" name:"Uin"`
+	// 日期。
+	Date *string `json:"Date" name:"Date"`
+	// 扫描页面总数量。
+	PageCount *uint64 `json:"PageCount" name:"PageCount"`
+	// 已验证网站总数量。
+	SiteNum *uint64 `json:"SiteNum" name:"SiteNum"`
+	// 受影响的网站总数量。
+	ImpactSiteNum *uint64 `json:"ImpactSiteNum" name:"ImpactSiteNum"`
+	// 高危漏洞总数量。
+	VulsHighNum *uint64 `json:"VulsHighNum" name:"VulsHighNum"`
+	// 中危漏洞总数量。
+	VulsMiddleNum *uint64 `json:"VulsMiddleNum" name:"VulsMiddleNum"`
+	// 低危漏洞总数量。
+	VulsLowNum *uint64 `json:"VulsLowNum" name:"VulsLowNum"`
+	// 风险提示总数量
+	VulsNoticeNum *uint64 `json:"VulsNoticeNum" name:"VulsNoticeNum"`
+	// 记录添加时间。
+	CreatedAt *string `json:"CreatedAt" name:"CreatedAt"`
+	// 记录最近修改时间。
+	UpdatedAt *string `json:"UpdatedAt" name:"UpdatedAt"`
 }

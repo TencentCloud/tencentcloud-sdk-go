@@ -141,6 +141,31 @@ func (c *Client) CreateVulsMisinformation(request *CreateVulsMisinformationReque
     return
 }
 
+func NewCreateVulsReportRequest() (request *CreateVulsReportRequest) {
+    request = &CreateVulsReportRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cws", APIVersion, "CreateVulsReport")
+    return
+}
+
+func NewCreateVulsReportResponse() (response *CreateVulsReportResponse) {
+    response = &CreateVulsReportResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口 (CreateVulsReport) 用于生成漏洞报告并返回下载链接。
+func (c *Client) CreateVulsReport(request *CreateVulsReportRequest) (response *CreateVulsReportResponse, err error) {
+    if request == nil {
+        request = NewCreateVulsReportRequest()
+    }
+    response = NewCreateVulsReportResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteMonitorsRequest() (request *DeleteMonitorsRequest) {
     request = &DeleteMonitorsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -337,6 +362,56 @@ func (c *Client) DescribeVuls(request *DescribeVulsRequest) (response *DescribeV
         request = NewDescribeVulsRequest()
     }
     response = NewDescribeVulsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeVulsNumberRequest() (request *DescribeVulsNumberRequest) {
+    request = &DescribeVulsNumberRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cws", APIVersion, "DescribeVulsNumber")
+    return
+}
+
+func NewDescribeVulsNumberResponse() (response *DescribeVulsNumberResponse) {
+    response = &DescribeVulsNumberResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口 (DescribeVulsNumber) 用于查询用户网站的漏洞总计数量。
+func (c *Client) DescribeVulsNumber(request *DescribeVulsNumberRequest) (response *DescribeVulsNumberResponse, err error) {
+    if request == nil {
+        request = NewDescribeVulsNumberRequest()
+    }
+    response = NewDescribeVulsNumberResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeVulsNumberTimelineRequest() (request *DescribeVulsNumberTimelineRequest) {
+    request = &DescribeVulsNumberTimelineRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cws", APIVersion, "DescribeVulsNumberTimeline")
+    return
+}
+
+func NewDescribeVulsNumberTimelineResponse() (response *DescribeVulsNumberTimelineResponse) {
+    response = &DescribeVulsNumberTimelineResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口 (DescribeVulsNumberTimeline) 用于查询漏洞数随时间变化统计信息。
+func (c *Client) DescribeVulsNumberTimeline(request *DescribeVulsNumberTimelineRequest) (response *DescribeVulsNumberTimelineResponse, err error) {
+    if request == nil {
+        request = NewDescribeVulsNumberTimelineRequest()
+    }
+    response = NewDescribeVulsNumberTimelineResponse()
     err = c.Send(request, response)
     return
 }
