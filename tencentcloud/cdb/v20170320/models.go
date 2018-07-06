@@ -290,6 +290,12 @@ func (r *CreateDBImportJobResponse) FromJsonString(s string) error {
 
 type CreateDBInstanceHourRequest struct {
 	*tchttp.BaseRequest
+	// 实例数量，默认值为1, 最小值1，最大值为100
+	GoodsNum *int64 `json:"GoodsNum" name:"GoodsNum"`
+	// 实例内存大小，单位：MB，请使用[获取云数据库可售卖规格](https://cloud.tencent.com/document/api/236/17229)接口获取可创建的内存规格
+	Memory *int64 `json:"Memory" name:"Memory"`
+	// 实例硬盘大小，单位：GB，请使用[获取云数据库可售卖规格](https://cloud.tencent.com/document/api/236/17229)接口获取可创建的硬盘范围
+	Volume *int64 `json:"Volume" name:"Volume"`
 	// MySQL版本，值包括：5.5、5.6和5.7，请使用[获取云数据库可售卖规格](https://cloud.tencent.com/document/api/236/17229)接口获取可创建的实例版本
 	EngineVersion *string `json:"EngineVersion" name:"EngineVersion"`
 	// 私有网络ID，如果不传则默认选择基础网络，请使用[查询私有网络列表](/document/api/215/15778)
@@ -298,12 +304,6 @@ type CreateDBInstanceHourRequest struct {
 	UniqSubnetId *string `json:"UniqSubnetId" name:"UniqSubnetId"`
 	// 项目ID，不填为默认项目。请使用[查询项目列表](https://cloud.tencent.com/document/product/378/4400)接口获取项目ID
 	ProjectId *int64 `json:"ProjectId" name:"ProjectId"`
-	// 实例数量，默认值为1, 最小值1，最大值为100
-	GoodsNum *int64 `json:"GoodsNum" name:"GoodsNum"`
-	// 实例内存大小，单位：MB，请使用[获取云数据库可售卖规格](https://cloud.tencent.com/document/api/236/17229)接口获取可创建的内存规格
-	Memory *int64 `json:"Memory" name:"Memory"`
-	// 实例硬盘大小，单位：GB，请使用[获取云数据库可售卖规格](https://cloud.tencent.com/document/api/236/17229)接口获取可创建的硬盘范围
-	Volume *int64 `json:"Volume" name:"Volume"`
 	// 可用区信息，该参数缺省时，系统会自动选择一个可用区，请使用[获取云数据库可售卖规格](https://cloud.tencent.com/document/api/236/17229)接口获取可创建的可用区
 	Zone *string `json:"Zone" name:"Zone"`
 	// 实例ID，购买只读实例或者灾备实例时必填，该字段表示只读实例或者灾备实例的主实例ID，请使用[查询实例列表](https://cloud.tencent.com/document/api/236/15872)接口查询云数据库实例ID
@@ -1534,10 +1534,10 @@ type InitDBInstancesRequest struct {
 	InstanceIds []*string `json:"InstanceIds" name:"InstanceIds" list`
 	// 实例新的密码，密码规则：8-64个字符，至少包含字母、数字、字符（支持的字符：!@#$%^*()）中的两种
 	NewPassword *string `json:"NewPassword" name:"NewPassword"`
-	// 实例的端口
-	Vport *int64 `json:"Vport" name:"Vport"`
 	// 实例的参数列表，目前支持设置“character_set_server”、“lower_case_table_names”参数。其中，“character_set_server”参数可选值为["utf8","latin1","gbk","utf8mb4"]；“lower_case_table_names”可选值为[“0”,“1”]
 	Parameters []*ParamInfo `json:"Parameters" name:"Parameters" list`
+	// 实例的端口
+	Vport *int64 `json:"Vport" name:"Vport"`
 }
 
 func (r *InitDBInstancesRequest) ToJsonString() string {
@@ -1576,7 +1576,7 @@ type InstanceInfo struct {
 	// 初始化标志
 	InitFlag *int64 `json:"InitFlag" name:"InitFlag"`
 	// 只读vip信息
-	RoVipInfo []*RoVipInfo `json:"RoVipInfo" name:"RoVipInfo" list`
+	RoVipInfo *RoVipInfo `json:"RoVipInfo" name:"RoVipInfo"`
 	// 内存容量
 	Memory *int64 `json:"Memory" name:"Memory"`
 	// 实例状态
@@ -1609,8 +1609,6 @@ type InstanceInfo struct {
 	DeployMode *int64 `json:"DeployMode" name:"DeployMode"`
 	// 实例任务状态
 	TaskStatus *int64 `json:"TaskStatus" name:"TaskStatus"`
-	// 主实例信息
-	MasterInfo *MasterInfo `json:"MasterInfo" name:"MasterInfo"`
 	// 实例售卖机型
 	DeviceType *string `json:"DeviceType" name:"DeviceType"`
 	// 内核版本
@@ -1637,6 +1635,8 @@ type InstanceInfo struct {
 	UniqVpcId *string `json:"UniqVpcId" name:"UniqVpcId"`
 	// 子网描述符
 	UniqSubnetId *string `json:"UniqSubnetId" name:"UniqSubnetId"`
+	// 主实例信息
+	MasterInfo *MasterInfo `json:"MasterInfo" name:"MasterInfo"`
 }
 
 type InstanceRebootTime struct {
@@ -1723,10 +1723,10 @@ type ModifyAccountDescriptionRequest struct {
 	*tchttp.BaseRequest
 	// 实例ID，格式如：cdb-c1nl9rpv，与云数据库控制台页面中显示的实例ID相同。
 	InstanceId *string `json:"InstanceId" name:"InstanceId"`
-	// 数据库账号的备注信息。
-	Description *string `json:"Description" name:"Description"`
 	// 云数据库账号。
 	Accounts []*Account `json:"Accounts" name:"Accounts" list`
+	// 数据库账号的备注信息。
+	Description *string `json:"Description" name:"Description"`
 }
 
 func (r *ModifyAccountDescriptionRequest) ToJsonString() string {
@@ -2200,10 +2200,10 @@ func (r *RestartDBInstancesResponse) FromJsonString(s string) error {
 }
 
 type RoGroup struct {
-	// 只读组ID
-	RoGroupId *string `json:"RoGroupId" name:"RoGroupId"`
 	// 只读组模式，可选值为：alone-系统自动分配只读组；allinone-新建只读组；join-使用现有只读组
 	RoGroupMode *string `json:"RoGroupMode" name:"RoGroupMode"`
+	// 只读组ID
+	RoGroupId *string `json:"RoGroupId" name:"RoGroupId"`
 	// 只读组名称
 	RoGroupName *string `json:"RoGroupName" name:"RoGroupName"`
 	// 是否启用延迟超限剔除功能，启用该功能后，只读实例与主实例的延迟超过延迟阈值值，只读实例将被隔离。可选值：1-启用；0-不启用
@@ -2216,6 +2216,61 @@ type RoGroup struct {
 	WeightMode *string `json:"WeightMode" name:"WeightMode"`
 	// 权重值
 	Weight *int64 `json:"Weight" name:"Weight"`
+	// 只读组中的只读实例详情
+	RoInstances []*RoInstanceInfo `json:"RoInstances" name:"RoInstances" list`
+	// 只读组的内网IP
+	Vip *string `json:"Vip" name:"Vip"`
+	// 只读组的内网端口号
+	Vport *int64 `json:"Vport" name:"Vport"`
+}
+
+type RoInstanceInfo struct {
+	// RO组对应的主实例的ID
+	MasterInstanceId *string `json:"MasterInstanceId" name:"MasterInstanceId"`
+	// RO实例在RO组内的状态，可能的值：online-在线，offline-下线
+	RoStatus *string `json:"RoStatus" name:"RoStatus"`
+	// RO实例在RO组内上一次下线的时间
+	OfflineTime *string `json:"OfflineTime" name:"OfflineTime"`
+	// RO实例在RO组内的权重
+	Weight *int64 `json:"Weight" name:"Weight"`
+	// RO实例所在区域名称，如ap-shanghai
+	Region *string `json:"Region" name:"Region"`
+	// RO可用区的正式名称，如ap-shanghai-1
+	Zone *string `json:"Zone" name:"Zone"`
+	// RO实例ID，格式如：cdbro-c1nl9rpv
+	InstanceId *string `json:"InstanceId" name:"InstanceId"`
+	// RO实例状态，可能返回值：0-创建中，1-运行中，4-删除中
+	Status *int64 `json:"Status" name:"Status"`
+	// 实例类型，可能返回值：1-主实例，2-灾备实例，3-只读实例
+	InstanceType *int64 `json:"InstanceType" name:"InstanceType"`
+	// RO实例名称
+	InstanceName *string `json:"InstanceName" name:"InstanceName"`
+	// 按量计费状态，可能的取值：1-正常，2-欠费
+	HourFeeStatus *int64 `json:"HourFeeStatus" name:"HourFeeStatus"`
+	// RO实例任务状态，可能返回值：<br>0-没有任务<br>1-升级中<br>2-数据导入中<br>3-开放Slave中<br>4-外网访问开通中<br>5-批量操作执行中<br>6-回档中<br>7-外网访问关闭中<br>8-密码修改中<br>9-实例名修改中<br>10-重启中<br>12-自建迁移中<br>13-删除库表中<br>14-灾备实例创建同步中
+	TaskStatus *int64 `json:"TaskStatus" name:"TaskStatus"`
+	// RO实例内存大小，单位：MB
+	Memory *int64 `json:"Memory" name:"Memory"`
+	// RO实例硬盘大小，单位：GB
+	Volume *int64 `json:"Volume" name:"Volume"`
+	// 每次查询数量
+	Qps *int64 `json:"Qps" name:"Qps"`
+	// RO实例的内网IP地址
+	Vip *string `json:"Vip" name:"Vip"`
+	// RO实例访问端口
+	Vport *int64 `json:"Vport" name:"Vport"`
+	// RO实例所在私有网络ID
+	VpcId *int64 `json:"VpcId" name:"VpcId"`
+	// RO实例所在私有网络子网ID
+	SubnetId *int64 `json:"SubnetId" name:"SubnetId"`
+	// RO实例规格描述，目前可取值 CUSTOM
+	DeviceType *string `json:"DeviceType" name:"DeviceType"`
+	// RO实例数据库引擎版本，可能返回值：5.1、5.5、5.6和5.7
+	EngineVersion *string `json:"EngineVersion" name:"EngineVersion"`
+	// RO实例到期时间，时间格式：yyyy-mm-dd hh:mm:ss，如实例为按量计费模式，则此字段值为0000-00-00 00:00:00
+	DeadlineTime *string `json:"DeadlineTime" name:"DeadlineTime"`
+	// RO实例计费类型，可能返回值：0-包年包月，1-按量计费，2-后付费月结
+	PayType *int64 `json:"PayType" name:"PayType"`
 }
 
 type RoVipInfo struct {
@@ -2249,8 +2304,6 @@ type SecurityGroup struct {
 }
 
 type SellConfig struct {
-	// 设备类型
-	Device *string `json:"Device" name:"Device"`
 	// 售卖规格描述
 	Type *string `json:"Type" name:"Type"`
 	// 实例类型
@@ -2275,6 +2328,8 @@ type SellConfig struct {
 	Info *string `json:"Info" name:"Info"`
 	// 状态值
 	Status *int64 `json:"Status" name:"Status"`
+	// 设备类型
+	Device *string `json:"Device" name:"Device"`
 }
 
 type SellType struct {

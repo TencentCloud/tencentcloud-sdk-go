@@ -76,14 +76,14 @@ type TextToVoiceRequest struct {
 	Text *string `json:"Text" name:"Text"`
 	// 一次请求对应一个SessionId，会原样返回
 	SessionId *string `json:"SessionId" name:"SessionId"`
-	// 项目id
-	ProjectId *int64 `json:"ProjectId" name:"ProjectId"`
 	// 模型类型，1-默认模型
 	ModelType *int64 `json:"ModelType" name:"ModelType"`
-	// 音量大小，暂仅支持默认值1.0
+	// 音量大小，暂仅支持默认值1
 	Volume *float64 `json:"Volume" name:"Volume"`
-	// 语速，暂仅支持默认值1.0
+	// 语速，暂仅支持默认值1
 	Speed *float64 `json:"Speed" name:"Speed"`
+	// 用户自定义项目id，默认为0
+	ProjectId *int64 `json:"ProjectId" name:"ProjectId"`
 	// 音色，1-默认音色
 	VoiceType *int64 `json:"VoiceType" name:"VoiceType"`
 	// 主语言类型<li>1-中文(包括粤语)，最大300字符</li><li>2-英文，最大支持600字符</li>

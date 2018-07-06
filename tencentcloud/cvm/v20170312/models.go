@@ -21,20 +21,20 @@ import (
 )
 
 type ActionTimer struct {
+	// 扩展数据
+	Externals *Externals `json:"Externals" name:"Externals"`
 	// 定时器名称，目前仅支持销毁一个值：TerminateInstances。
 	TimerAction *string `json:"TimerAction" name:"TimerAction"`
 	// 执行时间，格式形如：2018-5-29 11:26:40,执行时间必须大于当前时间5分钟。
 	ActionTime *string `json:"ActionTime" name:"ActionTime"`
-	// 扩展数据
-	Externals *Externals `json:"Externals" name:"Externals"`
 }
 
 type AllocateHostsRequest struct {
 	*tchttp.BaseRequest
-	// 用于保证请求幂等性的字符串。
-	ClientToken *string `json:"ClientToken" name:"ClientToken"`
 	// 实例所在的位置。通过该参数可以指定实例所属可用区，所属项目等属性。
 	Placement *Placement `json:"Placement" name:"Placement"`
+	// 用于保证请求幂等性的字符串。
+	ClientToken *string `json:"ClientToken" name:"ClientToken"`
 	// 预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月实例的购买时长、是否设置自动续费等属性。若指定实例的付费模式为预付费则该参数必传。
 	HostChargePrepaid *ChargePrepaid `json:"HostChargePrepaid" name:"HostChargePrepaid"`
 	// 实例计费类型。目前仅支持：PREPAID（预付费，即包年包月模式）。
@@ -244,12 +244,12 @@ func (r *CreateKeyPairResponse) FromJsonString(s string) error {
 }
 
 type DataDisk struct {
+	// 数据盘大小，单位：GB。最小调整步长为10G，不同数据盘类型取值范围不同，具体限制详见：[CVM实例配置](/document/product/213/2177)。默认值为0，表示不购买数据盘。更多限制详见产品文档。
+	DiskSize *int64 `json:"DiskSize" name:"DiskSize"`
 	// 数据盘类型。数据盘类型限制详见[CVM实例配置](/document/product/213/2177)。取值范围：<br><li>LOCAL_BASIC：本地硬盘<br><li>LOCAL_SSD：本地SSD硬盘<br><li>CLOUD_BASIC：普通云硬盘<br><li>CLOUD_PREMIUM：高性能云硬盘<br><li>CLOUD_SSD：SSD云硬盘<br><br>默认取值：LOCAL_BASIC。<br><br>该参数对`ResizeInstanceDisk`接口无效。
 	DiskType *string `json:"DiskType" name:"DiskType"`
 	// 数据盘ID。LOCAL_BASIC 和 LOCAL_SSD 类型没有ID。暂时不支持该参数。
 	DiskId *string `json:"DiskId" name:"DiskId"`
-	// 数据盘大小，单位：GB。最小调整步长为10G，不同数据盘类型取值范围不同，具体限制详见：[CVM实例配置](/document/product/213/2177)。默认值为0，表示不购买数据盘。更多限制详见产品文档。
-	DiskSize *int64 `json:"DiskSize" name:"DiskSize"`
 }
 
 type DeleteDisasterRecoverGroupsRequest struct {
@@ -725,6 +725,40 @@ func (r *DescribeInstanceTypeConfigsResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeInstanceVncUrlRequest struct {
+	*tchttp.BaseRequest
+	// 一个操作的实例ID。可通过[`DescribeInstances`](https://cloud.tencent.com/document/api/213/15728) API返回值中的`InstanceId`获取。
+	InstanceId *string `json:"InstanceId" name:"InstanceId"`
+}
+
+func (r *DescribeInstanceVncUrlRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeInstanceVncUrlRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeInstanceVncUrlResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+		// 实例的管理终端地址。
+		InstanceVncUrl *string `json:"InstanceVncUrl" name:"InstanceVncUrl"`
+		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		RequestId *string `json:"RequestId" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeInstanceVncUrlResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeInstanceVncUrlResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeInstancesRequest struct {
 	*tchttp.BaseRequest
 	// 按照一个或者多个实例ID查询。实例ID形如：`ins-11112222`。（此参数的具体格式可参考API[简介](https://cloud.tencent.com/document/api/213/15688)的`id.N`一节）。每次请求的实例的上限为100。参数不支持同时指定`InstanceIds`和`Filters`。
@@ -1124,12 +1158,6 @@ type HostResource struct {
 }
 
 type Image struct {
-	// 镜像ID
-	ImageId *string `json:"ImageId" name:"ImageId"`
-	// 镜像操作系统
-	OsName *string `json:"OsName" name:"OsName"`
-	// 镜像类型
-	ImageType *string `json:"ImageType" name:"ImageType"`
 	// 镜像创建时间
 	CreatedTime *string `json:"CreatedTime" name:"CreatedTime"`
 	// 镜像名称
@@ -1142,6 +1170,12 @@ type Image struct {
 	Architecture *string `json:"Architecture" name:"Architecture"`
 	// 镜像状态
 	ImageState *string `json:"ImageState" name:"ImageState"`
+	// 镜像ID
+	ImageId *string `json:"ImageId" name:"ImageId"`
+	// 镜像操作系统
+	OsName *string `json:"OsName" name:"OsName"`
+	// 镜像类型
+	ImageType *string `json:"ImageType" name:"ImageType"`
 	// 镜像来源平台
 	Platform *string `json:"Platform" name:"Platform"`
 	// 镜像创建者
@@ -1480,16 +1514,16 @@ func (r *InquiryPriceResizeInstanceDisksResponse) FromJsonString(s string) error
 
 type InquiryPriceRunInstancesRequest struct {
 	*tchttp.BaseRequest
+	// 实例所在的位置。通过该参数可以指定实例所属可用区，所属项目等属性。
+	Placement *Placement `json:"Placement" name:"Placement"`
+	// 指定有效的[镜像](https://cloud.tencent.com/document/product/213/4940)ID，格式形如`img-xxx`。镜像类型分为四种：<br/><li>公共镜像</li><li>自定义镜像</li><li>共享镜像</li><li>服务市场镜像</li><br/>可通过以下方式获取可用的镜像ID：<br/><li>`公共镜像`、`自定义镜像`、`共享镜像`的镜像ID可通过登录[控制台](https://console.cloud.tencent.com/cvm/image?rid=1&imageType=PUBLIC_IMAGE)查询；`服务镜像市场`的镜像ID可通过[云市场](https://market.cloud.tencent.com/list)查询。</li><li>通过调用接口 [DescribeImages](https://cloud.tencent.com/document/api/213/15715) ，取返回信息中的`ImageId`字段。</li>
+	ImageId *string `json:"ImageId" name:"ImageId"`
 	// 实例[计费类型](https://cloud.tencent.com/document/product/213/2180)。<br><li>PREPAID：预付费，即包年包月<br><li>POSTPAID_BY_HOUR：按小时后付费<br>默认值：POSTPAID_BY_HOUR。
 	InstanceChargeType *string `json:"InstanceChargeType" name:"InstanceChargeType"`
 	// 预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月实例的购买时长、是否设置自动续费等属性。若指定实例的付费模式为预付费则该参数必传。
 	InstanceChargePrepaid *InstanceChargePrepaid `json:"InstanceChargePrepaid" name:"InstanceChargePrepaid"`
-	// 实例所在的位置。通过该参数可以指定实例所属可用区，所属项目等属性。
-	Placement *Placement `json:"Placement" name:"Placement"`
 	// 实例机型。不同实例机型指定了不同的资源规格，具体取值可通过调用接口[DescribeInstanceTypeConfigs](https://cloud.tencent.com/document/api/213/15749)来获得最新的规格表或参见[CVM实例配置](https://cloud.tencent.com/document/product/213/2177)描述。若不指定该参数，则默认机型为S1.SMALL1。
 	InstanceType *string `json:"InstanceType" name:"InstanceType"`
-	// 指定有效的[镜像](https://cloud.tencent.com/document/product/213/4940)ID，格式形如`img-xxx`。镜像类型分为四种：<br/><li>公共镜像</li><li>自定义镜像</li><li>共享镜像</li><li>服务市场镜像</li><br/>可通过以下方式获取可用的镜像ID：<br/><li>`公共镜像`、`自定义镜像`、`共享镜像`的镜像ID可通过登录[控制台](https://console.cloud.tencent.com/cvm/image?rid=1&imageType=PUBLIC_IMAGE)查询；`服务镜像市场`的镜像ID可通过[云市场](https://market.cloud.tencent.com/list)查询。</li><li>通过调用接口 [DescribeImages](https://cloud.tencent.com/document/api/213/15715) ，取返回信息中的`ImageId`字段。</li>
-	ImageId *string `json:"ImageId" name:"ImageId"`
 	// 实例系统盘配置信息。若不指定该参数，则按照系统默认值进行分配。
 	SystemDisk *SystemDisk `json:"SystemDisk" name:"SystemDisk"`
 	// 实例数据盘配置信息。若不指定该参数，则默认不购买数据盘，当前仅支持购买的时候指定一个数据盘。
@@ -1547,6 +1581,14 @@ func (r *InquiryPriceRunInstancesResponse) FromJsonString(s string) error {
 }
 
 type Instance struct {
+	// 操作系统名称。
+	OsName *string `json:"OsName" name:"OsName"`
+	// 实例所属安全组。该参数可以通过调用 [DescribeSecurityGroups](https://cloud.tencent.com/document/api/215/15808) 的返回值中的sgId字段来获取。
+	SecurityGroupIds []*string `json:"SecurityGroupIds" name:"SecurityGroupIds" list`
+	// 实例登录设置。目前只返回实例所关联的密钥。
+	LoginSettings *LoginSettings `json:"LoginSettings" name:"LoginSettings"`
+	// 实例状态。取值范围：<br><li>PENDING：表示创建中<br></li><li>LAUNCH_FAILED：表示创建失败<br></li><li>RUNNING：表示运行中<br></li><li>STOPPED：表示关机<br></li><li>STARTING：表示开机中<br></li><li>STOPPING：表示关机中<br></li><li>REBOOTING：表示重启中<br></li><li>SHUTDOWN：表示停止待销毁<br></li><li>TERMINATING：表示销毁中。<br></li>
+	InstanceState *string `json:"InstanceState" name:"InstanceState"`
 	// 实例所在的位置。
 	Placement *Placement `json:"Placement" name:"Placement"`
 	// 实例`ID`。
@@ -1583,14 +1625,6 @@ type Instance struct {
 	CreatedTime *string `json:"CreatedTime" name:"CreatedTime"`
 	// 到期时间。按照`ISO8601`标准表示，并且使用`UTC`时间。格式为：`YYYY-MM-DDThh:mm:ssZ`。
 	ExpiredTime *string `json:"ExpiredTime" name:"ExpiredTime"`
-	// 操作系统名称。
-	OsName *string `json:"OsName" name:"OsName"`
-	// 实例所属安全组。该参数可以通过调用 [DescribeSecurityGroups](https://cloud.tencent.com/document/api/215/15808) 的返回值中的sgId字段来获取。
-	SecurityGroupIds []*string `json:"SecurityGroupIds" name:"SecurityGroupIds" list`
-	// 实例登录设置。目前只返回实例所关联的密钥。
-	LoginSettings *LoginSettings `json:"LoginSettings" name:"LoginSettings"`
-	// 实例状态。取值范围：<br><li>PENDING：表示创建中<br></li><li>LAUNCH_FAILED：表示创建失败<br></li><li>RUNNING：表示运行中<br></li><li>STOPPED：表示关机<br></li><li>STARTING：表示开机中<br></li><li>STOPPING：表示关机中<br></li><li>REBOOTING：表示重启中<br></li><li>SHUTDOWN：表示停止待销毁<br></li><li>TERMINATING：表示销毁中。<br></li>
-	InstanceState *string `json:"InstanceState" name:"InstanceState"`
 }
 
 type InstanceChargePrepaid struct {
@@ -2394,17 +2428,17 @@ func (r *ResizeInstanceDisksResponse) FromJsonString(s string) error {
 
 type RunInstancesRequest struct {
 	*tchttp.BaseRequest
+	// 实例所在的位置。通过该参数可以指定实例所属可用区，所属项目，专用宿主机（对于独享母机付费模式的子机创建）等属性。
+	Placement *Placement `json:"Placement" name:"Placement"`
+	// 指定有效的[镜像](https://cloud.tencent.com/document/product/213/4940)ID，格式形如`img-xxx`。镜像类型分为四种：<br/><li>公共镜像</li><li>自定义镜像</li><li>共享镜像</li><li>服务市场镜像</li><br/>可通过以下方式获取可用的镜像ID：<br/><li>`公共镜像`、`自定义镜像`、`共享镜像`的镜像ID可通过登录[控制台](https://console.cloud.tencent.com/cvm/image?rid=1&imageType=PUBLIC_IMAGE)查询；`服务镜像市场`的镜像ID可通过[云市场](https://market.cloud.tencent.com/list)查询。</li><li>通过调用接口 [DescribeImages](https://cloud.tencent.com/document/api/213/15715) ，取返回信息中的`ImageId`字段。</li>
+	ImageId *string `json:"ImageId" name:"ImageId"`
 	// 实例[计费类型](https://cloud.tencent.com/document/product/213/2180)。<br><li>PREPAID：预付费，即包年包月<br><li>POSTPAID_BY_HOUR：按小时后付费<br><li>CDHPAID：独享母机付费（基于专用宿主机创建，宿主机部分的资源不收费）<br>默认值：POSTPAID_BY_HOUR。
 	InstanceChargeType *string `json:"InstanceChargeType" name:"InstanceChargeType"`
 	// 预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月实例的购买时长、是否设置自动续费等属性。若指定实例的付费模式为预付费则该参数必传。
 	InstanceChargePrepaid *InstanceChargePrepaid `json:"InstanceChargePrepaid" name:"InstanceChargePrepaid"`
-	// 实例所在的位置。通过该参数可以指定实例所属可用区，所属项目，专用宿主机（对于独享母机付费模式的子机创建）等属性。
-	Placement *Placement `json:"Placement" name:"Placement"`
 	// 实例机型。不同实例机型指定了不同的资源规格。
 	// <br><li>对于付费模式为PREPAID或POSTPAID_BY_HOUR的子机创建，具体取值可通过调用接口[DescribeInstanceTypeConfigs](https://cloud.tencent.com/document/api/213/15749)来获得最新的规格表或参见[实例类型](https://cloud.tencent.com/document/product/213/11518)描述。若不指定该参数，则默认机型为S1.SMALL1。<br><li>对于付费模式为CDHPAID的子机创建，该参数以"CDH_"为前缀，根据cpu和内存配置生成，具体形式为：CDH_XCXG，例如对于创建cpu为1核，内存为1G大小的专用宿主机的子机，该参数应该为CDH_1C1G。
 	InstanceType *string `json:"InstanceType" name:"InstanceType"`
-	// 指定有效的[镜像](https://cloud.tencent.com/document/product/213/4940)ID，格式形如`img-xxx`。镜像类型分为四种：<br/><li>公共镜像</li><li>自定义镜像</li><li>共享镜像</li><li>服务市场镜像</li><br/>可通过以下方式获取可用的镜像ID：<br/><li>`公共镜像`、`自定义镜像`、`共享镜像`的镜像ID可通过登录[控制台](https://console.cloud.tencent.com/cvm/image?rid=1&imageType=PUBLIC_IMAGE)查询；`服务镜像市场`的镜像ID可通过[云市场](https://market.cloud.tencent.com/list)查询。</li><li>通过调用接口 [DescribeImages](https://cloud.tencent.com/document/api/213/15715) ，取返回信息中的`ImageId`字段。</li>
-	ImageId *string `json:"ImageId" name:"ImageId"`
 	// 实例系统盘配置信息。若不指定该参数，则按照系统默认值进行分配。
 	SystemDisk *SystemDisk `json:"SystemDisk" name:"SystemDisk"`
 	// 实例数据盘配置信息。若不指定该参数，则默认不购买数据盘，当前仅支持购买的时候指定一个数据盘。
@@ -2429,6 +2463,8 @@ type RunInstancesRequest struct {
 	HostName *string `json:"HostName" name:"HostName"`
 	// 定时任务。通过该参数可以为实例指定定时任务，目前仅支持定时销毁。
 	ActionTimer *ActionTimer `json:"ActionTimer" name:"ActionTimer"`
+	// 容灾组id，仅支持指定一个。
+	DisasterRecoverGroupIds []*string `json:"DisasterRecoverGroupIds" name:"DisasterRecoverGroupIds" list`
 	// 标签描述列表。通过指定该参数可以同时绑定标签到相应的资源实例，当前仅支持绑定标签到云主机实例。
 	TagSpecification []*TagSpecification `json:"TagSpecification" name:"TagSpecification" list`
 	// 实例的市场相关选项，如竞价实例相关参数
