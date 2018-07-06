@@ -139,6 +139,7 @@ func main() {
 | 数据库 MariaDB(TDSQL) | mariadb |
 | 数据库 PostgreSQL | postgres |
 | 分布式数据库 DCDB | dcdb |
+| 数据传输服务 DTS | dts |
 | Web 漏洞扫描 | cws |
 | 应用安全 | ms |
 | 加速物联网套件 | iot |

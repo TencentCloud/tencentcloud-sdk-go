@@ -1,5 +1,12 @@
 ## latest
 
+## 3.0.10 (2018-07-06)
+
+* update apis
+    * aai
+    * cdb
+    * cvm
+
 ## 3.0.9 (2018-07-02)
 
 * update apis
