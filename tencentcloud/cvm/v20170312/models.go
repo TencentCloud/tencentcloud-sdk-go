@@ -1324,6 +1324,8 @@ type InquiryPriceRenewInstancesRequest struct {
 	InstanceChargePrepaid *InstanceChargePrepaid `json:"InstanceChargePrepaid" name:"InstanceChargePrepaid"`
 	// 试运行。
 	DryRun *bool `json:"DryRun" name:"DryRun"`
+	// 是否续费弹性数据盘。取值范围：<br><li>TRUE：表示续费包年包月实例同时续费其挂载的弹性数据盘<br><li>FALSE：表示续费包年包月实例同时不再续费其挂载的弹性数据盘<br><br>默认取值：TRUE。
+	RenewPortableDataDisk *bool `json:"RenewPortableDataDisk" name:"RenewPortableDataDisk"`
 }
 
 func (r *InquiryPriceRenewInstancesRequest) ToJsonString() string {
@@ -2109,6 +2111,8 @@ type OsVersion struct {
 	OsName *string `json:"OsName" name:"OsName"`
 	// 支持的操作系统版本
 	OsVersions []*string `json:"OsVersions" name:"OsVersions" list`
+	// 支持的操作系统架构
+	Architecture []*string `json:"Architecture" name:"Architecture" list`
 }
 
 type Placement struct {
@@ -2116,7 +2120,7 @@ type Placement struct {
 	Zone *string `json:"Zone" name:"Zone"`
 	// 实例所属项目ID。该参数可以通过调用 [DescribeProject](/document/api/378/4400) 的返回值中的 projectId 字段来获取。不填为默认项目。
 	ProjectId *int64 `json:"ProjectId" name:"ProjectId"`
-	// 实例所属的专用宿主机ID列表。如果您有购买专用宿主机并且指定了该参数，则您购买的实例就会随机的部署在这些专用宿主机上。当前暂不支持。
+	// 实例所属的专用宿主机ID列表。如果您有购买专用宿主机并且指定了该参数，则您购买的实例就会随机的部署在这些专用宿主机上。
 	HostIds []*string `json:"HostIds" name:"HostIds" list`
 }
 
@@ -2210,6 +2214,8 @@ type RenewInstancesRequest struct {
 	InstanceIds []*string `json:"InstanceIds" name:"InstanceIds" list`
 	// 预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月实例的续费时长、是否设置自动续费等属性。
 	InstanceChargePrepaid *InstanceChargePrepaid `json:"InstanceChargePrepaid" name:"InstanceChargePrepaid"`
+	// 是否续费弹性数据盘。取值范围：<br><li>TRUE：表示续费包年包月实例同时续费其挂载的弹性数据盘<br><li>FALSE：表示续费包年包月实例同时不再续费其挂载的弹性数据盘<br><br>默认取值：TRUE。
+	RenewPortableDataDisk *bool `json:"RenewPortableDataDisk" name:"RenewPortableDataDisk"`
 }
 
 func (r *RenewInstancesRequest) ToJsonString() string {
@@ -2432,7 +2438,7 @@ type RunInstancesRequest struct {
 	Placement *Placement `json:"Placement" name:"Placement"`
 	// 指定有效的[镜像](https://cloud.tencent.com/document/product/213/4940)ID，格式形如`img-xxx`。镜像类型分为四种：<br/><li>公共镜像</li><li>自定义镜像</li><li>共享镜像</li><li>服务市场镜像</li><br/>可通过以下方式获取可用的镜像ID：<br/><li>`公共镜像`、`自定义镜像`、`共享镜像`的镜像ID可通过登录[控制台](https://console.cloud.tencent.com/cvm/image?rid=1&imageType=PUBLIC_IMAGE)查询；`服务镜像市场`的镜像ID可通过[云市场](https://market.cloud.tencent.com/list)查询。</li><li>通过调用接口 [DescribeImages](https://cloud.tencent.com/document/api/213/15715) ，取返回信息中的`ImageId`字段。</li>
 	ImageId *string `json:"ImageId" name:"ImageId"`
-	// 实例[计费类型](https://cloud.tencent.com/document/product/213/2180)。<br><li>PREPAID：预付费，即包年包月<br><li>POSTPAID_BY_HOUR：按小时后付费<br><li>CDHPAID：独享母机付费（基于专用宿主机创建，宿主机部分的资源不收费）<br>默认值：POSTPAID_BY_HOUR。
+	// 实例[计费类型](https://cloud.tencent.com/document/product/213/2180)。<br><li>PREPAID：预付费，即包年包月<br><li>POSTPAID_BY_HOUR：按小时后付费<br><li>CDHPAID：独享母机付费（基于专用宿主机创建，宿主机部分的资源不收费）<br><li>SPOTPAID：竞价付费<br>默认值：POSTPAID_BY_HOUR。
 	InstanceChargeType *string `json:"InstanceChargeType" name:"InstanceChargeType"`
 	// 预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月实例的购买时长、是否设置自动续费等属性。若指定实例的付费模式为预付费则该参数必传。
 	InstanceChargePrepaid *InstanceChargePrepaid `json:"InstanceChargePrepaid" name:"InstanceChargePrepaid"`
@@ -2459,7 +2465,7 @@ type RunInstancesRequest struct {
 	EnhancedService *EnhancedService `json:"EnhancedService" name:"EnhancedService"`
 	// 用于保证请求幂等性的字符串。该字符串由客户生成，需保证不同请求之间唯一，最大值不超过64个ASCII字符。若不指定该参数，则无法保证请求的幂等性。<br>更多详细信息请参阅：如何保证幂等性。
 	ClientToken *string `json:"ClientToken" name:"ClientToken"`
-	// 云服务器的主机名。<br><li>点号（.）和短横线（-）不能作为 HostName 的首尾字符，不能连续使用。<br><li>Windows 实例：名字符长度为[2, 15]，允许字母（不限制大小写）、数字和短横线（-）组成，不支持点号（.），不能全是数字。<br><li>其他类型（Linux 等）实例：字符长度为[2, 30]，允许支持多个点号，点之间为一段，每段允许字母（不限制大小写）、数字和短横线（-）组成。
+	// 云服务器的主机名。<br><li>点号（.）和短横线（-）不能作为 HostName 的首尾字符，不能连续使用。<br><li>Windows 实例：名字符长度为[2, 15]，允许字母（不限制大小写）、数字和短横线（-）组成，不支持点号（.），不能全是数字。<br><li>其他类型（Linux 等）实例：字符长度为[2, 60]，允许支持多个点号，点之间为一段，每段允许字母（不限制大小写）、数字和短横线（-）组成。
 	HostName *string `json:"HostName" name:"HostName"`
 	// 定时任务。通过该参数可以为实例指定定时任务，目前仅支持定时销毁。
 	ActionTimer *ActionTimer `json:"ActionTimer" name:"ActionTimer"`
@@ -2469,8 +2475,7 @@ type RunInstancesRequest struct {
 	TagSpecification []*TagSpecification `json:"TagSpecification" name:"TagSpecification" list`
 	// 实例的市场相关选项，如竞价实例相关参数
 	InstanceMarketOptions *InstanceMarketOptionsRequest `json:"InstanceMarketOptions" name:"InstanceMarketOptions"`
-	// 提供给实例使用的用户数据，需要以 base64 方式编码，支持的最大数据大小为 16KB。关于获取此参数的详细介绍，请参阅[Windows](https://cloud.tencent.com/document/product/213/17526
-	// )和[Linux](https://cloud.tencent.com/document/product/213/17525)启动时运行命令。
+	// 提供给实例使用的用户数据，需要以 base64 方式编码，支持的最大数据大小为 16KB。关于获取此参数的详细介绍，请参阅[Windows](https://cloud.tencent.com/document/product/213/17526)和[Linux](https://cloud.tencent.com/document/product/213/17525)启动时运行命令。
 	UserData *string `json:"UserData" name:"UserData"`
 }
 
@@ -2522,7 +2527,7 @@ type SharePermission struct {
 type SpotMarketOptions struct {
 	// 竞价出价
 	MaxPrice *string `json:"MaxPrice" name:"MaxPrice"`
-	// 竞价请求类型
+	// 竞价请求类型，当前仅支持类型：one-time
 	SpotInstanceType *string `json:"SpotInstanceType" name:"SpotInstanceType"`
 }
 

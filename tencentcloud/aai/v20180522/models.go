@@ -74,7 +74,7 @@ type TextToVoiceRequest struct {
 	*tchttp.BaseRequest
 	// 合成语音的源文本
 	Text *string `json:"Text" name:"Text"`
-	// 一次请求对应一个SessionId，会原样返回
+	// 一次请求对应一个SessionId，会原样返回，建议传入类似于uuid的字符串防止重复
 	SessionId *string `json:"SessionId" name:"SessionId"`
 	// 模型类型，1-默认模型
 	ModelType *int64 `json:"ModelType" name:"ModelType"`

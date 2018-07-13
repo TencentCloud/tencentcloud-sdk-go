@@ -465,13 +465,6 @@ type DatabasePrivilege struct {
 	Database *string `json:"Database" name:"Database"`
 }
 
-type DatabaseTableList struct {
-	// 数据库名
-	DatabaseName *string `json:"DatabaseName" name:"DatabaseName"`
-	// 数据表数组
-	TableList []*string `json:"TableList" name:"TableList" list`
-}
-
 type DeleteAccountsRequest struct {
 	*tchttp.BaseRequest
 	// 实例ID，格式如：cdb-c1nl9rpv，与云数据库控制台页面中显示的实例ID相同。
@@ -709,44 +702,6 @@ func (r *DescribeBackupDatabasesResponse) ToJsonString() string {
 }
 
 func (r *DescribeBackupDatabasesResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
-}
-
-type DescribeBackupDownloadDbTableCodeRequest struct {
-	*tchttp.BaseRequest
-	// 实例ID，格式如：cdb-c1nl9rpv。与云数据库控制台页面中显示的实例ID相同。
-	InstanceId *string `json:"InstanceId" name:"InstanceId"`
-	// 开始时间，格式为：2017-07-12 10:29:20。
-	StartTime *string `json:"StartTime" name:"StartTime"`
-	// 待下载的数据库和数据表列表。
-	DatabaseTableList []*DatabaseTableList `json:"DatabaseTableList" name:"DatabaseTableList" list`
-}
-
-func (r *DescribeBackupDownloadDbTableCodeRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-func (r *DescribeBackupDownloadDbTableCodeRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
-}
-
-type DescribeBackupDownloadDbTableCodeResponse struct {
-	*tchttp.BaseResponse
-	Response *struct {
-		// 下载位点
-		DatabaseTableCode *int64 `json:"DatabaseTableCode" name:"DatabaseTableCode"`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
-		RequestId *string `json:"RequestId" name:"RequestId"`
-	} `json:"Response"`
-}
-
-func (r *DescribeBackupDownloadDbTableCodeResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-func (r *DescribeBackupDownloadDbTableCodeResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 

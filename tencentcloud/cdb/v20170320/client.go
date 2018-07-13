@@ -383,31 +383,6 @@ func (c *Client) DescribeBackupDatabases(request *DescribeBackupDatabasesRequest
     return
 }
 
-func NewDescribeBackupDownloadDbTableCodeRequest() (request *DescribeBackupDownloadDbTableCodeRequest) {
-    request = &DescribeBackupDownloadDbTableCodeRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    request.Init().WithApiInfo("cdb", APIVersion, "DescribeBackupDownloadDbTableCode")
-    return
-}
-
-func NewDescribeBackupDownloadDbTableCodeResponse() (response *DescribeBackupDownloadDbTableCodeResponse) {
-    response = &DescribeBackupDownloadDbTableCodeResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    }
-    return
-}
-
-// 本接口(DescribeBackupDownloadDbTableCode)用于查询备份数据分库分表下载位点。
-func (c *Client) DescribeBackupDownloadDbTableCode(request *DescribeBackupDownloadDbTableCodeRequest) (response *DescribeBackupDownloadDbTableCodeResponse, err error) {
-    if request == nil {
-        request = NewDescribeBackupDownloadDbTableCodeRequest()
-    }
-    response = NewDescribeBackupDownloadDbTableCodeResponse()
-    err = c.Send(request, response)
-    return
-}
-
 func NewDescribeBackupTablesRequest() (request *DescribeBackupTablesRequest) {
     request = &DescribeBackupTablesRequest{
         BaseRequest: &tchttp.BaseRequest{},
