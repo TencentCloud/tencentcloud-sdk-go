@@ -480,7 +480,7 @@ type CreateRoutesRequest struct {
 	// 路由表实例ID。
 	RouteTableId *string `json:"RouteTableId" name:"RouteTableId"`
 	// 路由策略对象。
-	Routes []*string `json:"Routes" name:"Routes" list`
+	Routes []*Route `json:"Routes" name:"Routes" list`
 }
 
 func (r *CreateRoutesRequest) ToJsonString() string {
