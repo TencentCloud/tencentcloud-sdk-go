@@ -399,10 +399,10 @@ type CreateNetworkInterfaceRequest struct {
 	VpcId *string `json:"VpcId" name:"VpcId"`
 	// 弹性网卡名称，最大长度不能超过60个字节。
 	NetworkInterfaceName *string `json:"NetworkInterfaceName" name:"NetworkInterfaceName"`
-	// 弹性网卡描述，可任意命名，但不得超过60个字符。
-	NetworkInterfaceDescription *string `json:"NetworkInterfaceDescription" name:"NetworkInterfaceDescription"`
 	// 弹性网卡所在的子网实例ID，例如：subnet-0ap8nwca。
 	SubnetId *string `json:"SubnetId" name:"SubnetId"`
+	// 弹性网卡描述，可任意命名，但不得超过60个字符。
+	NetworkInterfaceDescription *string `json:"NetworkInterfaceDescription" name:"NetworkInterfaceDescription"`
 	// 新申请的内网IP地址个数。
 	SecondaryPrivateIpAddressCount *uint64 `json:"SecondaryPrivateIpAddressCount" name:"SecondaryPrivateIpAddressCount"`
 	// 指定绑定的安全组，例如：['sg-1dd51d']。
@@ -480,7 +480,7 @@ type CreateRoutesRequest struct {
 	// 路由表实例ID。
 	RouteTableId *string `json:"RouteTableId" name:"RouteTableId"`
 	// 路由策略对象。
-	Routes []*string `json:"Routes" name:"Routes" list`
+	Routes []*Route `json:"Routes" name:"Routes" list`
 }
 
 func (r *CreateRoutesRequest) ToJsonString() string {
@@ -545,12 +545,12 @@ func (r *CreateSecurityGroupPoliciesResponse) FromJsonString(s string) error {
 
 type CreateSecurityGroupRequest struct {
 	*tchttp.BaseRequest
-	// 项目id，默认0。可在qcloud控制台项目管理页面查询到。
-	ProjectId *string `json:"ProjectId" name:"ProjectId"`
 	// 安全组名称，可任意命名，但不得超过60个字符。
 	GroupName *string `json:"GroupName" name:"GroupName"`
 	// 安全组备注，最多100个字符。
 	GroupDescription *string `json:"GroupDescription" name:"GroupDescription"`
+	// 项目id，默认0。可在qcloud控制台项目管理页面查询到。
+	ProjectId *string `json:"ProjectId" name:"ProjectId"`
 }
 
 func (r *CreateSecurityGroupRequest) ToJsonString() string {
@@ -789,10 +789,10 @@ type CreateVpnGatewayRequest struct {
 	VpcId *string `json:"VpcId" name:"VpcId"`
 	// VPN网关名称，最大长度不能超过60个字节。
 	VpnGatewayName *string `json:"VpnGatewayName" name:"VpnGatewayName"`
-	// VPN网关计费模式，PREPAID：表示预付费，即包年包月，POSTPAID_BY_HOUR：表示后付费，即按量计费。默认：POSTPAID_BY_HOUR，如果指定预付费模式，参数InstanceChargePrepaid必填。
-	InstanceChargeType *string `json:"InstanceChargeType" name:"InstanceChargeType"`
 	// 公网带宽设置。可选带宽规格：5, 10, 20, 50, 100；单位：Mbps
 	InternetMaxBandwidthOut *uint64 `json:"InternetMaxBandwidthOut" name:"InternetMaxBandwidthOut"`
+	// VPN网关计费模式，PREPAID：表示预付费，即包年包月，POSTPAID_BY_HOUR：表示后付费，即按量计费。默认：POSTPAID_BY_HOUR，如果指定预付费模式，参数InstanceChargePrepaid必填。
+	InstanceChargeType *string `json:"InstanceChargeType" name:"InstanceChargeType"`
 	// 预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月实例的购买时长、是否设置自动续费等属性。若指定实例的付费模式为预付费则该参数必传。
 	InstanceChargePrepaid *InstanceChargePrepaid `json:"InstanceChargePrepaid" name:"InstanceChargePrepaid"`
 }
@@ -1017,7 +1017,7 @@ type DeleteRoutesRequest struct {
 	// 路由表实例ID。
 	RouteTableId *string `json:"RouteTableId" name:"RouteTableId"`
 	// 路由策略对象。
-	Routes []*string `json:"Routes" name:"Routes" list`
+	Routes []*Route `json:"Routes" name:"Routes" list`
 }
 
 func (r *DeleteRoutesRequest) ToJsonString() string {
@@ -1322,7 +1322,7 @@ func (r *DescribeAccountAttributesRequest) FromJsonString(s string) error {
 type DescribeAccountAttributesResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
-		// 用户账号私有属性对象
+		// 用户账号属性对象
 		AccountAttributeSet []*AccountAttribute `json:"AccountAttributeSet" name:"AccountAttributeSet" list`
 		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
@@ -1965,7 +1965,7 @@ type DescribeVpcsRequest struct {
 	VpcIds []*string `json:"VpcIds" name:"VpcIds" list`
 	// 过滤条件，参数不支持同时指定VpcIds和Filters。
 	// <li>vpc-name - String - （过滤条件）VPC实例名称。</li>
-	// <li>is-default - Boolean - （过滤条件）是否默认VPC。</li>
+	// <li>is-default - String - （过滤条件）是否默认VPC。</li>
 	// <li>vpc-id - String - （过滤条件）VPC实例ID形如：vpc-f49l6u0z。</li>
 	// <li>cidr-block - String - （过滤条件）vpc的cidr。</li>
 	Filters []*Filter `json:"Filters" name:"Filters" list`
@@ -2287,12 +2287,12 @@ type IPSECOptionsSpecification struct {
 
 type InquiryPriceCreateVpnGatewayRequest struct {
 	*tchttp.BaseRequest
+	// 公网带宽设置。可选带宽规格：5, 10, 20, 50, 100；单位：Mbps。
+	InternetMaxBandwidthOut *uint64 `json:"InternetMaxBandwidthOut" name:"InternetMaxBandwidthOut"`
 	// VPN网关计费模式，PREPAID：表示预付费，即包年包月，POSTPAID_BY_HOUR：表示后付费，即按量计费。默认：POSTPAID_BY_HOUR，如果指定预付费模式，参数InstanceChargePrepaid必填。
 	InstanceChargeType *string `json:"InstanceChargeType" name:"InstanceChargeType"`
 	// 预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月实例的购买时长、是否设置自动续费等属性。若指定实例的付费模式为预付费则该参数必传。
 	InstanceChargePrepaid *InstanceChargePrepaid `json:"InstanceChargePrepaid" name:"InstanceChargePrepaid"`
-	// 公网带宽设置。可选带宽规格：5, 10, 20, 50, 100；单位：Mbps。
-	InternetMaxBandwidthOut *uint64 `json:"InternetMaxBandwidthOut" name:"InternetMaxBandwidthOut"`
 }
 
 func (r *InquiryPriceCreateVpnGatewayRequest) ToJsonString() string {
@@ -3371,16 +3371,18 @@ func (r *ResetVpnGatewayInternetMaxBandwidthResponse) FromJsonString(s string) e
 }
 
 type Route struct {
-	// 路由策略ID。
-	RouteId *uint64 `json:"RouteId" name:"RouteId"`
 	// 目的网段，取值不能在私有网络网段内，例如：112.20.51.0/24。
 	DestinationCidrBlock *string `json:"DestinationCidrBlock" name:"DestinationCidrBlock"`
 	// 下一跳类型，目前我们支持的类型有：CVM：公网网关类型的云主机；VPN：vpn网关； DIRECTCONNECT：专线网关；PEERCONNECTION：对等连接；SSLVPN：sslvpn网关；NAT：nat网关; NORMAL_CVM：普通云主机。
 	GatewayType *string `json:"GatewayType" name:"GatewayType"`
 	// 下一跳地址，这里只需要指定不同下一跳类型的网关ID，系统会自动匹配到下一跳地址。
 	GatewayId *string `json:"GatewayId" name:"GatewayId"`
+	// 路由策略ID。
+	RouteId *uint64 `json:"RouteId" name:"RouteId"`
 	// 路由策略描述。
 	RouteDescription *string `json:"RouteDescription" name:"RouteDescription"`
+	// 是否启用
+	Enabled *bool `json:"Enabled" name:"Enabled"`
 }
 
 type RouteTable struct {
@@ -3408,14 +3410,14 @@ type RouteTableAssociation struct {
 }
 
 type SecurityGroup struct {
-	// 项目id，默认0。可在qcloud控制台项目管理页面查询到。
-	ProjectId *string `json:"ProjectId" name:"ProjectId"`
 	// 安全组实例ID，例如：sg-ohuuioma。
 	SecurityGroupId *string `json:"SecurityGroupId" name:"SecurityGroupId"`
 	// 安全组名称，可任意命名，但不得超过60个字符。
 	SecurityGroupName *string `json:"SecurityGroupName" name:"SecurityGroupName"`
 	// 安全组备注，最多100个字符。
 	SecurityGroupDesc *string `json:"SecurityGroupDesc" name:"SecurityGroupDesc"`
+	// 项目id，默认0。可在qcloud控制台项目管理页面查询到。
+	ProjectId *string `json:"ProjectId" name:"ProjectId"`
 	// 是否是默认安全组，默认安全组不支持删除。
 	IsDefault *bool `json:"IsDefault" name:"IsDefault"`
 	// 安全组创建时间。
@@ -3598,6 +3600,12 @@ type Vpc struct {
 	EnableMulticast *bool `json:"EnableMulticast" name:"EnableMulticast"`
 	// 创建时间。
 	CreatedTime *string `json:"CreatedTime" name:"CreatedTime"`
+	// DNS列表
+	DnsServerSet []*string `json:"DnsServerSet" name:"DnsServerSet" list`
+	// DHCP域名选项值
+	DomainName *string `json:"DomainName" name:"DomainName"`
+	// DHCP选项集ID
+	DhcpOptionsId *string `json:"DhcpOptionsId" name:"DhcpOptionsId"`
 }
 
 type VpnConnection struct {

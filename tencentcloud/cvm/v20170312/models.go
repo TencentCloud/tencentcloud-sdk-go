@@ -1160,6 +1160,12 @@ type HostResource struct {
 }
 
 type Image struct {
+	// 镜像ID
+	ImageId *string `json:"ImageId" name:"ImageId"`
+	// 镜像操作系统
+	OsName *string `json:"OsName" name:"OsName"`
+	// 镜像类型
+	ImageType *string `json:"ImageType" name:"ImageType"`
 	// 镜像创建时间
 	CreatedTime *string `json:"CreatedTime" name:"CreatedTime"`
 	// 镜像名称
@@ -1172,12 +1178,6 @@ type Image struct {
 	Architecture *string `json:"Architecture" name:"Architecture"`
 	// 镜像状态
 	ImageState *string `json:"ImageState" name:"ImageState"`
-	// 镜像ID
-	ImageId *string `json:"ImageId" name:"ImageId"`
-	// 镜像操作系统
-	OsName *string `json:"OsName" name:"OsName"`
-	// 镜像类型
-	ImageType *string `json:"ImageType" name:"ImageType"`
 	// 镜像来源平台
 	Platform *string `json:"Platform" name:"Platform"`
 	// 镜像创建者
@@ -1585,16 +1585,6 @@ func (r *InquiryPriceRunInstancesResponse) FromJsonString(s string) error {
 }
 
 type Instance struct {
-	// 操作系统名称。
-	OsName *string `json:"OsName" name:"OsName"`
-	// 实例所属安全组。该参数可以通过调用 [DescribeSecurityGroups](https://cloud.tencent.com/document/api/215/15808) 的返回值中的sgId字段来获取。
-	SecurityGroupIds []*string `json:"SecurityGroupIds" name:"SecurityGroupIds" list`
-	// 实例登录设置。目前只返回实例所关联的密钥。
-	LoginSettings *LoginSettings `json:"LoginSettings" name:"LoginSettings"`
-	// 实例状态。取值范围：<br><li>PENDING：表示创建中<br></li><li>LAUNCH_FAILED：表示创建失败<br></li><li>RUNNING：表示运行中<br></li><li>STOPPED：表示关机<br></li><li>STARTING：表示开机中<br></li><li>STOPPING：表示关机中<br></li><li>REBOOTING：表示重启中<br></li><li>SHUTDOWN：表示停止待销毁<br></li><li>TERMINATING：表示销毁中。<br></li>
-	InstanceState *string `json:"InstanceState" name:"InstanceState"`
-	// 实例关联的标签列表。
-	Tags []*Tag `json:"Tags" name:"Tags" list`
 	// 实例所在的位置。
 	Placement *Placement `json:"Placement" name:"Placement"`
 	// 实例`ID`。
@@ -1631,6 +1621,16 @@ type Instance struct {
 	CreatedTime *string `json:"CreatedTime" name:"CreatedTime"`
 	// 到期时间。按照`ISO8601`标准表示，并且使用`UTC`时间。格式为：`YYYY-MM-DDThh:mm:ssZ`。
 	ExpiredTime *string `json:"ExpiredTime" name:"ExpiredTime"`
+	// 操作系统名称。
+	OsName *string `json:"OsName" name:"OsName"`
+	// 实例所属安全组。该参数可以通过调用 [DescribeSecurityGroups](https://cloud.tencent.com/document/api/215/15808) 的返回值中的sgId字段来获取。
+	SecurityGroupIds []*string `json:"SecurityGroupIds" name:"SecurityGroupIds" list`
+	// 实例登录设置。目前只返回实例所关联的密钥。
+	LoginSettings *LoginSettings `json:"LoginSettings" name:"LoginSettings"`
+	// 实例状态。取值范围：<br><li>PENDING：表示创建中<br></li><li>LAUNCH_FAILED：表示创建失败<br></li><li>RUNNING：表示运行中<br></li><li>STOPPED：表示关机<br></li><li>STARTING：表示开机中<br></li><li>STOPPING：表示关机中<br></li><li>REBOOTING：表示重启中<br></li><li>SHUTDOWN：表示停止待销毁<br></li><li>TERMINATING：表示销毁中。<br></li>
+	InstanceState *string `json:"InstanceState" name:"InstanceState"`
+	// 实例关联的标签列表。
+	Tags []*Tag `json:"Tags" name:"Tags" list`
 }
 
 type InstanceChargePrepaid struct {
@@ -2575,8 +2575,6 @@ type StopInstancesRequest struct {
 	ForceStop *bool `json:"ForceStop" name:"ForceStop"`
 	// 实例的关闭模式。取值范围：<br><li>SOFT_FIRST：表示在正常关闭失败后进行强制关闭<br><li>HARD：直接强制关闭<br><li>SOFT：仅软关机<br>默认取值：SOFT。
 	StopType *string `json:"StopType" name:"StopType"`
-	// 关机收费模式<br><li>KEEP_CHARGING：关机继续收费<br><li>STOP_CHARGING：关机停止收费<br>默认取值：KEEP_CHARGING。
-	StoppedMode *string `json:"StoppedMode" name:"StoppedMode"`
 }
 
 func (r *StopInstancesRequest) ToJsonString() string {

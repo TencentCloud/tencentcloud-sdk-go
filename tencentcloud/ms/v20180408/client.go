@@ -41,6 +41,31 @@ func NewClient(credential *common.Credential, region string, clientProfile *prof
 }
 
 
+func NewCreateBindInstanceRequest() (request *CreateBindInstanceRequest) {
+    request = &CreateBindInstanceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ms", APIVersion, "CreateBindInstance")
+    return
+}
+
+func NewCreateBindInstanceResponse() (response *CreateBindInstanceResponse) {
+    response = &CreateBindInstanceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 将应用和资源进行绑定
+func (c *Client) CreateBindInstance(request *CreateBindInstanceRequest) (response *CreateBindInstanceResponse, err error) {
+    if request == nil {
+        request = NewCreateBindInstanceRequest()
+    }
+    response = NewCreateBindInstanceResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateScanInstancesRequest() (request *CreateScanInstancesRequest) {
     request = &CreateScanInstancesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -91,6 +116,31 @@ func (c *Client) CreateShieldInstance(request *CreateShieldInstanceRequest) (res
     return
 }
 
+func NewCreateShieldPlanInstanceRequest() (request *CreateShieldPlanInstanceRequest) {
+    request = &CreateShieldPlanInstanceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ms", APIVersion, "CreateShieldPlanInstance")
+    return
+}
+
+func NewCreateShieldPlanInstanceResponse() (response *CreateShieldPlanInstanceResponse) {
+    response = &CreateShieldPlanInstanceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 对资源进行策略新增
+func (c *Client) CreateShieldPlanInstance(request *CreateShieldPlanInstanceRequest) (response *CreateShieldPlanInstanceResponse, err error) {
+    if request == nil {
+        request = NewCreateShieldPlanInstanceRequest()
+    }
+    response = NewCreateShieldPlanInstanceResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteScanInstancesRequest() (request *DeleteScanInstancesRequest) {
     request = &DeleteScanInstancesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -137,6 +187,31 @@ func (c *Client) DeleteShieldInstances(request *DeleteShieldInstancesRequest) (r
         request = NewDeleteShieldInstancesRequest()
     }
     response = NewDeleteShieldInstancesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeResourceInstancesRequest() (request *DescribeResourceInstancesRequest) {
+    request = &DescribeResourceInstancesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ms", APIVersion, "DescribeResourceInstances")
+    return
+}
+
+func NewDescribeResourceInstancesResponse() (response *DescribeResourceInstancesResponse) {
+    response = &DescribeResourceInstancesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 获取某个用户的所有资源信息
+func (c *Client) DescribeResourceInstances(request *DescribeResourceInstancesRequest) (response *DescribeResourceInstancesResponse, err error) {
+    if request == nil {
+        request = NewDescribeResourceInstancesRequest()
+    }
+    response = NewDescribeResourceInstancesResponse()
     err = c.Send(request, response)
     return
 }
@@ -214,6 +289,31 @@ func (c *Client) DescribeShieldInstances(request *DescribeShieldInstancesRequest
         request = NewDescribeShieldInstancesRequest()
     }
     response = NewDescribeShieldInstancesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeShieldPlanInstanceRequest() (request *DescribeShieldPlanInstanceRequest) {
+    request = &DescribeShieldPlanInstanceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ms", APIVersion, "DescribeShieldPlanInstance")
+    return
+}
+
+func NewDescribeShieldPlanInstanceResponse() (response *DescribeShieldPlanInstanceResponse) {
+    response = &DescribeShieldPlanInstanceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询加固策略
+func (c *Client) DescribeShieldPlanInstance(request *DescribeShieldPlanInstanceRequest) (response *DescribeShieldPlanInstanceResponse, err error) {
+    if request == nil {
+        request = NewDescribeShieldPlanInstanceRequest()
+    }
+    response = NewDescribeShieldPlanInstanceResponse()
     err = c.Send(request, response)
     return
 }

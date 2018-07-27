@@ -203,10 +203,10 @@ type CreateTaskTemplateRequest struct {
 	*tchttp.BaseRequest
 	// 任务模板名称
 	TaskTemplateName *string `json:"TaskTemplateName" name:"TaskTemplateName"`
-	// 任务模板描述
-	TaskTemplateDescription *string `json:"TaskTemplateDescription" name:"TaskTemplateDescription"`
 	// 任务模板内容，参数要求与任务一致
 	TaskTemplateInfo *Task `json:"TaskTemplateInfo" name:"TaskTemplateInfo"`
+	// 任务模板描述
+	TaskTemplateDescription *string `json:"TaskTemplateDescription" name:"TaskTemplateDescription"`
 }
 
 func (r *CreateTaskTemplateRequest) ToJsonString() string {
@@ -238,12 +238,12 @@ func (r *CreateTaskTemplateResponse) FromJsonString(s string) error {
 }
 
 type DataDisk struct {
+	// 数据盘大小，单位：GB。最小调整步长为10G，不同数据盘类型取值范围不同，具体限制详见：[CVM实例配置](/document/product/213/2177)。默认值为0，表示不购买数据盘。更多限制详见产品文档。
+	DiskSize *int64 `json:"DiskSize" name:"DiskSize"`
 	// 数据盘类型。数据盘类型限制详见[CVM实例配置](/document/product/213/2177)。取值范围：<br><li>LOCAL_BASIC：本地硬盘<br><li>LOCAL_SSD：本地SSD硬盘<br><li>CLOUD_BASIC：普通云硬盘<br><li>CLOUD_PREMIUM：高性能云硬盘<br><li>CLOUD_SSD：SSD云硬盘<br><br>默认取值：LOCAL_BASIC。<br><br>该参数对`ResizeInstanceDisk`接口无效。
 	DiskType *string `json:"DiskType" name:"DiskType"`
 	// 数据盘ID。LOCAL_BASIC 和 LOCAL_SSD 类型没有ID。暂时不支持该参数。
 	DiskId *string `json:"DiskId" name:"DiskId"`
-	// 数据盘大小，单位：GB。最小调整步长为10G，不同数据盘类型取值范围不同，具体限制详见：[CVM实例配置](/document/product/213/2177)。默认值为0，表示不购买数据盘。更多限制详见产品文档。
-	DiskSize *int64 `json:"DiskSize" name:"DiskSize"`
 }
 
 type DeleteComputeEnvRequest struct {
@@ -612,6 +612,40 @@ func (r *DescribeComputeEnvsResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeCvmZoneInstanceConfigInfosRequest struct {
+	*tchttp.BaseRequest
+	// 过滤条件
+	Filters *Filter `json:"Filters" name:"Filters"`
+}
+
+func (r *DescribeCvmZoneInstanceConfigInfosRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeCvmZoneInstanceConfigInfosRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeCvmZoneInstanceConfigInfosResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+		// 可用区机型配置列表。
+		InstanceTypeQuotaSet []*InstanceTypeQuotaItem `json:"InstanceTypeQuotaSet" name:"InstanceTypeQuotaSet" list`
+		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		RequestId *string `json:"RequestId" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeCvmZoneInstanceConfigInfosResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeCvmZoneInstanceConfigInfosResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeJobRequest struct {
 	*tchttp.BaseRequest
 	// 作业标识
@@ -851,10 +885,10 @@ type Docker struct {
 	User *string `json:"User" name:"User"`
 	// Docker Hub 密码或 Tencent Registry 密码
 	Password *string `json:"Password" name:"Password"`
-	// Docker Hub 可以不填，但确保具有公网访问能力。或者是 Tencent Registry 服务地址“ccr.ccs.tencentyun.com”
-	Server *string `json:"Server" name:"Server"`
 	// Docker Hub填写“[user/repo]:[tag]”，Tencent Registry填写“ccr.ccs.tencentyun.com/[namespace/repo]:[tag]”
 	Image *string `json:"Image" name:"Image"`
+	// Docker Hub 可以不填，但确保具有公网访问能力。或者是 Tencent Registry 服务地址“ccr.ccs.tencentyun.com”
+	Server *string `json:"Server" name:"Server"`
 }
 
 type EnhancedService struct {
@@ -885,6 +919,10 @@ type EnvData struct {
 	SecurityGroupIds []*string `json:"SecurityGroupIds" name:"SecurityGroupIds" list`
 	// 增强服务。通过该参数可以指定是否开启云安全、云监控等服务。若不指定该参数，则默认开启云监控、云安全服务。
 	EnhancedService *EnhancedService `json:"EnhancedService" name:"EnhancedService"`
+	// CVM实例计费类型<br><li>POSTPAID_BY_HOUR：按小时后付费<br><li>SPOTPAID：竞价付费<br>默认值：POSTPAID_BY_HOUR。
+	InstanceChargeType *string `json:"InstanceChargeType" name:"InstanceChargeType"`
+	// 实例的市场相关选项，如竞价实例相关参数
+	InstanceMarketOptions *InstanceMarketOptionsRequest `json:"InstanceMarketOptions" name:"InstanceMarketOptions"`
 }
 
 type EnvVar struct {
@@ -908,6 +946,15 @@ type EventVar struct {
 	Value *string `json:"Value" name:"Value"`
 }
 
+type Externals struct {
+	// 释放地址
+	ReleaseAddress *bool `json:"ReleaseAddress" name:"ReleaseAddress"`
+	// 不支持的网络类型
+	UnsupportNetworks []*string `json:"UnsupportNetworks" name:"UnsupportNetworks" list`
+	// HDD本地存储属性
+	StorageBlockAttr *StorageBlock `json:"StorageBlockAttr" name:"StorageBlockAttr"`
+}
+
 type Filter struct {
 	// 需要过滤的字段。
 	Name *string `json:"Name" name:"Name"`
@@ -922,6 +969,23 @@ type InputMapping struct {
 	DestinationPath *string `json:"DestinationPath" name:"DestinationPath"`
 	// 挂载配置项参数
 	MountOptionParameter *string `json:"MountOptionParameter" name:"MountOptionParameter"`
+}
+
+type InstanceMarketOptionsRequest struct {
+	*tchttp.BaseRequest
+	// 市场选项类型，当前只支持取值：spot
+	MarketType *string `json:"MarketType" name:"MarketType"`
+	// 竞价相关选项
+	SpotOptions *SpotMarketOptions `json:"SpotOptions" name:"SpotOptions"`
+}
+
+func (r *InstanceMarketOptionsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *InstanceMarketOptionsRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
 }
 
 type InstanceTypeConfig struct {
@@ -943,6 +1007,33 @@ type InstanceTypeConfig struct {
 	InstanceTypeState *string `json:"InstanceTypeState" name:"InstanceTypeState"`
 }
 
+type InstanceTypeQuotaItem struct {
+	// 可用区。
+	Zone *string `json:"Zone" name:"Zone"`
+	// 实例机型。
+	InstanceType *string `json:"InstanceType" name:"InstanceType"`
+	// 实例计费模式。取值范围： <br><li>PREPAID：表示预付费，即包年包月<br><li>POSTPAID_BY_HOUR：表示后付费，即按量计费<br><li>CDHPAID：表示[CDH](https://cloud.tencent.com/document/product/416)付费，即只对CDH计费，不对CDH上的实例计费。
+	InstanceChargeType *string `json:"InstanceChargeType" name:"InstanceChargeType"`
+	// 网卡类型，例如：25代表25G网卡
+	NetworkCard *int64 `json:"NetworkCard" name:"NetworkCard"`
+	// 扩展属性。
+	Externals *Externals `json:"Externals" name:"Externals"`
+	// 实例的CPU核数，单位：核。
+	Cpu *int64 `json:"Cpu" name:"Cpu"`
+	// 实例内存容量，单位：`GB`。
+	Memory *int64 `json:"Memory" name:"Memory"`
+	// 实例机型系列。
+	InstanceFamily *string `json:"InstanceFamily" name:"InstanceFamily"`
+	// 机型名称。
+	TypeName *string `json:"TypeName" name:"TypeName"`
+	// 本地磁盘规格列表。
+	LocalDiskTypeList []*LocalDiskType `json:"LocalDiskTypeList" name:"LocalDiskTypeList" list`
+	// 实例是否售卖。
+	Status *string `json:"Status" name:"Status"`
+	// 实例的售卖价格。
+	Price *ItemPrice `json:"Price" name:"Price"`
+}
+
 type InternetAccessible struct {
 	// 网络计费类型。取值范围：<br><li>BANDWIDTH_PREPAID：预付费按带宽结算<br><li>TRAFFIC_POSTPAID_BY_HOUR：流量按小时后付费<br><li>BANDWIDTH_POSTPAID_BY_HOUR：带宽按小时后付费<br><li>BANDWIDTH_PACKAGE：带宽包用户<br>默认取值：TRAFFIC_POSTPAID_BY_HOUR。
 	InternetChargeType *string `json:"InternetChargeType" name:"InternetChargeType"`
@@ -952,15 +1043,26 @@ type InternetAccessible struct {
 	PublicIpAssigned *bool `json:"PublicIpAssigned" name:"PublicIpAssigned"`
 }
 
+type ItemPrice struct {
+	// 后续单价，单位：元。
+	UnitPrice *float64 `json:"UnitPrice" name:"UnitPrice"`
+	// 后续计价单元，可取值范围： <br><li>HOUR：表示计价单元是按每小时来计算。当前涉及该计价单元的场景有：实例按小时后付费（POSTPAID_BY_HOUR）、带宽按小时后付费（BANDWIDTH_POSTPAID_BY_HOUR）：<br><li>GB：表示计价单元是按每GB来计算。当前涉及该计价单元的场景有：流量按小时后付费（TRAFFIC_POSTPAID_BY_HOUR）。
+	ChargeUnit *string `json:"ChargeUnit" name:"ChargeUnit"`
+	// 预支费用的原价，单位：元。
+	OriginalPrice *float64 `json:"OriginalPrice" name:"OriginalPrice"`
+	// 预支费用的折扣价，单位：元。
+	DiscountPrice *float64 `json:"DiscountPrice" name:"DiscountPrice"`
+}
+
 type Job struct {
 	// 作业名称
 	JobName *string `json:"JobName" name:"JobName"`
-	// 作业描述
-	JobDescription *string `json:"JobDescription" name:"JobDescription"`
 	// 作业优先级，任务（Task）和任务实例（TaskInstance）会继承作业优先级
 	Priority *uint64 `json:"Priority" name:"Priority"`
 	// 任务信息
 	Tasks []*Task `json:"Tasks" name:"Tasks" list`
+	// 作业描述
+	JobDescription *string `json:"JobDescription" name:"JobDescription"`
 	// 依赖信息
 	Dependences []*Dependence `json:"Dependences" name:"Dependences" list`
 	// 通知信息
@@ -988,6 +1090,17 @@ type JobView struct {
 	EndTime *string `json:"EndTime" name:"EndTime"`
 	// 任务统计指标
 	TaskMetrics *TaskMetrics `json:"TaskMetrics" name:"TaskMetrics"`
+}
+
+type LocalDiskType struct {
+	// 本地磁盘类型。
+	Type *string `json:"Type" name:"Type"`
+	// 本地磁盘属性。
+	PartitionType *string `json:"PartitionType" name:"PartitionType"`
+	// 本地磁盘最小值。
+	MinSize *int64 `json:"MinSize" name:"MinSize"`
+	// 本地磁盘最大值。
+	MaxSize *int64 `json:"MaxSize" name:"MaxSize"`
 }
 
 type LoginSettings struct {
@@ -1072,23 +1185,23 @@ func (r *ModifyTaskTemplateResponse) FromJsonString(s string) error {
 }
 
 type MountDataDisk struct {
-	// 文件系统类型，Linux系统下支持"EXT3"和"EXT4"两种，默认"EXT3"；Windows系统下仅支持"NTFS"
-	FileSystemType *string `json:"FileSystemType" name:"FileSystemType"`
 	// 挂载点，Linux系统合法路径，或Windows系统盘符,比如"H:\\"
 	LocalPath *string `json:"LocalPath" name:"LocalPath"`
+	// 文件系统类型，Linux系统下支持"EXT3"和"EXT4"两种，默认"EXT3"；Windows系统下仅支持"NTFS"
+	FileSystemType *string `json:"FileSystemType" name:"FileSystemType"`
 }
 
 type NamedComputeEnv struct {
 	// 计算环境名称
 	EnvName *string `json:"EnvName" name:"EnvName"`
-	// 计算环境描述
-	EnvDescription *string `json:"EnvDescription" name:"EnvDescription"`
 	// 计算环境管理类型
 	EnvType *string `json:"EnvType" name:"EnvType"`
 	// 计算环境具体参数
 	EnvData *EnvData `json:"EnvData" name:"EnvData"`
 	// 计算节点期望个数
 	DesiredComputeNodeCount *int64 `json:"DesiredComputeNodeCount" name:"DesiredComputeNodeCount"`
+	// 计算环境描述
+	EnvDescription *string `json:"EnvDescription" name:"EnvDescription"`
 	// 数据盘挂载选项
 	MountDataDisks []*MountDataDisk `json:"MountDataDisks" name:"MountDataDisks" list`
 	// 授权信息
@@ -1131,7 +1244,7 @@ type Placement struct {
 	Zone *string `json:"Zone" name:"Zone"`
 	// 实例所属项目ID。该参数可以通过调用 [DescribeProject](/document/api/378/4400) 的返回值中的 projectId 字段来获取。不填为默认项目。
 	ProjectId *int64 `json:"ProjectId" name:"ProjectId"`
-	// 实例所属的专用宿主机ID列表。如果您有购买专用宿主机并且指定了该参数，则您购买的实例就会随机的部署在这些专用宿主机上。当前暂不支持。
+	// 实例所属的专用宿主机ID列表。如果您有购买专用宿主机并且指定了该参数，则您购买的实例就会随机的部署在这些专用宿主机上。
 	HostIds []*string `json:"HostIds" name:"HostIds" list`
 }
 
@@ -1165,6 +1278,22 @@ type RunMonitorServiceEnabled struct {
 type RunSecurityServiceEnabled struct {
 	// 是否开启[云安全](/document/product/296)服务。取值范围：<br><li>TRUE：表示开启云安全服务<br><li>FALSE：表示不开启云安全服务<br><br>默认取值：TRUE。
 	Enabled *bool `json:"Enabled" name:"Enabled"`
+}
+
+type SpotMarketOptions struct {
+	// 竞价出价
+	MaxPrice *string `json:"MaxPrice" name:"MaxPrice"`
+	// 竞价请求类型，当前仅支持类型：one-time
+	SpotInstanceType *string `json:"SpotInstanceType" name:"SpotInstanceType"`
+}
+
+type StorageBlock struct {
+	// HDD本地存储类型，值为：LOCAL_PRO.
+	Type *string `json:"Type" name:"Type"`
+	// HDD本地存储的最小容量
+	MinSize *int64 `json:"MinSize" name:"MinSize"`
+	// HDD本地存储的最大容量
+	MaxSize *int64 `json:"MaxSize" name:"MaxSize"`
 }
 
 type SubmitJobRequest struct {
@@ -1206,7 +1335,7 @@ func (r *SubmitJobResponse) FromJsonString(s string) error {
 }
 
 type SystemDisk struct {
-	// 系统盘类型。系统盘类型限制详见[CVM实例配置](/document/product/213/2177)。取值范围：<br><li>LOCAL_BASIC：本地硬盘<br><li>LOCAL_SSD：本地SSD硬盘<br><li>CLOUD_BASIC：普通云硬盘<br><li>CLOUD_SSD：SSD云硬盘<br><li>CLOUD_PREMIUM：高性能云硬盘<br><br>默认取值：LOCAL_BASIC。
+	// 系统盘类型。系统盘类型限制详见[CVM实例配置](/document/product/213/2177)。取值范围：<br><li>LOCAL_BASIC：本地硬盘<br><li>LOCAL_SSD：本地SSD硬盘<br><li>CLOUD_BASIC：普通云硬盘<br><li>CLOUD_SSD：SSD云硬盘<br><li>CLOUD_PREMIUM：高性能云硬盘<br><br>默认取值：CLOUD_BASIC。
 	DiskType *string `json:"DiskType" name:"DiskType"`
 	// 系统盘ID。LOCAL_BASIC 和 LOCAL_SSD 类型没有ID。暂时不支持该参数。
 	DiskId *string `json:"DiskId" name:"DiskId"`
@@ -1221,12 +1350,16 @@ type Task struct {
 	TaskInstanceNum *uint64 `json:"TaskInstanceNum" name:"TaskInstanceNum"`
 	// 应用程序信息
 	Application *Application `json:"Application" name:"Application"`
+	// 重定向信息
+	RedirectInfo *RedirectInfo `json:"RedirectInfo" name:"RedirectInfo"`
+	// 任务失败后的最大重试次数，默认为0
+	MaxRetryCount *uint64 `json:"MaxRetryCount" name:"MaxRetryCount"`
+	// 任务启动后的超时时间，单位秒，默认为3600秒
+	Timeout *uint64 `json:"Timeout" name:"Timeout"`
 	// 运行环境信息，ComputeEnv 和 EnvId 必须指定一个（且只有一个）参数。
 	ComputeEnv *AnonymousComputeEnv `json:"ComputeEnv" name:"ComputeEnv"`
 	// 计算环境ID，ComputeEnv 和 EnvId 必须指定一个（且只有一个）参数。
 	EnvId *string `json:"EnvId" name:"EnvId"`
-	// 重定向信息
-	RedirectInfo *RedirectInfo `json:"RedirectInfo" name:"RedirectInfo"`
 	// 重定向本地信息
 	RedirectLocalInfo *RedirectLocalInfo `json:"RedirectLocalInfo" name:"RedirectLocalInfo"`
 	// 输入映射
@@ -1241,10 +1374,6 @@ type Task struct {
 	Authentications []*EnvVar `json:"Authentications" name:"Authentications" list`
 	// TaskInstance失败后处理方式，取值包括TERMINATE（默认）、INTERRUPT、FAST_INTERRUPT。
 	FailedAction *string `json:"FailedAction" name:"FailedAction"`
-	// 任务失败后的最大重试次数，默认为0
-	MaxRetryCount *uint64 `json:"MaxRetryCount" name:"MaxRetryCount"`
-	// 任务启动后的超时时间，单位秒，默认为3600秒
-	Timeout *uint64 `json:"Timeout" name:"Timeout"`
 }
 
 type TaskInstanceMetrics struct {

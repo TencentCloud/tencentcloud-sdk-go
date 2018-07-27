@@ -423,8 +423,6 @@ func (r *DetachDisksResponse) FromJsonString(s string) error {
 }
 
 type Disk struct {
-	// 与云盘绑定的标签，云盘未绑定标签则取值为空。
-	Tags []*Tag `json:"Tags" name:"Tags" list`
 	// 云硬盘ID。
 	DiskId *string `json:"DiskId" name:"DiskId"`
 	// 云硬盘类型。取值范围：<br><li>SYSTEM_DISK：系统盘<br><li>DATA_DISK：数据盘。
@@ -471,6 +469,10 @@ type Disk struct {
 	ReturnFailCode *uint64 `json:"ReturnFailCode" name:"ReturnFailCode"`
 	// 云盘关联的定期快照ID。只有在调用DescribeDisks接口时，入参ReturnBindAutoSnapshotPolicy取值为TRUE才会返回该参数。
 	AutoSnapshotPolicyIds []*string `json:"AutoSnapshotPolicyIds" name:"AutoSnapshotPolicyIds" list`
+	// 与云盘绑定的标签，云盘未绑定标签则取值为空。
+	Tags []*Tag `json:"Tags" name:"Tags" list`
+	// 云盘是否与挂载的实例一起销毁。<br><li>true:销毁实例时会同时销毁云盘，只支持按小时后付费云盘。<br><li>false：销毁实例时不销毁云盘。
+	DeleteWithInstance *bool `json:"DeleteWithInstance" name:"DeleteWithInstance"`
 }
 
 type DiskChargePrepaid struct {
@@ -642,6 +644,8 @@ type ModifyDiskAttributesRequest struct {
 	DiskName *string `json:"DiskName" name:"DiskName"`
 	// 是否为弹性云盘，FALSE表示非弹性云盘，TRUE表示弹性云盘。仅支持非弹性云盘修改为弹性云盘。
 	Portable *bool `json:"Portable" name:"Portable"`
+	// 成功挂载到云主机后该云硬盘是否随云主机销毁，TRUE表示随云主机销毁，FALSE表示不随云主机销毁。仅支持按量计费云硬盘数据盘。
+	DeleteWithInstance *bool `json:"DeleteWithInstance" name:"DeleteWithInstance"`
 }
 
 func (r *ModifyDiskAttributesRequest) ToJsonString() string {
@@ -748,14 +752,14 @@ type Placement struct {
 }
 
 type Price struct {
-	// 后付费云盘的单价，单位：元。
-	UnitPrice *float64 `json:"UnitPrice" name:"UnitPrice"`
-	// 后付费云盘的计价单元，取值范围：<br><li>HOUR：表示后付费云盘的计价单元是按小时计算。
-	ChargeUnit *string `json:"ChargeUnit" name:"ChargeUnit"`
 	// 预付费云盘预支费用的原价，单位：元。
 	OriginalPrice *float64 `json:"OriginalPrice" name:"OriginalPrice"`
 	// 预付费云盘预支费用的折扣价，单位：元。
 	DiscountPrice *float64 `json:"DiscountPrice" name:"DiscountPrice"`
+	// 后付费云盘的单价，单位：元。
+	UnitPrice *float64 `json:"UnitPrice" name:"UnitPrice"`
+	// 后付费云盘的计价单元，取值范围：<br><li>HOUR：表示后付费云盘的计价单元是按小时计算。
+	ChargeUnit *string `json:"ChargeUnit" name:"ChargeUnit"`
 }
 
 type RenewDiskRequest struct {
@@ -827,10 +831,6 @@ func (r *ResizeDiskResponse) FromJsonString(s string) error {
 }
 
 type Snapshot struct {
-	// 快照正在跨地域复制的目的地域，默认取值为[]。
-	CopyingToRegions []*string `json:"CopyingToRegions" name:"CopyingToRegions" list`
-	// 是否为跨地域复制的快照。取值范围：<br><li>true：表示为跨地域复制的快照。<br><li>false:本地域的快照。
-	CopyFromRemote *bool `json:"CopyFromRemote" name:"CopyFromRemote"`
 	// 快照ID。
 	SnapshotId *string `json:"SnapshotId" name:"SnapshotId"`
 	// 快照所在的位置。
@@ -855,6 +855,10 @@ type Snapshot struct {
 	Encrypt *bool `json:"Encrypt" name:"Encrypt"`
 	// 是否为永久快照。取值范围：<br><li>true：永久快照<br><li>false：非永久快照。
 	IsPermanent *bool `json:"IsPermanent" name:"IsPermanent"`
+	// 快照正在跨地域复制的目的地域，默认取值为[]。
+	CopyingToRegions []*string `json:"CopyingToRegions" name:"CopyingToRegions" list`
+	// 是否为跨地域复制的快照。取值范围：<br><li>true：表示为跨地域复制的快照。<br><li>false:本地域的快照。
+	CopyFromRemote *bool `json:"CopyFromRemote" name:"CopyFromRemote"`
 }
 
 type Tag struct {

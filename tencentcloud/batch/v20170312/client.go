@@ -318,6 +318,31 @@ func (c *Client) DescribeComputeEnvs(request *DescribeComputeEnvsRequest) (respo
     return
 }
 
+func NewDescribeCvmZoneInstanceConfigInfosRequest() (request *DescribeCvmZoneInstanceConfigInfosRequest) {
+    request = &DescribeCvmZoneInstanceConfigInfosRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("batch", APIVersion, "DescribeCvmZoneInstanceConfigInfos")
+    return
+}
+
+func NewDescribeCvmZoneInstanceConfigInfosResponse() (response *DescribeCvmZoneInstanceConfigInfosResponse) {
+    response = &DescribeCvmZoneInstanceConfigInfosResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 获取批量计算可用区机型配置信息
+func (c *Client) DescribeCvmZoneInstanceConfigInfos(request *DescribeCvmZoneInstanceConfigInfosRequest) (response *DescribeCvmZoneInstanceConfigInfosResponse, err error) {
+    if request == nil {
+        request = NewDescribeCvmZoneInstanceConfigInfosRequest()
+    }
+    response = NewDescribeCvmZoneInstanceConfigInfosResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeJobRequest() (request *DescribeJobRequest) {
     request = &DescribeJobRequest{
         BaseRequest: &tchttp.BaseRequest{},

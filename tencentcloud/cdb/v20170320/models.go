@@ -1029,11 +1029,11 @@ type DescribeDBInstancesRequest struct {
 	InstanceTypes []*uint64 `json:"InstanceTypes" name:"InstanceTypes" list`
 	// 实例的内网IP地址
 	Vips []*string `json:"Vips" name:"Vips" list`
-	// 实例状态，可取值：0-创建中，1-运行中，4-删除中，5-隔离中
+	// 实例状态，可取值：0-创建中，1-运行中，4-隔离中，5-已隔离
 	Status []*uint64 `json:"Status" name:"Status" list`
 	// 记录偏移量，默认值为0
 	Offset *uint64 `json:"Offset" name:"Offset"`
-	// 单次请求返回的数量，默认值为20，最大值为100
+	// 单次请求返回的数量，默认值为20，最大值为2000
 	Limit *uint64 `json:"Limit" name:"Limit"`
 	// 安全组ID
 	SecurityGroupId *string `json:"SecurityGroupId" name:"SecurityGroupId"`
@@ -1102,6 +1102,56 @@ func (r *DescribeDBInstancesResponse) ToJsonString() string {
 }
 
 func (r *DescribeDBInstancesResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeDBPriceRequest struct {
+	*tchttp.BaseRequest
+	// 可用区信息，格式如"ap-guangzhou-1"
+	Zone *string `json:"Zone" name:"Zone"`
+	// 实例数量，默认值为1, 最小值1，最大值为100
+	GoodsNum *int64 `json:"GoodsNum" name:"GoodsNum"`
+	// 实例内存大小，单位：MB
+	Memory *int64 `json:"Memory" name:"Memory"`
+	// 实例硬盘大小，单位：GB
+	Volume *int64 `json:"Volume" name:"Volume"`
+	// 付费类型，支持值包括：PRE_PAID - 包年包月，HOUR_PAID - 按量计费
+	PayType *string `json:"PayType" name:"PayType"`
+	// 实例时长，单位：月，最小值1，最大值为36；查询按量计费价格时，该字段无效
+	Period *int64 `json:"Period" name:"Period"`
+	// 实例类型，默认为 master，支持值包括：master-表示主实例，ro-表示只读实例，dr-表示灾备实例
+	InstanceRole *string `json:"InstanceRole" name:"InstanceRole"`
+	// 数据复制方式，默认为0，支持值包括：0-表示异步复制，1-表示半同步复制，2-表示强同步复制
+	ProtectMode *int64 `json:"ProtectMode" name:"ProtectMode"`
+}
+
+func (r *DescribeDBPriceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeDBPriceRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeDBPriceResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+		// 实例价格，单位：分（人民币）
+		Price *int64 `json:"Price" name:"Price"`
+		// 实例原价，单位：分（人民币）
+		OriginalPrice *int64 `json:"OriginalPrice" name:"OriginalPrice"`
+		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		RequestId *string `json:"RequestId" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeDBPriceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeDBPriceResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -1564,6 +1614,8 @@ type InstanceInfo struct {
 	DeployMode *int64 `json:"DeployMode" name:"DeployMode"`
 	// 实例任务状态
 	TaskStatus *int64 `json:"TaskStatus" name:"TaskStatus"`
+	// 主实例信息
+	MasterInfo *MasterInfo `json:"MasterInfo" name:"MasterInfo"`
 	// 实例售卖机型
 	DeviceType *string `json:"DeviceType" name:"DeviceType"`
 	// 内核版本
@@ -1590,8 +1642,6 @@ type InstanceInfo struct {
 	UniqVpcId *string `json:"UniqVpcId" name:"UniqVpcId"`
 	// 子网描述符
 	UniqSubnetId *string `json:"UniqSubnetId" name:"UniqSubnetId"`
-	// 主实例信息
-	MasterInfo *MasterInfo `json:"MasterInfo" name:"MasterInfo"`
 }
 
 type InstanceRebootTime struct {
@@ -2259,6 +2309,8 @@ type SecurityGroup struct {
 }
 
 type SellConfig struct {
+	// 设备类型
+	Device *string `json:"Device" name:"Device"`
 	// 售卖规格描述
 	Type *string `json:"Type" name:"Type"`
 	// 实例类型
@@ -2283,8 +2335,6 @@ type SellConfig struct {
 	Info *string `json:"Info" name:"Info"`
 	// 状态值
 	Status *int64 `json:"Status" name:"Status"`
-	// 设备类型
-	Device *string `json:"Device" name:"Device"`
 }
 
 type SellType struct {

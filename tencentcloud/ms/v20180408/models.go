@@ -133,6 +133,55 @@ type AppSetInfo struct {
 	ShieldSize *uint64 `json:"ShieldSize" name:"ShieldSize"`
 }
 
+type BindInfo struct {
+	// app的icon的url
+	AppIconUrl *string `json:"AppIconUrl" name:"AppIconUrl"`
+	// app的名称
+	AppName *string `json:"AppName" name:"AppName"`
+	// app的包名
+	AppPkgName *string `json:"AppPkgName" name:"AppPkgName"`
+}
+
+type CreateBindInstanceRequest struct {
+	*tchttp.BaseRequest
+	// 资源id，全局唯一
+	ResourceId *string `json:"ResourceId" name:"ResourceId"`
+	// app的icon的url
+	AppIconUrl *string `json:"AppIconUrl" name:"AppIconUrl"`
+	// app的名称
+	AppName *string `json:"AppName" name:"AppName"`
+	// app的包名
+	AppPkgName *string `json:"AppPkgName" name:"AppPkgName"`
+}
+
+func (r *CreateBindInstanceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateBindInstanceRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateBindInstanceResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+		// 任务状态: 1-已完成,2-处理中,3-处理出错,4-处理超时
+		Progress *uint64 `json:"Progress" name:"Progress"`
+		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		RequestId *string `json:"RequestId" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateBindInstanceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateBindInstanceResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type CreateScanInstancesRequest struct {
 	*tchttp.BaseRequest
 	// 待扫描的app信息列表，一次最多提交20个
@@ -215,6 +264,46 @@ func (r *CreateShieldInstanceResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type CreateShieldPlanInstanceRequest struct {
+	*tchttp.BaseRequest
+	// 资源id
+	ResourceId *string `json:"ResourceId" name:"ResourceId"`
+	// 策略名称
+	PlanName *string `json:"PlanName" name:"PlanName"`
+	// 策略具体信息
+	PlanInfo *PlanInfo `json:"PlanInfo" name:"PlanInfo"`
+}
+
+func (r *CreateShieldPlanInstanceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateShieldPlanInstanceRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateShieldPlanInstanceResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+		// 策略id
+		PlanId *uint64 `json:"PlanId" name:"PlanId"`
+		// 任务状态: 1-已完成,2-处理中,3-处理出错,4-处理超时
+		Progress *uint64 `json:"Progress" name:"Progress"`
+		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		RequestId *string `json:"RequestId" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateShieldPlanInstanceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateShieldPlanInstanceResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DeleteScanInstancesRequest struct {
 	*tchttp.BaseRequest
 	// 删除一个或多个扫描的app，最大支持20个
@@ -283,10 +372,56 @@ func (r *DeleteShieldInstancesResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeResourceInstancesRequest struct {
+	*tchttp.BaseRequest
+	// 资源类别id数组
+	Pids []*uint64 `json:"Pids" name:"Pids" list`
+	// 支持通过资源id，pid进行查询
+	Filters []*Filter `json:"Filters" name:"Filters" list`
+	// 偏移量，默认为0
+	Offset *uint64 `json:"Offset" name:"Offset"`
+	// 数量限制，默认为20，最大值为100。
+	Limit *uint64 `json:"Limit" name:"Limit"`
+	// 按某个字段排序，目前支持CreateTime、ExpireTime其中的一个排序。
+	OrderField *string `json:"OrderField" name:"OrderField"`
+	// 升序（asc）还是降序（desc），默认：desc。
+	OrderDirection *string `json:"OrderDirection" name:"OrderDirection"`
+}
+
+func (r *DescribeResourceInstancesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeResourceInstancesRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeResourceInstancesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+		// 符合要求的资源数量
+		TotalCount *uint64 `json:"TotalCount" name:"TotalCount"`
+		// 符合要求的资源数组
+		ResourceSet []*ResourceInfo `json:"ResourceSet" name:"ResourceSet" list`
+		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		RequestId *string `json:"RequestId" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeResourceInstancesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeResourceInstancesResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeScanInstancesRequest struct {
 	*tchttp.BaseRequest
 	// 支持通过app名称，app包名进行筛选
-	Filters []*Filters `json:"Filters" name:"Filters" list`
+	Filters []*Filter `json:"Filters" name:"Filters" list`
 	// 偏移量，默认为0
 	Offset *uint64 `json:"Offset" name:"Offset"`
 	// 数量限制，默认为20，最大值为100。
@@ -370,7 +505,7 @@ func (r *DescribeScanResultsResponse) FromJsonString(s string) error {
 type DescribeShieldInstancesRequest struct {
 	*tchttp.BaseRequest
 	// 支持通过app名称，app包名，加固的服务版本，提交的渠道进行筛选。
-	Filters []*Filters `json:"Filters" name:"Filters" list`
+	Filters []*Filter `json:"Filters" name:"Filters" list`
 	// 偏移量，默认为0。
 	Offset *uint64 `json:"Offset" name:"Offset"`
 	// 数量限制，默认为20，最大值为100。
@@ -413,6 +548,46 @@ func (r *DescribeShieldInstancesResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeShieldPlanInstanceRequest struct {
+	*tchttp.BaseRequest
+	// 资源id
+	ResourceId *string `json:"ResourceId" name:"ResourceId"`
+	// 服务类别id
+	Pid *uint64 `json:"Pid" name:"Pid"`
+}
+
+func (r *DescribeShieldPlanInstanceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeShieldPlanInstanceRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeShieldPlanInstanceResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+		// 绑定资源信息
+		BindInfo *BindInfo `json:"BindInfo" name:"BindInfo"`
+		// 加固策略信息
+		ShieldPlanInfo *ShieldPlanInfo `json:"ShieldPlanInfo" name:"ShieldPlanInfo"`
+		// 加固资源信息
+		ResourceServiceInfo *ResourceServiceInfo `json:"ResourceServiceInfo" name:"ResourceServiceInfo"`
+		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		RequestId *string `json:"RequestId" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeShieldPlanInstanceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeShieldPlanInstanceResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeShieldResultRequest struct {
 	*tchttp.BaseRequest
 	// 任务唯一标识
@@ -451,11 +626,57 @@ func (r *DescribeShieldResultResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
-type Filters struct {
+type Filter struct {
 	// 需要过滤的字段
 	Name *string `json:"Name" name:"Name"`
 	// 需要过滤字段的值
 	Value *string `json:"Value" name:"Value"`
+}
+
+type PlanDetailInfo struct {
+	// 默认策略，1为默认，0为非默认
+	IsDefault *uint64 `json:"IsDefault" name:"IsDefault"`
+	// 策略id
+	PlanId *uint64 `json:"PlanId" name:"PlanId"`
+	// 策略名称
+	PlanName *string `json:"PlanName" name:"PlanName"`
+	// 策略信息
+	PlanInfo *PlanInfo `json:"PlanInfo" name:"PlanInfo"`
+}
+
+type PlanInfo struct {
+	// apk大小优化，0关闭，1开启
+	ApkSizeOpt *uint64 `json:"ApkSizeOpt" name:"ApkSizeOpt"`
+	// Dex加固，0关闭，1开启
+	Dex *uint64 `json:"Dex" name:"Dex"`
+	// So加固，0关闭，1开启
+	So *uint64 `json:"So" name:"So"`
+	// 数据收集，0关闭，1开启
+	Bugly *uint64 `json:"Bugly" name:"Bugly"`
+	// 防止重打包，0关闭，1开启
+	AntiRepack *uint64 `json:"AntiRepack" name:"AntiRepack"`
+	// Dex分离，0关闭，1开启
+	SeperateDex *uint64 `json:"SeperateDex" name:"SeperateDex"`
+	// 内存保护，0关闭，1开启
+	Db *uint64 `json:"Db" name:"Db"`
+	// Dex签名校验，0关闭，1开启
+	DexSig *uint64 `json:"DexSig" name:"DexSig"`
+	// So文件信息
+	SoInfo *SoInfo `json:"SoInfo" name:"SoInfo"`
+	// vmp，0关闭，1开启
+	AntiVMP *uint64 `json:"AntiVMP" name:"AntiVMP"`
+	// 保护so的强度，
+	SoType *string `json:"SoType" name:"SoType"`
+	// 防日志泄漏，0关闭，1开启
+	AntiLogLeak *uint64 `json:"AntiLogLeak" name:"AntiLogLeak"`
+	// root检测，0关闭，1开启
+	AntiQemuRoot *uint64 `json:"AntiQemuRoot" name:"AntiQemuRoot"`
+	// 资源防篡改，0关闭，1开启
+	AntiAssets *uint64 `json:"AntiAssets" name:"AntiAssets"`
+	// 防止截屏，0关闭，1开启
+	AntiScreenshot *uint64 `json:"AntiScreenshot" name:"AntiScreenshot"`
+	// SSL证书防窃取，0关闭，1开启
+	AntiSSL *uint64 `json:"AntiSSL" name:"AntiSSL"`
 }
 
 type PluginInfo struct {
@@ -465,6 +686,32 @@ type PluginInfo struct {
 	PluginName *string `json:"PluginName" name:"PluginName"`
 	// 插件描述
 	PluginDesc *string `json:"PluginDesc" name:"PluginDesc"`
+}
+
+type ResourceInfo struct {
+	// 用户购买的资源id，全局唯一
+	ResourceId *string `json:"ResourceId" name:"ResourceId"`
+	// 资源的pid，MTP加固-12767，应用加固-12750 MTP反作弊-12766 源代码混淆-12736
+	Pid *uint64 `json:"Pid" name:"Pid"`
+	// 购买时间戳
+	CreateTime *uint64 `json:"CreateTime" name:"CreateTime"`
+	// 到期时间戳
+	ExpireTime *uint64 `json:"ExpireTime" name:"ExpireTime"`
+	// 0-未绑定，1-已绑定
+	IsBind *int64 `json:"IsBind" name:"IsBind"`
+	// 用户绑定app的基本信息
+	BindInfo *BindInfo `json:"BindInfo" name:"BindInfo"`
+	// 资源名称，如应用加固，漏洞扫描
+	ResourceName *string `json:"ResourceName" name:"ResourceName"`
+}
+
+type ResourceServiceInfo struct {
+	// 创建时间戳
+	CreateTime *uint64 `json:"CreateTime" name:"CreateTime"`
+	// 到期时间戳
+	ExpireTime *uint64 `json:"ExpireTime" name:"ExpireTime"`
+	// 资源名称，如应用加固，源码混淆
+	ResourceName *string `json:"ResourceName" name:"ResourceName"`
 }
 
 type ScanInfo struct {
@@ -496,6 +743,8 @@ type ServiceInfo struct {
 	CallbackUrl *string `json:"CallbackUrl" name:"CallbackUrl"`
 	// 提交来源 YYB-应用宝 RDM-rdm MC-控制台 MAC_TOOL-mac工具 WIN_TOOL-window工具
 	SubmitSource *string `json:"SubmitSource" name:"SubmitSource"`
+	// 加固策略编号，如果不传则使用系统默认加固策略。如果指定的plan不存在会返回错误。
+	PlanId *uint64 `json:"PlanId" name:"PlanId"`
 }
 
 type ShieldInfo struct {
@@ -511,6 +760,20 @@ type ShieldInfo struct {
 	TaskTime *uint64 `json:"TaskTime" name:"TaskTime"`
 	// 任务唯一标识
 	ItemId *string `json:"ItemId" name:"ItemId"`
+	// 加固版本，basic基础版，professional专业版
+	ServiceEdition *string `json:"ServiceEdition" name:"ServiceEdition"`
+}
+
+type ShieldPlanInfo struct {
+	// 加固策略数量
+	TotalCount *uint64 `json:"TotalCount" name:"TotalCount"`
+	// 加固策略具体信息数组
+	PlanSet []*PlanDetailInfo `json:"PlanSet" name:"PlanSet" list`
+}
+
+type SoInfo struct {
+	// so文件列表
+	SoFileNames []*string `json:"SoFileNames" name:"SoFileNames" list`
 }
 
 type VirusInfo struct {

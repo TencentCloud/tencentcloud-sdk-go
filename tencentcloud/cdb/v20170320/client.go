@@ -611,6 +611,31 @@ func (c *Client) DescribeDBInstances(request *DescribeDBInstancesRequest) (respo
     return
 }
 
+func NewDescribeDBPriceRequest() (request *DescribeDBPriceRequest) {
+    request = &DescribeDBPriceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cdb", APIVersion, "DescribeDBPrice")
+    return
+}
+
+func NewDescribeDBPriceResponse() (response *DescribeDBPriceResponse) {
+    response = &DescribeDBPriceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口(DescribeDBPrice)用于查询云数据库实例的价格，支持查询按量计费或者包年包月的价格。可传入实例类型、购买时长、购买数量、内存大小、硬盘大小和可用区信息等来查询实例价格。
+func (c *Client) DescribeDBPrice(request *DescribeDBPriceRequest) (response *DescribeDBPriceResponse, err error) {
+    if request == nil {
+        request = NewDescribeDBPriceRequest()
+    }
+    response = NewDescribeDBPriceResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeDBSecurityGroupsRequest() (request *DescribeDBSecurityGroupsRequest) {
     request = &DescribeDBSecurityGroupsRequest{
         BaseRequest: &tchttp.BaseRequest{},

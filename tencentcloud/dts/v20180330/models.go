@@ -151,6 +151,90 @@ func (r *CreateMigrateJobResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type CreateSyncCheckJobRequest struct {
+	*tchttp.BaseRequest
+	// 灾备同步任务ID
+	JobId *string `json:"JobId" name:"JobId"`
+}
+
+func (r *CreateSyncCheckJobRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateSyncCheckJobRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateSyncCheckJobResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		RequestId *string `json:"RequestId" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateSyncCheckJobResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateSyncCheckJobResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateSyncJobRequest struct {
+	*tchttp.BaseRequest
+	// 灾备同步任务名
+	JobName *string `json:"JobName" name:"JobName"`
+	// 灾备同步任务配置选项
+	SyncOption *SyncOption `json:"SyncOption" name:"SyncOption"`
+	// 源实例数据库类型，目前仅包括：mysql
+	SrcDatabaseType *string `json:"SrcDatabaseType" name:"SrcDatabaseType"`
+	// 源实例接入类型，目前仅包括：cdb(云上cdb实例)
+	SrcAccessType *string `json:"SrcAccessType" name:"SrcAccessType"`
+	// 源实例信息
+	SrcInfo *SyncInstanceInfo `json:"SrcInfo" name:"SrcInfo"`
+	// 目标实例数据库类型，目前仅包括：mysql
+	DstDatabaseType *string `json:"DstDatabaseType" name:"DstDatabaseType"`
+	// 目标实例接入类型，目前仅包括：cdb(云上cdb实例)
+	DstAccessType *string `json:"DstAccessType" name:"DstAccessType"`
+	// 目标实例信息
+	DstInfo *SyncInstanceInfo `json:"DstInfo" name:"DstInfo"`
+	// 需要同步的源数据库表信息，用json格式的字符串描述。
+	// 对于database-table两级结构的数据库：
+	// [{Database:db1,Table:[table1,table2]},{Database:db2}]
+	DatabaseInfo *string `json:"DatabaseInfo" name:"DatabaseInfo"`
+}
+
+func (r *CreateSyncJobRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateSyncJobRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateSyncJobResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+		// 灾备同步任务ID
+		JobId *string `json:"JobId" name:"JobId"`
+		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		RequestId *string `json:"RequestId" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateSyncJobResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateSyncJobResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DeleteMigrateJobRequest struct {
 	*tchttp.BaseRequest
 	// 数据迁移任务ID
@@ -180,6 +264,38 @@ func (r *DeleteMigrateJobResponse) ToJsonString() string {
 }
 
 func (r *DeleteMigrateJobResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteSyncJobRequest struct {
+	*tchttp.BaseRequest
+	// 待删除的灾备同步任务ID
+	JobId *string `json:"JobId" name:"JobId"`
+}
+
+func (r *DeleteSyncJobRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteSyncJobRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteSyncJobResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		RequestId *string `json:"RequestId" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DeleteSyncJobResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteSyncJobResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -268,6 +384,94 @@ func (r *DescribeMigrateJobsResponse) ToJsonString() string {
 }
 
 func (r *DescribeMigrateJobsResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeSyncCheckJobRequest struct {
+	*tchttp.BaseRequest
+	// 要查询的灾备同步任务ID
+	JobId *string `json:"JobId" name:"JobId"`
+}
+
+func (r *DescribeSyncCheckJobRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeSyncCheckJobRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeSyncCheckJobResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+		// 任务校验状态
+		Status *string `json:"Status" name:"Status"`
+		// 任务校验结果代码
+		ErrorCode *int64 `json:"ErrorCode" name:"ErrorCode"`
+		// 提示信息
+		ErrorMessage *string `json:"ErrorMessage" name:"ErrorMessage"`
+		// 任务执行步骤描述
+		StepInfo []*SyncCheckStepInfo `json:"StepInfo" name:"StepInfo" list`
+		// 校验标志
+		CheckFlag *int64 `json:"CheckFlag" name:"CheckFlag"`
+		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		RequestId *string `json:"RequestId" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeSyncCheckJobResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeSyncCheckJobResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeSyncJobsRequest struct {
+	*tchttp.BaseRequest
+	// 灾备同步任务ID
+	JobId *string `json:"JobId" name:"JobId"`
+	// 灾备同步任务名
+	JobName *string `json:"JobName" name:"JobName"`
+	// 排序字段，可以取值为JobId、Status、JobName、CreateTime
+	Order *string `json:"Order" name:"Order"`
+	// 排序方式，升序为ASC，降序为DESC
+	OrderSeq *string `json:"OrderSeq" name:"OrderSeq"`
+	// 偏移量，默认为0
+	Offset *uint64 `json:"Offset" name:"Offset"`
+	// 返回实例数量，默认20，有效区间[1,100]
+	Limit *uint64 `json:"Limit" name:"Limit"`
+}
+
+func (r *DescribeSyncJobsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeSyncJobsRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeSyncJobsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+		// 任务数目
+		TotalCount *uint64 `json:"TotalCount" name:"TotalCount"`
+		// 任务详情数组
+		JobList []*SyncJobInfo `json:"JobList" name:"JobList" list`
+		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		RequestId *string `json:"RequestId" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeSyncJobsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeSyncJobsResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -431,6 +635,46 @@ func (r *ModifyMigrateJobResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type ModifySyncJobRequest struct {
+	*tchttp.BaseRequest
+	// 待修改的灾备同步任务ID
+	JobId *string `json:"JobId" name:"JobId"`
+	// 灾备同步任务名称
+	JobName *string `json:"JobName" name:"JobName"`
+	// 灾备同步任务配置选项
+	SyncOption *SyncOption `json:"SyncOption" name:"SyncOption"`
+	// 当选择'指定库表'灾备同步的时候, 需要设置待同步的源数据库表信息,用符合json数组格式的字符串描述, 如下所例。
+	// 对于database-table两级结构的数据库：
+	// [{"Database":"db1","Table":["table1","table2"]},{"Database":"db2"}]
+	DatabaseInfo *string `json:"DatabaseInfo" name:"DatabaseInfo"`
+}
+
+func (r *ModifySyncJobRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifySyncJobRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifySyncJobResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		RequestId *string `json:"RequestId" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifySyncJobResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifySyncJobResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type SrcInfo struct {
 	// 阿里云AccessKey
 	AccessKey *string `json:"AccessKey" name:"AccessKey"`
@@ -494,6 +738,38 @@ func (r *StartMigrateJobResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type StartSyncJobRequest struct {
+	*tchttp.BaseRequest
+	// 灾备同步任务ID
+	JobId *string `json:"JobId" name:"JobId"`
+}
+
+func (r *StartSyncJobRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *StartSyncJobRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type StartSyncJobResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		RequestId *string `json:"RequestId" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *StartSyncJobResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *StartSyncJobResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type StopMigrateJobRequest struct {
 	*tchttp.BaseRequest
 	// 数据迁移任务ID
@@ -524,4 +800,130 @@ func (r *StopMigrateJobResponse) ToJsonString() string {
 
 func (r *StopMigrateJobResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
+}
+
+type SwitchDrToMasterRequest struct {
+	*tchttp.BaseRequest
+	// 灾备实例的信息
+	DstInfo *SyncInstanceInfo `json:"DstInfo" name:"DstInfo"`
+	// 数据库的类型  （如 mysql）
+	DatabaseType *string `json:"DatabaseType" name:"DatabaseType"`
+}
+
+func (r *SwitchDrToMasterRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *SwitchDrToMasterRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type SwitchDrToMasterResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+		// 后台异步任务请求id
+		AsyncRequestId *string `json:"AsyncRequestId" name:"AsyncRequestId"`
+		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		RequestId *string `json:"RequestId" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *SwitchDrToMasterResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *SwitchDrToMasterResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type SyncCheckStepInfo struct {
+	// 步骤序列
+	StepNo *uint64 `json:"StepNo" name:"StepNo"`
+	// 步骤展现名称
+	StepName *string `json:"StepName" name:"StepName"`
+	// 步骤执行结果代码
+	StepCode *int64 `json:"StepCode" name:"StepCode"`
+	// 步骤执行结果提示
+	StepMessage *string `json:"StepMessage" name:"StepMessage"`
+}
+
+type SyncDetailInfo struct {
+	// 总步骤数
+	StepAll *int64 `json:"StepAll" name:"StepAll"`
+	// 当前步骤
+	StepNow *int64 `json:"StepNow" name:"StepNow"`
+	// 总进度
+	Progress *string `json:"Progress" name:"Progress"`
+	// 当前步骤进度
+	CurrentStepProgress *string `json:"CurrentStepProgress" name:"CurrentStepProgress"`
+	// 主从差距，MB
+	MasterSlaveDistance *int64 `json:"MasterSlaveDistance" name:"MasterSlaveDistance"`
+	// 主从差距，秒
+	SecondsBehindMaster *int64 `json:"SecondsBehindMaster" name:"SecondsBehindMaster"`
+	// 步骤信息
+	StepInfo []*SyncStepDetailInfo `json:"StepInfo" name:"StepInfo" list`
+}
+
+type SyncInstanceInfo struct {
+	// 地域英文名，如：ap-guangzhou
+	Region *string `json:"Region" name:"Region"`
+	// 实例短Id
+	InstanceId *string `json:"InstanceId" name:"InstanceId"`
+}
+
+type SyncJobInfo struct {
+	// 灾备任务id
+	JobId *string `json:"JobId" name:"JobId"`
+	// 灾备任务名
+	JobName *string `json:"JobName" name:"JobName"`
+	// 任务同步
+	SyncOption *SyncOption `json:"SyncOption" name:"SyncOption"`
+	// 源接入类型
+	SrcAccessType *string `json:"SrcAccessType" name:"SrcAccessType"`
+	// 源数据类型
+	SrcDatabaseType *string `json:"SrcDatabaseType" name:"SrcDatabaseType"`
+	// 源实例信息
+	SrcInfo *SyncInstanceInfo `json:"SrcInfo" name:"SrcInfo"`
+	// 灾备接入类型
+	DstAccessType *string `json:"DstAccessType" name:"DstAccessType"`
+	// 灾备数据类型
+	DstDatabaseType *string `json:"DstDatabaseType" name:"DstDatabaseType"`
+	// 灾备实例信息
+	DstInfo *SyncInstanceInfo `json:"DstInfo" name:"DstInfo"`
+	// 任务信息
+	Detail *SyncDetailInfo `json:"Detail" name:"Detail"`
+	// 任务状态
+	Status *int64 `json:"Status" name:"Status"`
+	// 迁移库表
+	DatabaseInfo *string `json:"DatabaseInfo" name:"DatabaseInfo"`
+	// 创建时间
+	CreateTime *string `json:"CreateTime" name:"CreateTime"`
+	// 开始时间
+	StartTime *string `json:"StartTime" name:"StartTime"`
+	// 结束时间
+	EndTime *string `json:"EndTime" name:"EndTime"`
+}
+
+type SyncOption struct {
+	// 同步对象，1-整个实例，2-指定库表
+	SyncObject *uint64 `json:"SyncObject" name:"SyncObject"`
+	// 同步开始设置，1-立即开始
+	RunMode *uint64 `json:"RunMode" name:"RunMode"`
+	// 同步模式， 3-增量同步
+	SyncType *uint64 `json:"SyncType" name:"SyncType"`
+	// 数据一致性检测， 1-不配置
+	ConsistencyType *uint64 `json:"ConsistencyType" name:"ConsistencyType"`
+}
+
+type SyncStepDetailInfo struct {
+	// 步骤编号
+	StepNo *uint64 `json:"StepNo" name:"StepNo"`
+	// 步骤名
+	StepName *string `json:"StepName" name:"StepName"`
+	// 能否中止
+	CanStop *int64 `json:"CanStop" name:"CanStop"`
+	// 步骤号
+	StepId *int64 `json:"StepId" name:"StepId"`
 }
