@@ -1339,6 +1339,42 @@ func (r *DescribeProjectSecurityGroupsResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeRollbackRangeTimeRequest struct {
+	*tchttp.BaseRequest
+	// 实例ID列表，单个实例Id的格式如：cdb-c1nl9rpv。与云数据库控制台页面中显示的实例ID相同。
+	InstanceIds []*string `json:"InstanceIds" name:"InstanceIds" list`
+}
+
+func (r *DescribeRollbackRangeTimeRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeRollbackRangeTimeRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeRollbackRangeTimeResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+		// 符合查询条件的实例总数。
+		TotalCount *int64 `json:"TotalCount" name:"TotalCount"`
+		// 返回的参数信息。
+		Items []*InstanceRollbackRangeTime `json:"Items" name:"Items" list`
+		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		RequestId *string `json:"RequestId" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeRollbackRangeTimeResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeRollbackRangeTimeResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeSlowLogsRequest struct {
 	*tchttp.BaseRequest
 	// 实例ID，格式如：cdb-c1nl9rpv。与云数据库控制台页面中显示的实例ID相同。
@@ -1376,6 +1412,50 @@ func (r *DescribeSlowLogsResponse) ToJsonString() string {
 }
 
 func (r *DescribeSlowLogsResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeTablesRequest struct {
+	*tchttp.BaseRequest
+	// 实例ID，格式如：cdb-c1nl9rpv，与云数据库控制台页面中显示的实例ID相同。
+	InstanceId *string `json:"InstanceId" name:"InstanceId"`
+	// 数据库的名称。
+	Database *string `json:"Database" name:"Database"`
+	// 记录偏移量，默认值为0。
+	Offset *int64 `json:"Offset" name:"Offset"`
+	// 单次请求返回的数量，默认值为20，最大值为2000。
+	Limit *int64 `json:"Limit" name:"Limit"`
+	// 匹配数据库表名的正则表达式，规则同MySQL官网
+	TableRegexp *string `json:"TableRegexp" name:"TableRegexp"`
+}
+
+func (r *DescribeTablesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeTablesRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeTablesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+		// 符合查询条件的数据库表总数。
+		TotalCount *int64 `json:"TotalCount" name:"TotalCount"`
+		// 返回的数据库表信息。
+		Items []*string `json:"Items" name:"Items" list`
+		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		RequestId *string `json:"RequestId" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeTablesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeTablesResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -1649,6 +1729,17 @@ type InstanceRebootTime struct {
 	InstanceId *string `json:"InstanceId" name:"InstanceId"`
 	// 预期重启时间
 	TimeInSeconds *int64 `json:"TimeInSeconds" name:"TimeInSeconds"`
+}
+
+type InstanceRollbackRangeTime struct {
+	// 查询数据库错误码
+	Code *int64 `json:"Code" name:"Code"`
+	// 查询数据库错误信息
+	Message *string `json:"Message" name:"Message"`
+	// 实例ID列表，单个实例Id的格式如：cdb-c1nl9rpv。与云数据库控制台页面中显示的实例ID相同
+	InstanceId *string `json:"InstanceId" name:"InstanceId"`
+	// 可回档时间范围
+	Times []*RollbackTimeRange `json:"Times" name:"Times" list`
 }
 
 type IsolateDBInstanceRequest struct {
@@ -2291,6 +2382,47 @@ type RoVipInfo struct {
 	RoVip *string `json:"RoVip" name:"RoVip"`
 }
 
+type RollbackDBName struct {
+	// 回档前的原数据库名
+	DatabaseName *string `json:"DatabaseName" name:"DatabaseName"`
+	// 回档后的新数据库名
+	NewDatabaseName *string `json:"NewDatabaseName" name:"NewDatabaseName"`
+}
+
+type RollbackInstancesInfo struct {
+	// 云数据库实例ID
+	InstanceId *string `json:"InstanceId" name:"InstanceId"`
+	// 回档策略。可选值为：table、db、full；默认值为full。table - 急速回档模式，仅导入所选中表级别的备份和binlog，如有跨表操作，且关联表未被同时选中，将会导致回档失败，该模式下参数Databases必须为空；db - 快速模式，仅导入所选中库级别的备份和binlog，如有跨库操作，且关联库未被同时选中，将会导致回档失败；full - 普通回档模式，将导入整个实例的备份和binlog，速度较慢。
+	Strategy *string `json:"Strategy" name:"Strategy"`
+	// 数据库回档时间，时间格式为：yyyy-mm-dd hh:mm:ss
+	RollbackTime *string `json:"RollbackTime" name:"RollbackTime"`
+	// 待回档的数据库信息，表示整库回档
+	Databases []*RollbackDBName `json:"Databases" name:"Databases" list`
+	// 待回档的数据库表信息，表示按表回档
+	Tables []*RollbackTables `json:"Tables" name:"Tables" list`
+}
+
+type RollbackTableName struct {
+	// 回档前的原数据库表名
+	TableName *string `json:"TableName" name:"TableName"`
+	// 回档后的新数据库表名
+	NewTableName *string `json:"NewTableName" name:"NewTableName"`
+}
+
+type RollbackTables struct {
+	// 数据库名
+	Database *string `json:"Database" name:"Database"`
+	// 数据库表详情
+	Table []*RollbackTableName `json:"Table" name:"Table" list`
+}
+
+type RollbackTimeRange struct {
+	// 实例可回档开始时间，时间格式：2016-10-29 01:06:04
+	Begin *string `json:"Begin" name:"Begin"`
+	// 实例可回档结束时间，时间格式：2016-11-02 11:44:47
+	End *string `json:"End" name:"End"`
+}
+
 type SecurityGroup struct {
 	// 项目ID
 	ProjectId *int64 `json:"ProjectId" name:"ProjectId"`
@@ -2373,6 +2505,40 @@ type SlowLogInfo struct {
 	InternetUrl *string `json:"InternetUrl" name:"InternetUrl"`
 	// 日志具体类型，可能的值：slowlog - 慢日志
 	Type *string `json:"Type" name:"Type"`
+}
+
+type StartBatchRollbackRequest struct {
+	*tchttp.BaseRequest
+	// 用于回档的实例详情信息
+	Instances []*RollbackInstancesInfo `json:"Instances" name:"Instances" list`
+}
+
+func (r *StartBatchRollbackRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *StartBatchRollbackRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type StartBatchRollbackResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+		// 异步任务的请求ID，可使用此ID查询异步任务的执行结果
+		AsyncRequestId *string `json:"AsyncRequestId" name:"AsyncRequestId"`
+		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		RequestId *string `json:"RequestId" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *StartBatchRollbackResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *StartBatchRollbackResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
 }
 
 type StopDBImportJobRequest struct {

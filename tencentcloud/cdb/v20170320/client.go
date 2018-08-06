@@ -761,6 +761,31 @@ func (c *Client) DescribeProjectSecurityGroups(request *DescribeProjectSecurityG
     return
 }
 
+func NewDescribeRollbackRangeTimeRequest() (request *DescribeRollbackRangeTimeRequest) {
+    request = &DescribeRollbackRangeTimeRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cdb", APIVersion, "DescribeRollbackRangeTime")
+    return
+}
+
+func NewDescribeRollbackRangeTimeResponse() (response *DescribeRollbackRangeTimeResponse) {
+    response = &DescribeRollbackRangeTimeResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口(DescribeRollbackRangeTime)用于查询云数据库实例可回档的时间范围。
+func (c *Client) DescribeRollbackRangeTime(request *DescribeRollbackRangeTimeRequest) (response *DescribeRollbackRangeTimeResponse, err error) {
+    if request == nil {
+        request = NewDescribeRollbackRangeTimeRequest()
+    }
+    response = NewDescribeRollbackRangeTimeResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeSlowLogsRequest() (request *DescribeSlowLogsRequest) {
     request = &DescribeSlowLogsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -782,6 +807,31 @@ func (c *Client) DescribeSlowLogs(request *DescribeSlowLogsRequest) (response *D
         request = NewDescribeSlowLogsRequest()
     }
     response = NewDescribeSlowLogsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeTablesRequest() (request *DescribeTablesRequest) {
+    request = &DescribeTablesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cdb", APIVersion, "DescribeTables")
+    return
+}
+
+func NewDescribeTablesResponse() (response *DescribeTablesResponse) {
+    response = &DescribeTablesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口(DescribeTables)用于查询云数据库实例的数据库表信息。
+func (c *Client) DescribeTables(request *DescribeTablesRequest) (response *DescribeTablesResponse, err error) {
+    if request == nil {
+        request = NewDescribeTablesRequest()
+    }
+    response = NewDescribeTablesResponse()
     err = c.Send(request, response)
     return
 }
@@ -1188,6 +1238,31 @@ func (c *Client) RestartDBInstances(request *RestartDBInstancesRequest) (respons
         request = NewRestartDBInstancesRequest()
     }
     response = NewRestartDBInstancesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewStartBatchRollbackRequest() (request *StartBatchRollbackRequest) {
+    request = &StartBatchRollbackRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cdb", APIVersion, "StartBatchRollback")
+    return
+}
+
+func NewStartBatchRollbackResponse() (response *StartBatchRollbackResponse) {
+    response = &StartBatchRollbackResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 该接口（StartBatchRollback）用于批量回档云数据库实例的库表。
+func (c *Client) StartBatchRollback(request *StartBatchRollbackRequest) (response *StartBatchRollbackResponse, err error) {
+    if request == nil {
+        request = NewStartBatchRollbackRequest()
+    }
+    response = NewStartBatchRollbackResponse()
     err = c.Send(request, response)
     return
 }
