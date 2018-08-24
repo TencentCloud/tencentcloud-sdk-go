@@ -1,4 +1,4 @@
-// Copyright 1999-2018 Tencent Ltd.
+// Copyright (c) 2017-2018 THL A29 Limited, a Tencent company. All Rights Reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -40,6 +40,31 @@ func NewClient(credential *common.Credential, region string, clientProfile *prof
     return
 }
 
+
+func NewAddBandwidthPackageResourcesRequest() (request *AddBandwidthPackageResourcesRequest) {
+    request = &AddBandwidthPackageResourcesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "AddBandwidthPackageResources")
+    return
+}
+
+func NewAddBandwidthPackageResourcesResponse() (response *AddBandwidthPackageResourcesResponse) {
+    response = &AddBandwidthPackageResourcesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 接口用于添加带宽包资源，包括[弹性公网IP](https://cloud.tencent.com/document/product/213/1941)和[负载均衡](https://cloud.tencent.com/document/product/214/517)等
+func (c *Client) AddBandwidthPackageResources(request *AddBandwidthPackageResourcesRequest) (response *AddBandwidthPackageResourcesResponse, err error) {
+    if request == nil {
+        request = NewAddBandwidthPackageResourcesRequest()
+    }
+    response = NewAddBandwidthPackageResourcesResponse()
+    err = c.Send(request, response)
+    return
+}
 
 func NewAllocateAddressesRequest() (request *AllocateAddressesRequest) {
     request = &AllocateAddressesRequest{
@@ -123,6 +148,32 @@ func (c *Client) AssociateAddress(request *AssociateAddressRequest) (response *A
         request = NewAssociateAddressRequest()
     }
     response = NewAssociateAddressResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewAttachCcnInstancesRequest() (request *AttachCcnInstancesRequest) {
+    request = &AttachCcnInstancesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "AttachCcnInstances")
+    return
+}
+
+func NewAttachCcnInstancesResponse() (response *AttachCcnInstancesResponse) {
+    response = &AttachCcnInstancesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（AttachCcnInstances）用于将网络实例加载到云联网实例中，网络实例包括VPC和专线网关。<br />
+// 每个云联网能够关联的网络实例个数是有限的，详请参考产品文档。如果需要扩充请联系在线客服。
+func (c *Client) AttachCcnInstances(request *AttachCcnInstancesRequest) (response *AttachCcnInstancesResponse, err error) {
+    if request == nil {
+        request = NewAttachCcnInstancesRequest()
+    }
+    response = NewAttachCcnInstancesResponse()
     err = c.Send(request, response)
     return
 }
@@ -233,6 +284,57 @@ func (c *Client) CreateAddressTemplateGroup(request *CreateAddressTemplateGroupR
     return
 }
 
+func NewCreateBandwidthPackageRequest() (request *CreateBandwidthPackageRequest) {
+    request = &CreateBandwidthPackageRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "CreateBandwidthPackage")
+    return
+}
+
+func NewCreateBandwidthPackageResponse() (response *CreateBandwidthPackageResponse) {
+    response = &CreateBandwidthPackageResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 接口支持创建[设备带宽包](https://cloud.tencent.com/document/product/684/15246#.E8.AE.BE.E5.A4.87.E5.B8.A6.E5.AE.BD.E5.8C.85)和[ip带宽包](https://cloud.tencent.com/document/product/684/15246#ip-.E5.B8.A6.E5.AE.BD.E5.8C.85)
+func (c *Client) CreateBandwidthPackage(request *CreateBandwidthPackageRequest) (response *CreateBandwidthPackageResponse, err error) {
+    if request == nil {
+        request = NewCreateBandwidthPackageRequest()
+    }
+    response = NewCreateBandwidthPackageResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateCcnRequest() (request *CreateCcnRequest) {
+    request = &CreateCcnRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "CreateCcn")
+    return
+}
+
+func NewCreateCcnResponse() (response *CreateCcnResponse) {
+    response = &CreateCcnResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（CreateCcn）用于创建云联网（CCN）。<br />
+// 每个账号能创建的云联网实例个数是有限的，详请参考产品文档。如果需要扩充请联系在线客服。
+func (c *Client) CreateCcn(request *CreateCcnRequest) (response *CreateCcnResponse, err error) {
+    if request == nil {
+        request = NewCreateCcnRequest()
+    }
+    response = NewCreateCcnResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateCustomerGatewayRequest() (request *CreateCustomerGatewayRequest) {
     request = &CreateCustomerGatewayRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -287,6 +389,56 @@ func (c *Client) CreateDefaultVpc(request *CreateDefaultVpcRequest) (response *C
         request = NewCreateDefaultVpcRequest()
     }
     response = NewCreateDefaultVpcResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateDirectConnectGatewayRequest() (request *CreateDirectConnectGatewayRequest) {
+    request = &CreateDirectConnectGatewayRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "CreateDirectConnectGateway")
+    return
+}
+
+func NewCreateDirectConnectGatewayResponse() (response *CreateDirectConnectGatewayResponse) {
+    response = &CreateDirectConnectGatewayResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（CreateDirectConnectGateway）用于创建专线网关。
+func (c *Client) CreateDirectConnectGateway(request *CreateDirectConnectGatewayRequest) (response *CreateDirectConnectGatewayResponse, err error) {
+    if request == nil {
+        request = NewCreateDirectConnectGatewayRequest()
+    }
+    response = NewCreateDirectConnectGatewayResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateDirectConnectGatewayCcnRoutesRequest() (request *CreateDirectConnectGatewayCcnRoutesRequest) {
+    request = &CreateDirectConnectGatewayCcnRoutesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "CreateDirectConnectGatewayCcnRoutes")
+    return
+}
+
+func NewCreateDirectConnectGatewayCcnRoutesResponse() (response *CreateDirectConnectGatewayCcnRoutesResponse) {
+    response = &CreateDirectConnectGatewayCcnRoutesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（CreateDirectConnectGatewayCcnRoutes）用于创建专线网关的云联网路由（IDC网段）
+func (c *Client) CreateDirectConnectGatewayCcnRoutes(request *CreateDirectConnectGatewayCcnRoutesRequest) (response *CreateDirectConnectGatewayCcnRoutesResponse, err error) {
+    if request == nil {
+        request = NewCreateDirectConnectGatewayCcnRoutesRequest()
+    }
+    response = NewCreateDirectConnectGatewayCcnRoutesResponse()
     err = c.Send(request, response)
     return
 }
@@ -529,8 +681,6 @@ func NewCreateVpcResponse() (response *CreateVpcResponse) {
 
 // 本接口(CreateVpc)用于创建私有网络(VPC)。
 // * 用户可以创建的最小网段子网掩码为28（有16个IP地址），最大网段子网掩码为16（65,536个IP地址）,如果规划VPC网段请参见VPC网段规划说明。
-// * 创建VPC时可同时把子网创建好，创建子网也请规划好子网网段及子网所在可用区，同一个VPC内子网网段不能重叠，不同可用区可以做跨可用区容灾，详见VPC可用区说明。
-// * 如果您同时创建了子网，系统会创建一个默认路由表，系统会把子网关联到这个默认路由表。
 // * 同一个地域能创建的VPC资源个数也是有限制的，详见 <a href="https://cloud.tencent.com/doc/product/215/537" title="VPC使用限制">VPC使用限制</a>,如果需要扩充请联系在线客服。
 func (c *Client) CreateVpc(request *CreateVpcRequest) (response *CreateVpcResponse, err error) {
     if request == nil {
@@ -641,6 +791,58 @@ func (c *Client) DeleteAddressTemplateGroup(request *DeleteAddressTemplateGroupR
     return
 }
 
+func NewDeleteBandwidthPackageRequest() (request *DeleteBandwidthPackageRequest) {
+    request = &DeleteBandwidthPackageRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "DeleteBandwidthPackage")
+    return
+}
+
+func NewDeleteBandwidthPackageResponse() (response *DeleteBandwidthPackageResponse) {
+    response = &DeleteBandwidthPackageResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 接口支持删除共享带宽包，包括[设备带宽包](https://cloud.tencent.com/document/product/684/15246#.E8.AE.BE.E5.A4.87.E5.B8.A6.E5.AE.BD.E5.8C.85)和[ip带宽包](https://cloud.tencent.com/document/product/684/15246#ip-.E5.B8.A6.E5.AE.BD.E5.8C.85)
+func (c *Client) DeleteBandwidthPackage(request *DeleteBandwidthPackageRequest) (response *DeleteBandwidthPackageResponse, err error) {
+    if request == nil {
+        request = NewDeleteBandwidthPackageRequest()
+    }
+    response = NewDeleteBandwidthPackageResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteCcnRequest() (request *DeleteCcnRequest) {
+    request = &DeleteCcnRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "DeleteCcn")
+    return
+}
+
+func NewDeleteCcnResponse() (response *DeleteCcnResponse) {
+    response = &DeleteCcnResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（DeleteCcn）用于删除云联网。
+// * 删除后，云联网关联的所有实例间路由将被删除，网络将会中断，请务必确认
+// * 删除云联网是不可逆的操作，请谨慎处理。
+func (c *Client) DeleteCcn(request *DeleteCcnRequest) (response *DeleteCcnResponse, err error) {
+    if request == nil {
+        request = NewDeleteCcnRequest()
+    }
+    response = NewDeleteCcnResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteCustomerGatewayRequest() (request *DeleteCustomerGatewayRequest) {
     request = &DeleteCustomerGatewayRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -662,6 +864,31 @@ func (c *Client) DeleteCustomerGateway(request *DeleteCustomerGatewayRequest) (r
         request = NewDeleteCustomerGatewayRequest()
     }
     response = NewDeleteCustomerGatewayResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteDirectConnectGatewayCcnRoutesRequest() (request *DeleteDirectConnectGatewayCcnRoutesRequest) {
+    request = &DeleteDirectConnectGatewayCcnRoutesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "DeleteDirectConnectGatewayCcnRoutes")
+    return
+}
+
+func NewDeleteDirectConnectGatewayCcnRoutesResponse() (response *DeleteDirectConnectGatewayCcnRoutesResponse) {
+    response = &DeleteDirectConnectGatewayCcnRoutesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（DeleteDirectConnectGatewayCcnRoutes）用于删除专线网关的云联网路由（IDC网段）
+func (c *Client) DeleteDirectConnectGatewayCcnRoutes(request *DeleteDirectConnectGatewayCcnRoutesRequest) (response *DeleteDirectConnectGatewayCcnRoutesResponse, err error) {
+    if request == nil {
+        request = NewDeleteDirectConnectGatewayCcnRoutesRequest()
+    }
+    response = NewDeleteDirectConnectGatewayCcnRoutesResponse()
     err = c.Send(request, response)
     return
 }
@@ -1076,6 +1303,156 @@ func (c *Client) DescribeAddresses(request *DescribeAddressesRequest) (response 
     return
 }
 
+func NewDescribeBandwidthPackageQuotaRequest() (request *DescribeBandwidthPackageQuotaRequest) {
+    request = &DescribeBandwidthPackageQuotaRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "DescribeBandwidthPackageQuota")
+    return
+}
+
+func NewDescribeBandwidthPackageQuotaResponse() (response *DescribeBandwidthPackageQuotaResponse) {
+    response = &DescribeBandwidthPackageQuotaResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 接口用于查询账户在当前地域的带宽包上限数量以及使用数量
+func (c *Client) DescribeBandwidthPackageQuota(request *DescribeBandwidthPackageQuotaRequest) (response *DescribeBandwidthPackageQuotaResponse, err error) {
+    if request == nil {
+        request = NewDescribeBandwidthPackageQuotaRequest()
+    }
+    response = NewDescribeBandwidthPackageQuotaResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeBandwidthPackagesRequest() (request *DescribeBandwidthPackagesRequest) {
+    request = &DescribeBandwidthPackagesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "DescribeBandwidthPackages")
+    return
+}
+
+func NewDescribeBandwidthPackagesResponse() (response *DescribeBandwidthPackagesResponse) {
+    response = &DescribeBandwidthPackagesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 接口用于查询带宽包详细信息，包括带宽包唯一标识ID，类型，计费模式，名称，资源信息等
+func (c *Client) DescribeBandwidthPackages(request *DescribeBandwidthPackagesRequest) (response *DescribeBandwidthPackagesResponse, err error) {
+    if request == nil {
+        request = NewDescribeBandwidthPackagesRequest()
+    }
+    response = NewDescribeBandwidthPackagesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeCcnAttachedInstancesRequest() (request *DescribeCcnAttachedInstancesRequest) {
+    request = &DescribeCcnAttachedInstancesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "DescribeCcnAttachedInstances")
+    return
+}
+
+func NewDescribeCcnAttachedInstancesResponse() (response *DescribeCcnAttachedInstancesResponse) {
+    response = &DescribeCcnAttachedInstancesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（DescribeCcnAttachedInstances）用于查询云联网实例下已关联的网络实例。
+func (c *Client) DescribeCcnAttachedInstances(request *DescribeCcnAttachedInstancesRequest) (response *DescribeCcnAttachedInstancesResponse, err error) {
+    if request == nil {
+        request = NewDescribeCcnAttachedInstancesRequest()
+    }
+    response = NewDescribeCcnAttachedInstancesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeCcnRegionBandwidthLimitsRequest() (request *DescribeCcnRegionBandwidthLimitsRequest) {
+    request = &DescribeCcnRegionBandwidthLimitsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "DescribeCcnRegionBandwidthLimits")
+    return
+}
+
+func NewDescribeCcnRegionBandwidthLimitsResponse() (response *DescribeCcnRegionBandwidthLimitsResponse) {
+    response = &DescribeCcnRegionBandwidthLimitsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（DescribeCcnRegionBandwidthLimits）用于查询云联网各地域出带宽上限，该接口只返回已关联网络实例包含的地域
+func (c *Client) DescribeCcnRegionBandwidthLimits(request *DescribeCcnRegionBandwidthLimitsRequest) (response *DescribeCcnRegionBandwidthLimitsResponse, err error) {
+    if request == nil {
+        request = NewDescribeCcnRegionBandwidthLimitsRequest()
+    }
+    response = NewDescribeCcnRegionBandwidthLimitsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeCcnRoutesRequest() (request *DescribeCcnRoutesRequest) {
+    request = &DescribeCcnRoutesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "DescribeCcnRoutes")
+    return
+}
+
+func NewDescribeCcnRoutesResponse() (response *DescribeCcnRoutesResponse) {
+    response = &DescribeCcnRoutesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（DescribeCcnRoutes）用于查询已加入云联网（CCN）的路由
+func (c *Client) DescribeCcnRoutes(request *DescribeCcnRoutesRequest) (response *DescribeCcnRoutesResponse, err error) {
+    if request == nil {
+        request = NewDescribeCcnRoutesRequest()
+    }
+    response = NewDescribeCcnRoutesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeCcnsRequest() (request *DescribeCcnsRequest) {
+    request = &DescribeCcnsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "DescribeCcns")
+    return
+}
+
+func NewDescribeCcnsResponse() (response *DescribeCcnsResponse) {
+    response = &DescribeCcnsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（DescribeCcns）用于查询云联网（CCN）列表。
+func (c *Client) DescribeCcns(request *DescribeCcnsRequest) (response *DescribeCcnsResponse, err error) {
+    if request == nil {
+        request = NewDescribeCcnsRequest()
+    }
+    response = NewDescribeCcnsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeClassicLinkInstancesRequest() (request *DescribeClassicLinkInstancesRequest) {
     request = &DescribeClassicLinkInstancesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1151,6 +1528,31 @@ func (c *Client) DescribeCustomerGateways(request *DescribeCustomerGatewaysReque
     return
 }
 
+func NewDescribeDirectConnectGatewayCcnRoutesRequest() (request *DescribeDirectConnectGatewayCcnRoutesRequest) {
+    request = &DescribeDirectConnectGatewayCcnRoutesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "DescribeDirectConnectGatewayCcnRoutes")
+    return
+}
+
+func NewDescribeDirectConnectGatewayCcnRoutesResponse() (response *DescribeDirectConnectGatewayCcnRoutesResponse) {
+    response = &DescribeDirectConnectGatewayCcnRoutesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（DescribeDirectConnectGatewayCcnRoutes）用于查询专线网关的云联网路由（IDC网段）
+func (c *Client) DescribeDirectConnectGatewayCcnRoutes(request *DescribeDirectConnectGatewayCcnRoutesRequest) (response *DescribeDirectConnectGatewayCcnRoutesResponse, err error) {
+    if request == nil {
+        request = NewDescribeDirectConnectGatewayCcnRoutesRequest()
+    }
+    response = NewDescribeDirectConnectGatewayCcnRoutesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeNetworkInterfacesRequest() (request *DescribeNetworkInterfacesRequest) {
     request = &DescribeNetworkInterfacesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1172,6 +1574,31 @@ func (c *Client) DescribeNetworkInterfaces(request *DescribeNetworkInterfacesReq
         request = NewDescribeNetworkInterfacesRequest()
     }
     response = NewDescribeNetworkInterfacesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeRouteConflictsRequest() (request *DescribeRouteConflictsRequest) {
+    request = &DescribeRouteConflictsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "DescribeRouteConflicts")
+    return
+}
+
+func NewDescribeRouteConflictsResponse() (response *DescribeRouteConflictsResponse) {
+    response = &DescribeRouteConflictsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（DescribeRouteConflicts）用于查询自定义路由策略与云联网路由策略冲突列表
+func (c *Client) DescribeRouteConflicts(request *DescribeRouteConflictsRequest) (response *DescribeRouteConflictsResponse, err error) {
+    if request == nil {
+        request = NewDescribeRouteConflictsRequest()
+    }
+    response = NewDescribeRouteConflictsResponse()
     err = c.Send(request, response)
     return
 }
@@ -1426,6 +1853,32 @@ func (c *Client) DescribeVpnGateways(request *DescribeVpnGatewaysRequest) (respo
     return
 }
 
+func NewDetachCcnInstancesRequest() (request *DetachCcnInstancesRequest) {
+    request = &DetachCcnInstancesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "DetachCcnInstances")
+    return
+}
+
+func NewDetachCcnInstancesResponse() (response *DetachCcnInstancesResponse) {
+    response = &DetachCcnInstancesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（DetachCcnInstances）用于从云联网实例中解关联指定的网络实例。<br />
+// 解关联网络实例后，相应的路由策略会一并删除。
+func (c *Client) DetachCcnInstances(request *DetachCcnInstancesRequest) (response *DetachCcnInstancesResponse, err error) {
+    if request == nil {
+        request = NewDetachCcnInstancesRequest()
+    }
+    response = NewDetachCcnInstancesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDetachClassicLinkVpcRequest() (request *DetachClassicLinkVpcRequest) {
     request = &DetachClassicLinkVpcRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1472,6 +1925,56 @@ func (c *Client) DetachNetworkInterface(request *DetachNetworkInterfaceRequest) 
         request = NewDetachNetworkInterfaceRequest()
     }
     response = NewDetachNetworkInterfaceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDisableCcnRoutesRequest() (request *DisableCcnRoutesRequest) {
+    request = &DisableCcnRoutesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "DisableCcnRoutes")
+    return
+}
+
+func NewDisableCcnRoutesResponse() (response *DisableCcnRoutesResponse) {
+    response = &DisableCcnRoutesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（DisableCcnRoutes）用于禁用已经启用的云联网（CCN）路由
+func (c *Client) DisableCcnRoutes(request *DisableCcnRoutesRequest) (response *DisableCcnRoutesResponse, err error) {
+    if request == nil {
+        request = NewDisableCcnRoutesRequest()
+    }
+    response = NewDisableCcnRoutesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDisableRoutesRequest() (request *DisableRoutesRequest) {
+    request = &DisableRoutesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "DisableRoutes")
+    return
+}
+
+func NewDisableRoutesResponse() (response *DisableRoutesResponse) {
+    response = &DisableRoutesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（DisableRoutes）用于禁用已启用的子网路由
+func (c *Client) DisableRoutes(request *DisableRoutesRequest) (response *DisableRoutesResponse, err error) {
+    if request == nil {
+        request = NewDisableRoutesRequest()
+    }
+    response = NewDisableRoutesResponse()
     err = c.Send(request, response)
     return
 }
@@ -1524,6 +2027,58 @@ func (c *Client) DownloadCustomerGatewayConfiguration(request *DownloadCustomerG
         request = NewDownloadCustomerGatewayConfigurationRequest()
     }
     response = NewDownloadCustomerGatewayConfigurationResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewEnableCcnRoutesRequest() (request *EnableCcnRoutesRequest) {
+    request = &EnableCcnRoutesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "EnableCcnRoutes")
+    return
+}
+
+func NewEnableCcnRoutesResponse() (response *EnableCcnRoutesResponse) {
+    response = &EnableCcnRoutesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（EnableCcnRoutes）用于启用已经加入云联网（CCN）的路由。<br />
+// 本接口会校验启用后，是否与已有路由冲突，如果冲突，则无法启用，失败处理。路由冲突时，需要先禁用与之冲突的路由，才能启用该路由。
+func (c *Client) EnableCcnRoutes(request *EnableCcnRoutesRequest) (response *EnableCcnRoutesResponse, err error) {
+    if request == nil {
+        request = NewEnableCcnRoutesRequest()
+    }
+    response = NewEnableCcnRoutesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewEnableRoutesRequest() (request *EnableRoutesRequest) {
+    request = &EnableRoutesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "EnableRoutes")
+    return
+}
+
+func NewEnableRoutesResponse() (response *EnableRoutesResponse) {
+    response = &EnableRoutesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（EnableRoutes）用于启用已禁用的子网路由。<br />
+// 本接口会校验启用后，是否与已有路由冲突，如果冲突，则无法启用，失败处理。路由冲突时，需要先禁用与之冲突的路由，才能启用该路由。
+func (c *Client) EnableRoutes(request *EnableRoutesRequest) (response *EnableRoutesResponse, err error) {
+    if request == nil {
+        request = NewEnableRoutesRequest()
+    }
+    response = NewEnableRoutesResponse()
     err = c.Send(request, response)
     return
 }
@@ -1727,6 +2282,81 @@ func (c *Client) ModifyAddressTemplateGroupAttribute(request *ModifyAddressTempl
         request = NewModifyAddressTemplateGroupAttributeRequest()
     }
     response = NewModifyAddressTemplateGroupAttributeResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyAddressesBandwidthRequest() (request *ModifyAddressesBandwidthRequest) {
+    request = &ModifyAddressesBandwidthRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "ModifyAddressesBandwidth")
+    return
+}
+
+func NewModifyAddressesBandwidthResponse() (response *ModifyAddressesBandwidthResponse) {
+    response = &ModifyAddressesBandwidthResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 接口用于调整[弹性公网IP](https://cloud.tencent.com/document/product/213/1941)(简称EIP)带宽，包括后付费EIP, 预付费EIP和带宽包EIP
+func (c *Client) ModifyAddressesBandwidth(request *ModifyAddressesBandwidthRequest) (response *ModifyAddressesBandwidthResponse, err error) {
+    if request == nil {
+        request = NewModifyAddressesBandwidthRequest()
+    }
+    response = NewModifyAddressesBandwidthResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyBandwidthPackageAttributeRequest() (request *ModifyBandwidthPackageAttributeRequest) {
+    request = &ModifyBandwidthPackageAttributeRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "ModifyBandwidthPackageAttribute")
+    return
+}
+
+func NewModifyBandwidthPackageAttributeResponse() (response *ModifyBandwidthPackageAttributeResponse) {
+    response = &ModifyBandwidthPackageAttributeResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 接口用于修改带宽包属性，包括带宽包名字等
+func (c *Client) ModifyBandwidthPackageAttribute(request *ModifyBandwidthPackageAttributeRequest) (response *ModifyBandwidthPackageAttributeResponse, err error) {
+    if request == nil {
+        request = NewModifyBandwidthPackageAttributeRequest()
+    }
+    response = NewModifyBandwidthPackageAttributeResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyCcnAttributeRequest() (request *ModifyCcnAttributeRequest) {
+    request = &ModifyCcnAttributeRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "ModifyCcnAttribute")
+    return
+}
+
+func NewModifyCcnAttributeResponse() (response *ModifyCcnAttributeResponse) {
+    response = &ModifyCcnAttributeResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（ModifyCcnAttribute）用于修改云联网（CCN）的相关属性。
+func (c *Client) ModifyCcnAttribute(request *ModifyCcnAttributeRequest) (response *ModifyCcnAttributeResponse, err error) {
+    if request == nil {
+        request = NewModifyCcnAttributeRequest()
+    }
+    response = NewModifyCcnAttributeResponse()
     err = c.Send(request, response)
     return
 }
@@ -2067,6 +2697,31 @@ func (c *Client) ReleaseAddresses(request *ReleaseAddressesRequest) (response *R
     return
 }
 
+func NewRemoveBandwidthPackageResourcesRequest() (request *RemoveBandwidthPackageResourcesRequest) {
+    request = &RemoveBandwidthPackageResourcesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "RemoveBandwidthPackageResources")
+    return
+}
+
+func NewRemoveBandwidthPackageResourcesResponse() (response *RemoveBandwidthPackageResourcesResponse) {
+    response = &RemoveBandwidthPackageResourcesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 接口用于删除带宽包资源，包括[弹性公网IP](https://cloud.tencent.com/document/product/213/1941)和[负载均衡](https://cloud.tencent.com/document/product/214/517)等
+func (c *Client) RemoveBandwidthPackageResources(request *RemoveBandwidthPackageResourcesRequest) (response *RemoveBandwidthPackageResourcesResponse, err error) {
+    if request == nil {
+        request = NewRemoveBandwidthPackageResourcesRequest()
+    }
+    response = NewRemoveBandwidthPackageResourcesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewRenewVpnGatewayRequest() (request *RenewVpnGatewayRequest) {
     request = &RenewVpnGatewayRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2088,6 +2743,31 @@ func (c *Client) RenewVpnGateway(request *RenewVpnGatewayRequest) (response *Ren
         request = NewRenewVpnGatewayRequest()
     }
     response = NewRenewVpnGatewayResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewReplaceDirectConnectGatewayCcnRoutesRequest() (request *ReplaceDirectConnectGatewayCcnRoutesRequest) {
+    request = &ReplaceDirectConnectGatewayCcnRoutesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "ReplaceDirectConnectGatewayCcnRoutes")
+    return
+}
+
+func NewReplaceDirectConnectGatewayCcnRoutesResponse() (response *ReplaceDirectConnectGatewayCcnRoutesResponse) {
+    response = &ReplaceDirectConnectGatewayCcnRoutesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（ReplaceDirectConnectGatewayCcnRoutes）根据路由ID（RouteId）修改指定的路由（Route），支持批量修改。
+func (c *Client) ReplaceDirectConnectGatewayCcnRoutes(request *ReplaceDirectConnectGatewayCcnRoutesRequest) (response *ReplaceDirectConnectGatewayCcnRoutesResponse, err error) {
+    if request == nil {
+        request = NewReplaceDirectConnectGatewayCcnRoutesRequest()
+    }
+    response = NewReplaceDirectConnectGatewayCcnRoutesResponse()
     err = c.Send(request, response)
     return
 }
@@ -2184,7 +2864,7 @@ func NewResetRoutesResponse() (response *ResetRoutesResponse) {
     return
 }
 
-// 本接口（ResetRoutes）用于对某个路由表名称和所有路由策略（Route）进行重新设置。
+// 本接口（ResetRoutes）用于对某个路由表名称和所有路由策略（Route）进行重新设置。<br />
 // 注意: 调用本接口是先删除当前路由表中所有路由策略, 再保存新提交的路由策略内容, 会引起网络中断。
 func (c *Client) ResetRoutes(request *ResetRoutesRequest) (response *ResetRoutesResponse, err error) {
     if request == nil {
@@ -2241,6 +2921,31 @@ func (c *Client) ResetVpnGatewayInternetMaxBandwidth(request *ResetVpnGatewayInt
         request = NewResetVpnGatewayInternetMaxBandwidthRequest()
     }
     response = NewResetVpnGatewayInternetMaxBandwidthResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewSetCcnRegionBandwidthLimitsRequest() (request *SetCcnRegionBandwidthLimitsRequest) {
+    request = &SetCcnRegionBandwidthLimitsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "SetCcnRegionBandwidthLimits")
+    return
+}
+
+func NewSetCcnRegionBandwidthLimitsResponse() (response *SetCcnRegionBandwidthLimitsResponse) {
+    response = &SetCcnRegionBandwidthLimitsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（SetCcnRegionBandwidthLimits）用于设置云联网（CCN）各地域出带宽上限，该接口只能设置已关联网络实例包含的地域的出带宽上限
+func (c *Client) SetCcnRegionBandwidthLimits(request *SetCcnRegionBandwidthLimitsRequest) (response *SetCcnRegionBandwidthLimitsResponse, err error) {
+    if request == nil {
+        request = NewSetCcnRegionBandwidthLimitsRequest()
+    }
+    response = NewSetCcnRegionBandwidthLimitsResponse()
     err = c.Send(request, response)
     return
 }

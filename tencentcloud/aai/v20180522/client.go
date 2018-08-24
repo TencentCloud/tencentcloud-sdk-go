@@ -1,4 +1,4 @@
-// Copyright 1999-2018 Tencent Ltd.
+// Copyright (c) 2017-2018 THL A29 Limited, a Tencent company. All Rights Reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -41,6 +41,31 @@ func NewClient(credential *common.Credential, region string, clientProfile *prof
 }
 
 
+func NewChatRequest() (request *ChatRequest) {
+    request = &ChatRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("aai", APIVersion, "Chat")
+    return
+}
+
+func NewChatResponse() (response *ChatResponse) {
+    response = &ChatResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 提供基于文本的基础聊天能力，可以让您的应用快速拥有具备深度语义理解的机器聊天功能。
+func (c *Client) Chat(request *ChatRequest) (response *ChatResponse, err error) {
+    if request == nil {
+        request = NewChatRequest()
+    }
+    response = NewChatResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewSentenceRecognitionRequest() (request *SentenceRecognitionRequest) {
     request = &SentenceRecognitionRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -62,6 +87,31 @@ func (c *Client) SentenceRecognition(request *SentenceRecognitionRequest) (respo
         request = NewSentenceRecognitionRequest()
     }
     response = NewSentenceRecognitionResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewSimultaneousInterpretingRequest() (request *SimultaneousInterpretingRequest) {
+    request = &SimultaneousInterpretingRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("aai", APIVersion, "SimultaneousInterpreting")
+    return
+}
+
+func NewSimultaneousInterpretingResponse() (response *SimultaneousInterpretingResponse) {
+    response = &SimultaneousInterpretingResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 该接口是实时流式识别，可同时返回语音识别文本及翻译文本，当前仅支持中文和英文。该接口可配合同传windows客户端，提供会议现场同传服务。
+func (c *Client) SimultaneousInterpreting(request *SimultaneousInterpretingRequest) (response *SimultaneousInterpretingResponse, err error) {
+    if request == nil {
+        request = NewSimultaneousInterpretingRequest()
+    }
+    response = NewSimultaneousInterpretingResponse()
     err = c.Send(request, response)
     return
 }

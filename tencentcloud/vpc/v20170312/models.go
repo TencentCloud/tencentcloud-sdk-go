@@ -1,4 +1,4 @@
-// Copyright 1999-2018 Tencent Ltd.
+// Copyright (c) 2017-2018 THL A29 Limited, a Tencent company. All Rights Reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -27,6 +27,44 @@ type AccountAttribute struct {
 	AttributeValues []*string `json:"AttributeValues" name:"AttributeValues" list`
 }
 
+type AddBandwidthPackageResourcesRequest struct {
+	*tchttp.BaseRequest
+	// 资源Id，形如'eip-xxxx', 'lb-xxxx'
+	ResourceIds []*string `json:"ResourceIds" name:"ResourceIds" list`
+	// 带宽包唯一标识ID，形如'bwp-xxxx'
+	BandwidthPackageId *string `json:"BandwidthPackageId" name:"BandwidthPackageId"`
+	// 带宽包类型，包括'BGP', 'SINGLEISP', 'ANYCAST'
+	NetworkType *string `json:"NetworkType" name:"NetworkType"`
+	// 资源类型，包括'Address', 'LoadBalance'
+	ResourceType *string `json:"ResourceType" name:"ResourceType"`
+}
+
+func (r *AddBandwidthPackageResourcesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *AddBandwidthPackageResourcesRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type AddBandwidthPackageResourcesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		RequestId *string `json:"RequestId" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *AddBandwidthPackageResourcesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *AddBandwidthPackageResourcesResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type Address struct {
 	// `EIP`的`ID`，是`EIP`的唯一标识。
 	AddressId *string `json:"AddressId" name:"AddressId"`
@@ -34,12 +72,24 @@ type Address struct {
 	AddressName *string `json:"AddressName" name:"AddressName"`
 	// `EIP`状态。
 	AddressStatus *string `json:"AddressStatus" name:"AddressStatus"`
-	// 弹性外网IP
+	// 外网IP地址
 	AddressIp *string `json:"AddressIp" name:"AddressIp"`
-	// 绑定的资源实例`ID`。可能是一个`CVM`，`NAT`，或是弹性网卡。
-	BindedResourceId *string `json:"BindedResourceId" name:"BindedResourceId"`
+	// 绑定的资源实例`ID`。可能是一个`CVM`，`NAT`。
+	InstanceId *string `json:"InstanceId" name:"InstanceId"`
 	// 创建时间。按照`ISO8601`标准表示，并且使用`UTC`时间。格式为：`YYYY-MM-DDThh:mm:ssZ`。
 	CreatedTime *string `json:"CreatedTime" name:"CreatedTime"`
+	// 绑定的弹性网卡ID
+	NetworkInterfaceId *string `json:"NetworkInterfaceId" name:"NetworkInterfaceId"`
+	// 绑定的资源内网ip
+	PrivateAddressIp *string `json:"PrivateAddressIp" name:"PrivateAddressIp"`
+	// 资源隔离状态。true表示eip处于隔离状态，false表示资源处于未隔离装填
+	IsArrears *bool `json:"IsArrears" name:"IsArrears"`
+	// 资源封堵状态。true表示eip处于封堵状态，false表示eip处于未封堵状态
+	IsBlocked *bool `json:"IsBlocked" name:"IsBlocked"`
+	// eip是否支持直通模式。true表示eip支持直通模式，false表示资源不支持直通模式
+	IsEipDirectConnection *bool `json:"IsEipDirectConnection" name:"IsEipDirectConnection"`
+	// eip资源类型，包括"CalcIP","WanIP","EIP","AnycastEIP"。其中"CalcIP"表示设备ip，“WanIP”表示普通公网ip，“EIP”表示弹性公网ip，“AnycastEip”表示加速EIP
+	AddressType *string `json:"AddressType" name:"AddressType"`
 }
 
 type AddressTemplate struct {
@@ -62,6 +112,13 @@ type AddressTemplateGroup struct {
 	AddressTemplateIdSet []*string `json:"AddressTemplateIdSet" name:"AddressTemplateIdSet" list`
 	// 创建时间。
 	CreatedTime *string `json:"CreatedTime" name:"CreatedTime"`
+}
+
+type AddressTemplateSpecification struct {
+	// IP地址ID，例如：ipm-2uw6ujo6。
+	AddressId *string `json:"AddressId" name:"AddressId"`
+	// IP地址组ID，例如：ipmg-2uw6ujo6。
+	AddressGroupId *string `json:"AddressGroupId" name:"AddressGroupId"`
 }
 
 type AllocateAddressesRequest struct {
@@ -174,6 +231,40 @@ func (r *AssociateAddressResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type AttachCcnInstancesRequest struct {
+	*tchttp.BaseRequest
+	// CCN实例ID。形如：ccn-f49l6u0z。
+	CcnId *string `json:"CcnId" name:"CcnId"`
+	// 关联网络实例列表
+	Instances []*CcnInstance `json:"Instances" name:"Instances" list`
+}
+
+func (r *AttachCcnInstancesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *AttachCcnInstancesRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type AttachCcnInstancesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		RequestId *string `json:"RequestId" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *AttachCcnInstancesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *AttachCcnInstancesResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type AttachClassicLinkVpcRequest struct {
 	*tchttp.BaseRequest
 	// VPC实例ID
@@ -240,6 +331,79 @@ func (r *AttachNetworkInterfaceResponse) ToJsonString() string {
 
 func (r *AttachNetworkInterfaceResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
+}
+
+type BandwidthPackage struct {
+	// 带宽包唯一标识Id
+	BandwidthPackageId *string `json:"BandwidthPackageId" name:"BandwidthPackageId"`
+	// 带宽包类型，包括'BGP','SINGLEISP','ANYCAST'
+	NetworkType *string `json:"NetworkType" name:"NetworkType"`
+	// 带宽包计费类型，包括'TOP5_POSTPAID_BY_MONTH'和'PERCENT95_POSTPAID_BY_MONTH'
+	ChargeType *string `json:"ChargeType" name:"ChargeType"`
+	// 带宽包名称
+	BandwidthPackageName *string `json:"BandwidthPackageName" name:"BandwidthPackageName"`
+	// 带宽包创建时间。按照`ISO8601`标准表示，并且使用`UTC`时间。格式为：`YYYY-MM-DDThh:mm:ssZ`。
+	CreatedTime *string `json:"CreatedTime" name:"CreatedTime"`
+	// 带宽包状态，包括'CREATING','CREATED','DELETING','DELETED'
+	Status *string `json:"Status" name:"Status"`
+	// 带宽包资源信息
+	ResourceSet []*Resource `json:"ResourceSet" name:"ResourceSet" list`
+}
+
+type CCN struct {
+	// 云联网唯一ID
+	CcnId *string `json:"CcnId" name:"CcnId"`
+	// 云联网名称
+	CcnName *string `json:"CcnName" name:"CcnName"`
+	// 云联网描述信息
+	CcnDescription *string `json:"CcnDescription" name:"CcnDescription"`
+	// 关联实例数量
+	InstanceCount *uint64 `json:"InstanceCount" name:"InstanceCount"`
+	// 创建时间
+	CreateTime *string `json:"CreateTime" name:"CreateTime"`
+	// 实例状态， 'ISOLATED': 隔离中（欠费停服），'AVAILABLE'：运行中。
+	State *string `json:"State" name:"State"`
+}
+
+type CcnInstance struct {
+	// 关联实例ID
+	InstanceId *string `json:"InstanceId" name:"InstanceId"`
+	// 关联实例ID所属大区，例如：ap-guangzhou
+	InstanceRegion *string `json:"InstanceRegion" name:"InstanceRegion"`
+	// 云联网实例ID
+	CcnId *string `json:"CcnId" name:"CcnId"`
+	// 关联实例类型，可选值：VPC、DIRECTCONNECT
+	InstanceType *string `json:"InstanceType" name:"InstanceType"`
+	// 关联实例名称
+	InstanceName *string `json:"InstanceName" name:"InstanceName"`
+	// 关联实例CIDR
+	CidrBlock []*string `json:"CidrBlock" name:"CidrBlock" list`
+}
+
+type CcnRegionBandwidthLimit struct {
+	// 地域，例如：ap-guangzhou
+	Region *string `json:"Region" name:"Region"`
+	// 出带宽上限，单位：Mbps
+	BandwidthLimit *uint64 `json:"BandwidthLimit" name:"BandwidthLimit"`
+}
+
+type CcnRoute struct {
+	// 路由策略ID
+	RouteId *string `json:"RouteId" name:"RouteId"`
+	// 目的端
+	DestinationCidrBlock *string `json:"DestinationCidrBlock" name:"DestinationCidrBlock"`
+	// 下一跳类型（关联实例类型），所有类型：VPC、DIRECTCONNECT
+	InstanceType *string `json:"InstanceType" name:"InstanceType"`
+	// 下一跳（关联实例）
+	InstanceId *string `json:"InstanceId" name:"InstanceId"`
+	// 下一跳名称（关联实例名称）
+	InstanceName *string `json:"InstanceName" name:"InstanceName"`
+	// 下一跳所属地域（关联实例所属地域）
+	InstanceRegion *string `json:"InstanceRegion" name:"InstanceRegion"`
+	// 更新时间
+	UpdateTime *string `json:"UpdateTime" name:"UpdateTime"`
+	// 路由是否启用
+	Enabled *bool `json:"Enabled" name:"Enabled"`
 }
 
 type ClassicLinkInstance struct {
@@ -321,6 +485,84 @@ func (r *CreateAddressTemplateResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type CreateBandwidthPackageRequest struct {
+	*tchttp.BaseRequest
+	// 带宽包类型，包括'BGP'，'SINGLEISP'，'ANYCAST'
+	NetworkType *string `json:"NetworkType" name:"NetworkType"`
+	// 带宽包计费类型，包括‘TOP5_POSTPAID_BY_MONTH’，‘PERCENT95_POSTPAID_BY_MONTH’
+	ChargeType *string `json:"ChargeType" name:"ChargeType"`
+	// 带宽包名字
+	BandwidthPackageName *string `json:"BandwidthPackageName" name:"BandwidthPackageName"`
+	// 带宽包数量(非上移账户只能填1)
+	BandwidthPackageCount *uint64 `json:"BandwidthPackageCount" name:"BandwidthPackageCount"`
+}
+
+func (r *CreateBandwidthPackageRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateBandwidthPackageRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateBandwidthPackageResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+		// 带宽包Id
+		BandwidthPackageId *string `json:"BandwidthPackageId" name:"BandwidthPackageId"`
+		// 带宽包Ids(申请数量大于1时有效)
+		BandwidthPackageIds []*string `json:"BandwidthPackageIds" name:"BandwidthPackageIds" list`
+		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		RequestId *string `json:"RequestId" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateBandwidthPackageResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateBandwidthPackageResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateCcnRequest struct {
+	*tchttp.BaseRequest
+	// CCN名称，最大长度不能超过60个字节。
+	CcnName *string `json:"CcnName" name:"CcnName"`
+	// CCN描述信息，最大长度不能超过100个字节。
+	CcnDescription *string `json:"CcnDescription" name:"CcnDescription"`
+}
+
+func (r *CreateCcnRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateCcnRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateCcnResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+		// 云联网（CCN）对象。
+		Ccn *CCN `json:"Ccn" name:"Ccn"`
+		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		RequestId *string `json:"RequestId" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateCcnResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateCcnResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type CreateCustomerGatewayRequest struct {
 	*tchttp.BaseRequest
 	// 对端网关名称，可任意命名，但不得超过60个字符。
@@ -390,6 +632,85 @@ func (r *CreateDefaultVpcResponse) ToJsonString() string {
 }
 
 func (r *CreateDefaultVpcResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateDirectConnectGatewayCcnRoutesRequest struct {
+	*tchttp.BaseRequest
+	// 专线网关ID，形如：dcg-prpqlmg1
+	DirectConnectGatewayId *string `json:"DirectConnectGatewayId" name:"DirectConnectGatewayId"`
+	// 需要连通的IDC网段列表
+	Routes []*DirectConnectGatewayCcnRoute `json:"Routes" name:"Routes" list`
+}
+
+func (r *CreateDirectConnectGatewayCcnRoutesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateDirectConnectGatewayCcnRoutesRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateDirectConnectGatewayCcnRoutesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		RequestId *string `json:"RequestId" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateDirectConnectGatewayCcnRoutesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateDirectConnectGatewayCcnRoutesResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateDirectConnectGatewayRequest struct {
+	*tchttp.BaseRequest
+	// 专线网关名称
+	DirectConnectGatewayName *string `json:"DirectConnectGatewayName" name:"DirectConnectGatewayName"`
+	// 关联网络类型，可选值：
+	// <li>VPC - 私有网络</li>
+	// <li>CCN - 云联网</li>
+	NetworkType *string `json:"NetworkType" name:"NetworkType"`
+	// <li>NetworkType 为 VPC 时，这里传值为私有网络实例ID</li>
+	// <li>NetworkType 为 NAT 时，这里传值为云联网实例ID</li>
+	NetworkInstanceId *string `json:"NetworkInstanceId" name:"NetworkInstanceId"`
+	// 网关类型，可选值：
+	// <li>NORMAL - （默认）标准型，注：云联网只支持标准型</li>
+	// <li>NAT - NAT型</li>NAT类型支持网络地址转换配置，类型确定后不能修改；一个私有网络可以创建一个NAT类型的专线网关和一个非NAT类型的专线网关
+	GatewayType *string `json:"GatewayType" name:"GatewayType"`
+}
+
+func (r *CreateDirectConnectGatewayRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateDirectConnectGatewayRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateDirectConnectGatewayResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+		// 专线网关对象。
+		DirectConnectGateway *DirectConnectGateway `json:"DirectConnectGateway" name:"DirectConnectGateway"`
+		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		RequestId *string `json:"RequestId" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateDirectConnectGatewayResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateDirectConnectGatewayResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -916,6 +1237,70 @@ func (r *DeleteAddressTemplateResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DeleteBandwidthPackageRequest struct {
+	*tchttp.BaseRequest
+	// 待删除带宽包bwpId
+	BandwidthPackageId *string `json:"BandwidthPackageId" name:"BandwidthPackageId"`
+}
+
+func (r *DeleteBandwidthPackageRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteBandwidthPackageRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteBandwidthPackageResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		RequestId *string `json:"RequestId" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DeleteBandwidthPackageResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteBandwidthPackageResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteCcnRequest struct {
+	*tchttp.BaseRequest
+	// CCN实例ID。形如：ccn-f49l6u0z。
+	CcnId *string `json:"CcnId" name:"CcnId"`
+}
+
+func (r *DeleteCcnRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteCcnRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteCcnResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		RequestId *string `json:"RequestId" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DeleteCcnResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteCcnResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DeleteCustomerGatewayRequest struct {
 	*tchttp.BaseRequest
 	// 对端网关ID，例如：cgw-2wqq41m9，可通过DescribeCustomerGateways接口查询对端网关。
@@ -945,6 +1330,40 @@ func (r *DeleteCustomerGatewayResponse) ToJsonString() string {
 }
 
 func (r *DeleteCustomerGatewayResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteDirectConnectGatewayCcnRoutesRequest struct {
+	*tchttp.BaseRequest
+	// 专线网关ID，形如：dcg-prpqlmg1
+	DirectConnectGatewayId *string `json:"DirectConnectGatewayId" name:"DirectConnectGatewayId"`
+	// 路由ID。形如：ccnr-f49l6u0z。
+	RouteIds []*string `json:"RouteIds" name:"RouteIds" list`
+}
+
+func (r *DeleteDirectConnectGatewayCcnRoutesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteDirectConnectGatewayCcnRoutesRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteDirectConnectGatewayCcnRoutesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		RequestId *string `json:"RequestId" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DeleteDirectConnectGatewayCcnRoutesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteDirectConnectGatewayCcnRoutesResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -1504,6 +1923,257 @@ func (r *DescribeAddressesResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeBandwidthPackageQuotaRequest struct {
+	*tchttp.BaseRequest
+}
+
+func (r *DescribeBandwidthPackageQuotaRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeBandwidthPackageQuotaRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeBandwidthPackageQuotaResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+		// 带宽包配额数据结构
+		QuotaSet []*Quota `json:"QuotaSet" name:"QuotaSet" list`
+		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		RequestId *string `json:"RequestId" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeBandwidthPackageQuotaResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeBandwidthPackageQuotaResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeBandwidthPackagesRequest struct {
+	*tchttp.BaseRequest
+	// 带宽包Id，支持批量
+	BandwidthPackageIds []*string `json:"BandwidthPackageIds" name:"BandwidthPackageIds" list`
+	// 每次请求的`Filters`的上限为10。参数不支持同时指定`BandwidthPackageIds`和`Filters`。详细的过滤条件如下：
+	// <li> bandwidth-package_id - String - 是否必填：否 - （过滤条件）按照带宽包的唯一标识ID过滤。</li>
+	// <li> bandwidth-package-name - String - 是否必填：否 - （过滤条件）按照 带宽包名称过滤。不支持模糊过滤。</li>
+	// <li> network-type - String - 是否必填：否 - （过滤条件）按照带宽包的类型过滤。类型包括'BGP','SINGLEISP'和'ANYCAST'。</li>
+	// <li> charge-type - String - 是否必填：否 - （过滤条件）按照带宽包的计费类型过滤。计费类型包括'TOP5_POSTPAID_BY_MONTH'和'PERCENT95_POSTPAID_BY_MONTH'</li>
+	// <li> resource.resource-type - String - 是否必填：否 - （过滤条件）按照带宽包资源类型过滤。资源类型包括'Address'和'LoadBalance'</li>
+	// <li> resource.resource-id - String - 是否必填：否 - （过滤条件）按照带宽包资源Id过滤。资源Id形如'eip-xxxx','lb-xxxx'</li>
+	// <li> resource.address-ip - String - 是否必填：否 - （过滤条件）按照带宽包资源Ip过滤。</li>
+	Filters []*Filter `json:"Filters" name:"Filters" list`
+	// 查询带宽包偏移量
+	Offset *uint64 `json:"Offset" name:"Offset"`
+	// 查询带宽包数量限制
+	Limit *uint64 `json:"Limit" name:"Limit"`
+}
+
+func (r *DescribeBandwidthPackagesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeBandwidthPackagesRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeBandwidthPackagesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+		// 符合条件的带宽包数量
+		TotalCount *uint64 `json:"TotalCount" name:"TotalCount"`
+		// 描述带宽包详细信息
+		BandwidthPackageSet []*BandwidthPackage `json:"BandwidthPackageSet" name:"BandwidthPackageSet" list`
+		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		RequestId *string `json:"RequestId" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeBandwidthPackagesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeBandwidthPackagesResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeCcnAttachedInstancesRequest struct {
+	*tchttp.BaseRequest
+	// CCN实例ID。形如：ccn-f49l6u0z。
+	CcnId *string `json:"CcnId" name:"CcnId"`
+	// 偏移量
+	Offset *uint64 `json:"Offset" name:"Offset"`
+	// 返回数量
+	Limit *uint64 `json:"Limit" name:"Limit"`
+}
+
+func (r *DescribeCcnAttachedInstancesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeCcnAttachedInstancesRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeCcnAttachedInstancesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+		// 符合条件的对象数。
+		TotalCount *uint64 `json:"TotalCount" name:"TotalCount"`
+		// 关联实例列表
+		InstanceSet []*CcnInstance `json:"InstanceSet" name:"InstanceSet" list`
+		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		RequestId *string `json:"RequestId" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeCcnAttachedInstancesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeCcnAttachedInstancesResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeCcnRegionBandwidthLimitsRequest struct {
+	*tchttp.BaseRequest
+	// CCN实例ID。形如：ccn-f49l6u0z。
+	CcnId *string `json:"CcnId" name:"CcnId"`
+}
+
+func (r *DescribeCcnRegionBandwidthLimitsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeCcnRegionBandwidthLimitsRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeCcnRegionBandwidthLimitsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+		// 云联网（CCN）各地域出带宽上限
+		CcnRegionBandwidthLimitSet []*CcnRegionBandwidthLimit `json:"CcnRegionBandwidthLimitSet" name:"CcnRegionBandwidthLimitSet" list`
+		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		RequestId *string `json:"RequestId" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeCcnRegionBandwidthLimitsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeCcnRegionBandwidthLimitsResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeCcnRoutesRequest struct {
+	*tchttp.BaseRequest
+	// CCN实例ID，形如：ccn-gree226l。
+	CcnId *string `json:"CcnId" name:"CcnId"`
+	// CCN路由策略唯一ID。形如：ccnr-f49l6u0z。
+	RouteIds []*string `json:"RouteIds" name:"RouteIds" list`
+	// 过滤条件，参数不支持同时指定RouteIds和Filters。
+	// <li>ccn-id - String -（过滤条件）CCN实例ID。</li>
+	// <li>route-id - String -（过滤条件）路由策略ID。</li>
+	// <li>cidr-block - String -（过滤条件）目的端。</li>
+	// <li>instance-type - String -（过滤条件）下一跳类型。</li>
+	// <li>instance-region - String -（过滤条件）下一跳所属地域。</li>
+	// <li>instance-id - String -（过滤条件）下一跳实例ID。</li>
+	Filters []*Filter `json:"Filters" name:"Filters" list`
+	// 偏移量
+	Offset *uint64 `json:"Offset" name:"Offset"`
+	// 返回数量
+	Limit *uint64 `json:"Limit" name:"Limit"`
+}
+
+func (r *DescribeCcnRoutesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeCcnRoutesRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeCcnRoutesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+		// 符合条件的对象数。
+		TotalCount *uint64 `json:"TotalCount" name:"TotalCount"`
+		// CCN路由策略对象。
+		RouteSet []*CcnRoute `json:"RouteSet" name:"RouteSet" list`
+		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		RequestId *string `json:"RequestId" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeCcnRoutesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeCcnRoutesResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeCcnsRequest struct {
+	*tchttp.BaseRequest
+	// CCN实例ID。形如：ccn-f49l6u0z。每次请求的实例的上限为100。参数不支持同时指定CcnIds和Filters。
+	CcnIds []*string `json:"CcnIds" name:"CcnIds" list`
+	// 过滤条件，参数不支持同时指定CcnIds和Filters。
+	// <li>ccn-id - String - （过滤条件）CCN唯一ID，形如：vpc-f49l6u0z。</li>
+	// <li>ccn-name - String - （过滤条件）CCN名称。</li>
+	// <li>ccn-description - String - （过滤条件）CCN描述。</li>
+	// <li>state - String - （过滤条件）实例状态， 'ISOLATED': 隔离中（欠费停服），'AVAILABLE'：运行中。</li>
+	Filters []*Filter `json:"Filters" name:"Filters" list`
+	// 偏移量
+	Offset *uint64 `json:"Offset" name:"Offset"`
+	// 返回数量
+	Limit *uint64 `json:"Limit" name:"Limit"`
+}
+
+func (r *DescribeCcnsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeCcnsRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeCcnsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+		// 符合条件的对象数。
+		TotalCount *uint64 `json:"TotalCount" name:"TotalCount"`
+		// CCN对象。
+		CcnSet []*CCN `json:"CcnSet" name:"CcnSet" list`
+		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		RequestId *string `json:"RequestId" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeCcnsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeCcnsResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeClassicLinkInstancesRequest struct {
 	*tchttp.BaseRequest
 	// 过滤条件。
@@ -1620,6 +2290,42 @@ func (r *DescribeCustomerGatewaysResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeDirectConnectGatewayCcnRoutesRequest struct {
+	*tchttp.BaseRequest
+	// 专线网关ID，形如：dcg-prpqlmg1
+	DirectConnectGatewayId *string `json:"DirectConnectGatewayId" name:"DirectConnectGatewayId"`
+}
+
+func (r *DescribeDirectConnectGatewayCcnRoutesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeDirectConnectGatewayCcnRoutesRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeDirectConnectGatewayCcnRoutesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+		// 符合条件的对象数。
+		TotalCount *uint64 `json:"TotalCount" name:"TotalCount"`
+		// 云联网路由（IDC网段）列表。
+		RouteSet []*DirectConnectGatewayCcnRoute `json:"RouteSet" name:"RouteSet" list`
+		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		RequestId *string `json:"RequestId" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeDirectConnectGatewayCcnRoutesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeDirectConnectGatewayCcnRoutesResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeNetworkInterfacesRequest struct {
 	*tchttp.BaseRequest
 	// 弹性网卡实例ID查询。形如：eni-pxir56ns。每次请求的实例的上限为100。参数不支持同时指定NetworkInterfaceIds和Filters。
@@ -1666,6 +2372,42 @@ func (r *DescribeNetworkInterfacesResponse) ToJsonString() string {
 }
 
 func (r *DescribeNetworkInterfacesResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeRouteConflictsRequest struct {
+	*tchttp.BaseRequest
+	// 路由表实例ID，例如：rtb-azd4dt1c。
+	RouteTableId *string `json:"RouteTableId" name:"RouteTableId"`
+	// 要检查的与之冲突的目的端列表
+	DestinationCidrBlocks []*string `json:"DestinationCidrBlocks" name:"DestinationCidrBlocks" list`
+}
+
+func (r *DescribeRouteConflictsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeRouteConflictsRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeRouteConflictsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+		// 路由策略冲突列表
+		RouteConflictSet []*RouteConflict `json:"RouteConflictSet" name:"RouteConflictSet" list`
+		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		RequestId *string `json:"RequestId" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeRouteConflictsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeRouteConflictsResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -2089,6 +2831,40 @@ func (r *DescribeVpnGatewaysResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DetachCcnInstancesRequest struct {
+	*tchttp.BaseRequest
+	// CCN实例ID。形如：ccn-f49l6u0z。
+	CcnId *string `json:"CcnId" name:"CcnId"`
+	// 要解关联网络实例列表
+	Instances []*CcnInstance `json:"Instances" name:"Instances" list`
+}
+
+func (r *DetachCcnInstancesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DetachCcnInstancesRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DetachCcnInstancesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		RequestId *string `json:"RequestId" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DetachCcnInstancesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DetachCcnInstancesResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DetachClassicLinkVpcRequest struct {
 	*tchttp.BaseRequest
 	// VPC实例ID。可通过DescribeVpcs接口返回值中的VpcId获取。
@@ -2154,6 +2930,105 @@ func (r *DetachNetworkInterfaceResponse) ToJsonString() string {
 }
 
 func (r *DetachNetworkInterfaceResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DirectConnectGateway struct {
+	// 专线网关ID
+	DirectConnectGatewayId *string `json:"DirectConnectGatewayId" name:"DirectConnectGatewayId"`
+	// 专线网关名称
+	DirectConnectGatewayName *string `json:"DirectConnectGatewayName" name:"DirectConnectGatewayName"`
+	// VPC实例ID
+	VpcId *string `json:"VpcId" name:"VpcId"`
+	// 关联网络类型，可选值：
+	// <li>VPC - 私有网络</li>
+	// <li>CCN - 云联网</li>
+	NetworkType *string `json:"NetworkType" name:"NetworkType"`
+	// <li>NetworkType 为 VPC 时，这里传值为私有网络实例ID</li>
+	// <li>NetworkType 为 NAT 时，这里传值为云联网实例ID</li>
+	NetworkInstanceId *string `json:"NetworkInstanceId" name:"NetworkInstanceId"`
+	// 网关类型，可选值：
+	// <li>NORMAL - （默认）标准型，注：云联网只支持标准型</li>
+	// <li>NAT - NAT型</li>NAT类型支持网络地址转换配置，类型确定后不能修改；一个私有网络可以创建一个NAT类型的专线网关和一个非NAT类型的专线网关
+	GatewayType *string `json:"GatewayType" name:"GatewayType"`
+	// 专线通道数
+	DirectConnectTunnelCount *uint64 `json:"DirectConnectTunnelCount" name:"DirectConnectTunnelCount"`
+	// 创建时间
+	CreateTime *string `json:"CreateTime" name:"CreateTime"`
+}
+
+type DirectConnectGatewayCcnRoute struct {
+	// 路由ID
+	RouteId *string `json:"RouteId" name:"RouteId"`
+	// IDC网段
+	DestinationCidrBlock *string `json:"DestinationCidrBlock" name:"DestinationCidrBlock"`
+}
+
+type DisableCcnRoutesRequest struct {
+	*tchttp.BaseRequest
+	// CCN实例ID。形如：ccn-f49l6u0z。
+	CcnId *string `json:"CcnId" name:"CcnId"`
+	// CCN路由策略唯一ID。形如：ccnr-f49l6u0z。
+	RouteIds []*string `json:"RouteIds" name:"RouteIds" list`
+}
+
+func (r *DisableCcnRoutesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DisableCcnRoutesRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DisableCcnRoutesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		RequestId *string `json:"RequestId" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DisableCcnRoutesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DisableCcnRoutesResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DisableRoutesRequest struct {
+	*tchttp.BaseRequest
+	// 路由表唯一ID。
+	RouteTableId *string `json:"RouteTableId" name:"RouteTableId"`
+	// 路由策略唯一ID。
+	RouteIds []*uint64 `json:"RouteIds" name:"RouteIds" list`
+}
+
+func (r *DisableRoutesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DisableRoutesRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DisableRoutesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		RequestId *string `json:"RequestId" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DisableRoutesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DisableRoutesResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -2228,6 +3103,74 @@ func (r *DownloadCustomerGatewayConfigurationResponse) ToJsonString() string {
 }
 
 func (r *DownloadCustomerGatewayConfigurationResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type EnableCcnRoutesRequest struct {
+	*tchttp.BaseRequest
+	// CCN实例ID。形如：ccn-f49l6u0z。
+	CcnId *string `json:"CcnId" name:"CcnId"`
+	// CCN路由策略唯一ID。形如：ccnr-f49l6u0z。
+	RouteIds []*string `json:"RouteIds" name:"RouteIds" list`
+}
+
+func (r *EnableCcnRoutesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *EnableCcnRoutesRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type EnableCcnRoutesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		RequestId *string `json:"RequestId" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *EnableCcnRoutesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *EnableCcnRoutesResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type EnableRoutesRequest struct {
+	*tchttp.BaseRequest
+	// 路由表唯一ID。
+	RouteTableId *string `json:"RouteTableId" name:"RouteTableId"`
+	// 路由策略唯一ID。
+	RouteIds []*uint64 `json:"RouteIds" name:"RouteIds" list`
+}
+
+func (r *EnableRoutesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *EnableRoutesRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type EnableRoutesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		RequestId *string `json:"RequestId" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *EnableRoutesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *EnableRoutesResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -2588,6 +3531,114 @@ func (r *ModifyAddressTemplateGroupAttributeResponse) ToJsonString() string {
 }
 
 func (r *ModifyAddressTemplateGroupAttributeResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyAddressesBandwidthRequest struct {
+	*tchttp.BaseRequest
+	// EIP唯一标识id，形如'eip-xxxx'
+	AddressIds []*string `json:"AddressIds" name:"AddressIds" list`
+	// 调整带宽目标值
+	InternetMaxBandwidthOut *int64 `json:"InternetMaxBandwidthOut" name:"InternetMaxBandwidthOut"`
+	// 包月带宽起始时间
+	StartTime *string `json:"StartTime" name:"StartTime"`
+	// 包月带宽结束时间
+	EndTime *string `json:"EndTime" name:"EndTime"`
+}
+
+func (r *ModifyAddressesBandwidthRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyAddressesBandwidthRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyAddressesBandwidthResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		RequestId *string `json:"RequestId" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifyAddressesBandwidthResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyAddressesBandwidthResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyBandwidthPackageAttributeRequest struct {
+	*tchttp.BaseRequest
+	// 带宽包唯一标识ID
+	BandwidthPackageId *string `json:"BandwidthPackageId" name:"BandwidthPackageId"`
+	// 带宽包名称
+	BandwidthPackageName *string `json:"BandwidthPackageName" name:"BandwidthPackageName"`
+}
+
+func (r *ModifyBandwidthPackageAttributeRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyBandwidthPackageAttributeRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyBandwidthPackageAttributeResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		RequestId *string `json:"RequestId" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifyBandwidthPackageAttributeResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyBandwidthPackageAttributeResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyCcnAttributeRequest struct {
+	*tchttp.BaseRequest
+	// CCN实例ID。形如：ccn-f49l6u0z。
+	CcnId *string `json:"CcnId" name:"CcnId"`
+	// CCN名称，最大长度不能超过60个字节。
+	CcnName *string `json:"CcnName" name:"CcnName"`
+	// CCN描述信息，最大长度不能超过100个字节。
+	CcnDescription *string `json:"CcnDescription" name:"CcnDescription"`
+}
+
+func (r *ModifyCcnAttributeRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyCcnAttributeRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyCcnAttributeResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		RequestId *string `json:"RequestId" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifyCcnAttributeResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyCcnAttributeResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -3087,6 +4138,12 @@ type PrivateIpAddressSpecification struct {
 	Description *string `json:"Description" name:"Description"`
 	// 公网IP是否被封堵。
 	IsWanIpBlocked *bool `json:"IsWanIpBlocked" name:"IsWanIpBlocked"`
+	// IP状态：
+	// PENDING：生产中
+	// MIGRATING：迁移中
+	// DELETING：删除中
+	// AVAILABLE：可用的
+	State *string `json:"State" name:"State"`
 }
 
 type Quota struct {
@@ -3130,6 +4187,42 @@ func (r *ReleaseAddressesResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type RemoveBandwidthPackageResourcesRequest struct {
+	*tchttp.BaseRequest
+	// 带宽包唯一标识ID，形如'bwp-xxxx'
+	BandwidthPackageId *string `json:"BandwidthPackageId" name:"BandwidthPackageId"`
+	// 资源类型，包括‘Address’, ‘LoadBalance’
+	ResourceType *string `json:"ResourceType" name:"ResourceType"`
+	// 资源Id，形如'eip-xxxx', 'lb-xxxx'
+	ResourceIds []*string `json:"ResourceIds" name:"ResourceIds" list`
+}
+
+func (r *RemoveBandwidthPackageResourcesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *RemoveBandwidthPackageResourcesRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type RemoveBandwidthPackageResourcesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		RequestId *string `json:"RequestId" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *RemoveBandwidthPackageResourcesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *RemoveBandwidthPackageResourcesResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type RenewVpnGatewayRequest struct {
 	*tchttp.BaseRequest
 	// VPN网关实例ID。
@@ -3161,6 +4254,40 @@ func (r *RenewVpnGatewayResponse) ToJsonString() string {
 }
 
 func (r *RenewVpnGatewayResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ReplaceDirectConnectGatewayCcnRoutesRequest struct {
+	*tchttp.BaseRequest
+	// 专线网关ID，形如：dcg-prpqlmg1
+	DirectConnectGatewayId *string `json:"DirectConnectGatewayId" name:"DirectConnectGatewayId"`
+	// 需要连通的IDC网段列表
+	Routes []*DirectConnectGatewayCcnRoute `json:"Routes" name:"Routes" list`
+}
+
+func (r *ReplaceDirectConnectGatewayCcnRoutesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ReplaceDirectConnectGatewayCcnRoutesRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ReplaceDirectConnectGatewayCcnRoutesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		RequestId *string `json:"RequestId" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ReplaceDirectConnectGatewayCcnRoutesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ReplaceDirectConnectGatewayCcnRoutesResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -3370,12 +4497,31 @@ func (r *ResetVpnGatewayInternetMaxBandwidthResponse) FromJsonString(s string) e
     return json.Unmarshal([]byte(s), &r)
 }
 
+type Resource struct {
+	// 带宽包资源类型，包括'Address'和'LoadBalance'
+	ResourceType *string `json:"ResourceType" name:"ResourceType"`
+	// 带宽包资源Id，形如'eip-xxxx', 'lb-xxxx'
+	ResourceId *string `json:"ResourceId" name:"ResourceId"`
+	// 带宽包资源Ip
+	AddressIp *string `json:"AddressIp" name:"AddressIp"`
+}
+
 type Route struct {
 	// 目的网段，取值不能在私有网络网段内，例如：112.20.51.0/24。
 	DestinationCidrBlock *string `json:"DestinationCidrBlock" name:"DestinationCidrBlock"`
-	// 下一跳类型，目前我们支持的类型有：CVM：公网网关类型的云主机；VPN：vpn网关； DIRECTCONNECT：专线网关；PEERCONNECTION：对等连接；SSLVPN：sslvpn网关；NAT：nat网关; NORMAL_CVM：普通云主机。
+	// 下一跳类型，目前我们支持的类型有：
+	// CVM：公网网关类型的云主机；
+	// VPN：VPN网关；
+	// DIRECTCONNECT：专线网关；
+	// PEERCONNECTION：对等连接；
+	// SSLVPN：sslvpn网关；
+	// NAT：NAT网关; 
+	// NORMAL_CVM：普通云主机；
+	// EIP：云主机的公网IP；
+	// CCN：云联网。
 	GatewayType *string `json:"GatewayType" name:"GatewayType"`
 	// 下一跳地址，这里只需要指定不同下一跳类型的网关ID，系统会自动匹配到下一跳地址。
+	// 特别注意：当 GatewayType 为 EIP 时，GatewayId 固定值 '0'
 	GatewayId *string `json:"GatewayId" name:"GatewayId"`
 	// 路由策略ID。
 	RouteId *uint64 `json:"RouteId" name:"RouteId"`
@@ -3383,6 +4529,21 @@ type Route struct {
 	RouteDescription *string `json:"RouteDescription" name:"RouteDescription"`
 	// 是否启用
 	Enabled *bool `json:"Enabled" name:"Enabled"`
+	// 路由类型，目前我们支持的类型有：
+	// USER：用户路由；
+	// NETD：网络探测路由，创建网络探测实例时，系统默认下发，不可编辑与删除；
+	// CCN：云联网路由，系统默认下发，不可编辑与删除。
+	// 用户只能添加和操作 USER 类型的路由。
+	RouteType *string `json:"RouteType" name:"RouteType"`
+}
+
+type RouteConflict struct {
+	// 路由表实例ID，例如：rtb-azd4dt1c。
+	RouteTableId *string `json:"RouteTableId" name:"RouteTableId"`
+	// 要检查的与之冲突的目的端
+	DestinationCidrBlock *string `json:"DestinationCidrBlock" name:"DestinationCidrBlock"`
+	// 冲突的路由策略列表
+	ConflictSet []*Route `json:"ConflictSet" name:"ConflictSet" list`
 }
 
 type RouteTable struct {
@@ -3447,13 +4608,13 @@ type SecurityGroupPolicy struct {
 	// 端口(all, 离散port,  range)。
 	Port *string `json:"Port" name:"Port"`
 	// 协议端口ID或者协议端口组ID。ServiceTemplate和Protocol+Port互斥。
-	ServiceTemplate []*string `json:"ServiceTemplate" name:"ServiceTemplate" list`
+	ServiceTemplate *ServiceTemplateSpecification `json:"ServiceTemplate" name:"ServiceTemplate"`
 	// 网段或IP(互斥)。
 	CidrBlock *string `json:"CidrBlock" name:"CidrBlock"`
 	// 已绑定安全组的网段或IP。
 	SecurityGroupId *string `json:"SecurityGroupId" name:"SecurityGroupId"`
 	// IP地址ID或者ID地址组ID。
-	AddressTemplate *string `json:"AddressTemplate" name:"AddressTemplate"`
+	AddressTemplate *AddressTemplateSpecification `json:"AddressTemplate" name:"AddressTemplate"`
 	// ACCEPT 或 DROP。
 	Action *string `json:"Action" name:"Action"`
 	// 安全组规则描述。
@@ -3496,6 +4657,47 @@ type ServiceTemplateGroup struct {
 	ServiceTemplateIdSet []*string `json:"ServiceTemplateIdSet" name:"ServiceTemplateIdSet" list`
 	// 创建时间。
 	CreatedTime *string `json:"CreatedTime" name:"CreatedTime"`
+}
+
+type ServiceTemplateSpecification struct {
+	// 协议端口ID，例如：ppm-f5n1f8da。
+	ServiceId *string `json:"ServiceId" name:"ServiceId"`
+	// 协议端口组ID，例如：ppmg-f5n1f8da。
+	ServiceGroupId *string `json:"ServiceGroupId" name:"ServiceGroupId"`
+}
+
+type SetCcnRegionBandwidthLimitsRequest struct {
+	*tchttp.BaseRequest
+	// CCN实例ID。形如：ccn-f49l6u0z。
+	CcnId *string `json:"CcnId" name:"CcnId"`
+	// 云联网（CCN）各地域出带宽上限。
+	CcnRegionBandwidthLimits []*CcnRegionBandwidthLimit `json:"CcnRegionBandwidthLimits" name:"CcnRegionBandwidthLimits" list`
+}
+
+func (r *SetCcnRegionBandwidthLimitsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *SetCcnRegionBandwidthLimitsRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type SetCcnRegionBandwidthLimitsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		RequestId *string `json:"RequestId" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *SetCcnRegionBandwidthLimitsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *SetCcnRegionBandwidthLimitsResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
 }
 
 type Subnet struct {

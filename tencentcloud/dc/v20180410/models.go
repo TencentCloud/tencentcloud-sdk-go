@@ -1,4 +1,4 @@
-// Copyright 1999-2018 Tencent Ltd.
+// Copyright (c) 2017-2018 THL A29 Limited, a Tencent company. All Rights Reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -68,9 +68,10 @@ type CreateDirectConnectTunnelRequest struct {
 	// 物理专线 owner，缺省为当前客户（物理专线 owner）
 	// 共享专线时这里需要填写共享专线的开发商账号 ID
 	DirectConnectOwnerAccount *string `json:"DirectConnectOwnerAccount" name:"DirectConnectOwnerAccount"`
-	// 网络类型，分别为VPC、BMVPC
+	// 网络类型，分别为VPC、BMVPC，CCN，默认是VPC
 	// VPC：私有网络
 	// BMVPC：黑石网络
+	// CCN：云联网
 	NetworkType *string `json:"NetworkType" name:"NetworkType"`
 	// 网络地域
 	NetworkRegion *string `json:"NetworkRegion" name:"NetworkRegion"`
@@ -85,7 +86,7 @@ type CreateDirectConnectTunnelRequest struct {
 	// STATIC：静态
 	// 默认为 BGP 路由
 	RouteType *string `json:"RouteType" name:"RouteType"`
-	// BgpPeer，用户侧bgp信息，包括asn和AuthKey
+	// BgpPeer，用户侧bgp信息，包括Asn和AuthKey
 	BgpPeer *BgpPeer `json:"BgpPeer" name:"BgpPeer"`
 	// 静态路由，用户IDC的网段地址
 	RouteFilterPrefixes []*RouteFilterPrefix `json:"RouteFilterPrefixes" name:"RouteFilterPrefixes" list`
@@ -211,12 +212,22 @@ type DirectConnectTunnel struct {
 	// 物理专线ID
 	DirectConnectId *string `json:"DirectConnectId" name:"DirectConnectId"`
 	// 专线通道状态
+	// AVAILABLE:就绪或者已连接
+	// PENDING:申请中
+	// ALLOCATING:配置中
+	// ALLOCATED:配置完成
+	// ALTERING:修改中
+	// DELETING:删除中
+	// DELETED:删除完成
+	// COMFIRMING:待接受
+	// REJECTED:拒绝
 	State *string `json:"State" name:"State"`
 	// 物理专线的拥有者，开发商账号 ID
 	DirectConnectOwnerAccount *string `json:"DirectConnectOwnerAccount" name:"DirectConnectOwnerAccount"`
 	// 专线通道的拥有者，开发商账号 ID
 	OwnerAccount *string `json:"OwnerAccount" name:"OwnerAccount"`
-	// 网络类型，分别为VPC、BMVPC VPC：私有网络 BMVPC：黑石网络
+	// 网络类型，分别为VPC、BMVPC、CCN
+	//  VPC：私有网络 ，BMVPC：黑石网络，CCN：云联网
 	NetworkType *string `json:"NetworkType" name:"NetworkType"`
 	// VPC地域
 	NetworkRegion *string `json:"NetworkRegion" name:"NetworkRegion"`

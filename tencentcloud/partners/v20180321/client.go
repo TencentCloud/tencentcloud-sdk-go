@@ -1,4 +1,4 @@
-// Copyright 1999-2018 Tencent Ltd.
+// Copyright (c) 2017-2018 THL A29 Limited, a Tencent company. All Rights Reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -41,6 +41,31 @@ func NewClient(credential *common.Credential, region string, clientProfile *prof
 }
 
 
+func NewAgentPayDealsRequest() (request *AgentPayDealsRequest) {
+    request = &AgentPayDealsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("partners", APIVersion, "AgentPayDeals")
+    return
+}
+
+func NewAgentPayDealsResponse() (response *AgentPayDealsResponse) {
+    response = &AgentPayDealsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 代理商支付订单接口，支持自付/代付
+func (c *Client) AgentPayDeals(request *AgentPayDealsRequest) (response *AgentPayDealsResponse, err error) {
+    if request == nil {
+        request = NewAgentPayDealsRequest()
+    }
+    response = NewAgentPayDealsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewAuditApplyClientRequest() (request *AuditApplyClientRequest) {
     request = &AuditApplyClientRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -62,6 +87,31 @@ func (c *Client) AuditApplyClient(request *AuditApplyClientRequest) (response *A
         request = NewAuditApplyClientRequest()
     }
     response = NewAuditApplyClientResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeAgentAuditedClientsRequest() (request *DescribeAgentAuditedClientsRequest) {
+    request = &DescribeAgentAuditedClientsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("partners", APIVersion, "DescribeAgentAuditedClients")
+    return
+}
+
+func NewDescribeAgentAuditedClientsResponse() (response *DescribeAgentAuditedClientsResponse) {
+    response = &DescribeAgentAuditedClientsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询已审核客户列表
+func (c *Client) DescribeAgentAuditedClients(request *DescribeAgentAuditedClientsRequest) (response *DescribeAgentAuditedClientsResponse, err error) {
+    if request == nil {
+        request = NewDescribeAgentAuditedClientsRequest()
+    }
+    response = NewDescribeAgentAuditedClientsResponse()
     err = c.Send(request, response)
     return
 }

@@ -1,4 +1,4 @@
-// Copyright 1999-2018 Tencent Ltd.
+// Copyright (c) 2017-2018 THL A29 Limited, a Tencent company. All Rights Reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -19,6 +19,31 @@ import (
 
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
+
+type AgentAuditedClient struct {
+	// 代理商账号ID
+	Uin *string `json:"Uin" name:"Uin"`
+	// 代客账号ID
+	ClientUin *string `json:"ClientUin" name:"ClientUin"`
+	// 代客审核通过时间戳
+	AgentTime *string `json:"AgentTime" name:"AgentTime"`
+	// 代客类型，可能值为a/b/c
+	ClientFlag *string `json:"ClientFlag" name:"ClientFlag"`
+	// 代客备注
+	ClientRemark *string `json:"ClientRemark" name:"ClientRemark"`
+	// 代客名称（首选实名认证名称）
+	ClientName *string `json:"ClientName" name:"ClientName"`
+	// 认证类型, 0：个人，1：企业；其他：未认证
+	AuthType *string `json:"AuthType" name:"AuthType"`
+	// 代客APPID
+	AppId *string `json:"AppId" name:"AppId"`
+	// 上月消费金额
+	LastMonthAmt *uint64 `json:"LastMonthAmt" name:"LastMonthAmt"`
+	// 本月消费金额
+	ThisMonthAmt *uint64 `json:"ThisMonthAmt" name:"ThisMonthAmt"`
+	// 是否欠费,0：不欠费；1：欠费
+	HasOverdueBill *uint64 `json:"HasOverdueBill" name:"HasOverdueBill"`
+}
 
 type AgentBillElem struct {
 	// 代理商账号ID
@@ -50,7 +75,7 @@ type AgentClientElem struct {
 	ClientUin *string `json:"ClientUin" name:"ClientUin"`
 	// 代客申请时间戳
 	ApplyTime *uint64 `json:"ApplyTime" name:"ApplyTime"`
-	// 代客类型，可能值为a/b
+	// 代客类型，可能值为a/b/c
 	ClientFlag *string `json:"ClientFlag" name:"ClientFlag"`
 	// 代客邮箱，打码显示
 	Mail *string `json:"Mail" name:"Mail"`
@@ -58,6 +83,42 @@ type AgentClientElem struct {
 	Phone *string `json:"Phone" name:"Phone"`
 	// 0表示不欠费，1表示欠费
 	HasOverdueBill *uint64 `json:"HasOverdueBill" name:"HasOverdueBill"`
+}
+
+type AgentPayDealsRequest struct {
+	*tchttp.BaseRequest
+	// 订单所有者uin
+	OwnerUin *string `json:"OwnerUin" name:"OwnerUin"`
+	// 代付标志，1：代付；0：自付
+	AgentPay *uint64 `json:"AgentPay" name:"AgentPay"`
+	// 订单号数组
+	DealNames []*string `json:"DealNames" name:"DealNames" list`
+}
+
+func (r *AgentPayDealsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *AgentPayDealsRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type AgentPayDealsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		RequestId *string `json:"RequestId" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *AgentPayDealsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *AgentPayDealsResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
 }
 
 type AuditApplyClientRequest struct {
@@ -101,6 +162,58 @@ func (r *AuditApplyClientResponse) ToJsonString() string {
 }
 
 func (r *AuditApplyClientResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeAgentAuditedClientsRequest struct {
+	*tchttp.BaseRequest
+	// 客户账号ID
+	ClientUin *string `json:"ClientUin" name:"ClientUin"`
+	// 客户名称。由于涉及隐私，名称打码显示，故名称仅支持打码后的模糊搜索
+	ClientName *string `json:"ClientName" name:"ClientName"`
+	// 客户类型，a/b，类型定义参考代理商相关政策文档
+	ClientFlag *string `json:"ClientFlag" name:"ClientFlag"`
+	// ASC/DESC， 不区分大小写，按审核通过时间排序
+	OrderDirection *string `json:"OrderDirection" name:"OrderDirection"`
+	// 客户账号ID列表
+	ClientUins []*string `json:"ClientUins" name:"ClientUins" list`
+	// 是否欠费。0：不欠费；1：欠费
+	HasOverdueBill *uint64 `json:"HasOverdueBill" name:"HasOverdueBill"`
+	// 客户备注
+	ClientRemark *string `json:"ClientRemark" name:"ClientRemark"`
+	// 偏移量
+	Offset *uint64 `json:"Offset" name:"Offset"`
+	// 限制数目
+	Limit *uint64 `json:"Limit" name:"Limit"`
+}
+
+func (r *DescribeAgentAuditedClientsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeAgentAuditedClientsRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeAgentAuditedClientsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+		// 已审核代客列表
+		AgentClientSet []*AgentAuditedClient `json:"AgentClientSet" name:"AgentClientSet" list`
+		// 符合条件的代客总数
+		TotalCount *uint64 `json:"TotalCount" name:"TotalCount"`
+		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		RequestId *string `json:"RequestId" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeAgentAuditedClientsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeAgentAuditedClientsResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -180,7 +293,7 @@ func (r *DescribeAgentClientsRequest) FromJsonString(s string) error {
 type DescribeAgentClientsResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
-		// 代客列表
+		// 待审核代客列表
 		AgentClientSet []*AgentClientElem `json:"AgentClientSet" name:"AgentClientSet" list`
 		// 符合条件的代客总数
 		TotalCount *uint64 `json:"TotalCount" name:"TotalCount"`

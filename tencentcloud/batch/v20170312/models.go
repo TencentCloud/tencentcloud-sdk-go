@@ -1,4 +1,4 @@
-// Copyright 1999-2018 Tencent Ltd.
+// Copyright (c) 2017-2018 THL A29 Limited, a Tencent company. All Rights Reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -989,22 +989,16 @@ func (r *InstanceMarketOptionsRequest) FromJsonString(s string) error {
 }
 
 type InstanceTypeConfig struct {
-	// 可用区。
-	Zone *string `json:"Zone" name:"Zone"`
+	// 内存容量，单位：`GB`。
+	Mem *int64 `json:"Mem" name:"Mem"`
+	// CPU核数，单位：核。
+	Cpu *int64 `json:"Cpu" name:"Cpu"`
 	// 实例机型。
 	InstanceType *string `json:"InstanceType" name:"InstanceType"`
+	// 可用区。
+	Zone *string `json:"Zone" name:"Zone"`
 	// 实例机型系列。
 	InstanceFamily *string `json:"InstanceFamily" name:"InstanceFamily"`
-	// GPU核数，单位：核。
-	GPU *int64 `json:"GPU" name:"GPU"`
-	// CPU核数，单位：核。
-	CPU *int64 `json:"CPU" name:"CPU"`
-	// 内存容量，单位：`GB`。
-	Memory *int64 `json:"Memory" name:"Memory"`
-	// 是否支持云硬盘。取值范围：<br><li>`TRUE`：表示支持云硬盘；<br><li>`FALSE`：表示不支持云硬盘。
-	CbsSupport *string `json:"CbsSupport" name:"CbsSupport"`
-	// 机型状态。取值范围：<br><li>`AVAILABLE`：表示机型可用；<br><li>`UNAVAILABLE`：表示机型不可用。
-	InstanceTypeState *string `json:"InstanceTypeState" name:"InstanceTypeState"`
 }
 
 type InstanceTypeQuotaItem struct {
