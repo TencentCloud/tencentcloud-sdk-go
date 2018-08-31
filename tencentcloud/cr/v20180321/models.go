@@ -82,8 +82,12 @@ func (r *DownloadReportRequest) FromJsonString(s string) error {
 type DownloadReportResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
-		// 报告下载地址
-		ReportUrl *string `json:"ReportUrl" name:"ReportUrl"`
+		// 日报下载地址
+		DailyReportUrl *string `json:"DailyReportUrl" name:"DailyReportUrl"`
+		// 结果下载地址
+		ResultReportUrl *string `json:"ResultReportUrl" name:"ResultReportUrl"`
+		// 明细下载地址
+		DetailReportUrl *string `json:"DetailReportUrl" name:"DetailReportUrl"`
 		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`

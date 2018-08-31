@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package v20180321
+package v20180416
 
 import (
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
@@ -20,7 +20,7 @@ import (
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
 )
 
-const APIVersion = "2018-03-21"
+const APIVersion = "2018-04-16"
 
 type Client struct {
     common.Client
@@ -41,77 +41,77 @@ func NewClient(credential *common.Credential, region string, clientProfile *prof
 }
 
 
-func NewDescribeTaskStatusRequest() (request *DescribeTaskStatusRequest) {
-    request = &DescribeTaskStatusRequest{
+func NewGetInvokeTxRequest() (request *GetInvokeTxRequest) {
+    request = &GetInvokeTxRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
-    request.Init().WithApiInfo("cr", APIVersion, "DescribeTaskStatus")
+    request.Init().WithApiInfo("tbaas", APIVersion, "GetInvokeTx")
     return
 }
 
-func NewDescribeTaskStatusResponse() (response *DescribeTaskStatusResponse) {
-    response = &DescribeTaskStatusResponse{
+func NewGetInvokeTxResponse() (response *GetInvokeTxResponse) {
+    response = &GetInvokeTxResponse{
         BaseResponse: &tchttp.BaseResponse{},
     }
     return
 }
 
-// 客户调用该接口查看任务执行状态。输入任务ID，输出任务执行状态或者结果
-func (c *Client) DescribeTaskStatus(request *DescribeTaskStatusRequest) (response *DescribeTaskStatusResponse, err error) {
+// Invoke异步调用结果查询
+func (c *Client) GetInvokeTx(request *GetInvokeTxRequest) (response *GetInvokeTxResponse, err error) {
     if request == nil {
-        request = NewDescribeTaskStatusRequest()
+        request = NewGetInvokeTxRequest()
     }
-    response = NewDescribeTaskStatusResponse()
+    response = NewGetInvokeTxResponse()
     err = c.Send(request, response)
     return
 }
 
-func NewDownloadReportRequest() (request *DownloadReportRequest) {
-    request = &DownloadReportRequest{
+func NewInvokeRequest() (request *InvokeRequest) {
+    request = &InvokeRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
-    request.Init().WithApiInfo("cr", APIVersion, "DownloadReport")
+    request.Init().WithApiInfo("tbaas", APIVersion, "Invoke")
     return
 }
 
-func NewDownloadReportResponse() (response *DownloadReportResponse) {
-    response = &DownloadReportResponse{
+func NewInvokeResponse() (response *InvokeResponse) {
+    response = &InvokeResponse{
         BaseResponse: &tchttp.BaseResponse{},
     }
     return
 }
 
-// 客户调用该接口下载指定日期的催收报告
-func (c *Client) DownloadReport(request *DownloadReportRequest) (response *DownloadReportResponse, err error) {
+// 新增交易
+func (c *Client) Invoke(request *InvokeRequest) (response *InvokeResponse, err error) {
     if request == nil {
-        request = NewDownloadReportRequest()
+        request = NewInvokeRequest()
     }
-    response = NewDownloadReportResponse()
+    response = NewInvokeResponse()
     err = c.Send(request, response)
     return
 }
 
-func NewUploadFileRequest() (request *UploadFileRequest) {
-    request = &UploadFileRequest{
+func NewQueryRequest() (request *QueryRequest) {
+    request = &QueryRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
-    request.Init().WithApiInfo("cr", APIVersion, "UploadFile")
+    request.Init().WithApiInfo("tbaas", APIVersion, "Query")
     return
 }
 
-func NewUploadFileResponse() (response *UploadFileResponse) {
-    response = &UploadFileResponse{
+func NewQueryResponse() (response *QueryResponse) {
+    response = &QueryResponse{
         BaseResponse: &tchttp.BaseResponse{},
     }
     return
 }
 
-// 客户通过调用该接口上传需催收文档，格式需为excel格式。接口返回任务ID。
-func (c *Client) UploadFile(request *UploadFileRequest) (response *UploadFileResponse, err error) {
+// 查询交易
+func (c *Client) Query(request *QueryRequest) (response *QueryResponse, err error) {
     if request == nil {
-        request = NewUploadFileRequest()
+        request = NewQueryRequest()
     }
-    response = NewUploadFileResponse()
+    response = NewQueryResponse()
     err = c.Send(request, response)
     return
 }
