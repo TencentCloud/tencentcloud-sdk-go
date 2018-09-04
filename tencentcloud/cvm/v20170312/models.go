@@ -252,6 +252,12 @@ type DataDisk struct {
 	DiskType *string `json:"DiskType" name:"DiskType"`
 	// 数据盘ID。LOCAL_BASIC 和 LOCAL_SSD 类型没有ID。暂时不支持该参数。
 	DiskId *string `json:"DiskId" name:"DiskId"`
+	// 数据盘是否随子机销毁。取值范围：
+	// <li>TRUE：子机销毁时，销毁数据盘
+	// <li>FALSE：子机销毁时，保留数据盘<br>
+	// 默认取值：TRUE<br>
+	// 该参数目前仅用于 `RunInstances` 接口。
+	DeleteWithInstance *bool `json:"DeleteWithInstance" name:"DeleteWithInstance"`
 }
 
 type DeleteDisasterRecoverGroupsRequest struct {
