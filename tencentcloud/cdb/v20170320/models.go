@@ -77,7 +77,7 @@ func (r *AssociateSecurityGroupsResponse) FromJsonString(s string) error {
 }
 
 type BackupConfig struct {
-	// 第二个从库复制方式，可能的返回值：aysnc-异步，semisync-半同步
+	// 第二个从库复制方式，可能的返回值：async-异步，semisync-半同步
 	ReplicationMode *string `json:"ReplicationMode" name:"ReplicationMode"`
 	// 第二个从库可用区的正式名称，如ap-shanghai-1
 	Zone *string `json:"Zone" name:"Zone"`
@@ -585,7 +585,7 @@ type DescribeAccountsRequest struct {
 	InstanceId *string `json:"InstanceId" name:"InstanceId"`
 	// 记录偏移量，默认值为0。
 	Offset *int64 `json:"Offset" name:"Offset"`
-	// 单次请求返回的数量，默认值为20，最大值为100。
+	// 单次请求返回的数量，默认值为20，最小值为1，最大值为100。
 	Limit *int64 `json:"Limit" name:"Limit"`
 }
 
@@ -671,7 +671,7 @@ type DescribeBackupDatabasesRequest struct {
 	SearchDatabase *string `json:"SearchDatabase" name:"SearchDatabase"`
 	// 分页偏移量。
 	Offset *int64 `json:"Offset" name:"Offset"`
-	// 分页大小，最大值为2000。
+	// 分页大小，最小值为1，最大值为2000。
 	Limit *int64 `json:"Limit" name:"Limit"`
 }
 
@@ -717,7 +717,7 @@ type DescribeBackupTablesRequest struct {
 	SearchTable *string `json:"SearchTable" name:"SearchTable"`
 	// 分页偏移。
 	Offset *int64 `json:"Offset" name:"Offset"`
-	// 分页大小，最大值为2000。
+	// 分页大小，最小值为1，最大值为2000。
 	Limit *int64 `json:"Limit" name:"Limit"`
 }
 
@@ -757,7 +757,7 @@ type DescribeBackupsRequest struct {
 	InstanceId *string `json:"InstanceId" name:"InstanceId"`
 	// 偏移量，最小值为0。
 	Offset *int64 `json:"Offset" name:"Offset"`
-	// 单次请求返回的数量，默认值为20，最大值为100。
+	// 分页大小，默认值为20，最小值为1，最大值为100。
 	Limit *int64 `json:"Limit" name:"Limit"`
 }
 
@@ -797,7 +797,7 @@ type DescribeBinlogsRequest struct {
 	InstanceId *string `json:"InstanceId" name:"InstanceId"`
 	// 偏移量，最小值为0。
 	Offset *int64 `json:"Offset" name:"Offset"`
-	// 单次请求返回的数量，默认值为20，最大值为100。
+	// 分页大小，默认值为20，最小值为1，最大值为100。
 	Limit *int64 `json:"Limit" name:"Limit"`
 }
 
@@ -1193,9 +1193,9 @@ type DescribeDBSwitchRecordsRequest struct {
 	*tchttp.BaseRequest
 	// 实例ID，格式如：cdb-c1nl9rpv或者cdbro-c1nl9rpv，与云数据库控制台页面中显示的实例ID相同。
 	InstanceId *string `json:"InstanceId" name:"InstanceId"`
-	// 分页参数，偏移量。
+	// 分页偏移量。
 	Offset *int64 `json:"Offset" name:"Offset"`
-	// 分页参数，单次请求数量限制。
+	// 分页大小，默认值为50，最小值为1，最大值为2000。
 	Limit *int64 `json:"Limit" name:"Limit"`
 }
 
@@ -1381,7 +1381,7 @@ type DescribeSlowLogsRequest struct {
 	InstanceId *string `json:"InstanceId" name:"InstanceId"`
 	// 偏移量，最小值为0。
 	Offset *int64 `json:"Offset" name:"Offset"`
-	// 返回记录数量，默认值为20，最大值为100。
+	// 分页大小，默认值为20，最小值为1，最大值为100。
 	Limit *int64 `json:"Limit" name:"Limit"`
 }
 
@@ -1932,6 +1932,40 @@ func (r *ModifyAccountPrivilegesResponse) ToJsonString() string {
 }
 
 func (r *ModifyAccountPrivilegesResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyAutoRenewFlagRequest struct {
+	*tchttp.BaseRequest
+	// 实例的ID，格式如：cdb-c1nl9rpv，与云数据库控制台页面中显示的实例ID相同。
+	InstanceIds []*string `json:"InstanceIds" name:"InstanceIds" list`
+	// 自动续费标记，可取值的有：0-不自动续费，1-自动续费。
+	AutoRenew *int64 `json:"AutoRenew" name:"AutoRenew"`
+}
+
+func (r *ModifyAutoRenewFlagRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyAutoRenewFlagRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyAutoRenewFlagResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		RequestId *string `json:"RequestId" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifyAutoRenewFlagResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyAutoRenewFlagResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 

@@ -666,7 +666,7 @@ type PlanInfo struct {
 	// vmp，0关闭，1开启
 	AntiVMP *uint64 `json:"AntiVMP" name:"AntiVMP"`
 	// 保护so的强度，
-	SoType *string `json:"SoType" name:"SoType"`
+	SoType []*string `json:"SoType" name:"SoType" list`
 	// 防日志泄漏，0关闭，1开启
 	AntiLogLeak *uint64 `json:"AntiLogLeak" name:"AntiLogLeak"`
 	// root检测，0关闭，1开启

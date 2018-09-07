@@ -1013,6 +1013,31 @@ func (c *Client) ModifyAccountPrivileges(request *ModifyAccountPrivilegesRequest
     return
 }
 
+func NewModifyAutoRenewFlagRequest() (request *ModifyAutoRenewFlagRequest) {
+    request = &ModifyAutoRenewFlagRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cdb", APIVersion, "ModifyAutoRenewFlag")
+    return
+}
+
+func NewModifyAutoRenewFlagResponse() (response *ModifyAutoRenewFlagResponse) {
+    response = &ModifyAutoRenewFlagResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口(ModifyAutoRenewFlag)用于修改云数据库实例的自动续费标记。仅支持包年包月的实例设置自动续费标记。
+func (c *Client) ModifyAutoRenewFlag(request *ModifyAutoRenewFlagRequest) (response *ModifyAutoRenewFlagResponse, err error) {
+    if request == nil {
+        request = NewModifyAutoRenewFlagRequest()
+    }
+    response = NewModifyAutoRenewFlagResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyBackupConfigRequest() (request *ModifyBackupConfigRequest) {
     request = &ModifyBackupConfigRequest{
         BaseRequest: &tchttp.BaseRequest{},
