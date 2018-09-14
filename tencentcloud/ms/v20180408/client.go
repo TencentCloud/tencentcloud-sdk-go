@@ -66,6 +66,31 @@ func (c *Client) CreateBindInstance(request *CreateBindInstanceRequest) (respons
     return
 }
 
+func NewCreateResourceInstancesRequest() (request *CreateResourceInstancesRequest) {
+    request = &CreateResourceInstancesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ms", APIVersion, "CreateResourceInstances")
+    return
+}
+
+func NewCreateResourceInstancesResponse() (response *CreateResourceInstancesResponse) {
+    response = &CreateResourceInstancesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 用户可以使用该接口自建资源，只支持白名单用户
+func (c *Client) CreateResourceInstances(request *CreateResourceInstancesRequest) (response *CreateResourceInstancesResponse, err error) {
+    if request == nil {
+        request = NewCreateResourceInstancesRequest()
+    }
+    response = NewCreateResourceInstancesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateScanInstancesRequest() (request *CreateScanInstancesRequest) {
     request = &CreateScanInstancesRequest{
         BaseRequest: &tchttp.BaseRequest{},

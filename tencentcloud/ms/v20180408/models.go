@@ -182,6 +182,46 @@ func (r *CreateBindInstanceResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type CreateResourceInstancesRequest struct {
+	*tchttp.BaseRequest
+	// 资源类型id。
+	Pid *uint64 `json:"Pid" name:"Pid"`
+	// 时间单位，取值为d，m，y，分别表示天，月，年。
+	TimeUnit *string `json:"TimeUnit" name:"TimeUnit"`
+	// 时间数量。
+	TimeSpan *uint64 `json:"TimeSpan" name:"TimeSpan"`
+	// 资源数量。
+	ResourceNum *uint64 `json:"ResourceNum" name:"ResourceNum"`
+}
+
+func (r *CreateResourceInstancesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateResourceInstancesRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateResourceInstancesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+		// 新创建的资源列表。
+		ResourceSet []*string `json:"ResourceSet" name:"ResourceSet" list`
+		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		RequestId *string `json:"RequestId" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateResourceInstancesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateResourceInstancesResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type CreateScanInstancesRequest struct {
 	*tchttp.BaseRequest
 	// 待扫描的app信息列表，一次最多提交20个

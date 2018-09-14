@@ -56,7 +56,7 @@ func NewAcceptDirectConnectTunnelResponse() (response *AcceptDirectConnectTunnel
     return
 }
 
-// 接受专线通道申请
+// 接受专用通道申请
 func (c *Client) AcceptDirectConnectTunnel(request *AcceptDirectConnectTunnelRequest) (response *AcceptDirectConnectTunnelResponse, err error) {
     if request == nil {
         request = NewAcceptDirectConnectTunnelRequest()
@@ -81,7 +81,7 @@ func NewCreateDirectConnectTunnelResponse() (response *CreateDirectConnectTunnel
     return
 }
 
-// 用于创建专线通道的接口
+// 用于创建专用通道的接口
 func (c *Client) CreateDirectConnectTunnel(request *CreateDirectConnectTunnelRequest) (response *CreateDirectConnectTunnelResponse, err error) {
     if request == nil {
         request = NewCreateDirectConnectTunnelRequest()
@@ -106,7 +106,7 @@ func NewDeleteDirectConnectTunnelResponse() (response *DeleteDirectConnectTunnel
     return
 }
 
-// 删除专线通道
+// 删除专用通道
 func (c *Client) DeleteDirectConnectTunnel(request *DeleteDirectConnectTunnelRequest) (response *DeleteDirectConnectTunnelResponse, err error) {
     if request == nil {
         request = NewDeleteDirectConnectTunnelRequest()
@@ -131,7 +131,7 @@ func NewDescribeDirectConnectTunnelsResponse() (response *DescribeDirectConnectT
     return
 }
 
-// 用于查询专线通道列表。
+// 用于查询专用通道列表。
 func (c *Client) DescribeDirectConnectTunnels(request *DescribeDirectConnectTunnelsRequest) (response *DescribeDirectConnectTunnelsResponse, err error) {
     if request == nil {
         request = NewDescribeDirectConnectTunnelsRequest()
@@ -156,7 +156,7 @@ func NewModifyDirectConnectTunnelAttributeResponse() (response *ModifyDirectConn
     return
 }
 
-// 修改专线通道属性
+// 修改专用通道属性
 func (c *Client) ModifyDirectConnectTunnelAttribute(request *ModifyDirectConnectTunnelAttributeRequest) (response *ModifyDirectConnectTunnelAttributeResponse, err error) {
     if request == nil {
         request = NewModifyDirectConnectTunnelAttributeRequest()
@@ -181,7 +181,7 @@ func NewRejectDirectConnectTunnelResponse() (response *RejectDirectConnectTunnel
     return
 }
 
-// 拒绝专线通道申请
+// 拒绝专用通道申请
 func (c *Client) RejectDirectConnectTunnel(request *RejectDirectConnectTunnelRequest) (response *RejectDirectConnectTunnelResponse, err error) {
     if request == nil {
         request = NewRejectDirectConnectTunnelRequest()

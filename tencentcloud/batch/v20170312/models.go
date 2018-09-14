@@ -244,6 +244,12 @@ type DataDisk struct {
 	DiskType *string `json:"DiskType" name:"DiskType"`
 	// 数据盘ID。LOCAL_BASIC 和 LOCAL_SSD 类型没有ID。暂时不支持该参数。
 	DiskId *string `json:"DiskId" name:"DiskId"`
+	// 数据盘是否随子机销毁。取值范围：
+	// <li>TRUE：子机销毁时，销毁数据盘
+	// <li>FALSE：子机销毁时，保留数据盘<br>
+	// 默认取值：TRUE<br>
+	// 该参数目前仅用于 `RunInstances` 接口。
+	DeleteWithInstance *bool `json:"DeleteWithInstance" name:"DeleteWithInstance"`
 }
 
 type DeleteComputeEnvRequest struct {
@@ -1029,7 +1035,7 @@ type InstanceTypeQuotaItem struct {
 }
 
 type InternetAccessible struct {
-	// 网络计费类型。取值范围：<br><li>BANDWIDTH_PREPAID：预付费按带宽结算<br><li>TRAFFIC_POSTPAID_BY_HOUR：流量按小时后付费<br><li>BANDWIDTH_POSTPAID_BY_HOUR：带宽按小时后付费<br><li>BANDWIDTH_PACKAGE：带宽包用户<br>默认取值：TRAFFIC_POSTPAID_BY_HOUR。
+	// 网络计费类型。取值范围：<br><li>BANDWIDTH_PREPAID：预付费按带宽结算<br><li>TRAFFIC_POSTPAID_BY_HOUR：流量按小时后付费<br><li>BANDWIDTH_POSTPAID_BY_HOUR：带宽按小时后付费<br><li>BANDWIDTH_PACKAGE：带宽包用户<br>默认取值：非带宽包用户默认与子机付费类型保持一致。
 	InternetChargeType *string `json:"InternetChargeType" name:"InternetChargeType"`
 	// 公网出带宽上限，单位：Mbps。默认值：0Mbps。不同机型带宽上限范围不一致，具体限制详见[购买网络带宽](/document/product/213/509)。
 	InternetMaxBandwidthOut *int64 `json:"InternetMaxBandwidthOut" name:"InternetMaxBandwidthOut"`
@@ -1049,14 +1055,14 @@ type ItemPrice struct {
 }
 
 type Job struct {
-	// 作业名称
-	JobName *string `json:"JobName" name:"JobName"`
-	// 作业优先级，任务（Task）和任务实例（TaskInstance）会继承作业优先级
-	Priority *uint64 `json:"Priority" name:"Priority"`
 	// 任务信息
 	Tasks []*Task `json:"Tasks" name:"Tasks" list`
+	// 作业名称
+	JobName *string `json:"JobName" name:"JobName"`
 	// 作业描述
 	JobDescription *string `json:"JobDescription" name:"JobDescription"`
+	// 作业优先级，任务（Task）和任务实例（TaskInstance）会继承作业优先级
+	Priority *uint64 `json:"Priority" name:"Priority"`
 	// 依赖信息
 	Dependences []*Dependence `json:"Dependences" name:"Dependences" list`
 	// 通知信息
@@ -1188,14 +1194,14 @@ type MountDataDisk struct {
 type NamedComputeEnv struct {
 	// 计算环境名称
 	EnvName *string `json:"EnvName" name:"EnvName"`
-	// 计算环境管理类型
-	EnvType *string `json:"EnvType" name:"EnvType"`
-	// 计算环境具体参数
-	EnvData *EnvData `json:"EnvData" name:"EnvData"`
 	// 计算节点期望个数
 	DesiredComputeNodeCount *int64 `json:"DesiredComputeNodeCount" name:"DesiredComputeNodeCount"`
 	// 计算环境描述
 	EnvDescription *string `json:"EnvDescription" name:"EnvDescription"`
+	// 计算环境管理类型
+	EnvType *string `json:"EnvType" name:"EnvType"`
+	// 计算环境具体参数
+	EnvData *EnvData `json:"EnvData" name:"EnvData"`
 	// 数据盘挂载选项
 	MountDataDisks []*MountDataDisk `json:"MountDataDisks" name:"MountDataDisks" list`
 	// 授权信息
@@ -1338,22 +1344,18 @@ type SystemDisk struct {
 }
 
 type Task struct {
+	// 应用程序信息
+	Application *Application `json:"Application" name:"Application"`
 	// 任务名称，在一个作业内部唯一
 	TaskName *string `json:"TaskName" name:"TaskName"`
 	// 任务实例运行个数
 	TaskInstanceNum *uint64 `json:"TaskInstanceNum" name:"TaskInstanceNum"`
-	// 应用程序信息
-	Application *Application `json:"Application" name:"Application"`
-	// 重定向信息
-	RedirectInfo *RedirectInfo `json:"RedirectInfo" name:"RedirectInfo"`
-	// 任务失败后的最大重试次数，默认为0
-	MaxRetryCount *uint64 `json:"MaxRetryCount" name:"MaxRetryCount"`
-	// 任务启动后的超时时间，单位秒，默认为3600秒
-	Timeout *uint64 `json:"Timeout" name:"Timeout"`
 	// 运行环境信息，ComputeEnv 和 EnvId 必须指定一个（且只有一个）参数。
 	ComputeEnv *AnonymousComputeEnv `json:"ComputeEnv" name:"ComputeEnv"`
 	// 计算环境ID，ComputeEnv 和 EnvId 必须指定一个（且只有一个）参数。
 	EnvId *string `json:"EnvId" name:"EnvId"`
+	// 重定向信息
+	RedirectInfo *RedirectInfo `json:"RedirectInfo" name:"RedirectInfo"`
 	// 重定向本地信息
 	RedirectLocalInfo *RedirectLocalInfo `json:"RedirectLocalInfo" name:"RedirectLocalInfo"`
 	// 输入映射
@@ -1368,6 +1370,10 @@ type Task struct {
 	Authentications []*EnvVar `json:"Authentications" name:"Authentications" list`
 	// TaskInstance失败后处理方式，取值包括TERMINATE（默认）、INTERRUPT、FAST_INTERRUPT。
 	FailedAction *string `json:"FailedAction" name:"FailedAction"`
+	// 任务失败后的最大重试次数，默认为0
+	MaxRetryCount *uint64 `json:"MaxRetryCount" name:"MaxRetryCount"`
+	// 任务启动后的超时时间，单位秒，默认为3600秒
+	Timeout *uint64 `json:"Timeout" name:"Timeout"`
 }
 
 type TaskInstanceMetrics struct {

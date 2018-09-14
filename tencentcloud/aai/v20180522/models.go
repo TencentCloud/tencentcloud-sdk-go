@@ -62,9 +62,9 @@ type SentenceRecognitionRequest struct {
 	*tchttp.BaseRequest
 	// 腾讯云项目 ID，可填 0，总长度不超过 1024 字节。
 	ProjectId *uint64 `json:"ProjectId" name:"ProjectId"`
-	// 子服务类型。0：离线语音识别。1：实时流式识别，2，一句话识别。
+	// 子服务类型。2，一句话识别。
 	SubServiceType *uint64 `json:"SubServiceType" name:"SubServiceType"`
-	// 引擎类型。8k：电话 8k 通用模型；16k：16k 通用模型。
+	// 引擎类型。8k：电话 8k 通用模型；16k：16k 通用模型。只支持单声道音频识别。
 	EngSerViceType *string `json:"EngSerViceType" name:"EngSerViceType"`
 	// 语音数据来源。0：语音 URL；1：语音数据（post body）。
 	SourceType *uint64 `json:"SourceType" name:"SourceType"`
@@ -74,7 +74,7 @@ type SentenceRecognitionRequest struct {
 	UsrAudioKey *string `json:"UsrAudioKey" name:"UsrAudioKey"`
 	// 语音 URL，公网可下载。当 SourceType 值为 0 时须填写该字段，为 1 时不填；URL 的长度大于 0，小于 2048，需进行urlencode编码。音频时间长度要小于60s。
 	Url *string `json:"Url" name:"Url"`
-	// 语音数据，当SourceType 值为1时必须填写，为0可不写。要base64编码(采用python语言时注意读取文件应该为string而不是byte，以byte格式读取后要decode())。音频数据要小于900k。
+	// 语音数据，当SourceType 值为1时必须填写，为0可不写。要base64编码(采用python语言时注意读取文件应该为string而不是byte，以byte格式读取后要decode()。编码后的数据不可带有回车换行符)。音频数据要小于900k。
 	Data *string `json:"Data" name:"Data"`
 	// 数据长度，当 SourceType 值为1时必须填写，为0可不写（此数据长度为数据未进行base64编码时的数据长度）。
 	DataLen *int64 `json:"DataLen" name:"DataLen"`

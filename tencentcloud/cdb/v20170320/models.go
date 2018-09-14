@@ -348,7 +348,7 @@ func (r *CreateDBInstanceHourRequest) FromJsonString(s string) error {
 type CreateDBInstanceHourResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
-		// 短订单ID，用于调用云API相关接口，如[获取订单信息](https://cloud.tencent.com/document/api/403/4392)
+		// 短订单ID
 		DealIds []*string `json:"DealIds" name:"DealIds" list`
 		// 实例ID列表
 		InstanceIds []*string `json:"InstanceIds" name:"InstanceIds" list`
@@ -428,7 +428,7 @@ func (r *CreateDBInstanceRequest) FromJsonString(s string) error {
 type CreateDBInstanceResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
-		// 短订单ID，用于调用云API相关接口，如[获取订单信息](https://cloud.tencent.com/document/api/403/4392)
+		// 短订单ID
 		DealIds []*string `json:"DealIds" name:"DealIds" list`
 		// 实例ID列表
 		InstanceIds []*string `json:"InstanceIds" name:"InstanceIds" list`
@@ -841,7 +841,7 @@ type DescribeDBImportRecordsRequest struct {
 	EndTime *string `json:"EndTime" name:"EndTime"`
 	// 分页参数 , 偏移量 , 默认值为0。
 	Offset *int64 `json:"Offset" name:"Offset"`
-	// 分页参数 , 单次请求返回的数量 , 默认值为20。
+	// 分页参数 , 单次请求返回的数量 , 默认值为20，最小值为1，最大值为100。
 	Limit *int64 `json:"Limit" name:"Limit"`
 }
 
@@ -1269,7 +1269,7 @@ type DescribeDatabasesRequest struct {
 	InstanceId *string `json:"InstanceId" name:"InstanceId"`
 	// 偏移量，最小值为0。
 	Offset *int64 `json:"Offset" name:"Offset"`
-	// 单次请求数量，取值范围：[0-100]。
+	// 单次请求数量，默认值为20，最小值为1，最大值为100。
 	Limit *int64 `json:"Limit" name:"Limit"`
 	// 匹配数据库库名的正则表达式，规则同MySQL官网
 	DatabaseRegexp *string `json:"DatabaseRegexp" name:"DatabaseRegexp"`
@@ -1615,13 +1615,13 @@ type Inbound struct {
 
 type InitDBInstancesRequest struct {
 	*tchttp.BaseRequest
-	// 实例ID，格式如：cdb-c1nl9rpv，与云数据库控制台页面中显示的实例ID相同，可使用[查询实例列表](https://cloud.tencent.com/document/api/236/15872) 接口获取，其值为输出参数中字段 InstanceId 的值
+	// 实例ID，格式如：cdb-c1nl9rpv，与云数据库控制台页面中显示的实例ID相同，可使用[查询实例列表](https://cloud.tencent.com/document/api/236/15872) 接口获取，其值为输出参数中字段 InstanceId 的值。
 	InstanceIds []*string `json:"InstanceIds" name:"InstanceIds" list`
-	// 实例新的密码，密码规则：8-64个字符，至少包含字母、数字、字符（支持的字符：!@#$%^*()）中的两种
+	// 实例新的密码，密码规则：8-64个字符，至少包含字母、数字、字符（支持的字符：!@#$%^*()）中的两种。
 	NewPassword *string `json:"NewPassword" name:"NewPassword"`
-	// 实例的参数列表，目前支持设置“character_set_server”、“lower_case_table_names”参数。其中，“character_set_server”参数可选值为["utf8","latin1","gbk","utf8mb4"]；“lower_case_table_names”可选值为[“0”,“1”]
+	// 实例的参数列表，目前支持设置“character_set_server”、“lower_case_table_names”参数。其中，“character_set_server”参数可选值为["utf8","latin1","gbk","utf8mb4"]；“lower_case_table_names”可选值为[“0”,“1”]。
 	Parameters []*ParamInfo `json:"Parameters" name:"Parameters" list`
-	// 实例的端口
+	// 实例的端口，取值范围为[1024, 65535]
 	Vport *int64 `json:"Vport" name:"Vport"`
 }
 

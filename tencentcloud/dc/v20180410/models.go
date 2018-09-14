@@ -22,7 +22,7 @@ import (
 
 type AcceptDirectConnectTunnelRequest struct {
 	*tchttp.BaseRequest
-	// 物理专线拥有者接受共享专线通道申请
+	// 物理专线拥有者接受共享专用通道申请
 	DirectConnectTunnelId *string `json:"DirectConnectTunnelId" name:"DirectConnectTunnelId"`
 }
 
@@ -63,7 +63,7 @@ type CreateDirectConnectTunnelRequest struct {
 	*tchttp.BaseRequest
 	// 专线 ID，例如：dc-kd7d06of
 	DirectConnectId *string `json:"DirectConnectId" name:"DirectConnectId"`
-	// 专线通道名称
+	// 专用通道名称
 	DirectConnectTunnelName *string `json:"DirectConnectTunnelName" name:"DirectConnectTunnelName"`
 	// 物理专线 owner，缺省为当前客户（物理专线 owner）
 	// 共享专线时这里需要填写共享专线的开发商账号 ID
@@ -112,7 +112,7 @@ func (r *CreateDirectConnectTunnelRequest) FromJsonString(s string) error {
 type CreateDirectConnectTunnelResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
-		// 专线通道ID
+		// 专用通道ID
 		DirectConnectTunnelIdSet []*string `json:"DirectConnectTunnelIdSet" name:"DirectConnectTunnelIdSet" list`
 		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
@@ -130,7 +130,7 @@ func (r *CreateDirectConnectTunnelResponse) FromJsonString(s string) error {
 
 type DeleteDirectConnectTunnelRequest struct {
 	*tchttp.BaseRequest
-	// 专线通道ID
+	// 专用通道ID
 	DirectConnectTunnelId *string `json:"DirectConnectTunnelId" name:"DirectConnectTunnelId"`
 }
 
@@ -164,11 +164,11 @@ type DescribeDirectConnectTunnelsRequest struct {
 	*tchttp.BaseRequest
 	// 过滤条件:
 	// 参数不支持同时指定DirectConnectTunnelIds和Filters。
-	// <li> direct-connect-tunnel-name, 专线通道名称。</li>
-	// <li> direct-connect-tunnel-id, 专线通道实例ID，如dcx-abcdefgh。</li>
+	// <li> direct-connect-tunnel-name, 专用通道名称。</li>
+	// <li> direct-connect-tunnel-id, 专用通道实例ID，如dcx-abcdefgh。</li>
 	// <li>direct-connect-id, 物理专线实例ID，如，dc-abcdefgh。</li>
 	Filters []*Filter `json:"Filters" name:"Filters" list`
-	// 专线通道 ID数组
+	// 专用通道 ID数组
 	DirectConnectTunnelIds []*string `json:"DirectConnectTunnelIds" name:"DirectConnectTunnelIds" list`
 	// 偏移量，默认为0
 	Offset *int64 `json:"Offset" name:"Offset"`
@@ -188,9 +188,9 @@ func (r *DescribeDirectConnectTunnelsRequest) FromJsonString(s string) error {
 type DescribeDirectConnectTunnelsResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
-		// 专线通道列表
+		// 专用通道列表
 		DirectConnectTunnelSet []*DirectConnectTunnel `json:"DirectConnectTunnelSet" name:"DirectConnectTunnelSet" list`
-		// 符合专线通道数量。
+		// 符合专用通道数量。
 		TotalCount *int64 `json:"TotalCount" name:"TotalCount"`
 		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
@@ -264,9 +264,9 @@ type Filter struct {
 
 type ModifyDirectConnectTunnelAttributeRequest struct {
 	*tchttp.BaseRequest
-	// 专线通道ID
+	// 专用通道ID
 	DirectConnectTunnelId *string `json:"DirectConnectTunnelId" name:"DirectConnectTunnelId"`
-	// 专线通道名称
+	// 专用通道名称
 	DirectConnectTunnelName *string `json:"DirectConnectTunnelName" name:"DirectConnectTunnelName"`
 	// 用户侧BGP，包括Asn，AuthKey
 	BgpPeer *BgpPeer `json:"BgpPeer" name:"BgpPeer"`
@@ -276,7 +276,7 @@ type ModifyDirectConnectTunnelAttributeRequest struct {
 	TencentAddress *string `json:"TencentAddress" name:"TencentAddress"`
 	// 用户侧互联IP
 	CustomerAddress *string `json:"CustomerAddress" name:"CustomerAddress"`
-	// 专线通道带宽值，单位为M。
+	// 专用通道带宽值，单位为M。
 	Bandwidth *int64 `json:"Bandwidth" name:"Bandwidth"`
 }
 
