@@ -41,6 +41,31 @@ func NewClient(credential *common.Credential, region string, clientProfile *prof
 }
 
 
+func NewDescribeAccountBalanceRequest() (request *DescribeAccountBalanceRequest) {
+    request = &DescribeAccountBalanceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("billing", APIVersion, "DescribeAccountBalance")
+    return
+}
+
+func NewDescribeAccountBalanceResponse() (response *DescribeAccountBalanceResponse) {
+    response = &DescribeAccountBalanceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 获取云账户余额信息。
+func (c *Client) DescribeAccountBalance(request *DescribeAccountBalanceRequest) (response *DescribeAccountBalanceResponse, err error) {
+    if request == nil {
+        request = NewDescribeAccountBalanceRequest()
+    }
+    response = NewDescribeAccountBalanceResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeBillDetailRequest() (request *DescribeBillDetailRequest) {
     request = &DescribeBillDetailRequest{
         BaseRequest: &tchttp.BaseRequest{},

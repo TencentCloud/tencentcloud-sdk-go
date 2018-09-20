@@ -48,6 +48,8 @@ type CreateJobRequest struct {
 	ParameterServerCount *uint64 `json:"ParameterServerCount" name:"ParameterServerCount"`
 	// 启动debug mode，默认为false
 	Debug *bool `json:"Debug" name:"Debug"`
+	// 运行任务的其他配置信息
+	RuntimeConf []*string `json:"RuntimeConf" name:"RuntimeConf" list`
 }
 
 func (r *CreateJobRequest) ToJsonString() string {
@@ -82,20 +84,22 @@ type CreateModelRequest struct {
 	*tchttp.BaseRequest
 	// 模型名称
 	Name *string `json:"Name" name:"Name"`
-	// 指定集群的名称
-	Cluster *string `json:"Cluster" name:"Cluster"`
 	// 要部署模型的路径名
 	Model *string `json:"Model" name:"Model"`
 	// 关于模型的描述
 	Description *string `json:"Description" name:"Description"`
+	// 指定集群的名称（集群模式下必填）
+	Cluster *string `json:"Cluster" name:"Cluster"`
 	// 运行环境镜像的标签
 	RuntimeVersion *string `json:"RuntimeVersion" name:"RuntimeVersion"`
-	// 要部署的模型副本数目
+	// 要部署的模型副本数目（集群模式下选填）
 	Replicas *uint64 `json:"Replicas" name:"Replicas"`
-	// 暴露外网或内网，默认暴露外网
+	// 暴露外网或内网，默认暴露外网（集群模式下选填）
 	Expose *string `json:"Expose" name:"Expose"`
-	// 要部署模型的机器配置
+	// 部署模式（无服务器函数模式/集群模式）
 	ServType *string `json:"ServType" name:"ServType"`
+	// 部署模型的其他配置信息
+	RuntimeConf []*string `json:"RuntimeConf" name:"RuntimeConf" list`
 }
 
 func (r *CreateModelRequest) ToJsonString() string {
@@ -166,6 +170,8 @@ type DeleteModelRequest struct {
 	Name *string `json:"Name" name:"Name"`
 	// 要删除的模型所在的集群名称
 	Cluster *string `json:"Cluster" name:"Cluster"`
+	// 模型类型
+	ServType *string `json:"ServType" name:"ServType"`
 }
 
 func (r *DeleteModelRequest) ToJsonString() string {
@@ -236,6 +242,8 @@ type DescribeModelRequest struct {
 	Name *string `json:"Name" name:"Name"`
 	// 模型所在集群名称
 	Cluster *string `json:"Cluster" name:"Cluster"`
+	// 模型类型
+	ServType *string `json:"ServType" name:"ServType"`
 }
 
 func (r *DescribeModelRequest) ToJsonString() string {
@@ -347,6 +355,10 @@ type Job struct {
 	Uin *string `json:"Uin" name:"Uin"`
 	// 创建任务的Debug模式
 	Debug *bool `json:"Debug" name:"Debug"`
+	// Runtime的额外配置信息
+	RuntimeConf []*string `json:"RuntimeConf" name:"RuntimeConf" list`
+	// 任务Id
+	Id *string `json:"Id" name:"Id"`
 }
 
 type ListJobsRequest struct {
@@ -395,6 +407,8 @@ type ListModelsRequest struct {
 	Limit *uint64 `json:"Limit" name:"Limit"`
 	// 分页参数，起始位置
 	Offset *uint64 `json:"Offset" name:"Offset"`
+	// 模型类型
+	ServType *string `json:"ServType" name:"ServType"`
 }
 
 func (r *ListModelsRequest) ToJsonString() string {
@@ -481,7 +495,7 @@ type QueryLogsRequest struct {
 	EndTime *string `json:"EndTime" name:"EndTime"`
 	// 单次要返回的日志条数
 	Limit *uint64 `json:"Limit" name:"Limit"`
-	// 加载更多使用，透传上次返回的context值，获取后续的日志内容
+	// 加载更多使用，透传上次返回的context值，获取后续的日志内容，使用context翻页最多能获取10000条日志
 	Context *string `json:"Context" name:"Context"`
 }
 

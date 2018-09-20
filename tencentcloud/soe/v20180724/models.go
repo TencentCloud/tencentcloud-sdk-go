@@ -89,6 +89,8 @@ type TransmitOralProcessRequest struct {
 	UserVoiceData *string `json:"UserVoiceData" name:"UserVoiceData"`
 	// 语音段唯一标识，一个完整语音一个SessionId
 	SessionId *string `json:"SessionId" name:"SessionId"`
+	// 业务应用ID，与账号应用APPID无关，是用来方便客户管理服务的参数，需要结合[控制台](https://console.cloud.tencent.com/soe)使用。
+	SoeAppId *string `json:"SoeAppId" name:"SoeAppId"`
 }
 
 func (r *TransmitOralProcessRequest) ToJsonString() string {

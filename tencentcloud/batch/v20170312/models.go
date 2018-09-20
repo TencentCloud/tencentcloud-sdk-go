@@ -900,7 +900,7 @@ type Docker struct {
 type EnhancedService struct {
 	// 开启云安全服务。若不指定该参数，则默认开启云安全服务。
 	SecurityService *RunSecurityServiceEnabled `json:"SecurityService" name:"SecurityService"`
-	// 开启云安全服务。若不指定该参数，则默认开启云监控服务。
+	// 开启云监控服务。若不指定该参数，则默认开启云监控服务。
 	MonitorService *RunMonitorServiceEnabled `json:"MonitorService" name:"MonitorService"`
 }
 
@@ -1365,9 +1365,9 @@ type Task struct {
 	// 输出映射配置
 	OutputMappingConfigs []*OutputMappingConfig `json:"OutputMappingConfigs" name:"OutputMappingConfigs" list`
 	// 自定义环境变量
-	EnvVars []*Authentication `json:"EnvVars" name:"EnvVars" list`
+	EnvVars []*EnvVar `json:"EnvVars" name:"EnvVars" list`
 	// 授权信息
-	Authentications []*EnvVar `json:"Authentications" name:"Authentications" list`
+	Authentications []*Authentication `json:"Authentications" name:"Authentications" list`
 	// TaskInstance失败后处理方式，取值包括TERMINATE（默认）、INTERRUPT、FAST_INTERRUPT。
 	FailedAction *string `json:"FailedAction" name:"FailedAction"`
 	// 任务失败后的最大重试次数，默认为0

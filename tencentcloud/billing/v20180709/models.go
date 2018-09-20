@@ -158,11 +158,43 @@ type Deal struct {
 	GoodsCategoryId *int64 `json:"GoodsCategoryId" name:"GoodsCategoryId"`
 }
 
+type DescribeAccountBalanceRequest struct {
+	*tchttp.BaseRequest
+}
+
+func (r *DescribeAccountBalanceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeAccountBalanceRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeAccountBalanceResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+		// 云账户信息中的”展示可用余额”字段，单位为"分"
+		Balance *int64 `json:"Balance" name:"Balance"`
+		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		RequestId *string `json:"RequestId" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeAccountBalanceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeAccountBalanceResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeBillDetailRequest struct {
 	*tchttp.BaseRequest
 	// 偏移量
 	Offset *uint64 `json:"Offset" name:"Offset"`
-	// 数量
+	// 数量，最大值为100
 	Limit *uint64 `json:"Limit" name:"Limit"`
 	// 周期类型，byPayTime按扣费周期/byUsedTime按计费周期
 	PeriodType *string `json:"PeriodType" name:"PeriodType"`
@@ -202,7 +234,7 @@ type DescribeBillResourceSummaryRequest struct {
 	*tchttp.BaseRequest
 	// 偏移量
 	Offset *uint64 `json:"Offset" name:"Offset"`
-	// 数量
+	// 数量，最大值为1000
 	Limit *uint64 `json:"Limit" name:"Limit"`
 	// 周期类型，byUsedTime按计费周期/byPayTime按扣费周期
 	PeriodType *string `json:"PeriodType" name:"PeriodType"`

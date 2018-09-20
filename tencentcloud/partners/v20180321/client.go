@@ -66,6 +66,31 @@ func (c *Client) AgentPayDeals(request *AgentPayDealsRequest) (response *AgentPa
     return
 }
 
+func NewAgentTransferMoneyRequest() (request *AgentTransferMoneyRequest) {
+    request = &AgentTransferMoneyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("partners", APIVersion, "AgentTransferMoney")
+    return
+}
+
+func NewAgentTransferMoneyResponse() (response *AgentTransferMoneyResponse) {
+    response = &AgentTransferMoneyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 为合作伙伴提供转账给客户能力。仅支持合作伙伴为自己名下客户转账。
+func (c *Client) AgentTransferMoney(request *AgentTransferMoneyRequest) (response *AgentTransferMoneyResponse, err error) {
+    if request == nil {
+        request = NewAgentTransferMoneyRequest()
+    }
+    response = NewAgentTransferMoneyResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewAuditApplyClientRequest() (request *AuditApplyClientRequest) {
     request = &AuditApplyClientRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -162,6 +187,31 @@ func (c *Client) DescribeAgentClients(request *DescribeAgentClientsRequest) (res
         request = NewDescribeAgentClientsRequest()
     }
     response = NewDescribeAgentClientsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeClientBalanceRequest() (request *DescribeClientBalanceRequest) {
+    request = &DescribeClientBalanceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("partners", APIVersion, "DescribeClientBalance")
+    return
+}
+
+func NewDescribeClientBalanceResponse() (response *DescribeClientBalanceResponse) {
+    response = &DescribeClientBalanceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 为合作伙伴提供查询客户余额能力。调用者必须是合作伙伴，只能查询自己名下客户余额
+func (c *Client) DescribeClientBalance(request *DescribeClientBalanceRequest) (response *DescribeClientBalanceResponse, err error) {
+    if request == nil {
+        request = NewDescribeClientBalanceRequest()
+    }
+    response = NewDescribeClientBalanceResponse()
     err = c.Send(request, response)
     return
 }

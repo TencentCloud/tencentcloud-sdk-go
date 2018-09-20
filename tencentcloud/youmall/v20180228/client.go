@@ -41,6 +41,106 @@ func NewClient(credential *common.Credential, region string, clientProfile *prof
 }
 
 
+func NewDescribeCameraPersonRequest() (request *DescribeCameraPersonRequest) {
+    request = &DescribeCameraPersonRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("youmall", APIVersion, "DescribeCameraPerson")
+    return
+}
+
+func NewDescribeCameraPersonResponse() (response *DescribeCameraPersonResponse) {
+    response = &DescribeCameraPersonResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 通过指定设备ID和指定时段，获取该时段内中收银台摄像设备抓取到顾客头像及身份ID
+func (c *Client) DescribeCameraPerson(request *DescribeCameraPersonRequest) (response *DescribeCameraPersonResponse, err error) {
+    if request == nil {
+        request = NewDescribeCameraPersonRequest()
+    }
+    response = NewDescribeCameraPersonResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeFaceIdByTempIdRequest() (request *DescribeFaceIdByTempIdRequest) {
+    request = &DescribeFaceIdByTempIdRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("youmall", APIVersion, "DescribeFaceIdByTempId")
+    return
+}
+
+func NewDescribeFaceIdByTempIdResponse() (response *DescribeFaceIdByTempIdResponse) {
+    response = &DescribeFaceIdByTempIdResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 通过DescribeCameraPerson接口上报的收银台身份ID查询顾客的FaceID。查询最佳时间为收银台上报的次日1点后。
+func (c *Client) DescribeFaceIdByTempId(request *DescribeFaceIdByTempIdRequest) (response *DescribeFaceIdByTempIdResponse, err error) {
+    if request == nil {
+        request = NewDescribeFaceIdByTempIdRequest()
+    }
+    response = NewDescribeFaceIdByTempIdResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeHistoryNetworkInfoRequest() (request *DescribeHistoryNetworkInfoRequest) {
+    request = &DescribeHistoryNetworkInfoRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("youmall", APIVersion, "DescribeHistoryNetworkInfo")
+    return
+}
+
+func NewDescribeHistoryNetworkInfoResponse() (response *DescribeHistoryNetworkInfoResponse) {
+    response = &DescribeHistoryNetworkInfoResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 返回当前门店历史网络状态数据
+func (c *Client) DescribeHistoryNetworkInfo(request *DescribeHistoryNetworkInfoRequest) (response *DescribeHistoryNetworkInfoResponse, err error) {
+    if request == nil {
+        request = NewDescribeHistoryNetworkInfoRequest()
+    }
+    response = NewDescribeHistoryNetworkInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeNetworkInfoRequest() (request *DescribeNetworkInfoRequest) {
+    request = &DescribeNetworkInfoRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("youmall", APIVersion, "DescribeNetworkInfo")
+    return
+}
+
+func NewDescribeNetworkInfoResponse() (response *DescribeNetworkInfoResponse) {
+    response = &DescribeNetworkInfoResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 返回当前门店最新网络状态数据
+func (c *Client) DescribeNetworkInfo(request *DescribeNetworkInfoRequest) (response *DescribeNetworkInfoResponse, err error) {
+    if request == nil {
+        request = NewDescribeNetworkInfoRequest()
+    }
+    response = NewDescribeNetworkInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribePersonInfoRequest() (request *DescribePersonInfoRequest) {
     request = &DescribePersonInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -187,6 +287,31 @@ func (c *Client) DescribeZoneTrafficInfo(request *DescribeZoneTrafficInfoRequest
         request = NewDescribeZoneTrafficInfoRequest()
     }
     response = NewDescribeZoneTrafficInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyPersonTagInfoRequest() (request *ModifyPersonTagInfoRequest) {
+    request = &ModifyPersonTagInfoRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("youmall", APIVersion, "ModifyPersonTagInfo")
+    return
+}
+
+func NewModifyPersonTagInfoResponse() (response *ModifyPersonTagInfoResponse) {
+    response = &ModifyPersonTagInfoResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 标记到店顾客的身份类型，例如黑名单、白名单等
+func (c *Client) ModifyPersonTagInfo(request *ModifyPersonTagInfoRequest) (response *ModifyPersonTagInfoResponse, err error) {
+    if request == nil {
+        request = NewModifyPersonTagInfoRequest()
+    }
+    response = NewModifyPersonTagInfoResponse()
     err = c.Send(request, response)
     return
 }

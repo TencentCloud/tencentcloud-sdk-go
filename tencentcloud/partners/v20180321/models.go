@@ -121,6 +121,40 @@ func (r *AgentPayDealsResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type AgentTransferMoneyRequest struct {
+	*tchttp.BaseRequest
+	// 客户账号ID
+	ClientUin *string `json:"ClientUin" name:"ClientUin"`
+	// 转账金额，单位分
+	Amount *uint64 `json:"Amount" name:"Amount"`
+}
+
+func (r *AgentTransferMoneyRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *AgentTransferMoneyRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type AgentTransferMoneyResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		RequestId *string `json:"RequestId" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *AgentTransferMoneyResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *AgentTransferMoneyResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type AuditApplyClientRequest struct {
 	*tchttp.BaseRequest
 	// 待审核客户账号ID
@@ -308,6 +342,40 @@ func (r *DescribeAgentClientsResponse) ToJsonString() string {
 }
 
 func (r *DescribeAgentClientsResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeClientBalanceRequest struct {
+	*tchttp.BaseRequest
+	// 客户(代客)账号ID
+	ClientUin *string `json:"ClientUin" name:"ClientUin"`
+}
+
+func (r *DescribeClientBalanceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeClientBalanceRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeClientBalanceResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+		// 账户余额，单位分
+		Balance *uint64 `json:"Balance" name:"Balance"`
+		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		RequestId *string `json:"RequestId" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeClientBalanceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeClientBalanceResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 

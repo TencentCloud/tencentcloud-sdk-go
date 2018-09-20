@@ -777,6 +777,7 @@ type DescribeInstancesRequest struct {
 	// <li> host-id - String - 是否必填：否 - （过滤条件）按照[CDH](https://cloud.tencent.com/document/product/416) ID过滤。[CDH](https://cloud.tencent.com/document/product/416) ID形如：host-xxxxxxxx。</li>
 	// <li> vpc-id - String - 是否必填：否 - （过滤条件）按照VPC ID进行过滤。VPC ID形如：vpc-xxxxxxxx。</li>
 	// <li> instance-id - String - 是否必填：否 - （过滤条件）按照实例ID过滤。实例ID形如：ins-xxxxxxxx。</li>
+	// <li> security-group-id - String - 是否必填：否 - （过滤条件）按照安全组ID过滤，安全组ID形如: sg-8jlk3f3r。</li>
 	// <li> instance-name - String - 是否必填：否 - （过滤条件）按照实例名称过滤。</li>
 	// <li> instance-charge-type - String - 是否必填：否 -（过滤条件）按照实例计费模式过滤。 (PREPAID：表示预付费，即包年包月 | POSTPAID_BY_HOUR：表示后付费，即按量计费 | CDHPAID：表示[CDH](https://cloud.tencent.com/document/product/416)付费，即只对[CDH](https://cloud.tencent.com/document/product/416)计费，不对[CDH](https://cloud.tencent.com/document/product/416)上的实例计费。 )  </li>
 	// <li> private-ip-address - String - 是否必填：否 - （过滤条件）按照实例主网卡的内网IP过滤。</li>
@@ -1104,7 +1105,7 @@ type DisasterRecoverGroup struct {
 type EnhancedService struct {
 	// 开启云安全服务。若不指定该参数，则默认开启云安全服务。
 	SecurityService *RunSecurityServiceEnabled `json:"SecurityService" name:"SecurityService"`
-	// 开启云安全服务。若不指定该参数，则默认开启云监控服务。
+	// 开启云监控服务。若不指定该参数，则默认开启云监控服务。
 	MonitorService *RunMonitorServiceEnabled `json:"MonitorService" name:"MonitorService"`
 }
 
@@ -1294,7 +1295,7 @@ type InquiryPriceModifyInstancesChargeTypeRequest struct {
 	*tchttp.BaseRequest
 	// 一个或多个待操作的实例ID。可通过[`DescribeInstances`](https://cloud.tencent.com/document/api/213/15728)接口返回值中的`InstanceId`获取。每次请求批量实例的上限为100。
 	InstanceIds []*string `json:"InstanceIds" name:"InstanceIds" list`
-	// 实例[计费类型](https://cloud.tencent.com//document/product/213/2180)。<br><li>PREPAID：预付费，即包年包月。
+	// 实例[计费类型](https://cloud.tencent.com/document/product/213/2180)。<br><li>PREPAID：预付费，即包年包月。
 	InstanceChargeType *string `json:"InstanceChargeType" name:"InstanceChargeType"`
 	// 预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月实例的续费时长、是否设置自动续费等属性。
 	InstanceChargePrepaid *InstanceChargePrepaid `json:"InstanceChargePrepaid" name:"InstanceChargePrepaid"`

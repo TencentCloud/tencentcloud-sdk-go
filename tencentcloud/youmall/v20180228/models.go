@@ -20,6 +20,211 @@ import (
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
+type CameraPersonInfo struct {
+	// 临时id，还未生成face id时返回
+	TempId *string `json:"TempId" name:"TempId"`
+	// 人脸face id
+	FaceId *int64 `json:"FaceId" name:"FaceId"`
+	// 确定当次返回的哪个id有效，1-FaceId，2-TempId
+	IdType *int64 `json:"IdType" name:"IdType"`
+	// 当次抓拍到的人脸图片base编码
+	FacePic *string `json:"FacePic" name:"FacePic"`
+	// 当次抓拍时间戳
+	Time *int64 `json:"Time" name:"Time"`
+}
+
+type DescribeCameraPersonRequest struct {
+	*tchttp.BaseRequest
+	// 优mall集团id，通过"指定身份标识获取客户门店列表"接口获取
+	CompanyId *string `json:"CompanyId" name:"CompanyId"`
+	// 优mall店铺id，通过"指定身份标识获取客户门店列表"接口获取
+	ShopId *int64 `json:"ShopId" name:"ShopId"`
+	// 摄像头id
+	CameraId *int64 `json:"CameraId" name:"CameraId"`
+	// 拉取开始时间戳，单位秒
+	StartTime *int64 `json:"StartTime" name:"StartTime"`
+	// 拉取结束时间戳，单位秒，不超过StartTime+10秒，超过默认为StartTime+10
+	EndTime *int64 `json:"EndTime" name:"EndTime"`
+	// pos机id
+	PosId *string `json:"PosId" name:"PosId"`
+	// 拉取图片数，默认为1，最大为3
+	Num *int64 `json:"Num" name:"Num"`
+	// 是否需要base64的图片，0-不需要，1-需要，默认0
+	IsNeedPic *int64 `json:"IsNeedPic" name:"IsNeedPic"`
+}
+
+func (r *DescribeCameraPersonRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeCameraPersonRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeCameraPersonResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+		// 集团id
+		CompanyId *string `json:"CompanyId" name:"CompanyId"`
+		// 店铺id
+		ShopId *int64 `json:"ShopId" name:"ShopId"`
+		// 摄像机id
+		CameraId *int64 `json:"CameraId" name:"CameraId"`
+		// pos机id
+		PosId *string `json:"PosId" name:"PosId"`
+		// 抓取的顾客信息
+		Infos []*CameraPersonInfo `json:"Infos" name:"Infos" list`
+		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		RequestId *string `json:"RequestId" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeCameraPersonResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeCameraPersonResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeFaceIdByTempIdRequest struct {
+	*tchttp.BaseRequest
+	// 优mall集团id，通过"指定身份标识获取客户门店列表"接口获取
+	CompanyId *string `json:"CompanyId" name:"CompanyId"`
+	// 优mall店铺id，通过"指定身份标识获取客户门店列表"接口获取
+	ShopId *int64 `json:"ShopId" name:"ShopId"`
+	// 临时id
+	TempId *string `json:"TempId" name:"TempId"`
+	// 摄像头id
+	CameraId *int64 `json:"CameraId" name:"CameraId"`
+	// pos机id
+	PosId *string `json:"PosId" name:"PosId"`
+}
+
+func (r *DescribeFaceIdByTempIdRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeFaceIdByTempIdRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeFaceIdByTempIdResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+		// 集团id
+		CompanyId *string `json:"CompanyId" name:"CompanyId"`
+		// 店铺id
+		ShopId *int64 `json:"ShopId" name:"ShopId"`
+		// 摄像机id
+		CameraId *int64 `json:"CameraId" name:"CameraId"`
+		// pos机id
+		PosId *string `json:"PosId" name:"PosId"`
+		// 请求的临时id
+		TempId *string `json:"TempId" name:"TempId"`
+		// 临时id对应的face id
+		FaceId *int64 `json:"FaceId" name:"FaceId"`
+		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		RequestId *string `json:"RequestId" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeFaceIdByTempIdResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeFaceIdByTempIdResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeHistoryNetworkInfoRequest struct {
+	*tchttp.BaseRequest
+	// 请求时间戳
+	Time *int64 `json:"Time" name:"Time"`
+	// 优mall集团id，通过"指定身份标识获取客户门店列表"接口获取
+	CompanyId *string `json:"CompanyId" name:"CompanyId"`
+	// 优mall店铺id，通过"指定身份标识获取客户门店列表"接口获取，为0则拉取集团全部店铺当前
+	ShopId *int64 `json:"ShopId" name:"ShopId"`
+	// 拉取开始日期，格式：2018-09-05
+	StartDay *string `json:"StartDay" name:"StartDay"`
+	// 拉取结束日期，格式L:2018-09-05，超过StartDay 90天，按StartDay+90天算
+	EndDay *string `json:"EndDay" name:"EndDay"`
+	// 拉取条数，默认10
+	Limit *int64 `json:"Limit" name:"Limit"`
+	// 拉取偏移，返回offset之后的数据
+	Offset *int64 `json:"Offset" name:"Offset"`
+}
+
+func (r *DescribeHistoryNetworkInfoRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeHistoryNetworkInfoRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeHistoryNetworkInfoResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+		// 网络状态数据
+		InstanceSet *NetworkHistoryInfo `json:"InstanceSet" name:"InstanceSet"`
+		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		RequestId *string `json:"RequestId" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeHistoryNetworkInfoResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeHistoryNetworkInfoResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeNetworkInfoRequest struct {
+	*tchttp.BaseRequest
+	// 请求时间戳
+	Time *int64 `json:"Time" name:"Time"`
+	// 优mall集团id，通过"指定身份标识获取客户门店列表"接口获取
+	CompanyId *string `json:"CompanyId" name:"CompanyId"`
+	// 优mall店铺id，通过"指定身份标识获取客户门店列表"接口获取，不填则拉取集团全部店铺当前
+	ShopId *int64 `json:"ShopId" name:"ShopId"`
+}
+
+func (r *DescribeNetworkInfoRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeNetworkInfoRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeNetworkInfoResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+		// 网络状态详情
+		InstanceSet *NetworkLastInfo `json:"InstanceSet" name:"InstanceSet"`
+		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		RequestId *string `json:"RequestId" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeNetworkInfoResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeNetworkInfoResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribePersonInfoRequest struct {
 	*tchttp.BaseRequest
 	// 公司ID
@@ -32,6 +237,8 @@ type DescribePersonInfoRequest struct {
 	Offset *uint64 `json:"Offset" name:"Offset"`
 	// Limit:每页的数据项，最大100，超过100会被强制指定为100
 	Limit *uint64 `json:"Limit" name:"Limit"`
+	// 图片url过期时间：在当前时间+PictureExpires秒后，图片url无法继续正常访问；单位s；默认值1*24*60*60（1天）
+	PictureExpires *uint64 `json:"PictureExpires" name:"PictureExpires"`
 }
 
 func (r *DescribePersonInfoRequest) ToJsonString() string {
@@ -82,6 +289,8 @@ type DescribePersonVisitInfoRequest struct {
 	Offset *uint64 `json:"Offset" name:"Offset"`
 	// Limit:每页的数据项，最大100，超过100会被强制指定为100
 	Limit *uint64 `json:"Limit" name:"Limit"`
+	// 图片url过期时间：在当前时间+PictureExpires秒后，图片url无法继续正常访问；单位s；默认值1*24*60*60（1天）
+	PictureExpires *uint64 `json:"PictureExpires" name:"PictureExpires"`
 }
 
 func (r *DescribePersonVisitInfoRequest) ToJsonString() string {
@@ -322,10 +531,122 @@ type HourTrafficInfoDetail struct {
 	HourTrafficTotalCount *uint64 `json:"HourTrafficTotalCount" name:"HourTrafficTotalCount"`
 }
 
+type ModifyPersonTagInfoRequest struct {
+	*tchttp.BaseRequest
+	// 优mall集团id，通过"指定身份标识获取客户门店列表"接口获取
+	CompanyId *string `json:"CompanyId" name:"CompanyId"`
+	// 优mall店铺id，通过"指定身份标识获取客户门店列表"接口获取，为0则拉取集团全部店铺当前
+	ShopId *int64 `json:"ShopId" name:"ShopId"`
+	// 需要设置的顾客信息，批量设置最大为10个
+	Tags []*PersonTagInfo `json:"Tags" name:"Tags" list`
+}
+
+func (r *ModifyPersonTagInfoRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyPersonTagInfoRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyPersonTagInfoResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		RequestId *string `json:"RequestId" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifyPersonTagInfoResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyPersonTagInfoResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type NetworkHistoryInfo struct {
+	// 总数
+	Count *int64 `json:"Count" name:"Count"`
+	// 集团id
+	CompanyId *string `json:"CompanyId" name:"CompanyId"`
+	// 店铺id
+	ShopId *int64 `json:"ShopId" name:"ShopId"`
+	// 店铺省份
+	Province *string `json:"Province" name:"Province"`
+	// 店铺城市
+	City *string `json:"City" name:"City"`
+	// 店铺名称
+	ShopName *string `json:"ShopName" name:"ShopName"`
+	// 网络信息
+	Infos []*NetworkInfoNoShop `json:"Infos" name:"Infos" list`
+}
+
+type NetworkInfo struct {
+	// 集团id
+	CompanyId *string `json:"CompanyId" name:"CompanyId"`
+	// 店铺id
+	ShopId *int64 `json:"ShopId" name:"ShopId"`
+	// 店铺省份
+	Province *string `json:"Province" name:"Province"`
+	// 店铺城市
+	City *string `json:"City" name:"City"`
+	// 店铺名
+	ShopName *string `json:"ShopName" name:"ShopName"`
+	// 上传带宽，单位Mb/s，-1：未知
+	Upload *float64 `json:"Upload" name:"Upload"`
+	// 下载带宽，单位Mb/s，-1：未知
+	Download *float64 `json:"Download" name:"Download"`
+	// 最小延迟，单位ms，-1：未知
+	MinRtt *float64 `json:"MinRtt" name:"MinRtt"`
+	// 平均延迟，单位ms，-1：未知
+	AvgRtt *float64 `json:"AvgRtt" name:"AvgRtt"`
+	// 最大延迟，单位ms，-1：未知
+	MaxRtt *float64 `json:"MaxRtt" name:"MaxRtt"`
+	// 平均偏差延迟，单位ms，-1：未知
+	MdevRtt *float64 `json:"MdevRtt" name:"MdevRtt"`
+	// 丢包率百分比，-1：未知
+	Loss *float64 `json:"Loss" name:"Loss"`
+	// 更新时间戳
+	UpdateTime *int64 `json:"UpdateTime" name:"UpdateTime"`
+	// 上报网络状态设备
+	Mac *string `json:"Mac" name:"Mac"`
+}
+
+type NetworkInfoNoShop struct {
+	// 上传带宽，单位Mb/s，-1：未知
+	Upload *float64 `json:"Upload" name:"Upload"`
+	// 下载带宽，单位Mb/s，-1：未知
+	Download *float64 `json:"Download" name:"Download"`
+	// 最小延迟，单位ms，-1：未知
+	MinRtt *float64 `json:"MinRtt" name:"MinRtt"`
+	// 平均延迟，单位ms，-1：未知
+	AvgRtt *float64 `json:"AvgRtt" name:"AvgRtt"`
+	// 最大延迟，单位ms，-1：未知
+	MaxRtt *float64 `json:"MaxRtt" name:"MaxRtt"`
+	// 平均偏差延迟，单位ms，-1：未知
+	MdevRtt *float64 `json:"MdevRtt" name:"MdevRtt"`
+	// 丢包率百分比，-1：未知
+	Loss *float64 `json:"Loss" name:"Loss"`
+	// 更新时间戳
+	UpdateTime *int64 `json:"UpdateTime" name:"UpdateTime"`
+	// 上报网络状态设备
+	Mac *string `json:"Mac" name:"Mac"`
+}
+
+type NetworkLastInfo struct {
+	// 总数
+	Count *int64 `json:"Count" name:"Count"`
+	// 网络状态
+	Infos []*NetworkInfo `json:"Infos" name:"Infos" list`
+}
+
 type PersonInfo struct {
 	// 用户ID
 	PersonId *uint64 `json:"PersonId" name:"PersonId"`
-	// 人脸图片，这里返回的是图片内容的Base64编码
+	// 人脸图片Base64内容，已弃用，返回默认空值
 	PersonPicture *string `json:"PersonPicture" name:"PersonPicture"`
 	// 性别：0男1女
 	Gender *uint64 `json:"Gender" name:"Gender"`
@@ -333,6 +654,17 @@ type PersonInfo struct {
 	Age *uint64 `json:"Age" name:"Age"`
 	// 身份类型：0-普通顾客，1~10黑名单，11~20白名单，11店员
 	PersonType *uint64 `json:"PersonType" name:"PersonType"`
+	// 人脸图片Url，在有效期内可以访问下载
+	PersonPictureUrl *string `json:"PersonPictureUrl" name:"PersonPictureUrl"`
+}
+
+type PersonTagInfo struct {
+	// 顾客原类型
+	OldType *int64 `json:"OldType" name:"OldType"`
+	// 顾客新类型
+	NewType *int64 `json:"NewType" name:"NewType"`
+	// 顾客face id
+	PersonId *int64 `json:"PersonId" name:"PersonId"`
 }
 
 type PersonVisitInfo struct {
@@ -342,7 +674,7 @@ type PersonVisitInfo struct {
 	VisitId *uint64 `json:"VisitId" name:"VisitId"`
 	// 到访时间：Unix时间戳
 	InTime *uint64 `json:"InTime" name:"InTime"`
-	// 抓拍到的头像，这里返回的是图片内容的Base64编码
+	// 抓拍到的头像Base64内容，已弃用，返回默认空值
 	CapturedPicture *string `json:"CapturedPicture" name:"CapturedPicture"`
 	// 口罩类型：0不戴口罩，1戴口罩
 	MaskType *uint64 `json:"MaskType" name:"MaskType"`
@@ -350,6 +682,8 @@ type PersonVisitInfo struct {
 	GlassType *uint64 `json:"GlassType" name:"GlassType"`
 	// 发型：0 短发,  1长发
 	HairType *uint64 `json:"HairType" name:"HairType"`
+	// 抓拍到的头像Url，在有效期内可以访问下载
+	CapturedPictureUrl *string `json:"CapturedPictureUrl" name:"CapturedPictureUrl"`
 }
 
 type RegisterCallbackRequest struct {
