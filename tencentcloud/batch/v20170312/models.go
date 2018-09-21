@@ -777,7 +777,7 @@ type DescribeJobsResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 		// 作业列表
-		JobSet *JobView `json:"JobSet" name:"JobSet"`
+		JobSet []*JobView `json:"JobSet" name:"JobSet" list`
 		// 符合条件的作业数量
 		TotalCount *int64 `json:"TotalCount" name:"TotalCount"`
 		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
@@ -1372,7 +1372,7 @@ type Task struct {
 	FailedAction *string `json:"FailedAction" name:"FailedAction"`
 	// 任务失败后的最大重试次数，默认为0
 	MaxRetryCount *uint64 `json:"MaxRetryCount" name:"MaxRetryCount"`
-	// 任务启动后的超时时间，单位秒，默认为3600秒
+	// 任务启动后的超时时间，单位秒，默认为86400秒
 	Timeout *uint64 `json:"Timeout" name:"Timeout"`
 }
 
