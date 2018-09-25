@@ -905,7 +905,7 @@ type EnhancedService struct {
 }
 
 type EnvData struct {
-	// CVM实例类型
+	// CVM实例类型，不能与InstanceTypes同时出现。
 	InstanceType *string `json:"InstanceType" name:"InstanceType"`
 	// CVM镜像ID
 	ImageId *string `json:"ImageId" name:"ImageId"`
@@ -929,6 +929,8 @@ type EnvData struct {
 	InstanceChargeType *string `json:"InstanceChargeType" name:"InstanceChargeType"`
 	// 实例的市场相关选项，如竞价实例相关参数
 	InstanceMarketOptions *InstanceMarketOptionsRequest `json:"InstanceMarketOptions" name:"InstanceMarketOptions"`
+	// CVM实例类型列表，不能与InstanceType同时出现。指定该字段后，计算节点按照机型先后顺序依次尝试创建，直到实例创建成功，结束遍历过程。最多支持10个机型。
+	InstanceTypes []*string `json:"InstanceTypes" name:"InstanceTypes" list`
 }
 
 type EnvVar struct {
