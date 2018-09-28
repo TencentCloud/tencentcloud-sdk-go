@@ -269,7 +269,7 @@ type DBInstance struct {
 	// 外网 IP 地址，公网可访问
 	WanVip *string `json:"WanVip" name:"WanVip"`
 	// 外网端口
-	WanPort *int64 `json:"WanPort" name:"WanPort"`
+	WanPort *string `json:"WanPort" name:"WanPort"`
 	// 实例创建时间，格式为 2006-01-02 15:04:05
 	CreateTime *string `json:"CreateTime" name:"CreateTime"`
 	// 实例最后更新时间，格式为 2006-01-02 15:04:05
@@ -543,7 +543,7 @@ type DescribeDBInstancesResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 		// 符合条件的实例数量
-		TotalCount []*uint64 `json:"TotalCount" name:"TotalCount" list`
+		TotalCount *uint64 `json:"TotalCount" name:"TotalCount" list`
 		// 实例详细信息列表
 		Instances []*DBInstance `json:"Instances" name:"Instances" list`
 		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
