@@ -20,6 +20,40 @@ import (
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
+type AcceptAttachCcnInstancesRequest struct {
+	*tchttp.BaseRequest
+	// CCN实例ID。形如：ccn-f49l6u0z。
+	CcnId *string `json:"CcnId" name:"CcnId"`
+	// 接受关联实例列表。
+	Instances []*CcnInstance `json:"Instances" name:"Instances" list`
+}
+
+func (r *AcceptAttachCcnInstancesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *AcceptAttachCcnInstancesRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type AcceptAttachCcnInstancesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		RequestId *string `json:"RequestId" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *AcceptAttachCcnInstancesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *AcceptAttachCcnInstancesResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type AccountAttribute struct {
 	// 属性名
 	AttributeName *string `json:"AttributeName" name:"AttributeName"`
@@ -90,6 +124,8 @@ type Address struct {
 	IsEipDirectConnection *bool `json:"IsEipDirectConnection" name:"IsEipDirectConnection"`
 	// eip资源类型，包括"CalcIP","WanIP","EIP","AnycastEIP"。其中"CalcIP"表示设备ip，“WanIP”表示普通公网ip，“EIP”表示弹性公网ip，“AnycastEip”表示加速EIP
 	AddressType *string `json:"AddressType" name:"AddressType"`
+	// eip是否在解绑后自动释放。true表示eip将会在解绑后自动释放，false表示eip在解绑后不会自动释放
+	CascadeRelease *bool `json:"CascadeRelease" name:"CascadeRelease"`
 }
 
 type AddressTemplate struct {
@@ -237,6 +273,8 @@ type AttachCcnInstancesRequest struct {
 	CcnId *string `json:"CcnId" name:"CcnId"`
 	// 关联网络实例列表
 	Instances []*CcnInstance `json:"Instances" name:"Instances" list`
+	// CCN所属UIN（根账号），默认当前账号所属UIN
+	CcnUin *string `json:"CcnUin" name:"CcnUin"`
 }
 
 func (r *AttachCcnInstancesRequest) ToJsonString() string {
@@ -365,19 +403,41 @@ type CCN struct {
 	State *string `json:"State" name:"State"`
 }
 
+type CcnAttachedInstance struct {
+	// 云联网实例ID
+	CcnId *string `json:"CcnId" name:"CcnId"`
+	// 关联实例类型，可选值：VPC、DIRECTCONNECT
+	InstanceType *string `json:"InstanceType" name:"InstanceType"`
+	// 关联实例ID
+	InstanceId *string `json:"InstanceId" name:"InstanceId"`
+	// 关联实例名称
+	InstanceName *string `json:"InstanceName" name:"InstanceName"`
+	// 关联实例所属大区，例如：ap-guangzhou
+	InstanceRegion *string `json:"InstanceRegion" name:"InstanceRegion"`
+	// 关联实例所属UIN（根账号）
+	InstanceUin *string `json:"InstanceUin" name:"InstanceUin"`
+	// 关联实例CIDR
+	CidrBlock []*string `json:"CidrBlock" name:"CidrBlock" list`
+	// 关联实例状态：
+	// PENDING：申请中
+	// ACTIVE：已连接
+	// EXPIRED：已过期
+	// REJECTED：已拒绝
+	// DELETED：已删除
+	State *string `json:"State" name:"State"`
+	// 关联时间
+	AttachedTime *string `json:"AttachedTime" name:"AttachedTime"`
+	// 云联网所属UIN（根账号）
+	CcnUin *string `json:"CcnUin" name:"CcnUin"`
+}
+
 type CcnInstance struct {
 	// 关联实例ID
 	InstanceId *string `json:"InstanceId" name:"InstanceId"`
 	// 关联实例ID所属大区，例如：ap-guangzhou
 	InstanceRegion *string `json:"InstanceRegion" name:"InstanceRegion"`
-	// 云联网实例ID
-	CcnId *string `json:"CcnId" name:"CcnId"`
 	// 关联实例类型，可选值：VPC、DIRECTCONNECT
 	InstanceType *string `json:"InstanceType" name:"InstanceType"`
-	// 关联实例名称
-	InstanceName *string `json:"InstanceName" name:"InstanceName"`
-	// 关联实例CIDR
-	CidrBlock []*string `json:"CidrBlock" name:"CidrBlock" list`
 }
 
 type CcnRegionBandwidthLimit struct {
@@ -404,6 +464,8 @@ type CcnRoute struct {
 	UpdateTime *string `json:"UpdateTime" name:"UpdateTime"`
 	// 路由是否启用
 	Enabled *bool `json:"Enabled" name:"Enabled"`
+	// 关联实例所属UIN（根账号）
+	InstanceUin *string `json:"InstanceUin" name:"InstanceUin"`
 }
 
 type ClassicLinkInstance struct {
@@ -1116,6 +1178,8 @@ type CreateVpnGatewayRequest struct {
 	InstanceChargeType *string `json:"InstanceChargeType" name:"InstanceChargeType"`
 	// 预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月实例的购买时长、是否设置自动续费等属性。若指定实例的付费模式为预付费则该参数必传。
 	InstanceChargePrepaid *InstanceChargePrepaid `json:"InstanceChargePrepaid" name:"InstanceChargePrepaid"`
+	// 可用区，如：ap-guangzhou-2。
+	Zone *string `json:"Zone" name:"Zone"`
 }
 
 func (r *CreateVpnGatewayRequest) ToJsonString() string {
@@ -2006,12 +2070,18 @@ func (r *DescribeBandwidthPackagesResponse) FromJsonString(s string) error {
 
 type DescribeCcnAttachedInstancesRequest struct {
 	*tchttp.BaseRequest
-	// CCN实例ID。形如：ccn-f49l6u0z。
-	CcnId *string `json:"CcnId" name:"CcnId"`
 	// 偏移量
 	Offset *uint64 `json:"Offset" name:"Offset"`
 	// 返回数量
 	Limit *uint64 `json:"Limit" name:"Limit"`
+	// 过滤条件：
+	// <li>ccn-id - String -（过滤条件）CCN实例ID。</li>
+	// <li>instance-type - String -（过滤条件）关联实例类型。</li>
+	// <li>instance-region - String -（过滤条件）关联实例所属地域。</li>
+	// <li>instance-id - String -（过滤条件）关联实例实例ID。</li>
+	Filters []*Filter `json:"Filters" name:"Filters" list`
+	// 云联网实例ID
+	CcnId *string `json:"CcnId" name:"CcnId"`
 }
 
 func (r *DescribeCcnAttachedInstancesRequest) ToJsonString() string {
@@ -2028,8 +2098,8 @@ type DescribeCcnAttachedInstancesResponse struct {
 	Response *struct {
 		// 符合条件的对象数。
 		TotalCount *uint64 `json:"TotalCount" name:"TotalCount"`
-		// 关联实例列表
-		InstanceSet []*CcnInstance `json:"InstanceSet" name:"InstanceSet" list`
+		// 关联实例列表。
+		InstanceSet []*CcnAttachedInstance `json:"InstanceSet" name:"InstanceSet" list`
 		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
@@ -2793,7 +2863,14 @@ type DescribeVpnGatewaysRequest struct {
 	*tchttp.BaseRequest
 	// VPN网关实例ID。形如：vpngw-f49l6u0z。每次请求的实例的上限为100。参数不支持同时指定VpnGatewayIds和Filters。
 	VpnGatewayIds []*string `json:"VpnGatewayIds" name:"VpnGatewayIds" list`
-	// 过滤器对象属性
+	// 过滤条件，参数不支持同时指定VpnGatewayIds和Filters。
+	// <li>vpc-id - String - （过滤条件）VPC实例ID形如：vpc-f49l6u0z。</li>
+	// <li>vpn-gateway-id - String - （过滤条件）VPN实例ID形如：vpngw-5aluhh9t。</li>
+	// <li>vpn-gateway-name - String - （过滤条件）VPN实例名称。</li>
+	// <li>type - String - （过滤条件）VPN网关类型：'IPSEC', 'SSL'。</li>
+	// <li>public-ip-address- String - （过滤条件）公网IP。</li>
+	// <li>renew-flag - String - （过滤条件）网关续费类型，手动续费：'NOTIFY_AND_MANUAL_RENEW'、自动续费：'NOTIFY_AND_AUTO_RENEW'。</li>
+	// <li>zone - String - （过滤条件）VPN所在可用区，形如：ap-guangzhou-2。</li>
 	Filters []*FilterObject `json:"Filters" name:"Filters" list`
 	// 偏移量
 	Offset *uint64 `json:"Offset" name:"Offset"`
@@ -4155,6 +4232,40 @@ type Quota struct {
 	QuotaLimit *int64 `json:"QuotaLimit" name:"QuotaLimit"`
 }
 
+type RejectAttachCcnInstancesRequest struct {
+	*tchttp.BaseRequest
+	// CCN实例ID。形如：ccn-f49l6u0z。
+	CcnId *string `json:"CcnId" name:"CcnId"`
+	// 拒绝关联实例列表。
+	Instances []*CcnInstance `json:"Instances" name:"Instances" list`
+}
+
+func (r *RejectAttachCcnInstancesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *RejectAttachCcnInstancesRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type RejectAttachCcnInstancesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		RequestId *string `json:"RequestId" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *RejectAttachCcnInstancesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *RejectAttachCcnInstancesResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type ReleaseAddressesRequest struct {
 	*tchttp.BaseRequest
 	// 标识 EIP 的唯一 ID 列表。EIP 唯一 ID 形如：`eip-11112222`。
@@ -4390,6 +4501,42 @@ func (r *ReplaceSecurityGroupPolicyResponse) ToJsonString() string {
 }
 
 func (r *ReplaceSecurityGroupPolicyResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ResetAttachCcnInstancesRequest struct {
+	*tchttp.BaseRequest
+	// CCN实例ID。形如：ccn-f49l6u0z。
+	CcnId *string `json:"CcnId" name:"CcnId"`
+	// CCN所属UIN（根账号）。
+	CcnUin *string `json:"CcnUin" name:"CcnUin"`
+	// 重新申请关联网络实例列表。
+	Instances []*CcnInstance `json:"Instances" name:"Instances" list`
+}
+
+func (r *ResetAttachCcnInstancesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ResetAttachCcnInstancesRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ResetAttachCcnInstancesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		RequestId *string `json:"RequestId" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ResetAttachCcnInstancesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ResetAttachCcnInstancesResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -4872,4 +5019,6 @@ type VpnGateway struct {
 	NewPurchasePlan *string `json:"NewPurchasePlan" name:"NewPurchasePlan"`
 	// 网关计费装，PROTECTIVELY_ISOLATED：被安全隔离的实例，NORMAL：正常。
 	RestrictState *string `json:"RestrictState" name:"RestrictState"`
+	// 可用区，如：ap-guangzhou-2
+	Zone *string `json:"Zone" name:"Zone"`
 }

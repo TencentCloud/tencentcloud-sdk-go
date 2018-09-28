@@ -83,6 +83,8 @@ type CreateDeviceRequest struct {
 	Isp *uint64 `json:"Isp" name:"Isp"`
 	// IMEI，当产品是NB-IoT产品时，此字段必填
 	Imei *string `json:"Imei" name:"Imei"`
+	// LoRa设备的DevEui，当创建LoRa时，此字段必填
+	LoraDevEui *string `json:"LoraDevEui" name:"LoraDevEui"`
 }
 
 func (r *CreateDeviceRequest) ToJsonString() string {
@@ -105,6 +107,8 @@ type CreateDeviceResponse struct {
 		DeviceCert *string `json:"DeviceCert" name:"DeviceCert"`
 		// 设备私钥，用于 TLS 建立链接时校验客户端身份，腾讯云后台不保存，请妥善保管。采用非对称加密时返回该参数
 		DevicePrivateKey *string `json:"DevicePrivateKey" name:"DevicePrivateKey"`
+		// LoRa设备的DevEui，当设备是LoRa设备时，会返回该字段
+		LoraDevEui *string `json:"LoraDevEui" name:"LoraDevEui"`
 		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
@@ -179,6 +183,8 @@ type CreateProductResponse struct {
 		ProductName *string `json:"ProductName" name:"ProductName"`
 		// 产品 ID，腾讯云生成全局唯一 ID
 		ProductId *string `json:"ProductId" name:"ProductId"`
+		// 产品属性
+		ProductProperties *ProductProperties `json:"ProductProperties" name:"ProductProperties"`
 		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
@@ -345,7 +351,7 @@ type DescribeDevicesRequest struct {
 	ProductId *string `json:"ProductId" name:"ProductId"`
 	// 分页偏移
 	Offset *uint64 `json:"Offset" name:"Offset"`
-	// 分页的大小，数值范围 10-250
+	// 分页的大小，数值范围 10-100
 	Limit *uint64 `json:"Limit" name:"Limit"`
 	// 设备固件版本号，若不带此参数会返回所有固件版本的设备
 	FirmwareVersion *string `json:"FirmwareVersion" name:"FirmwareVersion"`
@@ -469,6 +475,8 @@ type DescribeProductsRequest struct {
 	Offset *uint64 `json:"Offset" name:"Offset"`
 	// 分页大小，当前页面中显示的最大数量，值范围 10-250。
 	Limit *uint64 `json:"Limit" name:"Limit"`
+	// 过滤条件
+	Filters []*Filter `json:"Filters" name:"Filters" list`
 }
 
 func (r *DescribeProductsRequest) ToJsonString() string {
@@ -624,6 +632,8 @@ type DeviceInfo struct {
 	ConnIP *uint64 `json:"ConnIP" name:"ConnIP"`
 	// 设备最后更新时间
 	LastUpdateTime *uint64 `json:"LastUpdateTime" name:"LastUpdateTime"`
+	// LoRa设备的dev eui
+	LoraDevEui *string `json:"LoraDevEui" name:"LoraDevEui"`
 }
 
 type DeviceTag struct {
@@ -633,6 +643,13 @@ type DeviceTag struct {
 	Type *uint64 `json:"Type" name:"Type"`
 	// 属性的值
 	Value *string `json:"Value" name:"Value"`
+}
+
+type Filter struct {
+	// 过滤键的名称
+	Name *string `json:"Name" name:"Name"`
+	// 一个或者多个过滤值
+	Values []*string `json:"Values" name:"Values" list`
 }
 
 type GetDeviceShadowRequest struct {
@@ -713,6 +730,10 @@ type ProductProperties struct {
 	ProductType *uint64 `json:"ProductType" name:"ProductType"`
 	// 数据格式，取值为json或者custom，默认值是json
 	Format *string `json:"Format" name:"Format"`
+	// 产品所属平台，默认值是0
+	Platform *string `json:"Platform" name:"Platform"`
+	// LoRa产品运营侧APPEUI，只有LoRa产品需要填写
+	Appeui *string `json:"Appeui" name:"Appeui"`
 }
 
 type PublishMessageRequest struct {

@@ -29,6 +29,50 @@ type AddShardConfig struct {
 	ShardStorage *int64 `json:"ShardStorage" name:"ShardStorage"`
 }
 
+type CloneAccountRequest struct {
+	*tchttp.BaseRequest
+	// 实例ID
+	InstanceId *string `json:"InstanceId" name:"InstanceId"`
+	// 源用户账户名
+	SrcUser *string `json:"SrcUser" name:"SrcUser"`
+	// 源用户HOST
+	SrcHost *string `json:"SrcHost" name:"SrcHost"`
+	// 目的用户账户名
+	DstUser *string `json:"DstUser" name:"DstUser"`
+	// 目的用户HOST
+	DstHost *string `json:"DstHost" name:"DstHost"`
+	// 目的用户账户描述
+	DstDesc *string `json:"DstDesc" name:"DstDesc"`
+}
+
+func (r *CloneAccountRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CloneAccountRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CloneAccountResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+		// 异步任务流程ID
+		FlowId *int64 `json:"FlowId" name:"FlowId"`
+		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		RequestId *string `json:"RequestId" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CloneAccountResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CloneAccountResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type CloseDBExtranetAccessRequest struct {
 	*tchttp.BaseRequest
 	// 待关闭外网访问的实例ID。形如：dcdbt-ow728lmc，可以通过 DescribeDCDBInstances 查询实例详情获得。
@@ -1124,6 +1168,54 @@ func (r *DescribeShardSpecResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeSqlLogsRequest struct {
+	*tchttp.BaseRequest
+	// 实例 ID，形如：dcdbt-ow728lmc，可以通过 DescribeDCDBInstances 查询实例详情获得。
+	InstanceId *string `json:"InstanceId" name:"InstanceId"`
+	// SQL日志偏移。
+	Offset *uint64 `json:"Offset" name:"Offset"`
+	// 拉取数量（0-1000，为0时拉取总数信息）。
+	Limit *uint64 `json:"Limit" name:"Limit"`
+}
+
+func (r *DescribeSqlLogsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeSqlLogsRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeSqlLogsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+		// 当前消息队列中的sql日志条目数。
+		TotalCount *uint64 `json:"TotalCount" name:"TotalCount"`
+		// 消息队列中的sql日志起始偏移。
+		StartOffset *uint64 `json:"StartOffset" name:"StartOffset"`
+		// 消息队列中的sql日志结束偏移。
+		EndOffset *uint64 `json:"EndOffset" name:"EndOffset"`
+		// 返回的第一条sql日志的偏移。
+		Offset *uint64 `json:"Offset" name:"Offset"`
+		// 返回的sql日志数量。
+		Count *uint64 `json:"Count" name:"Count"`
+		// Sql日志列表。
+		SqlItems []*SqlLogItem `json:"SqlItems" name:"SqlItems" list`
+		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		RequestId *string `json:"RequestId" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeSqlLogsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeSqlLogsResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type ExpandShardConfig struct {
 	// 分片ID数组
 	ShardInstanceIds []*string `json:"ShardInstanceIds" name:"ShardInstanceIds" list`
@@ -1594,6 +1686,29 @@ type SplitShardConfig struct {
 	ShardMemory *int64 `json:"ShardMemory" name:"ShardMemory"`
 	// 分片存储大小，单位 GB
 	ShardStorage *int64 `json:"ShardStorage" name:"ShardStorage"`
+}
+
+type SqlLogItem struct {
+	// 本条日志在消息队列中的偏移量。
+	Offset *uint64 `json:"Offset" name:"Offset"`
+	// 执行本条sql的用户。
+	User *string `json:"User" name:"User"`
+	// 执行本条sql的客户端IP+端口。
+	Client *string `json:"Client" name:"Client"`
+	// 数据库名称。
+	DbName *string `json:"DbName" name:"DbName"`
+	// 执行的sql语句。
+	Sql *string `json:"Sql" name:"Sql"`
+	// 返回的数据行数。
+	SelectRowNum *uint64 `json:"SelectRowNum" name:"SelectRowNum"`
+	// 影响行数。
+	AffectRowNum *uint64 `json:"AffectRowNum" name:"AffectRowNum"`
+	// Sql执行时间戳。
+	Timestamp *uint64 `json:"Timestamp" name:"Timestamp"`
+	// Sql耗时，单位为毫秒。
+	TimeCostMs *uint64 `json:"TimeCostMs" name:"TimeCostMs"`
+	// Sql返回码，0为成功。
+	ResultCode *uint64 `json:"ResultCode" name:"ResultCode"`
 }
 
 type TableColumn struct {

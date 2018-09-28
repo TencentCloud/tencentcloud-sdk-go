@@ -41,6 +41,31 @@ func NewClient(credential *common.Credential, region string, clientProfile *prof
 }
 
 
+func NewAcceptAttachCcnInstancesRequest() (request *AcceptAttachCcnInstancesRequest) {
+    request = &AcceptAttachCcnInstancesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "AcceptAttachCcnInstances")
+    return
+}
+
+func NewAcceptAttachCcnInstancesResponse() (response *AcceptAttachCcnInstancesResponse) {
+    response = &AcceptAttachCcnInstancesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（AcceptAttachCcnInstances）用于跨账号关联实例时，云联网所有者接受并同意关联操作。
+func (c *Client) AcceptAttachCcnInstances(request *AcceptAttachCcnInstancesRequest) (response *AcceptAttachCcnInstancesResponse, err error) {
+    if request == nil {
+        request = NewAcceptAttachCcnInstancesRequest()
+    }
+    response = NewAcceptAttachCcnInstancesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewAddBandwidthPackageResourcesRequest() (request *AddBandwidthPackageResourcesRequest) {
     request = &AddBandwidthPackageResourcesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -193,7 +218,7 @@ func NewAttachClassicLinkVpcResponse() (response *AttachClassicLinkVpcResponse) 
     return
 }
 
-// 本接口(AttachClassicLinkVpc)用于私有网络和基础网络设备互通。
+// 本接口(AttachClassicLinkVpc)用于创建私有网络和基础网络设备互通。
 // * 私有网络和基础网络设备必须在同一个地域。
 // * 私有网络和基础网络的区别详见vpc产品文档-<a href="https://cloud.tencent.com/document/product/215/535#2.-.E7.A7.81.E6.9C.89.E7.BD.91.E7.BB.9C.E4.B8.8E.E5.9F.BA.E7.A1.80.E7.BD.91.E7.BB.9C">私有网络与基础网络</a>。
 func (c *Client) AttachClassicLinkVpc(request *AttachClassicLinkVpcRequest) (response *AttachClassicLinkVpcResponse, err error) {
@@ -1468,7 +1493,7 @@ func NewDescribeClassicLinkInstancesResponse() (response *DescribeClassicLinkIns
     return
 }
 
-// 本接口(DescribeClassicLinkInstances)用于私有网络和基础网络设备互通。
+// 本接口(DescribeClassicLinkInstances)用于查询私有网络和基础网络设备互通列表。
 func (c *Client) DescribeClassicLinkInstances(request *DescribeClassicLinkInstancesRequest) (response *DescribeClassicLinkInstancesResponse, err error) {
     if request == nil {
         request = NewDescribeClassicLinkInstancesRequest()
@@ -2670,6 +2695,31 @@ func (c *Client) ModifyVpnGatewayAttribute(request *ModifyVpnGatewayAttributeReq
     return
 }
 
+func NewRejectAttachCcnInstancesRequest() (request *RejectAttachCcnInstancesRequest) {
+    request = &RejectAttachCcnInstancesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "RejectAttachCcnInstances")
+    return
+}
+
+func NewRejectAttachCcnInstancesResponse() (response *RejectAttachCcnInstancesResponse) {
+    response = &RejectAttachCcnInstancesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（RejectAttachCcnInstances）用于跨账号关联实例时，云联网所有者拒绝关联操作。
+func (c *Client) RejectAttachCcnInstances(request *RejectAttachCcnInstancesRequest) (response *RejectAttachCcnInstancesResponse, err error) {
+    if request == nil {
+        request = NewRejectAttachCcnInstancesRequest()
+    }
+    response = NewRejectAttachCcnInstancesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewReleaseAddressesRequest() (request *ReleaseAddressesRequest) {
     request = &ReleaseAddressesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2845,6 +2895,31 @@ func (c *Client) ReplaceSecurityGroupPolicy(request *ReplaceSecurityGroupPolicyR
         request = NewReplaceSecurityGroupPolicyRequest()
     }
     response = NewReplaceSecurityGroupPolicyResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewResetAttachCcnInstancesRequest() (request *ResetAttachCcnInstancesRequest) {
+    request = &ResetAttachCcnInstancesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "ResetAttachCcnInstances")
+    return
+}
+
+func NewResetAttachCcnInstancesResponse() (response *ResetAttachCcnInstancesResponse) {
+    response = &ResetAttachCcnInstancesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（ResetAttachCcnInstances）用于跨账号关联实例申请过期时，重新申请关联操作。
+func (c *Client) ResetAttachCcnInstances(request *ResetAttachCcnInstancesRequest) (response *ResetAttachCcnInstancesResponse, err error) {
+    if request == nil {
+        request = NewResetAttachCcnInstancesRequest()
+    }
+    response = NewResetAttachCcnInstancesResponse()
     err = c.Send(request, response)
     return
 }
