@@ -621,7 +621,7 @@ func (r *DescribeComputeEnvsResponse) FromJsonString(s string) error {
 type DescribeCvmZoneInstanceConfigInfosRequest struct {
 	*tchttp.BaseRequest
 	// 过滤条件
-	Filters *Filter `json:"Filters" name:"Filters"`
+	Filters []*Filter `json:"Filters" name:"Filters" list`
 }
 
 func (r *DescribeCvmZoneInstanceConfigInfosRequest) ToJsonString() string {

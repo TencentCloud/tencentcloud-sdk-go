@@ -42,6 +42,56 @@ func NewClient(credential *common.Credential, region string, clientProfile *prof
 }
 
 
+func NewCreateAccountRequest() (request *CreateAccountRequest) {
+    request = &CreateAccountRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("youmall", APIVersion, "CreateAccount")
+    return
+}
+
+func NewCreateAccountResponse() (response *CreateAccountResponse) {
+    response = &CreateAccountResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 创建集团门店管理员账号
+func (c *Client) CreateAccount(request *CreateAccountRequest) (response *CreateAccountResponse, err error) {
+    if request == nil {
+        request = NewCreateAccountRequest()
+    }
+    response = NewCreateAccountResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateFacePictureRequest() (request *CreateFacePictureRequest) {
+    request = &CreateFacePictureRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("youmall", APIVersion, "CreateFacePicture")
+    return
+}
+
+func NewCreateFacePictureResponse() (response *CreateFacePictureResponse) {
+    response = &CreateFacePictureResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 上传人脸图片
+func (c *Client) CreateFacePicture(request *CreateFacePictureRequest) (response *CreateFacePictureResponse, err error) {
+    if request == nil {
+        request = NewCreateFacePictureRequest()
+    }
+    response = NewCreateFacePictureResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeCameraPersonRequest() (request *DescribeCameraPersonRequest) {
     request = &DescribeCameraPersonRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -263,6 +313,181 @@ func (c *Client) DescribeShopTrafficInfo(request *DescribeShopTrafficInfoRequest
         request = NewDescribeShopTrafficInfoRequest()
     }
     response = NewDescribeShopTrafficInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeTrajectoryDataRequest() (request *DescribeTrajectoryDataRequest) {
+    request = &DescribeTrajectoryDataRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("youmall", APIVersion, "DescribeTrajectoryData")
+    return
+}
+
+func NewDescribeTrajectoryDataResponse() (response *DescribeTrajectoryDataResponse) {
+    response = &DescribeTrajectoryDataResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 获取动线轨迹信息
+func (c *Client) DescribeTrajectoryData(request *DescribeTrajectoryDataRequest) (response *DescribeTrajectoryDataResponse, err error) {
+    if request == nil {
+        request = NewDescribeTrajectoryDataRequest()
+    }
+    response = NewDescribeTrajectoryDataResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeZoneFlowAgeInfoByZoneIdRequest() (request *DescribeZoneFlowAgeInfoByZoneIdRequest) {
+    request = &DescribeZoneFlowAgeInfoByZoneIdRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("youmall", APIVersion, "DescribeZoneFlowAgeInfoByZoneId")
+    return
+}
+
+func NewDescribeZoneFlowAgeInfoByZoneIdResponse() (response *DescribeZoneFlowAgeInfoByZoneIdResponse) {
+    response = &DescribeZoneFlowAgeInfoByZoneIdResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 获取指定区域人流各年龄占比
+func (c *Client) DescribeZoneFlowAgeInfoByZoneId(request *DescribeZoneFlowAgeInfoByZoneIdRequest) (response *DescribeZoneFlowAgeInfoByZoneIdResponse, err error) {
+    if request == nil {
+        request = NewDescribeZoneFlowAgeInfoByZoneIdRequest()
+    }
+    response = NewDescribeZoneFlowAgeInfoByZoneIdResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeZoneFlowAndStayTimeRequest() (request *DescribeZoneFlowAndStayTimeRequest) {
+    request = &DescribeZoneFlowAndStayTimeRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("youmall", APIVersion, "DescribeZoneFlowAndStayTime")
+    return
+}
+
+func NewDescribeZoneFlowAndStayTimeResponse() (response *DescribeZoneFlowAndStayTimeResponse) {
+    response = &DescribeZoneFlowAndStayTimeResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 获取区域人流和停留时间
+func (c *Client) DescribeZoneFlowAndStayTime(request *DescribeZoneFlowAndStayTimeRequest) (response *DescribeZoneFlowAndStayTimeResponse, err error) {
+    if request == nil {
+        request = NewDescribeZoneFlowAndStayTimeRequest()
+    }
+    response = NewDescribeZoneFlowAndStayTimeResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeZoneFlowDailyByZoneIdRequest() (request *DescribeZoneFlowDailyByZoneIdRequest) {
+    request = &DescribeZoneFlowDailyByZoneIdRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("youmall", APIVersion, "DescribeZoneFlowDailyByZoneId")
+    return
+}
+
+func NewDescribeZoneFlowDailyByZoneIdResponse() (response *DescribeZoneFlowDailyByZoneIdResponse) {
+    response = &DescribeZoneFlowDailyByZoneIdResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 获取指定区域每日客流量
+func (c *Client) DescribeZoneFlowDailyByZoneId(request *DescribeZoneFlowDailyByZoneIdRequest) (response *DescribeZoneFlowDailyByZoneIdResponse, err error) {
+    if request == nil {
+        request = NewDescribeZoneFlowDailyByZoneIdRequest()
+    }
+    response = NewDescribeZoneFlowDailyByZoneIdResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeZoneFlowGenderAvrStayTimeByZoneIdRequest() (request *DescribeZoneFlowGenderAvrStayTimeByZoneIdRequest) {
+    request = &DescribeZoneFlowGenderAvrStayTimeByZoneIdRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("youmall", APIVersion, "DescribeZoneFlowGenderAvrStayTimeByZoneId")
+    return
+}
+
+func NewDescribeZoneFlowGenderAvrStayTimeByZoneIdResponse() (response *DescribeZoneFlowGenderAvrStayTimeByZoneIdResponse) {
+    response = &DescribeZoneFlowGenderAvrStayTimeByZoneIdResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 获取指定区域不同年龄段男女平均停留时间
+func (c *Client) DescribeZoneFlowGenderAvrStayTimeByZoneId(request *DescribeZoneFlowGenderAvrStayTimeByZoneIdRequest) (response *DescribeZoneFlowGenderAvrStayTimeByZoneIdResponse, err error) {
+    if request == nil {
+        request = NewDescribeZoneFlowGenderAvrStayTimeByZoneIdRequest()
+    }
+    response = NewDescribeZoneFlowGenderAvrStayTimeByZoneIdResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeZoneFlowGenderInfoByZoneIdRequest() (request *DescribeZoneFlowGenderInfoByZoneIdRequest) {
+    request = &DescribeZoneFlowGenderInfoByZoneIdRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("youmall", APIVersion, "DescribeZoneFlowGenderInfoByZoneId")
+    return
+}
+
+func NewDescribeZoneFlowGenderInfoByZoneIdResponse() (response *DescribeZoneFlowGenderInfoByZoneIdResponse) {
+    response = &DescribeZoneFlowGenderInfoByZoneIdResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 获取指定区域性别占比
+func (c *Client) DescribeZoneFlowGenderInfoByZoneId(request *DescribeZoneFlowGenderInfoByZoneIdRequest) (response *DescribeZoneFlowGenderInfoByZoneIdResponse, err error) {
+    if request == nil {
+        request = NewDescribeZoneFlowGenderInfoByZoneIdRequest()
+    }
+    response = NewDescribeZoneFlowGenderInfoByZoneIdResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeZoneFlowHourlyByZoneIdRequest() (request *DescribeZoneFlowHourlyByZoneIdRequest) {
+    request = &DescribeZoneFlowHourlyByZoneIdRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("youmall", APIVersion, "DescribeZoneFlowHourlyByZoneId")
+    return
+}
+
+func NewDescribeZoneFlowHourlyByZoneIdResponse() (response *DescribeZoneFlowHourlyByZoneIdResponse) {
+    response = &DescribeZoneFlowHourlyByZoneIdResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 获取指定区域分时客流量
+func (c *Client) DescribeZoneFlowHourlyByZoneId(request *DescribeZoneFlowHourlyByZoneIdRequest) (response *DescribeZoneFlowHourlyByZoneIdResponse, err error) {
+    if request == nil {
+        request = NewDescribeZoneFlowHourlyByZoneIdRequest()
+    }
+    response = NewDescribeZoneFlowHourlyByZoneIdResponse()
     err = c.Send(request, response)
     return
 }

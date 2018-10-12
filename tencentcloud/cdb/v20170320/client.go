@@ -331,6 +331,31 @@ func (c *Client) DescribeAccounts(request *DescribeAccountsRequest) (response *D
     return
 }
 
+func NewDescribeAsyncRequestInfoRequest() (request *DescribeAsyncRequestInfoRequest) {
+    request = &DescribeAsyncRequestInfoRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cdb", APIVersion, "DescribeAsyncRequestInfo")
+    return
+}
+
+func NewDescribeAsyncRequestInfoResponse() (response *DescribeAsyncRequestInfoResponse) {
+    response = &DescribeAsyncRequestInfoResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口(DescribeAsyncRequestInfo)用于查询云数据库实例异步任务的执行结果。
+func (c *Client) DescribeAsyncRequestInfo(request *DescribeAsyncRequestInfoRequest) (response *DescribeAsyncRequestInfoResponse, err error) {
+    if request == nil {
+        request = NewDescribeAsyncRequestInfoRequest()
+    }
+    response = NewDescribeAsyncRequestInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeBackupConfigRequest() (request *DescribeBackupConfigRequest) {
     request = &DescribeBackupConfigRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -730,6 +755,31 @@ func (c *Client) DescribeDatabases(request *DescribeDatabasesRequest) (response 
         request = NewDescribeDatabasesRequest()
     }
     response = NewDescribeDatabasesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeInstanceParamsRequest() (request *DescribeInstanceParamsRequest) {
+    request = &DescribeInstanceParamsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cdb", APIVersion, "DescribeInstanceParams")
+    return
+}
+
+func NewDescribeInstanceParamsResponse() (response *DescribeInstanceParamsResponse) {
+    response = &DescribeInstanceParamsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 该接口（DescribeInstanceParams）用于查询实例的参数列表。
+func (c *Client) DescribeInstanceParams(request *DescribeInstanceParamsRequest) (response *DescribeInstanceParamsResponse, err error) {
+    if request == nil {
+        request = NewDescribeInstanceParamsRequest()
+    }
+    response = NewDescribeInstanceParamsResponse()
     err = c.Send(request, response)
     return
 }

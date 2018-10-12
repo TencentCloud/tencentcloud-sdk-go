@@ -33,6 +33,92 @@ type CameraPersonInfo struct {
 	Time *int64 `json:"Time" name:"Time"`
 }
 
+type CreateAccountRequest struct {
+	*tchttp.BaseRequest
+	// 集团ID
+	CompanyId *string `json:"CompanyId" name:"CompanyId"`
+	// 账号名；需要是手机号
+	Name *string `json:"Name" name:"Name"`
+	// 密码；需要是(`~!@#$%^&*()_+=-）中的至少两种且八位以上
+	Password *string `json:"Password" name:"Password"`
+	// 客户门店编码
+	ShopCode *string `json:"ShopCode" name:"ShopCode"`
+	// 备注说明; 30个字符以内
+	Remark *string `json:"Remark" name:"Remark"`
+}
+
+func (r *CreateAccountRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateAccountRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateAccountResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		RequestId *string `json:"RequestId" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateAccountResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateAccountResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateFacePictureRequest struct {
+	*tchttp.BaseRequest
+	// 集团ID
+	CompanyId *string `json:"CompanyId" name:"CompanyId"`
+	// 店铺ID
+	ShopId *int64 `json:"ShopId" name:"ShopId"`
+	// 人物类型（0表示普通顾客，1 白名单，2 表示黑名单）
+	PersonType *int64 `json:"PersonType" name:"PersonType"`
+	// 图片BASE编码
+	Picture *string `json:"Picture" name:"Picture"`
+	// 图片名称
+	PictureName *string `json:"PictureName" name:"PictureName"`
+}
+
+func (r *CreateFacePictureRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateFacePictureRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateFacePictureResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+		// 人物ID
+		PersonId *int64 `json:"PersonId" name:"PersonId"`
+		// 0.正常建档 1.重复身份 2.未检测到人脸 3.检测到多个人脸 4.人脸大小过小 5.人脸质量不达标 6.其他错误
+		Status *int64 `json:"Status" name:"Status"`
+		// 图片url
+		PictureUrl *string `json:"PictureUrl" name:"PictureUrl"`
+		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		RequestId *string `json:"RequestId" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateFacePictureResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateFacePictureResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeCameraPersonRequest struct {
 	*tchttp.BaseRequest
 	// 优mall集团id，通过"指定身份标识获取客户门店列表"接口获取
@@ -465,6 +551,358 @@ func (r *DescribeShopTrafficInfoResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeTrajectoryDataRequest struct {
+	*tchttp.BaseRequest
+	// 集团ID
+	CompanyId *string `json:"CompanyId" name:"CompanyId"`
+	// 店铺ID
+	ShopId *int64 `json:"ShopId" name:"ShopId"`
+	// 开始日期，格式yyyy-MM-dd
+	StartDate *string `json:"StartDate" name:"StartDate"`
+	// 结束日期，格式yyyy-MM-dd
+	EndDate *string `json:"EndDate" name:"EndDate"`
+	// 限制返回数据的最大条数，最大 400（负数代为 400）
+	Limit *int64 `json:"Limit" name:"Limit"`
+	// 顾客性别顾虑，0是男，1是女，其它代表不分性别
+	Gender *int64 `json:"Gender" name:"Gender"`
+}
+
+func (r *DescribeTrajectoryDataRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeTrajectoryDataRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeTrajectoryDataResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+		// 集团ID
+		CompanyId *string `json:"CompanyId" name:"CompanyId"`
+		// 店铺ID
+		ShopId *int64 `json:"ShopId" name:"ShopId"`
+		// 总人数
+		TotalPerson *int64 `json:"TotalPerson" name:"TotalPerson"`
+		// 总动迹数目
+		TotalTrajectory *int64 `json:"TotalTrajectory" name:"TotalTrajectory"`
+		// 返回动迹中的总人数
+		Person *int64 `json:"Person" name:"Person"`
+		// 返回动迹的数目
+		Trajectory *int64 `json:"Trajectory" name:"Trajectory"`
+		// 返回动迹的具体信息
+		Data []*TrajectorySunData `json:"Data" name:"Data" list`
+		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		RequestId *string `json:"RequestId" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeTrajectoryDataResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeTrajectoryDataResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeZoneFlowAgeInfoByZoneIdRequest struct {
+	*tchttp.BaseRequest
+	// 集团ID
+	CompanyId *string `json:"CompanyId" name:"CompanyId"`
+	// 店铺ID
+	ShopId *int64 `json:"ShopId" name:"ShopId"`
+	// 区域ID
+	ZoneId *int64 `json:"ZoneId" name:"ZoneId"`
+	// 开始日期，格式yyyy-MM-dd
+	StartDate *string `json:"StartDate" name:"StartDate"`
+	// 结束日期，格式yyyy-MM-dd
+	EndDate *string `json:"EndDate" name:"EndDate"`
+}
+
+func (r *DescribeZoneFlowAgeInfoByZoneIdRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeZoneFlowAgeInfoByZoneIdRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeZoneFlowAgeInfoByZoneIdResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+		// 集团ID
+		CompanyId *string `json:"CompanyId" name:"CompanyId"`
+		// 店铺ID
+		ShopId *int64 `json:"ShopId" name:"ShopId"`
+		// 区域ID
+		ZoneId *int64 `json:"ZoneId" name:"ZoneId"`
+		// 区域名称
+		ZoneName *string `json:"ZoneName" name:"ZoneName"`
+		// 当前年龄段占比
+		Data []*float64 `json:"Data" name:"Data" list`
+		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		RequestId *string `json:"RequestId" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeZoneFlowAgeInfoByZoneIdResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeZoneFlowAgeInfoByZoneIdResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeZoneFlowAndStayTimeRequest struct {
+	*tchttp.BaseRequest
+	// 集团ID
+	CompanyId *string `json:"CompanyId" name:"CompanyId"`
+	// 店铺ID
+	ShopId *int64 `json:"ShopId" name:"ShopId"`
+	// 开始日期，格式yyyy-MM-dd
+	StartDate *string `json:"StartDate" name:"StartDate"`
+	// 结束日期，格式yyyy-MM-dd
+	EndDate *string `json:"EndDate" name:"EndDate"`
+}
+
+func (r *DescribeZoneFlowAndStayTimeRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeZoneFlowAndStayTimeRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeZoneFlowAndStayTimeResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+		// 集团id
+		CompanyId *string `json:"CompanyId" name:"CompanyId"`
+		// 店铺id
+		ShopId *int64 `json:"ShopId" name:"ShopId"`
+		// 各区域人流数目和停留时长
+		Data []*ZoneFlowAndAvrStayTime `json:"Data" name:"Data" list`
+		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		RequestId *string `json:"RequestId" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeZoneFlowAndStayTimeResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeZoneFlowAndStayTimeResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeZoneFlowDailyByZoneIdRequest struct {
+	*tchttp.BaseRequest
+	// 集团ID
+	CompanyId *string `json:"CompanyId" name:"CompanyId"`
+	// 店铺ID
+	ShopId *int64 `json:"ShopId" name:"ShopId"`
+	// 区域ID
+	ZoneId *int64 `json:"ZoneId" name:"ZoneId"`
+	// 开始日期，格式yyyy-MM-dd
+	StartDate *string `json:"StartDate" name:"StartDate"`
+	// 结束日期，格式yyyy-MM-dd
+	EndDate *string `json:"EndDate" name:"EndDate"`
+}
+
+func (r *DescribeZoneFlowDailyByZoneIdRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeZoneFlowDailyByZoneIdRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeZoneFlowDailyByZoneIdResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+		// 集团id
+		CompanyId *string `json:"CompanyId" name:"CompanyId"`
+		// 店铺id
+		ShopId *int64 `json:"ShopId" name:"ShopId"`
+		// 区域ID
+		ZoneId *int64 `json:"ZoneId" name:"ZoneId"`
+		// 区域名称
+		ZoneName *string `json:"ZoneName" name:"ZoneName"`
+		// 每日人流量
+		Data []*ZoneDayFlow `json:"Data" name:"Data" list`
+		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		RequestId *string `json:"RequestId" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeZoneFlowDailyByZoneIdResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeZoneFlowDailyByZoneIdResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeZoneFlowGenderAvrStayTimeByZoneIdRequest struct {
+	*tchttp.BaseRequest
+	// 集团ID
+	CompanyId *string `json:"CompanyId" name:"CompanyId"`
+	// 店铺ID
+	ShopId *int64 `json:"ShopId" name:"ShopId"`
+	// 区域ID
+	ZoneId *int64 `json:"ZoneId" name:"ZoneId"`
+	// 开始日期，格式yyyy-MM-dd
+	StartDate *string `json:"StartDate" name:"StartDate"`
+	// 结束日期，格式yyyy-MM-dd
+	EndDate *string `json:"EndDate" name:"EndDate"`
+}
+
+func (r *DescribeZoneFlowGenderAvrStayTimeByZoneIdRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeZoneFlowGenderAvrStayTimeByZoneIdRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeZoneFlowGenderAvrStayTimeByZoneIdResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+		// 集团ID
+		CompanyId *string `json:"CompanyId" name:"CompanyId"`
+		// 店铺ID
+		ShopId *int64 `json:"ShopId" name:"ShopId"`
+		// 区域ID
+		ZoneId *int64 `json:"ZoneId" name:"ZoneId"`
+		// 区域名称
+		ZoneName *string `json:"ZoneName" name:"ZoneName"`
+		// 不同年龄段男女停留时间（返回格式为数组，从第 1 个到最后一个数据，年龄段分别为 0-17，18 - 23,  24 - 30, 31 - 40, 41 - 50, 51 - 60, 61 - 100）
+		Data []*ZoneAgeGroupAvrStayTime `json:"Data" name:"Data" list`
+		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		RequestId *string `json:"RequestId" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeZoneFlowGenderAvrStayTimeByZoneIdResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeZoneFlowGenderAvrStayTimeByZoneIdResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeZoneFlowGenderInfoByZoneIdRequest struct {
+	*tchttp.BaseRequest
+	// 集团ID
+	CompanyId *string `json:"CompanyId" name:"CompanyId"`
+	// 店铺ID
+	ShopId *int64 `json:"ShopId" name:"ShopId"`
+	// 区域ID
+	ZoneId *int64 `json:"ZoneId" name:"ZoneId"`
+	// 开始日期，格式yyyy-MM-dd
+	StartDate *string `json:"StartDate" name:"StartDate"`
+	// 结束日期，格式yyyy-MM-dd
+	EndDate *string `json:"EndDate" name:"EndDate"`
+}
+
+func (r *DescribeZoneFlowGenderInfoByZoneIdRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeZoneFlowGenderInfoByZoneIdRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeZoneFlowGenderInfoByZoneIdResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+		// 集团ID
+		CompanyId *string `json:"CompanyId" name:"CompanyId"`
+		// 店铺ID
+		ShopId *int64 `json:"ShopId" name:"ShopId"`
+		// 区域ID
+		ZoneId *int64 `json:"ZoneId" name:"ZoneId"`
+		// 区域名称
+		ZoneName *string `json:"ZoneName" name:"ZoneName"`
+		// 男性占比
+		MalePercent *float64 `json:"MalePercent" name:"MalePercent"`
+		// 女性占比
+		FemalePercent *float64 `json:"FemalePercent" name:"FemalePercent"`
+		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		RequestId *string `json:"RequestId" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeZoneFlowGenderInfoByZoneIdResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeZoneFlowGenderInfoByZoneIdResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeZoneFlowHourlyByZoneIdRequest struct {
+	*tchttp.BaseRequest
+	// 集团ID
+	CompanyId *string `json:"CompanyId" name:"CompanyId"`
+	// 店铺ID
+	ShopId *int64 `json:"ShopId" name:"ShopId"`
+	// 区域ID
+	ZoneId *int64 `json:"ZoneId" name:"ZoneId"`
+	// 开始日期，格式yyyy-MM-dd
+	StartDate *string `json:"StartDate" name:"StartDate"`
+	// 结束日期，格式yyyy-MM-dd
+	EndDate *string `json:"EndDate" name:"EndDate"`
+}
+
+func (r *DescribeZoneFlowHourlyByZoneIdRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeZoneFlowHourlyByZoneIdRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeZoneFlowHourlyByZoneIdResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+		// 集团ID
+		CompanyId *string `json:"CompanyId" name:"CompanyId"`
+		// 店铺ID
+		ShopId *int64 `json:"ShopId" name:"ShopId"`
+		// 区域ID
+		ZoneId *int64 `json:"ZoneId" name:"ZoneId"`
+		// 区域名称
+		ZoneName *string `json:"ZoneName" name:"ZoneName"`
+		// 各个分时人流量
+		Data []*ZoneHourFlow `json:"Data" name:"Data" list`
+		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		RequestId *string `json:"RequestId" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeZoneFlowHourlyByZoneIdResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeZoneFlowHourlyByZoneIdResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeZoneTrafficInfoRequest struct {
 	*tchttp.BaseRequest
 	// 公司ID
@@ -567,24 +1005,7 @@ func (r *ModifyPersonTagInfoResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
-type NetworkHistoryInfo struct {
-	// 总数
-	Count *int64 `json:"Count" name:"Count"`
-	// 集团id
-	CompanyId *string `json:"CompanyId" name:"CompanyId"`
-	// 店铺id
-	ShopId *int64 `json:"ShopId" name:"ShopId"`
-	// 店铺省份
-	Province *string `json:"Province" name:"Province"`
-	// 店铺城市
-	City *string `json:"City" name:"City"`
-	// 店铺名称
-	ShopName *string `json:"ShopName" name:"ShopName"`
-	// 网络信息
-	Infos []*NetworkInfoNoShop `json:"Infos" name:"Infos" list`
-}
-
-type NetworkInfo struct {
+type NetworkAndShopInfo struct {
 	// 集团id
 	CompanyId *string `json:"CompanyId" name:"CompanyId"`
 	// 店铺id
@@ -615,7 +1036,24 @@ type NetworkInfo struct {
 	Mac *string `json:"Mac" name:"Mac"`
 }
 
-type NetworkInfoNoShop struct {
+type NetworkHistoryInfo struct {
+	// 总数
+	Count *int64 `json:"Count" name:"Count"`
+	// 集团id
+	CompanyId *string `json:"CompanyId" name:"CompanyId"`
+	// 店铺id
+	ShopId *int64 `json:"ShopId" name:"ShopId"`
+	// 店铺省份
+	Province *string `json:"Province" name:"Province"`
+	// 店铺城市
+	City *string `json:"City" name:"City"`
+	// 店铺名称
+	ShopName *string `json:"ShopName" name:"ShopName"`
+	// 网络信息
+	Infos []*NetworkInfo `json:"Infos" name:"Infos" list`
+}
+
+type NetworkInfo struct {
 	// 上传带宽，单位Mb/s，-1：未知
 	Upload *float64 `json:"Upload" name:"Upload"`
 	// 下载带宽，单位Mb/s，-1：未知
@@ -640,7 +1078,7 @@ type NetworkLastInfo struct {
 	// 总数
 	Count *int64 `json:"Count" name:"Count"`
 	// 网络状态
-	Infos []*NetworkInfo `json:"Infos" name:"Infos" list`
+	Infos []*NetworkAndShopInfo `json:"Infos" name:"Infos" list`
 }
 
 type PersonInfo struct {
@@ -755,6 +1193,47 @@ type ShopInfo struct {
 	City *string `json:"City" name:"City"`
 	// 公司名称
 	CompanyName *string `json:"CompanyName" name:"CompanyName"`
+}
+
+type TrajectorySunData struct {
+	// 区域动线，形如 x-x-x-x-x，其中 x 为区域 ID
+	Zones *string `json:"Zones" name:"Zones"`
+	// 该动线出现次数
+	Count *int64 `json:"Count" name:"Count"`
+	// 该动线平均停留时间（秒）
+	AvgStayTime *int64 `json:"AvgStayTime" name:"AvgStayTime"`
+}
+
+type ZoneAgeGroupAvrStayTime struct {
+	// 男性平均停留时间
+	MaleAvrStayTime *float64 `json:"MaleAvrStayTime" name:"MaleAvrStayTime"`
+	// 女性平均停留时间
+	FemaleAvrStayTime *float64 `json:"FemaleAvrStayTime" name:"FemaleAvrStayTime"`
+}
+
+type ZoneDayFlow struct {
+	// 日期，如 2018-08-6
+	Day *string `json:"Day" name:"Day"`
+	// 客流量
+	FlowCount *int64 `json:"FlowCount" name:"FlowCount"`
+}
+
+type ZoneFlowAndAvrStayTime struct {
+	// 区域id
+	ZoneId *int64 `json:"ZoneId" name:"ZoneId"`
+	// 区域名称
+	ZoneName *string `json:"ZoneName" name:"ZoneName"`
+	// 人流量
+	FlowCount *uint64 `json:"FlowCount" name:"FlowCount"`
+	// 平均停留时长
+	AvrStayTime *uint64 `json:"AvrStayTime" name:"AvrStayTime"`
+}
+
+type ZoneHourFlow struct {
+	// 分时 0~23
+	Hour *int64 `json:"Hour" name:"Hour"`
+	// 客流量
+	FlowCount *int64 `json:"FlowCount" name:"FlowCount"`
 }
 
 type ZoneTrafficInfo struct {

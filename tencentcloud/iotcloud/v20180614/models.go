@@ -634,6 +634,8 @@ type DeviceInfo struct {
 	LastUpdateTime *uint64 `json:"LastUpdateTime" name:"LastUpdateTime"`
 	// LoRa设备的dev eui
 	LoraDevEui *string `json:"LoraDevEui" name:"LoraDevEui"`
+	// LoRa设备的Mote type
+	LoraMoteType *uint64 `json:"LoraMoteType" name:"LoraMoteType"`
 }
 
 type DeviceTag struct {
@@ -650,42 +652,6 @@ type Filter struct {
 	Name *string `json:"Name" name:"Name"`
 	// 一个或者多个过滤值
 	Values []*string `json:"Values" name:"Values" list`
-}
-
-type GetDeviceShadowRequest struct {
-	*tchttp.BaseRequest
-	// 产品 ID
-	ProductID *string `json:"ProductID" name:"ProductID"`
-	// 设备名称。命名规则：[a-zA-Z0-9:_-]{1,48}
-	DeviceName *string `json:"DeviceName" name:"DeviceName"`
-}
-
-func (r *GetDeviceShadowRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-func (r *GetDeviceShadowRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
-}
-
-type GetDeviceShadowResponse struct {
-	*tchttp.BaseResponse
-	Response *struct {
-		// 设备影子数据
-		Data *string `json:"Data" name:"Data"`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
-		RequestId *string `json:"RequestId" name:"RequestId"`
-	} `json:"Response"`
-}
-
-func (r *GetDeviceShadowResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-func (r *GetDeviceShadowResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
 }
 
 type MultiDevicesInfo struct {

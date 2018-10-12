@@ -316,7 +316,7 @@ type CreateDBInstanceHourRequest struct {
 	Port *int64 `json:"Port" name:"Port"`
 	// 设置root帐号密码，密码规则：8-64个字符，至少包含字母、数字、字符（支持的字符：_+-&=!@#$%^*()）中的两种，购买主实例时可指定该参数，购买只读实例或者灾备实例时指定该参数无意义
 	Password *string `json:"Password" name:"Password"`
-	// 参数列表，参数格式如ParamList.0.Name=auto_increment&ParamList.0.Value=1。可通过[查询参数列表](/document/product/236/6369)查询支持设置的参数
+	// 参数列表，参数格式如ParamList.0.Name=auto_increment_increment&ParamList.0.Value=1。可通过[查询参数列表](/document/product/236/6369)查询支持设置的参数
 	ParamList []*ParamInfo `json:"ParamList" name:"ParamList" list`
 	// 数据复制方式，默认为0，支持值包括：0-表示异步复制，1-表示半同步复制，2-表示强同步复制，购买主实例时可指定该参数，购买只读实例或者灾备实例时指定该参数无意义
 	ProtectMode *int64 `json:"ProtectMode" name:"ProtectMode"`
@@ -326,11 +326,11 @@ type CreateDBInstanceHourRequest struct {
 	SlaveZone *string `json:"SlaveZone" name:"SlaveZone"`
 	// 备库2的可用区ID，默认为0，购买主实例时可指定该参数，购买只读实例或者灾备实例时指定该参数无意义
 	BackupZone *string `json:"BackupZone" name:"BackupZone"`
-	// 安全组参数
+	// 安全组参数，可使用[查询项目安全组信息](https://cloud.tencent.com/document/api/236/15850)接口查询某个项目的安全组详情
 	SecurityGroup []*string `json:"SecurityGroup" name:"SecurityGroup" list`
 	// 只读实例信息
 	RoGroup *RoGroup `json:"RoGroup" name:"RoGroup"`
-	// 自动续费标记，值为0或1
+	// 自动续费标记，值为0或1。购买按量计费实例该字段无意义
 	AutoRenewFlag *int64 `json:"AutoRenewFlag" name:"AutoRenewFlag"`
 	// 实例名称
 	InstanceName *string `json:"InstanceName" name:"InstanceName"`
@@ -408,7 +408,7 @@ type CreateDBInstanceRequest struct {
 	AutoRenewFlag *int64 `json:"AutoRenewFlag" name:"AutoRenewFlag"`
 	// 主实例地域信息，购买灾备实例时，该字段必填
 	MasterRegion *string `json:"MasterRegion" name:"MasterRegion"`
-	// 安全组参数
+	// 安全组参数，可使用[查询项目安全组信息](https://cloud.tencent.com/document/api/236/15850)接口查询某个项目的安全组详情
 	SecurityGroup []*string `json:"SecurityGroup" name:"SecurityGroup" list`
 	// 只读实例参数
 	RoGroup *RoGroup `json:"RoGroup" name:"RoGroup"`
@@ -616,6 +616,42 @@ func (r *DescribeAccountsResponse) ToJsonString() string {
 }
 
 func (r *DescribeAccountsResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeAsyncRequestInfoRequest struct {
+	*tchttp.BaseRequest
+	// 异步任务的请求ID。
+	AsyncRequestId *string `json:"AsyncRequestId" name:"AsyncRequestId"`
+}
+
+func (r *DescribeAsyncRequestInfoRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeAsyncRequestInfoRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeAsyncRequestInfoResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+		// 任务执行结果。可能的取值：INITIAL - 初始化，RUNNING - 运行中，SUCCESS - 执行成功，FAILED - 执行失败，KILLED - 已终止，REMOVED - 已删除，PAUSED - 终止中。
+		Status *string `json:"Status" name:"Status"`
+		// 任务执行信息描述。
+		Info *string `json:"Info" name:"Info"`
+		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		RequestId *string `json:"RequestId" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeAsyncRequestInfoResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeAsyncRequestInfoResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -1057,9 +1093,9 @@ type DescribeDBInstancesRequest struct {
 	OrderBy *string `json:"OrderBy" name:"OrderBy"`
 	// 排序方式，目前支持："ASC"或者"DESC"
 	OrderDirection *string `json:"OrderDirection" name:"OrderDirection"`
-	// 是否包含安全组信息
+	// 是否包含安全组信息，可取值：0-不包含，1-包含
 	WithSecurityGroup *int64 `json:"WithSecurityGroup" name:"WithSecurityGroup"`
-	// 是否包含独享集群信息
+	// 是否包含独享集群信息，可取值：0-不包含，1-包含
 	WithExCluster *int64 `json:"WithExCluster" name:"WithExCluster"`
 	// 独享集群ID
 	ExClusterId *string `json:"ExClusterId" name:"ExClusterId"`
@@ -1067,11 +1103,11 @@ type DescribeDBInstancesRequest struct {
 	InstanceIds []*string `json:"InstanceIds" name:"InstanceIds" list`
 	// 初始化标记，可取值：0-未初始化，1-初始化
 	InitFlag *int64 `json:"InitFlag" name:"InitFlag"`
-	// 是否包含灾备实例
+	// 是否包含灾备实例，可取值：0-不包含，1-包含
 	WithDr *int64 `json:"WithDr" name:"WithDr"`
-	// 是否包含只读实例
+	// 是否包含只读实例，可取值：0-不包含，1-包含
 	WithRo *int64 `json:"WithRo" name:"WithRo"`
-	// 是否包含主实例
+	// 是否包含主实例，可取值：0-不包含，1-包含
 	WithMaster *int64 `json:"WithMaster" name:"WithMaster"`
 }
 
@@ -1302,6 +1338,42 @@ func (r *DescribeDatabasesResponse) ToJsonString() string {
 }
 
 func (r *DescribeDatabasesResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeInstanceParamsRequest struct {
+	*tchttp.BaseRequest
+	// 实例ID，格式如：cdb-c1nl9rpv，与云数据库控制台页面中显示的实例ID相同，可使用[查询实例列表](https://cloud.tencent.com/document/api/236/15872) 接口获取，其值为输出参数中字段 InstanceId 的值
+	InstanceId *string `json:"InstanceId" name:"InstanceId"`
+}
+
+func (r *DescribeInstanceParamsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeInstanceParamsRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeInstanceParamsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+		// 实例的参数总数
+		TotalCount *int64 `json:"TotalCount" name:"TotalCount"`
+		// 参数详情
+		Items []*ParameterDetail `json:"Items" name:"Items" list`
+		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		RequestId *string `json:"RequestId" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeInstanceParamsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeInstanceParamsResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -2280,6 +2352,27 @@ type Parameter struct {
 	Name *string `json:"Name" name:"Name"`
 	// 参数值
 	CurrentValue *string `json:"CurrentValue" name:"CurrentValue"`
+}
+
+type ParameterDetail struct {
+	// 参数名称
+	Name *string `json:"Name" name:"Name"`
+	// 参数类型
+	ParamType *string `json:"ParamType" name:"ParamType"`
+	// 参数默认值
+	Default *string `json:"Default" name:"Default"`
+	// 参数描述
+	Description *string `json:"Description" name:"Description"`
+	// 参数当前值
+	CurrentValue *string `json:"CurrentValue" name:"CurrentValue"`
+	// 修改参数后，是否需要重启数据库以使参数生效。可能的值包括：0-不需要重启；1-需要重启
+	NeedReboot *int64 `json:"NeedReboot" name:"NeedReboot"`
+	// 参数允许的最大值
+	Max *int64 `json:"Max" name:"Max"`
+	// 参数允许的最小值
+	Min *int64 `json:"Min" name:"Min"`
+	// 参数的可选枚举值。如果为非枚举参数，则为空
+	EnumValue []*string `json:"EnumValue" name:"EnumValue" list`
 }
 
 type RegionSellConf struct {

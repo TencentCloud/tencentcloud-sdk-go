@@ -392,31 +392,6 @@ func (c *Client) DescribeTasks(request *DescribeTasksRequest) (response *Describ
     return
 }
 
-func NewGetDeviceShadowRequest() (request *GetDeviceShadowRequest) {
-    request = &GetDeviceShadowRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    request.Init().WithApiInfo("iotcloud", APIVersion, "GetDeviceShadow")
-    return
-}
-
-func NewGetDeviceShadowResponse() (response *GetDeviceShadowResponse) {
-    response = &GetDeviceShadowResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    }
-    return
-}
-
-// 本接口（GetDeviceShadow）用于查询虚拟设备信息。
-func (c *Client) GetDeviceShadow(request *GetDeviceShadowRequest) (response *GetDeviceShadowResponse, err error) {
-    if request == nil {
-        request = NewGetDeviceShadowRequest()
-    }
-    response = NewGetDeviceShadowResponse()
-    err = c.Send(request, response)
-    return
-}
-
 func NewPublishMessageRequest() (request *PublishMessageRequest) {
     request = &PublishMessageRequest{
         BaseRequest: &tchttp.BaseRequest{},
