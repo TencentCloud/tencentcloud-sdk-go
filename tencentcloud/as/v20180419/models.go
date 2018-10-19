@@ -40,7 +40,7 @@ func (r *AttachInstancesRequest) FromJsonString(s string) error {
 type AttachInstancesResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -148,7 +148,7 @@ type CreateAutoScalingGroupResponse struct {
 	Response *struct {
 		// 伸缩组ID
 		AutoScalingGroupId *string `json:"AutoScalingGroupId" name:"AutoScalingGroupId"`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -186,6 +186,12 @@ type CreateLaunchConfigurationRequest struct {
 	EnhancedService *EnhancedService `json:"EnhancedService" name:"EnhancedService"`
 	// 经过 Base64 编码后的自定义数据，最大长度不超过16KB。
 	UserData *string `json:"UserData" name:"UserData"`
+	// 实例计费类型，CVM默认值按照POSTPAID_BY_HOUR处理。
+	// <br><li>POSTPAID_BY_HOUR：按小时后付费
+	// <br><li>SPOTPAID：竞价付费
+	InstanceChargeType *string `json:"InstanceChargeType" name:"InstanceChargeType"`
+	// 实例的市场相关选项，如竞价实例相关参数，若指定实例的付费模式为竞价付费则该参数必传。
+	InstanceMarketOptions *InstanceMarketOptionsRequest `json:"InstanceMarketOptions" name:"InstanceMarketOptions"`
 }
 
 func (r *CreateLaunchConfigurationRequest) ToJsonString() string {
@@ -202,7 +208,7 @@ type CreateLaunchConfigurationResponse struct {
 	Response *struct {
 		// 当通过本接口来创建启动配置时会返回该参数，表示启动配置ID。
 		LaunchConfigurationId *string `json:"LaunchConfigurationId" name:"LaunchConfigurationId"`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -250,7 +256,7 @@ type CreateScheduledActionResponse struct {
 	Response *struct {
 		// 定时任务ID
 		ScheduledActionId *string `json:"ScheduledActionId" name:"ScheduledActionId"`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -289,7 +295,7 @@ func (r *DeleteAutoScalingGroupRequest) FromJsonString(s string) error {
 type DeleteAutoScalingGroupResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -321,7 +327,7 @@ func (r *DeleteLaunchConfigurationRequest) FromJsonString(s string) error {
 type DeleteLaunchConfigurationResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -353,7 +359,7 @@ func (r *DeleteScheduledActionRequest) FromJsonString(s string) error {
 type DeleteScheduledActionResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -391,7 +397,7 @@ type DescribeAccountLimitsResponse struct {
 		MaxNumberOfAutoScalingGroups *int64 `json:"MaxNumberOfAutoScalingGroups" name:"MaxNumberOfAutoScalingGroups"`
 		// 用户账户伸缩组的当前数量
 		NumberOfAutoScalingGroups *int64 `json:"NumberOfAutoScalingGroups" name:"NumberOfAutoScalingGroups"`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -437,7 +443,7 @@ type DescribeAutoScalingGroupsResponse struct {
 		AutoScalingGroupSet []*AutoScalingGroup `json:"AutoScalingGroupSet" name:"AutoScalingGroupSet" list`
 		// 符合条件的伸缩组数量。
 		TotalCount *uint64 `json:"TotalCount" name:"TotalCount"`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -482,7 +488,7 @@ type DescribeAutoScalingInstancesResponse struct {
 		AutoScalingInstanceSet []*Instance `json:"AutoScalingInstanceSet" name:"AutoScalingInstanceSet" list`
 		// 符合条件的实例数量。
 		TotalCount *uint64 `json:"TotalCount" name:"TotalCount"`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -527,7 +533,7 @@ type DescribeLaunchConfigurationsResponse struct {
 		TotalCount *uint64 `json:"TotalCount" name:"TotalCount"`
 		// 启动配置详细信息列表。
 		LaunchConfigurationSet []*LaunchConfiguration `json:"LaunchConfigurationSet" name:"LaunchConfigurationSet" list`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -572,7 +578,7 @@ type DescribeScheduledActionsResponse struct {
 		TotalCount *uint64 `json:"TotalCount" name:"TotalCount"`
 		// 定时任务详细信息列表。
 		ScheduledActionSet []*ScheduledAction `json:"ScheduledActionSet" name:"ScheduledActionSet" list`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -606,7 +612,7 @@ func (r *DetachInstancesRequest) FromJsonString(s string) error {
 type DetachInstancesResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -638,7 +644,7 @@ func (r *DisableAutoScalingGroupRequest) FromJsonString(s string) error {
 type DisableAutoScalingGroupResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -670,7 +676,7 @@ func (r *EnableAutoScalingGroupRequest) FromJsonString(s string) error {
 type EnableAutoScalingGroupResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -727,9 +733,26 @@ type Instance struct {
 	// 可用区
 	Zone *string `json:"Zone" name:"Zone"`
 	// 创建类型，取值包括AUTO_CREATION, MANUAL_ATTACHING。
-	CreationType []*string `json:"CreationType" name:"CreationType" list`
+	CreationType *string `json:"CreationType" name:"CreationType"`
 	// 实例加入时间
 	AddTime *string `json:"AddTime" name:"AddTime"`
+}
+
+type InstanceMarketOptionsRequest struct {
+	*tchttp.BaseRequest
+	// 竞价相关选项
+	SpotOptions *SpotMarketOptions `json:"SpotOptions" name:"SpotOptions"`
+	// 市场选项类型，当前只支持取值：spot
+	MarketType *string `json:"MarketType" name:"MarketType"`
+}
+
+func (r *InstanceMarketOptionsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *InstanceMarketOptionsRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
 }
 
 type InternetAccessible struct {
@@ -772,6 +795,12 @@ type LaunchConfiguration struct {
 	ImageId *string `json:"ImageId" name:"ImageId"`
 	// 启动配置当前状态。取值范围：<br><li>NORMAL：正常<br><li>IMAGE_ABNORMAL：启动配置镜像异常<br><li>CBS_SNAP_ABNORMAL：启动配置数据盘快照异常<br><li>SECURITY_GROUP_ABNORMAL：启动配置安全组异常<br>
 	LaunchConfigurationStatus *string `json:"LaunchConfigurationStatus" name:"LaunchConfigurationStatus"`
+	// 实例计费类型，CVM默认值按照POSTPAID_BY_HOUR处理。
+	// <br><li>POSTPAID_BY_HOUR：按小时后付费
+	// <br><li>SPOTPAID：竞价付费
+	InstanceChargeType *string `json:"InstanceChargeType" name:"InstanceChargeType"`
+	// 实例的市场相关选项，如竞价实例相关参数，若指定实例的付费模式为竞价付费则该参数必传。
+	InstanceMarketOptions *InstanceMarketOptionsRequest `json:"InstanceMarketOptions" name:"InstanceMarketOptions"`
 }
 
 type LimitedLoginSettings struct {
@@ -828,7 +857,7 @@ func (r *ModifyAutoScalingGroupRequest) FromJsonString(s string) error {
 type ModifyAutoScalingGroupResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -862,7 +891,7 @@ func (r *ModifyDesiredCapacityRequest) FromJsonString(s string) error {
 type ModifyDesiredCapacityResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -908,7 +937,7 @@ func (r *ModifyScheduledActionRequest) FromJsonString(s string) error {
 type ModifyScheduledActionResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -942,7 +971,7 @@ func (r *RemoveInstancesRequest) FromJsonString(s string) error {
 type RemoveInstancesResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -987,6 +1016,13 @@ type ScheduledAction struct {
 	MinSize *uint64 `json:"MinSize" name:"MinSize"`
 	// 定时任务的创建时间。取值为`UTC`时间，按照`ISO8601`标准，格式：`YYYY-MM-DDThh:mm:ssZ`。
 	CreatedTime *string `json:"CreatedTime" name:"CreatedTime"`
+}
+
+type SpotMarketOptions struct {
+	// 竞价出价，例如“1.05”
+	MaxPrice *string `json:"MaxPrice" name:"MaxPrice"`
+	// 竞价请求类型，当前仅支持类型：one-time，默认值为one-time
+	SpotInstanceType *string `json:"SpotInstanceType" name:"SpotInstanceType"`
 }
 
 type SystemDisk struct {

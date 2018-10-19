@@ -167,31 +167,6 @@ func (c *Client) AddTopic(request *AddTopicRequest) (response *AddTopicResponse,
     return
 }
 
-func NewAddUserRequest() (request *AddUserRequest) {
-    request = &AddUserRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    request.Init().WithApiInfo("iot", APIVersion, "AddUser")
-    return
-}
-
-func NewAddUserResponse() (response *AddUserResponse) {
-    response = &AddUserResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    }
-    return
-}
-
-// 注册用户
-func (c *Client) AddUser(request *AddUserRequest) (response *AddUserResponse, err error) {
-    if request == nil {
-        request = NewAddUserRequest()
-    }
-    response = NewAddUserResponse()
-    err = c.Send(request, response)
-    return
-}
-
 func NewAppAddUserRequest() (request *AppAddUserRequest) {
     request = &AppAddUserRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -207,12 +182,337 @@ func NewAppAddUserResponse() (response *AppAddUserResponse) {
     return
 }
 
-// 注册应用用户
+// 为APP提供用户注册功能
 func (c *Client) AppAddUser(request *AppAddUserRequest) (response *AppAddUserResponse, err error) {
     if request == nil {
         request = NewAppAddUserRequest()
     }
     response = NewAppAddUserResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewAppDeleteDeviceRequest() (request *AppDeleteDeviceRequest) {
+    request = &AppDeleteDeviceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iot", APIVersion, "AppDeleteDevice")
+    return
+}
+
+func NewAppDeleteDeviceResponse() (response *AppDeleteDeviceResponse) {
+    response = &AppDeleteDeviceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 用户解除与设备的关联关系，解除后APP用户无法控制设备，获取设备数据
+func (c *Client) AppDeleteDevice(request *AppDeleteDeviceRequest) (response *AppDeleteDeviceResponse, err error) {
+    if request == nil {
+        request = NewAppDeleteDeviceRequest()
+    }
+    response = NewAppDeleteDeviceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewAppGetDeviceRequest() (request *AppGetDeviceRequest) {
+    request = &AppGetDeviceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iot", APIVersion, "AppGetDevice")
+    return
+}
+
+func NewAppGetDeviceResponse() (response *AppGetDeviceResponse) {
+    response = &AppGetDeviceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 获取绑定设备的基本信息与数据模板定义
+func (c *Client) AppGetDevice(request *AppGetDeviceRequest) (response *AppGetDeviceResponse, err error) {
+    if request == nil {
+        request = NewAppGetDeviceRequest()
+    }
+    response = NewAppGetDeviceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewAppGetDeviceDataRequest() (request *AppGetDeviceDataRequest) {
+    request = &AppGetDeviceDataRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iot", APIVersion, "AppGetDeviceData")
+    return
+}
+
+func NewAppGetDeviceDataResponse() (response *AppGetDeviceDataResponse) {
+    response = &AppGetDeviceDataResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 获取绑定设备数据，用于实时展示设备的最新数据
+func (c *Client) AppGetDeviceData(request *AppGetDeviceDataRequest) (response *AppGetDeviceDataResponse, err error) {
+    if request == nil {
+        request = NewAppGetDeviceDataRequest()
+    }
+    response = NewAppGetDeviceDataResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewAppGetDeviceStatusesRequest() (request *AppGetDeviceStatusesRequest) {
+    request = &AppGetDeviceStatusesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iot", APIVersion, "AppGetDeviceStatuses")
+    return
+}
+
+func NewAppGetDeviceStatusesResponse() (response *AppGetDeviceStatusesResponse) {
+    response = &AppGetDeviceStatusesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 获取绑定设备的上下线状态
+func (c *Client) AppGetDeviceStatuses(request *AppGetDeviceStatusesRequest) (response *AppGetDeviceStatusesResponse, err error) {
+    if request == nil {
+        request = NewAppGetDeviceStatusesRequest()
+    }
+    response = NewAppGetDeviceStatusesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewAppGetDevicesRequest() (request *AppGetDevicesRequest) {
+    request = &AppGetDevicesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iot", APIVersion, "AppGetDevices")
+    return
+}
+
+func NewAppGetDevicesResponse() (response *AppGetDevicesResponse) {
+    response = &AppGetDevicesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 获取用户的绑定设备列表
+func (c *Client) AppGetDevices(request *AppGetDevicesRequest) (response *AppGetDevicesResponse, err error) {
+    if request == nil {
+        request = NewAppGetDevicesRequest()
+    }
+    response = NewAppGetDevicesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewAppGetTokenRequest() (request *AppGetTokenRequest) {
+    request = &AppGetTokenRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iot", APIVersion, "AppGetToken")
+    return
+}
+
+func NewAppGetTokenResponse() (response *AppGetTokenResponse) {
+    response = &AppGetTokenResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 获取用户token
+func (c *Client) AppGetToken(request *AppGetTokenRequest) (response *AppGetTokenResponse, err error) {
+    if request == nil {
+        request = NewAppGetTokenRequest()
+    }
+    response = NewAppGetTokenResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewAppGetUserRequest() (request *AppGetUserRequest) {
+    request = &AppGetUserRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iot", APIVersion, "AppGetUser")
+    return
+}
+
+func NewAppGetUserResponse() (response *AppGetUserResponse) {
+    response = &AppGetUserResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 获取用户信息
+func (c *Client) AppGetUser(request *AppGetUserRequest) (response *AppGetUserResponse, err error) {
+    if request == nil {
+        request = NewAppGetUserRequest()
+    }
+    response = NewAppGetUserResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewAppIssueDeviceControlRequest() (request *AppIssueDeviceControlRequest) {
+    request = &AppIssueDeviceControlRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iot", APIVersion, "AppIssueDeviceControl")
+    return
+}
+
+func NewAppIssueDeviceControlResponse() (response *AppIssueDeviceControlResponse) {
+    response = &AppIssueDeviceControlResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 用户通过APP控制设备
+func (c *Client) AppIssueDeviceControl(request *AppIssueDeviceControlRequest) (response *AppIssueDeviceControlResponse, err error) {
+    if request == nil {
+        request = NewAppIssueDeviceControlRequest()
+    }
+    response = NewAppIssueDeviceControlResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewAppResetPasswordRequest() (request *AppResetPasswordRequest) {
+    request = &AppResetPasswordRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iot", APIVersion, "AppResetPassword")
+    return
+}
+
+func NewAppResetPasswordResponse() (response *AppResetPasswordResponse) {
+    response = &AppResetPasswordResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 重置APP用户密码
+func (c *Client) AppResetPassword(request *AppResetPasswordRequest) (response *AppResetPasswordResponse, err error) {
+    if request == nil {
+        request = NewAppResetPasswordRequest()
+    }
+    response = NewAppResetPasswordResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewAppSecureAddDeviceRequest() (request *AppSecureAddDeviceRequest) {
+    request = &AppSecureAddDeviceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iot", APIVersion, "AppSecureAddDevice")
+    return
+}
+
+func NewAppSecureAddDeviceResponse() (response *AppSecureAddDeviceResponse) {
+    response = &AppSecureAddDeviceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 用户绑定设备，绑定后可以在APP端进行控制。绑定设备前需调用“获取设备绑定签名”接口
+func (c *Client) AppSecureAddDevice(request *AppSecureAddDeviceRequest) (response *AppSecureAddDeviceResponse, err error) {
+    if request == nil {
+        request = NewAppSecureAddDeviceRequest()
+    }
+    response = NewAppSecureAddDeviceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewAppUpdateDeviceRequest() (request *AppUpdateDeviceRequest) {
+    request = &AppUpdateDeviceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iot", APIVersion, "AppUpdateDevice")
+    return
+}
+
+func NewAppUpdateDeviceResponse() (response *AppUpdateDeviceResponse) {
+    response = &AppUpdateDeviceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 修改设备别名，便于用户个性化定义设备的名称
+func (c *Client) AppUpdateDevice(request *AppUpdateDeviceRequest) (response *AppUpdateDeviceResponse, err error) {
+    if request == nil {
+        request = NewAppUpdateDeviceRequest()
+    }
+    response = NewAppUpdateDeviceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewAppUpdateUserRequest() (request *AppUpdateUserRequest) {
+    request = &AppUpdateUserRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iot", APIVersion, "AppUpdateUser")
+    return
+}
+
+func NewAppUpdateUserResponse() (response *AppUpdateUserResponse) {
+    response = &AppUpdateUserResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 修改用户信息
+func (c *Client) AppUpdateUser(request *AppUpdateUserRequest) (response *AppUpdateUserResponse, err error) {
+    if request == nil {
+        request = NewAppUpdateUserRequest()
+    }
+    response = NewAppUpdateUserResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewAssociateSubDeviceToGatewayProductRequest() (request *AssociateSubDeviceToGatewayProductRequest) {
+    request = &AssociateSubDeviceToGatewayProductRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iot", APIVersion, "AssociateSubDeviceToGatewayProduct")
+    return
+}
+
+func NewAssociateSubDeviceToGatewayProductResponse() (response *AssociateSubDeviceToGatewayProductResponse) {
+    response = &AssociateSubDeviceToGatewayProductResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 关联子设备产品和网关产品
+func (c *Client) AssociateSubDeviceToGatewayProduct(request *AssociateSubDeviceToGatewayProductRequest) (response *AssociateSubDeviceToGatewayProductResponse, err error) {
+    if request == nil {
+        request = NewAssociateSubDeviceToGatewayProductRequest()
+    }
+    response = NewAssociateSubDeviceToGatewayProductResponse()
     err = c.Send(request, response)
     return
 }
@@ -357,12 +657,37 @@ func NewGetDataHistoryResponse() (response *GetDataHistoryResponse) {
     return
 }
 
-// 批量获取设备某一段时间范围的设备上报数据。该接口只允许使用数据模板类型的产品通过REST API方式同步设备上报数据至用户的应用系统。
+// 批量获取设备某一段时间范围的设备上报数据。该接口适用于使用高级版类型的产品
 func (c *Client) GetDataHistory(request *GetDataHistoryRequest) (response *GetDataHistoryResponse, err error) {
     if request == nil {
         request = NewGetDataHistoryRequest()
     }
     response = NewGetDataHistoryResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewGetDebugLogRequest() (request *GetDebugLogRequest) {
+    request = &GetDebugLogRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iot", APIVersion, "GetDebugLog")
+    return
+}
+
+func NewGetDebugLogResponse() (response *GetDebugLogResponse) {
+    response = &GetDebugLogResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 获取设备的调试日志，用于定位问题
+func (c *Client) GetDebugLog(request *GetDebugLogRequest) (response *GetDebugLogResponse, err error) {
+    if request == nil {
+        request = NewGetDebugLogRequest()
+    }
+    response = NewGetDebugLogResponse()
     err = c.Send(request, response)
     return
 }
@@ -432,12 +757,62 @@ func NewGetDeviceLogResponse() (response *GetDeviceLogResponse) {
     return
 }
 
-// 批量获取设备与云端的详细通信日志，该接口适用于使用数据模板类型的产品。
+// 批量获取设备与云端的详细通信日志，该接口适用于使用高级版类型的产品。
 func (c *Client) GetDeviceLog(request *GetDeviceLogRequest) (response *GetDeviceLogResponse, err error) {
     if request == nil {
         request = NewGetDeviceLogRequest()
     }
     response = NewGetDeviceLogResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewGetDeviceSignaturesRequest() (request *GetDeviceSignaturesRequest) {
+    request = &GetDeviceSignaturesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iot", APIVersion, "GetDeviceSignatures")
+    return
+}
+
+func NewGetDeviceSignaturesResponse() (response *GetDeviceSignaturesResponse) {
+    response = &GetDeviceSignaturesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 获取设备绑定签名，用于用户绑定某个设备的应用场景
+func (c *Client) GetDeviceSignatures(request *GetDeviceSignaturesRequest) (response *GetDeviceSignaturesResponse, err error) {
+    if request == nil {
+        request = NewGetDeviceSignaturesRequest()
+    }
+    response = NewGetDeviceSignaturesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewGetDeviceStatisticsRequest() (request *GetDeviceStatisticsRequest) {
+    request = &GetDeviceStatisticsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iot", APIVersion, "GetDeviceStatistics")
+    return
+}
+
+func NewGetDeviceStatisticsResponse() (response *GetDeviceStatisticsResponse) {
+    response = &GetDeviceStatisticsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询某段时间范围内产品的在线、激活设备数
+func (c *Client) GetDeviceStatistics(request *GetDeviceStatisticsRequest) (response *GetDeviceStatisticsResponse, err error) {
+    if request == nil {
+        request = NewGetDeviceStatisticsRequest()
+    }
+    response = NewGetDeviceStatisticsResponse()
     err = c.Send(request, response)
     return
 }
@@ -642,31 +1017,6 @@ func (c *Client) GetTopics(request *GetTopicsRequest) (response *GetTopicsRespon
     return
 }
 
-func NewGetUserRequest() (request *GetUserRequest) {
-    request = &GetUserRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    request.Init().WithApiInfo("iot", APIVersion, "GetUser")
-    return
-}
-
-func NewGetUserResponse() (response *GetUserResponse) {
-    response = &GetUserResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    }
-    return
-}
-
-// 获取用户信息
-func (c *Client) GetUser(request *GetUserRequest) (response *GetUserResponse, err error) {
-    if request == nil {
-        request = NewGetUserRequest()
-    }
-    response = NewGetUserResponse()
-    err = c.Send(request, response)
-    return
-}
-
 func NewIssueDeviceControlRequest() (request *IssueDeviceControlRequest) {
     request = &IssueDeviceControlRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -682,7 +1032,7 @@ func NewIssueDeviceControlResponse() (response *IssueDeviceControlResponse) {
     return
 }
 
-// 提供下发控制指令到指定设备的能力，该接口适用于使用数据模板类型的产品。
+// 提供下发控制指令到指定设备的能力，该接口适用于使用高级版类型的产品。
 func (c *Client) IssueDeviceControl(request *IssueDeviceControlRequest) (response *IssueDeviceControlResponse, err error) {
     if request == nil {
         request = NewIssueDeviceControlRequest()
@@ -707,7 +1057,7 @@ func NewPublishMsgResponse() (response *PublishMsgResponse) {
     return
 }
 
-// 提供向指定的Topic发布消息的能力，常用于向设备下发控制指令；该接口只适用于数据协议为“自定义”类型的产品，使用数据模板类型的产品需使用IssueDeviceControl接口
+// 提供向指定的Topic发布消息的能力，常用于向设备下发控制指令。该接口只适用于产品版本为“基础版”类型的产品，使用高级版的产品需使用“下发设备控制指令”接口
 func (c *Client) PublishMsg(request *PublishMsgRequest) (response *PublishMsgResponse, err error) {
     if request == nil {
         request = NewPublishMsgRequest()
@@ -738,6 +1088,31 @@ func (c *Client) ResetDevice(request *ResetDeviceRequest) (response *ResetDevice
         request = NewResetDeviceRequest()
     }
     response = NewResetDeviceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewUnassociateSubDeviceFromGatewayProductRequest() (request *UnassociateSubDeviceFromGatewayProductRequest) {
+    request = &UnassociateSubDeviceFromGatewayProductRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iot", APIVersion, "UnassociateSubDeviceFromGatewayProduct")
+    return
+}
+
+func NewUnassociateSubDeviceFromGatewayProductResponse() (response *UnassociateSubDeviceFromGatewayProductResponse) {
+    response = &UnassociateSubDeviceFromGatewayProductResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 取消子设备产品与网关设备产品的关联
+func (c *Client) UnassociateSubDeviceFromGatewayProduct(request *UnassociateSubDeviceFromGatewayProductRequest) (response *UnassociateSubDeviceFromGatewayProductResponse, err error) {
+    if request == nil {
+        request = NewUnassociateSubDeviceFromGatewayProductRequest()
+    }
+    response = NewUnassociateSubDeviceFromGatewayProductResponse()
     err = c.Send(request, response)
     return
 }

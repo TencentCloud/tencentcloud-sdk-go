@@ -185,7 +185,7 @@ type CreateComputeEnvResponse struct {
 	Response *struct {
 		// 计算环境ID
 		EnvId *string `json:"EnvId" name:"EnvId"`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -223,7 +223,7 @@ type CreateTaskTemplateResponse struct {
 	Response *struct {
 		// 任务模板ID
 		TaskTemplateId *string `json:"TaskTemplateId" name:"TaskTemplateId"`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -270,7 +270,7 @@ func (r *DeleteComputeEnvRequest) FromJsonString(s string) error {
 type DeleteComputeEnvResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -302,7 +302,7 @@ func (r *DeleteJobRequest) FromJsonString(s string) error {
 type DeleteJobResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -334,7 +334,7 @@ func (r *DeleteTaskTemplatesRequest) FromJsonString(s string) error {
 type DeleteTaskTemplatesResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -375,7 +375,7 @@ type DescribeAvailableCvmInstanceTypesResponse struct {
 	Response *struct {
 		// 机型配置数组
 		InstanceTypeConfigSet []*InstanceTypeConfig `json:"InstanceTypeConfigSet" name:"InstanceTypeConfigSet" list`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -391,7 +391,7 @@ func (r *DescribeAvailableCvmInstanceTypesResponse) FromJsonString(s string) err
 
 type DescribeComputeEnvActivitiesRequest struct {
 	*tchttp.BaseRequest
-	// u8ba1u7b97u73afu5883ID
+	// 计算环境ID
 	EnvId *string `json:"EnvId" name:"EnvId"`
 	// 偏移量
 	Offset *int64 `json:"Offset" name:"Offset"`
@@ -417,7 +417,7 @@ type DescribeComputeEnvActivitiesResponse struct {
 		ActivitySet []*Activity `json:"ActivitySet" name:"ActivitySet" list`
 		// 活动数量
 		TotalCount *uint64 `json:"TotalCount" name:"TotalCount"`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -469,7 +469,7 @@ type DescribeComputeEnvCreateInfoResponse struct {
 		Notifications []*Notification `json:"Notifications" name:"Notifications" list`
 		// 计算节点期望个数
 		DesiredComputeNodeCount *int64 `json:"DesiredComputeNodeCount" name:"DesiredComputeNodeCount"`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -514,7 +514,7 @@ type DescribeComputeEnvCreateInfosResponse struct {
 		TotalCount *int64 `json:"TotalCount" name:"TotalCount"`
 		// 计算环境创建信息列表
 		ComputeEnvCreateInfoSet []*ComputeEnvCreateInfo `json:"ComputeEnvCreateInfoSet" name:"ComputeEnvCreateInfoSet" list`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -562,7 +562,7 @@ type DescribeComputeEnvResponse struct {
 		DesiredComputeNodeCount *uint64 `json:"DesiredComputeNodeCount" name:"DesiredComputeNodeCount"`
 		// 计算环境类型
 		EnvType *string `json:"EnvType" name:"EnvType"`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -604,7 +604,7 @@ type DescribeComputeEnvsResponse struct {
 		ComputeEnvSet []*ComputeEnvView `json:"ComputeEnvSet" name:"ComputeEnvSet" list`
 		// 计算环境数量
 		TotalCount *int64 `json:"TotalCount" name:"TotalCount"`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -638,7 +638,7 @@ type DescribeCvmZoneInstanceConfigInfosResponse struct {
 	Response *struct {
 		// 可用区机型配置列表。
 		InstanceTypeQuotaSet []*InstanceTypeQuotaItem `json:"InstanceTypeQuotaSet" name:"InstanceTypeQuotaSet" list`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -694,7 +694,7 @@ type DescribeJobResponse struct {
 		TaskInstanceMetrics *TaskInstanceView `json:"TaskInstanceMetrics" name:"TaskInstanceMetrics"`
 		// 作业失败原因
 		StateReason *string `json:"StateReason" name:"StateReason"`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -738,7 +738,7 @@ type DescribeJobSubmitInfoResponse struct {
 		Tasks []*Task `json:"Tasks" name:"Tasks" list`
 		// 依赖信息
 		Dependences []*Dependence `json:"Dependences" name:"Dependences" list`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -780,7 +780,7 @@ type DescribeJobsResponse struct {
 		JobSet []*JobView `json:"JobSet" name:"JobSet" list`
 		// 符合条件的作业数量
 		TotalCount *int64 `json:"TotalCount" name:"TotalCount"`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -800,6 +800,13 @@ type DescribeTaskRequest struct {
 	JobId *string `json:"JobId" name:"JobId"`
 	// 任务名称
 	TaskName *string `json:"TaskName" name:"TaskName"`
+	// 偏移量
+	Offset *uint64 `json:"Offset" name:"Offset"`
+	// 返回数量。默认取值100，最大取值1000。
+	Limit *uint64 `json:"Limit" name:"Limit"`
+	// 过滤条件，详情如下：
+	// <li> task-instance-type - String - 是否必填： 否 - 按照任务实例状态进行过滤（SUBMITTED：已提交；PENDING：等待中；RUNNABLE：可运行；STARTING：启动中；RUNNING：运行中；SUCCEED：成功；FAILED：失败；FAILED_INTERRUPTED：失败后保留实例）。</li>
+	Filters []*Filter `json:"Filters" name:"Filters" list`
 }
 
 func (r *DescribeTaskRequest) ToJsonString() string {
@@ -830,7 +837,7 @@ type DescribeTaskResponse struct {
 		TaskInstanceSet []*TaskInstanceView `json:"TaskInstanceSet" name:"TaskInstanceSet" list`
 		// 任务实例统计指标
 		TaskInstanceMetrics *TaskInstanceMetrics `json:"TaskInstanceMetrics" name:"TaskInstanceMetrics"`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -872,7 +879,7 @@ type DescribeTaskTemplatesResponse struct {
 		TaskTemplateSet []*TaskTemplateView `json:"TaskTemplateSet" name:"TaskTemplateSet" list`
 		// 任务模板数量
 		TotalCount *int64 `json:"TotalCount" name:"TotalCount"`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -1134,7 +1141,7 @@ func (r *ModifyComputeEnvRequest) FromJsonString(s string) error {
 type ModifyComputeEnvResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -1172,7 +1179,7 @@ func (r *ModifyTaskTemplateRequest) FromJsonString(s string) error {
 type ModifyTaskTemplateResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -1322,7 +1329,7 @@ type SubmitJobResponse struct {
 	Response *struct {
 		// 当通过本接口来提交作业时会返回该参数，表示一个作业ID。返回作业ID列表并不代表作业解析/运行成功，可根据 DescribeJob 接口查询其状态。
 		JobId *string `json:"JobId" name:"JobId"`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -1485,7 +1492,7 @@ func (r *TerminateComputeNodeRequest) FromJsonString(s string) error {
 type TerminateComputeNodeResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -1519,7 +1526,7 @@ func (r *TerminateComputeNodesRequest) FromJsonString(s string) error {
 type TerminateComputeNodesResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -1551,7 +1558,7 @@ func (r *TerminateJobRequest) FromJsonString(s string) error {
 type TerminateJobResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -1587,7 +1594,7 @@ func (r *TerminateTaskInstanceRequest) FromJsonString(s string) error {
 type TerminateTaskInstanceResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
