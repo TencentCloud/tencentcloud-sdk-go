@@ -62,7 +62,7 @@ func (r *AssociateSecurityGroupsRequest) FromJsonString(s string) error {
 type AssociateSecurityGroupsResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -145,7 +145,7 @@ type CloseWanServiceResponse struct {
 	Response *struct {
 		// 异步任务的请求ID，可使用此ID查询异步任务的执行结果。
 		AsyncRequestId *string `json:"AsyncRequestId" name:"AsyncRequestId"`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -196,7 +196,7 @@ type CreateAccountsResponse struct {
 	Response *struct {
 		// 异步任务的请求ID，可使用此ID查询异步任务的执行结果。
 		AsyncRequestId *string `json:"AsyncRequestId" name:"AsyncRequestId"`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -232,7 +232,7 @@ type CreateBackupResponse struct {
 	Response *struct {
 		// 备份任务ID。
 		BackupId *uint64 `json:"BackupId" name:"BackupId"`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -250,7 +250,7 @@ type CreateDBImportJobRequest struct {
 	*tchttp.BaseRequest
 	// 实例的ID，格式如：cdb-c1nl9rpv，与云数据库控制台页面中显示的实例ID相同。
 	InstanceId *string `json:"InstanceId" name:"InstanceId"`
-	// 文件名称。
+	// 文件名称。该文件是指用户已上传到腾讯云的文件。
 	FileName *string `json:"FileName" name:"FileName"`
 	// 云数据库的用户名。
 	User *string `json:"User" name:"User"`
@@ -274,7 +274,7 @@ type CreateDBImportJobResponse struct {
 	Response *struct {
 		// 异步任务的请求ID，可使用此ID查询异步任务的执行结果
 		AsyncRequestId *string `json:"AsyncRequestId" name:"AsyncRequestId"`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -352,7 +352,7 @@ type CreateDBInstanceHourResponse struct {
 		DealIds []*string `json:"DealIds" name:"DealIds" list`
 		// 实例ID列表
 		InstanceIds []*string `json:"InstanceIds" name:"InstanceIds" list`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -432,7 +432,7 @@ type CreateDBInstanceResponse struct {
 		DealIds []*string `json:"DealIds" name:"DealIds" list`
 		// 实例ID列表
 		InstanceIds []*string `json:"InstanceIds" name:"InstanceIds" list`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -487,7 +487,7 @@ type DeleteAccountsResponse struct {
 	Response *struct {
 		// 异步任务的请求ID，可使用此ID查询异步任务的执行结果。
 		AsyncRequestId *string `json:"AsyncRequestId" name:"AsyncRequestId"`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -521,7 +521,7 @@ func (r *DeleteBackupRequest) FromJsonString(s string) error {
 type DeleteBackupResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -565,7 +565,7 @@ type DescribeAccountPrivilegesResponse struct {
 		TablePrivileges []*TablePrivilege `json:"TablePrivileges" name:"TablePrivileges" list`
 		// 数据库表中的列权限数组。
 		ColumnPrivileges []*ColumnPrivilege `json:"ColumnPrivileges" name:"ColumnPrivileges" list`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -605,7 +605,7 @@ type DescribeAccountsResponse struct {
 		TotalCount *int64 `json:"TotalCount" name:"TotalCount"`
 		// 符合查询条件的账号详细信息。
 		Items []*AccountInfo `json:"Items" name:"Items" list`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -641,7 +641,7 @@ type DescribeAsyncRequestInfoResponse struct {
 		Status *string `json:"Status" name:"Status"`
 		// 任务执行信息描述。
 		Info *string `json:"Info" name:"Info"`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -683,7 +683,7 @@ type DescribeBackupConfigResponse struct {
 		BackupMethod *string `json:"BackupMethod" name:"BackupMethod"`
 		// Binlog过期时间，单位为天
 		BinlogExpireDays *int64 `json:"BinlogExpireDays" name:"BinlogExpireDays"`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -727,7 +727,7 @@ type DescribeBackupDatabasesResponse struct {
 		TotalCount *int64 `json:"TotalCount" name:"TotalCount"`
 		// 符合查询条件的数据库数组
 		Items []*DatabaseName `json:"Items" name:"Items" list`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -773,7 +773,7 @@ type DescribeBackupTablesResponse struct {
 		TotalCount *int64 `json:"TotalCount" name:"TotalCount"`
 		// 符合条件的数据表数组。
 		Items []*TableName `json:"Items" name:"Items" list`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -813,7 +813,7 @@ type DescribeBackupsResponse struct {
 		TotalCount *int64 `json:"TotalCount" name:"TotalCount"`
 		// 符合查询条件的备份信息详情
 		Items []*BackupInfo `json:"Items" name:"Items" list`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -853,7 +853,7 @@ type DescribeBinlogsResponse struct {
 		TotalCount *int64 `json:"TotalCount" name:"TotalCount"`
 		// 符合查询条件的二进制日志文件详情
 		Items []*BinlogInfo `json:"Items" name:"Items" list`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -897,7 +897,7 @@ type DescribeDBImportRecordsResponse struct {
 		TotalCount *int64 `json:"TotalCount" name:"TotalCount"`
 		// 返回的导入操作记录列表。
 		Items []*ImportRecord `json:"Items" name:"Items" list`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -931,7 +931,7 @@ type DescribeDBInstanceCharsetResponse struct {
 	Response *struct {
 		// 实例的默认字符集，如"latin1", "utf8"等。
 		Charset *string `json:"Charset" name:"Charset"`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -973,7 +973,7 @@ type DescribeDBInstanceConfigResponse struct {
 		SlaveConfig *SlaveConfig `json:"SlaveConfig" name:"SlaveConfig"`
 		// ECDB第二个从库的配置信息，只有ECDB实例才有这个字段。
 		BackupConfig *BackupConfig `json:"BackupConfig" name:"BackupConfig"`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -1007,7 +1007,7 @@ type DescribeDBInstanceGTIDResponse struct {
 	Response *struct {
 		// GTID是否开通的标记：0-未开通，1-已开通。
 		IsGTIDOpen *int64 `json:"IsGTIDOpen" name:"IsGTIDOpen"`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -1043,7 +1043,7 @@ type DescribeDBInstanceRebootTimeResponse struct {
 		TotalCount *int64 `json:"TotalCount" name:"TotalCount"`
 		// 返回的参数信息。
 		Items []*InstanceRebootTime `json:"Items" name:"Items" list`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -1067,7 +1067,7 @@ type DescribeDBInstancesRequest struct {
 	Vips []*string `json:"Vips" name:"Vips" list`
 	// 实例状态，可取值：0-创建中，1-运行中，4-隔离中，5-已隔离
 	Status []*uint64 `json:"Status" name:"Status" list`
-	// 记录偏移量，默认值为0
+	// 偏移量，默认值为0
 	Offset *uint64 `json:"Offset" name:"Offset"`
 	// 单次请求返回的数量，默认值为20，最大值为2000
 	Limit *uint64 `json:"Limit" name:"Limit"`
@@ -1089,13 +1089,13 @@ type DescribeDBInstancesRequest struct {
 	SubnetIds []*uint64 `json:"SubnetIds" name:"SubnetIds" list`
 	// 是否锁定标记
 	CdbErrors []*int64 `json:"CdbErrors" name:"CdbErrors" list`
-	// 排序的字段，目前支持："InstanceId", "InstanceName", "CreateTime", "DeadlineTime"
+	// 返回结果集排序的字段，目前支持："InstanceId", "InstanceName", "CreateTime", "DeadlineTime"
 	OrderBy *string `json:"OrderBy" name:"OrderBy"`
-	// 排序方式，目前支持："ASC"或者"DESC"
+	// 返回结果集排序方式，目前支持："ASC"或者"DESC"
 	OrderDirection *string `json:"OrderDirection" name:"OrderDirection"`
-	// 是否包含安全组信息，可取值：0-不包含，1-包含
+	// 是否包含安全组详细信息，可取值：0-不包含，1-包含
 	WithSecurityGroup *int64 `json:"WithSecurityGroup" name:"WithSecurityGroup"`
-	// 是否包含独享集群信息，可取值：0-不包含，1-包含
+	// 是否包含独享集群详细信息，可取值：0-不包含，1-包含
 	WithExCluster *int64 `json:"WithExCluster" name:"WithExCluster"`
 	// 独享集群ID
 	ExClusterId *string `json:"ExClusterId" name:"ExClusterId"`
@@ -1127,7 +1127,7 @@ type DescribeDBInstancesResponse struct {
 		TotalCount *int64 `json:"TotalCount" name:"TotalCount"`
 		// 实例详细信息
 		Items []*InstanceInfo `json:"Items" name:"Items" list`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -1177,7 +1177,7 @@ type DescribeDBPriceResponse struct {
 		Price *int64 `json:"Price" name:"Price"`
 		// 实例原价，单位：分（人民币）
 		OriginalPrice *int64 `json:"OriginalPrice" name:"OriginalPrice"`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -1211,7 +1211,7 @@ type DescribeDBSecurityGroupsResponse struct {
 	Response *struct {
 		// 安全组详情。
 		Groups []*SecurityGroup `json:"Groups" name:"Groups" list`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -1251,7 +1251,7 @@ type DescribeDBSwitchRecordsResponse struct {
 		TotalCount *int64 `json:"TotalCount" name:"TotalCount"`
 		// 实例切换记录详情。
 		Items []*DBSwitchInfo `json:"Items" name:"Items" list`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -1285,7 +1285,7 @@ type DescribeDBZoneConfigResponse struct {
 		TotalCount *int64 `json:"TotalCount" name:"TotalCount"`
 		// 可售卖地域配置详情
 		Items []*RegionSellConf `json:"Items" name:"Items" list`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -1327,7 +1327,7 @@ type DescribeDatabasesResponse struct {
 		TotalCount *int64 `json:"TotalCount" name:"TotalCount"`
 		// 返回的实例信息。
 		Items []*string `json:"Items" name:"Items" list`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -1363,7 +1363,7 @@ type DescribeInstanceParamsResponse struct {
 		TotalCount *int64 `json:"TotalCount" name:"TotalCount"`
 		// 参数详情
 		Items []*ParameterDetail `json:"Items" name:"Items" list`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -1397,7 +1397,7 @@ type DescribeProjectSecurityGroupsResponse struct {
 	Response *struct {
 		// 安全组详情。
 		Groups []*SecurityGroup `json:"Groups" name:"Groups" list`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -1433,7 +1433,7 @@ type DescribeRollbackRangeTimeResponse struct {
 		TotalCount *int64 `json:"TotalCount" name:"TotalCount"`
 		// 返回的参数信息。
 		Items []*InstanceRollbackRangeTime `json:"Items" name:"Items" list`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -1473,7 +1473,7 @@ type DescribeSlowLogsResponse struct {
 		TotalCount *int64 `json:"TotalCount" name:"TotalCount"`
 		// 符合查询条件的慢查询日志详情
 		Items []*SlowLogInfo `json:"Items" name:"Items" list`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -1517,7 +1517,7 @@ type DescribeTablesResponse struct {
 		TotalCount *int64 `json:"TotalCount" name:"TotalCount"`
 		// 返回的数据库表信息。
 		Items []*string `json:"Items" name:"Items" list`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -1567,7 +1567,7 @@ type DescribeTasksResponse struct {
 		TotalCount *int64 `json:"TotalCount" name:"TotalCount"`
 		// 返回的实例任务信息
 		Items []*string `json:"Items" name:"Items" list`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -1578,6 +1578,46 @@ func (r *DescribeTasksResponse) ToJsonString() string {
 }
 
 func (r *DescribeTasksResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeUploadedFilesRequest struct {
+	*tchttp.BaseRequest
+	// 文件路径。该字段应填用户主账号的OwnerUin信息。
+	Path *string `json:"Path" name:"Path"`
+	// 记录偏移量，默认值为0。
+	Offset *int64 `json:"Offset" name:"Offset"`
+	// 单次请求返回的数量，默认值为20。
+	Limit *int64 `json:"Limit" name:"Limit"`
+}
+
+func (r *DescribeUploadedFilesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeUploadedFilesRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeUploadedFilesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+		// 符合查询条件的SQL文件总数。
+		TotalCount *int64 `json:"TotalCount" name:"TotalCount"`
+		// 返回的SQL文件列表。
+		Items []*SqlFileInfo `json:"Items" name:"Items" list`
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeUploadedFilesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeUploadedFilesResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -1601,7 +1641,7 @@ func (r *DisassociateSecurityGroupsRequest) FromJsonString(s string) error {
 type DisassociateSecurityGroupsResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -1630,17 +1670,6 @@ type DrInfo struct {
 	InstanceName *string `json:"InstanceName" name:"InstanceName"`
 	// 实例类型
 	InstanceType *int64 `json:"InstanceType" name:"InstanceType"`
-}
-
-type First struct {
-	// 端口号
-	Vport *int64 `json:"Vport" name:"Vport"`
-	// 地域信息
-	Region *string `json:"Region" name:"Region"`
-	// 虚拟Ip信息
-	Vip *string `json:"Vip" name:"Vip"`
-	// 可用区信息
-	Zone *string `json:"Zone" name:"Zone"`
 }
 
 type ImportRecord struct {
@@ -1711,7 +1740,7 @@ type InitDBInstancesResponse struct {
 	Response *struct {
 		// 异步任务的请求ID数组，可使用此ID查询异步任务的执行结果
 		AsyncRequestIds []*string `json:"AsyncRequestIds" name:"AsyncRequestIds" list`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -1726,73 +1755,73 @@ func (r *InitDBInstancesResponse) FromJsonString(s string) error {
 }
 
 type InstanceInfo struct {
-	// 外网状态
+	// 外网状态，可能的返回值为：0-未开通外网；1-已开通外网
 	WanStatus *int64 `json:"WanStatus" name:"WanStatus"`
 	// 可用区信息
 	Zone *string `json:"Zone" name:"Zone"`
-	// 初始化标志
+	// 初始化标志，可能的返回值为：0-未初始化；1-已初始化
 	InitFlag *int64 `json:"InitFlag" name:"InitFlag"`
-	// 只读vip信息
+	// 只读vip信息。单独开通只读实例访问的只读实例才有该字段
 	RoVipInfo *RoVipInfo `json:"RoVipInfo" name:"RoVipInfo"`
-	// 内存容量
+	// 内存容量，单位为MB
 	Memory *int64 `json:"Memory" name:"Memory"`
-	// 实例状态
+	// 实例状态，可能的返回值：0-创建中；1-运行中；4-隔离中；5-已隔离
 	Status *int64 `json:"Status" name:"Status"`
-	// 私有网络ID
+	// 私有网络ID，例如：51102
 	VpcId *int64 `json:"VpcId" name:"VpcId"`
 	// 备机信息
 	SlaveInfo *SlaveInfo `json:"SlaveInfo" name:"SlaveInfo"`
 	// 实例ID
 	InstanceId *string `json:"InstanceId" name:"InstanceId"`
-	// 硬盘容量
+	// 硬盘容量，单位为GB
 	Volume *int64 `json:"Volume" name:"Volume"`
-	// 自动续费标志
+	// 自动续费标志，可能的返回值：0-未开通自动续费；1-已开通自动续费；2-已关闭自动续费
 	AutoRenew *int64 `json:"AutoRenew" name:"AutoRenew"`
 	// 数据复制方式
 	ProtectMode *int64 `json:"ProtectMode" name:"ProtectMode"`
-	// 只读组信息
+	// 只读组详细信息
 	RoGroups []*RoGroup `json:"RoGroups" name:"RoGroups" list`
-	// 子网ID
+	// 子网ID，例如：2333
 	SubnetId *int64 `json:"SubnetId" name:"SubnetId"`
-	// 实例类型
+	// 实例类型，可能的返回值：1-主实例；2-灾备实例；3-只读实例
 	InstanceType *int64 `json:"InstanceType" name:"InstanceType"`
 	// 项目ID
 	ProjectId *int64 `json:"ProjectId" name:"ProjectId"`
 	// 地域信息
 	Region *string `json:"Region" name:"Region"`
-	// 到期时间
+	// 实例到期时间
 	DeadlineTime *string `json:"DeadlineTime" name:"DeadlineTime"`
 	// 可用区部署方式
 	DeployMode *int64 `json:"DeployMode" name:"DeployMode"`
 	// 实例任务状态
 	TaskStatus *int64 `json:"TaskStatus" name:"TaskStatus"`
-	// 主实例信息
+	// 主实例详细信息
 	MasterInfo *MasterInfo `json:"MasterInfo" name:"MasterInfo"`
-	// 实例售卖机型
+	// 实例类型，可能的返回值：“HA”-高可用版；“BASIC”-基础版
 	DeviceType *string `json:"DeviceType" name:"DeviceType"`
 	// 内核版本
 	EngineVersion *string `json:"EngineVersion" name:"EngineVersion"`
 	// 实例名称
 	InstanceName *string `json:"InstanceName" name:"InstanceName"`
-	// 灾备实例信息
+	// 灾备实例详细信息
 	DrInfo []*DrInfo `json:"DrInfo" name:"DrInfo" list`
 	// 外网域名
 	WanDomain *string `json:"WanDomain" name:"WanDomain"`
 	// 外网端口号
 	WanPort *int64 `json:"WanPort" name:"WanPort"`
-	// 付费类型
+	// 付费类型，可能的返回值：0-包年包月；1-按量计费
 	PayType *int64 `json:"PayType" name:"PayType"`
-	// 创建时间
+	// 实例创建时间
 	CreateTime *string `json:"CreateTime" name:"CreateTime"`
 	// 实例IP
 	Vip *string `json:"Vip" name:"Vip"`
 	// 端口号
 	Vport *int64 `json:"Vport" name:"Vport"`
-	// 实例状态
+	// 是否锁定标记
 	CdbError *int64 `json:"CdbError" name:"CdbError"`
-	// 私有网络描述符
+	// 私有网络描述符，例如：“vpc-5v8wn9mg”
 	UniqVpcId *string `json:"UniqVpcId" name:"UniqVpcId"`
-	// 子网描述符
+	// 子网描述符，例如：“subnet-1typ0s7d”
 	UniqSubnetId *string `json:"UniqSubnetId" name:"UniqSubnetId"`
 }
 
@@ -1834,7 +1863,7 @@ type IsolateDBInstanceResponse struct {
 	Response *struct {
 		// 异步任务的请求ID，可使用此ID查询异步任务的执行结果
 		AsyncRequestId *string `json:"AsyncRequestId" name:"AsyncRequestId"`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -1911,7 +1940,7 @@ type ModifyAccountDescriptionResponse struct {
 	Response *struct {
 		// 异步任务的请求ID，可使用此ID查询异步任务的执行结果。
 		AsyncRequestId *string `json:"AsyncRequestId" name:"AsyncRequestId"`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -1949,7 +1978,7 @@ type ModifyAccountPasswordResponse struct {
 	Response *struct {
 		// 异步任务的请求ID，可使用此ID查询异步任务的执行结果。
 		AsyncRequestId *string `json:"AsyncRequestId" name:"AsyncRequestId"`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -1993,7 +2022,7 @@ type ModifyAccountPrivilegesResponse struct {
 	Response *struct {
 		// 异步任务的请求ID，可使用此ID查询异步任务的执行结果。
 		AsyncRequestId *string `json:"AsyncRequestId" name:"AsyncRequestId"`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -2027,7 +2056,7 @@ func (r *ModifyAutoRenewFlagRequest) FromJsonString(s string) error {
 type ModifyAutoRenewFlagResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -2065,7 +2094,7 @@ func (r *ModifyBackupConfigRequest) FromJsonString(s string) error {
 type ModifyBackupConfigResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -2099,7 +2128,7 @@ func (r *ModifyDBInstanceNameRequest) FromJsonString(s string) error {
 type ModifyDBInstanceNameResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -2133,7 +2162,7 @@ func (r *ModifyDBInstanceProjectRequest) FromJsonString(s string) error {
 type ModifyDBInstanceProjectResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -2167,7 +2196,7 @@ func (r *ModifyDBInstanceSecurityGroupsRequest) FromJsonString(s string) error {
 type ModifyDBInstanceSecurityGroupsResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -2209,7 +2238,7 @@ type ModifyDBInstanceVipVportResponse struct {
 	Response *struct {
 		// 异步任务ID，可使用[查询任务列表](https://cloud.tencent.com/document/api/236/8010)获取其执行情况。
 		AsyncRequestId *string `json:"AsyncRequestId" name:"AsyncRequestId"`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -2245,7 +2274,7 @@ type ModifyInstanceParamResponse struct {
 	Response *struct {
 		// 异步任务Id，可用于查询任务进度。
 		AsyncRequestId *string `json:"AsyncRequestId" name:"AsyncRequestId"`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -2279,7 +2308,7 @@ type OpenDBInstanceGTIDResponse struct {
 	Response *struct {
 		// 异步任务的请求ID，可使用此ID查询异步任务的执行结果。
 		AsyncRequestId *string `json:"AsyncRequestId" name:"AsyncRequestId"`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -2313,7 +2342,7 @@ type OpenWanServiceResponse struct {
 	Response *struct {
 		// 异步任务的请求ID，可使用此ID查询异步任务的执行结果
 		AsyncRequestId *string `json:"AsyncRequestId" name:"AsyncRequestId"`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -2388,6 +2417,42 @@ type RegionSellConf struct {
 	ZonesConf []*ZoneSellConf `json:"ZonesConf" name:"ZonesConf" list`
 }
 
+type RenewDBInstanceRequest struct {
+	*tchttp.BaseRequest
+	// 待续费的实例ID，格式如：cdb-c1nl9rpv，与云数据库控制台页面中显示的实例ID相同，可使用[查询实例列表](https://cloud.tencent.com/document/api/236/15872)
+	InstanceId *string `json:"InstanceId" name:"InstanceId"`
+	// 续费时长，单位：月，可选值包括[1,2,3,4,5,6,7,8,9,10,11,12,24,36]
+	TimeSpan *int64 `json:"TimeSpan" name:"TimeSpan"`
+}
+
+func (r *RenewDBInstanceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *RenewDBInstanceRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type RenewDBInstanceResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+		// 订单ID
+		DealId *string `json:"DealId" name:"DealId"`
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *RenewDBInstanceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *RenewDBInstanceResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type RestartDBInstancesRequest struct {
 	*tchttp.BaseRequest
 	// 实例ID数组，格式如：cdb-c1nl9rpv，与云数据库控制台页面中显示的实例ID相同。
@@ -2408,7 +2473,7 @@ type RestartDBInstancesResponse struct {
 	Response *struct {
 		// 异步任务的请求ID，可使用此ID查询异步任务的执行结果。
 		AsyncRequestId *string `json:"AsyncRequestId" name:"AsyncRequestId"`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -2614,9 +2679,20 @@ type SlaveConfig struct {
 
 type SlaveInfo struct {
 	// 第一备机信息
-	First *First `json:"First" name:"First"`
+	First *SlaveInstanceInfo `json:"First" name:"First"`
 	// 第二备机信息
-	Second *First `json:"Second" name:"Second"`
+	Second *SlaveInstanceInfo `json:"Second" name:"Second"`
+}
+
+type SlaveInstanceInfo struct {
+	// 端口号
+	Vport *int64 `json:"Vport" name:"Vport"`
+	// 地域信息
+	Region *string `json:"Region" name:"Region"`
+	// 虚拟Ip信息
+	Vip *string `json:"Vip" name:"Vip"`
+	// 可用区信息
+	Zone *string `json:"Zone" name:"Zone"`
 }
 
 type SlowLogInfo struct {
@@ -2632,6 +2708,21 @@ type SlowLogInfo struct {
 	InternetUrl *string `json:"InternetUrl" name:"InternetUrl"`
 	// 日志具体类型，可能的值：slowlog - 慢日志
 	Type *string `json:"Type" name:"Type"`
+}
+
+type SqlFileInfo struct {
+	// 上传时间
+	UploadTime *string `json:"UploadTime" name:"UploadTime"`
+	// 上传进度
+	UploadInfo *UploadInfo `json:"UploadInfo" name:"UploadInfo"`
+	// 文件名
+	FileName *string `json:"FileName" name:"FileName"`
+	// 文件大小，单位为Bytes
+	FileSize *int64 `json:"FileSize" name:"FileSize"`
+	// 上传是否完成标志，可选值：0 - 未完成，1 - 已完成
+	IsUploadFinished *int64 `json:"IsUploadFinished" name:"IsUploadFinished"`
+	// 文件ID
+	FileId *string `json:"FileId" name:"FileId"`
 }
 
 type StartBatchRollbackRequest struct {
@@ -2654,7 +2745,7 @@ type StartBatchRollbackResponse struct {
 	Response *struct {
 		// 异步任务的请求ID，可使用此ID查询异步任务的执行结果
 		AsyncRequestId *string `json:"AsyncRequestId" name:"AsyncRequestId"`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -2686,7 +2777,7 @@ func (r *StopDBImportJobRequest) FromJsonString(s string) error {
 type StopDBImportJobResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -2718,7 +2809,7 @@ func (r *SwitchForUpgradeRequest) FromJsonString(s string) error {
 type SwitchForUpgradeResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -2770,7 +2861,7 @@ type UpgradeDBInstanceEngineVersionResponse struct {
 	Response *struct {
 		// 异步任务ID，可使用[查询任务列表](https://cloud.tencent.com/document/api/236/8010)获取其执行情况
 		AsyncRequestId *string `json:"AsyncRequestId" name:"AsyncRequestId"`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -2824,7 +2915,7 @@ type UpgradeDBInstanceResponse struct {
 		DealIds []*string `json:"DealIds" name:"DealIds" list`
 		// 异步任务的请求ID，可使用此ID查询异步任务的执行结果
 		AsyncRequestId *string `json:"AsyncRequestId" name:"AsyncRequestId"`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -2836,6 +2927,13 @@ func (r *UpgradeDBInstanceResponse) ToJsonString() string {
 
 func (r *UpgradeDBInstanceResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
+}
+
+type UploadInfo struct {
+	// 文件所有分片数
+	AllSliceNum *int64 `json:"AllSliceNum" name:"AllSliceNum"`
+	// 已完成分片数
+	CompleteNum *int64 `json:"CompleteNum" name:"CompleteNum"`
 }
 
 type VerifyRootAccountRequest struct {
@@ -2860,7 +2958,7 @@ type VerifyRootAccountResponse struct {
 	Response *struct {
 		// 异步任务的请求ID，可使用此ID查询异步任务的执行结果
 		AsyncRequestId *string `json:"AsyncRequestId" name:"AsyncRequestId"`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }

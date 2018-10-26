@@ -20,6 +20,162 @@ import (
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
+type BindPsaTagRequest struct {
+	*tchttp.BaseRequest
+	// 预授权规则ID
+	PsaId *string `json:"PsaId" name:"PsaId"`
+	// 需要绑定的标签key
+	TagKey *string `json:"TagKey" name:"TagKey"`
+	// 需要绑定的标签value
+	TagValue *string `json:"TagValue" name:"TagValue"`
+}
+
+func (r *BindPsaTagRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *BindPsaTagRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type BindPsaTagResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *BindPsaTagResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *BindPsaTagResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreatePsaRegulationRequest struct {
+	*tchttp.BaseRequest
+	// 规则别名
+	PsaName *string `json:"PsaName" name:"PsaName"`
+	// 关联的故障类型ID列表
+	TaskTypeIds []*uint64 `json:"TaskTypeIds" name:"TaskTypeIds" list`
+	// 维修实例上限，默认为5
+	RepairLimit *uint64 `json:"RepairLimit" name:"RepairLimit"`
+	// 规则备注
+	PsaDescription *string `json:"PsaDescription" name:"PsaDescription"`
+}
+
+func (r *CreatePsaRegulationRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreatePsaRegulationRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreatePsaRegulationResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+		// 创建的预授权规则ID
+		PsaId *string `json:"PsaId" name:"PsaId"`
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreatePsaRegulationResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreatePsaRegulationResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeletePsaRegulationRequest struct {
+	*tchttp.BaseRequest
+	// 预授权规则ID
+	PsaId *string `json:"PsaId" name:"PsaId"`
+}
+
+func (r *DeletePsaRegulationRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeletePsaRegulationRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeletePsaRegulationResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DeletePsaRegulationResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeletePsaRegulationResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribePsaRegulationsRequest struct {
+	*tchttp.BaseRequest
+	// 数量限制
+	Limit *uint64 `json:"Limit" name:"Limit"`
+	// 偏移量
+	Offset *uint64 `json:"Offset" name:"Offset"`
+	// 规则ID过滤，支持模糊查询
+	PsaIds []*string `json:"PsaIds" name:"PsaIds" list`
+	// 规则别名过滤，支持模糊查询
+	PsaNames []*string `json:"PsaNames" name:"PsaNames" list`
+	// 标签过滤
+	Tags []*Tag `json:"Tags" name:"Tags" list`
+	// 排序字段，取值支持：CreateTime
+	OrderField *string `json:"OrderField" name:"OrderField"`
+	// 排序方式 0:递增(默认) 1:递减
+	Order *uint64 `json:"Order" name:"Order"`
+}
+
+func (r *DescribePsaRegulationsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribePsaRegulationsRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribePsaRegulationsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+		// 返回规则数量
+		TotalCount *uint64 `json:"TotalCount" name:"TotalCount"`
+		// 返回规则列表
+		PsaRegulations []*PsaRegulation `json:"PsaRegulations" name:"PsaRegulations" list`
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribePsaRegulationsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribePsaRegulationsResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeRepairTaskConstantRequest struct {
 	*tchttp.BaseRequest
 }
@@ -37,8 +193,8 @@ type DescribeRepairTaskConstantResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 		// 故障类型ID与对应中文名列表
-		TaskTypeList []*TaskType `json:"TaskTypeList" name:"TaskTypeList" list`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		TaskTypeSet []*TaskType `json:"TaskTypeSet" name:"TaskTypeSet" list`
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -94,7 +250,7 @@ type DescribeTaskInfoResponse struct {
 		TotalCount *int64 `json:"TotalCount" name:"TotalCount"`
 		// 任务信息列表
 		TaskInfoSet []*TaskInfo `json:"TaskInfoSet" name:"TaskInfoSet" list`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -134,7 +290,7 @@ type DescribeTaskOperationLogResponse struct {
 		TaskOperationLogSet []*TaskOperationLog `json:"TaskOperationLogSet" name:"TaskOperationLogSet" list`
 		// 日志条数
 		TotalCount *uint64 `json:"TotalCount" name:"TotalCount"`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -146,6 +302,69 @@ func (r *DescribeTaskOperationLogResponse) ToJsonString() string {
 
 func (r *DescribeTaskOperationLogResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyPsaRegulationRequest struct {
+	*tchttp.BaseRequest
+	// 预授权规则ID
+	PsaId *string `json:"PsaId" name:"PsaId"`
+	// 预授权规则别名
+	PsaName *string `json:"PsaName" name:"PsaName"`
+	// 维修中的实例上限
+	RepairLimit *uint64 `json:"RepairLimit" name:"RepairLimit"`
+	// 预授权规则备注
+	PsaDescription *string `json:"PsaDescription" name:"PsaDescription"`
+	// 预授权规则关联故障类型ID列表
+	TaskTypeIds []*uint64 `json:"TaskTypeIds" name:"TaskTypeIds" list`
+}
+
+func (r *ModifyPsaRegulationRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyPsaRegulationRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyPsaRegulationResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifyPsaRegulationResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyPsaRegulationResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type PsaRegulation struct {
+	// 规则ID
+	PsaId *string `json:"PsaId" name:"PsaId"`
+	// 规则别名
+	PsaName *string `json:"PsaName" name:"PsaName"`
+	// 关联标签数量
+	TagCount *uint64 `json:"TagCount" name:"TagCount"`
+	// 关联实例数量
+	InstanceCount *uint64 `json:"InstanceCount" name:"InstanceCount"`
+	// 故障实例数量
+	RepairCount *uint64 `json:"RepairCount" name:"RepairCount"`
+	// 故障实例上限
+	RepairLimit *uint64 `json:"RepairLimit" name:"RepairLimit"`
+	// 创建时间
+	CreateTime *string `json:"CreateTime" name:"CreateTime"`
+	// 规则备注
+	PsaDescription *string `json:"PsaDescription" name:"PsaDescription"`
+	// 关联标签
+	Tags []*Tag `json:"Tags" name:"Tags" list`
+	// 关联故障类型id
+	TaskTypeIds []*uint64 `json:"TaskTypeIds" name:"TaskTypeIds" list`
 }
 
 type RepairTaskControlRequest struct {
@@ -171,7 +390,7 @@ type RepairTaskControlResponse struct {
 		// 出参TaskId是黑石异步任务ID，不同于入参TaskId字段。
 	// 此字段可作为DescriptionOperationResult查询异步任务状态接口的入参，查询异步任务执行结果。
 		TaskId *uint64 `json:"TaskId" name:"TaskId"`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -183,6 +402,13 @@ func (r *RepairTaskControlResponse) ToJsonString() string {
 
 func (r *RepairTaskControlResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
+}
+
+type Tag struct {
+	// 标签键
+	TagKey *string `json:"TagKey" name:"TagKey"`
+	// 标签键对应的值
+	TagValues []*string `json:"TagValues" name:"TagValues" list`
 }
 
 type TaskInfo struct {
@@ -250,4 +476,40 @@ type TaskType struct {
 	TypeName *string `json:"TypeName" name:"TypeName"`
 	// 故障类型父类
 	TaskSubType *string `json:"TaskSubType" name:"TaskSubType"`
+}
+
+type UnbindPsaTagRequest struct {
+	*tchttp.BaseRequest
+	// 预授权规则ID
+	PsaId *string `json:"PsaId" name:"PsaId"`
+	// 需要解绑的标签key
+	TagKey *string `json:"TagKey" name:"TagKey"`
+	// 需要解绑的标签value
+	TagValue *string `json:"TagValue" name:"TagValue"`
+}
+
+func (r *UnbindPsaTagRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *UnbindPsaTagRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type UnbindPsaTagResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *UnbindPsaTagResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *UnbindPsaTagResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
 }

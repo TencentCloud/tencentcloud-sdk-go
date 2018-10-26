@@ -67,6 +67,132 @@ func (c *Client) AddDelayLiveStream(request *AddDelayLiveStreamRequest) (respons
     return
 }
 
+func NewAddLiveWatermarkRequest() (request *AddLiveWatermarkRequest) {
+    request = &AddLiveWatermarkRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("live", APIVersion, "AddLiveWatermark")
+    return
+}
+
+func NewAddLiveWatermarkResponse() (response *AddLiveWatermarkResponse) {
+    response = &AddLiveWatermarkResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 添加水印
+func (c *Client) AddLiveWatermark(request *AddLiveWatermarkRequest) (response *AddLiveWatermarkResponse, err error) {
+    if request == nil {
+        request = NewAddLiveWatermarkRequest()
+    }
+    response = NewAddLiveWatermarkResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateLiveRecordRequest() (request *CreateLiveRecordRequest) {
+    request = &CreateLiveRecordRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("live", APIVersion, "CreateLiveRecord")
+    return
+}
+
+func NewCreateLiveRecordResponse() (response *CreateLiveRecordResponse) {
+    response = &CreateLiveRecordResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 录制文件存放于点播平台。用户如需使用录制功能，需首先自行开通点播服务，录制文件存放后相关费用（含存储以及下行播放流量）按照点播平台计费方式收取，具体请参考 对应文档。
+// 创建直播录制。该接口支持两种录制模式：定时录制模式与实时视频录制模式。定时录制需要传入开始与结束时间，录制任务根据时间自动开始与结束；实时视频录制忽略传入的开始时间，在录制任务创建后立即开始录制，录制时长支持最大为30分钟，如果传入的结束时间与当前时间差大于30分钟，则按30分钟计算，实时视频录制主要用于录制精彩视频场景，时长建议控制在5分钟以内。注意：调用接口超时设置应大于3秒，小于3秒重试以及频繁调用都有可能产生重复录制任务。
+func (c *Client) CreateLiveRecord(request *CreateLiveRecordRequest) (response *CreateLiveRecordResponse, err error) {
+    if request == nil {
+        request = NewCreateLiveRecordRequest()
+    }
+    response = NewCreateLiveRecordResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreatePullStreamConfigRequest() (request *CreatePullStreamConfigRequest) {
+    request = &CreatePullStreamConfigRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("live", APIVersion, "CreatePullStreamConfig")
+    return
+}
+
+func NewCreatePullStreamConfigResponse() (response *CreatePullStreamConfigResponse) {
+    response = &CreatePullStreamConfigResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 添加拉流配置
+func (c *Client) CreatePullStreamConfig(request *CreatePullStreamConfigRequest) (response *CreatePullStreamConfigResponse, err error) {
+    if request == nil {
+        request = NewCreatePullStreamConfigRequest()
+    }
+    response = NewCreatePullStreamConfigResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteLiveRecordRequest() (request *DeleteLiveRecordRequest) {
+    request = &DeleteLiveRecordRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("live", APIVersion, "DeleteLiveRecord")
+    return
+}
+
+func NewDeleteLiveRecordResponse() (response *DeleteLiveRecordResponse) {
+    response = &DeleteLiveRecordResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 用于删除录制任务
+func (c *Client) DeleteLiveRecord(request *DeleteLiveRecordRequest) (response *DeleteLiveRecordResponse, err error) {
+    if request == nil {
+        request = NewDeleteLiveRecordRequest()
+    }
+    response = NewDeleteLiveRecordResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteLiveWatermarkRequest() (request *DeleteLiveWatermarkRequest) {
+    request = &DeleteLiveWatermarkRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("live", APIVersion, "DeleteLiveWatermark")
+    return
+}
+
+func NewDeleteLiveWatermarkResponse() (response *DeleteLiveWatermarkResponse) {
+    response = &DeleteLiveWatermarkResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 删除水印
+func (c *Client) DeleteLiveWatermark(request *DeleteLiveWatermarkRequest) (response *DeleteLiveWatermarkResponse, err error) {
+    if request == nil {
+        request = NewDeleteLiveWatermarkRequest()
+    }
+    response = NewDeleteLiveWatermarkResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeLiveStreamOnlineInfoRequest() (request *DescribeLiveStreamOnlineInfoRequest) {
     request = &DescribeLiveStreamOnlineInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -167,6 +293,56 @@ func (c *Client) DescribeLiveStreamState(request *DescribeLiveStreamStateRequest
     return
 }
 
+func NewDescribeLiveWatermarksRequest() (request *DescribeLiveWatermarksRequest) {
+    request = &DescribeLiveWatermarksRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("live", APIVersion, "DescribeLiveWatermarks")
+    return
+}
+
+func NewDescribeLiveWatermarksResponse() (response *DescribeLiveWatermarksResponse) {
+    response = &DescribeLiveWatermarksResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询水印列表
+func (c *Client) DescribeLiveWatermarks(request *DescribeLiveWatermarksRequest) (response *DescribeLiveWatermarksResponse, err error) {
+    if request == nil {
+        request = NewDescribeLiveWatermarksRequest()
+    }
+    response = NewDescribeLiveWatermarksResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribePullStreamConfigsRequest() (request *DescribePullStreamConfigsRequest) {
+    request = &DescribePullStreamConfigsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("live", APIVersion, "DescribePullStreamConfigs")
+    return
+}
+
+func NewDescribePullStreamConfigsResponse() (response *DescribePullStreamConfigsResponse) {
+    response = &DescribePullStreamConfigsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询拉流配置
+func (c *Client) DescribePullStreamConfigs(request *DescribePullStreamConfigsRequest) (response *DescribePullStreamConfigsResponse, err error) {
+    if request == nil {
+        request = NewDescribePullStreamConfigsRequest()
+    }
+    response = NewDescribePullStreamConfigsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDropLiveStreamRequest() (request *DropLiveStreamRequest) {
     request = &DropLiveStreamRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -217,6 +393,56 @@ func (c *Client) ForbidLiveStream(request *ForbidLiveStreamRequest) (response *F
     return
 }
 
+func NewModifyPullStreamConfigRequest() (request *ModifyPullStreamConfigRequest) {
+    request = &ModifyPullStreamConfigRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("live", APIVersion, "ModifyPullStreamConfig")
+    return
+}
+
+func NewModifyPullStreamConfigResponse() (response *ModifyPullStreamConfigResponse) {
+    response = &ModifyPullStreamConfigResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 更新拉流配置
+func (c *Client) ModifyPullStreamConfig(request *ModifyPullStreamConfigRequest) (response *ModifyPullStreamConfigResponse, err error) {
+    if request == nil {
+        request = NewModifyPullStreamConfigRequest()
+    }
+    response = NewModifyPullStreamConfigResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyPullStreamStatusRequest() (request *ModifyPullStreamStatusRequest) {
+    request = &ModifyPullStreamStatusRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("live", APIVersion, "ModifyPullStreamStatus")
+    return
+}
+
+func NewModifyPullStreamStatusResponse() (response *ModifyPullStreamStatusResponse) {
+    response = &ModifyPullStreamStatusResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 修改直播拉流配置状态
+func (c *Client) ModifyPullStreamStatus(request *ModifyPullStreamStatusRequest) (response *ModifyPullStreamStatusResponse, err error) {
+    if request == nil {
+        request = NewModifyPullStreamStatusRequest()
+    }
+    response = NewModifyPullStreamStatusResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewResumeDelayLiveStreamRequest() (request *ResumeDelayLiveStreamRequest) {
     request = &ResumeDelayLiveStreamRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -263,6 +489,81 @@ func (c *Client) ResumeLiveStream(request *ResumeLiveStreamRequest) (response *R
         request = NewResumeLiveStreamRequest()
     }
     response = NewResumeLiveStreamResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewSetLiveWatermarkStatusRequest() (request *SetLiveWatermarkStatusRequest) {
+    request = &SetLiveWatermarkStatusRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("live", APIVersion, "SetLiveWatermarkStatus")
+    return
+}
+
+func NewSetLiveWatermarkStatusResponse() (response *SetLiveWatermarkStatusResponse) {
+    response = &SetLiveWatermarkStatusResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 设置水印是否启用
+func (c *Client) SetLiveWatermarkStatus(request *SetLiveWatermarkStatusRequest) (response *SetLiveWatermarkStatusResponse, err error) {
+    if request == nil {
+        request = NewSetLiveWatermarkStatusRequest()
+    }
+    response = NewSetLiveWatermarkStatusResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewStopLiveRecordRequest() (request *StopLiveRecordRequest) {
+    request = &StopLiveRecordRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("live", APIVersion, "StopLiveRecord")
+    return
+}
+
+func NewStopLiveRecordResponse() (response *StopLiveRecordResponse) {
+    response = &StopLiveRecordResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 说明：录制后的文件存放于点播平台。用户如需使用录制功能，需首先自行开通点播账号并确保账号可用。录制文件存放后，相关费用（含存储以及下行播放流量）按照点播平台计费方式收取，请参考对应文档。
+func (c *Client) StopLiveRecord(request *StopLiveRecordRequest) (response *StopLiveRecordResponse, err error) {
+    if request == nil {
+        request = NewStopLiveRecordRequest()
+    }
+    response = NewStopLiveRecordResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewUpdateLiveWatermarkRequest() (request *UpdateLiveWatermarkRequest) {
+    request = &UpdateLiveWatermarkRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("live", APIVersion, "UpdateLiveWatermark")
+    return
+}
+
+func NewUpdateLiveWatermarkResponse() (response *UpdateLiveWatermarkResponse) {
+    response = &UpdateLiveWatermarkResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 更新水印
+func (c *Client) UpdateLiveWatermark(request *UpdateLiveWatermarkRequest) (response *UpdateLiveWatermarkResponse, err error) {
+    if request == nil {
+        request = NewUpdateLiveWatermarkRequest()
+    }
+    response = NewUpdateLiveWatermarkResponse()
     err = c.Send(request, response)
     return
 }

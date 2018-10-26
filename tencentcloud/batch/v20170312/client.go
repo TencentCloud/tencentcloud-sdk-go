@@ -484,7 +484,7 @@ func NewModifyComputeEnvResponse() (response *ModifyComputeEnvResponse) {
     return
 }
 
-// 用于修改计算环境的期望节点数量
+// 用于修改计算环境属性
 func (c *Client) ModifyComputeEnv(request *ModifyComputeEnvRequest) (response *ModifyComputeEnvResponse, err error) {
     if request == nil {
         request = NewModifyComputeEnvRequest()

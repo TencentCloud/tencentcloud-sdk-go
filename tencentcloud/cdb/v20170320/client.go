@@ -158,6 +158,8 @@ func NewCreateDBImportJobResponse() (response *CreateDBImportJobResponse) {
 }
 
 // 本接口(CreateDBImportJob)用于创建云数据库数据导入任务。
+// 
+// 注意，用户进行数据导入任务的文件，必须提前上传到腾讯云。用户可在控制台进行文件导入，也可使用[上传导入文件](https://cloud.tencent.com/document/api/236/8595)进行文件导入。
 func (c *Client) CreateDBImportJob(request *CreateDBImportJobRequest) (response *CreateDBImportJobResponse, err error) {
     if request == nil {
         request = NewCreateDBImportJobRequest()
@@ -621,10 +623,7 @@ func NewDescribeDBInstancesResponse() (response *DescribeDBInstancesResponse) {
     return
 }
 
-// 本接口(DescribeDBInstances)用于查询云数据库实例列表，支持通过项目ID、实例ID、访问地址、实例状态等来筛选实例。
-// 
-// 1. 不指定任何过滤条件, 则默认返回20条实例记录，单次请求最多支持返回100条实例记录；
-// 2. 支持查询主实例、灾备实例和只读实例信息列表。
+// 本接口(DescribeDBInstances)用于查询云数据库实例列表，支持通过项目ID、实例ID、访问地址、实例状态等过滤条件来筛选实例。支持查询主实例、灾备实例和只读实例信息列表。
 func (c *Client) DescribeDBInstances(request *DescribeDBInstancesRequest) (response *DescribeDBInstancesResponse, err error) {
     if request == nil {
         request = NewDescribeDBInstancesRequest()
@@ -905,6 +904,31 @@ func (c *Client) DescribeTasks(request *DescribeTasksRequest) (response *Describ
         request = NewDescribeTasksRequest()
     }
     response = NewDescribeTasksResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeUploadedFilesRequest() (request *DescribeUploadedFilesRequest) {
+    request = &DescribeUploadedFilesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cdb", APIVersion, "DescribeUploadedFiles")
+    return
+}
+
+func NewDescribeUploadedFilesResponse() (response *DescribeUploadedFilesResponse) {
+    response = &DescribeUploadedFilesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口(DescribeUploadedFiles)用于查询用户导入的SQL文件列表。
+func (c *Client) DescribeUploadedFiles(request *DescribeUploadedFilesRequest) (response *DescribeUploadedFilesResponse, err error) {
+    if request == nil {
+        request = NewDescribeUploadedFilesRequest()
+    }
+    response = NewDescribeUploadedFilesResponse()
     err = c.Send(request, response)
     return
 }
@@ -1280,6 +1304,31 @@ func (c *Client) OpenWanService(request *OpenWanServiceRequest) (response *OpenW
         request = NewOpenWanServiceRequest()
     }
     response = NewOpenWanServiceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewRenewDBInstanceRequest() (request *RenewDBInstanceRequest) {
+    request = &RenewDBInstanceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cdb", APIVersion, "RenewDBInstance")
+    return
+}
+
+func NewRenewDBInstanceResponse() (response *RenewDBInstanceResponse) {
+    response = &RenewDBInstanceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口(RenewDBInstance)用于续费云数据库实例，仅支持付费模式为包年包月的实例。按量计费实例不需要续费。
+func (c *Client) RenewDBInstance(request *RenewDBInstanceRequest) (response *RenewDBInstanceResponse, err error) {
+    if request == nil {
+        request = NewRenewDBInstanceRequest()
+    }
+    response = NewRenewDBInstanceResponse()
     err = c.Send(request, response)
     return
 }

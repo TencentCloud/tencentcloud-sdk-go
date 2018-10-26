@@ -20,6 +20,21 @@ import (
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
+type ArrivedMallInfo struct {
+	// 到场时间
+	ArrivedTime *string `json:"ArrivedTime" name:"ArrivedTime"`
+	// 出场时间
+	LeaveTime *string `json:"LeaveTime" name:"LeaveTime"`
+	// 停留时间，秒
+	StaySecond *uint64 `json:"StaySecond" name:"StaySecond"`
+	// 到场抓拍图片
+	InCapPic *string `json:"InCapPic" name:"InCapPic"`
+	// 出场抓拍图片
+	OutCapPic *string `json:"OutCapPic" name:"OutCapPic"`
+	// 轨迹编码
+	TraceId *string `json:"TraceId" name:"TraceId"`
+}
+
 type CameraPersonInfo struct {
 	// 临时id，还未生成face id时返回
 	TempId *string `json:"TempId" name:"TempId"`
@@ -59,7 +74,7 @@ func (r *CreateAccountRequest) FromJsonString(s string) error {
 type CreateAccountResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -105,7 +120,7 @@ type CreateFacePictureResponse struct {
 		Status *int64 `json:"Status" name:"Status"`
 		// 图片url
 		PictureUrl *string `json:"PictureUrl" name:"PictureUrl"`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -117,6 +132,13 @@ func (r *CreateFacePictureResponse) ToJsonString() string {
 
 func (r *CreateFacePictureResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
+}
+
+type DailyTracePoint struct {
+	// 轨迹日期
+	TraceDate *string `json:"TraceDate" name:"TraceDate"`
+	// 轨迹点序列
+	TracePointSet []*PersonTracePoint `json:"TracePointSet" name:"TracePointSet" list`
 }
 
 type DescribeCameraPersonRequest struct {
@@ -161,7 +183,7 @@ type DescribeCameraPersonResponse struct {
 		PosId *string `json:"PosId" name:"PosId"`
 		// 抓取的顾客信息
 		Infos []*CameraPersonInfo `json:"Infos" name:"Infos" list`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -172,6 +194,98 @@ func (r *DescribeCameraPersonResponse) ToJsonString() string {
 }
 
 func (r *DescribeCameraPersonResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeClusterPersonArrivedMallRequest struct {
+	*tchttp.BaseRequest
+	// 卖场编码
+	MallId *string `json:"MallId" name:"MallId"`
+	// 客户编码
+	PersonId *string `json:"PersonId" name:"PersonId"`
+	// 查询开始时间
+	StartTime *string `json:"StartTime" name:"StartTime"`
+	// 查询结束时间
+	EndTime *string `json:"EndTime" name:"EndTime"`
+}
+
+func (r *DescribeClusterPersonArrivedMallRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeClusterPersonArrivedMallRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeClusterPersonArrivedMallResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+		// 卖场系统编码
+		MallId *string `json:"MallId" name:"MallId"`
+		// 卖场客户编码
+		MallCode *string `json:"MallCode" name:"MallCode"`
+		// 客户编码
+		PersonId *string `json:"PersonId" name:"PersonId"`
+		// 到场信息
+		ArrivedMallSet []*ArrivedMallInfo `json:"ArrivedMallSet" name:"ArrivedMallSet" list`
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeClusterPersonArrivedMallResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeClusterPersonArrivedMallResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeClusterPersonTraceRequest struct {
+	*tchttp.BaseRequest
+	// 卖场编码
+	MallId *string `json:"MallId" name:"MallId"`
+	// 客户编码
+	PersonId *string `json:"PersonId" name:"PersonId"`
+	// 查询开始时间
+	StartTime *string `json:"StartTime" name:"StartTime"`
+	// 查询结束时间
+	EndTime *string `json:"EndTime" name:"EndTime"`
+}
+
+func (r *DescribeClusterPersonTraceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeClusterPersonTraceRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeClusterPersonTraceResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+		// 卖场系统编码
+		MallId *string `json:"MallId" name:"MallId"`
+		// 卖场用户编码
+		MallCode *string `json:"MallCode" name:"MallCode"`
+		// 客户编码
+		PersonId *string `json:"PersonId" name:"PersonId"`
+		// 轨迹序列
+		TracePointSet []*DailyTracePoint `json:"TracePointSet" name:"TracePointSet" list`
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeClusterPersonTraceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeClusterPersonTraceResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -213,7 +327,7 @@ type DescribeFaceIdByTempIdResponse struct {
 		TempId *string `json:"TempId" name:"TempId"`
 		// 临时id对应的face id
 		FaceId *int64 `json:"FaceId" name:"FaceId"`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -259,7 +373,7 @@ type DescribeHistoryNetworkInfoResponse struct {
 	Response *struct {
 		// 网络状态数据
 		InstanceSet *NetworkHistoryInfo `json:"InstanceSet" name:"InstanceSet"`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -297,7 +411,7 @@ type DescribeNetworkInfoResponse struct {
 	Response *struct {
 		// 网络状态详情
 		InstanceSet *NetworkLastInfo `json:"InstanceSet" name:"InstanceSet"`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -308,6 +422,52 @@ func (r *DescribeNetworkInfoResponse) ToJsonString() string {
 }
 
 func (r *DescribeNetworkInfoResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribePersonArrivedMallRequest struct {
+	*tchttp.BaseRequest
+	// 卖场编码
+	MallId *string `json:"MallId" name:"MallId"`
+	// 客户编码
+	PersonId *string `json:"PersonId" name:"PersonId"`
+	// 查询开始时间
+	StartTime *string `json:"StartTime" name:"StartTime"`
+	// 查询结束时间
+	EndTime *string `json:"EndTime" name:"EndTime"`
+}
+
+func (r *DescribePersonArrivedMallRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribePersonArrivedMallRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribePersonArrivedMallResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+		// 卖场系统编码
+		MallId *string `json:"MallId" name:"MallId"`
+		// 卖场用户编码
+		MallCode *string `json:"MallCode" name:"MallCode"`
+		// 客户编码
+		PersonId *string `json:"PersonId" name:"PersonId"`
+		// 到场轨迹
+		ArrivedMallSet []*ArrivedMallInfo `json:"ArrivedMallSet" name:"ArrivedMallSet" list`
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribePersonArrivedMallResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribePersonArrivedMallResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -347,7 +507,7 @@ type DescribePersonInfoResponse struct {
 		TotalCount *uint64 `json:"TotalCount" name:"TotalCount"`
 		// 用户信息
 		PersonInfoSet []*PersonInfo `json:"PersonInfoSet" name:"PersonInfoSet" list`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -358,6 +518,136 @@ func (r *DescribePersonInfoResponse) ToJsonString() string {
 }
 
 func (r *DescribePersonInfoResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribePersonRequest struct {
+	*tchttp.BaseRequest
+	// 卖场编码
+	MallId *string `json:"MallId" name:"MallId"`
+	// 查询偏移
+	Offset *uint64 `json:"Offset" name:"Offset"`
+	// 查询数量，默认20，最大查询数量100
+	Limit *uint64 `json:"Limit" name:"Limit"`
+}
+
+func (r *DescribePersonRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribePersonRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribePersonResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+		// 总计客户数量
+		TotalCount *uint64 `json:"TotalCount" name:"TotalCount"`
+		// 客户信息
+		PersonSet []*PersonProfile `json:"PersonSet" name:"PersonSet" list`
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribePersonResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribePersonResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribePersonTraceDetailRequest struct {
+	*tchttp.BaseRequest
+	// 卖场编码
+	MallId *string `json:"MallId" name:"MallId"`
+	// 客户编码
+	PersonId *string `json:"PersonId" name:"PersonId"`
+	// 轨迹编码
+	TraceId *string `json:"TraceId" name:"TraceId"`
+}
+
+func (r *DescribePersonTraceDetailRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribePersonTraceDetailRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribePersonTraceDetailResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+		// 卖场编码
+		MallId *string `json:"MallId" name:"MallId"`
+		// 客户编码
+		PersonId *string `json:"PersonId" name:"PersonId"`
+		// 轨迹编码
+		TraceId *string `json:"TraceId" name:"TraceId"`
+		// 轨迹点坐标序列
+		CoordinateSet []*PersonCoordinate `json:"CoordinateSet" name:"CoordinateSet" list`
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribePersonTraceDetailResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribePersonTraceDetailResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribePersonTraceRequest struct {
+	*tchttp.BaseRequest
+	// 卖场编码
+	MallId *string `json:"MallId" name:"MallId"`
+	// 客户编码
+	PersonId *string `json:"PersonId" name:"PersonId"`
+	// 查询开始时间
+	StartTime *string `json:"StartTime" name:"StartTime"`
+	// 查询结束时间
+	EndTime *string `json:"EndTime" name:"EndTime"`
+}
+
+func (r *DescribePersonTraceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribePersonTraceRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribePersonTraceResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+		// 卖场系统编码
+		MallId *string `json:"MallId" name:"MallId"`
+		// 卖场用户编码
+		MallCode *string `json:"MallCode" name:"MallCode"`
+		// 客户编码
+		PersonId *string `json:"PersonId" name:"PersonId"`
+		// 轨迹列表
+		TraceRouteSet []*PersonTraceRoute `json:"TraceRouteSet" name:"TraceRouteSet" list`
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribePersonTraceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribePersonTraceResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -399,7 +689,7 @@ type DescribePersonVisitInfoResponse struct {
 		TotalCount *uint64 `json:"TotalCount" name:"TotalCount"`
 		// 用户到访明细
 		PersonVisitInfoSet []*PersonVisitInfo `json:"PersonVisitInfoSet" name:"PersonVisitInfoSet" list`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -449,7 +739,7 @@ type DescribeShopHourTrafficInfoResponse struct {
 		TotalCount *uint64 `json:"TotalCount" name:"TotalCount"`
 		// 分时客流信息
 		ShopHourTrafficInfoSet []*ShopHourTrafficInfo `json:"ShopHourTrafficInfoSet" name:"ShopHourTrafficInfoSet" list`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -487,7 +777,7 @@ type DescribeShopInfoResponse struct {
 		TotalCount *uint64 `json:"TotalCount" name:"TotalCount"`
 		// 门店列表信息
 		ShopInfoSet []*ShopInfo `json:"ShopInfoSet" name:"ShopInfoSet" list`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -537,7 +827,7 @@ type DescribeShopTrafficInfoResponse struct {
 		TotalCount *uint64 `json:"TotalCount" name:"TotalCount"`
 		// 客流信息列表
 		ShopDayTrafficInfoSet []*ShopDayTrafficInfo `json:"ShopDayTrafficInfoSet" name:"ShopDayTrafficInfoSet" list`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -593,7 +883,7 @@ type DescribeTrajectoryDataResponse struct {
 		Trajectory *int64 `json:"Trajectory" name:"Trajectory"`
 		// 返回动迹的具体信息
 		Data []*TrajectorySunData `json:"Data" name:"Data" list`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -643,7 +933,7 @@ type DescribeZoneFlowAgeInfoByZoneIdResponse struct {
 		ZoneName *string `json:"ZoneName" name:"ZoneName"`
 		// 当前年龄段占比
 		Data []*float64 `json:"Data" name:"Data" list`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -687,7 +977,7 @@ type DescribeZoneFlowAndStayTimeResponse struct {
 		ShopId *int64 `json:"ShopId" name:"ShopId"`
 		// 各区域人流数目和停留时长
 		Data []*ZoneFlowAndAvrStayTime `json:"Data" name:"Data" list`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -737,7 +1027,7 @@ type DescribeZoneFlowDailyByZoneIdResponse struct {
 		ZoneName *string `json:"ZoneName" name:"ZoneName"`
 		// 每日人流量
 		Data []*ZoneDayFlow `json:"Data" name:"Data" list`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -787,7 +1077,7 @@ type DescribeZoneFlowGenderAvrStayTimeByZoneIdResponse struct {
 		ZoneName *string `json:"ZoneName" name:"ZoneName"`
 		// 不同年龄段男女停留时间（返回格式为数组，从第 1 个到最后一个数据，年龄段分别为 0-17，18 - 23,  24 - 30, 31 - 40, 41 - 50, 51 - 60, 61 - 100）
 		Data []*ZoneAgeGroupAvrStayTime `json:"Data" name:"Data" list`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -839,7 +1129,7 @@ type DescribeZoneFlowGenderInfoByZoneIdResponse struct {
 		MalePercent *float64 `json:"MalePercent" name:"MalePercent"`
 		// 女性占比
 		FemalePercent *float64 `json:"FemalePercent" name:"FemalePercent"`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -889,7 +1179,7 @@ type DescribeZoneFlowHourlyByZoneIdResponse struct {
 		ZoneName *string `json:"ZoneName" name:"ZoneName"`
 		// 各个分时人流量
 		Data []*ZoneHourFlow `json:"Data" name:"Data" list`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -939,7 +1229,7 @@ type DescribeZoneTrafficInfoResponse struct {
 		TotalCount *uint64 `json:"TotalCount" name:"TotalCount"`
 		// 区域客流信息列表
 		ZoneTrafficInfoSet []*ZoneTrafficInfo `json:"ZoneTrafficInfoSet" name:"ZoneTrafficInfoSet" list`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -991,7 +1281,7 @@ func (r *ModifyPersonTagInfoRequest) FromJsonString(s string) error {
 type ModifyPersonTagInfoResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -1081,6 +1371,25 @@ type NetworkLastInfo struct {
 	Infos []*NetworkAndShopInfo `json:"Infos" name:"Infos" list`
 }
 
+type PersonCoordinate struct {
+	// CAD图X坐标
+	CADX *float64 `json:"CADX" name:"CADX"`
+	// CAD图Y坐标
+	CADY *float64 `json:"CADY" name:"CADY"`
+	// 抓拍时间点
+	CapTime *string `json:"CapTime" name:"CapTime"`
+	// 抓拍图片
+	CapPic *string `json:"CapPic" name:"CapPic"`
+	// 卖场区域类型
+	MallAreaType *int64 `json:"MallAreaType" name:"MallAreaType"`
+	// 坐标编号
+	PosId *int64 `json:"PosId" name:"PosId"`
+	// 门店编号
+	ShopId *int64 `json:"ShopId" name:"ShopId"`
+	// 事件
+	Event *string `json:"Event" name:"Event"`
+}
+
 type PersonInfo struct {
 	// 用户ID
 	PersonId *uint64 `json:"PersonId" name:"PersonId"`
@@ -1096,6 +1405,23 @@ type PersonInfo struct {
 	PersonPictureUrl *string `json:"PersonPictureUrl" name:"PersonPictureUrl"`
 }
 
+type PersonProfile struct {
+	// 客人编码
+	PersonId *string `json:"PersonId" name:"PersonId"`
+	// 性别
+	Gender *uint64 `json:"Gender" name:"Gender"`
+	// 年龄
+	Age *uint64 `json:"Age" name:"Age"`
+	// 首次到场时间
+	FirstArrivedTime *string `json:"FirstArrivedTime" name:"FirstArrivedTime"`
+	// 来访次数
+	ArrivedCount *uint64 `json:"ArrivedCount" name:"ArrivedCount"`
+	// 客户图片
+	PicUrl *string `json:"PicUrl" name:"PicUrl"`
+	// 置信度
+	Similarity *float64 `json:"Similarity" name:"Similarity"`
+}
+
 type PersonTagInfo struct {
 	// 顾客原类型
 	OldType *int64 `json:"OldType" name:"OldType"`
@@ -1103,6 +1429,28 @@ type PersonTagInfo struct {
 	NewType *int64 `json:"NewType" name:"NewType"`
 	// 顾客face id
 	PersonId *int64 `json:"PersonId" name:"PersonId"`
+}
+
+type PersonTracePoint struct {
+	// 卖场区域编码
+	MallAreaId *uint64 `json:"MallAreaId" name:"MallAreaId"`
+	// 门店编码
+	ShopId *uint64 `json:"ShopId" name:"ShopId"`
+	// 卖场区域类型
+	MallAreaType *uint64 `json:"MallAreaType" name:"MallAreaType"`
+	// 轨迹事件
+	TraceEventType *uint64 `json:"TraceEventType" name:"TraceEventType"`
+	// 轨迹事件发生时间点
+	TraceEventTime *string `json:"TraceEventTime" name:"TraceEventTime"`
+	// 抓拍图片
+	CapPic *string `json:"CapPic" name:"CapPic"`
+}
+
+type PersonTraceRoute struct {
+	// 轨迹编码
+	TraceId *string `json:"TraceId" name:"TraceId"`
+	// 轨迹点序列
+	TracePointSet []*PersonTracePoint `json:"TracePointSet" name:"TracePointSet" list`
 }
 
 type PersonVisitInfo struct {
@@ -1148,7 +1496,7 @@ func (r *RegisterCallbackRequest) FromJsonString(s string) error {
 type RegisterCallbackResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }

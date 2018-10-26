@@ -40,7 +40,7 @@ func (r *ApplySnapshotRequest) FromJsonString(s string) error {
 type ApplySnapshotResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -52,6 +52,15 @@ func (r *ApplySnapshotResponse) ToJsonString() string {
 
 func (r *ApplySnapshotResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
+}
+
+type AttachDetail struct {
+	// 实例ID。
+	InstanceId *string `json:"InstanceId" name:"InstanceId"`
+	// 实例已挂载数据盘的数量。
+	AttachedDiskCount *uint64 `json:"AttachedDiskCount" name:"AttachedDiskCount"`
+	// 实例最大可挂载数据盘的数量。
+	MaxAttachCount *uint64 `json:"MaxAttachCount" name:"MaxAttachCount"`
 }
 
 type AttachDisksRequest struct {
@@ -76,7 +85,7 @@ func (r *AttachDisksRequest) FromJsonString(s string) error {
 type AttachDisksResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -114,6 +123,8 @@ type CreateDisksRequest struct {
 	Encrypt *string `json:"Encrypt" name:"Encrypt"`
 	// 云盘绑定的标签。
 	Tags []*Tag `json:"Tags" name:"Tags" list`
+	// 可选参数，不传该参数则仅执行挂载操作。传入True时，新创建的云盘将设置为随云主机销毁模式，仅对按量计费云硬盘有效。
+	DeleteWithInstance *bool `json:"DeleteWithInstance" name:"DeleteWithInstance"`
 }
 
 func (r *CreateDisksRequest) ToJsonString() string {
@@ -130,7 +141,7 @@ type CreateDisksResponse struct {
 	Response *struct {
 		// 创建的云硬盘ID列表。
 		DiskIdSet []*string `json:"DiskIdSet" name:"DiskIdSet" list`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -166,7 +177,7 @@ type CreateSnapshotResponse struct {
 	Response *struct {
 		// 新创建的快照ID。
 		SnapshotId *string `json:"SnapshotId" name:"SnapshotId"`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -198,7 +209,7 @@ func (r *DeleteSnapshotsRequest) FromJsonString(s string) error {
 type DeleteSnapshotsResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -246,7 +257,7 @@ type DescribeDiskConfigQuotaResponse struct {
 	Response *struct {
 		// 云盘配置列表。
 		DiskConfigSet []*DiskConfig `json:"DiskConfigSet" name:"DiskConfigSet" list`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -260,11 +271,46 @@ func (r *DescribeDiskConfigQuotaResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeDiskOperationLogsRequest struct {
+	*tchttp.BaseRequest
+	// 过滤条件。支持以下条件：
+	// <li>disk-id - Array of String - 是否必填：是 - 按云盘ID过滤，每个请求最多可指定10个云盘ID。
+	Filters []*Filter `json:"Filters" name:"Filters" list`
+}
+
+func (r *DescribeDiskOperationLogsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeDiskOperationLogsRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeDiskOperationLogsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+		// 云盘的操作日志列表。
+		DiskOperationLogSet []*DiskOperationLog `json:"DiskOperationLogSet" name:"DiskOperationLogSet" list`
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeDiskOperationLogsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeDiskOperationLogsResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeDisksRequest struct {
 	*tchttp.BaseRequest
 	// 按照一个或者多个云硬盘ID查询。云硬盘ID形如：`disk-11112222`，此参数的具体格式可参考API[简介](/document/product/362/15633)的ids.N一节）。参数不支持同时指定`DiskIds`和`Filters`。
 	DiskIds []*string `json:"DiskIds" name:"DiskIds" list`
-	// 过滤条件。参数不支持同时指定`DiskIds`和`Filters`。<br><li>disk-usage - Array of String - 是否必填：否 -（过滤条件）按云盘类型过滤。 (SYSTEM_DISK：表示系统盘 | DATA_DISK：表示数据盘)<br><li>disk-charge-type - Array of String - 是否必填：否 -（过滤条件）按照云硬盘计费模式过滤。 (PREPAID：表示预付费，即包年包月 | POSTPAID_BY_HOUR：表示后付费，即按量计费。)<br><li>portable - Array of String - 是否必填：否 -（过滤条件）按是否为弹性云盘过滤。 (TRUE：表示弹性云盘 | FALSE：表示非弹性云盘。)<br><li>project-id - Array of Integer - 是否必填：否 -（过滤条件）按云硬盘所属项目ID过滤。<br><li>disk-id - Array of String - 是否必填：否 -（过滤条件）按照云硬盘ID过滤。云盘ID形如：`disk-11112222`。<br><li>disk-name - Array of String - 是否必填：否 -（过滤条件）按照云盘名称过滤。<br><li>disk-type - Array of String - 是否必填：否 -（过滤条件）按照云盘介质类型过滤。(CLOUD_BASIC：表示普通云硬盘 | CLOUD_PREMIUM：表示高性能云硬盘。| CLOUD_SSD：SSD表示SSD云硬盘。)<br><li>disk-state - Array of String - 是否必填：否 -（过滤条件）按照云盘状态过滤。(UNATTACHED：未挂载 | ATTACHING：挂载中 | ATTACHED：已挂载 | DETACHING：解挂中 | EXPANDING：扩容中 | ROLLBACKING：回滚中 | TORECYCLE：待回收。)<br><li>instance-id - Array of String - 是否必填：否 -（过滤条件）按照云盘挂载的云主机实例ID过滤。可根据此参数查询挂载在指定云主机下的云硬盘。<br><li>zone - Array of String - 是否必填：否 -（过滤条件）按照[可用区](/document/api/213/9452#zone)过滤。<br><li>instance-ip-address - Array of String - 是否必填：否 -（过滤条件）按云盘所挂载云主机的内网或外网IP过滤。<br><li>instance-name - Array of String - 是否必填：否 -（过滤条件）按云盘所挂载的实例名称过滤。<br><li>tag - Array of [Tag](/document/product/362/15669) - 是否必填：否 -（过滤条件）按云盘绑定的标签过滤。
+	// 过滤条件。参数不支持同时指定`DiskIds`和`Filters`。<br><li>disk-usage - Array of String - 是否必填：否 -（过滤条件）按云盘类型过滤。 (SYSTEM_DISK：表示系统盘 | DATA_DISK：表示数据盘)<br><li>disk-charge-type - Array of String - 是否必填：否 -（过滤条件）按照云硬盘计费模式过滤。 (PREPAID：表示预付费，即包年包月 | POSTPAID_BY_HOUR：表示后付费，即按量计费。)<br><li>portable - Array of String - 是否必填：否 -（过滤条件）按是否为弹性云盘过滤。 (TRUE：表示弹性云盘 | FALSE：表示非弹性云盘。)<br><li>project-id - Array of Integer - 是否必填：否 -（过滤条件）按云硬盘所属项目ID过滤。<br><li>disk-id - Array of String - 是否必填：否 -（过滤条件）按照云硬盘ID过滤。云盘ID形如：`disk-11112222`。<br><li>disk-name - Array of String - 是否必填：否 -（过滤条件）按照云盘名称过滤。<br><li>disk-type - Array of String - 是否必填：否 -（过滤条件）按照云盘介质类型过滤。(CLOUD_BASIC：表示普通云硬盘 | CLOUD_PREMIUM：表示高性能云硬盘。| CLOUD_SSD：SSD表示SSD云硬盘。)<br><li>disk-state - Array of String - 是否必填：否 -（过滤条件）按照云盘状态过滤。(UNATTACHED：未挂载 | ATTACHING：挂载中 | ATTACHED：已挂载 | DETACHING：解挂中 | EXPANDING：扩容中 | ROLLBACKING：回滚中 | TORECYCLE：待回收。)<br><li>instance-id - Array of String - 是否必填：否 -（过滤条件）按照云盘挂载的云主机实例ID过滤。可根据此参数查询挂载在指定云主机下的云硬盘。<br><li>zone - Array of String - 是否必填：否 -（过滤条件）按照[可用区](/document/api/213/9452#zone)过滤。<br><li>instance-ip-address - Array of String - 是否必填：否 -（过滤条件）按云盘所挂载云主机的内网或外网IP过滤。<br><li>instance-name - Array of String - 是否必填：否 -（过滤条件）按云盘所挂载的实例名称过滤。<br><li>tag-key - Array of String - 是否必填：否 -（过滤条件）按照标签键进行过滤。<br><li>tag-value - Array of String - 是否必填：否 -（过滤条件）照标签值进行过滤。<br><li>tag:tag-key - Array of String - 是否必填：否 -（过滤条件）按照标签键值对进行过滤。 tag-key使用具体的标签键进行替换。
 	Filters []*Filter `json:"Filters" name:"Filters" list`
 	// 偏移量，默认为0。关于`Offset`的更进一步介绍请参考API[简介](/document/product/362/15633)中的相关小节。
 	Offset *uint64 `json:"Offset" name:"Offset"`
@@ -294,7 +340,7 @@ type DescribeDisksResponse struct {
 		TotalCount *uint64 `json:"TotalCount" name:"TotalCount"`
 		// 云硬盘的详细信息列表。
 		DiskSet []*Disk `json:"DiskSet" name:"DiskSet" list`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -326,11 +372,9 @@ func (r *DescribeInstancesDiskNumRequest) FromJsonString(s string) error {
 type DescribeInstancesDiskNumResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
-		// 当前云服务器已挂载弹性云盘数量。
-		AttachedDiskCount *uint64 `json:"AttachedDiskCount" name:"AttachedDiskCount"`
-		// 当前云服务器最大可挂载弹性云盘数量。
-		MaxAttachCount *uint64 `json:"MaxAttachCount" name:"MaxAttachCount"`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 各个云服务器已挂载和可挂载弹性云盘的数量。
+		AttachDetail []*AttachDetail `json:"AttachDetail" name:"AttachDetail" list`
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -376,7 +420,7 @@ type DescribeSnapshotsResponse struct {
 		TotalCount *uint64 `json:"TotalCount" name:"TotalCount"`
 		// 快照的详情列表。
 		SnapshotSet []*Snapshot `json:"SnapshotSet" name:"SnapshotSet" list`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -408,7 +452,7 @@ func (r *DetachDisksRequest) FromJsonString(s string) error {
 type DetachDisksResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -466,13 +510,15 @@ type Disk struct {
 	// 判断预付费的云盘是否支持主动退还。<br><li>true:支持主动退还<br><li>false:不支持主动退还。
 	IsReturnable *bool `json:"IsReturnable" name:"IsReturnable"`
 	// 预付费云盘在不支持主动退还的情况下，该参数表明不支持主动退还的具体原因。取值范围：<br><li>1：云硬盘已经退还<br><li>2：云硬盘已过期<br><li>3：云盘不支持退还<br><li>8：超过可退还数量的限制。
-	ReturnFailCode *uint64 `json:"ReturnFailCode" name:"ReturnFailCode"`
+	ReturnFailCode *int64 `json:"ReturnFailCode" name:"ReturnFailCode"`
 	// 云盘关联的定期快照ID。只有在调用DescribeDisks接口时，入参ReturnBindAutoSnapshotPolicy取值为TRUE才会返回该参数。
 	AutoSnapshotPolicyIds []*string `json:"AutoSnapshotPolicyIds" name:"AutoSnapshotPolicyIds" list`
 	// 与云盘绑定的标签，云盘未绑定标签则取值为空。
 	Tags []*Tag `json:"Tags" name:"Tags" list`
 	// 云盘是否与挂载的实例一起销毁。<br><li>true:销毁实例时会同时销毁云盘，只支持按小时后付费云盘。<br><li>false：销毁实例时不销毁云盘。
 	DeleteWithInstance *bool `json:"DeleteWithInstance" name:"DeleteWithInstance"`
+	// 当前时间距离盘到期的天数（仅对预付费盘有意义）。
+	DifferDaysOfDeadline *int64 `json:"DifferDaysOfDeadline" name:"DifferDaysOfDeadline"`
 }
 
 type DiskChargePrepaid struct {
@@ -503,6 +549,33 @@ type DiskConfig struct {
 	DeviceClass *string `json:"DeviceClass" name:"DeviceClass"`
 	// 实例机型系列。详见[实例类型](https://cloud.tencent.com/document/product/213/11518)
 	InstanceFamily *string `json:"InstanceFamily" name:"InstanceFamily"`
+}
+
+type DiskOperationLog struct {
+	// 操作者的UIN。
+	Operator *string `json:"Operator" name:"Operator"`
+	// 操作类型。取值范围：
+	// CBS_OPERATION_ATTACH：挂载云硬盘
+	// CBS_OPERATION_DETACH：解挂云硬盘
+	// CBS_OPERATION_RENEW：续费
+	// CBS_OPERATION_EXPAND：扩容
+	// CBS_OPERATION_CREATE：创建
+	// CBS_OPERATION_ISOLATE：隔离
+	// CBS_OPERATION_MODIFY：修改云硬盘属性
+	// ASP_OPERATION_BIND：关联定期快照策略
+	// ASP_OPERATION_UNBIND：取消关联定期快照策略
+	Operation *string `json:"Operation" name:"Operation"`
+	// 操作的云盘ID。
+	DiskId *string `json:"DiskId" name:"DiskId"`
+	// 操作的状态。取值范围：
+	// SUCCESS :表示操作成功 
+	// FAILED :表示操作失败 
+	// PROCESSING :表示操作中。
+	OperationState *string `json:"OperationState" name:"OperationState"`
+	// 开始时间。
+	StartTime *string `json:"StartTime" name:"StartTime"`
+	// 结束时间。
+	EndTime *string `json:"EndTime" name:"EndTime"`
 }
 
 type Filter struct {
@@ -542,7 +615,7 @@ type InquiryPriceCreateDisksResponse struct {
 	Response *struct {
 		// 描述了新购云盘的价格。
 		DiskPrice *Price `json:"DiskPrice" name:"DiskPrice"`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -581,8 +654,8 @@ type InquiryPriceRenewDisksResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 		// 描述了续费云盘的价格。
-		DiskPrice *Price `json:"DiskPrice" name:"DiskPrice"`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		DiskPrice *PrepayPrice `json:"DiskPrice" name:"DiskPrice"`
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -619,8 +692,8 @@ type InquiryPriceResizeDiskResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 		// 描述了扩容云盘的价格。
-		DiskPrice *Price `json:"DiskPrice" name:"DiskPrice"`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		DiskPrice *PrepayPrice `json:"DiskPrice" name:"DiskPrice"`
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -660,7 +733,7 @@ func (r *ModifyDiskAttributesRequest) FromJsonString(s string) error {
 type ModifyDiskAttributesResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -694,7 +767,7 @@ func (r *ModifyDisksRenewFlagRequest) FromJsonString(s string) error {
 type ModifyDisksRenewFlagResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -730,7 +803,7 @@ func (r *ModifySnapshotAttributeRequest) FromJsonString(s string) error {
 type ModifySnapshotAttributeResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -749,6 +822,13 @@ type Placement struct {
 	Zone *string `json:"Zone" name:"Zone"`
 	// 实例所属项目ID。该参数可以通过调用 [DescribeProject](/document/api/378/4400) 的返回值中的 projectId 字段来获取。不填为默认项目。
 	ProjectId *uint64 `json:"ProjectId" name:"ProjectId"`
+}
+
+type PrepayPrice struct {
+	// 预付费云盘或快照预支费用的原价，单位：元。
+	OriginalPrice *float64 `json:"OriginalPrice" name:"OriginalPrice"`
+	// 预付费云盘或快照预支费用的折扣价，单位：元。
+	DiscountPrice *float64 `json:"DiscountPrice" name:"DiscountPrice"`
 }
 
 type Price struct {
@@ -782,7 +862,7 @@ func (r *RenewDiskRequest) FromJsonString(s string) error {
 type RenewDiskResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -816,7 +896,7 @@ func (r *ResizeDiskRequest) FromJsonString(s string) error {
 type ResizeDiskResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -886,7 +966,7 @@ func (r *TerminateDisksRequest) FromJsonString(s string) error {
 type TerminateDisksResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }

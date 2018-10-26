@@ -59,7 +59,7 @@ type AllocateHostsResponse struct {
 	Response *struct {
 		// 新创建云子机的实例id列表。
 		HostIdSet []*string `json:"HostIdSet" name:"HostIdSet" list`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -95,7 +95,7 @@ func (r *AssociateInstancesKeyPairsRequest) FromJsonString(s string) error {
 type AssociateInstancesKeyPairsResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -150,7 +150,7 @@ type CreateDisasterRecoverGroupResponse struct {
 		CurrentNum *int64 `json:"CurrentNum" name:"CurrentNum"`
 		// 置放群组创建时间。
 		CreateTime *string `json:"CreateTime" name:"CreateTime"`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -192,7 +192,7 @@ func (r *CreateImageRequest) FromJsonString(s string) error {
 type CreateImageResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -231,7 +231,7 @@ type CreateKeyPairResponse struct {
 	Response *struct {
 		// 密钥对信息。
 		KeyPair *KeyPair `json:"KeyPair" name:"KeyPair"`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -278,7 +278,7 @@ func (r *DeleteDisasterRecoverGroupsRequest) FromJsonString(s string) error {
 type DeleteDisasterRecoverGroupsResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -310,7 +310,7 @@ func (r *DeleteImagesRequest) FromJsonString(s string) error {
 type DeleteImagesResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -342,7 +342,7 @@ func (r *DeleteKeyPairsRequest) FromJsonString(s string) error {
 type DeleteKeyPairsResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -382,7 +382,7 @@ type DescribeDisasterRecoverGroupQuotaResponse struct {
 		CvmInSwGroupQuota *int64 `json:"CvmInSwGroupQuota" name:"CvmInSwGroupQuota"`
 		// 机架类型容灾组内实例的配额数。
 		CvmInRackGroupQuota *int64 `json:"CvmInRackGroupQuota" name:"CvmInRackGroupQuota"`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -424,7 +424,7 @@ type DescribeDisasterRecoverGroupsResponse struct {
 		DisasterRecoverGroupSet []*DisasterRecoverGroup `json:"DisasterRecoverGroupSet" name:"DisasterRecoverGroupSet" list`
 		// 用户置放群组总量。
 		TotalCount *int64 `json:"TotalCount" name:"TotalCount"`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -469,7 +469,7 @@ type DescribeHostsResponse struct {
 		TotalCount *uint64 `json:"TotalCount" name:"TotalCount"`
 		// cdh实例详细信息列表
 		HostSet []*HostItem `json:"HostSet" name:"HostSet" list`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -501,7 +501,7 @@ type DescribeImageQuotaResponse struct {
 	Response *struct {
 		// 账户的镜像配额
 		ImageNumQuota *int64 `json:"ImageNumQuota" name:"ImageNumQuota"`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -535,7 +535,7 @@ type DescribeImageSharePermissionResponse struct {
 	Response *struct {
 		// 镜像共享信息
 		SharePermissionSet []*SharePermission `json:"SharePermissionSet" name:"SharePermissionSet" list`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -582,7 +582,7 @@ type DescribeImagesResponse struct {
 		ImageSet []*Image `json:"ImageSet" name:"ImageSet" list`
 		// 符合要求的镜像数量。
 		TotalCount *int64 `json:"TotalCount" name:"TotalCount"`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -616,7 +616,7 @@ type DescribeImportImageOsResponse struct {
 		ImportImageOsListSupported *ImageOsList `json:"ImportImageOsListSupported" name:"ImportImageOsListSupported"`
 		// 支持的导入镜像的操作系统版本。
 		ImportImageOsVersionSet []*OsVersion `json:"ImportImageOsVersionSet" name:"ImportImageOsVersionSet" list`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -648,7 +648,7 @@ type DescribeInstanceFamilyConfigsResponse struct {
 	Response *struct {
 		// 实例机型组配置的列表信息
 		InstanceFamilyConfigSet []*InstanceFamilyConfig `json:"InstanceFamilyConfigSet" name:"InstanceFamilyConfigSet" list`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -682,7 +682,7 @@ type DescribeInstanceInternetBandwidthConfigsResponse struct {
 	Response *struct {
 		// 带宽配置信息列表。
 		InternetBandwidthConfigSet []*InternetBandwidthConfig `json:"InternetBandwidthConfigSet" name:"InternetBandwidthConfigSet" list`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -719,7 +719,7 @@ type DescribeInstanceTypeConfigsResponse struct {
 	Response *struct {
 		// 实例机型配置列表。
 		InstanceTypeConfigSet []*InstanceTypeConfig `json:"InstanceTypeConfigSet" name:"InstanceTypeConfigSet" list`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -753,7 +753,7 @@ type DescribeInstanceVncUrlResponse struct {
 	Response *struct {
 		// 实例的管理终端地址。
 		InstanceVncUrl *string `json:"InstanceVncUrl" name:"InstanceVncUrl"`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -809,7 +809,7 @@ type DescribeInstancesResponse struct {
 		TotalCount *int64 `json:"TotalCount" name:"TotalCount"`
 		// 实例详细信息列表。
 		InstanceSet []*Instance `json:"InstanceSet" name:"InstanceSet" list`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -849,7 +849,7 @@ type DescribeInstancesStatusResponse struct {
 		TotalCount *int64 `json:"TotalCount" name:"TotalCount"`
 		// [实例状态](https://cloud.tencent.com/document/api/213/15738) 列表。
 		InstanceStatusSet []*InstanceStatus `json:"InstanceStatusSet" name:"InstanceStatusSet" list`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -881,7 +881,7 @@ type DescribeInternetChargeTypeConfigsResponse struct {
 	Response *struct {
 		// 网络计费类型配置。
 		InternetChargeTypeConfigSet []*InternetChargeTypeConfig `json:"InternetChargeTypeConfigSet" name:"InternetChargeTypeConfigSet" list`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -925,7 +925,7 @@ type DescribeKeyPairsResponse struct {
 		TotalCount *int64 `json:"TotalCount" name:"TotalCount"`
 		// 密钥对详细信息列表。
 		KeyPairSet []*KeyPair `json:"KeyPairSet" name:"KeyPairSet" list`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -959,7 +959,7 @@ type DescribeRegionsResponse struct {
 		TotalCount *uint64 `json:"TotalCount" name:"TotalCount"`
 		// 地域列表信息
 		RegionSet []*RegionInfo `json:"RegionSet" name:"RegionSet" list`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -1001,7 +1001,7 @@ type DescribeZoneInstanceConfigInfosResponse struct {
 	Response *struct {
 		// 可用区机型配置列表。
 		InstanceTypeQuotaSet []*InstanceTypeQuotaItem `json:"InstanceTypeQuotaSet" name:"InstanceTypeQuotaSet" list`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -1031,11 +1031,11 @@ func (r *DescribeZonesRequest) FromJsonString(s string) error {
 type DescribeZonesResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
-		// 可用区数量
+		// 可用区数量。
 		TotalCount *uint64 `json:"TotalCount" name:"TotalCount"`
-		// 可用区列表信息
+		// 可用区列表信息。
 		ZoneSet []*ZoneInfo `json:"ZoneSet" name:"ZoneSet" list`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -1071,7 +1071,7 @@ func (r *DisassociateInstancesKeyPairsRequest) FromJsonString(s string) error {
 type DisassociateInstancesKeyPairsResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -1237,7 +1237,7 @@ func (r *ImportImageRequest) FromJsonString(s string) error {
 type ImportImageResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -1277,7 +1277,7 @@ type ImportKeyPairResponse struct {
 	Response *struct {
 		// 密钥对ID。
 		KeyId *string `json:"KeyId" name:"KeyId"`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -1315,7 +1315,7 @@ type InquiryPriceModifyInstancesChargeTypeResponse struct {
 	Response *struct {
 		// 该参数表示对应配置实例转换计费模式的价格。
 		Price *Price `json:"Price" name:"Price"`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -1355,7 +1355,7 @@ type InquiryPriceRenewInstancesResponse struct {
 	Response *struct {
 		// 该参数表示对应配置实例的价格。
 		Price *Price `json:"Price" name:"Price"`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -1397,7 +1397,7 @@ type InquiryPriceResetInstanceResponse struct {
 	Response *struct {
 		// 该参数表示重装成对应配置实例的价格。
 		Price *Price `json:"Price" name:"Price"`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -1437,7 +1437,7 @@ type InquiryPriceResetInstancesInternetMaxBandwidthResponse struct {
 	Response *struct {
 		// 该参数表示带宽调整为对应大小之后的价格。
 		Price *Price `json:"Price" name:"Price"`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -1475,7 +1475,7 @@ type InquiryPriceResetInstancesTypeResponse struct {
 	Response *struct {
 		// 该参数表示调整成对应机型实例的价格。
 		Price *Price `json:"Price" name:"Price"`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -1513,7 +1513,7 @@ type InquiryPriceResizeInstanceDisksResponse struct {
 	Response *struct {
 		// 该参数表示磁盘扩容成对应配置的价格。
 		Price *Price `json:"Price" name:"Price"`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -1581,7 +1581,7 @@ type InquiryPriceRunInstancesResponse struct {
 	Response *struct {
 		// 该参数表示对应配置实例的价格。
 		Price *Price `json:"Price" name:"Price"`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -1823,7 +1823,7 @@ func (r *ModifyDisasterRecoverGroupAttributeRequest) FromJsonString(s string) er
 type ModifyDisasterRecoverGroupAttributeResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -1859,7 +1859,7 @@ func (r *ModifyHostsAttributeRequest) FromJsonString(s string) error {
 type ModifyHostsAttributeResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -1895,7 +1895,7 @@ func (r *ModifyImageAttributeRequest) FromJsonString(s string) error {
 type ModifyImageAttributeResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -1931,7 +1931,7 @@ func (r *ModifyImageSharePermissionRequest) FromJsonString(s string) error {
 type ModifyImageSharePermissionResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -1951,7 +1951,7 @@ type ModifyInstancesAttributeRequest struct {
 	InstanceIds []*string `json:"InstanceIds" name:"InstanceIds" list`
 	// 实例名称。可任意命名，但不得超过60个字符。
 	InstanceName *string `json:"InstanceName" name:"InstanceName"`
-	// 指定实例的安全组Id列表。
+	// 指定实例的安全组Id列表，子机将重新关联指定列表的安全组，原本关联的安全组会被解绑。
 	SecurityGroups []*string `json:"SecurityGroups" name:"SecurityGroups" list`
 }
 
@@ -1967,7 +1967,7 @@ func (r *ModifyInstancesAttributeRequest) FromJsonString(s string) error {
 type ModifyInstancesAttributeResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -2003,7 +2003,7 @@ func (r *ModifyInstancesChargeTypeRequest) FromJsonString(s string) error {
 type ModifyInstancesChargeTypeResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -2037,7 +2037,7 @@ func (r *ModifyInstancesProjectRequest) FromJsonString(s string) error {
 type ModifyInstancesProjectResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -2071,7 +2071,7 @@ func (r *ModifyInstancesRenewFlagRequest) FromJsonString(s string) error {
 type ModifyInstancesRenewFlagResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -2107,7 +2107,7 @@ func (r *ModifyInstancesVpcAttributeRequest) FromJsonString(s string) error {
 type ModifyInstancesVpcAttributeResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -2143,7 +2143,7 @@ func (r *ModifyKeyPairAttributeRequest) FromJsonString(s string) error {
 type ModifyKeyPairAttributeResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -2202,7 +2202,7 @@ func (r *RebootInstancesRequest) FromJsonString(s string) error {
 type RebootInstancesResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -2245,7 +2245,7 @@ func (r *RenewHostsRequest) FromJsonString(s string) error {
 type RenewHostsResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -2281,7 +2281,7 @@ func (r *RenewInstancesRequest) FromJsonString(s string) error {
 type RenewInstancesResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -2321,7 +2321,7 @@ func (r *ResetInstanceRequest) FromJsonString(s string) error {
 type ResetInstanceResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -2359,7 +2359,7 @@ func (r *ResetInstancesInternetMaxBandwidthRequest) FromJsonString(s string) err
 type ResetInstancesInternetMaxBandwidthResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -2397,7 +2397,7 @@ func (r *ResetInstancesPasswordRequest) FromJsonString(s string) error {
 type ResetInstancesPasswordResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -2433,7 +2433,7 @@ func (r *ResetInstancesTypeRequest) FromJsonString(s string) error {
 type ResetInstancesTypeResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -2469,7 +2469,7 @@ func (r *ResizeInstanceDisksRequest) FromJsonString(s string) error {
 type ResizeInstanceDisksResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -2544,7 +2544,7 @@ type RunInstancesResponse struct {
 	Response *struct {
 		// 当通过本接口来创建实例时会返回该参数，表示一个或多个实例`ID`。返回实例`ID`列表并不代表实例创建成功，可根据 [DescribeInstances](https://cloud.tencent.com/document/api/213/15728) 接口查询返回的InstancesSet中对应实例的`ID`的状态来判断创建是否完成；如果实例状态由“准备中”变为“正在运行”，则为创建成功。
 		InstanceIdSet []*string `json:"InstanceIdSet" name:"InstanceIdSet" list`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -2600,7 +2600,7 @@ func (r *StartInstancesRequest) FromJsonString(s string) error {
 type StartInstancesResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -2636,7 +2636,7 @@ func (r *StopInstancesRequest) FromJsonString(s string) error {
 type StopInstancesResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -2679,7 +2679,7 @@ func (r *SyncImagesRequest) FromJsonString(s string) error {
 type SyncImagesResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -2734,7 +2734,7 @@ func (r *TerminateInstancesRequest) FromJsonString(s string) error {
 type TerminateInstancesResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }

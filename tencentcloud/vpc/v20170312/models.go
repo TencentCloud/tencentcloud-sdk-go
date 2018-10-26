@@ -40,7 +40,7 @@ func (r *AcceptAttachCcnInstancesRequest) FromJsonString(s string) error {
 type AcceptAttachCcnInstancesResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -85,7 +85,7 @@ func (r *AddBandwidthPackageResourcesRequest) FromJsonString(s string) error {
 type AddBandwidthPackageResourcesResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -177,7 +177,7 @@ type AllocateAddressesResponse struct {
 	Response *struct {
 		// 申请到的 EIP 的唯一 ID 列表。
 		AddressSet []*string `json:"AddressSet" name:"AddressSet" list`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -215,7 +215,7 @@ type AssignPrivateIpAddressesResponse struct {
 	Response *struct {
 		// 内网IP详细信息。
 		PrivateIpAddressSet []*PrivateIpAddressSpecification `json:"PrivateIpAddressSet" name:"PrivateIpAddressSet" list`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -233,11 +233,11 @@ type AssociateAddressRequest struct {
 	*tchttp.BaseRequest
 	// 标识 EIP 的唯一 ID。EIP 唯一 ID 形如：`eip-11112222`。
 	AddressId *string `json:"AddressId" name:"AddressId"`
-	// 要绑定的实例 ID。实例 ID 形如：`ins-11112222`。可通过登录[控制台](https://console.cloud.tencent.com/cvm)查询，也可通过 [DescribeInstances](https://cloud.tencent.com/document/api/213/9389) 接口返回值中的`InstanceId`获取。
+	// 要绑定的实例 ID。实例 ID 形如：`ins-11112222`。可通过登录[控制台](https://console.cloud.tencent.com/cvm)查询，也可通过 [DescribeInstances](https://cloud.tencent.com/document/api/213/15728) 接口返回值中的`InstanceId`获取。
 	InstanceId *string `json:"InstanceId" name:"InstanceId"`
-	// 要绑定的弹性网卡 ID。 弹性网卡 ID 形如：`eni-11112222`。`NetworkInterfaceId` 与 `InstanceId` 不可同时指定。弹性网卡 ID 可通过登录[控制台](https://console.cloud.tencent.com/vpc/eni)查询，也可通过[DescribeNetworkInterfaces](https://cloud.tencent.com/document/api/215/4814)接口返回值中的`networkInterfaceId`获取。
+	// 要绑定的弹性网卡 ID。 弹性网卡 ID 形如：`eni-11112222`。`NetworkInterfaceId` 与 `InstanceId` 不可同时指定。弹性网卡 ID 可通过登录[控制台](https://console.cloud.tencent.com/vpc/eni)查询，也可通过[DescribeNetworkInterfaces](https://cloud.tencent.com/document/api/215/15817)接口返回值中的`networkInterfaceId`获取。
 	NetworkInterfaceId *string `json:"NetworkInterfaceId" name:"NetworkInterfaceId"`
-	// 要绑定的内网 IP。如果指定了 `NetworkInterfaceId` 则也必须指定 `PrivateIpAddress` ，表示将 EIP 绑定到指定弹性网卡的指定内网 IP 上。同时要确保指定的 `PrivateIpAddress` 是指定的 `NetworkInterfaceId` 上的一个内网 IP。指定弹性网卡的内网 IP 可通过登录[控制台](https://console.cloud.tencent.com/vpc/eni)查询，也可通过[DescribeNetworkInterfaces](https://cloud.tencent.com/document/api/215/4814)接口返回值中的`privateIpAddress`获取。
+	// 要绑定的内网 IP。如果指定了 `NetworkInterfaceId` 则也必须指定 `PrivateIpAddress` ，表示将 EIP 绑定到指定弹性网卡的指定内网 IP 上。同时要确保指定的 `PrivateIpAddress` 是指定的 `NetworkInterfaceId` 上的一个内网 IP。指定弹性网卡的内网 IP 可通过登录[控制台](https://console.cloud.tencent.com/vpc/eni)查询，也可通过[DescribeNetworkInterfaces](https://cloud.tencent.com/document/api/215/15817)接口返回值中的`privateIpAddress`获取。
 	PrivateIpAddress *string `json:"PrivateIpAddress" name:"PrivateIpAddress"`
 }
 
@@ -253,7 +253,7 @@ func (r *AssociateAddressRequest) FromJsonString(s string) error {
 type AssociateAddressResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -289,7 +289,7 @@ func (r *AttachCcnInstancesRequest) FromJsonString(s string) error {
 type AttachCcnInstancesResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -323,7 +323,7 @@ func (r *AttachClassicLinkVpcRequest) FromJsonString(s string) error {
 type AttachClassicLinkVpcResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -357,7 +357,7 @@ func (r *AttachNetworkInterfaceRequest) FromJsonString(s string) error {
 type AttachNetworkInterfaceResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -386,6 +386,8 @@ type BandwidthPackage struct {
 	Status *string `json:"Status" name:"Status"`
 	// 带宽包资源信息
 	ResourceSet []*Resource `json:"ResourceSet" name:"ResourceSet" list`
+	// 带宽包限速大小。单位：Mbps，-1表示不限速。
+	Bandwidth *int64 `json:"Bandwidth" name:"Bandwidth"`
 }
 
 type CCN struct {
@@ -497,7 +499,7 @@ type CreateAddressTemplateGroupResponse struct {
 	Response *struct {
 		// IP地址模板集合对象。
 		AddressTemplateGroup *AddressTemplateGroup `json:"AddressTemplateGroup" name:"AddressTemplateGroup"`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -533,7 +535,7 @@ type CreateAddressTemplateResponse struct {
 	Response *struct {
 		// IP地址模板对象。
 		AddressTemplate *AddressTemplate `json:"AddressTemplate" name:"AddressTemplate"`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -557,6 +559,8 @@ type CreateBandwidthPackageRequest struct {
 	BandwidthPackageName *string `json:"BandwidthPackageName" name:"BandwidthPackageName"`
 	// 带宽包数量(非上移账户只能填1)
 	BandwidthPackageCount *uint64 `json:"BandwidthPackageCount" name:"BandwidthPackageCount"`
+	// 带宽包限速大小。单位：Mbps，-1表示不限速。
+	InternetMaxBandwidth *int64 `json:"InternetMaxBandwidth" name:"InternetMaxBandwidth"`
 }
 
 func (r *CreateBandwidthPackageRequest) ToJsonString() string {
@@ -575,7 +579,7 @@ type CreateBandwidthPackageResponse struct {
 		BandwidthPackageId *string `json:"BandwidthPackageId" name:"BandwidthPackageId"`
 		// 带宽包Ids(申请数量大于1时有效)
 		BandwidthPackageIds []*string `json:"BandwidthPackageIds" name:"BandwidthPackageIds" list`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -611,7 +615,7 @@ type CreateCcnResponse struct {
 	Response *struct {
 		// 云联网（CCN）对象。
 		Ccn *CCN `json:"Ccn" name:"Ccn"`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -647,7 +651,7 @@ type CreateCustomerGatewayResponse struct {
 	Response *struct {
 		// 对端网关对象
 		CustomerGateway *CustomerGateway `json:"CustomerGateway" name:"CustomerGateway"`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -683,7 +687,7 @@ type CreateDefaultVpcResponse struct {
 	Response *struct {
 		// 默认VPC和子网ID
 		Vpc *DefaultVpcSubnet `json:"Vpc" name:"Vpc"`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -717,7 +721,7 @@ func (r *CreateDirectConnectGatewayCcnRoutesRequest) FromJsonString(s string) er
 type CreateDirectConnectGatewayCcnRoutesResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -762,7 +766,7 @@ type CreateDirectConnectGatewayResponse struct {
 	Response *struct {
 		// 专线网关对象。
 		DirectConnectGateway *DirectConnectGateway `json:"DirectConnectGateway" name:"DirectConnectGateway"`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -808,7 +812,7 @@ type CreateNetworkInterfaceResponse struct {
 	Response *struct {
 		// 弹性网卡实例。
 		NetworkInterface *NetworkInterface `json:"NetworkInterface" name:"NetworkInterface"`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -844,7 +848,7 @@ type CreateRouteTableResponse struct {
 	Response *struct {
 		// 路由表对象。
 		RouteTable *RouteTable `json:"RouteTable" name:"RouteTable"`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -878,7 +882,7 @@ func (r *CreateRoutesRequest) FromJsonString(s string) error {
 type CreateRoutesResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -912,7 +916,7 @@ func (r *CreateSecurityGroupPoliciesRequest) FromJsonString(s string) error {
 type CreateSecurityGroupPoliciesResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -950,7 +954,7 @@ type CreateSecurityGroupResponse struct {
 	Response *struct {
 		// 安全组对象。
 		SecurityGroup *SecurityGroup `json:"SecurityGroup" name:"SecurityGroup"`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -986,7 +990,7 @@ type CreateServiceTemplateGroupResponse struct {
 	Response *struct {
 		// 协议端口模板集合对象。
 		ServiceTemplateGroup *ServiceTemplateGroup `json:"ServiceTemplateGroup" name:"ServiceTemplateGroup"`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -1022,7 +1026,7 @@ type CreateServiceTemplateResponse struct {
 	Response *struct {
 		// 协议端口模板对象。
 		ServiceTemplate *ServiceTemplate `json:"ServiceTemplate" name:"ServiceTemplate"`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -1062,7 +1066,7 @@ type CreateSubnetResponse struct {
 	Response *struct {
 		// 子网对象。
 		Subnet *Subnet `json:"Subnet" name:"Subnet"`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -1104,7 +1108,7 @@ type CreateVpcResponse struct {
 	Response *struct {
 		// Vpc对象。
 		Vpc *Vpc `json:"Vpc" name:"Vpc"`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -1152,7 +1156,7 @@ type CreateVpnConnectionResponse struct {
 	Response *struct {
 		// 通道实例对象。
 		VpnConnection *VpnConnection `json:"VpnConnection" name:"VpnConnection"`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -1196,7 +1200,7 @@ type CreateVpnGatewayResponse struct {
 	Response *struct {
 		// VPN网关对象
 		VpnGateway *VpnGateway `json:"VpnGateway" name:"VpnGateway"`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -1255,7 +1259,7 @@ func (r *DeleteAddressTemplateGroupRequest) FromJsonString(s string) error {
 type DeleteAddressTemplateGroupResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -1287,7 +1291,7 @@ func (r *DeleteAddressTemplateRequest) FromJsonString(s string) error {
 type DeleteAddressTemplateResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -1319,7 +1323,7 @@ func (r *DeleteBandwidthPackageRequest) FromJsonString(s string) error {
 type DeleteBandwidthPackageResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -1351,7 +1355,7 @@ func (r *DeleteCcnRequest) FromJsonString(s string) error {
 type DeleteCcnResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -1383,7 +1387,7 @@ func (r *DeleteCustomerGatewayRequest) FromJsonString(s string) error {
 type DeleteCustomerGatewayResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -1417,7 +1421,7 @@ func (r *DeleteDirectConnectGatewayCcnRoutesRequest) FromJsonString(s string) er
 type DeleteDirectConnectGatewayCcnRoutesResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -1449,7 +1453,7 @@ func (r *DeleteNetworkInterfaceRequest) FromJsonString(s string) error {
 type DeleteNetworkInterfaceResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -1481,7 +1485,7 @@ func (r *DeleteRouteTableRequest) FromJsonString(s string) error {
 type DeleteRouteTableResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -1515,7 +1519,7 @@ func (r *DeleteRoutesRequest) FromJsonString(s string) error {
 type DeleteRoutesResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -1549,7 +1553,7 @@ func (r *DeleteSecurityGroupPoliciesRequest) FromJsonString(s string) error {
 type DeleteSecurityGroupPoliciesResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -1581,7 +1585,7 @@ func (r *DeleteSecurityGroupRequest) FromJsonString(s string) error {
 type DeleteSecurityGroupResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -1613,7 +1617,7 @@ func (r *DeleteServiceTemplateGroupRequest) FromJsonString(s string) error {
 type DeleteServiceTemplateGroupResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -1645,7 +1649,7 @@ func (r *DeleteServiceTemplateRequest) FromJsonString(s string) error {
 type DeleteServiceTemplateResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -1677,7 +1681,7 @@ func (r *DeleteSubnetRequest) FromJsonString(s string) error {
 type DeleteSubnetResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -1709,7 +1713,7 @@ func (r *DeleteVpcRequest) FromJsonString(s string) error {
 type DeleteVpcResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -1743,7 +1747,7 @@ func (r *DeleteVpnConnectionRequest) FromJsonString(s string) error {
 type DeleteVpnConnectionResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -1775,7 +1779,7 @@ func (r *DeleteVpnGatewayRequest) FromJsonString(s string) error {
 type DeleteVpnGatewayResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -1807,7 +1811,7 @@ type DescribeAccountAttributesResponse struct {
 	Response *struct {
 		// 用户账号属性对象
 		AccountAttributeSet []*AccountAttribute `json:"AccountAttributeSet" name:"AccountAttributeSet" list`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -1839,7 +1843,7 @@ type DescribeAddressQuotaResponse struct {
 	Response *struct {
 		// 账户 EIP 配额信息。
 		QuotaSet []*Quota `json:"QuotaSet" name:"QuotaSet" list`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -1881,7 +1885,7 @@ type DescribeAddressTemplateGroupsResponse struct {
 		TotalCount *uint64 `json:"TotalCount" name:"TotalCount"`
 		// IP地址模板。
 		AddressTemplateGroupSet []*AddressTemplateGroup `json:"AddressTemplateGroupSet" name:"AddressTemplateGroupSet" list`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -1923,7 +1927,7 @@ type DescribeAddressTemplatesResponse struct {
 		TotalCount *uint64 `json:"TotalCount" name:"TotalCount"`
 		// IP地址模版。
 		AddressTemplateSet []*AddressTemplate `json:"AddressTemplateSet" name:"AddressTemplateSet" list`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -1973,7 +1977,7 @@ type DescribeAddressesResponse struct {
 		TotalCount *int64 `json:"TotalCount" name:"TotalCount"`
 		// EIP 详细信息列表。
 		AddressSet []*Address `json:"AddressSet" name:"AddressSet" list`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -2005,7 +2009,7 @@ type DescribeBandwidthPackageQuotaResponse struct {
 	Response *struct {
 		// 带宽包配额数据结构
 		QuotaSet []*Quota `json:"QuotaSet" name:"QuotaSet" list`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -2054,7 +2058,7 @@ type DescribeBandwidthPackagesResponse struct {
 		TotalCount *uint64 `json:"TotalCount" name:"TotalCount"`
 		// 描述带宽包详细信息
 		BandwidthPackageSet []*BandwidthPackage `json:"BandwidthPackageSet" name:"BandwidthPackageSet" list`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -2100,7 +2104,7 @@ type DescribeCcnAttachedInstancesResponse struct {
 		TotalCount *uint64 `json:"TotalCount" name:"TotalCount"`
 		// 关联实例列表。
 		InstanceSet []*CcnAttachedInstance `json:"InstanceSet" name:"InstanceSet" list`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -2134,7 +2138,7 @@ type DescribeCcnRegionBandwidthLimitsResponse struct {
 	Response *struct {
 		// 云联网（CCN）各地域出带宽上限
 		CcnRegionBandwidthLimitSet []*CcnRegionBandwidthLimit `json:"CcnRegionBandwidthLimitSet" name:"CcnRegionBandwidthLimitSet" list`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -2184,7 +2188,7 @@ type DescribeCcnRoutesResponse struct {
 		TotalCount *uint64 `json:"TotalCount" name:"TotalCount"`
 		// CCN路由策略对象。
 		RouteSet []*CcnRoute `json:"RouteSet" name:"RouteSet" list`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -2230,7 +2234,7 @@ type DescribeCcnsResponse struct {
 		TotalCount *uint64 `json:"TotalCount" name:"TotalCount"`
 		// CCN对象。
 		CcnSet []*CCN `json:"CcnSet" name:"CcnSet" list`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -2272,7 +2276,7 @@ type DescribeClassicLinkInstancesResponse struct {
 		TotalCount *uint64 `json:"TotalCount" name:"TotalCount"`
 		// 私有网络和基础网络互通设备。
 		ClassicLinkInstanceSet []*ClassicLinkInstance `json:"ClassicLinkInstanceSet" name:"ClassicLinkInstanceSet" list`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -2304,7 +2308,7 @@ type DescribeCustomerGatewayVendorsResponse struct {
 	Response *struct {
 		// 对端网关厂商信息对象。
 		CustomerGatewayVendorSet []*CustomerGatewayVendor `json:"CustomerGatewayVendorSet" name:"CustomerGatewayVendorSet" list`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -2346,7 +2350,7 @@ type DescribeCustomerGatewaysResponse struct {
 		CustomerGatewaySet []*CustomerGateway `json:"CustomerGatewaySet" name:"CustomerGatewaySet" list`
 		// 符合条件的实例数量。
 		TotalCount *uint64 `json:"TotalCount" name:"TotalCount"`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -2382,7 +2386,7 @@ type DescribeDirectConnectGatewayCcnRoutesResponse struct {
 		TotalCount *uint64 `json:"TotalCount" name:"TotalCount"`
 		// 云联网路由（IDC网段）列表。
 		RouteSet []*DirectConnectGatewayCcnRoute `json:"RouteSet" name:"RouteSet" list`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -2431,7 +2435,7 @@ type DescribeNetworkInterfacesResponse struct {
 		NetworkInterfaceSet []*NetworkInterface `json:"NetworkInterfaceSet" name:"NetworkInterfaceSet" list`
 		// 符合条件的实例数量。
 		TotalCount *uint64 `json:"TotalCount" name:"TotalCount"`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -2467,7 +2471,7 @@ type DescribeRouteConflictsResponse struct {
 	Response *struct {
 		// 路由策略冲突列表
 		RouteConflictSet []*RouteConflict `json:"RouteConflictSet" name:"RouteConflictSet" list`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -2513,7 +2517,7 @@ type DescribeRouteTablesResponse struct {
 		TotalCount *uint64 `json:"TotalCount" name:"TotalCount"`
 		// 路由表对象。
 		RouteTableSet []*RouteTable `json:"RouteTableSet" name:"RouteTableSet" list`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -2547,7 +2551,7 @@ type DescribeSecurityGroupAssociationStatisticsResponse struct {
 	Response *struct {
 		// 安全组关联实例统计。
 		SecurityGroupAssociationStatisticsSet []*SecurityGroupAssociationStatistics `json:"SecurityGroupAssociationStatisticsSet" name:"SecurityGroupAssociationStatisticsSet" list`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -2581,7 +2585,7 @@ type DescribeSecurityGroupPoliciesResponse struct {
 	Response *struct {
 		// 安全组规则集合。
 		SecurityGroupPolicySet *SecurityGroupPolicySet `json:"SecurityGroupPolicySet" name:"SecurityGroupPolicySet"`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -2625,7 +2629,7 @@ type DescribeSecurityGroupsResponse struct {
 		SecurityGroupSet []*SecurityGroup `json:"SecurityGroupSet" name:"SecurityGroupSet" list`
 		// 符合条件的实例数量。
 		TotalCount *uint64 `json:"TotalCount" name:"TotalCount"`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -2667,7 +2671,7 @@ type DescribeServiceTemplateGroupsResponse struct {
 		TotalCount *uint64 `json:"TotalCount" name:"TotalCount"`
 		// 协议端口模板集合。
 		ServiceTemplateGroupSet []*ServiceTemplateGroup `json:"ServiceTemplateGroupSet" name:"ServiceTemplateGroupSet" list`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -2709,7 +2713,7 @@ type DescribeServiceTemplatesResponse struct {
 		TotalCount *uint64 `json:"TotalCount" name:"TotalCount"`
 		// 协议端口模板对象。
 		ServiceTemplateSet []*ServiceTemplate `json:"ServiceTemplateSet" name:"ServiceTemplateSet" list`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -2757,7 +2761,7 @@ type DescribeSubnetsResponse struct {
 		TotalCount *uint64 `json:"TotalCount" name:"TotalCount"`
 		// 子网对象。
 		SubnetSet []*Subnet `json:"SubnetSet" name:"SubnetSet" list`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -2803,7 +2807,7 @@ type DescribeVpcsResponse struct {
 		TotalCount *uint64 `json:"TotalCount" name:"TotalCount"`
 		// VPC对象。
 		VpcSet []*Vpc `json:"VpcSet" name:"VpcSet" list`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -2845,7 +2849,7 @@ type DescribeVpnConnectionsResponse struct {
 		TotalCount *uint64 `json:"TotalCount" name:"TotalCount"`
 		// VPN通道实例。
 		VpnConnectionSet []*VpnConnection `json:"VpnConnectionSet" name:"VpnConnectionSet" list`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -2894,7 +2898,7 @@ type DescribeVpnGatewaysResponse struct {
 		TotalCount *uint64 `json:"TotalCount" name:"TotalCount"`
 		// VPN网关实例详细信息列表。
 		VpnGatewaySet []*VpnGateway `json:"VpnGatewaySet" name:"VpnGatewaySet" list`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -2928,7 +2932,7 @@ func (r *DetachCcnInstancesRequest) FromJsonString(s string) error {
 type DetachCcnInstancesResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -2962,7 +2966,7 @@ func (r *DetachClassicLinkVpcRequest) FromJsonString(s string) error {
 type DetachClassicLinkVpcResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -2996,7 +3000,7 @@ func (r *DetachNetworkInterfaceRequest) FromJsonString(s string) error {
 type DetachNetworkInterfaceResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -3061,7 +3065,7 @@ func (r *DisableCcnRoutesRequest) FromJsonString(s string) error {
 type DisableCcnRoutesResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -3095,7 +3099,7 @@ func (r *DisableRoutesRequest) FromJsonString(s string) error {
 type DisableRoutesResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -3129,7 +3133,7 @@ func (r *DisassociateAddressRequest) FromJsonString(s string) error {
 type DisassociateAddressResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -3169,7 +3173,7 @@ type DownloadCustomerGatewayConfigurationResponse struct {
 	Response *struct {
 		// XML格式配置信息。
 		CustomerGatewayConfiguration *string `json:"CustomerGatewayConfiguration" name:"CustomerGatewayConfiguration"`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -3203,7 +3207,7 @@ func (r *EnableCcnRoutesRequest) FromJsonString(s string) error {
 type EnableCcnRoutesResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -3237,7 +3241,7 @@ func (r *EnableRoutesRequest) FromJsonString(s string) error {
 type EnableRoutesResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -3329,7 +3333,7 @@ type InquiryPriceCreateVpnGatewayResponse struct {
 	Response *struct {
 		// 商品价格。
 		Price *Price `json:"Price" name:"Price"`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -3365,7 +3369,7 @@ type InquiryPriceRenewVpnGatewayResponse struct {
 	Response *struct {
 		// 商品价格。
 		Price *Price `json:"Price" name:"Price"`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -3401,7 +3405,7 @@ type InquiryPriceResetVpnGatewayInternetMaxBandwidthResponse struct {
 	Response *struct {
 		// 商品价格。
 		Price *Price `json:"Price" name:"Price"`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -3455,7 +3459,7 @@ func (r *MigrateNetworkInterfaceRequest) FromJsonString(s string) error {
 type MigrateNetworkInterfaceResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -3491,7 +3495,7 @@ func (r *MigratePrivateIpAddressRequest) FromJsonString(s string) error {
 type MigratePrivateIpAddressResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -3525,7 +3529,7 @@ func (r *ModifyAddressAttributeRequest) FromJsonString(s string) error {
 type ModifyAddressAttributeResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -3561,7 +3565,7 @@ func (r *ModifyAddressTemplateAttributeRequest) FromJsonString(s string) error {
 type ModifyAddressTemplateAttributeResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -3597,7 +3601,7 @@ func (r *ModifyAddressTemplateGroupAttributeRequest) FromJsonString(s string) er
 type ModifyAddressTemplateGroupAttributeResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -3635,7 +3639,7 @@ func (r *ModifyAddressesBandwidthRequest) FromJsonString(s string) error {
 type ModifyAddressesBandwidthResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -3669,7 +3673,7 @@ func (r *ModifyBandwidthPackageAttributeRequest) FromJsonString(s string) error 
 type ModifyBandwidthPackageAttributeResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -3705,7 +3709,7 @@ func (r *ModifyCcnAttributeRequest) FromJsonString(s string) error {
 type ModifyCcnAttributeResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -3739,7 +3743,7 @@ func (r *ModifyCustomerGatewayAttributeRequest) FromJsonString(s string) error {
 type ModifyCustomerGatewayAttributeResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -3777,7 +3781,7 @@ func (r *ModifyNetworkInterfaceAttributeRequest) FromJsonString(s string) error 
 type ModifyNetworkInterfaceAttributeResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -3811,7 +3815,7 @@ func (r *ModifyPrivateIpAddressesAttributeRequest) FromJsonString(s string) erro
 type ModifyPrivateIpAddressesAttributeResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -3845,7 +3849,7 @@ func (r *ModifyRouteTableAttributeRequest) FromJsonString(s string) error {
 type ModifyRouteTableAttributeResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -3881,7 +3885,7 @@ func (r *ModifySecurityGroupAttributeRequest) FromJsonString(s string) error {
 type ModifySecurityGroupAttributeResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -3915,7 +3919,7 @@ func (r *ModifySecurityGroupPoliciesRequest) FromJsonString(s string) error {
 type ModifySecurityGroupPoliciesResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -3951,7 +3955,7 @@ func (r *ModifyServiceTemplateAttributeRequest) FromJsonString(s string) error {
 type ModifyServiceTemplateAttributeResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -3987,7 +3991,7 @@ func (r *ModifyServiceTemplateGroupAttributeRequest) FromJsonString(s string) er
 type ModifyServiceTemplateGroupAttributeResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -4023,7 +4027,7 @@ func (r *ModifySubnetAttributeRequest) FromJsonString(s string) error {
 type ModifySubnetAttributeResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -4063,7 +4067,7 @@ func (r *ModifyVpcAttributeRequest) FromJsonString(s string) error {
 type ModifyVpcAttributeResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -4105,7 +4109,7 @@ func (r *ModifyVpnConnectionAttributeRequest) FromJsonString(s string) error {
 type ModifyVpnConnectionAttributeResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -4141,7 +4145,7 @@ func (r *ModifyVpnGatewayAttributeRequest) FromJsonString(s string) error {
 type ModifyVpnGatewayAttributeResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -4172,7 +4176,12 @@ type NetworkInterface struct {
 	Primary *bool `json:"Primary" name:"Primary"`
 	// MAC地址。
 	MacAddress *string `json:"MacAddress" name:"MacAddress"`
-	// 取值范围：PENDING|AVAILABLE|ATTACHING|DETACHING|DELETING。
+	// 弹性网卡状态：
+	// <li>`PENDING`：创建中</li>
+	// <li>`AVAILABLE`：可用的</li>
+	// <li>`ATTACHING`：绑定中</li>
+	// <li>`DETACHING`：解绑中</li>
+	// <li>`DELETING`：删除中</li>
 	State *string `json:"State" name:"State"`
 	// 内网IP信息。
 	PrivateIpAddressSet []*PrivateIpAddressSpecification `json:"PrivateIpAddressSet" name:"PrivateIpAddressSet" list`
@@ -4252,7 +4261,7 @@ func (r *RejectAttachCcnInstancesRequest) FromJsonString(s string) error {
 type RejectAttachCcnInstancesResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -4284,7 +4293,7 @@ func (r *ReleaseAddressesRequest) FromJsonString(s string) error {
 type ReleaseAddressesResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -4320,7 +4329,7 @@ func (r *RemoveBandwidthPackageResourcesRequest) FromJsonString(s string) error 
 type RemoveBandwidthPackageResourcesResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -4354,7 +4363,7 @@ func (r *RenewVpnGatewayRequest) FromJsonString(s string) error {
 type RenewVpnGatewayResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -4388,7 +4397,7 @@ func (r *ReplaceDirectConnectGatewayCcnRoutesRequest) FromJsonString(s string) e
 type ReplaceDirectConnectGatewayCcnRoutesResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -4422,7 +4431,7 @@ func (r *ReplaceRouteTableAssociationRequest) FromJsonString(s string) error {
 type ReplaceRouteTableAssociationResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -4456,7 +4465,7 @@ func (r *ReplaceRoutesRequest) FromJsonString(s string) error {
 type ReplaceRoutesResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -4490,7 +4499,7 @@ func (r *ReplaceSecurityGroupPolicyRequest) FromJsonString(s string) error {
 type ReplaceSecurityGroupPolicyResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -4526,7 +4535,7 @@ func (r *ResetAttachCcnInstancesRequest) FromJsonString(s string) error {
 type ResetAttachCcnInstancesResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -4562,7 +4571,7 @@ func (r *ResetRoutesRequest) FromJsonString(s string) error {
 type ResetRoutesResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -4596,7 +4605,7 @@ func (r *ResetVpnConnectionRequest) FromJsonString(s string) error {
 type ResetVpnConnectionResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -4630,7 +4639,7 @@ func (r *ResetVpnGatewayInternetMaxBandwidthRequest) FromJsonString(s string) er
 type ResetVpnGatewayInternetMaxBandwidthResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -4833,7 +4842,7 @@ func (r *SetCcnRegionBandwidthLimitsRequest) FromJsonString(s string) error {
 type SetCcnRegionBandwidthLimitsResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -4888,7 +4897,7 @@ func (r *TransformAddressRequest) FromJsonString(s string) error {
 type TransformAddressResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -4922,7 +4931,7 @@ func (r *UnassignPrivateIpAddressesRequest) FromJsonString(s string) error {
 type UnassignPrivateIpAddressesResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }

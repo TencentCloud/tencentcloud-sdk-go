@@ -104,6 +104,11 @@ type ComputeEnvCreateInfo struct {
 	DesiredComputeNodeCount *uint64 `json:"DesiredComputeNodeCount" name:"DesiredComputeNodeCount"`
 }
 
+type ComputeEnvData struct {
+	// CVM实例类型列表
+	InstanceTypes []*string `json:"InstanceTypes" name:"InstanceTypes" list`
+}
+
 type ComputeEnvView struct {
 	// 计算环境ID
 	EnvId *string `json:"EnvId" name:"EnvId"`
@@ -1127,6 +1132,12 @@ type ModifyComputeEnvRequest struct {
 	EnvId *string `json:"EnvId" name:"EnvId"`
 	// 计算节点期望个数
 	DesiredComputeNodeCount *int64 `json:"DesiredComputeNodeCount" name:"DesiredComputeNodeCount"`
+	// 计算环境名称
+	EnvName *string `json:"EnvName" name:"EnvName"`
+	// 计算环境描述
+	EnvDescription *string `json:"EnvDescription" name:"EnvDescription"`
+	// 计算环境属性数据
+	EnvData *ComputeEnvData `json:"EnvData" name:"EnvData"`
 }
 
 func (r *ModifyComputeEnvRequest) ToJsonString() string {

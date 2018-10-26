@@ -42,6 +42,106 @@ func NewClient(credential *common.Credential, region string, clientProfile *prof
 }
 
 
+func NewBindPsaTagRequest() (request *BindPsaTagRequest) {
+    request = &BindPsaTagRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("bm", APIVersion, "BindPsaTag")
+    return
+}
+
+func NewBindPsaTagResponse() (response *BindPsaTagResponse) {
+    response = &BindPsaTagResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 为预授权规则绑定标签
+func (c *Client) BindPsaTag(request *BindPsaTagRequest) (response *BindPsaTagResponse, err error) {
+    if request == nil {
+        request = NewBindPsaTagRequest()
+    }
+    response = NewBindPsaTagResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreatePsaRegulationRequest() (request *CreatePsaRegulationRequest) {
+    request = &CreatePsaRegulationRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("bm", APIVersion, "CreatePsaRegulation")
+    return
+}
+
+func NewCreatePsaRegulationResponse() (response *CreatePsaRegulationResponse) {
+    response = &CreatePsaRegulationResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 创建预授权规则
+func (c *Client) CreatePsaRegulation(request *CreatePsaRegulationRequest) (response *CreatePsaRegulationResponse, err error) {
+    if request == nil {
+        request = NewCreatePsaRegulationRequest()
+    }
+    response = NewCreatePsaRegulationResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeletePsaRegulationRequest() (request *DeletePsaRegulationRequest) {
+    request = &DeletePsaRegulationRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("bm", APIVersion, "DeletePsaRegulation")
+    return
+}
+
+func NewDeletePsaRegulationResponse() (response *DeletePsaRegulationResponse) {
+    response = &DeletePsaRegulationResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 删除预授权规则
+func (c *Client) DeletePsaRegulation(request *DeletePsaRegulationRequest) (response *DeletePsaRegulationResponse, err error) {
+    if request == nil {
+        request = NewDeletePsaRegulationRequest()
+    }
+    response = NewDeletePsaRegulationResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribePsaRegulationsRequest() (request *DescribePsaRegulationsRequest) {
+    request = &DescribePsaRegulationsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("bm", APIVersion, "DescribePsaRegulations")
+    return
+}
+
+func NewDescribePsaRegulationsResponse() (response *DescribePsaRegulationsResponse) {
+    response = &DescribePsaRegulationsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 获取预授权规则列表
+func (c *Client) DescribePsaRegulations(request *DescribePsaRegulationsRequest) (response *DescribePsaRegulationsResponse, err error) {
+    if request == nil {
+        request = NewDescribePsaRegulationsRequest()
+    }
+    response = NewDescribePsaRegulationsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeRepairTaskConstantRequest() (request *DescribeRepairTaskConstantRequest) {
     request = &DescribeRepairTaskConstantRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -125,6 +225,31 @@ func (c *Client) DescribeTaskOperationLog(request *DescribeTaskOperationLogReque
     return
 }
 
+func NewModifyPsaRegulationRequest() (request *ModifyPsaRegulationRequest) {
+    request = &ModifyPsaRegulationRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("bm", APIVersion, "ModifyPsaRegulation")
+    return
+}
+
+func NewModifyPsaRegulationResponse() (response *ModifyPsaRegulationResponse) {
+    response = &ModifyPsaRegulationResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 允许修改规则信息及关联故障类型
+func (c *Client) ModifyPsaRegulation(request *ModifyPsaRegulationRequest) (response *ModifyPsaRegulationResponse, err error) {
+    if request == nil {
+        request = NewModifyPsaRegulationRequest()
+    }
+    response = NewModifyPsaRegulationResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewRepairTaskControlRequest() (request *RepairTaskControlRequest) {
     request = &RepairTaskControlRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -166,6 +291,31 @@ func (c *Client) RepairTaskControl(request *RepairTaskControlRequest) (response 
         request = NewRepairTaskControlRequest()
     }
     response = NewRepairTaskControlResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewUnbindPsaTagRequest() (request *UnbindPsaTagRequest) {
+    request = &UnbindPsaTagRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("bm", APIVersion, "UnbindPsaTag")
+    return
+}
+
+func NewUnbindPsaTagResponse() (response *UnbindPsaTagResponse) {
+    response = &UnbindPsaTagResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 解除标签与预授权规则的绑定
+func (c *Client) UnbindPsaTag(request *UnbindPsaTagRequest) (response *UnbindPsaTagResponse, err error) {
+    if request == nil {
+        request = NewUnbindPsaTagRequest()
+    }
+    response = NewUnbindPsaTagResponse()
     err = c.Send(request, response)
     return
 }
