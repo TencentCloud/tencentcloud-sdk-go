@@ -82,7 +82,7 @@ func NewTransmitOralProcessResponse() (response *TransmitOralProcessResponse) {
     return
 }
 
-// 传输音频数据，必须在完成发音评估初始化接口之后调用，且SessonId要与初始化接口保持一致。分片传输时，尽量保证SeqId顺序传输。当使用mp3格式时目前仅支持16k采样率16bit单声道编码方式。
+// 传输音频数据，必须在完成发音评估初始化接口之后调用，且SessonId要与初始化接口保持一致。分片传输时，尽量保证SeqId顺序传输。音频源目前仅支持16k采样率16bit单声道编码方式，如有不一致可能导致评估不准确或失败。
 func (c *Client) TransmitOralProcess(request *TransmitOralProcessRequest) (response *TransmitOralProcessResponse, err error) {
     if request == nil {
         request = NewTransmitOralProcessRequest()
