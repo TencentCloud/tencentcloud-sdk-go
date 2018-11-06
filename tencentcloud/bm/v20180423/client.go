@@ -92,6 +92,56 @@ func (c *Client) CreatePsaRegulation(request *CreatePsaRegulationRequest) (respo
     return
 }
 
+func NewCreateSpotDeviceRequest() (request *CreateSpotDeviceRequest) {
+    request = &CreateSpotDeviceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("bm", APIVersion, "CreateSpotDevice")
+    return
+}
+
+func NewCreateSpotDeviceResponse() (response *CreateSpotDeviceResponse) {
+    response = &CreateSpotDeviceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 创建黑石竞价实例
+func (c *Client) CreateSpotDevice(request *CreateSpotDeviceRequest) (response *CreateSpotDeviceResponse, err error) {
+    if request == nil {
+        request = NewCreateSpotDeviceRequest()
+    }
+    response = NewCreateSpotDeviceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateUserCmdRequest() (request *CreateUserCmdRequest) {
+    request = &CreateUserCmdRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("bm", APIVersion, "CreateUserCmd")
+    return
+}
+
+func NewCreateUserCmdResponse() (response *CreateUserCmdResponse) {
+    response = &CreateUserCmdResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 创建自定义脚本
+func (c *Client) CreateUserCmd(request *CreateUserCmdRequest) (response *CreateUserCmdResponse, err error) {
+    if request == nil {
+        request = NewCreateUserCmdRequest()
+    }
+    response = NewCreateUserCmdResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeletePsaRegulationRequest() (request *DeletePsaRegulationRequest) {
     request = &DeletePsaRegulationRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -113,6 +163,31 @@ func (c *Client) DeletePsaRegulation(request *DeletePsaRegulationRequest) (respo
         request = NewDeletePsaRegulationRequest()
     }
     response = NewDeletePsaRegulationResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeDevicesRequest() (request *DescribeDevicesRequest) {
+    request = &DescribeDevicesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("bm", APIVersion, "DescribeDevices")
+    return
+}
+
+func NewDescribeDevicesResponse() (response *DescribeDevicesResponse) {
+    response = &DescribeDevicesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询物理服务器，可以按照实例，业务IP等过滤
+func (c *Client) DescribeDevices(request *DescribeDevicesRequest) (response *DescribeDevicesResponse, err error) {
+    if request == nil {
+        request = NewDescribeDevicesRequest()
+    }
+    response = NewDescribeDevicesResponse()
     err = c.Send(request, response)
     return
 }
