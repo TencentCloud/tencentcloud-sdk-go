@@ -444,6 +444,31 @@ func (c *Client) DescribeTask(request *DescribeTaskRequest) (response *DescribeT
     return
 }
 
+func NewDescribeTaskLogsRequest() (request *DescribeTaskLogsRequest) {
+    request = &DescribeTaskLogsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("batch", APIVersion, "DescribeTaskLogs")
+    return
+}
+
+func NewDescribeTaskLogsResponse() (response *DescribeTaskLogsResponse) {
+    response = &DescribeTaskLogsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 用于获取任务多个实例标准输出和标准错误日志。
+func (c *Client) DescribeTaskLogs(request *DescribeTaskLogsRequest) (response *DescribeTaskLogsResponse, err error) {
+    if request == nil {
+        request = NewDescribeTaskLogsRequest()
+    }
+    response = NewDescribeTaskLogsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeTaskTemplatesRequest() (request *DescribeTaskTemplatesRequest) {
     request = &DescribeTaskTemplatesRequest{
         BaseRequest: &tchttp.BaseRequest{},

@@ -59,9 +59,9 @@ type ImageTranslateResponse struct {
 		Source *string `json:"Source" name:"Source"`
 		// 目标语言
 		Target *string `json:"Target" name:"Target"`
-		// 图片翻译结果
+		// 图片翻译结果，翻译结果按识别的文本每一行独立翻译，后续会推出按段落划分并翻译的版本
 		ImageRecord *ImageRecord `json:"ImageRecord" name:"ImageRecord"`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -92,7 +92,7 @@ type ItemValue struct {
 
 type LanguageDetectRequest struct {
 	*tchttp.BaseRequest
-	// 待识别的文本
+	// 待识别的文本，文本统一使用utf-8格式编码，非utf-8格式编码字符会翻译失败
 	Text *string `json:"Text" name:"Text"`
 	// 项目id
 	ProjectId *int64 `json:"ProjectId" name:"ProjectId"`
@@ -113,7 +113,7 @@ type LanguageDetectResponse struct {
 		// 识别出的语言种类，参考语言列表
 	// <li> zh : 中文 </li> <li> en : 英文 </li><li> jp : 日语 </li> <li> kr : 韩语 </li><li> de : 德语 </li><li> fr : 法语 </li><li> es : 西班牙文 </li> <li> it : 意大利文 </li><li> tr : 土耳其文 </li><li> ru : 俄文 </li><li> pt : 葡萄牙文 </li><li> vi : 越南文 </li><li> id : 印度尼西亚文 </li><li> ms : 马来西亚文 </li><li> th : 泰文 </li>
 		Lang *string `json:"Lang" name:"Lang"`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -137,13 +137,13 @@ type SpeechTranslateRequest struct {
 	Target *string `json:"Target" name:"Target"`
 	// pcm : 146   amr : 33554432   mp3 : 83886080
 	AudioFormat *int64 `json:"AudioFormat" name:"AudioFormat"`
-	// 语音分片后的第几片
+	// 语音分片的序号，从0开始
 	Seq *int64 `json:"Seq" name:"Seq"`
-	// 是否最后一片
+	// 是否最后一片语音分片，0-否，1-是
 	IsEnd *int64 `json:"IsEnd" name:"IsEnd"`
 	// 语音分片内容的base64字符串
 	Data *string `json:"Data" name:"Data"`
-	// 项目id
+	// 项目id，用户可自定义
 	ProjectId *int64 `json:"ProjectId" name:"ProjectId"`
 }
 
@@ -173,7 +173,7 @@ type SpeechTranslateResponse struct {
 		Source *string `json:"Source" name:"Source"`
 		// 目标语言
 		Target *string `json:"Target" name:"Target"`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -189,7 +189,7 @@ func (r *SpeechTranslateResponse) FromJsonString(s string) error {
 
 type TextTranslateRequest struct {
 	*tchttp.BaseRequest
-	// 待翻译的文本
+	// 待翻译的文本，文本统一使用utf-8格式编码，非utf-8格式编码字符会翻译失败
 	SourceText *string `json:"SourceText" name:"SourceText"`
 	// 源语言，参照Target支持语言列表
 	Source *string `json:"Source" name:"Source"`
@@ -218,7 +218,7 @@ type TextTranslateResponse struct {
 		Source *string `json:"Source" name:"Source"`
 		// 目标语言，详见入参Target
 		Target *string `json:"Target" name:"Target"`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }

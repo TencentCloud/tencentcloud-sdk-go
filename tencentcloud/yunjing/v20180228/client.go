@@ -67,6 +67,31 @@ func (c *Client) CloseProVersion(request *CloseProVersionRequest) (response *Clo
     return
 }
 
+func NewCreateProcessTaskRequest() (request *CreateProcessTaskRequest) {
+    request = &CreateProcessTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("yunjing", APIVersion, "CreateProcessTask")
+    return
+}
+
+func NewCreateProcessTaskResponse() (response *CreateProcessTaskResponse) {
+    response = &CreateProcessTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口 (CreateProcessTask) 用于创建实时拉取进程任务。
+func (c *Client) CreateProcessTask(request *CreateProcessTaskRequest) (response *CreateProcessTaskResponse, err error) {
+    if request == nil {
+        request = NewCreateProcessTaskRequest()
+    }
+    response = NewCreateProcessTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateUsualLoginPlacesRequest() (request *CreateUsualLoginPlacesRequest) {
     request = &CreateUsualLoginPlacesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -217,6 +242,56 @@ func (c *Client) DeleteUsualLoginPlaces(request *DeleteUsualLoginPlacesRequest) 
     return
 }
 
+func NewDescribeAccountStatisticsRequest() (request *DescribeAccountStatisticsRequest) {
+    request = &DescribeAccountStatisticsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("yunjing", APIVersion, "DescribeAccountStatistics")
+    return
+}
+
+func NewDescribeAccountStatisticsResponse() (response *DescribeAccountStatisticsResponse) {
+    response = &DescribeAccountStatisticsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口 (DescribeAccountStatistics) 用于获取帐号统计列表数据。
+func (c *Client) DescribeAccountStatistics(request *DescribeAccountStatisticsRequest) (response *DescribeAccountStatisticsResponse, err error) {
+    if request == nil {
+        request = NewDescribeAccountStatisticsRequest()
+    }
+    response = NewDescribeAccountStatisticsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeAccountsRequest() (request *DescribeAccountsRequest) {
+    request = &DescribeAccountsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("yunjing", APIVersion, "DescribeAccounts")
+    return
+}
+
+func NewDescribeAccountsResponse() (response *DescribeAccountsResponse) {
+    response = &DescribeAccountsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口 (DescribeAccounts) 用于获取帐号列表数据。
+func (c *Client) DescribeAccounts(request *DescribeAccountsRequest) (response *DescribeAccountsResponse, err error) {
+    if request == nil {
+        request = NewDescribeAccountsRequest()
+    }
+    response = NewDescribeAccountsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeAgentVulsRequest() (request *DescribeAgentVulsRequest) {
     request = &DescribeAgentVulsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -288,6 +363,106 @@ func (c *Client) DescribeBruteAttacks(request *DescribeBruteAttacksRequest) (res
         request = NewDescribeBruteAttacksRequest()
     }
     response = NewDescribeBruteAttacksResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeComponentInfoRequest() (request *DescribeComponentInfoRequest) {
+    request = &DescribeComponentInfoRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("yunjing", APIVersion, "DescribeComponentInfo")
+    return
+}
+
+func NewDescribeComponentInfoResponse() (response *DescribeComponentInfoResponse) {
+    response = &DescribeComponentInfoResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口 (DescribeComponentInfo) 用于获取组件信息数据。
+func (c *Client) DescribeComponentInfo(request *DescribeComponentInfoRequest) (response *DescribeComponentInfoResponse, err error) {
+    if request == nil {
+        request = NewDescribeComponentInfoRequest()
+    }
+    response = NewDescribeComponentInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeComponentStatisticsRequest() (request *DescribeComponentStatisticsRequest) {
+    request = &DescribeComponentStatisticsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("yunjing", APIVersion, "DescribeComponentStatistics")
+    return
+}
+
+func NewDescribeComponentStatisticsResponse() (response *DescribeComponentStatisticsResponse) {
+    response = &DescribeComponentStatisticsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口 (DescribeComponentStatistics) 用于获取组件统计列表数据。
+func (c *Client) DescribeComponentStatistics(request *DescribeComponentStatisticsRequest) (response *DescribeComponentStatisticsResponse, err error) {
+    if request == nil {
+        request = NewDescribeComponentStatisticsRequest()
+    }
+    response = NewDescribeComponentStatisticsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeComponentsRequest() (request *DescribeComponentsRequest) {
+    request = &DescribeComponentsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("yunjing", APIVersion, "DescribeComponents")
+    return
+}
+
+func NewDescribeComponentsResponse() (response *DescribeComponentsResponse) {
+    response = &DescribeComponentsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口 (DescribeComponents) 用于获取组件列表数据。
+func (c *Client) DescribeComponents(request *DescribeComponentsRequest) (response *DescribeComponentsResponse, err error) {
+    if request == nil {
+        request = NewDescribeComponentsRequest()
+    }
+    response = NewDescribeComponentsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeHistoryAccountsRequest() (request *DescribeHistoryAccountsRequest) {
+    request = &DescribeHistoryAccountsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("yunjing", APIVersion, "DescribeHistoryAccounts")
+    return
+}
+
+func NewDescribeHistoryAccountsResponse() (response *DescribeHistoryAccountsResponse) {
+    response = &DescribeHistoryAccountsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口 (DescribeHistoryAccounts) 用于获取帐号变更历史列表数据。
+func (c *Client) DescribeHistoryAccounts(request *DescribeHistoryAccountsRequest) (response *DescribeHistoryAccountsResponse, err error) {
+    if request == nil {
+        request = NewDescribeHistoryAccountsRequest()
+    }
+    response = NewDescribeHistoryAccountsResponse()
     err = c.Send(request, response)
     return
 }
@@ -417,6 +592,56 @@ func (c *Client) DescribeNonlocalLoginPlaces(request *DescribeNonlocalLoginPlace
     return
 }
 
+func NewDescribeOpenPortStatisticsRequest() (request *DescribeOpenPortStatisticsRequest) {
+    request = &DescribeOpenPortStatisticsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("yunjing", APIVersion, "DescribeOpenPortStatistics")
+    return
+}
+
+func NewDescribeOpenPortStatisticsResponse() (response *DescribeOpenPortStatisticsResponse) {
+    response = &DescribeOpenPortStatisticsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口 (DescribeOpenPortStatistics) 用于获取端口统计列表。
+func (c *Client) DescribeOpenPortStatistics(request *DescribeOpenPortStatisticsRequest) (response *DescribeOpenPortStatisticsResponse, err error) {
+    if request == nil {
+        request = NewDescribeOpenPortStatisticsRequest()
+    }
+    response = NewDescribeOpenPortStatisticsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeOpenPortsRequest() (request *DescribeOpenPortsRequest) {
+    request = &DescribeOpenPortsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("yunjing", APIVersion, "DescribeOpenPorts")
+    return
+}
+
+func NewDescribeOpenPortsResponse() (response *DescribeOpenPortsResponse) {
+    response = &DescribeOpenPortsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口 (DescribeOpenPorts) 用于获取端口列表数据。
+func (c *Client) DescribeOpenPorts(request *DescribeOpenPortsRequest) (response *DescribeOpenPortsResponse, err error) {
+    if request == nil {
+        request = NewDescribeOpenPortsRequest()
+    }
+    response = NewDescribeOpenPortsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeOverviewStatisticsRequest() (request *DescribeOverviewStatisticsRequest) {
     request = &DescribeOverviewStatisticsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -463,6 +688,131 @@ func (c *Client) DescribeProVersionInfo(request *DescribeProVersionInfoRequest) 
         request = NewDescribeProVersionInfoRequest()
     }
     response = NewDescribeProVersionInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeProcessStatisticsRequest() (request *DescribeProcessStatisticsRequest) {
+    request = &DescribeProcessStatisticsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("yunjing", APIVersion, "DescribeProcessStatistics")
+    return
+}
+
+func NewDescribeProcessStatisticsResponse() (response *DescribeProcessStatisticsResponse) {
+    response = &DescribeProcessStatisticsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口 (DescribeProcessStatistics) 用于获取进程统计列表数据。
+func (c *Client) DescribeProcessStatistics(request *DescribeProcessStatisticsRequest) (response *DescribeProcessStatisticsResponse, err error) {
+    if request == nil {
+        request = NewDescribeProcessStatisticsRequest()
+    }
+    response = NewDescribeProcessStatisticsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeProcessTaskStatusRequest() (request *DescribeProcessTaskStatusRequest) {
+    request = &DescribeProcessTaskStatusRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("yunjing", APIVersion, "DescribeProcessTaskStatus")
+    return
+}
+
+func NewDescribeProcessTaskStatusResponse() (response *DescribeProcessTaskStatusResponse) {
+    response = &DescribeProcessTaskStatusResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口 (DescribeProcessTaskStatus) 用于获取实时拉取进程任务状态。
+func (c *Client) DescribeProcessTaskStatus(request *DescribeProcessTaskStatusRequest) (response *DescribeProcessTaskStatusResponse, err error) {
+    if request == nil {
+        request = NewDescribeProcessTaskStatusRequest()
+    }
+    response = NewDescribeProcessTaskStatusResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeProcessesRequest() (request *DescribeProcessesRequest) {
+    request = &DescribeProcessesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("yunjing", APIVersion, "DescribeProcesses")
+    return
+}
+
+func NewDescribeProcessesResponse() (response *DescribeProcessesResponse) {
+    response = &DescribeProcessesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口 (DescribeProcesses) 用于获取进程列表数据。
+func (c *Client) DescribeProcesses(request *DescribeProcessesRequest) (response *DescribeProcessesResponse, err error) {
+    if request == nil {
+        request = NewDescribeProcessesRequest()
+    }
+    response = NewDescribeProcessesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeSecurityDynamicsRequest() (request *DescribeSecurityDynamicsRequest) {
+    request = &DescribeSecurityDynamicsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("yunjing", APIVersion, "DescribeSecurityDynamics")
+    return
+}
+
+func NewDescribeSecurityDynamicsResponse() (response *DescribeSecurityDynamicsResponse) {
+    response = &DescribeSecurityDynamicsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口 (DescribeSecurityDynamics) 用于获取安全事件消息数据。
+func (c *Client) DescribeSecurityDynamics(request *DescribeSecurityDynamicsRequest) (response *DescribeSecurityDynamicsResponse, err error) {
+    if request == nil {
+        request = NewDescribeSecurityDynamicsRequest()
+    }
+    response = NewDescribeSecurityDynamicsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeSecurityTrendsRequest() (request *DescribeSecurityTrendsRequest) {
+    request = &DescribeSecurityTrendsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("yunjing", APIVersion, "DescribeSecurityTrends")
+    return
+}
+
+func NewDescribeSecurityTrendsResponse() (response *DescribeSecurityTrendsResponse) {
+    response = &DescribeSecurityTrendsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口 (DescribeSecurityTrends) 用于获取安全事件统计数据。
+func (c *Client) DescribeSecurityTrends(request *DescribeSecurityTrendsRequest) (response *DescribeSecurityTrendsResponse, err error) {
+    if request == nil {
+        request = NewDescribeSecurityTrendsRequest()
+    }
+    response = NewDescribeSecurityTrendsResponse()
     err = c.Send(request, response)
     return
 }
@@ -563,6 +913,156 @@ func (c *Client) DescribeVuls(request *DescribeVulsRequest) (response *DescribeV
         request = NewDescribeVulsRequest()
     }
     response = NewDescribeVulsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeWeeklyReportBruteAttacksRequest() (request *DescribeWeeklyReportBruteAttacksRequest) {
+    request = &DescribeWeeklyReportBruteAttacksRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("yunjing", APIVersion, "DescribeWeeklyReportBruteAttacks")
+    return
+}
+
+func NewDescribeWeeklyReportBruteAttacksResponse() (response *DescribeWeeklyReportBruteAttacksResponse) {
+    response = &DescribeWeeklyReportBruteAttacksResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口 (DescribeWeeklyReportBruteAttacks) 用于获取专业周报密码破解数据。
+func (c *Client) DescribeWeeklyReportBruteAttacks(request *DescribeWeeklyReportBruteAttacksRequest) (response *DescribeWeeklyReportBruteAttacksResponse, err error) {
+    if request == nil {
+        request = NewDescribeWeeklyReportBruteAttacksRequest()
+    }
+    response = NewDescribeWeeklyReportBruteAttacksResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeWeeklyReportInfoRequest() (request *DescribeWeeklyReportInfoRequest) {
+    request = &DescribeWeeklyReportInfoRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("yunjing", APIVersion, "DescribeWeeklyReportInfo")
+    return
+}
+
+func NewDescribeWeeklyReportInfoResponse() (response *DescribeWeeklyReportInfoResponse) {
+    response = &DescribeWeeklyReportInfoResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口 (DescribeWeeklyReportInfo) 用于获取专业周报详情数据。
+func (c *Client) DescribeWeeklyReportInfo(request *DescribeWeeklyReportInfoRequest) (response *DescribeWeeklyReportInfoResponse, err error) {
+    if request == nil {
+        request = NewDescribeWeeklyReportInfoRequest()
+    }
+    response = NewDescribeWeeklyReportInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeWeeklyReportMalwaresRequest() (request *DescribeWeeklyReportMalwaresRequest) {
+    request = &DescribeWeeklyReportMalwaresRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("yunjing", APIVersion, "DescribeWeeklyReportMalwares")
+    return
+}
+
+func NewDescribeWeeklyReportMalwaresResponse() (response *DescribeWeeklyReportMalwaresResponse) {
+    response = &DescribeWeeklyReportMalwaresResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口 (DescribeWeeklyReportMalwares) 用于获取专业周报木马数据。
+func (c *Client) DescribeWeeklyReportMalwares(request *DescribeWeeklyReportMalwaresRequest) (response *DescribeWeeklyReportMalwaresResponse, err error) {
+    if request == nil {
+        request = NewDescribeWeeklyReportMalwaresRequest()
+    }
+    response = NewDescribeWeeklyReportMalwaresResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeWeeklyReportNonlocalLoginPlacesRequest() (request *DescribeWeeklyReportNonlocalLoginPlacesRequest) {
+    request = &DescribeWeeklyReportNonlocalLoginPlacesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("yunjing", APIVersion, "DescribeWeeklyReportNonlocalLoginPlaces")
+    return
+}
+
+func NewDescribeWeeklyReportNonlocalLoginPlacesResponse() (response *DescribeWeeklyReportNonlocalLoginPlacesResponse) {
+    response = &DescribeWeeklyReportNonlocalLoginPlacesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口 (DescribeWeeklyReportNonlocalLoginPlaces) 用于获取专业周报异地登录数据。
+func (c *Client) DescribeWeeklyReportNonlocalLoginPlaces(request *DescribeWeeklyReportNonlocalLoginPlacesRequest) (response *DescribeWeeklyReportNonlocalLoginPlacesResponse, err error) {
+    if request == nil {
+        request = NewDescribeWeeklyReportNonlocalLoginPlacesRequest()
+    }
+    response = NewDescribeWeeklyReportNonlocalLoginPlacesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeWeeklyReportVulsRequest() (request *DescribeWeeklyReportVulsRequest) {
+    request = &DescribeWeeklyReportVulsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("yunjing", APIVersion, "DescribeWeeklyReportVuls")
+    return
+}
+
+func NewDescribeWeeklyReportVulsResponse() (response *DescribeWeeklyReportVulsResponse) {
+    response = &DescribeWeeklyReportVulsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口 (DescribeWeeklyReportVuls) 用于专业版周报漏洞数据。
+func (c *Client) DescribeWeeklyReportVuls(request *DescribeWeeklyReportVulsRequest) (response *DescribeWeeklyReportVulsResponse, err error) {
+    if request == nil {
+        request = NewDescribeWeeklyReportVulsRequest()
+    }
+    response = NewDescribeWeeklyReportVulsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeWeeklyReportsRequest() (request *DescribeWeeklyReportsRequest) {
+    request = &DescribeWeeklyReportsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("yunjing", APIVersion, "DescribeWeeklyReports")
+    return
+}
+
+func NewDescribeWeeklyReportsResponse() (response *DescribeWeeklyReportsResponse) {
+    response = &DescribeWeeklyReportsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口 (DescribeWeeklyReports) 用于获取周报列表数据。
+func (c *Client) DescribeWeeklyReports(request *DescribeWeeklyReportsRequest) (response *DescribeWeeklyReportsResponse, err error) {
+    if request == nil {
+        request = NewDescribeWeeklyReportsRequest()
+    }
+    response = NewDescribeWeeklyReportsResponse()
     err = c.Send(request, response)
     return
 }

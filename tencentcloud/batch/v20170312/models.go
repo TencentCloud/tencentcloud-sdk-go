@@ -362,7 +362,9 @@ type Dependence struct {
 
 type DescribeAvailableCvmInstanceTypesRequest struct {
 	*tchttp.BaseRequest
-	// 过滤条件
+	// 过滤条件。
+	// <li> zone - String - 是否必填：否 -（过滤条件）按照可用区过滤。</li>
+	// <li> instance-family String - 是否必填：否 -（过滤条件）按照机型系列过滤。实例机型系列形如：S1、I1、M1等。</li>
 	Filters []*Filter `json:"Filters" name:"Filters" list`
 }
 
@@ -403,6 +405,7 @@ type DescribeComputeEnvActivitiesRequest struct {
 	// 返回数量
 	Limit *int64 `json:"Limit" name:"Limit"`
 	// 过滤条件
+	// <li> compute-node-id - String - 是否必填：否 -（过滤条件）按照计算节点ID过滤。</li>
 	Filters *Filter `json:"Filters" name:"Filters"`
 }
 
@@ -586,6 +589,9 @@ type DescribeComputeEnvsRequest struct {
 	// 计算环境ID
 	EnvIds []*string `json:"EnvIds" name:"EnvIds" list`
 	// 过滤条件
+	// <li> zone - String - 是否必填：否 -（过滤条件）按照可用区过滤。</li>
+	// <li> env-id - String - 是否必填：否 -（过滤条件）按照计算环境ID过滤。</li>
+	// <li> env-name - String - 是否必填：否 -（过滤条件）按照计算环境名称过滤。</li>
 	Filters []*Filter `json:"Filters" name:"Filters" list`
 	// 偏移量
 	Offset *uint64 `json:"Offset" name:"Offset"`
@@ -625,7 +631,11 @@ func (r *DescribeComputeEnvsResponse) FromJsonString(s string) error {
 
 type DescribeCvmZoneInstanceConfigInfosRequest struct {
 	*tchttp.BaseRequest
-	// 过滤条件
+	// 过滤条件。
+	// <li> zone - String - 是否必填：否 -（过滤条件）按照可用区过滤。</li>
+	// <li> instance-family String - 是否必填：否 -（过滤条件）按照机型系列过滤。实例机型系列形如：S1、I1、M1等。</li>
+	// <li> instance-type - String - 是否必填：否 - （过滤条件）按照机型过滤。</li>
+	// <li> instance-charge-type - String - 是否必填：否 -（过滤条件）按照实例计费模式过滤。 ( POSTPAID_BY_HOUR：表示后付费，即按量计费机型 | SPOTPAID：表示竞价付费机型。 )  </li>
 	Filters []*Filter `json:"Filters" name:"Filters" list`
 }
 
@@ -762,6 +772,10 @@ type DescribeJobsRequest struct {
 	// 作业ID
 	JobIds []*string `json:"JobIds" name:"JobIds" list`
 	// 过滤条件
+	// <li> job-id - String - 是否必填：否 -（过滤条件）按照作业ID过滤。</li>
+	// <li> job-name - String - 是否必填：否 -（过滤条件）按照作业名称过滤。</li>
+	// <li> job-state - String - 是否必填：否 -（过滤条件）按照作业状态过滤。</li>
+	// <li> zone - String - 是否必填：否 -（过滤条件）按照可用区过滤。</li>
 	Filters []*Filter `json:"Filters" name:"Filters" list`
 	// 偏移量
 	Offset *int64 `json:"Offset" name:"Offset"`
@@ -796,6 +810,50 @@ func (r *DescribeJobsResponse) ToJsonString() string {
 }
 
 func (r *DescribeJobsResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeTaskLogsRequest struct {
+	*tchttp.BaseRequest
+	// 作业ID
+	JobId *string `json:"JobId" name:"JobId"`
+	// 任务名称
+	TaskName *string `json:"TaskName" name:"TaskName"`
+	// 任务实例集合
+	TaskInstanceIndexes []*uint64 `json:"TaskInstanceIndexes" name:"TaskInstanceIndexes" list`
+	// 起始任务实例
+	Offset *uint64 `json:"Offset" name:"Offset"`
+	// 最大任务实例数
+	Limit *uint64 `json:"Limit" name:"Limit"`
+}
+
+func (r *DescribeTaskLogsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeTaskLogsRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeTaskLogsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+		// 任务实例总数
+		TotalCount *uint64 `json:"TotalCount" name:"TotalCount"`
+		// 任务实例日志详情集合
+		TaskInstanceLogSet []*TaskInstanceLog `json:"TaskInstanceLogSet" name:"TaskInstanceLogSet" list`
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeTaskLogsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeTaskLogsResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -861,6 +919,7 @@ type DescribeTaskTemplatesRequest struct {
 	// 任务模板ID
 	TaskTemplateIds []*string `json:"TaskTemplateIds" name:"TaskTemplateIds" list`
 	// 过滤条件
+	// <li> task-template-name - String - 是否必填：否 -（过滤条件）按照任务模板名称过滤。</li>
 	Filters []*Filter `json:"Filters" name:"Filters" list`
 	// 偏移量
 	Offset *int64 `json:"Offset" name:"Offset"`
@@ -1394,6 +1453,23 @@ type Task struct {
 	MaxRetryCount *uint64 `json:"MaxRetryCount" name:"MaxRetryCount"`
 	// 任务启动后的超时时间，单位秒，默认为86400秒
 	Timeout *uint64 `json:"Timeout" name:"Timeout"`
+}
+
+type TaskInstanceLog struct {
+	// 任务实例
+	TaskInstanceIndex *uint64 `json:"TaskInstanceIndex" name:"TaskInstanceIndex"`
+	// 标准输出日志（Base64编码）
+	StdoutLog *string `json:"StdoutLog" name:"StdoutLog"`
+	// 标准错误日志（Base64编码）
+	StderrLog *string `json:"StderrLog" name:"StderrLog"`
+	// 标准输出重定向路径
+	StdoutRedirectPath *string `json:"StdoutRedirectPath" name:"StdoutRedirectPath"`
+	// 标准错误重定向路径
+	StderrRedirectPath *string `json:"StderrRedirectPath" name:"StderrRedirectPath"`
+	// 标准输出重定向文件名
+	StdoutRedirectFileName *string `json:"StdoutRedirectFileName" name:"StdoutRedirectFileName"`
+	// 标准错误重定向文件名
+	StderrRedirectFileName *string `json:"StderrRedirectFileName" name:"StderrRedirectFileName"`
 }
 
 type TaskInstanceMetrics struct {

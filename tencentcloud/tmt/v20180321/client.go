@@ -57,7 +57,7 @@ func NewImageTranslateResponse() (response *ImageTranslateResponse) {
     return
 }
 
-// 提供中文到英文、英文到中文两种语言的图片翻译服务，可自动识别图片中的文本内容并翻译成目标语言
+// 提供中文到英文、英文到中文两种语言的图片翻译服务，可自动识别图片中的文本内容并翻译成目标语言，识别后的文本按行翻译，后续会提供可按段落翻译的版本
 func (c *Client) ImageTranslate(request *ImageTranslateRequest) (response *ImageTranslateResponse, err error) {
     if request == nil {
         request = NewImageTranslateRequest()
@@ -82,7 +82,7 @@ func NewLanguageDetectResponse() (response *LanguageDetectResponse) {
     return
 }
 
-// 可自动识别文本内容的语言种类，轻量高效，无需额外实现判断方式，使面向客户的服务体验更佳。
+// 可自动识别文本内容的语言种类，轻量高效，无需额外实现判断方式，使面向客户的服务体验更佳。 
 func (c *Client) LanguageDetect(request *LanguageDetectRequest) (response *LanguageDetectResponse, err error) {
     if request == nil {
         request = NewLanguageDetectRequest()

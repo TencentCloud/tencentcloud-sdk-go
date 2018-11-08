@@ -20,6 +20,36 @@ import (
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
+type Account struct {
+	// 唯一ID。
+	Id *uint64 `json:"Id" name:"Id"`
+	// 云镜客户端唯一Uuid
+	Uuid *string `json:"Uuid" name:"Uuid"`
+	// 主机内网IP。
+	MachineIp *string `json:"MachineIp" name:"MachineIp"`
+	// 主机名称。
+	MachineName *string `json:"MachineName" name:"MachineName"`
+	// 帐号名。
+	Username *string `json:"Username" name:"Username"`
+	// 帐号所属组。
+	Groups *string `json:"Groups" name:"Groups"`
+	// 帐号类型。
+	// <li>ORDINARY：普通帐号</li>
+	// <li>SUPPER：超级管理员帐号</li>
+	Privilege *string `json:"Privilege" name:"Privilege"`
+	// 帐号创建时间。
+	AccountCreateTime *string `json:"AccountCreateTime" name:"AccountCreateTime"`
+	// 帐号最后登录时间。
+	LastLoginTime *string `json:"LastLoginTime" name:"LastLoginTime"`
+}
+
+type AccountStatistics struct {
+	// 用户名。
+	Username *string `json:"Username" name:"Username"`
+	// 主机数量。
+	MachineNum *uint64 `json:"MachineNum" name:"MachineNum"`
+}
+
 type AgentVul struct {
 	// 漏洞ID。
 	Id *uint64 `json:"Id" name:"Id"`
@@ -94,7 +124,7 @@ func (r *CloseProVersionRequest) FromJsonString(s string) error {
 type CloseProVersionResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -105,6 +135,74 @@ func (r *CloseProVersionResponse) ToJsonString() string {
 }
 
 func (r *CloseProVersionResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type Component struct {
+	// 唯一ID。
+	Id *uint64 `json:"Id" name:"Id"`
+	// 云镜客户端唯一Uuid。
+	Uuid *string `json:"Uuid" name:"Uuid"`
+	// 主机内网IP。
+	MachineIp *string `json:"MachineIp" name:"MachineIp"`
+	// 主机名。
+	MachineName *string `json:"MachineName" name:"MachineName"`
+	// 组件版本号。
+	ComponentVersion *string `json:"ComponentVersion" name:"ComponentVersion"`
+	// 组件类型。
+	// <li>SYSTEM：系统组件</li>
+	// <li>WEB：WEB组件</li>
+	ComponentType *string `json:"ComponentType" name:"ComponentType"`
+	// 组件名称。
+	ComponentName *string `json:"ComponentName" name:"ComponentName"`
+	// 组件检测更新时间。
+	ModifyTime *string `json:"ModifyTime" name:"ModifyTime"`
+}
+
+type ComponentStatistics struct {
+	// 组件ID。
+	Id *uint64 `json:"Id" name:"Id"`
+	// 主机数量。
+	MachineNum *uint64 `json:"MachineNum" name:"MachineNum"`
+	// 组件名称。
+	ComponentName *string `json:"ComponentName" name:"ComponentName"`
+	// 组件类型。
+	// <li>WEB：web组件</li>
+	// <li>SYSTEM：系统组件</li>
+	ComponentType *string `json:"ComponentType" name:"ComponentType"`
+	// 组件描述。
+	Description *string `json:"Description" name:"Description"`
+}
+
+type CreateProcessTaskRequest struct {
+	*tchttp.BaseRequest
+	// 云镜客户端唯一Uuid。
+	Uuid *string `json:"Uuid" name:"Uuid"`
+}
+
+func (r *CreateProcessTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateProcessTaskRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateProcessTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateProcessTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateProcessTaskResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -128,7 +226,7 @@ func (r *CreateUsualLoginPlacesRequest) FromJsonString(s string) error {
 type CreateUsualLoginPlacesResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -160,7 +258,7 @@ func (r *DeleteBruteAttacksRequest) FromJsonString(s string) error {
 type DeleteBruteAttacksResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -192,7 +290,7 @@ func (r *DeleteMachineRequest) FromJsonString(s string) error {
 type DeleteMachineResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -224,7 +322,7 @@ func (r *DeleteMalwaresRequest) FromJsonString(s string) error {
 type DeleteMalwaresResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -256,7 +354,7 @@ func (r *DeleteNonlocalLoginPlacesRequest) FromJsonString(s string) error {
 type DeleteNonlocalLoginPlacesResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -290,7 +388,7 @@ func (r *DeleteUsualLoginPlacesRequest) FromJsonString(s string) error {
 type DeleteUsualLoginPlacesResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -301,6 +399,94 @@ func (r *DeleteUsualLoginPlacesResponse) ToJsonString() string {
 }
 
 func (r *DeleteUsualLoginPlacesResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeAccountStatisticsRequest struct {
+	*tchttp.BaseRequest
+	// 返回数量，默认为10，最大值为100。
+	Limit *uint64 `json:"Limit" name:"Limit"`
+	// 偏移量，默认为0。
+	Offset *uint64 `json:"Offset" name:"Offset"`
+	// 过滤条件。
+	// <li>Username - String - 是否必填：否 - 帐号用户名</li>
+	Filters []*Filter `json:"Filters" name:"Filters" list`
+}
+
+func (r *DescribeAccountStatisticsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeAccountStatisticsRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeAccountStatisticsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+		// 帐号统计列表记录总数。
+		TotalCount *uint64 `json:"TotalCount" name:"TotalCount"`
+		// 帐号统计列表。
+		AccountStatistics []*AccountStatistics `json:"AccountStatistics" name:"AccountStatistics" list`
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeAccountStatisticsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeAccountStatisticsResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeAccountsRequest struct {
+	*tchttp.BaseRequest
+	// 云镜客户端唯一Uuid。Username和Uuid必填其一，使用Uuid表示，查询该主机下列表信息。
+	Uuid *string `json:"Uuid" name:"Uuid"`
+	// 云镜客户端唯一Uuid。Username和Uuid必填其一，使用Username表示，查询该用户名下列表信息。
+	Username *string `json:"Username" name:"Username"`
+	// 返回数量，默认为10，最大值为100。
+	Limit *uint64 `json:"Limit" name:"Limit"`
+	// 偏移量，默认为0。
+	Offset *uint64 `json:"Offset" name:"Offset"`
+	// 过滤条件。
+	// <li>Username - String - 是否必填：否 - 帐号名</li>
+	// <li>Privilege - String - 是否必填：否 - 帐号类型（ORDINARY: 普通帐号 | SUPPER: 超级管理员帐号）</li>
+	// <li>MachineIp - String - 是否必填：否 - 主机内网IP</li>
+	Filters []*Filter `json:"Filters" name:"Filters" list`
+}
+
+func (r *DescribeAccountsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeAccountsRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeAccountsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+		// 帐号列表记录总数。
+		TotalCount *uint64 `json:"TotalCount" name:"TotalCount"`
+		// 帐号数据列表。
+		Accounts []*Account `json:"Accounts" name:"Accounts" list`
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeAccountsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeAccountsResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -338,7 +524,7 @@ type DescribeAgentVulsResponse struct {
 		TotalCount *uint64 `json:"TotalCount" name:"TotalCount"`
 		// 主机漏洞信息
 		AgentVuls []*AgentVul `json:"AgentVuls" name:"AgentVuls" list`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -384,7 +570,7 @@ type DescribeAlarmAttributeResponse struct {
 	// <li>OPEN：告警已开启</li>
 	// <li>CLOSE： 告警已关闭</li>
 		CrackSuccess *string `json:"CrackSuccess" name:"CrackSuccess"`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -428,7 +614,7 @@ type DescribeBruteAttacksResponse struct {
 		TotalCount *uint64 `json:"TotalCount" name:"TotalCount"`
 		// 暴力破解事件列表
 		BruteAttacks []*BruteAttack `json:"BruteAttacks" name:"BruteAttacks" list`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -439,6 +625,180 @@ func (r *DescribeBruteAttacksResponse) ToJsonString() string {
 }
 
 func (r *DescribeBruteAttacksResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeComponentInfoRequest struct {
+	*tchttp.BaseRequest
+	// 组件ID。
+	ComponentId *uint64 `json:"ComponentId" name:"ComponentId"`
+}
+
+func (r *DescribeComponentInfoRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeComponentInfoRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeComponentInfoResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+		// 组件ID。
+		Id *uint64 `json:"Id" name:"Id"`
+		// 组件名称。
+		ComponentName *string `json:"ComponentName" name:"ComponentName"`
+		// 组件类型。
+	// <li>WEB：web组件</li>
+	// <li>SYSTEM：系统组件</li>
+		ComponentType *string `json:"ComponentType" name:"ComponentType"`
+		// 组件官网。
+		Homepage *string `json:"Homepage" name:"Homepage"`
+		// 组件描述。
+		Description *string `json:"Description" name:"Description"`
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeComponentInfoResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeComponentInfoResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeComponentStatisticsRequest struct {
+	*tchttp.BaseRequest
+	// 返回数量，默认为10，最大值为100。
+	Limit *uint64 `json:"Limit" name:"Limit"`
+	// 偏移量，默认为0。
+	Offset *uint64 `json:"Offset" name:"Offset"`
+	// 过滤条件。
+	// ComponentName - String - 是否必填：否 - 组件名称
+	Filters []*Filter `json:"Filters" name:"Filters" list`
+}
+
+func (r *DescribeComponentStatisticsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeComponentStatisticsRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeComponentStatisticsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+		// 组件统计列表记录总数。
+		TotalCount *uint64 `json:"TotalCount" name:"TotalCount"`
+		// 组件统计列表数据数组。
+		ComponentStatistics []*ComponentStatistics `json:"ComponentStatistics" name:"ComponentStatistics" list`
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeComponentStatisticsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeComponentStatisticsResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeComponentsRequest struct {
+	*tchttp.BaseRequest
+	// 云镜客户端唯一Uuid。Uuid和ComponentId必填其一，使用Uuid表示，查询该主机列表信息。
+	Uuid *string `json:"Uuid" name:"Uuid"`
+	// 组件ID。Uuid和ComponentId必填其一，使用ComponentId表示，查询该组件列表信息。
+	ComponentId *uint64 `json:"ComponentId" name:"ComponentId"`
+	// 返回数量，默认为10，最大值为100。
+	Limit *uint64 `json:"Limit" name:"Limit"`
+	// 偏移量，默认为0。
+	Offset *uint64 `json:"Offset" name:"Offset"`
+	// 过滤条件。
+	// <li>ComponentVersion - String - 是否必填：否 - 组件版本号</li>
+	// <li>MachineIp - String - 是否必填：否 - 主机内网IP</li>
+	Filters []*Filter `json:"Filters" name:"Filters" list`
+}
+
+func (r *DescribeComponentsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeComponentsRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeComponentsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+		// 组件列表记录总数。
+		TotalCount *uint64 `json:"TotalCount" name:"TotalCount"`
+		// 组件列表数据。
+		Components []*Component `json:"Components" name:"Components" list`
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeComponentsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeComponentsResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeHistoryAccountsRequest struct {
+	*tchttp.BaseRequest
+	// 云镜客户端唯一Uuid。
+	Uuid *string `json:"Uuid" name:"Uuid"`
+	// 返回数量，默认为10，最大值为100。
+	Limit *uint64 `json:"Limit" name:"Limit"`
+	// 偏移量，默认为0。
+	Offset *uint64 `json:"Offset" name:"Offset"`
+	// 过滤条件。
+	// <li>Username - String - 是否必填：否 - 帐号名</li>
+	Filters []*Filter `json:"Filters" name:"Filters" list`
+}
+
+func (r *DescribeHistoryAccountsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeHistoryAccountsRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeHistoryAccountsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+		// 帐号变更历史列表记录总数。
+		TotalCount *uint64 `json:"TotalCount" name:"TotalCount"`
+		// 帐号变更历史数据数组。
+		HistoryAccounts []*HistoryAccount `json:"HistoryAccounts" name:"HistoryAccounts" list`
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeHistoryAccountsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeHistoryAccountsResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -471,7 +831,7 @@ type DescribeImpactedHostsResponse struct {
 		TotalCount *uint64 `json:"TotalCount" name:"TotalCount"`
 		// 漏洞影响机器列表数组
 		ImpactedHosts []*ImpactedHost `json:"ImpactedHosts" name:"ImpactedHosts" list`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -539,7 +899,7 @@ type DescribeMachineInfoResponse struct {
 	// <li>POSTPAY: 表示后付费，即按量计费  </li>
 	// <li>PREPAY: 表示预付费，即包年包月</li>
 		PayMode *string `json:"PayMode" name:"PayMode"`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -589,7 +949,7 @@ type DescribeMachinesResponse struct {
 		Machines []*Machine `json:"Machines" name:"Machines" list`
 		// 主机数量
 		TotalCount *uint64 `json:"TotalCount" name:"TotalCount"`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -634,7 +994,7 @@ type DescribeMalwaresResponse struct {
 		TotalCount *uint64 `json:"TotalCount" name:"TotalCount"`
 		// Malware数组。
 		Malwares []*Malware `json:"Malwares" name:"Malwares" list`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -678,7 +1038,7 @@ type DescribeNonlocalLoginPlacesResponse struct {
 		TotalCount *uint64 `json:"TotalCount" name:"TotalCount"`
 		// 异地登录信息数组。
 		NonLocalLoginPlaces []*NonLocalLoginPlace `json:"NonLocalLoginPlaces" name:"NonLocalLoginPlaces" list`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -689,6 +1049,94 @@ func (r *DescribeNonlocalLoginPlacesResponse) ToJsonString() string {
 }
 
 func (r *DescribeNonlocalLoginPlacesResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeOpenPortStatisticsRequest struct {
+	*tchttp.BaseRequest
+	// 返回数量，默认为10，最大值为100。
+	Limit *uint64 `json:"Limit" name:"Limit"`
+	// 偏移量，默认为0。
+	Offset *uint64 `json:"Offset" name:"Offset"`
+	// 过滤条件。
+	// <li>Port - Uint64 - 是否必填：否 - 端口号</li>
+	Filters []*Filter `json:"Filters" name:"Filters" list`
+}
+
+func (r *DescribeOpenPortStatisticsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeOpenPortStatisticsRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeOpenPortStatisticsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+		// 端口统计列表总数
+		TotalCount *uint64 `json:"TotalCount" name:"TotalCount"`
+		// 端口统计数据列表
+		OpenPortStatistics []*OpenPortStatistics `json:"OpenPortStatistics" name:"OpenPortStatistics" list`
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeOpenPortStatisticsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeOpenPortStatisticsResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeOpenPortsRequest struct {
+	*tchttp.BaseRequest
+	// 云镜客户端唯一Uuid。Port和Uuid必填其一，使用Uuid表示，查询该主机列表信息。
+	Uuid *string `json:"Uuid" name:"Uuid"`
+	// 开放端口号。Port和Uuid必填其一，使用Port表示查询该端口的列表信息。
+	Port *uint64 `json:"Port" name:"Port"`
+	// 返回数量，默认为10，最大值为100。
+	Limit *uint64 `json:"Limit" name:"Limit"`
+	// 偏移量，默认为0。
+	Offset *uint64 `json:"Offset" name:"Offset"`
+	// 过滤条件。
+	// <li>Port - Uint64 - 是否必填：否 - 端口号</li>
+	// <li>ProcessName - String - 是否必填：否 - 进程名</li>
+	// <li>MachineIp - String - 是否必填：否 - 主机内网IP</li>
+	Filters []*Filter `json:"Filters" name:"Filters" list`
+}
+
+func (r *DescribeOpenPortsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeOpenPortsRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeOpenPortsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+		// 端口列表记录总数。
+		TotalCount *uint64 `json:"TotalCount" name:"TotalCount"`
+		// 端口列表。
+		OpenPorts []*OpenPort `json:"OpenPorts" name:"OpenPorts" list`
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeOpenPortsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeOpenPortsResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -708,19 +1156,21 @@ func (r *DescribeOverviewStatisticsRequest) FromJsonString(s string) error {
 type DescribeOverviewStatisticsResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
-		// 服务器在线数
+		// 服务器在线数。
 		OnlineMachineNum *uint64 `json:"OnlineMachineNum" name:"OnlineMachineNum"`
-		// 专业服务器数
+		// 专业服务器数。
 		ProVersionMachineNum *uint64 `json:"ProVersionMachineNum" name:"ProVersionMachineNum"`
-		// 木马文件数
+		// 木马文件数。
 		MalwareNum *uint64 `json:"MalwareNum" name:"MalwareNum"`
-		// 异地登录数
+		// 异地登录数。
 		NonlocalLoginNum *uint64 `json:"NonlocalLoginNum" name:"NonlocalLoginNum"`
-		// 暴力破解成功数
+		// 暴力破解成功数。
 		BruteAttackSuccessNum *uint64 `json:"BruteAttackSuccessNum" name:"BruteAttackSuccessNum"`
-		// 漏洞数
+		// 漏洞数。
 		VulNum *uint64 `json:"VulNum" name:"VulNum"`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 安全基线数。
+		BaseLineNum *uint64 `json:"BaseLineNum" name:"BaseLineNum"`
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -756,7 +1206,7 @@ type DescribeProVersionInfoResponse struct {
 		IsAutoOpenProVersion *bool `json:"IsAutoOpenProVersion" name:"IsAutoOpenProVersion"`
 		// 开通专业版主机数
 		ProVersionNum *uint64 `json:"ProVersionNum" name:"ProVersionNum"`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -767,6 +1217,213 @@ func (r *DescribeProVersionInfoResponse) ToJsonString() string {
 }
 
 func (r *DescribeProVersionInfoResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeProcessStatisticsRequest struct {
+	*tchttp.BaseRequest
+	// 返回数量，默认为10，最大值为100。
+	Limit *uint64 `json:"Limit" name:"Limit"`
+	// 偏移量，默认为0。
+	Offset *uint64 `json:"Offset" name:"Offset"`
+	// 过滤条件。
+	// <li>ProcessName - String - 是否必填：否 - 进程名</li>
+	Filters []*Filter `json:"Filters" name:"Filters" list`
+}
+
+func (r *DescribeProcessStatisticsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeProcessStatisticsRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeProcessStatisticsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+		// 进程统计列表记录总数。
+		TotalCount *uint64 `json:"TotalCount" name:"TotalCount"`
+		// 进程统计列表数据数组。
+		ProcessStatistics []*ProcessStatistics `json:"ProcessStatistics" name:"ProcessStatistics" list`
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeProcessStatisticsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeProcessStatisticsResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeProcessTaskStatusRequest struct {
+	*tchttp.BaseRequest
+	// 云镜客户端唯一Uuid。
+	Uuid *string `json:"Uuid" name:"Uuid"`
+}
+
+func (r *DescribeProcessTaskStatusRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeProcessTaskStatusRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeProcessTaskStatusResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+		// 任务状态。
+	// <li>COMPLETE：完成（此时可以调用DescribeProcesses接口获取实时进程列表）</li>
+	// <li>AGENT_OFFLINE：云镜客户端离线</li>
+	// <li>COLLECTING：进程获取中</li>
+	// <li>FAILED：进程获取失败</li>
+		Status *string `json:"Status" name:"Status"`
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeProcessTaskStatusResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeProcessTaskStatusResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeProcessesRequest struct {
+	*tchttp.BaseRequest
+	// 云镜客户端唯一Uuid。Uuid和ProcessName必填其一，使用Uuid表示，查询该主机列表信息。
+	Uuid *string `json:"Uuid" name:"Uuid"`
+	// 进程名。Uuid和ProcessName必填其一，使用ProcessName表示，查询该进程列表信息。
+	ProcessName *string `json:"ProcessName" name:"ProcessName"`
+	// 返回数量，默认为10，最大值为100。
+	Limit *uint64 `json:"Limit" name:"Limit"`
+	// 偏移量，默认为0。
+	Offset *uint64 `json:"Offset" name:"Offset"`
+	// 过滤条件。
+	// <li>ProcessName - String - 是否必填：否 - 进程名</li>
+	// <li>MachineIp - String - 是否必填：否 - 主机内网IP</li>
+	Filters []*Filter `json:"Filters" name:"Filters" list`
+}
+
+func (r *DescribeProcessesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeProcessesRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeProcessesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+		// 进程列表记录总数。
+		TotalCount *uint64 `json:"TotalCount" name:"TotalCount"`
+		// 进程列表数据数组。
+		Processes []*Process `json:"Processes" name:"Processes" list`
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeProcessesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeProcessesResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeSecurityDynamicsRequest struct {
+	*tchttp.BaseRequest
+	// 返回数量，默认为10，最大值为100。
+	Limit *uint64 `json:"Limit" name:"Limit"`
+	// 偏移量，默认为0。
+	Offset *uint64 `json:"Offset" name:"Offset"`
+}
+
+func (r *DescribeSecurityDynamicsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeSecurityDynamicsRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeSecurityDynamicsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+		// 安全事件消息数组。
+		SecurityDynamics []*SecurityDynamic `json:"SecurityDynamics" name:"SecurityDynamics" list`
+		// 记录总数。
+		TotalCount *uint64 `json:"TotalCount" name:"TotalCount"`
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeSecurityDynamicsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeSecurityDynamicsResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeSecurityTrendsRequest struct {
+	*tchttp.BaseRequest
+	// 开始时间。
+	BeginDate *string `json:"BeginDate" name:"BeginDate"`
+	// 结束时间。
+	EndDate *string `json:"EndDate" name:"EndDate"`
+}
+
+func (r *DescribeSecurityTrendsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeSecurityTrendsRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeSecurityTrendsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+		// 木马事件统计数据数组。
+		Malwares []*SecurityTrend `json:"Malwares" name:"Malwares" list`
+		// 异地登录事件统计数据数组。
+		NonLocalLoginPlaces []*SecurityTrend `json:"NonLocalLoginPlaces" name:"NonLocalLoginPlaces" list`
+		// 密码破解事件统计数据数组。
+		BruteAttacks []*SecurityTrend `json:"BruteAttacks" name:"BruteAttacks" list`
+		// 漏洞统计数据数组。
+		Vuls []*SecurityTrend `json:"Vuls" name:"Vuls" list`
+		// 基线统计数据数组。
+		BaseLines []*SecurityTrend `json:"BaseLines" name:"BaseLines" list`
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeSecurityTrendsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeSecurityTrendsResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -790,7 +1447,7 @@ type DescribeUsualLoginPlacesResponse struct {
 	Response *struct {
 		// 常用登录地数组
 		UsualLoginPlaces []*UsualPlace `json:"UsualLoginPlaces" name:"UsualLoginPlaces" list`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -838,7 +1495,7 @@ type DescribeVulInfoResponse struct {
 		CveId *string `json:"CveId" name:"CveId"`
 		// 参考链接。
 		Reference *string `json:"Reference" name:"Reference"`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -874,7 +1531,7 @@ type DescribeVulScanResultResponse struct {
 		ProVersionNum *uint64 `json:"ProVersionNum" name:"ProVersionNum"`
 		// 受影响的专业版主机数。
 		ImpactedHostNum *uint64 `json:"ImpactedHostNum" name:"ImpactedHostNum"`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -922,7 +1579,7 @@ type DescribeVulsResponse struct {
 		TotalCount *uint64 `json:"TotalCount" name:"TotalCount"`
 		// 漏洞列表数组。
 		Vuls []*Vul `json:"Vuls" name:"Vuls" list`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -936,11 +1593,288 @@ func (r *DescribeVulsResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeWeeklyReportBruteAttacksRequest struct {
+	*tchttp.BaseRequest
+	// 专业周报开始时间。
+	BeginDate *string `json:"BeginDate" name:"BeginDate"`
+	// 返回数量，默认为10，最大值为100。
+	Limit *uint64 `json:"Limit" name:"Limit"`
+	// 偏移量，默认为0。
+	Offset *uint64 `json:"Offset" name:"Offset"`
+}
+
+func (r *DescribeWeeklyReportBruteAttacksRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeWeeklyReportBruteAttacksRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeWeeklyReportBruteAttacksResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+		// 专业周报密码破解数组。
+		WeeklyReportBruteAttacks []*WeeklyReportBruteAttack `json:"WeeklyReportBruteAttacks" name:"WeeklyReportBruteAttacks" list`
+		// 记录总数。
+		TotalCount *uint64 `json:"TotalCount" name:"TotalCount"`
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeWeeklyReportBruteAttacksResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeWeeklyReportBruteAttacksResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeWeeklyReportInfoRequest struct {
+	*tchttp.BaseRequest
+	// 专业周报开始时间。
+	BeginDate *string `json:"BeginDate" name:"BeginDate"`
+}
+
+func (r *DescribeWeeklyReportInfoRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeWeeklyReportInfoRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeWeeklyReportInfoResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+		// 账号所属公司或个人名称。
+		CompanyName *string `json:"CompanyName" name:"CompanyName"`
+		// 机器总数。
+		MachineNum *uint64 `json:"MachineNum" name:"MachineNum"`
+		// 云镜客户端在线数。
+		OnlineMachineNum *uint64 `json:"OnlineMachineNum" name:"OnlineMachineNum"`
+		// 云镜客户端离线数。
+		OfflineMachineNum *uint64 `json:"OfflineMachineNum" name:"OfflineMachineNum"`
+		// 开通云镜专业版数量。
+		ProVersionMachineNum *uint64 `json:"ProVersionMachineNum" name:"ProVersionMachineNum"`
+		// 周报开始时间。
+		BeginDate *string `json:"BeginDate" name:"BeginDate"`
+		// 周报结束时间。
+		EndDate *string `json:"EndDate" name:"EndDate"`
+		// 安全等级。
+	// <li>HIGH：高</li>
+	// <li>MIDDLE：中</li>
+	// <li>LOW：低</li>
+		Level *string `json:"Level" name:"Level"`
+		// 木马记录数。
+		MalwareNum *uint64 `json:"MalwareNum" name:"MalwareNum"`
+		// 异地登录数。
+		NonlocalLoginNum *uint64 `json:"NonlocalLoginNum" name:"NonlocalLoginNum"`
+		// 密码破解成功数。
+		BruteAttackSuccessNum *uint64 `json:"BruteAttackSuccessNum" name:"BruteAttackSuccessNum"`
+		// 漏洞数。
+		VulNum *uint64 `json:"VulNum" name:"VulNum"`
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeWeeklyReportInfoResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeWeeklyReportInfoResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeWeeklyReportMalwaresRequest struct {
+	*tchttp.BaseRequest
+	// 专业周报开始时间。
+	BeginDate *string `json:"BeginDate" name:"BeginDate"`
+	// 返回数量，默认为10，最大值为100。
+	Limit *uint64 `json:"Limit" name:"Limit"`
+	// 偏移量，默认为0。
+	Offset *uint64 `json:"Offset" name:"Offset"`
+}
+
+func (r *DescribeWeeklyReportMalwaresRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeWeeklyReportMalwaresRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeWeeklyReportMalwaresResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+		// 专业周报木马数据。
+		WeeklyReportMalwares []*WeeklyReportMalware `json:"WeeklyReportMalwares" name:"WeeklyReportMalwares" list`
+		// 记录总数。
+		TotalCount *uint64 `json:"TotalCount" name:"TotalCount"`
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeWeeklyReportMalwaresResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeWeeklyReportMalwaresResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeWeeklyReportNonlocalLoginPlacesRequest struct {
+	*tchttp.BaseRequest
+	// 专业周报开始时间。
+	BeginDate *string `json:"BeginDate" name:"BeginDate"`
+	// 返回数量，默认为10，最大值为100。
+	Limit *uint64 `json:"Limit" name:"Limit"`
+	// 偏移量，默认为0。
+	Offset *uint64 `json:"Offset" name:"Offset"`
+}
+
+func (r *DescribeWeeklyReportNonlocalLoginPlacesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeWeeklyReportNonlocalLoginPlacesRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeWeeklyReportNonlocalLoginPlacesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+		// 专业周报异地登录数据。
+		WeeklyReportNonlocalLoginPlaces []*WeeklyReportNonlocalLoginPlace `json:"WeeklyReportNonlocalLoginPlaces" name:"WeeklyReportNonlocalLoginPlaces" list`
+		// 记录总数。
+		TotalCount *uint64 `json:"TotalCount" name:"TotalCount"`
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeWeeklyReportNonlocalLoginPlacesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeWeeklyReportNonlocalLoginPlacesResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeWeeklyReportVulsRequest struct {
+	*tchttp.BaseRequest
+	// 专业版周报开始时间。
+	BeginDate *string `json:"BeginDate" name:"BeginDate"`
+	// 返回数量，默认为10，最大值为100。
+	Limit *uint64 `json:"Limit" name:"Limit"`
+	// 偏移量，默认为0。
+	Offset *uint64 `json:"Offset" name:"Offset"`
+}
+
+func (r *DescribeWeeklyReportVulsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeWeeklyReportVulsRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeWeeklyReportVulsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+		// 专业周报漏洞数据数组。
+		WeeklyReportVuls []*WeeklyReportVul `json:"WeeklyReportVuls" name:"WeeklyReportVuls" list`
+		// 记录总数。
+		TotalCount *uint64 `json:"TotalCount" name:"TotalCount"`
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeWeeklyReportVulsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeWeeklyReportVulsResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeWeeklyReportsRequest struct {
+	*tchttp.BaseRequest
+	// 返回数量，默认为10，最大值为100。
+	Limit *uint64 `json:"Limit" name:"Limit"`
+	// 偏移量，默认为0。
+	Offset *uint64 `json:"Offset" name:"Offset"`
+}
+
+func (r *DescribeWeeklyReportsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeWeeklyReportsRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeWeeklyReportsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+		// 专业周报列表数组。
+		WeeklyReports []*WeeklyReport `json:"WeeklyReports" name:"WeeklyReports" list`
+		// 记录总数。
+		TotalCount *uint64 `json:"TotalCount" name:"TotalCount"`
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeWeeklyReportsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeWeeklyReportsResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type Filter struct {
 	// 过滤键的名称。
 	Name *string `json:"Name" name:"Name"`
 	// 一个或者多个过滤值。
 	Values []*string `json:"Values" name:"Values" list`
+}
+
+type HistoryAccount struct {
+	// 唯一ID。
+	Id *uint64 `json:"Id" name:"Id"`
+	// 云镜客户端唯一Uuid。
+	Uuid *string `json:"Uuid" name:"Uuid"`
+	// 主机内网IP。
+	MachineIp *string `json:"MachineIp" name:"MachineIp"`
+	// 主机名。
+	MachineName *string `json:"MachineName" name:"MachineName"`
+	// 帐号名。
+	Username *string `json:"Username" name:"Username"`
+	// 帐号变更类型。
+	// <li>CREATE：表示新增帐号</li>
+	// <li>MODIFY：表示修改帐号</li>
+	// <li>DELETE：表示删除帐号</li>
+	ModifyType *string `json:"ModifyType" name:"ModifyType"`
+	// 变更时间。
+	ModifyTime *string `json:"ModifyTime" name:"ModifyTime"`
 }
 
 type IgnoreImpactedHostsRequest struct {
@@ -961,7 +1895,7 @@ func (r *IgnoreImpactedHostsRequest) FromJsonString(s string) error {
 type IgnoreImpactedHostsResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -1067,7 +2001,7 @@ func (r *MisAlarmNonlocalLoginPlacesRequest) FromJsonString(s string) error {
 type MisAlarmNonlocalLoginPlacesResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -1107,7 +2041,7 @@ func (r *ModifyAlarmAttributeRequest) FromJsonString(s string) error {
 type ModifyAlarmAttributeResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -1141,7 +2075,7 @@ func (r *ModifyAutoOpenProVersionConfigRequest) FromJsonString(s string) error {
 type ModifyAutoOpenProVersionConfigResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -1182,6 +2116,34 @@ type NonLocalLoginPlace struct {
 	Uuid *string `json:"Uuid" name:"Uuid"`
 }
 
+type OpenPort struct {
+	// 唯一ID。
+	Id *uint64 `json:"Id" name:"Id"`
+	// 云镜客户端唯一UUID。
+	Uuid *string `json:"Uuid" name:"Uuid"`
+	// 开放端口号。
+	Port *uint64 `json:"Port" name:"Port"`
+	// 主机IP。
+	MachineIp *string `json:"MachineIp" name:"MachineIp"`
+	// 主机名。
+	MachineName *string `json:"MachineName" name:"MachineName"`
+	// 端口对应进程名。
+	ProcessName *string `json:"ProcessName" name:"ProcessName"`
+	// 端口对应进程Pid。
+	Pid *uint64 `json:"Pid" name:"Pid"`
+	// 记录创建时间。
+	CreateTime *string `json:"CreateTime" name:"CreateTime"`
+	// 记录更新时间。
+	ModifyTime *string `json:"ModifyTime" name:"ModifyTime"`
+}
+
+type OpenPortStatistics struct {
+	// 端口号
+	Port *uint64 `json:"Port" name:"Port"`
+	// 主机数量
+	MachineNum *uint64 `json:"MachineNum" name:"MachineNum"`
+}
+
 type Place struct {
 	// 城市 ID。
 	CityId *uint64 `json:"CityId" name:"CityId"`
@@ -1189,6 +2151,42 @@ type Place struct {
 	ProvinceId *uint64 `json:"ProvinceId" name:"ProvinceId"`
 	// 国家ID，暂只支持国内：1。
 	CountryId *uint64 `json:"CountryId" name:"CountryId"`
+}
+
+type Process struct {
+	// 唯一ID。
+	Id *uint64 `json:"Id" name:"Id"`
+	// 云镜客户端唯一UUID。
+	Uuid *string `json:"Uuid" name:"Uuid"`
+	// 主机内网IP。
+	MachineIp *string `json:"MachineIp" name:"MachineIp"`
+	// 主机名。
+	MachineName *string `json:"MachineName" name:"MachineName"`
+	// 进程Pid。
+	Pid *uint64 `json:"Pid" name:"Pid"`
+	// 进程Ppid。
+	Ppid *uint64 `json:"Ppid" name:"Ppid"`
+	// 进程名。
+	ProcessName *string `json:"ProcessName" name:"ProcessName"`
+	// 进程用户名。
+	Username *string `json:"Username" name:"Username"`
+	// 所属平台。
+	// <li>WIN32：windows32位</li>
+	// <li>WIN64：windows64位</li>
+	// <li>LINUX32：Linux32位</li>
+	// <li>LINUX64：Linux64位</li>
+	Platform *string `json:"Platform" name:"Platform"`
+	// 进程路径。
+	FullPath *string `json:"FullPath" name:"FullPath"`
+	// 创建时间。
+	CreateTime *string `json:"CreateTime" name:"CreateTime"`
+}
+
+type ProcessStatistics struct {
+	// 进程名。
+	ProcessName *string `json:"ProcessName" name:"ProcessName"`
+	// 主机数量。
+	MachineNum *uint64 `json:"MachineNum" name:"MachineNum"`
 }
 
 type RecoverMalwaresRequest struct {
@@ -1213,7 +2211,7 @@ type RecoverMalwaresResponse struct {
 		SuccessIds []*uint64 `json:"SuccessIds" name:"SuccessIds" list`
 		// 恢复失败id数组
 		FailedIds []*uint64 `json:"FailedIds" name:"FailedIds" list`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -1245,7 +2243,7 @@ func (r *RescanImpactedHostRequest) FromJsonString(s string) error {
 type RescanImpactedHostResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -1257,6 +2255,29 @@ func (r *RescanImpactedHostResponse) ToJsonString() string {
 
 func (r *RescanImpactedHostResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
+}
+
+type SecurityDynamic struct {
+	// 云镜客户端UUID。
+	Uuid *string `json:"Uuid" name:"Uuid"`
+	// 安全事件发生事件。
+	EventTime *string `json:"EventTime" name:"EventTime"`
+	// 安全事件类型。
+	// <li>MALWARE：木马事件</li>
+	// <li>NON_LOCAL_LOGIN：异地登录</li>
+	// <li>BRUTEATTACK_SUCCESS：密码破解成功</li>
+	// <li>VUL：漏洞</li>
+	// <li>BASELINE：安全基线</li>
+	EventType *string `json:"EventType" name:"EventType"`
+	// 安全事件消息。
+	Message *string `json:"Message" name:"Message"`
+}
+
+type SecurityTrend struct {
+	// 事件时间。
+	Date *string `json:"Date" name:"Date"`
+	// 事件数量。
+	EventNum *uint64 `json:"EventNum" name:"EventNum"`
 }
 
 type SeparateMalwaresRequest struct {
@@ -1281,7 +2302,7 @@ type SeparateMalwaresResponse struct {
 		SuccessIds []*uint64 `json:"SuccessIds" name:"SuccessIds" list`
 		// 隔离失败的id数组。
 		FailedIds []*uint64 `json:"FailedIds" name:"FailedIds" list`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -1313,7 +2334,7 @@ func (r *TrustMalwaresRequest) FromJsonString(s string) error {
 type TrustMalwaresResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -1345,7 +2366,7 @@ func (r *UntrustMalwaresRequest) FromJsonString(s string) error {
 type UntrustMalwaresResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -1391,4 +2412,80 @@ type Vul struct {
 	// * UN_OPERATED : 待处理
 	// * FIXED : 已修复
 	VulStatus *string `json:"VulStatus" name:"VulStatus"`
+}
+
+type WeeklyReport struct {
+	// 周报开始时间。
+	BeginDate *string `json:"BeginDate" name:"BeginDate"`
+	// 周报结束时间。
+	EndDate *string `json:"EndDate" name:"EndDate"`
+}
+
+type WeeklyReportBruteAttack struct {
+	// 主机IP。
+	MachineIp *string `json:"MachineIp" name:"MachineIp"`
+	// 被破解用户名。
+	Username *string `json:"Username" name:"Username"`
+	// 源IP。
+	SrcIp *string `json:"SrcIp" name:"SrcIp"`
+	// 尝试次数。
+	Count *uint64 `json:"Count" name:"Count"`
+	// 攻击时间。
+	AttackTime *string `json:"AttackTime" name:"AttackTime"`
+}
+
+type WeeklyReportMalware struct {
+	// 主机IP。
+	MachineIp *string `json:"MachineIp" name:"MachineIp"`
+	// 木马文件路径。
+	FilePath *string `json:"FilePath" name:"FilePath"`
+	// 木马文件MD5值。
+	Md5 *string `json:"Md5" name:"Md5"`
+	// 木马发现时间。
+	FindTime *string `json:"FindTime" name:"FindTime"`
+	// 当前木马状态。
+	// <li>UN_OPERATED：未处理</li>
+	// <li>SEGREGATED：已隔离</li>
+	// <li>TRUSTED：已信任</li>
+	// <li>SEPARATING：隔离中</li>
+	// <li>RECOVERING：恢复中</li>
+	Status *string `json:"Status" name:"Status"`
+}
+
+type WeeklyReportNonlocalLoginPlace struct {
+	// 主机IP。
+	MachineIp *string `json:"MachineIp" name:"MachineIp"`
+	// 用户名。
+	Username *string `json:"Username" name:"Username"`
+	// 源IP。
+	SrcIp *string `json:"SrcIp" name:"SrcIp"`
+	// 国家ID。
+	Country *uint64 `json:"Country" name:"Country"`
+	// 省份ID。
+	Province *uint64 `json:"Province" name:"Province"`
+	// 城市ID。
+	City *uint64 `json:"City" name:"City"`
+	// 登录时间。
+	LoginTime *string `json:"LoginTime" name:"LoginTime"`
+}
+
+type WeeklyReportVul struct {
+	// 主机内网IP。
+	MachineIp *string `json:"MachineIp" name:"MachineIp"`
+	// 漏洞名称。
+	VulName *string `json:"VulName" name:"VulName"`
+	// 漏洞类型。
+	// <li> WEB : WEB漏洞</li>
+	// <li> SYSTEM :系统组件漏洞</li>
+	// <li> BASELINE : 安全基线</li>
+	VulType *string `json:"VulType" name:"VulType"`
+	// 漏洞描述。
+	Description *string `json:"Description" name:"Description"`
+	// 漏洞状态。
+	// <li> UN_OPERATED : 待处理</li>
+	// <li> SCANING : 扫描中</li>
+	// <li> FIXED : 已修复</li>
+	VulStatus *string `json:"VulStatus" name:"VulStatus"`
+	// 最后扫描时间。
+	LastScanTime *string `json:"LastScanTime" name:"LastScanTime"`
 }
