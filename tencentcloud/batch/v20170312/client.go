@@ -1,4 +1,4 @@
-// Copyright 1999-2018 Tencent Ltd.
+// Copyright (c) 2017-2018 THL A29 Limited, a Tencent company. All Rights Reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -11,6 +11,7 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
+
 package v20170312
 
 import (
@@ -26,8 +27,9 @@ type Client struct {
 }
 
 func NewClientWithSecretId(secretId, secretKey, region string) (client *Client, err error) {
+    cpf := profile.NewClientProfile()
     client = &Client{}
-    client.Init(region).WithSecretId(secretId, secretKey)
+    client.Init(region).WithSecretId(secretId, secretKey).WithProfile(cpf)
     return
 }
 
@@ -317,6 +319,31 @@ func (c *Client) DescribeComputeEnvs(request *DescribeComputeEnvsRequest) (respo
     return
 }
 
+func NewDescribeCvmZoneInstanceConfigInfosRequest() (request *DescribeCvmZoneInstanceConfigInfosRequest) {
+    request = &DescribeCvmZoneInstanceConfigInfosRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("batch", APIVersion, "DescribeCvmZoneInstanceConfigInfos")
+    return
+}
+
+func NewDescribeCvmZoneInstanceConfigInfosResponse() (response *DescribeCvmZoneInstanceConfigInfosResponse) {
+    response = &DescribeCvmZoneInstanceConfigInfosResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 获取批量计算可用区机型配置信息
+func (c *Client) DescribeCvmZoneInstanceConfigInfos(request *DescribeCvmZoneInstanceConfigInfosRequest) (response *DescribeCvmZoneInstanceConfigInfosResponse, err error) {
+    if request == nil {
+        request = NewDescribeCvmZoneInstanceConfigInfosRequest()
+    }
+    response = NewDescribeCvmZoneInstanceConfigInfosResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeJobRequest() (request *DescribeJobRequest) {
     request = &DescribeJobRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -417,6 +444,31 @@ func (c *Client) DescribeTask(request *DescribeTaskRequest) (response *DescribeT
     return
 }
 
+func NewDescribeTaskLogsRequest() (request *DescribeTaskLogsRequest) {
+    request = &DescribeTaskLogsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("batch", APIVersion, "DescribeTaskLogs")
+    return
+}
+
+func NewDescribeTaskLogsResponse() (response *DescribeTaskLogsResponse) {
+    response = &DescribeTaskLogsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 用于获取任务多个实例标准输出和标准错误日志。
+func (c *Client) DescribeTaskLogs(request *DescribeTaskLogsRequest) (response *DescribeTaskLogsResponse, err error) {
+    if request == nil {
+        request = NewDescribeTaskLogsRequest()
+    }
+    response = NewDescribeTaskLogsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeTaskTemplatesRequest() (request *DescribeTaskTemplatesRequest) {
     request = &DescribeTaskTemplatesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -457,7 +509,7 @@ func NewModifyComputeEnvResponse() (response *ModifyComputeEnvResponse) {
     return
 }
 
-// 用于修改计算环境的期望节点数量
+// 用于修改计算环境属性
 func (c *Client) ModifyComputeEnv(request *ModifyComputeEnvRequest) (response *ModifyComputeEnvResponse, err error) {
     if request == nil {
         request = NewModifyComputeEnvRequest()
@@ -539,6 +591,31 @@ func (c *Client) TerminateComputeNode(request *TerminateComputeNodeRequest) (res
         request = NewTerminateComputeNodeRequest()
     }
     response = NewTerminateComputeNodeResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewTerminateComputeNodesRequest() (request *TerminateComputeNodesRequest) {
+    request = &TerminateComputeNodesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("batch", APIVersion, "TerminateComputeNodes")
+    return
+}
+
+func NewTerminateComputeNodesResponse() (response *TerminateComputeNodesResponse) {
+    response = &TerminateComputeNodesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 用于批量销毁计算节点，不允许重复销毁同一个节点。
+func (c *Client) TerminateComputeNodes(request *TerminateComputeNodesRequest) (response *TerminateComputeNodesResponse, err error) {
+    if request == nil {
+        request = NewTerminateComputeNodesRequest()
+    }
+    response = NewTerminateComputeNodesResponse()
     err = c.Send(request, response)
     return
 }

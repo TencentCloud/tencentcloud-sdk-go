@@ -1,4 +1,4 @@
-// Copyright 1999-2018 Tencent Ltd.
+// Copyright (c) 2017-2018 THL A29 Limited, a Tencent company. All Rights Reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -19,6 +19,50 @@ import (
 
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
+
+type CloneAccountRequest struct {
+	*tchttp.BaseRequest
+	// 实例ID
+	InstanceId *string `json:"InstanceId" name:"InstanceId"`
+	// 源用户账户名
+	SrcUser *string `json:"SrcUser" name:"SrcUser"`
+	// 源用户HOST
+	SrcHost *string `json:"SrcHost" name:"SrcHost"`
+	// 目的用户账户名
+	DstUser *string `json:"DstUser" name:"DstUser"`
+	// 目的用户HOST
+	DstHost *string `json:"DstHost" name:"DstHost"`
+	// 目的用户账户描述
+	DstDesc *string `json:"DstDesc" name:"DstDesc"`
+}
+
+func (r *CloneAccountRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CloneAccountRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CloneAccountResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+		// 异步任务流程ID。
+		FlowId *uint64 `json:"FlowId" name:"FlowId"`
+		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		RequestId *string `json:"RequestId" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CloneAccountResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CloneAccountResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
 
 type CloseDBExtranetAccessRequest struct {
 	*tchttp.BaseRequest
@@ -69,12 +113,12 @@ type CopyAccountPrivilegesRequest struct {
 	SrcUserName *string `json:"SrcUserName" name:"SrcUserName"`
 	// 源用户允许的访问 host
 	SrcHost *string `json:"SrcHost" name:"SrcHost"`
-	// 源账号的 ReadOnly 属性
-	SrcReadOnly *string `json:"SrcReadOnly" name:"SrcReadOnly"`
 	// 目的用户名
 	DstUserName *string `json:"DstUserName" name:"DstUserName"`
 	// 目的用户允许的访问 host
 	DstHost *string `json:"DstHost" name:"DstHost"`
+	// 源账号的 ReadOnly 属性
+	SrcReadOnly *string `json:"SrcReadOnly" name:"SrcReadOnly"`
 	// 目的账号的 ReadOnly 属性
 	DstReadOnly *string `json:"DstReadOnly" name:"DstReadOnly"`
 }
@@ -230,6 +274,8 @@ type DBAccount struct {
 	UpdateTime *string `json:"UpdateTime" name:"UpdateTime"`
 	// 只读标记，0：否， 1：该账号的sql请求优先选择备机执行，备机不可用时选择主机执行，2：优先选择备机执行，备机不可用时操作失败。
 	ReadOnly *int64 `json:"ReadOnly" name:"ReadOnly"`
+	// 该字段对只读帐号有意义，表示选择主备延迟小于该值的备机
+	DelayThresh *int64 `json:"DelayThresh" name:"DelayThresh"`
 }
 
 type DBBackupTimeConfig struct {
@@ -276,18 +322,40 @@ type DBInstance struct {
 	UpdateTime *string `json:"UpdateTime" name:"UpdateTime"`
 	// 自动续费标志：0 否，1 是
 	AutoRenewFlag *int64 `json:"AutoRenewFlag" name:"AutoRenewFlag"`
-	// 产品类型 Id
-	Pid *int64 `json:"Pid" name:"Pid"`
 	// 实例到期时间，格式为 2006-01-02 15:04:05
 	PeriodEndTime *string `json:"PeriodEndTime" name:"PeriodEndTime"`
 	// 实例所属账号
 	Uin *string `json:"Uin" name:"Uin"`
-	// TDSQL 版本信息，如 10.1.9
+	// TDSQL 版本信息
 	TdsqlVersion *string `json:"TdsqlVersion" name:"TdsqlVersion"`
 	// 实例内存大小，单位 GB
 	Memory *int64 `json:"Memory" name:"Memory"`
 	// 实例存储大小，单位 GB
 	Storage *int64 `json:"Storage" name:"Storage"`
+	// 字符串型的私有网络Id
+	UniqueVpcId *string `json:"UniqueVpcId" name:"UniqueVpcId"`
+	// 字符串型的私有网络子网Id
+	UniqueSubnetId *string `json:"UniqueSubnetId" name:"UniqueSubnetId"`
+	// 原始实例ID（过时字段，请勿依赖该值）
+	OriginSerialId *string `json:"OriginSerialId" name:"OriginSerialId"`
+	// 节点数，2为一主一从，3为一主二从
+	NodeCount *uint64 `json:"NodeCount" name:"NodeCount"`
+	// 是否临时实例，0为否，非0为是
+	IsTmp *uint64 `json:"IsTmp" name:"IsTmp"`
+	// 独享集群Id，为空表示为普通实例
+	ExclusterId *string `json:"ExclusterId" name:"ExclusterId"`
+	// 数字实例Id（过时字段，请勿依赖该值）
+	Id *uint64 `json:"Id" name:"Id"`
+	// 产品类型 Id
+	Pid *int64 `json:"Pid" name:"Pid"`
+	// 最大 Qps 值
+	Qps *int64 `json:"Qps" name:"Qps"`
+	// 付费模式
+	Paymode *string `json:"Paymode" name:"Paymode"`
+	// 实例处于异步任务时的异步任务流程ID
+	Locker *int64 `json:"Locker" name:"Locker"`
+	// 实例目前运行状态描述
+	StatusDesc *string `json:"StatusDesc" name:"StatusDesc"`
 }
 
 type DBParamValue struct {
@@ -303,11 +371,13 @@ type Deal struct {
 	// 所属账号
 	OwnerUin *string `json:"OwnerUin" name:"OwnerUin"`
 	// 商品数量
-	Quantity *int64 `json:"Quantity" name:"Quantity"`
+	Count *int64 `json:"Count" name:"Count"`
 	// 关联的流程 Id，可用于查询流程执行状态
 	FlowId *int64 `json:"FlowId" name:"FlowId"`
 	// 只有创建实例的订单会填充该字段，表示该订单创建的实例的 ID。
 	InstanceIds []*string `json:"InstanceIds" name:"InstanceIds" list`
+	// 付费模式，0后付费/1预付费
+	PayMode *int64 `json:"PayMode" name:"PayMode"`
 }
 
 type DeleteAccountRequest struct {
@@ -512,12 +582,12 @@ type DescribeDBInstancesRequest struct {
 	SearchKey *string `json:"SearchKey" name:"SearchKey"`
 	// 按项目 ID 查询
 	ProjectIds []*int64 `json:"ProjectIds" name:"ProjectIds" list`
-	// 是否根据 VPC 网络来搜索，0 为否，1 为是
-	IsFilterVpc *int64 `json:"IsFilterVpc" name:"IsFilterVpc"`
+	// 是否根据 VPC 网络来搜索
+	IsFilterVpc *bool `json:"IsFilterVpc" name:"IsFilterVpc"`
 	// 私有网络 ID， IsFilterVpc 为 1 时有效
-	VpcId *int64 `json:"VpcId" name:"VpcId"`
+	VpcId *string `json:"VpcId" name:"VpcId"`
 	// 私有网络的子网 ID， IsFilterVpc 为 1 时有效
-	SubnetId *int64 `json:"SubnetId" name:"SubnetId"`
+	SubnetId *string `json:"SubnetId" name:"SubnetId"`
 	// 排序字段， projectId， createtime， instancename 三者之一
 	OrderBy *string `json:"OrderBy" name:"OrderBy"`
 	// 排序类型， desc 或者 asc
@@ -528,6 +598,10 @@ type DescribeDBInstancesRequest struct {
 	Limit *int64 `json:"Limit" name:"Limit"`
 	// 按 OriginSerialId 查询
 	OriginSerialIds []*string `json:"OriginSerialIds" name:"OriginSerialIds" list`
+	// 标识是否使用ExclusterType字段, false不使用，true使用
+	IsFilterExcluster *bool `json:"IsFilterExcluster" name:"IsFilterExcluster"`
+	// 1非独享集群，2独享集群， 0全部
+	ExclusterType *int64 `json:"ExclusterType" name:"ExclusterType"`
 }
 
 func (r *DescribeDBInstancesRequest) ToJsonString() string {
@@ -543,7 +617,7 @@ type DescribeDBInstancesResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 		// 符合条件的实例数量
-		TotalCount []*uint64 `json:"TotalCount" name:"TotalCount" list`
+		TotalCount *uint64 `json:"TotalCount" name:"TotalCount"`
 		// 实例详细信息列表
 		Instances []*DBInstance `json:"Instances" name:"Instances" list`
 		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
@@ -589,9 +663,9 @@ type DescribeDBLogFilesResponse struct {
 		// 包含uri、length、mtime（修改时间）等信息
 		Files []*LogFileInfo `json:"Files" name:"Files" list`
 		// 如果是VPC网络的实例，做用本前缀加上URI为下载地址
-		Vpcprefix *string `json:"Vpcprefix" name:"Vpcprefix"`
+		VpcPrefix *string `json:"VpcPrefix" name:"VpcPrefix"`
 		// 如果是普通网络的实例，做用本前缀加上URI为下载地址
-		Normalprefix *string `json:"Normalprefix" name:"Normalprefix"`
+		NormalPrefix *string `json:"NormalPrefix" name:"NormalPrefix"`
 		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
@@ -861,13 +935,13 @@ type DescribeDBSlowLogsResponse struct {
 		// 慢查询日志数据
 		Data []*SlowLogData `json:"Data" name:"Data" list`
 		// 所有语句锁时间总和
-		LockTimeSum *string `json:"LockTimeSum" name:"LockTimeSum"`
+		LockTimeSum *float64 `json:"LockTimeSum" name:"LockTimeSum"`
 		// 所有语句查询总次数
-		QueryCount *string `json:"QueryCount" name:"QueryCount"`
+		QueryCount *int64 `json:"QueryCount" name:"QueryCount"`
 		// 总记录数
-		Total *string `json:"Total" name:"Total"`
+		Total *int64 `json:"Total" name:"Total"`
 		// 所有语句查询时间总和
-		QueryTimeSum *string `json:"QueryTimeSum" name:"QueryTimeSum"`
+		QueryTimeSum *float64 `json:"QueryTimeSum" name:"QueryTimeSum"`
 		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
@@ -1107,6 +1181,54 @@ func (r *DescribeSaleInfoResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeSqlLogsRequest struct {
+	*tchttp.BaseRequest
+	// 实例 ID，形如：tdsql-ow728lmc，可以通过 DescribeDBInstances 查询实例详情获得。
+	InstanceId *string `json:"InstanceId" name:"InstanceId"`
+	// SQL日志偏移。
+	Offset *int64 `json:"Offset" name:"Offset"`
+	// 拉取数量（0-1000，为0时拉取总数信息）。
+	Limit *int64 `json:"Limit" name:"Limit"`
+}
+
+func (r *DescribeSqlLogsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeSqlLogsRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeSqlLogsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+		// 当前消息队列中的sql日志条目数。
+		TotalCount *uint64 `json:"TotalCount" name:"TotalCount"`
+		// 消息队列中的sql日志起始偏移。
+		StartOffset *uint64 `json:"StartOffset" name:"StartOffset"`
+		// 消息队列中的sql日志结束偏移。
+		EndOffset *uint64 `json:"EndOffset" name:"EndOffset"`
+		// 返回的第一条sql日志的偏移。
+		Offset *uint64 `json:"Offset" name:"Offset"`
+		// 返回的sql日志数量。
+		Count *uint64 `json:"Count" name:"Count"`
+		// Sql日志列表。
+		SqlItems []*SqlLogItem `json:"SqlItems" name:"SqlItems" list`
+		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		RequestId *string `json:"RequestId" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeSqlLogsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeSqlLogsResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeUpgradePriceRequest struct {
 	*tchttp.BaseRequest
 	// 待升级的实例ID。形如：tdsql-ow728lmc，可以通过 DescribeDBInstances 查询实例详情获得。
@@ -1159,18 +1281,18 @@ type GrantAccountPrivilegesRequest struct {
 	Host *string `json:"Host" name:"Host"`
 	// 数据库名。如果为 \*，表示设置全局权限（即 \*.\*），此时忽略 Type 和 Object 参数
 	DbName *string `json:"DbName" name:"DbName"`
-	// 类型,可以填入 table 、 view 、 proc 、 func 和 \*。当 DbName 为具体数据库名，Type为 \* 时，表示设置该数据库权限（即db.\*），此时忽略 Object 参数
-	Type *string `json:"Type" name:"Type"`
-	// 具体的 Type 的名称，比如 Type 为 table 时就是具体的表名。DbName 和 Type 都为具体名称，则 Object 表示具体对象名，不能为 \* 或者为空
-	Object *string `json:"Object" name:"Object"`
-	// 当 Type=table 时，ColName 为 \* 表示对表授权，如果为具体字段名，表示对字段授权
-	ColName *string `json:"ColName" name:"ColName"`
 	// 全局权限： SELECT，INSERT，UPDATE，DELETE，CREATE，DROP，REFERENCES，INDEX，ALTER，CREATE TEMPORARY TABLES，LOCK TABLES，EXECUTE，CREATE VIEW，SHOW VIEW，CREATE ROUTINE，ALTER ROUTINE，EVENT，TRIGGER，SHOW DATABASES 
 	// 库权限： SELECT，INSERT，UPDATE，DELETE，CREATE，DROP，REFERENCES，INDEX，ALTER，CREATE TEMPORARY TABLES，LOCK TABLES，EXECUTE，CREATE VIEW，SHOW VIEW，CREATE ROUTINE，ALTER ROUTINE，EVENT，TRIGGER 
 	// 表/视图权限： SELECT，INSERT，UPDATE，DELETE，CREATE，DROP，REFERENCES，INDEX，ALTER，CREATE VIEW，SHOW VIEW，TRIGGER 
 	// 存储过程/函数权限： ALTER ROUTINE，EXECUTE 
 	// 字段权限： INSERT，REFERENCES，SELECT，UPDATE
 	Privileges []*string `json:"Privileges" name:"Privileges" list`
+	// 类型,可以填入 table 、 view 、 proc 、 func 和 \*。当 DbName 为具体数据库名，Type为 \* 时，表示设置该数据库权限（即db.\*），此时忽略 Object 参数
+	Type *string `json:"Type" name:"Type"`
+	// 具体的 Type 的名称，比如 Type 为 table 时就是具体的表名。DbName 和 Type 都为具体名称，则 Object 表示具体对象名，不能为 \* 或者为空
+	Object *string `json:"Object" name:"Object"`
+	// 当 Type=table 时，ColName 为 \* 表示对表授权，如果为具体字段名，表示对字段授权
+	ColName *string `json:"ColName" name:"ColName"`
 }
 
 func (r *GrantAccountPrivilegesRequest) ToJsonString() string {
@@ -1250,7 +1372,7 @@ type LogFileInfo struct {
 	// 文件长度
 	Length *uint64 `json:"Length" name:"Length"`
 	// 下载Log时用到的统一资源标识符
-	Uri *uint64 `json:"Uri" name:"Uri"`
+	Uri *string `json:"Uri" name:"Uri"`
 }
 
 type ModifyAccountDescriptionRequest struct {
@@ -1420,7 +1542,7 @@ type ModifyDBParametersResponse struct {
 		// 实例 ID，形如：tdsql-ow728lmc。
 		InstanceId *string `json:"InstanceId" name:"InstanceId"`
 		// 参数修改结果
-		Config []*ParamModifyResult `json:"Config" name:"Config" list`
+		Result []*ParamModifyResult `json:"Result" name:"Result" list`
 		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
@@ -1530,6 +1652,8 @@ type ParamConstraint struct {
 	Enum *string `json:"Enum" name:"Enum"`
 	// 约束类型为section时的范围
 	Range *ConstraintRange `json:"Range" name:"Range"`
+	// 约束类型为string时的可选值列表
+	String *string `json:"String" name:"String"`
 }
 
 type ParamDesc struct {
@@ -1549,7 +1673,7 @@ type ParamModifyResult struct {
 	// 修改参数名字
 	Param *string `json:"Param" name:"Param"`
 	// 参数修改结果。0表示修改成功；-1表示修改失败；-2表示该参数值非法
-	Code *uint64 `json:"Code" name:"Code"`
+	Code *int64 `json:"Code" name:"Code"`
 }
 
 type PerformanceMonitorSet struct {
@@ -1686,27 +1810,27 @@ type SlowLogData struct {
 	// 抽象的SQL语句
 	FingerPrint *string `json:"FingerPrint" name:"FingerPrint"`
 	// 平均的锁时间
-	LockTimeAvg *string `json:"LockTimeAvg" name:"LockTimeAvg"`
+	LockTimeAvg *float64 `json:"LockTimeAvg" name:"LockTimeAvg"`
 	// 最大锁时间
-	LockTimeMax *string `json:"LockTimeMax" name:"LockTimeMax"`
+	LockTimeMax *float64 `json:"LockTimeMax" name:"LockTimeMax"`
 	// 最小锁时间
-	LockTimeMin *string `json:"LockTimeMin" name:"LockTimeMin"`
+	LockTimeMin *float64 `json:"LockTimeMin" name:"LockTimeMin"`
 	// 锁时间总和
-	LockTimeSum *string `json:"LockTimeSum" name:"LockTimeSum"`
+	LockTimeSum *float64 `json:"LockTimeSum" name:"LockTimeSum"`
 	// 查询次数
-	QueryCount *string `json:"QueryCount" name:"QueryCount"`
+	QueryCount *int64 `json:"QueryCount" name:"QueryCount"`
 	// 平均查询时间
-	QueryTimeAvg *string `json:"QueryTimeAvg" name:"QueryTimeAvg"`
+	QueryTimeAvg *float64 `json:"QueryTimeAvg" name:"QueryTimeAvg"`
 	// 最大查询时间
-	QueryTimeMax *string `json:"QueryTimeMax" name:"QueryTimeMax"`
+	QueryTimeMax *float64 `json:"QueryTimeMax" name:"QueryTimeMax"`
 	// 最小查询时间
-	QueryTimeMin *string `json:"QueryTimeMin" name:"QueryTimeMin"`
+	QueryTimeMin *float64 `json:"QueryTimeMin" name:"QueryTimeMin"`
 	// 查询时间总和
-	QueryTimeSum *string `json:"QueryTimeSum" name:"QueryTimeSum"`
+	QueryTimeSum *float64 `json:"QueryTimeSum" name:"QueryTimeSum"`
 	// 扫描行数
-	RowsExaminedSum *string `json:"RowsExaminedSum" name:"RowsExaminedSum"`
+	RowsExaminedSum *uint64 `json:"RowsExaminedSum" name:"RowsExaminedSum"`
 	// 发送行数
-	RowsSentSum *string `json:"RowsSentSum" name:"RowsSentSum"`
+	RowsSentSum *uint64 `json:"RowsSentSum" name:"RowsSentSum"`
 	// 首次执行时间
 	TsMax *string `json:"TsMax" name:"TsMax"`
 	// 最后执行时间
@@ -1734,6 +1858,29 @@ type SpecConfigInfo struct {
 	NodeCount *int64 `json:"NodeCount" name:"NodeCount"`
 }
 
+type SqlLogItem struct {
+	// 本条日志在消息队列中的偏移量。
+	Offset *uint64 `json:"Offset" name:"Offset"`
+	// 执行本条sql的用户。
+	User *string `json:"User" name:"User"`
+	// 执行本条sql的客户端IP+端口。
+	Client *string `json:"Client" name:"Client"`
+	// 数据库名称。
+	DbName *string `json:"DbName" name:"DbName"`
+	// 执行的sql语句。
+	Sql *string `json:"Sql" name:"Sql"`
+	// 返回的数据行数。
+	SelectRowNum *uint64 `json:"SelectRowNum" name:"SelectRowNum"`
+	// 影响行数。
+	AffectRowNum *uint64 `json:"AffectRowNum" name:"AffectRowNum"`
+	// Sql执行时间戳。
+	Timestamp *uint64 `json:"Timestamp" name:"Timestamp"`
+	// Sql耗时，单位为毫秒。
+	TimeCostMs *uint64 `json:"TimeCostMs" name:"TimeCostMs"`
+	// Sql返回码，0为成功。
+	ResultCode *uint64 `json:"ResultCode" name:"ResultCode"`
+}
+
 type UpgradeDBInstanceRequest struct {
 	*tchttp.BaseRequest
 	// 待升级的实例ID。形如：tdsql-ow728lmc，可以通过 DescribeDBInstances 查询实例详情获得。
@@ -1747,7 +1894,7 @@ type UpgradeDBInstanceRequest struct {
 	// 是否自动使用代金券进行支付，默认不使用。
 	AutoVoucher *bool `json:"AutoVoucher" name:"AutoVoucher"`
 	// 代金券ID列表，目前仅支持指定一张代金券。
-	VoucherIds *string `json:"VoucherIds" name:"VoucherIds"`
+	VoucherIds []*string `json:"VoucherIds" name:"VoucherIds" list`
 }
 
 func (r *UpgradeDBInstanceRequest) ToJsonString() string {

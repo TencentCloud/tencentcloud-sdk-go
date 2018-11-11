@@ -1,4 +1,4 @@
-// Copyright 1999-2018 Tencent Ltd.
+// Copyright (c) 2017-2018 THL A29 Limited, a Tencent company. All Rights Reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -11,6 +11,7 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
+
 package v20170312
 
 import (
@@ -26,8 +27,9 @@ type Client struct {
 }
 
 func NewClientWithSecretId(secretId, secretKey, region string) (client *Client, err error) {
+    cpf := profile.NewClientProfile()
     client = &Client{}
-    client.Init(region).WithSecretId(secretId, secretKey)
+    client.Init(region).WithSecretId(secretId, secretKey).WithProfile(cpf)
     return
 }
 
@@ -39,6 +41,31 @@ func NewClient(credential *common.Credential, region string, clientProfile *prof
     return
 }
 
+
+func NewCloneAccountRequest() (request *CloneAccountRequest) {
+    request = &CloneAccountRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("mariadb", APIVersion, "CloneAccount")
+    return
+}
+
+func NewCloneAccountResponse() (response *CloneAccountResponse) {
+    response = &CloneAccountResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（CloneAccount）用于克隆实例账户。
+func (c *Client) CloneAccount(request *CloneAccountRequest) (response *CloneAccountResponse, err error) {
+    if request == nil {
+        request = NewCloneAccountRequest()
+    }
+    response = NewCloneAccountResponse()
+    err = c.Send(request, response)
+    return
+}
 
 func NewCloseDBExtranetAccessRequest() (request *CloseDBExtranetAccessRequest) {
     request = &CloseDBExtranetAccessRequest{
@@ -614,6 +641,31 @@ func (c *Client) DescribeSaleInfo(request *DescribeSaleInfoRequest) (response *D
         request = NewDescribeSaleInfoRequest()
     }
     response = NewDescribeSaleInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeSqlLogsRequest() (request *DescribeSqlLogsRequest) {
+    request = &DescribeSqlLogsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("mariadb", APIVersion, "DescribeSqlLogs")
+    return
+}
+
+func NewDescribeSqlLogsResponse() (response *DescribeSqlLogsResponse) {
+    response = &DescribeSqlLogsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（DescribeSqlLogs）用于获取实例SQL日志。
+func (c *Client) DescribeSqlLogs(request *DescribeSqlLogsRequest) (response *DescribeSqlLogsResponse, err error) {
+    if request == nil {
+        request = NewDescribeSqlLogsRequest()
+    }
+    response = NewDescribeSqlLogsResponse()
     err = c.Send(request, response)
     return
 }

@@ -1,4 +1,4 @@
-// Copyright 1999-2018 Tencent Ltd.
+// Copyright (c) 2017-2018 THL A29 Limited, a Tencent company. All Rights Reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -21,20 +21,20 @@ import (
 )
 
 type ActionTimer struct {
-	// 定时器
-	TimerAction *string `json:"TimerAction" name:"TimerAction"`
-	// 执行时间
-	ActionTime *string `json:"ActionTime" name:"ActionTime"`
 	// 扩展数据
 	Externals *Externals `json:"Externals" name:"Externals"`
+	// 定时器名称，目前仅支持销毁一个值：TerminateInstances。
+	TimerAction *string `json:"TimerAction" name:"TimerAction"`
+	// 执行时间，格式形如：2018-5-29 11:26:40,执行时间必须大于当前时间5分钟。
+	ActionTime *string `json:"ActionTime" name:"ActionTime"`
 }
 
 type AllocateHostsRequest struct {
 	*tchttp.BaseRequest
-	// 用于保证请求幂等性的字符串。
-	ClientToken *string `json:"ClientToken" name:"ClientToken"`
 	// 实例所在的位置。通过该参数可以指定实例所属可用区，所属项目等属性。
 	Placement *Placement `json:"Placement" name:"Placement"`
+	// 用于保证请求幂等性的字符串。
+	ClientToken *string `json:"ClientToken" name:"ClientToken"`
 	// 预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月实例的购买时长、是否设置自动续费等属性。若指定实例的付费模式为预付费则该参数必传。
 	HostChargePrepaid *ChargePrepaid `json:"HostChargePrepaid" name:"HostChargePrepaid"`
 	// 实例计费类型。目前仅支持：PREPAID（预付费，即包年包月模式）。
@@ -59,7 +59,7 @@ type AllocateHostsResponse struct {
 	Response *struct {
 		// 新创建云子机的实例id列表。
 		HostIdSet []*string `json:"HostIdSet" name:"HostIdSet" list`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -95,7 +95,7 @@ func (r *AssociateInstancesKeyPairsRequest) FromJsonString(s string) error {
 type AssociateInstancesKeyPairsResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -114,6 +114,54 @@ type ChargePrepaid struct {
 	Period *uint64 `json:"Period" name:"Period"`
 	// 自动续费标识。取值范围：<br><li>NOTIFY_AND_AUTO_RENEW：通知过期且自动续费<br><li>NOTIFY_AND_MANUAL_RENEW：通知过期不自动续费<br><li>DISABLE_NOTIFY_AND_MANUAL_RENEW：不通知过期不自动续费<br><br>默认取值：NOTIFY_AND_AUTO_RENEW。若该参数指定为NOTIFY_AND_AUTO_RENEW，在账户余额充足的情况下，实例到期后将按月自动续费。
 	RenewFlag *string `json:"RenewFlag" name:"RenewFlag"`
+}
+
+type CreateDisasterRecoverGroupRequest struct {
+	*tchttp.BaseRequest
+	// 分散置放群组名称，长度1-60个字符，支持中、英文。
+	Name *string `json:"Name" name:"Name"`
+	// 分散置放群组类型，取值范围：<br><li>HOST：物理机<br><li>SW：交换机<br><li>RACK：机架
+	Type *string `json:"Type" name:"Type"`
+	// 用于保证请求幂等性的字符串。该字符串由客户生成，需保证不同请求之间唯一，最大值不超过64个ASCII字符。若不指定该参数，则无法保证请求的幂等性。<br>更多详细信息请参阅：如何保证幂等性。
+	ClientToken *string `json:"ClientToken" name:"ClientToken"`
+}
+
+func (r *CreateDisasterRecoverGroupRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateDisasterRecoverGroupRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateDisasterRecoverGroupResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+		// 分散置放群组ID列表。
+		DisasterRecoverGroupId *string `json:"DisasterRecoverGroupId" name:"DisasterRecoverGroupId"`
+		// 分散置放群组类型，取值范围：<br><li>HOST：物理机<br><li>SW：交换机<br><li>RACK：机架
+		Type *string `json:"Type" name:"Type"`
+		// 分散置放群组名称，长度1-60个字符，支持中、英文。
+		Name *string `json:"Name" name:"Name"`
+		// 置放群组内可容纳的云主机数量。
+		CvmQuotaTotal *int64 `json:"CvmQuotaTotal" name:"CvmQuotaTotal"`
+		// 置放群组内已有的云主机数量。
+		CurrentNum *int64 `json:"CurrentNum" name:"CurrentNum"`
+		// 置放群组创建时间。
+		CreateTime *string `json:"CreateTime" name:"CreateTime"`
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateDisasterRecoverGroupResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateDisasterRecoverGroupResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
 }
 
 type CreateImageRequest struct {
@@ -144,7 +192,7 @@ func (r *CreateImageRequest) FromJsonString(s string) error {
 type CreateImageResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -183,7 +231,7 @@ type CreateKeyPairResponse struct {
 	Response *struct {
 		// 密钥对信息。
 		KeyPair *KeyPair `json:"KeyPair" name:"KeyPair"`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -198,12 +246,50 @@ func (r *CreateKeyPairResponse) FromJsonString(s string) error {
 }
 
 type DataDisk struct {
-	// 数据盘类型。数据盘类型限制详见[CVM实例配置](/document/product/213/2177)。取值范围：<br><li>LOCAL_BASIC：本地硬盘<br><li>LOCAL_SSD：本地SSD硬盘<br><li>CLOUD_BASIC：普通云硬盘<br><li>CLOUD_PREMIUM：高性能云硬盘<br><li>CLOUD_SSD：SSD云硬盘<br><br>默认取值：LOCAL_BASIC。<br><br>该参数对`ResizeInstanceDisk`接口无效。
-	DiskType *string `json:"DiskType" name:"DiskType"`
-	// 系统盘ID。LOCAL_BASIC 和 LOCAL_SSD 类型没有ID。暂时不支持该参数。
-	DiskId *string `json:"DiskId" name:"DiskId"`
 	// 数据盘大小，单位：GB。最小调整步长为10G，不同数据盘类型取值范围不同，具体限制详见：[CVM实例配置](/document/product/213/2177)。默认值为0，表示不购买数据盘。更多限制详见产品文档。
 	DiskSize *int64 `json:"DiskSize" name:"DiskSize"`
+	// 数据盘类型。数据盘类型限制详见[CVM实例配置](/document/product/213/2177)。取值范围：<br><li>LOCAL_BASIC：本地硬盘<br><li>LOCAL_SSD：本地SSD硬盘<br><li>CLOUD_BASIC：普通云硬盘<br><li>CLOUD_PREMIUM：高性能云硬盘<br><li>CLOUD_SSD：SSD云硬盘<br><br>默认取值：LOCAL_BASIC。<br><br>该参数对`ResizeInstanceDisk`接口无效。
+	DiskType *string `json:"DiskType" name:"DiskType"`
+	// 数据盘ID。LOCAL_BASIC 和 LOCAL_SSD 类型没有ID。暂时不支持该参数。
+	DiskId *string `json:"DiskId" name:"DiskId"`
+	// 数据盘是否随子机销毁。取值范围：
+	// <li>TRUE：子机销毁时，销毁数据盘
+	// <li>FALSE：子机销毁时，保留数据盘<br>
+	// 默认取值：TRUE<br>
+	// 该参数目前仅用于 `RunInstances` 接口。
+	DeleteWithInstance *bool `json:"DeleteWithInstance" name:"DeleteWithInstance"`
+}
+
+type DeleteDisasterRecoverGroupsRequest struct {
+	*tchttp.BaseRequest
+	// 分散置放群组ID列表，可通过[DescribeDisasterRecoverGroups](https://cloud.tencent.com/document/api/213/17810)接口获取。
+	DisasterRecoverGroupIds []*string `json:"DisasterRecoverGroupIds" name:"DisasterRecoverGroupIds" list`
+}
+
+func (r *DeleteDisasterRecoverGroupsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteDisasterRecoverGroupsRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteDisasterRecoverGroupsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DeleteDisasterRecoverGroupsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteDisasterRecoverGroupsResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
 }
 
 type DeleteImagesRequest struct {
@@ -224,7 +310,7 @@ func (r *DeleteImagesRequest) FromJsonString(s string) error {
 type DeleteImagesResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -256,7 +342,7 @@ func (r *DeleteKeyPairsRequest) FromJsonString(s string) error {
 type DeleteKeyPairsResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -267,6 +353,88 @@ func (r *DeleteKeyPairsResponse) ToJsonString() string {
 }
 
 func (r *DeleteKeyPairsResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeDisasterRecoverGroupQuotaRequest struct {
+	*tchttp.BaseRequest
+}
+
+func (r *DescribeDisasterRecoverGroupQuotaRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeDisasterRecoverGroupQuotaRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeDisasterRecoverGroupQuotaResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+		// 可创建置放群组数量的上限。
+		GroupQuota *int64 `json:"GroupQuota" name:"GroupQuota"`
+		// 当前用户已经创建的置放群组数量。
+		CurrentNum *int64 `json:"CurrentNum" name:"CurrentNum"`
+		// 物理机类型容灾组内实例的配额数。
+		CvmInHostGroupQuota *int64 `json:"CvmInHostGroupQuota" name:"CvmInHostGroupQuota"`
+		// 交换机类型容灾组内实例的配额数。
+		CvmInSwGroupQuota *int64 `json:"CvmInSwGroupQuota" name:"CvmInSwGroupQuota"`
+		// 机架类型容灾组内实例的配额数。
+		CvmInRackGroupQuota *int64 `json:"CvmInRackGroupQuota" name:"CvmInRackGroupQuota"`
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeDisasterRecoverGroupQuotaResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeDisasterRecoverGroupQuotaResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeDisasterRecoverGroupsRequest struct {
+	*tchttp.BaseRequest
+	// 分散置放群组ID列表。
+	DisasterRecoverGroupIds []*string `json:"DisasterRecoverGroupIds" name:"DisasterRecoverGroupIds" list`
+	// 分散置放群组名称，支持模糊匹配。
+	Name *string `json:"Name" name:"Name"`
+	// 偏移量，默认为0。关于`Offset`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
+	Offset *int64 `json:"Offset" name:"Offset"`
+	// 返回数量，默认为20，最大值为100。关于`Limit`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
+	Limit *int64 `json:"Limit" name:"Limit"`
+}
+
+func (r *DescribeDisasterRecoverGroupsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeDisasterRecoverGroupsRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeDisasterRecoverGroupsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+		// 分散置放群组信息列表。
+		DisasterRecoverGroupSet []*DisasterRecoverGroup `json:"DisasterRecoverGroupSet" name:"DisasterRecoverGroupSet" list`
+		// 用户置放群组总量。
+		TotalCount *int64 `json:"TotalCount" name:"TotalCount"`
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeDisasterRecoverGroupsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeDisasterRecoverGroupsResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -301,7 +469,7 @@ type DescribeHostsResponse struct {
 		TotalCount *uint64 `json:"TotalCount" name:"TotalCount"`
 		// cdh实例详细信息列表
 		HostSet []*HostItem `json:"HostSet" name:"HostSet" list`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -333,7 +501,7 @@ type DescribeImageQuotaResponse struct {
 	Response *struct {
 		// 账户的镜像配额
 		ImageNumQuota *int64 `json:"ImageNumQuota" name:"ImageNumQuota"`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -367,7 +535,7 @@ type DescribeImageSharePermissionResponse struct {
 	Response *struct {
 		// 镜像共享信息
 		SharePermissionSet []*SharePermission `json:"SharePermissionSet" name:"SharePermissionSet" list`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -414,7 +582,7 @@ type DescribeImagesResponse struct {
 		ImageSet []*Image `json:"ImageSet" name:"ImageSet" list`
 		// 符合要求的镜像数量。
 		TotalCount *int64 `json:"TotalCount" name:"TotalCount"`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -444,11 +612,11 @@ func (r *DescribeImportImageOsRequest) FromJsonString(s string) error {
 type DescribeImportImageOsResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
-		// 支持的导入镜像的操作系统类型
-		ImportImageOsListSupported []*string `json:"ImportImageOsListSupported" name:"ImportImageOsListSupported" list`
-		// 支持的导入镜像的操作系统版本
-		ImportImageOsVersionSupported []*string `json:"ImportImageOsVersionSupported" name:"ImportImageOsVersionSupported" list`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 支持的导入镜像的操作系统类型。
+		ImportImageOsListSupported *ImageOsList `json:"ImportImageOsListSupported" name:"ImportImageOsListSupported"`
+		// 支持的导入镜像的操作系统版本。
+		ImportImageOsVersionSet []*OsVersion `json:"ImportImageOsVersionSet" name:"ImportImageOsVersionSet" list`
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -480,7 +648,7 @@ type DescribeInstanceFamilyConfigsResponse struct {
 	Response *struct {
 		// 实例机型组配置的列表信息
 		InstanceFamilyConfigSet []*InstanceFamilyConfig `json:"InstanceFamilyConfigSet" name:"InstanceFamilyConfigSet" list`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -514,7 +682,7 @@ type DescribeInstanceInternetBandwidthConfigsResponse struct {
 	Response *struct {
 		// 带宽配置信息列表。
 		InternetBandwidthConfigSet []*InternetBandwidthConfig `json:"InternetBandwidthConfigSet" name:"InternetBandwidthConfigSet" list`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -528,43 +696,10 @@ func (r *DescribeInstanceInternetBandwidthConfigsResponse) FromJsonString(s stri
     return json.Unmarshal([]byte(s), &r)
 }
 
-type DescribeInstanceOperationLogsRequest struct {
-	*tchttp.BaseRequest
-	// 每次请求的`Filters`的上限为1，`Filter.Values`的上限为1。
-	// Filters.1.Name目前支持“instance-id”，即根据实例 ID 过滤。实例 ID 形如：ins-1w2x3y4z。
-	Filters []*Filter `json:"Filters" name:"Filters" list`
-}
-
-func (r *DescribeInstanceOperationLogsRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-func (r *DescribeInstanceOperationLogsRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
-}
-
-type DescribeInstanceOperationLogsResponse struct {
-	*tchttp.BaseResponse
-	Response *struct {
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
-		RequestId *string `json:"RequestId" name:"RequestId"`
-	} `json:"Response"`
-}
-
-func (r *DescribeInstanceOperationLogsResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-func (r *DescribeInstanceOperationLogsResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
-}
-
 type DescribeInstanceTypeConfigsRequest struct {
 	*tchttp.BaseRequest
 	// 过滤条件。
-	// <li> zone - String - 是否必填：否 -（过滤条件）按照[可用区](document/api/213/9452#zone)过滤。</li>
+	// <li> zone - String - 是否必填：否 -（过滤条件）按照[可用区](https://cloud.tencent.com/document/api/213/9452#zone)过滤。</li>
 	// <li> instance-family - String - 是否必填：否 -（过滤条件）按照实例机型系列过滤。实例机型系列形如：S1、I1、M1等。</li>
 	// 每次请求的`Filters`的上限为10，`Filter.Values`的上限为1。
 	Filters []*Filter `json:"Filters" name:"Filters" list`
@@ -584,7 +719,7 @@ type DescribeInstanceTypeConfigsResponse struct {
 	Response *struct {
 		// 实例机型配置列表。
 		InstanceTypeConfigSet []*InstanceTypeConfig `json:"InstanceTypeConfigSet" name:"InstanceTypeConfigSet" list`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -598,19 +733,58 @@ func (r *DescribeInstanceTypeConfigsResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeInstanceVncUrlRequest struct {
+	*tchttp.BaseRequest
+	// 一个操作的实例ID。可通过[`DescribeInstances`](https://cloud.tencent.com/document/api/213/15728) API返回值中的`InstanceId`获取。
+	InstanceId *string `json:"InstanceId" name:"InstanceId"`
+}
+
+func (r *DescribeInstanceVncUrlRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeInstanceVncUrlRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeInstanceVncUrlResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+		// 实例的管理终端地址。
+		InstanceVncUrl *string `json:"InstanceVncUrl" name:"InstanceVncUrl"`
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeInstanceVncUrlResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeInstanceVncUrlResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeInstancesRequest struct {
 	*tchttp.BaseRequest
-	// 按照一个或者多个实例ID查询。实例ID形如：`ins-11112222`。（此参数的具体格式可参考API[简介](https://cloud.tencent.com/document/api/213/15688)的`id.N`一节）。每次请求的实例的上限为100。参数不支持同时指定`InstanceIds`和`Filters`。
+	// 按照一个或者多个实例ID查询。实例ID形如：`ins-xxxxxxxx`。（此参数的具体格式可参考API[简介](https://cloud.tencent.com/document/api/213/15688)的`id.N`一节）。每次请求的实例的上限为100。参数不支持同时指定`InstanceIds`和`Filters`。
 	InstanceIds []*string `json:"InstanceIds" name:"InstanceIds" list`
 	// 过滤条件。
 	// <li> zone - String - 是否必填：否 -（过滤条件）按照可用区过滤。</li>
 	// <li> project-id - Integer - 是否必填：否 -（过滤条件）按照项目ID过滤。可通过调用[DescribeProject](https://cloud.tencent.com/document/api/378/4400)查询已创建的项目列表或登录[控制台](https://console.cloud.tencent.com/cvm/index)进行查看；也可以调用[AddProject](https://cloud.tencent.com/document/api/378/4398)创建新的项目。</li>
-	// <li> host-id - String - 是否必填：否 - （过滤条件）按照[CDH](https://cloud.tencent.com/document/product/416) ID过滤。[CDH](https://cloud.tencent.com/document/product/416) ID形如：host-11112222。</li>
-	// <li> instance-id - String - 是否必填：否 - （过滤条件）按照实例ID过滤。实例ID形如：ins-11112222。</li>
+	// <li> host-id - String - 是否必填：否 - （过滤条件）按照[CDH](https://cloud.tencent.com/document/product/416) ID过滤。[CDH](https://cloud.tencent.com/document/product/416) ID形如：host-xxxxxxxx。</li>
+	// <li> vpc-id - String - 是否必填：否 - （过滤条件）按照VPC ID进行过滤。VPC ID形如：vpc-xxxxxxxx。</li>
+	// <li> instance-id - String - 是否必填：否 - （过滤条件）按照实例ID过滤。实例ID形如：ins-xxxxxxxx。</li>
+	// <li> security-group-id - String - 是否必填：否 - （过滤条件）按照安全组ID过滤，安全组ID形如: sg-8jlk3f3r。</li>
 	// <li> instance-name - String - 是否必填：否 - （过滤条件）按照实例名称过滤。</li>
 	// <li> instance-charge-type - String - 是否必填：否 -（过滤条件）按照实例计费模式过滤。 (PREPAID：表示预付费，即包年包月 | POSTPAID_BY_HOUR：表示后付费，即按量计费 | CDHPAID：表示[CDH](https://cloud.tencent.com/document/product/416)付费，即只对[CDH](https://cloud.tencent.com/document/product/416)计费，不对[CDH](https://cloud.tencent.com/document/product/416)上的实例计费。 )  </li>
 	// <li> private-ip-address - String - 是否必填：否 - （过滤条件）按照实例主网卡的内网IP过滤。</li>
 	// <li> public-ip-address - String - 是否必填：否 - （过滤条件）按照实例主网卡的公网IP过滤，包含实例创建时自动分配的IP和实例创建后手动绑定的弹性IP。</li>
+	// <li> tag-key - String - 是否必填：否 - （过滤条件）按照标签键进行过滤。</li>
+	// <li> tag-value - String - 是否必填：否 - （过滤条件）按照标签值进行过滤。</li>
+	// <li> tag:tag-key - String - 是否必填：否 - （过滤条件）按照标签键值对进行过滤。 tag-key使用具体的标签键进行替换。使用请参考示例2。</li>
 	// 每次请求的`Filters`的上限为10，`Filter.Values`的上限为5。参数不支持同时指定`InstanceIds`和`Filters`。
 	Filters []*Filter `json:"Filters" name:"Filters" list`
 	// 偏移量，默认为0。关于`Offset`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
@@ -635,7 +809,7 @@ type DescribeInstancesResponse struct {
 		TotalCount *int64 `json:"TotalCount" name:"TotalCount"`
 		// 实例详细信息列表。
 		InstanceSet []*Instance `json:"InstanceSet" name:"InstanceSet" list`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -675,7 +849,7 @@ type DescribeInstancesStatusResponse struct {
 		TotalCount *int64 `json:"TotalCount" name:"TotalCount"`
 		// [实例状态](https://cloud.tencent.com/document/api/213/15738) 列表。
 		InstanceStatusSet []*InstanceStatus `json:"InstanceStatusSet" name:"InstanceStatusSet" list`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -707,7 +881,7 @@ type DescribeInternetChargeTypeConfigsResponse struct {
 	Response *struct {
 		// 网络计费类型配置。
 		InternetChargeTypeConfigSet []*InternetChargeTypeConfig `json:"InternetChargeTypeConfigSet" name:"InternetChargeTypeConfigSet" list`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -751,7 +925,7 @@ type DescribeKeyPairsResponse struct {
 		TotalCount *int64 `json:"TotalCount" name:"TotalCount"`
 		// 密钥对详细信息列表。
 		KeyPairSet []*KeyPair `json:"KeyPairSet" name:"KeyPairSet" list`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -785,7 +959,7 @@ type DescribeRegionsResponse struct {
 		TotalCount *uint64 `json:"TotalCount" name:"TotalCount"`
 		// 地域列表信息
 		RegionSet []*RegionInfo `json:"RegionSet" name:"RegionSet" list`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -796,6 +970,48 @@ func (r *DescribeRegionsResponse) ToJsonString() string {
 }
 
 func (r *DescribeRegionsResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeZoneInstanceConfigInfosRequest struct {
+	*tchttp.BaseRequest
+	// 过滤条件。
+	// 
+	// <li> zone - String - 是否必填：否 -（过滤条件）按照可用区过滤。</li>
+	// 
+	// <li> instance-family String - 是否必填：否 -（过滤条件）按照机型系列过滤。按照实例机型系列过滤。实例机型系列形如：S1、I1、M1等。</li>
+	// 
+	// <li> instance-type - String - 是否必填：否 - （过滤条件）按照机型过滤。按照实例机型过滤。不同实例机型指定了不同的资源规格，具体取值可通过调用接口 DescribeInstanceTypeConfigs 来获得最新的规格表或参见实例类型描述。若不指定该参数，则默认机型为S1.SMALL1。</li>
+	// 
+	// <li> instance-charge-type - String - 是否必填：否 -（过滤条件）按照实例计费模式过滤。 (PREPAID：表示预付费，即包年包月 | POSTPAID_BY_HOUR：表示后付费，即按量计费 | CDHPAID：表示CDH付费，即只对CDH计费，不对CDH上的实例计费。 )  </li>
+	Filters []*Filter `json:"Filters" name:"Filters" list`
+}
+
+func (r *DescribeZoneInstanceConfigInfosRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeZoneInstanceConfigInfosRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeZoneInstanceConfigInfosResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+		// 可用区机型配置列表。
+		InstanceTypeQuotaSet []*InstanceTypeQuotaItem `json:"InstanceTypeQuotaSet" name:"InstanceTypeQuotaSet" list`
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeZoneInstanceConfigInfosResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeZoneInstanceConfigInfosResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -815,11 +1031,11 @@ func (r *DescribeZonesRequest) FromJsonString(s string) error {
 type DescribeZonesResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
-		// 可用区数量
+		// 可用区数量。
 		TotalCount *uint64 `json:"TotalCount" name:"TotalCount"`
-		// 可用区列表信息
+		// 可用区列表信息。
 		ZoneSet []*ZoneInfo `json:"ZoneSet" name:"ZoneSet" list`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -835,7 +1051,7 @@ func (r *DescribeZonesResponse) FromJsonString(s string) error {
 
 type DisassociateInstancesKeyPairsRequest struct {
 	*tchttp.BaseRequest
-	// 一个或多个待操作的实例ID，每次请求批量实例的上限为100。<br><br>可以通过以下方式获取可用的实例ID：<br><li>通过登录[控制台](https://console.cloud.tencent.com/cvm/index)查询实例ID。<br><li>通过调用接口 [DescribeInstances](https://cloud.tencent.com/document/api/213/15728) ，取返回信息中的 `InstanceId` 获取密钥对ID。
+	// 一个或多个待操作的实例ID，每次请求批量实例的上限为100。<br><br>可以通过以下方式获取可用的实例ID：<br><li>通过登录[控制台](https://console.cloud.tencent.com/cvm/index)查询实例ID。<br><li>通过调用接口 [DescribeInstances](https://cloud.tencent.com/document/api/213/15728) ，取返回信息中的 `InstanceId` 获取实例ID。
 	InstanceIds []*string `json:"InstanceIds" name:"InstanceIds" list`
 	// 密钥对ID列表，每次请求批量密钥对的上限为100。密钥对ID形如：`skey-11112222`。<br><br>可以通过以下方式获取可用的密钥ID：<br><li>通过登录[控制台](https://console.cloud.tencent.com/cvm/sshkey)查询密钥ID。<br><li>通过调用接口 [DescribeKeyPairs](https://cloud.tencent.com/document/api/213/15699) ，取返回信息中的 `KeyId` 获取密钥对ID。
 	KeyIds []*string `json:"KeyIds" name:"KeyIds" list`
@@ -855,7 +1071,7 @@ func (r *DisassociateInstancesKeyPairsRequest) FromJsonString(s string) error {
 type DisassociateInstancesKeyPairsResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -869,16 +1085,37 @@ func (r *DisassociateInstancesKeyPairsResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DisasterRecoverGroup struct {
+	// 分散置放群组id。
+	DisasterRecoverGroupId *string `json:"DisasterRecoverGroupId" name:"DisasterRecoverGroupId"`
+	// 分散置放群组名称，长度1-60个字符。
+	Name *string `json:"Name" name:"Name"`
+	// 分散置放群组类型，取值范围：<br><li>HOST：物理机<br><li>SW：交换机<br><li>RACK：机架
+	Type *string `json:"Type" name:"Type"`
+	// 分散置放群组内最大容纳云主机数量。
+	CvmQuotaTotal *int64 `json:"CvmQuotaTotal" name:"CvmQuotaTotal"`
+	// 分散置放群组内云主机当前数量。
+	CurrentNum *int64 `json:"CurrentNum" name:"CurrentNum"`
+	// 分散置放群组内，云主机id列表。
+	InstanceIds []*string `json:"InstanceIds" name:"InstanceIds" list`
+	// 分散置放群组创建时间。
+	CreateTime *string `json:"CreateTime" name:"CreateTime"`
+}
+
 type EnhancedService struct {
 	// 开启云安全服务。若不指定该参数，则默认开启云安全服务。
 	SecurityService *RunSecurityServiceEnabled `json:"SecurityService" name:"SecurityService"`
-	// 开启云安全服务。若不指定该参数，则默认开启云监控服务。
+	// 开启云监控服务。若不指定该参数，则默认开启云监控服务。
 	MonitorService *RunMonitorServiceEnabled `json:"MonitorService" name:"MonitorService"`
 }
 
 type Externals struct {
 	// 释放地址
 	ReleaseAddress *bool `json:"ReleaseAddress" name:"ReleaseAddress"`
+	// 不支持的网络类型
+	UnsupportNetworks []*string `json:"UnsupportNetworks" name:"UnsupportNetworks" list`
+	// HDD本地存储属性
+	StorageBlockAttr *StorageBlock `json:"StorageBlockAttr" name:"StorageBlockAttr"`
 }
 
 type Filter struct {
@@ -906,7 +1143,7 @@ type HostItem struct {
 	// cdh实例过期时间
 	ExpiredTime *string `json:"ExpiredTime" name:"ExpiredTime"`
 	// cdh实例上已创建云子机的实例id列表
-	InstanceIds *string `json:"InstanceIds" name:"InstanceIds"`
+	InstanceIds []*string `json:"InstanceIds" name:"InstanceIds" list`
 	// cdh实例状态
 	HostState *string `json:"HostState" name:"HostState"`
 	// cdh实例ip
@@ -955,6 +1192,17 @@ type Image struct {
 	ImageCreator *string `json:"ImageCreator" name:"ImageCreator"`
 	// 镜像来源
 	ImageSource *string `json:"ImageSource" name:"ImageSource"`
+	// 同步百分比
+	SyncPercent *int64 `json:"SyncPercent" name:"SyncPercent"`
+	// 镜像是否支持cloud-init
+	IsSupportCloudinit *bool `json:"IsSupportCloudinit" name:"IsSupportCloudinit"`
+}
+
+type ImageOsList struct {
+	// 支持的windows操作系统。
+	Windows []*string `json:"Windows" name:"Windows" list`
+	// 支持的linux操作系统
+	Linux []*string `json:"Linux" name:"Linux" list`
 }
 
 type ImportImageRequest struct {
@@ -989,7 +1237,7 @@ func (r *ImportImageRequest) FromJsonString(s string) error {
 type ImportImageResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -1029,7 +1277,7 @@ type ImportKeyPairResponse struct {
 	Response *struct {
 		// 密钥对ID。
 		KeyId *string `json:"KeyId" name:"KeyId"`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -1043,6 +1291,44 @@ func (r *ImportKeyPairResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type InquiryPriceModifyInstancesChargeTypeRequest struct {
+	*tchttp.BaseRequest
+	// 一个或多个待操作的实例ID。可通过[`DescribeInstances`](https://cloud.tencent.com/document/api/213/15728)接口返回值中的`InstanceId`获取。每次请求批量实例的上限为100。
+	InstanceIds []*string `json:"InstanceIds" name:"InstanceIds" list`
+	// 实例[计费类型](https://cloud.tencent.com/document/product/213/2180)。<br><li>PREPAID：预付费，即包年包月。
+	InstanceChargeType *string `json:"InstanceChargeType" name:"InstanceChargeType"`
+	// 预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月实例的续费时长、是否设置自动续费等属性。
+	InstanceChargePrepaid *InstanceChargePrepaid `json:"InstanceChargePrepaid" name:"InstanceChargePrepaid"`
+}
+
+func (r *InquiryPriceModifyInstancesChargeTypeRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *InquiryPriceModifyInstancesChargeTypeRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type InquiryPriceModifyInstancesChargeTypeResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+		// 该参数表示对应配置实例转换计费模式的价格。
+		Price *Price `json:"Price" name:"Price"`
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *InquiryPriceModifyInstancesChargeTypeResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *InquiryPriceModifyInstancesChargeTypeResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type InquiryPriceRenewInstancesRequest struct {
 	*tchttp.BaseRequest
 	// 一个或多个待操作的实例ID。可通过[`DescribeInstances`](https://cloud.tencent.com/document/api/213/15728)接口返回值中的`InstanceId`获取。每次请求批量实例的上限为100。
@@ -1051,6 +1337,8 @@ type InquiryPriceRenewInstancesRequest struct {
 	InstanceChargePrepaid *InstanceChargePrepaid `json:"InstanceChargePrepaid" name:"InstanceChargePrepaid"`
 	// 试运行。
 	DryRun *bool `json:"DryRun" name:"DryRun"`
+	// 是否续费弹性数据盘。取值范围：<br><li>TRUE：表示续费包年包月实例同时续费其挂载的弹性数据盘<br><li>FALSE：表示续费包年包月实例同时不再续费其挂载的弹性数据盘<br><br>默认取值：TRUE。
+	RenewPortableDataDisk *bool `json:"RenewPortableDataDisk" name:"RenewPortableDataDisk"`
 }
 
 func (r *InquiryPriceRenewInstancesRequest) ToJsonString() string {
@@ -1067,7 +1355,7 @@ type InquiryPriceRenewInstancesResponse struct {
 	Response *struct {
 		// 该参数表示对应配置实例的价格。
 		Price *Price `json:"Price" name:"Price"`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -1109,7 +1397,7 @@ type InquiryPriceResetInstanceResponse struct {
 	Response *struct {
 		// 该参数表示重装成对应配置实例的价格。
 		Price *Price `json:"Price" name:"Price"`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -1125,7 +1413,7 @@ func (r *InquiryPriceResetInstanceResponse) FromJsonString(s string) error {
 
 type InquiryPriceResetInstancesInternetMaxBandwidthRequest struct {
 	*tchttp.BaseRequest
-	// 一个或多个待操作的实例ID。可通过[`DescribeInstances`](https://cloud.tencent.com/document/api/213/15728)接口返回值中的`InstanceId`获取。每次请求批量实例的上限为100。
+	// 一个或多个待操作的实例ID。可通过[`DescribeInstances`](https://cloud.tencent.com/document/api/213/15728)接口返回值中的`InstanceId`获取。每次请求批量实例的上限为100。当调整 `BANDWIDTH_PREPAID` 和 `BANDWIDTH_POSTPAID_BY_HOUR` 计费方式的带宽时，只支持一个实例。
 	InstanceIds []*string `json:"InstanceIds" name:"InstanceIds" list`
 	// 公网出带宽配置。不同机型带宽上限范围不一致，具体限制详见带宽限制对账表。暂时只支持`InternetMaxBandwidthOut`参数。
 	InternetAccessible *InternetAccessible `json:"InternetAccessible" name:"InternetAccessible"`
@@ -1149,7 +1437,7 @@ type InquiryPriceResetInstancesInternetMaxBandwidthResponse struct {
 	Response *struct {
 		// 该参数表示带宽调整为对应大小之后的价格。
 		Price *Price `json:"Price" name:"Price"`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -1187,7 +1475,7 @@ type InquiryPriceResetInstancesTypeResponse struct {
 	Response *struct {
 		// 该参数表示调整成对应机型实例的价格。
 		Price *Price `json:"Price" name:"Price"`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -1225,7 +1513,7 @@ type InquiryPriceResizeInstanceDisksResponse struct {
 	Response *struct {
 		// 该参数表示磁盘扩容成对应配置的价格。
 		Price *Price `json:"Price" name:"Price"`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -1241,19 +1529,19 @@ func (r *InquiryPriceResizeInstanceDisksResponse) FromJsonString(s string) error
 
 type InquiryPriceRunInstancesRequest struct {
 	*tchttp.BaseRequest
+	// 实例所在的位置。通过该参数可以指定实例所属可用区，所属项目等属性。
+	Placement *Placement `json:"Placement" name:"Placement"`
+	// 指定有效的[镜像](https://cloud.tencent.com/document/product/213/4940)ID，格式形如`img-xxx`。镜像类型分为四种：<br/><li>公共镜像</li><li>自定义镜像</li><li>共享镜像</li><li>服务市场镜像</li><br/>可通过以下方式获取可用的镜像ID：<br/><li>`公共镜像`、`自定义镜像`、`共享镜像`的镜像ID可通过登录[控制台](https://console.cloud.tencent.com/cvm/image?rid=1&imageType=PUBLIC_IMAGE)查询；`服务镜像市场`的镜像ID可通过[云市场](https://market.cloud.tencent.com/list)查询。</li><li>通过调用接口 [DescribeImages](https://cloud.tencent.com/document/api/213/15715) ，取返回信息中的`ImageId`字段。</li>
+	ImageId *string `json:"ImageId" name:"ImageId"`
 	// 实例[计费类型](https://cloud.tencent.com/document/product/213/2180)。<br><li>PREPAID：预付费，即包年包月<br><li>POSTPAID_BY_HOUR：按小时后付费<br>默认值：POSTPAID_BY_HOUR。
 	InstanceChargeType *string `json:"InstanceChargeType" name:"InstanceChargeType"`
 	// 预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月实例的购买时长、是否设置自动续费等属性。若指定实例的付费模式为预付费则该参数必传。
 	InstanceChargePrepaid *InstanceChargePrepaid `json:"InstanceChargePrepaid" name:"InstanceChargePrepaid"`
-	// 实例所在的位置。通过该参数可以指定实例所属可用区，所属项目等属性。
-	Placement *Placement `json:"Placement" name:"Placement"`
-	// 实例机型。不同实例机型指定了不同的资源规格，具体取值可通过调用接口[DescribeInstanceTypeConfigs](https://cloud.tencent.com/document/api/213/9391)来获得最新的规格表或参见[CVM实例配置](https://cloud.tencent.com/document/product/213/2177)描述。若不指定该参数，则默认机型为S1.SMALL1。
+	// 实例机型。不同实例机型指定了不同的资源规格，具体取值可通过调用接口[DescribeInstanceTypeConfigs](https://cloud.tencent.com/document/api/213/15749)来获得最新的规格表或参见[CVM实例配置](https://cloud.tencent.com/document/product/213/2177)描述。若不指定该参数，则默认机型为S1.SMALL1。
 	InstanceType *string `json:"InstanceType" name:"InstanceType"`
-	// 指定有效的[镜像](https://cloud.tencent.com/document/product/213/4940)ID，格式形如`img-xxx`。镜像类型分为四种：<br/><li>公共镜像</li><li>自定义镜像</li><li>共享镜像</li><li>服务市场镜像</li><br/>可通过以下方式获取可用的镜像ID：<br/><li>`公共镜像`、`自定义镜像`、`共享镜像`的镜像ID可通过登录[控制台](https://console.cloud.tencent.com/cvm/image?rid=1&imageType=PUBLIC_IMAGE)查询；`服务镜像市场`的镜像ID可通过[云市场](https://market.cloud.tencent.com/list)查询。</li><li>通过调用接口 [DescribeImages](https://cloud.tencent.com/document/api/213/15715) ，取返回信息中的`ImageId`字段。</li>
-	ImageId *string `json:"ImageId" name:"ImageId"`
 	// 实例系统盘配置信息。若不指定该参数，则按照系统默认值进行分配。
 	SystemDisk *SystemDisk `json:"SystemDisk" name:"SystemDisk"`
-	// 实例数据盘配置信息。若不指定该参数，则默认不购买数据盘，当前仅支持购买的时候指定一个数据盘。
+	// 实例数据盘配置信息。若不指定该参数，则默认不购买数据盘。支持购买的时候指定11块数据盘，其中最多包含1块LOCAL_BASIC数据盘或者LOCAL_SSD数据盘，最多包含10块CLOUD_BASIC数据盘、CLOUD_PREMIUM数据盘或者CLOUD_SSD数据盘。
 	DataDisks []*DataDisk `json:"DataDisks" name:"DataDisks" list`
 	// 私有网络相关信息配置。通过该参数可以指定私有网络的ID，子网ID等信息。若不指定该参数，则默认使用基础网络。若在此参数中指定了私有网络ip，那么InstanceCount参数只能为1。
 	VirtualPrivateCloud *VirtualPrivateCloud `json:"VirtualPrivateCloud" name:"VirtualPrivateCloud"`
@@ -1261,11 +1549,11 @@ type InquiryPriceRunInstancesRequest struct {
 	InternetAccessible *InternetAccessible `json:"InternetAccessible" name:"InternetAccessible"`
 	// 购买实例数量。取值范围：[1，100]。默认取值：1。指定购买实例的数量不能超过用户所能购买的剩余配额数量，具体配额相关限制详见[CVM实例购买限制](https://cloud.tencent.com/document/product/213/2664)。
 	InstanceCount *int64 `json:"InstanceCount" name:"InstanceCount"`
-	// 实例显示名称。如果不指定则默认显示
+	// 实例显示名称。<br><li>不指定实例显示名称则默认显示‘未命名’。</li><li>购买多台实例，如果指定模式串`{R:x}`，表示生成数字`[x, x+n-1]`，其中`n`表示购买实例的数量，例如`server_{R:3}`，购买1台时，实例显示名称为`server_3`；购买2台时，实例显示名称分别为`server_3`，`server_4`。支持指定多个模式串`{R:x}`。</li><li>购买多台实例，如果不指定模式串，则在实例显示名称添加后缀`1、2...n`，其中`n`表示购买实例的数量，例如`server_`，购买2台时，实例显示名称分别为`server_1`，`server_2`。
 	InstanceName *string `json:"InstanceName" name:"InstanceName"`
 	// 实例登录设置。通过该参数可以设置实例的登录方式密码、密钥或保持镜像的原始登录设置。默认情况下会随机生成密码，并以站内信方式知会到用户。
 	LoginSettings *LoginSettings `json:"LoginSettings" name:"LoginSettings"`
-	// 实例所属安全组。该参数可以通过调用[DescribeSecurityGroups](https://cloud.tencent.com/document/api/215/15808)的返回值中的sgId字段来获取。若不指定该参数，则默认不绑定安全组<font style=
+	// 实例所属安全组。该参数可以通过调用 [DescribeSecurityGroups](https://cloud.tencent.com/document/api/215/15808) 的返回值中的sgId字段来获取。若不指定该参数，则默认不绑定安全组。
 	SecurityGroupIds []*string `json:"SecurityGroupIds" name:"SecurityGroupIds" list`
 	// 增强服务。通过该参数可以指定是否开启云安全、云监控等服务。若不指定该参数，则默认开启云监控、云安全服务。
 	EnhancedService *EnhancedService `json:"EnhancedService" name:"EnhancedService"`
@@ -1275,6 +1563,8 @@ type InquiryPriceRunInstancesRequest struct {
 	HostName *string `json:"HostName" name:"HostName"`
 	// 标签描述列表。通过指定该参数可以同时绑定标签到相应的资源实例，当前仅支持绑定标签到云主机实例。
 	TagSpecification []*TagSpecification `json:"TagSpecification" name:"TagSpecification" list`
+	// 实例的市场相关选项，如竞价实例相关参数
+	InstanceMarketOptions *InstanceMarketOptionsRequest `json:"InstanceMarketOptions" name:"InstanceMarketOptions"`
 }
 
 func (r *InquiryPriceRunInstancesRequest) ToJsonString() string {
@@ -1291,7 +1581,7 @@ type InquiryPriceRunInstancesResponse struct {
 	Response *struct {
 		// 该参数表示对应配置实例的价格。
 		Price *Price `json:"Price" name:"Price"`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -1342,12 +1632,22 @@ type Instance struct {
 	CreatedTime *string `json:"CreatedTime" name:"CreatedTime"`
 	// 到期时间。按照`ISO8601`标准表示，并且使用`UTC`时间。格式为：`YYYY-MM-DDThh:mm:ssZ`。
 	ExpiredTime *string `json:"ExpiredTime" name:"ExpiredTime"`
+	// 操作系统名称。
+	OsName *string `json:"OsName" name:"OsName"`
+	// 实例所属安全组。该参数可以通过调用 [DescribeSecurityGroups](https://cloud.tencent.com/document/api/215/15808) 的返回值中的sgId字段来获取。
+	SecurityGroupIds []*string `json:"SecurityGroupIds" name:"SecurityGroupIds" list`
+	// 实例登录设置。目前只返回实例所关联的密钥。
+	LoginSettings *LoginSettings `json:"LoginSettings" name:"LoginSettings"`
+	// 实例状态。取值范围：<br><li>PENDING：表示创建中<br></li><li>LAUNCH_FAILED：表示创建失败<br></li><li>RUNNING：表示运行中<br></li><li>STOPPED：表示关机<br></li><li>STARTING：表示开机中<br></li><li>STOPPING：表示关机中<br></li><li>REBOOTING：表示重启中<br></li><li>SHUTDOWN：表示停止待销毁<br></li><li>TERMINATING：表示销毁中。<br></li>
+	InstanceState *string `json:"InstanceState" name:"InstanceState"`
+	// 实例关联的标签列表。
+	Tags []*Tag `json:"Tags" name:"Tags" list`
 }
 
 type InstanceChargePrepaid struct {
 	// 购买实例的时长，单位：月。取值范围：1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 24, 36。
 	Period *int64 `json:"Period" name:"Period"`
-	// 自动续费标识。取值范围：<br><li>NOTIFY_AND_AUTO_RENEW：通知过期且自动续费<br><li>NOTIFY_AND_MANUAL_RENEW：通知过期不自动续费<br><li>DISABLE_NOTIFY_AND_MANUAL_RENEW：不通知过期不自动续费<br><br>默认取值：NOTIFY_AND_AUTO_RENEW。若该参数指定为NOTIFY_AND_AUTO_RENEW，在账户余额充足的情况下，实例到期后将按月自动续费。
+	// 自动续费标识。取值范围：<br><li>NOTIFY_AND_AUTO_RENEW：通知过期且自动续费<br><li>NOTIFY_AND_MANUAL_RENEW：通知过期不自动续费<br><li>DISABLE_NOTIFY_AND_MANUAL_RENEW：不通知过期不自动续费<br><br>默认取值：NOTIFY_AND_MANUAL_RENEW。若该参数指定为NOTIFY_AND_AUTO_RENEW，在账户余额充足的情况下，实例到期后将按月自动续费。
 	RenewFlag *string `json:"RenewFlag" name:"RenewFlag"`
 }
 
@@ -1356,6 +1656,23 @@ type InstanceFamilyConfig struct {
 	InstanceFamilyName *string `json:"InstanceFamilyName" name:"InstanceFamilyName"`
 	// 机型族名称的英文简称。
 	InstanceFamily *string `json:"InstanceFamily" name:"InstanceFamily"`
+}
+
+type InstanceMarketOptionsRequest struct {
+	*tchttp.BaseRequest
+	// 市场选项类型，当前只支持取值：spot
+	MarketType *string `json:"MarketType" name:"MarketType"`
+	// 竞价相关选项
+	SpotOptions *SpotMarketOptions `json:"SpotOptions" name:"SpotOptions"`
+}
+
+func (r *InstanceMarketOptionsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *InstanceMarketOptionsRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
 }
 
 type InstanceStatus struct {
@@ -1384,8 +1701,35 @@ type InstanceTypeConfig struct {
 	InstanceTypeState *string `json:"InstanceTypeState" name:"InstanceTypeState"`
 }
 
+type InstanceTypeQuotaItem struct {
+	// 可用区。
+	Zone *string `json:"Zone" name:"Zone"`
+	// 实例机型。
+	InstanceType *string `json:"InstanceType" name:"InstanceType"`
+	// 实例计费模式。取值范围： <br><li>PREPAID：表示预付费，即包年包月<br><li>POSTPAID_BY_HOUR：表示后付费，即按量计费<br><li>CDHPAID：表示[CDH](https://cloud.tencent.com/document/product/416)付费，即只对CDH计费，不对CDH上的实例计费。
+	InstanceChargeType *string `json:"InstanceChargeType" name:"InstanceChargeType"`
+	// 网卡类型，例如：25代表25G网卡
+	NetworkCard *int64 `json:"NetworkCard" name:"NetworkCard"`
+	// 扩展属性。
+	Externals *Externals `json:"Externals" name:"Externals"`
+	// 实例的CPU核数，单位：核。
+	Cpu *int64 `json:"Cpu" name:"Cpu"`
+	// 实例内存容量，单位：`GB`。
+	Memory *int64 `json:"Memory" name:"Memory"`
+	// 实例机型系列。
+	InstanceFamily *string `json:"InstanceFamily" name:"InstanceFamily"`
+	// 机型名称。
+	TypeName *string `json:"TypeName" name:"TypeName"`
+	// 本地磁盘规格列表。
+	LocalDiskTypeList []*LocalDiskType `json:"LocalDiskTypeList" name:"LocalDiskTypeList" list`
+	// 实例是否售卖。
+	Status *string `json:"Status" name:"Status"`
+	// 实例的售卖价格。
+	Price *ItemPrice `json:"Price" name:"Price"`
+}
+
 type InternetAccessible struct {
-	// 网络计费类型。取值范围：<br><li>BANDWIDTH_PREPAID：预付费按带宽结算<br><li>TRAFFIC_POSTPAID_BY_HOUR：流量按小时后付费<br><li>BANDWIDTH_POSTPAID_BY_HOUR：带宽按小时后付费<br><li>BANDWIDTH_PACKAGE：带宽包用户<br>默认取值：TRAFFIC_POSTPAID_BY_HOUR。
+	// 网络计费类型。取值范围：<br><li>BANDWIDTH_PREPAID：预付费按带宽结算<br><li>TRAFFIC_POSTPAID_BY_HOUR：流量按小时后付费<br><li>BANDWIDTH_POSTPAID_BY_HOUR：带宽按小时后付费<br><li>BANDWIDTH_PACKAGE：带宽包用户<br>默认取值：非带宽包用户默认与子机付费类型保持一致。
 	InternetChargeType *string `json:"InternetChargeType" name:"InternetChargeType"`
 	// 公网出带宽上限，单位：Mbps。默认值：0Mbps。不同机型带宽上限范围不一致，具体限制详见[购买网络带宽](/document/product/213/509)。
 	InternetMaxBandwidthOut *int64 `json:"InternetMaxBandwidthOut" name:"InternetMaxBandwidthOut"`
@@ -1426,7 +1770,7 @@ type KeyPair struct {
 	// 密钥对名称。
 	KeyName *string `json:"KeyName" name:"KeyName"`
 	// 密钥对所属的项目`ID`。
-	ProjectId *string `json:"ProjectId" name:"ProjectId"`
+	ProjectId *int64 `json:"ProjectId" name:"ProjectId"`
 	// 密钥对描述信息。
 	Description *string `json:"Description" name:"Description"`
 	// 密钥对的纯文本公钥。
@@ -1439,6 +1783,17 @@ type KeyPair struct {
 	CreatedTime *string `json:"CreatedTime" name:"CreatedTime"`
 }
 
+type LocalDiskType struct {
+	// 本地磁盘类型。
+	Type *string `json:"Type" name:"Type"`
+	// 本地磁盘属性。
+	PartitionType *string `json:"PartitionType" name:"PartitionType"`
+	// 本地磁盘最小值。
+	MinSize *int64 `json:"MinSize" name:"MinSize"`
+	// 本地磁盘最大值。
+	MaxSize *int64 `json:"MaxSize" name:"MaxSize"`
+}
+
 type LoginSettings struct {
 	// 实例登录密码。不同操作系统类型密码复杂度限制不一样，具体如下：<br><li>Linux实例密码必须8到16位，至少包括两项[a-z，A-Z]、[0-9] 和 [( ) ` ~ ! @ # $ % ^ & * - + = | { } [ ] : ; ' , . ? / ]中的特殊符号。<br><li>Windows实例密码必须12到16位，至少包括三项[a-z]，[A-Z]，[0-9] 和 [( ) ` ~ ! @ # $ % ^ & * - + = { } [ ] : ; ' , . ? /]中的特殊符号。<br><br>若不指定该参数，则由系统随机生成密码，并通过站内信方式通知到用户。
 	Password *string `json:"Password" name:"Password"`
@@ -1446,6 +1801,40 @@ type LoginSettings struct {
 	KeyIds []*string `json:"KeyIds" name:"KeyIds" list`
 	// 保持镜像的原始设置。该参数与Password或KeyIds.N不能同时指定。只有使用自定义镜像、共享镜像或外部导入镜像创建实例时才能指定该参数为TRUE。取值范围：<br><li>TRUE：表示保持镜像的登录设置<br><li>FALSE：表示不保持镜像的登录设置<br><br>默认取值：FALSE。
 	KeepImageLogin *string `json:"KeepImageLogin" name:"KeepImageLogin"`
+}
+
+type ModifyDisasterRecoverGroupAttributeRequest struct {
+	*tchttp.BaseRequest
+	// 分散置放群组ID，可使用[DescribeDisasterRecoverGroups](https://cloud.tencent.com/document/api/213/17810)接口获取。
+	DisasterRecoverGroupId *string `json:"DisasterRecoverGroupId" name:"DisasterRecoverGroupId"`
+	// 分散置放群组名称，长度1-60个字符，支持中、英文。
+	Name *string `json:"Name" name:"Name"`
+}
+
+func (r *ModifyDisasterRecoverGroupAttributeRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyDisasterRecoverGroupAttributeRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyDisasterRecoverGroupAttributeResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifyDisasterRecoverGroupAttributeResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyDisasterRecoverGroupAttributeResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
 }
 
 type ModifyHostsAttributeRequest struct {
@@ -1470,7 +1859,7 @@ func (r *ModifyHostsAttributeRequest) FromJsonString(s string) error {
 type ModifyHostsAttributeResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -1506,7 +1895,7 @@ func (r *ModifyImageAttributeRequest) FromJsonString(s string) error {
 type ModifyImageAttributeResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -1542,7 +1931,7 @@ func (r *ModifyImageSharePermissionRequest) FromJsonString(s string) error {
 type ModifyImageSharePermissionResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -1562,6 +1951,8 @@ type ModifyInstancesAttributeRequest struct {
 	InstanceIds []*string `json:"InstanceIds" name:"InstanceIds" list`
 	// 实例名称。可任意命名，但不得超过60个字符。
 	InstanceName *string `json:"InstanceName" name:"InstanceName"`
+	// 指定实例的安全组Id列表，子机将重新关联指定列表的安全组，原本关联的安全组会被解绑。
+	SecurityGroups []*string `json:"SecurityGroups" name:"SecurityGroups" list`
 }
 
 func (r *ModifyInstancesAttributeRequest) ToJsonString() string {
@@ -1576,7 +1967,7 @@ func (r *ModifyInstancesAttributeRequest) FromJsonString(s string) error {
 type ModifyInstancesAttributeResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -1587,6 +1978,42 @@ func (r *ModifyInstancesAttributeResponse) ToJsonString() string {
 }
 
 func (r *ModifyInstancesAttributeResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyInstancesChargeTypeRequest struct {
+	*tchttp.BaseRequest
+	// 一个或多个待操作的实例ID。可通过[`DescribeInstances`](https://cloud.tencent.com/document/api/213/9388)接口返回值中的`InstanceId`获取。每次请求批量实例的上限为100。
+	InstanceIds []*string `json:"InstanceIds" name:"InstanceIds" list`
+	// 实例[计费类型](https://cloud.tencent.com/document/product/213/2180)。<br><li>PREPAID：预付费，即包年包月。
+	InstanceChargeType *string `json:"InstanceChargeType" name:"InstanceChargeType"`
+	// 预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月实例的购买时长、是否设置自动续费等属性。若指定实例的付费模式为预付费则该参数必传。
+	InstanceChargePrepaid *InstanceChargePrepaid `json:"InstanceChargePrepaid" name:"InstanceChargePrepaid"`
+}
+
+func (r *ModifyInstancesChargeTypeRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyInstancesChargeTypeRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyInstancesChargeTypeResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifyInstancesChargeTypeResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyInstancesChargeTypeResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -1610,7 +2037,7 @@ func (r *ModifyInstancesProjectRequest) FromJsonString(s string) error {
 type ModifyInstancesProjectResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -1644,7 +2071,7 @@ func (r *ModifyInstancesRenewFlagRequest) FromJsonString(s string) error {
 type ModifyInstancesRenewFlagResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -1655,6 +2082,42 @@ func (r *ModifyInstancesRenewFlagResponse) ToJsonString() string {
 }
 
 func (r *ModifyInstancesRenewFlagResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyInstancesVpcAttributeRequest struct {
+	*tchttp.BaseRequest
+	// 待操作的实例ID数组。可通过[`DescribeInstances`](document/api/213/9388)接口返回值中的`InstanceId`获取。
+	InstanceIds []*string `json:"InstanceIds" name:"InstanceIds" list`
+	// 私有网络相关信息配置。通过该参数指定私有网络的ID，子网ID，私有网络ip等信息。当指定私有网络ID和子网ID（子网必须在实例所在的可用区）与指定实例所在私有网络不一致时，会将实例迁移至指定的私有网络的子网下。可通过`PrivateIpAddresses`指定私有网络子网IP，若需指定则所有已指定的实例均需要指定子网IP，此时`InstanceIds`与`PrivateIpAddresses`一一对应。不指定`PrivateIpAddresses`时随机分配私有网络子网IP。
+	VirtualPrivateCloud *VirtualPrivateCloud `json:"VirtualPrivateCloud" name:"VirtualPrivateCloud"`
+	// 是否对运行中的实例选择强制关机。默认为TRUE。
+	ForceStop *bool `json:"ForceStop" name:"ForceStop"`
+}
+
+func (r *ModifyInstancesVpcAttributeRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyInstancesVpcAttributeRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyInstancesVpcAttributeResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifyInstancesVpcAttributeResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyInstancesVpcAttributeResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -1680,7 +2143,7 @@ func (r *ModifyKeyPairAttributeRequest) FromJsonString(s string) error {
 type ModifyKeyPairAttributeResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -1694,12 +2157,21 @@ func (r *ModifyKeyPairAttributeResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type OsVersion struct {
+	// 操作系统类型
+	OsName *string `json:"OsName" name:"OsName"`
+	// 支持的操作系统版本
+	OsVersions []*string `json:"OsVersions" name:"OsVersions" list`
+	// 支持的操作系统架构
+	Architecture []*string `json:"Architecture" name:"Architecture" list`
+}
+
 type Placement struct {
 	// 实例所属的[可用区](/document/product/213/9452#zone)ID。该参数也可以通过调用  [DescribeZones](/document/api/213/9455) 的返回值中的Zone字段来获取。
 	Zone *string `json:"Zone" name:"Zone"`
 	// 实例所属项目ID。该参数可以通过调用 [DescribeProject](/document/api/378/4400) 的返回值中的 projectId 字段来获取。不填为默认项目。
 	ProjectId *int64 `json:"ProjectId" name:"ProjectId"`
-	// 实例所属的专用宿主机ID列表。如果您有购买专用宿主机并且指定了该参数，则您购买的实例就会随机的部署在这些专用宿主机上。当前暂不支持。
+	// 实例所属的专用宿主机ID列表。如果您有购买专用宿主机并且指定了该参数，则您购买的实例就会随机的部署在这些专用宿主机上。
 	HostIds []*string `json:"HostIds" name:"HostIds" list`
 }
 
@@ -1708,40 +2180,6 @@ type Price struct {
 	InstancePrice *ItemPrice `json:"InstancePrice" name:"InstancePrice"`
 	// 描述了网络价格。
 	BandwidthPrice *ItemPrice `json:"BandwidthPrice" name:"BandwidthPrice"`
-}
-
-type QueryMigrateTaskRequest struct {
-	*tchttp.BaseRequest
-	// 任务Id
-	TaskId *string `json:"TaskId" name:"TaskId"`
-}
-
-func (r *QueryMigrateTaskRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-func (r *QueryMigrateTaskRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
-}
-
-type QueryMigrateTaskResponse struct {
-	*tchttp.BaseResponse
-	Response *struct {
-		// 任务状态
-		Status *string `json:"Status" name:"Status"`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
-		RequestId *string `json:"RequestId" name:"RequestId"`
-	} `json:"Response"`
-}
-
-func (r *QueryMigrateTaskResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-func (r *QueryMigrateTaskResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
 }
 
 type RebootInstancesRequest struct {
@@ -1764,7 +2202,7 @@ func (r *RebootInstancesRequest) FromJsonString(s string) error {
 type RebootInstancesResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -1807,7 +2245,7 @@ func (r *RenewHostsRequest) FromJsonString(s string) error {
 type RenewHostsResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -1827,6 +2265,8 @@ type RenewInstancesRequest struct {
 	InstanceIds []*string `json:"InstanceIds" name:"InstanceIds" list`
 	// 预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月实例的续费时长、是否设置自动续费等属性。
 	InstanceChargePrepaid *InstanceChargePrepaid `json:"InstanceChargePrepaid" name:"InstanceChargePrepaid"`
+	// 是否续费弹性数据盘。取值范围：<br><li>TRUE：表示续费包年包月实例同时续费其挂载的弹性数据盘<br><li>FALSE：表示续费包年包月实例同时不再续费其挂载的弹性数据盘<br><br>默认取值：TRUE。
+	RenewPortableDataDisk *bool `json:"RenewPortableDataDisk" name:"RenewPortableDataDisk"`
 }
 
 func (r *RenewInstancesRequest) ToJsonString() string {
@@ -1841,7 +2281,7 @@ func (r *RenewInstancesRequest) FromJsonString(s string) error {
 type RenewInstancesResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -1881,7 +2321,7 @@ func (r *ResetInstanceRequest) FromJsonString(s string) error {
 type ResetInstanceResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -1897,7 +2337,7 @@ func (r *ResetInstanceResponse) FromJsonString(s string) error {
 
 type ResetInstancesInternetMaxBandwidthRequest struct {
 	*tchttp.BaseRequest
-	// 一个或多个待操作的实例ID。可通过[`DescribeInstances`](https://cloud.tencent.com/document/api/213/9388)接口返回值中的 `InstanceId` 获取。 每次请求批量实例的上限为100。
+	// 一个或多个待操作的实例ID。可通过[`DescribeInstances`](https://cloud.tencent.com/document/api/213/9388)接口返回值中的 `InstanceId` 获取。 每次请求批量实例的上限为100。当调整 `BANDWIDTH_PREPAID` 和 `BANDWIDTH_POSTPAID_BY_HOUR` 计费方式的带宽时，只支持一个实例。
 	InstanceIds []*string `json:"InstanceIds" name:"InstanceIds" list`
 	// 公网出带宽配置。不同机型带宽上限范围不一致，具体限制详见带宽限制对账表。暂时只支持 `InternetMaxBandwidthOut` 参数。
 	InternetAccessible *InternetAccessible `json:"InternetAccessible" name:"InternetAccessible"`
@@ -1919,7 +2359,7 @@ func (r *ResetInstancesInternetMaxBandwidthRequest) FromJsonString(s string) err
 type ResetInstancesInternetMaxBandwidthResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -1957,7 +2397,7 @@ func (r *ResetInstancesPasswordRequest) FromJsonString(s string) error {
 type ResetInstancesPasswordResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -1975,7 +2415,7 @@ type ResetInstancesTypeRequest struct {
 	*tchttp.BaseRequest
 	// 一个或多个待操作的实例ID。可通过[`DescribeInstances`](https://cloud.tencent.com/document/api/213/15728)接口返回值中的`InstanceId`获取。每次请求批量实例的上限为1。
 	InstanceIds []*string `json:"InstanceIds" name:"InstanceIds" list`
-	// 实例机型。不同实例机型指定了不同的资源规格，具体取值可参见附表实例资源规格对照表，也可以调用查询实例资源规格列表接口获得最新的规格表。
+	// 实例机型。不同实例机型指定了不同的资源规格，具体取值可通过调用接口[`DescribeInstanceTypeConfigs`](https://cloud.tencent.com/document/api/213/15749)来获得最新的规格表或参见[实例类型](https://cloud.tencent.com/document/product/213/11518)描述。
 	InstanceType *string `json:"InstanceType" name:"InstanceType"`
 	// 是否对运行中的实例选择强制关机。建议对运行中的实例先手动关机，然后再重置用户密码。取值范围：<br><li>TRUE：表示在正常关机失败后进行强制关机<br><li>FALSE：表示在正常关机失败后不进行强制关机<br><br>默认取值：FALSE。<br><br>强制关机的效果等同于关闭物理计算机的电源开关。强制关机可能会导致数据丢失或文件系统损坏，请仅在服务器不能正常关机时使用。
 	ForceStop *bool `json:"ForceStop" name:"ForceStop"`
@@ -1993,7 +2433,7 @@ func (r *ResetInstancesTypeRequest) FromJsonString(s string) error {
 type ResetInstancesTypeResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -2029,7 +2469,7 @@ func (r *ResizeInstanceDisksRequest) FromJsonString(s string) error {
 type ResizeInstanceDisksResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -2045,28 +2485,28 @@ func (r *ResizeInstanceDisksResponse) FromJsonString(s string) error {
 
 type RunInstancesRequest struct {
 	*tchttp.BaseRequest
-	// 实例[计费类型](https://cloud.tencent.com/document/product/213/2180)。<br><li>PREPAID：预付费，即包年包月<br><li>POSTPAID_BY_HOUR：按小时后付费<br><li>CDHPAID：独享母机付费（基于专用宿主机创建，宿主机部分的资源不收费）<br>默认值：POSTPAID_BY_HOUR。
+	// 实例所在的位置。通过该参数可以指定实例所属可用区，所属项目，专用宿主机（对于独享母机付费模式的实例创建）等属性。
+	Placement *Placement `json:"Placement" name:"Placement"`
+	// 指定有效的[镜像](https://cloud.tencent.com/document/product/213/4940)ID，格式形如`img-xxx`。镜像类型分为四种：<br/><li>公共镜像</li><li>自定义镜像</li><li>共享镜像</li><li>服务市场镜像</li><br/>可通过以下方式获取可用的镜像ID：<br/><li>`公共镜像`、`自定义镜像`、`共享镜像`的镜像ID可通过登录[控制台](https://console.cloud.tencent.com/cvm/image?rid=1&imageType=PUBLIC_IMAGE)查询；`服务镜像市场`的镜像ID可通过[云市场](https://market.cloud.tencent.com/list)查询。</li><li>通过调用接口 [DescribeImages](https://cloud.tencent.com/document/api/213/15715) ，取返回信息中的`ImageId`字段。</li>
+	ImageId *string `json:"ImageId" name:"ImageId"`
+	// 实例[计费类型](https://cloud.tencent.com/document/product/213/2180)。<br><li>PREPAID：预付费，即包年包月<br><li>POSTPAID_BY_HOUR：按小时后付费<br><li>CDHPAID：独享母机付费（基于专用宿主机创建，宿主机部分的资源不收费）<br><li>SPOTPAID：竞价付费<br>默认值：POSTPAID_BY_HOUR。
 	InstanceChargeType *string `json:"InstanceChargeType" name:"InstanceChargeType"`
 	// 预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月实例的购买时长、是否设置自动续费等属性。若指定实例的付费模式为预付费则该参数必传。
 	InstanceChargePrepaid *InstanceChargePrepaid `json:"InstanceChargePrepaid" name:"InstanceChargePrepaid"`
-	// 实例所在的位置。通过该参数可以指定实例所属可用区，所属项目，专用宿主机（对于独享母机付费模式的子机创建）等属性。
-	Placement *Placement `json:"Placement" name:"Placement"`
 	// 实例机型。不同实例机型指定了不同的资源规格。
-	// <br><li>对于付费模式为PREPAID或POSTPAID_BY_HOUR的子机创建，具体取值可通过调用接口[DescribeInstanceTypeConfigs](https://cloud.tencent.com/document/api/213/9391)来获得最新的规格表或参见[实例类型](https://cloud.tencent.com/document/product/213/11518)描述。若不指定该参数，则默认机型为S1.SMALL1。<br><li>对于付费模式为CDHPAID的子机创建，该参数以"CDH_"为前缀，根据cpu和内存配置生成，具体形式为：CDH_XCXG，例如对于创建cpu为1核，内存为1G大小的专用宿主机的子机，该参数应该为CDH_1C1G。
+	// <br><li>对于付费模式为PREPAID或POSTPAID\_BY\_HOUR的实例创建，具体取值可通过调用接口[DescribeInstanceTypeConfigs](https://cloud.tencent.com/document/api/213/15749)来获得最新的规格表或参见[实例类型](https://cloud.tencent.com/document/product/213/11518)描述。若不指定该参数，则默认机型为S1.SMALL1。<br><li>对于付费模式为CDHPAID的实例创建，该参数以"CDH_"为前缀，根据cpu和内存配置生成，具体形式为：CDH_XCXG，例如对于创建cpu为1核，内存为1G大小的专用宿主机的实例，该参数应该为CDH_1C1G。
 	InstanceType *string `json:"InstanceType" name:"InstanceType"`
-	// 指定有效的[镜像](https://cloud.tencent.com/document/product/213/4940)ID，格式形如`img-xxx`。镜像类型分为四种：<br/><li>公共镜像</li><li>自定义镜像</li><li>共享镜像</li><li>服务市场镜像</li><br/>可通过以下方式获取可用的镜像ID：<br/><li>`公共镜像`、`自定义镜像`、`共享镜像`的镜像ID可通过登录[控制台](https://console.cloud.tencent.com/cvm/image?rid=1&imageType=PUBLIC_IMAGE)查询；`服务镜像市场`的镜像ID可通过[云市场](https://market.cloud.tencent.com/list)查询。</li><li>通过调用接口 [DescribeImages](https://cloud.tencent.com/document/api/213/15715) ，取返回信息中的`ImageId`字段。</li>
-	ImageId *string `json:"ImageId" name:"ImageId"`
 	// 实例系统盘配置信息。若不指定该参数，则按照系统默认值进行分配。
 	SystemDisk *SystemDisk `json:"SystemDisk" name:"SystemDisk"`
-	// 实例数据盘配置信息。若不指定该参数，则默认不购买数据盘，当前仅支持购买的时候指定一个数据盘。
+	// 实例数据盘配置信息。若不指定该参数，则默认不购买数据盘。支持购买的时候指定11块数据盘，其中最多包含1块LOCAL_BASIC数据盘或者LOCAL_SSD数据盘，最多包含10块CLOUD_BASIC数据盘、CLOUD_PREMIUM数据盘或者CLOUD_SSD数据盘。
 	DataDisks []*DataDisk `json:"DataDisks" name:"DataDisks" list`
-	// 私有网络相关信息配置。通过该参数可以指定私有网络的ID，子网ID等信息。若不指定该参数，则默认使用基础网络。若在此参数中指定了私有网络ip，那么InstanceCount参数只能为1。
+	// 私有网络相关信息配置。通过该参数可以指定私有网络的ID，子网ID等信息。若不指定该参数，则默认使用基础网络。若在此参数中指定了私有网络ip，表示每个实例的主网卡ip，而且InstanceCount参数必须与私有网络ip的个数一致。
 	VirtualPrivateCloud *VirtualPrivateCloud `json:"VirtualPrivateCloud" name:"VirtualPrivateCloud"`
 	// 公网带宽相关信息设置。若不指定该参数，则默认公网带宽为0Mbps。
 	InternetAccessible *InternetAccessible `json:"InternetAccessible" name:"InternetAccessible"`
 	// 购买实例数量。取值范围：[1，100]。默认取值：1。指定购买实例的数量不能超过用户所能购买的剩余配额数量，具体配额相关限制详见[CVM实例购买限制](https://cloud.tencent.com/document/product/213/2664)。
 	InstanceCount *int64 `json:"InstanceCount" name:"InstanceCount"`
-	// 实例显示名称。如果不指定则默认显示
+	// 实例显示名称。<br><li>不指定实例显示名称则默认显示‘未命名’。</li><li>购买多台实例，如果指定模式串`{R:x}`，表示生成数字`[x, x+n-1]`，其中`n`表示购买实例的数量，例如`server_{R:3}`，购买1台时，实例显示名称为`server_3`；购买2台时，实例显示名称分别为`server_3`，`server_4`。支持指定多个模式串`{R:x}`。</li><li>购买多台实例，如果不指定模式串，则在实例显示名称添加后缀`1、2...n`，其中`n`表示购买实例的数量，例如`server_`，购买2台时，实例显示名称分别为`server_1`，`server_2`。
 	InstanceName *string `json:"InstanceName" name:"InstanceName"`
 	// 实例登录设置。通过该参数可以设置实例的登录方式密码、密钥或保持镜像的原始登录设置。默认情况下会随机生成密码，并以站内信方式知会到用户。
 	LoginSettings *LoginSettings `json:"LoginSettings" name:"LoginSettings"`
@@ -2076,12 +2516,18 @@ type RunInstancesRequest struct {
 	EnhancedService *EnhancedService `json:"EnhancedService" name:"EnhancedService"`
 	// 用于保证请求幂等性的字符串。该字符串由客户生成，需保证不同请求之间唯一，最大值不超过64个ASCII字符。若不指定该参数，则无法保证请求的幂等性。<br>更多详细信息请参阅：如何保证幂等性。
 	ClientToken *string `json:"ClientToken" name:"ClientToken"`
-	// 云服务器的主机名。<br><li>点号（.）和短横线（-）不能作为 HostName 的首尾字符，不能连续使用。<br><li>Windows 实例：名字符长度为[2, 15]，允许字母（不限制大小写）、数字和短横线（-）组成，不支持点号（.），不能全是数字。<br><li>其他类型（Linux 等）实例：字符长度为[2, 30]，允许支持多个点号，点之间为一段，每段允许字母（不限制大小写）、数字和短横线（-）组成。
+	// 云服务器的主机名。<br><li>点号（.）和短横线（-）不能作为 HostName 的首尾字符，不能连续使用。<br><li>Windows 实例：名字符长度为[2, 15]，允许字母（不限制大小写）、数字和短横线（-）组成，不支持点号（.），不能全是数字。<br><li>其他类型（Linux 等）实例：字符长度为[2, 60]，允许支持多个点号，点之间为一段，每段允许字母（不限制大小写）、数字和短横线（-）组成。
 	HostName *string `json:"HostName" name:"HostName"`
 	// 定时任务。通过该参数可以为实例指定定时任务，目前仅支持定时销毁。
 	ActionTimer *ActionTimer `json:"ActionTimer" name:"ActionTimer"`
+	// 容灾组id，仅支持指定一个。
+	DisasterRecoverGroupIds []*string `json:"DisasterRecoverGroupIds" name:"DisasterRecoverGroupIds" list`
 	// 标签描述列表。通过指定该参数可以同时绑定标签到相应的资源实例，当前仅支持绑定标签到云主机实例。
 	TagSpecification []*TagSpecification `json:"TagSpecification" name:"TagSpecification" list`
+	// 实例的市场相关选项，如竞价实例相关参数，若指定实例的付费模式为竞价付费则该参数必传。
+	InstanceMarketOptions *InstanceMarketOptionsRequest `json:"InstanceMarketOptions" name:"InstanceMarketOptions"`
+	// 提供给实例使用的用户数据，需要以 base64 方式编码，支持的最大数据大小为 16KB。关于获取此参数的详细介绍，请参阅[Windows](https://cloud.tencent.com/document/product/213/17526)和[Linux](https://cloud.tencent.com/document/product/213/17525)启动时运行命令。
+	UserData *string `json:"UserData" name:"UserData"`
 }
 
 func (r *RunInstancesRequest) ToJsonString() string {
@@ -2096,9 +2542,9 @@ func (r *RunInstancesRequest) FromJsonString(s string) error {
 type RunInstancesResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
-		// 当通过本接口来创建实例时会返回该参数，表示一个或多个实例`ID`。返回实例`ID`列表并不代表实例创建成功，可根据 [DescribeInstancesStatus](https://cloud.tencent.com/document/api/213/15738) 接口查询返回的InstancesSet中对应实例的`ID`的状态来判断创建是否完成；如果实例状态由“准备中”变为“正在运行”，则为创建成功。
+		// 当通过本接口来创建实例时会返回该参数，表示一个或多个实例`ID`。返回实例`ID`列表并不代表实例创建成功，可根据 [DescribeInstances](https://cloud.tencent.com/document/api/213/15728) 接口查询返回的InstancesSet中对应实例的`ID`的状态来判断创建是否完成；如果实例状态由“准备中”变为“正在运行”，则为创建成功。
 		InstanceIdSet []*string `json:"InstanceIdSet" name:"InstanceIdSet" list`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -2124,9 +2570,16 @@ type RunSecurityServiceEnabled struct {
 
 type SharePermission struct {
 	// 镜像分享时间
-	CreateTime *string `json:"CreateTime" name:"CreateTime"`
+	CreatedTime *string `json:"CreatedTime" name:"CreatedTime"`
 	// 镜像分享的账户ID
-	Account *string `json:"Account" name:"Account"`
+	AccountId *string `json:"AccountId" name:"AccountId"`
+}
+
+type SpotMarketOptions struct {
+	// 竞价出价
+	MaxPrice *string `json:"MaxPrice" name:"MaxPrice"`
+	// 竞价请求类型，当前仅支持类型：one-time
+	SpotInstanceType *string `json:"SpotInstanceType" name:"SpotInstanceType"`
 }
 
 type StartInstancesRequest struct {
@@ -2147,7 +2600,7 @@ func (r *StartInstancesRequest) FromJsonString(s string) error {
 type StartInstancesResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -2169,8 +2622,6 @@ type StopInstancesRequest struct {
 	ForceStop *bool `json:"ForceStop" name:"ForceStop"`
 	// 实例的关闭模式。取值范围：<br><li>SOFT_FIRST：表示在正常关闭失败后进行强制关闭<br><li>HARD：直接强制关闭<br><li>SOFT：仅软关机<br>默认取值：SOFT。
 	StopType *string `json:"StopType" name:"StopType"`
-	// 关机收费模式<br><li>KEEP_CHARGING：关机继续收费<br><li>STOP_CHARGING：关机停止收费<br>默认取值：KEEP_CHARGING。
-	StoppedMode *string `json:"StoppedMode" name:"StoppedMode"`
 }
 
 func (r *StopInstancesRequest) ToJsonString() string {
@@ -2185,7 +2636,7 @@ func (r *StopInstancesRequest) FromJsonString(s string) error {
 type StopInstancesResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -2197,6 +2648,15 @@ func (r *StopInstancesResponse) ToJsonString() string {
 
 func (r *StopInstancesResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
+}
+
+type StorageBlock struct {
+	// HDD本地存储类型，值为：LOCAL_PRO.
+	Type *string `json:"Type" name:"Type"`
+	// HDD本地存储的最小容量
+	MinSize *int64 `json:"MinSize" name:"MinSize"`
+	// HDD本地存储的最大容量
+	MaxSize *int64 `json:"MaxSize" name:"MaxSize"`
 }
 
 type SyncImagesRequest struct {
@@ -2219,7 +2679,7 @@ func (r *SyncImagesRequest) FromJsonString(s string) error {
 type SyncImagesResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -2234,7 +2694,7 @@ func (r *SyncImagesResponse) FromJsonString(s string) error {
 }
 
 type SystemDisk struct {
-	// 系统盘类型。系统盘类型限制详见[CVM实例配置](/document/product/213/2177)。取值范围：<br><li>LOCAL_BASIC：本地硬盘<br><li>LOCAL_SSD：本地SSD硬盘<br><li>CLOUD_BASIC：普通云硬盘<br><li>CLOUD_SSD：SSD云硬盘<br><br>默认取值：LOCAL_BASIC。
+	// 系统盘类型。系统盘类型限制详见[CVM实例配置](/document/product/213/2177)。取值范围：<br><li>LOCAL_BASIC：本地硬盘<br><li>LOCAL_SSD：本地SSD硬盘<br><li>CLOUD_BASIC：普通云硬盘<br><li>CLOUD_SSD：SSD云硬盘<br><li>CLOUD_PREMIUM：高性能云硬盘<br><br>默认取值：CLOUD_BASIC。
 	DiskType *string `json:"DiskType" name:"DiskType"`
 	// 系统盘ID。LOCAL_BASIC 和 LOCAL_SSD 类型没有ID。暂时不支持该参数。
 	DiskId *string `json:"DiskId" name:"DiskId"`
@@ -2250,7 +2710,7 @@ type Tag struct {
 }
 
 type TagSpecification struct {
-	// 标签绑定的资源类型
+	// 标签绑定的资源类型，当前仅支持类型："instance"
 	ResourceType *string `json:"ResourceType" name:"ResourceType"`
 	// 标签对列表
 	Tags []*Tag `json:"Tags" name:"Tags" list`
@@ -2260,8 +2720,6 @@ type TerminateInstancesRequest struct {
 	*tchttp.BaseRequest
 	// 一个或多个待操作的实例ID。可通过[`DescribeInstances`](https://cloud.tencent.com/document/api/213/15728)接口返回值中的`InstanceId`获取。每次请求批量实例的上限为100。
 	InstanceIds []*string `json:"InstanceIds" name:"InstanceIds" list`
-	// 试运行。
-	DryRun *bool `json:"DryRun" name:"DryRun"`
 }
 
 func (r *TerminateInstancesRequest) ToJsonString() string {
@@ -2276,7 +2734,7 @@ func (r *TerminateInstancesRequest) FromJsonString(s string) error {
 type TerminateInstancesResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -2290,50 +2748,14 @@ func (r *TerminateInstancesResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
-type UpdateInstanceVpcConfigRequest struct {
-	*tchttp.BaseRequest
-	// 待操作的实例ID。可通过[`DescribeInstances`](document/api/213/9388)接口返回值中的`InstanceId`获取。
-	InstanceId *string `json:"InstanceId" name:"InstanceId"`
-	// 私有网络相关信息配置。通过该参数指定私有网络的ID，子网ID，私有网络ip等信息。
-	VirtualPrivateCloud *VirtualPrivateCloud `json:"VirtualPrivateCloud" name:"VirtualPrivateCloud"`
-	// 是否对运行中的实例选择强制关机。默认为TRUE。
-	ForceStop *bool `json:"ForceStop" name:"ForceStop"`
-}
-
-func (r *UpdateInstanceVpcConfigRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-func (r *UpdateInstanceVpcConfigRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
-}
-
-type UpdateInstanceVpcConfigResponse struct {
-	*tchttp.BaseResponse
-	Response *struct {
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
-		RequestId *string `json:"RequestId" name:"RequestId"`
-	} `json:"Response"`
-}
-
-func (r *UpdateInstanceVpcConfigResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-func (r *UpdateInstanceVpcConfigResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
-}
-
 type VirtualPrivateCloud struct {
 	// 私有网络ID，形如`vpc-xxx`。有效的VpcId可通过登录[控制台](https://console.cloud.tencent.com/vpc/vpc?rid=1)查询；也可以调用接口 [DescribeVpcEx](/document/api/215/1372) ，从接口返回中的`unVpcId`字段获取。
 	VpcId *string `json:"VpcId" name:"VpcId"`
-	// 私有网络子网ID，形如`subnet-xxx`。有效的私有网络子网ID可通过登录[控制台](https://console.cloud.tencent.com/vpc/subnet?rid=1)查询；也可以调用接口  [DescribeSubnetEx](/document/api/215/1371) ，从接口返回中的`unSubnetId`字段获取。
+	// 私有网络子网ID，形如`subnet-xxx`。有效的私有网络子网ID可通过登录[控制台](https://console.cloud.tencent.com/vpc/subnet?rid=1)查询；也可以调用接口  [DescribeSubnets](/document/api/215/15784) ，从接口返回中的`unSubnetId`字段获取。
 	SubnetId *string `json:"SubnetId" name:"SubnetId"`
 	// 是否用作公网网关。公网网关只有在实例拥有公网IP以及处于私有网络下时才能正常使用。取值范围：<br><li>TRUE：表示用作公网网关<br><li>FALSE：表示不用作公网网关<br><br>默认取值：FALSE。
 	AsVpcGateway *bool `json:"AsVpcGateway" name:"AsVpcGateway"`
-	// 私有子网ip数组，目前只支持一个ip。在创建实例、修改实例vpc属性操作中可使用此参数。
+	// 私有网络子网 IP 数组，在创建实例、修改实例vpc属性操作中可使用此参数。当前仅批量创建多台实例时支持传入相同子网的多个 IP。
 	PrivateIpAddresses []*string `json:"PrivateIpAddresses" name:"PrivateIpAddresses" list`
 }
 

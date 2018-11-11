@@ -1,4 +1,4 @@
-// Copyright 1999-2018 Tencent Ltd.
+// Copyright (c) 2017-2018 THL A29 Limited, a Tencent company. All Rights Reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -104,6 +104,11 @@ type ComputeEnvCreateInfo struct {
 	DesiredComputeNodeCount *uint64 `json:"DesiredComputeNodeCount" name:"DesiredComputeNodeCount"`
 }
 
+type ComputeEnvData struct {
+	// CVM实例类型列表
+	InstanceTypes []*string `json:"InstanceTypes" name:"InstanceTypes" list`
+}
+
 type ComputeEnvView struct {
 	// 计算环境ID
 	EnvId *string `json:"EnvId" name:"EnvId"`
@@ -138,6 +143,10 @@ type ComputeNode struct {
 	TaskInstanceNumAvailable *uint64 `json:"TaskInstanceNumAvailable" name:"TaskInstanceNumAvailable"`
 	// Batch Agent 版本
 	AgentVersion *string `json:"AgentVersion" name:"AgentVersion"`
+	// 实例内网IP
+	PrivateIpAddresses []*string `json:"PrivateIpAddresses" name:"PrivateIpAddresses" list`
+	// 实例公网IP
+	PublicIpAddresses []*string `json:"PublicIpAddresses" name:"PublicIpAddresses" list`
 }
 
 type ComputeNodeMetrics struct {
@@ -181,7 +190,7 @@ type CreateComputeEnvResponse struct {
 	Response *struct {
 		// 计算环境ID
 		EnvId *string `json:"EnvId" name:"EnvId"`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -199,10 +208,10 @@ type CreateTaskTemplateRequest struct {
 	*tchttp.BaseRequest
 	// 任务模板名称
 	TaskTemplateName *string `json:"TaskTemplateName" name:"TaskTemplateName"`
-	// 任务模板描述
-	TaskTemplateDescription *string `json:"TaskTemplateDescription" name:"TaskTemplateDescription"`
 	// 任务模板内容，参数要求与任务一致
 	TaskTemplateInfo *Task `json:"TaskTemplateInfo" name:"TaskTemplateInfo"`
+	// 任务模板描述
+	TaskTemplateDescription *string `json:"TaskTemplateDescription" name:"TaskTemplateDescription"`
 }
 
 func (r *CreateTaskTemplateRequest) ToJsonString() string {
@@ -219,7 +228,7 @@ type CreateTaskTemplateResponse struct {
 	Response *struct {
 		// 任务模板ID
 		TaskTemplateId *string `json:"TaskTemplateId" name:"TaskTemplateId"`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -234,12 +243,18 @@ func (r *CreateTaskTemplateResponse) FromJsonString(s string) error {
 }
 
 type DataDisk struct {
-	// 数据盘类型。数据盘类型限制详见[CVM实例配置](/document/product/213/2177)。取值范围：<br><li>LOCAL_BASIC：本地硬盘<br><li>LOCAL_SSD：本地SSD硬盘<br><li>CLOUD_BASIC：普通云硬盘<br><li>CLOUD_PREMIUM：高性能云硬盘<br><li>CLOUD_SSD：SSD云硬盘<br><br>默认取值：LOCAL_BASIC。<br><br>该参数对`ResizeInstanceDisk`接口无效。
-	DiskType *string `json:"DiskType" name:"DiskType"`
-	// 系统盘ID。LOCAL_BASIC 和 LOCAL_SSD 类型没有ID。暂时不支持该参数。
-	DiskId *string `json:"DiskId" name:"DiskId"`
 	// 数据盘大小，单位：GB。最小调整步长为10G，不同数据盘类型取值范围不同，具体限制详见：[CVM实例配置](/document/product/213/2177)。默认值为0，表示不购买数据盘。更多限制详见产品文档。
 	DiskSize *int64 `json:"DiskSize" name:"DiskSize"`
+	// 数据盘类型。数据盘类型限制详见[CVM实例配置](/document/product/213/2177)。取值范围：<br><li>LOCAL_BASIC：本地硬盘<br><li>LOCAL_SSD：本地SSD硬盘<br><li>CLOUD_BASIC：普通云硬盘<br><li>CLOUD_PREMIUM：高性能云硬盘<br><li>CLOUD_SSD：SSD云硬盘<br><br>默认取值：LOCAL_BASIC。<br><br>该参数对`ResizeInstanceDisk`接口无效。
+	DiskType *string `json:"DiskType" name:"DiskType"`
+	// 数据盘ID。LOCAL_BASIC 和 LOCAL_SSD 类型没有ID。暂时不支持该参数。
+	DiskId *string `json:"DiskId" name:"DiskId"`
+	// 数据盘是否随子机销毁。取值范围：
+	// <li>TRUE：子机销毁时，销毁数据盘
+	// <li>FALSE：子机销毁时，保留数据盘<br>
+	// 默认取值：TRUE<br>
+	// 该参数目前仅用于 `RunInstances` 接口。
+	DeleteWithInstance *bool `json:"DeleteWithInstance" name:"DeleteWithInstance"`
 }
 
 type DeleteComputeEnvRequest struct {
@@ -260,7 +275,7 @@ func (r *DeleteComputeEnvRequest) FromJsonString(s string) error {
 type DeleteComputeEnvResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -292,7 +307,7 @@ func (r *DeleteJobRequest) FromJsonString(s string) error {
 type DeleteJobResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -324,7 +339,7 @@ func (r *DeleteTaskTemplatesRequest) FromJsonString(s string) error {
 type DeleteTaskTemplatesResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -347,7 +362,9 @@ type Dependence struct {
 
 type DescribeAvailableCvmInstanceTypesRequest struct {
 	*tchttp.BaseRequest
-	// 过滤条件
+	// 过滤条件。
+	// <li> zone - String - 是否必填：否 -（过滤条件）按照可用区过滤。</li>
+	// <li> instance-family String - 是否必填：否 -（过滤条件）按照机型系列过滤。实例机型系列形如：S1、I1、M1等。</li>
 	Filters []*Filter `json:"Filters" name:"Filters" list`
 }
 
@@ -365,7 +382,7 @@ type DescribeAvailableCvmInstanceTypesResponse struct {
 	Response *struct {
 		// 机型配置数组
 		InstanceTypeConfigSet []*InstanceTypeConfig `json:"InstanceTypeConfigSet" name:"InstanceTypeConfigSet" list`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -381,13 +398,14 @@ func (r *DescribeAvailableCvmInstanceTypesResponse) FromJsonString(s string) err
 
 type DescribeComputeEnvActivitiesRequest struct {
 	*tchttp.BaseRequest
-	// u8ba1u7b97u73afu5883ID
+	// 计算环境ID
 	EnvId *string `json:"EnvId" name:"EnvId"`
 	// 偏移量
 	Offset *int64 `json:"Offset" name:"Offset"`
 	// 返回数量
 	Limit *int64 `json:"Limit" name:"Limit"`
 	// 过滤条件
+	// <li> compute-node-id - String - 是否必填：否 -（过滤条件）按照计算节点ID过滤。</li>
 	Filters *Filter `json:"Filters" name:"Filters"`
 }
 
@@ -407,7 +425,7 @@ type DescribeComputeEnvActivitiesResponse struct {
 		ActivitySet []*Activity `json:"ActivitySet" name:"ActivitySet" list`
 		// 活动数量
 		TotalCount *uint64 `json:"TotalCount" name:"TotalCount"`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -459,7 +477,7 @@ type DescribeComputeEnvCreateInfoResponse struct {
 		Notifications []*Notification `json:"Notifications" name:"Notifications" list`
 		// 计算节点期望个数
 		DesiredComputeNodeCount *int64 `json:"DesiredComputeNodeCount" name:"DesiredComputeNodeCount"`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -504,7 +522,7 @@ type DescribeComputeEnvCreateInfosResponse struct {
 		TotalCount *int64 `json:"TotalCount" name:"TotalCount"`
 		// 计算环境创建信息列表
 		ComputeEnvCreateInfoSet []*ComputeEnvCreateInfo `json:"ComputeEnvCreateInfoSet" name:"ComputeEnvCreateInfoSet" list`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -552,7 +570,7 @@ type DescribeComputeEnvResponse struct {
 		DesiredComputeNodeCount *uint64 `json:"DesiredComputeNodeCount" name:"DesiredComputeNodeCount"`
 		// 计算环境类型
 		EnvType *string `json:"EnvType" name:"EnvType"`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -571,6 +589,9 @@ type DescribeComputeEnvsRequest struct {
 	// 计算环境ID
 	EnvIds []*string `json:"EnvIds" name:"EnvIds" list`
 	// 过滤条件
+	// <li> zone - String - 是否必填：否 -（过滤条件）按照可用区过滤。</li>
+	// <li> env-id - String - 是否必填：否 -（过滤条件）按照计算环境ID过滤。</li>
+	// <li> env-name - String - 是否必填：否 -（过滤条件）按照计算环境名称过滤。</li>
 	Filters []*Filter `json:"Filters" name:"Filters" list`
 	// 偏移量
 	Offset *uint64 `json:"Offset" name:"Offset"`
@@ -594,7 +615,7 @@ type DescribeComputeEnvsResponse struct {
 		ComputeEnvSet []*ComputeEnvView `json:"ComputeEnvSet" name:"ComputeEnvSet" list`
 		// 计算环境数量
 		TotalCount *int64 `json:"TotalCount" name:"TotalCount"`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -605,6 +626,44 @@ func (r *DescribeComputeEnvsResponse) ToJsonString() string {
 }
 
 func (r *DescribeComputeEnvsResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeCvmZoneInstanceConfigInfosRequest struct {
+	*tchttp.BaseRequest
+	// 过滤条件。
+	// <li> zone - String - 是否必填：否 -（过滤条件）按照可用区过滤。</li>
+	// <li> instance-family String - 是否必填：否 -（过滤条件）按照机型系列过滤。实例机型系列形如：S1、I1、M1等。</li>
+	// <li> instance-type - String - 是否必填：否 - （过滤条件）按照机型过滤。</li>
+	// <li> instance-charge-type - String - 是否必填：否 -（过滤条件）按照实例计费模式过滤。 ( POSTPAID_BY_HOUR：表示后付费，即按量计费机型 | SPOTPAID：表示竞价付费机型。 )  </li>
+	Filters []*Filter `json:"Filters" name:"Filters" list`
+}
+
+func (r *DescribeCvmZoneInstanceConfigInfosRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeCvmZoneInstanceConfigInfosRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeCvmZoneInstanceConfigInfosResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+		// 可用区机型配置列表。
+		InstanceTypeQuotaSet []*InstanceTypeQuotaItem `json:"InstanceTypeQuotaSet" name:"InstanceTypeQuotaSet" list`
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeCvmZoneInstanceConfigInfosResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeCvmZoneInstanceConfigInfosResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -648,7 +707,9 @@ type DescribeJobResponse struct {
 		TaskMetrics *TaskMetrics `json:"TaskMetrics" name:"TaskMetrics"`
 		// 任务实例统计指标
 		TaskInstanceMetrics *TaskInstanceView `json:"TaskInstanceMetrics" name:"TaskInstanceMetrics"`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 作业失败原因
+		StateReason *string `json:"StateReason" name:"StateReason"`
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -692,7 +753,7 @@ type DescribeJobSubmitInfoResponse struct {
 		Tasks []*Task `json:"Tasks" name:"Tasks" list`
 		// 依赖信息
 		Dependences []*Dependence `json:"Dependences" name:"Dependences" list`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -711,6 +772,10 @@ type DescribeJobsRequest struct {
 	// 作业ID
 	JobIds []*string `json:"JobIds" name:"JobIds" list`
 	// 过滤条件
+	// <li> job-id - String - 是否必填：否 -（过滤条件）按照作业ID过滤。</li>
+	// <li> job-name - String - 是否必填：否 -（过滤条件）按照作业名称过滤。</li>
+	// <li> job-state - String - 是否必填：否 -（过滤条件）按照作业状态过滤。</li>
+	// <li> zone - String - 是否必填：否 -（过滤条件）按照可用区过滤。</li>
 	Filters []*Filter `json:"Filters" name:"Filters" list`
 	// 偏移量
 	Offset *int64 `json:"Offset" name:"Offset"`
@@ -731,10 +796,10 @@ type DescribeJobsResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 		// 作业列表
-		JobSet *JobView `json:"JobSet" name:"JobSet"`
+		JobSet []*JobView `json:"JobSet" name:"JobSet" list`
 		// 符合条件的作业数量
 		TotalCount *int64 `json:"TotalCount" name:"TotalCount"`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -748,12 +813,63 @@ func (r *DescribeJobsResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeTaskLogsRequest struct {
+	*tchttp.BaseRequest
+	// 作业ID
+	JobId *string `json:"JobId" name:"JobId"`
+	// 任务名称
+	TaskName *string `json:"TaskName" name:"TaskName"`
+	// 任务实例集合
+	TaskInstanceIndexes []*uint64 `json:"TaskInstanceIndexes" name:"TaskInstanceIndexes" list`
+	// 起始任务实例
+	Offset *uint64 `json:"Offset" name:"Offset"`
+	// 最大任务实例数
+	Limit *uint64 `json:"Limit" name:"Limit"`
+}
+
+func (r *DescribeTaskLogsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeTaskLogsRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeTaskLogsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+		// 任务实例总数
+		TotalCount *uint64 `json:"TotalCount" name:"TotalCount"`
+		// 任务实例日志详情集合
+		TaskInstanceLogSet []*TaskInstanceLog `json:"TaskInstanceLogSet" name:"TaskInstanceLogSet" list`
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeTaskLogsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeTaskLogsResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeTaskRequest struct {
 	*tchttp.BaseRequest
 	// 作业ID
 	JobId *string `json:"JobId" name:"JobId"`
 	// 任务名称
 	TaskName *string `json:"TaskName" name:"TaskName"`
+	// 偏移量
+	Offset *uint64 `json:"Offset" name:"Offset"`
+	// 返回数量。默认取值100，最大取值1000。
+	Limit *uint64 `json:"Limit" name:"Limit"`
+	// 过滤条件，详情如下：
+	// <li> task-instance-type - String - 是否必填： 否 - 按照任务实例状态进行过滤（SUBMITTED：已提交；PENDING：等待中；RUNNABLE：可运行；STARTING：启动中；RUNNING：运行中；SUCCEED：成功；FAILED：失败；FAILED_INTERRUPTED：失败后保留实例）。</li>
+	Filters []*Filter `json:"Filters" name:"Filters" list`
 }
 
 func (r *DescribeTaskRequest) ToJsonString() string {
@@ -784,7 +900,7 @@ type DescribeTaskResponse struct {
 		TaskInstanceSet []*TaskInstanceView `json:"TaskInstanceSet" name:"TaskInstanceSet" list`
 		// 任务实例统计指标
 		TaskInstanceMetrics *TaskInstanceMetrics `json:"TaskInstanceMetrics" name:"TaskInstanceMetrics"`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -803,6 +919,7 @@ type DescribeTaskTemplatesRequest struct {
 	// 任务模板ID
 	TaskTemplateIds []*string `json:"TaskTemplateIds" name:"TaskTemplateIds" list`
 	// 过滤条件
+	// <li> task-template-name - String - 是否必填：否 -（过滤条件）按照任务模板名称过滤。</li>
 	Filters []*Filter `json:"Filters" name:"Filters" list`
 	// 偏移量
 	Offset *int64 `json:"Offset" name:"Offset"`
@@ -826,7 +943,7 @@ type DescribeTaskTemplatesResponse struct {
 		TaskTemplateSet []*TaskTemplateView `json:"TaskTemplateSet" name:"TaskTemplateSet" list`
 		// 任务模板数量
 		TotalCount *int64 `json:"TotalCount" name:"TotalCount"`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -845,21 +962,21 @@ type Docker struct {
 	User *string `json:"User" name:"User"`
 	// Docker Hub 密码或 Tencent Registry 密码
 	Password *string `json:"Password" name:"Password"`
-	// Docker Hub 可以不填，但确保具有公网访问能力。或者是 Tencent Registry 服务地址“ccr.ccs.tencentyun.com”
-	Server *string `json:"Server" name:"Server"`
 	// Docker Hub填写“[user/repo]:[tag]”，Tencent Registry填写“ccr.ccs.tencentyun.com/[namespace/repo]:[tag]”
 	Image *string `json:"Image" name:"Image"`
+	// Docker Hub 可以不填，但确保具有公网访问能力。或者是 Tencent Registry 服务地址“ccr.ccs.tencentyun.com”
+	Server *string `json:"Server" name:"Server"`
 }
 
 type EnhancedService struct {
 	// 开启云安全服务。若不指定该参数，则默认开启云安全服务。
 	SecurityService *RunSecurityServiceEnabled `json:"SecurityService" name:"SecurityService"`
-	// 开启云安全服务。若不指定该参数，则默认开启云监控服务。
+	// 开启云监控服务。若不指定该参数，则默认开启云监控服务。
 	MonitorService *RunMonitorServiceEnabled `json:"MonitorService" name:"MonitorService"`
 }
 
 type EnvData struct {
-	// CVM实例类型
+	// CVM实例类型，不能与InstanceTypes同时出现。
 	InstanceType *string `json:"InstanceType" name:"InstanceType"`
 	// CVM镜像ID
 	ImageId *string `json:"ImageId" name:"ImageId"`
@@ -879,6 +996,12 @@ type EnvData struct {
 	SecurityGroupIds []*string `json:"SecurityGroupIds" name:"SecurityGroupIds" list`
 	// 增强服务。通过该参数可以指定是否开启云安全、云监控等服务。若不指定该参数，则默认开启云监控、云安全服务。
 	EnhancedService *EnhancedService `json:"EnhancedService" name:"EnhancedService"`
+	// CVM实例计费类型<br><li>POSTPAID_BY_HOUR：按小时后付费<br><li>SPOTPAID：竞价付费<br>默认值：POSTPAID_BY_HOUR。
+	InstanceChargeType *string `json:"InstanceChargeType" name:"InstanceChargeType"`
+	// 实例的市场相关选项，如竞价实例相关参数
+	InstanceMarketOptions *InstanceMarketOptionsRequest `json:"InstanceMarketOptions" name:"InstanceMarketOptions"`
+	// CVM实例类型列表，不能与InstanceType同时出现。指定该字段后，计算节点按照机型先后顺序依次尝试创建，直到实例创建成功，结束遍历过程。最多支持10个机型。
+	InstanceTypes []*string `json:"InstanceTypes" name:"InstanceTypes" list`
 }
 
 type EnvVar struct {
@@ -902,6 +1025,15 @@ type EventVar struct {
 	Value *string `json:"Value" name:"Value"`
 }
 
+type Externals struct {
+	// 释放地址
+	ReleaseAddress *bool `json:"ReleaseAddress" name:"ReleaseAddress"`
+	// 不支持的网络类型
+	UnsupportNetworks []*string `json:"UnsupportNetworks" name:"UnsupportNetworks" list`
+	// HDD本地存储属性
+	StorageBlockAttr *StorageBlock `json:"StorageBlockAttr" name:"StorageBlockAttr"`
+}
+
 type Filter struct {
 	// 需要过滤的字段。
 	Name *string `json:"Name" name:"Name"`
@@ -918,27 +1050,65 @@ type InputMapping struct {
 	MountOptionParameter *string `json:"MountOptionParameter" name:"MountOptionParameter"`
 }
 
+type InstanceMarketOptionsRequest struct {
+	*tchttp.BaseRequest
+	// 市场选项类型，当前只支持取值：spot
+	MarketType *string `json:"MarketType" name:"MarketType"`
+	// 竞价相关选项
+	SpotOptions *SpotMarketOptions `json:"SpotOptions" name:"SpotOptions"`
+}
+
+func (r *InstanceMarketOptionsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *InstanceMarketOptionsRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type InstanceTypeConfig struct {
+	// 内存容量，单位：`GB`。
+	Mem *int64 `json:"Mem" name:"Mem"`
+	// CPU核数，单位：核。
+	Cpu *int64 `json:"Cpu" name:"Cpu"`
+	// 实例机型。
+	InstanceType *string `json:"InstanceType" name:"InstanceType"`
+	// 可用区。
+	Zone *string `json:"Zone" name:"Zone"`
+	// 实例机型系列。
+	InstanceFamily *string `json:"InstanceFamily" name:"InstanceFamily"`
+}
+
+type InstanceTypeQuotaItem struct {
 	// 可用区。
 	Zone *string `json:"Zone" name:"Zone"`
 	// 实例机型。
 	InstanceType *string `json:"InstanceType" name:"InstanceType"`
+	// 实例计费模式。取值范围： <br><li>PREPAID：表示预付费，即包年包月<br><li>POSTPAID_BY_HOUR：表示后付费，即按量计费<br><li>CDHPAID：表示[CDH](https://cloud.tencent.com/document/product/416)付费，即只对CDH计费，不对CDH上的实例计费。
+	InstanceChargeType *string `json:"InstanceChargeType" name:"InstanceChargeType"`
+	// 网卡类型，例如：25代表25G网卡
+	NetworkCard *int64 `json:"NetworkCard" name:"NetworkCard"`
+	// 扩展属性。
+	Externals *Externals `json:"Externals" name:"Externals"`
+	// 实例的CPU核数，单位：核。
+	Cpu *int64 `json:"Cpu" name:"Cpu"`
+	// 实例内存容量，单位：`GB`。
+	Memory *int64 `json:"Memory" name:"Memory"`
 	// 实例机型系列。
 	InstanceFamily *string `json:"InstanceFamily" name:"InstanceFamily"`
-	// GPU核数，单位：核。
-	GPU *int64 `json:"GPU" name:"GPU"`
-	// CPU核数，单位：核。
-	CPU *int64 `json:"CPU" name:"CPU"`
-	// 内存容量，单位：`GB`。
-	Memory *int64 `json:"Memory" name:"Memory"`
-	// 是否支持云硬盘。取值范围：<br><li>`TRUE`：表示支持云硬盘；<br><li>`FALSE`：表示不支持云硬盘。
-	CbsSupport *string `json:"CbsSupport" name:"CbsSupport"`
-	// 机型状态。取值范围：<br><li>`AVAILABLE`：表示机型可用；<br><li>`UNAVAILABLE`：表示机型不可用。
-	InstanceTypeState *string `json:"InstanceTypeState" name:"InstanceTypeState"`
+	// 机型名称。
+	TypeName *string `json:"TypeName" name:"TypeName"`
+	// 本地磁盘规格列表。
+	LocalDiskTypeList []*LocalDiskType `json:"LocalDiskTypeList" name:"LocalDiskTypeList" list`
+	// 实例是否售卖。
+	Status *string `json:"Status" name:"Status"`
+	// 实例的售卖价格。
+	Price *ItemPrice `json:"Price" name:"Price"`
 }
 
 type InternetAccessible struct {
-	// 网络计费类型。取值范围：<br><li>BANDWIDTH_PREPAID：预付费按带宽结算<br><li>TRAFFIC_POSTPAID_BY_HOUR：流量按小时后付费<br><li>BANDWIDTH_POSTPAID_BY_HOUR：带宽按小时后付费<br><li>BANDWIDTH_PACKAGE：带宽包用户<br>默认取值：TRAFFIC_POSTPAID_BY_HOUR。
+	// 网络计费类型。取值范围：<br><li>BANDWIDTH_PREPAID：预付费按带宽结算<br><li>TRAFFIC_POSTPAID_BY_HOUR：流量按小时后付费<br><li>BANDWIDTH_POSTPAID_BY_HOUR：带宽按小时后付费<br><li>BANDWIDTH_PACKAGE：带宽包用户<br>默认取值：非带宽包用户默认与子机付费类型保持一致。
 	InternetChargeType *string `json:"InternetChargeType" name:"InternetChargeType"`
 	// 公网出带宽上限，单位：Mbps。默认值：0Mbps。不同机型带宽上限范围不一致，具体限制详见[购买网络带宽](/document/product/213/509)。
 	InternetMaxBandwidthOut *int64 `json:"InternetMaxBandwidthOut" name:"InternetMaxBandwidthOut"`
@@ -946,21 +1116,34 @@ type InternetAccessible struct {
 	PublicIpAssigned *bool `json:"PublicIpAssigned" name:"PublicIpAssigned"`
 }
 
+type ItemPrice struct {
+	// 后续单价，单位：元。
+	UnitPrice *float64 `json:"UnitPrice" name:"UnitPrice"`
+	// 后续计价单元，可取值范围： <br><li>HOUR：表示计价单元是按每小时来计算。当前涉及该计价单元的场景有：实例按小时后付费（POSTPAID_BY_HOUR）、带宽按小时后付费（BANDWIDTH_POSTPAID_BY_HOUR）：<br><li>GB：表示计价单元是按每GB来计算。当前涉及该计价单元的场景有：流量按小时后付费（TRAFFIC_POSTPAID_BY_HOUR）。
+	ChargeUnit *string `json:"ChargeUnit" name:"ChargeUnit"`
+	// 预支费用的原价，单位：元。
+	OriginalPrice *float64 `json:"OriginalPrice" name:"OriginalPrice"`
+	// 预支费用的折扣价，单位：元。
+	DiscountPrice *float64 `json:"DiscountPrice" name:"DiscountPrice"`
+}
+
 type Job struct {
+	// 任务信息
+	Tasks []*Task `json:"Tasks" name:"Tasks" list`
 	// 作业名称
 	JobName *string `json:"JobName" name:"JobName"`
 	// 作业描述
 	JobDescription *string `json:"JobDescription" name:"JobDescription"`
 	// 作业优先级，任务（Task）和任务实例（TaskInstance）会继承作业优先级
 	Priority *uint64 `json:"Priority" name:"Priority"`
-	// 任务信息
-	Tasks []*Task `json:"Tasks" name:"Tasks" list`
 	// 依赖信息
 	Dependences []*Dependence `json:"Dependences" name:"Dependences" list`
 	// 通知信息
 	Notifications []*Notification `json:"Notifications" name:"Notifications" list`
 	// 对于存在依赖关系的任务中，后序任务执行对于前序任务的依赖条件。取值范围包括 PRE_TASK_SUCCEED，PRE_TASK_AT_LEAST_PARTLY_SUCCEED，PRE_TASK_FINISHED，默认值为PRE_TASK_SUCCEED。
 	TaskExecutionDependOn *string `json:"TaskExecutionDependOn" name:"TaskExecutionDependOn"`
+	// 表示创建 CVM 失败按照何种策略处理。取值范围包括 FAILED，RUNNABLE。FAILED 表示创建 CVM 失败按照一次执行失败处理，RUNNABLE 表示创建 CVM 失败按照继续等待处理。默认值为FAILED。StateIfCreateCvmFailed对于提交的指定计算环境的作业无效。
+	StateIfCreateCvmFailed *string `json:"StateIfCreateCvmFailed" name:"StateIfCreateCvmFailed"`
 }
 
 type JobView struct {
@@ -982,6 +1165,17 @@ type JobView struct {
 	TaskMetrics *TaskMetrics `json:"TaskMetrics" name:"TaskMetrics"`
 }
 
+type LocalDiskType struct {
+	// 本地磁盘类型。
+	Type *string `json:"Type" name:"Type"`
+	// 本地磁盘属性。
+	PartitionType *string `json:"PartitionType" name:"PartitionType"`
+	// 本地磁盘最小值。
+	MinSize *int64 `json:"MinSize" name:"MinSize"`
+	// 本地磁盘最大值。
+	MaxSize *int64 `json:"MaxSize" name:"MaxSize"`
+}
+
 type LoginSettings struct {
 	// 实例登录密码。不同操作系统类型密码复杂度限制不一样，具体如下：<br><li>Linux实例密码必须8到16位，至少包括两项[a-z，A-Z]、[0-9] 和 [( ) ` ~ ! @ # $ % ^ & * - + = | { } [ ] : ; ' , . ? / ]中的特殊符号。<br><li>Windows实例密码必须12到16位，至少包括三项[a-z]，[A-Z]，[0-9] 和 [( ) ` ~ ! @ # $ % ^ & * - + = { } [ ] : ; ' , . ? /]中的特殊符号。<br><br>若不指定该参数，则由系统随机生成密码，并通过站内信方式通知到用户。
 	Password *string `json:"Password" name:"Password"`
@@ -997,6 +1191,12 @@ type ModifyComputeEnvRequest struct {
 	EnvId *string `json:"EnvId" name:"EnvId"`
 	// 计算节点期望个数
 	DesiredComputeNodeCount *int64 `json:"DesiredComputeNodeCount" name:"DesiredComputeNodeCount"`
+	// 计算环境名称
+	EnvName *string `json:"EnvName" name:"EnvName"`
+	// 计算环境描述
+	EnvDescription *string `json:"EnvDescription" name:"EnvDescription"`
+	// 计算环境属性数据
+	EnvData *ComputeEnvData `json:"EnvData" name:"EnvData"`
 }
 
 func (r *ModifyComputeEnvRequest) ToJsonString() string {
@@ -1011,7 +1211,7 @@ func (r *ModifyComputeEnvRequest) FromJsonString(s string) error {
 type ModifyComputeEnvResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -1049,7 +1249,7 @@ func (r *ModifyTaskTemplateRequest) FromJsonString(s string) error {
 type ModifyTaskTemplateResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -1064,23 +1264,23 @@ func (r *ModifyTaskTemplateResponse) FromJsonString(s string) error {
 }
 
 type MountDataDisk struct {
-	// 文件系统类型，Linux系统下支持"EXT3"和"EXT4"两种，默认"EXT3"；Windows系统下仅支持"NTFS"
-	FileSystemType *string `json:"FileSystemType" name:"FileSystemType"`
 	// 挂载点，Linux系统合法路径，或Windows系统盘符,比如"H:\\"
 	LocalPath *string `json:"LocalPath" name:"LocalPath"`
+	// 文件系统类型，Linux系统下支持"EXT3"和"EXT4"两种，默认"EXT3"；Windows系统下仅支持"NTFS"
+	FileSystemType *string `json:"FileSystemType" name:"FileSystemType"`
 }
 
 type NamedComputeEnv struct {
 	// 计算环境名称
 	EnvName *string `json:"EnvName" name:"EnvName"`
+	// 计算节点期望个数
+	DesiredComputeNodeCount *int64 `json:"DesiredComputeNodeCount" name:"DesiredComputeNodeCount"`
 	// 计算环境描述
 	EnvDescription *string `json:"EnvDescription" name:"EnvDescription"`
 	// 计算环境管理类型
 	EnvType *string `json:"EnvType" name:"EnvType"`
 	// 计算环境具体参数
 	EnvData *EnvData `json:"EnvData" name:"EnvData"`
-	// 计算节点期望个数
-	DesiredComputeNodeCount *int64 `json:"DesiredComputeNodeCount" name:"DesiredComputeNodeCount"`
 	// 数据盘挂载选项
 	MountDataDisks []*MountDataDisk `json:"MountDataDisks" name:"MountDataDisks" list`
 	// 授权信息
@@ -1091,6 +1291,8 @@ type NamedComputeEnv struct {
 	AgentRunningMode *AgentRunningMode `json:"AgentRunningMode" name:"AgentRunningMode"`
 	// 通知信息
 	Notifications *Notification `json:"Notifications" name:"Notifications"`
+	// 非活跃节点处理策略，默认“RECREATE”，即对于实例创建失败或异常退还的计算节点，定期重新创建实例资源。
+	ActionIfComputeNodeInactive *string `json:"ActionIfComputeNodeInactive" name:"ActionIfComputeNodeInactive"`
 }
 
 type Notification struct {
@@ -1121,7 +1323,7 @@ type Placement struct {
 	Zone *string `json:"Zone" name:"Zone"`
 	// 实例所属项目ID。该参数可以通过调用 [DescribeProject](/document/api/378/4400) 的返回值中的 projectId 字段来获取。不填为默认项目。
 	ProjectId *int64 `json:"ProjectId" name:"ProjectId"`
-	// 实例所属的专用宿主机ID列表。如果您有购买专用宿主机并且指定了该参数，则您购买的实例就会随机的部署在这些专用宿主机上。当前暂不支持。
+	// 实例所属的专用宿主机ID列表。如果您有购买专用宿主机并且指定了该参数，则您购买的实例就会随机的部署在这些专用宿主机上。
 	HostIds []*string `json:"HostIds" name:"HostIds" list`
 }
 
@@ -1157,10 +1359,26 @@ type RunSecurityServiceEnabled struct {
 	Enabled *bool `json:"Enabled" name:"Enabled"`
 }
 
+type SpotMarketOptions struct {
+	// 竞价出价
+	MaxPrice *string `json:"MaxPrice" name:"MaxPrice"`
+	// 竞价请求类型，当前仅支持类型：one-time
+	SpotInstanceType *string `json:"SpotInstanceType" name:"SpotInstanceType"`
+}
+
+type StorageBlock struct {
+	// HDD本地存储类型，值为：LOCAL_PRO.
+	Type *string `json:"Type" name:"Type"`
+	// HDD本地存储的最小容量
+	MinSize *int64 `json:"MinSize" name:"MinSize"`
+	// HDD本地存储的最大容量
+	MaxSize *int64 `json:"MaxSize" name:"MaxSize"`
+}
+
 type SubmitJobRequest struct {
 	*tchttp.BaseRequest
 	// 作业所提交的位置信息。通过该参数可以指定作业关联CVM所属可用区等信息。
-	Placement []*Placement `json:"Placement" name:"Placement" list`
+	Placement *Placement `json:"Placement" name:"Placement"`
 	// 作业信息
 	Job *Job `json:"Job" name:"Job"`
 	// 用于保证请求幂等性的字符串。该字符串由用户生成，需保证不同请求之间唯一，最大值不超过64个ASCII字符。若不指定该参数，则无法保证请求的幂等性。
@@ -1181,7 +1399,7 @@ type SubmitJobResponse struct {
 	Response *struct {
 		// 当通过本接口来提交作业时会返回该参数，表示一个作业ID。返回作业ID列表并不代表作业解析/运行成功，可根据 DescribeJob 接口查询其状态。
 		JobId *string `json:"JobId" name:"JobId"`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -1196,7 +1414,7 @@ func (r *SubmitJobResponse) FromJsonString(s string) error {
 }
 
 type SystemDisk struct {
-	// 系统盘类型。系统盘类型限制详见[CVM实例配置](/document/product/213/2177)。取值范围：<br><li>LOCAL_BASIC：本地硬盘<br><li>LOCAL_SSD：本地SSD硬盘<br><li>CLOUD_BASIC：普通云硬盘<br><li>CLOUD_SSD：SSD云硬盘<br><br>默认取值：LOCAL_BASIC。
+	// 系统盘类型。系统盘类型限制详见[CVM实例配置](/document/product/213/2177)。取值范围：<br><li>LOCAL_BASIC：本地硬盘<br><li>LOCAL_SSD：本地SSD硬盘<br><li>CLOUD_BASIC：普通云硬盘<br><li>CLOUD_SSD：SSD云硬盘<br><li>CLOUD_PREMIUM：高性能云硬盘<br><br>默认取值：CLOUD_BASIC。
 	DiskType *string `json:"DiskType" name:"DiskType"`
 	// 系统盘ID。LOCAL_BASIC 和 LOCAL_SSD 类型没有ID。暂时不支持该参数。
 	DiskId *string `json:"DiskId" name:"DiskId"`
@@ -1205,12 +1423,12 @@ type SystemDisk struct {
 }
 
 type Task struct {
+	// 应用程序信息
+	Application *Application `json:"Application" name:"Application"`
 	// 任务名称，在一个作业内部唯一
 	TaskName *string `json:"TaskName" name:"TaskName"`
 	// 任务实例运行个数
 	TaskInstanceNum *uint64 `json:"TaskInstanceNum" name:"TaskInstanceNum"`
-	// 应用程序信息
-	Application *Application `json:"Application" name:"Application"`
 	// 运行环境信息，ComputeEnv 和 EnvId 必须指定一个（且只有一个）参数。
 	ComputeEnv *AnonymousComputeEnv `json:"ComputeEnv" name:"ComputeEnv"`
 	// 计算环境ID，ComputeEnv 和 EnvId 必须指定一个（且只有一个）参数。
@@ -1226,15 +1444,32 @@ type Task struct {
 	// 输出映射配置
 	OutputMappingConfigs []*OutputMappingConfig `json:"OutputMappingConfigs" name:"OutputMappingConfigs" list`
 	// 自定义环境变量
-	EnvVars []*Authentication `json:"EnvVars" name:"EnvVars" list`
+	EnvVars []*EnvVar `json:"EnvVars" name:"EnvVars" list`
 	// 授权信息
-	Authentications []*EnvVar `json:"Authentications" name:"Authentications" list`
+	Authentications []*Authentication `json:"Authentications" name:"Authentications" list`
 	// TaskInstance失败后处理方式，取值包括TERMINATE（默认）、INTERRUPT、FAST_INTERRUPT。
 	FailedAction *string `json:"FailedAction" name:"FailedAction"`
 	// 任务失败后的最大重试次数，默认为0
 	MaxRetryCount *uint64 `json:"MaxRetryCount" name:"MaxRetryCount"`
-	// 任务启动后的超时时间，单位秒，默认为3600秒
+	// 任务启动后的超时时间，单位秒，默认为86400秒
 	Timeout *uint64 `json:"Timeout" name:"Timeout"`
+}
+
+type TaskInstanceLog struct {
+	// 任务实例
+	TaskInstanceIndex *uint64 `json:"TaskInstanceIndex" name:"TaskInstanceIndex"`
+	// 标准输出日志（Base64编码）
+	StdoutLog *string `json:"StdoutLog" name:"StdoutLog"`
+	// 标准错误日志（Base64编码）
+	StderrLog *string `json:"StderrLog" name:"StderrLog"`
+	// 标准输出重定向路径
+	StdoutRedirectPath *string `json:"StdoutRedirectPath" name:"StdoutRedirectPath"`
+	// 标准错误重定向路径
+	StderrRedirectPath *string `json:"StderrRedirectPath" name:"StderrRedirectPath"`
+	// 标准输出重定向文件名
+	StdoutRedirectFileName *string `json:"StdoutRedirectFileName" name:"StdoutRedirectFileName"`
+	// 标准错误重定向文件名
+	StderrRedirectFileName *string `json:"StderrRedirectFileName" name:"StderrRedirectFileName"`
 }
 
 type TaskInstanceMetrics struct {
@@ -1277,6 +1512,8 @@ type TaskInstanceView struct {
 	EndTime *string `json:"EndTime" name:"EndTime"`
 	// 重定向信息
 	RedirectInfo *RedirectInfo `json:"RedirectInfo" name:"RedirectInfo"`
+	// 任务实例状态原因详情，任务实例失败时，会记录失败原因
+	StateDetailedReason *string `json:"StateDetailedReason" name:"StateDetailedReason"`
 }
 
 type TaskMetrics struct {
@@ -1342,7 +1579,7 @@ func (r *TerminateComputeNodeRequest) FromJsonString(s string) error {
 type TerminateComputeNodeResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -1353,6 +1590,40 @@ func (r *TerminateComputeNodeResponse) ToJsonString() string {
 }
 
 func (r *TerminateComputeNodeResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type TerminateComputeNodesRequest struct {
+	*tchttp.BaseRequest
+	// 计算环境ID
+	EnvId *string `json:"EnvId" name:"EnvId"`
+	// 计算节点ID列表
+	ComputeNodeIds []*string `json:"ComputeNodeIds" name:"ComputeNodeIds" list`
+}
+
+func (r *TerminateComputeNodesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *TerminateComputeNodesRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type TerminateComputeNodesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *TerminateComputeNodesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *TerminateComputeNodesResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -1374,7 +1645,7 @@ func (r *TerminateJobRequest) FromJsonString(s string) error {
 type TerminateJobResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -1410,7 +1681,7 @@ func (r *TerminateTaskInstanceRequest) FromJsonString(s string) error {
 type TerminateTaskInstanceResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -1427,10 +1698,10 @@ func (r *TerminateTaskInstanceResponse) FromJsonString(s string) error {
 type VirtualPrivateCloud struct {
 	// 私有网络ID，形如`vpc-xxx`。有效的VpcId可通过登录[控制台](https://console.cloud.tencent.com/vpc/vpc?rid=1)查询；也可以调用接口 [DescribeVpcEx](/document/api/215/1372) ，从接口返回中的`unVpcId`字段获取。
 	VpcId *string `json:"VpcId" name:"VpcId"`
-	// 私有网络子网ID，形如`subnet-xxx`。有效的私有网络子网ID可通过登录[控制台](https://console.cloud.tencent.com/vpc/subnet?rid=1)查询；也可以调用接口  [DescribeSubnetEx](/document/api/215/1371) ，从接口返回中的`unSubnetId`字段获取。
+	// 私有网络子网ID，形如`subnet-xxx`。有效的私有网络子网ID可通过登录[控制台](https://console.cloud.tencent.com/vpc/subnet?rid=1)查询；也可以调用接口  [DescribeSubnets](/document/api/215/15784) ，从接口返回中的`unSubnetId`字段获取。
 	SubnetId *string `json:"SubnetId" name:"SubnetId"`
 	// 是否用作公网网关。公网网关只有在实例拥有公网IP以及处于私有网络下时才能正常使用。取值范围：<br><li>TRUE：表示用作公网网关<br><li>FALSE：表示不用作公网网关<br><br>默认取值：FALSE。
 	AsVpcGateway *bool `json:"AsVpcGateway" name:"AsVpcGateway"`
-	// 私有子网ip数组，目前只支持一个ip。在创建实例、修改实例vpc属性操作中可使用此参数。
+	// 私有网络子网 IP 数组，在创建实例、修改实例vpc属性操作中可使用此参数。当前仅批量创建多台实例时支持传入相同子网的多个 IP。
 	PrivateIpAddresses []*string `json:"PrivateIpAddresses" name:"PrivateIpAddresses" list`
 }

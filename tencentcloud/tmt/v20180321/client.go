@@ -1,4 +1,4 @@
-// Copyright 1999-2018 Tencent Ltd.
+// Copyright (c) 2017-2018 THL A29 Limited, a Tencent company. All Rights Reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -11,6 +11,7 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
+
 package v20180321
 
 import (
@@ -26,8 +27,9 @@ type Client struct {
 }
 
 func NewClientWithSecretId(secretId, secretKey, region string) (client *Client, err error) {
+    cpf := profile.NewClientProfile()
     client = &Client{}
-    client.Init(region).WithSecretId(secretId, secretKey)
+    client.Init(region).WithSecretId(secretId, secretKey).WithProfile(cpf)
     return
 }
 
@@ -39,6 +41,31 @@ func NewClient(credential *common.Credential, region string, clientProfile *prof
     return
 }
 
+
+func NewImageTranslateRequest() (request *ImageTranslateRequest) {
+    request = &ImageTranslateRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tmt", APIVersion, "ImageTranslate")
+    return
+}
+
+func NewImageTranslateResponse() (response *ImageTranslateResponse) {
+    response = &ImageTranslateResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 提供中文到英文、英文到中文两种语言的图片翻译服务，可自动识别图片中的文本内容并翻译成目标语言，识别后的文本按行翻译，后续会提供可按段落翻译的版本
+func (c *Client) ImageTranslate(request *ImageTranslateRequest) (response *ImageTranslateResponse, err error) {
+    if request == nil {
+        request = NewImageTranslateRequest()
+    }
+    response = NewImageTranslateResponse()
+    err = c.Send(request, response)
+    return
+}
 
 func NewLanguageDetectRequest() (request *LanguageDetectRequest) {
     request = &LanguageDetectRequest{
@@ -55,7 +82,7 @@ func NewLanguageDetectResponse() (response *LanguageDetectResponse) {
     return
 }
 
-// 可自动识别文本内容的语言种类，轻量高效，无需额外实现判断方式，使面向客户的服务体验更佳。
+// 可自动识别文本内容的语言种类，轻量高效，无需额外实现判断方式，使面向客户的服务体验更佳。 
 func (c *Client) LanguageDetect(request *LanguageDetectRequest) (response *LanguageDetectResponse, err error) {
     if request == nil {
         request = NewLanguageDetectRequest()

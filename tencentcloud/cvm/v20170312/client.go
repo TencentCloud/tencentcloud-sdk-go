@@ -1,4 +1,4 @@
-// Copyright 1999-2018 Tencent Ltd.
+// Copyright (c) 2017-2018 THL A29 Limited, a Tencent company. All Rights Reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -11,6 +11,7 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
+
 package v20170312
 
 import (
@@ -26,8 +27,9 @@ type Client struct {
 }
 
 func NewClientWithSecretId(secretId, secretKey, region string) (client *Client, err error) {
+    cpf := profile.NewClientProfile()
     client = &Client{}
-    client.Init(region).WithSecretId(secretId, secretKey)
+    client.Init(region).WithSecretId(secretId, secretKey).WithProfile(cpf)
     return
 }
 
@@ -96,6 +98,31 @@ func (c *Client) AssociateInstancesKeyPairs(request *AssociateInstancesKeyPairsR
     return
 }
 
+func NewCreateDisasterRecoverGroupRequest() (request *CreateDisasterRecoverGroupRequest) {
+    request = &CreateDisasterRecoverGroupRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cvm", APIVersion, "CreateDisasterRecoverGroup")
+    return
+}
+
+func NewCreateDisasterRecoverGroupResponse() (response *CreateDisasterRecoverGroupResponse) {
+    response = &CreateDisasterRecoverGroupResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口 (CreateDisasterRecoverGroup)用于创建[分散置放群组](https://cloud.tencent.com/document/product/213/15486)。创建好的置放群组，可在[创建实例](https://cloud.tencent.com/document/api/213/15730)时指定。
+func (c *Client) CreateDisasterRecoverGroup(request *CreateDisasterRecoverGroupRequest) (response *CreateDisasterRecoverGroupResponse, err error) {
+    if request == nil {
+        request = NewCreateDisasterRecoverGroupRequest()
+    }
+    response = NewCreateDisasterRecoverGroupResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateImageRequest() (request *CreateImageRequest) {
     request = &CreateImageRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -147,6 +174,31 @@ func (c *Client) CreateKeyPair(request *CreateKeyPairRequest) (response *CreateK
         request = NewCreateKeyPairRequest()
     }
     response = NewCreateKeyPairResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteDisasterRecoverGroupsRequest() (request *DeleteDisasterRecoverGroupsRequest) {
+    request = &DeleteDisasterRecoverGroupsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cvm", APIVersion, "DeleteDisasterRecoverGroups")
+    return
+}
+
+func NewDeleteDisasterRecoverGroupsResponse() (response *DeleteDisasterRecoverGroupsResponse) {
+    response = &DeleteDisasterRecoverGroupsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口 (DeleteDisasterRecoverGroups)用于删除[分散置放群组](https://cloud.tencent.com/document/product/213/15486)。只有空的置放群组才能被删除，非空的群组需要先销毁组内所有云主机，才能执行删除操作，不然会产生删除置放群组失败的错误。
+func (c *Client) DeleteDisasterRecoverGroups(request *DeleteDisasterRecoverGroupsRequest) (response *DeleteDisasterRecoverGroupsResponse, err error) {
+    if request == nil {
+        request = NewDeleteDisasterRecoverGroupsRequest()
+    }
+    response = NewDeleteDisasterRecoverGroupsResponse()
     err = c.Send(request, response)
     return
 }
@@ -204,6 +256,56 @@ func (c *Client) DeleteKeyPairs(request *DeleteKeyPairsRequest) (response *Delet
         request = NewDeleteKeyPairsRequest()
     }
     response = NewDeleteKeyPairsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeDisasterRecoverGroupQuotaRequest() (request *DescribeDisasterRecoverGroupQuotaRequest) {
+    request = &DescribeDisasterRecoverGroupQuotaRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cvm", APIVersion, "DescribeDisasterRecoverGroupQuota")
+    return
+}
+
+func NewDescribeDisasterRecoverGroupQuotaResponse() (response *DescribeDisasterRecoverGroupQuotaResponse) {
+    response = &DescribeDisasterRecoverGroupQuotaResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口 (DescribeDisasterRecoverGroupQuota)用于查询[分散置放群组](https://cloud.tencent.com/document/product/213/15486)配额。
+func (c *Client) DescribeDisasterRecoverGroupQuota(request *DescribeDisasterRecoverGroupQuotaRequest) (response *DescribeDisasterRecoverGroupQuotaResponse, err error) {
+    if request == nil {
+        request = NewDescribeDisasterRecoverGroupQuotaRequest()
+    }
+    response = NewDescribeDisasterRecoverGroupQuotaResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeDisasterRecoverGroupsRequest() (request *DescribeDisasterRecoverGroupsRequest) {
+    request = &DescribeDisasterRecoverGroupsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cvm", APIVersion, "DescribeDisasterRecoverGroups")
+    return
+}
+
+func NewDescribeDisasterRecoverGroupsResponse() (response *DescribeDisasterRecoverGroupsResponse) {
+    response = &DescribeDisasterRecoverGroupsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口 (DescribeDisasterRecoverGroups)用于查询[分散置放群组](https://cloud.tencent.com/document/product/213/15486)信息。
+func (c *Client) DescribeDisasterRecoverGroups(request *DescribeDisasterRecoverGroupsRequest) (response *DescribeDisasterRecoverGroupsResponse, err error) {
+    if request == nil {
+        request = NewDescribeDisasterRecoverGroupsRequest()
+    }
+    response = NewDescribeDisasterRecoverGroupsResponse()
     err = c.Send(request, response)
     return
 }
@@ -273,7 +375,7 @@ func NewDescribeImageSharePermissionResponse() (response *DescribeImageSharePerm
     return
 }
 
-// 本接口（ModifyImageSharePermission）用于修改镜像分享信息。
+// 本接口（DescribeImageSharePermission）用于查询镜像分享信息。
 func (c *Client) DescribeImageSharePermission(request *DescribeImageSharePermissionRequest) (response *DescribeImageSharePermissionResponse, err error) {
     if request == nil {
         request = NewDescribeImageSharePermissionRequest()
@@ -389,31 +491,6 @@ func (c *Client) DescribeInstanceInternetBandwidthConfigs(request *DescribeInsta
     return
 }
 
-func NewDescribeInstanceOperationLogsRequest() (request *DescribeInstanceOperationLogsRequest) {
-    request = &DescribeInstanceOperationLogsRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    request.Init().WithApiInfo("cvm", APIVersion, "DescribeInstanceOperationLogs")
-    return
-}
-
-func NewDescribeInstanceOperationLogsResponse() (response *DescribeInstanceOperationLogsResponse) {
-    response = &DescribeInstanceOperationLogsResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    }
-    return
-}
-
-// 本接口（DescribeInstanceOperationLogs）查询指定实例操作记录。
-func (c *Client) DescribeInstanceOperationLogs(request *DescribeInstanceOperationLogsRequest) (response *DescribeInstanceOperationLogsResponse, err error) {
-    if request == nil {
-        request = NewDescribeInstanceOperationLogsRequest()
-    }
-    response = NewDescribeInstanceOperationLogsResponse()
-    err = c.Send(request, response)
-    return
-}
-
 func NewDescribeInstanceTypeConfigsRequest() (request *DescribeInstanceTypeConfigsRequest) {
     request = &DescribeInstanceTypeConfigsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -438,6 +515,44 @@ func (c *Client) DescribeInstanceTypeConfigs(request *DescribeInstanceTypeConfig
         request = NewDescribeInstanceTypeConfigsRequest()
     }
     response = NewDescribeInstanceTypeConfigsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeInstanceVncUrlRequest() (request *DescribeInstanceVncUrlRequest) {
+    request = &DescribeInstanceVncUrlRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cvm", APIVersion, "DescribeInstanceVncUrl")
+    return
+}
+
+func NewDescribeInstanceVncUrlResponse() (response *DescribeInstanceVncUrlResponse) {
+    response = &DescribeInstanceVncUrlResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口 ( DescribeInstanceVncUrl ) 用于查询实例管理终端地址。
+// 
+// * 处于 `STOPPED` 状态的机器无法使用此功能。
+// * 管理终端地址的有效期为 15 秒，调用接口成功后如果 15 秒内不使用该链接进行访问，管理终端地址自动失效，您需要重新查询。
+// * 管理终端地址一旦被访问，将自动失效，您需要重新查询。
+// * 如果连接断开，每分钟内重新连接的次数不能超过 30 次。
+// * 获取到 `InstanceVncUrl` 后，您需要在在链接 <https://img.qcloud.com/qcloud/app/active_vnc/index.html?> 末尾加上参数 `InstanceVncUrl=xxxx`  。
+//   - 参数 `InstanceVncUrl` ：调用接口成功后会返回的 `InstanceVncUrl` 的值。
+// 
+//     最后组成的 URL 格式如下：
+// 
+// ```
+// https://img.qcloud.com/qcloud/app/active_vnc/index.html?InstanceVncUrl=wss%3A%2F%2Fbjvnc.qcloud.com%3A26789%2Fvnc%3Fs%3DaHpjWnRVMFNhYmxKdDM5MjRHNlVTSVQwajNUSW0wb2tBbmFtREFCTmFrcy8vUUNPMG0wSHZNOUUxRm5PMmUzWmFDcWlOdDJIbUJxSTZDL0RXcHZxYnZZMmRkWWZWcEZia2lyb09XMzdKNmM9
+// ```
+func (c *Client) DescribeInstanceVncUrl(request *DescribeInstanceVncUrlRequest) (response *DescribeInstanceVncUrlResponse, err error) {
+    if request == nil {
+        request = NewDescribeInstanceVncUrlRequest()
+    }
+    response = NewDescribeInstanceVncUrlResponse()
     err = c.Send(request, response)
     return
 }
@@ -513,7 +628,7 @@ func NewDescribeInternetChargeTypeConfigsResponse() (response *DescribeInternetC
     return
 }
 
-// 查询网络计费的类型
+// 本接口（DescribeInternetChargeTypeConfigs）用于查询网络的计费类型。
 func (c *Client) DescribeInternetChargeTypeConfigs(request *DescribeInternetChargeTypeConfigsRequest) (response *DescribeInternetChargeTypeConfigsResponse, err error) {
     if request == nil {
         request = NewDescribeInternetChargeTypeConfigsRequest()
@@ -571,6 +686,31 @@ func (c *Client) DescribeRegions(request *DescribeRegionsRequest) (response *Des
         request = NewDescribeRegionsRequest()
     }
     response = NewDescribeRegionsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeZoneInstanceConfigInfosRequest() (request *DescribeZoneInstanceConfigInfosRequest) {
+    request = &DescribeZoneInstanceConfigInfosRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cvm", APIVersion, "DescribeZoneInstanceConfigInfos")
+    return
+}
+
+func NewDescribeZoneInstanceConfigInfosResponse() (response *DescribeZoneInstanceConfigInfosResponse) {
+    response = &DescribeZoneInstanceConfigInfosResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口(DescribeZoneInstanceConfigInfos) 获取可用区的机型信息。
+func (c *Client) DescribeZoneInstanceConfigInfos(request *DescribeZoneInstanceConfigInfosRequest) (response *DescribeZoneInstanceConfigInfosResponse, err error) {
+    if request == nil {
+        request = NewDescribeZoneInstanceConfigInfosRequest()
+    }
+    response = NewDescribeZoneInstanceConfigInfosResponse()
     err = c.Send(request, response)
     return
 }
@@ -680,6 +820,34 @@ func (c *Client) ImportKeyPair(request *ImportKeyPairRequest) (response *ImportK
         request = NewImportKeyPairRequest()
     }
     response = NewImportKeyPairResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewInquiryPriceModifyInstancesChargeTypeRequest() (request *InquiryPriceModifyInstancesChargeTypeRequest) {
+    request = &InquiryPriceModifyInstancesChargeTypeRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cvm", APIVersion, "InquiryPriceModifyInstancesChargeType")
+    return
+}
+
+func NewInquiryPriceModifyInstancesChargeTypeResponse() (response *InquiryPriceModifyInstancesChargeTypeResponse) {
+    response = &InquiryPriceModifyInstancesChargeTypeResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口 (InquiryPriceModifyInstancesChargeType) 用于切换实例的计费模式询价。
+// 
+// * 只支持从 `POSTPAID_BY_HOUR` 计费模式切换为`PREPAID`计费模式。
+// * 关机不收费的实例、`BC1`和`BS1`机型族的实例、设置定时销毁的实例不支持该操作。
+func (c *Client) InquiryPriceModifyInstancesChargeType(request *InquiryPriceModifyInstancesChargeTypeRequest) (response *InquiryPriceModifyInstancesChargeTypeResponse, err error) {
+    if request == nil {
+        request = NewInquiryPriceModifyInstancesChargeTypeRequest()
+    }
+    response = NewInquiryPriceModifyInstancesChargeTypeResponse()
     err = c.Send(request, response)
     return
 }
@@ -851,6 +1019,31 @@ func (c *Client) InquiryPriceRunInstances(request *InquiryPriceRunInstancesReque
     return
 }
 
+func NewModifyDisasterRecoverGroupAttributeRequest() (request *ModifyDisasterRecoverGroupAttributeRequest) {
+    request = &ModifyDisasterRecoverGroupAttributeRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cvm", APIVersion, "ModifyDisasterRecoverGroupAttribute")
+    return
+}
+
+func NewModifyDisasterRecoverGroupAttributeResponse() (response *ModifyDisasterRecoverGroupAttributeResponse) {
+    response = &ModifyDisasterRecoverGroupAttributeResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口 (ModifyDisasterRecoverGroupAttribute)用于修改[分散置放群组](https://cloud.tencent.com/document/product/213/15486)属性。
+func (c *Client) ModifyDisasterRecoverGroupAttribute(request *ModifyDisasterRecoverGroupAttributeRequest) (response *ModifyDisasterRecoverGroupAttributeResponse, err error) {
+    if request == nil {
+        request = NewModifyDisasterRecoverGroupAttributeRequest()
+    }
+    response = NewModifyDisasterRecoverGroupAttributeResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyHostsAttributeRequest() (request *ModifyHostsAttributeRequest) {
     request = &ModifyHostsAttributeRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -948,15 +1141,44 @@ func NewModifyInstancesAttributeResponse() (response *ModifyInstancesAttributeRe
     return
 }
 
-// 本接口 (ModifyInstancesAttribute) 用于修改实例的属性（目前只支持修改实例的名称）。
+// 本接口 (ModifyInstancesAttribute) 用于修改实例的属性（目前只支持修改实例的名称和关联的安全组）。
 // 
 // * “实例名称”仅为方便用户自己管理之用，腾讯云并不以此名称作为提交工单或是进行实例管理操作的依据。
 // * 支持批量操作。每次请求批量实例的上限为100。
+// * 修改关联安全组时，子机原来关联的安全组会被解绑。
 func (c *Client) ModifyInstancesAttribute(request *ModifyInstancesAttributeRequest) (response *ModifyInstancesAttributeResponse, err error) {
     if request == nil {
         request = NewModifyInstancesAttributeRequest()
     }
     response = NewModifyInstancesAttributeResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyInstancesChargeTypeRequest() (request *ModifyInstancesChargeTypeRequest) {
+    request = &ModifyInstancesChargeTypeRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cvm", APIVersion, "ModifyInstancesChargeType")
+    return
+}
+
+func NewModifyInstancesChargeTypeResponse() (response *ModifyInstancesChargeTypeResponse) {
+    response = &ModifyInstancesChargeTypeResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口 (ModifyInstancesChargeType) 用于切换实例的计费模式。
+// 
+// * 只支持从 `POSTPAID_BY_HOUR` 计费模式切换为`PREPAID`计费模式。
+// * 关机不收费的实例、`BC1`和`BS1`机型族的实例、设置定时销毁的实例不支持该操作。
+func (c *Client) ModifyInstancesChargeType(request *ModifyInstancesChargeTypeRequest) (response *ModifyInstancesChargeTypeResponse, err error) {
+    if request == nil {
+        request = NewModifyInstancesChargeTypeRequest()
+    }
+    response = NewModifyInstancesChargeTypeResponse()
     err = c.Send(request, response)
     return
 }
@@ -1019,6 +1241,33 @@ func (c *Client) ModifyInstancesRenewFlag(request *ModifyInstancesRenewFlagReque
     return
 }
 
+func NewModifyInstancesVpcAttributeRequest() (request *ModifyInstancesVpcAttributeRequest) {
+    request = &ModifyInstancesVpcAttributeRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cvm", APIVersion, "ModifyInstancesVpcAttribute")
+    return
+}
+
+func NewModifyInstancesVpcAttributeResponse() (response *ModifyInstancesVpcAttributeResponse) {
+    response = &ModifyInstancesVpcAttributeResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口(ModifyInstancesVpcAttribute)用于修改实例vpc属性，如私有网络ip。
+// * 此操作默认会关闭实例，完成后再启动。
+// * 当指定私有网络ID和子网ID（子网必须在实例所在的可用区）与指定实例所在私有网络不一致时，会将实例迁移至指定的私有网络的子网下。执行此操作前请确保指定的实例上没有绑定[弹性网卡](https://cloud.tencent.com/document/product/576)和[负载均衡](https://cloud.tencent.com/document/product/214)。
+func (c *Client) ModifyInstancesVpcAttribute(request *ModifyInstancesVpcAttributeRequest) (response *ModifyInstancesVpcAttributeResponse, err error) {
+    if request == nil {
+        request = NewModifyInstancesVpcAttributeRequest()
+    }
+    response = NewModifyInstancesVpcAttributeResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyKeyPairAttributeRequest() (request *ModifyKeyPairAttributeRequest) {
     request = &ModifyKeyPairAttributeRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1044,31 +1293,6 @@ func (c *Client) ModifyKeyPairAttribute(request *ModifyKeyPairAttributeRequest) 
         request = NewModifyKeyPairAttributeRequest()
     }
     response = NewModifyKeyPairAttributeResponse()
-    err = c.Send(request, response)
-    return
-}
-
-func NewQueryMigrateTaskRequest() (request *QueryMigrateTaskRequest) {
-    request = &QueryMigrateTaskRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    request.Init().WithApiInfo("cvm", APIVersion, "QueryMigrateTask")
-    return
-}
-
-func NewQueryMigrateTaskResponse() (response *QueryMigrateTaskResponse) {
-    response = &QueryMigrateTaskResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    }
-    return
-}
-
-// 查询迁移任务进度。
-func (c *Client) QueryMigrateTask(request *QueryMigrateTaskRequest) (response *QueryMigrateTaskResponse, err error) {
-    if request == nil {
-        request = NewQueryMigrateTaskRequest()
-    }
-    response = NewQueryMigrateTaskResponse()
     err = c.Send(request, response)
     return
 }
@@ -1328,7 +1552,7 @@ func NewRunInstancesResponse() (response *RunInstancesResponse) {
 // * 实例创建成功后将自动开机启动，[实例状态](/document/api/213/9452#instance_state)变为“运行中”。
 // * 预付费实例的购买会预先扣除本次实例购买所需金额，按小时后付费实例购买会预先冻结本次实例购买一小时内所需金额，在调用本接口前请确保账户余额充足。
 // * 本接口允许购买的实例数量遵循[CVM实例购买限制](https://cloud.tencent.com/document/product/213/2664)，所创建的实例和官网入口创建的实例共用配额。
-// * 本接口为异步接口，当创建请求下发成功后会返回一个实例`ID`列表，此时实例的创建并立即未完成。在此期间实例的状态将会处于“准备中”，可以通过调用 [DescribeInstancesStatus](https://cloud.tencent.com/document/api/213/15738) 接口查询对应实例的状态，来判断生产有没有最终成功。如果实例的状态由“准备中”变为“运行中”，则为创建成功。
+// * 本接口为异步接口，当创建请求下发成功后会返回一个实例`ID`列表，此时实例的创建并立即未完成。在此期间实例的状态将会处于“准备中”，可以通过调用 [DescribeInstances](https://cloud.tencent.com/document/api/213/15728) 接口查询对应实例的状态，来判断创建有没有最终成功。如果实例的状态由“准备中”变为“运行中”，则为创建成功。
 func (c *Client) RunInstances(request *RunInstancesRequest) (response *RunInstancesResponse, err error) {
     if request == nil {
         request = NewRunInstancesRequest()
@@ -1451,33 +1675,6 @@ func (c *Client) TerminateInstances(request *TerminateInstancesRequest) (respons
         request = NewTerminateInstancesRequest()
     }
     response = NewTerminateInstancesResponse()
-    err = c.Send(request, response)
-    return
-}
-
-func NewUpdateInstanceVpcConfigRequest() (request *UpdateInstanceVpcConfigRequest) {
-    request = &UpdateInstanceVpcConfigRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    request.Init().WithApiInfo("cvm", APIVersion, "UpdateInstanceVpcConfig")
-    return
-}
-
-func NewUpdateInstanceVpcConfigResponse() (response *UpdateInstanceVpcConfigResponse) {
-    response = &UpdateInstanceVpcConfigResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    }
-    return
-}
-
-// 本接口(UpdateInstanceVpcConfig)用于修改实例vpc属性，如私有网络ip。
-// * 此操作默认会关闭实例，完成后再启动。
-// * 不支持跨VpcId操作。
-func (c *Client) UpdateInstanceVpcConfig(request *UpdateInstanceVpcConfigRequest) (response *UpdateInstanceVpcConfigResponse, err error) {
-    if request == nil {
-        request = NewUpdateInstanceVpcConfigRequest()
-    }
-    response = NewUpdateInstanceVpcConfigResponse()
     err = c.Send(request, response)
     return
 }
