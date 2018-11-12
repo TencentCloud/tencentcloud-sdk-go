@@ -1823,6 +1823,8 @@ type InstanceInfo struct {
 	UniqVpcId *string `json:"UniqVpcId" name:"UniqVpcId"`
 	// 子网描述符，例如：“subnet-1typ0s7d”
 	UniqSubnetId *string `json:"UniqSubnetId" name:"UniqSubnetId"`
+	// 最大QPS
+	Qps *int64 `json:"Qps" name:"Qps"`
 }
 
 type InstanceRebootTime struct {
