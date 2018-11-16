@@ -100,6 +100,8 @@ type CreateFacePictureRequest struct {
 	Picture *string `json:"Picture" name:"Picture"`
 	// 图片名称
 	PictureName *string `json:"PictureName" name:"PictureName"`
+	// 是否强制更新：为ture时会为用户创建一个新的指定PersonType的身份;目前这个参数已废弃，可不传
+	IsForceUpload *bool `json:"IsForceUpload" name:"IsForceUpload"`
 }
 
 func (r *CreateFacePictureRequest) ToJsonString() string {
@@ -139,6 +141,42 @@ type DailyTracePoint struct {
 	TraceDate *string `json:"TraceDate" name:"TraceDate"`
 	// 轨迹点序列
 	TracePointSet []*PersonTracePoint `json:"TracePointSet" name:"TracePointSet" list`
+}
+
+type DeletePersonFeatureRequest struct {
+	*tchttp.BaseRequest
+	// 公司ID
+	CompanyId *string `json:"CompanyId" name:"CompanyId"`
+	// 门店ID
+	ShopId *int64 `json:"ShopId" name:"ShopId"`
+	// 顾客ID
+	PersonId *int64 `json:"PersonId" name:"PersonId"`
+}
+
+func (r *DeletePersonFeatureRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeletePersonFeatureRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeletePersonFeatureResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DeletePersonFeatureResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeletePersonFeatureResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeCameraPersonRequest struct {
@@ -485,6 +523,8 @@ type DescribePersonInfoRequest struct {
 	Limit *uint64 `json:"Limit" name:"Limit"`
 	// 图片url过期时间：在当前时间+PictureExpires秒后，图片url无法继续正常访问；单位s；默认值1*24*60*60（1天）
 	PictureExpires *uint64 `json:"PictureExpires" name:"PictureExpires"`
+	// 身份类型(0表示普通顾客，1 白名单，2 表示黑名单）
+	PersonType *uint64 `json:"PersonType" name:"PersonType"`
 }
 
 func (r *DescribePersonInfoRequest) ToJsonString() string {
@@ -1295,6 +1335,49 @@ func (r *ModifyPersonTagInfoResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type ModifyPersonTypeRequest struct {
+	*tchttp.BaseRequest
+	// 集团ID
+	CompanyId *string `json:"CompanyId" name:"CompanyId"`
+	// 门店ID
+	ShopId *uint64 `json:"ShopId" name:"ShopId"`
+	// 顾客ID
+	PersonId *uint64 `json:"PersonId" name:"PersonId"`
+	// 身份类型(0表示普通顾客，1 白名单，2 表示黑名单）
+	PersonType *uint64 `json:"PersonType" name:"PersonType"`
+	// 身份子类型:
+	// PersonType=0时(普通顾客)，0普通顾客
+	// PersonType=1时(白名单)，0店员，1商场人员，2其他类型人员，3区域经理，4注册用户，5VIP用户
+	// PersonType=2时(黑名单)，0普通黑名单，1小偷)
+	PersonSubType *uint64 `json:"PersonSubType" name:"PersonSubType"`
+}
+
+func (r *ModifyPersonTypeRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyPersonTypeRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyPersonTypeResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifyPersonTypeResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyPersonTypeResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type NetworkAndShopInfo struct {
 	// 集团id
 	CompanyId *string `json:"CompanyId" name:"CompanyId"`
@@ -1396,13 +1479,18 @@ type PersonInfo struct {
 	// 人脸图片Base64内容，已弃用，返回默认空值
 	PersonPicture *string `json:"PersonPicture" name:"PersonPicture"`
 	// 性别：0男1女
-	Gender *uint64 `json:"Gender" name:"Gender"`
+	Gender *int64 `json:"Gender" name:"Gender"`
 	// 年龄
-	Age *uint64 `json:"Age" name:"Age"`
-	// 身份类型：0-普通顾客，1~10黑名单，11~20白名单，11店员
-	PersonType *uint64 `json:"PersonType" name:"PersonType"`
+	Age *int64 `json:"Age" name:"Age"`
+	// 身份类型（0表示普通顾客，1 白名单，2 表示黑名单）
+	PersonType *int64 `json:"PersonType" name:"PersonType"`
 	// 人脸图片Url，在有效期内可以访问下载
 	PersonPictureUrl *string `json:"PersonPictureUrl" name:"PersonPictureUrl"`
+	// 身份子类型:
+	// PersonType=0时(普通顾客)，0普通顾客
+	// PersonType=1时(白名单)，0店员，1商场人员，2其他类型人员，3区域经理，4注册用户，5VIP用户
+	// PersonType=2时(黑名单)，0普通黑名单，1小偷)
+	PersonSubType *int64 `json:"PersonSubType" name:"PersonSubType"`
 }
 
 type PersonProfile struct {

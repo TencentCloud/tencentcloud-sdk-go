@@ -107,8 +107,19 @@ func NewCreateLiveRecordResponse() (response *CreateLiveRecordResponse) {
     return
 }
 
-// 录制文件存放于点播平台。用户如需使用录制功能，需首先自行开通点播服务，录制文件存放后相关费用（含存储以及下行播放流量）按照点播平台计费方式收取，具体请参考 对应文档。
-// 创建直播录制。该接口支持两种录制模式：定时录制模式与实时视频录制模式。定时录制需要传入开始与结束时间，录制任务根据时间自动开始与结束；实时视频录制忽略传入的开始时间，在录制任务创建后立即开始录制，录制时长支持最大为30分钟，如果传入的结束时间与当前时间差大于30分钟，则按30分钟计算，实时视频录制主要用于录制精彩视频场景，时长建议控制在5分钟以内。注意：调用接口超时设置应大于3秒，小于3秒重试以及频繁调用都有可能产生重复录制任务。
+// - 使用前提
+//   1. 录制文件存放于点播平台，所以用户如需使用录制功能，需首先自行开通点播服务。
+//   2. 录制文件存放后相关费用（含存储以及下行播放流量）按照点播平台计费方式收取，具体请参考 [对应文档](https://cloud.tencent.com/document/product/266/2838)。
+// 
+// - 模式说明
+//   该接口支持两种录制模式：
+//   1. 定时录制模式。
+//     需要传入开始时间与结束时间，录制任务根据时间自动开始与结束。
+//   2. 实时视频录制模式。
+//     忽略传入的开始时间，在录制任务创建后立即开始录制，录制时长支持最大为30分钟，如果传入的结束时间与当前时间差大于30分钟，则按30分钟计算，实时视频录制主要用于录制精彩视频场景，时长建议控制在5分钟以内。
+// 
+// - 注意事项
+//   1. 调用接口超时设置应大于3秒，小于3秒重试以及频繁调用都有可能产生重复录制任务。
 func (c *Client) CreateLiveRecord(request *CreateLiveRecordRequest) (response *CreateLiveRecordResponse, err error) {
     if request == nil {
         request = NewCreateLiveRecordRequest()
@@ -189,6 +200,81 @@ func (c *Client) DeleteLiveWatermark(request *DeleteLiveWatermarkRequest) (respo
         request = NewDeleteLiveWatermarkRequest()
     }
     response = NewDeleteLiveWatermarkResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeDrmEncryptKeysRequest() (request *DescribeDrmEncryptKeysRequest) {
+    request = &DescribeDrmEncryptKeysRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("live", APIVersion, "DescribeDrmEncryptKeys")
+    return
+}
+
+func NewDescribeDrmEncryptKeysResponse() (response *DescribeDrmEncryptKeysResponse) {
+    response = &DescribeDrmEncryptKeysResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// Drm获取加密key
+func (c *Client) DescribeDrmEncryptKeys(request *DescribeDrmEncryptKeysRequest) (response *DescribeDrmEncryptKeysResponse, err error) {
+    if request == nil {
+        request = NewDescribeDrmEncryptKeysRequest()
+    }
+    response = NewDescribeDrmEncryptKeysResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeLivePlayAuthKeyRequest() (request *DescribeLivePlayAuthKeyRequest) {
+    request = &DescribeLivePlayAuthKeyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("live", APIVersion, "DescribeLivePlayAuthKey")
+    return
+}
+
+func NewDescribeLivePlayAuthKeyResponse() (response *DescribeLivePlayAuthKeyResponse) {
+    response = &DescribeLivePlayAuthKeyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询播放鉴权key
+func (c *Client) DescribeLivePlayAuthKey(request *DescribeLivePlayAuthKeyRequest) (response *DescribeLivePlayAuthKeyResponse, err error) {
+    if request == nil {
+        request = NewDescribeLivePlayAuthKeyRequest()
+    }
+    response = NewDescribeLivePlayAuthKeyResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeLivePushAuthKeyRequest() (request *DescribeLivePushAuthKeyRequest) {
+    request = &DescribeLivePushAuthKeyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("live", APIVersion, "DescribeLivePushAuthKey")
+    return
+}
+
+func NewDescribeLivePushAuthKeyResponse() (response *DescribeLivePushAuthKeyResponse) {
+    response = &DescribeLivePushAuthKeyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询直播推流鉴权key
+func (c *Client) DescribeLivePushAuthKey(request *DescribeLivePushAuthKeyRequest) (response *DescribeLivePushAuthKeyResponse, err error) {
+    if request == nil {
+        request = NewDescribeLivePushAuthKeyRequest()
+    }
+    response = NewDescribeLivePushAuthKeyResponse()
     err = c.Send(request, response)
     return
 }
@@ -393,6 +479,106 @@ func (c *Client) ForbidLiveStream(request *ForbidLiveStreamRequest) (response *F
     return
 }
 
+func NewGetLiveDrmLicenseRequest() (request *GetLiveDrmLicenseRequest) {
+    request = &GetLiveDrmLicenseRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("live", APIVersion, "GetLiveDrmLicense")
+    return
+}
+
+func NewGetLiveDrmLicenseResponse() (response *GetLiveDrmLicenseResponse) {
+    response = &GetLiveDrmLicenseResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 获取直播DRM的license
+func (c *Client) GetLiveDrmLicense(request *GetLiveDrmLicenseRequest) (response *GetLiveDrmLicenseResponse, err error) {
+    if request == nil {
+        request = NewGetLiveDrmLicenseRequest()
+    }
+    response = NewGetLiveDrmLicenseResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewGetVodDrmLicenseRequest() (request *GetVodDrmLicenseRequest) {
+    request = &GetVodDrmLicenseRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("live", APIVersion, "GetVodDrmLicense")
+    return
+}
+
+func NewGetVodDrmLicenseResponse() (response *GetVodDrmLicenseResponse) {
+    response = &GetVodDrmLicenseResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 获取点播DRM的license
+func (c *Client) GetVodDrmLicense(request *GetVodDrmLicenseRequest) (response *GetVodDrmLicenseResponse, err error) {
+    if request == nil {
+        request = NewGetVodDrmLicenseRequest()
+    }
+    response = NewGetVodDrmLicenseResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyLivePlayAuthKeyRequest() (request *ModifyLivePlayAuthKeyRequest) {
+    request = &ModifyLivePlayAuthKeyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("live", APIVersion, "ModifyLivePlayAuthKey")
+    return
+}
+
+func NewModifyLivePlayAuthKeyResponse() (response *ModifyLivePlayAuthKeyResponse) {
+    response = &ModifyLivePlayAuthKeyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 修改播放鉴权key
+func (c *Client) ModifyLivePlayAuthKey(request *ModifyLivePlayAuthKeyRequest) (response *ModifyLivePlayAuthKeyResponse, err error) {
+    if request == nil {
+        request = NewModifyLivePlayAuthKeyRequest()
+    }
+    response = NewModifyLivePlayAuthKeyResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyLivePushAuthKeyRequest() (request *ModifyLivePushAuthKeyRequest) {
+    request = &ModifyLivePushAuthKeyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("live", APIVersion, "ModifyLivePushAuthKey")
+    return
+}
+
+func NewModifyLivePushAuthKeyResponse() (response *ModifyLivePushAuthKeyResponse) {
+    response = &ModifyLivePushAuthKeyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 修改直播推流鉴权key
+func (c *Client) ModifyLivePushAuthKey(request *ModifyLivePushAuthKeyRequest) (response *ModifyLivePushAuthKeyResponse, err error) {
+    if request == nil {
+        request = NewModifyLivePushAuthKeyRequest()
+    }
+    response = NewModifyLivePushAuthKeyResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyPullStreamConfigRequest() (request *ModifyPullStreamConfigRequest) {
     request = &ModifyPullStreamConfigRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -514,6 +700,31 @@ func (c *Client) SetLiveWatermarkStatus(request *SetLiveWatermarkStatusRequest) 
         request = NewSetLiveWatermarkStatusRequest()
     }
     response = NewSetLiveWatermarkStatusResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewStartDrmEncryptionRequest() (request *StartDrmEncryptionRequest) {
+    request = &StartDrmEncryptionRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("live", APIVersion, "StartDrmEncryption")
+    return
+}
+
+func NewStartDrmEncryptionResponse() (response *StartDrmEncryptionResponse) {
+    response = &StartDrmEncryptionResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 该接口用于Drm加密请求
+func (c *Client) StartDrmEncryption(request *StartDrmEncryptionRequest) (response *StartDrmEncryptionResponse, err error) {
+    if request == nil {
+        request = NewStartDrmEncryptionRequest()
+    }
+    response = NewStartDrmEncryptionResponse()
     err = c.Send(request, response)
     return
 }

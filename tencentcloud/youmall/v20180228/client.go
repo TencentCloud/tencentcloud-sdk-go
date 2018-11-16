@@ -92,6 +92,31 @@ func (c *Client) CreateFacePicture(request *CreateFacePictureRequest) (response 
     return
 }
 
+func NewDeletePersonFeatureRequest() (request *DeletePersonFeatureRequest) {
+    request = &DeletePersonFeatureRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("youmall", APIVersion, "DeletePersonFeature")
+    return
+}
+
+func NewDeletePersonFeatureResponse() (response *DeletePersonFeatureResponse) {
+    response = &DeletePersonFeatureResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 删除顾客特征，仅支持删除黑名单或者白名单用户特征。
+func (c *Client) DeletePersonFeature(request *DeletePersonFeatureRequest) (response *DeletePersonFeatureResponse, err error) {
+    if request == nil {
+        request = NewDeletePersonFeatureRequest()
+    }
+    response = NewDeletePersonFeatureResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeCameraPersonRequest() (request *DescribeCameraPersonRequest) {
     request = &DescribeCameraPersonRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -689,6 +714,31 @@ func (c *Client) ModifyPersonTagInfo(request *ModifyPersonTagInfoRequest) (respo
         request = NewModifyPersonTagInfoRequest()
     }
     response = NewModifyPersonTagInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyPersonTypeRequest() (request *ModifyPersonTypeRequest) {
+    request = &ModifyPersonTypeRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("youmall", APIVersion, "ModifyPersonType")
+    return
+}
+
+func NewModifyPersonTypeResponse() (response *ModifyPersonTypeResponse) {
+    response = &ModifyPersonTypeResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 修改顾客身份类型接口
+func (c *Client) ModifyPersonType(request *ModifyPersonTypeRequest) (response *ModifyPersonTypeResponse, err error) {
+    if request == nil {
+        request = NewModifyPersonTypeRequest()
+    }
+    response = NewModifyPersonTypeResponse()
     err = c.Send(request, response)
     return
 }
