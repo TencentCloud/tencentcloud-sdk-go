@@ -204,31 +204,6 @@ func (c *Client) DeleteLiveWatermark(request *DeleteLiveWatermarkRequest) (respo
     return
 }
 
-func NewDescribeDrmEncryptKeysRequest() (request *DescribeDrmEncryptKeysRequest) {
-    request = &DescribeDrmEncryptKeysRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    request.Init().WithApiInfo("live", APIVersion, "DescribeDrmEncryptKeys")
-    return
-}
-
-func NewDescribeDrmEncryptKeysResponse() (response *DescribeDrmEncryptKeysResponse) {
-    response = &DescribeDrmEncryptKeysResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    }
-    return
-}
-
-// Drm获取加密key
-func (c *Client) DescribeDrmEncryptKeys(request *DescribeDrmEncryptKeysRequest) (response *DescribeDrmEncryptKeysResponse, err error) {
-    if request == nil {
-        request = NewDescribeDrmEncryptKeysRequest()
-    }
-    response = NewDescribeDrmEncryptKeysResponse()
-    err = c.Send(request, response)
-    return
-}
-
 func NewDescribeLivePlayAuthKeyRequest() (request *DescribeLivePlayAuthKeyRequest) {
     request = &DescribeLivePlayAuthKeyRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -479,56 +454,6 @@ func (c *Client) ForbidLiveStream(request *ForbidLiveStreamRequest) (response *F
     return
 }
 
-func NewGetLiveDrmLicenseRequest() (request *GetLiveDrmLicenseRequest) {
-    request = &GetLiveDrmLicenseRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    request.Init().WithApiInfo("live", APIVersion, "GetLiveDrmLicense")
-    return
-}
-
-func NewGetLiveDrmLicenseResponse() (response *GetLiveDrmLicenseResponse) {
-    response = &GetLiveDrmLicenseResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    }
-    return
-}
-
-// 获取直播DRM的license
-func (c *Client) GetLiveDrmLicense(request *GetLiveDrmLicenseRequest) (response *GetLiveDrmLicenseResponse, err error) {
-    if request == nil {
-        request = NewGetLiveDrmLicenseRequest()
-    }
-    response = NewGetLiveDrmLicenseResponse()
-    err = c.Send(request, response)
-    return
-}
-
-func NewGetVodDrmLicenseRequest() (request *GetVodDrmLicenseRequest) {
-    request = &GetVodDrmLicenseRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    request.Init().WithApiInfo("live", APIVersion, "GetVodDrmLicense")
-    return
-}
-
-func NewGetVodDrmLicenseResponse() (response *GetVodDrmLicenseResponse) {
-    response = &GetVodDrmLicenseResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    }
-    return
-}
-
-// 获取点播DRM的license
-func (c *Client) GetVodDrmLicense(request *GetVodDrmLicenseRequest) (response *GetVodDrmLicenseResponse, err error) {
-    if request == nil {
-        request = NewGetVodDrmLicenseRequest()
-    }
-    response = NewGetVodDrmLicenseResponse()
-    err = c.Send(request, response)
-    return
-}
-
 func NewModifyLivePlayAuthKeyRequest() (request *ModifyLivePlayAuthKeyRequest) {
     request = &ModifyLivePlayAuthKeyRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -700,31 +625,6 @@ func (c *Client) SetLiveWatermarkStatus(request *SetLiveWatermarkStatusRequest) 
         request = NewSetLiveWatermarkStatusRequest()
     }
     response = NewSetLiveWatermarkStatusResponse()
-    err = c.Send(request, response)
-    return
-}
-
-func NewStartDrmEncryptionRequest() (request *StartDrmEncryptionRequest) {
-    request = &StartDrmEncryptionRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    request.Init().WithApiInfo("live", APIVersion, "StartDrmEncryption")
-    return
-}
-
-func NewStartDrmEncryptionResponse() (response *StartDrmEncryptionResponse) {
-    response = &StartDrmEncryptionResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    }
-    return
-}
-
-// 该接口用于Drm加密请求
-func (c *Client) StartDrmEncryption(request *StartDrmEncryptionRequest) (response *StartDrmEncryptionResponse, err error) {
-    if request == nil {
-        request = NewStartDrmEncryptionRequest()
-    }
-    response = NewStartDrmEncryptionResponse()
     err = c.Send(request, response)
     return
 }

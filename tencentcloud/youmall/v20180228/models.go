@@ -339,6 +339,8 @@ type DescribeFaceIdByTempIdRequest struct {
 	CameraId *int64 `json:"CameraId" name:"CameraId"`
 	// pos机id
 	PosId *string `json:"PosId" name:"PosId"`
+	// 图片url过期时间：在当前时间+PictureExpires秒后，图片url无法继续正常访问；单位s；默认值1*24*60*60（1天）
+	PictureExpires *int64 `json:"PictureExpires" name:"PictureExpires"`
 }
 
 func (r *DescribeFaceIdByTempIdRequest) ToJsonString() string {
@@ -365,6 +367,8 @@ type DescribeFaceIdByTempIdResponse struct {
 		TempId *string `json:"TempId" name:"TempId"`
 		// 临时id对应的face id
 		FaceId *int64 `json:"FaceId" name:"FaceId"`
+		// 顾客属性信息
+		PersonInfo *PersonInfo `json:"PersonInfo" name:"PersonInfo"`
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
@@ -697,16 +701,20 @@ type DescribePersonVisitInfoRequest struct {
 	CompanyId *string `json:"CompanyId" name:"CompanyId"`
 	// 门店ID
 	ShopId *uint64 `json:"ShopId" name:"ShopId"`
-	// 开始日期，格式yyyy-MM-dd
-	StartDate *string `json:"StartDate" name:"StartDate"`
-	// 结束日期，格式yyyy-MM-dd
-	EndDate *string `json:"EndDate" name:"EndDate"`
 	// 偏移量：分页控制参数，第一页传0，第n页Offset=(n-1)*Limit
 	Offset *uint64 `json:"Offset" name:"Offset"`
 	// Limit:每页的数据项，最大100，超过100会被强制指定为100
 	Limit *uint64 `json:"Limit" name:"Limit"`
+	// 开始日期，格式yyyy-MM-dd，已废弃，请使用StartDateTime
+	StartDate *string `json:"StartDate" name:"StartDate"`
+	// 结束日期，格式yyyy-MM-dd，已废弃，请使用EndDateTime
+	EndDate *string `json:"EndDate" name:"EndDate"`
 	// 图片url过期时间：在当前时间+PictureExpires秒后，图片url无法继续正常访问；单位s；默认值1*24*60*60（1天）
 	PictureExpires *uint64 `json:"PictureExpires" name:"PictureExpires"`
+	// 开始时间，格式yyyy-MM-dd HH:mm:ss
+	StartDateTime *string `json:"StartDateTime" name:"StartDateTime"`
+	// 结束时间，格式yyyy-MM-dd HH:mm:ss
+	EndDateTime *string `json:"EndDateTime" name:"EndDateTime"`
 }
 
 func (r *DescribePersonVisitInfoRequest) ToJsonString() string {
@@ -1558,6 +1566,8 @@ type PersonVisitInfo struct {
 	HairType *uint64 `json:"HairType" name:"HairType"`
 	// 抓拍到的头像Url，在有效期内可以访问下载
 	CapturedPictureUrl *string `json:"CapturedPictureUrl" name:"CapturedPictureUrl"`
+	// 抓拍头像的场景图信息
+	SceneInfo *SceneInfo `json:"SceneInfo" name:"SceneInfo"`
 }
 
 type RegisterCallbackRequest struct {
@@ -1596,6 +1606,19 @@ func (r *RegisterCallbackResponse) ToJsonString() string {
 
 func (r *RegisterCallbackResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
+}
+
+type SceneInfo struct {
+	// 场景图
+	ScenePictureURL *string `json:"ScenePictureURL" name:"ScenePictureURL"`
+	// 抓拍头像左上角X坐标在场景图中的像素点位置
+	HeadX *int64 `json:"HeadX" name:"HeadX"`
+	// 抓拍头像左上角Y坐标在场景图中的像素点位置
+	HeadY *int64 `json:"HeadY" name:"HeadY"`
+	// 抓拍头像在场景图中占有的像素宽度
+	HeadWidth *int64 `json:"HeadWidth" name:"HeadWidth"`
+	// 抓拍头像在场景图中占有的像素高度
+	HeadHeight *int64 `json:"HeadHeight" name:"HeadHeight"`
 }
 
 type ShopDayTrafficInfo struct {

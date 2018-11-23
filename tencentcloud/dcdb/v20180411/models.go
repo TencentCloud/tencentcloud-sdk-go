@@ -59,7 +59,7 @@ type CloneAccountResponse struct {
 	Response *struct {
 		// 异步任务流程ID
 		FlowId *int64 `json:"FlowId" name:"FlowId"`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -93,7 +93,7 @@ type CloseDBExtranetAccessResponse struct {
 	Response *struct {
 		// 异步任务Id，可通过 DescribeFlow 查询任务状态。
 		FlowId *int64 `json:"FlowId" name:"FlowId"`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -144,7 +144,7 @@ func (r *CopyAccountPrivilegesRequest) FromJsonString(s string) error {
 type CopyAccountPrivilegesResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -197,7 +197,7 @@ type CreateAccountResponse struct {
 		Host *string `json:"Host" name:"Host"`
 		// 透传入参。
 		ReadOnly *int64 `json:"ReadOnly" name:"ReadOnly"`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -261,7 +261,7 @@ type CreateDCDBInstanceResponse struct {
 		DealName *string `json:"DealName" name:"DealName"`
 		// 订单对应的实例 ID 列表，如果此处没有返回实例 ID，可以通过订单查询接口获取。还可通过实例查询接口查询实例是否创建完成。
 		InstanceIds []*string `json:"InstanceIds" name:"InstanceIds" list`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -373,6 +373,8 @@ type DCDBInstanceInfo struct {
 	Paymode *string `json:"Paymode" name:"Paymode"`
 	// 实例处于异步任务状态时，表示异步任务流程ID
 	Locker *int64 `json:"Locker" name:"Locker"`
+	// 外网状态，0-未开通；1-已开通；2-关闭；3-开通中
+	WanStatus *int64 `json:"WanStatus" name:"WanStatus"`
 }
 
 type DCDBShardInfo struct {
@@ -476,7 +478,7 @@ func (r *DeleteAccountRequest) FromJsonString(s string) error {
 type DeleteAccountResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -528,7 +530,7 @@ type DescribeAccountPrivilegesResponse struct {
 		UserName *string `json:"UserName" name:"UserName"`
 		// 数据库账号Host
 		Host *string `json:"Host" name:"Host"`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -564,7 +566,7 @@ type DescribeAccountsResponse struct {
 		InstanceId *string `json:"InstanceId" name:"InstanceId"`
 		// 实例用户列表。
 		Users []*DBAccount `json:"Users" name:"Users" list`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -614,7 +616,7 @@ type DescribeDBLogFilesResponse struct {
 		NormalPrefix *string `json:"NormalPrefix" name:"NormalPrefix"`
 		// 分片 ID，形如：shard-7noic7tv
 		ShardId *string `json:"ShardId" name:"ShardId"`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -650,7 +652,7 @@ type DescribeDBParametersResponse struct {
 		InstanceId *string `json:"InstanceId" name:"InstanceId"`
 		// 请求DB的当前参数值
 		Params []*ParamDesc `json:"Params" name:"Params" list`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -686,7 +688,7 @@ type DescribeDBSyncModeResponse struct {
 		SyncMode *int64 `json:"SyncMode" name:"SyncMode"`
 		// 是否有修改流程在执行中：1 是， 0 否。
 		IsModifying *int64 `json:"IsModifying" name:"IsModifying"`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -746,7 +748,7 @@ type DescribeDCDBInstancesResponse struct {
 		TotalCount *int64 `json:"TotalCount" name:"TotalCount"`
 		// 实例详细信息列表
 		Instances []*DCDBInstanceInfo `json:"Instances" name:"Instances" list`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -797,7 +799,7 @@ type DescribeDCDBPriceResponse struct {
 		OriginalPrice *int64 `json:"OriginalPrice" name:"OriginalPrice"`
 		// 实际价格，单位：分。受折扣等影响，可能和原价不同。
 		Price *int64 `json:"Price" name:"Price"`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -835,7 +837,7 @@ type DescribeDCDBRenewalPriceResponse struct {
 		OriginalPrice *int64 `json:"OriginalPrice" name:"OriginalPrice"`
 		// 实际价格，单位：分。受折扣等影响，可能和原价不同。
 		Price *int64 `json:"Price" name:"Price"`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -867,7 +869,7 @@ type DescribeDCDBSaleInfoResponse struct {
 	Response *struct {
 		// 可售卖地域信息列表
 		RegionList []*RegionInfo `json:"RegionList" name:"RegionList" list`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -913,7 +915,7 @@ type DescribeDCDBShardsResponse struct {
 		TotalCount *int64 `json:"TotalCount" name:"TotalCount"`
 		// 分片信息列表
 		Shards []*DCDBShardInfo `json:"Shards" name:"Shards" list`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -960,7 +962,7 @@ type DescribeDCDBUpgradePriceResponse struct {
 		OriginalPrice *int64 `json:"OriginalPrice" name:"OriginalPrice"`
 		// 实际价格，单位：分。受折扣等影响，可能和原价不同。
 		Price *int64 `json:"Price" name:"Price"`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -1006,7 +1008,7 @@ type DescribeDatabaseObjectsResponse struct {
 		Procs []*DatabaseProcedure `json:"Procs" name:"Procs" list`
 		// 函数列表。
 		Funcs []*DatabaseFunction `json:"Funcs" name:"Funcs" list`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -1050,7 +1052,7 @@ type DescribeDatabaseTableResponse struct {
 		Table *string `json:"Table" name:"Table"`
 		// 列信息。
 		Cols []*TableColumn `json:"Cols" name:"Cols" list`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -1086,7 +1088,7 @@ type DescribeDatabasesResponse struct {
 		Databases []*Database `json:"Databases" name:"Databases" list`
 		// 透传入参。
 		InstanceId *string `json:"InstanceId" name:"InstanceId"`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -1122,7 +1124,7 @@ type DescribeOrdersResponse struct {
 		TotalCount []*int64 `json:"TotalCount" name:"TotalCount" list`
 		// 订单信息列表。
 		Deals []*Deal `json:"Deals" name:"Deals" list`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -1154,7 +1156,7 @@ type DescribeShardSpecResponse struct {
 	Response *struct {
 		// 按机型分类的可售卖规格列表
 		SpecConfig []*SpecConfig `json:"SpecConfig" name:"SpecConfig" list`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -1202,7 +1204,7 @@ type DescribeSqlLogsResponse struct {
 		Count *uint64 `json:"Count" name:"Count"`
 		// Sql日志列表。
 		SqlItems []*SqlLogItem `json:"SqlItems" name:"SqlItems" list`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -1261,7 +1263,7 @@ func (r *GrantAccountPrivilegesRequest) FromJsonString(s string) error {
 type GrantAccountPrivilegesResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -1299,7 +1301,7 @@ type InitDCDBInstancesResponse struct {
 		FlowIds []*uint64 `json:"FlowIds" name:"FlowIds" list`
 		// 透传入参。
 		InstanceIds []*string `json:"InstanceIds" name:"InstanceIds" list`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -1346,7 +1348,7 @@ func (r *ModifyAccountDescriptionRequest) FromJsonString(s string) error {
 type ModifyAccountDescriptionResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -1380,7 +1382,7 @@ func (r *ModifyDBInstancesProjectRequest) FromJsonString(s string) error {
 type ModifyDBInstancesProjectResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -1418,7 +1420,7 @@ type ModifyDBParametersResponse struct {
 		InstanceId *string `json:"InstanceId" name:"InstanceId"`
 		// 各参数修改结果
 		Result []*ParamModifyResult `json:"Result" name:"Result" list`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -1454,7 +1456,7 @@ type ModifyDBSyncModeResponse struct {
 	Response *struct {
 		// 异步任务Id，可通过 DescribeFlow 查询任务状态。
 		FlowId *int64 `json:"FlowId" name:"FlowId"`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -1488,7 +1490,7 @@ type OpenDBExtranetAccessResponse struct {
 	Response *struct {
 		// 异步任务Id，可通过 DescribeFlow 查询任务状态。
 		FlowId *int64 `json:"FlowId" name:"FlowId"`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -1573,7 +1575,7 @@ type RenewDCDBInstanceResponse struct {
 		// 长订单号。可以据此调用 DescribeOrders
 	//  查询订单详细信息，或在支付失败时调用用户账号相关接口进行支付。
 		DealName *string `json:"DealName" name:"DealName"`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -1611,7 +1613,7 @@ func (r *ResetAccountPasswordRequest) FromJsonString(s string) error {
 type ResetAccountPasswordResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -1754,7 +1756,7 @@ type UpgradeDCDBInstanceResponse struct {
 		// 长订单号。可以据此调用 DescribeOrders
 	//  查询订单详细信息，或在支付失败时调用用户账号相关接口进行支付。
 		DealName *string `json:"DealName" name:"DealName"`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }

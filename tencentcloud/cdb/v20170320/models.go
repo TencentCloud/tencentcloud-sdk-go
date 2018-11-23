@@ -1755,7 +1755,7 @@ func (r *InitDBInstancesResponse) FromJsonString(s string) error {
 }
 
 type InstanceInfo struct {
-	// 外网状态，可能的返回值为：0-未开通外网；1-已开通外网
+	// 外网状态，可能的返回值为：0-未开通外网；1-已开通外网；2-已关闭外网
 	WanStatus *int64 `json:"WanStatus" name:"WanStatus"`
 	// 可用区信息
 	Zone *string `json:"Zone" name:"Zone"`
@@ -1823,6 +1823,8 @@ type InstanceInfo struct {
 	UniqVpcId *string `json:"UniqVpcId" name:"UniqVpcId"`
 	// 子网描述符，例如：“subnet-1typ0s7d”
 	UniqSubnetId *string `json:"UniqSubnetId" name:"UniqSubnetId"`
+	// 物理ID
+	PhysicalId *string `json:"PhysicalId" name:"PhysicalId"`
 }
 
 type InstanceRebootTime struct {

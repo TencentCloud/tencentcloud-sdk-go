@@ -42,7 +42,7 @@ type ClearInstanceResponse struct {
 	Response *struct {
 		// 任务Id
 		TaskId *int64 `json:"TaskId" name:"TaskId"`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -100,7 +100,7 @@ type CreateInstancesResponse struct {
 	Response *struct {
 		// 交易的Id
 		DealId *string `json:"DealId" name:"DealId"`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -138,7 +138,7 @@ type DescribeAutoBackupConfigResponse struct {
 		WeekDays []*string `json:"WeekDays" name:"WeekDays" list`
 		// 时间段。
 		TimePeriod *string `json:"TimePeriod" name:"TimePeriod"`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -184,7 +184,7 @@ type DescribeInstanceBackupsResponse struct {
 		TotalCount *int64 `json:"TotalCount" name:"TotalCount"`
 		// 实例的备份数组
 		BackupSet []*RedisBackupSet `json:"BackupSet" name:"BackupSet" list`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -195,6 +195,40 @@ func (r *DescribeInstanceBackupsResponse) ToJsonString() string {
 }
 
 func (r *DescribeInstanceBackupsResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeInstanceDealDetailRequest struct {
+	*tchttp.BaseRequest
+	// 订单ID数组
+	DealIds []*string `json:"DealIds" name:"DealIds" list`
+}
+
+func (r *DescribeInstanceDealDetailRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeInstanceDealDetailRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeInstanceDealDetailResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+		// 订单详细信息
+		DealDetails []*TradeDealDetail `json:"DealDetails" name:"DealDetails" list`
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeInstanceDealDetailResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeInstanceDealDetailResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -240,7 +274,7 @@ type DescribeInstancesResponse struct {
 		TotalCount *int64 `json:"TotalCount" name:"TotalCount"`
 		// 实例详细信息列表
 		InstanceSet []*InstanceSet `json:"InstanceSet" name:"InstanceSet" list`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -251,6 +285,80 @@ func (r *DescribeInstancesResponse) ToJsonString() string {
 }
 
 func (r *DescribeInstancesResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeProductInfoRequest struct {
+	*tchttp.BaseRequest
+}
+
+func (r *DescribeProductInfoRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeProductInfoRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeProductInfoResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+		// 地域售卖信息
+		RegionSet []*RegionConf `json:"RegionSet" name:"RegionSet" list`
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeProductInfoResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeProductInfoResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeTaskInfoRequest struct {
+	*tchttp.BaseRequest
+	// 任务ID
+	TaskId *uint64 `json:"TaskId" name:"TaskId"`
+}
+
+func (r *DescribeTaskInfoRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeTaskInfoRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeTaskInfoResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+		// 任务状态preparing:待执行，running：执行中，succeed：成功，failed：失败，error 执行出错
+		Status *string `json:"Status" name:"Status"`
+		// 任务开始时间
+		StartTime *string `json:"StartTime" name:"StartTime"`
+		// 任务类型
+		TaskType *string `json:"TaskType" name:"TaskType"`
+		// 实例的ID
+		InstanceId *string `json:"InstanceId" name:"InstanceId"`
+		// 任务信息，错误时显示错误信息。执行中与成功则为空
+		TaskMessage *string `json:"TaskMessage" name:"TaskMessage"`
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeTaskInfoResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeTaskInfoResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -267,9 +375,9 @@ type InstanceSet struct {
 	RegionId *int64 `json:"RegionId" name:"RegionId"`
 	// 区域id
 	ZoneId *int64 `json:"ZoneId" name:"ZoneId"`
-	// vpc网络id
+	// vpc网络id 如：75101
 	VpcId *int64 `json:"VpcId" name:"VpcId"`
-	// vpc网络下子网id
+	// vpc网络下子网id 如：46315
 	SubnetId *int64 `json:"SubnetId" name:"SubnetId"`
 	// 实例当前状态，0：待初始化；1：实例在流程中；2：实例运行中；-2：实例已隔离
 	Status *int64 `json:"Status" name:"Status"`
@@ -289,6 +397,16 @@ type InstanceSet struct {
 	AutoRenewFlag *int64 `json:"AutoRenewFlag" name:"AutoRenewFlag"`
 	// 实例到期时间
 	DeadlineTime *string `json:"DeadlineTime" name:"DeadlineTime"`
+	// 引擎：社区版Redis、腾讯云CKV
+	Engine *string `json:"Engine" name:"Engine"`
+	// 产品类型：Redis2.8集群版、Redis2.8主从版、Redis3.2主从版、Redis3.2集群版、Redis2.8单机版、Redis4.0集群版
+	ProductType *string `json:"ProductType" name:"ProductType"`
+	// vpc网络id 如：vpc-fk33jsf43kgv
+	UniqVpcId *string `json:"UniqVpcId" name:"UniqVpcId"`
+	// vpc网络下子网id 如：subnet-fd3j6l35mm0
+	UniqSubnetId *string `json:"UniqSubnetId" name:"UniqSubnetId"`
+	// 计费模式：0-按量计费，1-包年包月
+	BillingMode *int64 `json:"BillingMode" name:"BillingMode"`
 }
 
 type ManualBackupInstanceRequest struct {
@@ -313,7 +431,7 @@ type ManualBackupInstanceResponse struct {
 	Response *struct {
 		// 任务ID
 		TaskId *int64 `json:"TaskId" name:"TaskId"`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -351,7 +469,7 @@ type ModfiyInstancePasswordResponse struct {
 	Response *struct {
 		// 任务ID
 		TaskId *int64 `json:"TaskId" name:"TaskId"`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -395,7 +513,7 @@ type ModifyAutoBackupConfigResponse struct {
 		WeekDays []*string `json:"WeekDays" name:"WeekDays" list`
 		// 时间段 00:00-01:00, 01:00-02:00...... 23:00-00:00
 		TimePeriod *string `json:"TimePeriod" name:"TimePeriod"`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -407,6 +525,35 @@ func (r *ModifyAutoBackupConfigResponse) ToJsonString() string {
 
 func (r *ModifyAutoBackupConfigResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
+}
+
+type ProductConf struct {
+	// 产品类型，2-Redis主从版，3-CKV主从版，4-CKV集群版，5-Redis单机版，7-Redis集群版
+	Type *int64 `json:"Type" name:"Type"`
+	// 产品名称，Redis主从版，CKV主从版，CKV集群版，Redis单机版，Redis集群版
+	TypeName *string `json:"TypeName" name:"TypeName"`
+	// 购买时的最小数量
+	MinBuyNum *int64 `json:"MinBuyNum" name:"MinBuyNum"`
+	// 购买时的最大数量
+	MaxBuyNum *int64 `json:"MaxBuyNum" name:"MaxBuyNum"`
+	// 产品是否售罄
+	Saleout *bool `json:"Saleout" name:"Saleout"`
+	// 产品引擎，腾讯云CKV或者社区版Redis
+	Engine *string `json:"Engine" name:"Engine"`
+	// 兼容版本，Redis-2.8，Redis-3.2，Redis-4.0
+	Version *string `json:"Version" name:"Version"`
+	// 规格总大小，单位G
+	TotalSize []*string `json:"TotalSize" name:"TotalSize" list`
+	// 每个分片大小，单位G
+	ShardSize []*string `json:"ShardSize" name:"ShardSize" list`
+	// 副本数量
+	ReplicaNum []*string `json:"ReplicaNum" name:"ReplicaNum" list`
+	// 分片数量
+	ShardNum []*string `json:"ShardNum" name:"ShardNum" list`
+	// 支持的计费模式，1-包年包月，0-按量计费
+	PayMode *string `json:"PayMode" name:"PayMode"`
+	// 是否支持副本只读
+	EnableRepicaReadOnly *bool `json:"EnableRepicaReadOnly" name:"EnableRepicaReadOnly"`
 }
 
 type RedisBackupSet struct {
@@ -422,6 +569,19 @@ type RedisBackupSet struct {
 	Remark *string `json:"Remark" name:"Remark"`
 	// 备份是否被锁定，0：未被锁定；1：已被锁定
 	Locked *int64 `json:"Locked" name:"Locked"`
+}
+
+type RegionConf struct {
+	// 地域ID
+	RegionId *string `json:"RegionId" name:"RegionId"`
+	// 地域名称
+	RegionName *string `json:"RegionName" name:"RegionName"`
+	// 地域简称
+	RegionShortName *string `json:"RegionShortName" name:"RegionShortName"`
+	// 地域所在大区名称
+	Area *string `json:"Area" name:"Area"`
+	// 可用区信息
+	ZoneSet []*ZoneCapacityConf `json:"ZoneSet" name:"ZoneSet" list`
 }
 
 type RenewInstanceRequest struct {
@@ -446,7 +606,7 @@ type RenewInstanceResponse struct {
 	Response *struct {
 		// 交易Id
 		DealId *string `json:"DealId" name:"DealId"`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -482,7 +642,7 @@ type ResetPasswordResponse struct {
 	Response *struct {
 		// 任务ID
 		TaskId *int64 `json:"TaskId" name:"TaskId"`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -494,6 +654,33 @@ func (r *ResetPasswordResponse) ToJsonString() string {
 
 func (r *ResetPasswordResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
+}
+
+type TradeDealDetail struct {
+	// 订单号ID，调用云API时使用此ID
+	DealId *string `json:"DealId" name:"DealId"`
+	// 长订单ID，反馈订单问题给官方客服使用此ID
+	DealName *string `json:"DealName" name:"DealName"`
+	// 可用区id
+	ZoneId *int64 `json:"ZoneId" name:"ZoneId"`
+	// 订单关联的实例数
+	GoodsNum *int64 `json:"GoodsNum" name:"GoodsNum"`
+	// 创建用户uin
+	Creater *string `json:"Creater" name:"Creater"`
+	// 订单创建时间
+	CreatTime *string `json:"CreatTime" name:"CreatTime"`
+	// 订单超时时间
+	OverdueTime *string `json:"OverdueTime" name:"OverdueTime"`
+	// 订单完成时间
+	EndTime *string `json:"EndTime" name:"EndTime"`
+	// 订单状态 1：未支付 2:已支付，未发货 3:发货中 4:发货成功 5:发货失败 6:已退款 7:已关闭订单 8:订单过期 9:订单已失效 10:产品已失效 11:代付拒绝 12:支付中
+	Status *int64 `json:"Status" name:"Status"`
+	// 订单状态描述
+	Description *string `json:"Description" name:"Description"`
+	// 订单实际总价，单位：分
+	Price *int64 `json:"Price" name:"Price"`
+	// 实例ID
+	InstanceIds []*string `json:"InstanceIds" name:"InstanceIds" list`
 }
 
 type UpgradeInstanceRequest struct {
@@ -518,7 +705,7 @@ type UpgradeInstanceResponse struct {
 	Response *struct {
 		// 订单ID
 		DealId *string `json:"DealId" name:"DealId"`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -530,4 +717,21 @@ func (r *UpgradeInstanceResponse) ToJsonString() string {
 
 func (r *UpgradeInstanceResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
+}
+
+type ZoneCapacityConf struct {
+	// 可用区ID：如ap-guangzhou-3
+	ZoneId *string `json:"ZoneId" name:"ZoneId"`
+	// 可用区名称
+	ZoneName *string `json:"ZoneName" name:"ZoneName"`
+	// 可用区是否售罄
+	IsSaleout *bool `json:"IsSaleout" name:"IsSaleout"`
+	// 是否为默认可用区
+	IsDefault *bool `json:"IsDefault" name:"IsDefault"`
+	// 网络类型
+	NetWorkType []*string `json:"NetWorkType" name:"NetWorkType" list`
+	// 可用区内产品规格等信息
+	ProductSet []*ProductConf `json:"ProductSet" name:"ProductSet" list`
+	// 可用区ID：如100003
+	OldZoneId *int64 `json:"OldZoneId" name:"OldZoneId"`
 }

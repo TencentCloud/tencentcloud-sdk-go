@@ -195,9 +195,9 @@ type AssignPrivateIpAddressesRequest struct {
 	*tchttp.BaseRequest
 	// 弹性网卡实例ID，例如：eni-m6dyj72l。
 	NetworkInterfaceId *string `json:"NetworkInterfaceId" name:"NetworkInterfaceId"`
-	// 指定的内网IP信息。
+	// 指定的内网IP信息，单次最多指定10个。
 	PrivateIpAddresses []*PrivateIpAddressSpecification `json:"PrivateIpAddresses" name:"PrivateIpAddresses" list`
-	// 新申请的内网IP地址个数。
+	// 新申请的内网IP地址个数，内网IP地址个数总和不能超过配数。
 	SecondaryPrivateIpAddressCount *uint64 `json:"SecondaryPrivateIpAddressCount" name:"SecondaryPrivateIpAddressCount"`
 }
 
@@ -406,39 +406,47 @@ type CCN struct {
 }
 
 type CcnAttachedInstance struct {
-	// 云联网实例ID
+	// 云联网实例ID。
 	CcnId *string `json:"CcnId" name:"CcnId"`
-	// 关联实例类型，可选值：VPC、DIRECTCONNECT
+	// 关联实例类型：
+	// <li>`VPC`：私有网络</li>
+	// <li>`DIRECTCONNECT`：专线网关</li>
+	// <li>`BMVPC`：黑石私有网络</li>
 	InstanceType *string `json:"InstanceType" name:"InstanceType"`
-	// 关联实例ID
+	// 关联实例ID。
 	InstanceId *string `json:"InstanceId" name:"InstanceId"`
-	// 关联实例名称
+	// 关联实例名称。
 	InstanceName *string `json:"InstanceName" name:"InstanceName"`
-	// 关联实例所属大区，例如：ap-guangzhou
+	// 关联实例所属大区，例如：ap-guangzhou。
 	InstanceRegion *string `json:"InstanceRegion" name:"InstanceRegion"`
-	// 关联实例所属UIN（根账号）
+	// 关联实例所属UIN（根账号）。
 	InstanceUin *string `json:"InstanceUin" name:"InstanceUin"`
-	// 关联实例CIDR
+	// 关联实例CIDR。
 	CidrBlock []*string `json:"CidrBlock" name:"CidrBlock" list`
 	// 关联实例状态：
-	// PENDING：申请中
-	// ACTIVE：已连接
-	// EXPIRED：已过期
-	// REJECTED：已拒绝
-	// DELETED：已删除
+	// <li>`PENDING`：申请中</li>
+	// <li>`ACTIVE`：已连接</li>
+	// <li>`EXPIRED`：已过期</li>
+	// <li>`REJECTED`：已拒绝</li>
+	// <li>`DELETED`：已删除</li>
+	// <li>`ATTACHING`：关联中</li>
+	// <li>`DETACHING`：解关联中</li>
 	State *string `json:"State" name:"State"`
-	// 关联时间
+	// 关联时间。
 	AttachedTime *string `json:"AttachedTime" name:"AttachedTime"`
-	// 云联网所属UIN（根账号）
+	// 云联网所属UIN（根账号）。
 	CcnUin *string `json:"CcnUin" name:"CcnUin"`
 }
 
 type CcnInstance struct {
-	// 关联实例ID
+	// 关联实例ID。
 	InstanceId *string `json:"InstanceId" name:"InstanceId"`
-	// 关联实例ID所属大区，例如：ap-guangzhou
+	// 关联实例ID所属大区，例如：ap-guangzhou。
 	InstanceRegion *string `json:"InstanceRegion" name:"InstanceRegion"`
-	// 关联实例类型，可选值：VPC、DIRECTCONNECT
+	// 关联实例类型，可选值：
+	// <li>`VPC`：私有网络</li>
+	// <li>`DIRECTCONNECT`：专线网关</li>
+	// <li>`BMVPC`：黑石私有网络</li>
 	InstanceType *string `json:"InstanceType" name:"InstanceType"`
 }
 
@@ -780,6 +788,46 @@ func (r *CreateDirectConnectGatewayResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type CreateHaVipRequest struct {
+	*tchttp.BaseRequest
+	// `HAVIP`所在私有网络`ID`。
+	VpcId *string `json:"VpcId" name:"VpcId"`
+	// `HAVIP`所在子网`ID`。
+	SubnetId *string `json:"SubnetId" name:"SubnetId"`
+	// `HAVIP`名称。
+	HaVipName *string `json:"HaVipName" name:"HaVipName"`
+	// 指定虚拟IP地址，必须在`VPC`网段内且未被占用。不指定则自动分配。
+	Vip *string `json:"Vip" name:"Vip"`
+}
+
+func (r *CreateHaVipRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateHaVipRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateHaVipResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+		// `HAVIP`对象。
+		HaVip *HaVip `json:"HaVip" name:"HaVip"`
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateHaVipResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateHaVipResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type CreateNetworkInterfaceRequest struct {
 	*tchttp.BaseRequest
 	// VPC实例ID。可通过DescribeVpcs接口返回值中的VpcId获取。
@@ -790,11 +838,11 @@ type CreateNetworkInterfaceRequest struct {
 	SubnetId *string `json:"SubnetId" name:"SubnetId"`
 	// 弹性网卡描述，可任意命名，但不得超过60个字符。
 	NetworkInterfaceDescription *string `json:"NetworkInterfaceDescription" name:"NetworkInterfaceDescription"`
-	// 新申请的内网IP地址个数。
+	// 新申请的内网IP地址个数，内网IP地址个数总和不能超过配数。
 	SecondaryPrivateIpAddressCount *uint64 `json:"SecondaryPrivateIpAddressCount" name:"SecondaryPrivateIpAddressCount"`
 	// 指定绑定的安全组，例如：['sg-1dd51d']。
 	SecurityGroupIds []*string `json:"SecurityGroupIds" name:"SecurityGroupIds" list`
-	// 指定内网IP信息。
+	// 指定的内网IP信息，单次最多指定10个。
 	PrivateIpAddresses []*PrivateIpAddressSpecification `json:"PrivateIpAddresses" name:"PrivateIpAddresses" list`
 }
 
@@ -1432,6 +1480,70 @@ func (r *DeleteDirectConnectGatewayCcnRoutesResponse) ToJsonString() string {
 }
 
 func (r *DeleteDirectConnectGatewayCcnRoutesResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteDirectConnectGatewayRequest struct {
+	*tchttp.BaseRequest
+	// 专线网关唯一`ID`，形如：`dcg-9o233uri`。
+	DirectConnectGatewayId *string `json:"DirectConnectGatewayId" name:"DirectConnectGatewayId"`
+}
+
+func (r *DeleteDirectConnectGatewayRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteDirectConnectGatewayRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteDirectConnectGatewayResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DeleteDirectConnectGatewayResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteDirectConnectGatewayResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteHaVipRequest struct {
+	*tchttp.BaseRequest
+	// `HAVIP`唯一`ID`，形如：`havip-9o233uri`。
+	HaVipId *string `json:"HaVipId" name:"HaVipId"`
+}
+
+func (r *DeleteHaVipRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteHaVipRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteHaVipResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DeleteHaVipResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteHaVipResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -2366,8 +2478,16 @@ func (r *DescribeCustomerGatewaysResponse) FromJsonString(s string) error {
 
 type DescribeDirectConnectGatewayCcnRoutesRequest struct {
 	*tchttp.BaseRequest
-	// 专线网关ID，形如：dcg-prpqlmg1
+	// 专线网关ID，形如：`dcg-prpqlmg1`。
 	DirectConnectGatewayId *string `json:"DirectConnectGatewayId" name:"DirectConnectGatewayId"`
+	// 云联网路由学习类型，可选值：
+	// <li>`BGP` - 自动学习。</li>
+	// <li>`STATIC` - 静态，即用户配置，默认值。</li>
+	CcnRouteType *string `json:"CcnRouteType" name:"CcnRouteType"`
+	// 偏移量。
+	Offset *uint64 `json:"Offset" name:"Offset"`
+	// 返回数量。
+	Limit *uint64 `json:"Limit" name:"Limit"`
 }
 
 func (r *DescribeDirectConnectGatewayCcnRoutesRequest) ToJsonString() string {
@@ -2397,6 +2517,102 @@ func (r *DescribeDirectConnectGatewayCcnRoutesResponse) ToJsonString() string {
 }
 
 func (r *DescribeDirectConnectGatewayCcnRoutesResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeDirectConnectGatewaysRequest struct {
+	*tchttp.BaseRequest
+	// 专线网关唯一`ID`，形如：`dcg-9o233uri`。
+	DirectConnectGatewayIds []*string `json:"DirectConnectGatewayIds" name:"DirectConnectGatewayIds" list`
+	// 过滤条件，参数不支持同时指定`DirectConnectGatewayIds`和`Filters`。
+	// <li>direct-connect-gateway-id - String - 专线网关唯一`ID`，形如：`dcg-9o233uri`。</li>
+	// <li>direct-connect-gateway-name - String - 专线网关名称，默认模糊查询。</li>
+	// <li>direct-connect-gateway-ip - String - 专线网关`IP`。</li>
+	// <li>gateway-type - String - 网关类型，可选值：`NORMAL`（普通型）、`NAT`（NAT型）。</li>
+	// <li>network-type- String - 网络类型，可选值：`VPC`（私有网络类型）、`CCN`（云联网类型）。</li>
+	// <li>ccn-id - String - 专线网关所在私有网络`ID`。</li>
+	// <li>vpc-id - String - 专线网关所在云联网`ID`。</li>
+	Filters []*Filter `json:"Filters" name:"Filters" list`
+	// 偏移量。
+	Offset *uint64 `json:"Offset" name:"Offset"`
+	// 返回数量。
+	Limit *uint64 `json:"Limit" name:"Limit"`
+}
+
+func (r *DescribeDirectConnectGatewaysRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeDirectConnectGatewaysRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeDirectConnectGatewaysResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+		// 符合条件的对象数。
+		TotalCount *uint64 `json:"TotalCount" name:"TotalCount"`
+		// 专线网关对象数组。
+		DirectConnectGatewaySet []*DirectConnectGateway `json:"DirectConnectGatewaySet" name:"DirectConnectGatewaySet" list`
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeDirectConnectGatewaysResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeDirectConnectGatewaysResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeHaVipsRequest struct {
+	*tchttp.BaseRequest
+	// `HAVIP`唯一`ID`，形如：`havip-9o233uri`。
+	HaVipIds []*string `json:"HaVipIds" name:"HaVipIds" list`
+	// 过滤条件，参数不支持同时指定`HaVipIds`和`Filters`。
+	// <li>havip-id - String - `HAVIP`唯一`ID`，形如：`havip-9o233uri`。</li>
+	// <li>havip-name - String - `HAVIP`名称。</li>
+	// <li>vpc-id - String - `HAVIP`所在私有网络`ID`。</li>
+	// <li>subnet-id - String - `HAVIP`所在子网`ID`。</li>
+	// <li>address-ip - String - `HAVIP`绑定的弹性公网`IP`。</li>
+	Filters []*Filter `json:"Filters" name:"Filters" list`
+	// 偏移量
+	Offset *uint64 `json:"Offset" name:"Offset"`
+	// 返回数量
+	Limit *uint64 `json:"Limit" name:"Limit"`
+}
+
+func (r *DescribeHaVipsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeHaVipsRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeHaVipsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+		// 符合条件的对象数。
+		TotalCount *uint64 `json:"TotalCount" name:"TotalCount"`
+		// `HAVIP`对象数组。
+		HaVipSet []*HaVip `json:"HaVipSet" name:"HaVipSet" list`
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeHaVipsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeHaVipsResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -3015,34 +3231,46 @@ func (r *DetachNetworkInterfaceResponse) FromJsonString(s string) error {
 }
 
 type DirectConnectGateway struct {
-	// 专线网关ID
+	// 专线网关`ID`。
 	DirectConnectGatewayId *string `json:"DirectConnectGatewayId" name:"DirectConnectGatewayId"`
-	// 专线网关名称
+	// 专线网关名称。
 	DirectConnectGatewayName *string `json:"DirectConnectGatewayName" name:"DirectConnectGatewayName"`
-	// VPC实例ID
+	// 专线网关关联`VPC`实例`ID`。
 	VpcId *string `json:"VpcId" name:"VpcId"`
-	// 关联网络类型，可选值：
-	// <li>VPC - 私有网络</li>
-	// <li>CCN - 云联网</li>
+	// 关联网络类型：
+	// <li>`VPC` - 私有网络</li>
+	// <li>`CCN` - 云联网</li>
 	NetworkType *string `json:"NetworkType" name:"NetworkType"`
-	// <li>NetworkType 为 VPC 时，这里传值为私有网络实例ID</li>
-	// <li>NetworkType 为 NAT 时，这里传值为云联网实例ID</li>
+	// 关联网络实例`ID`：
+	// <li>`NetworkType`为`VPC`时，这里为私有网络实例`ID`</li>
+	// <li>`NetworkType`为`CCN`时，这里为云联网实例`ID`</li>
 	NetworkInstanceId *string `json:"NetworkInstanceId" name:"NetworkInstanceId"`
-	// 网关类型，可选值：
-	// <li>NORMAL - （默认）标准型，注：云联网只支持标准型</li>
-	// <li>NAT - NAT型</li>NAT类型支持网络地址转换配置，类型确定后不能修改；一个私有网络可以创建一个NAT类型的专线网关和一个非NAT类型的专线网关
+	// 网关类型：
+	// <li>NORMAL - 标准型，注：云联网只支持标准型</li>
+	// <li>NAT - NAT型</li>
+	// NAT类型支持网络地址转换配置，类型确定后不能修改；一个私有网络可以创建一个NAT类型的专线网关和一个非NAT类型的专线网关
 	GatewayType *string `json:"GatewayType" name:"GatewayType"`
-	// 专线通道数
-	DirectConnectTunnelCount *uint64 `json:"DirectConnectTunnelCount" name:"DirectConnectTunnelCount"`
-	// 创建时间
+	// 创建时间。
 	CreateTime *string `json:"CreateTime" name:"CreateTime"`
+	// 专线网关IP。
+	DirectConnectGatewayIp *string `json:"DirectConnectGatewayIp" name:"DirectConnectGatewayIp"`
+	// 专线网关关联`CCN`实例`ID`。
+	CcnId *string `json:"CcnId" name:"CcnId"`
+	// 云联网路由学习类型：
+	// <li>`BGP` - 自动学习。</li>
+	// <li>`STATIC` - 静态，即用户配置。</li>
+	CcnRouteType *string `json:"CcnRouteType" name:"CcnRouteType"`
+	// 是否启用BGP。
+	EnableBGP *bool `json:"EnableBGP" name:"EnableBGP"`
 }
 
 type DirectConnectGatewayCcnRoute struct {
-	// 路由ID
+	// 路由ID。
 	RouteId *string `json:"RouteId" name:"RouteId"`
-	// IDC网段
+	// IDC网段。
 	DestinationCidrBlock *string `json:"DestinationCidrBlock" name:"DestinationCidrBlock"`
+	// `BGP`的`AS-Path`属性。
+	ASPath []*string `json:"ASPath" name:"ASPath" list`
 }
 
 type DisableCcnRoutesRequest struct {
@@ -3267,6 +3495,97 @@ type FilterObject struct {
 	Name *string `json:"Name" name:"Name"`
 	// 属性值, 若同一个Filter存在多个Values，同一Filter下Values间的关系为逻辑或（OR）关系。
 	Values []*string `json:"Values" name:"Values" list`
+}
+
+type HaVip struct {
+	// `HAVIP`的`ID`，是`HAVIP`的唯一标识。
+	HaVipId *string `json:"HaVipId" name:"HaVipId"`
+	// `HAVIP`名称。
+	HaVipName *string `json:"HaVipName" name:"HaVipName"`
+	// 虚拟IP地址。
+	Vip *string `json:"Vip" name:"Vip"`
+	// `HAVIP`所在私有网络`ID`。
+	VpcId *string `json:"VpcId" name:"VpcId"`
+	// `HAVIP`所在子网`ID`。
+	SubnetId *string `json:"SubnetId" name:"SubnetId"`
+	// `HAVIP`关联弹性网卡`ID`。
+	NetworkInterfaceId *string `json:"NetworkInterfaceId" name:"NetworkInterfaceId"`
+	// 被绑定的实例`ID`。
+	InstanceId *string `json:"InstanceId" name:"InstanceId"`
+	// 绑定`EIP`。
+	AddressIp *string `json:"AddressIp" name:"AddressIp"`
+	// 状态：
+	// <li>`AVAILABLE`：运行中</li>
+	// <li>`UNBIND`：未绑定</li>
+	State *string `json:"State" name:"State"`
+	// 创建时间。
+	CreatedTime *string `json:"CreatedTime" name:"CreatedTime"`
+}
+
+type HaVipAssociateAddressIpRequest struct {
+	*tchttp.BaseRequest
+	// `HAVIP`唯一`ID`，形如：`havip-9o233uri`。必须是没有绑定`EIP`的`HAVIP`
+	HaVipId *string `json:"HaVipId" name:"HaVipId"`
+	// 弹性公网`IP`。必须是没有绑定`HAVIP`的`EIP`
+	AddressIp *string `json:"AddressIp" name:"AddressIp"`
+}
+
+func (r *HaVipAssociateAddressIpRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *HaVipAssociateAddressIpRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type HaVipAssociateAddressIpResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *HaVipAssociateAddressIpResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *HaVipAssociateAddressIpResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type HaVipDisassociateAddressIpRequest struct {
+	*tchttp.BaseRequest
+	// `HAVIP`唯一`ID`，形如：`havip-9o233uri`。必须是已绑定`EIP`的`HAVIP`。
+	HaVipId *string `json:"HaVipId" name:"HaVipId"`
+}
+
+func (r *HaVipDisassociateAddressIpRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *HaVipDisassociateAddressIpRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type HaVipDisassociateAddressIpResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *HaVipDisassociateAddressIpResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *HaVipDisassociateAddressIpResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
 }
 
 type IKEOptionsSpecification struct {
@@ -3754,6 +4073,76 @@ func (r *ModifyCustomerGatewayAttributeResponse) ToJsonString() string {
 }
 
 func (r *ModifyCustomerGatewayAttributeResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyDirectConnectGatewayAttributeRequest struct {
+	*tchttp.BaseRequest
+	// 专线网关唯一`ID`，形如：`dcg-9o233uri`。
+	DirectConnectGatewayId *string `json:"DirectConnectGatewayId" name:"DirectConnectGatewayId"`
+	// 专线网关名称，可任意命名，但不得超过60个字符。
+	DirectConnectGatewayName *string `json:"DirectConnectGatewayName" name:"DirectConnectGatewayName"`
+	// 云联网路由学习类型，可选值：`BGP`（自动学习）、`STATIC`（静态，即用户配置）。只有云联网类型专线网关且开启了BGP功能才支持修改`CcnRouteType`。
+	CcnRouteType *string `json:"CcnRouteType" name:"CcnRouteType"`
+}
+
+func (r *ModifyDirectConnectGatewayAttributeRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyDirectConnectGatewayAttributeRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyDirectConnectGatewayAttributeResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifyDirectConnectGatewayAttributeResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyDirectConnectGatewayAttributeResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyHaVipAttributeRequest struct {
+	*tchttp.BaseRequest
+	// `HAVIP`唯一`ID`，形如：`havip-9o233uri`。
+	HaVipId *string `json:"HaVipId" name:"HaVipId"`
+	// `HAVIP`名称，可任意命名，但不得超过60个字符。
+	HaVipName *string `json:"HaVipName" name:"HaVipName"`
+}
+
+func (r *ModifyHaVipAttributeRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyHaVipAttributeRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyHaVipAttributeResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifyHaVipAttributeResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyHaVipAttributeResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -4767,7 +5156,7 @@ type SecurityGroupPolicy struct {
 	ServiceTemplate *ServiceTemplateSpecification `json:"ServiceTemplate" name:"ServiceTemplate"`
 	// 网段或IP(互斥)。
 	CidrBlock *string `json:"CidrBlock" name:"CidrBlock"`
-	// 已绑定安全组的网段或IP。
+	// 安全组实例ID，例如：sg-ohuuioma。
 	SecurityGroupId *string `json:"SecurityGroupId" name:"SecurityGroupId"`
 	// IP地址ID或者ID地址组ID。
 	AddressTemplate *AddressTemplateSpecification `json:"AddressTemplate" name:"AddressTemplate"`
@@ -4915,7 +5304,7 @@ type UnassignPrivateIpAddressesRequest struct {
 	*tchttp.BaseRequest
 	// 弹性网卡实例ID，例如：eni-m6dyj72l。
 	NetworkInterfaceId *string `json:"NetworkInterfaceId" name:"NetworkInterfaceId"`
-	// 指定的内网IP信息。
+	// 指定的内网IP信息，单次最多指定10个。
 	PrivateIpAddresses []*PrivateIpAddressSpecification `json:"PrivateIpAddresses" name:"PrivateIpAddresses" list`
 }
 

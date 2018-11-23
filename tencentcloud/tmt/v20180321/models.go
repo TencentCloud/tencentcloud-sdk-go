@@ -141,7 +141,7 @@ type SpeechTranslateRequest struct {
 	Seq *int64 `json:"Seq" name:"Seq"`
 	// 是否最后一片语音分片，0-否，1-是
 	IsEnd *int64 `json:"IsEnd" name:"IsEnd"`
-	// 语音分片内容的base64字符串
+	// 语音分片内容的base64字符串，音频内容应含有效并可识别的文本
 	Data *string `json:"Data" name:"Data"`
 	// 项目id，用户可自定义
 	ProjectId *int64 `json:"ProjectId" name:"ProjectId"`
@@ -189,7 +189,7 @@ func (r *SpeechTranslateResponse) FromJsonString(s string) error {
 
 type TextTranslateRequest struct {
 	*tchttp.BaseRequest
-	// 待翻译的文本，文本统一使用utf-8格式编码，非utf-8格式编码字符会翻译失败
+	// 待翻译的文本，文本统一使用utf-8格式编码，非utf-8格式编码字符会翻译失败，请传入有效文本，html标记等非常规翻译文本会翻译失败
 	SourceText *string `json:"SourceText" name:"SourceText"`
 	// 源语言，参照Target支持语言列表
 	Source *string `json:"Source" name:"Source"`

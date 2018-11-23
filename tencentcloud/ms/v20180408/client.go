@@ -67,6 +67,31 @@ func (c *Client) CreateBindInstance(request *CreateBindInstanceRequest) (respons
     return
 }
 
+func NewCreateCosSecKeyInstanceRequest() (request *CreateCosSecKeyInstanceRequest) {
+    request = &CreateCosSecKeyInstanceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ms", APIVersion, "CreateCosSecKeyInstance")
+    return
+}
+
+func NewCreateCosSecKeyInstanceResponse() (response *CreateCosSecKeyInstanceResponse) {
+    response = &CreateCosSecKeyInstanceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 获取云COS文件存储临时密钥，密钥仅限于临时上传文件，有访问限制和时效性。
+func (c *Client) CreateCosSecKeyInstance(request *CreateCosSecKeyInstanceRequest) (response *CreateCosSecKeyInstanceResponse, err error) {
+    if request == nil {
+        request = NewCreateCosSecKeyInstanceRequest()
+    }
+    response = NewCreateCosSecKeyInstanceResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateResourceInstancesRequest() (request *CreateResourceInstancesRequest) {
     request = &CreateResourceInstancesRequest{
         BaseRequest: &tchttp.BaseRequest{},

@@ -54,7 +54,7 @@ type GetInvokeTxResponse struct {
 		TxValidationCode *int64 `json:"TxValidationCode" name:"TxValidationCode"`
 		// 消息
 		TxValidationMsg *string `json:"TxValidationMsg" name:"TxValidationMsg"`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -106,7 +106,7 @@ type InvokeResponse struct {
 		Txid *string `json:"Txid" name:"Txid"`
 		// 返回内容
 		Events *string `json:"Events" name:"Events"`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -161,7 +161,7 @@ type QueryResponse struct {
 	Response *struct {
 		// 查询结果数据
 		Data []*string `json:"Data" name:"Data" list`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }

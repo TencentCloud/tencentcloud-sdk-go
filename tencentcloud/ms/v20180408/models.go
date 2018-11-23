@@ -55,13 +55,13 @@ type AppDetailInfo struct {
 type AppInfo struct {
 	// app的url，必须保证不用权限校验就可以下载
 	AppUrl *string `json:"AppUrl" name:"AppUrl"`
-	// app的md5
+	// app的md5，需要正确传递
 	AppMd5 *string `json:"AppMd5" name:"AppMd5"`
 	// app的大小
 	AppSize *uint64 `json:"AppSize" name:"AppSize"`
 	// app的文件名，指定后加固后的文件名是{FileName}_legu.apk
 	FileName *string `json:"FileName" name:"FileName"`
-	// app的包名
+	// app的包名，如果是专业版加固和企业版本加固，需要正确的传递此字段
 	AppPkgName *string `json:"AppPkgName" name:"AppPkgName"`
 	// app的版本号
 	AppVersion *string `json:"AppVersion" name:"AppVersion"`
@@ -168,7 +168,7 @@ type CreateBindInstanceResponse struct {
 	Response *struct {
 		// 任务状态: 1-已完成,2-处理中,3-处理出错,4-处理超时
 		Progress *uint64 `json:"Progress" name:"Progress"`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -179,6 +179,56 @@ func (r *CreateBindInstanceResponse) ToJsonString() string {
 }
 
 func (r *CreateBindInstanceResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateCosSecKeyInstanceRequest struct {
+	*tchttp.BaseRequest
+	// 地域信息，例如广州：ap-guangzhou，上海：ap-shanghai，默认为广州。
+	CosRegion *string `json:"CosRegion" name:"CosRegion"`
+	// 密钥有效时间，默认为1小时。
+	Duration *uint64 `json:"Duration" name:"Duration"`
+}
+
+func (r *CreateCosSecKeyInstanceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateCosSecKeyInstanceRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateCosSecKeyInstanceResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+		// COS密钥对应的AppId
+		CosAppid *uint64 `json:"CosAppid" name:"CosAppid"`
+		// COS密钥对应的存储桶名
+		CosBucket *string `json:"CosBucket" name:"CosBucket"`
+		// 存储桶对应的地域
+		CosRegion *string `json:"CosRegion" name:"CosRegion"`
+		// 密钥过期时间
+		ExpireTime *uint64 `json:"ExpireTime" name:"ExpireTime"`
+		// 密钥ID信息
+		CosId *string `json:"CosId" name:"CosId"`
+		// 密钥KEY信息
+		CosKey *string `json:"CosKey" name:"CosKey"`
+		// 密钥TOCKEN信息
+		CosTocken *string `json:"CosTocken" name:"CosTocken"`
+		// 密钥可访问的文件前缀人。例如：CosPrefix=test/123/666，则该密钥只能操作test/123/666为前缀的文件，例如test/123/666/1.txt
+		CosPrefix *string `json:"CosPrefix" name:"CosPrefix"`
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateCosSecKeyInstanceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateCosSecKeyInstanceResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -208,7 +258,7 @@ type CreateResourceInstancesResponse struct {
 	Response *struct {
 		// 新创建的资源列表。
 		ResourceSet []*string `json:"ResourceSet" name:"ResourceSet" list`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -252,7 +302,7 @@ type CreateScanInstancesResponse struct {
 		LimitCount *uint64 `json:"LimitCount" name:"LimitCount"`
 		// 到期时间
 		LimitTime *uint64 `json:"LimitTime" name:"LimitTime"`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -290,7 +340,7 @@ type CreateShieldInstanceResponse struct {
 		Progress *uint64 `json:"Progress" name:"Progress"`
 		// 任务唯一标识
 		ItemId *string `json:"ItemId" name:"ItemId"`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -330,7 +380,7 @@ type CreateShieldPlanInstanceResponse struct {
 		PlanId *uint64 `json:"PlanId" name:"PlanId"`
 		// 任务状态: 1-已完成,2-处理中,3-处理出错,4-处理超时
 		Progress *uint64 `json:"Progress" name:"Progress"`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -364,7 +414,7 @@ type DeleteScanInstancesResponse struct {
 	Response *struct {
 		// 任务状态: 1-已完成,2-处理中,3-处理出错,4-处理超时
 		Progress *uint64 `json:"Progress" name:"Progress"`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -398,7 +448,7 @@ type DeleteShieldInstancesResponse struct {
 	Response *struct {
 		// 任务状态: 1-已完成,2-处理中,3-处理出错,4-处理超时
 		Progress *uint64 `json:"Progress" name:"Progress"`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -444,7 +494,7 @@ type DescribeResourceInstancesResponse struct {
 		TotalCount *uint64 `json:"TotalCount" name:"TotalCount"`
 		// 符合要求的资源数组
 		ResourceSet []*ResourceInfo `json:"ResourceSet" name:"ResourceSet" list`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -490,7 +540,7 @@ type DescribeScanInstancesResponse struct {
 		TotalCount *uint64 `json:"TotalCount" name:"TotalCount"`
 		// 一个关于app详细信息的结构体，主要包括app的基本信息和扫描状态信息。
 		ScanSet []*AppScanSet `json:"ScanSet" name:"ScanSet" list`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -528,7 +578,7 @@ type DescribeScanResultsResponse struct {
 		ScanSet []*ScanSetInfo `json:"ScanSet" name:"ScanSet" list`
 		// 批量扫描结果的个数
 		TotalCount *uint64 `json:"TotalCount" name:"TotalCount"`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -574,7 +624,7 @@ type DescribeShieldInstancesResponse struct {
 		TotalCount *uint64 `json:"TotalCount" name:"TotalCount"`
 		// 一个关于app详细信息的结构体，主要包括app的基本信息和加固信息。
 		AppSet []*AppSetInfo `json:"AppSet" name:"AppSet" list`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -614,7 +664,7 @@ type DescribeShieldPlanInstanceResponse struct {
 		ShieldPlanInfo *ShieldPlanInfo `json:"ShieldPlanInfo" name:"ShieldPlanInfo"`
 		// 加固资源信息
 		ResourceServiceInfo *ResourceServiceInfo `json:"ResourceServiceInfo" name:"ResourceServiceInfo"`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -652,7 +702,11 @@ type DescribeShieldResultResponse struct {
 		AppDetailInfo *AppDetailInfo `json:"AppDetailInfo" name:"AppDetailInfo"`
 		// app加固后的详细信息
 		ShieldInfo *ShieldInfo `json:"ShieldInfo" name:"ShieldInfo"`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 状态描述
+		StatusDesc *string `json:"StatusDesc" name:"StatusDesc"`
+		// 状态指引
+		StatusRef *string `json:"StatusRef" name:"StatusRef"`
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -774,14 +828,20 @@ type ScanSetInfo struct {
 	AdInfo *AdInfo `json:"AdInfo" name:"AdInfo"`
 	// 提交扫描的时间
 	TaskTime *uint64 `json:"TaskTime" name:"TaskTime"`
+	// 状态码，成功返回0，失败返回错误码
+	StatusCode *uint64 `json:"StatusCode" name:"StatusCode"`
+	// 状态描述
+	StatusDesc *string `json:"StatusDesc" name:"StatusDesc"`
+	// 状态操作指引
+	StatusRef *string `json:"StatusRef" name:"StatusRef"`
 }
 
 type ServiceInfo struct {
-	// 服务版本，基础版basic，专业版professional，企业版enterprise
+	// 服务版本，基础版basic，专业版professional，企业版enterprise。
 	ServiceEdition *string `json:"ServiceEdition" name:"ServiceEdition"`
-	// 任务处理完成后的反向通知回调地址,通知为POST请求，post包体数据示例{"Response":{"ItemId":"4cdad8fb86f036b06bccb3f58971c306","ShieldCode":0,"ShieldMd5":"78701576793c4a5f04e1c9660de0aa0b","ShieldSize":11997354,"TaskStatus":1,"TaskTime":1539148141}}，调用方需要返回如下信息，{"Result":"ok","Reason":"xxxxx"}，如果Result字段值不等于ok会继续回调。
+	// 任务处理完成后的反向通知回调地址，如果不需要通知请传递空字符串。通知为POST请求，post包体数据示例{"Response":{"ItemId":"4cdad8fb86f036b06bccb3f58971c306","ShieldCode":0,"ShieldMd5":"78701576793c4a5f04e1c9660de0aa0b","ShieldSize":11997354,"TaskStatus":1,"TaskTime":1539148141}}，调用方需要返回如下信息，{"Result":"ok","Reason":"xxxxx"}，如果Result字段值不等于ok会继续回调。
 	CallbackUrl *string `json:"CallbackUrl" name:"CallbackUrl"`
-	// 提交来源 YYB-应用宝 RDM-rdm MC-控制台 MAC_TOOL-mac工具 WIN_TOOL-window工具
+	// 提交来源 YYB-应用宝 RDM-rdm MC-控制台 MAC_TOOL-mac工具 WIN_TOOL-window工具。
 	SubmitSource *string `json:"SubmitSource" name:"SubmitSource"`
 	// 加固策略编号，如果不传则使用系统默认加固策略。如果指定的plan不存在会返回错误。
 	PlanId *uint64 `json:"PlanId" name:"PlanId"`

@@ -161,7 +161,7 @@ type CreatePullStreamConfigRequest struct {
 	*tchttp.BaseRequest
 	// 源Url。
 	FromUrl *string `json:"FromUrl" name:"FromUrl"`
-	// 目的Url。
+	// 目的Url，目前限制该目标地址为腾讯域名。
 	ToUrl *string `json:"ToUrl" name:"ToUrl"`
 	// 区域id,1-深圳,2-上海，3-天津,4-香港。
 	AreaId *int64 `json:"AreaId" name:"AreaId"`
@@ -267,44 +267,6 @@ func (r *DeleteLiveWatermarkResponse) ToJsonString() string {
 }
 
 func (r *DeleteLiveWatermarkResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
-}
-
-type DescribeDrmEncryptKeysRequest struct {
-	*tchttp.BaseRequest
-	// 获取key所需要的参数。
-	DrmGetKeyPara *DrmGetKeyPara `json:"DrmGetKeyPara" name:"DrmGetKeyPara"`
-	// base64 编码的DrmGetKeyPara参数数字签名。
-	RsaSignature *string `json:"RsaSignature" name:"RsaSignature"`
-}
-
-func (r *DescribeDrmEncryptKeysRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-func (r *DescribeDrmEncryptKeysRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
-}
-
-type DescribeDrmEncryptKeysResponse struct {
-	*tchttp.BaseResponse
-	Response *struct {
-		// base64加密后的EncryptKeys信息。
-		EncryptKeys *string `json:"EncryptKeys" name:"EncryptKeys"`
-		// 使用公钥加密的sessionkey，用来使用aes-128 ecb模式解码encryptkeys中key和iv。
-		SessionKey *string `json:"SessionKey" name:"SessionKey"`
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId" name:"RequestId"`
-	} `json:"Response"`
-}
-
-func (r *DescribeDrmEncryptKeysResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-func (r *DescribeDrmEncryptKeysResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -646,64 +608,6 @@ func (r *DescribePullStreamConfigsResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
-type DrmEncryptInfo struct {
-	// cos的end point。
-	CosEndPoint *string `json:"CosEndPoint" name:"CosEndPoint"`
-	// cos api密钥id。
-	SecretId *string `json:"SecretId" name:"SecretId"`
-	// cos api密钥。
-	SecretKey *string `json:"SecretKey" name:"SecretKey"`
-	// drm类型，widevine或fairplay
-	DrmType *string `json:"DrmType" name:"DrmType"`
-	// cos上的原始视频。
-	SourceObject *DrmSourceObject `json:"SourceObject" name:"SourceObject"`
-	// 加密的视频传输到cos位置。
-	OutputObjects []*DrmOutputObject `json:"OutputObjects" name:"OutputObjects" list`
-}
-
-type DrmGetKeyPara struct {
-	// drm类型，widevine或fairplay
-	DrmType *string `json:"DrmType" name:"DrmType"`
-	// Tracks，audio,video
-	Tracks []*string `json:"Tracks" name:"Tracks" list`
-	// rsa 公钥的base64 编码数据
-	PublicKey *string `json:"PublicKey" name:"PublicKey"`
-	// 内容id，标识唯一一个加密内容
-	ContentID *string `json:"ContentID" name:"ContentID"`
-}
-
-type DrmLicenseInfo struct {
-	// drm类型，widevine或fairplay
-	DrmType *string `json:"DrmType" name:"DrmType"`
-	// base64编码后的License请求。
-	LicenseReq *string `json:"LicenseReq" name:"LicenseReq"`
-	// 播放策略参数
-	PlaybackPolicy *PlaybackPolicy `json:"PlaybackPolicy" name:"PlaybackPolicy"`
-}
-
-type DrmOutputObject struct {
-	// 输出的桶名称。
-	BucketName *string `json:"BucketName" name:"BucketName"`
-	// 输出的对象名称。
-	ObjectName *string `json:"ObjectName" name:"ObjectName"`
-	// 输出对象参数。
-	Para *DrmOutputPara `json:"Para" name:"Para"`
-}
-
-type DrmOutputPara struct {
-	// 内容类型。例:video
-	Type *string `json:"Type" name:"Type"`
-	// 语言,例: en, zh-cn
-	Language *string `json:"Language" name:"Language"`
-}
-
-type DrmSourceObject struct {
-	// 输入的桶名称。
-	BucketName *string `json:"BucketName" name:"BucketName"`
-	// 输入对象名称。
-	ObjectName *string `json:"ObjectName" name:"ObjectName"`
-}
-
 type DropLiveStreamRequest struct {
 	*tchttp.BaseRequest
 	// 流名称。
@@ -749,8 +653,7 @@ type ForbidLiveStreamRequest struct {
 	// 流名称。
 	StreamName *string `json:"StreamName" name:"StreamName"`
 	// 恢复流的时间。UTC 格式，例如：2018-11-29T19:00:00Z。
-	// 
-	// UTC 时间，格式：2018-08-08T17:37:00Z。
+	// 注意：默认禁播90天，且最长支持禁播90天。
 	ResumeTime *string `json:"ResumeTime" name:"ResumeTime"`
 }
 
@@ -777,74 +680,6 @@ func (r *ForbidLiveStreamResponse) ToJsonString() string {
 }
 
 func (r *ForbidLiveStreamResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
-}
-
-type GetLiveDrmLicenseRequest struct {
-	*tchttp.BaseRequest
-	// DRMlicense信息。
-	DrmLicenseInfo *DrmLicenseInfo `json:"DrmLicenseInfo" name:"DrmLicenseInfo"`
-}
-
-func (r *GetLiveDrmLicenseRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-func (r *GetLiveDrmLicenseRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
-}
-
-type GetLiveDrmLicenseResponse struct {
-	*tchttp.BaseResponse
-	Response *struct {
-		// base64加密后的二进制License信息
-		License *string `json:"License" name:"License"`
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId" name:"RequestId"`
-	} `json:"Response"`
-}
-
-func (r *GetLiveDrmLicenseResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-func (r *GetLiveDrmLicenseResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
-}
-
-type GetVodDrmLicenseRequest struct {
-	*tchttp.BaseRequest
-	// Drmlicense信息。
-	DrmLicenseInfo *DrmLicenseInfo `json:"DrmLicenseInfo" name:"DrmLicenseInfo"`
-}
-
-func (r *GetVodDrmLicenseRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-func (r *GetVodDrmLicenseRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
-}
-
-type GetVodDrmLicenseResponse struct {
-	*tchttp.BaseResponse
-	Response *struct {
-		// base64 加密的license 二进制数据
-		License *string `json:"License" name:"License"`
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId" name:"RequestId"`
-	} `json:"Response"`
-}
-
-func (r *GetVodDrmLicenseResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-func (r *GetVodDrmLicenseResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -1018,13 +853,6 @@ type PlayAuthKeyInfo struct {
 	AuthDelta *uint64 `json:"AuthDelta" name:"AuthDelta"`
 }
 
-type PlaybackPolicy struct {
-	// 播放license有效时长
-	LicenseDurationSeconds *int64 `json:"LicenseDurationSeconds" name:"LicenseDurationSeconds"`
-	// 开始播放后，license的有效时长
-	PlaybackDurationSeconds *int64 `json:"PlaybackDurationSeconds" name:"PlaybackDurationSeconds"`
-}
-
 type PublishTime struct {
 	// 推流时间
 	// UTC 格式，例如：2018-06-29T19:00:00Z。
@@ -1166,38 +994,6 @@ func (r *SetLiveWatermarkStatusResponse) ToJsonString() string {
 }
 
 func (r *SetLiveWatermarkStatusResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
-}
-
-type StartDrmEncryptionRequest struct {
-	*tchttp.BaseRequest
-	// Drm加密所需要的信息。
-	DrmEncryptInfo *DrmEncryptInfo `json:"DrmEncryptInfo" name:"DrmEncryptInfo"`
-}
-
-func (r *StartDrmEncryptionRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-func (r *StartDrmEncryptionRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
-}
-
-type StartDrmEncryptionResponse struct {
-	*tchttp.BaseResponse
-	Response *struct {
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId" name:"RequestId"`
-	} `json:"Response"`
-}
-
-func (r *StartDrmEncryptionResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-func (r *StartDrmEncryptionResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 

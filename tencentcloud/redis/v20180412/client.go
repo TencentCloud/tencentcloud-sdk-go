@@ -142,6 +142,31 @@ func (c *Client) DescribeInstanceBackups(request *DescribeInstanceBackupsRequest
     return
 }
 
+func NewDescribeInstanceDealDetailRequest() (request *DescribeInstanceDealDetailRequest) {
+    request = &DescribeInstanceDealDetailRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("redis", APIVersion, "DescribeInstanceDealDetail")
+    return
+}
+
+func NewDescribeInstanceDealDetailResponse() (response *DescribeInstanceDealDetailResponse) {
+    response = &DescribeInstanceDealDetailResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询订单信息
+func (c *Client) DescribeInstanceDealDetail(request *DescribeInstanceDealDetailRequest) (response *DescribeInstanceDealDetailResponse, err error) {
+    if request == nil {
+        request = NewDescribeInstanceDealDetailRequest()
+    }
+    response = NewDescribeInstanceDealDetailResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeInstancesRequest() (request *DescribeInstancesRequest) {
     request = &DescribeInstancesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -163,6 +188,56 @@ func (c *Client) DescribeInstances(request *DescribeInstancesRequest) (response 
         request = NewDescribeInstancesRequest()
     }
     response = NewDescribeInstancesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeProductInfoRequest() (request *DescribeProductInfoRequest) {
+    request = &DescribeProductInfoRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("redis", APIVersion, "DescribeProductInfo")
+    return
+}
+
+func NewDescribeProductInfoResponse() (response *DescribeProductInfoResponse) {
+    response = &DescribeProductInfoResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口查询指定可用区和实例类型下 Redis 的售卖规格， 如果用户不在购买白名单中，将不能查询该可用区或该类型的售卖规格详情。申请购买某地域白名单可以提交工单
+func (c *Client) DescribeProductInfo(request *DescribeProductInfoRequest) (response *DescribeProductInfoResponse, err error) {
+    if request == nil {
+        request = NewDescribeProductInfoRequest()
+    }
+    response = NewDescribeProductInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeTaskInfoRequest() (request *DescribeTaskInfoRequest) {
+    request = &DescribeTaskInfoRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("redis", APIVersion, "DescribeTaskInfo")
+    return
+}
+
+func NewDescribeTaskInfoResponse() (response *DescribeTaskInfoResponse) {
+    response = &DescribeTaskInfoResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 用于查询任务结果
+func (c *Client) DescribeTaskInfo(request *DescribeTaskInfoRequest) (response *DescribeTaskInfoResponse, err error) {
+    if request == nil {
+        request = NewDescribeTaskInfoRequest()
+    }
+    response = NewDescribeTaskInfoResponse()
     err = c.Send(request, response)
     return
 }
