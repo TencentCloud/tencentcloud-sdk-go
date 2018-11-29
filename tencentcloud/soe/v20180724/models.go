@@ -32,10 +32,12 @@ type InitOralProcessRequest struct {
 	EvalMode *int64 `json:"EvalMode" name:"EvalMode"`
 	// 评价苛刻指数，取值为[1.0 - 4.0]范围内的浮点数，用于平滑不同年龄段的分数，1.0为小年龄段，4.0为最高年龄段
 	ScoreCoeff *float64 `json:"ScoreCoeff" name:"ScoreCoeff"`
-	// 业务应用ID，与账号应用APPID无关，是用来方便客户管理服务的参数，需要结合[控制台](https://console.cloud.tencent.com/soe)使用。
+	// 业务应用ID，与账号应用APPID无关，是用来方便客户管理服务的参数，新的 SoeAppId 可以在[控制台](https://console.cloud.tencent.com/soe)【应用管理】下新建。
 	SoeAppId *string `json:"SoeAppId" name:"SoeAppId"`
 	// 长效session标识，当该参数为1时，session的持续时间为300s，但会一定程度上影响第一个数据包的返回速度，且TransmitOralProcess必须同时为1才可生效。
 	IsLongLifeSession *int64 `json:"IsLongLifeSession" name:"IsLongLifeSession"`
+	// 音频存储模式，0：不存储，1：存储到公共对象存储
+	StorageMode *int64 `json:"StorageMode" name:"StorageMode"`
 }
 
 func (r *InitOralProcessRequest) ToJsonString() string {
@@ -91,11 +93,11 @@ type TransmitOralProcessRequest struct {
 	VoiceFileType *int64 `json:"VoiceFileType" name:"VoiceFileType"`
 	// 语音编码类型	1:pcm。
 	VoiceEncodeType *int64 `json:"VoiceEncodeType" name:"VoiceEncodeType"`
-	// 当前数据包数据, 流式模式下数据包大小可以按需设置，数据包大小必须 >= 4K，编码格式要求为BASE64。
+	// 当前数据包数据, 流式模式下数据包大小可以按需设置，数据包大小必须 >= 4K，且必须保证分片帧完整（16bit的数据必须保证音频长度为偶数），编码格式要求为BASE64。
 	UserVoiceData *string `json:"UserVoiceData" name:"UserVoiceData"`
 	// 语音段唯一标识，一个完整语音一个SessionId。
 	SessionId *string `json:"SessionId" name:"SessionId"`
-	// 业务应用ID，与账号应用APPID无关，是用来方便客户管理服务的参数，需要结合[控制台](https://console.cloud.tencent.com/soe)使用。
+	// 业务应用ID，与账号应用APPID无关，是用来方便客户管理服务的参数，新的 SoeAppId 可以在[控制台](https://console.cloud.tencent.com/soe)【应用管理】下新建。
 	SoeAppId *string `json:"SoeAppId" name:"SoeAppId"`
 	// 长效session标识，当该参数为1时，session的持续时间为300s，但会一定程度上影响第一个数据包的返回速度。当InitOralProcess接口调用时此项为1时，此项必填1才可生效。
 	IsLongLifeSession *int64 `json:"IsLongLifeSession" name:"IsLongLifeSession"`
@@ -123,6 +125,8 @@ type TransmitOralProcessResponse struct {
 		Words []*WordRsp `json:"Words" name:"Words" list`
 		// 语音段唯一标识，一段语音一个SessionId
 		SessionId *string `json:"SessionId" name:"SessionId"`
+		// 保存语音音频文件下载地址
+		AudioUrl *string `json:"AudioUrl" name:"AudioUrl"`
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
