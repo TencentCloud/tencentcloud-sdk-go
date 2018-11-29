@@ -403,6 +403,8 @@ type CCN struct {
 	CreateTime *string `json:"CreateTime" name:"CreateTime"`
 	// 实例状态， 'ISOLATED': 隔离中（欠费停服），'AVAILABLE'：运行中。
 	State *string `json:"State" name:"State"`
+	// 实例服务质量，’PT’：白金，'AU'：金，'AG'：银。
+	QosLevel *string `json:"QosLevel" name:"QosLevel"`
 }
 
 type CcnAttachedInstance struct {

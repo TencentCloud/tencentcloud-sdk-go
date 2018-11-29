@@ -22,7 +22,7 @@ import (
 
 type ClearInstanceRequest struct {
 	*tchttp.BaseRequest
-	// 实例id
+	// 实例Id
 	InstanceId *string `json:"InstanceId" name:"InstanceId"`
 	// redis的实例密码
 	Password *string `json:"Password" name:"Password"`
@@ -60,7 +60,7 @@ type CreateInstancesRequest struct {
 	*tchttp.BaseRequest
 	// 实例所属的可用区id
 	ZoneId *uint64 `json:"ZoneId" name:"ZoneId"`
-	// 实例类型：2 – 主从版，5-单机版
+	// 实例类型：2 – Redis2.8主从版，3 – Redis3.2主从版(CKV主从版)，4 – Redis3.2集群版(CKV集群版)，5-Redis2.8单机版，7 – Redis4.0集群版，
 	TypeId *uint64 `json:"TypeId" name:"TypeId"`
 	// 实例容量，单位MB， 取值大小以 查询售卖规格接口返回的规格为准
 	MemSize *uint64 `json:"MemSize" name:"MemSize"`
@@ -72,9 +72,9 @@ type CreateInstancesRequest struct {
 	Password *string `json:"Password" name:"Password"`
 	// 付费方式:0-按量计费，1-包年包月。
 	BillingMode *int64 `json:"BillingMode" name:"BillingMode"`
-	// 私有网络ID，如果不传则默认选择基础网络，请使用私有网络列表 查询
+	// 私有网络ID，如果不传则默认选择基础网络，请使用私有网络列表查询，如：vpc-sad23jfdfk
 	VpcId *string `json:"VpcId" name:"VpcId"`
-	// 基础网络下， subnetId无效； vpc子网下，取值以查询查询子网列表
+	// 基础网络下， subnetId无效； vpc子网下，取值以查询子网列表，如：subnet-fdj24n34j2
 	SubnetId *string `json:"SubnetId" name:"SubnetId"`
 	// 项目id，取值以用户账户>用户账户相关接口查询>项目列表返回的projectId为准
 	ProjectId *int64 `json:"ProjectId" name:"ProjectId"`
@@ -84,6 +84,12 @@ type CreateInstancesRequest struct {
 	SecurityGroupIdList []*string `json:"SecurityGroupIdList" name:"SecurityGroupIdList" list`
 	// 用户自定义的端口 不填则默认为6379
 	VPort *uint64 `json:"VPort" name:"VPort"`
+	// 实例分片数量，Redis2.8主从版、CKV主从版和Redis2.8单机版不需要填写
+	RedisShardNum *int64 `json:"RedisShardNum" name:"RedisShardNum"`
+	// 实例副本数量，Redis2.8主从版、CKV主从版和Redis2.8单机版不需要填写
+	RedisReplicasNum *int64 `json:"RedisReplicasNum" name:"RedisReplicasNum"`
+	// 是否支持副本只读，Redis2.8主从版、CKV主从版和Redis2.8单机版不需要填写
+	ReplicasReadonly *bool `json:"ReplicasReadonly" name:"ReplicasReadonly"`
 }
 
 func (r *CreateInstancesRequest) ToJsonString() string {
@@ -156,7 +162,7 @@ type DescribeInstanceBackupsRequest struct {
 	*tchttp.BaseRequest
 	// 待操作的实例ID，可通过 DescribeInstance 接口返回值中的 InstanceId 获取。
 	InstanceId *string `json:"InstanceId" name:"InstanceId"`
-	// 实例列表大小
+	// 实例列表大小，默认大小20
 	Limit *int64 `json:"Limit" name:"Limit"`
 	// 偏移量，取Limit整数倍
 	Offset *int64 `json:"Offset" name:"Offset"`
@@ -234,28 +240,32 @@ func (r *DescribeInstanceDealDetailResponse) FromJsonString(s string) error {
 
 type DescribeInstancesRequest struct {
 	*tchttp.BaseRequest
-	// 实例列表大小
+	// 实例列表的大小，参数默认值20
 	Limit *uint64 `json:"Limit" name:"Limit"`
 	// 偏移量，取Limit整数倍
 	Offset *uint64 `json:"Offset" name:"Offset"`
-	// 实例Id
+	// 实例Id，如：crs-6ubhgouj
 	InstanceId *string `json:"InstanceId" name:"InstanceId"`
 	// 枚举范围： projectId,createtime,instancename,type,curDeadline
 	OrderBy *string `json:"OrderBy" name:"OrderBy"`
 	// 1倒序，0顺序，默认倒序
 	OrderType *int64 `json:"OrderType" name:"OrderType"`
-	// 私有网络ID数组，数组下标从0开始，如果不传则默认选择基础网络
+	// 私有网络ID数组，数组下标从0开始，如果不传则默认选择基础网络，如：47525
 	VpcIds []*string `json:"VpcIds" name:"VpcIds" list`
-	// 子网ID数组，数组下标从0开始
+	// 子网ID数组，数组下标从0开始，如：56854
 	SubnetIds []*string `json:"SubnetIds" name:"SubnetIds" list`
 	// 项目ID 组成的数组，数组下标从0开始
 	ProjectIds []*int64 `json:"ProjectIds" name:"ProjectIds" list`
 	// 查找实例的ID。
 	SearchKey *string `json:"SearchKey" name:"SearchKey"`
-	// 查询的Region的列表。
-	RegionIds []*int64 `json:"RegionIds" name:"RegionIds" list`
 	// 实例名称
 	InstanceName *string `json:"InstanceName" name:"InstanceName"`
+	// 私有网络ID数组，数组下标从0开始，如果不传则默认选择基础网络，如：vpc-sad23jfdfk
+	UniqVpcIds []*string `json:"UniqVpcIds" name:"UniqVpcIds" list`
+	// 子网ID数组，数组下标从0开始，如：subnet-fdj24n34j2
+	UniqSubnetIds []*string `json:"UniqSubnetIds" name:"UniqSubnetIds" list`
+	// 地域ID，已经弃用，可通过公共参数Region查询对应地域
+	RegionIds []*int64 `json:"RegionIds" name:"RegionIds" list`
 }
 
 func (r *DescribeInstancesRequest) ToJsonString() string {
@@ -365,13 +375,13 @@ func (r *DescribeTaskInfoResponse) FromJsonString(s string) error {
 type InstanceSet struct {
 	// 实例名称
 	InstanceName *string `json:"InstanceName" name:"InstanceName"`
-	// 实例串号
+	// 实例Id
 	InstanceId *string `json:"InstanceId" name:"InstanceId"`
-	// appid
+	// 用户的Appid
 	Appid *int64 `json:"Appid" name:"Appid"`
-	// 项目id
+	// 项目Id
 	ProjectId *int64 `json:"ProjectId" name:"ProjectId"`
-	// 地域id 1--广州 4--上海 5-- 香港 6--多伦多 7--上海金融 8--北京 9-- 新加坡 11--深圳金融 15--美西（硅谷）
+	// 地域id 1--广州 4--上海 5-- 香港 6--多伦多 7--上海金融 8--北京 9-- 新加坡 11--深圳金融 15--美西（硅谷）16--成都 17--德国 18--韩国 19--重庆 21--印度 22--美东（弗吉尼亚）23--泰国 24--俄罗斯 25--日本
 	RegionId *int64 `json:"RegionId" name:"RegionId"`
 	// 区域id
 	ZoneId *int64 `json:"ZoneId" name:"ZoneId"`
@@ -379,7 +389,7 @@ type InstanceSet struct {
 	VpcId *int64 `json:"VpcId" name:"VpcId"`
 	// vpc网络下子网id 如：46315
 	SubnetId *int64 `json:"SubnetId" name:"SubnetId"`
-	// 实例当前状态，0：待初始化；1：实例在流程中；2：实例运行中；-2：实例已隔离
+	// 实例当前状态，0：待初始化；1：实例在流程中；2：实例运行中；-2：实例已隔离；-3：实例待删除
 	Status *int64 `json:"Status" name:"Status"`
 	// 实例vip
 	WanIp *string `json:"WanIp" name:"WanIp"`
@@ -391,7 +401,7 @@ type InstanceSet struct {
 	Size *float64 `json:"Size" name:"Size"`
 	// 实例当前已使用容量，单位：MB
 	SizeUsed *float64 `json:"SizeUsed" name:"SizeUsed"`
-	// 实例类型，1：集群版；2：主从版
+	// 实例类型，1：Redis2.8集群版；2：Redis2.8主从版；3：CKV主从版（Redis3.2）；4：CKV集群版（Redis3.2）；5：Redis2.8单机版；7：Redis4.0集群版；
 	Type *int64 `json:"Type" name:"Type"`
 	// 实例是否设置自动续费标识，1：设置自动续费；0：未设置自动续费
 	AutoRenewFlag *int64 `json:"AutoRenewFlag" name:"AutoRenewFlag"`
@@ -399,7 +409,7 @@ type InstanceSet struct {
 	DeadlineTime *string `json:"DeadlineTime" name:"DeadlineTime"`
 	// 引擎：社区版Redis、腾讯云CKV
 	Engine *string `json:"Engine" name:"Engine"`
-	// 产品类型：Redis2.8集群版、Redis2.8主从版、Redis3.2主从版、Redis3.2集群版、Redis2.8单机版、Redis4.0集群版
+	// 产品类型：Redis2.8集群版、Redis2.8主从版、Redis3.2主从版（CKV主从版）、Redis3.2集群版（CKV集群版）、Redis2.8单机版、Redis4.0集群版
 	ProductType *string `json:"ProductType" name:"ProductType"`
 	// vpc网络id 如：vpc-fk33jsf43kgv
 	UniqVpcId *string `json:"UniqVpcId" name:"UniqVpcId"`
@@ -685,10 +695,14 @@ type TradeDealDetail struct {
 
 type UpgradeInstanceRequest struct {
 	*tchttp.BaseRequest
-	// 升级的实例Id
+	// 实例Id
 	InstanceId *string `json:"InstanceId" name:"InstanceId"`
-	// 规格 单位 MB
+	// 分片大小 单位 MB
 	MemSize *uint64 `json:"MemSize" name:"MemSize"`
+	// 分片数量，Redis2.8主从版、CKV主从版和Redis2.8单机版不需要填写
+	RedisShardNum *uint64 `json:"RedisShardNum" name:"RedisShardNum"`
+	// 副本数量，Redis2.8主从版、CKV主从版和Redis2.8单机版不需要填写
+	RedisReplicasNum *uint64 `json:"RedisReplicasNum" name:"RedisReplicasNum"`
 }
 
 func (r *UpgradeInstanceRequest) ToJsonString() string {
@@ -728,7 +742,7 @@ type ZoneCapacityConf struct {
 	IsSaleout *bool `json:"IsSaleout" name:"IsSaleout"`
 	// 是否为默认可用区
 	IsDefault *bool `json:"IsDefault" name:"IsDefault"`
-	// 网络类型
+	// 网络类型：basenet -- 基础网络；vpcnet -- VPC网络
 	NetWorkType []*string `json:"NetWorkType" name:"NetWorkType" list`
 	// 可用区内产品规格等信息
 	ProductSet []*ProductConf `json:"ProductSet" name:"ProductSet" list`

@@ -51,6 +51,12 @@ type BillDetail struct {
 	FeeEndTime *string `json:"FeeEndTime" name:"FeeEndTime"`
 	// 组件列表
 	ComponentSet []*BillDetailComponent `json:"ComponentSet" name:"ComponentSet" list`
+	// 支付者UIN
+	PayerUin *string `json:"PayerUin" name:"PayerUin"`
+	// 使用者UIN
+	OwnerUin *string `json:"OwnerUin" name:"OwnerUin"`
+	// 操作者UIN
+	OperateUin *string `json:"OperateUin" name:"OperateUin"`
 }
 
 type BillDetailComponent struct {
@@ -156,6 +162,20 @@ type Deal struct {
 	ProjectId *int64 `json:"ProjectId" name:"ProjectId"`
 	// 产品分类ID
 	GoodsCategoryId *int64 `json:"GoodsCategoryId" name:"GoodsCategoryId"`
+	// 产品详情
+	ProductInfo []*ProductInfo `json:"ProductInfo" name:"ProductInfo" list`
+	// 时长
+	TimeSpan *float64 `json:"TimeSpan" name:"TimeSpan"`
+	// 时间单位
+	TimeUnit *string `json:"TimeUnit" name:"TimeUnit"`
+	// 货币单位
+	Currency *string `json:"Currency" name:"Currency"`
+	// 折扣率
+	Policy *float64 `json:"Policy" name:"Policy"`
+	// 单价（分）
+	Price *float64 `json:"Price" name:"Price"`
+	// 原价（分）
+	TotalCost *float64 `json:"TotalCost" name:"TotalCost"`
 }
 
 type DescribeAccountBalanceRequest struct {
@@ -176,7 +196,7 @@ type DescribeAccountBalanceResponse struct {
 	Response *struct {
 		// 云账户信息中的”展示可用余额”字段，单位为"分"
 		Balance *int64 `json:"Balance" name:"Balance"`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -200,6 +220,10 @@ type DescribeBillDetailRequest struct {
 	PeriodType *string `json:"PeriodType" name:"PeriodType"`
 	// 月份，格式为yyyy-mm
 	Month *string `json:"Month" name:"Month"`
+	// 周期开始时间，格式为Y-m-d H:i:s，如果有该字段则Month字段无效。BeginTime和EndTime必须一起传
+	BeginTime *string `json:"BeginTime" name:"BeginTime"`
+	// 周期结束时间，格式为Y-m-d H:i:s，如果有该字段则Month字段无效。BeginTime和EndTime必须一起传
+	EndTime *string `json:"EndTime" name:"EndTime"`
 }
 
 func (r *DescribeBillDetailRequest) ToJsonString() string {
@@ -216,7 +240,7 @@ type DescribeBillDetailResponse struct {
 	Response *struct {
 		// 详情列表
 		DetailSet []*BillDetail `json:"DetailSet" name:"DetailSet" list`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -256,7 +280,7 @@ type DescribeBillResourceSummaryResponse struct {
 	Response *struct {
 		// 资源汇总列表
 		ResourceSummarySet []*BillResourceSummary `json:"ResourceSummarySet" name:"ResourceSummarySet" list`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -314,7 +338,7 @@ type DescribeDealsByCondResponse struct {
 		Deals []*Deal `json:"Deals" name:"Deals" list`
 		// 订单总数
 		TotalCount *int64 `json:"TotalCount" name:"TotalCount"`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -354,7 +378,7 @@ type PayDealsResponse struct {
 		OrderIds []*string `json:"OrderIds" name:"OrderIds" list`
 		// 此次操作支付成功的资源Id数组
 		ResourceIds []*string `json:"ResourceIds" name:"ResourceIds" list`
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -366,4 +390,11 @@ func (r *PayDealsResponse) ToJsonString() string {
 
 func (r *PayDealsResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
+}
+
+type ProductInfo struct {
+	// 商品详情名称标识
+	Name *string `json:"Name" name:"Name"`
+	// 商品详情
+	Value *string `json:"Value" name:"Value"`
 }

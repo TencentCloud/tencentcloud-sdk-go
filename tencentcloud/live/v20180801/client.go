@@ -144,7 +144,7 @@ func NewCreatePullStreamConfigResponse() (response *CreatePullStreamConfigRespon
     return
 }
 
-// 添加拉流配置
+// 添加拉流配置，目前限制添加10条任务。
 func (c *Client) CreatePullStreamConfig(request *CreatePullStreamConfigRequest) (response *CreatePullStreamConfigResponse, err error) {
     if request == nil {
         request = NewCreatePullStreamConfigRequest()
