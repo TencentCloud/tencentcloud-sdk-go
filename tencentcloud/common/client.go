@@ -26,6 +26,11 @@ func (c *Client) Send(request tchttp.Request, response tchttp.Response) (err err
 		}
 		request.SetDomain(domain)
 	}
+
+	if request.GetHttpMethod() == "" {
+		request.SetHttpMethod(c.httpProfile.ReqMethod)
+	}
+
 	err = tchttp.ConstructParams(request)
 	if err != nil {
 		return

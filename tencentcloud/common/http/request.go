@@ -125,7 +125,6 @@ func (r *BaseRequest) GetBodyReader() io.Reader {
 }
 
 func (r *BaseRequest) Init() *BaseRequest {
-	r.httpMethod = GET
 	r.domain = ""
 	r.path = Path
 	r.params = make(map[string]string)
