@@ -22,8 +22,10 @@ import (
 
 type EvaluationRequest struct {
 	*tchttp.BaseRequest
+
 	// 图片唯一标识，一张图片一个SessionId；
 	SessionId *string `json:"SessionId" name:"SessionId"`
+
 	// 图片数据，需要使用base64对图片的二进制数据进行编码；
 	Image *string `json:"Image" name:"Image"`
 }
@@ -40,10 +42,13 @@ func (r *EvaluationRequest) FromJsonString(s string) error {
 type EvaluationResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
+
 		// 图片唯一标识，一张图片一个SessionId；
 		SessionId *string `json:"SessionId" name:"SessionId"`
+
 		// 识别出的算式信息；
 		Items []*Item `json:"Items" name:"Items" list`
+
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
@@ -59,21 +64,28 @@ func (r *EvaluationResponse) FromJsonString(s string) error {
 }
 
 type Item struct {
+
 	// 识别的算式是否正确
 	Item *string `json:"Item" name:"Item"`
+
 	// 识别的算式
 	ItemString *string `json:"ItemString" name:"ItemString"`
+
 	// 识别的算式在图片上的位置信息
 	ItemCoord *ItemCoord `json:"ItemCoord" name:"ItemCoord"`
 }
 
 type ItemCoord struct {
+
 	// 算式高度
 	Height *int64 `json:"Height" name:"Height"`
+
 	// 算式宽度
 	Width *int64 `json:"Width" name:"Width"`
+
 	// 算式图的左上角横坐标
 	X *int64 `json:"X" name:"X"`
+
 	// 算式图的左上角纵坐标
 	Y *int64 `json:"Y" name:"Y"`
 }
