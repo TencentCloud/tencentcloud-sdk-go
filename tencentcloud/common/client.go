@@ -74,6 +74,11 @@ func (c *Client) WithSecretId(secretId, secretKey string) *Client {
 	return c
 }
 
+func (c *Client) WithCredential(cred *Credential) *Client {
+	c.credential = cred
+	return c
+}
+
 func (c *Client) WithProfile(clientProfile *profile.ClientProfile) *Client {
 	c.signMethod = clientProfile.SignMethod
 	c.httpProfile = clientProfile.HttpProfile
