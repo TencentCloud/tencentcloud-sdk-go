@@ -486,6 +486,34 @@ func (c *Client) ModifyDesiredCapacity(request *ModifyDesiredCapacityRequest) (r
     return
 }
 
+func NewModifyLaunchConfigurationAttributesRequest() (request *ModifyLaunchConfigurationAttributesRequest) {
+    request = &ModifyLaunchConfigurationAttributesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("as", APIVersion, "ModifyLaunchConfigurationAttributes")
+    return
+}
+
+func NewModifyLaunchConfigurationAttributesResponse() (response *ModifyLaunchConfigurationAttributesResponse) {
+    response = &ModifyLaunchConfigurationAttributesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（ModifyLaunchConfigurationAttributes）用于修改启动配置部分属性。
+// 
+// * 修改启动配置后，已经使用该启动配置扩容的存量实例不会发生变更，此后使用该启动配置的新增实例会按照新的配置进行扩容。
+// * 本接口支持修改部分简单类型。
+func (c *Client) ModifyLaunchConfigurationAttributes(request *ModifyLaunchConfigurationAttributesRequest) (response *ModifyLaunchConfigurationAttributesResponse, err error) {
+    if request == nil {
+        request = NewModifyLaunchConfigurationAttributesRequest()
+    }
+    response = NewModifyLaunchConfigurationAttributesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyScheduledActionRequest() (request *ModifyScheduledActionRequest) {
     request = &ModifyScheduledActionRequest{
         BaseRequest: &tchttp.BaseRequest{},

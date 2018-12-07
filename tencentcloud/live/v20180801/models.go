@@ -306,6 +306,40 @@ func (r *DeleteLiveWatermarkResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DeletePullStreamConfigRequest struct {
+	*tchttp.BaseRequest
+
+	// 配置id。
+	ConfigId *string `json:"ConfigId" name:"ConfigId"`
+}
+
+func (r *DeletePullStreamConfigRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeletePullStreamConfigRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeletePullStreamConfigResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DeletePullStreamConfigResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeletePullStreamConfigResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeLivePlayAuthKeyRequest struct {
 	*tchttp.BaseRequest
 
@@ -791,6 +825,9 @@ type ModifyLivePlayAuthKeyRequest struct {
 
 	// 有效时间，单位：秒。
 	AuthDelta *uint64 `json:"AuthDelta" name:"AuthDelta"`
+
+	// 鉴权backkey。
+	AuthBackKey *string `json:"AuthBackKey" name:"AuthBackKey"`
 }
 
 func (r *ModifyLivePlayAuthKeyRequest) ToJsonString() string {
@@ -971,6 +1008,9 @@ type PlayAuthKeyInfo struct {
 
 	// 有效时间，单位：秒。
 	AuthDelta *uint64 `json:"AuthDelta" name:"AuthDelta"`
+
+	// 鉴权BackKey。
+	AuthBackKey *string `json:"AuthBackKey" name:"AuthBackKey"`
 }
 
 type PublishTime struct {

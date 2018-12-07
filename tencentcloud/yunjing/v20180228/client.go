@@ -168,6 +168,31 @@ func (c *Client) DeleteMachine(request *DeleteMachineRequest) (response *DeleteM
     return
 }
 
+func NewDeleteMaliciousRequestsRequest() (request *DeleteMaliciousRequestsRequest) {
+    request = &DeleteMaliciousRequestsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("yunjing", APIVersion, "DeleteMaliciousRequests")
+    return
+}
+
+func NewDeleteMaliciousRequestsResponse() (response *DeleteMaliciousRequestsResponse) {
+    response = &DeleteMaliciousRequestsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口 (DeleteMaliciousRequests) 用于删除恶意请求记录。
+func (c *Client) DeleteMaliciousRequests(request *DeleteMaliciousRequestsRequest) (response *DeleteMaliciousRequestsResponse, err error) {
+    if request == nil {
+        request = NewDeleteMaliciousRequestsRequest()
+    }
+    response = NewDeleteMaliciousRequestsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteMalwaresRequest() (request *DeleteMalwaresRequest) {
     request = &DeleteMalwaresRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -539,6 +564,31 @@ func (c *Client) DescribeMachines(request *DescribeMachinesRequest) (response *D
         request = NewDescribeMachinesRequest()
     }
     response = NewDescribeMachinesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeMaliciousRequestsRequest() (request *DescribeMaliciousRequestsRequest) {
+    request = &DescribeMaliciousRequestsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("yunjing", APIVersion, "DescribeMaliciousRequests")
+    return
+}
+
+func NewDescribeMaliciousRequestsResponse() (response *DescribeMaliciousRequestsResponse) {
+    response = &DescribeMaliciousRequestsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口 (DescribeMaliciousRequests) 用于获取恶意请求数据。
+func (c *Client) DescribeMaliciousRequests(request *DescribeMaliciousRequestsRequest) (response *DescribeMaliciousRequestsResponse, err error) {
+    if request == nil {
+        request = NewDescribeMaliciousRequestsRequest()
+    }
+    response = NewDescribeMaliciousRequestsResponse()
     err = c.Send(request, response)
     return
 }
@@ -1068,6 +1118,31 @@ func (c *Client) DescribeWeeklyReports(request *DescribeWeeklyReportsRequest) (r
     return
 }
 
+func NewExportMaliciousRequestsRequest() (request *ExportMaliciousRequestsRequest) {
+    request = &ExportMaliciousRequestsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("yunjing", APIVersion, "ExportMaliciousRequests")
+    return
+}
+
+func NewExportMaliciousRequestsResponse() (response *ExportMaliciousRequestsResponse) {
+    response = &ExportMaliciousRequestsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口 (ExportMaliciousRequests) 用于导出下载恶意请求文件。
+func (c *Client) ExportMaliciousRequests(request *ExportMaliciousRequestsRequest) (response *ExportMaliciousRequestsResponse, err error) {
+    if request == nil {
+        request = NewExportMaliciousRequestsRequest()
+    }
+    response = NewExportMaliciousRequestsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewIgnoreImpactedHostsRequest() (request *IgnoreImpactedHostsRequest) {
     request = &IgnoreImpactedHostsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1089,6 +1164,31 @@ func (c *Client) IgnoreImpactedHosts(request *IgnoreImpactedHostsRequest) (respo
         request = NewIgnoreImpactedHostsRequest()
     }
     response = NewIgnoreImpactedHostsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewInquiryPriceOpenProVersionPrepaidRequest() (request *InquiryPriceOpenProVersionPrepaidRequest) {
+    request = &InquiryPriceOpenProVersionPrepaidRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("yunjing", APIVersion, "InquiryPriceOpenProVersionPrepaid")
+    return
+}
+
+func NewInquiryPriceOpenProVersionPrepaidResponse() (response *InquiryPriceOpenProVersionPrepaidResponse) {
+    response = &InquiryPriceOpenProVersionPrepaidResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口 (InquiryPriceOpenProVersionPrepaid) 用于开通专业版询价(预付费)。
+func (c *Client) InquiryPriceOpenProVersionPrepaid(request *InquiryPriceOpenProVersionPrepaidRequest) (response *InquiryPriceOpenProVersionPrepaidResponse, err error) {
+    if request == nil {
+        request = NewInquiryPriceOpenProVersionPrepaidRequest()
+    }
+    response = NewInquiryPriceOpenProVersionPrepaidResponse()
     err = c.Send(request, response)
     return
 }
@@ -1168,6 +1268,56 @@ func (c *Client) ModifyAutoOpenProVersionConfig(request *ModifyAutoOpenProVersio
     return
 }
 
+func NewModifyProVersionRenewFlagRequest() (request *ModifyProVersionRenewFlagRequest) {
+    request = &ModifyProVersionRenewFlagRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("yunjing", APIVersion, "ModifyProVersionRenewFlag")
+    return
+}
+
+func NewModifyProVersionRenewFlagResponse() (response *ModifyProVersionRenewFlagResponse) {
+    response = &ModifyProVersionRenewFlagResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口 (ModifyProVersionRenewFlag) 用于修改专业版包年包月续费标识。
+func (c *Client) ModifyProVersionRenewFlag(request *ModifyProVersionRenewFlagRequest) (response *ModifyProVersionRenewFlagResponse, err error) {
+    if request == nil {
+        request = NewModifyProVersionRenewFlagRequest()
+    }
+    response = NewModifyProVersionRenewFlagResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewOpenProVersionPrepaidRequest() (request *OpenProVersionPrepaidRequest) {
+    request = &OpenProVersionPrepaidRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("yunjing", APIVersion, "OpenProVersionPrepaid")
+    return
+}
+
+func NewOpenProVersionPrepaidResponse() (response *OpenProVersionPrepaidResponse) {
+    response = &OpenProVersionPrepaidResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口 (OpenProVersionPrepaid) 用于开通专业版(包年包月)。
+func (c *Client) OpenProVersionPrepaid(request *OpenProVersionPrepaidRequest) (response *OpenProVersionPrepaidResponse, err error) {
+    if request == nil {
+        request = NewOpenProVersionPrepaidRequest()
+    }
+    response = NewOpenProVersionPrepaidResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewRecoverMalwaresRequest() (request *RecoverMalwaresRequest) {
     request = &RecoverMalwaresRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1189,6 +1339,31 @@ func (c *Client) RecoverMalwares(request *RecoverMalwaresRequest) (response *Rec
         request = NewRecoverMalwaresRequest()
     }
     response = NewRecoverMalwaresResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewRenewProVersionRequest() (request *RenewProVersionRequest) {
+    request = &RenewProVersionRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("yunjing", APIVersion, "RenewProVersion")
+    return
+}
+
+func NewRenewProVersionResponse() (response *RenewProVersionResponse) {
+    response = &RenewProVersionResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口 (RenewProVersion) 用于续费专业版(包年包月)。
+func (c *Client) RenewProVersion(request *RenewProVersionRequest) (response *RenewProVersionResponse, err error) {
+    if request == nil {
+        request = NewRenewProVersionRequest()
+    }
+    response = NewRenewProVersionResponse()
     err = c.Send(request, response)
     return
 }
@@ -1243,6 +1418,31 @@ func (c *Client) SeparateMalwares(request *SeparateMalwaresRequest) (response *S
     return
 }
 
+func NewTrustMaliciousRequestRequest() (request *TrustMaliciousRequestRequest) {
+    request = &TrustMaliciousRequestRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("yunjing", APIVersion, "TrustMaliciousRequest")
+    return
+}
+
+func NewTrustMaliciousRequestResponse() (response *TrustMaliciousRequestResponse) {
+    response = &TrustMaliciousRequestResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口 (TrustMaliciousRequest) 用于恶意请求添加信任。
+func (c *Client) TrustMaliciousRequest(request *TrustMaliciousRequestRequest) (response *TrustMaliciousRequestResponse, err error) {
+    if request == nil {
+        request = NewTrustMaliciousRequestRequest()
+    }
+    response = NewTrustMaliciousRequestResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewTrustMalwaresRequest() (request *TrustMalwaresRequest) {
     request = &TrustMalwaresRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1264,6 +1464,31 @@ func (c *Client) TrustMalwares(request *TrustMalwaresRequest) (response *TrustMa
         request = NewTrustMalwaresRequest()
     }
     response = NewTrustMalwaresResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewUntrustMaliciousRequestRequest() (request *UntrustMaliciousRequestRequest) {
+    request = &UntrustMaliciousRequestRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("yunjing", APIVersion, "UntrustMaliciousRequest")
+    return
+}
+
+func NewUntrustMaliciousRequestResponse() (response *UntrustMaliciousRequestResponse) {
+    response = &UntrustMaliciousRequestResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口 (UntrustMaliciousRequest) 用于取消信任恶意请求。
+func (c *Client) UntrustMaliciousRequest(request *UntrustMaliciousRequestRequest) (response *UntrustMaliciousRequestResponse, err error) {
+    if request == nil {
+        request = NewUntrustMaliciousRequestRequest()
+    }
+    response = NewUntrustMaliciousRequestResponse()
     err = c.Send(request, response)
     return
 }

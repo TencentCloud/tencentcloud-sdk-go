@@ -93,7 +93,7 @@ type AssociateInstancesKeyPairsRequest struct {
 	// 一个或多个待操作的密钥对ID，每次请求批量密钥对的上限为100。密钥对ID形如：`skey-3glfot13`。<br>可以通过以下方式获取可用的密钥ID：<br><li>通过登录[控制台](https://console.cloud.tencent.com/cvm/sshkey)查询密钥ID。<br><li>通过调用接口 [DescribeKeyPairs](https://cloud.tencent.com/document/api/213/15699) ，取返回信息中的`KeyId`获取密钥对ID。
 	KeyIds []*string `json:"KeyIds" name:"KeyIds" list`
 
-	// 是否对运行中的实例选择强制关机。建议对运行中的实例先手动关机，然后再重置用户密码。取值范围：<br><li>TRUE：表示在正常关机失败后进行强制关机。<br><li>FALSE：表示在正常关机失败后不进行强制关机。<br>默认取值：FALSE。
+	// 是否对运行中的实例选择强制关机。建议对运行中的实例先手动关机，然后再绑定密钥。取值范围：<br><li>TRUE：表示在正常关机失败后进行强制关机。<br><li>FALSE：表示在正常关机失败后不进行强制关机。<br>默认取值：FALSE。
 	ForceStop *bool `json:"ForceStop" name:"ForceStop"`
 }
 
@@ -121,6 +121,43 @@ func (r *AssociateInstancesKeyPairsResponse) ToJsonString() string {
 }
 
 func (r *AssociateInstancesKeyPairsResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type AssociateSecurityGroupsRequest struct {
+	*tchttp.BaseRequest
+
+	// 要绑定的`安全组ID`，类似sg-efil73jd，支持绑定多个安全组。
+	SecurityGroupIds []*string `json:"SecurityGroupIds" name:"SecurityGroupIds" list`
+
+	// 被绑定的`实例ID`，类似ins-lesecurk，只支持指定单个实例。
+	InstanceIds []*string `json:"InstanceIds" name:"InstanceIds" list`
+}
+
+func (r *AssociateSecurityGroupsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *AssociateSecurityGroupsRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type AssociateSecurityGroupsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *AssociateSecurityGroupsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *AssociateSecurityGroupsResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -194,11 +231,11 @@ func (r *CreateDisasterRecoverGroupResponse) FromJsonString(s string) error {
 type CreateImageRequest struct {
 	*tchttp.BaseRequest
 
-	// 需要制作镜像的实例ID
-	InstanceId *string `json:"InstanceId" name:"InstanceId"`
-
 	// 镜像名称
 	ImageName *string `json:"ImageName" name:"ImageName"`
+
+	// 需要制作镜像的实例ID
+	InstanceId *string `json:"InstanceId" name:"InstanceId"`
 
 	// 镜像描述
 	ImageDescription *string `json:"ImageDescription" name:"ImageDescription"`
@@ -211,6 +248,12 @@ type CreateImageRequest struct {
 
 	// 实例处于运行中时，是否允许关机执行制作镜像任务。
 	Reboot *string `json:"Reboot" name:"Reboot"`
+
+	// 实例需要制作镜像的数据盘Id
+	DataDiskIds []*string `json:"DataDiskIds" name:"DataDiskIds" list`
+
+	// 需要制作镜像的快照Id,必须包含一个系统盘快照
+	SnapshotIds []*string `json:"SnapshotIds" name:"SnapshotIds" list`
 
 	// DryRun
 	DryRun *bool `json:"DryRun" name:"DryRun"`
@@ -1187,7 +1230,7 @@ type DisassociateInstancesKeyPairsRequest struct {
 	// 密钥对ID列表，每次请求批量密钥对的上限为100。密钥对ID形如：`skey-11112222`。<br><br>可以通过以下方式获取可用的密钥ID：<br><li>通过登录[控制台](https://console.cloud.tencent.com/cvm/sshkey)查询密钥ID。<br><li>通过调用接口 [DescribeKeyPairs](https://cloud.tencent.com/document/api/213/15699) ，取返回信息中的 `KeyId` 获取密钥对ID。
 	KeyIds []*string `json:"KeyIds" name:"KeyIds" list`
 
-	// 是否对运行中的实例选择强制关机。建议对运行中的实例先手动关机，然后再重置用户密码。取值范围：<br><li>TRUE：表示在正常关机失败后进行强制关机。<br><li>FALSE：表示在正常关机失败后不进行强制关机。<br><br>默认取值：FALSE。
+	// 是否对运行中的实例选择强制关机。建议对运行中的实例先手动关机，然后再解绑密钥。取值范围：<br><li>TRUE：表示在正常关机失败后进行强制关机。<br><li>FALSE：表示在正常关机失败后不进行强制关机。<br><br>默认取值：FALSE。
 	ForceStop *bool `json:"ForceStop" name:"ForceStop"`
 }
 
@@ -1215,6 +1258,43 @@ func (r *DisassociateInstancesKeyPairsResponse) ToJsonString() string {
 }
 
 func (r *DisassociateInstancesKeyPairsResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DisassociateSecurityGroupsRequest struct {
+	*tchttp.BaseRequest
+
+	// 要解绑的`安全组ID`，类似sg-efil73jd，支持解绑多个安全组。
+	SecurityGroupIds []*string `json:"SecurityGroupIds" name:"SecurityGroupIds" list`
+
+	// 被解绑的`实例ID`，类似ins-lesecurk 。
+	InstanceIds []*string `json:"InstanceIds" name:"InstanceIds" list`
+}
+
+func (r *DisassociateSecurityGroupsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DisassociateSecurityGroupsRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DisassociateSecurityGroupsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DisassociateSecurityGroupsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DisassociateSecurityGroupsResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 

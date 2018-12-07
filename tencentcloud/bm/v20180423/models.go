@@ -247,6 +247,83 @@ func (r *DeletePsaRegulationResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DeleteUserCmdsRequest struct {
+	*tchttp.BaseRequest
+
+	// 需要删除的脚本ID
+	CmdIds []*string `json:"CmdIds" name:"CmdIds" list`
+}
+
+func (r *DeleteUserCmdsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteUserCmdsRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteUserCmdsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DeleteUserCmdsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteUserCmdsResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeDevicePriceInfoRequest struct {
+	*tchttp.BaseRequest
+
+	// 需要查询的实例列表
+	InstanceIds []*string `json:"InstanceIds" name:"InstanceIds" list`
+
+	// 购买时长单位，当前只支持取值为m
+	TimeUnit *string `json:"TimeUnit" name:"TimeUnit"`
+
+	// 购买时长
+	TimeSpan *uint64 `json:"TimeSpan" name:"TimeSpan"`
+}
+
+func (r *DescribeDevicePriceInfoRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeDevicePriceInfoRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeDevicePriceInfoResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 服务器价格信息列表
+		DevicePriceInfoSet []*DevicePriceInfo `json:"DevicePriceInfoSet" name:"DevicePriceInfoSet" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeDevicePriceInfoResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeDevicePriceInfoResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeDevicesRequest struct {
 	*tchttp.BaseRequest
 
@@ -546,6 +623,174 @@ func (r *DescribeTaskOperationLogResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeUserCmdTaskInfoRequest struct {
+	*tchttp.BaseRequest
+
+	// 任务ID
+	TaskId *string `json:"TaskId" name:"TaskId"`
+
+	// 偏移量
+	Offset *uint64 `json:"Offset" name:"Offset"`
+
+	// 数量限制
+	Limit *uint64 `json:"Limit" name:"Limit"`
+
+	// 排序字段，支持： RunBeginTime,RunEndTime,Status
+	OrderField *string `json:"OrderField" name:"OrderField"`
+
+	// 排序方式，取值: 1倒序，0顺序；默认倒序
+	Order *uint64 `json:"Order" name:"Order"`
+
+	// 关键字搜索，可搜索ID或别名，支持模糊搜索
+	SearchKey *string `json:"SearchKey" name:"SearchKey"`
+}
+
+func (r *DescribeUserCmdTaskInfoRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeUserCmdTaskInfoRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeUserCmdTaskInfoResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 返回数量
+		TotalCount *uint64 `json:"TotalCount" name:"TotalCount"`
+
+		// 自定义脚本任务详细信息列表
+		UserCmdTaskInfoSet []*UserCmdTaskInfo `json:"UserCmdTaskInfoSet" name:"UserCmdTaskInfoSet" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeUserCmdTaskInfoResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeUserCmdTaskInfoResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeUserCmdTasksRequest struct {
+	*tchttp.BaseRequest
+
+	// 偏移量
+	Offset *uint64 `json:"Offset" name:"Offset"`
+
+	// 数量限制
+	Limit *uint64 `json:"Limit" name:"Limit"`
+
+	// 排序字段，支持： RunBeginTime,RunEndTime,InstanceCount,SuccessCount,FailureCount
+	OrderField *string `json:"OrderField" name:"OrderField"`
+
+	// 排序方式，取值: 1倒序，0顺序；默认倒序
+	Order *uint64 `json:"Order" name:"Order"`
+}
+
+func (r *DescribeUserCmdTasksRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeUserCmdTasksRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeUserCmdTasksResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 脚本任务信息数量
+		TotalCount *uint64 `json:"TotalCount" name:"TotalCount"`
+
+		// 脚本任务信息列表
+		UserCmdTasks []*UserCmdTask `json:"UserCmdTasks" name:"UserCmdTasks" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeUserCmdTasksResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeUserCmdTasksResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeUserCmdsRequest struct {
+	*tchttp.BaseRequest
+
+	// 偏移量
+	Offset *uint64 `json:"Offset" name:"Offset"`
+
+	// 数量限制
+	Limit *uint64 `json:"Limit" name:"Limit"`
+
+	// 排序字段，支持： OsType,CreateTime,ModifyTime
+	OrderField *string `json:"OrderField" name:"OrderField"`
+
+	// 排序方式，取值: 1倒序，0顺序；默认倒序
+	Order *uint64 `json:"Order" name:"Order"`
+
+	// 关键字搜索，可搜索ID或别名，支持模糊搜索
+	SearchKey *string `json:"SearchKey" name:"SearchKey"`
+
+	// 查询的脚本ID
+	CmdId *string `json:"CmdId" name:"CmdId"`
+}
+
+func (r *DescribeUserCmdsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeUserCmdsRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeUserCmdsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 返回数量
+		TotalCount *uint64 `json:"TotalCount" name:"TotalCount"`
+
+		// 脚本信息列表
+		UserCmds []*UserCmd `json:"UserCmds" name:"UserCmds" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeUserCmdsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeUserCmdsResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeviceAlias struct {
+
+	// 设备ID
+	InstanceId *string `json:"InstanceId" name:"InstanceId"`
+
+	// 设备别名
+	Alias *string `json:"Alias" name:"Alias"`
+}
+
 type DeviceInfo struct {
 
 	// 设备唯一ID
@@ -621,6 +866,137 @@ type DeviceInfo struct {
 	IsLuckyDevice *uint64 `json:"IsLuckyDevice" name:"IsLuckyDevice"`
 }
 
+type DevicePriceInfo struct {
+
+	// 物理机ID
+	InstanceId *string `json:"InstanceId" name:"InstanceId"`
+
+	// 设备型号
+	DeviceClassCode *string `json:"DeviceClassCode" name:"DeviceClassCode"`
+
+	// 是否是弹性机型，1：是，0：否
+	IsElastic *uint64 `json:"IsElastic" name:"IsElastic"`
+
+	// 付费模式ID, 1:预付费; 2:后付费; 3:预付费转后付费中
+	CpmPayMode *uint64 `json:"CpmPayMode" name:"CpmPayMode"`
+
+	// Cpu信息描述
+	CpuDescription *string `json:"CpuDescription" name:"CpuDescription"`
+
+	// 内存信息描述
+	MemDescription *string `json:"MemDescription" name:"MemDescription"`
+
+	// 硬盘信息描述
+	DiskDescription *string `json:"DiskDescription" name:"DiskDescription"`
+
+	// 网卡信息描述
+	NicDescription *string `json:"NicDescription" name:"NicDescription"`
+
+	// Gpu信息描述
+	GpuDescription *string `json:"GpuDescription" name:"GpuDescription"`
+
+	// Raid信息描述
+	RaidDescription *string `json:"RaidDescription" name:"RaidDescription"`
+
+	// 客户的单价
+	Price *uint64 `json:"Price" name:"Price"`
+
+	// 刊例单价
+	NormalPrice *uint64 `json:"NormalPrice" name:"NormalPrice"`
+
+	// 原价
+	TotalCost *uint64 `json:"TotalCost" name:"TotalCost"`
+
+	// 折扣价
+	RealTotalCost *uint64 `json:"RealTotalCost" name:"RealTotalCost"`
+
+	// 计费时长
+	TimeSpan *uint64 `json:"TimeSpan" name:"TimeSpan"`
+
+	// 计费时长单位, m:按月计费; d:按天计费
+	TimeUnit *string `json:"TimeUnit" name:"TimeUnit"`
+
+	// 商品数量
+	GoodsCount *uint64 `json:"GoodsCount" name:"GoodsCount"`
+}
+
+type FailedTaskInfo struct {
+
+	// 运行脚本的设备ID
+	InstanceId *string `json:"InstanceId" name:"InstanceId"`
+
+	// 失败原因
+	ErrorMsg *string `json:"ErrorMsg" name:"ErrorMsg"`
+}
+
+type ModifyDeviceAliasesRequest struct {
+	*tchttp.BaseRequest
+
+	// 需要改名的设备与别名列表
+	DeviceAliases []*DeviceAlias `json:"DeviceAliases" name:"DeviceAliases" list`
+}
+
+func (r *ModifyDeviceAliasesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyDeviceAliasesRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyDeviceAliasesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifyDeviceAliasesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyDeviceAliasesResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyPayModePre2PostRequest struct {
+	*tchttp.BaseRequest
+
+	// 需要修改的设备ID列表
+	InstanceIds []*string `json:"InstanceIds" name:"InstanceIds" list`
+}
+
+func (r *ModifyPayModePre2PostRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyPayModePre2PostRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyPayModePre2PostResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifyPayModePre2PostResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyPayModePre2PostResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type ModifyPsaRegulationRequest struct {
 	*tchttp.BaseRequest
 
@@ -667,6 +1043,49 @@ func (r *ModifyPsaRegulationResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type ModifyUserCmdRequest struct {
+	*tchttp.BaseRequest
+
+	// 待修改的脚本ID
+	CmdId *string `json:"CmdId" name:"CmdId"`
+
+	// 待修改的脚本名称
+	Alias *string `json:"Alias" name:"Alias"`
+
+	// 脚本适用的操作系统类型
+	OsType *string `json:"OsType" name:"OsType"`
+
+	// 待修改的脚本内容，必须经过base64编码
+	Content *string `json:"Content" name:"Content"`
+}
+
+func (r *ModifyUserCmdRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyUserCmdRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyUserCmdResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifyUserCmdResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyUserCmdResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type PsaRegulation struct {
 
 	// 规则ID
@@ -698,6 +1117,43 @@ type PsaRegulation struct {
 
 	// 关联故障类型id
 	TaskTypeIds []*uint64 `json:"TaskTypeIds" name:"TaskTypeIds" list`
+}
+
+type RebootDevicesRequest struct {
+	*tchttp.BaseRequest
+
+	// 需要重启的设备ID列表
+	InstanceIds []*string `json:"InstanceIds" name:"InstanceIds" list`
+}
+
+func (r *RebootDevicesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *RebootDevicesRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type RebootDevicesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 异步任务ID
+		TaskId *uint64 `json:"TaskId" name:"TaskId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *RebootDevicesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *RebootDevicesResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
 }
 
 type RepairTaskControlRequest struct {
@@ -739,6 +1195,107 @@ func (r *RepairTaskControlResponse) ToJsonString() string {
 
 func (r *RepairTaskControlResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
+}
+
+type ResetDevicePasswordRequest struct {
+	*tchttp.BaseRequest
+
+	// 需要重置密码的服务器ID列表
+	InstanceIds []*string `json:"InstanceIds" name:"InstanceIds" list`
+
+	// 新密码
+	Password *string `json:"Password" name:"Password"`
+}
+
+func (r *ResetDevicePasswordRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ResetDevicePasswordRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ResetDevicePasswordResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 黑石异步任务ID
+		TaskId *uint64 `json:"TaskId" name:"TaskId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ResetDevicePasswordResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ResetDevicePasswordResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type RunUserCmdRequest struct {
+	*tchttp.BaseRequest
+
+	// 自定义脚本ID
+	CmdId *string `json:"CmdId" name:"CmdId"`
+
+	// 执行脚本机器的用户名
+	UserName *string `json:"UserName" name:"UserName"`
+
+	// 执行脚本机器的用户名的密码
+	Password *string `json:"Password" name:"Password"`
+
+	// 执行脚本的服务器实例
+	InstanceIds []*string `json:"InstanceIds" name:"InstanceIds" list`
+
+	// 执行脚本的参数，必须经过base64编码
+	CmdParam *string `json:"CmdParam" name:"CmdParam"`
+}
+
+func (r *RunUserCmdRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *RunUserCmdRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type RunUserCmdResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 运行成功的任务信息列表
+		SuccessTaskInfoSet []*SuccessTaskInfo `json:"SuccessTaskInfoSet" name:"SuccessTaskInfoSet" list`
+
+		// 运行失败的任务信息列表
+		FailedTaskInfoSet []*FailedTaskInfo `json:"FailedTaskInfoSet" name:"FailedTaskInfoSet" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *RunUserCmdResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *RunUserCmdResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type SuccessTaskInfo struct {
+
+	// 运行脚本的设备ID
+	InstanceId *string `json:"InstanceId" name:"InstanceId"`
+
+	// 黑石异步任务ID
+	TaskId *uint64 `json:"TaskId" name:"TaskId"`
 }
 
 type Tag struct {
@@ -884,4 +1441,121 @@ func (r *UnbindPsaTagResponse) ToJsonString() string {
 
 func (r *UnbindPsaTagResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
+}
+
+type UserCmd struct {
+
+	// 用户自定义脚本名
+	Alias *string `json:"Alias" name:"Alias"`
+
+	// AppId
+	AppId *uint64 `json:"AppId" name:"AppId"`
+
+	// 脚本自增ID
+	AutoId *uint64 `json:"AutoId" name:"AutoId"`
+
+	// 脚本ID
+	CmdId *string `json:"CmdId" name:"CmdId"`
+
+	// 脚本内容
+	Content *string `json:"Content" name:"Content"`
+
+	// 创建时间
+	CreateTime *string `json:"CreateTime" name:"CreateTime"`
+
+	// 修改时间
+	ModifyTime *string `json:"ModifyTime" name:"ModifyTime"`
+
+	// 命令适用的操作系统类型
+	OsType *string `json:"OsType" name:"OsType"`
+}
+
+type UserCmdTask struct {
+
+	// 任务ID
+	TaskId *string `json:"TaskId" name:"TaskId"`
+
+	// 任务状态ID，取值: -1(进行中) 0(结束)
+	Status *int64 `json:"Status" name:"Status"`
+
+	// 脚本名称
+	Alias *string `json:"Alias" name:"Alias"`
+
+	// 脚本ID
+	CmdId *string `json:"CmdId" name:"CmdId"`
+
+	// 运行实例数量
+	InstanceCount *uint64 `json:"InstanceCount" name:"InstanceCount"`
+
+	// 运行成功数量
+	SuccessCount *uint64 `json:"SuccessCount" name:"SuccessCount"`
+
+	// 运行失败数量
+	FailureCount *uint64 `json:"FailureCount" name:"FailureCount"`
+
+	// 执行开始时间
+	RunBeginTime *string `json:"RunBeginTime" name:"RunBeginTime"`
+
+	// 执行结束时间
+	RunEndTime *string `json:"RunEndTime" name:"RunEndTime"`
+}
+
+type UserCmdTaskInfo struct {
+
+	// 自动编号，可忽略
+	AutoId *uint64 `json:"AutoId" name:"AutoId"`
+
+	// 任务ID
+	TaskId *string `json:"TaskId" name:"TaskId"`
+
+	// 任务开始时间
+	RunBeginTime *string `json:"RunBeginTime" name:"RunBeginTime"`
+
+	// 任务结束时间
+	RunEndTime *string `json:"RunEndTime" name:"RunEndTime"`
+
+	// 任务状态ID，取值为 -1：进行中；0：成功；>0：失败错误码
+	Status *int64 `json:"Status" name:"Status"`
+
+	// 设备别名
+	InstanceName *string `json:"InstanceName" name:"InstanceName"`
+
+	// 设备ID
+	InstanceId *string `json:"InstanceId" name:"InstanceId"`
+
+	// 私有网络名
+	VpcName *string `json:"VpcName" name:"VpcName"`
+
+	// 私有网络整型ID
+	VpcId *string `json:"VpcId" name:"VpcId"`
+
+	// 私有网络Cidr
+	VpcCidrBlock *string `json:"VpcCidrBlock" name:"VpcCidrBlock"`
+
+	// 子网名
+	SubnetName *string `json:"SubnetName" name:"SubnetName"`
+
+	// 子网ID
+	SubnetId *string `json:"SubnetId" name:"SubnetId"`
+
+	// 子网Cidr
+	SubnetCidrBlock *string `json:"SubnetCidrBlock" name:"SubnetCidrBlock"`
+
+	// 内网IP
+	LanIp *string `json:"LanIp" name:"LanIp"`
+
+	// 脚本内容，base64编码后的值
+	CmdContent *string `json:"CmdContent" name:"CmdContent"`
+
+	// 脚本参数，base64编码后的值
+	CmdParam *string `json:"CmdParam" name:"CmdParam"`
+
+	// 脚本执行结果，base64编码后的值
+	CmdResult *string `json:"CmdResult" name:"CmdResult"`
+
+	// 用户AppId
+	AppId *uint64 `json:"AppId" name:"AppId"`
+
+	// 用户执行脚本结束退出的返回值，没有返回值为-1
+	LastShellExit *int64 `json:"LastShellExit" name:"LastShellExit"`
 }

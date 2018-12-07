@@ -111,10 +111,7 @@ type CreateFacePictureRequest struct {
 	// 集团ID
 	CompanyId *string `json:"CompanyId" name:"CompanyId"`
 
-	// 店铺ID
-	ShopId *int64 `json:"ShopId" name:"ShopId"`
-
-	// 人物类型（0表示普通顾客，1 白名单，2 表示黑名单）
+	// 人物类型（0表示普通顾客，1 白名单，2 表示黑名单，101表示集团白名单，102表示集团黑名单）
 	PersonType *int64 `json:"PersonType" name:"PersonType"`
 
 	// 图片BASE编码
@@ -122,6 +119,9 @@ type CreateFacePictureRequest struct {
 
 	// 图片名称
 	PictureName *string `json:"PictureName" name:"PictureName"`
+
+	// 店铺ID，如果不填表示操作集团身份库
+	ShopId *int64 `json:"ShopId" name:"ShopId"`
 
 	// 是否强制更新：为ture时会为用户创建一个新的指定PersonType的身份;目前这个参数已废弃，可不传
 	IsForceUpload *bool `json:"IsForceUpload" name:"IsForceUpload"`
@@ -612,6 +612,67 @@ func (r *DescribePersonArrivedMallResponse) ToJsonString() string {
 }
 
 func (r *DescribePersonArrivedMallResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribePersonInfoByFacePictureRequest struct {
+	*tchttp.BaseRequest
+
+	// 优mall集团id，通过"指定身份标识获取客户门店列表"接口获取
+	CompanyId *string `json:"CompanyId" name:"CompanyId"`
+
+	// 优mall店铺id，通过"指定身份标识获取客户门店列表"接口获取
+	ShopId *int64 `json:"ShopId" name:"ShopId"`
+
+	// 人脸图片BASE编码
+	Picture *string `json:"Picture" name:"Picture"`
+}
+
+func (r *DescribePersonInfoByFacePictureRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribePersonInfoByFacePictureRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribePersonInfoByFacePictureResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 集团id
+		CompanyId *string `json:"CompanyId" name:"CompanyId"`
+
+		// 店铺id
+		ShopId *int64 `json:"ShopId" name:"ShopId"`
+
+		// 顾客face id
+		PersonId *int64 `json:"PersonId" name:"PersonId"`
+
+		// 顾客底图url
+		PictureUrl *string `json:"PictureUrl" name:"PictureUrl"`
+
+		// 顾客类型（0表示普通顾客，1 白名单，2 表示黑名单，101表示集团白名单，102表示集团黑名单）
+		PersonType *int64 `json:"PersonType" name:"PersonType"`
+
+		// 顾客首次进店时间
+		FirstVisitTime *string `json:"FirstVisitTime" name:"FirstVisitTime"`
+
+		// 顾客历史到访次数
+		VisitTimes *int64 `json:"VisitTimes" name:"VisitTimes"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribePersonInfoByFacePictureResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribePersonInfoByFacePictureResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 

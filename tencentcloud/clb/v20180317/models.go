@@ -49,7 +49,7 @@ type Backend struct {
 
 type CertificateInput struct {
 
-	// 认证类型，unidirectional：单向认证，mutual：双向认证
+	// 认证类型，UNIDIRECTIONAL：单向认证，MUTUAL：双向认证
 	SSLMode *string `json:"SSLMode" name:"SSLMode"`
 
 	// 服务端证书的 ID，如果不填写此项则必须上传证书，包括 CertContent，CertKey，CertName。
@@ -464,7 +464,7 @@ type DescribeLoadBalancersRequest struct {
 	// OPEN：公网属性， INTERNAL：内网属性。
 	LoadBalancerType *string `json:"LoadBalancerType" name:"LoadBalancerType"`
 
-	// 1：应用型，0：传统型，-1：全部类型。
+	// 1：应用型，0：传统型。
 	Forward *int64 `json:"Forward" name:"Forward"`
 
 	// 负载均衡实例名称。
@@ -622,7 +622,7 @@ func (r *DescribeTaskStatusResponse) FromJsonString(s string) error {
 
 type HealthCheck struct {
 
-	// 是否开启健康检查：1（开启）、0（关闭）。默认值 1，表示打开。
+	// 是否开启健康检查：1（开启）、0（关闭）。
 	HealthSwitch *int64 `json:"HealthSwitch" name:"HealthSwitch"`
 
 	// 健康检查的响应超时时间，可选值：2~60，默认值：2，单位：秒。响应超时时间要小于检查间隔时间。

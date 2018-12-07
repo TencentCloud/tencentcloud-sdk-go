@@ -105,6 +105,31 @@ func (c *Client) DescribeIpVisit(request *DescribeIpVisitRequest) (response *Des
     return
 }
 
+func NewDescribeMapInfoRequest() (request *DescribeMapInfoRequest) {
+    request = &DescribeMapInfoRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cdn", APIVersion, "DescribeMapInfo")
+    return
+}
+
+func NewDescribeMapInfoResponse() (response *DescribeMapInfoResponse) {
+    response = &DescribeMapInfoResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeMapInfo 用于查询省份对应的 ID，运营商对应的 ID 信息。
+func (c *Client) DescribeMapInfo(request *DescribeMapInfoRequest) (response *DescribeMapInfoResponse, err error) {
+    if request == nil {
+        request = NewDescribeMapInfoRequest()
+    }
+    response = NewDescribeMapInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeOriginDataRequest() (request *DescribeOriginDataRequest) {
     request = &DescribeOriginDataRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -136,6 +161,31 @@ func (c *Client) DescribeOriginData(request *DescribeOriginDataRequest) (respons
         request = NewDescribeOriginDataRequest()
     }
     response = NewDescribeOriginDataResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribePayTypeRequest() (request *DescribePayTypeRequest) {
+    request = &DescribePayTypeRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cdn", APIVersion, "DescribePayType")
+    return
+}
+
+func NewDescribePayTypeResponse() (response *DescribePayTypeResponse) {
+    response = &DescribePayTypeResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribePayType 用于查询用户的计费类型，计费周期等信息。
+func (c *Client) DescribePayType(request *DescribePayTypeRequest) (response *DescribePayTypeResponse, err error) {
+    if request == nil {
+        request = NewDescribePayTypeRequest()
+    }
+    response = NewDescribePayTypeResponse()
     err = c.Send(request, response)
     return
 }

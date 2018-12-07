@@ -136,6 +136,20 @@ type BruteAttack struct {
 	Uuid *string `json:"Uuid" name:"Uuid"`
 }
 
+type ChargePrepaid struct {
+
+	// 购买实例的时长，单位：月。取值范围：1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 24, 36。
+	Period *uint64 `json:"Period" name:"Period"`
+
+	// 自动续费标识。取值范围：
+	// <li>NOTIFY_AND_AUTO_RENEW：通知过期且自动续费</li>
+	// <li>NOTIFY_AND_MANUAL_RENEW：通知过期不自动续费</li>
+	// <li>DISABLE_NOTIFY_AND_MANUAL_RENEW：不通知过期不自动续费</li>
+	// 
+	// 默认取值：NOTIFY_AND_MANUAL_RENEW。若该参数指定为NOTIFY_AND_AUTO_RENEW，在账户余额充足的情况下，实例到期后将按月自动续费。
+	RenewFlag *string `json:"RenewFlag" name:"RenewFlag"`
+}
+
 type CloseProVersionRequest struct {
 	*tchttp.BaseRequest
 
@@ -356,6 +370,40 @@ func (r *DeleteMachineResponse) ToJsonString() string {
 }
 
 func (r *DeleteMachineResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteMaliciousRequestsRequest struct {
+	*tchttp.BaseRequest
+
+	// 恶意请求记录ID数组，最大100条。
+	Ids []*uint64 `json:"Ids" name:"Ids" list`
+}
+
+func (r *DeleteMaliciousRequestsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteMaliciousRequestsRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteMaliciousRequestsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DeleteMaliciousRequestsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteMaliciousRequestsResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -1115,6 +1163,58 @@ func (r *DescribeMachinesResponse) ToJsonString() string {
 }
 
 func (r *DescribeMachinesResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeMaliciousRequestsRequest struct {
+	*tchttp.BaseRequest
+
+	// 返回数量，默认为10，最大值为100。
+	Limit *uint64 `json:"Limit" name:"Limit"`
+
+	// 偏移量，默认为0。
+	Offset *uint64 `json:"Offset" name:"Offset"`
+
+	// 过滤条件。
+	// <li>Status - String - 是否必填：否 - 状态筛选（UN_OPERATED: 待处理 | TRUSTED：已信任 | UN_TRUSTED：已取消信任）</li>
+	// <li>Domain - String - 是否必填：否 - 恶意请求的域名</li>
+	// <li>MachineIp - String - 是否必填：否 - 主机内网IP</li>
+	Filters []*Filter `json:"Filters" name:"Filters" list`
+
+	// 云镜客户端唯一UUID。
+	Uuid *string `json:"Uuid" name:"Uuid"`
+}
+
+func (r *DescribeMaliciousRequestsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeMaliciousRequestsRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeMaliciousRequestsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 记录总数。
+		TotalCount *uint64 `json:"TotalCount" name:"TotalCount"`
+
+		// 恶意请求记录数组。
+		MaliciousRequests []*MaliciousRequest `json:"MaliciousRequests" name:"MaliciousRequests" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeMaliciousRequestsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeMaliciousRequestsResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -2142,6 +2242,40 @@ func (r *DescribeWeeklyReportsResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type ExportMaliciousRequestsRequest struct {
+	*tchttp.BaseRequest
+}
+
+func (r *ExportMaliciousRequestsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ExportMaliciousRequestsRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ExportMaliciousRequestsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 导出文件下载链接地址。
+		DownloadUrl *string `json:"DownloadUrl" name:"DownloadUrl"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ExportMaliciousRequestsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ExportMaliciousRequestsResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type Filter struct {
 
 	// 过滤键的名称。
@@ -2242,6 +2376,49 @@ type ImpactedHost struct {
 	VulId *uint64 `json:"VulId" name:"VulId"`
 }
 
+type InquiryPriceOpenProVersionPrepaidRequest struct {
+	*tchttp.BaseRequest
+
+	// 预付费模式(包年包月)参数设置。
+	ChargePrepaid *ChargePrepaid `json:"ChargePrepaid" name:"ChargePrepaid"`
+
+	// 需要开通专业版机器列表数组。
+	Machines []*ProVersionMachine `json:"Machines" name:"Machines" list`
+}
+
+func (r *InquiryPriceOpenProVersionPrepaidRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *InquiryPriceOpenProVersionPrepaidRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type InquiryPriceOpenProVersionPrepaidResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 预支费用的原价，单位：元。
+		DiscountPrice *float64 `json:"DiscountPrice" name:"DiscountPrice"`
+
+		// 预支费用的折扣价，单位：元。
+		DiscountPrice *float64 `json:"DiscountPrice" name:"DiscountPrice"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *InquiryPriceOpenProVersionPrepaidResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *InquiryPriceOpenProVersionPrepaidResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type Machine struct {
 
 	// 主机名称。
@@ -2279,6 +2456,68 @@ type Machine struct {
 	// <li>POSTPAY: 表示后付费，即按量计费  </li>
 	// <li>PREPAY: 表示预付费，即包年包月</li>
 	PayMode *string `json:"PayMode" name:"PayMode"`
+}
+
+type MaliciousRequest struct {
+	*tchttp.BaseRequest
+
+	// 记录ID。
+	Id *uint64 `json:"Id" name:"Id"`
+
+	// 云镜客户端UUID。
+	Uuid *string `json:"Uuid" name:"Uuid"`
+
+	// 主机内网IP。
+	MachineIp *string `json:"MachineIp" name:"MachineIp"`
+
+	// 主机名。
+	MachineName *string `json:"MachineName" name:"MachineName"`
+
+	// 恶意请求域名。
+	Domain *string `json:"Domain" name:"Domain"`
+
+	// 恶意请求数。
+	Count *uint64 `json:"Count" name:"Count"`
+
+	// 进程名。
+	ProcessName *string `json:"ProcessName" name:"ProcessName"`
+
+	// 记录状态。
+	// <li>UN_OPERATED：待处理</li>
+	// <li>TRUSTED：已信任</li>
+	// <li>UN_TRUSTED：已取消信任</li>
+	Status *string `json:"Status" name:"Status"`
+
+	// 恶意请求域名描述。
+	Description *string `json:"Description" name:"Description"`
+
+	// 参考地址。
+	Reference *string `json:"Reference" name:"Reference"`
+
+	// 发现时间。
+	CreateTime *string `json:"CreateTime" name:"CreateTime"`
+
+	// 记录合并时间。
+	MergeTime *string `json:"MergeTime" name:"MergeTime"`
+
+	// 进程MD5
+	// 值。
+	ProcessMd5 *string `json:"ProcessMd5" name:"ProcessMd5"`
+
+	// 执行命令行。
+	CmdLine *string `json:"CmdLine" name:"CmdLine"`
+
+	// 进程PID。
+	Pid *uint64 `json:"Pid" name:"Pid"`
+}
+
+func (r *MaliciousRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *MaliciousRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
 }
 
 type Malware struct {
@@ -2426,6 +2665,46 @@ func (r *ModifyAutoOpenProVersionConfigResponse) FromJsonString(s string) error 
     return json.Unmarshal([]byte(s), &r)
 }
 
+type ModifyProVersionRenewFlagRequest struct {
+	*tchttp.BaseRequest
+
+	// 自动续费标识。取值范围：
+	// <li>NOTIFY_AND_AUTO_RENEW：通知过期且自动续费</li>
+	// <li>NOTIFY_AND_MANUAL_RENEW：通知过期不自动续费</li>
+	// <li>DISABLE_NOTIFY_AND_MANUAL_RENEW：不通知过期不自动续费</li>
+	RenewFlag *string `json:"RenewFlag" name:"RenewFlag"`
+
+	// 主机唯一ID，对应CVM的uuid、BM的instanceId。
+	Quuid *string `json:"Quuid" name:"Quuid"`
+}
+
+func (r *ModifyProVersionRenewFlagRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyProVersionRenewFlagRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyProVersionRenewFlagResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifyProVersionRenewFlagResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyProVersionRenewFlagResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type NonLocalLoginPlace struct {
 
 	// 事件ID。
@@ -2503,6 +2782,46 @@ type OpenPortStatistics struct {
 	MachineNum *uint64 `json:"MachineNum" name:"MachineNum"`
 }
 
+type OpenProVersionPrepaidRequest struct {
+	*tchttp.BaseRequest
+
+	// 购买相关参数。
+	ChargePrepaid *ChargePrepaid `json:"ChargePrepaid" name:"ChargePrepaid"`
+
+	// 需要开通专业版主机信息数组。
+	Machines []*ProVersionMachine `json:"Machines" name:"Machines" list`
+}
+
+func (r *OpenProVersionPrepaidRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *OpenProVersionPrepaidRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type OpenProVersionPrepaidResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 订单ID列表。
+		DealIds []*string `json:"DealIds" name:"DealIds" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *OpenProVersionPrepaidResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *OpenProVersionPrepaidResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type Place struct {
 
 	// 城市 ID。
@@ -2513,6 +2832,22 @@ type Place struct {
 
 	// 国家ID，暂只支持国内：1。
 	CountryId *uint64 `json:"CountryId" name:"CountryId"`
+}
+
+type ProVersionMachine struct {
+
+	// 主机类型。
+	// <li>CVM: 虚拟主机</li>
+	// <li>BM: 黑石物理机</li>
+	MachineType *string `json:"MachineType" name:"MachineType"`
+
+	// 主机所在地域。
+	// 如：ap-guangzhou、ap-beijing
+	MachineRegion *string `json:"MachineRegion" name:"MachineRegion"`
+
+	// 主机唯一标识Uuid。
+	// 黑石的InstanceId，CVM的Uuid
+	Quuid *string `json:"Quuid" name:"Quuid"`
 }
 
 type Process struct {
@@ -2601,6 +2936,43 @@ func (r *RecoverMalwaresResponse) ToJsonString() string {
 }
 
 func (r *RecoverMalwaresResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type RenewProVersionRequest struct {
+	*tchttp.BaseRequest
+
+	// 购买相关参数。
+	ChargePrepaid *ChargePrepaid `json:"ChargePrepaid" name:"ChargePrepaid"`
+
+	// 主机唯一ID，对应CVM的uuid、BM的InstanceId。
+	Quuid *string `json:"Quuid" name:"Quuid"`
+}
+
+func (r *RenewProVersionRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *RenewProVersionRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type RenewProVersionResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *RenewProVersionResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *RenewProVersionResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -2707,6 +3079,40 @@ func (r *SeparateMalwaresResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type TrustMaliciousRequestRequest struct {
+	*tchttp.BaseRequest
+
+	// 恶意请求记录ID。
+	Id *uint64 `json:"Id" name:"Id"`
+}
+
+func (r *TrustMaliciousRequestRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *TrustMaliciousRequestRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type TrustMaliciousRequestResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *TrustMaliciousRequestResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *TrustMaliciousRequestResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type TrustMalwaresRequest struct {
 	*tchttp.BaseRequest
 
@@ -2738,6 +3144,40 @@ func (r *TrustMalwaresResponse) ToJsonString() string {
 }
 
 func (r *TrustMalwaresResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type UntrustMaliciousRequestRequest struct {
+	*tchttp.BaseRequest
+
+	// 受信任记录ID。
+	Id *uint64 `json:"Id" name:"Id"`
+}
+
+func (r *UntrustMaliciousRequestRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *UntrustMaliciousRequestRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type UntrustMaliciousRequestResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *UntrustMaliciousRequestResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *UntrustMaliciousRequestResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 

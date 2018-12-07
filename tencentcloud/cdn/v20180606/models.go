@@ -199,6 +199,45 @@ func (r *DescribeIpVisitResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeMapInfoRequest struct {
+	*tchttp.BaseRequest
+
+	// 映射查询类别：
+	// ips：运营商映射查询
+	// district：省份映射查询
+	Name *string `json:"Name" name:"Name"`
+}
+
+func (r *DescribeMapInfoRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeMapInfoRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeMapInfoResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 映射关系数组。
+		MapInfoList []*MapInfo `json:"MapInfoList" name:"MapInfoList" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeMapInfoResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeMapInfoResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeOriginDataRequest struct {
 	*tchttp.BaseRequest
 
@@ -275,6 +314,55 @@ func (r *DescribeOriginDataResponse) ToJsonString() string {
 }
 
 func (r *DescribeOriginDataResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribePayTypeRequest struct {
+	*tchttp.BaseRequest
+}
+
+func (r *DescribePayTypeRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribePayTypeRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribePayTypeResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 计费类型：
+	// flux：流量计费
+	// bandwidth：带宽计费
+		PayType *string `json:"PayType" name:"PayType"`
+
+		// 计费周期：
+	// day：日结计费
+	// month：月结计费
+		BillingCycle *string `json:"BillingCycle" name:"BillingCycle"`
+
+		// 计费方式：
+	// monthMax：日峰值月平均计费，月结模式
+	// day95：日 95 带宽计费，月结模式
+	// month95：月95带宽计费，月结模式
+	// sum：总流量计费，日结与月结均有流量计费模式
+	// max：峰值带宽计费，日结模式
+		StatType *string `json:"StatType" name:"StatType"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribePayTypeResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribePayTypeResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -356,6 +444,15 @@ func (r *ListTopDataResponse) ToJsonString() string {
 
 func (r *ListTopDataResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
+}
+
+type MapInfo struct {
+
+	// 对象 Id
+	Id *int64 `json:"Id" name:"Id"`
+
+	// 对象名称
+	Name *string `json:"Name" name:"Name"`
 }
 
 type ResourceData struct {

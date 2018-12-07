@@ -99,6 +99,31 @@ func (c *Client) AssociateInstancesKeyPairs(request *AssociateInstancesKeyPairsR
     return
 }
 
+func NewAssociateSecurityGroupsRequest() (request *AssociateSecurityGroupsRequest) {
+    request = &AssociateSecurityGroupsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cvm", APIVersion, "AssociateSecurityGroups")
+    return
+}
+
+func NewAssociateSecurityGroupsResponse() (response *AssociateSecurityGroupsResponse) {
+    response = &AssociateSecurityGroupsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口 (AssociateSecurityGroups) 用于绑定安全组到指定实例。
+func (c *Client) AssociateSecurityGroups(request *AssociateSecurityGroupsRequest) (response *AssociateSecurityGroupsResponse, err error) {
+    if request == nil {
+        request = NewAssociateSecurityGroupsRequest()
+    }
+    response = NewAssociateSecurityGroupsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateDisasterRecoverGroupRequest() (request *CreateDisasterRecoverGroupRequest) {
     request = &CreateDisasterRecoverGroupRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -767,6 +792,31 @@ func (c *Client) DisassociateInstancesKeyPairs(request *DisassociateInstancesKey
         request = NewDisassociateInstancesKeyPairsRequest()
     }
     response = NewDisassociateInstancesKeyPairsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDisassociateSecurityGroupsRequest() (request *DisassociateSecurityGroupsRequest) {
+    request = &DisassociateSecurityGroupsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cvm", APIVersion, "DisassociateSecurityGroups")
+    return
+}
+
+func NewDisassociateSecurityGroupsResponse() (response *DisassociateSecurityGroupsResponse) {
+    response = &DisassociateSecurityGroupsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口 (DisassociateSecurityGroups) 用于解绑实例的指定安全组。
+func (c *Client) DisassociateSecurityGroups(request *DisassociateSecurityGroupsRequest) (response *DisassociateSecurityGroupsResponse, err error) {
+    if request == nil {
+        request = NewDisassociateSecurityGroupsRequest()
+    }
+    response = NewDisassociateSecurityGroupsResponse()
     err = c.Send(request, response)
     return
 }

@@ -168,6 +168,56 @@ func (c *Client) DeletePsaRegulation(request *DeletePsaRegulationRequest) (respo
     return
 }
 
+func NewDeleteUserCmdsRequest() (request *DeleteUserCmdsRequest) {
+    request = &DeleteUserCmdsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("bm", APIVersion, "DeleteUserCmds")
+    return
+}
+
+func NewDeleteUserCmdsResponse() (response *DeleteUserCmdsResponse) {
+    response = &DeleteUserCmdsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 删除自定义脚本
+func (c *Client) DeleteUserCmds(request *DeleteUserCmdsRequest) (response *DeleteUserCmdsResponse, err error) {
+    if request == nil {
+        request = NewDeleteUserCmdsRequest()
+    }
+    response = NewDeleteUserCmdsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeDevicePriceInfoRequest() (request *DescribeDevicePriceInfoRequest) {
+    request = &DescribeDevicePriceInfoRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("bm", APIVersion, "DescribeDevicePriceInfo")
+    return
+}
+
+func NewDescribeDevicePriceInfoResponse() (response *DescribeDevicePriceInfoResponse) {
+    response = &DescribeDevicePriceInfoResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询服务器价格信息，支持设备的批量查找，支持标准机型和弹性机型的混合查找
+func (c *Client) DescribeDevicePriceInfo(request *DescribeDevicePriceInfoRequest) (response *DescribeDevicePriceInfoResponse, err error) {
+    if request == nil {
+        request = NewDescribeDevicePriceInfoRequest()
+    }
+    response = NewDescribeDevicePriceInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeDevicesRequest() (request *DescribeDevicesRequest) {
     request = &DescribeDevicesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -301,6 +351,131 @@ func (c *Client) DescribeTaskOperationLog(request *DescribeTaskOperationLogReque
     return
 }
 
+func NewDescribeUserCmdTaskInfoRequest() (request *DescribeUserCmdTaskInfoRequest) {
+    request = &DescribeUserCmdTaskInfoRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("bm", APIVersion, "DescribeUserCmdTaskInfo")
+    return
+}
+
+func NewDescribeUserCmdTaskInfoResponse() (response *DescribeUserCmdTaskInfoResponse) {
+    response = &DescribeUserCmdTaskInfoResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 获取自定义脚本任务详细信息
+func (c *Client) DescribeUserCmdTaskInfo(request *DescribeUserCmdTaskInfoRequest) (response *DescribeUserCmdTaskInfoResponse, err error) {
+    if request == nil {
+        request = NewDescribeUserCmdTaskInfoRequest()
+    }
+    response = NewDescribeUserCmdTaskInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeUserCmdTasksRequest() (request *DescribeUserCmdTasksRequest) {
+    request = &DescribeUserCmdTasksRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("bm", APIVersion, "DescribeUserCmdTasks")
+    return
+}
+
+func NewDescribeUserCmdTasksResponse() (response *DescribeUserCmdTasksResponse) {
+    response = &DescribeUserCmdTasksResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 获取自定义脚本任务列表
+func (c *Client) DescribeUserCmdTasks(request *DescribeUserCmdTasksRequest) (response *DescribeUserCmdTasksResponse, err error) {
+    if request == nil {
+        request = NewDescribeUserCmdTasksRequest()
+    }
+    response = NewDescribeUserCmdTasksResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeUserCmdsRequest() (request *DescribeUserCmdsRequest) {
+    request = &DescribeUserCmdsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("bm", APIVersion, "DescribeUserCmds")
+    return
+}
+
+func NewDescribeUserCmdsResponse() (response *DescribeUserCmdsResponse) {
+    response = &DescribeUserCmdsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 获取自定义脚本信息列表
+func (c *Client) DescribeUserCmds(request *DescribeUserCmdsRequest) (response *DescribeUserCmdsResponse, err error) {
+    if request == nil {
+        request = NewDescribeUserCmdsRequest()
+    }
+    response = NewDescribeUserCmdsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyDeviceAliasesRequest() (request *ModifyDeviceAliasesRequest) {
+    request = &ModifyDeviceAliasesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("bm", APIVersion, "ModifyDeviceAliases")
+    return
+}
+
+func NewModifyDeviceAliasesResponse() (response *ModifyDeviceAliasesResponse) {
+    response = &ModifyDeviceAliasesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 修改服务器名称
+func (c *Client) ModifyDeviceAliases(request *ModifyDeviceAliasesRequest) (response *ModifyDeviceAliasesResponse, err error) {
+    if request == nil {
+        request = NewModifyDeviceAliasesRequest()
+    }
+    response = NewModifyDeviceAliasesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyPayModePre2PostRequest() (request *ModifyPayModePre2PostRequest) {
+    request = &ModifyPayModePre2PostRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("bm", APIVersion, "ModifyPayModePre2Post")
+    return
+}
+
+func NewModifyPayModePre2PostResponse() (response *ModifyPayModePre2PostResponse) {
+    response = &ModifyPayModePre2PostResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 将设备的预付费模式修改为后付费计费模式，支持批量转换。（前提是客户要加入黑石物理机后付费计费的白名单，申请黑石物理机后付费可以联系腾讯云客服）
+func (c *Client) ModifyPayModePre2Post(request *ModifyPayModePre2PostRequest) (response *ModifyPayModePre2PostResponse, err error) {
+    if request == nil {
+        request = NewModifyPayModePre2PostRequest()
+    }
+    response = NewModifyPayModePre2PostResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyPsaRegulationRequest() (request *ModifyPsaRegulationRequest) {
     request = &ModifyPsaRegulationRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -322,6 +497,56 @@ func (c *Client) ModifyPsaRegulation(request *ModifyPsaRegulationRequest) (respo
         request = NewModifyPsaRegulationRequest()
     }
     response = NewModifyPsaRegulationResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyUserCmdRequest() (request *ModifyUserCmdRequest) {
+    request = &ModifyUserCmdRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("bm", APIVersion, "ModifyUserCmd")
+    return
+}
+
+func NewModifyUserCmdResponse() (response *ModifyUserCmdResponse) {
+    response = &ModifyUserCmdResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 修改自定义脚本
+func (c *Client) ModifyUserCmd(request *ModifyUserCmdRequest) (response *ModifyUserCmdResponse, err error) {
+    if request == nil {
+        request = NewModifyUserCmdRequest()
+    }
+    response = NewModifyUserCmdResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewRebootDevicesRequest() (request *RebootDevicesRequest) {
+    request = &RebootDevicesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("bm", APIVersion, "RebootDevices")
+    return
+}
+
+func NewRebootDevicesResponse() (response *RebootDevicesResponse) {
+    response = &RebootDevicesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 重启机器
+func (c *Client) RebootDevices(request *RebootDevicesRequest) (response *RebootDevicesResponse, err error) {
+    if request == nil {
+        request = NewRebootDevicesRequest()
+    }
+    response = NewRebootDevicesResponse()
     err = c.Send(request, response)
     return
 }
@@ -367,6 +592,56 @@ func (c *Client) RepairTaskControl(request *RepairTaskControlRequest) (response 
         request = NewRepairTaskControlRequest()
     }
     response = NewRepairTaskControlResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewResetDevicePasswordRequest() (request *ResetDevicePasswordRequest) {
+    request = &ResetDevicePasswordRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("bm", APIVersion, "ResetDevicePassword")
+    return
+}
+
+func NewResetDevicePasswordResponse() (response *ResetDevicePasswordResponse) {
+    response = &ResetDevicePasswordResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 重置服务器密码
+func (c *Client) ResetDevicePassword(request *ResetDevicePasswordRequest) (response *ResetDevicePasswordResponse, err error) {
+    if request == nil {
+        request = NewResetDevicePasswordRequest()
+    }
+    response = NewResetDevicePasswordResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewRunUserCmdRequest() (request *RunUserCmdRequest) {
+    request = &RunUserCmdRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("bm", APIVersion, "RunUserCmd")
+    return
+}
+
+func NewRunUserCmdResponse() (response *RunUserCmdResponse) {
+    response = &RunUserCmdResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 运行自定义脚本
+func (c *Client) RunUserCmd(request *RunUserCmdRequest) (response *RunUserCmdResponse, err error) {
+    if request == nil {
+        request = NewRunUserCmdRequest()
+    }
+    response = NewRunUserCmdResponse()
     err = c.Send(request, response)
     return
 }

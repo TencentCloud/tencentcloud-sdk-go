@@ -344,6 +344,31 @@ func (c *Client) DescribePersonInfo(request *DescribePersonInfoRequest) (respons
     return
 }
 
+func NewDescribePersonInfoByFacePictureRequest() (request *DescribePersonInfoByFacePictureRequest) {
+    request = &DescribePersonInfoByFacePictureRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("youmall", APIVersion, "DescribePersonInfoByFacePicture")
+    return
+}
+
+func NewDescribePersonInfoByFacePictureResponse() (response *DescribePersonInfoByFacePictureResponse) {
+    response = &DescribePersonInfoByFacePictureResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 通过上传人脸图片检索系统face id、顾客身份信息及底图
+func (c *Client) DescribePersonInfoByFacePicture(request *DescribePersonInfoByFacePictureRequest) (response *DescribePersonInfoByFacePictureResponse, err error) {
+    if request == nil {
+        request = NewDescribePersonInfoByFacePictureRequest()
+    }
+    response = NewDescribePersonInfoByFacePictureResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribePersonTraceRequest() (request *DescribePersonTraceRequest) {
     request = &DescribePersonTraceRequest{
         BaseRequest: &tchttp.BaseRequest{},
