@@ -2400,7 +2400,7 @@ type InquiryPriceOpenProVersionPrepaidResponse struct {
 	Response *struct {
 
 		// 预支费用的原价，单位：元。
-		DiscountPrice *float64 `json:"DiscountPrice" name:"DiscountPrice"`
+		OriginalPrice *float64 `json:"OriginalPrice" name:"OriginalPrice"`
 
 		// 预支费用的折扣价，单位：元。
 		DiscountPrice *float64 `json:"DiscountPrice" name:"DiscountPrice"`
