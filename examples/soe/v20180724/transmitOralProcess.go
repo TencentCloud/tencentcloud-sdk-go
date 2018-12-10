@@ -4,10 +4,11 @@ import (
 	"github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
 	"github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
 	"github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/regions"
-	"github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/errors"
 	"fmt"
 	soe "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/soe/v20180724"
-	"encoding/base64"
+	"os"
+	"io/ioutil"
+	"github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/errors"
 )
 
 func main() {
@@ -28,15 +29,14 @@ func main() {
 	cpf := profile.NewClientProfile()
 	// SDK默认使用POST方法。
 	// 如果你一定要使用GET方法，可以在这里设置。GET方法无法处理一些较大的请求。
-	cpf.HttpProfile.ReqMethod = "GET"
+	cpf.HttpProfile.ReqMethod = "POST"
 	// SDK有默认的超时时间，非必要请不要进行调整。
 	// 如有需要请在代码中查阅以获取最新的默认值。
-	cpf.HttpProfile.ReqTimeout = 10
+	cpf.HttpProfile.ReqTimeout = 30
 	// SDK会自动指定域名。通常是不需要特地指定域名的
 	cpf.HttpProfile.Endpoint = "soe.tencentcloudapi.com"
 	// SDK默认用HmacSHA256进行签名，它更安全但是会轻微降低性能。
 	// 非必要请不要修改这个字段。
-	cpf.SignMethod = "HmacSHA1"
 
 	// 实例化要请求产品的client对象
 	// 第二个参数是地域信息，可以直接填写字符串ap-guangzhou，或者引用预设的常量
@@ -51,21 +51,26 @@ func main() {
 	// 此接口允许设置返回的实例数量。此处指定为只返回一个。
 	// SDK采用的是指针风格指定参数，即使对于基本类型你也需要用指针来对参数赋值。
 	// SDK提供对基本类型的指针引用封装函数
-	request.SeqId = common.Int64Ptr(0)
+	request.SeqId = common.Int64Ptr(1)
 	request.IsEnd = common.Int64Ptr(1)
-	request.VoiceFileType = common.Int64Ptr(0)
+	request.SessionId = common.StringPtr("1")
+	request.VoiceFileType = common.Int64Ptr(1)
+	request.VoiceEncodeType = common.Int64Ptr(1)
 	// 使用json字符串设置一个request，注意这里实际是更新request，上述字段将会被保留，
 	// 如果需要一个全新的request，soe.TransmitOralProcessRequest()创建。
-	userVoiceData := base64.StdEncoding.EncodeToString([]byte("智聆口语评测"))
-	request.UserVoiceData = common.StringPtr(userVoiceData)
-	err := request.FromJsonString(`{"VoiceEncodeType":1,"SessionId":"1234567"}`)
+	// userVoiceData := base64.StdEncoding.EncodeToString([]byte("智聆口语评测"))
+	dir,_ := os.Getwd()
+	data,err := ioutil.ReadFile(dir + "\\examples\\soe\\v20180724\\since")
 	if err != nil {
 		panic(err)
 	}
+	userVoiceData := string(data)
+	request.UserVoiceData = common.StringPtr(userVoiceData)
+
 	// 通过client对象调用想要访问的接口，需要传入请求对象
 	response, err := client.TransmitOralProcess(request)
 	// 处理异常
-	if _, ok := err.(*errors.TencentCloudSDKError); ok {
+	if _, ok := err.(*errors.TencentCloudSDKError); !ok {
 		fmt.Printf("An API error has returned: %s", err)
 		return
 	}

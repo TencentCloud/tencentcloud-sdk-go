@@ -4,7 +4,6 @@ import (
 	"fmt"
 	"github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
 	"github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
-	"github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/regions"
 	"github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/errors"
 	soe "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/soe/v20180724"
 )
@@ -27,19 +26,16 @@ func main() {
 	cpf := profile.NewClientProfile()
 	// SDK默认使用POST方法。
 	// 如果你一定要使用GET方法，可以在这里设置。GET方法无法处理一些较大的请求。
-	cpf.HttpProfile.ReqMethod = "GET"
+	cpf.HttpProfile.ReqMethod = "POST"
 	// SDK有默认的超时时间，非必要请不要进行调整。
 	// 如有需要请在代码中查阅以获取最新的默认值。
-	cpf.HttpProfile.ReqTimeout = 10
+	cpf.HttpProfile.ReqTimeout = 30
 	// SDK会自动指定域名。通常是不需要特地指定域名的
 	cpf.HttpProfile.Endpoint = "soe.tencentcloudapi.com"
-	// SDK默认用HmacSHA256进行签名，它更安全但是会轻微降低性能。
-	// 非必要请不要修改这个字段。
-	cpf.SignMethod = "HmacSHA1"
 
 	// 实例化要请求产品的client对象
 	// 第二个参数是地域信息，可以直接填写字符串ap-guangzhou，或者引用预设的常量
-	client, _ := soe.NewClient(credential, regions.Guangzhou, cpf)
+	client, _ := soe.NewClient(credential, "", cpf)
 	// 实例化一个请求对象，根据调用的接口和实际情况，可以进一步设置请求参数
 	// 你可以直接查询SDK源码确定InitOralProcessRequest有哪些属性可以设置，
 	// 属性可能是基本类型，也可能引用了另一个数据结构。
@@ -53,12 +49,9 @@ func main() {
 	request.WorkMode = common.Int64Ptr(1)
 	request.EvalMode = common.Int64Ptr(0)
 	request.ScoreCoeff = common.Float64Ptr(2.0)
-	// 使用json字符串设置一个request，注意这里实际是更新request，上述字段将会被保留，
-	// 如果需要一个全新的request，则需要用soe.NewInitOralProcessRequest()创建。
-	err := request.FromJsonString(`{"SecretId":"","SessionId":"1234567","RefText":"智聆口语评测"}`)
-	if err != nil {
-		panic(err)
-	}
+	request.SessionId = common.StringPtr("1")
+	request.RefText = common.StringPtr("since")
+
 	// 通过client对象调用想要访问的接口，需要传入请求对象
 	response, err := client.InitOralProcess(request)
 	// 处理异常
