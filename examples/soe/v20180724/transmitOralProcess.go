@@ -66,7 +66,6 @@ func main() {
 	request.SetHttpMethod("POST")
 	response, err := client.TransmitOralProcess(request)
 	// 处理异常
-	fmt.Println(err)
 	if _, ok := err.(*errors.TencentCloudSDKError); ok {
 		fmt.Printf("An API error has returned: %s", err)
 		return
