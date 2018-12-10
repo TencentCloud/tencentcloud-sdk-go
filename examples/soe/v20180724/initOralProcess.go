@@ -17,8 +17,8 @@ func main() {
 	credential := common.NewCredential(
 		// os.Getenv("TENCENTCLOUD_SECRET_ID"),
 		// os.Getenv("TENCENTCLOUD_SECRET_KEY"),
-		"secretId",
-		"secretKey",
+		"...",
+		"...",
 	)
 
 	// 非必要步骤
@@ -34,7 +34,7 @@ func main() {
 	cpf.HttpProfile.Endpoint = "soe.tencentcloudapi.com"
 
 	// 实例化要请求产品的client对象
-	// 第二个参数是地域信息，可以直接填写字符串ap-guangzhou，或者引用预设的常量
+	// 第二个参数是地域信息
 	client, _ := soe.NewClient(credential, "ap-guangzhou", cpf)
 	// 实例化一个请求对象，根据调用的接口和实际情况，可以进一步设置请求参数
 	// 你可以直接查询SDK源码确定InitOralProcessRequest有哪些属性可以设置，
@@ -55,6 +55,7 @@ func main() {
 	// 通过client对象调用想要访问的接口，需要传入请求对象
 	response, err := client.InitOralProcess(request)
 	// 处理异常
+	fmt.Println(err)
 	if _, ok := err.(*errors.TencentCloudSDKError); ok {
 		fmt.Printf("An API error has returned: %s", err)
 		return
