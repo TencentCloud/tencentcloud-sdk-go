@@ -3,7 +3,6 @@ package main
 import (
 	"github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
 	"github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
-	"github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/regions"
 	"fmt"
 	soe "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/soe/v20180724"
 	"os"
@@ -40,7 +39,7 @@ func main() {
 
 	// 实例化要请求产品的client对象
 	// 第二个参数是地域信息，可以直接填写字符串ap-guangzhou，或者引用预设的常量
-	client, _ := soe.NewClient(credential, regions.Guangzhou, cpf)
+	client, _ := soe.NewClient(credential, "ap-guangzhou", cpf)
 	// 实例化一个请求对象，根据调用的接口和实际情况，可以进一步设置请求参数
 	// 你可以直接查询SDK源码确定TransmitOralProcessRequest有哪些属性可以设置，
 	// 属性可能是基本类型，也可能引用了另一个数据结构。
