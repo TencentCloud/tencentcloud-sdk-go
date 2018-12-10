@@ -5,8 +5,6 @@ import (
 	"github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
 	"fmt"
 	soe "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/soe/v20180724"
-	"os"
-	"io/ioutil"
 	"github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/errors"
 )
 
@@ -57,13 +55,11 @@ func main() {
 	request.VoiceEncodeType = common.Int64Ptr(1)
 	// 使用json字符串设置一个request，注意这里实际是更新request，上述字段将会被保留，
 	// 如果需要一个全新的request，soe.TransmitOralProcessRequest()创建。
+
 	// userVoiceData := base64.StdEncoding.EncodeToString([]byte("智聆口语评测"))
-	dir,_ := os.Getwd()
-	data,err := ioutil.ReadFile(dir + "\\examples\\soe\\v20180724\\since")
-	if err != nil {
-		panic(err)
-	}
-	userVoiceData := string(data)
+
+	userVoiceData := "JXU4RkQ5JXU5MUNDJXU2NjJGJXU4OTgxJXU1MkEwJXU1QkM2JXU3Njg0JXU1MTg1JXU1QkI5JXVGRjAx"
+	// 设置base64加密后的语音数据
 	request.UserVoiceData = common.StringPtr(userVoiceData)
 
 	// 通过client对象调用想要访问的接口，需要传入请求对象
