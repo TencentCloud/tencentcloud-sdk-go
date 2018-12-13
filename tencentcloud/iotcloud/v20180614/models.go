@@ -61,7 +61,7 @@ type CancelTaskResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -98,6 +98,12 @@ type CreateDeviceRequest struct {
 
 	// LoRa设备的DevEui，当创建LoRa时，此字段必填
 	LoraDevEui *string `json:"LoraDevEui" name:"LoraDevEui"`
+
+	// LoRa设备的MoteType
+	LoraMoteType *uint64 `json:"LoraMoteType" name:"LoraMoteType"`
+
+	// 创建LoRa设备需要skey
+	Skey *string `json:"Skey" name:"Skey"`
 }
 
 func (r *CreateDeviceRequest) ToJsonString() string {
@@ -128,7 +134,16 @@ type CreateDeviceResponse struct {
 		// LoRa设备的DevEui，当设备是LoRa设备时，会返回该字段
 		LoraDevEui *string `json:"LoraDevEui" name:"LoraDevEui"`
 
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// LoRa设备的MoteType，当设备是LoRa设备时，会返回该字段
+		LoraMoteType *uint64 `json:"LoraMoteType" name:"LoraMoteType"`
+
+		// LoRa设备的AppKey，当设备是LoRa设备时，会返回该字段
+		LoraAppKey *string `json:"LoraAppKey" name:"LoraAppKey"`
+
+		// LoRa设备的NwkKey，当设备是LoRa设备时，会返回该字段
+		LoraNwkKey *string `json:"LoraNwkKey" name:"LoraNwkKey"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -168,7 +183,7 @@ type CreateMultiDeviceResponse struct {
 		// 任务ID，腾讯云生成全局唯一的任务 ID，有效期一个月，一个月之后任务失效。可以调用获取创建多设备任务状态接口获取该任务的执行状态，当状态为成功时，可以调用获取创建多设备任务结果接口获取该任务的结果
 		TaskId *string `json:"TaskId" name:"TaskId"`
 
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -190,6 +205,9 @@ type CreateProductRequest struct {
 
 	// 产品属性
 	ProductProperties *ProductProperties `json:"ProductProperties" name:"ProductProperties"`
+
+	// 创建LoRa产品需要的Skey
+	Skey *string `json:"Skey" name:"Skey"`
 }
 
 func (r *CreateProductRequest) ToJsonString() string {
@@ -214,7 +232,7 @@ type CreateProductResponse struct {
 		// 产品属性
 		ProductProperties *ProductProperties `json:"ProductProperties" name:"ProductProperties"`
 
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -266,7 +284,7 @@ type CreateTaskResponse struct {
 		// 创建的任务ID
 		TaskId *string `json:"TaskId" name:"TaskId"`
 
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -280,6 +298,43 @@ func (r *CreateTaskResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type CreateTopicRuleRequest struct {
+	*tchttp.BaseRequest
+
+	// 规则名称
+	RuleName *string `json:"RuleName" name:"RuleName"`
+
+	// 规则内容
+	TopicRulePayload *TopicRulePayload `json:"TopicRulePayload" name:"TopicRulePayload"`
+}
+
+func (r *CreateTopicRuleRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateTopicRuleRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateTopicRuleResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateTopicRuleResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateTopicRuleResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DeleteDeviceRequest struct {
 	*tchttp.BaseRequest
 
@@ -288,6 +343,9 @@ type DeleteDeviceRequest struct {
 
 	// 需要删除的设备名称
 	DeviceName *string `json:"DeviceName" name:"DeviceName"`
+
+	// 删除LoRa设备以及LoRa网关设备需要skey
+	Skey *string `json:"Skey" name:"Skey"`
 }
 
 func (r *DeleteDeviceRequest) ToJsonString() string {
@@ -303,7 +361,7 @@ type DeleteDeviceResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -322,6 +380,9 @@ type DeleteProductRequest struct {
 
 	// 需要删除的产品 ID
 	ProductId *string `json:"ProductId" name:"ProductId"`
+
+	// 删除LoRa产品需要skey
+	Skey *string `json:"Skey" name:"Skey"`
 }
 
 func (r *DeleteProductRequest) ToJsonString() string {
@@ -337,7 +398,7 @@ type DeleteProductResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -348,6 +409,122 @@ func (r *DeleteProductResponse) ToJsonString() string {
 }
 
 func (r *DeleteProductResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteTopicRuleRequest struct {
+	*tchttp.BaseRequest
+
+	// 规则名
+	RuleName *string `json:"RuleName" name:"RuleName"`
+}
+
+func (r *DeleteTopicRuleRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteTopicRuleRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteTopicRuleResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DeleteTopicRuleResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteTopicRuleResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeDeviceRequest struct {
+	*tchttp.BaseRequest
+
+	// 产品ID
+	ProductID *string `json:"ProductID" name:"ProductID"`
+
+	// 产品名
+	DeviceName *string `json:"DeviceName" name:"DeviceName"`
+}
+
+func (r *DescribeDeviceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeDeviceRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeDeviceResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 设备名
+		DeviceName *string `json:"DeviceName" name:"DeviceName"`
+
+		// 设备是否在线，0不在线，1在线
+		Online *uint64 `json:"Online" name:"Online"`
+
+		// 设备登陆时间
+		LoginTime *uint64 `json:"LoginTime" name:"LoginTime"`
+
+		// 设备固件版本
+		Version *string `json:"Version" name:"Version"`
+
+		// 设备最后更新时间
+		LastUpdateTime *uint64 `json:"LastUpdateTime" name:"LastUpdateTime"`
+
+		// 设备证书
+		DeviceCert *string `json:"DeviceCert" name:"DeviceCert"`
+
+		// 设备密钥
+		DevicePsk *string `json:"DevicePsk" name:"DevicePsk"`
+
+		// 设备属性
+		Tags []*DeviceTag `json:"Tags" name:"Tags" list`
+
+		// 设备类型
+		DeviceType *uint64 `json:"DeviceType" name:"DeviceType"`
+
+		// IMEI
+		Imei *string `json:"Imei" name:"Imei"`
+
+		// 运营商类型
+		Isp *uint64 `json:"Isp" name:"Isp"`
+
+		// IP地址
+		ConnIP *uint64 `json:"ConnIP" name:"ConnIP"`
+
+		// NB IoT运营商处的DeviceID
+		NbiotDeviceID *string `json:"NbiotDeviceID" name:"NbiotDeviceID"`
+
+		// Lora设备的dev eui
+		LoraDevEui *string `json:"LoraDevEui" name:"LoraDevEui"`
+
+		// Lora设备的mote type
+		LoraMoteType *uint64 `json:"LoraMoteType" name:"LoraMoteType"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeDeviceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeDeviceResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -377,7 +554,7 @@ type DescribeDeviceShadowResponse struct {
 		// 设备影子数据
 		Data *string `json:"Data" name:"Data"`
 
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -426,7 +603,7 @@ type DescribeDevicesResponse struct {
 		// 设备详细信息列表
 		Devices []*DeviceInfo `json:"Devices" name:"Devices" list`
 
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -469,7 +646,7 @@ type DescribeMultiDevTaskResponse struct {
 		// 任务是否完成。0 代表任务未开始，1 代表任务正在执行，2 代表任务已完成
 		TaskStatus *uint64 `json:"TaskStatus" name:"TaskStatus"`
 
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -521,7 +698,7 @@ type DescribeMultiDevicesResponse struct {
 		// 该任务创建设备的总数
 		TotalDevNum *uint64 `json:"TotalDevNum" name:"TotalDevNum"`
 
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -567,7 +744,7 @@ type DescribeProductsResponse struct {
 		// 产品详细信息列表
 		Products []*ProductInfo `json:"Products" name:"Products" list`
 
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -640,7 +817,7 @@ type DescribeTaskResponse struct {
 		// 已完成任务的设备数目
 		DoneDeviceCnt *uint64 `json:"DoneDeviceCnt" name:"DoneDeviceCnt"`
 
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -683,7 +860,7 @@ type DescribeTasksResponse struct {
 		// 此页任务对象的数组，按创建时间排序
 		Tasks []*TaskInfo `json:"Tasks" name:"Tasks" list`
 
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -755,6 +932,74 @@ type DeviceTag struct {
 
 	// 属性的值
 	Value *string `json:"Value" name:"Value"`
+}
+
+type DisableTopicRuleRequest struct {
+	*tchttp.BaseRequest
+
+	// 规则名称
+	RuleName *string `json:"RuleName" name:"RuleName"`
+}
+
+func (r *DisableTopicRuleRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DisableTopicRuleRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DisableTopicRuleResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DisableTopicRuleResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DisableTopicRuleResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type EnableTopicRuleRequest struct {
+	*tchttp.BaseRequest
+
+	// 规则名称
+	RuleName *string `json:"RuleName" name:"RuleName"`
+}
+
+func (r *EnableTopicRuleRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *EnableTopicRuleRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type EnableTopicRuleResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *EnableTopicRuleResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *EnableTopicRuleResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
 }
 
 type Filter struct {
@@ -830,6 +1075,12 @@ type ProductProperties struct {
 
 	// LoRa产品运营侧APPEUI，只有LoRa产品需要填写
 	Appeui *string `json:"Appeui" name:"Appeui"`
+
+	// 产品绑定的物模型ID，-1表示不绑定
+	ModelId *string `json:"ModelId" name:"ModelId"`
+
+	// 产品绑定的物模型名称
+	ModelName *string `json:"ModelName" name:"ModelName"`
 }
 
 type PublishMessageRequest struct {
@@ -864,7 +1115,7 @@ type PublishMessageResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -875,6 +1126,49 @@ func (r *PublishMessageResponse) ToJsonString() string {
 }
 
 func (r *PublishMessageResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ReplaceTopicRuleRequest struct {
+	*tchttp.BaseRequest
+
+	// 规则名称
+	RuleName *string `json:"RuleName" name:"RuleName"`
+
+	// 替换的规则包体
+	TopicRulePayload *TopicRulePayload `json:"TopicRulePayload" name:"TopicRulePayload"`
+
+	// 修改类型，0：其他，1：创建行为，2：更新行为，3：删除行为
+	ModifyType *uint64 `json:"ModifyType" name:"ModifyType"`
+
+	// action增删改变更填对应topicRulePayload里面第几个action
+	ActionIndex *uint64 `json:"ActionIndex" name:"ActionIndex"`
+}
+
+func (r *ReplaceTopicRuleRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ReplaceTopicRuleRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ReplaceTopicRuleResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ReplaceTopicRuleResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ReplaceTopicRuleResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -914,6 +1208,22 @@ type TaskInfo struct {
 	ErrMsg *string `json:"ErrMsg" name:"ErrMsg"`
 }
 
+type TopicRulePayload struct {
+
+	// 规则的SQL语句，base64编码
+	Sql *string `json:"Sql" name:"Sql"`
+
+	// 行为的JSON字符串，大部分种类举例如下：
+	// [{"republish":{"topic":"TEST/test"}},{"forward":{"api":"http://127.0.0.1:8080"}},{"ckafka":{"instance":{"id":"ckafka-test","name":""},"topic":{"id":"topic-test","name":"test"},"region":"gz"}},{"cmqqueue":{"queuename":"queue-test-TEST","region":"gz"}},{"mysql":{"instanceid":"cdb-test","region":"gz","username":"test","userpwd":"*****","dbname":"d_mqtt","tablename":"t_test","fieldpairs":[{"field":"test","value":"test"}],"devicetype":"CUSTOM"}}]
+	Actions *string `json:"Actions" name:"Actions"`
+
+	// 规则描述
+	Description *string `json:"Description" name:"Description"`
+
+	// 规则不生效
+	RuleDisabled *bool `json:"RuleDisabled" name:"RuleDisabled"`
+}
+
 type UpdateDeviceShadowRequest struct {
 	*tchttp.BaseRequest
 
@@ -946,7 +1256,7 @@ type UpdateDeviceShadowResponse struct {
 		// 设备影子数据，JSON字符串格式
 		Data *string `json:"Data" name:"Data"`
 
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }

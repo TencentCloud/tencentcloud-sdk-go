@@ -26,7 +26,7 @@ type GetInvokeTxRequest struct {
 	// 模块名，固定字段：transaction
 	Module *string `json:"Module" name:"Module"`
 
-	// 操作名，固定地段：invoke
+	// 操作名，固定字段：query_txid
 	Operation *string `json:"Operation" name:"Operation"`
 
 	// 区块链网络ID，可在区块链网络详情或列表中获取
@@ -84,7 +84,7 @@ type InvokeRequest struct {
 	// 模块名，固定字段：transaction
 	Module *string `json:"Module" name:"Module"`
 
-	// 操作名，固定地段：invoke
+	// 操作名，固定字段：invoke
 	Operation *string `json:"Operation" name:"Operation"`
 
 	// 区块链网络ID，可在区块链网络详情或列表中获取
@@ -157,7 +157,7 @@ type QueryRequest struct {
 	// 模块名，固定字段：transaction
 	Module *string `json:"Module" name:"Module"`
 
-	// 操作名，固定地段：query
+	// 操作名，固定字段：query
 	Operation *string `json:"Operation" name:"Operation"`
 
 	// 区块链网络ID，可在区块链网络详情或列表中获取

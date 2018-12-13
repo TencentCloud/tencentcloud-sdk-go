@@ -26,13 +26,13 @@ type InitOralProcessRequest struct {
 	// 语音段唯一标识，一段语音一个SessionId
 	SessionId *string `json:"SessionId" name:"SessionId"`
 
-	// 被评估语音对应的文本，不支持ascii大于128以上的字符，会统一替换成空格。
+	// 被评估语音对应的文本，句子模式下不超过个 20 单词或者中文文字，段落模式不超过 120 单词或者中文文字，会统一替换成空格，中文评估使用 utf-8 编码，自由说模式该值传空。
 	RefText *string `json:"RefText" name:"RefText"`
 
-	// 语音输入模式，0流式分片，1非流式一次性评估
+	// 语音输入模式，0：流式分片，1：非流式一次性评估
 	WorkMode *int64 `json:"WorkMode" name:"WorkMode"`
 
-	// 评估模式，0:词模式, 1:句子模式，当为词模式评估时，能够提供每个音节的评估信息，当为句子模式时，能够提供完整度和流利度信息。
+	// 评估模式，0：词模式，,1：:句子模式，2：段落模式，3：自由说模式，当为词模式评估时，能够提供每个音节的评估信息，当为句子模式时，能够提供完整度和流利度信息。
 	EvalMode *int64 `json:"EvalMode" name:"EvalMode"`
 
 	// 评价苛刻指数，取值为[1.0 - 4.0]范围内的浮点数，用于平滑不同年龄段的分数，1.0为小年龄段，4.0为最高年龄段
@@ -44,8 +44,14 @@ type InitOralProcessRequest struct {
 	// 长效session标识，当该参数为1时，session的持续时间为300s，但会一定程度上影响第一个数据包的返回速度，且TransmitOralProcess必须同时为1才可生效。
 	IsLongLifeSession *int64 `json:"IsLongLifeSession" name:"IsLongLifeSession"`
 
-	// 音频存储模式，0：不存储，1：存储到公共对象存储
+	// 音频存储模式，0：不存储，1：存储到公共对象存储，输出结果为该会话最后一个分片TransmitOralProcess 返回结果 AudioUrl 字段。
 	StorageMode *int64 `json:"StorageMode" name:"StorageMode"`
+
+	// 输出断句中间结果标识，0：不输出，1：输出，通过设置该参数，可以在评估过程中的分片传输请求中，返回已经评估断句的中间结果，中间结果可用于客户端 UI 更新，输出结果为TransmitOralProcess请求返回结果 SentenceInfoSet 字段。
+	SentenceInfoEnabled *int64 `json:"SentenceInfoEnabled" name:"SentenceInfoEnabled"`
+
+	// 评估语言，0：英文，1：中文。
+	ServerType *int64 `json:"ServerType" name:"ServerType"`
 }
 
 func (r *InitOralProcessRequest) ToJsonString() string {
@@ -97,6 +103,24 @@ type PhoneInfo struct {
 
 	// 当前音节是否应为重音
 	Stress *bool `json:"Stress" name:"Stress"`
+}
+
+type SentenceInfo struct {
+
+	// 句子序号，在段落、自由说模式下有效，表示断句序号，最后的综合结果的为-1.
+	SentenceId *int64 `json:"SentenceId" name:"SentenceId"`
+
+	// 详细发音评估结果
+	Words []*WordRsp `json:"Words" name:"Words" list`
+
+	// 发音精准度，取值范围[-1, 100]，当取-1时指完全不匹配，当为句子模式时，是所有已识别单词准确度的加权平均值。当为流式模式且请求中IsEnd未置1时，取值无意义
+	PronAccuracy *float64 `json:"PronAccuracy" name:"PronAccuracy"`
+
+	// 发音流利度，取值范围[0, 1]，当为词模式时，取值无意义；当为流式模式且请求中IsEnd未置1时，取值无意义
+	PronFluency *float64 `json:"PronFluency" name:"PronFluency"`
+
+	// 发音完整度，取值范围[0, 1]，当为词模式时，取值无意义；当为流式模式且请求中IsEnd未置1时，取值无意义
+	PronCompletion *float64 `json:"PronCompletion" name:"PronCompletion"`
 }
 
 type TransmitOralProcessRequest struct {
@@ -157,6 +181,9 @@ type TransmitOralProcessResponse struct {
 
 		// 保存语音音频文件下载地址
 		AudioUrl *string `json:"AudioUrl" name:"AudioUrl"`
+
+		// 断句中间结果，中间结果是局部最优而非全局最优的结果，所以中间结果有可能和最终整体结果对应部分不一致；中间结果的输出便于客户端UI更新；待用户发音完全结束后，系统会给出一个综合所有句子的整体结果。
+		SentenceInfoSet []*SentenceInfo `json:"SentenceInfoSet" name:"SentenceInfoSet" list`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`

@@ -168,6 +168,31 @@ func (c *Client) CreateTask(request *CreateTaskRequest) (response *CreateTaskRes
     return
 }
 
+func NewCreateTopicRuleRequest() (request *CreateTopicRuleRequest) {
+    request = &CreateTopicRuleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iotcloud", APIVersion, "CreateTopicRule")
+    return
+}
+
+func NewCreateTopicRuleResponse() (response *CreateTopicRuleResponse) {
+    response = &CreateTopicRuleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（CreateTopicRule）用于创建一个规则
+func (c *Client) CreateTopicRule(request *CreateTopicRuleRequest) (response *CreateTopicRuleResponse, err error) {
+    if request == nil {
+        request = NewCreateTopicRuleRequest()
+    }
+    response = NewCreateTopicRuleResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteDeviceRequest() (request *DeleteDeviceRequest) {
     request = &DeleteDeviceRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -214,6 +239,56 @@ func (c *Client) DeleteProduct(request *DeleteProductRequest) (response *DeleteP
         request = NewDeleteProductRequest()
     }
     response = NewDeleteProductResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteTopicRuleRequest() (request *DeleteTopicRuleRequest) {
+    request = &DeleteTopicRuleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iotcloud", APIVersion, "DeleteTopicRule")
+    return
+}
+
+func NewDeleteTopicRuleResponse() (response *DeleteTopicRuleResponse) {
+    response = &DeleteTopicRuleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（DeleteTopicRule）用于删除规则
+func (c *Client) DeleteTopicRule(request *DeleteTopicRuleRequest) (response *DeleteTopicRuleResponse, err error) {
+    if request == nil {
+        request = NewDeleteTopicRuleRequest()
+    }
+    response = NewDeleteTopicRuleResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeDeviceRequest() (request *DescribeDeviceRequest) {
+    request = &DescribeDeviceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iotcloud", APIVersion, "DescribeDevice")
+    return
+}
+
+func NewDescribeDeviceResponse() (response *DescribeDeviceResponse) {
+    response = &DescribeDeviceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（DescribeDevice）用于查看设备信息
+func (c *Client) DescribeDevice(request *DescribeDeviceRequest) (response *DescribeDeviceResponse, err error) {
+    if request == nil {
+        request = NewDescribeDeviceRequest()
+    }
+    response = NewDescribeDeviceResponse()
     err = c.Send(request, response)
     return
 }
@@ -393,6 +468,56 @@ func (c *Client) DescribeTasks(request *DescribeTasksRequest) (response *Describ
     return
 }
 
+func NewDisableTopicRuleRequest() (request *DisableTopicRuleRequest) {
+    request = &DisableTopicRuleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iotcloud", APIVersion, "DisableTopicRule")
+    return
+}
+
+func NewDisableTopicRuleResponse() (response *DisableTopicRuleResponse) {
+    response = &DisableTopicRuleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（DisableTopicRule）用于禁用规则
+func (c *Client) DisableTopicRule(request *DisableTopicRuleRequest) (response *DisableTopicRuleResponse, err error) {
+    if request == nil {
+        request = NewDisableTopicRuleRequest()
+    }
+    response = NewDisableTopicRuleResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewEnableTopicRuleRequest() (request *EnableTopicRuleRequest) {
+    request = &EnableTopicRuleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iotcloud", APIVersion, "EnableTopicRule")
+    return
+}
+
+func NewEnableTopicRuleResponse() (response *EnableTopicRuleResponse) {
+    response = &EnableTopicRuleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（EnableTopicRule）用于启用规则
+func (c *Client) EnableTopicRule(request *EnableTopicRuleRequest) (response *EnableTopicRuleResponse, err error) {
+    if request == nil {
+        request = NewEnableTopicRuleRequest()
+    }
+    response = NewEnableTopicRuleResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewPublishMessageRequest() (request *PublishMessageRequest) {
     request = &PublishMessageRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -414,6 +539,31 @@ func (c *Client) PublishMessage(request *PublishMessageRequest) (response *Publi
         request = NewPublishMessageRequest()
     }
     response = NewPublishMessageResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewReplaceTopicRuleRequest() (request *ReplaceTopicRuleRequest) {
+    request = &ReplaceTopicRuleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iotcloud", APIVersion, "ReplaceTopicRule")
+    return
+}
+
+func NewReplaceTopicRuleResponse() (response *ReplaceTopicRuleResponse) {
+    response = &ReplaceTopicRuleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（ReplaceTopicRule）用于修改替换规则
+func (c *Client) ReplaceTopicRule(request *ReplaceTopicRuleRequest) (response *ReplaceTopicRuleResponse, err error) {
+    if request == nil {
+        request = NewReplaceTopicRuleRequest()
+    }
+    response = NewReplaceTopicRuleResponse()
     err = c.Send(request, response)
     return
 }
