@@ -249,6 +249,31 @@ func (c *Client) DescribeAccountLimits(request *DescribeAccountLimitsRequest) (r
     return
 }
 
+func NewDescribeAutoScalingActivitiesRequest() (request *DescribeAutoScalingActivitiesRequest) {
+    request = &DescribeAutoScalingActivitiesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("as", APIVersion, "DescribeAutoScalingActivities")
+    return
+}
+
+func NewDescribeAutoScalingActivitiesResponse() (response *DescribeAutoScalingActivitiesResponse) {
+    response = &DescribeAutoScalingActivitiesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（DescribeAutoScalingActivities）用于查询伸缩组的伸缩活动记录。
+func (c *Client) DescribeAutoScalingActivities(request *DescribeAutoScalingActivitiesRequest) (response *DescribeAutoScalingActivitiesResponse, err error) {
+    if request == nil {
+        request = NewDescribeAutoScalingActivitiesRequest()
+    }
+    response = NewDescribeAutoScalingActivitiesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeAutoScalingGroupsRequest() (request *DescribeAutoScalingGroupsRequest) {
     request = &DescribeAutoScalingGroupsRequest{
         BaseRequest: &tchttp.BaseRequest{},

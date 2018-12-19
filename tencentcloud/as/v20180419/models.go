@@ -20,6 +20,63 @@ import (
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
+type Activity struct {
+
+	// 伸缩组ID。
+	AutoScalingGroupId *string `json:"AutoScalingGroupId" name:"AutoScalingGroupId"`
+
+	// 伸缩活动ID。
+	ActivityId *string `json:"ActivityId" name:"ActivityId"`
+
+	// 伸缩活动类型。取值如下：<br>
+	// <li>SCALE_OUT：扩容活动<li>SCALE_IN：缩容活动<li>ATTACH_INSTANCES：添加实例<li>REMOVE_INSTANCES：销毁实例<li>DETACH_INSTANCES：移出实例<li>TERMINATE_INSTANCES_UNEXPECTEDLY：实例在CVM控制台被销毁<li>REPLACE_UNHEALTHY_INSTANCE：替换不健康实例）
+	ActivityType *string `json:"ActivityType" name:"ActivityType"`
+
+	// 伸缩活动状态。取值如下：<br>
+	// <li>INIT：初始化中
+	// <li>RUNNING：运行中
+	// <li>SUCCESSFUL：活动成功
+	// <li>PARTIALLY_SUCCESSFUL：活动部分成功
+	// <li>FAILED：活动失败
+	// <li>CANCELLED：活动取消
+	StatusCode *string `json:"StatusCode" name:"StatusCode"`
+
+	// 伸缩活动状态描述。
+	StatusMessage *string `json:"StatusMessage" name:"StatusMessage"`
+
+	// 伸缩活动起因。
+	Cause *string `json:"Cause" name:"Cause"`
+
+	// 伸缩活动描述。
+	Description *string `json:"Description" name:"Description"`
+
+	// 伸缩活动开始时间。
+	StartTime *string `json:"StartTime" name:"StartTime"`
+
+	// 伸缩活动结束时间。
+	EndTime *string `json:"EndTime" name:"EndTime"`
+
+	// 伸缩活动创建时间。
+	CreatedTime *string `json:"CreatedTime" name:"CreatedTime"`
+
+	// 伸缩活动相关实例信息集合。
+	ActivityRelatedInstanceSet []*ActivtyRelatedInstance `json:"ActivityRelatedInstanceSet" name:"ActivityRelatedInstanceSet" list`
+
+	// 伸缩活动状态简要描述。
+	StatusMessageSimplified *string `json:"StatusMessageSimplified" name:"StatusMessageSimplified"`
+}
+
+type ActivtyRelatedInstance struct {
+
+	// 实例ID。
+	InstanceId *string `json:"InstanceId" name:"InstanceId"`
+
+	// 实例在伸缩活动中的状态。取值如下：
+	// <li>SUCCESSFUL：活动成功
+	// <li>FAILED：活动失败
+	InstanceStatus *string `json:"InstanceStatus" name:"InstanceStatus"`
+}
+
 type AttachInstancesRequest struct {
 	*tchttp.BaseRequest
 
@@ -517,6 +574,60 @@ func (r *DescribeAccountLimitsResponse) ToJsonString() string {
 }
 
 func (r *DescribeAccountLimitsResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeAutoScalingActivitiesRequest struct {
+	*tchttp.BaseRequest
+
+	// 按照一个或者多个伸缩活动ID查询。伸缩活动ID形如：`asa-5l2ejpfo`。每次请求的上限为100。参数不支持同时指定`ActivityIds`和`Filters`。
+	ActivityIds []*string `json:"ActivityIds" name:"ActivityIds" list`
+
+	// 过滤条件。
+	// <li> auto-scaling-group-id - String - 是否必填：否 -（过滤条件）按照伸缩组ID过滤。</li>
+	// <li> activity-status-code - String - 是否必填：否 -（过滤条件）按照伸缩活动状态过滤。（INIT：初始化中|RUNNING：运行中|SUCCESSFUL：活动成功|PARTIALLY_SUCCESSFUL：活动部分成功|FAILED：活动失败|CANCELLED：活动取消）</li>
+	// <li> activity-type - String - 是否必填：否 -（过滤条件）按照伸缩活动类型过滤。（SCALE_OUT：扩容活动|SCALE_IN：缩容活动|ATTACH_INSTANCES：添加实例|REMOVE_INSTANCES：销毁实例|DETACH_INSTANCES：移出实例|TERMINATE_INSTANCES_UNEXPECTEDLY：实例在CVM控制台被销毁|REPLACE_UNHEALTHY_INSTANCE：替换不健康实例）</li>
+	// <li> activity-id - String - 是否必填：否 -（过滤条件）按照伸缩活动ID过滤。</li>
+	// 每次请求的`Filters`的上限为10，`Filter.Values`的上限为5。参数不支持同时指定`ActivityIds`和`Filters`。
+	Filters []*Filter `json:"Filters" name:"Filters" list`
+
+	// 返回数量，默认为20，最大值为100。关于`Limit`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
+	Limit *uint64 `json:"Limit" name:"Limit"`
+
+	// 偏移量，默认为0。关于`Offset`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
+	Offset *uint64 `json:"Offset" name:"Offset"`
+}
+
+func (r *DescribeAutoScalingActivitiesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeAutoScalingActivitiesRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeAutoScalingActivitiesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 符合条件的伸缩活动数量。
+		TotalCount *uint64 `json:"TotalCount" name:"TotalCount"`
+
+		// 符合条件的伸缩活动信息集合。
+		ActivitySet []*Activity `json:"ActivitySet" name:"ActivitySet" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeAutoScalingActivitiesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeAutoScalingActivitiesResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
