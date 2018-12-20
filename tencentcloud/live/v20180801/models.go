@@ -636,7 +636,10 @@ type DescribeLiveStreamStateResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 流状态
+		// 流状态，
+	// active：活跃，
+	// inactive：非活跃，
+	// forbid：禁播。
 		StreamState *string `json:"StreamState" name:"StreamState"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。

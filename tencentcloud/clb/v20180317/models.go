@@ -86,6 +86,124 @@ type CertificateOutput struct {
 	CertCaId *string `json:"CertCaId" name:"CertCaId"`
 }
 
+type ClassicalHealth struct {
+
+	// 云服务器内网 IP
+	IP *string `json:"IP" name:"IP"`
+
+	// 云服务器端口
+	Port *int64 `json:"Port" name:"Port"`
+
+	// 负载均衡监听端口
+	ListenerPort *int64 `json:"ListenerPort" name:"ListenerPort"`
+
+	// 转发协议
+	Protocol *string `json:"Protocol" name:"Protocol"`
+
+	// 健康检查结果，1 表示健康，0 表示不健康
+	HealthStatus *int64 `json:"HealthStatus" name:"HealthStatus"`
+}
+
+type ClassicalListener struct {
+
+	// 负载均衡监听器ID
+	ListenerId *string `json:"ListenerId" name:"ListenerId"`
+
+	// 负载均衡监听器端口
+	ListenerPort *int64 `json:"ListenerPort" name:"ListenerPort"`
+
+	// 监听器后端转发端口
+	InstancePort *int64 `json:"InstancePort" name:"InstancePort"`
+
+	// 监听器名称
+	ListenerName *string `json:"ListenerName" name:"ListenerName"`
+
+	// 监听器协议类型
+	Protocol *string `json:"Protocol" name:"Protocol"`
+
+	// 会话保持时间
+	SessionExpire *int64 `json:"SessionExpire" name:"SessionExpire"`
+
+	// 是否开启了检查：1（开启）、0（关闭）
+	HealthSwitch *int64 `json:"HealthSwitch" name:"HealthSwitch"`
+
+	// 响应超时时间
+	TimeOut *int64 `json:"TimeOut" name:"TimeOut"`
+
+	// 检查间隔
+	IntervalTime *int64 `json:"IntervalTime" name:"IntervalTime"`
+
+	// 健康阈值
+	HealthNum *int64 `json:"HealthNum" name:"HealthNum"`
+
+	// 不健康阈值
+	UnhealthNum *int64 `json:"UnhealthNum" name:"UnhealthNum"`
+
+	// 公网固定IP型的 HTTP、HTTPS 协议监听器的轮询方法。wrr 表示按权重轮询，ip_hash 表示根据访问的源 IP 进行一致性哈希方式来分发
+	HttpHash *string `json:"HttpHash" name:"HttpHash"`
+
+	// 公网固定IP型的 HTTP、HTTPS 协议监听器的健康检查返回码。具体可参考创建监听器中对该字段的解释
+	HttpCode *int64 `json:"HttpCode" name:"HttpCode"`
+
+	// 公网固定IP型的 HTTP、HTTPS 协议监听器的健康检查路径
+	HttpCheckPath *string `json:"HttpCheckPath" name:"HttpCheckPath"`
+
+	// 公网固定IP型的 HTTPS 协议监听器的认证方式
+	SSLMode *string `json:"SSLMode" name:"SSLMode"`
+
+	// 公网固定IP型的 HTTPS 协议监听器服务端证书 ID
+	CertId *string `json:"CertId" name:"CertId"`
+
+	// 公网固定IP型的 HTTPS 协议监听器客户端证书 ID
+	CertCaId *string `json:"CertCaId" name:"CertCaId"`
+
+	// 监听器的状态，0 表示创建中，1 表示运行中
+	Status *int64 `json:"Status" name:"Status"`
+}
+
+type ClassicalLoadBalancerInfo struct {
+
+	// 后端实例ID
+	InstanceId *string `json:"InstanceId" name:"InstanceId"`
+
+	// 负载均衡实例ID列表
+	LoadBalancerIds []*string `json:"LoadBalancerIds" name:"LoadBalancerIds" list`
+}
+
+type ClassicalTarget struct {
+
+	// 转发目标的类型，目前仅可取值为 CVM
+	Type *string `json:"Type" name:"Type"`
+
+	// 云服务器的唯一 ID，可通过 DescribeInstances 接口返回字段中的 unInstanceId 字段获取
+	InstanceId *string `json:"InstanceId" name:"InstanceId"`
+
+	// 后端云服务器的转发权重，取值范围：0~100，默认为 10。
+	Weight *int64 `json:"Weight" name:"Weight"`
+
+	// 云服务器的外网 IP
+	PublicIpAddresses []*string `json:"PublicIpAddresses" name:"PublicIpAddresses" list`
+
+	// 云服务器的内网 IP
+	PrivateIpAddresses []*string `json:"PrivateIpAddresses" name:"PrivateIpAddresses" list`
+
+	// 云服务器实例名称
+	InstanceName *string `json:"InstanceName" name:"InstanceName"`
+
+	// 云服务器状态
+	// 1：故障，2：运行中，3：创建中，4：已关机，5：已退还，6：退还中， 7：重启中，8：开机中，9：关机中，10：密码重置中，11：格式化中，12：镜像制作中，13：带宽设置中，14：重装系统中，19：升级中，21：热迁移中
+	RunFlag *int64 `json:"RunFlag" name:"RunFlag"`
+}
+
+type ClassicalTargetInfo struct {
+
+	// 后端实例ID
+	InstanceId *string `json:"InstanceId" name:"InstanceId"`
+
+	// 权重 取值为0-100
+	Weight *int64 `json:"Weight" name:"Weight"`
+}
+
 type CreateListenerRequest struct {
 	*tchttp.BaseRequest
 
@@ -359,6 +477,43 @@ func (r *DeleteRuleResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DeregisterTargetsFromClassicalLBRequest struct {
+	*tchttp.BaseRequest
+
+	// 负载均衡实例 ID
+	LoadBalancerId *string `json:"LoadBalancerId" name:"LoadBalancerId"`
+
+	// 后端实例ID列表
+	InstanceIds []*string `json:"InstanceIds" name:"InstanceIds" list`
+}
+
+func (r *DeregisterTargetsFromClassicalLBRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeregisterTargetsFromClassicalLBRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeregisterTargetsFromClassicalLBResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DeregisterTargetsFromClassicalLBResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeregisterTargetsFromClassicalLBResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DeregisterTargetsRequest struct {
 	*tchttp.BaseRequest
 
@@ -405,6 +560,169 @@ func (r *DeregisterTargetsResponse) ToJsonString() string {
 }
 
 func (r *DeregisterTargetsResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeClassicalLBByInstanceIdRequest struct {
+	*tchttp.BaseRequest
+
+	// 后端实例ID列表
+	InstanceIds []*string `json:"InstanceIds" name:"InstanceIds" list`
+}
+
+func (r *DescribeClassicalLBByInstanceIdRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeClassicalLBByInstanceIdRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeClassicalLBByInstanceIdResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 负载均衡相关信息列表
+		LoadBalancerInfoList []*ClassicalLoadBalancerInfo `json:"LoadBalancerInfoList" name:"LoadBalancerInfoList" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeClassicalLBByInstanceIdResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeClassicalLBByInstanceIdResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeClassicalLBHealthStatusRequest struct {
+	*tchttp.BaseRequest
+
+	// 负载均衡实例 ID
+	LoadBalancerId *string `json:"LoadBalancerId" name:"LoadBalancerId"`
+
+	// 负载均衡监听器ID
+	ListenerId *string `json:"ListenerId" name:"ListenerId"`
+}
+
+func (r *DescribeClassicalLBHealthStatusRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeClassicalLBHealthStatusRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeClassicalLBHealthStatusResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 后端健康状态列表
+		HealthList []*ClassicalHealth `json:"HealthList" name:"HealthList" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeClassicalLBHealthStatusResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeClassicalLBHealthStatusResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeClassicalLBListenersRequest struct {
+	*tchttp.BaseRequest
+
+	// 负载均衡实例 ID
+	LoadBalancerId *string `json:"LoadBalancerId" name:"LoadBalancerId"`
+
+	// 负载均衡监听器ID列表， 范围[1-65535]
+	ListenerIds []*string `json:"ListenerIds" name:"ListenerIds" list`
+
+	// 负载均衡监听的协议, 'TCP', 'UDP', 'HTTP', 'HTTPS'
+	Protocol *string `json:"Protocol" name:"Protocol"`
+
+	// 负载均衡监听端口
+	ListenerPort *int64 `json:"ListenerPort" name:"ListenerPort"`
+
+	// 监听器的状态，0 表示创建中，1 表示运行中
+	Status *int64 `json:"Status" name:"Status"`
+}
+
+func (r *DescribeClassicalLBListenersRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeClassicalLBListenersRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeClassicalLBListenersResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 监听器列表
+		Listeners []*ClassicalListener `json:"Listeners" name:"Listeners" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeClassicalLBListenersResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeClassicalLBListenersResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeClassicalLBTargetsRequest struct {
+	*tchttp.BaseRequest
+
+	// 负载均衡实例 ID
+	LoadBalancerId *string `json:"LoadBalancerId" name:"LoadBalancerId"`
+}
+
+func (r *DescribeClassicalLBTargetsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeClassicalLBTargetsRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeClassicalLBTargetsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 后端服务列表
+		Targets []*ClassicalTarget `json:"Targets" name:"Targets" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeClassicalLBTargetsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeClassicalLBTargetsResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -1090,6 +1408,43 @@ func (r *RegisterTargetsResponse) ToJsonString() string {
 }
 
 func (r *RegisterTargetsResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type RegisterTargetsWithClassicalLBRequest struct {
+	*tchttp.BaseRequest
+
+	// 负载均衡实例 ID
+	LoadBalancerId *string `json:"LoadBalancerId" name:"LoadBalancerId"`
+
+	// 后端服务信息
+	Targets []*ClassicalTargetInfo `json:"Targets" name:"Targets" list`
+}
+
+func (r *RegisterTargetsWithClassicalLBRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *RegisterTargetsWithClassicalLBRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type RegisterTargetsWithClassicalLBResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *RegisterTargetsWithClassicalLBResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *RegisterTargetsWithClassicalLBResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 

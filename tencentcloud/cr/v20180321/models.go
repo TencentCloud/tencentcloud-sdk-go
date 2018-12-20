@@ -133,8 +133,8 @@ type DescribeTaskStatusRequest struct {
 	// 操作名
 	Operation *string `json:"Operation" name:"Operation"`
 
-	// 任务ID
-	TaskId *int64 `json:"TaskId" name:"TaskId"`
+	// 任务ID，形如abc-a0b1c2xyz
+	TaskId *string `json:"TaskId" name:"TaskId"`
 }
 
 func (r *DescribeTaskStatusRequest) ToJsonString() string {
@@ -153,7 +153,7 @@ type DescribeTaskStatusResponse struct {
 		// 任务结果
 		TaskResult *string `json:"TaskResult" name:"TaskResult"`
 
-		// 任务类型，010代表上传任务
+		// 任务类型，001为报告下载，002为数据上传，003为还款数据上传。
 		TaskType *string `json:"TaskType" name:"TaskType"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -276,10 +276,10 @@ type UploadDataFileRequest struct {
 	// 上传类型，不填默认催收文件，催收文件为data，还款文件为repay。
 	UploadModel *string `json:"UploadModel" name:"UploadModel"`
 
-	// 文件，文件与文件地址上传只可选用一种，使用 Content-Type: multipart/form-data 协议来上传二进制流文件。
+	// 文件，文件与文件地址上传只可选用一种，必须使用multipart/form-data协议来上传二进制流文件，建议使用xlsx格式，大小不超过5MB。
 	File *binary `json:"File" name:"File"`
 
-	// 文件上传地址
+	// 文件上传地址，文件与文件地址上传只可选用一种，大小不超过50MB。
 	FileUrl *string `json:"FileUrl" name:"FileUrl"`
 }
 

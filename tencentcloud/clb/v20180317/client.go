@@ -225,6 +225,131 @@ func (c *Client) DeregisterTargets(request *DeregisterTargetsRequest) (response 
     return
 }
 
+func NewDeregisterTargetsFromClassicalLBRequest() (request *DeregisterTargetsFromClassicalLBRequest) {
+    request = &DeregisterTargetsFromClassicalLBRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("clb", APIVersion, "DeregisterTargetsFromClassicalLB")
+    return
+}
+
+func NewDeregisterTargetsFromClassicalLBResponse() (response *DeregisterTargetsFromClassicalLBResponse) {
+    response = &DeregisterTargetsFromClassicalLBResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DeregisterTargetsFromClassicalLB用于解绑后端服务器
+func (c *Client) DeregisterTargetsFromClassicalLB(request *DeregisterTargetsFromClassicalLBRequest) (response *DeregisterTargetsFromClassicalLBResponse, err error) {
+    if request == nil {
+        request = NewDeregisterTargetsFromClassicalLBRequest()
+    }
+    response = NewDeregisterTargetsFromClassicalLBResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeClassicalLBByInstanceIdRequest() (request *DescribeClassicalLBByInstanceIdRequest) {
+    request = &DescribeClassicalLBByInstanceIdRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("clb", APIVersion, "DescribeClassicalLBByInstanceId")
+    return
+}
+
+func NewDescribeClassicalLBByInstanceIdResponse() (response *DescribeClassicalLBByInstanceIdResponse) {
+    response = &DescribeClassicalLBByInstanceIdResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeClassicalLBByInstanceId用于通过后端实例ID获取传统型负载均衡ID列表
+func (c *Client) DescribeClassicalLBByInstanceId(request *DescribeClassicalLBByInstanceIdRequest) (response *DescribeClassicalLBByInstanceIdResponse, err error) {
+    if request == nil {
+        request = NewDescribeClassicalLBByInstanceIdRequest()
+    }
+    response = NewDescribeClassicalLBByInstanceIdResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeClassicalLBHealthStatusRequest() (request *DescribeClassicalLBHealthStatusRequest) {
+    request = &DescribeClassicalLBHealthStatusRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("clb", APIVersion, "DescribeClassicalLBHealthStatus")
+    return
+}
+
+func NewDescribeClassicalLBHealthStatusResponse() (response *DescribeClassicalLBHealthStatusResponse) {
+    response = &DescribeClassicalLBHealthStatusResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeClassicalLBHealthStatus用于获取传统型负载均衡后端的健康状态
+func (c *Client) DescribeClassicalLBHealthStatus(request *DescribeClassicalLBHealthStatusRequest) (response *DescribeClassicalLBHealthStatusResponse, err error) {
+    if request == nil {
+        request = NewDescribeClassicalLBHealthStatusRequest()
+    }
+    response = NewDescribeClassicalLBHealthStatusResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeClassicalLBListenersRequest() (request *DescribeClassicalLBListenersRequest) {
+    request = &DescribeClassicalLBListenersRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("clb", APIVersion, "DescribeClassicalLBListeners")
+    return
+}
+
+func NewDescribeClassicalLBListenersResponse() (response *DescribeClassicalLBListenersResponse) {
+    response = &DescribeClassicalLBListenersResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeClassicalLBListeners用于获取传统型负载均衡信息
+func (c *Client) DescribeClassicalLBListeners(request *DescribeClassicalLBListenersRequest) (response *DescribeClassicalLBListenersResponse, err error) {
+    if request == nil {
+        request = NewDescribeClassicalLBListenersRequest()
+    }
+    response = NewDescribeClassicalLBListenersResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeClassicalLBTargetsRequest() (request *DescribeClassicalLBTargetsRequest) {
+    request = &DescribeClassicalLBTargetsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("clb", APIVersion, "DescribeClassicalLBTargets")
+    return
+}
+
+func NewDescribeClassicalLBTargetsResponse() (response *DescribeClassicalLBTargetsResponse) {
+    response = &DescribeClassicalLBTargetsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeClassicalLBTargets用于获取传统型负载均衡绑定的后端服务
+func (c *Client) DescribeClassicalLBTargets(request *DescribeClassicalLBTargetsRequest) (response *DescribeClassicalLBTargetsResponse, err error) {
+    if request == nil {
+        request = NewDescribeClassicalLBTargetsRequest()
+    }
+    response = NewDescribeClassicalLBTargetsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeListenersRequest() (request *DescribeListenersRequest) {
     request = &DescribeListenersRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -503,6 +628,31 @@ func (c *Client) RegisterTargets(request *RegisterTargetsRequest) (response *Reg
         request = NewRegisterTargetsRequest()
     }
     response = NewRegisterTargetsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewRegisterTargetsWithClassicalLBRequest() (request *RegisterTargetsWithClassicalLBRequest) {
+    request = &RegisterTargetsWithClassicalLBRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("clb", APIVersion, "RegisterTargetsWithClassicalLB")
+    return
+}
+
+func NewRegisterTargetsWithClassicalLBResponse() (response *RegisterTargetsWithClassicalLBResponse) {
+    response = &RegisterTargetsWithClassicalLBResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// RegisterTargetsWithClassicalLB用于绑定后端服务到传统型负载均衡
+func (c *Client) RegisterTargetsWithClassicalLB(request *RegisterTargetsWithClassicalLBRequest) (response *RegisterTargetsWithClassicalLBResponse, err error) {
+    if request == nil {
+        request = NewRegisterTargetsWithClassicalLBRequest()
+    }
+    response = NewRegisterTargetsWithClassicalLBResponse()
     err = c.Send(request, response)
     return
 }

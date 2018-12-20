@@ -318,6 +318,31 @@ func (c *Client) ModifyAutoBackupConfig(request *ModifyAutoBackupConfigRequest) 
     return
 }
 
+func NewModifyInstanceRequest() (request *ModifyInstanceRequest) {
+    request = &ModifyInstanceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("redis", APIVersion, "ModifyInstance")
+    return
+}
+
+func NewModifyInstanceResponse() (response *ModifyInstanceResponse) {
+    response = &ModifyInstanceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 修改实例相关信息（目前支持：实例重命名）
+func (c *Client) ModifyInstance(request *ModifyInstanceRequest) (response *ModifyInstanceResponse, err error) {
+    if request == nil {
+        request = NewModifyInstanceRequest()
+    }
+    response = NewModifyInstanceResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewRenewInstanceRequest() (request *RenewInstanceRequest) {
     request = &RenewInstanceRequest{
         BaseRequest: &tchttp.BaseRequest{},

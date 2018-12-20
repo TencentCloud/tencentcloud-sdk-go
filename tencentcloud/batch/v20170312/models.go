@@ -1342,7 +1342,7 @@ type InstanceTypeQuotaItem struct {
 	// 本地磁盘规格列表。
 	LocalDiskTypeList []*LocalDiskType `json:"LocalDiskTypeList" name:"LocalDiskTypeList" list`
 
-	// 实例是否售卖。
+	// 实例是否售卖。取值范围： <br><li>SELL：表示实例可购买<br><li>SOLD_OUT：表示实例已售罄。
 	Status *string `json:"Status" name:"Status"`
 
 	// 实例的售卖价格。
@@ -1661,6 +1661,40 @@ type RedirectLocalInfo struct {
 
 	// 标准错误重定向本地文件名，支持三个占位符${BATCH_JOB_ID}、${BATCH_TASK_NAME}、${BATCH_TASK_INSTANCE_INDEX}
 	StderrLocalFileName *string `json:"StderrLocalFileName" name:"StderrLocalFileName"`
+}
+
+type RetryJobsRequest struct {
+	*tchttp.BaseRequest
+
+	// 作业ID列表。
+	JobIds []*string `json:"JobIds" name:"JobIds" list`
+}
+
+func (r *RetryJobsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *RetryJobsRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type RetryJobsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *RetryJobsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *RetryJobsResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
 }
 
 type RunMonitorServiceEnabled struct {

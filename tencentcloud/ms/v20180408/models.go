@@ -865,6 +865,46 @@ func (r *DescribeShieldResultResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeUserBaseInfoInstanceRequest struct {
+	*tchttp.BaseRequest
+}
+
+func (r *DescribeUserBaseInfoInstanceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeUserBaseInfoInstanceRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeUserBaseInfoInstanceResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 用户uin信息
+		UserUin *uint64 `json:"UserUin" name:"UserUin"`
+
+		// 用户APPID信息
+		UserAppid *uint64 `json:"UserAppid" name:"UserAppid"`
+
+		// 系统时间戳
+		TimeStamp *uint64 `json:"TimeStamp" name:"TimeStamp"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeUserBaseInfoInstanceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeUserBaseInfoInstanceResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type Filter struct {
 
 	// 需要过滤的字段

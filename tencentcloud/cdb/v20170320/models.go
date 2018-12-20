@@ -411,6 +411,9 @@ type CreateDBInstanceHourRequest struct {
 
 	// 实例名称
 	InstanceName *string `json:"InstanceName" name:"InstanceName"`
+
+	// 实例标签
+	ResourceTags []*TagInfo `json:"ResourceTags" name:"ResourceTags" list`
 }
 
 func (r *CreateDBInstanceHourRequest) ToJsonString() string {
@@ -517,6 +520,9 @@ type CreateDBInstanceRequest struct {
 
 	// 实例名称
 	InstanceName *string `json:"InstanceName" name:"InstanceName"`
+
+	// 实例要绑定的标签
+	ResourceTags []*TagInfo `json:"ResourceTags" name:"ResourceTags" list`
 }
 
 func (r *CreateDBInstanceRequest) ToJsonString() string {
@@ -1284,7 +1290,7 @@ type DescribeDBInstancesRequest struct {
 	// 实例名称
 	InstanceNames []*string `json:"InstanceNames" name:"InstanceNames" list`
 
-	// 实例任务状态，可能取值：<br>0-没有任务<br>1-升级中<br>2-数据导入中<br>3-开放Slave中<br>4-外网访问开通中<br>5-批量操作执行中<br>6-回档中<br>7-外网访问关闭中<br>8-密码修改中<br>9-实例名修改中<br>10-重启中<br>12-自建迁移中<br>13-删除库表中<br>14-灾备实例创建同步中
+	// 实例任务状态，可能取值：<br>0-没有任务<br>1-升级中<br>2-数据导入中<br>3-开放Slave中<br>4-外网访问开通中<br>5-批量操作执行中<br>6-回档中<br>7-外网访问关闭中<br>8-密码修改中<br>9-实例名修改中<br>10-重启中<br>12-自建迁移中<br>13-删除库表中<br>14-灾备实例创建同步中<br>15-升级待切换<br>16-升级切换中<br>17-升级切换完成
 	TaskStatus []*uint64 `json:"TaskStatus" name:"TaskStatus" list`
 
 	// 实例数据库引擎版本，可能取值：5.1、5.5、5.6和5.7
@@ -2191,6 +2197,9 @@ type InstanceInfo struct {
 
 	// 物理ID
 	PhysicalId *string `json:"PhysicalId" name:"PhysicalId"`
+
+	// 核心数
+	Cpu *int64 `json:"Cpu" name:"Cpu"`
 }
 
 type InstanceRebootTime struct {
@@ -3418,6 +3427,15 @@ type TablePrivilege struct {
 
 	// 权限信息
 	Privileges []*string `json:"Privileges" name:"Privileges" list`
+}
+
+type TagInfo struct {
+
+	// 标签键
+	TagKey *string `json:"TagKey" name:"TagKey"`
+
+	// 标签值
+	TagValue []*string `json:"TagValue" name:"TagValue" list`
 }
 
 type UpgradeDBInstanceEngineVersionRequest struct {

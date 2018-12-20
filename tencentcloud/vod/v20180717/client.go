@@ -282,3 +282,30 @@ func (c *Client) ModifyMediaInfo(request *ModifyMediaInfoRequest) (response *Mod
     err = c.Send(request, response)
     return
 }
+
+func NewSearchMediaRequest() (request *SearchMediaRequest) {
+    request = &SearchMediaRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vod", APIVersion, "SearchMedia")
+    return
+}
+
+func NewSearchMediaResponse() (response *SearchMediaResponse) {
+    response = &SearchMediaResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 搜索媒体信息，支持文本模糊搜索及条件过滤。
+// <li>该接口单次请求最多返回100条数据。</li>
+// <li>搜索结果超过 5000条，不再支持分页查询超过 5000 部分的数据。</li>
+func (c *Client) SearchMedia(request *SearchMediaRequest) (response *SearchMediaResponse, err error) {
+    if request == nil {
+        request = NewSearchMediaRequest()
+    }
+    response = NewSearchMediaResponse()
+    err = c.Send(request, response)
+    return
+}

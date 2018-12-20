@@ -41,6 +41,15 @@ type BatchUpdateShadow struct {
 	Desired *string `json:"Desired" name:"Desired"`
 }
 
+type BrokerSubscribe struct {
+
+	// 产品ID
+	ProductId *string `json:"ProductId" name:"ProductId"`
+
+	// 设备名
+	DeviceName *string `json:"DeviceName" name:"DeviceName"`
+}
+
 type CancelTaskRequest struct {
 	*tchttp.BaseRequest
 
@@ -295,6 +304,49 @@ func (r *CreateTaskResponse) ToJsonString() string {
 }
 
 func (r *CreateTaskResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateTopicPolicyRequest struct {
+	*tchttp.BaseRequest
+
+	// 产品ID
+	ProductID *string `json:"ProductID" name:"ProductID"`
+
+	// Topic名称
+	TopicName *string `json:"TopicName" name:"TopicName"`
+
+	// Topic权限，1发布，2订阅，3订阅和发布
+	Privilege *uint64 `json:"Privilege" name:"Privilege"`
+
+	// 代理订阅信息
+	BrokerSubscribe *BrokerSubscribe `json:"BrokerSubscribe" name:"BrokerSubscribe"`
+}
+
+func (r *CreateTopicPolicyRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateTopicPolicyRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateTopicPolicyResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateTopicPolicyResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateTopicPolicyResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -1267,5 +1319,51 @@ func (r *UpdateDeviceShadowResponse) ToJsonString() string {
 }
 
 func (r *UpdateDeviceShadowResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type UpdateTopicPolicyRequest struct {
+	*tchttp.BaseRequest
+
+	// 产品ID
+	ProductID *string `json:"ProductID" name:"ProductID"`
+
+	// 更新前Topic名
+	TopicName *string `json:"TopicName" name:"TopicName"`
+
+	// 更新后Topic名
+	NewTopicName *string `json:"NewTopicName" name:"NewTopicName"`
+
+	// Topic权限
+	Privilege *uint64 `json:"Privilege" name:"Privilege"`
+
+	// 代理订阅信息
+	BrokerSubscribe *BrokerSubscribe `json:"BrokerSubscribe" name:"BrokerSubscribe"`
+}
+
+func (r *UpdateTopicPolicyRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *UpdateTopicPolicyRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type UpdateTopicPolicyResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *UpdateTopicPolicyResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *UpdateTopicPolicyResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }

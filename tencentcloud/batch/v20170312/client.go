@@ -545,6 +545,32 @@ func (c *Client) ModifyTaskTemplate(request *ModifyTaskTemplateRequest) (respons
     return
 }
 
+func NewRetryJobsRequest() (request *RetryJobsRequest) {
+    request = &RetryJobsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("batch", APIVersion, "RetryJobs")
+    return
+}
+
+func NewRetryJobsResponse() (response *RetryJobsResponse) {
+    response = &RetryJobsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 用于重试作业中失败的任务实例。
+// 当且仅当作业处于“FAILED”状态，支持重试操作。重试操作成功后，作业会按照“DAG”中指定的任务依赖关系，依次重试各个任务中失败的任务实例。任务实例的历史信息将被重置，如同首次运行一样，参与后续的调度和执行。
+func (c *Client) RetryJobs(request *RetryJobsRequest) (response *RetryJobsResponse, err error) {
+    if request == nil {
+        request = NewRetryJobsRequest()
+    }
+    response = NewRetryJobsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewSubmitJobRequest() (request *SubmitJobRequest) {
     request = &SubmitJobRequest{
         BaseRequest: &tchttp.BaseRequest{},

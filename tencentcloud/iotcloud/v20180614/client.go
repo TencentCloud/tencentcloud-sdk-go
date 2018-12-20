@@ -168,6 +168,31 @@ func (c *Client) CreateTask(request *CreateTaskRequest) (response *CreateTaskRes
     return
 }
 
+func NewCreateTopicPolicyRequest() (request *CreateTopicPolicyRequest) {
+    request = &CreateTopicPolicyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iotcloud", APIVersion, "CreateTopicPolicy")
+    return
+}
+
+func NewCreateTopicPolicyResponse() (response *CreateTopicPolicyResponse) {
+    response = &CreateTopicPolicyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（CreateTopicPolicy）用于创建一个Topic
+func (c *Client) CreateTopicPolicy(request *CreateTopicPolicyRequest) (response *CreateTopicPolicyResponse, err error) {
+    if request == nil {
+        request = NewCreateTopicPolicyRequest()
+    }
+    response = NewCreateTopicPolicyResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateTopicRuleRequest() (request *CreateTopicRuleRequest) {
     request = &CreateTopicRuleRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -589,6 +614,31 @@ func (c *Client) UpdateDeviceShadow(request *UpdateDeviceShadowRequest) (respons
         request = NewUpdateDeviceShadowRequest()
     }
     response = NewUpdateDeviceShadowResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewUpdateTopicPolicyRequest() (request *UpdateTopicPolicyRequest) {
+    request = &UpdateTopicPolicyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iotcloud", APIVersion, "UpdateTopicPolicy")
+    return
+}
+
+func NewUpdateTopicPolicyResponse() (response *UpdateTopicPolicyResponse) {
+    response = &UpdateTopicPolicyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（UpdateTopicPolicy）用于更新Topic信息
+func (c *Client) UpdateTopicPolicy(request *UpdateTopicPolicyRequest) (response *UpdateTopicPolicyResponse, err error) {
+    if request == nil {
+        request = NewUpdateTopicPolicyRequest()
+    }
+    response = NewUpdateTopicPolicyResponse()
     err = c.Send(request, response)
     return
 }

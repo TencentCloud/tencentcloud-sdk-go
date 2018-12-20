@@ -394,3 +394,28 @@ func (c *Client) DescribeShieldResult(request *DescribeShieldResultRequest) (res
     err = c.Send(request, response)
     return
 }
+
+func NewDescribeUserBaseInfoInstanceRequest() (request *DescribeUserBaseInfoInstanceRequest) {
+    request = &DescribeUserBaseInfoInstanceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ms", APIVersion, "DescribeUserBaseInfoInstance")
+    return
+}
+
+func NewDescribeUserBaseInfoInstanceResponse() (response *DescribeUserBaseInfoInstanceResponse) {
+    response = &DescribeUserBaseInfoInstanceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 获取用户基础信息
+func (c *Client) DescribeUserBaseInfoInstance(request *DescribeUserBaseInfoInstanceRequest) (response *DescribeUserBaseInfoInstanceResponse, err error) {
+    if request == nil {
+        request = NewDescribeUserBaseInfoInstanceRequest()
+    }
+    response = NewDescribeUserBaseInfoInstanceResponse()
+    err = c.Send(request, response)
+    return
+}
