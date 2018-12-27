@@ -193,6 +193,106 @@ func (c *Client) DeleteUserCmds(request *DeleteUserCmdsRequest) (response *Delet
     return
 }
 
+func NewDescribeDeviceClassRequest() (request *DescribeDeviceClassRequest) {
+    request = &DescribeDeviceClassRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("bm", APIVersion, "DescribeDeviceClass")
+    return
+}
+
+func NewDescribeDeviceClassResponse() (response *DescribeDeviceClassResponse) {
+    response = &DescribeDeviceClassResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 获取获取设备类型
+func (c *Client) DescribeDeviceClass(request *DescribeDeviceClassRequest) (response *DescribeDeviceClassResponse, err error) {
+    if request == nil {
+        request = NewDescribeDeviceClassRequest()
+    }
+    response = NewDescribeDeviceClassResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeDeviceInventoryRequest() (request *DescribeDeviceInventoryRequest) {
+    request = &DescribeDeviceInventoryRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("bm", APIVersion, "DescribeDeviceInventory")
+    return
+}
+
+func NewDescribeDeviceInventoryResponse() (response *DescribeDeviceInventoryResponse) {
+    response = &DescribeDeviceInventoryResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询设备库存
+func (c *Client) DescribeDeviceInventory(request *DescribeDeviceInventoryRequest) (response *DescribeDeviceInventoryResponse, err error) {
+    if request == nil {
+        request = NewDescribeDeviceInventoryRequest()
+    }
+    response = NewDescribeDeviceInventoryResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeDeviceOperationLogRequest() (request *DescribeDeviceOperationLogRequest) {
+    request = &DescribeDeviceOperationLogRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("bm", APIVersion, "DescribeDeviceOperationLog")
+    return
+}
+
+func NewDescribeDeviceOperationLogResponse() (response *DescribeDeviceOperationLogResponse) {
+    response = &DescribeDeviceOperationLogResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询设备操作日志， 如设备重启，重装，设置密码等操作
+func (c *Client) DescribeDeviceOperationLog(request *DescribeDeviceOperationLogRequest) (response *DescribeDeviceOperationLogResponse, err error) {
+    if request == nil {
+        request = NewDescribeDeviceOperationLogRequest()
+    }
+    response = NewDescribeDeviceOperationLogResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeDevicePositionRequest() (request *DescribeDevicePositionRequest) {
+    request = &DescribeDevicePositionRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("bm", APIVersion, "DescribeDevicePosition")
+    return
+}
+
+func NewDescribeDevicePositionResponse() (response *DescribeDevicePositionResponse) {
+    response = &DescribeDevicePositionResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询服务器所在的位置，如机架，上联交换机等信息
+func (c *Client) DescribeDevicePosition(request *DescribeDevicePositionRequest) (response *DescribeDevicePositionResponse, err error) {
+    if request == nil {
+        request = NewDescribeDevicePositionRequest()
+    }
+    response = NewDescribeDevicePositionResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeDevicePriceInfoRequest() (request *DescribeDevicePriceInfoRequest) {
     request = &DescribeDevicePriceInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -239,6 +339,31 @@ func (c *Client) DescribeDevices(request *DescribeDevicesRequest) (response *Des
         request = NewDescribeDevicesRequest()
     }
     response = NewDescribeDevicesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeOsInfoRequest() (request *DescribeOsInfoRequest) {
+    request = &DescribeOsInfoRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("bm", APIVersion, "DescribeOsInfo")
+    return
+}
+
+func NewDescribeOsInfoResponse() (response *DescribeOsInfoResponse) {
+    response = &DescribeOsInfoResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询指定机型所支持的操作系统
+func (c *Client) DescribeOsInfo(request *DescribeOsInfoRequest) (response *DescribeOsInfoResponse, err error) {
+    if request == nil {
+        request = NewDescribeOsInfoRequest()
+    }
+    response = NewDescribeOsInfoResponse()
     err = c.Send(request, response)
     return
 }
@@ -451,6 +576,31 @@ func (c *Client) ModifyDeviceAliases(request *ModifyDeviceAliasesRequest) (respo
     return
 }
 
+func NewModifyDeviceAutoRenewFlagRequest() (request *ModifyDeviceAutoRenewFlagRequest) {
+    request = &ModifyDeviceAutoRenewFlagRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("bm", APIVersion, "ModifyDeviceAutoRenewFlag")
+    return
+}
+
+func NewModifyDeviceAutoRenewFlagResponse() (response *ModifyDeviceAutoRenewFlagResponse) {
+    response = &ModifyDeviceAutoRenewFlagResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 修改物理机服务器自动续费标志
+func (c *Client) ModifyDeviceAutoRenewFlag(request *ModifyDeviceAutoRenewFlagRequest) (response *ModifyDeviceAutoRenewFlagResponse, err error) {
+    if request == nil {
+        request = NewModifyDeviceAutoRenewFlagRequest()
+    }
+    response = NewModifyDeviceAutoRenewFlagResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyPayModePre2PostRequest() (request *ModifyPayModePre2PostRequest) {
     request = &ModifyPayModePre2PostRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -522,6 +672,31 @@ func (c *Client) ModifyUserCmd(request *ModifyUserCmdRequest) (response *ModifyU
         request = NewModifyUserCmdRequest()
     }
     response = NewModifyUserCmdResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewOfflineDevicesRequest() (request *OfflineDevicesRequest) {
+    request = &OfflineDevicesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("bm", APIVersion, "OfflineDevices")
+    return
+}
+
+func NewOfflineDevicesResponse() (response *OfflineDevicesResponse) {
+    response = &OfflineDevicesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 用于销毁可退还的服务器
+func (c *Client) OfflineDevices(request *OfflineDevicesRequest) (response *OfflineDevicesResponse, err error) {
+    if request == nil {
+        request = NewOfflineDevicesRequest()
+    }
+    response = NewOfflineDevicesResponse()
     err = c.Send(request, response)
     return
 }
@@ -642,6 +817,31 @@ func (c *Client) RunUserCmd(request *RunUserCmdRequest) (response *RunUserCmdRes
         request = NewRunUserCmdRequest()
     }
     response = NewRunUserCmdResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewSetOutBandVpnAuthPasswordRequest() (request *SetOutBandVpnAuthPasswordRequest) {
+    request = &SetOutBandVpnAuthPasswordRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("bm", APIVersion, "SetOutBandVpnAuthPassword")
+    return
+}
+
+func NewSetOutBandVpnAuthPasswordResponse() (response *SetOutBandVpnAuthPasswordResponse) {
+    response = &SetOutBandVpnAuthPasswordResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 设置带外VPN认证用户密码
+func (c *Client) SetOutBandVpnAuthPassword(request *SetOutBandVpnAuthPasswordRequest) (response *SetOutBandVpnAuthPasswordResponse, err error) {
+    if request == nil {
+        request = NewSetOutBandVpnAuthPasswordRequest()
+    }
+    response = NewSetOutBandVpnAuthPasswordResponse()
     err = c.Send(request, response)
     return
 }

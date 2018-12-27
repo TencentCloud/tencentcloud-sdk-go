@@ -110,7 +110,7 @@ func NewCreateClassResponse() (response *CreateClassResponse) {
 }
 
 // * 用于对媒体进行分类管理；
-// * 该接口不影响既有媒体的分类，如需修改媒体分类，请调用[修改媒体文件属性](http://139.199.214.26/document/product/266/18104?!preview&preview_docmenu=1&lang=cn&!document=1)接口。
+// * 该接口不影响既有媒体的分类，如需修改媒体分类，请调用[修改媒体文件属性](/document/product/266/31762)接口。
 // * 分类层次不可超过 4 层。
 // * 每个分类的子类数量不可超过 500 个。
 func (c *Client) CreateClass(request *CreateClassRequest) (response *CreateClassResponse, err error) {
@@ -138,7 +138,7 @@ func NewDeleteClassResponse() (response *DeleteClassResponse) {
 }
 
 // * 仅当待删分类无子分类且无媒体关联情况下，可删除分类；
-// * 否则，请先执行[删除媒体](http://139.199.214.26/document/product/266/18115?!preview&preview_docmenu=1&lang=cn&!document=1)及子分类，再删除该分类；
+// * 否则，请先执行[删除媒体](/document/product/266/31764)及子分类，再删除该分类；
 func (c *Client) DeleteClass(request *DeleteClassRequest) (response *DeleteClassResponse, err error) {
     if request == nil {
         request = NewDeleteClassRequest()
@@ -298,9 +298,20 @@ func NewSearchMediaResponse() (response *SearchMediaResponse) {
     return
 }
 
-// 搜索媒体信息，支持文本模糊搜索及条件过滤。
-// <li>该接口单次请求最多返回100条数据。</li>
-// <li>搜索结果超过 5000条，不再支持分页查询超过 5000 部分的数据。</li>
+// 搜索媒体信息，支持各种条件筛选，以及对返回结果进行排序、过滤等功能，具体包括：
+// - 根据媒体文件名或描述信息进行文本模糊搜索。
+// - 根据媒体分类、标签进行检索。
+//     - 指定分类集合 ClassIds（见输入参数），返回满足集合中任意分类的媒体。例如：假设媒体分类有电影、电视剧、综艺，其中电影又有子分类历史片、动作片、言情片。如果 ClassIds 指定了电影、电视剧，那么电影和电视剧下的所有子分类
+//     都会返回；而如果 ClassIds 指定的是历史片、动作片，那么只有这 2 个子分类下的媒体才会返回。
+//     - 指定标签集合 Tags（见输入参数），返回满足集合中任意标签的媒体。例如：假设媒体标签有二次元、宫斗、鬼畜，如果 Tags 指定了二次元、鬼畜 2 个标签，那么只要符合这 2 个标签中任意一个的媒体都会被检索出来。
+// - 允许指定筛选某一来源 Source（见输入参数）的媒体。
+// - 允许根据直播推流码、Vid（见输入参数）筛选直播录制的媒体。
+// - 允许根据媒体的创建范围筛选媒体。
+// - 允许对上述条件进行任意组合，检索同时满足以上条件的媒体。例如可以筛选从 2018 年 12 月 1 日到 2018 年 12 月 8 日创建的电影、电视剧分类下带有宫斗、鬼畜标签的媒体。
+// - 允许对结果进行排序，允许通过 Offset 和 Limit 实现只返回部分结果。
+// 
+// 接口搜索限制：
+// - 搜索结果超过 5000条，不再支持分页查询超过 5000 部分的数据。
 func (c *Client) SearchMedia(request *SearchMediaRequest) (response *SearchMediaResponse, err error) {
     if request == nil {
         request = NewSearchMediaRequest()

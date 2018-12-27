@@ -34,6 +34,10 @@ type AddDelayLiveStreamRequest struct {
 
 	// 延播时间，单位：秒，上限：600秒。
 	DelayTime *uint64 `json:"DelayTime" name:"DelayTime"`
+
+	// 延播设置的过期时间。UTC 格式，例如：2018-11-29T19:00:00Z。
+	// 注意：默认7天后过期，且最长支持7天内生效。
+	ExpireTime *string `json:"ExpireTime" name:"ExpireTime"`
 }
 
 func (r *AddDelayLiveStreamRequest) ToJsonString() string {
@@ -422,9 +426,8 @@ type DescribeLiveStreamOnlineInfoRequest struct {
 	PageNum *uint64 `json:"PageNum" name:"PageNum"`
 
 	// 分页大小。
-	// 
 	// 最大值：100。
-	// 取值范围：1~100 之前的任意整数。
+	// 取值范围：10~100 之前的任意整数。
 	// 默认值：10
 	PageSize *uint64 `json:"PageSize" name:"PageSize"`
 
@@ -616,7 +619,7 @@ type DescribeLiveStreamStateRequest struct {
 	// 应用名称。
 	AppName *string `json:"AppName" name:"AppName"`
 
-	// 您的加速域名。
+	// 您的推流域名。
 	DomainName *string `json:"DomainName" name:"DomainName"`
 
 	// 流名称。

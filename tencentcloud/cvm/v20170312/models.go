@@ -341,7 +341,7 @@ type DataDisk struct {
 	DiskId *string `json:"DiskId" name:"DiskId"`
 
 	// 数据盘是否随子机销毁。取值范围：
-	// <li>TRUE：子机销毁时，销毁数据盘
+	// <li>TRUE：子机销毁时，销毁数据盘，只支持按小时后付费云盘
 	// <li>FALSE：子机销毁时，保留数据盘<br>
 	// 默认取值：TRUE<br>
 	// 该参数目前仅用于 `RunInstances` 接口。
@@ -1799,7 +1799,7 @@ type InquiryPriceResizeInstanceDisksRequest struct {
 	// 待操作的实例ID。可通过[`DescribeInstances`](https://cloud.tencent.com/document/api/213/15728)接口返回值中的`InstanceId`获取。
 	InstanceId *string `json:"InstanceId" name:"InstanceId"`
 
-	// 待扩容的数据盘配置信息。只支持扩容随实例购买的数据盘，且[数据盘类型](/document/api/213/9452#block_device)为：`CLOUD_BASIC`、`CLOUD_PREMIUM`、`CLOUD_SSD`。数据盘容量单位：GB。最小扩容步长：10G。关于数据盘类型的选择请参考硬盘产品简介。可选数据盘类型受到实例类型`InstanceType`限制。另外允许扩容的最大容量也因数据盘类型的不同而有所差异。
+	// 待扩容的数据盘配置信息。只支持扩容非弹性数据盘（[`DescribeDisks`](https://cloud.tencent.com/document/api/362/16315)接口返回值中的`Portable`为`false`表示非弹性），且[数据盘类型](/document/api/213/9452#block_device)为：`CLOUD_BASIC`、`CLOUD_PREMIUM`、`CLOUD_SSD`。数据盘容量单位：GB。最小扩容步长：10G。关于数据盘类型的选择请参考硬盘产品简介。可选数据盘类型受到实例类型`InstanceType`限制。另外允许扩容的最大容量也因数据盘类型的不同而有所差异。
 	DataDisks []*DataDisk `json:"DataDisks" name:"DataDisks" list`
 
 	// 是否对运行中的实例选择强制关机。建议对运行中的实例先手动关机，然后再重置用户密码。取值范围：<br><li>TRUE：表示在正常关机失败后进行强制关机<br><li>FALSE：表示在正常关机失败后不进行强制关机<br><br>默认取值：FALSE。<br><br>强制关机的效果等同于关闭物理计算机的电源开关。强制关机可能会导致数据丢失或文件系统损坏，请仅在服务器不能正常关机时使用。
@@ -2021,11 +2021,11 @@ type InstanceFamilyConfig struct {
 type InstanceMarketOptionsRequest struct {
 	*tchttp.BaseRequest
 
-	// 市场选项类型，当前只支持取值：spot
-	MarketType *string `json:"MarketType" name:"MarketType"`
-
 	// 竞价相关选项
 	SpotOptions *SpotMarketOptions `json:"SpotOptions" name:"SpotOptions"`
+
+	// 市场选项类型，当前只支持取值：spot
+	MarketType *string `json:"MarketType" name:"MarketType"`
 }
 
 func (r *InstanceMarketOptionsRequest) ToJsonString() string {
@@ -2936,7 +2936,7 @@ type ResizeInstanceDisksRequest struct {
 	// 待操作的实例ID。可通过[`DescribeInstances`](https://cloud.tencent.com/document/api/213/15728)接口返回值中的`InstanceId`获取。
 	InstanceId *string `json:"InstanceId" name:"InstanceId"`
 
-	// 待扩容的数据盘配置信息。只支持扩容随实例购买的数据盘，且[数据盘类型](/document/api/213/9452#block_device)为：`CLOUD_BASIC`、`CLOUD_PREMIUM`、`CLOUD_SSD`。数据盘容量单位：GB。最小扩容步长：10G。关于数据盘类型的选择请参考硬盘产品简介。可选数据盘类型受到实例类型`InstanceType`限制。另外允许扩容的最大容量也因数据盘类型的不同而有所差异。
+	// 待扩容的数据盘配置信息。只支持扩容非弹性数据盘（[`DescribeDisks`](https://cloud.tencent.com/document/api/362/16315)接口返回值中的`Portable`为`false`表示非弹性），且[数据盘类型](/document/api/213/9452#block_device)为：`CLOUD_BASIC`、`CLOUD_PREMIUM`、`CLOUD_SSD`。数据盘容量单位：GB。最小扩容步长：10G。关于数据盘类型的选择请参考硬盘产品简介。可选数据盘类型受到实例类型`InstanceType`限制。另外允许扩容的最大容量也因数据盘类型的不同而有所差异。
 	DataDisks []*DataDisk `json:"DataDisks" name:"DataDisks" list`
 
 	// 是否对运行中的实例选择强制关机。建议对运行中的实例先手动关机，然后再重置用户密码。取值范围：<br><li>TRUE：表示在正常关机失败后进行强制关机<br><li>FALSE：表示在正常关机失败后不进行强制关机<br><br>默认取值：FALSE。<br><br>强制关机的效果等同于关闭物理计算机的电源开关。强制关机可能会导致数据丢失或文件系统损坏，请仅在服务器不能正常关机时使用。

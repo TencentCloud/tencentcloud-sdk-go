@@ -33,7 +33,7 @@ type DetectAuthRequest struct {
 	// 规则：a-zA-Z0-9组合。最长长度32位。
 	IdCard *string `json:"IdCard" name:"IdCard"`
 
-	// 姓名。最长长度32位。
+	// 姓名。最长长度32位。中文请使用UTF-8编码。
 	Name *string `json:"Name" name:"Name"`
 
 	// 认证结束后重定向的回调链接地址。最长长度1024位。
@@ -237,7 +237,7 @@ type ImageRecognitionRequest struct {
 	// 身份证号
 	IdCard *string `json:"IdCard" name:"IdCard"`
 
-	// 姓名
+	// 姓名。中文请使用UTF-8编码。
 	Name *string `json:"Name" name:"Name"`
 
 	// 用于人脸比对的照片，图片的BASE64值；
@@ -293,8 +293,8 @@ type LivenessCompareRequest struct {
 	// LIP为数字模式，ACTION为动作模式，SILENT为静默模式，三种模式选择一种传入。
 	LivenessType *string `json:"LivenessType" name:"LivenessType"`
 
-	// 数字模式传参：唇语验证码(1234)，需先获取唇语验证码；
-	// 动作模式传参：传动作顺序(12,21)，需先获取动作顺序；
+	// 数字模式传参：数字验证码(1234)，需先调用接口获取数字验证码；
+	// 动作模式传参：传动作顺序(2,1 or 1,2)，需先调用接口获取动作顺序；
 	// 静默模式传参：空。
 	ValidateData *string `json:"ValidateData" name:"ValidateData"`
 
@@ -341,7 +341,7 @@ type LivenessRecognitionRequest struct {
 	// 身份证号
 	IdCard *string `json:"IdCard" name:"IdCard"`
 
-	// 姓名
+	// 姓名。中文请使用UTF-8编码。
 	Name *string `json:"Name" name:"Name"`
 
 	// 用于活体检测的视频，视频的BASE64值；
@@ -352,8 +352,8 @@ type LivenessRecognitionRequest struct {
 	// LIP为数字模式，ACTION为动作模式，SILENT为静默模式，三种模式选择一种传入。
 	LivenessType *string `json:"LivenessType" name:"LivenessType"`
 
-	// 数字模式传参：唇语验证码(1234)，需先获取唇语验证码；
-	// 动作模式传参：传动作顺序(12,21)，需先获取动作顺序；
+	// 数字模式传参：数字验证码(1234)，需先调用接口获取数字验证码；
+	// 动作模式传参：传动作顺序(2,1 or 1,2)，需先调用接口获取动作顺序；
 	// 静默模式传参：空。
 	ValidateData *string `json:"ValidateData" name:"ValidateData"`
 

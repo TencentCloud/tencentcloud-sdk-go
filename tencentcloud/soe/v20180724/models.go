@@ -26,7 +26,7 @@ type InitOralProcessRequest struct {
 	// 语音段唯一标识，一段语音一个SessionId
 	SessionId *string `json:"SessionId" name:"SessionId"`
 
-	// 被评估语音对应的文本，句子模式下不超过个 20 单词或者中文文字，段落模式不超过 120 单词或者中文文字，会统一替换成空格，中文评估使用 utf-8 编码，自由说模式该值传空。
+	// 被评估语音对应的文本，句子模式下不超过个 20 单词或者中文文字，段落模式不超过 120 单词或者中文文字，中文评估使用 utf-8 编码，自由说模式该值传空。
 	RefText *string `json:"RefText" name:"RefText"`
 
 	// 语音输入模式，0：流式分片，1：非流式一次性评估

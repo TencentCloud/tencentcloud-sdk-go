@@ -281,6 +281,211 @@ func (r *DeleteUserCmdsResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeDeviceClassRequest struct {
+	*tchttp.BaseRequest
+}
+
+func (r *DescribeDeviceClassRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeDeviceClassRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeDeviceClassResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 物理机设备类型列表
+		DeviceClassSet []*DeviceClass `json:"DeviceClassSet" name:"DeviceClassSet" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeDeviceClassResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeDeviceClassResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeDeviceInventoryRequest struct {
+	*tchttp.BaseRequest
+
+	// 可用区
+	Zone *string `json:"Zone" name:"Zone"`
+
+	// 设备型号
+	DeviceClassCode *string `json:"DeviceClassCode" name:"DeviceClassCode"`
+
+	// 私有网络ID
+	VpcId *string `json:"VpcId" name:"VpcId"`
+
+	// 子网ID
+	SubnetId *string `json:"SubnetId" name:"SubnetId"`
+
+	// CpuId，自定义机型时需传入
+	CpuId *uint64 `json:"CpuId" name:"CpuId"`
+
+	// 硬盘类型，自定义机型时需传入
+	DiskType *string `json:"DiskType" name:"DiskType"`
+
+	// 单块硬盘大小，自定义机型时需传入
+	DiskSize *uint64 `json:"DiskSize" name:"DiskSize"`
+
+	// 硬盘数量，自定义机型时需传入
+	DiskNum *uint64 `json:"DiskNum" name:"DiskNum"`
+
+	// 内存总大小，自定义机型时需传入
+	Mem *uint64 `json:"Mem" name:"Mem"`
+
+	// 是否支持raid，自定义机型时需传入
+	HaveRaidCard *uint64 `json:"HaveRaidCard" name:"HaveRaidCard"`
+}
+
+func (r *DescribeDeviceInventoryRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeDeviceInventoryRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeDeviceInventoryResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 库存设备数量
+		DeviceCount *uint64 `json:"DeviceCount" name:"DeviceCount"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeDeviceInventoryResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeDeviceInventoryResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeDeviceOperationLogRequest struct {
+	*tchttp.BaseRequest
+
+	// 设备实例ID
+	InstanceId *string `json:"InstanceId" name:"InstanceId"`
+
+	// 查询开始日期
+	StartTime *string `json:"StartTime" name:"StartTime"`
+
+	// 查询结束日期
+	EndTime *string `json:"EndTime" name:"EndTime"`
+
+	// 偏移量
+	Offset *uint64 `json:"Offset" name:"Offset"`
+
+	// 返回数量
+	Limit *uint64 `json:"Limit" name:"Limit"`
+}
+
+func (r *DescribeDeviceOperationLogRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeDeviceOperationLogRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeDeviceOperationLogResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 操作日志列表
+		DeviceOperationLogSet []*DeviceOperationLog `json:"DeviceOperationLogSet" name:"DeviceOperationLogSet" list`
+
+		// 返回数目
+		TotalCount *uint64 `json:"TotalCount" name:"TotalCount"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeDeviceOperationLogResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeDeviceOperationLogResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeDevicePositionRequest struct {
+	*tchttp.BaseRequest
+
+	// 偏移量
+	Offset *uint64 `json:"Offset" name:"Offset"`
+
+	// 数量限制
+	Limit *uint64 `json:"Limit" name:"Limit"`
+
+	// 私有网络ID
+	VpcId *string `json:"VpcId" name:"VpcId"`
+
+	// 子网ID
+	SubnetId *string `json:"SubnetId" name:"SubnetId"`
+
+	// 实例ID列表
+	InstanceIds []*string `json:"InstanceIds" name:"InstanceIds" list`
+
+	// 实例别名
+	Alias *string `json:"Alias" name:"Alias"`
+}
+
+func (r *DescribeDevicePositionRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeDevicePositionRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeDevicePositionResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 返回数量
+		TotalCount *uint64 `json:"TotalCount" name:"TotalCount"`
+
+		// 设备所在机架信息
+		DevicePositionInfoSet []*DevicePositionInfo `json:"DevicePositionInfoSet" name:"DevicePositionInfoSet" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeDevicePositionResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeDevicePositionResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeDevicePriceInfoRequest struct {
 	*tchttp.BaseRequest
 
@@ -412,6 +617,43 @@ func (r *DescribeDevicesResponse) ToJsonString() string {
 }
 
 func (r *DescribeDevicesResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeOsInfoRequest struct {
+	*tchttp.BaseRequest
+
+	// 设备类型代号。 可以从DescribeDeviceClass查询设备类型列表
+	DeviceClassCode *string `json:"DeviceClassCode" name:"DeviceClassCode"`
+}
+
+func (r *DescribeOsInfoRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeOsInfoRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeOsInfoResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 操作系统信息列表
+		OsInfoSet []*OsInfo `json:"OsInfoSet" name:"OsInfoSet" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeOsInfoResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeOsInfoResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -791,6 +1033,48 @@ type DeviceAlias struct {
 	Alias *string `json:"Alias" name:"Alias"`
 }
 
+type DeviceClass struct {
+
+	// 机型ID
+	DeviceClassCode *string `json:"DeviceClassCode" name:"DeviceClassCode"`
+
+	// CPU描述
+	CpuDescription *string `json:"CpuDescription" name:"CpuDescription"`
+
+	// 内存描述
+	MemDescription *string `json:"MemDescription" name:"MemDescription"`
+
+	// 硬盘描述
+	DiskDescription *string `json:"DiskDescription" name:"DiskDescription"`
+
+	// 是否支持RAID. 0:不支持; 1:支持
+	HaveRaidCard *uint64 `json:"HaveRaidCard" name:"HaveRaidCard"`
+
+	// 网卡描述
+	NicDescription *string `json:"NicDescription" name:"NicDescription"`
+
+	// GPU描述
+	GpuDescription *string `json:"GpuDescription" name:"GpuDescription"`
+
+	// 单价折扣
+	Discount *float64 `json:"Discount" name:"Discount"`
+
+	// 用户刊例价格
+	UnitPrice *uint64 `json:"UnitPrice" name:"UnitPrice"`
+
+	// 实际价格
+	RealPrice *uint64 `json:"RealPrice" name:"RealPrice"`
+
+	// 官网刊例价格
+	NormalPrice *uint64 `json:"NormalPrice" name:"NormalPrice"`
+
+	// 设备使用场景类型
+	DeviceType *string `json:"DeviceType" name:"DeviceType"`
+
+	// 机型系列
+	Series *uint64 `json:"Series" name:"Series"`
+}
+
 type DeviceInfo struct {
 
 	// 设备唯一ID
@@ -864,6 +1148,75 @@ type DeviceInfo struct {
 
 	// 标识是否是竞价实例。0: 普通设备; 1: 竞价实例设备
 	IsLuckyDevice *uint64 `json:"IsLuckyDevice" name:"IsLuckyDevice"`
+}
+
+type DeviceOperationLog struct {
+
+	// 日志的ID
+	Id *uint64 `json:"Id" name:"Id"`
+
+	// 设备ID
+	InstanceId *string `json:"InstanceId" name:"InstanceId"`
+
+	// 日志对应的操作任务ID
+	TaskId *uint64 `json:"TaskId" name:"TaskId"`
+
+	// 操作任务名称
+	TaskName *string `json:"TaskName" name:"TaskName"`
+
+	// 操作任务中文名称
+	TaskDescription *string `json:"TaskDescription" name:"TaskDescription"`
+
+	// 操作开始时间
+	StartTime *string `json:"StartTime" name:"StartTime"`
+
+	// 操作结束时间
+	EndTime *string `json:"EndTime" name:"EndTime"`
+
+	// 操作状态，0: 正在执行中；1：任务成功； 2: 任务失败。
+	Status *uint64 `json:"Status" name:"Status"`
+
+	// 操作者
+	OpUin *string `json:"OpUin" name:"OpUin"`
+
+	// 操作描述
+	LogDescription *string `json:"LogDescription" name:"LogDescription"`
+}
+
+type DevicePositionInfo struct {
+
+	// 设备ID
+	InstanceId *string `json:"InstanceId" name:"InstanceId"`
+
+	// 所在可用区
+	Zone *string `json:"Zone" name:"Zone"`
+
+	// 私有网络ID
+	VpcId *string `json:"VpcId" name:"VpcId"`
+
+	// 子网ID
+	SubnetId *string `json:"SubnetId" name:"SubnetId"`
+
+	// 业务IP
+	LanIp *string `json:"LanIp" name:"LanIp"`
+
+	// 实例别名
+	Alias *string `json:"Alias" name:"Alias"`
+
+	// 机架名称
+	RckName *string `json:"RckName" name:"RckName"`
+
+	// 机位
+	PosCode *uint64 `json:"PosCode" name:"PosCode"`
+
+	// 交换机名称
+	SwitchName *string `json:"SwitchName" name:"SwitchName"`
+
+	// 设备交付时间
+	DeliverTime *string `json:"DeliverTime" name:"DeliverTime"`
+
+	// 过期时间
+	Deadline *string `json:"Deadline" name:"Deadline"`
 }
 
 type DevicePriceInfo struct {
@@ -960,6 +1313,43 @@ func (r *ModifyDeviceAliasesResponse) ToJsonString() string {
 }
 
 func (r *ModifyDeviceAliasesResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyDeviceAutoRenewFlagRequest struct {
+	*tchttp.BaseRequest
+
+	// 自动续费标志位。0: 不自动续费; 1: 自动续费
+	AutoRenewFlag *uint64 `json:"AutoRenewFlag" name:"AutoRenewFlag"`
+
+	// 需要修改的设备ID列表
+	InstanceIds []*string `json:"InstanceIds" name:"InstanceIds" list`
+}
+
+func (r *ModifyDeviceAutoRenewFlagRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyDeviceAutoRenewFlagRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyDeviceAutoRenewFlagResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifyDeviceAutoRenewFlagResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyDeviceAutoRenewFlagResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -1084,6 +1474,67 @@ func (r *ModifyUserCmdResponse) ToJsonString() string {
 
 func (r *ModifyUserCmdResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
+}
+
+type OfflineDevicesRequest struct {
+	*tchttp.BaseRequest
+
+	// 需要退还的物理机ID列表
+	InstanceIds []*string `json:"InstanceIds" name:"InstanceIds" list`
+}
+
+func (r *OfflineDevicesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *OfflineDevicesRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type OfflineDevicesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 黑石异步任务ID
+		TaskId *uint64 `json:"TaskId" name:"TaskId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *OfflineDevicesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *OfflineDevicesResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type OsInfo struct {
+
+	// 操作系统ID
+	OsTypeId *uint64 `json:"OsTypeId" name:"OsTypeId"`
+
+	// 操作系统名称
+	OsName *string `json:"OsName" name:"OsName"`
+
+	// 操作系统名称描述
+	OsDescription *string `json:"OsDescription" name:"OsDescription"`
+
+	// 操作系统英文名称
+	OsEnglishDescription *string `json:"OsEnglishDescription" name:"OsEnglishDescription"`
+
+	// 操作系统的分类，如CentOs Debian
+	OsClass *string `json:"OsClass" name:"OsClass"`
+
+	// 标识镜像分类。public:公共镜像; private: 专属镜像
+	ImageTag *string `json:"ImageTag" name:"ImageTag"`
+
+	// 操作系统，ext4文件下所支持的最大的磁盘大小。单位为T
+	MaxPartitionSize *uint64 `json:"MaxPartitionSize" name:"MaxPartitionSize"`
 }
 
 type PsaRegulation struct {
@@ -1286,6 +1737,43 @@ func (r *RunUserCmdResponse) ToJsonString() string {
 }
 
 func (r *RunUserCmdResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type SetOutBandVpnAuthPasswordRequest struct {
+	*tchttp.BaseRequest
+
+	// 设置的Vpn认证密码
+	Password *string `json:"Password" name:"Password"`
+
+	// 操作字段，取值为：create（创建）或update（修改）
+	Operate *string `json:"Operate" name:"Operate"`
+}
+
+func (r *SetOutBandVpnAuthPasswordRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *SetOutBandVpnAuthPasswordRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type SetOutBandVpnAuthPasswordResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *SetOutBandVpnAuthPasswordResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *SetOutBandVpnAuthPasswordResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 

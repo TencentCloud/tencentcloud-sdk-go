@@ -49,7 +49,7 @@ type ChatResponse struct {
 		// 聊天输出文本
 		Answer *string `json:"Answer" name:"Answer"`
 
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -110,7 +110,7 @@ type SentenceRecognitionResponse struct {
 		// 识别结果。
 		Result *string `json:"Result" name:"Result"`
 
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -183,7 +183,7 @@ type SimultaneousInterpretingResponse struct {
 		// 机器翻译的结果
 		NmtText *string `json:"NmtText" name:"NmtText"`
 
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -221,7 +221,7 @@ type TextToVoiceRequest struct {
 	// 音色<li>0-女声1，亲和风格(默认)</li><li>1-男声1，成熟风格</li><li>2-男声2，成熟风格</li>
 	VoiceType *int64 `json:"VoiceType" name:"VoiceType"`
 
-	// 主语言类型<li>1-中文(包括粤语)，最大100字符</li><li>2-英文，最大支持400字符</li>
+	// 主语言类型<li>1-中文，最大100个汉字（标点符号算一个汉子）</li><li>2-英文，最大支持400个字母（标点符号算一个字母）</li>
 	PrimaryLanguage *uint64 `json:"PrimaryLanguage" name:"PrimaryLanguage"`
 
 	// 音频采样率，16000：16k，8000：8k，默认16k
@@ -247,7 +247,7 @@ type TextToVoiceResponse struct {
 		// 一次请求对应一个SessionId
 		SessionId *string `json:"SessionId" name:"SessionId"`
 
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"Response"`
 }

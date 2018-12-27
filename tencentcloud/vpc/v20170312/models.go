@@ -510,8 +510,10 @@ type CcnAttachedInstance struct {
 	// <li>`EXPIRED`：已过期</li>
 	// <li>`REJECTED`：已拒绝</li>
 	// <li>`DELETED`：已删除</li>
+	// <li>`FAILED`：失败的（2小时后将异步强制解关联）</li>
 	// <li>`ATTACHING`：关联中</li>
 	// <li>`DETACHING`：解关联中</li>
+	// <li>`DETACHFAILED`：解关联失败（2小时后将异步强制解关联）</li>
 	State *string `json:"State" name:"State"`
 
 	// 关联时间。
@@ -543,6 +545,9 @@ type CcnRegionBandwidthLimit struct {
 
 	// 出带宽上限，单位：Mbps
 	BandwidthLimit *uint64 `json:"BandwidthLimit" name:"BandwidthLimit"`
+
+	// 是否黑石地域，默认`false`。
+	IsBm *bool `json:"IsBm" name:"IsBm"`
 }
 
 type CcnRoute struct {
@@ -724,6 +729,9 @@ type CreateCcnRequest struct {
 
 	// CCN描述信息，最大长度不能超过100个字节。
 	CcnDescription *string `json:"CcnDescription" name:"CcnDescription"`
+
+	// CCN服务质量，'PT'：白金，'AU'：金，'AG'：银，默认为‘AU’。
+	QosLevel *string `json:"QosLevel" name:"QosLevel"`
 }
 
 func (r *CreateCcnRequest) ToJsonString() string {
@@ -1305,6 +1313,46 @@ func (r *CreateSubnetResponse) ToJsonString() string {
 }
 
 func (r *CreateSubnetResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateSubnetsRequest struct {
+	*tchttp.BaseRequest
+
+	// `VPC`实例`ID`。形如：`vpc-6v2ht8q5`
+	VpcId *string `json:"VpcId" name:"VpcId"`
+
+	// 子网对象列表。
+	Subnets []*SubnetInput `json:"Subnets" name:"Subnets" list`
+}
+
+func (r *CreateSubnetsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateSubnetsRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateSubnetsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 新创建的子网列表。
+		SubnetSet []*Subnet `json:"SubnetSet" name:"SubnetSet" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateSubnetsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateSubnetsResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -2572,7 +2620,6 @@ type DescribeCcnRoutesRequest struct {
 	RouteIds []*string `json:"RouteIds" name:"RouteIds" list`
 
 	// 过滤条件，参数不支持同时指定RouteIds和Filters。
-	// <li>ccn-id - String -（过滤条件）CCN实例ID。</li>
 	// <li>route-id - String -（过滤条件）路由策略ID。</li>
 	// <li>cidr-block - String -（过滤条件）目的端。</li>
 	// <li>instance-type - String -（过滤条件）下一跳类型。</li>
@@ -2867,8 +2914,8 @@ type DescribeDirectConnectGatewaysRequest struct {
 	// <li>direct-connect-gateway-ip - String - 专线网关`IP`。</li>
 	// <li>gateway-type - String - 网关类型，可选值：`NORMAL`（普通型）、`NAT`（NAT型）。</li>
 	// <li>network-type- String - 网络类型，可选值：`VPC`（私有网络类型）、`CCN`（云联网类型）。</li>
-	// <li>ccn-id - String - 专线网关所在私有网络`ID`。</li>
-	// <li>vpc-id - String - 专线网关所在云联网`ID`。</li>
+	// <li>ccn-id - String - 专线网关所在云联网`ID`。</li>
+	// <li>vpc-id - String - 专线网关所在私有网络`ID`。</li>
 	Filters []*Filter `json:"Filters" name:"Filters" list`
 
 	// 偏移量。
@@ -5494,7 +5541,7 @@ type ReplaceRoutesRequest struct {
 	// 路由表实例ID，例如：rtb-azd4dt1c。
 	RouteTableId *string `json:"RouteTableId" name:"RouteTableId"`
 
-	// 路由策略对象。只需要指定路由策略ID（RouteId）。
+	// 路由策略对象。需要指定路由策略ID（RouteId）。
 	Routes []*Route `json:"Routes" name:"Routes" list`
 }
 
@@ -5851,6 +5898,9 @@ type SecurityGroupAssociationStatistics struct {
 
 	// 负载均衡实例数。
 	CLB *uint64 `json:"CLB" name:"CLB"`
+
+	// 全量实例的绑定统计。
+	InstanceStatistics []*string `json:"InstanceStatistics" name:"InstanceStatistics" list`
 }
 
 type SecurityGroupPolicy struct {
@@ -6013,6 +6063,21 @@ type Subnet struct {
 	AvailableIpAddressCount *uint64 `json:"AvailableIpAddressCount" name:"AvailableIpAddressCount"`
 }
 
+type SubnetInput struct {
+
+	// 子网的`CIDR`。
+	CidrBlock *string `json:"CidrBlock" name:"CidrBlock"`
+
+	// 子网名称。
+	SubnetName *string `json:"SubnetName" name:"SubnetName"`
+
+	// 可用区。形如：`ap-guangzhou-2`。
+	Zone *string `json:"Zone" name:"Zone"`
+
+	// 指定关联路由表，形如：`rtb-3ryrwzuu`。
+	RouteTableId *string `json:"RouteTableId" name:"RouteTableId"`
+}
+
 type TransformAddressRequest struct {
 	*tchttp.BaseRequest
 
@@ -6112,6 +6177,9 @@ type Vpc struct {
 
 	// DHCP选项集ID
 	DhcpOptionsId *string `json:"DhcpOptionsId" name:"DhcpOptionsId"`
+
+	// 是否开启DHCP。
+	EnableDhcp *bool `json:"EnableDhcp" name:"EnableDhcp"`
 }
 
 type VpnConnection struct {
