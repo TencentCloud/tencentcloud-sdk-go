@@ -815,7 +815,7 @@ func NewCreateVpnGatewayResponse() (response *CreateVpnGatewayResponse) {
     return
 }
 
-// 本接口（CreateVpnGateways）用于创建VPN网关。
+// 本接口（CreateVpnGateway）用于创建VPN网关。
 func (c *Client) CreateVpnGateway(request *CreateVpnGatewayRequest) (response *CreateVpnGatewayResponse, err error) {
     if request == nil {
         request = NewCreateVpnGatewayRequest()

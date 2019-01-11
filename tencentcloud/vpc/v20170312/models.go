@@ -548,6 +548,12 @@ type CcnRegionBandwidthLimit struct {
 
 	// 是否黑石地域，默认`false`。
 	IsBm *bool `json:"IsBm" name:"IsBm"`
+
+	// 目的地域，例如：ap-shanghai
+	DstRegion *string `json:"DstRegion" name:"DstRegion"`
+
+	// 目的地域是否为黑石地域，默认`false`。
+	DstIsBm *bool `json:"DstIsBm" name:"DstIsBm"`
 }
 
 type CcnRoute struct {

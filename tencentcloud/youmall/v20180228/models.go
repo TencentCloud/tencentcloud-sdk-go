@@ -57,6 +57,9 @@ type CameraPersonInfo struct {
 
 	// 当次抓拍时间戳
 	Time *int64 `json:"Time" name:"Time"`
+
+	// 当前的person基本信息，图片以FacePic为准，结构体内未填
+	PersonInfo *PersonInfo `json:"PersonInfo" name:"PersonInfo"`
 }
 
 type CreateAccountRequest struct {
@@ -1640,6 +1643,73 @@ type HourTrafficInfoDetail struct {
 	HourTrafficTotalCount *uint64 `json:"HourTrafficTotalCount" name:"HourTrafficTotalCount"`
 }
 
+type ModifyPersonFeatureInfoRequest struct {
+	*tchttp.BaseRequest
+
+	// 集团ID
+	CompanyId *string `json:"CompanyId" name:"CompanyId"`
+
+	// 需要修改的顾客id
+	PersonId *int64 `json:"PersonId" name:"PersonId"`
+
+	// 图片BASE编码
+	Picture *string `json:"Picture" name:"Picture"`
+
+	// 图片名称（尽量不要重复）
+	PictureName *string `json:"PictureName" name:"PictureName"`
+
+	// 人物类型，仅能操作黑白名单顾客（1 白名单，2 表示黑名单，101表示集团白名单，102表示集团黑名单）
+	PersonType *int64 `json:"PersonType" name:"PersonType"`
+
+	// 店铺ID，如果不填表示操作集团身份库
+	ShopId *int64 `json:"ShopId" name:"ShopId"`
+}
+
+func (r *ModifyPersonFeatureInfoRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyPersonFeatureInfoRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyPersonFeatureInfoResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 集团ID
+		CompanyId *string `json:"CompanyId" name:"CompanyId"`
+
+		// 店铺ID，如果不填表示操作集团身份库
+		ShopId *int64 `json:"ShopId" name:"ShopId"`
+
+		// 请求的顾客id
+		PersonId *int64 `json:"PersonId" name:"PersonId"`
+
+		// 图片实际绑定person_id，可能与请求的person_id不同，以此id为准
+		PersonIdBind *int64 `json:"PersonIdBind" name:"PersonIdBind"`
+
+		// 请求的顾客类型
+		PersonType *int64 `json:"PersonType" name:"PersonType"`
+
+		// 与请求的person_id类型相同、与请求图片特征相似的一个或多个person_id，需要额外确认这些id是否是同一个人
+		SimilarPersonIds []*int64 `json:"SimilarPersonIds" name:"SimilarPersonIds" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifyPersonFeatureInfoResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyPersonFeatureInfoResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type ModifyPersonTagInfoRequest struct {
 	*tchttp.BaseRequest
 
@@ -1697,7 +1767,7 @@ type ModifyPersonTypeRequest struct {
 
 	// 身份子类型:
 	// PersonType=0时(普通顾客)，0普通顾客
-	// PersonType=1时(白名单)，0店员，1商场人员，2其他类型人员，3区域经理，4注册用户，5VIP用户
+	// PersonType=1时(白名单)，0店员，1商场人员，2其他类型人员，3区域经理，4注册会员，5VIP用户
 	// PersonType=2时(黑名单)，0普通黑名单，1小偷)
 	PersonSubType *uint64 `json:"PersonSubType" name:"PersonSubType"`
 }
@@ -1889,6 +1959,12 @@ type PersonInfo struct {
 	// PersonType=1时(白名单)，0店员，1商场人员，2其他类型人员，3区域经理，4注册用户，5VIP用户
 	// PersonType=2时(黑名单)，0普通黑名单，1小偷)
 	PersonSubType *int64 `json:"PersonSubType" name:"PersonSubType"`
+
+	// 到访次数，-1表示未知
+	VisitTimes *int64 `json:"VisitTimes" name:"VisitTimes"`
+
+	// 到访天数，-1表示未知
+	VisitDays *int64 `json:"VisitDays" name:"VisitDays"`
 }
 
 type PersonProfile struct {
@@ -1946,6 +2022,12 @@ type PersonTracePoint struct {
 
 	// 抓拍图片
 	CapPic *string `json:"CapPic" name:"CapPic"`
+
+	// 购物袋类型
+	ShoppingBagType *uint64 `json:"ShoppingBagType" name:"ShoppingBagType"`
+
+	// 购物袋数量
+	ShoppingBagCount *uint64 `json:"ShoppingBagCount" name:"ShoppingBagCount"`
 }
 
 type PersonTraceRoute struct {

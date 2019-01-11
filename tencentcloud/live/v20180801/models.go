@@ -119,16 +119,16 @@ type CreateLiveRecordRequest struct {
 	// 流名称。
 	StreamName *string `json:"StreamName" name:"StreamName"`
 
-	// 直播流所属应用名称。
+	// 推流App名。
 	AppName *string `json:"AppName" name:"AppName"`
 
 	// 推流域名。多域名推流必须设置。
 	DomainName *string `json:"DomainName" name:"DomainName"`
 
-	// 任务起始时间，中国标准时间，需要URLEncode。如 2017-01-01 10:10:01，编码为：2017-01-01+10%3a10%3a01。录制视频为精彩视频时，忽略此字段。
+	// 录制开始时间。非精彩视频录制，必须设置该字段。中国标准时间，需要URLEncode。如 2017-01-01 10:10:01，编码为：2017-01-01+10%3a10%3a01。
 	StartTime *string `json:"StartTime" name:"StartTime"`
 
-	// 任务结束时间，中国标准时间，需要URLEncode。如 2017-01-01 10:30:01，编码为：2017-01-01+10%3a30%3a01。若指定精彩视频录制，结束时间不超过当前时间+30分钟，如果超过或小于起始时间，则实际结束时间为当前时间+30分钟。
+	// 录制结束时间。非精彩视频录制，必须设置该字段。中国标准时间，需要URLEncode。如 2017-01-01 10:30:01，编码为：2017-01-01+10%3a30%3a01。如果通过Highlight参数，设置录制为精彩视频录制，结束时间不应超过当前时间+30分钟，如果结束时间超过当前时间+30分钟或小于当前时间，则实际结束时间为当前时间+30分钟。
 	EndTime *string `json:"EndTime" name:"EndTime"`
 
 	// 录制类型。不区分大小写。
@@ -140,16 +140,16 @@ type CreateLiveRecordRequest struct {
 	// “flv”,“hls”,”mp4”,“aac”,”mp3”，默认“flv”。
 	FileFormat *string `json:"FileFormat" name:"FileFormat"`
 
-	// 精彩视频标志。0：普通视频【默认】；1：精彩视频。
+	// 开启精彩视频录制标志；0：不开启精彩视频录制【默认】；1：开启精彩视频录制。
 	Highlight *int64 `json:"Highlight" name:"Highlight"`
 
-	// A+B=C混流标志。0：非A+B=C混流录制【默认】；1：标示为A+B=C混流录制。
+	// 开启A+B=C混流C流录制标志。0：不开启A+B=C混流C流录制【默认】；1：开启A+B=C混流C流录制。
 	MixStream *int64 `json:"MixStream" name:"MixStream"`
 
-	// 录制流参数，当前支持以下参数： 
-	// interval 录制分片时长，单位 秒，0 - 7200
-	// storage_time 录制文件存储时长，单位 秒
-	// eg. interval=3600&storage_time=7200
+	// 录制流参数。当前支持以下参数：
+	// record_interval - 录制分片时长，单位 秒，1800 - 7200
+	// storage_time - 录制文件存储时长，单位 秒
+	// eg. record_interval=3600&storage_time=7200
 	// 注：参数需要url encode。
 	StreamParam *string `json:"StreamParam" name:"StreamParam"`
 }
@@ -200,12 +200,16 @@ type CreatePullStreamConfigRequest struct {
 	IspId *int64 `json:"IspId" name:"IspId"`
 
 	// 开始时间。
+	// 使用UTC格式时间，
+	// 例如：2019-01-08T10:00:00Z。
 	StartTime *string `json:"StartTime" name:"StartTime"`
 
 	// 结束时间，注意：
 	// 1. 结束时间必须大于开始时间；
 	// 2. 结束时间和开始时间必须大于当前时间；
 	// 3. 结束时间 和 开始时间 间隔必须小于七天。
+	// 使用UTC格式时间，
+	// 例如：2019-01-08T10:00:00Z。
 	EndTime *string `json:"EndTime" name:"EndTime"`
 }
 
@@ -928,12 +932,17 @@ type ModifyPullStreamConfigRequest struct {
 	IspId *int64 `json:"IspId" name:"IspId"`
 
 	// 开始时间。
+	// 使用UTC格式时间，
+	// 例如：2019-01-08T10:00:00Z。
 	StartTime *string `json:"StartTime" name:"StartTime"`
 
 	// 结束时间，注意：
 	// 1. 结束时间必须大于开始时间；
 	// 2. 结束时间和开始时间必须大于当前时间；
 	// 3. 结束时间 和 开始时间 间隔必须小于七天。
+	// 
+	// 使用UTC格式时间，
+	// 例如：2019-01-08T10:00:00Z。
 	EndTime *string `json:"EndTime" name:"EndTime"`
 }
 
@@ -1044,9 +1053,14 @@ type PullStreamConfig struct {
 	IspName *string `json:"IspName" name:"IspName"`
 
 	// 开始时间。
+	// UTC格式时间，
+	// 例如：2019-01-08T10:00:00Z。
 	StartTime *string `json:"StartTime" name:"StartTime"`
 
 	// 结束时间。
+	// 
+	// UTC格式时间，
+	// 例如：2019-01-08T10:00:00Z。
 	EndTime *string `json:"EndTime" name:"EndTime"`
 
 	// 0无效，1初始状态，2正在运行，3拉起失败，4暂停。
@@ -1262,6 +1276,9 @@ type StreamOnlineInfo struct {
 
 	// 推流时间列表
 	PublishTimeList []*PublishTime `json:"PublishTimeList" name:"PublishTimeList" list`
+
+	// 应用名称。
+	AppName *string `json:"AppName" name:"AppName"`
 }
 
 type UpdateLiveWatermarkRequest struct {

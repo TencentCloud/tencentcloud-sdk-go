@@ -719,6 +719,31 @@ func (c *Client) DescribeZoneTrafficInfo(request *DescribeZoneTrafficInfoRequest
     return
 }
 
+func NewModifyPersonFeatureInfoRequest() (request *ModifyPersonFeatureInfoRequest) {
+    request = &ModifyPersonFeatureInfoRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("youmall", APIVersion, "ModifyPersonFeatureInfo")
+    return
+}
+
+func NewModifyPersonFeatureInfoResponse() (response *ModifyPersonFeatureInfoResponse) {
+    response = &ModifyPersonFeatureInfoResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 支持修改黑白名单类型的顾客特征
+func (c *Client) ModifyPersonFeatureInfo(request *ModifyPersonFeatureInfoRequest) (response *ModifyPersonFeatureInfoResponse, err error) {
+    if request == nil {
+        request = NewModifyPersonFeatureInfoRequest()
+    }
+    response = NewModifyPersonFeatureInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyPersonTagInfoRequest() (request *ModifyPersonTagInfoRequest) {
     request = &ModifyPersonTagInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},

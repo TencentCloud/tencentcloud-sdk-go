@@ -444,6 +444,44 @@ func (r *DescribeInstancesDiskNumResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeSnapshotOperationLogsRequest struct {
+	*tchttp.BaseRequest
+
+	// 过滤条件。支持以下条件：
+	// <li>snapshot-id - Array of String - 是否必填：是 - 按快照ID过滤，每个请求最多可指定10个快照ID。
+	Filters []*Filter `json:"Filters" name:"Filters" list`
+}
+
+func (r *DescribeSnapshotOperationLogsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeSnapshotOperationLogsRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeSnapshotOperationLogsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 快照操作日志列表。
+		SnapshotOperationLogSet []*SnapshotOperationLog `json:"SnapshotOperationLogSet" name:"SnapshotOperationLogSet" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeSnapshotOperationLogsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeSnapshotOperationLogsResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeSnapshotsRequest struct {
 	*tchttp.BaseRequest
 
@@ -559,7 +597,7 @@ type Disk struct {
 	// 云硬盘大小，单位GB。
 	DiskSize *uint64 `json:"DiskSize" name:"DiskSize"`
 
-	// 云盘状态。取值范围：<br><li>UNATTACHED：未挂载<br><li>ATTACHING：挂载中<br><li>ATTACHED：已挂载<br><li>DETACHING：解挂中<br><li>EXPANDING：扩容中<br><li>ROLLBACKING：回滚中。
+	// 云盘状态。取值范围：<br><li>UNATTACHED：未挂载<br><li>ATTACHING：挂载中<br><li>ATTACHED：已挂载<br><li>DETACHING：解挂中<br><li>EXPANDING：扩容中<br><li>ROLLBACKING：回滚中<br><li>TORECYCLE：待回收<br><li>DUMPING：拷贝硬盘中。
 	DiskState *string `json:"DiskState" name:"DiskState"`
 
 	// 云盘介质类型。取值范围：<br><li>CLOUD_BASIC：表示普通云硬<br><li>CLOUD_PREMIUM：表示高性能云硬盘<br><li>CLOUD_SSD：SSD表示SSD云硬盘。
@@ -612,6 +650,12 @@ type Disk struct {
 
 	// 当前时间距离盘到期的天数（仅对预付费盘有意义）。
 	DifferDaysOfDeadline *int64 `json:"DifferDaysOfDeadline" name:"DifferDaysOfDeadline"`
+
+	// 云盘是否处于类型变更中。取值范围：<br><li>false:表示云盘不处于类型变更中<br><li>true:表示云盘已发起类型变更，正处于迁移中。
+	Migrating *bool `json:"Migrating" name:"Migrating"`
+
+	// 云盘类型变更的迁移进度，取值0到100。
+	MigratePercent *uint64 `json:"MigratePercent" name:"MigratePercent"`
 }
 
 type DiskChargePrepaid struct {
@@ -622,7 +666,7 @@ type DiskChargePrepaid struct {
 	// 自动续费标识。取值范围：<br><li>NOTIFY_AND_AUTO_RENEW：通知过期且自动续费<br><li>NOTIFY_AND_MANUAL_RENEW：通知过期不自动续费<br><li>DISABLE_NOTIFY_AND_MANUAL_RENEW：不通知过期不自动续费<br><br>默认取值：NOTIFY_AND_MANUAL_RENEW：通知过期不自动续费。
 	RenewFlag *string `json:"RenewFlag" name:"RenewFlag"`
 
-	// 需要将云盘的到期时间与挂载的子机对齐时，可传入该参数。该参数表示子机当前的到期时间，此时Period如果传入，则表示子机需要续费的时长，云盘会自动按对齐到子机续费后的到期时间续费。
+	// 需要将云盘的到期时间与挂载的子机对齐时，可传入该参数。该参数表示子机当前的到期时间，此时Period如果传入，则表示子机需要续费的时长，云盘会自动按对齐到子机续费后的到期时间续费，示例取值：2018-03-30 20:15:03。
 	CurInstanceDeadline *string `json:"CurInstanceDeadline" name:"CurInstanceDeadline"`
 }
 
@@ -988,11 +1032,14 @@ type Price struct {
 	// 预付费云盘预支费用的折扣价，单位：元。
 	DiscountPrice *float64 `json:"DiscountPrice" name:"DiscountPrice"`
 
-	// 后付费云盘的单价，单位：元。
+	// 后付费云盘原单价，单位：元。
 	UnitPrice *float64 `json:"UnitPrice" name:"UnitPrice"`
 
 	// 后付费云盘的计价单元，取值范围：<br><li>HOUR：表示后付费云盘的计价单元是按小时计算。
 	ChargeUnit *string `json:"ChargeUnit" name:"ChargeUnit"`
+
+	// 后付费云盘折扣单价，单位：元。
+	UnitPriceDiscount *float64 `json:"UnitPriceDiscount" name:"UnitPriceDiscount"`
 }
 
 type RenewDiskRequest struct {
@@ -1112,6 +1159,40 @@ type Snapshot struct {
 
 	// 是否为跨地域复制的快照。取值范围：<br><li>true：表示为跨地域复制的快照。<br><li>false:本地域的快照。
 	CopyFromRemote *bool `json:"CopyFromRemote" name:"CopyFromRemote"`
+
+	// 快照关联的镜像ID列表。
+	ImageIds []*string `json:"ImageIds" name:"ImageIds" list`
+}
+
+type SnapshotOperationLog struct {
+
+	// 操作者的UIN。
+	Operator *string `json:"Operator" name:"Operator"`
+
+	// 操作类型。取值范围：
+	// SNAP_OPERATION_DELETE：删除快照
+	// SNAP_OPERATION_ROLLBACK：回滚快照
+	// SNAP_OPERATION_MODIFY：修改快照属性
+	// SNAP_OPERATION_CREATE：创建快照
+	// SNAP_OPERATION_COPY：跨地域复制快照
+	// ASP_OPERATION_CREATE_SNAP：由定期快照策略创建快照
+	// ASP_OPERATION_DELETE_SNAP：由定期快照策略删除快照
+	Operation *string `json:"Operation" name:"Operation"`
+
+	// 操作的快照ID。
+	SnapshotId *string `json:"SnapshotId" name:"SnapshotId"`
+
+	// 操作的状态。取值范围：
+	// SUCCESS :表示操作成功 
+	// FAILED :表示操作失败 
+	// PROCESSING :表示操作中。
+	OperationState *string `json:"OperationState" name:"OperationState"`
+
+	// 开始时间。
+	StartTime *string `json:"StartTime" name:"StartTime"`
+
+	// 结束时间。
+	EndTime *string `json:"EndTime" name:"EndTime"`
 }
 
 type Tag struct {

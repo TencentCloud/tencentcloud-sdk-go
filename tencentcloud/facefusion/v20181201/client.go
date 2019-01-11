@@ -59,7 +59,7 @@ func NewFaceFusionResponse() (response *FaceFusionResponse) {
 }
 
 // 本接口用于人脸融合，用户上传人脸图片，获取与模板融合后的人脸图片。未发布的活动请求频率限制为1次/秒，已发布的活动请求频率限制50次/秒。如有需要提高活动的请求频率限制，请在控制台中申请。
-// >!      
+// >     
 // - 公共参数中的签名方式必须指定为V3版本，即配置SignatureMethod参数为TC3-HMAC-SHA256。
 func (c *Client) FaceFusion(request *FaceFusionRequest) (response *FaceFusionResponse, err error) {
     if request == nil {

@@ -292,6 +292,33 @@ func (c *Client) DescribeInstancesDiskNum(request *DescribeInstancesDiskNumReque
     return
 }
 
+func NewDescribeSnapshotOperationLogsRequest() (request *DescribeSnapshotOperationLogsRequest) {
+    request = &DescribeSnapshotOperationLogsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cbs", APIVersion, "DescribeSnapshotOperationLogs")
+    return
+}
+
+func NewDescribeSnapshotOperationLogsResponse() (response *DescribeSnapshotOperationLogsResponse) {
+    response = &DescribeSnapshotOperationLogsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（DescribeSnapshotOperationLogs）用于查询快照操作日志列表。
+// 
+// 可根据快照ID过滤。快照ID形如：snap-a1kmcp13。
+func (c *Client) DescribeSnapshotOperationLogs(request *DescribeSnapshotOperationLogsRequest) (response *DescribeSnapshotOperationLogsResponse, err error) {
+    if request == nil {
+        request = NewDescribeSnapshotOperationLogsRequest()
+    }
+    response = NewDescribeSnapshotOperationLogsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeSnapshotsRequest() (request *DescribeSnapshotsRequest) {
     request = &DescribeSnapshotsRequest{
         BaseRequest: &tchttp.BaseRequest{},
