@@ -92,7 +92,7 @@ func (r *BaseRequest) GetService() string {
 
 func (r *BaseRequest) GetUrl() string {
 	if r.httpMethod == GET {
-		return "https://" + r.domain + r.path + "?" + getUrlQueriesEncoded(r.params)
+		return "https://" + r.domain + r.path + "?" + GetUrlQueriesEncoded(r.params)
 	} else if r.httpMethod == POST {
 		return "https://" + r.domain + r.path
 	} else {
@@ -104,7 +104,7 @@ func (r *BaseRequest) GetVersion() string {
 	return r.version
 }
 
-func getUrlQueriesEncoded(params map[string]string) string {
+func GetUrlQueriesEncoded(params map[string]string) string {
 	values := url.Values{}
 	for key, value := range params {
 		if value != "" {
@@ -116,8 +116,7 @@ func getUrlQueriesEncoded(params map[string]string) string {
 
 func (r *BaseRequest) GetBodyReader() io.Reader {
 	if r.httpMethod == POST {
-		s := getUrlQueriesEncoded(r.params)
-		//log.Printf("[DEBUG] body: %s", s)
+		s := GetUrlQueriesEncoded(r.params)
 		return strings.NewReader(s)
 	} else {
 		return strings.NewReader("")
