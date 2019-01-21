@@ -234,6 +234,31 @@ func (c *Client) CreateDBInstanceHour(request *CreateDBInstanceHourRequest) (res
     return
 }
 
+func NewCreateParamTemplateRequest() (request *CreateParamTemplateRequest) {
+    request = &CreateParamTemplateRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cdb", APIVersion, "CreateParamTemplate")
+    return
+}
+
+func NewCreateParamTemplateResponse() (response *CreateParamTemplateResponse) {
+    response = &CreateParamTemplateResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 该接口（CreateParamTemplate）用于创建参数模板。
+func (c *Client) CreateParamTemplate(request *CreateParamTemplateRequest) (response *CreateParamTemplateResponse, err error) {
+    if request == nil {
+        request = NewCreateParamTemplateRequest()
+    }
+    response = NewCreateParamTemplateResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteAccountsRequest() (request *DeleteAccountsRequest) {
     request = &DeleteAccountsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -759,6 +784,81 @@ func (c *Client) DescribeDatabases(request *DescribeDatabasesRequest) (response 
     return
 }
 
+func NewDescribeDefaultParamsRequest() (request *DescribeDefaultParamsRequest) {
+    request = &DescribeDefaultParamsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cdb", APIVersion, "DescribeDefaultParams")
+    return
+}
+
+func NewDescribeDefaultParamsResponse() (response *DescribeDefaultParamsResponse) {
+    response = &DescribeDefaultParamsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 该接口（DescribeDefaultParams）用于查询默认的可设置参数列表。
+func (c *Client) DescribeDefaultParams(request *DescribeDefaultParamsRequest) (response *DescribeDefaultParamsResponse, err error) {
+    if request == nil {
+        request = NewDescribeDefaultParamsRequest()
+    }
+    response = NewDescribeDefaultParamsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeDeviceMonitorInfoRequest() (request *DescribeDeviceMonitorInfoRequest) {
+    request = &DescribeDeviceMonitorInfoRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cdb", APIVersion, "DescribeDeviceMonitorInfo")
+    return
+}
+
+func NewDescribeDeviceMonitorInfoResponse() (response *DescribeDeviceMonitorInfoResponse) {
+    response = &DescribeDeviceMonitorInfoResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（DescribeDeviceMonitorInfo）用于查询云数据库物理机当天的监控信息，暂只支持内存488G、硬盘6T的实例查询。
+func (c *Client) DescribeDeviceMonitorInfo(request *DescribeDeviceMonitorInfoRequest) (response *DescribeDeviceMonitorInfoResponse, err error) {
+    if request == nil {
+        request = NewDescribeDeviceMonitorInfoRequest()
+    }
+    response = NewDescribeDeviceMonitorInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeInstanceParamRecordsRequest() (request *DescribeInstanceParamRecordsRequest) {
+    request = &DescribeInstanceParamRecordsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cdb", APIVersion, "DescribeInstanceParamRecords")
+    return
+}
+
+func NewDescribeInstanceParamRecordsResponse() (response *DescribeInstanceParamRecordsResponse) {
+    response = &DescribeInstanceParamRecordsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 该接口（DescribeInstanceParamRecords）用于查询实例参数修改历史。
+func (c *Client) DescribeInstanceParamRecords(request *DescribeInstanceParamRecordsRequest) (response *DescribeInstanceParamRecordsResponse, err error) {
+    if request == nil {
+        request = NewDescribeInstanceParamRecordsRequest()
+    }
+    response = NewDescribeInstanceParamRecordsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeInstanceParamsRequest() (request *DescribeInstanceParamsRequest) {
     request = &DescribeInstanceParamsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -780,6 +880,56 @@ func (c *Client) DescribeInstanceParams(request *DescribeInstanceParamsRequest) 
         request = NewDescribeInstanceParamsRequest()
     }
     response = NewDescribeInstanceParamsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeParamTemplateInfoRequest() (request *DescribeParamTemplateInfoRequest) {
+    request = &DescribeParamTemplateInfoRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cdb", APIVersion, "DescribeParamTemplateInfo")
+    return
+}
+
+func NewDescribeParamTemplateInfoResponse() (response *DescribeParamTemplateInfoResponse) {
+    response = &DescribeParamTemplateInfoResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 该接口（DescribeParamTemplateInfo）用于查询参数模板详情。
+func (c *Client) DescribeParamTemplateInfo(request *DescribeParamTemplateInfoRequest) (response *DescribeParamTemplateInfoResponse, err error) {
+    if request == nil {
+        request = NewDescribeParamTemplateInfoRequest()
+    }
+    response = NewDescribeParamTemplateInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeParamTemplatesRequest() (request *DescribeParamTemplatesRequest) {
+    request = &DescribeParamTemplatesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cdb", APIVersion, "DescribeParamTemplates")
+    return
+}
+
+func NewDescribeParamTemplatesResponse() (response *DescribeParamTemplatesResponse) {
+    response = &DescribeParamTemplatesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 该接口（DescribeParamTemplates）查询参数模板列表。
+func (c *Client) DescribeParamTemplates(request *DescribeParamTemplatesRequest) (response *DescribeParamTemplatesResponse, err error) {
+    if request == nil {
+        request = NewDescribeParamTemplatesRequest()
+    }
+    response = NewDescribeParamTemplatesResponse()
     err = c.Send(request, response)
     return
 }
@@ -884,6 +1034,31 @@ func (c *Client) DescribeTables(request *DescribeTablesRequest) (response *Descr
     return
 }
 
+func NewDescribeTagsOfInstanceIdsRequest() (request *DescribeTagsOfInstanceIdsRequest) {
+    request = &DescribeTagsOfInstanceIdsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cdb", APIVersion, "DescribeTagsOfInstanceIds")
+    return
+}
+
+func NewDescribeTagsOfInstanceIdsResponse() (response *DescribeTagsOfInstanceIdsResponse) {
+    response = &DescribeTagsOfInstanceIdsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 获取实例绑定的标签
+func (c *Client) DescribeTagsOfInstanceIds(request *DescribeTagsOfInstanceIdsRequest) (response *DescribeTagsOfInstanceIdsResponse, err error) {
+    if request == nil {
+        request = NewDescribeTagsOfInstanceIdsRequest()
+    }
+    response = NewDescribeTagsOfInstanceIdsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeTasksRequest() (request *DescribeTasksRequest) {
     request = &DescribeTasksRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -980,6 +1155,31 @@ func (c *Client) InitDBInstances(request *InitDBInstancesRequest) (response *Ini
         request = NewInitDBInstancesRequest()
     }
     response = NewInitDBInstancesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewInquiryPriceUpgradeInstancesRequest() (request *InquiryPriceUpgradeInstancesRequest) {
+    request = &InquiryPriceUpgradeInstancesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cdb", APIVersion, "InquiryPriceUpgradeInstances")
+    return
+}
+
+func NewInquiryPriceUpgradeInstancesResponse() (response *InquiryPriceUpgradeInstancesResponse) {
+    response = &InquiryPriceUpgradeInstancesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口(InquiryPriceUpgradeInstances)用于查询云数据库实例升级的价格，支持查询按量计费或者包年包月实例的升级价格，实例类型支持主实例、灾备实例和只读实例。
+func (c *Client) InquiryPriceUpgradeInstances(request *InquiryPriceUpgradeInstancesRequest) (response *InquiryPriceUpgradeInstancesResponse, err error) {
+    if request == nil {
+        request = NewInquiryPriceUpgradeInstancesRequest()
+    }
+    response = NewInquiryPriceUpgradeInstancesResponse()
     err = c.Send(request, response)
     return
 }
@@ -1259,6 +1459,56 @@ func (c *Client) ModifyInstanceParam(request *ModifyInstanceParamRequest) (respo
     return
 }
 
+func NewModifyInstanceTagRequest() (request *ModifyInstanceTagRequest) {
+    request = &ModifyInstanceTagRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cdb", APIVersion, "ModifyInstanceTag")
+    return
+}
+
+func NewModifyInstanceTagResponse() (response *ModifyInstanceTagResponse) {
+    response = &ModifyInstanceTagResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 可以对实例标签进行添加、修改或者删除
+func (c *Client) ModifyInstanceTag(request *ModifyInstanceTagRequest) (response *ModifyInstanceTagResponse, err error) {
+    if request == nil {
+        request = NewModifyInstanceTagRequest()
+    }
+    response = NewModifyInstanceTagResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyParamTemplateRequest() (request *ModifyParamTemplateRequest) {
+    request = &ModifyParamTemplateRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cdb", APIVersion, "ModifyParamTemplate")
+    return
+}
+
+func NewModifyParamTemplateResponse() (response *ModifyParamTemplateResponse) {
+    response = &ModifyParamTemplateResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 该接口（ModifyParamTemplate）用于修改参数模板。
+func (c *Client) ModifyParamTemplate(request *ModifyParamTemplateRequest) (response *ModifyParamTemplateResponse, err error) {
+    if request == nil {
+        request = NewModifyParamTemplateRequest()
+    }
+    response = NewModifyParamTemplateResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewOpenDBInstanceGTIDRequest() (request *OpenDBInstanceGTIDRequest) {
     request = &OpenDBInstanceGTIDRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1299,7 +1549,9 @@ func NewOpenWanServiceResponse() (response *OpenWanServiceResponse) {
     return
 }
 
-// 本接口(OpenWanService)用于开通实例外网访问
+// 本接口(OpenWanService)用于开通实例外网访问。
+// 
+// 注意，实例开通外网访问之前，需要先将实例进行[实例初始化](https://cloud.tencent.com/document/api/236/15873)操作。
 func (c *Client) OpenWanService(request *OpenWanServiceRequest) (response *OpenWanServiceResponse, err error) {
     if request == nil {
         request = NewOpenWanServiceRequest()

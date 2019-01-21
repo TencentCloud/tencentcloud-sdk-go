@@ -33,13 +33,13 @@ type CdnData struct {
 	// 4XX：返回 4XX 状态码汇总及各 4 开头状态码数据，单位为 个
 	// 5XX：返回 5XX 状态码汇总及各 5 开头状态码数据，单位为 个
 	// 或指定查询的某一具体状态码
-	Metric *string `json:"Metric" name:"Metric"`
+	Metric *string `json:"Metric,omitempty" name:"Metric"`
 
 	// 明细数据组合
-	DetailData []*TimestampData `json:"DetailData" name:"DetailData" list`
+	DetailData []*TimestampData `json:"DetailData,omitempty" name:"DetailData" list`
 
 	// 汇总数据组合
-	SummarizedData *SummarizedData `json:"SummarizedData" name:"SummarizedData"`
+	SummarizedData *SummarizedData `json:"SummarizedData,omitempty" name:"SummarizedData"`
 }
 
 type DescribeCdnDataRequest struct {
@@ -48,12 +48,12 @@ type DescribeCdnDataRequest struct {
 	// 查询起始时间，如：2018-09-04 10:40:00，返回结果大于等于指定时间
 	// 根据指定时间粒度不同，会进行向前归整，如 2018-09-04 10:40:00 在按 1 小时的时间粒度查询时，返回的第一个数据对应时间点为 2018-09-04 10:00:00
 	// 起始时间与结束时间间隔小于等于 90 天
-	StartTime *string `json:"StartTime" name:"StartTime"`
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
 
 	// 查询结束时间，如：2018-09-04 10:40:00，返回结果小于等于指定时间
 	// 根据指定时间粒度不同，会进行向前归整，如 2018-09-04 10:40:00 在按 1 小时的时间粒度查询时，返回的最后一个数据对应时间点为 2018-09-04 10:00:00
 	// 起始时间与结束时间间隔小于等于 90 天
-	EndTime *string `json:"EndTime" name:"EndTime"`
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 
 	// 指定查询指标，支持的类型有：
 	// flux：流量，单位为 byte
@@ -66,43 +66,43 @@ type DescribeCdnDataRequest struct {
 	// 4XX：返回 4XX 状态码汇总及各 4 开头状态码数据，单位为 个
 	// 5XX：返回 5XX 状态码汇总及各 5 开头状态码数据，单位为 个
 	// 支持指定具体状态码查询，若未产生过，则返回为空
-	Metric *string `json:"Metric" name:"Metric"`
+	Metric *string `json:"Metric,omitempty" name:"Metric"`
 
 	// 指定查询域名列表
 	// 最多可一次性查询 30 个加速域名明细
-	Domains []*string `json:"Domains" name:"Domains" list`
+	Domains []*string `json:"Domains,omitempty" name:"Domains" list`
 
 	// 指定要查询的项目 ID，[前往查看项目 ID](https://console.cloud.tencent.com/project)
 	// 未填充域名情况下，指定项目查询，若填充了具体域名信息，以域名为主
-	Project *int64 `json:"Project" name:"Project"`
+	Project *int64 `json:"Project,omitempty" name:"Project"`
 
 	// 时间粒度，支持以下几种模式：
 	// min：1 分钟粒度，指定查询区间 24 小时内（含 24 小时），可返回 1 分钟粒度明细数据
 	// 5min：5 分钟粒度，指定查询区间 31 天内（含 31 天），可返回 5 分钟粒度明细数据
 	// hour：1 小时粒度，指定查询区间 31 天内（含 31 天），可返回 1 小时粒度明细数据
 	// day：天粒度，指定查询区间大于 31 天，可返回天粒度明细数据
-	Interval *string `json:"Interval" name:"Interval"`
+	Interval *string `json:"Interval,omitempty" name:"Interval"`
 
 	// 多域名查询时，默认（false)返回多个域名的汇总数据
 	// 可按需指定为 true，返回每一个 Domain 的明细数据（statusCode 指标暂不支持）
-	Detail *bool `json:"Detail" name:"Detail"`
+	Detail *bool `json:"Detail,omitempty" name:"Detail"`
 
 	// 指定运营商查询，不填充表示查询所有运营商
 	// 运营商编码可以查看 [运营商编码映射](https://cloud.tencent.com/document/product/228/6316#.E8.BF.90.E8.90.A5.E5.95.86.E6.98.A0.E5.B0.84)
-	Isp *int64 `json:"Isp" name:"Isp"`
+	Isp *int64 `json:"Isp,omitempty" name:"Isp"`
 
 	// 指定省份查询，不填充表示查询所有省份
 	// 省份编码可以查看 [省份编码映射](https://cloud.tencent.com/document/product/228/6316#.E7.9C.81.E4.BB.BD.E6.98.A0.E5.B0.84)
-	District *int64 `json:"District" name:"District"`
+	District *int64 `json:"District,omitempty" name:"District"`
 
 	// 指定协议查询，不填充表示查询所有协议
 	// all：所有协议
 	// http：指定查询 HTTP 对应指标
 	// https：指定查询 HTTPS 对应指标
-	Protocol *string `json:"Protocol" name:"Protocol"`
+	Protocol *string `json:"Protocol,omitempty" name:"Protocol"`
 
 	// 指定数据源查询，白名单功能
-	DataSource *string `json:"DataSource" name:"DataSource"`
+	DataSource *string `json:"DataSource,omitempty" name:"DataSource"`
 }
 
 func (r *DescribeCdnDataRequest) ToJsonString() string {
@@ -123,13 +123,13 @@ type DescribeCdnDataResponse struct {
 	// 5min：5 分钟粒度
 	// hour：1 小时粒度
 	// day：天粒度
-		Interval *string `json:"Interval" name:"Interval"`
+		Interval *string `json:"Interval,omitempty" name:"Interval"`
 
 		// 指定条件查询得到的数据明细
-		Data []*ResourceData `json:"Data" name:"Data" list`
+		Data []*ResourceData `json:"Data,omitempty" name:"Data" list`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId" name:"RequestId"`
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
 }
 
@@ -147,23 +147,23 @@ type DescribeIpVisitRequest struct {
 
 	// 查询起始时间，如：2018-09-04 10:40:10，返回结果大于等于指定时间
 	// 根据指定时间粒度不同，会进行向前归整，如 2018-09-04 10:40:10 在按 5 分钟的时间粒度查询时，返回的第一个数据对应时间点为 2018-09-04 10:40:00
-	StartTime *string `json:"StartTime" name:"StartTime"`
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
 
 	// 查询结束时间，如：2018-09-04 10:40:10，返回结果小于等于指定时间
 	// 根据指定时间粒度不同，会进行向前归整，如 2018-09-04 10:40:10 在按 5 分钟的时间粒度查询时，返回的最后一个数据对应时间点为 2018-09-04 10:40:00
-	EndTime *string `json:"EndTime" name:"EndTime"`
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 
 	// 指定查询域名列表，最多可一次性查询 30 个加速域名明细
-	Domains []*string `json:"Domains" name:"Domains" list`
+	Domains []*string `json:"Domains,omitempty" name:"Domains" list`
 
 	// 指定要查询的项目 ID，[前往查看项目 ID](https://console.cloud.tencent.com/project)
 	// 未填充域名情况下，指定项目查询，若填充了具体域名信息，以域名为主
-	Project *int64 `json:"Project" name:"Project"`
+	Project *int64 `json:"Project,omitempty" name:"Project"`
 
 	// 时间粒度，支持以下几种模式：
 	// 5min：5 分钟粒度，查询时间区间 24 小时内，默认返回 5 分钟粒度活跃用户数
 	// day：天粒度，查询时间区间大于 1 天时，默认返回天粒度活跃用户数
-	Interval *string `json:"Interval" name:"Interval"`
+	Interval *string `json:"Interval,omitempty" name:"Interval"`
 }
 
 func (r *DescribeIpVisitRequest) ToJsonString() string {
@@ -180,13 +180,13 @@ type DescribeIpVisitResponse struct {
 	Response *struct {
 
 		// 数据统计的时间粒度，支持5min,  day，分别表示5分钟，1天的时间粒度。
-		Interval *string `json:"Interval" name:"Interval"`
+		Interval *string `json:"Interval,omitempty" name:"Interval"`
 
 		// 各个资源的回源数据详情。
-		Data []*ResourceData `json:"Data" name:"Data" list`
+		Data []*ResourceData `json:"Data,omitempty" name:"Data" list`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId" name:"RequestId"`
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
 }
 
@@ -205,7 +205,7 @@ type DescribeMapInfoRequest struct {
 	// 映射查询类别：
 	// ips：运营商映射查询
 	// district：省份映射查询
-	Name *string `json:"Name" name:"Name"`
+	Name *string `json:"Name,omitempty" name:"Name"`
 }
 
 func (r *DescribeMapInfoRequest) ToJsonString() string {
@@ -222,10 +222,10 @@ type DescribeMapInfoResponse struct {
 	Response *struct {
 
 		// 映射关系数组。
-		MapInfoList []*MapInfo `json:"MapInfoList" name:"MapInfoList" list`
+		MapInfoList []*MapInfo `json:"MapInfoList,omitempty" name:"MapInfoList" list`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId" name:"RequestId"`
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
 }
 
@@ -244,12 +244,12 @@ type DescribeOriginDataRequest struct {
 	// 查询起始时间，如：2018-09-04 10:40:00，返回结果大于等于指定时间
 	// 根据指定时间粒度不同，会进行向前归整，如 2018-09-04 10:40:00 在按 1 小时的时间粒度查询时，返回的第一个数据对应时间点为 2018-09-04 10:00:00
 	// 起始时间与结束时间间隔小于等于 90 天
-	StartTime *string `json:"StartTime" name:"StartTime"`
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
 
 	// 查询结束时间，如：2018-09-04 10:40:00，返回结果小于等于指定时间
 	// 根据指定时间粒度不同，会进行向前归整，如 2018-09-04 10:40:00 在按 1 小时的时间粒度查询时，返回的最后一个数据对应时间点为 2018-09-04 10:00:00
 	// 起始时间与结束时间间隔小于等于 90 天
-	EndTime *string `json:"EndTime" name:"EndTime"`
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 
 	// 指定查询指标，支持的类型有：
 	// flux：回源流量，单位为 byte
@@ -263,25 +263,25 @@ type DescribeOriginDataRequest struct {
 	// 4XX：返回 4XX 回源状态码汇总及各 4 开头回源状态码数据，单位为 个
 	// 5XX：返回 5XX 回源状态码汇总及各 5 开头回源状态码数据，单位为 个
 	// 支持指定具体状态码查询，若未产生过，则返回为空
-	Metric *string `json:"Metric" name:"Metric"`
+	Metric *string `json:"Metric,omitempty" name:"Metric"`
 
 	// 指定查询域名列表，最多可一次性查询 30 个加速域名明细
-	Domains []*string `json:"Domains" name:"Domains" list`
+	Domains []*string `json:"Domains,omitempty" name:"Domains" list`
 
 	// 指定要查询的项目 ID，[前往查看项目 ID](https://console.cloud.tencent.com/project)
 	// 未填充域名情况下，指定项目查询，若填充了具体域名信息，以域名为主
-	Project *int64 `json:"Project" name:"Project"`
+	Project *int64 `json:"Project,omitempty" name:"Project"`
 
 	// 时间粒度，支持以下几种模式：
 	// min：1 分钟粒度，指定查询区间 24 小时内（含 24 小时），可返回 1 分钟粒度明细数据
 	// 5min：5 分钟粒度，指定查询区间 31 天内（含 31 天），可返回 5 分钟粒度明细数据
 	// hour：1 小时粒度，指定查询区间 31 天内（含 31 天），可返回 1 小时粒度明细数据
 	// day：天粒度，指定查询区间大于 31 天，可返回天粒度明细数据
-	Interval *string `json:"Interval" name:"Interval"`
+	Interval *string `json:"Interval,omitempty" name:"Interval"`
 
 	// Domains 传入多个时，默认（false)返回多个域名的汇总数据
 	// 可按需指定为 true，返回每一个 Domain 的明细数据（statusCode 指标暂不支持）
-	Detail *bool `json:"Detail" name:"Detail"`
+	Detail *bool `json:"Detail,omitempty" name:"Detail"`
 }
 
 func (r *DescribeOriginDataRequest) ToJsonString() string {
@@ -298,13 +298,13 @@ type DescribeOriginDataResponse struct {
 	Response *struct {
 
 		// 数据统计的时间粒度，支持min, 5min, hour, day，分别表示1分钟，5分钟，1小时和1天的时间粒度。
-		Interval *string `json:"Interval" name:"Interval"`
+		Interval *string `json:"Interval,omitempty" name:"Interval"`
 
 		// 各个资源的回源数据详情。
-		Data []*ResourceOriginData `json:"Data" name:"Data" list`
+		Data []*ResourceOriginData `json:"Data,omitempty" name:"Data" list`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId" name:"RequestId"`
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
 }
 
@@ -337,12 +337,12 @@ type DescribePayTypeResponse struct {
 		// 计费类型：
 	// flux：流量计费
 	// bandwidth：带宽计费
-		PayType *string `json:"PayType" name:"PayType"`
+		PayType *string `json:"PayType,omitempty" name:"PayType"`
 
 		// 计费周期：
 	// day：日结计费
 	// month：月结计费
-		BillingCycle *string `json:"BillingCycle" name:"BillingCycle"`
+		BillingCycle *string `json:"BillingCycle,omitempty" name:"BillingCycle"`
 
 		// 计费方式：
 	// monthMax：日峰值月平均计费，月结模式
@@ -350,10 +350,10 @@ type DescribePayTypeResponse struct {
 	// month95：月95带宽计费，月结模式
 	// sum：总流量计费，日结与月结均有流量计费模式
 	// max：峰值带宽计费，日结模式
-		StatType *string `json:"StatType" name:"StatType"`
+		StatType *string `json:"StatType,omitempty" name:"StatType"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId" name:"RequestId"`
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
 }
 
@@ -370,10 +370,10 @@ type ListTopDataRequest struct {
 	*tchttp.BaseRequest
 
 	// 查询起始日期，如：2018-09-09 00:00:00
-	StartTime *string `json:"StartTime" name:"StartTime"`
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
 
 	// 查询结束日期，如：2018-09-10 00:00:00
-	EndTime *string `json:"EndTime" name:"EndTime"`
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 
 	// 排序对象，支持以下几种形式：
 	// Url：访问 URL 排序，带参数统计，支持的 Filter 为 flux、request（白名单功能）
@@ -382,7 +382,7 @@ type ListTopDataRequest struct {
 	// Isp：运营商排序，支持的 Filter 为 flux、request
 	// Host：域名访问数据排序，支持的 Filter 为：flux, request, bandwidth, fluxHitRate, 2XX, 3XX, 4XX, 5XX，具体状态码统计
 	// originHost：域名回源数据排序，支持的 Filter 为 flux， request，bandwidth，origin_2XX，origin_3XX，oringin_4XX，origin_5XX，具体回源状态码统计
-	Metric *string `json:"Metric" name:"Metric"`
+	Metric *string `json:"Metric,omitempty" name:"Metric"`
 
 	// 排序使用的指标名称：
 	// flux：Metric 为 host 时指代访问流量，originHost 时指代回源流量
@@ -399,21 +399,21 @@ type ListTopDataRequest struct {
 	// origin_5XX：回源 5XX 状态码
 	// statusCode：指定访问状态码统计，在 Code 参数中填充指定状态码
 	// OriginStatusCode：指定回源状态码统计，在 Code 参数中填充指定状态码
-	Filter *string `json:"Filter" name:"Filter"`
+	Filter *string `json:"Filter,omitempty" name:"Filter"`
 
 	// 指定查询域名列表，最多可一次性查询 30 个加速域名明细
-	Domains []*string `json:"Domains" name:"Domains" list`
+	Domains []*string `json:"Domains,omitempty" name:"Domains" list`
 
 	// 指定要查询的项目 ID，[前往查看项目 ID](https://console.cloud.tencent.com/project)
 	// 未填充域名情况下，指定项目查询，若填充了具体域名信息，以域名为主
-	Project *int64 `json:"Project" name:"Project"`
+	Project *int64 `json:"Project,omitempty" name:"Project"`
 
 	// 多域名查询时，默认（false)返回所有域名汇总排序结果
 	// Metric 为 Url、Path、District、Isp，Filter 为 flux、reqeust 时，可设置为 true，返回每一个 Domain 的排序数据
-	Detail *bool `json:"Detail" name:"Detail"`
+	Detail *bool `json:"Detail,omitempty" name:"Detail"`
 
 	// Filter 为 statusCode、OriginStatusCode 时，填充指定状态码查询排序结果
-	Code *string `json:"Code" name:"Code"`
+	Code *string `json:"Code,omitempty" name:"Code"`
 }
 
 func (r *ListTopDataRequest) ToJsonString() string {
@@ -430,10 +430,10 @@ type ListTopDataResponse struct {
 	Response *struct {
 
 		// 各个资源的Top 访问数据详情。
-		Data []*TopData `json:"Data" name:"Data" list`
+		Data []*TopData `json:"Data,omitempty" name:"Data" list`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId" name:"RequestId"`
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
 }
 
@@ -449,10 +449,10 @@ func (r *ListTopDataResponse) FromJsonString(s string) error {
 type MapInfo struct {
 
 	// 对象 Id
-	Id *int64 `json:"Id" name:"Id"`
+	Id *int64 `json:"Id,omitempty" name:"Id"`
 
 	// 对象名称
-	Name *string `json:"Name" name:"Name"`
+	Name *string `json:"Name,omitempty" name:"Name"`
 }
 
 type ResourceData struct {
@@ -462,10 +462,10 @@ type ResourceData struct {
 	// multiDomains：表示多域名汇总明细数据
 	// 项目 ID：指定项目查询时，显示为项目 ID
 	// all：账号维度明细数据
-	Resource *string `json:"Resource" name:"Resource"`
+	Resource *string `json:"Resource,omitempty" name:"Resource"`
 
 	// 资源对应的数据明细
-	CdnData []*CdnData `json:"CdnData" name:"CdnData" list`
+	CdnData []*CdnData `json:"CdnData,omitempty" name:"CdnData" list`
 }
 
 type ResourceOriginData struct {
@@ -475,10 +475,10 @@ type ResourceOriginData struct {
 	// multiDomains：表示多域名汇总明细数据
 	// 项目 ID：指定项目查询时，显示为项目 ID
 	// all：账号维度明细数据
-	Resource *string `json:"Resource" name:"Resource"`
+	Resource *string `json:"Resource,omitempty" name:"Resource"`
 
 	// 回源数据详情
-	OriginData []*CdnData `json:"OriginData" name:"OriginData" list`
+	OriginData []*CdnData `json:"OriginData,omitempty" name:"OriginData" list`
 }
 
 type SummarizedData struct {
@@ -487,20 +487,20 @@ type SummarizedData struct {
 	// sum：累加求和
 	// max：最大值，带宽模式下，采用 5 分钟粒度汇总数据，计算峰值带宽
 	// avg：平均值
-	Name *string `json:"Name" name:"Name"`
+	Name *string `json:"Name,omitempty" name:"Name"`
 
 	// 汇总后的数据值
-	Value *float64 `json:"Value" name:"Value"`
+	Value *float64 `json:"Value,omitempty" name:"Value"`
 }
 
 type TimestampData struct {
 
 	// 数据统计时间点，采用向前汇总模式
 	// 以 5 分钟粒度为例，13:35:00 时间点代表的统计数据区间为 13:35:00 至 13:39:59
-	Time *string `json:"Time" name:"Time"`
+	Time *string `json:"Time,omitempty" name:"Time"`
 
 	// 数据值
-	Value *float64 `json:"Value" name:"Value"`
+	Value *float64 `json:"Value,omitempty" name:"Value"`
 }
 
 type TopData struct {
@@ -510,17 +510,17 @@ type TopData struct {
 	// multiDomains：表示多域名汇总明细数据
 	// 项目 ID：指定项目查询时，显示为项目 ID
 	// all：账号维度明细数据
-	Resource *string `json:"Resource" name:"Resource"`
+	Resource *string `json:"Resource,omitempty" name:"Resource"`
 
 	// 排序结果详情
-	DetailData []*TopDetailData `json:"DetailData" name:"DetailData" list`
+	DetailData []*TopDetailData `json:"DetailData,omitempty" name:"DetailData" list`
 }
 
 type TopDetailData struct {
 
 	// 数据类型的名称
-	Name *string `json:"Name" name:"Name"`
+	Name *string `json:"Name,omitempty" name:"Name"`
 
 	// 数据值
-	Value *float64 `json:"Value" name:"Value"`
+	Value *float64 `json:"Value,omitempty" name:"Value"`
 }

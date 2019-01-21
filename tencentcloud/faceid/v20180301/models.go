@@ -24,27 +24,27 @@ type DetectAuthRequest struct {
 	*tchttp.BaseRequest
 
 	// 用于细分客户使用场景，由腾讯侧在线下对接时分配。
-	RuleId *string `json:"RuleId" name:"RuleId"`
+	RuleId *string `json:"RuleId,omitempty" name:"RuleId"`
 
 	// 本接口不需要传递此参数。
-	TerminalType *string `json:"TerminalType" name:"TerminalType"`
+	TerminalType *string `json:"TerminalType,omitempty" name:"TerminalType"`
 
 	// 身份标识（与公安权威库比对时必须是身份证号）。
 	// 规则：a-zA-Z0-9组合。最长长度32位。
-	IdCard *string `json:"IdCard" name:"IdCard"`
+	IdCard *string `json:"IdCard,omitempty" name:"IdCard"`
 
 	// 姓名。最长长度32位。中文请使用UTF-8编码。
-	Name *string `json:"Name" name:"Name"`
+	Name *string `json:"Name,omitempty" name:"Name"`
 
 	// 认证结束后重定向的回调链接地址。最长长度1024位。
-	RedirectUrl *string `json:"RedirectUrl" name:"RedirectUrl"`
+	RedirectUrl *string `json:"RedirectUrl,omitempty" name:"RedirectUrl"`
 
 	// 透传字段，在获取验证结果时返回。
-	Extra *string `json:"Extra" name:"Extra"`
+	Extra *string `json:"Extra,omitempty" name:"Extra"`
 
 	// 用于人脸比对的照片，图片的BASE64值；
 	// BASE64编码后的图片数据大小不超过3M，仅支持jpg、png格式。
-	ImageBase64 *string `json:"ImageBase64" name:"ImageBase64"`
+	ImageBase64 *string `json:"ImageBase64,omitempty" name:"ImageBase64"`
 }
 
 func (r *DetectAuthRequest) ToJsonString() string {
@@ -61,14 +61,14 @@ type DetectAuthResponse struct {
 	Response *struct {
 
 		// 用于发起核身流程的URL，仅微信H5场景使用。
-		Url *string `json:"Url" name:"Url"`
+		Url *string `json:"Url,omitempty" name:"Url"`
 
 		// 一次核身流程的标识，有效时间为7,200秒；
 	// 完成核身后，可用该标识获取验证结果信息。
-		BizToken *string `json:"BizToken" name:"BizToken"`
+		BizToken *string `json:"BizToken,omitempty" name:"BizToken"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId" name:"RequestId"`
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
 }
 
@@ -99,10 +99,10 @@ type GetActionSequenceResponse struct {
 	Response *struct {
 
 		// 动作顺序(2,1 or 1,2) 。1代表张嘴，2代表闭眼。
-		ActionSequence *string `json:"ActionSequence" name:"ActionSequence"`
+		ActionSequence *string `json:"ActionSequence,omitempty" name:"ActionSequence"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId" name:"RequestId"`
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
 }
 
@@ -119,14 +119,14 @@ type GetDetectInfoRequest struct {
 	*tchttp.BaseRequest
 
 	// 人脸核身流程的标识，调用DetectAuth接口时生成。
-	BizToken *string `json:"BizToken" name:"BizToken"`
+	BizToken *string `json:"BizToken,omitempty" name:"BizToken"`
 
 	// 用于细分客户使用场景，由腾讯侧在线下对接时分配。
-	RuleId *string `json:"RuleId" name:"RuleId"`
+	RuleId *string `json:"RuleId,omitempty" name:"RuleId"`
 
 	// 指定拉取的结果信息，取值（0：全部；1：文本类；2：身份证正反面；3：视频最佳截图照片；4：视频）。
 	// 如 134表示拉取文本类、视频最佳截图照片、视频。
-	InfoType *string `json:"InfoType" name:"InfoType"`
+	InfoType *string `json:"InfoType,omitempty" name:"InfoType"`
 }
 
 func (r *GetDetectInfoRequest) ToJsonString() string {
@@ -181,10 +181,10 @@ type GetDetectInfoResponse struct {
 	//     "LivenessVideo": null
 	//   }
 	// }
-		DetectInfo *string `json:"DetectInfo" name:"DetectInfo"`
+		DetectInfo *string `json:"DetectInfo,omitempty" name:"DetectInfo"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId" name:"RequestId"`
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
 }
 
@@ -215,10 +215,10 @@ type GetLiveCodeResponse struct {
 	Response *struct {
 
 		// 数字验证码，如：1234
-		LiveCode *string `json:"LiveCode" name:"LiveCode"`
+		LiveCode *string `json:"LiveCode,omitempty" name:"LiveCode"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId" name:"RequestId"`
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
 }
 
@@ -235,17 +235,17 @@ type ImageRecognitionRequest struct {
 	*tchttp.BaseRequest
 
 	// 身份证号
-	IdCard *string `json:"IdCard" name:"IdCard"`
+	IdCard *string `json:"IdCard,omitempty" name:"IdCard"`
 
 	// 姓名。中文请使用UTF-8编码。
-	Name *string `json:"Name" name:"Name"`
+	Name *string `json:"Name,omitempty" name:"Name"`
 
 	// 用于人脸比对的照片，图片的BASE64值；
 	// BASE64编码后的图片数据大小不超过3M，仅支持jpg、png格式。
-	ImageBase64 *string `json:"ImageBase64" name:"ImageBase64"`
+	ImageBase64 *string `json:"ImageBase64,omitempty" name:"ImageBase64"`
 
 	// 本接口不需要传递此参数。
-	Optional *string `json:"Optional" name:"Optional"`
+	Optional *string `json:"Optional,omitempty" name:"Optional"`
 }
 
 func (r *ImageRecognitionRequest) ToJsonString() string {
@@ -262,10 +262,16 @@ type ImageRecognitionResponse struct {
 	Response *struct {
 
 		// 相似度，取值范围 [0.00, 100.00]。推荐相似度大于等于70时可判断为同一人，可根据具体场景自行调整阈值（阈值70的误通过率为千分之一，阈值80的误通过率是万分之一）
-		Sim *float64 `json:"Sim" name:"Sim"`
+		Sim *float64 `json:"Sim,omitempty" name:"Sim"`
+
+		// 业务错误码，成功情况返回Success, 错误情况请参考下方错误码 列表中FailedOperation部分
+		Result *string `json:"Result,omitempty" name:"Result"`
+
+		// 业务错误描述
+		Description *string `json:"Description,omitempty" name:"Description"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId" name:"RequestId"`
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
 }
 
@@ -283,23 +289,23 @@ type LivenessCompareRequest struct {
 
 	// 用于人脸比对的照片，图片的BASE64值；
 	// BASE64编码后的图片数据大小不超过3M，仅支持jpg、png格式。
-	ImageBase64 *string `json:"ImageBase64" name:"ImageBase64"`
+	ImageBase64 *string `json:"ImageBase64,omitempty" name:"ImageBase64"`
 
 	// 用于活体检测的视频，视频的BASE64值；
 	// BASE64编码后的大小不超过5M，支持mp4、avi、flv格式。
-	VideoBase64 *string `json:"VideoBase64" name:"VideoBase64"`
+	VideoBase64 *string `json:"VideoBase64,omitempty" name:"VideoBase64"`
 
 	// 活体检测类型，取值：LIP/ACTION/SILENT。
 	// LIP为数字模式，ACTION为动作模式，SILENT为静默模式，三种模式选择一种传入。
-	LivenessType *string `json:"LivenessType" name:"LivenessType"`
+	LivenessType *string `json:"LivenessType,omitempty" name:"LivenessType"`
 
 	// 数字模式传参：数字验证码(1234)，需先调用接口获取数字验证码；
 	// 动作模式传参：传动作顺序(2,1 or 1,2)，需先调用接口获取动作顺序；
 	// 静默模式传参：空。
-	ValidateData *string `json:"ValidateData" name:"ValidateData"`
+	ValidateData *string `json:"ValidateData,omitempty" name:"ValidateData"`
 
 	// 本接口不需要传递此参数。
-	Optional *string `json:"Optional" name:"Optional"`
+	Optional *string `json:"Optional,omitempty" name:"Optional"`
 }
 
 func (r *LivenessCompareRequest) ToJsonString() string {
@@ -316,13 +322,19 @@ type LivenessCompareResponse struct {
 	Response *struct {
 
 		// 验证通过后的视频最佳截图照片，照片为BASE64编码后的值，jpg格式。
-		BestFrameBase64 *string `json:"BestFrameBase64" name:"BestFrameBase64"`
+		BestFrameBase64 *string `json:"BestFrameBase64,omitempty" name:"BestFrameBase64"`
 
 		// 相似度，取值范围 [0.00, 100.00]。推荐相似度大于等于70时可判断为同一人，可根据具体场景自行调整阈值（阈值70的误通过率为千分之一，阈值80的误通过率是万分之一）。
-		Sim *float64 `json:"Sim" name:"Sim"`
+		Sim *float64 `json:"Sim,omitempty" name:"Sim"`
+
+		// 业务错误码，成功情况返回Success, 错误情况请参考下方错误码 列表中FailedOperation部分
+		Result *string `json:"Result,omitempty" name:"Result"`
+
+		// 业务错误描述
+		Description *string `json:"Description,omitempty" name:"Description"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId" name:"RequestId"`
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
 }
 
@@ -339,26 +351,26 @@ type LivenessRecognitionRequest struct {
 	*tchttp.BaseRequest
 
 	// 身份证号
-	IdCard *string `json:"IdCard" name:"IdCard"`
+	IdCard *string `json:"IdCard,omitempty" name:"IdCard"`
 
 	// 姓名。中文请使用UTF-8编码。
-	Name *string `json:"Name" name:"Name"`
+	Name *string `json:"Name,omitempty" name:"Name"`
 
 	// 用于活体检测的视频，视频的BASE64值；
 	// BASE64编码后的大小不超过5M，支持mp4、avi、flv格式。
-	VideoBase64 *string `json:"VideoBase64" name:"VideoBase64"`
+	VideoBase64 *string `json:"VideoBase64,omitempty" name:"VideoBase64"`
 
 	// 活体检测类型，取值：LIP/ACTION/SILENT。
 	// LIP为数字模式，ACTION为动作模式，SILENT为静默模式，三种模式选择一种传入。
-	LivenessType *string `json:"LivenessType" name:"LivenessType"`
+	LivenessType *string `json:"LivenessType,omitempty" name:"LivenessType"`
 
 	// 数字模式传参：数字验证码(1234)，需先调用接口获取数字验证码；
 	// 动作模式传参：传动作顺序(2,1 or 1,2)，需先调用接口获取动作顺序；
 	// 静默模式传参：空。
-	ValidateData *string `json:"ValidateData" name:"ValidateData"`
+	ValidateData *string `json:"ValidateData,omitempty" name:"ValidateData"`
 
 	// 本接口不需要传递此参数。
-	Optional *string `json:"Optional" name:"Optional"`
+	Optional *string `json:"Optional,omitempty" name:"Optional"`
 }
 
 func (r *LivenessRecognitionRequest) ToJsonString() string {
@@ -375,13 +387,19 @@ type LivenessRecognitionResponse struct {
 	Response *struct {
 
 		// 验证通过后的视频最佳截图照片，照片为BASE64编码后的值，jpg格式。
-		BestFrameBase64 *string `json:"BestFrameBase64" name:"BestFrameBase64"`
+		BestFrameBase64 *string `json:"BestFrameBase64,omitempty" name:"BestFrameBase64"`
 
 		// 相似度，取值范围 [0.00, 100.00]。推荐相似度大于等于70时可判断为同一人，可根据具体场景自行调整阈值（阈值70的误通过率为千分之一，阈值80的误通过率是万分之一）
-		Sim *float64 `json:"Sim" name:"Sim"`
+		Sim *float64 `json:"Sim,omitempty" name:"Sim"`
+
+		// 业务错误码，成功情况返回Success, 错误情况请参考下方错误码 列表中FailedOperation部分
+		Result *string `json:"Result,omitempty" name:"Result"`
+
+		// 业务错误描述
+		Description *string `json:"Description,omitempty" name:"Description"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId" name:"RequestId"`
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
 }
 

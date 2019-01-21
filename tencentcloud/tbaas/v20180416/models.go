@@ -24,25 +24,25 @@ type GetInvokeTxRequest struct {
 	*tchttp.BaseRequest
 
 	// 模块名，固定字段：transaction
-	Module *string `json:"Module" name:"Module"`
+	Module *string `json:"Module,omitempty" name:"Module"`
 
 	// 操作名，固定字段：query_txid
-	Operation *string `json:"Operation" name:"Operation"`
+	Operation *string `json:"Operation,omitempty" name:"Operation"`
 
 	// 区块链网络ID，可在区块链网络详情或列表中获取
-	ClusterId *string `json:"ClusterId" name:"ClusterId"`
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
 
 	// 业务所属通道名称，可在通道详情或列表中获取
-	ChannelName *string `json:"ChannelName" name:"ChannelName"`
+	ChannelName *string `json:"ChannelName,omitempty" name:"ChannelName"`
 
 	// 执行该查询交易的节点名称，可以在通道详情中获取该通道上的节点名称极其所属组织名称
-	PeerName *string `json:"PeerName" name:"PeerName"`
+	PeerName *string `json:"PeerName,omitempty" name:"PeerName"`
 
 	// 执行该查询交易的节点所属组织名称，可以在通道详情中获取该通道上的节点名称极其所属组织名称
-	PeerGroup *string `json:"PeerGroup" name:"PeerGroup"`
+	PeerGroup *string `json:"PeerGroup,omitempty" name:"PeerGroup"`
 
 	// 事务ID
-	TxId *string `json:"TxId" name:"TxId"`
+	TxId *string `json:"TxId,omitempty" name:"TxId"`
 }
 
 func (r *GetInvokeTxRequest) ToJsonString() string {
@@ -59,13 +59,13 @@ type GetInvokeTxResponse struct {
 	Response *struct {
 
 		// 状态码
-		TxValidationCode *int64 `json:"TxValidationCode" name:"TxValidationCode"`
+		TxValidationCode *int64 `json:"TxValidationCode,omitempty" name:"TxValidationCode"`
 
 		// 消息
-		TxValidationMsg *string `json:"TxValidationMsg" name:"TxValidationMsg"`
+		TxValidationMsg *string `json:"TxValidationMsg,omitempty" name:"TxValidationMsg"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId" name:"RequestId"`
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
 }
 
@@ -82,31 +82,31 @@ type InvokeRequest struct {
 	*tchttp.BaseRequest
 
 	// 模块名，固定字段：transaction
-	Module *string `json:"Module" name:"Module"`
+	Module *string `json:"Module,omitempty" name:"Module"`
 
 	// 操作名，固定字段：invoke
-	Operation *string `json:"Operation" name:"Operation"`
+	Operation *string `json:"Operation,omitempty" name:"Operation"`
 
 	// 区块链网络ID，可在区块链网络详情或列表中获取
-	ClusterId *string `json:"ClusterId" name:"ClusterId"`
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
 
 	// 业务所属智能合约名称，可在智能合约详情或列表中获取
-	ChaincodeName *string `json:"ChaincodeName" name:"ChaincodeName"`
+	ChaincodeName *string `json:"ChaincodeName,omitempty" name:"ChaincodeName"`
 
 	// 业务所属通道名称，可在通道详情或列表中获取
-	ChannelName *string `json:"ChannelName" name:"ChannelName"`
+	ChannelName *string `json:"ChannelName,omitempty" name:"ChannelName"`
 
 	// 对该笔交易进行背书的节点列表（包括节点名称和节点所属组织名称，详见数据结构一节），可以在通道详情中获取该通道上的节点名称极其所属组织名称
-	Peers []*PeerSet `json:"Peers" name:"Peers" list`
+	Peers []*PeerSet `json:"Peers,omitempty" name:"Peers" list`
 
 	// 该笔交易需要调用的智能合约中的函数名称
-	FuncName *string `json:"FuncName" name:"FuncName"`
+	FuncName *string `json:"FuncName,omitempty" name:"FuncName"`
 
 	// 被调用的函数参数列表
-	Args []*string `json:"Args" name:"Args" list`
+	Args []*string `json:"Args,omitempty" name:"Args" list`
 
 	// 同步调用标识，可选参数，值为0或者不传表示使用同步方法调用，调用后会等待交易执行后再返回执行结果；值为1时表示使用异步方式调用Invoke，执行后会立即返回交易对应的Txid，后续需要通过GetInvokeTx这个API查询该交易的执行结果。（对于逻辑较为简单的交易，可以使用同步模式；对于逻辑较为复杂的交易，建议使用异步模式，否则容易导致API因等待时间过长，返回等待超时）
-	AsyncFlag *uint64 `json:"AsyncFlag" name:"AsyncFlag"`
+	AsyncFlag *uint64 `json:"AsyncFlag,omitempty" name:"AsyncFlag"`
 }
 
 func (r *InvokeRequest) ToJsonString() string {
@@ -123,13 +123,13 @@ type InvokeResponse struct {
 	Response *struct {
 
 		// 交易编号
-		Txid *string `json:"Txid" name:"Txid"`
+		Txid *string `json:"Txid,omitempty" name:"Txid"`
 
 		// 交易执行结果
-		Events *string `json:"Events" name:"Events"`
+		Events *string `json:"Events,omitempty" name:"Events"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId" name:"RequestId"`
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
 }
 
@@ -145,38 +145,38 @@ func (r *InvokeResponse) FromJsonString(s string) error {
 type PeerSet struct {
 
 	// 节点名称
-	PeerName *string `json:"PeerName" name:"PeerName"`
+	PeerName *string `json:"PeerName,omitempty" name:"PeerName"`
 
 	// 组织名称
-	OrgName *string `json:"OrgName" name:"OrgName"`
+	OrgName *string `json:"OrgName,omitempty" name:"OrgName"`
 }
 
 type QueryRequest struct {
 	*tchttp.BaseRequest
 
 	// 模块名，固定字段：transaction
-	Module *string `json:"Module" name:"Module"`
+	Module *string `json:"Module,omitempty" name:"Module"`
 
 	// 操作名，固定字段：query
-	Operation *string `json:"Operation" name:"Operation"`
+	Operation *string `json:"Operation,omitempty" name:"Operation"`
 
 	// 区块链网络ID，可在区块链网络详情或列表中获取
-	ClusterId *string `json:"ClusterId" name:"ClusterId"`
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
 
 	// 业务所属智能合约名称，可在智能合约详情或列表中获取
-	ChaincodeName *string `json:"ChaincodeName" name:"ChaincodeName"`
+	ChaincodeName *string `json:"ChaincodeName,omitempty" name:"ChaincodeName"`
 
 	// 业务所属通道名称，可在通道详情或列表中获取
-	ChannelName *string `json:"ChannelName" name:"ChannelName"`
+	ChannelName *string `json:"ChannelName,omitempty" name:"ChannelName"`
 
 	// 执行该查询交易的节点列表（包括节点名称和节点所属组织名称，详见数据结构一节），可以在通道详情中获取该通道上的节点名称极其所属组织名称
-	Peers []*PeerSet `json:"Peers" name:"Peers" list`
+	Peers []*PeerSet `json:"Peers,omitempty" name:"Peers" list`
 
 	// 该笔交易查询需要调用的智能合约中的函数名称
-	FuncName *string `json:"FuncName" name:"FuncName"`
+	FuncName *string `json:"FuncName,omitempty" name:"FuncName"`
 
 	// 被调用的函数参数列表
-	Args []*string `json:"Args" name:"Args" list`
+	Args []*string `json:"Args,omitempty" name:"Args" list`
 }
 
 func (r *QueryRequest) ToJsonString() string {
@@ -193,10 +193,10 @@ type QueryResponse struct {
 	Response *struct {
 
 		// 查询结果数据
-		Data []*string `json:"Data" name:"Data" list`
+		Data []*string `json:"Data,omitempty" name:"Data" list`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId" name:"RequestId"`
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
 }
 

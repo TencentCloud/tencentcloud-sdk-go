@@ -92,3 +92,28 @@ func (c *Client) TransmitOralProcess(request *TransmitOralProcessRequest) (respo
     err = c.Send(request, response)
     return
 }
+
+func NewTransmitOralProcessWithInitRequest() (request *TransmitOralProcessWithInitRequest) {
+    request = &TransmitOralProcessWithInitRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("soe", APIVersion, "TransmitOralProcessWithInit")
+    return
+}
+
+func NewTransmitOralProcessWithInitResponse() (response *TransmitOralProcessWithInitResponse) {
+    response = &TransmitOralProcessWithInitResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 初始化并传输音频数据，分片传输时，尽量保证SeqId顺序传输。音频源目前仅支持16k采样率16bit单声道编码方式，如有不一致可能导致评估不准确或失败。
+func (c *Client) TransmitOralProcessWithInit(request *TransmitOralProcessWithInitRequest) (response *TransmitOralProcessWithInitResponse, err error) {
+    if request == nil {
+        request = NewTransmitOralProcessWithInitRequest()
+    }
+    response = NewTransmitOralProcessWithInitResponse()
+    err = c.Send(request, response)
+    return
+}

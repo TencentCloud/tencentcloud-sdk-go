@@ -233,6 +233,54 @@ func (c *Client) DescribeMediaInfos(request *DescribeMediaInfosRequest) (respons
     return
 }
 
+func NewLiveRealTimeClipRequest() (request *LiveRealTimeClipRequest) {
+    request = &LiveRealTimeClipRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vod", APIVersion, "LiveRealTimeClip")
+    return
+}
+
+func NewLiveRealTimeClipResponse() (response *LiveRealTimeClipResponse) {
+    response = &LiveRealTimeClipResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 直播即时剪辑，是指在直播过程中（即直播尚未结束时），客户可以在过往直播内容中选择一段，实时生成一个新的视频（HLS 格式），开发者可以将其立即分享出去，或者长久保存起来。
+// 
+// 腾讯云点播支持两种即时剪辑模式：
+// - 剪辑固化：将剪辑出来的视频保存成独立的视频，拥有独立 FileId；适用于将精彩片段**长久保存**的场景；
+// - 剪辑不固化：剪辑得到的视频附属于直播录制文件，没有独立 FileId；适用于将精彩片段**临时分享**的场景。
+// 
+// 注意：
+// - 使用直播即时剪辑功能的前提是：目标直播流开启了[时移回看](https://cloud.tencent.com/document/product/267/18472)功能。
+// - 直播即时剪辑是基于直播录制生成的 m3u8 文件进行的，故而其最小剪辑精度为一个 ts 切片，无法实现秒级或者更为精确的剪辑精度。
+// 
+// 
+// ### 剪辑固化
+// 所谓剪辑固化，是指将剪辑出来的视频是保存成一个独立的视频（拥有独立的 FileId）。其生命周期不受原始直播录制视频影响（即使原始录制视频被删除，剪辑结果也不会受到任何影响）；也可以对其进行转码、微信发布等二次处理。
+// 
+// 举例如下：一场完整的足球比赛，直播录制出来的原始视频可能长达 2 个小时，客户出于节省成本的目的可以对这个视频存储 2 个月，但对于直播即时剪辑的「精彩时刻」视频却可以指定存储更长时间，同时可以单独对「精彩时刻」视频进行转码、微信发布等额外的点播操作，这时候可以选择直播即时剪辑并且固化的方案。
+// 
+// 剪辑固化的优势在于其生命周期与原始录制视频相互独立，可以独立管理、长久保存。
+// 
+// ### 剪辑不固化
+// 所谓剪辑不固化，是指剪辑所得到的结果（m3u8 文件）与直播录制视频共享相同的 ts 分片，新生成的视频不是一个独立完整的视频（没有独立 FileId，只有播放 URL），其有效期与直播录制的完整视频有效期是一致的。一旦直播录制出来的视频被删除，也会导致该片段无法播放。
+// 
+// 剪辑不固化，由于其剪辑结果不是一个独立的视频，因而也不会纳入点播媒资视频管理（比如控制台的视频总数不会统计这一片段）中，也无法单独针对这个片段做转码、微信发布等任何视频处理操作。
+// 
+// 剪辑不固化的优势在于其剪辑操作十分“轻量化”，不会产生额外的存储开销。但其不足之处在于生命周期与原始录制视频相同，且无法进一步进行转码等视频处理。
+func (c *Client) LiveRealTimeClip(request *LiveRealTimeClipRequest) (response *LiveRealTimeClipResponse, err error) {
+    if request == nil {
+        request = NewLiveRealTimeClipRequest()
+    }
+    response = NewLiveRealTimeClipResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyClassRequest() (request *ModifyClassRequest) {
     request = &ModifyClassRequest{
         BaseRequest: &tchttp.BaseRequest{},

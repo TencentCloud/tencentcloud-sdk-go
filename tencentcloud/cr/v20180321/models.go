@@ -24,13 +24,13 @@ type ApplyBlackListRequest struct {
 	*tchttp.BaseRequest
 
 	// 模块
-	Module *string `json:"Module" name:"Module"`
+	Module *string `json:"Module,omitempty" name:"Module"`
 
 	// 操作
-	Operation *string `json:"Operation" name:"Operation"`
+	Operation *string `json:"Operation,omitempty" name:"Operation"`
 
 	// 黑名单列表
-	BlackList []*SingleBlackApply `json:"BlackList" name:"BlackList" list`
+	BlackList []*SingleBlackApply `json:"BlackList,omitempty" name:"BlackList" list`
 }
 
 func (r *ApplyBlackListRequest) ToJsonString() string {
@@ -47,7 +47,7 @@ type ApplyBlackListResponse struct {
 	Response *struct {
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId" name:"RequestId"`
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
 }
 
@@ -64,31 +64,31 @@ type DescribeRecordsRequest struct {
 	*tchttp.BaseRequest
 
 	// 模块
-	Module *string `json:"Module" name:"Module"`
+	Module *string `json:"Module,omitempty" name:"Module"`
 
 	// 操作
-	Operation *string `json:"Operation" name:"Operation"`
+	Operation *string `json:"Operation,omitempty" name:"Operation"`
 
 	// 产品ID
-	ProductId *string `json:"ProductId" name:"ProductId"`
+	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
 
 	// 案件编号
-	AccountNum *string `json:"AccountNum" name:"AccountNum"`
+	AccountNum *string `json:"AccountNum,omitempty" name:"AccountNum"`
 
 	// 被叫号码
-	CalledPhone *string `json:"CalledPhone" name:"CalledPhone"`
+	CalledPhone *string `json:"CalledPhone,omitempty" name:"CalledPhone"`
 
 	// 查询起始日期
-	StartBizDate *string `json:"StartBizDate" name:"StartBizDate"`
+	StartBizDate *string `json:"StartBizDate,omitempty" name:"StartBizDate"`
 
 	// 查询结束日期
-	EndBizDate *string `json:"EndBizDate" name:"EndBizDate"`
+	EndBizDate *string `json:"EndBizDate,omitempty" name:"EndBizDate"`
 
 	// 分页参数，索引，从0开始
-	Offset *string `json:"Offset" name:"Offset"`
+	Offset *string `json:"Offset,omitempty" name:"Offset"`
 
 	// 分页参数，页长
-	Limit *string `json:"Limit" name:"Limit"`
+	Limit *string `json:"Limit,omitempty" name:"Limit"`
 }
 
 func (r *DescribeRecordsRequest) ToJsonString() string {
@@ -105,13 +105,13 @@ type DescribeRecordsResponse struct {
 	Response *struct {
 
 		// 录音列表。
-		RecordList []*SingleRecord `json:"RecordList" name:"RecordList" list`
+		RecordList []*SingleRecord `json:"RecordList,omitempty" name:"RecordList" list`
 
 		// 录音总量。
-		TotalCount *int64 `json:"TotalCount" name:"TotalCount"`
+		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId" name:"RequestId"`
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
 }
 
@@ -128,13 +128,13 @@ type DescribeTaskStatusRequest struct {
 	*tchttp.BaseRequest
 
 	// 模块名
-	Module *string `json:"Module" name:"Module"`
+	Module *string `json:"Module,omitempty" name:"Module"`
 
 	// 操作名
-	Operation *string `json:"Operation" name:"Operation"`
+	Operation *string `json:"Operation,omitempty" name:"Operation"`
 
 	// 任务ID，形如abc-a0b1c2xyz
-	TaskId *string `json:"TaskId" name:"TaskId"`
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
 }
 
 func (r *DescribeTaskStatusRequest) ToJsonString() string {
@@ -151,13 +151,13 @@ type DescribeTaskStatusResponse struct {
 	Response *struct {
 
 		// 任务结果
-		TaskResult *string `json:"TaskResult" name:"TaskResult"`
+		TaskResult *string `json:"TaskResult,omitempty" name:"TaskResult"`
 
 		// 任务类型，001为报告下载，002为数据上传，003为还款数据上传。
-		TaskType *string `json:"TaskType" name:"TaskType"`
+		TaskType *string `json:"TaskType,omitempty" name:"TaskType"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId" name:"RequestId"`
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
 }
 
@@ -174,13 +174,13 @@ type DownloadReportRequest struct {
 	*tchttp.BaseRequest
 
 	// 模块名
-	Module *string `json:"Module" name:"Module"`
+	Module *string `json:"Module,omitempty" name:"Module"`
 
 	// 操作名
-	Operation *string `json:"Operation" name:"Operation"`
+	Operation *string `json:"Operation,omitempty" name:"Operation"`
 
 	// 报告日期
-	ReportDate *string `json:"ReportDate" name:"ReportDate"`
+	ReportDate *string `json:"ReportDate,omitempty" name:"ReportDate"`
 }
 
 func (r *DownloadReportRequest) ToJsonString() string {
@@ -197,16 +197,16 @@ type DownloadReportResponse struct {
 	Response *struct {
 
 		// 日报下载地址
-		DailyReportUrl *string `json:"DailyReportUrl" name:"DailyReportUrl"`
+		DailyReportUrl *string `json:"DailyReportUrl,omitempty" name:"DailyReportUrl"`
 
 		// 结果下载地址
-		ResultReportUrl *string `json:"ResultReportUrl" name:"ResultReportUrl"`
+		ResultReportUrl *string `json:"ResultReportUrl,omitempty" name:"ResultReportUrl"`
 
 		// 明细下载地址
-		DetailReportUrl *string `json:"DetailReportUrl" name:"DetailReportUrl"`
+		DetailReportUrl *string `json:"DetailReportUrl,omitempty" name:"DetailReportUrl"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId" name:"RequestId"`
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
 }
 
@@ -222,65 +222,65 @@ func (r *DownloadReportResponse) FromJsonString(s string) error {
 type SingleBlackApply struct {
 
 	// 黑名单类型，01代表手机号码。
-	BlackType *string `json:"BlackType" name:"BlackType"`
+	BlackType *string `json:"BlackType,omitempty" name:"BlackType"`
 
 	// 操作类型，A为新增，D为删除。
-	OperationType *string `json:"OperationType" name:"OperationType"`
+	OperationType *string `json:"OperationType,omitempty" name:"OperationType"`
 
 	// 黑名单值，BlackType为01时，填写11位手机号码。
-	BlackValue *string `json:"BlackValue" name:"BlackValue"`
+	BlackValue *string `json:"BlackValue,omitempty" name:"BlackValue"`
 
 	// 备注。
-	BlackDescription *string `json:"BlackDescription" name:"BlackDescription"`
+	BlackDescription *string `json:"BlackDescription,omitempty" name:"BlackDescription"`
 }
 
 type SingleRecord struct {
 
 	// 案件编号。
-	AccountNum *string `json:"AccountNum" name:"AccountNum"`
+	AccountNum *string `json:"AccountNum,omitempty" name:"AccountNum"`
 
 	// 外呼日期。
-	BizDate *string `json:"BizDate" name:"BizDate"`
+	BizDate *string `json:"BizDate,omitempty" name:"BizDate"`
 
 	// 开始呼叫时间。
-	CallStartTime *string `json:"CallStartTime" name:"CallStartTime"`
+	CallStartTime *string `json:"CallStartTime,omitempty" name:"CallStartTime"`
 
 	// 主叫号码。
-	CallerPhone *string `json:"CallerPhone" name:"CallerPhone"`
+	CallerPhone *string `json:"CallerPhone,omitempty" name:"CallerPhone"`
 
 	// 呼叫方向，O为呼出，I为呼入。
-	Direction *string `json:"Direction" name:"Direction"`
+	Direction *string `json:"Direction,omitempty" name:"Direction"`
 
 	// 通话时长。
-	Duration *int64 `json:"Duration" name:"Duration"`
+	Duration *int64 `json:"Duration,omitempty" name:"Duration"`
 
 	// 产品ID。
-	ProductId *string `json:"ProductId" name:"ProductId"`
+	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
 
 	// 录音下载链接。
-	RecordCosUrl *string `json:"RecordCosUrl" name:"RecordCosUrl"`
+	RecordCosUrl *string `json:"RecordCosUrl,omitempty" name:"RecordCosUrl"`
 }
 
 type UploadDataFileRequest struct {
 	*tchttp.BaseRequest
 
 	// 模块名
-	Module *string `json:"Module" name:"Module"`
+	Module *string `json:"Module,omitempty" name:"Module"`
 
 	// 操作名
-	Operation *string `json:"Operation" name:"Operation"`
+	Operation *string `json:"Operation,omitempty" name:"Operation"`
 
 	// 文件名
-	FileName *string `json:"FileName" name:"FileName"`
+	FileName *string `json:"FileName,omitempty" name:"FileName"`
 
 	// 上传类型，不填默认催收文件，催收文件为data，还款文件为repay。
-	UploadModel *string `json:"UploadModel" name:"UploadModel"`
+	UploadModel *string `json:"UploadModel,omitempty" name:"UploadModel"`
 
 	// 文件，文件与文件地址上传只可选用一种，必须使用multipart/form-data协议来上传二进制流文件，建议使用xlsx格式，大小不超过5MB。
-	File *binary `json:"File" name:"File"`
+	File *binary `json:"File,omitempty" name:"File"`
 
 	// 文件上传地址，文件与文件地址上传只可选用一种，大小不超过50MB。
-	FileUrl *string `json:"FileUrl" name:"FileUrl"`
+	FileUrl *string `json:"FileUrl,omitempty" name:"FileUrl"`
 }
 
 func (r *UploadDataFileRequest) ToJsonString() string {
@@ -297,10 +297,10 @@ type UploadDataFileResponse struct {
 	Response *struct {
 
 		// 数据ID
-		DataResId *string `json:"DataResId" name:"DataResId"`
+		DataResId *string `json:"DataResId,omitempty" name:"DataResId"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId" name:"RequestId"`
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
 }
 
@@ -317,19 +317,19 @@ type UploadFileRequest struct {
 	*tchttp.BaseRequest
 
 	// 模块名
-	Module *string `json:"Module" name:"Module"`
+	Module *string `json:"Module,omitempty" name:"Module"`
 
 	// 操作名
-	Operation *string `json:"Operation" name:"Operation"`
+	Operation *string `json:"Operation,omitempty" name:"Operation"`
 
 	// 文件上传地址，要求地址协议为HTTPS，且URL端口必须为443
-	FileUrl *string `json:"FileUrl" name:"FileUrl"`
+	FileUrl *string `json:"FileUrl,omitempty" name:"FileUrl"`
 
 	// 文件名
-	FileName *string `json:"FileName" name:"FileName"`
+	FileName *string `json:"FileName,omitempty" name:"FileName"`
 
 	// 文件日期
-	FileDate *string `json:"FileDate" name:"FileDate"`
+	FileDate *string `json:"FileDate,omitempty" name:"FileDate"`
 }
 
 func (r *UploadFileRequest) ToJsonString() string {
@@ -346,10 +346,10 @@ type UploadFileResponse struct {
 	Response *struct {
 
 		// 任务ID
-		TaskId *int64 `json:"TaskId" name:"TaskId"`
+		TaskId *int64 `json:"TaskId,omitempty" name:"TaskId"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId" name:"RequestId"`
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
 }
 

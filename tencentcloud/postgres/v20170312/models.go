@@ -23,29 +23,29 @@ import (
 type AccountInfo struct {
 
 	// 实例ID，形如postgres-lnp6j617
-	DBInstanceId *string `json:"DBInstanceId" name:"DBInstanceId"`
+	DBInstanceId *string `json:"DBInstanceId,omitempty" name:"DBInstanceId"`
 
 	// 帐号
-	UserName *string `json:"UserName" name:"UserName"`
+	UserName *string `json:"UserName,omitempty" name:"UserName"`
 
 	// 帐号备注
-	Remark *string `json:"Remark" name:"Remark"`
+	Remark *string `json:"Remark,omitempty" name:"Remark"`
 
 	// 帐号状态。 1-创建中，2-正常，3-修改中，4-密码重置中，-1-删除中
-	Status *int64 `json:"Status" name:"Status"`
+	Status *int64 `json:"Status,omitempty" name:"Status"`
 
 	// 帐号创建时间
-	CreateTime *string `json:"CreateTime" name:"CreateTime"`
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
 
 	// 帐号最后一次更新时间
-	UpdateTime *string `json:"UpdateTime" name:"UpdateTime"`
+	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
 }
 
 type CloseDBExtranetAccessRequest struct {
 	*tchttp.BaseRequest
 
 	// 实例ID，形如postgres-6r233v55
-	DBInstanceId *string `json:"DBInstanceId" name:"DBInstanceId"`
+	DBInstanceId *string `json:"DBInstanceId,omitempty" name:"DBInstanceId"`
 }
 
 func (r *CloseDBExtranetAccessRequest) ToJsonString() string {
@@ -62,10 +62,10 @@ type CloseDBExtranetAccessResponse struct {
 	Response *struct {
 
 		// 异步任务流程ID
-		FlowId *int64 `json:"FlowId" name:"FlowId"`
+		FlowId *int64 `json:"FlowId,omitempty" name:"FlowId"`
 
 		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
-		RequestId *string `json:"RequestId" name:"RequestId"`
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
 }
 
@@ -82,40 +82,40 @@ type CreateDBInstancesRequest struct {
 	*tchttp.BaseRequest
 
 	// 售卖规格ID。该参数可以通过调用DescribeProductConfig的返回值中的SpecCode字段来获取。
-	SpecCode *string `json:"SpecCode" name:"SpecCode"`
+	SpecCode *string `json:"SpecCode,omitempty" name:"SpecCode"`
 
 	// PostgreSQL内核版本，目前只支持：9.3.5、9.5.4两种版本。
-	DBVersion *string `json:"DBVersion" name:"DBVersion"`
+	DBVersion *string `json:"DBVersion,omitempty" name:"DBVersion"`
 
 	// 实例容量大小，单位：GB。
-	Storage *uint64 `json:"Storage" name:"Storage"`
+	Storage *uint64 `json:"Storage,omitempty" name:"Storage"`
 
 	// 一次性购买的实例数量。取值1-100
-	InstanceCount *uint64 `json:"InstanceCount" name:"InstanceCount"`
+	InstanceCount *uint64 `json:"InstanceCount,omitempty" name:"InstanceCount"`
 
 	// 购买时长，单位：月。目前只支持1,2,3,4,5,6,7,8,9,10,11,12,24,36这些值。
-	Period *uint64 `json:"Period" name:"Period"`
+	Period *uint64 `json:"Period,omitempty" name:"Period"`
 
 	// 可用区ID。该参数可以通过调用 DescribeZones 接口的返回值中的Zone字段来获取。
-	Zone *string `json:"Zone" name:"Zone"`
+	Zone *string `json:"Zone,omitempty" name:"Zone"`
 
 	// 项目ID。
-	ProjectId *int64 `json:"ProjectId" name:"ProjectId"`
+	ProjectId *int64 `json:"ProjectId,omitempty" name:"ProjectId"`
 
 	// 实例计费类型。目前只支持：PREPAID（预付费，即包年包月）。
-	InstanceChargeType *string `json:"InstanceChargeType" name:"InstanceChargeType"`
+	InstanceChargeType *string `json:"InstanceChargeType,omitempty" name:"InstanceChargeType"`
 
 	// 是否自动使用代金券。1（是），0（否），默认不使用。
-	AutoVoucher *uint64 `json:"AutoVoucher" name:"AutoVoucher"`
+	AutoVoucher *uint64 `json:"AutoVoucher,omitempty" name:"AutoVoucher"`
 
 	// 代金券ID列表，目前仅支持指定一张代金券。
-	VoucherIds []*string `json:"VoucherIds" name:"VoucherIds" list`
+	VoucherIds []*string `json:"VoucherIds,omitempty" name:"VoucherIds" list`
 
 	// 私有网络ID。
-	VpcId *string `json:"VpcId" name:"VpcId"`
+	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
 
 	// 私有网络子网ID。
-	SubnetId *string `json:"SubnetId" name:"SubnetId"`
+	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
 }
 
 func (r *CreateDBInstancesRequest) ToJsonString() string {
@@ -132,10 +132,10 @@ type CreateDBInstancesResponse struct {
 	Response *struct {
 
 		// 订单号列表。每个实例对应一个订单号。
-		DealNames []*string `json:"DealNames" name:"DealNames" list`
+		DealNames []*string `json:"DealNames,omitempty" name:"DealNames" list`
 
 		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
-		RequestId *string `json:"RequestId" name:"RequestId"`
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
 }
 
@@ -151,146 +151,146 @@ func (r *CreateDBInstancesResponse) FromJsonString(s string) error {
 type DBBackup struct {
 
 	// 备份文件唯一标识
-	Id *int64 `json:"Id" name:"Id"`
+	Id *int64 `json:"Id,omitempty" name:"Id"`
 
 	// 文件生成的开始时间
-	StartTime *string `json:"StartTime" name:"StartTime"`
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
 
 	// 文件生成的结束时间
-	EndTime *string `json:"EndTime" name:"EndTime"`
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 
 	// 文件大小(K)
-	Size *int64 `json:"Size" name:"Size"`
+	Size *int64 `json:"Size,omitempty" name:"Size"`
 
 	// 策略（0-实例备份；1-多库备份）
-	Strategy *int64 `json:"Strategy" name:"Strategy"`
+	Strategy *int64 `json:"Strategy,omitempty" name:"Strategy"`
 
 	// 类型（0-定时；1-临时）
-	Way *int64 `json:"Way" name:"Way"`
+	Way *int64 `json:"Way,omitempty" name:"Way"`
 
 	// 备份方式（1-完整；2-日志；3-差异）
-	Type *int64 `json:"Type" name:"Type"`
+	Type *int64 `json:"Type,omitempty" name:"Type"`
 
 	// 状态（0-创建中；1-成功；2-失败）
-	Status *int64 `json:"Status" name:"Status"`
+	Status *int64 `json:"Status,omitempty" name:"Status"`
 
 	// DB列表
-	DbList []*string `json:"DbList" name:"DbList" list`
+	DbList []*string `json:"DbList,omitempty" name:"DbList" list`
 
 	// 内网下载地址
-	InternalAddr *string `json:"InternalAddr" name:"InternalAddr"`
+	InternalAddr *string `json:"InternalAddr,omitempty" name:"InternalAddr"`
 
 	// 外网下载地址
-	ExternalAddr *string `json:"ExternalAddr" name:"ExternalAddr"`
+	ExternalAddr *string `json:"ExternalAddr,omitempty" name:"ExternalAddr"`
 }
 
 type DBInstance struct {
 
 	// 实例所属地域，如: ap-guangzhou，对应RegionSet的Region字段
-	Region *string `json:"Region" name:"Region"`
+	Region *string `json:"Region,omitempty" name:"Region"`
 
 	// 实例所属可用区， 如：ap-guangzhou-3，对应ZoneSet的Zone字段
-	Zone *string `json:"Zone" name:"Zone"`
+	Zone *string `json:"Zone,omitempty" name:"Zone"`
 
 	// 项目ID
-	ProjectId *uint64 `json:"ProjectId" name:"ProjectId"`
+	ProjectId *uint64 `json:"ProjectId,omitempty" name:"ProjectId"`
 
 	// 私有网络ID
-	VpcId *string `json:"VpcId" name:"VpcId"`
+	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
 
 	// SubnetId
-	SubnetId *string `json:"SubnetId" name:"SubnetId"`
+	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
 
 	// 实例ID
-	DBInstanceId *string `json:"DBInstanceId" name:"DBInstanceId"`
+	DBInstanceId *string `json:"DBInstanceId,omitempty" name:"DBInstanceId"`
 
 	// 实例名称
-	DBInstanceName *string `json:"DBInstanceName" name:"DBInstanceName"`
+	DBInstanceName *string `json:"DBInstanceName,omitempty" name:"DBInstanceName"`
 
 	// 实例状态
-	DBInstanceStatus *string `json:"DBInstanceStatus" name:"DBInstanceStatus"`
+	DBInstanceStatus *string `json:"DBInstanceStatus,omitempty" name:"DBInstanceStatus"`
 
 	// 实例分配的内存大小，单位：GB
-	DBInstanceMemory *uint64 `json:"DBInstanceMemory" name:"DBInstanceMemory"`
+	DBInstanceMemory *uint64 `json:"DBInstanceMemory,omitempty" name:"DBInstanceMemory"`
 
 	// 实例分配的存储空间大小，单位：GB
-	DBInstanceStorage *uint64 `json:"DBInstanceStorage" name:"DBInstanceStorage"`
+	DBInstanceStorage *uint64 `json:"DBInstanceStorage,omitempty" name:"DBInstanceStorage"`
 
 	// 实例分配的CPU数量，单位：个
-	DBInstanceCpu *uint64 `json:"DBInstanceCpu" name:"DBInstanceCpu"`
+	DBInstanceCpu *uint64 `json:"DBInstanceCpu,omitempty" name:"DBInstanceCpu"`
 
 	// 售卖规格ID
-	DBInstanceClass *string `json:"DBInstanceClass" name:"DBInstanceClass"`
+	DBInstanceClass *string `json:"DBInstanceClass,omitempty" name:"DBInstanceClass"`
 
 	// 实例类型，类型有：1、primary（主实例）；2、readonly（只读实例）；3、guard（灾备实例）；4、temp（临时实例）
-	DBInstanceType *string `json:"DBInstanceType" name:"DBInstanceType"`
+	DBInstanceType *string `json:"DBInstanceType,omitempty" name:"DBInstanceType"`
 
 	// 实例版本，目前只支持standard（双机高可用版, 一主一从）
-	DBInstanceVersion *string `json:"DBInstanceVersion" name:"DBInstanceVersion"`
+	DBInstanceVersion *string `json:"DBInstanceVersion,omitempty" name:"DBInstanceVersion"`
 
 	// 实例DB字符集
-	DBCharset *string `json:"DBCharset" name:"DBCharset"`
+	DBCharset *string `json:"DBCharset,omitempty" name:"DBCharset"`
 
 	// PostgreSQL内核版本
-	DBVersion *string `json:"DBVersion" name:"DBVersion"`
+	DBVersion *string `json:"DBVersion,omitempty" name:"DBVersion"`
 
 	// 实例创建时间
-	CreateTime *string `json:"CreateTime" name:"CreateTime"`
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
 
 	// 实例执行最后一次更新的时间
-	UpdateTime *string `json:"UpdateTime" name:"UpdateTime"`
+	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
 
 	// 实例到期时间
-	ExpireTime *string `json:"ExpireTime" name:"ExpireTime"`
+	ExpireTime *string `json:"ExpireTime,omitempty" name:"ExpireTime"`
 
 	// 实例隔离时间
-	IsolatedTime *string `json:"IsolatedTime" name:"IsolatedTime"`
+	IsolatedTime *string `json:"IsolatedTime,omitempty" name:"IsolatedTime"`
 
 	// 计费模式，1、prepaid（包年包月,预付费）；2、postpaid（按量计费，后付费）
-	PayType *string `json:"PayType" name:"PayType"`
+	PayType *string `json:"PayType,omitempty" name:"PayType"`
 
 	// 是否自动续费，1：自动续费，0：不自动续费
-	AutoRenew *uint64 `json:"AutoRenew" name:"AutoRenew"`
+	AutoRenew *uint64 `json:"AutoRenew,omitempty" name:"AutoRenew"`
 
 	// 实例网络连接信息
-	DBInstanceNetInfo []*DBInstanceNetInfo `json:"DBInstanceNetInfo" name:"DBInstanceNetInfo" list`
+	DBInstanceNetInfo []*DBInstanceNetInfo `json:"DBInstanceNetInfo,omitempty" name:"DBInstanceNetInfo" list`
 }
 
 type DBInstanceNetInfo struct {
 
 	// DNS域名
-	Address *string `json:"Address" name:"Address"`
+	Address *string `json:"Address,omitempty" name:"Address"`
 
 	// Ip
-	Ip *string `json:"Ip" name:"Ip"`
+	Ip *string `json:"Ip,omitempty" name:"Ip"`
 
 	// 连接Port地址
-	Port *uint64 `json:"Port" name:"Port"`
+	Port *uint64 `json:"Port,omitempty" name:"Port"`
 
 	// 网络类型，1、inner（内网地址）；2、public（外网地址）
-	NetType *string `json:"NetType" name:"NetType"`
+	NetType *string `json:"NetType,omitempty" name:"NetType"`
 
 	// 网络连接状态
-	Status *string `json:"Status" name:"Status"`
+	Status *string `json:"Status,omitempty" name:"Status"`
 }
 
 type DescribeAccountsRequest struct {
 	*tchttp.BaseRequest
 
 	// 实例ID，形如postgres-6fego161
-	DBInstanceId *string `json:"DBInstanceId" name:"DBInstanceId"`
+	DBInstanceId *string `json:"DBInstanceId,omitempty" name:"DBInstanceId"`
 
 	// 分页返回，每页最大返回数目，默认20，取值范围为1-100
-	Limit *int64 `json:"Limit" name:"Limit"`
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 
 	// 分页返回，返回第几页的用户数据。页码从0开始计数
-	Offset *int64 `json:"Offset" name:"Offset"`
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
 
 	// 返回数据按照创建时间或者用户名排序。取值只能为createTime或者name。createTime-按照创建时间排序；name-按照用户名排序
-	OrderBy *string `json:"OrderBy" name:"OrderBy"`
+	OrderBy *string `json:"OrderBy,omitempty" name:"OrderBy"`
 
 	// 返回结果是升序还是降序。取值只能为desc或者asc。desc-降序；asc-升序
-	OrderByType *string `json:"OrderByType" name:"OrderByType"`
+	OrderByType *string `json:"OrderByType,omitempty" name:"OrderByType"`
 }
 
 func (r *DescribeAccountsRequest) ToJsonString() string {
@@ -307,13 +307,13 @@ type DescribeAccountsResponse struct {
 	Response *struct {
 
 		// 本次调用接口共返回了多少条数据。
-		TotalCount *int64 `json:"TotalCount" name:"TotalCount"`
+		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 帐号列表详细信息。
-		Details []*AccountInfo `json:"Details" name:"Details" list`
+		Details []*AccountInfo `json:"Details,omitempty" name:"Details" list`
 
 		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
-		RequestId *string `json:"RequestId" name:"RequestId"`
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
 }
 
@@ -330,22 +330,22 @@ type DescribeDBBackupsRequest struct {
 	*tchttp.BaseRequest
 
 	// 实例ID，形如postgres-4wdeb0zv。
-	DBInstanceId *string `json:"DBInstanceId" name:"DBInstanceId"`
+	DBInstanceId *string `json:"DBInstanceId,omitempty" name:"DBInstanceId"`
 
 	// 备份方式（1-全量）。目前只支持全量，取值为1。
-	Type *int64 `json:"Type" name:"Type"`
+	Type *int64 `json:"Type,omitempty" name:"Type"`
 
 	// 查询开始时间，形如2018-06-10 17:06:38，起始时间不得小于7天以前
-	StartTime *string `json:"StartTime" name:"StartTime"`
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
 
 	// 查询结束时间，形如2018-06-10 17:06:38
-	EndTime *string `json:"EndTime" name:"EndTime"`
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 
 	// 备份列表分页返回，每页返回数量，默认为 20，最小为1，最大值为 100。
-	Limit *int64 `json:"Limit" name:"Limit"`
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 
 	// 返回结果中的第几页，从第0页开始。默认为0。
-	Offset *int64 `json:"Offset" name:"Offset"`
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
 }
 
 func (r *DescribeDBBackupsRequest) ToJsonString() string {
@@ -362,13 +362,13 @@ type DescribeDBBackupsResponse struct {
 	Response *struct {
 
 		// 返回备份列表中备份文件的个数
-		TotalCount *int64 `json:"TotalCount" name:"TotalCount"`
+		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 备份列表
-		BackupList []*DBBackup `json:"BackupList" name:"BackupList" list`
+		BackupList []*DBBackup `json:"BackupList,omitempty" name:"BackupList" list`
 
 		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
-		RequestId *string `json:"RequestId" name:"RequestId"`
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
 }
 
@@ -385,25 +385,25 @@ type DescribeDBErrlogsRequest struct {
 	*tchttp.BaseRequest
 
 	// 实例ID，形如postgres-5bq3wfjd
-	DBInstanceId *string `json:"DBInstanceId" name:"DBInstanceId"`
+	DBInstanceId *string `json:"DBInstanceId,omitempty" name:"DBInstanceId"`
 
 	// 查询起始时间，形如2018-01-01 00:00:00，起始时间不得小于7天以前
-	StartTime *string `json:"StartTime" name:"StartTime"`
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
 
 	// 查询结束时间，形如2018-01-01 00:00:00
-	EndTime *string `json:"EndTime" name:"EndTime"`
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 
 	// 数据库名字
-	DatabaseName *string `json:"DatabaseName" name:"DatabaseName"`
+	DatabaseName *string `json:"DatabaseName,omitempty" name:"DatabaseName"`
 
 	// 搜索关键字
-	SearchKeys []*string `json:"SearchKeys" name:"SearchKeys" list`
+	SearchKeys []*string `json:"SearchKeys,omitempty" name:"SearchKeys" list`
 
 	// 分页返回，每页返回的最大数量。取值为1-100
-	Limit *int64 `json:"Limit" name:"Limit"`
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 
 	// 分页返回，返回第几页的数据，从第0页开始计数
-	Offset *int64 `json:"Offset" name:"Offset"`
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
 }
 
 func (r *DescribeDBErrlogsRequest) ToJsonString() string {
@@ -420,13 +420,13 @@ type DescribeDBErrlogsResponse struct {
 	Response *struct {
 
 		// 本次调用返回了多少条数据
-		TotalCount *int64 `json:"TotalCount" name:"TotalCount"`
+		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 错误日志列表
-		Details []*ErrLogDetail `json:"Details" name:"Details" list`
+		Details []*ErrLogDetail `json:"Details,omitempty" name:"Details" list`
 
 		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
-		RequestId *string `json:"RequestId" name:"RequestId"`
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
 }
 
@@ -443,7 +443,7 @@ type DescribeDBInstanceAttributeRequest struct {
 	*tchttp.BaseRequest
 
 	// 实例ID
-	DBInstanceId *string `json:"DBInstanceId" name:"DBInstanceId"`
+	DBInstanceId *string `json:"DBInstanceId,omitempty" name:"DBInstanceId"`
 }
 
 func (r *DescribeDBInstanceAttributeRequest) ToJsonString() string {
@@ -460,10 +460,10 @@ type DescribeDBInstanceAttributeResponse struct {
 	Response *struct {
 
 		// 实例详细信息。
-		DBInstance *DBInstance `json:"DBInstance" name:"DBInstance"`
+		DBInstance *DBInstance `json:"DBInstance,omitempty" name:"DBInstance"`
 
 		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
-		RequestId *string `json:"RequestId" name:"RequestId"`
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
 }
 
@@ -480,13 +480,13 @@ type DescribeDBInstancesRequest struct {
 	*tchttp.BaseRequest
 
 	// 过滤条件，目前支持：db-instance-id、db-instance-name两种。
-	Filters []*Filter `json:"Filters" name:"Filters" list`
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
 
 	// 每页显示数量，默认返回10条。
-	Limit *uint64 `json:"Limit" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 
 	// 分页序号，从0开始。
-	Offset *uint64 `json:"Offset" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
 }
 
 func (r *DescribeDBInstancesRequest) ToJsonString() string {
@@ -503,13 +503,13 @@ type DescribeDBInstancesResponse struct {
 	Response *struct {
 
 		// 查询到的实例数量。
-		TotalCount *uint64 `json:"TotalCount" name:"TotalCount"`
+		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 实例详细信息集合。
-		DBInstanceSet []*DBInstance `json:"DBInstanceSet" name:"DBInstanceSet" list`
+		DBInstanceSet []*DBInstance `json:"DBInstanceSet,omitempty" name:"DBInstanceSet" list`
 
 		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
-		RequestId *string `json:"RequestId" name:"RequestId"`
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
 }
 
@@ -526,28 +526,28 @@ type DescribeDBSlowlogsRequest struct {
 	*tchttp.BaseRequest
 
 	// 实例ID，形如postgres-lnp6j617
-	DBInstanceId *string `json:"DBInstanceId" name:"DBInstanceId"`
+	DBInstanceId *string `json:"DBInstanceId,omitempty" name:"DBInstanceId"`
 
 	// 查询起始时间，形如2018-06-10 17:06:38，起始时间不得小于7天以前
-	StartTime *string `json:"StartTime" name:"StartTime"`
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
 
 	// 查询结束时间，形如2018-06-10 17:06:38
-	EndTime *string `json:"EndTime" name:"EndTime"`
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 
 	// 数据库名字
-	DatabaseName *string `json:"DatabaseName" name:"DatabaseName"`
+	DatabaseName *string `json:"DatabaseName,omitempty" name:"DatabaseName"`
 
 	// 按照何种指标排序，取值为sum_calls或者sum_cost_time。sum_calls-总调用次数；sum_cost_time-总的花费时间
-	OrderBy *string `json:"OrderBy" name:"OrderBy"`
+	OrderBy *string `json:"OrderBy,omitempty" name:"OrderBy"`
 
 	// 排序规则。desc-降序；asc-升序
-	OrderByType *string `json:"OrderByType" name:"OrderByType"`
+	OrderByType *string `json:"OrderByType,omitempty" name:"OrderByType"`
 
 	// 分页返回结果，每页最大返回数量，取值为1-100，默认20
-	Limit *int64 `json:"Limit" name:"Limit"`
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 
 	// 分页返回结果，返回结果的第几页，从0开始计数
-	Offset *int64 `json:"Offset" name:"Offset"`
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
 }
 
 func (r *DescribeDBSlowlogsRequest) ToJsonString() string {
@@ -564,13 +564,13 @@ type DescribeDBSlowlogsResponse struct {
 	Response *struct {
 
 		// 本次返回多少条数据
-		TotalCount *int64 `json:"TotalCount" name:"TotalCount"`
+		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 慢查询日志详情
-		Detail *SlowlogDetail `json:"Detail" name:"Detail"`
+		Detail *SlowlogDetail `json:"Detail,omitempty" name:"Detail"`
 
 		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
-		RequestId *string `json:"RequestId" name:"RequestId"`
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
 }
 
@@ -587,19 +587,19 @@ type DescribeDBXlogsRequest struct {
 	*tchttp.BaseRequest
 
 	// 实例ID，形如postgres-4wdeb0zv。
-	DBInstanceId *string `json:"DBInstanceId" name:"DBInstanceId"`
+	DBInstanceId *string `json:"DBInstanceId,omitempty" name:"DBInstanceId"`
 
 	// 查询开始时间，形如2018-06-10 17:06:38，起始时间不得小于7天以前
-	StartTime *string `json:"StartTime" name:"StartTime"`
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
 
 	// 查询结束时间，形如2018-06-10 17:06:38
-	EndTime *string `json:"EndTime" name:"EndTime"`
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 
 	// 分页返回，表示返回第几页的条目。从第0页开始计数。
-	Offset *int64 `json:"Offset" name:"Offset"`
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
 
 	// 分页返回，表示每页有多少条目。取值为1-100。
-	Limit *int64 `json:"Limit" name:"Limit"`
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 }
 
 func (r *DescribeDBXlogsRequest) ToJsonString() string {
@@ -616,13 +616,13 @@ type DescribeDBXlogsResponse struct {
 	Response *struct {
 
 		// 表示此次返回结果有多少条数据。
-		TotalCount *int64 `json:"TotalCount" name:"TotalCount"`
+		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// Xlog列表
-		XlogList []*Xlog `json:"XlogList" name:"XlogList" list`
+		XlogList []*Xlog `json:"XlogList,omitempty" name:"XlogList" list`
 
 		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
-		RequestId *string `json:"RequestId" name:"RequestId"`
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
 }
 
@@ -639,7 +639,7 @@ type DescribeOrdersRequest struct {
 	*tchttp.BaseRequest
 
 	// 订单名集合
-	DealNames []*string `json:"DealNames" name:"DealNames" list`
+	DealNames []*string `json:"DealNames,omitempty" name:"DealNames" list`
 }
 
 func (r *DescribeOrdersRequest) ToJsonString() string {
@@ -656,13 +656,13 @@ type DescribeOrdersResponse struct {
 	Response *struct {
 
 		// 订单数量
-		TotalCount *int64 `json:"TotalCount" name:"TotalCount"`
+		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 订单数组
-		Deals []*PgDeal `json:"Deals" name:"Deals" list`
+		Deals []*PgDeal `json:"Deals,omitempty" name:"Deals" list`
 
 		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
-		RequestId *string `json:"RequestId" name:"RequestId"`
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
 }
 
@@ -679,7 +679,7 @@ type DescribeProductConfigRequest struct {
 	*tchttp.BaseRequest
 
 	// 可用区名称
-	Zone *string `json:"Zone" name:"Zone"`
+	Zone *string `json:"Zone,omitempty" name:"Zone"`
 }
 
 func (r *DescribeProductConfigRequest) ToJsonString() string {
@@ -696,10 +696,10 @@ type DescribeProductConfigResponse struct {
 	Response *struct {
 
 		// 售卖规格列表。
-		SpecInfoList []*SpecInfo `json:"SpecInfoList" name:"SpecInfoList" list`
+		SpecInfoList []*SpecInfo `json:"SpecInfoList,omitempty" name:"SpecInfoList" list`
 
 		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
-		RequestId *string `json:"RequestId" name:"RequestId"`
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
 }
 
@@ -730,13 +730,13 @@ type DescribeRegionsResponse struct {
 	Response *struct {
 
 		// 返回的结果数量。
-		TotalCount *int64 `json:"TotalCount" name:"TotalCount"`
+		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 地域信息集合。
-		RegionSet []*RegionInfo `json:"RegionSet" name:"RegionSet" list`
+		RegionSet []*RegionInfo `json:"RegionSet,omitempty" name:"RegionSet" list`
 
 		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
-		RequestId *string `json:"RequestId" name:"RequestId"`
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
 }
 
@@ -767,13 +767,13 @@ type DescribeZonesResponse struct {
 	Response *struct {
 
 		// 返回的结果数量。
-		TotalCount *int64 `json:"TotalCount" name:"TotalCount"`
+		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 可用区信息集合。
-		ZoneSet []*ZoneInfo `json:"ZoneSet" name:"ZoneSet" list`
+		ZoneSet []*ZoneInfo `json:"ZoneSet,omitempty" name:"ZoneSet" list`
 
 		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
-		RequestId *string `json:"RequestId" name:"RequestId"`
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
 }
 
@@ -789,41 +789,41 @@ func (r *DescribeZonesResponse) FromJsonString(s string) error {
 type ErrLogDetail struct {
 
 	// 用户名
-	UserName *string `json:"UserName" name:"UserName"`
+	UserName *string `json:"UserName,omitempty" name:"UserName"`
 
 	// 数据库名字
-	Database *string `json:"Database" name:"Database"`
+	Database *string `json:"Database,omitempty" name:"Database"`
 
 	// 错误发生时间
-	ErrTime *string `json:"ErrTime" name:"ErrTime"`
+	ErrTime *string `json:"ErrTime,omitempty" name:"ErrTime"`
 
 	// 错误消息
-	ErrMsg *string `json:"ErrMsg" name:"ErrMsg"`
+	ErrMsg *string `json:"ErrMsg,omitempty" name:"ErrMsg"`
 }
 
 type Filter struct {
 
 	// 过滤键的名称。
-	Name *string `json:"Name" name:"Name"`
+	Name *string `json:"Name,omitempty" name:"Name"`
 
 	// 一个或者多个过滤值。
-	Values []*string `json:"Values" name:"Values" list`
+	Values []*string `json:"Values,omitempty" name:"Values" list`
 }
 
 type InitDBInstancesRequest struct {
 	*tchttp.BaseRequest
 
 	// 实例ID集合。
-	DBInstanceIdSet []*string `json:"DBInstanceIdSet" name:"DBInstanceIdSet" list`
+	DBInstanceIdSet []*string `json:"DBInstanceIdSet,omitempty" name:"DBInstanceIdSet" list`
 
 	// 实例根账号用户名。
-	AdminName *string `json:"AdminName" name:"AdminName"`
+	AdminName *string `json:"AdminName,omitempty" name:"AdminName"`
 
 	// 实例根账号用户名对应的密码。
-	AdminPassword *string `json:"AdminPassword" name:"AdminPassword"`
+	AdminPassword *string `json:"AdminPassword,omitempty" name:"AdminPassword"`
 
 	// 实例字符集，目前只支持：UTF8、LATIN1。
-	Charset *string `json:"Charset" name:"Charset"`
+	Charset *string `json:"Charset,omitempty" name:"Charset"`
 }
 
 func (r *InitDBInstancesRequest) ToJsonString() string {
@@ -840,10 +840,10 @@ type InitDBInstancesResponse struct {
 	Response *struct {
 
 		// 实例ID集合。
-		DBInstanceIdSet []*string `json:"DBInstanceIdSet" name:"DBInstanceIdSet" list`
+		DBInstanceIdSet []*string `json:"DBInstanceIdSet,omitempty" name:"DBInstanceIdSet" list`
 
 		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
-		RequestId *string `json:"RequestId" name:"RequestId"`
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
 }
 
@@ -860,25 +860,25 @@ type InquiryPriceCreateDBInstancesRequest struct {
 	*tchttp.BaseRequest
 
 	// 可用区ID。该参数可以通过调用 DescribeZones 接口的返回值中的Zone字段来获取。
-	Zone *string `json:"Zone" name:"Zone"`
+	Zone *string `json:"Zone,omitempty" name:"Zone"`
 
 	// 规格ID。该参数可以通过调用DescribeProductConfig接口的返回值中的SpecCode字段来获取。
-	SpecCode *string `json:"SpecCode" name:"SpecCode"`
+	SpecCode *string `json:"SpecCode,omitempty" name:"SpecCode"`
 
 	// 存储容量大小，单位：GB。
-	Storage *uint64 `json:"Storage" name:"Storage"`
+	Storage *uint64 `json:"Storage,omitempty" name:"Storage"`
 
 	// 实例数量。目前最大数量不超过100，如需一次性创建更多实例，请联系客服支持。
-	InstanceCount *uint64 `json:"InstanceCount" name:"InstanceCount"`
+	InstanceCount *uint64 `json:"InstanceCount,omitempty" name:"InstanceCount"`
 
 	// 购买时长，单位：月。目前只支持1,2,3,4,5,6,7,8,9,10,11,12,24,36这些值。
-	Period *uint64 `json:"Period" name:"Period"`
+	Period *uint64 `json:"Period,omitempty" name:"Period"`
 
 	// 计费ID。该参数可以通过调用DescribeProductConfig接口的返回值中的Pid字段来获取。
-	Pid *uint64 `json:"Pid" name:"Pid"`
+	Pid *uint64 `json:"Pid,omitempty" name:"Pid"`
 
 	// 实例计费类型。目前只支持：PREPAID（预付费，即包年包月）。
-	InstanceChargeType *string `json:"InstanceChargeType" name:"InstanceChargeType"`
+	InstanceChargeType *string `json:"InstanceChargeType,omitempty" name:"InstanceChargeType"`
 }
 
 func (r *InquiryPriceCreateDBInstancesRequest) ToJsonString() string {
@@ -895,13 +895,13 @@ type InquiryPriceCreateDBInstancesResponse struct {
 	Response *struct {
 
 		// 原始价格，单位：分
-		OriginalPrice *uint64 `json:"OriginalPrice" name:"OriginalPrice"`
+		OriginalPrice *uint64 `json:"OriginalPrice,omitempty" name:"OriginalPrice"`
 
 		// 折后价格，单位：分
-		Price *uint64 `json:"Price" name:"Price"`
+		Price *uint64 `json:"Price,omitempty" name:"Price"`
 
 		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
-		RequestId *string `json:"RequestId" name:"RequestId"`
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
 }
 
@@ -918,10 +918,10 @@ type InquiryPriceRenewDBInstanceRequest struct {
 	*tchttp.BaseRequest
 
 	// 实例ID
-	DBInstanceId *string `json:"DBInstanceId" name:"DBInstanceId"`
+	DBInstanceId *string `json:"DBInstanceId,omitempty" name:"DBInstanceId"`
 
 	// 续费周期，按月计算，最大不超过48
-	Period *int64 `json:"Period" name:"Period"`
+	Period *int64 `json:"Period,omitempty" name:"Period"`
 }
 
 func (r *InquiryPriceRenewDBInstanceRequest) ToJsonString() string {
@@ -938,13 +938,13 @@ type InquiryPriceRenewDBInstanceResponse struct {
 	Response *struct {
 
 		// 总费用，打折前的。比如24650表示246.5元
-		OriginalPrice *int64 `json:"OriginalPrice" name:"OriginalPrice"`
+		OriginalPrice *int64 `json:"OriginalPrice,omitempty" name:"OriginalPrice"`
 
 		// 实际需要付款金额。比如24650表示246.5元
-		Price *int64 `json:"Price" name:"Price"`
+		Price *int64 `json:"Price,omitempty" name:"Price"`
 
 		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
-		RequestId *string `json:"RequestId" name:"RequestId"`
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
 }
 
@@ -961,16 +961,16 @@ type InquiryPriceUpgradeDBInstanceRequest struct {
 	*tchttp.BaseRequest
 
 	// 实例的磁盘大小，单位GB
-	Storage *int64 `json:"Storage" name:"Storage"`
+	Storage *int64 `json:"Storage,omitempty" name:"Storage"`
 
 	// 实例的内存大小，单位GB
-	Memory *int64 `json:"Memory" name:"Memory"`
+	Memory *int64 `json:"Memory,omitempty" name:"Memory"`
 
 	// 实例ID，形如postgres-hez4fh0v
-	DBInstanceId *string `json:"DBInstanceId" name:"DBInstanceId"`
+	DBInstanceId *string `json:"DBInstanceId,omitempty" name:"DBInstanceId"`
 
 	// 实例计费类型，预付费或者后付费。PREPAID-预付费。目前只支持预付费。
-	InstanceChargeType *string `json:"InstanceChargeType" name:"InstanceChargeType"`
+	InstanceChargeType *string `json:"InstanceChargeType,omitempty" name:"InstanceChargeType"`
 }
 
 func (r *InquiryPriceUpgradeDBInstanceRequest) ToJsonString() string {
@@ -987,13 +987,13 @@ type InquiryPriceUpgradeDBInstanceResponse struct {
 	Response *struct {
 
 		// 总费用，打折前的
-		OriginalPrice *int64 `json:"OriginalPrice" name:"OriginalPrice"`
+		OriginalPrice *int64 `json:"OriginalPrice,omitempty" name:"OriginalPrice"`
 
 		// 实际需要付款金额
-		Price *int64 `json:"Price" name:"Price"`
+		Price *int64 `json:"Price,omitempty" name:"Price"`
 
 		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
-		RequestId *string `json:"RequestId" name:"RequestId"`
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
 }
 
@@ -1010,13 +1010,13 @@ type ModifyAccountRemarkRequest struct {
 	*tchttp.BaseRequest
 
 	// 实例ID，形如postgres-4wdeb0zv
-	DBInstanceId *string `json:"DBInstanceId" name:"DBInstanceId"`
+	DBInstanceId *string `json:"DBInstanceId,omitempty" name:"DBInstanceId"`
 
 	// 实例用户名
-	UserName *string `json:"UserName" name:"UserName"`
+	UserName *string `json:"UserName,omitempty" name:"UserName"`
 
 	// 用户UserName对应的新备注
-	Remark *string `json:"Remark" name:"Remark"`
+	Remark *string `json:"Remark,omitempty" name:"Remark"`
 }
 
 func (r *ModifyAccountRemarkRequest) ToJsonString() string {
@@ -1033,7 +1033,7 @@ type ModifyAccountRemarkResponse struct {
 	Response *struct {
 
 		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
-		RequestId *string `json:"RequestId" name:"RequestId"`
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
 }
 
@@ -1050,10 +1050,10 @@ type ModifyDBInstanceNameRequest struct {
 	*tchttp.BaseRequest
 
 	// 数据库实例ID，形如postgres-6fego161
-	DBInstanceId *string `json:"DBInstanceId" name:"DBInstanceId"`
+	DBInstanceId *string `json:"DBInstanceId,omitempty" name:"DBInstanceId"`
 
 	// 新的数据库实例名字
-	InstanceName *string `json:"InstanceName" name:"InstanceName"`
+	InstanceName *string `json:"InstanceName,omitempty" name:"InstanceName"`
 }
 
 func (r *ModifyDBInstanceNameRequest) ToJsonString() string {
@@ -1070,7 +1070,7 @@ type ModifyDBInstanceNameResponse struct {
 	Response *struct {
 
 		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
-		RequestId *string `json:"RequestId" name:"RequestId"`
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
 }
 
@@ -1087,10 +1087,10 @@ type ModifyDBInstancesProjectRequest struct {
 	*tchttp.BaseRequest
 
 	// postgresql实例ID数组
-	DBInstanceIdSet []*string `json:"DBInstanceIdSet" name:"DBInstanceIdSet" list`
+	DBInstanceIdSet []*string `json:"DBInstanceIdSet,omitempty" name:"DBInstanceIdSet" list`
 
 	// postgresql实例所属新项目的ID
-	ProjectId *string `json:"ProjectId" name:"ProjectId"`
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
 }
 
 func (r *ModifyDBInstancesProjectRequest) ToJsonString() string {
@@ -1107,10 +1107,10 @@ type ModifyDBInstancesProjectResponse struct {
 	Response *struct {
 
 		// 转移项目成功的实例个数
-		Count *int64 `json:"Count" name:"Count"`
+		Count *int64 `json:"Count,omitempty" name:"Count"`
 
 		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
-		RequestId *string `json:"RequestId" name:"RequestId"`
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
 }
 
@@ -1126,56 +1126,56 @@ func (r *ModifyDBInstancesProjectResponse) FromJsonString(s string) error {
 type NormalQueryItem struct {
 
 	// 用户名
-	UserName *string `json:"UserName" name:"UserName"`
+	UserName *string `json:"UserName,omitempty" name:"UserName"`
 
 	// 调用次数
-	Calls *int64 `json:"Calls" name:"Calls"`
+	Calls *int64 `json:"Calls,omitempty" name:"Calls"`
 
 	// 粒度点
-	CallsGrids []*int64 `json:"CallsGrids" name:"CallsGrids" list`
+	CallsGrids []*int64 `json:"CallsGrids,omitempty" name:"CallsGrids" list`
 
 	// 花费总时间
-	CostTime *float64 `json:"CostTime" name:"CostTime"`
+	CostTime *float64 `json:"CostTime,omitempty" name:"CostTime"`
 
 	// 影响的行数
-	Rows *int64 `json:"Rows" name:"Rows"`
+	Rows *int64 `json:"Rows,omitempty" name:"Rows"`
 
 	// 花费最小时间
-	MinCostTime *float64 `json:"MinCostTime" name:"MinCostTime"`
+	MinCostTime *float64 `json:"MinCostTime,omitempty" name:"MinCostTime"`
 
 	// 花费最大时间
-	MaxCostTime *float64 `json:"MaxCostTime" name:"MaxCostTime"`
+	MaxCostTime *float64 `json:"MaxCostTime,omitempty" name:"MaxCostTime"`
 
 	// 最早一条慢SQL时间
-	FirstTime *string `json:"FirstTime" name:"FirstTime"`
+	FirstTime *string `json:"FirstTime,omitempty" name:"FirstTime"`
 
 	// 最晚一条慢SQL时间
-	LastTime *string `json:"LastTime" name:"LastTime"`
+	LastTime *string `json:"LastTime,omitempty" name:"LastTime"`
 
 	// 读共享内存块数
-	SharedReadBlks *int64 `json:"SharedReadBlks" name:"SharedReadBlks"`
+	SharedReadBlks *int64 `json:"SharedReadBlks,omitempty" name:"SharedReadBlks"`
 
 	// 写共享内存块数
-	SharedWriteBlks *int64 `json:"SharedWriteBlks" name:"SharedWriteBlks"`
+	SharedWriteBlks *int64 `json:"SharedWriteBlks,omitempty" name:"SharedWriteBlks"`
 
 	// 读io总耗时
-	ReadCostTime *int64 `json:"ReadCostTime" name:"ReadCostTime"`
+	ReadCostTime *int64 `json:"ReadCostTime,omitempty" name:"ReadCostTime"`
 
 	// 写io总耗时
-	WriteCostTime *int64 `json:"WriteCostTime" name:"WriteCostTime"`
+	WriteCostTime *int64 `json:"WriteCostTime,omitempty" name:"WriteCostTime"`
 
 	// 数据库名字
-	DatabaseName *string `json:"DatabaseName" name:"DatabaseName"`
+	DatabaseName *string `json:"DatabaseName,omitempty" name:"DatabaseName"`
 
 	// 脱敏后的慢SQL
-	NormalQuery *string `json:"NormalQuery" name:"NormalQuery"`
+	NormalQuery *string `json:"NormalQuery,omitempty" name:"NormalQuery"`
 }
 
 type OpenDBExtranetAccessRequest struct {
 	*tchttp.BaseRequest
 
 	// 实例ID，形如postgres-hez4fh0v
-	DBInstanceId *string `json:"DBInstanceId" name:"DBInstanceId"`
+	DBInstanceId *string `json:"DBInstanceId,omitempty" name:"DBInstanceId"`
 }
 
 func (r *OpenDBExtranetAccessRequest) ToJsonString() string {
@@ -1192,10 +1192,10 @@ type OpenDBExtranetAccessResponse struct {
 	Response *struct {
 
 		// 异步任务流程ID
-		FlowId *int64 `json:"FlowId" name:"FlowId"`
+		FlowId *int64 `json:"FlowId,omitempty" name:"FlowId"`
 
 		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
-		RequestId *string `json:"RequestId" name:"RequestId"`
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
 }
 
@@ -1211,53 +1211,53 @@ func (r *OpenDBExtranetAccessResponse) FromJsonString(s string) error {
 type PgDeal struct {
 
 	// 订单名
-	DealName *string `json:"DealName" name:"DealName"`
+	DealName *string `json:"DealName,omitempty" name:"DealName"`
 
 	// 所属用户
-	OwnerUin *string `json:"OwnerUin" name:"OwnerUin"`
+	OwnerUin *string `json:"OwnerUin,omitempty" name:"OwnerUin"`
 
 	// 订单涉及多少个实例
-	Count *int64 `json:"Count" name:"Count"`
+	Count *int64 `json:"Count,omitempty" name:"Count"`
 
 	// 付费模式。1-预付费；0-后付费
-	PayMode *int64 `json:"PayMode" name:"PayMode"`
+	PayMode *int64 `json:"PayMode,omitempty" name:"PayMode"`
 
 	// 异步任务流程ID
-	FlowId *int64 `json:"FlowId" name:"FlowId"`
+	FlowId *int64 `json:"FlowId,omitempty" name:"FlowId"`
 
 	// 实例ID数组
-	DBInstanceIdSet []*string `json:"DBInstanceIdSet" name:"DBInstanceIdSet" list`
+	DBInstanceIdSet []*string `json:"DBInstanceIdSet,omitempty" name:"DBInstanceIdSet" list`
 }
 
 type RegionInfo struct {
 
 	// 该地域对应的英文名称
-	Region *string `json:"Region" name:"Region"`
+	Region *string `json:"Region,omitempty" name:"Region"`
 
 	// 该地域对应的中文名称
-	RegionName *string `json:"RegionName" name:"RegionName"`
+	RegionName *string `json:"RegionName,omitempty" name:"RegionName"`
 
 	// 该地域对应的数字编号
-	RegionId *uint64 `json:"RegionId" name:"RegionId"`
+	RegionId *uint64 `json:"RegionId,omitempty" name:"RegionId"`
 
 	// 可用状态，UNAVAILABLE表示不可用，AVAILABLE表示可用
-	RegionState *string `json:"RegionState" name:"RegionState"`
+	RegionState *string `json:"RegionState,omitempty" name:"RegionState"`
 }
 
 type RenewInstanceRequest struct {
 	*tchttp.BaseRequest
 
 	// 实例ID，形如postgres-6fego161
-	DBInstanceId *string `json:"DBInstanceId" name:"DBInstanceId"`
+	DBInstanceId *string `json:"DBInstanceId,omitempty" name:"DBInstanceId"`
 
 	// 续费多少个月
-	Period *int64 `json:"Period" name:"Period"`
+	Period *int64 `json:"Period,omitempty" name:"Period"`
 
 	// 是否自动使用代金券,1是,0否，默认不使用
-	AutoVoucher *int64 `json:"AutoVoucher" name:"AutoVoucher"`
+	AutoVoucher *int64 `json:"AutoVoucher,omitempty" name:"AutoVoucher"`
 
 	// 代金券ID列表，目前仅支持指定一张代金券
-	VoucherIds []*string `json:"VoucherIds" name:"VoucherIds" list`
+	VoucherIds []*string `json:"VoucherIds,omitempty" name:"VoucherIds" list`
 }
 
 func (r *RenewInstanceRequest) ToJsonString() string {
@@ -1274,10 +1274,10 @@ type RenewInstanceResponse struct {
 	Response *struct {
 
 		// 订单名
-		DealName *string `json:"DealName" name:"DealName"`
+		DealName *string `json:"DealName,omitempty" name:"DealName"`
 
 		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
-		RequestId *string `json:"RequestId" name:"RequestId"`
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
 }
 
@@ -1294,13 +1294,13 @@ type ResetAccountPasswordRequest struct {
 	*tchttp.BaseRequest
 
 	// 实例ID，形如postgres-4wdeb0zv
-	DBInstanceId *string `json:"DBInstanceId" name:"DBInstanceId"`
+	DBInstanceId *string `json:"DBInstanceId,omitempty" name:"DBInstanceId"`
 
 	// 实例账户名
-	UserName *string `json:"UserName" name:"UserName"`
+	UserName *string `json:"UserName,omitempty" name:"UserName"`
 
 	// UserName账户对应的新密码
-	Password *string `json:"Password" name:"Password"`
+	Password *string `json:"Password,omitempty" name:"Password"`
 }
 
 func (r *ResetAccountPasswordRequest) ToJsonString() string {
@@ -1317,7 +1317,7 @@ type ResetAccountPasswordResponse struct {
 	Response *struct {
 
 		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
-		RequestId *string `json:"RequestId" name:"RequestId"`
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
 }
 
@@ -1334,7 +1334,7 @@ type RestartDBInstanceRequest struct {
 	*tchttp.BaseRequest
 
 	// 实例ID，形如postgres-6r233v55
-	DBInstanceId *string `json:"DBInstanceId" name:"DBInstanceId"`
+	DBInstanceId *string `json:"DBInstanceId,omitempty" name:"DBInstanceId"`
 }
 
 func (r *RestartDBInstanceRequest) ToJsonString() string {
@@ -1351,10 +1351,10 @@ type RestartDBInstanceResponse struct {
 	Response *struct {
 
 		// 异步流程ID
-		FlowId *int64 `json:"FlowId" name:"FlowId"`
+		FlowId *int64 `json:"FlowId,omitempty" name:"FlowId"`
 
 		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
-		RequestId *string `json:"RequestId" name:"RequestId"`
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
 }
 
@@ -1371,10 +1371,10 @@ type SetAutoRenewFlagRequest struct {
 	*tchttp.BaseRequest
 
 	// 实例ID数组
-	DBInstanceIdSet []*string `json:"DBInstanceIdSet" name:"DBInstanceIdSet" list`
+	DBInstanceIdSet []*string `json:"DBInstanceIdSet,omitempty" name:"DBInstanceIdSet" list`
 
 	// 续费标记。0-正常续费；1-自动续费；2-到期不续费
-	AutoRenewFlag *int64 `json:"AutoRenewFlag" name:"AutoRenewFlag"`
+	AutoRenewFlag *int64 `json:"AutoRenewFlag,omitempty" name:"AutoRenewFlag"`
 }
 
 func (r *SetAutoRenewFlagRequest) ToJsonString() string {
@@ -1391,10 +1391,10 @@ type SetAutoRenewFlagResponse struct {
 	Response *struct {
 
 		// 设置成功的实例个数
-		Count *int64 `json:"Count" name:"Count"`
+		Count *int64 `json:"Count,omitempty" name:"Count"`
 
 		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
-		RequestId *string `json:"RequestId" name:"RequestId"`
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
 }
 
@@ -1410,74 +1410,74 @@ func (r *SetAutoRenewFlagResponse) FromJsonString(s string) error {
 type SlowlogDetail struct {
 
 	// 花费总时间
-	TotalTime *float64 `json:"TotalTime" name:"TotalTime"`
+	TotalTime *float64 `json:"TotalTime,omitempty" name:"TotalTime"`
 
 	// 调用总次数
-	TotalCalls *int64 `json:"TotalCalls" name:"TotalCalls"`
+	TotalCalls *int64 `json:"TotalCalls,omitempty" name:"TotalCalls"`
 
 	// 脱敏后的慢SQL列表
-	NormalQueries []*NormalQueryItem `json:"NormalQueries" name:"NormalQueries" list`
+	NormalQueries []*NormalQueryItem `json:"NormalQueries,omitempty" name:"NormalQueries" list`
 }
 
 type SpecInfo struct {
 
 	// 地域英文编码，对应RegionSet的Region字段
-	Region *string `json:"Region" name:"Region"`
+	Region *string `json:"Region,omitempty" name:"Region"`
 
 	// 区域英文编码，对应ZoneSet的Zone字段
-	Zone *string `json:"Zone" name:"Zone"`
+	Zone *string `json:"Zone,omitempty" name:"Zone"`
 
 	// 规格详细信息列表
-	SpecItemInfoList []*SpecItemInfo `json:"SpecItemInfoList" name:"SpecItemInfoList" list`
+	SpecItemInfoList []*SpecItemInfo `json:"SpecItemInfoList,omitempty" name:"SpecItemInfoList" list`
 }
 
 type SpecItemInfo struct {
 
 	// 规格ID
-	SpecCode *string `json:"SpecCode" name:"SpecCode"`
+	SpecCode *string `json:"SpecCode,omitempty" name:"SpecCode"`
 
 	// PostgreSQL的内核版本编号
-	Version *string `json:"Version" name:"Version"`
+	Version *string `json:"Version,omitempty" name:"Version"`
 
 	// 内核编号对应的完整版本名称
-	VersionName *string `json:"VersionName" name:"VersionName"`
+	VersionName *string `json:"VersionName,omitempty" name:"VersionName"`
 
 	// CPU核数
-	Cpu *uint64 `json:"Cpu" name:"Cpu"`
+	Cpu *uint64 `json:"Cpu,omitempty" name:"Cpu"`
 
 	// 内存大小，单位：MB
-	Memory *uint64 `json:"Memory" name:"Memory"`
+	Memory *uint64 `json:"Memory,omitempty" name:"Memory"`
 
 	// 该规格所支持最大存储容量，单位：GB
-	MaxStorage *uint64 `json:"MaxStorage" name:"MaxStorage"`
+	MaxStorage *uint64 `json:"MaxStorage,omitempty" name:"MaxStorage"`
 
 	// 该规格所支持最小存储容量，单位：GB
-	MinStorage *uint64 `json:"MinStorage" name:"MinStorage"`
+	MinStorage *uint64 `json:"MinStorage,omitempty" name:"MinStorage"`
 
 	// 该规格的预估QPS
-	Qps *uint64 `json:"Qps" name:"Qps"`
+	Qps *uint64 `json:"Qps,omitempty" name:"Qps"`
 
 	// 该规格对应的计费ID
-	Pid *uint64 `json:"Pid" name:"Pid"`
+	Pid *uint64 `json:"Pid,omitempty" name:"Pid"`
 }
 
 type UpgradeDBInstanceRequest struct {
 	*tchttp.BaseRequest
 
 	// 升级后的实例内存大小，单位GB
-	Memory *int64 `json:"Memory" name:"Memory"`
+	Memory *int64 `json:"Memory,omitempty" name:"Memory"`
 
 	// 升级后的实例磁盘大小，单位GB
-	Storage *int64 `json:"Storage" name:"Storage"`
+	Storage *int64 `json:"Storage,omitempty" name:"Storage"`
 
 	// 实例ID，形如postgres-lnp6j617
-	DBInstanceId *string `json:"DBInstanceId" name:"DBInstanceId"`
+	DBInstanceId *string `json:"DBInstanceId,omitempty" name:"DBInstanceId"`
 
 	// 是否自动使用代金券,1是,0否，默认不使用
-	AutoVoucher *int64 `json:"AutoVoucher" name:"AutoVoucher"`
+	AutoVoucher *int64 `json:"AutoVoucher,omitempty" name:"AutoVoucher"`
 
 	// 代金券ID列表，目前仅支持指定一张代金券
-	VoucherIds []*string `json:"VoucherIds" name:"VoucherIds" list`
+	VoucherIds []*string `json:"VoucherIds,omitempty" name:"VoucherIds" list`
 }
 
 func (r *UpgradeDBInstanceRequest) ToJsonString() string {
@@ -1494,10 +1494,10 @@ type UpgradeDBInstanceResponse struct {
 	Response *struct {
 
 		// 交易名字。
-		DealName *string `json:"DealName" name:"DealName"`
+		DealName *string `json:"DealName,omitempty" name:"DealName"`
 
 		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
-		RequestId *string `json:"RequestId" name:"RequestId"`
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
 }
 
@@ -1513,32 +1513,32 @@ func (r *UpgradeDBInstanceResponse) FromJsonString(s string) error {
 type Xlog struct {
 
 	// 备份文件唯一标识
-	Id *int64 `json:"Id" name:"Id"`
+	Id *int64 `json:"Id,omitempty" name:"Id"`
 
 	// 文件生成的开始时间
-	StartTime *string `json:"StartTime" name:"StartTime"`
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
 
 	// 文件生成的结束时间
-	EndTime *string `json:"EndTime" name:"EndTime"`
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 
 	// 内网下载地址
-	InternalAddr *string `json:"InternalAddr" name:"InternalAddr"`
+	InternalAddr *string `json:"InternalAddr,omitempty" name:"InternalAddr"`
 
 	// 外网下载地址
-	ExternalAddr *string `json:"ExternalAddr" name:"ExternalAddr"`
+	ExternalAddr *string `json:"ExternalAddr,omitempty" name:"ExternalAddr"`
 }
 
 type ZoneInfo struct {
 
 	// 该可用区的英文名称
-	Zone *string `json:"Zone" name:"Zone"`
+	Zone *string `json:"Zone,omitempty" name:"Zone"`
 
 	// 该可用区的中文名称
-	ZoneName *string `json:"ZoneName" name:"ZoneName"`
+	ZoneName *string `json:"ZoneName,omitempty" name:"ZoneName"`
 
 	// 该可用区对应的数字编号
-	ZoneId *uint64 `json:"ZoneId" name:"ZoneId"`
+	ZoneId *uint64 `json:"ZoneId,omitempty" name:"ZoneId"`
 
 	// 可用状态，UNAVAILABLE表示不可用，AVAILABLE表示可用
-	ZoneState *string `json:"ZoneState" name:"ZoneState"`
+	ZoneState *string `json:"ZoneState,omitempty" name:"ZoneState"`
 }

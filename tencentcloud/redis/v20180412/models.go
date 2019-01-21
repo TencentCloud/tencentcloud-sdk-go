@@ -24,10 +24,10 @@ type ClearInstanceRequest struct {
 	*tchttp.BaseRequest
 
 	// 实例Id
-	InstanceId *string `json:"InstanceId" name:"InstanceId"`
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
 	// redis的实例密码
-	Password *string `json:"Password" name:"Password"`
+	Password *string `json:"Password,omitempty" name:"Password"`
 }
 
 func (r *ClearInstanceRequest) ToJsonString() string {
@@ -44,10 +44,10 @@ type ClearInstanceResponse struct {
 	Response *struct {
 
 		// 任务Id
-		TaskId *int64 `json:"TaskId" name:"TaskId"`
+		TaskId *int64 `json:"TaskId,omitempty" name:"TaskId"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId" name:"RequestId"`
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
 }
 
@@ -64,52 +64,52 @@ type CreateInstancesRequest struct {
 	*tchttp.BaseRequest
 
 	// 实例所属的可用区id
-	ZoneId *uint64 `json:"ZoneId" name:"ZoneId"`
+	ZoneId *uint64 `json:"ZoneId,omitempty" name:"ZoneId"`
 
 	// 实例类型：2 – Redis2.8主从版，3 – Redis3.2主从版(CKV主从版)，4 – Redis3.2集群版(CKV集群版)，5-Redis2.8单机版，7 – Redis4.0集群版，
-	TypeId *uint64 `json:"TypeId" name:"TypeId"`
+	TypeId *uint64 `json:"TypeId,omitempty" name:"TypeId"`
 
 	// 实例容量，单位MB， 取值大小以 查询售卖规格接口返回的规格为准
-	MemSize *uint64 `json:"MemSize" name:"MemSize"`
+	MemSize *uint64 `json:"MemSize,omitempty" name:"MemSize"`
 
 	// 实例数量，单次购买实例数量以 查询售卖规格接口返回的规格为准
-	GoodsNum *uint64 `json:"GoodsNum" name:"GoodsNum"`
+	GoodsNum *uint64 `json:"GoodsNum,omitempty" name:"GoodsNum"`
 
 	// 购买时长，单位：月，取值范围 [1,2,3,4,5,6,7,8,9,10,11,12,24,36]
-	Period *uint64 `json:"Period" name:"Period"`
+	Period *uint64 `json:"Period,omitempty" name:"Period"`
 
 	// 实例密码，密码规则：1.长度为8-16个字符；2:至少包含字母、数字和字符!@^*()中的两种
-	Password *string `json:"Password" name:"Password"`
+	Password *string `json:"Password,omitempty" name:"Password"`
 
 	// 付费方式:0-按量计费，1-包年包月。
-	BillingMode *int64 `json:"BillingMode" name:"BillingMode"`
+	BillingMode *int64 `json:"BillingMode,omitempty" name:"BillingMode"`
 
 	// 私有网络ID，如果不传则默认选择基础网络，请使用私有网络列表查询，如：vpc-sad23jfdfk
-	VpcId *string `json:"VpcId" name:"VpcId"`
+	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
 
 	// 基础网络下， subnetId无效； vpc子网下，取值以查询子网列表，如：subnet-fdj24n34j2
-	SubnetId *string `json:"SubnetId" name:"SubnetId"`
+	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
 
 	// 项目id，取值以用户账户>用户账户相关接口查询>项目列表返回的projectId为准
-	ProjectId *int64 `json:"ProjectId" name:"ProjectId"`
+	ProjectId *int64 `json:"ProjectId,omitempty" name:"ProjectId"`
 
 	// 自动续费表示。0 - 默认状态（手动续费）；1 - 自动续费；2 - 明确不自动续费
-	AutoRenew *uint64 `json:"AutoRenew" name:"AutoRenew"`
+	AutoRenew *uint64 `json:"AutoRenew,omitempty" name:"AutoRenew"`
 
 	// 安全组id数组
-	SecurityGroupIdList []*string `json:"SecurityGroupIdList" name:"SecurityGroupIdList" list`
+	SecurityGroupIdList []*string `json:"SecurityGroupIdList,omitempty" name:"SecurityGroupIdList" list`
 
 	// 用户自定义的端口 不填则默认为6379
-	VPort *uint64 `json:"VPort" name:"VPort"`
+	VPort *uint64 `json:"VPort,omitempty" name:"VPort"`
 
 	// 实例分片数量，Redis2.8主从版、CKV主从版和Redis2.8单机版不需要填写
-	RedisShardNum *int64 `json:"RedisShardNum" name:"RedisShardNum"`
+	RedisShardNum *int64 `json:"RedisShardNum,omitempty" name:"RedisShardNum"`
 
 	// 实例副本数量，Redis2.8主从版、CKV主从版和Redis2.8单机版不需要填写
-	RedisReplicasNum *int64 `json:"RedisReplicasNum" name:"RedisReplicasNum"`
+	RedisReplicasNum *int64 `json:"RedisReplicasNum,omitempty" name:"RedisReplicasNum"`
 
 	// 是否支持副本只读，Redis2.8主从版、CKV主从版和Redis2.8单机版不需要填写
-	ReplicasReadonly *bool `json:"ReplicasReadonly" name:"ReplicasReadonly"`
+	ReplicasReadonly *bool `json:"ReplicasReadonly,omitempty" name:"ReplicasReadonly"`
 }
 
 func (r *CreateInstancesRequest) ToJsonString() string {
@@ -126,10 +126,10 @@ type CreateInstancesResponse struct {
 	Response *struct {
 
 		// 交易的Id
-		DealId *string `json:"DealId" name:"DealId"`
+		DealId *string `json:"DealId,omitempty" name:"DealId"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId" name:"RequestId"`
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
 }
 
@@ -146,7 +146,7 @@ type DescribeAutoBackupConfigRequest struct {
 	*tchttp.BaseRequest
 
 	// 实例ID
-	InstanceId *string `json:"InstanceId" name:"InstanceId"`
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 }
 
 func (r *DescribeAutoBackupConfigRequest) ToJsonString() string {
@@ -163,16 +163,16 @@ type DescribeAutoBackupConfigResponse struct {
 	Response *struct {
 
 		// 备份类型。自动备份类型： 1 “定时回档”
-		AutoBackupType *int64 `json:"AutoBackupType" name:"AutoBackupType"`
+		AutoBackupType *int64 `json:"AutoBackupType,omitempty" name:"AutoBackupType"`
 
 		// Monday，Tuesday，Wednesday，Thursday，Friday，Saturday，Sunday。
-		WeekDays []*string `json:"WeekDays" name:"WeekDays" list`
+		WeekDays []*string `json:"WeekDays,omitempty" name:"WeekDays" list`
 
 		// 时间段。
-		TimePeriod *string `json:"TimePeriod" name:"TimePeriod"`
+		TimePeriod *string `json:"TimePeriod,omitempty" name:"TimePeriod"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId" name:"RequestId"`
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
 }
 
@@ -189,22 +189,22 @@ type DescribeInstanceBackupsRequest struct {
 	*tchttp.BaseRequest
 
 	// 待操作的实例ID，可通过 DescribeInstance 接口返回值中的 InstanceId 获取。
-	InstanceId *string `json:"InstanceId" name:"InstanceId"`
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
 	// 实例列表大小，默认大小20
-	Limit *int64 `json:"Limit" name:"Limit"`
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 
 	// 偏移量，取Limit整数倍
-	Offset *int64 `json:"Offset" name:"Offset"`
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
 
 	// 开始时间，格式如：2017-02-08 16:46:34。查询实例在 [beginTime, endTime] 时间段内开始备份的备份列表。
-	BeginTime *string `json:"BeginTime" name:"BeginTime"`
+	BeginTime *string `json:"BeginTime,omitempty" name:"BeginTime"`
 
 	// 结束时间，格式如：2017-02-08 19:09:26。查询实例在 [beginTime, endTime] 时间段内开始备份的备份列表。
-	EndTime *string `json:"EndTime" name:"EndTime"`
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 
 	// 1：备份在流程中，2：备份正常，3：备份转RDB文件处理中，4：已完成RDB转换，-1：备份已过期，-2：备份已删除。
-	Status []*string `json:"Status" name:"Status" list`
+	Status []*string `json:"Status,omitempty" name:"Status" list`
 }
 
 func (r *DescribeInstanceBackupsRequest) ToJsonString() string {
@@ -221,13 +221,13 @@ type DescribeInstanceBackupsResponse struct {
 	Response *struct {
 
 		// 备份总数
-		TotalCount *int64 `json:"TotalCount" name:"TotalCount"`
+		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 实例的备份数组
-		BackupSet []*RedisBackupSet `json:"BackupSet" name:"BackupSet" list`
+		BackupSet []*RedisBackupSet `json:"BackupSet,omitempty" name:"BackupSet" list`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId" name:"RequestId"`
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
 }
 
@@ -244,7 +244,7 @@ type DescribeInstanceDealDetailRequest struct {
 	*tchttp.BaseRequest
 
 	// 订单ID数组
-	DealIds []*string `json:"DealIds" name:"DealIds" list`
+	DealIds []*string `json:"DealIds,omitempty" name:"DealIds" list`
 }
 
 func (r *DescribeInstanceDealDetailRequest) ToJsonString() string {
@@ -261,10 +261,10 @@ type DescribeInstanceDealDetailResponse struct {
 	Response *struct {
 
 		// 订单详细信息
-		DealDetails []*TradeDealDetail `json:"DealDetails" name:"DealDetails" list`
+		DealDetails []*TradeDealDetail `json:"DealDetails,omitempty" name:"DealDetails" list`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId" name:"RequestId"`
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
 }
 
@@ -281,43 +281,43 @@ type DescribeInstancesRequest struct {
 	*tchttp.BaseRequest
 
 	// 实例列表的大小，参数默认值20
-	Limit *uint64 `json:"Limit" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 
 	// 偏移量，取Limit整数倍
-	Offset *uint64 `json:"Offset" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
 
 	// 实例Id，如：crs-6ubhgouj
-	InstanceId *string `json:"InstanceId" name:"InstanceId"`
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
 	// 枚举范围： projectId,createtime,instancename,type,curDeadline
-	OrderBy *string `json:"OrderBy" name:"OrderBy"`
+	OrderBy *string `json:"OrderBy,omitempty" name:"OrderBy"`
 
 	// 1倒序，0顺序，默认倒序
-	OrderType *int64 `json:"OrderType" name:"OrderType"`
+	OrderType *int64 `json:"OrderType,omitempty" name:"OrderType"`
 
 	// 私有网络ID数组，数组下标从0开始，如果不传则默认选择基础网络，如：47525
-	VpcIds []*string `json:"VpcIds" name:"VpcIds" list`
+	VpcIds []*string `json:"VpcIds,omitempty" name:"VpcIds" list`
 
 	// 子网ID数组，数组下标从0开始，如：56854
-	SubnetIds []*string `json:"SubnetIds" name:"SubnetIds" list`
+	SubnetIds []*string `json:"SubnetIds,omitempty" name:"SubnetIds" list`
 
 	// 项目ID 组成的数组，数组下标从0开始
-	ProjectIds []*int64 `json:"ProjectIds" name:"ProjectIds" list`
+	ProjectIds []*int64 `json:"ProjectIds,omitempty" name:"ProjectIds" list`
 
 	// 查找实例的ID。
-	SearchKey *string `json:"SearchKey" name:"SearchKey"`
+	SearchKey *string `json:"SearchKey,omitempty" name:"SearchKey"`
 
 	// 实例名称
-	InstanceName *string `json:"InstanceName" name:"InstanceName"`
+	InstanceName *string `json:"InstanceName,omitempty" name:"InstanceName"`
 
 	// 私有网络ID数组，数组下标从0开始，如果不传则默认选择基础网络，如：vpc-sad23jfdfk
-	UniqVpcIds []*string `json:"UniqVpcIds" name:"UniqVpcIds" list`
+	UniqVpcIds []*string `json:"UniqVpcIds,omitempty" name:"UniqVpcIds" list`
 
 	// 子网ID数组，数组下标从0开始，如：subnet-fdj24n34j2
-	UniqSubnetIds []*string `json:"UniqSubnetIds" name:"UniqSubnetIds" list`
+	UniqSubnetIds []*string `json:"UniqSubnetIds,omitempty" name:"UniqSubnetIds" list`
 
 	// 地域ID，已经弃用，可通过公共参数Region查询对应地域
-	RegionIds []*int64 `json:"RegionIds" name:"RegionIds" list`
+	RegionIds []*int64 `json:"RegionIds,omitempty" name:"RegionIds" list`
 }
 
 func (r *DescribeInstancesRequest) ToJsonString() string {
@@ -334,13 +334,13 @@ type DescribeInstancesResponse struct {
 	Response *struct {
 
 		// 实例数
-		TotalCount *int64 `json:"TotalCount" name:"TotalCount"`
+		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 实例详细信息列表
-		InstanceSet []*InstanceSet `json:"InstanceSet" name:"InstanceSet" list`
+		InstanceSet []*InstanceSet `json:"InstanceSet,omitempty" name:"InstanceSet" list`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId" name:"RequestId"`
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
 }
 
@@ -371,10 +371,10 @@ type DescribeProductInfoResponse struct {
 	Response *struct {
 
 		// 地域售卖信息
-		RegionSet []*RegionConf `json:"RegionSet" name:"RegionSet" list`
+		RegionSet []*RegionConf `json:"RegionSet,omitempty" name:"RegionSet" list`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId" name:"RequestId"`
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
 }
 
@@ -391,7 +391,7 @@ type DescribeTaskInfoRequest struct {
 	*tchttp.BaseRequest
 
 	// 任务ID
-	TaskId *uint64 `json:"TaskId" name:"TaskId"`
+	TaskId *uint64 `json:"TaskId,omitempty" name:"TaskId"`
 }
 
 func (r *DescribeTaskInfoRequest) ToJsonString() string {
@@ -408,22 +408,22 @@ type DescribeTaskInfoResponse struct {
 	Response *struct {
 
 		// 任务状态preparing:待执行，running：执行中，succeed：成功，failed：失败，error 执行出错
-		Status *string `json:"Status" name:"Status"`
+		Status *string `json:"Status,omitempty" name:"Status"`
 
 		// 任务开始时间
-		StartTime *string `json:"StartTime" name:"StartTime"`
+		StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
 
 		// 任务类型
-		TaskType *string `json:"TaskType" name:"TaskType"`
+		TaskType *string `json:"TaskType,omitempty" name:"TaskType"`
 
 		// 实例的ID
-		InstanceId *string `json:"InstanceId" name:"InstanceId"`
+		InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
 		// 任务信息，错误时显示错误信息。执行中与成功则为空
-		TaskMessage *string `json:"TaskMessage" name:"TaskMessage"`
+		TaskMessage *string `json:"TaskMessage,omitempty" name:"TaskMessage"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId" name:"RequestId"`
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
 }
 
@@ -439,80 +439,80 @@ func (r *DescribeTaskInfoResponse) FromJsonString(s string) error {
 type InstanceSet struct {
 
 	// 实例名称
-	InstanceName *string `json:"InstanceName" name:"InstanceName"`
+	InstanceName *string `json:"InstanceName,omitempty" name:"InstanceName"`
 
 	// 实例Id
-	InstanceId *string `json:"InstanceId" name:"InstanceId"`
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
 	// 用户的Appid
-	Appid *int64 `json:"Appid" name:"Appid"`
+	Appid *int64 `json:"Appid,omitempty" name:"Appid"`
 
 	// 项目Id
-	ProjectId *int64 `json:"ProjectId" name:"ProjectId"`
+	ProjectId *int64 `json:"ProjectId,omitempty" name:"ProjectId"`
 
 	// 地域id 1--广州 4--上海 5-- 香港 6--多伦多 7--上海金融 8--北京 9-- 新加坡 11--深圳金融 15--美西（硅谷）16--成都 17--德国 18--韩国 19--重庆 21--印度 22--美东（弗吉尼亚）23--泰国 24--俄罗斯 25--日本
-	RegionId *int64 `json:"RegionId" name:"RegionId"`
+	RegionId *int64 `json:"RegionId,omitempty" name:"RegionId"`
 
 	// 区域id
-	ZoneId *int64 `json:"ZoneId" name:"ZoneId"`
+	ZoneId *int64 `json:"ZoneId,omitempty" name:"ZoneId"`
 
 	// vpc网络id 如：75101
-	VpcId *int64 `json:"VpcId" name:"VpcId"`
+	VpcId *int64 `json:"VpcId,omitempty" name:"VpcId"`
 
 	// vpc网络下子网id 如：46315
-	SubnetId *int64 `json:"SubnetId" name:"SubnetId"`
+	SubnetId *int64 `json:"SubnetId,omitempty" name:"SubnetId"`
 
 	// 实例当前状态，0：待初始化；1：实例在流程中；2：实例运行中；-2：实例已隔离；-3：实例待删除
-	Status *int64 `json:"Status" name:"Status"`
+	Status *int64 `json:"Status,omitempty" name:"Status"`
 
 	// 实例vip
-	WanIp *string `json:"WanIp" name:"WanIp"`
+	WanIp *string `json:"WanIp,omitempty" name:"WanIp"`
 
 	// 实例端口号
-	Port *int64 `json:"Port" name:"Port"`
+	Port *int64 `json:"Port,omitempty" name:"Port"`
 
 	// 实例创建时间
-	Createtime *string `json:"Createtime" name:"Createtime"`
+	Createtime *string `json:"Createtime,omitempty" name:"Createtime"`
 
 	// 实例容量大小，单位：MB
-	Size *float64 `json:"Size" name:"Size"`
+	Size *float64 `json:"Size,omitempty" name:"Size"`
 
 	// 实例当前已使用容量，单位：MB
-	SizeUsed *float64 `json:"SizeUsed" name:"SizeUsed"`
+	SizeUsed *float64 `json:"SizeUsed,omitempty" name:"SizeUsed"`
 
 	// 实例类型，1：Redis2.8集群版；2：Redis2.8主从版；3：CKV主从版（Redis3.2）；4：CKV集群版（Redis3.2）；5：Redis2.8单机版；7：Redis4.0集群版；
-	Type *int64 `json:"Type" name:"Type"`
+	Type *int64 `json:"Type,omitempty" name:"Type"`
 
 	// 实例是否设置自动续费标识，1：设置自动续费；0：未设置自动续费
-	AutoRenewFlag *int64 `json:"AutoRenewFlag" name:"AutoRenewFlag"`
+	AutoRenewFlag *int64 `json:"AutoRenewFlag,omitempty" name:"AutoRenewFlag"`
 
 	// 实例到期时间
-	DeadlineTime *string `json:"DeadlineTime" name:"DeadlineTime"`
+	DeadlineTime *string `json:"DeadlineTime,omitempty" name:"DeadlineTime"`
 
 	// 引擎：社区版Redis、腾讯云CKV
-	Engine *string `json:"Engine" name:"Engine"`
+	Engine *string `json:"Engine,omitempty" name:"Engine"`
 
 	// 产品类型：Redis2.8集群版、Redis2.8主从版、Redis3.2主从版（CKV主从版）、Redis3.2集群版（CKV集群版）、Redis2.8单机版、Redis4.0集群版
-	ProductType *string `json:"ProductType" name:"ProductType"`
+	ProductType *string `json:"ProductType,omitempty" name:"ProductType"`
 
 	// vpc网络id 如：vpc-fk33jsf43kgv
-	UniqVpcId *string `json:"UniqVpcId" name:"UniqVpcId"`
+	UniqVpcId *string `json:"UniqVpcId,omitempty" name:"UniqVpcId"`
 
 	// vpc网络下子网id 如：subnet-fd3j6l35mm0
-	UniqSubnetId *string `json:"UniqSubnetId" name:"UniqSubnetId"`
+	UniqSubnetId *string `json:"UniqSubnetId,omitempty" name:"UniqSubnetId"`
 
 	// 计费模式：0-按量计费，1-包年包月
-	BillingMode *int64 `json:"BillingMode" name:"BillingMode"`
+	BillingMode *int64 `json:"BillingMode,omitempty" name:"BillingMode"`
 }
 
 type ManualBackupInstanceRequest struct {
 	*tchttp.BaseRequest
 
 	// 待操作的实例ID，可通过 DescribeInstance接口返回值中的 InstanceId 获取。
-	InstanceId *string `json:"InstanceId" name:"InstanceId"`
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
 	// 备份的备注信息
-	Remark *string `json:"Remark" name:"Remark"`
+	Remark *string `json:"Remark,omitempty" name:"Remark"`
 }
 
 func (r *ManualBackupInstanceRequest) ToJsonString() string {
@@ -529,10 +529,10 @@ type ManualBackupInstanceResponse struct {
 	Response *struct {
 
 		// 任务ID
-		TaskId *int64 `json:"TaskId" name:"TaskId"`
+		TaskId *int64 `json:"TaskId,omitempty" name:"TaskId"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId" name:"RequestId"`
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
 }
 
@@ -549,13 +549,13 @@ type ModfiyInstancePasswordRequest struct {
 	*tchttp.BaseRequest
 
 	// 实例ID
-	InstanceId *string `json:"InstanceId" name:"InstanceId"`
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
 	// 实例旧密码
-	OldPassword *string `json:"OldPassword" name:"OldPassword"`
+	OldPassword *string `json:"OldPassword,omitempty" name:"OldPassword"`
 
 	// 实例新密码
-	Password *string `json:"Password" name:"Password"`
+	Password *string `json:"Password,omitempty" name:"Password"`
 }
 
 func (r *ModfiyInstancePasswordRequest) ToJsonString() string {
@@ -572,10 +572,10 @@ type ModfiyInstancePasswordResponse struct {
 	Response *struct {
 
 		// 任务ID
-		TaskId *int64 `json:"TaskId" name:"TaskId"`
+		TaskId *int64 `json:"TaskId,omitempty" name:"TaskId"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId" name:"RequestId"`
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
 }
 
@@ -592,16 +592,16 @@ type ModifyAutoBackupConfigRequest struct {
 	*tchttp.BaseRequest
 
 	// 实例ID
-	InstanceId *string `json:"InstanceId" name:"InstanceId"`
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
 	// 日期 Monday，Tuesday，Wednesday，Thursday，Friday，Saturday，Sunday
-	WeekDays []*string `json:"WeekDays" name:"WeekDays" list`
+	WeekDays []*string `json:"WeekDays,omitempty" name:"WeekDays" list`
 
 	// 时间段 00:00-01:00, 01:00-02:00...... 23:00-00:00
-	TimePeriod *string `json:"TimePeriod" name:"TimePeriod"`
+	TimePeriod *string `json:"TimePeriod,omitempty" name:"TimePeriod"`
 
 	// 自动备份类型： 1 “定时回档”
-	AutoBackupType *int64 `json:"AutoBackupType" name:"AutoBackupType"`
+	AutoBackupType *int64 `json:"AutoBackupType,omitempty" name:"AutoBackupType"`
 }
 
 func (r *ModifyAutoBackupConfigRequest) ToJsonString() string {
@@ -618,16 +618,16 @@ type ModifyAutoBackupConfigResponse struct {
 	Response *struct {
 
 		// 自动备份类型： 1 “定时回档”
-		AutoBackupType *int64 `json:"AutoBackupType" name:"AutoBackupType"`
+		AutoBackupType *int64 `json:"AutoBackupType,omitempty" name:"AutoBackupType"`
 
 		// 日期Monday，Tuesday，Wednesday，Thursday，Friday，Saturday，Sunday。
-		WeekDays []*string `json:"WeekDays" name:"WeekDays" list`
+		WeekDays []*string `json:"WeekDays,omitempty" name:"WeekDays" list`
 
 		// 时间段 00:00-01:00, 01:00-02:00...... 23:00-00:00
-		TimePeriod *string `json:"TimePeriod" name:"TimePeriod"`
+		TimePeriod *string `json:"TimePeriod,omitempty" name:"TimePeriod"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId" name:"RequestId"`
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
 }
 
@@ -644,13 +644,13 @@ type ModifyInstanceRequest struct {
 	*tchttp.BaseRequest
 
 	// 修改实例操作，如填写：rename（表示实例重命名）
-	Operation *string `json:"Operation" name:"Operation"`
+	Operation *string `json:"Operation,omitempty" name:"Operation"`
 
 	// 实例Id
-	InstanceId *string `json:"InstanceId" name:"InstanceId"`
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
 	// 实例的新名称
-	InstanceName *string `json:"InstanceName" name:"InstanceName"`
+	InstanceName *string `json:"InstanceName,omitempty" name:"InstanceName"`
 }
 
 func (r *ModifyInstanceRequest) ToJsonString() string {
@@ -667,7 +667,7 @@ type ModifyInstanceResponse struct {
 	Response *struct {
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId" name:"RequestId"`
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
 }
 
@@ -683,92 +683,92 @@ func (r *ModifyInstanceResponse) FromJsonString(s string) error {
 type ProductConf struct {
 
 	// 产品类型，2-Redis主从版，3-CKV主从版，4-CKV集群版，5-Redis单机版，7-Redis集群版
-	Type *int64 `json:"Type" name:"Type"`
+	Type *int64 `json:"Type,omitempty" name:"Type"`
 
 	// 产品名称，Redis主从版，CKV主从版，CKV集群版，Redis单机版，Redis集群版
-	TypeName *string `json:"TypeName" name:"TypeName"`
+	TypeName *string `json:"TypeName,omitempty" name:"TypeName"`
 
 	// 购买时的最小数量
-	MinBuyNum *int64 `json:"MinBuyNum" name:"MinBuyNum"`
+	MinBuyNum *int64 `json:"MinBuyNum,omitempty" name:"MinBuyNum"`
 
 	// 购买时的最大数量
-	MaxBuyNum *int64 `json:"MaxBuyNum" name:"MaxBuyNum"`
+	MaxBuyNum *int64 `json:"MaxBuyNum,omitempty" name:"MaxBuyNum"`
 
 	// 产品是否售罄
-	Saleout *bool `json:"Saleout" name:"Saleout"`
+	Saleout *bool `json:"Saleout,omitempty" name:"Saleout"`
 
 	// 产品引擎，腾讯云CKV或者社区版Redis
-	Engine *string `json:"Engine" name:"Engine"`
+	Engine *string `json:"Engine,omitempty" name:"Engine"`
 
 	// 兼容版本，Redis-2.8，Redis-3.2，Redis-4.0
-	Version *string `json:"Version" name:"Version"`
+	Version *string `json:"Version,omitempty" name:"Version"`
 
 	// 规格总大小，单位G
-	TotalSize []*string `json:"TotalSize" name:"TotalSize" list`
+	TotalSize []*string `json:"TotalSize,omitempty" name:"TotalSize" list`
 
 	// 每个分片大小，单位G
-	ShardSize []*string `json:"ShardSize" name:"ShardSize" list`
+	ShardSize []*string `json:"ShardSize,omitempty" name:"ShardSize" list`
 
 	// 副本数量
-	ReplicaNum []*string `json:"ReplicaNum" name:"ReplicaNum" list`
+	ReplicaNum []*string `json:"ReplicaNum,omitempty" name:"ReplicaNum" list`
 
 	// 分片数量
-	ShardNum []*string `json:"ShardNum" name:"ShardNum" list`
+	ShardNum []*string `json:"ShardNum,omitempty" name:"ShardNum" list`
 
 	// 支持的计费模式，1-包年包月，0-按量计费
-	PayMode *string `json:"PayMode" name:"PayMode"`
+	PayMode *string `json:"PayMode,omitempty" name:"PayMode"`
 
 	// 是否支持副本只读
-	EnableRepicaReadOnly *bool `json:"EnableRepicaReadOnly" name:"EnableRepicaReadOnly"`
+	EnableRepicaReadOnly *bool `json:"EnableRepicaReadOnly,omitempty" name:"EnableRepicaReadOnly"`
 }
 
 type RedisBackupSet struct {
 
 	// 开始备份的时间
-	StartTime *string `json:"StartTime" name:"StartTime"`
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
 
 	// 备份ID
-	BackupId *string `json:"BackupId" name:"BackupId"`
+	BackupId *string `json:"BackupId,omitempty" name:"BackupId"`
 
 	// 备份类型。 manualBackupInstance：用户发起的手动备份； systemBackupInstance：凌晨系统发起的备份
-	BackupType *string `json:"BackupType" name:"BackupType"`
+	BackupType *string `json:"BackupType,omitempty" name:"BackupType"`
 
 	// 备份状态。  1:"备份被其它流程锁定";  2:"备份正常，没有被任何流程锁定";  -1:"备份已过期"； 3:"备份正在被导出";  4:"备份导出成功"
-	Status *int64 `json:"Status" name:"Status"`
+	Status *int64 `json:"Status,omitempty" name:"Status"`
 
 	// 备份的备注信息
-	Remark *string `json:"Remark" name:"Remark"`
+	Remark *string `json:"Remark,omitempty" name:"Remark"`
 
 	// 备份是否被锁定，0：未被锁定；1：已被锁定
-	Locked *int64 `json:"Locked" name:"Locked"`
+	Locked *int64 `json:"Locked,omitempty" name:"Locked"`
 }
 
 type RegionConf struct {
 
 	// 地域ID
-	RegionId *string `json:"RegionId" name:"RegionId"`
+	RegionId *string `json:"RegionId,omitempty" name:"RegionId"`
 
 	// 地域名称
-	RegionName *string `json:"RegionName" name:"RegionName"`
+	RegionName *string `json:"RegionName,omitempty" name:"RegionName"`
 
 	// 地域简称
-	RegionShortName *string `json:"RegionShortName" name:"RegionShortName"`
+	RegionShortName *string `json:"RegionShortName,omitempty" name:"RegionShortName"`
 
 	// 地域所在大区名称
-	Area *string `json:"Area" name:"Area"`
+	Area *string `json:"Area,omitempty" name:"Area"`
 
 	// 可用区信息
-	ZoneSet []*ZoneCapacityConf `json:"ZoneSet" name:"ZoneSet" list`
+	ZoneSet []*ZoneCapacityConf `json:"ZoneSet,omitempty" name:"ZoneSet" list`
 }
 
 type RenewInstanceRequest struct {
 	*tchttp.BaseRequest
 
 	// 购买时长，单位：月
-	Period *uint64 `json:"Period" name:"Period"`
+	Period *uint64 `json:"Period,omitempty" name:"Period"`
 
 	// 实例ID
-	InstanceId *string `json:"InstanceId" name:"InstanceId"`
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 }
 
 func (r *RenewInstanceRequest) ToJsonString() string {
@@ -785,10 +785,10 @@ type RenewInstanceResponse struct {
 	Response *struct {
 
 		// 交易Id
-		DealId *string `json:"DealId" name:"DealId"`
+		DealId *string `json:"DealId,omitempty" name:"DealId"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId" name:"RequestId"`
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
 }
 
@@ -805,10 +805,10 @@ type ResetPasswordRequest struct {
 	*tchttp.BaseRequest
 
 	// 重置的密码
-	Password *string `json:"Password" name:"Password"`
+	Password *string `json:"Password,omitempty" name:"Password"`
 
 	// Redis实例ID
-	InstanceId *string `json:"InstanceId" name:"InstanceId"`
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 }
 
 func (r *ResetPasswordRequest) ToJsonString() string {
@@ -825,10 +825,10 @@ type ResetPasswordResponse struct {
 	Response *struct {
 
 		// 任务ID
-		TaskId *int64 `json:"TaskId" name:"TaskId"`
+		TaskId *int64 `json:"TaskId,omitempty" name:"TaskId"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId" name:"RequestId"`
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
 }
 
@@ -844,56 +844,56 @@ func (r *ResetPasswordResponse) FromJsonString(s string) error {
 type TradeDealDetail struct {
 
 	// 订单号ID，调用云API时使用此ID
-	DealId *string `json:"DealId" name:"DealId"`
+	DealId *string `json:"DealId,omitempty" name:"DealId"`
 
 	// 长订单ID，反馈订单问题给官方客服使用此ID
-	DealName *string `json:"DealName" name:"DealName"`
+	DealName *string `json:"DealName,omitempty" name:"DealName"`
 
 	// 可用区id
-	ZoneId *int64 `json:"ZoneId" name:"ZoneId"`
+	ZoneId *int64 `json:"ZoneId,omitempty" name:"ZoneId"`
 
 	// 订单关联的实例数
-	GoodsNum *int64 `json:"GoodsNum" name:"GoodsNum"`
+	GoodsNum *int64 `json:"GoodsNum,omitempty" name:"GoodsNum"`
 
 	// 创建用户uin
-	Creater *string `json:"Creater" name:"Creater"`
+	Creater *string `json:"Creater,omitempty" name:"Creater"`
 
 	// 订单创建时间
-	CreatTime *string `json:"CreatTime" name:"CreatTime"`
+	CreatTime *string `json:"CreatTime,omitempty" name:"CreatTime"`
 
 	// 订单超时时间
-	OverdueTime *string `json:"OverdueTime" name:"OverdueTime"`
+	OverdueTime *string `json:"OverdueTime,omitempty" name:"OverdueTime"`
 
 	// 订单完成时间
-	EndTime *string `json:"EndTime" name:"EndTime"`
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 
 	// 订单状态 1：未支付 2:已支付，未发货 3:发货中 4:发货成功 5:发货失败 6:已退款 7:已关闭订单 8:订单过期 9:订单已失效 10:产品已失效 11:代付拒绝 12:支付中
-	Status *int64 `json:"Status" name:"Status"`
+	Status *int64 `json:"Status,omitempty" name:"Status"`
 
 	// 订单状态描述
-	Description *string `json:"Description" name:"Description"`
+	Description *string `json:"Description,omitempty" name:"Description"`
 
 	// 订单实际总价，单位：分
-	Price *int64 `json:"Price" name:"Price"`
+	Price *int64 `json:"Price,omitempty" name:"Price"`
 
 	// 实例ID
-	InstanceIds []*string `json:"InstanceIds" name:"InstanceIds" list`
+	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds" list`
 }
 
 type UpgradeInstanceRequest struct {
 	*tchttp.BaseRequest
 
 	// 实例Id
-	InstanceId *string `json:"InstanceId" name:"InstanceId"`
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
 	// 分片大小 单位 MB
-	MemSize *uint64 `json:"MemSize" name:"MemSize"`
+	MemSize *uint64 `json:"MemSize,omitempty" name:"MemSize"`
 
 	// 分片数量，Redis2.8主从版、CKV主从版和Redis2.8单机版不需要填写
-	RedisShardNum *uint64 `json:"RedisShardNum" name:"RedisShardNum"`
+	RedisShardNum *uint64 `json:"RedisShardNum,omitempty" name:"RedisShardNum"`
 
 	// 副本数量，Redis2.8主从版、CKV主从版和Redis2.8单机版不需要填写
-	RedisReplicasNum *uint64 `json:"RedisReplicasNum" name:"RedisReplicasNum"`
+	RedisReplicasNum *uint64 `json:"RedisReplicasNum,omitempty" name:"RedisReplicasNum"`
 }
 
 func (r *UpgradeInstanceRequest) ToJsonString() string {
@@ -910,10 +910,10 @@ type UpgradeInstanceResponse struct {
 	Response *struct {
 
 		// 订单ID
-		DealId *string `json:"DealId" name:"DealId"`
+		DealId *string `json:"DealId,omitempty" name:"DealId"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId" name:"RequestId"`
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
 }
 
@@ -929,23 +929,23 @@ func (r *UpgradeInstanceResponse) FromJsonString(s string) error {
 type ZoneCapacityConf struct {
 
 	// 可用区ID：如ap-guangzhou-3
-	ZoneId *string `json:"ZoneId" name:"ZoneId"`
+	ZoneId *string `json:"ZoneId,omitempty" name:"ZoneId"`
 
 	// 可用区名称
-	ZoneName *string `json:"ZoneName" name:"ZoneName"`
+	ZoneName *string `json:"ZoneName,omitempty" name:"ZoneName"`
 
 	// 可用区是否售罄
-	IsSaleout *bool `json:"IsSaleout" name:"IsSaleout"`
+	IsSaleout *bool `json:"IsSaleout,omitempty" name:"IsSaleout"`
 
 	// 是否为默认可用区
-	IsDefault *bool `json:"IsDefault" name:"IsDefault"`
+	IsDefault *bool `json:"IsDefault,omitempty" name:"IsDefault"`
 
 	// 网络类型：basenet -- 基础网络；vpcnet -- VPC网络
-	NetWorkType []*string `json:"NetWorkType" name:"NetWorkType" list`
+	NetWorkType []*string `json:"NetWorkType,omitempty" name:"NetWorkType" list`
 
 	// 可用区内产品规格等信息
-	ProductSet []*ProductConf `json:"ProductSet" name:"ProductSet" list`
+	ProductSet []*ProductConf `json:"ProductSet,omitempty" name:"ProductSet" list`
 
 	// 可用区ID：如100003
-	OldZoneId *int64 `json:"OldZoneId" name:"OldZoneId"`
+	OldZoneId *int64 `json:"OldZoneId,omitempty" name:"OldZoneId"`
 }

@@ -24,13 +24,13 @@ type ChatRequest struct {
 	*tchttp.BaseRequest
 
 	// 聊天输入文本
-	Text *string `json:"Text" name:"Text"`
+	Text *string `json:"Text,omitempty" name:"Text"`
 
 	// 腾讯云项目 ID，可填 0，总长度不超过 1024 字节。
-	ProjectId *int64 `json:"ProjectId" name:"ProjectId"`
+	ProjectId *int64 `json:"ProjectId,omitempty" name:"ProjectId"`
 
 	// json格式，比如 {"id":"test","gender":"male"}。记录当前与机器人交互的用户id，非必须但强烈建议传入，否则多轮聊天功能会受影响
-	User *string `json:"User" name:"User"`
+	User *string `json:"User,omitempty" name:"User"`
 }
 
 func (r *ChatRequest) ToJsonString() string {
@@ -47,10 +47,10 @@ type ChatResponse struct {
 	Response *struct {
 
 		// 聊天输出文本
-		Answer *string `json:"Answer" name:"Answer"`
+		Answer *string `json:"Answer,omitempty" name:"Answer"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId" name:"RequestId"`
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
 }
 
@@ -67,31 +67,31 @@ type SentenceRecognitionRequest struct {
 	*tchttp.BaseRequest
 
 	// 腾讯云项目 ID，可填 0，总长度不超过 1024 字节。
-	ProjectId *uint64 `json:"ProjectId" name:"ProjectId"`
+	ProjectId *uint64 `json:"ProjectId,omitempty" name:"ProjectId"`
 
 	// 子服务类型。2，一句话识别。
-	SubServiceType *uint64 `json:"SubServiceType" name:"SubServiceType"`
+	SubServiceType *uint64 `json:"SubServiceType,omitempty" name:"SubServiceType"`
 
 	// 引擎类型。8k：电话 8k 通用模型；16k：16k 通用模型。只支持单声道音频识别。
-	EngSerViceType *string `json:"EngSerViceType" name:"EngSerViceType"`
+	EngSerViceType *string `json:"EngSerViceType,omitempty" name:"EngSerViceType"`
 
 	// 语音数据来源。0：语音 URL；1：语音数据（post body）。
-	SourceType *uint64 `json:"SourceType" name:"SourceType"`
+	SourceType *uint64 `json:"SourceType,omitempty" name:"SourceType"`
 
 	// 识别音频的音频格式（支持mp3,wav）。
-	VoiceFormat *string `json:"VoiceFormat" name:"VoiceFormat"`
+	VoiceFormat *string `json:"VoiceFormat,omitempty" name:"VoiceFormat"`
 
 	// 用户端对此任务的唯一标识，用户自助生成，用于用户查找识别结果。
-	UsrAudioKey *string `json:"UsrAudioKey" name:"UsrAudioKey"`
+	UsrAudioKey *string `json:"UsrAudioKey,omitempty" name:"UsrAudioKey"`
 
 	// 语音 URL，公网可下载。当 SourceType 值为 0 时须填写该字段，为 1 时不填；URL 的长度大于 0，小于 2048，需进行urlencode编码。音频时间长度要小于60s。
-	Url *string `json:"Url" name:"Url"`
+	Url *string `json:"Url,omitempty" name:"Url"`
 
 	// 语音数据，当SourceType 值为1时必须填写，为0可不写。要base64编码(采用python语言时注意读取文件应该为string而不是byte，以byte格式读取后要decode()。编码后的数据不可带有回车换行符)。音频数据要小于900k。
-	Data *string `json:"Data" name:"Data"`
+	Data *string `json:"Data,omitempty" name:"Data"`
 
 	// 数据长度，当 SourceType 值为1时必须填写，为0可不写（此数据长度为数据未进行base64编码时的数据长度）。
-	DataLen *int64 `json:"DataLen" name:"DataLen"`
+	DataLen *int64 `json:"DataLen,omitempty" name:"DataLen"`
 }
 
 func (r *SentenceRecognitionRequest) ToJsonString() string {
@@ -108,10 +108,10 @@ type SentenceRecognitionResponse struct {
 	Response *struct {
 
 		// 识别结果。
-		Result *string `json:"Result" name:"Result"`
+		Result *string `json:"Result,omitempty" name:"Result"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId" name:"RequestId"`
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
 }
 
@@ -128,40 +128,40 @@ type SimultaneousInterpretingRequest struct {
 	*tchttp.BaseRequest
 
 	// 腾讯云项目 ID，可填 0，总长度不超过 1024 字节。
-	ProjectId *uint64 `json:"ProjectId" name:"ProjectId"`
+	ProjectId *uint64 `json:"ProjectId,omitempty" name:"ProjectId"`
 
 	// 子服务类型。0：离线语音识别。1：实时流式识别，2，一句话识别。3：同传。
-	SubServiceType *uint64 `json:"SubServiceType" name:"SubServiceType"`
+	SubServiceType *uint64 `json:"SubServiceType,omitempty" name:"SubServiceType"`
 
 	// 识别引擎类型。8k_zh： 8k 中文会场模型；16k_zh：16k 中文会场模型，8k_en： 8k 英文会场模型；16k_en：16k 英文会场模型。当前仅支持16K。
-	RecEngineModelType *string `json:"RecEngineModelType" name:"RecEngineModelType"`
+	RecEngineModelType *string `json:"RecEngineModelType,omitempty" name:"RecEngineModelType"`
 
 	// 语音数据，要base64编码。
-	Data *string `json:"Data" name:"Data"`
+	Data *string `json:"Data,omitempty" name:"Data"`
 
 	// 数据长度。
-	DataLen *uint64 `json:"DataLen" name:"DataLen"`
+	DataLen *uint64 `json:"DataLen,omitempty" name:"DataLen"`
 
 	// 声音id，标识一句话。
-	VoiceId *string `json:"VoiceId" name:"VoiceId"`
+	VoiceId *string `json:"VoiceId,omitempty" name:"VoiceId"`
 
 	// 是否是一句话的结束。
-	IsEnd *uint64 `json:"IsEnd" name:"IsEnd"`
+	IsEnd *uint64 `json:"IsEnd,omitempty" name:"IsEnd"`
 
 	// 声音编码的格式1:pcm，4:speex，6:silk，默认为1。
-	VoiceFormat *uint64 `json:"VoiceFormat" name:"VoiceFormat"`
+	VoiceFormat *uint64 `json:"VoiceFormat,omitempty" name:"VoiceFormat"`
 
 	// 是否需要翻译结果，1表示需要翻译，0是不需要。
-	OpenTranslate *uint64 `json:"OpenTranslate" name:"OpenTranslate"`
+	OpenTranslate *uint64 `json:"OpenTranslate,omitempty" name:"OpenTranslate"`
 
 	// 如果需要翻译，表示源语言类型，可取值：zh，en。
-	SourceLanguage *string `json:"SourceLanguage" name:"SourceLanguage"`
+	SourceLanguage *string `json:"SourceLanguage,omitempty" name:"SourceLanguage"`
 
 	// 如果需要翻译，表示目标语言类型，可取值：zh，en。
-	TargetLanguage *string `json:"TargetLanguage" name:"TargetLanguage"`
+	TargetLanguage *string `json:"TargetLanguage,omitempty" name:"TargetLanguage"`
 
 	// 表明当前语音分片的索引，从0开始
-	Seq *uint64 `json:"Seq" name:"Seq"`
+	Seq *uint64 `json:"Seq,omitempty" name:"Seq"`
 }
 
 func (r *SimultaneousInterpretingRequest) ToJsonString() string {
@@ -178,13 +178,13 @@ type SimultaneousInterpretingResponse struct {
 	Response *struct {
 
 		// 语音识别的结果
-		AsrText *string `json:"AsrText" name:"AsrText"`
+		AsrText *string `json:"AsrText,omitempty" name:"AsrText"`
 
 		// 机器翻译的结果
-		NmtText *string `json:"NmtText" name:"NmtText"`
+		NmtText *string `json:"NmtText,omitempty" name:"NmtText"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId" name:"RequestId"`
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
 }
 
@@ -201,31 +201,31 @@ type TextToVoiceRequest struct {
 	*tchttp.BaseRequest
 
 	// 合成语音的源文本
-	Text *string `json:"Text" name:"Text"`
+	Text *string `json:"Text,omitempty" name:"Text"`
 
 	// 一次请求对应一个SessionId，会原样返回，建议传入类似于uuid的字符串防止重复
-	SessionId *string `json:"SessionId" name:"SessionId"`
+	SessionId *string `json:"SessionId,omitempty" name:"SessionId"`
 
 	// 模型类型，1-默认模型
-	ModelType *int64 `json:"ModelType" name:"ModelType"`
+	ModelType *int64 `json:"ModelType,omitempty" name:"ModelType"`
 
 	// 音量大小，范围：[0，10]，分别对应10个等级的音量，默认为0
-	Volume *float64 `json:"Volume" name:"Volume"`
+	Volume *float64 `json:"Volume,omitempty" name:"Volume"`
 
 	// 语速，范围：[-2，2]，分别对应不同语速：0.6倍，0.8倍，1.0倍，1.2倍，1.5倍，默认为0
-	Speed *float64 `json:"Speed" name:"Speed"`
+	Speed *float64 `json:"Speed,omitempty" name:"Speed"`
 
 	// 项目id，用户自定义，默认为0
-	ProjectId *int64 `json:"ProjectId" name:"ProjectId"`
+	ProjectId *int64 `json:"ProjectId,omitempty" name:"ProjectId"`
 
 	// 音色<li>0-女声1，亲和风格(默认)</li><li>1-男声1，成熟风格</li><li>2-男声2，成熟风格</li>
-	VoiceType *int64 `json:"VoiceType" name:"VoiceType"`
+	VoiceType *int64 `json:"VoiceType,omitempty" name:"VoiceType"`
 
 	// 主语言类型<li>1-中文，最大100个汉字（标点符号算一个汉子）</li><li>2-英文，最大支持400个字母（标点符号算一个字母）</li>
-	PrimaryLanguage *uint64 `json:"PrimaryLanguage" name:"PrimaryLanguage"`
+	PrimaryLanguage *uint64 `json:"PrimaryLanguage,omitempty" name:"PrimaryLanguage"`
 
 	// 音频采样率，16000：16k，8000：8k，默认16k
-	SampleRate *uint64 `json:"SampleRate" name:"SampleRate"`
+	SampleRate *uint64 `json:"SampleRate,omitempty" name:"SampleRate"`
 }
 
 func (r *TextToVoiceRequest) ToJsonString() string {
@@ -242,13 +242,13 @@ type TextToVoiceResponse struct {
 	Response *struct {
 
 		// base编码的wav音频
-		Audio *string `json:"Audio" name:"Audio"`
+		Audio *string `json:"Audio,omitempty" name:"Audio"`
 
 		// 一次请求对应一个SessionId
-		SessionId *string `json:"SessionId" name:"SessionId"`
+		SessionId *string `json:"SessionId,omitempty" name:"SessionId"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId" name:"RequestId"`
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
 }
 

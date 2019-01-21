@@ -23,232 +23,232 @@ import (
 type BillDetail struct {
 
 	// 产品名称
-	BusinessCodeName *string `json:"BusinessCodeName" name:"BusinessCodeName"`
+	BusinessCodeName *string `json:"BusinessCodeName,omitempty" name:"BusinessCodeName"`
 
 	// 子产品名称
-	ProductCodeName *string `json:"ProductCodeName" name:"ProductCodeName"`
+	ProductCodeName *string `json:"ProductCodeName,omitempty" name:"ProductCodeName"`
 
 	// 计费模式
-	PayModeName *string `json:"PayModeName" name:"PayModeName"`
+	PayModeName *string `json:"PayModeName,omitempty" name:"PayModeName"`
 
 	// 项目
-	ProjectName *string `json:"ProjectName" name:"ProjectName"`
+	ProjectName *string `json:"ProjectName,omitempty" name:"ProjectName"`
 
 	// 区域
-	RegionName *string `json:"RegionName" name:"RegionName"`
+	RegionName *string `json:"RegionName,omitempty" name:"RegionName"`
 
 	// 可用区
-	ZoneName *string `json:"ZoneName" name:"ZoneName"`
+	ZoneName *string `json:"ZoneName,omitempty" name:"ZoneName"`
 
 	// 资源实例ID
-	ResourceId *string `json:"ResourceId" name:"ResourceId"`
+	ResourceId *string `json:"ResourceId,omitempty" name:"ResourceId"`
 
 	// 实例名称
-	ResourceName *string `json:"ResourceName" name:"ResourceName"`
+	ResourceName *string `json:"ResourceName,omitempty" name:"ResourceName"`
 
 	// 交易类型
-	ActionTypeName *string `json:"ActionTypeName" name:"ActionTypeName"`
+	ActionTypeName *string `json:"ActionTypeName,omitempty" name:"ActionTypeName"`
 
 	// 订单ID
-	OrderId *string `json:"OrderId" name:"OrderId"`
+	OrderId *string `json:"OrderId,omitempty" name:"OrderId"`
 
 	// 交易ID
-	BillId *string `json:"BillId" name:"BillId"`
+	BillId *string `json:"BillId,omitempty" name:"BillId"`
 
 	// 扣费时间
-	PayTime *string `json:"PayTime" name:"PayTime"`
+	PayTime *string `json:"PayTime,omitempty" name:"PayTime"`
 
 	// 开始使用时间
-	FeeBeginTime *string `json:"FeeBeginTime" name:"FeeBeginTime"`
+	FeeBeginTime *string `json:"FeeBeginTime,omitempty" name:"FeeBeginTime"`
 
 	// 结束使用时间
-	FeeEndTime *string `json:"FeeEndTime" name:"FeeEndTime"`
+	FeeEndTime *string `json:"FeeEndTime,omitempty" name:"FeeEndTime"`
 
 	// 组件列表
-	ComponentSet []*BillDetailComponent `json:"ComponentSet" name:"ComponentSet" list`
+	ComponentSet []*BillDetailComponent `json:"ComponentSet,omitempty" name:"ComponentSet" list`
 
 	// 支付者UIN
-	PayerUin *string `json:"PayerUin" name:"PayerUin"`
+	PayerUin *string `json:"PayerUin,omitempty" name:"PayerUin"`
 
 	// 使用者UIN
-	OwnerUin *string `json:"OwnerUin" name:"OwnerUin"`
+	OwnerUin *string `json:"OwnerUin,omitempty" name:"OwnerUin"`
 
 	// 操作者UIN
-	OperateUin *string `json:"OperateUin" name:"OperateUin"`
+	OperateUin *string `json:"OperateUin,omitempty" name:"OperateUin"`
 }
 
 type BillDetailComponent struct {
 
 	// 组件名称
-	ComponentCodeName *string `json:"ComponentCodeName" name:"ComponentCodeName"`
+	ComponentCodeName *string `json:"ComponentCodeName,omitempty" name:"ComponentCodeName"`
 
 	// 组件类型名称
-	ItemCodeName *string `json:"ItemCodeName" name:"ItemCodeName"`
+	ItemCodeName *string `json:"ItemCodeName,omitempty" name:"ItemCodeName"`
 
 	// 组件刊例价
-	SinglePrice *string `json:"SinglePrice" name:"SinglePrice"`
+	SinglePrice *string `json:"SinglePrice,omitempty" name:"SinglePrice"`
 
 	// 组件指定价
-	SpecifiedPrice *string `json:"SpecifiedPrice" name:"SpecifiedPrice"`
+	SpecifiedPrice *string `json:"SpecifiedPrice,omitempty" name:"SpecifiedPrice"`
 
 	// 价格单位
-	PriceUnit *string `json:"PriceUnit" name:"PriceUnit"`
+	PriceUnit *string `json:"PriceUnit,omitempty" name:"PriceUnit"`
 
 	// 组件用量
-	UsedAmount *string `json:"UsedAmount" name:"UsedAmount"`
+	UsedAmount *string `json:"UsedAmount,omitempty" name:"UsedAmount"`
 
 	// 组件用量单位
-	UsedAmountUnit *string `json:"UsedAmountUnit" name:"UsedAmountUnit"`
+	UsedAmountUnit *string `json:"UsedAmountUnit,omitempty" name:"UsedAmountUnit"`
 
 	// 使用时长
-	TimeSpan *string `json:"TimeSpan" name:"TimeSpan"`
+	TimeSpan *string `json:"TimeSpan,omitempty" name:"TimeSpan"`
 
 	// 时长单位
-	TimeUnitName *string `json:"TimeUnitName" name:"TimeUnitName"`
+	TimeUnitName *string `json:"TimeUnitName,omitempty" name:"TimeUnitName"`
 
 	// 组件原价
-	Cost *string `json:"Cost" name:"Cost"`
+	Cost *string `json:"Cost,omitempty" name:"Cost"`
 
 	// 折扣率
-	Discount *string `json:"Discount" name:"Discount"`
+	Discount *string `json:"Discount,omitempty" name:"Discount"`
 
 	// 优惠类型
-	ReduceType *string `json:"ReduceType" name:"ReduceType"`
+	ReduceType *string `json:"ReduceType,omitempty" name:"ReduceType"`
 
 	// 优惠后总价
-	RealCost *string `json:"RealCost" name:"RealCost"`
+	RealCost *string `json:"RealCost,omitempty" name:"RealCost"`
 
 	// 代金券支付金额
-	VoucherPayAmount *string `json:"VoucherPayAmount" name:"VoucherPayAmount"`
+	VoucherPayAmount *string `json:"VoucherPayAmount,omitempty" name:"VoucherPayAmount"`
 
 	// 现金支付金额
-	CashPayAmount *string `json:"CashPayAmount" name:"CashPayAmount"`
+	CashPayAmount *string `json:"CashPayAmount,omitempty" name:"CashPayAmount"`
 
 	// 赠送账户支付金额
-	IncentivePayAmount *string `json:"IncentivePayAmount" name:"IncentivePayAmount"`
+	IncentivePayAmount *string `json:"IncentivePayAmount,omitempty" name:"IncentivePayAmount"`
 }
 
 type BillResourceSummary struct {
 
 	// 产品
-	BusinessCodeName *string `json:"BusinessCodeName" name:"BusinessCodeName"`
+	BusinessCodeName *string `json:"BusinessCodeName,omitempty" name:"BusinessCodeName"`
 
 	// 子产品
-	ProductCodeName *string `json:"ProductCodeName" name:"ProductCodeName"`
+	ProductCodeName *string `json:"ProductCodeName,omitempty" name:"ProductCodeName"`
 
 	// 计费模式
-	PayModeName *string `json:"PayModeName" name:"PayModeName"`
+	PayModeName *string `json:"PayModeName,omitempty" name:"PayModeName"`
 
 	// 项目
-	ProjectName *string `json:"ProjectName" name:"ProjectName"`
+	ProjectName *string `json:"ProjectName,omitempty" name:"ProjectName"`
 
 	// 地域
-	RegionName *string `json:"RegionName" name:"RegionName"`
+	RegionName *string `json:"RegionName,omitempty" name:"RegionName"`
 
 	// 可用区
-	ZoneName *string `json:"ZoneName" name:"ZoneName"`
+	ZoneName *string `json:"ZoneName,omitempty" name:"ZoneName"`
 
 	// 资源实例ID
-	ResourceId *string `json:"ResourceId" name:"ResourceId"`
+	ResourceId *string `json:"ResourceId,omitempty" name:"ResourceId"`
 
 	// 资源实例名称
-	ResourceName *string `json:"ResourceName" name:"ResourceName"`
+	ResourceName *string `json:"ResourceName,omitempty" name:"ResourceName"`
 
 	// 交易类型
-	ActionTypeName *string `json:"ActionTypeName" name:"ActionTypeName"`
+	ActionTypeName *string `json:"ActionTypeName,omitempty" name:"ActionTypeName"`
 
 	// 订单ID
-	OrderId *string `json:"OrderId" name:"OrderId"`
+	OrderId *string `json:"OrderId,omitempty" name:"OrderId"`
 
 	// 扣费时间
-	PayTime *string `json:"PayTime" name:"PayTime"`
+	PayTime *string `json:"PayTime,omitempty" name:"PayTime"`
 
 	// 开始使用时间
-	FeeBeginTime *string `json:"FeeBeginTime" name:"FeeBeginTime"`
+	FeeBeginTime *string `json:"FeeBeginTime,omitempty" name:"FeeBeginTime"`
 
 	// 结束使用时间
-	FeeEndTime *string `json:"FeeEndTime" name:"FeeEndTime"`
+	FeeEndTime *string `json:"FeeEndTime,omitempty" name:"FeeEndTime"`
 
 	// 配置描述
-	ConfigDesc *string `json:"ConfigDesc" name:"ConfigDesc"`
+	ConfigDesc *string `json:"ConfigDesc,omitempty" name:"ConfigDesc"`
 
 	// 扩展字段1
-	ExtendField1 *string `json:"ExtendField1" name:"ExtendField1"`
+	ExtendField1 *string `json:"ExtendField1,omitempty" name:"ExtendField1"`
 
 	// 扩展字段2
-	ExtendField2 *string `json:"ExtendField2" name:"ExtendField2"`
+	ExtendField2 *string `json:"ExtendField2,omitempty" name:"ExtendField2"`
 
 	// 原价，单位为元
-	TotalCost *string `json:"TotalCost" name:"TotalCost"`
+	TotalCost *string `json:"TotalCost,omitempty" name:"TotalCost"`
 
 	// 折扣率
-	Discount *string `json:"Discount" name:"Discount"`
+	Discount *string `json:"Discount,omitempty" name:"Discount"`
 
 	// 优惠类型
-	ReduceType *string `json:"ReduceType" name:"ReduceType"`
+	ReduceType *string `json:"ReduceType,omitempty" name:"ReduceType"`
 
 	// 优惠后总价，单位为元
-	RealTotalCost *string `json:"RealTotalCost" name:"RealTotalCost"`
+	RealTotalCost *string `json:"RealTotalCost,omitempty" name:"RealTotalCost"`
 
 	// 代金券支付金额，单位为元
-	VoucherPayAmount *string `json:"VoucherPayAmount" name:"VoucherPayAmount"`
+	VoucherPayAmount *string `json:"VoucherPayAmount,omitempty" name:"VoucherPayAmount"`
 
 	// 现金账户支付金额，单位为元
-	CashPayAmount *string `json:"CashPayAmount" name:"CashPayAmount"`
+	CashPayAmount *string `json:"CashPayAmount,omitempty" name:"CashPayAmount"`
 
 	// 赠送账户支付金额，单位为元
-	IncentivePayAmount *string `json:"IncentivePayAmount" name:"IncentivePayAmount"`
+	IncentivePayAmount *string `json:"IncentivePayAmount,omitempty" name:"IncentivePayAmount"`
 }
 
 type Deal struct {
 
 	// 订单号
-	OrderId *string `json:"OrderId" name:"OrderId"`
+	OrderId *string `json:"OrderId,omitempty" name:"OrderId"`
 
 	// 订单状态
-	Status *int64 `json:"Status" name:"Status"`
+	Status *int64 `json:"Status,omitempty" name:"Status"`
 
 	// 支付者
-	Payer *string `json:"Payer" name:"Payer"`
+	Payer *string `json:"Payer,omitempty" name:"Payer"`
 
 	// 创建时间
-	CreateTime *string `json:"CreateTime" name:"CreateTime"`
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
 
 	// 创建人
-	Creator *string `json:"Creator" name:"Creator"`
+	Creator *string `json:"Creator,omitempty" name:"Creator"`
 
 	// 实际支付金额（分）
-	RealTotalCost *int64 `json:"RealTotalCost" name:"RealTotalCost"`
+	RealTotalCost *int64 `json:"RealTotalCost,omitempty" name:"RealTotalCost"`
 
 	// 代金券抵扣金额（分）
-	VoucherDecline *int64 `json:"VoucherDecline" name:"VoucherDecline"`
+	VoucherDecline *int64 `json:"VoucherDecline,omitempty" name:"VoucherDecline"`
 
 	// 项目ID
-	ProjectId *int64 `json:"ProjectId" name:"ProjectId"`
+	ProjectId *int64 `json:"ProjectId,omitempty" name:"ProjectId"`
 
 	// 产品分类ID
-	GoodsCategoryId *int64 `json:"GoodsCategoryId" name:"GoodsCategoryId"`
+	GoodsCategoryId *int64 `json:"GoodsCategoryId,omitempty" name:"GoodsCategoryId"`
 
 	// 产品详情
-	ProductInfo []*ProductInfo `json:"ProductInfo" name:"ProductInfo" list`
+	ProductInfo []*ProductInfo `json:"ProductInfo,omitempty" name:"ProductInfo" list`
 
 	// 时长
-	TimeSpan *float64 `json:"TimeSpan" name:"TimeSpan"`
+	TimeSpan *float64 `json:"TimeSpan,omitempty" name:"TimeSpan"`
 
 	// 时间单位
-	TimeUnit *string `json:"TimeUnit" name:"TimeUnit"`
+	TimeUnit *string `json:"TimeUnit,omitempty" name:"TimeUnit"`
 
 	// 货币单位
-	Currency *string `json:"Currency" name:"Currency"`
+	Currency *string `json:"Currency,omitempty" name:"Currency"`
 
 	// 折扣率
-	Policy *float64 `json:"Policy" name:"Policy"`
+	Policy *float64 `json:"Policy,omitempty" name:"Policy"`
 
 	// 单价（分）
-	Price *float64 `json:"Price" name:"Price"`
+	Price *float64 `json:"Price,omitempty" name:"Price"`
 
 	// 原价（分）
-	TotalCost *float64 `json:"TotalCost" name:"TotalCost"`
+	TotalCost *float64 `json:"TotalCost,omitempty" name:"TotalCost"`
 }
 
 type DescribeAccountBalanceRequest struct {
@@ -269,10 +269,10 @@ type DescribeAccountBalanceResponse struct {
 	Response *struct {
 
 		// 云账户信息中的”展示可用余额”字段，单位为"分"
-		Balance *int64 `json:"Balance" name:"Balance"`
+		Balance *int64 `json:"Balance,omitempty" name:"Balance"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId" name:"RequestId"`
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
 }
 
@@ -289,22 +289,22 @@ type DescribeBillDetailRequest struct {
 	*tchttp.BaseRequest
 
 	// 偏移量
-	Offset *uint64 `json:"Offset" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
 
 	// 数量，最大值为100
-	Limit *uint64 `json:"Limit" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 
 	// 周期类型，byPayTime按扣费周期/byUsedTime按计费周期
-	PeriodType *string `json:"PeriodType" name:"PeriodType"`
+	PeriodType *string `json:"PeriodType,omitempty" name:"PeriodType"`
 
 	// 月份，格式为yyyy-mm
-	Month *string `json:"Month" name:"Month"`
+	Month *string `json:"Month,omitempty" name:"Month"`
 
 	// 周期开始时间，格式为Y-m-d H:i:s，如果有该字段则Month字段无效。BeginTime和EndTime必须一起传
-	BeginTime *string `json:"BeginTime" name:"BeginTime"`
+	BeginTime *string `json:"BeginTime,omitempty" name:"BeginTime"`
 
 	// 周期结束时间，格式为Y-m-d H:i:s，如果有该字段则Month字段无效。BeginTime和EndTime必须一起传
-	EndTime *string `json:"EndTime" name:"EndTime"`
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 }
 
 func (r *DescribeBillDetailRequest) ToJsonString() string {
@@ -321,10 +321,10 @@ type DescribeBillDetailResponse struct {
 	Response *struct {
 
 		// 详情列表
-		DetailSet []*BillDetail `json:"DetailSet" name:"DetailSet" list`
+		DetailSet []*BillDetail `json:"DetailSet,omitempty" name:"DetailSet" list`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId" name:"RequestId"`
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
 }
 
@@ -341,16 +341,16 @@ type DescribeBillResourceSummaryRequest struct {
 	*tchttp.BaseRequest
 
 	// 偏移量
-	Offset *uint64 `json:"Offset" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
 
 	// 数量，最大值为1000
-	Limit *uint64 `json:"Limit" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 
 	// 周期类型，byUsedTime按计费周期/byPayTime按扣费周期
-	PeriodType *string `json:"PeriodType" name:"PeriodType"`
+	PeriodType *string `json:"PeriodType,omitempty" name:"PeriodType"`
 
 	// 月份，格式为yyyy-mm
-	Month *string `json:"Month" name:"Month"`
+	Month *string `json:"Month,omitempty" name:"Month"`
 }
 
 func (r *DescribeBillResourceSummaryRequest) ToJsonString() string {
@@ -367,10 +367,10 @@ type DescribeBillResourceSummaryResponse struct {
 	Response *struct {
 
 		// 资源汇总列表
-		ResourceSummarySet []*BillResourceSummary `json:"ResourceSummarySet" name:"ResourceSummarySet" list`
+		ResourceSummarySet []*BillResourceSummary `json:"ResourceSummarySet,omitempty" name:"ResourceSummarySet" list`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId" name:"RequestId"`
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
 }
 
@@ -387,16 +387,16 @@ type DescribeDealsByCondRequest struct {
 	*tchttp.BaseRequest
 
 	// 开始时间
-	StartTime *string `json:"StartTime" name:"StartTime"`
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
 
 	// 结束时间
-	EndTime *string `json:"EndTime" name:"EndTime"`
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 
 	// 一页多少条数据，默认是20条，最大不超过1000
-	Limit *int64 `json:"Limit" name:"Limit"`
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 
 	// 第多少页，从0开始，默认是0
-	Offset *int64 `json:"Offset" name:"Offset"`
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
 
 	// 订单状态,默认为4（成功的订单）
 	// 订单的状态
@@ -411,10 +411,10 @@ type DescribeDealsByCondRequest struct {
 	// 10：产品已失效
 	// 11：代付拒绝
 	// 12：支付中
-	Status *int64 `json:"Status" name:"Status"`
+	Status *int64 `json:"Status,omitempty" name:"Status"`
 
 	// 订单号
-	OrderId *string `json:"OrderId" name:"OrderId"`
+	OrderId *string `json:"OrderId,omitempty" name:"OrderId"`
 }
 
 func (r *DescribeDealsByCondRequest) ToJsonString() string {
@@ -431,13 +431,13 @@ type DescribeDealsByCondResponse struct {
 	Response *struct {
 
 		// 订单列表
-		Deals []*Deal `json:"Deals" name:"Deals" list`
+		Deals []*Deal `json:"Deals,omitempty" name:"Deals" list`
 
 		// 订单总数
-		TotalCount *int64 `json:"TotalCount" name:"TotalCount"`
+		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId" name:"RequestId"`
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
 }
 
@@ -454,13 +454,13 @@ type PayDealsRequest struct {
 	*tchttp.BaseRequest
 
 	// 需要支付的一个或者多个订单号
-	OrderIds []*string `json:"OrderIds" name:"OrderIds" list`
+	OrderIds []*string `json:"OrderIds,omitempty" name:"OrderIds" list`
 
 	// 是否自动使用代金券,1:是,0否,默认0
-	AutoVoucher *int64 `json:"AutoVoucher" name:"AutoVoucher"`
+	AutoVoucher *int64 `json:"AutoVoucher,omitempty" name:"AutoVoucher"`
 
 	// 代金券ID列表,目前仅支持指定一张代金券
-	VoucherIds []*string `json:"VoucherIds" name:"VoucherIds" list`
+	VoucherIds []*string `json:"VoucherIds,omitempty" name:"VoucherIds" list`
 }
 
 func (r *PayDealsRequest) ToJsonString() string {
@@ -477,13 +477,13 @@ type PayDealsResponse struct {
 	Response *struct {
 
 		// 此次操作支付成功的订单号数组
-		OrderIds []*string `json:"OrderIds" name:"OrderIds" list`
+		OrderIds []*string `json:"OrderIds,omitempty" name:"OrderIds" list`
 
 		// 此次操作支付成功的资源Id数组
-		ResourceIds []*string `json:"ResourceIds" name:"ResourceIds" list`
+		ResourceIds []*string `json:"ResourceIds,omitempty" name:"ResourceIds" list`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId" name:"RequestId"`
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
 }
 
@@ -499,8 +499,8 @@ func (r *PayDealsResponse) FromJsonString(s string) error {
 type ProductInfo struct {
 
 	// 商品详情名称标识
-	Name *string `json:"Name" name:"Name"`
+	Name *string `json:"Name,omitempty" name:"Name"`
 
 	// 商品详情
-	Value *string `json:"Value" name:"Value"`
+	Value *string `json:"Value,omitempty" name:"Value"`
 }

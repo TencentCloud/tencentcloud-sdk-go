@@ -24,10 +24,16 @@ type EvaluationRequest struct {
 	*tchttp.BaseRequest
 
 	// 图片唯一标识，一张图片一个SessionId；
-	SessionId *string `json:"SessionId" name:"SessionId"`
+	SessionId *string `json:"SessionId,omitempty" name:"SessionId"`
 
-	// 图片数据，需要使用base64对图片的二进制数据进行编码；
-	Image *string `json:"Image" name:"Image"`
+	// 图片数据，需要使用base64对图片的二进制数据进行编码，与url参数二者填一即可；
+	Image *string `json:"Image,omitempty" name:"Image"`
+
+	// 业务应用ID，与账号应用APPID无关，是用来方便客户管理服务的参数，新的 HcmAppId 可以在[控制台](https://console.cloud.tencent.com/hcm)【应用管理】下新建。
+	HcmAppid *string `json:"HcmAppid,omitempty" name:"HcmAppid"`
+
+	// 图片url，与Image参数二者填一即可；
+	Url *string `json:"Url,omitempty" name:"Url"`
 }
 
 func (r *EvaluationRequest) ToJsonString() string {
@@ -44,13 +50,13 @@ type EvaluationResponse struct {
 	Response *struct {
 
 		// 图片唯一标识，一张图片一个SessionId；
-		SessionId *string `json:"SessionId" name:"SessionId"`
+		SessionId *string `json:"SessionId,omitempty" name:"SessionId"`
 
 		// 识别出的算式信息；
-		Items []*Item `json:"Items" name:"Items" list`
+		Items []*Item `json:"Items,omitempty" name:"Items" list`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId" name:"RequestId"`
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
 }
 
@@ -66,26 +72,26 @@ func (r *EvaluationResponse) FromJsonString(s string) error {
 type Item struct {
 
 	// 识别的算式是否正确
-	Item *string `json:"Item" name:"Item"`
+	Item *string `json:"Item,omitempty" name:"Item"`
 
 	// 识别的算式
-	ItemString *string `json:"ItemString" name:"ItemString"`
+	ItemString *string `json:"ItemString,omitempty" name:"ItemString"`
 
 	// 识别的算式在图片上的位置信息
-	ItemCoord *ItemCoord `json:"ItemCoord" name:"ItemCoord"`
+	ItemCoord *ItemCoord `json:"ItemCoord,omitempty" name:"ItemCoord"`
 }
 
 type ItemCoord struct {
 
 	// 算式高度
-	Height *int64 `json:"Height" name:"Height"`
+	Height *int64 `json:"Height,omitempty" name:"Height"`
 
 	// 算式宽度
-	Width *int64 `json:"Width" name:"Width"`
+	Width *int64 `json:"Width,omitempty" name:"Width"`
 
 	// 算式图的左上角横坐标
-	X *int64 `json:"X" name:"X"`
+	X *int64 `json:"X,omitempty" name:"X"`
 
 	// 算式图的左上角纵坐标
-	Y *int64 `json:"Y" name:"Y"`
+	Y *int64 `json:"Y,omitempty" name:"Y"`
 }

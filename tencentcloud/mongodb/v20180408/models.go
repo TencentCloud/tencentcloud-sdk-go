@@ -24,49 +24,49 @@ type CreateDBInstanceHourRequest struct {
 	*tchttp.BaseRequest
 
 	// 实例内存大小，单位：GB
-	Memory *uint64 `json:"Memory" name:"Memory"`
+	Memory *uint64 `json:"Memory,omitempty" name:"Memory"`
 
 	// 实例硬盘大小，单位：GB
-	Volume *uint64 `json:"Volume" name:"Volume"`
+	Volume *uint64 `json:"Volume,omitempty" name:"Volume"`
 
 	// 副本集个数，1为单副本集实例，大于1为分片集群实例，最大不超过10
-	ReplicateSetNum *uint64 `json:"ReplicateSetNum" name:"ReplicateSetNum"`
+	ReplicateSetNum *uint64 `json:"ReplicateSetNum,omitempty" name:"ReplicateSetNum"`
 
 	// 每个副本集内从节点个数，目前只支持从节点数为2
-	SecondaryNum *uint64 `json:"SecondaryNum" name:"SecondaryNum"`
+	SecondaryNum *uint64 `json:"SecondaryNum,omitempty" name:"SecondaryNum"`
 
 	// MongoDB引擎版本，值包括：MONGO_2、MONGO_3_MMAP、MONGO_3_WT 、MONGO_3_ROCKS和MONGO_36_WT
-	EngineVersion *string `json:"EngineVersion" name:"EngineVersion"`
+	EngineVersion *string `json:"EngineVersion,omitempty" name:"EngineVersion"`
 
 	// 实例类型，GIO：高IO版；TGIO：高IO万兆
-	Machine *string `json:"Machine" name:"Machine"`
+	Machine *string `json:"Machine,omitempty" name:"Machine"`
 
 	// 实例数量，默认值为1, 最小值1，最大值为10
-	GoodsNum *uint64 `json:"GoodsNum" name:"GoodsNum"`
+	GoodsNum *uint64 `json:"GoodsNum,omitempty" name:"GoodsNum"`
 
 	// 可用区信息，格式如：ap-guangzhou-2
-	Zone *string `json:"Zone" name:"Zone"`
+	Zone *string `json:"Zone,omitempty" name:"Zone"`
 
 	// 实例角色，支持值包括：MASTER-表示主实例，DR-表示灾备实例，RO-表示只读实例
-	InstanceRole *string `json:"InstanceRole" name:"InstanceRole"`
+	InstanceRole *string `json:"InstanceRole,omitempty" name:"InstanceRole"`
 
 	// 实例类型，REPLSET-副本集，SHARD-分片集群
-	InstanceType *string `json:"InstanceType" name:"InstanceType"`
+	InstanceType *string `json:"InstanceType,omitempty" name:"InstanceType"`
 
 	// 数据是否加密，当且仅当引擎版本为MONGO_3_ROCKS，可以选择加密
-	Encrypt *uint64 `json:"Encrypt" name:"Encrypt"`
+	Encrypt *uint64 `json:"Encrypt,omitempty" name:"Encrypt"`
 
 	// 私有网络ID，如果不传则默认选择基础网络
-	VpcId *string `json:"VpcId" name:"VpcId"`
+	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
 
 	// 私有网络下的子网ID，如果设置了 VpcId，则 SubnetId必填
-	SubnetId *string `json:"SubnetId" name:"SubnetId"`
+	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
 
 	// 项目ID，不填为默认项目
-	ProjectId *int64 `json:"ProjectId" name:"ProjectId"`
+	ProjectId *int64 `json:"ProjectId,omitempty" name:"ProjectId"`
 
 	// 安全组参数
-	SecurityGroup []*string `json:"SecurityGroup" name:"SecurityGroup" list`
+	SecurityGroup []*string `json:"SecurityGroup,omitempty" name:"SecurityGroup" list`
 }
 
 func (r *CreateDBInstanceHourRequest) ToJsonString() string {
@@ -83,10 +83,10 @@ type CreateDBInstanceHourResponse struct {
 	Response *struct {
 
 		// 订单ID
-		DealId *string `json:"DealId" name:"DealId"`
+		DealId *string `json:"DealId,omitempty" name:"DealId"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId" name:"RequestId"`
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
 }
 
@@ -103,43 +103,43 @@ type CreateDBInstanceRequest struct {
 	*tchttp.BaseRequest
 
 	// 每个副本集内从节点个数
-	SecondaryNum *uint64 `json:"SecondaryNum" name:"SecondaryNum"`
+	SecondaryNum *uint64 `json:"SecondaryNum,omitempty" name:"SecondaryNum"`
 
 	// 实例内存大小，单位：GB
-	Memory *uint64 `json:"Memory" name:"Memory"`
+	Memory *uint64 `json:"Memory,omitempty" name:"Memory"`
 
 	// 实例硬盘大小，单位：GB
-	Volume *uint64 `json:"Volume" name:"Volume"`
+	Volume *uint64 `json:"Volume,omitempty" name:"Volume"`
 
 	// 版本号，当前仅支持 MONGO_3_WT
-	MongoVersion *string `json:"MongoVersion" name:"MongoVersion"`
+	MongoVersion *string `json:"MongoVersion,omitempty" name:"MongoVersion"`
 
 	// 机器类型，GIO：高IO版；TGIO：高IO万兆
-	MachineCode *string `json:"MachineCode" name:"MachineCode"`
+	MachineCode *string `json:"MachineCode,omitempty" name:"MachineCode"`
 
 	// 实例数量，默认值为1, 最小值1，最大值为10
-	GoodsNum *uint64 `json:"GoodsNum" name:"GoodsNum"`
+	GoodsNum *uint64 `json:"GoodsNum,omitempty" name:"GoodsNum"`
 
 	// 实例所属区域名称，格式如：ap-guangzhou-2
-	Zone *string `json:"Zone" name:"Zone"`
+	Zone *string `json:"Zone,omitempty" name:"Zone"`
 
 	// 时长，购买月数
-	TimeSpan *uint64 `json:"TimeSpan" name:"TimeSpan"`
+	TimeSpan *uint64 `json:"TimeSpan,omitempty" name:"TimeSpan"`
 
 	// 实例密码
-	Password *string `json:"Password" name:"Password"`
+	Password *string `json:"Password,omitempty" name:"Password"`
 
 	// 项目ID，不填为默认项目
-	ProjectId *uint64 `json:"ProjectId" name:"ProjectId"`
+	ProjectId *uint64 `json:"ProjectId,omitempty" name:"ProjectId"`
 
 	// 安全组参数
-	SecurityGroup []*string `json:"SecurityGroup" name:"SecurityGroup" list`
+	SecurityGroup []*string `json:"SecurityGroup,omitempty" name:"SecurityGroup" list`
 
 	// 私有网络ID，如果不传则默认选择基础网络
-	UniqVpcId *string `json:"UniqVpcId" name:"UniqVpcId"`
+	UniqVpcId *string `json:"UniqVpcId,omitempty" name:"UniqVpcId"`
 
 	// 私有网络下的子网ID，如果设置了 VpcId，则 SubnetId必填
-	UniqSubnetId *string `json:"UniqSubnetId" name:"UniqSubnetId"`
+	UniqSubnetId *string `json:"UniqSubnetId,omitempty" name:"UniqSubnetId"`
 }
 
 func (r *CreateDBInstanceRequest) ToJsonString() string {
@@ -156,10 +156,10 @@ type CreateDBInstanceResponse struct {
 	Response *struct {
 
 		// 订单ID
-		DealId *string `json:"DealId" name:"DealId"`
+		DealId *string `json:"DealId,omitempty" name:"DealId"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId" name:"RequestId"`
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
 }
 
@@ -176,7 +176,7 @@ type TerminateDBInstanceRequest struct {
 	*tchttp.BaseRequest
 
 	// 实例ID，格式如：cmgo-p8vnipr5。
-	InstanceId *string `json:"InstanceId" name:"InstanceId"`
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 }
 
 func (r *TerminateDBInstanceRequest) ToJsonString() string {
@@ -193,10 +193,10 @@ type TerminateDBInstanceResponse struct {
 	Response *struct {
 
 		// 订单ID，表示注销实例成功
-		AsyncRequestId *string `json:"AsyncRequestId" name:"AsyncRequestId"`
+		AsyncRequestId *string `json:"AsyncRequestId,omitempty" name:"AsyncRequestId"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId" name:"RequestId"`
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
 }
 
@@ -213,16 +213,16 @@ type UpgradeDBInstanceHourRequest struct {
 	*tchttp.BaseRequest
 
 	// 实例ID，格式如：cmgo-p8vnipr5
-	InstanceId *string `json:"InstanceId" name:"InstanceId"`
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
 	// 升级后的内存大小，单位：GB
-	Memory *uint64 `json:"Memory" name:"Memory"`
+	Memory *uint64 `json:"Memory,omitempty" name:"Memory"`
 
 	// 升级后的硬盘大小，单位：GB
-	Volume *uint64 `json:"Volume" name:"Volume"`
+	Volume *uint64 `json:"Volume,omitempty" name:"Volume"`
 
 	// 升级后oplog的大小，单位：GB，默认为磁盘空间的10%，允许设置的最小值为磁盘的10%，最大值为磁盘的90%
-	OplogSize *uint64 `json:"OplogSize" name:"OplogSize"`
+	OplogSize *uint64 `json:"OplogSize,omitempty" name:"OplogSize"`
 }
 
 func (r *UpgradeDBInstanceHourRequest) ToJsonString() string {
@@ -239,10 +239,10 @@ type UpgradeDBInstanceHourResponse struct {
 	Response *struct {
 
 		// 订单ID
-		DealId *string `json:"DealId" name:"DealId"`
+		DealId *string `json:"DealId,omitempty" name:"DealId"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId" name:"RequestId"`
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
 }
 
@@ -259,16 +259,16 @@ type UpgradeDBInstanceRequest struct {
 	*tchttp.BaseRequest
 
 	// 实例ID，格式如：cmgo-p8vnipr5。与云数据库控制台页面中显示的实例ID相同
-	InstanceId *string `json:"InstanceId" name:"InstanceId"`
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
 	// 升级后的内存大小，单位：GB
-	Memory *uint64 `json:"Memory" name:"Memory"`
+	Memory *uint64 `json:"Memory,omitempty" name:"Memory"`
 
 	// 升级后的硬盘大小，单位：GB
-	Volume *uint64 `json:"Volume" name:"Volume"`
+	Volume *uint64 `json:"Volume,omitempty" name:"Volume"`
 
 	// 升级后oplog的大小，单位：GB，默认为磁盘空间的10%，允许设置的最小值为磁盘的10%，最大值为磁盘的90%
-	OplogSize *uint64 `json:"OplogSize" name:"OplogSize"`
+	OplogSize *uint64 `json:"OplogSize,omitempty" name:"OplogSize"`
 }
 
 func (r *UpgradeDBInstanceRequest) ToJsonString() string {
@@ -285,10 +285,10 @@ type UpgradeDBInstanceResponse struct {
 	Response *struct {
 
 		// 订单ID
-		DealId *string `json:"DealId" name:"DealId"`
+		DealId *string `json:"DealId,omitempty" name:"DealId"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId" name:"RequestId"`
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
 }
 

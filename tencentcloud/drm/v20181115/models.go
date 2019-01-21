@@ -24,20 +24,20 @@ type CreateLicenseRequest struct {
 	*tchttp.BaseRequest
 
 	// DRM方案类型，接口取值：WIDEVINE，FAIRPLAY。
-	DrmType *string `json:"DrmType" name:"DrmType"`
+	DrmType *string `json:"DrmType,omitempty" name:"DrmType"`
 
 	// Base64编码的终端设备License Request数据。
-	LicenseRequest *string `json:"LicenseRequest" name:"LicenseRequest"`
+	LicenseRequest *string `json:"LicenseRequest,omitempty" name:"LicenseRequest"`
 
 	// 内容类型，接口取值：VodVideo,LiveVideo。
-	ContentType *string `json:"ContentType" name:"ContentType"`
+	ContentType *string `json:"ContentType,omitempty" name:"ContentType"`
 
 	// 授权播放的Track列表。
 	// 该值为空时，默认授权所有track播放。
-	Tracks []*string `json:"Tracks" name:"Tracks" list`
+	Tracks []*string `json:"Tracks,omitempty" name:"Tracks" list`
 
 	// 播放策略参数。
-	PlaybackPolicy *PlaybackPolicy `json:"PlaybackPolicy" name:"PlaybackPolicy"`
+	PlaybackPolicy *PlaybackPolicy `json:"PlaybackPolicy,omitempty" name:"PlaybackPolicy"`
 }
 
 func (r *CreateLicenseRequest) ToJsonString() string {
@@ -54,10 +54,10 @@ type CreateLicenseResponse struct {
 	Response *struct {
 
 		// Base64 编码的许可证二进制数据。
-		License *string `json:"License" name:"License"`
+		License *string `json:"License,omitempty" name:"License"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId" name:"RequestId"`
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
 }
 
@@ -74,21 +74,21 @@ type DescribeKeysRequest struct {
 	*tchttp.BaseRequest
 
 	// 使用的DRM方案类型，接口取值WIDEVINE、FAIRPLAY、NORMALAES。
-	DrmType *string `json:"DrmType" name:"DrmType"`
+	DrmType *string `json:"DrmType,omitempty" name:"DrmType"`
 
 	// 加密的track列表，接口取值VIDEO、AUDIO。
-	Tracks []*string `json:"Tracks" name:"Tracks" list`
+	Tracks []*string `json:"Tracks,omitempty" name:"Tracks" list`
 
 	// 内容类型。接口取值VodVideo,LiveVideo
-	ContentType *string `json:"ContentType" name:"ContentType"`
+	ContentType *string `json:"ContentType,omitempty" name:"ContentType"`
 
 	// Base64编码的Rsa公钥，用来加密出参中的SessionKey。
 	// 如果该参数为空，则出参中SessionKey为明文。
-	RsaPublicKey *string `json:"RsaPublicKey" name:"RsaPublicKey"`
+	RsaPublicKey *string `json:"RsaPublicKey,omitempty" name:"RsaPublicKey"`
 
 	// 一个加密内容的唯一标识。
 	// 如果该参数为空，则后台自动生成
-	ContentId *string `json:"ContentId" name:"ContentId"`
+	ContentId *string `json:"ContentId,omitempty" name:"ContentId"`
 }
 
 func (r *DescribeKeysRequest) ToJsonString() string {
@@ -105,22 +105,22 @@ type DescribeKeysResponse struct {
 	Response *struct {
 
 		// 加密密钥列表
-		Keys []*Key `json:"Keys" name:"Keys" list`
+		Keys []*Key `json:"Keys,omitempty" name:"Keys" list`
 
 		// 用来加密密钥。
 	// 如果入参中带有RsaPublicKey，则SessionKey为使用Rsa公钥加密后的二进制数据，Base64编码字符串。
 	// 如果入参中没有RsaPublicKey，则SessionKey为原始数据的字符串形式。
-		SessionKey *string `json:"SessionKey" name:"SessionKey"`
+		SessionKey *string `json:"SessionKey,omitempty" name:"SessionKey"`
 
 		// 内容ID
-		ContentId *string `json:"ContentId" name:"ContentId"`
+		ContentId *string `json:"ContentId,omitempty" name:"ContentId"`
 
 		// Widevine方案的Pssh数据，Base64编码。
 	// Fairplay方案无该值。
-		Pssh *string `json:"Pssh" name:"Pssh"`
+		Pssh *string `json:"Pssh,omitempty" name:"Pssh"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId" name:"RequestId"`
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
 }
 
@@ -136,77 +136,77 @@ func (r *DescribeKeysResponse) FromJsonString(s string) error {
 type DrmOutputObject struct {
 
 	// 输出的桶名称。
-	BucketName *string `json:"BucketName" name:"BucketName"`
+	BucketName *string `json:"BucketName,omitempty" name:"BucketName"`
 
 	// 输出的对象名称。
-	ObjectName *string `json:"ObjectName" name:"ObjectName"`
+	ObjectName *string `json:"ObjectName,omitempty" name:"ObjectName"`
 
 	// 输出对象参数。
-	Para *DrmOutputPara `json:"Para" name:"Para"`
+	Para *DrmOutputPara `json:"Para,omitempty" name:"Para"`
 }
 
 type DrmOutputPara struct {
 
 	// 内容类型。例:video，audio，mpd，m3u8
-	Type *string `json:"Type" name:"Type"`
+	Type *string `json:"Type,omitempty" name:"Type"`
 
 	// 语言,例: en, zh-cn
-	Language *string `json:"Language" name:"Language"`
+	Language *string `json:"Language,omitempty" name:"Language"`
 }
 
 type DrmSourceObject struct {
 
 	// 输入的桶名称。
-	BucketName *string `json:"BucketName" name:"BucketName"`
+	BucketName *string `json:"BucketName,omitempty" name:"BucketName"`
 
 	// 输入对象名称。
-	ObjectName *string `json:"ObjectName" name:"ObjectName"`
+	ObjectName *string `json:"ObjectName,omitempty" name:"ObjectName"`
 }
 
 type Key struct {
 
 	// 加密track类型。
-	Track *string `json:"Track" name:"Track"`
+	Track *string `json:"Track,omitempty" name:"Track"`
 
 	// 密钥ID。
-	KeyId *string `json:"KeyId" name:"KeyId"`
+	KeyId *string `json:"KeyId,omitempty" name:"KeyId"`
 
 	// 原始Key使用AES-128 ECB模式和SessionKey加密的后的二进制数据，Base64编码的字符串。
-	Key *string `json:"Key" name:"Key"`
+	Key *string `json:"Key,omitempty" name:"Key"`
 
 	// 原始IV使用AES-128 ECB模式和SessionKey加密的后的二进制数据，Base64编码的字符串。
-	Iv *string `json:"Iv" name:"Iv"`
+	Iv *string `json:"Iv,omitempty" name:"Iv"`
 }
 
 type PlaybackPolicy struct {
 
 	// 播放许可证的有效期
-	LicenseDurationSeconds *uint64 `json:"LicenseDurationSeconds" name:"LicenseDurationSeconds"`
+	LicenseDurationSeconds *uint64 `json:"LicenseDurationSeconds,omitempty" name:"LicenseDurationSeconds"`
 
 	// 开始播放后，允许最长播放时间
-	PlaybackDurationSeconds *uint64 `json:"PlaybackDurationSeconds" name:"PlaybackDurationSeconds"`
+	PlaybackDurationSeconds *uint64 `json:"PlaybackDurationSeconds,omitempty" name:"PlaybackDurationSeconds"`
 }
 
 type StartEncryptionRequest struct {
 	*tchttp.BaseRequest
 
 	// cos的end point。
-	CosEndPoint *string `json:"CosEndPoint" name:"CosEndPoint"`
+	CosEndPoint *string `json:"CosEndPoint,omitempty" name:"CosEndPoint"`
 
 	// cos api密钥id。
-	CosSecretId *string `json:"CosSecretId" name:"CosSecretId"`
+	CosSecretId *string `json:"CosSecretId,omitempty" name:"CosSecretId"`
 
 	// cos api密钥。
-	CosSecretKey *string `json:"CosSecretKey" name:"CosSecretKey"`
+	CosSecretKey *string `json:"CosSecretKey,omitempty" name:"CosSecretKey"`
 
 	// 使用的DRM方案类型，接口取值WIDEVINE,FAIRPLAY
-	DrmType *string `json:"DrmType" name:"DrmType"`
+	DrmType *string `json:"DrmType,omitempty" name:"DrmType"`
 
 	// 存储在COS上的原始内容信息
-	SourceObject *DrmSourceObject `json:"SourceObject" name:"SourceObject"`
+	SourceObject *DrmSourceObject `json:"SourceObject,omitempty" name:"SourceObject"`
 
 	// 加密后的内容存储到COS的对象
-	OutputObjects []*DrmOutputObject `json:"OutputObjects" name:"OutputObjects" list`
+	OutputObjects []*DrmOutputObject `json:"OutputObjects,omitempty" name:"OutputObjects" list`
 }
 
 func (r *StartEncryptionRequest) ToJsonString() string {
@@ -223,7 +223,7 @@ type StartEncryptionResponse struct {
 	Response *struct {
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId" name:"RequestId"`
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
 }
 

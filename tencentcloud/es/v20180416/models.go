@@ -24,13 +24,13 @@ type CreateInstanceRequest struct {
 	*tchttp.BaseRequest
 
 	// 可用区
-	Zone *string `json:"Zone" name:"Zone"`
+	Zone *string `json:"Zone,omitempty" name:"Zone"`
 
 	// 节点数量
-	NodeNum *uint64 `json:"NodeNum" name:"NodeNum"`
+	NodeNum *uint64 `json:"NodeNum,omitempty" name:"NodeNum"`
 
 	// 实例版本,当前只支持5.6.4
-	EsVersion *string `json:"EsVersion" name:"EsVersion"`
+	EsVersion *string `json:"EsVersion,omitempty" name:"EsVersion"`
 
 	// 节点规格： 
 	// ES.S1.SMALL2: 1核2G
@@ -39,36 +39,36 @@ type CreateInstanceRequest struct {
 	// ES.S1.LARGE16: 4核16G
 	// ES.S1.2XLARGE32: 8核32G
 	// ES.S1.4XLARGE64: 16核64G
-	NodeType *string `json:"NodeType" name:"NodeType"`
+	NodeType *string `json:"NodeType,omitempty" name:"NodeType"`
 
 	// 节点存储容量，单位GB
-	DiskSize *uint64 `json:"DiskSize" name:"DiskSize"`
+	DiskSize *uint64 `json:"DiskSize,omitempty" name:"DiskSize"`
 
 	// 私有网络ID
-	VpcId *string `json:"VpcId" name:"VpcId"`
+	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
 
 	// 子网ID
-	SubnetId *string `json:"SubnetId" name:"SubnetId"`
+	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
 
 	// 访问密码，密码需8到16位，至少包括两项（[a-z,A-Z],[0-9]和[()`~!@#$%^&*-+=_|{}:;' <>,.?/]的特殊符号
-	Password *string `json:"Password" name:"Password"`
+	Password *string `json:"Password,omitempty" name:"Password"`
 
 	// 实例名称，1-50 个英文、汉字、数字、连接线-或下划线_
-	InstanceName *string `json:"InstanceName" name:"InstanceName"`
+	InstanceName *string `json:"InstanceName,omitempty" name:"InstanceName"`
 
 	// 计费类型: 
 	// PREPAID：预付费，即包年包月 
 	// POSTPAID_BY_HOUR：按小时后付费，默认值
-	ChargeType *string `json:"ChargeType" name:"ChargeType"`
+	ChargeType *string `json:"ChargeType,omitempty" name:"ChargeType"`
 
 	// 包年包月购买时长，单位由TimeUint决定，默认为月
-	ChargePeriod *uint64 `json:"ChargePeriod" name:"ChargePeriod"`
+	ChargePeriod *uint64 `json:"ChargePeriod,omitempty" name:"ChargePeriod"`
 
 	// 自动续费标识，取值范围： 
 	// RENEW_FLAG_AUTO：自动续费
 	// RENEW_FLAG_MANUAL：不自动续费，用户手动续费
 	// 如不传递该参数，普通用于默认不自动续费，SVIP用户自动续费
-	RenewFlag *string `json:"RenewFlag" name:"RenewFlag"`
+	RenewFlag *string `json:"RenewFlag,omitempty" name:"RenewFlag"`
 
 	// 节点存储类型,取值范围:  
 	// LOCAL_BASIC: 本地硬盘  
@@ -76,16 +76,16 @@ type CreateInstanceRequest struct {
 	// CLOUD_BASIC: 普通云硬盘  
 	// CLOUD_PREMIUM: 高硬能云硬盘  
 	// CLOUD_SSD: SSD云硬盘
-	DiskType *string `json:"DiskType" name:"DiskType"`
+	DiskType *string `json:"DiskType,omitempty" name:"DiskType"`
 
 	// 计费时长单位，当前只支持“m”，表示月
-	TimeUnit *string `json:"TimeUnit" name:"TimeUnit"`
+	TimeUnit *string `json:"TimeUnit,omitempty" name:"TimeUnit"`
 
 	// 是否自动使用代金券，1是，0否，默认不使用
-	AutoVoucher *int64 `json:"AutoVoucher" name:"AutoVoucher"`
+	AutoVoucher *int64 `json:"AutoVoucher,omitempty" name:"AutoVoucher"`
 
 	// 代金券ID列表，目前仅支持指定一张代金券
-	VoucherIds []*string `json:"VoucherIds" name:"VoucherIds" list`
+	VoucherIds []*string `json:"VoucherIds,omitempty" name:"VoucherIds" list`
 }
 
 func (r *CreateInstanceRequest) ToJsonString() string {
@@ -102,10 +102,10 @@ type CreateInstanceResponse struct {
 	Response *struct {
 
 		// 实例ID
-		InstanceId *string `json:"InstanceId" name:"InstanceId"`
+		InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId" name:"RequestId"`
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
 }
 
@@ -122,7 +122,7 @@ type DeleteInstanceRequest struct {
 	*tchttp.BaseRequest
 
 	// 要销毁的实例ID
-	InstanceId *string `json:"InstanceId" name:"InstanceId"`
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 }
 
 func (r *DeleteInstanceRequest) ToJsonString() string {
@@ -139,7 +139,7 @@ type DeleteInstanceResponse struct {
 	Response *struct {
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId" name:"RequestId"`
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
 }
 
@@ -156,25 +156,25 @@ type DescribeInstancesRequest struct {
 	*tchttp.BaseRequest
 
 	// 集群实例所属可用区，不传则默认所有可用区
-	Zone *string `json:"Zone" name:"Zone"`
+	Zone *string `json:"Zone,omitempty" name:"Zone"`
 
 	// 一个或多个集群实例ID
-	InstanceIds []*string `json:"InstanceIds" name:"InstanceIds" list`
+	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds" list`
 
 	// 一个或多个集群实例名称
-	InstanceNames []*string `json:"InstanceNames" name:"InstanceNames" list`
+	InstanceNames []*string `json:"InstanceNames,omitempty" name:"InstanceNames" list`
 
 	// 分页起始值, 默认值0
-	Offset *uint64 `json:"Offset" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
 
 	// 分页大小，默认值20
-	Limit *uint64 `json:"Limit" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 
 	// 排序字段：1，实例ID；2，实例名称；3，可用区；4，创建时间，若orderKey未传递则按创建时间降序排序
-	OrderByKey *uint64 `json:"OrderByKey" name:"OrderByKey"`
+	OrderByKey *uint64 `json:"OrderByKey,omitempty" name:"OrderByKey"`
 
 	// 排序方式：0，升序；1，降序；若传递了orderByKey未传递orderByType, 则默认升序
-	OrderByType *uint64 `json:"OrderByType" name:"OrderByType"`
+	OrderByType *uint64 `json:"OrderByType,omitempty" name:"OrderByType"`
 }
 
 func (r *DescribeInstancesRequest) ToJsonString() string {
@@ -191,13 +191,13 @@ type DescribeInstancesResponse struct {
 	Response *struct {
 
 		// 返回的实例个数
-		TotalCount *uint64 `json:"TotalCount" name:"TotalCount"`
+		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 实例详细信息列表
-		InstanceList []*InstanceInfo `json:"InstanceList" name:"InstanceList" list`
+		InstanceList []*InstanceInfo `json:"InstanceList,omitempty" name:"InstanceList" list`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId" name:"RequestId"`
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
 }
 
@@ -213,155 +213,155 @@ func (r *DescribeInstancesResponse) FromJsonString(s string) error {
 type DictInfo struct {
 
 	// 词典键值
-	Key *string `json:"Key" name:"Key"`
+	Key *string `json:"Key,omitempty" name:"Key"`
 
 	// 词典名称
-	Name *string `json:"Name" name:"Name"`
+	Name *string `json:"Name,omitempty" name:"Name"`
 
 	// 词典大小，单位B
-	Size *uint64 `json:"Size" name:"Size"`
+	Size *uint64 `json:"Size,omitempty" name:"Size"`
 }
 
 type EsAcl struct {
 
 	// kibana访问黑名单
-	BlackIpList []*string `json:"BlackIpList" name:"BlackIpList" list`
+	BlackIpList []*string `json:"BlackIpList,omitempty" name:"BlackIpList" list`
 
 	// kibana访问白名单
-	WhiteIpList []*string `json:"WhiteIpList" name:"WhiteIpList" list`
+	WhiteIpList []*string `json:"WhiteIpList,omitempty" name:"WhiteIpList" list`
 }
 
 type EsDictionaryInfo struct {
 
 	// 启用词词典列表
-	MainDict []*DictInfo `json:"MainDict" name:"MainDict" list`
+	MainDict []*DictInfo `json:"MainDict,omitempty" name:"MainDict" list`
 
 	// 停用词词典列表
-	Stopwords []*DictInfo `json:"Stopwords" name:"Stopwords" list`
+	Stopwords []*DictInfo `json:"Stopwords,omitempty" name:"Stopwords" list`
 }
 
 type InstanceInfo struct {
 
 	// 实例ID
-	InstanceId *string `json:"InstanceId" name:"InstanceId"`
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
 	// 实例名称
-	InstanceName *string `json:"InstanceName" name:"InstanceName"`
+	InstanceName *string `json:"InstanceName,omitempty" name:"InstanceName"`
 
 	// 地域
-	Region *string `json:"Region" name:"Region"`
+	Region *string `json:"Region,omitempty" name:"Region"`
 
 	// 可用区
-	Zone *string `json:"Zone" name:"Zone"`
+	Zone *string `json:"Zone,omitempty" name:"Zone"`
 
 	// 用户ID
-	AppId *uint64 `json:"AppId" name:"AppId"`
+	AppId *uint64 `json:"AppId,omitempty" name:"AppId"`
 
 	// 用户UIN
-	Uin *string `json:"Uin" name:"Uin"`
+	Uin *string `json:"Uin,omitempty" name:"Uin"`
 
 	// 实例所属VPC的UID
-	VpcUid *string `json:"VpcUid" name:"VpcUid"`
+	VpcUid *string `json:"VpcUid,omitempty" name:"VpcUid"`
 
 	// 实例所属子网的UID
-	SubnetUid *string `json:"SubnetUid" name:"SubnetUid"`
+	SubnetUid *string `json:"SubnetUid,omitempty" name:"SubnetUid"`
 
 	// 实例状态，0:处理中,1:正常,-1停止,-2:销毁中,-3:已销毁
-	Status *int64 `json:"Status" name:"Status"`
+	Status *int64 `json:"Status,omitempty" name:"Status"`
 
 	// 实例计费模式。取值范围：  PREPAID：表示预付费，即包年包月  POSTPAID_BY_HOUR：表示后付费，即按量计费  CDHPAID：CDH付费，即只对CDH计费，不对CDH上的实例计费。
-	ChargeType *string `json:"ChargeType" name:"ChargeType"`
+	ChargeType *string `json:"ChargeType,omitempty" name:"ChargeType"`
 
 	// 包年包月购买时长,单位:月
-	ChargePeriod *uint64 `json:"ChargePeriod" name:"ChargePeriod"`
+	ChargePeriod *uint64 `json:"ChargePeriod,omitempty" name:"ChargePeriod"`
 
 	// 自动续费标识。取值范围：  NOTIFY_AND_AUTO_RENEW：通知过期且自动续费  NOTIFY_AND_MANUAL_RENEW：通知过期不自动续费  DISABLE_NOTIFY_AND_MANUAL_RENEW：不通知过期不自动续费  默认取值：NOTIFY_AND_AUTO_RENEW。若该参数指定为NOTIFY_AND_AUTO_RENEW，在账户余额充足的情况下，实例到期后将按月自动续费。
-	RenewFlag *string `json:"RenewFlag" name:"RenewFlag"`
+	RenewFlag *string `json:"RenewFlag,omitempty" name:"RenewFlag"`
 
 	// 节点规格:  ES.S1.SMALL2 : 1核2G  ES.S1.MEDIUM4 : 2核4G  ES.S1.MEDIUM8 : 2核8G  ES.S1.LARGE16 : 4核16G  ES.S1.2XLARGE32 : 8核32G  ES.S1.3XLARGE32 : 12核32G  ES.S1.6XLARGE32 : 24核32G
-	NodeType *string `json:"NodeType" name:"NodeType"`
+	NodeType *string `json:"NodeType,omitempty" name:"NodeType"`
 
 	// 节点个数
-	NodeNum *uint64 `json:"NodeNum" name:"NodeNum"`
+	NodeNum *uint64 `json:"NodeNum,omitempty" name:"NodeNum"`
 
 	// 节点CPU核数
-	CpuNum *uint64 `json:"CpuNum" name:"CpuNum"`
+	CpuNum *uint64 `json:"CpuNum,omitempty" name:"CpuNum"`
 
 	// 节点内存大小，单位GB
-	MemSize *uint64 `json:"MemSize" name:"MemSize"`
+	MemSize *uint64 `json:"MemSize,omitempty" name:"MemSize"`
 
 	// 节点磁盘类型
-	DiskType *string `json:"DiskType" name:"DiskType"`
+	DiskType *string `json:"DiskType,omitempty" name:"DiskType"`
 
 	// 节点磁盘大小，单位GB
-	DiskSize *uint64 `json:"DiskSize" name:"DiskSize"`
+	DiskSize *uint64 `json:"DiskSize,omitempty" name:"DiskSize"`
 
 	// ES域名
-	EsDomain *string `json:"EsDomain" name:"EsDomain"`
+	EsDomain *string `json:"EsDomain,omitempty" name:"EsDomain"`
 
 	// ES VIP
-	EsVip *string `json:"EsVip" name:"EsVip"`
+	EsVip *string `json:"EsVip,omitempty" name:"EsVip"`
 
 	// ES端口
-	EsPort *uint64 `json:"EsPort" name:"EsPort"`
+	EsPort *uint64 `json:"EsPort,omitempty" name:"EsPort"`
 
 	// Kibana访问url
-	KibanaUrl *string `json:"KibanaUrl" name:"KibanaUrl"`
+	KibanaUrl *string `json:"KibanaUrl,omitempty" name:"KibanaUrl"`
 
 	// ES版本号
-	EsVersion *string `json:"EsVersion" name:"EsVersion"`
+	EsVersion *string `json:"EsVersion,omitempty" name:"EsVersion"`
 
 	// ES配置项
-	EsConfig *string `json:"EsConfig" name:"EsConfig"`
+	EsConfig *string `json:"EsConfig,omitempty" name:"EsConfig"`
 
 	// ES访问控制配置
-	EsAcl *EsAcl `json:"EsAcl" name:"EsAcl"`
+	EsAcl *EsAcl `json:"EsAcl,omitempty" name:"EsAcl"`
 
 	// 实例创建时间
-	CreateTime *string `json:"CreateTime" name:"CreateTime"`
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
 
 	// 实例最后修改操作时间
-	UpdateTime *string `json:"UpdateTime" name:"UpdateTime"`
+	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
 
 	// 实例到期时间
-	Deadline *string `json:"Deadline" name:"Deadline"`
+	Deadline *string `json:"Deadline,omitempty" name:"Deadline"`
 
 	// 实例类型（实例类型标识，当前只有1,2两种）
-	InstanceType *uint64 `json:"InstanceType" name:"InstanceType"`
+	InstanceType *uint64 `json:"InstanceType,omitempty" name:"InstanceType"`
 
 	// Ik分词器配置
-	IkConfig *EsDictionaryInfo `json:"IkConfig" name:"IkConfig"`
+	IkConfig *EsDictionaryInfo `json:"IkConfig,omitempty" name:"IkConfig"`
 
 	// 专用主节点配置
-	MasterNodeInfo *MasterNodeInfo `json:"MasterNodeInfo" name:"MasterNodeInfo"`
+	MasterNodeInfo *MasterNodeInfo `json:"MasterNodeInfo,omitempty" name:"MasterNodeInfo"`
 }
 
 type MasterNodeInfo struct {
 
 	// 是否启用了专用主节点
-	EnableDedicatedMaster *bool `json:"EnableDedicatedMaster" name:"EnableDedicatedMaster"`
+	EnableDedicatedMaster *bool `json:"EnableDedicatedMaster,omitempty" name:"EnableDedicatedMaster"`
 
 	// 专用主节点规格
-	MasterNodeType *string `json:"MasterNodeType" name:"MasterNodeType"`
+	MasterNodeType *string `json:"MasterNodeType,omitempty" name:"MasterNodeType"`
 
 	// 专用主节点个数
-	MasterNodeNum *uint64 `json:"MasterNodeNum" name:"MasterNodeNum"`
+	MasterNodeNum *uint64 `json:"MasterNodeNum,omitempty" name:"MasterNodeNum"`
 
 	// 专用主节点CPU核数
-	MasterNodeCpuNum *uint64 `json:"MasterNodeCpuNum" name:"MasterNodeCpuNum"`
+	MasterNodeCpuNum *uint64 `json:"MasterNodeCpuNum,omitempty" name:"MasterNodeCpuNum"`
 
 	// 专用主节点内存大小，单位GB
-	MasterNodeMemSize *uint64 `json:"MasterNodeMemSize" name:"MasterNodeMemSize"`
+	MasterNodeMemSize *uint64 `json:"MasterNodeMemSize,omitempty" name:"MasterNodeMemSize"`
 
 	// 专用主节点磁盘大小，单位GB
-	MasterNodeDiskSize *uint64 `json:"MasterNodeDiskSize" name:"MasterNodeDiskSize"`
+	MasterNodeDiskSize *uint64 `json:"MasterNodeDiskSize,omitempty" name:"MasterNodeDiskSize"`
 }
 
 type RestartInstanceRequest struct {
 	*tchttp.BaseRequest
 
 	// 要重启的实例ID
-	InstanceId *string `json:"InstanceId" name:"InstanceId"`
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 }
 
 func (r *RestartInstanceRequest) ToJsonString() string {
@@ -378,7 +378,7 @@ type RestartInstanceResponse struct {
 	Response *struct {
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId" name:"RequestId"`
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
 }
 
@@ -395,25 +395,25 @@ type UpdateInstanceRequest struct {
 	*tchttp.BaseRequest
 
 	// 要操作的实例ID
-	InstanceId *string `json:"InstanceId" name:"InstanceId"`
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
 	// 修改后的实例名称, 1-50 个英文、汉字、数字、连接线-或下划线_
-	InstanceName *string `json:"InstanceName" name:"InstanceName"`
+	InstanceName *string `json:"InstanceName,omitempty" name:"InstanceName"`
 
 	// 横向扩缩容后的节点个数
-	NodeNum *uint64 `json:"NodeNum" name:"NodeNum"`
+	NodeNum *uint64 `json:"NodeNum,omitempty" name:"NodeNum"`
 
 	// 修改后的配置项, JSON格式字符串
-	EsConfig *string `json:"EsConfig" name:"EsConfig"`
+	EsConfig *string `json:"EsConfig,omitempty" name:"EsConfig"`
 
 	// 重置后的Kibana密码, 8到16位，至少包括两项（[a-z,A-Z],[0-9]和[-!@#$%&^*+=_:;,.?]的特殊符号
-	Password *string `json:"Password" name:"Password"`
+	Password *string `json:"Password,omitempty" name:"Password"`
 
 	// 修改后的访问控制列表
-	EsAcl *EsAcl `json:"EsAcl" name:"EsAcl"`
+	EsAcl *EsAcl `json:"EsAcl,omitempty" name:"EsAcl"`
 
 	// 磁盘大小,单位GB
-	DiskSize *uint64 `json:"DiskSize" name:"DiskSize"`
+	DiskSize *uint64 `json:"DiskSize,omitempty" name:"DiskSize"`
 
 	// 节点规格: 
 	// ES.S1.SMALL2: 1 核 2G
@@ -422,7 +422,7 @@ type UpdateInstanceRequest struct {
 	// ES.S1.LARGE16: 4 核 16G 
 	// ES.S1.2XLARGE32: 8 核 32G 
 	// ES.S1.4XLARGE64: 16 核 64G
-	NodeType *string `json:"NodeType" name:"NodeType"`
+	NodeType *string `json:"NodeType,omitempty" name:"NodeType"`
 }
 
 func (r *UpdateInstanceRequest) ToJsonString() string {
@@ -439,7 +439,7 @@ type UpdateInstanceResponse struct {
 	Response *struct {
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId" name:"RequestId"`
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
 }
 

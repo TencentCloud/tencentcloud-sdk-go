@@ -24,46 +24,46 @@ type CreateJobRequest struct {
 	*tchttp.BaseRequest
 
 	// 任务名称
-	Name *string `json:"Name" name:"Name"`
+	Name *string `json:"Name,omitempty" name:"Name"`
 
 	// 运行任务的集群
-	Cluster *string `json:"Cluster" name:"Cluster"`
+	Cluster *string `json:"Cluster,omitempty" name:"Cluster"`
 
 	// 运行任务的环境
-	RuntimeVersion *string `json:"RuntimeVersion" name:"RuntimeVersion"`
+	RuntimeVersion *string `json:"RuntimeVersion,omitempty" name:"RuntimeVersion"`
 
 	// 挂载的路径，支持nfs,cos(cos只在tia运行环境中支持)
-	PackageDir []*string `json:"PackageDir" name:"PackageDir" list`
+	PackageDir []*string `json:"PackageDir,omitempty" name:"PackageDir" list`
 
 	// 任务启动命令
-	Command []*string `json:"Command" name:"Command" list`
+	Command []*string `json:"Command,omitempty" name:"Command" list`
 
 	// 任务启动参数
-	Args []*string `json:"Args" name:"Args" list`
+	Args []*string `json:"Args,omitempty" name:"Args" list`
 
 	// 运行任务的配置信息
-	ScaleTier *string `json:"ScaleTier" name:"ScaleTier"`
+	ScaleTier *string `json:"ScaleTier,omitempty" name:"ScaleTier"`
 
 	// （ScaleTier为Custom时）master机器类型
-	MasterType *string `json:"MasterType" name:"MasterType"`
+	MasterType *string `json:"MasterType,omitempty" name:"MasterType"`
 
 	// （ScaleTier为Custom时）worker机器类型
-	WorkerType *string `json:"WorkerType" name:"WorkerType"`
+	WorkerType *string `json:"WorkerType,omitempty" name:"WorkerType"`
 
 	// （ScaleTier为Custom时）parameter server机器类型
-	ParameterServerType *string `json:"ParameterServerType" name:"ParameterServerType"`
+	ParameterServerType *string `json:"ParameterServerType,omitempty" name:"ParameterServerType"`
 
 	// （ScaleTier为Custom时）worker机器数量
-	WorkerCount *uint64 `json:"WorkerCount" name:"WorkerCount"`
+	WorkerCount *uint64 `json:"WorkerCount,omitempty" name:"WorkerCount"`
 
 	// （ScaleTier为Custom时）parameter server机器数量
-	ParameterServerCount *uint64 `json:"ParameterServerCount" name:"ParameterServerCount"`
+	ParameterServerCount *uint64 `json:"ParameterServerCount,omitempty" name:"ParameterServerCount"`
 
 	// 启动debug mode，默认为false
-	Debug *bool `json:"Debug" name:"Debug"`
+	Debug *bool `json:"Debug,omitempty" name:"Debug"`
 
 	// 运行任务的其他配置信息
-	RuntimeConf []*string `json:"RuntimeConf" name:"RuntimeConf" list`
+	RuntimeConf []*string `json:"RuntimeConf,omitempty" name:"RuntimeConf" list`
 }
 
 func (r *CreateJobRequest) ToJsonString() string {
@@ -80,10 +80,10 @@ type CreateJobResponse struct {
 	Response *struct {
 
 		// 训练任务信息
-		Job *Job `json:"Job" name:"Job"`
+		Job *Job `json:"Job,omitempty" name:"Job"`
 
 		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
-		RequestId *string `json:"RequestId" name:"RequestId"`
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
 }
 
@@ -100,31 +100,31 @@ type CreateModelRequest struct {
 	*tchttp.BaseRequest
 
 	// 模型名称
-	Name *string `json:"Name" name:"Name"`
+	Name *string `json:"Name,omitempty" name:"Name"`
 
 	// 要部署模型的路径名
-	Model *string `json:"Model" name:"Model"`
+	Model *string `json:"Model,omitempty" name:"Model"`
 
 	// 关于模型的描述
-	Description *string `json:"Description" name:"Description"`
+	Description *string `json:"Description,omitempty" name:"Description"`
 
 	// 指定集群的名称（集群模式下必填）
-	Cluster *string `json:"Cluster" name:"Cluster"`
+	Cluster *string `json:"Cluster,omitempty" name:"Cluster"`
 
 	// 运行环境镜像的标签
-	RuntimeVersion *string `json:"RuntimeVersion" name:"RuntimeVersion"`
+	RuntimeVersion *string `json:"RuntimeVersion,omitempty" name:"RuntimeVersion"`
 
 	// 要部署的模型副本数目（集群模式下选填）
-	Replicas *uint64 `json:"Replicas" name:"Replicas"`
+	Replicas *uint64 `json:"Replicas,omitempty" name:"Replicas"`
 
 	// 暴露外网或内网，默认暴露外网（集群模式下选填）
-	Expose *string `json:"Expose" name:"Expose"`
+	Expose *string `json:"Expose,omitempty" name:"Expose"`
 
 	// 部署模式（无服务器函数模式/集群模式）
-	ServType *string `json:"ServType" name:"ServType"`
+	ServType *string `json:"ServType,omitempty" name:"ServType"`
 
 	// 部署模型的其他配置信息
-	RuntimeConf []*string `json:"RuntimeConf" name:"RuntimeConf" list`
+	RuntimeConf []*string `json:"RuntimeConf,omitempty" name:"RuntimeConf" list`
 }
 
 func (r *CreateModelRequest) ToJsonString() string {
@@ -141,10 +141,10 @@ type CreateModelResponse struct {
 	Response *struct {
 
 		// 模型的详细信息
-		Model *Model `json:"Model" name:"Model"`
+		Model *Model `json:"Model,omitempty" name:"Model"`
 
 		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
-		RequestId *string `json:"RequestId" name:"RequestId"`
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
 }
 
@@ -161,10 +161,10 @@ type DeleteJobRequest struct {
 	*tchttp.BaseRequest
 
 	// 任务名称
-	Name *string `json:"Name" name:"Name"`
+	Name *string `json:"Name,omitempty" name:"Name"`
 
 	// 运行任务的集群
-	Cluster *string `json:"Cluster" name:"Cluster"`
+	Cluster *string `json:"Cluster,omitempty" name:"Cluster"`
 }
 
 func (r *DeleteJobRequest) ToJsonString() string {
@@ -181,7 +181,7 @@ type DeleteJobResponse struct {
 	Response *struct {
 
 		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
-		RequestId *string `json:"RequestId" name:"RequestId"`
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
 }
 
@@ -198,13 +198,13 @@ type DeleteModelRequest struct {
 	*tchttp.BaseRequest
 
 	// 要删除的模型名称
-	Name *string `json:"Name" name:"Name"`
+	Name *string `json:"Name,omitempty" name:"Name"`
 
 	// 要删除的模型所在的集群名称
-	Cluster *string `json:"Cluster" name:"Cluster"`
+	Cluster *string `json:"Cluster,omitempty" name:"Cluster"`
 
 	// 模型类型
-	ServType *string `json:"ServType" name:"ServType"`
+	ServType *string `json:"ServType,omitempty" name:"ServType"`
 }
 
 func (r *DeleteModelRequest) ToJsonString() string {
@@ -221,7 +221,7 @@ type DeleteModelResponse struct {
 	Response *struct {
 
 		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
-		RequestId *string `json:"RequestId" name:"RequestId"`
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
 }
 
@@ -238,10 +238,10 @@ type DescribeJobRequest struct {
 	*tchttp.BaseRequest
 
 	// 任务名称
-	Name *string `json:"Name" name:"Name"`
+	Name *string `json:"Name,omitempty" name:"Name"`
 
 	// 运行任务的集群
-	Cluster *string `json:"Cluster" name:"Cluster"`
+	Cluster *string `json:"Cluster,omitempty" name:"Cluster"`
 }
 
 func (r *DescribeJobRequest) ToJsonString() string {
@@ -258,10 +258,10 @@ type DescribeJobResponse struct {
 	Response *struct {
 
 		// 训练任务信息
-		Job *Job `json:"Job" name:"Job"`
+		Job *Job `json:"Job,omitempty" name:"Job"`
 
 		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
-		RequestId *string `json:"RequestId" name:"RequestId"`
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
 }
 
@@ -278,13 +278,13 @@ type DescribeModelRequest struct {
 	*tchttp.BaseRequest
 
 	// 模型名称
-	Name *string `json:"Name" name:"Name"`
+	Name *string `json:"Name,omitempty" name:"Name"`
 
 	// 模型所在集群名称
-	Cluster *string `json:"Cluster" name:"Cluster"`
+	Cluster *string `json:"Cluster,omitempty" name:"Cluster"`
 
 	// 模型类型
-	ServType *string `json:"ServType" name:"ServType"`
+	ServType *string `json:"ServType,omitempty" name:"ServType"`
 }
 
 func (r *DescribeModelRequest) ToJsonString() string {
@@ -301,10 +301,10 @@ type DescribeModelResponse struct {
 	Response *struct {
 
 		// 模型信息
-		Model *Model `json:"Model" name:"Model"`
+		Model *Model `json:"Model,omitempty" name:"Model"`
 
 		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
-		RequestId *string `json:"RequestId" name:"RequestId"`
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
 }
 
@@ -321,13 +321,13 @@ type InstallAgentRequest struct {
 	*tchttp.BaseRequest
 
 	// 集群名称
-	Cluster *string `json:"Cluster" name:"Cluster"`
+	Cluster *string `json:"Cluster,omitempty" name:"Cluster"`
 
 	// Agent版本, 用于私有集群的agent安装，默认为“private-training”
-	TiaVersion *string `json:"TiaVersion" name:"TiaVersion"`
+	TiaVersion *string `json:"TiaVersion,omitempty" name:"TiaVersion"`
 
 	// 是否允许更新Agent
-	Update *bool `json:"Update" name:"Update"`
+	Update *bool `json:"Update,omitempty" name:"Update"`
 }
 
 func (r *InstallAgentRequest) ToJsonString() string {
@@ -344,10 +344,10 @@ type InstallAgentResponse struct {
 	Response *struct {
 
 		// Agent版本, 用于私有集群的agent安装
-		TiaVersion *string `json:"TiaVersion" name:"TiaVersion"`
+		TiaVersion *string `json:"TiaVersion,omitempty" name:"TiaVersion"`
 
 		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
-		RequestId *string `json:"RequestId" name:"RequestId"`
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
 }
 
@@ -363,86 +363,86 @@ func (r *InstallAgentResponse) FromJsonString(s string) error {
 type Job struct {
 
 	// 任务名称
-	Name *string `json:"Name" name:"Name"`
+	Name *string `json:"Name,omitempty" name:"Name"`
 
 	// 任务创建时间，格式为：2006-01-02 15:04:05.999999999 -0700 MST
-	CreateTime *string `json:"CreateTime" name:"CreateTime"`
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
 
 	// 任务开始时间，格式为：2006-01-02 15:04:05.999999999 -0700 MST
-	StartTime *string `json:"StartTime" name:"StartTime"`
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
 
 	// 任务结束时间，格式为：2006-01-02 15:04:05.999999999 -0700 MST
-	EndTime *string `json:"EndTime" name:"EndTime"`
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 
 	// 任务状态，可能的状态为Created（已创建），Running（运行中），Succeeded（运行完成：成功），Failed（运行完成：失败）
-	State *string `json:"State" name:"State"`
+	State *string `json:"State,omitempty" name:"State"`
 
 	// 任务状态信息
-	Message *string `json:"Message" name:"Message"`
+	Message *string `json:"Message,omitempty" name:"Message"`
 
 	// 运行任务的配置信息
-	ScaleTier *string `json:"ScaleTier" name:"ScaleTier"`
+	ScaleTier *string `json:"ScaleTier,omitempty" name:"ScaleTier"`
 
 	// （ScaleTier为Custom时）master机器类型
-	MasterType *string `json:"MasterType" name:"MasterType"`
+	MasterType *string `json:"MasterType,omitempty" name:"MasterType"`
 
 	// （ScaleTier为Custom时）worker机器类型
-	WorkerType *string `json:"WorkerType" name:"WorkerType"`
+	WorkerType *string `json:"WorkerType,omitempty" name:"WorkerType"`
 
 	// （ScaleTier为Custom时）parameter server机器类型
-	ParameterServerType *string `json:"ParameterServerType" name:"ParameterServerType"`
+	ParameterServerType *string `json:"ParameterServerType,omitempty" name:"ParameterServerType"`
 
 	// （ScaleTier为Custom时）worker机器数量
-	WorkerCount *uint64 `json:"WorkerCount" name:"WorkerCount"`
+	WorkerCount *uint64 `json:"WorkerCount,omitempty" name:"WorkerCount"`
 
 	// （ScaleTier为Custom时）parameter server机器数量
-	ParameterServerCount *uint64 `json:"ParameterServerCount" name:"ParameterServerCount"`
+	ParameterServerCount *uint64 `json:"ParameterServerCount,omitempty" name:"ParameterServerCount"`
 
 	// 挂载的路径
-	PackageDir []*string `json:"PackageDir" name:"PackageDir" list`
+	PackageDir []*string `json:"PackageDir,omitempty" name:"PackageDir" list`
 
 	// 任务启动命令
-	Command []*string `json:"Command" name:"Command" list`
+	Command []*string `json:"Command,omitempty" name:"Command" list`
 
 	// 任务启动参数
-	Args []*string `json:"Args" name:"Args" list`
+	Args []*string `json:"Args,omitempty" name:"Args" list`
 
 	// 运行任务的集群
-	Cluster *string `json:"Cluster" name:"Cluster"`
+	Cluster *string `json:"Cluster,omitempty" name:"Cluster"`
 
 	// 运行任务的环境
-	RuntimeVersion *string `json:"RuntimeVersion" name:"RuntimeVersion"`
+	RuntimeVersion *string `json:"RuntimeVersion,omitempty" name:"RuntimeVersion"`
 
 	// 任务删除时间，格式为：2006-01-02 15:04:05.999999999 -0700 MST
-	DelTime *string `json:"DelTime" name:"DelTime"`
+	DelTime *string `json:"DelTime,omitempty" name:"DelTime"`
 
 	// 创建任务的AppId
-	AppId *uint64 `json:"AppId" name:"AppId"`
+	AppId *uint64 `json:"AppId,omitempty" name:"AppId"`
 
 	// 创建任务的Uin
-	Uin *string `json:"Uin" name:"Uin"`
+	Uin *string `json:"Uin,omitempty" name:"Uin"`
 
 	// 创建任务的Debug模式
-	Debug *bool `json:"Debug" name:"Debug"`
+	Debug *bool `json:"Debug,omitempty" name:"Debug"`
 
 	// Runtime的额外配置信息
-	RuntimeConf []*string `json:"RuntimeConf" name:"RuntimeConf" list`
+	RuntimeConf []*string `json:"RuntimeConf,omitempty" name:"RuntimeConf" list`
 
 	// 任务Id
-	Id *string `json:"Id" name:"Id"`
+	Id *string `json:"Id,omitempty" name:"Id"`
 }
 
 type ListJobsRequest struct {
 	*tchttp.BaseRequest
 
 	// 运行任务的集群
-	Cluster *string `json:"Cluster" name:"Cluster"`
+	Cluster *string `json:"Cluster,omitempty" name:"Cluster"`
 
 	// 分页参数，返回数量
-	Limit *uint64 `json:"Limit" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 
 	// 分页参数，起始位置
-	Offset *uint64 `json:"Offset" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
 }
 
 func (r *ListJobsRequest) ToJsonString() string {
@@ -459,10 +459,10 @@ type ListJobsResponse struct {
 	Response *struct {
 
 		// 训练任务列表
-		Jobs []*Job `json:"Jobs" name:"Jobs" list`
+		Jobs []*Job `json:"Jobs,omitempty" name:"Jobs" list`
 
 		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
-		RequestId *string `json:"RequestId" name:"RequestId"`
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
 }
 
@@ -479,16 +479,16 @@ type ListModelsRequest struct {
 	*tchttp.BaseRequest
 
 	// 部署模型的集群
-	Cluster *string `json:"Cluster" name:"Cluster"`
+	Cluster *string `json:"Cluster,omitempty" name:"Cluster"`
 
 	// 分页参数，返回数量
-	Limit *uint64 `json:"Limit" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 
 	// 分页参数，起始位置
-	Offset *uint64 `json:"Offset" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
 
 	// 模型类型
-	ServType *string `json:"ServType" name:"ServType"`
+	ServType *string `json:"ServType,omitempty" name:"ServType"`
 }
 
 func (r *ListModelsRequest) ToJsonString() string {
@@ -505,10 +505,10 @@ type ListModelsResponse struct {
 	Response *struct {
 
 		// Model数组，用以显示所有模型的信息
-		Models []*Model `json:"Models" name:"Models" list`
+		Models []*Model `json:"Models,omitempty" name:"Models" list`
 
 		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
-		RequestId *string `json:"RequestId" name:"RequestId"`
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
 }
 
@@ -524,86 +524,86 @@ func (r *ListModelsResponse) FromJsonString(s string) error {
 type Log struct {
 
 	// 容器名
-	ContainerName *string `json:"ContainerName" name:"ContainerName"`
+	ContainerName *string `json:"ContainerName,omitempty" name:"ContainerName"`
 
 	// 日志内容
-	Log *string `json:"Log" name:"Log"`
+	Log *string `json:"Log,omitempty" name:"Log"`
 
 	// 空间名
-	Namespace *string `json:"Namespace" name:"Namespace"`
+	Namespace *string `json:"Namespace,omitempty" name:"Namespace"`
 
 	// Pod Id
-	PodId *string `json:"PodId" name:"PodId"`
+	PodId *string `json:"PodId,omitempty" name:"PodId"`
 
 	// Pod名
-	PodName *string `json:"PodName" name:"PodName"`
+	PodName *string `json:"PodName,omitempty" name:"PodName"`
 
 	// 日志日期，格式为“2018-07-02T09:10:04.916553368Z”
-	Time *string `json:"Time" name:"Time"`
+	Time *string `json:"Time,omitempty" name:"Time"`
 }
 
 type Model struct {
 
 	// 模型名称
-	Name *string `json:"Name" name:"Name"`
+	Name *string `json:"Name,omitempty" name:"Name"`
 
 	// 模型描述
-	Description *string `json:"Description" name:"Description"`
+	Description *string `json:"Description,omitempty" name:"Description"`
 
 	// 集群名称
-	Cluster *string `json:"Cluster" name:"Cluster"`
+	Cluster *string `json:"Cluster,omitempty" name:"Cluster"`
 
 	// 模型地址
-	Model *string `json:"Model" name:"Model"`
+	Model *string `json:"Model,omitempty" name:"Model"`
 
 	// 运行环境编号
-	RuntimeVersion *string `json:"RuntimeVersion" name:"RuntimeVersion"`
+	RuntimeVersion *string `json:"RuntimeVersion,omitempty" name:"RuntimeVersion"`
 
 	// 模型创建时间
-	CreateTime *string `json:"CreateTime" name:"CreateTime"`
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
 
 	// 模型运行状态
-	State *string `json:"State" name:"State"`
+	State *string `json:"State,omitempty" name:"State"`
 
 	// 提供服务的url
-	ServingUrl *string `json:"ServingUrl" name:"ServingUrl"`
+	ServingUrl *string `json:"ServingUrl,omitempty" name:"ServingUrl"`
 
 	// 相关消息
-	Message *string `json:"Message" name:"Message"`
+	Message *string `json:"Message,omitempty" name:"Message"`
 
 	// 编号
-	AppId *uint64 `json:"AppId" name:"AppId"`
+	AppId *uint64 `json:"AppId,omitempty" name:"AppId"`
 
 	// 机型
-	ServType *string `json:"ServType" name:"ServType"`
+	ServType *string `json:"ServType,omitempty" name:"ServType"`
 
 	// 模型暴露方式
-	Expose *string `json:"Expose" name:"Expose"`
+	Expose *string `json:"Expose,omitempty" name:"Expose"`
 
 	// 部署副本数量
-	Replicas *uint64 `json:"Replicas" name:"Replicas"`
+	Replicas *uint64 `json:"Replicas,omitempty" name:"Replicas"`
 }
 
 type QueryLogsRequest struct {
 	*tchttp.BaseRequest
 
 	// 任务名称
-	JobName *string `json:"JobName" name:"JobName"`
+	JobName *string `json:"JobName,omitempty" name:"JobName"`
 
 	// 集群名称
-	Cluster *string `json:"Cluster" name:"Cluster"`
+	Cluster *string `json:"Cluster,omitempty" name:"Cluster"`
 
 	// 查询日志的开始时间
-	StartTime *string `json:"StartTime" name:"StartTime"`
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
 
 	// 查询日志的结束时间
-	EndTime *string `json:"EndTime" name:"EndTime"`
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 
 	// 单次要返回的日志条数
-	Limit *uint64 `json:"Limit" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 
 	// 加载更多使用，透传上次返回的context值，获取后续的日志内容，使用context翻页最多能获取10000条日志
-	Context *string `json:"Context" name:"Context"`
+	Context *string `json:"Context,omitempty" name:"Context"`
 }
 
 func (r *QueryLogsRequest) ToJsonString() string {
@@ -620,16 +620,16 @@ type QueryLogsResponse struct {
 	Response *struct {
 
 		// 日志查询上下文，用于加载更多日志
-		Context *string `json:"Context" name:"Context"`
+		Context *string `json:"Context,omitempty" name:"Context"`
 
 		// 日志内容列表
-		Logs []*Log `json:"Logs" name:"Logs" list`
+		Logs []*Log `json:"Logs,omitempty" name:"Logs" list`
 
 		// 是否已经返回所有符合条件的日志
-		Listover *bool `json:"Listover" name:"Listover"`
+		Listover *bool `json:"Listover,omitempty" name:"Listover"`
 
 		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
-		RequestId *string `json:"RequestId" name:"RequestId"`
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
 }
 
