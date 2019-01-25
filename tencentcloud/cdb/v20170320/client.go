@@ -309,6 +309,31 @@ func (c *Client) DeleteBackup(request *DeleteBackupRequest) (response *DeleteBac
     return
 }
 
+func NewDeleteParamTemplateRequest() (request *DeleteParamTemplateRequest) {
+    request = &DeleteParamTemplateRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cdb", APIVersion, "DeleteParamTemplate")
+    return
+}
+
+func NewDeleteParamTemplateResponse() (response *DeleteParamTemplateResponse) {
+    response = &DeleteParamTemplateResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 该接口（DeleteParamTemplate）用于删除参数模板。
+func (c *Client) DeleteParamTemplate(request *DeleteParamTemplateRequest) (response *DeleteParamTemplateResponse, err error) {
+    if request == nil {
+        request = NewDeleteParamTemplateRequest()
+    }
+    response = NewDeleteParamTemplateResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeAccountPrivilegesRequest() (request *DescribeAccountPrivilegesRequest) {
     request = &DescribeAccountPrivilegesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -675,6 +700,8 @@ func NewDescribeDBPriceResponse() (response *DescribeDBPriceResponse) {
 }
 
 // 本接口(DescribeDBPrice)用于查询云数据库实例的价格，支持查询按量计费或者包年包月的价格。可传入实例类型、购买时长、购买数量、内存大小、硬盘大小和可用区信息等来查询实例价格。
+// 
+// 注意：对某个地域进行询价，请使用对应地域的接入点，接入点信息请参照<a href="https://cloud.tencent.com/document/api/236/15832">服务地址</a>文档。例如：对广州地域进行询价，请把请求发到：cdb.ap-guangzhou.tencentcloudapi.com。同理对上海地域询价，把请求发到：cdb.ap-shanghai.tencentcloudapi.com
 func (c *Client) DescribeDBPrice(request *DescribeDBPriceRequest) (response *DescribeDBPriceResponse, err error) {
     if request == nil {
         request = NewDescribeDBPriceRequest()
@@ -1005,6 +1032,31 @@ func (c *Client) DescribeSlowLogs(request *DescribeSlowLogsRequest) (response *D
         request = NewDescribeSlowLogsRequest()
     }
     response = NewDescribeSlowLogsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeSupportedPrivilegesRequest() (request *DescribeSupportedPrivilegesRequest) {
+    request = &DescribeSupportedPrivilegesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cdb", APIVersion, "DescribeSupportedPrivileges")
+    return
+}
+
+func NewDescribeSupportedPrivilegesResponse() (response *DescribeSupportedPrivilegesResponse) {
+    response = &DescribeSupportedPrivilegesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口(DescribeSupportedPrivileges)用于查询云数据库的支持的权限信息，包括全局权限，数据库权限，表权限以及列权限。
+func (c *Client) DescribeSupportedPrivileges(request *DescribeSupportedPrivilegesRequest) (response *DescribeSupportedPrivilegesResponse, err error) {
+    if request == nil {
+        request = NewDescribeSupportedPrivilegesRequest()
+    }
+    response = NewDescribeSupportedPrivilegesResponse()
     err = c.Send(request, response)
     return
 }

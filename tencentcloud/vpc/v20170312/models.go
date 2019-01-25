@@ -109,6 +109,49 @@ func (r *AddBandwidthPackageResourcesResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type AddIp6RulesRequest struct {
+	*tchttp.BaseRequest
+
+	// IPV6转换实例唯一ID，形如ip6-xxxxxxxx
+	Ip6TranslatorId *string `json:"Ip6TranslatorId,omitempty" name:"Ip6TranslatorId"`
+
+	// IPV6转换规则信息
+	Ip6RuleInfos []*Ip6RuleInfo `json:"Ip6RuleInfos,omitempty" name:"Ip6RuleInfos" list`
+
+	// IPV6转换规则名称
+	Ip6RuleName *string `json:"Ip6RuleName,omitempty" name:"Ip6RuleName"`
+}
+
+func (r *AddIp6RulesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *AddIp6RulesRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type AddIp6RulesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// IPV6转换规则唯一ID数组，形如rule6-xxxxxxxx
+		Ip6RuleSet []*string `json:"Ip6RuleSet,omitempty" name:"Ip6RuleSet" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *AddIp6RulesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *AddIp6RulesResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type Address struct {
 
 	// `EIP`的`ID`，是`EIP`的唯一标识。
@@ -984,6 +1027,49 @@ func (r *CreateHaVipResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type CreateIp6TranslatorsRequest struct {
+	*tchttp.BaseRequest
+
+	// 转换实例名称
+	Ip6TranslatorName *string `json:"Ip6TranslatorName,omitempty" name:"Ip6TranslatorName"`
+
+	// 创建转换实例数量，默认是1个
+	Ip6TranslatorCount *int64 `json:"Ip6TranslatorCount,omitempty" name:"Ip6TranslatorCount"`
+
+	// 转换实例运营商属性，可取"CMCC","CTCC","CUCC","BGP"
+	Ip6InternetServiceProvider *string `json:"Ip6InternetServiceProvider,omitempty" name:"Ip6InternetServiceProvider"`
+}
+
+func (r *CreateIp6TranslatorsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateIp6TranslatorsRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateIp6TranslatorsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 转换实例的唯一ID数组，形如"ip6-xxxxxxxx"
+		Ip6TranslatorSet []*string `json:"Ip6TranslatorSet,omitempty" name:"Ip6TranslatorSet" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateIp6TranslatorsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateIp6TranslatorsResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type CreateNetworkInterfaceRequest struct {
 	*tchttp.BaseRequest
 
@@ -1832,6 +1918,40 @@ func (r *DeleteHaVipResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DeleteIp6TranslatorsRequest struct {
+	*tchttp.BaseRequest
+
+	// 待释放的IPV6转换实例的唯一ID，形如‘ip6-xxxxxxxx’
+	Ip6TranslatorIds []*string `json:"Ip6TranslatorIds,omitempty" name:"Ip6TranslatorIds" list`
+}
+
+func (r *DeleteIp6TranslatorsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteIp6TranslatorsRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteIp6TranslatorsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DeleteIp6TranslatorsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteIp6TranslatorsResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DeleteNetworkInterfaceRequest struct {
 	*tchttp.BaseRequest
 
@@ -2544,6 +2664,12 @@ type DescribeCcnAttachedInstancesRequest struct {
 
 	// 云联网实例ID
 	CcnId *string `json:"CcnId,omitempty" name:"CcnId"`
+
+	// 排序字段。支持：`CcnId` `InstanceType` `InstanceId` `InstanceName` `InstanceRegion` `AttachedTime` `State`。
+	OrderField *string `json:"OrderField,omitempty" name:"OrderField"`
+
+	// 排序方法。顺序：`ASC`，倒序：`DESC`。
+	OrderDirection *string `json:"OrderDirection,omitempty" name:"OrderDirection"`
 }
 
 func (r *DescribeCcnAttachedInstancesRequest) ToJsonString() string {
@@ -3018,6 +3144,97 @@ func (r *DescribeHaVipsResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeIp6TranslatorQuotaRequest struct {
+	*tchttp.BaseRequest
+
+	// 待查询IPV6转换实例的唯一ID列表，形如ip6-xxxxxxxx
+	Ip6TranslatorIds []*string `json:"Ip6TranslatorIds,omitempty" name:"Ip6TranslatorIds" list`
+}
+
+func (r *DescribeIp6TranslatorQuotaRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeIp6TranslatorQuotaRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeIp6TranslatorQuotaResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 账户在指定地域的IPV6转换实例及规则配额信息
+	// QUOTAID属性是TOTAL_TRANSLATOR_QUOTA，表示账户在指定地域的IPV6转换实例配额信息；QUOTAID属性是IPV6转转换实例唯一ID（形如ip6-xxxxxxxx），表示账户在该转换实例允许创建的转换规则配额
+		QuotaSet []*Quota `json:"QuotaSet,omitempty" name:"QuotaSet" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeIp6TranslatorQuotaResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeIp6TranslatorQuotaResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeIp6TranslatorsRequest struct {
+	*tchttp.BaseRequest
+
+	// IPV6转换实例唯一ID数组，形如ip6-xxxxxxxx
+	Ip6TranslatorIds []*string `json:"Ip6TranslatorIds,omitempty" name:"Ip6TranslatorIds" list`
+
+	// 每次请求的`Filters`的上限为10，`Filter.Values`的上限为5。参数不支持同时指定`Ip6TranslatorIds`和`Filters`。详细的过滤条件如下：
+	// <li> ip6-translator-id - String - 是否必填：否 - （过滤条件）按照IPV6转换实例的唯一ID过滤,形如ip6-xxxxxxx。</li>
+	// <li> ip6-translator-vip6 - String - 是否必填：否 - （过滤条件）按照IPV6地址过滤。不支持模糊过滤。</li>
+	// <li> ip6-translator-name - String - 是否必填：否 - （过滤条件）按照IPV6转换实例名称过滤。不支持模糊过滤。</li>
+	// <li> ip6-translator-status - String - 是否必填：否 - （过滤条件）按照IPV6转换实例的状态过滤。状态取值范围为"CREATING","RUNNING","DELETING","MODIFYING"
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+
+	// 偏移量，默认为0。关于`Offset`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/11646)中的相关小节。
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 返回数量，默认为20，最大值为100。关于`Limit`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/11646)中的相关小节。
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+func (r *DescribeIp6TranslatorsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeIp6TranslatorsRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeIp6TranslatorsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 符合过滤条件的IPV6转换实例数量。
+		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 符合过滤条件的IPV6转换实例详细信息
+		Ip6TranslatorSet []*Ip6Translator `json:"Ip6TranslatorSet,omitempty" name:"Ip6TranslatorSet" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeIp6TranslatorsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeIp6TranslatorsResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeNetworkInterfacesRequest struct {
 	*tchttp.BaseRequest
 
@@ -3440,6 +3657,46 @@ func (r *DescribeSubnetsResponse) ToJsonString() string {
 }
 
 func (r *DescribeSubnetsResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeVpcPrivateIpAddressesRequest struct {
+	*tchttp.BaseRequest
+
+	// `VPC`实例`ID`，形如：`vpc-f49l6u0z`。
+	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
+
+	// 内网`IP`地址列表，批量查询单次请求最多支持`10`个。
+	PrivateIpAddresses []*string `json:"PrivateIpAddresses,omitempty" name:"PrivateIpAddresses" list`
+}
+
+func (r *DescribeVpcPrivateIpAddressesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeVpcPrivateIpAddressesRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeVpcPrivateIpAddressesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 内网`IP`地址信息列表。
+		VpcPrivateIpAddressSet []*VpcPrivateIpAddress `json:"VpcPrivateIpAddressSet,omitempty" name:"VpcPrivateIpAddressSet" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeVpcPrivateIpAddressesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeVpcPrivateIpAddressesResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -4313,6 +4570,78 @@ type InstanceChargePrepaid struct {
 	RenewFlag *string `json:"RenewFlag,omitempty" name:"RenewFlag"`
 }
 
+type Ip6Rule struct {
+
+	// IPV6转换规则唯一ID，形如rule6-xxxxxxxx
+	Ip6RuleId *string `json:"Ip6RuleId,omitempty" name:"Ip6RuleId"`
+
+	// IPV6转换规则名称
+	Ip6RuleName *string `json:"Ip6RuleName,omitempty" name:"Ip6RuleName"`
+
+	// IPV6地址
+	Vip6 *string `json:"Vip6,omitempty" name:"Vip6"`
+
+	// IPV6端口号
+	Vport6 *int64 `json:"Vport6,omitempty" name:"Vport6"`
+
+	// 协议类型，支持TCP/UDP
+	Protocol *string `json:"Protocol,omitempty" name:"Protocol"`
+
+	// IPV4地址
+	Vip *string `json:"Vip,omitempty" name:"Vip"`
+
+	// IPV4端口号
+	Vport *int64 `json:"Vport,omitempty" name:"Vport"`
+
+	// 转换规则状态，限于CREATING,RUNNING,DELETING,MODIFYING
+	RuleStatus *string `json:"RuleStatus,omitempty" name:"RuleStatus"`
+
+	// 转换规则创建时间
+	CreatedTime *string `json:"CreatedTime,omitempty" name:"CreatedTime"`
+}
+
+type Ip6RuleInfo struct {
+
+	// IPV6端口号，可在0~65535范围取值
+	Vport6 *int64 `json:"Vport6,omitempty" name:"Vport6"`
+
+	// 协议类型，支持TCP/UDP
+	Protocol *string `json:"Protocol,omitempty" name:"Protocol"`
+
+	// IPV4地址
+	Vip *string `json:"Vip,omitempty" name:"Vip"`
+
+	// IPV4端口号，可在0~65535范围取值
+	Vport *int64 `json:"Vport,omitempty" name:"Vport"`
+}
+
+type Ip6Translator struct {
+
+	// IPV6转换实例唯一ID，形如ip6-xxxxxxxx
+	Ip6TranslatorId *string `json:"Ip6TranslatorId,omitempty" name:"Ip6TranslatorId"`
+
+	// IPV6转换实例名称
+	Ip6TranslatorName *string `json:"Ip6TranslatorName,omitempty" name:"Ip6TranslatorName"`
+
+	// IPV6地址
+	Vip6 *string `json:"Vip6,omitempty" name:"Vip6"`
+
+	// IPV6转换地址所属运营商
+	IspName *string `json:"IspName,omitempty" name:"IspName"`
+
+	// 转换实例状态，限于CREATING,RUNNING,DELETING,MODIFYING
+	TranslatorStatus *string `json:"TranslatorStatus,omitempty" name:"TranslatorStatus"`
+
+	// IPV6转换实例创建时间
+	CreatedTime *string `json:"CreatedTime,omitempty" name:"CreatedTime"`
+
+	// 绑定的IPV6转换规则数量
+	Ip6RuleCount *int64 `json:"Ip6RuleCount,omitempty" name:"Ip6RuleCount"`
+
+	// IPV6转换规则信息
+	IP6RuleSet []*Ip6Rule `json:"IP6RuleSet,omitempty" name:"IP6RuleSet" list`
+}
+
 type ItemPrice struct {
 
 	// 按量计费后付费单价，单位：元。
@@ -4756,6 +5085,89 @@ func (r *ModifyHaVipAttributeResponse) ToJsonString() string {
 }
 
 func (r *ModifyHaVipAttributeResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyIp6RuleRequest struct {
+	*tchttp.BaseRequest
+
+	// IPV6转换实例唯一ID，形如ip6-xxxxxxxx
+	Ip6TranslatorId *string `json:"Ip6TranslatorId,omitempty" name:"Ip6TranslatorId"`
+
+	// IPV6转换规则唯一ID，形如rule6-xxxxxxxx
+	Ip6RuleId *string `json:"Ip6RuleId,omitempty" name:"Ip6RuleId"`
+
+	// IPV6转换规则修改后的名称
+	Ip6RuleName *string `json:"Ip6RuleName,omitempty" name:"Ip6RuleName"`
+
+	// IPV6转换规则修改后的IPV4地址
+	Vip *string `json:"Vip,omitempty" name:"Vip"`
+
+	// IPV6转换规则修改后的IPV4端口号
+	Vport *int64 `json:"Vport,omitempty" name:"Vport"`
+}
+
+func (r *ModifyIp6RuleRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyIp6RuleRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyIp6RuleResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifyIp6RuleResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyIp6RuleResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyIp6TranslatorRequest struct {
+	*tchttp.BaseRequest
+
+	// IPV6转换实例唯一ID，形如ip6-xxxxxxxxx
+	Ip6TranslatorId *string `json:"Ip6TranslatorId,omitempty" name:"Ip6TranslatorId"`
+
+	// IPV6转换实例修改名称
+	Ip6TranslatorName *string `json:"Ip6TranslatorName,omitempty" name:"Ip6TranslatorName"`
+}
+
+func (r *ModifyIp6TranslatorRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyIp6TranslatorRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyIp6TranslatorResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifyIp6TranslatorResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyIp6TranslatorResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -5427,6 +5839,43 @@ func (r *RemoveBandwidthPackageResourcesResponse) ToJsonString() string {
 }
 
 func (r *RemoveBandwidthPackageResourcesResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type RemoveIp6RulesRequest struct {
+	*tchttp.BaseRequest
+
+	// IPV6转换规则所属的转换实例唯一ID，形如ip6-xxxxxxxx
+	Ip6TranslatorId *string `json:"Ip6TranslatorId,omitempty" name:"Ip6TranslatorId"`
+
+	// 待删除IPV6转换规则，形如rule6-xxxxxxxx
+	Ip6RuleIds []*string `json:"Ip6RuleIds,omitempty" name:"Ip6RuleIds" list`
+}
+
+func (r *RemoveIp6RulesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *RemoveIp6RulesRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type RemoveIp6RulesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *RemoveIp6RulesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *RemoveIp6RulesResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -6188,6 +6637,21 @@ type Vpc struct {
 	EnableDhcp *bool `json:"EnableDhcp,omitempty" name:"EnableDhcp"`
 }
 
+type VpcPrivateIpAddress struct {
+
+	// `VPC`内网`IP`。
+	PrivateIpAddress *string `json:"PrivateIpAddress,omitempty" name:"PrivateIpAddress"`
+
+	// 所属子网`CIDR`。
+	CidrBlock *string `json:"CidrBlock,omitempty" name:"CidrBlock"`
+
+	// 内网`IP`类型。
+	PrivateIpAddressType *string `json:"PrivateIpAddressType,omitempty" name:"PrivateIpAddressType"`
+
+	// `IP`申请时间。
+	CreatedTime *string `json:"CreatedTime,omitempty" name:"CreatedTime"`
+}
+
 type VpnConnection struct {
 
 	// 通道实例ID。
@@ -6256,7 +6720,7 @@ type VpnGateway struct {
 	// 网关公网IP。
 	PublicIpAddress *string `json:"PublicIpAddress,omitempty" name:"PublicIpAddress"`
 
-	// 网关续费类型：'NOTIFY_AND_MANUAL_RENEW'：手动续费，'NOTIFY_AND_AUTO_RENEW'：自动续费
+	// 网关续费类型：'NOTIFY_AND_MANUAL_RENEW'：手动续费，'NOTIFY_AND_AUTO_RENEW'：自动续费，'NOT_NOTIFY_AND_NOT_RENEW'：到期不续费。
 	RenewFlag *string `json:"RenewFlag,omitempty" name:"RenewFlag"`
 
 	// 网关付费类型：POSTPAID_BY_HOUR：按小时后付费，PREPAID：包年包月预付费，

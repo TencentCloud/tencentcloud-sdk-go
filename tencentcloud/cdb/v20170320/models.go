@@ -708,6 +708,40 @@ func (r *DeleteBackupResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DeleteParamTemplateRequest struct {
+	*tchttp.BaseRequest
+
+	// 参数模板ID。
+	TemplateId *int64 `json:"TemplateId,omitempty" name:"TemplateId"`
+}
+
+func (r *DeleteParamTemplateRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteParamTemplateRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteParamTemplateResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DeleteParamTemplateResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteParamTemplateResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeAccountPrivilegesRequest struct {
 	*tchttp.BaseRequest
 
@@ -1424,7 +1458,7 @@ func (r *DescribeDBInstancesResponse) FromJsonString(s string) error {
 type DescribeDBPriceRequest struct {
 	*tchttp.BaseRequest
 
-	// 可用区信息，格式如"ap-guangzhou-1"
+	// 可用区信息，格式如"ap-guangzhou-2"。具体能设置的值请通过<a href="https://cloud.tencent.com/document/api/236/17229">DescribeDBZoneConfig</a>接口查询。
 	Zone *string `json:"Zone,omitempty" name:"Zone"`
 
 	// 实例数量，默认值为1, 最小值1，最大值为100
@@ -2032,6 +2066,52 @@ func (r *DescribeSlowLogsResponse) ToJsonString() string {
 }
 
 func (r *DescribeSlowLogsResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeSupportedPrivilegesRequest struct {
+	*tchttp.BaseRequest
+
+	// 实例ID，格式如：cdb-c1nl9rpv，与云数据库控制台页面中显示的实例ID相同。
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+}
+
+func (r *DescribeSupportedPrivilegesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeSupportedPrivilegesRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeSupportedPrivilegesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 实例支持的全局权限。
+		GlobalSupportedPrivileges []*string `json:"GlobalSupportedPrivileges,omitempty" name:"GlobalSupportedPrivileges" list`
+
+		// 实例支持的数据库权限。
+		DatabaseSupportedPrivileges []*string `json:"DatabaseSupportedPrivileges,omitempty" name:"DatabaseSupportedPrivileges" list`
+
+		// 实例支持的数据库表权限。
+		TableSupportedPrivileges []*string `json:"TableSupportedPrivileges,omitempty" name:"TableSupportedPrivileges" list`
+
+		// 实例支持的数据库列权限。
+		ColumnSupportedPrivileges []*string `json:"ColumnSupportedPrivileges,omitempty" name:"ColumnSupportedPrivileges" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeSupportedPrivilegesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeSupportedPrivilegesResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 

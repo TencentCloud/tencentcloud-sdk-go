@@ -93,6 +93,33 @@ func (c *Client) AddBandwidthPackageResources(request *AddBandwidthPackageResour
     return
 }
 
+func NewAddIp6RulesRequest() (request *AddIp6RulesRequest) {
+    request = &AddIp6RulesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "AddIp6Rules")
+    return
+}
+
+func NewAddIp6RulesResponse() (response *AddIp6RulesResponse) {
+    response = &AddIp6RulesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 1. 该接口用于在转换实例下添加IPV6转换规则。
+// 2. 支持在同一个转换实例下批量添加转换规则，一个账户在一个地域最多50个。
+// 3. 一个完整的转换规则包括vip6:vport6:protocol:vip:vport，其中vip6:vport6:protocol必须是唯一。
+func (c *Client) AddIp6Rules(request *AddIp6RulesRequest) (response *AddIp6RulesResponse, err error) {
+    if request == nil {
+        request = NewAddIp6RulesRequest()
+    }
+    response = NewAddIp6RulesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewAllocateAddressesRequest() (request *AllocateAddressesRequest) {
     request = &AllocateAddressesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -492,6 +519,32 @@ func (c *Client) CreateHaVip(request *CreateHaVipRequest) (response *CreateHaVip
         request = NewCreateHaVipRequest()
     }
     response = NewCreateHaVipResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateIp6TranslatorsRequest() (request *CreateIp6TranslatorsRequest) {
+    request = &CreateIp6TranslatorsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "CreateIp6Translators")
+    return
+}
+
+func NewCreateIp6TranslatorsResponse() (response *CreateIp6TranslatorsResponse) {
+    response = &CreateIp6TranslatorsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 1. 该接口用于创建IPV6转换IPV4实例，支持批量
+// 2. 同一个账户在在一个地域最多允许创建10个转换实例
+func (c *Client) CreateIp6Translators(request *CreateIp6TranslatorsRequest) (response *CreateIp6TranslatorsResponse, err error) {
+    if request == nil {
+        request = NewCreateIp6TranslatorsRequest()
+    }
+    response = NewCreateIp6TranslatorsResponse()
     err = c.Send(request, response)
     return
 }
@@ -1027,6 +1080,32 @@ func (c *Client) DeleteHaVip(request *DeleteHaVipRequest) (response *DeleteHaVip
         request = NewDeleteHaVipRequest()
     }
     response = NewDeleteHaVipResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteIp6TranslatorsRequest() (request *DeleteIp6TranslatorsRequest) {
+    request = &DeleteIp6TranslatorsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "DeleteIp6Translators")
+    return
+}
+
+func NewDeleteIp6TranslatorsResponse() (response *DeleteIp6TranslatorsResponse) {
+    response = &DeleteIp6TranslatorsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 1. 该接口用于释放IPV6转换实例，支持批量。
+// 2.  如果IPV6转换实例建立有转换规则，会一并删除。
+func (c *Client) DeleteIp6Translators(request *DeleteIp6TranslatorsRequest) (response *DeleteIp6TranslatorsResponse, err error) {
+    if request == nil {
+        request = NewDeleteIp6TranslatorsRequest()
+    }
+    response = NewDeleteIp6TranslatorsResponse()
     err = c.Send(request, response)
     return
 }
@@ -1741,6 +1820,57 @@ func (c *Client) DescribeHaVips(request *DescribeHaVipsRequest) (response *Descr
     return
 }
 
+func NewDescribeIp6TranslatorQuotaRequest() (request *DescribeIp6TranslatorQuotaRequest) {
+    request = &DescribeIp6TranslatorQuotaRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "DescribeIp6TranslatorQuota")
+    return
+}
+
+func NewDescribeIp6TranslatorQuotaResponse() (response *DescribeIp6TranslatorQuotaResponse) {
+    response = &DescribeIp6TranslatorQuotaResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询账户在指定地域IPV6转换实例和规则的配额
+func (c *Client) DescribeIp6TranslatorQuota(request *DescribeIp6TranslatorQuotaRequest) (response *DescribeIp6TranslatorQuotaResponse, err error) {
+    if request == nil {
+        request = NewDescribeIp6TranslatorQuotaRequest()
+    }
+    response = NewDescribeIp6TranslatorQuotaResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeIp6TranslatorsRequest() (request *DescribeIp6TranslatorsRequest) {
+    request = &DescribeIp6TranslatorsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "DescribeIp6Translators")
+    return
+}
+
+func NewDescribeIp6TranslatorsResponse() (response *DescribeIp6TranslatorsResponse) {
+    response = &DescribeIp6TranslatorsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 1. 该接口用于查询账户下的IPV6转换实例及其绑定的转换规则信息
+// 2. 支持过滤查询
+func (c *Client) DescribeIp6Translators(request *DescribeIp6TranslatorsRequest) (response *DescribeIp6TranslatorsResponse, err error) {
+    if request == nil {
+        request = NewDescribeIp6TranslatorsRequest()
+    }
+    response = NewDescribeIp6TranslatorsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeNetworkInterfacesRequest() (request *DescribeNetworkInterfacesRequest) {
     request = &DescribeNetworkInterfacesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1962,6 +2092,32 @@ func (c *Client) DescribeSubnets(request *DescribeSubnetsRequest) (response *Des
         request = NewDescribeSubnetsRequest()
     }
     response = NewDescribeSubnetsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeVpcPrivateIpAddressesRequest() (request *DescribeVpcPrivateIpAddressesRequest) {
+    request = &DescribeVpcPrivateIpAddressesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "DescribeVpcPrivateIpAddresses")
+    return
+}
+
+func NewDescribeVpcPrivateIpAddressesResponse() (response *DescribeVpcPrivateIpAddressesResponse) {
+    response = &DescribeVpcPrivateIpAddressesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（DescribeVpcPrivateIpAddresses）用于查询VPC内网IP信息。<br />
+// 只能查询已使用的IP信息，当查询未使用的IP时，本接口不会报错，但不会出现在返回结果里。
+func (c *Client) DescribeVpcPrivateIpAddresses(request *DescribeVpcPrivateIpAddressesRequest) (response *DescribeVpcPrivateIpAddressesResponse, err error) {
+    if request == nil {
+        request = NewDescribeVpcPrivateIpAddressesRequest()
+    }
+    response = NewDescribeVpcPrivateIpAddressesResponse()
     err = c.Send(request, response)
     return
 }
@@ -2678,6 +2834,56 @@ func (c *Client) ModifyHaVipAttribute(request *ModifyHaVipAttributeRequest) (res
     return
 }
 
+func NewModifyIp6RuleRequest() (request *ModifyIp6RuleRequest) {
+    request = &ModifyIp6RuleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "ModifyIp6Rule")
+    return
+}
+
+func NewModifyIp6RuleResponse() (response *ModifyIp6RuleResponse) {
+    response = &ModifyIp6RuleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 该接口用于修改IPV6转换规则，当前仅支持修改转换规则名称，IPV4地址和IPV4端口号
+func (c *Client) ModifyIp6Rule(request *ModifyIp6RuleRequest) (response *ModifyIp6RuleResponse, err error) {
+    if request == nil {
+        request = NewModifyIp6RuleRequest()
+    }
+    response = NewModifyIp6RuleResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyIp6TranslatorRequest() (request *ModifyIp6TranslatorRequest) {
+    request = &ModifyIp6TranslatorRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "ModifyIp6Translator")
+    return
+}
+
+func NewModifyIp6TranslatorResponse() (response *ModifyIp6TranslatorResponse) {
+    response = &ModifyIp6TranslatorResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 该接口用于修改IP6转换实例属性，当前仅支持修改实例名称。
+func (c *Client) ModifyIp6Translator(request *ModifyIp6TranslatorRequest) (response *ModifyIp6TranslatorResponse, err error) {
+    if request == nil {
+        request = NewModifyIp6TranslatorRequest()
+    }
+    response = NewModifyIp6TranslatorResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyNetworkInterfaceAttributeRequest() (request *ModifyNetworkInterfaceAttributeRequest) {
     request = &ModifyNetworkInterfaceAttributeRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3035,6 +3241,32 @@ func (c *Client) RemoveBandwidthPackageResources(request *RemoveBandwidthPackage
         request = NewRemoveBandwidthPackageResourcesRequest()
     }
     response = NewRemoveBandwidthPackageResourcesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewRemoveIp6RulesRequest() (request *RemoveIp6RulesRequest) {
+    request = &RemoveIp6RulesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "RemoveIp6Rules")
+    return
+}
+
+func NewRemoveIp6RulesResponse() (response *RemoveIp6RulesResponse) {
+    response = &RemoveIp6RulesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 1. 该接口用于删除IPV6转换规则
+// 2. 支持批量删除同一个转换实例下的多个转换规则
+func (c *Client) RemoveIp6Rules(request *RemoveIp6RulesRequest) (response *RemoveIp6RulesResponse, err error) {
+    if request == nil {
+        request = NewRemoveIp6RulesRequest()
+    }
+    response = NewRemoveIp6RulesResponse()
     err = c.Send(request, response)
     return
 }

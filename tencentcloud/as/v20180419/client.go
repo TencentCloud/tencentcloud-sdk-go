@@ -539,6 +539,35 @@ func (c *Client) ModifyLaunchConfigurationAttributes(request *ModifyLaunchConfig
     return
 }
 
+func NewModifyLoadBalancersRequest() (request *ModifyLoadBalancersRequest) {
+    request = &ModifyLoadBalancersRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("as", APIVersion, "ModifyLoadBalancers")
+    return
+}
+
+func NewModifyLoadBalancersResponse() (response *ModifyLoadBalancersResponse) {
+    response = &ModifyLoadBalancersResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（ModifyLoadBalancers）用于修改伸缩组的负载均衡器。
+// 
+// * 本接口用于为伸缩组指定新的负载均衡器配置，采用“完全覆盖”风格，无论之前配置如何，统一按照接口参数配置为新的负载均衡器。
+// * 如果要为伸缩组清空负载均衡器，则在调用本接口时仅指定伸缩组ID，不指定具体负载均衡器。
+// * 本接口会立即修改伸缩组的负载均衡器，并生成一个伸缩活动，异步修改存量实例的负载均衡器。
+func (c *Client) ModifyLoadBalancers(request *ModifyLoadBalancersRequest) (response *ModifyLoadBalancersResponse, err error) {
+    if request == nil {
+        request = NewModifyLoadBalancersRequest()
+    }
+    response = NewModifyLoadBalancersResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyScheduledActionRequest() (request *ModifyScheduledActionRequest) {
     request = &ModifyScheduledActionRequest{
         BaseRequest: &tchttp.BaseRequest{},

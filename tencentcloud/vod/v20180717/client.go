@@ -368,3 +368,30 @@ func (c *Client) SearchMedia(request *SearchMediaRequest) (response *SearchMedia
     err = c.Send(request, response)
     return
 }
+
+func NewSimpleHlsClipRequest() (request *SimpleHlsClipRequest) {
+    request = &SimpleHlsClipRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vod", APIVersion, "SimpleHlsClip")
+    return
+}
+
+func NewSimpleHlsClipResponse() (response *SimpleHlsClipResponse) {
+    response = &SimpleHlsClipResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 对 HLS 视频进行按时间段裁剪。
+// 
+// 注意：裁剪出来的视频与原始视频共用 ts，仅生成新的 m3u8。原始视频删除后，该裁剪视频也会被删除。
+func (c *Client) SimpleHlsClip(request *SimpleHlsClipRequest) (response *SimpleHlsClipResponse, err error) {
+    if request == nil {
+        request = NewSimpleHlsClipRequest()
+    }
+    response = NewSimpleHlsClipResponse()
+    err = c.Send(request, response)
+    return
+}
