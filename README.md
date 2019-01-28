@@ -127,23 +127,52 @@ func main() {
 
 # 支持产品列表
 
-| 产品中文名 | 对应模块 |
+| 包名 | 产品中文名 |
 |------------|------|
-| 云服务器 | cvm |
-| 云硬盘 | cbs |
-| 无服务器云函数 | scf |
-| 容器实例服务 | cis |
-| 私有网络 | vpc |
-| 批量计算 | batch |
-| 数据库 MySQL | cdb |
-| 数据库 MariaDB(TDSQL) | mariadb |
-| 数据库 PostgreSQL | postgres |
-| 分布式数据库 DCDB | dcdb |
-| 数据传输服务 DTS | dts |
-| Web 漏洞扫描 | cws |
-| 应用安全 | ms |
-| 加速物联网套件 | iot |
-| 智能语音服务 | aai |
-| 腾讯机器翻译 | tmt |
-| 电子合同服务 | ds |
-| 渠道合作伙伴 | partners |
+| aai | 智能语音服务 |
+| as | 弹性伸缩 |
+| batch | 批量计算 |
+| billing | 计费 |
+| bm | 黑石物理服务器 |
+| bmeip | 黑石弹性 IP |
+| cbs | 云硬盘 |
+| cdb | 数据库 MySQL |
+| cdn | 内容分发网络 |
+| cis | 容器实例服务 |
+| clb | 负载均衡 |
+| cr | 催收机器人 |
+| cvm | 云服务器 |
+| cws | Web 漏洞扫描 |
+| dc | 专线接入 |
+| dcdb | 分布式数据库 DCDB |
+| drm | 数字版权管理 |
+| ds | 电子合同服务 |
+| dts | 数据传输服务 DTS |
+| es | Elasticsearch Service |
+| facefusion | 人脸融合 |
+| faceid | 人脸核身·云智慧眼 |
+| habo | 样本智能分析平台 |
+| hcm | 数学作业批改 |
+| iai | 人脸识别 |
+| iot | 加速物联网套件 |
+| iotcloud | 物联网通信 |
+| live | 云直播 |
+| mariadb | 数据库 MariaDB(TDSQL) |
+| mongodb | 云数据库 MongoDB |
+| monitor | 云监控 |
+| ms | 应用安全 |
+| msp | 迁移服务平台 |
+| partners | 渠道合作伙伴 |
+| postgres | 数据库 PostgreSQL |
+| redis | 云数据库 Redis |
+| scf | 无服务器云函数 |
+| soe | 智聆口语评测 |
+| sqlserver | 云数据库 SQL Server |
+| sts | 访问管理 |
+| tbaas | TBaaS |
+| tbm | 腾讯优评 |
+| tmt | 腾讯机器翻译 |
+| vod | 云点播 |
+| vpc | 私有网络 |
+| youmall | 腾讯优Mall |
+| yunjing | 主机安全 |
