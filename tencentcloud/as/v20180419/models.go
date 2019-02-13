@@ -156,13 +156,13 @@ type AutoScalingGroup struct {
 	LoadBalancerIdSet []*string `json:"LoadBalancerIdSet,omitempty" name:"LoadBalancerIdSet" list`
 
 	// 最大实例数
-	MaxSize []*uint64 `json:"MaxSize,omitempty" name:"MaxSize" list`
+	MaxSize *uint64 `json:"MaxSize,omitempty" name:"MaxSize" list`
 
 	// 最小实例数
-	MinSize []*uint64 `json:"MinSize,omitempty" name:"MinSize" list`
+	MinSize *uint64 `json:"MinSize,omitempty" name:"MinSize" list`
 
 	// 项目ID
-	ProjectId []*uint64 `json:"ProjectId,omitempty" name:"ProjectId" list`
+	ProjectId *uint64 `json:"ProjectId,omitempty" name:"ProjectId" list`
 
 	// 子网ID列表
 	SubnetIdSet []*string `json:"SubnetIdSet,omitempty" name:"SubnetIdSet" list`
