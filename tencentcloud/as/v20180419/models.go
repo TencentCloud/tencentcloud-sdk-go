@@ -129,10 +129,10 @@ type AutoScalingGroup struct {
 	CreatedTime *string `json:"CreatedTime,omitempty" name:"CreatedTime"`
 
 	// 默认冷却时间，单位秒
-	DefaultCooldown *uint64 `json:"DefaultCooldown,omitempty" name:"DefaultCooldown"`
+	DefaultCooldown *int64 `json:"DefaultCooldown,omitempty" name:"DefaultCooldown"`
 
 	// 期望实例数
-	DesiredCapacity *uint64 `json:"DesiredCapacity,omitempty" name:"DesiredCapacity"`
+	DesiredCapacity *int64 `json:"DesiredCapacity,omitempty" name:"DesiredCapacity"`
 
 	// 启用状态，取值包括`ENABLED`和`DISABLED`
 	EnabledStatus *string `json:"EnabledStatus,omitempty" name:"EnabledStatus"`
@@ -141,10 +141,10 @@ type AutoScalingGroup struct {
 	ForwardLoadBalancerSet []*ForwardLoadBalancer `json:"ForwardLoadBalancerSet,omitempty" name:"ForwardLoadBalancerSet" list`
 
 	// 实例数量
-	InstanceCount *uint64 `json:"InstanceCount,omitempty" name:"InstanceCount"`
+	InstanceCount *int64 `json:"InstanceCount,omitempty" name:"InstanceCount"`
 
 	// 状态为`IN_SERVICE`实例的数量
-	InServiceInstanceCount *uint64 `json:"InServiceInstanceCount,omitempty" name:"InServiceInstanceCount"`
+	InServiceInstanceCount *int64 `json:"InServiceInstanceCount,omitempty" name:"InServiceInstanceCount"`
 
 	// 启动配置ID
 	LaunchConfigurationId *string `json:"LaunchConfigurationId,omitempty" name:"LaunchConfigurationId"`
@@ -156,13 +156,13 @@ type AutoScalingGroup struct {
 	LoadBalancerIdSet []*string `json:"LoadBalancerIdSet,omitempty" name:"LoadBalancerIdSet" list`
 
 	// 最大实例数
-	MaxSize []*uint64 `json:"MaxSize,omitempty" name:"MaxSize" list`
+	MaxSize *int64 `json:"MaxSize,omitempty" name:"MaxSize"`
 
 	// 最小实例数
-	MinSize []*uint64 `json:"MinSize,omitempty" name:"MinSize" list`
+	MinSize *int64 `json:"MinSize,omitempty" name:"MinSize"`
 
 	// 项目ID
-	ProjectId []*uint64 `json:"ProjectId,omitempty" name:"ProjectId" list`
+	ProjectId *int64 `json:"ProjectId,omitempty" name:"ProjectId"`
 
 	// 子网ID列表
 	SubnetIdSet []*string `json:"SubnetIdSet,omitempty" name:"SubnetIdSet" list`
@@ -1268,7 +1268,7 @@ type ModifyLaunchConfigurationAttributesRequest struct {
 	// 启动配置显示名称。名称仅支持中文、英文、数字、下划线、分隔符"-"、小数点，最大长度不能超60个字节。
 	LaunchConfigurationName *string `json:"LaunchConfigurationName,omitempty" name:"LaunchConfigurationName"`
 
-	// 经过 Base64 编码后的自定义数据，最大长度不超过16KB。如果要清空UserData，则指定其为空字符串''
+	// 经过 Base64 编码后的自定义数据，最大长度不超过16KB。如果要清空UserData，则指定其为空字符串
 	UserData *string `json:"UserData,omitempty" name:"UserData"`
 }
 

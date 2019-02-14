@@ -60,6 +60,192 @@ func (r *BindPsaTagResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type BuyDevicesRequest struct {
+	*tchttp.BaseRequest
+
+	// 可用区ID。通过接口[查询地域以及可用区(DescribeRegions)](https://cloud.tencent.com/document/api/386/6634)获取可用区信息
+	Zone *string `json:"Zone,omitempty" name:"Zone"`
+
+	// 部署服务器的操作系统ID。通过接口[查询操作系统信息(DescribeOsInfo)](https://cloud.tencent.com/document/api/386/31964)获取操作系统信息
+	OsTypeId *uint64 `json:"OsTypeId,omitempty" name:"OsTypeId"`
+
+	// RAID类型ID。通过接口[查询机型RAID方式以及系统盘大小(DescribeDeviceClassPartition)](https://cloud.tencent.com/document/api/386/7370)获取RAID信息
+	RaidId *uint64 `json:"RaidId,omitempty" name:"RaidId"`
+
+	// 购买数量
+	GoodsCount *uint64 `json:"GoodsCount,omitempty" name:"GoodsCount"`
+
+	// 购买至私有网络ID
+	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
+
+	// 购买至子网ID
+	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
+
+	// 购买的机型ID。通过接口[查询设备型号(DescribeDeviceClass)](https://cloud.tencent.com/document/api/386/6636)获取机型信息
+	DeviceClassCode *string `json:"DeviceClassCode,omitempty" name:"DeviceClassCode"`
+
+	// 购买时长单位，取值：M(月) D(天)
+	TimeUnit *string `json:"TimeUnit,omitempty" name:"TimeUnit"`
+
+	// 购买时长
+	TimeSpan *uint64 `json:"TimeSpan,omitempty" name:"TimeSpan"`
+
+	// 是否安装安全Agent，取值：1(安装) 0(不安装)，默认取值0
+	NeedSecurityAgent *uint64 `json:"NeedSecurityAgent,omitempty" name:"NeedSecurityAgent"`
+
+	// 是否安装监控Agent，取值：1(安装) 0(不安装)，默认取值0
+	NeedMonitorAgent *uint64 `json:"NeedMonitorAgent,omitempty" name:"NeedMonitorAgent"`
+
+	// 是否安装EMR Agent，取值：1(安装) 0(不安装)，默认取值0
+	NeedEMRAgent *uint64 `json:"NeedEMRAgent,omitempty" name:"NeedEMRAgent"`
+
+	// 是否安装EMR软件包，取值：1(安装) 0(不安装)，默认取值0
+	NeedEMRSoftware *uint64 `json:"NeedEMRSoftware,omitempty" name:"NeedEMRSoftware"`
+
+	// 是否分配弹性公网IP，取值：1(分配) 0(不分配)，默认取值0
+	ApplyEip *uint64 `json:"ApplyEip,omitempty" name:"ApplyEip"`
+
+	// 弹性公网IP计费模式，取值：Flow(按流量计费) Bandwidth(按带宽计费)，默认取值Flow
+	EipPayMode *string `json:"EipPayMode,omitempty" name:"EipPayMode"`
+
+	// 弹性公网IP带宽限制，单位Mb
+	EipBandwidth *uint64 `json:"EipBandwidth,omitempty" name:"EipBandwidth"`
+
+	// 数据盘是否格式化，取值：1(格式化) 0(不格式化)，默认取值为1
+	IsZoning *uint64 `json:"IsZoning,omitempty" name:"IsZoning"`
+
+	// 物理机计费模式，取值：1(预付费) 2(后付费)，默认取值为1
+	CpmPayMode *uint64 `json:"CpmPayMode,omitempty" name:"CpmPayMode"`
+
+	// 自定义镜像ID，取值生效时用自定义镜像部署物理机
+	ImageId *string `json:"ImageId,omitempty" name:"ImageId"`
+
+	// 设置Linux root或Windows Administrator的密码
+	Password *string `json:"Password,omitempty" name:"Password"`
+
+	// 自动续费标志位，取值：1(自动续费) 0(不自动续费)，默认取值0
+	AutoRenewFlag *uint64 `json:"AutoRenewFlag,omitempty" name:"AutoRenewFlag"`
+
+	// 系统盘根分区大小，单位为G，默认取值10G。通过接口[查询机型RAID方式以及系统盘大小(DescribeDeviceClassPartition)](https://cloud.tencent.com/document/api/386/7370)获取根分区信息
+	SysRootSpace *uint64 `json:"SysRootSpace,omitempty" name:"SysRootSpace"`
+
+	// 系统盘swap分区或/boot/efi分区的大小，单位为G。若是uefi启动的机器，分区为/boot/efi，且此值是默认是2G。 普通机器为swap分区，可以不指定此分区。 机型是否是uefi启动，参见接口[查询设备型号(DescribeDeviceClass)](https://cloud.tencent.com/document/api/386/6636)
+	SysSwaporuefiSpace *uint64 `json:"SysSwaporuefiSpace,omitempty" name:"SysSwaporuefiSpace"`
+
+	// /usr/local分区大小，单位为G
+	SysUsrlocalSpace *uint64 `json:"SysUsrlocalSpace,omitempty" name:"SysUsrlocalSpace"`
+
+	// /data分区大小，单位为G。如果系统盘还有剩余大小，会分配给/data分区。（特殊情况：如果剩余空间不足10G，并且没有指定/data分区，则剩余空间会分配给Root分区）
+	SysDataSpace *uint64 `json:"SysDataSpace,omitempty" name:"SysDataSpace"`
+
+	// 是否开启超线程，取值：1(开启) 0(关闭)，默认取值1
+	HyperThreading *uint64 `json:"HyperThreading,omitempty" name:"HyperThreading"`
+
+	// 指定的内网IP列表，不指定时自动分配
+	LanIps []*string `json:"LanIps,omitempty" name:"LanIps" list`
+
+	// 设备名称列表
+	Aliases []*string `json:"Aliases,omitempty" name:"Aliases" list`
+
+	// CPU型号ID，自定义机型需要传入，取值：
+	// <br/><li>1: E5-2620v3 (6核) &#42; 2</li><li>2: E5-2680v4 (14核) &#42; 2</li><li>3: E5-2670v3 (12核) &#42; 2</li><li>4: E5-2620v4 (8核) &#42; 2</li><li>5: 4110 (8核) &#42; 2</li><li>6: 6133 (20核) &#42; 2</li><br/>
+	CpuId *uint64 `json:"CpuId,omitempty" name:"CpuId"`
+
+	// 是否有RAID卡，取值：1(有) 0(无)，自定义机型需要传入
+	ContainRaidCard *uint64 `json:"ContainRaidCard,omitempty" name:"ContainRaidCard"`
+
+	// 内存大小，单位为G，自定义机型需要传入。取值参考接口[查询自定义机型部件信息(DescribeHardwareSpecification)](https://cloud.tencent.com/document/api/386/10968)返回值
+	MemSize *uint64 `json:"MemSize,omitempty" name:"MemSize"`
+
+	// 系统盘ID，自定义机型需要传入。取值参考接口[查询自定义机型部件信息(DescribeHardwareSpecification)](https://cloud.tencent.com/document/api/386/10968)返回值
+	SystemDiskTypeId *uint64 `json:"SystemDiskTypeId,omitempty" name:"SystemDiskTypeId"`
+
+	// 系统盘数量，自定义机型需要传入。取值参考接口[查询自定义机型部件信息(DescribeHardwareSpecification)](https://cloud.tencent.com/document/api/386/10968)返回值
+	SystemDiskCount *uint64 `json:"SystemDiskCount,omitempty" name:"SystemDiskCount"`
+
+	// 数据盘ID，自定义机型需要传入。取值参考接口[查询自定义机型部件信息(DescribeHardwareSpecification)](https://cloud.tencent.com/document/api/386/10968)返回值
+	DataDiskTypeId *uint64 `json:"DataDiskTypeId,omitempty" name:"DataDiskTypeId"`
+
+	// 数据盘数量，自定义机型需要传入。取值参考接口[查询自定义机型部件信息(DescribeHardwareSpecification)](https://cloud.tencent.com/document/api/386/10968)返回值
+	DataDiskCount *uint64 `json:"DataDiskCount,omitempty" name:"DataDiskCount"`
+
+	// 绑定的标签列表
+	Tags []*Tag `json:"Tags,omitempty" name:"Tags" list`
+}
+
+func (r *BuyDevicesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *BuyDevicesRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type BuyDevicesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 购买的物理机实例ID列表
+		InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *BuyDevicesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *BuyDevicesResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateCustomImageRequest struct {
+	*tchttp.BaseRequest
+
+	// 用于制作镜像的物理机ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 镜像别名
+	ImageName *string `json:"ImageName,omitempty" name:"ImageName"`
+
+	// 镜像描述
+	ImageDescription *string `json:"ImageDescription,omitempty" name:"ImageDescription"`
+}
+
+func (r *CreateCustomImageRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateCustomImageRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateCustomImageResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 黑石异步任务ID
+		TaskId *uint64 `json:"TaskId,omitempty" name:"TaskId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateCustomImageResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateCustomImageResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type CreatePsaRegulationRequest struct {
 	*tchttp.BaseRequest
 
@@ -112,7 +298,7 @@ type CreateSpotDeviceRequest struct {
 	// 可用区名称。如ap-guangzhou-bls-1, 通过DescribeRegions获取
 	Zone *string `json:"Zone,omitempty" name:"Zone"`
 
-	// 计算单元类型
+	// 计算单元类型, 如v3.c2.medium，更详细的ComputeType参考[竞价实例产品文档](https://cloud.tencent.com/document/product/386/30256)
 	ComputeType *string `json:"ComputeType,omitempty" name:"ComputeType"`
 
 	// 操作系统类型ID
@@ -213,6 +399,94 @@ func (r *CreateUserCmdResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type CustomImage struct {
+
+	// 镜像ID
+	ImageId *string `json:"ImageId,omitempty" name:"ImageId"`
+
+	// 镜像别名
+	ImageName *string `json:"ImageName,omitempty" name:"ImageName"`
+
+	// 镜像状态码
+	ImageStatus *uint64 `json:"ImageStatus,omitempty" name:"ImageStatus"`
+
+	// 镜像OS名
+	OsClass *string `json:"OsClass,omitempty" name:"OsClass"`
+
+	// 镜像OS版本
+	OsVersion *string `json:"OsVersion,omitempty" name:"OsVersion"`
+
+	// OS是64还是32位
+	OsBit *uint64 `json:"OsBit,omitempty" name:"OsBit"`
+
+	// 镜像大小(M)
+	ImageSize *uint64 `json:"ImageSize,omitempty" name:"ImageSize"`
+
+	// 创建时间
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 分区信息
+	PartitionInfoSet []*PartitionInfo `json:"PartitionInfoSet,omitempty" name:"PartitionInfoSet" list`
+
+	// 适用机型
+	DeviceClassCode *string `json:"DeviceClassCode,omitempty" name:"DeviceClassCode"`
+
+	// 备注
+	ImageDescription *string `json:"ImageDescription,omitempty" name:"ImageDescription"`
+
+	// 原始镜像id
+	OsTypeId *uint64 `json:"OsTypeId,omitempty" name:"OsTypeId"`
+}
+
+type CustomImageProcess struct {
+
+	// 步骤
+	StepName *string `json:"StepName,omitempty" name:"StepName"`
+
+	// 此步骤开始时间
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 0: 已完成 1: 当前进行 2: 未开始
+	StepType *uint64 `json:"StepType,omitempty" name:"StepType"`
+}
+
+type DeleteCustomImagesRequest struct {
+	*tchttp.BaseRequest
+
+	// 准备删除的镜像ID列表
+	ImageIds []*string `json:"ImageIds,omitempty" name:"ImageIds" list`
+}
+
+func (r *DeleteCustomImagesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteCustomImagesRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteCustomImagesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 黑石异步任务ID
+		TaskId *uint64 `json:"TaskId,omitempty" name:"TaskId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DeleteCustomImagesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteCustomImagesResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DeletePsaRegulationRequest struct {
 	*tchttp.BaseRequest
 
@@ -278,6 +552,147 @@ func (r *DeleteUserCmdsResponse) ToJsonString() string {
 }
 
 func (r *DeleteUserCmdsResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeCustomImageProcessRequest struct {
+	*tchttp.BaseRequest
+
+	// 镜像ID
+	ImageId *string `json:"ImageId,omitempty" name:"ImageId"`
+}
+
+func (r *DescribeCustomImageProcessRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeCustomImageProcessRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeCustomImageProcessResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 镜像制作进度
+		CustomImageProcessSet []*CustomImageProcess `json:"CustomImageProcessSet,omitempty" name:"CustomImageProcessSet" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeCustomImageProcessResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeCustomImageProcessResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeCustomImagesRequest struct {
+	*tchttp.BaseRequest
+
+	// 偏移量
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 数量限制
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 排序字段，仅支持CreateTime
+	OrderField *string `json:"OrderField,omitempty" name:"OrderField"`
+
+	// 排序方式 0:递增(默认) 1:递减
+	Order *uint64 `json:"Order,omitempty" name:"Order"`
+
+	// 按ImageId查找指定镜像信息，ImageId字段存在时其他字段失效
+	ImageId *string `json:"ImageId,omitempty" name:"ImageId"`
+
+	// 模糊查询过滤，可以查询镜像ID或镜像名
+	SearchKey *string `json:"SearchKey,omitempty" name:"SearchKey"`
+
+	// <ul>
+	// 镜像状态过滤列表，有效取值为：
+	// <li>1：制作中</li>
+	// <li>2：制作失败</li>
+	// <li>3：正常</li>
+	// <li>4：删除中</li>
+	// </ul>
+	ImageStatus []*uint64 `json:"ImageStatus,omitempty" name:"ImageStatus" list`
+}
+
+func (r *DescribeCustomImagesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeCustomImagesRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeCustomImagesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 返回镜像数量
+		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 镜像信息列表
+		CustomImageSet []*CustomImage `json:"CustomImageSet,omitempty" name:"CustomImageSet" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeCustomImagesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeCustomImagesResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeDeviceClassPartitionRequest struct {
+	*tchttp.BaseRequest
+
+	// 设备类型代号。代号通过接口[查询设备型号(DescribeDeviceClass)](https://cloud.tencent.com/document/api/386/17602)查询。标准机型需要传入此参数
+	DeviceClassCode *string `json:"DeviceClassCode,omitempty" name:"DeviceClassCode"`
+
+	// 需要查询自定义机型RAID信息时，传入自定义机型实例ID。InstanceId存在时DeviceClassCode失效
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+}
+
+func (r *DescribeDeviceClassPartitionRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeDeviceClassPartitionRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeDeviceClassPartitionResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 支持的RAID格式列表
+		DeviceClassPartitionInfoSet []*DeviceClassPartitionInfo `json:"DeviceClassPartitionInfoSet,omitempty" name:"DeviceClassPartitionInfoSet" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeDeviceClassPartitionResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeDeviceClassPartitionResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -431,6 +846,43 @@ func (r *DescribeDeviceOperationLogResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeDevicePartitionRequest struct {
+	*tchttp.BaseRequest
+
+	// 物理机ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+}
+
+func (r *DescribeDevicePartitionRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeDevicePartitionRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeDevicePartitionResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 物理机分区格式
+		DevicePartition *DevicePartition `json:"DevicePartition,omitempty" name:"DevicePartition"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeDevicePartitionResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeDevicePartitionResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeDevicePositionRequest struct {
 	*tchttp.BaseRequest
 
@@ -538,7 +990,7 @@ type DescribeDevicesRequest struct {
 	// 返回数量
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 
-	// 机型ID，通过接口[查询设备型号(DescribeDeviceClass)](https://cloud.tencent.com/document/api/386/17602)查询
+	// 机型ID，通过接口[查询设备型号(DescribeDeviceClass)](https://cloud.tencent.com/document/api/386/31968)查询
 	DeviceClassCode *string `json:"DeviceClassCode,omitempty" name:"DeviceClassCode"`
 
 	// 设备ID数组
@@ -617,6 +1069,53 @@ func (r *DescribeDevicesResponse) ToJsonString() string {
 }
 
 func (r *DescribeDevicesResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeOperationResultRequest struct {
+	*tchttp.BaseRequest
+
+	// 异步任务ID
+	TaskId *uint64 `json:"TaskId,omitempty" name:"TaskId"`
+}
+
+func (r *DescribeOperationResultRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeOperationResultRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeOperationResultResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 任务的整体状态，取值如下：<br>
+	// 1：成功<br>
+	// 2：失败<br>
+	// 3：部分成功，部分失败<br>
+	// 4：未完成<br>
+	// 5：部分成功，部分未完成<br>
+	// 6：部分未完成，部分失败<br>
+	// 7：部分未完成，部分失败，部分成功
+		TaskStatus *uint64 `json:"TaskStatus,omitempty" name:"TaskStatus"`
+
+		// 各实例对应任务的状态ID
+		SubtaskStatusSet []*SubtaskStatus `json:"SubtaskStatusSet,omitempty" name:"SubtaskStatusSet" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeOperationResultResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeOperationResultResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -1075,6 +1574,51 @@ type DeviceClass struct {
 	Series *uint64 `json:"Series,omitempty" name:"Series"`
 }
 
+type DeviceClassPartitionInfo struct {
+
+	// RAID类型ID
+	RaidId *uint64 `json:"RaidId,omitempty" name:"RaidId"`
+
+	// RAID名称
+	Raid *string `json:"Raid,omitempty" name:"Raid"`
+
+	// RAID名称（前台展示用）
+	RaidDisplay *string `json:"RaidDisplay,omitempty" name:"RaidDisplay"`
+
+	// 系统盘总大小（单位GiB）
+	SystemDiskSize *uint64 `json:"SystemDiskSize,omitempty" name:"SystemDiskSize"`
+
+	// 系统盘/分区默认大小（单位GiB）
+	SysRootSpace *uint64 `json:"SysRootSpace,omitempty" name:"SysRootSpace"`
+
+	// 系统盘swap分区默认大小（单位GiB）
+	SysSwaporuefiSpace *uint64 `json:"SysSwaporuefiSpace,omitempty" name:"SysSwaporuefiSpace"`
+
+	// 系统盘/usr/local分区默认大小（单位GiB）
+	SysUsrlocalSpace *uint64 `json:"SysUsrlocalSpace,omitempty" name:"SysUsrlocalSpace"`
+
+	// 系统盘/data分区默认大小（单位GiB）
+	SysDataSpace *uint64 `json:"SysDataSpace,omitempty" name:"SysDataSpace"`
+
+	// 设备是否是uefi启动方式。0:legacy启动; 1:uefi启动
+	SysIsUefiType *uint64 `json:"SysIsUefiType,omitempty" name:"SysIsUefiType"`
+
+	// 数据盘总大小
+	DataDiskSize *uint64 `json:"DataDiskSize,omitempty" name:"DataDiskSize"`
+
+	// 硬盘列表
+	DeviceDiskSizeInfoSet []*DeviceDiskSizeInfo `json:"DeviceDiskSizeInfoSet,omitempty" name:"DeviceDiskSizeInfoSet" list`
+}
+
+type DeviceDiskSizeInfo struct {
+
+	// 硬盘名称
+	DiskName *string `json:"DiskName,omitempty" name:"DiskName"`
+
+	// 硬盘大小（单位GiB）
+	DiskSize *uint64 `json:"DiskSize,omitempty" name:"DiskSize"`
+}
+
 type DeviceInfo struct {
 
 	// 设备唯一ID
@@ -1183,6 +1727,30 @@ type DeviceOperationLog struct {
 	LogDescription *string `json:"LogDescription,omitempty" name:"LogDescription"`
 }
 
+type DevicePartition struct {
+
+	// 系统盘大小
+	SystemDiskSize *uint64 `json:"SystemDiskSize,omitempty" name:"SystemDiskSize"`
+
+	// 数据盘大小
+	DataDiskSize *uint64 `json:"DataDiskSize,omitempty" name:"DataDiskSize"`
+
+	// 是否兼容Uefi
+	SysIsUefiType *bool `json:"SysIsUefiType,omitempty" name:"SysIsUefiType"`
+
+	// root分区大小
+	SysRootSpace *uint64 `json:"SysRootSpace,omitempty" name:"SysRootSpace"`
+
+	// Swaporuefi分区大小
+	SysSwaporuefiSpace *uint64 `json:"SysSwaporuefiSpace,omitempty" name:"SysSwaporuefiSpace"`
+
+	// Usrlocal分区大小
+	SysUsrlocalSpace *uint64 `json:"SysUsrlocalSpace,omitempty" name:"SysUsrlocalSpace"`
+
+	// data分区大小
+	SysDataSpace *uint64 `json:"SysDataSpace,omitempty" name:"SysDataSpace"`
+}
+
 type DevicePositionInfo struct {
 
 	// 设备ID
@@ -1282,6 +1850,46 @@ type FailedTaskInfo struct {
 	ErrorMsg *string `json:"ErrorMsg,omitempty" name:"ErrorMsg"`
 }
 
+type ModifyCustomImageAttributeRequest struct {
+	*tchttp.BaseRequest
+
+	// 镜像ID
+	ImageId *string `json:"ImageId,omitempty" name:"ImageId"`
+
+	// 设置新的镜像名
+	ImageName *string `json:"ImageName,omitempty" name:"ImageName"`
+
+	// 设置新的镜像描述
+	ImageDescription *string `json:"ImageDescription,omitempty" name:"ImageDescription"`
+}
+
+func (r *ModifyCustomImageAttributeRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyCustomImageAttributeRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyCustomImageAttributeResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifyCustomImageAttributeResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyCustomImageAttributeResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type ModifyDeviceAliasesRequest struct {
 	*tchttp.BaseRequest
 
@@ -1350,6 +1958,55 @@ func (r *ModifyDeviceAutoRenewFlagResponse) ToJsonString() string {
 }
 
 func (r *ModifyDeviceAutoRenewFlagResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyLanIpRequest struct {
+	*tchttp.BaseRequest
+
+	// 物理机ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 指定新VPC
+	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
+
+	// 指定新子网
+	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
+
+	// 指定新内网IP
+	LanIp *string `json:"LanIp,omitempty" name:"LanIp"`
+
+	// 是否需要重启机器，取值 1(需要) 0(不需要)，默认取值0
+	RebootDevice *uint64 `json:"RebootDevice,omitempty" name:"RebootDevice"`
+}
+
+func (r *ModifyLanIpRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyLanIpRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyLanIpResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 黑石异步任务ID
+		TaskId *uint64 `json:"TaskId,omitempty" name:"TaskId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifyLanIpResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyLanIpResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -1535,6 +2192,15 @@ type OsInfo struct {
 
 	// 操作系统，ext4文件下所支持的最大的磁盘大小。单位为T
 	MaxPartitionSize *uint64 `json:"MaxPartitionSize,omitempty" name:"MaxPartitionSize"`
+}
+
+type PartitionInfo struct {
+
+	// 分区名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 分区大小
+	Size *uint64 `json:"Size,omitempty" name:"Size"`
 }
 
 type PsaRegulation struct {
@@ -1775,6 +2441,59 @@ func (r *SetOutBandVpnAuthPasswordResponse) ToJsonString() string {
 
 func (r *SetOutBandVpnAuthPasswordResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
+}
+
+type ShutdownDevicesRequest struct {
+	*tchttp.BaseRequest
+
+	// 需要关闭的设备ID列表
+	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds" list`
+}
+
+func (r *ShutdownDevicesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ShutdownDevicesRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ShutdownDevicesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 异步任务ID
+		TaskId *uint64 `json:"TaskId,omitempty" name:"TaskId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ShutdownDevicesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ShutdownDevicesResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type SubtaskStatus struct {
+
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 实例ID对应任务的状态，取值如下：<br>
+	// 1：成功<br>
+	// 2：失败<br>
+	// 3：部分成功，部分失败<br>
+	// 4：未完成<br>
+	// 5：部分成功，部分未完成<br>
+	// 6：部分未完成，部分失败<br>
+	// 7：部分未完成，部分失败，部分成功
+	TaskStatus *uint64 `json:"TaskStatus,omitempty" name:"TaskStatus"`
 }
 
 type SuccessTaskInfo struct {

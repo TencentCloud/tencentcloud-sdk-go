@@ -68,6 +68,57 @@ func (c *Client) BindPsaTag(request *BindPsaTagRequest) (response *BindPsaTagRes
     return
 }
 
+func NewBuyDevicesRequest() (request *BuyDevicesRequest) {
+    request = &BuyDevicesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("bm", APIVersion, "BuyDevices")
+    return
+}
+
+func NewBuyDevicesResponse() (response *BuyDevicesResponse) {
+    response = &BuyDevicesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 购买黑石物理机
+func (c *Client) BuyDevices(request *BuyDevicesRequest) (response *BuyDevicesResponse, err error) {
+    if request == nil {
+        request = NewBuyDevicesRequest()
+    }
+    response = NewBuyDevicesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateCustomImageRequest() (request *CreateCustomImageRequest) {
+    request = &CreateCustomImageRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("bm", APIVersion, "CreateCustomImage")
+    return
+}
+
+func NewCreateCustomImageResponse() (response *CreateCustomImageResponse) {
+    response = &CreateCustomImageResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 创建自定义镜像<br>
+// 每个AppId在每个可用区最多保留20个自定义镜像
+func (c *Client) CreateCustomImage(request *CreateCustomImageRequest) (response *CreateCustomImageResponse, err error) {
+    if request == nil {
+        request = NewCreateCustomImageRequest()
+    }
+    response = NewCreateCustomImageResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreatePsaRegulationRequest() (request *CreatePsaRegulationRequest) {
     request = &CreatePsaRegulationRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -143,6 +194,32 @@ func (c *Client) CreateUserCmd(request *CreateUserCmdRequest) (response *CreateU
     return
 }
 
+func NewDeleteCustomImagesRequest() (request *DeleteCustomImagesRequest) {
+    request = &DeleteCustomImagesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("bm", APIVersion, "DeleteCustomImages")
+    return
+}
+
+func NewDeleteCustomImagesResponse() (response *DeleteCustomImagesResponse) {
+    response = &DeleteCustomImagesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 删除自定义镜像<br>
+// 正用于部署或重装中的镜像被删除后，镜像文件将保留一段时间，直到部署或重装结束
+func (c *Client) DeleteCustomImages(request *DeleteCustomImagesRequest) (response *DeleteCustomImagesResponse, err error) {
+    if request == nil {
+        request = NewDeleteCustomImagesRequest()
+    }
+    response = NewDeleteCustomImagesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeletePsaRegulationRequest() (request *DeletePsaRegulationRequest) {
     request = &DeletePsaRegulationRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -193,6 +270,56 @@ func (c *Client) DeleteUserCmds(request *DeleteUserCmdsRequest) (response *Delet
     return
 }
 
+func NewDescribeCustomImageProcessRequest() (request *DescribeCustomImageProcessRequest) {
+    request = &DescribeCustomImageProcessRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("bm", APIVersion, "DescribeCustomImageProcess")
+    return
+}
+
+func NewDescribeCustomImageProcessResponse() (response *DescribeCustomImageProcessResponse) {
+    response = &DescribeCustomImageProcessResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询自定义镜像制作进度
+func (c *Client) DescribeCustomImageProcess(request *DescribeCustomImageProcessRequest) (response *DescribeCustomImageProcessResponse, err error) {
+    if request == nil {
+        request = NewDescribeCustomImageProcessRequest()
+    }
+    response = NewDescribeCustomImageProcessResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeCustomImagesRequest() (request *DescribeCustomImagesRequest) {
+    request = &DescribeCustomImagesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("bm", APIVersion, "DescribeCustomImages")
+    return
+}
+
+func NewDescribeCustomImagesResponse() (response *DescribeCustomImagesResponse) {
+    response = &DescribeCustomImagesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查看自定义镜像列表
+func (c *Client) DescribeCustomImages(request *DescribeCustomImagesRequest) (response *DescribeCustomImagesResponse, err error) {
+    if request == nil {
+        request = NewDescribeCustomImagesRequest()
+    }
+    response = NewDescribeCustomImagesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeDeviceClassRequest() (request *DescribeDeviceClassRequest) {
     request = &DescribeDeviceClassRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -214,6 +341,31 @@ func (c *Client) DescribeDeviceClass(request *DescribeDeviceClassRequest) (respo
         request = NewDescribeDeviceClassRequest()
     }
     response = NewDescribeDeviceClassResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeDeviceClassPartitionRequest() (request *DescribeDeviceClassPartitionRequest) {
+    request = &DescribeDeviceClassPartitionRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("bm", APIVersion, "DescribeDeviceClassPartition")
+    return
+}
+
+func NewDescribeDeviceClassPartitionResponse() (response *DescribeDeviceClassPartitionResponse) {
+    response = &DescribeDeviceClassPartitionResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询机型支持的RAID方式， 并返回系统盘的分区和逻辑盘的列表
+func (c *Client) DescribeDeviceClassPartition(request *DescribeDeviceClassPartitionRequest) (response *DescribeDeviceClassPartitionResponse, err error) {
+    if request == nil {
+        request = NewDescribeDeviceClassPartitionRequest()
+    }
+    response = NewDescribeDeviceClassPartitionResponse()
     err = c.Send(request, response)
     return
 }
@@ -264,6 +416,31 @@ func (c *Client) DescribeDeviceOperationLog(request *DescribeDeviceOperationLogR
         request = NewDescribeDeviceOperationLogRequest()
     }
     response = NewDescribeDeviceOperationLogResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeDevicePartitionRequest() (request *DescribeDevicePartitionRequest) {
+    request = &DescribeDevicePartitionRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("bm", APIVersion, "DescribeDevicePartition")
+    return
+}
+
+func NewDescribeDevicePartitionResponse() (response *DescribeDevicePartitionResponse) {
+    response = &DescribeDevicePartitionResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 获取物理机的分区格式
+func (c *Client) DescribeDevicePartition(request *DescribeDevicePartitionRequest) (response *DescribeDevicePartitionResponse, err error) {
+    if request == nil {
+        request = NewDescribeDevicePartitionRequest()
+    }
+    response = NewDescribeDevicePartitionResponse()
     err = c.Send(request, response)
     return
 }
@@ -339,6 +516,31 @@ func (c *Client) DescribeDevices(request *DescribeDevicesRequest) (response *Des
         request = NewDescribeDevicesRequest()
     }
     response = NewDescribeDevicesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeOperationResultRequest() (request *DescribeOperationResultRequest) {
+    request = &DescribeOperationResultRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("bm", APIVersion, "DescribeOperationResult")
+    return
+}
+
+func NewDescribeOperationResultResponse() (response *DescribeOperationResultResponse) {
+    response = &DescribeOperationResultResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 获取异步操作状态的完成状态
+func (c *Client) DescribeOperationResult(request *DescribeOperationResultRequest) (response *DescribeOperationResultResponse, err error) {
+    if request == nil {
+        request = NewDescribeOperationResultRequest()
+    }
+    response = NewDescribeOperationResultResponse()
     err = c.Send(request, response)
     return
 }
@@ -551,6 +753,31 @@ func (c *Client) DescribeUserCmds(request *DescribeUserCmdsRequest) (response *D
     return
 }
 
+func NewModifyCustomImageAttributeRequest() (request *ModifyCustomImageAttributeRequest) {
+    request = &ModifyCustomImageAttributeRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("bm", APIVersion, "ModifyCustomImageAttribute")
+    return
+}
+
+func NewModifyCustomImageAttributeResponse() (response *ModifyCustomImageAttributeResponse) {
+    response = &ModifyCustomImageAttributeResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 用于修改自定义镜像名或描述
+func (c *Client) ModifyCustomImageAttribute(request *ModifyCustomImageAttributeRequest) (response *ModifyCustomImageAttributeResponse, err error) {
+    if request == nil {
+        request = NewModifyCustomImageAttributeRequest()
+    }
+    response = NewModifyCustomImageAttributeResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyDeviceAliasesRequest() (request *ModifyDeviceAliasesRequest) {
     request = &ModifyDeviceAliasesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -597,6 +824,31 @@ func (c *Client) ModifyDeviceAutoRenewFlag(request *ModifyDeviceAutoRenewFlagReq
         request = NewModifyDeviceAutoRenewFlagRequest()
     }
     response = NewModifyDeviceAutoRenewFlagResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyLanIpRequest() (request *ModifyLanIpRequest) {
+    request = &ModifyLanIpRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("bm", APIVersion, "ModifyLanIp")
+    return
+}
+
+func NewModifyLanIpResponse() (response *ModifyLanIpResponse) {
+    response = &ModifyLanIpResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 修改物理机内网IP（不重装系统）
+func (c *Client) ModifyLanIp(request *ModifyLanIpRequest) (response *ModifyLanIpResponse, err error) {
+    if request == nil {
+        request = NewModifyLanIpRequest()
+    }
+    response = NewModifyLanIpResponse()
     err = c.Send(request, response)
     return
 }
@@ -842,6 +1094,31 @@ func (c *Client) SetOutBandVpnAuthPassword(request *SetOutBandVpnAuthPasswordReq
         request = NewSetOutBandVpnAuthPasswordRequest()
     }
     response = NewSetOutBandVpnAuthPasswordResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewShutdownDevicesRequest() (request *ShutdownDevicesRequest) {
+    request = &ShutdownDevicesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("bm", APIVersion, "ShutdownDevices")
+    return
+}
+
+func NewShutdownDevicesResponse() (response *ShutdownDevicesResponse) {
+    response = &ShutdownDevicesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 关闭服务器
+func (c *Client) ShutdownDevices(request *ShutdownDevicesRequest) (response *ShutdownDevicesResponse, err error) {
+    if request == nil {
+        request = NewShutdownDevicesRequest()
+    }
+    response = NewShutdownDevicesResponse()
     err = c.Send(request, response)
     return
 }
