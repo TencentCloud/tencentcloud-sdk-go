@@ -600,7 +600,7 @@ type Disk struct {
 	// 云盘状态。取值范围：<br><li>UNATTACHED：未挂载<br><li>ATTACHING：挂载中<br><li>ATTACHED：已挂载<br><li>DETACHING：解挂中<br><li>EXPANDING：扩容中<br><li>ROLLBACKING：回滚中<br><li>TORECYCLE：待回收<br><li>DUMPING：拷贝硬盘中。
 	DiskState *string `json:"DiskState,omitempty" name:"DiskState"`
 
-	// 云盘介质类型。取值范围：<br><li>CLOUD_BASIC：表示普通云硬<br><li>CLOUD_PREMIUM：表示高性能云硬盘<br><li>CLOUD_SSD：SSD表示SSD云硬盘。
+	// 云盘介质类型。取值范围：<br><li>CLOUD_BASIC：表示普通云硬盘<br><li>CLOUD_PREMIUM：表示高性能云硬盘<br><li>CLOUD_SSD：SSD表示SSD云硬盘。
 	DiskType *string `json:"DiskType,omitempty" name:"DiskType"`
 
 	// 云盘是否挂载到云主机上。取值范围：<br><li>false:表示未挂载<br><li>true:表示已挂载。
@@ -740,6 +740,15 @@ type Filter struct {
 
 	// 一个或者多个过滤值。
 	Values []*string `json:"Values,omitempty" name:"Values" list`
+}
+
+type Image struct {
+
+	// 镜像实例ID。
+	ImageId *string `json:"ImageId,omitempty" name:"ImageId"`
+
+	// 镜像名称。
+	ImageName *string `json:"ImageName,omitempty" name:"ImageName"`
 }
 
 type InquiryPriceCreateDisksRequest struct {
@@ -900,6 +909,9 @@ type ModifyDiskAttributesRequest struct {
 
 	// 成功挂载到云主机后该云硬盘是否随云主机销毁，TRUE表示随云主机销毁，FALSE表示不随云主机销毁。仅支持按量计费云硬盘数据盘。
 	DeleteWithInstance *bool `json:"DeleteWithInstance,omitempty" name:"DeleteWithInstance"`
+
+	// 变更云盘类型时，可传入该参数，表示变更的目标类型，取值范围：<br><li>CLOUD_PREMIUM：表示高性能云硬盘<br><li>CLOUD_SSD：表示SSD云硬盘。<br>当前不支持批量变更类型，即传入DiskType时，DiskIds仅支持传入一块云盘；<br>变更云盘类型时不支持同时变更其他属性。
+	DiskType *string `json:"DiskType,omitempty" name:"DiskType"`
 }
 
 func (r *ModifyDiskAttributesRequest) ToJsonString() string {
@@ -1013,6 +1025,15 @@ type Placement struct {
 
 	// 实例所属项目ID。该参数可以通过调用 [DescribeProject](/document/api/378/4400) 的返回值中的 projectId 字段来获取。不填为默认项目。
 	ProjectId *uint64 `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 实例所属的独享集群ID。作为入参时，表示对指定的CdcId独享集群的资源进行操作，可为空。 作为出参时，表示资源所属的独享集群的ID，可为空。
+	CdcId *string `json:"CdcId,omitempty" name:"CdcId"`
+
+	// 围笼Id。作为入参时，表示对指定的CageId的资源进行操作，可为空。 作为出参时，表示资源所属围笼ID，可为空。
+	CageId *string `json:"CageId,omitempty" name:"CageId"`
+
+	// 独享集群名字。作为入参时，忽略。作为出参时，表示云硬盘所属的独享集群名，可为空。
+	CdcName *string `json:"CdcName,omitempty" name:"CdcName"`
 }
 
 type PrepayPrice struct {
@@ -1160,8 +1181,11 @@ type Snapshot struct {
 	// 是否为跨地域复制的快照。取值范围：<br><li>true：表示为跨地域复制的快照。<br><li>false:本地域的快照。
 	CopyFromRemote *bool `json:"CopyFromRemote,omitempty" name:"CopyFromRemote"`
 
-	// 快照关联的镜像ID列表。
-	ImageIds []*string `json:"ImageIds,omitempty" name:"ImageIds" list`
+	// 快照关联的镜像列表。
+	Images []*Image `json:"Images,omitempty" name:"Images" list`
+
+	// 快照关联的镜像个数。
+	ImageCount *uint64 `json:"ImageCount,omitempty" name:"ImageCount"`
 }
 
 type SnapshotOperationLog struct {

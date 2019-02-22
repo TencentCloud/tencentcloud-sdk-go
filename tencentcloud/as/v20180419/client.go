@@ -122,6 +122,56 @@ func (c *Client) CreateLaunchConfiguration(request *CreateLaunchConfigurationReq
     return
 }
 
+func NewCreateNotificationConfigurationRequest() (request *CreateNotificationConfigurationRequest) {
+    request = &CreateNotificationConfigurationRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("as", APIVersion, "CreateNotificationConfiguration")
+    return
+}
+
+func NewCreateNotificationConfigurationResponse() (response *CreateNotificationConfigurationResponse) {
+    response = &CreateNotificationConfigurationResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（CreateNotificationConfiguration）用于创建通知。
+func (c *Client) CreateNotificationConfiguration(request *CreateNotificationConfigurationRequest) (response *CreateNotificationConfigurationResponse, err error) {
+    if request == nil {
+        request = NewCreateNotificationConfigurationRequest()
+    }
+    response = NewCreateNotificationConfigurationResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateScalingPolicyRequest() (request *CreateScalingPolicyRequest) {
+    request = &CreateScalingPolicyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("as", APIVersion, "CreateScalingPolicy")
+    return
+}
+
+func NewCreateScalingPolicyResponse() (response *CreateScalingPolicyResponse) {
+    response = &CreateScalingPolicyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（CreateScalingPolicy）用于创建告警触发策略。
+func (c *Client) CreateScalingPolicy(request *CreateScalingPolicyRequest) (response *CreateScalingPolicyResponse, err error) {
+    if request == nil {
+        request = NewCreateScalingPolicyRequest()
+    }
+    response = NewCreateScalingPolicyResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateScheduledActionRequest() (request *CreateScheduledActionRequest) {
     request = &CreateScheduledActionRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -195,6 +245,56 @@ func (c *Client) DeleteLaunchConfiguration(request *DeleteLaunchConfigurationReq
         request = NewDeleteLaunchConfigurationRequest()
     }
     response = NewDeleteLaunchConfigurationResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteNotificationConfigurationRequest() (request *DeleteNotificationConfigurationRequest) {
+    request = &DeleteNotificationConfigurationRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("as", APIVersion, "DeleteNotificationConfiguration")
+    return
+}
+
+func NewDeleteNotificationConfigurationResponse() (response *DeleteNotificationConfigurationResponse) {
+    response = &DeleteNotificationConfigurationResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（DeleteNotificationConfiguration）用于删除特定的通知。
+func (c *Client) DeleteNotificationConfiguration(request *DeleteNotificationConfigurationRequest) (response *DeleteNotificationConfigurationResponse, err error) {
+    if request == nil {
+        request = NewDeleteNotificationConfigurationRequest()
+    }
+    response = NewDeleteNotificationConfigurationResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteScalingPolicyRequest() (request *DeleteScalingPolicyRequest) {
+    request = &DeleteScalingPolicyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("as", APIVersion, "DeleteScalingPolicy")
+    return
+}
+
+func NewDeleteScalingPolicyResponse() (response *DeleteScalingPolicyResponse) {
+    response = &DeleteScalingPolicyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（DeleteScalingPolicy）用于删除告警触发策略。
+func (c *Client) DeleteScalingPolicy(request *DeleteScalingPolicyRequest) (response *DeleteScalingPolicyResponse, err error) {
+    if request == nil {
+        request = NewDeleteScalingPolicyRequest()
+    }
+    response = NewDeleteScalingPolicyResponse()
     err = c.Send(request, response)
     return
 }
@@ -354,6 +454,59 @@ func (c *Client) DescribeLaunchConfigurations(request *DescribeLaunchConfigurati
         request = NewDescribeLaunchConfigurationsRequest()
     }
     response = NewDescribeLaunchConfigurationsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeNotificationConfigurationsRequest() (request *DescribeNotificationConfigurationsRequest) {
+    request = &DescribeNotificationConfigurationsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("as", APIVersion, "DescribeNotificationConfigurations")
+    return
+}
+
+func NewDescribeNotificationConfigurationsResponse() (response *DescribeNotificationConfigurationsResponse) {
+    response = &DescribeNotificationConfigurationsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口 (DescribeNotificationConfigurations) 用于查询一个或多个通知的详细信息。
+// 
+// 可以根据通知ID、伸缩组ID等信息来查询通知的详细信息。过滤信息详细请见过滤器`Filter`。
+// 如果参数为空，返回当前用户一定数量（Limit所指定的数量，默认为20）的通知。
+func (c *Client) DescribeNotificationConfigurations(request *DescribeNotificationConfigurationsRequest) (response *DescribeNotificationConfigurationsResponse, err error) {
+    if request == nil {
+        request = NewDescribeNotificationConfigurationsRequest()
+    }
+    response = NewDescribeNotificationConfigurationsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeScalingPoliciesRequest() (request *DescribeScalingPoliciesRequest) {
+    request = &DescribeScalingPoliciesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("as", APIVersion, "DescribeScalingPolicies")
+    return
+}
+
+func NewDescribeScalingPoliciesResponse() (response *DescribeScalingPoliciesResponse) {
+    response = &DescribeScalingPoliciesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（DescribeScalingPolicies）用于查询告警触发策略。
+func (c *Client) DescribeScalingPolicies(request *DescribeScalingPoliciesRequest) (response *DescribeScalingPoliciesResponse, err error) {
+    if request == nil {
+        request = NewDescribeScalingPoliciesRequest()
+    }
+    response = NewDescribeScalingPoliciesResponse()
     err = c.Send(request, response)
     return
 }
@@ -568,6 +721,56 @@ func (c *Client) ModifyLoadBalancers(request *ModifyLoadBalancersRequest) (respo
     return
 }
 
+func NewModifyNotificationConfigurationRequest() (request *ModifyNotificationConfigurationRequest) {
+    request = &ModifyNotificationConfigurationRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("as", APIVersion, "ModifyNotificationConfiguration")
+    return
+}
+
+func NewModifyNotificationConfigurationResponse() (response *ModifyNotificationConfigurationResponse) {
+    response = &ModifyNotificationConfigurationResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（ModifyNotificationConfiguration）用于修改通知。
+func (c *Client) ModifyNotificationConfiguration(request *ModifyNotificationConfigurationRequest) (response *ModifyNotificationConfigurationResponse, err error) {
+    if request == nil {
+        request = NewModifyNotificationConfigurationRequest()
+    }
+    response = NewModifyNotificationConfigurationResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyScalingPolicyRequest() (request *ModifyScalingPolicyRequest) {
+    request = &ModifyScalingPolicyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("as", APIVersion, "ModifyScalingPolicy")
+    return
+}
+
+func NewModifyScalingPolicyResponse() (response *ModifyScalingPolicyResponse) {
+    response = &ModifyScalingPolicyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（ModifyScalingPolicy）用于修改告警触发策略。
+func (c *Client) ModifyScalingPolicy(request *ModifyScalingPolicyRequest) (response *ModifyScalingPolicyResponse, err error) {
+    if request == nil {
+        request = NewModifyScalingPolicyRequest()
+    }
+    response = NewModifyScalingPolicyResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyScheduledActionRequest() (request *ModifyScheduledActionRequest) {
     request = &ModifyScheduledActionRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -614,6 +817,32 @@ func (c *Client) RemoveInstances(request *RemoveInstancesRequest) (response *Rem
         request = NewRemoveInstancesRequest()
     }
     response = NewRemoveInstancesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewSetInstancesProtectionRequest() (request *SetInstancesProtectionRequest) {
+    request = &SetInstancesProtectionRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("as", APIVersion, "SetInstancesProtection")
+    return
+}
+
+func NewSetInstancesProtectionResponse() (response *SetInstancesProtectionResponse) {
+    response = &SetInstancesProtectionResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（SetInstancesProtection）用于设置实例移除保护。
+// 子机设置为移除保护之后，当发生不健康替换、报警策略、期望值变更等触发缩容时，将不对此子机缩容操作。
+func (c *Client) SetInstancesProtection(request *SetInstancesProtectionRequest) (response *SetInstancesProtectionResponse, err error) {
+    if request == nil {
+        request = NewSetInstancesProtectionRequest()
+    }
+    response = NewSetInstancesProtectionResponse()
     err = c.Send(request, response)
     return
 }

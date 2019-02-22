@@ -160,7 +160,7 @@ func NewCreateDBImportJobResponse() (response *CreateDBImportJobResponse) {
 
 // 本接口(CreateDBImportJob)用于创建云数据库数据导入任务。
 // 
-// 注意，用户进行数据导入任务的文件，必须提前上传到腾讯云。用户可在控制台进行文件导入，也可使用[上传导入文件](https://cloud.tencent.com/document/api/236/8595)进行文件导入。
+// 注意，用户进行数据导入任务的文件，必须提前上传到腾讯云。用户须在控制台进行文件导入。
 func (c *Client) CreateDBImportJob(request *CreateDBImportJobRequest) (response *CreateDBImportJobResponse, err error) {
     if request == nil {
         request = NewCreateDBImportJobRequest()
@@ -189,7 +189,7 @@ func NewCreateDBInstanceResponse() (response *CreateDBInstanceResponse) {
 // 
 // 该接口为异步接口，您还可以使用[查询实例列表](https://cloud.tencent.com/document/api/236/15872)接口查询该实例的详细信息。当该实例的Status为1，且TaskStatus为0，表示实例已经发货成功。
 // 
-// 1. 首先请使用[获取云数据库可售卖规格](https://cloud.tencent.com/document/api/236/17229)接口查询可创建的实例规格信息，然后请使用[查询价格（包年包月）](https://cloud.tencent.com/document/api/236/1332)接口查询可创建实例的售卖价格；
+// 1. 首先请使用[获取云数据库可售卖规格](https://cloud.tencent.com/document/api/236/17229)接口查询可创建的实例规格信息，然后请使用[查询数据库价格](https://cloud.tencent.com/document/api/236/18566)接口查询可创建实例的售卖价格；
 // 2. 单次创建实例最大支持 100 个，实例时长最大支持 36 个月；
 // 3. 支持创建 MySQL5.5 、 MySQL5.6 、 MySQL5.7 版本；
 // 4. 支持创建主实例、只读实例、灾备实例；
@@ -221,7 +221,7 @@ func NewCreateDBInstanceHourResponse() (response *CreateDBInstanceHourResponse) 
 // 
 // 该接口为异步接口，您还可以使用[查询实例列表](https://cloud.tencent.com/document/api/236/15872)接口查询该实例的详细信息。当该实例的Status为1，且TaskStatus为0，表示实例已经发货成功。
 // 
-// 1. 首先请使用[获取云数据库可售卖规格](https://cloud.tencent.com/document/api/236/17229)接口查询可创建的实例规格信息，然后请使用[查询价格（按量计费）](https://cloud.tencent.com/document/api/253/5176)接口查询可创建实例的售卖价格；
+// 1. 首先请使用[获取云数据库可售卖规格](https://cloud.tencent.com/document/api/236/17229)接口查询可创建的实例规格信息，然后请使用[查询数据库价格](https://cloud.tencent.com/document/api/236/18566)接口查询可创建实例的售卖价格；
 // 2. 单次创建实例最大支持 100 个，实例时长最大支持 36 个月；
 // 3. 支持创建 MySQL5.5、MySQL5.6和MySQL5.7 版本；
 // 4. 支持创建主实例、灾备实例和只读实例；

@@ -143,6 +143,31 @@ func (c *Client) GetLiveCode(request *GetLiveCodeRequest) (response *GetLiveCode
     return
 }
 
+func NewIdCardVerificationRequest() (request *IdCardVerificationRequest) {
+    request = &IdCardVerificationRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("faceid", APIVersion, "IdCardVerification")
+    return
+}
+
+func NewIdCardVerificationResponse() (response *IdCardVerificationResponse) {
+    response = &IdCardVerificationResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 传入姓名和身份证号，校验两者的真实性和一致性。
+func (c *Client) IdCardVerification(request *IdCardVerificationRequest) (response *IdCardVerificationResponse, err error) {
+    if request == nil {
+        request = NewIdCardVerificationRequest()
+    }
+    response = NewIdCardVerificationResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewImageRecognitionRequest() (request *ImageRecognitionRequest) {
     request = &ImageRecognitionRequest{
         BaseRequest: &tchttp.BaseRequest{},

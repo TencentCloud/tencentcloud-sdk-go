@@ -215,7 +215,7 @@ func NewCreateLiveRecordResponse() (response *CreateLiveRecordResponse) {
 // 
 // - 模式说明
 //   该接口支持两种录制模式：
-//   1. 定时录制模式。
+//   1. 定时录制模式【默认模式】。
 //     需要传入开始时间与结束时间，录制任务根据时间自动开始与结束。
 //   2. 实时视频录制模式。
 //     忽略传入的开始时间，在录制任务创建后立即开始录制，录制时长支持最大为30分钟，如果传入的结束时间与当前时间差大于30分钟，则按30分钟计算，实时视频录制主要用于录制精彩视频场景，时长建议控制在5分钟以内。
@@ -906,6 +906,31 @@ func (c *Client) DescribeLiveDomainCert(request *DescribeLiveDomainCertRequest) 
     return
 }
 
+func NewDescribeLiveForbidStreamListRequest() (request *DescribeLiveForbidStreamListRequest) {
+    request = &DescribeLiveForbidStreamListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("live", APIVersion, "DescribeLiveForbidStreamList")
+    return
+}
+
+func NewDescribeLiveForbidStreamListResponse() (response *DescribeLiveForbidStreamListResponse) {
+    response = &DescribeLiveForbidStreamListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 获取禁推流列表
+func (c *Client) DescribeLiveForbidStreamList(request *DescribeLiveForbidStreamListRequest) (response *DescribeLiveForbidStreamListResponse, err error) {
+    if request == nil {
+        request = NewDescribeLiveForbidStreamListRequest()
+    }
+    response = NewDescribeLiveForbidStreamListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeLivePlayAuthKeyRequest() (request *DescribeLivePlayAuthKeyRequest) {
     request = &DescribeLivePlayAuthKeyRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1102,6 +1127,31 @@ func (c *Client) DescribeLiveSnapshotTemplates(request *DescribeLiveSnapshotTemp
         request = NewDescribeLiveSnapshotTemplatesRequest()
     }
     response = NewDescribeLiveSnapshotTemplatesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeLiveStreamEventListRequest() (request *DescribeLiveStreamEventListRequest) {
+    request = &DescribeLiveStreamEventListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("live", APIVersion, "DescribeLiveStreamEventList")
+    return
+}
+
+func NewDescribeLiveStreamEventListResponse() (response *DescribeLiveStreamEventListResponse) {
+    response = &DescribeLiveStreamEventListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询推断流事件
+func (c *Client) DescribeLiveStreamEventList(request *DescribeLiveStreamEventListRequest) (response *DescribeLiveStreamEventListResponse, err error) {
+    if request == nil {
+        request = NewDescribeLiveStreamEventListRequest()
+    }
+    response = NewDescribeLiveStreamEventListResponse()
     err = c.Send(request, response)
     return
 }

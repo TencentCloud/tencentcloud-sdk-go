@@ -473,11 +473,14 @@ func NewModifyDiskAttributesResponse() (response *ModifyDiskAttributesResponse) 
     return
 }
 
-// 本接口（ModifyDiskAttributes）用于修改云硬盘属性。
-//  
 // * 只支持修改弹性云盘的项目ID。随云主机创建的云硬盘项目ID与云主机联动。可以通过[DescribeDisks](/document/product/362/16315)接口查询，见输出参数中Portable字段解释。
 // * “云硬盘名称”仅为方便用户自己管理之用，腾讯云并不以此名称作为提交工单或是进行云盘管理操作的依据。
 // * 支持批量操作，如果传入多个云盘ID，则所有云盘修改为同一属性。如果存在不允许操作的云盘，则操作不执行，以特定错误码返回。
+// * 支持修改弹性云盘的云盘类型，不支持非弹性云盘（[DescribeDisks](/document/product/362/16315)接口的返回字段Portable为true表示弹性云盘），且当前仅支持云盘类型升级，不支持降级，具体如下:
+//     * CLOUD_BASIC变更为CLOUD_PREMIUM；
+//     * CLOUD_BASIC变更为CLOUD_SSD；
+//     * CLOUD_PREMIUM变更为CLOUD_SSD。
+// * 云盘处于“迁移中”不影响正常的读写以及读写速率，在云盘容量较大的情况下，整个迁移任务耗时较长，目前不支持任务成功发起后取消任务。
 func (c *Client) ModifyDiskAttributes(request *ModifyDiskAttributesRequest) (response *ModifyDiskAttributesResponse, err error) {
     if request == nil {
         request = NewModifyDiskAttributesRequest()
@@ -559,7 +562,6 @@ func NewRenewDiskResponse() (response *RenewDiskResponse) {
 // 
 // * 只支持预付费的云硬盘。云硬盘类型可以通过[DescribeDisks](/document/product/362/16315)接口查询，见输出参数中DiskChargeType字段解释。
 // * 支持与挂载实例一起续费的场景，需要在[DiskChargePrepaid](/document/product/362/15669#DiskChargePrepaid)参数中指定CurInstanceDeadline，此时会按对齐到子机续费后的到期时间来续费。
-// * 续费时请确保账户余额充足。可通过[DescribeAccountBalance](/document/product/378/4397)接口查询账户余额。
 func (c *Client) RenewDisk(request *RenewDiskRequest) (response *RenewDiskResponse, err error) {
     if request == nil {
         request = NewRenewDiskRequest()

@@ -385,7 +385,7 @@ type CreateDBInstanceHourRequest struct {
 	// 设置root帐号密码，密码规则：8-64个字符，至少包含字母、数字、字符（支持的字符：_+-&=!@#$%^*()）中的两种，购买主实例时可指定该参数，购买只读实例或者灾备实例时指定该参数无意义
 	Password *string `json:"Password,omitempty" name:"Password"`
 
-	// 参数列表，参数格式如ParamList.0.Name=auto_increment_increment&ParamList.0.Value=1。可通过[查询参数列表](/document/product/236/6369)查询支持设置的参数
+	// 参数列表，参数格式如ParamList.0.Name=auto_increment&ParamList.0.Value=1。可通过[查询实例的可设置参数列表](https://cloud.tencent.com/document/api/236/20411)查询支持设置的参数
 	ParamList []*ParamInfo `json:"ParamList,omitempty" name:"ParamList" list`
 
 	// 数据复制方式，默认为0，支持值包括：0-表示异步复制，1-表示半同步复制，2-表示强同步复制，购买主实例时可指定该参数，购买只读实例或者灾备实例时指定该参数无意义
@@ -500,7 +500,7 @@ type CreateDBInstanceRequest struct {
 	// 备库1的可用区信息，默认为zone的值
 	SlaveZone *string `json:"SlaveZone,omitempty" name:"SlaveZone"`
 
-	// 参数列表，参数格式如ParamList.0.Name=auto_increment&ParamList.0.Value=1。可通过[查询参数列表](/document/product/236/6369)查询支持设置的参数
+	// 参数列表，参数格式如ParamList.0.Name=auto_increment&ParamList.0.Value=1。可通过[查询实例的可设置参数列表](https://cloud.tencent.com/document/api/236/20411)查询支持设置的参数
 	ParamList []*ParamInfo `json:"ParamList,omitempty" name:"ParamList" list`
 
 	// 备库2的可用区ID，默认为0，购买主实例时可指定该参数，购买只读实例或者灾备实例时指定该参数无意义
@@ -2556,13 +2556,13 @@ type InquiryPriceUpgradeInstancesRequest struct {
 	// 实例ID，格式如：cdb-c1nl9rpv或者cdbro-c1nl9rpv。与云数据库控制台页面中显示的实例ID相同，可使用[查询实例列表](https://cloud.tencent.com/document/api/236/15872) 接口获取，其值为输出参数中字段 InstanceId 的值
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
-	// 升级后的内存大小，单位：MB，为保证传入 Memory 值有效，请使用[查询可创建规格（支持可用区、配置自定义）](https://cloud.tencent.com/document/api/253/6109)接口获取可升级的内存规格
+	// 升级后的内存大小，单位：MB，为保证传入 Memory 值有效，请使用[获取云数据库可售卖规格](https://cloud.tencent.com/document/product/236/17229)接口获取可升级的内存规格
 	Memory *uint64 `json:"Memory,omitempty" name:"Memory"`
 
-	// 升级后的硬盘大小，单位：GB，为保证传入 Volume 值有效，请使用[查询可创建规格（支持可用区、配置自定义）](https://cloud.tencent.com/document/api/253/6109)接口获取可升级的硬盘范围
+	// 升级后的硬盘大小，单位：GB，为保证传入 Volume 值有效，请使用[获取云数据库可售卖规格](https://cloud.tencent.com/document/product/236/17229)接口获取可升级的硬盘范围
 	Volume *uint64 `json:"Volume,omitempty" name:"Volume"`
 
-	// 升级后的核心数目，单位：核，为保证传入 CPU 值有效，请使用[查询可创建规格（支持可用区、配置自定义）](https://cloud.tencent.com/document/api/253/6109)接口获取可升级的核心数目，当未指定该值时，将按照 Memory 大小补全一个默认值
+	// 升级后的核心数目，单位：核，为保证传入 CPU 值有效，请使用[获取云数据库可售卖规格](https://cloud.tencent.com/document/product/236/17229)接口获取可升级的核心数目，当未指定该值时，将按照 Memory 大小补全一个默认值
 	Cpu *uint64 `json:"Cpu,omitempty" name:"Cpu"`
 
 	// 数据复制方式，支持值包括：0-异步复制，1-半同步复制，2-强同步复制，升级主实例时可指定该参数，升级只读实例或者灾备实例时指定该参数无意义
@@ -2711,6 +2711,12 @@ type InstanceInfo struct {
 
 	// 核心数
 	Cpu *int64 `json:"Cpu,omitempty" name:"Cpu"`
+
+	// 每秒查询数量
+	Qps *int64 `json:"Qps,omitempty" name:"Qps"`
+
+	// 可用区中文名称
+	ZoneName *string `json:"ZoneName,omitempty" name:"ZoneName"`
 }
 
 type InstanceRebootTime struct {
@@ -3192,7 +3198,7 @@ type ModifyDBInstanceVipVportResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 异步任务ID，可使用[查询任务列表](https://cloud.tencent.com/document/api/236/8010)获取其执行情况。
+		// 异步任务ID。
 		AsyncRequestId *string `json:"AsyncRequestId,omitempty" name:"AsyncRequestId"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -4095,7 +4101,7 @@ type UpgradeDBInstanceEngineVersionRequest struct {
 	// 主实例数据库引擎版本，支持值包括：5.6和5.7
 	EngineVersion *string `json:"EngineVersion,omitempty" name:"EngineVersion"`
 
-	// 切换访问新实例的方式，默认为0，升级主实例时，可指定该参数，升级只读实例或者灾备实例时指定该参数无意义，支持值包括：0-立刻切换，1-时间窗切换；当该值为1时，升级中过程中，切换访问新实例的流程将会在时间窗内进行，或者用户主动调用接口[切换访问新实例](https://cloud.tencent.com/document/api/403/4392)触发该流程
+	// 切换访问新实例的方式，默认为0，升级主实例时，可指定该参数，升级只读实例或者灾备实例时指定该参数无意义，支持值包括：0-立刻切换，1-时间窗切换；当该值为1时，升级中过程中，切换访问新实例的流程将会在时间窗内进行，或者用户主动调用接口[切换访问新实例](https://cloud.tencent.com/document/product/236/15864)触发该流程
 	WaitSwitch *int64 `json:"WaitSwitch,omitempty" name:"WaitSwitch"`
 }
 
@@ -4112,7 +4118,7 @@ type UpgradeDBInstanceEngineVersionResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 异步任务ID，可使用[查询任务列表](https://cloud.tencent.com/document/api/236/8010)获取其执行情况
+		// 异步任务ID，可使用[查询异步任务的执行结果](https://cloud.tencent.com/document/api/236/20410)获取其执行情况。
 		AsyncRequestId *string `json:"AsyncRequestId,omitempty" name:"AsyncRequestId"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -4135,10 +4141,10 @@ type UpgradeDBInstanceRequest struct {
 	// 实例ID，格式如：cdb-c1nl9rpv或者cdbro-c1nl9rpv。与云数据库控制台页面中显示的实例ID相同，可使用[查询实例列表](https://cloud.tencent.com/document/api/236/15872) 接口获取，其值为输出参数中字段 InstanceId 的值
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
-	// 升级后的内存大小，单位：MB，为保证传入 Memory 值有效，请使用[查询可创建规格（支持可用区、配置自定义）](https://cloud.tencent.com/document/api/253/6109)接口获取可升级的内存规格
+	// 升级后的内存大小，单位：MB，为保证传入 Memory 值有效，请使用[获取云数据库可售卖规格](https://cloud.tencent.com/document/product/236/17229)接口获取可升级的内存规格
 	Memory *int64 `json:"Memory,omitempty" name:"Memory"`
 
-	// 升级后的硬盘大小，单位：GB，为保证传入 Volume 值有效，请使用[查询可创建规格（支持可用区、配置自定义）](https://cloud.tencent.com/document/api/253/6109)接口获取可升级的硬盘范围
+	// 升级后的硬盘大小，单位：GB，为保证传入 Volume 值有效，请使用[获取云数据库可售卖规格](https://cloud.tencent.com/document/product/236/17229)接口获取可升级的硬盘范围
 	Volume *int64 `json:"Volume,omitempty" name:"Volume"`
 
 	// 数据复制方式，支持值包括：0-异步复制，1-半同步复制，2-强同步复制，升级主实例时可指定该参数，升级只读实例或者灾备实例时指定该参数无意义
@@ -4147,13 +4153,13 @@ type UpgradeDBInstanceRequest struct {
 	// 部署模式，默认为0，支持值包括：0-单可用区部署，1-多可用区部署，升级主实例时可指定该参数，升级只读实例或者灾备实例时指定该参数无意义
 	DeployMode *int64 `json:"DeployMode,omitempty" name:"DeployMode"`
 
-	// 备库1的可用区信息，默认为实例的Zone，升级主实例为多可用区部署时可指定该参数，升级只读实例或者灾备实例时指定该参数无意义。可通过<a href='/document/product/236/6921' title='查询云数据库可售卖规格'>查询云数据库可售卖规格</a>查询支持的可用区
+	// 备库1的可用区信息，默认和实例的Zone参数一致，升级主实例为多可用区部署时可指定该参数，升级只读实例或者灾备实例时指定该参数无意义。可通过[获取云数据库可售卖规格](https://cloud.tencent.com/document/product/236/17229)接口查询支持的可用区
 	SlaveZone *string `json:"SlaveZone,omitempty" name:"SlaveZone"`
 
 	// 主实例数据库引擎版本，支持值包括：5.5、5.6和5.7
 	EngineVersion *string `json:"EngineVersion,omitempty" name:"EngineVersion"`
 
-	// 切换访问新实例的方式，默认为0，升级主实例时，可指定该参数，升级只读实例或者灾备实例时指定该参数无意义，支持值包括：0-立刻切换，1-时间窗切换；当该值为1时，升级中过程中，切换访问新实例的流程将会在时间窗内进行，或者用户主动调用接口[切换访问新实例](https://cloud.tencent.com/document/api/403/4392)触发该流程
+	// 切换访问新实例的方式，默认为0，升级主实例时，可指定该参数，升级只读实例或者灾备实例时指定该参数无意义，支持值包括：0-立刻切换，1-时间窗切换；当该值为1时，升级中过程中，切换访问新实例的流程将会在时间窗内进行，或者用户主动调用接口[切换访问新实例](https://cloud.tencent.com/document/product/236/15864)触发该流程
 	WaitSwitch *int64 `json:"WaitSwitch,omitempty" name:"WaitSwitch"`
 
 	// 备库2的可用区ID，默认为0，升级主实例时可指定该参数，升级只读实例或者灾备实例时指定该参数无意义
@@ -4176,7 +4182,7 @@ type UpgradeDBInstanceResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 订单ID，用于调用云API相关接口，如[获取订单信息](https://cloud.tencent.com/document/api/403/4392)
+		// 订单ID
 		DealIds []*string `json:"DealIds,omitempty" name:"DealIds" list`
 
 		// 异步任务的请求ID，可使用此ID查询异步任务的执行结果

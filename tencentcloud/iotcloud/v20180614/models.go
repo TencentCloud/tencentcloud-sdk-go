@@ -1110,13 +1110,14 @@ type ProductProperties struct {
 	// 产品描述
 	ProductDescription *string `json:"ProductDescription,omitempty" name:"ProductDescription"`
 
-	// 加密类型，1表示非对称加密，2表示对称加密。如不填写，默认值是1
+	// 加密类型，1表示证书认证，2表示签名认证。如不填写，默认值是1
 	EncryptionType *string `json:"EncryptionType,omitempty" name:"EncryptionType"`
 
 	// 产品所属区域，目前只支持广州（gz）
 	Region *string `json:"Region,omitempty" name:"Region"`
 
-	// 产品类型，0表示正常设备，2表示NB-IoT设备，默认值是0
+	// 产品类型，各个类型值代表的节点-类型如下：
+	// 0 普通产品，2 NB-IoT产品，4 LoRa产品，3 LoRa网关产品，5 普通网关产品   默认值是0
 	ProductType *uint64 `json:"ProductType,omitempty" name:"ProductType"`
 
 	// 数据格式，取值为json或者custom，默认值是json
@@ -1133,6 +1134,9 @@ type ProductProperties struct {
 
 	// 产品绑定的物模型名称
 	ModelName *string `json:"ModelName,omitempty" name:"ModelName"`
+
+	// 产品秘钥，suite产品才会有
+	ProductKey *string `json:"ProductKey,omitempty" name:"ProductKey"`
 }
 
 type PublishMessageRequest struct {

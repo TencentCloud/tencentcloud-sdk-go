@@ -78,7 +78,7 @@ type Cluster struct {
 	ClusterName *string `json:"ClusterName,omitempty" name:"ClusterName"`
 
 	// 集群描述
-	ClusterDescription []*string `json:"ClusterDescription,omitempty" name:"ClusterDescription" list`
+	ClusterDescription *string `json:"ClusterDescription,omitempty" name:"ClusterDescription"`
 
 	// 集群版本（默认值为1.10.5）
 	ClusterVersion *string `json:"ClusterVersion,omitempty" name:"ClusterVersion"`
@@ -91,6 +91,9 @@ type Cluster struct {
 
 	// 集群网络相关参数
 	ClusterNetworkSettings *ClusterNetworkSettings `json:"ClusterNetworkSettings,omitempty" name:"ClusterNetworkSettings"`
+
+	// 集群当前node数量
+	ClusterNodeNum *uint64 `json:"ClusterNodeNum,omitempty" name:"ClusterNodeNum"`
 }
 
 type ClusterNetworkSettings struct {
@@ -108,7 +111,7 @@ type ClusterNetworkSettings struct {
 	MaxClusterServiceNum *uint64 `json:"MaxClusterServiceNum,omitempty" name:"MaxClusterServiceNum"`
 
 	// 是否启用IPVS(默认不开启)
-	IPVS *bool `json:"IPVS,omitempty" name:"IPVS"`
+	Ipvs *bool `json:"Ipvs,omitempty" name:"Ipvs"`
 
 	// 集群的VPCID（如果创建空集群，为必传值，否则自动设置为和集群的节点保持一致）
 	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
@@ -215,6 +218,9 @@ type DescribeClustersRequest struct {
 
 	// 最大输出条数，默认20
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 过滤条件,当前只支持按照单个条件ClusterName进行过滤
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
 }
 
 func (r *DescribeClustersRequest) ToJsonString() string {
@@ -257,6 +263,15 @@ type EnhancedService struct {
 
 	// 开启云监控服务。若不指定该参数，则默认开启云监控服务。
 	MonitorService *RunMonitorServiceEnabled `json:"MonitorService,omitempty" name:"MonitorService"`
+}
+
+type Filter struct {
+
+	// 属性名称, 若存在多个Filter时，Filter间的关系为逻辑与（AND）关系。
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 属性值, 若同一个Filter存在多个Values，同一Filter下Values间的关系为逻辑或（OR）关系。
+	Values []*string `json:"Values,omitempty" name:"Values" list`
 }
 
 type Instance struct {

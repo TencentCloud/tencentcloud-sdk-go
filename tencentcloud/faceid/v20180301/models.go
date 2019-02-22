@@ -231,6 +231,54 @@ func (r *GetLiveCodeResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type IdCardVerificationRequest struct {
+	*tchttp.BaseRequest
+
+	// 身份证号
+	IdCard *string `json:"IdCard,omitempty" name:"IdCard"`
+
+	// 姓名
+	Name *string `json:"Name,omitempty" name:"Name"`
+}
+
+func (r *IdCardVerificationRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *IdCardVerificationRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type IdCardVerificationResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 认证结果码。
+	// 0: 姓名和身份证号一致
+	// -1: 姓名和身份证号不一致
+	// -2: 身份证号错误
+	// -3: 姓名错误
+	// -4: 认证出错
+		Result *string `json:"Result,omitempty" name:"Result"`
+
+		// 认证结果信息。
+		Description *string `json:"Description,omitempty" name:"Description"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *IdCardVerificationResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *IdCardVerificationResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type ImageRecognitionRequest struct {
 	*tchttp.BaseRequest
 
