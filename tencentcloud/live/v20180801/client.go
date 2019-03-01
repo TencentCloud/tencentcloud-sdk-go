@@ -84,7 +84,7 @@ func NewAddLiveWatermarkResponse() (response *AddLiveWatermarkResponse) {
     return
 }
 
-// 添加水印
+// 添加水印，成功返回水印id后，需要调用[CreateLiveWatermarkRule](/document/product/267/32629)接口将水印id绑定到流使用。
 func (c *Client) AddLiveWatermark(request *AddLiveWatermarkRequest) (response *AddLiveWatermarkResponse, err error) {
     if request == nil {
         request = NewAddLiveWatermarkRequest()
@@ -134,7 +134,8 @@ func NewCreateLiveCallbackRuleResponse() (response *CreateLiveCallbackRuleRespon
     return
 }
 
-// 创建回调规则
+// 创建回调规则，需要先调用[CreateLiveCallbackTemplate](/document/product/267/32637)接口创建回调模板，将返回的模板id绑定到域名/路径进行使用。
+// <br>回调协议相关文档：[事件消息通知](/document/product/267/32744)。
 func (c *Client) CreateLiveCallbackRule(request *CreateLiveCallbackRuleRequest) (response *CreateLiveCallbackRuleResponse, err error) {
     if request == nil {
         request = NewCreateLiveCallbackRuleRequest()
@@ -159,7 +160,8 @@ func NewCreateLiveCallbackTemplateResponse() (response *CreateLiveCallbackTempla
     return
 }
 
-// 创建回调模板
+// 创建回调模板，成功返回模板id后，需要调用[CreateLiveCallbackRule](/document/product/267/32638)接口将模板id绑定到域名/路径使用。
+// <br>回调协议相关文档：[事件消息通知](/document/product/267/32744)。
 func (c *Client) CreateLiveCallbackTemplate(request *CreateLiveCallbackTemplateRequest) (response *CreateLiveCallbackTemplateResponse, err error) {
     if request == nil {
         request = NewCreateLiveCallbackTemplateRequest()
@@ -246,7 +248,8 @@ func NewCreateLiveRecordRuleResponse() (response *CreateLiveRecordRuleResponse) 
     return
 }
 
-// 创建录制规则
+// 创建录制规则，需要先调用[CreateLiveRecordTemplate](/document/product/267/32614)接口创建录制模板，将返回的模板id绑定到流使用。
+// <br>录制相关文档：[直播录制](/document/product/267/32739)。
 func (c *Client) CreateLiveRecordRule(request *CreateLiveRecordRuleRequest) (response *CreateLiveRecordRuleResponse, err error) {
     if request == nil {
         request = NewCreateLiveRecordRuleRequest()
@@ -271,7 +274,8 @@ func NewCreateLiveRecordTemplateResponse() (response *CreateLiveRecordTemplateRe
     return
 }
 
-// 创建录制模板
+// 创建录制模板，成功返回模板id后，需要调用[CreateLiveRecordRule](/document/product/267/32615)接口，将模板id绑定到流进行使用。
+// <br>录制相关文档：[直播录制](/document/product/267/32739)。
 func (c *Client) CreateLiveRecordTemplate(request *CreateLiveRecordTemplateRequest) (response *CreateLiveRecordTemplateResponse, err error) {
     if request == nil {
         request = NewCreateLiveRecordTemplateRequest()
@@ -296,7 +300,8 @@ func NewCreateLiveSnapshotRuleResponse() (response *CreateLiveSnapshotRuleRespon
     return
 }
 
-// 创建截图规则
+// 创建截图规则，需要先调用[CreateLiveSnapshotTemplate](/document/product/267/32624)接口创建截图模板，然后将返回的模板id绑定到流进行使用。
+// <br>截图相关文档：[直播截图](/document/product/267/32737)。
 func (c *Client) CreateLiveSnapshotRule(request *CreateLiveSnapshotRuleRequest) (response *CreateLiveSnapshotRuleResponse, err error) {
     if request == nil {
         request = NewCreateLiveSnapshotRuleRequest()
@@ -321,7 +326,8 @@ func NewCreateLiveSnapshotTemplateResponse() (response *CreateLiveSnapshotTempla
     return
 }
 
-// 创建截图模板
+// 创建截图模板，成功返回模板id后，需要调用[CreateLiveSnapshotRule](/document/product/267/32625)接口，将模板id绑定到流使用。
+// <br>截图相关文档：[直播截图](/document/product/267/32737)。
 func (c *Client) CreateLiveSnapshotTemplate(request *CreateLiveSnapshotTemplateRequest) (response *CreateLiveSnapshotTemplateResponse, err error) {
     if request == nil {
         request = NewCreateLiveSnapshotTemplateRequest()
@@ -346,7 +352,8 @@ func NewCreateLiveTranscodeRuleResponse() (response *CreateLiveTranscodeRuleResp
     return
 }
 
-// 创建转码规则
+// 创建转码规则，需要先调用[CreateLiveTranscodeTemplate](/document/product/267/32646)接口创建转码模板，将返回的模板id绑定到流使用。
+// <br>转码相关文档：[直播转封装及转码](/document/product/267/32736)。
 func (c *Client) CreateLiveTranscodeRule(request *CreateLiveTranscodeRuleRequest) (response *CreateLiveTranscodeRuleResponse, err error) {
     if request == nil {
         request = NewCreateLiveTranscodeRuleRequest()
@@ -371,7 +378,8 @@ func NewCreateLiveTranscodeTemplateResponse() (response *CreateLiveTranscodeTemp
     return
 }
 
-// 创建转码模板
+// 创建转码模板，成功返回模板id后，需要调用[CreateLiveTranscodeRule](/document/product/267/32647)接口，将返回的模板id绑定到流使用。
+// <br>转码相关文档：[直播转封装及转码](/document/product/267/32736)。
 func (c *Client) CreateLiveTranscodeTemplate(request *CreateLiveTranscodeTemplateRequest) (response *CreateLiveTranscodeTemplateResponse, err error) {
     if request == nil {
         request = NewCreateLiveTranscodeTemplateRequest()
@@ -396,7 +404,7 @@ func NewCreateLiveWatermarkRuleResponse() (response *CreateLiveWatermarkRuleResp
     return
 }
 
-// 创建水印规则
+// 创建水印规则，需要先调用[AddLiveWatermark](/document/product/267/30154)接口添加水印，将返回的水印id绑定到流使用。
 func (c *Client) CreateLiveWatermarkRule(request *CreateLiveWatermarkRuleRequest) (response *CreateLiveWatermarkRuleResponse, err error) {
     if request == nil {
         request = NewCreateLiveWatermarkRuleRequest()

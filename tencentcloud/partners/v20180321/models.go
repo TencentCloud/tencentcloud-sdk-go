@@ -83,7 +83,7 @@ type AgentBillElem struct {
 	SettleMonth *string `json:"SettleMonth,omitempty" name:"SettleMonth"`
 
 	// 支付金额，单位分
-	Amt *uint64 `json:"Amt,omitempty" name:"Amt"`
+	Amt *int64 `json:"Amt,omitempty" name:"Amt"`
 
 	// agentpay：代付；selfpay：自付
 	PayerMode *string `json:"PayerMode,omitempty" name:"PayerMode"`

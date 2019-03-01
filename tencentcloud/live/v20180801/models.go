@@ -279,19 +279,24 @@ type CreateLiveCallbackTemplateRequest struct {
 	// 描述信息。
 	Description *string `json:"Description,omitempty" name:"Description"`
 
-	// 开播回调URL。
+	// 开播回调URL，
+	// 相关协议文档：[事件消息通知](/document/product/267/32744)。
 	StreamBeginNotifyUrl *string `json:"StreamBeginNotifyUrl,omitempty" name:"StreamBeginNotifyUrl"`
 
-	// 断流回调URL。
+	// 断流回调URL，
+	// 相关协议文档：[事件消息通知](/document/product/267/32744)。
 	StreamEndNotifyUrl *string `json:"StreamEndNotifyUrl,omitempty" name:"StreamEndNotifyUrl"`
 
-	// 录制回调URL。
+	// 录制回调URL，
+	// 相关协议文档：[事件消息通知](/document/product/267/32744)。
 	RecordNotifyUrl *string `json:"RecordNotifyUrl,omitempty" name:"RecordNotifyUrl"`
 
-	// 截图回调URL。
+	// 截图回调URL，
+	// 相关协议文档：[事件消息通知](/document/product/267/32744)。
 	SnapshotNotifyUrl *string `json:"SnapshotNotifyUrl,omitempty" name:"SnapshotNotifyUrl"`
 
-	// 鉴黄回调URL。
+	// 鉴黄回调URL，
+	// 相关协议文档：[事件消息通知](/document/product/267/32741)。
 	PornCensorshipNotifyUrl *string `json:"PornCensorshipNotifyUrl,omitempty" name:"PornCensorshipNotifyUrl"`
 }
 
@@ -793,7 +798,7 @@ type CreateLiveWatermarkRuleRequest struct {
 	// 流名称。
 	StreamName *string `json:"StreamName,omitempty" name:"StreamName"`
 
-	// 水印Id。
+	// 水印Id，即调用[AddLiveWatermark](/document/product/267/30154)接口返回的WatermarkId。
 	TemplateId *int64 `json:"TemplateId,omitempty" name:"TemplateId"`
 }
 

@@ -96,33 +96,6 @@ type GetFederationTokenRequest struct {
 
 	// 指定临时证书的有效期，单位：秒，默认1800秒，最长可设定有效期为7200秒
 	DurationSeconds *uint64 `json:"DurationSeconds,omitempty" name:"DurationSeconds"`
-
-	// 兼容uin名单
-	OpenUin *uint64 `json:"OpenUin,omitempty" name:"OpenUin"`
-
-	// 兼容OwnerUin名单
-	OpenOwnerUin *uint64 `json:"OpenOwnerUin,omitempty" name:"OpenOwnerUin"`
-
-	// ua
-	Ua *string `json:"Ua,omitempty" name:"Ua"`
-
-	// mfa
-	Mfa *uint64 `json:"Mfa,omitempty" name:"Mfa"`
-
-	// interfaceName
-	InterfaceName *string `json:"InterfaceName,omitempty" name:"InterfaceName"`
-
-	// extraInfo
-	ExtraInfo *string `json:"ExtraInfo,omitempty" name:"ExtraInfo"`
-
-	// thUin
-	ThUin *uint64 `json:"ThUin,omitempty" name:"ThUin"`
-
-	// thOwnerUin
-	ThOwnerUin *uint64 `json:"ThOwnerUin,omitempty" name:"ThOwnerUin"`
-
-	// codeMode
-	CodeMode *string `json:"CodeMode,omitempty" name:"CodeMode"`
 }
 
 func (r *GetFederationTokenRequest) ToJsonString() string {

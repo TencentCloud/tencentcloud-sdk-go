@@ -519,6 +519,12 @@ type CCN struct {
 
 	// 实例服务质量，’PT’：白金，'AU'：金，'AG'：银。
 	QosLevel *string `json:"QosLevel,omitempty" name:"QosLevel"`
+
+	// 付费类型，PREPAID为预付费，POSTPAID为后付费。
+	InstanceChargeType *string `json:"InstanceChargeType,omitempty" name:"InstanceChargeType"`
+
+	// 限速类型，INTER_REGION_LIMIT为地域间限速；OUTER_REGION_LIMIT为地域出口限速。
+	BandwidthLimitType *string `json:"BandwidthLimitType,omitempty" name:"BandwidthLimitType"`
 }
 
 type CcnAttachedInstance struct {
@@ -942,7 +948,7 @@ type CreateDirectConnectGatewayRequest struct {
 	NetworkType *string `json:"NetworkType,omitempty" name:"NetworkType"`
 
 	// <li>NetworkType 为 VPC 时，这里传值为私有网络实例ID</li>
-	// <li>NetworkType 为 NAT 时，这里传值为云联网实例ID</li>
+	// <li>NetworkType 为 CCN 时，这里传值为云联网实例ID</li>
 	NetworkInstanceId *string `json:"NetworkInstanceId,omitempty" name:"NetworkInstanceId"`
 
 	// 网关类型，可选值：
@@ -3090,6 +3096,70 @@ func (r *DescribeDirectConnectGatewaysResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeGatewayFlowMonitorDetailRequest struct {
+	*tchttp.BaseRequest
+
+	// 时间点。表示要查询这分钟内的明细。如：`2019-02-28 18:15:20`，将查询 `18:15` 这一分钟内的明细。
+	TimePoint *string `json:"TimePoint,omitempty" name:"TimePoint"`
+
+	// VPN网关实例ID，形如：`vpn-ltjahce6`。
+	VpnId *string `json:"VpnId,omitempty" name:"VpnId"`
+
+	// 专线网关实例ID，形如：`dcg-ltjahce6`。
+	DirectConnectGatewayId *string `json:"DirectConnectGatewayId,omitempty" name:"DirectConnectGatewayId"`
+
+	// 对等连接实例ID，形如：`pcx-ltjahce6`。
+	PeeringConnectionId *string `json:"PeeringConnectionId,omitempty" name:"PeeringConnectionId"`
+
+	// NAT网关实例ID，形如：`nat-ltjahce6`。
+	NatId *string `json:"NatId,omitempty" name:"NatId"`
+
+	// 偏移量。
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 返回数量。
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 排序字段。支持 `InPkg` `OutPkg` `InTraffic` `OutTraffic`。
+	OrderField *string `json:"OrderField,omitempty" name:"OrderField"`
+
+	// 排序方法。顺序：`ASC`，倒序：`DESC`。
+	OrderDirection *string `json:"OrderDirection,omitempty" name:"OrderDirection"`
+}
+
+func (r *DescribeGatewayFlowMonitorDetailRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeGatewayFlowMonitorDetailRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeGatewayFlowMonitorDetailResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 符合条件的对象数。
+		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 网关流量监控明细。
+		GatewayFlowMonitorDetailSet []*GatewayFlowMonitorDetail `json:"GatewayFlowMonitorDetailSet,omitempty" name:"GatewayFlowMonitorDetailSet" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeGatewayFlowMonitorDetailResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeGatewayFlowMonitorDetailResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeHaVipsRequest struct {
 	*tchttp.BaseRequest
 
@@ -4275,6 +4345,24 @@ type FilterObject struct {
 	Values []*string `json:"Values,omitempty" name:"Values" list`
 }
 
+type GatewayFlowMonitorDetail struct {
+
+	// 来源`IP`。
+	PrivateIpAddress *string `json:"PrivateIpAddress,omitempty" name:"PrivateIpAddress"`
+
+	// 入包量。
+	InPkg *uint64 `json:"InPkg,omitempty" name:"InPkg"`
+
+	// 出包量。
+	OutPkg *uint64 `json:"OutPkg,omitempty" name:"OutPkg"`
+
+	// 入带宽，单位：`Byte`。
+	InTraffic *uint64 `json:"InTraffic,omitempty" name:"InTraffic"`
+
+	// 出带宽，单位：`Byte`。
+	OutTraffic *uint64 `json:"OutTraffic,omitempty" name:"OutTraffic"`
+}
+
 type HaVip struct {
 
 	// `HAVIP`的`ID`，是`HAVIP`的唯一标识。
@@ -4640,6 +4728,31 @@ type Ip6Translator struct {
 
 	// IPV6转换规则信息
 	IP6RuleSet []*Ip6Rule `json:"IP6RuleSet,omitempty" name:"IP6RuleSet" list`
+}
+
+type Ipv6Address struct {
+
+	// `IPv6`地址，形如：`3402:4e00:20:100:0:8cd9:2a67:71f3`
+	Address *string `json:"Address,omitempty" name:"Address"`
+
+	// 是否是主`IP`。
+	Primary *bool `json:"Primary,omitempty" name:"Primary"`
+
+	// `EIP`实例`ID`，形如：`eip-hxlqja90`。
+	AddressId *string `json:"AddressId,omitempty" name:"AddressId"`
+
+	// 描述信息。
+	Description *string `json:"Description,omitempty" name:"Description"`
+
+	// 公网IP是否被封堵。
+	IsWanIpBlocked *bool `json:"IsWanIpBlocked,omitempty" name:"IsWanIpBlocked"`
+
+	// `IPv6`地址状态：
+	// <li>`PENDING`：生产中</li>
+	// <li>`MIGRATING`：迁移中</li>
+	// <li>`DELETING`：删除中</li>
+	// <li>`AVAILABLE`：可用的</li>
+	State *string `json:"State,omitempty" name:"State"`
 }
 
 type ItemPrice struct {
@@ -5665,6 +5778,9 @@ type NetworkInterface struct {
 
 	// 创建时间。
 	CreatedTime *string `json:"CreatedTime,omitempty" name:"CreatedTime"`
+
+	// `IPv6`地址列表。
+	Ipv6AddressSet []*Ipv6Address `json:"Ipv6AddressSet,omitempty" name:"Ipv6AddressSet" list`
 }
 
 type NetworkInterfaceAttachment struct {
@@ -6487,16 +6603,16 @@ func (r *SetCcnRegionBandwidthLimitsResponse) FromJsonString(s string) error {
 
 type Subnet struct {
 
-	// VPC实例ID。
+	// `VPC`实例`ID`。
 	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
 
-	// 子网实例ID，例如：subnet-bthucmmy。
+	// 子网实例`ID`，例如：subnet-bthucmmy。
 	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
 
 	// 子网名称。
 	SubnetName *string `json:"SubnetName,omitempty" name:"SubnetName"`
 
-	// 子网的CIDR。
+	// 子网的 `IPv4` `CIDR`。
 	CidrBlock *string `json:"CidrBlock,omitempty" name:"CidrBlock"`
 
 	// 是否默认子网。
@@ -6514,8 +6630,11 @@ type Subnet struct {
 	// 创建时间。
 	CreatedTime *string `json:"CreatedTime,omitempty" name:"CreatedTime"`
 
-	// 可用IP数。
+	// 可用`IP`数。
 	AvailableIpAddressCount *uint64 `json:"AvailableIpAddressCount,omitempty" name:"AvailableIpAddressCount"`
+
+	// 子网的 `IPv6` `CIDR`。
+	Ipv6CidrBlock *string `json:"Ipv6CidrBlock,omitempty" name:"Ipv6CidrBlock"`
 }
 
 type SubnetInput struct {
@@ -6606,16 +6725,16 @@ func (r *UnassignPrivateIpAddressesResponse) FromJsonString(s string) error {
 
 type Vpc struct {
 
-	// Vpc名称。
+	// `VPC`名称。
 	VpcName *string `json:"VpcName,omitempty" name:"VpcName"`
 
-	// VPC实例ID，例如：vpc-azd4dt1c。
+	// `VPC`实例`ID`，例如：vpc-azd4dt1c。
 	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
 
-	// VPC的cidr，只能为10.0.0.0/16，172.16.0.0/12，192.168.0.0/16这三个内网网段内。
+	// `VPC`的`IPv4` `CIDR`。
 	CidrBlock *string `json:"CidrBlock,omitempty" name:"CidrBlock"`
 
-	// 是否默认VPC。
+	// 是否默认`VPC`。
 	IsDefault *bool `json:"IsDefault,omitempty" name:"IsDefault"`
 
 	// 是否开启组播。
@@ -6624,17 +6743,20 @@ type Vpc struct {
 	// 创建时间。
 	CreatedTime *string `json:"CreatedTime,omitempty" name:"CreatedTime"`
 
-	// DNS列表
+	// `DNS`列表。
 	DnsServerSet []*string `json:"DnsServerSet,omitempty" name:"DnsServerSet" list`
 
-	// DHCP域名选项值
+	// `DHCP`域名选项值。
 	DomainName *string `json:"DomainName,omitempty" name:"DomainName"`
 
-	// DHCP选项集ID
+	// `DHCP`选项集`ID`。
 	DhcpOptionsId *string `json:"DhcpOptionsId,omitempty" name:"DhcpOptionsId"`
 
-	// 是否开启DHCP。
+	// 是否开启`DHCP`。
 	EnableDhcp *bool `json:"EnableDhcp,omitempty" name:"EnableDhcp"`
+
+	// `VPC`的`IPv6` `CIDR`。
+	Ipv6CidrBlock *string `json:"Ipv6CidrBlock,omitempty" name:"Ipv6CidrBlock"`
 }
 
 type VpcPrivateIpAddress struct {

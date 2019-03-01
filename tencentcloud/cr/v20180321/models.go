@@ -31,6 +31,9 @@ type ApplyBlackListRequest struct {
 
 	// 黑名单列表
 	BlackList []*SingleBlackApply `json:"BlackList,omitempty" name:"BlackList" list`
+
+	// 实例ID，不传默认为系统分配的初始实例
+	InstId *string `json:"InstId,omitempty" name:"InstId"`
 }
 
 func (r *ApplyBlackListRequest) ToJsonString() string {
@@ -89,6 +92,9 @@ type DescribeRecordsRequest struct {
 
 	// 分页参数，页长
 	Limit *string `json:"Limit,omitempty" name:"Limit"`
+
+	// 实例ID，不传默认为系统分配的初始实例
+	InstId *string `json:"InstId,omitempty" name:"InstId"`
 }
 
 func (r *DescribeRecordsRequest) ToJsonString() string {
@@ -281,6 +287,9 @@ type UploadDataFileRequest struct {
 
 	// 文件上传地址，文件与文件地址上传只可选用一种，大小不超过50MB。
 	FileUrl *string `json:"FileUrl,omitempty" name:"FileUrl"`
+
+	// 实例ID，不传默认为系统分配的初始实例。
+	InstId *string `json:"InstId,omitempty" name:"InstId"`
 }
 
 func (r *UploadDataFileRequest) ToJsonString() string {

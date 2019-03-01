@@ -4306,4 +4306,7 @@ type ZoneSellConf struct {
 
 	// 多可用区信息
 	ZoneConf *ZoneConf `json:"ZoneConf,omitempty" name:"ZoneConf"`
+
+	// 可支持的灾备可用区信息
+	DrZone []*string `json:"DrZone,omitempty" name:"DrZone" list`
 }

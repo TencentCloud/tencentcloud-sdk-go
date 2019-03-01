@@ -83,7 +83,7 @@ func NewGetFederationTokenResponse() (response *GetFederationTokenResponse) {
     return
 }
 
-// 获取临时证书
+// 获取联合身份临时访问凭证
 func (c *Client) GetFederationToken(request *GetFederationTokenRequest) (response *GetFederationTokenResponse, err error) {
     if request == nil {
         request = NewGetFederationTokenRequest()

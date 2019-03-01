@@ -58,7 +58,8 @@ func NewApplyBlackListResponse() (response *ApplyBlackListResponse) {
     return
 }
 
-// 提交黑名单申请。
+// 加入黑名单的客户，将停止拨打。用于：
+// 将客户进行黑名单的增加和移除，用于对某些客户阶段性停催。
 func (c *Client) ApplyBlackList(request *ApplyBlackListRequest) (response *ApplyBlackListResponse, err error) {
     if request == nil {
         request = NewApplyBlackListRequest()
@@ -83,7 +84,7 @@ func NewDescribeRecordsResponse() (response *DescribeRecordsResponse) {
     return
 }
 
-// 查询录音，返回录音列表。
+// 用于获取指定案件的录音地址，次日早上8:00后可查询前日录音。
 func (c *Client) DescribeRecords(request *DescribeRecordsRequest) (response *DescribeRecordsResponse, err error) {
     if request == nil {
         request = NewDescribeRecordsRequest()
@@ -108,7 +109,7 @@ func NewDescribeTaskStatusResponse() (response *DescribeTaskStatusResponse) {
     return
 }
 
-// 客户调用该接口查看任务执行状态。输入任务ID，输出任务执行状态或者结果
+// 根据上传文件接口的输出参数DataResId，获取相关上传结果。
 func (c *Client) DescribeTaskStatus(request *DescribeTaskStatusRequest) (response *DescribeTaskStatusResponse, err error) {
     if request == nil {
         request = NewDescribeTaskStatusRequest()
@@ -133,7 +134,7 @@ func NewDownloadReportResponse() (response *DownloadReportResponse) {
     return
 }
 
-// 客户调用该接口下载指定日期的催收报告
+// 用于下载当日催收结果报表，当日23:00后，可获取当日催收结果。
 func (c *Client) DownloadReport(request *DownloadReportRequest) (response *DownloadReportResponse, err error) {
     if request == nil {
         request = NewDownloadReportRequest()
@@ -158,7 +159,10 @@ func NewUploadDataFileResponse() (response *UploadDataFileResponse) {
     return
 }
 
-// 客户通过调用该接口上传需催收文档或还款文档，接口返回数据任务ID，支持xlsx、xls、csv、zip格式，文档大小不超过50MB。
+// 该接口包含上传：
+// 1、入催文件 — 用于每天入催文件的上传；
+// 2、还款文件 — 实时上传当前已还款客户，用于还款客户的实时停催；
+// 接口返回数据任务ID，支持xlsx、xls、csv、zip格式，文档大小不超过50MB。
 func (c *Client) UploadDataFile(request *UploadDataFileRequest) (response *UploadDataFileResponse, err error) {
     if request == nil {
         request = NewUploadDataFileRequest()

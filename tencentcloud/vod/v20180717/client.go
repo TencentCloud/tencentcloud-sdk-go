@@ -94,6 +94,33 @@ func (c *Client) CommitUpload(request *CommitUploadRequest) (response *CommitUpl
     return
 }
 
+func NewConfirmEventsRequest() (request *ConfirmEventsRequest) {
+    request = &ConfirmEventsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vod", APIVersion, "ConfirmEvents")
+    return
+}
+
+func NewConfirmEventsResponse() (response *ConfirmEventsResponse) {
+    response = &ConfirmEventsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// * 开发者调用拉取事件通知，获取到事件后，必须调用该接口来确认消息已经收到；
+// * 开发者获取到事件句柄后，等待确认的有效时间为 30 秒，超出 30 秒会报参数错误（4000）；
+// * 更多参考[服务端事件通知](https://cloud.tencent.com/document/product/266/7829)。
+func (c *Client) ConfirmEvents(request *ConfirmEventsRequest) (response *ConfirmEventsResponse, err error) {
+    if request == nil {
+        request = NewConfirmEventsRequest()
+    }
+    response = NewConfirmEventsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateClassRequest() (request *CreateClassRequest) {
     request = &CreateClassRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -233,6 +260,58 @@ func (c *Client) DescribeMediaInfos(request *DescribeMediaInfosRequest) (respons
     return
 }
 
+func NewDescribeTaskDetailRequest() (request *DescribeTaskDetailRequest) {
+    request = &DescribeTaskDetailRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vod", APIVersion, "DescribeTaskDetail")
+    return
+}
+
+func NewDescribeTaskDetailResponse() (response *DescribeTaskDetailResponse) {
+    response = &DescribeTaskDetailResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 通过任务 ID 查询任务的执行状态和结果的详细信息（最多可以查询3天之内提交的任务）
+func (c *Client) DescribeTaskDetail(request *DescribeTaskDetailRequest) (response *DescribeTaskDetailResponse, err error) {
+    if request == nil {
+        request = NewDescribeTaskDetailRequest()
+    }
+    response = NewDescribeTaskDetailResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeTasksRequest() (request *DescribeTasksRequest) {
+    request = &DescribeTasksRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vod", APIVersion, "DescribeTasks")
+    return
+}
+
+func NewDescribeTasksResponse() (response *DescribeTasksResponse) {
+    response = &DescribeTasksResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// * 该接口用于查询任务列表；
+// * 当列表数据比较多时，单次接口调用无法拉取整个列表，可通过 ScrollToken 参数，分批拉取；
+// * 只能查询到最近三天（72 小时）内的任务。
+func (c *Client) DescribeTasks(request *DescribeTasksRequest) (response *DescribeTasksResponse, err error) {
+    if request == nil {
+        request = NewDescribeTasksRequest()
+    }
+    response = NewDescribeTasksResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewLiveRealTimeClipRequest() (request *LiveRealTimeClipRequest) {
     request = &LiveRealTimeClipRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -327,6 +406,95 @@ func (c *Client) ModifyMediaInfo(request *ModifyMediaInfoRequest) (response *Mod
         request = NewModifyMediaInfoRequest()
     }
     response = NewModifyMediaInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewProcessMediaRequest() (request *ProcessMediaRequest) {
+    request = &ProcessMediaRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vod", APIVersion, "ProcessMedia")
+    return
+}
+
+func NewProcessMediaResponse() (response *ProcessMediaResponse) {
+    response = &ProcessMediaResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 对点播中的音视频媒体发起处理任务，功能包括：
+// 1. 视频转码（带水印）；
+// 2. 视频转动图；
+// 3. 对视频按指定时间点截图；
+// 4. 对视频采样截图；
+// 5. 对视频截图雪碧图；
+// 6. 对视频截取一张图做封面；
+// 7. 智能内容审核（鉴黄、鉴恐、鉴政）；
+// 8. 智能内容分析（标签、分类、封面）。
+func (c *Client) ProcessMedia(request *ProcessMediaRequest) (response *ProcessMediaResponse, err error) {
+    if request == nil {
+        request = NewProcessMediaRequest()
+    }
+    response = NewProcessMediaResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewProcessMediaByUrlRequest() (request *ProcessMediaByUrlRequest) {
+    request = &ProcessMediaByUrlRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vod", APIVersion, "ProcessMediaByUrl")
+    return
+}
+
+func NewProcessMediaByUrlResponse() (response *ProcessMediaByUrlResponse) {
+    response = &ProcessMediaByUrlResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 对来源为 URL 的音视频媒体发起处理任务，功能包括：
+// 
+// 1. 智能内容审核（鉴黄、鉴恐、鉴政）；
+// 2. 智能内容分析（标签、分类、封面）。
+func (c *Client) ProcessMediaByUrl(request *ProcessMediaByUrlRequest) (response *ProcessMediaByUrlResponse, err error) {
+    if request == nil {
+        request = NewProcessMediaByUrlRequest()
+    }
+    response = NewProcessMediaByUrlResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewPullEventsRequest() (request *PullEventsRequest) {
+    request = &PullEventsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vod", APIVersion, "PullEvents")
+    return
+}
+
+func NewPullEventsResponse() (response *PullEventsResponse) {
+    response = &PullEventsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// * 该接口用于从点播服务端获取事件通知，详见[服务端事件通知](https://cloud.tencent.com/document/product/266/7829)；
+// * 接口为长轮询模式，即：如果服务端存在未消费事件，则立即返回给请求方；如果服务端没有未消费事件，则后台会将请求挂起，直到有新的事件产生为止；
+// * 请求最多挂起 5 秒，建议请求方将超时时间设置为 10 秒；
+// * 若该接口有事件返回，调用方必须再调用[确认事件通知]接口，确认事件通知已经处理，否则该事件通知后续会再次被拉取到。
+func (c *Client) PullEvents(request *PullEventsRequest) (response *PullEventsResponse, err error) {
+    if request == nil {
+        request = NewPullEventsRequest()
+    }
+    response = NewPullEventsResponse()
     err = c.Send(request, response)
     return
 }

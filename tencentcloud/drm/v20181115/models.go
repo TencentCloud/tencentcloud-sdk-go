@@ -56,6 +56,9 @@ type CreateLicenseResponse struct {
 		// Base64 编码的许可证二进制数据。
 		License *string `json:"License,omitempty" name:"License"`
 
+		// 加密内容的内容ID
+		ContentId *string `json:"ContentId,omitempty" name:"ContentId"`
+
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
