@@ -158,7 +158,7 @@ func NewUpdateInstanceResponse() (response *UpdateInstanceResponse) {
     return
 }
 
-// 对已存在的集群进行扩缩容，修改实例名称，修改配置，重置密码， 添加Kibana黑白名单等操作 
+// 对已存在的集群进行扩缩容，修改实例名称，修改配置，重置密码， 添加Kibana黑白名单等操作
 func (c *Client) UpdateInstance(request *UpdateInstanceRequest) (response *UpdateInstanceResponse, err error) {
     if request == nil {
         request = NewUpdateInstanceRequest()

@@ -20,6 +20,15 @@ import (
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
+type CosBackup struct {
+
+	// 是否开启cos自动备份
+	IsAutoBackup *bool `json:"IsAutoBackup,omitempty" name:"IsAutoBackup"`
+
+	// 自动备份时间
+	BackupTime *string `json:"BackupTime,omitempty" name:"BackupTime"`
+}
+
 type CreateInstanceRequest struct {
 	*tchttp.BaseRequest
 
@@ -86,6 +95,18 @@ type CreateInstanceRequest struct {
 
 	// 代金券ID列表，目前仅支持指定一张代金券
 	VoucherIds []*string `json:"VoucherIds,omitempty" name:"VoucherIds" list`
+
+	// 是否创建专用主节点
+	EnableDedicatedMaster *bool `json:"EnableDedicatedMaster,omitempty" name:"EnableDedicatedMaster"`
+
+	// 专用主节点个数
+	MasterNodeNum *uint64 `json:"MasterNodeNum,omitempty" name:"MasterNodeNum"`
+
+	// 专用主节点类型
+	MasterNodeType *string `json:"MasterNodeType,omitempty" name:"MasterNodeType"`
+
+	// 专用主节点磁盘大小
+	MasterNodeDiskSize *uint64 `json:"MasterNodeDiskSize,omitempty" name:"MasterNodeDiskSize"`
 }
 
 func (r *CreateInstanceRequest) ToJsonString() string {
@@ -334,6 +355,12 @@ type InstanceInfo struct {
 
 	// 专用主节点配置
 	MasterNodeInfo *MasterNodeInfo `json:"MasterNodeInfo,omitempty" name:"MasterNodeInfo"`
+
+	// cos自动备份配置
+	CosBackup *CosBackup `json:"CosBackup,omitempty" name:"CosBackup"`
+
+	// 是否允许cos自动备份
+	AllowCosBackup *bool `json:"AllowCosBackup,omitempty" name:"AllowCosBackup"`
 }
 
 type MasterNodeInfo struct {
@@ -355,6 +382,9 @@ type MasterNodeInfo struct {
 
 	// 专用主节点磁盘大小，单位GB
 	MasterNodeDiskSize *uint64 `json:"MasterNodeDiskSize,omitempty" name:"MasterNodeDiskSize"`
+
+	// 专用主节点磁盘类型
+	MasterNodeDiskType *string `json:"MasterNodeDiskType,omitempty" name:"MasterNodeDiskType"`
 }
 
 type RestartInstanceRequest struct {
@@ -362,6 +392,9 @@ type RestartInstanceRequest struct {
 
 	// 要重启的实例ID
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 是否强制重启
+	ForceRestart *bool `json:"ForceRestart,omitempty" name:"ForceRestart"`
 }
 
 func (r *RestartInstanceRequest) ToJsonString() string {
@@ -423,6 +456,18 @@ type UpdateInstanceRequest struct {
 	// ES.S1.2XLARGE32: 8 核 32G 
 	// ES.S1.4XLARGE64: 16 核 64G
 	NodeType *string `json:"NodeType,omitempty" name:"NodeType"`
+
+	// 专用主节点个数
+	MasterNodeNum *uint64 `json:"MasterNodeNum,omitempty" name:"MasterNodeNum"`
+
+	// 专用主节点规格
+	MasterNodeType *string `json:"MasterNodeType,omitempty" name:"MasterNodeType"`
+
+	// 专用主节点磁盘大小
+	MasterNodeDiskSize *uint64 `json:"MasterNodeDiskSize,omitempty" name:"MasterNodeDiskSize"`
+
+	// 更新配置时是否强制重启
+	ForceRestart *bool `json:"ForceRestart,omitempty" name:"ForceRestart"`
 }
 
 func (r *UpdateInstanceRequest) ToJsonString() string {

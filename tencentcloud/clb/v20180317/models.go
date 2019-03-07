@@ -35,15 +35,19 @@ type Backend struct {
 	Weight *int64 `json:"Weight,omitempty" name:"Weight"`
 
 	// 云服务器的外网 IP
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	PublicIpAddresses []*string `json:"PublicIpAddresses,omitempty" name:"PublicIpAddresses" list`
 
 	// 云服务器的内网 IP
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	PrivateIpAddresses []*string `json:"PrivateIpAddresses,omitempty" name:"PrivateIpAddresses" list`
 
 	// 云服务器实例名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceName *string `json:"InstanceName,omitempty" name:"InstanceName"`
 
 	// 云服务器被绑定到监听器的时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	RegisteredTime *string `json:"RegisteredTime,omitempty" name:"RegisteredTime"`
 }
 
@@ -83,6 +87,7 @@ type CertificateOutput struct {
 	CertId *string `json:"CertId,omitempty" name:"CertId"`
 
 	// 客户端证书的 ID。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	CertCaId *string `json:"CertCaId,omitempty" name:"CertCaId"`
 }
 
@@ -167,6 +172,7 @@ type ClassicalLoadBalancerInfo struct {
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
 	// 负载均衡实例ID列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	LoadBalancerIds []*string `json:"LoadBalancerIds,omitempty" name:"LoadBalancerIds" list`
 }
 
@@ -182,16 +188,20 @@ type ClassicalTarget struct {
 	Weight *int64 `json:"Weight,omitempty" name:"Weight"`
 
 	// 云服务器的外网 IP
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	PublicIpAddresses []*string `json:"PublicIpAddresses,omitempty" name:"PublicIpAddresses" list`
 
 	// 云服务器的内网 IP
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	PrivateIpAddresses []*string `json:"PrivateIpAddresses,omitempty" name:"PrivateIpAddresses" list`
 
 	// 云服务器实例名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceName *string `json:"InstanceName,omitempty" name:"InstanceName"`
 
 	// 云服务器状态
 	// 1：故障，2：运行中，3：创建中，4：已关机，5：已退还，6：退还中， 7：重启中，8：开机中，9：关机中，10：密码重置中，11：格式化中，12：镜像制作中，13：带宽设置中，14：重装系统中，19：升级中，21：热迁移中
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	RunFlag *int64 `json:"RunFlag,omitempty" name:"RunFlag"`
 }
 
@@ -213,7 +223,7 @@ type CreateListenerRequest struct {
 	// 要将监听器创建到哪些端口，每个端口对应一个新的监听器
 	Ports []*int64 `json:"Ports,omitempty" name:"Ports" list`
 
-	// 监听器协议：HTTP | HTTPS | TCP | TCP_SSL
+	// 监听器协议： TCP | UDP | HTTP | HTTPS | TCP_SSL（TCP_SSL 正在内测中，如需使用请通过工单申请）
 	Protocol *string `json:"Protocol,omitempty" name:"Protocol"`
 
 	// 要创建的监听器名称列表，名称与Ports数组按序一一对应，如不需立即命名，则无需提供此参数
@@ -624,6 +634,7 @@ type DescribeClassicalLBHealthStatusResponse struct {
 	Response *struct {
 
 		// 后端健康状态列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
 		HealthList []*ClassicalHealth `json:"HealthList,omitempty" name:"HealthList" list`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -673,6 +684,7 @@ type DescribeClassicalLBListenersResponse struct {
 	Response *struct {
 
 		// 监听器列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
 		Listeners []*ClassicalListener `json:"Listeners,omitempty" name:"Listeners" list`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -710,6 +722,7 @@ type DescribeClassicalLBTargetsResponse struct {
 	Response *struct {
 
 		// 后端服务列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
 		Targets []*ClassicalTarget `json:"Targets,omitempty" name:"Targets" list`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -944,28 +957,36 @@ type HealthCheck struct {
 	HealthSwitch *int64 `json:"HealthSwitch,omitempty" name:"HealthSwitch"`
 
 	// 健康检查的响应超时时间，可选值：2~60，默认值：2，单位：秒。响应超时时间要小于检查间隔时间。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	TimeOut *int64 `json:"TimeOut,omitempty" name:"TimeOut"`
 
 	// 健康检查探测间隔时间，默认值：5，可选值：5~300，单位：秒。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	IntervalTime *int64 `json:"IntervalTime,omitempty" name:"IntervalTime"`
 
 	// 健康阈值，默认值：3，表示当连续探测三次健康则表示该转发正常，可选值：2~10，单位：次。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	HealthNum *int64 `json:"HealthNum,omitempty" name:"HealthNum"`
 
 	// 不健康阈值，默认值：3，表示当连续探测三次不健康则表示该转发异常，可选值：2~10，单位：次。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	UnHealthNum *int64 `json:"UnHealthNum,omitempty" name:"UnHealthNum"`
 
 	// 健康检查状态码（仅适用于HTTP/HTTPS转发规则）。可选值：1~31，默认 31。
 	// 1 表示探测后返回值 1xx 表示健康，2 表示返回 2xx 表示健康，4 表示返回 3xx 表示健康，8 表示返回 4xx 表示健康，16 表示返回 5xx 表示健康。若希望多种码都表示健康，则将相应的值相加。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	HttpCode *int64 `json:"HttpCode,omitempty" name:"HttpCode"`
 
 	// 健康检查路径（仅适用于HTTP/HTTPS转发规则）。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	HttpCheckPath *string `json:"HttpCheckPath,omitempty" name:"HttpCheckPath"`
 
 	// 健康检查域名（仅适用于HTTP/HTTPS转发规则）。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	HttpCheckDomain *string `json:"HttpCheckDomain,omitempty" name:"HttpCheckDomain"`
 
 	// 健康检查方法（仅适用于HTTP/HTTPS转发规则），取值为HEAD或GET。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	HttpCheckMethod *string `json:"HttpCheckMethod,omitempty" name:"HttpCheckMethod"`
 }
 
@@ -981,24 +1002,31 @@ type Listener struct {
 	Port *int64 `json:"Port,omitempty" name:"Port"`
 
 	// 监听器绑定的证书信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Certificate *CertificateOutput `json:"Certificate,omitempty" name:"Certificate"`
 
 	// 监听器的健康检查信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	HealthCheck *HealthCheck `json:"HealthCheck,omitempty" name:"HealthCheck"`
 
 	// 请求调度方式
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Scheduler *string `json:"Scheduler,omitempty" name:"Scheduler"`
 
 	// 会话保持时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	SessionExpireTime *int64 `json:"SessionExpireTime,omitempty" name:"SessionExpireTime"`
 
 	// 是否开启SNI特性（本参数仅对于HTTPS监听器有意义）
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	SniSwitch *int64 `json:"SniSwitch,omitempty" name:"SniSwitch"`
 
 	// 监听器下的全部转发规则（本参数仅对于HTTP/HTTPS监听器有意义）
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Rules []*RuleOutput `json:"Rules,omitempty" name:"Rules" list`
 
 	// 监听器的名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	ListenerName *string `json:"ListenerName,omitempty" name:"ListenerName"`
 }
 
@@ -1014,9 +1042,11 @@ type ListenerBackend struct {
 	Port *int64 `json:"Port,omitempty" name:"Port"`
 
 	// 监听器下的规则信息（仅适用于HTTP/HTTPS监听器）
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Rules []*RuleTargets `json:"Rules,omitempty" name:"Rules" list`
 
 	// 监听器上注册的机器列表（仅适用于TCP/UDP/TCP_SSL监听器）
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Targets []*Backend `json:"Targets,omitempty" name:"Targets" list`
 }
 
@@ -1036,40 +1066,51 @@ type LoadBalancer struct {
 	Forward *uint64 `json:"Forward,omitempty" name:"Forward"`
 
 	// 负载均衡实例的域名，内网类型负载均衡以及应用型负载均衡实例不提供该字段
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Domain *string `json:"Domain,omitempty" name:"Domain"`
 
 	// 负载均衡实例的 VIP 列表。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	LoadBalancerVips []*string `json:"LoadBalancerVips,omitempty" name:"LoadBalancerVips" list`
 
 	// 负载均衡实例的状态，包括
 	// 0：创建中，1：正常运行。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *uint64 `json:"Status,omitempty" name:"Status"`
 
 	// 负载均衡实例的创建时间。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
 
 	// 负载均衡实例的上次状态转换时间。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	StatusTime *string `json:"StatusTime,omitempty" name:"StatusTime"`
 
 	// 负载均衡实例所属的项目 ID， 0 表示默认项目。
 	ProjectId *uint64 `json:"ProjectId,omitempty" name:"ProjectId"`
 
 	// 私有网络的 ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
 
 	// 高防 LB 的标识，1：高防负载均衡 0：非高防负载均衡。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	OpenBgp *uint64 `json:"OpenBgp,omitempty" name:"OpenBgp"`
 
 	// 在 2016 年 12 月份之前的传统型内网负载均衡都是开启了 snat 的。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Snat *bool `json:"Snat,omitempty" name:"Snat"`
 
 	// 0：表示未被隔离，1：表示被隔离。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Isolation *uint64 `json:"Isolation,omitempty" name:"Isolation"`
 
 	// 用户开启日志的信息，日志只有公网属性创建了 HTTP 、HTTPS 监听器的负载均衡才会有日志。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Log *string `json:"Log,omitempty" name:"Log"`
 
 	// 负载均衡实例所在的子网（仅对内网VPC型LB有意义）
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
 }
 
@@ -1475,18 +1516,22 @@ type RuleOutput struct {
 	LocationId *string `json:"LocationId,omitempty" name:"LocationId"`
 
 	// 转发规则的域名。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Domain *string `json:"Domain,omitempty" name:"Domain"`
 
 	// 转发规则的路径。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Url *string `json:"Url,omitempty" name:"Url"`
 
 	// 会话保持时间
 	SessionExpireTime *int64 `json:"SessionExpireTime,omitempty" name:"SessionExpireTime"`
 
 	// 健康检查信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	HealthCheck *HealthCheck `json:"HealthCheck,omitempty" name:"HealthCheck"`
 
 	// 证书信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Certificate *CertificateOutput `json:"Certificate,omitempty" name:"Certificate"`
 
 	// 规则的请求转发方式
@@ -1505,18 +1550,22 @@ type RuleTargets struct {
 	Url *string `json:"Url,omitempty" name:"Url"`
 
 	// 后端机器的信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Targets []*Backend `json:"Targets,omitempty" name:"Targets" list`
 }
 
 type Target struct {
 
 	// 云服务器的唯一 ID，可通过 DescribeInstances 接口返回字段中的 unInstanceId 字段获取
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
 	// 后端云服务器监听端口
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Port *int64 `json:"Port,omitempty" name:"Port"`
 
 	// 转发目标的类型，目前仅可取值为 CVM
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Type *string `json:"Type,omitempty" name:"Type"`
 
 	// 后端云服务器的转发权重，取值范围：0~100，默认为 10。
