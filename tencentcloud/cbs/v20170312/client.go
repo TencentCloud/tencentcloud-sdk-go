@@ -100,6 +100,62 @@ func (c *Client) AttachDisks(request *AttachDisksRequest) (response *AttachDisks
     return
 }
 
+func NewBindAutoSnapshotPolicyRequest() (request *BindAutoSnapshotPolicyRequest) {
+    request = &BindAutoSnapshotPolicyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cbs", APIVersion, "BindAutoSnapshotPolicy")
+    return
+}
+
+func NewBindAutoSnapshotPolicyResponse() (response *BindAutoSnapshotPolicyResponse) {
+    response = &BindAutoSnapshotPolicyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（BindAutoSnapshotPolicy）用于绑定云硬盘到指定的定期快照策略。
+// 
+// * 每个地域下的定期快照策略配额限制请参考文档[定期快照](/document/product/362/8191)。
+// * 当已绑定定期快照策略的云硬盘处于未使用状态（即弹性云盘未挂载或非弹性云盘的主机处于关机状态）将不会创建定期快照。
+func (c *Client) BindAutoSnapshotPolicy(request *BindAutoSnapshotPolicyRequest) (response *BindAutoSnapshotPolicyResponse, err error) {
+    if request == nil {
+        request = NewBindAutoSnapshotPolicyRequest()
+    }
+    response = NewBindAutoSnapshotPolicyResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateAutoSnapshotPolicyRequest() (request *CreateAutoSnapshotPolicyRequest) {
+    request = &CreateAutoSnapshotPolicyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cbs", APIVersion, "CreateAutoSnapshotPolicy")
+    return
+}
+
+func NewCreateAutoSnapshotPolicyResponse() (response *CreateAutoSnapshotPolicyResponse) {
+    response = &CreateAutoSnapshotPolicyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（CreateAutoSnapshotPolicy）用于创建定期快照策略。
+// 
+// * 每个地域可创建的定期快照策略数量限制请参考文档[定期快照](/document/product/362/8191)。
+// * 每个地域可创建的快照有数量和容量的限制，具体请见腾讯云控制台快照页面提示，如果快照超配额，定期快照创建会失败。
+func (c *Client) CreateAutoSnapshotPolicy(request *CreateAutoSnapshotPolicyRequest) (response *CreateAutoSnapshotPolicyResponse, err error) {
+    if request == nil {
+        request = NewCreateAutoSnapshotPolicyRequest()
+    }
+    response = NewCreateAutoSnapshotPolicyResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateDisksRequest() (request *CreateDisksRequest) {
     request = &CreateDisksRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -157,6 +213,33 @@ func (c *Client) CreateSnapshot(request *CreateSnapshotRequest) (response *Creat
     return
 }
 
+func NewDeleteAutoSnapshotPoliciesRequest() (request *DeleteAutoSnapshotPoliciesRequest) {
+    request = &DeleteAutoSnapshotPoliciesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cbs", APIVersion, "DeleteAutoSnapshotPolicies")
+    return
+}
+
+func NewDeleteAutoSnapshotPoliciesResponse() (response *DeleteAutoSnapshotPoliciesResponse) {
+    response = &DeleteAutoSnapshotPoliciesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（DeleteAutoSnapshotPolicies）用于删除定期快照策略。
+// 
+// *  支持批量操作。如果多个定期快照策略存在无法删除的，则操作不执行，以特定错误码返回。
+func (c *Client) DeleteAutoSnapshotPolicies(request *DeleteAutoSnapshotPoliciesRequest) (response *DeleteAutoSnapshotPoliciesResponse, err error) {
+    if request == nil {
+        request = NewDeleteAutoSnapshotPoliciesRequest()
+    }
+    response = NewDeleteAutoSnapshotPoliciesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteSnapshotsRequest() (request *DeleteSnapshotsRequest) {
     request = &DeleteSnapshotsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -181,6 +264,59 @@ func (c *Client) DeleteSnapshots(request *DeleteSnapshotsRequest) (response *Del
         request = NewDeleteSnapshotsRequest()
     }
     response = NewDeleteSnapshotsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeAutoSnapshotPoliciesRequest() (request *DescribeAutoSnapshotPoliciesRequest) {
+    request = &DescribeAutoSnapshotPoliciesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cbs", APIVersion, "DescribeAutoSnapshotPolicies")
+    return
+}
+
+func NewDescribeAutoSnapshotPoliciesResponse() (response *DescribeAutoSnapshotPoliciesResponse) {
+    response = &DescribeAutoSnapshotPoliciesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（DescribeAutoSnapshotPolicies）用于查询定期快照策略。
+// 
+// * 可以根据定期快照策略ID、名称或者状态等信息来查询定期快照策略的详细信息，不同条件之间为与(AND)的关系，过滤信息详细请见过滤器`Filter`。
+// * 如果参数为空，返回当前用户一定数量（`Limit`所指定的数量，默认为20）的定期快照策略表。
+func (c *Client) DescribeAutoSnapshotPolicies(request *DescribeAutoSnapshotPoliciesRequest) (response *DescribeAutoSnapshotPoliciesResponse, err error) {
+    if request == nil {
+        request = NewDescribeAutoSnapshotPoliciesRequest()
+    }
+    response = NewDescribeAutoSnapshotPoliciesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeDiskAssociatedAutoSnapshotPolicyRequest() (request *DescribeDiskAssociatedAutoSnapshotPolicyRequest) {
+    request = &DescribeDiskAssociatedAutoSnapshotPolicyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cbs", APIVersion, "DescribeDiskAssociatedAutoSnapshotPolicy")
+    return
+}
+
+func NewDescribeDiskAssociatedAutoSnapshotPolicyResponse() (response *DescribeDiskAssociatedAutoSnapshotPolicyResponse) {
+    response = &DescribeDiskAssociatedAutoSnapshotPolicyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（DescribeDiskAssociatedAutoSnapshotPolicy）用于查询云盘绑定的定期快照策略。
+func (c *Client) DescribeDiskAssociatedAutoSnapshotPolicy(request *DescribeDiskAssociatedAutoSnapshotPolicyRequest) (response *DescribeDiskAssociatedAutoSnapshotPolicyResponse, err error) {
+    if request == nil {
+        request = NewDescribeDiskAssociatedAutoSnapshotPolicyRequest()
+    }
+    response = NewDescribeDiskAssociatedAutoSnapshotPolicyResponse()
     err = c.Send(request, response)
     return
 }
@@ -476,11 +612,6 @@ func NewModifyDiskAttributesResponse() (response *ModifyDiskAttributesResponse) 
 // * 只支持修改弹性云盘的项目ID。随云主机创建的云硬盘项目ID与云主机联动。可以通过[DescribeDisks](/document/product/362/16315)接口查询，见输出参数中Portable字段解释。
 // * “云硬盘名称”仅为方便用户自己管理之用，腾讯云并不以此名称作为提交工单或是进行云盘管理操作的依据。
 // * 支持批量操作，如果传入多个云盘ID，则所有云盘修改为同一属性。如果存在不允许操作的云盘，则操作不执行，以特定错误码返回。
-// * 支持修改弹性云盘的云盘类型，不支持非弹性云盘（[DescribeDisks](/document/product/362/16315)接口的返回字段Portable为true表示弹性云盘），且当前仅支持云盘类型升级，不支持降级，具体如下:
-//     * CLOUD_BASIC变更为CLOUD_PREMIUM；
-//     * CLOUD_BASIC变更为CLOUD_SSD；
-//     * CLOUD_PREMIUM变更为CLOUD_SSD。
-// * 云盘处于“迁移中”不影响正常的读写以及读写速率，在云盘容量较大的情况下，整个迁移任务耗时较长，目前不支持任务成功发起后取消任务。
 func (c *Client) ModifyDiskAttributes(request *ModifyDiskAttributesRequest) (response *ModifyDiskAttributesResponse, err error) {
     if request == nil {
         request = NewModifyDiskAttributesRequest()
@@ -624,6 +755,34 @@ func (c *Client) TerminateDisks(request *TerminateDisksRequest) (response *Termi
         request = NewTerminateDisksRequest()
     }
     response = NewTerminateDisksResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewUnbindAutoSnapshotPolicyRequest() (request *UnbindAutoSnapshotPolicyRequest) {
+    request = &UnbindAutoSnapshotPolicyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cbs", APIVersion, "UnbindAutoSnapshotPolicy")
+    return
+}
+
+func NewUnbindAutoSnapshotPolicyResponse() (response *UnbindAutoSnapshotPolicyResponse) {
+    response = &UnbindAutoSnapshotPolicyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（UnbindAutoSnapshotPolicy）用于解除云硬盘绑定的定期快照策略。
+// 
+// * 支持批量操作，可一次解除多个云盘与同一定期快照策略的绑定。 
+// * 如果传入的云盘未绑定到当前定期快照策略，接口将自动跳过，仅解绑与当前定期快照策略绑定的云盘。
+func (c *Client) UnbindAutoSnapshotPolicy(request *UnbindAutoSnapshotPolicyRequest) (response *UnbindAutoSnapshotPolicyResponse, err error) {
+    if request == nil {
+        request = NewUnbindAutoSnapshotPolicyRequest()
+    }
+    response = NewUnbindAutoSnapshotPolicyResponse()
     err = c.Send(request, response)
     return
 }

@@ -295,6 +295,7 @@ type CreateDBInstanceResponse struct {
 		DealName *string `json:"DealName,omitempty" name:"DealName"`
 
 		// 订单对应的实例 ID 列表，如果此处没有返回实例 ID，可以通过订单查询接口获取。还可通过实例查询接口查询实例是否创建完成。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 		InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds" list`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -332,6 +333,7 @@ type DBAccount struct {
 	ReadOnly *int64 `json:"ReadOnly,omitempty" name:"ReadOnly"`
 
 	// 该字段对只读帐号有意义，表示选择主备延迟小于该值的备机
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	DelayThresh *int64 `json:"DelayThresh,omitempty" name:"DelayThresh"`
 }
 
@@ -443,16 +445,25 @@ type DBInstance struct {
 	Qps *int64 `json:"Qps,omitempty" name:"Qps"`
 
 	// 付费模式
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Paymode *string `json:"Paymode,omitempty" name:"Paymode"`
 
 	// 实例处于异步任务时的异步任务流程ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Locker *int64 `json:"Locker,omitempty" name:"Locker"`
 
 	// 实例目前运行状态描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	StatusDesc *string `json:"StatusDesc,omitempty" name:"StatusDesc"`
 
 	// 外网状态，0-未开通；1-已开通；2-关闭；3-开通中
 	WanStatus *int64 `json:"WanStatus,omitempty" name:"WanStatus"`
+
+	// 该实例是否支持审计。1-支持；0-不支持
+	IsAuditSupported *uint64 `json:"IsAuditSupported,omitempty" name:"IsAuditSupported"`
+
+	// 机器型号
+	Machine *string `json:"Machine,omitempty" name:"Machine"`
 }
 
 type DBParamValue struct {
@@ -479,6 +490,7 @@ type Deal struct {
 	FlowId *int64 `json:"FlowId,omitempty" name:"FlowId"`
 
 	// 只有创建实例的订单会填充该字段，表示该订单创建的实例的 ID。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds" list`
 
 	// 付费模式，0后付费/1预付费
@@ -653,6 +665,7 @@ type DescribeBackupTimeResponse struct {
 		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 实例备份时间配置信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
 		Items *DBBackupTimeConfig `json:"Items,omitempty" name:"Items"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -1026,9 +1039,11 @@ type DescribeDBResourceUsageDetailsResponse struct {
 		Master *ResourceUsageMonitorSet `json:"Master,omitempty" name:"Master"`
 
 		// 备机1资源使用情况监控数据
+	// 注意：此字段可能返回 null，表示取不到有效值。
 		Slave1 *ResourceUsageMonitorSet `json:"Slave1,omitempty" name:"Slave1"`
 
 		// 备机2资源使用情况监控数据
+	// 注意：此字段可能返回 null，表示取不到有效值。
 		Slave2 *ResourceUsageMonitorSet `json:"Slave2,omitempty" name:"Slave2"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -1537,7 +1552,7 @@ type GrantAccountPrivilegesRequest struct {
 	// 用户允许的访问 host，用户名+host唯一确定一个账号。
 	Host *string `json:"Host,omitempty" name:"Host"`
 
-	// 数据库名。如果为 \*，表示设置全局权限（即 \*.\*），此时忽略 Type 和 Object 参数
+	// 数据库名。如果为 \*，表示设置全局权限（即 \*.\*），此时忽略 Type 和 Object 参数。当DbName不为\*时，需要传入参 Type。
 	DbName *string `json:"DbName,omitempty" name:"DbName"`
 
 	// 全局权限： SELECT，INSERT，UPDATE，DELETE，CREATE，DROP，REFERENCES，INDEX，ALTER，CREATE TEMPORARY TABLES，LOCK TABLES，EXECUTE，CREATE VIEW，SHOW VIEW，CREATE ROUTINE，ALTER ROUTINE，EVENT，TRIGGER，SHOW DATABASES 
@@ -1961,6 +1976,7 @@ type ParamConstraint struct {
 	Enum *string `json:"Enum,omitempty" name:"Enum"`
 
 	// 约束类型为section时的范围
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Range *ConstraintRange `json:"Range,omitempty" name:"Range"`
 
 	// 约束类型为string时的可选值列表
@@ -1976,6 +1992,7 @@ type ParamDesc struct {
 	Value *string `json:"Value,omitempty" name:"Value"`
 
 	// 设置过的值，参数生效后，该值和value一样。未设置过就不返回该字段。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	SetValue *string `json:"SetValue,omitempty" name:"SetValue"`
 
 	// 系统默认值

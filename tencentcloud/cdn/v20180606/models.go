@@ -20,6 +20,17 @@ import (
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
+type CacheOptResult struct {
+
+	// 成功的url列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SuccessUrls []*string `json:"SuccessUrls,omitempty" name:"SuccessUrls" list`
+
+	// 失败的url列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FailUrls []*string `json:"FailUrls,omitempty" name:"FailUrls" list`
+}
+
 type CdnData struct {
 
 	// 查询指定的指标名称：
@@ -60,11 +71,11 @@ type DescribeCdnDataRequest struct {
 	// bandwidth：带宽，单位为 bps
 	// request：请求数，单位为 次
 	// fluxHitRate：流量命中率，单位为 %
-	// statusCode：状态码，返回 2XX、3XX、4XX、5XX 汇总数据，单位为 个
-	// 2XX：返回 2XX 状态码汇总及各 2 开头状态码数据，单位为 个
-	// 3XX：返回 3XX 状态码汇总及各 3 开头状态码数据，单位为 个
-	// 4XX：返回 4XX 状态码汇总及各 4 开头状态码数据，单位为 个
-	// 5XX：返回 5XX 状态码汇总及各 5 开头状态码数据，单位为 个
+	// statusCode：状态码，返回 2xx、3xx、4xx、5xx 汇总数据，单位为 个
+	// 2xx：返回 2xx 状态码汇总及各 2 开头状态码数据，单位为 个
+	// 3xx：返回 3xx 状态码汇总及各 3 开头状态码数据，单位为 个
+	// 4xx：返回 4xx 状态码汇总及各 4 开头状态码数据，单位为 个
+	// 5xx：返回 5xx 状态码汇总及各 5 开头状态码数据，单位为 个
 	// 支持指定具体状态码查询，若未产生过，则返回为空
 	Metric *string `json:"Metric,omitempty" name:"Metric"`
 
@@ -103,6 +114,12 @@ type DescribeCdnDataRequest struct {
 
 	// 指定数据源查询，白名单功能
 	DataSource *string `json:"DataSource,omitempty" name:"DataSource"`
+
+	// 指定IP协议查询，不填充表示查询所有协议
+	// all：所有协议
+	// ipv4：指定查询 ipv4对应指标
+	// ipv6：指定查询 ipv6 对应指标
+	IpProtocol *string `json:"IpProtocol,omitempty" name:"IpProtocol"`
 }
 
 func (r *DescribeCdnDataRequest) ToJsonString() string {
@@ -257,11 +274,11 @@ type DescribeOriginDataRequest struct {
 	// request：回源请求数，单位为 次
 	// failRequest：回源失败请求数，单位为 次
 	// failRate：回源失败率，单位为 %
-	// statusCode：回源状态码，返回 2XX、3XX、4XX、5XX 汇总数据，单位为 个
-	// 2XX：返回 2XX 回源状态码汇总及各 2 开头回源状态码数据，单位为 个
-	// 3XX：返回 3XX 回源状态码汇总及各 3 开头回源状态码数据，单位为 个
-	// 4XX：返回 4XX 回源状态码汇总及各 4 开头回源状态码数据，单位为 个
-	// 5XX：返回 5XX 回源状态码汇总及各 5 开头回源状态码数据，单位为 个
+	// statusCode：回源状态码，返回 2xx、3xx、4xx、5xx 汇总数据，单位为 个
+	// 2xx：返回 2xx 回源状态码汇总及各 2 开头回源状态码数据，单位为 个
+	// 3xx：返回 3xx 回源状态码汇总及各 3 开头回源状态码数据，单位为 个
+	// 4xx：返回 4xx 回源状态码汇总及各 4 开头回源状态码数据，单位为 个
+	// 5xx：返回 5xx 回源状态码汇总及各 5 开头回源状态码数据，单位为 个
 	// 支持指定具体状态码查询，若未产生过，则返回为空
 	Metric *string `json:"Metric,omitempty" name:"Metric"`
 
@@ -363,6 +380,132 @@ func (r *DescribePayTypeResponse) ToJsonString() string {
 }
 
 func (r *DescribePayTypeResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DisableCachesRequest struct {
+	*tchttp.BaseRequest
+
+	// 需要禁用的 URL 列表
+	// 每次最多可提交 100 条，每日最多可提交 3000 条
+	Urls []*string `json:"Urls,omitempty" name:"Urls" list`
+}
+
+func (r *DisableCachesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DisableCachesRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DisableCachesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 提交结果
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		CacheOptResult *CacheOptResult `json:"CacheOptResult,omitempty" name:"CacheOptResult"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DisableCachesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DisableCachesResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type EnableCachesRequest struct {
+	*tchttp.BaseRequest
+
+	// 解封 URL 列表
+	Urls []*string `json:"Urls,omitempty" name:"Urls" list`
+}
+
+func (r *EnableCachesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *EnableCachesRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type EnableCachesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 结果列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		CacheOptResult *CacheOptResult `json:"CacheOptResult,omitempty" name:"CacheOptResult"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *EnableCachesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *EnableCachesResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type GetDisableRecordsRequest struct {
+	*tchttp.BaseRequest
+
+	// 开始时间
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 结束时间
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 指定 URL 查询
+	Url *string `json:"Url,omitempty" name:"Url"`
+
+	// URL 当前状态
+	// disable：当前仍为禁用状态，访问返回 403
+	// enable：当前为可用状态，已解禁，可正常访问
+	Status *string `json:"Status,omitempty" name:"Status"`
+}
+
+func (r *GetDisableRecordsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *GetDisableRecordsRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type GetDisableRecordsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 封禁历史记录
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		UrlRecordList []*UrlRecord `json:"UrlRecordList,omitempty" name:"UrlRecordList" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *GetDisableRecordsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *GetDisableRecordsResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -523,4 +666,23 @@ type TopDetailData struct {
 
 	// 数据值
 	Value *float64 `json:"Value,omitempty" name:"Value"`
+}
+
+type UrlRecord struct {
+
+	// 状态(disable表示封禁，enable表示解封)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 对应的url
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RealUrl *string `json:"RealUrl,omitempty" name:"RealUrl"`
+
+	// 创建时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 更新时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
 }

@@ -32,12 +32,15 @@ type AiAnalysisResult struct {
 	Type *string `json:"Type,omitempty" name:"Type"`
 
 	// 视频内容分析智能分类任务的查询结果，当任务类型为 Classification 时有效。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	ClassificationTask *AiAnalysisTaskClassificationResult `json:"ClassificationTask,omitempty" name:"ClassificationTask"`
 
 	// 视频内容分析智能封面任务的查询结果，当任务类型为 Cover 时有效。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	CoverTask *AiAnalysisTaskCoverResult `json:"CoverTask,omitempty" name:"CoverTask"`
 
 	// 视频内容分析智能标签任务的查询结果，当任务类型为 Tag 时有效。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	TagTask *AiAnalysisTaskTagResult `json:"TagTask,omitempty" name:"TagTask"`
 }
 
@@ -50,6 +53,7 @@ type AiAnalysisTaskClassificationInput struct {
 type AiAnalysisTaskClassificationOutput struct {
 
 	// 视频智能分类列表。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	ClassificationSet []*MediaAiAnalysisClassificationItem `json:"ClassificationSet,omitempty" name:"ClassificationSet" list`
 }
 
@@ -59,15 +63,18 @@ type AiAnalysisTaskClassificationResult struct {
 	Status *string `json:"Status,omitempty" name:"Status"`
 
 	// 错误码，0：成功，其他值：失败。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	ErrCode *int64 `json:"ErrCode,omitempty" name:"ErrCode"`
 
 	// 错误信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Message *string `json:"Message,omitempty" name:"Message"`
 
 	// 智能分类任务输入。
 	Input *AiAnalysisTaskClassificationInput `json:"Input,omitempty" name:"Input"`
 
 	// 智能分类任务输出。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Output *AiAnalysisTaskClassificationOutput `json:"Output,omitempty" name:"Output"`
 }
 
@@ -80,6 +87,7 @@ type AiAnalysisTaskCoverInput struct {
 type AiAnalysisTaskCoverOutput struct {
 
 	// 智能封面列表。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	CoverSet []*MediaAiAnalysisCoverItem `json:"CoverSet,omitempty" name:"CoverSet" list`
 }
 
@@ -89,15 +97,18 @@ type AiAnalysisTaskCoverResult struct {
 	Status *string `json:"Status,omitempty" name:"Status"`
 
 	// 错误码，0：成功，其他值：失败。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	ErrCode *int64 `json:"ErrCode,omitempty" name:"ErrCode"`
 
 	// 错误信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Message *string `json:"Message,omitempty" name:"Message"`
 
 	// 智能封面任务输入。
 	Input *AiAnalysisTaskCoverInput `json:"Input,omitempty" name:"Input"`
 
 	// 智能分类任务输出。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Output *AiAnalysisTaskCoverOutput `json:"Output,omitempty" name:"Output"`
 }
 
@@ -116,6 +127,7 @@ type AiAnalysisTaskTagInput struct {
 type AiAnalysisTaskTagOutput struct {
 
 	// 视频智能标签列表。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	TagSet *MediaAiAnalysisTagItem `json:"TagSet,omitempty" name:"TagSet"`
 }
 
@@ -125,15 +137,18 @@ type AiAnalysisTaskTagResult struct {
 	Status *string `json:"Status,omitempty" name:"Status"`
 
 	// 错误码，0：成功，其他值：失败。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	ErrCode *int64 `json:"ErrCode,omitempty" name:"ErrCode"`
 
 	// 错误信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Message *string `json:"Message,omitempty" name:"Message"`
 
 	// 智能标签任务输入。
 	Input *AiAnalysisTaskTagInput `json:"Input,omitempty" name:"Input"`
 
 	// 智能标签任务输出。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Output []*AiAnalysisTaskTagOutput `json:"Output,omitempty" name:"Output" list`
 }
 
@@ -150,24 +165,31 @@ type AiContentReviewResult struct {
 	Type *string `json:"Type,omitempty" name:"Type"`
 
 	// 视频内容审核智能画面鉴黄任务的查询结果，当任务类型为 Porn 时有效。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	PornTask *AiReviewTaskPornResult `json:"PornTask,omitempty" name:"PornTask"`
 
 	// 视频内容审核智能画面鉴恐任务的查询结果，当任务类型为 Terrorism 时有效。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	TerrorismTask *AiReviewTaskTerrorismResult `json:"TerrorismTask,omitempty" name:"TerrorismTask"`
 
 	// 视频内容审核智能画面鉴恐任务的查询结果，当任务类型为 Political 时有效。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	PoliticalTask *AiReviewTaskPoliticalResult `json:"PoliticalTask,omitempty" name:"PoliticalTask"`
 
 	// 视频内容审核 Asr 文字鉴黄任务的查询结果，当任务类型为 Porn.Asr 时有效。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	PornAsrTask *AiReviewTaskPornAsrResult `json:"PornAsrTask,omitempty" name:"PornAsrTask"`
 
 	// 视频内容审核 Ocr 文字鉴黄任务的查询结果，当任务类型为 Porn.Ocr 时有效。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	PornOcrTask *AiReviewTaskPornOcrResult `json:"PornOcrTask,omitempty" name:"PornOcrTask"`
 
 	// 视频内容审核 Asr 文字鉴政任务的查询结果，当任务类型为 Political.Asr 时有效。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	PoliticalAsrTask *AiReviewTaskPoliticalAsrResult `json:"PoliticalAsrTask,omitempty" name:"PoliticalAsrTask"`
 
 	// 视频内容审核 Ocr 文字鉴政任务的查询结果，当任务类型为 Political.Ocr 时有效。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	PoliticalOcrTask *AiReviewTaskPoliticalOcrResult `json:"PoliticalOcrTask,omitempty" name:"PoliticalOcrTask"`
 }
 
@@ -186,15 +208,18 @@ type AiReviewPoliticalAsrTaskInput struct {
 type AiReviewPoliticalAsrTaskOutput struct {
 
 	// Asr 文字涉政、敏感评分，分值为0到100。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Confidence *float64 `json:"Confidence,omitempty" name:"Confidence"`
 
 	// Asr 文字涉政、敏感结果建议，取值范围：
 	// <li>pass。</li>
 	// <li>review。</li>
 	// <li>block。</li>
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Suggestion *string `json:"Suggestion,omitempty" name:"Suggestion"`
 
 	// Asr 文字有涉政、敏感嫌疑的视频片段列表。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	SegmentSet []*MediaContentReviewAsrTextSegmentItem `json:"SegmentSet,omitempty" name:"SegmentSet" list`
 }
 
@@ -216,6 +241,7 @@ type AiReviewPoliticalOcrTaskOutput struct {
 	Suggestion *string `json:"Suggestion,omitempty" name:"Suggestion"`
 
 	// Ocr 文字有涉政、敏感嫌疑的视频片段列表。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	SegmentSet []*MediaContentReviewOcrTextSegmentItem `json:"SegmentSet,omitempty" name:"SegmentSet" list`
 }
 
@@ -228,20 +254,24 @@ type AiReviewPoliticalTaskInput struct {
 type AiReviewPoliticalTaskOutput struct {
 
 	// 视频涉政评分，分值为0到100。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Confidence *float64 `json:"Confidence,omitempty" name:"Confidence"`
 
 	// 涉政结果建议，取值范围：
 	// <li>pass。</li>
 	// <li>review。</li>
 	// <li>block。</li>
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Suggestion *string `json:"Suggestion,omitempty" name:"Suggestion"`
 
 	// 视频鉴政结果标签，取值范围：
 	// <li>politician：政治人物。</li>
 	// <li>violation_photo：违规图标。</li>
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Label *string `json:"Label,omitempty" name:"Label"`
 
 	// 有涉政嫌疑的视频片段列表。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	SegmentSet []*MediaContentReviewPoliticalSegmentItem `json:"SegmentSet,omitempty" name:"SegmentSet" list`
 }
 
@@ -254,15 +284,18 @@ type AiReviewPornAsrTaskInput struct {
 type AiReviewPornAsrTaskOutput struct {
 
 	// Asr 文字涉黄评分，分值为0到100。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Confidence *float64 `json:"Confidence,omitempty" name:"Confidence"`
 
 	// Asr 文字涉黄结果建议，取值范围：
 	// <li>pass。</li>
 	// <li>review。</li>
 	// <li>block。</li>
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Suggestion *string `json:"Suggestion,omitempty" name:"Suggestion"`
 
 	// Asr 文字有涉黄嫌疑的视频片段列表。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	SegmentSet []*MediaContentReviewAsrTextSegmentItem `json:"SegmentSet,omitempty" name:"SegmentSet" list`
 }
 
@@ -275,15 +308,18 @@ type AiReviewPornOcrTaskInput struct {
 type AiReviewPornOcrTaskOutput struct {
 
 	// Ocr 文字涉黄评分，分值为0到100。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Confidence *float64 `json:"Confidence,omitempty" name:"Confidence"`
 
 	// Ocr 文字涉黄结果建议，取值范围：
 	// <li>pass。</li>
 	// <li>review。</li>
 	// <li>block。</li>
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Suggestion *string `json:"Suggestion,omitempty" name:"Suggestion"`
 
 	// Ocr 文字有涉黄嫌疑的视频片段列表。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	SegmentSet []*MediaContentReviewOcrTextSegmentItem `json:"SegmentSet,omitempty" name:"SegmentSet" list`
 }
 
@@ -296,12 +332,14 @@ type AiReviewPornTaskInput struct {
 type AiReviewPornTaskOutput struct {
 
 	// 视频鉴黄评分，分值为0到100。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Confidence *float64 `json:"Confidence,omitempty" name:"Confidence"`
 
 	// 鉴黄结果建议，取值范围：
 	// <li>pass。</li>
 	// <li>review。</li>
 	// <li>block。</li>
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Suggestion *string `json:"Suggestion,omitempty" name:"Suggestion"`
 
 	// 视频鉴黄结果标签，取值范围：
@@ -309,9 +347,11 @@ type AiReviewPornTaskOutput struct {
 	// <li>sexy：性感。</li>
 	// <li>vulgar：低俗。</li>
 	// <li>intimacy：亲密行为。</li>
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Label *string `json:"Label,omitempty" name:"Label"`
 
 	// 有涉黄嫌疑的视频片段列表。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	SegmentSet []*MediaContentReviewSegmentItem `json:"SegmentSet,omitempty" name:"SegmentSet" list`
 }
 
@@ -321,9 +361,11 @@ type AiReviewTaskPoliticalAsrResult struct {
 	Status *string `json:"Status,omitempty" name:"Status"`
 
 	// 错误码，0：成功，其他值：失败。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	ErrCode *int64 `json:"ErrCode,omitempty" name:"ErrCode"`
 
 	// 错误信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Message *string `json:"Message,omitempty" name:"Message"`
 
 	// 内容审核 Asr 文字鉴政任务输入。
@@ -339,15 +381,18 @@ type AiReviewTaskPoliticalOcrResult struct {
 	Status *string `json:"Status,omitempty" name:"Status"`
 
 	// 错误码，0：成功，其他值：失败。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	ErrCode *int64 `json:"ErrCode,omitempty" name:"ErrCode"`
 
 	// 错误信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Message *string `json:"Message,omitempty" name:"Message"`
 
 	// 内容审核 Ocr 文字鉴政任务输入。
 	Input *AiReviewPoliticalOcrTaskInput `json:"Input,omitempty" name:"Input"`
 
 	// 内容审核 Ocr 文字鉴政任务输出。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Output *AiReviewPoliticalOcrTaskOutput `json:"Output,omitempty" name:"Output"`
 }
 
@@ -357,15 +402,18 @@ type AiReviewTaskPoliticalResult struct {
 	Status *string `json:"Status,omitempty" name:"Status"`
 
 	// 错误码，0：成功，其他值：失败。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	ErrCode *int64 `json:"ErrCode,omitempty" name:"ErrCode"`
 
 	// 错误信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Message *string `json:"Message,omitempty" name:"Message"`
 
 	// 内容审核鉴政任务输入。
 	Input *AiReviewPoliticalTaskInput `json:"Input,omitempty" name:"Input"`
 
 	// 内容审核鉴政任务输出。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Output *AiReviewPoliticalTaskOutput `json:"Output,omitempty" name:"Output"`
 }
 
@@ -375,15 +423,18 @@ type AiReviewTaskPornAsrResult struct {
 	Status *string `json:"Status,omitempty" name:"Status"`
 
 	// 错误码，0：成功，其他值：失败。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	ErrCode *int64 `json:"ErrCode,omitempty" name:"ErrCode"`
 
 	// 错误信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Message *string `json:"Message,omitempty" name:"Message"`
 
 	// 内容审核 Asr 文字鉴黄任务输入。
 	Input *AiReviewPornAsrTaskInput `json:"Input,omitempty" name:"Input"`
 
 	// 内容审核 Asr 文字鉴黄任务输出。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Output *AiReviewPornAsrTaskOutput `json:"Output,omitempty" name:"Output"`
 }
 
@@ -393,15 +444,18 @@ type AiReviewTaskPornOcrResult struct {
 	Status *string `json:"Status,omitempty" name:"Status"`
 
 	// 错误码，0：成功，其他值：失败。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	ErrCode *int64 `json:"ErrCode,omitempty" name:"ErrCode"`
 
 	// 错误信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Message *string `json:"Message,omitempty" name:"Message"`
 
 	// 内容审核 Ocr 文字鉴黄任务输入。
 	Input *AiReviewPornOcrTaskInput `json:"Input,omitempty" name:"Input"`
 
 	// 内容审核 Ocr 文字鉴黄任务输出。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Output *AiReviewPornOcrTaskOutput `json:"Output,omitempty" name:"Output"`
 }
 
@@ -411,15 +465,18 @@ type AiReviewTaskPornResult struct {
 	Status *string `json:"Status,omitempty" name:"Status"`
 
 	// 错误码，0：成功，其他值：失败。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	ErrCode *int64 `json:"ErrCode,omitempty" name:"ErrCode"`
 
 	// 错误信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Message *string `json:"Message,omitempty" name:"Message"`
 
 	// 内容审核鉴黄任务输入。
 	Input *AiReviewPornTaskInput `json:"Input,omitempty" name:"Input"`
 
 	// 内容审核鉴黄任务输出。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Output *AiReviewPornTaskOutput `json:"Output,omitempty" name:"Output"`
 }
 
@@ -429,15 +486,18 @@ type AiReviewTaskTerrorismResult struct {
 	Status *string `json:"Status,omitempty" name:"Status"`
 
 	// 错误码，0：成功，其他值：失败。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	ErrCode *int64 `json:"ErrCode,omitempty" name:"ErrCode"`
 
 	// 错误信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Message *string `json:"Message,omitempty" name:"Message"`
 
 	// 内容审核鉴恐任务输入。
 	Input *AiReviewTerrorismTaskInput `json:"Input,omitempty" name:"Input"`
 
 	// 内容审核鉴恐任务输出。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Output *AiReviewTerrorismTaskOutput `json:"Output,omitempty" name:"Output"`
 }
 
@@ -450,12 +510,14 @@ type AiReviewTerrorismTaskInput struct {
 type AiReviewTerrorismTaskOutput struct {
 
 	// 视频暴恐评分，分值为0到100。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Confidence *float64 `json:"Confidence,omitempty" name:"Confidence"`
 
 	// 暴恐结果建议，取值范围：
 	// <li>pass。</li>
 	// <li>review。</li>
 	// <li>block。</li>
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Suggestion *string `json:"Suggestion,omitempty" name:"Suggestion"`
 
 	// 视频暴恐结果标签，取值范围：
@@ -467,9 +529,11 @@ type AiReviewTerrorismTaskOutput struct {
 	// <li>militant：武装分子。</li>
 	// <li>explosion：爆炸火灾。</li>
 	// <li>terrorists：暴恐人物。</li>
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Label *string `json:"Label,omitempty" name:"Label"`
 
 	// 有暴恐嫌疑的视频片段列表。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	SegmentSet []*MediaContentReviewSegmentItem `json:"SegmentSet,omitempty" name:"SegmentSet" list`
 }
 
@@ -540,9 +604,11 @@ type ApplyUploadResponse struct {
 		VodSessionKey *string `json:"VodSessionKey,omitempty" name:"VodSessionKey"`
 
 		// 媒体存储路径，用于上传接口存储媒体的对象键（Key）。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 		MediaStoragePath *string `json:"MediaStoragePath,omitempty" name:"MediaStoragePath"`
 
 		// 封面存储路径，用于上传接口存储封面的对象键（Key）。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 		CoverStoragePath *string `json:"CoverStoragePath,omitempty" name:"CoverStoragePath"`
 
 		// 临时凭证，用于上传接口的权限验证。
@@ -567,18 +633,23 @@ type ClipFileInfo2017 struct {
 	// 错误码
 	// <li>0：成功；</li>
 	// <li>其他值：失败。</li>
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	ErrCode *int64 `json:"ErrCode,omitempty" name:"ErrCode"`
 
 	// 错误描述。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Message *float64 `json:"Message,omitempty" name:"Message"`
 
 	// 输出目标文件的文件 ID。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	FileId *string `json:"FileId,omitempty" name:"FileId"`
 
 	// 输出目标文件的文件地址。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	FileUrl *string `json:"FileUrl,omitempty" name:"FileUrl"`
 
 	// 输出目标文件的文件类型。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	FileType *string `json:"FileType,omitempty" name:"FileType"`
 }
 
@@ -621,9 +692,11 @@ type CommitUploadResponse struct {
 		FileId *string `json:"FileId,omitempty" name:"FileId"`
 
 		// 媒体播放地址。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 		MediaUrl *string `json:"MediaUrl,omitempty" name:"MediaUrl"`
 
 		// 媒体封面地址。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 		CoverUrl *string `json:"CoverUrl,omitempty" name:"CoverUrl"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -645,18 +718,23 @@ type ConcatFileInfo2017 struct {
 	// 错误码
 	// <li>0：成功；</li>
 	// <li>其他值：失败。</li>
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	ErrCode *int64 `json:"ErrCode,omitempty" name:"ErrCode"`
 
 	// 错误信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Message *string `json:"Message,omitempty" name:"Message"`
 
 	// 视频拼接源文件的 ID。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	FileId *string `json:"FileId,omitempty" name:"FileId"`
 
 	// 视频拼接源文件的地址。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	FileUrl *string `json:"FileUrl,omitempty" name:"FileUrl"`
 
 	// 视频拼接源文件的格式。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	FileType *string `json:"FileType,omitempty" name:"FileType"`
 }
 
@@ -722,6 +800,7 @@ type CoverBySnapshotTaskInput struct {
 	PositionValue *float64 `json:"PositionValue,omitempty" name:"PositionValue"`
 
 	// 水印列表，支持多张图片或文字水印，最大可支持 10 张。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	WatermarkSet []*WatermarkInput `json:"WatermarkSet,omitempty" name:"WatermarkSet" list`
 }
 
@@ -782,24 +861,31 @@ type CreateImageSpriteTask2017 struct {
 	// 错误码
 	// <li>0：成功；</li>
 	// <li>其他值：失败。</li>
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	ErrCode *int64 `json:"ErrCode,omitempty" name:"ErrCode"`
 
 	// 错误信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Message *string `json:"Message,omitempty" name:"Message"`
 
 	// 截取雪碧图文件 ID。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	FileId *string `json:"FileId,omitempty" name:"FileId"`
 
 	// 雪碧图规格，参见[雪碧图截图模板](https://cloud.tencent.com/document/product/266/11702#.E9.9B.AA.E7.A2.A7.E5.9B.BE.E6.88.AA.E5.9B.BE.E6.A8.A1.E6.9D.BF)。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Definition *int64 `json:"Definition,omitempty" name:"Definition"`
 
 	// 雪碧图小图总数量。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 	// 截取雪碧图输出的地址。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	ImageSpriteUrlSet []*string `json:"ImageSpriteUrlSet,omitempty" name:"ImageSpriteUrlSet" list`
 
 	// 雪碧图子图位置与时间关系 WebVtt 文件地址。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	WebVttUrl *string `json:"WebVttUrl,omitempty" name:"WebVttUrl"`
 }
 
@@ -901,6 +987,7 @@ type DescribeAllClassResponse struct {
 	Response *struct {
 
 		// 分类信息集合
+	// 注意：此字段可能返回 null，表示取不到有效值。
 		ClassInfoSet []*MediaClassInfo `json:"ClassInfoSet,omitempty" name:"ClassInfoSet" list`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -952,9 +1039,11 @@ type DescribeMediaInfosResponse struct {
 	Response *struct {
 
 		// 媒体文件信息列表。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 		MediaInfoSet []*MediaInfo `json:"MediaInfoSet,omitempty" name:"MediaInfoSet" list`
 
 		// 不存在的文件 ID 列表。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 		NotExistFileIdSet []*string `json:"NotExistFileIdSet,omitempty" name:"NotExistFileIdSet" list`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -1022,27 +1111,35 @@ type DescribeTaskDetailResponse struct {
 		FinishTime *string `json:"FinishTime,omitempty" name:"FinishTime"`
 
 		// 视频处理任务信息，仅当 TaskType 为 Procedure，该字段有值。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 		ProcedureTask *ProcedureTask `json:"ProcedureTask,omitempty" name:"ProcedureTask"`
 
 		// 视频编辑任务信息，仅当 TaskType 为 EditMedia，该字段有值。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 		EditMediaTask *EditMediaTask `json:"EditMediaTask,omitempty" name:"EditMediaTask"`
 
 		// 微信发布任务信息，仅当 TaskType 为 WechatPublish，该字段有值。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 		WechatPublishTask *WechatPublishTask `json:"WechatPublishTask,omitempty" name:"WechatPublishTask"`
 
 		// 视频转码任务信息，仅当 TaskType 为 Transcode，该字段有值。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 		TranscodeTask *TranscodeTask2017 `json:"TranscodeTask,omitempty" name:"TranscodeTask"`
 
 		// 视频指定时间点截图任务信息，仅当 TaskType 为 SnapshotByTimeOffset，该字段有值。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 		SnapshotByTimeOffsetTask *SnapshotByTimeOffsetTask2017 `json:"SnapshotByTimeOffsetTask,omitempty" name:"SnapshotByTimeOffsetTask"`
 
 		// 视频拼接任务信息，仅当 TaskType 为 Concat，该字段有值。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 		ConcatTask *ConcatTask2017 `json:"ConcatTask,omitempty" name:"ConcatTask"`
 
 		// 视频剪辑任务信息，仅当 TaskType 为 Clip，该字段有值。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 		ClipTask *ClipTask2017 `json:"ClipTask,omitempty" name:"ClipTask"`
 
 		// 截取雪碧图任务信息，仅当 TaskType 为 ImageSprite，该字段有值。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 		CreateImageSpriteTask *CreateImageSpriteTask2017 `json:"CreateImageSpriteTask,omitempty" name:"CreateImageSpriteTask"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -1092,9 +1189,11 @@ type DescribeTasksResponse struct {
 	Response *struct {
 
 		// 任务概要列表。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 		TaskSet []*TaskSimpleInfo `json:"TaskSet,omitempty" name:"TaskSet" list`
 
 		// 翻页标识，当请求未返回所有数据，该字段表示下一条记录的 ID。当该字段为空，说明已无更多数据。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 		ScrollToken *string `json:"ScrollToken,omitempty" name:"ScrollToken"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -1117,9 +1216,11 @@ type EditMediaFileInfo struct {
 	FileId *string `json:"FileId,omitempty" name:"FileId"`
 
 	// 视频剪辑的起始偏移时间偏移，单位：秒。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	StartTimeOffset *float64 `json:"StartTimeOffset,omitempty" name:"StartTimeOffset"`
 
 	// 视频剪辑的起始结束时间偏移，单位：秒。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	EndTimeOffset *float64 `json:"EndTimeOffset,omitempty" name:"EndTimeOffset"`
 }
 
@@ -1129,9 +1230,11 @@ type EditMediaStreamInfo struct {
 	StreamId *string `json:"StreamId,omitempty" name:"StreamId"`
 
 	// 流剪辑的起始时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
 
 	// 流剪辑的结束时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 }
 
@@ -1143,23 +1246,29 @@ type EditMediaTask struct {
 	// 任务流状态，取值：
 	// <li>PROCESSING：处理中；</li>
 	// <li>FINISH：已完成。</li>
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *string `json:"Status,omitempty" name:"Status"`
 
 	// 错误码
 	// <li>0：成功；</li>
 	// <li>其他值：失败。</li>
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	ErrCode *int64 `json:"ErrCode,omitempty" name:"ErrCode"`
 
 	// 错误信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Message *string `json:"Message,omitempty" name:"Message"`
 
 	// 视频编辑任务的输入。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Input *EditMediaTaskInput `json:"Input,omitempty" name:"Input"`
 
 	// 视频编辑任务的输出。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Output *EditMediaTaskOutput `json:"Output,omitempty" name:"Output"`
 
 	// 若发起视频编辑任务时指定了视频处理流程，则该字段为流程任务 ID。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProcedureTaskId *string `json:"ProcedureTaskId,omitempty" name:"ProcedureTaskId"`
 }
 
@@ -1169,21 +1278,26 @@ type EditMediaTaskInput struct {
 	InputType *string `json:"InputType,omitempty" name:"InputType"`
 
 	// 输入的视频文件信息，当 InputType 为 File 时，该字段有值。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	FileInfoSet []*EditMediaFileInfo `json:"FileInfoSet,omitempty" name:"FileInfoSet" list`
 
 	// 输入的流信息，当 InputType 为 Stream 时，该字段有值。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	StreamInfoSet []*EditMediaStreamInfo `json:"StreamInfoSet,omitempty" name:"StreamInfoSet" list`
 }
 
 type EditMediaTaskOutput struct {
 
 	// 文件类型，例如 mp4、flv 等。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	FileType *string `json:"FileType,omitempty" name:"FileType"`
 
 	// 媒体文件 ID。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	FileId *string `json:"FileId,omitempty" name:"FileId"`
 
 	// 媒体文件播放地址。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	FileUrl *string `json:"FileUrl,omitempty" name:"FileUrl"`
 }
 
@@ -1208,36 +1322,47 @@ type EventContent struct {
 	EventType *string `json:"EventType,omitempty" name:"EventType"`
 
 	// 视频上传完成事件，当事件类型为 NewFileUpload 时有效。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	FileUploadEvent *FileUploadTask `json:"FileUploadEvent,omitempty" name:"FileUploadEvent"`
 
 	// 任务流状态变更事件，当事件类型为 ProcedureStateChanged 时有效。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProcedureStateChangeEvent *ProcedureTask `json:"ProcedureStateChangeEvent,omitempty" name:"ProcedureStateChangeEvent"`
 
 	// 文件删除事件，当事件类型为 FileDeleted 时有效。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	FileDeleteEvent *FileDeleteTask `json:"FileDeleteEvent,omitempty" name:"FileDeleteEvent"`
 
 	// 视频转拉完成事件，当事件类型为 PullComplete 时有效。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	PullCompleteEvent *PullFileTask `json:"PullCompleteEvent,omitempty" name:"PullCompleteEvent"`
 
 	// 视频编辑完成事件，当事件类型为 EditMediaComplete 时有效。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	EditMediaCompleteEvent *EditMediaTask `json:"EditMediaCompleteEvent,omitempty" name:"EditMediaCompleteEvent"`
 
 	// 微信发布完成事件，当事件类型为 WechatPublishComplete 时有效。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	WechatPublishComplete *WechatPublishTask `json:"WechatPublishComplete,omitempty" name:"WechatPublishComplete"`
 
 	// 视频转码完成事件，当事件类型为 TranscodeComplete 时有效。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	TranscodeCompleteEvent *TranscodeTask2017 `json:"TranscodeCompleteEvent,omitempty" name:"TranscodeCompleteEvent"`
 
 	// 视频拼接完成事件，当事件类型为 ConcatComplete 时有效。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	ConcatCompleteEvent *ConcatTask2017 `json:"ConcatCompleteEvent,omitempty" name:"ConcatCompleteEvent"`
 
 	// 视频剪辑完成事件，当事件类型为 ClipComplete 时有效。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	ClipCompleteEvent *ClipTask2017 `json:"ClipCompleteEvent,omitempty" name:"ClipCompleteEvent"`
 
 	// 视频截取雪碧图完成事件，当事件类型为 CreateImageSpriteComplete 时有效。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreateImageSpriteCompleteEvent *CreateImageSpriteTask2017 `json:"CreateImageSpriteCompleteEvent,omitempty" name:"CreateImageSpriteCompleteEvent"`
 
 	// 视频按时间点截图完成事件，当事件类型为 CreateSnapshotByTimeOffsetComplete 时有效。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	SnapshotByTimeOffsetCompleteEvent *SnapshotByTimeOffsetTask2017 `json:"SnapshotByTimeOffsetCompleteEvent,omitempty" name:"SnapshotByTimeOffsetCompleteEvent"`
 }
 
@@ -1256,6 +1381,7 @@ type FileUploadTask struct {
 	MediaBasicInfo *MediaBasicInfo `json:"MediaBasicInfo,omitempty" name:"MediaBasicInfo"`
 
 	// 若视频上传时指定了视频处理流程，则该字段为流程任务 ID。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProcedureTaskId *string `json:"ProcedureTaskId,omitempty" name:"ProcedureTaskId"`
 }
 
@@ -1304,9 +1430,11 @@ type LiveRealTimeClipResponse struct {
 		Url *string `json:"Url,omitempty" name:"Url"`
 
 		// 剪辑固化后的视频的媒体文件的唯一标识。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 		FileId *string `json:"FileId,omitempty" name:"FileId"`
 
 		// 剪辑固化后的视频任务流 ID。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 		VodTaskId *string `json:"VodTaskId,omitempty" name:"VodTaskId"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -1326,126 +1454,161 @@ func (r *LiveRealTimeClipResponse) FromJsonString(s string) error {
 type MediaAiAnalysisClassificationItem struct {
 
 	// 智能分类的类别名称。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Classification *string `json:"Classification,omitempty" name:"Classification"`
 
 	// 智能分类的可信度，取值范围是 0 到 100。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Confidence *float64 `json:"Confidence,omitempty" name:"Confidence"`
 }
 
 type MediaAiAnalysisCoverItem struct {
 
 	// 智能封面地址。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	CoverUrl *string `json:"CoverUrl,omitempty" name:"CoverUrl"`
 
 	// 智能封面的可信度，取值范围是 0 到 100。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Confidence *float64 `json:"Confidence,omitempty" name:"Confidence"`
 }
 
 type MediaAiAnalysisTagItem struct {
 
 	// 标签名称。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Tag *string `json:"Tag,omitempty" name:"Tag"`
 
 	// 标签的可信度，取值范围是 0 到 100。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Confidence *float64 `json:"Confidence,omitempty" name:"Confidence"`
 }
 
 type MediaAnimatedGraphicsInfo struct {
 
 	// 视频转动图结果信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	AnimatedGraphicsSet []*MediaAnimatedGraphicsItem `json:"AnimatedGraphicsSet,omitempty" name:"AnimatedGraphicsSet" list`
 }
 
 type MediaAnimatedGraphicsItem struct {
 
 	// 转动图的文件地址。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Url *string `json:"Url,omitempty" name:"Url"`
 
 	// 转动图模板 ID，参见[转动图参数模板](https://cloud.tencent.com/document/product/266/11701#.E9.A2.84.E7.BD.AE.E8.BD.AC.E5.8A.A8.E5.9B.BE.E6.A8.A1.E6.9D.BF)。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Definition *int64 `json:"Definition,omitempty" name:"Definition"`
 
 	// 动图格式，如 gif。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Container *string `json:"Container,omitempty" name:"Container"`
 
 	// 动图的高度，单位：px。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Height *int64 `json:"Height,omitempty" name:"Height"`
 
 	// 动图的宽度，单位：px。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Width *int64 `json:"Width,omitempty" name:"Width"`
 
 	// 动图码率，单位：bps。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Bitrate *int64 `json:"Bitrate,omitempty" name:"Bitrate"`
 
 	// 动图大小，单位：字节。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Size *int64 `json:"Size,omitempty" name:"Size"`
 
 	// 动图的md5值。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Md5 *string `json:"Md5,omitempty" name:"Md5"`
 
 	// 动图在视频中的起始时间偏移，单位：秒。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	StartTimeOffset *float64 `json:"StartTimeOffset,omitempty" name:"StartTimeOffset"`
 
 	// 动图在视频中的结束时间偏移，单位：秒。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	EndTimeOffset *float64 `json:"EndTimeOffset,omitempty" name:"EndTimeOffset"`
 }
 
 type MediaAudioStreamItem struct {
 
 	// 音频流的码率，单位：bps。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Bitrate *int64 `json:"Bitrate,omitempty" name:"Bitrate"`
 
 	// 音频流的采样率，单位：hz。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	SamplingRate *int64 `json:"SamplingRate,omitempty" name:"SamplingRate"`
 
 	// 音频流的编码格式，例如 aac。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Codec *string `json:"Codec,omitempty" name:"Codec"`
 }
 
 type MediaBasicInfo struct {
 
 	// 媒体文件名称。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Name *string `json:"Name,omitempty" name:"Name"`
 
 	// 媒体文件描述。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Description *string `json:"Description,omitempty" name:"Description"`
 
 	// 媒体文件的创建时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
 
 	// 媒体文件的最近更新时间（如修改视频属性、发起视频处理等会触发更新媒体文件信息的操作），使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
 
 	// 媒体文件的过期时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。过期后该媒体文件及其相关资源（转码结果、雪碧图等）将被永久删除。“9999-12-31T23:59:59Z”表示永不过期。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExpireTime *string `json:"ExpireTime,omitempty" name:"ExpireTime"`
 
 	// 媒体文件的分类 ID。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	ClassId *int64 `json:"ClassId,omitempty" name:"ClassId"`
 
 	// 媒体文件的分类名称。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	ClassName *string `json:"ClassName,omitempty" name:"ClassName"`
 
 	// 媒体文件的分类路径，分类间以“-”分隔，如“新的一级分类 - 新的二级分类”。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	ClassPath *string `json:"ClassPath,omitempty" name:"ClassPath"`
 
 	// 媒体文件的封面图片地址。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	CoverUrl *string `json:"CoverUrl,omitempty" name:"CoverUrl"`
 
 	// 媒体文件的封装格式，例如 mp4、flv 等。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Type *string `json:"Type,omitempty" name:"Type"`
 
 	// 原始媒体文件的 URL 地址。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	MediaUrl *string `json:"MediaUrl,omitempty" name:"MediaUrl"`
 
 	// 该媒体文件的来源信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	SourceInfo *MediaSourceData `json:"SourceInfo,omitempty" name:"SourceInfo"`
 
 	// 媒体文件存储地区，如 ap-guangzhou，参见[地域列表](https://cloud.tencent.com/document/api/213/15692#.E5.9C.B0.E5.9F.9F.E5.88.97.E8.A1.A8)。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	StorageRegion *string `json:"StorageRegion,omitempty" name:"StorageRegion"`
 
 	// 媒体文件的标签信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	TagSet []*string `json:"TagSet,omitempty" name:"TagSet" list`
 
 	// 直播录制文件的唯一标识
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Vid *string `json:"Vid,omitempty" name:"Vid"`
 }
 
@@ -1464,113 +1627,141 @@ type MediaClassInfo struct {
 	Level *uint64 `json:"Level,omitempty" name:"Level"`
 
 	// 当前分类的第一级子类 ID 集合
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	SubClassIdSet []*int64 `json:"SubClassIdSet,omitempty" name:"SubClassIdSet" list`
 }
 
 type MediaContentReviewAsrTextSegmentItem struct {
 
 	// 嫌疑片段起始的偏移时间，单位：秒。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	StartTimeOffset *float64 `json:"StartTimeOffset,omitempty" name:"StartTimeOffset"`
 
 	// 嫌疑片段结束的偏移时间，单位：秒。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	EndTimeOffset *float64 `json:"EndTimeOffset,omitempty" name:"EndTimeOffset"`
 
 	// 嫌疑片段置信度。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Confidence *float64 `json:"Confidence,omitempty" name:"Confidence"`
 
 	// 嫌疑片段审核结果建议，取值范围：
 	// <li>pass。</li>
 	// <li>review。</li>
 	// <li>block。</li>
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Suggestion *string `json:"Suggestion,omitempty" name:"Suggestion"`
 
 	// 嫌疑关键词列表。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	KeywordSet []*string `json:"KeywordSet,omitempty" name:"KeywordSet" list`
 }
 
 type MediaContentReviewOcrTextSegmentItem struct {
 
 	// 嫌疑片段起始的偏移时间，单位：秒。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	StartTimeOffset *float64 `json:"StartTimeOffset,omitempty" name:"StartTimeOffset"`
 
 	// 嫌疑片段结束的偏移时间，单位：秒。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	EndTimeOffset *float64 `json:"EndTimeOffset,omitempty" name:"EndTimeOffset"`
 
 	// 嫌疑片段置信度。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Confidence *float64 `json:"Confidence,omitempty" name:"Confidence"`
 
 	// 嫌疑片段审核结果建议，取值范围：
 	// <li>pass。</li>
 	// <li>review。</li>
 	// <li>block。</li>
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Suggestion *string `json:"Suggestion,omitempty" name:"Suggestion"`
 
 	// 嫌疑关键词列表。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	KeywordSet []*string `json:"KeywordSet,omitempty" name:"KeywordSet" list`
 
 	// 嫌疑文字出现的区域坐标 (像素级)，[x1, y1, x2, y2]，即左上角坐标、右下角坐标。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	AreaCoordSet []*int64 `json:"AreaCoordSet,omitempty" name:"AreaCoordSet" list`
 }
 
 type MediaContentReviewPoliticalSegmentItem struct {
 
 	// 嫌疑片段起始的偏移时间，单位：秒。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	StartTimeOffset *float64 `json:"StartTimeOffset,omitempty" name:"StartTimeOffset"`
 
 	// 嫌疑片段结束的偏移时间，单位：秒。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	EndTimeOffset *float64 `json:"EndTimeOffset,omitempty" name:"EndTimeOffset"`
 
 	// 嫌疑片段涉政分数。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Confidence *float64 `json:"Confidence,omitempty" name:"Confidence"`
 
 	// 嫌疑片段鉴政结果建议，取值范围：
 	// <li>pass。</li>
 	// <li>review。</li>
 	// <li>block。</li>
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Suggestion *string `json:"Suggestion,omitempty" name:"Suggestion"`
 
 	// 涉政人物、违规图标名字。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Name *string `json:"Name,omitempty" name:"Name"`
 
 	// 嫌疑片段鉴政结果标签。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Label *string `json:"Label,omitempty" name:"Label"`
 
 	// 嫌疑图片 URL （图片不会永久存储，到达
 	//  PicUrlExpireTime 时间点后图片将被删除）。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Url *string `json:"Url,omitempty" name:"Url"`
 
 	// 涉政人物、违规图标出现的区域坐标 (像素级)，[x1, y1, x2, y2]，即左上角坐标、右下角坐标。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	AreaCoordSet []*int64 `json:"AreaCoordSet,omitempty" name:"AreaCoordSet" list`
 
 	// 嫌疑图片 URL 失效时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	PicUrlExpireTimeStamp *int64 `json:"PicUrlExpireTimeStamp,omitempty" name:"PicUrlExpireTimeStamp"`
 }
 
 type MediaContentReviewSegmentItem struct {
 
 	// 嫌疑片段起始的偏移时间，单位：秒。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	StartTimeOffset *float64 `json:"StartTimeOffset,omitempty" name:"StartTimeOffset"`
 
 	// 嫌疑片段结束的偏移时间，单位：秒。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	EndTimeOffset *float64 `json:"EndTimeOffset,omitempty" name:"EndTimeOffset"`
 
 	// 嫌疑片段涉黄分数。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Confidence *float64 `json:"Confidence,omitempty" name:"Confidence"`
 
 	// 嫌疑片段鉴黄结果标签。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Label *string `json:"Label,omitempty" name:"Label"`
 
 	// 嫌疑片段鉴黄结果建议，取值范围：
 	// <li>pass。</li>
 	// <li>review。</li>
 	// <li>block。</li>
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Suggestion *string `json:"Suggestion,omitempty" name:"Suggestion"`
 
 	// 嫌疑图片 URL （图片不会永久存储，到达
 	//  PicUrlExpireTime 时间点后图片将被删除）。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Url *string `json:"Url,omitempty" name:"Url"`
 
 	// 嫌疑图片 URL 失效时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	PicUrlExpireTimeStamp *int64 `json:"PicUrlExpireTimeStamp,omitempty" name:"PicUrlExpireTimeStamp"`
 }
 
@@ -1589,54 +1780,69 @@ type MediaDeleteItem struct {
 type MediaImageSpriteInfo struct {
 
 	// 特定规格的雪碧图信息集合，每个元素代表一套相同规格的雪碧图。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	ImageSpriteSet []*MediaImageSpriteItem `json:"ImageSpriteSet,omitempty" name:"ImageSpriteSet" list`
 }
 
 type MediaImageSpriteItem struct {
 
 	// 雪碧图规格，参见[雪碧图参数模板](https://cloud.tencent.com/document/product/266/11702#.E9.9B.AA.E7.A2.A7.E5.9B.BE.E6.88.AA.E5.9B.BE.E6.A8.A1.E6.9D.BF)。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Definition *int64 `json:"Definition,omitempty" name:"Definition"`
 
 	// 雪碧图小图的高度。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Height *int64 `json:"Height,omitempty" name:"Height"`
 
 	// 雪碧图小图的宽度。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Width *int64 `json:"Width,omitempty" name:"Width"`
 
 	// 每一张雪碧图大图里小图的数量。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 	// 每一张雪碧图大图的地址。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	ImageUrlSet []*string `json:"ImageUrlSet,omitempty" name:"ImageUrlSet" list`
 
 	// 雪碧图子图位置与时间关系的 WebVtt 文件地址。WebVtt 文件表明了各个雪碧图小图对应的时间点，以及在在雪碧大图里的坐标位置，一般被播放器用于实现预览。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	WebVttUrl *string `json:"WebVttUrl,omitempty" name:"WebVttUrl"`
 }
 
 type MediaInfo struct {
 
 	// 基础信息。包括视频名称、大小、时长、封面图片等。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	BasicInfo *MediaBasicInfo `json:"BasicInfo,omitempty" name:"BasicInfo"`
 
 	// 元信息。包括视频流信息、音频流信息等。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	MetaData *MediaMetaData `json:"MetaData,omitempty" name:"MetaData"`
 
 	// 转码结果信息。包括该视频转码生成的各种码率的视频的地址、规格、码率、分辨率等。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	TranscodeInfo *MediaTranscodeInfo `json:"TranscodeInfo,omitempty" name:"TranscodeInfo"`
 
 	// 转动图结果信息。对视频转动图（如 gif）后，动图相关信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	AnimatedGraphicsInfo *MediaAnimatedGraphicsInfo `json:"AnimatedGraphicsInfo,omitempty" name:"AnimatedGraphicsInfo"`
 
 	// 采样截图信息。对视频采样截图后，相关截图信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	SampleSnapshotInfo *MediaSampleSnapshotInfo `json:"SampleSnapshotInfo,omitempty" name:"SampleSnapshotInfo"`
 
 	// 雪碧图信息。对视频截取雪碧图之后，雪碧的相关信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	ImageSpriteInfo *MediaImageSpriteInfo `json:"ImageSpriteInfo,omitempty" name:"ImageSpriteInfo"`
 
 	// 指定时间点截图信息。对视频依照指定时间点截图后，各个截图的信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	SnapshotByTimeOffsetInfo *MediaSnapshotByTimeOffsetInfo `json:"SnapshotByTimeOffsetInfo,omitempty" name:"SnapshotByTimeOffsetInfo"`
 
 	// 视频打点信息。对视频设置的各个打点信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	KeyFrameDescInfo *MediaKeyFrameDescInfo `json:"KeyFrameDescInfo,omitempty" name:"KeyFrameDescInfo"`
 
 	// 媒体文件唯一标识 ID。
@@ -1658,6 +1864,7 @@ type MediaInputInfo struct {
 type MediaKeyFrameDescInfo struct {
 
 	// 视频打点信息数组。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	KeyFrameDescSet []*MediaKeyFrameDescItem `json:"KeyFrameDescSet,omitempty" name:"KeyFrameDescSet" list`
 }
 
@@ -1673,36 +1880,47 @@ type MediaKeyFrameDescItem struct {
 type MediaMetaData struct {
 
 	// 上传的媒体文件大小（视频为 HLS 时，大小是 m3u8 和 ts 文件大小的总和），单位：字节。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Size *int64 `json:"Size,omitempty" name:"Size"`
 
 	// 容器类型，例如 m4a，mp4 等。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Container *string `json:"Container,omitempty" name:"Container"`
 
 	// 视频流码率平均值与音频流码率平均值之和，单位：bps。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Bitrate *int64 `json:"Bitrate,omitempty" name:"Bitrate"`
 
 	// 视频流高度的最大值，单位：px。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Height *int64 `json:"Height,omitempty" name:"Height"`
 
 	// 视频流宽度的最大值，单位：px。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Width *int64 `json:"Width,omitempty" name:"Width"`
 
 	// 视频时长，单位：秒。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Duration *float64 `json:"Duration,omitempty" name:"Duration"`
 
 	// 视频拍摄时的选择角度，单位：度。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Rotate *int64 `json:"Rotate,omitempty" name:"Rotate"`
 
 	// 视频流信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	VideoStreamSet []*MediaVideoStreamItem `json:"VideoStreamSet,omitempty" name:"VideoStreamSet" list`
 
 	// 音频流信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	AudioStreamSet []*MediaAudioStreamItem `json:"AudioStreamSet,omitempty" name:"AudioStreamSet" list`
 
 	// 视频时长，单位：秒。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	VideoDuration *float64 `json:"VideoDuration,omitempty" name:"VideoDuration"`
 
 	// 音频时长，单位：秒。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	AudioDuration *float64 `json:"AudioDuration,omitempty" name:"AudioDuration"`
 }
 
@@ -1724,15 +1942,18 @@ type MediaProcessTaskAnimatedGraphicResult struct {
 	Status *string `json:"Status,omitempty" name:"Status"`
 
 	// 错误码，0：成功，其他值：失败。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	ErrCode *int64 `json:"ErrCode,omitempty" name:"ErrCode"`
 
 	// 错误信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Message *string `json:"Message,omitempty" name:"Message"`
 
 	// 转动图任务的输入。
 	Input *AnimatedGraphicTaskInput `json:"Input,omitempty" name:"Input"`
 
 	// 转动图任务的输出。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Output *MediaAnimatedGraphicsItem `json:"Output,omitempty" name:"Output"`
 }
 
@@ -1742,9 +1963,11 @@ type MediaProcessTaskCoverBySnapshotResult struct {
 	Status *string `json:"Status,omitempty" name:"Status"`
 
 	// 错误码，0：成功，其他值：失败。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	ErrCode *int64 `json:"ErrCode,omitempty" name:"ErrCode"`
 
 	// 错误信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Message *string `json:"Message,omitempty" name:"Message"`
 
 	// 对视频截图做封面任务的输入。
@@ -1760,36 +1983,45 @@ type MediaProcessTaskImageSpriteResult struct {
 	Status *string `json:"Status,omitempty" name:"Status"`
 
 	// 错误码，0：成功，其他值：失败。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	ErrCode *int64 `json:"ErrCode,omitempty" name:"ErrCode"`
 
 	// 错误信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Message *string `json:"Message,omitempty" name:"Message"`
 
 	// 对视频截雪碧图任务的输入。
 	Input *ImageSpriteTaskInput `json:"Input,omitempty" name:"Input"`
 
 	// 对视频截雪碧图任务的输出。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Output *MediaImageSpriteItem `json:"Output,omitempty" name:"Output"`
 }
 
 type MediaProcessTaskInput struct {
 
 	// 视频转码任务列表。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	TranscodeTaskSet []*TranscodeTaskInput `json:"TranscodeTaskSet,omitempty" name:"TranscodeTaskSet" list`
 
 	// 视频转动图任务列表。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	AnimatedGraphicTaskSet []*AnimatedGraphicTaskInput `json:"AnimatedGraphicTaskSet,omitempty" name:"AnimatedGraphicTaskSet" list`
 
 	// 对视频按时间点截图任务列表。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	SnapshotByTimeOffsetTaskSet []*SnapshotByTimeOffsetTaskInput `json:"SnapshotByTimeOffsetTaskSet,omitempty" name:"SnapshotByTimeOffsetTaskSet" list`
 
 	// 对视频采样截图任务列表。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	SampleSnapshotTaskSet []*SampleSnapshotTaskInput `json:"SampleSnapshotTaskSet,omitempty" name:"SampleSnapshotTaskSet" list`
 
 	// 对视频截雪碧图任务列表。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	ImageSpriteTaskSet []*ImageSpriteTaskInput `json:"ImageSpriteTaskSet,omitempty" name:"ImageSpriteTaskSet" list`
 
 	// 对视频截图做封面任务列表。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	CoverBySnapshotTaskSet []*CoverBySnapshotTaskInput `json:"CoverBySnapshotTaskSet,omitempty" name:"CoverBySnapshotTaskSet" list`
 }
 
@@ -1805,21 +2037,27 @@ type MediaProcessTaskResult struct {
 	Type *string `json:"Type,omitempty" name:"Type"`
 
 	// 视频转码任务的查询结果，当任务类型为 Transcode 时有效。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	TranscodeTask *MediaProcessTaskTranscodeResult `json:"TranscodeTask,omitempty" name:"TranscodeTask"`
 
 	// 视频转动图任务的查询结果，当任务类型为 AnimatedGraphics 时有效。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	AnimatedGraphicTask *MediaProcessTaskAnimatedGraphicResult `json:"AnimatedGraphicTask,omitempty" name:"AnimatedGraphicTask"`
 
 	// 对视频按时间点截图任务的查询结果，当任务类型为 SnapshotByTimeOffset 时有效。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	SnapshotByTimeOffsetTask *MediaProcessTaskSnapshotByTimeOffsetResult `json:"SnapshotByTimeOffsetTask,omitempty" name:"SnapshotByTimeOffsetTask"`
 
 	// 对视频采样截图任务的查询结果，当任务类型为 SampleSnapshot 时有效。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	SampleSnapshotTask *MediaProcessTaskSampleSnapshotResult `json:"SampleSnapshotTask,omitempty" name:"SampleSnapshotTask"`
 
 	// 对视频截雪碧图任务的查询结果，当任务类型为 ImageSprite 时有效。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	ImageSpriteTask *MediaProcessTaskImageSpriteResult `json:"ImageSpriteTask,omitempty" name:"ImageSpriteTask"`
 
 	// 对视频截图做封面任务的查询结果，当任务类型为 CoverBySnapshot 时有效。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	CoverBySnapshotTask *MediaProcessTaskCoverBySnapshotResult `json:"CoverBySnapshotTask,omitempty" name:"CoverBySnapshotTask"`
 }
 
@@ -1829,15 +2067,18 @@ type MediaProcessTaskSampleSnapshotResult struct {
 	Status *string `json:"Status,omitempty" name:"Status"`
 
 	// 错误码，0：成功，其他值：失败。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	ErrCode *int64 `json:"ErrCode,omitempty" name:"ErrCode"`
 
 	// 错误信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Message *string `json:"Message,omitempty" name:"Message"`
 
 	// 对视频做采样截图任务输入。
 	Input *SampleSnapshotTaskInput `json:"Input,omitempty" name:"Input"`
 
 	// 对视频做采样截图任务输出。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Output *MediaSampleSnapshotItem `json:"Output,omitempty" name:"Output"`
 }
 
@@ -1847,15 +2088,18 @@ type MediaProcessTaskSnapshotByTimeOffsetResult struct {
 	Status *string `json:"Status,omitempty" name:"Status"`
 
 	// 错误码，0：成功，其他值：失败。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	ErrCode *int64 `json:"ErrCode,omitempty" name:"ErrCode"`
 
 	// 错误信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Message *string `json:"Message,omitempty" name:"Message"`
 
 	// 对视频按指定时间点截图任务输入。
 	Input *SnapshotByTimeOffsetTaskInput `json:"Input,omitempty" name:"Input"`
 
 	// 对视频按指定时间点截图任务输出。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Output *MediaSnapshotByTimeOffsetItem `json:"Output,omitempty" name:"Output"`
 }
 
@@ -1865,9 +2109,11 @@ type MediaProcessTaskTranscodeResult struct {
 	Status *string `json:"Status,omitempty" name:"Status"`
 
 	// 错误码，0：成功，其他值：失败。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	ErrCode *int64 `json:"ErrCode,omitempty" name:"ErrCode"`
 
 	// 错误信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Message *string `json:"Message,omitempty" name:"Message"`
 
 	// 转码任务的输入。
@@ -1880,55 +2126,67 @@ type MediaProcessTaskTranscodeResult struct {
 type MediaSampleSnapshotInfo struct {
 
 	// 特定规格的采样截图信息集合，每个元素代表一套相同规格的采样截图。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	SampleSnapshotSet []*MediaSampleSnapshotItem `json:"SampleSnapshotSet,omitempty" name:"SampleSnapshotSet" list`
 }
 
 type MediaSampleSnapshotItem struct {
 
 	// 采样截图规格 ID，参见[采样截图参数模板](https://cloud.tencent.com/document/product/266/11702#.E9.87.87.E6.A0.B7.E6.88.AA.E5.9B.BE.E6.A8.A1.E6.9D.BF)。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Definition *int64 `json:"Definition,omitempty" name:"Definition"`
 
 	// 采样方式，取值范围：
 	// <li>Percent：根据百分比间隔采样。</li>
 	// <li>Time：根据时间间隔采样。</li>
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	SampleType *string `json:"SampleType,omitempty" name:"SampleType"`
 
 	// 采样间隔
 	// <li>当 SampleType 为 Percent 时，该值表示多少百分比一张图。</li>
 	// <li>当 SampleType 为 Time 时，该值表示多少时间间隔一张图，单位秒， 第一张图均为视频首帧。</li>
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Interval *int64 `json:"Interval,omitempty" name:"Interval"`
 
 	// 生成的截图 url 列表。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	ImageUrlSet []*string `json:"ImageUrlSet,omitempty" name:"ImageUrlSet" list`
 
 	// 截图如果被打上了水印，被打水印的模板 ID 列表。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	WaterMarkDefinition []*int64 `json:"WaterMarkDefinition,omitempty" name:"WaterMarkDefinition" list`
 }
 
 type MediaSnapshotByTimeOffsetInfo struct {
 
 	// 特定规格的指定时间点截图信息集合。目前每种规格只能有一套截图。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	SnapshotByTimeOffsetSet []*MediaSnapshotByTimeOffsetItem `json:"SnapshotByTimeOffsetSet,omitempty" name:"SnapshotByTimeOffsetSet" list`
 }
 
 type MediaSnapshotByTimeOffsetItem struct {
 
 	// 指定时间点截图规格，参见[指定时间点截图参数模板](https://cloud.tencent.com/document/product/266/11702#.E6.8C.87.E5.AE.9A.E6.97.B6.E9.97.B4.E7.82.B9.E6.88.AA.E5.9B.BE.E6.A8.A1.E6.9D.BF)。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Definition *int64 `json:"Definition,omitempty" name:"Definition"`
 
 	// 同一规格的截图信息集合，每个元素代表一张截图。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	PicInfoSet []*MediaSnapshotByTimePicInfoItem `json:"PicInfoSet,omitempty" name:"PicInfoSet" list`
 }
 
 type MediaSnapshotByTimePicInfoItem struct {
 
 	// 该张截图对应视频文件中的时间偏移，单位：秒。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	TimeOffset *float64 `json:"TimeOffset,omitempty" name:"TimeOffset"`
 
 	// 该张截图的 URL 地址。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Url *string `json:"Url,omitempty" name:"Url"`
 
 	// 截图如果被打上了水印，被打水印的模板 ID 列表。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	WaterMarkDefinition []*int64 `json:"WaterMarkDefinition,omitempty" name:"WaterMarkDefinition" list`
 }
 
@@ -1939,69 +2197,88 @@ type MediaSourceData struct {
 	// <li>Upload：来自上传。如拉取上传、服务端上传、客户端 UGC 上传等。</li>
 	// <li>VideoProcessing：来自视频处理。如视频拼接、视频剪辑等。</li>
 	// <li>Unknown：未知来源。</li>
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	SourceType *string `json:"SourceType,omitempty" name:"SourceType"`
 
 	// 用户创建文件时透传的字段
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	SourceContext *string `json:"SourceContext,omitempty" name:"SourceContext"`
 }
 
 type MediaTranscodeInfo struct {
 
 	// 各规格的转码信息集合，每个元素代表一个规格的转码结果。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	TranscodeSet []*MediaTranscodeItem `json:"TranscodeSet,omitempty" name:"TranscodeSet" list`
 }
 
 type MediaTranscodeItem struct {
 
 	// 转码后的视频文件地址。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Url *string `json:"Url,omitempty" name:"Url"`
 
 	// 转码规格 ID，参见[转码参数模板](https://cloud.tencent.com/document/product/266/11701#.E8.BD.AC.E7.A0.81.E6.A8.A1.E6.9D.BF)。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Definition *int64 `json:"Definition,omitempty" name:"Definition"`
 
 	// 视频流码率平均值与音频流码率平均值之和， 单位：bps。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Bitrate *int64 `json:"Bitrate,omitempty" name:"Bitrate"`
 
 	// 视频流高度的最大值，单位：px。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Height *int64 `json:"Height,omitempty" name:"Height"`
 
 	// 视频流宽度的最大值，单位：px。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Width *int64 `json:"Width,omitempty" name:"Width"`
 
 	// 媒体文件总大小（视频为 HLS 时，大小是 m3u8 和 ts 文件大小的总和），单位：字节。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Size *int64 `json:"Size,omitempty" name:"Size"`
 
 	// 视频时长，单位：秒。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Duration *float64 `json:"Duration,omitempty" name:"Duration"`
 
 	// 容器类型，例如 m4a，mp4 等。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Container *string `json:"Container,omitempty" name:"Container"`
 
 	// 视频的 md5 值。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Md5 *string `json:"Md5,omitempty" name:"Md5"`
 
 	// 音频流信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	AudioStreamSet []*MediaAudioStreamItem `json:"AudioStreamSet,omitempty" name:"AudioStreamSet" list`
 
 	// 视频流信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	VideoStreamSet []*MediaVideoStreamItem `json:"VideoStreamSet,omitempty" name:"VideoStreamSet" list`
 }
 
 type MediaVideoStreamItem struct {
 
 	// 视频流的码率，单位：bps。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Bitrate *int64 `json:"Bitrate,omitempty" name:"Bitrate"`
 
 	// 视频流的高度，单位：px。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Height *int64 `json:"Height,omitempty" name:"Height"`
 
 	// 视频流的宽度，单位：px。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Width *int64 `json:"Width,omitempty" name:"Width"`
 
 	// 视频流的编码格式，例如 h264。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Codec *string `json:"Codec,omitempty" name:"Codec"`
 
 	// 帧率，单位：hz。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Fps *int64 `json:"Fps,omitempty" name:"Fps"`
 }
 
@@ -2105,6 +2382,7 @@ type ModifyMediaInfoResponse struct {
 
 		// 新的视频封面 URL。
 	// * 注意：仅当请求携带 CoverData 时此返回值有效。 *
+	// 注意：此字段可能返回 null，表示取不到有效值。
 		CoverUrl *string `json:"CoverUrl,omitempty" name:"CoverUrl"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -2134,45 +2412,54 @@ type ProcedureTask struct {
 	// 错误码
 	// <li>0：成功；</li>
 	// <li>其他值：失败。</li>
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	ErrCode *int64 `json:"ErrCode,omitempty" name:"ErrCode"`
 
 	// 错误信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Message *string `json:"Message,omitempty" name:"Message"`
 
 	// 媒体文件 ID
-	// <li>若流程由 [ProcessMedia](http://139.199.214.26/document/product/266/30248) 发起，该字段表示 [MediaInfo](http://139.199.214.26/document/product/266/16694?!preview&preview_docmenu=1&lang=cn&!document=1#MediaInfo) 的 FileId；</li>
-	// <li>若流程由 [ProcessMediaByUrl](http://139.199.214.26/document/product/266/31058?!document=1&!preview) 发起，该字段表示 [MediaInputInfo](http://139.199.214.26/document/product/266/16694?!preview&preview_docmenu=1&lang=cn&!document=1#MediaInputInfo) 的 Id。</li>
+	// <li>若流程由 [ProcessMedia](https://cloud.tencent.com/document/product/266/33427) 发起，该字段表示 [MediaInfo](https://cloud.tencent.com/document/product/266/31773#MediaInfo) 的 FileId；</li>
+	// <li>若流程由 [ProcessMediaByUrl](https://cloud.tencent.com/document/product/266/33426) 发起，该字段表示 [MediaInputInfo](https://cloud.tencent.com/document/product/266/31773#MediaInputInfo) 的 Id。</li>
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	FileId *string `json:"FileId,omitempty" name:"FileId"`
 
 	// 媒体文件名称
-	// <li>若流程由 [ProcessMedia](http://139.199.214.26/document/product/266/30248) 发起，该字段表示 [MediaInfo](http://139.199.214.26/document/product/266/16694?!preview&preview_docmenu=1&lang=cn&!document=1#MediaInfo) 的 BasicInfo.Name；</li>
-	// <li>若流程由 [ProcessMediaByUrl](http://139.199.214.26/document/product/266/31058?!document=1&!preview) 发起，该字段表示 [MediaInputInfo](http://139.199.214.26/document/product/266/16694?!preview&preview_docmenu=1&lang=cn&!document=1#MediaInputInfo) 的 Name。</li>
+	// <li>若流程由 [ProcessMedia](https://cloud.tencent.com/document/product/266/33427) 发起，该字段表示 [MediaInfo](https://cloud.tencent.com/document/product/266/31773#MediaInfo) 的 BasicInfo.Name；</li>
+	// <li>若流程由 [ProcessMediaByUrl](https://cloud.tencent.com/document/product/266/33426) 发起，该字段表示 [MediaInputInfo](https://cloud.tencent.com/document/product/266/31773#MediaInputInfo) 的 Name。</li>
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	FileName *string `json:"FileName,omitempty" name:"FileName"`
 
 	// 媒体文件地址
-	// <li>若流程由 [ProcessMedia](http://139.199.214.26/document/product/266/30248) 发起，该字段表示 [MediaInfo](http://139.199.214.26/document/product/266/16694?!preview&preview_docmenu=1&lang=cn&!document=1#MediaInfo) 的 BasicInfo.MediaUrl；</li>
-	// <li>若流程由 [ProcessMediaByUrl](http://139.199.214.26/document/product/266/31058?!document=1&!preview) 发起，该字段表示 [MediaInputInfo](http://139.199.214.26/document/product/266/16694?!preview&preview_docmenu=1&lang=cn&!document=1#MediaInputInfo) 的 Url。</li>
+	// <li>若流程由 [ProcessMedia](https://cloud.tencent.com/document/product/266/33427) 发起，该字段表示 [MediaInfo](https://cloud.tencent.com/document/product/266/31773#MediaInfo) 的 BasicInfo.MediaUrl；</li>
+	// <li>若流程由 [ProcessMediaByUrl](https://cloud.tencent.com/document/product/266/33426) 发起，该字段表示 [MediaInputInfo](https://cloud.tencent.com/document/product/266/31773#MediaInputInfo) 的 Url。</li>
 	FileUrl *string `json:"FileUrl,omitempty" name:"FileUrl"`
 
 	// 原始视频的元信息。
 	MetaData *MediaMetaData `json:"MetaData,omitempty" name:"MetaData"`
 
 	// 视频处理任务的执行状态与结果。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	MediaProcessResultSet []*MediaProcessTaskResult `json:"MediaProcessResultSet,omitempty" name:"MediaProcessResultSet" list`
 
 	// 视频内容审核任务的执行状态与结果。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	AiContentReviewResultSet []*AiContentReviewResult `json:"AiContentReviewResultSet,omitempty" name:"AiContentReviewResultSet" list`
 
 	// 视频内容分析任务的执行状态与结果。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	AiAnalysisResultSet []*AiAnalysisResult `json:"AiAnalysisResultSet,omitempty" name:"AiAnalysisResultSet" list`
 
 	// 任务流的优先级，取值范围为 [-10, 10]。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	TasksPriority *int64 `json:"TasksPriority,omitempty" name:"TasksPriority"`
 
 	// 任务流状态变更通知模式。
 	// <li>Finish：只有当任务流全部执行完毕时，才发起一次事件通知；</li>
 	// <li>Change：只要任务流中每个子任务的状态发生变化，都进行事件通知；</li>
 	// <li>None：不接受该任务流回调。</li>
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	TasksNotifyMode *string `json:"TasksNotifyMode,omitempty" name:"TasksNotifyMode"`
 }
 
@@ -2319,6 +2606,7 @@ type PullEventsResponse struct {
 	Response *struct {
 
 		// 事件列表。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 		EventSet []*EventContent `json:"EventSet,omitempty" name:"EventSet" list`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -2343,18 +2631,23 @@ type PullFileTask struct {
 	// 错误码
 	// <li>0：成功；</li>
 	// <li>其他值：失败。</li>
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	ErrCode *int64 `json:"ErrCode,omitempty" name:"ErrCode"`
 
 	// 错误信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Message *string `json:"Message,omitempty" name:"Message"`
 
 	// 转拉上传完成后生成的视频 ID。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	FileId *string `json:"FileId,omitempty" name:"FileId"`
 
 	// 转拉上传完成后生成的播放地址。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	FileUrl *string `json:"FileUrl,omitempty" name:"FileUrl"`
 
 	// 若转拉上传时指定了视频处理流程，则该参数为流程任务 ID。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProcedureTaskId *string `json:"ProcedureTaskId,omitempty" name:"ProcedureTaskId"`
 }
 
@@ -2364,6 +2657,7 @@ type SampleSnapshotTaskInput struct {
 	Definition *uint64 `json:"Definition,omitempty" name:"Definition"`
 
 	// 水印列表，支持多张图片或文字水印，最大可支持 10 张。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	WatermarkSet []*WatermarkInput `json:"WatermarkSet,omitempty" name:"WatermarkSet" list`
 }
 
@@ -2435,6 +2729,7 @@ type SearchMediaResponse struct {
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 媒体文件信息列表，只包含基础信息（BasicInfo）
+	// 注意：此字段可能返回 null，表示取不到有效值。
 		MediaInfoSet []*MediaInfo `json:"MediaInfoSet,omitempty" name:"MediaInfoSet" list`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -2502,12 +2797,15 @@ type SnapshotByTimeOffset2017 struct {
 	// 错误码
 	// <li>0：成功；</li>
 	// <li>其他值：失败。</li>
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	ErrCode *string `json:"ErrCode,omitempty" name:"ErrCode"`
 
 	// 截图的具体时间点，单位：毫秒。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	TimeOffset *uint64 `json:"TimeOffset,omitempty" name:"TimeOffset"`
 
 	// 截图输出文件地址。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Url *string `json:"Url,omitempty" name:"Url"`
 }
 
@@ -2532,9 +2830,11 @@ type SnapshotByTimeOffsetTaskInput struct {
 	Definition *uint64 `json:"Definition,omitempty" name:"Definition"`
 
 	// 截图时间点列表，单位为秒。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	TimeOffsetSet []*float64 `json:"TimeOffsetSet,omitempty" name:"TimeOffsetSet" list`
 
 	// 水印列表，支持多张图片或文字水印，最大可支持 10 张。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	WatermarkSet []*WatermarkInput `json:"WatermarkSet,omitempty" name:"WatermarkSet" list`
 }
 
@@ -2568,9 +2868,11 @@ type TaskSimpleInfo struct {
 	CreatTime *string `json:"CreatTime,omitempty" name:"CreatTime"`
 
 	// 任务开始执行时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。若任务尚未开始，该字段为空。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	BeginProcessTime *string `json:"BeginProcessTime,omitempty" name:"BeginProcessTime"`
 
 	// 任务结束时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。若任务尚未完成，该字段为空。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	FinishTime *string `json:"FinishTime,omitempty" name:"FinishTime"`
 }
 
@@ -2615,24 +2917,31 @@ type TranscodeTask2017 struct {
 	// 错误码
 	// <li>0：成功；</li>
 	// <li>其他值：失败。</li>
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	ErrCode *int64 `json:"ErrCode,omitempty" name:"ErrCode"`
 
 	// 错误信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Message *string `json:"Message,omitempty" name:"Message"`
 
 	// 被转码文件 ID。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	FileId *string `json:"FileId,omitempty" name:"FileId"`
 
 	// 被转码文件名称。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	FileName *string `json:"FileName,omitempty" name:"FileName"`
 
 	// 视频时长，单位：秒。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Duration *uint64 `json:"Duration,omitempty" name:"Duration"`
 
 	// 封面地址。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	CoverUrl *string `json:"CoverUrl,omitempty" name:"CoverUrl"`
 
 	// 视频转码后生成的播放信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	PlayInfoSet []*TranscodePlayInfo2017 `json:"PlayInfoSet,omitempty" name:"PlayInfoSet" list`
 }
 
@@ -2642,6 +2951,7 @@ type TranscodeTaskInput struct {
 	Definition *uint64 `json:"Definition,omitempty" name:"Definition"`
 
 	// 水印列表，支持多张图片或文字水印，最大可支持 10 张。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	WatermarkSet []*WatermarkInput `json:"WatermarkSet,omitempty" name:"WatermarkSet" list`
 }
 
@@ -2668,18 +2978,23 @@ type WechatPublishTask struct {
 	// 错误码
 	// <li>0：成功；</li>
 	// <li>其他值：失败。</li>
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	ErrCode *int64 `json:"ErrCode,omitempty" name:"ErrCode"`
 
 	// 错误信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Message *string `json:"Message,omitempty" name:"Message"`
 
 	// 发布视频文件 ID。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	FileId *string `json:"FileId,omitempty" name:"FileId"`
 
 	// 微信发布模板 ID。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Definition *uint64 `json:"Definition,omitempty" name:"Definition"`
 
 	// 发布视频所对应的转码模板 ID，为 0 代表原始视频。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	SourceDefinition *uint64 `json:"SourceDefinition,omitempty" name:"SourceDefinition"`
 
 	// 微信发布状态，取值：
@@ -2687,11 +3002,14 @@ type WechatPublishTask struct {
 	// <li>SUCCESS：成功；</li>
 	// <li>AUDITNOTPASS：审核未通过；</li>
 	// <li>NOTTRIGGERED：尚未发起微信发布。</li>
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	WechatStatus *string `json:"WechatStatus,omitempty" name:"WechatStatus"`
 
 	// 微信 Vid。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	WechatVid *string `json:"WechatVid,omitempty" name:"WechatVid"`
 
 	// 微信地址。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	WechatUrl *string `json:"WechatUrl,omitempty" name:"WechatUrl"`
 }

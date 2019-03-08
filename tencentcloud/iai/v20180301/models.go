@@ -649,24 +649,30 @@ type FaceAttributesInfo struct {
 	Beauty *int64 `json:"Beauty,omitempty" name:"Beauty"`
 
 	// 是否有帽子 [true,false]。NeedFaceAttributes 不为1 或检测超过 5 张人脸时，此参数仍返回，但不具备参考意义。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Hat *bool `json:"Hat,omitempty" name:"Hat"`
 
 	// 是否有口罩 [true,false]。NeedFaceAttributes 不为1 或检测超过 5 张人脸时，此参数仍返回，但不具备参考意义。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Mask *bool `json:"Mask,omitempty" name:"Mask"`
 
 	// 头发信息，包含头发长度（length）、有无刘海（bang）、头发颜色（color）。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Hair *FaceHairAttributesInfo `json:"Hair,omitempty" name:"Hair"`
 }
 
 type FaceHairAttributesInfo struct {
 
 	// 0：光头，1：短发，2：中发，3：长发，4：绑发
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Length *int64 `json:"Length,omitempty" name:"Length"`
 
 	// 0：有刘海，1：无刘海
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Bang *int64 `json:"Bang,omitempty" name:"Bang"`
 
 	// 0：黑色，1：金色，2：棕色，3：灰白色
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Color *int64 `json:"Color,omitempty" name:"Color"`
 }
 
@@ -693,6 +699,7 @@ type FaceInfo struct {
 	FaceAttributesInfo *FaceAttributesInfo `json:"FaceAttributesInfo,omitempty" name:"FaceAttributesInfo"`
 
 	// 人脸质量信息，包含质量分（score）、模糊分（sharpness）、光照分（brightness）、遮挡分（completeness）。只有当NeedFaceDetection设为1时才返回有效信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	FaceQualityInfo *FaceQualityInfo `json:"FaceQualityInfo,omitempty" name:"FaceQualityInfo"`
 }
 
@@ -700,26 +707,32 @@ type FaceQualityCompleteness struct {
 
 	// 眉毛的遮挡分数[0,100]，分数越高遮挡越少。 
 	// 参考范围：[0,80]表示发生遮挡。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Eyebrow *int64 `json:"Eyebrow,omitempty" name:"Eyebrow"`
 
 	// 眼睛的遮挡分数[0,100],分数越高遮挡越少。 
 	// 参考范围：[0,80]表示发生遮挡。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Eye *int64 `json:"Eye,omitempty" name:"Eye"`
 
 	// 鼻子的遮挡分数[0,100],分数越高遮挡越少。 
 	// 参考范围：[0,60]表示发生遮挡。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Nose *int64 `json:"Nose,omitempty" name:"Nose"`
 
 	// 脸颊的遮挡分数[0,100],分数越高遮挡越少。 
 	// 参考范围：[0,70]表示发生遮挡。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Cheek *int64 `json:"Cheek,omitempty" name:"Cheek"`
 
 	// 嘴巴的遮挡分数[0,100],分数越高遮挡越少。 
 	// 参考范围：[0,50]表示发生遮挡。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Mouth *int64 `json:"Mouth,omitempty" name:"Mouth"`
 
 	// 下巴的遮挡分数[0,100],分数越高遮挡越少。 
 	// 参考范围：[0,70]表示发生遮挡。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Chin *int64 `json:"Chin,omitempty" name:"Chin"`
 }
 
@@ -728,19 +741,23 @@ type FaceQualityInfo struct {
 	// 质量分: [0,100]，综合评价图像质量是否适合人脸识别，分数越高质量越好。 
 	// 参考范围：[0,40]较差，[40,60] 一般，[60,80]较好，[80,100]很好。 
 	// 建议：人脸入库选取70以上的图片。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Score *int64 `json:"Score,omitempty" name:"Score"`
 
 	// 清晰分：[0,100]，评价图片清晰程度，分数越高越清晰。 
 	// 参考范围：[0,40]特别模糊，[40,60]模糊，[60,80]一般，[80,100]清晰。 
 	// 建议：人脸入库选取80以上的图片。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Sharpness *int64 `json:"Sharpness,omitempty" name:"Sharpness"`
 
 	// 光照分：[0,100]，评价图片光照程度，分数越高越亮。 
 	// 参考范围： [0,30]偏暗，[30,70]光照正常，[70,100]偏亮。 
 	// 建议：人脸入库选取[30,70]的图片。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Brightness *int64 `json:"Brightness,omitempty" name:"Brightness"`
 
 	// 五官遮挡分，评价眉毛（Eyebrow）、眼睛（Eye）、鼻子（Nose）、脸颊（Cheek）、嘴巴（Mouth）、下巴（Chin）的被遮挡程度。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Completeness *FaceQualityCompleteness `json:"Completeness,omitempty" name:"Completeness"`
 }
 
@@ -820,6 +837,7 @@ type GetGroupListResponse struct {
 		GroupInfos []*GroupInfo `json:"GroupInfos,omitempty" name:"GroupInfos" list`
 
 		// 人员库总数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
 		GroupNum *uint64 `json:"GroupNum,omitempty" name:"GroupNum"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -909,6 +927,7 @@ type GetPersonGroupInfoResponse struct {
 		PersonGroupInfos []*PersonGroupInfo `json:"PersonGroupInfos,omitempty" name:"PersonGroupInfos" list`
 
 		// 人员库总数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
 		GroupNum *uint64 `json:"GroupNum,omitempty" name:"GroupNum"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -995,9 +1014,11 @@ type GetPersonListResponse struct {
 		PersonInfos []*PersonInfo `json:"PersonInfos,omitempty" name:"PersonInfos" list`
 
 		// 该人员库的人员数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
 		PersonNum *uint64 `json:"PersonNum,omitempty" name:"PersonNum"`
 
 		// 该人员库的人脸数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
 		FaceNum *uint64 `json:"FaceNum,omitempty" name:"FaceNum"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -1032,9 +1053,11 @@ type GroupInfo struct {
 	GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
 
 	// 人员库自定义描述字段
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	GroupExDescriptions []*string `json:"GroupExDescriptions,omitempty" name:"GroupExDescriptions" list`
 
 	// 人员库信息备注
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Tag *string `json:"Tag,omitempty" name:"Tag"`
 }
 

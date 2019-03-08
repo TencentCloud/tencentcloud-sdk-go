@@ -74,10 +74,10 @@ type Credentials struct {
 	// token
 	Token *string `json:"Token,omitempty" name:"Token"`
 
-	// 临时证书秘钥ID
+	// 临时证书密钥ID
 	TmpSecretId *string `json:"TmpSecretId,omitempty" name:"TmpSecretId"`
 
-	// 临时证书秘钥Key
+	// 临时证书密钥Key
 	TmpSecretKey *string `json:"TmpSecretKey,omitempty" name:"TmpSecretKey"`
 }
 

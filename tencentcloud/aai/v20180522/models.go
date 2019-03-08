@@ -87,7 +87,7 @@ type SentenceRecognitionRequest struct {
 	// 语音 URL，公网可下载。当 SourceType 值为 0 时须填写该字段，为 1 时不填；URL 的长度大于 0，小于 2048，需进行urlencode编码。音频时间长度要小于60s。
 	Url *string `json:"Url,omitempty" name:"Url"`
 
-	// 语音数据，当SourceType 值为1时必须填写，为0可不写。要base64编码(采用python语言时注意读取文件应该为string而不是byte，以byte格式读取后要decode()。编码后的数据不可带有回车换行符)。音频数据要小于900k。
+	// 语音数据，当SourceType 值为1时必须填写，为0可不写。要base64编码(采用python语言时注意读取文件应该为string而不是byte，以byte格式读取后要decode()。编码后的数据不可带有回车换行符)。音频数据要小于600kB。
 	Data *string `json:"Data,omitempty" name:"Data"`
 
 	// 数据长度，当 SourceType 值为1时必须填写，为0可不写（此数据长度为数据未进行base64编码时的数据长度）。
@@ -241,7 +241,7 @@ type TextToVoiceResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// base编码的wav音频
+		// base64编码的wav音频
 		Audio *string `json:"Audio,omitempty" name:"Audio"`
 
 		// 一次请求对应一个SessionId

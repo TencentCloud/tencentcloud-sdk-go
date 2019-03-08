@@ -527,7 +527,7 @@ type DescribeDeviceResponse struct {
 		// 设备是否在线，0不在线，1在线
 		Online *uint64 `json:"Online,omitempty" name:"Online"`
 
-		// 设备登陆时间
+		// 设备登录时间
 		LoginTime *uint64 `json:"LoginTime,omitempty" name:"LoginTime"`
 
 		// 设备固件版本
@@ -972,6 +972,22 @@ type DeviceInfo struct {
 
 	// LoRa设备的Mote type
 	LoraMoteType *uint64 `json:"LoraMoteType,omitempty" name:"LoraMoteType"`
+
+	// 首次上线时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FirstOnlineTime *uint64 `json:"FirstOnlineTime,omitempty" name:"FirstOnlineTime"`
+
+	// 最近下线时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LastOfflineTime *uint64 `json:"LastOfflineTime,omitempty" name:"LastOfflineTime"`
+
+	// 设备创建时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateTime *uint64 `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 设备日志级别
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LogLevel *uint64 `json:"LogLevel,omitempty" name:"LogLevel"`
 }
 
 type DeviceTag struct {
@@ -1135,7 +1151,7 @@ type ProductProperties struct {
 	// 产品绑定的物模型名称
 	ModelName *string `json:"ModelName,omitempty" name:"ModelName"`
 
-	// 产品秘钥，suite产品才会有
+	// 产品密钥，suite产品才会有
 	ProductKey *string `json:"ProductKey,omitempty" name:"ProductKey"`
 }
 
@@ -1266,7 +1282,7 @@ type TaskInfo struct {
 
 type TopicRulePayload struct {
 
-	// 规则的SQL语句，base64编码
+	// 规则的SQL语句，如： SELECT * FROM 'pid/dname/event'，然后对其进行base64编码，得：U0VMRUNUICogRlJPTSAncGlkL2RuYW1lL2V2ZW50Jw==
 	Sql *string `json:"Sql,omitempty" name:"Sql"`
 
 	// 行为的JSON字符串，大部分种类举例如下：
@@ -1276,7 +1292,7 @@ type TopicRulePayload struct {
 	// 规则描述
 	Description *string `json:"Description,omitempty" name:"Description"`
 
-	// 规则不生效
+	// 是否禁用规则
 	RuleDisabled *bool `json:"RuleDisabled,omitempty" name:"RuleDisabled"`
 }
 

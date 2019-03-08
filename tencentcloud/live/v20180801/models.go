@@ -199,6 +199,9 @@ type CallBackTemplateInfo struct {
 
 	// 鉴黄回调URL。
 	PornCensorshipNotifyUrl *string `json:"PornCensorshipNotifyUrl,omitempty" name:"PornCensorshipNotifyUrl"`
+
+	// 回调的鉴权key
+	CallbackKey *string `json:"CallbackKey,omitempty" name:"CallbackKey"`
 }
 
 type CertInfo struct {
@@ -298,6 +301,9 @@ type CreateLiveCallbackTemplateRequest struct {
 	// 鉴黄回调URL，
 	// 相关协议文档：[事件消息通知](/document/product/267/32741)。
 	PornCensorshipNotifyUrl *string `json:"PornCensorshipNotifyUrl,omitempty" name:"PornCensorshipNotifyUrl"`
+
+	// 回调key，回调URL公用，鉴权回调说明详见回调格式文档
+	CallbackKey *string `json:"CallbackKey,omitempty" name:"CallbackKey"`
 }
 
 func (r *CreateLiveCallbackTemplateRequest) ToJsonString() string {
@@ -2083,7 +2089,7 @@ type DescribeLiveStreamOnlineListRequest struct {
 	PageNum *uint64 `json:"PageNum,omitempty" name:"PageNum"`
 
 	// 每页大小，最大100。 
-	// 取值：1~100之前的任意整数。
+	// 取值：10~100之间的任意整数。
 	// 默认值：10。
 	PageSize *uint64 `json:"PageSize,omitempty" name:"PageSize"`
 
@@ -2655,6 +2661,9 @@ type ModifyLiveCallbackTemplateRequest struct {
 
 	// 鉴黄回调URL。
 	PornCensorshipNotifyUrl *string `json:"PornCensorshipNotifyUrl,omitempty" name:"PornCensorshipNotifyUrl"`
+
+	// 回调key，回调URL公用，鉴权回调说明详见回调格式文档
+	CallbackKey *string `json:"CallbackKey,omitempty" name:"CallbackKey"`
 }
 
 func (r *ModifyLiveCallbackTemplateRequest) ToJsonString() string {

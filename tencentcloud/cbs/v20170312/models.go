@@ -109,6 +109,131 @@ func (r *AttachDisksResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type AutoSnapshotPolicy struct {
+
+	// 定期快照策略ID。
+	AutoSnapshotPolicyId *string `json:"AutoSnapshotPolicyId,omitempty" name:"AutoSnapshotPolicyId"`
+
+	// 定期快照策略名称。
+	AutoSnapshotPolicyName *string `json:"AutoSnapshotPolicyName,omitempty" name:"AutoSnapshotPolicyName"`
+
+	// 定期快照策略的状态。取值范围：<br><li>NORMAL：正常<br><li>ISOLATED：已隔离。
+	AutoSnapshotPolicyState *string `json:"AutoSnapshotPolicyState,omitempty" name:"AutoSnapshotPolicyState"`
+
+	// 定期快照策略是否激活。
+	IsActivated *bool `json:"IsActivated,omitempty" name:"IsActivated"`
+
+	// 使用该定期快照策略创建出来的快照是否永久保留。
+	IsPermanent *bool `json:"IsPermanent,omitempty" name:"IsPermanent"`
+
+	// 使用该定期快照策略创建出来的快照保留天数。
+	RetentionDays *uint64 `json:"RetentionDays,omitempty" name:"RetentionDays"`
+
+	// 定期快照策略的创建时间。
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 定期快照下次触发的时间。
+	NextTriggerTime *string `json:"NextTriggerTime,omitempty" name:"NextTriggerTime"`
+
+	// 定期快照的执行策略。
+	Policy []*Policy `json:"Policy,omitempty" name:"Policy" list`
+
+	// 已绑定当前定期快照策略的云盘ID列表。
+	DiskIdSet []*string `json:"DiskIdSet,omitempty" name:"DiskIdSet" list`
+}
+
+type BindAutoSnapshotPolicyRequest struct {
+	*tchttp.BaseRequest
+
+	// 要绑定的定期快照策略ID。
+	AutoSnapshotPolicyId *string `json:"AutoSnapshotPolicyId,omitempty" name:"AutoSnapshotPolicyId"`
+
+	// 要绑定的云硬盘ID列表，一次请求最多绑定80块云盘。
+	DiskIds []*string `json:"DiskIds,omitempty" name:"DiskIds" list`
+}
+
+func (r *BindAutoSnapshotPolicyRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *BindAutoSnapshotPolicyRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type BindAutoSnapshotPolicyResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *BindAutoSnapshotPolicyResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *BindAutoSnapshotPolicyResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateAutoSnapshotPolicyRequest struct {
+	*tchttp.BaseRequest
+
+	// 定期快照的执行策略。
+	Policy []*Policy `json:"Policy,omitempty" name:"Policy" list`
+
+	// 要创建的定期快照策略名。不传则默认为“未命名”。最大长度不能超60个字节。
+	AutoSnapshotPolicyName *string `json:"AutoSnapshotPolicyName,omitempty" name:"AutoSnapshotPolicyName"`
+
+	// 是否激活定期快照策略，FALSE表示未激活，TRUE表示激活，默认为TRUE。
+	IsActivated *bool `json:"IsActivated,omitempty" name:"IsActivated"`
+
+	// 通过该定期快照策略创建的快照是否永久保留。FALSE表示非永久保留，TRUE表示永久保留，默认为FALSE。
+	IsPermanent *bool `json:"IsPermanent,omitempty" name:"IsPermanent"`
+
+	// 通过该定期快照策略创建的快照保留天数，默认保留7天。如果指定本参数，则IsPermanent入参不可指定为TRUE，否则会产生冲突。
+	RetentionDays *uint64 `json:"RetentionDays,omitempty" name:"RetentionDays"`
+
+	// 是否创建定期快照的执行策略。TRUE表示只需获取首次开始备份的时间，不实际创建定期快照策略，FALSE表示创建，默认为FALSE。
+	DryRun *bool `json:"DryRun,omitempty" name:"DryRun"`
+}
+
+func (r *CreateAutoSnapshotPolicyRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateAutoSnapshotPolicyRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateAutoSnapshotPolicyResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 新创建的定期快照策略ID。
+		AutoSnapshotPolicyId *string `json:"AutoSnapshotPolicyId,omitempty" name:"AutoSnapshotPolicyId"`
+
+		// 首次开始备份的时间。
+		NextTriggerTime *string `json:"NextTriggerTime,omitempty" name:"NextTriggerTime"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateAutoSnapshotPolicyResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateAutoSnapshotPolicyResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type CreateDisksRequest struct {
 	*tchttp.BaseRequest
 
@@ -219,6 +344,40 @@ func (r *CreateSnapshotResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DeleteAutoSnapshotPoliciesRequest struct {
+	*tchttp.BaseRequest
+
+	// 要删除的定期快照策略ID列表。
+	AutoSnapshotPolicyIds []*string `json:"AutoSnapshotPolicyIds,omitempty" name:"AutoSnapshotPolicyIds" list`
+}
+
+func (r *DeleteAutoSnapshotPoliciesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteAutoSnapshotPoliciesRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteAutoSnapshotPoliciesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DeleteAutoSnapshotPoliciesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteAutoSnapshotPoliciesResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DeleteSnapshotsRequest struct {
 	*tchttp.BaseRequest
 
@@ -250,6 +409,101 @@ func (r *DeleteSnapshotsResponse) ToJsonString() string {
 }
 
 func (r *DeleteSnapshotsResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeAutoSnapshotPoliciesRequest struct {
+	*tchttp.BaseRequest
+
+	// 要查询的定期快照策略ID列表。参数不支持同时指定`AutoSnapshotPolicyIds`和`Filters`。
+	AutoSnapshotPolicyIds []*string `json:"AutoSnapshotPolicyIds,omitempty" name:"AutoSnapshotPolicyIds" list`
+
+	// 过滤条件。参数不支持同时指定`AutoSnapshotPolicyIds`和`Filters`。<br><li>auto-snapshot-policy-id - Array of String - 是否必填：否 -（过滤条件）按定期快照策略ID进行过滤。定期快照策略ID形如：`asp-11112222`。<br><li>auto-snapshot-policy-state - Array of String - 是否必填：否 -（过滤条件）按定期快照策略的状态进行过滤。定期快照策略ID形如：`asp-11112222`。(NORMAL：正常 | ISOLATED：已隔离。)<br><li>auto-snapshot-policy-name - Array of String - 是否必填：否 -（过滤条件）按定期快照策略名称进行过滤。
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+
+	// 返回数量，默认为20，最大值为100。关于`Limit`的更进一步介绍请参考 API [简介](/document/362/13158)中的相关小节。
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 偏移量，默认为0。关于`Offset`的更进一步介绍请参考API[简介](/document/362/13158)中的相关小节。
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 输出定期快照列表的排列顺序。取值范围：<br><li>ASC：升序排列<br><li>DESC：降序排列。
+	Order *string `json:"Order,omitempty" name:"Order"`
+
+	// 定期快照列表排序的依据字段。取值范围：<br><li>CREATETIME：依据定期快照的创建时间排序<br>默认按创建时间排序。
+	OrderField *string `json:"OrderField,omitempty" name:"OrderField"`
+}
+
+func (r *DescribeAutoSnapshotPoliciesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeAutoSnapshotPoliciesRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeAutoSnapshotPoliciesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 有效的定期快照策略数量。
+		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 定期快照策略列表。
+		AutoSnapshotPolicySet []*AutoSnapshotPolicy `json:"AutoSnapshotPolicySet,omitempty" name:"AutoSnapshotPolicySet" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeAutoSnapshotPoliciesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeAutoSnapshotPoliciesResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeDiskAssociatedAutoSnapshotPolicyRequest struct {
+	*tchttp.BaseRequest
+
+	// 要查询的云硬盘ID。
+	DiskId *string `json:"DiskId,omitempty" name:"DiskId"`
+}
+
+func (r *DescribeDiskAssociatedAutoSnapshotPolicyRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeDiskAssociatedAutoSnapshotPolicyRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeDiskAssociatedAutoSnapshotPolicyResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 云盘绑定的定期快照数量。
+		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 云盘绑定的定期快照列表。
+		AutoSnapshotPolicySet []*AutoSnapshotPolicy `json:"AutoSnapshotPolicySet,omitempty" name:"AutoSnapshotPolicySet" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeDiskAssociatedAutoSnapshotPolicyResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeDiskAssociatedAutoSnapshotPolicyResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -625,36 +879,47 @@ type Disk struct {
 	Encrypt *bool `json:"Encrypt,omitempty" name:"Encrypt"`
 
 	// 云盘已挂载到子机，且子机与云盘都是包年包月。<br><li>true：子机设置了自动续费标识，但云盘未设置<br><li>false：云盘自动续费标识正常。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	AutoRenewFlagError *bool `json:"AutoRenewFlagError,omitempty" name:"AutoRenewFlagError"`
 
 	// 自动续费标识。取值范围：<br><li>NOTIFY_AND_AUTO_RENEW：通知过期且自动续费<br><li>NOTIFY_AND_MANUAL_RENEW：通知过期不自动续费<br><li>DISABLE_NOTIFY_AND_MANUAL_RENEW：不通知过期不自动续费。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	RenewFlag *string `json:"RenewFlag,omitempty" name:"RenewFlag"`
 
 	// 在云盘已挂载到实例，且实例与云盘都是包年包月的条件下，此字段才有意义。<br><li>true:云盘到期时间早于实例。<br><li>false：云盘到期时间晚于实例。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	DeadlineError *bool `json:"DeadlineError,omitempty" name:"DeadlineError"`
 
 	// 判断预付费的云盘是否支持主动退还。<br><li>true:支持主动退还<br><li>false:不支持主动退还。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsReturnable *bool `json:"IsReturnable,omitempty" name:"IsReturnable"`
 
 	// 预付费云盘在不支持主动退还的情况下，该参数表明不支持主动退还的具体原因。取值范围：<br><li>1：云硬盘已经退还<br><li>2：云硬盘已过期<br><li>3：云盘不支持退还<br><li>8：超过可退还数量的限制。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	ReturnFailCode *int64 `json:"ReturnFailCode,omitempty" name:"ReturnFailCode"`
 
 	// 云盘关联的定期快照ID。只有在调用DescribeDisks接口时，入参ReturnBindAutoSnapshotPolicy取值为TRUE才会返回该参数。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	AutoSnapshotPolicyIds []*string `json:"AutoSnapshotPolicyIds,omitempty" name:"AutoSnapshotPolicyIds" list`
 
 	// 与云盘绑定的标签，云盘未绑定标签则取值为空。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Tags []*Tag `json:"Tags,omitempty" name:"Tags" list`
 
 	// 云盘是否与挂载的实例一起销毁。<br><li>true:销毁实例时会同时销毁云盘，只支持按小时后付费云盘。<br><li>false：销毁实例时不销毁云盘。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	DeleteWithInstance *bool `json:"DeleteWithInstance,omitempty" name:"DeleteWithInstance"`
 
 	// 当前时间距离盘到期的天数（仅对预付费盘有意义）。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	DifferDaysOfDeadline *int64 `json:"DifferDaysOfDeadline,omitempty" name:"DifferDaysOfDeadline"`
 
 	// 云盘是否处于类型变更中。取值范围：<br><li>false:表示云盘不处于类型变更中<br><li>true:表示云盘已发起类型变更，正处于迁移中。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Migrating *bool `json:"Migrating,omitempty" name:"Migrating"`
 
 	// 云盘类型变更的迁移进度，取值0到100。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	MigratePercent *uint64 `json:"MigratePercent,omitempty" name:"MigratePercent"`
 }
 
@@ -694,9 +959,11 @@ type DiskConfig struct {
 	Zone *string `json:"Zone,omitempty" name:"Zone"`
 
 	// 实例机型。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	DeviceClass *string `json:"DeviceClass,omitempty" name:"DeviceClass"`
 
 	// 实例机型系列。详见[实例类型](https://cloud.tencent.com/document/product/213/11518)
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceFamily *string `json:"InstanceFamily,omitempty" name:"InstanceFamily"`
 }
 
@@ -1027,13 +1294,25 @@ type Placement struct {
 	ProjectId *uint64 `json:"ProjectId,omitempty" name:"ProjectId"`
 
 	// 实例所属的独享集群ID。作为入参时，表示对指定的CdcId独享集群的资源进行操作，可为空。 作为出参时，表示资源所属的独享集群的ID，可为空。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	CdcId *string `json:"CdcId,omitempty" name:"CdcId"`
 
 	// 围笼Id。作为入参时，表示对指定的CageId的资源进行操作，可为空。 作为出参时，表示资源所属围笼ID，可为空。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	CageId *string `json:"CageId,omitempty" name:"CageId"`
 
 	// 独享集群名字。作为入参时，忽略。作为出参时，表示云硬盘所属的独享集群名，可为空。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	CdcName *string `json:"CdcName,omitempty" name:"CdcName"`
+}
+
+type Policy struct {
+
+	// 选定周一到周日中需要创建快照的日期，取值范围：[0, 6]。0表示周一触发，依此类推。
+	DayOfWeek []*uint64 `json:"DayOfWeek,omitempty" name:"DayOfWeek" list`
+
+	// 指定定期快照策略的触发时间。单位为小时，取值范围：[0, 23]。00:00 ~ 23:00 共 24 个时间点可选，1表示 01:00，依此类推。
+	Hour []*uint64 `json:"Hour,omitempty" name:"Hour" list`
 }
 
 type PrepayPrice struct {
@@ -1048,18 +1327,23 @@ type PrepayPrice struct {
 type Price struct {
 
 	// 预付费云盘预支费用的原价，单位：元。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	OriginalPrice *float64 `json:"OriginalPrice,omitempty" name:"OriginalPrice"`
 
 	// 预付费云盘预支费用的折扣价，单位：元。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	DiscountPrice *float64 `json:"DiscountPrice,omitempty" name:"DiscountPrice"`
 
 	// 后付费云盘原单价，单位：元。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	UnitPrice *float64 `json:"UnitPrice,omitempty" name:"UnitPrice"`
 
 	// 后付费云盘的计价单元，取值范围：<br><li>HOUR：表示后付费云盘的计价单元是按小时计算。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	ChargeUnit *string `json:"ChargeUnit,omitempty" name:"ChargeUnit"`
 
 	// 后付费云盘折扣单价，单位：元。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	UnitPriceDiscount *float64 `json:"UnitPriceDiscount,omitempty" name:"UnitPriceDiscount"`
 }
 
@@ -1191,6 +1475,7 @@ type Snapshot struct {
 type SnapshotOperationLog struct {
 
 	// 操作者的UIN。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Operator *string `json:"Operator,omitempty" name:"Operator"`
 
 	// 操作类型。取值范围：
@@ -1259,5 +1544,42 @@ func (r *TerminateDisksResponse) ToJsonString() string {
 }
 
 func (r *TerminateDisksResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type UnbindAutoSnapshotPolicyRequest struct {
+	*tchttp.BaseRequest
+
+	// 要解绑定期快照策略的云盘ID列表。
+	DiskIds []*string `json:"DiskIds,omitempty" name:"DiskIds" list`
+
+	// 要解绑的定期快照策略ID。
+	AutoSnapshotPolicyId *string `json:"AutoSnapshotPolicyId,omitempty" name:"AutoSnapshotPolicyId"`
+}
+
+func (r *UnbindAutoSnapshotPolicyRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *UnbindAutoSnapshotPolicyRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type UnbindAutoSnapshotPolicyResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *UnbindAutoSnapshotPolicyResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *UnbindAutoSnapshotPolicyResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }

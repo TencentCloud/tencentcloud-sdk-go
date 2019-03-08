@@ -255,7 +255,7 @@ type CreateImageRequest struct {
 	// 需要制作镜像的快照Id,必须包含一个系统盘快照
 	SnapshotIds []*string `json:"SnapshotIds,omitempty" name:"SnapshotIds" list`
 
-	// DryRun
+	// 检测请求的合法性，但不会对操作的资源产生任何影响
 	DryRun *bool `json:"DryRun,omitempty" name:"DryRun"`
 }
 
@@ -345,6 +345,7 @@ type DataDisk struct {
 	// <li>FALSE：子机销毁时，保留数据盘<br>
 	// 默认取值：TRUE<br>
 	// 该参数目前仅用于 `RunInstances` 接口。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	DeleteWithInstance *bool `json:"DeleteWithInstance,omitempty" name:"DeleteWithInstance"`
 }
 
@@ -1316,9 +1317,11 @@ type DisasterRecoverGroup struct {
 	CurrentNum *int64 `json:"CurrentNum,omitempty" name:"CurrentNum"`
 
 	// 分散置放群组内，云主机id列表。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds" list`
 
 	// 分散置放群组创建时间。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
 }
 
@@ -1334,12 +1337,15 @@ type EnhancedService struct {
 type Externals struct {
 
 	// 释放地址
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	ReleaseAddress *bool `json:"ReleaseAddress,omitempty" name:"ReleaseAddress"`
 
 	// 不支持的网络类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	UnsupportNetworks []*string `json:"UnsupportNetworks,omitempty" name:"UnsupportNetworks" list`
 
 	// HDD本地存储属性
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	StorageBlockAttr *StorageBlock `json:"StorageBlockAttr,omitempty" name:"StorageBlockAttr"`
 }
 
@@ -1451,18 +1457,22 @@ type Image struct {
 	ImageSource *string `json:"ImageSource,omitempty" name:"ImageSource"`
 
 	// 同步百分比
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	SyncPercent *int64 `json:"SyncPercent,omitempty" name:"SyncPercent"`
 
 	// 镜像是否支持cloud-init
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsSupportCloudinit *bool `json:"IsSupportCloudinit,omitempty" name:"IsSupportCloudinit"`
 }
 
 type ImageOsList struct {
 
 	// 支持的windows操作系统。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Windows []*string `json:"Windows,omitempty" name:"Windows" list`
 
 	// 支持的linux操作系统
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Linux []*string `json:"Linux,omitempty" name:"Linux" list`
 }
 
@@ -1960,6 +1970,7 @@ type Instance struct {
 	PrivateIpAddresses []*string `json:"PrivateIpAddresses,omitempty" name:"PrivateIpAddresses" list`
 
 	// 实例主网卡的公网`IP`列表。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	PublicIpAddresses []*string `json:"PublicIpAddresses,omitempty" name:"PublicIpAddresses" list`
 
 	// 实例带宽信息。
@@ -2082,6 +2093,7 @@ type InstanceTypeQuotaItem struct {
 	NetworkCard *int64 `json:"NetworkCard,omitempty" name:"NetworkCard"`
 
 	// 扩展属性。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Externals *Externals `json:"Externals,omitempty" name:"Externals"`
 
 	// 实例的CPU核数，单位：核。
@@ -2142,15 +2154,19 @@ type InternetChargeTypeConfig struct {
 type ItemPrice struct {
 
 	// 后续单价，单位：元。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	UnitPrice *float64 `json:"UnitPrice,omitempty" name:"UnitPrice"`
 
 	// 后续计价单元，可取值范围： <br><li>HOUR：表示计价单元是按每小时来计算。当前涉及该计价单元的场景有：实例按小时后付费（POSTPAID_BY_HOUR）、带宽按小时后付费（BANDWIDTH_POSTPAID_BY_HOUR）：<br><li>GB：表示计价单元是按每GB来计算。当前涉及该计价单元的场景有：流量按小时后付费（TRAFFIC_POSTPAID_BY_HOUR）。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	ChargeUnit *string `json:"ChargeUnit,omitempty" name:"ChargeUnit"`
 
 	// 预支费用的原价，单位：元。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	OriginalPrice *float64 `json:"OriginalPrice,omitempty" name:"OriginalPrice"`
 
 	// 预支费用的折扣价，单位：元。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	DiscountPrice *float64 `json:"DiscountPrice,omitempty" name:"DiscountPrice"`
 }
 
@@ -2199,12 +2215,15 @@ type LocalDiskType struct {
 type LoginSettings struct {
 
 	// 实例登录密码。不同操作系统类型密码复杂度限制不一样，具体如下：<br><li>Linux实例密码必须8到16位，至少包括两项[a-z，A-Z]、[0-9] 和 [( ) ` ~ ! @ # $ % ^ & * - + = | { } [ ] : ; ' , . ? / ]中的特殊符号。<br><li>Windows实例密码必须12到16位，至少包括三项[a-z]，[A-Z]，[0-9] 和 [( ) ` ~ ! @ # $ % ^ & * - + = { } [ ] : ; ' , . ? /]中的特殊符号。<br><br>若不指定该参数，则由系统随机生成密码，并通过站内信方式通知到用户。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Password *string `json:"Password,omitempty" name:"Password"`
 
 	// 密钥ID列表。关联密钥后，就可以通过对应的私钥来访问实例；KeyId可通过接口DescribeKeyPairs获取，密钥与密码不能同时指定，同时Windows操作系统不支持指定密钥。当前仅支持购买的时候指定一个密钥。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	KeyIds []*string `json:"KeyIds,omitempty" name:"KeyIds" list`
 
 	// 保持镜像的原始设置。该参数与Password或KeyIds.N不能同时指定。只有使用自定义镜像、共享镜像或外部导入镜像创建实例时才能指定该参数为TRUE。取值范围：<br><li>TRUE：表示保持镜像的登录设置<br><li>FALSE：表示不保持镜像的登录设置<br><br>默认取值：FALSE。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	KeepImageLogin *string `json:"KeepImageLogin,omitempty" name:"KeepImageLogin"`
 }
 
@@ -3180,12 +3199,15 @@ func (r *StopInstancesResponse) FromJsonString(s string) error {
 type StorageBlock struct {
 
 	// HDD本地存储类型，值为：LOCAL_PRO.
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Type *string `json:"Type,omitempty" name:"Type"`
 
 	// HDD本地存储的最小容量
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	MinSize *int64 `json:"MinSize,omitempty" name:"MinSize"`
 
 	// HDD本地存储的最大容量
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	MaxSize *int64 `json:"MaxSize,omitempty" name:"MaxSize"`
 }
 

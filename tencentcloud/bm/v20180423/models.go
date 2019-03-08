@@ -203,6 +203,21 @@ func (r *BuyDevicesResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type CpuInfo struct {
+
+	// CPU的ID
+	CpuId *uint64 `json:"CpuId,omitempty" name:"CpuId"`
+
+	// CPU型号描述
+	CpuDescription *string `json:"CpuDescription,omitempty" name:"CpuDescription"`
+
+	// 机型序列
+	Series *uint64 `json:"Series,omitempty" name:"Series"`
+
+	// 支持的RAID方式，0：有RAID卡，1：没有RAID卡
+	ContainRaidCard []*uint64 `json:"ContainRaidCard,omitempty" name:"ContainRaidCard" list`
+}
+
 type CreateCustomImageRequest struct {
 	*tchttp.BaseRequest
 
@@ -730,6 +745,43 @@ func (r *DescribeDeviceClassResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeDeviceHardwareInfoRequest struct {
+	*tchttp.BaseRequest
+
+	// 设备 ID 列表
+	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds" list`
+}
+
+func (r *DescribeDeviceHardwareInfoRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeDeviceHardwareInfoRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeDeviceHardwareInfoResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 设备硬件配置信息
+		DeviceHardwareInfoSet []*DeviceHardwareInfo `json:"DeviceHardwareInfoSet,omitempty" name:"DeviceHardwareInfoSet" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeDeviceHardwareInfoResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeDeviceHardwareInfoResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeDeviceInventoryRequest struct {
 	*tchttp.BaseRequest
 
@@ -1072,6 +1124,86 @@ func (r *DescribeDevicesResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeHardwareSpecificationRequest struct {
+	*tchttp.BaseRequest
+}
+
+func (r *DescribeHardwareSpecificationRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeHardwareSpecificationRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeHardwareSpecificationResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// CPU型号列表
+		CpuInfoSet []*CpuInfo `json:"CpuInfoSet,omitempty" name:"CpuInfoSet" list`
+
+		// 内存的取值，单位为G
+		MemSet []*uint64 `json:"MemSet,omitempty" name:"MemSet" list`
+
+		// 硬盘型号列表
+		DiskInfoSet []*DiskInfo `json:"DiskInfoSet,omitempty" name:"DiskInfoSet" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeHardwareSpecificationResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeHardwareSpecificationResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeHostedDeviceOutBandInfoRequest struct {
+	*tchttp.BaseRequest
+
+	// 托管设备的唯一ID数组,数组个数不超过20
+	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds" list`
+
+	// 可用区ID
+	Zone *string `json:"Zone,omitempty" name:"Zone"`
+}
+
+func (r *DescribeHostedDeviceOutBandInfoRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeHostedDeviceOutBandInfoRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeHostedDeviceOutBandInfoResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 托管设备带外信息
+		HostedDeviceOutBandInfoSet []*HostedDeviceOutBandInfo `json:"HostedDeviceOutBandInfoSet,omitempty" name:"HostedDeviceOutBandInfoSet" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeHostedDeviceOutBandInfoResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeHostedDeviceOutBandInfoResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeOperationResultRequest struct {
 	*tchttp.BaseRequest
 
@@ -1211,6 +1343,43 @@ func (r *DescribePsaRegulationsResponse) ToJsonString() string {
 }
 
 func (r *DescribePsaRegulationsResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeRegionsRequest struct {
+	*tchttp.BaseRequest
+
+	// 地域整型ID，目前黑石可用地域包括：8-北京，4-上海，1-广州， 19-重庆
+	RegionId *uint64 `json:"RegionId,omitempty" name:"RegionId"`
+}
+
+func (r *DescribeRegionsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeRegionsRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeRegionsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 地域信息
+		RegionInfoSet []*RegionInfo `json:"RegionInfoSet,omitempty" name:"RegionInfoSet" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeRegionsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeRegionsResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -1619,6 +1788,54 @@ type DeviceDiskSizeInfo struct {
 	DiskSize *uint64 `json:"DiskSize,omitempty" name:"DiskSize"`
 }
 
+type DeviceHardwareInfo struct {
+
+	// 设备实例 ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 是否自定义机型
+	IsElastic *uint64 `json:"IsElastic,omitempty" name:"IsElastic"`
+
+	// 机型计费模式，1 为预付费，2 为后付费
+	CpmPayMode *uint64 `json:"CpmPayMode,omitempty" name:"CpmPayMode"`
+
+	// 自定义机型，CPU 型号 ID（非自定义机型返回0）
+	CpuId *uint64 `json:"CpuId,omitempty" name:"CpuId"`
+
+	// 自定义机型，内存大小, 单位 GB（非自定义机型返回0）
+	Mem *uint64 `json:"Mem,omitempty" name:"Mem"`
+
+	// 是否有 RAID 卡，0：没有 RAID 卡； 1：有 RAID 卡
+	ContainRaidCard *uint64 `json:"ContainRaidCard,omitempty" name:"ContainRaidCard"`
+
+	// 自定义机型系统盘类型ID（若没有则返回0）
+	SystemDiskTypeId *uint64 `json:"SystemDiskTypeId,omitempty" name:"SystemDiskTypeId"`
+
+	// 自定义机型系统盘数量（若没有则返回0）
+	SystemDiskCount *uint64 `json:"SystemDiskCount,omitempty" name:"SystemDiskCount"`
+
+	// 自定义机型数据盘类型 ID（若没有则返回0）
+	DataDiskTypeId *uint64 `json:"DataDiskTypeId,omitempty" name:"DataDiskTypeId"`
+
+	// 自定义机型数据盘数量（若没有则返回0）
+	DataDiskCount *uint64 `json:"DataDiskCount,omitempty" name:"DataDiskCount"`
+
+	// CPU 型号描述
+	CpuDescription *string `json:"CpuDescription,omitempty" name:"CpuDescription"`
+
+	// 内存描述
+	MemDescription *string `json:"MemDescription,omitempty" name:"MemDescription"`
+
+	// 磁盘描述
+	DiskDescription *string `json:"DiskDescription,omitempty" name:"DiskDescription"`
+
+	// 网卡描述
+	NicDescription *string `json:"NicDescription,omitempty" name:"NicDescription"`
+
+	// 是否支持 RAID 的描述
+	RaidDescription *string `json:"RaidDescription,omitempty" name:"RaidDescription"`
+}
+
 type DeviceInfo struct {
 
 	// 设备唯一ID
@@ -1841,6 +2058,18 @@ type DevicePriceInfo struct {
 	GoodsCount *uint64 `json:"GoodsCount,omitempty" name:"GoodsCount"`
 }
 
+type DiskInfo struct {
+
+	// 磁盘ID
+	DiskTypeId *uint64 `json:"DiskTypeId,omitempty" name:"DiskTypeId"`
+
+	// 磁盘的容量，单位为G
+	Size *uint64 `json:"Size,omitempty" name:"Size"`
+
+	// 磁盘信息描述
+	DiskDescription *string `json:"DiskDescription,omitempty" name:"DiskDescription"`
+}
+
 type FailedTaskInfo struct {
 
 	// 运行脚本的设备ID
@@ -1848,6 +2077,21 @@ type FailedTaskInfo struct {
 
 	// 失败原因
 	ErrorMsg *string `json:"ErrorMsg,omitempty" name:"ErrorMsg"`
+}
+
+type HostedDeviceOutBandInfo struct {
+
+	// 物理机ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 带外IP
+	OutBandIp *string `json:"OutBandIp,omitempty" name:"OutBandIp"`
+
+	// VPN的IP
+	VpnIp *string `json:"VpnIp,omitempty" name:"VpnIp"`
+
+	// VPN的端口
+	VpnPort *uint64 `json:"VpnPort,omitempty" name:"VpnPort"`
 }
 
 type ModifyCustomImageAttributeRequest struct {
@@ -2273,6 +2517,58 @@ func (r *RebootDevicesResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type RecoverDevicesRequest struct {
+	*tchttp.BaseRequest
+
+	// 需要恢复的物理机ID列表
+	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds" list`
+}
+
+func (r *RecoverDevicesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *RecoverDevicesRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type RecoverDevicesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 黑石异步任务ID
+		TaskId *uint64 `json:"TaskId,omitempty" name:"TaskId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *RecoverDevicesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *RecoverDevicesResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type RegionInfo struct {
+
+	// 地域ID
+	Region *string `json:"Region,omitempty" name:"Region"`
+
+	// 地域整型ID
+	RegionId *uint64 `json:"RegionId,omitempty" name:"RegionId"`
+
+	// 地域描述
+	RegionDescription *string `json:"RegionDescription,omitempty" name:"RegionDescription"`
+
+	// 该地域下的可用区信息
+	ZoneInfoSet []*ZoneInfo `json:"ZoneInfoSet,omitempty" name:"ZoneInfoSet" list`
+}
+
 type RepairTaskControlRequest struct {
 	*tchttp.BaseRequest
 
@@ -2354,6 +2650,43 @@ func (r *ResetDevicePasswordResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type ReturnDevicesRequest struct {
+	*tchttp.BaseRequest
+
+	// 需要退还的物理机ID列表
+	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds" list`
+}
+
+func (r *ReturnDevicesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ReturnDevicesRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ReturnDevicesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 黑石异步任务ID
+		TaskId *uint64 `json:"TaskId,omitempty" name:"TaskId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ReturnDevicesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ReturnDevicesResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type RunUserCmdRequest struct {
 	*tchttp.BaseRequest
 
@@ -2412,7 +2745,7 @@ type SetOutBandVpnAuthPasswordRequest struct {
 	// 设置的Vpn认证密码
 	Password *string `json:"Password,omitempty" name:"Password"`
 
-	// 操作字段，取值为：create（创建）或update（修改）
+	// 操作字段，取值为：Create（创建）或Update（修改）
 	Operate *string `json:"Operate,omitempty" name:"Operate"`
 }
 
@@ -2765,4 +3098,16 @@ type UserCmdTaskInfo struct {
 
 	// 用户执行脚本结束退出的返回值，没有返回值为-1
 	LastShellExit *int64 `json:"LastShellExit,omitempty" name:"LastShellExit"`
+}
+
+type ZoneInfo struct {
+
+	// 可用区ID
+	Zone *string `json:"Zone,omitempty" name:"Zone"`
+
+	// 可用区整型ID
+	ZoneId *uint64 `json:"ZoneId,omitempty" name:"ZoneId"`
+
+	// 可用区描述
+	ZoneDescription *string `json:"ZoneDescription,omitempty" name:"ZoneDescription"`
 }

@@ -370,6 +370,31 @@ func (c *Client) DescribeDeviceClassPartition(request *DescribeDeviceClassPartit
     return
 }
 
+func NewDescribeDeviceHardwareInfoRequest() (request *DescribeDeviceHardwareInfoRequest) {
+    request = &DescribeDeviceHardwareInfoRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("bm", APIVersion, "DescribeDeviceHardwareInfo")
+    return
+}
+
+func NewDescribeDeviceHardwareInfoResponse() (response *DescribeDeviceHardwareInfoResponse) {
+    response = &DescribeDeviceHardwareInfoResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询设备硬件配置信息，如 CPU 型号，内存大小，磁盘大小和数量
+func (c *Client) DescribeDeviceHardwareInfo(request *DescribeDeviceHardwareInfoRequest) (response *DescribeDeviceHardwareInfoResponse, err error) {
+    if request == nil {
+        request = NewDescribeDeviceHardwareInfoRequest()
+    }
+    response = NewDescribeDeviceHardwareInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeDeviceInventoryRequest() (request *DescribeDeviceInventoryRequest) {
     request = &DescribeDeviceInventoryRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -520,6 +545,56 @@ func (c *Client) DescribeDevices(request *DescribeDevicesRequest) (response *Des
     return
 }
 
+func NewDescribeHardwareSpecificationRequest() (request *DescribeHardwareSpecificationRequest) {
+    request = &DescribeHardwareSpecificationRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("bm", APIVersion, "DescribeHardwareSpecification")
+    return
+}
+
+func NewDescribeHardwareSpecificationResponse() (response *DescribeHardwareSpecificationResponse) {
+    response = &DescribeHardwareSpecificationResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询自定义机型部件信息，包括CpuId对应的型号，DiskTypeId对应的磁盘类型
+func (c *Client) DescribeHardwareSpecification(request *DescribeHardwareSpecificationRequest) (response *DescribeHardwareSpecificationResponse, err error) {
+    if request == nil {
+        request = NewDescribeHardwareSpecificationRequest()
+    }
+    response = NewDescribeHardwareSpecificationResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeHostedDeviceOutBandInfoRequest() (request *DescribeHostedDeviceOutBandInfoRequest) {
+    request = &DescribeHostedDeviceOutBandInfoRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("bm", APIVersion, "DescribeHostedDeviceOutBandInfo")
+    return
+}
+
+func NewDescribeHostedDeviceOutBandInfoResponse() (response *DescribeHostedDeviceOutBandInfoResponse) {
+    response = &DescribeHostedDeviceOutBandInfoResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询托管设备带外信息
+func (c *Client) DescribeHostedDeviceOutBandInfo(request *DescribeHostedDeviceOutBandInfoRequest) (response *DescribeHostedDeviceOutBandInfoResponse, err error) {
+    if request == nil {
+        request = NewDescribeHostedDeviceOutBandInfoRequest()
+    }
+    response = NewDescribeHostedDeviceOutBandInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeOperationResultRequest() (request *DescribeOperationResultRequest) {
     request = &DescribeOperationResultRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -591,6 +666,31 @@ func (c *Client) DescribePsaRegulations(request *DescribePsaRegulationsRequest) 
         request = NewDescribePsaRegulationsRequest()
     }
     response = NewDescribePsaRegulationsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeRegionsRequest() (request *DescribeRegionsRequest) {
+    request = &DescribeRegionsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("bm", APIVersion, "DescribeRegions")
+    return
+}
+
+func NewDescribeRegionsResponse() (response *DescribeRegionsResponse) {
+    response = &DescribeRegionsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询地域以及可用区
+func (c *Client) DescribeRegions(request *DescribeRegionsRequest) (response *DescribeRegionsResponse, err error) {
+    if request == nil {
+        request = NewDescribeRegionsRequest()
+    }
+    response = NewDescribeRegionsResponse()
     err = c.Send(request, response)
     return
 }
@@ -943,7 +1043,7 @@ func NewOfflineDevicesResponse() (response *OfflineDevicesResponse) {
     return
 }
 
-// 用于销毁可退还的服务器
+// 销毁黑石物理机实例：可以销毁物理机列表中的竞价实例，或回收站列表中所有计费模式的实例
 func (c *Client) OfflineDevices(request *OfflineDevicesRequest) (response *OfflineDevicesResponse, err error) {
     if request == nil {
         request = NewOfflineDevicesRequest()
@@ -974,6 +1074,31 @@ func (c *Client) RebootDevices(request *RebootDevicesRequest) (response *RebootD
         request = NewRebootDevicesRequest()
     }
     response = NewRebootDevicesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewRecoverDevicesRequest() (request *RecoverDevicesRequest) {
+    request = &RecoverDevicesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("bm", APIVersion, "RecoverDevices")
+    return
+}
+
+func NewRecoverDevicesResponse() (response *RecoverDevicesResponse) {
+    response = &RecoverDevicesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 恢复回收站中的物理机（仅限后付费的物理机）
+func (c *Client) RecoverDevices(request *RecoverDevicesRequest) (response *RecoverDevicesResponse, err error) {
+    if request == nil {
+        request = NewRecoverDevicesRequest()
+    }
+    response = NewRecoverDevicesResponse()
     err = c.Send(request, response)
     return
 }
@@ -1044,6 +1169,31 @@ func (c *Client) ResetDevicePassword(request *ResetDevicePasswordRequest) (respo
         request = NewResetDevicePasswordRequest()
     }
     response = NewResetDevicePasswordResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewReturnDevicesRequest() (request *ReturnDevicesRequest) {
+    request = &ReturnDevicesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("bm", APIVersion, "ReturnDevices")
+    return
+}
+
+func NewReturnDevicesResponse() (response *ReturnDevicesResponse) {
+    response = &ReturnDevicesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 退回物理机至回收站，支持批量退还不同计费模式的物理机（包括预付费、后付费、预付费转后付费）
+func (c *Client) ReturnDevices(request *ReturnDevicesRequest) (response *ReturnDevicesResponse, err error) {
+    if request == nil {
+        request = NewReturnDevicesRequest()
+    }
+    response = NewReturnDevicesResponse()
     err = c.Send(request, response)
     return
 }
