@@ -139,8 +139,8 @@ func NewCreateSyncCheckJobResponse() (response *CreateSyncCheckJobResponse) {
     return
 }
 
-// 在开始灾备同步前, 必须调用本接口创建校验, 且校验成功后才能开始同步数据. 校验的结果可以通过DescribeSyncCheckJob查看.
-// 校验成功或失败后均可再修改, 修改后必须重新校验并通过后, 才能开始同步.
+// 在调用 StartSyncJob 接口启动灾备同步前, 必须调用本接口创建校验, 且校验成功后才能开始同步数据. 校验的结果可以通过 DescribeSyncCheckJob 查看.
+// 校验成功后才能启动同步.
 func (c *Client) CreateSyncCheckJob(request *CreateSyncCheckJobRequest) (response *CreateSyncCheckJobResponse, err error) {
     if request == nil {
         request = NewCreateSyncCheckJobRequest()
@@ -166,6 +166,7 @@ func NewCreateSyncJobResponse() (response *CreateSyncJobResponse) {
 }
 
 // 本接口(CreateSyncJob)用于创建灾备同步任务。
+// 创建同步任务后，可以通过 CreateSyncCheckJob 接口发起校验任务。校验成功后才可以通过 StartSyncJob 接口启动同步任务。
 func (c *Client) CreateSyncJob(request *CreateSyncJobRequest) (response *CreateSyncJobResponse, err error) {
     if request == nil {
         request = NewCreateSyncJobRequest()
@@ -293,9 +294,12 @@ func NewDescribeSyncCheckJobResponse() (response *DescribeSyncCheckJobResponse) 
     return
 }
 
-// 本接口用于创建灾备同步校验任务后,获取校验的结果. 能查询到当前校验的状态和进度. 
-// 若通过校验, 则可调用'StartSyncJob' 开始迁移.
-// 若未通过校验, 则会返回校验失败的原因. 可通过'ModifySyncJob'修改配置重新发起校验.
+// 本接口用于在通过 CreateSyncCheckJob 接口创建灾备同步校验任务后，获取校验的结果。能查询到当前校验的状态和进度。
+// 若通过校验, 则可调用 StartSyncJob 启动同步任务。
+// 若未通过校验, 则会返回校验失败的原因。 可通过 ModifySyncJob 修改配置，然后再次发起校验。
+// 校验任务需要大概约30秒，当返回的 Status 不为 finished 时表示尚未校验完成，需要轮询该接口。
+// 如果 Status=finished 且 CheckFlag=1 时表示校验成功。
+// 如果 Status=finished 且 CheckFlag !=1 时表示校验失败。
 func (c *Client) DescribeSyncCheckJob(request *DescribeSyncCheckJobRequest) (response *DescribeSyncCheckJobResponse, err error) {
     if request == nil {
         request = NewDescribeSyncCheckJobRequest()
@@ -427,7 +431,7 @@ func NewStartSyncJobResponse() (response *StartSyncJobResponse) {
     return
 }
 
-// 创建的灾备同步任务在校验成功后，可以调用该接口开始同步
+// 创建的灾备同步任务在通过 CreateSyncCheckJob 和 DescribeSyncCheckJob 确定校验成功后，可以调用该接口启动同步
 func (c *Client) StartSyncJob(request *StartSyncJobRequest) (response *StartSyncJobResponse, err error) {
     if request == nil {
         request = NewStartSyncJobRequest()

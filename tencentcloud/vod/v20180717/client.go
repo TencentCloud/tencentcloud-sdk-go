@@ -149,6 +149,56 @@ func (c *Client) CreateClass(request *CreateClassRequest) (response *CreateClass
     return
 }
 
+func NewCreateTranscodeTemplateRequest() (request *CreateTranscodeTemplateRequest) {
+    request = &CreateTranscodeTemplateRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vod", APIVersion, "CreateTranscodeTemplate")
+    return
+}
+
+func NewCreateTranscodeTemplateResponse() (response *CreateTranscodeTemplateResponse) {
+    response = &CreateTranscodeTemplateResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 创建用户自定义转码模板，数量上限：1000。
+func (c *Client) CreateTranscodeTemplate(request *CreateTranscodeTemplateRequest) (response *CreateTranscodeTemplateResponse, err error) {
+    if request == nil {
+        request = NewCreateTranscodeTemplateRequest()
+    }
+    response = NewCreateTranscodeTemplateResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateWatermarkTemplateRequest() (request *CreateWatermarkTemplateRequest) {
+    request = &CreateWatermarkTemplateRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vod", APIVersion, "CreateWatermarkTemplate")
+    return
+}
+
+func NewCreateWatermarkTemplateResponse() (response *CreateWatermarkTemplateResponse) {
+    response = &CreateWatermarkTemplateResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 创建用户自定义水印模板，数量上限：1000。
+func (c *Client) CreateWatermarkTemplate(request *CreateWatermarkTemplateRequest) (response *CreateWatermarkTemplateResponse, err error) {
+    if request == nil {
+        request = NewCreateWatermarkTemplateRequest()
+    }
+    response = NewCreateWatermarkTemplateResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteClassRequest() (request *DeleteClassRequest) {
     request = &DeleteClassRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -197,6 +247,56 @@ func (c *Client) DeleteMedia(request *DeleteMediaRequest) (response *DeleteMedia
         request = NewDeleteMediaRequest()
     }
     response = NewDeleteMediaResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteTranscodeTemplateRequest() (request *DeleteTranscodeTemplateRequest) {
+    request = &DeleteTranscodeTemplateRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vod", APIVersion, "DeleteTranscodeTemplate")
+    return
+}
+
+func NewDeleteTranscodeTemplateResponse() (response *DeleteTranscodeTemplateResponse) {
+    response = &DeleteTranscodeTemplateResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 删除用户自定义转码模板。
+func (c *Client) DeleteTranscodeTemplate(request *DeleteTranscodeTemplateRequest) (response *DeleteTranscodeTemplateResponse, err error) {
+    if request == nil {
+        request = NewDeleteTranscodeTemplateRequest()
+    }
+    response = NewDeleteTranscodeTemplateResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteWatermarkTemplateRequest() (request *DeleteWatermarkTemplateRequest) {
+    request = &DeleteWatermarkTemplateRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vod", APIVersion, "DeleteWatermarkTemplate")
+    return
+}
+
+func NewDeleteWatermarkTemplateResponse() (response *DeleteWatermarkTemplateResponse) {
+    response = &DeleteWatermarkTemplateResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 删除用户自定义水印模板。
+func (c *Client) DeleteWatermarkTemplate(request *DeleteWatermarkTemplateRequest) (response *DeleteWatermarkTemplateResponse, err error) {
+    if request == nil {
+        request = NewDeleteWatermarkTemplateRequest()
+    }
+    response = NewDeleteWatermarkTemplateResponse()
     err = c.Send(request, response)
     return
 }
@@ -312,6 +412,56 @@ func (c *Client) DescribeTasks(request *DescribeTasksRequest) (response *Describ
     return
 }
 
+func NewDescribeTranscodeTemplatesRequest() (request *DescribeTranscodeTemplatesRequest) {
+    request = &DescribeTranscodeTemplatesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vod", APIVersion, "DescribeTranscodeTemplates")
+    return
+}
+
+func NewDescribeTranscodeTemplatesResponse() (response *DescribeTranscodeTemplatesResponse) {
+    response = &DescribeTranscodeTemplatesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 根据转码模板唯一标识，获取转码模板详情列表。返回结果包含符合条件的所有用户自定义模板及[系统预置转码模板](https://cloud.tencent.com/document/product/266/11701#.E9.A2.84.E7.BD.AE.E8.BD.AC.E7.A0.81.E6.A8.A1.E6.9D.BF)。
+func (c *Client) DescribeTranscodeTemplates(request *DescribeTranscodeTemplatesRequest) (response *DescribeTranscodeTemplatesResponse, err error) {
+    if request == nil {
+        request = NewDescribeTranscodeTemplatesRequest()
+    }
+    response = NewDescribeTranscodeTemplatesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeWatermarkTemplatesRequest() (request *DescribeWatermarkTemplatesRequest) {
+    request = &DescribeWatermarkTemplatesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vod", APIVersion, "DescribeWatermarkTemplates")
+    return
+}
+
+func NewDescribeWatermarkTemplatesResponse() (response *DescribeWatermarkTemplatesResponse) {
+    response = &DescribeWatermarkTemplatesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询用户自定义水印模板，支持根据条件，分页查询。
+func (c *Client) DescribeWatermarkTemplates(request *DescribeWatermarkTemplatesRequest) (response *DescribeWatermarkTemplatesResponse, err error) {
+    if request == nil {
+        request = NewDescribeWatermarkTemplatesRequest()
+    }
+    response = NewDescribeWatermarkTemplatesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewLiveRealTimeClipRequest() (request *LiveRealTimeClipRequest) {
     request = &LiveRealTimeClipRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -406,6 +556,56 @@ func (c *Client) ModifyMediaInfo(request *ModifyMediaInfoRequest) (response *Mod
         request = NewModifyMediaInfoRequest()
     }
     response = NewModifyMediaInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyTranscodeTemplateRequest() (request *ModifyTranscodeTemplateRequest) {
+    request = &ModifyTranscodeTemplateRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vod", APIVersion, "ModifyTranscodeTemplate")
+    return
+}
+
+func NewModifyTranscodeTemplateResponse() (response *ModifyTranscodeTemplateResponse) {
+    response = &ModifyTranscodeTemplateResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 修改用户自定义转码模板信息。
+func (c *Client) ModifyTranscodeTemplate(request *ModifyTranscodeTemplateRequest) (response *ModifyTranscodeTemplateResponse, err error) {
+    if request == nil {
+        request = NewModifyTranscodeTemplateRequest()
+    }
+    response = NewModifyTranscodeTemplateResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyWatermarkTemplateRequest() (request *ModifyWatermarkTemplateRequest) {
+    request = &ModifyWatermarkTemplateRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vod", APIVersion, "ModifyWatermarkTemplate")
+    return
+}
+
+func NewModifyWatermarkTemplateResponse() (response *ModifyWatermarkTemplateResponse) {
+    response = &ModifyWatermarkTemplateResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 修改用户自定义水印模板，水印类型不允许修改。
+func (c *Client) ModifyWatermarkTemplate(request *ModifyWatermarkTemplateRequest) (response *ModifyWatermarkTemplateResponse, err error) {
+    if request == nil {
+        request = NewModifyWatermarkTemplateRequest()
+    }
+    response = NewModifyWatermarkTemplateResponse()
     err = c.Send(request, response)
     return
 }

@@ -55,6 +55,9 @@ type InitOralProcessRequest struct {
 
 	// 异步模式标识，0：同步模式，1：异步模式。
 	IsAsync *int64 `json:"IsAsync,omitempty" name:"IsAsync"`
+
+	// 输入文本模式，0: 普通文本，1: 音素结构文本
+	TextMode *int64 `json:"TextMode,omitempty" name:"TextMode"`
 }
 
 func (r *InitOralProcessRequest) ToJsonString() string {
@@ -258,6 +261,9 @@ type TransmitOralProcessWithInitRequest struct {
 
 	// 查询标识，当该参数为1时，该请求为查询请求，请求返回该 Session 评估结果。
 	IsQuery *int64 `json:"IsQuery,omitempty" name:"IsQuery"`
+
+	// 输入文本模式，0: 普通文本，1: 音素结构文本
+	TextMode *int64 `json:"TextMode,omitempty" name:"TextMode"`
 }
 
 func (r *TransmitOralProcessWithInitRequest) ToJsonString() string {

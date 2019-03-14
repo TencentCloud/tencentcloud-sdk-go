@@ -134,7 +134,7 @@ func NewTextTranslateResponse() (response *TextTranslateResponse) {
     return
 }
 
-// 提供中文到英文、英文到中文的等多种语言的文本内容翻译服务， 经过大数据语料库、多种解码算法、翻译引擎深度优化，在新闻文章、生活口语等不同语言场景中都有深厚积累，翻译结果专业评价处于行业顶级水平。
+// 提供中文到英文、英文到中文的等多种语言的文本内容翻译服务， 经过大数据语料库、多种解码算法、翻译引擎深度优化，在新闻文章、生活口语等不同语言场景中都有深厚积累，翻译结果专业评价处于行业领先水平。
 func (c *Client) TextTranslate(request *TextTranslateRequest) (response *TextTranslateResponse, err error) {
     if request == nil {
         request = NewTextTranslateRequest()

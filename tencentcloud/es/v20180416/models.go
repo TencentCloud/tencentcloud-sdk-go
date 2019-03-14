@@ -38,7 +38,7 @@ type CreateInstanceRequest struct {
 	// 节点数量
 	NodeNum *uint64 `json:"NodeNum,omitempty" name:"NodeNum"`
 
-	// 实例版本,当前只支持5.6.4
+	// 实例版本,支持"5.6.4"、"6.4.3"
 	EsVersion *string `json:"EsVersion,omitempty" name:"EsVersion"`
 
 	// 节点规格： 
@@ -79,10 +79,7 @@ type CreateInstanceRequest struct {
 	// 如不传递该参数，普通用于默认不自动续费，SVIP用户自动续费
 	RenewFlag *string `json:"RenewFlag,omitempty" name:"RenewFlag"`
 
-	// 节点存储类型,取值范围:  
-	// LOCAL_BASIC: 本地硬盘  
-	// LOCAL_SSD: 本地SSD硬盘，默认值  
-	// CLOUD_BASIC: 普通云硬盘  
+	// 节点存储类型,取值范围:    
 	// CLOUD_PREMIUM: 高硬能云硬盘  
 	// CLOUD_SSD: SSD云硬盘
 	DiskType *string `json:"DiskType,omitempty" name:"DiskType"`
@@ -102,11 +99,14 @@ type CreateInstanceRequest struct {
 	// 专用主节点个数
 	MasterNodeNum *uint64 `json:"MasterNodeNum,omitempty" name:"MasterNodeNum"`
 
-	// 专用主节点类型
+	// 专用主节点类型，与NodeType支持的规格相同
 	MasterNodeType *string `json:"MasterNodeType,omitempty" name:"MasterNodeType"`
 
-	// 专用主节点磁盘大小
+	// 专用主节点磁盘大小，单位GB（系统默认配置50GB，暂不支持自定义）
 	MasterNodeDiskSize *uint64 `json:"MasterNodeDiskSize,omitempty" name:"MasterNodeDiskSize"`
+
+	// 配置文件中的ClusterName（系统默认配置为实例ID，暂不支持自定义）
+	ClusterNameInConf *string `json:"ClusterNameInConf,omitempty" name:"ClusterNameInConf"`
 }
 
 func (r *CreateInstanceRequest) ToJsonString() string {
@@ -170,6 +170,119 @@ func (r *DeleteInstanceResponse) ToJsonString() string {
 }
 
 func (r *DeleteInstanceResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeInstanceLogsRequest struct {
+	*tchttp.BaseRequest
+
+	// 集群实例ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 日志类型
+	LogType *uint64 `json:"LogType,omitempty" name:"LogType"`
+
+	// 搜索词
+	SearchKey *string `json:"SearchKey,omitempty" name:"SearchKey"`
+
+	// 日志开始时间
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 日志结束时间
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 分页起始值
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 分页大小
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 时间排序方式
+	OrderByType *uint64 `json:"OrderByType,omitempty" name:"OrderByType"`
+}
+
+func (r *DescribeInstanceLogsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeInstanceLogsRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeInstanceLogsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 返回的日志条数
+		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 日志详细信息列表
+		InstanceLogList []*InstanceLog `json:"InstanceLogList,omitempty" name:"InstanceLogList" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeInstanceLogsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeInstanceLogsResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeInstanceOperationsRequest struct {
+	*tchttp.BaseRequest
+
+	// 集群实例ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 起始时间
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 结束时间
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 分页起始值
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 分页大小
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+func (r *DescribeInstanceOperationsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeInstanceOperationsRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeInstanceOperationsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 操作记录总数
+		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 操作记录
+		Operations []*Operation `json:"Operations,omitempty" name:"Operations" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeInstanceOperationsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeInstanceOperationsResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -363,6 +476,30 @@ type InstanceInfo struct {
 	AllowCosBackup *bool `json:"AllowCosBackup,omitempty" name:"AllowCosBackup"`
 }
 
+type InstanceLog struct {
+
+	// 日志时间
+	Time *string `json:"Time,omitempty" name:"Time"`
+
+	// 日志级别
+	Level *string `json:"Level,omitempty" name:"Level"`
+
+	// 集群节点ip
+	Ip *string `json:"Ip,omitempty" name:"Ip"`
+
+	// 日志内容
+	Message *string `json:"Message,omitempty" name:"Message"`
+}
+
+type KeyValue struct {
+
+	// 键
+	Key *string `json:"Key,omitempty" name:"Key"`
+
+	// 值
+	Value *string `json:"Value,omitempty" name:"Value"`
+}
+
 type MasterNodeInfo struct {
 
 	// 是否启用了专用主节点
@@ -385,6 +522,39 @@ type MasterNodeInfo struct {
 
 	// 专用主节点磁盘类型
 	MasterNodeDiskType *string `json:"MasterNodeDiskType,omitempty" name:"MasterNodeDiskType"`
+}
+
+type Operation struct {
+
+	// 操作唯一id
+	Id *uint64 `json:"Id,omitempty" name:"Id"`
+
+	// 操作开始时间
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 操作类型
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 操作详情
+	Detail *OperationDetail `json:"Detail,omitempty" name:"Detail"`
+
+	// 操作结果
+	Result *string `json:"Result,omitempty" name:"Result"`
+
+	// 流程任务信息
+	Tasks []*TaskDetail `json:"Tasks,omitempty" name:"Tasks" list`
+
+	// 操作进度
+	Progress *float64 `json:"Progress,omitempty" name:"Progress"`
+}
+
+type OperationDetail struct {
+
+	// 实例原始配置信息
+	OldInfo []*KeyValue `json:"OldInfo,omitempty" name:"OldInfo" list`
+
+	// 实例更新后配置信息
+	NewInfo []*KeyValue `json:"NewInfo,omitempty" name:"NewInfo" list`
 }
 
 type RestartInstanceRequest struct {
@@ -424,6 +594,33 @@ func (r *RestartInstanceResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type SubTaskDetail struct {
+
+	// 子任务名
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 子任务结果
+	Result *bool `json:"Result,omitempty" name:"Result"`
+
+	// 子任务错误信息
+	ErrMsg *string `json:"ErrMsg,omitempty" name:"ErrMsg"`
+}
+
+type TaskDetail struct {
+
+	// 任务名
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 任务进度
+	Progress *float64 `json:"Progress,omitempty" name:"Progress"`
+
+	// 任务完成时间
+	FinishTime *string `json:"FinishTime,omitempty" name:"FinishTime"`
+
+	// 子任务
+	SubTasks []*SubTaskDetail `json:"SubTasks,omitempty" name:"SubTasks" list`
+}
+
 type UpdateInstanceRequest struct {
 	*tchttp.BaseRequest
 
@@ -436,7 +633,10 @@ type UpdateInstanceRequest struct {
 	// 横向扩缩容后的节点个数
 	NodeNum *uint64 `json:"NodeNum,omitempty" name:"NodeNum"`
 
-	// 修改后的配置项, JSON格式字符串
+	// 修改后的配置项, JSON格式字符串。当前仅支持以下配置项：
+	// action.destructive_requires_name
+	// indices.fielddata.cache.size
+	// indices.query.bool.max_clause_count
 	EsConfig *string `json:"EsConfig,omitempty" name:"EsConfig"`
 
 	// 重置后的Kibana密码, 8到16位，至少包括两项（[a-z,A-Z],[0-9]和[-!@#$%&^*+=_:;,.?]的特殊符号
@@ -460,14 +660,17 @@ type UpdateInstanceRequest struct {
 	// 专用主节点个数
 	MasterNodeNum *uint64 `json:"MasterNodeNum,omitempty" name:"MasterNodeNum"`
 
-	// 专用主节点规格
+	// 专用主节点规格，与NodeType支持的规格相同
 	MasterNodeType *string `json:"MasterNodeType,omitempty" name:"MasterNodeType"`
 
-	// 专用主节点磁盘大小
+	// 专用主节点磁盘大小， 单位GB（系统默认配置为50GB,暂不支持自定义）
 	MasterNodeDiskSize *uint64 `json:"MasterNodeDiskSize,omitempty" name:"MasterNodeDiskSize"`
 
 	// 更新配置时是否强制重启
 	ForceRestart *bool `json:"ForceRestart,omitempty" name:"ForceRestart"`
+
+	// COS自动备份信息
+	CosBackup *CosBackup `json:"CosBackup,omitempty" name:"CosBackup"`
 }
 
 func (r *UpdateInstanceRequest) ToJsonString() string {

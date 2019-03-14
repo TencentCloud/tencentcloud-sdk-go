@@ -93,6 +93,56 @@ func (c *Client) DeleteInstance(request *DeleteInstanceRequest) (response *Delet
     return
 }
 
+func NewDescribeInstanceLogsRequest() (request *DescribeInstanceLogsRequest) {
+    request = &DescribeInstanceLogsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("es", APIVersion, "DescribeInstanceLogs")
+    return
+}
+
+func NewDescribeInstanceLogsResponse() (response *DescribeInstanceLogsResponse) {
+    response = &DescribeInstanceLogsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询用户该地域下符合条件的ES集群的日志
+func (c *Client) DescribeInstanceLogs(request *DescribeInstanceLogsRequest) (response *DescribeInstanceLogsResponse, err error) {
+    if request == nil {
+        request = NewDescribeInstanceLogsRequest()
+    }
+    response = NewDescribeInstanceLogsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeInstanceOperationsRequest() (request *DescribeInstanceOperationsRequest) {
+    request = &DescribeInstanceOperationsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("es", APIVersion, "DescribeInstanceOperations")
+    return
+}
+
+func NewDescribeInstanceOperationsResponse() (response *DescribeInstanceOperationsResponse) {
+    response = &DescribeInstanceOperationsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询实例指定条件下的操作记录
+func (c *Client) DescribeInstanceOperations(request *DescribeInstanceOperationsRequest) (response *DescribeInstanceOperationsResponse, err error) {
+    if request == nil {
+        request = NewDescribeInstanceOperationsRequest()
+    }
+    response = NewDescribeInstanceOperationsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeInstancesRequest() (request *DescribeInstancesRequest) {
     request = &DescribeInstancesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -158,7 +208,17 @@ func NewUpdateInstanceResponse() (response *UpdateInstanceResponse) {
     return
 }
 
-// 对已存在的集群进行扩缩容，修改实例名称，修改配置，重置密码， 添加Kibana黑白名单等操作
+// 对集群进行扩缩容，修改实例名称，修改配置，重置密码， 添加Kibana黑白名单等操作。参数中InstanceId为必传参数，ForceRestart为选填参数，剩余参数传递组合及含义如下：<br>
+//   InstanceName：修改实例名称(仅用于标识实例)<br>
+//   NodeNum：集群数据节点横向扩缩容<br>
+//   NodeType, DiskSize：集群数据节点纵向扩缩容<br>
+//   MasterNodeNum: 集群专用主节点横向扩缩容<br>
+//   MasterNodeType, MasterNodeDiskSize: 集群专用主节点纵向扩缩容<br>
+//   EsConfig：修改集群配置<br>
+//   Password：修改集群密码<br>
+//   EsAcl：修改Kibana密码<br>
+//   CosBackUp: 设置集群COS自动备份信息<br>
+// 以上参数组合只能传递一种，多传或少传均会导致请求失败<br>
 func (c *Client) UpdateInstance(request *UpdateInstanceRequest) (response *UpdateInstanceResponse, err error) {
     if request == nil {
         request = NewUpdateInstanceRequest()

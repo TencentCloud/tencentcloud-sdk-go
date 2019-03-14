@@ -40,7 +40,7 @@ type CompleteMigrateJobResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -86,7 +86,7 @@ type CreateMigrateCheckJobResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -155,7 +155,7 @@ type CreateMigrateJobResponse struct {
 		// 数据迁移任务ID
 		JobId *string `json:"JobId,omitempty" name:"JobId"`
 
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -189,7 +189,7 @@ type CreateSyncCheckJobResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -252,7 +252,7 @@ type CreateSyncJobResponse struct {
 		// 灾备同步任务ID
 		JobId *string `json:"JobId,omitempty" name:"JobId"`
 
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -286,7 +286,7 @@ type DeleteMigrateJobResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -320,7 +320,7 @@ type DeleteSyncJobResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -369,7 +369,7 @@ type DescribeMigrateCheckJobResponse struct {
 		// 校验是否通过,0-未通过，1-校验通过, 3-未校验
 		CheckFlag *int64 `json:"CheckFlag,omitempty" name:"CheckFlag"`
 
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -424,7 +424,7 @@ type DescribeMigrateJobsResponse struct {
 		// 任务详情数组
 		JobList []*MigrateJobInfo `json:"JobList,omitempty" name:"JobList" list`
 
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -458,7 +458,7 @@ type DescribeSyncCheckJobResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 任务校验状态
+		// 任务校验状态： starting(开始中)，running(校验中)，finished(校验完成)
 		Status *string `json:"Status,omitempty" name:"Status"`
 
 		// 任务校验结果代码
@@ -470,10 +470,10 @@ type DescribeSyncCheckJobResponse struct {
 		// 任务执行步骤描述
 		StepInfo []*SyncCheckStepInfo `json:"StepInfo,omitempty" name:"StepInfo" list`
 
-		// 校验标志
+		// 校验标志：0（尚未校验成功） ， 1（校验成功）
 		CheckFlag *int64 `json:"CheckFlag,omitempty" name:"CheckFlag"`
 
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -528,7 +528,7 @@ type DescribeSyncJobsResponse struct {
 		// 任务详情数组
 		JobList []*SyncJobInfo `json:"JobList,omitempty" name:"JobList" list`
 
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -736,7 +736,7 @@ type ModifyMigrateJobResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -781,7 +781,7 @@ type ModifySyncJobResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -860,7 +860,7 @@ type StartMigrateJobResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -894,7 +894,7 @@ type StartSyncJobResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -928,7 +928,7 @@ type StopMigrateJobResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -968,7 +968,7 @@ type SwitchDrToMasterResponse struct {
 		// 后台异步任务请求id
 		AsyncRequestId *string `json:"AsyncRequestId,omitempty" name:"AsyncRequestId"`
 
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -1086,10 +1086,10 @@ type SyncOption struct {
 	// 同步开始设置，1-立即开始
 	RunMode *uint64 `json:"RunMode,omitempty" name:"RunMode"`
 
-	// 同步模式， 3-增量同步
+	// 同步模式， 3-全量且增量同步
 	SyncType *uint64 `json:"SyncType,omitempty" name:"SyncType"`
 
-	// 数据一致性检测， 1-不配置
+	// 数据一致性检测， 1-无需配置
 	ConsistencyType *uint64 `json:"ConsistencyType,omitempty" name:"ConsistencyType"`
 }
 
