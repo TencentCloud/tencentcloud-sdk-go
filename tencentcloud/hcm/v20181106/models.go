@@ -79,6 +79,9 @@ type Item struct {
 
 	// 识别的算式在图片上的位置信息
 	ItemCoord *ItemCoord `json:"ItemCoord,omitempty" name:"ItemCoord"`
+
+	// 推荐的答案
+	Answer *string `json:"Answer,omitempty" name:"Answer"`
 }
 
 type ItemCoord struct {

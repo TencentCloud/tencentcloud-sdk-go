@@ -67,6 +67,46 @@ func (r *AddDelayLiveStreamResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type AddLiveDomainRequest struct {
+	*tchttp.BaseRequest
+
+	// 域名名称
+	DomainName *string `json:"DomainName,omitempty" name:"DomainName"`
+
+	// 域名类型。0-推流域名，1-播放域名
+	DomainType *uint64 `json:"DomainType,omitempty" name:"DomainType"`
+
+	// 拉流域名类型。1-国内；2-全球；3-境外
+	PlayType *uint64 `json:"PlayType,omitempty" name:"PlayType"`
+}
+
+func (r *AddLiveDomainRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *AddLiveDomainRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type AddLiveDomainResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *AddLiveDomainResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *AddLiveDomainResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type AddLiveWatermarkRequest struct {
 	*tchttp.BaseRequest
 
@@ -382,6 +422,43 @@ func (r *CreateLiveCertResponse) ToJsonString() string {
 }
 
 func (r *CreateLiveCertResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateLiveDomainStrategyRequest struct {
+	*tchttp.BaseRequest
+
+	// 推流域名。
+	PushDomainName *string `json:"PushDomainName,omitempty" name:"PushDomainName"`
+
+	// 播放域名。
+	PlayDomainName *string `json:"PlayDomainName,omitempty" name:"PlayDomainName"`
+}
+
+func (r *CreateLiveDomainStrategyRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateLiveDomainStrategyRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateLiveDomainStrategyResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateLiveDomainStrategyResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateLiveDomainStrategyResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -713,12 +790,12 @@ type CreateLiveTranscodeTemplateRequest struct {
 	// 视频码率。
 	VideoBitrate *int64 `json:"VideoBitrate,omitempty" name:"VideoBitrate"`
 
-	// 视频编码：
-	// h264/h265。默认h264
+	// 视频编码：h264/h265，默认h264。
+	// 注意：当前该参数未生效，待后续支持！
 	Vcodec *string `json:"Vcodec,omitempty" name:"Vcodec"`
 
-	// 音频编码：
-	// aac/mp3。默认原始音频格式
+	// 音频编码：aac，默认原始音频格式。
+	// 注意：当前该参数未生效，待后续支持！
 	Acodec *string `json:"Acodec,omitempty" name:"Acodec"`
 
 	// 音频码率：默认0。0-500
@@ -731,9 +808,11 @@ type CreateLiveTranscodeTemplateRequest struct {
 	Width *int64 `json:"Width,omitempty" name:"Width"`
 
 	// 是否保留视频，0：否，1：是。默认1。
+	// 注意：当前该参数未生效，待后续支持！
 	NeedVideo *int64 `json:"NeedVideo,omitempty" name:"NeedVideo"`
 
 	// 是否保留音频，0：否，1：是。默认1。
+	// 注意：当前该参数未生效，待后续支持！
 	NeedAudio *int64 `json:"NeedAudio,omitempty" name:"NeedAudio"`
 
 	// 宽，默认0。
@@ -894,6 +973,24 @@ func (r *CreatePullStreamConfigResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DayStreamPlayInfo struct {
+
+	// 数据时间点，格式：yyyy-mm-dd HH:MM:SS。
+	Time *string `json:"Time,omitempty" name:"Time"`
+
+	// 带宽（单位Mbps）。
+	Bandwidth *float64 `json:"Bandwidth,omitempty" name:"Bandwidth"`
+
+	// 流量 （单位MB）。
+	Flux *float64 `json:"Flux,omitempty" name:"Flux"`
+
+	// 请求数。
+	Request *uint64 `json:"Request,omitempty" name:"Request"`
+
+	// 在线人数。
+	Online *uint64 `json:"Online,omitempty" name:"Online"`
+}
+
 type DeleteLiveCallbackRuleRequest struct {
 	*tchttp.BaseRequest
 
@@ -996,6 +1093,80 @@ func (r *DeleteLiveCertResponse) ToJsonString() string {
 }
 
 func (r *DeleteLiveCertResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteLiveDomainRequest struct {
+	*tchttp.BaseRequest
+
+	// 要删除的域名
+	DomainName *string `json:"DomainName,omitempty" name:"DomainName"`
+
+	// 类型。0-推流，1-播放
+	DomainType *uint64 `json:"DomainType,omitempty" name:"DomainType"`
+}
+
+func (r *DeleteLiveDomainRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteLiveDomainRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteLiveDomainResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DeleteLiveDomainResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteLiveDomainResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteLiveDomainStrategyRequest struct {
+	*tchttp.BaseRequest
+
+	// 推流域名。
+	PushDomainName *string `json:"PushDomainName,omitempty" name:"PushDomainName"`
+
+	// 播放域名。
+	PlayDomainName *string `json:"PlayDomainName,omitempty" name:"PlayDomainName"`
+}
+
+func (r *DeleteLiveDomainStrategyRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteLiveDomainStrategyRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteLiveDomainStrategyResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DeleteLiveDomainStrategyResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteLiveDomainStrategyResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -1579,6 +1750,129 @@ func (r *DescribeLiveDomainCertResponse) ToJsonString() string {
 }
 
 func (r *DescribeLiveDomainCertResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeLiveDomainRequest struct {
+	*tchttp.BaseRequest
+
+	// 域名。
+	DomainName *string `json:"DomainName,omitempty" name:"DomainName"`
+}
+
+func (r *DescribeLiveDomainRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeLiveDomainRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeLiveDomainResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 域名信息。
+		DomainInfo *DomainInfo `json:"DomainInfo,omitempty" name:"DomainInfo"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeLiveDomainResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeLiveDomainResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeLiveDomainStrategysRequest struct {
+	*tchttp.BaseRequest
+
+	// 查询某个域名的鉴权规则
+	DomainName *string `json:"DomainName,omitempty" name:"DomainName"`
+}
+
+func (r *DescribeLiveDomainStrategysRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeLiveDomainStrategysRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeLiveDomainStrategysResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 域名策略信息。
+		StrategyList []*StrategyInfo `json:"StrategyList,omitempty" name:"StrategyList" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeLiveDomainStrategysResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeLiveDomainStrategysResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeLiveDomainsRequest struct {
+	*tchttp.BaseRequest
+
+	// 域名状态过滤。0-停用，1-启用
+	DomainStatus *uint64 `json:"DomainStatus,omitempty" name:"DomainStatus"`
+
+	// 域名类型过滤。0-推流，1-播放
+	DomainType *uint64 `json:"DomainType,omitempty" name:"DomainType"`
+
+	// 分页大小，范围：10~100。默认10
+	PageSize *uint64 `json:"PageSize,omitempty" name:"PageSize"`
+
+	// 取第几页，范围：1~100000。默认1
+	PageNum *uint64 `json:"PageNum,omitempty" name:"PageNum"`
+}
+
+func (r *DescribeLiveDomainsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeLiveDomainsRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeLiveDomainsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 总记录数
+		AllCount *uint64 `json:"AllCount,omitempty" name:"AllCount"`
+
+		// 域名详细信息列表
+		DomainList []*DomainInfo `json:"DomainList,omitempty" name:"DomainList" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeLiveDomainsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeLiveDomainsResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -2257,6 +2551,71 @@ func (r *DescribeLiveStreamStateResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeLiveTranscodeDetailInfoRequest struct {
+	*tchttp.BaseRequest
+
+	// 起始时间，北京时间，
+	// 格式：yyyymmdd。
+	// 注意：当前只支持查询近30天内某天的详细数据。
+	DayTime *string `json:"DayTime,omitempty" name:"DayTime"`
+
+	// 推流域名。
+	PushDomain *string `json:"PushDomain,omitempty" name:"PushDomain"`
+
+	// 流名称。
+	StreamName *string `json:"StreamName,omitempty" name:"StreamName"`
+
+	// 页数，默认1，
+	// 不超过100页。
+	PageNum *uint64 `json:"PageNum,omitempty" name:"PageNum"`
+
+	// 每页个数，默认20，
+	// 范围：[10,1000]。
+	PageSize *uint64 `json:"PageSize,omitempty" name:"PageSize"`
+}
+
+func (r *DescribeLiveTranscodeDetailInfoRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeLiveTranscodeDetailInfoRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeLiveTranscodeDetailInfoResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 统计数据列表。
+		DataInfoList []*TranscodeDetailInfo `json:"DataInfoList,omitempty" name:"DataInfoList" list`
+
+		// 页码。
+		PageNum *uint64 `json:"PageNum,omitempty" name:"PageNum"`
+
+		// 每页个数。
+		PageSize *uint64 `json:"PageSize,omitempty" name:"PageSize"`
+
+		// 总个数。
+		TotalNum *uint64 `json:"TotalNum,omitempty" name:"TotalNum"`
+
+		// 总页数。
+		TotalPage *uint64 `json:"TotalPage,omitempty" name:"TotalPage"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeLiveTranscodeDetailInfoResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeLiveTranscodeDetailInfoResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeLiveTranscodeRulesRequest struct {
 	*tchttp.BaseRequest
 }
@@ -2507,6 +2866,56 @@ func (r *DescribePullStreamConfigsResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeStreamPlayInfoListRequest struct {
+	*tchttp.BaseRequest
+
+	// 开始时间，北京时间，
+	// 当前时间 和 开始时间 间隔不超过30天。
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 结束时间，北京时间，
+	// 结束时间 和 开始时间  必须在同一天内。
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 播放域名，
+	// 若不填，则为查询所有播放域名的在线流数据。
+	PlayDomain *string `json:"PlayDomain,omitempty" name:"PlayDomain"`
+
+	// 流名称，精确匹配。
+	// 若不填，则为查询总体播放数据。
+	StreamName *string `json:"StreamName,omitempty" name:"StreamName"`
+}
+
+func (r *DescribeStreamPlayInfoListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeStreamPlayInfoListRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeStreamPlayInfoListResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 统计信息列表。
+		DataInfoList []*DayStreamPlayInfo `json:"DataInfoList,omitempty" name:"DataInfoList" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeStreamPlayInfoListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeStreamPlayInfoListResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DomainCertInfo struct {
 
 	// 证书Id。
@@ -2537,6 +2946,31 @@ type DomainCertInfo struct {
 
 	// 证书状态
 	Status *int64 `json:"Status,omitempty" name:"Status"`
+}
+
+type DomainInfo struct {
+
+	// 直播域名
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 域名类型。0-推流，1-播放
+	Type *uint64 `json:"Type,omitempty" name:"Type"`
+
+	// 域名状态。0-停用，1-启用
+	Status *uint64 `json:"Status,omitempty" name:"Status"`
+
+	// 添加时间
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 是否有CName到固定规则域名。0-否，1-是
+	BCName *uint64 `json:"BCName,omitempty" name:"BCName"`
+
+	// cname对应的域名
+	TargetDomain *string `json:"TargetDomain,omitempty" name:"TargetDomain"`
+
+	// 播放区域，只在Type=1时该参数有意义。
+	// 1-国内，2-全球，3-海外。
+	PlayType *int64 `json:"PlayType,omitempty" name:"PlayType"`
 }
 
 type DropLiveStreamRequest struct {
@@ -2576,6 +3010,74 @@ func (r *DropLiveStreamResponse) ToJsonString() string {
 }
 
 func (r *DropLiveStreamResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type EnableLiveDomainRequest struct {
+	*tchttp.BaseRequest
+
+	// 待启用的直播域名
+	DomainName *string `json:"DomainName,omitempty" name:"DomainName"`
+}
+
+func (r *EnableLiveDomainRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *EnableLiveDomainRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type EnableLiveDomainResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *EnableLiveDomainResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *EnableLiveDomainResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ForbidLiveDomainRequest struct {
+	*tchttp.BaseRequest
+
+	// 停用的直播域名
+	DomainName *string `json:"DomainName,omitempty" name:"DomainName"`
+}
+
+func (r *ForbidLiveDomainRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ForbidLiveDomainRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ForbidLiveDomainResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ForbidLiveDomainResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ForbidLiveDomainResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -2825,6 +3327,43 @@ func (r *ModifyLivePlayAuthKeyResponse) ToJsonString() string {
 }
 
 func (r *ModifyLivePlayAuthKeyResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyLivePlayDomainRequest struct {
+	*tchttp.BaseRequest
+
+	// 播放域名。
+	DomainName *string `json:"DomainName,omitempty" name:"DomainName"`
+
+	// 拉流域名类型。1-国内；2-全球；3-境外
+	PlayType *int64 `json:"PlayType,omitempty" name:"PlayType"`
+}
+
+func (r *ModifyLivePlayDomainRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyLivePlayDomainRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyLivePlayDomainResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifyLivePlayDomainResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyLivePlayDomainResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -3493,6 +4032,18 @@ func (r *StopLiveRecordResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type StrategyInfo struct {
+
+	// 推流域名。
+	PushDomainName *string `json:"PushDomainName,omitempty" name:"PushDomainName"`
+
+	// 播放域名。
+	PlayDomainName *string `json:"PlayDomainName,omitempty" name:"PlayDomainName"`
+
+	// 创建时间。
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+}
+
 type StreamEventInfo struct {
 
 	// 应用名称。
@@ -3630,6 +4181,41 @@ type TemplateInfo struct {
 
 	// 模板描述
 	Description *string `json:"Description,omitempty" name:"Description"`
+}
+
+type TranscodeDetailInfo struct {
+
+	// 流名称。
+	StreamName *string `json:"StreamName,omitempty" name:"StreamName"`
+
+	// 开始时间，北京时间，
+	// 格式：yyyy-mm-dd HH:MM。
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 结束时间，北京时间，
+	// 格式：yyyy-mm-dd HH:MM。
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 转码时长，单位：分钟。
+	// 注意：因推流过程中可能有中断重推情况，此处时长为真实转码时长累加值，并非结束时间和开始时间的间隔。
+	Duration *uint64 `json:"Duration,omitempty" name:"Duration"`
+
+	// 编码方式，带模块，
+	// 示例：
+	// liveprocessor_H264 =》直播转码-H264，
+	// liveprocessor_H265 =》 直播转码-H265，
+	// topspeed_H264 =》极速高清-H264，
+	// topspeed_H265 =》极速高清-H265。
+	ModuleCodec *string `json:"ModuleCodec,omitempty" name:"ModuleCodec"`
+
+	// 码率。
+	Bitrate *uint64 `json:"Bitrate,omitempty" name:"Bitrate"`
+
+	// 类型，包含：转码(Transcode)，混流(MixStream)，水印(WaterMark)。
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 推流域名。
+	PushDomain *string `json:"PushDomain,omitempty" name:"PushDomain"`
 }
 
 type UnBindLiveDomainCertRequest struct {

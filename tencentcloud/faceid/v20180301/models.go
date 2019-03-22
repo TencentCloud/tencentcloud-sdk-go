@@ -20,6 +20,70 @@ import (
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
+type BankCardVerificationRequest struct {
+	*tchttp.BaseRequest
+
+	// 身份证号
+	IdCard *string `json:"IdCard,omitempty" name:"IdCard"`
+
+	// 姓名
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 银行卡
+	BankCard *string `json:"BankCard,omitempty" name:"BankCard"`
+}
+
+func (r *BankCardVerificationRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *BankCardVerificationRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type BankCardVerificationResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 认证结果码。
+	// '0': '认证通过'
+	// '-1': '认证未通过'
+	// '-2': '姓名校验不通过'
+	// '-3': '身份证号码有误'
+	// '-4': '银行卡号码有误'
+	// '-5': '持卡人信息有误'
+	// '-6': '未开通无卡支付'
+	// '-7': '此卡被没收'
+	// '-8': '无效卡号'
+	// '-9': '此卡无对应发卡行'
+	// '-10': '该卡未初始化或睡眠卡'
+	// '-11': '作弊卡、吞卡'
+	// '-12': '此卡已挂失'
+	// '-13': '该卡已过期'
+	// '-14': '受限制的卡'
+	// '-15': '密码错误次数超限'
+	// '-16': '发卡行不支持此交易'
+	// '-17': '服务繁忙'
+		Result *string `json:"Result,omitempty" name:"Result"`
+
+		// 认证结果信息。
+		Description *string `json:"Description,omitempty" name:"Description"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *BankCardVerificationResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *BankCardVerificationResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DetectAuthRequest struct {
 	*tchttp.BaseRequest
 

@@ -69,6 +69,56 @@ func (c *Client) ApplyBlackList(request *ApplyBlackListRequest) (response *Apply
     return
 }
 
+func NewApplyCreditAuditRequest() (request *ApplyCreditAuditRequest) {
+    request = &ApplyCreditAuditRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cr", APIVersion, "ApplyCreditAudit")
+    return
+}
+
+func NewApplyCreditAuditResponse() (response *ApplyCreditAuditResponse) {
+    response = &ApplyCreditAuditResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 提交信审外呼申请，返回当次请求日期。
+func (c *Client) ApplyCreditAudit(request *ApplyCreditAuditRequest) (response *ApplyCreditAuditResponse, err error) {
+    if request == nil {
+        request = NewApplyCreditAuditRequest()
+    }
+    response = NewApplyCreditAuditResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeCreditResultRequest() (request *DescribeCreditResultRequest) {
+    request = &DescribeCreditResultRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cr", APIVersion, "DescribeCreditResult")
+    return
+}
+
+func NewDescribeCreditResultResponse() (response *DescribeCreditResultResponse) {
+    response = &DescribeCreditResultResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 根据信审任务ID和请求日期，获取相关信审结果。
+func (c *Client) DescribeCreditResult(request *DescribeCreditResultRequest) (response *DescribeCreditResultResponse, err error) {
+    if request == nil {
+        request = NewDescribeCreditResultRequest()
+    }
+    response = NewDescribeCreditResultResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeRecordsRequest() (request *DescribeRecordsRequest) {
     request = &DescribeRecordsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -134,7 +184,7 @@ func NewDownloadReportResponse() (response *DownloadReportResponse) {
     return
 }
 
-// 用于下载当日催收结果报表，当日23:00后，可获取当日催收结果。
+// 用于下载当日催收和回访结果报表。当日23:00后，可获取当日催收结果，次日00:30后，可获取昨日回访结果。
 func (c *Client) DownloadReport(request *DownloadReportRequest) (response *DownloadReportResponse, err error) {
     if request == nil {
         request = NewDownloadReportRequest()

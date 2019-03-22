@@ -3130,7 +3130,7 @@ type TrafficMirror struct {
 	// 健康阈值。
 	HealthNum *int64 `json:"HealthNum,omitempty" name:"HealthNum"`
 
-	// 不健康阀值。
+	// 不健康阈值。
 	UnhealthNum *int64 `json:"UnhealthNum,omitempty" name:"UnhealthNum"`
 
 	// 检查间隔。

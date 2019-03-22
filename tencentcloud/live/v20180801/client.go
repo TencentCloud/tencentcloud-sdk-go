@@ -69,6 +69,31 @@ func (c *Client) AddDelayLiveStream(request *AddDelayLiveStreamRequest) (respons
     return
 }
 
+func NewAddLiveDomainRequest() (request *AddLiveDomainRequest) {
+    request = &AddLiveDomainRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("live", APIVersion, "AddLiveDomain")
+    return
+}
+
+func NewAddLiveDomainResponse() (response *AddLiveDomainResponse) {
+    response = &AddLiveDomainResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 添加域名，一次只能提交一个域名。域名必须已备案。
+func (c *Client) AddLiveDomain(request *AddLiveDomainRequest) (response *AddLiveDomainResponse, err error) {
+    if request == nil {
+        request = NewAddLiveDomainRequest()
+    }
+    response = NewAddLiveDomainResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewAddLiveWatermarkRequest() (request *AddLiveWatermarkRequest) {
     request = &AddLiveWatermarkRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -192,6 +217,31 @@ func (c *Client) CreateLiveCert(request *CreateLiveCertRequest) (response *Creat
         request = NewCreateLiveCertRequest()
     }
     response = NewCreateLiveCertResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateLiveDomainStrategyRequest() (request *CreateLiveDomainStrategyRequest) {
+    request = &CreateLiveDomainStrategyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("live", APIVersion, "CreateLiveDomainStrategy")
+    return
+}
+
+func NewCreateLiveDomainStrategyResponse() (response *CreateLiveDomainStrategyResponse) {
+    response = &CreateLiveDomainStrategyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 该接口用于新增直播推流和播放的域名映射
+func (c *Client) CreateLiveDomainStrategy(request *CreateLiveDomainStrategyRequest) (response *CreateLiveDomainStrategyResponse, err error) {
+    if request == nil {
+        request = NewCreateLiveDomainStrategyRequest()
+    }
+    response = NewCreateLiveDomainStrategyResponse()
     err = c.Send(request, response)
     return
 }
@@ -510,6 +560,56 @@ func (c *Client) DeleteLiveCert(request *DeleteLiveCertRequest) (response *Delet
         request = NewDeleteLiveCertRequest()
     }
     response = NewDeleteLiveCertResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteLiveDomainRequest() (request *DeleteLiveDomainRequest) {
+    request = &DeleteLiveDomainRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("live", APIVersion, "DeleteLiveDomain")
+    return
+}
+
+func NewDeleteLiveDomainResponse() (response *DeleteLiveDomainResponse) {
+    response = &DeleteLiveDomainResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 删除已添加的直播域名
+func (c *Client) DeleteLiveDomain(request *DeleteLiveDomainRequest) (response *DeleteLiveDomainResponse, err error) {
+    if request == nil {
+        request = NewDeleteLiveDomainRequest()
+    }
+    response = NewDeleteLiveDomainResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteLiveDomainStrategyRequest() (request *DeleteLiveDomainStrategyRequest) {
+    request = &DeleteLiveDomainStrategyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("live", APIVersion, "DeleteLiveDomainStrategy")
+    return
+}
+
+func NewDeleteLiveDomainStrategyResponse() (response *DeleteLiveDomainStrategyResponse) {
+    response = &DeleteLiveDomainStrategyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 该接口用于删除已新增的播放和推流域名映射关系
+func (c *Client) DeleteLiveDomainStrategy(request *DeleteLiveDomainStrategyRequest) (response *DeleteLiveDomainStrategyResponse, err error) {
+    if request == nil {
+        request = NewDeleteLiveDomainStrategyRequest()
+    }
+    response = NewDeleteLiveDomainStrategyResponse()
     err = c.Send(request, response)
     return
 }
@@ -889,6 +989,31 @@ func (c *Client) DescribeLiveCerts(request *DescribeLiveCertsRequest) (response 
     return
 }
 
+func NewDescribeLiveDomainRequest() (request *DescribeLiveDomainRequest) {
+    request = &DescribeLiveDomainRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("live", APIVersion, "DescribeLiveDomain")
+    return
+}
+
+func NewDescribeLiveDomainResponse() (response *DescribeLiveDomainResponse) {
+    response = &DescribeLiveDomainResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询直播域名信息
+func (c *Client) DescribeLiveDomain(request *DescribeLiveDomainRequest) (response *DescribeLiveDomainResponse, err error) {
+    if request == nil {
+        request = NewDescribeLiveDomainRequest()
+    }
+    response = NewDescribeLiveDomainResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeLiveDomainCertRequest() (request *DescribeLiveDomainCertRequest) {
     request = &DescribeLiveDomainCertRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -910,6 +1035,56 @@ func (c *Client) DescribeLiveDomainCert(request *DescribeLiveDomainCertRequest) 
         request = NewDescribeLiveDomainCertRequest()
     }
     response = NewDescribeLiveDomainCertResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeLiveDomainStrategysRequest() (request *DescribeLiveDomainStrategysRequest) {
+    request = &DescribeLiveDomainStrategysRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("live", APIVersion, "DescribeLiveDomainStrategys")
+    return
+}
+
+func NewDescribeLiveDomainStrategysResponse() (response *DescribeLiveDomainStrategysResponse) {
+    response = &DescribeLiveDomainStrategysResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 该接口用于查询已有域名策略
+func (c *Client) DescribeLiveDomainStrategys(request *DescribeLiveDomainStrategysRequest) (response *DescribeLiveDomainStrategysResponse, err error) {
+    if request == nil {
+        request = NewDescribeLiveDomainStrategysRequest()
+    }
+    response = NewDescribeLiveDomainStrategysResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeLiveDomainsRequest() (request *DescribeLiveDomainsRequest) {
+    request = &DescribeLiveDomainsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("live", APIVersion, "DescribeLiveDomains")
+    return
+}
+
+func NewDescribeLiveDomainsResponse() (response *DescribeLiveDomainsResponse) {
+    response = &DescribeLiveDomainsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 根据域名状态、类型等信息查询用户的域名信息
+func (c *Client) DescribeLiveDomains(request *DescribeLiveDomainsRequest) (response *DescribeLiveDomainsResponse, err error) {
+    if request == nil {
+        request = NewDescribeLiveDomainsRequest()
+    }
+    response = NewDescribeLiveDomainsResponse()
     err = c.Send(request, response)
     return
 }
@@ -1264,6 +1439,32 @@ func (c *Client) DescribeLiveStreamState(request *DescribeLiveStreamStateRequest
     return
 }
 
+func NewDescribeLiveTranscodeDetailInfoRequest() (request *DescribeLiveTranscodeDetailInfoRequest) {
+    request = &DescribeLiveTranscodeDetailInfoRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("live", APIVersion, "DescribeLiveTranscodeDetailInfo")
+    return
+}
+
+func NewDescribeLiveTranscodeDetailInfoResponse() (response *DescribeLiveTranscodeDetailInfoResponse) {
+    response = &DescribeLiveTranscodeDetailInfoResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 支持查询某天的转码详细信息。
+// 注意：当前只支持查询近30天内某天的详细数据。
+func (c *Client) DescribeLiveTranscodeDetailInfo(request *DescribeLiveTranscodeDetailInfoRequest) (response *DescribeLiveTranscodeDetailInfoResponse, err error) {
+    if request == nil {
+        request = NewDescribeLiveTranscodeDetailInfoRequest()
+    }
+    response = NewDescribeLiveTranscodeDetailInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeLiveTranscodeRulesRequest() (request *DescribeLiveTranscodeRulesRequest) {
     request = &DescribeLiveTranscodeRulesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1439,6 +1640,31 @@ func (c *Client) DescribePullStreamConfigs(request *DescribePullStreamConfigsReq
     return
 }
 
+func NewDescribeStreamPlayInfoListRequest() (request *DescribeStreamPlayInfoListRequest) {
+    request = &DescribeStreamPlayInfoListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("live", APIVersion, "DescribeStreamPlayInfoList")
+    return
+}
+
+func NewDescribeStreamPlayInfoListResponse() (response *DescribeStreamPlayInfoListResponse) {
+    response = &DescribeStreamPlayInfoListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询播放数据，支持按流名称查询详细播放数据，也可按播放域名查询详细总数据。
+func (c *Client) DescribeStreamPlayInfoList(request *DescribeStreamPlayInfoListRequest) (response *DescribeStreamPlayInfoListResponse, err error) {
+    if request == nil {
+        request = NewDescribeStreamPlayInfoListRequest()
+    }
+    response = NewDescribeStreamPlayInfoListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDropLiveStreamRequest() (request *DropLiveStreamRequest) {
     request = &DropLiveStreamRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1460,6 +1686,56 @@ func (c *Client) DropLiveStream(request *DropLiveStreamRequest) (response *DropL
         request = NewDropLiveStreamRequest()
     }
     response = NewDropLiveStreamResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewEnableLiveDomainRequest() (request *EnableLiveDomainRequest) {
+    request = &EnableLiveDomainRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("live", APIVersion, "EnableLiveDomain")
+    return
+}
+
+func NewEnableLiveDomainResponse() (response *EnableLiveDomainResponse) {
+    response = &EnableLiveDomainResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 启用状态为停用的直播域名
+func (c *Client) EnableLiveDomain(request *EnableLiveDomainRequest) (response *EnableLiveDomainResponse, err error) {
+    if request == nil {
+        request = NewEnableLiveDomainRequest()
+    }
+    response = NewEnableLiveDomainResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewForbidLiveDomainRequest() (request *ForbidLiveDomainRequest) {
+    request = &ForbidLiveDomainRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("live", APIVersion, "ForbidLiveDomain")
+    return
+}
+
+func NewForbidLiveDomainResponse() (response *ForbidLiveDomainResponse) {
+    response = &ForbidLiveDomainResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 停用使用某个直播域名
+func (c *Client) ForbidLiveDomain(request *ForbidLiveDomainRequest) (response *ForbidLiveDomainResponse, err error) {
+    if request == nil {
+        request = NewForbidLiveDomainRequest()
+    }
+    response = NewForbidLiveDomainResponse()
     err = c.Send(request, response)
     return
 }
@@ -1585,6 +1861,31 @@ func (c *Client) ModifyLivePlayAuthKey(request *ModifyLivePlayAuthKeyRequest) (r
         request = NewModifyLivePlayAuthKeyRequest()
     }
     response = NewModifyLivePlayAuthKeyResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyLivePlayDomainRequest() (request *ModifyLivePlayDomainRequest) {
+    request = &ModifyLivePlayDomainRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("live", APIVersion, "ModifyLivePlayDomain")
+    return
+}
+
+func NewModifyLivePlayDomainResponse() (response *ModifyLivePlayDomainResponse) {
+    response = &ModifyLivePlayDomainResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 修改播放域名信息
+func (c *Client) ModifyLivePlayDomain(request *ModifyLivePlayDomainRequest) (response *ModifyLivePlayDomainResponse, err error) {
+    if request == nil {
+        request = NewModifyLivePlayDomainRequest()
+    }
+    response = NewModifyLivePlayDomainResponse()
     err = c.Send(request, response)
     return
 }

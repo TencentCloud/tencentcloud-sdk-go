@@ -29,7 +29,7 @@ type FaceFusionRequest struct {
 	// 素材 ID，请在人脸融合控制台查看。
 	ModelId *string `json:"ModelId,omitempty" name:"ModelId"`
 
-	// 图片 base64 数据。请确保人脸为正脸，无旋转。若某些手机拍摄后人脸被旋转，请使用图片的 EXIF 信息对图片进行旋转处理。
+	// 图片 base64 数据。请确保人脸为正脸，无旋转。若某些手机拍摄后人脸被旋转，请使用图片的 EXIF 信息对图片进行旋转处理；请勿在 base64 数据中包含头部，如“data:image/jpeg;base64,”。
 	Image *string `json:"Image,omitempty" name:"Image"`
 
 	// 返回图像方式（url 或 base64) ，二选一。当前仅支持 url 方式，base64 方式后期开放。

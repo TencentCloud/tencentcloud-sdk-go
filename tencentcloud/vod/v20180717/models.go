@@ -20,6 +20,27 @@ import (
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
+type AdaptiveDynamicStreamingInfoItem struct {
+
+	// 转自适应码流规格。
+	Definition *int64 `json:"Definition,omitempty" name:"Definition"`
+
+	// 打包格式，可能为 hls 和 dash 两种。
+	Package *string `json:"Package,omitempty" name:"Package"`
+
+	// 加密类型。
+	DrmType *string `json:"DrmType,omitempty" name:"DrmType"`
+
+	// 播放地址。
+	Url *string `json:"Url,omitempty" name:"Url"`
+}
+
+type AdaptiveDynamicStreamingTaskInput struct {
+
+	// 转自适应码流模板 ID。
+	Definition *uint64 `json:"Definition,omitempty" name:"Definition"`
+}
+
 type AiAnalysisResult struct {
 
 	// 任务的类型，可以取的值有：
@@ -128,7 +149,7 @@ type AiAnalysisTaskTagOutput struct {
 
 	// 视频智能标签列表。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TagSet *MediaAiAnalysisTagItem `json:"TagSet,omitempty" name:"TagSet"`
+	TagSet []*MediaAiAnalysisTagItem `json:"TagSet,omitempty" name:"TagSet" list`
 }
 
 type AiAnalysisTaskTagResult struct {
@@ -149,7 +170,7 @@ type AiAnalysisTaskTagResult struct {
 
 	// 智能标签任务输出。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Output []*AiAnalysisTaskTagOutput `json:"Output,omitempty" name:"Output" list`
+	Output *AiAnalysisTaskTagOutput `json:"Output,omitempty" name:"Output"`
 }
 
 type AiContentReviewResult struct {
@@ -196,6 +217,12 @@ type AiContentReviewResult struct {
 type AiContentReviewTaskInput struct {
 
 	// 视频内容审核模板 ID，可以填 10 和 20。<li>10：对视频画面进行鉴黄、鉴暴、鉴政审核；</li><li>20：对视频画面进行鉴黄、鉴暴、鉴政审核，并对 Asr 和 Ocr 文字进行鉴黄、鉴政审核。</li>
+	Definition *uint64 `json:"Definition,omitempty" name:"Definition"`
+}
+
+type AiRecognitionTaskInput struct {
+
+	// 视频智能识别模板 ID ，固定为 10，同时进行按帧标签识别、精彩片段识别、视频头尾识别、拆条、人脸识别、文字识别、语音识别、文字全文识别、语音全文识别，后续会推出用户自定义模板，可根据需要选择相应的识别任务。
 	Definition *uint64 `json:"Definition,omitempty" name:"Definition"`
 }
 
@@ -655,6 +682,31 @@ type AudioTemplateInfo struct {
 	AudioChannel *int64 `json:"AudioChannel,omitempty" name:"AudioChannel"`
 }
 
+type AudioTemplateInfoForUpdate struct {
+
+	// 音频流的编码格式，可选值：
+	// <li>libfdk_aac：更适合 mp4 和 hls；</li>
+	// <li>libmp3lame：更适合 flv；</li>
+	// <li>mp2。</li>
+	Codec *string `json:"Codec,omitempty" name:"Codec"`
+
+	// 音频流的码率，取值范围：0 和 [26, 256]，单位：kbps。 当取值为 0，表示音频码率和原始音频保持一致。
+	Bitrate *uint64 `json:"Bitrate,omitempty" name:"Bitrate"`
+
+	// 音频流的采样率，可选值：
+	// <li>32000</li>
+	// <li>44100</li>
+	// <li>48000</li>
+	// 单位：Hz。
+	SampleRate *uint64 `json:"SampleRate,omitempty" name:"SampleRate"`
+
+	// 音频通道方式，可选值：
+	// <li>1：单通道</li>
+	// <li>2：双通道</li>
+	// <li>6：立体声</li>
+	AudioChannel *int64 `json:"AudioChannel,omitempty" name:"AudioChannel"`
+}
+
 type ClipFileInfo2017 struct {
 
 	// 错误码
@@ -665,7 +717,7 @@ type ClipFileInfo2017 struct {
 
 	// 错误描述。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Message *float64 `json:"Message,omitempty" name:"Message"`
+	Message *string `json:"Message,omitempty" name:"Message"`
 
 	// 输出目标文件的文件 ID。
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -916,10 +968,59 @@ type CreateImageSpriteTask2017 struct {
 	WebVttUrl *string `json:"WebVttUrl,omitempty" name:"WebVttUrl"`
 }
 
+type CreateProcedureTemplateRequest struct {
+	*tchttp.BaseRequest
+
+	// 任务流名字（支持中文，不超过20个字）。
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 视频处理类型任务参数。
+	MediaProcessTask *MediaProcessTaskInput `json:"MediaProcessTask,omitempty" name:"MediaProcessTask"`
+
+	// AI 智能内容审核类型任务参数。
+	AiContentReviewTask *AiContentReviewTaskInput `json:"AiContentReviewTask,omitempty" name:"AiContentReviewTask"`
+
+	// AI 智能内容分析类型任务参数。
+	AiAnalysisTask *AiAnalysisTaskInput `json:"AiAnalysisTask,omitempty" name:"AiAnalysisTask"`
+
+	// AI 内容识别类型任务参数。
+	AiRecognitionTask *AiRecognitionTaskInput `json:"AiRecognitionTask,omitempty" name:"AiRecognitionTask"`
+
+	// 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
+}
+
+func (r *CreateProcedureTemplateRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateProcedureTemplateRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateProcedureTemplateResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateProcedureTemplateResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateProcedureTemplateResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type CreateTranscodeTemplateRequest struct {
 	*tchttp.BaseRequest
 
-	// 封装格式，可选值：mp4、flv、hls、mp3、flac、ogg。其中，mp3、flac、ogg 为纯音频文件。
+	// 封装格式，可选值：mp4、flv、hls、mp3、flac、ogg、m4a。其中，mp3、flac、ogg、m4a 为纯音频文件。
 	Container *string `json:"Container,omitempty" name:"Container"`
 
 	// 转码模板名称，长度限制：64 个字符。
@@ -995,11 +1096,11 @@ type CreateWatermarkTemplateRequest struct {
 	Comment *string `json:"Comment,omitempty" name:"Comment"`
 
 	// 原点位置，可选值：
-	// <li>topLeft：表示坐标原点位于视频图像左上角，水印原点为图片或文字的左上角；</li>
-	// <li>topRight：表示坐标原点位于视频图像的右上角，水印原点为图片或文字的右上角；</li>
-	// <li>bottomLeft：表示坐标原点位于视频图像的左下角，水印原点为图片或文字的左下角；</li>
-	// <li>bottomRight：表示坐标原点位于视频图像的右下角，水印原点为图片或文字的右下角。</li>
-	// 默认值：topLeft。目前，当 Type 为 image，该字段仅支持 topLeft。
+	// <li>TopLeft：表示坐标原点位于视频图像左上角，水印原点为图片或文字的左上角；</li>
+	// <li>TopRight：表示坐标原点位于视频图像的右上角，水印原点为图片或文字的右上角；</li>
+	// <li>BottomLeft：表示坐标原点位于视频图像的左下角，水印原点为图片或文字的左下角；</li>
+	// <li>BottomRight：表示坐标原点位于视频图像的右下角，水印原点为图片或文字的右下角。</li>
+	// 默认值：TopLeft。目前，当 Type 为 image，该字段仅支持 TopLeft。
 	CoordinateOrigin *string `json:"CoordinateOrigin,omitempty" name:"CoordinateOrigin"`
 
 	// 水印原点距离视频图像坐标原点的水平位置。支持 %、px 两种格式：
@@ -1018,7 +1119,10 @@ type CreateWatermarkTemplateRequest struct {
 	ImageTemplate *ImageWatermarkInput `json:"ImageTemplate,omitempty" name:"ImageTemplate"`
 
 	// 文字水印模板，当 Type 为 text，该字段必填。当 Type 为 image，该字段无效。
-	TextTemplate *TextWatermarkTemplate `json:"TextTemplate,omitempty" name:"TextTemplate"`
+	TextTemplate *TextWatermarkTemplateInput `json:"TextTemplate,omitempty" name:"TextTemplate"`
+
+	// SVG水印模板，当 Type 为 svg，该字段必填。当 Type 为 image 或 text，该字段无效。
+	SvgTemplate *SvgWatermarkInput `json:"SvgTemplate,omitempty" name:"SvgTemplate"`
 
 	// 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
 	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
@@ -1040,8 +1144,7 @@ type CreateWatermarkTemplateResponse struct {
 		// 水印模板唯一标识。
 		Definition *int64 `json:"Definition,omitempty" name:"Definition"`
 
-		// 水印图片地址，仅当 Type 为 image，该字段有值。
-	// 注意：此字段可能返回 null，表示取不到有效值。
+		// 水印图片地址，仅当 Type 为 image，该字段有效。
 		ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -1132,6 +1235,43 @@ func (r *DeleteMediaResponse) ToJsonString() string {
 }
 
 func (r *DeleteMediaResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteProcedureTemplateRequest struct {
+	*tchttp.BaseRequest
+
+	// 任务流名字。
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
+}
+
+func (r *DeleteProcedureTemplateRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteProcedureTemplateRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteProcedureTemplateResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DeleteProcedureTemplateResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteProcedureTemplateResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -1303,10 +1443,59 @@ func (r *DescribeMediaInfosResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeProcedureTemplatesRequest struct {
+	*tchttp.BaseRequest
+
+	// 任务流模板名字过滤条件，数组长度限制：100。
+	Names []*string `json:"Names,omitempty" name:"Names" list`
+
+	// 分页偏移量，默认值：0。
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 返回记录条数，默认值：10，最大值：100。
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
+}
+
+func (r *DescribeProcedureTemplatesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeProcedureTemplatesRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeProcedureTemplatesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 符合过滤条件的记录总数。
+		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 任务流模板详情列表。
+		ProcedureTemplateSet []*ProcedureTemplate `json:"ProcedureTemplateSet,omitempty" name:"ProcedureTemplateSet" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeProcedureTemplatesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeProcedureTemplatesResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeTaskDetailRequest struct {
 	*tchttp.BaseRequest
 
-	// 视频处理任务的任务 ID
+	// 视频处理任务的任务 ID。
 	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
 
 	// 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
@@ -1703,7 +1892,7 @@ type EventContent struct {
 
 	// 微信发布完成事件，当事件类型为 WechatPublishComplete 时有效。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	WechatPublishComplete *WechatPublishTask `json:"WechatPublishComplete,omitempty" name:"WechatPublishComplete"`
+	WechatPublishCompleteEvent *WechatPublishTask `json:"WechatPublishCompleteEvent,omitempty" name:"WechatPublishCompleteEvent"`
 
 	// 视频转码完成事件，当事件类型为 TranscodeComplete 时有效。
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -1769,6 +1958,23 @@ type ImageWatermarkInput struct {
 	Height *string `json:"Height,omitempty" name:"Height"`
 }
 
+type ImageWatermarkInputForUpdate struct {
+
+	// 水印图片 [Base64](https://tools.ietf.org/html/rfc4648) 编码后的字符串。支持 jpeg、png 图片格式。
+	ImageContent *string `json:"ImageContent,omitempty" name:"ImageContent"`
+
+	// 水印的宽度。支持 %、px 两种格式：
+	// <li>当字符串以 % 结尾，表示水印 Width 为视频宽度的百分比大小，如 10% 表示 Width 为视频宽度的 10%；</li>
+	// <li>当字符串以 px 结尾，表示水印 Width 单位为像素，如 100px 表示 Width 为 100 像素。</li>
+	Width *string `json:"Width,omitempty" name:"Width"`
+
+	// 水印的高度。支持 %、px 两种格式：
+	// <li>当字符串以 % 结尾，表示水印 Height 为视频高度的百分比大小，如 10% 表示 Height 为视频高度的 10%；</li>
+	// <li>当字符串以 px 结尾，表示水印 Width 单位为像素，如 100px 表示 Width 为 100 像素。</li>
+	// 0px 表示 Height 按照 Width 对视频宽度的比例缩放。
+	Height *string `json:"Height,omitempty" name:"Height"`
+}
+
 type ImageWatermarkTemplate struct {
 
 	// 水印图片地址。
@@ -1806,6 +2012,12 @@ type LiveRealTimeClipRequest struct {
 
 	// 剪辑固化后的视频点播任务流处理，详见[上传指定任务流](https://cloud.tencent.com/document/product/266/9759)。仅 IsPersistence 为 1 时有效。
 	Procedure *string `json:"Procedure,omitempty" name:"Procedure"`
+
+	// 是否需要返回剪辑后的视频元信息。0 不需要，1 需要。默认不需要。
+	MetaDataRequired *uint64 `json:"MetaDataRequired,omitempty" name:"MetaDataRequired"`
+
+	// 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
 }
 
 func (r *LiveRealTimeClipRequest) ToJsonString() string {
@@ -1831,6 +2043,10 @@ type LiveRealTimeClipResponse struct {
 		// 剪辑固化后的视频任务流 ID。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		VodTaskId *string `json:"VodTaskId,omitempty" name:"VodTaskId"`
+
+		// 剪辑后的视频元信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		MetaData *MediaMetaData `json:"MetaData,omitempty" name:"MetaData"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -2331,6 +2547,24 @@ type MediaOutputInfo struct {
 	Dir *string `json:"Dir,omitempty" name:"Dir"`
 }
 
+type MediaProcessTaskAdaptiveDynamicStreamingResult struct {
+
+	// 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 错误码，0：成功，其他值：失败。
+	ErrCode *int64 `json:"ErrCode,omitempty" name:"ErrCode"`
+
+	// 错误信息。
+	Message *string `json:"Message,omitempty" name:"Message"`
+
+	// 对视频转自适应码流任务的输入。
+	Input *AdaptiveDynamicStreamingTaskInput `json:"Input,omitempty" name:"Input"`
+
+	// 对视频转自适应码流任务的输出。
+	Output *AdaptiveDynamicStreamingInfoItem `json:"Output,omitempty" name:"Output"`
+}
+
 type MediaProcessTaskAnimatedGraphicResult struct {
 
 	// 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
@@ -2418,6 +2652,10 @@ type MediaProcessTaskInput struct {
 	// 对视频截图做封面任务列表。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CoverBySnapshotTaskSet []*CoverBySnapshotTaskInput `json:"CoverBySnapshotTaskSet,omitempty" name:"CoverBySnapshotTaskSet" list`
+
+	// 对视频转自适应码流任务列表。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AdaptiveDynamicStreamingTaskSet []*AdaptiveDynamicStreamingTaskInput `json:"AdaptiveDynamicStreamingTaskSet,omitempty" name:"AdaptiveDynamicStreamingTaskSet" list`
 }
 
 type MediaProcessTaskResult struct {
@@ -2429,6 +2667,7 @@ type MediaProcessTaskResult struct {
 	// <li>SampleSnapshot：采样截图</li>
 	// <li>ImageSprites：雪碧图</li>
 	// <li>CoverBySnapshot：截图做封面</li>
+	// <li>AdaptiveDynamicStreaming：自适应码流</li>
 	Type *string `json:"Type,omitempty" name:"Type"`
 
 	// 视频转码任务的查询结果，当任务类型为 Transcode 时有效。
@@ -2454,6 +2693,10 @@ type MediaProcessTaskResult struct {
 	// 对视频截图做封面任务的查询结果，当任务类型为 CoverBySnapshot 时有效。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CoverBySnapshotTask *MediaProcessTaskCoverBySnapshotResult `json:"CoverBySnapshotTask,omitempty" name:"CoverBySnapshotTask"`
+
+	// 对视频转自适应码流任务的查询结果，当任务类型为 AdaptiveDynamicStreaming 时有效。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AdaptiveDynamicStreamingTask *MediaProcessTaskAdaptiveDynamicStreamingResult `json:"AdaptiveDynamicStreamingTask,omitempty" name:"AdaptiveDynamicStreamingTask"`
 }
 
 type MediaProcessTaskSampleSnapshotResult struct {
@@ -2800,7 +3043,7 @@ type ModifyTranscodeTemplateRequest struct {
 	// 转码模板唯一标识。
 	Definition *int64 `json:"Definition,omitempty" name:"Definition"`
 
-	// 封装格式，可选值：mp4、flv、hls、mp3、flac、ogg。其中，mp3、flac、ogg 为纯音频文件。
+	// 封装格式，可选值：mp4、flv、hls、mp3、flac、ogg、m4a。其中，mp3、flac、ogg、m4a 为纯音频文件。
 	Container *string `json:"Container,omitempty" name:"Container"`
 
 	// 转码模板名称，长度限制：64 个字符。
@@ -2820,10 +3063,10 @@ type ModifyTranscodeTemplateRequest struct {
 	RemoveAudio *int64 `json:"RemoveAudio,omitempty" name:"RemoveAudio"`
 
 	// 视频流配置参数。
-	VideoTemplate *VideoTemplateInfo `json:"VideoTemplate,omitempty" name:"VideoTemplate"`
+	VideoTemplate *VideoTemplateInfoForUpdate `json:"VideoTemplate,omitempty" name:"VideoTemplate"`
 
 	// 音频流配置参数。
-	AudioTemplate *AudioTemplateInfo `json:"AudioTemplate,omitempty" name:"AudioTemplate"`
+	AudioTemplate *AudioTemplateInfoForUpdate `json:"AudioTemplate,omitempty" name:"AudioTemplate"`
 
 	// 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
 	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
@@ -2869,11 +3112,11 @@ type ModifyWatermarkTemplateRequest struct {
 	Comment *string `json:"Comment,omitempty" name:"Comment"`
 
 	// 原点位置，可选值：
-	// <li>topLeft：表示坐标原点位于视频图像左上角，水印原点为图片或文字的左上角；</li>
-	// <li>topRight：表示坐标原点位于视频图像的右上角，水印原点为图片或文字的右上角；</li>
-	// <li>bottomLeft：表示坐标原点位于视频图像的左下角，水印原点为图片或文字的左下角；</li>
-	// <li>bottomRight：表示坐标原点位于视频图像的右下角，水印原点为图片或文字的右下角。</li>
-	// 目前，当 Type 为 image，该字段仅支持 topLeft。
+	// <li>TopLeft：表示坐标原点位于视频图像左上角，水印原点为图片或文字的左上角；</li>
+	// <li>TopRight：表示坐标原点位于视频图像的右上角，水印原点为图片或文字的右上角；</li>
+	// <li>BottomLeft：表示坐标原点位于视频图像的左下角，水印原点为图片或文字的左下角；</li>
+	// <li>BottomRight：表示坐标原点位于视频图像的右下角，水印原点为图片或文字的右下角。</li>
+	// 目前，当 Type 为 image，该字段仅支持 TopLeft。
 	CoordinateOrigin *string `json:"CoordinateOrigin,omitempty" name:"CoordinateOrigin"`
 
 	// 水印原点距离视频图像坐标原点的水平位置。支持 %、px 两种格式：
@@ -2887,10 +3130,13 @@ type ModifyWatermarkTemplateRequest struct {
 	YPos *string `json:"YPos,omitempty" name:"YPos"`
 
 	// 图片水印模板，该字段仅对图片水印模板有效。
-	ImageTemplate *ImageWatermarkInput `json:"ImageTemplate,omitempty" name:"ImageTemplate"`
+	ImageTemplate *ImageWatermarkInputForUpdate `json:"ImageTemplate,omitempty" name:"ImageTemplate"`
 
 	// 文字水印模板，该字段仅对文字水印模板有效。
-	TextTemplate *TextWatermarkTemplate `json:"TextTemplate,omitempty" name:"TextTemplate"`
+	TextTemplate *TextWatermarkTemplateInputForUpdate `json:"TextTemplate,omitempty" name:"TextTemplate"`
+
+	// SVG水印模板，当 Type 为 svg，该字段必填。当 Type 为 image 或 text，该字段无效。
+	SvgTemplate *SvgWatermarkInputForUpdate `json:"SvgTemplate,omitempty" name:"SvgTemplate"`
 
 	// 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
 	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
@@ -2989,6 +3235,34 @@ type ProcedureTask struct {
 	// <li>None：不接受该任务流回调。</li>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TasksNotifyMode *string `json:"TasksNotifyMode,omitempty" name:"TasksNotifyMode"`
+}
+
+type ProcedureTemplate struct {
+
+	// 任务流名字。
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 视频处理类型任务参数。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MediaProcessTask *MediaProcessTaskInput `json:"MediaProcessTask,omitempty" name:"MediaProcessTask"`
+
+	// AI 智能内容审核类型任务参数。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AiContentReviewTask *AiContentReviewTaskInput `json:"AiContentReviewTask,omitempty" name:"AiContentReviewTask"`
+
+	// AI 智能内容分析类型任务参数。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AiAnalysisTask *AiAnalysisTaskInput `json:"AiAnalysisTask,omitempty" name:"AiAnalysisTask"`
+
+	// AI 内容识别类型任务参数。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AiRecognitionTask *AiRecognitionTaskInput `json:"AiRecognitionTask,omitempty" name:"AiRecognitionTask"`
+
+	// 模板创建时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 模板最后修改时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
 }
 
 type ProcessMediaByUrlRequest struct {
@@ -3179,6 +3453,55 @@ type PullFileTask struct {
 	ProcedureTaskId *string `json:"ProcedureTaskId,omitempty" name:"ProcedureTaskId"`
 }
 
+type ResetProcedureTemplateRequest struct {
+	*tchttp.BaseRequest
+
+	// 任务流名字
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 视频处理类型任务参数。
+	MediaProcessTask *MediaProcessTaskInput `json:"MediaProcessTask,omitempty" name:"MediaProcessTask"`
+
+	// AI 智能内容审核类型任务参数。
+	AiContentReviewTask *AiContentReviewTaskInput `json:"AiContentReviewTask,omitempty" name:"AiContentReviewTask"`
+
+	// AI 智能内容分析类型任务参数。
+	AiAnalysisTask *AiAnalysisTaskInput `json:"AiAnalysisTask,omitempty" name:"AiAnalysisTask"`
+
+	// AI 内容识别类型任务参数。
+	AiRecognitionTask *AiRecognitionTaskInput `json:"AiRecognitionTask,omitempty" name:"AiRecognitionTask"`
+
+	// 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
+}
+
+func (r *ResetProcedureTemplateRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ResetProcedureTemplateRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ResetProcedureTemplateResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ResetProcedureTemplateResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ResetProcedureTemplateResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type SampleSnapshotTaskInput struct {
 
 	// 采样截图模板 ID。
@@ -3326,7 +3649,7 @@ type SnapshotByTimeOffset2017 struct {
 	// <li>0：成功；</li>
 	// <li>其他值：失败。</li>
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ErrCode *string `json:"ErrCode,omitempty" name:"ErrCode"`
+	ErrCode *int64 `json:"ErrCode,omitempty" name:"ErrCode"`
 
 	// 截图的具体时间点，单位：毫秒。
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -3375,6 +3698,56 @@ type SortBy struct {
 	Order *string `json:"Order,omitempty" name:"Order"`
 }
 
+type SvgWatermarkInput struct {
+
+	// 水印的宽度，支持 px，%，W%，H%，S%，L% 六种格式：
+	// <li>当字符串以 px 结尾，表示水印 Width 单位为像素，如 100px 表示 Width 为 100 像素；当填 0px 且
+	//  Height 不为 0px 时，表示水印的宽度按原始 SVG 图像等比缩放；当 Width、Height 都填 0px 时，表示水印的宽度取原始 SVG 图像的宽度；</li>
+	// <li>当字符串以 W% 结尾，表示水印 Width 为视频宽度的百分比大小，如 10W% 表示 Width 为视频宽度的 10%；</li>
+	// <li>当字符串以 H% 结尾，表示水印 Width 为视频高度的百分比大小，如 10H% 表示 Width 为视频高度的 10%；</li>
+	// <li>当字符串以 S% 结尾，表示水印 Width 为视频短边的百分比大小，如 10S% 表示 Width 为视频短片的 10%；</li>
+	// <li>当字符串以 L% 结尾，表示水印 Width 为视频长边的百分比大小，如 10L% 表示 Width 为视频长边的 10%；</li>
+	// <li>当字符串以 % 结尾时，含义同 W%。</li>
+	// 默认值为 10W%。
+	Width *string `json:"Width,omitempty" name:"Width"`
+
+	// 水印的高度，支持 px，W%，H%，S%，L% 六种格式：
+	// <li>当字符串以 px 结尾，表示水印 Height 单位为像素，如 100px 表示 Height 为 100 像素；当填 0px 且
+	//  Width 不为 0px 时，表示水印的高度按原始 SVG 图像等比缩放；当 Width、Height 都填 0px 时，表示水印的高度取原始 SVG 图像的高度；</li>
+	// <li>当字符串以 W% 结尾，表示水印 Height 为视频宽度的百分比大小，如 10W% 表示 Height 为视频宽度的 10%；</li>
+	// <li>当字符串以 H% 结尾，表示水印 Height 为视频高度的百分比大小，如 10H% 表示 Height 为视频高度的 10%；</li>
+	// <li>当字符串以 S% 结尾，表示水印 Height 为视频短边的百分比大小，如 10S% 表示 Height 为视频短片的 10%；</li>
+	// <li>当字符串以 L% 结尾，表示水印 Height 为视频长边的百分比大小，如 10L% 表示 Height 为视频长边的 10%；</li>
+	// <li>当字符串以 % 结尾时，含义同 H%。</li>
+	// 默认值为 0px。
+	Height *string `json:"Height,omitempty" name:"Height"`
+}
+
+type SvgWatermarkInputForUpdate struct {
+
+	// 水印的宽度，支持 px，%，W%，H%，S%，L% 六种格式：
+	// <li>当字符串以 px 结尾，表示水印 Width 单位为像素，如 100px 表示 Width 为 100 像素；当填 0px 且
+	//  Height 不为 0px 时，表示水印的宽度按原始 SVG 图像等比缩放；当 Width、Height 都填 0px 时，表示水印的宽度取原始 SVG 图像的宽度；</li>
+	// <li>当字符串以 W% 结尾，表示水印 Width 为视频宽度的百分比大小，如 10W% 表示 Width 为视频宽度的 10%；</li>
+	// <li>当字符串以 H% 结尾，表示水印 Width 为视频高度的百分比大小，如 10H% 表示 Width 为视频高度的 10%；</li>
+	// <li>当字符串以 S% 结尾，表示水印 Width 为视频短边的百分比大小，如 10S% 表示 Width 为视频短片的 10%；</li>
+	// <li>当字符串以 L% 结尾，表示水印 Width 为视频长边的百分比大小，如 10L% 表示 Width 为视频长边的 10%；</li>
+	// <li>当字符串以 % 结尾时，含义同 W%。</li>
+	// 默认值为 10W%。
+	Width *string `json:"Width,omitempty" name:"Width"`
+
+	// 水印的高度，支持 px，%，W%，H%，S%，L% 六种格式：
+	// <li>当字符串以 px 结尾，表示水印 Height 单位为像素，如 100px 表示 Height 为 100 像素；当填 0px 且
+	//  Width 不为 0px 时，表示水印的高度按原始 SVG 图像等比缩放；当 Width、Height 都填 0px 时，表示水印的高度取原始 SVG 图像的高度；</li>
+	// <li>当字符串以 W% 结尾，表示水印 Height 为视频宽度的百分比大小，如 10W% 表示 Height 为视频宽度的 10%；</li>
+	// <li>当字符串以 H% 结尾，表示水印 Height 为视频高度的百分比大小，如 10H% 表示 Height 为视频高度的 10%；</li>
+	// <li>当字符串以 S% 结尾，表示水印 Height 为视频短边的百分比大小，如 10S% 表示 Height 为视频短片的 10%；</li>
+	// <li>当字符串以 L% 结尾，表示水印 Height 为视频长边的百分比大小，如 10L% 表示 Height 为视频长边的 10%；</li>
+	// <li>当字符串以 % 结尾时，含义同 H%。
+	// 默认值为 0px。
+	Height *string `json:"Height,omitempty" name:"Height"`
+}
+
 type TaskSimpleInfo struct {
 
 	// 任务 ID。
@@ -3419,7 +3792,7 @@ type TempCertificate struct {
 	ExpiredTime *uint64 `json:"ExpiredTime,omitempty" name:"ExpiredTime"`
 }
 
-type TextWatermarkTemplate struct {
+type TextWatermarkTemplateInput struct {
 
 	// 字体类型，目前仅支持 arial.ttf。
 	FontType *string `json:"FontType,omitempty" name:"FontType"`
@@ -3434,6 +3807,23 @@ type TextWatermarkTemplate struct {
 	// <li>0：完全透明</li>
 	// <li>1：完全不透明</li>
 	// 默认值：1。
+	FontAlpha *float64 `json:"FontAlpha,omitempty" name:"FontAlpha"`
+}
+
+type TextWatermarkTemplateInputForUpdate struct {
+
+	// 字体类型，目前仅支持 arial.ttf。
+	FontType *string `json:"FontType,omitempty" name:"FontType"`
+
+	// 字体大小，格式：Npx，N 为数值。
+	FontSize *string `json:"FontSize,omitempty" name:"FontSize"`
+
+	// 字体颜色，格式：0xRRGGBB，默认值：0xFFFFFF（黑色）。
+	FontColor *string `json:"FontColor,omitempty" name:"FontColor"`
+
+	// 文字透明度，取值范围：(0, 1]
+	// <li>0：完全透明</li>
+	// <li>1：完全不透明</li>
 	FontAlpha *float64 `json:"FontAlpha,omitempty" name:"FontAlpha"`
 }
 
@@ -3560,7 +3950,7 @@ type VideoTemplateInfo struct {
 	// 目前 H.265 编码必须指定分辨率，并且需要在 640*480 以内。
 	Codec *string `json:"Codec,omitempty" name:"Codec"`
 
-	// 视频帧率，取值范围：[0, 60],单位：Hz。
+	// 视频帧率，取值范围：[0, 60]，单位：Hz。
 	// 当取值为 0，表示帧率和原始视频保持一致。
 	Fps *uint64 `json:"Fps,omitempty" name:"Fps"`
 
@@ -3594,13 +3984,50 @@ type VideoTemplateInfo struct {
 	Height *uint64 `json:"Height,omitempty" name:"Height"`
 }
 
+type VideoTemplateInfoForUpdate struct {
+
+	// 视频流的编码格式，可选值：
+	// <li>libx264：H.264 编码</li>
+	// <li>libx265：H.265 编码</li>
+	// 目前 H.265 编码必须指定分辨率，并且需要在 640*480 以内。
+	Codec *string `json:"Codec,omitempty" name:"Codec"`
+
+	// 视频帧率，取值范围：[0, 60]，单位：Hz。
+	// 当取值为 0，表示帧率和原始视频保持一致。
+	Fps *uint64 `json:"Fps,omitempty" name:"Fps"`
+
+	// 视频流的码率，取值范围：0 和 [128, 35000]，单位：kbps。
+	// 当取值为 0，表示视频码率和原始视频保持一致。
+	Bitrate *uint64 `json:"Bitrate,omitempty" name:"Bitrate"`
+
+	// 分辨率自适应，可选值：
+	// <li>open：开启，此时，Width 代表视频的宽度，Height 表示视频的高度；</li>
+	// <li>close：关闭，此时，Width 代表视频的长边，Height 表示视频的短边。</li>
+	ResolutionAdaptive *string `json:"ResolutionAdaptive,omitempty" name:"ResolutionAdaptive"`
+
+	// 视频流宽度（或长边）的最大值，取值范围：0 和 [128, 4096]，单位：px。
+	// <li>当 Width、Height 均为 0，则分辨率同源；</li>
+	// <li>当 Width 为 0，Height 非 0，则 Width 按比例缩放；</li>
+	// <li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li>
+	// <li>当 Width、Height 均非 0，则分辨率按用户指定。</li>
+	Width *uint64 `json:"Width,omitempty" name:"Width"`
+
+	// 视频流高度（或短边）的最大值，取值范围：0 和 [128, 4096]，单位：px。
+	Height *uint64 `json:"Height,omitempty" name:"Height"`
+}
+
 type WatermarkInput struct {
 
 	// 水印模板 ID。
 	Definition *uint64 `json:"Definition,omitempty" name:"Definition"`
 
 	// 文字内容，长度不超过100个字符。仅当水印类型为文字水印时填写。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	TextContent *string `json:"TextContent,omitempty" name:"TextContent"`
+
+	// SVG 内容。长度不超过 2000000 个字符。仅当水印类型为 SVG 水印时填写。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SvgContent *string `json:"SvgContent,omitempty" name:"SvgContent"`
 }
 
 type WatermarkTemplate struct {
@@ -3636,7 +4063,7 @@ type WatermarkTemplate struct {
 
 	// 文字水印模板，仅当 Type 为 text，该字段有值。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TextTemplate *TextWatermarkTemplate `json:"TextTemplate,omitempty" name:"TextTemplate"`
+	TextTemplate *TextWatermarkTemplateInput `json:"TextTemplate,omitempty" name:"TextTemplate"`
 
 	// 模板创建时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
 	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`

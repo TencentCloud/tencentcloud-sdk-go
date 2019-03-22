@@ -63,6 +63,141 @@ func (r *ApplyBlackListResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type ApplyCreditAuditRequest struct {
+	*tchttp.BaseRequest
+
+	// 模块
+	Module *string `json:"Module,omitempty" name:"Module"`
+
+	// 操作
+	Operation *string `json:"Operation,omitempty" name:"Operation"`
+
+	// 实例ID
+	InstId *string `json:"InstId,omitempty" name:"InstId"`
+
+	// 产品ID，形如P******。
+	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
+
+	// 信审任务ID，同一天内，同一InstId下，同一CaseId只能调用一次。
+	CaseId *string `json:"CaseId,omitempty" name:"CaseId"`
+
+	// 回调地址
+	CallbackUrl *string `json:"CallbackUrl,omitempty" name:"CallbackUrl"`
+
+	// JSON格式的业务字段。
+	Data *string `json:"Data,omitempty" name:"Data"`
+}
+
+func (r *ApplyCreditAuditRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ApplyCreditAuditRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ApplyCreditAuditResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 请求日期
+		RequestDate *string `json:"RequestDate,omitempty" name:"RequestDate"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ApplyCreditAuditResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ApplyCreditAuditResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeCreditResultRequest struct {
+	*tchttp.BaseRequest
+
+	// 模块
+	Module *string `json:"Module,omitempty" name:"Module"`
+
+	// 操作
+	Operation *string `json:"Operation,omitempty" name:"Operation"`
+
+	// 实例ID
+	InstId *string `json:"InstId,omitempty" name:"InstId"`
+
+	// 产品ID，形如P******。
+	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
+
+	// 信审任务ID
+	CaseId *string `json:"CaseId,omitempty" name:"CaseId"`
+
+	// 请求日期
+	RequestDate *string `json:"RequestDate,omitempty" name:"RequestDate"`
+}
+
+func (r *DescribeCreditResultRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeCreditResultRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeCreditResultResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 呼叫结果，取值范围：
+	// <li>NON：接通
+	// <li>DBU：号码忙
+	// <li>DRF：不在服务区
+	// <li>ANA：欠费未接听
+	// <li>REJ：拒接
+	// <li>SHU：关机
+	// <li>NAN：空号
+	// <li>HAL：停机
+	// <li>DAD：未接听
+	// <li>EXE：其他异常
+		ResultCode *string `json:"ResultCode,omitempty" name:"ResultCode"`
+
+		// 客户标识代码，多个标识码以英文逗号分隔，ResultCode为NON时才有。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		ClientCode *string `json:"ClientCode,omitempty" name:"ClientCode"`
+
+		// 开始振铃时间，ResultCode为NON或DAD时才有此字段。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		RingStartTime *string `json:"RingStartTime,omitempty" name:"RingStartTime"`
+
+		// 振铃时长
+		RingDuration *int64 `json:"RingDuration,omitempty" name:"RingDuration"`
+
+		// 接通时长
+		AnswerDuration *int64 `json:"AnswerDuration,omitempty" name:"AnswerDuration"`
+
+		// JSON格式的扩展信息字段，ResultCode为NON时才有。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		ContextValue *string `json:"ContextValue,omitempty" name:"ContextValue"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeCreditResultResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeCreditResultResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeRecordsRequest struct {
 	*tchttp.BaseRequest
 
@@ -111,6 +246,7 @@ type DescribeRecordsResponse struct {
 	Response *struct {
 
 		// 录音列表。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 		RecordList []*SingleRecord `json:"RecordList,omitempty" name:"RecordList" list`
 
 		// 录音总量。
@@ -187,6 +323,9 @@ type DownloadReportRequest struct {
 
 	// 报告日期
 	ReportDate *string `json:"ReportDate,omitempty" name:"ReportDate"`
+
+	// 实例ID，不传默认为系统分配的初始实例。
+	InstId *string `json:"InstId,omitempty" name:"InstId"`
 }
 
 func (r *DownloadReportRequest) ToJsonString() string {
@@ -202,14 +341,29 @@ type DownloadReportResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 日报下载地址
+		// 催收日报下载地址
+	// 注意：此字段可能返回 null，表示取不到有效值。
 		DailyReportUrl *string `json:"DailyReportUrl,omitempty" name:"DailyReportUrl"`
 
-		// 结果下载地址
+		// 催收结果下载地址
+	// 注意：此字段可能返回 null，表示取不到有效值。
 		ResultReportUrl *string `json:"ResultReportUrl,omitempty" name:"ResultReportUrl"`
 
-		// 明细下载地址
+		// 催收明细下载地址
+	// 注意：此字段可能返回 null，表示取不到有效值。
 		DetailReportUrl *string `json:"DetailReportUrl,omitempty" name:"DetailReportUrl"`
+
+		// 回访日报下载地址
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		CallbackDailyReportUrl *string `json:"CallbackDailyReportUrl,omitempty" name:"CallbackDailyReportUrl"`
+
+		// 回访结果下载地址
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		CallbackResultReportUrl *string `json:"CallbackResultReportUrl,omitempty" name:"CallbackResultReportUrl"`
+
+		// 回访明细下载地址
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		CallbackDetailReportUrl *string `json:"CallbackDetailReportUrl,omitempty" name:"CallbackDetailReportUrl"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -261,9 +415,11 @@ type SingleRecord struct {
 	Duration *int64 `json:"Duration,omitempty" name:"Duration"`
 
 	// 产品ID。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
 
 	// 录音下载链接。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	RecordCosUrl *string `json:"RecordCosUrl,omitempty" name:"RecordCosUrl"`
 }
 

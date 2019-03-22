@@ -50,6 +50,61 @@ type AccountInfo struct {
 	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
 }
 
+type AddTimeWindowRequest struct {
+	*tchttp.BaseRequest
+
+	// 实例ID，格式如：cdb-c1nl9rpv或者cdbro-c1nl9rpv，与云数据库控制台页面中显示的实例ID相同。
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 星期一的可维护时间段，其中每一个时间段的格式形如：10:00-12:00；起始时间按半个小时对齐；最短半个小时，最长三个小时；最多设置两个时间段；下同。
+	Monday []*string `json:"Monday,omitempty" name:"Monday" list`
+
+	// 星期二的可维护时间窗口。
+	Tuesday []*string `json:"Tuesday,omitempty" name:"Tuesday" list`
+
+	// 星期三的可维护时间窗口。
+	Wednesday []*string `json:"Wednesday,omitempty" name:"Wednesday" list`
+
+	// 星期四的可维护时间窗口。
+	Thursday []*string `json:"Thursday,omitempty" name:"Thursday" list`
+
+	// 星期五的可维护时间窗口。
+	Friday []*string `json:"Friday,omitempty" name:"Friday" list`
+
+	// 星期六的可维护时间窗口。
+	Saturday []*string `json:"Saturday,omitempty" name:"Saturday" list`
+
+	// 星期日的可维护时间窗口。
+	Sunday []*string `json:"Sunday,omitempty" name:"Sunday" list`
+}
+
+func (r *AddTimeWindowRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *AddTimeWindowRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type AddTimeWindowResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *AddTimeWindowResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *AddTimeWindowResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type AssociateSecurityGroupsRequest struct {
 	*tchttp.BaseRequest
 
@@ -739,6 +794,40 @@ func (r *DeleteParamTemplateResponse) ToJsonString() string {
 }
 
 func (r *DeleteParamTemplateResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteTimeWindowRequest struct {
+	*tchttp.BaseRequest
+
+	// 实例ID，格式如：cdb-c1nl9rpv或者cdbro-c1nl9rpv，与云数据库控制台页面中显示的实例ID相同。
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+}
+
+func (r *DeleteTimeWindowRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteTimeWindowRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteTimeWindowResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DeleteTimeWindowResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteTimeWindowResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -2277,6 +2366,61 @@ func (r *DescribeTasksResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeTimeWindowRequest struct {
+	*tchttp.BaseRequest
+
+	// 实例ID，格式如：cdb-c1nl9rpv或者cdbro-c1nl9rpv，与云数据库控制台页面中显示的实例ID相同。
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+}
+
+func (r *DescribeTimeWindowRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeTimeWindowRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeTimeWindowResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 星期一的可维护时间列表。
+		Monday []*string `json:"Monday,omitempty" name:"Monday" list`
+
+		// 星期二的可维护时间列表。
+		Tuesday []*string `json:"Tuesday,omitempty" name:"Tuesday" list`
+
+		// 星期三的可维护时间列表。
+		Wednesday []*string `json:"Wednesday,omitempty" name:"Wednesday" list`
+
+		// 星期四的可维护时间列表。
+		Thursday []*string `json:"Thursday,omitempty" name:"Thursday" list`
+
+		// 星期五的可维护时间列表。
+		Friday []*string `json:"Friday,omitempty" name:"Friday" list`
+
+		// 星期六的可维护时间列表。
+		Saturday []*string `json:"Saturday,omitempty" name:"Saturday" list`
+
+		// 星期日的可维护时间列表。
+		Sunday []*string `json:"Sunday,omitempty" name:"Sunday" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeTimeWindowResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeTimeWindowResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeUploadedFilesRequest struct {
 	*tchttp.BaseRequest
 
@@ -3335,6 +3479,46 @@ func (r *ModifyParamTemplateResponse) ToJsonString() string {
 }
 
 func (r *ModifyParamTemplateResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyTimeWindowRequest struct {
+	*tchttp.BaseRequest
+
+	// 实例ID，格式如：cdb-c1nl9rpv或者cdbro-c1nl9rpv，与云数据库控制台页面中显示的实例ID相同。
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 修改后的可维护时间段，其中每一个时间段的格式形如：10:00-12:00；起止时间按半个小时对齐；最短半个小时，最长三个小时；最多设置两个时间段；起止时间范围为：[00:00, 24:00]。
+	TimeRanges []*string `json:"TimeRanges,omitempty" name:"TimeRanges" list`
+
+	// 指定修改哪一天的客户时间段，可能的取值为：monday, tuesday, wednesday, thursday, friday, saturday, sunday。如果不指定该值或者为空，则默认一周七天都修改。
+	Weekdays []*string `json:"Weekdays,omitempty" name:"Weekdays" list`
+}
+
+func (r *ModifyTimeWindowRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyTimeWindowRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyTimeWindowResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifyTimeWindowResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyTimeWindowResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 

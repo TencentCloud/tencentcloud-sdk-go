@@ -43,6 +43,31 @@ func NewClient(credential *common.Credential, region string, clientProfile *prof
 }
 
 
+func NewAddTimeWindowRequest() (request *AddTimeWindowRequest) {
+    request = &AddTimeWindowRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cdb", APIVersion, "AddTimeWindow")
+    return
+}
+
+func NewAddTimeWindowResponse() (response *AddTimeWindowResponse) {
+    response = &AddTimeWindowResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口(AddTimeWindow)用于添加云数据库实例的维护时间窗口，以指定实例在哪些时间段可以自动执行切换访问操作。
+func (c *Client) AddTimeWindow(request *AddTimeWindowRequest) (response *AddTimeWindowResponse, err error) {
+    if request == nil {
+        request = NewAddTimeWindowRequest()
+    }
+    response = NewAddTimeWindowResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewAssociateSecurityGroupsRequest() (request *AssociateSecurityGroupsRequest) {
     request = &AssociateSecurityGroupsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -332,6 +357,31 @@ func (c *Client) DeleteParamTemplate(request *DeleteParamTemplateRequest) (respo
         request = NewDeleteParamTemplateRequest()
     }
     response = NewDeleteParamTemplateResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteTimeWindowRequest() (request *DeleteTimeWindowRequest) {
+    request = &DeleteTimeWindowRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cdb", APIVersion, "DeleteTimeWindow")
+    return
+}
+
+func NewDeleteTimeWindowResponse() (response *DeleteTimeWindowResponse) {
+    response = &DeleteTimeWindowResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口(DeleteTimeWindow)用于删除云数据库实例的维护时间窗口。删除实例维护时间窗口之后，默认的维护时间窗为 03:00-04:00，即当选择在维护时间窗口内切换访问新实例时，默认会在03:00-04:00点进行切换访问新实例。
+func (c *Client) DeleteTimeWindow(request *DeleteTimeWindowRequest) (response *DeleteTimeWindowResponse, err error) {
+    if request == nil {
+        request = NewDeleteTimeWindowRequest()
+    }
+    response = NewDeleteTimeWindowResponse()
     err = c.Send(request, response)
     return
 }
@@ -1138,6 +1188,31 @@ func (c *Client) DescribeTasks(request *DescribeTasksRequest) (response *Describ
     return
 }
 
+func NewDescribeTimeWindowRequest() (request *DescribeTimeWindowRequest) {
+    request = &DescribeTimeWindowRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cdb", APIVersion, "DescribeTimeWindow")
+    return
+}
+
+func NewDescribeTimeWindowResponse() (response *DescribeTimeWindowResponse) {
+    response = &DescribeTimeWindowResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口(DescribeTimeWindow)用于查询云数据库实例的维护时间窗口。
+func (c *Client) DescribeTimeWindow(request *DescribeTimeWindowRequest) (response *DescribeTimeWindowResponse, err error) {
+    if request == nil {
+        request = NewDescribeTimeWindowRequest()
+    }
+    response = NewDescribeTimeWindowResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeUploadedFilesRequest() (request *DescribeUploadedFilesRequest) {
     request = &DescribeUploadedFilesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1559,6 +1634,31 @@ func (c *Client) ModifyParamTemplate(request *ModifyParamTemplateRequest) (respo
         request = NewModifyParamTemplateRequest()
     }
     response = NewModifyParamTemplateResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyTimeWindowRequest() (request *ModifyTimeWindowRequest) {
+    request = &ModifyTimeWindowRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cdb", APIVersion, "ModifyTimeWindow")
+    return
+}
+
+func NewModifyTimeWindowResponse() (response *ModifyTimeWindowResponse) {
+    response = &ModifyTimeWindowResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口(ModifyTimeWindow)用于更新云数据库实例的维护时间窗口。
+func (c *Client) ModifyTimeWindow(request *ModifyTimeWindowRequest) (response *ModifyTimeWindowResponse, err error) {
+    if request == nil {
+        request = NewModifyTimeWindowRequest()
+    }
+    response = NewModifyTimeWindowResponse()
     err = c.Send(request, response)
     return
 }

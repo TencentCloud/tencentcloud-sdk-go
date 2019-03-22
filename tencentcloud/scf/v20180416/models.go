@@ -33,6 +33,61 @@ type Code struct {
 
 	// 对象存储的地域，地域为北京时需要传入ap-beijing,北京一区时需要传递ap-beijing-1，其他的地域不需要传递。
 	CosBucketRegion *string `json:"CosBucketRegion,omitempty" name:"CosBucketRegion"`
+
+	// 如果是通过Demo创建的话，需要传入DemoId
+	DemoId *string `json:"DemoId,omitempty" name:"DemoId"`
+
+	// 如果是从TempCos创建的话，需要传入TempCosObjectName
+	TempCosObjectName *string `json:"TempCosObjectName,omitempty" name:"TempCosObjectName"`
+}
+
+type CopyFunctionRequest struct {
+	*tchttp.BaseRequest
+
+	// 函数名
+	FunctionName *string `json:"FunctionName,omitempty" name:"FunctionName"`
+
+	// 新函数的名称
+	NewFunctionName *string `json:"NewFunctionName,omitempty" name:"NewFunctionName"`
+
+	// 命名空间，默认为default
+	Namespace *string `json:"Namespace,omitempty" name:"Namespace"`
+
+	// 将函数复制到的命名空间，默认为default
+	TargetNamespace *string `json:"TargetNamespace,omitempty" name:"TargetNamespace"`
+
+	// 函数描述
+	Description *string `json:"Description,omitempty" name:"Description"`
+
+	// 要将函数复制到的地域，不填则默认为当前地域
+	TargetRegion *string `json:"TargetRegion,omitempty" name:"TargetRegion"`
+}
+
+func (r *CopyFunctionRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CopyFunctionRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CopyFunctionResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CopyFunctionResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CopyFunctionResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
 }
 
 type CreateFunctionRequest struct {
@@ -64,6 +119,12 @@ type CreateFunctionRequest struct {
 
 	// 函数的私有网络配置
 	VpcConfig *VpcConfig `json:"VpcConfig,omitempty" name:"VpcConfig"`
+
+	// 函数日志投递到的CLS LogsetID
+	ClsLogsetId *string `json:"ClsLogsetId,omitempty" name:"ClsLogsetId"`
+
+	// 函数日志投递到的CLS TopicID
+	ClsTopicId *string `json:"ClsTopicId,omitempty" name:"ClsTopicId"`
 }
 
 func (r *CreateFunctionRequest) ToJsonString() string {
@@ -79,7 +140,7 @@ type CreateFunctionResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -102,7 +163,7 @@ type CreateTriggerRequest struct {
 	// 新建触发器名称。如果是定时触发器，名称支持英文字母、数字、连接符和下划线，最长100个字符；如果是其他触发器，见具体触发器绑定参数的说明
 	TriggerName *string `json:"TriggerName,omitempty" name:"TriggerName"`
 
-	// 触发器类型，目前支持 cos 、cmq、 timers、 ckafka类型
+	// 触发器类型，目前支持 cos 、cmq、 timer、 ckafka类型
 	Type *string `json:"Type,omitempty" name:"Type"`
 
 	// 触发器对应的参数，如果是 timer 类型的触发器其内容是 Linux cron 表达式，如果是其他触发器，见具体触发器说明
@@ -110,6 +171,9 @@ type CreateTriggerRequest struct {
 
 	// 函数的版本
 	Qualifier *string `json:"Qualifier,omitempty" name:"Qualifier"`
+
+	// 触发器的初始是能状态 OPEN表示开启 CLOSE表示关闭
+	Enable *string `json:"Enable,omitempty" name:"Enable"`
 }
 
 func (r *CreateTriggerRequest) ToJsonString() string {
@@ -125,7 +189,10 @@ type CreateTriggerResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 触发器信息
+		TriggerInfo *Trigger `json:"TriggerInfo,omitempty" name:"TriggerInfo"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -159,7 +226,7 @@ type DeleteFunctionResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -205,7 +272,7 @@ type DeleteTriggerResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -227,8 +294,11 @@ type Environment struct {
 
 type Filter struct {
 
-	// filter.RetCode=not0 表示只返回错误日志，filter.RetCode=is0 表示只返回正确日志，无输入则返回所有日志。
-	RetCode *string `json:"RetCode,omitempty" name:"RetCode"`
+	// 需要过滤的字段。
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 字段的过滤值。
+	Values []*string `json:"Values,omitempty" name:"Values" list`
 }
 
 type Function struct {
@@ -250,6 +320,18 @@ type Function struct {
 
 	// 命名空间
 	Namespace *string `json:"Namespace,omitempty" name:"Namespace"`
+
+	// 函数状态
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 函数状态详情
+	StatusDesc *string `json:"StatusDesc,omitempty" name:"StatusDesc"`
+
+	// 函数描述
+	Description *string `json:"Description,omitempty" name:"Description"`
+
+	// 函数标签
+	Tags []*Tag `json:"Tags,omitempty" name:"Tags" list`
 }
 
 type FunctionLog struct {
@@ -297,14 +379,14 @@ type GetFunctionLogsRequest struct {
 	// 返回数据的长度，Offset+Limit不能大于10000
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 
-	// 以升序还是降序的方式对日志进行排序，可选值 desc和 acs
+	// 以升序还是降序的方式对日志进行排序，可选值 desc和 asc
 	Order *string `json:"Order,omitempty" name:"Order"`
 
-	// 根据某个字段排序日志,支持以下字段：startTime、functionName、requestId、duration和 memUsage
+	// 根据某个字段排序日志,支持以下字段：function_name, duration, mem_usage, start_time
 	OrderBy *string `json:"OrderBy,omitempty" name:"OrderBy"`
 
 	// 日志过滤条件。可用来区分正确和错误日志，filter.retCode=not0 表示只返回错误日志，filter.retCode=is0 表示只返回正确日志，不传，则返回所有日志
-	Filter *Filter `json:"Filter,omitempty" name:"Filter"`
+	Filter *LogFilter `json:"Filter,omitempty" name:"Filter"`
 
 	// 函数的版本
 	Qualifier *string `json:"Qualifier,omitempty" name:"Qualifier"`
@@ -338,7 +420,7 @@ type GetFunctionLogsResponse struct {
 		// 函数日志信息
 		Data []*FunctionLog `json:"Data,omitempty" name:"Data" list`
 
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -435,7 +517,28 @@ type GetFunctionResponse struct {
 		// 函数绑定的角色
 		Role *string `json:"Role,omitempty" name:"Role"`
 
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 是否自动安装依赖
+		InstallDependency *string `json:"InstallDependency,omitempty" name:"InstallDependency"`
+
+		// 函数状态
+		Status *string `json:"Status,omitempty" name:"Status"`
+
+		// 状态描述
+		StatusDesc *string `json:"StatusDesc,omitempty" name:"StatusDesc"`
+
+		// 日志投递到的Cls日志集
+		ClsLogsetId *string `json:"ClsLogsetId,omitempty" name:"ClsLogsetId"`
+
+		// 日志投递到的Cls Topic
+		ClsTopicId *string `json:"ClsTopicId,omitempty" name:"ClsTopicId"`
+
+		// 函数ID
+		FunctionId *string `json:"FunctionId,omitempty" name:"FunctionId"`
+
+		// 函数的标签列表
+		Tags []*Tag `json:"Tags,omitempty" name:"Tags" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -487,7 +590,7 @@ type InvokeResponse struct {
 		// 函数执行结果
 		Result *Result `json:"Result,omitempty" name:"Result"`
 
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -518,6 +621,15 @@ type ListFunctionsRequest struct {
 
 	// 支持FunctionName模糊匹配
 	SearchKey *string `json:"SearchKey,omitempty" name:"SearchKey"`
+
+	// 函数描述，支持模糊搜索
+	Description *string `json:"Description,omitempty" name:"Description"`
+
+	// 过滤条件。
+	// - tag:tag-key - String - 是否必填：否 - （过滤条件）按照标签键值对进行过滤。 tag-key使用具体的标签键进行替换。
+	// 
+	// 每次请求的Filters的上限为10，Filter.Values的上限为5。
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
 }
 
 func (r *ListFunctionsRequest) ToJsonString() string {
@@ -539,7 +651,7 @@ type ListFunctionsResponse struct {
 		// 总数
 		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -551,6 +663,12 @@ func (r *ListFunctionsResponse) ToJsonString() string {
 
 func (r *ListFunctionsResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
+}
+
+type LogFilter struct {
+
+	// filter.RetCode=not0 表示只返回错误日志，filter.RetCode=is0 表示只返回正确日志，无输入则返回所有日志。
+	RetCode *string `json:"RetCode,omitempty" name:"RetCode"`
 }
 
 type Result struct {
@@ -580,6 +698,15 @@ type Result struct {
 	InvokeResult *int64 `json:"InvokeResult,omitempty" name:"InvokeResult"`
 }
 
+type Tag struct {
+
+	// 标签的key
+	Key *string `json:"Key,omitempty" name:"Key"`
+
+	// 标签的value
+	Value *string `json:"Value,omitempty" name:"Value"`
+}
+
 type Trigger struct {
 
 	// 触发器最后修改时间
@@ -596,6 +723,12 @@ type Trigger struct {
 
 	// 触发器创建时间
 	AddTime *string `json:"AddTime,omitempty" name:"AddTime"`
+
+	// 使能开关
+	Enable *int64 `json:"Enable,omitempty" name:"Enable"`
+
+	// 客户自定义参数
+	CustomArgument *string `json:"CustomArgument,omitempty" name:"CustomArgument"`
 }
 
 type UpdateFunctionCodeRequest struct {
@@ -616,7 +749,7 @@ type UpdateFunctionCodeRequest struct {
 	// 包含函数代码文件及其依赖项的 zip 格式文件，使用该接口时要求将 zip 文件的内容转成 base64 编码，最大支持20M
 	ZipFile *string `json:"ZipFile,omitempty" name:"ZipFile"`
 
-	// 对象存储的地域，地域为北京时需要传入ap-beijing,北京一区时需要传递ap-beijing-1，其他的地域不需要传递。
+	// 对象存储的地域，注：北京分为ap-beijing和ap-beijing-1
 	CosBucketRegion *string `json:"CosBucketRegion,omitempty" name:"CosBucketRegion"`
 }
 
@@ -633,7 +766,7 @@ type UpdateFunctionCodeResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -685,7 +818,7 @@ type UpdateFunctionConfigurationResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
 }

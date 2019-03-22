@@ -93,6 +93,14 @@ type AgentBillElem struct {
 
 	// agentpay：代付；selfpay：自付
 	PayerMode *string `json:"PayerMode,omitempty" name:"PayerMode"`
+
+	// 客户类型：可以为new(新拓)/assign(指定)/old(存量)/空
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClientType *string `json:"ClientType,omitempty" name:"ClientType"`
+
+	// 项目类型：可以为self(自拓项目)/platform(合作项目)/repeat(复算项目  )/空
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProjectType *string `json:"ProjectType,omitempty" name:"ProjectType"`
 }
 
 type AgentClientElem struct {

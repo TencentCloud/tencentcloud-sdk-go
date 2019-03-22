@@ -43,6 +43,31 @@ func NewClient(credential *common.Credential, region string, clientProfile *prof
 }
 
 
+func NewBankCardVerificationRequest() (request *BankCardVerificationRequest) {
+    request = &BankCardVerificationRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("faceid", APIVersion, "BankCardVerification")
+    return
+}
+
+func NewBankCardVerificationResponse() (response *BankCardVerificationResponse) {
+    response = &BankCardVerificationResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 银行卡核验
+func (c *Client) BankCardVerification(request *BankCardVerificationRequest) (response *BankCardVerificationResponse, err error) {
+    if request == nil {
+        request = NewBankCardVerificationRequest()
+    }
+    response = NewBankCardVerificationResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDetectAuthRequest() (request *DetectAuthRequest) {
     request = &DetectAuthRequest{
         BaseRequest: &tchttp.BaseRequest{},

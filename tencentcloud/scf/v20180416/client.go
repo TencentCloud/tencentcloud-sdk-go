@@ -43,6 +43,37 @@ func NewClient(credential *common.Credential, region string, clientProfile *prof
 }
 
 
+func NewCopyFunctionRequest() (request *CopyFunctionRequest) {
+    request = &CopyFunctionRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("scf", APIVersion, "CopyFunction")
+    return
+}
+
+func NewCopyFunctionResponse() (response *CopyFunctionResponse) {
+    response = &CopyFunctionResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 复制一个函数，可以选择将复制出的新函数放置在同一个namespace或另一个namespace。
+// 注：本接口**不会**复制函数的以下对象或属性：
+// 1. 函数的触发器
+// 2. 除了$LATEST以外的其它版本
+// 3. 函数配置的日志投递到的CLS目标
+// 
+// 如有需要，您可以在复制后手动修改新函数。
+func (c *Client) CopyFunction(request *CopyFunctionRequest) (response *CopyFunctionResponse, err error) {
+    if request == nil {
+        request = NewCopyFunctionRequest()
+    }
+    response = NewCopyFunctionResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateFunctionRequest() (request *CreateFunctionRequest) {
     request = &CreateFunctionRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -183,7 +214,7 @@ func NewGetFunctionLogsResponse() (response *GetFunctionLogsResponse) {
     return
 }
 
-// 该接口根据设置的日志查询条件返回函数日志。
+// 该接口根据指定的日志查询条件返回函数运行日志。
 func (c *Client) GetFunctionLogs(request *GetFunctionLogsRequest) (response *GetFunctionLogsResponse, err error) {
     if request == nil {
         request = NewGetFunctionLogsRequest()
