@@ -10,8 +10,8 @@ import (
 	"strings"
 	"time"
 
-	tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
-	"github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
+	tchttp "github.com/teamlint/tencentcloud-sdk-go/tencentcloud/common/http"
+	"github.com/teamlint/tencentcloud-sdk-go/tencentcloud/common/profile"
 )
 
 type Client struct {

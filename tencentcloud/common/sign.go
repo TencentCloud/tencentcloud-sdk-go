@@ -10,7 +10,7 @@ import (
 	"sort"
 	"strings"
 
-	tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
+	tchttp "github.com/teamlint/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
 const (
