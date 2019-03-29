@@ -143,6 +143,31 @@ func (c *Client) DescribeDealsByCond(request *DescribeDealsByCondRequest) (respo
     return
 }
 
+func NewDescribeDosageDetailByDateRequest() (request *DescribeDosageDetailByDateRequest) {
+    request = &DescribeDosageDetailByDateRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("billing", APIVersion, "DescribeDosageDetailByDate")
+    return
+}
+
+func NewDescribeDosageDetailByDateResponse() (response *DescribeDosageDetailByDateResponse) {
+    response = &DescribeDosageDetailByDateResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 按日期获取产品用量明细
+func (c *Client) DescribeDosageDetailByDate(request *DescribeDosageDetailByDateRequest) (response *DescribeDosageDetailByDateResponse, err error) {
+    if request == nil {
+        request = NewDescribeDosageDetailByDateRequest()
+    }
+    response = NewDescribeDosageDetailByDateResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewPayDealsRequest() (request *PayDealsRequest) {
     request = &PayDealsRequest{
         BaseRequest: &tchttp.BaseRequest{},

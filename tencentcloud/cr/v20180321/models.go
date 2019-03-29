@@ -153,17 +153,7 @@ type DescribeCreditResultResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 呼叫结果，取值范围：
-	// <li>NON：接通
-	// <li>DBU：号码忙
-	// <li>DRF：不在服务区
-	// <li>ANA：欠费未接听
-	// <li>REJ：拒接
-	// <li>SHU：关机
-	// <li>NAN：空号
-	// <li>HAL：停机
-	// <li>DAD：未接听
-	// <li>EXE：其他异常
+		// <p>呼叫结果，取值范围：</p><ul style="margin-bottom:0px;"><li>NON：接通</li><li>DBU：号码忙</li><li>DRF：不在服务区</li><li>ANA：欠费未接听</li><li>REJ：拒接</li><li>SHU：关机</li><li>NAN：空号</li><li>HAL：停机</li><li>DAD：未接听</li><li>EXE：其他异常</li></ul>
 		ResultCode *string `json:"ResultCode,omitempty" name:"ResultCode"`
 
 		// 客户标识代码，多个标识码以英文逗号分隔，ResultCode为NON时才有。
@@ -435,7 +425,7 @@ type UploadDataFileRequest struct {
 	// 文件名
 	FileName *string `json:"FileName,omitempty" name:"FileName"`
 
-	// 上传类型，不填默认催收文件，催收文件为data，还款文件为repay。
+	// <p>上传类型，不填默认催收文件，取值范围：</p><ul style="margin-bottom:0px;"><li>data：催收文件</li><li>repay：还款文件</li><li>callback：回访文件</li></ul>
 	UploadModel *string `json:"UploadModel,omitempty" name:"UploadModel"`
 
 	// 文件，文件与文件地址上传只可选用一种，必须使用multipart/form-data协议来上传二进制流文件，建议使用xlsx格式，大小不超过5MB。

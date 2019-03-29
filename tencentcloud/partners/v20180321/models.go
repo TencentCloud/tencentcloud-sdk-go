@@ -47,10 +47,10 @@ type AgentAuditedClient struct {
 	AppId *string `json:"AppId,omitempty" name:"AppId"`
 
 	// 上月消费金额
-	LastMonthAmt *uint64 `json:"LastMonthAmt,omitempty" name:"LastMonthAmt"`
+	LastMonthAmt *int64 `json:"LastMonthAmt,omitempty" name:"LastMonthAmt"`
 
 	// 本月消费金额
-	ThisMonthAmt *uint64 `json:"ThisMonthAmt,omitempty" name:"ThisMonthAmt"`
+	ThisMonthAmt *int64 `json:"ThisMonthAmt,omitempty" name:"ThisMonthAmt"`
 
 	// 是否欠费,0：不欠费；1：欠费
 	HasOverdueBill *uint64 `json:"HasOverdueBill,omitempty" name:"HasOverdueBill"`

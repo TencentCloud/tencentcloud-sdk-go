@@ -450,6 +450,105 @@ func (r *DescribeDealsByCondResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeDosageDetailByDateRequest struct {
+	*tchttp.BaseRequest
+
+	// 查询账单开始日期，如 2019-01-01
+	StartDate *string `json:"StartDate,omitempty" name:"StartDate"`
+
+	// 查询账单结束日期，如 2019-01-01
+	EndDate *string `json:"EndDate,omitempty" name:"EndDate"`
+
+	// 视频业务：
+	// 10194   互动直播-核心机房           :
+	// 10195   互动直播-边缘机房
+	// 
+	// cdn业务：
+	// 10180：CDN静态加速流量(国内)
+	// 10181：CDN静态加速带宽(国内)
+	// 10182：CDN静态加速普通流量
+	// 10183：CDN静态加速普通带宽
+	// 10231：CDN静态加速流量(海外)
+	// 10232：CDN静态加速带宽(海外)
+	// 
+	// 100967：弹性公网IP-按流量计费
+	// 101065：公网负载均衡-按流量计费
+	ProductCode *string `json:"ProductCode,omitempty" name:"ProductCode"`
+
+	// 查询域名 例如 www.qq.com
+	// 非CDN业务查询时可以设置为空
+	Domain *string `json:"Domain,omitempty" name:"Domain"`
+
+	// 1、如果为空，则返回EIP或CLB所有实例的明细；
+	// 2、如果传入实例名，则返回该实例明细
+	InstanceID *string `json:"InstanceID,omitempty" name:"InstanceID"`
+}
+
+func (r *DescribeDosageDetailByDateRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeDosageDetailByDateRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeDosageDetailByDateResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 计量单位
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Unit *string `json:"Unit,omitempty" name:"Unit"`
+
+		// 用量数组
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		DetailSets []*DetailSet `json:"DetailSets,omitempty" name:"DetailSets" list`
+
+		// 错误码
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		RetCode *int64 `json:"RetCode,omitempty" name:"RetCode"`
+
+		// 错误信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		RetMsg *string `json:"RetMsg,omitempty" name:"RetMsg"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeDosageDetailByDateResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeDosageDetailByDateResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DetailPoint struct {
+
+	// 时间
+	Time *string `json:"Time,omitempty" name:"Time"`
+
+	// 值
+	Value *string `json:"Value,omitempty" name:"Value"`
+}
+
+type DetailSet struct {
+
+	// 域名
+	Domain *string `json:"Domain,omitempty" name:"Domain"`
+
+	// 使用数据明细
+	DetailPoints []*DetailPoint `json:"DetailPoints,omitempty" name:"DetailPoints" list`
+
+	// 实例ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceID *string `json:"InstanceID,omitempty" name:"InstanceID"`
+}
+
 type PayDealsRequest struct {
 	*tchttp.BaseRequest
 

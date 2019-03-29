@@ -221,31 +221,6 @@ func (c *Client) CreateLiveCert(request *CreateLiveCertRequest) (response *Creat
     return
 }
 
-func NewCreateLiveDomainStrategyRequest() (request *CreateLiveDomainStrategyRequest) {
-    request = &CreateLiveDomainStrategyRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    request.Init().WithApiInfo("live", APIVersion, "CreateLiveDomainStrategy")
-    return
-}
-
-func NewCreateLiveDomainStrategyResponse() (response *CreateLiveDomainStrategyResponse) {
-    response = &CreateLiveDomainStrategyResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    }
-    return
-}
-
-// 该接口用于新增直播推流和播放的域名映射
-func (c *Client) CreateLiveDomainStrategy(request *CreateLiveDomainStrategyRequest) (response *CreateLiveDomainStrategyResponse, err error) {
-    if request == nil {
-        request = NewCreateLiveDomainStrategyRequest()
-    }
-    response = NewCreateLiveDomainStrategyResponse()
-    err = c.Send(request, response)
-    return
-}
-
 func NewCreateLiveRecordRequest() (request *CreateLiveRecordRequest) {
     request = &CreateLiveRecordRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -585,31 +560,6 @@ func (c *Client) DeleteLiveDomain(request *DeleteLiveDomainRequest) (response *D
         request = NewDeleteLiveDomainRequest()
     }
     response = NewDeleteLiveDomainResponse()
-    err = c.Send(request, response)
-    return
-}
-
-func NewDeleteLiveDomainStrategyRequest() (request *DeleteLiveDomainStrategyRequest) {
-    request = &DeleteLiveDomainStrategyRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    request.Init().WithApiInfo("live", APIVersion, "DeleteLiveDomainStrategy")
-    return
-}
-
-func NewDeleteLiveDomainStrategyResponse() (response *DeleteLiveDomainStrategyResponse) {
-    response = &DeleteLiveDomainStrategyResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    }
-    return
-}
-
-// 该接口用于删除已新增的播放和推流域名映射关系
-func (c *Client) DeleteLiveDomainStrategy(request *DeleteLiveDomainStrategyRequest) (response *DeleteLiveDomainStrategyResponse, err error) {
-    if request == nil {
-        request = NewDeleteLiveDomainStrategyRequest()
-    }
-    response = NewDeleteLiveDomainStrategyResponse()
     err = c.Send(request, response)
     return
 }
@@ -1039,31 +989,6 @@ func (c *Client) DescribeLiveDomainCert(request *DescribeLiveDomainCertRequest) 
     return
 }
 
-func NewDescribeLiveDomainStrategysRequest() (request *DescribeLiveDomainStrategysRequest) {
-    request = &DescribeLiveDomainStrategysRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    request.Init().WithApiInfo("live", APIVersion, "DescribeLiveDomainStrategys")
-    return
-}
-
-func NewDescribeLiveDomainStrategysResponse() (response *DescribeLiveDomainStrategysResponse) {
-    response = &DescribeLiveDomainStrategysResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    }
-    return
-}
-
-// 该接口用于查询已有域名策略
-func (c *Client) DescribeLiveDomainStrategys(request *DescribeLiveDomainStrategysRequest) (response *DescribeLiveDomainStrategysResponse, err error) {
-    if request == nil {
-        request = NewDescribeLiveDomainStrategysRequest()
-    }
-    response = NewDescribeLiveDomainStrategysResponse()
-    err = c.Send(request, response)
-    return
-}
-
 func NewDescribeLiveDomainsRequest() (request *DescribeLiveDomainsRequest) {
     request = &DescribeLiveDomainsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1414,6 +1339,31 @@ func (c *Client) DescribeLiveStreamPublishedList(request *DescribeLiveStreamPubl
     return
 }
 
+func NewDescribeLiveStreamPushInfoListRequest() (request *DescribeLiveStreamPushInfoListRequest) {
+    request = &DescribeLiveStreamPushInfoListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("live", APIVersion, "DescribeLiveStreamPushInfoList")
+    return
+}
+
+func NewDescribeLiveStreamPushInfoListResponse() (response *DescribeLiveStreamPushInfoListResponse) {
+    response = &DescribeLiveStreamPushInfoListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询所有实时流的推流信息，包括客户端IP，服务端IP，帧率，码率，域名，开始推流时间。
+func (c *Client) DescribeLiveStreamPushInfoList(request *DescribeLiveStreamPushInfoListRequest) (response *DescribeLiveStreamPushInfoListResponse, err error) {
+    if request == nil {
+        request = NewDescribeLiveStreamPushInfoListRequest()
+    }
+    response = NewDescribeLiveStreamPushInfoListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeLiveStreamStateRequest() (request *DescribeLiveStreamStateRequest) {
     request = &DescribeLiveStreamStateRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1615,6 +1565,56 @@ func (c *Client) DescribeLiveWatermarks(request *DescribeLiveWatermarksRequest) 
     return
 }
 
+func NewDescribeProIspPlaySumInfoListRequest() (request *DescribeProIspPlaySumInfoListRequest) {
+    request = &DescribeProIspPlaySumInfoListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("live", APIVersion, "DescribeProIspPlaySumInfoList")
+    return
+}
+
+func NewDescribeProIspPlaySumInfoListResponse() (response *DescribeProIspPlaySumInfoListResponse) {
+    response = &DescribeProIspPlaySumInfoListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询某段时间内每个省份每个运营商的平均每秒流量，总流量，总请求数信息。
+func (c *Client) DescribeProIspPlaySumInfoList(request *DescribeProIspPlaySumInfoListRequest) (response *DescribeProIspPlaySumInfoListResponse, err error) {
+    if request == nil {
+        request = NewDescribeProIspPlaySumInfoListRequest()
+    }
+    response = NewDescribeProIspPlaySumInfoListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeProvinceIspPlayInfoListRequest() (request *DescribeProvinceIspPlayInfoListRequest) {
+    request = &DescribeProvinceIspPlayInfoListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("live", APIVersion, "DescribeProvinceIspPlayInfoList")
+    return
+}
+
+func NewDescribeProvinceIspPlayInfoListResponse() (response *DescribeProvinceIspPlayInfoListResponse) {
+    response = &DescribeProvinceIspPlayInfoListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询某省份某运营商下行播放数据，包括带宽，流量，请求数，并发连接数信息。
+func (c *Client) DescribeProvinceIspPlayInfoList(request *DescribeProvinceIspPlayInfoListRequest) (response *DescribeProvinceIspPlayInfoListResponse, err error) {
+    if request == nil {
+        request = NewDescribeProvinceIspPlayInfoListRequest()
+    }
+    response = NewDescribeProvinceIspPlayInfoListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribePullStreamConfigsRequest() (request *DescribePullStreamConfigsRequest) {
     request = &DescribePullStreamConfigsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1636,6 +1636,31 @@ func (c *Client) DescribePullStreamConfigs(request *DescribePullStreamConfigsReq
         request = NewDescribePullStreamConfigsRequest()
     }
     response = NewDescribePullStreamConfigsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeStreamDayPlayInfoListRequest() (request *DescribeStreamDayPlayInfoListRequest) {
+    request = &DescribeStreamDayPlayInfoListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("live", APIVersion, "DescribeStreamDayPlayInfoList")
+    return
+}
+
+func NewDescribeStreamDayPlayInfoListResponse() (response *DescribeStreamDayPlayInfoListResponse) {
+    response = &DescribeStreamDayPlayInfoListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询天维度每条流的播放数据，包括总流量等。
+func (c *Client) DescribeStreamDayPlayInfoList(request *DescribeStreamDayPlayInfoListRequest) (response *DescribeStreamDayPlayInfoListResponse, err error) {
+    if request == nil {
+        request = NewDescribeStreamDayPlayInfoListRequest()
+    }
+    response = NewDescribeStreamDayPlayInfoListResponse()
     err = c.Send(request, response)
     return
 }

@@ -124,7 +124,7 @@ type DescribeBrandCommentCountResponse struct {
 		// 按天统计好评/差评数
 		CommentSet []*Comment `json:"CommentSet,omitempty" name:"CommentSet" list`
 
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -170,7 +170,7 @@ type DescribeBrandExposureResponse struct {
 		// 按天计算的统计数据
 		DateCountSet []*DateCount `json:"DateCountSet,omitempty" name:"DateCountSet" list`
 
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -216,7 +216,7 @@ type DescribeBrandMediaReportResponse struct {
 		// 按天计算的每天文章数
 		DateCountSet []*DateCount `json:"DateCountSet,omitempty" name:"DateCountSet" list`
 
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -268,7 +268,7 @@ type DescribeBrandNegCommentsResponse struct {
 		// 总的差评个数
 		TotalComments *uint64 `json:"TotalComments,omitempty" name:"TotalComments"`
 
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -320,7 +320,7 @@ type DescribeBrandPosCommentsResponse struct {
 		// 总的好评个数
 		TotalComments *uint64 `json:"TotalComments,omitempty" name:"TotalComments"`
 
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -381,7 +381,7 @@ type DescribeBrandSocialOpinionResponse struct {
 		// 文章列表详情
 		ArticleSet []*BrandReportArticle `json:"ArticleSet,omitempty" name:"ArticleSet" list`
 
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -427,7 +427,7 @@ type DescribeBrandSocialReportResponse struct {
 		// 按天计算的统计数据
 		DateCountSet []*DateCount `json:"DateCountSet,omitempty" name:"DateCountSet" list`
 
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -491,7 +491,7 @@ type DescribeIndustryNewsResponse struct {
 		// 按天统计的数量列表
 		DateCountSet []*DateCount `json:"DateCountSet,omitempty" name:"DateCountSet" list`
 
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -540,7 +540,7 @@ type DescribeUserPortraitResponse struct {
 		// 明星喜好画像
 		Star *StarPortraitInfo `json:"Star,omitempty" name:"Star"`
 
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
 }

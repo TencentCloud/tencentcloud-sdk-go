@@ -139,7 +139,7 @@ type CardInfo struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AllowArrears *int64 `json:"AllowArrears,omitempty" name:"AllowArrears"`
 
-	// 是否开通短息
+	// 是否开通短信0:未开短信 1:开通短信
 	NeedSms *int64 `json:"NeedSms,omitempty" name:"NeedSms"`
 
 	// 服务

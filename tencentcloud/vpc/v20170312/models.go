@@ -521,9 +521,11 @@ type CCN struct {
 	QosLevel *string `json:"QosLevel,omitempty" name:"QosLevel"`
 
 	// 付费类型，PREPAID为预付费，POSTPAID为后付费。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceChargeType *string `json:"InstanceChargeType,omitempty" name:"InstanceChargeType"`
 
 	// 限速类型，INTER_REGION_LIMIT为地域间限速；OUTER_REGION_LIMIT为地域出口限速。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	BandwidthLimitType *string `json:"BandwidthLimitType,omitempty" name:"BandwidthLimitType"`
 }
 
@@ -599,6 +601,7 @@ type CcnRegionBandwidthLimit struct {
 	IsBm *bool `json:"IsBm,omitempty" name:"IsBm"`
 
 	// 目的地域，例如：ap-shanghai
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	DstRegion *string `json:"DstRegion,omitempty" name:"DstRegion"`
 
 	// 目的地域是否为黑石地域，默认`false`。
@@ -2947,6 +2950,9 @@ type DescribeCustomerGatewaysRequest struct {
 	CustomerGatewayIds []*string `json:"CustomerGatewayIds,omitempty" name:"CustomerGatewayIds" list`
 
 	// 过滤条件，详见下表：实例过滤条件表。每次请求的Filters的上限为10，Filter.Values的上限为5。参数不支持同时指定CustomerGatewayIds和Filters。
+	// <li>customer-gateway-id - String - （过滤条件）用户网关唯一ID形如：`cgw-mgp33pll`。</li>
+	// <li>customer-gateway-name - String - （过滤条件）用户网关名称形如：`test-cgw`。</li>
+	// <li>ip-address - String - （过滤条件）公网地址形如：`58.211.1.12`。</li>
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
 
 	// 偏移量，默认为0。关于Offset的更进一步介绍请参考 API 简介中的相关小节。
@@ -3830,6 +3836,11 @@ type DescribeVpnConnectionsRequest struct {
 	VpnConnectionIds []*string `json:"VpnConnectionIds,omitempty" name:"VpnConnectionIds" list`
 
 	// 过滤条件，详见下表：实例过滤条件表。每次请求的Filters的上限为10，Filter.Values的上限为5。参数不支持同时指定VpnConnectionIds和Filters。
+	// <li>vpc-id - String - VPC实例ID，形如：`vpc-0a36uwkr`。</li>
+	// <li>vpn-gateway-id - String - VPN网关实例ID，形如：`vpngw-p4lmqawn`。</li>
+	// <li>customer-gateway-id - String - 对端网关实例ID，形如：`cgw-l4rblw63`。</li>
+	// <li>vpn-connection-name - String - 通道名称，形如：`test-vpn`。</li>
+	// <li>vpn-connection-id - String - 通道实例ID，形如：`vpnx-5p7vkch8"`。</li>
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
 
 	// 偏移量，默认为0。关于Offset的更进一步介绍请参考 API 简介中的相关小节。
@@ -4651,11 +4662,20 @@ func (r *InquiryPriceResetVpnGatewayInternetMaxBandwidthResponse) FromJsonString
 
 type InstanceChargePrepaid struct {
 
-	// 购买实例的时长，单位：月。取值范围：1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 24, 36。
+	// 购买实例的时长，单位：月。取值范围：1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36。
 	Period *uint64 `json:"Period,omitempty" name:"Period"`
 
 	// 自动续费标识。取值范围： NOTIFY_AND_AUTO_RENEW：通知过期且自动续费， NOTIFY_AND_MANUAL_RENEW：通知过期不自动续费。默认：NOTIFY_AND_MANUAL_RENEW
 	RenewFlag *string `json:"RenewFlag,omitempty" name:"RenewFlag"`
+}
+
+type InstanceStatistic struct {
+
+	// 实例的类型
+	InstanceType *string `json:"InstanceType,omitempty" name:"InstanceType"`
+
+	// 实例的个数
+	InstanceCount *uint64 `json:"InstanceCount,omitempty" name:"InstanceCount"`
 }
 
 type Ip6Rule struct {
@@ -5771,6 +5791,7 @@ type NetworkInterface struct {
 	PrivateIpAddressSet []*PrivateIpAddressSpecification `json:"PrivateIpAddressSet,omitempty" name:"PrivateIpAddressSet" list`
 
 	// 绑定的云服务器对象。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Attachment *NetworkInterfaceAttachment `json:"Attachment,omitempty" name:"Attachment"`
 
 	// 可用区。
@@ -6471,7 +6492,7 @@ type SecurityGroupAssociationStatistics struct {
 	CLB *uint64 `json:"CLB,omitempty" name:"CLB"`
 
 	// 全量实例的绑定统计。
-	InstanceStatistics []*string `json:"InstanceStatistics,omitempty" name:"InstanceStatistics" list`
+	InstanceStatistics []*InstanceStatistic `json:"InstanceStatistics,omitempty" name:"InstanceStatistics" list`
 }
 
 type SecurityGroupPolicy struct {

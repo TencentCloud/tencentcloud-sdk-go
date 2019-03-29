@@ -193,7 +193,7 @@ type AiContentReviewResult struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TerrorismTask *AiReviewTaskTerrorismResult `json:"TerrorismTask,omitempty" name:"TerrorismTask"`
 
-	// 视频内容审核智能画面鉴恐任务的查询结果，当任务类型为 Political 时有效。
+	// 视频内容审核智能画面鉴政任务的查询结果，当任务类型为 Political 时有效。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PoliticalTask *AiReviewTaskPoliticalResult `json:"PoliticalTask,omitempty" name:"PoliticalTask"`
 
@@ -3235,6 +3235,14 @@ type ProcedureTask struct {
 	// <li>None：不接受该任务流回调。</li>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TasksNotifyMode *string `json:"TasksNotifyMode,omitempty" name:"TasksNotifyMode"`
+
+	// 来源上下文，用于透传用户请求信息，任务流状态变更回调将返回该字段值，最长 250 个字符。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SessionContext *string `json:"SessionContext,omitempty" name:"SessionContext"`
+
+	// 用于去重的识别码，如果七天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SessionId *string `json:"SessionId,omitempty" name:"SessionId"`
 }
 
 type ProcedureTemplate struct {

@@ -304,7 +304,7 @@ func NewCreateAddressTemplateResponse() (response *CreateAddressTemplateResponse
     return
 }
 
-// 创建IP地址模版
+// 本接口（CreateAddressTemplate）用于创建IP地址模版
 func (c *Client) CreateAddressTemplate(request *CreateAddressTemplateRequest) (response *CreateAddressTemplateResponse, err error) {
     if request == nil {
         request = NewCreateAddressTemplateRequest()
@@ -329,7 +329,7 @@ func NewCreateAddressTemplateGroupResponse() (response *CreateAddressTemplateGro
     return
 }
 
-// 创建IP地址模版集合
+// 本接口（CreateAddressTemplateGroup）用于创建IP地址模版集合
 func (c *Client) CreateAddressTemplateGroup(request *CreateAddressTemplateGroupRequest) (response *CreateAddressTemplateGroupResponse, err error) {
     if request == nil {
         request = NewCreateAddressTemplateGroupRequest()
@@ -706,7 +706,7 @@ func NewCreateServiceTemplateResponse() (response *CreateServiceTemplateResponse
     return
 }
 
-// 创建协议端口模板
+// 本接口（CreateServiceTemplate）用于创建协议端口模板
 func (c *Client) CreateServiceTemplate(request *CreateServiceTemplateRequest) (response *CreateServiceTemplateResponse, err error) {
     if request == nil {
         request = NewCreateServiceTemplateRequest()
@@ -731,7 +731,7 @@ func NewCreateServiceTemplateGroupResponse() (response *CreateServiceTemplateGro
     return
 }
 
-// 创建协议端口模板集合
+// 本接口（CreateServiceTemplateGroup）用于创建协议端口模板集合
 func (c *Client) CreateServiceTemplateGroup(request *CreateServiceTemplateGroupRequest) (response *CreateServiceTemplateGroupResponse, err error) {
     if request == nil {
         request = NewCreateServiceTemplateGroupRequest()
@@ -893,7 +893,7 @@ func NewDeleteAddressTemplateResponse() (response *DeleteAddressTemplateResponse
     return
 }
 
-// 删除IP地址模板
+// 本接口（DeleteAddressTemplate）用于删除IP地址模板
 func (c *Client) DeleteAddressTemplate(request *DeleteAddressTemplateRequest) (response *DeleteAddressTemplateResponse, err error) {
     if request == nil {
         request = NewDeleteAddressTemplateRequest()
@@ -918,7 +918,7 @@ func NewDeleteAddressTemplateGroupResponse() (response *DeleteAddressTemplateGro
     return
 }
 
-// 删除IP地址模板集合
+// 本接口（DeleteAddressTemplateGroup）用于删除IP地址模板集合
 func (c *Client) DeleteAddressTemplateGroup(request *DeleteAddressTemplateGroupRequest) (response *DeleteAddressTemplateGroupResponse, err error) {
     if request == nil {
         request = NewDeleteAddressTemplateGroupRequest()
@@ -1256,7 +1256,7 @@ func NewDeleteServiceTemplateResponse() (response *DeleteServiceTemplateResponse
     return
 }
 
-// 删除协议端口模板
+// 本接口（DeleteServiceTemplate）用于删除协议端口模板
 func (c *Client) DeleteServiceTemplate(request *DeleteServiceTemplateRequest) (response *DeleteServiceTemplateResponse, err error) {
     if request == nil {
         request = NewDeleteServiceTemplateRequest()
@@ -1281,7 +1281,7 @@ func NewDeleteServiceTemplateGroupResponse() (response *DeleteServiceTemplateGro
     return
 }
 
-// 删除协议端口模板集合
+// 本接口（DeleteServiceTemplateGroup）用于删除协议端口模板集合
 func (c *Client) DeleteServiceTemplateGroup(request *DeleteServiceTemplateGroupRequest) (response *DeleteServiceTemplateGroupResponse, err error) {
     if request == nil {
         request = NewDeleteServiceTemplateGroupRequest()
@@ -1459,7 +1459,7 @@ func NewDescribeAddressTemplateGroupsResponse() (response *DescribeAddressTempla
     return
 }
 
-// 查询IP地址模板集合
+// 本接口（DescribeAddressTemplateGroups）用于查询IP地址模板集合
 func (c *Client) DescribeAddressTemplateGroups(request *DescribeAddressTemplateGroupsRequest) (response *DescribeAddressTemplateGroupsResponse, err error) {
     if request == nil {
         request = NewDescribeAddressTemplateGroupsRequest()
@@ -1484,7 +1484,7 @@ func NewDescribeAddressTemplatesResponse() (response *DescribeAddressTemplatesRe
     return
 }
 
-// 查询IP地址模板
+// 本接口（DescribeAddressTemplates）用于查询IP地址模板
 func (c *Client) DescribeAddressTemplates(request *DescribeAddressTemplatesRequest) (response *DescribeAddressTemplatesResponse, err error) {
     if request == nil {
         request = NewDescribeAddressTemplatesRequest()
@@ -2063,7 +2063,7 @@ func NewDescribeServiceTemplateGroupsResponse() (response *DescribeServiceTempla
     return
 }
 
-// 查询协议端口模板集合
+// 本接口（DescribeServiceTemplateGroups）用于查询协议端口模板集合
 func (c *Client) DescribeServiceTemplateGroups(request *DescribeServiceTemplateGroupsRequest) (response *DescribeServiceTemplateGroupsResponse, err error) {
     if request == nil {
         request = NewDescribeServiceTemplateGroupsRequest()
@@ -2088,7 +2088,7 @@ func NewDescribeServiceTemplatesResponse() (response *DescribeServiceTemplatesRe
     return
 }
 
-// 查询协议端口模板
+// 本接口（DescribeServiceTemplates）用于查询协议端口模板
 func (c *Client) DescribeServiceTemplates(request *DescribeServiceTemplatesRequest) (response *DescribeServiceTemplatesResponse, err error) {
     if request == nil {
         request = NewDescribeServiceTemplatesRequest()
@@ -2676,7 +2676,7 @@ func NewModifyAddressTemplateAttributeResponse() (response *ModifyAddressTemplat
     return
 }
 
-// 修改IP地址模板
+// 本接口（ModifyAddressTemplateAttribute）用于修改IP地址模板
 func (c *Client) ModifyAddressTemplateAttribute(request *ModifyAddressTemplateAttributeRequest) (response *ModifyAddressTemplateAttributeResponse, err error) {
     if request == nil {
         request = NewModifyAddressTemplateAttributeRequest()
@@ -2701,7 +2701,7 @@ func NewModifyAddressTemplateGroupAttributeResponse() (response *ModifyAddressTe
     return
 }
 
-// 修改IP地址模板集合
+// 本接口（ModifyAddressTemplateGroupAttribute）用于修改IP地址模板集合
 func (c *Client) ModifyAddressTemplateGroupAttribute(request *ModifyAddressTemplateGroupAttributeRequest) (response *ModifyAddressTemplateGroupAttributeResponse, err error) {
     if request == nil {
         request = NewModifyAddressTemplateGroupAttributeRequest()
@@ -2726,7 +2726,7 @@ func NewModifyAddressesBandwidthResponse() (response *ModifyAddressesBandwidthRe
     return
 }
 
-// 接口用于调整[弹性公网IP](https://cloud.tencent.com/document/product/213/1941)(简称EIP)带宽，包括后付费EIP, 预付费EIP和带宽包EIP
+// 本接口（ModifyAddressesBandwidth）用于调整[弹性公网IP](https://cloud.tencent.com/document/product/213/1941)(简称EIP)带宽，包括后付费EIP, 预付费EIP和带宽包EIP
 func (c *Client) ModifyAddressesBandwidth(request *ModifyAddressesBandwidthRequest) (response *ModifyAddressesBandwidthResponse, err error) {
     if request == nil {
         request = NewModifyAddressesBandwidthRequest()
@@ -3060,7 +3060,7 @@ func NewModifyServiceTemplateAttributeResponse() (response *ModifyServiceTemplat
     return
 }
 
-// 修改协议端口模板
+// 本接口（ModifyServiceTemplateAttribute）用于修改协议端口模板
 func (c *Client) ModifyServiceTemplateAttribute(request *ModifyServiceTemplateAttributeRequest) (response *ModifyServiceTemplateAttributeResponse, err error) {
     if request == nil {
         request = NewModifyServiceTemplateAttributeRequest()
