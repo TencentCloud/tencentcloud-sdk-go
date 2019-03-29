@@ -18,29 +18,16 @@ const (
 
 )
 
-// 创建队列	CreateQueue	用于在用户账户下创建一个新队列。
-// 获取队列列表	ListQueue	用于列出帐号下的队列列表，可分页获取数据。
-// 获取队列属性	GetQueueAttributes	用于获取某个已创建队列的属性。
-// 修改队列属性	SetQueueAttributes	用于修改消息队列的属性。
-// 删除队列	DeleteQueue	用于删除一个已创建的队列。
-
-// 发送消息	SendMessage	用于发送一条消息到指定的队列。
-// 批量发送消息	BatchSendMessage	用于发送批量消息到指定的队列。
-// 消费消息	ReceiveMessage	用于消费队列中的一条消息。
-// 批量消费消息	BatchReceiveMessage	用于消费队列中的多条消息。
-// 删除消息	DeleteMessage	用于删除已经被消费过的消息。
-// 批量删除消息	BatchDeleteMessage	用于批量删除已经被消费过的消息。
-
 // CreateQueueRequest 创建队列请求
 type CreateQueueRequest struct {
 	*tchttp.BaseRequest
-	QueueName           *string `json:"queueName,omitempty" name:"queueName"`                   // 队列名字
-	MaxMsgHeapNum       *int    `json:"maxMsgHeapNumb,omitempty" name:"maxMsgHeadpNum"`         // 最大堆积消息数
-	PollingWaitSeconds  *int    `json:"pollingWaitSeconds,omitempty" name:"pollingWaitSeconds"` // 消息接收长轮询等待时间(秒)
-	VisibilityTimeout   *int    `json:"visibilityTimeout,omitempty" name:"visibilityTimeout"`   // 消息可见性超时时间(秒), 取值范围1 - 43200秒（即12小时内），默认值30
-	MaxMsgSize          *int    `json:"maxMsgSize"`                                             // 消息最大长度(byte),取值范围1024 - 65536 Byte（即1-64K），默认值65536
-	MsgRetentionSeconds *int    `json:"msgRetentionSeconds"`                                    // 消息保留周期(秒),取值范围60 - 1296000秒（1min-15天），默认值345600 (4 天)
-	RewindSeconds       *int    `json:"rewindSeconds"`                                          // 队列是否开启回溯消息能力，该参数取值范围 0-msgRetentionSeconds，即最大的回溯时间为消息在队列中的保留周期，0表示不开启
+	QueueName           *string `json:"queueName,omitempty" name:"queueName"`                     // 队列名字
+	MaxMsgHeapNum       *int    `json:"maxMsgHeapNum,omitempty" name:"maxMsgHeapNum"`             // 最大堆积消息数, 取值范围在公测期间为 1,000,000 - 10,000,000
+	PollingWaitSeconds  *int    `json:"pollingWaitSeconds,omitempty" name:"pollingWaitSeconds"`   // 消息接收长轮询等待时间(秒)
+	VisibilityTimeout   *int    `json:"visibilityTimeout,omitempty" name:"visibilityTimeout"`     // 消息可见性超时时间(秒), 取值范围1 - 43200秒（即12小时内），默认值30
+	MaxMsgSize          *int    `json:"maxMsgSize,omitempty" name:"maxMsgSize"`                   // 消息最大长度(byte),取值范围1024 - 65536 Byte（即1-64K），默认值65536
+	MsgRetentionSeconds *int    `json:"msgRetentionSeconds,omitempty" name:"msgRetentionSeconds"` // 消息保留周期(秒),取值范围60 - 1296000秒（1min-15天），默认值345600 (4 天)
+	RewindSeconds       *int    `json:"rewindSeconds,omitempty" name:"rewindSeconds"`             // 队列是否开启回溯消息能力，该参数取值范围 0-msgRetentionSeconds，即最大的回溯时间为消息在队列中的保留周期，0表示不开启
 }
 
 // CreateQueueResponse 创建队列响应
@@ -56,7 +43,212 @@ type CreateQueueResponse struct {
 	QueueId *string `json:"queueId,omitempty" name:"queueId"`
 }
 
+// ListQueueRequest 获取队列列表请求
+type ListQueueRequest struct {
+	*tchttp.BaseRequest
+	SearchWord *string `json:"serarchWord,omitempty" name:"searchWord"` // 用于过滤队列列表模糊搜索,不填选择所有
+	Offset     *int    `json:"offset,omitempty" name:"offset"`
+	Limit      *int    `json:"limit,omitempty" name:"limit"`
+}
+
+// ListQueueResponse 获取队列列表响应
+type ListQueueResponse struct {
+	*tchttp.BaseResponse
+	Code       *int    `json:"code,omitempty" name:"code"`
+	Message    *string `json:"message,omitempty" name:"message"`
+	RequestId  *string `json:"requestId,omitempty" name:"requestId"`
+	TotalCount *int    `json:"totalCount,omitempty" name:"totalCount"`
+	QueueList  []*struct {
+		QueueId   string `json:"queueId,omitempty" name:"queueId"`
+		QueueName string `json:"queueName,omitempty" name:"queueName"`
+	} `json:"queueList,omitempty" name:"queueList"`
+}
+
+// GetQueueAttributesRequest 获取队列属性请求
+type GetQueueAttributesRequest struct {
+	*tchttp.BaseRequest
+	QueueName *string `json:"queueName,omitempty" name:"queueName"`
+}
+
+// GetQueueAttributesResponse 获取队列属性响应
+type GetQueueAttributesResponse struct {
+	*tchttp.BaseResponse
+	Code                *int    `json:"code,omitempty" name:"code"`
+	Message             *string `json:"message,omitempty" name:"message"`
+	RequestId           *string `json:"requestId,omitempty" name:"requestId"`
+	MaxMsgHeapNum       *int    `json:"maxMsgHeapNum,omitempty" name:"maxMsgHeapNum"`             // 最大堆积消息数
+	PollingWaitSeconds  *int    `json:"pollingWaitSeconds,omitempty" name:"pollingWaitSeconds"`   // 消息接收长轮询等待时间(秒)
+	VisibilityTimeout   *int    `json:"visibilityTimeout,omitempty" name:"visibilityTimeout"`     // 消息可见性超时时间(秒)
+	MaxMsgSize          *int    `json:"maxMsgSize,omitempty" name:"maxMsgSize"`                   // 消息最大长度(byte)
+	MsgRetentionSeconds *int    `json:"msgRetentionSeconds,omitempty" name:"msgRetentionSeconds"` // 消息保留周期(秒)
+	CreateTime          *int    `json:"createTime,omitempty" name:"createTime"`                   // 队列创建时间(unix秒)
+	LastModifyTime      *int    `json:"lastModifyTime,omitempty" name:"lastModifyTime"`           // 最后修改时间
+	ActiveMsgNum        *int    `json:"activeMsgNum,omitempty" name:"activeMsgNum"`               // 在队列中处于 Active 状态（不处于被消费状态）的消息总数，为近似值
+	InactiveMsgNum      *int    `json:"inactiveMsgNum,omitempty" name:"inactiveMsgNum"`           // 在队列中处于 Inactive 状态（正处于被消费状态）的消息总数，为近似值
+	RewindSeconds       *int    `json:"rewindSeconds,omitempty" name:"rewindSeconds"`             // 队列是否开启回溯消息周期
+	RewindMsgNum        *int    `json:"rewindmsgNum,omitempty" name:"rewindmsgNum"`               // 已调用 DelMsg 接口删除，但还在回溯保留时间内的消息数量
+	MinMsgTime          *int    `json:"minMsgTime,omitempty" name:"minMsgTime"`                   // 消息最小未消费时间，单位为秒
+}
+
+// SetQueueAttributesRequest 修改队列属性请求
+type SetQueueAttributesRequest struct {
+	*tchttp.BaseRequest
+	QueueName           *string `json:"queueName,omitempty" name:"queueName"`
+	MaxMsgHeapNum       *int    `json:"maxMsgHeapNum,omitempty" name:"maxMsgHeapNum"`
+	PollingWaitSeconds  *int    `json:"pollingWaitSeconds,omitempty" name:"pollingWaitSeconds"`
+	VisibilityTimeout   *int    `json:"visibilityTimeout,omitempty" name:"visibilityTimeout"`
+	MaxMsgSize          *int    `json:"maxMsgSize,omitempty" name:"maxMsgSize"`
+	MsgRetentionSeconds *int    `json:"msgRetentionSeconds,omitempty" name:"msgRetentionSeconds"`
+	RewindSeconds       *int    `json:"rewindSeconds,omitempty" name:"rewindSeconds"`
+}
+
+// SetQueueAttributesResponse 修改队列属性响应
+type SetQueueAttributesResponse struct {
+	*tchttp.BaseResponse
+	Code                *int    `json:"code,omitempty" name:"code"`
+	Message             *string `json:"message,omitempty" name:"message"`
+	RequestId           *string `json:"requestId,omitempty" name:"requestId"`
+	MaxMsgHeapNum       *int    `json:"maxMsgHeapNum,omitempty" name:"maxMsgHeapNum"`
+	PollingWaitSeconds  *int    `json:"pollingWaitSeconds,omitempty" name:"pollingWaitSeconds"`
+	VisibilityTimeout   *int    `json:"visibilityTimeout,omitempty" name:"visibilityTimeout"`
+	MaxMsgSize          *int    `json:"maxMsgSize,omitempty" name:"maxMsgSize"`
+	MsgRetentionSeconds *int    `json:"msgRetentionSeconds,omitempty" name:"msgRetentionSeconds"`
+	RewindSeconds       *int    `json:"rewindSeconds,omitempty" name:"rewindSeconds"`
+}
+
+// DeleteQueueRequest 删除队列请求
+type DeleteQueueRequest struct {
+	*tchttp.BaseRequest
+	QueueName *string `json:"queueName,omitempty" name:"queueName"`
+}
+
+// DeleteQueueResponse 删除队列响应
+type DeleteQueueResponse struct {
+	*tchttp.BaseResponse
+	Code      *int    `json:"code,omitempty" name:"code"`
+	Message   *string `json:"message,omitempty" name:"message"`
+	RequestId *string `json:"requestId,omitempty" name:"requestId"`
+}
+
+// SendMessage 发送消息请求(队列)
+type SendMessageRequest struct {
+	*tchttp.BaseRequest
+	QueueName    *string `json:"queueName,omitempty" name:"queueName"`
+	MsgBody      *string `json:"msgBody,omitempty" name:"msgBody"`
+	DelaySeconds *int    `json:"delaySeconds,omitempty" name:"delaySeconds"`
+}
+
+// SendMessageResponse 发送消息响应(队列)
+type SendMessageResponse struct {
+	*tchttp.BaseResponse
+	Code      *int    `json:"code,omitempty" name:"code"`
+	Message   *string `json:"message,omitempty" name:"message"`
+	RequestId *string `json:"requestId,omitempty" name:"requestId"`
+	MsgId     *string `json:"msgId,omitempty" name:"msgId"`
+}
+
+// BatchSendMessage 批量发送消息请求(队列)
+type BatchSendMessageRequest struct {
+	*tchttp.BaseRequest
+	QueueName    *string   `json:"queueName,omitempty" name:"queueName"`
+	MsgBody      []*string `json:"msgBody,omitempty" name:"msgBody"`
+	DelaySeconds *int      `json:"delaySeconds,omitempty" name:"delaySeconds"`
+}
+
+// BatchSendMessageResponse 批量发送消息响应(响应)
+type BatchSendMessageResponse struct {
+	*tchttp.BaseResponse
+	Code      *int    `json:"code,omitempty" name:"code"`
+	Message   *string `json:"message,omitempty" name:"message"`
+	RequestId *string `json:"requestId,omitempty" name:"requestId"`
+	MsgList   []*struct {
+		MsgId string `json:"msgId,omitempty" name:"msgId"`
+	} `json:"msgList,omitempty" name:"msgList"`
+}
+
+// ReceiveMessage 消费消息请求(队列)
+type ReceiveMessageRequest struct {
+	*tchttp.BaseRequest
+	QueueName          *string `json:"queueName,omitempty" name:"queueName"`
+	PollingWaitSeconds *int    `json:"pollingWaitSeconds,omitempty" name:"pollingWaitSeconds"`
+}
+
+// ReceiveMessageResponse 消费消息响应(队列)
+type ReceiveMessageResponse struct {
+	*tchttp.BaseResponse
+	Code             *int    `json:"code,omitempty" name:"code"`
+	Message          *string `json:"message,omitempty" name:"message"`
+	RequestId        *string `json:"requestId,omitempty" name:"requestId"`
+	MsgId            *string `json:"msgId,omitempty" name:"msgId"`
+	MsgBody          *string `json:"msgBody,omitempty" name:"msgBody"`
+	ReceiptHandle    *string `json:"receiptHandle,omitempty" name:"receiptHandle"`       // 消息句柄
+	EnqueueTime      *int    `json:"enqueueTime,omitempty" name:"enqueueTime"`           // 入队时间
+	FirstDequeueTime *int    `json:"firstDequeueTime,omitempty" name:"firstDequeueTime"` // 第一次消费时间
+	NextVisibleTime  *int    `json:"nextVisibleTime,omitempty" name:"nextVisibleTime"`   // 消息下次可见时间
+	DequeueCount     *int    `json:"dequeueCount,omitempty" name:"dequeueCount"`         // 消费次数
+}
+
+// BatchReceiveMessage 批量消费消息请求(队列)
+type BatchReceiveMessageRequest struct {
+	*tchttp.BaseRequest
+	QueueName          *string `json:"queueName,omitempty" name:"queueName"`
+	NumOfMsg           *int    `json:"numOfMsg,omitempty" name:"numOfMsg"`
+	PollingWaitSeconds *int    `json:"pollingWaitSeconds,omitempty" name:"pollingWaitSeconds"`
+}
+
+// BatchReceiveMessageResponse 批量消费消息响应(队列)
+type BatchReceiveMessageResponse struct {
+	*tchttp.BaseResponse
+	Code        *int    `json:"code,omitempty" name:"code"`
+	Message     *string `json:"message,omitempty" name:"message"`
+	RequestId   *string `json:"requestId,omitempty" name:"requestId"`
+	MsgInfoList []*struct {
+		MsgId            *string `json:"msgId,omitempty" name:"msgId"`
+		MsgBody          *string `json:"msgBody,omitempty" name:"msgBody"`
+		ReceiptHandle    *string `json:"receiptHandle,omitempty" name:"receiptHandle"`       // 消息句柄
+		EnqueueTime      *int    `json:"enqueueTime,omitempty" name:"enqueueTime"`           // 入队时间
+		FirstDequeueTime *int    `json:"firstDequeueTime,omitempty" name:"firstDequeueTime"` // 第一次消费时间
+		NextVisibleTime  *int    `json:"nextVisibleTime,omitempty" name:"nextVisibleTime"`   // 消息下次可见时间
+		DequeueCount     *int    `json:"dequeueCount,omitempty" name:"dequeueCount"`         // 消费次数
+	} `json:"msgInfoList,omitempty" name:"msgInfoList"`
+}
+
+// DeleteMessageRequest 删除消息请求
+type DeleteMessageRequest struct {
+	*tchttp.BaseRequest
+	QueueName *string `json:"queueName,omitempty" name:"queueName"`
+}
+
+// DeleteMessageResponse 删除消息响应
+type DeleteMessageResponse struct {
+	*tchttp.BaseResponse
+	Code      *int    `json:"code,omitempty" name:"code"`
+	Message   *string `json:"message,omitempty" name:"message"`
+	RequestId *string `json:"requestId,omitempty" name:"requestId"`
+}
+
+// BatchDeleteMessage 批量删除消息请求(队列)
+type BatchDeleteMessageRequest struct {
+	*tchttp.BaseRequest
+	QueueName     *string   `json:"queueName,omitempty" name:"queueName"`
+	ReceiptHandle []*string `json:"receiptHandle,omitempty" name:"receiptHandle"`
+}
+
+// BatchDeleteMessageResponse 批量删除消息响应(队列)
+type BatchDeleteMessageResponse struct {
+	*tchttp.BaseResponse
+	Code      *int    `json:"code,omitempty" name:"code"`
+	Message   *string `json:"message,omitempty" name:"message"`
+	RequestId *string `json:"requestId,omitempty" name:"requestId"`
+	ErrorList []*struct {
+		Code          *int    `json:"code,omitempty" name:"code"`
+		Message       *string `json:"message,omitempty" name:"message"`
+		ReceiptHandle *string `json:"receiptHandle,omitempty" name:"receiptHandle"`
+	} `json:"msgInfoList,omitempty" name:"msgInfoList"`
+}
+
 // =================================================================================
+
 // CreateTopicRequest 创建主题请求
 type CreateTopicRequest struct {
 	*tchttp.BaseRequest
@@ -135,9 +327,9 @@ type GetTopicAttributesResponse struct {
 	MsgCount            *int    `json:"msgCount,omitempty" name:"msgCount"`
 	MaxMsgSize          *int    `json:"maxMsgSize,omitempty" name:"maxMsgSize"`
 	MsgRetentionSeconds *int    `json:"msgRetentionSeconds,omitempty" name:"maxMsgSize"` // 消息在主题中最长存活时间，单位为秒。固定为一天（86400秒），该属性不能修改
-	CreateTime          *int    `json:"createTime" name:"createTime"`                    // 主题创建时间(unix秒)
-	LastModifyTime      *int    `json:"lastModifyTime" name:"lastModifyTime"`            // 最后修改时间
-	FilterType          *int    `json:"filterType" name:"filterType"`                    // 消息过滤类型
+	CreateTime          *int    `json:"createTime,omitempty" name:"createTime"`          // 主题创建时间(unix秒)
+	LastModifyTime      *int    `json:"lastModifyTime,omitempty" name:"lastModifyTime"`  // 最后修改时间
+	FilterType          *int    `json:"filterType,omitempty" name:"filterType"`          // 消息过滤类型
 }
 
 // DeleteTopicRequest 删除主题请求
@@ -289,8 +481,8 @@ type GetSubscriptionAttributesResponse struct {
 	Endpoint            *string   `json:"endpoint,omitempty" name:"endpoint"` // 接收通知的 endpoint
 	NotifyStrategy      *string   `json:"notifyStrategy,omitempty" name:"notifyStrategy"`
 	NotifyContentFormat *string   `json:"notifyContentFormat,omitempty" name:"notifyContentFormat"` // 推送内容的格式
-	CreateTime          *int      `json:"createTime" name:"createTime"`                             // 主题创建时间(unix秒)
-	LastModifyTime      *int      `json:"lastModifyTime" name:"lastModifyTime"`                     // 最后修改时间
+	CreateTime          *int      `json:"createTime,omitempty" name:"createTime"`                   // 主题创建时间(unix秒)
+	LastModifyTime      *int      `json:"lastModifyTime,omitempty" name:"lastModifyTime"`           // 最后修改时间
 	BindingKey          []*string `json:"bindingKey,omitempty" name:"bindingKey"`                   // 表示订阅接收消息的过滤策略
 }
 
