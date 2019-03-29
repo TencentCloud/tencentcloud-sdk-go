@@ -4,7 +4,7 @@ import (
 	"fmt"
 
 	"github.com/teamlint/tencentcloud-sdk-go/examples/cmq/config"
-	"github.com/teamlint/tencentcloud-sdk-go/tencentcloud/cmq"
+	cmq "github.com/teamlint/tencentcloud-sdk-go/tencentcloud/cmq/v2"
 	"github.com/teamlint/tencentcloud-sdk-go/tencentcloud/common"
 	"github.com/teamlint/tencentcloud-sdk-go/tencentcloud/common/errors"
 	"github.com/teamlint/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -27,9 +27,9 @@ func main() {
 
 	// 实例化一个请求对象，根据调用的接口和实际情况，可以进一步设置请求参数
 	request := cmq.NewCreateTopicRequest()
-	request.TopicName = "sdk_create_topic_post"
-	request.MaxMsgSize = 4096
-	// request.FilterType = cmq.FilterTypeRouting
+	request.TopicName = common.StringPtr("sdk_create_topic_bind")
+	request.MaxMsgSize = common.IntPtr(4096)
+	request.FilterType = cmq.FilterTypeBindingKey
 
 	// 通过client对象调用想要访问的接口，需要传入请求对象
 	response, err := client.CreateTopic(request)
@@ -45,5 +45,5 @@ func main() {
 	}
 	// 打印返回结果
 	// fmt.Printf("%s", response.ToJsonString())
-	fmt.Printf("response: %+v", response)
+	fmt.Printf("response: %+v", common.ToJsonString(response))
 }

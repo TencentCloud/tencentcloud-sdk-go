@@ -1,4 +1,4 @@
-package cmq
+package v2
 
 import (
 	"github.com/teamlint/tencentcloud-sdk-go/tencentcloud/common"

@@ -29,13 +29,17 @@ type Request interface {
 	GetService() string
 	GetUrl() string
 	GetVersion() string
+	GetProtocol() string
+
 	SetDomain(string)
 	SetHttpMethod(string)
 	SetPath(string)
+	SetProtocol(string)
 }
 
 type BaseRequest struct {
 	httpMethod string
+	protocol   string
 	domain     string
 	path       string
 	params     map[string]string
@@ -86,19 +90,23 @@ func (r *BaseRequest) SetHttpMethod(method string) {
 		}
 	}
 }
+
 func (r *BaseRequest) SetPath(path string) {
 	r.path = path
 }
 
+func (r *BaseRequest) SetProtocol(protocol string) {
+	r.protocol = protocol
+}
 func (r *BaseRequest) GetService() string {
 	return r.service
 }
 
 func (r *BaseRequest) GetUrl() string {
 	if r.httpMethod == GET {
-		return "https://" + r.domain + r.path + "?" + GetUrlQueriesEncoded(r.params)
+		return r.protocol + "://" + r.domain + r.path + "?" + GetUrlQueriesEncoded(r.params)
 	} else if r.httpMethod == POST {
-		return "https://" + r.domain + r.path
+		return r.protocol + "://" + r.domain + r.path
 	} else {
 		return ""
 	}
@@ -106,6 +114,10 @@ func (r *BaseRequest) GetUrl() string {
 
 func (r *BaseRequest) GetVersion() string {
 	return r.version
+}
+
+func (r *BaseRequest) GetProtocol() string {
+	return r.protocol
 }
 
 func GetUrlQueriesEncoded(params map[string]string) string {
@@ -129,6 +141,7 @@ func (r *BaseRequest) GetBodyReader() io.Reader {
 
 func (r *BaseRequest) Init() *BaseRequest {
 	r.domain = ""
+	r.protocol = "https"
 	r.path = Path
 	r.params = make(map[string]string)
 	r.formParams = make(map[string]string)

@@ -36,6 +36,9 @@ func (c *Client) Send(request tchttp.Request, response tchttp.Response) (err err
 	if request.GetHttpMethod() == "" {
 		request.SetHttpMethod(c.httpProfile.ReqMethod)
 	}
+	if c.httpProfile != nil && c.httpProfile.Protocol != "" {
+		request.SetProtocol(c.httpProfile.Protocol)
+	}
 
 	tchttp.CompleteCommonParams(request, c.GetRegion())
 
@@ -63,6 +66,7 @@ func (c *Client) sendWithSignatureV1(request tchttp.Request, response tchttp.Res
 		httpRequest.Header["Content-Type"] = []string{"application/x-www-form-urlencoded"}
 	}
 	//log.Printf("[DEBUG] http request=%v", httpRequest)
+	log.Printf("[DEBUG] http request url: %v", request.GetUrl())
 	httpResponse, err := c.httpClient.Do(httpRequest)
 	if err != nil {
 		return err
