@@ -136,7 +136,7 @@ If it is a proxy environment, you need to set the system environment variable `h
 | Package Name | Product English Name |
 |------------|------|
 | aai | Intelligent Voice Service |
-| as | flexible stretching |
+| as | Auto Scaling |
 | batch | Batch Calculation |
 | billing | Billing |
 | bm | Blackstone Physics Server |
@@ -147,7 +147,7 @@ If it is a proxy environment, you need to set the system environment variable `h
 | cis | Container Instance Service |
 | clb | Cloud Load Balancing |
 | cr | Collection Robot |
-| cvm | cloud server |
+| cvm | Cloud Virtual Server |
 | cws | Web Vulnerability Scan |
 | dc | Private line access |
 | dcdb | Distributed Database DCDB |
