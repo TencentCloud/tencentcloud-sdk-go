@@ -4,6 +4,8 @@
 
 为方便 GO 开发者调试和接入腾讯云产品 API，这里向您介绍适用于 GO 的腾讯云开发工具包，并提供首次使用开发工具包的简单示例。让您快速获取腾讯云 GO SDK 并开始调用。
 
+Read this in other languages: [English](README.en.md) 
+
 # 依赖环境
 
 1. Go 1.9 版本及以上，并设置好 GOPATH 等必须的环境变量。
