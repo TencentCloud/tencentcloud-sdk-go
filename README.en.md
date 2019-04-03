@@ -142,7 +142,7 @@ If it is a proxy environment, you need to set the system environment variable `h
 | bm | Blackstone Physics Server |
 | bmeip | Blackrock Elastic IP |
 | cbs | Cloud Hard Drive |
-| cdb | Database MySQL |
+| cdb | TencentDB MySQL |
 | cdn | Content Distribution Network |
 | cis | Container Instance Service |
 | clb | Cloud Load Balancing |
@@ -163,17 +163,17 @@ If it is a proxy environment, you need to set the system environment variable `h
 | iot | Accelerate IoT Suite |
 | iotcloud | Internet of Things Communications |
 | live | Cloud Live |
-| mariadb | Database MariaDB(TDSQL) |
-| mongodb | Cloud Database MongoDB |
-| monitor | cloud monitoring |
+| mariadb | TencentDB MariaDB(TDSQL) |
+| mongodb | TencentDB MongoDB |
+| monitor | Cloud Monitoring |
 | ms | Application Security |
 | msp | Migration Service Platform |
 | partners | Channel Partners |
-| postgres | Cloud Database PostgreSQL |
-| redis | Cloud Database Redis |
+| postgres | TencentDB PostgreSQL |
+| redis | TencentDB Redis |
 | scf | Serverless Cloud Function |
 | soe | Sense of listening |
-| sqlserver | Cloud Database SQL Server |
+| sqlserver | TencentDB SQL Server |
 | sts | Access Management |
 | tbaas | TBaaS |
 | tbm | Tencent Excellent Review |
