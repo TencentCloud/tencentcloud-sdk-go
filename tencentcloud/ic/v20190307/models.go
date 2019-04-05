@@ -71,7 +71,7 @@ type CardInfo struct {
 	// 运营商编号
 	Teleoperator *int64 `json:"Teleoperator,omitempty" name:"Teleoperator"`
 
-	// 卡片状态
+	// 卡片状态 1:未激活 2：激活 3：停卡 5：销卡
 	CardStatus *int64 `json:"CardStatus,omitempty" name:"CardStatus"`
 
 	// 网络状态

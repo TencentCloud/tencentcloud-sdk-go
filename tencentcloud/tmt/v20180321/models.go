@@ -111,7 +111,7 @@ type ItemValue struct {
 type LanguageDetectRequest struct {
 	*tchttp.BaseRequest
 
-	// 待识别的文本，文本统一使用utf-8格式编码，非utf-8格式编码字符会翻译失败
+	// 待识别的文本，文本统一使用utf-8格式编码，非utf-8格式编码字符会翻译失败。单次请求的文本长度需要低于2000。
 	Text *string `json:"Text,omitempty" name:"Text"`
 
 	// 项目id
@@ -234,7 +234,7 @@ func (r *SpeechTranslateResponse) FromJsonString(s string) error {
 type TextTranslateRequest struct {
 	*tchttp.BaseRequest
 
-	// 待翻译的文本，文本统一使用utf-8格式编码，非utf-8格式编码字符会翻译失败，请传入有效文本，html标记等非常规翻译文本会翻译失败
+	// 待翻译的文本，文本统一使用utf-8格式编码，非utf-8格式编码字符会翻译失败，请传入有效文本，html标记等非常规翻译文本会翻译失败。单次请求的文本长度需要低于2000。
 	SourceText *string `json:"SourceText,omitempty" name:"SourceText"`
 
 	// 源语言，参照Target支持语言列表

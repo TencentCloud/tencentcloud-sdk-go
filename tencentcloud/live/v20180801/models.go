@@ -282,7 +282,7 @@ type CreateLiveCallbackRuleRequest struct {
 	// 推流路径。
 	AppName *string `json:"AppName,omitempty" name:"AppName"`
 
-	// 模板ID
+	// 模板ID。
 	TemplateId *int64 `json:"TemplateId,omitempty" name:"TemplateId"`
 }
 
@@ -359,7 +359,7 @@ type CreateLiveCallbackTemplateResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 模板Id。
+		// 模板ID。
 		TemplateId *int64 `json:"TemplateId,omitempty" name:"TemplateId"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -643,7 +643,7 @@ func (r *CreateLiveSnapshotRuleResponse) FromJsonString(s string) error {
 type CreateLiveSnapshotTemplateRequest struct {
 	*tchttp.BaseRequest
 
-	// 模板名称。非空的字符串
+	// 模板名称。非空的字符串。
 	TemplateName *string `json:"TemplateName,omitempty" name:"TemplateName"`
 
 	// Cos AppId。
@@ -661,13 +661,13 @@ type CreateLiveSnapshotTemplateRequest struct {
 	// 截图间隔，单位s，默认10s。
 	SnapshotInterval *int64 `json:"SnapshotInterval,omitempty" name:"SnapshotInterval"`
 
-	// 截图宽度。默认：0（原始高）
+	// 截图宽度。默认：0（原始宽）。
 	Width *int64 `json:"Width,omitempty" name:"Width"`
 
-	// 截图高度。默认：0（原始宽）
+	// 截图高度。默认：0（原始高）。
 	Height *int64 `json:"Height,omitempty" name:"Height"`
 
-	// 是否开启鉴黄，0：不开启，1：开启。默认：0.
+	// 是否开启鉴黄，0：不开启，1：开启。默认：0。
 	PornFlag *int64 `json:"PornFlag,omitempty" name:"PornFlag"`
 }
 
@@ -750,7 +750,7 @@ type CreateLiveTranscodeTemplateRequest struct {
 	// 模板名称，例：900 900p 仅支持字母和数字的组合。
 	TemplateName *string `json:"TemplateName,omitempty" name:"TemplateName"`
 
-	// 视频码率。
+	// 视频码率。范围：100-8000。
 	VideoBitrate *int64 `json:"VideoBitrate,omitempty" name:"VideoBitrate"`
 
 	// 视频编码：h264/h265，默认h264。
@@ -761,13 +761,13 @@ type CreateLiveTranscodeTemplateRequest struct {
 	// 注意：当前该参数未生效，待后续支持！
 	Acodec *string `json:"Acodec,omitempty" name:"Acodec"`
 
-	// 音频码率：默认0。0-500
+	// 音频码率：默认0。0-500。
 	AudioBitrate *int64 `json:"AudioBitrate,omitempty" name:"AudioBitrate"`
 
 	// 模板描述。
 	Description *string `json:"Description,omitempty" name:"Description"`
 
-	// 款，默认0。
+	// 宽，默认0。
 	Width *int64 `json:"Width,omitempty" name:"Width"`
 
 	// 是否保留视频，0：否，1：是。默认1。
@@ -1176,7 +1176,7 @@ func (r *DeleteLiveRecordRuleResponse) FromJsonString(s string) error {
 type DeleteLiveRecordTemplateRequest struct {
 	*tchttp.BaseRequest
 
-	// 模板Id。
+	// 模板ID。
 	TemplateId *int64 `json:"TemplateId,omitempty" name:"TemplateId"`
 }
 
@@ -2780,6 +2780,55 @@ func (r *DescribeLiveWatermarksResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeLogDownloadListRequest struct {
+	*tchttp.BaseRequest
+
+	// 开始时间，北京时间。
+	// 格式：yyyy-mm-dd HH:MM:SS。
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 结束时间，北京时间。
+	// 格式：yyyy-mm-dd HH:MM:SS。
+	// 注意：结束时间 - 开始时间 <=7天。
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 域名列表。
+	PlayDomains []*string `json:"PlayDomains,omitempty" name:"PlayDomains" list`
+}
+
+func (r *DescribeLogDownloadListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeLogDownloadListRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeLogDownloadListResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 日志信息列表。
+		LogInfoList []*LogInfo `json:"LogInfoList,omitempty" name:"LogInfoList" list`
+
+		// 总条数。
+		TotalNum *uint64 `json:"TotalNum,omitempty" name:"TotalNum"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeLogDownloadListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeLogDownloadListResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeProIspPlaySumInfoListRequest struct {
 	*tchttp.BaseRequest
 
@@ -3298,6 +3347,18 @@ type ForbidStreamInfo struct {
 
 	// 禁推过期时间。
 	ExpireTime *string `json:"ExpireTime,omitempty" name:"ExpireTime"`
+}
+
+type LogInfo struct {
+
+	// 日志名称。
+	LogName *string `json:"LogName,omitempty" name:"LogName"`
+
+	// 日志Url。
+	LogUrl *string `json:"LogUrl,omitempty" name:"LogUrl"`
+
+	// 日志生成时间
+	LogTime *string `json:"LogTime,omitempty" name:"LogTime"`
 }
 
 type ModifyLiveCallbackTemplateRequest struct {

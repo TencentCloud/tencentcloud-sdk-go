@@ -1395,6 +1395,10 @@ type HostItem struct {
 
 	// cdh实例资源信息
 	HostResource *HostResource `json:"HostResource,omitempty" name:"HostResource"`
+
+	// 专用宿主机所属的围笼ID。该字段仅对金融专区围笼内的专用宿主机有效。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CageId *string `json:"CageId,omitempty" name:"CageId"`
 }
 
 type HostResource struct {
@@ -1768,9 +1772,6 @@ type InquiryPriceResetInstancesTypeRequest struct {
 
 	// 实例机型。不同实例机型指定了不同的资源规格，具体取值可参见附表实例资源规格对照表，也可以调用查询实例资源规格列表接口获得最新的规格表。
 	InstanceType *string `json:"InstanceType,omitempty" name:"InstanceType"`
-
-	// 是否对运行中的实例选择强制关机。建议对运行中的实例先手动关机，然后再重置用户密码。取值范围：<br><li>TRUE：表示在正常关机失败后进行强制关机<br><li>FALSE：表示在正常关机失败后不进行强制关机<br><br>默认取值：FALSE。<br><br>强制关机的效果等同于关闭物理计算机的电源开关。强制关机可能会导致数据丢失或文件系统损坏，请仅在服务器不能正常关机时使用。
-	ForceStop *bool `json:"ForceStop,omitempty" name:"ForceStop"`
 }
 
 func (r *InquiryPriceResetInstancesTypeRequest) ToJsonString() string {
@@ -3047,7 +3048,7 @@ type RunInstancesRequest struct {
 	// 定时任务。通过该参数可以为实例指定定时任务，目前仅支持定时销毁。
 	ActionTimer *ActionTimer `json:"ActionTimer,omitempty" name:"ActionTimer"`
 
-	// 容灾组id，仅支持指定一个。
+	// 置放群组id，仅支持指定一个。
 	DisasterRecoverGroupIds []*string `json:"DisasterRecoverGroupIds,omitempty" name:"DisasterRecoverGroupIds" list`
 
 	// 标签描述列表。通过指定该参数可以同时绑定标签到相应的资源实例，当前仅支持绑定标签到云主机实例。

@@ -1565,6 +1565,31 @@ func (c *Client) DescribeLiveWatermarks(request *DescribeLiveWatermarksRequest) 
     return
 }
 
+func NewDescribeLogDownloadListRequest() (request *DescribeLogDownloadListRequest) {
+    request = &DescribeLogDownloadListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("live", APIVersion, "DescribeLogDownloadList")
+    return
+}
+
+func NewDescribeLogDownloadListResponse() (response *DescribeLogDownloadListResponse) {
+    response = &DescribeLogDownloadListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 批量获取日志URL。
+func (c *Client) DescribeLogDownloadList(request *DescribeLogDownloadListRequest) (response *DescribeLogDownloadListResponse, err error) {
+    if request == nil {
+        request = NewDescribeLogDownloadListRequest()
+    }
+    response = NewDescribeLogDownloadListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeProIspPlaySumInfoListRequest() (request *DescribeProIspPlaySumInfoListRequest) {
     request = &DescribeProIspPlaySumInfoListRequest{
         BaseRequest: &tchttp.BaseRequest{},
