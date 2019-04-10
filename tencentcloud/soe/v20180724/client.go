@@ -26,16 +26,19 @@ type Client struct {
     common.Client
 }
 
+// init
+func init() {
+    client = &Client{}
+}
+
 // Deprecated
 func NewClientWithSecretId(secretId, secretKey, region string) (client *Client, err error) {
     cpf := profile.NewClientProfile()
-    client = &Client{}
     client.Init(region).WithSecretId(secretId, secretKey).WithProfile(cpf)
     return
 }
 
 func NewClient(credential *common.Credential, region string, clientProfile *profile.ClientProfile) (client *Client, err error) {
-    client = &Client{}
     client.Init(region).
         WithCredential(credential).
         WithProfile(clientProfile)
