@@ -285,7 +285,7 @@ type DescribeTaskStatusResponse struct {
 		// 任务结果
 		TaskResult *string `json:"TaskResult,omitempty" name:"TaskResult"`
 
-		// 任务类型，001为报告下载，002为数据上传，003为还款数据上传。
+		// <p>任务类型：</p><ul style="margin-bottom:0px;"><li>报告下载：001</li><li>催收数据上传：002</li><li>还款数据上传：003</li><li>回访数据上传：004</li></ul>
 		TaskType *string `json:"TaskType,omitempty" name:"TaskType"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。

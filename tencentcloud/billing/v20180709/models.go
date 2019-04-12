@@ -198,6 +198,15 @@ type BillResourceSummary struct {
 
 	// 赠送账户支付金额，单位为元
 	IncentivePayAmount *string `json:"IncentivePayAmount,omitempty" name:"IncentivePayAmount"`
+
+	// 扩展字段3
+	ExtendField3 *string `json:"ExtendField3,omitempty" name:"ExtendField3"`
+
+	// 扩展字段4
+	ExtendField4 *string `json:"ExtendField4,omitempty" name:"ExtendField4"`
+
+	// 扩展字段5
+	ExtendField5 *string `json:"ExtendField5,omitempty" name:"ExtendField5"`
 }
 
 type Deal struct {

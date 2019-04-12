@@ -954,7 +954,7 @@ func NewDescribeLiveDomainResponse() (response *DescribeLiveDomainResponse) {
     return
 }
 
-// 查询直播域名信息
+// 查询直播域名信息。
 func (c *Client) DescribeLiveDomain(request *DescribeLiveDomainRequest) (response *DescribeLiveDomainResponse, err error) {
     if request == nil {
         request = NewDescribeLiveDomainRequest()

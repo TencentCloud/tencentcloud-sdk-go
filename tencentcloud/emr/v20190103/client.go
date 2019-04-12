@@ -43,6 +43,56 @@ func NewClient(credential *common.Credential, region string, clientProfile *prof
 }
 
 
+func NewCreateInstanceRequest() (request *CreateInstanceRequest) {
+    request = &CreateInstanceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("emr", APIVersion, "CreateInstance")
+    return
+}
+
+func NewCreateInstanceResponse() (response *CreateInstanceResponse) {
+    response = &CreateInstanceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 创建EMR实例
+func (c *Client) CreateInstance(request *CreateInstanceRequest) (response *CreateInstanceResponse, err error) {
+    if request == nil {
+        request = NewCreateInstanceRequest()
+    }
+    response = NewCreateInstanceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeInstancesRequest() (request *DescribeInstancesRequest) {
+    request = &DescribeInstancesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("emr", APIVersion, "DescribeInstances")
+    return
+}
+
+func NewDescribeInstancesResponse() (response *DescribeInstancesResponse) {
+    response = &DescribeInstancesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询EMR实例
+func (c *Client) DescribeInstances(request *DescribeInstancesRequest) (response *DescribeInstancesResponse, err error) {
+    if request == nil {
+        request = NewDescribeInstancesRequest()
+    }
+    response = NewDescribeInstancesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewInquiryPriceCreateInstanceRequest() (request *InquiryPriceCreateInstanceRequest) {
     request = &InquiryPriceCreateInstanceRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -64,6 +114,106 @@ func (c *Client) InquiryPriceCreateInstance(request *InquiryPriceCreateInstanceR
         request = NewInquiryPriceCreateInstanceRequest()
     }
     response = NewInquiryPriceCreateInstanceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewInquiryPriceScaleOutInstanceRequest() (request *InquiryPriceScaleOutInstanceRequest) {
+    request = &InquiryPriceScaleOutInstanceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("emr", APIVersion, "InquiryPriceScaleOutInstance")
+    return
+}
+
+func NewInquiryPriceScaleOutInstanceResponse() (response *InquiryPriceScaleOutInstanceResponse) {
+    response = &InquiryPriceScaleOutInstanceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 扩容询价. 当扩容时候，请通过该接口查询价格。
+func (c *Client) InquiryPriceScaleOutInstance(request *InquiryPriceScaleOutInstanceRequest) (response *InquiryPriceScaleOutInstanceResponse, err error) {
+    if request == nil {
+        request = NewInquiryPriceScaleOutInstanceRequest()
+    }
+    response = NewInquiryPriceScaleOutInstanceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewScaleOutInstanceRequest() (request *ScaleOutInstanceRequest) {
+    request = &ScaleOutInstanceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("emr", APIVersion, "ScaleOutInstance")
+    return
+}
+
+func NewScaleOutInstanceResponse() (response *ScaleOutInstanceResponse) {
+    response = &ScaleOutInstanceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 实例扩容
+func (c *Client) ScaleOutInstance(request *ScaleOutInstanceRequest) (response *ScaleOutInstanceResponse, err error) {
+    if request == nil {
+        request = NewScaleOutInstanceRequest()
+    }
+    response = NewScaleOutInstanceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewTerminateInstanceRequest() (request *TerminateInstanceRequest) {
+    request = &TerminateInstanceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("emr", APIVersion, "TerminateInstance")
+    return
+}
+
+func NewTerminateInstanceResponse() (response *TerminateInstanceResponse) {
+    response = &TerminateInstanceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 销毁EMR实例
+func (c *Client) TerminateInstance(request *TerminateInstanceRequest) (response *TerminateInstanceResponse, err error) {
+    if request == nil {
+        request = NewTerminateInstanceRequest()
+    }
+    response = NewTerminateInstanceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewTerminateTasksRequest() (request *TerminateTasksRequest) {
+    request = &TerminateTasksRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("emr", APIVersion, "TerminateTasks")
+    return
+}
+
+func NewTerminateTasksResponse() (response *TerminateTasksResponse) {
+    response = &TerminateTasksResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 缩容Task节点
+func (c *Client) TerminateTasks(request *TerminateTasksRequest) (response *TerminateTasksResponse, err error) {
+    if request == nil {
+        request = NewTerminateTasksRequest()
+    }
+    response = NewTerminateTasksResponse()
     err = c.Send(request, response)
     return
 }

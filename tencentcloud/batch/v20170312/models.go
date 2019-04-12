@@ -47,9 +47,11 @@ type Activity struct {
 	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
 
 	// 活动结束时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 
 	// 云服务器实例ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 }
 
@@ -113,9 +115,11 @@ type ComputeEnvCreateInfo struct {
 	EnvId *string `json:"EnvId,omitempty" name:"EnvId"`
 
 	// 计算环境名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	EnvName *string `json:"EnvName,omitempty" name:"EnvName"`
 
 	// 计算环境描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	EnvDescription *string `json:"EnvDescription,omitempty" name:"EnvDescription"`
 
 	// 计算环境类型，仅支持“MANAGED”类型
@@ -125,15 +129,19 @@ type ComputeEnvCreateInfo struct {
 	EnvData *EnvData `json:"EnvData,omitempty" name:"EnvData"`
 
 	// 数据盘挂载选项
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	MountDataDisks []*MountDataDisk `json:"MountDataDisks,omitempty" name:"MountDataDisks" list`
 
 	// 输入映射
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	InputMappings []*InputMapping `json:"InputMappings,omitempty" name:"InputMappings" list`
 
 	// 授权信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Authentications []*Authentication `json:"Authentications,omitempty" name:"Authentications" list`
 
 	// 通知信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Notifications []*Notification `json:"Notifications,omitempty" name:"Notifications" list`
 
 	// 计算节点期望个数
@@ -325,10 +333,11 @@ type DataDisk struct {
 	DiskId *string `json:"DiskId,omitempty" name:"DiskId"`
 
 	// 数据盘是否随子机销毁。取值范围：
-	// <li>TRUE：子机销毁时，销毁数据盘
+	// <li>TRUE：子机销毁时，销毁数据盘，只支持按小时后付费云盘
 	// <li>FALSE：子机销毁时，保留数据盘<br>
 	// 默认取值：TRUE<br>
 	// 该参数目前仅用于 `RunInstances` 接口。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	DeleteWithInstance *bool `json:"DeleteWithInstance,omitempty" name:"DeleteWithInstance"`
 }
 
@@ -559,6 +568,7 @@ type DescribeComputeEnvCreateInfoResponse struct {
 		EnvName *string `json:"EnvName,omitempty" name:"EnvName"`
 
 		// 计算环境描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
 		EnvDescription *string `json:"EnvDescription,omitempty" name:"EnvDescription"`
 
 		// 计算环境类型，仅支持“MANAGED”类型
@@ -1173,7 +1183,7 @@ type EnhancedService struct {
 
 type EnvData struct {
 
-	// CVM实例类型，不能与InstanceTypes同时出现。
+	// CVM实例类型，不能与InstanceTypes和InstanceTypeOptions同时出现。
 	InstanceType *string `json:"InstanceType,omitempty" name:"InstanceType"`
 
 	// CVM镜像ID
@@ -1209,8 +1219,11 @@ type EnvData struct {
 	// 实例的市场相关选项，如竞价实例相关参数
 	InstanceMarketOptions *InstanceMarketOptionsRequest `json:"InstanceMarketOptions,omitempty" name:"InstanceMarketOptions"`
 
-	// CVM实例类型列表，不能与InstanceType同时出现。指定该字段后，计算节点按照机型先后顺序依次尝试创建，直到实例创建成功，结束遍历过程。最多支持10个机型。
+	// CVM实例类型列表，不能与InstanceType和InstanceTypeOptions同时出现。指定该字段后，计算节点按照机型先后顺序依次尝试创建，直到实例创建成功，结束遍历过程。最多支持10个机型。
 	InstanceTypes []*string `json:"InstanceTypes,omitempty" name:"InstanceTypes" list`
+
+	// CVM实例机型配置。不能与InstanceType和InstanceTypes同时出现。
+	InstanceTypeOptions *InstanceTypeOptions `json:"InstanceTypeOptions,omitempty" name:"InstanceTypeOptions"`
 }
 
 type EnvVar struct {
@@ -1243,12 +1256,15 @@ type EventVar struct {
 type Externals struct {
 
 	// 释放地址
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	ReleaseAddress *bool `json:"ReleaseAddress,omitempty" name:"ReleaseAddress"`
 
 	// 不支持的网络类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	UnsupportNetworks []*string `json:"UnsupportNetworks,omitempty" name:"UnsupportNetworks" list`
 
 	// HDD本地存储属性
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	StorageBlockAttr *StorageBlock `json:"StorageBlockAttr,omitempty" name:"StorageBlockAttr"`
 }
 
@@ -1276,11 +1292,11 @@ type InputMapping struct {
 type InstanceMarketOptionsRequest struct {
 	*tchttp.BaseRequest
 
-	// 市场选项类型，当前只支持取值：spot
-	MarketType *string `json:"MarketType,omitempty" name:"MarketType"`
-
 	// 竞价相关选项
 	SpotOptions *SpotMarketOptions `json:"SpotOptions,omitempty" name:"SpotOptions"`
+
+	// 市场选项类型，当前只支持取值：spot
+	MarketType *string `json:"MarketType,omitempty" name:"MarketType"`
 }
 
 func (r *InstanceMarketOptionsRequest) ToJsonString() string {
@@ -1310,6 +1326,18 @@ type InstanceTypeConfig struct {
 	InstanceFamily *string `json:"InstanceFamily,omitempty" name:"InstanceFamily"`
 }
 
+type InstanceTypeOptions struct {
+
+	// CPU核数。
+	CPU *uint64 `json:"CPU,omitempty" name:"CPU"`
+
+	// 内存值，单位GB。
+	Memory *uint64 `json:"Memory,omitempty" name:"Memory"`
+
+	// 实例机型类别，可选参数：“ALL”、“GENERAL_2”、“GENERAL_3”、“COMPUTE_2”和“COMPUTE_3”。默认值“ALL”。
+	InstanceCategories []*string `json:"InstanceCategories,omitempty" name:"InstanceCategories" list`
+}
+
 type InstanceTypeQuotaItem struct {
 
 	// 可用区。
@@ -1325,6 +1353,7 @@ type InstanceTypeQuotaItem struct {
 	NetworkCard *int64 `json:"NetworkCard,omitempty" name:"NetworkCard"`
 
 	// 扩展属性。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Externals *Externals `json:"Externals,omitempty" name:"Externals"`
 
 	// 实例的CPU核数，单位：核。
@@ -1359,20 +1388,27 @@ type InternetAccessible struct {
 
 	// 是否分配公网IP。取值范围：<br><li>TRUE：表示分配公网IP<br><li>FALSE：表示不分配公网IP<br><br>当公网带宽大于0Mbps时，可自由选择开通与否，默认开通公网IP；当公网带宽为0，则不允许分配公网IP。
 	PublicIpAssigned *bool `json:"PublicIpAssigned,omitempty" name:"PublicIpAssigned"`
+
+	// 带宽包ID。可通过[`DescribeBandwidthPackages`](https://cloud.tencent.com/document/api/215/19209)接口返回值中的`BandwidthPackageId`获取。
+	BandwidthPackageId *string `json:"BandwidthPackageId,omitempty" name:"BandwidthPackageId"`
 }
 
 type ItemPrice struct {
 
 	// 后续单价，单位：元。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	UnitPrice *float64 `json:"UnitPrice,omitempty" name:"UnitPrice"`
 
 	// 后续计价单元，可取值范围： <br><li>HOUR：表示计价单元是按每小时来计算。当前涉及该计价单元的场景有：实例按小时后付费（POSTPAID_BY_HOUR）、带宽按小时后付费（BANDWIDTH_POSTPAID_BY_HOUR）：<br><li>GB：表示计价单元是按每GB来计算。当前涉及该计价单元的场景有：流量按小时后付费（TRAFFIC_POSTPAID_BY_HOUR）。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	ChargeUnit *string `json:"ChargeUnit,omitempty" name:"ChargeUnit"`
 
 	// 预支费用的原价，单位：元。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	OriginalPrice *float64 `json:"OriginalPrice,omitempty" name:"OriginalPrice"`
 
 	// 预支费用的折扣价，单位：元。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	DiscountPrice *float64 `json:"DiscountPrice,omitempty" name:"DiscountPrice"`
 }
 
@@ -1418,12 +1454,14 @@ type JobView struct {
 	Priority *int64 `json:"Priority,omitempty" name:"Priority"`
 
 	// 位置信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Placement *Placement `json:"Placement,omitempty" name:"Placement"`
 
 	// 创建时间
 	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
 
 	// 结束时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 
 	// 任务统计指标
@@ -1448,12 +1486,15 @@ type LocalDiskType struct {
 type LoginSettings struct {
 
 	// 实例登录密码。不同操作系统类型密码复杂度限制不一样，具体如下：<br><li>Linux实例密码必须8到16位，至少包括两项[a-z，A-Z]、[0-9] 和 [( ) ` ~ ! @ # $ % ^ & * - + = | { } [ ] : ; ' , . ? / ]中的特殊符号。<br><li>Windows实例密码必须12到16位，至少包括三项[a-z]，[A-Z]，[0-9] 和 [( ) ` ~ ! @ # $ % ^ & * - + = { } [ ] : ; ' , . ? /]中的特殊符号。<br><br>若不指定该参数，则由系统随机生成密码，并通过站内信方式通知到用户。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Password *string `json:"Password,omitempty" name:"Password"`
 
 	// 密钥ID列表。关联密钥后，就可以通过对应的私钥来访问实例；KeyId可通过接口DescribeKeyPairs获取，密钥与密码不能同时指定，同时Windows操作系统不支持指定密钥。当前仅支持购买的时候指定一个密钥。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	KeyIds []*string `json:"KeyIds,omitempty" name:"KeyIds" list`
 
 	// 保持镜像的原始设置。该参数与Password或KeyIds.N不能同时指定。只有使用自定义镜像、共享镜像或外部导入镜像创建实例时才能指定该参数为TRUE。取值范围：<br><li>TRUE：表示保持镜像的登录设置<br><li>FALSE：表示不保持镜像的登录设置<br><br>默认取值：FALSE。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	KeepImageLogin *string `json:"KeepImageLogin,omitempty" name:"KeepImageLogin"`
 }
 
@@ -1721,12 +1762,15 @@ type SpotMarketOptions struct {
 type StorageBlock struct {
 
 	// HDD本地存储类型，值为：LOCAL_PRO.
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Type *string `json:"Type,omitempty" name:"Type"`
 
 	// HDD本地存储的最小容量
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	MinSize *int64 `json:"MinSize,omitempty" name:"MinSize"`
 
 	// HDD本地存储的最大容量
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	MaxSize *int64 `json:"MaxSize,omitempty" name:"MaxSize"`
 }
 
@@ -1831,6 +1875,9 @@ type Task struct {
 
 	// 任务启动后的超时时间，单位秒，默认为86400秒
 	Timeout *uint64 `json:"Timeout,omitempty" name:"Timeout"`
+
+	// 任务最大并发数限制，默认没有限制。
+	MaxConcurrentNum *uint64 `json:"MaxConcurrentNum,omitempty" name:"MaxConcurrentNum"`
 }
 
 type TaskInstanceLog struct {
@@ -1839,21 +1886,27 @@ type TaskInstanceLog struct {
 	TaskInstanceIndex *uint64 `json:"TaskInstanceIndex,omitempty" name:"TaskInstanceIndex"`
 
 	// 标准输出日志（Base64编码）
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	StdoutLog *string `json:"StdoutLog,omitempty" name:"StdoutLog"`
 
 	// 标准错误日志（Base64编码）
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	StderrLog *string `json:"StderrLog,omitempty" name:"StderrLog"`
 
 	// 标准输出重定向路径
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	StdoutRedirectPath *string `json:"StdoutRedirectPath,omitempty" name:"StdoutRedirectPath"`
 
 	// 标准错误重定向路径
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	StderrRedirectPath *string `json:"StderrRedirectPath,omitempty" name:"StderrRedirectPath"`
 
 	// 标准输出重定向文件名
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	StdoutRedirectFileName *string `json:"StdoutRedirectFileName,omitempty" name:"StdoutRedirectFileName"`
 
 	// 标准错误重定向文件名
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	StderrRedirectFileName *string `json:"StderrRedirectFileName,omitempty" name:"StderrRedirectFileName"`
 }
 
@@ -1893,24 +1946,29 @@ type TaskInstanceView struct {
 	TaskInstanceState *string `json:"TaskInstanceState,omitempty" name:"TaskInstanceState"`
 
 	// 应用程序执行结束的exit code
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExitCode *int64 `json:"ExitCode,omitempty" name:"ExitCode"`
 
 	// 任务实例状态原因，任务实例失败时，会记录失败原因
 	StateReason *string `json:"StateReason,omitempty" name:"StateReason"`
 
 	// 任务实例运行时所在计算节点（例如CVM）的InstanceId。任务实例未运行或者完结时，本字段为空。任务实例重试时，本字段会随之变化
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	ComputeNodeInstanceId *string `json:"ComputeNodeInstanceId,omitempty" name:"ComputeNodeInstanceId"`
 
 	// 创建时间
 	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
 
 	// 启动时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	LaunchTime *string `json:"LaunchTime,omitempty" name:"LaunchTime"`
 
 	// 开始运行时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	RunningTime *string `json:"RunningTime,omitempty" name:"RunningTime"`
 
 	// 结束时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 
 	// 重定向信息
@@ -1977,6 +2035,7 @@ type TaskView struct {
 	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
 
 	// 结束时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 }
 

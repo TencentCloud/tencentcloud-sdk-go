@@ -70,14 +70,23 @@ func (r *AddDelayLiveStreamResponse) FromJsonString(s string) error {
 type AddLiveDomainRequest struct {
 	*tchttp.BaseRequest
 
-	// 域名名称
+	// 域名名称。
 	DomainName *string `json:"DomainName,omitempty" name:"DomainName"`
 
-	// 域名类型。0-推流域名，1-播放域名
+	// 域名类型，
+	// 0：推流域名，
+	// 1：播放域名。
 	DomainType *uint64 `json:"DomainType,omitempty" name:"DomainType"`
 
-	// 拉流域名类型。1-国内；2-全球；3-境外
+	// 拉流域名类型：
+	// 1：国内，
+	// 2：全球，
+	// 3：境外。
 	PlayType *uint64 `json:"PlayType,omitempty" name:"PlayType"`
+
+	// 默认 0 ：普通直播，
+	// 1：慢直播。
+	IsDelayLive *int64 `json:"IsDelayLive,omitempty" name:"IsDelayLive"`
 }
 
 func (r *AddLiveDomainRequest) ToJsonString() string {
@@ -565,6 +574,10 @@ type CreateLiveRecordTemplateRequest struct {
 
 	// Aac录制参数，开启Aac录制时设置。
 	AacParam *RecordParam `json:"AacParam,omitempty" name:"AacParam"`
+
+	// 0：普通直播，
+	// 1：慢直播。
+	IsDelayLive *int64 `json:"IsDelayLive,omitempty" name:"IsDelayLive"`
 }
 
 func (r *CreateLiveRecordTemplateRequest) ToJsonString() string {
@@ -1730,6 +1743,9 @@ type DescribeLiveDomainsRequest struct {
 
 	// 取第几页，范围：1~100000。默认1
 	PageNum *uint64 `json:"PageNum,omitempty" name:"PageNum"`
+
+	// 0 普通直播 1慢直播 默认0
+	IsDelayLive *uint64 `json:"IsDelayLive,omitempty" name:"IsDelayLive"`
 }
 
 func (r *DescribeLiveDomainsRequest) ToJsonString() string {
@@ -1966,6 +1982,9 @@ func (r *DescribeLiveRecordTemplateResponse) FromJsonString(s string) error {
 
 type DescribeLiveRecordTemplatesRequest struct {
 	*tchttp.BaseRequest
+
+	// 是否属于慢直播模板
+	IsDelayLive *int64 `json:"IsDelayLive,omitempty" name:"IsDelayLive"`
 }
 
 func (r *DescribeLiveRecordTemplatesRequest) ToJsonString() string {
