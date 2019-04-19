@@ -51,6 +51,43 @@ type Backend struct {
 	RegisteredTime *string `json:"RegisteredTime,omitempty" name:"RegisteredTime"`
 }
 
+type BatchModifyTargetWeightRequest struct {
+	*tchttp.BaseRequest
+
+	// 负载均衡实例 ID
+	LoadBalancerId *string `json:"LoadBalancerId,omitempty" name:"LoadBalancerId"`
+
+	// 要批量修改权重的列表
+	ModifyList []*RsWeightRule `json:"ModifyList,omitempty" name:"ModifyList" list`
+}
+
+func (r *BatchModifyTargetWeightRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *BatchModifyTargetWeightRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type BatchModifyTargetWeightResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *BatchModifyTargetWeightResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *BatchModifyTargetWeightResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type CertificateInput struct {
 
 	// 认证类型，UNIDIRECTIONAL：单向认证，MUTUAL：双向认证
@@ -533,7 +570,7 @@ type DeregisterTargetsRequest struct {
 	// 监听器 ID
 	ListenerId *string `json:"ListenerId,omitempty" name:"ListenerId"`
 
-	// 要解绑的后端机器列表
+	// 要解绑的后端机器列表，数组长度最大支持20
 	Targets []*Target `json:"Targets,omitempty" name:"Targets" list`
 
 	// 转发规则的ID，当从七层转发规则解绑机器时，必须提供此参数或Domain+Url两者之一
@@ -833,6 +870,9 @@ type DescribeLoadBalancersRequest struct {
 
 	// 查询的负载均衡是否绑定后端服务器，0：没有绑定云服务器，1：绑定云服务器，-1：查询全部。
 	WithRs *int64 `json:"WithRs,omitempty" name:"WithRs"`
+
+	// 负载均衡实例所属网络，如 vpc-bhqkbhdx
+	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
 }
 
 func (r *DescribeLoadBalancersRequest) ToJsonString() string {
@@ -1009,7 +1049,7 @@ type Listener struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	HealthCheck *HealthCheck `json:"HealthCheck,omitempty" name:"HealthCheck"`
 
-	// 请求调度方式
+	// 请求的调度方式
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Scheduler *string `json:"Scheduler,omitempty" name:"Scheduler"`
 
@@ -1112,6 +1152,30 @@ type LoadBalancer struct {
 	// 负载均衡实例所在的子网（仅对内网VPC型LB有意义）
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
+
+	// 负载均衡实例的标签信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Tags []*TagInfo `json:"Tags,omitempty" name:"Tags" list`
+
+	// 负载均衡实例的安全组
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SecureGroups []*string `json:"SecureGroups,omitempty" name:"SecureGroups" list`
+
+	// 负载均衡实例绑定的后端设备的基本信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TargetRegionInfo *TargetRegionInfo `json:"TargetRegionInfo,omitempty" name:"TargetRegionInfo"`
+
+	// anycast负载均衡的发布域，对于非anycast的负载均衡，此字段返回为空字符串
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AnycastZone *string `json:"AnycastZone,omitempty" name:"AnycastZone"`
+
+	// IP版本，ipv4 | ipv6
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AddressIPVersion *string `json:"AddressIPVersion,omitempty" name:"AddressIPVersion"`
+
+	// 数值形式的私有网络 ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NumericalVpcId *uint64 `json:"NumericalVpcId,omitempty" name:"NumericalVpcId"`
 }
 
 type ModifyDomainRequest struct {
@@ -1412,7 +1476,7 @@ type RegisterTargetsRequest struct {
 	// 负载均衡监听器 ID
 	ListenerId *string `json:"ListenerId,omitempty" name:"ListenerId"`
 
-	// 要注册的后端机器列表
+	// 要注册的后端机器列表，数组长度最大支持20
 	Targets []*Target `json:"Targets,omitempty" name:"Targets" list`
 
 	// 转发规则的ID，当注册机器到七层转发规则时，必须提供此参数或Domain+Url两者之一
@@ -1489,6 +1553,40 @@ func (r *RegisterTargetsWithClassicalLBResponse) FromJsonString(s string) error 
     return json.Unmarshal([]byte(s), &r)
 }
 
+type RewriteTarget struct {
+
+	// 重定向目标的监听器ID
+	// 注意：此字段可能返回 null，表示无重定向。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TargetListenerId *string `json:"TargetListenerId,omitempty" name:"TargetListenerId"`
+
+	// 重定向目标的转发规则ID
+	// 注意：此字段可能返回 null，表示无重定向。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TargetLocationId *string `json:"TargetLocationId,omitempty" name:"TargetLocationId"`
+}
+
+type RsWeightRule struct {
+
+	// 负载均衡监听器 ID
+	ListenerId *string `json:"ListenerId,omitempty" name:"ListenerId"`
+
+	// 转发规则的ID
+	LocationId *string `json:"LocationId,omitempty" name:"LocationId"`
+
+	// 要修改权重的后端机器列表
+	Targets []*Target `json:"Targets,omitempty" name:"Targets" list`
+
+	// 目标规则的域名，提供LocationId参数时本参数不生效
+	Domain *string `json:"Domain,omitempty" name:"Domain"`
+
+	// 目标规则的URL，提供LocationId参数时本参数不生效
+	Url *string `json:"Url,omitempty" name:"Url"`
+
+	// 后端云服务器新的转发权重，取值范围：0~100。
+	Weight *int64 `json:"Weight,omitempty" name:"Weight"`
+}
+
 type RuleInput struct {
 
 	// 转发规则的域名。
@@ -1512,7 +1610,7 @@ type RuleInput struct {
 
 type RuleOutput struct {
 
-	// 转发规则的 ID，作为输入时无需此字段
+	// 转发规则的 ID
 	LocationId *string `json:"LocationId,omitempty" name:"LocationId"`
 
 	// 转发规则的域名。
@@ -1536,6 +1634,25 @@ type RuleOutput struct {
 
 	// 规则的请求转发方式
 	Scheduler *string `json:"Scheduler,omitempty" name:"Scheduler"`
+
+	// 转发规则所属的监听器 ID
+	ListenerId *string `json:"ListenerId,omitempty" name:"ListenerId"`
+
+	// 转发规则的重定向目标信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RewriteTarget *RewriteTarget `json:"RewriteTarget,omitempty" name:"RewriteTarget"`
+
+	// 是否开启gzip
+	HttpGzip *bool `json:"HttpGzip,omitempty" name:"HttpGzip"`
+
+	// 转发规则是否为自动创建
+	BeAutoCreated *bool `json:"BeAutoCreated,omitempty" name:"BeAutoCreated"`
+
+	// 是否作为默认域名
+	DefaultServer *bool `json:"DefaultServer,omitempty" name:"DefaultServer"`
+
+	// 是否开启Http2
+	Http2 *bool `json:"Http2,omitempty" name:"Http2"`
 }
 
 type RuleTargets struct {
@@ -1554,6 +1671,15 @@ type RuleTargets struct {
 	Targets []*Backend `json:"Targets,omitempty" name:"Targets" list`
 }
 
+type TagInfo struct {
+
+	// 标签的键
+	TagKey *string `json:"TagKey,omitempty" name:"TagKey"`
+
+	// 标签的值
+	TagValue *string `json:"TagValue,omitempty" name:"TagValue"`
+}
+
 type Target struct {
 
 	// 云服务器的唯一 ID，可通过 DescribeInstances 接口返回字段中的 unInstanceId 字段获取
@@ -1570,4 +1696,13 @@ type Target struct {
 
 	// 后端云服务器的转发权重，取值范围：0~100，默认为 10。
 	Weight *int64 `json:"Weight,omitempty" name:"Weight"`
+}
+
+type TargetRegionInfo struct {
+
+	// Target所属地域
+	Region *string `json:"Region,omitempty" name:"Region"`
+
+	// Target所属VPC网络
+	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
 }

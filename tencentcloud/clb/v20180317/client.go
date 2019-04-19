@@ -43,6 +43,32 @@ func NewClient(credential *common.Credential, region string, clientProfile *prof
 }
 
 
+func NewBatchModifyTargetWeightRequest() (request *BatchModifyTargetWeightRequest) {
+    request = &BatchModifyTargetWeightRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("clb", APIVersion, "BatchModifyTargetWeight")
+    return
+}
+
+func NewBatchModifyTargetWeightResponse() (response *BatchModifyTargetWeightResponse) {
+    response = &BatchModifyTargetWeightResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// BatchModifyTargetWeight接口用于批量修改监听器绑定的后端机器的转发权重，当前接口只支持应用型HTTP/HTTPS监听器。
+// 本接口为异步接口，本接口返回成功后需以返回的RequestID为入参，调用DescribeTaskStatus接口查询本次任务是否成功。
+func (c *Client) BatchModifyTargetWeight(request *BatchModifyTargetWeightRequest) (response *BatchModifyTargetWeightResponse, err error) {
+    if request == nil {
+        request = NewBatchModifyTargetWeightRequest()
+    }
+    response = NewBatchModifyTargetWeightResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateListenerRequest() (request *CreateListenerRequest) {
     request = &CreateListenerRequest{
         BaseRequest: &tchttp.BaseRequest{},

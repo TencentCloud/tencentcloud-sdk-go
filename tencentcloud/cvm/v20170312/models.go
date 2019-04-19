@@ -52,6 +52,9 @@ type AllocateHostsRequest struct {
 
 	// 购买CDH实例数量。
 	HostCount *uint64 `json:"HostCount,omitempty" name:"HostCount"`
+
+	// 标签描述列表。通过指定该参数可以同时绑定标签到相应的资源实例。
+	TagSpecification []*TagSpecification `json:"TagSpecification,omitempty" name:"TagSpecification" list`
 }
 
 func (r *AllocateHostsRequest) ToJsonString() string {
@@ -905,6 +908,47 @@ func (r *DescribeInstanceVncUrlResponse) ToJsonString() string {
 }
 
 func (r *DescribeInstanceVncUrlResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeInstancesOperationLimitRequest struct {
+	*tchttp.BaseRequest
+
+	// 按照一个或者多个实例ID查询，可通过[DescribeInstances](https://cloud.tencent.com/document/api/213/9388)API返回值中的InstanceId获取。实例ID形如：ins-xxxxxxxx。（此参数的具体格式可参考API[简介](https://cloud.tencent.com/document/api/213/15688)的id.N一节）。每次请求的实例的上限为100。
+	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds" list`
+
+	// 实例操作。
+	// <li> INSTANCE_DEGRADE：实例降配操作</li>
+	Operation *string `json:"Operation,omitempty" name:"Operation"`
+}
+
+func (r *DescribeInstancesOperationLimitRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeInstancesOperationLimitRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeInstancesOperationLimitResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 该参数表示调整配置操作（降配）限制次数查询。
+		InstanceOperationLimitSet []*OperationCountLimit `json:"InstanceOperationLimitSet,omitempty" name:"InstanceOperationLimitSet" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeInstancesOperationLimitResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeInstancesOperationLimitResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -2620,6 +2664,21 @@ func (r *ModifyKeyPairAttributeResponse) ToJsonString() string {
 
 func (r *ModifyKeyPairAttributeResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
+}
+
+type OperationCountLimit struct {
+
+	// 实例操作。
+	Operation *string `json:"Operation,omitempty" name:"Operation"`
+
+	// 实例ID。
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 当前已使用次数，如果返回值为-1表示该操作无次数限制。
+	CurrentCount *int64 `json:"CurrentCount,omitempty" name:"CurrentCount"`
+
+	// 操作次数最高额度，如果返回值为-1表示该操作无次数限制，如果返回值为0表示不支持调整配置。
+	LimitCount *int64 `json:"LimitCount,omitempty" name:"LimitCount"`
 }
 
 type OsVersion struct {

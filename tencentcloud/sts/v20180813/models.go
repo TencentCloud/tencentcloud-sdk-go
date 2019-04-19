@@ -29,7 +29,7 @@ type AssumeRoleRequest struct {
 	// 临时会话名称，由用户自定义名称
 	RoleSessionName *string `json:"RoleSessionName,omitempty" name:"RoleSessionName"`
 
-	// 指定临时证书的有效期，单位：秒，默认 1800 秒，最长可设定有效期为 7200 秒
+	// 指定临时证书的有效期，单位：秒，默认 7200 秒，最长可设定有效期为 43200 秒
 	DurationSeconds *uint64 `json:"DurationSeconds,omitempty" name:"DurationSeconds"`
 }
 

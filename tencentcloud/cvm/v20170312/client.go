@@ -611,6 +611,33 @@ func (c *Client) DescribeInstances(request *DescribeInstancesRequest) (response 
     return
 }
 
+func NewDescribeInstancesOperationLimitRequest() (request *DescribeInstancesOperationLimitRequest) {
+    request = &DescribeInstancesOperationLimitRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cvm", APIVersion, "DescribeInstancesOperationLimit")
+    return
+}
+
+func NewDescribeInstancesOperationLimitResponse() (response *DescribeInstancesOperationLimitResponse) {
+    response = &DescribeInstancesOperationLimitResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（DescribeInstancesOperationLimit）用于查询实例操作限制。
+// 
+// * 目前支持调整配置操作限制次数查询。
+func (c *Client) DescribeInstancesOperationLimit(request *DescribeInstancesOperationLimitRequest) (response *DescribeInstancesOperationLimitResponse, err error) {
+    if request == nil {
+        request = NewDescribeInstancesOperationLimitRequest()
+    }
+    response = NewDescribeInstancesOperationLimitResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeInstancesStatusRequest() (request *DescribeInstancesStatusRequest) {
     request = &DescribeInstancesStatusRequest{
         BaseRequest: &tchttp.BaseRequest{},
