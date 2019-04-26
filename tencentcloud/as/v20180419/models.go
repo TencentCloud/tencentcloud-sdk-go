@@ -72,6 +72,8 @@ type ActivtyRelatedInstance struct {
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
 	// 实例在伸缩活动中的状态。取值如下：
+	// <li>INIT：初始化中
+	// <li>RUNNING：实例操作中
 	// <li>SUCCESSFUL：活动成功
 	// <li>FAILED：活动失败
 	InstanceStatus *string `json:"InstanceStatus,omitempty" name:"InstanceStatus"`
@@ -205,6 +207,49 @@ type AutoScalingNotification struct {
 
 	// 事件通知ID。
 	AutoScalingNotificationId *string `json:"AutoScalingNotificationId,omitempty" name:"AutoScalingNotificationId"`
+}
+
+type CompleteLifecycleActionRequest struct {
+	*tchttp.BaseRequest
+
+	// 生命周期挂钩ID
+	LifecycleHookId *string `json:"LifecycleHookId,omitempty" name:"LifecycleHookId"`
+
+	// 生命周期动作的结果，取值范围为“CONTINUE”或“ABANDON”
+	LifecycleActionResult *string `json:"LifecycleActionResult,omitempty" name:"LifecycleActionResult"`
+
+	// 实例ID，“InstanceId”和“LifecycleActionToken”必须填充其中一个
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// “InstanceId”和“LifecycleActionToken”必须填充其中一个
+	LifecycleActionToken *string `json:"LifecycleActionToken,omitempty" name:"LifecycleActionToken"`
+}
+
+func (r *CompleteLifecycleActionRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CompleteLifecycleActionRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CompleteLifecycleActionResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CompleteLifecycleActionResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CompleteLifecycleActionResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
 }
 
 type CreateAutoScalingGroupRequest struct {
@@ -351,6 +396,9 @@ type CreateLaunchConfigurationRequest struct {
 	// 实例类型不可用的常见原因包括该实例类型售罄、对应云盘售罄等。
 	// 如果 InstanceTypes 中一款机型不存在或者已下线，则无论 InstanceTypesCheckPolicy 采用何种取值，都会校验报错。
 	InstanceTypesCheckPolicy *string `json:"InstanceTypesCheckPolicy,omitempty" name:"InstanceTypesCheckPolicy"`
+
+	// 标签列表。通过指定该参数，可以为扩容的实例绑定标签。最多支持指定10个标签。
+	InstanceTags []*InstanceTag `json:"InstanceTags,omitempty" name:"InstanceTags" list`
 }
 
 func (r *CreateLaunchConfigurationRequest) ToJsonString() string {
@@ -380,6 +428,61 @@ func (r *CreateLaunchConfigurationResponse) ToJsonString() string {
 }
 
 func (r *CreateLaunchConfigurationResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateLifecycleHookRequest struct {
+	*tchttp.BaseRequest
+
+	// 伸缩组ID
+	AutoScalingGroupId *string `json:"AutoScalingGroupId,omitempty" name:"AutoScalingGroupId"`
+
+	// 生命周期挂钩名称
+	LifecycleHookName *string `json:"LifecycleHookName,omitempty" name:"LifecycleHookName"`
+
+	// 进行生命周期挂钩的场景，取值范围包括“INSTANCE_LAUNCHING”和“INSTANCE_TERMINATING”
+	LifecycleTransition *string `json:"LifecycleTransition,omitempty" name:"LifecycleTransition"`
+
+	// 定义伸缩组在生命周期挂钩超时的情况下应采取的操作，取值范围是“CONTINUE”或“ABANDON”，默认值为“CONTINUE”
+	DefaultResult *string `json:"DefaultResult,omitempty" name:"DefaultResult"`
+
+	// 生命周期挂钩超时之前可以经过的最长时间（以秒为单位），范围从30到3600秒，默认值为300秒
+	HeartbeatTimeout *int64 `json:"HeartbeatTimeout,omitempty" name:"HeartbeatTimeout"`
+
+	// 弹性伸缩向通知目标发送的附加信息，默认值为''
+	NotificationMetadata *string `json:"NotificationMetadata,omitempty" name:"NotificationMetadata"`
+
+	// 通知目标
+	NotificationTarget *NotificationTarget `json:"NotificationTarget,omitempty" name:"NotificationTarget"`
+}
+
+func (r *CreateLifecycleHookRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateLifecycleHookRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateLifecycleHookResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 生命周期挂钩ID
+		LifecycleHookId *string `json:"LifecycleHookId,omitempty" name:"LifecycleHookId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateLifecycleHookResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateLifecycleHookResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -429,6 +532,73 @@ func (r *CreateNotificationConfigurationResponse) ToJsonString() string {
 }
 
 func (r *CreateNotificationConfigurationResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreatePaiInstanceRequest struct {
+	*tchttp.BaseRequest
+
+	// PAI实例的域名。
+	DomainName *string `json:"DomainName,omitempty" name:"DomainName"`
+
+	// 公网带宽相关信息设置。
+	InternetAccessible *InternetAccessible `json:"InternetAccessible,omitempty" name:"InternetAccessible"`
+
+	// 启动脚本的base64编码字符串。
+	InitScript *string `json:"InitScript,omitempty" name:"InitScript"`
+
+	// 可用区列表。
+	Zones []*string `json:"Zones,omitempty" name:"Zones" list`
+
+	// VpcId。
+	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
+
+	// 子网列表。
+	SubnetIds []*string `json:"SubnetIds,omitempty" name:"SubnetIds" list`
+
+	// 实例显示名称。
+	InstanceName *string `json:"InstanceName,omitempty" name:"InstanceName"`
+
+	// 实例机型列表。
+	InstanceTypes []*string `json:"InstanceTypes,omitempty" name:"InstanceTypes" list`
+
+	// 实例登录设置。
+	LoginSettings *LoginSettings `json:"LoginSettings,omitempty" name:"LoginSettings"`
+
+	// 实例计费类型。
+	InstanceChargeType *string `json:"InstanceChargeType,omitempty" name:"InstanceChargeType"`
+
+	// 预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月实例的购买时长、是否设置自动续费等属性。若指定实例的付费模式为预付费则该参数必传。
+	InstanceChargePrepaid *InstanceChargePrepaid `json:"InstanceChargePrepaid,omitempty" name:"InstanceChargePrepaid"`
+}
+
+func (r *CreatePaiInstanceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreatePaiInstanceRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreatePaiInstanceResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 当通过本接口来创建实例时会返回该参数，表示一个或多个实例`ID`。返回实例`ID`列表并不代表实例创建成功，可根据 [DescribeInstances](https://cloud.tencent.com/document/api/213/15728) 接口查询返回的InstancesSet中对应实例的`ID`的状态来判断创建是否完成；如果实例状态由“准备中”变为“正在运行”，则为创建成功。
+		InstanceIdSet []*string `json:"InstanceIdSet,omitempty" name:"InstanceIdSet" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreatePaiInstanceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreatePaiInstanceResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -625,6 +795,40 @@ func (r *DeleteLaunchConfigurationResponse) ToJsonString() string {
 }
 
 func (r *DeleteLaunchConfigurationResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteLifecycleHookRequest struct {
+	*tchttp.BaseRequest
+
+	// 生命周期挂钩ID
+	LifecycleHookId *string `json:"LifecycleHookId,omitempty" name:"LifecycleHookId"`
+}
+
+func (r *DeleteLifecycleHookRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteLifecycleHookRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteLifecycleHookResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DeleteLifecycleHookResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteLifecycleHookResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -836,7 +1040,7 @@ func (r *DescribeAutoScalingActivitiesResponse) FromJsonString(s string) error {
 type DescribeAutoScalingGroupsRequest struct {
 	*tchttp.BaseRequest
 
-	// 按照一个或者多个伸缩组ID查询。伸缩组ID形如：`asg-nkdwoui0`。每次请求的上限为100。参数不支持同时指定`AutoScalingGroups`和`Filters`。
+	// 按照一个或者多个伸缩组ID查询。伸缩组ID形如：`asg-nkdwoui0`。每次请求的上限为100。参数不支持同时指定`AutoScalingGroupIds`和`Filters`。
 	AutoScalingGroupIds []*string `json:"AutoScalingGroupIds,omitempty" name:"AutoScalingGroupIds" list`
 
 	// 过滤条件。
@@ -990,6 +1194,63 @@ func (r *DescribeLaunchConfigurationsResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeLifecycleHooksRequest struct {
+	*tchttp.BaseRequest
+
+	// 按照一个或者多个生命周期挂钩ID查询。生命周期挂钩ID形如：`ash-8azjzxcl`。每次请求的上限为100。参数不支持同时指定`LifecycleHookIds`和`Filters`。
+	LifecycleHookIds []*string `json:"LifecycleHookIds,omitempty" name:"LifecycleHookIds" list`
+
+	// 过滤条件。
+	// <li> lifecycle-hook-id - String - 是否必填：否 -（过滤条件）按照生命周期挂钩ID过滤。</li>
+	// <li> lifecycle-hook-name - String - 是否必填：否 -（过滤条件）按照生命周期挂钩名称过滤。</li>
+	// <li> auto-scaling-group-id - String - 是否必填：否 -（过滤条件）按照伸缩组ID过滤。</li>
+	// 过滤条件。
+	// <li> lifecycle-hook-id - String - 是否必填：否 -（过滤条件）按照生命周期挂钩ID过滤。</li>
+	// <li> lifecycle-hook-name - String - 是否必填：否 -（过滤条件）按照生命周期挂钩名称过滤。</li>
+	// <li> auto-scaling-group-id - String - 是否必填：否 -（过滤条件）按照伸缩组ID过滤。</li>
+	// 每次请求的`Filters`的上限为10，`Filter.Values`的上限为5。参数不支持同时指定`LifecycleHookIds `和`Filters`。
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+
+	// 返回数量，默认为20，最大值为100。关于`Limit`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 偏移量，默认为0。关于`Offset`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+}
+
+func (r *DescribeLifecycleHooksRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeLifecycleHooksRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeLifecycleHooksResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 生命周期挂钩数组
+		LifecycleHookSet []*LifecycleHook `json:"LifecycleHookSet,omitempty" name:"LifecycleHookSet" list`
+
+		// 总体数量
+		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeLifecycleHooksResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeLifecycleHooksResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeNotificationConfigurationsRequest struct {
 	*tchttp.BaseRequest
 
@@ -1039,6 +1300,55 @@ func (r *DescribeNotificationConfigurationsResponse) ToJsonString() string {
 }
 
 func (r *DescribeNotificationConfigurationsResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribePaiInstancesRequest struct {
+	*tchttp.BaseRequest
+
+	// 依据PAI实例的实例ID进行查询。
+	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds" list`
+
+	// 过滤条件。
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+
+	// 返回数量，默认为20，最大值为100。
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 偏移量，默认为0。
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+}
+
+func (r *DescribePaiInstancesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribePaiInstancesRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribePaiInstancesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 符合条件的PAI实例数量
+		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// PAI实例详细信息
+		PaiInstanceSet []*PaiInstance `json:"PaiInstanceSet,omitempty" name:"PaiInstanceSet" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribePaiInstancesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribePaiInstancesResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -1321,6 +1631,15 @@ type Instance struct {
 	InstanceType *string `json:"InstanceType,omitempty" name:"InstanceType"`
 }
 
+type InstanceChargePrepaid struct {
+
+	// 购买实例的时长，单位：月。取值范围：1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 24, 36。
+	Period *int64 `json:"Period,omitempty" name:"Period"`
+
+	// 自动续费标识。取值范围：<br><li>NOTIFY_AND_AUTO_RENEW：通知过期且自动续费<br><li>NOTIFY_AND_MANUAL_RENEW：通知过期不自动续费<br><li>DISABLE_NOTIFY_AND_MANUAL_RENEW：不通知过期不自动续费<br><br>默认取值：NOTIFY_AND_MANUAL_RENEW。若该参数指定为NOTIFY_AND_AUTO_RENEW，在账户余额充足的情况下，实例到期后将按月自动续费。
+	RenewFlag *string `json:"RenewFlag,omitempty" name:"RenewFlag"`
+}
+
 type InstanceMarketOptionsRequest struct {
 	*tchttp.BaseRequest
 
@@ -1339,6 +1658,15 @@ func (r *InstanceMarketOptionsRequest) ToJsonString() string {
 
 func (r *InstanceMarketOptionsRequest) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
+}
+
+type InstanceTag struct {
+
+	// 标签键
+	Key *string `json:"Key,omitempty" name:"Key"`
+
+	// 标签值
+	Value *string `json:"Value,omitempty" name:"Value"`
 }
 
 type InternetAccessible struct {
@@ -1415,6 +1743,39 @@ type LaunchConfiguration struct {
 
 	// 实例机型列表。
 	InstanceTypes []*string `json:"InstanceTypes,omitempty" name:"InstanceTypes" list`
+
+	// 标签列表。
+	InstanceTags []*InstanceTag `json:"InstanceTags,omitempty" name:"InstanceTags" list`
+}
+
+type LifecycleHook struct {
+
+	// 生命周期挂钩ID
+	LifecycleHookId *string `json:"LifecycleHookId,omitempty" name:"LifecycleHookId"`
+
+	// 生命周期挂钩名称
+	LifecycleHookName *string `json:"LifecycleHookName,omitempty" name:"LifecycleHookName"`
+
+	// 伸缩组ID
+	AutoScalingGroupId *string `json:"AutoScalingGroupId,omitempty" name:"AutoScalingGroupId"`
+
+	// 生命周期挂钩默认结果
+	DefaultResult *string `json:"DefaultResult,omitempty" name:"DefaultResult"`
+
+	// 生命周期挂钩等待超时时间
+	HeartbeatTimeout *int64 `json:"HeartbeatTimeout,omitempty" name:"HeartbeatTimeout"`
+
+	// 生命周期挂钩适用场景
+	LifecycleTransition *string `json:"LifecycleTransition,omitempty" name:"LifecycleTransition"`
+
+	// 通知目标的附加信息
+	NotificationMetadata *string `json:"NotificationMetadata,omitempty" name:"NotificationMetadata"`
+
+	// 创建时间
+	CreatedTime *string `json:"CreatedTime,omitempty" name:"CreatedTime"`
+
+	// 通知目标
+	NotificationTarget *string `json:"NotificationTarget,omitempty" name:"NotificationTarget"`
 }
 
 type LimitedLoginSettings struct {
@@ -1829,6 +2190,66 @@ func (r *ModifyScheduledActionResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type NotificationTarget struct {
+
+	// 目标类型，取值范围包括`CMQ_QUEUE`、`CMQ_TOPIC`。
+	// <li> CMQ_QUEUE，指腾讯云消息队列-队列模型。</li>
+	// <li> CMQ_TOPIC，指腾讯云消息队列-主题模型。</li>
+	TargetType *string `json:"TargetType,omitempty" name:"TargetType"`
+
+	// 队列名称，如果`TargetType`取值为`CMQ_QUEUE`，则本字段必填。
+	QueueName *string `json:"QueueName,omitempty" name:"QueueName"`
+
+	// 主题名称，如果`TargetType`取值为`CMQ_TOPIC`，则本字段必填。
+	TopicName *string `json:"TopicName,omitempty" name:"TopicName"`
+}
+
+type PaiInstance struct {
+
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 实例域名
+	DomainName *string `json:"DomainName,omitempty" name:"DomainName"`
+}
+
+type PreviewPaiDomainNameRequest struct {
+	*tchttp.BaseRequest
+
+	// 域名类型
+	DomainNameType *string `json:"DomainNameType,omitempty" name:"DomainNameType"`
+}
+
+func (r *PreviewPaiDomainNameRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *PreviewPaiDomainNameRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type PreviewPaiDomainNameResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 可用的PAI域名
+		DomainName *string `json:"DomainName,omitempty" name:"DomainName"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *PreviewPaiDomainNameResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *PreviewPaiDomainNameResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type RemoveInstancesRequest struct {
 	*tchttp.BaseRequest
 
@@ -2008,4 +2429,56 @@ type TargetAttribute struct {
 
 	// 权重
 	Weight *uint64 `json:"Weight,omitempty" name:"Weight"`
+}
+
+type UpgradeLifecycleHookRequest struct {
+	*tchttp.BaseRequest
+
+	// 生命周期挂钩ID
+	LifecycleHookId *string `json:"LifecycleHookId,omitempty" name:"LifecycleHookId"`
+
+	// 生命周期挂钩名称
+	LifecycleHookName *string `json:"LifecycleHookName,omitempty" name:"LifecycleHookName"`
+
+	// 进行生命周期挂钩的场景，取值范围包括“INSTANCE_LAUNCHING”和“INSTANCE_TERMINATING”
+	LifecycleTransition *string `json:"LifecycleTransition,omitempty" name:"LifecycleTransition"`
+
+	// 定义伸缩组在生命周期挂钩超时的情况下应采取的操作，取值范围是“CONTINUE”或“ABANDON”，默认值为“CONTINUE”
+	DefaultResult *string `json:"DefaultResult,omitempty" name:"DefaultResult"`
+
+	// 生命周期挂钩超时之前可以经过的最长时间（以秒为单位），范围从30到3600秒，默认值为300秒
+	HeartbeatTimeout *int64 `json:"HeartbeatTimeout,omitempty" name:"HeartbeatTimeout"`
+
+	// 弹性伸缩向通知目标发送的附加信息，默认值为''
+	NotificationMetadata *string `json:"NotificationMetadata,omitempty" name:"NotificationMetadata"`
+
+	// 通知目标
+	NotificationTarget *NotificationTarget `json:"NotificationTarget,omitempty" name:"NotificationTarget"`
+}
+
+func (r *UpgradeLifecycleHookRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *UpgradeLifecycleHookRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type UpgradeLifecycleHookResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *UpgradeLifecycleHookResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *UpgradeLifecycleHookResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
 }

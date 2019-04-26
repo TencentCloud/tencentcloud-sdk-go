@@ -121,6 +121,31 @@ func (c *Client) ConfirmEvents(request *ConfirmEventsRequest) (response *Confirm
     return
 }
 
+func NewCreateAIAnalysisTemplateRequest() (request *CreateAIAnalysisTemplateRequest) {
+    request = &CreateAIAnalysisTemplateRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vod", APIVersion, "CreateAIAnalysisTemplate")
+    return
+}
+
+func NewCreateAIAnalysisTemplateResponse() (response *CreateAIAnalysisTemplateResponse) {
+    response = &CreateAIAnalysisTemplateResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 创建用户自定义视频内容分析模板，数量上限：50。
+func (c *Client) CreateAIAnalysisTemplate(request *CreateAIAnalysisTemplateRequest) (response *CreateAIAnalysisTemplateResponse, err error) {
+    if request == nil {
+        request = NewCreateAIAnalysisTemplateRequest()
+    }
+    response = NewCreateAIAnalysisTemplateResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateClassRequest() (request *CreateClassRequest) {
     request = &CreateClassRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -220,6 +245,33 @@ func (c *Client) CreateWatermarkTemplate(request *CreateWatermarkTemplateRequest
         request = NewCreateWatermarkTemplateRequest()
     }
     response = NewCreateWatermarkTemplateResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteAIAnalysisTemplateRequest() (request *DeleteAIAnalysisTemplateRequest) {
+    request = &DeleteAIAnalysisTemplateRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vod", APIVersion, "DeleteAIAnalysisTemplate")
+    return
+}
+
+func NewDeleteAIAnalysisTemplateResponse() (response *DeleteAIAnalysisTemplateResponse) {
+    response = &DeleteAIAnalysisTemplateResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 删除用户自定义视频内容分析模板。
+// 
+// 注意：模板 ID 为 10000 以下的为系统预置模板，不允许删除。
+func (c *Client) DeleteAIAnalysisTemplate(request *DeleteAIAnalysisTemplateRequest) (response *DeleteAIAnalysisTemplateResponse, err error) {
+    if request == nil {
+        request = NewDeleteAIAnalysisTemplateRequest()
+    }
+    response = NewDeleteAIAnalysisTemplateResponse()
     err = c.Send(request, response)
     return
 }
@@ -347,6 +399,31 @@ func (c *Client) DeleteWatermarkTemplate(request *DeleteWatermarkTemplateRequest
         request = NewDeleteWatermarkTemplateRequest()
     }
     response = NewDeleteWatermarkTemplateResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeAIAnalysisTemplatesRequest() (request *DescribeAIAnalysisTemplatesRequest) {
+    request = &DescribeAIAnalysisTemplatesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vod", APIVersion, "DescribeAIAnalysisTemplates")
+    return
+}
+
+func NewDescribeAIAnalysisTemplatesResponse() (response *DescribeAIAnalysisTemplatesResponse) {
+    response = &DescribeAIAnalysisTemplatesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 根据视频内容分析模板唯一标识，获取视频内容分析模板详情列表。返回结果包含符合条件的所有用户自定义视频内容分析模板及[系统预置视频内容分析模板]
+func (c *Client) DescribeAIAnalysisTemplates(request *DescribeAIAnalysisTemplatesRequest) (response *DescribeAIAnalysisTemplatesResponse, err error) {
+    if request == nil {
+        request = NewDescribeAIAnalysisTemplatesRequest()
+    }
+    response = NewDescribeAIAnalysisTemplatesResponse()
     err = c.Send(request, response)
     return
 }
@@ -585,6 +662,33 @@ func (c *Client) LiveRealTimeClip(request *LiveRealTimeClipRequest) (response *L
     return
 }
 
+func NewModifyAIAnalysisTemplateRequest() (request *ModifyAIAnalysisTemplateRequest) {
+    request = &ModifyAIAnalysisTemplateRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vod", APIVersion, "ModifyAIAnalysisTemplate")
+    return
+}
+
+func NewModifyAIAnalysisTemplateResponse() (response *ModifyAIAnalysisTemplateResponse) {
+    response = &ModifyAIAnalysisTemplateResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 修改用户自定义视频内容分析模板。
+// 
+// 注意：模板 ID 10000 以下的为系统预置模板，不允许修改。
+func (c *Client) ModifyAIAnalysisTemplate(request *ModifyAIAnalysisTemplateRequest) (response *ModifyAIAnalysisTemplateResponse, err error) {
+    if request == nil {
+        request = NewModifyAIAnalysisTemplateRequest()
+    }
+    response = NewModifyAIAnalysisTemplateResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyClassRequest() (request *ModifyClassRequest) {
     request = &ModifyClassRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -765,7 +869,7 @@ func NewPullEventsResponse() (response *PullEventsResponse) {
 // * 该接口用于从点播服务端获取事件通知，详见[服务端事件通知](https://cloud.tencent.com/document/product/266/7829)；
 // * 接口为长轮询模式，即：如果服务端存在未消费事件，则立即返回给请求方；如果服务端没有未消费事件，则后台会将请求挂起，直到有新的事件产生为止；
 // * 请求最多挂起 5 秒，建议请求方将超时时间设置为 10 秒；
-// * 若该接口有事件返回，调用方必须再调用[确认事件通知]接口，确认事件通知已经处理，否则该事件通知后续会再次被拉取到。
+// * 若该接口有事件返回，调用方必须再调用[确认事件通知](https://cloud.tencent.com/document/product/266/33434)接口，确认事件通知已经处理，否则该事件通知后续会再次被拉取到。
 func (c *Client) PullEvents(request *PullEventsRequest) (response *PullEventsResponse, err error) {
     if request == nil {
         request = NewPullEventsRequest()

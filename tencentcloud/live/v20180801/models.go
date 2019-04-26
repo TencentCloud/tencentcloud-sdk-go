@@ -517,14 +517,15 @@ type CreateLiveRecordRuleRequest struct {
 	// 推流域名。
 	DomainName *string `json:"DomainName,omitempty" name:"DomainName"`
 
+	// 模板Id。
+	TemplateId *int64 `json:"TemplateId,omitempty" name:"TemplateId"`
+
 	// 推流路径。
 	AppName *string `json:"AppName,omitempty" name:"AppName"`
 
 	// 流名称。
+	// 注：如果本参数设置为非空字符串，规则将只对此推流起作用。
 	StreamName *string `json:"StreamName,omitempty" name:"StreamName"`
-
-	// 模板Id。
-	TemplateId *int64 `json:"TemplateId,omitempty" name:"TemplateId"`
 }
 
 func (r *CreateLiveRecordRuleRequest) ToJsonString() string {
@@ -578,6 +579,9 @@ type CreateLiveRecordTemplateRequest struct {
 	// 0：普通直播，
 	// 1：慢直播。
 	IsDelayLive *int64 `json:"IsDelayLive,omitempty" name:"IsDelayLive"`
+
+	// HLS专属录制参数。
+	HlsSpecialParam *HlsSpecialParam `json:"HlsSpecialParam,omitempty" name:"HlsSpecialParam"`
 }
 
 func (r *CreateLiveRecordTemplateRequest) ToJsonString() string {
@@ -3096,11 +3100,11 @@ func (r *DescribeStreamDayPlayInfoListResponse) FromJsonString(s string) error {
 type DescribeStreamPlayInfoListRequest struct {
 	*tchttp.BaseRequest
 
-	// 开始时间，北京时间，
+	// 开始时间，北京时间，格式为yyyy-mm-dd HH:MM:SS，
 	// 当前时间 和 开始时间 间隔不超过30天。
 	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
 
-	// 结束时间，北京时间，
+	// 结束时间，北京时间，格式为yyyy-mm-dd HH:MM:SS，
 	// 结束时间 和 开始时间  必须在同一天内。
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 
@@ -3111,6 +3115,10 @@ type DescribeStreamPlayInfoListRequest struct {
 	// 流名称，精确匹配。
 	// 若不填，则为查询总体播放数据。
 	StreamName *string `json:"StreamName,omitempty" name:"StreamName"`
+
+	// 播放路径，精确匹配，不支持。
+	// 若不填，则为查询总体播放数据。
+	AppName *string `json:"AppName,omitempty" name:"AppName"`
 }
 
 func (r *DescribeStreamPlayInfoListRequest) ToJsonString() string {
@@ -3366,6 +3374,12 @@ type ForbidStreamInfo struct {
 
 	// 禁推过期时间。
 	ExpireTime *string `json:"ExpireTime,omitempty" name:"ExpireTime"`
+}
+
+type HlsSpecialParam struct {
+
+	// HLS续流超时时间。
+	FlowContinueDuration *uint64 `json:"FlowContinueDuration,omitempty" name:"FlowContinueDuration"`
 }
 
 type LogInfo struct {
@@ -4147,6 +4161,9 @@ type RecordTemplateInfo struct {
 	// 0：普通直播，
 	// 1：慢直播。
 	IsDelayLive *int64 `json:"IsDelayLive,omitempty" name:"IsDelayLive"`
+
+	// HLS录制定制参数
+	HlsSpecialParam *HlsSpecialParam `json:"HlsSpecialParam,omitempty" name:"HlsSpecialParam"`
 }
 
 type ResumeDelayLiveStreamRequest struct {

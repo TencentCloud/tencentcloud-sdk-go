@@ -43,6 +43,9 @@ type GetInvokeTxRequest struct {
 
 	// 事务ID
 	TxId *string `json:"TxId,omitempty" name:"TxId"`
+
+	// 调用合约的组织名称，可以在组织管理列表中获取当前组织的名称
+	GroupName *string `json:"GroupName,omitempty" name:"GroupName"`
 }
 
 func (r *GetInvokeTxRequest) ToJsonString() string {
@@ -101,6 +104,9 @@ type InvokeRequest struct {
 
 	// 该笔交易需要调用的智能合约中的函数名称
 	FuncName *string `json:"FuncName,omitempty" name:"FuncName"`
+
+	// 调用合约的组织名称，可以在组织管理列表中获取当前组织的名称
+	GroupName *string `json:"GroupName,omitempty" name:"GroupName"`
 
 	// 被调用的函数参数列表
 	Args []*string `json:"Args,omitempty" name:"Args" list`
@@ -174,6 +180,9 @@ type QueryRequest struct {
 
 	// 该笔交易查询需要调用的智能合约中的函数名称
 	FuncName *string `json:"FuncName,omitempty" name:"FuncName"`
+
+	// 调用合约的组织名称，可以在组织管理列表中获取当前组织的名称
+	GroupName *string `json:"GroupName,omitempty" name:"GroupName"`
 
 	// 被调用的函数参数列表
 	Args []*string `json:"Args,omitempty" name:"Args" list`

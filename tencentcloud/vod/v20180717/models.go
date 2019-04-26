@@ -20,6 +20,40 @@ import (
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
+type AIAnalysisTemplateItem struct {
+
+	// 智能分析模板唯一标识。
+	Definition *int64 `json:"Definition,omitempty" name:"Definition"`
+
+	// 智能分析模板名称。
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 智能分析模板描述信息。
+	Comment *string `json:"Comment,omitempty" name:"Comment"`
+
+	// 智能分类任务控制参数。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClassificationConfigure *ClassificationConfigureInfo `json:"ClassificationConfigure,omitempty" name:"ClassificationConfigure"`
+
+	// 智能标签任务控制参数。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TagConfigure *TagConfigureInfo `json:"TagConfigure,omitempty" name:"TagConfigure"`
+
+	// 智能封面任务控制参数。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CoverConfigure *CoverConfigureInfo `json:"CoverConfigure,omitempty" name:"CoverConfigure"`
+
+	// 智能按帧标签任务控制参数。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FrameTagConfigure *FrameTagConfigureInfo `json:"FrameTagConfigure,omitempty" name:"FrameTagConfigure"`
+
+	// 模板创建时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 模板最后修改时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
+}
+
 type AdaptiveDynamicStreamingInfoItem struct {
 
 	// 转自适应码流规格。
@@ -46,8 +80,6 @@ type AiAnalysisResult struct {
 	// 任务的类型，可以取的值有：
 	// <li>Classification：智能分类</li>
 	// <li>Cover：智能封面</li>
-	// <li>Description：智能描述</li>
-	// <li>Highlight：智能精彩片断</li>
 	// <li>Tag：智能标签</li>
 	// <li>FrameTag：智能按帧标签</li>
 	Type *string `json:"Type,omitempty" name:"Type"`
@@ -63,18 +95,21 @@ type AiAnalysisResult struct {
 	// 视频内容分析智能标签任务的查询结果，当任务类型为 Tag 时有效。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TagTask *AiAnalysisTaskTagResult `json:"TagTask,omitempty" name:"TagTask"`
+
+	// 视频内容分析智能按帧标签任务的查询结果，当任务类型为 FrameTag 时有效。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FrameTagTask *AiAnalysisTaskFrameTagResult `json:"FrameTagTask,omitempty" name:"FrameTagTask"`
 }
 
 type AiAnalysisTaskClassificationInput struct {
 
-	// 视频智能分类模板 ID ，固定为 10 。
+	// 视频智能分类模板 ID。
 	Definition *uint64 `json:"Definition,omitempty" name:"Definition"`
 }
 
 type AiAnalysisTaskClassificationOutput struct {
 
 	// 视频智能分类列表。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ClassificationSet []*MediaAiAnalysisClassificationItem `json:"ClassificationSet,omitempty" name:"ClassificationSet" list`
 }
 
@@ -84,11 +119,9 @@ type AiAnalysisTaskClassificationResult struct {
 	Status *string `json:"Status,omitempty" name:"Status"`
 
 	// 错误码，0：成功，其他值：失败。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ErrCode *int64 `json:"ErrCode,omitempty" name:"ErrCode"`
 
 	// 错误信息。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Message *string `json:"Message,omitempty" name:"Message"`
 
 	// 智能分类任务输入。
@@ -101,14 +134,13 @@ type AiAnalysisTaskClassificationResult struct {
 
 type AiAnalysisTaskCoverInput struct {
 
-	// 视频智能封面模板 ID ，固定为 10 。
+	// 视频智能封面模板 ID。
 	Definition *uint64 `json:"Definition,omitempty" name:"Definition"`
 }
 
 type AiAnalysisTaskCoverOutput struct {
 
 	// 智能封面列表。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CoverSet []*MediaAiAnalysisCoverItem `json:"CoverSet,omitempty" name:"CoverSet" list`
 }
 
@@ -118,37 +150,65 @@ type AiAnalysisTaskCoverResult struct {
 	Status *string `json:"Status,omitempty" name:"Status"`
 
 	// 错误码，0：成功，其他值：失败。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ErrCode *int64 `json:"ErrCode,omitempty" name:"ErrCode"`
 
 	// 错误信息。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Message *string `json:"Message,omitempty" name:"Message"`
 
 	// 智能封面任务输入。
 	Input *AiAnalysisTaskCoverInput `json:"Input,omitempty" name:"Input"`
 
-	// 智能分类任务输出。
+	// 智能封面任务输出。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Output *AiAnalysisTaskCoverOutput `json:"Output,omitempty" name:"Output"`
 }
 
+type AiAnalysisTaskFrameTagInput struct {
+
+	// 视频智能按帧标签模板 ID。
+	Definition *uint64 `json:"Definition,omitempty" name:"Definition"`
+}
+
+type AiAnalysisTaskFrameTagOutput struct {
+
+	// 视频按帧标签列表。
+	SegmentSet []*MediaAiAnalysisFrameTagSegmentItem `json:"SegmentSet,omitempty" name:"SegmentSet" list`
+}
+
+type AiAnalysisTaskFrameTagResult struct {
+
+	// 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 错误码，0：成功，其他值：失败。
+	ErrCode *int64 `json:"ErrCode,omitempty" name:"ErrCode"`
+
+	// 错误信息。
+	Message *string `json:"Message,omitempty" name:"Message"`
+
+	// 智能按帧标签任务输入。
+	Input *AiAnalysisTaskFrameTagInput `json:"Input,omitempty" name:"Input"`
+
+	// 智能按帧标签任务输出。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Output *AiAnalysisTaskFrameTagOutput `json:"Output,omitempty" name:"Output"`
+}
+
 type AiAnalysisTaskInput struct {
 
-	// 视频内容分析模板 ID ，固定为 10，同时进行智能分类、智能标签分析、智能封面分析。
+	// 视频内容分析模板 ID。
 	Definition *uint64 `json:"Definition,omitempty" name:"Definition"`
 }
 
 type AiAnalysisTaskTagInput struct {
 
-	// 视频智能分类模板 ID ，固定为 10 。
+	// 视频智能标签模板 ID。
 	Definition *uint64 `json:"Definition,omitempty" name:"Definition"`
 }
 
 type AiAnalysisTaskTagOutput struct {
 
 	// 视频智能标签列表。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TagSet []*MediaAiAnalysisTagItem `json:"TagSet,omitempty" name:"TagSet" list`
 }
 
@@ -158,11 +218,9 @@ type AiAnalysisTaskTagResult struct {
 	Status *string `json:"Status,omitempty" name:"Status"`
 
 	// 错误码，0：成功，其他值：失败。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ErrCode *int64 `json:"ErrCode,omitempty" name:"ErrCode"`
 
 	// 错误信息。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Message *string `json:"Message,omitempty" name:"Message"`
 
 	// 智能标签任务输入。
@@ -216,14 +274,431 @@ type AiContentReviewResult struct {
 
 type AiContentReviewTaskInput struct {
 
-	// 视频内容审核模板 ID，可以填 10 和 20。<li>10：对视频画面进行鉴黄、鉴暴、鉴政审核；</li><li>20：对视频画面进行鉴黄、鉴暴、鉴政审核，并对 Asr 和 Ocr 文字进行鉴黄、鉴政审核。</li>
+	// 视频内容审核模板 ID。
 	Definition *uint64 `json:"Definition,omitempty" name:"Definition"`
+}
+
+type AiRecognitionResult struct {
+
+	// 任务的类型，取值范围：
+	// <li>FaceRecognition：人脸识别，</li>
+	// <li>AsrFullTextRecognition：语音全文识别，</li>
+	// <li>OcrFullTextRecognition：文本全文识别，</li>
+	// <li>AsrWordsRecognition：用户自定义语音识别，</li>
+	// <li>OcrWordsRecognition：用户自定义文本识别，</li>
+	// <li>HeadTailRecognition：视频片头片尾识别，</li>
+	// <li>ObjectRecognition：物体识别。</li>
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 人脸识别结果，当 Type 为 
+	//  FaceRecognition 时有效。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FaceRecognitionTask *AiRecognitionTaskFaceResult `json:"FaceRecognitionTask,omitempty" name:"FaceRecognitionTask"`
+
+	// 语音全文识别结果，当 Type 为
+	//  AsrFullTextRecognition 时有效。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AsrFullTextTask *AiRecognitionTaskAsrFullTextResult `json:"AsrFullTextTask,omitempty" name:"AsrFullTextTask"`
+
+	// 文本全文识别结果，当 Type 为
+	//  OcrFullTextRecognition 时有效。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OcrFullTextTask *AiRecognitionTaskOcrFullTextResult `json:"OcrFullTextTask,omitempty" name:"OcrFullTextTask"`
+
+	// 用户自定义语音识别结果集，当 Type 为
+	//  AsrWordsRecognition 时有效。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AsrWordsTask *AiRecognitionTaskAsrWordsResult `json:"AsrWordsTask,omitempty" name:"AsrWordsTask"`
+
+	// 用户自定义文本识别结果集，当 Type 为
+	//  OcrWordsRecognition 时有效。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OcrWordsTask *AiRecognitionTaskOcrWordsResult `json:"OcrWordsTask,omitempty" name:"OcrWordsTask"`
+
+	// 视频片头片尾识别结果，当 Type 为
+	//  HeadTailRecognition 时有效。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HeadTailTask *AiRecognitionTaskHeadTailResult `json:"HeadTailTask,omitempty" name:"HeadTailTask"`
+
+	// 物体识别结果，当 Type 为
+	//  ObjectRecognition 时有效。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ObjectTask *AiRecognitionTaskObjectResult `json:"ObjectTask,omitempty" name:"ObjectTask"`
+}
+
+type AiRecognitionTaskAsrFullTextResult struct {
+
+	// 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 错误码，0：成功，其他值：失败。
+	ErrCode *int64 `json:"ErrCode,omitempty" name:"ErrCode"`
+
+	// 错误信息。
+	Message *string `json:"Message,omitempty" name:"Message"`
+
+	// 语音全文识别任务输入信息。
+	Input *AiRecognitionTaskAsrFullTextResultInput `json:"Input,omitempty" name:"Input"`
+
+	// 语音全文识别任务输出信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Output *AiRecognitionTaskAsrFullTextResultOutput `json:"Output,omitempty" name:"Output"`
+}
+
+type AiRecognitionTaskAsrFullTextResultInput struct {
+
+	// 语音全文识别模板 ID。
+	Definition *int64 `json:"Definition,omitempty" name:"Definition"`
+}
+
+type AiRecognitionTaskAsrFullTextResultOutput struct {
+
+	// 语音全文识别结果集。
+	SegmentSet []*AiRecognitionTaskAsrFullTextSegmentItem `json:"SegmentSet,omitempty" name:"SegmentSet" list`
+
+	// 字幕文件 Url。
+	SubtitleUrl *string `json:"SubtitleUrl,omitempty" name:"SubtitleUrl"`
+}
+
+type AiRecognitionTaskAsrFullTextSegmentItem struct {
+
+	// 识别片段置信度。取值：0~100。
+	Confidence *float64 `json:"Confidence,omitempty" name:"Confidence"`
+
+	// 识别片段起始的偏移时间，单位：秒。
+	StartTimeOffset *float64 `json:"StartTimeOffset,omitempty" name:"StartTimeOffset"`
+
+	// 识别片段终止的偏移时间，单位：秒。
+	EndTimeOffset *float64 `json:"EndTimeOffset,omitempty" name:"EndTimeOffset"`
+
+	// 识别文本。
+	Text *string `json:"Text,omitempty" name:"Text"`
+}
+
+type AiRecognitionTaskAsrWordsResult struct {
+
+	// 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 错误码，0：成功，其他值：失败。
+	ErrCode *int64 `json:"ErrCode,omitempty" name:"ErrCode"`
+
+	// 错误信息。
+	Message *string `json:"Message,omitempty" name:"Message"`
+
+	// 用户自定义语音识别任务输入信息。
+	Input *AiRecognitionTaskAsrWordsResultInput `json:"Input,omitempty" name:"Input"`
+
+	// 用户自定义语音识别任务输出信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Output *AiRecognitionTaskAsrWordsResultOutput `json:"Output,omitempty" name:"Output"`
+}
+
+type AiRecognitionTaskAsrWordsResultInput struct {
+
+	// 用户自定义语音识别模板 ID。
+	Definition *int64 `json:"Definition,omitempty" name:"Definition"`
+}
+
+type AiRecognitionTaskAsrWordsResultItem struct {
+
+	// 语音识别词。
+	Word *string `json:"Word,omitempty" name:"Word"`
+
+	// 用户自定义语音识别结果集。
+	SegmentSet []*AiRecognitionTaskAsrWordsSegmentItem `json:"SegmentSet,omitempty" name:"SegmentSet" list`
+}
+
+type AiRecognitionTaskAsrWordsResultOutput struct {
+
+	// 用户自定义语音识别结果集。
+	ResultSet []*AiRecognitionTaskAsrWordsResultItem `json:"ResultSet,omitempty" name:"ResultSet" list`
+}
+
+type AiRecognitionTaskAsrWordsSegmentItem struct {
+
+	// 识别片段起始的偏移时间，单位：秒。
+	StartTimeOffset *float64 `json:"StartTimeOffset,omitempty" name:"StartTimeOffset"`
+
+	// 识别片段终止的偏移时间，单位：秒。
+	EndTimeOffset *float64 `json:"EndTimeOffset,omitempty" name:"EndTimeOffset"`
+
+	// 识别片段置信度。取值：0~100。
+	Confidence *float64 `json:"Confidence,omitempty" name:"Confidence"`
+}
+
+type AiRecognitionTaskFaceResult struct {
+
+	// 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 错误码，0：成功，其他值：失败。
+	ErrCode *int64 `json:"ErrCode,omitempty" name:"ErrCode"`
+
+	// 错误信息。
+	Message *string `json:"Message,omitempty" name:"Message"`
+
+	// 人脸识别任务输入信息。
+	Input *AiRecognitionTaskFaceResultInput `json:"Input,omitempty" name:"Input"`
+
+	// 人脸识别任务输出信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Output *AiRecognitionTaskFaceResultOutput `json:"Output,omitempty" name:"Output"`
+}
+
+type AiRecognitionTaskFaceResultInput struct {
+
+	// 人脸识别模板 ID。
+	Definition *int64 `json:"Definition,omitempty" name:"Definition"`
+}
+
+type AiRecognitionTaskFaceResultItem struct {
+
+	// 人物唯一标识 ID。
+	Id *string `json:"Id,omitempty" name:"Id"`
+
+	// 人物库类型，表示识别出的人物来自哪个人物库：
+	// <li>Default：默认人物库；</li>
+	// <li>UserDefine：用户自定义人物库。</li>
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 人物名称。
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 人物出现的片段结果集。
+	SegmentSet []*AiRecognitionTaskFaceSegmentItem `json:"SegmentSet,omitempty" name:"SegmentSet" list`
+}
+
+type AiRecognitionTaskFaceResultOutput struct {
+
+	// 智能人脸识别结果集。
+	ResultSet []*AiRecognitionTaskFaceResultItem `json:"ResultSet,omitempty" name:"ResultSet" list`
+}
+
+type AiRecognitionTaskFaceSegmentItem struct {
+
+	// 识别片段起始的偏移时间，单位：秒。
+	StartTimeOffset *float64 `json:"StartTimeOffset,omitempty" name:"StartTimeOffset"`
+
+	// 识别片段终止的偏移时间，单位：秒。
+	EndTimeOffset *float64 `json:"EndTimeOffset,omitempty" name:"EndTimeOffset"`
+
+	// 识别片段置信度。取值：0~100。
+	Confidence *float64 `json:"Confidence,omitempty" name:"Confidence"`
+
+	// 识别结果的区域坐标。数组包含 4 个元素 [x1,y1,x2,y2]，依次表示区域左上点、右下点的横纵坐标。
+	AreaCoordSet []*int64 `json:"AreaCoordSet,omitempty" name:"AreaCoordSet" list`
+}
+
+type AiRecognitionTaskHeadTailResult struct {
+
+	// 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 错误码，0：成功，其他值：失败。
+	ErrCode *int64 `json:"ErrCode,omitempty" name:"ErrCode"`
+
+	// 错误信息。
+	Message *string `json:"Message,omitempty" name:"Message"`
+
+	// 视频片头片尾识别任务输入信息。
+	Input *AiRecognitionTaskHeadTailResultInput `json:"Input,omitempty" name:"Input"`
+
+	// 视频片头片尾识别任务输出信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Output *AiRecognitionTaskHeadTailResultOutput `json:"Output,omitempty" name:"Output"`
+}
+
+type AiRecognitionTaskHeadTailResultInput struct {
+
+	// 视频片头片尾识别模板 ID。
+	Definition *int64 `json:"Definition,omitempty" name:"Definition"`
+}
+
+type AiRecognitionTaskHeadTailResultOutput struct {
+
+	// 片头识别置信度。取值：0~100。
+	HeadConfidence *float64 `json:"HeadConfidence,omitempty" name:"HeadConfidence"`
+
+	// 视频片头的结束时间点，单位：秒。
+	HeadTimeOffset *float64 `json:"HeadTimeOffset,omitempty" name:"HeadTimeOffset"`
+
+	// 片尾识别置信度。取值：0~100。
+	TailConfidence *float64 `json:"TailConfidence,omitempty" name:"TailConfidence"`
+
+	// 视频片尾的开始时间点，单位：秒。
+	TailTimeOffset *float64 `json:"TailTimeOffset,omitempty" name:"TailTimeOffset"`
 }
 
 type AiRecognitionTaskInput struct {
 
 	// 视频智能识别模板 ID ，固定为 10，同时进行按帧标签识别、精彩片段识别、视频头尾识别、拆条、人脸识别、文字识别、语音识别、文字全文识别、语音全文识别，后续会推出用户自定义模板，可根据需要选择相应的识别任务。
 	Definition *uint64 `json:"Definition,omitempty" name:"Definition"`
+}
+
+type AiRecognitionTaskObjectResult struct {
+
+	// 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 错误码，0：成功，其他值：失败。
+	ErrCode *int64 `json:"ErrCode,omitempty" name:"ErrCode"`
+
+	// 错误信息。
+	Message *string `json:"Message,omitempty" name:"Message"`
+
+	// 物体识别任务输入信息。
+	Input *AiRecognitionTaskObjectResultInput `json:"Input,omitempty" name:"Input"`
+
+	// 物体识别任务输出信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Output *AiRecognitionTaskObjectResultOutput `json:"Output,omitempty" name:"Output"`
+}
+
+type AiRecognitionTaskObjectResultInput struct {
+
+	// 物体识别模板 ID。
+	Definition *int64 `json:"Definition,omitempty" name:"Definition"`
+}
+
+type AiRecognitionTaskObjectResultItem struct {
+
+	// 识别的物体名称。
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 物体出现的片段列表。
+	SegmentSet []*AiRecognitionTaskObjectSeqmentItem `json:"SegmentSet,omitempty" name:"SegmentSet" list`
+}
+
+type AiRecognitionTaskObjectResultOutput struct {
+
+	// 智能物体识别结果集。
+	ResultSet []*AiRecognitionTaskObjectResultItem `json:"ResultSet,omitempty" name:"ResultSet" list`
+}
+
+type AiRecognitionTaskObjectSeqmentItem struct {
+
+	// 识别片段起始的偏移时间，单位：秒。
+	StartTimeOffset *float64 `json:"StartTimeOffset,omitempty" name:"StartTimeOffset"`
+
+	// 识别片段终止的偏移时间，单位：秒。
+	EndTimeOffset *float64 `json:"EndTimeOffset,omitempty" name:"EndTimeOffset"`
+
+	// 识别片段置信度。取值：0~100。
+	Confidence *float64 `json:"Confidence,omitempty" name:"Confidence"`
+
+	// 识别结果的区域坐标。数组包含 4 个元素 [x1,y1,x2,y2]，依次表示区域左上点、右下点的横纵坐标。
+	AreaCoordSet []*int64 `json:"AreaCoordSet,omitempty" name:"AreaCoordSet" list`
+}
+
+type AiRecognitionTaskOcrFullTextResult struct {
+
+	// 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 错误码，0：成功，其他值：失败。
+	ErrCode *int64 `json:"ErrCode,omitempty" name:"ErrCode"`
+
+	// 错误信息。
+	Message *string `json:"Message,omitempty" name:"Message"`
+
+	// 文本全文识别任务输入信息。
+	Input *AiRecognitionTaskOcrFullTextResultInput `json:"Input,omitempty" name:"Input"`
+
+	// 文本全文识别任务输出信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Output *AiRecognitionTaskOcrFullTextResultOutput `json:"Output,omitempty" name:"Output"`
+}
+
+type AiRecognitionTaskOcrFullTextResultInput struct {
+
+	// 文本全文识别模板 ID。
+	Definition *int64 `json:"Definition,omitempty" name:"Definition"`
+}
+
+type AiRecognitionTaskOcrFullTextResultOutput struct {
+
+	// 文本全文识别结果集。
+	SegmentSet []*AiRecognitionTaskOcrFullTextSegmentItem `json:"SegmentSet,omitempty" name:"SegmentSet" list`
+}
+
+type AiRecognitionTaskOcrFullTextSegmentItem struct {
+
+	// 识别片段起始的偏移时间，单位：秒。
+	StartTimeOffset *float64 `json:"StartTimeOffset,omitempty" name:"StartTimeOffset"`
+
+	// 识别片段终止的偏移时间，单位：秒。
+	EndTimeOffset *float64 `json:"EndTimeOffset,omitempty" name:"EndTimeOffset"`
+
+	// 识别片段结果集。
+	TextSet []*AiRecognitionTaskOcrFullTextSegmentTextItem `json:"TextSet,omitempty" name:"TextSet" list`
+}
+
+type AiRecognitionTaskOcrFullTextSegmentTextItem struct {
+
+	// 识别片段置信度。取值：0~100。
+	Confidence *float64 `json:"Confidence,omitempty" name:"Confidence"`
+
+	// 识别结果的区域坐标。数组包含 4 个元素 [x1,y1,x2,y2]，依次表示区域左上点、右下点的横纵坐标。
+	AreaCoordSet []*int64 `json:"AreaCoordSet,omitempty" name:"AreaCoordSet" list`
+
+	// 识别文本。
+	Text *string `json:"Text,omitempty" name:"Text"`
+}
+
+type AiRecognitionTaskOcrWordsResult struct {
+
+	// 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 错误码，0：成功，其他值：失败。
+	ErrCode *int64 `json:"ErrCode,omitempty" name:"ErrCode"`
+
+	// 错误信息。
+	Message *string `json:"Message,omitempty" name:"Message"`
+
+	// 用户自定义文本识别任务输入信息。
+	Input *AiRecognitionTaskOcrWordsResultInput `json:"Input,omitempty" name:"Input"`
+
+	// 用户自定义文本识别任务输出信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Output *AiRecognitionTaskOcrWordsResultOutput `json:"Output,omitempty" name:"Output"`
+}
+
+type AiRecognitionTaskOcrWordsResultInput struct {
+
+	// 用户自定义文本识别模板 ID。
+	Definition *int64 `json:"Definition,omitempty" name:"Definition"`
+}
+
+type AiRecognitionTaskOcrWordsResultItem struct {
+
+	// 文本识别词。
+	Word *string `json:"Word,omitempty" name:"Word"`
+
+	// 文本文字识别结果集。
+	SegmentSet []*AiRecognitionTaskOcrWordsSegmentItem `json:"SegmentSet,omitempty" name:"SegmentSet" list`
+}
+
+type AiRecognitionTaskOcrWordsResultOutput struct {
+
+	// 用户自定义文本识别结果集。
+	ResultSet []*AiRecognitionTaskOcrWordsResultItem `json:"ResultSet,omitempty" name:"ResultSet" list`
+}
+
+type AiRecognitionTaskOcrWordsSegmentItem struct {
+
+	// 识别片段起始的偏移时间，单位：秒。
+	StartTimeOffset *float64 `json:"StartTimeOffset,omitempty" name:"StartTimeOffset"`
+
+	// 识别片段终止的偏移时间，单位：秒。
+	EndTimeOffset *float64 `json:"EndTimeOffset,omitempty" name:"EndTimeOffset"`
+
+	// 识别片段置信度。取值：0~100。
+	Confidence *float64 `json:"Confidence,omitempty" name:"Confidence"`
+
+	// 识别结果的区域坐标。数组包含 4 个元素 [x1,y1,x2,y2]，依次表示区域左上点、右下点的横纵坐标。
+	AreaCoordSet []*int64 `json:"AreaCoordSet,omitempty" name:"AreaCoordSet" list`
 }
 
 type AiReviewPoliticalAsrTaskInput struct {
@@ -707,6 +1182,22 @@ type AudioTemplateInfoForUpdate struct {
 	AudioChannel *int64 `json:"AudioChannel,omitempty" name:"AudioChannel"`
 }
 
+type ClassificationConfigureInfo struct {
+
+	// 智能分类任务开关，可选值：
+	// <li>ON：开启智能分类任务；</li>
+	// <li>OFF：关闭智能分类任务。</li>
+	Switch *string `json:"Switch,omitempty" name:"Switch"`
+}
+
+type ClassificationConfigureInfoForUpdate struct {
+
+	// 智能分类任务开关，可选值：
+	// <li>ON：开启智能分类任务；</li>
+	// <li>OFF：关闭智能分类任务。</li>
+	Switch *string `json:"Switch,omitempty" name:"Switch"`
+}
+
 type ClipFileInfo2017 struct {
 
 	// 错误码
@@ -887,6 +1378,77 @@ type CoverBySnapshotTaskOutput struct {
 
 	// 封面 URL。
 	CoverUrl *string `json:"CoverUrl,omitempty" name:"CoverUrl"`
+}
+
+type CoverConfigureInfo struct {
+
+	// 智能封面任务开关，可选值：
+	// <li>ON：开启智能封面任务；</li>
+	// <li>OFF：关闭智能封面任务。</li>
+	Switch *string `json:"Switch,omitempty" name:"Switch"`
+}
+
+type CoverConfigureInfoForUpdate struct {
+
+	// 智能封面任务开关，可选值：
+	// <li>ON：开启智能封面任务；</li>
+	// <li>OFF：关闭智能封面任务。</li>
+	Switch *string `json:"Switch,omitempty" name:"Switch"`
+}
+
+type CreateAIAnalysisTemplateRequest struct {
+	*tchttp.BaseRequest
+
+	// 视频内容分析模板名称，长度限制：64 个字符。
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 视频内容分析模板描述信息，长度限制：256 个字符。
+	Comment *string `json:"Comment,omitempty" name:"Comment"`
+
+	// 智能分类任务控制参数。
+	ClassificationConfigure *ClassificationConfigureInfo `json:"ClassificationConfigure,omitempty" name:"ClassificationConfigure"`
+
+	// 智能标签任务控制参数。
+	TagConfigure *TagConfigureInfo `json:"TagConfigure,omitempty" name:"TagConfigure"`
+
+	// 智能封面任务控制参数。
+	CoverConfigure *CoverConfigureInfo `json:"CoverConfigure,omitempty" name:"CoverConfigure"`
+
+	// 智能按帧标签任务控制参数。
+	FrameTagConfigure *FrameTagConfigureInfo `json:"FrameTagConfigure,omitempty" name:"FrameTagConfigure"`
+
+	// 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
+}
+
+func (r *CreateAIAnalysisTemplateRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateAIAnalysisTemplateRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateAIAnalysisTemplateResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 视频内容分析模板唯一标识。
+		Definition *int64 `json:"Definition,omitempty" name:"Definition"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateAIAnalysisTemplateResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateAIAnalysisTemplateResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
 }
 
 type CreateClassRequest struct {
@@ -1104,14 +1666,14 @@ type CreateWatermarkTemplateRequest struct {
 	CoordinateOrigin *string `json:"CoordinateOrigin,omitempty" name:"CoordinateOrigin"`
 
 	// 水印原点距离视频图像坐标原点的水平位置。支持 %、px 两种格式：
-	// <li>当字符串以 % 结尾，表示水印 Left 为视频宽度指定百分比的位置，如 10% 表示 Left 为视频宽度的 10%；</li>
-	// <li>当字符串以 px 结尾，表示水印 Left 为视频宽度指定像素的位置，如 100px 表示 Left 为 100 像素。</li>
+	// <li>当字符串以 % 结尾，表示水印 XPos 为视频宽度指定百分比，如 10% 表示 XPos 为视频宽度的 10%；</li>
+	// <li>当字符串以 px 结尾，表示水印 XPos 为指定像素，如 100px 表示 XPos 为 100 像素。</li>
 	// 默认值：0px。
 	XPos *string `json:"XPos,omitempty" name:"XPos"`
 
 	// 水印原点距离视频图像坐标原点的垂直位置。支持 %、px 两种格式：
-	// <li>当字符串以 % 结尾，表示水印 Top 为视频高度指定百分比的位置，如 10% 表示 Top 为视频高度的 10%；</li>
-	// <li>当字符串以 px 结尾，表示水印 Top 为视频高度指定像素的位置，如 100px 表示 Top 为 100 像素。</li>
+	// <li>当字符串以 % 结尾，表示水印 YPos 为视频高度指定百分比，如 10% 表示 YPos 为视频高度的 10%；</li>
+	// <li>当字符串以 px 结尾，表示水印 YPos 为指定像素，如 100px 表示 YPos 为 100 像素。</li>
 	// 默认值：0px。
 	YPos *string `json:"YPos,omitempty" name:"YPos"`
 
@@ -1158,6 +1720,43 @@ func (r *CreateWatermarkTemplateResponse) ToJsonString() string {
 }
 
 func (r *CreateWatermarkTemplateResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteAIAnalysisTemplateRequest struct {
+	*tchttp.BaseRequest
+
+	// 视频内容分析模板唯一标识。
+	Definition *int64 `json:"Definition,omitempty" name:"Definition"`
+
+	// 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
+}
+
+func (r *DeleteAIAnalysisTemplateRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteAIAnalysisTemplateRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteAIAnalysisTemplateResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DeleteAIAnalysisTemplateResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteAIAnalysisTemplateResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -1346,6 +1945,55 @@ func (r *DeleteWatermarkTemplateResponse) ToJsonString() string {
 }
 
 func (r *DeleteWatermarkTemplateResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeAIAnalysisTemplatesRequest struct {
+	*tchttp.BaseRequest
+
+	// 视频内容分析模板唯一标识过滤条件，数组长度限制：10。
+	Definitions []*int64 `json:"Definitions,omitempty" name:"Definitions" list`
+
+	// 分页偏移量，默认值：0。
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 返回记录条数，默认值：10，最大值：100。
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
+}
+
+func (r *DescribeAIAnalysisTemplatesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeAIAnalysisTemplatesRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeAIAnalysisTemplatesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 符合过滤条件的记录总数。
+		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 视频内容分析模板详情列表。
+		AIAnalysisTemplateSet []*AIAnalysisTemplateItem `json:"AIAnalysisTemplateSet,omitempty" name:"AIAnalysisTemplateSet" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeAIAnalysisTemplatesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeAIAnalysisTemplatesResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -1934,6 +2582,28 @@ type FileUploadTask struct {
 	ProcedureTaskId *string `json:"ProcedureTaskId,omitempty" name:"ProcedureTaskId"`
 }
 
+type FrameTagConfigureInfo struct {
+
+	// 智能按帧标签任务开关，可选值：
+	// <li>ON：开启智能按帧标签任务；</li>
+	// <li>OFF：关闭智能按帧标签任务。</li>
+	Switch *string `json:"Switch,omitempty" name:"Switch"`
+
+	// 截帧间隔，单位为秒，当不填时，默认截帧间隔为 1 秒，最小值为 0.5 秒。
+	ScreenshotInterval *float64 `json:"ScreenshotInterval,omitempty" name:"ScreenshotInterval"`
+}
+
+type FrameTagConfigureInfoForUpdate struct {
+
+	// 智能按帧标签任务开关，可选值：
+	// <li>ON：开启智能按帧标签任务；</li>
+	// <li>OFF：关闭智能按帧标签任务。</li>
+	Switch *string `json:"Switch,omitempty" name:"Switch"`
+
+	// 截帧间隔，单位为秒，最小值为 0.5 秒。
+	ScreenshotInterval *float64 `json:"ScreenshotInterval,omitempty" name:"ScreenshotInterval"`
+}
+
 type ImageSpriteTaskInput struct {
 
 	// 雪碧图模板 ID。
@@ -2065,33 +2735,48 @@ func (r *LiveRealTimeClipResponse) FromJsonString(s string) error {
 type MediaAiAnalysisClassificationItem struct {
 
 	// 智能分类的类别名称。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Classification *string `json:"Classification,omitempty" name:"Classification"`
 
 	// 智能分类的可信度，取值范围是 0 到 100。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Confidence *float64 `json:"Confidence,omitempty" name:"Confidence"`
 }
 
 type MediaAiAnalysisCoverItem struct {
 
 	// 智能封面地址。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CoverUrl *string `json:"CoverUrl,omitempty" name:"CoverUrl"`
 
 	// 智能封面的可信度，取值范围是 0 到 100。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Confidence *float64 `json:"Confidence,omitempty" name:"Confidence"`
+}
+
+type MediaAiAnalysisFrameTagItem struct {
+
+	// 按帧标签名称。
+	Tag *string `json:"Tag,omitempty" name:"Tag"`
+
+	// 按帧标签的可信度，取值范围是 0 到 100。
+	Confidence *float64 `json:"Confidence,omitempty" name:"Confidence"`
+}
+
+type MediaAiAnalysisFrameTagSegmentItem struct {
+
+	// 按帧标签起始的偏移时间。
+	StartTimeOffset *float64 `json:"StartTimeOffset,omitempty" name:"StartTimeOffset"`
+
+	// 按帧标签结束的偏移时间。
+	EndTimeOffset *float64 `json:"EndTimeOffset,omitempty" name:"EndTimeOffset"`
+
+	// 时间片段内的标签列表。
+	TagSet []*MediaAiAnalysisFrameTagItem `json:"TagSet,omitempty" name:"TagSet" list`
 }
 
 type MediaAiAnalysisTagItem struct {
 
 	// 标签名称。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Tag *string `json:"Tag,omitempty" name:"Tag"`
 
 	// 标签的可信度，取值范围是 0 到 100。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Confidence *float64 `json:"Confidence,omitempty" name:"Confidence"`
 }
 
@@ -2920,6 +3605,61 @@ type MediaVideoStreamItem struct {
 	Fps *int64 `json:"Fps,omitempty" name:"Fps"`
 }
 
+type ModifyAIAnalysisTemplateRequest struct {
+	*tchttp.BaseRequest
+
+	// 视频内容分析模板唯一标识。
+	Definition *int64 `json:"Definition,omitempty" name:"Definition"`
+
+	// 视频内容分析模板名称，长度限制：64 个字符。
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 视频内容分析模板描述信息，长度限制：256 个字符。
+	Comment *string `json:"Comment,omitempty" name:"Comment"`
+
+	// 智能分类任务控制参数。
+	ClassificationConfigure *ClassificationConfigureInfoForUpdate `json:"ClassificationConfigure,omitempty" name:"ClassificationConfigure"`
+
+	// 智能标签任务控制参数。
+	TagConfigure *TagConfigureInfoForUpdate `json:"TagConfigure,omitempty" name:"TagConfigure"`
+
+	// 智能封面任务控制参数。
+	CoverConfigure *CoverConfigureInfoForUpdate `json:"CoverConfigure,omitempty" name:"CoverConfigure"`
+
+	// 智能按帧标签任务控制参数。
+	FrameTagConfigure *FrameTagConfigureInfoForUpdate `json:"FrameTagConfigure,omitempty" name:"FrameTagConfigure"`
+
+	// 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
+}
+
+func (r *ModifyAIAnalysisTemplateRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyAIAnalysisTemplateRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyAIAnalysisTemplateResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifyAIAnalysisTemplateResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyAIAnalysisTemplateResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type ModifyClassRequest struct {
 	*tchttp.BaseRequest
 
@@ -3120,13 +3860,13 @@ type ModifyWatermarkTemplateRequest struct {
 	CoordinateOrigin *string `json:"CoordinateOrigin,omitempty" name:"CoordinateOrigin"`
 
 	// 水印原点距离视频图像坐标原点的水平位置。支持 %、px 两种格式：
-	// <li>当字符串以 % 结尾，表示水印 Left 为视频宽度指定百分比的位置，如 10% 表示 Left 为视频宽度的 10%；</li>
-	// <li>当字符串以 px 结尾，表示水印 Left 为视频宽度指定像素的位置，如 100px 表示 Left 为 100 像素。</li>
+	// <li>当字符串以 % 结尾，表示水印 XPos 为视频宽度指定百分比，如 10% 表示 XPos 为视频宽度的 10%；</li>
+	// <li>当字符串以 px 结尾，表示水印 XPos 为指定像素，如 100px 表示 XPos 为 100 像素。</li>
 	XPos *string `json:"XPos,omitempty" name:"XPos"`
 
 	// 水印原点距离视频图像坐标原点的垂直位置。支持 %、px 两种格式：
-	// <li>当字符串以 % 结尾，表示水印 Top 为视频高度指定百分比的位置，如 10% 表示 Top 为视频高度的 10%；</li>
-	// <li>当字符串以 px 结尾，表示水印 Top 为视频高度指定像素的位置，如 100px 表示 Top 为 100 像素。</li>
+	// <li>当字符串以 % 结尾，表示水印 YPos 为视频高度指定百分比，如 10% 表示 YPos 为视频高度的 10%；</li>
+	// <li>当字符串以 px 结尾，表示水印 YPos 为指定像素，如 100px 表示 YPos 为 100 像素。</li>
 	YPos *string `json:"YPos,omitempty" name:"YPos"`
 
 	// 图片水印模板，该字段仅对图片水印模板有效。
@@ -3224,6 +3964,10 @@ type ProcedureTask struct {
 	// 视频内容分析任务的执行状态与结果。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AiAnalysisResultSet []*AiAnalysisResult `json:"AiAnalysisResultSet,omitempty" name:"AiAnalysisResultSet" list`
+
+	// 视频内容识别任务的执行状态与结果。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AiRecognitionResultSet []*AiRecognitionResult `json:"AiRecognitionResultSet,omitempty" name:"AiRecognitionResultSet" list`
 
 	// 任务流的优先级，取值范围为 [-10, 10]。
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -3713,7 +4457,7 @@ type SvgWatermarkInput struct {
 	//  Height 不为 0px 时，表示水印的宽度按原始 SVG 图像等比缩放；当 Width、Height 都填 0px 时，表示水印的宽度取原始 SVG 图像的宽度；</li>
 	// <li>当字符串以 W% 结尾，表示水印 Width 为视频宽度的百分比大小，如 10W% 表示 Width 为视频宽度的 10%；</li>
 	// <li>当字符串以 H% 结尾，表示水印 Width 为视频高度的百分比大小，如 10H% 表示 Width 为视频高度的 10%；</li>
-	// <li>当字符串以 S% 结尾，表示水印 Width 为视频短边的百分比大小，如 10S% 表示 Width 为视频短片的 10%；</li>
+	// <li>当字符串以 S% 结尾，表示水印 Width 为视频短边的百分比大小，如 10S% 表示 Width 为视频短边的 10%；</li>
 	// <li>当字符串以 L% 结尾，表示水印 Width 为视频长边的百分比大小，如 10L% 表示 Width 为视频长边的 10%；</li>
 	// <li>当字符串以 % 结尾时，含义同 W%。</li>
 	// 默认值为 10W%。
@@ -3724,7 +4468,7 @@ type SvgWatermarkInput struct {
 	//  Width 不为 0px 时，表示水印的高度按原始 SVG 图像等比缩放；当 Width、Height 都填 0px 时，表示水印的高度取原始 SVG 图像的高度；</li>
 	// <li>当字符串以 W% 结尾，表示水印 Height 为视频宽度的百分比大小，如 10W% 表示 Height 为视频宽度的 10%；</li>
 	// <li>当字符串以 H% 结尾，表示水印 Height 为视频高度的百分比大小，如 10H% 表示 Height 为视频高度的 10%；</li>
-	// <li>当字符串以 S% 结尾，表示水印 Height 为视频短边的百分比大小，如 10S% 表示 Height 为视频短片的 10%；</li>
+	// <li>当字符串以 S% 结尾，表示水印 Height 为视频短边的百分比大小，如 10S% 表示 Height 为视频短边的 10%；</li>
 	// <li>当字符串以 L% 结尾，表示水印 Height 为视频长边的百分比大小，如 10L% 表示 Height 为视频长边的 10%；</li>
 	// <li>当字符串以 % 结尾时，含义同 H%。</li>
 	// 默认值为 0px。
@@ -3738,7 +4482,7 @@ type SvgWatermarkInputForUpdate struct {
 	//  Height 不为 0px 时，表示水印的宽度按原始 SVG 图像等比缩放；当 Width、Height 都填 0px 时，表示水印的宽度取原始 SVG 图像的宽度；</li>
 	// <li>当字符串以 W% 结尾，表示水印 Width 为视频宽度的百分比大小，如 10W% 表示 Width 为视频宽度的 10%；</li>
 	// <li>当字符串以 H% 结尾，表示水印 Width 为视频高度的百分比大小，如 10H% 表示 Width 为视频高度的 10%；</li>
-	// <li>当字符串以 S% 结尾，表示水印 Width 为视频短边的百分比大小，如 10S% 表示 Width 为视频短片的 10%；</li>
+	// <li>当字符串以 S% 结尾，表示水印 Width 为视频短边的百分比大小，如 10S% 表示 Width 为视频短边的 10%；</li>
 	// <li>当字符串以 L% 结尾，表示水印 Width 为视频长边的百分比大小，如 10L% 表示 Width 为视频长边的 10%；</li>
 	// <li>当字符串以 % 结尾时，含义同 W%。</li>
 	// 默认值为 10W%。
@@ -3749,11 +4493,27 @@ type SvgWatermarkInputForUpdate struct {
 	//  Width 不为 0px 时，表示水印的高度按原始 SVG 图像等比缩放；当 Width、Height 都填 0px 时，表示水印的高度取原始 SVG 图像的高度；</li>
 	// <li>当字符串以 W% 结尾，表示水印 Height 为视频宽度的百分比大小，如 10W% 表示 Height 为视频宽度的 10%；</li>
 	// <li>当字符串以 H% 结尾，表示水印 Height 为视频高度的百分比大小，如 10H% 表示 Height 为视频高度的 10%；</li>
-	// <li>当字符串以 S% 结尾，表示水印 Height 为视频短边的百分比大小，如 10S% 表示 Height 为视频短片的 10%；</li>
+	// <li>当字符串以 S% 结尾，表示水印 Height 为视频短边的百分比大小，如 10S% 表示 Height 为视频短边的 10%；</li>
 	// <li>当字符串以 L% 结尾，表示水印 Height 为视频长边的百分比大小，如 10L% 表示 Height 为视频长边的 10%；</li>
 	// <li>当字符串以 % 结尾时，含义同 H%。
 	// 默认值为 0px。
 	Height *string `json:"Height,omitempty" name:"Height"`
+}
+
+type TagConfigureInfo struct {
+
+	// 智能标签任务开关，可选值：
+	// <li>ON：开启智能标签任务；</li>
+	// <li>OFF：关闭智能标签任务。</li>
+	Switch *string `json:"Switch,omitempty" name:"Switch"`
+}
+
+type TagConfigureInfoForUpdate struct {
+
+	// 智能标签任务开关，可选值：
+	// <li>ON：开启智能标签任务；</li>
+	// <li>OFF：关闭智能标签任务。</li>
+	Switch *string `json:"Switch,omitempty" name:"Switch"`
 }
 
 type TaskSimpleInfo struct {
@@ -4065,13 +4825,17 @@ type WatermarkTemplate struct {
 	// <li>当字符串以 px 结尾，表示水印 Top 为视频高度指定像素的位置，如 100px 表示 Top 为 100 像素。</li>
 	YPos *string `json:"YPos,omitempty" name:"YPos"`
 
-	// 图片水印模板，仅当 Type 为 image，该字段有值。
+	// 图片水印模板，仅当 Type 为 image，该字段有效。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ImageTemplate *ImageWatermarkTemplate `json:"ImageTemplate,omitempty" name:"ImageTemplate"`
 
-	// 文字水印模板，仅当 Type 为 text，该字段有值。
+	// 文字水印模板，仅当 Type 为 text，该字段有效。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TextTemplate *TextWatermarkTemplateInput `json:"TextTemplate,omitempty" name:"TextTemplate"`
+
+	// SVG 水印模板，当 Type 为 svg，该字段有效。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SvgTemplate *SvgWatermarkInput `json:"SvgTemplate,omitempty" name:"SvgTemplate"`
 
 	// 模板创建时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
 	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`

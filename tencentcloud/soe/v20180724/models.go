@@ -32,7 +32,7 @@ type InitOralProcessRequest struct {
 	// 语音输入模式，0：流式分片，1：非流式一次性评估
 	WorkMode *int64 `json:"WorkMode,omitempty" name:"WorkMode"`
 
-	// 评估模式，0：词模式，,1：:句子模式，2：段落模式，3：自由说模式，当为词模式评估时，能够提供每个音节的评估信息，当为句子模式时，能够提供完整度和流利度信息。
+	// 评估模式，0：词模式（中文评测模式下为文字模式），1：句子模式，2：段落模式，3：自由说模式，当为词模式评估时，能够提供每个音节的评估信息，当为句子模式时，能够提供完整度和流利度信息。
 	EvalMode *int64 `json:"EvalMode,omitempty" name:"EvalMode"`
 
 	// 评价苛刻指数，取值为[1.0 - 4.0]范围内的浮点数，用于平滑不同年龄段的分数，1.0为小年龄段，4.0为最高年龄段
@@ -119,7 +119,7 @@ type SentenceInfo struct {
 	// 详细发音评估结果
 	Words []*WordRsp `json:"Words,omitempty" name:"Words" list`
 
-	// 发音精准度，取值范围[-1, 100]，当取-1时指完全不匹配，当为句子模式时，是所有已识别单词准确度的加权平均值。当为流式模式且请求中IsEnd未置1时，取值无意义
+	// 发音精准度，取值范围[-1, 100]，当取-1时指完全不匹配，当为句子模式时，是所有已识别单词准确度的加权平均值，在reftext中但未识别出来的词不计入分数中。
 	PronAccuracy *float64 `json:"PronAccuracy,omitempty" name:"PronAccuracy"`
 
 	// 发音流利度，取值范围[0, 1]，当为词模式时，取值无意义；当为流式模式且请求中IsEnd未置1时，取值无意义
@@ -127,6 +127,9 @@ type SentenceInfo struct {
 
 	// 发音完整度，取值范围[0, 1]，当为词模式时，取值无意义；当为流式模式且请求中IsEnd未置1时，取值无意义
 	PronCompletion *float64 `json:"PronCompletion,omitempty" name:"PronCompletion"`
+
+	// 建议评分，取值范围[0,100]，评分方式为建议评分 = 准确度（PronAccuracyfloat）* 完整度（PronCompletionfloat）*（2 - 完整度（PronCompletionfloat）），如若评分策略不符合请参考Words数组中的详细分数自定义评分逻辑。
+	SuggestedScore *float64 `json:"SuggestedScore,omitempty" name:"SuggestedScore"`
 }
 
 type TransmitOralProcessRequest struct {
@@ -144,7 +147,7 @@ type TransmitOralProcessRequest struct {
 	// 语音编码类型	1:pcm。
 	VoiceEncodeType *int64 `json:"VoiceEncodeType,omitempty" name:"VoiceEncodeType"`
 
-	// 当前数据包数据, 流式模式下数据包大小可以按需设置，数据包大小必须 >= 4K，且必须保证分片帧完整（16bit的数据必须保证音频长度为偶数），编码格式要求为BASE64。
+	// 当前数据包数据, 流式模式下数据包大小可以按需设置，在网络稳定时，分片大小建议设置0.5k，且必须保证分片帧完整（16bit的数据必须保证音频长度为偶数），编码格式要求为BASE64。
 	UserVoiceData *string `json:"UserVoiceData,omitempty" name:"UserVoiceData"`
 
 	// 语音段唯一标识，一个完整语音一个SessionId。
@@ -173,7 +176,7 @@ type TransmitOralProcessResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 发音精准度，取值范围[-1, 100]，当取-1时指完全不匹配，当为句子模式时，是所有已识别单词准确度的加权平均值。当为流式模式且请求中IsEnd未置1时，取值无意义
+		// 发音精准度，取值范围[-1, 100]，当取-1时指完全不匹配，当为句子模式时，是所有已识别单词准确度的加权平均值，在reftext中但未识别出来的词不计入分数中。当为流式模式且请求中IsEnd未置1时，取值无意义。
 		PronAccuracy *float64 `json:"PronAccuracy,omitempty" name:"PronAccuracy"`
 
 		// 发音流利度，取值范围[0, 1]，当为词模式时，取值无意义；当为流式模式且请求中IsEnd未置1时，取值无意义
@@ -196,6 +199,9 @@ type TransmitOralProcessResponse struct {
 
 		// 评估 session 状态，“Evaluating"：评估中、"Failed"：评估失败、"Finished"：评估完成
 		Status *string `json:"Status,omitempty" name:"Status"`
+
+		// 建议评分，取值范围[0,100]，评分方式为建议评分 = 准确度（PronAccuracyfloat）* 完整度（PronCompletionfloat）*（2 - 完整度（PronCompletionfloat）），如若评分策略不符合请参考Words数组中的详细分数自定义评分逻辑。
+		SuggestedScore *float64 `json:"SuggestedScore,omitempty" name:"SuggestedScore"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -226,7 +232,7 @@ type TransmitOralProcessWithInitRequest struct {
 	// 语音编码类型	1:pcm。
 	VoiceEncodeType *int64 `json:"VoiceEncodeType,omitempty" name:"VoiceEncodeType"`
 
-	// 当前数据包数据, 流式模式下数据包大小可以按需设置，数据包大小必须 >= 4K，且必须保证分片帧完整（16bit的数据必须保证音频长度为偶数），编码格式要求为BASE64。
+	// 当前数据包数据, 流式模式下数据包大小可以按需设置，在网络良好的情况下，建议设置为0.5k，且必须保证分片帧完整（16bit的数据必须保证音频长度为偶数），编码格式要求为BASE64。
 	UserVoiceData *string `json:"UserVoiceData,omitempty" name:"UserVoiceData"`
 
 	// 语音段唯一标识，一个完整语音一个SessionId。
@@ -238,7 +244,7 @@ type TransmitOralProcessWithInitRequest struct {
 	// 语音输入模式，0：流式分片，1：非流式一次性评估
 	WorkMode *int64 `json:"WorkMode,omitempty" name:"WorkMode"`
 
-	// 评估模式，0：词模式，,1：:句子模式，2：段落模式，3：自由说模式，当为词模式评估时，能够提供每个音节的评估信息，当为句子模式时，能够提供完整度和流利度信息。
+	// 评估模式，0：词模式（中文评测模式下为文字模式），1：句子模式，2：段落模式，3：自由说模式，当为词模式评估时，能够提供每个音节的评估信息，当为句子模式时，能够提供完整度和流利度信息。
 	EvalMode *int64 `json:"EvalMode,omitempty" name:"EvalMode"`
 
 	// 评价苛刻指数，取值为[1.0 - 4.0]范围内的浮点数，用于平滑不同年龄段的分数，1.0为小年龄段，4.0为最高年龄段
@@ -279,7 +285,7 @@ type TransmitOralProcessWithInitResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 发音精准度，取值范围[-1, 100]，当取-1时指完全不匹配，当为句子模式时，是所有已识别单词准确度的加权平均值。当为流式模式且请求中IsEnd未置1时，取值无意义
+		// 发音精准度，取值范围[-1, 100]，当取-1时指完全不匹配，当为句子模式时，是所有已识别单词准确度的加权平均值，在reftext中但未识别出来的词不计入分数中。当为流式模式且请求中IsEnd未置1时，取值无意义。
 		PronAccuracy *float64 `json:"PronAccuracy,omitempty" name:"PronAccuracy"`
 
 		// 发音流利度，取值范围[0, 1]，当为词模式时，取值无意义；当为流式模式且请求中IsEnd未置1时，取值无意义
@@ -302,6 +308,9 @@ type TransmitOralProcessWithInitResponse struct {
 
 		// 评估 session 状态，“Evaluating"：评估中、"Failed"：评估失败、"Finished"：评估完成
 		Status *string `json:"Status,omitempty" name:"Status"`
+
+		// 建议评分，取值范围[0,100]，评分方式为建议评分 = 准确度（PronAccuracyfloat）* 完整度（PronCompletionfloat）*（2 - 完整度（PronCompletionfloat）），如若评分策略不符合请参考Words数组中的详细分数自定义评分逻辑。
+		SuggestedScore *float64 `json:"SuggestedScore,omitempty" name:"SuggestedScore"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`

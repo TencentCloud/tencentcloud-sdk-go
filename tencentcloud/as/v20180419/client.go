@@ -68,6 +68,33 @@ func (c *Client) AttachInstances(request *AttachInstancesRequest) (response *Att
     return
 }
 
+func NewCompleteLifecycleActionRequest() (request *CompleteLifecycleActionRequest) {
+    request = &CompleteLifecycleActionRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("as", APIVersion, "CompleteLifecycleAction")
+    return
+}
+
+func NewCompleteLifecycleActionResponse() (response *CompleteLifecycleActionResponse) {
+    response = &CompleteLifecycleActionResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（CompleteLifecycleAction）用于完成生命周期动作。
+// 
+// * 用户通过调用本接口，指定一个具体的生命周期挂钩的结果（“CONITNUE”或者“ABANDON”）。如果一直不调用本接口，则生命周期挂钩会在超时后按照“DefaultResult”进行处理。
+func (c *Client) CompleteLifecycleAction(request *CompleteLifecycleActionRequest) (response *CompleteLifecycleActionResponse, err error) {
+    if request == nil {
+        request = NewCompleteLifecycleActionRequest()
+    }
+    response = NewCompleteLifecycleActionResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateAutoScalingGroupRequest() (request *CreateAutoScalingGroupRequest) {
     request = &CreateAutoScalingGroupRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -122,6 +149,49 @@ func (c *Client) CreateLaunchConfiguration(request *CreateLaunchConfigurationReq
     return
 }
 
+func NewCreateLifecycleHookRequest() (request *CreateLifecycleHookRequest) {
+    request = &CreateLifecycleHookRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("as", APIVersion, "CreateLifecycleHook")
+    return
+}
+
+func NewCreateLifecycleHookResponse() (response *CreateLifecycleHookResponse) {
+    response = &CreateLifecycleHookResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（CreateLifecycleHook）用于创建生命周期挂钩。
+// 
+// * 您可以为生命周期挂钩配置消息通知，弹性伸缩会通知您的CMQ消息队列，通知内容形如：
+// 
+// ```
+// {
+// 	"Service": "Tencent Cloud Auto Scaling",
+// 	"Time": "2019-03-14T10:15:11Z",
+// 	"AppId": "1251783334",
+// 	"ActivityId": "asa-fznnvrja",
+// 	"AutoScalingGroupId": "asg-rrrrtttt",
+// 	"LifecycleHookId": "ash-xxxxyyyy",
+// 	"LifecycleHookName": "my-hook",
+// 	"LifecycleActionToken": "3080e1c9-0efe-4dd7-ad3b-90cd6618298f",
+// 	"InstanceId": "ins-aaaabbbb",
+// 	"LifecycleTransition": "INSTANCE_LAUNCHING",
+// 	"NotificationMetadata": ""
+// }
+// ```
+func (c *Client) CreateLifecycleHook(request *CreateLifecycleHookRequest) (response *CreateLifecycleHookResponse, err error) {
+    if request == nil {
+        request = NewCreateLifecycleHookRequest()
+    }
+    response = NewCreateLifecycleHookResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateNotificationConfigurationRequest() (request *CreateNotificationConfigurationRequest) {
     request = &CreateNotificationConfigurationRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -143,6 +213,31 @@ func (c *Client) CreateNotificationConfiguration(request *CreateNotificationConf
         request = NewCreateNotificationConfigurationRequest()
     }
     response = NewCreateNotificationConfigurationResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreatePaiInstanceRequest() (request *CreatePaiInstanceRequest) {
+    request = &CreatePaiInstanceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("as", APIVersion, "CreatePaiInstance")
+    return
+}
+
+func NewCreatePaiInstanceResponse() (response *CreatePaiInstanceResponse) {
+    response = &CreatePaiInstanceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口 (CreatePaiInstance) 用于创建一个指定配置的PAI实例。
+func (c *Client) CreatePaiInstance(request *CreatePaiInstanceRequest) (response *CreatePaiInstanceResponse, err error) {
+    if request == nil {
+        request = NewCreatePaiInstanceRequest()
+    }
+    response = NewCreatePaiInstanceResponse()
     err = c.Send(request, response)
     return
 }
@@ -245,6 +340,31 @@ func (c *Client) DeleteLaunchConfiguration(request *DeleteLaunchConfigurationReq
         request = NewDeleteLaunchConfigurationRequest()
     }
     response = NewDeleteLaunchConfigurationResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteLifecycleHookRequest() (request *DeleteLifecycleHookRequest) {
+    request = &DeleteLifecycleHookRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("as", APIVersion, "DeleteLifecycleHook")
+    return
+}
+
+func NewDeleteLifecycleHookResponse() (response *DeleteLifecycleHookResponse) {
+    response = &DeleteLifecycleHookResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（DeleteLifecycleHook）用于删除生命周期挂钩。
+func (c *Client) DeleteLifecycleHook(request *DeleteLifecycleHookRequest) (response *DeleteLifecycleHookResponse, err error) {
+    if request == nil {
+        request = NewDeleteLifecycleHookRequest()
+    }
+    response = NewDeleteLifecycleHookResponse()
     err = c.Send(request, response)
     return
 }
@@ -458,6 +578,34 @@ func (c *Client) DescribeLaunchConfigurations(request *DescribeLaunchConfigurati
     return
 }
 
+func NewDescribeLifecycleHooksRequest() (request *DescribeLifecycleHooksRequest) {
+    request = &DescribeLifecycleHooksRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("as", APIVersion, "DescribeLifecycleHooks")
+    return
+}
+
+func NewDescribeLifecycleHooksResponse() (response *DescribeLifecycleHooksResponse) {
+    response = &DescribeLifecycleHooksResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（DescribeLifecycleHooks）用于查询生命周期挂钩信息。
+// 
+// * 可以根据伸缩组ID、生命周期挂钩ID或者生命周期挂钩名称等信息来查询生命周期挂钩的详细信息。过滤信息详细请见过滤器`Filter`。
+// * 如果参数为空，返回当前用户一定数量（`Limit`所指定的数量，默认为20）的生命周期挂钩。
+func (c *Client) DescribeLifecycleHooks(request *DescribeLifecycleHooksRequest) (response *DescribeLifecycleHooksResponse, err error) {
+    if request == nil {
+        request = NewDescribeLifecycleHooksRequest()
+    }
+    response = NewDescribeLifecycleHooksResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeNotificationConfigurationsRequest() (request *DescribeNotificationConfigurationsRequest) {
     request = &DescribeNotificationConfigurationsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -482,6 +630,34 @@ func (c *Client) DescribeNotificationConfigurations(request *DescribeNotificatio
         request = NewDescribeNotificationConfigurationsRequest()
     }
     response = NewDescribeNotificationConfigurationsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribePaiInstancesRequest() (request *DescribePaiInstancesRequest) {
+    request = &DescribePaiInstancesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("as", APIVersion, "DescribePaiInstances")
+    return
+}
+
+func NewDescribePaiInstancesResponse() (response *DescribePaiInstancesResponse) {
+    response = &DescribePaiInstancesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（DescribePaiInstances）用于查询PAI实例信息。
+// 
+// * 可以根据实例ID、实例域名等信息来查询PAI实例的详细信息。过滤信息详细请见过滤器`Filter`。
+// * 如果参数为空，返回当前用户一定数量（`Limit`所指定的数量，默认为20）的PAI实例。
+func (c *Client) DescribePaiInstances(request *DescribePaiInstancesRequest) (response *DescribePaiInstancesResponse, err error) {
+    if request == nil {
+        request = NewDescribePaiInstancesRequest()
+    }
+    response = NewDescribePaiInstancesResponse()
     err = c.Send(request, response)
     return
 }
@@ -796,6 +972,31 @@ func (c *Client) ModifyScheduledAction(request *ModifyScheduledActionRequest) (r
     return
 }
 
+func NewPreviewPaiDomainNameRequest() (request *PreviewPaiDomainNameRequest) {
+    request = &PreviewPaiDomainNameRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("as", APIVersion, "PreviewPaiDomainName")
+    return
+}
+
+func NewPreviewPaiDomainNameResponse() (response *PreviewPaiDomainNameResponse) {
+    response = &PreviewPaiDomainNameResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（PreviewPaiDomainName）用于预览PAI实例域名。
+func (c *Client) PreviewPaiDomainName(request *PreviewPaiDomainNameRequest) (response *PreviewPaiDomainNameResponse, err error) {
+    if request == nil {
+        request = NewPreviewPaiDomainNameRequest()
+    }
+    response = NewPreviewPaiDomainNameResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewRemoveInstancesRequest() (request *RemoveInstancesRequest) {
     request = &RemoveInstancesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -843,6 +1044,33 @@ func (c *Client) SetInstancesProtection(request *SetInstancesProtectionRequest) 
         request = NewSetInstancesProtectionRequest()
     }
     response = NewSetInstancesProtectionResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewUpgradeLifecycleHookRequest() (request *UpgradeLifecycleHookRequest) {
+    request = &UpgradeLifecycleHookRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("as", APIVersion, "UpgradeLifecycleHook")
+    return
+}
+
+func NewUpgradeLifecycleHookResponse() (response *UpgradeLifecycleHookResponse) {
+    response = &UpgradeLifecycleHookResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（UpgradeLifecycleHook）用于升级生命周期挂钩。
+// 
+// * 本接口用于升级生命周期挂钩，采用“完全覆盖”风格，无论之前参数如何，统一按照接口参数设置为新的配置。对于非必填字段，不填写则按照默认值赋值。
+func (c *Client) UpgradeLifecycleHook(request *UpgradeLifecycleHookRequest) (response *UpgradeLifecycleHookResponse, err error) {
+    if request == nil {
+        request = NewUpgradeLifecycleHookRequest()
+    }
+    response = NewUpgradeLifecycleHookResponse()
     err = c.Send(request, response)
     return
 }

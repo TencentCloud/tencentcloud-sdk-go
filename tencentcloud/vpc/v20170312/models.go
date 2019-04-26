@@ -270,6 +270,126 @@ func (r *AllocateAddressesResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type AssignIpv6AddressesRequest struct {
+	*tchttp.BaseRequest
+
+	// 弹性网卡实例`ID`，形如：`eni-m6dyj72l`。
+	NetworkInterfaceId *string `json:"NetworkInterfaceId,omitempty" name:"NetworkInterfaceId"`
+
+	// 指定的`IPv6`地址列表，单次最多指定10个。与入参`Ipv6AddressCount`合并计算配额。
+	Ipv6Addresses []*Ipv6Address `json:"Ipv6Addresses,omitempty" name:"Ipv6Addresses" list`
+
+	// 自动分配`IPv6`地址个数，内网IP地址个数总和不能超过配数。与入参`Ipv6Addresses`合并计算配额。
+	Ipv6AddressCount *uint64 `json:"Ipv6AddressCount,omitempty" name:"Ipv6AddressCount"`
+}
+
+func (r *AssignIpv6AddressesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *AssignIpv6AddressesRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type AssignIpv6AddressesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 分配给弹性网卡的`IPv6`地址列表。
+		Ipv6AddressSet []*Ipv6Address `json:"Ipv6AddressSet,omitempty" name:"Ipv6AddressSet" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *AssignIpv6AddressesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *AssignIpv6AddressesResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type AssignIpv6CidrBlockRequest struct {
+	*tchttp.BaseRequest
+
+	// `VPC`实例`ID`，形如：`vpc-f49l6u0z`。
+	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
+}
+
+func (r *AssignIpv6CidrBlockRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *AssignIpv6CidrBlockRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type AssignIpv6CidrBlockResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 分配的 `IPv6` 网段。形如：`3402:4e00:20:1000::/56`
+		Ipv6CidrBlock *string `json:"Ipv6CidrBlock,omitempty" name:"Ipv6CidrBlock"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *AssignIpv6CidrBlockResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *AssignIpv6CidrBlockResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type AssignIpv6SubnetCidrBlockRequest struct {
+	*tchttp.BaseRequest
+
+	// 子网所在私有网络`ID`。形如：`vpc-f49l6u0z`。
+	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
+
+	// 分配 `IPv6` 子网段列表。
+	Ipv6SubnetCidrBlocks []*Ipv6SubnetCidrBlock `json:"Ipv6SubnetCidrBlocks,omitempty" name:"Ipv6SubnetCidrBlocks" list`
+}
+
+func (r *AssignIpv6SubnetCidrBlockRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *AssignIpv6SubnetCidrBlockRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type AssignIpv6SubnetCidrBlockResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 分配 `IPv6` 子网段列表。
+		Ipv6SubnetCidrBlockSet []*Ipv6SubnetCidrBlock `json:"Ipv6SubnetCidrBlockSet,omitempty" name:"Ipv6SubnetCidrBlockSet" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *AssignIpv6SubnetCidrBlockResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *AssignIpv6SubnetCidrBlockResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type AssignPrivateIpAddressesRequest struct {
 	*tchttp.BaseRequest
 
@@ -3690,8 +3810,9 @@ type DescribeSubnetsRequest struct {
 	// 过滤条件，参数不支持同时指定SubnetIds和Filters。
 	// <li>subnet-id - String - （过滤条件）Subnet实例名称。</li>
 	// <li>vpc-id - String - （过滤条件）VPC实例ID，形如：vpc-f49l6u0z。</li>
-	// <li>cidr-block - String - （过滤条件）vpc的cidr。</li>
+	// <li>cidr-block - String - （过滤条件）子网网段，形如: 192.168.1.0 。</li>
 	// <li>is-default - Boolean - （过滤条件）是否是默认子网。</li>
+	// <li>is-remote-vpc-snat - Boolean - （过滤条件）是否为VPC SNAT地址池子网。</li>
 	// <li>subnet-name - String - （过滤条件）子网名称。</li>
 	// <li>zone - String - （过滤条件）可用区。</li>
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
@@ -3733,6 +3854,55 @@ func (r *DescribeSubnetsResponse) ToJsonString() string {
 }
 
 func (r *DescribeSubnetsResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeVpcIpv6AddressesRequest struct {
+	*tchttp.BaseRequest
+
+	// `VPC`实例`ID`，形如：`vpc-f49l6u0z`。
+	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
+
+	// `IP`地址列表，批量查询单次请求最多支持`10`个。
+	Ipv6Addresses []*string `json:"Ipv6Addresses,omitempty" name:"Ipv6Addresses" list`
+
+	// 偏移量。
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 返回数量。
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+func (r *DescribeVpcIpv6AddressesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeVpcIpv6AddressesRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeVpcIpv6AddressesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// `IPv6`地址列表。
+		Ipv6AddressSet []*VpcIpv6Address `json:"Ipv6AddressSet,omitempty" name:"Ipv6AddressSet" list`
+
+		// `IPv6`地址总数。
+		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeVpcIpv6AddressesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeVpcIpv6AddressesResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -4775,6 +4945,15 @@ type Ipv6Address struct {
 	State *string `json:"State,omitempty" name:"State"`
 }
 
+type Ipv6SubnetCidrBlock struct {
+
+	// 子网实例`ID`。形如：`subnet-pxir56ns`。
+	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
+
+	// `IPv6`子网段。形如：`3402:4e00:20:1001::/64`
+	Ipv6CidrBlock *string `json:"Ipv6CidrBlock,omitempty" name:"Ipv6CidrBlock"`
+}
+
 type ItemPrice struct {
 
 	// 按量计费后付费单价，单位：元。
@@ -5301,6 +5480,43 @@ func (r *ModifyIp6TranslatorResponse) ToJsonString() string {
 }
 
 func (r *ModifyIp6TranslatorResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyIpv6AddressesAttributeRequest struct {
+	*tchttp.BaseRequest
+
+	// 弹性网卡实例`ID`，形如：`eni-m6dyj72l`。
+	NetworkInterfaceId *string `json:"NetworkInterfaceId,omitempty" name:"NetworkInterfaceId"`
+
+	// 指定的内网IPv6`地址信息。
+	Ipv6Addresses []*Ipv6Address `json:"Ipv6Addresses,omitempty" name:"Ipv6Addresses" list`
+}
+
+func (r *ModifyIpv6AddressesAttributeRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyIpv6AddressesAttributeRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyIpv6AddressesAttributeResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifyIpv6AddressesAttributeResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyIpv6AddressesAttributeResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -6656,6 +6872,12 @@ type Subnet struct {
 
 	// 子网的 `IPv6` `CIDR`。
 	Ipv6CidrBlock *string `json:"Ipv6CidrBlock,omitempty" name:"Ipv6CidrBlock"`
+
+	// 关联`ACL`ID
+	NetworkAclId *string `json:"NetworkAclId,omitempty" name:"NetworkAclId"`
+
+	// 是否为 `SNAT` 地址池子网。
+	IsRemoteVpcSnat *bool `json:"IsRemoteVpcSnat,omitempty" name:"IsRemoteVpcSnat"`
 }
 
 type SubnetInput struct {
@@ -6704,6 +6926,117 @@ func (r *TransformAddressResponse) ToJsonString() string {
 }
 
 func (r *TransformAddressResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type UnassignIpv6AddressesRequest struct {
+	*tchttp.BaseRequest
+
+	// 弹性网卡实例`ID`，形如：`eni-m6dyj72l`。
+	NetworkInterfaceId *string `json:"NetworkInterfaceId,omitempty" name:"NetworkInterfaceId"`
+
+	// 指定的`IPv6`地址列表，单次最多指定10个。
+	Ipv6Addresses []*Ipv6Address `json:"Ipv6Addresses,omitempty" name:"Ipv6Addresses" list`
+}
+
+func (r *UnassignIpv6AddressesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *UnassignIpv6AddressesRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type UnassignIpv6AddressesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *UnassignIpv6AddressesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *UnassignIpv6AddressesResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type UnassignIpv6CidrBlockRequest struct {
+	*tchttp.BaseRequest
+
+	// `VPC`实例`ID`，形如：`vpc-f49l6u0z`。
+	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
+
+	// `IPv6`网段。形如：`3402:4e00:20:1000::/56`
+	Ipv6CidrBlock *string `json:"Ipv6CidrBlock,omitempty" name:"Ipv6CidrBlock"`
+}
+
+func (r *UnassignIpv6CidrBlockRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *UnassignIpv6CidrBlockRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type UnassignIpv6CidrBlockResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *UnassignIpv6CidrBlockResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *UnassignIpv6CidrBlockResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type UnassignIpv6SubnetCidrBlockRequest struct {
+	*tchttp.BaseRequest
+
+	// 子网所在私有网络`ID`。形如：`vpc-f49l6u0z`。
+	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
+
+	// `IPv6` 子网段列表。
+	Ipv6SubnetCidrBlocks []*Ipv6SubnetCidrBlock `json:"Ipv6SubnetCidrBlocks,omitempty" name:"Ipv6SubnetCidrBlocks" list`
+}
+
+func (r *UnassignIpv6SubnetCidrBlockRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *UnassignIpv6SubnetCidrBlockRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type UnassignIpv6SubnetCidrBlockResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *UnassignIpv6SubnetCidrBlockResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *UnassignIpv6SubnetCidrBlockResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -6778,6 +7111,21 @@ type Vpc struct {
 
 	// `VPC`的`IPv6` `CIDR`。
 	Ipv6CidrBlock *string `json:"Ipv6CidrBlock,omitempty" name:"Ipv6CidrBlock"`
+}
+
+type VpcIpv6Address struct {
+
+	// `VPC`内`IPv6`地址。
+	Ipv6Address *string `json:"Ipv6Address,omitempty" name:"Ipv6Address"`
+
+	// 所属子网 `IPv6` `CIDR`。
+	CidrBlock *string `json:"CidrBlock,omitempty" name:"CidrBlock"`
+
+	// `IPv6`类型。
+	Ipv6AddressType *string `json:"Ipv6AddressType,omitempty" name:"Ipv6AddressType"`
+
+	// `IPv6`申请时间。
+	CreatedTime *string `json:"CreatedTime,omitempty" name:"CreatedTime"`
 }
 
 type VpcPrivateIpAddress struct {
