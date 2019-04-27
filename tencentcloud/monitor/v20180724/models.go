@@ -93,7 +93,7 @@ type GetMonitorDataRequest struct {
 	// 命名空间，每个云产品会有一个命名空间
 	Namespace *string `json:"Namespace,omitempty" name:"Namespace"`
 
-	// 指标名称
+	// 指标名称，各个云产品的详细指标说明请参阅各个产品[监控接口](<https://cloud.tencent.com/document/product/248/30384>)文档
 	MetricName *string `json:"MetricName,omitempty" name:"MetricName"`
 
 	// 实例对象的维度组合
