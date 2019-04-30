@@ -94,6 +94,54 @@ type Cluster struct {
 
 	// 集群当前node数量
 	ClusterNodeNum *uint64 `json:"ClusterNodeNum,omitempty" name:"ClusterNodeNum"`
+
+	// 集群所属的项目ID
+	ProjectId *uint64 `json:"ProjectId,omitempty" name:"ProjectId"`
+}
+
+type ClusterAdvancedSettings struct {
+
+	// 是否启用IPVS
+	IPVS *bool `json:"IPVS,omitempty" name:"IPVS"`
+
+	// 是否启用集群节点扩缩容
+	AsEnabled *bool `json:"AsEnabled,omitempty" name:"AsEnabled"`
+}
+
+type ClusterBasicSettings struct {
+
+	// 集群系统。centos7.2x86_64 或者 ubuntu16.04.1 LTSx86_64，默认取值为ubuntu16.04.1 LTSx86_64
+	ClusterOs *string `json:"ClusterOs,omitempty" name:"ClusterOs"`
+
+	// 集群版本,默认值为1.10.5
+	ClusterVersion *string `json:"ClusterVersion,omitempty" name:"ClusterVersion"`
+
+	// 集群名称
+	ClusterName *string `json:"ClusterName,omitempty" name:"ClusterName"`
+
+	// 集群描述
+	ClusterDescription *string `json:"ClusterDescription,omitempty" name:"ClusterDescription"`
+
+	// 私有网络ID，形如vpc-xxx。创建托管空集群时必传。
+	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
+
+	// 集群内新增资源所属项目ID。
+	ProjectId *int64 `json:"ProjectId,omitempty" name:"ProjectId"`
+}
+
+type ClusterCIDRSettings struct {
+
+	// 用于分配集群容器和服务 IP 的 CIDR，不得与 VPC CIDR 冲突，也不得与同 VPC 内其他集群 CIDR 冲突
+	ClusterCIDR *string `json:"ClusterCIDR,omitempty" name:"ClusterCIDR"`
+
+	// 是否忽略 ClusterCIDR 冲突错误, 默认不忽略
+	IgnoreClusterCIDRConflict *bool `json:"IgnoreClusterCIDRConflict,omitempty" name:"IgnoreClusterCIDRConflict"`
+
+	// 集群中每个Node上最大的Pod数量
+	MaxNodePodNum *uint64 `json:"MaxNodePodNum,omitempty" name:"MaxNodePodNum"`
+
+	// 集群最大的service数量
+	MaxClusterServiceNum *uint64 `json:"MaxClusterServiceNum,omitempty" name:"MaxClusterServiceNum"`
 }
 
 type ClusterNetworkSettings struct {
@@ -115,6 +163,61 @@ type ClusterNetworkSettings struct {
 
 	// 集群的VPCID（如果创建空集群，为必传值，否则自动设置为和集群的节点保持一致）
 	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
+}
+
+type CreateClusterRequest struct {
+	*tchttp.BaseRequest
+
+	// 集群容器网络配置信息
+	ClusterCIDRSettings *ClusterCIDRSettings `json:"ClusterCIDRSettings,omitempty" name:"ClusterCIDRSettings"`
+
+	// 集群类型，托管集群：MANAGED_CLUSTER，独立集群：INDEPENDENT_CLUSTER。
+	ClusterType *string `json:"ClusterType,omitempty" name:"ClusterType"`
+
+	// CVM创建透传参数，json化字符串格式，详见[CVM创建实例](https://cloud.tencent.com/document/product/213/15730)接口。
+	RunInstancesForNode []*RunInstancesForNode `json:"RunInstancesForNode,omitempty" name:"RunInstancesForNode" list`
+
+	// 集群的基本配置信息
+	ClusterBasicSettings *ClusterBasicSettings `json:"ClusterBasicSettings,omitempty" name:"ClusterBasicSettings"`
+
+	// 集群高级配置信息
+	ClusterAdvancedSettings *ClusterAdvancedSettings `json:"ClusterAdvancedSettings,omitempty" name:"ClusterAdvancedSettings"`
+
+	// 节点高级配置信息
+	InstanceAdvancedSettings *InstanceAdvancedSettings `json:"InstanceAdvancedSettings,omitempty" name:"InstanceAdvancedSettings"`
+
+	// 已存在实例的配置信息
+	ExistedInstancesForNode []*ExistedInstancesForNode `json:"ExistedInstancesForNode,omitempty" name:"ExistedInstancesForNode" list`
+}
+
+func (r *CreateClusterRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateClusterRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateClusterResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 集群ID
+		ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateClusterResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateClusterResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
 }
 
 type DeleteClusterInstancesRequest struct {
@@ -170,7 +273,7 @@ type DescribeClusterInstancesRequest struct {
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 
 	// 需要获取的节点实例Id列表(默认为空，表示拉取集群下所有节点实例)
-	InstanceIds *string `json:"InstanceIds,omitempty" name:"InstanceIds"`
+	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds" list`
 }
 
 func (r *DescribeClusterInstancesRequest) ToJsonString() string {
@@ -265,6 +368,33 @@ type EnhancedService struct {
 	MonitorService *RunMonitorServiceEnabled `json:"MonitorService,omitempty" name:"MonitorService"`
 }
 
+type ExistedInstancesForNode struct {
+
+	// 节点角色，取值:MASTER_ETCD, WORKER。MASTER_ETCD只有在创建 INDEPENDENT_CLUSTER 独立集群时需要指定。
+	NodeRole *string `json:"NodeRole,omitempty" name:"NodeRole"`
+
+	// 已存在实例的重装参数
+	ExistedInstancesPara *ExistedInstancesPara `json:"ExistedInstancesPara,omitempty" name:"ExistedInstancesPara"`
+}
+
+type ExistedInstancesPara struct {
+
+	// 集群ID
+	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds" list`
+
+	// 实例额外需要设置参数信息
+	InstanceAdvancedSettings *InstanceAdvancedSettings `json:"InstanceAdvancedSettings,omitempty" name:"InstanceAdvancedSettings"`
+
+	// 增强服务。通过该参数可以指定是否开启云安全、云监控等服务。若不指定该参数，则默认开启云监控、云安全服务。
+	EnhancedService *EnhancedService `json:"EnhancedService,omitempty" name:"EnhancedService"`
+
+	// 节点登录信息（目前仅支持使用Password或者单个KeyIds）
+	LoginSettings *LoginSettings `json:"LoginSettings,omitempty" name:"LoginSettings"`
+
+	// 实例所属安全组。该参数可以通过调用 DescribeSecurityGroups 的返回值中的sgId字段来获取。若不指定该参数，则绑定默认安全组。（目前仅支持设置单个sgId）
+	SecurityGroupIds []*string `json:"SecurityGroupIds,omitempty" name:"SecurityGroupIds" list`
+}
+
 type Filter struct {
 
 	// 属性名称, 若存在多个Filter时，Filter间的关系为逻辑与（AND）关系。
@@ -310,13 +440,25 @@ type InstanceAdvancedSettings struct {
 type LoginSettings struct {
 
 	// 实例登录密码。不同操作系统类型密码复杂度限制不一样，具体如下：<br><li>Linux实例密码必须8到16位，至少包括两项[a-z，A-Z]、[0-9] 和 [( ) ` ~ ! @ # $ % ^ & * - + = | { } [ ] : ; ' , . ? / ]中的特殊符号。<br><li>Windows实例密码必须12到16位，至少包括三项[a-z]，[A-Z]，[0-9] 和 [( ) ` ~ ! @ # $ % ^ & * - + = { } [ ] : ; ' , . ? /]中的特殊符号。<br><br>若不指定该参数，则由系统随机生成密码，并通过站内信方式通知到用户。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Password *string `json:"Password,omitempty" name:"Password"`
 
 	// 密钥ID列表。关联密钥后，就可以通过对应的私钥来访问实例；KeyId可通过接口DescribeKeyPairs获取，密钥与密码不能同时指定，同时Windows操作系统不支持指定密钥。当前仅支持购买的时候指定一个密钥。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	KeyIds []*string `json:"KeyIds,omitempty" name:"KeyIds" list`
 
 	// 保持镜像的原始设置。该参数与Password或KeyIds.N不能同时指定。只有使用自定义镜像、共享镜像或外部导入镜像创建实例时才能指定该参数为TRUE。取值范围：<br><li>TRUE：表示保持镜像的登录设置<br><li>FALSE：表示不保持镜像的登录设置<br><br>默认取值：FALSE。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	KeepImageLogin *string `json:"KeepImageLogin,omitempty" name:"KeepImageLogin"`
+}
+
+type RunInstancesForNode struct {
+
+	// 节点角色，取值:MASTER_ETCD, WORKER。MASTER_ETCD只有在创建 INDEPENDENT_CLUSTER 独立集群时需要指定。
+	NodeRole *string `json:"NodeRole,omitempty" name:"NodeRole"`
+
+	// CVM创建透传参数，json化字符串格式，详见[CVM创建实例](https://cloud.tencent.com/document/product/213/15730)接口，传入公共参数外的其他参数即可，其中ImageId会替换为TKE集群OS对应的镜像。
+	RunInstancesPara []*string `json:"RunInstancesPara,omitempty" name:"RunInstancesPara" list`
 }
 
 type RunMonitorServiceEnabled struct {

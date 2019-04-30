@@ -68,6 +68,31 @@ func (c *Client) AddExistedInstances(request *AddExistedInstancesRequest) (respo
     return
 }
 
+func NewCreateClusterRequest() (request *CreateClusterRequest) {
+    request = &CreateClusterRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tke", APIVersion, "CreateCluster")
+    return
+}
+
+func NewCreateClusterResponse() (response *CreateClusterResponse) {
+    response = &CreateClusterResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 创建集群
+func (c *Client) CreateCluster(request *CreateClusterRequest) (response *CreateClusterResponse, err error) {
+    if request == nil {
+        request = NewCreateClusterRequest()
+    }
+    response = NewCreateClusterResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteClusterInstancesRequest() (request *DeleteClusterInstancesRequest) {
     request = &DeleteClusterInstancesRequest{
         BaseRequest: &tchttp.BaseRequest{},

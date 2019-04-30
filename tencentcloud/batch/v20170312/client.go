@@ -345,6 +345,31 @@ func (c *Client) DescribeCvmZoneInstanceConfigInfos(request *DescribeCvmZoneInst
     return
 }
 
+func NewDescribeInstanceCategoriesRequest() (request *DescribeInstanceCategoriesRequest) {
+    request = &DescribeInstanceCategoriesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("batch", APIVersion, "DescribeInstanceCategories")
+    return
+}
+
+func NewDescribeInstanceCategoriesResponse() (response *DescribeInstanceCategoriesResponse) {
+    response = &DescribeInstanceCategoriesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 目前对CVM现有实例族划分为四类，每一类包含若干实例族。该接口用于查询实例分类信息。
+func (c *Client) DescribeInstanceCategories(request *DescribeInstanceCategoriesRequest) (response *DescribeInstanceCategoriesResponse, err error) {
+    if request == nil {
+        request = NewDescribeInstanceCategoriesRequest()
+    }
+    response = NewDescribeInstanceCategoriesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeJobRequest() (request *DescribeJobRequest) {
     request = &DescribeJobRequest{
         BaseRequest: &tchttp.BaseRequest{},

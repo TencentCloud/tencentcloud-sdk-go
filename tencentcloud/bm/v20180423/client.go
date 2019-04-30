@@ -1273,6 +1273,31 @@ func (c *Client) ShutdownDevices(request *ShutdownDevicesRequest) (response *Shu
     return
 }
 
+func NewStartDevicesRequest() (request *StartDevicesRequest) {
+    request = &StartDevicesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("bm", APIVersion, "StartDevices")
+    return
+}
+
+func NewStartDevicesResponse() (response *StartDevicesResponse) {
+    response = &StartDevicesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 开启服务器
+func (c *Client) StartDevices(request *StartDevicesRequest) (response *StartDevicesResponse, err error) {
+    if request == nil {
+        request = NewStartDevicesRequest()
+    }
+    response = NewStartDevicesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewUnbindPsaTagRequest() (request *UnbindPsaTagRequest) {
     request = &UnbindPsaTagRequest{
         BaseRequest: &tchttp.BaseRequest{},
