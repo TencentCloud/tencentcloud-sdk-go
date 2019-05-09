@@ -68,6 +68,34 @@ func (c *Client) AcceptDirectConnectTunnel(request *AcceptDirectConnectTunnelReq
     return
 }
 
+func NewCreateDirectConnectRequest() (request *CreateDirectConnectRequest) {
+    request = &CreateDirectConnectRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("dc", APIVersion, "CreateDirectConnect")
+    return
+}
+
+func NewCreateDirectConnectResponse() (response *CreateDirectConnectResponse) {
+    response = &CreateDirectConnectResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 申请物理专线接入。
+// 调用该接口时，请注意：
+// 账号要进行实名认证，否则不允许申请物理专线；
+// 若账户下存在欠费状态的物理专线，则不能申请更多的物理专线。
+func (c *Client) CreateDirectConnect(request *CreateDirectConnectRequest) (response *CreateDirectConnectResponse, err error) {
+    if request == nil {
+        request = NewCreateDirectConnectRequest()
+    }
+    response = NewCreateDirectConnectResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateDirectConnectTunnelRequest() (request *CreateDirectConnectTunnelRequest) {
     request = &CreateDirectConnectTunnelRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -89,6 +117,32 @@ func (c *Client) CreateDirectConnectTunnel(request *CreateDirectConnectTunnelReq
         request = NewCreateDirectConnectTunnelRequest()
     }
     response = NewCreateDirectConnectTunnelResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteDirectConnectRequest() (request *DeleteDirectConnectRequest) {
+    request = &DeleteDirectConnectRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("dc", APIVersion, "DeleteDirectConnect")
+    return
+}
+
+func NewDeleteDirectConnectResponse() (response *DeleteDirectConnectResponse) {
+    response = &DeleteDirectConnectResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 删除物理专线。
+// 只能删除处于状态的物理专线。
+func (c *Client) DeleteDirectConnect(request *DeleteDirectConnectRequest) (response *DeleteDirectConnectResponse, err error) {
+    if request == nil {
+        request = NewDeleteDirectConnectRequest()
+    }
+    response = NewDeleteDirectConnectResponse()
     err = c.Send(request, response)
     return
 }
@@ -118,6 +172,31 @@ func (c *Client) DeleteDirectConnectTunnel(request *DeleteDirectConnectTunnelReq
     return
 }
 
+func NewDescribeAccessPointsRequest() (request *DescribeAccessPointsRequest) {
+    request = &DescribeAccessPointsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("dc", APIVersion, "DescribeAccessPoints")
+    return
+}
+
+func NewDescribeAccessPointsResponse() (response *DescribeAccessPointsResponse) {
+    response = &DescribeAccessPointsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询物理专线接入点
+func (c *Client) DescribeAccessPoints(request *DescribeAccessPointsRequest) (response *DescribeAccessPointsResponse, err error) {
+    if request == nil {
+        request = NewDescribeAccessPointsRequest()
+    }
+    response = NewDescribeAccessPointsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeDirectConnectTunnelsRequest() (request *DescribeDirectConnectTunnelsRequest) {
     request = &DescribeDirectConnectTunnelsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -139,6 +218,56 @@ func (c *Client) DescribeDirectConnectTunnels(request *DescribeDirectConnectTunn
         request = NewDescribeDirectConnectTunnelsRequest()
     }
     response = NewDescribeDirectConnectTunnelsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeDirectConnectsRequest() (request *DescribeDirectConnectsRequest) {
+    request = &DescribeDirectConnectsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("dc", APIVersion, "DescribeDirectConnects")
+    return
+}
+
+func NewDescribeDirectConnectsResponse() (response *DescribeDirectConnectsResponse) {
+    response = &DescribeDirectConnectsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询物理专线列表。
+func (c *Client) DescribeDirectConnects(request *DescribeDirectConnectsRequest) (response *DescribeDirectConnectsResponse, err error) {
+    if request == nil {
+        request = NewDescribeDirectConnectsRequest()
+    }
+    response = NewDescribeDirectConnectsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyDirectConnectAttributeRequest() (request *ModifyDirectConnectAttributeRequest) {
+    request = &ModifyDirectConnectAttributeRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("dc", APIVersion, "ModifyDirectConnectAttribute")
+    return
+}
+
+func NewModifyDirectConnectAttributeResponse() (response *ModifyDirectConnectAttributeResponse) {
+    response = &ModifyDirectConnectAttributeResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 修改物理专线的属性。
+func (c *Client) ModifyDirectConnectAttribute(request *ModifyDirectConnectAttributeRequest) (response *ModifyDirectConnectAttributeResponse, err error) {
+    if request == nil {
+        request = NewModifyDirectConnectAttributeRequest()
+    }
+    response = NewModifyDirectConnectAttributeResponse()
     err = c.Send(request, response)
     return
 }

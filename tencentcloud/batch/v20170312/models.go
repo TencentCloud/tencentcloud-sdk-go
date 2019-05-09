@@ -214,25 +214,25 @@ type ComputeNode struct {
 type ComputeNodeMetrics struct {
 
 	// 已经完成提交的计算节点数量
-	SubmittedCount *string `json:"SubmittedCount,omitempty" name:"SubmittedCount"`
+	SubmittedCount *uint64 `json:"SubmittedCount,omitempty" name:"SubmittedCount"`
 
 	// 创建中的计算节点数量
-	CreatingCount *string `json:"CreatingCount,omitempty" name:"CreatingCount"`
+	CreatingCount *uint64 `json:"CreatingCount,omitempty" name:"CreatingCount"`
 
 	// 创建失败的计算节点数量
-	CreationFailedCount *string `json:"CreationFailedCount,omitempty" name:"CreationFailedCount"`
+	CreationFailedCount *uint64 `json:"CreationFailedCount,omitempty" name:"CreationFailedCount"`
 
 	// 完成创建的计算节点数量
-	CreatedCount *string `json:"CreatedCount,omitempty" name:"CreatedCount"`
+	CreatedCount *uint64 `json:"CreatedCount,omitempty" name:"CreatedCount"`
 
 	// 运行中的计算节点数量
-	RunningCount *string `json:"RunningCount,omitempty" name:"RunningCount"`
+	RunningCount *uint64 `json:"RunningCount,omitempty" name:"RunningCount"`
 
 	// 销毁中的计算节点数量
-	DeletingCount *string `json:"DeletingCount,omitempty" name:"DeletingCount"`
+	DeletingCount *uint64 `json:"DeletingCount,omitempty" name:"DeletingCount"`
 
 	// 异常的计算节点数量
-	AbnormalCount *string `json:"AbnormalCount,omitempty" name:"AbnormalCount"`
+	AbnormalCount *uint64 `json:"AbnormalCount,omitempty" name:"AbnormalCount"`
 }
 
 type CreateComputeEnvRequest struct {

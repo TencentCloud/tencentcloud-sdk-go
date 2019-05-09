@@ -110,7 +110,7 @@ func NewCreateEnterpriseAccountResponse() (response *CreateEnterpriseAccountResp
     return
 }
 
-// 为企业电子合同平台的最终企业用户进行开户。在企业电子合同平台进行操作的企业用户，企业电子合同平台向腾讯云发送个人用户的信息，提交开户命令。腾讯云接到请求后，自动为企业电子合同平台的企业用户生成一张数字证书。
+// 为企业电子合同平台的最终企业用户进行开户。在企业电子合同平台进行操作的企业用户，企业电子合同平台向腾讯云发送企业用户的信息，提交开户命令。腾讯云接到请求后，自动为企业电子合同平台的企业用户生成一张数字证书。
 func (c *Client) CreateEnterpriseAccount(request *CreateEnterpriseAccountRequest) (response *CreateEnterpriseAccountResponse, err error) {
     if request == nil {
         request = NewCreateEnterpriseAccountRequest()
@@ -260,7 +260,7 @@ func NewDownloadContractResponse() (response *DownloadContractResponse) {
     return
 }
 
-// 下载合同接口。调用该接口可以下载签署中和签署完成的接口。接口返回任务号，可调用DescribeTaskStatus接口查看任务执行结果。
+// 下载合同接口。调用该接口可以下载签署中和签署完成的合同。接口返回任务号，可调用DescribeTaskStatus接口查看任务执行结果。
 func (c *Client) DownloadContract(request *DownloadContractRequest) (response *DownloadContractResponse, err error) {
     if request == nil {
         request = NewDownloadContractRequest()
@@ -285,7 +285,7 @@ func NewSendVcodeResponse() (response *SendVcodeResponse) {
     return
 }
 
-// 发送验证码接口。此接口用于：企业电子合同平台需要腾讯云发送验证码对其用户进行验证时调用，腾讯云将向其用户联系手机(企业电子合同平台为用户开户时通过接口传入)发送验证码，以验证码授权方式签署合同。企业电子合同平台可以选择签署合同时不校验验证码（需线下沟通）。用户验证工作由企业电子合同平台自身完成。
+// 发送验证码接口。此接口用于：企业电子合同平台需要腾讯云发送验证码对其用户进行验证时调用，腾讯云将向其用户联系手机(企业电子合同平台为用户开户时通过接口传入)发送验证码，以验证码授权方式签署合同。用户验证工作由企业电子合同平台自身完成。
 func (c *Client) SendVcode(request *SendVcodeRequest) (response *SendVcodeResponse, err error) {
     if request == nil {
         request = NewSendVcodeRequest()

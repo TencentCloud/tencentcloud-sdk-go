@@ -1511,6 +1511,10 @@ type Image struct {
 	// 镜像是否支持cloud-init
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsSupportCloudinit *bool `json:"IsSupportCloudinit,omitempty" name:"IsSupportCloudinit"`
+
+	// 镜像关联的快照信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SnapshotSet []*Snapshot `json:"SnapshotSet,omitempty" name:"SnapshotSet" list`
 }
 
 type ImageOsList struct {
@@ -2597,6 +2601,9 @@ type ModifyInstancesVpcAttributeRequest struct {
 
 	// 是否对运行中的实例选择强制关机。默认为TRUE。
 	ForceStop *bool `json:"ForceStop,omitempty" name:"ForceStop"`
+
+	// 是否保留主机名。默认为FALSE。
+	ReserveHostName *bool `json:"ReserveHostName,omitempty" name:"ReserveHostName"`
 }
 
 func (r *ModifyInstancesVpcAttributeRequest) ToJsonString() string {
@@ -2806,7 +2813,7 @@ type RenewInstancesRequest struct {
 	// 一个或多个待操作的实例ID。可通过[`DescribeInstances`](https://cloud.tencent.com/document/api/213/9388)接口返回值中的`InstanceId`获取。每次请求批量实例的上限为100。
 	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds" list`
 
-	// 预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月实例的续费时长、是否设置自动续费等属性。
+	// 预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月实例的续费时长、是否设置自动续费等属性。包年包月实例该参数为必传参数。
 	InstanceChargePrepaid *InstanceChargePrepaid `json:"InstanceChargePrepaid,omitempty" name:"InstanceChargePrepaid"`
 
 	// 是否续费弹性数据盘。取值范围：<br><li>TRUE：表示续费包年包月实例同时续费其挂载的弹性数据盘<br><li>FALSE：表示续费包年包月实例同时不再续费其挂载的弹性数据盘<br><br>默认取值：TRUE。
@@ -2847,6 +2854,7 @@ type ResetInstanceRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
 	// 指定有效的[镜像](https://cloud.tencent.com/document/product/213/4940)ID，格式形如`img-xxx`。镜像类型分为四种：<br/><li>公共镜像</li><li>自定义镜像</li><li>共享镜像</li><li>服务市场镜像</li><br/>可通过以下方式获取可用的镜像ID：<br/><li>`公共镜像`、`自定义镜像`、`共享镜像`的镜像ID可通过登录[控制台](https://console.cloud.tencent.com/cvm/image?rid=1&imageType=PUBLIC_IMAGE)查询；`服务镜像市场`的镜像ID可通过[云市场](https://market.cloud.tencent.com/list)查询。</li><li>通过调用接口 [DescribeImages](https://cloud.tencent.com/document/api/213/9418) ，取返回信息中的`ImageId`字段。</li>
+	// <br>默认取值：默认使用当前镜像。
 	ImageId *string `json:"ImageId,omitempty" name:"ImageId"`
 
 	// 实例系统盘配置信息。系统盘为云盘的实例可以通过该参数指定重装后的系统盘大小来实现对系统盘的扩容操作，若不指定则默认系统盘大小保持不变。系统盘大小只支持扩容不支持缩容；重装只支持修改系统盘的大小，不能修改系统盘的类型。
@@ -2857,6 +2865,9 @@ type ResetInstanceRequest struct {
 
 	// 增强服务。通过该参数可以指定是否开启云安全、云监控等服务。若不指定该参数，则默认开启云监控、云安全服务。
 	EnhancedService *EnhancedService `json:"EnhancedService,omitempty" name:"EnhancedService"`
+
+	// 重装系统时，可以指定修改实例的HostName。
+	HostName *string `json:"HostName,omitempty" name:"HostName"`
 }
 
 func (r *ResetInstanceRequest) ToJsonString() string {
@@ -3169,6 +3180,20 @@ type SharePermission struct {
 
 	// 镜像分享的账户ID
 	AccountId *string `json:"AccountId,omitempty" name:"AccountId"`
+}
+
+type Snapshot struct {
+
+	// 快照Id。
+	SnapshotId *string `json:"SnapshotId,omitempty" name:"SnapshotId"`
+
+	// 创建此快照的云硬盘类型。取值范围：
+	// SYSTEM_DISK：系统盘
+	// DATA_DISK：数据盘。
+	DiskUsage *string `json:"DiskUsage,omitempty" name:"DiskUsage"`
+
+	// 创建此快照的云硬盘大小，单位GB。
+	DiskSize *int64 `json:"DiskSize,omitempty" name:"DiskSize"`
 }
 
 type SpotMarketOptions struct {

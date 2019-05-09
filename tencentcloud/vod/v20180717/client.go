@@ -59,7 +59,7 @@ func NewApplyUploadResponse() (response *ApplyUploadResponse) {
 }
 
 // * 该接口用于申请媒体文件（和封面文件）的上传，获取文件上传到腾讯云点播的元信息（包括上传路径、上传签名等），用于后续上传接口。
-// * 上传流程请参考[服务端上传综述](https://cloud.tencent.com/document/product/266/9759#.E4.B8.8A.E4.BC.A0.E6.B5.81.E7.A8.8B)。
+// * 上传流程请参考[服务端上传综述](https://cloud.tencent.com/document/product/266/9759)。
 func (c *Client) ApplyUpload(request *ApplyUploadRequest) (response *ApplyUploadResponse, err error) {
     if request == nil {
         request = NewApplyUploadRequest()
@@ -146,6 +146,31 @@ func (c *Client) CreateAIAnalysisTemplate(request *CreateAIAnalysisTemplateReque
     return
 }
 
+func NewCreateAIRecognitionTemplateRequest() (request *CreateAIRecognitionTemplateRequest) {
+    request = &CreateAIRecognitionTemplateRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vod", APIVersion, "CreateAIRecognitionTemplate")
+    return
+}
+
+func NewCreateAIRecognitionTemplateResponse() (response *CreateAIRecognitionTemplateResponse) {
+    response = &CreateAIRecognitionTemplateResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 创建用户自定义视频内容识别模板，数量上限：50。
+func (c *Client) CreateAIRecognitionTemplate(request *CreateAIRecognitionTemplateRequest) (response *CreateAIRecognitionTemplateResponse, err error) {
+    if request == nil {
+        request = NewCreateAIRecognitionTemplateRequest()
+    }
+    response = NewCreateAIRecognitionTemplateResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateClassRequest() (request *CreateClassRequest) {
     request = &CreateClassRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -170,6 +195,56 @@ func (c *Client) CreateClass(request *CreateClassRequest) (response *CreateClass
         request = NewCreateClassRequest()
     }
     response = NewCreateClassResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateContentReviewTemplateRequest() (request *CreateContentReviewTemplateRequest) {
+    request = &CreateContentReviewTemplateRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vod", APIVersion, "CreateContentReviewTemplate")
+    return
+}
+
+func NewCreateContentReviewTemplateResponse() (response *CreateContentReviewTemplateResponse) {
+    response = &CreateContentReviewTemplateResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 创建用户自定义视频内容审核模板，数量上限：50。
+func (c *Client) CreateContentReviewTemplate(request *CreateContentReviewTemplateRequest) (response *CreateContentReviewTemplateResponse, err error) {
+    if request == nil {
+        request = NewCreateContentReviewTemplateRequest()
+    }
+    response = NewCreateContentReviewTemplateResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreatePersonSampleRequest() (request *CreatePersonSampleRequest) {
+    request = &CreatePersonSampleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vod", APIVersion, "CreatePersonSample")
+    return
+}
+
+func NewCreatePersonSampleResponse() (response *CreatePersonSampleResponse) {
+    response = &CreatePersonSampleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 该接口用于创建人物样本，用于通过人脸识别等技术，进行内容识别、内容审核等视频处理。
+func (c *Client) CreatePersonSample(request *CreatePersonSampleRequest) (response *CreatePersonSampleResponse, err error) {
+    if request == nil {
+        request = NewCreatePersonSampleRequest()
+    }
+    response = NewCreatePersonSampleResponse()
     err = c.Send(request, response)
     return
 }
@@ -249,6 +324,31 @@ func (c *Client) CreateWatermarkTemplate(request *CreateWatermarkTemplateRequest
     return
 }
 
+func NewCreateWordSamplesRequest() (request *CreateWordSamplesRequest) {
+    request = &CreateWordSamplesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vod", APIVersion, "CreateWordSamples")
+    return
+}
+
+func NewCreateWordSamplesResponse() (response *CreateWordSamplesResponse) {
+    response = &CreateWordSamplesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 该接口用于批量创建关键词样本，样本用于通过OCR、ASR技术，进行内容审核、内容识别等视频处理。关键词样本不可重复创建，如需变更，可先删除后，重新创建。
+func (c *Client) CreateWordSamples(request *CreateWordSamplesRequest) (response *CreateWordSamplesResponse, err error) {
+    if request == nil {
+        request = NewCreateWordSamplesRequest()
+    }
+    response = NewCreateWordSamplesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteAIAnalysisTemplateRequest() (request *DeleteAIAnalysisTemplateRequest) {
     request = &DeleteAIAnalysisTemplateRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -272,6 +372,31 @@ func (c *Client) DeleteAIAnalysisTemplate(request *DeleteAIAnalysisTemplateReque
         request = NewDeleteAIAnalysisTemplateRequest()
     }
     response = NewDeleteAIAnalysisTemplateResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteAIRecognitionTemplateRequest() (request *DeleteAIRecognitionTemplateRequest) {
+    request = &DeleteAIRecognitionTemplateRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vod", APIVersion, "DeleteAIRecognitionTemplate")
+    return
+}
+
+func NewDeleteAIRecognitionTemplateResponse() (response *DeleteAIRecognitionTemplateResponse) {
+    response = &DeleteAIRecognitionTemplateResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 删除用户自定义视频内容识别模板。
+func (c *Client) DeleteAIRecognitionTemplate(request *DeleteAIRecognitionTemplateRequest) (response *DeleteAIRecognitionTemplateResponse, err error) {
+    if request == nil {
+        request = NewDeleteAIRecognitionTemplateRequest()
+    }
+    response = NewDeleteAIRecognitionTemplateResponse()
     err = c.Send(request, response)
     return
 }
@@ -302,6 +427,31 @@ func (c *Client) DeleteClass(request *DeleteClassRequest) (response *DeleteClass
     return
 }
 
+func NewDeleteContentReviewTemplateRequest() (request *DeleteContentReviewTemplateRequest) {
+    request = &DeleteContentReviewTemplateRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vod", APIVersion, "DeleteContentReviewTemplate")
+    return
+}
+
+func NewDeleteContentReviewTemplateResponse() (response *DeleteContentReviewTemplateResponse) {
+    response = &DeleteContentReviewTemplateResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 删除用户自定义视频内容审核模板。
+func (c *Client) DeleteContentReviewTemplate(request *DeleteContentReviewTemplateRequest) (response *DeleteContentReviewTemplateResponse, err error) {
+    if request == nil {
+        request = NewDeleteContentReviewTemplateRequest()
+    }
+    response = NewDeleteContentReviewTemplateResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteMediaRequest() (request *DeleteMediaRequest) {
     request = &DeleteMediaRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -324,6 +474,31 @@ func (c *Client) DeleteMedia(request *DeleteMediaRequest) (response *DeleteMedia
         request = NewDeleteMediaRequest()
     }
     response = NewDeleteMediaResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeletePersonSampleRequest() (request *DeletePersonSampleRequest) {
+    request = &DeletePersonSampleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vod", APIVersion, "DeletePersonSample")
+    return
+}
+
+func NewDeletePersonSampleResponse() (response *DeletePersonSampleResponse) {
+    response = &DeletePersonSampleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 该接口用于根据人物 ID，删除人物样本。
+func (c *Client) DeletePersonSample(request *DeletePersonSampleRequest) (response *DeletePersonSampleResponse, err error) {
+    if request == nil {
+        request = NewDeletePersonSampleRequest()
+    }
+    response = NewDeletePersonSampleResponse()
     err = c.Send(request, response)
     return
 }
@@ -403,6 +578,31 @@ func (c *Client) DeleteWatermarkTemplate(request *DeleteWatermarkTemplateRequest
     return
 }
 
+func NewDeleteWordSamplesRequest() (request *DeleteWordSamplesRequest) {
+    request = &DeleteWordSamplesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vod", APIVersion, "DeleteWordSamples")
+    return
+}
+
+func NewDeleteWordSamplesResponse() (response *DeleteWordSamplesResponse) {
+    response = &DeleteWordSamplesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 该接口用于批量删除关键词样本。
+func (c *Client) DeleteWordSamples(request *DeleteWordSamplesRequest) (response *DeleteWordSamplesResponse, err error) {
+    if request == nil {
+        request = NewDeleteWordSamplesRequest()
+    }
+    response = NewDeleteWordSamplesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeAIAnalysisTemplatesRequest() (request *DescribeAIAnalysisTemplatesRequest) {
     request = &DescribeAIAnalysisTemplatesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -428,6 +628,31 @@ func (c *Client) DescribeAIAnalysisTemplates(request *DescribeAIAnalysisTemplate
     return
 }
 
+func NewDescribeAIRecognitionTemplatesRequest() (request *DescribeAIRecognitionTemplatesRequest) {
+    request = &DescribeAIRecognitionTemplatesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vod", APIVersion, "DescribeAIRecognitionTemplates")
+    return
+}
+
+func NewDescribeAIRecognitionTemplatesResponse() (response *DescribeAIRecognitionTemplatesResponse) {
+    response = &DescribeAIRecognitionTemplatesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 根据视频内容识别模板唯一标识，获取视频内容识别模板详情列表。返回结果包含符合条件的所有用户自定义视频内容识别模板及[系统预置视频内容识别模板]
+func (c *Client) DescribeAIRecognitionTemplates(request *DescribeAIRecognitionTemplatesRequest) (response *DescribeAIRecognitionTemplatesResponse, err error) {
+    if request == nil {
+        request = NewDescribeAIRecognitionTemplatesRequest()
+    }
+    response = NewDescribeAIRecognitionTemplatesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeAllClassRequest() (request *DescribeAllClassRequest) {
     request = &DescribeAllClassRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -449,6 +674,31 @@ func (c *Client) DescribeAllClass(request *DescribeAllClassRequest) (response *D
         request = NewDescribeAllClassRequest()
     }
     response = NewDescribeAllClassResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeContentReviewTemplatesRequest() (request *DescribeContentReviewTemplatesRequest) {
+    request = &DescribeContentReviewTemplatesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vod", APIVersion, "DescribeContentReviewTemplates")
+    return
+}
+
+func NewDescribeContentReviewTemplatesResponse() (response *DescribeContentReviewTemplatesResponse) {
+    response = &DescribeContentReviewTemplatesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 根据视频内容审核模板唯一标识，获取视频内容审核模板详情列表。返回结果包含符合条件的所有用户自定义模板及[系统预置内容审核模板]。
+func (c *Client) DescribeContentReviewTemplates(request *DescribeContentReviewTemplatesRequest) (response *DescribeContentReviewTemplatesResponse, err error) {
+    if request == nil {
+        request = NewDescribeContentReviewTemplatesRequest()
+    }
+    response = NewDescribeContentReviewTemplatesResponse()
     err = c.Send(request, response)
     return
 }
@@ -483,6 +733,31 @@ func (c *Client) DescribeMediaInfos(request *DescribeMediaInfosRequest) (respons
         request = NewDescribeMediaInfosRequest()
     }
     response = NewDescribeMediaInfosResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribePersonSamplesRequest() (request *DescribePersonSamplesRequest) {
+    request = &DescribePersonSamplesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vod", APIVersion, "DescribePersonSamples")
+    return
+}
+
+func NewDescribePersonSamplesResponse() (response *DescribePersonSamplesResponse) {
+    response = &DescribePersonSamplesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 该接口用于查询人物样本信息，支持根据人物 ID、名称、标签，分页查询。
+func (c *Client) DescribePersonSamples(request *DescribePersonSamplesRequest) (response *DescribePersonSamplesResponse, err error) {
+    if request == nil {
+        request = NewDescribePersonSamplesRequest()
+    }
+    response = NewDescribePersonSamplesResponse()
     err = c.Send(request, response)
     return
 }
@@ -579,7 +854,7 @@ func NewDescribeTranscodeTemplatesResponse() (response *DescribeTranscodeTemplat
     return
 }
 
-// 根据转码模板唯一标识，获取转码模板详情列表。返回结果包含符合条件的所有用户自定义模板及[系统预置转码模板](https://cloud.tencent.com/document/product/266/11701#.E9.A2.84.E7.BD.AE.E8.BD.AC.E7.A0.81.E6.A8.A1.E6.9D.BF)。
+// 根据转码模板唯一标识，获取转码模板详情列表。返回结果包含符合条件的所有用户自定义模板及[系统预置转码模板](https://cloud.tencent.com/document/product/266/33476#.E9.A2.84.E7.BD.AE.E8.BD.AC.E7.A0.81.E6.A8.A1.E6.9D.BF)。
 func (c *Client) DescribeTranscodeTemplates(request *DescribeTranscodeTemplatesRequest) (response *DescribeTranscodeTemplatesResponse, err error) {
     if request == nil {
         request = NewDescribeTranscodeTemplatesRequest()
@@ -614,6 +889,66 @@ func (c *Client) DescribeWatermarkTemplates(request *DescribeWatermarkTemplatesR
     return
 }
 
+func NewDescribeWordSamplesRequest() (request *DescribeWordSamplesRequest) {
+    request = &DescribeWordSamplesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vod", APIVersion, "DescribeWordSamples")
+    return
+}
+
+func NewDescribeWordSamplesResponse() (response *DescribeWordSamplesResponse) {
+    response = &DescribeWordSamplesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 该接口用于根据应用场景、关键词、标签，分页查询关键词样本信息。
+func (c *Client) DescribeWordSamples(request *DescribeWordSamplesRequest) (response *DescribeWordSamplesResponse, err error) {
+    if request == nil {
+        request = NewDescribeWordSamplesRequest()
+    }
+    response = NewDescribeWordSamplesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewEditMediaRequest() (request *EditMediaRequest) {
+    request = &EditMediaRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vod", APIVersion, "EditMedia")
+    return
+}
+
+func NewEditMediaResponse() (response *EditMediaResponse) {
+    response = &EditMediaResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 对视频进行编辑（剪辑、拼接等），生成一个新的点播视频。编辑的功能包括：
+// 
+// 1. 对点播中的一个文件进行剪辑，生成一个新的视频；
+// 2. 对点播中的多个文件进行拼接，生成一个新的视频；
+// 3. 对点播中的多个文件进行剪辑，然后再拼接，生成一个新的视频；
+// 4. 对点播中的一个流，直接生成一个新的视频；
+// 5. 对点播中的一个流进行剪辑，生成一个新的视频；
+// 6. 对点播中的多个流进行拼接，生成一个新的视频；
+// 7. 对点播中的多个流进行剪辑，然后拼接，生成一个新的视频。
+// 
+// 对于生成的新视频，还可以指定生成后的视频是否要执行任务流。
+func (c *Client) EditMedia(request *EditMediaRequest) (response *EditMediaResponse, err error) {
+    if request == nil {
+        request = NewEditMediaRequest()
+    }
+    response = NewEditMediaResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewLiveRealTimeClipRequest() (request *LiveRealTimeClipRequest) {
     request = &LiveRealTimeClipRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -636,7 +971,7 @@ func NewLiveRealTimeClipResponse() (response *LiveRealTimeClipResponse) {
 // - 剪辑不固化：剪辑得到的视频附属于直播录制文件，没有独立 FileId；适用于将精彩片段**临时分享**的场景。
 // 
 // 注意：
-// - 使用直播即时剪辑功能的前提是：目标直播流开启了[时移回看](https://cloud.tencent.com/document/product/267/32742#.E5.BC.80.E9.80.9A.E6.AD.A5.E9.AA.A4)功能。
+// - 使用直播即时剪辑功能的前提是：目标直播流开启了[时移回看](https://cloud.tencent.com/document/product/267/32742)功能。
 // - 直播即时剪辑是基于直播录制生成的 m3u8 文件进行的，故而其最小剪辑精度为一个 ts 切片，无法实现秒级或者更为精确的剪辑精度。
 // 
 // 
@@ -689,6 +1024,31 @@ func (c *Client) ModifyAIAnalysisTemplate(request *ModifyAIAnalysisTemplateReque
     return
 }
 
+func NewModifyAIRecognitionTemplateRequest() (request *ModifyAIRecognitionTemplateRequest) {
+    request = &ModifyAIRecognitionTemplateRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vod", APIVersion, "ModifyAIRecognitionTemplate")
+    return
+}
+
+func NewModifyAIRecognitionTemplateResponse() (response *ModifyAIRecognitionTemplateResponse) {
+    response = &ModifyAIRecognitionTemplateResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 修改用户自定义视频内容识别模板。
+func (c *Client) ModifyAIRecognitionTemplate(request *ModifyAIRecognitionTemplateRequest) (response *ModifyAIRecognitionTemplateResponse, err error) {
+    if request == nil {
+        request = NewModifyAIRecognitionTemplateRequest()
+    }
+    response = NewModifyAIRecognitionTemplateResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyClassRequest() (request *ModifyClassRequest) {
     request = &ModifyClassRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -714,6 +1074,31 @@ func (c *Client) ModifyClass(request *ModifyClassRequest) (response *ModifyClass
     return
 }
 
+func NewModifyContentReviewTemplateRequest() (request *ModifyContentReviewTemplateRequest) {
+    request = &ModifyContentReviewTemplateRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vod", APIVersion, "ModifyContentReviewTemplate")
+    return
+}
+
+func NewModifyContentReviewTemplateResponse() (response *ModifyContentReviewTemplateResponse) {
+    response = &ModifyContentReviewTemplateResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 修改用户自定义视频内容审核模板。
+func (c *Client) ModifyContentReviewTemplate(request *ModifyContentReviewTemplateRequest) (response *ModifyContentReviewTemplateResponse, err error) {
+    if request == nil {
+        request = NewModifyContentReviewTemplateRequest()
+    }
+    response = NewModifyContentReviewTemplateResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyMediaInfoRequest() (request *ModifyMediaInfoRequest) {
     request = &ModifyMediaInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -735,6 +1120,31 @@ func (c *Client) ModifyMediaInfo(request *ModifyMediaInfoRequest) (response *Mod
         request = NewModifyMediaInfoRequest()
     }
     response = NewModifyMediaInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyPersonSampleRequest() (request *ModifyPersonSampleRequest) {
+    request = &ModifyPersonSampleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vod", APIVersion, "ModifyPersonSample")
+    return
+}
+
+func NewModifyPersonSampleResponse() (response *ModifyPersonSampleResponse) {
+    response = &ModifyPersonSampleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 该接口用于根据人物 ID，修改人物样本信息，包括名称、描述的修改，以及人脸、标签的添加、删除、重置操作。人脸删除操作需保证至少剩余 1 张图片，否则，请使用重置操作。
+func (c *Client) ModifyPersonSample(request *ModifyPersonSampleRequest) (response *ModifyPersonSampleResponse, err error) {
+    if request == nil {
+        request = NewModifyPersonSampleRequest()
+    }
+    response = NewModifyPersonSampleResponse()
     err = c.Send(request, response)
     return
 }
@@ -789,6 +1199,31 @@ func (c *Client) ModifyWatermarkTemplate(request *ModifyWatermarkTemplateRequest
     return
 }
 
+func NewModifyWordSampleRequest() (request *ModifyWordSampleRequest) {
+    request = &ModifyWordSampleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vod", APIVersion, "ModifyWordSample")
+    return
+}
+
+func NewModifyWordSampleResponse() (response *ModifyWordSampleResponse) {
+    response = &ModifyWordSampleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 该接口用于修改关键词的应用场景、标签，关键词本身不可修改，如需修改，可删除重建。
+func (c *Client) ModifyWordSample(request *ModifyWordSampleRequest) (response *ModifyWordSampleResponse, err error) {
+    if request == nil {
+        request = NewModifyWordSampleRequest()
+    }
+    response = NewModifyWordSampleResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewProcessMediaRequest() (request *ProcessMediaRequest) {
     request = &ProcessMediaRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -813,12 +1248,41 @@ func NewProcessMediaResponse() (response *ProcessMediaResponse) {
 // 6. 对视频截取一张图做封面；
 // 7. 对视频转自适应码流（并加密）；
 // 8. 智能内容审核（鉴黄、鉴恐、鉴政）；
-// 9. 智能内容分析（标签、分类、封面）。
+// 9. 智能内容分析（标签、分类、封面、按帧标签）；
+// 10. 智能内容识别（视频片头片尾、人脸、文本全文、文本关键词、语音全文、语音关键词、物体）。
 func (c *Client) ProcessMedia(request *ProcessMediaRequest) (response *ProcessMediaResponse, err error) {
     if request == nil {
         request = NewProcessMediaRequest()
     }
     response = NewProcessMediaResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewProcessMediaByProcedureRequest() (request *ProcessMediaByProcedureRequest) {
+    request = &ProcessMediaByProcedureRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vod", APIVersion, "ProcessMediaByProcedure")
+    return
+}
+
+func NewProcessMediaByProcedureResponse() (response *ProcessMediaByProcedureResponse) {
+    response = &ProcessMediaByProcedureResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 使用任务流模板，对点播中的视频发起处理任务。
+// 有两种方式创建任务流模板：
+// 1. 在控制台上创建和修改任务流模板；
+// 2. 通过任务流模板接口创建任务流模板。
+func (c *Client) ProcessMediaByProcedure(request *ProcessMediaByProcedureRequest) (response *ProcessMediaByProcedureResponse, err error) {
+    if request == nil {
+        request = NewProcessMediaByProcedureRequest()
+    }
+    response = NewProcessMediaByProcedureResponse()
     err = c.Send(request, response)
     return
 }
@@ -841,7 +1305,8 @@ func NewProcessMediaByUrlResponse() (response *ProcessMediaByUrlResponse) {
 // 对来源为 URL 的音视频媒体发起处理任务，功能包括：
 // 
 // 1. 智能内容审核（鉴黄、鉴恐、鉴政）；
-// 2. 智能内容分析（标签、分类、封面）。
+// 2. 智能内容分析（标签、分类、封面、按帧标签）；
+// 3. 智能内容识别（视频片头片尾、人脸、文本全文、文本关键词、语音全文、语音关键词、物体）。
 func (c *Client) ProcessMediaByUrl(request *ProcessMediaByUrlRequest) (response *ProcessMediaByUrlResponse, err error) {
     if request == nil {
         request = NewProcessMediaByUrlRequest()

@@ -130,6 +130,12 @@ type AddLiveWatermarkRequest struct {
 
 	// 显示位置,Y轴偏移。
 	YPosition *int64 `json:"YPosition,omitempty" name:"YPosition"`
+
+	// 水印宽度，占直播原始画面宽度百分比，建议高宽只设置一项，另外一项会自适应缩放，避免变形。
+	Width *int64 `json:"Width,omitempty" name:"Width"`
+
+	// 水印高度，占直播原始画面宽度百分比，建议高宽只设置一项，另外一项会自适应缩放，避免变形。
+	Height *int64 `json:"Height,omitempty" name:"Height"`
 }
 
 func (r *AddLiveWatermarkRequest) ToJsonString() string {
@@ -3693,6 +3699,9 @@ type ModifyLiveRecordTemplateRequest struct {
 
 	// Aac录制参数，开启Aac录制时设置。
 	AacParam *RecordParam `json:"AacParam,omitempty" name:"AacParam"`
+
+	// HLS录制定制参数
+	HlsSpecialParam *HlsSpecialParam `json:"HlsSpecialParam,omitempty" name:"HlsSpecialParam"`
 }
 
 func (r *ModifyLiveRecordTemplateRequest) ToJsonString() string {
@@ -4599,6 +4608,12 @@ type UpdateLiveWatermarkRequest struct {
 
 	// 水印名称。
 	WatermarkName *string `json:"WatermarkName,omitempty" name:"WatermarkName"`
+
+	// 水印宽度，占直播原始画面宽度百分比，建议高宽只设置一项，另外一项会自适应缩放，避免变形。
+	Width *int64 `json:"Width,omitempty" name:"Width"`
+
+	// 水印高度，占直播原始画面宽度百分比，建议高宽只设置一项，另外一项会自适应缩放，避免变形。
+	Height *int64 `json:"Height,omitempty" name:"Height"`
 }
 
 func (r *UpdateLiveWatermarkRequest) ToJsonString() string {
@@ -4650,4 +4665,10 @@ type WatermarkInfo struct {
 
 	// 添加时间。
 	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 水印宽
+	Width *int64 `json:"Width,omitempty" name:"Width"`
+
+	// 水印高
+	Height *int64 `json:"Height,omitempty" name:"Height"`
 }

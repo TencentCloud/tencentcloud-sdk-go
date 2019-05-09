@@ -64,7 +64,7 @@ type CloseDBExtranetAccessResponse struct {
 		// 异步任务流程ID
 		FlowId *int64 `json:"FlowId,omitempty" name:"FlowId"`
 
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -134,7 +134,7 @@ type CreateDBInstancesResponse struct {
 		// 订单号列表。每个实例对应一个订单号。
 		DealNames []*string `json:"DealNames,omitempty" name:"DealNames" list`
 
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -165,13 +165,13 @@ type DBBackup struct {
 	// 策略（0-实例备份；1-多库备份）
 	Strategy *int64 `json:"Strategy,omitempty" name:"Strategy"`
 
-	// 类型（0-定时；1-临时）
+	// 类型（0-定时）
 	Way *int64 `json:"Way,omitempty" name:"Way"`
 
-	// 备份方式（1-完整；2-日志；3-差异）
+	// 备份方式（1-完整）
 	Type *int64 `json:"Type,omitempty" name:"Type"`
 
-	// 状态（0-创建中；1-成功；2-失败）
+	// 状态（1-创建中；2-成功；3-失败）
 	Status *int64 `json:"Status,omitempty" name:"Status"`
 
 	// DB列表
@@ -312,7 +312,7 @@ type DescribeAccountsResponse struct {
 		// 帐号列表详细信息。
 		Details []*AccountInfo `json:"Details,omitempty" name:"Details" list`
 
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -367,7 +367,7 @@ type DescribeDBBackupsResponse struct {
 		// 备份列表
 		BackupList []*DBBackup `json:"BackupList,omitempty" name:"BackupList" list`
 
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -425,7 +425,7 @@ type DescribeDBErrlogsResponse struct {
 		// 错误日志列表
 		Details []*ErrLogDetail `json:"Details,omitempty" name:"Details" list`
 
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -462,7 +462,7 @@ type DescribeDBInstanceAttributeResponse struct {
 		// 实例详细信息。
 		DBInstance *DBInstance `json:"DBInstance,omitempty" name:"DBInstance"`
 
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -508,7 +508,7 @@ type DescribeDBInstancesResponse struct {
 		// 实例详细信息集合。
 		DBInstanceSet []*DBInstance `json:"DBInstanceSet,omitempty" name:"DBInstanceSet" list`
 
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -569,7 +569,7 @@ type DescribeDBSlowlogsResponse struct {
 		// 慢查询日志详情
 		Detail *SlowlogDetail `json:"Detail,omitempty" name:"Detail"`
 
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -621,7 +621,7 @@ type DescribeDBXlogsResponse struct {
 		// Xlog列表
 		XlogList []*Xlog `json:"XlogList,omitempty" name:"XlogList" list`
 
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -661,7 +661,7 @@ type DescribeOrdersResponse struct {
 		// 订单数组
 		Deals []*PgDeal `json:"Deals,omitempty" name:"Deals" list`
 
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -698,7 +698,7 @@ type DescribeProductConfigResponse struct {
 		// 售卖规格列表。
 		SpecInfoList []*SpecInfo `json:"SpecInfoList,omitempty" name:"SpecInfoList" list`
 
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -735,7 +735,7 @@ type DescribeRegionsResponse struct {
 		// 地域信息集合。
 		RegionSet []*RegionInfo `json:"RegionSet,omitempty" name:"RegionSet" list`
 
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -772,7 +772,7 @@ type DescribeZonesResponse struct {
 		// 可用区信息集合。
 		ZoneSet []*ZoneInfo `json:"ZoneSet,omitempty" name:"ZoneSet" list`
 
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -842,7 +842,7 @@ type InitDBInstancesResponse struct {
 		// 实例ID集合。
 		DBInstanceIdSet []*string `json:"DBInstanceIdSet,omitempty" name:"DBInstanceIdSet" list`
 
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -900,7 +900,7 @@ type InquiryPriceCreateDBInstancesResponse struct {
 		// 折后价格，单位：分
 		Price *uint64 `json:"Price,omitempty" name:"Price"`
 
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -943,7 +943,7 @@ type InquiryPriceRenewDBInstanceResponse struct {
 		// 实际需要付款金额。比如24650表示246.5元
 		Price *int64 `json:"Price,omitempty" name:"Price"`
 
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -992,7 +992,7 @@ type InquiryPriceUpgradeDBInstanceResponse struct {
 		// 实际需要付款金额
 		Price *int64 `json:"Price,omitempty" name:"Price"`
 
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -1032,7 +1032,7 @@ type ModifyAccountRemarkResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -1069,7 +1069,7 @@ type ModifyDBInstanceNameResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -1109,7 +1109,7 @@ type ModifyDBInstancesProjectResponse struct {
 		// 转移项目成功的实例个数
 		Count *int64 `json:"Count,omitempty" name:"Count"`
 
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -1194,7 +1194,7 @@ type OpenDBExtranetAccessResponse struct {
 		// 异步任务流程ID
 		FlowId *int64 `json:"FlowId,omitempty" name:"FlowId"`
 
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -1276,7 +1276,7 @@ type RenewInstanceResponse struct {
 		// 订单名
 		DealName *string `json:"DealName,omitempty" name:"DealName"`
 
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -1316,7 +1316,7 @@ type ResetAccountPasswordResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -1353,7 +1353,7 @@ type RestartDBInstanceResponse struct {
 		// 异步流程ID
 		FlowId *int64 `json:"FlowId,omitempty" name:"FlowId"`
 
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -1393,7 +1393,7 @@ type SetAutoRenewFlagResponse struct {
 		// 设置成功的实例个数
 		Count *int64 `json:"Count,omitempty" name:"Count"`
 
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -1496,7 +1496,7 @@ type UpgradeDBInstanceResponse struct {
 		// 交易名字。
 		DealName *string `json:"DealName,omitempty" name:"DealName"`
 
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
 }

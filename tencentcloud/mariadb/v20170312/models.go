@@ -264,16 +264,16 @@ type CreateDBInstanceRequest struct {
 	// 代金券ID列表，目前仅支持指定一张代金券。
 	VoucherIds []*string `json:"VoucherIds,omitempty" name:"VoucherIds" list`
 
-	// 虚拟私有网络 ID，不传或传 0 表示创建为基础网络
+	// 虚拟私有网络 ID，不传表示创建为基础网络
 	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
 
-	// 虚拟私有网络子网 ID，VpcId 不为0时必填
+	// 虚拟私有网络子网 ID，VpcId 不为空时必填
 	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
 
 	// 项目 ID，可以通过查看项目列表获取，不传则关联到默认项目
 	ProjectId *int64 `json:"ProjectId,omitempty" name:"ProjectId"`
 
-	// 数据库引擎版本，当前可选：10.0.10，10.1.9，5.7.17
+	// 数据库引擎版本，当前可选：10.0.10，10.1.9，5.7.17。如果不传的话，默认为 Mariadb 10.1.9。
 	DbVersionId *string `json:"DbVersionId,omitempty" name:"DbVersionId"`
 }
 
@@ -464,6 +464,9 @@ type DBInstance struct {
 
 	// 机器型号
 	Machine *string `json:"Machine,omitempty" name:"Machine"`
+
+	// 是否支持数据加密。1-支持；0-不支持
+	IsEncryptSupported *int64 `json:"IsEncryptSupported,omitempty" name:"IsEncryptSupported"`
 }
 
 type DBParamValue struct {
@@ -666,7 +669,7 @@ type DescribeBackupTimeResponse struct {
 
 		// 实例备份时间配置信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		Items *DBBackupTimeConfig `json:"Items,omitempty" name:"Items"`
+		Items []*DBBackupTimeConfig `json:"Items,omitempty" name:"Items" list`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -758,8 +761,11 @@ type DescribeDBInstancesRequest struct {
 	// 标识是否使用ExclusterType字段, false不使用，true使用
 	IsFilterExcluster *bool `json:"IsFilterExcluster,omitempty" name:"IsFilterExcluster"`
 
-	// 1非独享集群，2独享集群， 0全部
+	// 实例所属独享集群类型。取值范围：1-非独享集群，2-独享集群， 0-全部
 	ExclusterType *int64 `json:"ExclusterType,omitempty" name:"ExclusterType"`
+
+	// 按独享集群Id过滤实例，独享集群Id形如dbdc-4ih6uct9
+	ExclusterIds []*string `json:"ExclusterIds,omitempty" name:"ExclusterIds" list`
 }
 
 func (r *DescribeDBInstancesRequest) ToJsonString() string {
@@ -901,6 +907,9 @@ type DescribeDBPerformanceDetailsRequest struct {
 
 	// 结束日期，格式yyyy-mm-dd
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 拉取的指标名，支持的值为：long_query,select_total,update_total,insert_total,delete_total,mem_hit_rate,disk_iops,conn_active,is_master_switched,slave_delay
+	MetricName *string `json:"MetricName,omitempty" name:"MetricName"`
 }
 
 func (r *DescribeDBPerformanceDetailsRequest) ToJsonString() string {
@@ -920,9 +929,11 @@ type DescribeDBPerformanceDetailsResponse struct {
 		Master *PerformanceMonitorSet `json:"Master,omitempty" name:"Master"`
 
 		// 备机1性能监控数据
+	// 注意：此字段可能返回 null，表示取不到有效值。
 		Slave1 *PerformanceMonitorSet `json:"Slave1,omitempty" name:"Slave1"`
 
 		// 备机2性能监控数据，如果实例是一主一从，则没有该字段
+	// 注意：此字段可能返回 null，表示取不到有效值。
 		Slave2 *PerformanceMonitorSet `json:"Slave2,omitempty" name:"Slave2"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -950,6 +961,9 @@ type DescribeDBPerformanceRequest struct {
 
 	// 结束日期，格式yyyy-mm-dd
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 拉取的指标名，支持的值为：long_query,select_total,update_total,insert_total,delete_total,mem_hit_rate,disk_iops,conn_active,is_master_switched,slave_delay
+	MetricName *string `json:"MetricName,omitempty" name:"MetricName"`
 }
 
 func (r *DescribeDBPerformanceRequest) ToJsonString() string {
@@ -1020,6 +1034,9 @@ type DescribeDBResourceUsageDetailsRequest struct {
 
 	// 结束日期，格式yyyy-mm-dd
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 拉取的指标名称，支持的值为：data_disk_available,binlog_disk_available,mem_available,cpu_usage_rate
+	MetricName *string `json:"MetricName,omitempty" name:"MetricName"`
 }
 
 func (r *DescribeDBResourceUsageDetailsRequest) ToJsonString() string {
@@ -1071,6 +1088,9 @@ type DescribeDBResourceUsageRequest struct {
 
 	// 结束日期，格式yyyy-mm-dd
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 拉取的指标名称，支持的值为：data_disk_available,binlog_disk_available,mem_available,cpu_usage_rate
+	MetricName *string `json:"MetricName,omitempty" name:"MetricName"`
 }
 
 func (r *DescribeDBResourceUsageRequest) ToJsonString() string {
@@ -1138,6 +1158,9 @@ type DescribeDBSlowLogsRequest struct {
 
 	// 排序类型，desc或者asc
 	OrderByType *string `json:"OrderByType,omitempty" name:"OrderByType"`
+
+	// 是否查询从机的慢查询，0-主机; 1-从机
+	Slave *int64 `json:"Slave,omitempty" name:"Slave"`
 }
 
 func (r *DescribeDBSlowLogsRequest) ToJsonString() string {
@@ -1443,7 +1466,7 @@ type DescribeSqlLogsRequest struct {
 	// SQL日志偏移。
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
 
-	// 拉取数量（0-1000，为0时拉取总数信息）。
+	// 拉取数量（0-10000，为0时拉取总数信息）。
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 }
 
@@ -1605,7 +1628,7 @@ type InitDBInstancesRequest struct {
 	// 待初始化的实例Id列表，形如：tdsql-ow728lmc，可以通过 DescribeDBInstances 查询实例详情获得。
 	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds" list`
 
-	// 参数列表。本接口的可选值为：character_set_server（字符集，必传），lower_case_table_names（表名大小写敏感，必传），innodb_page_size（innodb数据页，默认16K），sync_mode（同步模式：0 - 异步； 1 - 强同步；2 - 强同步可退化。默认为强同步）。
+	// 参数列表。本接口的可选值为：character_set_server（字符集，必传），lower_case_table_names（表名大小写敏感，必传，0 - 敏感；1-不敏感），innodb_page_size（innodb数据页，默认16K），sync_mode（同步模式：0 - 异步； 1 - 强同步；2 - 强同步可退化。默认为强同步）。
 	Params []*DBParamValue `json:"Params,omitempty" name:"Params" list`
 }
 
@@ -1661,6 +1684,9 @@ type LogFileInfo struct {
 
 	// 下载Log时用到的统一资源标识符
 	Uri *string `json:"Uri,omitempty" name:"Uri"`
+
+	// 文件名
+	FileName *string `json:"FileName,omitempty" name:"FileName"`
 }
 
 type ModifyAccountDescriptionRequest struct {
@@ -1918,18 +1944,6 @@ type MonitorData struct {
 	Data []*float64 `json:"Data,omitempty" name:"Data" list`
 }
 
-type MonitorIntData struct {
-
-	// 起始时间
-	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
-
-	// 结束时间
-	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
-
-	// 监控数据
-	Data *int64 `json:"Data,omitempty" name:"Data"`
-}
-
 type OpenDBExtranetAccessRequest struct {
 	*tchttp.BaseRequest
 
@@ -1991,7 +2005,7 @@ type ParamDesc struct {
 	// 当前参数值
 	Value *string `json:"Value,omitempty" name:"Value"`
 
-	// 设置过的值，参数生效后，该值和value一样。未设置过就不返回该字段。
+	// 设置过的值，参数生效后，该值和value一样。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SetValue *string `json:"SetValue,omitempty" name:"SetValue"`
 
@@ -2000,6 +2014,9 @@ type ParamDesc struct {
 
 	// 参数限制
 	Constraint *ParamConstraint `json:"Constraint,omitempty" name:"Constraint"`
+
+	// 是否有设置过值，false:没有设置过值，true:有设置过值。
+	HaveSetValue *bool `json:"HaveSetValue,omitempty" name:"HaveSetValue"`
 }
 
 type ParamModifyResult struct {
@@ -2164,7 +2181,7 @@ type ResourceUsageMonitorSet struct {
 	MemAvailable *MonitorData `json:"MemAvailable,omitempty" name:"MemAvailable"`
 
 	// 磁盘可用空间,单位GB
-	DataDiskAvailable *MonitorIntData `json:"DataDiskAvailable,omitempty" name:"DataDiskAvailable"`
+	DataDiskAvailable *MonitorData `json:"DataDiskAvailable,omitempty" name:"DataDiskAvailable"`
 }
 
 type SlowLogData struct {
@@ -2179,37 +2196,37 @@ type SlowLogData struct {
 	FingerPrint *string `json:"FingerPrint,omitempty" name:"FingerPrint"`
 
 	// 平均的锁时间
-	LockTimeAvg *float64 `json:"LockTimeAvg,omitempty" name:"LockTimeAvg"`
+	LockTimeAvg *string `json:"LockTimeAvg,omitempty" name:"LockTimeAvg"`
 
 	// 最大锁时间
-	LockTimeMax *float64 `json:"LockTimeMax,omitempty" name:"LockTimeMax"`
+	LockTimeMax *string `json:"LockTimeMax,omitempty" name:"LockTimeMax"`
 
 	// 最小锁时间
-	LockTimeMin *float64 `json:"LockTimeMin,omitempty" name:"LockTimeMin"`
+	LockTimeMin *string `json:"LockTimeMin,omitempty" name:"LockTimeMin"`
 
 	// 锁时间总和
-	LockTimeSum *float64 `json:"LockTimeSum,omitempty" name:"LockTimeSum"`
+	LockTimeSum *string `json:"LockTimeSum,omitempty" name:"LockTimeSum"`
 
 	// 查询次数
-	QueryCount *int64 `json:"QueryCount,omitempty" name:"QueryCount"`
+	QueryCount *string `json:"QueryCount,omitempty" name:"QueryCount"`
 
 	// 平均查询时间
-	QueryTimeAvg *float64 `json:"QueryTimeAvg,omitempty" name:"QueryTimeAvg"`
+	QueryTimeAvg *string `json:"QueryTimeAvg,omitempty" name:"QueryTimeAvg"`
 
 	// 最大查询时间
-	QueryTimeMax *float64 `json:"QueryTimeMax,omitempty" name:"QueryTimeMax"`
+	QueryTimeMax *string `json:"QueryTimeMax,omitempty" name:"QueryTimeMax"`
 
 	// 最小查询时间
-	QueryTimeMin *float64 `json:"QueryTimeMin,omitempty" name:"QueryTimeMin"`
+	QueryTimeMin *string `json:"QueryTimeMin,omitempty" name:"QueryTimeMin"`
 
 	// 查询时间总和
-	QueryTimeSum *float64 `json:"QueryTimeSum,omitempty" name:"QueryTimeSum"`
+	QueryTimeSum *string `json:"QueryTimeSum,omitempty" name:"QueryTimeSum"`
 
 	// 扫描行数
-	RowsExaminedSum *uint64 `json:"RowsExaminedSum,omitempty" name:"RowsExaminedSum"`
+	RowsExaminedSum *string `json:"RowsExaminedSum,omitempty" name:"RowsExaminedSum"`
 
 	// 发送行数
-	RowsSentSum *uint64 `json:"RowsSentSum,omitempty" name:"RowsSentSum"`
+	RowsSentSum *string `json:"RowsSentSum,omitempty" name:"RowsSentSum"`
 
 	// 最后执行时间
 	TsMax *string `json:"TsMax,omitempty" name:"TsMax"`

@@ -178,7 +178,7 @@ type Address struct {
 	// 绑定的资源内网ip
 	PrivateAddressIp *string `json:"PrivateAddressIp,omitempty" name:"PrivateAddressIp"`
 
-	// 资源隔离状态。true表示eip处于隔离状态，false表示资源处于未隔离装填
+	// 资源隔离状态。true表示eip处于隔离状态，false表示资源处于未隔离状态
 	IsArrears *bool `json:"IsArrears,omitempty" name:"IsArrears"`
 
 	// 资源封堵状态。true表示eip处于封堵状态，false表示eip处于未封堵状态

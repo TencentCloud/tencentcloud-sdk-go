@@ -113,6 +113,9 @@ type CreateDeviceRequest struct {
 
 	// 创建LoRa设备需要skey
 	Skey *string `json:"Skey,omitempty" name:"Skey"`
+
+	// LoRa设备的AppKey
+	LoraAppKey *string `json:"LoraAppKey,omitempty" name:"LoraAppKey"`
 }
 
 func (r *CreateDeviceRequest) ToJsonString() string {
@@ -163,6 +166,73 @@ func (r *CreateDeviceResponse) ToJsonString() string {
 }
 
 func (r *CreateDeviceResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateLoraDeviceRequest struct {
+	*tchttp.BaseRequest
+
+	// 产品 ID ，创建产品时腾讯云为用户分配全局唯一的 ID
+	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
+
+	// 设备名称
+	DeviceName *string `json:"DeviceName,omitempty" name:"DeviceName"`
+
+	// 设备类型 ，目前支持A、B、C三种
+	DeviceType *string `json:"DeviceType,omitempty" name:"DeviceType"`
+
+	// LoRa应用UUID
+	AppEui *string `json:"AppEui,omitempty" name:"AppEui"`
+
+	// LoRa设备UUID
+	DeviceEui *string `json:"DeviceEui,omitempty" name:"DeviceEui"`
+
+	// LoRa应用密钥
+	AppKey *string `json:"AppKey,omitempty" name:"AppKey"`
+
+	// LoRa设备验证密钥
+	AuthKey *string `json:"AuthKey,omitempty" name:"AuthKey"`
+
+	// 设备备注
+	Memo *string `json:"Memo,omitempty" name:"Memo"`
+}
+
+func (r *CreateLoraDeviceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateLoraDeviceRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateLoraDeviceResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// LoRa应用UUID
+		AppEui *string `json:"AppEui,omitempty" name:"AppEui"`
+
+		// LoRa设备UUID
+		DeviceEui *string `json:"DeviceEui,omitempty" name:"DeviceEui"`
+
+		// 设备类型,目前支持A、B、C三种
+		ClassType *string `json:"ClassType,omitempty" name:"ClassType"`
+
+		// 设备名称
+		DeviceName *string `json:"DeviceName,omitempty" name:"DeviceName"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateLoraDeviceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateLoraDeviceResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -427,6 +497,43 @@ func (r *DeleteDeviceResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DeleteLoraDeviceRequest struct {
+	*tchttp.BaseRequest
+
+	// 设备所属产品id
+	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
+
+	// 设备名称
+	DeviceName *string `json:"DeviceName,omitempty" name:"DeviceName"`
+}
+
+func (r *DeleteLoraDeviceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteLoraDeviceRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteLoraDeviceResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DeleteLoraDeviceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteLoraDeviceResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DeleteProductRequest struct {
 	*tchttp.BaseRequest
 
@@ -566,6 +673,10 @@ type DescribeDeviceResponse struct {
 		// Lora设备的mote type
 		LoraMoteType *uint64 `json:"LoraMoteType,omitempty" name:"LoraMoteType"`
 
+		// 设备的sdk日志等级
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		LogLevel *uint64 `json:"LogLevel,omitempty" name:"LogLevel"`
+
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
@@ -666,6 +777,61 @@ func (r *DescribeDevicesResponse) ToJsonString() string {
 }
 
 func (r *DescribeDevicesResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeLoraDeviceRequest struct {
+	*tchttp.BaseRequest
+
+	// 产品id
+	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
+
+	// 设备名称
+	DeviceName *string `json:"DeviceName,omitempty" name:"DeviceName"`
+}
+
+func (r *DescribeLoraDeviceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeLoraDeviceRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeLoraDeviceResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 设备名称
+		DeviceName *string `json:"DeviceName,omitempty" name:"DeviceName"`
+
+		// LoRa应用UUID
+		AppEui *string `json:"AppEui,omitempty" name:"AppEui"`
+
+		// LoRa设备UUID
+		DeviceEui *string `json:"DeviceEui,omitempty" name:"DeviceEui"`
+
+		// LoRa应用密钥
+		AppKey *string `json:"AppKey,omitempty" name:"AppKey"`
+
+		// 设备类型,目前支持A、B、C三种
+		ClassType *string `json:"ClassType,omitempty" name:"ClassType"`
+
+		// 设备所属产品id
+		ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeLoraDeviceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeLoraDeviceResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -1153,6 +1319,58 @@ type ProductProperties struct {
 
 	// 产品密钥，suite产品才会有
 	ProductKey *string `json:"ProductKey,omitempty" name:"ProductKey"`
+
+	// 动态注册类型 0-关闭, 1-预定义设备名 2-动态定义设备名
+	RegisterType *uint64 `json:"RegisterType,omitempty" name:"RegisterType"`
+
+	// 动态注册产品秘钥
+	ProductSecret *string `json:"ProductSecret,omitempty" name:"ProductSecret"`
+
+	// RegisterType为2时，设备动态创建的限制数量
+	RegisterLimit *uint64 `json:"RegisterLimit,omitempty" name:"RegisterLimit"`
+}
+
+type PublishAsDeviceRequest struct {
+	*tchttp.BaseRequest
+
+	// 产品id
+	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
+
+	// 设备名称
+	DeviceName *string `json:"DeviceName,omitempty" name:"DeviceName"`
+
+	// LoRa 设备端口
+	Port *uint64 `json:"Port,omitempty" name:"Port"`
+
+	// 消息内容
+	Payload *string `json:"Payload,omitempty" name:"Payload"`
+}
+
+func (r *PublishAsDeviceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *PublishAsDeviceRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type PublishAsDeviceResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *PublishAsDeviceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *PublishAsDeviceResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
 }
 
 type PublishMessageRequest struct {
@@ -1170,7 +1388,7 @@ type PublishMessageRequest struct {
 	// 设备名称
 	DeviceName *string `json:"DeviceName,omitempty" name:"DeviceName"`
 
-	// 服务质量等级，取值为0， 1
+	// 服务质量等级，取值为0或1
 	Qos *uint64 `json:"Qos,omitempty" name:"Qos"`
 }
 
@@ -1198,6 +1416,49 @@ func (r *PublishMessageResponse) ToJsonString() string {
 }
 
 func (r *PublishMessageResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type PublishToDeviceRequest struct {
+	*tchttp.BaseRequest
+
+	// 产品id
+	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
+
+	// 设备名称
+	DeviceName *string `json:"DeviceName,omitempty" name:"DeviceName"`
+
+	// LoRa 端口
+	Port *uint64 `json:"Port,omitempty" name:"Port"`
+
+	// 消息内容
+	Payload *string `json:"Payload,omitempty" name:"Payload"`
+}
+
+func (r *PublishToDeviceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *PublishToDeviceRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type PublishToDeviceResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *PublishToDeviceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *PublishToDeviceResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 

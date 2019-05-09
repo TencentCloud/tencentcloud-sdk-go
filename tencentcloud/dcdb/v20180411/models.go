@@ -283,7 +283,11 @@ type CreateDCDBInstanceRequest struct {
 	// 虚拟私有网络子网 ID，VpcId不为空时必填
 	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
 
-	// 数据库引擎版本，当前可选：10.0.10，10.1.9，5.7.17
+	// 数据库引擎版本，当前可选：10.0.10，10.1.9，5.7.17。
+	// 10.0.10 - Mariadb 10.0.10；
+	// 10.1.9 - Mariadb 10.1.9；
+	// 5.7.17 - Percona 5.7.17。
+	// 如果不填的话，默认为10.1.9，表示Mariadb 10.1.9。
 	DbVersionId *string `json:"DbVersionId,omitempty" name:"DbVersionId"`
 
 	// 是否自动使用代金券进行支付，默认不使用。
@@ -311,6 +315,7 @@ type CreateDCDBInstanceResponse struct {
 		DealName *string `json:"DealName,omitempty" name:"DealName"`
 
 		// 订单对应的实例 ID 列表，如果此处没有返回实例 ID，可以通过订单查询接口获取。还可通过实例查询接口查询实例是否创建完成。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 		InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds" list`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -469,10 +474,14 @@ type DCDBInstanceInfo struct {
 	Paymode *string `json:"Paymode,omitempty" name:"Paymode"`
 
 	// 实例处于异步任务状态时，表示异步任务流程ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Locker *int64 `json:"Locker,omitempty" name:"Locker"`
 
 	// 外网状态，0-未开通；1-已开通；2-关闭；3-开通中
 	WanStatus *int64 `json:"WanStatus,omitempty" name:"WanStatus"`
+
+	// 该实例是否支持审计。1-支持；0-不支持
+	IsAuditSupported *uint64 `json:"IsAuditSupported,omitempty" name:"IsAuditSupported"`
 }
 
 type DCDBShardInfo struct {
@@ -577,6 +586,7 @@ type Deal struct {
 	FlowId *int64 `json:"FlowId,omitempty" name:"FlowId"`
 
 	// 只有创建实例的订单会填充该字段，表示该订单创建的实例的 ID。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds" list`
 
 	// 付费模式，0后付费/1预付费
@@ -711,6 +721,7 @@ type DescribeAccountsResponse struct {
 		InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
 		// 实例用户列表。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 		Users []*DBAccount `json:"Users,omitempty" name:"Users" list`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -1422,7 +1433,7 @@ type DescribeSqlLogsRequest struct {
 	// SQL日志偏移。
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
 
-	// 拉取数量（0-1000，为0时拉取总数信息）。
+	// 拉取数量（0-10000，为0时拉取总数信息）。
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 }
 
@@ -1548,7 +1559,7 @@ type InitDCDBInstancesRequest struct {
 	// 待初始化的实例Id列表，形如：dcdbt-ow728lmc，可以通过 DescribeDCDBInstances 查询实例详情获得。
 	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds" list`
 
-	// 参数列表。本接口的可选值为：character_set_server（字符集，必传），lower_case_table_names（表名大小写敏感，必传），innodb_page_size（innodb数据页，默认16K），sync_mode（同步模式：0 - 异步； 1 - 强同步；2 - 强同步可退化。默认为强同步）。
+	// 参数列表。本接口的可选值为：character_set_server（字符集，必传），lower_case_table_names（表名大小写敏感，必传，0 - 敏感；1-不敏感），innodb_page_size（innodb数据页，默认16K），sync_mode（同步模式：0 - 异步； 1 - 强同步；2 - 强同步可退化。默认为强同步）。
 	Params []*DBParamValue `json:"Params,omitempty" name:"Params" list`
 }
 
@@ -1595,6 +1606,9 @@ type LogFileInfo struct {
 
 	// 下载Log时用到的统一资源标识符
 	Uri *string `json:"Uri,omitempty" name:"Uri"`
+
+	// 文件名
+	FileName *string `json:"FileName,omitempty" name:"FileName"`
 }
 
 type ModifyAccountDescriptionRequest struct {
@@ -1806,6 +1820,7 @@ type ParamConstraint struct {
 	Enum *string `json:"Enum,omitempty" name:"Enum"`
 
 	// 约束类型为section时的范围
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Range *ConstraintRange `json:"Range,omitempty" name:"Range"`
 
 	// 约束类型为string时的可选值列表
@@ -1821,6 +1836,7 @@ type ParamDesc struct {
 	Value *string `json:"Value,omitempty" name:"Value"`
 
 	// 设置过的值，参数生效后，该值和value一样。未设置过就不返回该字段。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	SetValue *string `json:"SetValue,omitempty" name:"SetValue"`
 
 	// 系统默认值

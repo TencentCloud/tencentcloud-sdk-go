@@ -93,6 +93,31 @@ func (c *Client) CreateDevice(request *CreateDeviceRequest) (response *CreateDev
     return
 }
 
+func NewCreateLoraDeviceRequest() (request *CreateLoraDeviceRequest) {
+    request = &CreateLoraDeviceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iotcloud", APIVersion, "CreateLoraDevice")
+    return
+}
+
+func NewCreateLoraDeviceResponse() (response *CreateLoraDeviceResponse) {
+    response = &CreateLoraDeviceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 创建lora类型的设备
+func (c *Client) CreateLoraDevice(request *CreateLoraDeviceRequest) (response *CreateLoraDeviceResponse, err error) {
+    if request == nil {
+        request = NewCreateLoraDeviceRequest()
+    }
+    response = NewCreateLoraDeviceResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateMultiDeviceRequest() (request *CreateMultiDeviceRequest) {
     request = &CreateMultiDeviceRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -243,6 +268,31 @@ func (c *Client) DeleteDevice(request *DeleteDeviceRequest) (response *DeleteDev
     return
 }
 
+func NewDeleteLoraDeviceRequest() (request *DeleteLoraDeviceRequest) {
+    request = &DeleteLoraDeviceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iotcloud", APIVersion, "DeleteLoraDevice")
+    return
+}
+
+func NewDeleteLoraDeviceResponse() (response *DeleteLoraDeviceResponse) {
+    response = &DeleteLoraDeviceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 删除lora类型的设备
+func (c *Client) DeleteLoraDevice(request *DeleteLoraDeviceRequest) (response *DeleteLoraDeviceResponse, err error) {
+    if request == nil {
+        request = NewDeleteLoraDeviceRequest()
+    }
+    response = NewDeleteLoraDeviceResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteProductRequest() (request *DeleteProductRequest) {
     request = &DeleteProductRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -364,6 +414,31 @@ func (c *Client) DescribeDevices(request *DescribeDevicesRequest) (response *Des
         request = NewDescribeDevicesRequest()
     }
     response = NewDescribeDevicesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeLoraDeviceRequest() (request *DescribeLoraDeviceRequest) {
+    request = &DescribeLoraDeviceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iotcloud", APIVersion, "DescribeLoraDevice")
+    return
+}
+
+func NewDescribeLoraDeviceResponse() (response *DescribeLoraDeviceResponse) {
+    response = &DescribeLoraDeviceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 获取lora类型设备的详细信息
+func (c *Client) DescribeLoraDevice(request *DescribeLoraDeviceRequest) (response *DescribeLoraDeviceResponse, err error) {
+    if request == nil {
+        request = NewDescribeLoraDeviceRequest()
+    }
+    response = NewDescribeLoraDeviceResponse()
     err = c.Send(request, response)
     return
 }
@@ -543,6 +618,31 @@ func (c *Client) EnableTopicRule(request *EnableTopicRuleRequest) (response *Ena
     return
 }
 
+func NewPublishAsDeviceRequest() (request *PublishAsDeviceRequest) {
+    request = &PublishAsDeviceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iotcloud", APIVersion, "PublishAsDevice")
+    return
+}
+
+func NewPublishAsDeviceResponse() (response *PublishAsDeviceResponse) {
+    response = &PublishAsDeviceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 模拟lora类型的设备端向服务器端发送消息
+func (c *Client) PublishAsDevice(request *PublishAsDeviceRequest) (response *PublishAsDeviceResponse, err error) {
+    if request == nil {
+        request = NewPublishAsDeviceRequest()
+    }
+    response = NewPublishAsDeviceResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewPublishMessageRequest() (request *PublishMessageRequest) {
     request = &PublishMessageRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -564,6 +664,31 @@ func (c *Client) PublishMessage(request *PublishMessageRequest) (response *Publi
         request = NewPublishMessageRequest()
     }
     response = NewPublishMessageResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewPublishToDeviceRequest() (request *PublishToDeviceRequest) {
+    request = &PublishToDeviceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iotcloud", APIVersion, "PublishToDevice")
+    return
+}
+
+func NewPublishToDeviceResponse() (response *PublishToDeviceResponse) {
+    response = &PublishToDeviceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 服务器端下发消息给lora类型的设备
+func (c *Client) PublishToDevice(request *PublishToDeviceRequest) (response *PublishToDeviceResponse, err error) {
+    if request == nil {
+        request = NewPublishToDeviceRequest()
+    }
+    response = NewPublishToDeviceResponse()
     err = c.Send(request, response)
     return
 }
