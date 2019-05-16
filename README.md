@@ -131,6 +131,10 @@ func main() {
 
 如果是有代理的环境下，需要设置系统环境变量 `https_proxy` ，否则可能无法正常调用，抛出连接超时的异常。
 
+## 开启 DNS 缓存
+
+当前 GO SDK 总是会去请求 DNS 服务器，而没有使用到 nscd 的缓存，可以通过导出环境变量`GODEBUG=netdns=cgo`，或者`go build`编译时指定参数`-tags 'netcgo'`控制读取 nscd 缓存。
+
 # 支持产品列表
 
 | 包名 | 产品中文名 |
