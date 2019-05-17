@@ -58,7 +58,7 @@ func NewDescribeSdkAppidResponse() (response *DescribeSdkAppidResponse) {
     return
 }
 
-// 获取云通信IM中腾讯云账号对应的sdkappid
+// 获取云通信IM中腾讯云账号对应的SDKAppID
 func (c *Client) DescribeSdkAppid(request *DescribeSdkAppidRequest) (response *DescribeSdkAppidResponse, err error) {
     if request == nil {
         request = NewDescribeSdkAppidRequest()

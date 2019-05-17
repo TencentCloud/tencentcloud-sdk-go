@@ -1110,6 +1110,61 @@ func (r *CreateDirectConnectGatewayResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type CreateFlowLogRequest struct {
+	*tchttp.BaseRequest
+
+	// 私用网络ID或者统一ID，建议使用统一ID
+	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
+
+	// 流日志实例名字
+	FlowLogName *string `json:"FlowLogName,omitempty" name:"FlowLogName"`
+
+	// 流日志所属资源类型，VPC|SUBNET|NETWORKINTERFACE
+	ResourceType *string `json:"ResourceType,omitempty" name:"ResourceType"`
+
+	// 资源唯一ID
+	ResourceId *string `json:"ResourceId,omitempty" name:"ResourceId"`
+
+	// 流日志采集类型，ACCEPT|REJECT|ALL
+	TrafficType *string `json:"TrafficType,omitempty" name:"TrafficType"`
+
+	// 流日志存储ID
+	CloudLogId *string `json:"CloudLogId,omitempty" name:"CloudLogId"`
+
+	// 流日志实例描述
+	FlowLogDescription *string `json:"FlowLogDescription,omitempty" name:"FlowLogDescription"`
+}
+
+func (r *CreateFlowLogRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateFlowLogRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateFlowLogResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 创建的流日志信息
+		FlowLog []*FlowLog `json:"FlowLog,omitempty" name:"FlowLog" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateFlowLogResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateFlowLogResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type CreateHaVipRequest struct {
 	*tchttp.BaseRequest
 
@@ -2010,6 +2065,43 @@ func (r *DeleteDirectConnectGatewayResponse) ToJsonString() string {
 }
 
 func (r *DeleteDirectConnectGatewayResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteFlowLogRequest struct {
+	*tchttp.BaseRequest
+
+	// 私用网络ID或者统一ID，建议使用统一ID
+	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
+
+	// 流日志唯一ID
+	FlowLogId *string `json:"FlowLogId,omitempty" name:"FlowLogId"`
+}
+
+func (r *DeleteFlowLogRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteFlowLogRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteFlowLogResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DeleteFlowLogResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteFlowLogResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -3219,6 +3311,119 @@ func (r *DescribeDirectConnectGatewaysResponse) ToJsonString() string {
 }
 
 func (r *DescribeDirectConnectGatewaysResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeFlowLogRequest struct {
+	*tchttp.BaseRequest
+
+	// 私用网络ID或者统一ID，建议使用统一ID
+	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
+
+	// 流日志唯一ID
+	FlowLogId *string `json:"FlowLogId,omitempty" name:"FlowLogId"`
+}
+
+func (r *DescribeFlowLogRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeFlowLogRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeFlowLogResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 流日志信息
+		FlowLog []*FlowLog `json:"FlowLog,omitempty" name:"FlowLog" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeFlowLogResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeFlowLogResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeFlowLogsRequest struct {
+	*tchttp.BaseRequest
+
+	// 私用网络ID或者统一ID，建议使用统一ID
+	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
+
+	// 流日志唯一ID
+	FlowLogId *string `json:"FlowLogId,omitempty" name:"FlowLogId"`
+
+	// 流日志实例名字
+	FlowLogName *string `json:"FlowLogName,omitempty" name:"FlowLogName"`
+
+	// 流日志所属资源类型，VPC|SUBNET|NETWORKINTERFACE
+	ResourceType *string `json:"ResourceType,omitempty" name:"ResourceType"`
+
+	// 资源唯一ID
+	ResourceId *string `json:"ResourceId,omitempty" name:"ResourceId"`
+
+	// 流日志采集类型，ACCEPT|REJECT|ALL
+	TrafficType *string `json:"TrafficType,omitempty" name:"TrafficType"`
+
+	// 流日志存储ID
+	CloudLogId *string `json:"CloudLogId,omitempty" name:"CloudLogId"`
+
+	// 流日志存储ID状态
+	CloudLogState *string `json:"CloudLogState,omitempty" name:"CloudLogState"`
+
+	// 按某个字段排序,支持字段：flowLogName,createTime，默认按createTime
+	OrderField *string `json:"OrderField,omitempty" name:"OrderField"`
+
+	// 升序（asc）还是降序（desc）,默认：desc
+	OrderDirection *string `json:"OrderDirection,omitempty" name:"OrderDirection"`
+
+	// 偏移量，默认为0。
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 每页行数，默认为10
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+func (r *DescribeFlowLogsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeFlowLogsRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeFlowLogsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 流日志实例集合
+		FlowLog []*FlowLog `json:"FlowLog,omitempty" name:"FlowLog" list`
+
+		// 流日志总数目
+		TotalNum *uint64 `json:"TotalNum,omitempty" name:"TotalNum"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeFlowLogsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeFlowLogsResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -4526,6 +4731,39 @@ type FilterObject struct {
 	Values []*string `json:"Values,omitempty" name:"Values" list`
 }
 
+type FlowLog struct {
+
+	// 私用网络ID或者统一ID，建议使用统一ID
+	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
+
+	// 流日志唯一ID
+	FlowLogId *string `json:"FlowLogId,omitempty" name:"FlowLogId"`
+
+	// 流日志实例名字
+	FlowLogName *string `json:"FlowLogName,omitempty" name:"FlowLogName"`
+
+	// 流日志所属资源类型，VPC|SUBNET|NETWORKINTERFACE
+	ResourceType *string `json:"ResourceType,omitempty" name:"ResourceType"`
+
+	// 资源唯一ID
+	ResourceId *string `json:"ResourceId,omitempty" name:"ResourceId"`
+
+	// 流日志采集类型，ACCEPT|REJECT|ALL
+	TrafficType *string `json:"TrafficType,omitempty" name:"TrafficType"`
+
+	// 流日志存储ID
+	CloudLogId *string `json:"CloudLogId,omitempty" name:"CloudLogId"`
+
+	// 流日志存储ID状态
+	CloudLogState *string `json:"CloudLogState,omitempty" name:"CloudLogState"`
+
+	// 流日志描述信息
+	FlowLogDescription *string `json:"FlowLogDescription,omitempty" name:"FlowLogDescription"`
+
+	// 流日志创建时间
+	CreatedTime *string `json:"CreatedTime,omitempty" name:"CreatedTime"`
+}
+
 type GatewayFlowMonitorDetail struct {
 
 	// 来源`IP`。
@@ -5360,6 +5598,49 @@ func (r *ModifyDirectConnectGatewayAttributeResponse) ToJsonString() string {
 }
 
 func (r *ModifyDirectConnectGatewayAttributeResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyFlowLogAttributeRequest struct {
+	*tchttp.BaseRequest
+
+	// 私用网络ID或者统一ID，建议使用统一ID
+	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
+
+	// 流日志唯一ID
+	FlowLogId *string `json:"FlowLogId,omitempty" name:"FlowLogId"`
+
+	// 流日志实例名字
+	FlowLogName *string `json:"FlowLogName,omitempty" name:"FlowLogName"`
+
+	// 流日志实例描述
+	FlowLogDescription *string `json:"FlowLogDescription,omitempty" name:"FlowLogDescription"`
+}
+
+func (r *ModifyFlowLogAttributeRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyFlowLogAttributeRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyFlowLogAttributeResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifyFlowLogAttributeResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyFlowLogAttributeResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 

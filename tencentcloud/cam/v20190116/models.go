@@ -64,7 +64,7 @@ type AddUserResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 子用户用户 ID
+		// 子用户 UIN
 		Uin *uint64 `json:"Uin,omitempty" name:"Uin"`
 
 		// 子用户用户名
@@ -78,6 +78,9 @@ type AddUserResponse struct {
 
 		// 子用户密钥 Key
 		SecretKey *string `json:"SecretKey,omitempty" name:"SecretKey"`
+
+		// 子用户 UID
+		Uid *uint64 `json:"Uid,omitempty" name:"Uid"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -96,7 +99,7 @@ func (r *AddUserResponse) FromJsonString(s string) error {
 type AddUserToGroupRequest struct {
 	*tchttp.BaseRequest
 
-	// 添加的子用户 ID 和用户组 ID 关联关系
+	// 添加的子用户 UID 和用户组 ID 关联关系
 	Info []*GroupIdOfUidInfo `json:"Info,omitempty" name:"Info" list`
 }
 
@@ -795,7 +798,7 @@ func (r *GetUserResponse) FromJsonString(s string) error {
 
 type GroupIdOfUidInfo struct {
 
-	// 子用户 ID
+	// 子用户 UID
 	Uid *uint64 `json:"Uid,omitempty" name:"Uid"`
 
 	// 用户组 ID

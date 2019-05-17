@@ -117,7 +117,7 @@ type CreateInstanceRequest struct {
 	// 时间单位
 	TimeUnit *string `json:"TimeUnit,omitempty" name:"TimeUnit"`
 
-	// 登陆配置
+	// 登录配置
 	LoginSettings *LoginSettings `json:"LoginSettings,omitempty" name:"LoginSettings"`
 
 	// 客户端Token
@@ -134,6 +134,9 @@ type CreateInstanceRequest struct {
 
 	// 自动续费
 	AutoRenew *uint64 `json:"AutoRenew,omitempty" name:"AutoRenew"`
+
+	// 是否需要外网Ip。支持填NEED_MASTER_WAN，不支持使用NOT_NEED_MASTER_WAN，默认使用NEED_MASTER_WAN
+	NeedMasterWan *string `json:"NeedMasterWan,omitempty" name:"NeedMasterWan"`
 }
 
 func (r *CreateInstanceRequest) ToJsonString() string {
@@ -411,6 +414,15 @@ type LoginSettings struct {
 	PublicKeyId *string `json:"PublicKeyId,omitempty" name:"PublicKeyId"`
 }
 
+type MultiDisk struct {
+
+	// 云盘类型("CLOUD_PREMIUM","CLOUD_SSD","CLOUD_BASIC")的一种
+	DiskType *string `json:"DiskType,omitempty" name:"DiskType"`
+
+	// 云盘大小
+	Volume *int64 `json:"Volume,omitempty" name:"Volume"`
+}
+
 type NodeSpec struct {
 
 	// 内存容量,单位为M
@@ -444,6 +456,10 @@ type NodeSpec struct {
 	// 规格名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SpecName *string `json:"SpecName,omitempty" name:"SpecName"`
+
+	// 多云盘参数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MultiDisks []*MultiDisk `json:"MultiDisks,omitempty" name:"MultiDisks" list`
 }
 
 type Placement struct {

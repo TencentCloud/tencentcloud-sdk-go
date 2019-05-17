@@ -767,7 +767,7 @@ type FaceQualityInfo struct {
 
 type FaceRect struct {
 
-	// 人脸框左上角纵坐标。 
+	// 人脸框左上角横坐标。 
 	// 人脸框包含人脸五官位置并在此基础上进行一定的扩展，若人脸框超出图片范围，会导致坐标负值。 
 	// 若需截取完整人脸，可以在完整分completess满足需求的情况下，将负值坐标取0。
 	X *int64 `json:"X,omitempty" name:"X"`
@@ -789,16 +789,16 @@ type FaceShape struct {
 	// 描述脸型轮廓的 21 点。
 	FaceProfile []*Point `json:"FaceProfile,omitempty" name:"FaceProfile" list`
 
-	// 描述左测眼睛轮廓的 8 点。
+	// 描述左侧眼睛轮廓的 8 点。
 	LeftEye []*Point `json:"LeftEye,omitempty" name:"LeftEye" list`
 
-	// 描述右测眼睛轮廓的 8 点。
+	// 描述右侧眼睛轮廓的 8 点。
 	RightEye []*Point `json:"RightEye,omitempty" name:"RightEye" list`
 
-	// 描述左测眉毛轮廓的 8 点。
+	// 描述左侧眉毛轮廓的 8 点。
 	LeftEyeBrow []*Point `json:"LeftEyeBrow,omitempty" name:"LeftEyeBrow" list`
 
-	// 描述右测眉毛轮廓的 8 点。
+	// 描述右侧眉毛轮廓的 8 点。
 	RightEyeBrow []*Point `json:"RightEyeBrow,omitempty" name:"RightEyeBrow" list`
 
 	// 描述嘴巴轮廓的 22 点。

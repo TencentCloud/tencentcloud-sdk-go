@@ -437,7 +437,7 @@ type CreateLifecycleHookRequest struct {
 	// 伸缩组ID
 	AutoScalingGroupId *string `json:"AutoScalingGroupId,omitempty" name:"AutoScalingGroupId"`
 
-	// 生命周期挂钩名称
+	// 生命周期挂钩名称。名称仅支持中文、英文、数字、下划线、分隔符"-"、小数点，最大长度不能超128个字节。
 	LifecycleHookName *string `json:"LifecycleHookName,omitempty" name:"LifecycleHookName"`
 
 	// 进行生命周期挂钩的场景，取值范围包括“INSTANCE_LAUNCHING”和“INSTANCE_TERMINATING”
@@ -449,7 +449,7 @@ type CreateLifecycleHookRequest struct {
 	// 生命周期挂钩超时之前可以经过的最长时间（以秒为单位），范围从30到3600秒，默认值为300秒
 	HeartbeatTimeout *int64 `json:"HeartbeatTimeout,omitempty" name:"HeartbeatTimeout"`
 
-	// 弹性伸缩向通知目标发送的附加信息，默认值为''
+	// 弹性伸缩向通知目标发送的附加信息，默认值为''。最大长度不能超过1024个字节。
 	NotificationMetadata *string `json:"NotificationMetadata,omitempty" name:"NotificationMetadata"`
 
 	// 通知目标
@@ -1629,6 +1629,9 @@ type Instance struct {
 
 	// 实例类型
 	InstanceType *string `json:"InstanceType,omitempty" name:"InstanceType"`
+
+	// 版本号
+	VersionNumber *int64 `json:"VersionNumber,omitempty" name:"VersionNumber"`
 }
 
 type InstanceChargePrepaid struct {
@@ -1746,6 +1749,12 @@ type LaunchConfiguration struct {
 
 	// 标签列表。
 	InstanceTags []*InstanceTag `json:"InstanceTags,omitempty" name:"InstanceTags" list`
+
+	// 版本号。
+	VersionNumber *int64 `json:"VersionNumber,omitempty" name:"VersionNumber"`
+
+	// 更新时间
+	UpdatedTime *string `json:"UpdatedTime,omitempty" name:"UpdatedTime"`
 }
 
 type LifecycleHook struct {

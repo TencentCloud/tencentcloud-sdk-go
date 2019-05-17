@@ -794,11 +794,9 @@ type CreateLiveTranscodeTemplateRequest struct {
 	Width *int64 `json:"Width,omitempty" name:"Width"`
 
 	// 是否保留视频，0：否，1：是。默认1。
-	// 注意：当前该参数未生效，待后续支持！
 	NeedVideo *int64 `json:"NeedVideo,omitempty" name:"NeedVideo"`
 
 	// 是否保留音频，0：否，1：是。默认1。
-	// 注意：当前该参数未生效，待后续支持！
 	NeedAudio *int64 `json:"NeedAudio,omitempty" name:"NeedAudio"`
 
 	// 高，默认0。

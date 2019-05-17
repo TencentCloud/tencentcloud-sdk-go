@@ -138,8 +138,6 @@ func NewCreateFaceResponse() (response *CreateFaceResponse) {
 }
 
 // 将一组人脸图片添加到一个人员中。一个人员最多允许包含 5 张图片。若该人员存在多个人员库中，所有人员库中该人员图片均会增加。
-// >
-// - 增加人脸完成后，生效时间一般不超过 1 秒，极端情况最多不超过 5 秒，之后您可以进行[人脸搜索](https://cloud.tencent.com/document/product/867/32798)或[人脸验证](https://cloud.tencent.com/document/product/867/32806)。
 func (c *Client) CreateFace(request *CreateFaceRequest) (response *CreateFaceResponse, err error) {
     if request == nil {
         request = NewCreateFaceRequest()
@@ -190,8 +188,6 @@ func NewCreatePersonResponse() (response *CreatePersonResponse) {
 }
 
 // 创建人员，添加人脸、姓名、性别及其他相关信息。
-// >
-// - 创建人员完成后，生效时间一般不超过 1 秒，极端情况最多不超过 5 秒，之后您可以进行[人脸搜索](https://cloud.tencent.com/document/product/867/32798)或[人脸验证](https://cloud.tencent.com/document/product/867/32806)。
 func (c *Client) CreatePerson(request *CreatePersonRequest) (response *CreatePersonResponse, err error) {
     if request == nil {
         request = NewCreatePersonRequest()

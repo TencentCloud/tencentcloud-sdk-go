@@ -20,6 +20,46 @@ import (
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
+type AutoRewriteRequest struct {
+	*tchttp.BaseRequest
+
+	// 负载均衡实例ID
+	LoadBalancerId *string `json:"LoadBalancerId,omitempty" name:"LoadBalancerId"`
+
+	// 监听器ID
+	ListenerId *string `json:"ListenerId,omitempty" name:"ListenerId"`
+
+	// 需要重定向的域名
+	Domains []*string `json:"Domains,omitempty" name:"Domains" list`
+}
+
+func (r *AutoRewriteRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *AutoRewriteRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type AutoRewriteResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *AutoRewriteResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *AutoRewriteResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type Backend struct {
 
 	// 转发目标的类型，目前仅可取值为 CVM
@@ -478,6 +518,49 @@ func (r *DeleteLoadBalancerResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DeleteRewriteRequest struct {
+	*tchttp.BaseRequest
+
+	// 负载均衡实例ID
+	LoadBalancerId *string `json:"LoadBalancerId,omitempty" name:"LoadBalancerId"`
+
+	// 源监听器ID
+	SourceListenerId *string `json:"SourceListenerId,omitempty" name:"SourceListenerId"`
+
+	// 目标监听器ID
+	TargetListenerId *string `json:"TargetListenerId,omitempty" name:"TargetListenerId"`
+
+	// 转发规则之间的重定向关系
+	RewriteInfos []*RewriteLocationMap `json:"RewriteInfos,omitempty" name:"RewriteInfos" list`
+}
+
+func (r *DeleteRewriteRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteRewriteRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteRewriteResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DeleteRewriteResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteRewriteResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DeleteRuleRequest struct {
 	*tchttp.BaseRequest
 
@@ -871,8 +954,12 @@ type DescribeLoadBalancersRequest struct {
 	// 查询的负载均衡是否绑定后端服务器，0：没有绑定云服务器，1：绑定云服务器，-1：查询全部。
 	WithRs *int64 `json:"WithRs,omitempty" name:"WithRs"`
 
-	// 负载均衡实例所属网络，如 vpc-bhqkbhdx
+	// 负载均衡实例所属私有网络，如 vpc-bhqkbhdx，
+	// 基础网络不支持通过VpcId查询。
 	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
+
+	// 安全组ID，如 sg-m1cc9123
+	SecurityGroup *string `json:"SecurityGroup,omitempty" name:"SecurityGroup"`
 }
 
 func (r *DescribeLoadBalancersRequest) ToJsonString() string {
@@ -905,6 +992,87 @@ func (r *DescribeLoadBalancersResponse) ToJsonString() string {
 }
 
 func (r *DescribeLoadBalancersResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeRewriteRequest struct {
+	*tchttp.BaseRequest
+
+	// 负载均衡实例ID
+	LoadBalancerId *string `json:"LoadBalancerId,omitempty" name:"LoadBalancerId"`
+
+	// 负载均衡监听器ID数组
+	SourceListenerIds []*string `json:"SourceListenerIds,omitempty" name:"SourceListenerIds" list`
+
+	// 负载均衡转发规则的ID数组
+	SourceLocationIds []*string `json:"SourceLocationIds,omitempty" name:"SourceLocationIds" list`
+}
+
+func (r *DescribeRewriteRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeRewriteRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeRewriteResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 重定向转发规则构成的数组，若无重定向规则，则返回空数组
+		RewriteSet []*RuleOutput `json:"RewriteSet,omitempty" name:"RewriteSet" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeRewriteResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeRewriteResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeTargetHealthRequest struct {
+	*tchttp.BaseRequest
+
+	// 要查询的负载均衡实例 ID列表
+	LoadBalancerIds []*string `json:"LoadBalancerIds,omitempty" name:"LoadBalancerIds" list`
+}
+
+func (r *DescribeTargetHealthRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeTargetHealthRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeTargetHealthResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 负载均衡实例列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		LoadBalancers []*LoadBalancerHealth `json:"LoadBalancers,omitempty" name:"LoadBalancers" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeTargetHealthResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeTargetHealthResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -1090,6 +1258,26 @@ type ListenerBackend struct {
 	Targets []*Backend `json:"Targets,omitempty" name:"Targets" list`
 }
 
+type ListenerHealth struct {
+
+	// 监听器ID
+	ListenerId *string `json:"ListenerId,omitempty" name:"ListenerId"`
+
+	// 监听器名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ListenerName *string `json:"ListenerName,omitempty" name:"ListenerName"`
+
+	// 监听器的协议
+	Protocol *string `json:"Protocol,omitempty" name:"Protocol"`
+
+	// 监听器的端口
+	Port *int64 `json:"Port,omitempty" name:"Port"`
+
+	// 监听器的转发规则列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Rules []*RuleHealth `json:"Rules,omitempty" name:"Rules" list`
+}
+
 type LoadBalancer struct {
 
 	// 负载均衡实例 ID。
@@ -1176,6 +1364,63 @@ type LoadBalancer struct {
 	// 数值形式的私有网络 ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	NumericalVpcId *uint64 `json:"NumericalVpcId,omitempty" name:"NumericalVpcId"`
+}
+
+type LoadBalancerHealth struct {
+
+	// 负载均衡实例ID
+	LoadBalancerId *string `json:"LoadBalancerId,omitempty" name:"LoadBalancerId"`
+
+	// 负载均衡实例名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LoadBalancerName *string `json:"LoadBalancerName,omitempty" name:"LoadBalancerName"`
+
+	// 监听器列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Listeners []*ListenerHealth `json:"Listeners,omitempty" name:"Listeners" list`
+}
+
+type ManualRewriteRequest struct {
+	*tchttp.BaseRequest
+
+	// 负载均衡实例ID
+	LoadBalancerId *string `json:"LoadBalancerId,omitempty" name:"LoadBalancerId"`
+
+	// 源监听器ID
+	SourceListenerId *string `json:"SourceListenerId,omitempty" name:"SourceListenerId"`
+
+	// 目标监听器ID
+	TargetListenerId *string `json:"TargetListenerId,omitempty" name:"TargetListenerId"`
+
+	// 转发规则之间的重定向关系
+	RewriteInfos []*RewriteLocationMap `json:"RewriteInfos,omitempty" name:"RewriteInfos" list`
+}
+
+func (r *ManualRewriteRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ManualRewriteRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ManualRewriteResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ManualRewriteResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ManualRewriteResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
 }
 
 type ModifyDomainRequest struct {
@@ -1282,6 +1527,9 @@ type ModifyLoadBalancerAttributesRequest struct {
 
 	// 负载均衡实例名称
 	LoadBalancerName *string `json:"LoadBalancerName,omitempty" name:"LoadBalancerName"`
+
+	// 负载均衡绑定的后端服务的地域信息
+	TargetRegionInfo *TargetRegionInfo `json:"TargetRegionInfo,omitempty" name:"TargetRegionInfo"`
 }
 
 func (r *ModifyLoadBalancerAttributesRequest) ToJsonString() string {
@@ -1553,6 +1801,15 @@ func (r *RegisterTargetsWithClassicalLBResponse) FromJsonString(s string) error 
     return json.Unmarshal([]byte(s), &r)
 }
 
+type RewriteLocationMap struct {
+
+	// 源转发规则ID
+	SourceLocationId *string `json:"SourceLocationId,omitempty" name:"SourceLocationId"`
+
+	// 重定向至的目标转发规则ID
+	TargetLocationId *string `json:"TargetLocationId,omitempty" name:"TargetLocationId"`
+}
+
 type RewriteTarget struct {
 
 	// 重定向目标的监听器ID
@@ -1585,6 +1842,24 @@ type RsWeightRule struct {
 
 	// 后端云服务器新的转发权重，取值范围：0~100。
 	Weight *int64 `json:"Weight,omitempty" name:"Weight"`
+}
+
+type RuleHealth struct {
+
+	// 转发规则ID
+	LocationId *string `json:"LocationId,omitempty" name:"LocationId"`
+
+	// 转发规则的域名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Domain *string `json:"Domain,omitempty" name:"Domain"`
+
+	// 转发规则的Url
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Url *string `json:"Url,omitempty" name:"Url"`
+
+	// 本规则上绑定的后端的健康检查状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Targets []*TargetHealth `json:"Targets,omitempty" name:"Targets" list`
 }
 
 type RuleInput struct {
@@ -1671,6 +1946,43 @@ type RuleTargets struct {
 	Targets []*Backend `json:"Targets,omitempty" name:"Targets" list`
 }
 
+type SetLoadBalancerSecurityGroupsRequest struct {
+	*tchttp.BaseRequest
+
+	// 负载均衡实例 ID
+	LoadBalancerId *string `json:"LoadBalancerId,omitempty" name:"LoadBalancerId"`
+
+	// 安全组ID构成的数组，一个负载均衡实例最多关联50个安全组，如果要解绑所有安全组，可不传此参数。
+	SecurityGroups []*string `json:"SecurityGroups,omitempty" name:"SecurityGroups" list`
+}
+
+func (r *SetLoadBalancerSecurityGroupsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *SetLoadBalancerSecurityGroupsRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type SetLoadBalancerSecurityGroupsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *SetLoadBalancerSecurityGroupsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *SetLoadBalancerSecurityGroupsResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type TagInfo struct {
 
 	// 标签的键
@@ -1698,11 +2010,26 @@ type Target struct {
 	Weight *int64 `json:"Weight,omitempty" name:"Weight"`
 }
 
+type TargetHealth struct {
+
+	// Target的内网IP
+	IP *string `json:"IP,omitempty" name:"IP"`
+
+	// Target绑定的端口
+	Port *int64 `json:"Port,omitempty" name:"Port"`
+
+	// 当前健康状态，true：健康，false：不健康。
+	HealthStatus *bool `json:"HealthStatus,omitempty" name:"HealthStatus"`
+
+	// Target的实例ID，如 ins-12345678
+	TargetId *string `json:"TargetId,omitempty" name:"TargetId"`
+}
+
 type TargetRegionInfo struct {
 
-	// Target所属地域
+	// Target所属地域，如 ap-guangzhou
 	Region *string `json:"Region,omitempty" name:"Region"`
 
-	// Target所属VPC网络
+	// Target所属网络，私有网络格式如 vpc-abcd1234，如果是基础网络，则为"0"
 	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
 }

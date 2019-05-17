@@ -26,7 +26,7 @@ type InitOralProcessRequest struct {
 	// 语音段唯一标识，一段语音一个SessionId
 	SessionId *string `json:"SessionId,omitempty" name:"SessionId"`
 
-	// 被评估语音对应的文本，句子模式下不超过个 20 单词或者中文文字，段落模式不超过 120 单词或者中文文字，中文评估使用 utf-8 编码，自由说模式该值传空。
+	// 被评估语音对应的文本，句子模式下不超过个 20 单词或者中文文字，段落模式不超过 120 单词或者中文文字，中文评估使用 utf-8 编码，自由说模式该值传空。如需要在单词模式和句子模式下使用自定义音素，可以通过设置 TextMode 使用[音素标注](https://cloud.tencent.com/document/product/884/33698)。
 	RefText *string `json:"RefText,omitempty" name:"RefText"`
 
 	// 语音输入模式，0：流式分片，1：非流式一次性评估
@@ -53,10 +53,10 @@ type InitOralProcessRequest struct {
 	// 评估语言，0：英文，1：中文。
 	ServerType *int64 `json:"ServerType,omitempty" name:"ServerType"`
 
-	// 异步模式标识，0：同步模式，1：异步模式。
+	// 异步模式标识，0：同步模式，1：异步模式，可选值参考[服务模式](https://cloud.tencent.com/document/product/884/33697)。
 	IsAsync *int64 `json:"IsAsync,omitempty" name:"IsAsync"`
 
-	// 输入文本模式，0: 普通文本，1: 音素结构文本
+	// 输入文本模式，0: 普通文本，1：[音素结构](https://cloud.tencent.com/document/product/884/33698)文本。
 	TextMode *int64 `json:"TextMode,omitempty" name:"TextMode"`
 }
 
@@ -200,7 +200,7 @@ type TransmitOralProcessResponse struct {
 		// 评估 session 状态，“Evaluating"：评估中、"Failed"：评估失败、"Finished"：评估完成
 		Status *string `json:"Status,omitempty" name:"Status"`
 
-		// 建议评分，取值范围[0,100]，评分方式为建议评分 = 准确度（PronAccuracyfloat）* 完整度（PronCompletionfloat）*（2 - 完整度（PronCompletionfloat）），如若评分策略不符合请参考Words数组中的详细分数自定义评分逻辑。
+		// 建议评分，取值范围[0,100]，评分方式为建议评分 = 准确度（PronAccuracyfloat）× 完整度（PronCompletionfloat）×（2 - 完整度（PronCompletionfloat）），如若评分策略不符合请参考Words数组中的详细分数自定义评分逻辑。
 		SuggestedScore *float64 `json:"SuggestedScore,omitempty" name:"SuggestedScore"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -238,7 +238,7 @@ type TransmitOralProcessWithInitRequest struct {
 	// 语音段唯一标识，一个完整语音一个SessionId。
 	SessionId *string `json:"SessionId,omitempty" name:"SessionId"`
 
-	// 被评估语音对应的文本，句子模式下不超过个 20 单词或者中文文字，段落模式不超过 120 单词或者中文文字，中文评估使用 utf-8 编码，自由说模式该值传空。
+	// 被评估语音对应的文本，句子模式下不超过个 20 单词或者中文文字，段落模式不超过 120 单词或者中文文字，中文评估使用 utf-8 编码，自由说模式该值无效。如需要在单词模式和句子模式下使用自定义音素，可以通过设置 TextMode 使用[音素标注](https://cloud.tencent.com/document/product/884/33698)。
 	RefText *string `json:"RefText,omitempty" name:"RefText"`
 
 	// 语音输入模式，0：流式分片，1：非流式一次性评估
@@ -262,13 +262,13 @@ type TransmitOralProcessWithInitRequest struct {
 	// 评估语言，0：英文，1：中文。
 	ServerType *int64 `json:"ServerType,omitempty" name:"ServerType"`
 
-	// 异步模式标识，0：同步模式，1：异步模式。
+	// 异步模式标识，0：同步模式，1：异步模式，可选值参考[服务模式](https://cloud.tencent.com/document/product/884/33697)。
 	IsAsync *int64 `json:"IsAsync,omitempty" name:"IsAsync"`
 
 	// 查询标识，当该参数为1时，该请求为查询请求，请求返回该 Session 评估结果。
 	IsQuery *int64 `json:"IsQuery,omitempty" name:"IsQuery"`
 
-	// 输入文本模式，0: 普通文本，1: 音素结构文本
+	// 输入文本模式，0: 普通文本，1：[音素结构](https://cloud.tencent.com/document/product/884/33698)文本。
 	TextMode *int64 `json:"TextMode,omitempty" name:"TextMode"`
 }
 
@@ -309,7 +309,7 @@ type TransmitOralProcessWithInitResponse struct {
 		// 评估 session 状态，“Evaluating"：评估中、"Failed"：评估失败、"Finished"：评估完成
 		Status *string `json:"Status,omitempty" name:"Status"`
 
-		// 建议评分，取值范围[0,100]，评分方式为建议评分 = 准确度（PronAccuracyfloat）* 完整度（PronCompletionfloat）*（2 - 完整度（PronCompletionfloat）），如若评分策略不符合请参考Words数组中的详细分数自定义评分逻辑。
+		// 建议评分，取值范围[0,100]，评分方式为建议评分 = 准确度（PronAccuracyfloat）× 完整度（PronCompletionfloat）×（2 - 完整度（PronCompletionfloat）），如若评分策略不符合请参考Words数组中的详细分数自定义评分逻辑。
 		SuggestedScore *float64 `json:"SuggestedScore,omitempty" name:"SuggestedScore"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -343,7 +343,7 @@ type WordRsp struct {
 	// 当前词
 	Word *string `json:"Word,omitempty" name:"Word"`
 
-	// 当前词与输入语句的匹配情况，0:匹配单词、1：新增单词、2：缺少单词
+	// 当前词与输入语句的匹配情况，0：匹配单词、1：新增单词、2：缺少单词、3：错读的词、4：未录入单词。
 	MatchTag *int64 `json:"MatchTag,omitempty" name:"MatchTag"`
 
 	// 音节评估详情

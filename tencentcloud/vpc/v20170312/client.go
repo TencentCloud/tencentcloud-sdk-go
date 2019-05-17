@@ -582,6 +582,31 @@ func (c *Client) CreateDirectConnectGatewayCcnRoutes(request *CreateDirectConnec
     return
 }
 
+func NewCreateFlowLogRequest() (request *CreateFlowLogRequest) {
+    request = &CreateFlowLogRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "CreateFlowLog")
+    return
+}
+
+func NewCreateFlowLogResponse() (response *CreateFlowLogResponse) {
+    response = &CreateFlowLogResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（CreateFlowLog）用于创建流日志
+func (c *Client) CreateFlowLog(request *CreateFlowLogRequest) (response *CreateFlowLogResponse, err error) {
+    if request == nil {
+        request = NewCreateFlowLogRequest()
+    }
+    response = NewCreateFlowLogResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateHaVipRequest() (request *CreateHaVipRequest) {
     request = &CreateHaVipRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1138,6 +1163,31 @@ func (c *Client) DeleteDirectConnectGatewayCcnRoutes(request *DeleteDirectConnec
         request = NewDeleteDirectConnectGatewayCcnRoutesRequest()
     }
     response = NewDeleteDirectConnectGatewayCcnRoutesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteFlowLogRequest() (request *DeleteFlowLogRequest) {
+    request = &DeleteFlowLogRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "DeleteFlowLog")
+    return
+}
+
+func NewDeleteFlowLogResponse() (response *DeleteFlowLogResponse) {
+    response = &DeleteFlowLogResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（DeleteFlowLog）用于删除流日志
+func (c *Client) DeleteFlowLog(request *DeleteFlowLogRequest) (response *DeleteFlowLogResponse, err error) {
+    if request == nil {
+        request = NewDeleteFlowLogRequest()
+    }
+    response = NewDeleteFlowLogResponse()
     err = c.Send(request, response)
     return
 }
@@ -1875,6 +1925,56 @@ func (c *Client) DescribeDirectConnectGateways(request *DescribeDirectConnectGat
         request = NewDescribeDirectConnectGatewaysRequest()
     }
     response = NewDescribeDirectConnectGatewaysResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeFlowLogRequest() (request *DescribeFlowLogRequest) {
+    request = &DescribeFlowLogRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "DescribeFlowLog")
+    return
+}
+
+func NewDescribeFlowLogResponse() (response *DescribeFlowLogResponse) {
+    response = &DescribeFlowLogResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（DescribeFlowLog）用于查询流日志实例信息
+func (c *Client) DescribeFlowLog(request *DescribeFlowLogRequest) (response *DescribeFlowLogResponse, err error) {
+    if request == nil {
+        request = NewDescribeFlowLogRequest()
+    }
+    response = NewDescribeFlowLogResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeFlowLogsRequest() (request *DescribeFlowLogsRequest) {
+    request = &DescribeFlowLogsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "DescribeFlowLogs")
+    return
+}
+
+func NewDescribeFlowLogsResponse() (response *DescribeFlowLogsResponse) {
+    response = &DescribeFlowLogsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（DescribeFlowLogs）用于查询获取流日志集合
+func (c *Client) DescribeFlowLogs(request *DescribeFlowLogsRequest) (response *DescribeFlowLogsResponse, err error) {
+    if request == nil {
+        request = NewDescribeFlowLogsRequest()
+    }
+    response = NewDescribeFlowLogsResponse()
     err = c.Send(request, response)
     return
 }
@@ -2942,6 +3042,31 @@ func (c *Client) ModifyDirectConnectGatewayAttribute(request *ModifyDirectConnec
         request = NewModifyDirectConnectGatewayAttributeRequest()
     }
     response = NewModifyDirectConnectGatewayAttributeResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyFlowLogAttributeRequest() (request *ModifyFlowLogAttributeRequest) {
+    request = &ModifyFlowLogAttributeRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "ModifyFlowLogAttribute")
+    return
+}
+
+func NewModifyFlowLogAttributeResponse() (response *ModifyFlowLogAttributeResponse) {
+    response = &ModifyFlowLogAttributeResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（ModifyFlowLogAttribute）用于修改流日志属性
+func (c *Client) ModifyFlowLogAttribute(request *ModifyFlowLogAttributeRequest) (response *ModifyFlowLogAttributeResponse, err error) {
+    if request == nil {
+        request = NewModifyFlowLogAttributeRequest()
+    }
+    response = NewModifyFlowLogAttributeResponse()
     err = c.Send(request, response)
     return
 }

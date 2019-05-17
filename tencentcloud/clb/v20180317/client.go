@@ -43,6 +43,31 @@ func NewClient(credential *common.Credential, region string, clientProfile *prof
 }
 
 
+func NewAutoRewriteRequest() (request *AutoRewriteRequest) {
+    request = &AutoRewriteRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("clb", APIVersion, "AutoRewrite")
+    return
+}
+
+func NewAutoRewriteResponse() (response *AutoRewriteResponse) {
+    response = &AutoRewriteResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 系统自动为已存在的HTTPS:443监听器创建HTTP监听器进行转发，默认使用80端口。创建成功后可以通过HTTP:80地址自动跳转为HTTPS:443地址进行访问。
+func (c *Client) AutoRewrite(request *AutoRewriteRequest) (response *AutoRewriteResponse, err error) {
+    if request == nil {
+        request = NewAutoRewriteRequest()
+    }
+    response = NewAutoRewriteResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewBatchModifyTargetWeightRequest() (request *BatchModifyTargetWeightRequest) {
     request = &BatchModifyTargetWeightRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -195,6 +220,31 @@ func (c *Client) DeleteLoadBalancer(request *DeleteLoadBalancerRequest) (respons
         request = NewDeleteLoadBalancerRequest()
     }
     response = NewDeleteLoadBalancerResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteRewriteRequest() (request *DeleteRewriteRequest) {
+    request = &DeleteRewriteRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("clb", APIVersion, "DeleteRewrite")
+    return
+}
+
+func NewDeleteRewriteResponse() (response *DeleteRewriteResponse) {
+    response = &DeleteRewriteResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DeleteRewrite 接口支持删除指定转发规则之间的重定向关系。
+func (c *Client) DeleteRewrite(request *DeleteRewriteRequest) (response *DeleteRewriteResponse, err error) {
+    if request == nil {
+        request = NewDeleteRewriteRequest()
+    }
+    response = NewDeleteRewriteResponse()
     err = c.Send(request, response)
     return
 }
@@ -426,6 +476,56 @@ func (c *Client) DescribeLoadBalancers(request *DescribeLoadBalancersRequest) (r
     return
 }
 
+func NewDescribeRewriteRequest() (request *DescribeRewriteRequest) {
+    request = &DescribeRewriteRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("clb", APIVersion, "DescribeRewrite")
+    return
+}
+
+func NewDescribeRewriteResponse() (response *DescribeRewriteResponse) {
+    response = &DescribeRewriteResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeRewrite 接口可根据负载均衡实例ID，查询一个负载均衡实例下转发规则的重定向关系。如果不指定监听器ID或转发规则ID，则返回该负载均衡实例下的所有重定向关系。
+func (c *Client) DescribeRewrite(request *DescribeRewriteRequest) (response *DescribeRewriteResponse, err error) {
+    if request == nil {
+        request = NewDescribeRewriteRequest()
+    }
+    response = NewDescribeRewriteResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeTargetHealthRequest() (request *DescribeTargetHealthRequest) {
+    request = &DescribeTargetHealthRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("clb", APIVersion, "DescribeTargetHealth")
+    return
+}
+
+func NewDescribeTargetHealthResponse() (response *DescribeTargetHealthResponse) {
+    response = &DescribeTargetHealthResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeTargetHealth 接口用来获取应用型负载均衡后端的健康检查结果。
+func (c *Client) DescribeTargetHealth(request *DescribeTargetHealthRequest) (response *DescribeTargetHealthResponse, err error) {
+    if request == nil {
+        request = NewDescribeTargetHealthRequest()
+    }
+    response = NewDescribeTargetHealthResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeTargetsRequest() (request *DescribeTargetsRequest) {
     request = &DescribeTargetsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -472,6 +572,31 @@ func (c *Client) DescribeTaskStatus(request *DescribeTaskStatusRequest) (respons
         request = NewDescribeTaskStatusRequest()
     }
     response = NewDescribeTaskStatusResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewManualRewriteRequest() (request *ManualRewriteRequest) {
+    request = &ManualRewriteRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("clb", APIVersion, "ManualRewrite")
+    return
+}
+
+func NewManualRewriteResponse() (response *ManualRewriteResponse) {
+    response = &ManualRewriteResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 用户手动配置原访问地址和重定向地址，系统自动将原访问地址的请求重定向至对应路径的目的地址。同一域名下可以配置多条路径作为重定向策略，实现http/https之间请求的自动跳转。
+func (c *Client) ManualRewrite(request *ManualRewriteRequest) (response *ManualRewriteResponse, err error) {
+    if request == nil {
+        request = NewManualRewriteRequest()
+    }
+    response = NewManualRewriteResponse()
     err = c.Send(request, response)
     return
 }
@@ -543,7 +668,7 @@ func NewModifyLoadBalancerAttributesResponse() (response *ModifyLoadBalancerAttr
     return
 }
 
-// 修改负载均衡实例的属性，目前仅用于修改负载均衡实例的名称。
+// 修改负载均衡实例的属性，支持修改负载均衡实例的名称、设置负载均衡的跨域属性。
 // 本接口为异步接口，本接口返回成功后需以返回的RequestID为入参，调用DescribeTaskStatus接口查询本次任务是否成功。
 func (c *Client) ModifyLoadBalancerAttributes(request *ModifyLoadBalancerAttributesRequest) (response *ModifyLoadBalancerAttributesResponse, err error) {
     if request == nil {
@@ -679,6 +804,33 @@ func (c *Client) RegisterTargetsWithClassicalLB(request *RegisterTargetsWithClas
         request = NewRegisterTargetsWithClassicalLBRequest()
     }
     response = NewRegisterTargetsWithClassicalLBResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewSetLoadBalancerSecurityGroupsRequest() (request *SetLoadBalancerSecurityGroupsRequest) {
+    request = &SetLoadBalancerSecurityGroupsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("clb", APIVersion, "SetLoadBalancerSecurityGroups")
+    return
+}
+
+func NewSetLoadBalancerSecurityGroupsResponse() (response *SetLoadBalancerSecurityGroupsResponse) {
+    response = &SetLoadBalancerSecurityGroupsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// SetLoadBalancerSecurityGroups 接口支持对一个负载均衡实例执行设置（绑定、解绑）安全组操作，查询一个负载均衡实例目前已绑定的安全组，可使用 DescribeLoadBalancers 接口。
+// 绑定操作时，入参需要传入负载均衡实例要绑定的所有安全组（已绑定的+新增绑定的）。
+// 解绑操作时，入参需要传入负载均衡实例执行解绑后所绑定的所有安全组；如果要解绑所有安全组，可传入空数组。
+func (c *Client) SetLoadBalancerSecurityGroups(request *SetLoadBalancerSecurityGroupsRequest) (response *SetLoadBalancerSecurityGroupsResponse, err error) {
+    if request == nil {
+        request = NewSetLoadBalancerSecurityGroupsRequest()
+    }
+    response = NewSetLoadBalancerSecurityGroupsResponse()
     err = c.Send(request, response)
     return
 }

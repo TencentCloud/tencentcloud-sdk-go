@@ -350,6 +350,10 @@ type DataDisk struct {
 	// 该参数目前仅用于 `RunInstances` 接口。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DeleteWithInstance *bool `json:"DeleteWithInstance,omitempty" name:"DeleteWithInstance"`
+
+	// 数据盘快照ID。选择的数据盘快照大小需小于数据盘大小。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SnapshotId *string `json:"SnapshotId,omitempty" name:"SnapshotId"`
 }
 
 type DeleteDisasterRecoverGroupsRequest struct {
@@ -2157,7 +2161,7 @@ type InstanceTypeQuotaItem struct {
 	// 机型名称。
 	TypeName *string `json:"TypeName,omitempty" name:"TypeName"`
 
-	// 本地磁盘规格列表。
+	// 本地磁盘规格列表。当该参数返回为空值时，表示当前情况下无法创建本地盘。
 	LocalDiskTypeList []*LocalDiskType `json:"LocalDiskTypeList,omitempty" name:"LocalDiskTypeList" list`
 
 	// 实例是否售卖。取值范围： <br><li>SELL：表示实例可购买<br><li>SOLD_OUT：表示实例已售罄。
@@ -3426,6 +3430,6 @@ type ZoneInfo struct {
 	// 可用区ID
 	ZoneId *string `json:"ZoneId,omitempty" name:"ZoneId"`
 
-	// 可用区状态
+	// 可用区状态，包含AVAILABLE和UNAVAILABLE。AVAILABLE代表可用，UNAVAILABLE代表不可用。
 	ZoneState *string `json:"ZoneState,omitempty" name:"ZoneState"`
 }

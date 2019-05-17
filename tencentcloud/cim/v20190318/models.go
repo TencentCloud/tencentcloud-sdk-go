@@ -37,7 +37,7 @@ type DescribeSdkAppidResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 表示appid对应的SdkAppid的数据
+		// 表示 appid 对应的 SdkAppid 的数据
 		SdkAppids []*int64 `json:"SdkAppids,omitempty" name:"SdkAppids" list`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
