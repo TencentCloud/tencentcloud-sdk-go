@@ -9,7 +9,7 @@ type ClientProfile struct {
 func NewClientProfile() *ClientProfile {
 	return &ClientProfile{
 		HttpProfile:     NewHttpProfile(),
-		SignMethod:      "HmacSHA256",
+		SignMethod:      "TC3-HMAC-SHA256",
 		UnsignedPayload: false,
 	}
 }

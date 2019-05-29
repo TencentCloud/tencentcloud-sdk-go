@@ -34,7 +34,7 @@ func main() {
 	// SDK会自动指定域名。通常是不需要特地指定域名的，但是如果你访问的是金融区的服务，
 	// 则必须手动指定域名，例如云服务器的上海金融区域名： cvm.ap-shanghai-fsi.tencentcloudapi.com
 	cpf.HttpProfile.Endpoint = "cvm.tencentcloudapi.com"
-	// SDK默认用HmacSHA256进行签名，它更安全但是会轻微降低性能。
+	// SDK默认用TC3-HMAC-SHA256进行签名
 	// 非必要请不要修改这个字段。
 	cpf.SignMethod = "HmacSHA1"
 

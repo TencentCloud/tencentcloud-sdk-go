@@ -22,7 +22,6 @@ func main() {
 	cpf := profile.NewClientProfile()
 	cpf.HttpProfile.ReqMethod = "GET"
 	cpf.HttpProfile.ReqTimeout = 5
-	cpf.SignMethod = "HmacSHA1"
 
 	// 实例化要请求产品(以cvm为例)的client对象
 	client, _ := cvm.NewClient(credential, "ap-beijing", cpf)
