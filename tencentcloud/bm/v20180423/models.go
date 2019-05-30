@@ -148,7 +148,7 @@ type BuyDevicesRequest struct {
 	Aliases []*string `json:"Aliases,omitempty" name:"Aliases" list`
 
 	// CPU型号ID，自定义机型需要传入，取值：
-	// <br/><li>1: E5-2620v3 (6核) &#42; 2</li><li>2: E5-2680v4 (14核) &#42; 2</li><li>3: E5-2670v3 (12核) &#42; 2</li><li>4: E5-2620v4 (8核) &#42; 2</li><li>5: 4110 (8核) &#42; 2</li><li>6: 6133 (20核) &#42; 2</li><br/>
+	// <br/><li>1: E5-2620v3 (6核) * 2</li><li>2: E5-2680v4 (14核) * 2</li><li>3: E5-2670v3 (12核) * 2</li><li>4: E5-2620v4 (8核) * 2</li><li>5: 4110 (8核) * 2</li><li>6: 6133 (20核) * 2</li><br/>
 	CpuId *uint64 `json:"CpuId,omitempty" name:"CpuId"`
 
 	// 是否有RAID卡，取值：1(有) 0(无)，自定义机型需要传入
@@ -1970,6 +1970,9 @@ type DevicePartition struct {
 
 	// data分区大小
 	SysDataSpace *uint64 `json:"SysDataSpace,omitempty" name:"SysDataSpace"`
+
+	// 硬盘大小详情
+	DeviceDiskSizeInfoSet []*DeviceDiskSizeInfo `json:"DeviceDiskSizeInfoSet,omitempty" name:"DeviceDiskSizeInfoSet" list`
 }
 
 type DevicePositionInfo struct {

@@ -501,7 +501,7 @@ func NewDescribeBackupDatabasesResponse() (response *DescribeBackupDatabasesResp
     return
 }
 
-// 本接口(DescribeBackupDatabases)用于查询备份数据库列表。
+// 本接口(DescribeBackupDatabases)用于查询备份数据库列表 (将废弃)。
 func (c *Client) DescribeBackupDatabases(request *DescribeBackupDatabasesRequest) (response *DescribeBackupDatabasesResponse, err error) {
     if request == nil {
         request = NewDescribeBackupDatabasesRequest()
@@ -526,7 +526,7 @@ func NewDescribeBackupTablesResponse() (response *DescribeBackupTablesResponse) 
     return
 }
 
-// 本接口(DescribeBackupTables)用于查询指定的数据库的备份数据表名。
+// 本接口(DescribeBackupTables)用于查询指定的数据库的备份数据表名 (将废弃)。
 func (c *Client) DescribeBackupTables(request *DescribeBackupTablesRequest) (response *DescribeBackupTablesResponse, err error) {
     if request == nil {
         request = NewDescribeBackupTablesRequest()

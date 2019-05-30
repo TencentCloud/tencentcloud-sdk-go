@@ -193,6 +193,56 @@ func (c *Client) DescribeAgentClients(request *DescribeAgentClientsRequest) (res
     return
 }
 
+func NewDescribeAgentDealsCacheRequest() (request *DescribeAgentDealsCacheRequest) {
+    request = &DescribeAgentDealsCacheRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("partners", APIVersion, "DescribeAgentDealsCache")
+    return
+}
+
+func NewDescribeAgentDealsCacheResponse() (response *DescribeAgentDealsCacheResponse) {
+    response = &DescribeAgentDealsCacheResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 供超大型代理商（代客数量>=3000 ）拉取缓存的全量客户订单。
+func (c *Client) DescribeAgentDealsCache(request *DescribeAgentDealsCacheRequest) (response *DescribeAgentDealsCacheResponse, err error) {
+    if request == nil {
+        request = NewDescribeAgentDealsCacheRequest()
+    }
+    response = NewDescribeAgentDealsCacheResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeAgentPayDealsRequest() (request *DescribeAgentPayDealsRequest) {
+    request = &DescribeAgentPayDealsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("partners", APIVersion, "DescribeAgentPayDeals")
+    return
+}
+
+func NewDescribeAgentPayDealsResponse() (response *DescribeAgentPayDealsResponse) {
+    response = &DescribeAgentPayDealsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 可以查询代理商代付的所有订单
+func (c *Client) DescribeAgentPayDeals(request *DescribeAgentPayDealsRequest) (response *DescribeAgentPayDealsResponse, err error) {
+    if request == nil {
+        request = NewDescribeAgentPayDealsRequest()
+    }
+    response = NewDescribeAgentPayDealsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeClientBalanceRequest() (request *DescribeClientBalanceRequest) {
     request = &DescribeClientBalanceRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -239,6 +289,31 @@ func (c *Client) DescribeRebateInfos(request *DescribeRebateInfosRequest) (respo
         request = NewDescribeRebateInfosRequest()
     }
     response = NewDescribeRebateInfosResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeSalesmansRequest() (request *DescribeSalesmansRequest) {
+    request = &DescribeSalesmansRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("partners", APIVersion, "DescribeSalesmans")
+    return
+}
+
+func NewDescribeSalesmansResponse() (response *DescribeSalesmansResponse) {
+    response = &DescribeSalesmansResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 代理商查询名下业务员列表信息
+func (c *Client) DescribeSalesmans(request *DescribeSalesmansRequest) (response *DescribeSalesmansResponse, err error) {
+    if request == nil {
+        request = NewDescribeSalesmansRequest()
+    }
+    response = NewDescribeSalesmansResponse()
     err = c.Send(request, response)
     return
 }

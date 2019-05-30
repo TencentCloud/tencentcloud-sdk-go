@@ -122,6 +122,10 @@ type AdaptiveDynamicStreamingTaskInput struct {
 
 	// 转自适应码流模板 ID。
 	Definition *uint64 `json:"Definition,omitempty" name:"Definition"`
+
+	// 水印列表，支持多张图片或文字水印，最大可支持 10 张。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WatermarkSet []*WatermarkInput `json:"WatermarkSet,omitempty" name:"WatermarkSet" list`
 }
 
 type AiAnalysisResult struct {
@@ -1108,6 +1112,7 @@ type AiSampleFaceOperation struct {
 	// 人脸图片 [Base64](https://tools.ietf.org/html/rfc4648) 编码后的字符串集合。
 	// <li>当 Type为add 或 reset 时，该字段必填；</li>
 	// <li>数组长度限制：5 张图片。</li>
+	// 注意：图片必须是单人像正面人脸较清晰的照片，像素不低于 200*200。
 	FaceContents []*string `json:"FaceContents,omitempty" name:"FaceContents" list`
 }
 
@@ -1383,6 +1388,66 @@ type AudioTemplateInfoForUpdate struct {
 	AudioChannel *int64 `json:"AudioChannel,omitempty" name:"AudioChannel"`
 }
 
+type AudioTrackItem struct {
+
+	// 音频素材的媒体文件来源。可以是点播的文件 ID，也可以是其它文件的 URL。
+	SourceMedia *string `json:"SourceMedia,omitempty" name:"SourceMedia"`
+
+	// 音频片段取自素材文件的起始时间，单位为秒。0 表示从素材开始位置截取。默认为0。
+	SourceMediaStartTime *float64 `json:"SourceMediaStartTime,omitempty" name:"SourceMediaStartTime"`
+
+	// 音频片段的时长，单位为秒。默认和素材本身长度一致，表示截取全部素材。
+	Duration *float64 `json:"Duration,omitempty" name:"Duration"`
+
+	// 对音频片段进行的操作，如音量调节等。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AudioOperations []*AudioTransform `json:"AudioOperations,omitempty" name:"AudioOperations" list`
+}
+
+type AudioTransform struct {
+
+	// 音频操作类型，取值有：
+	// <li>Volume：音量调节。</li>
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 音量调节参数， 当 Type = Volume 时有效。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VolumeParam *AudioVolumeParam `json:"VolumeParam,omitempty" name:"VolumeParam"`
+}
+
+type AudioVolumeParam struct {
+
+	// 音频增益，取值范围0~10。仅在Mute=0时生效。
+	// <li>大于1表示增加音量。</li>
+	// <li>小于1表示降低音量。</li>
+	// <li>1：表示不改变。</li>
+	// 默认是1。
+	Gain *float64 `json:"Gain,omitempty" name:"Gain"`
+
+	// 是否静音，取值范围0或1。
+	// <li>0表示不静音。</li>
+	// <li>1表示静音。</li>
+	// 默认是0。
+	Mute *int64 `json:"Mute,omitempty" name:"Mute"`
+}
+
+type Canvas struct {
+
+	// 背景颜色，取值有：
+	// <li>Black：黑色背景</li>
+	// <li>White：白色背景</li>
+	// 默认值：Black。
+	Color *string `json:"Color,omitempty" name:"Color"`
+
+	// 画布宽度，即输出视频的宽度，取值范围：0~ 4096，单位：px。
+	// 默认值：0，表示和第一个视频轨的第一个视频片段的视频宽度一致。
+	Width *int64 `json:"Width,omitempty" name:"Width"`
+
+	// 画布高度，即输出视频的高度（或长边），取值范围：0~ 4096，单位：px。
+	// 默认值：0，表示和第一个视频轨的第一个视频片段的视频高度一致。
+	Height *int64 `json:"Height,omitempty" name:"Height"`
+}
+
 type ClassificationConfigureInfo struct {
 
 	// 智能分类任务开关，可选值：
@@ -1482,6 +1547,93 @@ func (r *CommitUploadResponse) ToJsonString() string {
 
 func (r *CommitUploadResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
+}
+
+type ComposeMediaOutput struct {
+
+	// 文件名称，最长 64 个字符。
+	FileName *string `json:"FileName,omitempty" name:"FileName"`
+
+	// 描述信息，最长 128 个字符。
+	Description *string `json:"Description,omitempty" name:"Description"`
+
+	// 封装格式，可选值：mp4、mp3。其中，mp3 为纯音频文件。
+	Container *string `json:"Container,omitempty" name:"Container"`
+
+	// 输出的视频信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VideoStream *OutputVideoStream `json:"VideoStream,omitempty" name:"VideoStream"`
+
+	// 输出的音频信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AudioStream *OutputAudioStream `json:"AudioStream,omitempty" name:"AudioStream"`
+
+	// 是否去除视频数据，可选值：
+	// <li>0：保留</li>
+	// <li>1：去除</li>
+	// 默认值：0。
+	RemoveVideo *int64 `json:"RemoveVideo,omitempty" name:"RemoveVideo"`
+
+	// 是否去除音频数据，可选值：
+	// <li>0：保留</li>
+	// <li>1：去除</li>
+	// 默认值：0。
+	RemoveAudio *int64 `json:"RemoveAudio,omitempty" name:"RemoveAudio"`
+}
+
+type ComposeMediaTask struct {
+
+	// 任务 ID。
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 任务流状态，取值：
+	// <li>PROCESSING：处理中；</li>
+	// <li>FINISH：已完成。</li>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 错误码
+	// <li>0：成功；</li>
+	// <li>其他值：失败。</li>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ErrCode *int64 `json:"ErrCode,omitempty" name:"ErrCode"`
+
+	// 错误信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Message *string `json:"Message,omitempty" name:"Message"`
+
+	// 制作媒体文件任务的输入。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Input *ComposeMediaTaskInput `json:"Input,omitempty" name:"Input"`
+
+	// 制作媒体文件任务的输出。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Output *ComposeMediaTaskOutput `json:"Output,omitempty" name:"Output"`
+}
+
+type ComposeMediaTaskInput struct {
+
+	// 输入的媒体轨道列表，包括视频、音频、图片等素材组成的多个轨道信息。
+	Tracks []*MediaTrack `json:"Tracks,omitempty" name:"Tracks" list`
+
+	// 制作视频文件时使用的画布。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Canvas *Canvas `json:"Canvas,omitempty" name:"Canvas"`
+
+	// 输出的媒体文件信息。
+	Output *ComposeMediaOutput `json:"Output,omitempty" name:"Output"`
+}
+
+type ComposeMediaTaskOutput struct {
+
+	// 文件类型，例如 mp4、mp3 等。
+	FileType *string `json:"FileType,omitempty" name:"FileType"`
+
+	// 媒体文件 ID。
+	FileId *string `json:"FileId,omitempty" name:"FileId"`
+
+	// 媒体文件播放地址。
+	FileUrl *string `json:"FileUrl,omitempty" name:"FileUrl"`
 }
 
 type ConcatFileInfo2017 struct {
@@ -1910,6 +2062,7 @@ type CreatePersonSampleRequest struct {
 	Name *string `json:"Name,omitempty" name:"Name"`
 
 	// 人脸图片 [Base64](https://tools.ietf.org/html/rfc4648) 编码后的字符串，仅支持 jpeg、png 图片格式。数组长度限制：5 张图片。
+	// 注意：图片必须是单人像正面人脸较清晰的照片，像素不低于 200*200。
 	FaceContents []*string `json:"FaceContents,omitempty" name:"FaceContents" list`
 
 	// 人物应用场景，可选值：
@@ -2778,6 +2931,7 @@ type DescribeMediaInfosRequest struct {
 	// <li>snapshotByTimeOffsetInfo（视频指定时间点截图信息）。</li>
 	// <li>sampleSnapshotInfo（采样截图信息）。</li>
 	// <li>keyFrameDescInfo（打点信息）。</li>
+	// <li>adaptiveDynamicStreamingInfo（转自适应码流信息）。</li>
 	Filters []*string `json:"Filters,omitempty" name:"Filters" list`
 
 	// 点播[子应用](/document/product/266/14574) ID 。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
@@ -3403,6 +3557,12 @@ type EditMediaTaskOutput struct {
 	FileUrl *string `json:"FileUrl,omitempty" name:"FileUrl"`
 }
 
+type EmptyTrackItem struct {
+
+	// 持续时间，单位为秒。
+	Duration *float64 `json:"Duration,omitempty" name:"Duration"`
+}
+
 type EventContent struct {
 
 	// 事件句柄，调用方必须调用 ConfirmEvents 来确认消息已经收到，确认有效时间 30 秒。失效后，事件可重新被获取。
@@ -3414,7 +3574,9 @@ type EventContent struct {
 	// <li>FileDeleted：视频删除完成；</li>
 	// <li>PullComplete：视频转拉完成；</li>
 	// <li>EditMediaComplete：视频编辑完成；</li>
-	// <li>WechatPublishComplete：微信发布完成。</li>
+	// <li>WechatPublishComplete：微信发布完成；</li>
+	// <li>ComposeMediaComplete：制作媒体文件完成；</li>
+	// <li>WechatMiniProgramPublishComplete：微信小程序发布完成。</li>
 	// <b>兼容 2017 版的事件类型：</b>
 	// <li>TranscodeComplete：视频转码完成；</li>
 	// <li>ConcatComplete：视频拼接完成；</li>
@@ -3466,6 +3628,14 @@ type EventContent struct {
 	// 视频按时间点截图完成事件，当事件类型为 CreateSnapshotByTimeOffsetComplete 时有效。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SnapshotByTimeOffsetCompleteEvent *SnapshotByTimeOffsetTask2017 `json:"SnapshotByTimeOffsetCompleteEvent,omitempty" name:"SnapshotByTimeOffsetCompleteEvent"`
+
+	// 制作媒体文件任务完成事件，当事件类型为 ComposeMediaComplete 时有效。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ComposeMediaCompleteEvent *ComposeMediaTask `json:"ComposeMediaCompleteEvent,omitempty" name:"ComposeMediaCompleteEvent"`
+
+	// 微信小程序视频发布完成事件，当事件类型为 WechatMiniProgramPublishComplete 时有效。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WechatMiniProgramPublishEvent *WechatMiniProgramPublishTask `json:"WechatMiniProgramPublishEvent,omitempty" name:"WechatMiniProgramPublishEvent"`
 }
 
 type FaceConfigureInfo struct {
@@ -3584,6 +3754,23 @@ type ImageSpriteTaskInput struct {
 
 	// 雪碧图模板 ID。
 	Definition *uint64 `json:"Definition,omitempty" name:"Definition"`
+}
+
+type ImageTransform struct {
+
+	// 类型，取值有：
+	// <li> Rotate：图像旋转。</li>
+	// <li> Flip：图像翻转。</li>
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 图像以中心点为原点进行旋转的角度，取值范围0~360。当 Type = Rotate 时有效。
+	RotateAngle *float64 `json:"RotateAngle,omitempty" name:"RotateAngle"`
+
+	// 图像翻转动作，取值有：
+	// <li>Horizental：水平翻转，即左右镜像。</li>
+	// <li>Vertical：垂直翻转，即上下镜像。</li>
+	// 当 Type = Flip 时有效。
+	Flip *string `json:"Flip,omitempty" name:"Flip"`
 }
 
 type ImageWatermarkInput struct {
@@ -3706,6 +3893,13 @@ func (r *LiveRealTimeClipResponse) ToJsonString() string {
 
 func (r *LiveRealTimeClipResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
+}
+
+type MediaAdaptiveDynamicStreamingInfo struct {
+
+	// 转自适应码流信息数组。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AdaptiveDynamicStreamingSet []*AdaptiveDynamicStreamingInfoItem `json:"AdaptiveDynamicStreamingSet,omitempty" name:"AdaptiveDynamicStreamingSet" list`
 }
 
 type MediaAiAnalysisClassificationItem struct {
@@ -4117,6 +4311,10 @@ type MediaInfo struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	KeyFrameDescInfo *MediaKeyFrameDescInfo `json:"KeyFrameDescInfo,omitempty" name:"KeyFrameDescInfo"`
 
+	// 转自适应码流信息。包括规格、加密类型、打包格式等相关信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AdaptiveDynamicStreamingInfo *MediaAdaptiveDynamicStreamingInfo `json:"AdaptiveDynamicStreamingInfo,omitempty" name:"AdaptiveDynamicStreamingInfo"`
+
 	// 媒体文件唯一标识 ID。
 	FileId *string `json:"FileId,omitempty" name:"FileId"`
 }
@@ -4504,6 +4702,53 @@ type MediaSourceData struct {
 	SourceContext *string `json:"SourceContext,omitempty" name:"SourceContext"`
 }
 
+type MediaTrack struct {
+
+	// 轨道类型，取值有：
+	// <ul>
+	// <li>Video ：视频轨道。视频轨道由以下 Item 组成：<ul><li>VideoTrackItem</li><li>MediaTransitionItem</li> <li>EmptyTrackItem</li></ul> </li>
+	// <li>Audio ：音频轨道。音频轨道由以下 Item 组成：<ul><li>AudioTrackItem</li><li>MediaTransitionItem</li><li>EmptyTrackItem</li></ul></li>
+	// <li>Sticker ：贴图轨道。贴图轨道以下 Item 组成：<ul><li> StickerTrackItem</li><li>EmptyTrackItem</li></ul></li>	
+	// </ul>
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 轨道上的媒体片段列表。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TrackItems []*MediaTrackItem `json:"TrackItems,omitempty" name:"TrackItems" list`
+}
+
+type MediaTrackItem struct {
+
+	// 片段类型。取值有：
+	// <li>Video：视频片段。</li>
+	// <li>Audio：音频片段。</li>
+	// <li>Sticker：贴图片段。</li>
+	// <li>Transition：转场。</li>
+	// <li>Empty：空白片段。</li>
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 视频片段，当 Type = Video 时有效。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VideoItem *VideoTrackItem `json:"VideoItem,omitempty" name:"VideoItem"`
+
+	// 音频片段，当 Type = Audio 时有效。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AudioItem *AudioTrackItem `json:"AudioItem,omitempty" name:"AudioItem"`
+
+	// 贴图片段，当 Type = Sticker 时有效。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StickerItem *StickerTrackItem `json:"StickerItem,omitempty" name:"StickerItem"`
+
+	// 转场，当 Type = Transition 时有效。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TransitionItem *MediaTransitionItem `json:"TransitionItem,omitempty" name:"TransitionItem"`
+
+	// 空白片段，当 Type = Empty 时有效。空片段用于时间轴的占位。<li>如需要两个音频片段之间有一段时间的静音，可以用 EmptyTrackItem 来进行占位。</li>
+	// <li>使用 EmptyTrackItem 进行占位，来定位某个Item。</li>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EmptyItem *EmptyTrackItem `json:"EmptyItem,omitempty" name:"EmptyItem"`
+}
+
 type MediaTranscodeInfo struct {
 
 	// 各规格的转码信息集合，每个元素代表一个规格的转码结果。
@@ -4556,6 +4801,16 @@ type MediaTranscodeItem struct {
 	// 视频流信息。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	VideoStreamSet []*MediaVideoStreamItem `json:"VideoStreamSet,omitempty" name:"VideoStreamSet" list`
+}
+
+type MediaTransitionItem struct {
+
+	// 转场持续时间，单位为秒。进行转场处理的两个媒体片段，第二个片段在轨道上的起始时间会自动进行调整，设置为前面一个片段的结束时间减去转场的持续时间。
+	Duration *float64 `json:"Duration,omitempty" name:"Duration"`
+
+	// 转场操作列表。图像转场操作和音频转场操作各自最多支持一个。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Transitions []*TransitionOpertion `json:"Transitions,omitempty" name:"Transitions" list`
 }
 
 type MediaVideoStreamItem struct {
@@ -5201,6 +5456,42 @@ type OcrWordsConfigureInfoForUpdate struct {
 	LabelSet []*string `json:"LabelSet,omitempty" name:"LabelSet" list`
 }
 
+type OutputAudioStream struct {
+
+	// 音频流的编码格式，可选值：
+	// <li>libfdk_aac：适合 mp4 文件。</li>
+	// <li>libmp3lame：适合 mp3 文件。</li>
+	// 默认值：libfdk_aac。
+	Codec *string `json:"Codec,omitempty" name:"Codec"`
+
+	// 音频流的采样率，可选值：
+	// <li>16000</li>
+	// <li>32000</li>
+	// <li>44100</li>
+	// <li>48000</li>
+	// 单位：Hz。
+	// 默认值：16000。
+	SampleRate *int64 `json:"SampleRate,omitempty" name:"SampleRate"`
+
+	// 音频声道数，可选值：
+	// <li>1：单声道 。</li>
+	// <li>2：双声道</li>
+	// 默认值：2。
+	AudioChannel *int64 `json:"AudioChannel,omitempty" name:"AudioChannel"`
+}
+
+type OutputVideoStream struct {
+
+	// 视频流的编码格式，可选值：
+	// <li>libx264：H.264 编码 </li>
+	// 默认值：libx264。
+	Codec *string `json:"Codec,omitempty" name:"Codec"`
+
+	// 视频帧率，取值范围：[0, 60]，单位：Hz。
+	// 默认值：0，表示和第一个视频轨的第一个视频片段的视频帧率一致。
+	Fps *int64 `json:"Fps,omitempty" name:"Fps"`
+}
+
 type PoliticalAsrReviewTemplateInfo struct {
 
 	// 语音鉴政任务开关，可选值：
@@ -5780,23 +6071,22 @@ type PullFileTask struct {
 	// 错误码
 	// <li>0：成功；</li>
 	// <li>其他值：失败。</li>
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ErrCode *int64 `json:"ErrCode,omitempty" name:"ErrCode"`
 
 	// 错误信息。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Message *string `json:"Message,omitempty" name:"Message"`
 
 	// 转拉上传完成后生成的视频 ID。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FileId *string `json:"FileId,omitempty" name:"FileId"`
 
-	// 转拉上传完成后生成的播放地址。
+	// 上传完成后生成的媒体文件基础信息。
 	// 注意：此字段可能返回 null，表示取不到有效值。
+	MediaBasicInfo *string `json:"MediaBasicInfo,omitempty" name:"MediaBasicInfo"`
+
+	// 转拉上传完成后生成的播放地址。
 	FileUrl *string `json:"FileUrl,omitempty" name:"FileUrl"`
 
 	// 若转拉上传时指定了视频处理流程，则该参数为流程任务 ID。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProcedureTaskId *string `json:"ProcedureTaskId,omitempty" name:"ProcedureTaskId"`
 }
 
@@ -6043,6 +6333,54 @@ type SortBy struct {
 
 	// 排序方式，可选值：Asc（升序）、Desc（降序）
 	Order *string `json:"Order,omitempty" name:"Order"`
+}
+
+type StickerTrackItem struct {
+
+	// 贴图素材的媒体文件来源。可以是点播的文件 ID，也可以是其它文件的 URL。
+	SourceMedia *string `json:"SourceMedia,omitempty" name:"SourceMedia"`
+
+	// 贴图的持续时间，单位为秒。
+	Duration *float64 `json:"Duration,omitempty" name:"Duration"`
+
+	// 贴图在轨道上的起始时间，单位为秒。
+	StartTime *float64 `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 原点位置，取值有：
+	// <li>Center：坐标原点为中心位置，如画布中心。</li>
+	// 默认值：Center。
+	CoordinateOrigin *string `json:"CoordinateOrigin,omitempty" name:"CoordinateOrigin"`
+
+	// 贴图原点距离画布原点的水平位置。支持 %、px 两种格式：
+	// <li>当字符串以 % 结尾，表示贴图 XPos 为画布宽度指定百分比的位置，如 10% 表示 XPos 为画布宽度的 10%。</li><li>当字符串以 px 结尾，表示贴图 XPos 单位为像素，如 100px 表示 XPos 为 100 像素。</li>
+	// 默认值：0px。
+	XPos *string `json:"XPos,omitempty" name:"XPos"`
+
+	// 贴图原点距离画布原点的垂直位置。支持 %、px 两种格式：
+	// <li>当字符串以 % 结尾，表示贴图 YPos 为画布高度指定百分比的位置，如 10% 表示 YPos 为画布高度的 10%。</li>
+	// <li>当字符串以 px 结尾，表示贴图 YPos 单位为像素，如 100px 表示 YPos 为 100 像素。</li>
+	// 默认值：0px。
+	YPos *string `json:"YPos,omitempty" name:"YPos"`
+
+	// 贴图的宽度。支持 %、px 两种格式：
+	// <li>当字符串以 % 结尾，表示贴图 Width 为画布宽度的百分比大小，如 10% 表示 Width 为画布宽度的 10%。</li>
+	// <li>当字符串以 px 结尾，表示贴图 Width 单位为像素，如 100px 表示 Width 为 100 像素。</li>
+	// <li>当 Width、Height 均为空，则 Width 和 Height 取贴图素材本身的 Width、Height。</li>
+	// <li>当 Width 为空0，Height 非空，则 Width 按比例缩放</li>
+	// <li>当 Width 非空，Height 为空，则 Height 按比例缩放。</li>
+	Width *string `json:"Width,omitempty" name:"Width"`
+
+	// 贴图的高度。支持 %、px 两种格式：
+	// <li>当字符串以 % 结尾，表示贴图 Height 为画布高度的百分比大小，如 10% 表示 Height 为画布高度的 10%。</li>
+	// <li>当字符串以 px 结尾，表示贴图 Height 单位为像素，如 100px 表示 Hieght 为 100 像素。</li>
+	// <li>当 Width、Height 均为空，则 Width 和 Height 取贴图素材本身的 Width、Height。</li>
+	// <li>当 Width 为空，Height 非空，则 Width 按比例缩放</li>
+	// <li>当 Width 非空，Height 为空，则 Height 按比例缩放。</li>
+	Height *string `json:"Height,omitempty" name:"Height"`
+
+	// 对贴图进行的操作，如图像旋转等。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ImageOperations []*ImageTransform `json:"ImageOperations,omitempty" name:"ImageOperations" list`
 }
 
 type SvgWatermarkInput struct {
@@ -6368,6 +6706,58 @@ type TranscodeTemplate struct {
 	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
 }
 
+type TransitionOpertion struct {
+
+	// 转场类型，取值有：
+	// <ul>
+	// <li>图像的转场操作，用于两个视频片段图像间的转场处理：
+	// <ul>
+	// <li>ImageFadeInFadeOut：图像淡入淡出。 </li>
+	// <li>BowTieHorizontal：水平蝴蝶结。 </li>
+	// <li>BowTieVertical：垂直蝴蝶结。 </li>
+	// <li>ButterflyWaveScrawler：晃动。 </li>
+	// <li>Cannabisleaf：枫叶。 </li>
+	// <li>Circle：弧形收放。 </li>
+	// <li>CircleCrop：圆环聚拢。 </li>
+	// <li>Circleopen：椭圆聚拢。 </li>
+	// <li>Crosswarp：横向翘曲。 </li>
+	// <li>Cube：立方体。 </li>
+	// <li>DoomScreenTransition：幕布。 </li>
+	// <li>Doorway：门廊。 </li>
+	// <li>Dreamy：波浪。 </li>
+	// <li>DreamyZoom：水平聚拢。 </li>
+	// <li>FilmBurn：火烧云。 </li>
+	// <li>GlitchMemories：抖动。 </li>
+	// <li>Heart：心形。 </li>
+	// <li>InvertedPageCurl：翻页。 </li>
+	// <li>Luma：腐蚀。 </li>
+	// <li>Mosaic：九宫格。 </li>
+	// <li>Pinwheel：风车。 </li>
+	// <li>PolarFunction：椭圆扩散。 </li>
+	// <li>PolkaDotsCurtain：弧形扩散。 </li>
+	// <li>Radial：雷达扫描 </li>
+	// <li>RotateScaleFade：上下收放。 </li>
+	// <li>Squeeze：上下聚拢。 </li>
+	// <li>Swap：放大切换。 </li>
+	// <li>Swirl：螺旋。 </li>
+	// <li>UndulatingBurnOutSwirl：水流蔓延。 </li>
+	// <li>Windowblinds：百叶窗。 </li>
+	// <li>WipeDown：向下收起。 </li>
+	// <li>WipeLeft：向左收起。 </li>
+	// <li>WipeRight：向右收起。 </li>
+	// <li>WipeUp：向上收起。 </li>
+	// <li>ZoomInCircles：水波纹。 </li>
+	// </ul>
+	// </li>
+	// <li>音频的转场操作，用于两个音频片段间的转场处理：
+	// <ul>
+	// <li>AudioFadeInFadeOut：声音淡入淡出。 </li>
+	// </ul>
+	// </li>
+	// </ul>
+	Type *string `json:"Type,omitempty" name:"Type"`
+}
+
 type UserDefineAsrTextReviewTemplateInfo struct {
 
 	// 用户自定语音审核任务开关，可选值：
@@ -6577,6 +6967,59 @@ type VideoTemplateInfoForUpdate struct {
 	Height *uint64 `json:"Height,omitempty" name:"Height"`
 }
 
+type VideoTrackItem struct {
+
+	// 视频片段的媒体素材来源，可以是点播的文件 ID，或者是其它文件的 URL。
+	SourceMedia *string `json:"SourceMedia,omitempty" name:"SourceMedia"`
+
+	// 视频片段取自素材文件的起始时间，单位为秒。默认为0。
+	SourceMediaStartTime *float64 `json:"SourceMediaStartTime,omitempty" name:"SourceMediaStartTime"`
+
+	// 视频片段时长，单位为秒。默认取视频素材本身长度，表示截取全部素材。如果源文件是图片，Duration需要大于0。
+	Duration *float64 `json:"Duration,omitempty" name:"Duration"`
+
+	// 视频原点位置，取值有：
+	// <li>Center：坐标原点为中心位置，如画布中心。</li>
+	// 默认值 ：Center。
+	CoordinateOrigin *string `json:"CoordinateOrigin,omitempty" name:"CoordinateOrigin"`
+
+	// 视频片段原点距离画布原点的水平位置。支持 %、px 两种格式：
+	// <li>当字符串以 % 结尾，表示视频片段 XPos 为画布宽度指定百分比的位置，如 10% 表示 XPos 为画布口宽度的 10%。</li>
+	// <li>当字符串以 px 结尾，表示视频片段 XPos 单位为像素，如 100px 表示 XPos 为100像素。</li>
+	// 默认值：0px。
+	XPos *string `json:"XPos,omitempty" name:"XPos"`
+
+	// 视频片段原点距离画布原点的垂直位置。支持 %、px 两种格式：
+	// <li>当字符串以 % 结尾，表示视频片段 YPos 为画布高度指定百分比的位置，如 10% 表示 YPos 为画布高度的 10%。</li>
+	// <li>当字符串以 px 结尾，表示视频片段 YPos 单位为像素，如 100px 表示 YPos 为100像素。</li>
+	// 默认值：0px。
+	YPos *string `json:"YPos,omitempty" name:"YPos"`
+
+	// 视频片段的宽度。支持 %、px 两种格式：
+	// <li>当字符串以 % 结尾，表示视频片段 Width 为画布宽度的百分比大小，如 10% 表示 Width 为画布宽度的 10%。</li>
+	// <li>当字符串以 px 结尾，表示视频片段 Width 单位为像素，如 100px 表示 Width 为100像素。</li>
+	// <li>当 Width、Height 均为空，则 Width 和 Height 取视频素材本身的 Width、Height。</li>
+	// <li>当 Width 为空，Height 非空，则 Width 按比例缩放</li>
+	// <li>当 Width 非空，Height 为空，则 Height 按比例缩放。</li>
+	Width *string `json:"Width,omitempty" name:"Width"`
+
+	// 视频片段的高度。支持 %、px 两种格式：
+	// <li>当字符串以 % 结尾，表示视频片段 Height 为画布高度的百分比大小，如 10% 表示 Height 为画布高度的 10%；
+	// </li><li>当字符串以 px 结尾，表示视频片段 Height 单位为像素，如 100px 表示 Height 为100像素。</li>
+	// <li>当 Width、Height 均为空，则 Width 和 Height 取视频素材本身的 Width、Height。</li>
+	// <li>当 Width 为空，Height 非空，则 Width 按比例缩放</li>
+	// <li>当 Width 非空，Height 为空，则 Height 按比例缩放。</li>
+	Height *string `json:"Height,omitempty" name:"Height"`
+
+	// 对图像进行的操作，如图像旋转等。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ImageOperations []*ImageTransform `json:"ImageOperations,omitempty" name:"ImageOperations" list`
+
+	// 对音频进行操作，如静音等。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AudioOperations []*AudioTransform `json:"AudioOperations,omitempty" name:"AudioOperations" list`
+}
+
 type WatermarkInput struct {
 
 	// 水印模板 ID。
@@ -6642,6 +7085,37 @@ type WatermarkTemplate struct {
 	// <li>bottomLeft：表示坐标原点位于视频图像的左下角，水印原点为图片或文字的左下角；</li>
 	// <li>bottomRight：表示坐标原点位于视频图像的右下角，水印原点为图片或文字的右下。；</li>
 	CoordinateOrigin *string `json:"CoordinateOrigin,omitempty" name:"CoordinateOrigin"`
+}
+
+type WechatMiniProgramPublishTask struct {
+
+	// 任务 ID。
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 任务状态，取值：
+	// WAITING：等待中；
+	// PROCESSING：处理中；
+	// FINISH：已完成。
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 错误码
+	// <li>0：成功；</li>
+	// <li>其他值：失败。</li>
+	ErrCode *int64 `json:"ErrCode,omitempty" name:"ErrCode"`
+
+	// 错误信息。
+	Message *string `json:"Message,omitempty" name:"Message"`
+
+	// 发布视频文件 ID。
+	FileId *string `json:"FileId,omitempty" name:"FileId"`
+
+	// 发布视频所对应的转码模板 ID，为 0 代表原始视频。
+	SourceDefinition *uint64 `json:"SourceDefinition,omitempty" name:"SourceDefinition"`
+
+	// 微信小程序视频发布状态，取值：
+	// <li>Pass：成功；</li>
+	// <li>Rejected：审核未通过。</li>
+	PublishResult *string `json:"PublishResult,omitempty" name:"PublishResult"`
 }
 
 type WechatPublishTask struct {

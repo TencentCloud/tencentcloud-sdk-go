@@ -20,6 +20,194 @@ import (
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
+type Block struct {
+
+	// 区块编号
+	BlockNum *uint64 `json:"BlockNum,omitempty" name:"BlockNum"`
+
+	// 区块Hash数值
+	DataHash *string `json:"DataHash,omitempty" name:"DataHash"`
+
+	// 区块ID，与区块编号一直
+	BlockId *uint64 `json:"BlockId,omitempty" name:"BlockId"`
+
+	// 前一个区块Hash（未使用）,与区块Hash数值一直
+	PreHash *string `json:"PreHash,omitempty" name:"PreHash"`
+
+	// 区块内的交易数量
+	TxCount *uint64 `json:"TxCount,omitempty" name:"TxCount"`
+}
+
+type GetBlockListRequest struct {
+	*tchttp.BaseRequest
+
+	// 模块名称，固定字段：block
+	Module *string `json:"Module,omitempty" name:"Module"`
+
+	// 操作名称，固定字段：block_list
+	Operation *string `json:"Operation,omitempty" name:"Operation"`
+
+	// 通道ID，固定字段：0
+	ChannelId *uint64 `json:"ChannelId,omitempty" name:"ChannelId"`
+
+	// 组织ID，固定字段：0
+	GroupId *uint64 `json:"GroupId,omitempty" name:"GroupId"`
+
+	// 需要查询的通道名称，可在通道详情或列表中获取
+	ChannelName *string `json:"ChannelName,omitempty" name:"ChannelName"`
+
+	// 调用接口的组织名称，可以在组织管理列表中获取当前组织的名称
+	GroupName *string `json:"GroupName,omitempty" name:"GroupName"`
+
+	// 区块链网络ID，可在区块链网络详情或列表中获取
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 需要获取的起始交易偏移
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 需要获取的交易数量
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+func (r *GetBlockListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *GetBlockListRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type GetBlockListResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 区块数量
+		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 区块列表
+		BlockList []*Block `json:"BlockList,omitempty" name:"BlockList" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *GetBlockListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *GetBlockListResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type GetClusterSummaryRequest struct {
+	*tchttp.BaseRequest
+
+	// 模块名称，固定字段：cluster_mng
+	Module *string `json:"Module,omitempty" name:"Module"`
+
+	// 操作名称，固定字段：cluster_summary
+	Operation *string `json:"Operation,omitempty" name:"Operation"`
+
+	// 区块链网络ID，可在区块链网络详情或列表中获取
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 组织ID，固定字段：0
+	GroupId *uint64 `json:"GroupId,omitempty" name:"GroupId"`
+
+	// 调用接口的组织名称，可以在组织管理列表中获取当前组织的名称
+	GroupName *string `json:"GroupName,omitempty" name:"GroupName"`
+}
+
+func (r *GetClusterSummaryRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *GetClusterSummaryRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type GetClusterSummaryResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 网络通道总数量
+		TotalChannelCount *uint64 `json:"TotalChannelCount,omitempty" name:"TotalChannelCount"`
+
+		// 当前组织创建的通道数量
+		MyChannelCount *uint64 `json:"MyChannelCount,omitempty" name:"MyChannelCount"`
+
+		// 其组织创建的通道数量
+		OtherChannelCount *uint64 `json:"OtherChannelCount,omitempty" name:"OtherChannelCount"`
+
+		// 当前组织加入的通道数量
+		JoinChannelCount *uint64 `json:"JoinChannelCount,omitempty" name:"JoinChannelCount"`
+
+		// 与当前组织无关的通道数量
+		NoneChannelCount *uint64 `json:"NoneChannelCount,omitempty" name:"NoneChannelCount"`
+
+		// 网络节点总数量
+		TotalPeerCount *uint64 `json:"TotalPeerCount,omitempty" name:"TotalPeerCount"`
+
+		// 当前组织创建的节点数量
+		MyPeerCount *uint64 `json:"MyPeerCount,omitempty" name:"MyPeerCount"`
+
+		// 其他组织创建的节点数量
+		OtherPeerCount *uint64 `json:"OtherPeerCount,omitempty" name:"OtherPeerCount"`
+
+		// 网络组织总数量
+		TotalGroupCount *uint64 `json:"TotalGroupCount,omitempty" name:"TotalGroupCount"`
+
+		// 当前组织创建的组织数量
+		MyGroupCount *uint64 `json:"MyGroupCount,omitempty" name:"MyGroupCount"`
+
+		// 其他组织创建的组织数量
+		OtherGroupCount *uint64 `json:"OtherGroupCount,omitempty" name:"OtherGroupCount"`
+
+		// 网络智能合约总数量
+		TotalChaincodeCount *uint64 `json:"TotalChaincodeCount,omitempty" name:"TotalChaincodeCount"`
+
+		// 最近7天发起的智能合约数量
+		RecentChaincodeCount *uint64 `json:"RecentChaincodeCount,omitempty" name:"RecentChaincodeCount"`
+
+		// 当前组织发起的智能合约数量
+		MyChaincodeCount *uint64 `json:"MyChaincodeCount,omitempty" name:"MyChaincodeCount"`
+
+		// 其组织发起的智能合约数量
+		OtherChaincodeCount *uint64 `json:"OtherChaincodeCount,omitempty" name:"OtherChaincodeCount"`
+
+		// 当前组织的证书总数量
+		TotalCertCount *uint64 `json:"TotalCertCount,omitempty" name:"TotalCertCount"`
+
+		// 颁发给当前组织的证书数量
+		TlsCertCount *uint64 `json:"TlsCertCount,omitempty" name:"TlsCertCount"`
+
+		// 网络背书节点证书数量
+		PeerCertCount *uint64 `json:"PeerCertCount,omitempty" name:"PeerCertCount"`
+
+		// 网络排序节点证书数量
+		OrderCertCount *uint64 `json:"OrderCertCount,omitempty" name:"OrderCertCount"`
+
+		// 当前组织业务证书数量
+		ClientCertCount *uint64 `json:"ClientCertCount,omitempty" name:"ClientCertCount"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *GetClusterSummaryResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *GetClusterSummaryResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type GetInvokeTxRequest struct {
 	*tchttp.BaseRequest
 
@@ -41,7 +229,7 @@ type GetInvokeTxRequest struct {
 	// 执行该查询交易的节点所属组织名称，可以在通道详情中获取该通道上的节点名称极其所属组织名称
 	PeerGroup *string `json:"PeerGroup,omitempty" name:"PeerGroup"`
 
-	// 事务ID
+	// 交易ID
 	TxId *string `json:"TxId,omitempty" name:"TxId"`
 
 	// 调用合约的组织名称，可以在组织管理列表中获取当前组织的名称
@@ -61,11 +249,14 @@ type GetInvokeTxResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 状态码
+		// 交易执行状态码
 		TxValidationCode *int64 `json:"TxValidationCode,omitempty" name:"TxValidationCode"`
 
-		// 消息
+		// 交易执行消息
 		TxValidationMsg *string `json:"TxValidationMsg,omitempty" name:"TxValidationMsg"`
+
+		// 交易所在区块ID
+		BlockId *int64 `json:"BlockId,omitempty" name:"BlockId"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -78,6 +269,73 @@ func (r *GetInvokeTxResponse) ToJsonString() string {
 }
 
 func (r *GetInvokeTxResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type GetLatesdTransactionListRequest struct {
+	*tchttp.BaseRequest
+
+	// 模块名称，固定字段：transaction
+	Module *string `json:"Module,omitempty" name:"Module"`
+
+	// 操作名称，固定字段：latest_transaction_list
+	Operation *string `json:"Operation,omitempty" name:"Operation"`
+
+	// 组织ID，固定字段：0
+	GroupId *uint64 `json:"GroupId,omitempty" name:"GroupId"`
+
+	// 通道ID，固定字段：0
+	ChannelId *uint64 `json:"ChannelId,omitempty" name:"ChannelId"`
+
+	// 获取的最新交易的区块数量，取值范围1~5
+	LatestBlockNumber *uint64 `json:"LatestBlockNumber,omitempty" name:"LatestBlockNumber"`
+
+	// 调用接口的组织名称，可以在组织管理列表中获取当前组织的名称
+	GroupName *string `json:"GroupName,omitempty" name:"GroupName"`
+
+	// 需要查询的通道名称，可在通道详情或列表中获取
+	ChannelName *string `json:"ChannelName,omitempty" name:"ChannelName"`
+
+	// 区块链网络ID，可在区块链网络详情或列表中获取
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 需要获取的起始交易偏移
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 需要获取的交易数量
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+func (r *GetLatesdTransactionListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *GetLatesdTransactionListRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type GetLatesdTransactionListResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 交易总数量
+		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 交易列表
+		TransactionList []*TransactionItem `json:"TransactionList,omitempty" name:"TransactionList" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *GetLatesdTransactionListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *GetLatesdTransactionListResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -128,7 +386,7 @@ type InvokeResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 交易编号
+		// 交易ID
 		Txid *string `json:"Txid,omitempty" name:"Txid"`
 
 		// 交易执行结果
@@ -216,4 +474,31 @@ func (r *QueryResponse) ToJsonString() string {
 
 func (r *QueryResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
+}
+
+type TransactionItem struct {
+
+	// 交易ID
+	TransactionId *string `json:"TransactionId,omitempty" name:"TransactionId"`
+
+	// 交易hash
+	TransactionHash *string `json:"TransactionHash,omitempty" name:"TransactionHash"`
+
+	// 创建交易的组织名
+	CreateOrgName *string `json:"CreateOrgName,omitempty" name:"CreateOrgName"`
+
+	// 交易所在区块号
+	BlockId *uint64 `json:"BlockId,omitempty" name:"BlockId"`
+
+	// 交易类型（普通交易和配置交易）
+	TransactionType *string `json:"TransactionType,omitempty" name:"TransactionType"`
+
+	// 交易创建时间
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 交易所在区块高度
+	BlockHeight *uint64 `json:"BlockHeight,omitempty" name:"BlockHeight"`
+
+	// 交易状态
+	TransactionStatus *string `json:"TransactionStatus,omitempty" name:"TransactionStatus"`
 }

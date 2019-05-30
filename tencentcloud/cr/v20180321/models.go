@@ -282,11 +282,15 @@ type DescribeTaskStatusResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 任务结果
+		// 任务结果，例如上传成功时返回“File Uploading Task Success.”
 		TaskResult *string `json:"TaskResult,omitempty" name:"TaskResult"`
 
-		// <p>任务类型：</p><ul style="margin-bottom:0px;"><li>报告下载：001</li><li>催收数据上传：002</li><li>还款数据上传：003</li><li>回访数据上传：004</li></ul>
+		// <p>任务类型：</p><ul style="margin-bottom:0px;"><li>报告下载：001</li><li>催收数据上传：002</li><li>还款数据上传：003</li><li>回访数据上传：004</li><li>停拨数据上传：005</li></ul>
 		TaskType *string `json:"TaskType,omitempty" name:"TaskType"`
+
+		// 过滤文件下载链接，有过滤数据时才存在。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		TaskFileUrl *string `json:"TaskFileUrl,omitempty" name:"TaskFileUrl"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -382,6 +386,9 @@ type SingleBlackApply struct {
 
 	// 备注。
 	BlackDescription *string `json:"BlackDescription,omitempty" name:"BlackDescription"`
+
+	// 黑名单生效截止日期，格式为YYYY-MM-DD，不填默认为永久。
+	BlackValidDate *string `json:"BlackValidDate,omitempty" name:"BlackValidDate"`
 }
 
 type SingleRecord struct {

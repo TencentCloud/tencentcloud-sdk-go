@@ -453,7 +453,7 @@ type CreateDBInstanceHourRequest struct {
 	// 设置root帐号密码，密码规则：8-64个字符，至少包含字母、数字、字符（支持的字符：_+-&=!@#$%^*()）中的两种，购买主实例时可指定该参数，购买只读实例或者灾备实例时指定该参数无意义
 	Password *string `json:"Password,omitempty" name:"Password"`
 
-	// 参数列表，参数格式如ParamList.0.Name=auto_increment&ParamList.0.Value=1。可通过[查询实例的可设置参数列表](https://cloud.tencent.com/document/api/236/20411)查询支持设置的参数
+	// 参数列表，参数格式如ParamList.0.Name=auto_increment&ParamList.0.Value=1。可通过[查询默认的可设置参数列表](https://cloud.tencent.com/document/api/236/32662)查询支持设置的参数
 	ParamList []*ParamInfo `json:"ParamList,omitempty" name:"ParamList" list`
 
 	// 数据复制方式，默认为0，支持值包括：0-表示异步复制，1-表示半同步复制，2-表示强同步复制，购买主实例时可指定该参数，购买只读实例或者灾备实例时指定该参数无意义
@@ -568,7 +568,7 @@ type CreateDBInstanceRequest struct {
 	// 备库1的可用区信息，默认为zone的值
 	SlaveZone *string `json:"SlaveZone,omitempty" name:"SlaveZone"`
 
-	// 参数列表，参数格式如ParamList.0.Name=auto_increment&ParamList.0.Value=1。可通过[查询实例的可设置参数列表](https://cloud.tencent.com/document/api/236/20411)查询支持设置的参数
+	// 参数列表，参数格式如ParamList.0.Name=auto_increment&ParamList.0.Value=1。可通过[查询默认的可设置参数列表](https://cloud.tencent.com/document/api/236/32662)查询支持设置的参数
 	ParamList []*ParamInfo `json:"ParamList,omitempty" name:"ParamList" list`
 
 	// 备库2的可用区ID，默认为0，购买主实例时可指定该参数，购买只读实例或者灾备实例时指定该参数无意义
@@ -3043,7 +3043,7 @@ type ModifyAccountPasswordRequest struct {
 	// 实例ID，格式如：cdb-c1nl9rpv，与云数据库控制台页面中显示的实例ID相同。
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
-	// 数据库账号的新密码。
+	// 数据库账号的新密码。密码应至少包含字母、数字和字符（_+-&=!@#$%^*()）中的两种，长度为8-64个字符。
 	NewPassword *string `json:"NewPassword,omitempty" name:"NewPassword"`
 
 	// 云数据库账号。

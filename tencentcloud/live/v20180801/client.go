@@ -455,7 +455,11 @@ func NewCreatePullStreamConfigResponse() (response *CreatePullStreamConfigRespon
     return
 }
 
-// 添加拉流配置，目前限制添加10条任务。
+// 创建临时拉流转推任务，目前限制添加10条任务。
+// 
+// 注意：该接口用于创建临时拉流转推任务，
+// 拉流源地址即FromUrl 可以是腾讯或非腾讯数据源，
+// 但转推目标地址即ToUrl 目前限制为已注册的腾讯直播域名。
 func (c *Client) CreatePullStreamConfig(request *CreatePullStreamConfigRequest) (response *CreatePullStreamConfigResponse, err error) {
     if request == nil {
         request = NewCreatePullStreamConfigRequest()
@@ -580,7 +584,7 @@ func NewDeleteLiveRecordResponse() (response *DeleteLiveRecordResponse) {
     return
 }
 
-// 用于删除录制任务
+// 用于删除录制任务。
 func (c *Client) DeleteLiveRecord(request *DeleteLiveRecordRequest) (response *DeleteLiveRecordResponse, err error) {
     if request == nil {
         request = NewDeleteLiveRecordRequest()
@@ -1255,7 +1259,9 @@ func NewDescribeLiveStreamEventListResponse() (response *DescribeLiveStreamEvent
     return
 }
 
-// 查询推断流事件
+// 用于查询推断流事件。
+// 
+// 注意：该接口可通过使用IsFilter进行过滤，返回推流历史记录。
 func (c *Client) DescribeLiveStreamEventList(request *DescribeLiveStreamEventListRequest) (response *DescribeLiveStreamEventListResponse, err error) {
     if request == nil {
         request = NewDescribeLiveStreamEventListRequest()

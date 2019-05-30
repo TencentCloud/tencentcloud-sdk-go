@@ -60,6 +60,14 @@ type AgentAuditedClient struct {
 
 	// 项目类型：可以为self(自拓项目)/platform(合作项目)/repeat(复算项目  )/空
 	ProjectType *string `json:"ProjectType,omitempty" name:"ProjectType"`
+
+	// 业务员ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SalesUin *string `json:"SalesUin,omitempty" name:"SalesUin"`
+
+	// 业务员姓名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SalesName *string `json:"SalesName,omitempty" name:"SalesName"`
 }
 
 type AgentBillElem struct {
@@ -130,6 +138,97 @@ type AgentClientElem struct {
 	Status *uint64 `json:"Status,omitempty" name:"Status"`
 }
 
+type AgentDealElem struct {
+
+	// 订单自增 ID
+	DealId *string `json:"DealId,omitempty" name:"DealId"`
+
+	// 订单号
+	DealName *string `json:"DealName,omitempty" name:"DealName"`
+
+	// 商品类型 ID
+	GoodsCategoryId *string `json:"GoodsCategoryId,omitempty" name:"GoodsCategoryId"`
+
+	// 订单所有者
+	OwnerUin *string `json:"OwnerUin,omitempty" name:"OwnerUin"`
+
+	// 订单所有者对应 appId
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AppId *string `json:"AppId,omitempty" name:"AppId"`
+
+	// 商品数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GoodsNum *string `json:"GoodsNum,omitempty" name:"GoodsNum"`
+
+	// 价格详情
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GoodsPrice *DealGoodsPriceElem `json:"GoodsPrice,omitempty" name:"GoodsPrice"`
+
+	// 下单人
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Creater *string `json:"Creater,omitempty" name:"Creater"`
+
+	// 下单时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreatTime *string `json:"CreatTime,omitempty" name:"CreatTime"`
+
+	// 支付结束时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PayEndTime *string `json:"PayEndTime,omitempty" name:"PayEndTime"`
+
+	// 扣费流水号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BillId *string `json:"BillId,omitempty" name:"BillId"`
+
+	// 支付人
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Payer *string `json:"Payer,omitempty" name:"Payer"`
+
+	// 订单状态，中文描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DealStatus *string `json:"DealStatus,omitempty" name:"DealStatus"`
+
+	// 订单的状态(1：未支付;2：已支付;3：发货中;4：已发货;5：发货失败;6：已退款;7：已关单;8：订单过期;9：订单已失效;10：产品已失效;11：代付拒绝;12：支付中)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 产品名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GoodsName *string `json:"GoodsName,omitempty" name:"GoodsName"`
+
+	// 客户备注
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClientRemark *string `json:"ClientRemark,omitempty" name:"ClientRemark"`
+
+	// 订单操作类型，purchase（新购），renew（续费），modify（配置变更）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ActionType *string `json:"ActionType,omitempty" name:"ActionType"`
+
+	// 代金券抵扣金额，单位分
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VoucherDecline *string `json:"VoucherDecline,omitempty" name:"VoucherDecline"`
+
+	// 大订单号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BigDealId *string `json:"BigDealId,omitempty" name:"BigDealId"`
+
+	// 客户类型（new：新拓；old：存量；assign：指派）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClientType *string `json:"ClientType,omitempty" name:"ClientType"`
+
+	// 项目类型（self：自拓；repeat：直销；platform：官网合作）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProjectType *string `json:"ProjectType,omitempty" name:"ProjectType"`
+
+	// 业务员账号ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SalesUin *string `json:"SalesUin,omitempty" name:"SalesUin"`
+
+	// 支付方式，0：自付；1：代付
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PayerMode *string `json:"PayerMode,omitempty" name:"PayerMode"`
+}
+
 type AgentPayDealsRequest struct {
 	*tchttp.BaseRequest
 
@@ -168,6 +267,21 @@ func (r *AgentPayDealsResponse) ToJsonString() string {
 
 func (r *AgentPayDealsResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
+}
+
+type AgentSalesmanElem struct {
+
+	// 代理商账号ID
+	Uin *string `json:"Uin,omitempty" name:"Uin"`
+
+	// 业务员ID
+	SalesUin *string `json:"SalesUin,omitempty" name:"SalesUin"`
+
+	// 业务员姓名
+	SalesName *string `json:"SalesName,omitempty" name:"SalesName"`
+
+	// 业务员创建时间
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
 }
 
 type AgentTransferMoneyRequest struct {
@@ -259,6 +373,12 @@ func (r *AuditApplyClientResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DealGoodsPriceElem struct {
+
+	// 实付金额
+	RealTotalCost *uint64 `json:"RealTotalCost,omitempty" name:"RealTotalCost"`
+}
+
 type DescribeAgentAuditedClientsRequest struct {
 	*tchttp.BaseRequest
 
@@ -294,6 +414,12 @@ type DescribeAgentAuditedClientsRequest struct {
 
 	// 项目类型：可以为self(自拓项目)/platform(合作项目)/repeat(复算项目  )/空
 	ProjectType *string `json:"ProjectType,omitempty" name:"ProjectType"`
+
+	// 业务员ID
+	SalesUin *string `json:"SalesUin,omitempty" name:"SalesUin"`
+
+	// 业务员姓名（模糊查询）
+	SalesName *string `json:"SalesName,omitempty" name:"SalesName"`
 }
 
 func (r *DescribeAgentAuditedClientsRequest) ToJsonString() string {
@@ -442,6 +568,131 @@ func (r *DescribeAgentClientsResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeAgentDealsCacheRequest struct {
+	*tchttp.BaseRequest
+
+	// 偏移量
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 限制数目
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 下单时间范围起始点
+	CreatTimeRangeStart *string `json:"CreatTimeRangeStart,omitempty" name:"CreatTimeRangeStart"`
+
+	// 下单时间范围终止点
+	CreatTimeRangeEnd *string `json:"CreatTimeRangeEnd,omitempty" name:"CreatTimeRangeEnd"`
+
+	// 0:下单时间降序；其他：下单时间升序
+	Order *uint64 `json:"Order,omitempty" name:"Order"`
+
+	// 订单的状态(1：未支付;2：已支付;3：发货中;4：已发货;5：发货失败;6：已退款;7：已关单;8：订单过期;9：订单已失效;10：产品已失效;11：代付拒绝;12：支付中)
+	Status *uint64 `json:"Status,omitempty" name:"Status"`
+
+	// 下单人账号ID列表
+	OwnerUins []*string `json:"OwnerUins,omitempty" name:"OwnerUins" list`
+
+	// 订单号列表
+	DealNames []*string `json:"DealNames,omitempty" name:"DealNames" list`
+
+	// 支付方式，0：自付；1：代付
+	PayerMode *uint64 `json:"PayerMode,omitempty" name:"PayerMode"`
+}
+
+func (r *DescribeAgentDealsCacheRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeAgentDealsCacheRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeAgentDealsCacheResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 订单数组
+		AgentDealSet []*AgentDealElem `json:"AgentDealSet,omitempty" name:"AgentDealSet" list`
+
+		// 符合条件的订单总数量
+		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeAgentDealsCacheResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeAgentDealsCacheResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeAgentPayDealsRequest struct {
+	*tchttp.BaseRequest
+
+	// 偏移量
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 限制数目
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 下单时间范围起始点
+	CreatTimeRangeStart *string `json:"CreatTimeRangeStart,omitempty" name:"CreatTimeRangeStart"`
+
+	// 下单时间范围终止点
+	CreatTimeRangeEnd *string `json:"CreatTimeRangeEnd,omitempty" name:"CreatTimeRangeEnd"`
+
+	// 0:下单时间降序；其他：下单时间升序
+	Order *uint64 `json:"Order,omitempty" name:"Order"`
+
+	// 订单的状态(1：未支付;2：已支付;3：发货中;4：已发货;5：发货失败;6：已退款;7：已关单;8：订单过期;9：订单已失效;10：产品已失效;11：代付拒绝;12：支付中)
+	Status *uint64 `json:"Status,omitempty" name:"Status"`
+
+	// 下单人账号ID列表
+	OwnerUins []*string `json:"OwnerUins,omitempty" name:"OwnerUins" list`
+
+	// 订单号列表
+	DealNames []*string `json:"DealNames,omitempty" name:"DealNames" list`
+}
+
+func (r *DescribeAgentPayDealsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeAgentPayDealsRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeAgentPayDealsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 订单数组
+		AgentPayDealSet []*AgentDealElem `json:"AgentPayDealSet,omitempty" name:"AgentPayDealSet" list`
+
+		// 符合条件的订单总数量
+		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeAgentPayDealsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeAgentPayDealsResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeClientBalanceRequest struct {
 	*tchttp.BaseRequest
 
@@ -522,6 +773,58 @@ func (r *DescribeRebateInfosResponse) ToJsonString() string {
 }
 
 func (r *DescribeRebateInfosResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeSalesmansRequest struct {
+	*tchttp.BaseRequest
+
+	// 偏移量
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 限制数目
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 业务员姓名(模糊查询)
+	SalesName *string `json:"SalesName,omitempty" name:"SalesName"`
+
+	// 业务员ID
+	SalesUin *string `json:"SalesUin,omitempty" name:"SalesUin"`
+
+	// ASC/DESC， 不区分大小写，按创建通过时间排序
+	OrderDirection *string `json:"OrderDirection,omitempty" name:"OrderDirection"`
+}
+
+func (r *DescribeSalesmansRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeSalesmansRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeSalesmansResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 业务员列表
+		AgentSalesmanSet []*AgentSalesmanElem `json:"AgentSalesmanSet,omitempty" name:"AgentSalesmanSet" list`
+
+		// 符合条件的代客总数
+		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeSalesmansResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeSalesmansResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 

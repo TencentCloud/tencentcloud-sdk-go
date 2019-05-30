@@ -360,6 +360,10 @@ type DescribeBillResourceSummaryRequest struct {
 
 	// 月份，格式为yyyy-mm。不能早于开通账单2.0的月份，最多可拉取24个月内的数据。
 	Month *string `json:"Month,omitempty" name:"Month"`
+
+	// 是否需要访问列表的总记录数，用于前端分页
+	// 1-表示需要， 0-表示不需要
+	NeedRecordNum *int64 `json:"NeedRecordNum,omitempty" name:"NeedRecordNum"`
 }
 
 func (r *DescribeBillResourceSummaryRequest) ToJsonString() string {
@@ -377,6 +381,10 @@ type DescribeBillResourceSummaryResponse struct {
 
 		// 资源汇总列表
 		ResourceSummarySet []*BillResourceSummary `json:"ResourceSummarySet,omitempty" name:"ResourceSummarySet" list`
+
+		// 资源汇总列表总数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Total *int64 `json:"Total,omitempty" name:"Total"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -465,10 +473,10 @@ type DescribeDosageDetailByDateRequest struct {
 	// 查询账单开始日期，如 2019-01-01
 	StartDate *string `json:"StartDate,omitempty" name:"StartDate"`
 
-	// 查询账单结束日期，如 2019-01-01
+	// 查询账单结束日期，如 2019-01-01， 时间跨度不超过7天
 	EndDate *string `json:"EndDate,omitempty" name:"EndDate"`
 
-	// 视频业务：
+	// 互动直播：
 	// 10194   互动直播-核心机房           :
 	// 10195   互动直播-边缘机房
 	// 
@@ -482,10 +490,16 @@ type DescribeDosageDetailByDateRequest struct {
 	// 
 	// 100967：弹性公网IP-按流量计费
 	// 101065：公网负载均衡-按流量计费
+	// 
+	// 视频直播
+	// 10226 视频直播流量(国内)
+	// 10227 视频直播带宽(国内)
+	// 100763 视频直播流量(海外)
+	// 100762 视频直播宽带(海外)
 	ProductCode *string `json:"ProductCode,omitempty" name:"ProductCode"`
 
 	// 查询域名 例如 www.qq.com
-	// 非CDN业务查询时可以设置为空
+	// 非CDN业务查询时值为空
 	Domain *string `json:"Domain,omitempty" name:"Domain"`
 
 	// 1、如果为空，则返回EIP或CLB所有实例的明细；

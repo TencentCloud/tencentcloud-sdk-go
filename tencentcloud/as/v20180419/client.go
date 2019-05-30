@@ -1048,6 +1048,33 @@ func (c *Client) SetInstancesProtection(request *SetInstancesProtectionRequest) 
     return
 }
 
+func NewUpgradeLaunchConfigurationRequest() (request *UpgradeLaunchConfigurationRequest) {
+    request = &UpgradeLaunchConfigurationRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("as", APIVersion, "UpgradeLaunchConfiguration")
+    return
+}
+
+func NewUpgradeLaunchConfigurationResponse() (response *UpgradeLaunchConfigurationResponse) {
+    response = &UpgradeLaunchConfigurationResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（UpgradeLaunchConfiguration）用于升级启动配置。
+// 
+// * 本接口用于升级启动配置，采用“完全覆盖”风格，无论之前参数如何，统一按照接口参数设置为新的配置。对于非必填字段，不填写则按照默认值赋值。
+func (c *Client) UpgradeLaunchConfiguration(request *UpgradeLaunchConfigurationRequest) (response *UpgradeLaunchConfigurationResponse, err error) {
+    if request == nil {
+        request = NewUpgradeLaunchConfigurationRequest()
+    }
+    response = NewUpgradeLaunchConfigurationResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewUpgradeLifecycleHookRequest() (request *UpgradeLifecycleHookRequest) {
     request = &UpgradeLifecycleHookRequest{
         BaseRequest: &tchttp.BaseRequest{},

@@ -29,16 +29,16 @@ type AddUserRequest struct {
 	// 子用户备注
 	Remark *string `json:"Remark,omitempty" name:"Remark"`
 
-	// 子用户是否可以登录控制台
+	// 子用户是否可以登录控制台。传0子用户无法登录控制台，传1子用户可以登录控制台。
 	ConsoleLogin *uint64 `json:"ConsoleLogin,omitempty" name:"ConsoleLogin"`
 
-	// 是否生成子用户密钥
+	// 是否生成子用户密钥。传0不生成子用户密钥，传1生成子用户密钥。
 	UseApi *uint64 `json:"UseApi,omitempty" name:"UseApi"`
 
-	// 子用户控制台登录密码，只有可以登录控制台时才有效，如果传空并且上面指定允许登录控制台，则自动生成随机密码
+	// 子用户控制台登录密码，若未进行密码规则设置则默认密码规则为8位以上同时包含大写小字母、数字和特殊字符。只有可以登录控制台时才有效，如果传空并且上面指定允许登录控制台，则自动生成随机密码，随机密码规则为32位包含大写小字母、数字和特殊字符。
 	Password *string `json:"Password,omitempty" name:"Password"`
 
-	// 子用户是否要在下次登录时重置密码
+	// 子用户是否要在下次登录时重置密码。传0子用户下次登录控制台不需重置密码，传1子用户下次登录控制台需要重置密码。
 	NeedResetPassword *uint64 `json:"NeedResetPassword,omitempty" name:"NeedResetPassword"`
 
 	// 手机号
@@ -1005,10 +1005,10 @@ type ListGroupsForUserRequest struct {
 	// 子用户 UID
 	Uid *uint64 `json:"Uid,omitempty" name:"Uid"`
 
-	// 每页数量。
+	// 每页数量。默认为20。
 	Rp *uint64 `json:"Rp,omitempty" name:"Rp"`
 
-	// 页码。
+	// 页码。默认为1。
 	Page *uint64 `json:"Page,omitempty" name:"Page"`
 }
 
@@ -1048,10 +1048,10 @@ func (r *ListGroupsForUserResponse) FromJsonString(s string) error {
 type ListGroupsRequest struct {
 	*tchttp.BaseRequest
 
-	// 页码。
+	// 页码。默认为1。
 	Page *uint64 `json:"Page,omitempty" name:"Page"`
 
-	// 每页数量。
+	// 每页数量。默认为20。
 	Rp *uint64 `json:"Rp,omitempty" name:"Rp"`
 
 	// 按用户组名称匹配。
@@ -1193,10 +1193,10 @@ type ListUsersForGroupRequest struct {
 	// 用户组 ID。
 	GroupId *uint64 `json:"GroupId,omitempty" name:"GroupId"`
 
-	// 页码。
+	// 页码。默认为1。
 	Page *uint64 `json:"Page,omitempty" name:"Page"`
 
-	// 每页数量。
+	// 每页数量。默认为20。
 	Rp *uint64 `json:"Rp,omitempty" name:"Rp"`
 }
 
@@ -1505,13 +1505,13 @@ type UpdateUserRequest struct {
 	// 子用户备注
 	Remark *string `json:"Remark,omitempty" name:"Remark"`
 
-	// 子用户是否可以登录控制台
+	// 子用户是否可以登录控制台。传0子用户无法登录控制台，传1子用户可以登录控制台。
 	ConsoleLogin *uint64 `json:"ConsoleLogin,omitempty" name:"ConsoleLogin"`
 
-	// 子用户控制台登录密码，只有可以登录控制台时才有效
+	// 子用户控制台登录密码，若未进行密码规则设置则默认密码规则为8位以上同时包含大写小字母、数字和特殊字符。只有可以登录控制台时才有效，如果传空并且上面指定允许登录控制台，则自动生成随机密码，随机密码规则为32位包含大写小字母、数字和特殊字符。
 	Password *string `json:"Password,omitempty" name:"Password"`
 
-	// 子用户是否要在下次登录时重置密码
+	// 子用户是否要在下次登录时重置密码。传0子用户下次登录控制台不需重置密码，传1子用户下次登录控制台需要重置密码。
 	NeedResetPassword *uint64 `json:"NeedResetPassword,omitempty" name:"NeedResetPassword"`
 
 	// 手机号

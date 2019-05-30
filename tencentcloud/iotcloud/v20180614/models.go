@@ -380,7 +380,7 @@ func (r *CreateTaskResponse) FromJsonString(s string) error {
 type CreateTopicPolicyRequest struct {
 	*tchttp.BaseRequest
 
-	// 产品ID
+	// 产品自身id
 	ProductID *string `json:"ProductID,omitempty" name:"ProductID"`
 
 	// Topic名称
@@ -389,7 +389,7 @@ type CreateTopicPolicyRequest struct {
 	// Topic权限，1发布，2订阅，3订阅和发布
 	Privilege *uint64 `json:"Privilege,omitempty" name:"Privilege"`
 
-	// 代理订阅信息
+	// 代理订阅信息，网关产品为绑定的子产品创建topic时需要填写，内容为子产品的id和设备信息。
 	BrokerSubscribe *BrokerSubscribe `json:"BrokerSubscribe,omitempty" name:"BrokerSubscribe"`
 }
 
@@ -602,6 +602,46 @@ func (r *DeleteTopicRuleResponse) ToJsonString() string {
 }
 
 func (r *DeleteTopicRuleResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeDeviceClientKeyRequest struct {
+	*tchttp.BaseRequest
+
+	// 所属产品的Id
+	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
+
+	// 设备名称
+	DeviceName *string `json:"DeviceName,omitempty" name:"DeviceName"`
+}
+
+func (r *DescribeDeviceClientKeyRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeDeviceClientKeyRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeDeviceClientKeyResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 设备的私钥
+		ClientKey *string `json:"ClientKey,omitempty" name:"ClientKey"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeDeviceClientKeyResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeDeviceClientKeyResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -1154,6 +1194,10 @@ type DeviceInfo struct {
 	// 设备日志级别
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	LogLevel *uint64 `json:"LogLevel,omitempty" name:"LogLevel"`
+
+	// 设备证书获取状态, 1 已获取过设备密钥，0 未获取过设备密钥
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CertState *uint64 `json:"CertState,omitempty" name:"CertState"`
 }
 
 type DeviceTag struct {
@@ -1502,6 +1546,43 @@ func (r *ReplaceTopicRuleResponse) ToJsonString() string {
 }
 
 func (r *ReplaceTopicRuleResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ResetDeviceStateRequest struct {
+	*tchttp.BaseRequest
+
+	// 产品Id
+	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
+
+	// 设备名称
+	DeviceNames []*string `json:"DeviceNames,omitempty" name:"DeviceNames" list`
+}
+
+func (r *ResetDeviceStateRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ResetDeviceStateRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ResetDeviceStateResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ResetDeviceStateResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ResetDeviceStateResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 

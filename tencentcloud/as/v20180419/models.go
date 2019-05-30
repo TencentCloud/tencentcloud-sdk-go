@@ -102,6 +102,9 @@ type AttachInstancesResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
+		// 伸缩活动ID
+		ActivityId *string `json:"ActivityId,omitempty" name:"ActivityId"`
+
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
@@ -1480,6 +1483,9 @@ type DetachInstancesResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
+		// 伸缩活动ID
+		ActivityId *string `json:"ActivityId,omitempty" name:"ActivityId"`
+
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
@@ -1784,7 +1790,7 @@ type LifecycleHook struct {
 	CreatedTime *string `json:"CreatedTime,omitempty" name:"CreatedTime"`
 
 	// 通知目标
-	NotificationTarget *string `json:"NotificationTarget,omitempty" name:"NotificationTarget"`
+	NotificationTarget *NotificationTarget `json:"NotificationTarget,omitempty" name:"NotificationTarget"`
 }
 
 type LimitedLoginSettings struct {
@@ -1818,7 +1824,7 @@ type MetricAlarm struct {
 	// 告警阈值：<br><li>CPU_UTILIZATION：[1, 100]，单位：%</li><li>MEM_UTILIZATION：[1, 100]，单位：%</li><li>LAN_TRAFFIC_OUT：>0，单位：Mbps </li><li>LAN_TRAFFIC_IN：>0，单位：Mbps</li><li>WAN_TRAFFIC_OUT：>0，单位：Mbps</li><li>WAN_TRAFFIC_IN：>0，单位：Mbps</li>
 	Threshold *uint64 `json:"Threshold,omitempty" name:"Threshold"`
 
-	// 时间周期。单位：秒
+	// 时间周期，单位：秒，取值枚举值为60、300。
 	Period *uint64 `json:"Period,omitempty" name:"Period"`
 
 	// 重复次数。取值范围 [1, 10]
@@ -2282,6 +2288,9 @@ type RemoveInstancesResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
+		// 伸缩活动ID
+		ActivityId *string `json:"ActivityId,omitempty" name:"ActivityId"`
+
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
@@ -2325,7 +2334,7 @@ type ScalingPolicy struct {
 	AdjustmentType *string `json:"AdjustmentType,omitempty" name:"AdjustmentType"`
 
 	// 告警触发后，期望实例数的调整值。
-	AdjustmentValue *string `json:"AdjustmentValue,omitempty" name:"AdjustmentValue"`
+	AdjustmentValue *int64 `json:"AdjustmentValue,omitempty" name:"AdjustmentValue"`
 
 	// 冷却时间。
 	Cooldown *uint64 `json:"Cooldown,omitempty" name:"Cooldown"`
@@ -2438,6 +2447,92 @@ type TargetAttribute struct {
 
 	// 权重
 	Weight *uint64 `json:"Weight,omitempty" name:"Weight"`
+}
+
+type UpgradeLaunchConfigurationRequest struct {
+	*tchttp.BaseRequest
+
+	// 启动配置ID。
+	LaunchConfigurationId *string `json:"LaunchConfigurationId,omitempty" name:"LaunchConfigurationId"`
+
+	// 指定有效的[镜像](https://cloud.tencent.com/document/product/213/4940)ID，格式形如`img-8toqc6s3`。镜像类型分为四种：<br/><li>公共镜像</li><li>自定义镜像</li><li>共享镜像</li><li>服务市场镜像</li><br/>可通过以下方式获取可用的镜像ID：<br/><li>`公共镜像`、`自定义镜像`、`共享镜像`的镜像ID可通过登录[控制台](https://console.cloud.tencent.com/cvm/image?rid=1&imageType=PUBLIC_IMAGE)查询；`服务镜像市场`的镜像ID可通过[云市场](https://market.cloud.tencent.com/list)查询。</li><li>通过调用接口 [DescribeImages](https://cloud.tencent.com/document/api/213/15715) ，取返回信息中的`ImageId`字段。</li>
+	ImageId *string `json:"ImageId,omitempty" name:"ImageId"`
+
+	// 实例机型列表，不同实例机型指定了不同的资源规格，最多支持5种实例机型。
+	InstanceTypes []*string `json:"InstanceTypes,omitempty" name:"InstanceTypes" list`
+
+	// 启动配置显示名称。名称仅支持中文、英文、数字、下划线、分隔符"-"、小数点，最大长度不能超60个字节。
+	LaunchConfigurationName *string `json:"LaunchConfigurationName,omitempty" name:"LaunchConfigurationName"`
+
+	// 实例数据盘配置信息。若不指定该参数，则默认不购买数据盘，最多支持指定11块数据盘。
+	DataDisks []*DataDisk `json:"DataDisks,omitempty" name:"DataDisks" list`
+
+	// 增强服务。通过该参数可以指定是否开启云安全、云监控等服务。若不指定该参数，则默认开启云监控、云安全服务。
+	EnhancedService *EnhancedService `json:"EnhancedService,omitempty" name:"EnhancedService"`
+
+	// 实例计费类型，CVM默认值按照POSTPAID_BY_HOUR处理。
+	// <br><li>POSTPAID_BY_HOUR：按小时后付费
+	// <br><li>SPOTPAID：竞价付费
+	InstanceChargeType *string `json:"InstanceChargeType,omitempty" name:"InstanceChargeType"`
+
+	// 实例的市场相关选项，如竞价实例相关参数，若指定实例的付费模式为竞价付费则该参数必传。
+	InstanceMarketOptions *InstanceMarketOptionsRequest `json:"InstanceMarketOptions,omitempty" name:"InstanceMarketOptions"`
+
+	// 实例类型校验策略，取值包括 ALL 和 ANY，默认取值为ANY。
+	// <br><li> ALL，所有实例类型（InstanceType）都可用则通过校验，否则校验报错。
+	// <br><li> ANY，存在任何一个实例类型（InstanceType）可用则通过校验，否则校验报错。
+	// 
+	// 实例类型不可用的常见原因包括该实例类型售罄、对应云盘售罄等。
+	// 如果 InstanceTypes 中一款机型不存在或者已下线，则无论 InstanceTypesCheckPolicy 采用何种取值，都会校验报错。
+	InstanceTypesCheckPolicy *string `json:"InstanceTypesCheckPolicy,omitempty" name:"InstanceTypesCheckPolicy"`
+
+	// 公网带宽相关信息设置。若不指定该参数，则默认公网带宽为0Mbps。
+	InternetAccessible *InternetAccessible `json:"InternetAccessible,omitempty" name:"InternetAccessible"`
+
+	// 实例登录设置。通过该参数可以设置实例的登录方式密码、密钥或保持镜像的原始登录设置。默认情况下会随机生成密码，并以站内信方式知会到用户。
+	LoginSettings *LoginSettings `json:"LoginSettings,omitempty" name:"LoginSettings"`
+
+	// 实例所属项目ID。该参数可以通过调用 [DescribeProject](https://cloud.tencent.com/document/api/378/4400) 的返回值中的`projectId`字段来获取。不填为默认项目。
+	ProjectId *int64 `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 实例所属安全组。该参数可以通过调用 [DescribeSecurityGroups](https://cloud.tencent.com/document/api/215/15808) 的返回值中的`SecurityGroupId`字段来获取。若不指定该参数，则默认不绑定安全组。
+	SecurityGroupIds []*string `json:"SecurityGroupIds,omitempty" name:"SecurityGroupIds" list`
+
+	// 实例系统盘配置信息。若不指定该参数，则按照系统默认值进行分配。
+	SystemDisk *SystemDisk `json:"SystemDisk,omitempty" name:"SystemDisk"`
+
+	// 经过 Base64 编码后的自定义数据，最大长度不超过16KB。
+	UserData *string `json:"UserData,omitempty" name:"UserData"`
+
+	// 标签列表。通过指定该参数，可以为扩容的实例绑定标签。最多支持指定10个标签。
+	InstanceTags []*InstanceTag `json:"InstanceTags,omitempty" name:"InstanceTags" list`
+}
+
+func (r *UpgradeLaunchConfigurationRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *UpgradeLaunchConfigurationRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type UpgradeLaunchConfigurationResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *UpgradeLaunchConfigurationResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *UpgradeLaunchConfigurationResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
 }
 
 type UpgradeLifecycleHookRequest struct {

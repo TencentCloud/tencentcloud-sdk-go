@@ -23,10 +23,10 @@ import (
 type AddDelayLiveStreamRequest struct {
 	*tchttp.BaseRequest
 
-	// 应用名称。
+	// 推流路径，与推流和播放地址中的AppName保持一致，默认为live。
 	AppName *string `json:"AppName,omitempty" name:"AppName"`
 
-	// 您的加速域名。
+	// 推流域名。
 	DomainName *string `json:"DomainName,omitempty" name:"DomainName"`
 
 	// 流名称。
@@ -294,7 +294,7 @@ type CreateLiveCallbackRuleRequest struct {
 	// 推流域名。
 	DomainName *string `json:"DomainName,omitempty" name:"DomainName"`
 
-	// 推流路径。
+	// 推流路径，与推流和播放地址中的AppName保持一致，默认为live。
 	AppName *string `json:"AppName,omitempty" name:"AppName"`
 
 	// 模板ID。
@@ -446,7 +446,7 @@ type CreateLiveRecordRequest struct {
 	// 流名称。
 	StreamName *string `json:"StreamName,omitempty" name:"StreamName"`
 
-	// 推流App名。
+	// 推流路径，与推流和播放地址中的AppName保持一致，默认为 live。
 	AppName *string `json:"AppName,omitempty" name:"AppName"`
 
 	// 推流域名。多域名推流必须设置。
@@ -526,7 +526,7 @@ type CreateLiveRecordRuleRequest struct {
 	// 模板Id。
 	TemplateId *int64 `json:"TemplateId,omitempty" name:"TemplateId"`
 
-	// 推流路径。
+	// 推流路径，与推流和播放地址中的AppName保持一致，默认为 live。
 	AppName *string `json:"AppName,omitempty" name:"AppName"`
 
 	// 流名称。
@@ -626,14 +626,15 @@ type CreateLiveSnapshotRuleRequest struct {
 	// 推流域名。
 	DomainName *string `json:"DomainName,omitempty" name:"DomainName"`
 
-	// 推流路径。
+	// 模板Id。
+	TemplateId *int64 `json:"TemplateId,omitempty" name:"TemplateId"`
+
+	// 推流路径，与推流和播放地址中的AppName保持一致，默认为 live。
 	AppName *string `json:"AppName,omitempty" name:"AppName"`
 
 	// 流名称。
+	// 注：如果本参数设置为非空字符串，规则将只对此推流起作用。
 	StreamName *string `json:"StreamName,omitempty" name:"StreamName"`
-
-	// 模板Id。
-	TemplateId *int64 `json:"TemplateId,omitempty" name:"TemplateId"`
 }
 
 func (r *CreateLiveSnapshotRuleRequest) ToJsonString() string {
@@ -727,10 +728,10 @@ func (r *CreateLiveSnapshotTemplateResponse) FromJsonString(s string) error {
 type CreateLiveTranscodeRuleRequest struct {
 	*tchttp.BaseRequest
 
-	// 推流域名。
+	// 播放域名。
 	DomainName *string `json:"DomainName,omitempty" name:"DomainName"`
 
-	// 推流路径。
+	// 推流路径，与推流和播放地址中的AppName保持一致，默认为 live。
 	AppName *string `json:"AppName,omitempty" name:"AppName"`
 
 	// 流名称。
@@ -861,7 +862,7 @@ type CreateLiveWatermarkRuleRequest struct {
 	// 推流域名。
 	DomainName *string `json:"DomainName,omitempty" name:"DomainName"`
 
-	// 推流路径。
+	// 推流路径，与推流和播放地址中的AppName保持一致，默认为live。
 	AppName *string `json:"AppName,omitempty" name:"AppName"`
 
 	// 流名称。
@@ -981,7 +982,7 @@ type DeleteLiveCallbackRuleRequest struct {
 	// 推流域名。
 	DomainName *string `json:"DomainName,omitempty" name:"DomainName"`
 
-	// 推流路径。
+	// 推流路径，与推流和播放地址中的AppName保持一致，默认为live。
 	AppName *string `json:"AppName,omitempty" name:"AppName"`
 }
 
@@ -1157,13 +1158,16 @@ func (r *DeleteLiveRecordResponse) FromJsonString(s string) error {
 type DeleteLiveRecordRuleRequest struct {
 	*tchttp.BaseRequest
 
-	// 推流域名。域名+AppName+StreamName唯一标识单个转码规则，如需删除需要强匹配，比如AppName为空也需要传空字符串进行强匹配
+	// 推流域名。
+	// 域名+AppName+StreamName唯一标识单个转码规则，如需删除需要强匹配，比如AppName为空也需要传空字符串进行强匹配。
 	DomainName *string `json:"DomainName,omitempty" name:"DomainName"`
 
-	// 推流路径。域名+AppName+StreamName唯一标识单个转码规则，如需删除需要强匹配，比如AppName为空也需要传空字符串进行强匹配
+	// 推流路径，与推流和播放地址中的AppName保持一致，默认为 live。
+	// 域名+AppName+StreamName唯一标识单个转码规则，如需删除需要强匹配，比如AppName为空也需要传空字符串进行强匹配。
 	AppName *string `json:"AppName,omitempty" name:"AppName"`
 
-	// 流名称。域名+AppName+StreamName唯一标识单个转码规则，如需删除需要强匹配，比如AppName为空也需要传空字符串进行强匹配
+	// 流名称。
+	// 域名+AppName+StreamName唯一标识单个转码规则，如需删除需要强匹配，比如AppName为空也需要传空字符串进行强匹配。
 	StreamName *string `json:"StreamName,omitempty" name:"StreamName"`
 }
 
@@ -1234,7 +1238,7 @@ type DeleteLiveSnapshotRuleRequest struct {
 	// 推流域名。
 	DomainName *string `json:"DomainName,omitempty" name:"DomainName"`
 
-	// 推流路径。
+	// 推流路径，与推流和播放地址中的AppName保持一致，默认为 live。
 	AppName *string `json:"AppName,omitempty" name:"AppName"`
 
 	// 流名称。
@@ -1305,16 +1309,20 @@ func (r *DeleteLiveSnapshotTemplateResponse) FromJsonString(s string) error {
 type DeleteLiveTranscodeRuleRequest struct {
 	*tchttp.BaseRequest
 
-	// 推流域名。域名维度转码，域名+AppName+StreamName唯一标识单个转码规则，如需删除需要强匹配，比如AppName为空也需要传空字符串进行强匹配
+	// 推流域名。
+	// 域名维度转码，域名+AppName+StreamName唯一标识单个转码规则，如需删除需要强匹配，比如AppName为空也需要传空字符串进行强匹配。
 	DomainName *string `json:"DomainName,omitempty" name:"DomainName"`
 
-	// 推流路径。域名+AppName+StreamName+TemplateId唯一标识单个转码规则，如需删除需要强匹配，比如AppName为空也需要传空字符串进行强匹配
+	// 推流路径，与推流和播放地址中的AppName保持一致，默认为 live。
+	// 域名+AppName+StreamName+TemplateId唯一标识单个转码规则，如需删除需要强匹配，比如AppName为空也需要传空字符串进行强匹配。
 	AppName *string `json:"AppName,omitempty" name:"AppName"`
 
-	// 流名称。域名+AppName+StreamName+TemplateId唯一标识单个转码规则，如需删除需要强匹配，比如AppName为空也需要传空字符串进行强匹配
+	// 流名称。
+	// 域名+AppName+StreamName+TemplateId唯一标识单个转码规则，如需删除需要强匹配，比如AppName为空也需要传空字符串进行强匹配。
 	StreamName *string `json:"StreamName,omitempty" name:"StreamName"`
 
-	// 模板ID域名+AppName+StreamName+TemplateId唯一标识单个转码规则，如需删除需要强匹配，比如AppName为空也需要传空字符串进行强匹配
+	// 模板ID。
+	// 域名+AppName+StreamName+TemplateId唯一标识单个转码规则，如需删除需要强匹配，比如AppName为空也需要传空字符串进行强匹配。
 	TemplateId *int64 `json:"TemplateId,omitempty" name:"TemplateId"`
 }
 
@@ -2143,7 +2151,7 @@ type DescribeLiveStreamEventListRequest struct {
 	// 不超过当前时间，且和起始时间相差不得超过30天。
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 
-	// 应用名称。
+	// 推流路径，与推流和播放地址中的AppName保持一致，默认为 live。
 	AppName *string `json:"AppName,omitempty" name:"AppName"`
 
 	// 推流域名。
@@ -2292,7 +2300,7 @@ type DescribeLiveStreamOnlineListRequest struct {
 	// 推流域名。
 	DomainName *string `json:"DomainName,omitempty" name:"DomainName"`
 
-	// 应用名称。
+	// 推流路径，与推流和播放地址中的AppName保持一致，默认为 live。
 	AppName *string `json:"AppName,omitempty" name:"AppName"`
 
 	// 取得第几页，默认1。
@@ -2303,7 +2311,7 @@ type DescribeLiveStreamOnlineListRequest struct {
 	// 默认值：10。
 	PageSize *uint64 `json:"PageSize,omitempty" name:"PageSize"`
 
-	// 流名称，精确查询。
+	// 流名称，用于精确查询。
 	StreamName *string `json:"StreamName,omitempty" name:"StreamName"`
 }
 
@@ -2365,7 +2373,7 @@ type DescribeLiveStreamPublishedListRequest struct {
 	// 和当前时间相隔不超过7天。
 	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
 
-	// 直播流所属应用名称。
+	// 推流路径，与推流和播放地址中的AppName保持一致，默认为 live。
 	AppName *string `json:"AppName,omitempty" name:"AppName"`
 
 	// 取得第几页。
@@ -2427,7 +2435,7 @@ type DescribeLiveStreamPushInfoListRequest struct {
 	// 推流域名。
 	PushDomain *string `json:"PushDomain,omitempty" name:"PushDomain"`
 
-	// 推流路径。
+	// 推流路径，与推流和播放地址中的AppName保持一致，默认为live。
 	AppName *string `json:"AppName,omitempty" name:"AppName"`
 
 	// 页数，
@@ -2486,7 +2494,7 @@ func (r *DescribeLiveStreamPushInfoListResponse) FromJsonString(s string) error 
 type DescribeLiveStreamStateRequest struct {
 	*tchttp.BaseRequest
 
-	// 应用名称。
+	// 推流路径，与推流和播放地址中的AppName保持一致，默认为 live。
 	AppName *string `json:"AppName,omitempty" name:"AppName"`
 
 	// 您的推流域名。
@@ -3120,7 +3128,7 @@ type DescribeStreamPlayInfoListRequest struct {
 	// 若不填，则为查询总体播放数据。
 	StreamName *string `json:"StreamName,omitempty" name:"StreamName"`
 
-	// 播放路径，精确匹配，不支持。
+	// 推流路径，与推流和播放地址中的AppName保持一致，默认为live。精确匹配，不支持。
 	// 若不填，则为查询总体播放数据。
 	AppName *string `json:"AppName,omitempty" name:"AppName"`
 }
@@ -3225,7 +3233,7 @@ type DropLiveStreamRequest struct {
 	// 您的加速域名。
 	DomainName *string `json:"DomainName,omitempty" name:"DomainName"`
 
-	// 应用名称。
+	// 推流路径，与推流和播放地址中的AppName保持一致，默认为 live。
 	AppName *string `json:"AppName,omitempty" name:"AppName"`
 }
 
@@ -3327,7 +3335,7 @@ func (r *ForbidLiveDomainResponse) FromJsonString(s string) error {
 type ForbidLiveStreamRequest struct {
 	*tchttp.BaseRequest
 
-	// 应用名称。
+	// 推流路径，与推流和播放地址中的AppName保持一致，默认为 live。
 	AppName *string `json:"AppName,omitempty" name:"AppName"`
 
 	// 您的加速域名。
@@ -4176,10 +4184,10 @@ type RecordTemplateInfo struct {
 type ResumeDelayLiveStreamRequest struct {
 	*tchttp.BaseRequest
 
-	// 应用名称。
+	// 推流路径，与推流和播放地址中的AppName保持一致，默认为live。
 	AppName *string `json:"AppName,omitempty" name:"AppName"`
 
-	// 您的加速域名。
+	// 推流域名。
 	DomainName *string `json:"DomainName,omitempty" name:"DomainName"`
 
 	// 流名称。
@@ -4216,7 +4224,7 @@ func (r *ResumeDelayLiveStreamResponse) FromJsonString(s string) error {
 type ResumeLiveStreamRequest struct {
 	*tchttp.BaseRequest
 
-	// 应用名称。
+	// 推流路径，与推流和播放地址中的AppName保持一致，默认为 live。
 	AppName *string `json:"AppName,omitempty" name:"AppName"`
 
 	// 您的加速域名。

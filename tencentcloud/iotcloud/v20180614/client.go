@@ -368,6 +368,31 @@ func (c *Client) DescribeDevice(request *DescribeDeviceRequest) (response *Descr
     return
 }
 
+func NewDescribeDeviceClientKeyRequest() (request *DescribeDeviceClientKeyRequest) {
+    request = &DescribeDeviceClientKeyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iotcloud", APIVersion, "DescribeDeviceClientKey")
+    return
+}
+
+func NewDescribeDeviceClientKeyResponse() (response *DescribeDeviceClientKeyResponse) {
+    response = &DescribeDeviceClientKeyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 获取证书认证类型设备的私钥，刚生成或者重置设备后仅可调用一次
+func (c *Client) DescribeDeviceClientKey(request *DescribeDeviceClientKeyRequest) (response *DescribeDeviceClientKeyResponse, err error) {
+    if request == nil {
+        request = NewDescribeDeviceClientKeyRequest()
+    }
+    response = NewDescribeDeviceClientKeyResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeDeviceShadowRequest() (request *DescribeDeviceShadowRequest) {
     request = &DescribeDeviceShadowRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -714,6 +739,31 @@ func (c *Client) ReplaceTopicRule(request *ReplaceTopicRuleRequest) (response *R
         request = NewReplaceTopicRuleRequest()
     }
     response = NewReplaceTopicRuleResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewResetDeviceStateRequest() (request *ResetDeviceStateRequest) {
+    request = &ResetDeviceStateRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iotcloud", APIVersion, "ResetDeviceState")
+    return
+}
+
+func NewResetDeviceStateResponse() (response *ResetDeviceStateResponse) {
+    response = &ResetDeviceStateResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 重置设备的连接状态
+func (c *Client) ResetDeviceState(request *ResetDeviceStateRequest) (response *ResetDeviceStateResponse, err error) {
+    if request == nil {
+        request = NewResetDeviceStateRequest()
+    }
+    response = NewResetDeviceStateResponse()
     err = c.Send(request, response)
     return
 }

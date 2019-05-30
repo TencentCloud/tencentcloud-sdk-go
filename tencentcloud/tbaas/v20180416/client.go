@@ -43,6 +43,56 @@ func NewClient(credential *common.Credential, region string, clientProfile *prof
 }
 
 
+func NewGetBlockListRequest() (request *GetBlockListRequest) {
+    request = &GetBlockListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tbaas", APIVersion, "GetBlockList")
+    return
+}
+
+func NewGetBlockListResponse() (response *GetBlockListResponse) {
+    response = &GetBlockListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查看当前网络下的所有区块列表，分页展示
+func (c *Client) GetBlockList(request *GetBlockListRequest) (response *GetBlockListResponse, err error) {
+    if request == nil {
+        request = NewGetBlockListRequest()
+    }
+    response = NewGetBlockListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewGetClusterSummaryRequest() (request *GetClusterSummaryRequest) {
+    request = &GetClusterSummaryRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tbaas", APIVersion, "GetClusterSummary")
+    return
+}
+
+func NewGetClusterSummaryResponse() (response *GetClusterSummaryResponse) {
+    response = &GetClusterSummaryResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 获取区块链网络概要
+func (c *Client) GetClusterSummary(request *GetClusterSummaryRequest) (response *GetClusterSummaryResponse, err error) {
+    if request == nil {
+        request = NewGetClusterSummaryRequest()
+    }
+    response = NewGetClusterSummaryResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewGetInvokeTxRequest() (request *GetInvokeTxRequest) {
     request = &GetInvokeTxRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -64,6 +114,31 @@ func (c *Client) GetInvokeTx(request *GetInvokeTxRequest) (response *GetInvokeTx
         request = NewGetInvokeTxRequest()
     }
     response = NewGetInvokeTxResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewGetLatesdTransactionListRequest() (request *GetLatesdTransactionListRequest) {
+    request = &GetLatesdTransactionListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tbaas", APIVersion, "GetLatesdTransactionList")
+    return
+}
+
+func NewGetLatesdTransactionListResponse() (response *GetLatesdTransactionListResponse) {
+    response = &GetLatesdTransactionListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 获取最新交易列表
+func (c *Client) GetLatesdTransactionList(request *GetLatesdTransactionListRequest) (response *GetLatesdTransactionListResponse, err error) {
+    if request == nil {
+        request = NewGetLatesdTransactionListRequest()
+    }
+    response = NewGetLatesdTransactionListResponse()
     err = c.Send(request, response)
     return
 }
