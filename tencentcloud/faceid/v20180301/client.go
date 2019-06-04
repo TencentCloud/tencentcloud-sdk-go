@@ -83,7 +83,7 @@ func NewDetectAuthResponse() (response *DetectAuthResponse) {
     return
 }
 
-// 每次开始核身前，需先调用本接口获取BizToken，用来串联核身流程，在核身完成后，用于获取验证结果信息。
+// 每次调用人脸核身SaaS化服务前，需先调用本接口获取BizToken，用来串联核身流程，在验证完成后，用于获取验证结果信息。
 func (c *Client) DetectAuth(request *DetectAuthRequest) (response *DetectAuthResponse, err error) {
     if request == nil {
         request = NewDetectAuthRequest()

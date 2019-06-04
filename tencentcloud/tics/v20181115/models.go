@@ -157,7 +157,7 @@ func (r *DescribeFileInfoResponse) FromJsonString(s string) error {
 type DescribeIpInfoRequest struct {
 	*tchttp.BaseRequest
 
-	// 要查询的域名
+	// 要查询的IP
 	Key *string `json:"Key,omitempty" name:"Key"`
 
 	// 附加字段，是否返回上下文。当为0时不返回上下文，当为1时返回上下文。
