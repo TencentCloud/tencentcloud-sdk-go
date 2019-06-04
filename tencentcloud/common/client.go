@@ -102,7 +102,17 @@ func (c *Client) sendWithSignatureV3(request tchttp.Request, response tchttp.Res
 		if err != nil {
 			return err
 		}
-		canonicalQueryString = tchttp.GetUrlQueriesEncoded(request.GetParams())
+		params := make(map[string]string)
+		for key, value := range request.GetParams() {
+			params[key] = value
+		}
+		delete(params, "Action")
+		delete(params, "Version")
+		delete(params, "Nonce")
+		delete(params, "Region")
+		delete(params, "RequestClient")
+		delete(params, "Timestamp")
+		canonicalQueryString = tchttp.GetUrlQueriesEncoded(params)
 	}
 	canonicalHeaders := fmt.Sprintf("content-type:%s\nhost:%s\n", headers["Content-Type"], headers["Host"])
 	signedHeaders := "content-type;host"
@@ -163,14 +173,18 @@ func (c *Client) sendWithSignatureV3(request tchttp.Request, response tchttp.Res
 	//log.Println("authorization", authorization)
 
 	headers["Authorization"] = authorization
-	httpRequest, err := http.NewRequest(httpRequestMethod, request.GetUrl(), strings.NewReader(requestPayload))
+	url := "https://" + request.GetDomain() + request.GetPath()
+	if canonicalQueryString != "" {
+		url = url + "?" + canonicalQueryString
+	}
+	httpRequest, err := http.NewRequest(httpRequestMethod, url, strings.NewReader(requestPayload))
 	if err != nil {
 		return err
 	}
 	for k, v := range headers {
 		httpRequest.Header[k] = []string{v}
 	}
-	//log.Printf("[DEBUG] http request=%v", httpRequest)
+	//log.Printf("[DEBUG] http request=%v, body=%v", httpRequest, requestPayload)
 	httpResponse, err := c.httpClient.Do(httpRequest)
 	if err != nil {
 		return err
