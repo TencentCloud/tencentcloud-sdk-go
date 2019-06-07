@@ -31,6 +31,17 @@ type BankCardVerificationRequest struct {
 
 	// 银行卡
 	BankCard *string `json:"BankCard,omitempty" name:"BankCard"`
+
+	// 证件类型（不填默认0）
+	// 0 身份证
+	// 1 军官证
+	// 2 护照
+	// 3 港澳证
+	// 4 台胞证
+	// 5 警官证
+	// 6 士兵证
+	// 7 其它证件
+	CertType *int64 `json:"CertType,omitempty" name:"CertType"`
 }
 
 func (r *BankCardVerificationRequest) ToJsonString() string {
@@ -211,7 +222,7 @@ type GetDetectInfoResponse struct {
 	//   // 文本类信息
 	//   "Text": {
 	//     "ErrCode": null,      // 本次核身最终结果。0为成功
-	//     "ErrMsg": null,       // 本次核身的错误信息。
+	//     "ErrMsg": null,       // 本次核身最终结果信息描述。
 	//     "IdCard": "",         // 本次核身最终获得的身份证号。
 	//     "Name": "",           // 本次核身最终获得的姓名。
 	//     "OcrNation": null,    // ocr阶段获取的民族
@@ -226,6 +237,7 @@ type GetDetectInfoResponse struct {
 	//     "LiveMsg": null,      // 活体检测阶段的错误信息
 	//     "Comparestatus": null,// 一比一阶段的错误码。0为成功
 	//     "Comparemsg": null,   // 一比一阶段的错误信息
+	//     "Location": null, // 地理位置信息
 	//     "Extra": "",          // DetectAuth结果传进来的Extra信息
 	//     "Detail": {           // 活体一比一信息详情
 	//       "LivenessData": []
@@ -521,5 +533,61 @@ func (r *LivenessRecognitionResponse) ToJsonString() string {
 }
 
 func (r *LivenessRecognitionResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type LivenessRequest struct {
+	*tchttp.BaseRequest
+
+	// 用于活体检测的视频，视频的BASE64值；
+	// BASE64编码后的大小不超过5M，支持mp4、avi、flv格式。
+	VideoBase64 *string `json:"VideoBase64,omitempty" name:"VideoBase64"`
+
+	// 活体检测类型，取值：LIP/ACTION/SILENT。
+	// LIP为数字模式，ACTION为动作模式，SILENT为静默模式，三种模式选择一种传入。
+	LivenessType *string `json:"LivenessType,omitempty" name:"LivenessType"`
+
+	// 数字模式传参：数字验证码(1234)，需先调用接口获取数字验证码；
+	// 动作模式传参：传动作顺序(2,1 or 1,2)，需先调用接口获取动作顺序；
+	// 静默模式传参：不需要传递此参数。
+	ValidateData *string `json:"ValidateData,omitempty" name:"ValidateData"`
+
+	// 本接口不需要传递此参数。
+	Optional *string `json:"Optional,omitempty" name:"Optional"`
+}
+
+func (r *LivenessRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *LivenessRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type LivenessResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 验证通过后的视频最佳截图照片，照片为BASE64编码后的值，jpg格式。
+		BestFrameBase64 *string `json:"BestFrameBase64,omitempty" name:"BestFrameBase64"`
+
+		// 业务错误码，成功情况返回Success, 错误情况请参考下方错误码 列表中FailedOperation部分
+		Result *string `json:"Result,omitempty" name:"Result"`
+
+		// 业务错误描述
+		Description *string `json:"Description,omitempty" name:"Description"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *LivenessResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *LivenessResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }

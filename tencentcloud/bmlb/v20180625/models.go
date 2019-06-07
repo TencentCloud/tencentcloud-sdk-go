@@ -327,7 +327,7 @@ type CreateL4ListenersResponse struct {
 	Response *struct {
 
 		// 任务ID。该接口为异步任务，可根据本参数调用DescribeLoadBalancerTaskResult接口来查询任务操作结果
-		TaskId *int64 `json:"TaskId,omitempty" name:"TaskId"`
+		TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -773,7 +773,7 @@ type DeleteLoadBalancerResponse struct {
 	Response *struct {
 
 		// 任务ID。该接口为异步任务，可根据本参数调用DescribeLoadBalancerTaskResult接口来查询任务操作结果。
-		TaskId *int64 `json:"TaskId,omitempty" name:"TaskId"`
+		TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1931,6 +1931,27 @@ type L4ListenerInfo struct {
 
 	// 创建时间戳。
 	AddTimestamp *string `json:"AddTimestamp,omitempty" name:"AddTimestamp"`
+
+	// 是否开启自定义健康检查：1（开启）、0（关闭）。默认值0，表示关闭。（该字段在健康检查开启的情况下才生效）
+	CustomHealthSwitch *int64 `json:"CustomHealthSwitch,omitempty" name:"CustomHealthSwitch"`
+
+	// 自定义健康探测内容类型，可选值：text（文本）、hexadecimal（十六进制）。
+	InputType *string `json:"InputType,omitempty" name:"InputType"`
+
+	// 探测内容类型为文本方式时，针对请求文本中换行替换方式。可选值：1（替换为LF）、2（替换为CR）、3（替换为LF+CR）。
+	LineSeparatorType *int64 `json:"LineSeparatorType,omitempty" name:"LineSeparatorType"`
+
+	// 自定义探测请求内容。
+	HealthRequest *string `json:"HealthRequest,omitempty" name:"HealthRequest"`
+
+	// 自定义探测返回内容。
+	HealthResponse *string `json:"HealthResponse,omitempty" name:"HealthResponse"`
+
+	// 是否开启toa：1（开启）、0（关闭）。
+	ToaFlag *int64 `json:"ToaFlag,omitempty" name:"ToaFlag"`
+
+	// 转发后端服务器调度类型。
+	BalanceMode *string `json:"BalanceMode,omitempty" name:"BalanceMode"`
 }
 
 type L7Backend struct {
@@ -2327,9 +2348,6 @@ type LoadBalancer struct {
 
 	// 保障型网关七层计费指标
 	BzL7Metrics *string `json:"BzL7Metrics,omitempty" name:"BzL7Metrics"`
-
-	// Isp类型。5:腾讯CAP;7:内网。
-	IspId *string `json:"IspId,omitempty" name:"IspId"`
 }
 
 type LoadBalancerPortInfoListener struct {
@@ -2767,7 +2785,7 @@ type ModifyL7ListenerResponse struct {
 	Response *struct {
 
 		// 任务ID。该接口为异步任务，可根据本参数调用[DescribeLoadBalancerTaskResult](/document/product/386/9308)接口来查询任务操作结果
-		TaskId *int64 `json:"TaskId,omitempty" name:"TaskId"`
+		TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`

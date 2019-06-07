@@ -94,6 +94,35 @@ func (c *Client) CommitUpload(request *CommitUploadRequest) (response *CommitUpl
     return
 }
 
+func NewComposeMediaRequest() (request *ComposeMediaRequest) {
+    request = &ComposeMediaRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vod", APIVersion, "ComposeMedia")
+    return
+}
+
+func NewComposeMediaResponse() (response *ComposeMediaResponse) {
+    response = &ComposeMediaResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 该接口用于制作媒体文件，可以
+// 
+// 1. 对一个媒体文件进行剪辑，生成一个新的媒体文件；
+// 2. 对多个媒体文件进行裁剪拼接，生成一个新的媒体文件；
+// 3. 对多个媒体文件的媒体流进行裁剪拼接，生成一个新的媒体文件；
+func (c *Client) ComposeMedia(request *ComposeMediaRequest) (response *ComposeMediaResponse, err error) {
+    if request == nil {
+        request = NewComposeMediaRequest()
+    }
+    response = NewComposeMediaResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewConfirmEventsRequest() (request *ConfirmEventsRequest) {
     request = &ConfirmEventsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -784,6 +813,34 @@ func (c *Client) DescribeProcedureTemplates(request *DescribeProcedureTemplatesR
         request = NewDescribeProcedureTemplatesRequest()
     }
     response = NewDescribeProcedureTemplatesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeReviewDetailsRequest() (request *DescribeReviewDetailsRequest) {
+    request = &DescribeReviewDetailsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vod", APIVersion, "DescribeReviewDetails")
+    return
+}
+
+func NewDescribeReviewDetailsResponse() (response *DescribeReviewDetailsResponse) {
+    response = &DescribeReviewDetailsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 该接口返回查询时间范围内每天使用的视频内容审核时长数据，单位： 秒。
+// 
+// 1. 可以查询最近 90 天内的转码时长统计数据。
+// 2. 查询时间跨度不超过 60 天。
+func (c *Client) DescribeReviewDetails(request *DescribeReviewDetailsRequest) (response *DescribeReviewDetailsResponse, err error) {
+    if request == nil {
+        request = NewDescribeReviewDetailsRequest()
+    }
+    response = NewDescribeReviewDetailsResponse()
     err = c.Send(request, response)
     return
 }

@@ -641,7 +641,7 @@ type DescribeAgentPayDealsRequest struct {
 	// 限制数目
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 
-	// 下单时间范围起始点
+	// 下单时间范围起始点(不传时会默认查15天内订单，传值时需要传15天内的起始时间)
 	CreatTimeRangeStart *string `json:"CreatTimeRangeStart,omitempty" name:"CreatTimeRangeStart"`
 
 	// 下单时间范围终止点

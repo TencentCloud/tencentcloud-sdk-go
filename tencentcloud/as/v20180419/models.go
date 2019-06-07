@@ -186,6 +186,9 @@ type AutoScalingGroup struct {
 
 	// 伸缩组是否处于伸缩活动中，`IN_ACTIVITY`表示处于伸缩活动中，`NOT_IN_ACTIVITY`表示不处于伸缩活动中。
 	InActivityStatus *string `json:"InActivityStatus,omitempty" name:"InActivityStatus"`
+
+	// 伸缩组标签列表
+	Tags []*Tag `json:"Tags,omitempty" name:"Tags" list`
 }
 
 type AutoScalingGroupAbstract struct {
@@ -311,6 +314,9 @@ type CreateAutoScalingGroupRequest struct {
 	// 可用区或子网不可用的常见原因包括该可用区CVM实例类型售罄、该可用区CBS云盘售罄、该可用区配额不足、该子网IP不足等。
 	// 如果 Zones/SubnetIds 中可用区或者子网不存在，则无论 ZonesCheckPolicy 采用何种取值，都会校验报错。
 	ZonesCheckPolicy *string `json:"ZonesCheckPolicy,omitempty" name:"ZonesCheckPolicy"`
+
+	// 标签描述列表。通过指定该参数可以支持绑定标签到伸缩组。同时绑定标签到相应的资源实例，
+	Tags []*Tag `json:"Tags,omitempty" name:"Tags" list`
 }
 
 func (r *CreateAutoScalingGroupRequest) ToJsonString() string {
@@ -1050,6 +1056,9 @@ type DescribeAutoScalingGroupsRequest struct {
 	// <li> auto-scaling-group-id - String - 是否必填：否 -（过滤条件）按照伸缩组ID过滤。</li>
 	// <li> auto-scaling-group-name - String - 是否必填：否 -（过滤条件）按照伸缩组名称过滤。</li>
 	// <li> launch-configuration-id - String - 是否必填：否 -（过滤条件）按照启动配置ID过滤。</li>
+	// <li> tag-key - String - 是否必填：否 -（过滤条件）按照标签键进行过滤。</li>
+	// <li> tag-value - String - 是否必填：否 -（过滤条件）按照标签值进行过滤。</li>
+	// <li> tag:tag-key - String - 是否必填：否 -（过滤条件）按照标签键值对进行过滤。 tag-key使用具体的标签键进行替换。使用请参考示例2</li>
 	// 每次请求的`Filters`的上限为10，`Filter.Values`的上限为5。参数不支持同时指定`AutoScalingGroupIds`和`Filters`。
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
 
@@ -2438,6 +2447,19 @@ type SystemDisk struct {
 	// 系统盘大小，单位：GB。默认值为 50
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DiskSize *uint64 `json:"DiskSize,omitempty" name:"DiskSize"`
+}
+
+type Tag struct {
+
+	// 标签键
+	Key *string `json:"Key,omitempty" name:"Key"`
+
+	// 标签值
+	Value *string `json:"Value,omitempty" name:"Value"`
+
+	// 标签绑定的资源类型，当前支持类型："auto-scaling-group
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResourceType *string `json:"ResourceType,omitempty" name:"ResourceType"`
 }
 
 type TargetAttribute struct {

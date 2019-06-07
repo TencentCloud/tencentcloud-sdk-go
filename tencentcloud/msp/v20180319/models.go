@@ -40,7 +40,7 @@ type DeregisterMigrationTaskResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -57,7 +57,7 @@ func (r *DeregisterMigrationTaskResponse) FromJsonString(s string) error {
 type DescribeMigrationTaskRequest struct {
 	*tchttp.BaseRequest
 
-	// 任务ID
+	// 任务ID，例如msp-jitoh33n
 	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
 }
 
@@ -77,7 +77,7 @@ type DescribeMigrationTaskResponse struct {
 		// 迁移详情列表
 		TaskStatus []*TaskStatus `json:"TaskStatus,omitempty" name:"TaskStatus" list`
 
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -135,7 +135,7 @@ type ListMigrationProjectResponse struct {
 		// 项目总数
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -181,7 +181,7 @@ type ListMigrationTaskResponse struct {
 		// 迁移任务列表
 		Tasks []*Task `json:"Tasks,omitempty" name:"Tasks" list`
 
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -198,10 +198,10 @@ func (r *ListMigrationTaskResponse) FromJsonString(s string) error {
 type ModifyMigrationTaskBelongToProjectRequest struct {
 	*tchttp.BaseRequest
 
-	// 任务ID
+	// 任务ID，例如msp-jitoh33n
 	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
 
-	// 项目ID
+	// 项目ID，例如10005
 	ProjectId *uint64 `json:"ProjectId,omitempty" name:"ProjectId"`
 }
 
@@ -218,7 +218,7 @@ type ModifyMigrationTaskBelongToProjectResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -235,10 +235,10 @@ func (r *ModifyMigrationTaskBelongToProjectResponse) FromJsonString(s string) er
 type ModifyMigrationTaskStatusRequest struct {
 	*tchttp.BaseRequest
 
-	// 任务状态
+	// 任务状态，取值为unstart，migrating，finish，fail之一，分别代表该迁移任务状态为迁移未开始，迁移中，迁移完成，迁移失败
 	Status *string `json:"Status,omitempty" name:"Status"`
 
-	// 任务ID
+	// 任务ID，例如msp-jitoh33n
 	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
 }
 
@@ -255,7 +255,7 @@ type ModifyMigrationTaskStatusResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -305,16 +305,16 @@ type RegisterMigrationTaskRequest struct {
 	// 迁移类别，如数据库迁移中mysql:mysql代表从mysql迁移到mysql，文件迁移中oss:cos代表从阿里云oss迁移到腾讯云cos
 	MigrateClass *string `json:"MigrateClass,omitempty" name:"MigrateClass"`
 
-	// 源实例接入类型
+	// 源实例接入类型，数据库迁移时填写值为：extranet(外网),cvm(cvm自建实例),dcg(专线接入的实例),vpncloud(云vpn接入的实例),vpnselfbuild(自建vpn接入的实例)，cdb(云上cdb实例)
 	SrcAccessType *string `json:"SrcAccessType,omitempty" name:"SrcAccessType"`
 
-	// 源实例数据库类型
+	// 源实例数据库类型，数据库迁移时填写，取值为mysql,redis,percona,mongodb,postgresql,sqlserver,mariadb 之一
 	SrcDatabaseType *string `json:"SrcDatabaseType,omitempty" name:"SrcDatabaseType"`
 
-	// 目标实例接入类型
+	// 目标实例接入类型，数据库迁移时填写值为：extranet(外网),cvm(cvm自建实例),dcg(专线接入的实例),vpncloud(云vpn接入的实例),vpnselfbuild(自建vpn接入的实例)，cdb(云上cdb实例)
 	DstAccessType *string `json:"DstAccessType,omitempty" name:"DstAccessType"`
 
-	// 目标实例数据库类型
+	// 目标实例数据库类型,数据库迁移时填写，取值为mysql,redis,percona,mongodb,postgresql,sqlserver,mariadb 之一
 	DstDatabaseType *string `json:"DstDatabaseType,omitempty" name:"DstDatabaseType"`
 }
 
@@ -334,7 +334,7 @@ type RegisterMigrationTaskResponse struct {
 		// 任务ID
 		TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
 
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
 }

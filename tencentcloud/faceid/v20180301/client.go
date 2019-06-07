@@ -218,6 +218,31 @@ func (c *Client) ImageRecognition(request *ImageRecognitionRequest) (response *I
     return
 }
 
+func NewLivenessRequest() (request *LivenessRequest) {
+    request = &LivenessRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("faceid", APIVersion, "Liveness")
+    return
+}
+
+func NewLivenessResponse() (response *LivenessResponse) {
+    response = &LivenessResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 活体检测
+func (c *Client) Liveness(request *LivenessRequest) (response *LivenessResponse, err error) {
+    if request == nil {
+        request = NewLivenessRequest()
+    }
+    response = NewLivenessResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewLivenessCompareRequest() (request *LivenessCompareRequest) {
     request = &LivenessCompareRequest{
         BaseRequest: &tchttp.BaseRequest{},

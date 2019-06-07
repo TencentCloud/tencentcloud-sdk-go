@@ -1581,6 +1581,49 @@ type ComposeMediaOutput struct {
 	RemoveAudio *int64 `json:"RemoveAudio,omitempty" name:"RemoveAudio"`
 }
 
+type ComposeMediaRequest struct {
+	*tchttp.BaseRequest
+
+	// 输入的媒体轨道列表，包括视频、音频、图片等素材组成的多个轨道信息。输入的多个轨道在时间轴上和输出媒体文件的时间轴对齐，时间轴上相同时间点的各个轨道的素材进行重叠，视频或者图片按轨道顺序进行图像的叠加，轨道顺序高的素材叠加在上面；音频素材进行混音。
+	Tracks []*MediaTrack `json:"Tracks,omitempty" name:"Tracks" list`
+
+	// 输出的媒体文件信息。
+	Output *ComposeMediaOutput `json:"Output,omitempty" name:"Output"`
+
+	// 制作视频文件时使用的画布。
+	Canvas *Canvas `json:"Canvas,omitempty" name:"Canvas"`
+}
+
+func (r *ComposeMediaRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ComposeMediaRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ComposeMediaResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 制作媒体文件的任务 ID，可以通过该 ID 查询制作任务（任务类型为 MakeMedia）的状态。
+		TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ComposeMediaResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ComposeMediaResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type ComposeMediaTask struct {
 
 	// 任务 ID。
@@ -3085,6 +3128,55 @@ func (r *DescribeProcedureTemplatesResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeReviewDetailsRequest struct {
+	*tchttp.BaseRequest
+
+	// 起始日期。使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 结束日期，需大于开始日期。使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
+}
+
+func (r *DescribeReviewDetailsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeReviewDetailsRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeReviewDetailsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 发起内容审核次数。
+		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 内容审核总时长。
+		TotalDuration *int64 `json:"TotalDuration,omitempty" name:"TotalDuration"`
+
+		// 内容审核时长统计数据，每天一个数据。
+		Data []*StatDataItem `json:"Data,omitempty" name:"Data" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeReviewDetailsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeReviewDetailsResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeTaskDetailRequest struct {
 	*tchttp.BaseRequest
 
@@ -3111,7 +3203,8 @@ type DescribeTaskDetailResponse struct {
 		// 任务类型，取值：
 	// <li>Procedure：视频处理任务；</li>
 	// <li>EditMedia：视频编辑任务；</li>
-	// <li>WechatPublish：微信发布任务。</li>
+	// <li>WechatPublish：微信发布任务；</li>
+	// <li>ComposeMedia：制作媒体文件任务。</li>
 	// 兼容 2017 版的任务类型：
 	// <li>Transcode：视频转码任务；</li>
 	// <li>SnapshotByTimeOffset：视频截图任务；</li>
@@ -3166,6 +3259,10 @@ type DescribeTaskDetailResponse struct {
 		// 截取雪碧图任务信息，仅当 TaskType 为 ImageSprite，该字段有值。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		CreateImageSpriteTask *CreateImageSpriteTask2017 `json:"CreateImageSpriteTask,omitempty" name:"CreateImageSpriteTask"`
+
+		// 制作媒体文件任务信息，仅当 TaskType 为 ComposeMedia，该字段有值。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		ComposeMediaTask *ComposeMediaTask `json:"ComposeMediaTask,omitempty" name:"ComposeMediaTask"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -3632,10 +3729,6 @@ type EventContent struct {
 	// 制作媒体文件任务完成事件，当事件类型为 ComposeMediaComplete 时有效。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ComposeMediaCompleteEvent *ComposeMediaTask `json:"ComposeMediaCompleteEvent,omitempty" name:"ComposeMediaCompleteEvent"`
-
-	// 微信小程序视频发布完成事件，当事件类型为 WechatMiniProgramPublishComplete 时有效。
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	WechatMiniProgramPublishEvent *WechatMiniProgramPublishTask `json:"WechatMiniProgramPublishEvent,omitempty" name:"WechatMiniProgramPublishEvent"`
 }
 
 type FaceConfigureInfo struct {
@@ -5460,7 +5553,6 @@ type OutputAudioStream struct {
 
 	// 音频流的编码格式，可选值：
 	// <li>libfdk_aac：适合 mp4 文件。</li>
-	// <li>libmp3lame：适合 mp3 文件。</li>
 	// 默认值：libfdk_aac。
 	Codec *string `json:"Codec,omitempty" name:"Codec"`
 
@@ -5857,7 +5949,7 @@ type ProcessMediaByProcedureRequest struct {
 	// 任务流状态变更通知模式，可取值有 Finish，Change 和 None，不填代表 Finish。
 	TasksNotifyMode *string `json:"TasksNotifyMode,omitempty" name:"TasksNotifyMode"`
 
-	// 来源上下文，用于透传用户请求信息，任务流状态变更回调将返回该字段值，最长 250 个字符。
+	// 来源上下文，用于透传用户请求信息，任务流状态变更回调将返回该字段值，最长 1000 个字符。
 	SessionContext *string `json:"SessionContext,omitempty" name:"SessionContext"`
 
 	// 用于去重的识别码，如果一天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。
@@ -5921,7 +6013,7 @@ type ProcessMediaByUrlRequest struct {
 	// 任务流状态变更通知模式，可取值有 Finish，Change 和 None，不填代表 Finish。
 	TasksNotifyMode *string `json:"TasksNotifyMode,omitempty" name:"TasksNotifyMode"`
 
-	// 来源上下文，用于透传用户请求信息，任务流状态变更回调将返回该字段值，最长 250 个字符。
+	// 来源上下文，用于透传用户请求信息，任务流状态变更回调将返回该字段值，最长 1000 个字符。
 	SessionContext *string `json:"SessionContext,omitempty" name:"SessionContext"`
 
 	// 用于去重的识别码，如果七天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。
@@ -5985,7 +6077,7 @@ type ProcessMediaRequest struct {
 	// 任务流状态变更通知模式，可取值有 Finish，Change 和 None，不填代表 Finish。
 	TasksNotifyMode *string `json:"TasksNotifyMode,omitempty" name:"TasksNotifyMode"`
 
-	// 来源上下文，用于透传用户请求信息，任务流状态变更回调将返回该字段值，最长 250 个字符。
+	// 来源上下文，用于透传用户请求信息，任务流状态变更回调将返回该字段值，最长 1000 个字符。
 	SessionContext *string `json:"SessionContext,omitempty" name:"SessionContext"`
 
 	// 用于去重的识别码，如果七天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。
@@ -6333,6 +6425,19 @@ type SortBy struct {
 
 	// 排序方式，可选值：Asc（升序）、Desc（降序）
 	Order *string `json:"Order,omitempty" name:"Order"`
+}
+
+type StatDataItem struct {
+
+	// 数据所在时间区间的开始时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。如：当时间粒度为天，2018-12-01T00:00:00+08:00，表示2018年12月1日（含）到2018年12月2日（不含）区间。
+	Time *string `json:"Time,omitempty" name:"Time"`
+
+	// 数据大小。
+	// <li>存储空间的数据，单位是字节。</li>
+	// <li>转码时长的数据，单位是秒。</li>
+	// <li>流量数据，单位是字节。</li>
+	// <li>带宽数据，单位是比特每秒。</li>
+	Value *int64 `json:"Value,omitempty" name:"Value"`
 }
 
 type StickerTrackItem struct {
@@ -7085,37 +7190,6 @@ type WatermarkTemplate struct {
 	// <li>bottomLeft：表示坐标原点位于视频图像的左下角，水印原点为图片或文字的左下角；</li>
 	// <li>bottomRight：表示坐标原点位于视频图像的右下角，水印原点为图片或文字的右下。；</li>
 	CoordinateOrigin *string `json:"CoordinateOrigin,omitempty" name:"CoordinateOrigin"`
-}
-
-type WechatMiniProgramPublishTask struct {
-
-	// 任务 ID。
-	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
-
-	// 任务状态，取值：
-	// WAITING：等待中；
-	// PROCESSING：处理中；
-	// FINISH：已完成。
-	Status *string `json:"Status,omitempty" name:"Status"`
-
-	// 错误码
-	// <li>0：成功；</li>
-	// <li>其他值：失败。</li>
-	ErrCode *int64 `json:"ErrCode,omitempty" name:"ErrCode"`
-
-	// 错误信息。
-	Message *string `json:"Message,omitempty" name:"Message"`
-
-	// 发布视频文件 ID。
-	FileId *string `json:"FileId,omitempty" name:"FileId"`
-
-	// 发布视频所对应的转码模板 ID，为 0 代表原始视频。
-	SourceDefinition *uint64 `json:"SourceDefinition,omitempty" name:"SourceDefinition"`
-
-	// 微信小程序视频发布状态，取值：
-	// <li>Pass：成功；</li>
-	// <li>Rejected：审核未通过。</li>
-	PublishResult *string `json:"PublishResult,omitempty" name:"PublishResult"`
 }
 
 type WechatPublishTask struct {
