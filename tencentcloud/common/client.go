@@ -229,6 +229,11 @@ func (c *Client) WithSignatureMethod(method string) *Client {
 	return c
 }
 
+func (c *Client) WithHttpTransport (transport http.RoundTripper) *Client {
+	c.httpClient.Transport = transport
+	return c
+}
+
 func NewClientWithSecretId(secretId, secretKey, region string) (client *Client, err error) {
 	client = &Client{}
 	client.Init(region).WithSecretId(secretId, secretKey)
