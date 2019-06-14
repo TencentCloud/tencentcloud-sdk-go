@@ -790,6 +790,34 @@ func (c *Client) EnableAutoScalingGroup(request *EnableAutoScalingGroupRequest) 
     return
 }
 
+func NewExecuteScalingPolicyRequest() (request *ExecuteScalingPolicyRequest) {
+    request = &ExecuteScalingPolicyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("as", APIVersion, "ExecuteScalingPolicy")
+    return
+}
+
+func NewExecuteScalingPolicyResponse() (response *ExecuteScalingPolicyResponse) {
+    response = &ExecuteScalingPolicyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（ExecuteScalingPolicy）用于执行伸缩策略。
+// 
+// * 可以根据伸缩策略ID执行伸缩策略。
+// * 伸缩策略所属伸缩组处于伸缩活动时，会拒绝执行伸缩策略。
+func (c *Client) ExecuteScalingPolicy(request *ExecuteScalingPolicyRequest) (response *ExecuteScalingPolicyResponse, err error) {
+    if request == nil {
+        request = NewExecuteScalingPolicyRequest()
+    }
+    response = NewExecuteScalingPolicyResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyAutoScalingGroupRequest() (request *ModifyAutoScalingGroupRequest) {
     request = &ModifyAutoScalingGroupRequest{
         BaseRequest: &tchttp.BaseRequest{},

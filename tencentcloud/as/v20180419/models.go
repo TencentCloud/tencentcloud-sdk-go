@@ -1586,6 +1586,46 @@ type EnhancedService struct {
 	MonitorService *RunMonitorServiceEnabled `json:"MonitorService,omitempty" name:"MonitorService"`
 }
 
+type ExecuteScalingPolicyRequest struct {
+	*tchttp.BaseRequest
+
+	// 告警伸缩策略ID
+	AutoScalingPolicyId *string `json:"AutoScalingPolicyId,omitempty" name:"AutoScalingPolicyId"`
+
+	// 是否检查伸缩组活动处于冷却时间内，默认值为false
+	HonorCooldown *bool `json:"HonorCooldown,omitempty" name:"HonorCooldown"`
+}
+
+func (r *ExecuteScalingPolicyRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ExecuteScalingPolicyRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ExecuteScalingPolicyResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 伸缩活动ID
+		ActivityId *string `json:"ActivityId,omitempty" name:"ActivityId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ExecuteScalingPolicyResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ExecuteScalingPolicyResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type Filter struct {
 
 	// 需要过滤的字段。

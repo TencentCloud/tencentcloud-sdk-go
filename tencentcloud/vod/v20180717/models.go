@@ -3731,6 +3731,50 @@ type EventContent struct {
 	ComposeMediaCompleteEvent *ComposeMediaTask `json:"ComposeMediaCompleteEvent,omitempty" name:"ComposeMediaCompleteEvent"`
 }
 
+type ExecuteFunctionRequest struct {
+	*tchttp.BaseRequest
+
+	// 调用后端接口名称。
+	FunctionName *string `json:"FunctionName,omitempty" name:"FunctionName"`
+
+	// 接口参数，具体参数格式调用时与后端协调。
+	FunctionArg *string `json:"FunctionArg,omitempty" name:"FunctionArg"`
+
+	// 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
+}
+
+func (r *ExecuteFunctionRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ExecuteFunctionRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ExecuteFunctionResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 处理结果打包后的字符串，具体与后台一同协调。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Result *string `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ExecuteFunctionResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ExecuteFunctionResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type FaceConfigureInfo struct {
 
 	// 人脸识别任务开关，可选值：
@@ -3738,12 +3782,12 @@ type FaceConfigureInfo struct {
 	// <li>OFF：关闭智能人脸识别任务。</li>
 	Switch *string `json:"Switch,omitempty" name:"Switch"`
 
-	// 人脸识别过滤分数，当识别结果达到该分数以上，返回识别结果。默认 90 分。取值范围：0 - 100。
+	// 人脸识别过滤分数，当识别结果达到该分数以上，返回识别结果。默认 95 分。取值范围：0 - 100。
 	Score *float64 `json:"Score,omitempty" name:"Score"`
 
 	// 默认人物过滤标签，指定需要返回的默认人物的标签。如果未填或者为空，则全部默认人物结果都返回。标签可选值：
-	// <li>entertainments：娱乐明星；</li>
-	// <li>sports：体育明星；</li>
+	// <li>entertainment：娱乐明星；</li>
+	// <li>sport：体育明星；</li>
 	// <li>politician：政治人物。</li>
 	DefaultLibraryLabelSet []*string `json:"DefaultLibraryLabelSet,omitempty" name:"DefaultLibraryLabelSet" list`
 
@@ -3770,8 +3814,8 @@ type FaceConfigureInfoForUpdate struct {
 	Score *float64 `json:"Score,omitempty" name:"Score"`
 
 	// 默认人物过滤标签，指定需要返回的默认人物的标签。如果未填或者为空，则全部默认人物结果都返回。标签可选值：
-	// <li>entertainments：娱乐明星；</li>
-	// <li>sports：体育明星；</li>
+	// <li>entertainment：娱乐明星；</li>
+	// <li>sport：体育明星；</li>
 	// <li>politician：政治人物。</li>
 	DefaultLibraryLabelSet []*string `json:"DefaultLibraryLabelSet,omitempty" name:"DefaultLibraryLabelSet" list`
 
@@ -5648,7 +5692,9 @@ type PoliticalImgReviewTemplateInfo struct {
 
 	// 画面鉴政过滤标签，审核结果包含选择的标签则返回结果，如果过滤标签为空，则审核结果全部返回，可选值为：
 	// <li>violation_photo：违规图标；</li>
-	// <li>politician：政治人物。</li>
+	// <li>politician：政治人物；</li>
+	// <li>entertainment：娱乐明星；</li>
+	// <li>sport：体育明星。</li>
 	LabelSet []*string `json:"LabelSet,omitempty" name:"LabelSet" list`
 
 	// 判定涉嫌违规的分数阈值，当智能审核达到该分数以上，认为涉嫌违规，不填默认为 97 分。取值范围：0~100。
@@ -5667,7 +5713,9 @@ type PoliticalImgReviewTemplateInfoForUpdate struct {
 
 	// 画面鉴政过滤标签，审核结果包含选择的标签则返回结果，如果过滤标签为空，则审核结果全部返回，可选值为：
 	// <li>violation_photo：违规图标；</li>
-	// <li>politician：政治人物。</li>
+	// <li>politician：政治人物；</li>
+	// <li>entertainment：娱乐明星；</li>
+	// <li>sport：体育明星。</li>
 	LabelSet []*string `json:"LabelSet,omitempty" name:"LabelSet" list`
 
 	// 判定涉嫌违规的分数阈值，当智能审核达到该分数以上，认为涉嫌违规。取值范围：0~100。
@@ -6171,15 +6219,52 @@ type PullFileTask struct {
 	// 转拉上传完成后生成的视频 ID。
 	FileId *string `json:"FileId,omitempty" name:"FileId"`
 
-	// 上传完成后生成的媒体文件基础信息。
+	// 转拉完成后生成的媒体文件基础信息。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	MediaBasicInfo *string `json:"MediaBasicInfo,omitempty" name:"MediaBasicInfo"`
+	MediaBasicInfo *MediaBasicInfo `json:"MediaBasicInfo,omitempty" name:"MediaBasicInfo"`
 
 	// 转拉上传完成后生成的播放地址。
 	FileUrl *string `json:"FileUrl,omitempty" name:"FileUrl"`
 
 	// 若转拉上传时指定了视频处理流程，则该参数为流程任务 ID。
 	ProcedureTaskId *string `json:"ProcedureTaskId,omitempty" name:"ProcedureTaskId"`
+}
+
+type PushUrlCacheRequest struct {
+	*tchttp.BaseRequest
+
+	// 预热的 URL 列表，单次最多指定20个 URL。
+	Urls []*string `json:"Urls,omitempty" name:"Urls" list`
+
+	// 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
+}
+
+func (r *PushUrlCacheRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *PushUrlCacheRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type PushUrlCacheResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *PushUrlCacheResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *PushUrlCacheResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
 }
 
 type ResetProcedureTemplateRequest struct {

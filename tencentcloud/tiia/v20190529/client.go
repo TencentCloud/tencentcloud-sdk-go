@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package v20190311
+package v20190529
 
 import (
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
@@ -20,7 +20,7 @@ import (
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
 )
 
-const APIVersion = "2019-03-11"
+const APIVersion = "2019-05-29"
 
 type Client struct {
     common.Client
@@ -43,52 +43,52 @@ func NewClient(credential *common.Credential, region string, clientProfile *prof
 }
 
 
-func NewPostTextRequest() (request *PostTextRequest) {
-    request = &PostTextRequest{
+func NewDetectLabelRequest() (request *DetectLabelRequest) {
+    request = &DetectLabelRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
-    request.Init().WithApiInfo("tbp", APIVersion, "PostText")
+    request.Init().WithApiInfo("tiia", APIVersion, "DetectLabel")
     return
 }
 
-func NewPostTextResponse() (response *PostTextResponse) {
-    response = &PostTextResponse{
+func NewDetectLabelResponse() (response *DetectLabelResponse) {
+    response = &DetectLabelResponse{
         BaseResponse: &tchttp.BaseResponse{},
     }
     return
 }
 
-// 机器人会话接口，接收文本信息，传递给后台机器人
-func (c *Client) PostText(request *PostTextRequest) (response *PostTextResponse, err error) {
+// 传入一张图片，识别出图片中存在的物体，并返回物体的名称（分类）、置信度，一张图片会给出多个可能的标签。
+func (c *Client) DetectLabel(request *DetectLabelRequest) (response *DetectLabelResponse, err error) {
     if request == nil {
-        request = NewPostTextRequest()
+        request = NewDetectLabelRequest()
     }
-    response = NewPostTextResponse()
+    response = NewDetectLabelResponse()
     err = c.Send(request, response)
     return
 }
 
-func NewResetRequest() (request *ResetRequest) {
-    request = &ResetRequest{
+func NewImageModerationRequest() (request *ImageModerationRequest) {
+    request = &ImageModerationRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
-    request.Init().WithApiInfo("tbp", APIVersion, "Reset")
+    request.Init().WithApiInfo("tiia", APIVersion, "ImageModeration")
     return
 }
 
-func NewResetResponse() (response *ResetResponse) {
-    response = &ResetResponse{
+func NewImageModerationResponse() (response *ImageModerationResponse) {
+    response = &ImageModerationResponse{
         BaseResponse: &tchttp.BaseResponse{},
     }
     return
 }
 
-// 对当前机器人的会话状态进行复位
-func (c *Client) Reset(request *ResetRequest) (response *ResetResponse, err error) {
+// 本接口提供多种维度的图像审核能力，支持色情和性感内容识别，政治人物和涉政敏感场景识别，以及暴恐人物、场景、旗帜标识等违禁内容的识别。
+func (c *Client) ImageModeration(request *ImageModerationRequest) (response *ImageModerationResponse, err error) {
     if request == nil {
-        request = NewResetRequest()
+        request = NewImageModerationRequest()
     }
-    response = NewResetResponse()
+    response = NewImageModerationResponse()
     err = c.Send(request, response)
     return
 }

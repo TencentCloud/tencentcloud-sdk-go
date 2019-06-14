@@ -101,7 +101,7 @@ type CreateAuditRequest struct {
 	// 是否创建新的队列。1：是，0：否。如果IsEnableCmqNotify值是1的话，此值属于必填字段。
 	IsCreateNewQueue *int64 `json:"IsCreateNewQueue,omitempty" name:"IsCreateNewQueue"`
 
-	// 日志文件前缀。3-40个字符，只能包含 ASCII 编码字母 a-z，A-Z，数字 0-9。可以不填，默认以账号ID做为日志前缀。
+	// 日志文件前缀。3-40个字符，只能包含 ASCII 编码字母 a-z，A-Z，数字 0-9。可以不填，默认以账号ID作为日志前缀。
 	LogFilePrefix *string `json:"LogFilePrefix,omitempty" name:"LogFilePrefix"`
 }
 
@@ -471,9 +471,6 @@ type LookUpEventsRequest struct {
 
 	// 检索条件
 	LookupAttributes []*LookupAttribute `json:"LookupAttributes,omitempty" name:"LookupAttributes" list`
-
-	// 是否调用新的查询接口
-	IsApiV3 *int64 `json:"IsApiV3,omitempty" name:"IsApiV3"`
 
 	// 返回日志的最大条数
 	MaxResults *int64 `json:"MaxResults,omitempty" name:"MaxResults"`

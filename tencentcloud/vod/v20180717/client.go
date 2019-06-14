@@ -1007,6 +1007,31 @@ func (c *Client) EditMedia(request *EditMediaRequest) (response *EditMediaRespon
     return
 }
 
+func NewExecuteFunctionRequest() (request *ExecuteFunctionRequest) {
+    request = &ExecuteFunctionRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vod", APIVersion, "ExecuteFunction")
+    return
+}
+
+func NewExecuteFunctionResponse() (response *ExecuteFunctionResponse) {
+    response = &ExecuteFunctionResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口仅用于定制开发的特殊场景，除非云点播客服人员主动告知您需要使用本接口，其它情况请勿调用。
+func (c *Client) ExecuteFunction(request *ExecuteFunctionRequest) (response *ExecuteFunctionResponse, err error) {
+    if request == nil {
+        request = NewExecuteFunctionRequest()
+    }
+    response = NewExecuteFunctionResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewLiveRealTimeClipRequest() (request *LiveRealTimeClipRequest) {
     request = &LiveRealTimeClipRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1398,6 +1423,33 @@ func (c *Client) PullEvents(request *PullEventsRequest) (response *PullEventsRes
         request = NewPullEventsRequest()
     }
     response = NewPullEventsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewPushUrlCacheRequest() (request *PushUrlCacheRequest) {
+    request = &PushUrlCacheRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vod", APIVersion, "PushUrlCache")
+    return
+}
+
+func NewPushUrlCacheResponse() (response *PushUrlCacheResponse) {
+    response = &PushUrlCacheResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 1. 预热指定的 URL 列表。
+// 2. URL 的域名必须已在云点播中注册。
+// 3. 单次请求最多指定20个 URL。
+func (c *Client) PushUrlCache(request *PushUrlCacheRequest) (response *PushUrlCacheResponse, err error) {
+    if request == nil {
+        request = NewPushUrlCacheRequest()
+    }
+    response = NewPushUrlCacheResponse()
     err = c.Send(request, response)
     return
 }

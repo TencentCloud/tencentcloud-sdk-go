@@ -964,7 +964,7 @@ type DiskConfig struct {
 	// 最小可配置云盘大小，单位GB。
 	MinDiskSize *uint64 `json:"MinDiskSize,omitempty" name:"MinDiskSize"`
 
-	// 所在[可用区](/document/api/213/9452#zone)。
+	// 云硬盘所属的[可用区](/document/product/213/15753#ZoneInfo)。
 	Zone *string `json:"Zone,omitempty" name:"Zone"`
 
 	// 实例机型。
@@ -1168,6 +1168,55 @@ func (r *InquiryPriceResizeDiskResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type ModifyAutoSnapshotPolicyAttributeRequest struct {
+	*tchttp.BaseRequest
+
+	// 定期快照策略ID。
+	AutoSnapshotPolicyId *string `json:"AutoSnapshotPolicyId,omitempty" name:"AutoSnapshotPolicyId"`
+
+	// 定期快照的执行策略。
+	Policy []*Policy `json:"Policy,omitempty" name:"Policy" list`
+
+	// 要创建的定期快照策略名。不传则默认为“未命名”。最大长度不能超60个字节。
+	AutoSnapshotPolicyName *string `json:"AutoSnapshotPolicyName,omitempty" name:"AutoSnapshotPolicyName"`
+
+	// 是否激活定期快照策略，FALSE表示未激活，TRUE表示激活，默认为TRUE。
+	IsActivated *bool `json:"IsActivated,omitempty" name:"IsActivated"`
+
+	// 通过该定期快照策略创建的快照是否永久保留。FALSE表示非永久保留，TRUE表示永久保留，默认为FALSE。
+	IsPermanent *bool `json:"IsPermanent,omitempty" name:"IsPermanent"`
+
+	// 通过该定期快照策略创建的快照保留天数，该参数不可与`IsPermanent`参数冲突，即若定期快照策略设置为永久保留，`RetentionDays`应置0。
+	RetentionDays *uint64 `json:"RetentionDays,omitempty" name:"RetentionDays"`
+}
+
+func (r *ModifyAutoSnapshotPolicyAttributeRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyAutoSnapshotPolicyAttributeRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyAutoSnapshotPolicyAttributeResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifyAutoSnapshotPolicyAttributeResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyAutoSnapshotPolicyAttributeResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type ModifyDiskAttributesRequest struct {
 	*tchttp.BaseRequest
 
@@ -1296,7 +1345,10 @@ func (r *ModifySnapshotAttributeResponse) FromJsonString(s string) error {
 
 type Placement struct {
 
-	// 云硬盘所属的[可用区](/document/product/213/15753#ZoneInfo)ID。该参数也可以通过调用  [DescribeZones](/document/product/213/15707) 的返回值中的Zone字段来获取。
+	// 所在[可用区](/document/api/213/9452#zone)。
+	// 
+	// 
+	// 云硬盘所属的[可用区](/document/product/213/15753#ZoneInfo)。该参数也可以通过调用  [DescribeZones](/document/product/213/15707) 的返回值中的Zone字段来获取。
 	Zone *string `json:"Zone,omitempty" name:"Zone"`
 
 	// 实例所属项目ID。该参数可以通过调用 [DescribeProject](/document/api/378/4400) 的返回值中的 projectId 字段来获取。不填为默认项目。

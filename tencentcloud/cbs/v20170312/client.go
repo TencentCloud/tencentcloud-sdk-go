@@ -594,6 +594,34 @@ func (c *Client) InquiryPriceResizeDisk(request *InquiryPriceResizeDiskRequest) 
     return
 }
 
+func NewModifyAutoSnapshotPolicyAttributeRequest() (request *ModifyAutoSnapshotPolicyAttributeRequest) {
+    request = &ModifyAutoSnapshotPolicyAttributeRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cbs", APIVersion, "ModifyAutoSnapshotPolicyAttribute")
+    return
+}
+
+func NewModifyAutoSnapshotPolicyAttributeResponse() (response *ModifyAutoSnapshotPolicyAttributeResponse) {
+    response = &ModifyAutoSnapshotPolicyAttributeResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（ModifyAutoSnapshotPolicyAttribute）用于修改定期快照策略属性。
+// 
+// * 可通过该接口修改定期快照策略的执行策略、名称、是否激活等属性。
+// * 修改保留天数时必须保证不与是否永久保留属性冲突，否则整个操作失败，以特定的错误码返回。
+func (c *Client) ModifyAutoSnapshotPolicyAttribute(request *ModifyAutoSnapshotPolicyAttributeRequest) (response *ModifyAutoSnapshotPolicyAttributeResponse, err error) {
+    if request == nil {
+        request = NewModifyAutoSnapshotPolicyAttributeRequest()
+    }
+    response = NewModifyAutoSnapshotPolicyAttributeResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyDiskAttributesRequest() (request *ModifyDiskAttributesRequest) {
     request = &ModifyDiskAttributesRequest{
         BaseRequest: &tchttp.BaseRequest{},

@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package v20190311
+package v20180711
 
 import (
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
@@ -20,7 +20,7 @@ import (
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
 )
 
-const APIVersion = "2019-03-11"
+const APIVersion = "2018-07-11"
 
 type Client struct {
     common.Client
@@ -43,52 +43,53 @@ func NewClient(credential *common.Credential, region string, clientProfile *prof
 }
 
 
-func NewPostTextRequest() (request *PostTextRequest) {
-    request = &PostTextRequest{
+func NewDescribeFilterResultListRequest() (request *DescribeFilterResultListRequest) {
+    request = &DescribeFilterResultListRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
-    request.Init().WithApiInfo("tbp", APIVersion, "PostText")
+    request.Init().WithApiInfo("gme", APIVersion, "DescribeFilterResultList")
     return
 }
 
-func NewPostTextResponse() (response *PostTextResponse) {
-    response = &PostTextResponse{
+func NewDescribeFilterResultListResponse() (response *DescribeFilterResultListResponse) {
+    response = &DescribeFilterResultListResponse{
         BaseResponse: &tchttp.BaseResponse{},
     }
     return
 }
 
-// 机器人会话接口，接收文本信息，传递给后台机器人
-func (c *Client) PostText(request *PostTextRequest) (response *PostTextResponse, err error) {
+// 根据日期查询识别结果列表，按分页反回
+func (c *Client) DescribeFilterResultList(request *DescribeFilterResultListRequest) (response *DescribeFilterResultListResponse, err error) {
     if request == nil {
-        request = NewPostTextRequest()
+        request = NewDescribeFilterResultListRequest()
     }
-    response = NewPostTextResponse()
+    response = NewDescribeFilterResultListResponse()
     err = c.Send(request, response)
     return
 }
 
-func NewResetRequest() (request *ResetRequest) {
-    request = &ResetRequest{
+func NewVoiceFilterRequest() (request *VoiceFilterRequest) {
+    request = &VoiceFilterRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
-    request.Init().WithApiInfo("tbp", APIVersion, "Reset")
+    request.Init().WithApiInfo("gme", APIVersion, "VoiceFilter")
     return
 }
 
-func NewResetResponse() (response *ResetResponse) {
-    response = &ResetResponse{
+func NewVoiceFilterResponse() (response *VoiceFilterResponse) {
+    response = &VoiceFilterResponse{
         BaseResponse: &tchttp.BaseResponse{},
     }
     return
 }
 
-// 对当前机器人的会话状态进行复位
-func (c *Client) Reset(request *ResetRequest) (response *ResetResponse, err error) {
+// 本接口用于识别涉黄、涉政、涉恐等违规音频，成功会回调配置在应用的回调地址。回调示例如下：
+// {"BizId":0,"FileId":"test_file_id","FileName":"test_file_name","TimeStamp":"0000-00-00 00:00:00","Data":[{"Type":1,"Word":"xx"}]}
+func (c *Client) VoiceFilter(request *VoiceFilterRequest) (response *VoiceFilterResponse, err error) {
     if request == nil {
-        request = NewResetRequest()
+        request = NewVoiceFilterRequest()
     }
-    response = NewResetResponse()
+    response = NewVoiceFilterResponse()
     err = c.Send(request, response)
     return
 }
