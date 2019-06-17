@@ -17,8 +17,8 @@ func main() {
 	credential := common.NewCredential(
 		// os.Getenv("TENCENTCLOUD_SECRET_ID"),
 		// os.Getenv("TENCENTCLOUD_SECRET_KEY"),
-		"...",
-		"...",
+		"",
+		"",
 	)
 
 	// 非必要步骤
@@ -49,8 +49,6 @@ func main() {
 	content := "this composition content" 
     request.Content = common.StringPtr(content)
    
-
-
 	// 通过client对象调用想要访问的接口，需要传入请求对象
 	response, err := client.ECC(request)
 	// 处理异常
