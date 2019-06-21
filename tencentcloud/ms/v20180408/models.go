@@ -79,7 +79,7 @@ type AppInfo struct {
 	// app的文件名，指定后加固后的文件名是{FileName}_legu.apk
 	FileName *string `json:"FileName,omitempty" name:"FileName"`
 
-	// app的包名，如果是专业版加固和企业版本加固，需要正确的传递此字段
+	// app的包名，需要正确的传递此字段
 	AppPkgName *string `json:"AppPkgName,omitempty" name:"AppPkgName"`
 
 	// app的版本号
@@ -1033,8 +1033,38 @@ type ScanInfo struct {
 	// 任务处理完成后的反向通知回调地址,批量提交app每扫描完成一个会通知一次,通知为POST请求，post信息{ItemId:
 	CallbackUrl *string `json:"CallbackUrl,omitempty" name:"CallbackUrl"`
 
-	// VULSCAN-漏洞扫描信息，VIRUSSCAN-返回病毒扫描信息， ADSCAN-广告扫描信息，PLUGINSCAN-插件扫描信息，可以自由组合
+	// VULSCAN-漏洞扫描信息，VIRUSSCAN-返回病毒扫描信息， ADSCAN-广告扫描信息，PLUGINSCAN-插件扫描信息，PERMISSION-系统权限信息，SENSITIVE-敏感词信息，可以自由组合
 	ScanTypes []*string `json:"ScanTypes,omitempty" name:"ScanTypes" list`
+}
+
+type ScanPermissionInfo struct {
+
+	// 系统权限
+	Permission *string `json:"Permission,omitempty" name:"Permission"`
+}
+
+type ScanPermissionList struct {
+
+	// 系统权限信息
+	PermissionList []*ScanPermissionInfo `json:"PermissionList,omitempty" name:"PermissionList" list`
+}
+
+type ScanSensitiveInfo struct {
+
+	// 敏感词
+	WordList []*string `json:"WordList,omitempty" name:"WordList" list`
+
+	// 敏感词对应的文件信息
+	FilePath *string `json:"FilePath,omitempty" name:"FilePath"`
+
+	// 文件sha1值
+	FileSha *string `json:"FileSha,omitempty" name:"FileSha"`
+}
+
+type ScanSensitiveList struct {
+
+	// 敏感词列表
+	SensitiveList []*ScanSensitiveInfo `json:"SensitiveList,omitempty" name:"SensitiveList" list`
 }
 
 type ScanSetInfo struct {
@@ -1065,6 +1095,12 @@ type ScanSetInfo struct {
 
 	// 状态操作指引
 	StatusRef *string `json:"StatusRef,omitempty" name:"StatusRef"`
+
+	// 系统权限信息
+	PermissionInfo *ScanPermissionList `json:"PermissionInfo,omitempty" name:"PermissionInfo"`
+
+	// 敏感词列表
+	SensitiveInfo *ScanSensitiveList `json:"SensitiveInfo,omitempty" name:"SensitiveInfo"`
 }
 
 type ServiceInfo struct {

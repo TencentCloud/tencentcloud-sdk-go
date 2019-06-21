@@ -519,12 +519,12 @@ type ListTopDataRequest struct {
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 
 	// 排序对象，支持以下几种形式：
-	// Url：访问 URL 排序，带参数统计，支持的 Filter 为 flux、request（白名单功能）
-	// Path：访问 URL 排序，不带参数统计，支持的 Filter 为 flux、request
+	// Url：访问 URL 排序，带参数统计，支持的 Filter 为 flux、request
+	// Path：访问 URL 排序，不带参数统计，支持的 Filter 为 flux、request（白名单功能）
 	// District：省份排序，支持的 Filter 为 flux、request
 	// Isp：运营商排序，支持的 Filter 为 flux、request
 	// Host：域名访问数据排序，支持的 Filter 为：flux, request, bandwidth, fluxHitRate, 2XX, 3XX, 4XX, 5XX，具体状态码统计
-	// originHost：域名回源数据排序，支持的 Filter 为 flux， request，bandwidth，origin_2XX，origin_3XX，oringin_4XX，origin_5XX，具体回源状态码统计
+	// originHost：域名回源数据排序，支持的 Filter 为 flux， request，bandwidth，origin_2XX，origin_3XX，oringin_4XX，origin_5XX，具体回源状态码统计
 	Metric *string `json:"Metric,omitempty" name:"Metric"`
 
 	// 排序使用的指标名称：

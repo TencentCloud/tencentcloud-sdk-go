@@ -219,7 +219,7 @@ type TextToVoiceRequest struct {
 	// 项目id，用户自定义，默认为0。
 	ProjectId *int64 `json:"ProjectId,omitempty" name:"ProjectId"`
 
-	// 音色<li>0-亲和女声默认)</li><li>1-亲和男声</li><li>2-成熟男声</li><li>3-活力男声</li><li>4-温暖女声</li><li>5-情感女声</li><li>6-情感男声</li>
+	// 音色<li>0-亲和女声(默认)</li><li>1-亲和男声</li><li>2-成熟男声</li><li>3-活力男声</li><li>4-温暖女声</li><li>5-情感女声</li><li>6-情感男声</li>
 	VoiceType *int64 `json:"VoiceType,omitempty" name:"VoiceType"`
 
 	// 主语言类型：<li>1-中文（默认）</li><li>2-英文</li>
@@ -227,6 +227,9 @@ type TextToVoiceRequest struct {
 
 	// 音频采样率：<li>16000：16k（默认）</li><li>8000：8k</li>
 	SampleRate *uint64 `json:"SampleRate,omitempty" name:"SampleRate"`
+
+	// 返回音频格式，可取值：wav（默认），mp3
+	Codec *string `json:"Codec,omitempty" name:"Codec"`
 }
 
 func (r *TextToVoiceRequest) ToJsonString() string {

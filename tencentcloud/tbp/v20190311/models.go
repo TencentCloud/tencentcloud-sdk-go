@@ -20,107 +20,6 @@ import (
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
-type PostTextRequest struct {
-	*tchttp.BaseRequest
-
-	// 机器人标识
-	BotId *string `json:"BotId,omitempty" name:"BotId"`
-
-	// 请求的文本
-	InputText *string `json:"InputText,omitempty" name:"InputText"`
-
-	// 子账户id，每个终端对应一个
-	UserId *string `json:"UserId,omitempty" name:"UserId"`
-
-	// 机器人版本号。BotVersion/BotEnv二选一：二者均填，仅BotVersion有效；二者均不填，默认BotEnv=dev
-	BotVersion *string `json:"BotVersion,omitempty" name:"BotVersion"`
-
-	// 透传字段，传递给后台
-	SessionAttributes *string `json:"SessionAttributes,omitempty" name:"SessionAttributes"`
-
-	// 是否将机器人回答合成音频并返回url
-	NeedTts *bool `json:"NeedTts,omitempty" name:"NeedTts"`
-
-	// 音量大小，范围：[0，10]。默认值为0，代表正常音量
-	Volume *int64 `json:"Volume,omitempty" name:"Volume"`
-
-	// 语速，范围：[-2，2]。0代表1.0倍
-	Speed *int64 `json:"Speed,omitempty" name:"Speed"`
-
-	// 音色,{0：女声,1:男声}
-	VoiceType *int64 `json:"VoiceType,omitempty" name:"VoiceType"`
-
-	// 返回音频的采样率{8k,16k}。默认16k
-	SampleRate *string `json:"SampleRate,omitempty" name:"SampleRate"`
-
-	// 机器人环境{dev:测试;release:线上}。BotVersion/BotEnv二选一：二者均填，仅BotVersion有效；二者均不填，默认BotEnv=dev
-	BotEnv *string `json:"BotEnv,omitempty" name:"BotEnv"`
-
-	// TTS合成音频格式，{0：wav}。该字段在当前版本仅支持取值为0。
-	TtsVoiceFormat *uint64 `json:"TtsVoiceFormat,omitempty" name:"TtsVoiceFormat"`
-}
-
-func (r *PostTextRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-func (r *PostTextRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
-}
-
-type PostTextResponse struct {
-	*tchttp.BaseResponse
-	Response *struct {
-
-		// 当前会话状态。取值:"start"/"continue"/"complete"
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		DialogStatus *string `json:"DialogStatus,omitempty" name:"DialogStatus"`
-
-		// 匹配到的机器人名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		BotName *string `json:"BotName,omitempty" name:"BotName"`
-
-		// 匹配到的意图名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		IntentName *string `json:"IntentName,omitempty" name:"IntentName"`
-
-		// 机器人回答
-		ResponseText *string `json:"ResponseText,omitempty" name:"ResponseText"`
-
-		// 语义解析的槽位结果列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		SlotInfoList []*SlotInfo `json:"SlotInfoList,omitempty" name:"SlotInfoList" list`
-
-		// 透传字段
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		SessionAttributes *string `json:"SessionAttributes,omitempty" name:"SessionAttributes"`
-
-		// 用户说法。该说法是用户原生说法或ASR识别结果，未经过语义优化
-		Question *string `json:"Question,omitempty" name:"Question"`
-
-		// tts合成pcm音频存储链接。仅当请求参数NeedTts=true时返回
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		WaveUrl *string `json:"WaveUrl,omitempty" name:"WaveUrl"`
-
-		// tts合成的pcm音频。二进制数组经过base64编码(暂时不返回)
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		WaveData *string `json:"WaveData,omitempty" name:"WaveData"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
-}
-
-func (r *PostTextResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-func (r *PostTextResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
-}
-
 type ResetRequest struct {
 	*tchttp.BaseRequest
 
@@ -208,4 +107,146 @@ type SlotInfo struct {
 	// 槽位值
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SlotValue *string `json:"SlotValue,omitempty" name:"SlotValue"`
+}
+
+type TextProcessRequest struct {
+	*tchttp.BaseRequest
+
+	// 机器人标识，用于定义抽象机器人。
+	BotId *string `json:"BotId,omitempty" name:"BotId"`
+
+	// 终端标识，每个终端(或线程)对应一个，区分并发多用户。
+	TerminalId *string `json:"TerminalId,omitempty" name:"TerminalId"`
+
+	// 请求的文本。
+	InputText *string `json:"InputText,omitempty" name:"InputText"`
+
+	// 机器人版本，取值"dev"或"release"，{调试版本：dev；线上版本：release}。
+	BotEnv *string `json:"BotEnv,omitempty" name:"BotEnv"`
+
+	// 透传字段，透传给endpoint服务。
+	SessionAttributes *string `json:"SessionAttributes,omitempty" name:"SessionAttributes"`
+}
+
+func (r *TextProcessRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *TextProcessRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type TextProcessResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 当前会话状态，取值："START"/"COUTINUE"/"COMPLETE"。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		DialogStatus *string `json:"DialogStatus,omitempty" name:"DialogStatus"`
+
+		// 匹配到的机器人名称。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		BotName *string `json:"BotName,omitempty" name:"BotName"`
+
+		// 匹配到的意图名称。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		IntentName *string `json:"IntentName,omitempty" name:"IntentName"`
+
+		// 槽位信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		SlotInfoList []*SlotInfo `json:"SlotInfoList,omitempty" name:"SlotInfoList" list`
+
+		// 原始的用户说法。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		InputText *string `json:"InputText,omitempty" name:"InputText"`
+
+		// 机器人回答。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		ResponseText *string `json:"ResponseText,omitempty" name:"ResponseText"`
+
+		// 透传字段，由endpoint服务返回。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		SessionAttributes *string `json:"SessionAttributes,omitempty" name:"SessionAttributes"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *TextProcessResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *TextProcessResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type TextResetRequest struct {
+	*tchttp.BaseRequest
+
+	// 机器人标识，用于定义抽象机器人。
+	BotId *string `json:"BotId,omitempty" name:"BotId"`
+
+	// 终端标识，每个终端(或线程)对应一个，区分并发多用户。
+	TerminalId *string `json:"TerminalId,omitempty" name:"TerminalId"`
+
+	// 机器人版本，取值"dev"或"release"，{调试版本：dev；线上版本：release}。
+	BotEnv *string `json:"BotEnv,omitempty" name:"BotEnv"`
+}
+
+func (r *TextResetRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *TextResetRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type TextResetResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 当前会话状态，取值："START"/"COUTINUE"/"COMPLETE"。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		DialogStatus *string `json:"DialogStatus,omitempty" name:"DialogStatus"`
+
+		// 匹配到的机器人名称。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		BotName *string `json:"BotName,omitempty" name:"BotName"`
+
+		// 匹配到的意图名称。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		IntentName *string `json:"IntentName,omitempty" name:"IntentName"`
+
+		// 槽位信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		SlotInfoList []*SlotInfo `json:"SlotInfoList,omitempty" name:"SlotInfoList" list`
+
+		// 原始的用户说法。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		InputText *string `json:"InputText,omitempty" name:"InputText"`
+
+		// 机器人回答。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		ResponseText *string `json:"ResponseText,omitempty" name:"ResponseText"`
+
+		// 透传字段，由endpoint服务返回。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		SessionAttributes *string `json:"SessionAttributes,omitempty" name:"SessionAttributes"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *TextResetResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *TextResetResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
 }

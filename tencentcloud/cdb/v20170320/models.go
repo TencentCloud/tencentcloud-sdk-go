@@ -2874,6 +2874,10 @@ type InstanceInfo struct {
 
 	// 可用区中文名称
 	ZoneName *string `json:"ZoneName,omitempty" name:"ZoneName"`
+
+	// 物理机型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DeviceClass *string `json:"DeviceClass,omitempty" name:"DeviceClass"`
 }
 
 type InstanceRebootTime struct {

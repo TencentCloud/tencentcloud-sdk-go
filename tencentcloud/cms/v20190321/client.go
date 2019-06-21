@@ -59,13 +59,61 @@ func NewAudioModerationResponse() (response *AudioModerationResponse) {
 }
 
 // 音频内容检测（Audio Moderation, AM）服务使用了波形分析、声纹分析等技术，能识别涉黄、涉政、涉恐等违规音频，同时支持用户配置音频黑库，打击自定义的违规内容。
-// 
-// 通过API直接上传音频即可进行检测，对于高危部分直接屏蔽，可疑部分人工复审，从而节省审核人力，释放业务风险。
 func (c *Client) AudioModeration(request *AudioModerationRequest) (response *AudioModerationResponse, err error) {
     if request == nil {
         request = NewAudioModerationRequest()
     }
     response = NewAudioModerationResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateTextSampleRequest() (request *CreateTextSampleRequest) {
+    request = &CreateTextSampleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cms", APIVersion, "CreateTextSample")
+    return
+}
+
+func NewCreateTextSampleResponse() (response *CreateTextSampleResponse) {
+    response = &CreateTextSampleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 新增文本类型样本库
+func (c *Client) CreateTextSample(request *CreateTextSampleRequest) (response *CreateTextSampleResponse, err error) {
+    if request == nil {
+        request = NewCreateTextSampleRequest()
+    }
+    response = NewCreateTextSampleResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteTextSampleRequest() (request *DeleteTextSampleRequest) {
+    request = &DeleteTextSampleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cms", APIVersion, "DeleteTextSample")
+    return
+}
+
+func NewDeleteTextSampleResponse() (response *DeleteTextSampleResponse) {
+    response = &DeleteTextSampleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 删除文字样本库，暂时只支持单个删除
+func (c *Client) DeleteTextSample(request *DeleteTextSampleRequest) (response *DeleteTextSampleResponse, err error) {
+    if request == nil {
+        request = NewDeleteTextSampleRequest()
+    }
+    response = NewDeleteTextSampleResponse()
     err = c.Send(request, response)
     return
 }
@@ -95,6 +143,31 @@ func (c *Client) DescribeModerationOverview(request *DescribeModerationOverviewR
     return
 }
 
+func NewDescribeTextSampleRequest() (request *DescribeTextSampleRequest) {
+    request = &DescribeTextSampleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cms", APIVersion, "DescribeTextSample")
+    return
+}
+
+func NewDescribeTextSampleResponse() (response *DescribeTextSampleResponse) {
+    response = &DescribeTextSampleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 支持批量查询文字样本库
+func (c *Client) DescribeTextSample(request *DescribeTextSampleRequest) (response *DescribeTextSampleResponse, err error) {
+    if request == nil {
+        request = NewDescribeTextSampleRequest()
+    }
+    response = NewDescribeTextSampleResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewImageModerationRequest() (request *ImageModerationRequest) {
     request = &ImageModerationRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -111,7 +184,6 @@ func NewImageModerationResponse() (response *ImageModerationResponse) {
 }
 
 // 图片内容检测服务（Image Moderation, IM）能自动扫描图片，识别涉黄、涉恐、涉政、涉毒等有害内容，同时支持用户配置图片黑名单，打击自定义的违规图片。
-// 通过API获取检测的标签及置信度，可直接采信高置信度的结果，人工复审低置信度的结果，从而降低人工成本，提高审核效率。
 func (c *Client) ImageModeration(request *ImageModerationRequest) (response *ImageModerationResponse, err error) {
     if request == nil {
         request = NewImageModerationRequest()
@@ -137,7 +209,6 @@ func NewTextModerationResponse() (response *TextModerationResponse) {
 }
 
 // 文本内容检测（Text Moderation）服务使用了深度学习技术，识别涉黄、涉政、涉恐等有害内容，同时支持用户配置词库，打击自定义的违规文本。
-// 通过API接口，能检测内容的危险等级，对于高危部分直接过滤，可疑部分人工复审，从而节省审核人力，释放业务风险。
 func (c *Client) TextModeration(request *TextModerationRequest) (response *TextModerationResponse, err error) {
     if request == nil {
         request = NewTextModerationRequest()
@@ -163,7 +234,6 @@ func NewVideoModerationResponse() (response *VideoModerationResponse) {
 }
 
 // 视频内容检测（Video Moderation, VM）服务能识别涉黄、涉政、涉恐等违规视频，同时支持用户配置视频黑库，打击自定义的违规内容。
-// 通过API直接上传视频即可进行检测，对于高危部分直接过滤，可疑部分人工复审，从而节省审核人力，释放业务风险。
 func (c *Client) VideoModeration(request *VideoModerationRequest) (response *VideoModerationResponse, err error) {
     if request == nil {
         request = NewVideoModerationRequest()

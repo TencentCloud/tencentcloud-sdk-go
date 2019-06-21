@@ -90,6 +90,110 @@ func (r *InitOralProcessResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type Keyword struct {
+
+	// 被评估语音对应的文本，句子模式下不超过个 20 单词或者中文文字，段落模式不超过 120 单词或者中文文字，中文评估使用 utf-8 编码，自由说模式该值无效。如需要在单词模式和句子模式下使用自定义音素，可以通过设置 TextMode 使用[音素标注](https://cloud.tencent.com/document/product/884/33698)。
+	RefText *string `json:"RefText,omitempty" name:"RefText"`
+
+	// 评估模式，0：词模式（中文评测模式下为文字模式），1：句子模式，2：段落模式，3：自由说模式，当为词模式评估时，能够提供每个音节的评估信息，当为句子模式时，能够提供完整度和流利度信息。
+	EvalMode *uint64 `json:"EvalMode,omitempty" name:"EvalMode"`
+
+	// 评价苛刻指数，取值为[1.0 - 4.0]范围内的浮点数，用于平滑不同年龄段的分数，1.0为小年龄段，4.0为最高年龄段
+	ScoreCoeff *float64 `json:"ScoreCoeff,omitempty" name:"ScoreCoeff"`
+
+	// 评估语言，0：英文，1：中文。
+	ServerType *uint64 `json:"ServerType,omitempty" name:"ServerType"`
+
+	// 输入文本模式，0: 普通文本，1：[音素结构](https://cloud.tencent.com/document/product/884/33698)文本。
+	TextMode *uint64 `json:"TextMode,omitempty" name:"TextMode"`
+}
+
+type KeywordEvaluateRequest struct {
+	*tchttp.BaseRequest
+
+	// 流式数据包的序号，从1开始，当IsEnd字段为1后后续序号无意义，当IsLongLifeSession不为1且为非流式模式时无意义。
+	SeqId *uint64 `json:"SeqId,omitempty" name:"SeqId"`
+
+	// 是否传输完毕标志，若为0表示未完毕，若为1则传输完毕开始评估，非流式模式下无意义。
+	IsEnd *uint64 `json:"IsEnd,omitempty" name:"IsEnd"`
+
+	// 语音文件类型 	1: raw, 2: wav, 3: mp3, 4: speex (语言文件格式目前仅支持 16k 采样率 16bit 编码单声道，如有不一致可能导致评估不准确或失败)。
+	VoiceFileType *uint64 `json:"VoiceFileType,omitempty" name:"VoiceFileType"`
+
+	// 语音编码类型	1:pcm。
+	VoiceEncodeType *uint64 `json:"VoiceEncodeType,omitempty" name:"VoiceEncodeType"`
+
+	// 当前数据包数据, 流式模式下数据包大小可以按需设置，在网络良好的情况下，建议设置为0.5k，且必须保证分片帧完整（16bit的数据必须保证音频长度为偶数），编码格式要求为BASE64。
+	UserVoiceData *string `json:"UserVoiceData,omitempty" name:"UserVoiceData"`
+
+	// 语音段唯一标识，一个完整语音一个SessionId。
+	SessionId *string `json:"SessionId,omitempty" name:"SessionId"`
+
+	// 关键词列表
+	Keywords []*Keyword `json:"Keywords,omitempty" name:"Keywords" list`
+
+	// 业务应用ID，与账号应用APPID无关，是用来方便客户管理服务的参数，新的 SoeAppId 可以在[控制台](https://console.cloud.tencent.com/soe)【应用管理】下新建。
+	SoeAppId *string `json:"SoeAppId,omitempty" name:"SoeAppId"`
+
+	// 查询标识，当该参数为1时，该请求为查询请求，请求返回该 Session 评估结果。
+	IsQuery *uint64 `json:"IsQuery,omitempty" name:"IsQuery"`
+}
+
+func (r *KeywordEvaluateRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *KeywordEvaluateRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type KeywordEvaluateResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 关键词得分
+		KeywordScores []*KeywordScore `json:"KeywordScores,omitempty" name:"KeywordScores" list`
+
+		// 语音段唯一标识，一段语音一个SessionId
+		SessionId *string `json:"SessionId,omitempty" name:"SessionId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *KeywordEvaluateResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *KeywordEvaluateResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type KeywordScore struct {
+
+	// 关键词
+	Keyword *string `json:"Keyword,omitempty" name:"Keyword"`
+
+	// 发音精准度，取值范围[-1, 100]，当取-1时指完全不匹配，当为句子模式时，是所有已识别单词准确度的加权平均值，在reftext中但未识别出来的词不计入分数中。当为流式模式且请求中IsEnd未置1时，取值无意义。
+	PronAccuracy *float64 `json:"PronAccuracy,omitempty" name:"PronAccuracy"`
+
+	// 发音流利度，取值范围[0, 1]，当为词模式时，取值无意义；当为流式模式且请求中IsEnd未置1时，取值无意义
+	PronFluency *float64 `json:"PronFluency,omitempty" name:"PronFluency"`
+
+	// 发音完整度，取值范围[0, 1]，当为词模式时，取值无意义；当为流式模式且请求中IsEnd未置1时，取值无意义
+	PronCompletion *float64 `json:"PronCompletion,omitempty" name:"PronCompletion"`
+
+	// 详细发音评估结果
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Words []*WordRsp `json:"Words,omitempty" name:"Words" list`
+
+	// 建议评分，取值范围[0,100]，评分方式为建议评分 = 准确度（PronAccuracyfloat）× 完整度（PronCompletionfloat）×（2 - 完整度（PronCompletionfloat）），如若评分策略不符合请参考Words数组中的详细分数自定义评分逻辑。
+	SuggestedScore *float64 `json:"SuggestedScore,omitempty" name:"SuggestedScore"`
+}
+
 type PhoneInfo struct {
 
 	// 当前音节语音起始时间点，单位为ms

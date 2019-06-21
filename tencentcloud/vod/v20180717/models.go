@@ -3134,7 +3134,7 @@ type DescribeReviewDetailsRequest struct {
 	// 起始日期。使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
 	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
 
-	// 结束日期，需大于开始日期。使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+	// 结束日期，需大于起始日期。使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 
 	// 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
@@ -3204,7 +3204,9 @@ type DescribeTaskDetailResponse struct {
 	// <li>Procedure：视频处理任务；</li>
 	// <li>EditMedia：视频编辑任务；</li>
 	// <li>WechatPublish：微信发布任务；</li>
-	// <li>ComposeMedia：制作媒体文件任务。</li>
+	// <li>ComposeMedia：制作媒体文件任务；</li>
+	// <li>PullUpload：拉取上传媒体文件任务。</li>
+	// 
 	// 兼容 2017 版的任务类型：
 	// <li>Transcode：视频转码任务；</li>
 	// <li>SnapshotByTimeOffset：视频截图任务；</li>
@@ -3240,6 +3242,14 @@ type DescribeTaskDetailResponse struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		WechatPublishTask *WechatPublishTask `json:"WechatPublishTask,omitempty" name:"WechatPublishTask"`
 
+		// 制作媒体文件任务信息，仅当 TaskType 为 ComposeMedia，该字段有值。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		ComposeMediaTask *ComposeMediaTask `json:"ComposeMediaTask,omitempty" name:"ComposeMediaTask"`
+
+		// 拉取上传媒体文件任务信息，仅当 TaskType 为 PullUpload，该字段有值。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		PullUploadTask *PullUploadTask `json:"PullUploadTask,omitempty" name:"PullUploadTask"`
+
 		// 视频转码任务信息，仅当 TaskType 为 Transcode，该字段有值。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		TranscodeTask *TranscodeTask2017 `json:"TranscodeTask,omitempty" name:"TranscodeTask"`
@@ -3259,10 +3269,6 @@ type DescribeTaskDetailResponse struct {
 		// 截取雪碧图任务信息，仅当 TaskType 为 ImageSprite，该字段有值。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		CreateImageSpriteTask *CreateImageSpriteTask2017 `json:"CreateImageSpriteTask,omitempty" name:"CreateImageSpriteTask"`
-
-		// 制作媒体文件任务信息，仅当 TaskType 为 ComposeMedia，该字段有值。
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		ComposeMediaTask *ComposeMediaTask `json:"ComposeMediaTask,omitempty" name:"ComposeMediaTask"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -3623,6 +3629,14 @@ type EditMediaTask struct {
 	// 若发起视频编辑任务时指定了视频处理流程，则该字段为流程任务 ID。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProcedureTaskId *string `json:"ProcedureTaskId,omitempty" name:"ProcedureTaskId"`
+
+	// 来源上下文，用于透传用户请求信息，任务流状态变更回调将返回该字段值，最长 1000 个字符。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SessionContext *string `json:"SessionContext,omitempty" name:"SessionContext"`
+
+	// 用于去重的识别码，如果七天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SessionId *string `json:"SessionId,omitempty" name:"SessionId"`
 }
 
 type EditMediaTaskInput struct {
@@ -3696,7 +3710,7 @@ type EventContent struct {
 
 	// 视频转拉完成事件，当事件类型为 PullComplete 时有效。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	PullCompleteEvent *PullFileTask `json:"PullCompleteEvent,omitempty" name:"PullCompleteEvent"`
+	PullCompleteEvent *PullUploadTask `json:"PullCompleteEvent,omitempty" name:"PullCompleteEvent"`
 
 	// 视频编辑完成事件，当事件类型为 EditMediaComplete 时有效。
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -5945,7 +5959,7 @@ type ProcedureTask struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TasksNotifyMode *string `json:"TasksNotifyMode,omitempty" name:"TasksNotifyMode"`
 
-	// 来源上下文，用于透传用户请求信息，任务流状态变更回调将返回该字段值，最长 250 个字符。
+	// 来源上下文，用于透传用户请求信息，任务流状态变更回调将返回该字段值，最长 1000 个字符。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SessionContext *string `json:"SessionContext,omitempty" name:"SessionContext"`
 
@@ -6203,10 +6217,86 @@ func (r *PullEventsResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
-type PullFileTask struct {
+type PullUploadRequest struct {
+	*tchttp.BaseRequest
+
+	// 要拉取的媒体 URL，暂不支持拉取 HLS 和 Dash 格式。
+	// <li>URL 里文件名需要包括扩展名, 比如 ```https://xxxx.mp4``` ，扩展名为 mp4，支持的扩展名详见[文件类型](https://cloud.tencent.com/document/product/266/9760#.E6.96.87.E4.BB.B6.E7.B1.BB.E5.9E.8B)。</li>
+	MediaUrl *string `json:"MediaUrl,omitempty" name:"MediaUrl"`
+
+	// 媒体名称。
+	MediaName *string `json:"MediaName,omitempty" name:"MediaName"`
+
+	// 要拉取的视频封面 URL。
+	// <li>URL 里文件名需要包括扩展名, 比如 ```https://xxxx.jpg``` ，扩展名为 jpg，支持的扩展名详见[封面类型](https://cloud.tencent.com/document/product/266/9760#.E5.B0.81.E9.9D.A2.E7.B1.BB.E5.9E.8B)。</li>
+	CoverUrl *string `json:"CoverUrl,omitempty" name:"CoverUrl"`
+
+	// 媒体后续任务操作，详见[上传指定任务流](https://cloud.tencent.com/document/product/266/9759)。
+	Procedure *string `json:"Procedure,omitempty" name:"Procedure"`
+
+	// 媒体文件过期时间，格式按照 ISO 8601 标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+	ExpireTime *string `json:"ExpireTime,omitempty" name:"ExpireTime"`
+
+	// 指定上传园区，仅适用于对上传地域有特殊需求的用户。目前支持的园区：
+	// <li>ap-chongqing：重庆园区，</li>
+	// <li>ap-beijing：北京园区，</li>
+	// <li>ap-shanghai：上海园区。</li>
+	StorageRegion *string `json:"StorageRegion,omitempty" name:"StorageRegion"`
+
+	// 分类ID，用于对媒体进行分类管理，可通过[创建分类](https://cloud.tencent.com/document/product/266/7812)接口，创建分类，获得分类 ID。
+	ClassId *int64 `json:"ClassId,omitempty" name:"ClassId"`
+
+	// 来源上下文，用于透传用户请求信息，当指定 Procedure 任务后，任务流状态变更回调将返回该字段值，最长 1000 个字符。
+	SessionContext *string `json:"SessionContext,omitempty" name:"SessionContext"`
+
+	// 用于去重的识别码，如果七天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。
+	SessionId *string `json:"SessionId,omitempty" name:"SessionId"`
+
+	// 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
+}
+
+func (r *PullUploadRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *PullUploadRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type PullUploadResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 拉取上传视频的任务 ID，可以通过该 ID 查询拉取上传任务的状态。
+		TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *PullUploadResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *PullUploadResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type PullUploadTask struct {
 
 	// 转拉上传任务 ID。
 	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 任务流状态，取值：
+	// <li>PROCESSING：处理中；</li>
+	// <li>FINISH：已完成。</li>
+	// 
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *string `json:"Status,omitempty" name:"Status"`
 
 	// 错误码
 	// <li>0：成功；</li>
@@ -6228,6 +6318,12 @@ type PullFileTask struct {
 
 	// 若转拉上传时指定了视频处理流程，则该参数为流程任务 ID。
 	ProcedureTaskId *string `json:"ProcedureTaskId,omitempty" name:"ProcedureTaskId"`
+
+	// 来源上下文，用于透传用户请求信息，任务流状态变更回调将返回该字段值，最长 1000 个字符。
+	SessionContext *string `json:"SessionContext,omitempty" name:"SessionContext"`
+
+	// 用于去重的识别码，如果七天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。
+	SessionId *string `json:"SessionId,omitempty" name:"SessionId"`
 }
 
 type PushUrlCacheRequest struct {
@@ -6748,7 +6844,9 @@ type TerrorismImgReviewTemplateInfoForUpdate struct {
 
 type TextWatermarkTemplateInput struct {
 
-	// 字体类型，目前仅支持 arial.ttf。
+	// 字体类型，目前可以支持两种：
+	// <li>simkai.ttf：可以支持中文和英文；</li>
+	// <li>arial.ttf：仅支持英文。</li>
 	FontType *string `json:"FontType,omitempty" name:"FontType"`
 
 	// 字体大小，格式：Npx，N 为数值。
@@ -6766,7 +6864,9 @@ type TextWatermarkTemplateInput struct {
 
 type TextWatermarkTemplateInputForUpdate struct {
 
-	// 字体类型，目前仅支持 arial.ttf。
+	// 字体类型，目前可以支持两种：
+	// <li>simkai.ttf：可以支持中文和英文；</li>
+	// <li>arial.ttf：仅支持英文。</li>
 	FontType *string `json:"FontType,omitempty" name:"FontType"`
 
 	// 字体大小，格式：Npx，N 为数值。

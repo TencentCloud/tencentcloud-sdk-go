@@ -285,7 +285,7 @@ type CreateProductRequest struct {
 	// 产品属性
 	ProductProperties *ProductProperties `json:"ProductProperties,omitempty" name:"ProductProperties"`
 
-	// 创建LoRa产品需要的Skey
+	// 创建CLAA产品时，需要Skey
 	Skey *string `json:"Skey,omitempty" name:"Skey"`
 }
 
@@ -716,6 +716,26 @@ type DescribeDeviceResponse struct {
 		// 设备的sdk日志等级
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		LogLevel *uint64 `json:"LogLevel,omitempty" name:"LogLevel"`
+
+		// 首次上线时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		FirstOnlineTime *uint64 `json:"FirstOnlineTime,omitempty" name:"FirstOnlineTime"`
+
+		// 最近下线时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		LastOfflineTime *uint64 `json:"LastOfflineTime,omitempty" name:"LastOfflineTime"`
+
+		// 设备创建时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		CreateTime *uint64 `json:"CreateTime,omitempty" name:"CreateTime"`
+
+		// 设备证书获取状态，0 未获取过设备密钥, 1 已获取过设备密钥
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		CertState *uint64 `json:"CertState,omitempty" name:"CertState"`
+
+		// 设备启用状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		EnableState *uint64 `json:"EnableState,omitempty" name:"EnableState"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1198,6 +1218,10 @@ type DeviceInfo struct {
 	// 设备证书获取状态, 1 已获取过设备密钥，0 未获取过设备密钥
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CertState *uint64 `json:"CertState,omitempty" name:"CertState"`
+
+	// 设备可用状态，0禁用，1启用
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EnableState *uint64 `json:"EnableState,omitempty" name:"EnableState"`
 }
 
 type DeviceTag struct {
