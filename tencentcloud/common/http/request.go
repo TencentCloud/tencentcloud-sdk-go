@@ -195,9 +195,8 @@ func flatStructure(value reflect.Value, request Request, prefix string) (err err
 		} else if kind == reflect.Float64 {
 			request.GetParams()[key] = strconv.FormatFloat(field.Float(), 'f', -1, 64)
 		} else if kind == reflect.Slice {
-			list := value.Field(i)
-			for j := 0; j < list.Len(); j++ {
-				vj := list.Index(j)
+			for j := 0; j < field.Len(); j++ {
+				vj := field.Index(j)
 				key := prefix + nameTag + "." + strconv.Itoa(j)
 				kind = vj.Kind()
 				if kind == reflect.Ptr && vj.IsNil() {
@@ -218,11 +217,11 @@ func flatStructure(value reflect.Value, request Request, prefix string) (err err
 				} else if kind == reflect.Float64 {
 					request.GetParams()[key] = strconv.FormatFloat(vj.Float(), 'f', -1, 64)
 				} else {
-					flatStructure(vj, request, key+".")
+					return flatStructure(vj, request, key+".")
 				}
 			}
 		} else {
-			flatStructure(reflect.ValueOf(field.Interface()), request, prefix+nameTag+".")
+			return flatStructure(reflect.ValueOf(field.Interface()), request, prefix+nameTag+".")
 		}
 	}
 	return
