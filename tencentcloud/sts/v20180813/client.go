@@ -68,6 +68,31 @@ func (c *Client) AssumeRole(request *AssumeRoleRequest) (response *AssumeRoleRes
     return
 }
 
+func NewAssumeRoleWithSAMLRequest() (request *AssumeRoleWithSAMLRequest) {
+    request = &AssumeRoleWithSAMLRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("sts", APIVersion, "AssumeRoleWithSAML")
+    return
+}
+
+func NewAssumeRoleWithSAMLResponse() (response *AssumeRoleWithSAMLResponse) {
+    response = &AssumeRoleWithSAMLResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（AssumeRoleWithSAML）用于根据 SAML 断言申请角色临时凭证。
+func (c *Client) AssumeRoleWithSAML(request *AssumeRoleWithSAMLRequest) (response *AssumeRoleWithSAMLResponse, err error) {
+    if request == nil {
+        request = NewAssumeRoleWithSAMLRequest()
+    }
+    response = NewAssumeRoleWithSAMLResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewGetFederationTokenRequest() (request *GetFederationTokenRequest) {
     request = &GetFederationTokenRequest{
         BaseRequest: &tchttp.BaseRequest{},

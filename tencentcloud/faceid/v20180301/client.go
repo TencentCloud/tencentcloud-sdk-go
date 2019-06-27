@@ -43,6 +43,56 @@ func NewClient(credential *common.Credential, region string, clientProfile *prof
 }
 
 
+func NewBankCard2EVerificationRequest() (request *BankCard2EVerificationRequest) {
+    request = &BankCard2EVerificationRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("faceid", APIVersion, "BankCard2EVerification")
+    return
+}
+
+func NewBankCard2EVerificationResponse() (response *BankCard2EVerificationResponse) {
+    response = &BankCard2EVerificationResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 银行卡二要素核验
+func (c *Client) BankCard2EVerification(request *BankCard2EVerificationRequest) (response *BankCard2EVerificationResponse, err error) {
+    if request == nil {
+        request = NewBankCard2EVerificationRequest()
+    }
+    response = NewBankCard2EVerificationResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewBankCard4EVerificationRequest() (request *BankCard4EVerificationRequest) {
+    request = &BankCard4EVerificationRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("faceid", APIVersion, "BankCard4EVerification")
+    return
+}
+
+func NewBankCard4EVerificationResponse() (response *BankCard4EVerificationResponse) {
+    response = &BankCard4EVerificationResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 银行卡四要素核验
+func (c *Client) BankCard4EVerification(request *BankCard4EVerificationRequest) (response *BankCard4EVerificationResponse, err error) {
+    if request == nil {
+        request = NewBankCard4EVerificationRequest()
+    }
+    response = NewBankCard4EVerificationResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewBankCardVerificationRequest() (request *BankCardVerificationRequest) {
     request = &BankCardVerificationRequest{
         BaseRequest: &tchttp.BaseRequest{},

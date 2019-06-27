@@ -1064,15 +1064,6 @@ type GroupInfo struct {
 	// 人员库信息备注
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Tag *string `json:"Tag,omitempty" name:"Tag"`
-
-	// 人脸识别服务所用的算法模型版本
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	FaceModelVersion *string `json:"FaceModelVersion,omitempty" name:"FaceModelVersion"`
-
-	// Group的创建时间和日期 CreationTimestamp。CreationTimestamp 的值是自 Unix 纪元时间到Group创建时间的毫秒数。 
-	// Unix 纪元时间是 1970 年 1 月 1 日星期四，协调世界时 (UTC) 00:00:00。有关更多信息，请参阅 Unix 时间。
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	CreationTimestamp *string `json:"CreationTimestamp,omitempty" name:"CreationTimestamp"`
 }
 
 type ModifyGroupRequest struct {
@@ -1269,7 +1260,7 @@ type SearchFacesRequest struct {
 
 	// 最多处理的人脸数目。默认值为1（仅检测图片中面积最大的那张人脸），最大值为10。 
 	// MaxFaceNum用于，当待识别图片包含多张人脸时，要搜索的人脸数量。 
-	// 当 MaxFaceNum 不为1时，设MaxFaceNum=M，则实际上是 M:N 的人脸搜索。
+	// 当 MaxFaceNum 不为1时，设MaxFaceNum=M，则实际上是 M:N 的人脸搜索（N为待搜索的人脸数）。
 	MaxFaceNum *uint64 `json:"MaxFaceNum,omitempty" name:"MaxFaceNum"`
 
 	// 人脸长和宽的最小尺寸，单位为像素。默认为80。低于40将影响搜索精度。建议设置为80。

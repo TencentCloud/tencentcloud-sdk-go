@@ -1372,6 +1372,12 @@ type CreateRoutesResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
+		// 新增的实例个数。
+		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 路由表对象。
+		RouteTableSet []*RouteTable `json:"RouteTableSet,omitempty" name:"RouteTableSet" list`
+
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
@@ -3038,6 +3044,12 @@ type DescribeCcnsRequest struct {
 
 	// 返回数量
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 排序字段。支持：`CcnId` `CcnName` `CreateTime` `State` `QosLevel`
+	OrderField *string `json:"OrderField,omitempty" name:"OrderField"`
+
+	// 排序方法。顺序：`ASC`，倒序：`DESC`。
+	OrderDirection *string `json:"OrderDirection,omitempty" name:"OrderDirection"`
 }
 
 func (r *DescribeCcnsRequest) ToJsonString() string {
@@ -7176,6 +7188,17 @@ type SubnetInput struct {
 	RouteTableId *string `json:"RouteTableId,omitempty" name:"RouteTableId"`
 }
 
+type Tag struct {
+
+	// 标签键
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Key *string `json:"Key,omitempty" name:"Key"`
+
+	// 标签值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Value *string `json:"Value,omitempty" name:"Value"`
+}
+
 type TransformAddressRequest struct {
 	*tchttp.BaseRequest
 
@@ -7392,6 +7415,9 @@ type Vpc struct {
 
 	// `VPC`的`IPv6` `CIDR`。
 	Ipv6CidrBlock *string `json:"Ipv6CidrBlock,omitempty" name:"Ipv6CidrBlock"`
+
+	// 标签键值对
+	TagSet []*Tag `json:"TagSet,omitempty" name:"TagSet" list`
 }
 
 type VpcIpv6Address struct {

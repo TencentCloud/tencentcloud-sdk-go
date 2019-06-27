@@ -108,12 +108,112 @@ func NewDescribeBillResourceSummaryResponse() (response *DescribeBillResourceSum
     return
 }
 
-// 查询账单资源汇总数据
+// 查询账单资源汇总数据 
 func (c *Client) DescribeBillResourceSummary(request *DescribeBillResourceSummaryRequest) (response *DescribeBillResourceSummaryResponse, err error) {
     if request == nil {
         request = NewDescribeBillResourceSummaryRequest()
     }
     response = NewDescribeBillResourceSummaryResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeBillSummaryByPayModeRequest() (request *DescribeBillSummaryByPayModeRequest) {
+    request = &DescribeBillSummaryByPayModeRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("billing", APIVersion, "DescribeBillSummaryByPayMode")
+    return
+}
+
+func NewDescribeBillSummaryByPayModeResponse() (response *DescribeBillSummaryByPayModeResponse) {
+    response = &DescribeBillSummaryByPayModeResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 获取按付费模式汇总费用分布
+func (c *Client) DescribeBillSummaryByPayMode(request *DescribeBillSummaryByPayModeRequest) (response *DescribeBillSummaryByPayModeResponse, err error) {
+    if request == nil {
+        request = NewDescribeBillSummaryByPayModeRequest()
+    }
+    response = NewDescribeBillSummaryByPayModeResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeBillSummaryByProductRequest() (request *DescribeBillSummaryByProductRequest) {
+    request = &DescribeBillSummaryByProductRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("billing", APIVersion, "DescribeBillSummaryByProduct")
+    return
+}
+
+func NewDescribeBillSummaryByProductResponse() (response *DescribeBillSummaryByProductResponse) {
+    response = &DescribeBillSummaryByProductResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 获取产品汇总费用分布
+func (c *Client) DescribeBillSummaryByProduct(request *DescribeBillSummaryByProductRequest) (response *DescribeBillSummaryByProductResponse, err error) {
+    if request == nil {
+        request = NewDescribeBillSummaryByProductRequest()
+    }
+    response = NewDescribeBillSummaryByProductResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeBillSummaryByProjectRequest() (request *DescribeBillSummaryByProjectRequest) {
+    request = &DescribeBillSummaryByProjectRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("billing", APIVersion, "DescribeBillSummaryByProject")
+    return
+}
+
+func NewDescribeBillSummaryByProjectResponse() (response *DescribeBillSummaryByProjectResponse) {
+    response = &DescribeBillSummaryByProjectResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 获取按项目汇总费用分布
+func (c *Client) DescribeBillSummaryByProject(request *DescribeBillSummaryByProjectRequest) (response *DescribeBillSummaryByProjectResponse, err error) {
+    if request == nil {
+        request = NewDescribeBillSummaryByProjectRequest()
+    }
+    response = NewDescribeBillSummaryByProjectResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeBillSummaryByRegionRequest() (request *DescribeBillSummaryByRegionRequest) {
+    request = &DescribeBillSummaryByRegionRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("billing", APIVersion, "DescribeBillSummaryByRegion")
+    return
+}
+
+func NewDescribeBillSummaryByRegionResponse() (response *DescribeBillSummaryByRegionResponse) {
+    response = &DescribeBillSummaryByRegionResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 获取按地域汇总费用分布
+func (c *Client) DescribeBillSummaryByRegion(request *DescribeBillSummaryByRegionRequest) (response *DescribeBillSummaryByRegionResponse, err error) {
+    if request == nil {
+        request = NewDescribeBillSummaryByRegionRequest()
+    }
+    response = NewDescribeBillSummaryByRegionResponse()
     err = c.Send(request, response)
     return
 }

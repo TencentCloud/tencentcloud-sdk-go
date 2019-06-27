@@ -1592,6 +1592,9 @@ type ComposeMediaRequest struct {
 
 	// 制作视频文件时使用的画布。
 	Canvas *Canvas `json:"Canvas,omitempty" name:"Canvas"`
+
+	// 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
 }
 
 func (r *ComposeMediaRequest) ToJsonString() string {
@@ -3743,6 +3746,10 @@ type EventContent struct {
 	// 制作媒体文件任务完成事件，当事件类型为 ComposeMediaComplete 时有效。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ComposeMediaCompleteEvent *ComposeMediaTask `json:"ComposeMediaCompleteEvent,omitempty" name:"ComposeMediaCompleteEvent"`
+
+	// 微信小程序发布任务完成事件，当事件类型为 WechatMiniProgramPublishComplete 时有效。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WechatMiniProgramPublishCompleteEvent *WechatMiniProgramPublishTask `json:"WechatMiniProgramPublishCompleteEvent,omitempty" name:"WechatMiniProgramPublishCompleteEvent"`
 }
 
 type ExecuteFunctionRequest struct {
@@ -6227,8 +6234,7 @@ type PullUploadRequest struct {
 	// 媒体名称。
 	MediaName *string `json:"MediaName,omitempty" name:"MediaName"`
 
-	// 要拉取的视频封面 URL。
-	// <li>URL 里文件名需要包括扩展名, 比如 ```https://xxxx.jpg``` ，扩展名为 jpg，支持的扩展名详见[封面类型](https://cloud.tencent.com/document/product/266/9760#.E5.B0.81.E9.9D.A2.E7.B1.BB.E5.9E.8B)。</li>
+	// 要拉取的视频封面 URL。仅支持 gif、jpeg、png 三种图片格式。
 	CoverUrl *string `json:"CoverUrl,omitempty" name:"CoverUrl"`
 
 	// 媒体后续任务操作，详见[上传指定任务流](https://cloud.tencent.com/document/product/266/9759)。
@@ -7375,6 +7381,38 @@ type WatermarkTemplate struct {
 	// <li>bottomLeft：表示坐标原点位于视频图像的左下角，水印原点为图片或文字的左下角；</li>
 	// <li>bottomRight：表示坐标原点位于视频图像的右下角，水印原点为图片或文字的右下。；</li>
 	CoordinateOrigin *string `json:"CoordinateOrigin,omitempty" name:"CoordinateOrigin"`
+}
+
+type WechatMiniProgramPublishTask struct {
+
+	// 任务 ID。
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 任务状态，取值：
+	// WAITING：等待中；
+	// PROCESSING：处理中；
+	// FINISH：已完成。
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 错误码
+	// <li>0：成功；</li>
+	// <li>其他值：失败。</li>
+	ErrCode *int64 `json:"ErrCode,omitempty" name:"ErrCode"`
+
+	// 错误信息。
+	Message *string `json:"Message,omitempty" name:"Message"`
+
+	// 发布视频文件 ID。
+	FileId *string `json:"FileId,omitempty" name:"FileId"`
+
+	// 发布视频所对应的转码模板 ID，为 0 代表原始视频。
+	SourceDefinition *uint64 `json:"SourceDefinition,omitempty" name:"SourceDefinition"`
+
+	// 微信小程序视频发布状态，取值：
+	// <li>Pass：发布成功；</li>
+	// <li>Failed：发布失败；</li>
+	// <li>Rejected：审核未通过。</li>
+	PublishResult *string `json:"PublishResult,omitempty" name:"PublishResult"`
 }
 
 type WechatPublishTask struct {
