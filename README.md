@@ -153,7 +153,7 @@ import "crypto/tls"
     tr := &http.Transport{
         TLSClientConfig: &tls.Config{InsecureSkipVerify: true},
     }
-    client.WithTransport(tr)
+    client.WithHttpTransport(tr)
 ...
 ```
 
