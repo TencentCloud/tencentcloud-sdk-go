@@ -140,6 +140,25 @@ func main() {
 
 当前 GO SDK 总是会去请求 DNS 服务器，而没有使用到 nscd 的缓存，可以通过导出环境变量`GODEBUG=netdns=cgo`，或者`go build`编译时指定参数`-tags 'netcgo'`控制读取 nscd 缓存。
 
+## 忽略服务器证书校验
+
+虽然使用 SDK 调用公有云服务时，必须校验服务器证书，以识破他人伪装的服务器，确保请求的安全。
+但是某些极端情况下，例如测试时，你可能会需要忽略自签名的服务器证书。
+以下是其中一种可能的方法：
+
+```
+import "crypto/tls"
+...
+    client, _ := cvm.NewClient(credential, regions.Guangzhou, cpf)
+    tr := &http.Transport{
+        TLSClientConfig: &tls.Config{InsecureSkipVerify: true},
+    }
+    client.WithTransport(tr)
+...
+```
+
+再次强调，除非你知道自己在做什么，并明白由此带来的风险，否则不要尝试关闭服务器证书校验。
+
 # 支持产品列表
 
 | 包名 | 产品中文名 |
