@@ -43,6 +43,31 @@ func NewClient(credential *common.Credential, region string, clientProfile *prof
 }
 
 
+func NewCancelKeyDeletionRequest() (request *CancelKeyDeletionRequest) {
+    request = &CancelKeyDeletionRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("kms", APIVersion, "CancelKeyDeletion")
+    return
+}
+
+func NewCancelKeyDeletionResponse() (response *CancelKeyDeletionResponse) {
+    response = &CancelKeyDeletionResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 取消CMK的计划删除操作
+func (c *Client) CancelKeyDeletion(request *CancelKeyDeletionRequest) (response *CancelKeyDeletionResponse, err error) {
+    if request == nil {
+        request = NewCancelKeyDeletionRequest()
+    }
+    response = NewCancelKeyDeletionResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateKeyRequest() (request *CreateKeyRequest) {
     request = &CreateKeyRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -464,6 +489,31 @@ func (c *Client) ReEncrypt(request *ReEncryptRequest) (response *ReEncryptRespon
         request = NewReEncryptRequest()
     }
     response = NewReEncryptResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewScheduleKeyDeletionRequest() (request *ScheduleKeyDeletionRequest) {
+    request = &ScheduleKeyDeletionRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("kms", APIVersion, "ScheduleKeyDeletion")
+    return
+}
+
+func NewScheduleKeyDeletionResponse() (response *ScheduleKeyDeletionResponse) {
+    response = &ScheduleKeyDeletionResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CMK计划删除接口，用于指定CMK删除的时间，可选时间区间为[7,30]天
+func (c *Client) ScheduleKeyDeletion(request *ScheduleKeyDeletionRequest) (response *ScheduleKeyDeletionResponse, err error) {
+    if request == nil {
+        request = NewScheduleKeyDeletionRequest()
+    }
+    response = NewScheduleKeyDeletionResponse()
     err = c.Send(request, response)
     return
 }

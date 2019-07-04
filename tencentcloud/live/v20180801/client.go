@@ -819,6 +819,82 @@ func (c *Client) DeletePullStreamConfig(request *DeletePullStreamConfigRequest) 
     return
 }
 
+func NewDescribeBillBandwidthAndFluxListRequest() (request *DescribeBillBandwidthAndFluxListRequest) {
+    request = &DescribeBillBandwidthAndFluxListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("live", APIVersion, "DescribeBillBandwidthAndFluxList")
+    return
+}
+
+func NewDescribeBillBandwidthAndFluxListResponse() (response *DescribeBillBandwidthAndFluxListResponse) {
+    response = &DescribeBillBandwidthAndFluxListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 直播计费带宽和流量数据查询。
+func (c *Client) DescribeBillBandwidthAndFluxList(request *DescribeBillBandwidthAndFluxListRequest) (response *DescribeBillBandwidthAndFluxListResponse, err error) {
+    if request == nil {
+        request = NewDescribeBillBandwidthAndFluxListRequest()
+    }
+    response = NewDescribeBillBandwidthAndFluxListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeGroupProIspPlayInfoListRequest() (request *DescribeGroupProIspPlayInfoListRequest) {
+    request = &DescribeGroupProIspPlayInfoListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("live", APIVersion, "DescribeGroupProIspPlayInfoList")
+    return
+}
+
+func NewDescribeGroupProIspPlayInfoListResponse() (response *DescribeGroupProIspPlayInfoListResponse) {
+    response = &DescribeGroupProIspPlayInfoListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询按省份和运营商分组的下行播放数据。
+func (c *Client) DescribeGroupProIspPlayInfoList(request *DescribeGroupProIspPlayInfoListRequest) (response *DescribeGroupProIspPlayInfoListResponse, err error) {
+    if request == nil {
+        request = NewDescribeGroupProIspPlayInfoListRequest()
+    }
+    response = NewDescribeGroupProIspPlayInfoListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeHttpStatusInfoListRequest() (request *DescribeHttpStatusInfoListRequest) {
+    request = &DescribeHttpStatusInfoListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("live", APIVersion, "DescribeHttpStatusInfoList")
+    return
+}
+
+func NewDescribeHttpStatusInfoListResponse() (response *DescribeHttpStatusInfoListResponse) {
+    response = &DescribeHttpStatusInfoListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询某段时间内5分钟粒度的各播放http状态码的个数。
+// 备注：数据延迟1小时，如10:00-10:59点的数据12点才能查到。
+func (c *Client) DescribeHttpStatusInfoList(request *DescribeHttpStatusInfoListRequest) (response *DescribeHttpStatusInfoListResponse, err error) {
+    if request == nil {
+        request = NewDescribeHttpStatusInfoListRequest()
+    }
+    response = NewDescribeHttpStatusInfoListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeLiveCallbackRulesRequest() (request *DescribeLiveCallbackRulesRequest) {
     request = &DescribeLiveCallbackRulesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -944,6 +1020,31 @@ func (c *Client) DescribeLiveCerts(request *DescribeLiveCertsRequest) (response 
     return
 }
 
+func NewDescribeLiveDelayInfoListRequest() (request *DescribeLiveDelayInfoListRequest) {
+    request = &DescribeLiveDelayInfoListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("live", APIVersion, "DescribeLiveDelayInfoList")
+    return
+}
+
+func NewDescribeLiveDelayInfoListResponse() (response *DescribeLiveDelayInfoListResponse) {
+    response = &DescribeLiveDelayInfoListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 获取直播延播列表。
+func (c *Client) DescribeLiveDelayInfoList(request *DescribeLiveDelayInfoListRequest) (response *DescribeLiveDelayInfoListResponse, err error) {
+    if request == nil {
+        request = NewDescribeLiveDelayInfoListRequest()
+    }
+    response = NewDescribeLiveDelayInfoListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeLiveDomainRequest() (request *DescribeLiveDomainRequest) {
     request = &DescribeLiveDomainRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -990,6 +1091,31 @@ func (c *Client) DescribeLiveDomainCert(request *DescribeLiveDomainCertRequest) 
         request = NewDescribeLiveDomainCertRequest()
     }
     response = NewDescribeLiveDomainCertResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeLiveDomainPlayInfoListRequest() (request *DescribeLiveDomainPlayInfoListRequest) {
+    request = &DescribeLiveDomainPlayInfoListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("live", APIVersion, "DescribeLiveDomainPlayInfoList")
+    return
+}
+
+func NewDescribeLiveDomainPlayInfoListResponse() (response *DescribeLiveDomainPlayInfoListResponse) {
+    response = &DescribeLiveDomainPlayInfoListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询实时的域名维度下行播放数据。
+func (c *Client) DescribeLiveDomainPlayInfoList(request *DescribeLiveDomainPlayInfoListRequest) (response *DescribeLiveDomainPlayInfoListResponse, err error) {
+    if request == nil {
+        request = NewDescribeLiveDomainPlayInfoListRequest()
+    }
+    response = NewDescribeLiveDomainPlayInfoListResponse()
     err = c.Send(request, response)
     return
 }
@@ -1059,7 +1185,7 @@ func NewDescribeLivePlayAuthKeyResponse() (response *DescribeLivePlayAuthKeyResp
     return
 }
 
-// 查询播放鉴权key
+// 查询播放鉴权key。
 func (c *Client) DescribeLivePlayAuthKey(request *DescribeLivePlayAuthKeyRequest) (response *DescribeLivePlayAuthKeyResponse, err error) {
     if request == nil {
         request = NewDescribeLivePlayAuthKeyRequest()
@@ -1597,6 +1723,57 @@ func (c *Client) DescribeLogDownloadList(request *DescribeLogDownloadListRequest
     return
 }
 
+func NewDescribePlayErrorCodeDetailInfoListRequest() (request *DescribePlayErrorCodeDetailInfoListRequest) {
+    request = &DescribePlayErrorCodeDetailInfoListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("live", APIVersion, "DescribePlayErrorCodeDetailInfoList")
+    return
+}
+
+func NewDescribePlayErrorCodeDetailInfoListResponse() (response *DescribePlayErrorCodeDetailInfoListResponse) {
+    response = &DescribePlayErrorCodeDetailInfoListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询下行播放错误码信息，某段时间内1分钟粒度的各http错误码出现的次数，包括4xx，5xx。
+// 
+func (c *Client) DescribePlayErrorCodeDetailInfoList(request *DescribePlayErrorCodeDetailInfoListRequest) (response *DescribePlayErrorCodeDetailInfoListResponse, err error) {
+    if request == nil {
+        request = NewDescribePlayErrorCodeDetailInfoListRequest()
+    }
+    response = NewDescribePlayErrorCodeDetailInfoListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribePlayErrorCodeSumInfoListRequest() (request *DescribePlayErrorCodeSumInfoListRequest) {
+    request = &DescribePlayErrorCodeSumInfoListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("live", APIVersion, "DescribePlayErrorCodeSumInfoList")
+    return
+}
+
+func NewDescribePlayErrorCodeSumInfoListResponse() (response *DescribePlayErrorCodeSumInfoListResponse) {
+    response = &DescribePlayErrorCodeSumInfoListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询下行播放错误码信息。
+func (c *Client) DescribePlayErrorCodeSumInfoList(request *DescribePlayErrorCodeSumInfoListRequest) (response *DescribePlayErrorCodeSumInfoListResponse, err error) {
+    if request == nil {
+        request = NewDescribePlayErrorCodeSumInfoListRequest()
+    }
+    response = NewDescribePlayErrorCodeSumInfoListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeProIspPlaySumInfoListRequest() (request *DescribeProIspPlaySumInfoListRequest) {
     request = &DescribeProIspPlaySumInfoListRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1713,11 +1890,87 @@ func NewDescribeStreamPlayInfoListResponse() (response *DescribeStreamPlayInfoLi
 }
 
 // 查询播放数据，支持按流名称查询详细播放数据，也可按播放域名查询详细总数据。
+// 注意：按AppName查询，需要联系客服同学提单支持。
 func (c *Client) DescribeStreamPlayInfoList(request *DescribeStreamPlayInfoListRequest) (response *DescribeStreamPlayInfoListResponse, err error) {
     if request == nil {
         request = NewDescribeStreamPlayInfoListRequest()
     }
     response = NewDescribeStreamPlayInfoListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeStreamPushInfoListRequest() (request *DescribeStreamPushInfoListRequest) {
+    request = &DescribeStreamPushInfoListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("live", APIVersion, "DescribeStreamPushInfoList")
+    return
+}
+
+func NewDescribeStreamPushInfoListResponse() (response *DescribeStreamPushInfoListResponse) {
+    response = &DescribeStreamPushInfoListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询流id的上行推流质量数据，包括音视频的帧率，码率，流逝时间，编码格式等。
+func (c *Client) DescribeStreamPushInfoList(request *DescribeStreamPushInfoListRequest) (response *DescribeStreamPushInfoListResponse, err error) {
+    if request == nil {
+        request = NewDescribeStreamPushInfoListRequest()
+    }
+    response = NewDescribeStreamPushInfoListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeTopClientIpSumInfoListRequest() (request *DescribeTopClientIpSumInfoListRequest) {
+    request = &DescribeTopClientIpSumInfoListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("live", APIVersion, "DescribeTopClientIpSumInfoList")
+    return
+}
+
+func NewDescribeTopClientIpSumInfoListResponse() (response *DescribeTopClientIpSumInfoListResponse) {
+    response = &DescribeTopClientIpSumInfoListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询某段时间top n客户端ip汇总信息（暂支持top 1000）
+func (c *Client) DescribeTopClientIpSumInfoList(request *DescribeTopClientIpSumInfoListRequest) (response *DescribeTopClientIpSumInfoListResponse, err error) {
+    if request == nil {
+        request = NewDescribeTopClientIpSumInfoListRequest()
+    }
+    response = NewDescribeTopClientIpSumInfoListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeVisitTopSumInfoListRequest() (request *DescribeVisitTopSumInfoListRequest) {
+    request = &DescribeVisitTopSumInfoListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("live", APIVersion, "DescribeVisitTopSumInfoList")
+    return
+}
+
+func NewDescribeVisitTopSumInfoListResponse() (response *DescribeVisitTopSumInfoListResponse) {
+    response = &DescribeVisitTopSumInfoListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询某时间段top n的域名或流id信息（暂支持top 1000）。
+func (c *Client) DescribeVisitTopSumInfoList(request *DescribeVisitTopSumInfoListRequest) (response *DescribeVisitTopSumInfoListResponse, err error) {
+    if request == nil {
+        request = NewDescribeVisitTopSumInfoListRequest()
+    }
+    response = NewDescribeVisitTopSumInfoListResponse()
     err = c.Send(request, response)
     return
 }

@@ -20,10 +20,47 @@ import (
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
+type CancelKeyDeletionRequest struct {
+	*tchttp.BaseRequest
+
+	// 需要被取消删除的CMK的唯一标志
+	KeyId *string `json:"KeyId,omitempty" name:"KeyId"`
+}
+
+func (r *CancelKeyDeletionRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CancelKeyDeletionRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CancelKeyDeletionResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一标志被取消删除的CMK。
+		KeyId *string `json:"KeyId,omitempty" name:"KeyId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CancelKeyDeletionResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CancelKeyDeletionResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type CreateKeyRequest struct {
 	*tchttp.BaseRequest
 
-	// 作为密钥更容易辨识，更容易被人看懂的别名， 不可为空，1-60个字符或数字的组合
+	// 作为密钥更容易辨识，更容易被人看懂的别名， 不可为空，1-60个字母数字 - _ 的组合。以 kms- 作为前缀的用于云产品使用，Alias 不可重复。
 	Alias *string `json:"Alias,omitempty" name:"Alias"`
 
 	// CMK 的描述，最大1024字节
@@ -457,7 +494,7 @@ type GenerateDataKeyRequest struct {
 	// CMK全局唯一标识符
 	KeyId *string `json:"KeyId,omitempty" name:"KeyId"`
 
-	// 指定生成Datakey的加密算法以及Datakey大小，AES_128或者AES_256。默认为AES_256
+	// 指定生成Datakey的加密算法以及Datakey大小，AES_128或者AES_256。
 	KeySpec *string `json:"KeySpec,omitempty" name:"KeySpec"`
 
 	// 生成的DataKey的长度，同时指定NumberOfBytes和KeySpec时，以NumberOfBytes为准。最小值为1， 最大值为1024
@@ -560,6 +597,10 @@ type GetServiceStatusResponse struct {
 		// KMS服务是否开通， true 表示已开通
 		ServiceEnabled *bool `json:"ServiceEnabled,omitempty" name:"ServiceEnabled"`
 
+		// 服务不可用类型： 0-未购买，1-正常， 2-欠费停服， 3-资源释放
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		InvalidType *int64 `json:"InvalidType,omitempty" name:"InvalidType"`
+
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
@@ -594,7 +635,7 @@ type KeyMetadata struct {
 	// CMK的描述
 	Description *string `json:"Description,omitempty" name:"Description"`
 
-	// CMK的状态， Enabled 或者 Disabled 或者 Deleted
+	// CMK的状态， Enabled 或者 Disabled 或者PendingDelete状态
 	KeyState *string `json:"KeyState,omitempty" name:"KeyState"`
 
 	// CMK用途，当前是 ENCRYPT_DECRYPT
@@ -614,6 +655,10 @@ type KeyMetadata struct {
 
 	// 在密钥轮换开启状态下，下次轮换的时间
 	NextRotateTime *uint64 `json:"NextRotateTime,omitempty" name:"NextRotateTime"`
+
+	// 计划删除的时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DeletionDate *uint64 `json:"DeletionDate,omitempty" name:"DeletionDate"`
 }
 
 type ListKeyDetailRequest struct {
@@ -631,7 +676,7 @@ type ListKeyDetailRequest struct {
 	// 根据CMK创建时间排序， 0 表示按照降序排序，1表示按照升序排序
 	OrderType *uint64 `json:"OrderType,omitempty" name:"OrderType"`
 
-	// 根据CMK状态筛选， 0表示全部CMK， 1 表示仅查询Enabled CMK， 2 表示仅查询Disabled CMK
+	// 根据CMK状态筛选， 0表示全部CMK， 1 表示仅查询Enabled CMK， 2 表示仅查询Disabled CMK，3表示查询PendingDelete CMK(处于计划删除状态的Key)
 	KeyState *uint64 `json:"KeyState,omitempty" name:"KeyState"`
 
 	// 根据KeyId或者Alias进行模糊匹配查询
@@ -774,10 +819,53 @@ func (r *ReEncryptResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type ScheduleKeyDeletionRequest struct {
+	*tchttp.BaseRequest
+
+	// CMK的唯一标志
+	KeyId *string `json:"KeyId,omitempty" name:"KeyId"`
+
+	// 计划删除时间区间[7,30]
+	PendingWindowInDays *uint64 `json:"PendingWindowInDays,omitempty" name:"PendingWindowInDays"`
+}
+
+func (r *ScheduleKeyDeletionRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ScheduleKeyDeletionRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ScheduleKeyDeletionResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 计划删除执行时间
+		DeletionDate *uint64 `json:"DeletionDate,omitempty" name:"DeletionDate"`
+
+		// 唯一标志被计划删除的CMK
+		KeyId *string `json:"KeyId,omitempty" name:"KeyId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ScheduleKeyDeletionResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ScheduleKeyDeletionResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type UpdateAliasRequest struct {
 	*tchttp.BaseRequest
 
-	// 新的别名，1-64个字符或数字的组合
+	// 新的别名，1-60个字符或数字的组合
 	Alias *string `json:"Alias,omitempty" name:"Alias"`
 
 	// CMK的全局唯一标识符

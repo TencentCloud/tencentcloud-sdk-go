@@ -2082,6 +2082,31 @@ func (c *Client) DescribeIp6Translators(request *DescribeIp6TranslatorsRequest) 
     return
 }
 
+func NewDescribeNatGatewaysRequest() (request *DescribeNatGatewaysRequest) {
+    request = &DescribeNatGatewaysRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "DescribeNatGateways")
+    return
+}
+
+func NewDescribeNatGatewaysResponse() (response *DescribeNatGatewaysResponse) {
+    response = &DescribeNatGatewaysResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（DescribeNatGateways）用于查询 NAT 网关。
+func (c *Client) DescribeNatGateways(request *DescribeNatGatewaysRequest) (response *DescribeNatGatewaysResponse, err error) {
+    if request == nil {
+        request = NewDescribeNatGatewaysRequest()
+    }
+    response = NewDescribeNatGatewaysResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeNetworkInterfacesRequest() (request *DescribeNetworkInterfacesRequest) {
     request = &DescribeNetworkInterfacesRequest{
         BaseRequest: &tchttp.BaseRequest{},

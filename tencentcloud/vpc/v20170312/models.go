@@ -3648,6 +3648,58 @@ func (r *DescribeIp6TranslatorsResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeNatGatewaysRequest struct {
+	*tchttp.BaseRequest
+
+	// NAT网关统一 ID，形如：`nat-123xx454`。
+	NatGatewayIds []*string `json:"NatGatewayIds,omitempty" name:"NatGatewayIds" list`
+
+	// 过滤条件，参数不支持同时指定NatGatewayIds和Filters。
+	// <li>nat-gateway-id - String - （过滤条件）协议端口模板实例ID，形如：`nat-123xx454`。</li>
+	// <li>vpc-id - String - （过滤条件）私有网络 唯一ID，形如：`vpc-123xx454`。</li>
+	// <li>nat-gateway-name - String - （过滤条件）协议端口模板实例ID，形如：`test_nat`。</li>
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+
+	// 偏移量，默认为0。
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 返回数量，默认为20，最大值为100。
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+func (r *DescribeNatGatewaysRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeNatGatewaysRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeNatGatewaysResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// NAT网关对象数组。
+		NatGatewaySet []*NatGateway `json:"NatGatewaySet,omitempty" name:"NatGatewaySet" list`
+
+		// 符合条件的NAT网关对象个数。
+		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeNatGatewaysResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeNatGatewaysResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeNetworkInterfacesRequest struct {
 	*tchttp.BaseRequest
 
@@ -4324,6 +4376,27 @@ func (r *DescribeVpnGatewaysResponse) ToJsonString() string {
 
 func (r *DescribeVpnGatewaysResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
+}
+
+type DestinationIpPortTranslationNatRule struct {
+
+	// 网络协议，可选值：`TCP`、`UDP`。
+	IpProtocol *string `json:"IpProtocol,omitempty" name:"IpProtocol"`
+
+	// 弹性IP。
+	PublicIpAddress *string `json:"PublicIpAddress,omitempty" name:"PublicIpAddress"`
+
+	// 公网端口。
+	PublicPort *uint64 `json:"PublicPort,omitempty" name:"PublicPort"`
+
+	// 内网地址。
+	PrivateIpAddress *string `json:"PrivateIpAddress,omitempty" name:"PrivateIpAddress"`
+
+	// 内网端口。
+	PrivatePort *uint64 `json:"PrivatePort,omitempty" name:"PrivatePort"`
+
+	// NAT网关转发规则描述。
+	Description *string `json:"Description,omitempty" name:"Description"`
 }
 
 type DetachCcnInstancesRequest struct {
@@ -6260,6 +6333,56 @@ func (r *ModifyVpnGatewayAttributeResponse) ToJsonString() string {
 
 func (r *ModifyVpnGatewayAttributeResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
+}
+
+type NatGateway struct {
+
+	// NAT网关的ID。
+	NatGatewayId *string `json:"NatGatewayId,omitempty" name:"NatGatewayId"`
+
+	// NAT网关的名称。
+	NatGatewayName *string `json:"NatGatewayName,omitempty" name:"NatGatewayName"`
+
+	// NAT网关创建的时间。
+	CreatedTime *string `json:"CreatedTime,omitempty" name:"CreatedTime"`
+
+	// NAT网关的状态。
+	//  'PENDING'：生产中，'DELETING'：删除中，'AVAILABLE'：运行中，'UPDATING'：升级中，
+	// ‘FAILED’：失败。
+	State *string `json:"State,omitempty" name:"State"`
+
+	// 网关最大外网出带宽(单位:Mbps)。
+	InternetMaxBandwidthOut *uint64 `json:"InternetMaxBandwidthOut,omitempty" name:"InternetMaxBandwidthOut"`
+
+	// 网关并发连接上限。
+	MaxConcurrentConnection *uint64 `json:"MaxConcurrentConnection,omitempty" name:"MaxConcurrentConnection"`
+
+	// 绑定NAT网关的公网IP对象数组。
+	PublicIpAddressSet []*NatGatewayAddress `json:"PublicIpAddressSet,omitempty" name:"PublicIpAddressSet" list`
+
+	// NAT网关网络状态。“AVAILABLE”:运行中, “UNAVAILABLE”:不可用, “INSUFFICIENT”:欠费停服。
+	NetworkState *string `json:"NetworkState,omitempty" name:"NetworkState"`
+
+	// NAT网关的端口转发规则。
+	DestinationIpPortTranslationNatRuleSet []*DestinationIpPortTranslationNatRule `json:"DestinationIpPortTranslationNatRuleSet,omitempty" name:"DestinationIpPortTranslationNatRuleSet" list`
+
+	// VPC实例ID。
+	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
+
+	// NAT网关所在的可用区。
+	Zone *string `json:"Zone,omitempty" name:"Zone"`
+}
+
+type NatGatewayAddress struct {
+
+	// 弹性公网IP（EIP）的唯一 ID，形如：`eip-11112222`。
+	AddressId *string `json:"AddressId,omitempty" name:"AddressId"`
+
+	// 外网IP地址，形如：`123.121.34.33`。
+	PublicIpAddress *string `json:"PublicIpAddress,omitempty" name:"PublicIpAddress"`
+
+	// 资源封堵状态。true表示弹性ip处于封堵状态，false表示弹性ip处于未封堵状态。
+	IsBlocked *bool `json:"IsBlocked,omitempty" name:"IsBlocked"`
 }
 
 type NetworkInterface struct {

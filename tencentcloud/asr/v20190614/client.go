@@ -58,7 +58,13 @@ func NewSentenceRecognitionResponse() (response *SentenceRecognitionResponse) {
     return
 }
 
-// 识别60s内的短语音。当音频文件通过请求中body内容上传时，请求大小不能超过600KB；当音频以url方式传输时，音频时长不可超过60s。所有请求参数放在POST请求的body中，编码类型采用采用x-www-form-urlencoded，参数进行urlencode编码后传输。现暂只支持中文普通话识别，支持识别8k16bit和16k16bit的mp3或者wav音频。
+// 本接口用于对60秒之内的短音频文件进行识别，支持本地语音文件上传和语音URL上传两种请求方式。
+// 
+// 当音频文件通过请求中body内容上传时，请求大小不能超过600KB；当音频以url方式传输时，音频时长不可超过60s。
+// 
+// 所有请求参数放在POST请求的body中，编码类型采用x-www-form-urlencoded，参数进行urlencode编码后传输。
+// 
+// 现暂只支持中文普通话和带有一定方言口音的中文普通话识别，支持识别8k16bit和16k16bit的mp3或者wav格式的单声道音频。
 func (c *Client) SentenceRecognition(request *SentenceRecognitionRequest) (response *SentenceRecognitionResponse, err error) {
     if request == nil {
         request = NewSentenceRecognitionRequest()

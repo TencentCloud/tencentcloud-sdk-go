@@ -1568,3 +1568,28 @@ func (c *Client) SimpleHlsClip(request *SimpleHlsClipRequest) (response *SimpleH
     err = c.Send(request, response)
     return
 }
+
+func NewWeChatMiniProgramPublishRequest() (request *WeChatMiniProgramPublishRequest) {
+    request = &WeChatMiniProgramPublishRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vod", APIVersion, "WeChatMiniProgramPublish")
+    return
+}
+
+func NewWeChatMiniProgramPublishResponse() (response *WeChatMiniProgramPublishResponse) {
+    response = &WeChatMiniProgramPublishResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 将点播视频发布到微信小程序，供微信小程序播放器播放。
+func (c *Client) WeChatMiniProgramPublish(request *WeChatMiniProgramPublishRequest) (response *WeChatMiniProgramPublishResponse, err error) {
+    if request == nil {
+        request = NewWeChatMiniProgramPublishRequest()
+    }
+    response = NewWeChatMiniProgramPublishResponse()
+    err = c.Send(request, response)
+    return
+}

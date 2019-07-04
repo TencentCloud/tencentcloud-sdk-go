@@ -373,6 +373,10 @@ type DescribeBillDetailResponse struct {
 		// 详情列表
 		DetailSet []*BillDetail `json:"DetailSet,omitempty" name:"DetailSet" list`
 
+		// 总记录数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Total *uint64 `json:"Total,omitempty" name:"Total"`
+
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`

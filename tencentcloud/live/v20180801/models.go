@@ -168,6 +168,18 @@ func (r *AddLiveWatermarkResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type BillDataInfo struct {
+
+	// 时间点，格式为yyyy-mm-dd HH:MM:SS。
+	Time *string `json:"Time,omitempty" name:"Time"`
+
+	// 带宽，单位是Mbps。
+	Bandwidth *float64 `json:"Bandwidth,omitempty" name:"Bandwidth"`
+
+	// 流量，单位是MB。
+	Flux *float64 `json:"Flux,omitempty" name:"Flux"`
+}
+
 type BindLiveDomainCertRequest struct {
 	*tchttp.BaseRequest
 
@@ -259,6 +271,24 @@ type CallBackTemplateInfo struct {
 	CallbackKey *string `json:"CallbackKey,omitempty" name:"CallbackKey"`
 }
 
+type CdnPlayStatData struct {
+
+	// 时间点，格式为yyyy-mm-dd HH:MM:SS。
+	Time *string `json:"Time,omitempty" name:"Time"`
+
+	// 带宽，（单位Mbps）。
+	Bandwidth *float64 `json:"Bandwidth,omitempty" name:"Bandwidth"`
+
+	// 流量，（单位MB）。
+	Flux *float64 `json:"Flux,omitempty" name:"Flux"`
+
+	// 新增请求数。
+	Request *uint64 `json:"Request,omitempty" name:"Request"`
+
+	// 并发连接数。
+	Online *uint64 `json:"Online,omitempty" name:"Online"`
+}
+
 type CertInfo struct {
 
 	// 证书Id。
@@ -286,6 +316,24 @@ type CertInfo struct {
 
 	// 使用此证书的域名列表。
 	DomainList []*string `json:"DomainList,omitempty" name:"DomainList" list`
+}
+
+type ClientIpPlaySumInfo struct {
+
+	// 客户端ip，点分型。
+	ClientIp *string `json:"ClientIp,omitempty" name:"ClientIp"`
+
+	// 客户端所在省份。
+	Province *string `json:"Province,omitempty" name:"Province"`
+
+	// 总流量。
+	TotalFlux *float64 `json:"TotalFlux,omitempty" name:"TotalFlux"`
+
+	// 总请求数。
+	TotalRequest *uint64 `json:"TotalRequest,omitempty" name:"TotalRequest"`
+
+	// 总失败请求数。
+	TotalFailedRequest *uint64 `json:"TotalFailedRequest,omitempty" name:"TotalFailedRequest"`
 }
 
 type CreateLiveCallbackRuleRequest struct {
@@ -588,6 +636,9 @@ type CreateLiveRecordTemplateRequest struct {
 
 	// HLS专属录制参数。
 	HlsSpecialParam *HlsSpecialParam `json:"HlsSpecialParam,omitempty" name:"HlsSpecialParam"`
+
+	// Mp3录制参数，开启Mp3录制时设置。
+	Mp3Param *RecordParam `json:"Mp3Param,omitempty" name:"Mp3Param"`
 }
 
 func (r *CreateLiveRecordTemplateRequest) ToJsonString() string {
@@ -974,6 +1025,36 @@ type DayStreamPlayInfo struct {
 
 	// 在线人数。
 	Online *uint64 `json:"Online,omitempty" name:"Online"`
+}
+
+type DelayInfo struct {
+
+	// 推流域名。
+	DomainName *string `json:"DomainName,omitempty" name:"DomainName"`
+
+	// 推流路径，与推流和播放地址中的AppName保持一致，默认为 live。
+	AppName *string `json:"AppName,omitempty" name:"AppName"`
+
+	// 流名称。
+	StreamName *string `json:"StreamName,omitempty" name:"StreamName"`
+
+	// 延播时间，单位：秒。
+	DelayInterval *uint64 `json:"DelayInterval,omitempty" name:"DelayInterval"`
+
+	// 创建时间，UTC时间。
+	// 注意：UTC时间和北京时间相差8小时。
+	// 例如：2019-06-18T12:00:00Z（为北京时间 2019 年 6 月 18 日 20 点 0 分 0 秒）。
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 过期时间，UTC时间。
+	// 注意：UTC时间和北京时间相差8小时。
+	// 例如：2019-06-18T12:00:00Z（为北京时间 2019 年 6 月 18 日 20 点 0 分 0 秒）。
+	ExpireTime *string `json:"ExpireTime,omitempty" name:"ExpireTime"`
+
+	// 当前状态，
+	// -1：已过期，
+	// 1： 生效中。
+	Status *int64 `json:"Status,omitempty" name:"Status"`
 }
 
 type DeleteLiveCallbackRuleRequest struct {
@@ -1495,6 +1576,173 @@ func (r *DeletePullStreamConfigResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeBillBandwidthAndFluxListRequest struct {
+	*tchttp.BaseRequest
+
+	// 起始时间点，格式为yyyy-mm-dd HH:MM:SS。
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 结束时间点，格式为yyyy-mm-dd HH:MM:SS，起始和结束时间跨度不支持超过31天。
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 直播播放域名，若不填，表示总体数据。
+	PlayDomains []*string `json:"PlayDomains,omitempty" name:"PlayDomains" list`
+
+	// 国内还是国外，若不填，表示国内+国外。
+	MainlandOrOversea *string `json:"MainlandOrOversea,omitempty" name:"MainlandOrOversea"`
+
+	// 数据粒度，支持如下粒度：
+	// 5：5分钟粒度，默认值（跨度不支持超过1天）；
+	// 60：1小时粒度（跨度不支持超过一个月）；
+	// 1440：天粒度（跨度不支持超过一个月）。
+	Granularity *uint64 `json:"Granularity,omitempty" name:"Granularity"`
+}
+
+func (r *DescribeBillBandwidthAndFluxListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeBillBandwidthAndFluxListRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeBillBandwidthAndFluxListResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 峰值带宽所在时间点，格式为yyyy-mm-dd HH:MM:SS。
+		PeakBandwidthTime *string `json:"PeakBandwidthTime,omitempty" name:"PeakBandwidthTime"`
+
+		// 峰值带宽，单位是Mbps。
+		PeakBandwidth *float64 `json:"PeakBandwidth,omitempty" name:"PeakBandwidth"`
+
+		// 95峰值带宽所在时间点，格式为yyyy-mm-dd HH:MM:SS。
+		P95PeakBandwidthTime *string `json:"P95PeakBandwidthTime,omitempty" name:"P95PeakBandwidthTime"`
+
+		// 95峰值带宽，单位是Mbps。
+		P95PeakBandwidth *float64 `json:"P95PeakBandwidth,omitempty" name:"P95PeakBandwidth"`
+
+		// 总流量，单位是MB。
+		SumFlux *float64 `json:"SumFlux,omitempty" name:"SumFlux"`
+
+		// 明细数据信息。
+		DataInfoList []*BillDataInfo `json:"DataInfoList,omitempty" name:"DataInfoList" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeBillBandwidthAndFluxListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeBillBandwidthAndFluxListResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeGroupProIspPlayInfoListRequest struct {
+	*tchttp.BaseRequest
+
+	// 起始时间点，格式为yyyy-mm-dd HH:MM:SS。
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 结束时间点，格式为yyyy-mm-dd HH:MM:SS
+	// 时间跨度在（0,3小时]，支持最近1个月数据查询。
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 播放域名，默认为不填，表示求总体数据。
+	PlayDomains []*string `json:"PlayDomains,omitempty" name:"PlayDomains" list`
+
+	// 省份列表，默认不填，则返回各省份的数据。
+	ProvinceNames []*string `json:"ProvinceNames,omitempty" name:"ProvinceNames" list`
+
+	// 运营商列表，默认不填，则返回个运营商的数据。
+	IspNames []*string `json:"IspNames,omitempty" name:"IspNames" list`
+
+	// 国内还是国外，如果为空，查询所有地区数据；如果为“Mainland”，查询国内数据；如果为“Oversea”，则查询国外数据。
+	MainlandOrOversea *string `json:"MainlandOrOversea,omitempty" name:"MainlandOrOversea"`
+}
+
+func (r *DescribeGroupProIspPlayInfoListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeGroupProIspPlayInfoListRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeGroupProIspPlayInfoListResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 数据内容。
+		DataInfoList []*GroupProIspDataInfo `json:"DataInfoList,omitempty" name:"DataInfoList" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeGroupProIspPlayInfoListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeGroupProIspPlayInfoListResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeHttpStatusInfoListRequest struct {
+	*tchttp.BaseRequest
+
+	// 起始时间，北京时间，
+	// 格式：yyyy-mm-dd HH:MM:SS。
+	// StartTime不能为3个月前。
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 结束时间，北京时间，
+	// 格式：yyyy-mm-dd HH:MM:SS。
+	// 注：EndTime 和 StartTime 只支持最近1天的数据查询。
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 播放域名列表。
+	PlayDomains []*string `json:"PlayDomains,omitempty" name:"PlayDomains" list`
+}
+
+func (r *DescribeHttpStatusInfoListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeHttpStatusInfoListRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeHttpStatusInfoListResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 播放状态码列表。
+		DataInfoList []*HttpStatusData `json:"DataInfoList,omitempty" name:"DataInfoList" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeHttpStatusInfoListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeHttpStatusInfoListResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeLiveCallbackRulesRequest struct {
 	*tchttp.BaseRequest
 }
@@ -1671,6 +1919,40 @@ func (r *DescribeLiveCertsResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeLiveDelayInfoListRequest struct {
+	*tchttp.BaseRequest
+}
+
+func (r *DescribeLiveDelayInfoListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeLiveDelayInfoListRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeLiveDelayInfoListResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 延播信息列表。
+		DelayInfoList []*DelayInfo `json:"DelayInfoList,omitempty" name:"DelayInfoList" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeLiveDelayInfoListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeLiveDelayInfoListResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeLiveDomainCertRequest struct {
 	*tchttp.BaseRequest
 
@@ -1705,6 +1987,58 @@ func (r *DescribeLiveDomainCertResponse) ToJsonString() string {
 }
 
 func (r *DescribeLiveDomainCertResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeLiveDomainPlayInfoListRequest struct {
+	*tchttp.BaseRequest
+
+	// 播放域名列表。
+	PlayDomains []*string `json:"PlayDomains,omitempty" name:"PlayDomains" list`
+}
+
+func (r *DescribeLiveDomainPlayInfoListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeLiveDomainPlayInfoListRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeLiveDomainPlayInfoListResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 数据时间，格式为yyyy-mm-dd HH:MM:SS。
+		Time *string `json:"Time,omitempty" name:"Time"`
+
+		// 实时总带宽。
+		TotalBandwidth *float64 `json:"TotalBandwidth,omitempty" name:"TotalBandwidth"`
+
+		// 实时总流量。
+		TotalFlux *float64 `json:"TotalFlux,omitempty" name:"TotalFlux"`
+
+		// TotalRequest。
+		TotalRequest *uint64 `json:"TotalRequest,omitempty" name:"TotalRequest"`
+
+		// 实时总连接数。
+		TotalOnline *uint64 `json:"TotalOnline,omitempty" name:"TotalOnline"`
+
+		// 分域名的数据情况。
+		DomainInfoList []*DomainInfoList `json:"DomainInfoList,omitempty" name:"DomainInfoList" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeLiveDomainPlayInfoListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeLiveDomainPlayInfoListResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -2864,6 +3198,142 @@ func (r *DescribeLogDownloadListResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribePlayErrorCodeDetailInfoListRequest struct {
+	*tchttp.BaseRequest
+
+	// 起始时间，北京时间，
+	// 格式：yyyy-mm-dd HH:MM:SS。
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 结束时间，北京时间，
+	// 格式：yyyy-mm-dd HH:MM:SS。
+	// 注：EndTime 和 StartTime 只支持最近1天的数据查询。
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 查询粒度：
+	// 1-1分钟粒度。
+	Granularity *uint64 `json:"Granularity,omitempty" name:"Granularity"`
+
+	// 是，可选值包括”4xx”,”5xx”，支持”4xx,5xx”等这种混合模式。
+	StatType *string `json:"StatType,omitempty" name:"StatType"`
+
+	// 播放域名列表。
+	PlayDomains []*string `json:"PlayDomains,omitempty" name:"PlayDomains" list`
+}
+
+func (r *DescribePlayErrorCodeDetailInfoListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribePlayErrorCodeDetailInfoListRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribePlayErrorCodeDetailInfoListResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 统计信息列表。
+		HttpCodeList []*HttpCodeInfo `json:"HttpCodeList,omitempty" name:"HttpCodeList" list`
+
+		// 统计类型。
+		StatType *string `json:"StatType,omitempty" name:"StatType"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribePlayErrorCodeDetailInfoListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribePlayErrorCodeDetailInfoListResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribePlayErrorCodeSumInfoListRequest struct {
+	*tchttp.BaseRequest
+
+	// 起始时间点，北京时间。
+	// 格式：yyyy-mm-dd HH:MM:SS。
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 结束时间点，北京时间。
+	// 格式：yyyy-mm-dd HH:MM:SS。
+	// 注：EndTime 和 StartTime 只支持最近1天的数据查询。
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 播放域名列表，不填表示总体数据。
+	PlayDomains []*string `json:"PlayDomains,omitempty" name:"PlayDomains" list`
+
+	// 页数，
+	// 范围[1,1000]，
+	// 默认值：1。
+	PageNum *uint64 `json:"PageNum,omitempty" name:"PageNum"`
+
+	// 每页个数，
+	// 范围：[1,1000]，
+	// 默认值： 20。
+	PageSize *uint64 `json:"PageSize,omitempty" name:"PageSize"`
+}
+
+func (r *DescribePlayErrorCodeSumInfoListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribePlayErrorCodeSumInfoListRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribePlayErrorCodeSumInfoListResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 分省份分运营商错误码为4或5开头的状态码数据信息。
+		ProIspInfoList []*ProIspPlayCodeDataInfo `json:"ProIspInfoList,omitempty" name:"ProIspInfoList" list`
+
+		// 所有状态码的加和的次数。
+		TotalCodeAll *uint64 `json:"TotalCodeAll,omitempty" name:"TotalCodeAll"`
+
+		// 状态码为4开头的总次数。
+		TotalCode4xx *uint64 `json:"TotalCode4xx,omitempty" name:"TotalCode4xx"`
+
+		// 状态码为5开头的总次数。
+		TotalCode5xx *uint64 `json:"TotalCode5xx,omitempty" name:"TotalCode5xx"`
+
+		// 各状态码的总次数，暂时支持400,403,404,500,502,503,504。
+		TotalCodeList []*PlayCodeTotalInfo `json:"TotalCodeList,omitempty" name:"TotalCodeList" list`
+
+		// 页号。
+		PageNum *uint64 `json:"PageNum,omitempty" name:"PageNum"`
+
+		// 每页大小。
+		PageSize *uint64 `json:"PageSize,omitempty" name:"PageSize"`
+
+		// 总页数。
+		TotalPage *uint64 `json:"TotalPage,omitempty" name:"TotalPage"`
+
+		// 总记录数。
+		TotalNum *uint64 `json:"TotalNum,omitempty" name:"TotalNum"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribePlayErrorCodeSumInfoListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribePlayErrorCodeSumInfoListResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeProIspPlaySumInfoListRequest struct {
 	*tchttp.BaseRequest
 
@@ -2876,7 +3346,7 @@ type DescribeProIspPlaySumInfoListRequest struct {
 	// 注：EndTime 和 StartTime 只支持最近1天的数据查询。
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 
-	// 统计的类型，可选值包括”Province”，”Isp”
+	// 统计的类型，可选值包括”Province”，”Isp”。
 	StatType *string `json:"StatType,omitempty" name:"StatType"`
 
 	// 不填则为总体数据。
@@ -2884,11 +3354,11 @@ type DescribeProIspPlaySumInfoListRequest struct {
 
 	// 页号，
 	// 范围是[1,1000]，
-	// 默认值是1
+	// 默认值是1。
 	PageNum *uint64 `json:"PageNum,omitempty" name:"PageNum"`
 
 	// 每页个数，范围是[1,1000]，
-	// 默认值是20
+	// 默认值是20。
 	PageSize *uint64 `json:"PageSize,omitempty" name:"PageSize"`
 }
 
@@ -2914,22 +3384,22 @@ type DescribeProIspPlaySumInfoListResponse struct {
 		// 统计的类型。
 		StatType *string `json:"StatType,omitempty" name:"StatType"`
 
-		// 每页的记录数
+		// 每页的记录数。
 		PageSize *uint64 `json:"PageSize,omitempty" name:"PageSize"`
 
-		// 页号
+		// 页号。
 		PageNum *uint64 `json:"PageNum,omitempty" name:"PageNum"`
 
-		// 总记录数
+		// 总记录数。
 		TotalNum *uint64 `json:"TotalNum,omitempty" name:"TotalNum"`
 
-		// 总页数
+		// 总页数。
 		TotalPage *uint64 `json:"TotalPage,omitempty" name:"TotalPage"`
 
-		// 省份或运营商汇总数据列表
+		// 省份或运营商汇总数据列表。
 		DataInfoList []*ProIspPlaySumInfo `json:"DataInfoList,omitempty" name:"DataInfoList" list`
 
-		// 平均带宽
+		// 平均带宽。
 		AvgFluxPerSecond *float64 `json:"AvgFluxPerSecond,omitempty" name:"AvgFluxPerSecond"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -3130,6 +3600,7 @@ type DescribeStreamPlayInfoListRequest struct {
 
 	// 推流路径，与推流和播放地址中的AppName保持一致，默认为live。精确匹配，不支持。
 	// 若不填，则为查询总体播放数据。
+	// 注意：按AppName查询，需要联系客服同学提单支持。
 	AppName *string `json:"AppName,omitempty" name:"AppName"`
 }
 
@@ -3160,6 +3631,209 @@ func (r *DescribeStreamPlayInfoListResponse) ToJsonString() string {
 }
 
 func (r *DescribeStreamPlayInfoListResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeStreamPushInfoListRequest struct {
+	*tchttp.BaseRequest
+
+	// 流名称。
+	StreamName *string `json:"StreamName,omitempty" name:"StreamName"`
+
+	// 起始时间点，格式为yyyy-mm-dd HH:MM:SS。
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 结束时间点，格式为yyyy-mm-dd HH:MM:SS，最大时间跨度支持6小时，支持最近6天数据查询。
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 推流域名。
+	PushDomain *string `json:"PushDomain,omitempty" name:"PushDomain"`
+
+	// 推流路径，与推流和播放地址中的AppName保持一致，默认为 live。
+	AppName *string `json:"AppName,omitempty" name:"AppName"`
+}
+
+func (r *DescribeStreamPushInfoListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeStreamPushInfoListRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeStreamPushInfoListResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 返回的数据列表。
+		DataInfoList []*PushQualityData `json:"DataInfoList,omitempty" name:"DataInfoList" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeStreamPushInfoListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeStreamPushInfoListResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeTopClientIpSumInfoListRequest struct {
+	*tchttp.BaseRequest
+
+	// 起始时间点，格式为yyyy-mm-dd HH:MM:SS。
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 结束时间点，格式为yyyy-mm-dd HH:MM:SS
+	// 时间跨度在（0,4小时]，支持最近1天数据查询。
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 播放域名，默认为不填，表示求总体数据。
+	PlayDomains []*string `json:"PlayDomains,omitempty" name:"PlayDomains" list`
+
+	// 页号，
+	// 范围是[1,1000]，
+	// 默认值是1。
+	PageNum *uint64 `json:"PageNum,omitempty" name:"PageNum"`
+
+	// 每页个数，范围是[1,1000]，
+	// 默认值是20。
+	PageSize *uint64 `json:"PageSize,omitempty" name:"PageSize"`
+
+	// 排序指标，可选值包括”TotalRequest”，”FailedRequest”,“TotalFlux”。
+	OrderParam *string `json:"OrderParam,omitempty" name:"OrderParam"`
+}
+
+func (r *DescribeTopClientIpSumInfoListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeTopClientIpSumInfoListRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeTopClientIpSumInfoListResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 页号，
+	// 范围是[1,1000]，
+	// 默认值是1。
+		PageNum *uint64 `json:"PageNum,omitempty" name:"PageNum"`
+
+		// 每页个数，范围是[1,1000]，
+	// 默认值是20。
+		PageSize *uint64 `json:"PageSize,omitempty" name:"PageSize"`
+
+		// 排序指标，可选值包括”TotalRequest”，”FailedRequest”,“TotalFlux”。
+		OrderParam *string `json:"OrderParam,omitempty" name:"OrderParam"`
+
+		// 记录总数。
+		TotalNum *uint64 `json:"TotalNum,omitempty" name:"TotalNum"`
+
+		// 记录总页数。
+		TotalPage *uint64 `json:"TotalPage,omitempty" name:"TotalPage"`
+
+		// 数据内容。
+		DataInfoList []*ClientIpPlaySumInfo `json:"DataInfoList,omitempty" name:"DataInfoList" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeTopClientIpSumInfoListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeTopClientIpSumInfoListResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeVisitTopSumInfoListRequest struct {
+	*tchttp.BaseRequest
+
+	// 起始时间点，格式为yyyy-mm-dd HH:MM:SS。
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 结束时间点，格式为yyyy-mm-dd HH:MM:SS
+	// 时间跨度在（0,4小时]，支持最近1天数据查询。
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 峰值指标，可选值包括”Domain”，”StreamId”。
+	TopIndex *string `json:"TopIndex,omitempty" name:"TopIndex"`
+
+	// 播放域名，默认为不填，表示求总体数据。
+	PlayDomains []*string `json:"PlayDomains,omitempty" name:"PlayDomains" list`
+
+	// 页号，
+	// 范围是[1,1000]，
+	// 默认值是1。
+	PageNum *uint64 `json:"PageNum,omitempty" name:"PageNum"`
+
+	// 每页个数，范围是[1,1000]，
+	// 默认值是20。
+	PageSize *uint64 `json:"PageSize,omitempty" name:"PageSize"`
+
+	// 排序指标，可选值包括” AvgFluxPerSecond”，”TotalRequest”（默认）,“TotalFlux”。
+	OrderParam *string `json:"OrderParam,omitempty" name:"OrderParam"`
+}
+
+func (r *DescribeVisitTopSumInfoListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeVisitTopSumInfoListRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeVisitTopSumInfoListResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 页号，
+	// 范围是[1,1000]，
+	// 默认值是1。
+		PageNum *uint64 `json:"PageNum,omitempty" name:"PageNum"`
+
+		// 每页个数，范围是[1,1000]，
+	// 默认值是20。
+		PageSize *uint64 `json:"PageSize,omitempty" name:"PageSize"`
+
+		// 峰值指标，可选值包括”Domain”，”StreamId”。
+		TopIndex *string `json:"TopIndex,omitempty" name:"TopIndex"`
+
+		// 排序指标，可选值包括” AvgFluxPerSecond”，”TotalRequest”（默认）,“TotalFlux”。
+		OrderParam *string `json:"OrderParam,omitempty" name:"OrderParam"`
+
+		// 记录总数。
+		TotalNum *uint64 `json:"TotalNum,omitempty" name:"TotalNum"`
+
+		// 记录总页数。
+		TotalPage *uint64 `json:"TotalPage,omitempty" name:"TotalPage"`
+
+		// 数据内容。
+		DataInfoList []*PlaySumStatInfo `json:"DataInfoList,omitempty" name:"DataInfoList" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeVisitTopSumInfoListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeVisitTopSumInfoListResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -3195,6 +3869,24 @@ type DomainCertInfo struct {
 	Status *int64 `json:"Status,omitempty" name:"Status"`
 }
 
+type DomainDetailInfo struct {
+
+	// 国内还是国外，可选值包括Mainland和Oversea，如果为“Mainland”，表示国内数据；如果为“Oversea”，表示国外数据。
+	MainlandOrOversea *string `json:"MainlandOrOversea,omitempty" name:"MainlandOrOversea"`
+
+	// 带宽，单位是Mbps。
+	Bandwidth *float64 `json:"Bandwidth,omitempty" name:"Bandwidth"`
+
+	// 流量，单位是MB。
+	Flux *float64 `json:"Flux,omitempty" name:"Flux"`
+
+	// 人数。
+	Online *uint64 `json:"Online,omitempty" name:"Online"`
+
+	// 请求数。
+	Request *uint64 `json:"Request,omitempty" name:"Request"`
+}
+
 type DomainInfo struct {
 
 	// 直播域名
@@ -3222,6 +3914,15 @@ type DomainInfo struct {
 	// 0：普通直播，
 	// 1：慢直播。
 	IsDelayLive *int64 `json:"IsDelayLive,omitempty" name:"IsDelayLive"`
+}
+
+type DomainInfoList struct {
+
+	// 域名。
+	Domain *string `json:"Domain,omitempty" name:"Domain"`
+
+	// 明细信息。
+	DetailInfoList []*DomainDetailInfo `json:"DetailInfoList,omitempty" name:"DetailInfoList" list`
 }
 
 type DropLiveStreamRequest struct {
@@ -3388,10 +4089,63 @@ type ForbidStreamInfo struct {
 	ExpireTime *string `json:"ExpireTime,omitempty" name:"ExpireTime"`
 }
 
+type GroupProIspDataInfo struct {
+
+	// 省份。
+	ProvinceName *string `json:"ProvinceName,omitempty" name:"ProvinceName"`
+
+	// 运营商。
+	IspName *string `json:"IspName,omitempty" name:"IspName"`
+
+	// 分钟维度的明细数据。
+	DetailInfoList []*CdnPlayStatData `json:"DetailInfoList,omitempty" name:"DetailInfoList" list`
+}
+
 type HlsSpecialParam struct {
 
 	// HLS续流超时时间。
 	FlowContinueDuration *uint64 `json:"FlowContinueDuration,omitempty" name:"FlowContinueDuration"`
+}
+
+type HttpCodeInfo struct {
+
+	// http协议返回码。
+	// 例："2xx", "3xx", "4xx", "5xx"。
+	HttpCode *string `json:"HttpCode,omitempty" name:"HttpCode"`
+
+	// 统计信息，对于无数据的时间点，会补0。
+	ValueList []*HttpCodeValue `json:"ValueList,omitempty" name:"ValueList" list`
+}
+
+type HttpCodeValue struct {
+
+	// 时间，格式：yyyy-mm-dd HH:MM:SS。
+	Time *string `json:"Time,omitempty" name:"Time"`
+
+	// 次数。
+	Numbers *uint64 `json:"Numbers,omitempty" name:"Numbers"`
+
+	// 占比。
+	Percentage *float64 `json:"Percentage,omitempty" name:"Percentage"`
+}
+
+type HttpStatusData struct {
+
+	// 数据时间点，
+	// 格式：yyyy-mm-dd HH:MM:SS。
+	Time *string `json:"Time,omitempty" name:"Time"`
+
+	// 播放状态码详细信息。
+	HttpStatusInfoList []*HttpStatusInfo `json:"HttpStatusInfoList,omitempty" name:"HttpStatusInfoList" list`
+}
+
+type HttpStatusInfo struct {
+
+	// 播放http状态码。
+	HttpStatus *string `json:"HttpStatus,omitempty" name:"HttpStatus"`
+
+	// 个数。
+	Num *uint64 `json:"Num,omitempty" name:"Num"`
 }
 
 type LogInfo struct {
@@ -3708,6 +4462,9 @@ type ModifyLiveRecordTemplateRequest struct {
 
 	// HLS录制定制参数
 	HlsSpecialParam *HlsSpecialParam `json:"HlsSpecialParam,omitempty" name:"HlsSpecialParam"`
+
+	// Mp3录制参数，开启Mp3录制时设置。
+	Mp3Param *RecordParam `json:"Mp3Param,omitempty" name:"Mp3Param"`
 }
 
 func (r *ModifyLiveRecordTemplateRequest) ToJsonString() string {
@@ -3998,6 +4755,15 @@ type PlayAuthKeyInfo struct {
 	AuthBackKey *string `json:"AuthBackKey,omitempty" name:"AuthBackKey"`
 }
 
+type PlayCodeTotalInfo struct {
+
+	// http code，可选值包括400,403,404,500,502,503,504
+	Code *string `json:"Code,omitempty" name:"Code"`
+
+	// 总次数
+	Num *uint64 `json:"Num,omitempty" name:"Num"`
+}
+
 type PlayDataInfoByStream struct {
 
 	// 流名称。
@@ -4015,6 +4781,36 @@ type PlayStatInfo struct {
 	// 带宽/流量/请求数/并发连接数/下载速度的值，若没数据返回时该值为0
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Value *float64 `json:"Value,omitempty" name:"Value"`
+}
+
+type PlaySumStatInfo struct {
+
+	// 域名或流id。
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 平均下载速度，单位是MB/s，计算公式是每分钟的下载速度求平均值。
+	AvgFluxPerSecond *float64 `json:"AvgFluxPerSecond,omitempty" name:"AvgFluxPerSecond"`
+
+	// 总流量，单位是MB。
+	TotalFlux *float64 `json:"TotalFlux,omitempty" name:"TotalFlux"`
+
+	// 总请求数。
+	TotalRequest *uint64 `json:"TotalRequest,omitempty" name:"TotalRequest"`
+}
+
+type ProIspPlayCodeDataInfo struct {
+
+	// 省份。
+	ProvinceName *string `json:"ProvinceName,omitempty" name:"ProvinceName"`
+
+	// 运营商。
+	IspName *string `json:"IspName,omitempty" name:"IspName"`
+
+	// 错误码为4开头的次数。
+	Code4xx *uint64 `json:"Code4xx,omitempty" name:"Code4xx"`
+
+	// 错误码为5开头的次数。
+	Code5xx *uint64 `json:"Code5xx,omitempty" name:"Code5xx"`
 }
 
 type ProIspPlaySumInfo struct {
@@ -4133,6 +4929,57 @@ type PushDataInfo struct {
 	Resolution *string `json:"Resolution,omitempty" name:"Resolution"`
 }
 
+type PushQualityData struct {
+
+	// 数据时间，格式是%Y-%m-%d %H:%M:%S.%ms，精确到毫秒级。
+	Time *string `json:"Time,omitempty" name:"Time"`
+
+	// 推流域名。
+	PushDomain *string `json:"PushDomain,omitempty" name:"PushDomain"`
+
+	// 推流路径。
+	AppName *string `json:"AppName,omitempty" name:"AppName"`
+
+	// 推流客户端ip。
+	ClientIp *string `json:"ClientIp,omitempty" name:"ClientIp"`
+
+	// 开始推流时间，格式是%Y-%m-%d %H:%M:%S.%ms，精确到毫秒级。
+	BeginPushTime *string `json:"BeginPushTime,omitempty" name:"BeginPushTime"`
+
+	// 分辨率信息。
+	Resolution *string `json:"Resolution,omitempty" name:"Resolution"`
+
+	// 视频编码格式。
+	VCodec *string `json:"VCodec,omitempty" name:"VCodec"`
+
+	// 音频编码格式。
+	ACodec *string `json:"ACodec,omitempty" name:"ACodec"`
+
+	// 推流序列号，用来唯一的标志一次推流。
+	Sequence *string `json:"Sequence,omitempty" name:"Sequence"`
+
+	// 视频帧率。
+	VideoFps *uint64 `json:"VideoFps,omitempty" name:"VideoFps"`
+
+	// 视频码率，单位是bps。
+	VideoRate *uint64 `json:"VideoRate,omitempty" name:"VideoRate"`
+
+	// 音频帧率。
+	AudioFps *uint64 `json:"AudioFps,omitempty" name:"AudioFps"`
+
+	// 音频码率，单位是bps。
+	AudioRate *uint64 `json:"AudioRate,omitempty" name:"AudioRate"`
+
+	// 本地流逝时间，单位是ms，音视频流逝时间与本地流逝时间的差距越大表示推流质量越差，上行卡顿越严重。
+	LocalTs *uint64 `json:"LocalTs,omitempty" name:"LocalTs"`
+
+	// 视频流逝时间，单位是ms。
+	VideoTs *uint64 `json:"VideoTs,omitempty" name:"VideoTs"`
+
+	// 音频流逝时间，单位是ms。
+	AudioTs *uint64 `json:"AudioTs,omitempty" name:"AudioTs"`
+}
+
 type RecordParam struct {
 
 	// 录制间隔。
@@ -4142,7 +4989,7 @@ type RecordParam struct {
 	RecordInterval *int64 `json:"RecordInterval,omitempty" name:"RecordInterval"`
 
 	// 录制存储时长。
-	// 单位秒，取值范围： 0-5184000。
+	// 单位秒，取值范围： 0-93312000。
 	// 0表示永久存储。
 	StorageTime *int64 `json:"StorageTime,omitempty" name:"StorageTime"`
 
@@ -4179,6 +5026,9 @@ type RecordTemplateInfo struct {
 
 	// HLS录制定制参数
 	HlsSpecialParam *HlsSpecialParam `json:"HlsSpecialParam,omitempty" name:"HlsSpecialParam"`
+
+	// Mp3录制参数。
+	Mp3Param *RecordParam `json:"Mp3Param,omitempty" name:"Mp3Param"`
 }
 
 type ResumeDelayLiveStreamRequest struct {

@@ -300,6 +300,7 @@ type IDCardOCRRequest struct {
 	// CropIdCard，身份证照片裁剪，bool 类型，
 	// CropPortrait，人像照片裁剪，bool 类型，
 	// CopyWarn，复印件告警，bool 类型，
+	// BorderCheckWarn，遮挡告警，bool 类型，
 	// ReshootWarn，翻拍告警，bool 类型。
 	// 
 	// SDK 设置方式参考：
@@ -353,7 +354,8 @@ type IDCardOCRResponse struct {
 	// 
 	// Code 告警码列表和释义：
 	// -9103	身份证翻拍告警，
-	// -9102	身份证复印件告警。
+	// -9102	身份证复印件告警，
+	// -9105	身份证框内遮挡告警。
 		AdvancedInfo *string `json:"AdvancedInfo,omitempty" name:"AdvancedInfo"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。

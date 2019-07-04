@@ -670,7 +670,7 @@ type SignKeyword struct {
 	// Y轴偏移坐标
 	OffsetCoordY *string `json:"OffsetCoordY,omitempty" name:"OffsetCoordY"`
 
-	// 签章突破宽度
+	// 签章图片宽度
 	ImageWidth *string `json:"ImageWidth,omitempty" name:"ImageWidth"`
 
 	// 签章图片高度

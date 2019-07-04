@@ -41,13 +41,13 @@ type SentenceRecognitionRequest struct {
 	// 用户端对此任务的唯一标识，用户自助生成，用于用户查找识别结果。
 	UsrAudioKey *string `json:"UsrAudioKey,omitempty" name:"UsrAudioKey"`
 
-	// 语音 URL，公网可下载。当 SourceType 值为 0 时须填写该字段，为 1 时不填；URL 的长度大于 0，小于 2048，需进行urlencode编码。音频时间长度要小于60s。
+	// 语音 URL，公网可下载。当 SourceType 值为 0（语音 URL上传） 时须填写该字段，为 1 时不填；URL 的长度大于 0，小于 2048，需进行urlencode编码。音频时间长度要小于60s。
 	Url *string `json:"Url,omitempty" name:"Url"`
 
-	// 语音数据，当SourceType 值为1时必须填写，当SourceType 值为0可不写。要使用base64编码(采用python语言时注意读取文件应该为string而不是byte，以byte格式读取后要decode()。编码后的数据不可带有回车换行符)。音频数据要小于600kB。
+	// 语音数据，当SourceType 值为1（本地语音数据上传）时必须填写，当SourceType 值为0（语音 URL上传）可不写。要使用base64编码(采用python语言时注意读取文件应该为string而不是byte，以byte格式读取后要decode()。编码后的数据不可带有回车换行符)。音频数据要小于600KB。
 	Data *string `json:"Data,omitempty" name:"Data"`
 
-	// 数据长度，当 SourceType 值为1时必须填写，当 SourceType 值为0可不写（此数据长度为数据未进行base64编码时的数据长度）。
+	// 数据长度，单位为字节。当 SourceType 值为1（本地语音数据上传）时必须填写，当 SourceType 值为0（语音 URL上传）可不写（此数据长度为数据未进行base64编码时的数据长度）。
 	DataLen *int64 `json:"DataLen,omitempty" name:"DataLen"`
 }
 

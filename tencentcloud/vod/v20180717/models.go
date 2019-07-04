@@ -3207,6 +3207,7 @@ type DescribeTaskDetailResponse struct {
 	// <li>Procedure：视频处理任务；</li>
 	// <li>EditMedia：视频编辑任务；</li>
 	// <li>WechatPublish：微信发布任务；</li>
+	// <li>WechatMiniProgramPublish：微信小程序视频发布任务；</li>
 	// <li>ComposeMedia：制作媒体文件任务；</li>
 	// <li>PullUpload：拉取上传媒体文件任务。</li>
 	// 
@@ -3272,6 +3273,10 @@ type DescribeTaskDetailResponse struct {
 		// 截取雪碧图任务信息，仅当 TaskType 为 ImageSprite，该字段有值。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		CreateImageSpriteTask *CreateImageSpriteTask2017 `json:"CreateImageSpriteTask,omitempty" name:"CreateImageSpriteTask"`
+
+		// 微信小程序发布任务信息，仅当 TaskType 为 WechatMiniProgramPublish，该字段有值。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		WechatMiniProgramPublishTask *WechatMiniProgramPublishTask `json:"WechatMiniProgramPublishTask,omitempty" name:"WechatMiniProgramPublishTask"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -6243,10 +6248,11 @@ type PullUploadRequest struct {
 	// 媒体文件过期时间，格式按照 ISO 8601 标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
 	ExpireTime *string `json:"ExpireTime,omitempty" name:"ExpireTime"`
 
-	// 指定上传园区，仅适用于对上传地域有特殊需求的用户。目前支持的园区：
+	// 指定上传园区，目前支持的园区：
 	// <li>ap-chongqing：重庆园区，</li>
 	// <li>ap-beijing：北京园区，</li>
 	// <li>ap-shanghai：上海园区。</li>
+	// 注意：不填此参数默认上传至重庆园区。
 	StorageRegion *string `json:"StorageRegion,omitempty" name:"StorageRegion"`
 
 	// 分类ID，用于对媒体进行分类管理，可通过[创建分类](https://cloud.tencent.com/document/product/266/7812)接口，创建分类，获得分类 ID。
@@ -7381,6 +7387,49 @@ type WatermarkTemplate struct {
 	// <li>bottomLeft：表示坐标原点位于视频图像的左下角，水印原点为图片或文字的左下角；</li>
 	// <li>bottomRight：表示坐标原点位于视频图像的右下角，水印原点为图片或文字的右下。；</li>
 	CoordinateOrigin *string `json:"CoordinateOrigin,omitempty" name:"CoordinateOrigin"`
+}
+
+type WeChatMiniProgramPublishRequest struct {
+	*tchttp.BaseRequest
+
+	// 媒体文件 ID。
+	FileId *string `json:"FileId,omitempty" name:"FileId"`
+
+	// 发布视频所对应的转码模板 ID，为0代表原始视频。
+	SourceDefinition *int64 `json:"SourceDefinition,omitempty" name:"SourceDefinition"`
+
+	// 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
+}
+
+func (r *WeChatMiniProgramPublishRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *WeChatMiniProgramPublishRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type WeChatMiniProgramPublishResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 任务 ID。
+		TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *WeChatMiniProgramPublishResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *WeChatMiniProgramPublishResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
 }
 
 type WechatMiniProgramPublishTask struct {
