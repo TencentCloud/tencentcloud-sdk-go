@@ -635,10 +635,10 @@ type CreateParamTemplateRequest struct {
 	// 参数模板描述。
 	Description *string `json:"Description,omitempty" name:"Description"`
 
-	// mysql版本。
+	// MySQL 版本号。
 	EngineVersion *string `json:"EngineVersion,omitempty" name:"EngineVersion"`
 
-	// 源参数模板ID。
+	// 源参数模板 ID。
 	TemplateId *int64 `json:"TemplateId,omitempty" name:"TemplateId"`
 
 	// 参数列表。
@@ -658,7 +658,7 @@ type CreateParamTemplateResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 参数模板ID。
+		// 参数模板 ID。
 		TemplateId *int64 `json:"TemplateId,omitempty" name:"TemplateId"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -1466,7 +1466,7 @@ type DescribeDBInstancesRequest struct {
 	// 单次请求返回的数量，默认值为 20，最大值为 2000。
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 
-	// 安全组 ID。
+	// 安全组 ID。当使用安全组 ID 为过滤条件时，需指定 WithSecurityGroup 参数为 1。
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" name:"SecurityGroupId"`
 
 	// 付费类型，可取值：0 - 包年包月，1 - 小时计费。
@@ -1499,7 +1499,7 @@ type DescribeDBInstancesRequest struct {
 	// 返回结果集排序方式，目前支持："ASC" 或者 "DESC"。
 	OrderDirection *string `json:"OrderDirection,omitempty" name:"OrderDirection"`
 
-	// 是否包含安全组详细信息，可取值：0 - 不包含，1 - 包含。
+	// 是否以安全组 ID 为过滤条件。
 	WithSecurityGroup *int64 `json:"WithSecurityGroup,omitempty" name:"WithSecurityGroup"`
 
 	// 是否包含独享集群详细信息，可取值：0 - 不包含，1 - 包含。
@@ -3536,6 +3536,40 @@ func (r *ModifyTimeWindowResponse) ToJsonString() string {
 }
 
 func (r *ModifyTimeWindowResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type OfflineIsolatedInstancesRequest struct {
+	*tchttp.BaseRequest
+
+	// 实例 ID，格式如：cdb-c1nl9rpv，与云数据库控制台页面中显示的实例 ID 相同。
+	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds" list`
+}
+
+func (r *OfflineIsolatedInstancesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *OfflineIsolatedInstancesRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type OfflineIsolatedInstancesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *OfflineIsolatedInstancesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *OfflineIsolatedInstancesResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 

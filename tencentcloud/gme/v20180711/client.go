@@ -43,6 +43,31 @@ func NewClient(credential *common.Credential, region string, clientProfile *prof
 }
 
 
+func NewDescribeFilterResultRequest() (request *DescribeFilterResultRequest) {
+    request = &DescribeFilterResultRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("gme", APIVersion, "DescribeFilterResult")
+    return
+}
+
+func NewDescribeFilterResultResponse() (response *DescribeFilterResultResponse) {
+    response = &DescribeFilterResultResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 根据应用ID和文件ID查询识别结果
+func (c *Client) DescribeFilterResult(request *DescribeFilterResultRequest) (response *DescribeFilterResultResponse, err error) {
+    if request == nil {
+        request = NewDescribeFilterResultRequest()
+    }
+    response = NewDescribeFilterResultResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeFilterResultListRequest() (request *DescribeFilterResultListRequest) {
     request = &DescribeFilterResultListRequest{
         BaseRequest: &tchttp.BaseRequest{},

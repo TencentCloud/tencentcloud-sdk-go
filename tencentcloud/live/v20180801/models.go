@@ -500,11 +500,11 @@ type CreateLiveRecordRequest struct {
 	// 推流域名。多域名推流必须设置。
 	DomainName *string `json:"DomainName,omitempty" name:"DomainName"`
 
-	// 录制开始时间。中国标准时间，需要URLEncode。如 2017-01-01 10:10:01，编码为：2017-01-01+10%3a10%3a01。
+	// 录制开始时间。中国标准时间，需要URLEncode(rfc3986)。如 2017-01-01 10:10:01，编码为：2017-01-01+10%3a10%3a01。
 	// 定时录制模式，必须设置该字段；实时视频录制模式，忽略该字段。
 	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
 
-	// 录制结束时间。中国标准时间，需要URLEncode。如 2017-01-01 10:30:01，编码为：2017-01-01+10%3a30%3a01。
+	// 录制结束时间。中国标准时间，需要URLEncode(rfc3986)。如 2017-01-01 10:30:01，编码为：2017-01-01+10%3a30%3a01。
 	// 定时录制模式，必须设置该字段；实时录制模式，为可选字段。如果通过Highlight参数，设置录制为实时视频录制模式，其设置的结束时间不应超过当前时间+30分钟，如果设置的结束时间超过当前时间+30分钟或者小于当前时间或者不设置该参数，则实际结束时间为当前时间+30分钟。
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 
@@ -515,14 +515,18 @@ type CreateLiveRecordRequest struct {
 	RecordType *string `json:"RecordType,omitempty" name:"RecordType"`
 
 	// 录制文件格式。其值为：
-	// “flv”,“hls”,”mp4”,“aac”,”mp3”，默认“flv”。
+	// “flv”【默认】,“hls”,”mp4”,“aac”,”mp3”。
 	// 在定时录制模式或实时视频录制模式下，该参数均有效，不区分大小写。
 	FileFormat *string `json:"FileFormat,omitempty" name:"FileFormat"`
 
-	// 开启实时视频录制模式标志。0：不开启实时视频录制模式，即采用定时录制模式【默认】；1：开启实时视频录制模式。
+	// 开启实时视频录制模式标志。
+	// 0：不开启实时视频录制模式，即定时录制模式【默认】。见[示例一](#.E7.A4.BA.E4.BE.8B1-.E5.88.9B.E5.BB.BA.E5.AE.9A.E6.97.B6.E5.BD.95.E5.88.B6.E4.BB.BB.E5.8A.A1)。
+	// 1：开启实时视频录制模式。见[示例二](#.E7.A4.BA.E4.BE.8B2-.E5.88.9B.E5.BB.BA.E5.AE.9E.E6.97.B6.E5.BD.95.E5.88.B6.E4.BB.BB.E5.8A.A1)。
 	Highlight *int64 `json:"Highlight,omitempty" name:"Highlight"`
 
-	// 开启A+B=C混流C流录制标志。0：不开启A+B=C混流C流录制【默认】；1：开启A+B=C混流C流录制。
+	// 开启A+B=C混流C流录制标志。
+	// 0：不开启A+B=C混流C流录制【默认】。
+	// 1：开启A+B=C混流C流录制。
 	// 在定时录制模式或实时视频录制模式下，该参数均有效。
 	MixStream *int64 `json:"MixStream,omitempty" name:"MixStream"`
 
@@ -734,6 +738,7 @@ type CreateLiveSnapshotTemplateRequest struct {
 	Description *string `json:"Description,omitempty" name:"Description"`
 
 	// 截图间隔，单位s，默认10s。
+	// 范围： 10s ~ 600s。
 	SnapshotInterval *int64 `json:"SnapshotInterval,omitempty" name:"SnapshotInterval"`
 
 	// 截图宽度。默认：0（原始宽）。
@@ -5130,43 +5135,6 @@ type RuleInfo struct {
 
 	// 流名称。
 	StreamName *string `json:"StreamName,omitempty" name:"StreamName"`
-}
-
-type SetLiveWatermarkStatusRequest struct {
-	*tchttp.BaseRequest
-
-	// 水印ID。
-	WatermarkId *int64 `json:"WatermarkId,omitempty" name:"WatermarkId"`
-
-	// 状态。0：停用，1:启用
-	Status *int64 `json:"Status,omitempty" name:"Status"`
-}
-
-func (r *SetLiveWatermarkStatusRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-func (r *SetLiveWatermarkStatusRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
-}
-
-type SetLiveWatermarkStatusResponse struct {
-	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
-}
-
-func (r *SetLiveWatermarkStatusResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-func (r *SetLiveWatermarkStatusResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
 }
 
 type SnapshotTemplateInfo struct {

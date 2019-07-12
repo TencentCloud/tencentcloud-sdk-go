@@ -28,10 +28,10 @@ type Block struct {
 	// 区块Hash数值
 	DataHash *string `json:"DataHash,omitempty" name:"DataHash"`
 
-	// 区块ID，与区块编号一直
+	// 区块ID，与区块编号一致
 	BlockId *uint64 `json:"BlockId,omitempty" name:"BlockId"`
 
-	// 前一个区块Hash（未使用）,与区块Hash数值一直
+	// 前一个区块Hash（未使用）,与区块Hash数值一致
 	PreHash *string `json:"PreHash,omitempty" name:"PreHash"`
 
 	// 区块内的交易数量

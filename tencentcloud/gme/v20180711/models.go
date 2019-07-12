@@ -23,7 +23,7 @@ import (
 type DescribeFilterResultListRequest struct {
 	*tchttp.BaseRequest
 
-	// 应用id
+	// 应用ID
 	BizId *uint64 `json:"BizId,omitempty" name:"BizId"`
 
 	// 开始时间，格式为 年-月-日，如: 2018-07-11
@@ -74,9 +74,50 @@ func (r *DescribeFilterResultListResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeFilterResultRequest struct {
+	*tchttp.BaseRequest
+
+	// 应用ID
+	BizId *uint64 `json:"BizId,omitempty" name:"BizId"`
+
+	// 文件ID
+	FileId *string `json:"FileId,omitempty" name:"FileId"`
+}
+
+func (r *DescribeFilterResultRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeFilterResultRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeFilterResultResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 过滤结果
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Data *VoiceFilterInfo `json:"Data,omitempty" name:"Data"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeFilterResultResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeFilterResultResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type VoiceFilter struct {
 
-	// 过滤类型，1：政治，2：色情，3：涉毒
+	// 过滤类型，1：政治，2：色情，3：涉毒，4：谩骂
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Type *uint64 `json:"Type,omitempty" name:"Type"`
 
@@ -115,22 +156,22 @@ type VoiceFilterInfo struct {
 type VoiceFilterRequest struct {
 	*tchttp.BaseRequest
 
-	// 应用id
+	// 应用ID，创建应用得到的AppID: https://console.cloud.tencent.com/gamegme
 	BizId *uint64 `json:"BizId,omitempty" name:"BizId"`
 
-	// 文件id，表示文件唯一id
+	// 文件ID，表示文件唯一id
 	FileId *string `json:"FileId,omitempty" name:"FileId"`
 
 	// 文件名
 	FileName *string `json:"FileName,omitempty" name:"FileName"`
 
-	// 文件内容url，FileUrl和FileContent二选一
+	// 文件url，urlencode编码，FileUrl和FileContent二选一
 	FileUrl *string `json:"FileUrl,omitempty" name:"FileUrl"`
 
 	// 文件内容，base64编码，FileUrl和FileContent二选一
 	FileContent *string `json:"FileContent,omitempty" name:"FileContent"`
 
-	// 用户id
+	// 用户ID
 	OpenId *string `json:"OpenId,omitempty" name:"OpenId"`
 }
 

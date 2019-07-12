@@ -189,6 +189,9 @@ type AutoScalingGroup struct {
 
 	// 伸缩组标签列表
 	Tags []*Tag `json:"Tags,omitempty" name:"Tags" list`
+
+	// 服务设置
+	ServiceSettings *ServiceSettings `json:"ServiceSettings,omitempty" name:"ServiceSettings"`
 }
 
 type AutoScalingGroupAbstract struct {
@@ -302,9 +305,10 @@ type CreateAutoScalingGroupRequest struct {
 	// 可用区列表，基础网络场景下必须指定可用区
 	Zones []*string `json:"Zones,omitempty" name:"Zones" list`
 
-	// 重试策略，取值包括 IMMEDIATE_RETRY 和 INCREMENTAL_INTERVALS，默认取值为 IMMEDIATE_RETRY。
+	// 重试策略，取值包括 IMMEDIATE_RETRY、 INCREMENTAL_INTERVALS、NO_RETRY，默认取值为 IMMEDIATE_RETRY。
 	// <br><li> IMMEDIATE_RETRY，立即重试，在较短时间内快速重试，连续失败超过一定次数（5次）后不再重试。
 	// <br><li> INCREMENTAL_INTERVALS，间隔递增重试，随着连续失败次数的增加，重试间隔逐渐增大，重试间隔从秒级到1天不等。
+	// <br><li> NO_RETRY，不进行重试，直到再次收到用户调用或者告警信息后才会重试。
 	RetryPolicy *string `json:"RetryPolicy,omitempty" name:"RetryPolicy"`
 
 	// 可用区校验策略，取值包括 ALL 和 ANY，默认取值为ANY。
@@ -317,6 +321,9 @@ type CreateAutoScalingGroupRequest struct {
 
 	// 标签描述列表。通过指定该参数可以支持绑定标签到伸缩组。同时绑定标签到相应的资源实例，
 	Tags []*Tag `json:"Tags,omitempty" name:"Tags" list`
+
+	// 服务设置，包括云监控不健康替换等服务设置。
+	ServiceSettings *ServiceSettings `json:"ServiceSettings,omitempty" name:"ServiceSettings"`
 }
 
 func (r *CreateAutoScalingGroupRequest) ToJsonString() string {
@@ -408,6 +415,9 @@ type CreateLaunchConfigurationRequest struct {
 
 	// 标签列表。通过指定该参数，可以为扩容的实例绑定标签。最多支持指定10个标签。
 	InstanceTags []*InstanceTag `json:"InstanceTags,omitempty" name:"InstanceTags" list`
+
+	// CAM角色名称。可通过DescribeRoleList接口返回值中的roleName获取。
+	CamRoleName *string `json:"CamRoleName,omitempty" name:"CamRoleName"`
 }
 
 func (r *CreateLaunchConfigurationRequest) ToJsonString() string {
@@ -1810,6 +1820,9 @@ type LaunchConfiguration struct {
 
 	// 更新时间
 	UpdatedTime *string `json:"UpdatedTime,omitempty" name:"UpdatedTime"`
+
+	// CAM角色名称。可通过DescribeRoleList接口返回值中的roleName获取。
+	CamRoleName *string `json:"CamRoleName,omitempty" name:"CamRoleName"`
 }
 
 type LifecycleHook struct {
@@ -1924,9 +1937,10 @@ type ModifyAutoScalingGroupRequest struct {
 	// 可用区列表
 	Zones []*string `json:"Zones,omitempty" name:"Zones" list`
 
-	// 重试策略，取值包括 IMMEDIATE_RETRY 和 INCREMENTAL_INTERVALS，默认取值为 IMMEDIATE_RETRY。
+	// 重试策略，取值包括 IMMEDIATE_RETRY、 INCREMENTAL_INTERVALS、NO_RETRY，默认取值为 IMMEDIATE_RETRY。
 	// <br><li> IMMEDIATE_RETRY，立即重试，在较短时间内快速重试，连续失败超过一定次数（5次）后不再重试。
 	// <br><li> INCREMENTAL_INTERVALS，间隔递增重试，随着连续失败次数的增加，重试间隔逐渐增大，重试间隔从秒级到1天不等。
+	// <br><li> NO_RETRY，不进行重试，直到再次收到用户调用或者告警信息后才会重试。
 	RetryPolicy *string `json:"RetryPolicy,omitempty" name:"RetryPolicy"`
 
 	// 可用区校验策略，取值包括 ALL 和 ANY，默认取值为ANY。在伸缩组实际变更资源相关字段时（启动配置、可用区、子网）发挥作用。
@@ -1936,6 +1950,9 @@ type ModifyAutoScalingGroupRequest struct {
 	// 可用区或子网不可用的常见原因包括该可用区CVM实例类型售罄、该可用区CBS云盘售罄、该可用区配额不足、该子网IP不足等。
 	// 如果 Zones/SubnetIds 中可用区或者子网不存在，则无论 ZonesCheckPolicy 采用何种取值，都会校验报错。
 	ZonesCheckPolicy *string `json:"ZonesCheckPolicy,omitempty" name:"ZonesCheckPolicy"`
+
+	// 服务设置，包括云监控不健康替换等服务设置。
+	ServiceSettings *ServiceSettings `json:"ServiceSettings,omitempty" name:"ServiceSettings"`
 }
 
 func (r *ModifyAutoScalingGroupRequest) ToJsonString() string {
@@ -2428,6 +2445,12 @@ type ScheduledAction struct {
 	CreatedTime *string `json:"CreatedTime,omitempty" name:"CreatedTime"`
 }
 
+type ServiceSettings struct {
+
+	// 开启监控不健康替换服务。若开启则对于云监控标记为不健康的实例，弹性伸缩服务会进行替换。若不指定该参数，则默认为 False。
+	ReplaceMonitorUnhealthy *bool `json:"ReplaceMonitorUnhealthy,omitempty" name:"ReplaceMonitorUnhealthy"`
+}
+
 type SetInstancesProtectionRequest struct {
 	*tchttp.BaseRequest
 
@@ -2568,6 +2591,9 @@ type UpgradeLaunchConfigurationRequest struct {
 
 	// 标签列表。通过指定该参数，可以为扩容的实例绑定标签。最多支持指定10个标签。
 	InstanceTags []*InstanceTag `json:"InstanceTags,omitempty" name:"InstanceTags" list`
+
+	// CAM角色名称。可通过DescribeRoleList接口返回值中的roleName获取。
+	CamRoleName *string `json:"CamRoleName,omitempty" name:"CamRoleName"`
 }
 
 func (r *UpgradeLaunchConfigurationRequest) ToJsonString() string {

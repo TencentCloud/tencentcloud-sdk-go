@@ -2400,31 +2400,6 @@ func (c *Client) ResumeLiveStream(request *ResumeLiveStreamRequest) (response *R
     return
 }
 
-func NewSetLiveWatermarkStatusRequest() (request *SetLiveWatermarkStatusRequest) {
-    request = &SetLiveWatermarkStatusRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    request.Init().WithApiInfo("live", APIVersion, "SetLiveWatermarkStatus")
-    return
-}
-
-func NewSetLiveWatermarkStatusResponse() (response *SetLiveWatermarkStatusResponse) {
-    response = &SetLiveWatermarkStatusResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    }
-    return
-}
-
-// 设置水印是否启用
-func (c *Client) SetLiveWatermarkStatus(request *SetLiveWatermarkStatusRequest) (response *SetLiveWatermarkStatusResponse, err error) {
-    if request == nil {
-        request = NewSetLiveWatermarkStatusRequest()
-    }
-    response = NewSetLiveWatermarkStatusResponse()
-    err = c.Send(request, response)
-    return
-}
-
 func NewStopLiveRecordRequest() (request *StopLiveRecordRequest) {
     request = &StopLiveRecordRequest{
         BaseRequest: &tchttp.BaseRequest{},

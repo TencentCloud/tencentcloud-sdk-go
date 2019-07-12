@@ -38,7 +38,7 @@ type AddInstancesRequest struct {
 	// 重装系统密码设置
 	Password *string `json:"Password,omitempty" name:"Password"`
 
-	// 重装系统，关联秘钥设置
+	// 重装系统，关联密钥设置
 	KeyId *string `json:"KeyId,omitempty" name:"KeyId"`
 
 	// 安全组设置
