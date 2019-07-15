@@ -4,6 +4,10 @@ fixes:
 
 * correctly return error when fail to flat paramter to url
 
+enhancement:
+
+* use bytes.Buffer instead of string concate for performance issue
+
 ## 3.0.10 (2018-07-06)
 
 * update apis
