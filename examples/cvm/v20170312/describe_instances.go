@@ -69,7 +69,7 @@ func main() {
 	// 使用json字符串设置一个request，注意这里实际是更新request，即Limit=1将会被保留，
 	// 而过滤条件的zone将会变为ap-guangzhou-2。
 	// 如果需要一个全新的request，则需要用cvm.NewDescribeInstancesRequest()创建。
-	err := request.FromJsonString(`{"Filters":[{"Name":"zone","Values":["ap-guangzhou-2"]}]}`)
+	err := request.FromJsonString(`{"Filters":[{"Name":"zone","Values":["ap-guangzhou-1","ap-guangzhou-2"]}]}`)
 	if err != nil {
 		panic(err)
 	}

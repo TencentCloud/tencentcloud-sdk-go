@@ -218,11 +218,15 @@ func flatStructure(value reflect.Value, request Request, prefix string) (err err
 				} else if kind == reflect.Float64 {
 					request.GetParams()[key] = strconv.FormatFloat(vj.Float(), 'f', -1, 64)
 				} else {
-					flatStructure(vj, request, key+".")
+					if err = flatStructure(vj, request, key+"."); err != nil {
+						return
+					}
 				}
 			}
 		} else {
-			flatStructure(reflect.ValueOf(field.Interface()), request, prefix+nameTag+".")
+			if err = flatStructure(reflect.ValueOf(field.Interface()), request, prefix+nameTag+"."); err != nil {
+				return
+			}
 		}
 	}
 	return

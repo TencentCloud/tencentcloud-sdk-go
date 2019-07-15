@@ -1,5 +1,9 @@
 ## latest
 
+fixes:
+
+* correctly return error when fail to flat paramter to url
+
 ## 3.0.10 (2018-07-06)
 
 * update apis
