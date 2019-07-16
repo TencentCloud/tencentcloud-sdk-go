@@ -118,6 +118,31 @@ func (c *Client) AttachGroupPolicy(request *AttachGroupPolicyRequest) (response 
     return
 }
 
+func NewAttachRolePolicyRequest() (request *AttachRolePolicyRequest) {
+    request = &AttachRolePolicyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cam", APIVersion, "AttachRolePolicy")
+    return
+}
+
+func NewAttachRolePolicyResponse() (response *AttachRolePolicyResponse) {
+    response = &AttachRolePolicyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（AttachRolePolicy）用于绑定策略到角色。
+func (c *Client) AttachRolePolicy(request *AttachRolePolicyRequest) (response *AttachRolePolicyResponse, err error) {
+    if request == nil {
+        request = NewAttachRolePolicyRequest()
+    }
+    response = NewAttachRolePolicyResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewAttachUserPolicyRequest() (request *AttachUserPolicyRequest) {
     request = &AttachUserPolicyRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -139,6 +164,31 @@ func (c *Client) AttachUserPolicy(request *AttachUserPolicyRequest) (response *A
         request = NewAttachUserPolicyRequest()
     }
     response = NewAttachUserPolicyResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewConsumeCustomMFATokenRequest() (request *ConsumeCustomMFATokenRequest) {
+    request = &ConsumeCustomMFATokenRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cam", APIVersion, "ConsumeCustomMFAToken")
+    return
+}
+
+func NewConsumeCustomMFATokenResponse() (response *ConsumeCustomMFATokenResponse) {
+    response = &ConsumeCustomMFATokenResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 验证自定义多因子Token
+func (c *Client) ConsumeCustomMFAToken(request *ConsumeCustomMFATokenRequest) (response *ConsumeCustomMFATokenResponse, err error) {
+    if request == nil {
+        request = NewConsumeCustomMFATokenRequest()
+    }
+    response = NewConsumeCustomMFATokenResponse()
     err = c.Send(request, response)
     return
 }
@@ -189,6 +239,31 @@ func (c *Client) CreatePolicy(request *CreatePolicyRequest) (response *CreatePol
         request = NewCreatePolicyRequest()
     }
     response = NewCreatePolicyResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateRoleRequest() (request *CreateRoleRequest) {
+    request = &CreateRoleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cam", APIVersion, "CreateRole")
+    return
+}
+
+func NewCreateRoleResponse() (response *CreateRoleResponse) {
+    response = &CreateRoleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（CreateRole）用于创建角色。
+func (c *Client) CreateRole(request *CreateRoleRequest) (response *CreateRoleResponse, err error) {
+    if request == nil {
+        request = NewCreateRoleRequest()
+    }
+    response = NewCreateRoleResponse()
     err = c.Send(request, response)
     return
 }
@@ -268,6 +343,31 @@ func (c *Client) DeletePolicy(request *DeletePolicyRequest) (response *DeletePol
     return
 }
 
+func NewDeleteRoleRequest() (request *DeleteRoleRequest) {
+    request = &DeleteRoleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cam", APIVersion, "DeleteRole")
+    return
+}
+
+func NewDeleteRoleResponse() (response *DeleteRoleResponse) {
+    response = &DeleteRoleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（DeleteRole）用于删除指定角色。
+func (c *Client) DeleteRole(request *DeleteRoleRequest) (response *DeleteRoleResponse, err error) {
+    if request == nil {
+        request = NewDeleteRoleRequest()
+    }
+    response = NewDeleteRoleResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteSAMLProviderRequest() (request *DeleteSAMLProviderRequest) {
     request = &DeleteSAMLProviderRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -318,6 +418,31 @@ func (c *Client) DeleteUser(request *DeleteUserRequest) (response *DeleteUserRes
     return
 }
 
+func NewDescribeRoleListRequest() (request *DescribeRoleListRequest) {
+    request = &DescribeRoleListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cam", APIVersion, "DescribeRoleList")
+    return
+}
+
+func NewDescribeRoleListResponse() (response *DescribeRoleListResponse) {
+    response = &DescribeRoleListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（DescribeRoleList）用于获取账号下的角色列表。
+func (c *Client) DescribeRoleList(request *DescribeRoleListRequest) (response *DescribeRoleListResponse, err error) {
+    if request == nil {
+        request = NewDescribeRoleListRequest()
+    }
+    response = NewDescribeRoleListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDetachGroupPolicyRequest() (request *DetachGroupPolicyRequest) {
     request = &DetachGroupPolicyRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -343,6 +468,31 @@ func (c *Client) DetachGroupPolicy(request *DetachGroupPolicyRequest) (response 
     return
 }
 
+func NewDetachRolePolicyRequest() (request *DetachRolePolicyRequest) {
+    request = &DetachRolePolicyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cam", APIVersion, "DetachRolePolicy")
+    return
+}
+
+func NewDetachRolePolicyResponse() (response *DetachRolePolicyResponse) {
+    response = &DetachRolePolicyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（DetachRolePolicy）用于解除绑定角色的策略。
+func (c *Client) DetachRolePolicy(request *DetachRolePolicyRequest) (response *DetachRolePolicyResponse, err error) {
+    if request == nil {
+        request = NewDetachRolePolicyRequest()
+    }
+    response = NewDetachRolePolicyResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDetachUserPolicyRequest() (request *DetachUserPolicyRequest) {
     request = &DetachUserPolicyRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -364,6 +514,31 @@ func (c *Client) DetachUserPolicy(request *DetachUserPolicyRequest) (response *D
         request = NewDetachUserPolicyRequest()
     }
     response = NewDetachUserPolicyResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewGetCustomMFATokenInfoRequest() (request *GetCustomMFATokenInfoRequest) {
+    request = &GetCustomMFATokenInfoRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cam", APIVersion, "GetCustomMFATokenInfo")
+    return
+}
+
+func NewGetCustomMFATokenInfoResponse() (response *GetCustomMFATokenInfoResponse) {
+    response = &GetCustomMFATokenInfoResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 获取自定义多因子Token关联信息
+func (c *Client) GetCustomMFATokenInfo(request *GetCustomMFATokenInfoRequest) (response *GetCustomMFATokenInfoResponse, err error) {
+    if request == nil {
+        request = NewGetCustomMFATokenInfoRequest()
+    }
+    response = NewGetCustomMFATokenInfoResponse()
     err = c.Send(request, response)
     return
 }
@@ -414,6 +589,31 @@ func (c *Client) GetPolicy(request *GetPolicyRequest) (response *GetPolicyRespon
         request = NewGetPolicyRequest()
     }
     response = NewGetPolicyResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewGetRoleRequest() (request *GetRoleRequest) {
+    request = &GetRoleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cam", APIVersion, "GetRole")
+    return
+}
+
+func NewGetRoleResponse() (response *GetRoleResponse) {
+    response = &GetRoleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（GetRole）用于获取指定角色的详细信息。
+func (c *Client) GetRole(request *GetRoleRequest) (response *GetRoleResponse, err error) {
+    if request == nil {
+        request = NewGetRoleRequest()
+    }
+    response = NewGetRoleResponse()
     err = c.Send(request, response)
     return
 }
@@ -489,6 +689,31 @@ func (c *Client) ListAttachedGroupPolicies(request *ListAttachedGroupPoliciesReq
         request = NewListAttachedGroupPoliciesRequest()
     }
     response = NewListAttachedGroupPoliciesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewListAttachedRolePoliciesRequest() (request *ListAttachedRolePoliciesRequest) {
+    request = &ListAttachedRolePoliciesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cam", APIVersion, "ListAttachedRolePolicies")
+    return
+}
+
+func NewListAttachedRolePoliciesResponse() (response *ListAttachedRolePoliciesResponse) {
+    response = &ListAttachedRolePoliciesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（ListAttachedRolePolicies）用于获取角色绑定的策略列表。
+func (c *Client) ListAttachedRolePolicies(request *ListAttachedRolePoliciesRequest) (response *ListAttachedRolePoliciesResponse, err error) {
+    if request == nil {
+        request = NewListAttachedRolePoliciesRequest()
+    }
+    response = NewListAttachedRolePoliciesResponse()
     err = c.Send(request, response)
     return
 }
@@ -718,6 +943,56 @@ func (c *Client) RemoveUserFromGroup(request *RemoveUserFromGroupRequest) (respo
     return
 }
 
+func NewSetFlagRequest() (request *SetFlagRequest) {
+    request = &SetFlagRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cam", APIVersion, "SetFlag")
+    return
+}
+
+func NewSetFlagResponse() (response *SetFlagResponse) {
+    response = &SetFlagResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 设置用户的登录，敏感操作，异步登录设置
+func (c *Client) SetFlag(request *SetFlagRequest) (response *SetFlagResponse, err error) {
+    if request == nil {
+        request = NewSetFlagRequest()
+    }
+    response = NewSetFlagResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewUpdateAssumeRolePolicyRequest() (request *UpdateAssumeRolePolicyRequest) {
+    request = &UpdateAssumeRolePolicyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cam", APIVersion, "UpdateAssumeRolePolicy")
+    return
+}
+
+func NewUpdateAssumeRolePolicyResponse() (response *UpdateAssumeRolePolicyResponse) {
+    response = &UpdateAssumeRolePolicyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（UpdateAssumeRolePolicy）用于修改角色信任策略的策略文档。
+func (c *Client) UpdateAssumeRolePolicy(request *UpdateAssumeRolePolicyRequest) (response *UpdateAssumeRolePolicyResponse, err error) {
+    if request == nil {
+        request = NewUpdateAssumeRolePolicyRequest()
+    }
+    response = NewUpdateAssumeRolePolicyResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewUpdateGroupRequest() (request *UpdateGroupRequest) {
     request = &UpdateGroupRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -764,6 +1039,31 @@ func (c *Client) UpdatePolicy(request *UpdatePolicyRequest) (response *UpdatePol
         request = NewUpdatePolicyRequest()
     }
     response = NewUpdatePolicyResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewUpdateRoleDescriptionRequest() (request *UpdateRoleDescriptionRequest) {
+    request = &UpdateRoleDescriptionRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cam", APIVersion, "UpdateRoleDescription")
+    return
+}
+
+func NewUpdateRoleDescriptionResponse() (response *UpdateRoleDescriptionResponse) {
+    response = &UpdateRoleDescriptionResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（UpdateRoleDescription）用于修改角色的描述信息。
+func (c *Client) UpdateRoleDescription(request *UpdateRoleDescriptionRequest) (response *UpdateRoleDescriptionResponse, err error) {
+    if request == nil {
+        request = NewUpdateRoleDescriptionRequest()
+    }
+    response = NewUpdateRoleDescriptionResponse()
     err = c.Send(request, response)
     return
 }

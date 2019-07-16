@@ -67,6 +67,201 @@ func (r *ArithmeticOCRResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type BankCardOCRRequest struct {
+	*tchttp.BaseRequest
+
+	// 图片的 Base64 值。
+	// 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
+	// 支持的图片大小：所下载图片经Base64编码后不超过 3M。图片下载时间不超过 3 秒。
+	// 图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+	ImageBase64 *string `json:"ImageBase64,omitempty" name:"ImageBase64"`
+
+	// 图片的 Url 地址。
+	// 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
+	// 支持的图片大小：所下载图片经 Base64 编码后不超过 3M。图片下载时间不超过 3 秒。
+	// 图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。
+	// 非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
+}
+
+func (r *BankCardOCRRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *BankCardOCRRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type BankCardOCRResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 卡号
+		CardNo *string `json:"CardNo,omitempty" name:"CardNo"`
+
+		// 银行信息
+		BankInfo *string `json:"BankInfo,omitempty" name:"BankInfo"`
+
+		// 有效期
+		ValidDate *string `json:"ValidDate,omitempty" name:"ValidDate"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *BankCardOCRResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *BankCardOCRResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type BizLicenseOCRRequest struct {
+	*tchttp.BaseRequest
+
+	// 图片的 Base64 值。
+	// 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
+	// 支持的图片大小：所下载图片经Base64编码后不超过 3M。图片下载时间不超过 3 秒。
+	// 图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+	ImageBase64 *string `json:"ImageBase64,omitempty" name:"ImageBase64"`
+
+	// 图片的 Url 地址。
+	// 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
+	// 支持的图片大小：所下载图片经 Base64 编码后不超过 3M。图片下载时间不超过 3 秒。
+	// 图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。
+	// 非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
+}
+
+func (r *BizLicenseOCRRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *BizLicenseOCRRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type BizLicenseOCRResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 注册号
+		RegNum *string `json:"RegNum,omitempty" name:"RegNum"`
+
+		// 公司名称
+		Name *string `json:"Name,omitempty" name:"Name"`
+
+		// 注册资本
+		Capital *string `json:"Capital,omitempty" name:"Capital"`
+
+		// 法定代表人
+		Person *string `json:"Person,omitempty" name:"Person"`
+
+		// 地址
+		Address *string `json:"Address,omitempty" name:"Address"`
+
+		// 经营范围
+		Business *string `json:"Business,omitempty" name:"Business"`
+
+		// 主体类型
+		Type *string `json:"Type,omitempty" name:"Type"`
+
+		// 营业期限
+		Period *string `json:"Period,omitempty" name:"Period"`
+
+		// 组成形式
+		ComposingForm *string `json:"ComposingForm,omitempty" name:"ComposingForm"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *BizLicenseOCRResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *BizLicenseOCRResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type BusinessCardInfo struct {
+
+	// 识别出的字段名称（关键字，可能重复，比如多个手机），能识别的字段名为：
+	// 姓名、英文姓名、英文地址、公司、英文公司、职位、英文职位、部门、英文部门、手机、电话、传真、社交帐号、QQ、MSN、微信、微博、邮箱、邮编、网址、公司账号、其他。
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 识别出的字段名称对应的值，也就是字段name对应的字符串结果。
+	Value *string `json:"Value,omitempty" name:"Value"`
+}
+
+type BusinessCardOCRRequest struct {
+	*tchttp.BaseRequest
+
+	// 图片的 Base64 值。
+	// 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
+	// 支持的图片大小：所下载图片经Base64编码后不超过 3M。图片下载时间不超过 3 秒。
+	// 图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+	ImageBase64 *string `json:"ImageBase64,omitempty" name:"ImageBase64"`
+
+	// 图片的 Url 地址。
+	// 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
+	// 支持的图片大小：所下载图片经 Base64 编码后不超过 3M。图片下载时间不超过 3 秒。
+	// 图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。
+	// 非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
+
+	// 可选字段，根据需要选择是否请求对应字段。
+	// 目前支持的字段为：
+	// RetImageType-“PROPROCESS” 图像预处理，string 类型。
+	// 图像预处理功能为，检测图片倾斜的角度，将原本倾斜的图片围绕中心点转正，最终输出一张正的名片抠图。
+	// 
+	// SDK 设置方式参考：
+	// Config = Json.stringify({"RetImageType":"PROPROCESS"})
+	// API 3.0 Explorer 设置方式参考：
+	// Config = {"RetImageType":"PROPROCESS"}
+	Config *string `json:"Config,omitempty" name:"Config"`
+}
+
+func (r *BusinessCardOCRRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *BusinessCardOCRRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type BusinessCardOCRResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 名片识别内容。
+		BusinessCardInfos []*BusinessCardInfo `json:"BusinessCardInfos,omitempty" name:"BusinessCardInfos" list`
+
+		// 返回图像预处理后的图片，图像预处理未开启时返回内容为空。
+		RetImageBase64 *string `json:"RetImageBase64,omitempty" name:"RetImageBase64"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *BusinessCardOCRResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *BusinessCardOCRResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type Coord struct {
 
 	// 横坐标
@@ -74,6 +269,80 @@ type Coord struct {
 
 	// 纵坐标
 	Y *int64 `json:"Y,omitempty" name:"Y"`
+}
+
+type DriverLicenseOCRRequest struct {
+	*tchttp.BaseRequest
+
+	// 图片的 Base64 值。
+	// 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
+	// 支持的图片大小：所下载图片经Base64编码后不超过 3M。图片下载时间不超过 3 秒。
+	// 图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+	ImageBase64 *string `json:"ImageBase64,omitempty" name:"ImageBase64"`
+
+	// 图片的 Url 地址。
+	// 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
+	// 支持的图片大小：所下载图片经 Base64 编码后不超过 3M。图片下载时间不超过 3 秒。
+	// 图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。
+	// 非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
+}
+
+func (r *DriverLicenseOCRRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DriverLicenseOCRRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DriverLicenseOCRResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 姓名
+		Name *string `json:"Name,omitempty" name:"Name"`
+
+		// 性别
+		Sex *string `json:"Sex,omitempty" name:"Sex"`
+
+		// 国籍
+		Nationality *string `json:"Nationality,omitempty" name:"Nationality"`
+
+		// 住址
+		Address *string `json:"Address,omitempty" name:"Address"`
+
+		// 出生日期
+		DateOfBirth *string `json:"DateOfBirth,omitempty" name:"DateOfBirth"`
+
+		// 初次领证日期
+		DateOfFirstIssue *string `json:"DateOfFirstIssue,omitempty" name:"DateOfFirstIssue"`
+
+		// 准驾车型
+		Class *string `json:"Class,omitempty" name:"Class"`
+
+		// 有效期开始时间
+		StartDate *string `json:"StartDate,omitempty" name:"StartDate"`
+
+		// 有效期截止时间
+		EndDate *string `json:"EndDate,omitempty" name:"EndDate"`
+
+		// 证号
+		CardCode *string `json:"CardCode,omitempty" name:"CardCode"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DriverLicenseOCRResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DriverLicenseOCRResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
 }
 
 type EnglishOCRRequest struct {
@@ -188,6 +457,22 @@ type GeneralBasicOCRRequest struct {
 
 	// 保留字段。
 	Scene *string `json:"Scene,omitempty" name:"Scene"`
+
+	// 识别语言类型。
+	// 支持自动识别语言类型，同时支持自选语言种类，默认中英文混合(zh)。
+	// 可选值：
+	// zh\auto\jap\kor\
+	// spa\fre\ger\por\
+	// vie\may\rus\ita\
+	// hol\swe\fin\dan\
+	// nor\hun\tha
+	// 可选值分别表示：
+	// 中英文混合、自动识别、日语、韩语、
+	// 西班牙语、法语、德语、葡萄牙语、
+	// 越南语、马来语、俄语、意大利语、
+	// 荷兰语、瑞典语、芬兰语、丹麦语、
+	// 挪威语、匈牙利语、泰语。
+	LanguageType *string `json:"LanguageType,omitempty" name:"LanguageType"`
 }
 
 func (r *GeneralBasicOCRRequest) ToJsonString() string {
@@ -206,8 +491,7 @@ type GeneralBasicOCRResponse struct {
 		// 检测到的文本信息，具体内容请点击左侧链接。
 		TextDetections []*TextDetection `json:"TextDetections,omitempty" name:"TextDetections" list`
 
-		// 检测到的语言，目前支持的语种范围为：简体中文、繁体中文、英文、日文、韩文。未来将陆续新增对更多语种的支持。
-	// 返回结果含义为：zh-中英混合，jap-日文，kor-韩文。
+		// 检测到的语言类型，目前支持的语言类型参考入参LanguageType说明。
 		Language *string `json:"Language,omitempty" name:"Language"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -272,6 +556,53 @@ func (r *GeneralFastOCRResponse) ToJsonString() string {
 }
 
 func (r *GeneralFastOCRResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type GeneralHandwritingOCRRequest struct {
+	*tchttp.BaseRequest
+
+	// 图片的 Base64 值。
+	// 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
+	// 支持的图片大小：所下载图片经Base64编码后不超过 3M。图片下载时间不超过 3 秒。
+	// 图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+	ImageBase64 *string `json:"ImageBase64,omitempty" name:"ImageBase64"`
+
+	// 图片的 Url 地址。
+	// 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
+	// 支持的图片大小：所下载图片经 Base64 编码后不超过 3M。图片下载时间不超过 3 秒。
+	// 图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。
+	// 非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
+}
+
+func (r *GeneralHandwritingOCRRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *GeneralHandwritingOCRRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type GeneralHandwritingOCRResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 检测到的文本信息，具体内容请点击左侧链接。
+		TextDetections []*TextGeneralHandwriting `json:"TextDetections,omitempty" name:"TextDetections" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *GeneralHandwritingOCRResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *GeneralHandwritingOCRResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -369,6 +700,56 @@ func (r *IDCardOCRResponse) ToJsonString() string {
 }
 
 func (r *IDCardOCRResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type LicensePlateOCRRequest struct {
+	*tchttp.BaseRequest
+
+	// 图片的 Base64 值。
+	// 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
+	// 支持的图片大小：所下载图片经Base64编码后不超过 3M。图片下载时间不超过 3 秒。
+	// 图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+	ImageBase64 *string `json:"ImageBase64,omitempty" name:"ImageBase64"`
+
+	// 图片的 Url 地址。
+	// 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
+	// 支持的图片大小：所下载图片经 Base64 编码后不超过 3M。图片下载时间不超过 3 秒。
+	// 图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。
+	// 非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
+}
+
+func (r *LicensePlateOCRRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *LicensePlateOCRRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type LicensePlateOCRResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 识别出的车牌号码。
+		Number *string `json:"Number,omitempty" name:"Number"`
+
+		// 置信度，0 - 100 之间。
+		Confidence *int64 `json:"Confidence,omitempty" name:"Confidence"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *LicensePlateOCRResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *LicensePlateOCRResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -474,6 +855,21 @@ type TextDetectionEn struct {
 	AdvancedInfo *string `json:"AdvancedInfo,omitempty" name:"AdvancedInfo"`
 }
 
+type TextGeneralHandwriting struct {
+
+	// 识别出的文本行内容
+	DetectedText *string `json:"DetectedText,omitempty" name:"DetectedText"`
+
+	// 置信度 0 - 100
+	Confidence *int64 `json:"Confidence,omitempty" name:"Confidence"`
+
+	// 文本行坐标，以四个顶点坐标表示
+	Polygon []*Coord `json:"Polygon,omitempty" name:"Polygon" list`
+
+	// 此字段为扩展字段
+	AdvancedInfo *string `json:"AdvancedInfo,omitempty" name:"AdvancedInfo"`
+}
+
 type TextTable struct {
 
 	// 单元格左上角的列索引
@@ -504,6 +900,105 @@ type TextTable struct {
 	AdvancedInfo *string `json:"AdvancedInfo,omitempty" name:"AdvancedInfo"`
 }
 
+type TextVatInvoice struct {
+
+	// 识别出的字段名称（关键字）。
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 识别出的字段名称对应的值，也就是字段Name对应的字符串结果。
+	Value *string `json:"Value,omitempty" name:"Value"`
+}
+
+type TextVehicleBack struct {
+
+	// 号牌号码
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PlateNo *string `json:"PlateNo,omitempty" name:"PlateNo"`
+
+	// 档案编号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FileNo *string `json:"FileNo,omitempty" name:"FileNo"`
+
+	// 核定人数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AllowNum *string `json:"AllowNum,omitempty" name:"AllowNum"`
+
+	// 总质量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalMass *string `json:"TotalMass,omitempty" name:"TotalMass"`
+
+	// 整备质量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CurbWeight *string `json:"CurbWeight,omitempty" name:"CurbWeight"`
+
+	// 核定载质量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LoadQuality *string `json:"LoadQuality,omitempty" name:"LoadQuality"`
+
+	// 外廓尺寸
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExternalSize *string `json:"ExternalSize,omitempty" name:"ExternalSize"`
+
+	// 备注
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Marks *string `json:"Marks,omitempty" name:"Marks"`
+
+	// 检验记录
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Record *string `json:"Record,omitempty" name:"Record"`
+
+	// 准牵引总质量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalQuasiMass *string `json:"TotalQuasiMass,omitempty" name:"TotalQuasiMass"`
+}
+
+type TextVehicleFront struct {
+
+	// 号牌号码
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PlateNo *string `json:"PlateNo,omitempty" name:"PlateNo"`
+
+	// 车辆类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VehicleType *string `json:"VehicleType,omitempty" name:"VehicleType"`
+
+	// 所有人
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Owner *string `json:"Owner,omitempty" name:"Owner"`
+
+	// 住址
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Address *string `json:"Address,omitempty" name:"Address"`
+
+	// 使用性质
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UseCharacter *string `json:"UseCharacter,omitempty" name:"UseCharacter"`
+
+	// 品牌型号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Model *string `json:"Model,omitempty" name:"Model"`
+
+	// 车辆识别代号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Vin *string `json:"Vin,omitempty" name:"Vin"`
+
+	// 发动机号码
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EngineNo *string `json:"EngineNo,omitempty" name:"EngineNo"`
+
+	// 注册日期
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RegisterDate *string `json:"RegisterDate,omitempty" name:"RegisterDate"`
+
+	// 发证日期
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IssueDate *string `json:"IssueDate,omitempty" name:"IssueDate"`
+
+	// 印章
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Seal *string `json:"Seal,omitempty" name:"Seal"`
+}
+
 type TextWaybill struct {
 
 	// 收件人姓名
@@ -526,6 +1021,109 @@ type TextWaybill struct {
 
 	// 运单号
 	WaybillNum *WaybillObj `json:"WaybillNum,omitempty" name:"WaybillNum"`
+}
+
+type VatInvoiceOCRRequest struct {
+	*tchttp.BaseRequest
+
+	// 图片的 Base64 值。
+	// 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
+	// 支持的图片大小：所下载图片经Base64编码后不超过 3M。图片下载时间不超过 3 秒。
+	// 图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+	ImageBase64 *string `json:"ImageBase64,omitempty" name:"ImageBase64"`
+
+	// 图片的 Url 地址。
+	// 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
+	// 支持的图片大小：所下载图片经 Base64 编码后不超过 3M。图片下载时间不超过 3 秒。
+	// 图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。
+	// 非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
+}
+
+func (r *VatInvoiceOCRRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *VatInvoiceOCRRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type VatInvoiceOCRResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 检测到的文本信息，具体内容请点击左侧链接。
+		VatInvoiceInfos []*TextVatInvoice `json:"VatInvoiceInfos,omitempty" name:"VatInvoiceInfos" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *VatInvoiceOCRResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *VatInvoiceOCRResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type VehicleLicenseOCRRequest struct {
+	*tchttp.BaseRequest
+
+	// 图片的 Base64 值。
+	// 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
+	// 支持的图片大小：所下载图片经Base64编码后不超过 3M。图片下载时间不超过 3 秒。
+	// 图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+	ImageBase64 *string `json:"ImageBase64,omitempty" name:"ImageBase64"`
+
+	// 图片的 Url 地址。
+	// 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
+	// 支持的图片大小：所下载图片经 Base64 编码后不超过 3M。图片下载时间不超过 3 秒。
+	// 图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。
+	// 非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
+
+	// FRONT 为行驶证主页正面（有红色印章的一面），
+	// BACK 为行驶证副页正面（有号码号牌的一面）。
+	CardSide *string `json:"CardSide,omitempty" name:"CardSide"`
+}
+
+func (r *VehicleLicenseOCRRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *VehicleLicenseOCRRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type VehicleLicenseOCRResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 行驶证主页正面的识别结果，CardSide 为 FRONT。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		FrontInfo *TextVehicleFront `json:"FrontInfo,omitempty" name:"FrontInfo"`
+
+		// 行驶证副页正面的识别结果，CardSide 为 BACK。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		BackInfo *TextVehicleBack `json:"BackInfo,omitempty" name:"BackInfo"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *VehicleLicenseOCRResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *VehicleLicenseOCRResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
 }
 
 type VinOCRRequest struct {

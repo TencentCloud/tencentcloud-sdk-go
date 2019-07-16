@@ -151,10 +151,10 @@ type AttachGroupPolicyRequest struct {
 	*tchttp.BaseRequest
 
 	// 策略 id
-	PolicyId *int64 `json:"PolicyId,omitempty" name:"PolicyId"`
+	PolicyId *uint64 `json:"PolicyId,omitempty" name:"PolicyId"`
 
 	// 用户组 id
-	AttachGroupId *int64 `json:"AttachGroupId,omitempty" name:"AttachGroupId"`
+	AttachGroupId *uint64 `json:"AttachGroupId,omitempty" name:"AttachGroupId"`
 }
 
 func (r *AttachGroupPolicyRequest) ToJsonString() string {
@@ -206,14 +206,54 @@ type AttachPolicyInfo struct {
 	PolicyType *string `json:"PolicyType,omitempty" name:"PolicyType"`
 }
 
+type AttachRolePolicyRequest struct {
+	*tchttp.BaseRequest
+
+	// 策略ID
+	PolicyId *uint64 `json:"PolicyId,omitempty" name:"PolicyId"`
+
+	// 角色ID，用于指定角色，入参 AttachRoleId 与 AttachRoleName 二选一
+	AttachRoleId *string `json:"AttachRoleId,omitempty" name:"AttachRoleId"`
+
+	// 角色名称，用于指定角色，入参 AttachRoleId 与 AttachRoleName 二选一
+	AttachRoleName *string `json:"AttachRoleName,omitempty" name:"AttachRoleName"`
+}
+
+func (r *AttachRolePolicyRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *AttachRolePolicyRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type AttachRolePolicyResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *AttachRolePolicyResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *AttachRolePolicyResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type AttachUserPolicyRequest struct {
 	*tchttp.BaseRequest
 
 	// 策略 id
-	PolicyId *int64 `json:"PolicyId,omitempty" name:"PolicyId"`
+	PolicyId *uint64 `json:"PolicyId,omitempty" name:"PolicyId"`
 
 	// 子账号 uin
-	AttachUin *int64 `json:"AttachUin,omitempty" name:"AttachUin"`
+	AttachUin *uint64 `json:"AttachUin,omitempty" name:"AttachUin"`
 }
 
 func (r *AttachUserPolicyRequest) ToJsonString() string {
@@ -240,6 +280,59 @@ func (r *AttachUserPolicyResponse) ToJsonString() string {
 }
 
 func (r *AttachUserPolicyResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type AttachedPolicyOfRole struct {
+
+	// 策略ID
+	PolicyId *uint64 `json:"PolicyId,omitempty" name:"PolicyId"`
+
+	// 策略名称
+	PolicyName *string `json:"PolicyName,omitempty" name:"PolicyName"`
+
+	// 绑定时间
+	AddTime *string `json:"AddTime,omitempty" name:"AddTime"`
+
+	// 策略类型，User表示自定义策略，QCS表示预设策略
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PolicyType *string `json:"PolicyType,omitempty" name:"PolicyType"`
+
+	// 策略创建方式，1表示按产品功能或项目权限创建，其他表示按策略语法创建
+	CreateMode *uint64 `json:"CreateMode,omitempty" name:"CreateMode"`
+}
+
+type ConsumeCustomMFATokenRequest struct {
+	*tchttp.BaseRequest
+
+	// 自定义多因子验证Token
+	MFAToken *string `json:"MFAToken,omitempty" name:"MFAToken"`
+}
+
+func (r *ConsumeCustomMFATokenRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ConsumeCustomMFATokenRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ConsumeCustomMFATokenResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ConsumeCustomMFATokenResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ConsumeCustomMFATokenResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -310,7 +403,7 @@ type CreatePolicyResponse struct {
 	Response *struct {
 
 		// 新增策略id
-		PolicyId *int64 `json:"PolicyId,omitempty" name:"PolicyId"`
+		PolicyId *uint64 `json:"PolicyId,omitempty" name:"PolicyId"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -323,6 +416,53 @@ func (r *CreatePolicyResponse) ToJsonString() string {
 }
 
 func (r *CreatePolicyResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateRoleRequest struct {
+	*tchttp.BaseRequest
+
+	// 角色名称
+	RoleName *string `json:"RoleName,omitempty" name:"RoleName"`
+
+	// 策略文档
+	PolicyDocument *string `json:"PolicyDocument,omitempty" name:"PolicyDocument"`
+
+	// 角色描述
+	Description *string `json:"Description,omitempty" name:"Description"`
+
+	// 是否允许登录
+	ConsoleLogin *uint64 `json:"ConsoleLogin,omitempty" name:"ConsoleLogin"`
+}
+
+func (r *CreateRoleRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateRoleRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateRoleResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 角色ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		RoleId *string `json:"RoleId,omitempty" name:"RoleId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateRoleResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateRoleResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -437,6 +577,43 @@ func (r *DeletePolicyResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DeleteRoleRequest struct {
+	*tchttp.BaseRequest
+
+	// 角色ID，用于指定角色，入参 RoleId 与 RoleName 二选一
+	RoleId *string `json:"RoleId,omitempty" name:"RoleId"`
+
+	// 角色名称，用于指定角色，入参 RoleId 与 RoleName 二选一
+	RoleName *string `json:"RoleName,omitempty" name:"RoleName"`
+}
+
+func (r *DeleteRoleRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteRoleRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteRoleResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DeleteRoleResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteRoleResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DeleteSAMLProviderRequest struct {
 	*tchttp.BaseRequest
 
@@ -505,14 +682,58 @@ func (r *DeleteUserResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeRoleListRequest struct {
+	*tchttp.BaseRequest
+
+	// 页码，从1开始
+	Page *uint64 `json:"Page,omitempty" name:"Page"`
+
+	// 每页行数，不能大于200
+	Rp *uint64 `json:"Rp,omitempty" name:"Rp"`
+}
+
+func (r *DescribeRoleListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeRoleListRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeRoleListResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 角色详情列表。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		List []*RoleInfo `json:"List,omitempty" name:"List" list`
+
+		// 角色总数
+		TotalNum *uint64 `json:"TotalNum,omitempty" name:"TotalNum"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeRoleListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeRoleListResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DetachGroupPolicyRequest struct {
 	*tchttp.BaseRequest
 
 	// 策略 id
-	PolicyId *int64 `json:"PolicyId,omitempty" name:"PolicyId"`
+	PolicyId *uint64 `json:"PolicyId,omitempty" name:"PolicyId"`
 
 	// 用户组 id
-	DetachGroupId *int64 `json:"DetachGroupId,omitempty" name:"DetachGroupId"`
+	DetachGroupId *uint64 `json:"DetachGroupId,omitempty" name:"DetachGroupId"`
 }
 
 func (r *DetachGroupPolicyRequest) ToJsonString() string {
@@ -542,6 +763,46 @@ func (r *DetachGroupPolicyResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DetachRolePolicyRequest struct {
+	*tchttp.BaseRequest
+
+	// 策略ID
+	PolicyId *uint64 `json:"PolicyId,omitempty" name:"PolicyId"`
+
+	// 角色ID，用于指定角色，入参 AttachRoleId 与 AttachRoleName 二选一
+	DetachRoleId *string `json:"DetachRoleId,omitempty" name:"DetachRoleId"`
+
+	// 角色名称，用于指定角色，入参 AttachRoleId 与 AttachRoleName 二选一
+	DetachRoleName *string `json:"DetachRoleName,omitempty" name:"DetachRoleName"`
+}
+
+func (r *DetachRolePolicyRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DetachRolePolicyRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DetachRolePolicyResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DetachRolePolicyResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DetachRolePolicyResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DetachUserPolicyRequest struct {
 	*tchttp.BaseRequest
 
@@ -549,7 +810,7 @@ type DetachUserPolicyRequest struct {
 	PolicyId *uint64 `json:"PolicyId,omitempty" name:"PolicyId"`
 
 	// 子账号 uin
-	DetachUin *int64 `json:"DetachUin,omitempty" name:"DetachUin"`
+	DetachUin *uint64 `json:"DetachUin,omitempty" name:"DetachUin"`
 }
 
 func (r *DetachUserPolicyRequest) ToJsonString() string {
@@ -576,6 +837,43 @@ func (r *DetachUserPolicyResponse) ToJsonString() string {
 }
 
 func (r *DetachUserPolicyResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type GetCustomMFATokenInfoRequest struct {
+	*tchttp.BaseRequest
+
+	// 自定义多因子验证Token
+	MFAToken *string `json:"MFAToken,omitempty" name:"MFAToken"`
+}
+
+func (r *GetCustomMFATokenInfoRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *GetCustomMFATokenInfoRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type GetCustomMFATokenInfoResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 自定义多因子验证Token对应的帐号Id
+		Uin *uint64 `json:"Uin,omitempty" name:"Uin"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *GetCustomMFATokenInfoResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *GetCustomMFATokenInfoResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -686,6 +984,46 @@ func (r *GetPolicyResponse) ToJsonString() string {
 }
 
 func (r *GetPolicyResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type GetRoleRequest struct {
+	*tchttp.BaseRequest
+
+	// 角色 ID，用于指定角色，入参 RoleId 与 RoleName 二选一
+	RoleId *string `json:"RoleId,omitempty" name:"RoleId"`
+
+	// 角色名，用于指定角色，入参 RoleId 与 RoleName 二选一
+	RoleName *string `json:"RoleName,omitempty" name:"RoleName"`
+}
+
+func (r *GetRoleRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *GetRoleRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type GetRoleResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 角色详情
+		RoleInfo *RoleInfo `json:"RoleInfo,omitempty" name:"RoleInfo"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *GetRoleResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *GetRoleResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -899,6 +1237,58 @@ func (r *ListAttachedGroupPoliciesResponse) ToJsonString() string {
 }
 
 func (r *ListAttachedGroupPoliciesResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ListAttachedRolePoliciesRequest struct {
+	*tchttp.BaseRequest
+
+	// 页码，从 1 开始
+	Page *uint64 `json:"Page,omitempty" name:"Page"`
+
+	// 每页行数，不能大于200
+	Rp *uint64 `json:"Rp,omitempty" name:"Rp"`
+
+	// 角色 ID。用于指定角色，入参 RoleId 与 RoleName 二选一
+	RoleId *string `json:"RoleId,omitempty" name:"RoleId"`
+
+	// 角色名。用于指定角色，入参 RoleId 与 RoleName 二选一
+	RoleName *string `json:"RoleName,omitempty" name:"RoleName"`
+
+	// 按策略类型过滤，User表示仅查询自定义策略，QCS表示仅查询预设策略
+	PolicyType *string `json:"PolicyType,omitempty" name:"PolicyType"`
+}
+
+func (r *ListAttachedRolePoliciesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ListAttachedRolePoliciesRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ListAttachedRolePoliciesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 角色关联的策略列表
+		List []*AttachedPolicyOfRole `json:"List,omitempty" name:"List" list`
+
+		// 角色关联的策略总数
+		TotalNum *uint64 `json:"TotalNum,omitempty" name:"TotalNum"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ListAttachedRolePoliciesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ListAttachedRolePoliciesResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -1267,6 +1657,39 @@ func (r *ListUsersResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type LoginActionFlag struct {
+
+	// 手机
+	Phone *uint64 `json:"Phone,omitempty" name:"Phone"`
+
+	// 硬token
+	Token *uint64 `json:"Token,omitempty" name:"Token"`
+
+	// 软token
+	Stoken *uint64 `json:"Stoken,omitempty" name:"Stoken"`
+
+	// 微信
+	Wechat *uint64 `json:"Wechat,omitempty" name:"Wechat"`
+
+	// 自定义
+	Custom *uint64 `json:"Custom,omitempty" name:"Custom"`
+}
+
+type OffsiteFlag struct {
+
+	// 验证标识
+	VerifyFlag *uint64 `json:"VerifyFlag,omitempty" name:"VerifyFlag"`
+
+	// 手机通知
+	NotifyPhone *uint64 `json:"NotifyPhone,omitempty" name:"NotifyPhone"`
+
+	// 邮箱通知
+	NotifyEmail *int64 `json:"NotifyEmail,omitempty" name:"NotifyEmail"`
+
+	// 微信通知
+	NotifyWechat *uint64 `json:"NotifyWechat,omitempty" name:"NotifyWechat"`
+}
+
 type RemoveUserFromGroupRequest struct {
 	*tchttp.BaseRequest
 
@@ -1301,6 +1724,30 @@ func (r *RemoveUserFromGroupResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type RoleInfo struct {
+
+	// 角色ID
+	RoleId *string `json:"RoleId,omitempty" name:"RoleId"`
+
+	// 角色名称
+	RoleName *string `json:"RoleName,omitempty" name:"RoleName"`
+
+	// 角色的策略文档
+	PolicyDocument *string `json:"PolicyDocument,omitempty" name:"PolicyDocument"`
+
+	// 角色描述
+	Description *string `json:"Description,omitempty" name:"Description"`
+
+	// 角色的创建时间
+	AddTime *string `json:"AddTime,omitempty" name:"AddTime"`
+
+	// 角色的最近一次时间
+	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
+
+	// 角色是否允许登录
+	ConsoleLogin *uint64 `json:"ConsoleLogin,omitempty" name:"ConsoleLogin"`
+}
+
 type SAMLProviderInfo struct {
 
 	// SAML身份提供商名称
@@ -1314,6 +1761,52 @@ type SAMLProviderInfo struct {
 
 	// SAML身份提供商上次修改时间
 	ModifyTime *string `json:"ModifyTime,omitempty" name:"ModifyTime"`
+}
+
+type SetFlagRequest struct {
+	*tchttp.BaseRequest
+
+	// 设置用户的uin
+	OpUin *uint64 `json:"OpUin,omitempty" name:"OpUin"`
+
+	// 登录设置
+	LoginFlag *LoginActionFlag `json:"LoginFlag,omitempty" name:"LoginFlag"`
+
+	// 敏感操作设置
+	ActionFlag *LoginActionFlag `json:"ActionFlag,omitempty" name:"ActionFlag"`
+
+	// 异地登录设置
+	OffsiteFlag *OffsiteFlag `json:"OffsiteFlag,omitempty" name:"OffsiteFlag"`
+
+	// 是否需要充值mfa
+	NeedResetMfa *uint64 `json:"NeedResetMfa,omitempty" name:"NeedResetMfa"`
+}
+
+func (r *SetFlagRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *SetFlagRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type SetFlagResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *SetFlagResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *SetFlagResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
 }
 
 type StrategyInfo struct {
@@ -1373,6 +1866,46 @@ type SubAccountInfo struct {
 	Email *string `json:"Email,omitempty" name:"Email"`
 }
 
+type UpdateAssumeRolePolicyRequest struct {
+	*tchttp.BaseRequest
+
+	// 策略文档
+	PolicyDocument *string `json:"PolicyDocument,omitempty" name:"PolicyDocument"`
+
+	// 角色ID，用于指定角色，入参 RoleId 与 RoleName 二选一
+	RoleId *string `json:"RoleId,omitempty" name:"RoleId"`
+
+	// 角色名称，用于指定角色，入参 RoleId 与 RoleName 二选一
+	RoleName *string `json:"RoleName,omitempty" name:"RoleName"`
+}
+
+func (r *UpdateAssumeRolePolicyRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *UpdateAssumeRolePolicyRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type UpdateAssumeRolePolicyResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *UpdateAssumeRolePolicyResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *UpdateAssumeRolePolicyResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type UpdateGroupRequest struct {
 	*tchttp.BaseRequest
 
@@ -1417,7 +1950,7 @@ type UpdatePolicyRequest struct {
 	*tchttp.BaseRequest
 
 	// 策略 id
-	PolicyId *int64 `json:"PolicyId,omitempty" name:"PolicyId"`
+	PolicyId *uint64 `json:"PolicyId,omitempty" name:"PolicyId"`
 
 	// 策略名
 	PolicyName *string `json:"PolicyName,omitempty" name:"PolicyName"`
@@ -1453,6 +1986,46 @@ func (r *UpdatePolicyResponse) ToJsonString() string {
 }
 
 func (r *UpdatePolicyResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type UpdateRoleDescriptionRequest struct {
+	*tchttp.BaseRequest
+
+	// 角色描述
+	Description *string `json:"Description,omitempty" name:"Description"`
+
+	// 角色ID，用于指定角色，入参 RoleId 与 RoleName 二选一
+	RoleId *string `json:"RoleId,omitempty" name:"RoleId"`
+
+	// 角色名称，用于指定角色，入参 RoleId 与 RoleName 二选一
+	RoleName *string `json:"RoleName,omitempty" name:"RoleName"`
+}
+
+func (r *UpdateRoleDescriptionRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *UpdateRoleDescriptionRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type UpdateRoleDescriptionResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *UpdateRoleDescriptionResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *UpdateRoleDescriptionResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 

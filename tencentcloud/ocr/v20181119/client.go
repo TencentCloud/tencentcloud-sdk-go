@@ -68,6 +68,106 @@ func (c *Client) ArithmeticOCR(request *ArithmeticOCRRequest) (response *Arithme
     return
 }
 
+func NewBankCardOCRRequest() (request *BankCardOCRRequest) {
+    request = &BankCardOCRRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ocr", APIVersion, "BankCardOCR")
+    return
+}
+
+func NewBankCardOCRResponse() (response *BankCardOCRResponse) {
+    response = &BankCardOCRResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口支持对中国大陆主流银行卡的卡号、银行信息、有效期等关键字段的检测与识别。
+func (c *Client) BankCardOCR(request *BankCardOCRRequest) (response *BankCardOCRResponse, err error) {
+    if request == nil {
+        request = NewBankCardOCRRequest()
+    }
+    response = NewBankCardOCRResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewBizLicenseOCRRequest() (request *BizLicenseOCRRequest) {
+    request = &BizLicenseOCRRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ocr", APIVersion, "BizLicenseOCR")
+    return
+}
+
+func NewBizLicenseOCRResponse() (response *BizLicenseOCRResponse) {
+    response = &BizLicenseOCRResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口支持快速精准识别营业执照上的字段，包括注册号、公司名称、经营场所、主体类型、法定代表人、注册资金、组成形式、成立日期、营业期限和经营范围等字段。
+func (c *Client) BizLicenseOCR(request *BizLicenseOCRRequest) (response *BizLicenseOCRResponse, err error) {
+    if request == nil {
+        request = NewBizLicenseOCRRequest()
+    }
+    response = NewBizLicenseOCRResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewBusinessCardOCRRequest() (request *BusinessCardOCRRequest) {
+    request = &BusinessCardOCRRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ocr", APIVersion, "BusinessCardOCR")
+    return
+}
+
+func NewBusinessCardOCRResponse() (response *BusinessCardOCRResponse) {
+    response = &BusinessCardOCRResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口支持名片各字段的自动定位与识别，包含姓名、电话、手机号、邮箱、公司、部门、职位、网址、地址、QQ、微信、MSN等。
+func (c *Client) BusinessCardOCR(request *BusinessCardOCRRequest) (response *BusinessCardOCRResponse, err error) {
+    if request == nil {
+        request = NewBusinessCardOCRRequest()
+    }
+    response = NewBusinessCardOCRResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDriverLicenseOCRRequest() (request *DriverLicenseOCRRequest) {
+    request = &DriverLicenseOCRRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ocr", APIVersion, "DriverLicenseOCR")
+    return
+}
+
+func NewDriverLicenseOCRResponse() (response *DriverLicenseOCRResponse) {
+    response = &DriverLicenseOCRResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口支持对驾驶证主页所有字段的自动定位与识别，包含证号、姓名、性别、国籍、住址、出生日期、初次领证日期、准驾车型、有效期限等。
+func (c *Client) DriverLicenseOCR(request *DriverLicenseOCRRequest) (response *DriverLicenseOCRResponse, err error) {
+    if request == nil {
+        request = NewDriverLicenseOCRRequest()
+    }
+    response = NewDriverLicenseOCRResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewEnglishOCRRequest() (request *EnglishOCRRequest) {
     request = &EnglishOCRRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -133,7 +233,7 @@ func NewGeneralBasicOCRResponse() (response *GeneralBasicOCRResponse) {
     return
 }
 
-// 本接口支持多场景、任意版面下整图文字的识别，包括中英文、字母、数字和日文、韩文的识别。应用场景包括：印刷文档识别、网络图片识别、广告图文字识别、街景店招识别、菜单识别、视频标题识别、头像文字识别等。
+// 本接口支持多场景、任意版面下整图文字的识别。支持自动识别语言类型，同时支持自选语言种类（推荐），除中英文外，支持日语、韩语、西班牙语、法语、德语、葡萄牙语、越南语、马来语、俄语、意大利语、荷兰语、瑞典语、芬兰语、丹麦语、挪威语、匈牙利语、泰语等多种语言。应用场景包括：印刷文档识别、网络图片识别、广告图文字识别、街景店招识别、菜单识别、视频标题识别、头像文字识别等。
 func (c *Client) GeneralBasicOCR(request *GeneralBasicOCRRequest) (response *GeneralBasicOCRResponse, err error) {
     if request == nil {
         request = NewGeneralBasicOCRRequest()
@@ -168,6 +268,31 @@ func (c *Client) GeneralFastOCR(request *GeneralFastOCRRequest) (response *Gener
     return
 }
 
+func NewGeneralHandwritingOCRRequest() (request *GeneralHandwritingOCRRequest) {
+    request = &GeneralHandwritingOCRRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ocr", APIVersion, "GeneralHandwritingOCR")
+    return
+}
+
+func NewGeneralHandwritingOCRResponse() (response *GeneralHandwritingOCRResponse) {
+    response = &GeneralHandwritingOCRResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口支持图片内手写体文字的检测和识别，针对手写字体无规则、字迹潦草、模糊等特点进行了识别能力的增强。
+func (c *Client) GeneralHandwritingOCR(request *GeneralHandwritingOCRRequest) (response *GeneralHandwritingOCRResponse, err error) {
+    if request == nil {
+        request = NewGeneralHandwritingOCRRequest()
+    }
+    response = NewGeneralHandwritingOCRResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewIDCardOCRRequest() (request *IDCardOCRRequest) {
     request = &IDCardOCRRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -193,6 +318,31 @@ func (c *Client) IDCardOCR(request *IDCardOCRRequest) (response *IDCardOCRRespon
     return
 }
 
+func NewLicensePlateOCRRequest() (request *LicensePlateOCRRequest) {
+    request = &LicensePlateOCRRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ocr", APIVersion, "LicensePlateOCR")
+    return
+}
+
+func NewLicensePlateOCRResponse() (response *LicensePlateOCRResponse) {
+    response = &LicensePlateOCRResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口支持对中国大陆机动车车牌的自动定位和识别，返回地域编号和车牌号信息。
+func (c *Client) LicensePlateOCR(request *LicensePlateOCRRequest) (response *LicensePlateOCRResponse, err error) {
+    if request == nil {
+        request = NewLicensePlateOCRRequest()
+    }
+    response = NewLicensePlateOCRResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewTableOCRRequest() (request *TableOCRRequest) {
     request = &TableOCRRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -214,6 +364,56 @@ func (c *Client) TableOCR(request *TableOCRRequest) (response *TableOCRResponse,
         request = NewTableOCRRequest()
     }
     response = NewTableOCRResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewVatInvoiceOCRRequest() (request *VatInvoiceOCRRequest) {
+    request = &VatInvoiceOCRRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ocr", APIVersion, "VatInvoiceOCR")
+    return
+}
+
+func NewVatInvoiceOCRResponse() (response *VatInvoiceOCRResponse) {
+    response = &VatInvoiceOCRResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口支持增值税专用发票、增值税普通发票、增值税电子发票全字段的内容检测和识别，包括发票代码、发票号码、开票日期、合计金额、校验码、税率、合计税额、价税合计、购买方识别号、复核、销售方识别号、开票人、密码区1、密码区2、密码区3、密码区4、发票名称、购买方名称、销售方名称、服务名称、备注、规格型号、数量、单价、金额、税额、收款人等字段。
+func (c *Client) VatInvoiceOCR(request *VatInvoiceOCRRequest) (response *VatInvoiceOCRResponse, err error) {
+    if request == nil {
+        request = NewVatInvoiceOCRRequest()
+    }
+    response = NewVatInvoiceOCRResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewVehicleLicenseOCRRequest() (request *VehicleLicenseOCRRequest) {
+    request = &VehicleLicenseOCRRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ocr", APIVersion, "VehicleLicenseOCR")
+    return
+}
+
+func NewVehicleLicenseOCRResponse() (response *VehicleLicenseOCRResponse) {
+    response = &VehicleLicenseOCRResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口支持行驶证主页和副页所有字段的自动定位与识别，包含车牌号码、车辆类型、所有人、住址、使用性质、品牌型号、车辆识别代码、发动机号、注册日期、发证日期等。
+func (c *Client) VehicleLicenseOCR(request *VehicleLicenseOCRRequest) (response *VehicleLicenseOCRResponse, err error) {
+    if request == nil {
+        request = NewVehicleLicenseOCRRequest()
+    }
+    response = NewVehicleLicenseOCRResponse()
     err = c.Send(request, response)
     return
 }

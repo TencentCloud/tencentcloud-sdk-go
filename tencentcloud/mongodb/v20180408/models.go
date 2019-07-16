@@ -75,7 +75,7 @@ type CreateDBInstanceHourRequest struct {
 	// 每个副本集内从节点个数，目前只支持从节点数为2
 	SecondaryNum *uint64 `json:"SecondaryNum,omitempty" name:"SecondaryNum"`
 
-	// MongoDB引擎版本，值包括：MONGO_2、MONGO_3_MMAP、MONGO_3_WT 、MONGO_3_ROCKS和MONGO_36_WT
+	// MongoDB引擎版本，值包括MONGO_3_WT 、MONGO_3_ROCKS和MONGO_36_WT
 	EngineVersion *string `json:"EngineVersion,omitempty" name:"EngineVersion"`
 
 	// 实例类型，GIO：高IO版；TGIO：高IO万兆
@@ -125,6 +125,9 @@ type CreateDBInstanceHourResponse struct {
 		// 订单ID
 		DealId *string `json:"DealId,omitempty" name:"DealId"`
 
+		// 创建的实例ID列表
+		InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds" list`
+
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
@@ -151,7 +154,7 @@ type CreateDBInstanceRequest struct {
 	// 实例硬盘大小，单位：GB
 	Volume *uint64 `json:"Volume,omitempty" name:"Volume"`
 
-	// 版本号，当前仅支持 MONGO_3_WT
+	// 版本号，当前支持 MONGO_3_WT、MONGO_3_ROCKS、MONGO_36_WT
 	MongoVersion *string `json:"MongoVersion,omitempty" name:"MongoVersion"`
 
 	// 机器类型，GIO：高IO版；TGIO：高IO万兆
@@ -197,6 +200,9 @@ type CreateDBInstanceResponse struct {
 
 		// 订单ID
 		DealId *string `json:"DealId,omitempty" name:"DealId"`
+
+		// 创建的实例ID列表
+		InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds" list`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
