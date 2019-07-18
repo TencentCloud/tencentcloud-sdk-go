@@ -443,6 +443,70 @@ func (r *CreateLibraryResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type CreatePersonRequest struct {
+	*tchttp.BaseRequest
+
+	// 人员库唯一标识符
+	LibraryId *string `json:"LibraryId,omitempty" name:"LibraryId"`
+
+	// 人员名称
+	PersonName *string `json:"PersonName,omitempty" name:"PersonName"`
+
+	// 人员工作号码
+	JobNumber *string `json:"JobNumber,omitempty" name:"JobNumber"`
+
+	// 人员邮箱
+	Mail *string `json:"Mail,omitempty" name:"Mail"`
+
+	// 人员性别，0：未知 1：男性，2：女性
+	Male *int64 `json:"Male,omitempty" name:"Male"`
+
+	// 自定义人员 ID，注意不能使用 tci_person_ 前缀
+	PersonId *string `json:"PersonId,omitempty" name:"PersonId"`
+
+	// 人员电话号码
+	PhoneNumber *string `json:"PhoneNumber,omitempty" name:"PhoneNumber"`
+
+	// 人员学生号码
+	StudentNumber *string `json:"StudentNumber,omitempty" name:"StudentNumber"`
+}
+
+func (r *CreatePersonRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreatePersonRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreatePersonResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 人员库唯一标识符
+		LibraryId *string `json:"LibraryId,omitempty" name:"LibraryId"`
+
+		// 人员唯一标识符
+		PersonId *string `json:"PersonId,omitempty" name:"PersonId"`
+
+		// 人员名称
+		PersonName *string `json:"PersonName,omitempty" name:"PersonName"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreatePersonResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreatePersonResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type CreateVocabLibRequest struct {
 	*tchttp.BaseRequest
 
@@ -850,6 +914,9 @@ type DescribeAudioTaskResponse struct {
 		// 返回词汇库中的单词出现的次数信息。
 		VocabAnalysisStatInfo []*VocabStatInfomation `json:"VocabAnalysisStatInfo,omitempty" name:"VocabAnalysisStatInfo" list`
 
+		// 返回音频全部文本。
+		AllTexts *string `json:"AllTexts,omitempty" name:"AllTexts"`
+
 		// 音频任务唯一id。在URL方式时提交请求后会返回一个jobid，后续查询该url的结果时使用这个jobid进行查询。
 		JobId *int64 `json:"JobId,omitempty" name:"JobId"`
 
@@ -913,6 +980,9 @@ type DescribeConversationTaskResponse struct {
 
 		// 返回词汇库中的单词出现的次数信息。
 		VocabAnalysisStatInfo []*VocabStatInfomation `json:"VocabAnalysisStatInfo,omitempty" name:"VocabAnalysisStatInfo" list`
+
+		// 整个音频流的全部文本
+		AllTexts *string `json:"AllTexts,omitempty" name:"AllTexts"`
 
 		// 音频任务唯一id。在URL方式时提交请求后会返回一个jobid，后续查询该url的结果时使用这个jobid进行查询。
 		JobId *int64 `json:"JobId,omitempty" name:"JobId"`
@@ -1298,7 +1368,7 @@ func (r *DescribeVocabResponse) FromJsonString(s string) error {
 
 type DetailInfo struct {
 
-	// 单词出现在该音频中的时间戳，出现了几次， 就返回对应次数的起始和结束时间戳
+	// 单词出现在该音频中的那个句子的时间戳，出现了几次， 就返回对应次数的起始和结束时间戳
 	Value []*WordTimePair `json:"Value,omitempty" name:"Value" list`
 
 	// 词汇库中的单词
@@ -1493,6 +1563,9 @@ type FrameInfo struct {
 
 type Function struct {
 
+	// 输出全部文本标识，当该值设置为true时，会输出当前音频的全部文本
+	EnableAllText *bool `json:"EnableAllText,omitempty" name:"EnableAllText"`
+
 	// 输出关键词信息标识，当该值设置为true时，会输出当前音频的关键词信息。
 	EnableKeyword *bool `json:"EnableKeyword,omitempty" name:"EnableKeyword"`
 
@@ -1580,7 +1653,7 @@ type HighlightsInfomation struct {
 
 type ImageTaskFunction struct {
 
-	// 大教室场景肢体动作识别选项
+	// 大教室场景学生肢体动作识别选项
 	EnableActionClass *bool `json:"EnableActionClass,omitempty" name:"EnableActionClass"`
 
 	// 人脸检测选项
@@ -1592,19 +1665,19 @@ type ImageTaskFunction struct {
 	// 人脸检索选项
 	EnableFaceIdentify *bool `json:"EnableFaceIdentify,omitempty" name:"EnableFaceIdentify"`
 
-	// 动作选项
+	// 手势选项
 	EnableGesture *bool `json:"EnableGesture,omitempty" name:"EnableGesture"`
 
-	// 手势选项
+	// 优图手势选项（该功能尚未支持）
 	EnableHandTracking *bool `json:"EnableHandTracking,omitempty" name:"EnableHandTracking"`
 
 	// 光照选项
 	EnableLightJudge *bool `json:"EnableLightJudge,omitempty" name:"EnableLightJudge"`
 
-	// 学生动作选项
+	// 小班课场景学生肢体动作识别选项
 	EnableStudentBodyMovements *bool `json:"EnableStudentBodyMovements,omitempty" name:"EnableStudentBodyMovements"`
 
-	// 教师动作选项
+	// 教师动作选项（该功能尚未支持）
 	EnableTeacherBodyMovements *bool `json:"EnableTeacherBodyMovements,omitempty" name:"EnableTeacherBodyMovements"`
 }
 
@@ -1964,17 +2037,14 @@ type SubmitAudioTaskRequest struct {
 	// 语音编码类型 1:pcm
 	VoiceEncodeType *int64 `json:"VoiceEncodeType,omitempty" name:"VoiceEncodeType"`
 
-	// 语音文件类型 1:raw, 2:wav, 3:mp3（三种格式目前仅支持16k采样率16bit）
+	// 语音文件类型 1:raw, 2:wav, 3:mp3，10:视频（三种音频格式目前仅支持16k采样率16bit）
 	VoiceFileType *int64 `json:"VoiceFileType,omitempty" name:"VoiceFileType"`
 
 	// 功能开关列表，表示是否需要打开相应的功能，返回相应的信息
 	Functions *Function `json:"Functions,omitempty" name:"Functions"`
 
-	// 课堂标识符
-	ClassId *string `json:"ClassId,omitempty" name:"ClassId"`
-
-	// 身份，1：老师 2：学生
-	Identity *int64 `json:"Identity,omitempty" name:"Identity"`
+	// 视频文件类型，默认点播，直播天 live_url
+	FileType *string `json:"FileType,omitempty" name:"FileType"`
 
 	// 识别词库名列表，评估过程使用这些词汇库中的词汇进行词汇使用行为分析
 	VocabLibNameList []*string `json:"VocabLibNameList,omitempty" name:"VocabLibNameList" list`
@@ -2073,6 +2143,61 @@ func (r *SubmitCheckAttendanceTaskResponse) ToJsonString() string {
 }
 
 func (r *SubmitCheckAttendanceTaskResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type SubmitConversationTaskRequest struct {
+	*tchttp.BaseRequest
+
+	// 音频源的语言，默认0为英文，1为中文
+	Lang *int64 `json:"Lang,omitempty" name:"Lang"`
+
+	// 语音编码类型 1:pcm
+	VoiceEncodeType *int64 `json:"VoiceEncodeType,omitempty" name:"VoiceEncodeType"`
+
+	// 语音文件类型 1:raw, 2:wav, 3:mp3（三种格式目前仅支持16k采样率16bit）
+	VoiceFileType *int64 `json:"VoiceFileType,omitempty" name:"VoiceFileType"`
+
+	// 功能开关列表，表示是否需要打开相应的功能，返回相应的信息
+	Functions *Function `json:"Functions,omitempty" name:"Functions"`
+
+	// 学生音频流
+	StudentUrl *string `json:"StudentUrl,omitempty" name:"StudentUrl"`
+
+	// 教师音频流
+	TeacherUrl *string `json:"TeacherUrl,omitempty" name:"TeacherUrl"`
+
+	// 识别词库名列表，评估过程使用这些词汇库中的词汇进行词汇使用行为分析
+	VocabLibNameList []*string `json:"VocabLibNameList,omitempty" name:"VocabLibNameList" list`
+}
+
+func (r *SubmitConversationTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *SubmitConversationTaskRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type SubmitConversationTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 	查询结果时指名的jobid。在URL方式时提交请求后会返回一个jobid，后续查询该url的结果时使用这个jobid进行查询。
+		JobId *int64 `json:"JobId,omitempty" name:"JobId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *SubmitConversationTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *SubmitConversationTaskResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -2204,7 +2329,7 @@ type SubmitImageTaskRequest struct {
 	// 输入分析对象内容
 	FileContent *string `json:"FileContent,omitempty" name:"FileContent"`
 
-	// 输入分析对象类型，picture_url:图片地址，vod_url:视频地址，live_url：直播地址
+	// 输入分析对象类型，picture：二进制图片的 base64 编码字符串，picture_url:图片地址，vod_url：视频地址，live_url：直播地址
 	FileType *string `json:"FileType,omitempty" name:"FileType"`
 
 	// 任务控制选项
@@ -2213,7 +2338,7 @@ type SubmitImageTaskRequest struct {
 	// 光照标准列表
 	LightStandardSet []*LightStandard `json:"LightStandardSet,omitempty" name:"LightStandardSet" list`
 
-	// 抽帧的时间间隔，单位毫秒，默认值1000。
+	// 抽帧的时间间隔，单位毫秒，默认值1000，保留字段，当前不支持填写。
 	FrameInterval *int64 `json:"FrameInterval,omitempty" name:"FrameInterval"`
 
 	// 查询人员库列表
@@ -2222,7 +2347,7 @@ type SubmitImageTaskRequest struct {
 	// 最大的视频长度，单位毫秒，默认值为两小时
 	MaxVideoDuration *int64 `json:"MaxVideoDuration,omitempty" name:"MaxVideoDuration"`
 
-	// 人脸识别中的相似度阈值，默认值为0.89
+	// 人脸识别中的相似度阈值，默认值为0.89，保留字段，当前不支持填写。
 	SimThreshold *float64 `json:"SimThreshold,omitempty" name:"SimThreshold"`
 }
 
@@ -2375,6 +2500,9 @@ type TransmitAudioStreamResponse struct {
 		// 返回词汇库中的单词出现的次数信息。
 		VocabAnalysisStatInfo []*VocabStatInfomation `json:"VocabAnalysisStatInfo,omitempty" name:"VocabAnalysisStatInfo" list`
 
+		// 音频全部文本。
+		AllTexts *string `json:"AllTexts,omitempty" name:"AllTexts"`
+
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
@@ -2391,8 +2519,8 @@ func (r *TransmitAudioStreamResponse) FromJsonString(s string) error {
 
 type VocabDetailInfomation struct {
 
-	// 词汇库中的单词出现在该音频中的时间戳，出现了几次，就返回对应次数的起始和结束时间戳
-	VocabDetailInfo *DetailInfo `json:"VocabDetailInfo,omitempty" name:"VocabDetailInfo"`
+	// 词汇库中的单词出现在该音频中的那个句子的时间戳，出现了几次，就返回对应次数的起始和结束时间戳
+	VocabDetailInfo []*DetailInfo `json:"VocabDetailInfo,omitempty" name:"VocabDetailInfo" list`
 
 	// 词汇库名
 	VocabLibName *string `json:"VocabLibName,omitempty" name:"VocabLibName"`
@@ -2445,9 +2573,9 @@ type Word struct {
 
 type WordTimePair struct {
 
-	// 单词的起始时间
+	// 单词出现的那个句子的起始时间
 	Mbtm *int64 `json:"Mbtm,omitempty" name:"Mbtm"`
 
-	// 	单词的结束时间
+	// 	单词出现的那个句子的结束时间
 	Metm *int64 `json:"Metm,omitempty" name:"Metm"`
 }

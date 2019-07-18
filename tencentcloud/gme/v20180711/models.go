@@ -32,10 +32,10 @@ type DescribeFilterResultListRequest struct {
 	// 结束时间，格式为 年-月-日，如: 2018-07-11
 	EndDate *string `json:"EndDate,omitempty" name:"EndDate"`
 
-	// 偏移量, 默认0
+	// 偏移量，默认值为0。
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
 
-	// 限制数目	, 默认10, 最大100
+	// 返回数量，默认值为10，最大值为100。
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 }
 
@@ -156,10 +156,10 @@ type VoiceFilterInfo struct {
 type VoiceFilterRequest struct {
 	*tchttp.BaseRequest
 
-	// 应用ID，创建应用得到的AppID: https://console.cloud.tencent.com/gamegme
+	// 应用ID，登录[控制台](https://console.cloud.tencent.com/gamegme)创建应用得到的AppID
 	BizId *uint64 `json:"BizId,omitempty" name:"BizId"`
 
-	// 文件ID，表示文件唯一id
+	// 文件ID，表示文件唯一ID
 	FileId *string `json:"FileId,omitempty" name:"FileId"`
 
 	// 文件名

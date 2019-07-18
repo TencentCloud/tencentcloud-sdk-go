@@ -43,6 +43,32 @@ func NewClient(credential *common.Credential, region string, clientProfile *prof
 }
 
 
+func NewAddFairPlayPemRequest() (request *AddFairPlayPemRequest) {
+    request = &AddFairPlayPemRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("drm", APIVersion, "AddFairPlayPem")
+    return
+}
+
+func NewAddFairPlayPemResponse() (response *AddFairPlayPemResponse) {
+    response = &AddFairPlayPemResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口用来设置fairplay方案所需的私钥、私钥密钥、ask等信息。
+// 如需使用fairplay方案，请务必先设置私钥。
+func (c *Client) AddFairPlayPem(request *AddFairPlayPemRequest) (response *AddFairPlayPemResponse, err error) {
+    if request == nil {
+        request = NewAddFairPlayPemRequest()
+    }
+    response = NewAddFairPlayPemResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateLicenseRequest() (request *CreateLicenseRequest) {
     request = &CreateLicenseRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -69,6 +95,58 @@ func (c *Client) CreateLicense(request *CreateLicenseRequest) (response *CreateL
     return
 }
 
+func NewDeleteFairPlayPemRequest() (request *DeleteFairPlayPemRequest) {
+    request = &DeleteFairPlayPemRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("drm", APIVersion, "DeleteFairPlayPem")
+    return
+}
+
+func NewDeleteFairPlayPemResponse() (response *DeleteFairPlayPemResponse) {
+    response = &DeleteFairPlayPemResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口用来删除fairplay方案的私钥、ask等信息
+// 注：高风险操作，删除后，您将无法使用腾讯云DRM提供的fairplay服务。
+// 由于缓存，删除操作需要约半小时生效
+func (c *Client) DeleteFairPlayPem(request *DeleteFairPlayPemRequest) (response *DeleteFairPlayPemResponse, err error) {
+    if request == nil {
+        request = NewDeleteFairPlayPemRequest()
+    }
+    response = NewDeleteFairPlayPemResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeFairPlayPemRequest() (request *DescribeFairPlayPemRequest) {
+    request = &DescribeFairPlayPemRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("drm", APIVersion, "DescribeFairPlayPem")
+    return
+}
+
+func NewDescribeFairPlayPemResponse() (response *DescribeFairPlayPemResponse) {
+    response = &DescribeFairPlayPemResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 该接口用来查询设置的FairPlay私钥校验信息。可用该接口校验设置的私钥与本身的私钥是否一致。
+func (c *Client) DescribeFairPlayPem(request *DescribeFairPlayPemRequest) (response *DescribeFairPlayPemResponse, err error) {
+    if request == nil {
+        request = NewDescribeFairPlayPemRequest()
+    }
+    response = NewDescribeFairPlayPemResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeKeysRequest() (request *DescribeKeysRequest) {
     request = &DescribeKeysRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -91,6 +169,32 @@ func (c *Client) DescribeKeys(request *DescribeKeysRequest) (response *DescribeK
         request = NewDescribeKeysRequest()
     }
     response = NewDescribeKeysResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyFairPlayPemRequest() (request *ModifyFairPlayPemRequest) {
+    request = &ModifyFairPlayPemRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("drm", APIVersion, "ModifyFairPlayPem")
+    return
+}
+
+func NewModifyFairPlayPemResponse() (response *ModifyFairPlayPemResponse) {
+    response = &ModifyFairPlayPemResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口用来设置fairplay方案所需的私钥、私钥密钥、ask等信息。
+// 如需使用fairplay方案，请务必先设置私钥。
+func (c *Client) ModifyFairPlayPem(request *ModifyFairPlayPemRequest) (response *ModifyFairPlayPemResponse, err error) {
+    if request == nil {
+        request = NewModifyFairPlayPemRequest()
+    }
+    response = NewModifyFairPlayPemResponse()
     err = c.Send(request, response)
     return
 }

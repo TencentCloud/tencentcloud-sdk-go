@@ -193,6 +193,31 @@ func (c *Client) CreateLibrary(request *CreateLibraryRequest) (response *CreateL
     return
 }
 
+func NewCreatePersonRequest() (request *CreatePersonRequest) {
+    request = &CreatePersonRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tci", APIVersion, "CreatePerson")
+    return
+}
+
+func NewCreatePersonResponse() (response *CreatePersonResponse) {
+    response = &CreatePersonResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 创建人员
+func (c *Client) CreatePerson(request *CreatePersonRequest) (response *CreatePersonResponse, err error) {
+    if request == nil {
+        request = NewCreatePersonRequest()
+    }
+    response = NewCreatePersonResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateVocabRequest() (request *CreateVocabRequest) {
     request = &CreateVocabRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -764,6 +789,31 @@ func (c *Client) SubmitCheckAttendanceTask(request *SubmitCheckAttendanceTaskReq
         request = NewSubmitCheckAttendanceTaskRequest()
     }
     response = NewSubmitCheckAttendanceTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewSubmitConversationTaskRequest() (request *SubmitConversationTaskRequest) {
+    request = &SubmitConversationTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tci", APIVersion, "SubmitConversationTask")
+    return
+}
+
+func NewSubmitConversationTaskResponse() (response *SubmitConversationTaskResponse) {
+    response = &SubmitConversationTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 对话任务分析接口
+func (c *Client) SubmitConversationTask(request *SubmitConversationTaskRequest) (response *SubmitConversationTaskResponse, err error) {
+    if request == nil {
+        request = NewSubmitConversationTaskRequest()
+    }
+    response = NewSubmitConversationTaskResponse()
     err = c.Send(request, response)
     return
 }

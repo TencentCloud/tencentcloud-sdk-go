@@ -20,6 +20,65 @@ import (
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
+type AddFairPlayPemRequest struct {
+	*tchttp.BaseRequest
+
+	// 加密后的fairplay方案申请时使用的私钥。
+	// 请使用腾讯云DRM 提供的公钥，使用rsa加密算法，PKCS1填充方式对私钥文件中的字段进行加密，并对加密结果进行base64编码。
+	Pem *string `json:"Pem,omitempty" name:"Pem"`
+
+	// 加密后的fairplay方案申请返回的ask数据。
+	// 请使用腾讯云DRM 提供的公钥，使用rsa加密算法，PKCS1填充方式对Ask字符串进行加密，并对加密结果进行base64编码。
+	Ask *string `json:"Ask,omitempty" name:"Ask"`
+
+	// 私钥的解密密钥。
+	// openssl在生成rsa时，可能会需要设置加密密钥，请记住设置的密钥。
+	// 请使用腾讯云DRM 提供的公钥，使用rsa加密算法，PKCS1填充方式对解密密钥进行加密，并对加密结果进行base64编码。
+	PemDecryptKey *string `json:"PemDecryptKey,omitempty" name:"PemDecryptKey"`
+
+	// 委托者Id,适用于托管自身证书的客户。普通客户无需填该字段。
+	BailorId *uint64 `json:"BailorId,omitempty" name:"BailorId"`
+
+	// 私钥的优先级，优先级数值越高，优先级越高。
+	// 该值可以不传，后台将自动分配一个优先级。
+	Priority *uint64 `json:"Priority,omitempty" name:"Priority"`
+}
+
+func (r *AddFairPlayPemRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *AddFairPlayPemRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type AddFairPlayPemResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 设置私钥后，后台返回的pem id，用来唯一标识一个私钥。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		FairPlayPemId *uint64 `json:"FairPlayPemId,omitempty" name:"FairPlayPemId"`
+
+		// 私钥的优先级，优先级数值越高，优先级越高。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Priority *uint64 `json:"Priority,omitempty" name:"Priority"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *AddFairPlayPemResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *AddFairPlayPemResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type CreateLicenseRequest struct {
 	*tchttp.BaseRequest
 
@@ -70,6 +129,86 @@ func (r *CreateLicenseResponse) ToJsonString() string {
 }
 
 func (r *CreateLicenseResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteFairPlayPemRequest struct {
+	*tchttp.BaseRequest
+
+	// 委托者Id,适用于托管自身证书的客户。普通客户无需填该字段。
+	BailorId *uint64 `json:"BailorId,omitempty" name:"BailorId"`
+
+	// 要删除的pem id。
+	// 当未传入该值时，将删除所有的私钥。
+	FairPlayPemId *uint64 `json:"FairPlayPemId,omitempty" name:"FairPlayPemId"`
+}
+
+func (r *DeleteFairPlayPemRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteFairPlayPemRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteFairPlayPemResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DeleteFairPlayPemResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteFairPlayPemResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeFairPlayPemRequest struct {
+	*tchttp.BaseRequest
+
+	// 委托者Id,适用于托管自身证书的客户。普通客户无需填该字段。
+	BailorId *uint64 `json:"BailorId,omitempty" name:"BailorId"`
+
+	// 需要查询的pem id。
+	// 当该值未填入时，将返回所有的私钥信息。
+	FairPlayPemId *uint64 `json:"FairPlayPemId,omitempty" name:"FairPlayPemId"`
+}
+
+func (r *DescribeFairPlayPemRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeFairPlayPemRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeFairPlayPemResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 该账户下，所有设置的FairPlay私钥摘要信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		FairPlayPems []*FairPlayPemDigestInfo `json:"FairPlayPems,omitempty" name:"FairPlayPems" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeFairPlayPemResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeFairPlayPemResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -166,6 +305,29 @@ type DrmSourceObject struct {
 	ObjectName *string `json:"ObjectName,omitempty" name:"ObjectName"`
 }
 
+type FairPlayPemDigestInfo struct {
+
+	// fairplay 私钥pem id。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FairPlayPemId *uint64 `json:"FairPlayPemId,omitempty" name:"FairPlayPemId"`
+
+	// 私钥的优先级。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Priority *uint64 `json:"Priority,omitempty" name:"Priority"`
+
+	// 私钥的md5 信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Md5Pem *string `json:"Md5Pem,omitempty" name:"Md5Pem"`
+
+	// ASK的md5信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Md5Ask *string `json:"Md5Ask,omitempty" name:"Md5Ask"`
+
+	// 私钥解密密钥的md5值。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Md5PemDecryptKey *string `json:"Md5PemDecryptKey,omitempty" name:"Md5PemDecryptKey"`
+}
+
 type Key struct {
 
 	// 加密track类型。
@@ -179,6 +341,68 @@ type Key struct {
 
 	// 原始IV使用AES-128 ECB模式和SessionKey加密的后的二进制数据，Base64编码的字符串。
 	Iv *string `json:"Iv,omitempty" name:"Iv"`
+}
+
+type ModifyFairPlayPemRequest struct {
+	*tchttp.BaseRequest
+
+	// 加密后的fairplay方案申请时使用的私钥。
+	// 请使用腾讯云DRM 提供的公钥，使用rsa加密算法，PKCS1填充方式对私钥文件中的字段进行加密，并对加密结果进行base64编码。
+	Pem *string `json:"Pem,omitempty" name:"Pem"`
+
+	// 加密后的fairplay方案申请返回的ask数据。
+	// 请使用腾讯云DRM 提供的公钥，使用rsa加密算法，PKCS1填充方式对Ask字符串进行加密，并对加密结果进行base64编码。
+	Ask *string `json:"Ask,omitempty" name:"Ask"`
+
+	// 要修改的私钥id
+	FairPlayPemId *uint64 `json:"FairPlayPemId,omitempty" name:"FairPlayPemId"`
+
+	// 私钥的解密密钥。
+	// openssl在生成rsa时，可能会需要设置加密密钥，请记住设置的密钥。
+	// 请使用腾讯云DRM 提供的公钥，使用rsa加密算法，PKCS1填充方式对解密密钥进行加密，并对加密结果进行base64编码。
+	PemDecryptKey *string `json:"PemDecryptKey,omitempty" name:"PemDecryptKey"`
+
+	// 委托者Id,适用于托管自身证书的客户。普通客户无需填该字段。
+	BailorId *uint64 `json:"BailorId,omitempty" name:"BailorId"`
+
+	// 私钥的优先级，优先级数值越高，优先级越高。
+	// 该值可以不传，后台将自动分配一个优先级。
+	Priority *uint64 `json:"Priority,omitempty" name:"Priority"`
+}
+
+func (r *ModifyFairPlayPemRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyFairPlayPemRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyFairPlayPemResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 设置私钥后，后台返回的pem id，用来唯一标识一个私钥。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		FairPlayPemId *uint64 `json:"FairPlayPemId,omitempty" name:"FairPlayPemId"`
+
+		// 私钥的优先级，优先级数值越高，优先级越高。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Priority *uint64 `json:"Priority,omitempty" name:"Priority"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifyFairPlayPemResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyFairPlayPemResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
 }
 
 type PlaybackPolicy struct {

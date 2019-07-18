@@ -748,8 +748,8 @@ func NewDescribeMediaInfosResponse() (response *DescribeMediaInfosResponse) {
 }
 
 // 1. 该接口可以获取多个视频的多种信息，包括：
-//     1. 基础信息（basicInfo）：包括视频名称、大小、时长、封面图片等。
-//     2. 元信息（metaData）：包括视频流信息、音频流信息等。
+//     1. 基础信息（basicInfo）：包括视频名称、分类、播放地址、封面图片等。
+//     2. 元信息（metaData）：包括大小、时长、视频流信息、音频流信息等。
 //     3. 转码结果信息（transcodeInfo）：包括该视频转码生成的各种码率的视频的地址、规格、码率、分辨率等。
 //     4. 转动图结果信息（animatedGraphicsInfo）：对视频转动图（如 gif）后，动图相关信息。
 //     5. 采样截图信息（sampleSnapshotInfo）：对视频采样截图后，相关截图信息。
@@ -841,6 +841,32 @@ func (c *Client) DescribeReviewDetails(request *DescribeReviewDetailsRequest) (r
         request = NewDescribeReviewDetailsRequest()
     }
     response = NewDescribeReviewDetailsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeSubAppIdsRequest() (request *DescribeSubAppIdsRequest) {
+    request = &DescribeSubAppIdsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vod", APIVersion, "DescribeSubAppIds")
+    return
+}
+
+func NewDescribeSubAppIdsResponse() (response *DescribeSubAppIdsResponse) {
+    response = &DescribeSubAppIdsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 该接口用于获取当前账号有权限的子应用列表，包含主应用。若尚未开通子应用功能，接口将返回 
+//  FailedOperation。
+func (c *Client) DescribeSubAppIds(request *DescribeSubAppIdsRequest) (response *DescribeSubAppIdsResponse, err error) {
+    if request == nil {
+        request = NewDescribeSubAppIdsRequest()
+    }
+    response = NewDescribeSubAppIdsResponse()
     err = c.Send(request, response)
     return
 }
@@ -1228,6 +1254,56 @@ func (c *Client) ModifyPersonSample(request *ModifyPersonSampleRequest) (respons
         request = NewModifyPersonSampleRequest()
     }
     response = NewModifyPersonSampleResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifySubAppIdInfoRequest() (request *ModifySubAppIdInfoRequest) {
+    request = &ModifySubAppIdInfoRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vod", APIVersion, "ModifySubAppIdInfo")
+    return
+}
+
+func NewModifySubAppIdInfoResponse() (response *ModifySubAppIdInfoResponse) {
+    response = &ModifySubAppIdInfoResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 该接口用于修改子应用信息，但不允许修改主应用信息。
+func (c *Client) ModifySubAppIdInfo(request *ModifySubAppIdInfoRequest) (response *ModifySubAppIdInfoResponse, err error) {
+    if request == nil {
+        request = NewModifySubAppIdInfoRequest()
+    }
+    response = NewModifySubAppIdInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifySubAppIdStatusRequest() (request *ModifySubAppIdStatusRequest) {
+    request = &ModifySubAppIdStatusRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vod", APIVersion, "ModifySubAppIdStatus")
+    return
+}
+
+func NewModifySubAppIdStatusResponse() (response *ModifySubAppIdStatusResponse) {
+    response = &ModifySubAppIdStatusResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 该接口用于启用、停用子应用。被停用的子应用将封停对应域名，并限制控制台访问。
+func (c *Client) ModifySubAppIdStatus(request *ModifySubAppIdStatusRequest) (response *ModifySubAppIdStatusResponse, err error) {
+    if request == nil {
+        request = NewModifySubAppIdStatusRequest()
+    }
+    response = NewModifySubAppIdStatusResponse()
     err = c.Send(request, response)
     return
 }

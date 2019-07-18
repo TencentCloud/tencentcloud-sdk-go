@@ -43,6 +43,31 @@ func NewClient(credential *common.Credential, region string, clientProfile *prof
 }
 
 
+func NewAuthTestTidRequest() (request *AuthTestTidRequest) {
+    request = &AuthTestTidRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iottid", APIVersion, "AuthTestTid")
+    return
+}
+
+func NewAuthTestTidResponse() (response *AuthTestTidResponse) {
+    response = &AuthTestTidResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 单向认证测试TID
+func (c *Client) AuthTestTid(request *AuthTestTidRequest) (response *AuthTestTidResponse, err error) {
+    if request == nil {
+        request = NewAuthTestTidRequest()
+    }
+    response = NewAuthTestTidResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewBurnTidNotifyRequest() (request *BurnTidNotifyRequest) {
     request = &BurnTidNotifyRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -164,6 +189,31 @@ func (c *Client) DownloadTids(request *DownloadTidsRequest) (response *DownloadT
         request = NewDownloadTidsRequest()
     }
     response = NewDownloadTidsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewVerifyChipBurnInfoRequest() (request *VerifyChipBurnInfoRequest) {
+    request = &VerifyChipBurnInfoRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iottid", APIVersion, "VerifyChipBurnInfo")
+    return
+}
+
+func NewVerifyChipBurnInfoResponse() (response *VerifyChipBurnInfoResponse) {
+    response = &VerifyChipBurnInfoResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 下载控制台验证芯片烧录信息，保证TID与中心信息一致
+func (c *Client) VerifyChipBurnInfo(request *VerifyChipBurnInfoRequest) (response *VerifyChipBurnInfoResponse, err error) {
+    if request == nil {
+        request = NewVerifyChipBurnInfoRequest()
+    }
+    response = NewVerifyChipBurnInfoResponse()
     err = c.Send(request, response)
     return
 }

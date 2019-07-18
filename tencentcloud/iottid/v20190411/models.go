@@ -20,6 +20,43 @@ import (
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
+type AuthTestTidRequest struct {
+	*tchttp.BaseRequest
+
+	// 设备端SDK填入测试TID参数后生成的加密数据串
+	Data *string `json:"Data,omitempty" name:"Data"`
+}
+
+func (r *AuthTestTidRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *AuthTestTidRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type AuthTestTidResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 认证结果
+		Pass *bool `json:"Pass,omitempty" name:"Pass"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *AuthTestTidResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *AuthTestTidResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type BurnTidNotifyRequest struct {
 	*tchttp.BaseRequest
 
@@ -244,4 +281,41 @@ type TidKeysInfo struct {
 
 	// 共享密钥
 	Psk *string `json:"Psk,omitempty" name:"Psk"`
+}
+
+type VerifyChipBurnInfoRequest struct {
+	*tchttp.BaseRequest
+
+	// 验证数据
+	Data *string `json:"Data,omitempty" name:"Data"`
+}
+
+func (r *VerifyChipBurnInfoRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *VerifyChipBurnInfoRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type VerifyChipBurnInfoResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 验证结果
+		Pass *bool `json:"Pass,omitempty" name:"Pass"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *VerifyChipBurnInfoResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *VerifyChipBurnInfoResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
 }

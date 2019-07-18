@@ -62,10 +62,10 @@ type CreateInstanceRequest struct {
 	// 计费类型<li>PREPAID：预付费，即包年包月</li><li>POSTPAID_BY_HOUR：按小时后付费</li>默认值POSTPAID_BY_HOUR
 	ChargeType *string `json:"ChargeType,omitempty" name:"ChargeType"`
 
-	// 包年包月购买时长（单位由参数TimeUint决定）
+	// 包年包月购买时长（单位由参数TimeUnit决定）
 	ChargePeriod *uint64 `json:"ChargePeriod,omitempty" name:"ChargePeriod"`
 
-	// 自动续费标识<li>RENEW_FLAG_AUTO：自动续费</li><li>RENEW_FLAG_MANUAL：不自动续费，用户手动续费</li>ChargeType为PREPAID时需要设置，如不传递该参数，普通用于默认不自动续费，SVIP用户自动续费
+	// 自动续费标识<li>RENEW_FLAG_AUTO：自动续费</li><li>RENEW_FLAG_MANUAL：不自动续费，用户手动续费</li>ChargeType为PREPAID时需要设置，如不传递该参数，普通用户默认不自动续费，SVIP用户自动续费
 	RenewFlag *string `json:"RenewFlag,omitempty" name:"RenewFlag"`
 
 	// 节点磁盘类型<li>CLOUD_SSD：SSD云硬盘</li><li>CLOUD_PREMIUM：高硬能云硬盘</li>默认值CLOUD_SSD
@@ -621,6 +621,21 @@ type SubTaskDetail struct {
 
 	// 子任务错误信息
 	ErrMsg *string `json:"ErrMsg,omitempty" name:"ErrMsg"`
+
+	// 子任务类型
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 子任务状态，0处理中 1成功 -1失败
+	Status *int64 `json:"Status,omitempty" name:"Status"`
+
+	// 升级检查失败的索引名
+	FailedIndices []*string `json:"FailedIndices,omitempty" name:"FailedIndices" list`
+
+	// 子任务结束时间
+	FinishTime *string `json:"FinishTime,omitempty" name:"FinishTime"`
+
+	// 子任务等级，1警告 2失败
+	Level *int64 `json:"Level,omitempty" name:"Level"`
 }
 
 type TagInfo struct {
@@ -714,5 +729,91 @@ func (r *UpdateInstanceResponse) ToJsonString() string {
 }
 
 func (r *UpdateInstanceResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type UpgradeInstanceRequest struct {
+	*tchttp.BaseRequest
+
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 目标ES版本
+	EsVersion *string `json:"EsVersion,omitempty" name:"EsVersion"`
+
+	// 是否只做升级检查，默认值为false
+	CheckOnly *bool `json:"CheckOnly,omitempty" name:"CheckOnly"`
+
+	// 目标商业特性版本：<li>oss 开源版</li><li>basic 基础版</li>当前仅在5.6.4升级6.x版本时使用，默认值为basic
+	LicenseType *string `json:"LicenseType,omitempty" name:"LicenseType"`
+}
+
+func (r *UpgradeInstanceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *UpgradeInstanceRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type UpgradeInstanceResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *UpgradeInstanceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *UpgradeInstanceResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type UpgradeLicenseRequest struct {
+	*tchttp.BaseRequest
+
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// License类型<li>oss：开源版</li><li>basic：基础版</li><li>platinum：白金版</li>默认值platinum
+	LicenseType *string `json:"LicenseType,omitempty" name:"LicenseType"`
+
+	// 是否自动使用代金券<li>0：不自动使用</li><li>1：自动使用</li>默认值0
+	AutoVoucher *int64 `json:"AutoVoucher,omitempty" name:"AutoVoucher"`
+
+	// 代金券ID列表（目前仅支持指定一张代金券）
+	VoucherIds []*string `json:"VoucherIds,omitempty" name:"VoucherIds" list`
+}
+
+func (r *UpgradeLicenseRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *UpgradeLicenseRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type UpgradeLicenseResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *UpgradeLicenseResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *UpgradeLicenseResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }

@@ -2978,6 +2978,7 @@ type DescribeMediaInfosRequest struct {
 	// <li>sampleSnapshotInfo（采样截图信息）。</li>
 	// <li>keyFrameDescInfo（打点信息）。</li>
 	// <li>adaptiveDynamicStreamingInfo（转自适应码流信息）。</li>
+	// <li>miniProgramReviewInfo（小程序审核信息）。</li>
 	Filters []*string `json:"Filters,omitempty" name:"Filters" list`
 
 	// 点播[子应用](/document/product/266/14574) ID 。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
@@ -3177,6 +3178,40 @@ func (r *DescribeReviewDetailsResponse) ToJsonString() string {
 }
 
 func (r *DescribeReviewDetailsResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeSubAppIdsRequest struct {
+	*tchttp.BaseRequest
+}
+
+func (r *DescribeSubAppIdsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeSubAppIdsRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeSubAppIdsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 子应用信息集合。
+		SubAppIdInfoSet []*SubAppIdInfo `json:"SubAppIdInfoSet,omitempty" name:"SubAppIdInfoSet" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeSubAppIdsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeSubAppIdsResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -4442,11 +4477,11 @@ type MediaImageSpriteItem struct {
 
 type MediaInfo struct {
 
-	// 基础信息。包括视频名称、大小、时长、封面图片等。
+	// 基础信息。包括视频名称、分类、播放地址、封面图片等。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	BasicInfo *MediaBasicInfo `json:"BasicInfo,omitempty" name:"BasicInfo"`
 
-	// 元信息。包括视频流信息、音频流信息等。
+	// 元信息。包括大小、时长、视频流信息、音频流信息等。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MetaData *MediaMetaData `json:"MetaData,omitempty" name:"MetaData"`
 
@@ -5360,6 +5395,85 @@ func (r *ModifyPersonSampleResponse) ToJsonString() string {
 }
 
 func (r *ModifyPersonSampleResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifySubAppIdInfoRequest struct {
+	*tchttp.BaseRequest
+
+	// 子应用 ID。
+	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
+
+	// 子应用名称，长度限制：40个字符。
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 子应用简介，长度限制： 300个字符。
+	Description *string `json:"Description,omitempty" name:"Description"`
+}
+
+func (r *ModifySubAppIdInfoRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifySubAppIdInfoRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifySubAppIdInfoResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifySubAppIdInfoResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifySubAppIdInfoResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifySubAppIdStatusRequest struct {
+	*tchttp.BaseRequest
+
+	// 子应用 ID。
+	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
+
+	// 子应用状态，取值范围：
+	// <li>On：启用</li>
+	// <li>Off：停用</li>
+	Status *string `json:"Status,omitempty" name:"Status"`
+}
+
+func (r *ModifySubAppIdStatusRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifySubAppIdStatusRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifySubAppIdStatusResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifySubAppIdStatusResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifySubAppIdStatusResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -6681,6 +6795,26 @@ type StickerTrackItem struct {
 	ImageOperations []*ImageTransform `json:"ImageOperations,omitempty" name:"ImageOperations" list`
 }
 
+type SubAppIdInfo struct {
+
+	// 子应用 ID。
+	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
+
+	// 子应用名称。
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 子应用简介。
+	Description *string `json:"Description,omitempty" name:"Description"`
+
+	// 子应用创建时间，采用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 子应用状态，有效值：
+	// <li>On：启用；</li>
+	// <li>Off：停用。</li>
+	Status *string `json:"Status,omitempty" name:"Status"`
+}
+
 type SvgWatermarkInput struct {
 
 	// 水印的宽度，支持 px，%，W%，H%，S%，L% 六种格式：
@@ -7212,8 +7346,8 @@ type VideoTemplateInfo struct {
 	Bitrate *uint64 `json:"Bitrate,omitempty" name:"Bitrate"`
 
 	// 分辨率自适应，可选值：
-	// <li>open：开启，此时，Width 代表视频的宽度，Height 表示视频的高度；</li>
-	// <li>close：关闭，此时，Width 代表视频的长边，Height 表示视频的短边。</li>
+	// <li>open：开启，此时，Width 代表视频的长边，Height 表示视频的短边；</li>
+	// <li>close：关闭，此时，Width 代表视频的宽度，Height 表示视频的高度。</li>
 	// 默认值：open。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResolutionAdaptive *string `json:"ResolutionAdaptive,omitempty" name:"ResolutionAdaptive"`
@@ -7254,8 +7388,8 @@ type VideoTemplateInfoForUpdate struct {
 	Bitrate *uint64 `json:"Bitrate,omitempty" name:"Bitrate"`
 
 	// 分辨率自适应，可选值：
-	// <li>open：开启，此时，Width 代表视频的宽度，Height 表示视频的高度；</li>
-	// <li>close：关闭，此时，Width 代表视频的长边，Height 表示视频的短边。</li>
+	// <li>open：开启，此时，Width 代表视频的长边，Height 表示视频的短边；</li>
+	// <li>close：关闭，此时，Width 代表视频的宽度，Height 表示视频的高度。</li>
 	ResolutionAdaptive *string `json:"ResolutionAdaptive,omitempty" name:"ResolutionAdaptive"`
 
 	// 视频流宽度（或长边）的最大值，取值范围：0 和 [128, 4096]，单位：px。

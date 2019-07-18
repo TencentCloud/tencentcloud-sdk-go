@@ -738,7 +738,7 @@ type CreateLiveSnapshotTemplateRequest struct {
 	Description *string `json:"Description,omitempty" name:"Description"`
 
 	// 截图间隔，单位s，默认10s。
-	// 范围： 10s ~ 600s。
+	// 范围： 5s ~ 600s。
 	SnapshotInterval *int64 `json:"SnapshotInterval,omitempty" name:"SnapshotInterval"`
 
 	// 截图宽度。默认：0（原始宽）。
@@ -5269,6 +5269,34 @@ type StreamName struct {
 
 	// 流名称。
 	StreamName *string `json:"StreamName,omitempty" name:"StreamName"`
+
+	// 应用名称。
+	AppName *string `json:"AppName,omitempty" name:"AppName"`
+
+	// 推流域名。
+	DomainName *string `json:"DomainName,omitempty" name:"DomainName"`
+
+	// 推流开始时间。
+	// UTC格式时间，
+	// 例如：2019-01-07T12:00:00Z。
+	StreamStartTime *string `json:"StreamStartTime,omitempty" name:"StreamStartTime"`
+
+	// 推流结束时间。
+	// UTC格式时间，
+	// 例如：2019-01-07T15:00:00Z。
+	StreamEndTime *string `json:"StreamEndTime,omitempty" name:"StreamEndTime"`
+
+	// 停止原因。
+	StopReason *string `json:"StopReason,omitempty" name:"StopReason"`
+
+	// 推流持续时长，单位：秒。
+	Duration *uint64 `json:"Duration,omitempty" name:"Duration"`
+
+	// 主播IP。
+	ClientIp *string `json:"ClientIp,omitempty" name:"ClientIp"`
+
+	// 分辨率。
+	Resolution *string `json:"Resolution,omitempty" name:"Resolution"`
 }
 
 type StreamOnlineInfo struct {

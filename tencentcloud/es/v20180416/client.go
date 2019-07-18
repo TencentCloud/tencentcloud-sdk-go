@@ -227,3 +227,53 @@ func (c *Client) UpdateInstance(request *UpdateInstanceRequest) (response *Updat
     err = c.Send(request, response)
     return
 }
+
+func NewUpgradeInstanceRequest() (request *UpgradeInstanceRequest) {
+    request = &UpgradeInstanceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("es", APIVersion, "UpgradeInstance")
+    return
+}
+
+func NewUpgradeInstanceResponse() (response *UpgradeInstanceResponse) {
+    response = &UpgradeInstanceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 升级ES集群版本
+func (c *Client) UpgradeInstance(request *UpgradeInstanceRequest) (response *UpgradeInstanceResponse, err error) {
+    if request == nil {
+        request = NewUpgradeInstanceRequest()
+    }
+    response = NewUpgradeInstanceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewUpgradeLicenseRequest() (request *UpgradeLicenseRequest) {
+    request = &UpgradeLicenseRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("es", APIVersion, "UpgradeLicense")
+    return
+}
+
+func NewUpgradeLicenseResponse() (response *UpgradeLicenseResponse) {
+    response = &UpgradeLicenseResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 升级ES商业特性
+func (c *Client) UpgradeLicense(request *UpgradeLicenseRequest) (response *UpgradeLicenseResponse, err error) {
+    if request == nil {
+        request = NewUpgradeLicenseRequest()
+    }
+    response = NewUpgradeLicenseResponse()
+    err = c.Send(request, response)
+    return
+}

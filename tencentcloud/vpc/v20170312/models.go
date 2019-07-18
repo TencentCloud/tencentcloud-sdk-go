@@ -3807,6 +3807,8 @@ type DescribeRouteTablesRequest struct {
 	// <li>route-table-name - String - （过滤条件）路由表名称。</li>
 	// <li>vpc-id - String - （过滤条件）VPC实例ID，形如：vpc-f49l6u0z。</li>
 	// <li>association.main - String - （过滤条件）是否主路由表。</li>
+	// <li>tag-key - String -是否必填：否- （过滤条件）按照标签键进行过滤。</li>
+	// <li>tag:tag-key - String - 是否必填：否 - （过滤条件）按照标签键值对进行过滤。 tag-key使用具体的标签键进行替换。使用请参考示例2。</li>
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
 
 	// 偏移量。
@@ -4084,6 +4086,8 @@ type DescribeSubnetsRequest struct {
 	// <li>is-remote-vpc-snat - Boolean - （过滤条件）是否为VPC SNAT地址池子网。</li>
 	// <li>subnet-name - String - （过滤条件）子网名称。</li>
 	// <li>zone - String - （过滤条件）可用区。</li>
+	// <li>tag-key - String -是否必填：否- （过滤条件）按照标签键进行过滤。</li>
+	// <li>tag:tag-key - String - 是否必填：否 - （过滤条件）按照标签键值对进行过滤。 tag-key使用具体的标签键进行替换。使用请参考示例2。</li>
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
 
 	// 偏移量
@@ -4123,6 +4127,49 @@ func (r *DescribeSubnetsResponse) ToJsonString() string {
 }
 
 func (r *DescribeSubnetsResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeTaskResultRequest struct {
+	*tchttp.BaseRequest
+
+	// 异步任务ID
+	TaskId *uint64 `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 计费订单号
+	DealName *string `json:"DealName,omitempty" name:"DealName"`
+}
+
+func (r *DescribeTaskResultRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeTaskResultRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeTaskResultResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 任务ID
+		TaskId *uint64 `json:"TaskId,omitempty" name:"TaskId"`
+
+		// 执行结果，包括"SUCCESS", "FAILED", "RUNNING"
+		Result *string `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeTaskResultResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeTaskResultResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -4226,6 +4273,8 @@ type DescribeVpcsRequest struct {
 	// <li>is-default - String - （过滤条件）是否默认VPC。</li>
 	// <li>vpc-id - String - （过滤条件）VPC实例ID形如：vpc-f49l6u0z。</li>
 	// <li>cidr-block - String - （过滤条件）vpc的cidr。</li>
+	// <li>tag-key - String -是否必填：否- （过滤条件）按照标签键进行过滤。</li>
+	// <li>tag:tag-key - String - 是否必填：否 - （过滤条件）按照标签键值对进行过滤。 tag-key使用具体的标签键进行替换。使用请参考示例2。</li>
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
 
 	// 偏移量
@@ -6434,6 +6483,9 @@ type NetworkInterface struct {
 
 	// `IPv6`地址列表。
 	Ipv6AddressSet []*Ipv6Address `json:"Ipv6AddressSet,omitempty" name:"Ipv6AddressSet" list`
+
+	// 标签键值对。
+	TagSet []*Tag `json:"TagSet,omitempty" name:"TagSet" list`
 }
 
 type NetworkInterfaceAttachment struct {

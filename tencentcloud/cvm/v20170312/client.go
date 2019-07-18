@@ -863,7 +863,7 @@ func NewImportImageResponse() (response *ImportImageResponse) {
     return
 }
 
-// 本接口(ImportImage)用于导入镜像，导入后的镜像可用于创建实例。
+// 本接口(ImportImage)用于导入镜像，导入后的镜像可用于创建实例。 
 func (c *Client) ImportImage(request *ImportImageRequest) (response *ImportImageResponse, err error) {
     if request == nil {
         request = NewImportImageRequest()
