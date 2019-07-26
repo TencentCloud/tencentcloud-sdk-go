@@ -958,7 +958,7 @@ func (r *CreateLiveWatermarkRuleResponse) FromJsonString(s string) error {
 type CreatePullStreamConfigRequest struct {
 	*tchttp.BaseRequest
 
-	// 源Url。
+	// 源Url。目前可支持直播流及点播文件。
 	FromUrl *string `json:"FromUrl,omitempty" name:"FromUrl"`
 
 	// 目的Url，目前限制该目标地址为腾讯域名。
@@ -2699,20 +2699,21 @@ func (r *DescribeLiveStreamOnlineListResponse) FromJsonString(s string) error {
 type DescribeLiveStreamPublishedListRequest struct {
 	*tchttp.BaseRequest
 
-	// 您的域名。
+	// 您的推流域名。
 	DomainName *string `json:"DomainName,omitempty" name:"DomainName"`
 
 	// 结束时间。
 	// UTC 格式，例如：2016-06-30T19:00:00Z。
 	// 不超过当前时间。
+	// 注意：EndTime和StartTime相差不可超过30天。
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 
 	// 起始时间。 
 	// UTC 格式，例如：2016-06-29T19:00:00Z。
-	// 和当前时间相隔不超过7天。
+	// 最长支持查询60天内数据。
 	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
 
-	// 推流路径，与推流和播放地址中的AppName保持一致，默认为 live。
+	// 推流路径，与推流和播放地址中的AppName保持一致，默认为 live。不支持模糊匹配。
 	AppName *string `json:"AppName,omitempty" name:"AppName"`
 
 	// 取得第几页。
@@ -2724,6 +2725,9 @@ type DescribeLiveStreamPublishedListRequest struct {
 	// 取值范围：1~100 之前的任意整数。
 	// 默认值：10。
 	PageSize *uint64 `json:"PageSize,omitempty" name:"PageSize"`
+
+	// 流名称，支持模糊匹配。
+	StreamName *string `json:"StreamName,omitempty" name:"StreamName"`
 }
 
 func (r *DescribeLiveStreamPublishedListRequest) ToJsonString() string {

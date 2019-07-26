@@ -380,27 +380,27 @@ type CreateLoadBalancerRequest struct {
 	// 负载均衡实例所属的项目 ID，可以通过 DescribeProject 接口获取。不传此参数则视为默认项目。
 	ProjectId *int64 `json:"ProjectId,omitempty" name:"ProjectId"`
 
-	// IP版本，IPV4 | IPV6，默认值 IPV4。
+	// 仅适用于公网负载均衡。IP版本，IPV4 | IPV6，默认值 IPV4。
 	AddressIPVersion *string `json:"AddressIPVersion,omitempty" name:"AddressIPVersion"`
 
-	// 创建负载均衡的个数
+	// 创建负载均衡的个数，默认值 1。
 	Number *uint64 `json:"Number,omitempty" name:"Number"`
 
-	// 设置跨可用区容灾时的主可用区ID，例如 100001 或 ap-guangzhou-1
-	// 注：主可用区是需要承载流量的可用区，备可用区默认不承载流量，主可用区不可用时才使用备可用区，平台将为您自动选择最佳备可用区
+	// 仅适用于公网负载均衡。设置跨可用区容灾时的主可用区ID，例如 100001 或 ap-guangzhou-1
+	// 注：主可用区是需要承载流量的可用区，备可用区默认不承载流量，主可用区不可用时才使用备可用区，平台将为您自动选择最佳备可用区。可通过 DescribeMasterZones 接口查询一个地域的主可用区的列表。
 	MasterZoneId *string `json:"MasterZoneId,omitempty" name:"MasterZoneId"`
 
-	// 可用区ID，指定可用区以创建负载均衡实例。如：ap-guangzhou-1
+	// 仅适用于公网负载均衡。可用区ID，指定可用区以创建负载均衡实例。如：ap-guangzhou-1
 	ZoneId *string `json:"ZoneId,omitempty" name:"ZoneId"`
 
-	// Anycast的发布域，可取 ZONE_A 或 ZONE_B
+	// 仅适用于公网负载均衡。Anycast的发布域，可取 ZONE_A 或 ZONE_B。仅带宽非上移用户支持此参数。
 	AnycastZone *string `json:"AnycastZone,omitempty" name:"AnycastZone"`
 
-	// 负载均衡的网络计费方式，此参数仅对带宽上移用户生效
+	// 仅适用于公网负载均衡。负载均衡的网络计费方式，此参数仅对带宽上移用户生效。
 	InternetAccessible *InternetAccessible `json:"InternetAccessible,omitempty" name:"InternetAccessible"`
 
-	// CMCC | CTCC | CUCC，分别对应 移动 | 电信 | 联通，如果不指定本参数，则默认使用BGP。可通过 DescribeSingleIsp 接口查询一个地域所支持的Isp。
-	VipIsp *string `json:"VipIsp,omitempty" name:"VipIsp"`
+	// 购买负载均衡同时，给负载均衡打上标签
+	Tags []*TagInfo `json:"Tags,omitempty" name:"Tags" list`
 }
 
 func (r *CreateLoadBalancerRequest) ToJsonString() string {
@@ -679,7 +679,7 @@ type DeregisterTargetsRequest struct {
 	// 监听器 ID，格式如 lbl-12345678
 	ListenerId *string `json:"ListenerId,omitempty" name:"ListenerId"`
 
-	// 要解绑的后端机器列表，数组长度最大支持20
+	// 要解绑的后端服务列表，数组长度最大支持20
 	Targets []*Target `json:"Targets,omitempty" name:"Targets" list`
 
 	// 转发规则的ID，格式如 loc-12345678，当从七层转发规则解绑机器时，必须提供此参数或Domain+Url两者之一
@@ -1117,7 +1117,7 @@ type DescribeTargetsRequest struct {
 	// 监听器协议类型
 	Protocol *string `json:"Protocol,omitempty" name:"Protocol"`
 
-	// 负载均衡监听器端口
+	// 监听器端口
 	Port *int64 `json:"Port,omitempty" name:"Port"`
 }
 
@@ -1135,6 +1135,7 @@ type DescribeTargetsResponse struct {
 	Response *struct {
 
 		// 监听器后端绑定的机器信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
 		Listeners []*ListenerBackend `json:"Listeners,omitempty" name:"Listeners" list`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -1470,6 +1471,14 @@ type LoadBalancer struct {
 	// 负载均衡实例的预付费相关属性
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PrepaidAttributes *LBChargePrepaid `json:"PrepaidAttributes,omitempty" name:"PrepaidAttributes"`
+
+	// 负载均衡日志服务(CLS)的日志集ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LogSetId *string `json:"LogSetId,omitempty" name:"LogSetId"`
+
+	// 负载均衡日志服务(CLS)的日志主题ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LogTopicId *string `json:"LogTopicId,omitempty" name:"LogTopicId"`
 }
 
 type LoadBalancerHealth struct {
@@ -1541,7 +1550,7 @@ type ModifyDomainRequest struct {
 	// 监听器下的某个旧域名。
 	Domain *string `json:"Domain,omitempty" name:"Domain"`
 
-	// 新域名，	长度限制为：1-80。有三种使用格式：非正则表达式格式，通配符格式，正则表达式格式。非正则表达式格式只能使用字母、数字、‘-’、‘.’。通配符格式的使用 ‘*’ 只能在开头或者结尾。正则表达式以'~'开头。
+	// 新域名，	长度限制为：1-120。有三种使用格式：非正则表达式格式，通配符格式，正则表达式格式。非正则表达式格式只能使用字母、数字、‘-’、‘.’。通配符格式的使用 ‘*’ 只能在开头或者结尾。正则表达式以'~'开头。
 	NewDomain *string `json:"NewDomain,omitempty" name:"NewDomain"`
 }
 
@@ -1730,13 +1739,13 @@ type ModifyTargetPortRequest struct {
 	// 负载均衡监听器 ID
 	ListenerId *string `json:"ListenerId,omitempty" name:"ListenerId"`
 
-	// 要修改端口的后端机器列表
+	// 要修改端口的后端服务列表
 	Targets []*Target `json:"Targets,omitempty" name:"Targets" list`
 
-	// 后端机器绑定到监听器的新端口
+	// 后端服务绑定到监听器或转发规则的新端口
 	NewPort *int64 `json:"NewPort,omitempty" name:"NewPort"`
 
-	// 转发规则的ID
+	// 转发规则的ID，当后端服务绑定到七层转发规则时，必须提供此参数或Domain+Url两者之一
 	LocationId *string `json:"LocationId,omitempty" name:"LocationId"`
 
 	// 目标规则的域名，提供LocationId参数时本参数不生效
@@ -1782,9 +1791,6 @@ type ModifyTargetWeightRequest struct {
 	// 负载均衡监听器 ID
 	ListenerId *string `json:"ListenerId,omitempty" name:"ListenerId"`
 
-	// 后端云服务器新的转发权重，取值范围：0~100。
-	Weight *int64 `json:"Weight,omitempty" name:"Weight"`
-
 	// 转发规则的ID，当绑定机器到七层转发规则时，必须提供此参数或Domain+Url两者之一
 	LocationId *string `json:"LocationId,omitempty" name:"LocationId"`
 
@@ -1794,8 +1800,11 @@ type ModifyTargetWeightRequest struct {
 	// 目标规则的URL，提供LocationId参数时本参数不生效
 	Url *string `json:"Url,omitempty" name:"Url"`
 
-	// 要修改权重的后端机器列表
+	// 要修改权重的后端服务列表
 	Targets []*Target `json:"Targets,omitempty" name:"Targets" list`
+
+	// 后端服务服务新的转发权重，取值范围：0~100，默认值10。如果设置了 Targets.Weight 参数，则此参数不生效。
+	Weight *int64 `json:"Weight,omitempty" name:"Weight"`
 }
 
 func (r *ModifyTargetWeightRequest) ToJsonString() string {
@@ -2156,7 +2165,7 @@ type Target struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Port *int64 `json:"Port,omitempty" name:"Port"`
 
-	// 后端服务的类型，可取：CVM（云服务器）、ENI（弹性网卡）
+	// 后端服务的类型，可取：CVM（云服务器）、ENI（弹性网卡）；作为入参时，目前本参数暂不生效。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Type *string `json:"Type,omitempty" name:"Type"`
 
@@ -2168,7 +2177,7 @@ type Target struct {
 	// 后端服务的转发权重，取值范围：[0, 100]，默认为 10。
 	Weight *int64 `json:"Weight,omitempty" name:"Weight"`
 
-	// 绑定弹性网卡时需要传入此参数，代表弹性网卡的IP，弹性网卡必须先绑定至CVM，然后才能绑定到负载均衡实例。注意：参数 InstanceId 和 EniIp 只能传入一个且必须传入一个。
+	// 绑定弹性网卡时需要传入此参数，代表弹性网卡的IP，弹性网卡必须先绑定至CVM，然后才能绑定到负载均衡实例。注意：参数 InstanceId 和 EniIp 只能传入一个且必须传入一个。注意：绑定弹性网卡需要先提交工单开白名单使用。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	EniIp *string `json:"EniIp,omitempty" name:"EniIp"`
 }

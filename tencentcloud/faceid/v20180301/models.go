@@ -469,12 +469,15 @@ type IdCardVerificationResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 认证结果码。
+		// 认证结果码，收费情况如下。
+	// 收费结果码：
 	// 0: 姓名和身份证号一致
 	// -1: 姓名和身份证号不一致
-	// -2: 身份证号错误
-	// -3: 姓名错误
-	// -4: 认证出错
+	// 不收费结果码：
+	// -2: 非法身份证号（长度、校验位等不正确）
+	// -3: 非法姓名（长度、格式等不正确）
+	// -4: 证件库服务异常
+	// -5: 证件库中无此身份证记录
 		Result *string `json:"Result,omitempty" name:"Result"`
 
 		// 认证结果信息。

@@ -266,10 +266,13 @@ type LexicalAnalysisResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 命名实体识别结果
+		// 命名实体识别结果。取值范围：
+	// <li>PER：表示人名</li>
+	// <li>LOC：表示地名</li>
+	// <li>ORG：表示机构团体名</li>
 		NerTokens []*NerToken `json:"NerTokens,omitempty" name:"NerTokens" list`
 
-		// 分词&词性标注结果
+		// 分词&词性标注结果（词性表请参见附录）
 		PosTokens []*PosToken `json:"PosTokens,omitempty" name:"PosTokens" list`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -548,7 +551,7 @@ type TextClassificationResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 文本分类结果
+		// 文本分类结果（文本分类映射表请参见附录）
 		Classes []*ClassificationResult `json:"Classes,omitempty" name:"Classes" list`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。

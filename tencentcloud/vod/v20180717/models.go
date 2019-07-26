@@ -69,6 +69,10 @@ type AIRecognitionTemplateItem struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	HeadTailConfigure *HeadTailConfigureInfo `json:"HeadTailConfigure,omitempty" name:"HeadTailConfigure"`
 
+	// 拆条识别控制参数。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SegmentConfigure *SegmentConfigureInfo `json:"SegmentConfigure,omitempty" name:"SegmentConfigure"`
+
 	// 人脸识别控制参数。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FaceConfigure *FaceConfigureInfo `json:"FaceConfigure,omitempty" name:"FaceConfigure"`
@@ -343,6 +347,16 @@ type AiRecognitionResult struct {
 	// <li>ObjectRecognition：物体识别。</li>
 	Type *string `json:"Type,omitempty" name:"Type"`
 
+	// 视频片头片尾识别结果，当 Type 为
+	//  HeadTailRecognition 时有效。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HeadTailTask *AiRecognitionTaskHeadTailResult `json:"HeadTailTask,omitempty" name:"HeadTailTask"`
+
+	// 视频拆条识别结果，当 Type 为
+	//  SegmentRecognition 时有效。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SegmentTask *AiRecognitionTaskSegmentResult `json:"SegmentTask,omitempty" name:"SegmentTask"`
+
 	// 人脸识别结果，当 Type 为 
 	//  FaceRecognition 时有效。
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -367,11 +381,6 @@ type AiRecognitionResult struct {
 	//  OcrFullTextRecognition 时有效。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	OcrFullTextTask *AiRecognitionTaskOcrFullTextResult `json:"OcrFullTextTask,omitempty" name:"OcrFullTextTask"`
-
-	// 视频片头片尾识别结果，当 Type 为
-	//  HeadTailRecognition 时有效。
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	HeadTailTask *AiRecognitionTaskHeadTailResult `json:"HeadTailTask,omitempty" name:"HeadTailTask"`
 
 	// 物体识别结果，当 Type 为
 	//  ObjectRecognition 时有效。
@@ -752,6 +761,59 @@ type AiRecognitionTaskOcrWordsSegmentItem struct {
 
 	// 识别结果的区域坐标。数组包含 4 个元素 [x1,y1,x2,y2]，依次表示区域左上点、右下点的横纵坐标。
 	AreaCoordSet []*int64 `json:"AreaCoordSet,omitempty" name:"AreaCoordSet" list`
+}
+
+type AiRecognitionTaskSegmentResult struct {
+
+	// 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 错误码，0：成功，其他值：失败。
+	ErrCode *int64 `json:"ErrCode,omitempty" name:"ErrCode"`
+
+	// 错误信息。
+	Message *string `json:"Message,omitempty" name:"Message"`
+
+	// 视频拆条任务输入信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Input *AiRecognitionTaskSegmentResultInput `json:"Input,omitempty" name:"Input"`
+
+	// 视频拆条任务输出信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Output *AiRecognitionTaskSegmentResultOutput `json:"Output,omitempty" name:"Output"`
+}
+
+type AiRecognitionTaskSegmentResultInput struct {
+
+	// 视频拆条模板 ID。
+	Definition *int64 `json:"Definition,omitempty" name:"Definition"`
+}
+
+type AiRecognitionTaskSegmentResultOutput struct {
+
+	// 视频拆条片段列表。
+	SegmentSet []*AiRecognitionTaskSegmentSegmentItem `json:"SegmentSet,omitempty" name:"SegmentSet" list`
+}
+
+type AiRecognitionTaskSegmentSegmentItem struct {
+
+	// 视频拆条片段 Url。
+	SegmentUrl *string `json:"SegmentUrl,omitempty" name:"SegmentUrl"`
+
+	// 拆条片段置信度。取值：0~100。
+	Confidence *float64 `json:"Confidence,omitempty" name:"Confidence"`
+
+	// 拆条片段起始的偏移时间，单位：秒。
+	StartTimeOffset *float64 `json:"StartTimeOffset,omitempty" name:"StartTimeOffset"`
+
+	// 拆条片段终止的偏移时间，单位：秒。
+	EndTimeOffset *float64 `json:"EndTimeOffset,omitempty" name:"EndTimeOffset"`
+
+	// 拆条封面图片 Url。
+	CovImgUrl *string `json:"CovImgUrl,omitempty" name:"CovImgUrl"`
+
+	// 特殊字段，请忽略。
+	SpecialInfo *string `json:"SpecialInfo,omitempty" name:"SpecialInfo"`
 }
 
 type AiReviewPoliticalAsrTaskInput struct {
@@ -4513,6 +4575,10 @@ type MediaInfo struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AdaptiveDynamicStreamingInfo *MediaAdaptiveDynamicStreamingInfo `json:"AdaptiveDynamicStreamingInfo,omitempty" name:"AdaptiveDynamicStreamingInfo"`
 
+	// 小程序审核信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MiniProgramReviewInfo *MediaMiniProgramReviewInfo `json:"MiniProgramReviewInfo,omitempty" name:"MiniProgramReviewInfo"`
+
 	// 媒体文件唯一标识 ID。
 	FileId *string `json:"FileId,omitempty" name:"FileId"`
 }
@@ -4590,6 +4656,56 @@ type MediaMetaData struct {
 	// 音频时长，单位：秒。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AudioDuration *float64 `json:"AudioDuration,omitempty" name:"AudioDuration"`
+}
+
+type MediaMiniProgramReviewElem struct {
+
+	// 审核类型。 
+	// <li>Porn：画面涉黄，</li>
+	// <li>Porn.Ocr：文字涉黄，</li>
+	// <li>Porn.Asr：声音涉黄，</li>
+	// <li>Terrorism：画面涉暴恐，</li>
+	// <li>Political：画面涉政，</li>
+	// <li>Political.Ocr：文字涉政，</li>
+	// <li>Political.Asr：声音涉政。</li>
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 审核意见。
+	// <li>pass：确认正常，</li>
+	// <li>block：确认违规，</li>
+	// <li>review：疑似违规。</li>
+	Suggestion *string `json:"Suggestion,omitempty" name:"Suggestion"`
+
+	// 审核结果置信度。取值 0~100。
+	Confidence *string `json:"Confidence,omitempty" name:"Confidence"`
+}
+
+type MediaMiniProgramReviewInfo struct {
+
+	// 审核信息列表。
+	MiniProgramReivewList []*MediaMiniProgramReviewInfoItem `json:"MiniProgramReivewList,omitempty" name:"MiniProgramReivewList" list`
+}
+
+type MediaMiniProgramReviewInfoItem struct {
+
+	// 模板id。小程序视频发布的视频所对应的转码模板ID，为0代表原始视频。
+	Definition *int64 `json:"Definition,omitempty" name:"Definition"`
+
+	// 视频元信息。
+	MetaData *MediaMetaData `json:"MetaData,omitempty" name:"MetaData"`
+
+	// 小程序审核视频播放地址。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Url *string `json:"Url,omitempty" name:"Url"`
+
+	// 小程序视频发布状态：
+	// <li>Pass：成功。</li>
+	// <li>Rejected：未通过。</li>
+	ReviewResult *string `json:"ReviewResult,omitempty" name:"ReviewResult"`
+
+	// 小程序审核元素。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ReviewSummery *MediaMiniProgramReviewElem `json:"ReviewSummery,omitempty" name:"ReviewSummery"`
 }
 
 type MediaOutputInfo struct {
@@ -6633,6 +6749,14 @@ func (r *SearchMediaResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type SegmentConfigureInfo struct {
+
+	// 视频拆条识别任务开关，可选值：
+	// <li>ON：开启智能视频拆条识别任务；</li>
+	// <li>OFF：关闭智能视频拆条识别任务。</li>
+	Switch *string `json:"Switch,omitempty" name:"Switch"`
+}
+
 type SimpleHlsClipRequest struct {
 	*tchttp.BaseRequest
 
@@ -7369,6 +7493,13 @@ type VideoTemplateInfo struct {
 	// 默认值：0。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Height *uint64 `json:"Height,omitempty" name:"Height"`
+
+	// 填充方式，当视频流配置宽高参数与原始视频的宽高比不一致时，对转码的处理方式，即为“填充”。可选填充方式：
+	// <li> stretch：拉伸，对每一帧进行拉伸，填满整个画面，可能导致转码后的视频被“压扁“或者“拉长“；</li>
+	// <li>black：留黑，保持视频宽高比不变，边缘剩余部分使用黑色填充。</li>
+	// 默认值：black 。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FillType *string `json:"FillType,omitempty" name:"FillType"`
 }
 
 type VideoTemplateInfoForUpdate struct {

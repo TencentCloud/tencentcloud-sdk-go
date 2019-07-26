@@ -3179,7 +3179,7 @@ type ModifyBackupConfigRequest struct {
 	// 实例 ID，格式如：cdb-c1nl9rpv。与云数据库控制台页面中显示的实例ID相同。
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
-	// 备份过期时间，单位为天，最小值为7天，最大值为732天。
+	// 备份文件的保留时间，单位为天。最小值为7天，最大值为732天。
 	ExpireDays *int64 `json:"ExpireDays,omitempty" name:"ExpireDays"`
 
 	// 备份时间范围，格式为：02:00-06:00，起点和终点时间目前限制为整点，目前可以选择的范围为： 02:00-06:00，06：00-10：00，10:00-14:00，14:00-18:00，18:00-22:00，22:00-02:00。
@@ -3187,6 +3187,9 @@ type ModifyBackupConfigRequest struct {
 
 	// 目标备份方法，可选的值：logical - 逻辑冷备，physical - 物理冷备；默认备份方法为 逻辑冷备。
 	BackupMethod *string `json:"BackupMethod,omitempty" name:"BackupMethod"`
+
+	// binlog的保留时间，单位为天。最小值为7天，最大值为732天。该值的设置不能大于备份文件的保留时间。
+	BinlogExpireDays *int64 `json:"BinlogExpireDays,omitempty" name:"BinlogExpireDays"`
 }
 
 func (r *ModifyBackupConfigRequest) ToJsonString() string {

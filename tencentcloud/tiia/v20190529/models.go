@@ -29,6 +29,36 @@ type Candidate struct {
 	Confidence *int64 `json:"Confidence,omitempty" name:"Confidence"`
 }
 
+type CarTagItem struct {
+
+	// 车系
+	Serial *string `json:"Serial,omitempty" name:"Serial"`
+
+	// 车辆品牌
+	Brand *string `json:"Brand,omitempty" name:"Brand"`
+
+	// 车辆类型
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 车辆颜色
+	Color *string `json:"Color,omitempty" name:"Color"`
+
+	// 置信度，0-100
+	Confidence *int64 `json:"Confidence,omitempty" name:"Confidence"`
+
+	// 年份，没识别出年份的时候返回0
+	Year *int64 `json:"Year,omitempty" name:"Year"`
+}
+
+type Coord struct {
+
+	// 横坐标x
+	X *int64 `json:"X,omitempty" name:"X"`
+
+	// 纵坐标y
+	Y *int64 `json:"Y,omitempty" name:"Y"`
+}
+
 type DetectLabelItem struct {
 
 	// 图片中的物体名称。
@@ -77,6 +107,53 @@ func (r *DetectLabelResponse) ToJsonString() string {
 }
 
 func (r *DetectLabelResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DetectProductRequest struct {
+	*tchttp.BaseRequest
+
+	// 图片URL地址。 
+	// 图片限制： 
+	// • 图片格式：PNG、JPG、JPEG。 
+	// • 图片大小：所下载图片经Base64编码后不超过4M。图片下载时间不超过3秒。 
+	// 建议：
+	// • 图片像素：大于50*50像素，否则影响识别效果； 
+	// • 长宽比：长边：短边<5； 
+	// 接口响应时间会受到图片下载时间的影响，建议使用更可靠的存储服务，推荐将图片存储在腾讯云COS。
+	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
+
+	// 图片经过base64编码的内容。最大不超过4M。与ImageUrl同时存在时优先使用ImageUrl字段。
+	ImageBase64 *string `json:"ImageBase64,omitempty" name:"ImageBase64"`
+}
+
+func (r *DetectProductRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DetectProductRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DetectProductResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 商品识别结果数组
+		Products []*Product `json:"Products,omitempty" name:"Products" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DetectProductResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DetectProductResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -273,6 +350,76 @@ type PornResult struct {
 
 	// 取值'LABEL‘，LABEL表示结论和置信度来自标签分类。
 	Type *string `json:"Type,omitempty" name:"Type"`
+}
+
+type Product struct {
+
+	// 图片中商品的三级分类识别结果，选取所有三级分类中的置信度最大者
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 三级商品分类对应的一级分类和二级分类，两级之间用“-”（中划线）隔开，例如商品名称是“硬盘”，那么Parents输出为“电脑、办公-电脑配件”
+	Parents *string `json:"Parents,omitempty" name:"Parents"`
+
+	// 算法对于Name的置信度，0-100之间，值越高，表示对于Name越确定
+	Confidence *int64 `json:"Confidence,omitempty" name:"Confidence"`
+
+	// 商品坐标X轴的最小值
+	XMin *int64 `json:"XMin,omitempty" name:"XMin"`
+
+	// 商品坐标Y轴的最小值
+	YMin *int64 `json:"YMin,omitempty" name:"YMin"`
+
+	// 商品坐标X轴的最大值
+	XMax *int64 `json:"XMax,omitempty" name:"XMax"`
+
+	// 商品坐标Y轴的最大值
+	YMax *int64 `json:"YMax,omitempty" name:"YMax"`
+}
+
+type RecognizeCarRequest struct {
+	*tchttp.BaseRequest
+
+	// 图片的BASE64值；
+	// BASE64编码后的图片数据大小不超过3M，支持PNG、JPG、JPEG、BMP格式，暂不支持GIF格式。
+	ImageBase64 *string `json:"ImageBase64,omitempty" name:"ImageBase64"`
+
+	// 图片的 ImageUrl、ImageBase64必须提供一个，如果都提供，只使用ImageUrl。
+	// 
+	// 图片URL地址。支持的图片格式：PNG、JPG、JPEG、BMP，暂不支持GIF格式。支持的图片大小：所下载图片经Base64编码后不超过4M。图片下载时间不超过3秒。
+	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
+}
+
+func (r *RecognizeCarRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *RecognizeCarRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type RecognizeCarResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 汽车的四个矩形顶点坐标
+		CarCoords []*Coord `json:"CarCoords,omitempty" name:"CarCoords" list`
+
+		// 车辆属性识别的结果数组
+		CarTags []*CarTagItem `json:"CarTags,omitempty" name:"CarTags" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *RecognizeCarResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *RecognizeCarResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
 }
 
 type TerrorismResult struct {

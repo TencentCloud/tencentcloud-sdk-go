@@ -58,9 +58,9 @@ func NewCompleteMigrateJobResponse() (response *CompleteMigrateJobResponse) {
     return
 }
 
-// 完成数据迁移任务.
-// 选择采用增量迁移方式的任务, 需要在迁移进度进入准备完成阶段后, 调用本接口, 停止迁移增量数据.
-// 只有当正在迁移的任务, 进入了准备完成阶段, 才能调用本接口完成迁移.
+// 本接口（CompleteMigrateJob）用于完成数据迁移任务。
+// 选择采用增量迁移方式的任务, 需要在迁移进度进入准备完成阶段后, 调用本接口, 停止迁移增量数据。
+// 通过DescribeMigrateJobs接口查询到任务的状态为准备完成（status=8）时，此时可以调用本接口完成迁移任务。
 func (c *Client) CompleteMigrateJob(request *CompleteMigrateJobRequest) (response *CompleteMigrateJobResponse, err error) {
     if request == nil {
         request = NewCompleteMigrateJobRequest()
@@ -112,7 +112,7 @@ func NewCreateMigrateJobResponse() (response *CreateMigrateJobResponse) {
     return
 }
 
-// 本接口用于创建数据迁移任务。
+// 本接口（CreateMigrateJob）用于创建数据迁移任务。
 // 
 // 如果是金融区链路, 请使用域名: dts.ap-shenzhen-fsi.tencentcloudapi.com
 func (c *Client) CreateMigrateJob(request *CreateMigrateJobRequest) (response *CreateMigrateJobResponse, err error) {
@@ -191,7 +191,7 @@ func NewDeleteMigrateJobResponse() (response *DeleteMigrateJobResponse) {
     return
 }
 
-// 删除数据迁移任务. 正在校验和正在迁移的任务不允许删除
+// 本接口（DeleteMigrationJob）用于删除数据迁移任务。当通过DescribeMigrateJobs接口查询到任务的状态为：检验中（status=3）、运行中（status=7）、准备完成（status=8）、撤销中（status=11）或者完成中（status=12）时，不允许删除任务。
 func (c *Client) DeleteMigrateJob(request *DeleteMigrateJobRequest) (response *DeleteMigrateJobResponse, err error) {
     if request == nil {
         request = NewDeleteMigrateJobRequest()
@@ -349,9 +349,8 @@ func NewModifyMigrateJobResponse() (response *ModifyMigrateJobResponse) {
     return
 }
 
-// 修改数据迁移任务. 
-// 当迁移任务处于下述状态时, 允许调用本接口: 迁移创建中, 创建完成, 校验成功, 校验失败, 迁移失败. 
-// 源实例和目标实例类型不允许修改, 目标实例地域不允许修改。
+// 本接口（ModifyMigrateJob）用于修改数据迁移任务。
+// 当迁移任务处于下述状态时，允许调用本接口修改迁移任务：迁移创建中（status=1）、 校验成功(status=4)、校验失败(status=5)、迁移失败(status=10)。但源实例、目标实例类型和目标实例地域不允许修改。
 // 
 // 如果是金融区链路, 请使用域名: dts.ap-shenzhen-fsi.tencentcloudapi.com
 func (c *Client) ModifyMigrateJob(request *ModifyMigrateJobRequest) (response *ModifyMigrateJobResponse, err error) {
@@ -405,8 +404,8 @@ func NewStartMigrateJobResponse() (response *StartMigrateJobResponse) {
     return
 }
 
-// 非定时任务会在调用后立即开始迁移，定时任务则会开始倒计时。
-// 调用此接口前，请务必先校验数据迁移任务通过。
+// 本接口（StartMigrationJob）用于启动迁移任务。非定时迁移任务会在调用后立即开始迁移，定时任务则会开始倒计时。
+// 调用此接口前，请务必先使用CreateMigrateCheckJob校验数据迁移任务，并通过DescribeMigrateJobs接口查询到任务状态为校验通过（status=4）时，才能启动数据迁移任务。
 func (c *Client) StartMigrateJob(request *StartMigrateJobRequest) (response *StartMigrateJobResponse, err error) {
     if request == nil {
         request = NewStartMigrateJobRequest()
@@ -456,8 +455,8 @@ func NewStopMigrateJobResponse() (response *StopMigrateJobResponse) {
     return
 }
 
-// 撤销数据迁移任务.
-// 在迁移过程中允许调用该接口撤销迁移, 撤销迁移的任务会失败.
+// 本接口（StopMigrateJob）用于撤销数据迁移任务。
+// 在迁移过程中允许调用该接口撤销迁移, 撤销迁移的任务会失败。通过DescribeMigrateJobs接口查询到任务状态为运行中（status=7）或准备完成（status=8）时，才能撤销数据迁移任务。
 func (c *Client) StopMigrateJob(request *StopMigrateJobRequest) (response *StopMigrateJobResponse, err error) {
     if request == nil {
         request = NewStopMigrateJobRequest()
