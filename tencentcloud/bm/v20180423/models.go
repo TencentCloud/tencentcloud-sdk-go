@@ -63,13 +63,13 @@ func (r *BindPsaTagResponse) FromJsonString(s string) error {
 type BuyDevicesRequest struct {
 	*tchttp.BaseRequest
 
-	// 可用区ID。通过接口[查询地域以及可用区(DescribeRegions)](https://cloud.tencent.com/document/api/386/6634)获取可用区信息
+	// 可用区ID。通过接口[查询地域以及可用区(DescribeRegions)](https://cloud.tencent.com/document/api/386/33564)获取可用区信息
 	Zone *string `json:"Zone,omitempty" name:"Zone"`
 
 	// 部署服务器的操作系统ID。通过接口[查询操作系统信息(DescribeOsInfo)](https://cloud.tencent.com/document/api/386/31964)获取操作系统信息
 	OsTypeId *uint64 `json:"OsTypeId,omitempty" name:"OsTypeId"`
 
-	// RAID类型ID。通过接口[查询机型RAID方式以及系统盘大小(DescribeDeviceClassPartition)](https://cloud.tencent.com/document/api/386/7370)获取RAID信息
+	// RAID类型ID。通过接口[查询机型RAID方式以及系统盘大小(DescribeDeviceClassPartition)](https://cloud.tencent.com/document/api/386/32910)获取RAID信息
 	RaidId *uint64 `json:"RaidId,omitempty" name:"RaidId"`
 
 	// 购买数量
@@ -81,7 +81,7 @@ type BuyDevicesRequest struct {
 	// 购买至子网ID
 	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
 
-	// 购买的机型ID。通过接口[查询设备型号(DescribeDeviceClass)](https://cloud.tencent.com/document/api/386/6636)获取机型信息
+	// 购买的机型ID。通过接口[查询设备型号(DescribeDeviceClass)](https://cloud.tencent.com/document/api/386/32911)获取机型信息
 	DeviceClassCode *string `json:"DeviceClassCode,omitempty" name:"DeviceClassCode"`
 
 	// 购买时长单位，取值：M(月) D(天)
@@ -126,10 +126,10 @@ type BuyDevicesRequest struct {
 	// 自动续费标志位，取值：1(自动续费) 0(不自动续费)，默认取值0
 	AutoRenewFlag *uint64 `json:"AutoRenewFlag,omitempty" name:"AutoRenewFlag"`
 
-	// 系统盘根分区大小，单位为G，默认取值10G。通过接口[查询机型RAID方式以及系统盘大小(DescribeDeviceClassPartition)](https://cloud.tencent.com/document/api/386/7370)获取根分区信息
+	// 系统盘根分区大小，单位为G，默认取值10G。通过接口[查询机型RAID方式以及系统盘大小(DescribeDeviceClassPartition)](https://cloud.tencent.com/document/api/386/32910)获取根分区信息
 	SysRootSpace *uint64 `json:"SysRootSpace,omitempty" name:"SysRootSpace"`
 
-	// 系统盘swap分区或/boot/efi分区的大小，单位为G。若是uefi启动的机器，分区为/boot/efi，且此值是默认是2G。 普通机器为swap分区，可以不指定此分区。 机型是否是uefi启动，参见接口[查询设备型号(DescribeDeviceClass)](https://cloud.tencent.com/document/api/386/6636)
+	// 系统盘swap分区或/boot/efi分区的大小，单位为G。若是uefi启动的机器，分区为/boot/efi，且此值是默认是2G。 普通机器为swap分区，可以不指定此分区。 机型是否是uefi启动，参见接口[查询设备型号(DescribeDeviceClass)](https://cloud.tencent.com/document/api/386/32911)
 	SysSwaporuefiSpace *uint64 `json:"SysSwaporuefiSpace,omitempty" name:"SysSwaporuefiSpace"`
 
 	// /usr/local分区大小，单位为G
@@ -148,25 +148,25 @@ type BuyDevicesRequest struct {
 	Aliases []*string `json:"Aliases,omitempty" name:"Aliases" list`
 
 	// CPU型号ID，自定义机型需要传入，取值：
-	// <br/><li>1: E5-2620v3 (6核) * 2</li><li>2: E5-2680v4 (14核) * 2</li><li>3: E5-2670v3 (12核) * 2</li><li>4: E5-2620v4 (8核) * 2</li><li>5: 4110 (8核) * 2</li><li>6: 6133 (20核) * 2</li><br/>
+	// <br/><li>1: E5-2620v3 (6核) &#42; 2</li><li>2: E5-2680v4 (14核) &#42; 2</li><li>3: E5-2670v3 (12核) &#42; 2</li><li>4: E5-2620v4 (8核) &#42; 2</li><li>5: 4110 (8核) &#42; 2</li><li>6: 6133 (20核) &#42; 2</li><br/>
 	CpuId *uint64 `json:"CpuId,omitempty" name:"CpuId"`
 
 	// 是否有RAID卡，取值：1(有) 0(无)，自定义机型需要传入
 	ContainRaidCard *uint64 `json:"ContainRaidCard,omitempty" name:"ContainRaidCard"`
 
-	// 内存大小，单位为G，自定义机型需要传入。取值参考接口[查询自定义机型部件信息(DescribeHardwareSpecification)](https://cloud.tencent.com/document/api/386/10968)返回值
+	// 内存大小，单位为G，自定义机型需要传入。取值参考接口[查询自定义机型部件信息(DescribeHardwareSpecification)](https://cloud.tencent.com/document/api/386/33565)返回值
 	MemSize *uint64 `json:"MemSize,omitempty" name:"MemSize"`
 
-	// 系统盘ID，自定义机型需要传入。取值参考接口[查询自定义机型部件信息(DescribeHardwareSpecification)](https://cloud.tencent.com/document/api/386/10968)返回值
+	// 系统盘ID，自定义机型需要传入。取值参考接口[查询自定义机型部件信息(DescribeHardwareSpecification)](https://cloud.tencent.com/document/api/386/33565)返回值
 	SystemDiskTypeId *uint64 `json:"SystemDiskTypeId,omitempty" name:"SystemDiskTypeId"`
 
-	// 系统盘数量，自定义机型需要传入。取值参考接口[查询自定义机型部件信息(DescribeHardwareSpecification)](https://cloud.tencent.com/document/api/386/10968)返回值
+	// 系统盘数量，自定义机型需要传入。取值参考接口[查询自定义机型部件信息(DescribeHardwareSpecification)](https://cloud.tencent.com/document/api/386/33565)返回值
 	SystemDiskCount *uint64 `json:"SystemDiskCount,omitempty" name:"SystemDiskCount"`
 
-	// 数据盘ID，自定义机型需要传入。取值参考接口[查询自定义机型部件信息(DescribeHardwareSpecification)](https://cloud.tencent.com/document/api/386/10968)返回值
+	// 数据盘ID，自定义机型需要传入。取值参考接口[查询自定义机型部件信息(DescribeHardwareSpecification)](https://cloud.tencent.com/document/api/386/33565)返回值
 	DataDiskTypeId *uint64 `json:"DataDiskTypeId,omitempty" name:"DataDiskTypeId"`
 
-	// 数据盘数量，自定义机型需要传入。取值参考接口[查询自定义机型部件信息(DescribeHardwareSpecification)](https://cloud.tencent.com/document/api/386/10968)返回值
+	// 数据盘数量，自定义机型需要传入。取值参考接口[查询自定义机型部件信息(DescribeHardwareSpecification)](https://cloud.tencent.com/document/api/386/33565)返回值
 	DataDiskCount *uint64 `json:"DataDiskCount,omitempty" name:"DataDiskCount"`
 
 	// 绑定的标签列表
@@ -677,7 +677,7 @@ func (r *DescribeCustomImagesResponse) FromJsonString(s string) error {
 type DescribeDeviceClassPartitionRequest struct {
 	*tchttp.BaseRequest
 
-	// 设备类型代号。代号通过接口[查询设备型号(DescribeDeviceClass)](https://cloud.tencent.com/document/api/386/17602)查询。标准机型需要传入此参数
+	// 设备类型代号。代号通过接口[查询设备型号(DescribeDeviceClass)](https://cloud.tencent.com/document/api/386/32911)查询。标准机型需要传入此参数
 	DeviceClassCode *string `json:"DeviceClassCode,omitempty" name:"DeviceClassCode"`
 
 	// 需要查询自定义机型RAID信息时，传入自定义机型实例ID。InstanceId存在时DeviceClassCode失效

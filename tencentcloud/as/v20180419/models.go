@@ -294,7 +294,7 @@ type CreateAutoScalingGroupRequest struct {
 	// 应用型负载均衡器列表，目前长度上限为5，LoadBalancerIds 和 ForwardLoadBalancers 二者同时最多只能指定一个
 	ForwardLoadBalancers []*ForwardLoadBalancer `json:"ForwardLoadBalancers,omitempty" name:"ForwardLoadBalancers" list`
 
-	// 子网ID列表，VPC场景下必须指定子网
+	// 子网ID列表，VPC场景下必须指定子网。多个子网以填写顺序为优先级，依次进行尝试，直至可以成功创建实例。
 	SubnetIds []*string `json:"SubnetIds,omitempty" name:"SubnetIds" list`
 
 	// 销毁策略，目前长度上限为1。取值包括 OLDEST_INSTANCE 和 NEWEST_INSTANCE，默认取值为 OLDEST_INSTANCE。
@@ -302,7 +302,7 @@ type CreateAutoScalingGroupRequest struct {
 	// <br><li> NEWEST_INSTANCE，优先销毁伸缩组中最新的实例。
 	TerminationPolicies []*string `json:"TerminationPolicies,omitempty" name:"TerminationPolicies" list`
 
-	// 可用区列表，基础网络场景下必须指定可用区
+	// 可用区列表，基础网络场景下必须指定可用区。多个可用区以填写顺序为优先级，依次进行尝试，直至可以成功创建实例。
 	Zones []*string `json:"Zones,omitempty" name:"Zones" list`
 
 	// 重试策略，取值包括 IMMEDIATE_RETRY、 INCREMENTAL_INTERVALS、NO_RETRY，默认取值为 IMMEDIATE_RETRY。
@@ -1697,6 +1697,9 @@ type Instance struct {
 
 	// 版本号
 	VersionNumber *int64 `json:"VersionNumber,omitempty" name:"VersionNumber"`
+
+	// 伸缩组名称
+	AutoScalingGroupName *string `json:"AutoScalingGroupName,omitempty" name:"AutoScalingGroupName"`
 }
 
 type InstanceChargePrepaid struct {

@@ -55,6 +55,15 @@ type AddExistedInstancesResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
+		// 失败的节点ID
+		FailedInstanceIds []*string `json:"FailedInstanceIds,omitempty" name:"FailedInstanceIds" list`
+
+		// 成功的节点ID
+		SuccInstanceIds []*string `json:"SuccInstanceIds,omitempty" name:"SuccInstanceIds" list`
+
+		// 超时未返回出来节点的ID(可能失败，也可能成功)
+		TimeoutInstanceIds []*string `json:"TimeoutInstanceIds,omitempty" name:"TimeoutInstanceIds" list`
+
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
@@ -106,6 +115,9 @@ type ClusterAdvancedSettings struct {
 
 	// 是否启用集群节点扩缩容
 	AsEnabled *bool `json:"AsEnabled,omitempty" name:"AsEnabled"`
+
+	// 集群使用的runtime类型，包括"docker"和"containerd"两种类型，默认为"docker"
+	ContainerRuntime *string `json:"ContainerRuntime,omitempty" name:"ContainerRuntime"`
 }
 
 type ClusterBasicSettings struct {
@@ -163,6 +175,52 @@ type ClusterNetworkSettings struct {
 
 	// 集群的VPCID（如果创建空集群，为必传值，否则自动设置为和集群的节点保持一致）
 	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
+
+	// 网络插件是否启用CNI(默认开启)
+	Cni *bool `json:"Cni,omitempty" name:"Cni"`
+}
+
+type CreateClusterInstancesRequest struct {
+	*tchttp.BaseRequest
+
+	// 集群 ID，请填写 查询集群列表 接口中返回的 clusterId 字段
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// CVM创建透传参数，json化字符串格式，详见[CVM创建实例](https://cloud.tencent.com/document/product/213/15730)接口。
+	RunInstancePara *string `json:"RunInstancePara,omitempty" name:"RunInstancePara"`
+
+	// 实例额外需要设置参数信息
+	InstanceAdvancedSettings *InstanceAdvancedSettings `json:"InstanceAdvancedSettings,omitempty" name:"InstanceAdvancedSettings"`
+}
+
+func (r *CreateClusterInstancesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateClusterInstancesRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateClusterInstancesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 节点实例ID
+		InstanceIdSet []*string `json:"InstanceIdSet,omitempty" name:"InstanceIdSet" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateClusterInstancesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateClusterInstancesResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
 }
 
 type CreateClusterRequest struct {
@@ -260,6 +318,43 @@ func (r *DeleteClusterInstancesResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DeleteClusterRequest struct {
+	*tchttp.BaseRequest
+
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 集群实例删除时的策略：terminate（销毁实例，仅支持按量计费云主机实例） retain （仅移除，保留实例）
+	InstanceDeleteMode *string `json:"InstanceDeleteMode,omitempty" name:"InstanceDeleteMode"`
+}
+
+func (r *DeleteClusterRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteClusterRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteClusterResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DeleteClusterResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteClusterResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeClusterInstancesRequest struct {
 	*tchttp.BaseRequest
 
@@ -306,6 +401,61 @@ func (r *DescribeClusterInstancesResponse) ToJsonString() string {
 }
 
 func (r *DescribeClusterInstancesResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeClusterSecurityRequest struct {
+	*tchttp.BaseRequest
+
+	// 集群 ID，请填写 查询集群列表 接口中返回的 clusterId 字段
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+}
+
+func (r *DescribeClusterSecurityRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeClusterSecurityRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeClusterSecurityResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 集群的账号名称
+		UserName *string `json:"UserName,omitempty" name:"UserName"`
+
+		// 集群的访问密码
+		Password *string `json:"Password,omitempty" name:"Password"`
+
+		// 集群访问CA证书
+		CertificationAuthority *string `json:"CertificationAuthority,omitempty" name:"CertificationAuthority"`
+
+		// 集群访问的地址
+		ClusterExternalEndpoint *string `json:"ClusterExternalEndpoint,omitempty" name:"ClusterExternalEndpoint"`
+
+		// 集群访问的域名
+		Domain *string `json:"Domain,omitempty" name:"Domain"`
+
+		// 集群Endpoint地址
+		PgwEndpoint *string `json:"PgwEndpoint,omitempty" name:"PgwEndpoint"`
+
+		// 集群访问策略组
+		SecurityPolicy []*string `json:"SecurityPolicy,omitempty" name:"SecurityPolicy" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeClusterSecurityResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeClusterSecurityResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -359,6 +509,65 @@ func (r *DescribeClustersResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeExistedInstancesRequest struct {
+	*tchttp.BaseRequest
+
+	// 集群 ID，请填写查询集群列表 接口中返回的 ClusterId 字段（仅通过ClusterId获取需要过滤条件中的VPCID，比较状态时会使用该地域下所有集群中的节点进行比较。参数不支持同时指定InstanceIds和ClusterId。
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 按照一个或者多个实例ID查询。实例ID形如：ins-xxxxxxxx。（此参数的具体格式可参考API简介的id.N一节）。每次请求的实例的上限为100。参数不支持同时指定InstanceIds和Filters。
+	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds" list`
+
+	// 过滤条件,字段和详见[CVM查询实例](https://cloud.tencent.com/document/api/213/15728)如果设置了ClusterId，会附加集群的VPCID作为查询字段，在此情况下如果在Filter中指定了"vpc-id"作为过滤字段，指定的VPCID必须与集群的VPCID相同。
+	Filters *Filter `json:"Filters,omitempty" name:"Filters"`
+
+	// 实例IP进行过滤(同时支持内网IP和外网IP)
+	VagueIpAddress *string `json:"VagueIpAddress,omitempty" name:"VagueIpAddress"`
+
+	// 实例名称进行过滤
+	VagueInstanceName *string `json:"VagueInstanceName,omitempty" name:"VagueInstanceName"`
+
+	// 偏移量，默认为0。关于Offset的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 返回数量，默认为20，最大值为100。关于Limit的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+func (r *DescribeExistedInstancesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeExistedInstancesRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeExistedInstancesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 已经存在的实例信息数组。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		ExistedInstanceSet []*ExistedInstance `json:"ExistedInstanceSet,omitempty" name:"ExistedInstanceSet" list`
+
+		// 符合条件的实例数量。
+		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeExistedInstancesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeExistedInstancesResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type EnhancedService struct {
 
 	// 开启云安全服务。若不指定该参数，则默认开启云安全服务。
@@ -366,6 +575,63 @@ type EnhancedService struct {
 
 	// 开启云监控服务。若不指定该参数，则默认开启云监控服务。
 	MonitorService *RunMonitorServiceEnabled `json:"MonitorService,omitempty" name:"MonitorService"`
+}
+
+type ExistedInstance struct {
+
+	// 实例是否支持加入集群(TRUE 可以加入 FALSE 不能加入)。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Usable *bool `json:"Usable,omitempty" name:"Usable"`
+
+	// 实例不支持加入的原因。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UnusableReason *string `json:"UnusableReason,omitempty" name:"UnusableReason"`
+
+	// 实例已经所在的集群ID。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AlreadyInCluster *string `json:"AlreadyInCluster,omitempty" name:"AlreadyInCluster"`
+
+	// 实例ID形如：ins-xxxxxxxx。
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 实例名称。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceName *string `json:"InstanceName,omitempty" name:"InstanceName"`
+
+	// 实例主网卡的内网IP列表。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PrivateIpAddresses []*string `json:"PrivateIpAddresses,omitempty" name:"PrivateIpAddresses" list`
+
+	// 实例主网卡的公网IP列表。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PublicIpAddresses []*string `json:"PublicIpAddresses,omitempty" name:"PublicIpAddresses" list`
+
+	// 创建时间。按照ISO8601标准表示，并且使用UTC时间。格式为：YYYY-MM-DDThh:mm:ssZ。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreatedTime *string `json:"CreatedTime,omitempty" name:"CreatedTime"`
+
+	// 实例计费模式。取值范围：
+	// PREPAID：表示预付费，即包年包月
+	// POSTPAID_BY_HOUR：表示后付费，即按量计费
+	// CDHPAID：CDH付费，即只对CDH计费，不对CDH上的实例计费。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceChargeType *string `json:"InstanceChargeType,omitempty" name:"InstanceChargeType"`
+
+	// 实例的CPU核数，单位：核。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CPU *uint64 `json:"CPU,omitempty" name:"CPU"`
+
+	// 实例内存容量，单位：GB。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Memory *uint64 `json:"Memory,omitempty" name:"Memory"`
+
+	// 操作系统名称。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OsName *string `json:"OsName,omitempty" name:"OsName"`
+
+	// 实例机型。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceType *string `json:"InstanceType,omitempty" name:"InstanceType"`
 }
 
 type ExistedInstancesForNode struct {
@@ -405,9 +671,6 @@ type Filter struct {
 }
 
 type Instance struct {
-
-	// 实例的附加信息
-	InstanceAdvanceSettings *InstanceAdvancedSettings `json:"InstanceAdvanceSettings,omitempty" name:"InstanceAdvanceSettings"`
 
 	// 实例ID
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`

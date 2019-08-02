@@ -2041,7 +2041,7 @@ func NewForbidLiveDomainResponse() (response *ForbidLiveDomainResponse) {
     return
 }
 
-// 停用使用某个直播域名
+// 停止使用某个直播域名。
 func (c *Client) ForbidLiveDomain(request *ForbidLiveDomainRequest) (response *ForbidLiveDomainResponse, err error) {
     if request == nil {
         request = NewForbidLiveDomainRequest()

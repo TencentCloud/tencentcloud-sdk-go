@@ -158,7 +158,7 @@ func NewDescribeBackupUrlResponse() (response *DescribeBackupUrlResponse) {
     return
 }
 
-// 查询备份Rdb下载地址
+// 查询备份Rdb下载地址(接口灰度中，需要加白名单使用)
 func (c *Client) DescribeBackupUrl(request *DescribeBackupUrlRequest) (response *DescribeBackupUrlResponse, err error) {
     if request == nil {
         request = NewDescribeBackupUrlRequest()

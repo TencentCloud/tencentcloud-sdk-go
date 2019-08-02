@@ -421,10 +421,10 @@ type DescribeAutoSnapshotPoliciesRequest struct {
 	// 过滤条件。参数不支持同时指定`AutoSnapshotPolicyIds`和`Filters`。<br><li>auto-snapshot-policy-id - Array of String - 是否必填：否 -（过滤条件）按定期快照策略ID进行过滤。定期快照策略ID形如：`asp-11112222`。<br><li>auto-snapshot-policy-state - Array of String - 是否必填：否 -（过滤条件）按定期快照策略的状态进行过滤。定期快照策略ID形如：`asp-11112222`。(NORMAL：正常 | ISOLATED：已隔离。)<br><li>auto-snapshot-policy-name - Array of String - 是否必填：否 -（过滤条件）按定期快照策略名称进行过滤。
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
 
-	// 返回数量，默认为20，最大值为100。关于`Limit`的更进一步介绍请参考 API [简介](/document/362/13158)中的相关小节。
+	// 返回数量，默认为20，最大值为100。关于`Limit`的更进一步介绍请参考 API [简介](/document/product/362/15633)中的相关小节。
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 
-	// 偏移量，默认为0。关于`Offset`的更进一步介绍请参考API[简介](/document/362/13158)中的相关小节。
+	// 偏移量，默认为0。关于`Offset`的更进一步介绍请参考API[简介](/document/product/362/15633)中的相关小节。
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
 
 	// 输出定期快照列表的排列顺序。取值范围：<br><li>ASC：升序排列<br><li>DESC：降序排列。
@@ -930,6 +930,14 @@ type Disk struct {
 
 	// 对于非共享型云盘，该参数为空数组。对于共享型云盘，则表示该云盘当前被挂载到的CVM实例InstanceId
 	InstanceIdList []*string `json:"InstanceIdList,omitempty" name:"InstanceIdList" list`
+
+	// 云硬盘挂载目标设备的ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AttachDeviceId *string `json:"AttachDeviceId,omitempty" name:"AttachDeviceId"`
+
+	// 云硬盘挂载目标设备的类型，目前包括CVM和POD
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AttachDeviceType *string `json:"AttachDeviceType,omitempty" name:"AttachDeviceType"`
 }
 
 type DiskChargePrepaid struct {
@@ -1528,6 +1536,9 @@ type Snapshot struct {
 
 	// 快照关联的镜像个数。
 	ImageCount *uint64 `json:"ImageCount,omitempty" name:"ImageCount"`
+
+	// 快照类型，目前该项取值可以为PRIVATE_SNAPSHOT或者SHARED_SNAPSHOT
+	SnapshotType *string `json:"SnapshotType,omitempty" name:"SnapshotType"`
 }
 
 type SnapshotOperationLog struct {

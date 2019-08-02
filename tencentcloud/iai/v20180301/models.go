@@ -34,6 +34,11 @@ type AnalyzeFaceRequest struct {
 	// 非腾讯云存储的Url速度和稳定性可能受一定影响。
 	// 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
 	Url *string `json:"Url,omitempty" name:"Url"`
+
+	// 人脸识别服务所用的算法模型版本。目前入参支持 “2.0”和“3.0“ 两个输入。  
+	// 默认为"2.0"。 
+	// 不同算法模型版本对应的人脸识别算法不同，新版本的整体效果会优于旧版本，建议使用最新版本。
+	FaceModelVersion *string `json:"FaceModelVersion,omitempty" name:"FaceModelVersion"`
 }
 
 func (r *AnalyzeFaceRequest) ToJsonString() string {
@@ -87,6 +92,18 @@ type Candidate struct {
 	// 误识率百分之一对应分数为60分，误识率千分之一对应分数为70分，误识率万分之一对应分数为80分。 
 	// 建议分数不要超过90分。您可以根据实际情况选择合适的分数。
 	Score *float64 `json:"Score,omitempty" name:"Score"`
+
+	// 人员名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PersonName *string `json:"PersonName,omitempty" name:"PersonName"`
+
+	// 人员性别
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Gender *int64 `json:"Gender,omitempty" name:"Gender"`
+
+	// 包含此人员的人员库及描述字段内容列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PersonGroupInfos []*PersonGroupInfo `json:"PersonGroupInfos,omitempty" name:"PersonGroupInfos" list`
 }
 
 type CompareFaceRequest struct {
@@ -534,7 +551,7 @@ type DetectFaceRequest struct {
 
 	// 是否开启质量检测。0 为关闭，1 为开启。默认为 0。 
 	// 非 1 值均视为不进行质量检测。
-	// 最多返回面积最大的 5 张人脸质量分信息，超过 5 张人脸（第 6 张及以后的人脸）的 FaceQualityInfo不具备参考意义。  
+	// 最多返回面积最大的 30 张人脸质量分信息，超过 30 张人脸（第 31 张及以后的人脸）的 FaceQualityInfo不具备参考意义。  
 	// 建议：人脸入库操作建议开启此功能。
 	NeedQualityDetection *uint64 `json:"NeedQualityDetection,omitempty" name:"NeedQualityDetection"`
 }
@@ -622,7 +639,7 @@ func (r *DetectLiveFaceResponse) FromJsonString(s string) error {
 
 type FaceAttributesInfo struct {
 
-	// 性别 [0(female，女性)~100(male，男性)]。 NeedFaceAttributes 不为 1 或检测超过 5 张人脸时，此参数仍返回，但不具备参考意义。
+	// 性别[0~49]为女性，[50，100]为男性，越接近0和100表示置信度越高。NeedFaceAttributes 不为 1 或检测超过 5 张人脸时，此参数仍返回，但不具备参考意义。
 	Gender *int64 `json:"Gender,omitempty" name:"Gender"`
 
 	// 年龄 [0~100]。NeedFaceAttributes 不为1 或检测超过 5 张人脸时，此参数仍返回，但不具备参考意义。
@@ -744,6 +761,7 @@ type FaceQualityCompleteness struct {
 type FaceQualityInfo struct {
 
 	// 质量分: [0,100]，综合评价图像质量是否适合人脸识别，分数越高质量越好。 
+	// 正常情况，只需要使用Score作为质量分总体的判断标准即可。
 	// 参考范围：[0,40]较差，[40,60] 一般，[60,80]较好，[80,100]很好。 
 	// 建议：人脸入库选取70以上的图片。
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -1267,17 +1285,21 @@ type SearchFacesRequest struct {
 	// 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
 	Url *string `json:"Url,omitempty" name:"Url"`
 
-	// 最多处理的人脸数目。默认值为1（仅检测图片中面积最大的那张人脸），最大值为10。 
-	// MaxFaceNum用于，当待识别图片包含多张人脸时，要搜索的人脸数量。 
-	// 当 MaxFaceNum 不为1时，设MaxFaceNum=M，则实际上是 M:N 的人脸搜索（N为待搜索的人脸数）。
+	// 最多识别的人脸数目。默认值为1（仅检测图片中面积最大的那张人脸），最大值为10。 
+	// MaxFaceNum用于，当输入的待识别图片包含多张人脸时，设定要搜索的人脸的数量。 
+	// 例：输入的Image或Url中的图片包含多张人脸，设MaxFaceNum=5，则会识别图片中面积最大的5张人脸。
 	MaxFaceNum *uint64 `json:"MaxFaceNum,omitempty" name:"MaxFaceNum"`
 
-	// 人脸长和宽的最小尺寸，单位为像素。默认为80。低于40将影响搜索精度。建议设置为80。
+	// 人脸长和宽的最小尺寸，单位为像素。默认为80。低于40的人脸图片无法被识别。建议设置为80。
 	MinFaceSize *uint64 `json:"MinFaceSize,omitempty" name:"MinFaceSize"`
 
-	// 被检测到的人脸，对应最多返回的最相似人员数目。默认值为5，最大值为10。  
-	// 例，设MaxFaceNum为3，MaxPersonNum为5，则最多可能返回3*5=15个人员。
+	// 单张被识别的人脸返回的最相似人员数量。默认值为5，最大值为100。 
+	// 例，设MaxFaceNum为1，MaxPersonNum为8，则返回Top8相似的人员信息。
+	// 值越大，需要处理的时间越长。建议不要超过10。
 	MaxPersonNum *uint64 `json:"MaxPersonNum,omitempty" name:"MaxPersonNum"`
+
+	// 是否返回人员具体信息。0 为关闭，1 为开启。默认为 0。其他非0非1值默认为0
+	NeedPersonInfo *int64 `json:"NeedPersonInfo,omitempty" name:"NeedPersonInfo"`
 }
 
 func (r *SearchFacesRequest) ToJsonString() string {

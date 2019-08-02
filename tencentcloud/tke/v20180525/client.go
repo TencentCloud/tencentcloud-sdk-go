@@ -93,6 +93,56 @@ func (c *Client) CreateCluster(request *CreateClusterRequest) (response *CreateC
     return
 }
 
+func NewCreateClusterInstancesRequest() (request *CreateClusterInstancesRequest) {
+    request = &CreateClusterInstancesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tke", APIVersion, "CreateClusterInstances")
+    return
+}
+
+func NewCreateClusterInstancesResponse() (response *CreateClusterInstancesResponse) {
+    response = &CreateClusterInstancesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 扩展(新建)集群节点
+func (c *Client) CreateClusterInstances(request *CreateClusterInstancesRequest) (response *CreateClusterInstancesResponse, err error) {
+    if request == nil {
+        request = NewCreateClusterInstancesRequest()
+    }
+    response = NewCreateClusterInstancesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteClusterRequest() (request *DeleteClusterRequest) {
+    request = &DeleteClusterRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tke", APIVersion, "DeleteCluster")
+    return
+}
+
+func NewDeleteClusterResponse() (response *DeleteClusterResponse) {
+    response = &DeleteClusterResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 删除集群(YUNAPI V3版本)
+func (c *Client) DeleteCluster(request *DeleteClusterRequest) (response *DeleteClusterResponse, err error) {
+    if request == nil {
+        request = NewDeleteClusterRequest()
+    }
+    response = NewDeleteClusterResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteClusterInstancesRequest() (request *DeleteClusterInstancesRequest) {
     request = &DeleteClusterInstancesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -143,6 +193,31 @@ func (c *Client) DescribeClusterInstances(request *DescribeClusterInstancesReque
     return
 }
 
+func NewDescribeClusterSecurityRequest() (request *DescribeClusterSecurityRequest) {
+    request = &DescribeClusterSecurityRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tke", APIVersion, "DescribeClusterSecurity")
+    return
+}
+
+func NewDescribeClusterSecurityResponse() (response *DescribeClusterSecurityResponse) {
+    response = &DescribeClusterSecurityResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 集群的密钥信息
+func (c *Client) DescribeClusterSecurity(request *DescribeClusterSecurityRequest) (response *DescribeClusterSecurityResponse, err error) {
+    if request == nil {
+        request = NewDescribeClusterSecurityRequest()
+    }
+    response = NewDescribeClusterSecurityResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeClustersRequest() (request *DescribeClustersRequest) {
     request = &DescribeClustersRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -164,6 +239,31 @@ func (c *Client) DescribeClusters(request *DescribeClustersRequest) (response *D
         request = NewDescribeClustersRequest()
     }
     response = NewDescribeClustersResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeExistedInstancesRequest() (request *DescribeExistedInstancesRequest) {
+    request = &DescribeExistedInstancesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tke", APIVersion, "DescribeExistedInstances")
+    return
+}
+
+func NewDescribeExistedInstancesResponse() (response *DescribeExistedInstancesResponse) {
+    response = &DescribeExistedInstancesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询已经存在的节点，判断是否可以加入集群
+func (c *Client) DescribeExistedInstances(request *DescribeExistedInstancesRequest) (response *DescribeExistedInstancesResponse, err error) {
+    if request == nil {
+        request = NewDescribeExistedInstancesRequest()
+    }
+    response = NewDescribeExistedInstancesResponse()
     err = c.Send(request, response)
     return
 }

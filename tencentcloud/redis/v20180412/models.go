@@ -63,7 +63,7 @@ type ClearInstanceRequest struct {
 	// 实例Id
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
-	// redis的实例密码
+	// redis的实例密码（免密实例不需要传密码，非免密实例必传）
 	Password *string `json:"Password,omitempty" name:"Password"`
 }
 
@@ -103,7 +103,7 @@ type CreateInstancesRequest struct {
 	// 实例所属的可用区id
 	ZoneId *uint64 `json:"ZoneId,omitempty" name:"ZoneId"`
 
-	// 实例类型：2 – Redis2.8主从版，3 – Redis3.2主从版(CKV主从版)，4 – Redis3.2集群版(CKV集群版)，5-Redis2.8单机版，7 – Redis4.0集群版，
+	// 实例类型：2 – Redis2.8主从版，3 – Redis3.2主从版(CKV主从版)，4 – Redis3.2集群版(CKV集群版)，5-Redis2.8单机版，6 – Redis4.0主从版，7 – Redis4.0集群版，
 	TypeId *uint64 `json:"TypeId,omitempty" name:"TypeId"`
 
 	// 实例容量，单位MB， 取值大小以 查询售卖规格接口返回的规格为准
@@ -115,11 +115,11 @@ type CreateInstancesRequest struct {
 	// 购买时长，在创建包年包月实例的时候需要填写，按量计费实例填1即可，单位：月，取值范围 [1,2,3,4,5,6,7,8,9,10,11,12,24,36]
 	Period *uint64 `json:"Period,omitempty" name:"Period"`
 
-	// 实例密码，密码规则：1.长度为8-16个字符；2:至少包含字母、数字和字符!@^*()中的两种
-	Password *string `json:"Password,omitempty" name:"Password"`
-
 	// 付费方式:0-按量计费，1-包年包月。
 	BillingMode *int64 `json:"BillingMode,omitempty" name:"BillingMode"`
+
+	// 实例密码，密码规则：1.长度为8-16个字符；2:至少包含字母、数字和字符!@^*()中的两种（创建免密实例时，可不传入该字段，该字段内容会忽略）
+	Password *string `json:"Password,omitempty" name:"Password"`
 
 	// 私有网络ID，如果不传则默认选择基础网络，请使用私有网络列表查询，如：vpc-sad23jfdfk
 	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
@@ -139,7 +139,7 @@ type CreateInstancesRequest struct {
 	// 用户自定义的端口 不填则默认为6379
 	VPort *uint64 `json:"VPort,omitempty" name:"VPort"`
 
-	// 实例分片数量，Redis2.8主从版、CKV主从版和Redis2.8单机版不需要填写
+	// 实例分片数量，Redis2.8主从版、CKV主从版和Redis2.8单机版、Redis4.0主从版不需要填写
 	RedisShardNum *int64 `json:"RedisShardNum,omitempty" name:"RedisShardNum"`
 
 	// 实例副本数量，Redis2.8主从版、CKV主从版和Redis2.8单机版不需要填写
@@ -150,6 +150,9 @@ type CreateInstancesRequest struct {
 
 	// 实例名称
 	InstanceName *string `json:"InstanceName,omitempty" name:"InstanceName"`
+
+	// 是否支持免密，true-免密实例，false-非免密实例，默认为非免密实例
+	NoAuth *bool `json:"NoAuth,omitempty" name:"NoAuth"`
 }
 
 func (r *CreateInstancesRequest) ToJsonString() string {
@@ -167,6 +170,9 @@ type CreateInstancesResponse struct {
 
 		// 交易的Id
 		DealId *string `json:"DealId,omitempty" name:"DealId"`
+
+		// 实例ID(该字段灰度中，部分地域不可见)
+		InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds" list`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -437,6 +443,9 @@ type DescribeInstanceParamsResponse struct {
 
 		// 实例字符型参数
 		InstanceTextParam []*InstanceTextParam `json:"InstanceTextParam,omitempty" name:"InstanceTextParam" list`
+
+		// 实例多选项型参数
+		InstanceMultiParam []*InstanceMultiParam `json:"InstanceMultiParam,omitempty" name:"InstanceMultiParam" list`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -994,6 +1003,9 @@ type InstanceEnumParam struct {
 
 	// 参数可取值
 	EnumValue []*string `json:"EnumValue,omitempty" name:"EnumValue" list`
+
+	// 参数状态, 1: 修改中， 2：修改完成
+	Status *int64 `json:"Status,omitempty" name:"Status"`
 }
 
 type InstanceIntegerParam struct {
@@ -1021,6 +1033,36 @@ type InstanceIntegerParam struct {
 
 	// 参数最大值
 	Max *string `json:"Max,omitempty" name:"Max"`
+
+	// 参数状态, 1: 修改中， 2：修改完成
+	Status *int64 `json:"Status,omitempty" name:"Status"`
+}
+
+type InstanceMultiParam struct {
+
+	// 参数名
+	ParamName *string `json:"ParamName,omitempty" name:"ParamName"`
+
+	// 参数类型：multi
+	ValueType *string `json:"ValueType,omitempty" name:"ValueType"`
+
+	// 修改后是否需要重启：true，false
+	NeedRestart *string `json:"NeedRestart,omitempty" name:"NeedRestart"`
+
+	// 参数默认值
+	DefaultValue *string `json:"DefaultValue,omitempty" name:"DefaultValue"`
+
+	// 当前运行参数值
+	CurrentValue *string `json:"CurrentValue,omitempty" name:"CurrentValue"`
+
+	// 参数说明
+	Tips *string `json:"Tips,omitempty" name:"Tips"`
+
+	// 参数说明
+	EnumValue *string `json:"EnumValue,omitempty" name:"EnumValue"`
+
+	// 参数状态, 1: 修改中， 2：修改完成
+	Status *int64 `json:"Status,omitempty" name:"Status"`
 }
 
 type InstanceNode struct {
@@ -1176,6 +1218,10 @@ type InstanceSet struct {
 	// 项目名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProjectName *string `json:"ProjectName,omitempty" name:"ProjectName"`
+
+	// 是否为免密实例，true-免密实例；false-非免密实例
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NoAuth *bool `json:"NoAuth,omitempty" name:"NoAuth"`
 }
 
 type InstanceTagInfo struct {
@@ -1209,6 +1255,9 @@ type InstanceTextParam struct {
 
 	// 参数可取值
 	TextValue []*string `json:"TextValue,omitempty" name:"TextValue" list`
+
+	// 参数状态, 1: 修改中， 2：修改完成
+	Status *int64 `json:"Status,omitempty" name:"Status"`
 }
 
 type ManualBackupInstanceRequest struct {
@@ -1371,6 +1420,9 @@ type ModifyInstanceParamsResponse struct {
 
 		// 修改是否成功。
 		Changed *bool `json:"Changed,omitempty" name:"Changed"`
+
+		// 任务ID
+		TaskId *int64 `json:"TaskId,omitempty" name:"TaskId"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1614,11 +1666,14 @@ func (r *RenewInstanceResponse) FromJsonString(s string) error {
 type ResetPasswordRequest struct {
 	*tchttp.BaseRequest
 
-	// 重置的密码
-	Password *string `json:"Password,omitempty" name:"Password"`
-
 	// Redis实例ID
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 重置的密码（切换为免密实例时，可不传；其他情况必传）
+	Password *string `json:"Password,omitempty" name:"Password"`
+
+	// 是否切换免密实例，false-切换为非免密码实例，true-切换为免密码实例；默认false
+	NoAuth *bool `json:"NoAuth,omitempty" name:"NoAuth"`
 }
 
 func (r *ResetPasswordRequest) ToJsonString() string {
@@ -1634,7 +1689,7 @@ type ResetPasswordResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 任务ID
+		// 任务ID（修改密码时的任务ID，如果时切换免密码或者非免密码实例，则无需关注此返回值）
 		TaskId *int64 `json:"TaskId,omitempty" name:"TaskId"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -1657,11 +1712,11 @@ type RestoreInstanceRequest struct {
 	// 待操作的实例ID，可通过 DescribeRedis 接口返回值中的 redisId 获取。
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
-	// 实例密码，恢复实例时，需要校验实例密码
-	Password *string `json:"Password,omitempty" name:"Password"`
-
 	// 备份ID，可通过 GetRedisBackupList 接口返回值中的 backupId 获取
 	BackupId *string `json:"BackupId,omitempty" name:"BackupId"`
+
+	// 实例密码，恢复实例时，需要校验实例密码（免密实例不需要传密码）
+	Password *string `json:"Password,omitempty" name:"Password"`
 }
 
 func (r *RestoreInstanceRequest) ToJsonString() string {
