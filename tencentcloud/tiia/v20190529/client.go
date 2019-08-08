@@ -43,6 +43,58 @@ func NewClient(credential *common.Credential, region string, clientProfile *prof
 }
 
 
+func NewAssessQualityRequest() (request *AssessQualityRequest) {
+    request = &AssessQualityRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tiia", APIVersion, "AssessQuality")
+    return
+}
+
+func NewAssessQualityResponse() (response *AssessQualityResponse) {
+    response = &AssessQualityResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 评估输入图片在视觉上的质量，从多个方面评估，并同时给出综合的、客观的清晰度评分，和主观的美观度评分。
+func (c *Client) AssessQuality(request *AssessQualityRequest) (response *AssessQualityResponse, err error) {
+    if request == nil {
+        request = NewAssessQualityRequest()
+    }
+    response = NewAssessQualityResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDetectCelebrityRequest() (request *DetectCelebrityRequest) {
+    request = &DetectCelebrityRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tiia", APIVersion, "DetectCelebrity")
+    return
+}
+
+func NewDetectCelebrityResponse() (response *DetectCelebrityResponse) {
+    response = &DetectCelebrityResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 传入一张图片，可以识别图片中包含的人物是否为公众人物，如果是，输出人物的姓名、基本信息、脸部坐标。
+// 
+// 支持识别一张图片中存在的多个人脸，针对每个人脸，会给出与之最相似的公众人物。
+func (c *Client) DetectCelebrity(request *DetectCelebrityRequest) (response *DetectCelebrityResponse, err error) {
+    if request == nil {
+        request = NewDetectCelebrityRequest()
+    }
+    response = NewDetectCelebrityResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDetectLabelRequest() (request *DetectLabelRequest) {
     request = &DetectLabelRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -89,6 +141,34 @@ func (c *Client) DetectProduct(request *DetectProductRequest) (response *DetectP
         request = NewDetectProductRequest()
     }
     response = NewDetectProductResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewEnhanceImageRequest() (request *EnhanceImageRequest) {
+    request = &EnhanceImageRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tiia", APIVersion, "EnhanceImage")
+    return
+}
+
+func NewEnhanceImageResponse() (response *EnhanceImageResponse) {
+    response = &EnhanceImageResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 传入一张图片，输出清晰度提升后的图片。
+// 
+// 可以消除图片有损压缩导致的噪声，和使用滤镜、拍摄失焦导致的模糊。让图片的边缘和细节更加清晰自然。
+// 
+func (c *Client) EnhanceImage(request *EnhanceImageRequest) (response *EnhanceImageResponse, err error) {
+    if request == nil {
+        request = NewEnhanceImageRequest()
+    }
+    response = NewEnhanceImageResponse()
     err = c.Send(request, response)
     return
 }

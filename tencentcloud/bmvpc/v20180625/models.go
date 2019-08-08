@@ -232,6 +232,49 @@ func (r *BindSubnetsToNatGatewayResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type CreateCustomerGatewayRequest struct {
+	*tchttp.BaseRequest
+
+	// 对端网关名称，可任意命名，但不得超过60个字符。
+	CustomerGatewayName *string `json:"CustomerGatewayName,omitempty" name:"CustomerGatewayName"`
+
+	// 对端网关公网IP。
+	IpAddress *string `json:"IpAddress,omitempty" name:"IpAddress"`
+
+	// 可用区ID
+	Zone *string `json:"Zone,omitempty" name:"Zone"`
+}
+
+func (r *CreateCustomerGatewayRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateCustomerGatewayRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateCustomerGatewayResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 对端网关对象
+		CustomerGateway *CustomerGateway `json:"CustomerGateway,omitempty" name:"CustomerGateway"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateCustomerGatewayResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateCustomerGatewayResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type CreateDockerSubnetWithVlanRequest struct {
 	*tchttp.BaseRequest
 
@@ -1669,6 +1712,57 @@ func (r *DescribeTaskStatusResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeVpcPeerConnectionsRequest struct {
+	*tchttp.BaseRequest
+
+	// 对等连接实例ID
+	VpcPeerConnectionIds []*string `json:"VpcPeerConnectionIds,omitempty" name:"VpcPeerConnectionIds" list`
+
+	// 过滤条件，详见下表：实例过滤条件表。每次请求的Filters的上限为10，Filter.Values的上限为5。参数不支持同时指定VpcPeerConnectionIds和Filters。
+	// 过滤条件，参数不支持同时指定VpcPeerConnectionIds和Filters。
+	// <li>peer-name - String - （过滤条件）对等连接名称。</li>
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+
+	// 偏移量，默认为0。关于Offset的更进一步介绍请参考 API 简介中的相关小节。
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 返回数量，默认为20，最大值为100。
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+func (r *DescribeVpcPeerConnectionsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeVpcPeerConnectionsRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeVpcPeerConnectionsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 符合条件的实例数量。
+		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 对等连接实例。
+		VpcPeerConnectionSet []*VpcPeerConnection `json:"VpcPeerConnectionSet,omitempty" name:"VpcPeerConnectionSet" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeVpcPeerConnectionsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeVpcPeerConnectionsResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeVpcQuotaRequest struct {
 	*tchttp.BaseRequest
 
@@ -1847,6 +1941,111 @@ func (r *DescribeVpcsResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeVpnConnectionsRequest struct {
+	*tchttp.BaseRequest
+
+	// VPN通道实例ID。形如：bmvpnx-f49l6u0z。每次请求的实例的上限为100。参数不支持同时指定VpnConnectionIds和Filters。
+	VpnConnectionIds []*string `json:"VpnConnectionIds,omitempty" name:"VpnConnectionIds" list`
+
+	// 过滤条件，详见下表：实例过滤条件表。每次请求的Filters的上限为10，Filter.Values的上限为5。参数不支持同时指定VpnConnectionIds和Filters。
+	// <li>vpc-id - String - （过滤条件）VPC实例ID形如：vpc-f49l6u0z。</li>
+	// <li>state - String - （过滤条件 VPN状态：creating，available，createfailed，changing，changefailed，deleting，deletefailed。</li>
+	// <li>zone - String - （过滤条件）VPN所在可用区，形如：ap-guangzhou-2。</li>
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+
+	// 偏移量，默认为0。关于Offset的更进一步介绍请参考 API 简介中的相关小节。
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 返回数量，默认为20，最大值为100。
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+func (r *DescribeVpnConnectionsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeVpnConnectionsRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeVpnConnectionsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 符合条件的实例数量。
+		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// VPN通道实例。
+		VpnConnectionSet []*VpnConnection `json:"VpnConnectionSet,omitempty" name:"VpnConnectionSet" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeVpnConnectionsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeVpnConnectionsResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeVpnGatewaysRequest struct {
+	*tchttp.BaseRequest
+
+	// VPN网关实例ID。形如：bmvpngw-f49l6u0z。每次请求的实例的上限为100。参数不支持同时指定VpnGatewayIds和Filters。
+	VpnGatewayIds []*string `json:"VpnGatewayIds,omitempty" name:"VpnGatewayIds" list`
+
+	// 过滤条件，参数不支持同时指定VpnGatewayIds和Filters。
+	// <li>vpc-id - String - （过滤条件）VPC实例ID形如：vpc-f49l6u0z。</li>
+	// <li>state - String - （过滤条件 VPN状态：creating，available，createfailed，changing，changefailed，deleting，deletefailed。</li>
+	// <li>zone - String - （过滤条件）VPN所在可用区，形如：ap-guangzhou-2。</li>
+	// <li>vpngw-name - String - （过滤条件）vpn网关名称。</li>
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+
+	// 偏移量
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 请求对象个数
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+func (r *DescribeVpnGatewaysRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeVpnGatewaysRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeVpnGatewaysResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 符合条件的实例数量。
+		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// VPN网关实例详细信息列表。
+		VpnGatewaySet []*VpnGateway `json:"VpnGatewaySet,omitempty" name:"VpnGatewaySet" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeVpnGatewaysResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeVpnGatewaysResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DownloadCustomerGatewayConfigurationRequest struct {
 	*tchttp.BaseRequest
 
@@ -1898,7 +2097,7 @@ type Filter struct {
 
 type IKEOptionsSpecification struct {
 
-	// 加密算法，可选值：'3DES-CBC', 'AES-CBC-128', 'AES-CBS-192', 'AES-CBC-256', 'DES-CBC'，默认为3DES-CBC
+	// 加密算法，可选值：'3DES-CBC', 'AES-CBC-128', 'AES-CBC-192', 'AES-CBC-256', 'DES-CBC'，默认为3DES-CBC
 	PropoEncryAlgorithm *string `json:"PropoEncryAlgorithm,omitempty" name:"PropoEncryAlgorithm"`
 
 	// 认证算法：可选值：'MD5', 'SHA1'，默认为MD5
@@ -2819,6 +3018,63 @@ type VpcInfo struct {
 	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
 }
 
+type VpcPeerConnection struct {
+
+	// 本端VPC唯一ID
+	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
+
+	// 对端VPC唯一ID
+	PeerVpcId *string `json:"PeerVpcId,omitempty" name:"PeerVpcId"`
+
+	// 本端APPID
+	AppId *string `json:"AppId,omitempty" name:"AppId"`
+
+	// 对端APPID
+	PeerAppId *string `json:"PeerAppId,omitempty" name:"PeerAppId"`
+
+	// 对等连接唯一ID
+	VpcPeerConnectionId *string `json:"VpcPeerConnectionId,omitempty" name:"VpcPeerConnectionId"`
+
+	// 对等连接名称
+	VpcPeerConnectionName *string `json:"VpcPeerConnectionName,omitempty" name:"VpcPeerConnectionName"`
+
+	// 对等连接状态
+	State *string `json:"State,omitempty" name:"State"`
+
+	// 本端VPC所属可用区
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VpcZone *string `json:"VpcZone,omitempty" name:"VpcZone"`
+
+	// 对端VPC所属可用区
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PeerVpcZone *string `json:"PeerVpcZone,omitempty" name:"PeerVpcZone"`
+
+	// 本端Uin
+	Uin *uint64 `json:"Uin,omitempty" name:"Uin"`
+
+	// 对端Uin
+	PeerUin *uint64 `json:"PeerUin,omitempty" name:"PeerUin"`
+
+	// 对等连接类型
+	PeerType *uint64 `json:"PeerType,omitempty" name:"PeerType"`
+
+	// 对等连接带宽
+	Bandwidth *uint64 `json:"Bandwidth,omitempty" name:"Bandwidth"`
+
+	// 本端VPC地域
+	Region *string `json:"Region,omitempty" name:"Region"`
+
+	// 对端VPC地域
+	PeerRegion *string `json:"PeerRegion,omitempty" name:"PeerRegion"`
+
+	// 是否允许删除
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DeleteFlag *uint64 `json:"DeleteFlag,omitempty" name:"DeleteFlag"`
+
+	// 创建时间
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+}
+
 type VpcQuota struct {
 
 	// 配额类型ID
@@ -2949,4 +3205,91 @@ type VpcViewInfo struct {
 
 	// 子网列表
 	SubnetSet []*VpcSubnetViewInfo `json:"SubnetSet,omitempty" name:"SubnetSet" list`
+}
+
+type VpnConnection struct {
+
+	// 通道实例ID。
+	VpnConnectionId *string `json:"VpnConnectionId,omitempty" name:"VpnConnectionId"`
+
+	// 通道名称。
+	VpnConnectionName *string `json:"VpnConnectionName,omitempty" name:"VpnConnectionName"`
+
+	// VPC实例ID。
+	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
+
+	// VPN网关实例ID。
+	VpnGatewayId *string `json:"VpnGatewayId,omitempty" name:"VpnGatewayId"`
+
+	// 对端网关实例ID。
+	CustomerGatewayId *string `json:"CustomerGatewayId,omitempty" name:"CustomerGatewayId"`
+
+	// 预共享密钥。
+	PreShareKey *string `json:"PreShareKey,omitempty" name:"PreShareKey"`
+
+	// 通道传输协议。
+	VpnProto *string `json:"VpnProto,omitempty" name:"VpnProto"`
+
+	// 创建时间。
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 通道的生产状态
+	State *string `json:"State,omitempty" name:"State"`
+
+	// 通道连接状态
+	NetStatus *string `json:"NetStatus,omitempty" name:"NetStatus"`
+
+	// SPD。
+	SecurityPolicyDatabaseSet []*SecurityPolicyDatabase `json:"SecurityPolicyDatabaseSet,omitempty" name:"SecurityPolicyDatabaseSet" list`
+
+	// IKE选项。
+	IKEOptionsSpecification *IKEOptionsSpecification `json:"IKEOptionsSpecification,omitempty" name:"IKEOptionsSpecification"`
+
+	// IPSEC选项。
+	IPSECOptionsSpecification *IPSECOptionsSpecification `json:"IPSECOptionsSpecification,omitempty" name:"IPSECOptionsSpecification"`
+
+	// 可用区
+	Zone *string `json:"Zone,omitempty" name:"Zone"`
+
+	// VPC网段
+	VpcCidrBlock *string `json:"VpcCidrBlock,omitempty" name:"VpcCidrBlock"`
+
+	// VPC名称
+	VpcName *string `json:"VpcName,omitempty" name:"VpcName"`
+}
+
+type VpnGateway struct {
+
+	// 网关实例ID。
+	VpnGatewayId *string `json:"VpnGatewayId,omitempty" name:"VpnGatewayId"`
+
+	// VPC实例ID。
+	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
+
+	// 网关实例名称。
+	VpnGatewayName *string `json:"VpnGatewayName,omitempty" name:"VpnGatewayName"`
+
+	// VPC网段
+	VpcCidrBlock *string `json:"VpcCidrBlock,omitempty" name:"VpcCidrBlock"`
+
+	// VPC名称
+	VpcName *string `json:"VpcName,omitempty" name:"VpcName"`
+
+	// 网关出带宽。
+	InternetMaxBandwidthOut *uint64 `json:"InternetMaxBandwidthOut,omitempty" name:"InternetMaxBandwidthOut"`
+
+	// 网关实例状态
+	State *string `json:"State,omitempty" name:"State"`
+
+	// 网关公网IP。
+	PublicIpAddress *string `json:"PublicIpAddress,omitempty" name:"PublicIpAddress"`
+
+	// 创建时间。
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 可用区，如：ap-guangzhou
+	Zone *string `json:"Zone,omitempty" name:"Zone"`
+
+	// VPN网关的通道数
+	VpnConnNum *uint64 `json:"VpnConnNum,omitempty" name:"VpnConnNum"`
 }

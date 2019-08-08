@@ -161,7 +161,7 @@ type CertificateInput struct {
 
 type CertificateOutput struct {
 
-	// 认证类型，unidirectional：单向认证，mutual：双向认证
+	// 认证类型，UNIDIRECTIONAL：单向认证，MUTUAL：双向认证
 	SSLMode *string `json:"SSLMode,omitempty" name:"SSLMode"`
 
 	// 服务端证书的 ID。
@@ -1194,7 +1194,7 @@ type HealthCheck struct {
 	// 是否开启健康检查：1（开启）、0（关闭）。
 	HealthSwitch *int64 `json:"HealthSwitch,omitempty" name:"HealthSwitch"`
 
-	// 健康检查的响应超时时间，可选值：2~60，默认值：2，单位：秒。响应超时时间要小于检查间隔时间。
+	// 健康检查的响应超时时间（仅适用于四层监听器），可选值：2~60，默认值：2，单位：秒。响应超时时间要小于检查间隔时间。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TimeOut *int64 `json:"TimeOut,omitempty" name:"TimeOut"`
 
@@ -1479,6 +1479,10 @@ type LoadBalancer struct {
 	// 负载均衡日志服务(CLS)的日志主题ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	LogTopicId *string `json:"LogTopicId,omitempty" name:"LogTopicId"`
+
+	// 负载均衡实例的IPv6地址
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AddressIPv6 *string `json:"AddressIPv6,omitempty" name:"AddressIPv6"`
 }
 
 type LoadBalancerHealth struct {
@@ -1920,6 +1924,43 @@ func (r *RegisterTargetsWithClassicalLBResponse) FromJsonString(s string) error 
     return json.Unmarshal([]byte(s), &r)
 }
 
+type ReplaceCertForLoadBalancersRequest struct {
+	*tchttp.BaseRequest
+
+	// 需要被替换的证书的ID，可以是服务端证书或客户端证书
+	OldCertificateId *string `json:"OldCertificateId,omitempty" name:"OldCertificateId"`
+
+	// 新证书的内容等相关信息
+	Certificate *CertificateInput `json:"Certificate,omitempty" name:"Certificate"`
+}
+
+func (r *ReplaceCertForLoadBalancersRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ReplaceCertForLoadBalancersRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ReplaceCertForLoadBalancersResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ReplaceCertForLoadBalancersResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ReplaceCertForLoadBalancersResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type RewriteLocationMap struct {
 
 	// 源转发规则ID
@@ -1983,13 +2024,13 @@ type RuleHealth struct {
 
 type RuleInput struct {
 
-	// 转发规则的域名。
+	// 转发规则的域名。长度限制为：1~80。
 	Domain *string `json:"Domain,omitempty" name:"Domain"`
 
-	// 转发规则的路径。
+	// 转发规则的路径。长度限制为：1~200。
 	Url *string `json:"Url,omitempty" name:"Url"`
 
-	// 会话保持时间
+	// 会话保持时间。设置为0表示关闭会话保持，开启会话保持可取值30~3600，单位：秒。
 	SessionExpireTime *int64 `json:"SessionExpireTime,omitempty" name:"SessionExpireTime"`
 
 	// 健康检查信息

@@ -92,7 +92,7 @@ type BankCard4EVerificationRequest struct {
 	// 手机号码
 	Phone *string `json:"Phone,omitempty" name:"Phone"`
 
-	// 身份证号码
+	// 开户证件号，与CertType参数的证件类型一致，如：身份证，则传入身份证号。
 	IdCard *string `json:"IdCard,omitempty" name:"IdCard"`
 
 	// 证件类型，请确认该证件为开户时使用的证件类型，未用于开户的证件信息不支持验证。（不填默认0）
@@ -162,7 +162,7 @@ func (r *BankCard4EVerificationResponse) FromJsonString(s string) error {
 type BankCardVerificationRequest struct {
 	*tchttp.BaseRequest
 
-	// 身份证号
+	// 开户证件号，与CertType参数的证件类型一致，如：身份证，则传入身份证号。
 	IdCard *string `json:"IdCard,omitempty" name:"IdCard"`
 
 	// 姓名

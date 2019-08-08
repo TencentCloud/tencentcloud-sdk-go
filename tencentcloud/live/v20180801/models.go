@@ -887,6 +887,12 @@ type CreateLiveTranscodeTemplateRequest struct {
 
 	// 是否不超过原始帧率，0：否，1：是。默认0。
 	FpsToOrig *int64 `json:"FpsToOrig,omitempty" name:"FpsToOrig"`
+
+	// 是否是急速高清模板，0：否，1：是。默认0。
+	AiTransCode *int64 `json:"AiTransCode,omitempty" name:"AiTransCode"`
+
+	// 急速高清相比VideoBitrate少多少码率，0.1到0.5
+	AdaptBitratePercent *float64 `json:"AdaptBitratePercent,omitempty" name:"AdaptBitratePercent"`
 }
 
 func (r *CreateLiveTranscodeTemplateRequest) ToJsonString() string {
@@ -4643,6 +4649,9 @@ type ModifyLiveTranscodeTemplateRequest struct {
 
 	// 是否不超过原始帧率。0：否，1：是。默认0。
 	FpsToOrig *int64 `json:"FpsToOrig,omitempty" name:"FpsToOrig"`
+
+	// 急速高清相比VideoBitrate少多少码率，0.1到0.5
+	AdaptBitratePercent *float64 `json:"AdaptBitratePercent,omitempty" name:"AdaptBitratePercent"`
 }
 
 func (r *ModifyLiveTranscodeTemplateRequest) ToJsonString() string {
@@ -5399,6 +5408,12 @@ type TemplateInfo struct {
 
 	// 模板描述
 	Description *string `json:"Description,omitempty" name:"Description"`
+
+	// 是否是急速高清模板，0：否，1：是。默认0。
+	AiTransCode *int64 `json:"AiTransCode,omitempty" name:"AiTransCode"`
+
+	// 急速高清相比VideoBitrate少多少码率，0.1到0.5
+	AdaptBitratePercent *float64 `json:"AdaptBitratePercent,omitempty" name:"AdaptBitratePercent"`
 }
 
 type TranscodeDetailInfo struct {

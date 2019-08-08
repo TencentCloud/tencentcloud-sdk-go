@@ -625,7 +625,7 @@ type MigrateJobInfo struct {
 	// 任务执行结束时间
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 
-	// 任务状态,取值为：1-创建中(Creating),3-校验中(Checking)4-校验通过(CheckPass),5-校验不通过（CheckNotPass）,7-任务运行(Running),8-准备完成（ReadyComplete）,9-任务成功（Success）,10-任务失败（Failed）,11-撤销中（Stoping）,12-完成中（Completing）
+	// 任务状态,取值为：1-创建中(Creating),3-校验中(Checking)4-校验通过(CheckPass),5-校验不通过（CheckNotPass）,7-任务运行(Running),8-准备完成（ReadyComplete）,9-任务成功（Success）,10-任务失败（Failed）,11-撤销中（Stopping）,12-完成中（Completing）
 	Status *int64 `json:"Status,omitempty" name:"Status"`
 
 	// 任务详情
@@ -831,7 +831,7 @@ type SrcInfo struct {
 	// VPN网关ID，格式如：vpngw-9ghexg7q
 	UniqVpnGwId *string `json:"UniqVpnGwId,omitempty" name:"UniqVpnGwId"`
 
-	// 数据库实例ID,格式如：cdb-powiqx8q
+	// 数据库实例ID，格式如：cdb-powiqx8q
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
 	// 地域英文名，如：ap-guangzhou
@@ -839,6 +839,10 @@ type SrcInfo struct {
 
 	// 当实例为RDS实例时，填写为aliyun, 其他情况均填写others
 	Supplier *string `json:"Supplier,omitempty" name:"Supplier"`
+
+	// 云联网ID，如：ccn-afp6kltc
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CcnId *string `json:"CcnId,omitempty" name:"CcnId"`
 }
 
 type StartMigrateJobRequest struct {

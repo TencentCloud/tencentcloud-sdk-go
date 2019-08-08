@@ -200,7 +200,8 @@ func (r *SimultaneousInterpretingResponse) FromJsonString(s string) error {
 type TextToVoiceRequest struct {
 	*tchttp.BaseRequest
 
-	// 合成语音的源文本，按UTF-8编码统一计算，中文最大支持350字符，英文最大支持500字符。包含空格等字符时需要url encode再传输。
+	// 合成语音的源文本，按UTF-8编码统一计算。
+	// 中文最大支持100个汉字（全角标点符号算一个汉字）；英文最大支持400个字母（半角标点符号算一个字母）。包含空格等字符时需要url encode再传输。
 	Text *string `json:"Text,omitempty" name:"Text"`
 
 	// 一次请求对应一个SessionId，会原样返回，建议传入类似于uuid的字符串防止重复。

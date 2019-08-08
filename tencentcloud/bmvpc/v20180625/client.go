@@ -168,6 +168,31 @@ func (c *Client) BindSubnetsToNatGateway(request *BindSubnetsToNatGatewayRequest
     return
 }
 
+func NewCreateCustomerGatewayRequest() (request *CreateCustomerGatewayRequest) {
+    request = &CreateCustomerGatewayRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("bmvpc", APIVersion, "CreateCustomerGateway")
+    return
+}
+
+func NewCreateCustomerGatewayResponse() (response *CreateCustomerGatewayResponse) {
+    response = &CreateCustomerGatewayResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（CreateCustomerGateway）用于创建对端网关。
+func (c *Client) CreateCustomerGateway(request *CreateCustomerGatewayRequest) (response *CreateCustomerGatewayResponse, err error) {
+    if request == nil {
+        request = NewCreateCustomerGatewayRequest()
+    }
+    response = NewCreateCustomerGatewayResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateDockerSubnetWithVlanRequest() (request *CreateDockerSubnetWithVlanRequest) {
     request = &CreateDockerSubnetWithVlanRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -978,6 +1003,31 @@ func (c *Client) DescribeTaskStatus(request *DescribeTaskStatusRequest) (respons
     return
 }
 
+func NewDescribeVpcPeerConnectionsRequest() (request *DescribeVpcPeerConnectionsRequest) {
+    request = &DescribeVpcPeerConnectionsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("bmvpc", APIVersion, "DescribeVpcPeerConnections")
+    return
+}
+
+func NewDescribeVpcPeerConnectionsResponse() (response *DescribeVpcPeerConnectionsResponse) {
+    response = &DescribeVpcPeerConnectionsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 获取对等连接列表
+func (c *Client) DescribeVpcPeerConnections(request *DescribeVpcPeerConnectionsRequest) (response *DescribeVpcPeerConnectionsResponse, err error) {
+    if request == nil {
+        request = NewDescribeVpcPeerConnectionsRequest()
+    }
+    response = NewDescribeVpcPeerConnectionsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeVpcQuotaRequest() (request *DescribeVpcQuotaRequest) {
     request = &DescribeVpcQuotaRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1075,6 +1125,56 @@ func (c *Client) DescribeVpcs(request *DescribeVpcsRequest) (response *DescribeV
         request = NewDescribeVpcsRequest()
     }
     response = NewDescribeVpcsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeVpnConnectionsRequest() (request *DescribeVpnConnectionsRequest) {
+    request = &DescribeVpnConnectionsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("bmvpc", APIVersion, "DescribeVpnConnections")
+    return
+}
+
+func NewDescribeVpnConnectionsResponse() (response *DescribeVpnConnectionsResponse) {
+    response = &DescribeVpnConnectionsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+//  本接口（DescribeVpnConnections）查询VPN通道列表。
+func (c *Client) DescribeVpnConnections(request *DescribeVpnConnectionsRequest) (response *DescribeVpnConnectionsResponse, err error) {
+    if request == nil {
+        request = NewDescribeVpnConnectionsRequest()
+    }
+    response = NewDescribeVpnConnectionsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeVpnGatewaysRequest() (request *DescribeVpnGatewaysRequest) {
+    request = &DescribeVpnGatewaysRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("bmvpc", APIVersion, "DescribeVpnGateways")
+    return
+}
+
+func NewDescribeVpnGatewaysResponse() (response *DescribeVpnGatewaysResponse) {
+    response = &DescribeVpnGatewaysResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（DescribeVpnGateways）用于查询VPN网关列表。
+func (c *Client) DescribeVpnGateways(request *DescribeVpnGatewaysRequest) (response *DescribeVpnGatewaysResponse, err error) {
+    if request == nil {
+        request = NewDescribeVpnGatewaysRequest()
+    }
+    response = NewDescribeVpnGatewaysResponse()
     err = c.Send(request, response)
     return
 }

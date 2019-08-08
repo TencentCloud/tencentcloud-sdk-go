@@ -58,7 +58,7 @@ func NewBankCard2EVerificationResponse() (response *BankCard2EVerificationRespon
     return
 }
 
-// 银行卡二要素核验
+// 输入银行卡号、姓名，校验信息的真实性和一致性。
 func (c *Client) BankCard2EVerification(request *BankCard2EVerificationRequest) (response *BankCard2EVerificationResponse, err error) {
     if request == nil {
         request = NewBankCard2EVerificationRequest()
@@ -83,7 +83,7 @@ func NewBankCard4EVerificationResponse() (response *BankCard4EVerificationRespon
     return
 }
 
-// 银行卡四要素核验
+// 输入银行卡号、姓名、开户证件号、开户手机号，校验信息的真实性和一致性。
 func (c *Client) BankCard4EVerification(request *BankCard4EVerificationRequest) (response *BankCard4EVerificationResponse, err error) {
     if request == nil {
         request = NewBankCard4EVerificationRequest()
@@ -108,7 +108,7 @@ func NewBankCardVerificationResponse() (response *BankCardVerificationResponse) 
     return
 }
 
-// 银行卡核验
+// 银行卡三要素核验，输入银行卡号、姓名、开户证件号，校验信息的真实性和一致性。
 func (c *Client) BankCardVerification(request *BankCardVerificationRequest) (response *BankCardVerificationResponse, err error) {
     if request == nil {
         request = NewBankCardVerificationRequest()
