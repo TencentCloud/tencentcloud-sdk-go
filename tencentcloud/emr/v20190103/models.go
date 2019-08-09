@@ -130,13 +130,16 @@ type CreateInstanceRequest struct {
 	SgId *string `json:"SgId,omitempty" name:"SgId"`
 
 	// 预执行脚本设置
-	PreExecutedFileSettings *PreExecuteFileSettings `json:"PreExecutedFileSettings,omitempty" name:"PreExecutedFileSettings"`
+	PreExecutedFileSettings []*PreExecuteFileSettings `json:"PreExecutedFileSettings,omitempty" name:"PreExecutedFileSettings" list`
 
 	// 自动续费
 	AutoRenew *uint64 `json:"AutoRenew,omitempty" name:"AutoRenew"`
 
 	// 是否需要外网Ip。支持填NEED_MASTER_WAN，不支持使用NOT_NEED_MASTER_WAN，默认使用NEED_MASTER_WAN
 	NeedMasterWan *string `json:"NeedMasterWan,omitempty" name:"NeedMasterWan"`
+
+	// 是否需要开启外网远程登录，即22号端口，在SgId不为空时，该选项无效
+	RemoteLoginAtCreate *int64 `json:"RemoteLoginAtCreate,omitempty" name:"RemoteLoginAtCreate"`
 }
 
 func (r *CreateInstanceRequest) ToJsonString() string {
@@ -421,6 +424,9 @@ type MultiDisk struct {
 
 	// 云盘大小
 	Volume *int64 `json:"Volume,omitempty" name:"Volume"`
+
+	// 该类型云盘个数
+	Count *int64 `json:"Count,omitempty" name:"Count"`
 }
 
 type NodeSpec struct {
@@ -457,7 +463,7 @@ type NodeSpec struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SpecName *string `json:"SpecName,omitempty" name:"SpecName"`
 
-	// 多云盘参数
+	// 多盘数据
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MultiDisks []*MultiDisk `json:"MultiDisks,omitempty" name:"MultiDisks" list`
 }
@@ -487,6 +493,27 @@ type PreExecuteFileSettings struct {
 
 	// COS的Domain数据
 	Domain *string `json:"Domain,omitempty" name:"Domain"`
+
+	// 执行顺序
+	RunOrder *int64 `json:"RunOrder,omitempty" name:"RunOrder"`
+
+	// resourceAfter 或 clusterAfter
+	WhenRun *string `json:"WhenRun,omitempty" name:"WhenRun"`
+
+	// 脚本文件名
+	CosFileName *string `json:"CosFileName,omitempty" name:"CosFileName"`
+
+	// 脚本的cos地址
+	CosFileURI *string `json:"CosFileURI,omitempty" name:"CosFileURI"`
+
+	// cos的SecretId
+	CosSecretId *string `json:"CosSecretId,omitempty" name:"CosSecretId"`
+
+	// Cos的SecretKey
+	CosSecretKey *string `json:"CosSecretKey,omitempty" name:"CosSecretKey"`
+
+	// cos的appid
+	AppId *string `json:"AppId,omitempty" name:"AppId"`
 }
 
 type ResourceSpec struct {
@@ -535,7 +562,7 @@ type ScaleOutInstanceRequest struct {
 	PayMode *uint64 `json:"PayMode,omitempty" name:"PayMode"`
 
 	// 预执行脚本设置
-	PreExecutedFileSettings *PreExecuteFileSettings `json:"PreExecutedFileSettings,omitempty" name:"PreExecutedFileSettings"`
+	PreExecutedFileSettings []*PreExecuteFileSettings `json:"PreExecutedFileSettings,omitempty" name:"PreExecutedFileSettings" list`
 
 	// 扩容Task节点数量
 	TaskCount *uint64 `json:"TaskCount,omitempty" name:"TaskCount"`
