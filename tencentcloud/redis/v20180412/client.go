@@ -743,6 +743,31 @@ func (c *Client) RestoreInstance(request *RestoreInstanceRequest) (response *Res
     return
 }
 
+func NewSwitchInstanceVipRequest() (request *SwitchInstanceVipRequest) {
+    request = &SwitchInstanceVipRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("redis", APIVersion, "SwitchInstanceVip")
+    return
+}
+
+func NewSwitchInstanceVipResponse() (response *SwitchInstanceVipResponse) {
+    response = &SwitchInstanceVipResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 在通过DTS支持跨可用区灾备的场景中，通过该接口交换实例VIP完成实例灾备切换。交换VIP后目标实例可写，源和目标实例VIP互换，同时源与目标实例间DTS同步任务断开
+func (c *Client) SwitchInstanceVip(request *SwitchInstanceVipRequest) (response *SwitchInstanceVipResponse, err error) {
+    if request == nil {
+        request = NewSwitchInstanceVipRequest()
+    }
+    response = NewSwitchInstanceVipResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewUpgradeInstanceRequest() (request *UpgradeInstanceRequest) {
     request = &UpgradeInstanceRequest{
         BaseRequest: &tchttp.BaseRequest{},

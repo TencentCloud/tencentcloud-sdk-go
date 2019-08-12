@@ -1788,6 +1788,55 @@ type SecurityGroupsInboundAndOutbound struct {
 	Proto *string `json:"Proto,omitempty" name:"Proto"`
 }
 
+type SwitchInstanceVipRequest struct {
+	*tchttp.BaseRequest
+
+	// 源实例ID
+	SrcInstanceId *string `json:"SrcInstanceId,omitempty" name:"SrcInstanceId"`
+
+	// 目标实例ID
+	DstInstanceId *string `json:"DstInstanceId,omitempty" name:"DstInstanceId"`
+
+	// 单位为秒。源实例与目标实例间DTS已断开时间，如果DTS断开时间大于TimeDelay，则不切换VIP，建议尽量根据业务设置一个可接受的值。
+	TimeDelay *int64 `json:"TimeDelay,omitempty" name:"TimeDelay"`
+
+	// 在DTS断开的情况下是否强制切换。1：强制切换，0：不强制切换
+	ForceSwitch *int64 `json:"ForceSwitch,omitempty" name:"ForceSwitch"`
+
+	// now: 立即切换，syncComplete：等待同步完成后切换
+	SwitchTime *string `json:"SwitchTime,omitempty" name:"SwitchTime"`
+}
+
+func (r *SwitchInstanceVipRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *SwitchInstanceVipRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type SwitchInstanceVipResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 任务ID
+		TaskId *int64 `json:"TaskId,omitempty" name:"TaskId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *SwitchInstanceVipResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *SwitchInstanceVipResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type TradeDealDetail struct {
 
 	// 订单号ID，调用云API时使用此ID

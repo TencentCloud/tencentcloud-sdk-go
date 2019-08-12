@@ -262,6 +262,62 @@ func (r *BusinessCardOCRResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type CarInvoiceInfo struct {
+
+	// 识别出的字段名称（关键字）。
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 识别出的字段名称对应的值，也就是字段name对应的字符串结果。
+	Value *string `json:"Value,omitempty" name:"Value"`
+}
+
+type CarInvoiceOCRRequest struct {
+	*tchttp.BaseRequest
+
+	// 图片的 Base64 值。
+	// 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
+	// 支持的图片大小：所下载图片经Base64编码后不超过 3M。图片下载时间不超过 3 秒。
+	// 图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+	ImageBase64 *string `json:"ImageBase64,omitempty" name:"ImageBase64"`
+
+	// 图片的 Url 地址。
+	// 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
+	// 支持的图片大小：所下载图片经 Base64 编码后不超过 3M。图片下载时间不超过 3 秒。
+	// 图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。
+	// 非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
+}
+
+func (r *CarInvoiceOCRRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CarInvoiceOCRRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CarInvoiceOCRResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 购车发票识别结果，具体内容请点击左侧链接。
+		CarInvoiceInfos []*CarInvoiceInfo `json:"CarInvoiceInfos,omitempty" name:"CarInvoiceInfos" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CarInvoiceOCRResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CarInvoiceOCRResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type Coord struct {
 
 	// 横坐标
@@ -389,6 +445,62 @@ func (r *EnglishOCRResponse) ToJsonString() string {
 }
 
 func (r *EnglishOCRResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type FlightInvoiceInfo struct {
+
+	// 识别出的字段名称（关键字）。
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 识别出的字段名称对应的值，也就是字段 Name 对应的字符串结果。
+	Value *string `json:"Value,omitempty" name:"Value"`
+}
+
+type FlightInvoiceOCRRequest struct {
+	*tchttp.BaseRequest
+
+	// 图片的 Base64 值。
+	// 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
+	// 支持的图片大小：所下载图片经Base64编码后不超过 3M。图片下载时间不超过 3 秒。
+	// 图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+	ImageBase64 *string `json:"ImageBase64,omitempty" name:"ImageBase64"`
+
+	// 图片的 Url 地址。
+	// 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
+	// 支持的图片大小：所下载图片经 Base64 编码后不超过 3M。图片下载时间不超过 3 秒。
+	// 图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。
+	// 非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
+}
+
+func (r *FlightInvoiceOCRRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *FlightInvoiceOCRRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type FlightInvoiceOCRResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 机票行程单识别结果，具体内容请点击左侧链接。
+		FlightInvoiceInfos []*FlightInvoiceInfo `json:"FlightInvoiceInfos,omitempty" name:"FlightInvoiceInfos" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *FlightInvoiceOCRResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *FlightInvoiceOCRResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -762,6 +874,127 @@ func (r *LicensePlateOCRResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type PermitOCRRequest struct {
+	*tchttp.BaseRequest
+
+	// 图片的 Base64 值。
+	// 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
+	// 支持的图片大小：所下载图片经Base64编码后不超过 3M。图片下载时间不超过 3 秒。
+	// 图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+	ImageBase64 *string `json:"ImageBase64,omitempty" name:"ImageBase64"`
+
+	// 图片的 Url 地址。
+	// 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
+	// 支持的图片大小：所下载图片经 Base64 编码后不超过 3M。图片下载时间不超过 3 秒。
+	// 图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。
+	// 非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
+}
+
+func (r *PermitOCRRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *PermitOCRRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type PermitOCRResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 姓名
+		Name *string `json:"Name,omitempty" name:"Name"`
+
+		// 英文姓名
+		EnglishName *string `json:"EnglishName,omitempty" name:"EnglishName"`
+
+		// 证件号
+		Number *string `json:"Number,omitempty" name:"Number"`
+
+		// 性别
+		Sex *string `json:"Sex,omitempty" name:"Sex"`
+
+		// 有效期限
+		ValidDate *string `json:"ValidDate,omitempty" name:"ValidDate"`
+
+		// 签发机关
+		IssueAuthority *string `json:"IssueAuthority,omitempty" name:"IssueAuthority"`
+
+		// 签发地点
+		IssueAddress *string `json:"IssueAddress,omitempty" name:"IssueAddress"`
+
+		// 出生日期
+		Birthday *string `json:"Birthday,omitempty" name:"Birthday"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *PermitOCRResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *PermitOCRResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type QuotaInvoiceOCRRequest struct {
+	*tchttp.BaseRequest
+
+	// 图片的 Base64 值。
+	// 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
+	// 支持的图片大小：所下载图片经Base64编码后不超过 3M。图片下载时间不超过 3 秒。
+	// 图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+	ImageBase64 *string `json:"ImageBase64,omitempty" name:"ImageBase64"`
+
+	// 图片的 Url 地址。
+	// 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
+	// 支持的图片大小：所下载图片经 Base64 编码后不超过 3M。图片下载时间不超过 3 秒。
+	// 图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。
+	// 非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
+}
+
+func (r *QuotaInvoiceOCRRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *QuotaInvoiceOCRRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type QuotaInvoiceOCRResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 发票号码
+		InvoiceNum *string `json:"InvoiceNum,omitempty" name:"InvoiceNum"`
+
+		// 发票代码
+		InvoiceCode *string `json:"InvoiceCode,omitempty" name:"InvoiceCode"`
+
+		// 大写金额
+		Rate *string `json:"Rate,omitempty" name:"Rate"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *QuotaInvoiceOCRResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *QuotaInvoiceOCRResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type TableOCRRequest struct {
 	*tchttp.BaseRequest
 
@@ -809,6 +1042,71 @@ func (r *TableOCRResponse) ToJsonString() string {
 }
 
 func (r *TableOCRResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type TaxiInvoiceOCRRequest struct {
+	*tchttp.BaseRequest
+
+	// 图片的 Base64 值。
+	// 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
+	// 支持的图片大小：所下载图片经Base64编码后不超过 3M。图片下载时间不超过 3 秒。
+	// 图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+	ImageBase64 *string `json:"ImageBase64,omitempty" name:"ImageBase64"`
+
+	// 图片的 Url 地址。
+	// 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
+	// 支持的图片大小：所下载图片经 Base64 编码后不超过 3M。图片下载时间不超过 3 秒。
+	// 图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。
+	// 非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
+}
+
+func (r *TaxiInvoiceOCRRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *TaxiInvoiceOCRRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type TaxiInvoiceOCRResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 发票代码
+		InvoiceNum *string `json:"InvoiceNum,omitempty" name:"InvoiceNum"`
+
+		// 发票号码
+		InvoiceCode *string `json:"InvoiceCode,omitempty" name:"InvoiceCode"`
+
+		// 日期
+		Date *string `json:"Date,omitempty" name:"Date"`
+
+		// 金额
+		Fare *string `json:"Fare,omitempty" name:"Fare"`
+
+		// 上车时间
+		GetOnTime *string `json:"GetOnTime,omitempty" name:"GetOnTime"`
+
+		// 下车时间
+		GetOffTime *string `json:"GetOffTime,omitempty" name:"GetOffTime"`
+
+		// 里程
+		Distance *string `json:"Distance,omitempty" name:"Distance"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *TaxiInvoiceOCRResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *TaxiInvoiceOCRResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -1030,6 +1328,77 @@ type TextWaybill struct {
 
 	// 运单号
 	WaybillNum *WaybillObj `json:"WaybillNum,omitempty" name:"WaybillNum"`
+}
+
+type TrainTicketOCRRequest struct {
+	*tchttp.BaseRequest
+
+	// 图片的 Base64 值。
+	// 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
+	// 支持的图片大小：所下载图片经Base64编码后不超过 3M。图片下载时间不超过 3 秒。
+	// 图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+	ImageBase64 *string `json:"ImageBase64,omitempty" name:"ImageBase64"`
+
+	// 图片的 Url 地址。
+	// 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
+	// 支持的图片大小：所下载图片经 Base64 编码后不超过 3M。图片下载时间不超过 3 秒。
+	// 图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。
+	// 非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
+}
+
+func (r *TrainTicketOCRRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *TrainTicketOCRRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type TrainTicketOCRResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 编号
+		TicketNum *string `json:"TicketNum,omitempty" name:"TicketNum"`
+
+		// 出发站
+		StartStation *string `json:"StartStation,omitempty" name:"StartStation"`
+
+		// 到达站
+		DestinationStation *string `json:"DestinationStation,omitempty" name:"DestinationStation"`
+
+		// 出发时间
+		Date *string `json:"Date,omitempty" name:"Date"`
+
+		// 车次
+		TrainNum *string `json:"TrainNum,omitempty" name:"TrainNum"`
+
+		// 座位号
+		Seat *string `json:"Seat,omitempty" name:"Seat"`
+
+		// 姓名
+		Name *string `json:"Name,omitempty" name:"Name"`
+
+		// 票价
+		Price *string `json:"Price,omitempty" name:"Price"`
+
+		// 席别
+		SeatCategory *string `json:"SeatCategory,omitempty" name:"SeatCategory"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *TrainTicketOCRResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *TrainTicketOCRResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
 }
 
 type VatInvoiceOCRRequest struct {
