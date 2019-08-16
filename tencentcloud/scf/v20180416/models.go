@@ -20,6 +20,15 @@ import (
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
+type AccessInfo struct {
+
+	// 域名
+	Host *string `json:"Host,omitempty" name:"Host"`
+
+	// VIP
+	Vip *string `json:"Vip,omitempty" name:"Vip"`
+}
+
 type Code struct {
 
 	// 对象存储桶名称
@@ -39,28 +48,63 @@ type Code struct {
 
 	// 如果是从TempCos创建的话，需要传入TempCosObjectName
 	TempCosObjectName *string `json:"TempCosObjectName,omitempty" name:"TempCosObjectName"`
+
+	// Git地址
+	GitUrl *string `json:"GitUrl,omitempty" name:"GitUrl"`
+
+	// Git用户名
+	GitUserName *string `json:"GitUserName,omitempty" name:"GitUserName"`
+
+	// Git密码
+	GitPassword *string `json:"GitPassword,omitempty" name:"GitPassword"`
+
+	// 加密后的Git密码，一般无需指定
+	GitPasswordSecret *string `json:"GitPasswordSecret,omitempty" name:"GitPasswordSecret"`
+
+	// Git分支
+	GitBranch *string `json:"GitBranch,omitempty" name:"GitBranch"`
+
+	// 代码在Git仓库中的路径
+	GitDirectory *string `json:"GitDirectory,omitempty" name:"GitDirectory"`
+
+	// 指定要拉取的版本
+	GitCommitId *string `json:"GitCommitId,omitempty" name:"GitCommitId"`
+
+	// 加密后的Git用户名，一般无需指定
+	GitUserNameSecret *string `json:"GitUserNameSecret,omitempty" name:"GitUserNameSecret"`
 }
 
 type CopyFunctionRequest struct {
 	*tchttp.BaseRequest
 
-	// 函数名
+	// 要复制的函数的名称
 	FunctionName *string `json:"FunctionName,omitempty" name:"FunctionName"`
 
 	// 新函数的名称
 	NewFunctionName *string `json:"NewFunctionName,omitempty" name:"NewFunctionName"`
 
-	// 命名空间，默认为default
+	// 要复制的函数所在的命名空间，默认为default
 	Namespace *string `json:"Namespace,omitempty" name:"Namespace"`
 
 	// 将函数复制到的命名空间，默认为default
 	TargetNamespace *string `json:"TargetNamespace,omitempty" name:"TargetNamespace"`
 
-	// 函数描述
+	// 新函数的描述
 	Description *string `json:"Description,omitempty" name:"Description"`
 
 	// 要将函数复制到的地域，不填则默认为当前地域
 	TargetRegion *string `json:"TargetRegion,omitempty" name:"TargetRegion"`
+
+	// 如果目标Namespace下已有同名函数，是否覆盖，默认为否
+	// （注意：如果选择覆盖，会导致同名函数被删除，请慎重操作）
+	// TRUE：覆盖同名函数
+	// FALSE：不覆盖同名函数
+	Override *bool `json:"Override,omitempty" name:"Override"`
+
+	// 是否复制函数的属性，包括环境变量、内存、超时、函数描述、标签、VPC等，默认为是。
+	// TRUE：复制函数配置
+	// FALSE：不复制函数配置
+	CopyConfiguration *bool `json:"CopyConfiguration,omitempty" name:"CopyConfiguration"`
 }
 
 func (r *CopyFunctionRequest) ToJsonString() string {
@@ -120,11 +164,23 @@ type CreateFunctionRequest struct {
 	// 函数的私有网络配置
 	VpcConfig *VpcConfig `json:"VpcConfig,omitempty" name:"VpcConfig"`
 
+	// 函数所属命名空间
+	Namespace *string `json:"Namespace,omitempty" name:"Namespace"`
+
+	// 函数绑定的角色
+	Role *string `json:"Role,omitempty" name:"Role"`
+
 	// 函数日志投递到的CLS LogsetID
 	ClsLogsetId *string `json:"ClsLogsetId,omitempty" name:"ClsLogsetId"`
 
 	// 函数日志投递到的CLS TopicID
 	ClsTopicId *string `json:"ClsTopicId,omitempty" name:"ClsTopicId"`
+
+	// 函数类型，默认值为Event，创建触发器函数请填写Event，创建HTTP函数级服务请填写HTTP
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// CodeSource 代码来源，支持以下'ZipFile', 'Cos', 'Demo', 'TempCos', 'Git'之一，使用Git来源必须指定此字段
+	CodeSource *string `json:"CodeSource,omitempty" name:"CodeSource"`
 }
 
 func (r *CreateFunctionRequest) ToJsonString() string {
@@ -154,6 +210,43 @@ func (r *CreateFunctionResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type CreateNamespaceRequest struct {
+	*tchttp.BaseRequest
+
+	// 命名空间名称
+	Namespace *string `json:"Namespace,omitempty" name:"Namespace"`
+
+	// 命名空间描述
+	Description *string `json:"Description,omitempty" name:"Description"`
+}
+
+func (r *CreateNamespaceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateNamespaceRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateNamespaceResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateNamespaceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateNamespaceResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type CreateTriggerRequest struct {
 	*tchttp.BaseRequest
 
@@ -168,6 +261,9 @@ type CreateTriggerRequest struct {
 
 	// 触发器对应的参数，如果是 timer 类型的触发器其内容是 Linux cron 表达式，如果是其他触发器，见具体触发器说明
 	TriggerDesc *string `json:"TriggerDesc,omitempty" name:"TriggerDesc"`
+
+	// 函数的命名空间
+	Namespace *string `json:"Namespace,omitempty" name:"Namespace"`
 
 	// 函数的版本
 	Qualifier *string `json:"Qualifier,omitempty" name:"Qualifier"`
@@ -211,6 +307,9 @@ type DeleteFunctionRequest struct {
 
 	// 要删除的函数名称
 	FunctionName *string `json:"FunctionName,omitempty" name:"FunctionName"`
+
+	// 函数所属命名空间
+	Namespace *string `json:"Namespace,omitempty" name:"Namespace"`
 }
 
 func (r *DeleteFunctionRequest) ToJsonString() string {
@@ -240,6 +339,40 @@ func (r *DeleteFunctionResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DeleteNamespaceRequest struct {
+	*tchttp.BaseRequest
+
+	// 命名空间名称
+	Namespace *string `json:"Namespace,omitempty" name:"Namespace"`
+}
+
+func (r *DeleteNamespaceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteNamespaceRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteNamespaceResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DeleteNamespaceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteNamespaceResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DeleteTriggerRequest struct {
 	*tchttp.BaseRequest
 
@@ -251,6 +384,9 @@ type DeleteTriggerRequest struct {
 
 	// 要删除的触发器类型，目前支持 cos 、cmq、 timer、ckafka 类型
 	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 函数所属命名空间
+	Namespace *string `json:"Namespace,omitempty" name:"Namespace"`
 
 	// 如果删除的触发器类型为 COS 触发器，该字段为必填值，存放 JSON 格式的数据 {"event":"cos:ObjectCreated:*"}，数据内容和 SetTrigger 接口中该字段的格式相同；如果删除的触发器类型为定时触发器或 CMQ 触发器，可以不指定该字段
 	TriggerDesc *string `json:"TriggerDesc,omitempty" name:"TriggerDesc"`
@@ -284,6 +420,15 @@ func (r *DeleteTriggerResponse) ToJsonString() string {
 
 func (r *DeleteTriggerResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
+}
+
+type EipOutConfig struct {
+
+	// 是否是固定IP，["TRUE","FALSE"]
+	EipFixed *string `json:"EipFixed,omitempty" name:"EipFixed"`
+
+	// IP列表
+	Eips []*string `json:"Eips,omitempty" name:"Eips" list`
 }
 
 type Environment struct {
@@ -332,6 +477,9 @@ type Function struct {
 
 	// 函数标签
 	Tags []*Tag `json:"Tags,omitempty" name:"Tags" list`
+
+	// 函数类型，取值为 HTTP 或者 Event
+	Type *string `json:"Type,omitempty" name:"Type"`
 }
 
 type FunctionLog struct {
@@ -365,6 +513,68 @@ type FunctionLog struct {
 
 	// 函数执行过程中的日志输出
 	Log *string `json:"Log,omitempty" name:"Log"`
+
+	// 日志等级
+	Level *string `json:"Level,omitempty" name:"Level"`
+
+	// 日志来源
+	Source *string `json:"Source,omitempty" name:"Source"`
+}
+
+type FunctionVersion struct {
+
+	// 函数版本名称
+	Version *string `json:"Version,omitempty" name:"Version"`
+
+	// 版本描述信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Description *string `json:"Description,omitempty" name:"Description"`
+}
+
+type GetFunctionAddressRequest struct {
+	*tchttp.BaseRequest
+
+	// 函数的名称
+	FunctionName *string `json:"FunctionName,omitempty" name:"FunctionName"`
+
+	// 函数的版本
+	Qualifier *string `json:"Qualifier,omitempty" name:"Qualifier"`
+
+	// 函数的命名空间
+	Namespace *string `json:"Namespace,omitempty" name:"Namespace"`
+}
+
+func (r *GetFunctionAddressRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *GetFunctionAddressRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type GetFunctionAddressResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 函数的Cos地址
+		Url *string `json:"Url,omitempty" name:"Url"`
+
+		// 函数的SHA256编码
+		CodeSha256 *string `json:"CodeSha256,omitempty" name:"CodeSha256"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *GetFunctionAddressResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *GetFunctionAddressResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
 }
 
 type GetFunctionLogsRequest struct {
@@ -388,6 +598,9 @@ type GetFunctionLogsRequest struct {
 	// 日志过滤条件。可用来区分正确和错误日志，filter.retCode=not0 表示只返回错误日志，filter.retCode=is0 表示只返回正确日志，不传，则返回所有日志
 	Filter *LogFilter `json:"Filter,omitempty" name:"Filter"`
 
+	// 函数的命名空间
+	Namespace *string `json:"Namespace,omitempty" name:"Namespace"`
+
 	// 函数的版本
 	Qualifier *string `json:"Qualifier,omitempty" name:"Qualifier"`
 
@@ -399,6 +612,9 @@ type GetFunctionLogsRequest struct {
 
 	// 查询的具体日期，例如：2017-05-16 20:59:59，只能与startTime相差一天之内
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 服务日志相关参数，第一页日志 Offset 为空字符串，后续分页按响应字段里的SearchContext填写
+	SearchContext *LogSearchContext `json:"SearchContext,omitempty" name:"SearchContext"`
 }
 
 func (r *GetFunctionLogsRequest) ToJsonString() string {
@@ -419,6 +635,9 @@ type GetFunctionLogsResponse struct {
 
 		// 函数日志信息
 		Data []*FunctionLog `json:"Data,omitempty" name:"Data" list`
+
+		// 日志服务分页参数
+		SearchContext *LogSearchContext `json:"SearchContext,omitempty" name:"SearchContext"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -442,6 +661,9 @@ type GetFunctionRequest struct {
 
 	// 函数的版本号
 	Qualifier *string `json:"Qualifier,omitempty" name:"Qualifier"`
+
+	// 函数所属命名空间
+	Namespace *string `json:"Namespace,omitempty" name:"Namespace"`
 
 	// 是否显示代码, TRUE表示显示代码，FALSE表示不显示代码,大于1M的入口文件不会显示
 	ShowCode *string `json:"ShowCode,omitempty" name:"ShowCode"`
@@ -538,6 +760,15 @@ type GetFunctionResponse struct {
 		// 函数的标签列表
 		Tags []*Tag `json:"Tags,omitempty" name:"Tags" list`
 
+		// EipConfig配置
+		EipConfig *EipOutConfig `json:"EipConfig,omitempty" name:"EipConfig"`
+
+		// 域名信息
+		AccessInfo *AccessInfo `json:"AccessInfo,omitempty" name:"AccessInfo"`
+
+		// 函数类型，取值为HTTP或者Event
+		Type *string `json:"Type,omitempty" name:"Type"`
+
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
@@ -622,6 +853,9 @@ type ListFunctionsRequest struct {
 	// 支持FunctionName模糊匹配
 	SearchKey *string `json:"SearchKey,omitempty" name:"SearchKey"`
 
+	// 命名空间
+	Namespace *string `json:"Namespace,omitempty" name:"Namespace"`
+
 	// 函数描述，支持模糊搜索
 	Description *string `json:"Description,omitempty" name:"Description"`
 
@@ -665,10 +899,206 @@ func (r *ListFunctionsResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type ListNamespacesRequest struct {
+	*tchttp.BaseRequest
+
+	// 返回数据长度，默认值为 20
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 数据的偏移量，默认值为 0
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 根据哪个字段进行返回结果排序,支持以下字段：Name,Updatetime
+	Orderby *string `json:"Orderby,omitempty" name:"Orderby"`
+
+	// 以升序还是降序的方式返回结果，可选值 ASC 和 DESC
+	Order *string `json:"Order,omitempty" name:"Order"`
+}
+
+func (r *ListNamespacesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ListNamespacesRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ListNamespacesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// namespace详情
+		Namespaces []*Namespace `json:"Namespaces,omitempty" name:"Namespaces" list`
+
+		// 返回的namespace数量
+		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ListNamespacesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ListNamespacesResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ListVersionByFunctionRequest struct {
+	*tchttp.BaseRequest
+
+	// 函数ID
+	FunctionName *string `json:"FunctionName,omitempty" name:"FunctionName"`
+
+	// 命名空间
+	Namespace *string `json:"Namespace,omitempty" name:"Namespace"`
+}
+
+func (r *ListVersionByFunctionRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ListVersionByFunctionRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ListVersionByFunctionResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 函数版本。
+		FunctionVersion []*string `json:"FunctionVersion,omitempty" name:"FunctionVersion" list`
+
+		// 函数版本列表。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Versions []*FunctionVersion `json:"Versions,omitempty" name:"Versions" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ListVersionByFunctionResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ListVersionByFunctionResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type LogFilter struct {
 
-	// filter.RetCode=not0 表示只返回错误日志，filter.RetCode=is0 表示只返回正确日志，无输入则返回所有日志。
+	// filter.RetCode的取值有：
+	// not0 表示只返回错误日志，
+	// is0 表示只返回正确日志，
+	// TimeLimitExceeded 返回函数调用发生超时的日志，
+	// ResourceLimitExceeded 返回函数调用发生资源超限的日志，
+	// UserCodeException 返回函数调用发生用户代码错误的日志，
+	// 无输入则返回所有日志。
 	RetCode *string `json:"RetCode,omitempty" name:"RetCode"`
+}
+
+type LogSearchContext struct {
+
+	// 偏移量
+	Offset *string `json:"Offset,omitempty" name:"Offset"`
+
+	// 日志条数
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 日志关键词
+	Keyword *string `json:"Keyword,omitempty" name:"Keyword"`
+
+	// 日志类型，支持Application和Platform，默认为Application
+	Type *string `json:"Type,omitempty" name:"Type"`
+}
+
+type Namespace struct {
+
+	// 命名空间创建时间
+	ModTime *string `json:"ModTime,omitempty" name:"ModTime"`
+
+	// 命名空间修改时间
+	AddTime *string `json:"AddTime,omitempty" name:"AddTime"`
+
+	// 命名空间描述
+	Description *string `json:"Description,omitempty" name:"Description"`
+
+	// 命名空间名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 默认default，TCB表示是小程序云开发创建的
+	Type *string `json:"Type,omitempty" name:"Type"`
+}
+
+type PublishVersionRequest struct {
+	*tchttp.BaseRequest
+
+	// 发布函数的名称
+	FunctionName *string `json:"FunctionName,omitempty" name:"FunctionName"`
+
+	// 函数的描述
+	Description *string `json:"Description,omitempty" name:"Description"`
+
+	// 函数的命名空间
+	Namespace *string `json:"Namespace,omitempty" name:"Namespace"`
+}
+
+func (r *PublishVersionRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *PublishVersionRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type PublishVersionResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 函数的版本
+		FunctionVersion *string `json:"FunctionVersion,omitempty" name:"FunctionVersion"`
+
+		// 代码大小
+		CodeSize *int64 `json:"CodeSize,omitempty" name:"CodeSize"`
+
+		// 最大可用内存
+		MemorySize *int64 `json:"MemorySize,omitempty" name:"MemorySize"`
+
+		// 函数的描述
+		Description *string `json:"Description,omitempty" name:"Description"`
+
+		// 函数的入口
+		Handler *string `json:"Handler,omitempty" name:"Handler"`
+
+		// 函数的超时时间
+		Timeout *int64 `json:"Timeout,omitempty" name:"Timeout"`
+
+		// 函数的运行环境
+		Runtime *string `json:"Runtime,omitempty" name:"Runtime"`
+
+		// 函数的命名空间
+		Namespace *string `json:"Namespace,omitempty" name:"Namespace"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *PublishVersionResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *PublishVersionResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
 }
 
 type Result struct {
@@ -749,8 +1179,17 @@ type UpdateFunctionCodeRequest struct {
 	// 包含函数代码文件及其依赖项的 zip 格式文件，使用该接口时要求将 zip 文件的内容转成 base64 编码，最大支持20M
 	ZipFile *string `json:"ZipFile,omitempty" name:"ZipFile"`
 
+	// 函数所属命名空间
+	Namespace *string `json:"Namespace,omitempty" name:"Namespace"`
+
 	// 对象存储的地域，注：北京分为ap-beijing和ap-beijing-1
 	CosBucketRegion *string `json:"CosBucketRegion,omitempty" name:"CosBucketRegion"`
+
+	// 函数所属环境
+	EnvId *string `json:"EnvId,omitempty" name:"EnvId"`
+
+	// 在更新时是否同步发布新版本，默认为：FALSE，不发布
+	Publish *string `json:"Publish,omitempty" name:"Publish"`
 }
 
 func (r *UpdateFunctionCodeRequest) ToJsonString() string {
@@ -801,8 +1240,23 @@ type UpdateFunctionConfigurationRequest struct {
 	// 函数的环境变量
 	Environment *Environment `json:"Environment,omitempty" name:"Environment"`
 
+	// 函数所属命名空间
+	Namespace *string `json:"Namespace,omitempty" name:"Namespace"`
+
 	// 函数的私有网络配置
 	VpcConfig *VpcConfig `json:"VpcConfig,omitempty" name:"VpcConfig"`
+
+	// 函数绑定的角色
+	Role *string `json:"Role,omitempty" name:"Role"`
+
+	// 日志投递到的cls日志集ID
+	ClsLogsetId *string `json:"ClsLogsetId,omitempty" name:"ClsLogsetId"`
+
+	// 日志投递到的cls Topic ID
+	ClsTopicId *string `json:"ClsTopicId,omitempty" name:"ClsTopicId"`
+
+	// 在更新时是否同步发布新版本，默认为：FALSE，不发布
+	Publish *string `json:"Publish,omitempty" name:"Publish"`
 }
 
 func (r *UpdateFunctionConfigurationRequest) ToJsonString() string {
@@ -829,6 +1283,43 @@ func (r *UpdateFunctionConfigurationResponse) ToJsonString() string {
 }
 
 func (r *UpdateFunctionConfigurationResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type UpdateNamespaceRequest struct {
+	*tchttp.BaseRequest
+
+	// 命名空间名称
+	Namespace *string `json:"Namespace,omitempty" name:"Namespace"`
+
+	// 命名空间描述
+	Description *string `json:"Description,omitempty" name:"Description"`
+}
+
+func (r *UpdateNamespaceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *UpdateNamespaceRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type UpdateNamespaceResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *UpdateNamespaceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *UpdateNamespaceResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 

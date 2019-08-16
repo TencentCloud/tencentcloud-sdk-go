@@ -60,6 +60,15 @@ func (r *AssignProjectResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type ClientConnection struct {
+
+	// 连接的客户端IP
+	IP *string `json:"IP,omitempty" name:"IP"`
+
+	// 对应客户端IP的连接数
+	Count *uint64 `json:"Count,omitempty" name:"Count"`
+}
+
 type CreateDBInstanceHourRequest struct {
 	*tchttp.BaseRequest
 
@@ -215,6 +224,44 @@ func (r *CreateDBInstanceResponse) ToJsonString() string {
 }
 
 func (r *CreateDBInstanceResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeClientConnectionsRequest struct {
+	*tchttp.BaseRequest
+
+	// 实例ID，格式如：cmgo-p8vnipr5。与云数据库控制台页面中显示的实例ID相同
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+}
+
+func (r *DescribeClientConnectionsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeClientConnectionsRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeClientConnectionsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 客户端连接信息，包括客户端IP和对应IP的连接数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Clients []*ClientConnection `json:"Clients,omitempty" name:"Clients" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeClientConnectionsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeClientConnectionsResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 

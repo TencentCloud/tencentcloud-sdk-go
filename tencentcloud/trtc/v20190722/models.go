@@ -20,7 +20,7 @@ import (
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
-type DissloveRoomRequest struct {
+type DissolveRoomRequest struct {
 	*tchttp.BaseRequest
 
 	// TRTC的SDKAppId。
@@ -30,16 +30,16 @@ type DissloveRoomRequest struct {
 	RoomId *uint64 `json:"RoomId,omitempty" name:"RoomId"`
 }
 
-func (r *DissloveRoomRequest) ToJsonString() string {
+func (r *DissolveRoomRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
-func (r *DissloveRoomRequest) FromJsonString(s string) error {
+func (r *DissolveRoomRequest) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
-type DissloveRoomResponse struct {
+type DissolveRoomResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
@@ -48,12 +48,12 @@ type DissloveRoomResponse struct {
 	} `json:"Response"`
 }
 
-func (r *DissloveRoomResponse) ToJsonString() string {
+func (r *DissolveRoomResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
-func (r *DissloveRoomResponse) FromJsonString(s string) error {
+func (r *DissolveRoomResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 

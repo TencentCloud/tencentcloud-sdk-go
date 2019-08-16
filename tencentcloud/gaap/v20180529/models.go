@@ -105,7 +105,7 @@ type BindListenerRealServersRequest struct {
 	// 监听器ID
 	ListenerId *string `json:"ListenerId,omitempty" name:"ListenerId"`
 
-	// 待绑定源站列表
+	// 待绑定源站列表。如果该监听器的源站调度策略是加权轮询，需要填写源站权重 RealServerWeight, 不填或者其他调度类型默认源站权重为1。
 	RealServerBindSet []*RealServerBindSetReq `json:"RealServerBindSet,omitempty" name:"RealServerBindSet" list`
 }
 
@@ -190,6 +190,7 @@ type BindRuleRealServersRequest struct {
 	// 需要绑定的源站信息列表。
 	// 如果已经存在绑定的源站，则会覆盖更新成这个源站列表。
 	// 当不带该字段时，表示解绑该规则上的所有源站。
+	// 如果该规则的源站调度策略是加权轮询，需要填写源站权重 RealServerWeight, 不填或者其他调度类型默认源站权重为1。
 	RealServerBindSet []*RealServerBindSetReq `json:"RealServerBindSet,omitempty" name:"RealServerBindSet" list`
 }
 
@@ -2924,7 +2925,12 @@ type HTTPListener struct {
 	// 监听器协议
 	Protocol *string `json:"Protocol,omitempty" name:"Protocol"`
 
-	// 监听器状态
+	// 监听器状态，其中：
+	// 0， 运行中；
+	// 1， 创建中；
+	// 2，销毁中；
+	// 3，源站调整中；
+	// 4，配置变更中。
 	ListenerStatus *uint64 `json:"ListenerStatus,omitempty" name:"ListenerStatus"`
 }
 
@@ -2939,10 +2945,15 @@ type HTTPSListener struct {
 	// 监听器端口
 	Port *uint64 `json:"Port,omitempty" name:"Port"`
 
-	// 监听器协议， HTTP
+	// 监听器协议， 值为：HTTP
 	Protocol *string `json:"Protocol,omitempty" name:"Protocol"`
 
-	// 监听器状态
+	// 监听器状态，其中：
+	// 0， 运行中；
+	// 1， 创建中；
+	// 2，销毁中；
+	// 3，源站调整中；
+	// 4，配置变更中。
 	ListenerStatus *uint64 `json:"ListenerStatus,omitempty" name:"ListenerStatus"`
 
 	// 监听器服务器SSL证书ID
@@ -4058,14 +4069,14 @@ type RealServerBindSetReq struct {
 	// 源站id
 	RealServerId *string `json:"RealServerId,omitempty" name:"RealServerId"`
 
-	// 源站权重
-	RealServerWeight *uint64 `json:"RealServerWeight,omitempty" name:"RealServerWeight"`
-
 	// 源站端口
 	RealServerPort *uint64 `json:"RealServerPort,omitempty" name:"RealServerPort"`
 
 	// 源站IP
 	RealServerIP *string `json:"RealServerIP,omitempty" name:"RealServerIP"`
+
+	// 源站权重
+	RealServerWeight *uint64 `json:"RealServerWeight,omitempty" name:"RealServerWeight"`
 }
 
 type RealServerStatus struct {
@@ -4328,7 +4339,12 @@ type TCPListener struct {
 	// 监听器协议， TCP
 	Protocol *string `json:"Protocol,omitempty" name:"Protocol"`
 
-	// 监听器状态
+	// 监听器状态，其中：
+	// 0， 运行中；
+	// 1， 创建中；
+	// 2，销毁中；
+	// 3，源站调整中；
+	// 4，配置变更中。
 	ListenerStatus *uint64 `json:"ListenerStatus,omitempty" name:"ListenerStatus"`
 
 	// 监听器源站访问策略，其中：
@@ -4403,7 +4419,12 @@ type UDPListener struct {
 	// 监听器协议， UDP
 	Protocol *string `json:"Protocol,omitempty" name:"Protocol"`
 
-	// 监听器状态
+	// 监听器状态，其中：
+	// 0， 运行中；
+	// 1， 创建中；
+	// 2，销毁中；
+	// 3，源站调整中；
+	// 4，配置变更中。
 	ListenerStatus *uint64 `json:"ListenerStatus,omitempty" name:"ListenerStatus"`
 
 	// 监听器源站访问策略

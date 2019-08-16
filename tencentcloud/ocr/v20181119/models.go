@@ -1121,7 +1121,7 @@ type TextArithmetic struct {
 	// 保留字段，暂无意义
 	Confidence *int64 `json:"Confidence,omitempty" name:"Confidence"`
 
-	// 文本行坐标，以四个顶点坐标表示
+	// 文本行坐标，以四个顶点坐标表示（预留字段，目前不支持）
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Polygon []*Coord `json:"Polygon,omitempty" name:"Polygon" list`
 

@@ -83,37 +83,12 @@ func NewCancelTaskResponse() (response *CancelTaskResponse) {
     return
 }
 
-// 用于取消已经提交的任务
+// 用于取消已经提交的任务，目前只支持图像任务。
 func (c *Client) CancelTask(request *CancelTaskRequest) (response *CancelTaskResponse, err error) {
     if request == nil {
         request = NewCancelTaskRequest()
     }
     response = NewCancelTaskResponse()
-    err = c.Send(request, response)
-    return
-}
-
-func NewCheckAttendanceRequest() (request *CheckAttendanceRequest) {
-    request = &CheckAttendanceRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    request.Init().WithApiInfo("tci", APIVersion, "CheckAttendance")
-    return
-}
-
-func NewCheckAttendanceResponse() (response *CheckAttendanceResponse) {
-    response = &CheckAttendanceResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    }
-    return
-}
-
-// 人员考勤
-func (c *Client) CheckAttendance(request *CheckAttendanceRequest) (response *CheckAttendanceResponse, err error) {
-    if request == nil {
-        request = NewCheckAttendanceRequest()
-    }
-    response = NewCheckAttendanceResponse()
     err = c.Send(request, response)
     return
 }
@@ -783,7 +758,20 @@ func NewSubmitCheckAttendanceTaskResponse() (response *SubmitCheckAttendanceTask
     return
 }
 
-// 提交人员考勤任务
+// 提交人员考勤任务，支持包括点播和直播资源；支持通过DescribeAttendanceResult查询结果，也支持通过NoticeUrl设置考勤回调结果，回调结果结构如下：
+// ##### 回调事件结构
+//  | 参数名称 | 类型 | 描述 | 
+//  | ----  | ---  | ------  |
+//  | jobid | Integer | 任务ID | 
+//  | person_info | array of PersonInfo | 识别到的人员列表 | 
+// #####子结构PersonInfo
+//  | 参数名称 | 类型 | 描述 | 
+//  | ----  | ---  | ------  |
+//  | traceid | String | 可用于区分同一路视频流下的不同陌生人 | 
+//  | personid | String | 识别到的人员ID，如果是陌生人则返回空串 | 
+//  | libid | String | 识别到的人员所在的库ID，如果是陌生人则返回空串 | 
+//  | timestamp | uint64 | 识别到人脸的绝对时间戳，单位ms | 
+//  | image_url | string | 识别到人脸的事件抓图的下载地址，不长期保存，需要请及时下载 | 
 func (c *Client) SubmitCheckAttendanceTask(request *SubmitCheckAttendanceTaskRequest) (response *SubmitCheckAttendanceTaskResponse, err error) {
     if request == nil {
         request = NewSubmitCheckAttendanceTaskRequest()
@@ -843,6 +831,37 @@ func (c *Client) SubmitDoubleVideoHighlights(request *SubmitDoubleVideoHighlight
     return
 }
 
+func NewSubmitFullBodyClassTaskRequest() (request *SubmitFullBodyClassTaskRequest) {
+    request = &SubmitFullBodyClassTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tci", APIVersion, "SubmitFullBodyClassTask")
+    return
+}
+
+func NewSubmitFullBodyClassTaskResponse() (response *SubmitFullBodyClassTaskResponse) {
+    response = &SubmitFullBodyClassTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// **传统课堂授课任务**：在此场景中，老师为站立授课，有白板或投影供老师展示课程内容，摄像头可以拍摄到老师的半身或者全身。拍摄视频为一路全局画面，且背景不动，要求画面稳定清晰。通过此接口可分析老师授课的行为及语音，以支持AI评教。  
+//   
+// **提供的功能接口有：**老师人脸识别、老师表情识别、老师肢体动作识别、语音识别。  可分析的指标维度包括：身份识别、正脸、侧脸、人脸坐标、人脸尺寸、高兴、中性、高兴、中性、惊讶、厌恶、恐惧、愤怒、蔑视、悲伤、正面讲解、写板书、指黑板、语音转文字、发音时长、非发音时长、音量、语速、指定关键词的使用等
+//   
+// **对场景的要求为：**真实场景老师1人出现在画面中，全局画面且背景不动；人脸上下角度在20度以内，左右角度在15度以内，歪头角度在15度以内；光照均匀，无遮挡，人脸清晰可见；像素最好在 100X100 像素以上，但是图像整体质量不能超过1080p。
+//     
+// **结果查询方式：**图像任务直接返回结果，点播及直播任务通过DescribeAITaskResult查询结果。
+func (c *Client) SubmitFullBodyClassTask(request *SubmitFullBodyClassTaskRequest) (response *SubmitFullBodyClassTaskResponse, err error) {
+    if request == nil {
+        request = NewSubmitFullBodyClassTaskRequest()
+    }
+    response = NewSubmitFullBodyClassTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewSubmitHighlightsRequest() (request *SubmitHighlightsRequest) {
     request = &SubmitHighlightsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -889,6 +908,134 @@ func (c *Client) SubmitImageTask(request *SubmitImageTaskRequest) (response *Sub
         request = NewSubmitImageTaskRequest()
     }
     response = NewSubmitImageTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewSubmitOneByOneClassTaskRequest() (request *SubmitOneByOneClassTaskRequest) {
+    request = &SubmitOneByOneClassTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tci", APIVersion, "SubmitOneByOneClassTask")
+    return
+}
+
+func NewSubmitOneByOneClassTaskResponse() (response *SubmitOneByOneClassTaskResponse) {
+    response = &SubmitOneByOneClassTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// **提交在线1对1课堂任务**  
+// 对于在线1对1课堂，老师通过视频向学生授课，并且学生人数为1人。通过上传学生端的图像信息，可以获取学生的听课情况分析。 具体指一路全局画面且背景不动，有1位学生的头像或上半身的画面，要求画面稳定清晰。
+//   
+// **提供的功能接口有：**学生人脸识别、学生表情识别、语音识别。可分析的指标维度包括：学生身份识别、正脸、侧脸、抬头、低头、人脸坐标、人脸尺寸、高兴、中性、高兴、中性、惊讶、厌恶、恐惧、愤怒、蔑视、悲伤、语音转文字、发音时长、非发音时长、音量、语速等。
+//   
+// **对场景的要求为：**真实常规1v1授课场景，学生2人以下，全局画面且背景不动；人脸上下角度在20度以内，左右角度在15度以内，歪头角度在15度以内；光照均匀，无遮挡，人脸清晰可见；像素最好在 100X100 像素以上，但是图像整体质量不能超过1080p。
+//     
+// **结果查询方式：**图像任务直接返回结果，点播及直播任务通过DescribeAITaskResult查询结果。
+func (c *Client) SubmitOneByOneClassTask(request *SubmitOneByOneClassTaskRequest) (response *SubmitOneByOneClassTaskResponse, err error) {
+    if request == nil {
+        request = NewSubmitOneByOneClassTaskRequest()
+    }
+    response = NewSubmitOneByOneClassTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewSubmitOpenClassTaskRequest() (request *SubmitOpenClassTaskRequest) {
+    request = &SubmitOpenClassTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tci", APIVersion, "SubmitOpenClassTask")
+    return
+}
+
+func NewSubmitOpenClassTaskResponse() (response *SubmitOpenClassTaskResponse) {
+    response = &SubmitOpenClassTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// **提交线下小班（无课桌）课任务**  
+// 线下小班课是指有学生无课桌的课堂，满座15人以下，全局画面且背景不动，能清晰看到。  
+//   
+// **提供的功能接口有：**学生人脸识别、学生表情识别、学生肢体动作识别。  可分析的指标维度包括：身份识别、正脸、侧脸、抬头、低头、高兴、中性、高兴、中性、惊讶、厌恶、恐惧、愤怒、蔑视、悲伤、站立、举手、坐着等。
+//   
+// **对场景的要求为：**真实常规教室，满座15人以下，全局画面且背景不动；人脸上下角度在20度以内，左右角度在15度以内，歪头角度在15度以内；光照均匀，无遮挡，人脸清晰可见；像素最好在 100X100 像素以上但是图像整体质量不能超过1080p。
+//     
+// **结果查询方式：**图像任务直接返回结果，点播及直播任务通过DescribeAITaskResult查询结果。
+func (c *Client) SubmitOpenClassTask(request *SubmitOpenClassTaskRequest) (response *SubmitOpenClassTaskResponse, err error) {
+    if request == nil {
+        request = NewSubmitOpenClassTaskRequest()
+    }
+    response = NewSubmitOpenClassTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewSubmitPartialBodyClassTaskRequest() (request *SubmitPartialBodyClassTaskRequest) {
+    request = &SubmitPartialBodyClassTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tci", APIVersion, "SubmitPartialBodyClassTask")
+    return
+}
+
+func NewSubmitPartialBodyClassTaskResponse() (response *SubmitPartialBodyClassTaskResponse) {
+    response = &SubmitPartialBodyClassTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// **在线小班课任务**：此场景是在线授课场景，老师一般为坐着授课，摄像头可以拍摄到老师的头部及上半身。拍摄视频为一路全局画面，且背景不动，要求画面稳定清晰。通过此接口可分析老师授课的行为及语音，以支持AI评教。    
+//   
+// **提供的功能接口有：**老师人脸识别、老师表情识别、老师手势识别、光线识别、语音识别。 可分析的指标维度包括：身份识别、正脸、侧脸、人脸坐标、人脸尺寸、高兴、中性、高兴、中性、惊讶、厌恶、恐惧、愤怒、蔑视、悲伤、点赞手势、听你说手势、听我说手势、拿教具行为、语音转文字、发音时长、非发音时长、音量、语速、指定关键词的使用等 
+//   
+// **对场景的要求为：**在线常规授课场景，全局画面且背景不动；人脸上下角度在20度以内，左右角度在15度以内，歪头角度在15度以内；光照均匀，无遮挡，人脸清晰可见；像素最好在 100X100 像素以上，但是图像整体质量不能超过1080p。
+//     
+// **结果查询方式：**图像任务直接返回结果，点播及直播任务通过DescribeAITaskResult查询结果。
+func (c *Client) SubmitPartialBodyClassTask(request *SubmitPartialBodyClassTaskRequest) (response *SubmitPartialBodyClassTaskResponse, err error) {
+    if request == nil {
+        request = NewSubmitPartialBodyClassTaskRequest()
+    }
+    response = NewSubmitPartialBodyClassTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewSubmitTraditionalClassTaskRequest() (request *SubmitTraditionalClassTaskRequest) {
+    request = &SubmitTraditionalClassTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tci", APIVersion, "SubmitTraditionalClassTask")
+    return
+}
+
+func NewSubmitTraditionalClassTaskResponse() (response *SubmitTraditionalClassTaskResponse) {
+    response = &SubmitTraditionalClassTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// **提交线下传统面授大班课（含课桌）任务。**  
+// 传统教室课堂是指有学生课堂有课桌的课堂，满座20-50人，全局画面且背景不动。  
+//   
+// **提供的功能接口有：**学生人脸识别、学生表情识别、学生肢体动作识别。可分析的指标维度包括：学生身份识别、正脸、侧脸、抬头、低头、高兴、中性、高兴、中性、惊讶、厌恶、恐惧、愤怒、蔑视、悲伤、举手、站立、坐着、趴桌子、玩手机等  
+//   
+// **对场景的要求为：**传统的学生上课教室，满座20-50人，全局画面且背景不动；人脸上下角度在20度以内，左右角度在15度以内，歪头角度在15度以内；光照均匀，无遮挡，人脸清晰可见；像素最好在 100X100 像素以上，但是图像整体质量不能超过1080p。
+//     
+// **结果查询方式：**图像任务直接返回结果，点播及直播任务通过DescribeAITaskResult查询结果。
+//   
+func (c *Client) SubmitTraditionalClassTask(request *SubmitTraditionalClassTaskRequest) (response *SubmitTraditionalClassTaskResponse, err error) {
+    if request == nil {
+        request = NewSubmitTraditionalClassTaskRequest()
+    }
+    response = NewSubmitTraditionalClassTaskResponse()
     err = c.Send(request, response)
     return
 }

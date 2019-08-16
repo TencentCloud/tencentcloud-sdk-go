@@ -2045,6 +2045,12 @@ type RuleInput struct {
 
 	// 负载均衡与后端服务之间的转发协议，目前支持 HTTP
 	ForwardType *string `json:"ForwardType,omitempty" name:"ForwardType"`
+
+	// 是否将该域名设为默认域名，注意，一个监听器下只能设置一个默认域名。
+	DefaultServer *bool `json:"DefaultServer,omitempty" name:"DefaultServer"`
+
+	// 是否开启Http2，注意，只用HTTPS域名才能开启Http2。
+	Http2 *bool `json:"Http2,omitempty" name:"Http2"`
 }
 
 type RuleOutput struct {

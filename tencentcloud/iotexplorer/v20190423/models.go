@@ -31,6 +31,12 @@ type ControlDeviceDataRequest struct {
 
 	// 属性数据
 	Data *string `json:"Data,omitempty" name:"Data"`
+
+	// 请求类型
+	Method *string `json:"Method,omitempty" name:"Method"`
+
+	// 设备ID，该字段有值将代替 ProductId/DeviceName
+	DeviceId *string `json:"DeviceId,omitempty" name:"DeviceId"`
 }
 
 func (r *ControlDeviceDataRequest) ToJsonString() string {
@@ -49,6 +55,11 @@ type ControlDeviceDataResponse struct {
 		// 返回信息
 		Data *string `json:"Data,omitempty" name:"Data"`
 
+		// JSON字符串， 返回下发控制的结果信息, 
+	// Sent = 1 表示设备已经在线并且订阅了控制下发的mqtt topic
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Result *string `json:"Result,omitempty" name:"Result"`
+
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
@@ -60,6 +71,46 @@ func (r *ControlDeviceDataResponse) ToJsonString() string {
 }
 
 func (r *ControlDeviceDataResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateDeviceRequest struct {
+	*tchttp.BaseRequest
+
+	// 产品ID。
+	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
+
+	// 设备名称。
+	DeviceName *string `json:"DeviceName,omitempty" name:"DeviceName"`
+}
+
+func (r *CreateDeviceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateDeviceRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateDeviceResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 设备参数描述。
+		Data *DeviceData `json:"Data,omitempty" name:"Data"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateDeviceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateDeviceResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -161,11 +212,48 @@ func (r *CreateStudioProductResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DeleteDeviceRequest struct {
+	*tchttp.BaseRequest
+
+	// 产品ID。
+	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
+
+	// 设备名称。
+	DeviceName *string `json:"DeviceName,omitempty" name:"DeviceName"`
+}
+
+func (r *DeleteDeviceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteDeviceRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteDeviceResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DeleteDeviceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteDeviceResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DeleteProjectRequest struct {
 	*tchttp.BaseRequest
 
 	// 项目ID
-	ProjectId *int64 `json:"ProjectId,omitempty" name:"ProjectId"`
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
 }
 
 func (r *DeleteProjectRequest) ToJsonString() string {
@@ -378,7 +466,7 @@ type DescribeProjectRequest struct {
 	*tchttp.BaseRequest
 
 	// 项目ID
-	ProjectId *int64 `json:"ProjectId,omitempty" name:"ProjectId"`
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
 }
 
 func (r *DescribeProjectRequest) ToJsonString() string {
@@ -448,6 +536,25 @@ func (r *DescribeStudioProductResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DeviceData struct {
+
+	// 设备证书，用于 TLS 建立链接时校验客户端身份。采用非对称加密时返回该参数。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DeviceCert *string `json:"DeviceCert,omitempty" name:"DeviceCert"`
+
+	// 设备名称。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DeviceName *string `json:"DeviceName,omitempty" name:"DeviceName"`
+
+	// 设备私钥，用于 TLS 建立链接时校验客户端身份，腾讯云后台不保存，请妥善保管。采用非对称加密时返回该参数。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DevicePrivateKey *string `json:"DevicePrivateKey,omitempty" name:"DevicePrivateKey"`
+
+	// 对称加密密钥，base64编码。采用对称加密时返回该参数。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DevicePsk *string `json:"DevicePsk,omitempty" name:"DevicePsk"`
+}
+
 type DeviceDataHistoryItem struct {
 
 	// 时间点，毫秒时间戳
@@ -481,9 +588,11 @@ type GetProjectListResponse struct {
 	Response *struct {
 
 		// 项目列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
 		Projects []*ProjectEntryEx `json:"Projects,omitempty" name:"Projects" list`
 
 		// 列表项个数
+	// 注意：此字段可能返回 null，表示取不到有效值。
 		Total *int64 `json:"Total,omitempty" name:"Total"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -590,7 +699,7 @@ type ModifyProjectRequest struct {
 	*tchttp.BaseRequest
 
 	// 项目ID
-	ProjectId *int64 `json:"ProjectId,omitempty" name:"ProjectId"`
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
 
 	// 项目名称
 	ProjectName *string `json:"ProjectName,omitempty" name:"ProjectName"`
@@ -733,12 +842,16 @@ type ProductModelDefinition struct {
 
 	// 创建时间，秒级时间戳
 	CreateTime *int64 `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 产品所属分类的模型快照（产品创建时刻的）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CategoryModel *string `json:"CategoryModel,omitempty" name:"CategoryModel"`
 }
 
 type ProjectEntry struct {
 
 	// 项目ID
-	ProjectId *int64 `json:"ProjectId,omitempty" name:"ProjectId"`
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
 
 	// 项目名称
 	ProjectName *string `json:"ProjectName,omitempty" name:"ProjectName"`
@@ -756,7 +869,7 @@ type ProjectEntry struct {
 type ProjectEntryEx struct {
 
 	// 项目ID
-	ProjectId *int64 `json:"ProjectId,omitempty" name:"ProjectId"`
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
 
 	// 项目名称
 	ProjectName *string `json:"ProjectName,omitempty" name:"ProjectName"`
@@ -831,6 +944,9 @@ type SearchStudioProductRequest struct {
 
 	// 列表Offset
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 产品Status
+	DevStatus *string `json:"DevStatus,omitempty" name:"DevStatus"`
 }
 
 func (r *SearchStudioProductRequest) ToJsonString() string {

@@ -68,6 +68,31 @@ func (c *Client) ControlDeviceData(request *ControlDeviceDataRequest) (response 
     return
 }
 
+func NewCreateDeviceRequest() (request *CreateDeviceRequest) {
+    request = &CreateDeviceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "CreateDevice")
+    return
+}
+
+func NewCreateDeviceResponse() (response *CreateDeviceResponse) {
+    response = &CreateDeviceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 创建设备
+func (c *Client) CreateDevice(request *CreateDeviceRequest) (response *CreateDeviceResponse, err error) {
+    if request == nil {
+        request = NewCreateDeviceRequest()
+    }
+    response = NewCreateDeviceResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateProjectRequest() (request *CreateProjectRequest) {
     request = &CreateProjectRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -114,6 +139,31 @@ func (c *Client) CreateStudioProduct(request *CreateStudioProductRequest) (respo
         request = NewCreateStudioProductRequest()
     }
     response = NewCreateStudioProductResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteDeviceRequest() (request *DeleteDeviceRequest) {
+    request = &DeleteDeviceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "DeleteDevice")
+    return
+}
+
+func NewDeleteDeviceResponse() (response *DeleteDeviceResponse) {
+    response = &DeleteDeviceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 删除设备
+func (c *Client) DeleteDevice(request *DeleteDeviceRequest) (response *DeleteDeviceResponse, err error) {
+    if request == nil {
+        request = NewDeleteDeviceRequest()
+    }
+    response = NewDeleteDeviceResponse()
     err = c.Send(request, response)
     return
 }

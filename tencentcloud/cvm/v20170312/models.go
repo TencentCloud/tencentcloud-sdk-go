@@ -688,13 +688,6 @@ type DescribeImagesRequest struct {
 	//     PUBLIC_IMAGE: 公共镜像 (腾讯云官方镜像)
 	//     MARKET_IMAGE: 服务市场 (服务市场提供的镜像) 
 	//    SHARED_IMAGE: 共享镜像(其他账户共享给本帐户的镜像) 。</li>
-	// <li> image-state - String - 是否必填： 否 - （过滤条件）按照镜像状态进行过滤。取值范围：
-	//     CREATING: 创建中
-	//     NORMAL: 正常
-	//     USING: 使用中
-	//     SYNCING: 同步中
-	//     IMPORTING: 导入中
-	//     DELETING: 删除中。</li>
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
 
 	// 偏移量，默认为0。关于Offset详见[API简介](/document/api/213/568#.E8.BE.93.E5.85.A5.E5.8F.82.E6.95.B0.E4.B8.8E.E8.BF.94.E5.9B.9E.E5.8F.82.E6.95.B0.E9.87.8A.E4.B9.89)。
@@ -3151,6 +3144,13 @@ type RunInstancesRequest struct {
 
 	// 提供给实例使用的用户数据，需要以 base64 方式编码，支持的最大数据大小为 16KB。关于获取此参数的详细介绍，请参阅[Windows](https://cloud.tencent.com/document/product/213/17526)和[Linux](https://cloud.tencent.com/document/product/213/17525)启动时运行命令。
 	UserData *string `json:"UserData,omitempty" name:"UserData"`
+
+	// 是否只预检此次请求。
+	// true：发送检查请求，不会创建实例。检查项包括是否填写了必需参数，请求格式，业务限制和云服务器库存。
+	// 如果检查不通过，则返回对应错误码；
+	// 如果检查通过，则返回RequestId.
+	// false（默认）：发送正常请求，通过检查后直接创建实例
+	DryRun *bool `json:"DryRun,omitempty" name:"DryRun"`
 }
 
 func (r *RunInstancesRequest) ToJsonString() string {

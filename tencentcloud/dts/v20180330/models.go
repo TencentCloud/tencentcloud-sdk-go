@@ -547,14 +547,14 @@ type DstInfo struct {
 	// 目标实例Id，如cdb-jd92ijd8
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
+	// 目标实例地域，如ap-guangzhou
+	Region *string `json:"Region,omitempty" name:"Region"`
+
 	// 目标实例vip。已废弃，无需填写
 	Ip *string `json:"Ip,omitempty" name:"Ip"`
 
 	// 目标实例vport。已废弃，无需填写
 	Port *int64 `json:"Port,omitempty" name:"Port"`
-
-	// 目标实例地域，如ap-guangzhou
-	Region *string `json:"Region,omitempty" name:"Region"`
 
 	// 目前只对MySQL有效。当为整实例迁移时，1-只读，0-可读写。
 	ReadOnly *int64 `json:"ReadOnly,omitempty" name:"ReadOnly"`

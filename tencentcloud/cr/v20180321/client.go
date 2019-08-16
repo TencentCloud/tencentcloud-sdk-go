@@ -58,8 +58,7 @@ func NewApplyBlackListResponse() (response *ApplyBlackListResponse) {
     return
 }
 
-// 加入黑名单的客户，将停止拨打。用于：
-// 将客户进行黑名单的增加和移除，用于对某些客户阶段性停催。
+// 提交黑名单后，黑名单中有效期内的号码将停止拨打，适用于提醒、催收、回访场景。
 func (c *Client) ApplyBlackList(request *ApplyBlackListRequest) (response *ApplyBlackListResponse, err error) {
     if request == nil {
         request = NewApplyBlackListRequest()
@@ -169,6 +168,57 @@ func (c *Client) DescribeTaskStatus(request *DescribeTaskStatusRequest) (respons
     return
 }
 
+func NewDownloadDialogueTextRequest() (request *DownloadDialogueTextRequest) {
+    request = &DownloadDialogueTextRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cr", APIVersion, "DownloadDialogueText")
+    return
+}
+
+func NewDownloadDialogueTextResponse() (response *DownloadDialogueTextResponse) {
+    response = &DownloadDialogueTextResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 用于获取指定案件的对话文本内容，次日早上8:00后可查询前日对话文本内容。
+func (c *Client) DownloadDialogueText(request *DownloadDialogueTextRequest) (response *DownloadDialogueTextResponse, err error) {
+    if request == nil {
+        request = NewDownloadDialogueTextRequest()
+    }
+    response = NewDownloadDialogueTextResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDownloadRecordListRequest() (request *DownloadRecordListRequest) {
+    request = &DownloadRecordListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cr", APIVersion, "DownloadRecordList")
+    return
+}
+
+func NewDownloadRecordListResponse() (response *DownloadRecordListResponse) {
+    response = &DownloadRecordListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// <p>用于获取录音下载链接清单，次日早上8:00后可查询前日录音清单。</p>
+// <p>注意：录音清单中的录音下载链接仅次日20:00之前有效，请及时下载。</p>
+func (c *Client) DownloadRecordList(request *DownloadRecordListRequest) (response *DownloadRecordListResponse, err error) {
+    if request == nil {
+        request = NewDownloadRecordListRequest()
+    }
+    response = NewDownloadRecordListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDownloadReportRequest() (request *DownloadReportRequest) {
     request = &DownloadReportRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -212,8 +262,9 @@ func NewUploadDataFileResponse() (response *UploadDataFileResponse) {
 // <p>该接口包含上传下列文件：</p>
 // <ol style="margin-bottom:10px;">
 //   <li>入催文件：用于每天入催文件的上传</li>
-//   <li>回访文件：用于每天贷中回访文件的上传</li>
 //   <li>还款文件：实时上传当前已还款客户，用于还款客户的实时停催</li>
+//   <li>回访文件：用于每天贷中回访文件的上传</li>
+//   <li>回访停拨文件：实时上传回访停拨名单文件，文件中的名单实时停拨</li>
 // </ol>
 // 接口返回数据任务ID，支持xlsx、xls、csv、zip格式，文档大小不超过50MB。
 func (c *Client) UploadDataFile(request *UploadDataFileRequest) (response *UploadDataFileResponse, err error) {
