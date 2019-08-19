@@ -11,6 +11,7 @@ import (
 	"strings"
 	"time"
 
+	"github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/errors"
 	tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 	"github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
 )
@@ -76,7 +77,8 @@ func (c *Client) sendWithSignatureV1(request tchttp.Request, response tchttp.Res
 	}
 	httpResponse, err := c.httpClient.Do(httpRequest)
 	if err != nil {
-		return err
+		msg := fmt.Sprintf("Fail to get response because %s", err)
+		return errors.NewTencentCloudSDKError("ClientError.NetworkError", msg, "")
 	}
 	err = tchttp.ParseFromHttpResponse(httpResponse, response)
 	return err
@@ -206,7 +208,8 @@ func (c *Client) sendWithSignatureV3(request tchttp.Request, response tchttp.Res
 	}
 	httpResponse, err := c.httpClient.Do(httpRequest)
 	if err != nil {
-		return err
+		msg := fmt.Sprintf("Fail to get response because %s", err)
+		return errors.NewTencentCloudSDKError("ClientError.NetworkError", msg, "")
 	}
 	err = tchttp.ParseFromHttpResponse(httpResponse, response)
 	return err
