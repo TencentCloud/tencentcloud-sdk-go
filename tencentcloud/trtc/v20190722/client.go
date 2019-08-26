@@ -43,27 +43,27 @@ func NewClient(credential *common.Credential, region string, clientProfile *prof
 }
 
 
-func NewDissloveRoomRequest() (request *DissloveRoomRequest) {
-    request = &DissloveRoomRequest{
+func NewDissolveRoomRequest() (request *DissolveRoomRequest) {
+    request = &DissolveRoomRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
-    request.Init().WithApiInfo("trtc", APIVersion, "DissloveRoom")
+    request.Init().WithApiInfo("trtc", APIVersion, "DissolveRoom")
     return
 }
 
-func NewDissloveRoomResponse() (response *DissloveRoomResponse) {
-    response = &DissloveRoomResponse{
+func NewDissolveRoomResponse() (response *DissolveRoomResponse) {
+    response = &DissolveRoomResponse{
         BaseResponse: &tchttp.BaseResponse{},
     }
     return
 }
 
 // 接口说明：把房间所有用户从房间踢出，解散房间。
-func (c *Client) DissloveRoom(request *DissloveRoomRequest) (response *DissloveRoomResponse, err error) {
+func (c *Client) DissolveRoom(request *DissolveRoomRequest) (response *DissolveRoomResponse, err error) {
     if request == nil {
-        request = NewDissloveRoomRequest()
+        request = NewDissolveRoomRequest()
     }
-    response = NewDissloveRoomResponse()
+    response = NewDissolveRoomResponse()
     err = c.Send(request, response)
     return
 }

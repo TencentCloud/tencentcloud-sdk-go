@@ -981,7 +981,7 @@ type CreatePullStreamConfigRequest struct {
 	// 1-深圳，
 	// 2-上海，
 	// 3-天津，
-	// 4-香港。
+	// 4-中国香港。
 	AreaId *int64 `json:"AreaId,omitempty" name:"AreaId"`
 
 	// 运营商id：
@@ -1267,15 +1267,15 @@ type DeleteLiveRecordRuleRequest struct {
 	*tchttp.BaseRequest
 
 	// 推流域名。
-	// 域名+AppName+StreamName唯一标识单个转码规则，如需删除需要强匹配，比如AppName为空也需要传空字符串进行强匹配。
+	// 域名+AppName+StreamName唯一标识单个转码规则，如需删除需要强匹配，例如AppName为空也需要传空字符串进行强匹配。
 	DomainName *string `json:"DomainName,omitempty" name:"DomainName"`
 
 	// 推流路径，与推流和播放地址中的AppName保持一致，默认为 live。
-	// 域名+AppName+StreamName唯一标识单个转码规则，如需删除需要强匹配，比如AppName为空也需要传空字符串进行强匹配。
+	// 域名+AppName+StreamName唯一标识单个转码规则，如需删除需要强匹配，例如AppName为空也需要传空字符串进行强匹配。
 	AppName *string `json:"AppName,omitempty" name:"AppName"`
 
 	// 流名称。
-	// 域名+AppName+StreamName唯一标识单个转码规则，如需删除需要强匹配，比如AppName为空也需要传空字符串进行强匹配。
+	// 域名+AppName+StreamName唯一标识单个转码规则，如需删除需要强匹配，例如AppName为空也需要传空字符串进行强匹配。
 	StreamName *string `json:"StreamName,omitempty" name:"StreamName"`
 }
 
@@ -1418,19 +1418,19 @@ type DeleteLiveTranscodeRuleRequest struct {
 	*tchttp.BaseRequest
 
 	// 推流域名。
-	// 域名维度转码，域名+AppName+StreamName唯一标识单个转码规则，如需删除需要强匹配，比如AppName为空也需要传空字符串进行强匹配。
+	// 域名维度转码，域名+AppName+StreamName唯一标识单个转码规则，如需删除需要强匹配，例如AppName为空也需要传空字符串进行强匹配。
 	DomainName *string `json:"DomainName,omitempty" name:"DomainName"`
 
 	// 推流路径，与推流和播放地址中的AppName保持一致，默认为 live。
-	// 域名+AppName+StreamName+TemplateId唯一标识单个转码规则，如需删除需要强匹配，比如AppName为空也需要传空字符串进行强匹配。
+	// 域名+AppName+StreamName+TemplateId唯一标识单个转码规则，如需删除需要强匹配，例如AppName为空也需要传空字符串进行强匹配。
 	AppName *string `json:"AppName,omitempty" name:"AppName"`
 
 	// 流名称。
-	// 域名+AppName+StreamName+TemplateId唯一标识单个转码规则，如需删除需要强匹配，比如AppName为空也需要传空字符串进行强匹配。
+	// 域名+AppName+StreamName+TemplateId唯一标识单个转码规则，如需删除需要强匹配，例如AppName为空也需要传空字符串进行强匹配。
 	StreamName *string `json:"StreamName,omitempty" name:"StreamName"`
 
 	// 模板ID。
-	// 域名+AppName+StreamName+TemplateId唯一标识单个转码规则，如需删除需要强匹配，比如AppName为空也需要传空字符串进行强匹配。
+	// 域名+AppName+StreamName+TemplateId唯一标识单个转码规则，如需删除需要强匹配，例如AppName为空也需要传空字符串进行强匹配。
 	TemplateId *int64 `json:"TemplateId,omitempty" name:"TemplateId"`
 }
 
@@ -3949,6 +3949,9 @@ type DomainInfo struct {
 	// 0：普通直播，
 	// 1：慢直播。
 	IsDelayLive *int64 `json:"IsDelayLive,omitempty" name:"IsDelayLive"`
+
+	// 当前客户使用的cname信息
+	CurrentCName *string `json:"CurrentCName,omitempty" name:"CurrentCName"`
 }
 
 type DomainInfoList struct {
@@ -4083,6 +4086,11 @@ type ForbidLiveStreamRequest struct {
 	// 恢复流的时间。UTC 格式，例如：2018-11-29T19:00:00Z。
 	// 注意：默认禁播90天，且最长支持禁播90天。
 	ResumeTime *string `json:"ResumeTime,omitempty" name:"ResumeTime"`
+
+	// 禁推原因。
+	// 注明：请务必填写禁推原因，防止误操作。
+	// 长度限制：2048字节。
+	Reason *string `json:"Reason,omitempty" name:"Reason"`
 }
 
 func (r *ForbidLiveStreamRequest) ToJsonString() string {
@@ -4144,7 +4152,7 @@ type HlsSpecialParam struct {
 
 type HttpCodeInfo struct {
 
-	// http协议返回码。
+	// HTTP协议返回码。
 	// 例："2xx", "3xx", "4xx", "5xx"。
 	HttpCode *string `json:"HttpCode,omitempty" name:"HttpCode"`
 
@@ -4176,7 +4184,7 @@ type HttpStatusData struct {
 
 type HttpStatusInfo struct {
 
-	// 播放http状态码。
+	// 播放HTTP状态码。
 	HttpStatus *string `json:"HttpStatus,omitempty" name:"HttpStatus"`
 
 	// 个数。
@@ -4693,7 +4701,12 @@ type ModifyPullStreamConfigRequest struct {
 	// 目的Url。
 	ToUrl *string `json:"ToUrl,omitempty" name:"ToUrl"`
 
-	// 区域id,1-深圳,2-上海，3-天津,4-香港。如有改动，需同时传入IspId。
+	// 区域id：
+	// 1-深圳，
+	// 2-上海，
+	// 3-天津，
+	// 4-中国香港。
+	// 如有改动，需同时传入IspId。
 	AreaId *int64 `json:"AreaId,omitempty" name:"AreaId"`
 
 	// 运营商id,1-电信,2-移动,3-联通,4-其他,AreaId为4的时候,IspId只能为其他。如有改动，需同时传入AreaId。
@@ -4798,7 +4811,7 @@ type PlayAuthKeyInfo struct {
 
 type PlayCodeTotalInfo struct {
 
-	// http code，可选值包括400,403,404,500,502,503,504
+	// HTTP code，可选值包括400,403,404,500,502,503,504
 	Code *string `json:"Code,omitempty" name:"Code"`
 
 	// 总次数

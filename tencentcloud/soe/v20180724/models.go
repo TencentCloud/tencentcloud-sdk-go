@@ -213,6 +213,13 @@ type PhoneInfo struct {
 
 	// 当前音节是否应为重音
 	Stress *bool `json:"Stress,omitempty" name:"Stress"`
+
+	// 参考音素，在单词诊断模式下，代表标准
+	// 音素
+	ReferencePhone *string `json:"ReferencePhone,omitempty" name:"ReferencePhone"`
+
+	// 当前词与输入语句的匹配情况，0：匹配单词、1：新增单词、2：缺少单词、3：错读的词、4：未录入单词。
+	MatchTag *int64 `json:"MatchTag,omitempty" name:"MatchTag"`
 }
 
 type SentenceInfo struct {
@@ -452,4 +459,7 @@ type WordRsp struct {
 
 	// 音节评估详情
 	PhoneInfos []*PhoneInfo `json:"PhoneInfos,omitempty" name:"PhoneInfos" list`
+
+	// 参考词，目前为保留字段。
+	ReferenceWord *string `json:"ReferenceWord,omitempty" name:"ReferenceWord"`
 }

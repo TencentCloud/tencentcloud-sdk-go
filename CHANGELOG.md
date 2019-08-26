@@ -3,10 +3,19 @@
 Enhancement:
 
 * Now we have specific errors for:
-    * Network io error: ClientError.IOError, when fail to read response body.
+  If you're checking those errors before (since they have no error type, you might be checking their message), pay attention that these errors are TencentCloudSDKError now.
+    * Network IO error: ClientError.NetworkError, when fail to get response, such as proxy problem, connection timeout. Note that ssl certificate issue is included as well, even though it is not a good choice, we don't have so many cases to handle and neither so much effort to category them.
+
+
+## 3.0.81 (2019-08-12)
+
+Enhancement:
+
+* Now we have specific errors for:
+  If you're checking those errors before (since they have no error type, you might be checking their message), pay attention that these errors are TencentCloudSDKError now.
+    * Network IO error: ClientError.IOError, when fail to read response body.
     * Http status code error: ClientError.HttpStatusCodeError, all non 200 status code will return this error.
     * Json parsing error: ClientError.ParseJsonError, when fail to parse json content from response body.
-  If you're checking those errors before (since they have no error type, you might be checking their message), pay attention that these errors are TencentCloudSDKError now.
 
 ## 3.0.75 (2019-07-26)
 

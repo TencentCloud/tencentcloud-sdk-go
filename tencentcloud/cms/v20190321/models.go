@@ -70,6 +70,67 @@ func (r *AudioModerationResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type CreateFileSampleRequest struct {
+	*tchttp.BaseRequest
+
+	// 文件类型结构数组
+	Contents []*FileSample `json:"Contents,omitempty" name:"Contents" list`
+
+	// 恶意类型
+	// 100：正常
+	// 20001：政治
+	// 20002：色情 
+	// 20006：涉毒违法
+	// 20007：谩骂 
+	// 24001：暴恐
+	// 21000：综合
+	// 20105：广告引流
+	EvilType *int64 `json:"EvilType,omitempty" name:"EvilType"`
+
+	// 文件类型
+	// image：图片
+	// audio：音频
+	// video：视频
+	FileType *string `json:"FileType,omitempty" name:"FileType"`
+
+	// 样本类型
+	// 1：黑库
+	// 2：白库
+	Label *uint64 `json:"Label,omitempty" name:"Label"`
+}
+
+func (r *CreateFileSampleRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateFileSampleRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateFileSampleResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 任务状态
+	// 1：已完成
+	// 2：处理中
+		Progress *uint64 `json:"Progress,omitempty" name:"Progress"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateFileSampleResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateFileSampleResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type CreateTextSampleRequest struct {
 	*tchttp.BaseRequest
 
@@ -125,6 +186,45 @@ func (r *CreateTextSampleResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DeleteFileSampleRequest struct {
+	*tchttp.BaseRequest
+
+	// 唯一标识数组
+	Ids []*string `json:"Ids,omitempty" name:"Ids" list`
+}
+
+func (r *DeleteFileSampleRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteFileSampleRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteFileSampleResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 任务状态
+	// 1：已完成
+	// 2：处理中
+		Progress *uint64 `json:"Progress,omitempty" name:"Progress"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DeleteFileSampleResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteFileSampleResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DeleteTextSampleRequest struct {
 	*tchttp.BaseRequest
 
@@ -161,6 +261,58 @@ func (r *DeleteTextSampleResponse) ToJsonString() string {
 }
 
 func (r *DeleteTextSampleResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeFileSampleRequest struct {
+	*tchttp.BaseRequest
+
+	// 支持通过标签值进行筛选
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+
+	// 数量限制，默认为20，最大值为100
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 偏移量，默认为0
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 升序（asc）还是降序（desc），默认：desc
+	OrderDirection *string `json:"OrderDirection,omitempty" name:"OrderDirection"`
+
+	// 按某个字段排序，目前仅支持CreatedAt排序
+	OrderField *string `json:"OrderField,omitempty" name:"OrderField"`
+}
+
+func (r *DescribeFileSampleRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeFileSampleRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeFileSampleResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 符合要求的样本的信息
+		FileSampleSet []*FileSampleInfo `json:"FileSampleSet,omitempty" name:"FileSampleSet" list`
+
+		// 符合要求的样本的数量
+		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeFileSampleResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeFileSampleResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -259,6 +411,62 @@ func (r *DescribeTextSampleResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type FileSample struct {
+
+	// 文件md5
+	FileMd5 *string `json:"FileMd5,omitempty" name:"FileMd5"`
+
+	// 文件名称
+	FileName *string `json:"FileName,omitempty" name:"FileName"`
+
+	// 文件url
+	FileUrl *string `json:"FileUrl,omitempty" name:"FileUrl"`
+}
+
+type FileSampleInfo struct {
+
+	// 处理错误码
+	Code *int64 `json:"Code,omitempty" name:"Code"`
+
+	// 创建时间戳
+	CreatedAt *uint64 `json:"CreatedAt,omitempty" name:"CreatedAt"`
+
+	// 恶意类型
+	// 100：正常
+	// 20001：政治
+	// 20002：色情 
+	// 20006：涉毒违法
+	// 20007：谩骂 
+	// 24001：暴恐
+	// 21000：综合
+	EvilType *uint64 `json:"EvilType,omitempty" name:"EvilType"`
+
+	// 文件的md5
+	FileMd5 *string `json:"FileMd5,omitempty" name:"FileMd5"`
+
+	// 文件名称
+	FileName *string `json:"FileName,omitempty" name:"FileName"`
+
+	// 文件类型
+	FileType *string `json:"FileType,omitempty" name:"FileType"`
+
+	// 唯一标识
+	Id *string `json:"Id,omitempty" name:"Id"`
+
+	// 样本类型
+	// 1：黑库
+	// 2：白库
+	Label *uint64 `json:"Label,omitempty" name:"Label"`
+
+	// 任务状态
+	// 1：已完成
+	// 2：处理中
+	Status *uint64 `json:"Status,omitempty" name:"Status"`
+
+	// 文件的url
+	FileUrl *string `json:"FileUrl,omitempty" name:"FileUrl"`
+}
+
 type Filter struct {
 
 	// 需要过滤的字段
@@ -279,6 +487,7 @@ type ImageData struct {
 	// 20002：色情 
 	// 20006：涉毒违法
 	// 20007：谩骂 
+	// 20103：性感
 	// 24001：暴恐
 	// 21000：综合
 	EvilType *int64 `json:"EvilType,omitempty" name:"EvilType"`
@@ -288,6 +497,9 @@ type ImageData struct {
 
 	// 图片违法详情
 	IllegalDetect *ImageIllegalDetect `json:"IllegalDetect,omitempty" name:"IllegalDetect"`
+
+	// 图片OCR详情
+	OCRDetect *OCRDetect `json:"OCRDetect,omitempty" name:"OCRDetect"`
 
 	// 图片涉政详情
 	PolityDetect *ImagePolityDetect `json:"PolityDetect,omitempty" name:"PolityDetect"`
@@ -305,13 +517,8 @@ type ImageData struct {
 type ImageHotDetect struct {
 
 	// 恶意类型
-	// 100：正常 
-	// 20001：政治
-	// 20002：色情 
-	// 20006：涉毒违法
-	// 20007：谩骂 
-	// 24001：暴恐
-	// 21000：综合
+	// 100：正常
+	// 20103：性感
 	EvilType *int64 `json:"EvilType,omitempty" name:"EvilType"`
 
 	// 处置判定 0：正常 1：可疑
@@ -331,12 +538,7 @@ type ImageIllegalDetect struct {
 
 	// 恶意类型
 	// 100：正常 
-	// 20001：政治
-	// 20002：色情 
 	// 20006：涉毒违法
-	// 20007：谩骂 
-	// 24001：暴恐
-	// 21000：综合
 	EvilType *int64 `json:"EvilType,omitempty" name:"EvilType"`
 
 	// 处置判定 0：正常 1：可疑
@@ -403,11 +605,6 @@ type ImagePolityDetect struct {
 	// 恶意类型
 	// 100：正常 
 	// 20001：政治
-	// 20002：色情 
-	// 20006：涉毒违法
-	// 20007：谩骂 
-	// 24001：暴恐
-	// 21000：综合
 	EvilType *int64 `json:"EvilType,omitempty" name:"EvilType"`
 
 	// 处置判定  0：正常 1：可疑
@@ -429,13 +626,8 @@ type ImagePolityDetect struct {
 type ImagePornDetect struct {
 
 	// 恶意类型
-	// 100：正常 
-	// 20001：政治
-	// 20002：色情 
-	// 20006：涉毒违法
-	// 20007：谩骂 
-	// 24001：暴恐
-	// 21000：综合
+	// 100：正常
+	// 20002：色情
 	EvilType *int64 `json:"EvilType,omitempty" name:"EvilType"`
 
 	// 处置判定 0：正常 1：可疑
@@ -454,13 +646,8 @@ type ImagePornDetect struct {
 type ImageTerrorDetect struct {
 
 	// 恶意类型
-	// 100：正常 
-	// 20001：政治
-	// 20002：色情 
-	// 20006：涉毒违法
-	// 20007：谩骂 
+	// 100：正常
 	// 24001：暴恐
-	// 21000：综合
 	EvilType *int64 `json:"EvilType,omitempty" name:"EvilType"`
 
 	// 处置判定 0：正常 1：可疑
@@ -474,6 +661,12 @@ type ImageTerrorDetect struct {
 
 	// 暴恐分：分值范围0--100，分数越高暴恐倾向越明显
 	Score *int64 `json:"Score,omitempty" name:"Score"`
+}
+
+type OCRDetect struct {
+
+	// 识别到的文本信息
+	TextInfo *string `json:"TextInfo,omitempty" name:"TextInfo"`
 }
 
 type OverviewRecord struct {
@@ -520,7 +713,8 @@ type TextData struct {
 	// 20001：政治
 	// 20002：色情 
 	// 20006：涉毒违法
-	// 20007：谩骂 
+	// 20007：谩骂
+	// 20105：广告引流 
 	// 24001：暴恐
 	// 21000：综合
 	EvilType *int64 `json:"EvilType,omitempty" name:"EvilType"`

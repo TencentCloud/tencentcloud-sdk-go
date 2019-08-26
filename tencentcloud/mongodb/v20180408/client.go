@@ -119,6 +119,31 @@ func (c *Client) CreateDBInstanceHour(request *CreateDBInstanceHourRequest) (res
     return
 }
 
+func NewDescribeClientConnectionsRequest() (request *DescribeClientConnectionsRequest) {
+    request = &DescribeClientConnectionsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("mongodb", APIVersion, "DescribeClientConnections")
+    return
+}
+
+func NewDescribeClientConnectionsResponse() (response *DescribeClientConnectionsResponse) {
+    response = &DescribeClientConnectionsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口(DescribeClientConnections)用于查询实例客户端连接信息，包括连接IP和连接数量。目前只支持3.2版本的MongoDB实例。
+func (c *Client) DescribeClientConnections(request *DescribeClientConnectionsRequest) (response *DescribeClientConnectionsResponse, err error) {
+    if request == nil {
+        request = NewDescribeClientConnectionsRequest()
+    }
+    response = NewDescribeClientConnectionsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeDBInstancesRequest() (request *DescribeDBInstancesRequest) {
     request = &DescribeDBInstancesRequest{
         BaseRequest: &tchttp.BaseRequest{},

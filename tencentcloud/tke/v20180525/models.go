@@ -113,7 +113,7 @@ type ClusterAdvancedSettings struct {
 	// 是否启用IPVS
 	IPVS *bool `json:"IPVS,omitempty" name:"IPVS"`
 
-	// 是否启用集群节点扩缩容
+	// 是否启用集群节点自动扩缩容(创建集群流程不支持开启此功能)
 	AsEnabled *bool `json:"AsEnabled,omitempty" name:"AsEnabled"`
 
 	// 集群使用的runtime类型，包括"docker"和"containerd"两种类型，默认为"docker"
@@ -278,6 +278,89 @@ func (r *CreateClusterResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type CreateClusterRouteRequest struct {
+	*tchttp.BaseRequest
+
+	// 路由表名称。
+	RouteTableName *string `json:"RouteTableName,omitempty" name:"RouteTableName"`
+
+	// 目的端CIDR。
+	DestinationCidrBlock *string `json:"DestinationCidrBlock,omitempty" name:"DestinationCidrBlock"`
+
+	// 下一跳地址。
+	GatewayIp *string `json:"GatewayIp,omitempty" name:"GatewayIp"`
+}
+
+func (r *CreateClusterRouteRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateClusterRouteRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateClusterRouteResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateClusterRouteResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateClusterRouteResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateClusterRouteTableRequest struct {
+	*tchttp.BaseRequest
+
+	// 路由表名称
+	RouteTableName *string `json:"RouteTableName,omitempty" name:"RouteTableName"`
+
+	// 路由表CIDR
+	RouteTableCidrBlock *string `json:"RouteTableCidrBlock,omitempty" name:"RouteTableCidrBlock"`
+
+	// 路由表绑定的VPC
+	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
+
+	// 是否忽略CIDR冲突
+	IgnoreClusterCidrConflict *int64 `json:"IgnoreClusterCidrConflict,omitempty" name:"IgnoreClusterCidrConflict"`
+}
+
+func (r *CreateClusterRouteTableRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateClusterRouteTableRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateClusterRouteTableResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateClusterRouteTableResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateClusterRouteTableResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DeleteClusterInstancesRequest struct {
 	*tchttp.BaseRequest
 
@@ -355,6 +438,80 @@ func (r *DeleteClusterResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DeleteClusterRouteRequest struct {
+	*tchttp.BaseRequest
+
+	// 路由表名称。
+	RouteTableName *string `json:"RouteTableName,omitempty" name:"RouteTableName"`
+
+	// 下一跳地址。
+	GatewayIp *string `json:"GatewayIp,omitempty" name:"GatewayIp"`
+
+	// 目的端CIDR。
+	DestinationCidrBlock *string `json:"DestinationCidrBlock,omitempty" name:"DestinationCidrBlock"`
+}
+
+func (r *DeleteClusterRouteRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteClusterRouteRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteClusterRouteResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DeleteClusterRouteResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteClusterRouteResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteClusterRouteTableRequest struct {
+	*tchttp.BaseRequest
+
+	// 路由表名称
+	RouteTableName *string `json:"RouteTableName,omitempty" name:"RouteTableName"`
+}
+
+func (r *DeleteClusterRouteTableRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteClusterRouteTableRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteClusterRouteTableResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DeleteClusterRouteTableResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteClusterRouteTableResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeClusterInstancesRequest struct {
 	*tchttp.BaseRequest
 
@@ -401,6 +558,83 @@ func (r *DescribeClusterInstancesResponse) ToJsonString() string {
 }
 
 func (r *DescribeClusterInstancesResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeClusterRouteTablesRequest struct {
+	*tchttp.BaseRequest
+}
+
+func (r *DescribeClusterRouteTablesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeClusterRouteTablesRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeClusterRouteTablesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 符合条件的实例数量。
+		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 集群路由表对象。
+		RouteTableSet []*RouteTableInfo `json:"RouteTableSet,omitempty" name:"RouteTableSet" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeClusterRouteTablesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeClusterRouteTablesResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeClusterRoutesRequest struct {
+	*tchttp.BaseRequest
+
+	// 路由表名称。
+	RouteTableName *string `json:"RouteTableName,omitempty" name:"RouteTableName"`
+}
+
+func (r *DescribeClusterRoutesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeClusterRoutesRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeClusterRoutesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 符合条件的实例数量。
+		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 集群路由对象。
+		RouteSet []*RouteInfo `json:"RouteSet,omitempty" name:"RouteSet" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeClusterRoutesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeClusterRoutesResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -519,7 +753,7 @@ type DescribeExistedInstancesRequest struct {
 	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds" list`
 
 	// 过滤条件,字段和详见[CVM查询实例](https://cloud.tencent.com/document/api/213/15728)如果设置了ClusterId，会附加集群的VPCID作为查询字段，在此情况下如果在Filter中指定了"vpc-id"作为过滤字段，指定的VPCID必须与集群的VPCID相同。
-	Filters *Filter `json:"Filters,omitempty" name:"Filters"`
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
 
 	// 实例IP进行过滤(同时支持内网IP和外网IP)
 	VagueIpAddress *string `json:"VagueIpAddress,omitempty" name:"VagueIpAddress"`
@@ -565,6 +799,50 @@ func (r *DescribeExistedInstancesResponse) ToJsonString() string {
 }
 
 func (r *DescribeExistedInstancesResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeRouteTableConflictsRequest struct {
+	*tchttp.BaseRequest
+
+	// 路由表CIDR
+	RouteTableCidrBlock *string `json:"RouteTableCidrBlock,omitempty" name:"RouteTableCidrBlock"`
+
+	// 路由表绑定的VPC
+	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
+}
+
+func (r *DescribeRouteTableConflictsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeRouteTableConflictsRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeRouteTableConflictsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 路由表是否冲突。
+		HasConflict *bool `json:"HasConflict,omitempty" name:"HasConflict"`
+
+		// 路由表冲突列表。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		RouteTableConflictSet []*RouteTableConflict `json:"RouteTableConflictSet,omitempty" name:"RouteTableConflictSet" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeRouteTableConflictsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeRouteTableConflictsResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -713,6 +991,48 @@ type LoginSettings struct {
 	// 保持镜像的原始设置。该参数与Password或KeyIds.N不能同时指定。只有使用自定义镜像、共享镜像或外部导入镜像创建实例时才能指定该参数为TRUE。取值范围：<br><li>TRUE：表示保持镜像的登录设置<br><li>FALSE：表示不保持镜像的登录设置<br><br>默认取值：FALSE。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	KeepImageLogin *string `json:"KeepImageLogin,omitempty" name:"KeepImageLogin"`
+}
+
+type RouteInfo struct {
+
+	// 路由表名称。
+	RouteTableName *string `json:"RouteTableName,omitempty" name:"RouteTableName"`
+
+	// 目的端CIDR。
+	DestinationCidrBlock *string `json:"DestinationCidrBlock,omitempty" name:"DestinationCidrBlock"`
+
+	// 下一跳地址。
+	GatewayIp *string `json:"GatewayIp,omitempty" name:"GatewayIp"`
+}
+
+type RouteTableConflict struct {
+
+	// 路由表类型。
+	RouteTableType *string `json:"RouteTableType,omitempty" name:"RouteTableType"`
+
+	// 路由表CIDR。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RouteTableCidrBlock *string `json:"RouteTableCidrBlock,omitempty" name:"RouteTableCidrBlock"`
+
+	// 路由表名称。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RouteTableName *string `json:"RouteTableName,omitempty" name:"RouteTableName"`
+
+	// 路由表ID。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RouteTableId *string `json:"RouteTableId,omitempty" name:"RouteTableId"`
+}
+
+type RouteTableInfo struct {
+
+	// 路由表名称。
+	RouteTableName *string `json:"RouteTableName,omitempty" name:"RouteTableName"`
+
+	// 路由表CIDR。
+	RouteTableCidrBlock *string `json:"RouteTableCidrBlock,omitempty" name:"RouteTableCidrBlock"`
+
+	// VPC实例ID。
+	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
 }
 
 type RunInstancesForNode struct {

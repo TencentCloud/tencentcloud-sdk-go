@@ -35,6 +35,9 @@ type AIAssistantRequest struct {
 	// 查询人员库列表
 	LibrarySet []*string `json:"LibrarySet,omitempty" name:"LibrarySet" list`
 
+	// 直播流评估时间，在FileType为live_url时生效，默认值为10分钟。
+	MaxVideoDuration *int64 `json:"MaxVideoDuration,omitempty" name:"MaxVideoDuration"`
+
 	// 标准化模板选择：0：AI助教基础版本，1：AI评教基础版本，2：AI评教标准版本。AI 助教基础版本功能包括：人脸检索、人脸检测、人脸表情识别、学生动作选项，音频信息分析，微笑识别。AI 评教基础版本功能包括：人脸检索、人脸检测、人脸表情识别、音频信息分析。AI 评教标准版功能包括人脸检索、人脸检测、人脸表情识别、手势识别、音频信息分析、音频关键词分析、视频精彩集锦分析。
 	Template *int64 `json:"Template,omitempty" name:"Template"`
 
@@ -253,67 +256,6 @@ func (r *CancelTaskResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
-type CheckAttendanceRequest struct {
-	*tchttp.BaseRequest
-
-	// 输入数据
-	FileContent *string `json:"FileContent,omitempty" name:"FileContent"`
-
-	// 输入类型，picture_url:图片，vod_url:视频文件
-	FileType *string `json:"FileType,omitempty" name:"FileType"`
-
-	// 人员库 ID
-	LibraryId *string `json:"LibraryId,omitempty" name:"LibraryId"`
-
-	// 人员 ID 列表
-	PersonIdSet []*string `json:"PersonIdSet,omitempty" name:"PersonIdSet" list`
-
-	// 确定出勤阀值；默认为0.92
-	AttendanceThreshold *float64 `json:"AttendanceThreshold,omitempty" name:"AttendanceThreshold"`
-
-	// 考勤结束时间（到视频的第几秒结束考勤），单位秒；默认为900
-	EndTime *int64 `json:"EndTime,omitempty" name:"EndTime"`
-
-	// 考勤开始时间（从视频的第几秒开始考勤），单位秒；默认为0
-	StartTime *int64 `json:"StartTime,omitempty" name:"StartTime"`
-
-	// 识别阈值；默认为0.7
-	Threshold *float64 `json:"Threshold,omitempty" name:"Threshold"`
-}
-
-func (r *CheckAttendanceRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-func (r *CheckAttendanceRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
-}
-
-type CheckAttendanceResponse struct {
-	*tchttp.BaseResponse
-	Response *struct {
-
-		// 任务标识符
-		JobId *int64 `json:"JobId,omitempty" name:"JobId"`
-
-		// 没有注册的人的ID列表
-		NotRegisteredSet []*string `json:"NotRegisteredSet,omitempty" name:"NotRegisteredSet" list`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
-}
-
-func (r *CheckAttendanceResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-func (r *CheckAttendanceResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
-}
-
 type CheckFacePhotoRequest struct {
 	*tchttp.BaseRequest
 
@@ -452,6 +394,9 @@ type CreatePersonRequest struct {
 	// 人员名称
 	PersonName *string `json:"PersonName,omitempty" name:"PersonName"`
 
+	// 图片数据 base64 字符串，与 Urls 参数选择一个输入
+	Images []*string `json:"Images,omitempty" name:"Images" list`
+
 	// 人员工作号码
 	JobNumber *string `json:"JobNumber,omitempty" name:"JobNumber"`
 
@@ -469,6 +414,9 @@ type CreatePersonRequest struct {
 
 	// 人员学生号码
 	StudentNumber *string `json:"StudentNumber,omitempty" name:"StudentNumber"`
+
+	// 图片下载地址，与 Images 参数选择一个输入
+	Urls []*string `json:"Urls,omitempty" name:"Urls" list`
 }
 
 func (r *CreatePersonRequest) ToJsonString() string {
@@ -483,6 +431,9 @@ func (r *CreatePersonRequest) FromJsonString(s string) error {
 type CreatePersonResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
+
+		// 人脸操作结果信息
+		FaceInfoSet []*FaceInfo `json:"FaceInfoSet,omitempty" name:"FaceInfoSet" list`
 
 		// 人员库唯一标识符
 		LibraryId *string `json:"LibraryId,omitempty" name:"LibraryId"`
@@ -684,6 +635,9 @@ type DeletePersonResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
+		// 人脸信息
+		FaceInfoSet []*FaceInfo `json:"FaceInfoSet,omitempty" name:"FaceInfoSet" list`
+
 		// 人员库唯一标识符
 		LibraryId *string `json:"LibraryId,omitempty" name:"LibraryId"`
 
@@ -812,6 +766,9 @@ type DescribeAITaskResultResponse struct {
 
 		// 视频分析结果
 		VideoResult *StandardVideoResult `json:"VideoResult,omitempty" name:"VideoResult"`
+
+		// 任务状态
+		Status *string `json:"Status,omitempty" name:"Status"`
 
 		// 任务唯一id。在URL方式时提交请求后会返回一个jobid，后续查询该url的结果时使用这个jobid进行查询。
 		TaskId *int64 `json:"TaskId,omitempty" name:"TaskId"`
@@ -1383,14 +1340,17 @@ type DoubleVideoFunction struct {
 
 type ExpressRatioStatistic struct {
 
+	// 出现次数
+	Count *int64 `json:"Count,omitempty" name:"Count"`
+
 	// 表情
 	Express *string `json:"Express,omitempty" name:"Express"`
 
-	// 表情所占比例
+	// 该表情时长占所有表情时长的比例
 	Ratio *float64 `json:"Ratio,omitempty" name:"Ratio"`
 
-	// 出现次数
-	Count *int64 `json:"Count,omitempty" name:"Count"`
+	// 该表情时长占视频总时长的比例
+	RatioUseDuration *float64 `json:"RatioUseDuration,omitempty" name:"RatioUseDuration"`
 }
 
 type Face struct {
@@ -1679,6 +1639,9 @@ type ImageTaskFunction struct {
 
 	// 教师动作选项（该功能尚未支持）
 	EnableTeacherBodyMovements *bool `json:"EnableTeacherBodyMovements,omitempty" name:"EnableTeacherBodyMovements"`
+
+	// 判断老师是否在屏幕中
+	EnableTeacherOutScreen *bool `json:"EnableTeacherOutScreen,omitempty" name:"EnableTeacherOutScreen"`
 }
 
 type ImageTaskResult struct {
@@ -1715,6 +1678,9 @@ type ImageTaskResult struct {
 
 	// 老师肢体动作识别结果
 	TeacherBodyMovement *BodyMovementResult `json:"TeacherBodyMovement,omitempty" name:"TeacherBodyMovement"`
+
+	// 教师是否在屏幕内判断结果
+	TeacherOutScreen *TeacherOutScreenResult `json:"TeacherOutScreen,omitempty" name:"TeacherOutScreen"`
 
 	// 时间统计结果
 	TimeInfo *TimeInfoResult `json:"TimeInfo,omitempty" name:"TimeInfo"`
@@ -2043,7 +2009,7 @@ type SubmitAudioTaskRequest struct {
 	// 功能开关列表，表示是否需要打开相应的功能，返回相应的信息
 	Functions *Function `json:"Functions,omitempty" name:"Functions"`
 
-	// 视频文件类型，默认点播，直播天 live_url
+	// 视频文件类型，默认点播，直播填 live_url
 	FileType *string `json:"FileType,omitempty" name:"FileType"`
 
 	// 识别词库名列表，评估过程使用这些词汇库中的词汇进行词汇使用行为分析
@@ -2092,10 +2058,10 @@ type SubmitCheckAttendanceTaskRequest struct {
 	// 人员库 ID列表
 	LibraryIds []*string `json:"LibraryIds,omitempty" name:"LibraryIds" list`
 
-	// 确定出勤阀值；默认为0.92
+	// 确定出勤阈值；默认为0.92
 	AttendanceThreshold *float64 `json:"AttendanceThreshold,omitempty" name:"AttendanceThreshold"`
 
-	// 是否开启陌生人模式，开启后才会推送陌生人事件，默认不开启
+	// 是否开启陌生人模式，陌生人模式是指在任务中发现的非注册人脸库中的人脸也返回相关统计信息，默认不开启
 	EnableStranger *bool `json:"EnableStranger,omitempty" name:"EnableStranger"`
 
 	// 考勤结束时间（到视频的第几秒结束考勤），单位秒；默认为900 
@@ -2262,6 +2228,67 @@ func (r *SubmitDoubleVideoHighlightsResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type SubmitFullBodyClassTaskRequest struct {
+	*tchttp.BaseRequest
+
+	// 输入分析对象内容
+	FileContent *string `json:"FileContent,omitempty" name:"FileContent"`
+
+	// 输入分析对象类型，picture_url:图片地址，vod_url:视频地址，live_url：直播地址，picture: 图片二进制数据的BASE64编码
+	FileType *string `json:"FileType,omitempty" name:"FileType"`
+
+	// 音频源的语言，默认0为英文，1为中文
+	Lang *int64 `json:"Lang,omitempty" name:"Lang"`
+
+	// 查询人员库列表，可填写老师的注册照所在人员库
+	LibrarySet []*string `json:"LibrarySet,omitempty" name:"LibrarySet" list`
+
+	// 直播流评估时间，在FileType为live_url时生效，默认值为10分钟。
+	MaxVideoDuration *int64 `json:"MaxVideoDuration,omitempty" name:"MaxVideoDuration"`
+
+	// 识别词库名列表，这些词汇库用来维护关键词，评估老师授课过程中，对这些关键词的使用情况
+	VocabLibNameList []*string `json:"VocabLibNameList,omitempty" name:"VocabLibNameList" list`
+
+	// 语音编码类型 1:pcm，当FileType为vod_url或live_url时为必填
+	VoiceEncodeType *int64 `json:"VoiceEncodeType,omitempty" name:"VoiceEncodeType"`
+
+	// 语音文件类型 10:视频（三种音频格式目前仅支持16k采样率16bit），当FileType为vod_url或live_url时为必填
+	VoiceFileType *int64 `json:"VoiceFileType,omitempty" name:"VoiceFileType"`
+}
+
+func (r *SubmitFullBodyClassTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *SubmitFullBodyClassTaskRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type SubmitFullBodyClassTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 图像任务直接返回结果，包括： FaceAttr、 FaceExpression、 FaceIdentify、 FaceInfo、 FacePose、 TeacherBodyMovement、TimeInfo
+		ImageResults []*ImageTaskResult `json:"ImageResults,omitempty" name:"ImageResults" list`
+
+		// 任务ID
+		TaskId *int64 `json:"TaskId,omitempty" name:"TaskId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *SubmitFullBodyClassTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *SubmitFullBodyClassTaskResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type SubmitHighlightsRequest struct {
 	*tchttp.BaseRequest
 
@@ -2390,6 +2417,226 @@ func (r *SubmitImageTaskResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type SubmitOneByOneClassTaskRequest struct {
+	*tchttp.BaseRequest
+
+	// 输入分析对象内容
+	FileContent *string `json:"FileContent,omitempty" name:"FileContent"`
+
+	// 输入分析对象类型，picture_url:图片地址，vod_url:视频地址，live_url：直播地址，picture: 图片二进制数据的BASE64编码
+	FileType *string `json:"FileType,omitempty" name:"FileType"`
+
+	// 音频源的语言，默认0为英文，1为中文 
+	Lang *int64 `json:"Lang,omitempty" name:"Lang"`
+
+	// 查询人员库列表，可填写学生的注册照所在人员库
+	LibrarySet []*string `json:"LibrarySet,omitempty" name:"LibrarySet" list`
+
+	// 直播流评估时间，在FileType为live_url时生效，默认值为10分钟。
+	MaxVideoDuration *int64 `json:"MaxVideoDuration,omitempty" name:"MaxVideoDuration"`
+
+	// 识别词库名列表，这些词汇库用来维护关键词，评估学生对这些关键词的使用情况
+	VocabLibNameList []*string `json:"VocabLibNameList,omitempty" name:"VocabLibNameList" list`
+
+	// 语音编码类型 1:pcm，当FileType为vod_url或live_url时为必填
+	VoiceEncodeType *int64 `json:"VoiceEncodeType,omitempty" name:"VoiceEncodeType"`
+
+	// 语音文件类型10:视频（三种音频格式目前仅支持16k采样率16bit），当FileType为vod_url或live_url时为必填
+	VoiceFileType *int64 `json:"VoiceFileType,omitempty" name:"VoiceFileType"`
+}
+
+func (r *SubmitOneByOneClassTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *SubmitOneByOneClassTaskRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type SubmitOneByOneClassTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 图像任务直接返回结果，包括：FaceAttr、 FaceExpression、 FaceIdentify、 FaceInfo、 FacePose、TimeInfo
+		ImageResults []*ImageTaskResult `json:"ImageResults,omitempty" name:"ImageResults" list`
+
+		// 任务ID
+		TaskId *int64 `json:"TaskId,omitempty" name:"TaskId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *SubmitOneByOneClassTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *SubmitOneByOneClassTaskResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type SubmitOpenClassTaskRequest struct {
+	*tchttp.BaseRequest
+
+	// 输入分析对象内容
+	FileContent *string `json:"FileContent,omitempty" name:"FileContent"`
+
+	// 输入分析对象类型，picture_url:图片地址，vod_url:视频地址，live_url：直播地址,picture: 图片二进制数据的BASE64编码
+	FileType *string `json:"FileType,omitempty" name:"FileType"`
+
+	// 查询人员库列表，可填写学生们的注册照所在人员库
+	LibrarySet []*string `json:"LibrarySet,omitempty" name:"LibrarySet" list`
+
+	// 直播流评估时间，在FileType为live_url时生效，默认值为10分钟。
+	MaxVideoDuration *int64 `json:"MaxVideoDuration,omitempty" name:"MaxVideoDuration"`
+}
+
+func (r *SubmitOpenClassTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *SubmitOpenClassTaskRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type SubmitOpenClassTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 图像任务直接返回结果，包括：FaceAttr、 FaceExpression、 FaceIdentify、 FaceInfo、 FacePose、 StudentBodyMovement、TimeInfo
+		ImageResults []*ImageTaskResult `json:"ImageResults,omitempty" name:"ImageResults" list`
+
+		// 任务ID
+		TaskId *int64 `json:"TaskId,omitempty" name:"TaskId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *SubmitOpenClassTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *SubmitOpenClassTaskResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type SubmitPartialBodyClassTaskRequest struct {
+	*tchttp.BaseRequest
+
+	// 输入分析对象内容
+	FileContent *string `json:"FileContent,omitempty" name:"FileContent"`
+
+	// 输入分析对象类型，picture_url:图片地址，vod_url:视频地址，live_url：直播地址，picture: 图片二进制数据的BASE64编码
+	FileType *string `json:"FileType,omitempty" name:"FileType"`
+
+	// 音频源的语言，默认0为英文，1为中文
+	Lang *int64 `json:"Lang,omitempty" name:"Lang"`
+
+	// 查询人员库列表，可填写老师的注册照所在人员库
+	LibrarySet []*string `json:"LibrarySet,omitempty" name:"LibrarySet" list`
+
+	// 直播流评估时间，在FileType为live_url时生效，默认值为10分钟。
+	MaxVideoDuration *int64 `json:"MaxVideoDuration,omitempty" name:"MaxVideoDuration"`
+
+	// 识别词库名列表，这些词汇库用来维护关键词，评估老师授课过程中，对这些关键词的使用情况
+	VocabLibNameList []*string `json:"VocabLibNameList,omitempty" name:"VocabLibNameList" list`
+
+	// 语音编码类型 1:pcm，当FileType为vod_url或live_url时为必填
+	VoiceEncodeType *int64 `json:"VoiceEncodeType,omitempty" name:"VoiceEncodeType"`
+
+	// 语音文件类型 10:视频（三种音频格式目前仅支持16k采样率16bit），当FileType为vod_url或live_url时为必填
+	VoiceFileType *int64 `json:"VoiceFileType,omitempty" name:"VoiceFileType"`
+}
+
+func (r *SubmitPartialBodyClassTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *SubmitPartialBodyClassTaskRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type SubmitPartialBodyClassTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 图像任务直接返回结果，包括： FaceAttr、 FaceExpression、 FaceIdentify、 FaceInfo、 FacePose、 Gesture 、 Light、 TimeInfo
+		ImageResults []*ImageTaskResult `json:"ImageResults,omitempty" name:"ImageResults" list`
+
+		// 任务ID
+		TaskId *int64 `json:"TaskId,omitempty" name:"TaskId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *SubmitPartialBodyClassTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *SubmitPartialBodyClassTaskResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type SubmitTraditionalClassTaskRequest struct {
+	*tchttp.BaseRequest
+
+	// 输入分析对象内容，仅支持url，暂不支持直接上传base64图片
+	FileContent *string `json:"FileContent,omitempty" name:"FileContent"`
+
+	// 输入分析对象类型，picture_url:图片地址，vod_url:视频地址，live_url：直播地址
+	FileType *string `json:"FileType,omitempty" name:"FileType"`
+
+	// 查询人员库列表，可填写学生们的注册照所在人员库
+	LibrarySet []*string `json:"LibrarySet,omitempty" name:"LibrarySet" list`
+
+	// 直播流评估时间，在FileType为live_url时生效，默认值为10分钟。
+	MaxVideoDuration *int64 `json:"MaxVideoDuration,omitempty" name:"MaxVideoDuration"`
+}
+
+func (r *SubmitTraditionalClassTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *SubmitTraditionalClassTaskRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type SubmitTraditionalClassTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 图像任务直接返回结果，包括： ActionInfo、FaceAttr、 FaceExpression、 FaceIdentify、 FaceInfo、 FacePose、 TimeInfo
+		ImageResults []*ImageTaskResult `json:"ImageResults,omitempty" name:"ImageResults" list`
+
+		// 任务ID
+		TaskId *int64 `json:"TaskId,omitempty" name:"TaskId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *SubmitTraditionalClassTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *SubmitTraditionalClassTaskResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type SuspectedInfo struct {
 
 	// TopN匹配信息列表
@@ -2397,6 +2644,24 @@ type SuspectedInfo struct {
 
 	// 识别到的人员id
 	PersonId *string `json:"PersonId,omitempty" name:"PersonId"`
+}
+
+type TeacherOutScreenResult struct {
+
+	// 动作识别结果
+	Class *string `json:"Class,omitempty" name:"Class"`
+
+	// 识别结果高度
+	Height *int64 `json:"Height,omitempty" name:"Height"`
+
+	// 识别结果左坐标
+	Left *int64 `json:"Left,omitempty" name:"Left"`
+
+	// 识别结果顶坐标
+	Top *int64 `json:"Top,omitempty" name:"Top"`
+
+	// 识别结果宽度
+	Width *int64 `json:"Width,omitempty" name:"Width"`
 }
 
 type TextItem struct {
@@ -2471,6 +2736,9 @@ type TransmitAudioStreamRequest struct {
 	// 音频源的语言，默认0为英文，1为中文
 	Lang *int64 `json:"Lang,omitempty" name:"Lang"`
 
+	// 是否临时保存 音频链接
+	StorageMode *int64 `json:"StorageMode,omitempty" name:"StorageMode"`
+
 	// 识别词库名列表，评估过程使用这些词汇库中的词汇进行词汇使用行为分析
 	VocabLibNameList []*string `json:"VocabLibNameList,omitempty" name:"VocabLibNameList" list`
 }
@@ -2502,6 +2770,9 @@ type TransmitAudioStreamResponse struct {
 
 		// 音频全部文本。
 		AllTexts *string `json:"AllTexts,omitempty" name:"AllTexts"`
+
+		// 临时保存的音频链接
+		AudioUrl *string `json:"AudioUrl,omitempty" name:"AudioUrl"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`

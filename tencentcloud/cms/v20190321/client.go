@@ -59,11 +59,58 @@ func NewAudioModerationResponse() (response *AudioModerationResponse) {
 }
 
 // 音频内容检测（Audio Moderation, AM）服务使用了波形分析、声纹分析等技术，能识别涉黄、涉政、涉恐等违规音频，同时支持用户配置音频黑库，打击自定义的违规内容。
+// 
+// <br>
+// 接口返回值说明：调用本接口有两个返回值，一个是同步返回值，一个是识别完成后的异步回调返回值。
+// 
+// 音频识别结果存在于异步回调返回值中，异步回调返回值明细：
+// 
+// 参数名 | 类型 | 描述
+// -|-|-
+// SeqID | String | 请求seqId唯一标识
+// EvilFlag | Integer | 是否恶意：0正常，1可疑（Homology模块下：0未匹配到，1恶意，2白样本）
+// EvilType | Integer | 恶意类型：100正常，20001政治，20002色情，20007谩骂
+// Duration | Integer | 音频时长（单位：毫秒）
+// PornDetect | | 音频智能鉴黄
+// PolityDetect | | 音频涉政识别
+// CurseDetect | | 音频谩骂识别
+// Homology | | 相似度识别
+// HitFlag | Integer | 0正常，1可疑
+// Score | Integer | 判断分值
+// Keywords | Array of String | 关键词明细
+// StartTime | Array of String | 恶意开始时间
+// EndTime | Array of String | 恶意结束时间
+// SeedUrl | String | 命中的种子URL
 func (c *Client) AudioModeration(request *AudioModerationRequest) (response *AudioModerationResponse, err error) {
     if request == nil {
         request = NewAudioModerationRequest()
     }
     response = NewAudioModerationResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateFileSampleRequest() (request *CreateFileSampleRequest) {
+    request = &CreateFileSampleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cms", APIVersion, "CreateFileSample")
+    return
+}
+
+func NewCreateFileSampleResponse() (response *CreateFileSampleResponse) {
+    response = &CreateFileSampleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 通过该接口可以将文件新增到样本库
+func (c *Client) CreateFileSample(request *CreateFileSampleRequest) (response *CreateFileSampleResponse, err error) {
+    if request == nil {
+        request = NewCreateFileSampleRequest()
+    }
+    response = NewCreateFileSampleResponse()
     err = c.Send(request, response)
     return
 }
@@ -93,6 +140,31 @@ func (c *Client) CreateTextSample(request *CreateTextSampleRequest) (response *C
     return
 }
 
+func NewDeleteFileSampleRequest() (request *DeleteFileSampleRequest) {
+    request = &DeleteFileSampleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cms", APIVersion, "DeleteFileSample")
+    return
+}
+
+func NewDeleteFileSampleResponse() (response *DeleteFileSampleResponse) {
+    response = &DeleteFileSampleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 删除文件样本库，支持批量删除，一次提交不超过20个
+func (c *Client) DeleteFileSample(request *DeleteFileSampleRequest) (response *DeleteFileSampleResponse, err error) {
+    if request == nil {
+        request = NewDeleteFileSampleRequest()
+    }
+    response = NewDeleteFileSampleResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteTextSampleRequest() (request *DeleteTextSampleRequest) {
     request = &DeleteTextSampleRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -114,6 +186,31 @@ func (c *Client) DeleteTextSample(request *DeleteTextSampleRequest) (response *D
         request = NewDeleteTextSampleRequest()
     }
     response = NewDeleteTextSampleResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeFileSampleRequest() (request *DescribeFileSampleRequest) {
+    request = &DescribeFileSampleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cms", APIVersion, "DescribeFileSample")
+    return
+}
+
+func NewDescribeFileSampleResponse() (response *DescribeFileSampleResponse) {
+    response = &DescribeFileSampleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询文件样本库，支持批量查询
+func (c *Client) DescribeFileSample(request *DescribeFileSampleRequest) (response *DescribeFileSampleResponse, err error) {
+    if request == nil {
+        request = NewDescribeFileSampleRequest()
+    }
+    response = NewDescribeFileSampleResponse()
     err = c.Send(request, response)
     return
 }
@@ -234,6 +331,24 @@ func NewVideoModerationResponse() (response *VideoModerationResponse) {
 }
 
 // 视频内容检测（Video Moderation, VM）服务能识别涉黄、涉政、涉恐等违规视频，同时支持用户配置视频黑库，打击自定义的违规内容。
+// 
+// <br>
+// 接口返回值说明：调用本接口有两个返回值，一个是同步返回值，一个是识别完成后的异步回调返回值。
+// 
+// 视频识别结果存在于异步回调返回值中，异步回调返回值明细：
+// 
+// 参数名 | 类型 | 描述
+// -|-|-
+// SeqID | String | 请求seqId唯一标识
+// EvilFlag | Integer | 是否恶意：0正常，1可疑（Homology模块下：0未匹配到，1恶意，2白样本）
+// EvilType | Integer | 恶意类型：100正常，20001政治，20002色情
+// Duration | Integer | 视频时长（单位：秒）
+// PornDetect |  | 视频智能鉴黄
+// PolityDetect | | 视频涉政识别
+// Homology | | 相似度识别
+// HitFlag | Integer  | 0正常，1可疑
+// Score | Integer | 判断分值
+// SeedUrl | String | 命中的种子URL
 func (c *Client) VideoModeration(request *VideoModerationRequest) (response *VideoModerationResponse, err error) {
     if request == nil {
         request = NewVideoModerationRequest()

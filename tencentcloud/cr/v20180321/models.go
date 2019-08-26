@@ -23,10 +23,10 @@ import (
 type ApplyBlackListRequest struct {
 	*tchttp.BaseRequest
 
-	// 模块
+	// 模块名，本接口取值：account
 	Module *string `json:"Module,omitempty" name:"Module"`
 
-	// 操作
+	// 操作名，本接口取值：ApplyBlackList
 	Operation *string `json:"Operation,omitempty" name:"Operation"`
 
 	// 黑名单列表
@@ -66,10 +66,10 @@ func (r *ApplyBlackListResponse) FromJsonString(s string) error {
 type ApplyCreditAuditRequest struct {
 	*tchttp.BaseRequest
 
-	// 模块
+	// 模块名，本接口取值：Credit
 	Module *string `json:"Module,omitempty" name:"Module"`
 
-	// 操作
+	// 操作名，本接口取值：Apply
 	Operation *string `json:"Operation,omitempty" name:"Operation"`
 
 	// 实例ID
@@ -121,10 +121,10 @@ func (r *ApplyCreditAuditResponse) FromJsonString(s string) error {
 type DescribeCreditResultRequest struct {
 	*tchttp.BaseRequest
 
-	// 模块
+	// 模块名，本接口取值：Credit
 	Module *string `json:"Module,omitempty" name:"Module"`
 
-	// 操作
+	// 操作名，本接口取值：Get
 	Operation *string `json:"Operation,omitempty" name:"Operation"`
 
 	// 实例ID
@@ -136,7 +136,7 @@ type DescribeCreditResultRequest struct {
 	// 信审任务ID
 	CaseId *string `json:"CaseId,omitempty" name:"CaseId"`
 
-	// 请求日期
+	// 请求日期，格式为YYYY-MM-DD
 	RequestDate *string `json:"RequestDate,omitempty" name:"RequestDate"`
 }
 
@@ -191,10 +191,10 @@ func (r *DescribeCreditResultResponse) FromJsonString(s string) error {
 type DescribeRecordsRequest struct {
 	*tchttp.BaseRequest
 
-	// 模块
+	// 模块名，本接口取值：Record
 	Module *string `json:"Module,omitempty" name:"Module"`
 
-	// 操作
+	// 操作名，本接口取值：List
 	Operation *string `json:"Operation,omitempty" name:"Operation"`
 
 	// 产品ID
@@ -206,16 +206,16 @@ type DescribeRecordsRequest struct {
 	// 被叫号码
 	CalledPhone *string `json:"CalledPhone,omitempty" name:"CalledPhone"`
 
-	// 查询起始日期
+	// 查询起始日期，格式为YYYY-MM-DD
 	StartBizDate *string `json:"StartBizDate,omitempty" name:"StartBizDate"`
 
-	// 查询结束日期
+	// 查询结束日期，格式为YYYY-MM-DD
 	EndBizDate *string `json:"EndBizDate,omitempty" name:"EndBizDate"`
 
-	// 分页参数，索引，从0开始
+	// 分页参数，索引，默认为0
 	Offset *string `json:"Offset,omitempty" name:"Offset"`
 
-	// 分页参数，页长
+	// 分页参数，页长，默认为20
 	Limit *string `json:"Limit,omitempty" name:"Limit"`
 
 	// 实例ID，不传默认为系统分配的初始实例
@@ -259,14 +259,17 @@ func (r *DescribeRecordsResponse) FromJsonString(s string) error {
 type DescribeTaskStatusRequest struct {
 	*tchttp.BaseRequest
 
-	// 模块名
+	// 模块名，本接口取值：Task
 	Module *string `json:"Module,omitempty" name:"Module"`
 
-	// 操作名
+	// 操作名，本接口取值：DescribeTaskStatus
 	Operation *string `json:"Operation,omitempty" name:"Operation"`
 
-	// 任务ID，形如abc-a0b1c2xyz
+	// 任务ID，"上传文件"接口返回的DataResId，形如abc-xyz123
 	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 实例ID，不传默认为系统分配的初始实例。
+	InstId *string `json:"InstId,omitempty" name:"InstId"`
 }
 
 func (r *DescribeTaskStatusRequest) ToJsonString() string {
@@ -282,10 +285,10 @@ type DescribeTaskStatusResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 任务结果，例如上传成功时返回“File Uploading Task Success.”
+		// <p>任务结果：</p><ul style="margin-bottom:0px;"><li>处理中："Uploading Data."</li><li>上传成功："File Uploading Task Success."</li><li>上传失败：具体失败原因</li></ul>
 		TaskResult *string `json:"TaskResult,omitempty" name:"TaskResult"`
 
-		// <p>任务类型：</p><ul style="margin-bottom:0px;"><li>报告下载：001</li><li>催收数据上传：002</li><li>还款数据上传：003</li><li>回访数据上传：004</li><li>停拨数据上传：005</li></ul>
+		// <p>任务类型：</p><ul style="margin-bottom:0px;"><li>催收数据上传：002</li><li>还款数据上传：003</li><li>回访数据上传：004</li><li>停拨数据上传：005</li></ul>
 		TaskType *string `json:"TaskType,omitempty" name:"TaskType"`
 
 		// 过滤文件下载链接，有过滤数据时才存在。
@@ -306,16 +309,108 @@ func (r *DescribeTaskStatusResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DownloadDialogueTextRequest struct {
+	*tchttp.BaseRequest
+
+	// 模块名，本接口取值：Report
+	Module *string `json:"Module,omitempty" name:"Module"`
+
+	// 操作名，本接口取值：DownloadTextReport
+	Operation *string `json:"Operation,omitempty" name:"Operation"`
+
+	// 报告日期，格式为YYYY-MM-DD
+	ReportDate *string `json:"ReportDate,omitempty" name:"ReportDate"`
+
+	// 实例ID
+	InstId *string `json:"InstId,omitempty" name:"InstId"`
+}
+
+func (r *DownloadDialogueTextRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DownloadDialogueTextRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DownloadDialogueTextResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 对话文本下载地址
+		TextReportUrl *string `json:"TextReportUrl,omitempty" name:"TextReportUrl"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DownloadDialogueTextResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DownloadDialogueTextResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DownloadRecordListRequest struct {
+	*tchttp.BaseRequest
+
+	// 模块名，本接口取值：Record
+	Module *string `json:"Module,omitempty" name:"Module"`
+
+	// 操作名，本接口取值：DownloadList
+	Operation *string `json:"Operation,omitempty" name:"Operation"`
+
+	// 录音日期，格式为YYYY-MM-DD
+	BizDate *string `json:"BizDate,omitempty" name:"BizDate"`
+
+	// 实例ID
+	InstId *string `json:"InstId,omitempty" name:"InstId"`
+}
+
+func (r *DownloadRecordListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DownloadRecordListRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DownloadRecordListResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 录音列表下载地址
+		RecordListUrl *string `json:"RecordListUrl,omitempty" name:"RecordListUrl"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DownloadRecordListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DownloadRecordListResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DownloadReportRequest struct {
 	*tchttp.BaseRequest
 
-	// 模块名
+	// 模块名，本接口取值：Report
 	Module *string `json:"Module,omitempty" name:"Module"`
 
-	// 操作名
+	// 操作名，本接口取值：DownloadReport
 	Operation *string `json:"Operation,omitempty" name:"Operation"`
 
-	// 报告日期
+	// 报告日期，格式为YYYY-MM-DD
 	ReportDate *string `json:"ReportDate,omitempty" name:"ReportDate"`
 
 	// 实例ID，不传默认为系统分配的初始实例。
@@ -423,16 +518,16 @@ type SingleRecord struct {
 type UploadDataFileRequest struct {
 	*tchttp.BaseRequest
 
-	// 模块名
+	// 模块名，本接口取值：Data
 	Module *string `json:"Module,omitempty" name:"Module"`
 
-	// 操作名
+	// 操作名，本接口取值：Upload
 	Operation *string `json:"Operation,omitempty" name:"Operation"`
 
 	// 文件名
 	FileName *string `json:"FileName,omitempty" name:"FileName"`
 
-	// <p>上传类型，不填默认催收文件，取值范围：</p><ul style="margin-bottom:0px;"><li>data：催收文件</li><li>repay：还款文件</li><li>callback：回访文件</li></ul>
+	// <p>上传类型，不填默认催收文件，取值范围：</p><ul style="margin-bottom:0px;"><li>data：入催文件</li><li>repay：还款文件</li><li>callback：回访文件</li><li>callstop：回访停拨文件</li></ul>
 	UploadModel *string `json:"UploadModel,omitempty" name:"UploadModel"`
 
 	// 文件，文件与文件地址上传只可选用一种，必须使用multipart/form-data协议来上传二进制流文件，建议使用xlsx格式，大小不超过5MB。
