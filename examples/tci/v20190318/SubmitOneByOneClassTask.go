@@ -13,19 +13,23 @@ func main() {
 	credential := common.NewCredential(
 		// os.Getenv("TENCENTCLOUD_SECRET_ID"),
 		// os.Getenv("TENCENTCLOUD_SECRET_KEY"),
-		"",
-		"",
+		"", "",
 	)
 	cpf := profile.NewClientProfile()
 	cpf.HttpProfile.ReqMethod = "POST"
 	cpf.HttpProfile.ReqTimeout = 30
 	cpf.HttpProfile.Endpoint = "tci.tencentcloudapi.com"
 	client, _ := tci.NewClient(credential, "ap-guangzhou", cpf)
-	request := tci.NewCreateLibraryRequest()
-	request.LibraryName = common.StringPtr("testfxh1")
-
+	req := tci.NewSubmitOneByOneClassTaskRequest()
+	req.FileContent = common.StringPtr("https://edu-test-1253131631.cos.ap-guangzhou.myqcloud.com/aieduautotest/autotest_vedio.mp4")
+	req.FileType = common.StringPtr("vod_url")
+	req.Lang = common.Int64Ptr(0)
+	req.LibrarySet = common.StringPtrs([]string{"library_15603955264181591716"})
+	req.VocabLibNameList = common.StringPtrs([]string{"testlib2"})
+	req.VoiceEncodeType = common.Int64Ptr(1)
+	req.VoiceFileType = common.Int64Ptr(10)
 	// 通过client对象调用想要访问的接口，需要传入请求对象
-	response, err := client.CreateLibrary(request)
+	response, err := client.SubmitOneByOneClassTask(req)
 	// 处理异常
 	fmt.Println(err)
 	if _, ok := err.(*errors.TencentCloudSDKError); ok {
