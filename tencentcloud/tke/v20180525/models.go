@@ -143,16 +143,16 @@ type ClusterBasicSettings struct {
 
 type ClusterCIDRSettings struct {
 
-	// 用于分配集群容器和服务 IP 的 CIDR，不得与 VPC CIDR 冲突，也不得与同 VPC 内其他集群 CIDR 冲突
+	// 用于分配集群容器和服务 IP 的 CIDR，不得与 VPC CIDR 冲突，也不得与同 VPC 内其他集群 CIDR 冲突。且网段范围必须在内网网段内，例如:10.1.0.0/14, 192.168.0.1/18,172.16.0.0/16。
 	ClusterCIDR *string `json:"ClusterCIDR,omitempty" name:"ClusterCIDR"`
 
 	// 是否忽略 ClusterCIDR 冲突错误, 默认不忽略
 	IgnoreClusterCIDRConflict *bool `json:"IgnoreClusterCIDRConflict,omitempty" name:"IgnoreClusterCIDRConflict"`
 
-	// 集群中每个Node上最大的Pod数量
+	// 集群中每个Node上最大的Pod数量。取值范围4～256。不为2的幂值时会向上取最接近的2的幂值。
 	MaxNodePodNum *uint64 `json:"MaxNodePodNum,omitempty" name:"MaxNodePodNum"`
 
-	// 集群最大的service数量
+	// 集群最大的service数量。取值范围32～32768，不为2的幂值时会向上取最接近的2的幂值。
 	MaxClusterServiceNum *uint64 `json:"MaxClusterServiceNum,omitempty" name:"MaxClusterServiceNum"`
 }
 
@@ -178,6 +178,58 @@ type ClusterNetworkSettings struct {
 
 	// 网络插件是否启用CNI(默认开启)
 	Cni *bool `json:"Cni,omitempty" name:"Cni"`
+}
+
+type CreateClusterAsGroupRequest struct {
+	*tchttp.BaseRequest
+
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 伸缩组创建透传参数，json化字符串格式，详见[伸缩组创建实例](https://cloud.tencent.com/document/api/377/20440)接口。LaunchConfigurationId由LaunchConfigurePara参数创建，不支持填写
+	AutoScalingGroupPara *string `json:"AutoScalingGroupPara,omitempty" name:"AutoScalingGroupPara"`
+
+	// 启动配置创建透传参数，json化字符串格式，详见[创建启动配置](https://cloud.tencent.com/document/api/377/20447)接口。另外ImageId参数由于集群维度已经有的ImageId信息，这个字段不需要填写。UserData字段设置通过UserScript设置，这个字段不需要填写。
+	LaunchConfigurePara *string `json:"LaunchConfigurePara,omitempty" name:"LaunchConfigurePara"`
+
+	// 节点高级配置信息
+	InstanceAdvancedSettings *InstanceAdvancedSettings `json:"InstanceAdvancedSettings,omitempty" name:"InstanceAdvancedSettings"`
+
+	// 节点Label数组
+	Labels []*Label `json:"Labels,omitempty" name:"Labels" list`
+}
+
+func (r *CreateClusterAsGroupRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateClusterAsGroupRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateClusterAsGroupResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 启动配置ID
+		LaunchConfigurationId *string `json:"LaunchConfigurationId,omitempty" name:"LaunchConfigurationId"`
+
+		// 伸缩组ID
+		AutoScalingGroupId *string `json:"AutoScalingGroupId,omitempty" name:"AutoScalingGroupId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateClusterAsGroupResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateClusterAsGroupResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
 }
 
 type CreateClusterInstancesRequest struct {
@@ -232,7 +284,7 @@ type CreateClusterRequest struct {
 	// 集群类型，托管集群：MANAGED_CLUSTER，独立集群：INDEPENDENT_CLUSTER。
 	ClusterType *string `json:"ClusterType,omitempty" name:"ClusterType"`
 
-	// CVM创建透传参数，json化字符串格式，详见[CVM创建实例](https://cloud.tencent.com/document/product/213/15730)接口。
+	// CVM创建透传参数，json化字符串格式，详见[CVM创建实例](https://cloud.tencent.com/document/product/213/15730)接口。总机型(包括地域)数量不超过10个，相同机型(地域)购买多台机器可以通过设置参数中RunInstances中InstanceCount来实现。
 	RunInstancesForNode []*RunInstancesForNode `json:"RunInstancesForNode,omitempty" name:"RunInstancesForNode" list`
 
 	// 集群的基本配置信息
@@ -244,7 +296,7 @@ type CreateClusterRequest struct {
 	// 节点高级配置信息
 	InstanceAdvancedSettings *InstanceAdvancedSettings `json:"InstanceAdvancedSettings,omitempty" name:"InstanceAdvancedSettings"`
 
-	// 已存在实例的配置信息
+	// 已存在实例的配置信息。所有实例必须在同一个VPC中，最大数量不超过100。
 	ExistedInstancesForNode []*ExistedInstancesForNode `json:"ExistedInstancesForNode,omitempty" name:"ExistedInstancesForNode" list`
 }
 
@@ -518,14 +570,17 @@ type DescribeClusterInstancesRequest struct {
 	// 集群ID
 	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
 
-	// 偏移量,默认0
+	// 偏移量，默认为0。关于Offset的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
 
-	// 最大输出条数，默认20
+	// 返回数量，默认为20，最大值为100。关于Limit的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 
-	// 需要获取的节点实例Id列表(默认为空，表示拉取集群下所有节点实例)
+	// 需要获取的节点实例Id列表。如果为空，表示拉取集群下所有节点实例。
 	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds" list`
+
+	// 节点角色, MASTER, WORKER, ETCD, MASTER_ETCD,ALL, 默认为WORKER。默认为WORKER类型。
+	InstanceRole *string `json:"InstanceRole,omitempty" name:"InstanceRole"`
 }
 
 func (r *DescribeClusterInstancesRequest) ToJsonString() string {
@@ -703,7 +758,7 @@ type DescribeClustersRequest struct {
 	// 偏移量,默认0
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
 
-	// 最大输出条数，默认20
+	// 最大输出条数，默认20，最大为100
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 
 	// 过滤条件,当前只支持按照单个条件ClusterName进行过滤
@@ -914,7 +969,7 @@ type ExistedInstance struct {
 
 type ExistedInstancesForNode struct {
 
-	// 节点角色，取值:MASTER_ETCD, WORKER。MASTER_ETCD只有在创建 INDEPENDENT_CLUSTER 独立集群时需要指定。
+	// 节点角色，取值:MASTER_ETCD, WORKER。MASTER_ETCD只有在创建 INDEPENDENT_CLUSTER 独立集群时需要指定。MASTER_ETCD节点数量为3～7，建议为奇数。MASTER_ETCD最小配置为4C8G。
 	NodeRole *string `json:"NodeRole,omitempty" name:"NodeRole"`
 
 	// 已存在实例的重装参数
@@ -978,6 +1033,15 @@ type InstanceAdvancedSettings struct {
 	Unschedulable *int64 `json:"Unschedulable,omitempty" name:"Unschedulable"`
 }
 
+type Label struct {
+
+	// map表中的Name
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// map表中的Value
+	Value *string `json:"Value,omitempty" name:"Value"`
+}
+
 type LoginSettings struct {
 
 	// 实例登录密码。不同操作系统类型密码复杂度限制不一样，具体如下：<br><li>Linux实例密码必须8到16位，至少包括两项[a-z，A-Z]、[0-9] 和 [( ) ` ~ ! @ # $ % ^ & * - + = | { } [ ] : ; ' , . ? / ]中的特殊符号。<br><li>Windows实例密码必须12到16位，至少包括三项[a-z]，[A-Z]，[0-9] 和 [( ) ` ~ ! @ # $ % ^ & * - + = { } [ ] : ; ' , . ? /]中的特殊符号。<br><br>若不指定该参数，则由系统随机生成密码，并通过站内信方式通知到用户。
@@ -1037,7 +1101,7 @@ type RouteTableInfo struct {
 
 type RunInstancesForNode struct {
 
-	// 节点角色，取值:MASTER_ETCD, WORKER。MASTER_ETCD只有在创建 INDEPENDENT_CLUSTER 独立集群时需要指定。
+	// 节点角色，取值:MASTER_ETCD, WORKER。MASTER_ETCD只有在创建 INDEPENDENT_CLUSTER 独立集群时需要指定。MASTER_ETCD节点数量为3～7，建议为奇数。MASTER_ETCD节点最小配置为4C8G。
 	NodeRole *string `json:"NodeRole,omitempty" name:"NodeRole"`
 
 	// CVM创建透传参数，json化字符串格式，详见[CVM创建实例](https://cloud.tencent.com/document/product/213/15730)接口，传入公共参数外的其他参数即可，其中ImageId会替换为TKE集群OS对应的镜像。

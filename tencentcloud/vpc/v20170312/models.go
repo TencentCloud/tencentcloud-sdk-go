@@ -160,7 +160,7 @@ type Address struct {
 	// `EIP`名称。
 	AddressName *string `json:"AddressName,omitempty" name:"AddressName"`
 
-	// `EIP`状态。
+	// `EIP`状态，包含'CREATING'(创建中),'BINDING'(绑定中),'BIND'(已绑定),'UNBINDING'(解绑中),'UNBIND'(已解绑),'OFFLINING'(释放中),'BIND_ENI'(绑定悬空弹性网卡)
 	AddressStatus *string `json:"AddressStatus,omitempty" name:"AddressStatus"`
 
 	// 外网IP地址
@@ -408,7 +408,7 @@ type AssignPrivateIpAddressesRequest struct {
 	// 指定的内网IP信息，单次最多指定10个。
 	PrivateIpAddresses []*PrivateIpAddressSpecification `json:"PrivateIpAddresses,omitempty" name:"PrivateIpAddresses" list`
 
-	// 新申请的内网IP地址个数，内网IP地址个数总和不能超过配数。
+	// 新申请的内网IP地址个数，内网IP地址个数总和不能超过配额数，详见<a href="/document/product/576/18527">弹性网卡使用限制</a>。
 	SecondaryPrivateIpAddressCount *uint64 `json:"SecondaryPrivateIpAddressCount,omitempty" name:"SecondaryPrivateIpAddressCount"`
 }
 
@@ -440,6 +440,22 @@ func (r *AssignPrivateIpAddressesResponse) ToJsonString() string {
 
 func (r *AssignPrivateIpAddressesResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
+}
+
+type AssistantCidr struct {
+
+	// `VPC`实例`ID`。形如：`vpc-6v2ht8q5`
+	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
+
+	// 辅助CIDR。形如：`172.16.0.0/16`
+	CidrBlock *string `json:"CidrBlock,omitempty" name:"CidrBlock"`
+
+	// 辅助CIDR类型（0：普通辅助CIDR，1：容器辅助CIDR），默认都是0。
+	AssistantType *int64 `json:"AssistantType,omitempty" name:"AssistantType"`
+
+	// 辅助CIDR拆分的子网。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SubnetSet []*Subnet `json:"SubnetSet,omitempty" name:"SubnetSet" list`
 }
 
 type AssociateAddressRequest struct {
@@ -1791,7 +1807,7 @@ type CreateVpcRequest struct {
 	// vpc名称，最大长度不能超过60个字节。
 	VpcName *string `json:"VpcName,omitempty" name:"VpcName"`
 
-	// vpc的cidr，只能为10.0.0.0/16，172.16.0.0/12，192.168.0.0/16这三个内网网段内。
+	// vpc的cidr，只能为10.0.0.0/16，172.16.0.0/16，192.168.0.0/16这三个内网网段内。
 	CidrBlock *string `json:"CidrBlock,omitempty" name:"CidrBlock"`
 
 	// 是否开启组播。true: 开启, false: 不开启。
@@ -2954,7 +2970,7 @@ type DescribeAddressesRequest struct {
 	// <li> address-id - String - 是否必填：否 - （过滤条件）按照 EIP 的唯一 ID 过滤。EIP 唯一 ID 形如：eip-11112222。</li>
 	// <li> address-name - String - 是否必填：否 - （过滤条件）按照 EIP 名称过滤。不支持模糊过滤。</li>
 	// <li> address-ip - String - 是否必填：否 - （过滤条件）按照 EIP 的 IP 地址过滤。</li>
-	// <li> address-status - String - 是否必填：否 - （过滤条件）按照 EIP 的状态过滤。取值范围：[详见EIP状态列表](https://cloud.tencent.com/document/api/213/9452#eip_state)。</li>
+	// <li> address-status - String - 是否必填：否 - （过滤条件）按照 EIP 的状态过滤。状态包含：'CREATING'，'BINDING'，'BIND'，'UNBINDING'，'UNBIND'，'OFFLINING'，'BIND_ENI'。</li>
 	// <li> instance-id - String - 是否必填：否 - （过滤条件）按照 EIP 绑定的实例 ID 过滤。实例 ID 形如：ins-11112222。</li>
 	// <li> private-ip-address - String - 是否必填：否 - （过滤条件）按照 EIP 绑定的内网 IP 过滤。</li>
 	// <li> network-interface-id - String - 是否必填：否 - （过滤条件）按照 EIP 绑定的弹性网卡 ID 过滤。弹性网卡 ID 形如：eni-11112222。</li>
@@ -3990,6 +4006,8 @@ type DescribeNetworkInterfacesRequest struct {
 	// <li>network-interface-name - String - （过滤条件）网卡实例名称。</li>
 	// <li>network-interface-description - String - （过滤条件）网卡实例描述。</li>
 	// <li>address-ip - String - （过滤条件）内网IPv4地址。</li>
+	// <li>tag-key - String -是否必填：否- （过滤条件）按照标签键进行过滤。使用请参考示例2</li>
+	// <li>tag:tag-key - String - 是否必填：否 - （过滤条件）按照标签键值对进行过滤。 tag-key使用具体的标签键进行替换。使用请参考示例3。</li>
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
 
 	// 偏移量，默认为0。
@@ -4208,8 +4226,11 @@ type DescribeSecurityGroupsRequest struct {
 	SecurityGroupIds []*string `json:"SecurityGroupIds,omitempty" name:"SecurityGroupIds" list`
 
 	// 过滤条件，参数不支持同时指定SecurityGroupIds和Filters。
+	// <li>security-group-id - String - （过滤条件）安全组ID。</li>
 	// <li>project-id - Integer - （过滤条件）项目id。</li>
 	// <li>security-group-name - String - （过滤条件）安全组名称。</li>
+	// <li>tag-key - String -是否必填：否- （过滤条件）按照标签键进行过滤。使用请参考示例2。</li>
+	// <li>tag:tag-key - String - 是否必填：否 - （过滤条件）按照标签键值对进行过滤。 tag-key使用具体的标签键进行替换。使用请参考示例3。</li>
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
 
 	// 偏移量。
@@ -5742,6 +5763,9 @@ type ModifyAddressAttributeRequest struct {
 
 	// 修改后的 EIP 名称。长度上限为20个字符。
 	AddressName *string `json:"AddressName,omitempty" name:"AddressName"`
+
+	// 设定EIP是否直通，"TRUE"表示直通，"FALSE"表示非直通。注意该参数仅对EIP直通功能可见的用户可以设定。
+	EipDirectConnection *string `json:"EipDirectConnection,omitempty" name:"EipDirectConnection"`
 }
 
 func (r *ModifyAddressAttributeRequest) ToJsonString() string {
@@ -8056,6 +8080,10 @@ type Vpc struct {
 
 	// 标签键值对
 	TagSet []*Tag `json:"TagSet,omitempty" name:"TagSet" list`
+
+	// 辅助CIDR
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AssistantCidrSet []*AssistantCidr `json:"AssistantCidrSet,omitempty" name:"AssistantCidrSet" list`
 }
 
 type VpcIpv6Address struct {

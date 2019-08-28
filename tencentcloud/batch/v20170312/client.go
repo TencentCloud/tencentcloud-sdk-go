@@ -68,6 +68,31 @@ func (c *Client) CreateComputeEnv(request *CreateComputeEnvRequest) (response *C
     return
 }
 
+func NewCreateCpmComputeEnvRequest() (request *CreateCpmComputeEnvRequest) {
+    request = &CreateCpmComputeEnvRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("batch", APIVersion, "CreateCpmComputeEnv")
+    return
+}
+
+func NewCreateCpmComputeEnvResponse() (response *CreateCpmComputeEnvResponse) {
+    response = &CreateCpmComputeEnvResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 创建黑石计算环境
+func (c *Client) CreateCpmComputeEnv(request *CreateCpmComputeEnvRequest) (response *CreateCpmComputeEnvResponse, err error) {
+    if request == nil {
+        request = NewCreateCpmComputeEnvRequest()
+    }
+    response = NewCreateCpmComputeEnvResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateTaskTemplateRequest() (request *CreateTaskTemplateRequest) {
     request = &CreateTaskTemplateRequest{
         BaseRequest: &tchttp.BaseRequest{},

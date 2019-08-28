@@ -156,6 +156,10 @@ type AiAnalysisResult struct {
 	// 视频内容分析智能按帧标签任务的查询结果，当任务类型为 FrameTag 时有效。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FrameTagTask *AiAnalysisTaskFrameTagResult `json:"FrameTagTask,omitempty" name:"FrameTagTask"`
+
+	// 视频内容分析智能按集锦任务的查询结果，当任务类型为 Highlight 时有效。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HighlightsTask []*AiAnalysisTaskHighlightResult `json:"HighlightsTask,omitempty" name:"HighlightsTask" list`
 }
 
 type AiAnalysisTaskClassificationInput struct {
@@ -249,6 +253,37 @@ type AiAnalysisTaskFrameTagResult struct {
 	// 智能按帧标签任务输出。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Output *AiAnalysisTaskFrameTagOutput `json:"Output,omitempty" name:"Output"`
+}
+
+type AiAnalysisTaskHighlightInput struct {
+
+	// 视频智能精彩片段模板 ID。
+	Definition *uint64 `json:"Definition,omitempty" name:"Definition"`
+}
+
+type AiAnalysisTaskHighlightOutput struct {
+
+	// 视频智能精彩片段列表。
+	HighlightSet []*MediaAiAnalysisHighlightItem `json:"HighlightSet,omitempty" name:"HighlightSet" list`
+}
+
+type AiAnalysisTaskHighlightResult struct {
+
+	// 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 错误码，0：成功，其他值：失败。
+	ErrCode *int64 `json:"ErrCode,omitempty" name:"ErrCode"`
+
+	// 错误信息。
+	Message *string `json:"Message,omitempty" name:"Message"`
+
+	// 智能精彩片段任务输入。
+	Input *AiAnalysisTaskHighlightInput `json:"Input,omitempty" name:"Input"`
+
+	// 智能精彩片段任务输出。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Output *AiAnalysisTaskHighlightOutput `json:"Output,omitempty" name:"Output"`
 }
 
 type AiAnalysisTaskInput struct {
@@ -1274,32 +1309,35 @@ type AnimatedGraphicTaskInput struct {
 type ApplyUploadRequest struct {
 	*tchttp.BaseRequest
 
-	// 媒体类型，可选值请参考[上传能力综述](https://cloud.tencent.com/document/product/266/9760#.E6.96.87.E4.BB.B6.E7.B1.BB.E5.9E.8B)。
+	// 媒体类型，可选值请参考 [上传能力综述](/document/product/266/9760#.E6.96.87.E4.BB.B6.E7.B1.BB.E5.9E.8B)。
 	MediaType *string `json:"MediaType,omitempty" name:"MediaType"`
 
 	// 媒体名称。
 	MediaName *string `json:"MediaName,omitempty" name:"MediaName"`
 
-	// 封面类型，可选值请参考[上传能力综述](https://cloud.tencent.com/document/product/266/9760#.E6.96.87.E4.BB.B6.E7.B1.BB.E5.9E.8B)。
+	// 封面类型，可选值请参考 [上传能力综述](/document/product/266/9760#.E6.96.87.E4.BB.B6.E7.B1.BB.E5.9E.8B)。
 	CoverType *string `json:"CoverType,omitempty" name:"CoverType"`
 
-	// 媒体后续任务操作，详见[上传指定任务流](https://cloud.tencent.com/document/product/266/9759)。
+	// 媒体后续任务处理操作，即完成媒体上传后，可自动发起任务流操作。参数值为任务流模板名，云点播支持 [创建任务流模板](/document/product/266/33819) 并为模板命名。
 	Procedure *string `json:"Procedure,omitempty" name:"Procedure"`
 
-	// 媒体文件过期时间，格式按照 ISO 8601 标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+	// 媒体文件过期时间，格式按照 ISO 8601 标准表示，详见 [ISO 日期格式说明](/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
 	ExpireTime *string `json:"ExpireTime,omitempty" name:"ExpireTime"`
 
 	// 指定上传园区，仅适用于对上传地域有特殊需求的用户。
 	StorageRegion *string `json:"StorageRegion,omitempty" name:"StorageRegion"`
 
-	// 分类ID，用于对媒体进行分类管理，可通过[创建分类](https://cloud.tencent.com/document/product/266/7812)接口，创建分类，获得分类 ID。
+	// 分类ID，用于对媒体进行分类管理，可通过 [创建分类](/document/product/266/7812) 接口，创建分类，获得分类 ID。
 	// <li>默认值：0，表示其他分类。</li>
 	ClassId *int64 `json:"ClassId,omitempty" name:"ClassId"`
 
-	// 来源上下文，用于透传用户请求信息，上传回调接口将返回该字段值，最长 250 个字符。
+	// 来源上下文，用于透传用户请求信息，[上传完成回调](/document/product/266/7830) 将返回该字段值，最长 250 个字符。
 	SourceContext *string `json:"SourceContext,omitempty" name:"SourceContext"`
 
-	// 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+	// 会话上下文，用于透传用户请求信息，当指定 Procedure 参数后，[任务流状态变更回调](/document/product/266/9636) 将返回该字段值，最长 1000 个字符。
+	SessionContext *string `json:"SessionContext,omitempty" name:"SessionContext"`
+
+	// 点播 [子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
 	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
 }
 
@@ -1409,10 +1447,13 @@ type AudioTemplateInfo struct {
 	// <li>libfdk_aac；</li>
 	// <li>libmp3lame；</li>
 	// <li>ac3。</li>
-	// 当外层参数 Container 为视频格式（mp4、flv 或 hls）时，可选值为：
-	// <li>libfdk_aac：更适合 mp4 和 hls；</li>
+	// 当外层参数 Container 为 mp4 或 flv 时，可选值为：
+	// <li>libfdk_aac：更适合 mp4；</li>
 	// <li>libmp3lame：更适合 flv；</li>
 	// <li>mp2。</li>
+	// 当外层参数 Container 为 hls 时，可选值为：
+	// <li>libfdk_aac；</li>
+	// <li>libmp3lame。</li>
 	Codec *string `json:"Codec,omitempty" name:"Codec"`
 
 	// 音频流的码率，取值范围：0 和 [26, 256]，单位：kbps。
@@ -1445,10 +1486,13 @@ type AudioTemplateInfoForUpdate struct {
 	// <li>libfdk_aac；</li>
 	// <li>libmp3lame；</li>
 	// <li>ac3。</li>
-	// 当外层参数 Container 为视频格式（mp4、flv 或 hls）时，可选值为：
-	// <li>libfdk_aac：更适合 mp4 和 hls；</li>
+	// 当外层参数 Container 为 mp4 或 flv 时，可选值为：
+	// <li>libfdk_aac：更适合 mp4；</li>
 	// <li>libmp3lame：更适合 flv；</li>
 	// <li>mp2。</li>
+	// 当外层参数 Container 为 hls 时，可选值为：
+	// <li>libfdk_aac；</li>
+	// <li>libmp3lame。</li>
 	Codec *string `json:"Codec,omitempty" name:"Codec"`
 
 	// 音频流的码率，取值范围：0 和 [26, 256]，单位：kbps。 当取值为 0，表示音频码率和原始音频保持一致。
@@ -4239,6 +4283,21 @@ type MediaAiAnalysisFrameTagSegmentItem struct {
 	TagSet []*MediaAiAnalysisFrameTagItem `json:"TagSet,omitempty" name:"TagSet" list`
 }
 
+type MediaAiAnalysisHighlightItem struct {
+
+	// 智能精彩片段地址。
+	HighlightUrl *string `json:"HighlightUrl,omitempty" name:"HighlightUrl"`
+
+	// 智能精彩片段封面地址。
+	CovImgUrl *string `json:"CovImgUrl,omitempty" name:"CovImgUrl"`
+
+	// 智能精彩片段的可信度，取值范围是 0 到 100。
+	Confidence *float64 `json:"Confidence,omitempty" name:"Confidence"`
+
+	// 智能精彩片段持续时间。
+	Duration *float64 `json:"Duration,omitempty" name:"Duration"`
+}
+
 type MediaAiAnalysisTagItem struct {
 
 	// 标签名称。
@@ -5026,7 +5085,7 @@ type MediaSnapshotByTimeOffsetItem struct {
 
 type MediaSnapshotByTimePicInfoItem struct {
 
-	// 该张截图对应视频文件中的时间偏移，单位：秒。
+	// 该张截图对应视频文件中的时间偏移，单位为<font color=red>毫秒</font>。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TimeOffset *float64 `json:"TimeOffset,omitempty" name:"TimeOffset"`
 
@@ -6885,7 +6944,7 @@ type SnapshotByTimeOffsetTaskInput struct {
 	// 指定时间点截图模板 ID。
 	Definition *uint64 `json:"Definition,omitempty" name:"Definition"`
 
-	// 截图时间点列表，单位为秒。
+	// 截图时间点列表，单位为<font color=red>毫秒</font>。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TimeOffsetSet []*float64 `json:"TimeOffsetSet,omitempty" name:"TimeOffsetSet" list`
 
@@ -7032,6 +7091,18 @@ type SvgWatermarkInputForUpdate struct {
 	// <li>当字符串以 % 结尾时，含义同 H%。
 	// 默认值为 0px。
 	Height *string `json:"Height,omitempty" name:"Height"`
+}
+
+type TEHDConfig struct {
+
+	// 极速高清类型，可选值：
+	// <li>TEHD-100：极速高清-100。</li>
+	// 不填代表不启用极速高清。
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 视频码率上限，当 Type 指定了极速高清类型时有效。
+	// 不填或填0表示不设视频码率上限。
+	MaxVideoBitrate *uint64 `json:"MaxVideoBitrate,omitempty" name:"MaxVideoBitrate"`
 }
 
 type TagConfigureInfo struct {
@@ -7298,6 +7369,10 @@ type TranscodeTemplate struct {
 	// 音频流配置参数，仅当 RemoveAudio 为 0，该字段有效 。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AudioTemplate *AudioTemplateInfo `json:"AudioTemplate,omitempty" name:"AudioTemplate"`
+
+	// 极速高清转码参数，需联系商务架构师开通后才能使用。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TEHDConfig *TEHDConfig `json:"TEHDConfig,omitempty" name:"TEHDConfig"`
 
 	// 封装格式过滤条件，可选值：
 	// <li>Video：视频格式，可以同时包含视频流和音频流的封装格式；</li>

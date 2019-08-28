@@ -65,7 +65,7 @@ type Backend struct {
 	// 后端服务的类型，可取：CVM、ENI（即将支持）
 	Type *string `json:"Type,omitempty" name:"Type"`
 
-	// 后端服务的唯一 ID，可通过 DescribeInstances 接口返回字段中的 unInstanceId 字段获取
+	// 后端服务的唯一 ID，如 ins-abcd1234
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
 	// 后端服务的监听端口
@@ -90,7 +90,7 @@ type Backend struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RegisteredTime *string `json:"RegisteredTime,omitempty" name:"RegisteredTime"`
 
-	// 弹性网卡唯一ID
+	// 弹性网卡唯一ID，如 eni-1234abcd
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	EniId *string `json:"EniId,omitempty" name:"EniId"`
 }
@@ -1189,6 +1189,17 @@ func (r *DescribeTaskStatusResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type ExtraInfo struct {
+
+	// 是否开通VIP直通
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ZhiTong *bool `json:"ZhiTong,omitempty" name:"ZhiTong"`
+
+	// TgwGroup名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TgwGroupName *string `json:"TgwGroupName,omitempty" name:"TgwGroupName"`
+}
+
 type HealthCheck struct {
 
 	// 是否开启健康检查：1（开启）、0（关闭）。
@@ -1483,6 +1494,10 @@ type LoadBalancer struct {
 	// 负载均衡实例的IPv6地址
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AddressIPv6 *string `json:"AddressIPv6,omitempty" name:"AddressIPv6"`
+
+	// 暂做保留，一般用户无需关注。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExtraInfo *ExtraInfo `json:"ExtraInfo,omitempty" name:"ExtraInfo"`
 }
 
 type LoadBalancerHealth struct {
@@ -2237,11 +2252,14 @@ type TargetHealth struct {
 	// Target绑定的端口
 	Port *int64 `json:"Port,omitempty" name:"Port"`
 
-	// 当前健康状态，true：健康，false：不健康。
+	// 当前健康状态，true：健康，false：不健康（包括尚未开始探测、探测中、状态异常等几种状态）。只有处于健康状态（且权重大于0），负载均衡才会向其转发流量。
 	HealthStatus *bool `json:"HealthStatus,omitempty" name:"HealthStatus"`
 
 	// Target的实例ID，如 ins-12345678
 	TargetId *string `json:"TargetId,omitempty" name:"TargetId"`
+
+	// 当前健康状态的详细信息。如：Alive、Dead、Unknown。Alive状态为健康，Dead状态为异常，Unknown状态包括尚未开始探测、探测中、状态未知。
+	HealthStatusDetial *string `json:"HealthStatusDetial,omitempty" name:"HealthStatusDetial"`
 }
 
 type TargetRegionInfo struct {

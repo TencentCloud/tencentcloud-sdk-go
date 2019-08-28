@@ -511,7 +511,7 @@ func NewDescribeDatabaseTableResponse() (response *DescribeDatabaseTableResponse
     return
 }
 
-// 本接口（DescribeDatabaseObjects）用于查询云数据库实例的表信息。
+// 本接口（DescribeDatabaseTable）用于查询云数据库实例的表信息。
 func (c *Client) DescribeDatabaseTable(request *DescribeDatabaseTableRequest) (response *DescribeDatabaseTableResponse, err error) {
     if request == nil {
         request = NewDescribeDatabaseTableRequest()

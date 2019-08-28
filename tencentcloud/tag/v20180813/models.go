@@ -232,6 +232,74 @@ func (r *DescribeResourceTagsByResourceIdsResponse) FromJsonString(s string) err
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeResourcesByTagsRequest struct {
+	*tchttp.BaseRequest
+
+	// 标签过滤数组
+	TagFilters []*TagFilters `json:"TagFilters,omitempty" name:"TagFilters" list`
+
+	// 创建标签者uin
+	CreateUin *uint64 `json:"CreateUin,omitempty" name:"CreateUin"`
+
+	// 数据偏移量，默认为 0, 必须为Limit参数的整数倍
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 每页大小，默认为 15
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 资源前缀
+	ResourcePrefix *string `json:"ResourcePrefix,omitempty" name:"ResourcePrefix"`
+
+	// 资源唯一标记
+	ResourceId *string `json:"ResourceId,omitempty" name:"ResourceId"`
+
+	// 资源所在地域
+	ResourceRegion *string `json:"ResourceRegion,omitempty" name:"ResourceRegion"`
+
+	// 业务类型
+	ServiceType *string `json:"ServiceType,omitempty" name:"ServiceType"`
+}
+
+func (r *DescribeResourcesByTagsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeResourcesByTagsRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeResourcesByTagsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 结果总数
+		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 数据位移偏量
+		Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+		// 每页大小
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+		// 资源标签
+		Rows []*ResourcesTag `json:"Rows,omitempty" name:"Rows" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeResourcesByTagsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeResourcesByTagsResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeTagKeysRequest struct {
 	*tchttp.BaseRequest
 
@@ -437,6 +505,29 @@ func (r *ModifyResourceTagsResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type ResourcesTag struct {
+
+	// 资源所在地域
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResourceRegion *string `json:"ResourceRegion,omitempty" name:"ResourceRegion"`
+
+	// 业务类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ServiceType *string `json:"ServiceType,omitempty" name:"ServiceType"`
+
+	// 资源前缀
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResourcePrefix *string `json:"ResourcePrefix,omitempty" name:"ResourcePrefix"`
+
+	// 资源唯一标记
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResourceId *string `json:"ResourceId,omitempty" name:"ResourceId"`
+
+	// 资源标签
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Tags []*Tag `json:"Tags,omitempty" name:"Tags" list`
+}
+
 type Tag struct {
 
 	// 标签键
@@ -444,6 +535,15 @@ type Tag struct {
 
 	// 标签值
 	TagValue *string `json:"TagValue,omitempty" name:"TagValue"`
+}
+
+type TagFilters struct {
+
+	// 标签键
+	TagKey *string `json:"TagKey,omitempty" name:"TagKey"`
+
+	// 标签值数组 多个值的话是或的关系
+	TagValue []*string `json:"TagValue,omitempty" name:"TagValue" list`
 }
 
 type TagKeyObject struct {

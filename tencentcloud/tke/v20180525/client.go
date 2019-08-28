@@ -93,6 +93,31 @@ func (c *Client) CreateCluster(request *CreateClusterRequest) (response *CreateC
     return
 }
 
+func NewCreateClusterAsGroupRequest() (request *CreateClusterAsGroupRequest) {
+    request = &CreateClusterAsGroupRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tke", APIVersion, "CreateClusterAsGroup")
+    return
+}
+
+func NewCreateClusterAsGroupResponse() (response *CreateClusterAsGroupResponse) {
+    response = &CreateClusterAsGroupResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 为已经存在的集群创建伸缩组
+func (c *Client) CreateClusterAsGroup(request *CreateClusterAsGroupRequest) (response *CreateClusterAsGroupResponse, err error) {
+    if request == nil {
+        request = NewCreateClusterAsGroupRequest()
+    }
+    response = NewCreateClusterAsGroupResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateClusterInstancesRequest() (request *CreateClusterInstancesRequest) {
     request = &CreateClusterInstancesRequest{
         BaseRequest: &tchttp.BaseRequest{},

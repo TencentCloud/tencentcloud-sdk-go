@@ -26,10 +26,12 @@ type AnalyzeFaceRequest struct {
 	// 检测模式。0 为检测所有出现的人脸， 1 为检测面积最大的人脸。默认为 0。最多返回 10 张人脸的五官定位（人脸关键点）具体信息。
 	Mode *uint64 `json:"Mode,omitempty" name:"Mode"`
 
-	// 图片 base64 数据。支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
+	// 图片 base64 数据，base64 编码后大小不可超过5M。
+	// 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
 	Image *string `json:"Image,omitempty" name:"Image"`
 
-	// 图片的 Url、Image必须提供一个，如果都提供，只使用 Url。  
+	// 图片的 Url 。对应图片 base64 编码后大小不可超过5M。
+	// Url、Image必须提供一个，如果都提供，只使用 Url。  
 	// 图片存储于腾讯云的Url可保障更高下载速度和稳定性，建议图片存储于腾讯云。 
 	// 非腾讯云存储的Url速度和稳定性可能受一定影响。
 	// 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
@@ -62,6 +64,9 @@ type AnalyzeFaceResponse struct {
 
 		// 五官定位（人脸关键点）具体信息。
 		FaceShapeSet []*FaceShape `json:"FaceShapeSet,omitempty" name:"FaceShapeSet" list`
+
+		// 人脸识别所用的算法模型版本。
+		FaceModelVersion *string `json:"FaceModelVersion,omitempty" name:"FaceModelVersion"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -109,24 +114,26 @@ type Candidate struct {
 type CompareFaceRequest struct {
 	*tchttp.BaseRequest
 
-	// A 图片 base64 数据。
+	// A 图片 base64 数据，base64 编码后大小不可超过5M。
 	// 若图片中包含多张人脸，只选取其中人脸面积最大的人脸。
 	// 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
 	ImageA *string `json:"ImageA,omitempty" name:"ImageA"`
 
-	// B 图片 base64 数据。
+	// B 图片 base64 数据，base64 编码后大小不可超过5M。
 	// 若图片中包含多张人脸，只选取其中人脸面积最大的人脸。
 	// 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
 	ImageB *string `json:"ImageB,omitempty" name:"ImageB"`
 
-	// A 图片的 Url 。A 图片的 Url、Image必须提供一个，如果都提供，只使用 Url。 
+	// A 图片的 Url ，对应图片 base64 编码后大小不可超过5M。
+	// A 图片的 Url、Image必须提供一个，如果都提供，只使用 Url。 
 	// 图片存储于腾讯云的Url可保障更高下载速度和稳定性，建议图片存储于腾讯云。 
 	// 非腾讯云存储的Url速度和稳定性可能受一定影响。
 	// 若图片中包含多张人脸，只选取其中人脸面积最大的人脸。
 	// 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
 	UrlA *string `json:"UrlA,omitempty" name:"UrlA"`
 
-	// B 图片的 Url 。B 图片的 Url、Image必须提供一个，如果都提供，只使用 Url。 
+	// B 图片的 Url ，对应图片 base64 编码后大小不可超过5M。
+	// B 图片的 Url、Image必须提供一个，如果都提供，只使用 Url。 
 	// 图片存储于腾讯云的Url可保障更高下载速度和稳定性，建议图片存储于腾讯云。 
 	// 非腾讯云存储的Url速度和稳定性可能受一定影响。
 	// 若图片中包含多张人脸，只选取其中人脸面积最大的人脸。
@@ -216,17 +223,19 @@ type CreateFaceRequest struct {
 	// 人员ID。
 	PersonId *string `json:"PersonId,omitempty" name:"PersonId"`
 
-	// 图片 base64 数据。人员人脸总数量不可超过5张。
+	// 图片 base64 数据，base64 编码后大小不可超过5M。
+	// 人员人脸总数量不可超过5张。
 	// 若图片中包含多张人脸，只选取其中人脸面积最大的人脸。
 	// 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
 	Images []*string `json:"Images,omitempty" name:"Images" list`
 
-	// 图片的 Url、Image必须提供一个，如果都提供，只使用 Url。
+	// 图片的 Url 。对应图片 base64 编码后大小不可超过5M。
+	// Url、Image必须提供一个，如果都提供，只使用 Url。  
 	// 图片存储于腾讯云的Url可保障更高下载速度和稳定性，建议图片存储于腾讯云。 
-	// 非腾讯云存储的Url速度和稳定性可能受一定影响。 
+	// 非腾讯云存储的Url速度和稳定性可能受一定影响。
+	// 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
 	// 人员人脸总数量不可超过5张。
 	// 若图片中包含多张人脸，只选取其中人脸面积最大的人脸。
-	// 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
 	Urls []*string `json:"Urls,omitempty" name:"Urls" list`
 }
 
@@ -333,15 +342,14 @@ type CreatePersonRequest struct {
 	// 人员描述字段内容，key-value。[0，60]个字符，可修改，可重复。
 	PersonExDescriptionInfos []*PersonExDescriptionInfo `json:"PersonExDescriptionInfos,omitempty" name:"PersonExDescriptionInfos" list`
 
-	// 图片 base64 数据。
-	// 若图片中包含多张人脸，只选取其中人脸面积最大的人脸。
+	// 图片 base64 数据，base64 编码后大小不可超过5M。
 	// 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
 	Image *string `json:"Image,omitempty" name:"Image"`
 
-	// 图片的 Url、Image必须提供一个，如果都提供，只使用 Url。
+	// 图片的 Url 。对应图片 base64 编码后大小不可超过5M。
+	// Url、Image必须提供一个，如果都提供，只使用 Url。  
 	// 图片存储于腾讯云的Url可保障更高下载速度和稳定性，建议图片存储于腾讯云。 
 	// 非腾讯云存储的Url速度和稳定性可能受一定影响。
-	// 若图片中包含多张人脸，只选取其中人脸面积最大的人脸。
 	// 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
 	Url *string `json:"Url,omitempty" name:"Url"`
 }
@@ -534,10 +542,12 @@ type DetectFaceRequest struct {
 	// 人脸长和宽的最小尺寸，单位为像素。默认为40。低于此尺寸的人脸不会被检测。
 	MinFaceSize *uint64 `json:"MinFaceSize,omitempty" name:"MinFaceSize"`
 
-	// 图片 base64 数据。支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
+	// 图片 base64 数据，base64 编码后大小不可超过5M。
+	// 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
 	Image *string `json:"Image,omitempty" name:"Image"`
 
-	// 图片的 Url、Image必须提供一个，如果都提供，只使用 Url。 
+	// 图片的 Url 。对应图片 base64 编码后大小不可超过5M。
+	// Url、Image必须提供一个，如果都提供，只使用 Url。  
 	// 图片存储于腾讯云的Url可保障更高下载速度和稳定性，建议图片存储于腾讯云。 
 	// 非腾讯云存储的Url速度和稳定性可能受一定影响。
 	// 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
@@ -554,6 +564,11 @@ type DetectFaceRequest struct {
 	// 最多返回面积最大的 30 张人脸质量分信息，超过 30 张人脸（第 31 张及以后的人脸）的 FaceQualityInfo不具备参考意义。  
 	// 建议：人脸入库操作建议开启此功能。
 	NeedQualityDetection *uint64 `json:"NeedQualityDetection,omitempty" name:"NeedQualityDetection"`
+
+	// 人脸识别服务所用的算法模型版本。目前入参支持 “2.0”和“3.0“ 两个输入。  
+	// 默认为"2.0"。 
+	// 不同算法模型版本对应的人脸识别算法不同，新版本的整体效果会优于旧版本，建议使用最新版本。
+	FaceModelVersion *string `json:"FaceModelVersion,omitempty" name:"FaceModelVersion"`
 }
 
 func (r *DetectFaceRequest) ToJsonString() string {
@@ -578,6 +593,9 @@ type DetectFaceResponse struct {
 		// 人脸信息列表。
 		FaceInfos []*FaceInfo `json:"FaceInfos,omitempty" name:"FaceInfos" list`
 
+		// 人脸识别所用的算法模型版本。
+		FaceModelVersion *string `json:"FaceModelVersion,omitempty" name:"FaceModelVersion"`
+
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
@@ -595,11 +613,12 @@ func (r *DetectFaceResponse) FromJsonString(s string) error {
 type DetectLiveFaceRequest struct {
 	*tchttp.BaseRequest
 
-	// 图片 base64 数据（图片的宽高比请接近3:4，不符合宽高比的图片返回的分值不具备参考意义）。
+	// 图片 base64 数据，base64 编码后大小不可超过5M（图片的宽高比请接近3:4，不符合宽高比的图片返回的分值不具备参考意义）。
 	// 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
 	Image *string `json:"Image,omitempty" name:"Image"`
 
-	// 图片的 Url 。图片的 Url、Image必须提供一个，如果都提供，只使用 Url。 
+	// 图片的 Url 。对应图片 base64 编码后大小不可超过5M。
+	// Url、Image必须提供一个，如果都提供，只使用 Url。 
 	// （图片的宽高比请接近 3:4，不符合宽高比的图片返回的分值不具备参考意义） 
 	// 图片存储于腾讯云的Url可保障更高下载速度和稳定性，建议图片存储于腾讯云。 
 	// 非腾讯云存储的Url速度和稳定性可能受一定影响。
@@ -761,7 +780,7 @@ type FaceQualityCompleteness struct {
 type FaceQualityInfo struct {
 
 	// 质量分: [0,100]，综合评价图像质量是否适合人脸识别，分数越高质量越好。 
-	// 正常情况，只需要使用Score作为质量分总体的判断标准即可。
+	// 正常情况，只需要使用Score作为质量分总体的判断标准即可。Sharpness、Brightness、Completeness等细项分仅供参考。
 	// 参考范围：[0,40]较差，[40,60] 一般，[60,80]较好，[80,100]很好。 
 	// 建议：人脸入库选取70以上的图片。
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -1276,10 +1295,12 @@ type SearchFacesRequest struct {
 	// 希望搜索的人员库列表，上限100个。
 	GroupIds []*string `json:"GroupIds,omitempty" name:"GroupIds" list`
 
-	// 图片 base64 数据。支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
+	// 图片 base64 数据，base64 编码后大小不可超过5M。
+	// 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
 	Image *string `json:"Image,omitempty" name:"Image"`
 
-	// 图片的 Url、Image必须提供一个，如果都提供，只使用 Url。
+	// 图片的 Url 。对应图片 base64 编码后大小不可超过5M。
+	// Url、Image必须提供一个，如果都提供，只使用 Url。  
 	// 图片存储于腾讯云的Url可保障更高下载速度和稳定性，建议图片存储于腾讯云。 
 	// 非腾讯云存储的Url速度和稳定性可能受一定影响。
 	// 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
@@ -1341,12 +1362,13 @@ type VerifyFaceRequest struct {
 	// 待验证的人员ID。人员ID具体信息请参考人员库管理相关接口。
 	PersonId *string `json:"PersonId,omitempty" name:"PersonId"`
 
-	// 图片 base64 数据。
+	// 图片 base64 数据，base64 编码后大小不可超过5M。
 	// 若图片中包含多张人脸，只选取其中人脸面积最大的人脸。
 	// 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
 	Image *string `json:"Image,omitempty" name:"Image"`
 
-	// 图片的 Url 。 图片的 Url、Image必须提供一个，如果都提供，只使用 Url。 
+	// 图片的 Url 。对应图片 base64 编码后大小不可超过5M。
+	// Url、Image必须提供一个，如果都提供，只使用 Url。  
 	// 图片存储于腾讯云的Url可保障更高下载速度和稳定性，建议图片存储于腾讯云。 
 	// 非腾讯云存储的Url速度和稳定性可能受一定影响。
 	// 若图片中包含多张人脸，只选取其中人脸面积最大的人脸。

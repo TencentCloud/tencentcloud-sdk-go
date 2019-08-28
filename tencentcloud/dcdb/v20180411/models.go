@@ -539,6 +539,12 @@ type DCDBShardInfo struct {
 
 	// 数字分片Id（过时字段，请勿依赖该值）
 	ShardId *int64 `json:"ShardId,omitempty" name:"ShardId"`
+
+	// 产品ProductID
+	Pid *int64 `json:"Pid,omitempty" name:"Pid"`
+
+	// Proxy版本
+	ProxyVersion *string `json:"ProxyVersion,omitempty" name:"ProxyVersion"`
 }
 
 type Database struct {
@@ -920,6 +926,9 @@ type DescribeDCDBInstancesRequest struct {
 
 	// 标识是否使用ExclusterType字段, false不使用，true使用
 	IsFilterExcluster *bool `json:"IsFilterExcluster,omitempty" name:"IsFilterExcluster"`
+
+	// 独享集群ID
+	ExclusterIds []*string `json:"ExclusterIds,omitempty" name:"ExclusterIds" list`
 }
 
 func (r *DescribeDCDBInstancesRequest) ToJsonString() string {

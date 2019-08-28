@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package v20190311
+package v20190627
 
 import (
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
@@ -20,7 +20,7 @@ import (
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
 )
 
-const APIVersion = "2019-03-11"
+const APIVersion = "2019-06-27"
 
 type Client struct {
     common.Client
@@ -42,31 +42,6 @@ func NewClient(credential *common.Credential, region string, clientProfile *prof
     return
 }
 
-
-func NewResetRequest() (request *ResetRequest) {
-    request = &ResetRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    request.Init().WithApiInfo("tbp", APIVersion, "Reset")
-    return
-}
-
-func NewResetResponse() (response *ResetResponse) {
-    response = &ResetResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    }
-    return
-}
-
-// 对当前机器人的会话状态进行复位
-func (c *Client) Reset(request *ResetRequest) (response *ResetResponse, err error) {
-    if request == nil {
-        request = NewResetRequest()
-    }
-    response = NewResetResponse()
-    err = c.Send(request, response)
-    return
-}
 
 func NewTextProcessRequest() (request *TextProcessRequest) {
     request = &TextProcessRequest{
@@ -108,7 +83,7 @@ func NewTextResetResponse() (response *TextResetResponse) {
     return
 }
 
-// 会话重置接口
+// 会话重置接口。
 func (c *Client) TextReset(request *TextResetRequest) (response *TextResetResponse, err error) {
     if request == nil {
         request = NewTextResetRequest()

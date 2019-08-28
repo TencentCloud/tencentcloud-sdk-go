@@ -235,6 +235,15 @@ type ComputeNodeMetrics struct {
 	AbnormalCount *uint64 `json:"AbnormalCount,omitempty" name:"AbnormalCount"`
 }
 
+type CpmVirtualPrivateCloud struct {
+
+	// 黑石私有网络ID
+	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
+
+	// 黑石子网ID
+	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
+}
+
 type CreateComputeEnvRequest struct {
 	*tchttp.BaseRequest
 
@@ -275,6 +284,49 @@ func (r *CreateComputeEnvResponse) ToJsonString() string {
 }
 
 func (r *CreateComputeEnvResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateCpmComputeEnvRequest struct {
+	*tchttp.BaseRequest
+
+	// 计算环境信息
+	ComputeEnv *NamedCpmComputeEnv `json:"ComputeEnv,omitempty" name:"ComputeEnv"`
+
+	// 位置信息
+	Placement *Placement `json:"Placement,omitempty" name:"Placement"`
+
+	// 用于保证请求幂等性的字符串。该字符串由用户生成，需保证不同请求之间唯一，最大值不超过64个ASCII字符。若不指定该参数，则无法保证请求的幂等性。
+	ClientToken *string `json:"ClientToken,omitempty" name:"ClientToken"`
+}
+
+func (r *CreateCpmComputeEnvRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateCpmComputeEnvRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateCpmComputeEnvResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 计算环境ID
+		EnvId *string `json:"EnvId,omitempty" name:"EnvId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateCpmComputeEnvResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateCpmComputeEnvResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -1270,6 +1322,30 @@ type EnvData struct {
 	VirtualPrivateClouds []*VirtualPrivateCloud `json:"VirtualPrivateClouds,omitempty" name:"VirtualPrivateClouds" list`
 }
 
+type EnvDataCpm struct {
+
+	// 黑石可用区列表。可通过黑石[DescribeRegions](https://cloud.tencent.com/document/api/386/33564)接口查询。目前仅支持一个可用区。
+	Zones []*string `json:"Zones,omitempty" name:"Zones" list`
+
+	// 黑石计算单元类型列表。如v3.c2.medium，更详细的ComputeType参考[黑石竞价实例产品文档](https://cloud.tencent.com/document/product/386/30256)。目前仅支持一个计算单元类型。
+	ComputeTypes []*string `json:"ComputeTypes,omitempty" name:"ComputeTypes" list`
+
+	// 黑石操作系统类型ID。
+	OsTypeId *uint64 `json:"OsTypeId,omitempty" name:"OsTypeId"`
+
+	// 黑石VPC列表，目前仅支持一个VPC。
+	VirtualPrivateClouds []*CpmVirtualPrivateCloud `json:"VirtualPrivateClouds,omitempty" name:"VirtualPrivateClouds" list`
+
+	// DeployType参数值为fast时，将选取黑石预部署机器发货，发货快。如果无此参数，则选取黑石常规机器发货。
+	DeployType *string `json:"DeployType,omitempty" name:"DeployType"`
+
+	// 出价策略。默认取值为SpotAsPriceGo，表示出价方式为随市场价的策略。目前只可取值SpotAsPriceGo。
+	SpotStrategy *string `json:"SpotStrategy,omitempty" name:"SpotStrategy"`
+
+	// 设置黑石竞价实例密码。若不指定会生成随机密码，可到站内信中查看。
+	Passwd *string `json:"Passwd,omitempty" name:"Passwd"`
+}
+
 type EnvVar struct {
 
 	// 环境变量名称
@@ -1677,6 +1753,36 @@ type NamedComputeEnv struct {
 
 	// agent运行模式，适用于Windows系统
 	AgentRunningMode *AgentRunningMode `json:"AgentRunningMode,omitempty" name:"AgentRunningMode"`
+
+	// 通知信息
+	Notifications *Notification `json:"Notifications,omitempty" name:"Notifications"`
+
+	// 非活跃节点处理策略，默认“RECREATE”，即对于实例创建失败或异常退还的计算节点，定期重新创建实例资源。
+	ActionIfComputeNodeInactive *string `json:"ActionIfComputeNodeInactive,omitempty" name:"ActionIfComputeNodeInactive"`
+}
+
+type NamedCpmComputeEnv struct {
+
+	// 计算环境名称
+	EnvName *string `json:"EnvName,omitempty" name:"EnvName"`
+
+	// 计算环境具体参数
+	EnvData *EnvDataCpm `json:"EnvData,omitempty" name:"EnvData"`
+
+	// 计算节点期望个数
+	DesiredComputeNodeCount *int64 `json:"DesiredComputeNodeCount,omitempty" name:"DesiredComputeNodeCount"`
+
+	// 计算环境描述
+	EnvDescription *string `json:"EnvDescription,omitempty" name:"EnvDescription"`
+
+	// 计算环境管理类型
+	EnvType *string `json:"EnvType,omitempty" name:"EnvType"`
+
+	// 授权信息
+	Authentications []*Authentication `json:"Authentications,omitempty" name:"Authentications" list`
+
+	// 输入映射信息
+	InputMappings []*InputMapping `json:"InputMappings,omitempty" name:"InputMappings" list`
 
 	// 通知信息
 	Notifications *Notification `json:"Notifications,omitempty" name:"Notifications"`

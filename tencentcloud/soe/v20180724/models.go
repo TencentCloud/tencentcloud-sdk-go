@@ -32,7 +32,7 @@ type InitOralProcessRequest struct {
 	// 语音输入模式，0：流式分片，1：非流式一次性评估
 	WorkMode *int64 `json:"WorkMode,omitempty" name:"WorkMode"`
 
-	// 评估模式，0：词模式（中文评测模式下为文字模式），1：句子模式，2：段落模式，3：自由说模式，当为词模式评估时，能够提供每个音节的评估信息，当为句子模式时，能够提供完整度和流利度信息。
+	// 评估模式，0：词模式（中文评测模式下为文字模式），1：句子模式，2：段落模式，3：自由说模式，当为词模式评估时，能够提供每个音节的评估信息，当为句子模式时，能够提供完整度和流利度信息。4: 英文单词音素诊断评测模式，针对一个单词音素诊断评测。
 	EvalMode *int64 `json:"EvalMode,omitempty" name:"EvalMode"`
 
 	// 评价苛刻指数，取值为[1.0 - 4.0]范围内的浮点数，用于平滑不同年龄段的分数，1.0为小年龄段，4.0为最高年龄段
@@ -337,7 +337,7 @@ type TransmitOralProcessWithInitRequest struct {
 	// 是否传输完毕标志，若为0表示未完毕，若为1则传输完毕开始评估，非流式模式下无意义。
 	IsEnd *int64 `json:"IsEnd,omitempty" name:"IsEnd"`
 
-	// 语音文件类型 	1:raw, 2:wav, 3:mp3(三种格式目前仅支持16k采样率16bit编码单声道，如有不一致可能导致评估不准确或失败)。
+	// 语音文件类型 	1: raw, 2: wav, 3: mp3, 4: speex (语言文件格式目前仅支持 16k 采样率 16bit 编码单声道，如有不一致可能导致评估不准确或失败)。
 	VoiceFileType *int64 `json:"VoiceFileType,omitempty" name:"VoiceFileType"`
 
 	// 语音编码类型	1:pcm。
@@ -355,7 +355,7 @@ type TransmitOralProcessWithInitRequest struct {
 	// 语音输入模式，0：流式分片，1：非流式一次性评估
 	WorkMode *int64 `json:"WorkMode,omitempty" name:"WorkMode"`
 
-	// 评估模式，0：词模式（中文评测模式下为文字模式），1：句子模式，2：段落模式，3：自由说模式，当为词模式评估时，能够提供每个音节的评估信息，当为句子模式时，能够提供完整度和流利度信息。
+	// 评估模式，0：词模式（中文评测模式下为文字模式），1：句子模式，2：段落模式，3：自由说模式，当为词模式评估时，能够提供每个音节的评估信息，当为句子模式时，能够提供完整度和流利度信息，4：单词纠错模式：能够对单词和句子中的读错读音进行纠正，给出参考正确读音。
 	EvalMode *int64 `json:"EvalMode,omitempty" name:"EvalMode"`
 
 	// 评价苛刻指数，取值为[1.0 - 4.0]范围内的浮点数，用于平滑不同年龄段的分数，1.0为小年龄段，4.0为最高年龄段
@@ -439,10 +439,10 @@ func (r *TransmitOralProcessWithInitResponse) FromJsonString(s string) error {
 
 type WordRsp struct {
 
-	// 当前单词语音起始时间点，单位为ms
+	// 当前单词语音起始时间点，单位为ms，该字段段落模式下无意义。
 	MemBeginTime *int64 `json:"MemBeginTime,omitempty" name:"MemBeginTime"`
 
-	// 当前单词语音终止时间点，单位为ms
+	// 当前单词语音终止时间点，单位为ms，该字段段落模式下无意义。
 	MemEndTime *int64 `json:"MemEndTime,omitempty" name:"MemEndTime"`
 
 	// 单词发音准确度，取值范围[-1, 100]，当取-1时指完全不匹配

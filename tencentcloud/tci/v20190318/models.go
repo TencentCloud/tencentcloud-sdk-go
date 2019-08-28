@@ -1860,6 +1860,9 @@ type ModifyPersonResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
+		// 人脸信息
+		FaceInfoSet []*FaceInfo `json:"FaceInfoSet,omitempty" name:"FaceInfoSet" list`
+
 		// 人员所属人员库标识符
 		LibraryId *string `json:"LibraryId,omitempty" name:"LibraryId"`
 
@@ -2189,7 +2192,7 @@ type SubmitDoubleVideoHighlightsRequest struct {
 	PersonIds []*string `json:"PersonIds,omitempty" name:"PersonIds" list`
 
 	// 人脸检索的相似度阈值，默认值0.89。建议留空。
-	SimThreshold *int64 `json:"SimThreshold,omitempty" name:"SimThreshold"`
+	SimThreshold *float64 `json:"SimThreshold,omitempty" name:"SimThreshold"`
 
 	// 老师视频url
 	TeacherFileContent *string `json:"TeacherFileContent,omitempty" name:"TeacherFileContent"`

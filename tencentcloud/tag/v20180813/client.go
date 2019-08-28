@@ -168,6 +168,31 @@ func (c *Client) DescribeResourceTagsByResourceIds(request *DescribeResourceTags
     return
 }
 
+func NewDescribeResourcesByTagsRequest() (request *DescribeResourcesByTagsRequest) {
+    request = &DescribeResourcesByTagsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tag", APIVersion, "DescribeResourcesByTags")
+    return
+}
+
+func NewDescribeResourcesByTagsResponse() (response *DescribeResourcesByTagsResponse) {
+    response = &DescribeResourcesByTagsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 通过标签查询资源列表
+func (c *Client) DescribeResourcesByTags(request *DescribeResourcesByTagsRequest) (response *DescribeResourcesByTagsResponse, err error) {
+    if request == nil {
+        request = NewDescribeResourcesByTagsRequest()
+    }
+    response = NewDescribeResourcesByTagsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeTagKeysRequest() (request *DescribeTagKeysRequest) {
     request = &DescribeTagKeysRequest{
         BaseRequest: &tchttp.BaseRequest{},

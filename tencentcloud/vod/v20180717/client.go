@@ -59,7 +59,7 @@ func NewApplyUploadResponse() (response *ApplyUploadResponse) {
 }
 
 // * 该接口用于申请媒体文件（和封面文件）的上传，获取文件上传到云点播的元信息（包括上传路径、上传签名等），用于后续上传接口。
-// * 上传流程请参考[服务端上传综述](https://cloud.tencent.com/document/product/266/9759)。
+// * 上传流程请参考 [服务端上传综述](/document/product/266/9759)。
 func (c *Client) ApplyUpload(request *ApplyUploadRequest) (response *ApplyUploadResponse, err error) {
     if request == nil {
         request = NewApplyUploadRequest()

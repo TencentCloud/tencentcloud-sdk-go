@@ -821,7 +821,8 @@ func NewSubmitDoubleVideoHighlightsResponse() (response *SubmitDoubleVideoHighli
     return
 }
 
-// 发起双路视频生成精彩集锦接口。该接口可以通过客户传入的学生音视频及老师视频两路Url，自动生成一堂课程的精彩集锦。需要通过SubmitDoubleVideoHighlights接口获取生成结果。
+// 发起双路视频生成精彩集锦接口。该接口可以通过客户传入的学生音视频及老师视频两路Url，自动生成一堂课程的精彩集锦。需要通过DescribeHighlightResult
+// 接口获取生成结果。
 func (c *Client) SubmitDoubleVideoHighlights(request *SubmitDoubleVideoHighlightsRequest) (response *SubmitDoubleVideoHighlightsResponse, err error) {
     if request == nil {
         request = NewSubmitDoubleVideoHighlightsRequest()
