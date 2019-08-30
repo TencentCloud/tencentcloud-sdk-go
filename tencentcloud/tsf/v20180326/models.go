@@ -127,6 +127,10 @@ type ApplicationForPage struct {
 	// 更新时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
+
+	// 应用资源类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ApplicationResourceType *string `json:"ApplicationResourceType,omitempty" name:"ApplicationResourceType"`
 }
 
 type Cluster struct {
@@ -509,6 +513,9 @@ type CreateApplicationRequest struct {
 
 	// 应用微服务类型
 	MicroserviceType *string `json:"MicroserviceType,omitempty" name:"MicroserviceType"`
+
+	// 应有资源类型
+	ApplicationResourceType *string `json:"ApplicationResourceType,omitempty" name:"ApplicationResourceType"`
 }
 
 func (r *CreateApplicationRequest) ToJsonString() string {
@@ -781,6 +788,9 @@ type CreateNamespaceRequest struct {
 
 	// 命名空间描述
 	NamespaceDesc *string `json:"NamespaceDesc,omitempty" name:"NamespaceDesc"`
+
+	// 命名空间资源类型(默认值为DEF)
+	NamespaceResourceType *string `json:"NamespaceResourceType,omitempty" name:"NamespaceResourceType"`
 }
 
 func (r *CreateNamespaceRequest) ToJsonString() string {
@@ -796,10 +806,9 @@ type CreateNamespaceResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 创建命名空间是否成功。
-	// true：创建成功。
-	// false：创建失败。
-		Result *bool `json:"Result,omitempty" name:"Result"`
+		// 成功时为命名空间ID，失败为null
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Result *string `json:"Result,omitempty" name:"Result"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1320,6 +1329,9 @@ type DescribeApplicationsRequest struct {
 
 	// 应用的微服务类型
 	MicroserviceType *string `json:"MicroserviceType,omitempty" name:"MicroserviceType"`
+
+	// 应用资源类型数组
+	ApplicationResourceTypeList []*string `json:"ApplicationResourceTypeList,omitempty" name:"ApplicationResourceTypeList" list`
 }
 
 func (r *DescribeApplicationsRequest) ToJsonString() string {
@@ -1658,6 +1670,9 @@ type DescribeGroupsRequest struct {
 
 	// 集群ID
 	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 部署组资源类型列表
+	GroupResourceTypeList []*string `json:"GroupResourceTypeList,omitempty" name:"GroupResourceTypeList" list`
 }
 
 func (r *DescribeGroupsRequest) ToJsonString() string {
@@ -1903,6 +1918,9 @@ type DescribeSimpleApplicationsRequest struct {
 
 	// 微服务类型
 	MicroserviceType *string `json:"MicroserviceType,omitempty" name:"MicroserviceType"`
+
+	// 资源类型数组
+	ApplicationResourceTypeList []*string `json:"ApplicationResourceTypeList,omitempty" name:"ApplicationResourceTypeList" list`
 }
 
 func (r *DescribeSimpleApplicationsRequest) ToJsonString() string {
@@ -2059,6 +2077,9 @@ type DescribeSimpleNamespacesRequest struct {
 
 	// 命名空间ID，不传入时查询全量
 	NamespaceId *string `json:"NamespaceId,omitempty" name:"NamespaceId"`
+
+	// 查询资源类型列表
+	NamespaceResourceTypeList []*string `json:"NamespaceResourceTypeList,omitempty" name:"NamespaceResourceTypeList" list`
 }
 
 func (r *DescribeSimpleNamespacesRequest) ToJsonString() string {
@@ -2897,6 +2918,26 @@ type SimpleApplication struct {
 	// 应用微服务类型
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MicroserviceType *string `json:"MicroserviceType,omitempty" name:"MicroserviceType"`
+
+	// ApplicationDesc
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ApplicationDesc *string `json:"ApplicationDesc,omitempty" name:"ApplicationDesc"`
+
+	// ProgLang
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProgLang *string `json:"ProgLang,omitempty" name:"ProgLang"`
+
+	// ApplicationResourceType
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ApplicationResourceType *string `json:"ApplicationResourceType,omitempty" name:"ApplicationResourceType"`
+
+	// CreateTime
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// UpdateTime
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
 }
 
 type SimpleGroup struct {

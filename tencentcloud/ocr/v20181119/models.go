@@ -874,6 +874,140 @@ func (r *LicensePlateOCRResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type MLIDCardOCRRequest struct {
+	*tchttp.BaseRequest
+
+	// 图片的 Base64 值。
+	// 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
+	// 支持的图片大小：所下载图片经Base64编码后不超过 3M。图片下载时间不超过 3 秒。
+	ImageBase64 *string `json:"ImageBase64,omitempty" name:"ImageBase64"`
+
+	// 图片的 Url 地址。( 中国地区之外不支持这个字段 )
+	// 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
+	// 支持的图片大小：所下载图片经 Base64 编码后不超过 3M。图片下载时间不超过 3 秒。
+	// 图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。
+	// 非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
+
+	// 是否返回图片
+	RetImage *bool `json:"RetImage,omitempty" name:"RetImage"`
+}
+
+func (r *MLIDCardOCRRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *MLIDCardOCRRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type MLIDCardOCRResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 身份证号
+		ID *string `json:"ID,omitempty" name:"ID"`
+
+		// 姓名
+		Name *string `json:"Name,omitempty" name:"Name"`
+
+		// 地址
+		Address *string `json:"Address,omitempty" name:"Address"`
+
+		// 性别
+		Sex *string `json:"Sex,omitempty" name:"Sex"`
+
+		// 告警码
+	// -9103	证照翻拍告警
+	// -9102	证照复印件告警
+		Warn []*int64 `json:"Warn,omitempty" name:"Warn" list`
+
+		// 证件图片
+		Image *string `json:"Image,omitempty" name:"Image"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *MLIDCardOCRResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *MLIDCardOCRResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type MLIDPassportOCRRequest struct {
+	*tchttp.BaseRequest
+
+	// 图片的 Base64 值。
+	// 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
+	// 支持的图片大小：所下载图片经Base64编码后不超过 3M。图片下载时间不超过 3 秒。
+	ImageBase64 *string `json:"ImageBase64,omitempty" name:"ImageBase64"`
+
+	// 是否返回图片
+	RetImage *bool `json:"RetImage,omitempty" name:"RetImage"`
+}
+
+func (r *MLIDPassportOCRRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *MLIDPassportOCRRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type MLIDPassportOCRResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 护照ID
+		ID *string `json:"ID,omitempty" name:"ID"`
+
+		// 姓名
+		Name *string `json:"Name,omitempty" name:"Name"`
+
+		// 出生日期
+		DateOfBirth *string `json:"DateOfBirth,omitempty" name:"DateOfBirth"`
+
+		// 性别（F女，M男）
+		Sex *string `json:"Sex,omitempty" name:"Sex"`
+
+		// 有效期
+		DateOfExpiration *string `json:"DateOfExpiration,omitempty" name:"DateOfExpiration"`
+
+		// 发行国
+		IssuingCountry *string `json:"IssuingCountry,omitempty" name:"IssuingCountry"`
+
+		// 国籍
+		Nationality *string `json:"Nationality,omitempty" name:"Nationality"`
+
+		// 告警码
+	// -9103	证照翻拍告警
+	// -9102	证照复印件告警
+		Warn []*int64 `json:"Warn,omitempty" name:"Warn" list`
+
+		// 证件图片
+		Image *string `json:"Image,omitempty" name:"Image"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *MLIDPassportOCRResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *MLIDPassportOCRResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type PermitOCRRequest struct {
 	*tchttp.BaseRequest
 
@@ -1115,17 +1249,17 @@ type TextArithmetic struct {
 	// 识别出的文本行内容
 	DetectedText *string `json:"DetectedText,omitempty" name:"DetectedText"`
 
-	// 结果
+	// 算式运算结果
 	Result *bool `json:"Result,omitempty" name:"Result"`
 
-	// 保留字段，暂无意义
+	// 保留字段，暂不支持
 	Confidence *int64 `json:"Confidence,omitempty" name:"Confidence"`
 
-	// 文本行坐标，以四个顶点坐标表示（预留字段，目前不支持）
+	// 文本行坐标，以四个顶点坐标表示（保留字段，暂不支持）
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Polygon []*Coord `json:"Polygon,omitempty" name:"Polygon" list`
 
-	// 此字段为扩展字段
+	// 保留字段，暂不支持
 	AdvancedInfo *string `json:"AdvancedInfo,omitempty" name:"AdvancedInfo"`
 }
 

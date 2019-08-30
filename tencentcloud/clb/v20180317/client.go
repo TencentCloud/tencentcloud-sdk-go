@@ -83,7 +83,7 @@ func NewBatchModifyTargetWeightResponse() (response *BatchModifyTargetWeightResp
     return
 }
 
-// BatchModifyTargetWeight接口用于批量修改监听器绑定的后端机器的转发权重，当前接口只支持应用型HTTP/HTTPS监听器。
+// BatchModifyTargetWeight接口用于批量修改负载均衡监听器绑定的后端机器的转发权重，暂时只支持HTTP/HTTPS监听器。不支持传统型负载均衡。
 // 本接口为异步接口，本接口返回成功后需以返回的RequestID为入参，调用DescribeTaskStatus接口查询本次任务是否成功。
 func (c *Client) BatchModifyTargetWeight(request *BatchModifyTargetWeightRequest) (response *BatchModifyTargetWeightResponse, err error) {
     if request == nil {
@@ -518,7 +518,7 @@ func NewDescribeTargetHealthResponse() (response *DescribeTargetHealthResponse) 
     return
 }
 
-// DescribeTargetHealth 接口用来获取应用型负载均衡后端的健康检查结果。
+// DescribeTargetHealth 接口用来获取负载均衡后端服务的健康检查结果，不支持传统型负载均衡。
 func (c *Client) DescribeTargetHealth(request *DescribeTargetHealthRequest) (response *DescribeTargetHealthResponse, err error) {
     if request == nil {
         request = NewDescribeTargetHealthRequest()
@@ -644,7 +644,7 @@ func NewModifyListenerResponse() (response *ModifyListenerResponse) {
     return
 }
 
-// ModifyListener接口用来修改应用型负载均衡监听器的属性，包括监听器名称、健康检查参数、证书信息、转发策略等。
+// ModifyListener接口用来修改负载均衡监听器的属性，包括监听器名称、健康检查参数、证书信息、转发策略等。本接口不支持传统型负载均衡。
 // 本接口为异步接口，本接口返回成功后需以返回的RequestID为入参，调用DescribeTaskStatus接口查询本次任务是否成功。
 func (c *Client) ModifyListener(request *ModifyListenerRequest) (response *ModifyListenerResponse, err error) {
     if request == nil {

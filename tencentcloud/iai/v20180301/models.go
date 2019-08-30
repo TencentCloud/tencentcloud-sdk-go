@@ -922,7 +922,7 @@ type GetPersonBaseInfoResponse struct {
 		// 人员性别
 		Gender *int64 `json:"Gender,omitempty" name:"Gender"`
 
-		// 包含的人脸图片列表
+		// 包含的人脸 ID 列表
 		FaceIds []*string `json:"FaceIds,omitempty" name:"FaceIds" list`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。

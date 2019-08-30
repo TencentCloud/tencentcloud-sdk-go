@@ -22,7 +22,7 @@ import (
 
 type ActionSummaryOverviewItem struct {
 
-	// 交易类型
+	// 交易类型：包年包月新购/续费/升降配/退款、按量计费扣费、调账补偿/扣费等类型
 	ActionType *string `json:"ActionType,omitempty" name:"ActionType"`
 
 	// 交易类型名称
@@ -37,22 +37,22 @@ type ActionSummaryOverviewItem struct {
 
 type BillDetail struct {
 
-	// 产品名称
+	// 产品名称：云产品大类，如云服务器CVM、云数据库MySQL
 	BusinessCodeName *string `json:"BusinessCodeName,omitempty" name:"BusinessCodeName"`
 
-	// 子产品名称
+	// 子产品名称：云产品子类，如云服务器CVM-标准型S1
 	ProductCodeName *string `json:"ProductCodeName,omitempty" name:"ProductCodeName"`
 
-	// 计费模式
+	// 计费模式：包年包月和按量计费
 	PayModeName *string `json:"PayModeName,omitempty" name:"PayModeName"`
 
-	// 项目
+	// 项目:资源所属项目
 	ProjectName *string `json:"ProjectName,omitempty" name:"ProjectName"`
 
-	// 区域
+	// 区域：资源所属地域，如华南地区（广州）
 	RegionName *string `json:"RegionName,omitempty" name:"RegionName"`
 
-	// 可用区
+	// 可用区：资源所属可用区，如广州三区
 	ZoneName *string `json:"ZoneName,omitempty" name:"ZoneName"`
 
 	// 资源实例ID
@@ -94,13 +94,13 @@ type BillDetail struct {
 
 type BillDetailComponent struct {
 
-	// 组件名称
+	// 组件类型:资源组件类型的名称，如内存、硬盘等
 	ComponentCodeName *string `json:"ComponentCodeName,omitempty" name:"ComponentCodeName"`
 
-	// 组件类型名称
+	// 组件名称:资源组件的名称，如云数据库MySQL-内存等
 	ItemCodeName *string `json:"ItemCodeName,omitempty" name:"ItemCodeName"`
 
-	// 组件刊例价
+	// 组件刊例价:资源组件的原始价格，保持原始粒度
 	SinglePrice *string `json:"SinglePrice,omitempty" name:"SinglePrice"`
 
 	// 组件指定价
@@ -145,13 +145,13 @@ type BillDetailComponent struct {
 
 type BillResourceSummary struct {
 
-	// 产品
+	// 产品名称：云产品大类，如云服务器CVM、云数据库MySQL
 	BusinessCodeName *string `json:"BusinessCodeName,omitempty" name:"BusinessCodeName"`
 
-	// 子产品
+	// 子产品：云产品子类，如云服务器CVM-标准型S1
 	ProductCodeName *string `json:"ProductCodeName,omitempty" name:"ProductCodeName"`
 
-	// 计费模式
+	// 计费模式：包年包月和按量计费
 	PayModeName *string `json:"PayModeName,omitempty" name:"PayModeName"`
 
 	// 项目
@@ -169,7 +169,7 @@ type BillResourceSummary struct {
 	// 资源实例名称
 	ResourceName *string `json:"ResourceName,omitempty" name:"ResourceName"`
 
-	// 交易类型
+	// 交易类型：包年包月新购/续费/升降配/退款、按量计费扣费、调账补偿/扣费等类型
 	ActionTypeName *string `json:"ActionTypeName,omitempty" name:"ActionTypeName"`
 
 	// 订单ID
@@ -230,7 +230,7 @@ type BusinessSummaryOverviewItem struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	BusinessCode *string `json:"BusinessCode,omitempty" name:"BusinessCode"`
 
-	// 产品名称
+	// 产品名称：云产品大类，如云服务器CVM、云数据库MySQL
 	BusinessCodeName *string `json:"BusinessCodeName,omitempty" name:"BusinessCodeName"`
 
 	// 实际花费
@@ -869,7 +869,7 @@ type PayModeSummaryOverviewItem struct {
 	// 费用所占百分比，两位小数
 	RealTotalCostRatio *string `json:"RealTotalCostRatio,omitempty" name:"RealTotalCostRatio"`
 
-	// 按交易类型汇总消费详情
+	// 按交易类型：包年包月新购/续费/升降配/退款、按量计费扣费、调账补偿/扣费等类型汇总消费详情
 	Detail []*ActionSummaryOverviewItem `json:"Detail,omitempty" name:"Detail" list`
 }
 

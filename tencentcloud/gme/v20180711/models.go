@@ -115,6 +115,196 @@ func (r *DescribeFilterResultResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeScanResult struct {
+
+	// 业务返回码
+	Code *int64 `json:"Code,omitempty" name:"Code"`
+
+	// 数据唯一 ID
+	DataId *string `json:"DataId,omitempty" name:"DataId"`
+
+	// 检测完成的时间戳
+	ScanFinishTime *uint64 `json:"ScanFinishTime,omitempty" name:"ScanFinishTime"`
+
+	// 是否违规
+	HitFlag *bool `json:"HitFlag,omitempty" name:"HitFlag"`
+
+	// 是否为流
+	Live *bool `json:"Live,omitempty" name:"Live"`
+
+	// 业务返回描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Msg *string `json:"Msg,omitempty" name:"Msg"`
+
+	// 检测结果，Code 为 0 时返回
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ScanPiece []*ScanPiece `json:"ScanPiece,omitempty" name:"ScanPiece" list`
+
+	// 提交检测的时间戳
+	ScanStartTime *uint64 `json:"ScanStartTime,omitempty" name:"ScanStartTime"`
+
+	// 语音检测场景，对应请求时的 Scene
+	Scenes []*string `json:"Scenes,omitempty" name:"Scenes" list`
+
+	// 语音检测任务 ID，由后台分配
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 文件或接流地址
+	Url *string `json:"Url,omitempty" name:"Url"`
+
+	// 检测任务执行结果状态，分别为：
+	// <li>Start: 任务开始</li>
+	// <li>Success: 成功结束</li>
+	// <li>Error: 异常</li>
+	Status *string `json:"Status,omitempty" name:"Status"`
+}
+
+type DescribeScanResultListRequest struct {
+	*tchttp.BaseRequest
+
+	// 应用 ID，在控制台统一创建。
+	BizId *uint64 `json:"BizId,omitempty" name:"BizId"`
+
+	// 查询的任务 ID 列表，任务 ID 列表最多支持 100 个。
+	TaskIdList []*string `json:"TaskIdList,omitempty" name:"TaskIdList" list`
+}
+
+func (r *DescribeScanResultListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeScanResultListRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeScanResultListResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 要查询的语音检测任务的结果
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Data []*DescribeScanResult `json:"Data,omitempty" name:"Data" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeScanResultListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeScanResultListResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ScanDetail struct {
+
+	// 违规场景，参照Label定义
+	Label *string `json:"Label,omitempty" name:"Label"`
+
+	// 该场景下概率[0.00,100.00],分值越大违规概率越高
+	Rate *string `json:"Rate,omitempty" name:"Rate"`
+
+	// 违规关键字
+	KeyWord *string `json:"KeyWord,omitempty" name:"KeyWord"`
+
+	// 关键字在音频的开始时间，从0开始的偏移量，单位为毫秒
+	StartTime *uint64 `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 关键字在音频的结束时间，从0开始的偏移量,，单位为毫秒
+	EndTime *uint64 `json:"EndTime,omitempty" name:"EndTime"`
+}
+
+type ScanPiece struct {
+
+	// 流检测时返回，音频转存地址，保留30min
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DumpUrl *string `json:"DumpUrl,omitempty" name:"DumpUrl"`
+
+	// 是否违规
+	HitFlag *bool `json:"HitFlag,omitempty" name:"HitFlag"`
+
+	// 违规主要类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MainType *string `json:"MainType,omitempty" name:"MainType"`
+
+	// 语音检测详情
+	ScanDetail []*ScanDetail `json:"ScanDetail,omitempty" name:"ScanDetail" list`
+}
+
+type ScanVoiceRequest struct {
+	*tchttp.BaseRequest
+
+	// 应用ID，登录控制台创建应用得到的AppID。
+	BizId *uint64 `json:"BizId,omitempty" name:"BizId"`
+
+	// 语音检测场景，参数值目前要求为 default。 预留场景设置： 谩骂、色情、涉政、广告、暴恐、违禁等场景，<a href="#Label_Value">具体取值见上述 Label 说明。</a>
+	Scenes []*string `json:"Scenes,omitempty" name:"Scenes" list`
+
+	// 是否为直播流。值为 false 时表示普通语音文件检测；为 true 时表示语音流检测。
+	Live *bool `json:"Live,omitempty" name:"Live"`
+
+	// 语音检测任务列表，列表最多支持100个检测任务。结构体中包含：
+	// <li>DataId：数据的唯一ID</li>
+	// <li>Url：数据文件的url，为 urlencode 编码，流式则为拉流地址</li>
+	Tasks []*Task `json:"Tasks,omitempty" name:"Tasks" list`
+
+	// 异步检测结果回调地址，具体见上述<a href="#Callback_Declare">回调相关说明</a>。（说明：该字段为空时，必须通过接口(查询语音检测结果)获取检测结果）。
+	Callback *string `json:"Callback,omitempty" name:"Callback"`
+}
+
+func (r *ScanVoiceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ScanVoiceRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ScanVoiceResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 语音检测返回。Data 字段是 JSON 数组，每一个元素包含：<li>DataId： 请求中对应的 DataId。</li>
+	// <li>TaskID ：该检测任务的 ID，用于轮询语音检测结果。</li>
+		Data []*ScanVoiceResult `json:"Data,omitempty" name:"Data" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ScanVoiceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ScanVoiceResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ScanVoiceResult struct {
+
+	// 数据ID
+	DataId *string `json:"DataId,omitempty" name:"DataId"`
+
+	// 任务ID
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+}
+
+type Task struct {
+
+	// 数据的唯一ID
+	DataId *string `json:"DataId,omitempty" name:"DataId"`
+
+	// 数据文件的url，为 urlencode 编码，流式则为拉流地址
+	Url *string `json:"Url,omitempty" name:"Url"`
+}
+
 type VoiceFilter struct {
 
 	// 过滤类型，1：政治，2：色情，3：涉毒，4：谩骂

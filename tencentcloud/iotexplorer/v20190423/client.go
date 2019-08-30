@@ -218,6 +218,31 @@ func (c *Client) DeleteStudioProduct(request *DeleteStudioProductRequest) (respo
     return
 }
 
+func NewDescribeDeviceRequest() (request *DescribeDeviceRequest) {
+    request = &DescribeDeviceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "DescribeDevice")
+    return
+}
+
+func NewDescribeDeviceResponse() (response *DescribeDeviceResponse) {
+    response = &DescribeDeviceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 用于查看某个设备的详细信息
+func (c *Client) DescribeDevice(request *DescribeDeviceRequest) (response *DescribeDeviceResponse, err error) {
+    if request == nil {
+        request = NewDescribeDeviceRequest()
+    }
+    response = NewDescribeDeviceResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeDeviceDataRequest() (request *DescribeDeviceDataRequest) {
     request = &DescribeDeviceDataRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -343,6 +368,31 @@ func (c *Client) DescribeStudioProduct(request *DescribeStudioProductRequest) (r
     return
 }
 
+func NewGetDeviceListRequest() (request *GetDeviceListRequest) {
+    request = &GetDeviceListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "GetDeviceList")
+    return
+}
+
+func NewGetDeviceListResponse() (response *GetDeviceListResponse) {
+    response = &GetDeviceListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 用于查询某个产品下的设备列表
+func (c *Client) GetDeviceList(request *GetDeviceListRequest) (response *GetDeviceListResponse, err error) {
+    if request == nil {
+        request = NewGetDeviceListRequest()
+    }
+    response = NewGetDeviceListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewGetProjectListRequest() (request *GetProjectListRequest) {
     request = &GetProjectListRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -389,6 +439,31 @@ func (c *Client) GetStudioProductList(request *GetStudioProductListRequest) (res
         request = NewGetStudioProductListRequest()
     }
     response = NewGetStudioProductListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewListEventHistoryRequest() (request *ListEventHistoryRequest) {
+    request = &ListEventHistoryRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "ListEventHistory")
+    return
+}
+
+func NewListEventHistoryResponse() (response *ListEventHistoryResponse) {
+    response = &ListEventHistoryResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 获取设备的历史事件
+func (c *Client) ListEventHistory(request *ListEventHistoryRequest) (response *ListEventHistoryResponse, err error) {
+    if request == nil {
+        request = NewListEventHistoryRequest()
+    }
+    response = NewListEventHistoryResponse()
     err = c.Send(request, response)
     return
 }

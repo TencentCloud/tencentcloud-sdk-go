@@ -494,6 +494,31 @@ func (c *Client) DescribeAutoScalingActivities(request *DescribeAutoScalingActiv
     return
 }
 
+func NewDescribeAutoScalingGroupLastActivitiesRequest() (request *DescribeAutoScalingGroupLastActivitiesRequest) {
+    request = &DescribeAutoScalingGroupLastActivitiesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("as", APIVersion, "DescribeAutoScalingGroupLastActivities")
+    return
+}
+
+func NewDescribeAutoScalingGroupLastActivitiesResponse() (response *DescribeAutoScalingGroupLastActivitiesResponse) {
+    response = &DescribeAutoScalingGroupLastActivitiesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（DescribeAutoScalingGroupLastActivities）用于查询伸缩组的最新一次伸缩活动记录。
+func (c *Client) DescribeAutoScalingGroupLastActivities(request *DescribeAutoScalingGroupLastActivitiesRequest) (response *DescribeAutoScalingGroupLastActivitiesResponse, err error) {
+    if request == nil {
+        request = NewDescribeAutoScalingGroupLastActivitiesRequest()
+    }
+    response = NewDescribeAutoScalingGroupLastActivitiesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeAutoScalingGroupsRequest() (request *DescribeAutoScalingGroupsRequest) {
     request = &DescribeAutoScalingGroupsRequest{
         BaseRequest: &tchttp.BaseRequest{},

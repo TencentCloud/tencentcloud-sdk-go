@@ -1056,6 +1056,43 @@ func (r *DescribeAutoScalingActivitiesResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeAutoScalingGroupLastActivitiesRequest struct {
+	*tchttp.BaseRequest
+
+	// 伸缩组ID列表
+	AutoScalingGroupIds []*string `json:"AutoScalingGroupIds,omitempty" name:"AutoScalingGroupIds" list`
+}
+
+func (r *DescribeAutoScalingGroupLastActivitiesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeAutoScalingGroupLastActivitiesRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeAutoScalingGroupLastActivitiesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 符合条件的伸缩活动信息集合。说明：伸缩组伸缩活动不存在的则不返回，如传50个伸缩组ID，返回45条数据，说明其中有5个伸缩组伸缩活动不存在。
+		ActivitySet []*Activity `json:"ActivitySet,omitempty" name:"ActivitySet" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeAutoScalingGroupLastActivitiesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeAutoScalingGroupLastActivitiesResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeAutoScalingGroupsRequest struct {
 	*tchttp.BaseRequest
 
@@ -1656,7 +1693,7 @@ type ForwardLoadBalancer struct {
 	// 目标规则属性列表
 	TargetAttributes []*TargetAttribute `json:"TargetAttributes,omitempty" name:"TargetAttributes" list`
 
-	// 转发规则ID
+	// 转发规则ID，注意：针对七层监听器此参数必填
 	LocationId *string `json:"LocationId,omitempty" name:"LocationId"`
 }
 

@@ -4780,7 +4780,7 @@ type MediaMiniProgramReviewElem struct {
 type MediaMiniProgramReviewInfo struct {
 
 	// 审核信息列表。
-	MiniProgramReivewList []*MediaMiniProgramReviewInfoItem `json:"MiniProgramReivewList,omitempty" name:"MiniProgramReivewList" list`
+	MiniProgramReviewList []*MediaMiniProgramReviewInfoItem `json:"MiniProgramReviewList,omitempty" name:"MiniProgramReviewList" list`
 }
 
 type MediaMiniProgramReviewInfoItem struct {
@@ -4802,7 +4802,7 @@ type MediaMiniProgramReviewInfoItem struct {
 
 	// 小程序审核元素。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ReviewSummery *MediaMiniProgramReviewElem `json:"ReviewSummery,omitempty" name:"ReviewSummery"`
+	ReviewSummery []*MediaMiniProgramReviewElem `json:"ReviewSummery,omitempty" name:"ReviewSummery" list`
 }
 
 type MediaOutputInfo struct {

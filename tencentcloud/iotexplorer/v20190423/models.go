@@ -425,6 +425,46 @@ func (r *DescribeDeviceDataResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeDeviceRequest struct {
+	*tchttp.BaseRequest
+
+	// 产品ID
+	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
+
+	// 设备名
+	DeviceName *string `json:"DeviceName,omitempty" name:"DeviceName"`
+}
+
+func (r *DescribeDeviceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeDeviceRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeDeviceResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 设备信息
+		Device *DeviceInfo `json:"Device,omitempty" name:"Device"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeDeviceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeDeviceResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeModelDefinitionRequest struct {
 	*tchttp.BaseRequest
 
@@ -564,6 +604,114 @@ type DeviceDataHistoryItem struct {
 	Value *string `json:"Value,omitempty" name:"Value"`
 }
 
+type DeviceInfo struct {
+
+	// 设备名
+	DeviceName *string `json:"DeviceName,omitempty" name:"DeviceName"`
+
+	// 0: 离线, 1: 在线, 2: 获取失败, 3 未激活
+	Status *int64 `json:"Status,omitempty" name:"Status"`
+
+	// 设备密钥，密钥加密的设备返回
+	DevicePsk *string `json:"DevicePsk,omitempty" name:"DevicePsk"`
+
+	// 首次上线时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FirstOnlineTime *int64 `json:"FirstOnlineTime,omitempty" name:"FirstOnlineTime"`
+
+	// 最后一次上线时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LoginTime *int64 `json:"LoginTime,omitempty" name:"LoginTime"`
+
+	// 设备创建时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateTime *int64 `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 设备固件版本
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Version *string `json:"Version,omitempty" name:"Version"`
+
+	// 设备证书
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DeviceCert *string `json:"DeviceCert,omitempty" name:"DeviceCert"`
+}
+
+type EventHistoryItem struct {
+
+	// 事件的时间戳
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TimeStamp *int64 `json:"TimeStamp,omitempty" name:"TimeStamp"`
+
+	// 事件的产品ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
+
+	// 事件的设备名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DeviceName *string `json:"DeviceName,omitempty" name:"DeviceName"`
+
+	// 事件的标识符ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EventId *string `json:"EventId,omitempty" name:"EventId"`
+
+	// 事件的类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 事件的数据
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Data *string `json:"Data,omitempty" name:"Data"`
+}
+
+type GetDeviceListRequest struct {
+	*tchttp.BaseRequest
+
+	// 需要查看设备列表的产品 ID
+	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
+
+	// 分页偏移
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 分页的大小，数值范围 10-100
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+func (r *GetDeviceListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *GetDeviceListRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type GetDeviceListResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 返回的设备列表, 注意列表设备的 DevicePsk 为空, 要获取设备的 DevicePsk 请使用 DescribeDevice
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Devices []*DeviceInfo `json:"Devices,omitempty" name:"Devices" list`
+
+		// 产品下的设备总数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Total *int64 `json:"Total,omitempty" name:"Total"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *GetDeviceListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *GetDeviceListResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type GetProjectListRequest struct {
 	*tchttp.BaseRequest
 
@@ -655,6 +803,74 @@ func (r *GetStudioProductListResponse) ToJsonString() string {
 }
 
 func (r *GetStudioProductListResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ListEventHistoryRequest struct {
+	*tchttp.BaseRequest
+
+	// 产品ID
+	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
+
+	// 设备名称
+	DeviceName *string `json:"DeviceName,omitempty" name:"DeviceName"`
+
+	// 搜索的事件类型
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 起始时间, 为0 表示 当前时间 - 24h
+	StartTime *int64 `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 结束时间, 为0 表示当前时间
+	EndTime *uint64 `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 搜索上下文, 用作查询游标
+	Context *string `json:"Context,omitempty" name:"Context"`
+
+	// 单次获取的历史数据项目的最大数量
+	Size *int64 `json:"Size,omitempty" name:"Size"`
+}
+
+func (r *ListEventHistoryRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ListEventHistoryRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ListEventHistoryResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 搜索上下文, 用作查询游标
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Context *string `json:"Context,omitempty" name:"Context"`
+
+		// 搜索结果数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Total *int64 `json:"Total,omitempty" name:"Total"`
+
+		// 搜索结果是否已经结束
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Listover *bool `json:"Listover,omitempty" name:"Listover"`
+
+		// 搜集结果集
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		EventHistory []*EventHistoryItem `json:"EventHistory,omitempty" name:"EventHistory" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ListEventHistoryResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ListEventHistoryResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
