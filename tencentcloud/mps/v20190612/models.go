@@ -20,33 +20,6 @@ import (
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
-type AdaptiveDynamicStreamingTaskInput struct {
-
-	// 转自适应码流模板 ID。
-	Definition *uint64 `json:"Definition,omitempty" name:"Definition"`
-
-	// 水印列表，支持多张图片或文字水印，最大可支持 10 张。
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	WatermarkSet []*WatermarkInput `json:"WatermarkSet,omitempty" name:"WatermarkSet" list`
-
-	// 转自适应码流后文件的目标存储，不填则继承上层的 OutputStorage 值。
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	OutputStorage *TaskOutputStorage `json:"OutputStorage,omitempty" name:"OutputStorage"`
-
-	// 转自适应码流后，manifest 文件的输出路径，可以为相对路径或者绝对路径。如果不填，则默认为相对路径：`{inputName}_adaptiveDynamicStreaming_{definition}.{format}`。
-	OutputObjectPath *string `json:"OutputObjectPath,omitempty" name:"OutputObjectPath"`
-
-	// 转自适应码流（HLS）后，二级 index 文件的输出路径，只能为相对路径。如果不填，则默认为相对路径：`{inputName}_adaptiveDynamicStreaming_{definition}_{trackType}_{trackDefinition}.{format}`。
-	SubStreamManifestObjectName *string `json:"SubStreamManifestObjectName,omitempty" name:"SubStreamManifestObjectName"`
-
-	// 转自适应码流后，分片文件的输出路径，只能为相对路径。如果不填，则默认为相对路径：`{inputName}_adaptiveDynamicStreaming_{definition}_{trackType}_{trackDefinition}_{number}.{format}`。
-	SegmentObjectName *string `json:"SegmentObjectName,omitempty" name:"SegmentObjectName"`
-
-	// 转自适应码流后输出路径中的`{number}`变量的规则。
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	ObjectNumberFormat *NumberFormat `json:"ObjectNumberFormat,omitempty" name:"ObjectNumberFormat"`
-}
-
 type AiAnalysisTaskInput struct {
 
 	// 视频内容分析模板 ID。
@@ -495,6 +468,9 @@ type CreateTranscodeTemplateRequest struct {
 
 	// 音频流配置参数，当 RemoveAudio 为 0，该字段必填。
 	AudioTemplate *AudioTemplateInfo `json:"AudioTemplate,omitempty" name:"AudioTemplate"`
+
+	// 极速高清转码参数，需联系商务架构师开通后才能使用。
+	TEHDConfig *TEHDConfig `json:"TEHDConfig,omitempty" name:"TEHDConfig"`
 }
 
 func (r *CreateTranscodeTemplateRequest) ToJsonString() string {
@@ -1232,6 +1208,11 @@ type DescribeTranscodeTemplatesRequest struct {
 	// <li>PureAudio：纯音频格式，只能包含音频流的封装格式。</li>
 	ContainerType *string `json:"ContainerType,omitempty" name:"ContainerType"`
 
+	// 极速高清过滤条件，用于过滤普通转码或极速高清转码模板，可选值：
+	// <li>Common：普通转码模板；</li>
+	// <li>TEHD：极速高清模板。</li>
+	TEHDType *string `json:"TEHDType,omitempty" name:"TEHDType"`
+
 	// 分页偏移量，默认值：0。
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
 
@@ -1770,28 +1751,19 @@ type MediaProcessTaskImageSpriteResult struct {
 type MediaProcessTaskInput struct {
 
 	// 视频转码任务列表。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TranscodeTaskSet []*TranscodeTaskInput `json:"TranscodeTaskSet,omitempty" name:"TranscodeTaskSet" list`
 
 	// 视频转动图任务列表。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AnimatedGraphicTaskSet []*AnimatedGraphicTaskInput `json:"AnimatedGraphicTaskSet,omitempty" name:"AnimatedGraphicTaskSet" list`
 
 	// 对视频按时间点截图任务列表。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SnapshotByTimeOffsetTaskSet []*SnapshotByTimeOffsetTaskInput `json:"SnapshotByTimeOffsetTaskSet,omitempty" name:"SnapshotByTimeOffsetTaskSet" list`
 
 	// 对视频采样截图任务列表。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SampleSnapshotTaskSet []*SampleSnapshotTaskInput `json:"SampleSnapshotTaskSet,omitempty" name:"SampleSnapshotTaskSet" list`
 
 	// 对视频截雪碧图任务列表。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ImageSpriteTaskSet []*ImageSpriteTaskInput `json:"ImageSpriteTaskSet,omitempty" name:"ImageSpriteTaskSet" list`
-
-	// 对视频转自适应码流任务列表。
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	AdaptiveDynamicStreamingTaskSet []*AdaptiveDynamicStreamingTaskInput `json:"AdaptiveDynamicStreamingTaskSet,omitempty" name:"AdaptiveDynamicStreamingTaskSet" list`
 }
 
 type MediaProcessTaskResult struct {
@@ -2261,6 +2233,9 @@ type ModifyTranscodeTemplateRequest struct {
 
 	// 音频流配置参数。
 	AudioTemplate *AudioTemplateInfoForUpdate `json:"AudioTemplate,omitempty" name:"AudioTemplate"`
+
+	// 极速高清转码参数，需联系商务架构师开通后才能使用。
+	TEHDConfig *TEHDConfigForUpdate `json:"TEHDConfig,omitempty" name:"TEHDConfig"`
 }
 
 func (r *ModifyTranscodeTemplateRequest) ToJsonString() string {
@@ -2373,6 +2348,67 @@ type NumberFormat struct {
 
 	// `{number}`变量的长度不足时，补充的占位符。默认为"0"。
 	PlaceHolder *string `json:"PlaceHolder,omitempty" name:"PlaceHolder"`
+}
+
+type ProcessLiveMediaRequest struct {
+	*tchttp.BaseRequest
+
+	// 直播流 URL。
+	Url *string `json:"Url,omitempty" name:"Url"`
+
+	// 直播流处理输出文件的目标存储。如处理有文件输出，该参数为必填项。
+	OutputStorage *TaskOutputStorage `json:"OutputStorage,omitempty" name:"OutputStorage"`
+
+	// 直播流处理生成的文件输出的目标目录，如`/movie/201909/`，如果不填为 `/` 目录。
+	OutputDir *string `json:"OutputDir,omitempty" name:"OutputDir"`
+
+	// 直播流内容识别类型任务参数。
+	AiRecognitionTask *AiRecognitionTaskInput `json:"AiRecognitionTask,omitempty" name:"AiRecognitionTask"`
+
+	// 直播流内容分析类型任务参数。
+	AiAnalysisTask *AiAnalysisTaskInput `json:"AiAnalysisTask,omitempty" name:"AiAnalysisTask"`
+
+	// 任务的事件通知信息，不填代表不获取事件通知。
+	TaskNotifyConfig *TaskNotifyConfig `json:"TaskNotifyConfig,omitempty" name:"TaskNotifyConfig"`
+
+	// 来源上下文，用于透传用户请求信息，任务流状态变更回调将返回该字段值，最长 1000 个字符。
+	SessionContext *string `json:"SessionContext,omitempty" name:"SessionContext"`
+
+	// 用于去重的识别码，如果七天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。
+	SessionId *string `json:"SessionId,omitempty" name:"SessionId"`
+
+	// 直播开始时间戳（UTC 时间 单位为秒，该参数仅对于直播流分析有效）。
+	StartTime *uint64 `json:"StartTime,omitempty" name:"StartTime"`
+}
+
+func (r *ProcessLiveMediaRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ProcessLiveMediaRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ProcessLiveMediaResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 任务 ID
+		TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ProcessLiveMediaResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ProcessLiveMediaResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
 }
 
 type ProcessMediaRequest struct {
@@ -2620,7 +2656,7 @@ type SvgWatermarkInput struct {
 	// <li>当字符串以 px 结尾，表示水印 Height 单位为像素，如 100px 表示 Height 为 100 像素；当填 0px 且
 	//  Width 不为 0px 时，表示水印的高度按原始 SVG 图像等比缩放；当 Width、Height 都填 0px 时，表示水印的高度取原始 SVG 图像的高度；</li>
 	// <li>当字符串以 W% 结尾，表示水印 Height 为视频宽度的百分比大小，如 10W% 表示 Height 为视频宽度的 10%；</li>
-	// <li>当字符串以 H% 结尾，表示水印 Height 为视频高度的百分比大小，如 10H% 表示 Height 为��频高度的 10%；</li>
+	// <li>当字符串以 H% 结尾，表示水印 Height 为视频高度的百分比大小，如 10H% 表示 Height 为视频高度的 10%；</li>
 	// <li>当字符串以 S% 结尾，表示水印 Height 为视频短边的百分比大小，如 10S% 表示 Height 为视频短边的 10%；</li>
 	// <li>当字符串以 L% 结尾，表示水印 Height 为视频长边的百分比大小，如 10L% 表示 Height 为视频长边的 10%；</li>
 	// <li>当字符串以 % 结尾时，含义同 H%。</li>
@@ -2642,7 +2678,7 @@ type SvgWatermarkInputForUpdate struct {
 	Width *string `json:"Width,omitempty" name:"Width"`
 
 	// 水印的高度，支持 px，%，W%，H%，S%，L% 六种格式：
-	// <li>当字符串以 px 结尾，表示水印 Height 单位为像素，如 100px 表示 Height 为 100 像��；当填 0px 且
+	// <li>当字符串以 px 结尾，表示水印 Height 单位为像素，如 100px 表示 Height 为 100 像素；当填 0px 且
 	//  Width 不为 0px 时，表示水印的高度按原始 SVG 图像等比缩放；当 Width、Height 都填 0px 时，表示水印的高度取原始 SVG 图像的高度；</li>
 	// <li>当字符串以 W% 结尾，表示水印 Height 为视频宽度的百分比大小，如 10W% 表示 Height 为视频宽度的 10%；</li>
 	// <li>当字符串以 H% 结尾，表示水印 Height 为视频高度的百分比大小，如 10H% 表示 Height 为视频高度的 10%；</li>
@@ -2653,9 +2689,32 @@ type SvgWatermarkInputForUpdate struct {
 	Height *string `json:"Height,omitempty" name:"Height"`
 }
 
+type TEHDConfig struct {
+
+	// 极速高清类型，可选值：
+	// <li>TEHD-100：极速高清-100。</li>
+	// 不填代表不启用极速高清。
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 视频码率上限，当 Type 指定了极速高清类型时有效。
+	// 不填或填0表示不设视频码率上限。
+	MaxVideoBitrate *uint64 `json:"MaxVideoBitrate,omitempty" name:"MaxVideoBitrate"`
+}
+
+type TEHDConfigForUpdate struct {
+
+	// 极速高清类型，可选值：
+	// <li>TEHD-100：极速高清-100。</li>
+	// 不填代表不修改。
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 视频码率上限，不填代表不修改。
+	MaxVideoBitrate *uint64 `json:"MaxVideoBitrate,omitempty" name:"MaxVideoBitrate"`
+}
+
 type TaskNotifyConfig struct {
 
-	// CMQ 的模型，有 Queue 和 Topic 两种。
+	// CMQ 的模型，有 Queue 和 Topic 两种，目前仅支持 Queue。
 	CmqModel *string `json:"CmqModel,omitempty" name:"CmqModel"`
 
 	// CMQ 的园区，如 sh，bj 等。
@@ -2800,6 +2859,10 @@ type TranscodeTemplate struct {
 	// 音频流配置参数，仅当 RemoveAudio 为 0，该字段有效 。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AudioTemplate *AudioTemplateInfo `json:"AudioTemplate,omitempty" name:"AudioTemplate"`
+
+	// 极速高清转码参数，需联系商务架构师开通后才能使用。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TEHDConfig *TEHDConfig `json:"TEHDConfig,omitempty" name:"TEHDConfig"`
 
 	// 封装格式过滤条件，可选值：
 	// <li>Video：视频格式，可以同时包含视频流和音频流的封装格式；</li>

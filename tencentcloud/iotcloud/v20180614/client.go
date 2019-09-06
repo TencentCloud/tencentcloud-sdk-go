@@ -43,6 +43,31 @@ func NewClient(credential *common.Credential, region string, clientProfile *prof
 }
 
 
+func NewBindDevicesRequest() (request *BindDevicesRequest) {
+    request = &BindDevicesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iotcloud", APIVersion, "BindDevices")
+    return
+}
+
+func NewBindDevicesResponse() (response *BindDevicesResponse) {
+    response = &BindDevicesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（BindDevices）用于网关设备批量绑定子设备
+func (c *Client) BindDevices(request *BindDevicesRequest) (response *BindDevicesResponse, err error) {
+    if request == nil {
+        request = NewBindDevicesRequest()
+    }
+    response = NewBindDevicesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCancelTaskRequest() (request *CancelTaskRequest) {
     request = &CancelTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -764,6 +789,56 @@ func (c *Client) ResetDeviceState(request *ResetDeviceStateRequest) (response *R
         request = NewResetDeviceStateRequest()
     }
     response = NewResetDeviceStateResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewUnbindDevicesRequest() (request *UnbindDevicesRequest) {
+    request = &UnbindDevicesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iotcloud", APIVersion, "UnbindDevices")
+    return
+}
+
+func NewUnbindDevicesResponse() (response *UnbindDevicesResponse) {
+    response = &UnbindDevicesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（UnbindDevices）用于网关设备批量解绑子设备
+func (c *Client) UnbindDevices(request *UnbindDevicesRequest) (response *UnbindDevicesResponse, err error) {
+    if request == nil {
+        request = NewUnbindDevicesRequest()
+    }
+    response = NewUnbindDevicesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewUpdateDeviceAvailableStateRequest() (request *UpdateDeviceAvailableStateRequest) {
+    request = &UpdateDeviceAvailableStateRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iotcloud", APIVersion, "UpdateDeviceAvailableState")
+    return
+}
+
+func NewUpdateDeviceAvailableStateResponse() (response *UpdateDeviceAvailableStateResponse) {
+    response = &UpdateDeviceAvailableStateResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 启用或者禁用设备
+func (c *Client) UpdateDeviceAvailableState(request *UpdateDeviceAvailableStateRequest) (response *UpdateDeviceAvailableStateResponse, err error) {
+    if request == nil {
+        request = NewUpdateDeviceAvailableStateRequest()
+    }
+    response = NewUpdateDeviceAvailableStateResponse()
     err = c.Send(request, response)
     return
 }

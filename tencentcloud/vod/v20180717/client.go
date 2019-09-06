@@ -200,6 +200,31 @@ func (c *Client) CreateAIRecognitionTemplate(request *CreateAIRecognitionTemplat
     return
 }
 
+func NewCreateAnimatedGraphicsTemplateRequest() (request *CreateAnimatedGraphicsTemplateRequest) {
+    request = &CreateAnimatedGraphicsTemplateRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vod", APIVersion, "CreateAnimatedGraphicsTemplate")
+    return
+}
+
+func NewCreateAnimatedGraphicsTemplateResponse() (response *CreateAnimatedGraphicsTemplateResponse) {
+    response = &CreateAnimatedGraphicsTemplateResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 创建用户自定义转动图模板，数量上限：16。
+func (c *Client) CreateAnimatedGraphicsTemplate(request *CreateAnimatedGraphicsTemplateRequest) (response *CreateAnimatedGraphicsTemplateResponse, err error) {
+    if request == nil {
+        request = NewCreateAnimatedGraphicsTemplateRequest()
+    }
+    response = NewCreateAnimatedGraphicsTemplateResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateClassRequest() (request *CreateClassRequest) {
     request = &CreateClassRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -253,6 +278,31 @@ func (c *Client) CreateContentReviewTemplate(request *CreateContentReviewTemplat
     return
 }
 
+func NewCreateImageSpriteTemplateRequest() (request *CreateImageSpriteTemplateRequest) {
+    request = &CreateImageSpriteTemplateRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vod", APIVersion, "CreateImageSpriteTemplate")
+    return
+}
+
+func NewCreateImageSpriteTemplateResponse() (response *CreateImageSpriteTemplateResponse) {
+    response = &CreateImageSpriteTemplateResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 创建用户自定义雪碧图模板，数量上限：16。
+func (c *Client) CreateImageSpriteTemplate(request *CreateImageSpriteTemplateRequest) (response *CreateImageSpriteTemplateResponse, err error) {
+    if request == nil {
+        request = NewCreateImageSpriteTemplateRequest()
+    }
+    response = NewCreateImageSpriteTemplateResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreatePersonSampleRequest() (request *CreatePersonSampleRequest) {
     request = &CreatePersonSampleRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -299,6 +349,56 @@ func (c *Client) CreateProcedureTemplate(request *CreateProcedureTemplateRequest
         request = NewCreateProcedureTemplateRequest()
     }
     response = NewCreateProcedureTemplateResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateSampleSnapshotTemplateRequest() (request *CreateSampleSnapshotTemplateRequest) {
+    request = &CreateSampleSnapshotTemplateRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vod", APIVersion, "CreateSampleSnapshotTemplate")
+    return
+}
+
+func NewCreateSampleSnapshotTemplateResponse() (response *CreateSampleSnapshotTemplateResponse) {
+    response = &CreateSampleSnapshotTemplateResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 创建用户自定义采样截图模板，数量上限：16。
+func (c *Client) CreateSampleSnapshotTemplate(request *CreateSampleSnapshotTemplateRequest) (response *CreateSampleSnapshotTemplateResponse, err error) {
+    if request == nil {
+        request = NewCreateSampleSnapshotTemplateRequest()
+    }
+    response = NewCreateSampleSnapshotTemplateResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateSnapshotByTimeOffsetTemplateRequest() (request *CreateSnapshotByTimeOffsetTemplateRequest) {
+    request = &CreateSnapshotByTimeOffsetTemplateRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vod", APIVersion, "CreateSnapshotByTimeOffsetTemplate")
+    return
+}
+
+func NewCreateSnapshotByTimeOffsetTemplateResponse() (response *CreateSnapshotByTimeOffsetTemplateResponse) {
+    response = &CreateSnapshotByTimeOffsetTemplateResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 创建用户自定义指定时间点截图模板，数量上限：16。
+func (c *Client) CreateSnapshotByTimeOffsetTemplate(request *CreateSnapshotByTimeOffsetTemplateRequest) (response *CreateSnapshotByTimeOffsetTemplateResponse, err error) {
+    if request == nil {
+        request = NewCreateSnapshotByTimeOffsetTemplateRequest()
+    }
+    response = NewCreateSnapshotByTimeOffsetTemplateResponse()
     err = c.Send(request, response)
     return
 }
@@ -430,6 +530,31 @@ func (c *Client) DeleteAIRecognitionTemplate(request *DeleteAIRecognitionTemplat
     return
 }
 
+func NewDeleteAnimatedGraphicsTemplateRequest() (request *DeleteAnimatedGraphicsTemplateRequest) {
+    request = &DeleteAnimatedGraphicsTemplateRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vod", APIVersion, "DeleteAnimatedGraphicsTemplate")
+    return
+}
+
+func NewDeleteAnimatedGraphicsTemplateResponse() (response *DeleteAnimatedGraphicsTemplateResponse) {
+    response = &DeleteAnimatedGraphicsTemplateResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 删除用户自定义转动图模板。
+func (c *Client) DeleteAnimatedGraphicsTemplate(request *DeleteAnimatedGraphicsTemplateRequest) (response *DeleteAnimatedGraphicsTemplateResponse, err error) {
+    if request == nil {
+        request = NewDeleteAnimatedGraphicsTemplateRequest()
+    }
+    response = NewDeleteAnimatedGraphicsTemplateResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteClassRequest() (request *DeleteClassRequest) {
     request = &DeleteClassRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -477,6 +602,31 @@ func (c *Client) DeleteContentReviewTemplate(request *DeleteContentReviewTemplat
         request = NewDeleteContentReviewTemplateRequest()
     }
     response = NewDeleteContentReviewTemplateResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteImageSpriteTemplateRequest() (request *DeleteImageSpriteTemplateRequest) {
+    request = &DeleteImageSpriteTemplateRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vod", APIVersion, "DeleteImageSpriteTemplate")
+    return
+}
+
+func NewDeleteImageSpriteTemplateResponse() (response *DeleteImageSpriteTemplateResponse) {
+    response = &DeleteImageSpriteTemplateResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 删除雪碧图模板。
+func (c *Client) DeleteImageSpriteTemplate(request *DeleteImageSpriteTemplateRequest) (response *DeleteImageSpriteTemplateResponse, err error) {
+    if request == nil {
+        request = NewDeleteImageSpriteTemplateRequest()
+    }
+    response = NewDeleteImageSpriteTemplateResponse()
     err = c.Send(request, response)
     return
 }
@@ -553,6 +703,56 @@ func (c *Client) DeleteProcedureTemplate(request *DeleteProcedureTemplateRequest
         request = NewDeleteProcedureTemplateRequest()
     }
     response = NewDeleteProcedureTemplateResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteSampleSnapshotTemplateRequest() (request *DeleteSampleSnapshotTemplateRequest) {
+    request = &DeleteSampleSnapshotTemplateRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vod", APIVersion, "DeleteSampleSnapshotTemplate")
+    return
+}
+
+func NewDeleteSampleSnapshotTemplateResponse() (response *DeleteSampleSnapshotTemplateResponse) {
+    response = &DeleteSampleSnapshotTemplateResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 删除用户自定义采样截图模板。
+func (c *Client) DeleteSampleSnapshotTemplate(request *DeleteSampleSnapshotTemplateRequest) (response *DeleteSampleSnapshotTemplateResponse, err error) {
+    if request == nil {
+        request = NewDeleteSampleSnapshotTemplateRequest()
+    }
+    response = NewDeleteSampleSnapshotTemplateResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteSnapshotByTimeOffsetTemplateRequest() (request *DeleteSnapshotByTimeOffsetTemplateRequest) {
+    request = &DeleteSnapshotByTimeOffsetTemplateRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vod", APIVersion, "DeleteSnapshotByTimeOffsetTemplate")
+    return
+}
+
+func NewDeleteSnapshotByTimeOffsetTemplateResponse() (response *DeleteSnapshotByTimeOffsetTemplateResponse) {
+    response = &DeleteSnapshotByTimeOffsetTemplateResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 删除用户自定义指定时间点截图模板。
+func (c *Client) DeleteSnapshotByTimeOffsetTemplate(request *DeleteSnapshotByTimeOffsetTemplateRequest) (response *DeleteSnapshotByTimeOffsetTemplateResponse, err error) {
+    if request == nil {
+        request = NewDeleteSnapshotByTimeOffsetTemplateRequest()
+    }
+    response = NewDeleteSnapshotByTimeOffsetTemplateResponse()
     err = c.Send(request, response)
     return
 }
@@ -707,6 +907,31 @@ func (c *Client) DescribeAllClass(request *DescribeAllClassRequest) (response *D
     return
 }
 
+func NewDescribeAnimatedGraphicsTemplatesRequest() (request *DescribeAnimatedGraphicsTemplatesRequest) {
+    request = &DescribeAnimatedGraphicsTemplatesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vod", APIVersion, "DescribeAnimatedGraphicsTemplates")
+    return
+}
+
+func NewDescribeAnimatedGraphicsTemplatesResponse() (response *DescribeAnimatedGraphicsTemplatesResponse) {
+    response = &DescribeAnimatedGraphicsTemplatesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询转动图模板列表，支持根据条件，分页查询。
+func (c *Client) DescribeAnimatedGraphicsTemplates(request *DescribeAnimatedGraphicsTemplatesRequest) (response *DescribeAnimatedGraphicsTemplatesResponse, err error) {
+    if request == nil {
+        request = NewDescribeAnimatedGraphicsTemplatesRequest()
+    }
+    response = NewDescribeAnimatedGraphicsTemplatesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeContentReviewTemplatesRequest() (request *DescribeContentReviewTemplatesRequest) {
     request = &DescribeContentReviewTemplatesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -728,6 +953,31 @@ func (c *Client) DescribeContentReviewTemplates(request *DescribeContentReviewTe
         request = NewDescribeContentReviewTemplatesRequest()
     }
     response = NewDescribeContentReviewTemplatesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeImageSpriteTemplatesRequest() (request *DescribeImageSpriteTemplatesRequest) {
+    request = &DescribeImageSpriteTemplatesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vod", APIVersion, "DescribeImageSpriteTemplates")
+    return
+}
+
+func NewDescribeImageSpriteTemplatesResponse() (response *DescribeImageSpriteTemplatesResponse) {
+    response = &DescribeImageSpriteTemplatesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询雪碧图模板，支持根据条件，分页查询。
+func (c *Client) DescribeImageSpriteTemplates(request *DescribeImageSpriteTemplatesRequest) (response *DescribeImageSpriteTemplatesResponse, err error) {
+    if request == nil {
+        request = NewDescribeImageSpriteTemplatesRequest()
+    }
+    response = NewDescribeImageSpriteTemplatesResponse()
     err = c.Send(request, response)
     return
 }
@@ -834,13 +1084,63 @@ func NewDescribeReviewDetailsResponse() (response *DescribeReviewDetailsResponse
 
 // 该接口返回查询时间范围内每天使用的视频内容审核时长数据，单位： 秒。
 // 
-// 1. 可以查询最近90天内的视频内容审核时长统计数据。
-// 2. 查询时间跨度不超过60天。
+// 1. 可以查询最近365天内的视频内容审核时长统计数据。
+// 2. 查询时间跨度不超过90天。
 func (c *Client) DescribeReviewDetails(request *DescribeReviewDetailsRequest) (response *DescribeReviewDetailsResponse, err error) {
     if request == nil {
         request = NewDescribeReviewDetailsRequest()
     }
     response = NewDescribeReviewDetailsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeSampleSnapshotTemplatesRequest() (request *DescribeSampleSnapshotTemplatesRequest) {
+    request = &DescribeSampleSnapshotTemplatesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vod", APIVersion, "DescribeSampleSnapshotTemplates")
+    return
+}
+
+func NewDescribeSampleSnapshotTemplatesResponse() (response *DescribeSampleSnapshotTemplatesResponse) {
+    response = &DescribeSampleSnapshotTemplatesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询采样截图模板，支持根据条件，分页查询。
+func (c *Client) DescribeSampleSnapshotTemplates(request *DescribeSampleSnapshotTemplatesRequest) (response *DescribeSampleSnapshotTemplatesResponse, err error) {
+    if request == nil {
+        request = NewDescribeSampleSnapshotTemplatesRequest()
+    }
+    response = NewDescribeSampleSnapshotTemplatesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeSnapshotByTimeOffsetTemplatesRequest() (request *DescribeSnapshotByTimeOffsetTemplatesRequest) {
+    request = &DescribeSnapshotByTimeOffsetTemplatesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vod", APIVersion, "DescribeSnapshotByTimeOffsetTemplates")
+    return
+}
+
+func NewDescribeSnapshotByTimeOffsetTemplatesResponse() (response *DescribeSnapshotByTimeOffsetTemplatesResponse) {
+    response = &DescribeSnapshotByTimeOffsetTemplatesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询指定时间点截图模板，支持根据条件，分页查询。
+func (c *Client) DescribeSnapshotByTimeOffsetTemplates(request *DescribeSnapshotByTimeOffsetTemplatesRequest) (response *DescribeSnapshotByTimeOffsetTemplatesResponse, err error) {
+    if request == nil {
+        request = NewDescribeSnapshotByTimeOffsetTemplatesRequest()
+    }
+    response = NewDescribeSnapshotByTimeOffsetTemplatesResponse()
     err = c.Send(request, response)
     return
 }
@@ -1158,6 +1458,31 @@ func (c *Client) ModifyAIRecognitionTemplate(request *ModifyAIRecognitionTemplat
     return
 }
 
+func NewModifyAnimatedGraphicsTemplateRequest() (request *ModifyAnimatedGraphicsTemplateRequest) {
+    request = &ModifyAnimatedGraphicsTemplateRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vod", APIVersion, "ModifyAnimatedGraphicsTemplate")
+    return
+}
+
+func NewModifyAnimatedGraphicsTemplateResponse() (response *ModifyAnimatedGraphicsTemplateResponse) {
+    response = &ModifyAnimatedGraphicsTemplateResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 修改用户自定义转动图模板。
+func (c *Client) ModifyAnimatedGraphicsTemplate(request *ModifyAnimatedGraphicsTemplateRequest) (response *ModifyAnimatedGraphicsTemplateResponse, err error) {
+    if request == nil {
+        request = NewModifyAnimatedGraphicsTemplateRequest()
+    }
+    response = NewModifyAnimatedGraphicsTemplateResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyClassRequest() (request *ModifyClassRequest) {
     request = &ModifyClassRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1208,6 +1533,31 @@ func (c *Client) ModifyContentReviewTemplate(request *ModifyContentReviewTemplat
     return
 }
 
+func NewModifyImageSpriteTemplateRequest() (request *ModifyImageSpriteTemplateRequest) {
+    request = &ModifyImageSpriteTemplateRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vod", APIVersion, "ModifyImageSpriteTemplate")
+    return
+}
+
+func NewModifyImageSpriteTemplateResponse() (response *ModifyImageSpriteTemplateResponse) {
+    response = &ModifyImageSpriteTemplateResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 修改用户自定义雪碧图模板。
+func (c *Client) ModifyImageSpriteTemplate(request *ModifyImageSpriteTemplateRequest) (response *ModifyImageSpriteTemplateResponse, err error) {
+    if request == nil {
+        request = NewModifyImageSpriteTemplateRequest()
+    }
+    response = NewModifyImageSpriteTemplateResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyMediaInfoRequest() (request *ModifyMediaInfoRequest) {
     request = &ModifyMediaInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1254,6 +1604,56 @@ func (c *Client) ModifyPersonSample(request *ModifyPersonSampleRequest) (respons
         request = NewModifyPersonSampleRequest()
     }
     response = NewModifyPersonSampleResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifySampleSnapshotTemplateRequest() (request *ModifySampleSnapshotTemplateRequest) {
+    request = &ModifySampleSnapshotTemplateRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vod", APIVersion, "ModifySampleSnapshotTemplate")
+    return
+}
+
+func NewModifySampleSnapshotTemplateResponse() (response *ModifySampleSnapshotTemplateResponse) {
+    response = &ModifySampleSnapshotTemplateResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 修改用户自定义采样截图模板。
+func (c *Client) ModifySampleSnapshotTemplate(request *ModifySampleSnapshotTemplateRequest) (response *ModifySampleSnapshotTemplateResponse, err error) {
+    if request == nil {
+        request = NewModifySampleSnapshotTemplateRequest()
+    }
+    response = NewModifySampleSnapshotTemplateResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifySnapshotByTimeOffsetTemplateRequest() (request *ModifySnapshotByTimeOffsetTemplateRequest) {
+    request = &ModifySnapshotByTimeOffsetTemplateRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vod", APIVersion, "ModifySnapshotByTimeOffsetTemplate")
+    return
+}
+
+func NewModifySnapshotByTimeOffsetTemplateResponse() (response *ModifySnapshotByTimeOffsetTemplateResponse) {
+    response = &ModifySnapshotByTimeOffsetTemplateResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 修改用户自定义指定时间点截图模板。
+func (c *Client) ModifySnapshotByTimeOffsetTemplate(request *ModifySnapshotByTimeOffsetTemplateRequest) (response *ModifySnapshotByTimeOffsetTemplateResponse, err error) {
+    if request == nil {
+        request = NewModifySnapshotByTimeOffsetTemplateRequest()
+    }
+    response = NewModifySnapshotByTimeOffsetTemplateResponse()
     err = c.Send(request, response)
     return
 }

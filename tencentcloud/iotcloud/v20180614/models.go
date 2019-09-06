@@ -41,6 +41,52 @@ type BatchUpdateShadow struct {
 	Desired *string `json:"Desired,omitempty" name:"Desired"`
 }
 
+type BindDevicesRequest struct {
+	*tchttp.BaseRequest
+
+	// 网关设备的产品ID
+	GatewayProductId *string `json:"GatewayProductId,omitempty" name:"GatewayProductId"`
+
+	// 网关设备的设备名
+	GatewayDeviceName *string `json:"GatewayDeviceName,omitempty" name:"GatewayDeviceName"`
+
+	// 被绑定设备的产品ID
+	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
+
+	// 被绑定的多个设备名
+	DeviceNames []*string `json:"DeviceNames,omitempty" name:"DeviceNames" list`
+
+	// 中兴CLAA设备的绑定需要skey，普通的设备不需要
+	Skey *string `json:"Skey,omitempty" name:"Skey"`
+}
+
+func (r *BindDevicesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *BindDevicesRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type BindDevicesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *BindDevicesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *BindDevicesResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type BrokerSubscribe struct {
 
 	// 产品ID
@@ -843,7 +889,7 @@ func (r *DescribeDevicesResponse) FromJsonString(s string) error {
 type DescribeLoraDeviceRequest struct {
 	*tchttp.BaseRequest
 
-	// 产品id
+	// 产品Id
 	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
 
 	// 设备名称
@@ -1660,6 +1706,92 @@ type TopicRulePayload struct {
 
 	// 是否禁用规则
 	RuleDisabled *bool `json:"RuleDisabled,omitempty" name:"RuleDisabled"`
+}
+
+type UnbindDevicesRequest struct {
+	*tchttp.BaseRequest
+
+	// 网关设备的产品ID
+	GatewayProductId *string `json:"GatewayProductId,omitempty" name:"GatewayProductId"`
+
+	// 网关设备的设备名
+	GatewayDeviceName *string `json:"GatewayDeviceName,omitempty" name:"GatewayDeviceName"`
+
+	// 产品ID
+	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
+
+	// 多个设备名
+	DeviceNames []*string `json:"DeviceNames,omitempty" name:"DeviceNames" list`
+
+	// 中兴CLAA设备的解绑需要Skey，普通设备不需要
+	Skey *string `json:"Skey,omitempty" name:"Skey"`
+}
+
+func (r *UnbindDevicesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *UnbindDevicesRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type UnbindDevicesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *UnbindDevicesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *UnbindDevicesResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type UpdateDeviceAvailableStateRequest struct {
+	*tchttp.BaseRequest
+
+	// 设备所属产品id
+	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
+
+	// 设备名称
+	DeviceName *string `json:"DeviceName,omitempty" name:"DeviceName"`
+
+	// 要设置的设备状态，1为启用，0为禁用
+	EnableState *uint64 `json:"EnableState,omitempty" name:"EnableState"`
+}
+
+func (r *UpdateDeviceAvailableStateRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *UpdateDeviceAvailableStateRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type UpdateDeviceAvailableStateResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *UpdateDeviceAvailableStateResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *UpdateDeviceAvailableStateResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
 }
 
 type UpdateDeviceShadowRequest struct {

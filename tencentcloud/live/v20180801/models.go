@@ -181,6 +181,9 @@ type BillDataInfo struct {
 
 	// 流量，单位是MB。
 	Flux *float64 `json:"Flux,omitempty" name:"Flux"`
+
+	// 峰值时间点，格式为yyyy-mm-dd HH:MM:SS，原始数据为5分钟粒度，如果查询小时和天粒度数据，则返回对应粒度内的带宽峰值时间点。
+	PeakTime *string `json:"PeakTime,omitempty" name:"PeakTime"`
 }
 
 type BindLiveDomainCertRequest struct {
@@ -2127,6 +2130,9 @@ type DescribeLiveDomainsRequest struct {
 
 	// 0 普通直播 1慢直播 默认0
 	IsDelayLive *uint64 `json:"IsDelayLive,omitempty" name:"IsDelayLive"`
+
+	// 域名前缀
+	DomainPrefix *string `json:"DomainPrefix,omitempty" name:"DomainPrefix"`
 }
 
 func (r *DescribeLiveDomainsRequest) ToJsonString() string {
@@ -4715,6 +4721,7 @@ type ModifyPullStreamConfigRequest struct {
 	// 开始时间。
 	// 使用UTC格式时间，
 	// 例如：2019-01-08T10:00:00Z。
+	// 格式按照 ISO 8601 标准表示，详见 [ISO 日期格式说明](document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
 	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
 
 	// 结束时间，注意：
@@ -4724,6 +4731,7 @@ type ModifyPullStreamConfigRequest struct {
 	// 
 	// 使用UTC格式时间，
 	// 例如：2019-01-08T10:00:00Z。
+	// 格式按照 ISO 8601 标准表示，详见 [ISO 日期格式说明](document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 }
 

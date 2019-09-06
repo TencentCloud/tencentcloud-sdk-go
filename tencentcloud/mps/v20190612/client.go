@@ -853,6 +853,36 @@ func (c *Client) ModifyWatermarkTemplate(request *ModifyWatermarkTemplateRequest
     return
 }
 
+func NewProcessLiveMediaRequest() (request *ProcessLiveMediaRequest) {
+    request = &ProcessLiveMediaRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("mps", APIVersion, "ProcessLiveMedia")
+    return
+}
+
+func NewProcessLiveMediaResponse() (response *ProcessLiveMediaResponse) {
+    response = &ProcessLiveMediaResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 对直播流媒体发起处理任务，功能包括：
+// 
+// 1. 智能内容识别（人脸、文本全文、文本关键词、语音全文、语音关键词、物体）。
+// 2. 智能内容分析（精彩集锦）。
+// 
+// 直播流处理事件通知实时写入用户指定的消息队列 CMQ 中，用户需要从消息队列 CMQ 中获取事件通知结果，同时处理过程中存在输出文件的，会写入用户指定的输出文件的目标存储中。
+func (c *Client) ProcessLiveMedia(request *ProcessLiveMediaRequest) (response *ProcessLiveMediaResponse, err error) {
+    if request == nil {
+        request = NewProcessLiveMediaRequest()
+    }
+    response = NewProcessLiveMediaResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewProcessMediaRequest() (request *ProcessMediaRequest) {
     request = &ProcessMediaRequest{
         BaseRequest: &tchttp.BaseRequest{},

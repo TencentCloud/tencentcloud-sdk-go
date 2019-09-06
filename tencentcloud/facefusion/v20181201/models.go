@@ -75,6 +75,75 @@ func (r *FaceFusionResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type FaceRect struct {
+
+	// 人脸框左上角横坐标。
+	X *int64 `json:"X,omitempty" name:"X"`
+
+	// 人脸框左上角纵坐标。
+	Y *int64 `json:"Y,omitempty" name:"Y"`
+
+	// 人脸框宽度。
+	Width *int64 `json:"Width,omitempty" name:"Width"`
+
+	// 人脸框高度。
+	Height *int64 `json:"Height,omitempty" name:"Height"`
+}
+
+type FuseFaceRequest struct {
+	*tchttp.BaseRequest
+
+	// 活动 ID，请在人脸融合控制台查看。
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 素材 ID，请在人脸融合控制台查看。
+	ModelId *string `json:"ModelId,omitempty" name:"ModelId"`
+
+	// 返回图像方式（url 或 base64) ，二选一。url有效期为30天。
+	RspImgType *string `json:"RspImgType,omitempty" name:"RspImgType"`
+
+	// 人脸图片和待被融合的素材模板图的人脸位置信息。
+	MergeInfos []*MergeInfo `json:"MergeInfos,omitempty" name:"MergeInfos" list`
+
+	// 脸型融合比例，数值越高，融合后的脸型越像素材人物。取值范围[0,100] 
+	// 若此参数不填写，则使用人脸融合控制台中脸型参数数值。
+	FuseProfileDegree *int64 `json:"FuseProfileDegree,omitempty" name:"FuseProfileDegree"`
+
+	// 五官融合比例，数值越高，融合后的五官越像素材人物。取值范围[0,100] 
+	// 若此参数不填写，则使用人脸融合控制台中五官参数数值。
+	FuseFaceDegree *int64 `json:"FuseFaceDegree,omitempty" name:"FuseFaceDegree"`
+}
+
+func (r *FuseFaceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *FuseFaceRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type FuseFaceResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// RspImgType 为 url 时，返回结果的 url， RspImgType 为 base64 时返回 base64 数据。
+		FusedImage *string `json:"FusedImage,omitempty" name:"FusedImage"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *FuseFaceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *FuseFaceResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type FuseFaceReviewDetail struct {
 
 	// 鉴政使用字段, 为职业属性,其他审核结果对应上一级category
@@ -109,4 +178,19 @@ type FuseFaceReviewResult struct {
 
 	// 审核详细内容
 	DetailSet []*FuseFaceReviewDetail `json:"DetailSet,omitempty" name:"DetailSet" list`
+}
+
+type MergeInfo struct {
+
+	// 输入图片base64
+	Image *string `json:"Image,omitempty" name:"Image"`
+
+	// 输入图片url
+	Url *string `json:"Url,omitempty" name:"Url"`
+
+	// 上传的图片人脸位置信息（人脸框）
+	InputImageFaceRect *FaceRect `json:"InputImageFaceRect,omitempty" name:"InputImageFaceRect"`
+
+	// 控制台上传的素材人脸ID
+	TemplateFaceID *string `json:"TemplateFaceID,omitempty" name:"TemplateFaceID"`
 }

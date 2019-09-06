@@ -47,6 +47,9 @@ type AIAnalysisTemplateItem struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FrameTagConfigure *FrameTagConfigureInfo `json:"FrameTagConfigure,omitempty" name:"FrameTagConfigure"`
 
+	// 智能精彩集锦任务控制参数。
+	HighlightConfigure *HighlightsConfigureInfo `json:"HighlightConfigure,omitempty" name:"HighlightConfigure"`
+
 	// 模板创建时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
 	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
 
@@ -139,6 +142,7 @@ type AiAnalysisResult struct {
 	// <li>Cover：智能封面</li>
 	// <li>Tag：智能标签</li>
 	// <li>FrameTag：智能按帧标签</li>
+	// <li>Highlight：智能精彩集锦</li>
 	Type *string `json:"Type,omitempty" name:"Type"`
 
 	// 视频内容分析智能分类任务的查询结果，当任务类型为 Classification 时有效。
@@ -157,9 +161,9 @@ type AiAnalysisResult struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FrameTagTask *AiAnalysisTaskFrameTagResult `json:"FrameTagTask,omitempty" name:"FrameTagTask"`
 
-	// 视频内容分析智能按集锦任务的查询结果，当任务类型为 Highlight 时有效。
+	// 视频内容分析智能精彩集锦任务的查询结果，当任务类型为 Highlight 时有效。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	HighlightsTask []*AiAnalysisTaskHighlightResult `json:"HighlightsTask,omitempty" name:"HighlightsTask" list`
+	HighlightTask *AiAnalysisTaskHighlightResult `json:"HighlightTask,omitempty" name:"HighlightTask"`
 }
 
 type AiAnalysisTaskClassificationInput struct {
@@ -1306,6 +1310,44 @@ type AnimatedGraphicTaskInput struct {
 	EndTimeOffset *float64 `json:"EndTimeOffset,omitempty" name:"EndTimeOffset"`
 }
 
+type AnimatedGraphicsTemplate struct {
+
+	// 转动图模板唯一标识。
+	Definition *uint64 `json:"Definition,omitempty" name:"Definition"`
+
+	// 模板类型，取值范围：
+	// <li>Preset：系统预置模板；</li>
+	// <li>Custom：用户自定义模板。</li>
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 转动图模板名称。
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 转动图模板描述信息。
+	Comment *string `json:"Comment,omitempty" name:"Comment"`
+
+	// 动图宽度（或长边）的最大值。
+	Width *uint64 `json:"Width,omitempty" name:"Width"`
+
+	// 动图高度（或短边）的最大值。
+	Height *uint64 `json:"Height,omitempty" name:"Height"`
+
+	// 动图格式。
+	Format *string `json:"Format,omitempty" name:"Format"`
+
+	// 帧率。
+	Fps *uint64 `json:"Fps,omitempty" name:"Fps"`
+
+	// 图片质量。
+	Quality *float64 `json:"Quality,omitempty" name:"Quality"`
+
+	// 模板创建时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 模板最后修改时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
+}
+
 type ApplyUploadRequest struct {
 	*tchttp.BaseRequest
 
@@ -1982,6 +2024,9 @@ type CreateAIAnalysisTemplateRequest struct {
 	// 智能按帧标签任务控制参数。
 	FrameTagConfigure *FrameTagConfigureInfo `json:"FrameTagConfigure,omitempty" name:"FrameTagConfigure"`
 
+	// 智能精彩集锦任务控制参数。
+	HighlightConfigure *HighlightsConfigureInfo `json:"HighlightConfigure,omitempty" name:"HighlightConfigure"`
+
 	// 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
 	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
 }
@@ -2083,6 +2128,74 @@ func (r *CreateAIRecognitionTemplateResponse) ToJsonString() string {
 }
 
 func (r *CreateAIRecognitionTemplateResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateAnimatedGraphicsTemplateRequest struct {
+	*tchttp.BaseRequest
+
+	// 动图宽度（或长边）的最大值，取值范围：0 和 [128, 4096]，单位：px。
+	// <li>当 Width、Height 均为 0，则分辨率同源；</li>
+	// <li>当 Width 为 0，Height 非 0，则 Width 按比例缩放；</li>
+	// <li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li>
+	// <li>当 Width、Height 均非 0，则分辨率按用户指定。</li>
+	// 默认值：0。
+	Width *uint64 `json:"Width,omitempty" name:"Width"`
+
+	// 视频流高度（或短边）的最大值，取值范围：0 和 [128, 4096]，单位：px。
+	// <li>当 Width、Height 均为 0，则分辨率同源；</li>
+	// <li>当 Width 为 0，Height 非 0，则 Width 按比例缩放；</li>
+	// <li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li>
+	// <li>当 Width、Height 均非 0，则分辨率按用户指定。</li>
+	// 默认值：0。
+	Height *uint64 `json:"Height,omitempty" name:"Height"`
+
+	// 帧率，取值范围：[1, 30]，单位：Hz。
+	Fps *uint64 `json:"Fps,omitempty" name:"Fps"`
+
+	// 动图格式，取值为 gif 和 webp。默认为 gif。
+	Format *string `json:"Format,omitempty" name:"Format"`
+
+	// 图片质量，取值范围：[1, 100]，默认值为 75。
+	Quality *float64 `json:"Quality,omitempty" name:"Quality"`
+
+	// 转动图模板名称，长度限制：64 个字符。
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 模板描述信息，长度限制：256 个字符。
+	Comment *string `json:"Comment,omitempty" name:"Comment"`
+
+	// 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
+}
+
+func (r *CreateAnimatedGraphicsTemplateRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateAnimatedGraphicsTemplateRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateAnimatedGraphicsTemplateResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 转动图模板唯一标识。
+		Definition *uint64 `json:"Definition,omitempty" name:"Definition"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateAnimatedGraphicsTemplateResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateAnimatedGraphicsTemplateResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -2228,6 +2341,68 @@ type CreateImageSpriteTask2017 struct {
 	WebVttUrl *string `json:"WebVttUrl,omitempty" name:"WebVttUrl"`
 }
 
+type CreateImageSpriteTemplateRequest struct {
+	*tchttp.BaseRequest
+
+	// 雪碧图中小图的宽度，取值范围： [128, 4096]，单位：px。
+	Width *uint64 `json:"Width,omitempty" name:"Width"`
+
+	// 雪碧图中小图的高度，取值范围： [128, 4096]，单位：px。
+	Height *uint64 `json:"Height,omitempty" name:"Height"`
+
+	// 采样类型，取值：
+	// <li>Percent：按百分比。</li>
+	// <li>Time：按时间间隔。</li>
+	SampleType *string `json:"SampleType,omitempty" name:"SampleType"`
+
+	// 采样间隔。
+	// <li>当 SampleType 为 Percent 时，指定采样间隔的百分比。</li>
+	// <li>当 SampleType 为 Time 时，指定采样间隔的时间，单位为秒。</li>
+	SampleInterval *uint64 `json:"SampleInterval,omitempty" name:"SampleInterval"`
+
+	// 雪碧图中小图的行数。
+	RowCount *uint64 `json:"RowCount,omitempty" name:"RowCount"`
+
+	// 雪碧图中小图的列数。
+	ColumnCount *uint64 `json:"ColumnCount,omitempty" name:"ColumnCount"`
+
+	// 雪碧图模板名称，长度限制：64 个字符。
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
+}
+
+func (r *CreateImageSpriteTemplateRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateImageSpriteTemplateRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateImageSpriteTemplateResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 雪碧图模板唯一标识。
+		Definition *uint64 `json:"Definition,omitempty" name:"Definition"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateImageSpriteTemplateResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateImageSpriteTemplateResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type CreatePersonSampleRequest struct {
 	*tchttp.BaseRequest
 
@@ -2339,6 +2514,120 @@ func (r *CreateProcedureTemplateResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type CreateSampleSnapshotTemplateRequest struct {
+	*tchttp.BaseRequest
+
+	// 图片宽度，取值范围： [128, 4096]，单位：px。
+	Width *uint64 `json:"Width,omitempty" name:"Width"`
+
+	// 图片高度，取值范围： [128, 4096]，单位：px。
+	Height *uint64 `json:"Height,omitempty" name:"Height"`
+
+	// 采样截图类型，取值：
+	// <li>Percent：按百分比。</li>
+	// <li>Time：按时间间隔。</li>
+	SampleType *string `json:"SampleType,omitempty" name:"SampleType"`
+
+	// 采样间隔。
+	// <li>当 SampleType 为 Percent 时，指定采样间隔的百分比。</li>
+	// <li>当 SampleType 为 Time 时，指定采样间隔的时间，单位为秒。</li>
+	SampleInterval *uint64 `json:"SampleInterval,omitempty" name:"SampleInterval"`
+
+	// 采样截图模板名称，长度限制：64 个字符。
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 图片格式，取值为 jpg 和 png。默认为 jpg。
+	Format *string `json:"Format,omitempty" name:"Format"`
+
+	// 模板描述信息，长度限制：256 个字符。
+	Comment *string `json:"Comment,omitempty" name:"Comment"`
+
+	// 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
+}
+
+func (r *CreateSampleSnapshotTemplateRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateSampleSnapshotTemplateRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateSampleSnapshotTemplateResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 采样截图模板唯一标识。
+		Definition *uint64 `json:"Definition,omitempty" name:"Definition"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateSampleSnapshotTemplateResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateSampleSnapshotTemplateResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateSnapshotByTimeOffsetTemplateRequest struct {
+	*tchttp.BaseRequest
+
+	// 图片宽度，取值范围： [128, 4096]，单位：px。
+	Width *uint64 `json:"Width,omitempty" name:"Width"`
+
+	// 图片高度，取值范围： [128, 4096]，单位：px。
+	Height *uint64 `json:"Height,omitempty" name:"Height"`
+
+	// 指定时间点截图模板名称，长度限制：64 个字符。
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 图片格式，取值可以为 jpg 和 png。默认为 jpg。
+	Format *string `json:"Format,omitempty" name:"Format"`
+
+	// 模板描述信息，长度限制：256 个字符。
+	Comment *string `json:"Comment,omitempty" name:"Comment"`
+
+	// 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
+}
+
+func (r *CreateSnapshotByTimeOffsetTemplateRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateSnapshotByTimeOffsetTemplateRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateSnapshotByTimeOffsetTemplateResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 时间点截图模板唯一标识。
+		Definition *uint64 `json:"Definition,omitempty" name:"Definition"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateSnapshotByTimeOffsetTemplateResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateSnapshotByTimeOffsetTemplateResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type CreateTranscodeTemplateRequest struct {
 	*tchttp.BaseRequest
 
@@ -2368,6 +2657,9 @@ type CreateTranscodeTemplateRequest struct {
 
 	// 音频流配置参数，当 RemoveAudio 为 0，该字段必填。
 	AudioTemplate *AudioTemplateInfo `json:"AudioTemplate,omitempty" name:"AudioTemplate"`
+
+	// 极速高清转码参数，需联系商务架构师开通后才能使用。
+	TEHDConfig *TEHDConfig `json:"TEHDConfig,omitempty" name:"TEHDConfig"`
 
 	// 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
 	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
@@ -2605,6 +2897,43 @@ func (r *DeleteAIRecognitionTemplateResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DeleteAnimatedGraphicsTemplateRequest struct {
+	*tchttp.BaseRequest
+
+	// 转动图模板唯一标识。
+	Definition *uint64 `json:"Definition,omitempty" name:"Definition"`
+
+	// 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
+}
+
+func (r *DeleteAnimatedGraphicsTemplateRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteAnimatedGraphicsTemplateRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteAnimatedGraphicsTemplateResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DeleteAnimatedGraphicsTemplateResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteAnimatedGraphicsTemplateResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DeleteClassRequest struct {
 	*tchttp.BaseRequest
 
@@ -2676,6 +3005,43 @@ func (r *DeleteContentReviewTemplateResponse) ToJsonString() string {
 }
 
 func (r *DeleteContentReviewTemplateResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteImageSpriteTemplateRequest struct {
+	*tchttp.BaseRequest
+
+	// 雪碧图模板唯一标识。
+	Definition *uint64 `json:"Definition,omitempty" name:"Definition"`
+
+	// 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
+}
+
+func (r *DeleteImageSpriteTemplateRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteImageSpriteTemplateRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteImageSpriteTemplateResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DeleteImageSpriteTemplateResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteImageSpriteTemplateResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -2790,6 +3156,80 @@ func (r *DeleteProcedureTemplateResponse) ToJsonString() string {
 }
 
 func (r *DeleteProcedureTemplateResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteSampleSnapshotTemplateRequest struct {
+	*tchttp.BaseRequest
+
+	// 采样截图模板唯一标识。
+	Definition *uint64 `json:"Definition,omitempty" name:"Definition"`
+
+	// 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
+}
+
+func (r *DeleteSampleSnapshotTemplateRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteSampleSnapshotTemplateRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteSampleSnapshotTemplateResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DeleteSampleSnapshotTemplateResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteSampleSnapshotTemplateResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteSnapshotByTimeOffsetTemplateRequest struct {
+	*tchttp.BaseRequest
+
+	// 指定时间点截图模板唯一标识。
+	Definition *uint64 `json:"Definition,omitempty" name:"Definition"`
+
+	// 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
+}
+
+func (r *DeleteSnapshotByTimeOffsetTemplateRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteSnapshotByTimeOffsetTemplateRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteSnapshotByTimeOffsetTemplateResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DeleteSnapshotByTimeOffsetTemplateResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteSnapshotByTimeOffsetTemplateResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -3040,6 +3480,60 @@ func (r *DescribeAllClassResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeAnimatedGraphicsTemplatesRequest struct {
+	*tchttp.BaseRequest
+
+	// 转动图模板唯一标识过滤条件，数组长度限制：100。
+	Definitions []*uint64 `json:"Definitions,omitempty" name:"Definitions" list`
+
+	// 分页偏移量，默认值：0。
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 返回记录条数，默认值：10，最大值：100。
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 模板类型过滤条件，可选值：
+	// <li>Preset：系统预置模板；</li>
+	// <li>Custom：用户自定义模板。</li>
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
+}
+
+func (r *DescribeAnimatedGraphicsTemplatesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeAnimatedGraphicsTemplatesRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeAnimatedGraphicsTemplatesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 符合过滤条件的记录总数。
+		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 转动图模板详情列表。
+		AnimatedGraphicsTemplateSet []*AnimatedGraphicsTemplate `json:"AnimatedGraphicsTemplateSet,omitempty" name:"AnimatedGraphicsTemplateSet" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeAnimatedGraphicsTemplatesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeAnimatedGraphicsTemplatesResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeContentReviewTemplatesRequest struct {
 	*tchttp.BaseRequest
 
@@ -3086,6 +3580,60 @@ func (r *DescribeContentReviewTemplatesResponse) ToJsonString() string {
 }
 
 func (r *DescribeContentReviewTemplatesResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeImageSpriteTemplatesRequest struct {
+	*tchttp.BaseRequest
+
+	// 雪碧图模板唯一标识过滤条件，数组长度限制：100。
+	Definitions []*uint64 `json:"Definitions,omitempty" name:"Definitions" list`
+
+	// 分页偏移量，默认值：0。
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 返回记录条数，默认值：10，最大值：100。
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 模板类型过滤条件，可选值：
+	// <li>Preset：系统预置模板；</li>
+	// <li>Custom：用户自定义模板。</li>
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
+}
+
+func (r *DescribeImageSpriteTemplatesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeImageSpriteTemplatesRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeImageSpriteTemplatesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 符合过滤条件的记录总数。
+		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 雪碧图模板详情列表。
+		ImageSpriteTemplateSet []*ImageSpriteTemplate `json:"ImageSpriteTemplateSet,omitempty" name:"ImageSpriteTemplateSet" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeImageSpriteTemplatesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeImageSpriteTemplatesResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -3308,6 +3856,114 @@ func (r *DescribeReviewDetailsResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeSampleSnapshotTemplatesRequest struct {
+	*tchttp.BaseRequest
+
+	// 采样截图模板唯一标识过滤条件，数组长度限制：100。
+	Definitions []*uint64 `json:"Definitions,omitempty" name:"Definitions" list`
+
+	// 分页偏移量，默认值：0。
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 返回记录条数，默认值：10，最大值：100。
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 模板类型过滤条件，可选值：
+	// <li>Preset：系统预置模板；</li>
+	// <li>Custom：用户自定义模板。</li>
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
+}
+
+func (r *DescribeSampleSnapshotTemplatesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeSampleSnapshotTemplatesRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeSampleSnapshotTemplatesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 符合过滤条件的记录总数。
+		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 采样截图模板详情列表。
+		SampleSnapshotTemplateSet []*SampleSnapshotTemplate `json:"SampleSnapshotTemplateSet,omitempty" name:"SampleSnapshotTemplateSet" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeSampleSnapshotTemplatesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeSampleSnapshotTemplatesResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeSnapshotByTimeOffsetTemplatesRequest struct {
+	*tchttp.BaseRequest
+
+	// 指定时间点截图模板唯一标识过滤条件，数组长度限制：100。
+	Definitions []*uint64 `json:"Definitions,omitempty" name:"Definitions" list`
+
+	// 分页偏移量，默认值：0。
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 返回记录条数，默认值：10，最大值：100。
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 模板类型过滤条件，可选值：
+	// <li>Preset：系统预置模板；</li>
+	// <li>Custom：用户自定义模板。</li>
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
+}
+
+func (r *DescribeSnapshotByTimeOffsetTemplatesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeSnapshotByTimeOffsetTemplatesRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeSnapshotByTimeOffsetTemplatesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 符合过滤条件的记录总数。
+		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 指定时间点截图模板详情列表。
+		SnapshotByTimeOffsetTemplateSet []*SnapshotByTimeOffsetTemplate `json:"SnapshotByTimeOffsetTemplateSet,omitempty" name:"SnapshotByTimeOffsetTemplateSet" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeSnapshotByTimeOffsetTemplatesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeSnapshotByTimeOffsetTemplatesResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeSubAppIdsRequest struct {
 	*tchttp.BaseRequest
 }
@@ -3523,6 +4179,11 @@ type DescribeTranscodeTemplatesRequest struct {
 	// <li>Video：视频格式，可以同时包含视频流和音频流的封装格式板；</li>
 	// <li>PureAudio：纯音频格式，只能包含音频流的封装格式。</li>
 	ContainerType *string `json:"ContainerType,omitempty" name:"ContainerType"`
+
+	// 极速高清过滤条件，用于过滤普通转码或极速高清转码模板，可选值：
+	// <li>Common：普通转码模板；</li>
+	// <li>TEHD：极速高清模板。</li>
+	TEHDType *string `json:"TEHDType,omitempty" name:"TEHDType"`
 
 	// 分页偏移量，默认值：0。
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
@@ -4092,10 +4753,76 @@ type HeadTailConfigureInfoForUpdate struct {
 	Switch *string `json:"Switch,omitempty" name:"Switch"`
 }
 
+type HighlightSegmentItem struct {
+
+	// 置信度。
+	Confidence *float64 `json:"Confidence,omitempty" name:"Confidence"`
+
+	// 片段起始时间偏移。
+	StartTimeOffset *float64 `json:"StartTimeOffset,omitempty" name:"StartTimeOffset"`
+
+	// 片段结束时间偏移。
+	EndTimeOffset *float64 `json:"EndTimeOffset,omitempty" name:"EndTimeOffset"`
+}
+
+type HighlightsConfigureInfo struct {
+
+	// 智能精彩片段任务开关，可选值：
+	// <li>ON：开启智能精彩片段任务；</li>
+	// <li>OFF：关闭智能精彩片段任务。</li>
+	Switch *string `json:"Switch,omitempty" name:"Switch"`
+}
+
+type HighlightsConfigureInfoForUpdate struct {
+
+	// 智能精彩片段任务开关，可选值：
+	// <li>ON：开启智能精彩片段任务；</li>
+	// <li>OFF：关闭智能精彩片段任务。</li>
+	Switch *string `json:"Switch,omitempty" name:"Switch"`
+}
+
 type ImageSpriteTaskInput struct {
 
 	// 雪碧图模板 ID。
 	Definition *uint64 `json:"Definition,omitempty" name:"Definition"`
+}
+
+type ImageSpriteTemplate struct {
+
+	// 雪碧图模板唯一标识。
+	Definition *uint64 `json:"Definition,omitempty" name:"Definition"`
+
+	// 模板类型，取值范围：
+	// <li>Preset：系统预置模板；</li>
+	// <li>Custom：用户自定义模板。</li>
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 雪碧图模板名称。
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 雪碧图中小图的宽度。
+	Width *uint64 `json:"Width,omitempty" name:"Width"`
+
+	// 雪碧图中小图的高度。
+	Height *uint64 `json:"Height,omitempty" name:"Height"`
+
+	// 采样类型。
+	SampleType *string `json:"SampleType,omitempty" name:"SampleType"`
+
+	// 采样间隔。
+	SampleInterval *uint64 `json:"SampleInterval,omitempty" name:"SampleInterval"`
+
+	// 雪碧图中小图的行数。
+	RowCount *uint64 `json:"RowCount,omitempty" name:"RowCount"`
+
+	// 雪碧图中小图的列数。
+	ColumnCount *uint64 `json:"ColumnCount,omitempty" name:"ColumnCount"`
+
+	// 模板创建时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 模板最后修改时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
 }
 
 type ImageTransform struct {
@@ -4285,17 +5012,20 @@ type MediaAiAnalysisFrameTagSegmentItem struct {
 
 type MediaAiAnalysisHighlightItem struct {
 
-	// 智能精彩片段地址。
+	// 智能精彩集锦地址。
 	HighlightUrl *string `json:"HighlightUrl,omitempty" name:"HighlightUrl"`
 
-	// 智能精彩片段封面地址。
+	// 智能精彩集锦封面地址。
 	CovImgUrl *string `json:"CovImgUrl,omitempty" name:"CovImgUrl"`
 
-	// 智能精彩片段的可信度，取值范围是 0 到 100。
+	// 智能精彩集锦的可信度，取值范围是 0 到 100。
 	Confidence *float64 `json:"Confidence,omitempty" name:"Confidence"`
 
-	// 智能精彩片段持续时间。
+	// 智能精彩集锦持续时间。
 	Duration *float64 `json:"Duration,omitempty" name:"Duration"`
+
+	// 智能精彩集锦子片段列表，精彩集锦片段由这些子片段拼接生成。
+	SegmentSet []*HighlightSegmentItem `json:"SegmentSet,omitempty" name:"SegmentSet" list`
 }
 
 type MediaAiAnalysisTagItem struct {
@@ -4774,7 +5504,7 @@ type MediaMiniProgramReviewElem struct {
 	Suggestion *string `json:"Suggestion,omitempty" name:"Suggestion"`
 
 	// 审核结果置信度。取值 0~100。
-	Confidence *string `json:"Confidence,omitempty" name:"Confidence"`
+	Confidence *float64 `json:"Confidence,omitempty" name:"Confidence"`
 }
 
 type MediaMiniProgramReviewInfo struct {
@@ -4802,7 +5532,7 @@ type MediaMiniProgramReviewInfoItem struct {
 
 	// 小程序审核元素。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ReviewSummery []*MediaMiniProgramReviewElem `json:"ReviewSummery,omitempty" name:"ReviewSummery" list`
+	ReviewSummary []*MediaMiniProgramReviewElem `json:"ReviewSummary,omitempty" name:"ReviewSummary" list`
 }
 
 type MediaOutputInfo struct {
@@ -5271,6 +6001,9 @@ type ModifyAIAnalysisTemplateRequest struct {
 	// 智能按帧标签任务控制参数。
 	FrameTagConfigure *FrameTagConfigureInfoForUpdate `json:"FrameTagConfigure,omitempty" name:"FrameTagConfigure"`
 
+	// 智能精彩集锦任务控制参数。
+	HighlightConfigure *HighlightsConfigureInfoForUpdate `json:"HighlightConfigure,omitempty" name:"HighlightConfigure"`
+
 	// 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
 	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
 }
@@ -5369,6 +6102,74 @@ func (r *ModifyAIRecognitionTemplateResponse) ToJsonString() string {
 }
 
 func (r *ModifyAIRecognitionTemplateResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyAnimatedGraphicsTemplateRequest struct {
+	*tchttp.BaseRequest
+
+	// 转动图模板唯一标识。
+	Definition *uint64 `json:"Definition,omitempty" name:"Definition"`
+
+	// 转动图模板名称，长度限制：64 个字符。
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 动图宽度（或长边）的最大值，取值范围：0 和 [128, 4096]，单位：px。
+	// <li>当 Width、Height 均为 0，则分辨率同源；</li>
+	// <li>当 Width 为 0，Height 非 0，则 Width 按比例缩放；</li>
+	// <li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li>
+	// <li>当 Width、Height 均非 0，则分辨率按用户指定。</li>
+	// 默认值：0。
+	Width *uint64 `json:"Width,omitempty" name:"Width"`
+
+	// 视频流高度（或短边）的最大值，取值范围：0 和 [128, 4096]，单位：px。
+	// <li>当 Width、Height 均为 0，则分辨率同源；</li>
+	// <li>当 Width 为 0，Height 非 0，则 Width 按比例缩放；</li>
+	// <li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li>
+	// <li>当 Width、Height 均非 0，则分辨率按用户指定。</li>
+	// 默认值：0。
+	Height *uint64 `json:"Height,omitempty" name:"Height"`
+
+	// 动图格式，取值为 gif 和 webp。
+	Format *string `json:"Format,omitempty" name:"Format"`
+
+	// 帧率，取值范围：[1, 30]，单位：Hz。
+	Fps *uint64 `json:"Fps,omitempty" name:"Fps"`
+
+	// 图片质量，取值范围：[1, 100]，默认值为 75。
+	Quality *float64 `json:"Quality,omitempty" name:"Quality"`
+
+	// 模板描述信息，长度限制：256 个字符。
+	Comment *string `json:"Comment,omitempty" name:"Comment"`
+
+	// 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
+}
+
+func (r *ModifyAnimatedGraphicsTemplateRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyAnimatedGraphicsTemplateRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyAnimatedGraphicsTemplateResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifyAnimatedGraphicsTemplateResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyAnimatedGraphicsTemplateResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -5472,6 +6273,68 @@ func (r *ModifyContentReviewTemplateResponse) ToJsonString() string {
 }
 
 func (r *ModifyContentReviewTemplateResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyImageSpriteTemplateRequest struct {
+	*tchttp.BaseRequest
+
+	// 雪碧图模板唯一标识。
+	Definition *uint64 `json:"Definition,omitempty" name:"Definition"`
+
+	// 雪碧图模板名称，长度限制：64 个字符。
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 雪碧图中小图的宽度，取值范围： [128, 4096]，单位：px。
+	Width *uint64 `json:"Width,omitempty" name:"Width"`
+
+	// 雪碧图中小图的高度，取值范围： [128, 4096]，单位：px。
+	Height *uint64 `json:"Height,omitempty" name:"Height"`
+
+	// 采样类型，取值：
+	// <li>Percent：按百分比。</li>
+	// <li>Time：按时间间隔。</li>
+	SampleType *string `json:"SampleType,omitempty" name:"SampleType"`
+
+	// 采样间隔。
+	// <li>当 SampleType 为 Percent 时，指定采样间隔的百分比。</li>
+	// <li>当 SampleType 为 Time 时，指定采样间隔的时间，单位为秒。</li>
+	SampleInterval *uint64 `json:"SampleInterval,omitempty" name:"SampleInterval"`
+
+	// 雪碧图中小图的行数。
+	RowCount *uint64 `json:"RowCount,omitempty" name:"RowCount"`
+
+	// 雪碧图中小图的列数。
+	ColumnCount *uint64 `json:"ColumnCount,omitempty" name:"ColumnCount"`
+
+	// 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
+}
+
+func (r *ModifyImageSpriteTemplateRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyImageSpriteTemplateRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyImageSpriteTemplateResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifyImageSpriteTemplateResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyImageSpriteTemplateResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -5614,6 +6477,120 @@ func (r *ModifyPersonSampleResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type ModifySampleSnapshotTemplateRequest struct {
+	*tchttp.BaseRequest
+
+	// 采样截图模板唯一标识。
+	Definition *uint64 `json:"Definition,omitempty" name:"Definition"`
+
+	// 采样截图模板名称，长度限制：64 个字符。
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 图片宽度，取值范围： [128, 4096]，单位：px。
+	Width *uint64 `json:"Width,omitempty" name:"Width"`
+
+	// 图片高度，取值范围： [128, 4096]，单位：px。
+	Height *uint64 `json:"Height,omitempty" name:"Height"`
+
+	// 采样截图类型，取值：
+	// <li>Percent：按百分比。</li>
+	// <li>Time：按时间间隔。</li>
+	SampleType *string `json:"SampleType,omitempty" name:"SampleType"`
+
+	// 采样间隔。
+	// <li>当 SampleType 为 Percent 时，指定采样间隔的百分比。</li>
+	// <li>当 SampleType 为 Time 时，指定采样间隔的时间，单位为秒。</li>
+	SampleInterval *uint64 `json:"SampleInterval,omitempty" name:"SampleInterval"`
+
+	// 图片格式，取值为 jpg 和 png。
+	Format *string `json:"Format,omitempty" name:"Format"`
+
+	// 模板描述信息，长度限制：256 个字符。
+	Comment *string `json:"Comment,omitempty" name:"Comment"`
+
+	// 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
+}
+
+func (r *ModifySampleSnapshotTemplateRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifySampleSnapshotTemplateRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifySampleSnapshotTemplateResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifySampleSnapshotTemplateResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifySampleSnapshotTemplateResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifySnapshotByTimeOffsetTemplateRequest struct {
+	*tchttp.BaseRequest
+
+	// 指定时间点截图模板唯一标识。
+	Definition *uint64 `json:"Definition,omitempty" name:"Definition"`
+
+	// 指定时间点截图模板名称，长度限制：64 个字符。
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 图片宽度，取值范围： [128, 4096]，单位：px。
+	Width *uint64 `json:"Width,omitempty" name:"Width"`
+
+	// 图片高度，取值范围： [128, 4096]，单位：px。
+	Height *uint64 `json:"Height,omitempty" name:"Height"`
+
+	// 图片格式，取值可以为 jpg 和 png。
+	Format *string `json:"Format,omitempty" name:"Format"`
+
+	// 模板描述信息，长度限制：256 个字符。
+	Comment *string `json:"Comment,omitempty" name:"Comment"`
+
+	// 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
+}
+
+func (r *ModifySnapshotByTimeOffsetTemplateRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifySnapshotByTimeOffsetTemplateRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifySnapshotByTimeOffsetTemplateResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifySnapshotByTimeOffsetTemplateResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifySnapshotByTimeOffsetTemplateResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type ModifySubAppIdInfoRequest struct {
 	*tchttp.BaseRequest
 
@@ -5723,6 +6700,9 @@ type ModifyTranscodeTemplateRequest struct {
 
 	// 音频流配置参数。
 	AudioTemplate *AudioTemplateInfoForUpdate `json:"AudioTemplate,omitempty" name:"AudioTemplate"`
+
+	// 极速高清转码参数，需联系商务架构师开通后才能使用。
+	TEHDConfig *TEHDConfigForUpdate `json:"TEHDConfig,omitempty" name:"TEHDConfig"`
 
 	// 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
 	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
@@ -6760,6 +7740,44 @@ type SampleSnapshotTaskInput struct {
 	WatermarkSet []*WatermarkInput `json:"WatermarkSet,omitempty" name:"WatermarkSet" list`
 }
 
+type SampleSnapshotTemplate struct {
+
+	// 采样截图模板唯一标识。
+	Definition *uint64 `json:"Definition,omitempty" name:"Definition"`
+
+	// 模板类型，取值范围：
+	// <li>Preset：系统预置模板；</li>
+	// <li>Custom：用户自定义模板。</li>
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 采样截图模板名称。
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 模板描述信息。
+	Comment *string `json:"Comment,omitempty" name:"Comment"`
+
+	// 图片宽度。
+	Width *uint64 `json:"Width,omitempty" name:"Width"`
+
+	// 图片高度。
+	Height *uint64 `json:"Height,omitempty" name:"Height"`
+
+	// 图片格式。
+	Format *string `json:"Format,omitempty" name:"Format"`
+
+	// 采样截图类型。
+	SampleType *string `json:"SampleType,omitempty" name:"SampleType"`
+
+	// 采样间隔。
+	SampleInterval *uint64 `json:"SampleInterval,omitempty" name:"SampleInterval"`
+
+	// 模板创建时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 模板最后修改时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
+}
+
 type SearchMediaRequest struct {
 	*tchttp.BaseRequest
 
@@ -6953,6 +7971,38 @@ type SnapshotByTimeOffsetTaskInput struct {
 	WatermarkSet []*WatermarkInput `json:"WatermarkSet,omitempty" name:"WatermarkSet" list`
 }
 
+type SnapshotByTimeOffsetTemplate struct {
+
+	// 指定时间点截图模板唯一标识。
+	Definition *uint64 `json:"Definition,omitempty" name:"Definition"`
+
+	// 模板类型，取值范围：
+	// <li>Preset：系统预置模板；</li>
+	// <li>Custom：用户自定义模板。</li>
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 指定时间点截图模板名称。
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 模板描述信息。
+	Comment *string `json:"Comment,omitempty" name:"Comment"`
+
+	// 图片宽度。
+	Width *uint64 `json:"Width,omitempty" name:"Width"`
+
+	// 图片高度。
+	Height *uint64 `json:"Height,omitempty" name:"Height"`
+
+	// 图片格式。
+	Format *string `json:"Format,omitempty" name:"Format"`
+
+	// 模板创建时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 模板最后修改时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
+}
+
 type SortBy struct {
 
 	// 排序字段
@@ -7102,6 +8152,17 @@ type TEHDConfig struct {
 
 	// 视频码率上限，当 Type 指定了极速高清类型时有效。
 	// 不填或填0表示不设视频码率上限。
+	MaxVideoBitrate *uint64 `json:"MaxVideoBitrate,omitempty" name:"MaxVideoBitrate"`
+}
+
+type TEHDConfigForUpdate struct {
+
+	// 极速高清类型，可选值：
+	// <li>TEHD-100：极速高清-100。</li>
+	// 不填代表不修改。
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 视频码率上限，不填代表不修改。
 	MaxVideoBitrate *uint64 `json:"MaxVideoBitrate,omitempty" name:"MaxVideoBitrate"`
 }
 

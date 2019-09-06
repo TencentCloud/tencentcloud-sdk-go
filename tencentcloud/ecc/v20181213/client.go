@@ -43,6 +43,31 @@ func NewClient(credential *common.Credential, region string, clientProfile *prof
 }
 
 
+func NewDescribeTaskRequest() (request *DescribeTaskRequest) {
+    request = &DescribeTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ecc", APIVersion, "DescribeTask")
+    return
+}
+
+func NewDescribeTaskResponse() (response *DescribeTaskResponse) {
+    response = &DescribeTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 异步任务结果查询接口
+func (c *Client) DescribeTask(request *DescribeTaskRequest) (response *DescribeTaskResponse, err error) {
+    if request == nil {
+        request = NewDescribeTaskRequest()
+    }
+    response = NewDescribeTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewECCRequest() (request *ECCRequest) {
     request = &ECCRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -85,7 +110,7 @@ func NewEHOCRResponse() (response *EHOCRResponse) {
 }
 
 // https://ecc.tencentcloudapi.com/?Action=EHOCR
-// 作文识别
+// 图像识别批改接口
 func (c *Client) EHOCR(request *EHOCRRequest) (response *EHOCRResponse, err error) {
     if request == nil {
         request = NewEHOCRRequest()

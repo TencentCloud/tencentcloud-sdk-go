@@ -69,3 +69,28 @@ func (c *Client) FaceFusion(request *FaceFusionRequest) (response *FaceFusionRes
     err = c.Send(request, response)
     return
 }
+
+func NewFuseFaceRequest() (request *FuseFaceRequest) {
+    request = &FuseFaceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("facefusion", APIVersion, "FuseFace")
+    return
+}
+
+func NewFuseFaceResponse() (response *FuseFaceResponse) {
+    response = &FuseFaceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 选脸融合
+func (c *Client) FuseFace(request *FuseFaceRequest) (response *FuseFaceResponse, err error) {
+    if request == nil {
+        request = NewFuseFaceRequest()
+    }
+    response = NewFuseFaceResponse()
+    err = c.Send(request, response)
+    return
+}

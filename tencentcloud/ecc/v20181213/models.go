@@ -22,17 +22,32 @@ import (
 
 type Aspect struct {
 
-	// 项目 名字
+	// 维度名字
 	Name *string `json:"Name,omitempty" name:"Name"`
 
-	// 该项得分
+	// 维度得分
 	Score *float64 `json:"Score,omitempty" name:"Score"`
+
+	// 维度分数占比
+	Percentage *float64 `json:"Percentage,omitempty" name:"Percentage"`
 }
 
 type CompostionContext struct {
 
 	// 作文内容
 	Content *string `json:"Content,omitempty" name:"Content"`
+
+	// 批改结果
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CorrectData *CorrectData `json:"CorrectData,omitempty" name:"CorrectData"`
+
+	// 任务 id，用于查询接口
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 图像识别唯一标识，一次识别一个 SessionId
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SessionId *string `json:"SessionId,omitempty" name:"SessionId"`
 }
 
 type CorrectData struct {
@@ -50,6 +65,54 @@ type CorrectData struct {
 	SentenceComments []*SentenceCom `json:"SentenceComments,omitempty" name:"SentenceComments" list`
 }
 
+type DescribeTaskRequest struct {
+	*tchttp.BaseRequest
+
+	// 任务 ID
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 业务应用ID，与账号应用APPID无关，是用来方便客户管理服务的参数（暂时无需传入）。
+	EccAppid *string `json:"EccAppid,omitempty" name:"EccAppid"`
+}
+
+func (r *DescribeTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeTaskRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 作文识别文本
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Content *string `json:"Content,omitempty" name:"Content"`
+
+		// 整体的批改结果
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		CorrectData *CorrectData `json:"CorrectData,omitempty" name:"CorrectData"`
+
+		// 任务状态，“Progressing”: 处理中（此时无结果返回）、“Finished”: 处理完成
+		Status *string `json:"Status,omitempty" name:"Status"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeTaskResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type ECCRequest struct {
 	*tchttp.BaseRequest
 
@@ -63,13 +126,22 @@ type ECCRequest struct {
 	Grade *string `json:"Grade,omitempty" name:"Grade"`
 
 	// 作文提纲，可选参数，作文的写作要求。
-	Outline *string `json:"Outline,omitempty" name:"Outline"`
+	Requirement *string `json:"Requirement,omitempty" name:"Requirement"`
 
 	// 范文标题，可选参数，本接口可以依据提供的范文对作文进行评分。
-	ModelSubject *string `json:"ModelSubject,omitempty" name:"ModelSubject"`
+	ModelTitle *string `json:"ModelTitle,omitempty" name:"ModelTitle"`
 
 	// 范文内容，可选参数，同上，范文的正文部分。
 	ModelContent *string `json:"ModelContent,omitempty" name:"ModelContent"`
+
+	// 业务应用ID，与账号应用APPID无关，是用来方便客户管理服务的参数（暂时无需传入）。
+	EccAppid *string `json:"EccAppid,omitempty" name:"EccAppid"`
+
+	// 异步模式标识，0：同步模式，1：异步模式，默认为同步模式
+	IsAsync *int64 `json:"IsAsync,omitempty" name:"IsAsync"`
+
+	// 图像识别唯一标识，一次识别一个 SessionId。当传入此前识别接口使用过的 SessionId，则本次批改按图像批改价格收费；如使用了识别接口且本次没有传入 SessionId，则需要加取文本批改的费用；如果直接使用文本批改接口，则只收取文本批改的费用
+	SessionId *string `json:"SessionId,omitempty" name:"SessionId"`
 }
 
 func (r *ECCRequest) ToJsonString() string {
@@ -86,7 +158,12 @@ type ECCResponse struct {
 	Response *struct {
 
 		// 整体的批改结果
+	// 注意：此字段可能返回 null，表示取不到有效值。
 		Data *CorrectData `json:"Data,omitempty" name:"Data"`
+
+		// 任务 id，用于查询接口
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -108,8 +185,35 @@ type EHOCRRequest struct {
 	// 图片所在的url或base64编码后的图像数据，依据InputType而定
 	Image *string `json:"Image,omitempty" name:"Image"`
 
-	// 输出图片类型，0表示Image字段是图片所在的url，1表示Image字段是base64编码后的图像数据
+	// 输出图片类型，0 表示 Image 字段是图片所在的 url，1 表示 Image 字段是 base64 编码后的图像数据
 	InputType *int64 `json:"InputType,omitempty" name:"InputType"`
+
+	// 业务应用ID，与账号应用APPID无关，是用来方便客户管理服务的参数（暂时无需传入）。
+	EccAppid *string `json:"EccAppid,omitempty" name:"EccAppid"`
+
+	// 图像识别唯一标识，一次识别一个 SessionId，使用识别功能时 SessionId 可用于使用文本批改接口，此时按图像批改价格收费；如使用文本批改接口时没有传入 SessionId，则需要收取文本批改的费用
+	SessionId *string `json:"SessionId,omitempty" name:"SessionId"`
+
+	// 服务类型，0：“图像识别”，只返回识别结果，1：“图像批改”，同时返回识别结果与批改结果。默认为 0
+	ServerType *int64 `json:"ServerType,omitempty" name:"ServerType"`
+
+	// 作文题目，可选参数
+	Title *string `json:"Title,omitempty" name:"Title"`
+
+	// 年级标准， 默认以 cet4 为标准，取值与意义如下：elementary 小学，grade7 grade8 grade9分别对应初一，初二，初三。 grade10 grade11 grade12 分别对应高一，高二，高三，以及 cet4 和 cet6 分别表示 英语4级和6级。
+	Grade *string `json:"Grade,omitempty" name:"Grade"`
+
+	// 作文提纲，可选参数，作文的写作要求。
+	Requirement *string `json:"Requirement,omitempty" name:"Requirement"`
+
+	// 范文标题，可选参数，本接口可以依据提供的范文对作文进行评分。
+	ModelTitle *string `json:"ModelTitle,omitempty" name:"ModelTitle"`
+
+	// 范文内容，可选参数，同上，范文的正文部分。
+	ModelContent *string `json:"ModelContent,omitempty" name:"ModelContent"`
+
+	// 异步模式标识，0：同步模式，1：异步模式。默认为同步模式
+	IsAsync *int64 `json:"IsAsync,omitempty" name:"IsAsync"`
 }
 
 func (r *EHOCRRequest) ToJsonString() string {
@@ -125,7 +229,7 @@ type EHOCRResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 识别后的作文内容
+		// 接口返回数据
 		Data *CompostionContext `json:"Data,omitempty" name:"Data"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -142,27 +246,39 @@ func (r *EHOCRResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type ErrorCoordinate struct {
+
+	// 维度单词坐标
+	Coordinate []*int64 `json:"Coordinate,omitempty" name:"Coordinate" list`
+}
+
 type ScoreCategory struct {
 
-	// 词汇项
+	// 词汇维度
 	Words *Aspect `json:"Words,omitempty" name:"Words"`
 
-	// 句子项
+	// 句子维度
 	Sentences *Aspect `json:"Sentences,omitempty" name:"Sentences"`
 
-	// 篇章结构
+	// 篇章结构维度
 	Structure *Aspect `json:"Structure,omitempty" name:"Structure"`
 
-	// 内容
+	// 内容维度
 	Content *Aspect `json:"Content,omitempty" name:"Content"`
+
+	// 维度得分
+	Score *float64 `json:"Score,omitempty" name:"Score"`
+
+	// 维度分数占比
+	Percentage *float64 `json:"Percentage,omitempty" name:"Percentage"`
 }
 
 type SentenceCom struct {
 
-	// 点评内容
+	// 句子错误纠正信息
 	Suggestions []*SentenceSuggest `json:"Suggestions,omitempty" name:"Suggestions" list`
 
-	// 点评的句子信息
+	// 句子信息
 	Sentence *SentenceItem `json:"Sentence,omitempty" name:"Sentence"`
 }
 
@@ -194,4 +310,10 @@ type SentenceSuggest struct {
 
 	// 提示信息
 	Message *string `json:"Message,omitempty" name:"Message"`
+
+	// 维度单词位置，在句子的第几个到第几个单词之间
+	ErrorPosition []*int64 `json:"ErrorPosition,omitempty" name:"ErrorPosition" list`
+
+	// 维度单词坐标，错误单词在图片中的坐标，只有传图片时正常返回，传文字时返回[ ]
+	ErrorCoordinates []*ErrorCoordinate `json:"ErrorCoordinates,omitempty" name:"ErrorCoordinates" list`
 }
