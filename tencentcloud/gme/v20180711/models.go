@@ -233,6 +233,14 @@ type ScanPiece struct {
 
 	// 语音检测详情
 	ScanDetail []*ScanDetail `json:"ScanDetail,omitempty" name:"ScanDetail" list`
+
+	// gme实时语音房间id，透传任务传入时的RoomId
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RoomId *string `json:"RoomId,omitempty" name:"RoomId"`
+
+	// gme实时语音用户id，透传任务传入时的OpenId
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OpenId *string `json:"OpenId,omitempty" name:"OpenId"`
 }
 
 type ScanVoiceRequest struct {
@@ -303,6 +311,12 @@ type Task struct {
 
 	// 数据文件的url，为 urlencode 编码，流式则为拉流地址
 	Url *string `json:"Url,omitempty" name:"Url"`
+
+	// gme实时语音房间id，通过gme实时语音进行语音分析时输入
+	RoomId *string `json:"RoomId,omitempty" name:"RoomId"`
+
+	// gme实时语音用户id，通过gme实时语音进行语音分析时输入
+	OpenId *string `json:"OpenId,omitempty" name:"OpenId"`
 }
 
 type VoiceFilter struct {

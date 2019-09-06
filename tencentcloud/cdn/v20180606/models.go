@@ -53,6 +53,34 @@ type CdnData struct {
 	SummarizedData *SummarizedData `json:"SummarizedData,omitempty" name:"SummarizedData"`
 }
 
+type CdnIp struct {
+
+	// 节点 ip。
+	Ip *string `json:"Ip,omitempty" name:"Ip"`
+
+	// 是否为腾讯云 CDN 加速节点。yes 表示该节点为腾讯云 CDN 节点，no 表示该节点不是腾讯云 CDN 节点。
+	Platform *string `json:"Platform,omitempty" name:"Platform"`
+
+	// 表示该节点所处的省份/国家。unknown 表示节点位置未知。
+	Location *string `json:"Location,omitempty" name:"Location"`
+
+	// 节点上下线历史记录。
+	History []*CdnIpHistory `json:"History,omitempty" name:"History" list`
+
+	// 节点的服务地域。mainland 表示服务地域为中国境内，overseas 表示服务地域为中国境外， unknown 表示服务地域未知。
+	Area *string `json:"Area,omitempty" name:"Area"`
+}
+
+type CdnIpHistory struct {
+
+	// 上下线状态。online 为上线，offline 为下线。
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 操作时间。当该值为 null 时表示无历史状态变更记录。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Datetime *string `json:"Datetime,omitempty" name:"Datetime"`
+}
+
 type DescribeCdnDataRequest struct {
 	*tchttp.BaseRequest
 
@@ -156,6 +184,43 @@ func (r *DescribeCdnDataResponse) ToJsonString() string {
 }
 
 func (r *DescribeCdnDataResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeCdnIpRequest struct {
+	*tchttp.BaseRequest
+
+	// 需要查询的 IP 列表
+	Ips []*string `json:"Ips,omitempty" name:"Ips" list`
+}
+
+func (r *DescribeCdnIpRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeCdnIpRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeCdnIpResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 查询的节点归属详情。
+		Ips []*CdnIp `json:"Ips,omitempty" name:"Ips" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeCdnIpResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeCdnIpResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -383,6 +448,132 @@ func (r *DescribePayTypeResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribePurgeTasksRequest struct {
+	*tchttp.BaseRequest
+
+	// 查询刷新类型。url：查询 url 刷新记录；path：查询目录刷新记录。
+	PurgeType *string `json:"PurgeType,omitempty" name:"PurgeType"`
+
+	// 开始时间，如2018-08-08 00:00:00。
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 结束时间，如2018-08-08 23:59:59。
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 提交时返回的任务 Id，查询时 TaskId 和起始时间必须指定一项。
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 分页查询偏移量，默认为 0 （第一页）。
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 分页查询限制数目，默认为20。
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 查询关键字，请输入域名或 http(s):// 开头完整 URL。
+	Keyword *string `json:"Keyword,omitempty" name:"Keyword"`
+
+	// 查询指定任务状态，fail表示失败，done表示成功，process表示刷新中。
+	Status *string `json:"Status,omitempty" name:"Status"`
+}
+
+func (r *DescribePurgeTasksRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribePurgeTasksRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribePurgeTasksResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 刷新历史记录
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		PurgeLogs []*PurgeTask `json:"PurgeLogs,omitempty" name:"PurgeLogs" list`
+
+		// 任务总数，用于分页
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribePurgeTasksResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribePurgeTasksResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribePushTasksRequest struct {
+	*tchttp.BaseRequest
+
+	// 开始时间，如2018-08-08 00:00:00。
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 结束时间，如2018-08-08 23:59:59。
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 提交时返回的任务 Id，查询时 TaskId 和起始时间必须指定一项。
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 查询关键字，请输入域名或 http(s):// 开头完整 URL。
+	Keyword *string `json:"Keyword,omitempty" name:"Keyword"`
+
+	// 分页查询偏移量，默认为 0 （第一页）。
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 分页查询限制数目，默认为20。
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 查询刷新记录指定地区。mainland：中国大陆。
+	Area *string `json:"Area,omitempty" name:"Area"`
+
+	// 查询指定任务状态，fail表示失败，done表示成功，process表示刷新中。
+	Status *string `json:"Status,omitempty" name:"Status"`
+}
+
+func (r *DescribePushTasksRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribePushTasksRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribePushTasksResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 预热历史记录
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		PushLogs []*PushTask `json:"PushLogs,omitempty" name:"PushLogs" list`
+
+		// 任务总数，用于分页
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribePushTasksResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribePushTasksResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DisableCachesRequest struct {
 	*tchttp.BaseRequest
 
@@ -596,6 +787,162 @@ type MapInfo struct {
 
 	// 对象名称
 	Name *string `json:"Name,omitempty" name:"Name"`
+}
+
+type PurgePathCacheRequest struct {
+	*tchttp.BaseRequest
+
+	// 要刷新的目录列表，必须包含协议头部。
+	Paths []*string `json:"Paths,omitempty" name:"Paths" list`
+
+	// 刷新类型，flush 代表刷新有更新的资源，delete 表示刷新全部资源。
+	FlushType *string `json:"FlushType,omitempty" name:"FlushType"`
+}
+
+func (r *PurgePathCacheRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *PurgePathCacheRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type PurgePathCacheResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 刷新任务Id，前十位为提交任务时的UTC时间。
+		TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *PurgePathCacheResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *PurgePathCacheResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type PurgeTask struct {
+
+	// 刷新任务ID。
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 刷新Url。
+	Url *string `json:"Url,omitempty" name:"Url"`
+
+	// 刷新任务状态，fail表示失败，done表示成功，process表示刷新中。
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 刷新类型，url表示url刷新，path表示目录刷新。
+	PurgeType *string `json:"PurgeType,omitempty" name:"PurgeType"`
+
+	// 刷新资源方式，flush代表刷新更新资源，delete代表刷新全部资源。
+	FlushType *string `json:"FlushType,omitempty" name:"FlushType"`
+
+	// 刷新任务提交时间
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+}
+
+type PurgeUrlsCacheRequest struct {
+	*tchttp.BaseRequest
+
+	// 要刷新的Url列表，必须包含协议头部。
+	Urls []*string `json:"Urls,omitempty" name:"Urls" list`
+}
+
+func (r *PurgeUrlsCacheRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *PurgeUrlsCacheRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type PurgeUrlsCacheResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 刷新任务Id，前十位为提交任务时的UTC时间。
+		TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *PurgeUrlsCacheResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *PurgeUrlsCacheResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type PushTask struct {
+
+	// 预热任务Id，前十位为时间戳。
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 预热Url。
+	Url *string `json:"Url,omitempty" name:"Url"`
+
+	// 预热任务状态，fail表示失败，done表示成功，process表示预热中。
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 预热百分比。
+	Percent *int64 `json:"Percent,omitempty" name:"Percent"`
+
+	// 预热任务提交时间。
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+}
+
+type PushUrlsCacheRequest struct {
+	*tchttp.BaseRequest
+
+	// URL 列表，提交时需要包含协议头部（http:// 或 https://）
+	Urls []*string `json:"Urls,omitempty" name:"Urls" list`
+
+	// 预热请求回源时 HTTP 请求的 User-Agent 头部，默认为 TencentCdn
+	UserAgent *string `json:"UserAgent,omitempty" name:"UserAgent"`
+}
+
+func (r *PushUrlsCacheRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *PushUrlsCacheRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type PushUrlsCacheResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 此批次提交任务对应的 Id，值唯一
+		TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *PushUrlsCacheResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *PushUrlsCacheResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
 }
 
 type ResourceData struct {

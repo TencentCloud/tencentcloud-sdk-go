@@ -77,6 +77,31 @@ func (c *Client) DescribeCdnData(request *DescribeCdnDataRequest) (response *Des
     return
 }
 
+func NewDescribeCdnIpRequest() (request *DescribeCdnIpRequest) {
+    request = &DescribeCdnIpRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cdn", APIVersion, "DescribeCdnIp")
+    return
+}
+
+func NewDescribeCdnIpResponse() (response *DescribeCdnIpResponse) {
+    response = &DescribeCdnIpResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeCdnIp 用于查询 CDN IP 归属。
+func (c *Client) DescribeCdnIp(request *DescribeCdnIpRequest) (response *DescribeCdnIpResponse, err error) {
+    if request == nil {
+        request = NewDescribeCdnIpRequest()
+    }
+    response = NewDescribeCdnIpResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeIpVisitRequest() (request *DescribeIpVisitRequest) {
     request = &DescribeIpVisitRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -190,6 +215,56 @@ func (c *Client) DescribePayType(request *DescribePayTypeRequest) (response *Des
     return
 }
 
+func NewDescribePurgeTasksRequest() (request *DescribePurgeTasksRequest) {
+    request = &DescribePurgeTasksRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cdn", APIVersion, "DescribePurgeTasks")
+    return
+}
+
+func NewDescribePurgeTasksResponse() (response *DescribePurgeTasksResponse) {
+    response = &DescribePurgeTasksResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribePurgeTasks 用于查询刷新任务提交历史记录及执行进度。
+func (c *Client) DescribePurgeTasks(request *DescribePurgeTasksRequest) (response *DescribePurgeTasksResponse, err error) {
+    if request == nil {
+        request = NewDescribePurgeTasksRequest()
+    }
+    response = NewDescribePurgeTasksResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribePushTasksRequest() (request *DescribePushTasksRequest) {
+    request = &DescribePushTasksRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cdn", APIVersion, "DescribePushTasks")
+    return
+}
+
+func NewDescribePushTasksResponse() (response *DescribePushTasksResponse) {
+    response = &DescribePushTasksResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribePushTasks 用于查询预热任务提交历史记录及执行进度。（接口尚在批量公测中，暂未全量开放使用）
+func (c *Client) DescribePushTasks(request *DescribePushTasksRequest) (response *DescribePushTasksResponse, err error) {
+    if request == nil {
+        request = NewDescribePushTasksRequest()
+    }
+    response = NewDescribePushTasksResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDisableCachesRequest() (request *DisableCachesRequest) {
     request = &DisableCachesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -292,6 +367,81 @@ func (c *Client) ListTopData(request *ListTopDataRequest) (response *ListTopData
         request = NewListTopDataRequest()
     }
     response = NewListTopDataResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewPurgePathCacheRequest() (request *PurgePathCacheRequest) {
+    request = &PurgePathCacheRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cdn", APIVersion, "PurgePathCache")
+    return
+}
+
+func NewPurgePathCacheResponse() (response *PurgePathCacheResponse) {
+    response = &PurgePathCacheResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// PurgeUrlsCache 用于批量刷新目录缓存，一次提交将返回一个刷新任务id。
+func (c *Client) PurgePathCache(request *PurgePathCacheRequest) (response *PurgePathCacheResponse, err error) {
+    if request == nil {
+        request = NewPurgePathCacheRequest()
+    }
+    response = NewPurgePathCacheResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewPurgeUrlsCacheRequest() (request *PurgeUrlsCacheRequest) {
+    request = &PurgeUrlsCacheRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cdn", APIVersion, "PurgeUrlsCache")
+    return
+}
+
+func NewPurgeUrlsCacheResponse() (response *PurgeUrlsCacheResponse) {
+    response = &PurgeUrlsCacheResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// PurgeUrlsCache 用于批量刷新Url，一次提交将返回一个刷新任务id。
+func (c *Client) PurgeUrlsCache(request *PurgeUrlsCacheRequest) (response *PurgeUrlsCacheResponse, err error) {
+    if request == nil {
+        request = NewPurgeUrlsCacheRequest()
+    }
+    response = NewPurgeUrlsCacheResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewPushUrlsCacheRequest() (request *PushUrlsCacheRequest) {
+    request = &PushUrlsCacheRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cdn", APIVersion, "PushUrlsCache")
+    return
+}
+
+func NewPushUrlsCacheResponse() (response *PushUrlsCacheResponse) {
+    response = &PushUrlsCacheResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// PushUrlsCache 用于将指定 URL 资源列表加载至 CDN 节点，默认情况下每次调用可提交 20 条 URL，每日一共可提交 1000 条。
+func (c *Client) PushUrlsCache(request *PushUrlsCacheRequest) (response *PushUrlsCacheResponse, err error) {
+    if request == nil {
+        request = NewPushUrlsCacheRequest()
+    }
+    response = NewPushUrlsCacheResponse()
     err = c.Send(request, response)
     return
 }

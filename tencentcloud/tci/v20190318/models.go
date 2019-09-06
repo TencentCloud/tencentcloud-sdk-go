@@ -23,10 +23,10 @@ import (
 type AIAssistantRequest struct {
 	*tchttp.BaseRequest
 
-	// 输入分析对象内容
+	// 输入分析对象内容，输入数据格式参考FileType参数释义
 	FileContent *string `json:"FileContent,omitempty" name:"FileContent"`
 
-	// 输入分析对象类型，picture_url:图片地址，vod_url:视频地址，live_url：直播地址,audio_url: 音频文件
+	// 输入分析对象类型，picture_url:图片地址，vod_url:视频地址，live_url：直播地址，audio_url: 音频文件，picture：图片二进制数据的BASE64编码
 	FileType *string `json:"FileType,omitempty" name:"FileType"`
 
 	// 音频源的语言，默认0为英文，1为中文
@@ -35,7 +35,7 @@ type AIAssistantRequest struct {
 	// 查询人员库列表
 	LibrarySet []*string `json:"LibrarySet,omitempty" name:"LibrarySet" list`
 
-	// 直播流评估时间，在FileType为live_url时生效，默认值为10分钟。
+	// 视频评估时间，单位毫秒，点播场景默认值为2小时（无法探测长度时）或完整视频，直播场景默认值为10分钟或直播提前结束
 	MaxVideoDuration *int64 `json:"MaxVideoDuration,omitempty" name:"MaxVideoDuration"`
 
 	// 标准化模板选择：0：AI助教基础版本，1：AI评教基础版本，2：AI评教标准版本。AI 助教基础版本功能包括：人脸检索、人脸检测、人脸表情识别、学生动作选项，音频信息分析，微笑识别。AI 评教基础版本功能包括：人脸检索、人脸检测、人脸表情识别、音频信息分析。AI 评教标准版功能包括人脸检索、人脸检测、人脸表情识别、手势识别、音频信息分析、音频关键词分析、视频精彩集锦分析。
@@ -143,16 +143,16 @@ type ActionDurationStatistic struct {
 
 type ActionInfo struct {
 
-	// 躯体动作识别结果
+	// 躯体动作识别结果，包含坐着（sit）、站立（stand）和趴睡（sleep）
 	BodyPosture *ActionType `json:"BodyPosture,omitempty" name:"BodyPosture"`
 
-	// 举手识别结果
+	// 举手识别结果，包含举手（hand）和未检测到举手（nothand）
 	Handup *ActionType `json:"Handup,omitempty" name:"Handup"`
 
-	// 是否低头识别结果
+	// 是否低头识别结果，包含抬头（lookingahead）和未检测到抬头（notlookingahead）
 	LookHead *ActionType `json:"LookHead,omitempty" name:"LookHead"`
 
-	// 是否写字识别结果
+	// 是否写字识别结果，包含写字（write）和未检测到写字（notlookingahead）
 	Writing *ActionType `json:"Writing,omitempty" name:"Writing"`
 
 	// 动作图像高度
@@ -209,7 +209,11 @@ type BodyMovementResult struct {
 	// 识别结果左坐标
 	Left *int64 `json:"Left,omitempty" name:"Left"`
 
-	// 动作识别结果
+	// 老师动作识别结果，包含
+	// 1、teach_on_positive_attitude 正面讲解
+	// 2、point_to_the_blackboard 指黑板
+	// 3、writing_blackboard 写板书
+	// 4、other 其他
 	Movements *string `json:"Movements,omitempty" name:"Movements"`
 
 	// 识别结果顶坐标
@@ -615,11 +619,11 @@ func (r *DeleteLibraryResponse) FromJsonString(s string) error {
 type DeletePersonRequest struct {
 	*tchttp.BaseRequest
 
-	// 人员唯一标识符
-	PersonId *string `json:"PersonId,omitempty" name:"PersonId"`
-
 	// 人员库唯一标识符
 	LibraryId *string `json:"LibraryId,omitempty" name:"LibraryId"`
+
+	// 人员唯一标识符
+	PersonId *string `json:"PersonId,omitempty" name:"PersonId"`
 }
 
 func (r *DeletePersonRequest) ToJsonString() string {
@@ -1139,11 +1143,11 @@ func (r *DescribeLibrariesResponse) FromJsonString(s string) error {
 type DescribePersonRequest struct {
 	*tchttp.BaseRequest
 
-	// 人员唯一标识符
-	PersonId *string `json:"PersonId,omitempty" name:"PersonId"`
-
 	// 人员库唯一标识符
 	LibraryId *string `json:"LibraryId,omitempty" name:"LibraryId"`
+
+	// 人员唯一标识符
+	PersonId *string `json:"PersonId,omitempty" name:"PersonId"`
 }
 
 func (r *DescribePersonRequest) ToJsonString() string {
@@ -1415,7 +1419,7 @@ type FaceExpressionResult struct {
 	// 表情置信度
 	Confidence *float64 `json:"Confidence,omitempty" name:"Confidence"`
 
-	// 表情识别结果
+	// 表情识别结果，包括"neutral":中性,"happiness":开心，"angry":"生气"，"disgust":厌恶，"fear":"恐惧"，"sadness":"悲伤"，"surprise":"惊讶"，"contempt":"蔑视"
 	Expression *string `json:"Expression,omitempty" name:"Expression"`
 }
 
@@ -1499,13 +1503,13 @@ type FacePoseResult struct {
 	// 正脸或侧脸的消息
 	Direction *string `json:"Direction,omitempty" name:"Direction"`
 
-	// Pitch
+	// 围绕Z轴旋转角度，俯仰角
 	Pitch *float64 `json:"Pitch,omitempty" name:"Pitch"`
 
-	// Roll
+	// 围绕X轴旋转角度，翻滚角
 	Roll *float64 `json:"Roll,omitempty" name:"Roll"`
 
-	// 角度信息选填
+	// 围绕Y轴旋转角度，偏航角
 	Yaw *float64 `json:"Yaw,omitempty" name:"Yaw"`
 }
 
@@ -1538,7 +1542,7 @@ type Function struct {
 
 type GestureResult struct {
 
-	// 识别结果
+	// 识别结果，包含"USPEAK":听你说，"LISTEN":听我说，"GOOD":GOOD，"TOOLS":拿教具，"OTHERS":其他
 	Class *string `json:"Class,omitempty" name:"Class"`
 
 	// 置信度
@@ -1674,7 +1678,7 @@ type ImageTaskResult struct {
 	Light *LightResult `json:"Light,omitempty" name:"Light"`
 
 	// 学生肢体动作识别结果
-	StudentBodyMovement *BodyMovementResult `json:"StudentBodyMovement,omitempty" name:"StudentBodyMovement"`
+	StudentBodyMovement *StudentBodyMovementResult `json:"StudentBodyMovement,omitempty" name:"StudentBodyMovement"`
 
 	// 老师肢体动作识别结果
 	TeacherBodyMovement *BodyMovementResult `json:"TeacherBodyMovement,omitempty" name:"TeacherBodyMovement"`
@@ -1751,7 +1755,7 @@ type LightLevelRatioStatistic struct {
 
 type LightResult struct {
 
-	// 光照程度
+	// 光照程度，参考提交任务时的LightStandard指定的Name参数
 	LightLevel *string `json:"LightLevel,omitempty" name:"LightLevel"`
 
 	// 光照亮度
@@ -1822,14 +1826,14 @@ func (r *ModifyLibraryResponse) FromJsonString(s string) error {
 type ModifyPersonRequest struct {
 	*tchttp.BaseRequest
 
+	// 人员库唯一标识符
+	LibraryId *string `json:"LibraryId,omitempty" name:"LibraryId"`
+
 	// 人员唯一标识符
 	PersonId *string `json:"PersonId,omitempty" name:"PersonId"`
 
 	// 人员工作号码
 	JobNumber *string `json:"JobNumber,omitempty" name:"JobNumber"`
-
-	// 人员库唯一标识符
-	LibraryId *string `json:"LibraryId,omitempty" name:"LibraryId"`
 
 	// 人员邮箱
 	Mail *string `json:"Mail,omitempty" name:"Mail"`
@@ -1994,6 +1998,39 @@ type StatInfo struct {
 	Value *int64 `json:"Value,omitempty" name:"Value"`
 }
 
+type StudentBodyMovementResult struct {
+
+	// 置信度（已废弃）
+	Confidence *float64 `json:"Confidence,omitempty" name:"Confidence"`
+
+	// 举手识别结果置信度
+	HandupConfidence *float64 `json:"HandupConfidence,omitempty" name:"HandupConfidence"`
+
+	// 举手识别结果，包含举手（handup）和未举手（nothandup）
+	HandupStatus *string `json:"HandupStatus,omitempty" name:"HandupStatus"`
+
+	// 识别结果高度
+	Height *int64 `json:"Height,omitempty" name:"Height"`
+
+	// 识别结果左坐标
+	Left *int64 `json:"Left,omitempty" name:"Left"`
+
+	// 动作识别结果（已废弃）
+	Movements *string `json:"Movements,omitempty" name:"Movements"`
+
+	// 站立识别结果置信度
+	StandConfidence *float64 `json:"StandConfidence,omitempty" name:"StandConfidence"`
+
+	// 站立识别结果，包含站立（stand）和坐着（sit）
+	StandStatus *string `json:"StandStatus,omitempty" name:"StandStatus"`
+
+	// 识别结果顶坐标
+	Top *int64 `json:"Top,omitempty" name:"Top"`
+
+	// 识别结果宽度
+	Width *int64 `json:"Width,omitempty" name:"Width"`
+}
+
 type SubmitAudioTaskRequest struct {
 	*tchttp.BaseRequest
 
@@ -2121,6 +2158,12 @@ type SubmitConversationTaskRequest struct {
 	// 音频源的语言，默认0为英文，1为中文
 	Lang *int64 `json:"Lang,omitempty" name:"Lang"`
 
+	// 学生音频流
+	StudentUrl *string `json:"StudentUrl,omitempty" name:"StudentUrl"`
+
+	// 教师音频流
+	TeacherUrl *string `json:"TeacherUrl,omitempty" name:"TeacherUrl"`
+
 	// 语音编码类型 1:pcm
 	VoiceEncodeType *int64 `json:"VoiceEncodeType,omitempty" name:"VoiceEncodeType"`
 
@@ -2129,12 +2172,6 @@ type SubmitConversationTaskRequest struct {
 
 	// 功能开关列表，表示是否需要打开相应的功能，返回相应的信息
 	Functions *Function `json:"Functions,omitempty" name:"Functions"`
-
-	// 学生音频流
-	StudentUrl *string `json:"StudentUrl,omitempty" name:"StudentUrl"`
-
-	// 教师音频流
-	TeacherUrl *string `json:"TeacherUrl,omitempty" name:"TeacherUrl"`
 
 	// 识别词库名列表，评估过程使用这些词汇库中的词汇进行词汇使用行为分析
 	VocabLibNameList []*string `json:"VocabLibNameList,omitempty" name:"VocabLibNameList" list`
@@ -2234,7 +2271,7 @@ func (r *SubmitDoubleVideoHighlightsResponse) FromJsonString(s string) error {
 type SubmitFullBodyClassTaskRequest struct {
 	*tchttp.BaseRequest
 
-	// 输入分析对象内容
+	// 输入分析对象内容，输入数据格式参考FileType参数释义
 	FileContent *string `json:"FileContent,omitempty" name:"FileContent"`
 
 	// 输入分析对象类型，picture_url:图片地址，vod_url:视频地址，live_url：直播地址，picture: 图片二进制数据的BASE64编码
@@ -2246,7 +2283,7 @@ type SubmitFullBodyClassTaskRequest struct {
 	// 查询人员库列表，可填写老师的注册照所在人员库
 	LibrarySet []*string `json:"LibrarySet,omitempty" name:"LibrarySet" list`
 
-	// 直播流评估时间，在FileType为live_url时生效，默认值为10分钟。
+	// 视频评估时间，单位毫秒，点播场景默认值为2小时（无法探测长度时）或完整视频，直播场景默认值为10分钟或直播提前结束
 	MaxVideoDuration *int64 `json:"MaxVideoDuration,omitempty" name:"MaxVideoDuration"`
 
 	// 识别词库名列表，这些词汇库用来维护关键词，评估老师授课过程中，对这些关键词的使用情况
@@ -2356,7 +2393,7 @@ func (r *SubmitHighlightsResponse) FromJsonString(s string) error {
 type SubmitImageTaskRequest struct {
 	*tchttp.BaseRequest
 
-	// 输入分析对象内容
+	// 输入分析对象内容，输入数据格式参考FileType参数释义
 	FileContent *string `json:"FileContent,omitempty" name:"FileContent"`
 
 	// 输入分析对象类型，picture：二进制图片的 base64 编码字符串，picture_url:图片地址，vod_url：视频地址，live_url：直播地址
@@ -2374,7 +2411,7 @@ type SubmitImageTaskRequest struct {
 	// 查询人员库列表
 	LibrarySet []*string `json:"LibrarySet,omitempty" name:"LibrarySet" list`
 
-	// 最大的视频长度，单位毫秒，默认值为两小时
+	// 视频评估时间，单位毫秒，点播场景默认值为2小时（无法探测长度时）或完整视频，直播场景默认值为10分钟或直播提前结束
 	MaxVideoDuration *int64 `json:"MaxVideoDuration,omitempty" name:"MaxVideoDuration"`
 
 	// 人脸识别中的相似度阈值，默认值为0.89，保留字段，当前不支持填写。
@@ -2423,7 +2460,7 @@ func (r *SubmitImageTaskResponse) FromJsonString(s string) error {
 type SubmitOneByOneClassTaskRequest struct {
 	*tchttp.BaseRequest
 
-	// 输入分析对象内容
+	// 输入分析对象内容，输入数据格式参考FileType参数释义
 	FileContent *string `json:"FileContent,omitempty" name:"FileContent"`
 
 	// 输入分析对象类型，picture_url:图片地址，vod_url:视频地址，live_url：直播地址，picture: 图片二进制数据的BASE64编码
@@ -2435,7 +2472,7 @@ type SubmitOneByOneClassTaskRequest struct {
 	// 查询人员库列表，可填写学生的注册照所在人员库
 	LibrarySet []*string `json:"LibrarySet,omitempty" name:"LibrarySet" list`
 
-	// 直播流评估时间，在FileType为live_url时生效，默认值为10分钟。
+	// 视频评估时间，单位毫秒，点播场景默认值为2小时（无法探测长度时）或完整视频，直播场景默认值为10分钟或直播提前结束
 	MaxVideoDuration *int64 `json:"MaxVideoDuration,omitempty" name:"MaxVideoDuration"`
 
 	// 识别词库名列表，这些词汇库用来维护关键词，评估学生对这些关键词的使用情况
@@ -2484,7 +2521,7 @@ func (r *SubmitOneByOneClassTaskResponse) FromJsonString(s string) error {
 type SubmitOpenClassTaskRequest struct {
 	*tchttp.BaseRequest
 
-	// 输入分析对象内容
+	// 输入分析对象内容，输入数据格式参考FileType参数释义
 	FileContent *string `json:"FileContent,omitempty" name:"FileContent"`
 
 	// 输入分析对象类型，picture_url:图片地址，vod_url:视频地址，live_url：直播地址,picture: 图片二进制数据的BASE64编码
@@ -2493,7 +2530,7 @@ type SubmitOpenClassTaskRequest struct {
 	// 查询人员库列表，可填写学生们的注册照所在人员库
 	LibrarySet []*string `json:"LibrarySet,omitempty" name:"LibrarySet" list`
 
-	// 直播流评估时间，在FileType为live_url时生效，默认值为10分钟。
+	// 视频评估时间，单位毫秒，点播场景默认值为2小时（无法探测长度时）或完整视频，直播场景默认值为10分钟或直播提前结束
 	MaxVideoDuration *int64 `json:"MaxVideoDuration,omitempty" name:"MaxVideoDuration"`
 }
 
@@ -2533,7 +2570,7 @@ func (r *SubmitOpenClassTaskResponse) FromJsonString(s string) error {
 type SubmitPartialBodyClassTaskRequest struct {
 	*tchttp.BaseRequest
 
-	// 输入分析对象内容
+	// 输入分析对象内容，输入数据格式参考FileType参数释义
 	FileContent *string `json:"FileContent,omitempty" name:"FileContent"`
 
 	// 输入分析对象类型，picture_url:图片地址，vod_url:视频地址，live_url：直播地址，picture: 图片二进制数据的BASE64编码
@@ -2545,7 +2582,7 @@ type SubmitPartialBodyClassTaskRequest struct {
 	// 查询人员库列表，可填写老师的注册照所在人员库
 	LibrarySet []*string `json:"LibrarySet,omitempty" name:"LibrarySet" list`
 
-	// 直播流评估时间，在FileType为live_url时生效，默认值为10分钟。
+	// 视频评估时间，单位毫秒，点播场景默认值为2小时（无法探测长度时）或完整视频，直播场景默认值为10分钟或直播提前结束
 	MaxVideoDuration *int64 `json:"MaxVideoDuration,omitempty" name:"MaxVideoDuration"`
 
 	// 识别词库名列表，这些词汇库用来维护关键词，评估老师授课过程中，对这些关键词的使用情况
@@ -2594,16 +2631,16 @@ func (r *SubmitPartialBodyClassTaskResponse) FromJsonString(s string) error {
 type SubmitTraditionalClassTaskRequest struct {
 	*tchttp.BaseRequest
 
-	// 输入分析对象内容，仅支持url，暂不支持直接上传base64图片
+	// 输入分析对象内容，输入数据格式参考FileType参数释义
 	FileContent *string `json:"FileContent,omitempty" name:"FileContent"`
 
-	// 输入分析对象类型，picture_url:图片地址，vod_url:视频地址，live_url：直播地址
+	// 输入分析对象类型，picture_url:图片地址，vod_url:视频地址，live_url：直播地址，picture：图片二进制数据的BASE64编码
 	FileType *string `json:"FileType,omitempty" name:"FileType"`
 
 	// 查询人员库列表，可填写学生们的注册照所在人员库
 	LibrarySet []*string `json:"LibrarySet,omitempty" name:"LibrarySet" list`
 
-	// 直播流评估时间，在FileType为live_url时生效，默认值为10分钟。
+	// 视频评估时间，单位毫秒，点播场景默认值为2小时（无法探测长度时）或完整视频，直播场景默认值为10分钟或直播提前结束
 	MaxVideoDuration *int64 `json:"MaxVideoDuration,omitempty" name:"MaxVideoDuration"`
 }
 
@@ -2651,7 +2688,8 @@ type SuspectedInfo struct {
 
 type TeacherOutScreenResult struct {
 
-	// 动作识别结果
+	// 动作识别结果，InScreen：在屏幕内
+	// OutScreen：不在屏幕内
 	Class *string `json:"Class,omitempty" name:"Class"`
 
 	// 识别结果高度

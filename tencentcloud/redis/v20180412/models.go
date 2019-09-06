@@ -598,7 +598,7 @@ type DescribeInstancesRequest struct {
 	// 计费模式：postpaid-按量计费；prepaid-包年包月
 	BillingMode *string `json:"BillingMode,omitempty" name:"BillingMode"`
 
-	// 实例类型：1-Redis老集群版；2-Redis 2.8主从版；3-CKV主从版；4-CKV集群版；5-Redis 2.8单机版；7-Redis 4.0集群版
+	// 实例类型：1-Redis老集群版；2-Redis 2.8主从版；3-CKV主从版；4-CKV集群版；5-Redis 2.8单机版；6-Redis 4.0主从版；7-Redis 4.0集群版
 	Type *int64 `json:"Type,omitempty" name:"Type"`
 
 	// 搜索关键词：支持实例Id、实例名称、完整IP
@@ -1124,7 +1124,7 @@ type InstanceSet struct {
 	// 项目Id
 	ProjectId *int64 `json:"ProjectId,omitempty" name:"ProjectId"`
 
-	// 地域id 1--广州 4--上海 5-- 香港 6--多伦多 7--上海金融 8--北京 9-- 新加坡 11--深圳金融 15--美西（硅谷）16--成都 17--德国 18--韩国 19--重庆 21--印度 22--美东（弗吉尼亚）23--泰国 24--俄罗斯 25--日本
+	// 地域id 1--广州 4--上海 5-- 中国香港 6--多伦多 7--上海金融 8--北京 9-- 新加坡 11--深圳金融 15--美西（硅谷）16--成都 17--德国 18--韩国 19--重庆 21--印度 22--美东（弗吉尼亚）23--泰国 24--俄罗斯 25--日本
 	RegionId *int64 `json:"RegionId,omitempty" name:"RegionId"`
 
 	// 区域id
@@ -1154,7 +1154,7 @@ type InstanceSet struct {
 	// 该字段已废弃
 	SizeUsed *float64 `json:"SizeUsed,omitempty" name:"SizeUsed"`
 
-	// 实例类型，1：Redis2.8集群版；2：Redis2.8主从版；3：CKV主从版（Redis3.2）；4：CKV集群版（Redis3.2）；5：Redis2.8单机版；7：Redis4.0集群版；
+	// 实例类型，1：Redis2.8集群版；2：Redis2.8主从版；3：CKV主从版（Redis3.2）；4：CKV集群版（Redis3.2）；5：Redis2.8单机版；6：Redis4.0主从版；7：Redis4.0集群版；
 	Type *int64 `json:"Type,omitempty" name:"Type"`
 
 	// 实例是否设置自动续费标识，1：设置自动续费；0：未设置自动续费

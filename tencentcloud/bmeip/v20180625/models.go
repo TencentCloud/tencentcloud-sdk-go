@@ -530,7 +530,7 @@ type DescribeEipsRequest struct {
 	ExclusiveTag *int64 `json:"ExclusiveTag,omitempty" name:"ExclusiveTag"`
 
 	// EIP ACL实例ID
-	AclId *int64 `json:"AclId,omitempty" name:"AclId"`
+	AclId *string `json:"AclId,omitempty" name:"AclId"`
 
 	// 搜索条件，是否绑定了EIP ACL， 0：未绑定，1：绑定
 	BindAcl *int64 `json:"BindAcl,omitempty" name:"BindAcl"`
@@ -628,7 +628,7 @@ type EipInfo struct {
 	// EIP地址
 	Eip *string `json:"Eip,omitempty" name:"Eip"`
 
-	// 运营商ID 0：电信； 1：联通； 2：移动； 3：教育网； 4：盈科； 5：BGP； 6：香港
+	// 运营商ID 0：电信； 1：联通； 2：移动； 3：教育网； 4：盈科； 5：BGP； 6：中国香港
 	IspId *int64 `json:"IspId,omitempty" name:"IspId"`
 
 	// 状态 0：创建中； 1：绑定中； 2：已绑定； 3：解绑中； 4：未绑定； 6：下线中； 9：创建失败

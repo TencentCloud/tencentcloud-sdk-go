@@ -118,6 +118,31 @@ func (c *Client) BizLicenseOCR(request *BizLicenseOCRRequest) (response *BizLice
     return
 }
 
+func NewBusInvoiceOCRRequest() (request *BusInvoiceOCRRequest) {
+    request = &BusInvoiceOCRRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ocr", APIVersion, "BusInvoiceOCR")
+    return
+}
+
+func NewBusInvoiceOCRResponse() (response *BusInvoiceOCRResponse) {
+    response = &BusInvoiceOCRResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口支持识别公路汽车客票的发票代码、发票号码、日期、姓名、票价等字段。
+func (c *Client) BusInvoiceOCR(request *BusInvoiceOCRRequest) (response *BusInvoiceOCRResponse, err error) {
+    if request == nil {
+        request = NewBusInvoiceOCRRequest()
+    }
+    response = NewBusInvoiceOCRResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewBusinessCardOCRRequest() (request *BusinessCardOCRRequest) {
     request = &BusinessCardOCRRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -189,6 +214,31 @@ func (c *Client) DriverLicenseOCR(request *DriverLicenseOCRRequest) (response *D
         request = NewDriverLicenseOCRRequest()
     }
     response = NewDriverLicenseOCRResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDutyPaidProofOCRRequest() (request *DutyPaidProofOCRRequest) {
+    request = &DutyPaidProofOCRRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ocr", APIVersion, "DutyPaidProofOCR")
+    return
+}
+
+func NewDutyPaidProofOCRResponse() (response *DutyPaidProofOCRResponse) {
+    response = &DutyPaidProofOCRResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口支持对完税证明的税号、纳税人识别号、纳税人名称、金额合计大写、金额合计小写、填发日期、税务机关、填票人等关键字段的识别。
+func (c *Client) DutyPaidProofOCR(request *DutyPaidProofOCRRequest) (response *DutyPaidProofOCRResponse, err error) {
+    if request == nil {
+        request = NewDutyPaidProofOCRRequest()
+    }
+    response = NewDutyPaidProofOCRResponse()
     err = c.Send(request, response)
     return
 }
@@ -293,6 +343,31 @@ func (c *Client) GeneralBasicOCR(request *GeneralBasicOCRRequest) (response *Gen
     return
 }
 
+func NewGeneralEfficientOCRRequest() (request *GeneralEfficientOCRRequest) {
+    request = &GeneralEfficientOCRRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ocr", APIVersion, "GeneralEfficientOCR")
+    return
+}
+
+func NewGeneralEfficientOCRResponse() (response *GeneralEfficientOCRResponse) {
+    response = &GeneralEfficientOCRResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口支持多场景、任意版面下整图文字的识别。相较于“通用印刷体识别”接口，精简版接口在准召率有一定损失的情况下，耗时更短。适用于对接口耗时较为敏感的客户。
+func (c *Client) GeneralEfficientOCR(request *GeneralEfficientOCRRequest) (response *GeneralEfficientOCRResponse, err error) {
+    if request == nil {
+        request = NewGeneralEfficientOCRRequest()
+    }
+    response = NewGeneralEfficientOCRResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewGeneralFastOCRRequest() (request *GeneralFastOCRRequest) {
     request = &GeneralFastOCRRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -364,6 +439,31 @@ func (c *Client) IDCardOCR(request *IDCardOCRRequest) (response *IDCardOCRRespon
         request = NewIDCardOCRRequest()
     }
     response = NewIDCardOCRResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewInvoiceGeneralOCRRequest() (request *InvoiceGeneralOCRRequest) {
+    request = &InvoiceGeneralOCRRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ocr", APIVersion, "InvoiceGeneralOCR")
+    return
+}
+
+func NewInvoiceGeneralOCRResponse() (response *InvoiceGeneralOCRResponse) {
+    response = &InvoiceGeneralOCRResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口支持对通用机打发票的发票代码、发票号码、日期、购买方识别号、销售方识别号、校验码、小写金额等关键字段的识别。
+func (c *Client) InvoiceGeneralOCR(request *InvoiceGeneralOCRRequest) (response *InvoiceGeneralOCRResponse, err error) {
+    if request == nil {
+        request = NewInvoiceGeneralOCRRequest()
+    }
+    response = NewInvoiceGeneralOCRResponse()
     err = c.Send(request, response)
     return
 }
@@ -445,6 +545,81 @@ func (c *Client) MLIDPassportOCR(request *MLIDPassportOCRRequest) (response *MLI
     return
 }
 
+func NewMixedInvoiceDetectRequest() (request *MixedInvoiceDetectRequest) {
+    request = &MixedInvoiceDetectRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ocr", APIVersion, "MixedInvoiceDetect")
+    return
+}
+
+func NewMixedInvoiceDetectResponse() (response *MixedInvoiceDetectResponse) {
+    response = &MixedInvoiceDetectResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口支持多张、多类型票据的混合检测和自动分类，返回对应票据类型。目前已支持增值税发票、增值税发票（卷票）、定额发票、通用机打发票、购车发票、火车票、出租车发票、机票行程单、汽车票、轮船票、过路过桥费发票、酒店账单、客运限额发票、购物小票、完税证明共15种票据。
+func (c *Client) MixedInvoiceDetect(request *MixedInvoiceDetectRequest) (response *MixedInvoiceDetectResponse, err error) {
+    if request == nil {
+        request = NewMixedInvoiceDetectRequest()
+    }
+    response = NewMixedInvoiceDetectResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewMixedInvoiceOCRRequest() (request *MixedInvoiceOCRRequest) {
+    request = &MixedInvoiceOCRRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ocr", APIVersion, "MixedInvoiceOCR")
+    return
+}
+
+func NewMixedInvoiceOCRResponse() (response *MixedInvoiceOCRResponse) {
+    response = &MixedInvoiceOCRResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口支持多张、多类型票据的混合识别，系统自动实现分割、分类和识别。目前已支持增值税发票、增值税发票（卷票）、定额发票、通用机打发票、购车发票、火车票、出租车发票、机票行程单、汽车票、轮船票、过路过桥费发票共11种票据。
+func (c *Client) MixedInvoiceOCR(request *MixedInvoiceOCRRequest) (response *MixedInvoiceOCRResponse, err error) {
+    if request == nil {
+        request = NewMixedInvoiceOCRRequest()
+    }
+    response = NewMixedInvoiceOCRResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewPassportOCRRequest() (request *PassportOCRRequest) {
+    request = &PassportOCRRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ocr", APIVersion, "PassportOCR")
+    return
+}
+
+func NewPassportOCRResponse() (response *PassportOCRResponse) {
+    response = &PassportOCRResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口支持中国大陆护照、中国香港护照、泰国护照及其他国外护照个人资料页多个字段的检测与识别。其中中国大陆居民护照识别，已支持字段包括英文姓名、中文姓名、国家码、护照号、出生地、出生日期、国籍英文、性别英文、有效期、签发地点英文、签发日期、持证人签名、护照机读码（MRZ码）等。中国香港护照、泰国护照及其他国外护照识别，已支持字段包括英文姓名、国籍、签发日期、性别、护照号码等。
+func (c *Client) PassportOCR(request *PassportOCRRequest) (response *PassportOCRResponse, err error) {
+    if request == nil {
+        request = NewPassportOCRRequest()
+    }
+    response = NewPassportOCRResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewPermitOCRRequest() (request *PermitOCRRequest) {
     request = &PermitOCRRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -491,6 +666,31 @@ func (c *Client) QuotaInvoiceOCR(request *QuotaInvoiceOCRRequest) (response *Quo
         request = NewQuotaInvoiceOCRRequest()
     }
     response = NewQuotaInvoiceOCRResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewShipInvoiceOCRRequest() (request *ShipInvoiceOCRRequest) {
+    request = &ShipInvoiceOCRRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ocr", APIVersion, "ShipInvoiceOCR")
+    return
+}
+
+func NewShipInvoiceOCRResponse() (response *ShipInvoiceOCRResponse) {
+    response = &ShipInvoiceOCRResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口支持识别轮船票的发票代码、发票号码、日期、姓名、票价等字段。
+func (c *Client) ShipInvoiceOCR(request *ShipInvoiceOCRRequest) (response *ShipInvoiceOCRResponse, err error) {
+    if request == nil {
+        request = NewShipInvoiceOCRRequest()
+    }
+    response = NewShipInvoiceOCRResponse()
     err = c.Send(request, response)
     return
 }
@@ -545,6 +745,56 @@ func (c *Client) TaxiInvoiceOCR(request *TaxiInvoiceOCRRequest) (response *TaxiI
     return
 }
 
+func NewTextDetectRequest() (request *TextDetectRequest) {
+    request = &TextDetectRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ocr", APIVersion, "TextDetect")
+    return
+}
+
+func NewTextDetectResponse() (response *TextDetectResponse) {
+    response = &TextDetectResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口通过检测图片中的文字信息特征，快速判断图片中有无文字并返回判断结果，帮助用户过滤无文字的图片。
+func (c *Client) TextDetect(request *TextDetectRequest) (response *TextDetectResponse, err error) {
+    if request == nil {
+        request = NewTextDetectRequest()
+    }
+    response = NewTextDetectResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewTollInvoiceOCRRequest() (request *TollInvoiceOCRRequest) {
+    request = &TollInvoiceOCRRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ocr", APIVersion, "TollInvoiceOCR")
+    return
+}
+
+func NewTollInvoiceOCRResponse() (response *TollInvoiceOCRResponse) {
+    response = &TollInvoiceOCRResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口支持对过路过桥费发票的发票代码、发票号码、日期、小写金额等关键字段的识别。
+func (c *Client) TollInvoiceOCR(request *TollInvoiceOCRRequest) (response *TollInvoiceOCRResponse, err error) {
+    if request == nil {
+        request = NewTollInvoiceOCRRequest()
+    }
+    response = NewTollInvoiceOCRResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewTrainTicketOCRRequest() (request *TrainTicketOCRRequest) {
     request = &TrainTicketOCRRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -591,6 +841,31 @@ func (c *Client) VatInvoiceOCR(request *VatInvoiceOCRRequest) (response *VatInvo
         request = NewVatInvoiceOCRRequest()
     }
     response = NewVatInvoiceOCRResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewVatRollInvoiceOCRRequest() (request *VatRollInvoiceOCRRequest) {
+    request = &VatRollInvoiceOCRRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ocr", APIVersion, "VatRollInvoiceOCR")
+    return
+}
+
+func NewVatRollInvoiceOCRResponse() (response *VatRollInvoiceOCRResponse) {
+    response = &VatRollInvoiceOCRResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口支持对增值税发票（卷票）的发票代码、发票号码、日期、校验码、合计金额（小写）等关键字段的识别。
+func (c *Client) VatRollInvoiceOCR(request *VatRollInvoiceOCRRequest) (response *VatRollInvoiceOCRResponse, err error) {
+    if request == nil {
+        request = NewVatRollInvoiceOCRRequest()
+    }
+    response = NewVatRollInvoiceOCRResponse()
     err = c.Send(request, response)
     return
 }
