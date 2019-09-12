@@ -218,6 +218,31 @@ func (c *Client) DeleteCluster(request *DeleteClusterRequest) (response *DeleteC
     return
 }
 
+func NewDeleteClusterAsGroupsRequest() (request *DeleteClusterAsGroupsRequest) {
+    request = &DeleteClusterAsGroupsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tke", APIVersion, "DeleteClusterAsGroups")
+    return
+}
+
+func NewDeleteClusterAsGroupsResponse() (response *DeleteClusterAsGroupsResponse) {
+    response = &DeleteClusterAsGroupsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 删除集群伸缩组
+func (c *Client) DeleteClusterAsGroups(request *DeleteClusterAsGroupsRequest) (response *DeleteClusterAsGroupsResponse, err error) {
+    if request == nil {
+        request = NewDeleteClusterAsGroupsRequest()
+    }
+    response = NewDeleteClusterAsGroupsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteClusterInstancesRequest() (request *DeleteClusterInstancesRequest) {
     request = &DeleteClusterInstancesRequest{
         BaseRequest: &tchttp.BaseRequest{},

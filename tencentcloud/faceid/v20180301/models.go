@@ -446,6 +446,92 @@ func (r *GetLiveCodeResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type IdCardOCRVerificationRequest struct {
+	*tchttp.BaseRequest
+
+	// 身份证号
+	// 姓名和身份证号、ImageBase64、ImageUrl三者必须提供其中之一。若都提供了，则按照姓名和身份证号>ImageBase64>ImageUrl的优先级使用参数。
+	IdCard *string `json:"IdCard,omitempty" name:"IdCard"`
+
+	// 姓名
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 身份证人像面的 Base64 值
+	// 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
+	// 支持的图片大小：所下载图片经Base64编码后不超过 3M。图片下载时间不超过 3 秒。
+	ImageBase64 *string `json:"ImageBase64,omitempty" name:"ImageBase64"`
+
+	// 身份证人像面的 Url 地址
+	// 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
+	// 支持的图片大小：所下载图片经 Base64 编码后不超过 3M。图片下载时间不超过 3 秒。
+	// 图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。
+	// 非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
+}
+
+func (r *IdCardOCRVerificationRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *IdCardOCRVerificationRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type IdCardOCRVerificationResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 认证结果码，收费情况如下。
+	// 收费结果码：
+	// 0: 姓名和身份证号一致
+	// -1: 姓名和身份证号不一致
+	// 不收费结果码：
+	// -2: 非法身份证号（长度、校验位等不正确）
+	// -3: 非法姓名（长度、格式等不正确）
+	// -4: 证件库服务异常
+	// -5: 证件库中无此身份证记录
+		Result *string `json:"Result,omitempty" name:"Result"`
+
+		// 认证结果信息。
+		Description *string `json:"Description,omitempty" name:"Description"`
+
+		// 用于验证的姓名
+		Name *string `json:"Name,omitempty" name:"Name"`
+
+		// 用于验证的身份证号
+		IdCard *string `json:"IdCard,omitempty" name:"IdCard"`
+
+		// OCR得到的性别
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Sex *string `json:"Sex,omitempty" name:"Sex"`
+
+		// OCR得到的民族
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Nation *string `json:"Nation,omitempty" name:"Nation"`
+
+		// OCR得到的生日
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Birth *string `json:"Birth,omitempty" name:"Birth"`
+
+		// OCR得到的地址
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Address *string `json:"Address,omitempty" name:"Address"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *IdCardOCRVerificationResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *IdCardOCRVerificationResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type IdCardVerificationRequest struct {
 	*tchttp.BaseRequest
 

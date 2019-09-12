@@ -106,6 +106,10 @@ type Cluster struct {
 
 	// 集群所属的项目ID
 	ProjectId *uint64 `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 标签描述列表。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TagSpecification []*TagSpecification `json:"TagSpecification,omitempty" name:"TagSpecification" list`
 }
 
 type ClusterAdvancedSettings struct {
@@ -139,6 +143,12 @@ type ClusterBasicSettings struct {
 
 	// 集群内新增资源所属项目ID。
 	ProjectId *int64 `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 标签描述列表。通过指定该参数可以同时绑定标签到相应的资源实例，当前仅支持绑定标签到集群实例。
+	TagSpecification []*TagSpecification `json:"TagSpecification,omitempty" name:"TagSpecification" list`
+
+	// 容器的镜像版本，"DOCKER_CUSTOMIZE"(容器定制版),"GENERAL"(普通版本，默认值)
+	OsCustomizeType *string `json:"OsCustomizeType,omitempty" name:"OsCustomizeType"`
 }
 
 type ClusterCIDRSettings struct {
@@ -410,6 +420,46 @@ func (r *CreateClusterRouteTableResponse) ToJsonString() string {
 }
 
 func (r *CreateClusterRouteTableResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteClusterAsGroupsRequest struct {
+	*tchttp.BaseRequest
+
+	// 集群ID，通过[DescribeClusters](https://cloud.tencent.com/document/api/457/31862)接口获取。
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 集群伸缩组ID的列表
+	AutoScalingGroupIds []*string `json:"AutoScalingGroupIds,omitempty" name:"AutoScalingGroupIds" list`
+
+	// 是否保留伸缩组中的节点(默认值： false(不保留))
+	KeepInstance *bool `json:"KeepInstance,omitempty" name:"KeepInstance"`
+}
+
+func (r *DeleteClusterAsGroupsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteClusterAsGroupsRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteClusterAsGroupsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DeleteClusterAsGroupsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteClusterAsGroupsResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -1118,4 +1168,24 @@ type RunSecurityServiceEnabled struct {
 
 	// 是否开启[云安全](/document/product/296)服务。取值范围：<br><li>TRUE：表示开启云安全服务<br><li>FALSE：表示不开启云安全服务<br><br>默认取值：TRUE。
 	Enabled *bool `json:"Enabled,omitempty" name:"Enabled"`
+}
+
+type Tag struct {
+
+	// 标签键
+	Key *string `json:"Key,omitempty" name:"Key"`
+
+	// 标签值
+	Value *string `json:"Value,omitempty" name:"Value"`
+}
+
+type TagSpecification struct {
+
+	// 标签绑定的资源类型，当前支持类型："cluster"
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResourceType *string `json:"ResourceType,omitempty" name:"ResourceType"`
+
+	// 标签对列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Tags []*Tag `json:"Tags,omitempty" name:"Tags" list`
 }

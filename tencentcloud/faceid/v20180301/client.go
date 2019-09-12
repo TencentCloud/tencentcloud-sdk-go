@@ -218,6 +218,31 @@ func (c *Client) GetLiveCode(request *GetLiveCodeRequest) (response *GetLiveCode
     return
 }
 
+func NewIdCardOCRVerificationRequest() (request *IdCardOCRVerificationRequest) {
+    request = &IdCardOCRVerificationRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("faceid", APIVersion, "IdCardOCRVerification")
+    return
+}
+
+func NewIdCardOCRVerificationResponse() (response *IdCardOCRVerificationResponse) {
+    response = &IdCardOCRVerificationResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口用于校验姓名和身份证号的真实性和一致性，您可以通过输入姓名和身份证号或传入身份证人像面照片提供所需验证信息。
+func (c *Client) IdCardOCRVerification(request *IdCardOCRVerificationRequest) (response *IdCardOCRVerificationResponse, err error) {
+    if request == nil {
+        request = NewIdCardOCRVerificationRequest()
+    }
+    response = NewIdCardOCRVerificationResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewIdCardVerificationRequest() (request *IdCardVerificationRequest) {
     request = &IdCardVerificationRequest{
         BaseRequest: &tchttp.BaseRequest{},

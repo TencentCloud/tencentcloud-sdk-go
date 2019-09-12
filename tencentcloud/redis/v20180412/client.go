@@ -393,6 +393,31 @@ func (c *Client) DescribeProjectSecurityGroup(request *DescribeProjectSecurityGr
     return
 }
 
+func NewDescribeSlowLogRequest() (request *DescribeSlowLogRequest) {
+    request = &DescribeSlowLogRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("redis", APIVersion, "DescribeSlowLog")
+    return
+}
+
+func NewDescribeSlowLogResponse() (response *DescribeSlowLogResponse) {
+    response = &DescribeSlowLogResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询实例慢查询记录
+func (c *Client) DescribeSlowLog(request *DescribeSlowLogRequest) (response *DescribeSlowLogResponse, err error) {
+    if request == nil {
+        request = NewDescribeSlowLogRequest()
+    }
+    response = NewDescribeSlowLogResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeTaskInfoRequest() (request *DescribeTaskInfoRequest) {
     request = &DescribeTaskInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},

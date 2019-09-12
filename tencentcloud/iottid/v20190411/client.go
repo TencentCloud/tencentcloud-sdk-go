@@ -58,7 +58,7 @@ func NewAuthTestTidResponse() (response *AuthTestTidResponse) {
     return
 }
 
-// 单向认证测试TID
+// 单向认证测试TID 
 func (c *Client) AuthTestTid(request *AuthTestTidRequest) (response *AuthTestTidResponse, err error) {
     if request == nil {
         request = NewAuthTestTidRequest()
@@ -83,7 +83,7 @@ func NewBurnTidNotifyResponse() (response *BurnTidNotifyResponse) {
     return
 }
 
-// 安全芯片TID烧录回执
+// 安全芯片TID烧录回执 
 func (c *Client) BurnTidNotify(request *BurnTidNotifyRequest) (response *BurnTidNotifyResponse, err error) {
     if request == nil {
         request = NewBurnTidNotifyRequest()
@@ -108,7 +108,7 @@ func NewDeliverTidNotifyResponse() (response *DeliverTidNotifyResponse) {
     return
 }
 
-// 安全芯片为载体的TID空发回执，绑定TID与订单号。
+// 安全芯片为载体的TID空发回执，绑定TID与订单号。 
 func (c *Client) DeliverTidNotify(request *DeliverTidNotifyRequest) (response *DeliverTidNotifyResponse, err error) {
     if request == nil {
         request = NewDeliverTidNotifyRequest()
@@ -133,12 +133,37 @@ func NewDeliverTidsResponse() (response *DeliverTidsResponse) {
     return
 }
 
-// 设备服务商请求空发产品订单的TID信息
+// 设备服务商请求空发产品订单的TID信息 
 func (c *Client) DeliverTids(request *DeliverTidsRequest) (response *DeliverTidsResponse, err error) {
     if request == nil {
         request = NewDeliverTidsRequest()
     }
     response = NewDeliverTidsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeAvailableLibCountRequest() (request *DescribeAvailableLibCountRequest) {
+    request = &DescribeAvailableLibCountRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iottid", APIVersion, "DescribeAvailableLibCount")
+    return
+}
+
+func NewDescribeAvailableLibCountResponse() (response *DescribeAvailableLibCountResponse) {
+    response = &DescribeAvailableLibCountResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询指定订单的可空发的白盒秘钥数量
+func (c *Client) DescribeAvailableLibCount(request *DescribeAvailableLibCountRequest) (response *DescribeAvailableLibCountResponse, err error) {
+    if request == nil {
+        request = NewDescribeAvailableLibCountRequest()
+    }
+    response = NewDescribeAvailableLibCountResponse()
     err = c.Send(request, response)
     return
 }
@@ -158,7 +183,7 @@ func NewDescribePermissionResponse() (response *DescribePermissionResponse) {
     return
 }
 
-// 查询企业用户TID平台控制台权限
+// 查询企业用户TID平台控制台权限 
 func (c *Client) DescribePermission(request *DescribePermissionRequest) (response *DescribePermissionResponse, err error) {
     if request == nil {
         request = NewDescribePermissionRequest()
@@ -183,7 +208,7 @@ func NewDownloadTidsResponse() (response *DownloadTidsResponse) {
     return
 }
 
-// 下载芯片订单的TID
+// 下载芯片订单的TID 
 func (c *Client) DownloadTids(request *DownloadTidsRequest) (response *DownloadTidsResponse, err error) {
     if request == nil {
         request = NewDownloadTidsRequest()
@@ -208,7 +233,7 @@ func NewVerifyChipBurnInfoResponse() (response *VerifyChipBurnInfoResponse) {
     return
 }
 
-// 下载控制台验证芯片烧录信息，保证TID与中心信息一致
+// 下载控制台验证芯片烧录信息，保证TID与中心信息一致 
 func (c *Client) VerifyChipBurnInfo(request *VerifyChipBurnInfoRequest) (response *VerifyChipBurnInfoResponse, err error) {
     if request == nil {
         request = NewVerifyChipBurnInfoRequest()

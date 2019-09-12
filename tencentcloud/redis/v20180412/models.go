@@ -712,6 +712,61 @@ func (r *DescribeProjectSecurityGroupResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeSlowLogRequest struct {
+	*tchttp.BaseRequest
+
+	// 实例Id
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 开始时间
+	BeginTime *string `json:"BeginTime,omitempty" name:"BeginTime"`
+
+	// 结束时间
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 慢查询阈值（单位：微秒）
+	MinQueryTime *int64 `json:"MinQueryTime,omitempty" name:"MinQueryTime"`
+
+	// 页面大小
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 偏移量，取Limit整数倍
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+}
+
+func (r *DescribeSlowLogRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeSlowLogRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeSlowLogResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 慢查询总数
+		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 慢查询详情
+		InstanceSlowlogDetail []*InstanceSlowlogDetail `json:"InstanceSlowlogDetail,omitempty" name:"InstanceSlowlogDetail" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeSlowLogResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeSlowLogResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeTaskInfoRequest struct {
 	*tchttp.BaseRequest
 
@@ -1222,6 +1277,24 @@ type InstanceSet struct {
 	// 是否为免密实例，true-免密实例；false-非免密实例
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	NoAuth *bool `json:"NoAuth,omitempty" name:"NoAuth"`
+}
+
+type InstanceSlowlogDetail struct {
+
+	// 慢查询耗时
+	Duration *int64 `json:"Duration,omitempty" name:"Duration"`
+
+	// 客户端地址
+	Client *string `json:"Client,omitempty" name:"Client"`
+
+	// 命令
+	Command *string `json:"Command,omitempty" name:"Command"`
+
+	// 详细命令行信息
+	CommandLine *string `json:"CommandLine,omitempty" name:"CommandLine"`
+
+	// 执行时间
+	ExecuteTime *string `json:"ExecuteTime,omitempty" name:"ExecuteTime"`
 }
 
 type InstanceTagInfo struct {

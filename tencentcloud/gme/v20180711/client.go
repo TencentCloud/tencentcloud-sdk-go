@@ -151,6 +151,7 @@ func NewScanVoiceResponse() (response *ScanVoiceResponse) {
 // <li>语音流格式支持的类型：.m3u8、.flv</li>
 // <li>语音流支持的传输协议：RTMP、HTTP、HTTPS</li>
 // <li>语音流时长限制：4小时</li>
+// <li>支持音视频流分离并对音频流进行分析</li>
 // </br>
 // <h4 id="Label_Value"><b>Scenes 与 Label 参数说明：</b></h4>
 // <p>提交语音检测任务时，需要指定 Scenes 场景参数，<font color="red">目前要求您设置 Scenes 参数值为：["default"]</font>；而在检测结果中，则包含请求时指定的场景，以及对应类型的检测结果。</p>
@@ -212,77 +213,61 @@ func NewScanVoiceResponse() (response *ScanVoiceResponse) {
 // </ul>
 // 
 // <ul>
-// 	<li>回调请求 Body 的字段说明如下：</li>
+// <li>
+// 回调请求 Body 的字段说明见结构：
+// <a href="https://cloud.tencent.com/document/api/607/35375#DescribeScanResult" target="_blank">DescribeScanResult</a>
+// </li>
 // </ul>
-// <table>
-// <thread>
-// <tr>
-// <th>名称</th>
-// <th>类型</th>
-// <th>是否必需</th>
-// <th>描述</th>
-// </tr>
-// </thread>
-// <tbody>
-// <tr>
-// <td>Data</td>
-// <td>Array of <a href="https://cloud.tencent.com/document/api/607/35375#DescribeScanResult">DescribeScanResult</a></td>
-// <td>是</td>
-// <td>语音检测任务的结果</td>
-// </tr>
-// </tbody>
-// </table>
+// 
 // <li>回调示例如下<font color="red">（详细字段说明见上述表格中 Data 字段说明）</font>：</li>
 // <pre><code>{
-// 	"Data": [{
-// 		"Code": 0,
-// 		"DataId": "1400000000_test_data_id",
-// 		"ScanFinishTime": 1566720906,
+// 	"Code": 0,
+// 	"DataId": "1400000000_test_data_id",
+// 	"ScanFinishTime": 1566720906,
+// 	"HitFlag": true,
+// 	"Live": false,
+// 	"Msg": "",
+// 	"ScanPiece": [{
+// 		"DumpUrl": "",
 // 		"HitFlag": true,
-// 		"Live": false,
-// 		"Msg": "",
-// 		"ScanPiece": [{
-// 			"DumpUrl": "",
-// 			"HitFlag": true,
-// 			"MainType": "abuse",
-// 			"RoomId": "123",
-// 			"OpenId": "xxx",
-// 			"ScanDetail": [{
-// 				"EndTime": 1110,
-// 				"KeyWord": "xxx",
-// 				"Label": "abuse",
-// 				"Rate": "90.00",
-// 				"StartTime": 1110
-// 			}, {
-// 				"EndTime": 1380,
-// 				"KeyWord": "xxx",
-// 				"Label": "abuse",
-// 				"Rate": "90.00",
-// 				"StartTime": 930
-// 			}, {
-// 				"EndTime": 1560,
-// 				"KeyWord": "xxx",
-// 				"Label": "abuse",
-// 				"Rate": "90.00",
-// 				"StartTime": 930
-// 			}, {
-// 				"EndTime": 2820,
-// 				"KeyWord": "xxx",
-// 				"Label": "abuse",
-// 				"Rate": "90.00",
-// 				"StartTime": 2490
-// 			}]
-// 		}],
-// 		"ScanStartTime": 1566720905,
-// 		"Scenes": [
-// 			"default"
-// 		],
-// 		"Status": "Success",
-// 		"TaskId": "xxx",
-// 		"Url": "https://xxx/xxx.m4a"
+// 		"MainType": "abuse",
+// 		"RoomId": "123",
+// 		"OpenId": "xxx",
+// 		"ScanDetail": [{
+// 			"EndTime": 1110,
+// 			"KeyWord": "xxx",
+// 			"Label": "abuse",
+// 			"Rate": "90.00",
+// 			"StartTime": 1110
+// 		}, {
+// 			"EndTime": 1380,
+// 			"KeyWord": "xxx",
+// 			"Label": "abuse",
+// 			"Rate": "90.00",
+// 			"StartTime": 930
+// 		}, {
+// 			"EndTime": 1560,
+// 			"KeyWord": "xxx",
+// 			"Label": "abuse",
+// 			"Rate": "90.00",
+// 			"StartTime": 930
+// 		}, {
+// 			"EndTime": 2820,
+// 			"KeyWord": "xxx",
+// 			"Label": "abuse",
+// 			"Rate": "90.00",
+// 			"StartTime": 2490
+// 		}]
 // 	}],
-// 	"RequestId": "xxx"
-// }</code></pre>
+// 	"ScanStartTime": 1566720905,
+// 	"Scenes": [
+// 		"default"
+// 	],
+// 	"Status": "Success",
+// 	"TaskId": "xxx",
+// 	"Url": "https://xxx/xxx.m4a"
+// }
+// </code></pre>
 func (c *Client) ScanVoice(request *ScanVoiceRequest) (response *ScanVoiceResponse, err error) {
     if request == nil {
         request = NewScanVoiceRequest()

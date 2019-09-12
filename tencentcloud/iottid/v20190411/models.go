@@ -149,7 +149,7 @@ type DeliverTidsRequest struct {
 	// 订单ID
 	OrderId *string `json:"OrderId,omitempty" name:"OrderId"`
 
-	// 数量，1~10
+	// 数量，1~100
 	Quantity *uint64 `json:"Quantity,omitempty" name:"Quantity"`
 }
 
@@ -184,6 +184,43 @@ func (r *DeliverTidsResponse) ToJsonString() string {
 }
 
 func (r *DeliverTidsResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeAvailableLibCountRequest struct {
+	*tchttp.BaseRequest
+
+	// 订单编号
+	OrderId *string `json:"OrderId,omitempty" name:"OrderId"`
+}
+
+func (r *DescribeAvailableLibCountRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeAvailableLibCountRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeAvailableLibCountResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 可空发的白盒秘钥数量
+		Quantity *uint64 `json:"Quantity,omitempty" name:"Quantity"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeAvailableLibCountResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeAvailableLibCountResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -281,6 +318,12 @@ type TidKeysInfo struct {
 
 	// 共享密钥
 	Psk *string `json:"Psk,omitempty" name:"Psk"`
+
+	// 软加固白盒秘钥下载地址
+	DownloadUrl *string `json:"DownloadUrl,omitempty" name:"DownloadUrl"`
+
+	// 软加固设备标识码
+	DeviceCode *string `json:"DeviceCode,omitempty" name:"DeviceCode"`
 }
 
 type VerifyChipBurnInfoRequest struct {
@@ -305,6 +348,12 @@ type VerifyChipBurnInfoResponse struct {
 
 		// 验证结果
 		Pass *bool `json:"Pass,omitempty" name:"Pass"`
+
+		// 已验证次数
+		VerifiedTimes *uint64 `json:"VerifiedTimes,omitempty" name:"VerifiedTimes"`
+
+		// 剩余验证次数
+		LeftTimes *uint64 `json:"LeftTimes,omitempty" name:"LeftTimes"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
