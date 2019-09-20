@@ -90,7 +90,7 @@ type CreateContractByUploadRequest struct {
 	// 备注
 	Remarks *string `json:"Remarks,omitempty" name:"Remarks"`
 
-	// 过期时间
+	// 合同长时间未签署的过期时间
 	ExpireTime *string `json:"ExpireTime,omitempty" name:"ExpireTime"`
 }
 
@@ -136,7 +136,7 @@ type CreateEnterpriseAccountRequest struct {
 	// 企业用户名称
 	Name *string `json:"Name,omitempty" name:"Name"`
 
-	// 企业用户证件类型，8代表营业执照
+	// 企业用户证件类型，8代表营业执照，详情请见常见问题
 	IdentType *int64 `json:"IdentType,omitempty" name:"IdentType"`
 
 	// 企业用户营业执照号码
@@ -200,7 +200,7 @@ type CreatePersonalAccountRequest struct {
 	// 个人用户姓名
 	Name *string `json:"Name,omitempty" name:"Name"`
 
-	// 个人用户证件类型。0代表身份证
+	// 个人用户证件类型，0代表身份证，详情请见常见问题
 	IdentType *int64 `json:"IdentType,omitempty" name:"IdentType"`
 
 	// 个人用户证件号码
@@ -537,7 +537,7 @@ type SignContractByCoordinateRequest struct {
 	// 签署坐标，坐标原点在文件左下角，坐标单位为磅，坐标不得超过合同文件边界
 	SignLocations []*SignLocation `json:"SignLocations,omitempty" name:"SignLocations" list`
 
-	// 印章ID
+	// 签章ID
 	SealResId *string `json:"SealResId,omitempty" name:"SealResId"`
 
 	// 选用证书类型：1  表示RSA证书， 2 表示国密证书， 参数不传时默认为1

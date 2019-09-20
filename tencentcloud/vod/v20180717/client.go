@@ -882,6 +882,31 @@ func (c *Client) DescribeAIRecognitionTemplates(request *DescribeAIRecognitionTe
     return
 }
 
+func NewDescribeAdaptiveDynamicStreamingTemplatesRequest() (request *DescribeAdaptiveDynamicStreamingTemplatesRequest) {
+    request = &DescribeAdaptiveDynamicStreamingTemplatesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vod", APIVersion, "DescribeAdaptiveDynamicStreamingTemplates")
+    return
+}
+
+func NewDescribeAdaptiveDynamicStreamingTemplatesResponse() (response *DescribeAdaptiveDynamicStreamingTemplatesResponse) {
+    response = &DescribeAdaptiveDynamicStreamingTemplatesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询转自适应码流模板，支持根据条件，分页查询。
+func (c *Client) DescribeAdaptiveDynamicStreamingTemplates(request *DescribeAdaptiveDynamicStreamingTemplatesRequest) (response *DescribeAdaptiveDynamicStreamingTemplatesResponse, err error) {
+    if request == nil {
+        request = NewDescribeAdaptiveDynamicStreamingTemplatesRequest()
+    }
+    response = NewDescribeAdaptiveDynamicStreamingTemplatesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeAllClassRequest() (request *DescribeAllClassRequest) {
     request = &DescribeAllClassRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -928,6 +953,31 @@ func (c *Client) DescribeAnimatedGraphicsTemplates(request *DescribeAnimatedGrap
         request = NewDescribeAnimatedGraphicsTemplatesRequest()
     }
     response = NewDescribeAnimatedGraphicsTemplatesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeAudioTrackTemplatesRequest() (request *DescribeAudioTrackTemplatesRequest) {
+    request = &DescribeAudioTrackTemplatesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vod", APIVersion, "DescribeAudioTrackTemplates")
+    return
+}
+
+func NewDescribeAudioTrackTemplatesResponse() (response *DescribeAudioTrackTemplatesResponse) {
+    response = &DescribeAudioTrackTemplatesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 获取转自适应码流音频轨模板列表，支持根据条件，分页查询。
+func (c *Client) DescribeAudioTrackTemplates(request *DescribeAudioTrackTemplatesRequest) (response *DescribeAudioTrackTemplatesResponse, err error) {
+    if request == nil {
+        request = NewDescribeAudioTrackTemplatesRequest()
+    }
+    response = NewDescribeAudioTrackTemplatesResponse()
     err = c.Send(request, response)
     return
 }
@@ -1244,6 +1294,31 @@ func (c *Client) DescribeTranscodeTemplates(request *DescribeTranscodeTemplatesR
         request = NewDescribeTranscodeTemplatesRequest()
     }
     response = NewDescribeTranscodeTemplatesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeVideoTrackTemplatesRequest() (request *DescribeVideoTrackTemplatesRequest) {
+    request = &DescribeVideoTrackTemplatesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vod", APIVersion, "DescribeVideoTrackTemplates")
+    return
+}
+
+func NewDescribeVideoTrackTemplatesResponse() (response *DescribeVideoTrackTemplatesResponse) {
+    response = &DescribeVideoTrackTemplatesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 获取转自适应码流视频轨模板列表，支持根据条件，分页查询。
+func (c *Client) DescribeVideoTrackTemplates(request *DescribeVideoTrackTemplatesRequest) (response *DescribeVideoTrackTemplatesResponse, err error) {
+    if request == nil {
+        request = NewDescribeVideoTrackTemplatesRequest()
+    }
+    response = NewDescribeVideoTrackTemplatesResponse()
     err = c.Send(request, response)
     return
 }

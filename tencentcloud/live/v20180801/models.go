@@ -982,14 +982,14 @@ type CreatePullStreamConfigRequest struct {
 	// 目的Url，目前限制该目标地址为腾讯域名。
 	ToUrl *string `json:"ToUrl,omitempty" name:"ToUrl"`
 
-	// 区域id：
+	// 选择完成转拉推的服务所在区域:
 	// 1-深圳，
 	// 2-上海，
 	// 3-天津，
 	// 4-中国香港。
 	AreaId *int64 `json:"AreaId,omitempty" name:"AreaId"`
 
-	// 运营商id：
+	// 选择完成转拉推服务使用的运营商网络：
 	// 1-电信，
 	// 2-移动，
 	// 3-联通，

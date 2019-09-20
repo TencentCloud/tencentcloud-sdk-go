@@ -629,6 +629,32 @@ func (c *Client) ModifyDomain(request *ModifyDomainRequest) (response *ModifyDom
     return
 }
 
+func NewModifyDomainAttributesRequest() (request *ModifyDomainAttributesRequest) {
+    request = &ModifyDomainAttributesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("clb", APIVersion, "ModifyDomainAttributes")
+    return
+}
+
+func NewModifyDomainAttributesResponse() (response *ModifyDomainAttributesResponse) {
+    response = &ModifyDomainAttributesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyDomainAttributes接口用于修改负载均衡7层监听器转发规则的域名级别属性，如修改域名、修改DefaultServer、开启/关闭Http2、修改证书。
+// 本接口为异步接口，本接口返回成功后，需以返回的RequestId为入参，调用DescribeTaskStatus接口查询本次任务是否成功。
+func (c *Client) ModifyDomainAttributes(request *ModifyDomainAttributesRequest) (response *ModifyDomainAttributesResponse, err error) {
+    if request == nil {
+        request = NewModifyDomainAttributesRequest()
+    }
+    response = NewModifyDomainAttributesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyListenerRequest() (request *ModifyListenerRequest) {
     request = &ModifyListenerRequest{
         BaseRequest: &tchttp.BaseRequest{},

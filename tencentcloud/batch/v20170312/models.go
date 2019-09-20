@@ -2043,6 +2043,9 @@ type Task struct {
 
 	// 任务完成后，重启计算节点。适用于指定计算环境执行任务。
 	RestartComputeNode *bool `json:"RestartComputeNode,omitempty" name:"RestartComputeNode"`
+
+	// 启动任务过程中，创建计算资源如CVM失败后的最大重试次数，默认为0。
+	ResourceMaxRetryCount *uint64 `json:"ResourceMaxRetryCount,omitempty" name:"ResourceMaxRetryCount"`
 }
 
 type TaskInstanceLog struct {

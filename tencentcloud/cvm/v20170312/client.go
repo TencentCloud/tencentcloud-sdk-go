@@ -743,6 +743,56 @@ func (c *Client) DescribeRegions(request *DescribeRegionsRequest) (response *Des
     return
 }
 
+func NewDescribeReservedInstancesRequest() (request *DescribeReservedInstancesRequest) {
+    request = &DescribeReservedInstancesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cvm", APIVersion, "DescribeReservedInstances")
+    return
+}
+
+func NewDescribeReservedInstancesResponse() (response *DescribeReservedInstancesResponse) {
+    response = &DescribeReservedInstancesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口(DescribeReservedInstances)可提供列出用户已购买的预留实例
+func (c *Client) DescribeReservedInstances(request *DescribeReservedInstancesRequest) (response *DescribeReservedInstancesResponse, err error) {
+    if request == nil {
+        request = NewDescribeReservedInstancesRequest()
+    }
+    response = NewDescribeReservedInstancesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeReservedInstancesOfferingsRequest() (request *DescribeReservedInstancesOfferingsRequest) {
+    request = &DescribeReservedInstancesOfferingsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cvm", APIVersion, "DescribeReservedInstancesOfferings")
+    return
+}
+
+func NewDescribeReservedInstancesOfferingsResponse() (response *DescribeReservedInstancesOfferingsResponse) {
+    response = &DescribeReservedInstancesOfferingsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口(DescribeReservedInstancesOfferings)供用户列出可购买的预留实例配置
+func (c *Client) DescribeReservedInstancesOfferings(request *DescribeReservedInstancesOfferingsRequest) (response *DescribeReservedInstancesOfferingsResponse, err error) {
+    if request == nil {
+        request = NewDescribeReservedInstancesOfferingsRequest()
+    }
+    response = NewDescribeReservedInstancesOfferingsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeZoneInstanceConfigInfosRequest() (request *DescribeZoneInstanceConfigInfosRequest) {
     request = &DescribeZoneInstanceConfigInfosRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1374,6 +1424,31 @@ func (c *Client) ModifyKeyPairAttribute(request *ModifyKeyPairAttributeRequest) 
         request = NewModifyKeyPairAttributeRequest()
     }
     response = NewModifyKeyPairAttributeResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewPurchaseReservedInstancesOfferingRequest() (request *PurchaseReservedInstancesOfferingRequest) {
+    request = &PurchaseReservedInstancesOfferingRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cvm", APIVersion, "PurchaseReservedInstancesOffering")
+    return
+}
+
+func NewPurchaseReservedInstancesOfferingResponse() (response *PurchaseReservedInstancesOfferingResponse) {
+    response = &PurchaseReservedInstancesOfferingResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口(PurchaseReservedInstancesOffering)用于用户购买一个或者多个指定配置的预留实例
+func (c *Client) PurchaseReservedInstancesOffering(request *PurchaseReservedInstancesOfferingRequest) (response *PurchaseReservedInstancesOfferingResponse, err error) {
+    if request == nil {
+        request = NewPurchaseReservedInstancesOfferingRequest()
+    }
+    response = NewPurchaseReservedInstancesOfferingResponse()
     err = c.Send(request, response)
     return
 }
