@@ -118,6 +118,31 @@ func (c *Client) InquiryPriceCreateInstance(request *InquiryPriceCreateInstanceR
     return
 }
 
+func NewInquiryPriceRenewInstanceRequest() (request *InquiryPriceRenewInstanceRequest) {
+    request = &InquiryPriceRenewInstanceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("emr", APIVersion, "InquiryPriceRenewInstance")
+    return
+}
+
+func NewInquiryPriceRenewInstanceResponse() (response *InquiryPriceRenewInstanceResponse) {
+    response = &InquiryPriceRenewInstanceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 续费询价。
+func (c *Client) InquiryPriceRenewInstance(request *InquiryPriceRenewInstanceRequest) (response *InquiryPriceRenewInstanceResponse, err error) {
+    if request == nil {
+        request = NewInquiryPriceRenewInstanceRequest()
+    }
+    response = NewInquiryPriceRenewInstanceResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewInquiryPriceScaleOutInstanceRequest() (request *InquiryPriceScaleOutInstanceRequest) {
     request = &InquiryPriceScaleOutInstanceRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -139,6 +164,31 @@ func (c *Client) InquiryPriceScaleOutInstance(request *InquiryPriceScaleOutInsta
         request = NewInquiryPriceScaleOutInstanceRequest()
     }
     response = NewInquiryPriceScaleOutInstanceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewInquiryPriceUpdateInstanceRequest() (request *InquiryPriceUpdateInstanceRequest) {
+    request = &InquiryPriceUpdateInstanceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("emr", APIVersion, "InquiryPriceUpdateInstance")
+    return
+}
+
+func NewInquiryPriceUpdateInstanceResponse() (response *InquiryPriceUpdateInstanceResponse) {
+    response = &InquiryPriceUpdateInstanceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 变配询价
+func (c *Client) InquiryPriceUpdateInstance(request *InquiryPriceUpdateInstanceRequest) (response *InquiryPriceUpdateInstanceResponse, err error) {
+    if request == nil {
+        request = NewInquiryPriceUpdateInstanceRequest()
+    }
+    response = NewInquiryPriceUpdateInstanceResponse()
     err = c.Send(request, response)
     return
 }

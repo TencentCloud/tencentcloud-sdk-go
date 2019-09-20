@@ -22,66 +22,105 @@ import (
 
 type COSSettings struct {
 
-	// 日志存储在COS上的路径
-	LogOnCosPath *string `json:"LogOnCosPath,omitempty" name:"LogOnCosPath"`
-
 	// COS SecretId
 	CosSecretId *string `json:"CosSecretId,omitempty" name:"CosSecretId"`
 
 	// COS SecrectKey
 	CosSecretKey *string `json:"CosSecretKey,omitempty" name:"CosSecretKey"`
+
+	// 日志存储在COS上的路径
+	LogOnCosPath *string `json:"LogOnCosPath,omitempty" name:"LogOnCosPath"`
 }
 
-type ClusterInfoResult struct {
+type ClusterInstancesInfo struct {
 
-	// 数量
+	// ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TotalCnt *uint64 `json:"TotalCnt,omitempty" name:"TotalCnt"`
+	Id *int64 `json:"Id,omitempty" name:"Id"`
 
-	// 集群信息列表
+	// 集群ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ClusterList []*ClusterInstanceInfo `json:"ClusterList,omitempty" name:"ClusterList" list`
-}
-
-type ClusterInstanceInfo struct {
-
-	// clusterId
 	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
 
-	// 状态描述
+	// 标题
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	StatusDesc *string `json:"StatusDesc,omitempty" name:"StatusDesc"`
+	Ftitle *string `json:"Ftitle,omitempty" name:"Ftitle"`
 
-	// 集群名字
+	// 集群名
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ClusterName *string `json:"ClusterName,omitempty" name:"ClusterName"`
 
-	// 集群地域
-	ZoneId *uint64 `json:"ZoneId,omitempty" name:"ZoneId"`
+	// 地域ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RegionId *int64 `json:"RegionId,omitempty" name:"RegionId"`
+
+	// 地区ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ZoneId *int64 `json:"ZoneId,omitempty" name:"ZoneId"`
 
 	// 用户APPID
-	AppId *uint64 `json:"AppId,omitempty" name:"AppId"`
-
-	// 创建时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Addtime *string `json:"Addtime,omitempty" name:"Addtime"`
+	AppId *int64 `json:"AppId,omitempty" name:"AppId"`
 
-	// 运行时间
+	// 用户UIN
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Runtime *string `json:"Runtime,omitempty" name:"Runtime"`
+	Uin *string `json:"Uin,omitempty" name:"Uin"`
 
-	// 集群配置
+	// 项目Id
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Config *EMRProductConfigSettings `json:"Config,omitempty" name:"Config"`
+	ProjectId *int64 `json:"ProjectId,omitempty" name:"ProjectId"`
 
-	// 集群IP
+	// 集群VPCID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VpcId *int64 `json:"VpcId,omitempty" name:"VpcId"`
+
+	// 子网ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SubnetId *int64 `json:"SubnetId,omitempty" name:"SubnetId"`
+
+	// 状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *int64 `json:"Status,omitempty" name:"Status"`
+
+	// 添加时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AddTime *string `json:"AddTime,omitempty" name:"AddTime"`
+
+	// 已经运行时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RunTime *string `json:"RunTime,omitempty" name:"RunTime"`
+
+	// 集群产品配置信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Config *EmrProductConfigOutter `json:"Config,omitempty" name:"Config"`
+
+	// 主节点外网IP
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	MasterIp *string `json:"MasterIp,omitempty" name:"MasterIp"`
 
-	// 集群版本
+	// EMR版本
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	EmrVersion *string `json:"EmrVersion,omitempty" name:"EmrVersion"`
 
-	// 集群计费类型
-	ChargeType *uint64 `json:"ChargeType,omitempty" name:"ChargeType"`
+	// 收费类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ChargeType *int64 `json:"ChargeType,omitempty" name:"ChargeType"`
+
+	// 交易版本
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TradeVersion *int64 `json:"TradeVersion,omitempty" name:"TradeVersion"`
+
+	// 资源订单ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResourceOrderId *int64 `json:"ResourceOrderId,omitempty" name:"ResourceOrderId"`
+
+	// 是否计费集群
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsTradeCluster *int64 `json:"IsTradeCluster,omitempty" name:"IsTradeCluster"`
+
+	// 集群错误状态告警信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AlarmInfo *string `json:"AlarmInfo,omitempty" name:"AlarmInfo"`
 }
 
 type CreateInstanceRequest struct {
@@ -97,7 +136,7 @@ type CreateInstanceRequest struct {
 	Software []*string `json:"Software,omitempty" name:"Software" list`
 
 	// 资源描述
-	ResourceSpec *ResourceSpec `json:"ResourceSpec,omitempty" name:"ResourceSpec"`
+	ResourceSpec *NewResourceSpec `json:"ResourceSpec,omitempty" name:"ResourceSpec"`
 
 	// 支持HA
 	SupportHA *uint64 `json:"SupportHA,omitempty" name:"SupportHA"`
@@ -120,9 +159,6 @@ type CreateInstanceRequest struct {
 	// 登录配置
 	LoginSettings *LoginSettings `json:"LoginSettings,omitempty" name:"LoginSettings"`
 
-	// 客户端Token
-	ClientToken *string `json:"ClientToken,omitempty" name:"ClientToken"`
-
 	// COS设置参数
 	COSSettings *COSSettings `json:"COSSettings,omitempty" name:"COSSettings"`
 
@@ -135,11 +171,20 @@ type CreateInstanceRequest struct {
 	// 自动续费
 	AutoRenew *uint64 `json:"AutoRenew,omitempty" name:"AutoRenew"`
 
+	// 客户端Token
+	ClientToken *string `json:"ClientToken,omitempty" name:"ClientToken"`
+
 	// 是否需要外网Ip。支持填NEED_MASTER_WAN，不支持使用NOT_NEED_MASTER_WAN，默认使用NEED_MASTER_WAN
 	NeedMasterWan *string `json:"NeedMasterWan,omitempty" name:"NeedMasterWan"`
 
 	// 是否需要开启外网远程登录，即22号端口，在SgId不为空时，该选项无效
 	RemoteLoginAtCreate *int64 `json:"RemoteLoginAtCreate,omitempty" name:"RemoteLoginAtCreate"`
+
+	// 是否开启安全集群，0表示不开启，非0表示开启
+	CheckSecurity *int64 `json:"CheckSecurity,omitempty" name:"CheckSecurity"`
+
+	// 访问外部文件系统
+	ExtendFsField *string `json:"ExtendFsField,omitempty" name:"ExtendFsField"`
 }
 
 func (r *CreateInstanceRequest) ToJsonString() string {
@@ -155,9 +200,6 @@ type CreateInstanceResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 创建实例结果信息
-		Result *CreateInstanceResult `json:"Result,omitempty" name:"Result"`
-
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
@@ -172,20 +214,11 @@ func (r *CreateInstanceResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
-type CreateInstanceResult struct {
-
-	// 客户端TOKEN
-	ClientToken *string `json:"ClientToken,omitempty" name:"ClientToken"`
-
-	// 集群名称
-	InstanceName *string `json:"InstanceName,omitempty" name:"InstanceName"`
-
-	// 订单列表
-	DealNames []*string `json:"DealNames,omitempty" name:"DealNames" list`
-}
-
 type DescribeInstancesRequest struct {
 	*tchttp.BaseRequest
+
+	// 集群展示策略，该字段取值根据所选页面不同输入不同，集群列表页：clusterList，集群监控：monitorManage，云硬件管理：cloudHardwareManage，组件管理页：componentManage
+	DisplayStrategy *string `json:"DisplayStrategy,omitempty" name:"DisplayStrategy"`
 
 	// 查询列表,  如果不填写，返回该AppId下所有实例列表
 	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds" list`
@@ -195,6 +228,15 @@ type DescribeInstancesRequest struct {
 
 	// 查询结果限制，默认值10
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 项目列表，默认值-1
+	ProjectId *int64 `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 排序字段，当前支持以下排序字段：clusterId、addTime、status
+	OrderField *string `json:"OrderField,omitempty" name:"OrderField"`
+
+	// 排序方法，0降序，1升序
+	Asc *int64 `json:"Asc,omitempty" name:"Asc"`
 }
 
 func (r *DescribeInstancesRequest) ToJsonString() string {
@@ -211,7 +253,11 @@ type DescribeInstancesResponse struct {
 	Response *struct {
 
 		// 实例数量
-		Result *ClusterInfoResult `json:"Result,omitempty" name:"Result"`
+		TotalCnt *int64 `json:"TotalCnt,omitempty" name:"TotalCnt"`
+
+		// 集群实例信息列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		ClusterList []*ClusterInstancesInfo `json:"ClusterList,omitempty" name:"ClusterList" list`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -227,51 +273,51 @@ func (r *DescribeInstancesResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
-type EMRProductConfigSettings struct {
+type EmrProductConfigOutter struct {
 
-	// 集群软件信息
+	// 软件信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SoftInfo []*string `json:"SoftInfo,omitempty" name:"SoftInfo" list`
 
-	// master节点数量
+	// Master节点个数
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	MasterNodeSize *uint64 `json:"MasterNodeSize,omitempty" name:"MasterNodeSize"`
+	MasterNodeSize *int64 `json:"MasterNodeSize,omitempty" name:"MasterNodeSize"`
 
-	// core节点数量
+	// Core节点个数
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	CoreNodeSize *uint64 `json:"CoreNodeSize,omitempty" name:"CoreNodeSize"`
+	CoreNodeSize *int64 `json:"CoreNodeSize,omitempty" name:"CoreNodeSize"`
 
-	// task节点数量
+	// Task节点个数
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TaskNodeSize *uint64 `json:"TaskNodeSize,omitempty" name:"TaskNodeSize"`
+	TaskNodeSize *int64 `json:"TaskNodeSize,omitempty" name:"TaskNodeSize"`
 
-	// common节点数量
+	// Common节点个数
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ComNodeSize *uint64 `json:"ComNodeSize,omitempty" name:"ComNodeSize"`
+	ComNodeSize *int64 `json:"ComNodeSize,omitempty" name:"ComNodeSize"`
 
-	// master规格
+	// Master节点资源
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	MasterResourceSpec *NodeSpec `json:"MasterResourceSpec,omitempty" name:"MasterResourceSpec"`
+	MasterResource *OutterResource `json:"MasterResource,omitempty" name:"MasterResource"`
 
-	// core规格
+	// Core节点资源
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	CoreResourceSpec *NodeSpec `json:"CoreResourceSpec,omitempty" name:"CoreResourceSpec"`
+	CoreResource *OutterResource `json:"CoreResource,omitempty" name:"CoreResource"`
 
-	// task规格
+	// Task节点资源
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TaskResourceSpec *NodeSpec `json:"TaskResourceSpec,omitempty" name:"TaskResourceSpec"`
+	TaskResource *OutterResource `json:"TaskResource,omitempty" name:"TaskResource"`
 
-	// common规格
+	// Common节点资源
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	CommonResourceSpec *NodeSpec `json:"CommonResourceSpec,omitempty" name:"CommonResourceSpec"`
+	ComResource *OutterResource `json:"ComResource,omitempty" name:"ComResource"`
 
 	// 是否使用COS
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Oncos *bool `json:"Oncos,omitempty" name:"Oncos"`
+	OnCos *bool `json:"OnCos,omitempty" name:"OnCos"`
 
-	// COS配置
+	// 收费类型
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	COSSettings *COSSettings `json:"COSSettings,omitempty" name:"COSSettings"`
+	ChargeType *int64 `json:"ChargeType,omitempty" name:"ChargeType"`
 }
 
 type InquiryPriceCreateInstanceRequest struct {
@@ -284,7 +330,7 @@ type InquiryPriceCreateInstanceRequest struct {
 	TimeSpan *uint64 `json:"TimeSpan,omitempty" name:"TimeSpan"`
 
 	// 询价资源描述
-	ResourceSpec *ResourceSpec `json:"ResourceSpec,omitempty" name:"ResourceSpec"`
+	ResourceSpec *NewResourceSpec `json:"ResourceSpec,omitempty" name:"ResourceSpec"`
 
 	// 货币种类
 	Currency *string `json:"Currency,omitempty" name:"Currency"`
@@ -318,8 +364,21 @@ type InquiryPriceCreateInstanceResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 询价结果
-		Result *InquiryPriceResult `json:"Result,omitempty" name:"Result"`
+		// 刊例价
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		OriginalCost *float64 `json:"OriginalCost,omitempty" name:"OriginalCost"`
+
+		// 折扣价格
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		DiscountCost *float64 `json:"DiscountCost,omitempty" name:"DiscountCost"`
+
+		// 时间单位，"s","m"
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		TimeUnit *string `json:"TimeUnit,omitempty" name:"TimeUnit"`
+
+		// 时间数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		TimeSpan *int64 `json:"TimeSpan,omitempty" name:"TimeSpan"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -335,19 +394,69 @@ func (r *InquiryPriceCreateInstanceResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
-type InquiryPriceResult struct {
-
-	// 原始价格
-	OriginalCost *float64 `json:"OriginalCost,omitempty" name:"OriginalCost"`
-
-	// 折扣后价格
-	DiscountCost *float64 `json:"DiscountCost,omitempty" name:"DiscountCost"`
-
-	// 时间单位
-	TimeUnit *string `json:"TimeUnit,omitempty" name:"TimeUnit"`
+type InquiryPriceRenewInstanceRequest struct {
+	*tchttp.BaseRequest
 
 	// 时间长度
 	TimeSpan *uint64 `json:"TimeSpan,omitempty" name:"TimeSpan"`
+
+	// 资源ID列表
+	ResourceIds []*string `json:"ResourceIds,omitempty" name:"ResourceIds" list`
+
+	// 位置信息
+	Placement *Placement `json:"Placement,omitempty" name:"Placement"`
+
+	// 计费模式，0表示按量，1表示包年报月，此处只能为包年包月
+	PayMode *int64 `json:"PayMode,omitempty" name:"PayMode"`
+
+	// 时间单位，默认为m
+	TimeUnit *string `json:"TimeUnit,omitempty" name:"TimeUnit"`
+
+	// 货币种类
+	Currency *string `json:"Currency,omitempty" name:"Currency"`
+}
+
+func (r *InquiryPriceRenewInstanceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *InquiryPriceRenewInstanceRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type InquiryPriceRenewInstanceResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 刊例价
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		OriginalCost *float64 `json:"OriginalCost,omitempty" name:"OriginalCost"`
+
+		// 折扣价格
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		DiscountCost *float64 `json:"DiscountCost,omitempty" name:"DiscountCost"`
+
+		// 时间单位，"s","m"
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		TimeUnit *string `json:"TimeUnit,omitempty" name:"TimeUnit"`
+
+		// 时间数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		TimeSpan *int64 `json:"TimeSpan,omitempty" name:"TimeSpan"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *InquiryPriceRenewInstanceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *InquiryPriceRenewInstanceResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
 }
 
 type InquiryPriceScaleOutInstanceRequest struct {
@@ -391,8 +500,21 @@ type InquiryPriceScaleOutInstanceResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 扩容价格
-		Result *InquiryPriceResult `json:"Result,omitempty" name:"Result"`
+		// 刊例价
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		OriginalCost *string `json:"OriginalCost,omitempty" name:"OriginalCost"`
+
+		// 折扣价格
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		DiscountCost *string `json:"DiscountCost,omitempty" name:"DiscountCost"`
+
+		// 单位
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Unit *string `json:"Unit,omitempty" name:"Unit"`
+
+		// 询价配置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		PriceSpec *PriceResource `json:"PriceSpec,omitempty" name:"PriceSpec"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -405,6 +527,71 @@ func (r *InquiryPriceScaleOutInstanceResponse) ToJsonString() string {
 }
 
 func (r *InquiryPriceScaleOutInstanceResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type InquiryPriceUpdateInstanceRequest struct {
+	*tchttp.BaseRequest
+
+	// 时间单位。s:按量用例单位。m:包年包月用例单位
+	TimeUnit *string `json:"TimeUnit,omitempty" name:"TimeUnit"`
+
+	// 时间长度。按量用例长度为3600。
+	TimeSpan *uint64 `json:"TimeSpan,omitempty" name:"TimeSpan"`
+
+	// 变配参数
+	UpdateSpec *UpdateInstanceSettings `json:"UpdateSpec,omitempty" name:"UpdateSpec"`
+
+	// 计费类型
+	PayMode *uint64 `json:"PayMode,omitempty" name:"PayMode"`
+
+	// 位置信息
+	Placement *Placement `json:"Placement,omitempty" name:"Placement"`
+
+	// 货币种类
+	Currency *string `json:"Currency,omitempty" name:"Currency"`
+}
+
+func (r *InquiryPriceUpdateInstanceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *InquiryPriceUpdateInstanceRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type InquiryPriceUpdateInstanceResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 刊例价
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		OriginalCost *float64 `json:"OriginalCost,omitempty" name:"OriginalCost"`
+
+		// 折扣价格
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		DiscountCost *float64 `json:"DiscountCost,omitempty" name:"DiscountCost"`
+
+		// 时间单位，"s","m"
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		TimeUnit *string `json:"TimeUnit,omitempty" name:"TimeUnit"`
+
+		// 时间数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		TimeSpan *int64 `json:"TimeSpan,omitempty" name:"TimeSpan"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *InquiryPriceUpdateInstanceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *InquiryPriceUpdateInstanceResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -429,69 +616,92 @@ type MultiDisk struct {
 	Count *int64 `json:"Count,omitempty" name:"Count"`
 }
 
-type NodeSpec struct {
+type NewResourceSpec struct {
 
-	// 内存容量,单位为M
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	Memory *uint64 `json:"Memory,omitempty" name:"Memory"`
+	// 描述Master节点资源
+	MasterResourceSpec *Resource `json:"MasterResourceSpec,omitempty" name:"MasterResourceSpec"`
 
-	// CPU核数
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	CPUCores *uint64 `json:"CPUCores,omitempty" name:"CPUCores"`
+	// 描述Core节点资源
+	CoreResourceSpec *Resource `json:"CoreResourceSpec,omitempty" name:"CoreResourceSpec"`
 
-	// 数据盘容量
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	Volume *uint64 `json:"Volume,omitempty" name:"Volume"`
+	// 描述Task节点资源
+	TaskResourceSpec *Resource `json:"TaskResourceSpec,omitempty" name:"TaskResourceSpec"`
 
-	// 磁盘类型
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	DiskType *string `json:"DiskType,omitempty" name:"DiskType"`
+	// Master节点数量
+	MasterCount *int64 `json:"MasterCount,omitempty" name:"MasterCount"`
 
-	// 节点规格描述
+	// Core节点数量
+	CoreCount *int64 `json:"CoreCount,omitempty" name:"CoreCount"`
+
+	// Task节点数量
+	TaskCount *int64 `json:"TaskCount,omitempty" name:"TaskCount"`
+
+	// 描述Common节点资源
+	CommonResourceSpec *Resource `json:"CommonResourceSpec,omitempty" name:"CommonResourceSpec"`
+
+	// Common节点数量
+	CommonCount *int64 `json:"CommonCount,omitempty" name:"CommonCount"`
+}
+
+type OutterResource struct {
+
+	// 规格
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Spec *string `json:"Spec,omitempty" name:"Spec"`
 
-	// 系统盘容量
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	RootDiskVolume *uint64 `json:"RootDiskVolume,omitempty" name:"RootDiskVolume"`
-
-	// 存储类型
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	StorageType *uint64 `json:"StorageType,omitempty" name:"StorageType"`
-
-	// 规格名称
+	// 规格名
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SpecName *string `json:"SpecName,omitempty" name:"SpecName"`
 
-	// 多盘数据
+	// 硬盘类型
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	MultiDisks []*MultiDisk `json:"MultiDisks,omitempty" name:"MultiDisks" list`
+	StorageType *int64 `json:"StorageType,omitempty" name:"StorageType"`
+
+	// 盘类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DiskType *string `json:"DiskType,omitempty" name:"DiskType"`
+
+	// 系统盘大小
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RootSize *int64 `json:"RootSize,omitempty" name:"RootSize"`
+
+	// 内存大小
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MemSize *int64 `json:"MemSize,omitempty" name:"MemSize"`
+
+	// CPU个数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Cpu *int64 `json:"Cpu,omitempty" name:"Cpu"`
+
+	// 硬盘大小
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DiskSize *int64 `json:"DiskSize,omitempty" name:"DiskSize"`
 }
 
 type Placement struct {
 
 	// 实例所属项目ID。该参数可以通过调用 DescribeProject 的返回值中的 projectId 字段来获取。不填为默认项目。
-	ProjectId *uint64 `json:"ProjectId,omitempty" name:"ProjectId"`
+	ProjectId *int64 `json:"ProjectId,omitempty" name:"ProjectId"`
 
-	// 实例所属的可用区ID。该参数也可以通过调用 DescribeZones 的返回值中的Zone字段来获取。
+	// 实例所属的可用区，例如ap-guangzhou-1。该参数也可以通过调用 DescribeZones 的返回值中的Zone字段来获取。
 	Zone *string `json:"Zone,omitempty" name:"Zone"`
 }
 
 type PreExecuteFileSettings struct {
 
-	// 脚本在COS上路径
+	// 脚本在COS上路径，已废弃
 	Path *string `json:"Path,omitempty" name:"Path"`
 
 	// 执行脚本参数
 	Args []*string `json:"Args,omitempty" name:"Args" list`
 
-	// COS的Bucket名称
+	// COS的Bucket名称，已废弃
 	Bucket *string `json:"Bucket,omitempty" name:"Bucket"`
 
-	// COS的Region名称
+	// COS的Region名称，已废弃
 	Region *string `json:"Region,omitempty" name:"Region"`
 
-	// COS的Domain数据
+	// COS的Domain数据，已废弃
 	Domain *string `json:"Domain,omitempty" name:"Domain"`
 
 	// 执行顺序
@@ -500,7 +710,7 @@ type PreExecuteFileSettings struct {
 	// resourceAfter 或 clusterAfter
 	WhenRun *string `json:"WhenRun,omitempty" name:"WhenRun"`
 
-	// 脚本文件名
+	// 脚本文件名，已废弃
 	CosFileName *string `json:"CosFileName,omitempty" name:"CosFileName"`
 
 	// 脚本的cos地址
@@ -512,42 +722,86 @@ type PreExecuteFileSettings struct {
 	// Cos的SecretKey
 	CosSecretKey *string `json:"CosSecretKey,omitempty" name:"CosSecretKey"`
 
-	// cos的appid
+	// cos的appid，已废弃
 	AppId *string `json:"AppId,omitempty" name:"AppId"`
 }
 
-type ResourceSpec struct {
+type PriceResource struct {
 
-	// Common节点数量
-	CommonCount *uint64 `json:"CommonCount,omitempty" name:"CommonCount"`
+	// 需要的规格
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Spec *string `json:"Spec,omitempty" name:"Spec"`
 
-	// 描述Master节点资源
-	MasterResourceSpec *NodeSpec `json:"MasterResourceSpec,omitempty" name:"MasterResourceSpec"`
+	// 硬盘类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StorageType *uint64 `json:"StorageType,omitempty" name:"StorageType"`
 
-	// 描述Core节点资源
-	CoreResourceSpec *NodeSpec `json:"CoreResourceSpec,omitempty" name:"CoreResourceSpec"`
+	// 硬盘类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DiskType *string `json:"DiskType,omitempty" name:"DiskType"`
 
-	// 描述Task节点资源
-	TaskResourceSpec *NodeSpec `json:"TaskResourceSpec,omitempty" name:"TaskResourceSpec"`
+	// 系统盘大小
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RootSize *int64 `json:"RootSize,omitempty" name:"RootSize"`
 
-	// Master节点数量
-	MasterCount *uint64 `json:"MasterCount,omitempty" name:"MasterCount"`
+	// 内存大小
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MemSize *int64 `json:"MemSize,omitempty" name:"MemSize"`
 
-	// Core节点数量
-	CoreCount *uint64 `json:"CoreCount,omitempty" name:"CoreCount"`
+	// 核心数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Cpu *int64 `json:"Cpu,omitempty" name:"Cpu"`
 
-	// Task节点数量
-	TaskCount *uint64 `json:"TaskCount,omitempty" name:"TaskCount"`
+	// 硬盘大小
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DiskSize *int64 `json:"DiskSize,omitempty" name:"DiskSize"`
 
-	// 描述Common节点资源
-	CommonResourceSpec *NodeSpec `json:"CommonResourceSpec,omitempty" name:"CommonResourceSpec"`
+	// 云盘列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MultiDisks []*MultiDisk `json:"MultiDisks,omitempty" name:"MultiDisks" list`
+
+	// 磁盘数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DiskCnt *int64 `json:"DiskCnt,omitempty" name:"DiskCnt"`
+}
+
+type Resource struct {
+
+	// 节点规格描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Spec *string `json:"Spec,omitempty" name:"Spec"`
+
+	// 存储类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StorageType *int64 `json:"StorageType,omitempty" name:"StorageType"`
+
+	// 磁盘类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DiskType *string `json:"DiskType,omitempty" name:"DiskType"`
+
+	// 内存容量,单位为M
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MemSize *int64 `json:"MemSize,omitempty" name:"MemSize"`
+
+	// CPU核数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Cpu *int64 `json:"Cpu,omitempty" name:"Cpu"`
+
+	// 数据盘容量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DiskSize *int64 `json:"DiskSize,omitempty" name:"DiskSize"`
+
+	// 系统盘容量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RootSize *int64 `json:"RootSize,omitempty" name:"RootSize"`
+
+	// 云盘列表，当数据盘为一块云盘时，直接使用DiskType和DiskSize参数，超出部分使用MultiDisks
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MultiDisks []*MultiDisk `json:"MultiDisks,omitempty" name:"MultiDisks" list`
 }
 
 type ScaleOutInstanceRequest struct {
 	*tchttp.BaseRequest
-
-	// Token
-	ClientToken *string `json:"ClientToken,omitempty" name:"ClientToken"`
 
 	// 时间单位
 	TimeUnit *string `json:"TimeUnit,omitempty" name:"TimeUnit"`
@@ -561,6 +815,9 @@ type ScaleOutInstanceRequest struct {
 	// 付费类型
 	PayMode *uint64 `json:"PayMode,omitempty" name:"PayMode"`
 
+	// Token
+	ClientToken *string `json:"ClientToken,omitempty" name:"ClientToken"`
+
 	// 预执行脚本设置
 	PreExecutedFileSettings []*PreExecuteFileSettings `json:"PreExecutedFileSettings,omitempty" name:"PreExecutedFileSettings" list`
 
@@ -569,6 +826,9 @@ type ScaleOutInstanceRequest struct {
 
 	// 扩容Core节点数量
 	CoreCount *uint64 `json:"CoreCount,omitempty" name:"CoreCount"`
+
+	// 扩容时不需要安装的进程
+	UnNecessaryNodeList []*uint64 `json:"UnNecessaryNodeList,omitempty" name:"UnNecessaryNodeList" list`
 }
 
 func (r *ScaleOutInstanceRequest) ToJsonString() string {
@@ -584,8 +844,16 @@ type ScaleOutInstanceResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 扩容结果
-		Result *ScaleOutInstanceResult `json:"Result,omitempty" name:"Result"`
+		// 实例ID
+		InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+		// 订单号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		DealNames []*string `json:"DealNames,omitempty" name:"DealNames" list`
+
+		// token
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		ClientToken *string `json:"ClientToken,omitempty" name:"ClientToken"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -601,23 +869,14 @@ func (r *ScaleOutInstanceResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
-type ScaleOutInstanceResult struct {
-
-	// 客户端调用时传入的TOKEN
-	ClientToken *string `json:"ClientToken,omitempty" name:"ClientToken"`
-
-	// 扩容实例ID
-	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
-
-	// 订单名称
-	DealNames []*string `json:"DealNames,omitempty" name:"DealNames" list`
-}
-
 type TerminateInstanceRequest struct {
 	*tchttp.BaseRequest
 
 	// 被销毁的实例ID
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 销毁节点ID
+	ResourceIds []*string `json:"ResourceIds,omitempty" name:"ResourceIds" list`
 }
 
 func (r *TerminateInstanceRequest) ToJsonString() string {
@@ -633,9 +892,6 @@ type TerminateInstanceResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 退单描述
-		Result *TerminateResult `json:"Result,omitempty" name:"Result"`
-
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
@@ -648,15 +904,6 @@ func (r *TerminateInstanceResponse) ToJsonString() string {
 
 func (r *TerminateInstanceResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
-}
-
-type TerminateResult struct {
-
-	// 退单集群ID
-	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
-
-	// 资源资源ID
-	ResourceIds []*string `json:"ResourceIds,omitempty" name:"ResourceIds" list`
 }
 
 type TerminateTasksRequest struct {
@@ -682,9 +929,6 @@ type TerminateTasksResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 退单结果
-		Result *TerminateResult `json:"Result,omitempty" name:"Result"`
-
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
@@ -697,6 +941,18 @@ func (r *TerminateTasksResponse) ToJsonString() string {
 
 func (r *TerminateTasksResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
+}
+
+type UpdateInstanceSettings struct {
+
+	// 内存容量，单位为G
+	Memory *uint64 `json:"Memory,omitempty" name:"Memory"`
+
+	// CPU核数
+	CPUCores *uint64 `json:"CPUCores,omitempty" name:"CPUCores"`
+
+	// 机器资源ID（EMR测资源标识）
+	ResourceId *string `json:"ResourceId,omitempty" name:"ResourceId"`
 }
 
 type VPCSettings struct {

@@ -90,8 +90,6 @@ func NewCompareFaceResponse() (response *CompareFaceResponse) {
 // 
 // 若您需要判断 “此人是否是某人”，即验证某张图片中的人是否是已知身份的某人，如常见的人脸登录场景，建议使用[人脸验证](https://cloud.tencent.com/document/product/867/32806)接口。
 // 
-// 若您需要判断图片中人脸的具体身份信息，如是否是身份证上对应的人，建议使用[人脸核身·云智慧眼](https://cloud.tencent.com/product/facein)产品。
-// 
 // >     
 // - 公共参数中的签名方式请使用V3版本，即配置SignatureMethod参数为TC3-HMAC-SHA256。
 func (c *Client) CompareFace(request *CompareFaceRequest) (response *CompareFaceResponse, err error) {

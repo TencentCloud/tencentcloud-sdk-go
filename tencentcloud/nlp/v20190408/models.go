@@ -195,6 +195,30 @@ type DpToken struct {
 	Word *string `json:"Word,omitempty" name:"Word"`
 }
 
+type EvilToken struct {
+
+	// 文本是否恶意：
+	// 0、正常；
+	// 1、恶意；
+	// 2、可疑送审
+	EvilFlag *uint64 `json:"EvilFlag,omitempty" name:"EvilFlag"`
+
+	// 恶意关键词组
+	EvilKeywords []*string `json:"EvilKeywords,omitempty" name:"EvilKeywords" list`
+
+	// 文本恶意类型：
+	// 0、正常；
+	// 1、政治；
+	// 2、色情；
+	// 3、辱骂/低俗；
+	// 4、暴恐/毒品；
+	// 5、广告/灌水；
+	// 6、迷信/邪教；
+	// 7、其他违法（如跨站追杀/恶意竞争等）；
+	// 8、综合
+	EvilType *uint64 `json:"EvilType,omitempty" name:"EvilType"`
+}
+
 type Keyword struct {
 
 	// 权重
@@ -209,6 +233,9 @@ type KeywordsExtractionRequest struct {
 
 	// 待处理的文本（仅支持UTF-8格式，不超过2000字）
 	Text *string `json:"Text,omitempty" name:"Text"`
+
+	// 指定关键词个数上限（默认值为5）
+	Num *uint64 `json:"Num,omitempty" name:"Num"`
 }
 
 func (r *KeywordsExtractionRequest) ToJsonString() string {
@@ -248,7 +275,7 @@ type LexicalAnalysisRequest struct {
 	Text *string `json:"Text,omitempty" name:"Text"`
 
 	// 词法分析模式（默认取1值）：
-	// 1、高精度；
+	// 1、高精度（具备混合粒度分词能力）；
 	// 2、高性能；
 	Flag *uint64 `json:"Flag,omitempty" name:"Flag"`
 }
@@ -523,6 +550,47 @@ func (r *SimilarWordsResponse) ToJsonString() string {
 }
 
 func (r *SimilarWordsResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type TextApprovalRequest struct {
+	*tchttp.BaseRequest
+
+	// 待审核的文本（仅支持UTF-8格式，不超过2000字）
+	Text *string `json:"Text,omitempty" name:"Text"`
+
+	// 文本审核模式（默认取1值）：
+	// 1、全领域审核
+	Flag *uint64 `json:"Flag,omitempty" name:"Flag"`
+}
+
+func (r *TextApprovalRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *TextApprovalRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type TextApprovalResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 文本审核输出结果
+		EvilTokens []*EvilToken `json:"EvilTokens,omitempty" name:"EvilTokens" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *TextApprovalResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *TextApprovalResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 

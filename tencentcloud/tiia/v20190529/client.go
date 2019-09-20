@@ -188,7 +188,7 @@ func NewImageModerationResponse() (response *ImageModerationResponse) {
     return
 }
 
-// 本接口提供多种维度的图像审核能力，支持色情和性感内容识别，政治人物和涉政敏感场景识别，以及暴恐人物、场景、旗帜标识等违禁内容的识别。
+// 本接口提供多种维度的图像审核能力，支持色情和性感内容识别，政治人物和涉政敏感场景识别，暴恐人物、场景、旗帜标识等违禁内容的识别，以及图片中文字内容的识别。
 func (c *Client) ImageModeration(request *ImageModerationRequest) (response *ImageModerationResponse, err error) {
     if request == nil {
         request = NewImageModerationRequest()

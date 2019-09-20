@@ -207,7 +207,7 @@ type DescribeAvailableLibCountResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 可空发的白盒秘钥数量
+		// 可空发的白盒密钥数量
 		Quantity *uint64 `json:"Quantity,omitempty" name:"Quantity"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -319,7 +319,7 @@ type TidKeysInfo struct {
 	// 共享密钥
 	Psk *string `json:"Psk,omitempty" name:"Psk"`
 
-	// 软加固白盒秘钥下载地址
+	// 软加固白盒密钥下载地址
 	DownloadUrl *string `json:"DownloadUrl,omitempty" name:"DownloadUrl"`
 
 	// 软加固设备标识码

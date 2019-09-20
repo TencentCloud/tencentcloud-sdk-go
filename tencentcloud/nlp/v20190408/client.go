@@ -83,6 +83,8 @@ func NewContentApprovalResponse() (response *ContentApprovalResponse) {
     return
 }
 
+// （该接口即将下线，请使用升级接口：文本审核）
+// 
 // 文本审核接口能够识别文本信息中的色情、政治等有害内容，帮助用户及时、精准地防范违规风险，可用于内容审核、敏感信息过滤、舆情监控等场景。
 // 
 // 该功能基于10万级大规模敏感词库，结合多种文本对抗方法、政策权威指令等，并运用了深度学习技术，高效识别高危有害内容。同时我们会根据大规模语料和实时反误杀系统，不断更新迭代，确保效果持续提升。
@@ -317,6 +319,41 @@ func (c *Client) SimilarWords(request *SimilarWordsRequest) (response *SimilarWo
         request = NewSimilarWordsRequest()
     }
     response = NewSimilarWordsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewTextApprovalRequest() (request *TextApprovalRequest) {
+    request = &TextApprovalRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("nlp", APIVersion, "TextApproval")
+    return
+}
+
+func NewTextApprovalResponse() (response *TextApprovalResponse) {
+    response = &TextApprovalResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 文本审核接口能够识别文本信息中的色情、政治等有害内容，帮助用户及时、精准地防范违规风险，可用于内容审核、敏感信息过滤、舆情监控等场景。
+// 
+// 该功能基于10万级大规模敏感词库，结合多种文本对抗方法、政策权威指令等，并运用了深度学习技术，高效识别高危有害内容。同时我们会根据大规模语料和实时反误杀系统，不断更新迭代，确保效果持续提升。
+// 
+// 文本审核接口目前提供以下三个功能：
+// 
+// 1、文本恶意级别：将文本分为3个级别，包括正常、恶意、可疑送审；
+// 
+// 2、文本恶意类型：把文本分为9个类别，包括正常、政治、色情、辱骂/低俗、暴恐/毒品、广告/灌水、迷信/邪教、其他违法、综合；
+// 
+// 3、恶意关键词：文本中所有涉嫌恶意的关键词。
+func (c *Client) TextApproval(request *TextApprovalRequest) (response *TextApprovalResponse, err error) {
+    if request == nil {
+        request = NewTextApprovalRequest()
+    }
+    response = NewTextApprovalResponse()
     err = c.Send(request, response)
     return
 }

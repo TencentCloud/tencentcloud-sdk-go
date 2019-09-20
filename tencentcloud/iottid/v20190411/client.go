@@ -158,7 +158,7 @@ func NewDescribeAvailableLibCountResponse() (response *DescribeAvailableLibCount
     return
 }
 
-// 查询指定订单的可空发的白盒秘钥数量
+// 查询指定订单的可空发的白盒密钥数量
 func (c *Client) DescribeAvailableLibCount(request *DescribeAvailableLibCountRequest) (response *DescribeAvailableLibCountResponse, err error) {
     if request == nil {
         request = NewDescribeAvailableLibCountRequest()
