@@ -27,6 +27,18 @@ enhancement:
 
 * use bytes.Buffer instead of string concate for performance issue
 
+## 3.0.66 (May 31, 2019)
+
+enhancement:
+
+* set default signature method to TC3-HAMC-SHA256
+
+## 3.0.46 (Jan 21, 2019)
+
+enhancement:
+
+* support TC3-HMAC-SHA256 signature method.
+
 ## 3.0.10 (2018-07-06)
 
 * update apis
