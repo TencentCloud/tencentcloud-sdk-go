@@ -781,6 +781,31 @@ func (c *Client) SubmitCheckAttendanceTask(request *SubmitCheckAttendanceTaskReq
     return
 }
 
+func NewSubmitCheckAttendanceTaskPlusRequest() (request *SubmitCheckAttendanceTaskPlusRequest) {
+    request = &SubmitCheckAttendanceTaskPlusRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tci", APIVersion, "SubmitCheckAttendanceTaskPlus")
+    return
+}
+
+func NewSubmitCheckAttendanceTaskPlusResponse() (response *SubmitCheckAttendanceTaskPlusResponse) {
+    response = &SubmitCheckAttendanceTaskPlusResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 支持多路视频流，提交高级人员考勤任务
+func (c *Client) SubmitCheckAttendanceTaskPlus(request *SubmitCheckAttendanceTaskPlusRequest) (response *SubmitCheckAttendanceTaskPlusResponse, err error) {
+    if request == nil {
+        request = NewSubmitCheckAttendanceTaskPlusRequest()
+    }
+    response = NewSubmitCheckAttendanceTaskPlusResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewSubmitConversationTaskRequest() (request *SubmitConversationTaskRequest) {
     request = &SubmitConversationTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -909,6 +934,31 @@ func (c *Client) SubmitImageTask(request *SubmitImageTaskRequest) (response *Sub
         request = NewSubmitImageTaskRequest()
     }
     response = NewSubmitImageTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewSubmitImageTaskPlusRequest() (request *SubmitImageTaskPlusRequest) {
+    request = &SubmitImageTaskPlusRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tci", APIVersion, "SubmitImageTaskPlus")
+    return
+}
+
+func NewSubmitImageTaskPlusResponse() (response *SubmitImageTaskPlusResponse) {
+    response = &SubmitImageTaskPlusResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 高级图像分析任务，开放了图像任务里的所有开关，可以根据场景深度定制图像分析任务。支持的图像类别有，图片链接、图片二进制数据、点播链接和直播链接。
+func (c *Client) SubmitImageTaskPlus(request *SubmitImageTaskPlusRequest) (response *SubmitImageTaskPlusResponse, err error) {
+    if request == nil {
+        request = NewSubmitImageTaskPlusRequest()
+    }
+    response = NewSubmitImageTaskPlusResponse()
     err = c.Send(request, response)
     return
 }

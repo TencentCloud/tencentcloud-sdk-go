@@ -35,7 +35,7 @@ type AIAssistantRequest struct {
 	// 查询人员库列表
 	LibrarySet []*string `json:"LibrarySet,omitempty" name:"LibrarySet" list`
 
-	// 视频评估时间，单位毫秒，点播场景默认值为2小时（无法探测长度时）或完整视频，直播场景默认值为10分钟或直播提前结束
+	// 视频评估时间，单位秒，点播场景默认值为2小时（无法探测长度时）或完整视频，直播场景默认值为10分钟或直播提前结束
 	MaxVideoDuration *int64 `json:"MaxVideoDuration,omitempty" name:"MaxVideoDuration"`
 
 	// 标准化模板选择：0：AI助教基础版本，1：AI评教基础版本，2：AI评教标准版本。AI 助教基础版本功能包括：人脸检索、人脸检测、人脸表情识别、学生动作选项，音频信息分析，微笑识别。AI 评教基础版本功能包括：人脸检索、人脸检测、人脸表情识别、音频信息分析。AI 评教标准版功能包括人脸检索、人脸检测、人脸表情识别、手势识别、音频信息分析、音频关键词分析、视频精彩集锦分析。
@@ -2086,6 +2086,72 @@ func (r *SubmitAudioTaskResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type SubmitCheckAttendanceTaskPlusRequest struct {
+	*tchttp.BaseRequest
+
+	// 输入数据
+	FileContent []*string `json:"FileContent,omitempty" name:"FileContent" list`
+
+	// 视频流类型，vod_url表示点播URL，live_url表示直播URL，默认vod_url
+	FileType *string `json:"FileType,omitempty" name:"FileType"`
+
+	// 人员库 ID列表
+	LibraryIds []*string `json:"LibraryIds,omitempty" name:"LibraryIds" list`
+
+	// 确定出勤阈值；默认为0.92
+	AttendanceThreshold *float64 `json:"AttendanceThreshold,omitempty" name:"AttendanceThreshold"`
+
+	// 是否开启陌生人模式，陌生人模式是指在任务中发现的非注册人脸库中的人脸也返回相关统计信息，默认不开启
+	EnableStranger *bool `json:"EnableStranger,omitempty" name:"EnableStranger"`
+
+	// 考勤结束时间（到视频的第几秒结束考勤），单位秒；默认为900 
+	// 对于直播场景，使用绝对时间戳，单位秒，默认当前时间往后12小时
+	EndTime *int64 `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 通知回调地址，要求方法为post，application/json格式
+	NoticeUrl *string `json:"NoticeUrl,omitempty" name:"NoticeUrl"`
+
+	// 考勤开始时间（从视频的第几秒开始考勤），单位秒；默认为0 
+	// 对于直播场景，使用绝对时间戳，单位秒，默认当前时间
+	StartTime *int64 `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 识别阈值；默认为0.8
+	Threshold *float64 `json:"Threshold,omitempty" name:"Threshold"`
+}
+
+func (r *SubmitCheckAttendanceTaskPlusRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *SubmitCheckAttendanceTaskPlusRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type SubmitCheckAttendanceTaskPlusResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 任务标识符
+		JobId *int64 `json:"JobId,omitempty" name:"JobId"`
+
+		// 没有注册的人的ID列表
+		NotRegisteredSet *string `json:"NotRegisteredSet,omitempty" name:"NotRegisteredSet"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *SubmitCheckAttendanceTaskPlusResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *SubmitCheckAttendanceTaskPlusResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type SubmitCheckAttendanceTaskRequest struct {
 	*tchttp.BaseRequest
 
@@ -2283,7 +2349,7 @@ type SubmitFullBodyClassTaskRequest struct {
 	// 查询人员库列表，可填写老师的注册照所在人员库
 	LibrarySet []*string `json:"LibrarySet,omitempty" name:"LibrarySet" list`
 
-	// 视频评估时间，单位毫秒，点播场景默认值为2小时（无法探测长度时）或完整视频，直播场景默认值为10分钟或直播提前结束
+	// 视频评估时间，单位秒，点播场景默认值为2小时（无法探测长度时）或完整视频，直播场景默认值为10分钟或直播提前结束
 	MaxVideoDuration *int64 `json:"MaxVideoDuration,omitempty" name:"MaxVideoDuration"`
 
 	// 识别词库名列表，这些词汇库用来维护关键词，评估老师授课过程中，对这些关键词的使用情况
@@ -2390,6 +2456,73 @@ func (r *SubmitHighlightsResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type SubmitImageTaskPlusRequest struct {
+	*tchttp.BaseRequest
+
+	// 输入分析对象内容，输入数据格式参考FileType参数释义
+	FileContent []*string `json:"FileContent,omitempty" name:"FileContent" list`
+
+	// 输入分析对象类型，picture：二进制图片的 base64 编码字符串，picture_url:图片地址，vod_url：视频地址，live_url：直播地址
+	FileType *string `json:"FileType,omitempty" name:"FileType"`
+
+	// 任务控制选项
+	Functions *ImageTaskFunction `json:"Functions,omitempty" name:"Functions"`
+
+	// 光照标准列表
+	LightStandardSet []*LightStandard `json:"LightStandardSet,omitempty" name:"LightStandardSet" list`
+
+	// 抽帧的时间间隔，单位毫秒，默认值1000，保留字段，当前不支持填写。
+	FrameInterval *int64 `json:"FrameInterval,omitempty" name:"FrameInterval"`
+
+	// 查询人员库列表
+	LibrarySet []*string `json:"LibrarySet,omitempty" name:"LibrarySet" list`
+
+	// 视频评估时间，单位秒，点播场景默认值为2小时（无法探测长度时）或完整视频，直播场景默认值为10分钟或直播提前结束
+	MaxVideoDuration *int64 `json:"MaxVideoDuration,omitempty" name:"MaxVideoDuration"`
+
+	// 人脸识别中的相似度阈值，默认值为0.89，保留字段，当前不支持填写。
+	SimThreshold *float64 `json:"SimThreshold,omitempty" name:"SimThreshold"`
+}
+
+func (r *SubmitImageTaskPlusRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *SubmitImageTaskPlusRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type SubmitImageTaskPlusResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 识别结果
+		ResultSet []*ImageTaskResult `json:"ResultSet,omitempty" name:"ResultSet" list`
+
+		// 任务标识符
+		JobId *int64 `json:"JobId,omitempty" name:"JobId"`
+
+		// 任务进度
+		Progress *int64 `json:"Progress,omitempty" name:"Progress"`
+
+		// 结果总数目
+		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *SubmitImageTaskPlusResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *SubmitImageTaskPlusResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type SubmitImageTaskRequest struct {
 	*tchttp.BaseRequest
 
@@ -2411,7 +2544,7 @@ type SubmitImageTaskRequest struct {
 	// 查询人员库列表
 	LibrarySet []*string `json:"LibrarySet,omitempty" name:"LibrarySet" list`
 
-	// 视频评估时间，单位毫秒，点播场景默认值为2小时（无法探测长度时）或完整视频，直播场景默认值为10分钟或直播提前结束
+	// 视频评估时间，单位秒，点播场景默认值为2小时（无法探测长度时）或完整视频，直播场景默认值为10分钟或直播提前结束
 	MaxVideoDuration *int64 `json:"MaxVideoDuration,omitempty" name:"MaxVideoDuration"`
 
 	// 人脸识别中的相似度阈值，默认值为0.89，保留字段，当前不支持填写。
@@ -2472,7 +2605,7 @@ type SubmitOneByOneClassTaskRequest struct {
 	// 查询人员库列表，可填写学生的注册照所在人员库
 	LibrarySet []*string `json:"LibrarySet,omitempty" name:"LibrarySet" list`
 
-	// 视频评估时间，单位毫秒，点播场景默认值为2小时（无法探测长度时）或完整视频，直播场景默认值为10分钟或直播提前结束
+	// 视频评估时间，单位秒，点播场景默认值为2小时（无法探测长度时）或完整视频，直播场景默认值为10分钟或直播提前结束
 	MaxVideoDuration *int64 `json:"MaxVideoDuration,omitempty" name:"MaxVideoDuration"`
 
 	// 识别词库名列表，这些词汇库用来维护关键词，评估学生对这些关键词的使用情况
@@ -2530,7 +2663,7 @@ type SubmitOpenClassTaskRequest struct {
 	// 查询人员库列表，可填写学生们的注册照所在人员库
 	LibrarySet []*string `json:"LibrarySet,omitempty" name:"LibrarySet" list`
 
-	// 视频评估时间，单位毫秒，点播场景默认值为2小时（无法探测长度时）或完整视频，直播场景默认值为10分钟或直播提前结束
+	// 视频评估时间，单位秒，点播场景默认值为2小时（无法探测长度时）或完整视频，直播场景默认值为10分钟或直播提前结束
 	MaxVideoDuration *int64 `json:"MaxVideoDuration,omitempty" name:"MaxVideoDuration"`
 }
 
@@ -2582,7 +2715,7 @@ type SubmitPartialBodyClassTaskRequest struct {
 	// 查询人员库列表，可填写老师的注册照所在人员库
 	LibrarySet []*string `json:"LibrarySet,omitempty" name:"LibrarySet" list`
 
-	// 视频评估时间，单位毫秒，点播场景默认值为2小时（无法探测长度时）或完整视频，直播场景默认值为10分钟或直播提前结束
+	// 视频评估时间，单位秒，点播场景默认值为2小时（无法探测长度时）或完整视频，直播场景默认值为10分钟或直播提前结束
 	MaxVideoDuration *int64 `json:"MaxVideoDuration,omitempty" name:"MaxVideoDuration"`
 
 	// 识别词库名列表，这些词汇库用来维护关键词，评估老师授课过程中，对这些关键词的使用情况
@@ -2640,7 +2773,7 @@ type SubmitTraditionalClassTaskRequest struct {
 	// 查询人员库列表，可填写学生们的注册照所在人员库
 	LibrarySet []*string `json:"LibrarySet,omitempty" name:"LibrarySet" list`
 
-	// 视频评估时间，单位毫秒，点播场景默认值为2小时（无法探测长度时）或完整视频，直播场景默认值为10分钟或直播提前结束
+	// 视频评估时间，单位秒，点播场景默认值为2小时（无法探测长度时）或完整视频，直播场景默认值为10分钟或直播提前结束
 	MaxVideoDuration *int64 `json:"MaxVideoDuration,omitempty" name:"MaxVideoDuration"`
 }
 
