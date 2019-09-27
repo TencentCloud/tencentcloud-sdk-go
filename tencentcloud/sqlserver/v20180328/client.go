@@ -993,6 +993,31 @@ func (c *Client) RunMigration(request *RunMigrationRequest) (response *RunMigrat
     return
 }
 
+func NewTerminateDBInstanceRequest() (request *TerminateDBInstanceRequest) {
+    request = &TerminateDBInstanceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("sqlserver", APIVersion, "TerminateDBInstance")
+    return
+}
+
+func NewTerminateDBInstanceResponse() (response *TerminateDBInstanceResponse) {
+    response = &TerminateDBInstanceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口(TerminateDBInstance)用于主动销毁按量计费实例。
+func (c *Client) TerminateDBInstance(request *TerminateDBInstanceRequest) (response *TerminateDBInstanceResponse, err error) {
+    if request == nil {
+        request = NewTerminateDBInstanceRequest()
+    }
+    response = NewTerminateDBInstanceResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewUpgradeDBInstanceRequest() (request *UpgradeDBInstanceRequest) {
     request = &UpgradeDBInstanceRequest{
         BaseRequest: &tchttp.BaseRequest{},

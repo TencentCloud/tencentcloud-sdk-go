@@ -593,7 +593,7 @@ func NewDescribeUserInfoResponse() (response *DescribeUserInfoResponse) {
     return
 }
 
-// 用户信息查询，返回用户状态和计费类型，若未注册则返回未注册用户错误提示。
+// 用户服务信息查询，返回用户状态和计费类型；若未注册则返回相应错误提示。
 func (c *Client) DescribeUserInfo(request *DescribeUserInfoRequest) (response *DescribeUserInfoResponse, err error) {
     if request == nil {
         request = NewDescribeUserInfoRequest()

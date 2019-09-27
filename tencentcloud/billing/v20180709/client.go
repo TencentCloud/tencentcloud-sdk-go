@@ -218,6 +218,31 @@ func (c *Client) DescribeBillSummaryByRegion(request *DescribeBillSummaryByRegio
     return
 }
 
+func NewDescribeBillSummaryByTagRequest() (request *DescribeBillSummaryByTagRequest) {
+    request = &DescribeBillSummaryByTagRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("billing", APIVersion, "DescribeBillSummaryByTag")
+    return
+}
+
+func NewDescribeBillSummaryByTagResponse() (response *DescribeBillSummaryByTagResponse) {
+    response = &DescribeBillSummaryByTagResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 获取按标签汇总费用分布
+func (c *Client) DescribeBillSummaryByTag(request *DescribeBillSummaryByTagRequest) (response *DescribeBillSummaryByTagResponse, err error) {
+    if request == nil {
+        request = NewDescribeBillSummaryByTagRequest()
+    }
+    response = NewDescribeBillSummaryByTagResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeDealsByCondRequest() (request *DescribeDealsByCondRequest) {
     request = &DescribeDealsByCondRequest{
         BaseRequest: &tchttp.BaseRequest{},

@@ -769,6 +769,9 @@ type GetFunctionResponse struct {
 		// 函数类型，取值为HTTP或者Event
 		Type *string `json:"Type,omitempty" name:"Type"`
 
+		// 是否启用L5
+		L5Enable *string `json:"L5Enable,omitempty" name:"L5Enable"`
+
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
@@ -1190,6 +1193,12 @@ type UpdateFunctionCodeRequest struct {
 
 	// 在更新时是否同步发布新版本，默认为：FALSE，不发布
 	Publish *string `json:"Publish,omitempty" name:"Publish"`
+
+	// 函数代码
+	Code *Code `json:"Code,omitempty" name:"Code"`
+
+	// 代码来源方式，支持以下'ZipFile', 'Cos', 'Inline', 'TempCos', 'Git' 之一，使用Git来源必须指定此字段
+	CodeSource *string `json:"CodeSource,omitempty" name:"CodeSource"`
 }
 
 func (r *UpdateFunctionCodeRequest) ToJsonString() string {
@@ -1257,6 +1266,9 @@ type UpdateFunctionConfigurationRequest struct {
 
 	// 在更新时是否同步发布新版本，默认为：FALSE，不发布
 	Publish *string `json:"Publish,omitempty" name:"Publish"`
+
+	// 是否开启L5访问能力，TRUE 为开启，FALSE为关闭
+	L5Enable *string `json:"L5Enable,omitempty" name:"L5Enable"`
 }
 
 func (r *UpdateFunctionConfigurationRequest) ToJsonString() string {

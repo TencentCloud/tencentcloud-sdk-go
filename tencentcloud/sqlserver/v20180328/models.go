@@ -160,7 +160,7 @@ type CreateAccountResponse struct {
 		// 任务流id
 		FlowId *int64 `json:"FlowId,omitempty" name:"FlowId"`
 
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -203,7 +203,7 @@ type CreateBackupResponse struct {
 		// 异步任务ID
 		FlowId *int64 `json:"FlowId,omitempty" name:"FlowId"`
 
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -229,7 +229,7 @@ type CreateDBInstancesRequest struct {
 	// 实例磁盘大小，单位GB
 	Storage *int64 `json:"Storage,omitempty" name:"Storage"`
 
-	// 付费模式，目前只支持预付费，其值为PREPAID。可不填，默认值为PREPAID
+	// 付费模式，取值支持 PREPAID（预付费），POSTPAID（后付费）。
 	InstanceChargeType *string `json:"InstanceChargeType,omitempty" name:"InstanceChargeType"`
 
 	// 项目ID
@@ -253,7 +253,7 @@ type CreateDBInstancesRequest struct {
 	// 代金券ID数组，目前单个订单只能使用一张
 	VoucherIds []*string `json:"VoucherIds,omitempty" name:"VoucherIds" list`
 
-	// 数据库版本号，目前取值有2012SP3，表示SQL Server 2012；2008R2，表示SQL Server 2008 R2；2016SP1，表示SQL Server 2016 SP1。每个地域支持售卖的版本可能不一样，可以通过DescribeZones接口来拉取每个地域可售卖的版本信息。不填的话，默认为版本2008R2
+	// sqlserver版本，目前只支持：2008R2（SQL Server 2008 Enterprise），2012SP3（SQL Server 2012 Enterprise），2016SP1（SQL Server 2016 Enterprise），201602（SQL Server 2016 Standard）2017（SQL Server 2017 Enterprise）版本。每个地域支持售卖的版本不同，可通过DescribeProductConfig接口来拉取每个地域可售卖的版本信息。不填，默认为版本2008R2。
 	DBVersion *string `json:"DBVersion,omitempty" name:"DBVersion"`
 }
 
@@ -273,7 +273,7 @@ type CreateDBInstancesResponse struct {
 		// 订单名称
 		DealName *string `json:"DealName,omitempty" name:"DealName"`
 
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -313,7 +313,7 @@ type CreateDBResponse struct {
 		// 任务流id
 		FlowId *int64 `json:"FlowId,omitempty" name:"FlowId"`
 
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -365,7 +365,7 @@ type CreateMigrationResponse struct {
 		// 迁移任务ID
 		MigrateId *int64 `json:"MigrateId,omitempty" name:"MigrateId"`
 
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -396,7 +396,7 @@ type DBCreateInfo struct {
 
 type DBDetail struct {
 
-	// 实例id
+	// 数据库名称
 	Name *string `json:"Name,omitempty" name:"Name"`
 
 	// 字符集
@@ -491,6 +491,24 @@ type DBInstance struct {
 
 	// 备份时间点
 	BackupTime *string `json:"BackupTime,omitempty" name:"BackupTime"`
+
+	// 实例付费模式， 0-按量计费，1-包年包月
+	PayMode *int64 `json:"PayMode,omitempty" name:"PayMode"`
+
+	// 实例唯一UID
+	Uid *string `json:"Uid,omitempty" name:"Uid"`
+
+	// 实例cpu核心数
+	Cpu *int64 `json:"Cpu,omitempty" name:"Cpu"`
+
+	// 实例版本代号
+	Version *string `json:"Version,omitempty" name:"Version"`
+
+	// 物理机代号
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 计费ID
+	Pid *int64 `json:"Pid,omitempty" name:"Pid"`
 }
 
 type DBPrivilege struct {
@@ -548,6 +566,9 @@ type DealInfo struct {
 
 	// 所属账号
 	OwnerUin *string `json:"OwnerUin,omitempty" name:"OwnerUin"`
+
+	// 实例付费类型
+	InstanceChargeType *string `json:"InstanceChargeType,omitempty" name:"InstanceChargeType"`
 }
 
 type DeleteAccountRequest struct {
@@ -576,7 +597,7 @@ type DeleteAccountResponse struct {
 		// 任务流id
 		FlowId *int64 `json:"FlowId,omitempty" name:"FlowId"`
 
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -616,7 +637,7 @@ type DeleteDBResponse struct {
 		// 任务流id
 		FlowId *int64 `json:"FlowId,omitempty" name:"FlowId"`
 
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -650,7 +671,7 @@ type DeleteMigrationResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -696,7 +717,10 @@ type DescribeAccountsResponse struct {
 		// 账户信息列表
 		Accounts []*AccountDetail `json:"Accounts,omitempty" name:"Accounts" list`
 
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 总数
+		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -748,7 +772,7 @@ type DescribeBackupsResponse struct {
 		// 备份列表详情
 		Backups []*Backup `json:"Backups,omitempty" name:"Backups" list`
 
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -783,14 +807,17 @@ type DescribeDBInstancesRequest struct {
 	// <li>12：重启中</li>
 	Status *int64 `json:"Status,omitempty" name:"Status"`
 
-	// 偏移量，默认为 0
+	// 页数，默认为 0
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
 
-	// 返回数量，默认为50
+	// 页大小，默认为50
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 
 	// 一个或者多个实例ID。实例ID，格式如：mssql-si2823jyl
 	InstanceIdSet []*string `json:"InstanceIdSet,omitempty" name:"InstanceIdSet" list`
+
+	// 付费类型检索 1-包年包月，0-按量计费
+	PayMode *int64 `json:"PayMode,omitempty" name:"PayMode"`
 }
 
 func (r *DescribeDBInstancesRequest) ToJsonString() string {
@@ -812,7 +839,7 @@ type DescribeDBInstancesResponse struct {
 		// 实例列表
 		DBInstances []*DBInstance `json:"DBInstances,omitempty" name:"DBInstances" list`
 
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -858,7 +885,7 @@ type DescribeDBsResponse struct {
 		// 实例数据库列表
 		DBInstances []*InstanceDBDetail `json:"DBInstances,omitempty" name:"DBInstances" list`
 
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -895,7 +922,7 @@ type DescribeFlowStatusResponse struct {
 		// 流程状态，0：成功，1：失败，2：运行中
 		Status *int64 `json:"Status,omitempty" name:"Status"`
 
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -971,7 +998,7 @@ type DescribeMigrationDetailResponse struct {
 		// 迁移DB对象 ，离线迁移（SourceType=4或SourceType=5）不使用。
 		MigrateDBSet []*MigrateDB `json:"MigrateDBSet,omitempty" name:"MigrateDBSet" list`
 
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -1026,7 +1053,7 @@ type DescribeMigrationsResponse struct {
 		// 查询结果的列表
 		MigrateTaskSet []*MigrateTask `json:"MigrateTaskSet,omitempty" name:"MigrateTaskSet" list`
 
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -1066,7 +1093,7 @@ type DescribeOrdersResponse struct {
 		// 返回多少个订单的信息
 		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -1106,7 +1133,7 @@ type DescribeProductConfigResponse struct {
 		// 返回总共多少条数据
 		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -1143,7 +1170,7 @@ type DescribeRegionsResponse struct {
 		// 地域信息数组
 		RegionSet []*RegionInfo `json:"RegionSet,omitempty" name:"RegionSet" list`
 
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -1183,7 +1210,7 @@ type DescribeRollbackTimeResponse struct {
 		// 数据库可回档实例信息
 		Details []*DbRollbackTimeInfo `json:"Details,omitempty" name:"Details" list`
 
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -1235,7 +1262,7 @@ type DescribeSlowlogsResponse struct {
 		// 慢查询日志信息列表
 		Slowlogs []*SlowlogInfo `json:"Slowlogs,omitempty" name:"Slowlogs" list`
 
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -1272,7 +1299,7 @@ type DescribeZonesResponse struct {
 		// 可用区数组
 		ZoneSet []*ZoneInfo `json:"ZoneSet,omitempty" name:"ZoneSet" list`
 
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -1298,7 +1325,7 @@ type InquiryPriceCreateDBInstancesRequest struct {
 	// 实例容量大小，单位：GB。
 	Storage *int64 `json:"Storage,omitempty" name:"Storage"`
 
-	// 计费类型，当前只支持预付费，即包年包月，取值为PREPAID。默认值为PREPAID
+	// 计费类型，取值支持 PREPAID，POSTPAID。
 	InstanceChargeType *string `json:"InstanceChargeType,omitempty" name:"InstanceChargeType"`
 
 	// 购买时长，单位：月。取值为1到48，默认为1
@@ -1307,7 +1334,7 @@ type InquiryPriceCreateDBInstancesRequest struct {
 	// 一次性购买的实例数量。取值1-100，默认取值为1
 	GoodsNum *int64 `json:"GoodsNum,omitempty" name:"GoodsNum"`
 
-	// sqlserver版本，目前只支持：2008R2（SQL Server 2008 R2），2012SP3（SQL Server 2012），2016SP1（SQL Server 2016 SP1）两种版本。默认为2008R2版本
+	// sqlserver版本，目前只支持：2008R2（SQL Server 2008 Enterprise），2012SP3（SQL Server 2012 Enterprise），2016SP1（SQL Server 2016 Enterprise），201602（SQL Server 2016 Standard）2017（SQL Server 2017 Enterprise）版本。默认为2008R2版本
 	DBVersion *string `json:"DBVersion,omitempty" name:"DBVersion"`
 }
 
@@ -1330,7 +1357,7 @@ type InquiryPriceCreateDBInstancesResponse struct {
 		// 实际需要支付的价格，其值除以100表示多少钱。比如10010表示100.10元
 		Price *int64 `json:"Price,omitempty" name:"Price"`
 
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -1376,7 +1403,7 @@ type InquiryPriceRenewDBInstanceResponse struct {
 		// 实际需要支付价格，其值除以100表示最终的价格。比如10094表示100.94元
 		Price *uint64 `json:"Price,omitempty" name:"Price"`
 
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -1422,7 +1449,7 @@ type InquiryPriceUpgradeDBInstanceResponse struct {
 		// 实际需要支付价格，其值除以100表示最终的价格。比如10094表示100.94元
 		Price *int64 `json:"Price,omitempty" name:"Price"`
 
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -1582,7 +1609,7 @@ type ModifyAccountPrivilegeResponse struct {
 		// 异步任务流程ID
 		FlowId *uint64 `json:"FlowId,omitempty" name:"FlowId"`
 
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -1619,7 +1646,7 @@ type ModifyAccountRemarkResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -1656,7 +1683,7 @@ type ModifyDBInstanceNameResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -1696,7 +1723,7 @@ type ModifyDBInstanceProjectResponse struct {
 		// 修改成功的实例个数
 		Count *int64 `json:"Count,omitempty" name:"Count"`
 
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -1733,7 +1760,7 @@ type ModifyDBInstanceRenewFlagResponse struct {
 		// 修改成功的个数
 		Count *int64 `json:"Count,omitempty" name:"Count"`
 
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -1776,7 +1803,7 @@ type ModifyDBNameResponse struct {
 		// 任务流id
 		FlowId *int64 `json:"FlowId,omitempty" name:"FlowId"`
 
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -1813,7 +1840,7 @@ type ModifyDBRemarkResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -1868,7 +1895,7 @@ type ModifyMigrationResponse struct {
 		// 迁移任务ID
 		MigrateId *uint64 `json:"MigrateId,omitempty" name:"MigrateId"`
 
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -1929,7 +1956,7 @@ type RenewDBInstanceResponse struct {
 		// 订单名称
 		DealName *string `json:"DealName,omitempty" name:"DealName"`
 
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -1969,7 +1996,7 @@ type ResetAccountPasswordResponse struct {
 		// 修改帐号密码的异步任务流程ID
 		FlowId *int64 `json:"FlowId,omitempty" name:"FlowId"`
 
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -2006,7 +2033,7 @@ type RestartDBInstanceResponse struct {
 		// 异步任务流程ID
 		FlowId *uint64 `json:"FlowId,omitempty" name:"FlowId"`
 
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -2046,7 +2073,7 @@ type RestoreInstanceResponse struct {
 		// 异步流程任务ID，使用FlowId调用DescribeFlowStatus接口获取任务执行状态
 		FlowId *int64 `json:"FlowId,omitempty" name:"FlowId"`
 
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -2092,7 +2119,7 @@ type RollbackInstanceResponse struct {
 		// 异步任务ID
 		FlowId *uint64 `json:"FlowId,omitempty" name:"FlowId"`
 
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -2129,7 +2156,7 @@ type RunMigrationResponse struct {
 		// 迁移流程启动后，返回流程ID
 		FlowId *int64 `json:"FlowId,omitempty" name:"FlowId"`
 
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -2165,6 +2192,10 @@ type SlowlogInfo struct {
 
 	// 外网下载地址
 	ExternalAddr *string `json:"ExternalAddr,omitempty" name:"ExternalAddr"`
+
+	// 状态（1成功 2失败）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *int64 `json:"Status,omitempty" name:"Status"`
 }
 
 type SpecInfo struct {
@@ -2202,8 +2233,49 @@ type SpecInfo struct {
 	// 此规格的中文描述信息
 	SuitInfo *string `json:"SuitInfo,omitempty" name:"SuitInfo"`
 
-	// 此规格对应的Pid
+	// 此规格对应的包年包月Pid
 	Pid *int64 `json:"Pid,omitempty" name:"Pid"`
+
+	// 此规格对应的按量计费Pid列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PostPid []*int64 `json:"PostPid,omitempty" name:"PostPid" list`
+
+	// 此规格下支持的付费模式，POST-仅支持按量计费 PRE-仅支持包年包月 ALL-支持所有
+	PayModeStatus *string `json:"PayModeStatus,omitempty" name:"PayModeStatus"`
+}
+
+type TerminateDBInstanceRequest struct {
+	*tchttp.BaseRequest
+
+	// 主动销毁的实例ID列表，格式如：[mssql-3l3fgqn7]。与云数据库控制台页面中显示的实例ID相同
+	InstanceIdSet []*string `json:"InstanceIdSet,omitempty" name:"InstanceIdSet" list`
+}
+
+func (r *TerminateDBInstanceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *TerminateDBInstanceRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type TerminateDBInstanceResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *TerminateDBInstanceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *TerminateDBInstanceResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
 }
 
 type UpgradeDBInstanceRequest struct {
@@ -2241,7 +2313,7 @@ type UpgradeDBInstanceResponse struct {
 		// 订单名称
 		DealName *string `json:"DealName,omitempty" name:"DealName"`
 
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
 }

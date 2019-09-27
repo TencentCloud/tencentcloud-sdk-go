@@ -33,6 +33,18 @@ type ActionSummaryOverviewItem struct {
 
 	// 费用所占百分比，两位小数
 	RealTotalCostRatio *string `json:"RealTotalCostRatio,omitempty" name:"RealTotalCostRatio"`
+
+	// 现金金额
+	CashPayAmount *string `json:"CashPayAmount,omitempty" name:"CashPayAmount"`
+
+	// 赠送金金额
+	IncentivePayAmount *string `json:"IncentivePayAmount,omitempty" name:"IncentivePayAmount"`
+
+	// 代金券金额
+	VoucherPayAmount *string `json:"VoucherPayAmount,omitempty" name:"VoucherPayAmount"`
+
+	// 账单月份，格式2019-08
+	BillMonth *string `json:"BillMonth,omitempty" name:"BillMonth"`
 }
 
 type BillDetail struct {
@@ -90,6 +102,10 @@ type BillDetail struct {
 
 	// 操作者UIN
 	OperateUin *string `json:"OperateUin,omitempty" name:"OperateUin"`
+
+	// Tag 信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Tags []*BillTagInfo `json:"Tags,omitempty" name:"Tags" list`
 }
 
 type BillDetailComponent struct {
@@ -148,7 +164,7 @@ type BillResourceSummary struct {
 	// 产品名称：云产品大类，如云服务器CVM、云数据库MySQL
 	BusinessCodeName *string `json:"BusinessCodeName,omitempty" name:"BusinessCodeName"`
 
-	// 子产品：云产品子类，如云服务器CVM-标准型S1
+	// 子产品：云产品子类，如云服务器CVM-标准型S1， 当没有获取到子产品名称时，返回"-"
 	ProductCodeName *string `json:"ProductCodeName,omitempty" name:"ProductCodeName"`
 
 	// 计费模式：包年包月和按量计费
@@ -222,6 +238,28 @@ type BillResourceSummary struct {
 
 	// 扩展字段5
 	ExtendField5 *string `json:"ExtendField5,omitempty" name:"ExtendField5"`
+
+	// Tag 信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Tags []*BillTagInfo `json:"Tags,omitempty" name:"Tags" list`
+
+	// 付款方uin
+	PayerUin *string `json:"PayerUin,omitempty" name:"PayerUin"`
+
+	// 资源所有者uin,无值则返回"-"
+	OwnerUin *string `json:"OwnerUin,omitempty" name:"OwnerUin"`
+
+	// 操作者uin,无值则返回"-"
+	OperateUin *string `json:"OperateUin,omitempty" name:"OperateUin"`
+}
+
+type BillTagInfo struct {
+
+	// 分账标签键
+	TagKey *string `json:"TagKey,omitempty" name:"TagKey"`
+
+	// 标签值
+	TagValue *string `json:"TagValue,omitempty" name:"TagValue"`
 }
 
 type BusinessSummaryOverviewItem struct {
@@ -238,12 +276,33 @@ type BusinessSummaryOverviewItem struct {
 
 	// 费用所占百分比，两位小数
 	RealTotalCostRatio *string `json:"RealTotalCostRatio,omitempty" name:"RealTotalCostRatio"`
+
+	// 现金金额
+	CashPayAmount *string `json:"CashPayAmount,omitempty" name:"CashPayAmount"`
+
+	// 赠送金金额
+	IncentivePayAmount *string `json:"IncentivePayAmount,omitempty" name:"IncentivePayAmount"`
+
+	// 代金券金额
+	VoucherPayAmount *string `json:"VoucherPayAmount,omitempty" name:"VoucherPayAmount"`
+
+	// 账单月份，格式2019-08
+	BillMonth *string `json:"BillMonth,omitempty" name:"BillMonth"`
 }
 
 type BusinessSummaryTotal struct {
 
 	// 总花费
 	RealTotalCost *string `json:"RealTotalCost,omitempty" name:"RealTotalCost"`
+
+	// 代金券金额
+	VoucherPayAmount *string `json:"VoucherPayAmount,omitempty" name:"VoucherPayAmount"`
+
+	// 赠送金金额
+	IncentivePayAmount *string `json:"IncentivePayAmount,omitempty" name:"IncentivePayAmount"`
+
+	// 现金金额
+	CashPayAmount *string `json:"CashPayAmount,omitempty" name:"CashPayAmount"`
 }
 
 type Deal struct {
@@ -355,6 +414,15 @@ type DescribeBillDetailRequest struct {
 	// 是否需要访问列表的总记录数，用于前端分页
 	// 1-表示需要， 0-表示不需要
 	NeedRecordNum *int64 `json:"NeedRecordNum,omitempty" name:"NeedRecordNum"`
+
+	// 查询指定产品信息
+	ProductCode *string `json:"ProductCode,omitempty" name:"ProductCode"`
+
+	// 付费模式 prePay/postPay
+	PayMode *string `json:"PayMode,omitempty" name:"PayMode"`
+
+	// 查询指定资源信息
+	ResourceId *string `json:"ResourceId,omitempty" name:"ResourceId"`
 }
 
 func (r *DescribeBillDetailRequest) ToJsonString() string {
@@ -637,6 +705,56 @@ func (r *DescribeBillSummaryByRegionResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeBillSummaryByTagRequest struct {
+	*tchttp.BaseRequest
+
+	// 查询账单数据的用户UIN
+	PayerUin *string `json:"PayerUin,omitempty" name:"PayerUin"`
+
+	// 目前只支持传当月开始，且必须和EndTime为相同月份，例 2018-09-01 00:00:00
+	BeginTime *string `json:"BeginTime,omitempty" name:"BeginTime"`
+
+	// 目前只支持传当月结束，且必须和BeginTime为相同月份，例 2018-09-30 23:59:59
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 分账标签键
+	TagKey *string `json:"TagKey,omitempty" name:"TagKey"`
+}
+
+func (r *DescribeBillSummaryByTagRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeBillSummaryByTagRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeBillSummaryByTagResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 数据是否准备好，0未准备好，1准备好
+		Ready *uint64 `json:"Ready,omitempty" name:"Ready"`
+
+		// 各标签值花费分布详情
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		SummaryOverview *TagSummaryOverviewItem `json:"SummaryOverview,omitempty" name:"SummaryOverview"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeBillSummaryByTagResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeBillSummaryByTagResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeDealsByCondRequest struct {
 	*tchttp.BaseRequest
 
@@ -871,6 +989,15 @@ type PayModeSummaryOverviewItem struct {
 
 	// 按交易类型：包年包月新购/续费/升降配/退款、按量计费扣费、调账补偿/扣费等类型汇总消费详情
 	Detail []*ActionSummaryOverviewItem `json:"Detail,omitempty" name:"Detail" list`
+
+	// 现金金额
+	CashPayAmount *string `json:"CashPayAmount,omitempty" name:"CashPayAmount"`
+
+	// 赠送金金额
+	IncentivePayAmount *string `json:"IncentivePayAmount,omitempty" name:"IncentivePayAmount"`
+
+	// 代金券金额
+	VoucherPayAmount *string `json:"VoucherPayAmount,omitempty" name:"VoucherPayAmount"`
 }
 
 type ProductInfo struct {
@@ -895,6 +1022,18 @@ type ProjectSummaryOverviewItem struct {
 
 	// 费用所占百分比，两位小数
 	RealTotalCostRatio *string `json:"RealTotalCostRatio,omitempty" name:"RealTotalCostRatio"`
+
+	// 现金金额
+	CashPayAmount *string `json:"CashPayAmount,omitempty" name:"CashPayAmount"`
+
+	// 赠送金金额
+	IncentivePayAmount *string `json:"IncentivePayAmount,omitempty" name:"IncentivePayAmount"`
+
+	// 代金券金额
+	VoucherPayAmount *string `json:"VoucherPayAmount,omitempty" name:"VoucherPayAmount"`
+
+	// 账单月份，格式2019-08
+	BillMonth *string `json:"BillMonth,omitempty" name:"BillMonth"`
 }
 
 type RegionSummaryOverviewItem struct {
@@ -910,5 +1049,32 @@ type RegionSummaryOverviewItem struct {
 	RealTotalCost *string `json:"RealTotalCost,omitempty" name:"RealTotalCost"`
 
 	// 费用所占百分比，两位小数
+	RealTotalCostRatio *string `json:"RealTotalCostRatio,omitempty" name:"RealTotalCostRatio"`
+
+	// 现金金额
+	CashPayAmount *string `json:"CashPayAmount,omitempty" name:"CashPayAmount"`
+
+	// 赠送金金额
+	IncentivePayAmount *string `json:"IncentivePayAmount,omitempty" name:"IncentivePayAmount"`
+
+	// 代金券金额
+	VoucherPayAmount *string `json:"VoucherPayAmount,omitempty" name:"VoucherPayAmount"`
+
+	// 账单月份，格式2019-08
+	BillMonth *string `json:"BillMonth,omitempty" name:"BillMonth"`
+}
+
+type TagSummaryOverviewItem struct {
+
+	// 标签值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TagValue *string `json:"TagValue,omitempty" name:"TagValue"`
+
+	// 实际花费
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RealTotalCost *string `json:"RealTotalCost,omitempty" name:"RealTotalCost"`
+
+	// 费用所占百分比，两位小数
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	RealTotalCostRatio *string `json:"RealTotalCostRatio,omitempty" name:"RealTotalCostRatio"`
 }

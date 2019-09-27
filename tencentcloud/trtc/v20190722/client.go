@@ -58,7 +58,7 @@ func NewDissolveRoomResponse() (response *DissolveRoomResponse) {
     return
 }
 
-// 接口说明：把房间所有用户从房间踢出，解散房间。支持 TRTC SDK 6.6及以上版本，包括Android、iOS、Windows 和 macOS。
+// 接口说明：把房间所有用户从房间踢出，解散房间。支持所有平台，Android、iOS、Windows 和 macOS 需升级到 TRTC SDK 6.6及以上版本。
 func (c *Client) DissolveRoom(request *DissolveRoomRequest) (response *DissolveRoomResponse, err error) {
     if request == nil {
         request = NewDissolveRoomRequest()
@@ -83,7 +83,7 @@ func NewKickOutUserResponse() (response *KickOutUserResponse) {
     return
 }
 
-// 接口说明：将用户从房间踢出。支持 TRTC SDK 6.6及以上版本，包括Android、iOS、Windows 和 macOS。
+// 接口说明：将用户从房间踢出。支持所有平台，Android、iOS、Windows 和 macOS 需升级到 TRTC SDK 6.6及以上版本。
 func (c *Client) KickOutUser(request *KickOutUserRequest) (response *KickOutUserResponse, err error) {
     if request == nil {
         request = NewKickOutUserRequest()

@@ -264,7 +264,7 @@ type AllocateAddressesRequest struct {
 	AddressType *string `json:"AddressType,omitempty" name:"AddressType"`
 
 	// Anycast发布域。
-	// <ul style="margin:0"><li>已开通Anycast公网加速白名单的用户，可选值：<ul><li>ANYCAST_ZONE_GLOBAL：全球发布域（需要额外开通Anycast全球加速白名单）</li><li>ANYCAST_ZONE_OVERSEAS：海外发布域</li></ul>默认值：ANYCAST_ZONE_OVERSEAS。</li></ul>
+	// <ul style="margin:0"><li>已开通Anycast公网加速白名单的用户，可选值：<ul><li>ANYCAST_ZONE_GLOBAL：全球发布域（需要额外开通Anycast全球加速白名单）</li><li>ANYCAST_ZONE_OVERSEAS：境外发布域</li></ul>默认值：ANYCAST_ZONE_OVERSEAS。</li></ul>
 	AnycastZone *string `json:"AnycastZone,omitempty" name:"AnycastZone"`
 
 	// AnycastEIP是否用于绑定负载均衡。
@@ -1002,6 +1002,12 @@ type CreateCcnRequest struct {
 
 	// CCN服务质量，'PT'：白金，'AU'：金，'AG'：银，默认为‘AU’。
 	QosLevel *string `json:"QosLevel,omitempty" name:"QosLevel"`
+
+	// 计费模式，PREPAID：表示预付费，即包年包月，POSTPAID：表示后付费，即按量计费。默认：POSTPAID。
+	InstanceChargeType *string `json:"InstanceChargeType,omitempty" name:"InstanceChargeType"`
+
+	// 限速类型，OUTER_REGION_LIMIT表示地域出口限速，INTER_REGION_LIMIT为地域间限速，默认为OUTER_REGION_LIMIT
+	BandwidthLimitType *string `json:"BandwidthLimitType,omitempty" name:"BandwidthLimitType"`
 }
 
 func (r *CreateCcnRequest) ToJsonString() string {
@@ -4923,6 +4929,9 @@ type DirectConnectGateway struct {
 
 	// 是否启用BGP。
 	EnableBGP *bool `json:"EnableBGP,omitempty" name:"EnableBGP"`
+
+	// 开启和关闭BGP的community属性。
+	EnableBGPCommunity *bool `json:"EnableBGPCommunity,omitempty" name:"EnableBGPCommunity"`
 }
 
 type DirectConnectGatewayCcnRoute struct {

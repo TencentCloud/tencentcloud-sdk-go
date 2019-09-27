@@ -20,6 +20,33 @@ import (
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
+type AdaptiveDynamicStreamingTaskInput struct {
+
+	// 转自适应码流模板 ID。
+	Definition *uint64 `json:"Definition,omitempty" name:"Definition"`
+
+	// 水印列表，支持多张图片或文字水印，最大可支持 10 张。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WatermarkSet []*WatermarkInput `json:"WatermarkSet,omitempty" name:"WatermarkSet" list`
+
+	// 转自适应码流后文件的目标存储，不填则继承上层的 OutputStorage 值。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OutputStorage *TaskOutputStorage `json:"OutputStorage,omitempty" name:"OutputStorage"`
+
+	// 转自适应码流后，manifest 文件的输出路径，可以为相对路径或者绝对路径。如果不填，则默认为相对路径：`{inputName}_adaptiveDynamicStreaming_{definition}.{format}`。
+	OutputObjectPath *string `json:"OutputObjectPath,omitempty" name:"OutputObjectPath"`
+
+	// 转自适应码流（HLS）后，二级 index 文件的输出路径，只能为相对路径。如果不填，则默认为相对路径：`{inputName}_adaptiveDynamicStreaming_{definition}_{trackType}_{trackDefinition}.{format}`。
+	SubStreamManifestObjectName *string `json:"SubStreamManifestObjectName,omitempty" name:"SubStreamManifestObjectName"`
+
+	// 转自适应码流后，分片文件的输出路径，只能为相对路径。如果不填，则默认为相对路径：`{inputName}_adaptiveDynamicStreaming_{definition}_{trackType}_{trackDefinition}_{number}.{format}`。
+	SegmentObjectName *string `json:"SegmentObjectName,omitempty" name:"SegmentObjectName"`
+
+	// 转自适应码流后输出路径中的`{number}`变量的规则。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ObjectNumberFormat *NumberFormat `json:"ObjectNumberFormat,omitempty" name:"ObjectNumberFormat"`
+}
+
 type AiAnalysisTaskInput struct {
 
 	// 视频内容分析模板 ID。
@@ -601,7 +628,7 @@ type CreateWorkflowRequest struct {
 	// 任务的事件通知配置，不填代表不获取事件通知。
 	TaskNotifyConfig *TaskNotifyConfig `json:"TaskNotifyConfig,omitempty" name:"TaskNotifyConfig"`
 
-	// 任务流的优先级，数值越大优先级越高，取值范围是 -10 到 10，不填代表 0。
+	// 工作流的优先级，数值越大优先级越高，取值范围是 -10 到 10，不填代表 0。
 	TaskPriority *int64 `json:"TaskPriority,omitempty" name:"TaskPriority"`
 }
 
@@ -1279,8 +1306,12 @@ type DescribeUserInfoResponse struct {
 		// 用户付费类型，取值：
 	// <li>DailyPayment：日结付费 ；</li>
 	// <li>MonthlyPayment：月结付费。</li>
-	// 注意：此字段可能返回 null，表示取不到有效值。
 		PaymentType *string `json:"PaymentType,omitempty" name:"PaymentType"`
+
+		// 是否是旧版视频处理用户，取值：
+	// <li>0：否 ；</li>
+	// <li>1：是。</li>
+		OldMpsUser *int64 `json:"OldMpsUser,omitempty" name:"OldMpsUser"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1764,6 +1795,9 @@ type MediaProcessTaskInput struct {
 
 	// 对视频截雪碧图任务列表。
 	ImageSpriteTaskSet []*ImageSpriteTaskInput `json:"ImageSpriteTaskSet,omitempty" name:"ImageSpriteTaskSet" list`
+
+	// 对视频转自适应码流任务列表。
+	AdaptiveDynamicStreamingTaskSet []*AdaptiveDynamicStreamingTaskInput `json:"AdaptiveDynamicStreamingTaskSet,omitempty" name:"AdaptiveDynamicStreamingTaskSet" list`
 }
 
 type MediaProcessTaskResult struct {
@@ -2490,7 +2524,7 @@ type ResetWorkflowRequest struct {
 	// 视频处理类型任务参数。
 	MediaProcessTask *MediaProcessTaskInput `json:"MediaProcessTask,omitempty" name:"MediaProcessTask"`
 
-	// 任务流的优先级，数值越大优先级越高，取值范围是 -10 到 10，不填代表 0。
+	// 工作流的优先级，数值越大优先级越高，取值范围是 -10 到 10，不填代表 0。
 	TaskPriority *int64 `json:"TaskPriority,omitempty" name:"TaskPriority"`
 
 	// 任务的事件通知信息，不填代表不获取事件通知。

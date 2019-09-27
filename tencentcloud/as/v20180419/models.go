@@ -1858,11 +1858,14 @@ type LaunchConfiguration struct {
 	// 版本号。
 	VersionNumber *int64 `json:"VersionNumber,omitempty" name:"VersionNumber"`
 
-	// 更新时间
+	// 更新时间。
 	UpdatedTime *string `json:"UpdatedTime,omitempty" name:"UpdatedTime"`
 
 	// CAM角色名称。可通过DescribeRoleList接口返回值中的roleName获取。
 	CamRoleName *string `json:"CamRoleName,omitempty" name:"CamRoleName"`
+
+	// 上次操作时，InstanceTypesCheckPolicy 取值。
+	LastOperationInstanceTypesCheckPolicy *string `json:"LastOperationInstanceTypesCheckPolicy,omitempty" name:"LastOperationInstanceTypesCheckPolicy"`
 }
 
 type LifecycleHook struct {
@@ -2125,6 +2128,11 @@ type ModifyLoadBalancersRequest struct {
 
 	// 应用型负载均衡器列表，目前长度上限为5，LoadBalancerIds 和 ForwardLoadBalancers 二者同时最多只能指定一个
 	ForwardLoadBalancers []*ForwardLoadBalancer `json:"ForwardLoadBalancers,omitempty" name:"ForwardLoadBalancers" list`
+
+	// 负载均衡器校验策略，取值包括 ALL 和 DIFF，默认取值为 ALL。
+	// <br><li> ALL，所有负载均衡器都合法则通过校验，否则校验报错。
+	// <br><li> DIFF，仅校验负载均衡器参数中实际变化的部分，如果合法则通过校验，否则校验报错。
+	LoadBalancersCheckPolicy *string `json:"LoadBalancersCheckPolicy,omitempty" name:"LoadBalancersCheckPolicy"`
 }
 
 func (r *ModifyLoadBalancersRequest) ToJsonString() string {

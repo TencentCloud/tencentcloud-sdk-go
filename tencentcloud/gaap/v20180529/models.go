@@ -147,10 +147,10 @@ type BindRealServer struct {
 	// 该源站所占权重
 	RealServerWeight *int64 `json:"RealServerWeight,omitempty" name:"RealServerWeight"`
 
-	// 源站状态，异常状态包括IP连接不上和域名解析失败（源站为域名）。其中：
-	// 0，源站正常；
-	// 1，IP异常；
-	// 2，域名解析异常。
+	// 源站健康检查状态，其中：
+	// 0，正常；
+	// 1，异常。
+	// 未开启健康检查状态时，该状态始终为正常。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RealServerStatus *int64 `json:"RealServerStatus,omitempty" name:"RealServerStatus"`
 
@@ -158,7 +158,7 @@ type BindRealServer struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RealServerPort *int64 `json:"RealServerPort,omitempty" name:"RealServerPort"`
 
-	// 当源站为域名时，域名被解析成一个或者多个IP，该字段表示其中异常的IP列表。
+	// 当源站为域名时，域名被解析成一个或者多个IP，该字段表示其中异常的IP列表。状态异常，但该字段为空时，表示域名解析异常。
 	DownIPList []*string `json:"DownIPList,omitempty" name:"DownIPList" list`
 }
 
@@ -758,6 +758,10 @@ type CreateProxyRequest struct {
 
 	// 通道需要添加的标签列表。
 	TagSet []*TagPair `json:"TagSet,omitempty" name:"TagSet" list`
+
+	// 被复制的通道ID。只有处于运行中状态的通道可以被复制。
+	// 当设置该参数时，表示复制该通道。
+	ClonedProxyId *string `json:"ClonedProxyId,omitempty" name:"ClonedProxyId"`
 }
 
 func (r *CreateProxyRequest) ToJsonString() string {
@@ -817,6 +821,9 @@ type CreateRuleRequest struct {
 	// 加速通道转发到源站的协议类型：支持HTTP或HTTPS。
 	// 不传递该字段时表示使用对应监听器的ForwardProtocol。
 	ForwardProtocol *string `json:"ForwardProtocol,omitempty" name:"ForwardProtocol"`
+
+	// 加速通道转发到远照的host，不设置该参数时，使用默认的host设置，即客户端发起的http请求的host。
+	ForwardHost *string `json:"ForwardHost,omitempty" name:"ForwardHost"`
 }
 
 func (r *CreateRuleRequest) ToJsonString() string {
@@ -1818,13 +1825,13 @@ type DescribeListenerStatisticsRequest struct {
 	// 结束时间
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 
-	// 统计指标名称列表，支持["InBandwidth", "OutBandwidth", "Concurrent", "InPackets", "OutPackets"]
+	// 统计指标名称列表，支持: 入带宽:InBandwidth, 出带宽:OutBandwidth, 并发:Concurrent, 入包量:InPackets, 出包量:OutPackets。
 	MetricNames []*string `json:"MetricNames,omitempty" name:"MetricNames" list`
 
 	// 监控粒度，目前支持300，3600，86400，单位：秒。
-	// 当时间范围<=1d，支持最小粒度300s；
-	// 当时间范围<=7d，支持最小粒度3600s；
-	// 当时间范围>7d，支持最小粒度86400s。
+	// 查询时间范围不超过1天，支持最小粒度300秒；
+	// 查询间范围不超过7天，支持最小粒度3600秒；
+	// 查询间范围超过7天，支持最小粒度86400秒。
 	Granularity *uint64 `json:"Granularity,omitempty" name:"Granularity"`
 }
 
@@ -2208,9 +2215,9 @@ type DescribeProxyStatisticsRequest struct {
 	MetricNames []*string `json:"MetricNames,omitempty" name:"MetricNames" list`
 
 	// 监控粒度，目前支持60，300，3600，86400，单位：秒。
-	// 当时间范围不超过1天，支持最小粒度60秒；
-	// 当时间范围不超过7天，支持最小粒度3600秒；
-	// 当时间范围不超过30天，支持最小粒度86400秒。
+	// 当时间范围不超过3天，支持最小粒度60秒；
+	// 当时间范围不超过7天，支持最小粒度300秒；
+	// 当时间范围不超过30天，支持最小粒度3600秒。
 	Granularity *uint64 `json:"Granularity,omitempty" name:"Granularity"`
 }
 
@@ -3971,6 +3978,7 @@ type ProxyInfo struct {
 	// ADJUSTING，配置变更中；
 	// ISOLATING，隔离中（欠费触发）；
 	// ISOLATED，已隔离（欠费触发）；
+	// CLONING，复制中；
 	// UNKNOWN，未知状态。
 	Status *string `json:"Status,omitempty" name:"Status"`
 
@@ -4179,7 +4187,7 @@ type RuleInfo struct {
 	// 是否开启健康检查标志，1开启，0关闭
 	HealthCheck *uint64 `json:"HealthCheck,omitempty" name:"HealthCheck"`
 
-	// 源站状态，0运行中，1创建中，2销毁中，3绑定解绑源站中，4配置更新中
+	// 规则状态，0运行中，1创建中，2销毁中，3绑定解绑源站中，4配置更新中
 	RuleStatus *uint64 `json:"RuleStatus,omitempty" name:"RuleStatus"`
 
 	// 健康检查相关参数
@@ -4188,7 +4196,9 @@ type RuleInfo struct {
 	// 已绑定的源站相关信息
 	RealServerSet []*BindRealServer `json:"RealServerSet,omitempty" name:"RealServerSet" list`
 
-	// 绑定源站状态，0正常，1源站IP异常，2源站域名解析异常
+	// 源站的服务状态，0：异常，1：正常。
+	// 未开启健康检查时，该状态始终未正常。
+	// 只要有一个源站健康状态为异常时，该状态为异常，具体源站的状态请查看RealServerSet。
 	BindStatus *uint64 `json:"BindStatus,omitempty" name:"BindStatus"`
 
 	// 通道转发到源站的请求所携带的host，其中default表示直接转发接收到的host。
