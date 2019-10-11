@@ -236,6 +236,179 @@ type Cluster struct {
 	RunServiceInstanceCount *int64 `json:"RunServiceInstanceCount,omitempty" name:"RunServiceInstanceCount"`
 }
 
+type Config struct {
+
+	// 配置项ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ConfigId *string `json:"ConfigId,omitempty" name:"ConfigId"`
+
+	// 配置项名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ConfigName *string `json:"ConfigName,omitempty" name:"ConfigName"`
+
+	// 配置项版本
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ConfigVersion *string `json:"ConfigVersion,omitempty" name:"ConfigVersion"`
+
+	// 配置项版本描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ConfigVersionDesc *string `json:"ConfigVersionDesc,omitempty" name:"ConfigVersionDesc"`
+
+	// 配置项值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ConfigValue *string `json:"ConfigValue,omitempty" name:"ConfigValue"`
+
+	// 配置项类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ConfigType *string `json:"ConfigType,omitempty" name:"ConfigType"`
+
+	// 创建时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreationTime *string `json:"CreationTime,omitempty" name:"CreationTime"`
+
+	// 应用ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ApplicationId *string `json:"ApplicationId,omitempty" name:"ApplicationId"`
+
+	// 应用名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ApplicationName *string `json:"ApplicationName,omitempty" name:"ApplicationName"`
+
+	// 删除标识，true：可以删除；false：不可删除
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DeleteFlag *bool `json:"DeleteFlag,omitempty" name:"DeleteFlag"`
+
+	// 最后更新时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LastUpdateTime *string `json:"LastUpdateTime,omitempty" name:"LastUpdateTime"`
+
+	// 配置项版本数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ConfigVersionCount *int64 `json:"ConfigVersionCount,omitempty" name:"ConfigVersionCount"`
+}
+
+type ConfigRelease struct {
+
+	// 配置项发布ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ConfigReleaseId *string `json:"ConfigReleaseId,omitempty" name:"ConfigReleaseId"`
+
+	// 配置项ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ConfigId *string `json:"ConfigId,omitempty" name:"ConfigId"`
+
+	// 配置项名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ConfigName *string `json:"ConfigName,omitempty" name:"ConfigName"`
+
+	// 配置项版本
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ConfigVersion *string `json:"ConfigVersion,omitempty" name:"ConfigVersion"`
+
+	// 发布时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ReleaseTime *string `json:"ReleaseTime,omitempty" name:"ReleaseTime"`
+
+	// 部署组ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
+
+	// 部署组名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GroupName *string `json:"GroupName,omitempty" name:"GroupName"`
+
+	// 命名空间ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NamespaceId *string `json:"NamespaceId,omitempty" name:"NamespaceId"`
+
+	// 命名空间名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NamespaceName *string `json:"NamespaceName,omitempty" name:"NamespaceName"`
+
+	// 集群ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 集群名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClusterName *string `json:"ClusterName,omitempty" name:"ClusterName"`
+
+	// 发布描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ReleaseDesc *string `json:"ReleaseDesc,omitempty" name:"ReleaseDesc"`
+}
+
+type ConfigReleaseLog struct {
+
+	// 配置项发布日志ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ConfigReleaseLogId *string `json:"ConfigReleaseLogId,omitempty" name:"ConfigReleaseLogId"`
+
+	// 配置项ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ConfigId *string `json:"ConfigId,omitempty" name:"ConfigId"`
+
+	// 配置项名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ConfigName *string `json:"ConfigName,omitempty" name:"ConfigName"`
+
+	// 配置项版本
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ConfigVersion *string `json:"ConfigVersion,omitempty" name:"ConfigVersion"`
+
+	// 部署组ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
+
+	// 部署组名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GroupName *string `json:"GroupName,omitempty" name:"GroupName"`
+
+	// 命名空间ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NamespaceId *string `json:"NamespaceId,omitempty" name:"NamespaceId"`
+
+	// 命名空间名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NamespaceName *string `json:"NamespaceName,omitempty" name:"NamespaceName"`
+
+	// 集群ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 集群名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClusterName *string `json:"ClusterName,omitempty" name:"ClusterName"`
+
+	// 发布时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ReleaseTime *string `json:"ReleaseTime,omitempty" name:"ReleaseTime"`
+
+	// 发布描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ReleaseDesc *string `json:"ReleaseDesc,omitempty" name:"ReleaseDesc"`
+
+	// 发布状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ReleaseStatus *string `json:"ReleaseStatus,omitempty" name:"ReleaseStatus"`
+
+	// 上次发布的配置项ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LastConfigId *string `json:"LastConfigId,omitempty" name:"LastConfigId"`
+
+	// 上次发布的配置项名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LastConfigName *string `json:"LastConfigName,omitempty" name:"LastConfigName"`
+
+	// 上次发布的配置项版本
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LastConfigVersion *string `json:"LastConfigVersion,omitempty" name:"LastConfigVersion"`
+
+	// 回滚标识
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RollbackFlag *bool `json:"RollbackFlag,omitempty" name:"RollbackFlag"`
+}
+
 type ContainGroup struct {
 
 	// 部署组ID
@@ -606,6 +779,58 @@ func (r *CreateClusterResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type CreateConfigRequest struct {
+	*tchttp.BaseRequest
+
+	// 配置项名称
+	ConfigName *string `json:"ConfigName,omitempty" name:"ConfigName"`
+
+	// 配置项版本
+	ConfigVersion *string `json:"ConfigVersion,omitempty" name:"ConfigVersion"`
+
+	// 配置项值
+	ConfigValue *string `json:"ConfigValue,omitempty" name:"ConfigValue"`
+
+	// 应用ID
+	ApplicationId *string `json:"ApplicationId,omitempty" name:"ApplicationId"`
+
+	// 配置项版本描述
+	ConfigVersionDesc *string `json:"ConfigVersionDesc,omitempty" name:"ConfigVersionDesc"`
+
+	// 配置项值类型
+	ConfigType *string `json:"ConfigType,omitempty" name:"ConfigType"`
+}
+
+func (r *CreateConfigRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateConfigRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateConfigResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// true：创建成功；false：创建失败
+		Result *bool `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateConfigResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateConfigResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type CreateContainGroupRequest struct {
 	*tchttp.BaseRequest
 
@@ -824,6 +1049,56 @@ func (r *CreateNamespaceResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type CreatePublicConfigRequest struct {
+	*tchttp.BaseRequest
+
+	// 配置项名称
+	ConfigName *string `json:"ConfigName,omitempty" name:"ConfigName"`
+
+	// 配置项版本
+	ConfigVersion *string `json:"ConfigVersion,omitempty" name:"ConfigVersion"`
+
+	// 配置项值，总是接收yaml格式的内容
+	ConfigValue *string `json:"ConfigValue,omitempty" name:"ConfigValue"`
+
+	// 配置项版本描述
+	ConfigVersionDesc *string `json:"ConfigVersionDesc,omitempty" name:"ConfigVersionDesc"`
+
+	// 配置项类型
+	ConfigType *string `json:"ConfigType,omitempty" name:"ConfigType"`
+}
+
+func (r *CreatePublicConfigRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreatePublicConfigRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreatePublicConfigResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// true：创建成功；false：创建失败
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Result *bool `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreatePublicConfigResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreatePublicConfigResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DeleteApplicationRequest struct {
 	*tchttp.BaseRequest
 
@@ -861,6 +1136,43 @@ func (r *DeleteApplicationResponse) ToJsonString() string {
 }
 
 func (r *DeleteApplicationResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteConfigRequest struct {
+	*tchttp.BaseRequest
+
+	// 配置项ID
+	ConfigId *string `json:"ConfigId,omitempty" name:"ConfigId"`
+}
+
+func (r *DeleteConfigRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteConfigRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteConfigResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// true：删除成功；false：删除失败
+		Result *bool `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DeleteConfigResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteConfigResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -1106,6 +1418,44 @@ func (r *DeletePkgsResponse) ToJsonString() string {
 }
 
 func (r *DeletePkgsResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeletePublicConfigRequest struct {
+	*tchttp.BaseRequest
+
+	// 配置项ID
+	ConfigId *string `json:"ConfigId,omitempty" name:"ConfigId"`
+}
+
+func (r *DeletePublicConfigRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeletePublicConfigRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeletePublicConfigResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// true：删除成功；false：删除失败
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Result *bool `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DeletePublicConfigResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeletePublicConfigResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -1415,6 +1765,255 @@ func (r *DescribeClusterInstancesResponse) ToJsonString() string {
 }
 
 func (r *DescribeClusterInstancesResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeConfigReleaseLogsRequest struct {
+	*tchttp.BaseRequest
+
+	// 部署组ID，不传入时查询全量
+	GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
+
+	// 偏移量，默认为0
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 每页条数，默认为20
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 命名空间ID，不传入时查询全量
+	NamespaceId *string `json:"NamespaceId,omitempty" name:"NamespaceId"`
+
+	// 集群ID，不传入时查询全量
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 应用ID，不传入时查询全量
+	ApplicationId *string `json:"ApplicationId,omitempty" name:"ApplicationId"`
+}
+
+func (r *DescribeConfigReleaseLogsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeConfigReleaseLogsRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeConfigReleaseLogsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 分页的配置项发布历史列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Result *TsfPageConfigReleaseLog `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeConfigReleaseLogsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeConfigReleaseLogsResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeConfigReleasesRequest struct {
+	*tchttp.BaseRequest
+
+	// 配置项名称，不传入时查询全量
+	ConfigName *string `json:"ConfigName,omitempty" name:"ConfigName"`
+
+	// 部署组ID，不传入时查询全量
+	GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
+
+	// 命名空间ID，不传入时查询全量
+	NamespaceId *string `json:"NamespaceId,omitempty" name:"NamespaceId"`
+
+	// 集群ID，不传入时查询全量
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 每页条数
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 偏移量
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 配置ID，不传入时查询全量
+	ConfigId *string `json:"ConfigId,omitempty" name:"ConfigId"`
+
+	// 应用ID，不传入时查询全量
+	ApplicationId *string `json:"ApplicationId,omitempty" name:"ApplicationId"`
+}
+
+func (r *DescribeConfigReleasesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeConfigReleasesRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeConfigReleasesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 分页的配置发布信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Result *TsfPageConfigRelease `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeConfigReleasesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeConfigReleasesResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeConfigRequest struct {
+	*tchttp.BaseRequest
+
+	// 配置项ID
+	ConfigId *string `json:"ConfigId,omitempty" name:"ConfigId"`
+}
+
+func (r *DescribeConfigRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeConfigRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeConfigResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 配置项
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Result *Config `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeConfigResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeConfigResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeConfigSummaryRequest struct {
+	*tchttp.BaseRequest
+
+	// 应用ID，不传入时查询全量
+	ApplicationId *string `json:"ApplicationId,omitempty" name:"ApplicationId"`
+
+	// 查询关键字，模糊查询：应用名称，配置项名称，不传入时查询全量
+	SearchWord *string `json:"SearchWord,omitempty" name:"SearchWord"`
+
+	// 偏移量，默认为0
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 每页条数，默认为20
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+func (r *DescribeConfigSummaryRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeConfigSummaryRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeConfigSummaryResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 配置项分页对象
+		Result *TsfPageConfig `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeConfigSummaryResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeConfigSummaryResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeConfigsRequest struct {
+	*tchttp.BaseRequest
+
+	// 应用ID，不传入时查询全量
+	ApplicationId *string `json:"ApplicationId,omitempty" name:"ApplicationId"`
+
+	// 配置项ID，不传入时查询全量，高优先级
+	ConfigId *string `json:"ConfigId,omitempty" name:"ConfigId"`
+
+	// 偏移量
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 每页条数
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 配置项ID列表，不传入时查询全量，低优先级
+	ConfigIdList []*string `json:"ConfigIdList,omitempty" name:"ConfigIdList" list`
+
+	// 配置项名称，精确查询，不传入时查询全量
+	ConfigName *string `json:"ConfigName,omitempty" name:"ConfigName"`
+}
+
+func (r *DescribeConfigsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeConfigsRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeConfigsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 分页后的配置项列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Result *TsfPageConfig `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeConfigsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeConfigsResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -1901,6 +2500,270 @@ func (r *DescribePkgsResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribePublicConfigReleaseLogsRequest struct {
+	*tchttp.BaseRequest
+
+	// 命名空间ID，不传入时查询全量
+	NamespaceId *string `json:"NamespaceId,omitempty" name:"NamespaceId"`
+
+	// 偏移量，默认为0
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 每页条数，默认为20
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+func (r *DescribePublicConfigReleaseLogsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribePublicConfigReleaseLogsRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribePublicConfigReleaseLogsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 分页后的公共配置项发布历史列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Result *TsfPageConfigReleaseLog `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribePublicConfigReleaseLogsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribePublicConfigReleaseLogsResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribePublicConfigReleasesRequest struct {
+	*tchttp.BaseRequest
+
+	// 配置项名称，不传入时查询全量
+	ConfigName *string `json:"ConfigName,omitempty" name:"ConfigName"`
+
+	// 命名空间ID，不传入时查询全量
+	NamespaceId *string `json:"NamespaceId,omitempty" name:"NamespaceId"`
+
+	// 每页条数
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 偏移量
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 配置项ID，不传入时查询全量
+	ConfigId *string `json:"ConfigId,omitempty" name:"ConfigId"`
+}
+
+func (r *DescribePublicConfigReleasesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribePublicConfigReleasesRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribePublicConfigReleasesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 公共配置发布信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Result *TsfPageConfigRelease `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribePublicConfigReleasesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribePublicConfigReleasesResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribePublicConfigRequest struct {
+	*tchttp.BaseRequest
+
+	// 需要查询的配置项ID
+	ConfigId *string `json:"ConfigId,omitempty" name:"ConfigId"`
+}
+
+func (r *DescribePublicConfigRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribePublicConfigRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribePublicConfigResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 全局配置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Result *Config `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribePublicConfigResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribePublicConfigResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribePublicConfigSummaryRequest struct {
+	*tchttp.BaseRequest
+
+	// 查询关键字，模糊查询：配置项名称，不传入时查询全量
+	SearchWord *string `json:"SearchWord,omitempty" name:"SearchWord"`
+
+	// 偏移量，默认为0
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 每页条数，默认为20
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+func (r *DescribePublicConfigSummaryRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribePublicConfigSummaryRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribePublicConfigSummaryResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 分页的全局配置统计信息列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Result *TsfPageConfig `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribePublicConfigSummaryResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribePublicConfigSummaryResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribePublicConfigsRequest struct {
+	*tchttp.BaseRequest
+
+	// 配置项ID，不传入时查询全量，高优先级
+	ConfigId *string `json:"ConfigId,omitempty" name:"ConfigId"`
+
+	// 偏移量，默认为0
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 每页条数，默认为20
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 配置项ID列表，不传入时查询全量，低优先级
+	ConfigIdList []*string `json:"ConfigIdList,omitempty" name:"ConfigIdList" list`
+
+	// 配置项名称，精确查询，不传入时查询全量
+	ConfigName *string `json:"ConfigName,omitempty" name:"ConfigName"`
+}
+
+func (r *DescribePublicConfigsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribePublicConfigsRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribePublicConfigsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 分页后的全局配置项列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Result *TsfPageConfig `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribePublicConfigsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribePublicConfigsResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeReleasedConfigRequest struct {
+	*tchttp.BaseRequest
+
+	// 部署组ID
+	GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
+}
+
+func (r *DescribeReleasedConfigRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeReleasedConfigRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeReleasedConfigResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 已发布的配置内容
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Result *string `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeReleasedConfigResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeReleasedConfigResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeSimpleApplicationsRequest struct {
 	*tchttp.BaseRequest
 
@@ -1921,6 +2784,9 @@ type DescribeSimpleApplicationsRequest struct {
 
 	// 资源类型数组
 	ApplicationResourceTypeList []*string `json:"ApplicationResourceTypeList,omitempty" name:"ApplicationResourceTypeList" list`
+
+	// 通过id和name进行关键词过滤
+	SearchWord *string `json:"SearchWord,omitempty" name:"SearchWord"`
 }
 
 func (r *DescribeSimpleApplicationsRequest) ToJsonString() string {
@@ -1968,6 +2834,9 @@ type DescribeSimpleClustersRequest struct {
 
 	// 分页个数，默认为20， 取值应为1~50
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 对id和name进行关键词过滤
+	SearchWord *string `json:"SearchWord,omitempty" name:"SearchWord"`
 }
 
 func (r *DescribeSimpleClustersRequest) ToJsonString() string {
@@ -2080,6 +2949,12 @@ type DescribeSimpleNamespacesRequest struct {
 
 	// 查询资源类型列表
 	NamespaceResourceTypeList []*string `json:"NamespaceResourceTypeList,omitempty" name:"NamespaceResourceTypeList" list`
+
+	// 通过id和name进行过滤
+	SearchWord *string `json:"SearchWord,omitempty" name:"SearchWord"`
+
+	// 查询的命名空间类型列表
+	NamespaceTypeList []*string `json:"NamespaceTypeList,omitempty" name:"NamespaceTypeList" list`
 }
 
 func (r *DescribeSimpleNamespacesRequest) ToJsonString() string {
@@ -2782,6 +3657,93 @@ type ProtocolPort struct {
 	TargetPort *int64 `json:"TargetPort,omitempty" name:"TargetPort"`
 }
 
+type ReleaseConfigRequest struct {
+	*tchttp.BaseRequest
+
+	// 配置ID
+	ConfigId *string `json:"ConfigId,omitempty" name:"ConfigId"`
+
+	// 部署组ID
+	GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
+
+	// 发布描述
+	ReleaseDesc *string `json:"ReleaseDesc,omitempty" name:"ReleaseDesc"`
+}
+
+func (r *ReleaseConfigRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ReleaseConfigRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ReleaseConfigResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// true：发布成功；false：发布失败
+		Result *bool `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ReleaseConfigResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ReleaseConfigResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ReleasePublicConfigRequest struct {
+	*tchttp.BaseRequest
+
+	// 配置ID
+	ConfigId *string `json:"ConfigId,omitempty" name:"ConfigId"`
+
+	// 命名空间ID
+	NamespaceId *string `json:"NamespaceId,omitempty" name:"NamespaceId"`
+
+	// 发布描述
+	ReleaseDesc *string `json:"ReleaseDesc,omitempty" name:"ReleaseDesc"`
+}
+
+func (r *ReleasePublicConfigRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ReleasePublicConfigRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ReleasePublicConfigResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// true：发布成功；false：发布失败
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Result *bool `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ReleasePublicConfigResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ReleasePublicConfigResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type RemoveInstancesRequest struct {
 	*tchttp.BaseRequest
 
@@ -2820,6 +3782,121 @@ func (r *RemoveInstancesResponse) ToJsonString() string {
 }
 
 func (r *RemoveInstancesResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type RevocationConfigRequest struct {
+	*tchttp.BaseRequest
+
+	// 配置项发布ID
+	ConfigReleaseId *string `json:"ConfigReleaseId,omitempty" name:"ConfigReleaseId"`
+}
+
+func (r *RevocationConfigRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *RevocationConfigRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type RevocationConfigResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// true：回滚成功；false：回滚失败
+		Result *bool `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *RevocationConfigResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *RevocationConfigResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type RevocationPublicConfigRequest struct {
+	*tchttp.BaseRequest
+
+	// 配置项发布ID
+	ConfigReleaseId *string `json:"ConfigReleaseId,omitempty" name:"ConfigReleaseId"`
+}
+
+func (r *RevocationPublicConfigRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *RevocationPublicConfigRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type RevocationPublicConfigResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// true：撤销成功；false：撤销失败
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Result *bool `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *RevocationPublicConfigResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *RevocationPublicConfigResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type RollbackConfigRequest struct {
+	*tchttp.BaseRequest
+
+	// 配置项发布历史ID
+	ConfigReleaseLogId *string `json:"ConfigReleaseLogId,omitempty" name:"ConfigReleaseLogId"`
+
+	// 回滚描述
+	ReleaseDesc *string `json:"ReleaseDesc,omitempty" name:"ReleaseDesc"`
+}
+
+func (r *RollbackConfigRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *RollbackConfigRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type RollbackConfigResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// true：回滚成功；false：回滚失败
+		Result *bool `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *RollbackConfigResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *RollbackConfigResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -3164,6 +4241,37 @@ type TsfPageCluster struct {
 	// 集群列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Content []*Cluster `json:"Content,omitempty" name:"Content" list`
+}
+
+type TsfPageConfig struct {
+
+	// TsfPageConfig
+	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 配置项列表
+	Content []*Config `json:"Content,omitempty" name:"Content" list`
+}
+
+type TsfPageConfigRelease struct {
+
+	// 总条数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 配置项发布信息数组
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Content []*ConfigRelease `json:"Content,omitempty" name:"Content" list`
+}
+
+type TsfPageConfigReleaseLog struct {
+
+	// 总条数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 配置项发布日志数组
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Content []*ConfigReleaseLog `json:"Content,omitempty" name:"Content" list`
 }
 
 type TsfPageInstance struct {

@@ -236,7 +236,7 @@ type DescribeResourcesByTagsRequest struct {
 	*tchttp.BaseRequest
 
 	// 标签过滤数组
-	TagFilters []*TagFilters `json:"TagFilters,omitempty" name:"TagFilters" list`
+	TagFilters []*TagFilter `json:"TagFilters,omitempty" name:"TagFilters" list`
 
 	// 创建标签者uin
 	CreateUin *uint64 `json:"CreateUin,omitempty" name:"CreateUin"`
@@ -284,7 +284,7 @@ type DescribeResourcesByTagsResponse struct {
 		Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 
 		// 资源标签
-		Rows []*ResourcesTag `json:"Rows,omitempty" name:"Rows" list`
+		Rows []*ResourceTag `json:"Rows,omitempty" name:"Rows" list`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -505,7 +505,7 @@ func (r *ModifyResourceTagsResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
-type ResourcesTag struct {
+type ResourceTag struct {
 
 	// 资源所在地域
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -537,7 +537,7 @@ type Tag struct {
 	TagValue *string `json:"TagValue,omitempty" name:"TagValue"`
 }
 
-type TagFilters struct {
+type TagFilter struct {
 
 	// 标签键
 	TagKey *string `json:"TagKey,omitempty" name:"TagKey"`

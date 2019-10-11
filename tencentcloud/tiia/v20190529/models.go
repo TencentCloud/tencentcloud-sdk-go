@@ -517,9 +517,9 @@ type PoliticsResult struct {
 	// 75到90，Suggestion建议为REVIEW
 	// 90到100，Suggestion建议为BLOCK
 	// Type为FACE时：
-	// 0到55，Suggestion建议为PASS
-	// 55到60，Suggestion建议为REVIEW
-	// 60到100，Suggestion建议为BLOCK
+	// 0到70，Suggestion建议为PASS
+	// 70到80，Suggestion建议为REVIEW
+	// 80到100，Suggestion建议为BLOCK
 	Confidence *int64 `json:"Confidence,omitempty" name:"Confidence"`
 
 	// Type取值为‘FACE’时，人脸识别的结果列表。基于图片中实际检测到的人脸数，返回数组最大值不超过5个。
@@ -660,9 +660,9 @@ type TerrorismResult struct {
 	// 86到91，Suggestion建议为REVIEW
 	// 91到100，Suggestion建议为BLOCK
 	// Type为FACE时：
-	// 0到55，Suggestion建议为PASS
-	// 55到60，Suggestion建议为REVIEW
-	// 60到100，Suggestion建议为BLOCK
+	// 0到70，Suggestion建议为PASS
+	// 70到80，Suggestion建议为REVIEW
+	// 80到100，Suggestion建议为BLOCK
 	Confidence *int64 `json:"Confidence,omitempty" name:"Confidence"`
 
 	// Type取值为‘FACE’时，人脸识别的结果列表。基于图片中实际检测到的人脸数，返回数组最大值不超过5个。

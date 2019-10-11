@@ -118,6 +118,31 @@ func (c *Client) CreateCluster(request *CreateClusterRequest) (response *CreateC
     return
 }
 
+func NewCreateConfigRequest() (request *CreateConfigRequest) {
+    request = &CreateConfigRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tsf", APIVersion, "CreateConfig")
+    return
+}
+
+func NewCreateConfigResponse() (response *CreateConfigResponse) {
+    response = &CreateConfigResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 创建配置项
+func (c *Client) CreateConfig(request *CreateConfigRequest) (response *CreateConfigResponse, err error) {
+    if request == nil {
+        request = NewCreateConfigRequest()
+    }
+    response = NewCreateConfigResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateContainGroupRequest() (request *CreateContainGroupRequest) {
     request = &CreateContainGroupRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -218,6 +243,31 @@ func (c *Client) CreateNamespace(request *CreateNamespaceRequest) (response *Cre
     return
 }
 
+func NewCreatePublicConfigRequest() (request *CreatePublicConfigRequest) {
+    request = &CreatePublicConfigRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tsf", APIVersion, "CreatePublicConfig")
+    return
+}
+
+func NewCreatePublicConfigResponse() (response *CreatePublicConfigResponse) {
+    response = &CreatePublicConfigResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 创建公共配置项
+func (c *Client) CreatePublicConfig(request *CreatePublicConfigRequest) (response *CreatePublicConfigResponse, err error) {
+    if request == nil {
+        request = NewCreatePublicConfigRequest()
+    }
+    response = NewCreatePublicConfigResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteApplicationRequest() (request *DeleteApplicationRequest) {
     request = &DeleteApplicationRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -239,6 +289,31 @@ func (c *Client) DeleteApplication(request *DeleteApplicationRequest) (response 
         request = NewDeleteApplicationRequest()
     }
     response = NewDeleteApplicationResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteConfigRequest() (request *DeleteConfigRequest) {
+    request = &DeleteConfigRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tsf", APIVersion, "DeleteConfig")
+    return
+}
+
+func NewDeleteConfigResponse() (response *DeleteConfigResponse) {
+    response = &DeleteConfigResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 删除配置项
+func (c *Client) DeleteConfig(request *DeleteConfigRequest) (response *DeleteConfigResponse, err error) {
+    if request == nil {
+        request = NewDeleteConfigRequest()
+    }
+    response = NewDeleteConfigResponse()
     err = c.Send(request, response)
     return
 }
@@ -394,6 +469,31 @@ func (c *Client) DeletePkgs(request *DeletePkgsRequest) (response *DeletePkgsRes
     return
 }
 
+func NewDeletePublicConfigRequest() (request *DeletePublicConfigRequest) {
+    request = &DeletePublicConfigRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tsf", APIVersion, "DeletePublicConfig")
+    return
+}
+
+func NewDeletePublicConfigResponse() (response *DeletePublicConfigResponse) {
+    response = &DeletePublicConfigResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 删除公共配置项
+func (c *Client) DeletePublicConfig(request *DeletePublicConfigRequest) (response *DeletePublicConfigResponse, err error) {
+    if request == nil {
+        request = NewDeletePublicConfigRequest()
+    }
+    response = NewDeletePublicConfigResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeployContainerGroupRequest() (request *DeployContainerGroupRequest) {
     request = &DeployContainerGroupRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -540,6 +640,131 @@ func (c *Client) DescribeClusterInstances(request *DescribeClusterInstancesReque
         request = NewDescribeClusterInstancesRequest()
     }
     response = NewDescribeClusterInstancesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeConfigRequest() (request *DescribeConfigRequest) {
+    request = &DescribeConfigRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tsf", APIVersion, "DescribeConfig")
+    return
+}
+
+func NewDescribeConfigResponse() (response *DescribeConfigResponse) {
+    response = &DescribeConfigResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询配置
+func (c *Client) DescribeConfig(request *DescribeConfigRequest) (response *DescribeConfigResponse, err error) {
+    if request == nil {
+        request = NewDescribeConfigRequest()
+    }
+    response = NewDescribeConfigResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeConfigReleaseLogsRequest() (request *DescribeConfigReleaseLogsRequest) {
+    request = &DescribeConfigReleaseLogsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tsf", APIVersion, "DescribeConfigReleaseLogs")
+    return
+}
+
+func NewDescribeConfigReleaseLogsResponse() (response *DescribeConfigReleaseLogsResponse) {
+    response = &DescribeConfigReleaseLogsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询配置发布历史
+func (c *Client) DescribeConfigReleaseLogs(request *DescribeConfigReleaseLogsRequest) (response *DescribeConfigReleaseLogsResponse, err error) {
+    if request == nil {
+        request = NewDescribeConfigReleaseLogsRequest()
+    }
+    response = NewDescribeConfigReleaseLogsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeConfigReleasesRequest() (request *DescribeConfigReleasesRequest) {
+    request = &DescribeConfigReleasesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tsf", APIVersion, "DescribeConfigReleases")
+    return
+}
+
+func NewDescribeConfigReleasesResponse() (response *DescribeConfigReleasesResponse) {
+    response = &DescribeConfigReleasesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询配置发布信息
+func (c *Client) DescribeConfigReleases(request *DescribeConfigReleasesRequest) (response *DescribeConfigReleasesResponse, err error) {
+    if request == nil {
+        request = NewDescribeConfigReleasesRequest()
+    }
+    response = NewDescribeConfigReleasesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeConfigSummaryRequest() (request *DescribeConfigSummaryRequest) {
+    request = &DescribeConfigSummaryRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tsf", APIVersion, "DescribeConfigSummary")
+    return
+}
+
+func NewDescribeConfigSummaryResponse() (response *DescribeConfigSummaryResponse) {
+    response = &DescribeConfigSummaryResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询配置汇总列表
+func (c *Client) DescribeConfigSummary(request *DescribeConfigSummaryRequest) (response *DescribeConfigSummaryResponse, err error) {
+    if request == nil {
+        request = NewDescribeConfigSummaryRequest()
+    }
+    response = NewDescribeConfigSummaryResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeConfigsRequest() (request *DescribeConfigsRequest) {
+    request = &DescribeConfigsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tsf", APIVersion, "DescribeConfigs")
+    return
+}
+
+func NewDescribeConfigsResponse() (response *DescribeConfigsResponse) {
+    response = &DescribeConfigsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询配置项列表
+func (c *Client) DescribeConfigs(request *DescribeConfigsRequest) (response *DescribeConfigsResponse, err error) {
+    if request == nil {
+        request = NewDescribeConfigsRequest()
+    }
+    response = NewDescribeConfigsResponse()
     err = c.Send(request, response)
     return
 }
@@ -791,6 +1016,156 @@ func (c *Client) DescribePkgs(request *DescribePkgsRequest) (response *DescribeP
         request = NewDescribePkgsRequest()
     }
     response = NewDescribePkgsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribePublicConfigRequest() (request *DescribePublicConfigRequest) {
+    request = &DescribePublicConfigRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tsf", APIVersion, "DescribePublicConfig")
+    return
+}
+
+func NewDescribePublicConfigResponse() (response *DescribePublicConfigResponse) {
+    response = &DescribePublicConfigResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询公共配置（单条）
+func (c *Client) DescribePublicConfig(request *DescribePublicConfigRequest) (response *DescribePublicConfigResponse, err error) {
+    if request == nil {
+        request = NewDescribePublicConfigRequest()
+    }
+    response = NewDescribePublicConfigResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribePublicConfigReleaseLogsRequest() (request *DescribePublicConfigReleaseLogsRequest) {
+    request = &DescribePublicConfigReleaseLogsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tsf", APIVersion, "DescribePublicConfigReleaseLogs")
+    return
+}
+
+func NewDescribePublicConfigReleaseLogsResponse() (response *DescribePublicConfigReleaseLogsResponse) {
+    response = &DescribePublicConfigReleaseLogsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询公共配置发布历史
+func (c *Client) DescribePublicConfigReleaseLogs(request *DescribePublicConfigReleaseLogsRequest) (response *DescribePublicConfigReleaseLogsResponse, err error) {
+    if request == nil {
+        request = NewDescribePublicConfigReleaseLogsRequest()
+    }
+    response = NewDescribePublicConfigReleaseLogsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribePublicConfigReleasesRequest() (request *DescribePublicConfigReleasesRequest) {
+    request = &DescribePublicConfigReleasesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tsf", APIVersion, "DescribePublicConfigReleases")
+    return
+}
+
+func NewDescribePublicConfigReleasesResponse() (response *DescribePublicConfigReleasesResponse) {
+    response = &DescribePublicConfigReleasesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询公共配置发布信息
+func (c *Client) DescribePublicConfigReleases(request *DescribePublicConfigReleasesRequest) (response *DescribePublicConfigReleasesResponse, err error) {
+    if request == nil {
+        request = NewDescribePublicConfigReleasesRequest()
+    }
+    response = NewDescribePublicConfigReleasesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribePublicConfigSummaryRequest() (request *DescribePublicConfigSummaryRequest) {
+    request = &DescribePublicConfigSummaryRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tsf", APIVersion, "DescribePublicConfigSummary")
+    return
+}
+
+func NewDescribePublicConfigSummaryResponse() (response *DescribePublicConfigSummaryResponse) {
+    response = &DescribePublicConfigSummaryResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询公共配置汇总列表
+func (c *Client) DescribePublicConfigSummary(request *DescribePublicConfigSummaryRequest) (response *DescribePublicConfigSummaryResponse, err error) {
+    if request == nil {
+        request = NewDescribePublicConfigSummaryRequest()
+    }
+    response = NewDescribePublicConfigSummaryResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribePublicConfigsRequest() (request *DescribePublicConfigsRequest) {
+    request = &DescribePublicConfigsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tsf", APIVersion, "DescribePublicConfigs")
+    return
+}
+
+func NewDescribePublicConfigsResponse() (response *DescribePublicConfigsResponse) {
+    response = &DescribePublicConfigsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询公共配置项列表
+func (c *Client) DescribePublicConfigs(request *DescribePublicConfigsRequest) (response *DescribePublicConfigsResponse, err error) {
+    if request == nil {
+        request = NewDescribePublicConfigsRequest()
+    }
+    response = NewDescribePublicConfigsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeReleasedConfigRequest() (request *DescribeReleasedConfigRequest) {
+    request = &DescribeReleasedConfigRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tsf", APIVersion, "DescribeReleasedConfig")
+    return
+}
+
+func NewDescribeReleasedConfigResponse() (response *DescribeReleasedConfigResponse) {
+    response = &DescribeReleasedConfigResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询group发布的配置
+func (c *Client) DescribeReleasedConfig(request *DescribeReleasedConfigRequest) (response *DescribeReleasedConfigResponse, err error) {
+    if request == nil {
+        request = NewDescribeReleasedConfigRequest()
+    }
+    response = NewDescribeReleasedConfigResponse()
     err = c.Send(request, response)
     return
 }
@@ -1047,6 +1422,56 @@ func (c *Client) ModifyUploadInfo(request *ModifyUploadInfoRequest) (response *M
     return
 }
 
+func NewReleaseConfigRequest() (request *ReleaseConfigRequest) {
+    request = &ReleaseConfigRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tsf", APIVersion, "ReleaseConfig")
+    return
+}
+
+func NewReleaseConfigResponse() (response *ReleaseConfigResponse) {
+    response = &ReleaseConfigResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 发布配置
+func (c *Client) ReleaseConfig(request *ReleaseConfigRequest) (response *ReleaseConfigResponse, err error) {
+    if request == nil {
+        request = NewReleaseConfigRequest()
+    }
+    response = NewReleaseConfigResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewReleasePublicConfigRequest() (request *ReleasePublicConfigRequest) {
+    request = &ReleasePublicConfigRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tsf", APIVersion, "ReleasePublicConfig")
+    return
+}
+
+func NewReleasePublicConfigResponse() (response *ReleasePublicConfigResponse) {
+    response = &ReleasePublicConfigResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 发布公共配置
+func (c *Client) ReleasePublicConfig(request *ReleasePublicConfigRequest) (response *ReleasePublicConfigResponse, err error) {
+    if request == nil {
+        request = NewReleasePublicConfigRequest()
+    }
+    response = NewReleasePublicConfigResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewRemoveInstancesRequest() (request *RemoveInstancesRequest) {
     request = &RemoveInstancesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1068,6 +1493,81 @@ func (c *Client) RemoveInstances(request *RemoveInstancesRequest) (response *Rem
         request = NewRemoveInstancesRequest()
     }
     response = NewRemoveInstancesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewRevocationConfigRequest() (request *RevocationConfigRequest) {
+    request = &RevocationConfigRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tsf", APIVersion, "RevocationConfig")
+    return
+}
+
+func NewRevocationConfigResponse() (response *RevocationConfigResponse) {
+    response = &RevocationConfigResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 撤回已发布的配置
+func (c *Client) RevocationConfig(request *RevocationConfigRequest) (response *RevocationConfigResponse, err error) {
+    if request == nil {
+        request = NewRevocationConfigRequest()
+    }
+    response = NewRevocationConfigResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewRevocationPublicConfigRequest() (request *RevocationPublicConfigRequest) {
+    request = &RevocationPublicConfigRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tsf", APIVersion, "RevocationPublicConfig")
+    return
+}
+
+func NewRevocationPublicConfigResponse() (response *RevocationPublicConfigResponse) {
+    response = &RevocationPublicConfigResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 撤回已发布的公共配置
+func (c *Client) RevocationPublicConfig(request *RevocationPublicConfigRequest) (response *RevocationPublicConfigResponse, err error) {
+    if request == nil {
+        request = NewRevocationPublicConfigRequest()
+    }
+    response = NewRevocationPublicConfigResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewRollbackConfigRequest() (request *RollbackConfigRequest) {
+    request = &RollbackConfigRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tsf", APIVersion, "RollbackConfig")
+    return
+}
+
+func NewRollbackConfigResponse() (response *RollbackConfigResponse) {
+    response = &RollbackConfigResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 回滚配置
+func (c *Client) RollbackConfig(request *RollbackConfigRequest) (response *RollbackConfigResponse, err error) {
+    if request == nil {
+        request = NewRollbackConfigRequest()
+    }
+    response = NewRollbackConfigResponse()
     err = c.Send(request, response)
     return
 }

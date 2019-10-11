@@ -482,6 +482,9 @@ type CreateDBInstanceHourRequest struct {
 
 	// 实例标签信息。
 	ResourceTags []*TagInfo `json:"ResourceTags,omitempty" name:"ResourceTags" list`
+
+	// 置放群组 ID。
+	DeployGroupId *string `json:"DeployGroupId,omitempty" name:"DeployGroupId"`
 }
 
 func (r *CreateDBInstanceHourRequest) ToJsonString() string {
@@ -591,6 +594,9 @@ type CreateDBInstanceRequest struct {
 
 	// 实例标签信息。
 	ResourceTags []*TagInfo `json:"ResourceTags,omitempty" name:"ResourceTags" list`
+
+	// 置放群组 ID。
+	DeployGroupId *string `json:"DeployGroupId,omitempty" name:"DeployGroupId"`
 }
 
 func (r *CreateDBInstanceRequest) ToJsonString() string {
@@ -2771,6 +2777,7 @@ type InstanceInfo struct {
 	InitFlag *int64 `json:"InitFlag,omitempty" name:"InitFlag"`
 
 	// 只读vip信息。单独开通只读实例访问的只读实例才有该字段
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	RoVipInfo *RoVipInfo `json:"RoVipInfo,omitempty" name:"RoVipInfo"`
 
 	// 内存容量，单位为MB
@@ -2783,6 +2790,7 @@ type InstanceInfo struct {
 	VpcId *int64 `json:"VpcId,omitempty" name:"VpcId"`
 
 	// 备机信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	SlaveInfo *SlaveInfo `json:"SlaveInfo,omitempty" name:"SlaveInfo"`
 
 	// 实例ID
@@ -2798,6 +2806,7 @@ type InstanceInfo struct {
 	ProtectMode *int64 `json:"ProtectMode,omitempty" name:"ProtectMode"`
 
 	// 只读组详细信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	RoGroups []*RoGroup `json:"RoGroups,omitempty" name:"RoGroups" list`
 
 	// 子网ID，例如：2333
@@ -2822,6 +2831,7 @@ type InstanceInfo struct {
 	TaskStatus *int64 `json:"TaskStatus,omitempty" name:"TaskStatus"`
 
 	// 主实例详细信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	MasterInfo *MasterInfo `json:"MasterInfo,omitempty" name:"MasterInfo"`
 
 	// 实例类型，可能的返回值：“HA”-高可用版；“BASIC”-基础版
@@ -2834,6 +2844,7 @@ type InstanceInfo struct {
 	InstanceName *string `json:"InstanceName,omitempty" name:"InstanceName"`
 
 	// 灾备实例详细信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	DrInfo []*DrInfo `json:"DrInfo,omitempty" name:"DrInfo" list`
 
 	// 外网域名
@@ -4120,6 +4131,7 @@ type SlaveInfo struct {
 	First *SlaveInstanceInfo `json:"First,omitempty" name:"First"`
 
 	// 第二备机信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Second *SlaveInstanceInfo `json:"Second,omitempty" name:"Second"`
 }
 
