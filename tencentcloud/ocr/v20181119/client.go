@@ -243,6 +243,31 @@ func (c *Client) DutyPaidProofOCR(request *DutyPaidProofOCRRequest) (response *D
     return
 }
 
+func NewEduPaperOCRRequest() (request *EduPaperOCRRequest) {
+    request = &EduPaperOCRRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ocr", APIVersion, "EduPaperOCR")
+    return
+}
+
+func NewEduPaperOCRResponse() (response *EduPaperOCRResponse) {
+    response = &EduPaperOCRResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口支持数学试题内容的识别和结构化输出，包括通用文本解析和小学/初中/高中数学公式解析能力（包括91种题型，180种符号）。
+func (c *Client) EduPaperOCR(request *EduPaperOCRRequest) (response *EduPaperOCRResponse, err error) {
+    if request == nil {
+        request = NewEduPaperOCRRequest()
+    }
+    response = NewEduPaperOCRResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewEnglishOCRRequest() (request *EnglishOCRRequest) {
     request = &EnglishOCRRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -268,6 +293,83 @@ func (c *Client) EnglishOCR(request *EnglishOCRRequest) (response *EnglishOCRRes
     return
 }
 
+func NewEstateCertOCRRequest() (request *EstateCertOCRRequest) {
+    request = &EstateCertOCRRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ocr", APIVersion, "EstateCertOCR")
+    return
+}
+
+func NewEstateCertOCRResponse() (response *EstateCertOCRResponse) {
+    response = &EstateCertOCRResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口支持不动产权证关键字段的识别，包括使用期限、面积、用途、权利性质、权利类型、坐落、共有情况、权利人、权利其他状况等。
+// 
+// 
+func (c *Client) EstateCertOCR(request *EstateCertOCRRequest) (response *EstateCertOCRResponse, err error) {
+    if request == nil {
+        request = NewEstateCertOCRRequest()
+    }
+    response = NewEstateCertOCRResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewFinanBillOCRRequest() (request *FinanBillOCRRequest) {
+    request = &FinanBillOCRRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ocr", APIVersion, "FinanBillOCR")
+    return
+}
+
+func NewFinanBillOCRResponse() (response *FinanBillOCRResponse) {
+    response = &FinanBillOCRResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口支持常见银行票据的自动分类和识别。整单识别包括支票（含现金支票、普通支票、转账支票），承兑汇票（含银行承兑汇票、商业承兑汇票）以及进账单等，适用于中国人民银行印发的 2010 版银行票据凭证版式（银发[2010]299 号）。
+func (c *Client) FinanBillOCR(request *FinanBillOCRRequest) (response *FinanBillOCRResponse, err error) {
+    if request == nil {
+        request = NewFinanBillOCRRequest()
+    }
+    response = NewFinanBillOCRResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewFinanBillSliceOCRRequest() (request *FinanBillSliceOCRRequest) {
+    request = &FinanBillSliceOCRRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ocr", APIVersion, "FinanBillSliceOCR")
+    return
+}
+
+func NewFinanBillSliceOCRResponse() (response *FinanBillSliceOCRResponse) {
+    response = &FinanBillSliceOCRResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口支持常见银行票据的自动分类和识别。切片识别包括金融行业常见票据的重要切片字段识别，包括金额、账号、日期、凭证号码等。（金融票据切片：金融票据中待识别字段及其周围局部区域的裁剪图像。）
+func (c *Client) FinanBillSliceOCR(request *FinanBillSliceOCRRequest) (response *FinanBillSliceOCRResponse, err error) {
+    if request == nil {
+        request = NewFinanBillSliceOCRRequest()
+    }
+    response = NewFinanBillSliceOCRResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewFlightInvoiceOCRRequest() (request *FlightInvoiceOCRRequest) {
     request = &FlightInvoiceOCRRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -289,6 +391,31 @@ func (c *Client) FlightInvoiceOCR(request *FlightInvoiceOCRRequest) (response *F
         request = NewFlightInvoiceOCRRequest()
     }
     response = NewFlightInvoiceOCRResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewFormulaOCRRequest() (request *FormulaOCRRequest) {
+    request = &FormulaOCRRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ocr", APIVersion, "FormulaOCR")
+    return
+}
+
+func NewFormulaOCRResponse() (response *FormulaOCRResponse) {
+    response = &FormulaOCRResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口支持识别主流初高中数学符号和公式，返回公式的 Latex 格式文本。
+func (c *Client) FormulaOCR(request *FormulaOCRRequest) (response *FormulaOCRResponse, err error) {
+    if request == nil {
+        request = NewFormulaOCRRequest()
+    }
+    response = NewFormulaOCRResponse()
     err = c.Send(request, response)
     return
 }
@@ -439,6 +566,31 @@ func (c *Client) IDCardOCR(request *IDCardOCRRequest) (response *IDCardOCRRespon
         request = NewIDCardOCRRequest()
     }
     response = NewIDCardOCRResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewInstitutionOCRRequest() (request *InstitutionOCRRequest) {
+    request = &InstitutionOCRRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ocr", APIVersion, "InstitutionOCR")
+    return
+}
+
+func NewInstitutionOCRResponse() (response *InstitutionOCRResponse) {
+    response = &InstitutionOCRResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口支持事业单位法人证书关键字段识别，包括注册号、有效期、住所、名称、法定代表人等。
+func (c *Client) InstitutionOCR(request *InstitutionOCRRequest) (response *InstitutionOCRResponse, err error) {
+    if request == nil {
+        request = NewInstitutionOCRRequest()
+    }
+    response = NewInstitutionOCRResponse()
     err = c.Send(request, response)
     return
 }
@@ -595,6 +747,31 @@ func (c *Client) MixedInvoiceOCR(request *MixedInvoiceOCRRequest) (response *Mix
     return
 }
 
+func NewOrgCodeCertOCRRequest() (request *OrgCodeCertOCRRequest) {
+    request = &OrgCodeCertOCRRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ocr", APIVersion, "OrgCodeCertOCR")
+    return
+}
+
+func NewOrgCodeCertOCRResponse() (response *OrgCodeCertOCRResponse) {
+    response = &OrgCodeCertOCRResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口支持组织机构代码证关键字段的识别，包括代码、有效期、地址、机构名称等。
+func (c *Client) OrgCodeCertOCR(request *OrgCodeCertOCRRequest) (response *OrgCodeCertOCRResponse, err error) {
+    if request == nil {
+        request = NewOrgCodeCertOCRRequest()
+    }
+    response = NewOrgCodeCertOCRResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewPassportOCRRequest() (request *PassportOCRRequest) {
     request = &PassportOCRRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -641,6 +818,32 @@ func (c *Client) PermitOCR(request *PermitOCRRequest) (response *PermitOCRRespon
         request = NewPermitOCRRequest()
     }
     response = NewPermitOCRResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewQrcodeOCRRequest() (request *QrcodeOCRRequest) {
+    request = &QrcodeOCRRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ocr", APIVersion, "QrcodeOCR")
+    return
+}
+
+func NewQrcodeOCRResponse() (response *QrcodeOCRResponse) {
+    response = &QrcodeOCRResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口支持条形码和二维码的识别（包括 DataMatrix 和 PDF417）。
+// 本接口暂未完全对外开放，如需咨询，请[联系商务](https://cloud.tencent.com/about/connect)
+func (c *Client) QrcodeOCR(request *QrcodeOCRRequest) (response *QrcodeOCRResponse, err error) {
+    if request == nil {
+        request = NewQrcodeOCRRequest()
+    }
+    response = NewQrcodeOCRResponse()
     err = c.Send(request, response)
     return
 }
@@ -891,6 +1094,31 @@ func (c *Client) VehicleLicenseOCR(request *VehicleLicenseOCRRequest) (response 
         request = NewVehicleLicenseOCRRequest()
     }
     response = NewVehicleLicenseOCRResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewVehicleRegCertOCRRequest() (request *VehicleRegCertOCRRequest) {
+    request = &VehicleRegCertOCRRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ocr", APIVersion, "VehicleRegCertOCR")
+    return
+}
+
+func NewVehicleRegCertOCRResponse() (response *VehicleRegCertOCRResponse) {
+    response = &VehicleRegCertOCRResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口支持国内机动车登记证书主要字段的结构化识别，包括机动车所有人、身份证明名称、号码、车辆型号、车辆识别代号、发动机号、制造厂名称等。
+func (c *Client) VehicleRegCertOCR(request *VehicleRegCertOCRRequest) (response *VehicleRegCertOCRResponse, err error) {
+    if request == nil {
+        request = NewVehicleRegCertOCRRequest()
+    }
+    response = NewVehicleRegCertOCRResponse()
     err = c.Send(request, response)
     return
 }

@@ -23,7 +23,7 @@ import (
 type AudioModerationRequest struct {
 	*tchttp.BaseRequest
 
-	// 回调url
+	// 回调URL，音频识别结果将以POST请求方式发送到此地址
 	CallbackUrl *string `json:"CallbackUrl,omitempty" name:"CallbackUrl"`
 
 	// 音频内容的base64
@@ -68,6 +68,39 @@ func (r *AudioModerationResponse) ToJsonString() string {
 
 func (r *AudioModerationResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
+}
+
+type CodeDetail struct {
+
+	// 二维码在图片中的位置，由4个点的坐标表示
+	CodePosition []*CodePosition `json:"CodePosition,omitempty" name:"CodePosition" list`
+
+	// 二维码文本的编码格式
+	CodeCharset *string `json:"CodeCharset,omitempty" name:"CodeCharset"`
+
+	// 二维码的文本内容
+	CodeText *string `json:"CodeText,omitempty" name:"CodeText"`
+
+	// 二维码的类型：1：ONED_BARCODE，2：QRCOD，3:WXCODE，4：PDF417，5:DATAMATRIX
+	CodeType *int64 `json:"CodeType,omitempty" name:"CodeType"`
+}
+
+type CodeDetect struct {
+
+	// 从图片中检测到的二维码，可能为多个
+	ModerationDetail []*CodeDetail `json:"ModerationDetail,omitempty" name:"ModerationDetail" list`
+
+	// 检测是否成功，0：成功，-1：出错
+	ModerationCode *int64 `json:"ModerationCode,omitempty" name:"ModerationCode"`
+}
+
+type CodePosition struct {
+
+	// 二维码边界点X轴坐标
+	FloatX *float64 `json:"FloatX,omitempty" name:"FloatX"`
+
+	// 二维码边界点Y轴坐标
+	FloatY *float64 `json:"FloatY,omitempty" name:"FloatY"`
 }
 
 type CreateFileSampleRequest struct {
@@ -492,6 +525,9 @@ type ImageData struct {
 	// 21000：综合
 	EvilType *int64 `json:"EvilType,omitempty" name:"EvilType"`
 
+	// 图片二维码详情
+	CodeDetect *CodeDetect `json:"CodeDetect,omitempty" name:"CodeDetect"`
+
 	// 图片性感详情
 	HotDetect *ImageHotDetect `json:"HotDetect,omitempty" name:"HotDetect"`
 
@@ -780,8 +816,9 @@ type TextSample struct {
 	// 20002：色情 
 	// 20006：涉毒违法
 	// 20007：谩骂 
+	// 20105：广告引流 
 	// 24001：暴恐
-	// 21000：综合
+	// 20004/21000：综合
 	EvilType *uint64 `json:"EvilType,omitempty" name:"EvilType"`
 
 	// 唯一标识
@@ -801,7 +838,7 @@ type TextSample struct {
 type VideoModerationRequest struct {
 	*tchttp.BaseRequest
 
-	// 回调Url
+	// 回调URL，音频识别结果将以POST请求方式发送到此地址
 	CallbackUrl *string `json:"CallbackUrl,omitempty" name:"CallbackUrl"`
 
 	// 视频文件MD5

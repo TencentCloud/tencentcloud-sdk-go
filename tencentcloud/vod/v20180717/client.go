@@ -982,6 +982,34 @@ func (c *Client) DescribeAudioTrackTemplates(request *DescribeAudioTrackTemplate
     return
 }
 
+func NewDescribeCDNUsageDataRequest() (request *DescribeCDNUsageDataRequest) {
+    request = &DescribeCDNUsageDataRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vod", APIVersion, "DescribeCDNUsageData")
+    return
+}
+
+func NewDescribeCDNUsageDataResponse() (response *DescribeCDNUsageDataResponse) {
+    response = &DescribeCDNUsageDataResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 该接口用于查询点播 CDN 的流量、带宽等统计数据。
+//    1. 可以查询最近365天内的 CDN 用量数据。
+//    2.  查询时间跨度不超过90天。
+//    3.  流量为每天的总流量，带宽为每天的峰值带宽。
+func (c *Client) DescribeCDNUsageData(request *DescribeCDNUsageDataRequest) (response *DescribeCDNUsageDataResponse, err error) {
+    if request == nil {
+        request = NewDescribeCDNUsageDataRequest()
+    }
+    response = NewDescribeCDNUsageDataResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeContentReviewTemplatesRequest() (request *DescribeContentReviewTemplatesRequest) {
     request = &DescribeContentReviewTemplatesRequest{
         BaseRequest: &tchttp.BaseRequest{},
