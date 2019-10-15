@@ -27,7 +27,7 @@ const (
 	Guangzhou = "ap-guangzhou"
 	// 广州Open
 	GuangzhouOpen = "ap-guangzhou-open"
-	// 香港
+	// 中国香港
 	HongKong = "ap-hongkong"
 	// 孟买
 	Mumbai = "ap-mumbai"
@@ -41,6 +41,8 @@ const (
 	ShenzhenFSI = "ap-shenzhen-fsi"
 	// 新加坡
 	Singapore = "ap-singapore"
+	// 东京
+	Tokyo = "ap-tokyo"
 	// 法兰克福
 	Frankfurt = "eu-frankfurt"
 	// 莫斯科
