@@ -69,7 +69,7 @@ type CreateKeyRequest struct {
 	// 指定key的用途。目前，仅支持"ENCRYPT_DECRYPT"，默认为  "ENCRYPT_DECRYPT"，即key用于加密和解密
 	KeyUsage *string `json:"KeyUsage,omitempty" name:"KeyUsage"`
 
-	// 指定key类型，1为当前地域默认类型，默认为1，且当前只支持该类型
+	// 指定key类型，默认为1，1表示默认类型，由KMS创建CMK密钥，2 表示EXTERNAL 类型，该类型需要用户导入密钥材料，参考 GetParametersForImport 和 ImportKeyMaterial 接口
 	Type *uint64 `json:"Type,omitempty" name:"Type"`
 }
 
@@ -122,7 +122,7 @@ func (r *CreateKeyResponse) FromJsonString(s string) error {
 type DecryptRequest struct {
 	*tchttp.BaseRequest
 
-	// 被加密的密文数据
+	// 待解密的密文数据
 	CiphertextBlob *string `json:"CiphertextBlob,omitempty" name:"CiphertextBlob"`
 
 	// key/value对的json字符串，如果Encrypt指定了该参数，则在调用Decrypt API时需要提供同样的参数，最大支持1024字符
@@ -159,6 +159,40 @@ func (r *DecryptResponse) ToJsonString() string {
 }
 
 func (r *DecryptResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteImportedKeyMaterialRequest struct {
+	*tchttp.BaseRequest
+
+	// 指定需要删除密钥材料的EXTERNAL CMK。
+	KeyId *string `json:"KeyId,omitempty" name:"KeyId"`
+}
+
+func (r *DeleteImportedKeyMaterialRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteImportedKeyMaterialRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteImportedKeyMaterialResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DeleteImportedKeyMaterialResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteImportedKeyMaterialResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -468,7 +502,7 @@ type EncryptResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 加密后的密文
+		// 加密后经过base64编码的密文
 		CiphertextBlob *string `json:"CiphertextBlob,omitempty" name:"CiphertextBlob"`
 
 		// 加密使用的CMK的全局唯一标识
@@ -494,10 +528,10 @@ type GenerateDataKeyRequest struct {
 	// CMK全局唯一标识符
 	KeyId *string `json:"KeyId,omitempty" name:"KeyId"`
 
-	// 指定生成Datakey的加密算法以及Datakey大小，AES_128或者AES_256。
+	// 指定生成Datakey的加密算法以及Datakey大小，AES_128或者AES_256。KeySpec 和 NumberOfBytes 必须指定一个
 	KeySpec *string `json:"KeySpec,omitempty" name:"KeySpec"`
 
-	// 生成的DataKey的长度，同时指定NumberOfBytes和KeySpec时，以NumberOfBytes为准。最小值为1， 最大值为1024
+	// 生成的DataKey的长度，同时指定NumberOfBytes和KeySpec时，以NumberOfBytes为准。最小值为1， 最大值为1024。KeySpec 和 NumberOfBytes 必须指定一个
 	NumberOfBytes *uint64 `json:"NumberOfBytes,omitempty" name:"NumberOfBytes"`
 
 	// key/value对的json字符串，如果使用该字段，则返回的DataKey在解密时需要填入相同的字符串
@@ -523,7 +557,7 @@ type GenerateDataKeyResponse struct {
 		// 生成的DataKey的明文，该明文使用base64编码，用户需要使用base64解码得到明文
 		Plaintext *string `json:"Plaintext,omitempty" name:"Plaintext"`
 
-		// DataKey加密后的密文，用户需要自行保存密文
+		// DataKey加密后经过base64编码的密文，用户需要自行保存密文
 		CiphertextBlob *string `json:"CiphertextBlob,omitempty" name:"CiphertextBlob"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -577,6 +611,58 @@ func (r *GetKeyRotationStatusResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type GetParametersForImportRequest struct {
+	*tchttp.BaseRequest
+
+	// CMK的唯一标识，获取密钥参数的CMK必须是EXTERNAL类型，即在CreateKey时指定Type=2 类型的CMK。
+	KeyId *string `json:"KeyId,omitempty" name:"KeyId"`
+
+	// 指定加密密钥材料的算法，目前支持RSAES_PKCS1_V1_5、RSAES_OAEP_SHA_1、RSAES_OAEP_SHA_256
+	WrappingAlgorithm *string `json:"WrappingAlgorithm,omitempty" name:"WrappingAlgorithm"`
+
+	// 指定加密密钥材料的类型，目前只支持RSA_2048
+	WrappingKeySpec *string `json:"WrappingKeySpec,omitempty" name:"WrappingKeySpec"`
+}
+
+func (r *GetParametersForImportRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *GetParametersForImportRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type GetParametersForImportResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// CMK的唯一标识，用于指定目标导入密钥材料的CMK。
+		KeyId *string `json:"KeyId,omitempty" name:"KeyId"`
+
+		// 导入密钥材料需要的token，用于作为 ImportKeyMaterial 的参数。
+		ImportToken *string `json:"ImportToken,omitempty" name:"ImportToken"`
+
+		// 用于加密密钥材料的RSA公钥，base64编码。使用PublicKey base64解码后的公钥将导入密钥进行加密后作为 ImportKeyMaterial 的参数。
+		PublicKey *string `json:"PublicKey,omitempty" name:"PublicKey"`
+
+		// 该导出token和公钥的有效期，超过该时间后无法导入，需要重新调用GetParametersForImport获取。
+		ParametersValidTo *uint64 `json:"ParametersValidTo,omitempty" name:"ParametersValidTo"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *GetParametersForImportResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *GetParametersForImportResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type GetServiceStatusRequest struct {
 	*tchttp.BaseRequest
 }
@@ -615,6 +701,49 @@ func (r *GetServiceStatusResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type ImportKeyMaterialRequest struct {
+	*tchttp.BaseRequest
+
+	// 使用GetParametersForImport 返回的PublicKey加密后的密钥材料base64编码。对于国密版本region的KMS，导入的密钥材料长度要求为 128 bit，FIPS版本region的KMS， 导入的密钥材料长度要求为 256 bit。
+	EncryptedKeyMaterial *string `json:"EncryptedKeyMaterial,omitempty" name:"EncryptedKeyMaterial"`
+
+	// 通过调用GetParametersForImport获得的导入令牌。
+	ImportToken *string `json:"ImportToken,omitempty" name:"ImportToken"`
+
+	// 指定导入密钥材料的CMK，需要和GetParametersForImport 指定的CMK相同。
+	KeyId *string `json:"KeyId,omitempty" name:"KeyId"`
+
+	// 密钥材料过期时间 unix 时间戳，不指定或者 0 表示密钥材料不会过期，若指定过期时间，需要大于当前时间点。
+	ValidTo *uint64 `json:"ValidTo,omitempty" name:"ValidTo"`
+}
+
+func (r *ImportKeyMaterialRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ImportKeyMaterialRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ImportKeyMaterialResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ImportKeyMaterialResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ImportKeyMaterialResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type Key struct {
 
 	// CMK的全局唯一标识。
@@ -635,13 +764,13 @@ type KeyMetadata struct {
 	// CMK的描述
 	Description *string `json:"Description,omitempty" name:"Description"`
 
-	// CMK的状态， Enabled 或者 Disabled 或者PendingDelete状态
+	// CMK的状态， 取值为：Enabled | Disabled | PendingDelete | PendingImport
 	KeyState *string `json:"KeyState,omitempty" name:"KeyState"`
 
 	// CMK用途，当前是 ENCRYPT_DECRYPT
 	KeyUsage *string `json:"KeyUsage,omitempty" name:"KeyUsage"`
 
-	// CMK类型，当前为 1 普通类型
+	// CMK类型，2 表示符合FIPS标准，4表示符合国密标准
 	Type *int64 `json:"Type,omitempty" name:"Type"`
 
 	// 创建者
@@ -659,6 +788,14 @@ type KeyMetadata struct {
 	// 计划删除的时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DeletionDate *uint64 `json:"DeletionDate,omitempty" name:"DeletionDate"`
+
+	// CMK 密钥材料类型，由KMS创建的为： TENCENT_KMS， 由用户导入的类型为：EXTERNAL
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Origin *string `json:"Origin,omitempty" name:"Origin"`
+
+	// 在Origin为  EXTERNAL 时有效，表示密钥材料的有效日期， 0 表示不过期
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ValidTo *uint64 `json:"ValidTo,omitempty" name:"ValidTo"`
 }
 
 type ListKeyDetailRequest struct {
@@ -676,11 +813,14 @@ type ListKeyDetailRequest struct {
 	// 根据CMK创建时间排序， 0 表示按照降序排序，1表示按照升序排序
 	OrderType *uint64 `json:"OrderType,omitempty" name:"OrderType"`
 
-	// 根据CMK状态筛选， 0表示全部CMK， 1 表示仅查询Enabled CMK， 2 表示仅查询Disabled CMK，3表示查询PendingDelete CMK(处于计划删除状态的Key)
+	// 根据CMK状态筛选， 0表示全部CMK， 1 表示仅查询Enabled CMK， 2 表示仅查询Disabled CMK，3 表示查询PendingDelete 状态的CMK(处于计划删除状态的Key)，4 表示查询 PendingImport 状态的CMK
 	KeyState *uint64 `json:"KeyState,omitempty" name:"KeyState"`
 
 	// 根据KeyId或者Alias进行模糊匹配查询
 	SearchKeyAlias *string `json:"SearchKeyAlias,omitempty" name:"SearchKeyAlias"`
+
+	// 根据CMK类型筛选， "TENCENT_KMS" 表示筛选密钥材料由KMS创建的CMK， "EXTERNAL" 表示筛选密钥材料需要用户导入的 EXTERNAL类型CMK，"ALL" 或者不设置表示两种类型都查询，大小写敏感。
+	Origin *string `json:"Origin,omitempty" name:"Origin"`
 }
 
 func (r *ListKeyDetailRequest) ToJsonString() string {

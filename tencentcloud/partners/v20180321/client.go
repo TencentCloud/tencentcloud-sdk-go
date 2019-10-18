@@ -118,6 +118,31 @@ func (c *Client) AuditApplyClient(request *AuditApplyClientRequest) (response *A
     return
 }
 
+func NewCreatePayRelationForClientRequest() (request *CreatePayRelationForClientRequest) {
+    request = &CreatePayRelationForClientRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("partners", APIVersion, "CreatePayRelationForClient")
+    return
+}
+
+func NewCreatePayRelationForClientResponse() (response *CreatePayRelationForClientResponse) {
+    response = &CreatePayRelationForClientResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 合作伙伴为客户创建强代付关系
+func (c *Client) CreatePayRelationForClient(request *CreatePayRelationForClientRequest) (response *CreatePayRelationForClientResponse, err error) {
+    if request == nil {
+        request = NewCreatePayRelationForClientRequest()
+    }
+    response = NewCreatePayRelationForClientResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeAgentAuditedClientsRequest() (request *DescribeAgentAuditedClientsRequest) {
     request = &DescribeAgentAuditedClientsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -339,6 +364,31 @@ func (c *Client) ModifyClientRemark(request *ModifyClientRemarkRequest) (respons
         request = NewModifyClientRemarkRequest()
     }
     response = NewModifyClientRemarkResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewRemovePayRelationForClientRequest() (request *RemovePayRelationForClientRequest) {
+    request = &RemovePayRelationForClientRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("partners", APIVersion, "RemovePayRelationForClient")
+    return
+}
+
+func NewRemovePayRelationForClientResponse() (response *RemovePayRelationForClientResponse) {
+    response = &RemovePayRelationForClientResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 合作伙伴为客户消除强代付关系
+func (c *Client) RemovePayRelationForClient(request *RemovePayRelationForClientRequest) (response *RemovePayRelationForClientResponse, err error) {
+    if request == nil {
+        request = NewRemovePayRelationForClientRequest()
+    }
+    response = NewRemovePayRelationForClientResponse()
     err = c.Send(request, response)
     return
 }

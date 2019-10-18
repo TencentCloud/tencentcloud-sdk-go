@@ -110,6 +110,9 @@ type Cluster struct {
 	// 标签描述列表。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TagSpecification []*TagSpecification `json:"TagSpecification,omitempty" name:"TagSpecification" list`
+
+	// 集群状态 (Running 运行中  Creating 创建中 Abnormal 异常  )
+	ClusterStatus *string `json:"ClusterStatus,omitempty" name:"ClusterStatus"`
 }
 
 type ClusterAdvancedSettings struct {
@@ -149,6 +152,9 @@ type ClusterBasicSettings struct {
 
 	// 容器的镜像版本，"DOCKER_CUSTOMIZE"(容器定制版),"GENERAL"(普通版本，默认值)
 	OsCustomizeType *string `json:"OsCustomizeType,omitempty" name:"OsCustomizeType"`
+
+	// 是否开启节点的默认安全组(默认: 否，Aphla特性)
+	NeedWorkSecurityGroup *bool `json:"NeedWorkSecurityGroup,omitempty" name:"NeedWorkSecurityGroup"`
 }
 
 type ClusterCIDRSettings struct {
@@ -474,6 +480,9 @@ type DeleteClusterInstancesRequest struct {
 
 	// 集群实例删除时的策略：terminate（销毁实例，仅支持按量计费云主机实例） retain （仅移除，保留实例）
 	InstanceDeleteMode *string `json:"InstanceDeleteMode,omitempty" name:"InstanceDeleteMode"`
+
+	// 是否强制删除(当节点在初始化时，可以指定参数为TRUE)
+	ForceDelete *bool `json:"ForceDelete,omitempty" name:"ForceDelete"`
 }
 
 func (r *DeleteClusterInstancesRequest) ToJsonString() string {
@@ -851,7 +860,7 @@ func (r *DescribeClustersResponse) FromJsonString(s string) error {
 type DescribeExistedInstancesRequest struct {
 	*tchttp.BaseRequest
 
-	// 集群 ID，请填写查询集群列表 接口中返回的 ClusterId 字段（仅通过ClusterId获取需要过滤条件中的VPCID，比较状态时会使用该地域下所有集群中的节点进行比较。参数不支持同时指定InstanceIds和ClusterId。
+	// 集群 ID，请填写查询集群列表 接口中返回的 ClusterId 字段（仅通过ClusterId获取需要过滤条件中的VPCID。节点状态比较时会使用该地域下所有集群中的节点进行比较。参数不支持同时指定InstanceIds和ClusterId。
 	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
 
 	// 按照一个或者多个实例ID查询。实例ID形如：ins-xxxxxxxx。（此参数的具体格式可参考API简介的id.N一节）。每次请求的实例的上限为100。参数不支持同时指定InstanceIds和Filters。
@@ -1081,6 +1090,9 @@ type InstanceAdvancedSettings struct {
 
 	// 设置加入的节点是否参与调度，默认值为0，表示参与调度；非0表示不参与调度, 待节点初始化完成之后, 可执行kubectl uncordon nodename使node加入调度.
 	Unschedulable *int64 `json:"Unschedulable,omitempty" name:"Unschedulable"`
+
+	// 节点Label数组
+	Labels []*Label `json:"Labels,omitempty" name:"Labels" list`
 }
 
 type Label struct {

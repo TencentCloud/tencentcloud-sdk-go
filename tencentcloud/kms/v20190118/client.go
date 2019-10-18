@@ -118,6 +118,31 @@ func (c *Client) Decrypt(request *DecryptRequest) (response *DecryptResponse, er
     return
 }
 
+func NewDeleteImportedKeyMaterialRequest() (request *DeleteImportedKeyMaterialRequest) {
+    request = &DeleteImportedKeyMaterialRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("kms", APIVersion, "DeleteImportedKeyMaterial")
+    return
+}
+
+func NewDeleteImportedKeyMaterialResponse() (response *DeleteImportedKeyMaterialResponse) {
+    response = &DeleteImportedKeyMaterialResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 用于删除导入的密钥材料，仅对EXTERNAL类型的CMK有效，该接口将CMK设置为PendingImport 状态，并不会删除CMK，在重新进行密钥导入后可继续使用。彻底删除CMK请使用 ScheduleKeyDeletion 接口。
+func (c *Client) DeleteImportedKeyMaterial(request *DeleteImportedKeyMaterialRequest) (response *DeleteImportedKeyMaterialResponse, err error) {
+    if request == nil {
+        request = NewDeleteImportedKeyMaterialRequest()
+    }
+    response = NewDeleteImportedKeyMaterialResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeKeyRequest() (request *DescribeKeyRequest) {
     request = &DescribeKeyRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -393,6 +418,31 @@ func (c *Client) GetKeyRotationStatus(request *GetKeyRotationStatusRequest) (res
     return
 }
 
+func NewGetParametersForImportRequest() (request *GetParametersForImportRequest) {
+    request = &GetParametersForImportRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("kms", APIVersion, "GetParametersForImport")
+    return
+}
+
+func NewGetParametersForImportResponse() (response *GetParametersForImportResponse) {
+    response = &GetParametersForImportResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 获取导入主密钥（CMK）材料的参数，返回的Token作为执行ImportKeyMaterial的参数之一，返回的PublicKey用于对自主导入密钥材料进行加密。返回的Token和PublicKey 24小时后失效，失效后如需重新导入，需要再次调用该接口获取新的Token和PublicKey。
+func (c *Client) GetParametersForImport(request *GetParametersForImportRequest) (response *GetParametersForImportResponse, err error) {
+    if request == nil {
+        request = NewGetParametersForImportRequest()
+    }
+    response = NewGetParametersForImportResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewGetServiceStatusRequest() (request *GetServiceStatusRequest) {
     request = &GetServiceStatusRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -414,6 +464,32 @@ func (c *Client) GetServiceStatus(request *GetServiceStatusRequest) (response *G
         request = NewGetServiceStatusRequest()
     }
     response = NewGetServiceStatusResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewImportKeyMaterialRequest() (request *ImportKeyMaterialRequest) {
+    request = &ImportKeyMaterialRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("kms", APIVersion, "ImportKeyMaterial")
+    return
+}
+
+func NewImportKeyMaterialResponse() (response *ImportKeyMaterialResponse) {
+    response = &ImportKeyMaterialResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 用于导入密钥材料。只有类型为EXTERNAL 的CMK 才可以导入，导入的密钥材料使用 GetParametersForImport 获取的密钥进行加密。可以为指定的 CMK 重新导入密钥材料，并重新指定过期时间，但必须导入相同的密钥材料。CMK 密钥材料导入后不可以更换密钥材料。导入的密钥材料过期或者被删除后，指定的CMK将无法使用，需要再次导入相同的密钥材料才能正常使用。CMK是独立的，同样的密钥材料可导入不同的 CMK 中，但使用其中一个 CMK 加密的数据无法使用另一个 CMK解密。
+// 只有Enabled 和 PendingImport状态的CMK可以导入密钥材料。
+func (c *Client) ImportKeyMaterial(request *ImportKeyMaterialRequest) (response *ImportKeyMaterialResponse, err error) {
+    if request == nil {
+        request = NewImportKeyMaterialRequest()
+    }
+    response = NewImportKeyMaterialResponse()
     err = c.Send(request, response)
     return
 }
@@ -458,7 +534,7 @@ func NewListKeysResponse() (response *ListKeysResponse) {
     return
 }
 
-// 列出账号下面的密钥列表（KeyId信息）。
+// 列出账号下面状态为Enabled， Disabled 和 PendingImport 的CMK KeyId 列表
 func (c *Client) ListKeys(request *ListKeysRequest) (response *ListKeysResponse, err error) {
     if request == nil {
         request = NewListKeysRequest()
@@ -533,7 +609,7 @@ func NewUpdateAliasResponse() (response *UpdateAliasResponse) {
     return
 }
 
-// 用于修改CMK的别名。
+// 用于修改CMK的别名。对于处于PendingDelete状态的CMK禁止修改。
 func (c *Client) UpdateAlias(request *UpdateAliasRequest) (response *UpdateAliasResponse, err error) {
     if request == nil {
         request = NewUpdateAliasRequest()
@@ -558,7 +634,7 @@ func NewUpdateKeyDescriptionResponse() (response *UpdateKeyDescriptionResponse) 
     return
 }
 
-// 该接口用于对指定的cmk修改描述信息。
+// 该接口用于对指定的cmk修改描述信息。对于处于PendingDelete状态的CMK禁止修改。
 func (c *Client) UpdateKeyDescription(request *UpdateKeyDescriptionRequest) (response *UpdateKeyDescriptionResponse, err error) {
     if request == nil {
         request = NewUpdateKeyDescriptionRequest()

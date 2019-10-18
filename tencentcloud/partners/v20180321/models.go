@@ -68,6 +68,10 @@ type AgentAuditedClient struct {
 	// 业务员姓名
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SalesName *string `json:"SalesName,omitempty" name:"SalesName"`
+
+	// 代客邮箱
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Mail *string `json:"Mail,omitempty" name:"Mail"`
 }
 
 type AgentBillElem struct {
@@ -109,6 +113,10 @@ type AgentBillElem struct {
 	// 项目类型：可以为self(自拓项目)/platform(合作项目)/repeat(复算项目  )/空
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProjectType *string `json:"ProjectType,omitempty" name:"ProjectType"`
+
+	// 活动ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ActivityId *string `json:"ActivityId,omitempty" name:"ActivityId"`
 }
 
 type AgentClientElem struct {
@@ -227,6 +235,10 @@ type AgentDealElem struct {
 	// 支付方式，0：自付；1：代付
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PayerMode *string `json:"PayerMode,omitempty" name:"PayerMode"`
+
+	// 活动ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ActivityId *string `json:"ActivityId,omitempty" name:"ActivityId"`
 }
 
 type AgentPayDealsRequest struct {
@@ -370,6 +382,40 @@ func (r *AuditApplyClientResponse) ToJsonString() string {
 }
 
 func (r *AuditApplyClientResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreatePayRelationForClientRequest struct {
+	*tchttp.BaseRequest
+
+	// 客户账号ID
+	ClientUin *string `json:"ClientUin,omitempty" name:"ClientUin"`
+}
+
+func (r *CreatePayRelationForClientRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreatePayRelationForClientRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreatePayRelationForClientResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreatePayRelationForClientResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreatePayRelationForClientResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -884,4 +930,38 @@ type RebateInfoElem struct {
 
 	// NORMAL(正常)/HAS_OVERDUE_BILL(欠费)/NO_CONTRACT(缺合同)
 	ExceptionFlag *string `json:"ExceptionFlag,omitempty" name:"ExceptionFlag"`
+}
+
+type RemovePayRelationForClientRequest struct {
+	*tchttp.BaseRequest
+
+	// 客户账号ID
+	ClientUin *string `json:"ClientUin,omitempty" name:"ClientUin"`
+}
+
+func (r *RemovePayRelationForClientRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *RemovePayRelationForClientRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type RemovePayRelationForClientResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *RemovePayRelationForClientResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *RemovePayRelationForClientResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
 }

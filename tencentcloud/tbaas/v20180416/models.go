@@ -20,6 +20,115 @@ import (
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
+type ApplyUserCertRequest struct {
+	*tchttp.BaseRequest
+
+	// 模块名，固定字段：cert_mng
+	Module *string `json:"Module,omitempty" name:"Module"`
+
+	// 操作名，固定字段：cert_apply_for_user
+	Operation *string `json:"Operation,omitempty" name:"Operation"`
+
+	// 区块链网络ID，可在区块链网络详情或列表中获取
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 申请证书的组织名称，可以在组织管理列表中获取当前组织的名称
+	GroupName *string `json:"GroupName,omitempty" name:"GroupName"`
+
+	// 用户证书标识，用于标识用户证书，要求由纯小写字母组成，长度小于10
+	UserIdentity *string `json:"UserIdentity,omitempty" name:"UserIdentity"`
+
+	// 证书申请实体，使用腾讯云账号实名认证的名称
+	Applicant *string `json:"Applicant,omitempty" name:"Applicant"`
+
+	// 证件号码。如果腾讯云账号对应的实名认证类型为企业认证，填入企业营业执照；如果腾讯云账号对应的实名认证类型为个人认证，填入个人身份证号码
+	IdentityNum *string `json:"IdentityNum,omitempty" name:"IdentityNum"`
+
+	// csr p10证书文件。需要用户根据文档生成证书的CSR文件
+	CsrData *string `json:"CsrData,omitempty" name:"CsrData"`
+
+	// 证书备注信息
+	Notes *string `json:"Notes,omitempty" name:"Notes"`
+}
+
+func (r *ApplyUserCertRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ApplyUserCertRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ApplyUserCertResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ApplyUserCertResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ApplyUserCertResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type BcosBlockObj struct {
+
+	// 区块哈希
+	BlockHash *string `json:"BlockHash,omitempty" name:"BlockHash"`
+
+	// 区块高度
+	BlockNumber *int64 `json:"BlockNumber,omitempty" name:"BlockNumber"`
+
+	// 区块时间戳
+	BlockTimestamp *string `json:"BlockTimestamp,omitempty" name:"BlockTimestamp"`
+
+	// 打包节点id
+	Sealer *string `json:"Sealer,omitempty" name:"Sealer"`
+
+	// 打包节点索引
+	SealerIndex *int64 `json:"SealerIndex,omitempty" name:"SealerIndex"`
+
+	// 记录保存时间
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 交易数量
+	TransCount *int64 `json:"TransCount,omitempty" name:"TransCount"`
+
+	// 记录修改时间
+	ModifyTime *string `json:"ModifyTime,omitempty" name:"ModifyTime"`
+}
+
+type BcosTransInfo struct {
+
+	// 所属区块高度
+	BlockNumber *int64 `json:"BlockNumber,omitempty" name:"BlockNumber"`
+
+	// 区块时间戳
+	BlockTimestamp *string `json:"BlockTimestamp,omitempty" name:"BlockTimestamp"`
+
+	// 交易哈希
+	TransHash *string `json:"TransHash,omitempty" name:"TransHash"`
+
+	// 交易发起者
+	TransFrom *string `json:"TransFrom,omitempty" name:"TransFrom"`
+
+	// 交易接收者
+	TransTo *string `json:"TransTo,omitempty" name:"TransTo"`
+
+	// 落库时间
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 修改时间
+	ModifyTime *string `json:"ModifyTime,omitempty" name:"ModifyTime"`
+}
+
 type Block struct {
 
 	// 区块编号
@@ -36,6 +145,165 @@ type Block struct {
 
 	// 区块内的交易数量
 	TxCount *uint64 `json:"TxCount,omitempty" name:"TxCount"`
+}
+
+type BlockByNumberHandlerRequest struct {
+	*tchttp.BaseRequest
+
+	// 模块名，固定字段：block
+	Module *string `json:"Module,omitempty" name:"Module"`
+
+	// 操作名，固定字段：block_by_number
+	Operation *string `json:"Operation,omitempty" name:"Operation"`
+
+	// 当前群组编号
+	GroupPk *string `json:"GroupPk,omitempty" name:"GroupPk"`
+
+	// 区块高度
+	BlockNumber *int64 `json:"BlockNumber,omitempty" name:"BlockNumber"`
+}
+
+func (r *BlockByNumberHandlerRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *BlockByNumberHandlerRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type BlockByNumberHandlerResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 返回区块json字符串
+		BlockJson *string `json:"BlockJson,omitempty" name:"BlockJson"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *BlockByNumberHandlerResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *BlockByNumberHandlerResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DownloadUserCertRequest struct {
+	*tchttp.BaseRequest
+
+	// 模块名，固定字段：cert_mng
+	Module *string `json:"Module,omitempty" name:"Module"`
+
+	// 操作名，固定字段：cert_download_for_user
+	Operation *string `json:"Operation,omitempty" name:"Operation"`
+
+	// 证书ID，可以在证书详情页面获取
+	CertId *uint64 `json:"CertId,omitempty" name:"CertId"`
+
+	// 证书DN，可以在证书详情页面获取
+	CertDn *string `json:"CertDn,omitempty" name:"CertDn"`
+
+	// 区块链网络ID，可在区块链网络详情或列表中获取
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 下载证书的组织名称，可以在组织管理列表中获取当前组织的名称
+	GroupName *string `json:"GroupName,omitempty" name:"GroupName"`
+}
+
+func (r *DownloadUserCertRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DownloadUserCertRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DownloadUserCertResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 证书名称
+		CertName *string `json:"CertName,omitempty" name:"CertName"`
+
+		// 证书内容
+		CertCtx *string `json:"CertCtx,omitempty" name:"CertCtx"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DownloadUserCertResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DownloadUserCertResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type GetBlockListHandlerRequest struct {
+	*tchttp.BaseRequest
+
+	// 模块名，固定字段：block
+	Module *string `json:"Module,omitempty" name:"Module"`
+
+	// 操作名，固定字段：get_block_list
+	Operation *string `json:"Operation,omitempty" name:"Operation"`
+
+	// 记录偏移数
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 每页记录数
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 当前群组编号
+	GroupPk *string `json:"GroupPk,omitempty" name:"GroupPk"`
+
+	// 区块哈希
+	BlockHash *string `json:"BlockHash,omitempty" name:"BlockHash"`
+}
+
+func (r *GetBlockListHandlerRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *GetBlockListHandlerRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type GetBlockListHandlerResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 总记录数
+		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 当前群组编号
+		GroupPk *string `json:"GroupPk,omitempty" name:"GroupPk"`
+
+		// 返回数据列表
+		List []*BcosBlockObj `json:"List,omitempty" name:"List" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *GetBlockListHandlerResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *GetBlockListHandlerResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
 }
 
 type GetBlockListRequest struct {
@@ -140,14 +408,8 @@ type GetClusterSummaryResponse struct {
 		// 当前组织创建的通道数量
 		MyChannelCount *uint64 `json:"MyChannelCount,omitempty" name:"MyChannelCount"`
 
-		// 其组织创建的通道数量
-		OtherChannelCount *uint64 `json:"OtherChannelCount,omitempty" name:"OtherChannelCount"`
-
 		// 当前组织加入的通道数量
 		JoinChannelCount *uint64 `json:"JoinChannelCount,omitempty" name:"JoinChannelCount"`
-
-		// 与当前组织无关的通道数量
-		NoneChannelCount *uint64 `json:"NoneChannelCount,omitempty" name:"NoneChannelCount"`
 
 		// 网络节点总数量
 		TotalPeerCount *uint64 `json:"TotalPeerCount,omitempty" name:"TotalPeerCount"`
@@ -156,16 +418,13 @@ type GetClusterSummaryResponse struct {
 		MyPeerCount *uint64 `json:"MyPeerCount,omitempty" name:"MyPeerCount"`
 
 		// 其他组织创建的节点数量
-		OtherPeerCount *uint64 `json:"OtherPeerCount,omitempty" name:"OtherPeerCount"`
+		OrderCount *uint64 `json:"OrderCount,omitempty" name:"OrderCount"`
 
 		// 网络组织总数量
 		TotalGroupCount *uint64 `json:"TotalGroupCount,omitempty" name:"TotalGroupCount"`
 
 		// 当前组织创建的组织数量
 		MyGroupCount *uint64 `json:"MyGroupCount,omitempty" name:"MyGroupCount"`
-
-		// 其他组织创建的组织数量
-		OtherGroupCount *uint64 `json:"OtherGroupCount,omitempty" name:"OtherGroupCount"`
 
 		// 网络智能合约总数量
 		TotalChaincodeCount *uint64 `json:"TotalChaincodeCount,omitempty" name:"TotalChaincodeCount"`
@@ -176,9 +435,6 @@ type GetClusterSummaryResponse struct {
 		// 当前组织发起的智能合约数量
 		MyChaincodeCount *uint64 `json:"MyChaincodeCount,omitempty" name:"MyChaincodeCount"`
 
-		// 其组织发起的智能合约数量
-		OtherChaincodeCount *uint64 `json:"OtherChaincodeCount,omitempty" name:"OtherChaincodeCount"`
-
 		// 当前组织的证书总数量
 		TotalCertCount *uint64 `json:"TotalCertCount,omitempty" name:"TotalCertCount"`
 
@@ -187,9 +443,6 @@ type GetClusterSummaryResponse struct {
 
 		// 网络背书节点证书数量
 		PeerCertCount *uint64 `json:"PeerCertCount,omitempty" name:"PeerCertCount"`
-
-		// 网络排序节点证书数量
-		OrderCertCount *uint64 `json:"OrderCertCount,omitempty" name:"OrderCertCount"`
 
 		// 当前组织业务证书数量
 		ClientCertCount *uint64 `json:"ClientCertCount,omitempty" name:"ClientCertCount"`
@@ -339,6 +592,110 @@ func (r *GetLatesdTransactionListResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type GetTransByHashHandlerRequest struct {
+	*tchttp.BaseRequest
+
+	// 模块名，固定字段：transaction
+	Module *string `json:"Module,omitempty" name:"Module"`
+
+	// 操作名，固定字段：get_trans_by_hash
+	Operation *string `json:"Operation,omitempty" name:"Operation"`
+
+	// 群组编号
+	GroupPk *string `json:"GroupPk,omitempty" name:"GroupPk"`
+
+	// 交易哈希
+	TransHash *string `json:"TransHash,omitempty" name:"TransHash"`
+}
+
+func (r *GetTransByHashHandlerRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *GetTransByHashHandlerRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type GetTransByHashHandlerResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 交易信息json字符串
+		TransactionJson *string `json:"TransactionJson,omitempty" name:"TransactionJson"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *GetTransByHashHandlerResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *GetTransByHashHandlerResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type GetTransListHandlerRequest struct {
+	*tchttp.BaseRequest
+
+	// 模块名，固定字段：transaction
+	Module *string `json:"Module,omitempty" name:"Module"`
+
+	// 操作名，固定字段：get_trans_list
+	Operation *string `json:"Operation,omitempty" name:"Operation"`
+
+	// 记录偏移量
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 每页记录数
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 群组编号
+	GroupPk *string `json:"GroupPk,omitempty" name:"GroupPk"`
+
+	// 交易哈希
+	TransHash *string `json:"TransHash,omitempty" name:"TransHash"`
+}
+
+func (r *GetTransListHandlerRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *GetTransListHandlerRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type GetTransListHandlerResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 总记录数
+		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 当前群组编号
+		GroupPk *string `json:"GroupPk,omitempty" name:"GroupPk"`
+
+		// 返回数据列表
+		List []*BcosTransInfo `json:"List,omitempty" name:"List" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *GetTransListHandlerResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *GetTransListHandlerResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type InvokeRequest struct {
 	*tchttp.BaseRequest
 
@@ -473,6 +830,110 @@ func (r *QueryResponse) ToJsonString() string {
 }
 
 func (r *QueryResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type SendTransactionHandlerRequest struct {
+	*tchttp.BaseRequest
+
+	// 模块名，固定字段：transaction
+	Module *string `json:"Module,omitempty" name:"Module"`
+
+	// 操作名，固定字段：send_transaction
+	Operation *string `json:"Operation,omitempty" name:"Operation"`
+
+	// 群组编号
+	GroupPk *string `json:"GroupPk,omitempty" name:"GroupPk"`
+
+	// 私钥用户编号
+	KeyUser *string `json:"KeyUser,omitempty" name:"KeyUser"`
+
+	// 合约编号
+	ContractId *int64 `json:"ContractId,omitempty" name:"ContractId"`
+
+	// 合约方法名
+	FuncName *string `json:"FuncName,omitempty" name:"FuncName"`
+
+	// 合约方法入参
+	FuncParam []*string `json:"FuncParam,omitempty" name:"FuncParam" list`
+}
+
+func (r *SendTransactionHandlerRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *SendTransactionHandlerRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type SendTransactionHandlerResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 交易结果json字符串
+		TransactionRsp *string `json:"TransactionRsp,omitempty" name:"TransactionRsp"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *SendTransactionHandlerResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *SendTransactionHandlerResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type SrvInvokeRequest struct {
+	*tchttp.BaseRequest
+
+	// 服务类型，ss或者dam
+	Service *string `json:"Service,omitempty" name:"Service"`
+
+	// 服务接口，要调用的方法函数名
+	Method *string `json:"Method,omitempty" name:"Method"`
+
+	// 用户自定义json字符串
+	Param *string `json:"Param,omitempty" name:"Param"`
+}
+
+func (r *SrvInvokeRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *SrvInvokeRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type SrvInvokeResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 返回码
+		RetCode *int64 `json:"RetCode,omitempty" name:"RetCode"`
+
+		// 返回消息
+		RetMsg *string `json:"RetMsg,omitempty" name:"RetMsg"`
+
+		// 返回数据
+		Data *string `json:"Data,omitempty" name:"Data"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *SrvInvokeResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *SrvInvokeResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 

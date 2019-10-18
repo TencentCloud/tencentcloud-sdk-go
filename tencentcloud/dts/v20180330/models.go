@@ -813,7 +813,7 @@ type SrcInfo struct {
 	// 实例的密码
 	Password *string `json:"Password,omitempty" name:"Password"`
 
-	// 阿里云RDS实例ID。源库是阿里云RDS5.6适用
+	// 阿里云RDS实例ID。源库是阿里云RDS5.6/5.6适用
 	RdsInstanceId *string `json:"RdsInstanceId,omitempty" name:"RdsInstanceId"`
 
 	// CVM实例短ID，格式如：ins-olgl39y8，与云主机控制台页面显示的实例ID相同。如果是CVM自建实例，需要传递此字段
@@ -843,6 +843,9 @@ type SrcInfo struct {
 	// 云联网ID，如：ccn-afp6kltc
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CcnId *string `json:"CcnId,omitempty" name:"CcnId"`
+
+	// 数据库版本，当实例为RDS实例时才有效，格式如：5.6或者5.7，默认为5.6
+	EngineVersion *string `json:"EngineVersion,omitempty" name:"EngineVersion"`
 }
 
 type StartMigrateJobRequest struct {

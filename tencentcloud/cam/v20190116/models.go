@@ -204,6 +204,22 @@ type AttachPolicyInfo struct {
 	// 取值为user和QCS
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PolicyType *string `json:"PolicyType,omitempty" name:"PolicyType"`
+
+	// 策略备注
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Remark *string `json:"Remark,omitempty" name:"Remark"`
+
+	// 策略关联操作者主张号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OperateOwnerUin *uint64 `json:"OperateOwnerUin,omitempty" name:"OperateOwnerUin"`
+
+	// 策略关联操作者ID，如果UinType为0表示子帐号Uin，如果UinType为1表示角色ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OperateUin *uint64 `json:"OperateUin,omitempty" name:"OperateUin"`
+
+	// UinType为0表示OperateUin字段是子帐号Uin，如果UinType为1表示OperateUin字段是角色ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OperateUinType *uint64 `json:"OperateUinType,omitempty" name:"OperateUinType"`
 }
 
 type AttachRolePolicyRequest struct {
@@ -425,7 +441,7 @@ type CreateRoleRequest struct {
 	// 角色名称
 	RoleName *string `json:"RoleName,omitempty" name:"RoleName"`
 
-	// 策略文档
+	// 策略文档，示例：{"version":"2.0","statement":[{"action":"name/sts:AssumeRole","effect":"allow","principal":{"service":["cloudaudit.cloud.tencent.com","cls.cloud.tencent.com"]}}]}，principal用于指定角色的授权对象。获取该参数可参阅 获取角色详情（https://cloud.tencent.com/document/product/598/36221） 输出参数RoleInfo
 	PolicyDocument *string `json:"PolicyDocument,omitempty" name:"PolicyDocument"`
 
 	// 角色描述
@@ -1869,7 +1885,7 @@ type SubAccountInfo struct {
 type UpdateAssumeRolePolicyRequest struct {
 	*tchttp.BaseRequest
 
-	// 策略文档
+	// 策略文档，示例：{"version":"2.0","statement":[{"action":"name/sts:AssumeRole","effect":"allow","principal":{"service":["cloudaudit.cloud.tencent.com","cls.cloud.tencent.com"]}}]}，principal用于指定角色的授权对象。获取该参数可参阅 获取角色详情（https://cloud.tencent.com/document/product/598/36221） 输出参数RoleInfo
 	PolicyDocument *string `json:"PolicyDocument,omitempty" name:"PolicyDocument"`
 
 	// 角色ID，用于指定角色，入参 RoleId 与 RoleName 二选一

@@ -43,6 +43,81 @@ func NewClient(credential *common.Credential, region string, clientProfile *prof
 }
 
 
+func NewApplyUserCertRequest() (request *ApplyUserCertRequest) {
+    request = &ApplyUserCertRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tbaas", APIVersion, "ApplyUserCert")
+    return
+}
+
+func NewApplyUserCertResponse() (response *ApplyUserCertResponse) {
+    response = &ApplyUserCertResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 申请用户证书
+func (c *Client) ApplyUserCert(request *ApplyUserCertRequest) (response *ApplyUserCertResponse, err error) {
+    if request == nil {
+        request = NewApplyUserCertRequest()
+    }
+    response = NewApplyUserCertResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewBlockByNumberHandlerRequest() (request *BlockByNumberHandlerRequest) {
+    request = &BlockByNumberHandlerRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tbaas", APIVersion, "BlockByNumberHandler")
+    return
+}
+
+func NewBlockByNumberHandlerResponse() (response *BlockByNumberHandlerResponse) {
+    response = &BlockByNumberHandlerResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// Bcos根据块高查询区块信息
+func (c *Client) BlockByNumberHandler(request *BlockByNumberHandlerRequest) (response *BlockByNumberHandlerResponse, err error) {
+    if request == nil {
+        request = NewBlockByNumberHandlerRequest()
+    }
+    response = NewBlockByNumberHandlerResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDownloadUserCertRequest() (request *DownloadUserCertRequest) {
+    request = &DownloadUserCertRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tbaas", APIVersion, "DownloadUserCert")
+    return
+}
+
+func NewDownloadUserCertResponse() (response *DownloadUserCertResponse) {
+    response = &DownloadUserCertResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 下载用户证书
+func (c *Client) DownloadUserCert(request *DownloadUserCertRequest) (response *DownloadUserCertResponse, err error) {
+    if request == nil {
+        request = NewDownloadUserCertRequest()
+    }
+    response = NewDownloadUserCertResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewGetBlockListRequest() (request *GetBlockListRequest) {
     request = &GetBlockListRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -64,6 +139,31 @@ func (c *Client) GetBlockList(request *GetBlockListRequest) (response *GetBlockL
         request = NewGetBlockListRequest()
     }
     response = NewGetBlockListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewGetBlockListHandlerRequest() (request *GetBlockListHandlerRequest) {
+    request = &GetBlockListHandlerRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tbaas", APIVersion, "GetBlockListHandler")
+    return
+}
+
+func NewGetBlockListHandlerResponse() (response *GetBlockListHandlerResponse) {
+    response = &GetBlockListHandlerResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// bcos分页查询当前群组下的区块列表
+func (c *Client) GetBlockListHandler(request *GetBlockListHandlerRequest) (response *GetBlockListHandlerResponse, err error) {
+    if request == nil {
+        request = NewGetBlockListHandlerRequest()
+    }
+    response = NewGetBlockListHandlerResponse()
     err = c.Send(request, response)
     return
 }
@@ -143,6 +243,56 @@ func (c *Client) GetLatesdTransactionList(request *GetLatesdTransactionListReque
     return
 }
 
+func NewGetTransByHashHandlerRequest() (request *GetTransByHashHandlerRequest) {
+    request = &GetTransByHashHandlerRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tbaas", APIVersion, "GetTransByHashHandler")
+    return
+}
+
+func NewGetTransByHashHandlerResponse() (response *GetTransByHashHandlerResponse) {
+    response = &GetTransByHashHandlerResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// Bcos根据交易哈希查看交易详细信息
+func (c *Client) GetTransByHashHandler(request *GetTransByHashHandlerRequest) (response *GetTransByHashHandlerResponse, err error) {
+    if request == nil {
+        request = NewGetTransByHashHandlerRequest()
+    }
+    response = NewGetTransByHashHandlerResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewGetTransListHandlerRequest() (request *GetTransListHandlerRequest) {
+    request = &GetTransListHandlerRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tbaas", APIVersion, "GetTransListHandler")
+    return
+}
+
+func NewGetTransListHandlerResponse() (response *GetTransListHandlerResponse) {
+    response = &GetTransListHandlerResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// Bcos分页查询当前群组的交易信息列表
+func (c *Client) GetTransListHandler(request *GetTransListHandlerRequest) (response *GetTransListHandlerResponse, err error) {
+    if request == nil {
+        request = NewGetTransListHandlerRequest()
+    }
+    response = NewGetTransListHandlerResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewInvokeRequest() (request *InvokeRequest) {
     request = &InvokeRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -189,6 +339,56 @@ func (c *Client) Query(request *QueryRequest) (response *QueryResponse, err erro
         request = NewQueryRequest()
     }
     response = NewQueryResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewSendTransactionHandlerRequest() (request *SendTransactionHandlerRequest) {
+    request = &SendTransactionHandlerRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tbaas", APIVersion, "SendTransactionHandler")
+    return
+}
+
+func NewSendTransactionHandlerResponse() (response *SendTransactionHandlerResponse) {
+    response = &SendTransactionHandlerResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// Bcos发送交易
+func (c *Client) SendTransactionHandler(request *SendTransactionHandlerRequest) (response *SendTransactionHandlerResponse, err error) {
+    if request == nil {
+        request = NewSendTransactionHandlerRequest()
+    }
+    response = NewSendTransactionHandlerResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewSrvInvokeRequest() (request *SrvInvokeRequest) {
+    request = &SrvInvokeRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tbaas", APIVersion, "SrvInvoke")
+    return
+}
+
+func NewSrvInvokeResponse() (response *SrvInvokeResponse) {
+    response = &SrvInvokeResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// trustsql服务统一接口
+func (c *Client) SrvInvoke(request *SrvInvokeRequest) (response *SrvInvokeResponse, err error) {
+    if request == nil {
+        request = NewSrvInvokeRequest()
+    }
+    response = NewSrvInvokeResponse()
     err = c.Send(request, response)
     return
 }

@@ -218,6 +218,31 @@ func (c *Client) DownloadTids(request *DownloadTidsRequest) (response *DownloadT
     return
 }
 
+func NewUploadDeviceUniqueCodeRequest() (request *UploadDeviceUniqueCodeRequest) {
+    request = &UploadDeviceUniqueCodeRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iottid", APIVersion, "UploadDeviceUniqueCode")
+    return
+}
+
+func NewUploadDeviceUniqueCodeResponse() (response *UploadDeviceUniqueCodeResponse) {
+    response = &UploadDeviceUniqueCodeResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 上传硬件唯一标识码，是软加固设备身份参数。本接口如遇到错误数据，则所有当次上传数据失效。
+func (c *Client) UploadDeviceUniqueCode(request *UploadDeviceUniqueCodeRequest) (response *UploadDeviceUniqueCodeResponse, err error) {
+    if request == nil {
+        request = NewUploadDeviceUniqueCodeRequest()
+    }
+    response = NewUploadDeviceUniqueCodeResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewVerifyChipBurnInfoRequest() (request *VerifyChipBurnInfoRequest) {
     request = &VerifyChipBurnInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},

@@ -326,6 +326,57 @@ type TidKeysInfo struct {
 	DeviceCode *string `json:"DeviceCode,omitempty" name:"DeviceCode"`
 }
 
+type UploadDeviceUniqueCodeRequest struct {
+	*tchttp.BaseRequest
+
+	// 硬件唯一标识码
+	CodeSet []*string `json:"CodeSet,omitempty" name:"CodeSet" list`
+
+	// 硬件标识码绑定的申请编号
+	OrderId *string `json:"OrderId,omitempty" name:"OrderId"`
+}
+
+func (r *UploadDeviceUniqueCodeRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *UploadDeviceUniqueCodeRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type UploadDeviceUniqueCodeResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 本次已上传数量
+		Count *uint64 `json:"Count,omitempty" name:"Count"`
+
+		// 重复的硬件唯一标识码
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		ExistedCodeSet []*string `json:"ExistedCodeSet,omitempty" name:"ExistedCodeSet" list`
+
+		// 剩余可上传数量
+		LeftQuantity *uint64 `json:"LeftQuantity,omitempty" name:"LeftQuantity"`
+
+		// 错误的硬件唯一标识码
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		IllegalCodeSet []*string `json:"IllegalCodeSet,omitempty" name:"IllegalCodeSet" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *UploadDeviceUniqueCodeResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *UploadDeviceUniqueCodeResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type VerifyChipBurnInfoRequest struct {
 	*tchttp.BaseRequest
 

@@ -3307,6 +3307,8 @@ type DescribeCcnsRequest struct {
 	// <li>ccn-name - String - （过滤条件）CCN名称。</li>
 	// <li>ccn-description - String - （过滤条件）CCN描述。</li>
 	// <li>state - String - （过滤条件）实例状态， 'ISOLATED': 隔离中（欠费停服），'AVAILABLE'：运行中。</li>
+	// <li>tag-key - String -是否必填：否- （过滤条件）按照标签键进行过滤。</li>
+	// <li>tag:tag-key - String - 是否必填：否 - （过滤条件）按照标签键值对进行过滤。 tag-key使用具体的标签键进行替换。使用请参考示例：查询绑定了标签的CCN列表。</li>
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
 
 	// 偏移量
@@ -4024,6 +4026,46 @@ func (r *DescribeNatGatewaysResponse) ToJsonString() string {
 }
 
 func (r *DescribeNatGatewaysResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeNetworkInterfaceLimitRequest struct {
+	*tchttp.BaseRequest
+
+	// 要查询的CVM实例ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+}
+
+func (r *DescribeNetworkInterfaceLimitRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeNetworkInterfaceLimitRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeNetworkInterfaceLimitResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 弹性网卡配额
+		EniQuantity *int64 `json:"EniQuantity,omitempty" name:"EniQuantity"`
+
+		// 每个弹性网卡可以分配的ip配额
+		EniPrivateIpAddressQuantity *int64 `json:"EniPrivateIpAddressQuantity,omitempty" name:"EniPrivateIpAddressQuantity"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeNetworkInterfaceLimitResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeNetworkInterfaceLimitResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -7730,6 +7772,9 @@ type SecurityGroupPolicy struct {
 
 	// 网段或IP(互斥)。
 	CidrBlock *string `json:"CidrBlock,omitempty" name:"CidrBlock"`
+
+	// 网段或IPv6(互斥)。
+	Ipv6CidrBlock *string `json:"Ipv6CidrBlock,omitempty" name:"Ipv6CidrBlock"`
 
 	// 安全组实例ID，例如：sg-ohuuioma。
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" name:"SecurityGroupId"`

@@ -5567,84 +5567,81 @@ type MediaContentReviewOcrTextSegmentItem struct {
 	// 嫌疑文字出现的区域坐标 (像素级)，[x1, y1, x2, y2]，即左上角坐标、右下角坐标。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AreaCoordSet []*int64 `json:"AreaCoordSet,omitempty" name:"AreaCoordSet" list`
+
+	// 嫌疑图片 URL （图片不会永久存储，到达
+	// PicUrlExpireTime 时间点后图片将被删除）。
+	Url *string `json:"Url,omitempty" name:"Url"`
+
+	// 嫌疑图片 URL 失效时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+	PicUrlExpireTime *int64 `json:"PicUrlExpireTime,omitempty" name:"PicUrlExpireTime"`
 }
 
 type MediaContentReviewPoliticalSegmentItem struct {
 
 	// 嫌疑片段起始的偏移时间，单位：秒。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	StartTimeOffset *float64 `json:"StartTimeOffset,omitempty" name:"StartTimeOffset"`
 
 	// 嫌疑片段结束的偏移时间，单位：秒。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	EndTimeOffset *float64 `json:"EndTimeOffset,omitempty" name:"EndTimeOffset"`
 
 	// 嫌疑片段涉政分数。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Confidence *float64 `json:"Confidence,omitempty" name:"Confidence"`
 
 	// 嫌疑片段鉴政结果建议，取值范围：
 	// <li>pass。</li>
 	// <li>review。</li>
 	// <li>block。</li>
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Suggestion *string `json:"Suggestion,omitempty" name:"Suggestion"`
 
 	// 涉政人物、违规图标名字。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Name *string `json:"Name,omitempty" name:"Name"`
 
 	// 嫌疑片段鉴政结果标签。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Label *string `json:"Label,omitempty" name:"Label"`
 
 	// 嫌疑图片 URL （图片不会永久存储，到达
 	//  PicUrlExpireTime 时间点后图片将被删除）。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Url *string `json:"Url,omitempty" name:"Url"`
 
 	// 涉政人物、违规图标出现的区域坐标 (像素级)，[x1, y1, x2, y2]，即左上角坐标、右下角坐标。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AreaCoordSet []*int64 `json:"AreaCoordSet,omitempty" name:"AreaCoordSet" list`
 
-	// 嫌疑图片 URL 失效时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
-	// 注意：此字段可能返回 null，表示取不到有效值。
+	// 该字段已废弃，请使用 PicUrlExpireTime。
 	PicUrlExpireTimeStamp *int64 `json:"PicUrlExpireTimeStamp,omitempty" name:"PicUrlExpireTimeStamp"`
+
+	// 嫌疑图片 URL 失效时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+	PicUrlExpireTime *string `json:"PicUrlExpireTime,omitempty" name:"PicUrlExpireTime"`
 }
 
 type MediaContentReviewSegmentItem struct {
 
 	// 嫌疑片段起始的偏移时间，单位：秒。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	StartTimeOffset *float64 `json:"StartTimeOffset,omitempty" name:"StartTimeOffset"`
 
 	// 嫌疑片段结束的偏移时间，单位：秒。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	EndTimeOffset *float64 `json:"EndTimeOffset,omitempty" name:"EndTimeOffset"`
 
 	// 嫌疑片段涉黄分数。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Confidence *float64 `json:"Confidence,omitempty" name:"Confidence"`
 
 	// 嫌疑片段鉴黄结果标签。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Label *string `json:"Label,omitempty" name:"Label"`
 
 	// 嫌疑片段鉴黄结果建议，取值范围：
 	// <li>pass。</li>
 	// <li>review。</li>
 	// <li>block。</li>
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Suggestion *string `json:"Suggestion,omitempty" name:"Suggestion"`
 
 	// 嫌疑图片 URL （图片不会永久存储，到达
 	//  PicUrlExpireTime 时间点后图片将被删除）。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Url *string `json:"Url,omitempty" name:"Url"`
 
-	// 嫌疑图片 URL 失效时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
-	// 注意：此字段可能返回 null，表示取不到有效值。
+	// 该字段已废弃，请使用 PicUrlExpireTime。
 	PicUrlExpireTimeStamp *int64 `json:"PicUrlExpireTimeStamp,omitempty" name:"PicUrlExpireTimeStamp"`
+
+	// 嫌疑图片 URL 失效时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+	PicUrlExpireTime *string `json:"PicUrlExpireTime,omitempty" name:"PicUrlExpireTime"`
 }
 
 type MediaDeleteItem struct {
@@ -7642,6 +7639,11 @@ type ProcedureTemplate struct {
 
 	// 任务流名字。
 	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 任务流模板类型，取值范围：
+	// <li>Preset：系统预置任务流模板；</li>
+	// <li>Custom：用户自定义任务流模板。</li>
+	Type *string `json:"Type,omitempty" name:"Type"`
 
 	// 视频处理类型任务参数。
 	// 注意：此字段可能返回 null，表示取不到有效值。

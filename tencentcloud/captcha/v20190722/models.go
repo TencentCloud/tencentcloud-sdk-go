@@ -67,7 +67,28 @@ type DescribeCaptchaResultResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 1:验证成功，0:验证失败，100:AppSecretKey参数校验错误
+		// 1	OK	验证通过
+	// 6	user code len error	验证码长度不匹配
+	// 7	captcha no match	验证码答案不匹配/Randstr参数不匹配
+	// 8	verify timeout	验证码签名超时
+	// 9	Sequnce repeat	验证码签名重放
+	// 10	Sequnce invalid	验证码签名序列
+	// 11	Cookie invalid	验证码cooking信息不合法
+	// 12	sig len error	签名长度错误
+	// 13	verify ip no match	ip不匹配
+	// 15	decrypt fail	验证码签名解密失败
+	// 16	appid no match	验证码强校验appid错误
+	// 17	cmd no much	验证码系统命令不匹配
+	// 18	uin no match	号码不匹配
+	// 19	seq redirect	重定向验证
+	// 20	opt no vcode	操作使用pt免验证码校验错误
+	// 21	diff	差别，验证错误
+	// 22	captcha type not match	验证码类型与拉取时不一致
+	// 23	verify type error	验证类型错误
+	// 24	invalid pkg	非法请求包
+	// 25	bad visitor	策略拦截
+	// 26	system busy	系统内部错误
+	// 100	param err	appsecretkey 参数校验错误
 		CaptchaCode *int64 `json:"CaptchaCode,omitempty" name:"CaptchaCode"`
 
 		// 状态描述及验证错误信息

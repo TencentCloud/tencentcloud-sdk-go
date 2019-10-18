@@ -246,6 +246,9 @@ type TextTranslateRequest struct {
 
 	// 项目ID，可以根据控制台-账号中心-项目管理中的配置填写，如无配置请填写默认项目ID:0
 	ProjectId *int64 `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 用来标记不希望被翻译的文本内容，如句子中的特殊符号、人名、地名等；每次请求只支持配置一个不被翻译的单词；仅支持配置人名、地名等名词，不要配置动词或短语，否则会影响翻译结果。
+	UntranslatedText *string `json:"UntranslatedText,omitempty" name:"UntranslatedText"`
 }
 
 func (r *TextTranslateRequest) ToJsonString() string {
