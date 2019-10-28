@@ -20,6 +20,143 @@ import (
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
+type AppStatisticsItem struct {
+
+	// 实时语音统计数据
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RealtimeSpeechStatisticsItem *RealTimeSpeechStatisticsItem `json:"RealtimeSpeechStatisticsItem,omitempty" name:"RealtimeSpeechStatisticsItem"`
+
+	// 语音消息统计数据
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VoiceMessageStatisticsItem *VoiceMessageStatisticsItem `json:"VoiceMessageStatisticsItem,omitempty" name:"VoiceMessageStatisticsItem"`
+
+	// 语音过滤统计数据
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VoiceFilterStatisticsItem *VoiceFilterStatisticsItem `json:"VoiceFilterStatisticsItem,omitempty" name:"VoiceFilterStatisticsItem"`
+
+	// 统计时间
+	Date *string `json:"Date,omitempty" name:"Date"`
+}
+
+type CreateAppRequest struct {
+	*tchttp.BaseRequest
+
+	// 应用名称
+	AppName *string `json:"AppName,omitempty" name:"AppName"`
+
+	// 腾讯云项目id，默认为0，表示默认项目
+	ProjectId *uint64 `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 需要支持的引擎列表，取值android, ios, uinty, cocos, unreal, windows。默认全选。
+	EngineList []*string `json:"EngineList,omitempty" name:"EngineList" list`
+
+	// 服务区域列表, 默认为空数组. 取值: mainland(美), sa(南美), eu(欧洲), oc(澳洲), me(中东)。默认全选
+	RegionList []*string `json:"RegionList,omitempty" name:"RegionList" list`
+
+	// 实时语音服务配置数据
+	RealtimeSpeechConf *RealtimeSpeechConf `json:"RealtimeSpeechConf,omitempty" name:"RealtimeSpeechConf"`
+
+	// 离线语音服务配置数据
+	VoiceMessageConf *VoiceMessageConf `json:"VoiceMessageConf,omitempty" name:"VoiceMessageConf"`
+
+	// 语音过滤服务配置数据
+	VoiceFilterConf *VoiceFilterConf `json:"VoiceFilterConf,omitempty" name:"VoiceFilterConf"`
+
+	// 需要添加的标签列表
+	Tags []*Tag `json:"Tags,omitempty" name:"Tags" list`
+}
+
+func (r *CreateAppRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateAppRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateAppResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 应用id，由后台自动生成。
+		BizId *uint64 `json:"BizId,omitempty" name:"BizId"`
+
+		// 应用名称，透传输入参数的AppName
+		AppName *string `json:"AppName,omitempty" name:"AppName"`
+
+		// 项目id，透传输入的ProjectId
+		ProjectId *uint64 `json:"ProjectId,omitempty" name:"ProjectId"`
+
+		// 应用密钥，GME SDK初始化时使用
+		SecretKey *string `json:"SecretKey,omitempty" name:"SecretKey"`
+
+		// 服务创建时间戳
+		CreateTime *uint64 `json:"CreateTime,omitempty" name:"CreateTime"`
+
+		// 实时语音服务配置数据
+		RealtimeSpeechConf *RealtimeSpeechConf `json:"RealtimeSpeechConf,omitempty" name:"RealtimeSpeechConf"`
+
+		// 语音消息服务配置数据
+		VoiceMessageConf *VoiceMessageConf `json:"VoiceMessageConf,omitempty" name:"VoiceMessageConf"`
+
+		// 语音过滤服务配置数据
+		VoiceFilterConf *VoiceFilterConf `json:"VoiceFilterConf,omitempty" name:"VoiceFilterConf"`
+	} `json:"Response"`
+}
+
+func (r *CreateAppResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateAppResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeAppStatisticsRequest struct {
+	*tchttp.BaseRequest
+
+	// GME应用id
+	BizId *uint64 `json:"BizId,omitempty" name:"BizId"`
+
+	// 数据开始时间，东八区时间，格式: 年-月-日，如: 2018-07-13
+	StartDate *string `json:"StartDate,omitempty" name:"StartDate"`
+
+	// 数据结束时间，东八区时间，格式: 年-月-日，如: 2018-07-13
+	EndDate *string `json:"EndDate,omitempty" name:"EndDate"`
+
+	// 要查询的服务列表，取值：RealTimeSpeech/VoiceMessage/VoiceFilter
+	Services []*string `json:"Services,omitempty" name:"Services" list`
+}
+
+func (r *DescribeAppStatisticsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeAppStatisticsRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeAppStatisticsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 应用用量统计数据
+		AppStatistics []*AppStatisticsItem `json:"AppStatistics,omitempty" name:"AppStatistics" list`
+	} `json:"Response"`
+}
+
+func (r *DescribeAppStatisticsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeAppStatisticsResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeFilterResultListRequest struct {
 	*tchttp.BaseRequest
 
@@ -162,7 +299,7 @@ type DescribeScanResult struct {
 type DescribeScanResultListRequest struct {
 	*tchttp.BaseRequest
 
-	// 应用 ID，在控制台统一创建。
+	// 应用 ID，登录[控制台](https://console.cloud.tencent.com/gamegme)创建应用得到的AppID
 	BizId *uint64 `json:"BizId,omitempty" name:"BizId"`
 
 	// 查询的任务 ID 列表，任务 ID 列表最多支持 100 个。
@@ -198,6 +335,76 @@ func (r *DescribeScanResultListResponse) ToJsonString() string {
 
 func (r *DescribeScanResultListResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyAppStatusRequest struct {
+	*tchttp.BaseRequest
+
+	// 应用id，创建应用后由后台生成并返回。
+	BizId *uint64 `json:"BizId,omitempty" name:"BizId"`
+
+	// 应用状态，取值：open/close
+	Status *string `json:"Status,omitempty" name:"Status"`
+}
+
+func (r *ModifyAppStatusRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyAppStatusRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyAppStatusResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// GME应用id
+		BizId *uint64 `json:"BizId,omitempty" name:"BizId"`
+
+		// 应用状态，取值：open/close
+		Status *string `json:"Status,omitempty" name:"Status"`
+	} `json:"Response"`
+}
+
+func (r *ModifyAppStatusResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyAppStatusResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type RealTimeSpeechStatisticsItem struct {
+
+	// 大陆地区DAU
+	MainLandDau *uint64 `json:"MainLandDau,omitempty" name:"MainLandDau"`
+
+	// 大陆地区PCU
+	MainLandPcu *uint64 `json:"MainLandPcu,omitempty" name:"MainLandPcu"`
+
+	// 大陆地区总使用时长，单位为min
+	MainLandDuration *uint64 `json:"MainLandDuration,omitempty" name:"MainLandDuration"`
+
+	// 海外地区DAU
+	OverseaDau *uint64 `json:"OverseaDau,omitempty" name:"OverseaDau"`
+
+	// 海外地区PCU
+	OverseaPcu *uint64 `json:"OverseaPcu,omitempty" name:"OverseaPcu"`
+
+	// 海外地区总使用时长，单位为min
+	OverseaDuration *uint64 `json:"OverseaDuration,omitempty" name:"OverseaDuration"`
+}
+
+type RealtimeSpeechConf struct {
+
+	// 实时语音服务开关，取值：open/close
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 实时语音音质类型，取值：high-高音质，ordinary-普通音质。 默认为普通音质。
+	Quality *string `json:"Quality,omitempty" name:"Quality"`
 }
 
 type ScanDetail struct {
@@ -241,12 +448,16 @@ type ScanPiece struct {
 	// gme实时语音用户id，透传任务传入时的OpenId
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	OpenId *string `json:"OpenId,omitempty" name:"OpenId"`
+
+	// 备注
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Info *string `json:"Info,omitempty" name:"Info"`
 }
 
 type ScanVoiceRequest struct {
 	*tchttp.BaseRequest
 
-	// 应用ID，登录控制台创建应用得到的AppID。
+	// 应用ID，登录[控制台 - 服务管理](https://console.cloud.tencent.com/gamegme)创建应用得到的AppID
 	BizId *uint64 `json:"BizId,omitempty" name:"BizId"`
 
 	// 语音检测场景，参数值目前要求为 default。 预留场景设置： 谩骂、色情、涉政、广告、暴恐、违禁等场景，<a href="#Label_Value">具体取值见上述 Label 说明。</a>
@@ -304,6 +515,17 @@ type ScanVoiceResult struct {
 	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
 }
 
+type Tag struct {
+
+	// 标签键
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TagKey *string `json:"TagKey,omitempty" name:"TagKey"`
+
+	// 标签值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TagValue *string `json:"TagValue,omitempty" name:"TagValue"`
+}
+
 type Task struct {
 
 	// 数据的唯一ID
@@ -328,6 +550,12 @@ type VoiceFilter struct {
 	// 过滤命中关键词
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Word *string `json:"Word,omitempty" name:"Word"`
+}
+
+type VoiceFilterConf struct {
+
+	// 语音过滤服务开关，取值：open/close
+	Status *string `json:"Status,omitempty" name:"Status"`
 }
 
 type VoiceFilterInfo struct {
@@ -404,4 +632,25 @@ func (r *VoiceFilterResponse) ToJsonString() string {
 
 func (r *VoiceFilterResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
+}
+
+type VoiceFilterStatisticsItem struct {
+
+	// 语音过滤总时长
+	Duration *uint64 `json:"Duration,omitempty" name:"Duration"`
+}
+
+type VoiceMessageConf struct {
+
+	// 离线语音服务开关，取值：open/close
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 离线语音支持语种，取值： all-全部，cnen-中英文。默认为中英文
+	Language *string `json:"Language,omitempty" name:"Language"`
+}
+
+type VoiceMessageStatisticsItem struct {
+
+	// 离线语音DAU
+	Dau *uint64 `json:"Dau,omitempty" name:"Dau"`
 }

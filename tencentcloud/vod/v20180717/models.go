@@ -5573,7 +5573,7 @@ type MediaContentReviewOcrTextSegmentItem struct {
 	Url *string `json:"Url,omitempty" name:"Url"`
 
 	// 嫌疑图片 URL 失效时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
-	PicUrlExpireTime *int64 `json:"PicUrlExpireTime,omitempty" name:"PicUrlExpireTime"`
+	PicUrlExpireTime *string `json:"PicUrlExpireTime,omitempty" name:"PicUrlExpireTime"`
 }
 
 type MediaContentReviewPoliticalSegmentItem struct {
@@ -7661,6 +7661,10 @@ type ProcedureTemplate struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AiRecognitionTask *AiRecognitionTaskInput `json:"AiRecognitionTask,omitempty" name:"AiRecognitionTask"`
 
+	// 微信小程序发布任务参数。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MiniProgramPublishTask *WechatMiniProgramPublishTaskInput `json:"MiniProgramPublishTask,omitempty" name:"MiniProgramPublishTask"`
+
 	// 模板创建时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
 	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
 
@@ -7790,7 +7794,7 @@ func (r *ProcessMediaByUrlResponse) FromJsonString(s string) error {
 type ProcessMediaRequest struct {
 	*tchttp.BaseRequest
 
-	// 媒体文件 ID。
+	// 媒体文件 ID，即该文件在云点播上的全局唯一标识符，在上传成功后由云点播后台分配。可以在 [视频上传完成事件通知](/document/product/266/7830) 或 [云点播控制台](https://console.cloud.tencent.com/vod/media) 获取该字段。
 	FileId *string `json:"FileId,omitempty" name:"FileId"`
 
 	// 视频处理类型任务参数。
@@ -8492,6 +8496,14 @@ type SvgWatermarkInputForUpdate struct {
 	// <li>当字符串以 % 结尾时，含义同 H%。
 	// 默认值为 0px。
 	Height *string `json:"Height,omitempty" name:"Height"`
+
+	// 水印周期配置，用于配置水印周期性地显示与隐藏。
+	// 主要使用场景是：为了视频防遮标，在视频多个地方设置水印，这些水印按固定顺序周期性地显示与隐藏。
+	// 比如，设置 A、B、C、D 4 个水印分别位于视频的左上角、右上角、右下角、左下角处，视频开始时，{ A 显示 5 秒 -> B 显示 5 秒 -> C 显示 5 秒 -> D 显示 5 秒 } -> A 显示 5 秒 -> B 显示 5 秒 -> ...，任何时刻只显示一处水印。
+	// 花括号 {} 表示由 A、B、C、D 4 个水印组成的大周期，可以看出每个大周期持续 20 秒。
+	// 可以看出，A、B、C、D 都是周期性地显示 5 秒、隐藏 15 秒，且四者有固定的显示顺序。
+	// 此配置项即用来描述单个水印的周期配置。
+	CycleConfig *WatermarkCycleConfigForUpdate `json:"CycleConfig,omitempty" name:"CycleConfig"`
 }
 
 type TEHDConfig struct {
@@ -9190,6 +9202,19 @@ type VideoTrackTemplateInfo struct {
 	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
 }
 
+type WatermarkCycleConfigForUpdate struct {
+
+	// 水印在视频里第一次出现的播放时间点，单位：秒。
+	StartTime *float64 `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 在一个水印周期内，水印显示的持续时间，单位：秒。
+	DisplayDuration *float64 `json:"DisplayDuration,omitempty" name:"DisplayDuration"`
+
+	// 一个水印周期的持续时间，单位：秒。
+	// 填 0 表示水印只持续一个水印周期（即在整个视频里只显示 DisplayDuration 秒）。
+	CycleDuration *float64 `json:"CycleDuration,omitempty" name:"CycleDuration"`
+}
+
 type WatermarkInput struct {
 
 	// 水印模板 ID。
@@ -9330,6 +9355,12 @@ type WechatMiniProgramPublishTask struct {
 	// <li>Failed：发布失败；</li>
 	// <li>Rejected：审核未通过。</li>
 	PublishResult *string `json:"PublishResult,omitempty" name:"PublishResult"`
+}
+
+type WechatMiniProgramPublishTaskInput struct {
+
+	// 发布视频所对应的转码模板 ID，为 0 代表原始视频。
+	SourceDefinition *uint64 `json:"SourceDefinition,omitempty" name:"SourceDefinition"`
 }
 
 type WechatPublishTask struct {

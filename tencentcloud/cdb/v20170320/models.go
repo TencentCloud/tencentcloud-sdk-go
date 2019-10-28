@@ -272,6 +272,30 @@ type ColumnPrivilege struct {
 	Privileges []*string `json:"Privileges,omitempty" name:"Privileges" list`
 }
 
+type CommonTimeWindow struct {
+
+	// 周一的时间窗，格式如： 02:00-06:00
+	Monday *string `json:"Monday,omitempty" name:"Monday"`
+
+	// 周二的时间窗，格式如： 02:00-06:00
+	Tuesday *string `json:"Tuesday,omitempty" name:"Tuesday"`
+
+	// 周三的时间窗，格式如： 02:00-06:00
+	Wednesday *string `json:"Wednesday,omitempty" name:"Wednesday"`
+
+	// 周四的时间窗，格式如： 02:00-06:00
+	Thursday *string `json:"Thursday,omitempty" name:"Thursday"`
+
+	// 周五的时间窗，格式如： 02:00-06:00
+	Friday *string `json:"Friday,omitempty" name:"Friday"`
+
+	// 周六的时间窗，格式如： 02:00-06:00
+	Saturday *string `json:"Saturday,omitempty" name:"Saturday"`
+
+	// 周日的时间窗，格式如： 02:00-06:00
+	Sunday *string `json:"Sunday,omitempty" name:"Sunday"`
+}
+
 type CreateAccountsRequest struct {
 	*tchttp.BaseRequest
 
@@ -632,6 +656,46 @@ func (r *CreateDBInstanceResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type CreateDeployGroupRequest struct {
+	*tchttp.BaseRequest
+
+	// 置放群组名称，最长不能超过60个字符。
+	DeployGroupName *string `json:"DeployGroupName,omitempty" name:"DeployGroupName"`
+
+	// 置放群组描述，最长不能超过200个字符。
+	Description *string `json:"Description,omitempty" name:"Description"`
+}
+
+func (r *CreateDeployGroupRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateDeployGroupRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateDeployGroupResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 置放群组ID
+		DeployGroupId *string `json:"DeployGroupId,omitempty" name:"DeployGroupId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateDeployGroupResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateDeployGroupResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type CreateParamTemplateRequest struct {
 	*tchttp.BaseRequest
 
@@ -782,6 +846,40 @@ func (r *DeleteBackupResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DeleteDeployGroupsRequest struct {
+	*tchttp.BaseRequest
+
+	// 要删除的置放群组 ID 列表。
+	DeployGroupIds []*string `json:"DeployGroupIds,omitempty" name:"DeployGroupIds" list`
+}
+
+func (r *DeleteDeployGroupsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteDeployGroupsRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteDeployGroupsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DeleteDeployGroupsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteDeployGroupsResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DeleteParamTemplateRequest struct {
 	*tchttp.BaseRequest
 
@@ -848,6 +946,24 @@ func (r *DeleteTimeWindowResponse) ToJsonString() string {
 
 func (r *DeleteTimeWindowResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
+}
+
+type DeployGroupInfo struct {
+
+	// 置放群组 ID。
+	DeployGroupId *string `json:"DeployGroupId,omitempty" name:"DeployGroupId"`
+
+	// 置放群组名称。
+	DeployGroupName *string `json:"DeployGroupName,omitempty" name:"DeployGroupName"`
+
+	// 创建时间。
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 置放群组描述。
+	Description *string `json:"Description,omitempty" name:"Description"`
+
+	// 置放群组实例配额。
+	Quota *int64 `json:"Quota,omitempty" name:"Quota"`
 }
 
 type DescribeAccountPrivilegesRequest struct {
@@ -969,9 +1085,11 @@ type DescribeAsyncRequestInfoResponse struct {
 	Response *struct {
 
 		// 任务执行结果。可能的取值：INITIAL - 初始化，RUNNING - 运行中，SUCCESS - 执行成功，FAILED - 执行失败，KILLED - 已终止，REMOVED - 已删除，PAUSED - 终止中。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 		Status *string `json:"Status,omitempty" name:"Status"`
 
 		// 任务执行信息描述。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 		Info *string `json:"Info,omitempty" name:"Info"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -1520,13 +1638,13 @@ type DescribeDBInstancesRequest struct {
 	// 初始化标记，可取值：0 - 未初始化，1 - 初始化。
 	InitFlag *int64 `json:"InitFlag,omitempty" name:"InitFlag"`
 
-	// 是否包含灾备实例，可取值：0 - 不包含，1 - 包含。
+	// 是否包含灾备关系对应的实例，可取值：0 - 不包含，1 - 包含。默认取值为1。如果拉取主实例，则灾备关系的数据在DrInfo字段中， 如果拉取灾备实例， 则灾备关系的数据在MasterInfo字段中。灾备关系中只包含部分基本的数据，详细的数据需要自行调接口拉取。
 	WithDr *int64 `json:"WithDr,omitempty" name:"WithDr"`
 
-	// 是否包含只读实例，可取值：0 - 不包含，1 - 包含。
+	// 是否包含只读实例，可取值：0 - 不包含，1 - 包含。默认取值为1。
 	WithRo *int64 `json:"WithRo,omitempty" name:"WithRo"`
 
-	// 是否包含主实例，可取值：0 - 不包含，1 - 包含。
+	// 是否包含主实例，可取值：0 - 不包含，1 - 包含。默认取值为1。
 	WithMaster *int64 `json:"WithMaster,omitempty" name:"WithMaster"`
 }
 
@@ -1830,6 +1948,56 @@ func (r *DescribeDefaultParamsResponse) ToJsonString() string {
 }
 
 func (r *DescribeDefaultParamsResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeDeployGroupListRequest struct {
+	*tchttp.BaseRequest
+
+	// 置放群组 ID。
+	DeployGroupId *string `json:"DeployGroupId,omitempty" name:"DeployGroupId"`
+
+	// 置放群组名称。
+	DeployGroupName *string `json:"DeployGroupName,omitempty" name:"DeployGroupName"`
+
+	// 返回数量，默认为20，最大值为100。
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 偏移量，默认为0。
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+}
+
+func (r *DescribeDeployGroupListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeDeployGroupListRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeDeployGroupListResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 返回列表。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Items []*DeployGroupInfo `json:"Items,omitempty" name:"Items" list`
+
+		// 符合条件的记录总数
+		Total *int64 `json:"Total,omitempty" name:"Total"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeDeployGroupListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeDeployGroupListResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -2936,6 +3104,7 @@ type IsolateDBInstanceResponse struct {
 	Response *struct {
 
 		// 异步任务的请求 ID，可使用此 ID 查询异步任务的执行结果。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 		AsyncRequestId *string `json:"AsyncRequestId,omitempty" name:"AsyncRequestId"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -3193,7 +3362,7 @@ type ModifyBackupConfigRequest struct {
 	// 备份文件的保留时间，单位为天。最小值为7天，最大值为732天。
 	ExpireDays *int64 `json:"ExpireDays,omitempty" name:"ExpireDays"`
 
-	// 备份时间范围，格式为：02:00-06:00，起点和终点时间目前限制为整点，目前可以选择的范围为： 00:00-12:00，02:00-06:00，06：00-10：00，10:00-14:00，14:00-18:00，18:00-22:00，22:00-02:00。
+	// (将废弃，建议使用 BackupTimeWindow 参数) 备份时间范围，格式为：02:00-06:00，起点和终点时间目前限制为整点，目前可以选择的范围为： 00:00-12:00，02:00-06:00，06：00-10：00，10:00-14:00，14:00-18:00，18:00-22:00，22:00-02:00。
 	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
 
 	// 自动备份方式，仅支持：physical - 物理冷备
@@ -3201,6 +3370,9 @@ type ModifyBackupConfigRequest struct {
 
 	// binlog的保留时间，单位为天。最小值为7天，最大值为732天。该值的设置不能大于备份文件的保留时间。
 	BinlogExpireDays *int64 `json:"BinlogExpireDays,omitempty" name:"BinlogExpireDays"`
+
+	// 备份时间窗，比如要设置每周二和周日 10:00-14:00之间备份，该参数如下：{"Monday": "", "Tuesday": "10:00-14:00", "Wednesday": "", "Thursday": "", "Friday": "", "Saturday": "", "Sunday": "10:00-14:00"}    （注：可以设置一周的某几天备份，但是每天的备份时间需要设置为相同的时间段。 如果设置了该字段，将忽略StartTime字段的设置）
+	BackupTimeWindow *CommonTimeWindow `json:"BackupTimeWindow,omitempty" name:"BackupTimeWindow"`
 }
 
 func (r *ModifyBackupConfigRequest) ToJsonString() string {
@@ -3467,6 +3639,46 @@ func (r *ModifyInstanceTagResponse) ToJsonString() string {
 }
 
 func (r *ModifyInstanceTagResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyNameOrDescByDpIdRequest struct {
+	*tchttp.BaseRequest
+
+	// 置放群组 ID。
+	DeployGroupId *string `json:"DeployGroupId,omitempty" name:"DeployGroupId"`
+
+	// 置放群组名称，最长不能超过60个字符。置放群组名和置放群组描述不能都为空。
+	DeployGroupName *string `json:"DeployGroupName,omitempty" name:"DeployGroupName"`
+
+	// 置放群组描述，最长不能超过200个字符。置放群组名和置放群组描述不能都为空。
+	Description *string `json:"Description,omitempty" name:"Description"`
+}
+
+func (r *ModifyNameOrDescByDpIdRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyNameOrDescByDpIdRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyNameOrDescByDpIdResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifyNameOrDescByDpIdResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyNameOrDescByDpIdResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 

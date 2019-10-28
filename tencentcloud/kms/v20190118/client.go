@@ -393,6 +393,31 @@ func (c *Client) GenerateDataKey(request *GenerateDataKeyRequest) (response *Gen
     return
 }
 
+func NewGenerateRandomRequest() (request *GenerateRandomRequest) {
+    request = &GenerateRandomRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("kms", APIVersion, "GenerateRandom")
+    return
+}
+
+func NewGenerateRandomResponse() (response *GenerateRandomResponse) {
+    response = &GenerateRandomResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 随机数生成接口。
+func (c *Client) GenerateRandom(request *GenerateRandomRequest) (response *GenerateRandomResponse, err error) {
+    if request == nil {
+        request = NewGenerateRandomRequest()
+    }
+    response = NewGenerateRandomResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewGetKeyRotationStatusRequest() (request *GetKeyRotationStatusRequest) {
     request = &GetKeyRotationStatusRequest{
         BaseRequest: &tchttp.BaseRequest{},

@@ -70,7 +70,7 @@ type TextProcessRequest struct {
 	// 透传字段，透传给用户自定义的WebService服务。
 	SessionAttributes *string `json:"SessionAttributes,omitempty" name:"SessionAttributes"`
 
-	// 平台类型，{小程序：MiniProgram；小微：XiaoWei；公众号：OfficialAccount}。
+	// 平台类型，{小程序：MiniProgram；小微：XiaoWei；公众号：OfficialAccount；企业微信: WXWork}。
 	PlatformType *string `json:"PlatformType,omitempty" name:"PlatformType"`
 }
 
@@ -115,7 +115,7 @@ type TextProcessResponse struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		SessionAttributes *string `json:"SessionAttributes,omitempty" name:"SessionAttributes"`
 
-		// 结果类型 {0:未命中机器人; 1:任务型机器人; 2:问答型机器人; 3:闲聊型机器人}
+		// 结果类型 {中间逻辑出错:0; 任务型机器人:1; 问答型机器人:2; 闲聊型机器人:3; 未匹配上，返回预设兜底话术:5; 未匹配上，返回相似问题列表:6}。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		ResultType *string `json:"ResultType,omitempty" name:"ResultType"`
 
@@ -145,7 +145,7 @@ type TextResetRequest struct {
 	// 终端标识，每个终端(或线程)对应一个，区分并发多用户。
 	TerminalId *string `json:"TerminalId,omitempty" name:"TerminalId"`
 
-	// 平台类型，{小程序：MiniProgram；小微：XiaoWei；公众号：OfficialAccount}。
+	// 平台类型，{小程序：MiniProgram；小微：XiaoWei；公众号：OfficialAccount；企业微信: WXWork}。
 	PlatformType *string `json:"PlatformType,omitempty" name:"PlatformType"`
 }
 
@@ -190,7 +190,7 @@ type TextResetResponse struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		SessionAttributes *string `json:"SessionAttributes,omitempty" name:"SessionAttributes"`
 
-		// 结果类型 {未命中机器人:0; 任务型机器人:1; 问答型机器人:2; 闲聊型机器人:3}。
+		// 结果类型 {中间逻辑出错:0; 任务型机器人:1; 问答型机器人:2; 闲聊型机器人:3; 未匹配上，返回预设兜底话术:5; 未匹配上，返回相似问题列表:6}。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		ResultType *string `json:"ResultType,omitempty" name:"ResultType"`
 

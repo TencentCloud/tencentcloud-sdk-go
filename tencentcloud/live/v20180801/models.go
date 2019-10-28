@@ -2919,16 +2919,16 @@ func (r *DescribeLiveStreamStateResponse) FromJsonString(s string) error {
 type DescribeLiveTranscodeDetailInfoRequest struct {
 	*tchttp.BaseRequest
 
-	// 起始时间，北京时间，
-	// 格式：yyyymmdd。
-	// 注意：当前只支持查询近30天内某天的详细数据。
-	DayTime *string `json:"DayTime,omitempty" name:"DayTime"`
-
 	// 推流域名。
 	PushDomain *string `json:"PushDomain,omitempty" name:"PushDomain"`
 
 	// 流名称。
 	StreamName *string `json:"StreamName,omitempty" name:"StreamName"`
+
+	// 查询时间，北京时间，
+	// 格式：yyyymmdd。
+	// 注意：支持查询近3个月内某天的详细数据。
+	DayTime *string `json:"DayTime,omitempty" name:"DayTime"`
 
 	// 页数，默认1，
 	// 不超过100页。
@@ -2937,6 +2937,16 @@ type DescribeLiveTranscodeDetailInfoRequest struct {
 	// 每页个数，默认20，
 	// 范围：[10,1000]。
 	PageSize *uint64 `json:"PageSize,omitempty" name:"PageSize"`
+
+	// 起始天时间，北京时间，
+	// 格式：yyyymmdd。
+	// 注意：支持查询近3个月内的详细数据。
+	StartDayTime *string `json:"StartDayTime,omitempty" name:"StartDayTime"`
+
+	// 结束天时间，北京时间，
+	// 格式：yyyymmdd。
+	// 注意：支持查询近3个月内的详细数据，注意DayTime 与（StartDayTime，EndDayTime）必须要传一个，如果都传，会以DayTime为准 。
+	EndDayTime *string `json:"EndDayTime,omitempty" name:"EndDayTime"`
 }
 
 func (r *DescribeLiveTranscodeDetailInfoRequest) ToJsonString() string {
@@ -4087,7 +4097,7 @@ type ForbidLiveStreamRequest struct {
 	// 推流路径，与推流和播放地址中的AppName保持一致，默认为 live。
 	AppName *string `json:"AppName,omitempty" name:"AppName"`
 
-	// 您的加速域名。
+	// 您的推流域名。
 	DomainName *string `json:"DomainName,omitempty" name:"DomainName"`
 
 	// 流名称。
@@ -4095,7 +4105,7 @@ type ForbidLiveStreamRequest struct {
 
 	// 恢复流的时间。UTC 格式，例如：2018-11-29T19:00:00Z。
 	// 注意：
-	// 1. 默认禁播90天，且最长支持禁播90天。
+	// 1. 默认禁播7天，且最长支持禁播90天。
 	// 2. 北京时间值为 UTC 时间值 + 8 小时，格式按照 ISO 8601 标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
 	ResumeTime *string `json:"ResumeTime,omitempty" name:"ResumeTime"`
 
@@ -4874,6 +4884,12 @@ type ProIspPlayCodeDataInfo struct {
 	// 运营商。
 	IspName *string `json:"IspName,omitempty" name:"IspName"`
 
+	// 错误码为2开头的次数。
+	Code2xx *uint64 `json:"Code2xx,omitempty" name:"Code2xx"`
+
+	// 错误码为3开头的次数。
+	Code3xx *uint64 `json:"Code3xx,omitempty" name:"Code3xx"`
+
 	// 错误码为4开头的次数。
 	Code4xx *uint64 `json:"Code4xx,omitempty" name:"Code4xx"`
 
@@ -4883,7 +4899,7 @@ type ProIspPlayCodeDataInfo struct {
 
 type ProIspPlaySumInfo struct {
 
-	// 省份/运营商。
+	// 省份/运营商/国家或地区。
 	Name *string `json:"Name,omitempty" name:"Name"`
 
 	// 总流量，单位：MB。

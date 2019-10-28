@@ -58,7 +58,7 @@ type FaceFusionResponse struct {
 		// RspImgType 为 url 时，返回结果的 url， RspImgType 为 base64 时返回 base64 数据。当前仅支持 url 方式，base64 方式后期开放。
 		Image *string `json:"Image,omitempty" name:"Image"`
 
-		// 鉴黄鉴政结果
+		// 鉴政结果
 		ReviewResultSet []*FuseFaceReviewResult `json:"ReviewResultSet,omitempty" name:"ReviewResultSet" list`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -102,7 +102,7 @@ type FuseFaceRequest struct {
 	// 返回图像方式（url 或 base64) ，二选一。url有效期为30天。
 	RspImgType *string `json:"RspImgType,omitempty" name:"RspImgType"`
 
-	// 人脸图片和待被融合的素材模板图的人脸位置信息。
+	// 用户人脸图片、素材模板图的人脸位置信息。
 	MergeInfos []*MergeInfo `json:"MergeInfos,omitempty" name:"MergeInfos" list`
 
 	// 脸型融合比例，数值越高，融合后的脸型越像素材人物。取值范围[0,100] 

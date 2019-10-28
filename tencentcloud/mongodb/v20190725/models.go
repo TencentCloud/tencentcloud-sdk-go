@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package v20180408
+package v20190725
 
 import (
     "encoding/json"
@@ -60,6 +60,49 @@ func (r *AssignProjectResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type BackupFile struct {
+
+	// 备份文件所属的副本集/分片id
+	ReplicateSetId *string `json:"ReplicateSetId,omitempty" name:"ReplicateSetId"`
+
+	// 备份文件保存路径
+	File *string `json:"File,omitempty" name:"File"`
+}
+
+type BackupInfo struct {
+
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 备份方式，0-自动备份，1-手动备份
+	BackupType *uint64 `json:"BackupType,omitempty" name:"BackupType"`
+
+	// 备份名称
+	BackupName *string `json:"BackupName,omitempty" name:"BackupName"`
+
+	// 备份备注
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BackupDesc *string `json:"BackupDesc,omitempty" name:"BackupDesc"`
+
+	// 备份文件大小，单位KB
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BackupSize *uint64 `json:"BackupSize,omitempty" name:"BackupSize"`
+
+	// 备份开始时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 备份结束时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 备份状态，1-备份中，2-备份成功
+	Status *uint64 `json:"Status,omitempty" name:"Status"`
+
+	// 备份方法，0-逻辑备份，1-物理备份
+	BackupMethod *uint64 `json:"BackupMethod,omitempty" name:"BackupMethod"`
+}
+
 type ClientConnection struct {
 
 	// 连接的客户端IP
@@ -78,44 +121,41 @@ type CreateDBInstanceHourRequest struct {
 	// 实例硬盘大小，单位：GB
 	Volume *uint64 `json:"Volume,omitempty" name:"Volume"`
 
-	// 副本集个数，1为单副本集实例，大于1为分片集群实例，最大不超过10
+	// 副本集个数，创建副本集实例时，该参数必须设置为1；创建分片实例时，具体参照查询云数据库的售卖规格返回参数
 	ReplicateSetNum *uint64 `json:"ReplicateSetNum,omitempty" name:"ReplicateSetNum"`
 
-	// 每个副本集内从节点个数，目前只支持从节点数为2
-	SecondaryNum *uint64 `json:"SecondaryNum,omitempty" name:"SecondaryNum"`
+	// 每个副本集内节点个数，当前副本集节点数固定为3，分片从节点数可选，具体参照查询云数据库的售卖规格返回参数
+	NodeNum *uint64 `json:"NodeNum,omitempty" name:"NodeNum"`
 
-	// MongoDB引擎版本，值包括MONGO_3_WT 、MONGO_3_ROCKS和MONGO_36_WT
-	EngineVersion *string `json:"EngineVersion,omitempty" name:"EngineVersion"`
+	// 版本号，具体支持的售卖版本请参照查询云数据库的售卖规格（DescribeSpecInfo）返回结果。参数与版本对应关系是MONGO_3_WT：MongoDB 3.2 WiredTiger存储引擎版本，MONGO_3_ROCKS：MongoDB 3.2 RocksDB存储引擎版本，MONGO_36_WT：MongoDB 3.6 WiredTiger存储引擎版本
+	MongoVersion *string `json:"MongoVersion,omitempty" name:"MongoVersion"`
 
-	// 实例类型，GIO：高IO版；TGIO：高IO万兆
-	Machine *string `json:"Machine,omitempty" name:"Machine"`
+	// 机器类型，HIO：高IO型；HIO10G：高IO万兆
+	MachineCode *string `json:"MachineCode,omitempty" name:"MachineCode"`
 
-	// 实例数量，默认值为1, 最小值1，最大值为10
+	// 实例数量，最小值1，最大值为10
 	GoodsNum *uint64 `json:"GoodsNum,omitempty" name:"GoodsNum"`
 
 	// 可用区信息，格式如：ap-guangzhou-2
 	Zone *string `json:"Zone,omitempty" name:"Zone"`
 
-	// 实例角色，支持值包括：MASTER-表示主实例，DR-表示灾备实例，RO-表示只读实例
-	InstanceRole *string `json:"InstanceRole,omitempty" name:"InstanceRole"`
-
 	// 实例类型，REPLSET-副本集，SHARD-分片集群
-	InstanceType *string `json:"InstanceType,omitempty" name:"InstanceType"`
+	ClusterType *string `json:"ClusterType,omitempty" name:"ClusterType"`
 
-	// 数据是否加密，当且仅当引擎版本为MONGO_3_ROCKS，可以选择加密
-	Encrypt *uint64 `json:"Encrypt,omitempty" name:"Encrypt"`
-
-	// 私有网络ID，如果不传则默认选择基础网络
+	// 私有网络ID，如果不设置该参数则默认选择基础网络
 	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
 
 	// 私有网络下的子网ID，如果设置了 VpcId，则 SubnetId必填
 	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
 
-	// 项目ID，不填为默认项目
+	// 实例密码，不设置该参数则需要在创建完成后通过设置密码接口初始化实例密码。密码必须是8-16位字符，且至少包含字母、数字和字符 !@#%^*() 中的两种
+	Password *string `json:"Password,omitempty" name:"Password"`
+
+	// 项目ID，不设置为默认项目
 	ProjectId *int64 `json:"ProjectId,omitempty" name:"ProjectId"`
 
-	// 安全组参数
-	SecurityGroup []*string `json:"SecurityGroup,omitempty" name:"SecurityGroup" list`
+	// 实例标签信息
+	Tags []*TagInfo `json:"Tags,omitempty" name:"Tags" list`
 }
 
 func (r *CreateDBInstanceHourRequest) ToJsonString() string {
@@ -154,8 +194,8 @@ func (r *CreateDBInstanceHourResponse) FromJsonString(s string) error {
 type CreateDBInstanceRequest struct {
 	*tchttp.BaseRequest
 
-	// 每个副本集内从节点个数
-	SecondaryNum *uint64 `json:"SecondaryNum,omitempty" name:"SecondaryNum"`
+	// 每个副本集内节点个数，当前副本集节点数固定为3，分片从节点数可选，具体参照查询云数据库的售卖规格返回参数
+	NodeNum *uint64 `json:"NodeNum,omitempty" name:"NodeNum"`
 
 	// 实例内存大小，单位：GB
 	Memory *uint64 `json:"Memory,omitempty" name:"Memory"`
@@ -163,35 +203,44 @@ type CreateDBInstanceRequest struct {
 	// 实例硬盘大小，单位：GB
 	Volume *uint64 `json:"Volume,omitempty" name:"Volume"`
 
-	// 版本号，当前支持 MONGO_3_WT、MONGO_3_ROCKS、MONGO_36_WT
+	// 版本号，具体支持的售卖版本请参照查询云数据库的售卖规格（DescribeSpecInfo）返回结果。参数与版本对应关系是MONGO_3_WT：MongoDB 3.2 WiredTiger存储引擎版本，MONGO_3_ROCKS：MongoDB 3.2 RocksDB存储引擎版本，MONGO_36_WT：MongoDB 3.6 WiredTiger存储引擎版本
 	MongoVersion *string `json:"MongoVersion,omitempty" name:"MongoVersion"`
 
-	// 机器类型，GIO：高IO版；TGIO：高IO万兆
-	MachineCode *string `json:"MachineCode,omitempty" name:"MachineCode"`
-
-	// 实例数量，默认值为1, 最小值1，最大值为10
+	// 实例数量, 最小值1，最大值为10
 	GoodsNum *uint64 `json:"GoodsNum,omitempty" name:"GoodsNum"`
 
 	// 实例所属区域名称，格式如：ap-guangzhou-2
 	Zone *string `json:"Zone,omitempty" name:"Zone"`
 
-	// 时长，购买月数
-	TimeSpan *uint64 `json:"TimeSpan,omitempty" name:"TimeSpan"`
+	// 实例时长，单位：月，可选值包括 [1,2,3,4,5,6,7,8,9,10,11,12,24,36]
+	Period *uint64 `json:"Period,omitempty" name:"Period"`
 
-	// 实例密码
+	// 机器类型，HIO：高IO型；HIO10G：高IO万兆型
+	MachineCode *string `json:"MachineCode,omitempty" name:"MachineCode"`
+
+	// 实例类型，REPLSET-副本集，SHARD-分片集群
+	ClusterType *string `json:"ClusterType,omitempty" name:"ClusterType"`
+
+	// 副本集个数，创建副本集实例时，该参数必须设置为1；创建分片实例时，具体参照查询云数据库的售卖规格返回参数
+	ReplicateSetNum *uint64 `json:"ReplicateSetNum,omitempty" name:"ReplicateSetNum"`
+
+	// 项目ID，不设置为默认项目
+	ProjectId *int64 `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 私有网络 ID，如果不传则默认选择基础网络，请使用 查询私有网络列表
+	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
+
+	// 私有网络下的子网 ID，如果设置了 UniqVpcId，则 UniqSubnetId 必填，请使用 查询子网列表
+	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
+
+	// 实例密码，不设置该参数则需要在创建完成后通过设置密码接口初始化实例密码。密码必须是8-16位字符，且至少包含字母、数字和字符 !@#%^*() 中的两种
 	Password *string `json:"Password,omitempty" name:"Password"`
 
-	// 项目ID，不填为默认项目
-	ProjectId *uint64 `json:"ProjectId,omitempty" name:"ProjectId"`
+	// 实例标签信息
+	Tags []*TagInfo `json:"Tags,omitempty" name:"Tags" list`
 
-	// 安全组参数
-	SecurityGroup []*string `json:"SecurityGroup,omitempty" name:"SecurityGroup" list`
-
-	// 私有网络ID，如果不传则默认选择基础网络
-	UniqVpcId *string `json:"UniqVpcId,omitempty" name:"UniqVpcId"`
-
-	// 私有网络下的子网ID，如果设置了 VpcId，则 SubnetId必填
-	UniqSubnetId *string `json:"UniqSubnetId,omitempty" name:"UniqSubnetId"`
+	// 自动续费标记，可选值为：0 - 不自动续费；1 - 自动续费。默认为不自动续费
+	AutoRenewFlag *uint64 `json:"AutoRenewFlag,omitempty" name:"AutoRenewFlag"`
 }
 
 func (r *CreateDBInstanceRequest) ToJsonString() string {
@@ -227,6 +276,61 @@ func (r *CreateDBInstanceResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DBInstanceInfo struct {
+
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 地域信息
+	Region *string `json:"Region,omitempty" name:"Region"`
+}
+
+type DescribeBackupAccessRequest struct {
+	*tchttp.BaseRequest
+
+	// 实例ID，格式如：cmgo-p8vnipr5。与云数据库控制台页面中显示的实例ID相同
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 需要获取下载授权的备份文件名
+	BackupName *string `json:"BackupName,omitempty" name:"BackupName"`
+}
+
+func (r *DescribeBackupAccessRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeBackupAccessRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeBackupAccessResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 实例所属地域
+		Region *string `json:"Region,omitempty" name:"Region"`
+
+		// 备份文件所在存储桶
+		Bucket *string `json:"Bucket,omitempty" name:"Bucket"`
+
+		// 备份文件的存储信息
+		Files []*BackupFile `json:"Files,omitempty" name:"Files" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeBackupAccessResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeBackupAccessResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeClientConnectionsRequest struct {
 	*tchttp.BaseRequest
 
@@ -248,7 +352,6 @@ type DescribeClientConnectionsResponse struct {
 	Response *struct {
 
 		// 客户端连接信息，包括客户端IP和对应IP的连接数量
-	// 注意：此字段可能返回 null，表示取不到有效值。
 		Clients []*ClientConnection `json:"Clients,omitempty" name:"Clients" list`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -262,6 +365,46 @@ func (r *DescribeClientConnectionsResponse) ToJsonString() string {
 }
 
 func (r *DescribeClientConnectionsResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeDBBackupsRequest struct {
+	*tchttp.BaseRequest
+
+	// 实例ID，格式如：cmgo-p8vnipr5。与云数据库控制台页面中显示的实例ID相同
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+}
+
+func (r *DescribeDBBackupsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeDBBackupsRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeDBBackupsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 备份列表
+		BackupList []*BackupInfo `json:"BackupList,omitempty" name:"BackupList" list`
+
+		// 备份总数
+		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeDBBackupsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeDBBackupsResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -300,6 +443,12 @@ type DescribeDBInstancesRequest struct {
 
 	// 返回结果集排序方式，目前支持："ASC"或者"DESC"
 	OrderByType *string `json:"OrderByType,omitempty" name:"OrderByType"`
+
+	// 项目 ID
+	ProjectIds []*uint64 `json:"ProjectIds,omitempty" name:"ProjectIds" list`
+
+	// 搜索关键词，支持实例Id、实例名称、完整IP
+	SearchKey *string `json:"SearchKey,omitempty" name:"SearchKey"`
 }
 
 func (r *DescribeDBInstancesRequest) ToJsonString() string {
@@ -318,8 +467,8 @@ type DescribeDBInstancesResponse struct {
 		// 符合查询条件的实例总数
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
-		// 实例详细信息
-		InstanceDetails []*MongoDBInstanceDetail `json:"InstanceDetails,omitempty" name:"InstanceDetails" list`
+		// 实例详细信息列表
+		InstanceDetails []*InstanceDetail `json:"InstanceDetails,omitempty" name:"InstanceDetails" list`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -335,65 +484,10 @@ func (r *DescribeDBInstancesResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
-type DescribeSlowLogRequest struct {
-	*tchttp.BaseRequest
-
-	// 实例ID，格式如：cmgo-p8vnipr5。与云数据库控制台页面中显示的实例ID相同
-	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
-
-	// 慢日志起始时间，格式：yyyy-mm-dd hh:mm:ss，如：2019-06-01 10:00:00。查询起止时间间隔不能超过24小时，只允许查询最近7天内慢日志。
-	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
-
-	// 慢日志终止时间，格式：yyyy-mm-dd hh:mm:ss，如：2019-06-02 12:00:00。查询起止时间间隔不能超过24小时，只允许查询最近7天内慢日志。
-	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
-
-	// 慢日志执行时间阈值，返回执行时间超过该阈值的慢日志，单位为毫秒(ms)，最小为100毫秒。
-	SlowMS *uint64 `json:"SlowMS,omitempty" name:"SlowMS"`
-
-	// 偏移量，最小值为0，最大值为10000，默认值为0。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
-
-	// 分页大小，最小值为1，最大值为100，默认值为20。
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
-}
-
-func (r *DescribeSlowLogRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-func (r *DescribeSlowLogRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
-}
-
-type DescribeSlowLogResponse struct {
-	*tchttp.BaseResponse
-	Response *struct {
-
-		// 符合查询条件的慢查询日志总数。
-		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
-
-		// 符合查询条件的慢查询日志详情。
-		SlowLogList []*string `json:"SlowLogList,omitempty" name:"SlowLogList" list`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
-}
-
-func (r *DescribeSlowLogResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-func (r *DescribeSlowLogResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
-}
-
 type DescribeSpecInfoRequest struct {
 	*tchttp.BaseRequest
 
-	// 可用区
+	// 待查询可用区
 	Zone *string `json:"Zone,omitempty" name:"Zone"`
 }
 
@@ -427,16 +521,7 @@ func (r *DescribeSpecInfoResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
-type MongoDBInstance struct {
-
-	// 实例ID
-	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
-
-	// 地域信息
-	Region *string `json:"Region,omitempty" name:"Region"`
-}
-
-type MongoDBInstanceDetail struct {
+type InstanceDetail struct {
 
 	// 实例ID
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
@@ -517,32 +602,27 @@ type MongoDBInstanceDetail struct {
 	MaintenanceEnd *string `json:"MaintenanceEnd,omitempty" name:"MaintenanceEnd"`
 
 	// 分片信息
-	ReplicaSets []*MongodbShardInfo `json:"ReplicaSets,omitempty" name:"ReplicaSets" list`
+	ReplicaSets []*ShardInfo `json:"ReplicaSets,omitempty" name:"ReplicaSets" list`
 
 	// 只读实例信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	ReadonlyInstances []*MongoDBInstance `json:"ReadonlyInstances,omitempty" name:"ReadonlyInstances" list`
+	ReadonlyInstances []*DBInstanceInfo `json:"ReadonlyInstances,omitempty" name:"ReadonlyInstances" list`
 
 	// 灾备实例信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	StandbyInstances []*MongoDBInstance `json:"StandbyInstances,omitempty" name:"StandbyInstances" list`
+	StandbyInstances []*DBInstanceInfo `json:"StandbyInstances,omitempty" name:"StandbyInstances" list`
 
 	// 临时实例信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	CloneInstances []*MongoDBInstance `json:"CloneInstances,omitempty" name:"CloneInstances" list`
+	CloneInstances []*DBInstanceInfo `json:"CloneInstances,omitempty" name:"CloneInstances" list`
 
 	// 关联实例信息，对于正式实例，该字段表示它的临时实例信息；对于临时实例，则表示它的正式实例信息;如果为只读/灾备实例,则表示他的主实例信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	RelatedInstance *MongoDBInstance `json:"RelatedInstance,omitempty" name:"RelatedInstance"`
+	RelatedInstance *DBInstanceInfo `json:"RelatedInstance,omitempty" name:"RelatedInstance"`
 
 	// 实例标签信息集合
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Tags []*TagInfo `json:"Tags,omitempty" name:"Tags" list`
 
-	// 实例标记
+	// 实例版本标记
 	InstanceVer *uint64 `json:"InstanceVer,omitempty" name:"InstanceVer"`
 
-	// 实例标记
+	// 实例版本标记
 	ClusterVer *uint64 `json:"ClusterVer,omitempty" name:"ClusterVer"`
 
 	// 协议信息，可能的返回值：1-mongodb，2-dynamodb
@@ -558,31 +638,124 @@ type MongoDBInstanceDetail struct {
 	RealInstanceId *string `json:"RealInstanceId,omitempty" name:"RealInstanceId"`
 }
 
-type MongodbShardInfo struct {
+type IsolateDBInstanceRequest struct {
+	*tchttp.BaseRequest
 
-	// 分片已使用容量
-	UsedVolume *float64 `json:"UsedVolume,omitempty" name:"UsedVolume"`
+	// 实例ID，格式如：cmgo-p8vnipr5。与云数据库控制台页面中显示的实例ID相同
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+}
 
-	// 分片ID
-	ReplicaSetId *string `json:"ReplicaSetId,omitempty" name:"ReplicaSetId"`
+func (r *IsolateDBInstanceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
 
-	// 分片名
-	ReplicaSetName *string `json:"ReplicaSetName,omitempty" name:"ReplicaSetName"`
+func (r *IsolateDBInstanceRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
 
-	// 分片内存规格，单位为MB
+type IsolateDBInstanceResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 异步任务的请求 ID，可使用此 ID 查询异步任务的执行结果。
+		AsyncRequestId *string `json:"AsyncRequestId,omitempty" name:"AsyncRequestId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *IsolateDBInstanceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *IsolateDBInstanceResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyDBInstanceSpecRequest struct {
+	*tchttp.BaseRequest
+
+	// 实例ID，格式如：cmgo-p8vnipr5。与云数据库控制台页面中显示的实例ID相同
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 实例配置变更后的内存大小，单位：GB。内存和磁盘必须同时升配或同时降配
 	Memory *uint64 `json:"Memory,omitempty" name:"Memory"`
 
-	// 分片磁盘规格，单位为MB
+	// 实例配置变更后的硬盘大小，单位：GB。内存和磁盘必须同时升配或同时降配。降配时，新的磁盘参数必须大于已用磁盘容量的1.2倍
 	Volume *uint64 `json:"Volume,omitempty" name:"Volume"`
 
-	// 分片Oplog大小，单位为MB
+	// 实例配置变更后oplog的大小，单位：GB，默认为磁盘空间的10%，允许设置的最小值为磁盘的10%，最大值为磁盘的90%
 	OplogSize *uint64 `json:"OplogSize,omitempty" name:"OplogSize"`
+}
 
-	// 分片从节点数
-	SecondaryNum *uint64 `json:"SecondaryNum,omitempty" name:"SecondaryNum"`
+func (r *ModifyDBInstanceSpecRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
 
-	// 分片物理id
-	RealReplicaSetId *string `json:"RealReplicaSetId,omitempty" name:"RealReplicaSetId"`
+func (r *ModifyDBInstanceSpecRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyDBInstanceSpecResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 订单ID
+		DealId *string `json:"DealId,omitempty" name:"DealId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifyDBInstanceSpecResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyDBInstanceSpecResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type OfflineIsolatedDBInstanceRequest struct {
+	*tchttp.BaseRequest
+
+	// 实例ID，格式如：cmgo-p8vnipr5。与云数据库控制台页面中显示的实例ID相同
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+}
+
+func (r *OfflineIsolatedDBInstanceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *OfflineIsolatedDBInstanceRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type OfflineIsolatedDBInstanceResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 异步任务的请求 ID，可使用此 ID 查询异步任务的执行结果。
+		AsyncRequestId *string `json:"AsyncRequestId,omitempty" name:"AsyncRequestId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *OfflineIsolatedDBInstanceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *OfflineIsolatedDBInstanceResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
 }
 
 type RenameInstanceRequest struct {
@@ -622,84 +795,31 @@ func (r *RenameInstanceResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
-type SetAutoRenewRequest struct {
-	*tchttp.BaseRequest
+type ShardInfo struct {
 
-	// 实例ID列表，格式如：cmgo-p8vnipr5。与云数据库控制台页面中显示的实例ID相同
-	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds" list`
+	// 分片已使用容量
+	UsedVolume *float64 `json:"UsedVolume,omitempty" name:"UsedVolume"`
 
-	// 续费选项，取值范围：0-手动续费，1-自动续费，2-确认不续费
-	AutoRenewFlag *uint64 `json:"AutoRenewFlag,omitempty" name:"AutoRenewFlag"`
-}
+	// 分片ID
+	ReplicaSetId *string `json:"ReplicaSetId,omitempty" name:"ReplicaSetId"`
 
-func (r *SetAutoRenewRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
+	// 分片名
+	ReplicaSetName *string `json:"ReplicaSetName,omitempty" name:"ReplicaSetName"`
 
-func (r *SetAutoRenewRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
-}
+	// 分片内存规格，单位为MB
+	Memory *uint64 `json:"Memory,omitempty" name:"Memory"`
 
-type SetAutoRenewResponse struct {
-	*tchttp.BaseResponse
-	Response *struct {
+	// 分片磁盘规格，单位为MB
+	Volume *uint64 `json:"Volume,omitempty" name:"Volume"`
 
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
-}
+	// 分片Oplog大小，单位为MB
+	OplogSize *uint64 `json:"OplogSize,omitempty" name:"OplogSize"`
 
-func (r *SetAutoRenewResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
+	// 分片从节点数
+	SecondaryNum *uint64 `json:"SecondaryNum,omitempty" name:"SecondaryNum"`
 
-func (r *SetAutoRenewResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
-}
-
-type SetPasswordRequest struct {
-	*tchttp.BaseRequest
-
-	// 实例ID，格式如：cmgo-p8vnipr5。与云数据库控制台页面中显示的实例ID相同
-	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
-
-	// 实例账户名称
-	UserName *string `json:"UserName,omitempty" name:"UserName"`
-
-	// 实例新密码，至少包含字母、数字和字符（!@#%^*()）中的两种，长度为8-16个字符
-	Password *string `json:"Password,omitempty" name:"Password"`
-}
-
-func (r *SetPasswordRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-func (r *SetPasswordRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
-}
-
-type SetPasswordResponse struct {
-	*tchttp.BaseResponse
-	Response *struct {
-
-		// 返回的异步任务ID
-		FlowId *uint64 `json:"FlowId,omitempty" name:"FlowId"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
-}
-
-func (r *SetPasswordResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-func (r *SetPasswordResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	// 分片物理id
+	RealReplicaSetId *string `json:"RealReplicaSetId,omitempty" name:"RealReplicaSetId"`
 }
 
 type SpecItem struct {
@@ -710,10 +830,7 @@ type SpecItem struct {
 	// 规格有效标志，取值：0-停止售卖，1-开放售卖
 	Status *uint64 `json:"Status,omitempty" name:"Status"`
 
-	// 机器类型，取值：0-HIO，4-HIO10G
-	MachineType *string `json:"MachineType,omitempty" name:"MachineType"`
-
-	// cpu核心数
+	// 规格有效标志，取值：0-停止售卖，1-开放售卖
 	Cpu *uint64 `json:"Cpu,omitempty" name:"Cpu"`
 
 	// 内存规格，单位为MB
@@ -766,6 +883,9 @@ type SpecItem struct {
 
 	// 最大分片从节点数
 	MaxReplicateSetNodeNum *uint64 `json:"MaxReplicateSetNodeNum,omitempty" name:"MaxReplicateSetNodeNum"`
+
+	// 机器类型，取值：0-HIO，4-HIO10G
+	MachineType *string `json:"MachineType,omitempty" name:"MachineType"`
 }
 
 type SpecificationInfo struct {
@@ -777,143 +897,14 @@ type SpecificationInfo struct {
 	Zone *string `json:"Zone,omitempty" name:"Zone"`
 
 	// 售卖规格信息
-	SpecItem []*SpecItem `json:"SpecItem,omitempty" name:"SpecItem" list`
+	SpecItems []*SpecItem `json:"SpecItems,omitempty" name:"SpecItems" list`
 }
 
 type TagInfo struct {
 
-	// 标签Key值
+	// 标签键
 	TagKey *string `json:"TagKey,omitempty" name:"TagKey"`
 
 	// 标签值
 	TagValue *string `json:"TagValue,omitempty" name:"TagValue"`
-}
-
-type TerminateDBInstanceRequest struct {
-	*tchttp.BaseRequest
-
-	// 实例ID，格式如：cmgo-p8vnipr5。
-	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
-}
-
-func (r *TerminateDBInstanceRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-func (r *TerminateDBInstanceRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
-}
-
-type TerminateDBInstanceResponse struct {
-	*tchttp.BaseResponse
-	Response *struct {
-
-		// 订单ID，表示注销实例成功
-		AsyncRequestId *string `json:"AsyncRequestId,omitempty" name:"AsyncRequestId"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
-}
-
-func (r *TerminateDBInstanceResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-func (r *TerminateDBInstanceResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
-}
-
-type UpgradeDBInstanceHourRequest struct {
-	*tchttp.BaseRequest
-
-	// 实例ID，格式如：cmgo-p8vnipr5
-	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
-
-	// 升级后的内存大小，单位：GB
-	Memory *uint64 `json:"Memory,omitempty" name:"Memory"`
-
-	// 升级后的硬盘大小，单位：GB
-	Volume *uint64 `json:"Volume,omitempty" name:"Volume"`
-
-	// 升级后oplog的大小，单位：GB，默认为磁盘空间的10%，允许设置的最小值为磁盘的10%，最大值为磁盘的90%
-	OplogSize *uint64 `json:"OplogSize,omitempty" name:"OplogSize"`
-}
-
-func (r *UpgradeDBInstanceHourRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-func (r *UpgradeDBInstanceHourRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
-}
-
-type UpgradeDBInstanceHourResponse struct {
-	*tchttp.BaseResponse
-	Response *struct {
-
-		// 订单ID
-		DealId *string `json:"DealId,omitempty" name:"DealId"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
-}
-
-func (r *UpgradeDBInstanceHourResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-func (r *UpgradeDBInstanceHourResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
-}
-
-type UpgradeDBInstanceRequest struct {
-	*tchttp.BaseRequest
-
-	// 实例ID，格式如：cmgo-p8vnipr5。与云数据库控制台页面中显示的实例ID相同
-	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
-
-	// 升级后的内存大小，单位：GB
-	Memory *uint64 `json:"Memory,omitempty" name:"Memory"`
-
-	// 升级后的硬盘大小，单位：GB
-	Volume *uint64 `json:"Volume,omitempty" name:"Volume"`
-
-	// 升级后oplog的大小，单位：GB，默认为磁盘空间的10%，允许设置的最小值为磁盘的10%，最大值为磁盘的90%
-	OplogSize *uint64 `json:"OplogSize,omitempty" name:"OplogSize"`
-}
-
-func (r *UpgradeDBInstanceRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-func (r *UpgradeDBInstanceRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
-}
-
-type UpgradeDBInstanceResponse struct {
-	*tchttp.BaseResponse
-	Response *struct {
-
-		// 订单ID
-		DealId *string `json:"DealId,omitempty" name:"DealId"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
-}
-
-func (r *UpgradeDBInstanceResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-func (r *UpgradeDBInstanceResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
 }

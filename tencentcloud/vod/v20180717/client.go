@@ -1075,15 +1075,15 @@ func NewDescribeMediaInfosResponse() (response *DescribeMediaInfosResponse) {
     return
 }
 
-// 1. 该接口可以获取多个视频的多种信息，包括：
-//     1. 基础信息（basicInfo）：包括视频名称、分类、播放地址、封面图片等。
+// 1. 该接口可以获取多个媒体文件的多种信息，包括：
+//     1. 基础信息（basicInfo）：包括媒体名称、分类、播放地址、封面图片等。
 //     2. 元信息（metaData）：包括大小、时长、视频流信息、音频流信息等。
-//     3. 转码结果信息（transcodeInfo）：包括该视频转码生成的各种码率的视频的地址、规格、码率、分辨率等。
-//     4. 转动图结果信息（animatedGraphicsInfo）：对视频转动图（如 gif）后，动图相关信息。
-//     5. 采样截图信息（sampleSnapshotInfo）：对视频采样截图后，相关截图信息。
-//     6. 雪碧图信息（imageSpriteInfo）：对视频截取雪碧图之后，雪碧图的相关信息。
-//     7. 指定时间点截图信息（snapshotByTimeOffsetInfo）：对视频依照指定时间点截图后，各个截图的信息。
-//     8. 视频打点信息（keyFrameDescInfo）：对视频设置的各个打点信息。
+//     3. 转码结果信息（transcodeInfo）：包括该媒体转码生成的各种规格的媒体地址、视频流参数、音频流参数等。
+//     4. 转动图结果信息（animatedGraphicsInfo）：对视频转动图（如 gif）后的动图信息。
+//     5. 采样截图信息（sampleSnapshotInfo）：对视频采样截图后的截图信息。
+//     6. 雪碧图信息（imageSpriteInfo）：对视频截取雪碧图后的雪碧图信息。
+//     7. 指定时间点截图信息（snapshotByTimeOffsetInfo）：对视频依照指定时间点截图后，的截图信息。
+//     8. 视频打点信息（keyFrameDescInfo）：对视频设置的打点信息。
 //     9. 转自适应码流信息（adaptiveDynamicStreamingInfo）：包括规格、加密类型、打包格式等相关信息。
 // 2. 可以指定回包只返回部分信息。
 func (c *Client) DescribeMediaInfos(request *DescribeMediaInfosRequest) (response *DescribeMediaInfosResponse, err error) {

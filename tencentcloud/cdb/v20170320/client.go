@@ -261,6 +261,31 @@ func (c *Client) CreateDBInstanceHour(request *CreateDBInstanceHourRequest) (res
     return
 }
 
+func NewCreateDeployGroupRequest() (request *CreateDeployGroupRequest) {
+    request = &CreateDeployGroupRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cdb", APIVersion, "CreateDeployGroup")
+    return
+}
+
+func NewCreateDeployGroupResponse() (response *CreateDeployGroupResponse) {
+    response = &CreateDeployGroupResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 创建放置实例的置放群组
+func (c *Client) CreateDeployGroup(request *CreateDeployGroupRequest) (response *CreateDeployGroupResponse, err error) {
+    if request == nil {
+        request = NewCreateDeployGroupRequest()
+    }
+    response = NewCreateDeployGroupResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateParamTemplateRequest() (request *CreateParamTemplateRequest) {
     request = &CreateParamTemplateRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -332,6 +357,31 @@ func (c *Client) DeleteBackup(request *DeleteBackupRequest) (response *DeleteBac
         request = NewDeleteBackupRequest()
     }
     response = NewDeleteBackupResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteDeployGroupsRequest() (request *DeleteDeployGroupsRequest) {
+    request = &DeleteDeployGroupsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cdb", APIVersion, "DeleteDeployGroups")
+    return
+}
+
+func NewDeleteDeployGroupsResponse() (response *DeleteDeployGroupsResponse) {
+    response = &DeleteDeployGroupsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 根据置放群组ID删除置放群组（置放群组中有资源存在时不能删除该置放群组）
+func (c *Client) DeleteDeployGroups(request *DeleteDeployGroupsRequest) (response *DeleteDeployGroupsResponse, err error) {
+    if request == nil {
+        request = NewDeleteDeployGroupsRequest()
+    }
+    response = NewDeleteDeployGroupsResponse()
     err = c.Send(request, response)
     return
 }
@@ -888,6 +938,31 @@ func (c *Client) DescribeDefaultParams(request *DescribeDefaultParamsRequest) (r
         request = NewDescribeDefaultParamsRequest()
     }
     response = NewDescribeDefaultParamsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeDeployGroupListRequest() (request *DescribeDeployGroupListRequest) {
+    request = &DescribeDeployGroupListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cdb", APIVersion, "DescribeDeployGroupList")
+    return
+}
+
+func NewDescribeDeployGroupListResponse() (response *DescribeDeployGroupListResponse) {
+    response = &DescribeDeployGroupListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 根据置放群组 ID 或置放群组名称查询置放群组列表
+func (c *Client) DescribeDeployGroupList(request *DescribeDeployGroupListRequest) (response *DescribeDeployGroupListResponse, err error) {
+    if request == nil {
+        request = NewDescribeDeployGroupListRequest()
+    }
+    response = NewDescribeDeployGroupListResponse()
     err = c.Send(request, response)
     return
 }
@@ -1613,6 +1688,31 @@ func (c *Client) ModifyInstanceTag(request *ModifyInstanceTagRequest) (response 
         request = NewModifyInstanceTagRequest()
     }
     response = NewModifyInstanceTagResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyNameOrDescByDpIdRequest() (request *ModifyNameOrDescByDpIdRequest) {
+    request = &ModifyNameOrDescByDpIdRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cdb", APIVersion, "ModifyNameOrDescByDpId")
+    return
+}
+
+func NewModifyNameOrDescByDpIdResponse() (response *ModifyNameOrDescByDpIdResponse) {
+    response = &ModifyNameOrDescByDpIdResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 修改置放群组的名称或者描述
+func (c *Client) ModifyNameOrDescByDpId(request *ModifyNameOrDescByDpIdRequest) (response *ModifyNameOrDescByDpIdResponse, err error) {
+    if request == nil {
+        request = NewModifyNameOrDescByDpIdRequest()
+    }
+    response = NewModifyNameOrDescByDpIdResponse()
     err = c.Send(request, response)
     return
 }

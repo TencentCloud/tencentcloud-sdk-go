@@ -114,6 +114,15 @@ type ASRStat struct {
 	WordNum *int64 `json:"WordNum,omitempty" name:"WordNum"`
 }
 
+type AbsenceInfo struct {
+
+	// 识别到的人员所在的库id
+	LibraryIds *string `json:"LibraryIds,omitempty" name:"LibraryIds"`
+
+	// 识别到的人员id
+	PersonId *string `json:"PersonId,omitempty" name:"PersonId"`
+}
+
 type ActionCountStatistic struct {
 
 	// 数量
@@ -187,6 +196,18 @@ type ActionType struct {
 
 	// 动作类别
 	Type *string `json:"Type,omitempty" name:"Type"`
+}
+
+type AllMuteSlice struct {
+
+	// 所有静音片段。
+	MuteSlice []*MuteSlice `json:"MuteSlice,omitempty" name:"MuteSlice" list`
+
+	// 静音时长占比。
+	MuteRatio *float64 `json:"MuteRatio,omitempty" name:"MuteRatio"`
+
+	// 静音总时长。
+	TotalMuteDuration *int64 `json:"TotalMuteDuration,omitempty" name:"TotalMuteDuration"`
 }
 
 type AttendanceInfo struct {
@@ -811,13 +832,16 @@ type DescribeAttendanceResultResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
+		// 缺失人员的ID列表(只针对请求中的libids字段)
+		AbsenceSetInLibs []*AbsenceInfo `json:"AbsenceSetInLibs,omitempty" name:"AbsenceSetInLibs" list`
+
 		// 确定出勤人员列表
 		AttendanceSet []*AttendanceInfo `json:"AttendanceSet,omitempty" name:"AttendanceSet" list`
 
 		// 疑似出勤人员列表
 		SuspectedSet []*SuspectedInfo `json:"SuspectedSet,omitempty" name:"SuspectedSet" list`
 
-		// 缺失人员的ID列表
+		// 缺失人员的ID列表(只针对请求中的personids字段)
 		AbsenceSet []*string `json:"AbsenceSet,omitempty" name:"AbsenceSet" list`
 
 		// 请求处理进度
@@ -862,6 +886,9 @@ func (r *DescribeAudioTaskRequest) FromJsonString(s string) error {
 type DescribeAudioTaskResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
+
+		// 如果请求中开启了静音检测开关，则会返回所有的静音片段（静音时长超过阈值的片段）。
+		AllMuteSlice *AllMuteSlice `json:"AllMuteSlice,omitempty" name:"AllMuteSlice"`
 
 		// 返回的当前音频的统计信息。当进度为100时返回。
 		AsrStat *ASRStat `json:"AsrStat,omitempty" name:"AsrStat"`
@@ -1533,6 +1560,9 @@ type Function struct {
 	// 输出关键词信息标识，当该值设置为true时，会输出当前音频的关键词信息。
 	EnableKeyword *bool `json:"EnableKeyword,omitempty" name:"EnableKeyword"`
 
+	// 静音检测标识，当设置为 true 时，需要设置静音时间阈值字段mute_threshold，统计结果中会返回静音片段。
+	EnableMuteDetect *bool `json:"EnableMuteDetect,omitempty" name:"EnableMuteDetect"`
+
 	// 输出音频统计信息标识，当设置为 true 时，任务查询结果会输出音频的统计信息（AsrStat）
 	EnableVadInfo *bool `json:"EnableVadInfo,omitempty" name:"EnableVadInfo"`
 
@@ -1890,6 +1920,15 @@ func (r *ModifyPersonResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type MuteSlice struct {
+
+	// 起始时间。
+	MuteBtm *int64 `json:"MuteBtm,omitempty" name:"MuteBtm"`
+
+	// 终止时间。
+	MuteEtm *int64 `json:"MuteEtm,omitempty" name:"MuteEtm"`
+}
+
 type Person struct {
 
 	// 人员库唯一标识符
@@ -2051,6 +2090,9 @@ type SubmitAudioTaskRequest struct {
 
 	// 视频文件类型，默认点播，直播填 live_url
 	FileType *string `json:"FileType,omitempty" name:"FileType"`
+
+	// 静音阈值设置，如果静音检测开关开启，则静音时间超过这个阈值认为是静音片段，在结果中会返回, 没给的话默认值为3s
+	MuteThreshold *int64 `json:"MuteThreshold,omitempty" name:"MuteThreshold"`
 
 	// 识别词库名列表，评估过程使用这些词汇库中的词汇进行词汇使用行为分析
 	VocabLibNameList []*string `json:"VocabLibNameList,omitempty" name:"VocabLibNameList" list`

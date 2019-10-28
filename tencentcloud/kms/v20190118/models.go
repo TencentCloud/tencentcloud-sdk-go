@@ -574,6 +574,43 @@ func (r *GenerateDataKeyResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type GenerateRandomRequest struct {
+	*tchttp.BaseRequest
+
+	// 生成的随机数的长度。最小值为1， 最大值为1024。
+	NumberOfBytes *uint64 `json:"NumberOfBytes,omitempty" name:"NumberOfBytes"`
+}
+
+func (r *GenerateRandomRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *GenerateRandomRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type GenerateRandomResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 生成的随机数的明文，该明文使用base64编码，用户需要使用base64解码得到明文。
+		Plaintext *string `json:"Plaintext,omitempty" name:"Plaintext"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *GenerateRandomResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *GenerateRandomResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type GetKeyRotationStatusRequest struct {
 	*tchttp.BaseRequest
 
@@ -713,7 +750,7 @@ type ImportKeyMaterialRequest struct {
 	// 指定导入密钥材料的CMK，需要和GetParametersForImport 指定的CMK相同。
 	KeyId *string `json:"KeyId,omitempty" name:"KeyId"`
 
-	// 密钥材料过期时间 unix 时间戳，不指定或者 0 表示密钥材料不会过期，若指定过期时间，需要大于当前时间点。
+	// 密钥材料过期时间 unix 时间戳，不指定或者 0 表示密钥材料不会过期，若指定过期时间，需要大于当前时间点，最大支持 2147443200。
 	ValidTo *uint64 `json:"ValidTo,omitempty" name:"ValidTo"`
 }
 

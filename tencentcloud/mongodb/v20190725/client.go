@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package v20180408
+package v20190725
 
 import (
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
@@ -20,7 +20,7 @@ import (
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
 )
 
-const APIVersion = "2018-04-08"
+const APIVersion = "2019-07-25"
 
 type Client struct {
     common.Client
@@ -59,7 +59,6 @@ func NewAssignProjectResponse() (response *AssignProjectResponse) {
 }
 
 // 本接口(AssignProject)用于指定云数据库实例的所属项目。
-// 
 func (c *Client) AssignProject(request *AssignProjectRequest) (response *AssignProjectResponse, err error) {
     if request == nil {
         request = NewAssignProjectRequest()
@@ -84,7 +83,7 @@ func NewCreateDBInstanceResponse() (response *CreateDBInstanceResponse) {
     return
 }
 
-// 本接口(CreateDBInstance)用于创建包年包月的MongoDB云数据库实例。
+// 本接口(CreateDBInstance)用于创建包年包月的MongoDB云数据库实例。接口支持的售卖规格，可从查询云数据库的售卖规格（DescribeSpecInfo）获取。
 func (c *Client) CreateDBInstance(request *CreateDBInstanceRequest) (response *CreateDBInstanceResponse, err error) {
     if request == nil {
         request = NewCreateDBInstanceRequest()
@@ -109,12 +108,37 @@ func NewCreateDBInstanceHourResponse() (response *CreateDBInstanceHourResponse) 
     return
 }
 
-// 本接口(CreateDBInstanceHour)用于创建按量计费的MongoDB云数据库实例（包括主实例、灾备实例和只读实例），可通过传入实例规格、实例类型、MongoDB版本、购买时长和数量等信息创建云数据库实例。
+// 本接口(CreateDBInstanceHour)用于创建按量计费的MongoDB云数据库实例。
 func (c *Client) CreateDBInstanceHour(request *CreateDBInstanceHourRequest) (response *CreateDBInstanceHourResponse, err error) {
     if request == nil {
         request = NewCreateDBInstanceHourRequest()
     }
     response = NewCreateDBInstanceHourResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeBackupAccessRequest() (request *DescribeBackupAccessRequest) {
+    request = &DescribeBackupAccessRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("mongodb", APIVersion, "DescribeBackupAccess")
+    return
+}
+
+func NewDescribeBackupAccessResponse() (response *DescribeBackupAccessResponse) {
+    response = &DescribeBackupAccessResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（DescribeBackupAccess）用于获取备份文件的下载授权，具体的备份文件信息可通过查询实例备份列表（DescribeDBBackups）接口获取
+func (c *Client) DescribeBackupAccess(request *DescribeBackupAccessRequest) (response *DescribeBackupAccessResponse, err error) {
+    if request == nil {
+        request = NewDescribeBackupAccessRequest()
+    }
+    response = NewDescribeBackupAccessResponse()
     err = c.Send(request, response)
     return
 }
@@ -144,6 +168,31 @@ func (c *Client) DescribeClientConnections(request *DescribeClientConnectionsReq
     return
 }
 
+func NewDescribeDBBackupsRequest() (request *DescribeDBBackupsRequest) {
+    request = &DescribeDBBackupsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("mongodb", APIVersion, "DescribeDBBackups")
+    return
+}
+
+func NewDescribeDBBackupsResponse() (response *DescribeDBBackupsResponse) {
+    response = &DescribeDBBackupsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（DescribeDBBackups）用于查询实例备份列表，目前只支持7天内的备份查询。
+func (c *Client) DescribeDBBackups(request *DescribeDBBackupsRequest) (response *DescribeDBBackupsResponse, err error) {
+    if request == nil {
+        request = NewDescribeDBBackupsRequest()
+    }
+    response = NewDescribeDBBackupsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeDBInstancesRequest() (request *DescribeDBInstancesRequest) {
     request = &DescribeDBInstancesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -165,31 +214,6 @@ func (c *Client) DescribeDBInstances(request *DescribeDBInstancesRequest) (respo
         request = NewDescribeDBInstancesRequest()
     }
     response = NewDescribeDBInstancesResponse()
-    err = c.Send(request, response)
-    return
-}
-
-func NewDescribeSlowLogRequest() (request *DescribeSlowLogRequest) {
-    request = &DescribeSlowLogRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    request.Init().WithApiInfo("mongodb", APIVersion, "DescribeSlowLog")
-    return
-}
-
-func NewDescribeSlowLogResponse() (response *DescribeSlowLogResponse) {
-    response = &DescribeSlowLogResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    }
-    return
-}
-
-// 本接口(DescribeSlowLogs)用于获取云数据库实例的慢查询日志。
-func (c *Client) DescribeSlowLog(request *DescribeSlowLogRequest) (response *DescribeSlowLogResponse, err error) {
-    if request == nil {
-        request = NewDescribeSlowLogRequest()
-    }
-    response = NewDescribeSlowLogResponse()
     err = c.Send(request, response)
     return
 }
@@ -219,6 +243,81 @@ func (c *Client) DescribeSpecInfo(request *DescribeSpecInfoRequest) (response *D
     return
 }
 
+func NewIsolateDBInstanceRequest() (request *IsolateDBInstanceRequest) {
+    request = &IsolateDBInstanceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("mongodb", APIVersion, "IsolateDBInstance")
+    return
+}
+
+func NewIsolateDBInstanceResponse() (response *IsolateDBInstanceResponse) {
+    response = &IsolateDBInstanceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口(IsolateDBInstance)用于隔离MongoDB云数据库按量计费实例。隔离后实例保留在回收站中，不能再写入数据。隔离一定时间后，实例会彻底删除，回收站保存时间请参考按量计费的服务条款。在隔离中的按量计费实例无法恢复，请谨慎操作。
+func (c *Client) IsolateDBInstance(request *IsolateDBInstanceRequest) (response *IsolateDBInstanceResponse, err error) {
+    if request == nil {
+        request = NewIsolateDBInstanceRequest()
+    }
+    response = NewIsolateDBInstanceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyDBInstanceSpecRequest() (request *ModifyDBInstanceSpecRequest) {
+    request = &ModifyDBInstanceSpecRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("mongodb", APIVersion, "ModifyDBInstanceSpec")
+    return
+}
+
+func NewModifyDBInstanceSpecResponse() (response *ModifyDBInstanceSpecResponse) {
+    response = &ModifyDBInstanceSpecResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口(ModifyDBInstanceSpec)用于调整MongoDB云数据库实例配置。接口支持的售卖规格，可从查询云数据库的售卖规格（DescribeSpecInfo）获取。
+func (c *Client) ModifyDBInstanceSpec(request *ModifyDBInstanceSpecRequest) (response *ModifyDBInstanceSpecResponse, err error) {
+    if request == nil {
+        request = NewModifyDBInstanceSpecRequest()
+    }
+    response = NewModifyDBInstanceSpecResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewOfflineIsolatedDBInstanceRequest() (request *OfflineIsolatedDBInstanceRequest) {
+    request = &OfflineIsolatedDBInstanceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("mongodb", APIVersion, "OfflineIsolatedDBInstance")
+    return
+}
+
+func NewOfflineIsolatedDBInstanceResponse() (response *OfflineIsolatedDBInstanceResponse) {
+    response = &OfflineIsolatedDBInstanceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口(OfflineIsolatedInstances)用于立即下线隔离状态的云数据库实例。进行操作的实例状态必须为隔离状态。
+func (c *Client) OfflineIsolatedDBInstance(request *OfflineIsolatedDBInstanceRequest) (response *OfflineIsolatedDBInstanceResponse, err error) {
+    if request == nil {
+        request = NewOfflineIsolatedDBInstanceRequest()
+    }
+    response = NewOfflineIsolatedDBInstanceResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewRenameInstanceRequest() (request *RenameInstanceRequest) {
     request = &RenameInstanceRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -240,132 +339,6 @@ func (c *Client) RenameInstance(request *RenameInstanceRequest) (response *Renam
         request = NewRenameInstanceRequest()
     }
     response = NewRenameInstanceResponse()
-    err = c.Send(request, response)
-    return
-}
-
-func NewSetAutoRenewRequest() (request *SetAutoRenewRequest) {
-    request = &SetAutoRenewRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    request.Init().WithApiInfo("mongodb", APIVersion, "SetAutoRenew")
-    return
-}
-
-func NewSetAutoRenewResponse() (response *SetAutoRenewResponse) {
-    response = &SetAutoRenewResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    }
-    return
-}
-
-// 本接口(SetAutoRenew)用于设置包年包月云数据库实例的续费选项。
-func (c *Client) SetAutoRenew(request *SetAutoRenewRequest) (response *SetAutoRenewResponse, err error) {
-    if request == nil {
-        request = NewSetAutoRenewRequest()
-    }
-    response = NewSetAutoRenewResponse()
-    err = c.Send(request, response)
-    return
-}
-
-func NewSetPasswordRequest() (request *SetPasswordRequest) {
-    request = &SetPasswordRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    request.Init().WithApiInfo("mongodb", APIVersion, "SetPassword")
-    return
-}
-
-func NewSetPasswordResponse() (response *SetPasswordResponse) {
-    response = &SetPasswordResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    }
-    return
-}
-
-// 本接口(SetPassword)用于设置云数据库账户的密码。
-// 
-func (c *Client) SetPassword(request *SetPasswordRequest) (response *SetPasswordResponse, err error) {
-    if request == nil {
-        request = NewSetPasswordRequest()
-    }
-    response = NewSetPasswordResponse()
-    err = c.Send(request, response)
-    return
-}
-
-func NewTerminateDBInstanceRequest() (request *TerminateDBInstanceRequest) {
-    request = &TerminateDBInstanceRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    request.Init().WithApiInfo("mongodb", APIVersion, "TerminateDBInstance")
-    return
-}
-
-func NewTerminateDBInstanceResponse() (response *TerminateDBInstanceResponse) {
-    response = &TerminateDBInstanceResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    }
-    return
-}
-
-// 本接口(TerminateDBInstance)用于销毁按量计费的MongoDB云数据库实例
-func (c *Client) TerminateDBInstance(request *TerminateDBInstanceRequest) (response *TerminateDBInstanceResponse, err error) {
-    if request == nil {
-        request = NewTerminateDBInstanceRequest()
-    }
-    response = NewTerminateDBInstanceResponse()
-    err = c.Send(request, response)
-    return
-}
-
-func NewUpgradeDBInstanceRequest() (request *UpgradeDBInstanceRequest) {
-    request = &UpgradeDBInstanceRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    request.Init().WithApiInfo("mongodb", APIVersion, "UpgradeDBInstance")
-    return
-}
-
-func NewUpgradeDBInstanceResponse() (response *UpgradeDBInstanceResponse) {
-    response = &UpgradeDBInstanceResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    }
-    return
-}
-
-// 本接口(UpgradeDBInstance)用于升级包年包月的MongoDB云数据库实例，可以扩容内存、存储以及Oplog
-func (c *Client) UpgradeDBInstance(request *UpgradeDBInstanceRequest) (response *UpgradeDBInstanceResponse, err error) {
-    if request == nil {
-        request = NewUpgradeDBInstanceRequest()
-    }
-    response = NewUpgradeDBInstanceResponse()
-    err = c.Send(request, response)
-    return
-}
-
-func NewUpgradeDBInstanceHourRequest() (request *UpgradeDBInstanceHourRequest) {
-    request = &UpgradeDBInstanceHourRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    request.Init().WithApiInfo("mongodb", APIVersion, "UpgradeDBInstanceHour")
-    return
-}
-
-func NewUpgradeDBInstanceHourResponse() (response *UpgradeDBInstanceHourResponse) {
-    response = &UpgradeDBInstanceHourResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    }
-    return
-}
-
-// 本接口(UpgradeDBInstanceHour)用于升级按量计费的MongoDB云数据库实例，可以扩容内存、存储以及oplog
-func (c *Client) UpgradeDBInstanceHour(request *UpgradeDBInstanceHourRequest) (response *UpgradeDBInstanceHourResponse, err error) {
-    if request == nil {
-        request = NewUpgradeDBInstanceHourRequest()
-    }
-    response = NewUpgradeDBInstanceHourResponse()
     err = c.Send(request, response)
     return
 }
