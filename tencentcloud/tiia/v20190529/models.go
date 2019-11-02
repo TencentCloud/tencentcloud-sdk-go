@@ -124,6 +124,88 @@ type Coord struct {
 	Y *int64 `json:"Y,omitempty" name:"Y"`
 }
 
+type CropImageRequest struct {
+	*tchttp.BaseRequest
+
+	// 需要裁剪区域的宽度，与Height共同组成所需裁剪的图片宽高比例；
+	// 输入数字请大于0、小于图片宽度的像素值；
+	Width *int64 `json:"Width,omitempty" name:"Width"`
+
+	// 需要裁剪区域的高度，与Width共同组成所需裁剪的图片宽高比例；
+	// 输入数字请请大于0、小于图片高度的像素值；
+	// 宽高比例（Width : Height）会简化为最简分数，即如果Width输入10、Height输入20，会简化为1：2。
+	// Width : Height建议取值在[1, 2.5]之间，超过这个范围可能会影响效果；
+	Height *int64 `json:"Height,omitempty" name:"Height"`
+
+	// 图片URL地址。 
+	// 图片限制： 
+	// • 图片格式：PNG、JPG、JPEG。 
+	// • 图片大小：所下载图片经Base64编码后不超过4M。图片下载时间不超过3秒。 
+	// 建议：
+	// • 图片像素：大于50*50像素，否则影响识别效果； 
+	// • 长宽比：长边：短边<5； 
+	// 接口响应时间会受到图片下载时间的影响，建议使用更可靠的存储服务，推荐将图片存储在腾讯云COS。
+	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
+
+	// 图片经过base64编码的内容。最大不超过4M。与ImageUrl同时存在时优先使用ImageUrl字段。
+	ImageBase64 *string `json:"ImageBase64,omitempty" name:"ImageBase64"`
+}
+
+func (r *CropImageRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CropImageRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CropImageResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 裁剪区域左上角X坐标值
+		X *int64 `json:"X,omitempty" name:"X"`
+
+		// 裁剪区域左上角Y坐标值
+		Y *int64 `json:"Y,omitempty" name:"Y"`
+
+		// 裁剪区域的宽度，单位为像素
+		Width *int64 `json:"Width,omitempty" name:"Width"`
+
+		// 裁剪区域的高度，单位为像素
+		Height *int64 `json:"Height,omitempty" name:"Height"`
+
+		// 原图宽度，单位为像素
+		OriginalWidth *int64 `json:"OriginalWidth,omitempty" name:"OriginalWidth"`
+
+		// 原图高度，单位为像素
+		OriginalHeight *int64 `json:"OriginalHeight,omitempty" name:"OriginalHeight"`
+
+		// 0：抠图正常, 1：原图过长, 2：原图过宽, 3：抠图区域过长, 4：抠图区域过宽, 5：纯色图 6：宽高比异常
+	// 原图过长是指原图的高度是宽度的1.8倍以上；
+	// 原图过宽是指原图的宽度是高度的1.8倍以上；
+	// 抠图区域过长是指抠图的高度是主体备选框高度的1.6倍以上；
+	// 抠图过宽是指当没有检测到人脸时，抠图区域宽度是检测出的原图主体区域宽度的1.6倍以上；
+	// 纯色图是指裁剪区域视觉较为单一、缺乏主体部分；
+	// Width : Height取值超出[1, 2.5]的范围；
+	// 以上是辅助决策的参考建议，可以根据业务需求选择采纳或忽视。
+		CropResult *int64 `json:"CropResult,omitempty" name:"CropResult"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CropImageResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CropImageResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DetectCelebrityRequest struct {
 	*tchttp.BaseRequest
 
@@ -168,6 +250,56 @@ func (r *DetectCelebrityResponse) ToJsonString() string {
 }
 
 func (r *DetectCelebrityResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DetectDisgustRequest struct {
+	*tchttp.BaseRequest
+
+	// 图片URL地址。 
+	// 图片限制： 
+	// • 图片格式：PNG、JPG、JPEG。 
+	// • 图片大小：所下载图片经Base64编码后不超过4M。图片下载时间不超过3秒。 
+	// 建议：
+	// • 图片像素：大于50*50像素，否则影响识别效果； 
+	// • 长宽比：长边：短边<5； 
+	// 接口响应时间会受到图片下载时间的影响，建议使用更可靠的存储服务，推荐将图片存储在腾讯云COS。
+	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
+
+	// 图片经过base64编码的内容。最大不超过4M。与ImageUrl同时存在时优先使用ImageUrl字段。
+	ImageBase64 *string `json:"ImageBase64,omitempty" name:"ImageBase64"`
+}
+
+func (r *DetectDisgustRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DetectDisgustRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DetectDisgustResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 对于图片中包含恶心内容的置信度，取值[0,1]，一般超过0.5则表明可能是恶心图片。
+		Confidence *float64 `json:"Confidence,omitempty" name:"Confidence"`
+
+		// 与图像内容最相似的恶心内容的类别，包含腐烂、密集、畸形、血腥、蛇、虫子、牙齿等。
+		Type *string `json:"Type,omitempty" name:"Type"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DetectDisgustResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DetectDisgustResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -224,6 +356,56 @@ func (r *DetectLabelResponse) ToJsonString() string {
 }
 
 func (r *DetectLabelResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DetectMisbehaviorRequest struct {
+	*tchttp.BaseRequest
+
+	// 图片URL地址。 
+	// 图片限制： 
+	// • 图片格式：PNG、JPG、JPEG。 
+	// • 图片大小：所下载图片经Base64编码后不超过4M。图片下载时间不超过3秒。 
+	// 建议：
+	// • 图片像素：大于50*50像素，否则影响识别效果； 
+	// • 长宽比：长边：短边<5； 
+	// 接口响应时间会受到图片下载时间的影响，建议使用更可靠的存储服务，推荐将图片存储在腾讯云COS。
+	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
+
+	// 图片经过base64编码的内容。最大不超过4M。与ImageUrl同时存在时优先使用ImageUrl字段。
+	ImageBase64 *string `json:"ImageBase64,omitempty" name:"ImageBase64"`
+}
+
+func (r *DetectMisbehaviorRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DetectMisbehaviorRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DetectMisbehaviorResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 对于图片中包含不良行为的置信度，取值[0,1]，一般超过0.5则表明可能包含不良行为内容；
+		Confidence *float64 `json:"Confidence,omitempty" name:"Confidence"`
+
+		// 图像中最可能包含的不良行为类别，包括赌博、打架斗殴、吸毒等。
+		Type *string `json:"Type,omitempty" name:"Type"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DetectMisbehaviorResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DetectMisbehaviorResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -693,6 +875,11 @@ type TextResult struct {
 	// PASS：正常
 	// REVIEW：疑似
 	// BLOCK：违规
+	// 
+	// Suggestion由Type决定：
+	// Type为 NOTEXT/NORMAL 时，Suggestion为PASS；
+	// Type为 POLITICS/PORN/TERRORISM/ADS 时，Suggestion为BLOCK；
+	// 其他情况下Suggestion为REVIEW。
 	Suggestion *string `json:"Suggestion,omitempty" name:"Suggestion"`
 
 	// 算法对于识别结果的置信度，0-100之间，值越高，表示对于结论越确定。

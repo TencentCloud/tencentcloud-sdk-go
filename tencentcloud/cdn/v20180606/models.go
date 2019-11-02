@@ -116,7 +116,7 @@ type DescribeCdnDataRequest struct {
 	Project *int64 `json:"Project,omitempty" name:"Project"`
 
 	// 时间粒度，支持以下几种模式：
-	// min：1 分钟粒度，指定查询区间 24 小时内（含 24 小时），可返回 1 分钟粒度明细数据
+	// min：1 分钟粒度，指定查询区间 24 小时内（含 24 小时），可返回 1 分钟粒度明细数据（指定查询服务地域为中国境外时不支持 1 分钟粒度）
 	// 5min：5 分钟粒度，指定查询区间 31 天内（含 31 天），可返回 5 分钟粒度明细数据
 	// hour：1 小时粒度，指定查询区间 31 天内（含 31 天），可返回 1 小时粒度明细数据
 	// day：天粒度，指定查询区间大于 31 天，可返回天粒度明细数据
@@ -126,12 +126,15 @@ type DescribeCdnDataRequest struct {
 	// 可按需指定为 true，返回每一个 Domain 的明细数据（statusCode 指标暂不支持）
 	Detail *bool `json:"Detail,omitempty" name:"Detail"`
 
-	// 指定运营商查询，不填充表示查询所有运营商
+	// 查询中国境内CDN数据时，指定运营商查询，不填充表示查询所有运营商
 	// 运营商编码可以查看 [运营商编码映射](https://cloud.tencent.com/document/product/228/6316#.E8.BF.90.E8.90.A5.E5.95.86.E6.98.A0.E5.B0.84)
+	// 指定运营商查询时，不可同时指定省份、IP协议查询
 	Isp *int64 `json:"Isp,omitempty" name:"Isp"`
 
-	// 指定省份查询，不填充表示查询所有省份
-	// 省份编码可以查看 [省份编码映射](https://cloud.tencent.com/document/product/228/6316#.E7.9C.81.E4.BB.BD.E6.98.A0.E5.B0.84)
+	// 查询中国境内CDN数据时，指定省份查询，不填充表示查询所有省份
+	// 查询中国境外CDN数据时，指定国家/地区查询，不填充表示查询所有国家/地区
+	// 省份、国家/地区编码可以查看 [省份编码映射](https://cloud.tencent.com/document/product/228/6316#.E7.9C.81.E4.BB.BD.E6.98.A0.E5.B0.84)
+	// 指定（中国境内）省份查询时，不可同时指定运营商、IP协议查询
 	District *int64 `json:"District,omitempty" name:"District"`
 
 	// 指定协议查询，不填充表示查询所有协议
@@ -145,9 +148,20 @@ type DescribeCdnDataRequest struct {
 
 	// 指定IP协议查询，不填充表示查询所有协议
 	// all：所有协议
-	// ipv4：指定查询 ipv4对应指标
+	// ipv4：指定查询 ipv4 对应指标
 	// ipv6：指定查询 ipv6 对应指标
+	// 指定IP协议查询时，不可同时指定省份、运营商查询
 	IpProtocol *string `json:"IpProtocol,omitempty" name:"IpProtocol"`
+
+	// 指定服务地域查询，不填充表示查询中国境内CDN数据
+	// mainland：指定查询中国境内 CDN 数据
+	// overseas：指定查询中国境外 CDN 数据
+	Area *string `json:"Area,omitempty" name:"Area"`
+
+	// 查询中国境外CDN数据时，可指定地区类型查询，不填充表示查询服务地区数据（仅在 Area 为 overseas 时可用）
+	// server：指定查询服务地区（腾讯云 CDN 节点服务器所在地区）数据
+	// client：指定查询客户端地区（用户请求终端所在地区）数据
+	AreaType *string `json:"AreaType,omitempty" name:"AreaType"`
 }
 
 func (r *DescribeCdnDataRequest) ToJsonString() string {
@@ -286,7 +300,7 @@ type DescribeMapInfoRequest struct {
 
 	// 映射查询类别：
 	// isp：运营商映射查询
-	// district：省份映射查询
+	// district：省份（中国境内）、国家/地区（中国境外）映射查询
 	Name *string `json:"Name,omitempty" name:"Name"`
 }
 
@@ -305,6 +319,14 @@ type DescribeMapInfoResponse struct {
 
 		// 映射关系数组。
 		MapInfoList []*MapInfo `json:"MapInfoList,omitempty" name:"MapInfoList" list`
+
+		// 服务端区域id和子区域id的映射关系。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		ServerRegionRelation []*RegionMapRelation `json:"ServerRegionRelation,omitempty" name:"ServerRegionRelation" list`
+
+		// 客户端区域id和子区域id的映射关系。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		ClientRegionRelation []*RegionMapRelation `json:"ClientRegionRelation,omitempty" name:"ClientRegionRelation" list`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -355,7 +377,7 @@ type DescribeOriginDataRequest struct {
 	Project *int64 `json:"Project,omitempty" name:"Project"`
 
 	// 时间粒度，支持以下几种模式：
-	// min：1 分钟粒度，指定查询区间 24 小时内（含 24 小时），可返回 1 分钟粒度明细数据
+	// min：1 分钟粒度，指定查询区间 24 小时内（含 24 小时），可返回 1 分钟粒度明细数据（指定查询服务地域为中国境外时不支持 1 分钟粒度）
 	// 5min：5 分钟粒度，指定查询区间 31 天内（含 31 天），可返回 5 分钟粒度明细数据
 	// hour：1 小时粒度，指定查询区间 31 天内（含 31 天），可返回 1 小时粒度明细数据
 	// day：天粒度，指定查询区间大于 31 天，可返回天粒度明细数据
@@ -364,6 +386,11 @@ type DescribeOriginDataRequest struct {
 	// Domains 传入多个时，默认（false)返回多个域名的汇总数据
 	// 可按需指定为 true，返回每一个 Domain 的明细数据（statusCode 指标暂不支持）
 	Detail *bool `json:"Detail,omitempty" name:"Detail"`
+
+	// 指定服务地域查询，不填充表示查询中国境内 CDN 数据
+	// mainland：指定查询中国境内 CDN 数据
+	// overseas：指定查询中国境外 CDN 数据
+	Area *string `json:"Area,omitempty" name:"Area"`
 }
 
 func (r *DescribeOriginDataRequest) ToJsonString() string {
@@ -401,6 +428,11 @@ func (r *DescribeOriginDataResponse) FromJsonString(s string) error {
 
 type DescribePayTypeRequest struct {
 	*tchttp.BaseRequest
+
+	// 指定服务地域查询，不填充表示查询中国境内 CDN 计费方式
+	// mainland：指定查询中国境内 CDN 计费方式
+	// overseas：指定查询中国境外 CDN 计费方式
+	Area *string `json:"Area,omitempty" name:"Area"`
 }
 
 func (r *DescribePayTypeRequest) ToJsonString() string {
@@ -419,6 +451,7 @@ type DescribePayTypeResponse struct {
 		// 计费类型：
 	// flux：流量计费
 	// bandwidth：带宽计费
+	// 如果修改过计费方式，表示下次生效的计费类型，否则表示当前计费类型。
 		PayType *string `json:"PayType,omitempty" name:"PayType"`
 
 		// 计费周期：
@@ -433,6 +466,16 @@ type DescribePayTypeResponse struct {
 	// sum：总流量计费，日结与月结均有流量计费模式
 	// max：峰值带宽计费，日结模式
 		StatType *string `json:"StatType,omitempty" name:"StatType"`
+
+		// 地区计费方式，仅在查询中国境外 CDN 计费方式时可用
+	// all：表示全地区统一计费
+	// multiple：表示分地区计费。
+		RegionType *string `json:"RegionType,omitempty" name:"RegionType"`
+
+		// 当前计费类型：
+	// flux：流量计费
+	// bandwidth：带宽计费
+		CurrentPayType *string `json:"CurrentPayType,omitempty" name:"CurrentPayType"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -654,10 +697,10 @@ func (r *EnableCachesResponse) FromJsonString(s string) error {
 type GetDisableRecordsRequest struct {
 	*tchttp.BaseRequest
 
-	// 开始时间
+	// 开始时间，如：2018-12-12 10:24:00。
 	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
 
-	// 结束时间
+	// 结束时间，如：2018-12-14 10:24:00。
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 
 	// 指定 URL 查询
@@ -667,6 +710,12 @@ type GetDisableRecordsRequest struct {
 	// disable：当前仍为禁用状态，访问返回 403
 	// enable：当前为可用状态，已解禁，可正常访问
 	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 分页查询偏移量，默认为 0 （第一页）。
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 分页查询限制数目，默认为20。
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 }
 
 func (r *GetDisableRecordsRequest) ToJsonString() string {
@@ -686,6 +735,10 @@ type GetDisableRecordsResponse struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		UrlRecordList []*UrlRecord `json:"UrlRecordList,omitempty" name:"UrlRecordList" list`
 
+		// 任务总数，用于分页
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
@@ -703,18 +756,18 @@ func (r *GetDisableRecordsResponse) FromJsonString(s string) error {
 type ListTopDataRequest struct {
 	*tchttp.BaseRequest
 
-	// 查询起始日期，如：2018-09-09 00:00:00
+	// 查询起始日期，如：2018-09-09 00:00:00。目前只支持按天粒度的数据查询，只取入参中的天数信息。
 	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
 
-	// 查询结束日期，如：2018-09-10 00:00:00
+	// 查询结束日期，如：2018-09-10 00:00:00。目前只支持按天粒度的数据查询，只取入参中的天数信息。例如，要查询2018-09-10的数据，输入StartTime=2018-09-10 00:00:00，EndTime=2018-09-10 00:00:00即可。
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 
 	// 排序对象，支持以下几种形式：
-	// Url：访问 URL 排序，带参数统计，支持的 Filter 为 flux、request
-	// Path：访问 URL 排序，不带参数统计，支持的 Filter 为 flux、request（白名单功能）
-	// District：省份排序，支持的 Filter 为 flux、request
-	// Isp：运营商排序，支持的 Filter 为 flux、request
-	// Host：域名访问数据排序，支持的 Filter 为：flux, request, bandwidth, fluxHitRate, 2XX, 3XX, 4XX, 5XX，具体状态码统计
+	// url：访问 URL 排序，带参数统计，支持的 Filter 为 flux、request
+	// path：访问 URL 排序，不带参数统计，支持的 Filter 为 flux、request（白名单功能）
+	// district：省份、国家/地区排序，支持的 Filter 为 flux、request
+	// isp：运营商排序，支持的 Filter 为 flux、request
+	// host：域名访问数据排序，支持的 Filter 为：flux, request, bandwidth, fluxHitRate, 2XX, 3XX, 4XX, 5XX，具体状态码统计
 	// originHost：域名回源数据排序，支持的 Filter 为 flux， request，bandwidth，origin_2XX，origin_3XX，oringin_4XX，origin_5XX，具体回源状态码统计
 	Metric *string `json:"Metric,omitempty" name:"Metric"`
 
@@ -742,12 +795,22 @@ type ListTopDataRequest struct {
 	// 未填充域名情况下，指定项目查询，若填充了具体域名信息，以域名为主
 	Project *int64 `json:"Project,omitempty" name:"Project"`
 
-	// 多域名查询时，默认（false)返回所有域名汇总排序结果
+	// 多域名查询时，默认（false)返回所有域名汇总排序结果
 	// Metric 为 Url、Path、District、Isp，Filter 为 flux、reqeust 时，可设置为 true，返回每一个 Domain 的排序数据
 	Detail *bool `json:"Detail,omitempty" name:"Detail"`
 
 	// Filter 为 statusCode、OriginStatusCode 时，填充指定状态码查询排序结果
 	Code *string `json:"Code,omitempty" name:"Code"`
+
+	// 指定服务地域查询，不填充表示查询中国境内 CDN 数据
+	// mainland：指定查询中国境内 CDN 数据
+	// overseas：指定查询中国境外 CDN 数据，支持的 Metric 为 url、district、host、originHost，当 Metric 为 originHost 时仅支持 flux、request、bandwidth Filter
+	Area *string `json:"Area,omitempty" name:"Area"`
+
+	// 查询中国境外CDN数据，且仅当 Metric 为 District 或 Host 时，可指定地区类型查询，不填充表示查询服务地区数据（仅在 Area 为 overseas，且 Metric 是 District 或 Host 时可用）
+	// server：指定查询服务地区（腾讯云 CDN 节点服务器所在地区）数据
+	// client：指定查询客户端地区（用户请求终端所在地区）数据，当 Metric 为 host 时仅支持 flux、request、bandwidth Filter
+	AreaType *string `json:"AreaType,omitempty" name:"AreaType"`
 }
 
 func (r *ListTopDataRequest) ToJsonString() string {
@@ -903,6 +966,9 @@ type PushTask struct {
 
 	// 预热任务提交时间。
 	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 预热区域，mainland，overseas或global。
+	Area *string `json:"Area,omitempty" name:"Area"`
 }
 
 type PushUrlsCacheRequest struct {
@@ -943,6 +1009,15 @@ func (r *PushUrlsCacheResponse) ToJsonString() string {
 
 func (r *PushUrlsCacheResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
+}
+
+type RegionMapRelation struct {
+
+	// 区域ID。
+	RegionId *int64 `json:"RegionId,omitempty" name:"RegionId"`
+
+	// 子区域ID列表
+	SubRegionIdList []*int64 `json:"SubRegionIdList,omitempty" name:"SubRegionIdList" list`
 }
 
 type ResourceData struct {

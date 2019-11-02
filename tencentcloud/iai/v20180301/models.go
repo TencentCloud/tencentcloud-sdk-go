@@ -91,11 +91,12 @@ type Candidate struct {
 	FaceId *string `json:"FaceId,omitempty" name:"FaceId"`
 
 	// 候选者的匹配得分。 
-	// 10万大小人脸库，若人脸均为类似抓拍照（人脸质量较差）， 
-	// 误识率百分之一对应分数为70分，误识率千分之一对应分数为80分，误识率万分之一对应分数为90分； 
-	// 若人脸均为类似自拍照（人脸质量较好）， 
-	// 误识率百分之一对应分数为60分，误识率千分之一对应分数为70分，误识率万分之一对应分数为80分。 
-	// 建议分数不要超过90分。您可以根据实际情况选择合适的分数。
+	// 
+	// 1万大小人脸底库下，误识率百分之一对应分数为70分，误识率千分之一对应分数为80分，误识率万分之一对应分数为90分；
+	// 10万大小人脸底库下，误识率百分之一对应分数为80分，误识率千分之一对应分数为90分，误识率万分之一对应分数为100分；
+	// 30万大小人脸底库下，误识率百分之一对应分数为85分，误识率千分之一对应分数为95分。
+	// 
+	// 一般80分左右可适用大部分场景，建议分数不要超过90分。您可以根据实际情况选择合适的分数。
 	Score *float64 `json:"Score,omitempty" name:"Score"`
 
 	// 人员名称
@@ -144,6 +145,16 @@ type CompareFaceRequest struct {
 	// 默认为"2.0"。 
 	// 不同算法模型版本对应的人脸识别算法不同，新版本的整体效果会优于旧版本，建议使用“3.0”版本。
 	FaceModelVersion *string `json:"FaceModelVersion,omitempty" name:"FaceModelVersion"`
+
+	// 图片质量控制。 
+	// 0: 不进行控制； 
+	// 1:较低的质量要求，图像存在非常模糊，眼睛鼻子嘴巴遮挡至少其中一种或多种的情况； 
+	// 2: 一般的质量要求，图像存在偏亮，偏暗，模糊或一般模糊，眉毛遮挡，脸颊遮挡，下巴遮挡，至少其中三种的情况； 
+	// 3: 较高的质量要求，图像存在偏亮，偏暗，一般模糊，眉毛遮挡，脸颊遮挡，下巴遮挡，其中一到两种的情况； 
+	// 4: 很高的质量要求，各个维度均为最好或最多在某一维度上存在轻微问题； 
+	// 默认 0。 
+	// 若图片质量不满足要求，则返回结果中会提示图片质量检测不符要求。
+	QualityControl *uint64 `json:"QualityControl,omitempty" name:"QualityControl"`
 }
 
 func (r *CompareFaceRequest) ToJsonString() string {
@@ -246,6 +257,20 @@ type CreateFaceRequest struct {
 	// 人员人脸总数量不可超过5张。
 	// 若图片中包含多张人脸，只选取其中人脸面积最大的人脸。
 	Urls []*string `json:"Urls,omitempty" name:"Urls" list`
+
+	// 只有和该人员已有的人脸相似度超过FaceMatchThreshold值的人脸，才能增加人脸成功。 
+	// 默认值60分。取值范围[0,100] 。
+	FaceMatchThreshold *float64 `json:"FaceMatchThreshold,omitempty" name:"FaceMatchThreshold"`
+
+	// 图片质量控制。 
+	// 0: 不进行控制； 
+	// 1:较低的质量要求，图像存在非常模糊，眼睛鼻子嘴巴遮挡至少其中一种或多种的情况； 
+	// 2: 一般的质量要求，图像存在偏亮，偏暗，模糊或一般模糊，眉毛遮挡，脸颊遮挡，下巴遮挡，至少其中三种的情况； 
+	// 3: 较高的质量要求，图像存在偏亮，偏暗，一般模糊，眉毛遮挡，脸颊遮挡，下巴遮挡，其中一到两种的情况； 
+	// 4: 很高的质量要求，各个维度均为最好或最多在某一维度上存在轻微问题； 
+	// 默认 0。 
+	// 若图片质量不满足要求，则返回结果中会提示图片质量检测不符要求。
+	QualityControl *uint64 `json:"QualityControl,omitempty" name:"QualityControl"`
 }
 
 func (r *CreateFaceRequest) ToJsonString() string {
@@ -267,8 +292,22 @@ type CreateFaceResponse struct {
 		// 加入成功的人脸ID列表
 		SucFaceIds []*string `json:"SucFaceIds,omitempty" name:"SucFaceIds" list`
 
-		// 每张人脸图片添加结果，-1101 代表未检测到人脸，-1102 代表图片解码失败，其他非 0 值代表算法服务异常。
+		// 每张人脸图片添加结果，-1101 代表未检测到人脸，-1102 代表图片解码失败， 
+	// -1601代表不符合图片质量控制要求, 
+	// -1603 代表已有相似度超过99%的人脸存在，-1604 代表人脸相似度没有超过FaceMatchThreshold。 
+	// 其他非 0 值代表算法服务异常。 
+	// RetCode的顺序和入参中 Images 或 Urls 的顺序一致。
 		RetCode []*int64 `json:"RetCode,omitempty" name:"RetCode" list`
+
+		// 加入成功的人脸索引。索引顺序和入参中 Images 或 Urls 的顺序一致。 
+	// 例， Urls 中 有 3 个 url，第二个 url 失败，则 SucIndexes 值为 [0,2] 。
+		SucIndexes []*uint64 `json:"SucIndexes,omitempty" name:"SucIndexes" list`
+
+		// 加入成功的人脸框位置。顺序和入参中 Images 或 Urls 的顺序一致。
+		SucFaceRects []*FaceRect `json:"SucFaceRects,omitempty" name:"SucFaceRects" list`
+
+		// 人脸识别所用的算法模型版本。
+		FaceModelVersion *string `json:"FaceModelVersion,omitempty" name:"FaceModelVersion"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -304,6 +343,11 @@ type CreateGroupRequest struct {
 
 	// 人员库信息备注，[0，40]个字符。
 	Tag *string `json:"Tag,omitempty" name:"Tag"`
+
+	// 人脸识别服务所用的算法模型版本。目前入参支持 “2.0”和“3.0“ 两个输入。
+	// 默认为"2.0"。
+	// 不同算法模型版本对应的人脸识别算法不同，新版本的整体效果会优于旧版本，建议使用“3.0”版本。
+	FaceModelVersion *string `json:"FaceModelVersion,omitempty" name:"FaceModelVersion"`
 }
 
 func (r *CreateGroupRequest) ToJsonString() string {
@@ -318,6 +362,9 @@ func (r *CreateGroupRequest) FromJsonString(s string) error {
 type CreateGroupResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
+
+		// 人脸识别所用的算法模型版本。
+		FaceModelVersion *string `json:"FaceModelVersion,omitempty" name:"FaceModelVersion"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -361,6 +408,28 @@ type CreatePersonRequest struct {
 	// 非腾讯云存储的Url速度和稳定性可能受一定影响。
 	// 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
 	Url *string `json:"Url,omitempty" name:"Url"`
+
+	// 此参数用于控制判断 Image 或 Url 中图片包含的人脸，是否在人员库中已有疑似的同一人。 
+	// 如果判断为已有相同人在人员库中，则不会创建新的人员，返回疑似同一人的人员信息。 
+	// 如果判断没有，则完成创建人员。 
+	// 0: 不进行判断，无论是否有疑似同一人在库中均完成入库； 
+	// 1:较低的同一人判断要求（百一误识别率）； 
+	// 2: 一般的同一人判断要求（千一误识别率）； 
+	// 3: 较高的同一人判断要求（万一误识别率）； 
+	// 4: 很高的同一人判断要求（十万一误识别率）。 
+	// 默认 0。  
+	// 注： 要求越高，则疑似同一人的概率越小。不同要求对应的误识别率仅为参考值，您可以根据实际情况调整。
+	UniquePersonControl *uint64 `json:"UniquePersonControl,omitempty" name:"UniquePersonControl"`
+
+	// 图片质量控制。 
+	// 0: 不进行控制； 
+	// 1:较低的质量要求，图像存在非常模糊，眼睛鼻子嘴巴遮挡至少其中一种或多种的情况； 
+	// 2: 一般的质量要求，图像存在偏亮，偏暗，模糊或一般模糊，眉毛遮挡，脸颊遮挡，下巴遮挡，至少其中三种的情况； 
+	// 3: 较高的质量要求，图像存在偏亮，偏暗，一般模糊，眉毛遮挡，脸颊遮挡，下巴遮挡，其中一到两种的情况； 
+	// 4: 很高的质量要求，各个维度均为最好或最多在某一维度上存在轻微问题； 
+	// 默认 0。 
+	// 若图片质量不满足要求，则返回结果中会提示图片质量检测不符要求。
+	QualityControl *uint64 `json:"QualityControl,omitempty" name:"QualityControl"`
 }
 
 func (r *CreatePersonRequest) ToJsonString() string {
@@ -378,6 +447,17 @@ type CreatePersonResponse struct {
 
 		// 人脸图片唯一标识。
 		FaceId *string `json:"FaceId,omitempty" name:"FaceId"`
+
+		// 检测出的人脸框的位置。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		FaceRect *FaceRect `json:"FaceRect,omitempty" name:"FaceRect"`
+
+		// 疑似同一人的PersonId。 
+	// 当 UniquePersonControl 参数不为0且人员库中有疑似的同一人，此参数才有意义。
+		SimilarPersonId *string `json:"SimilarPersonId,omitempty" name:"SimilarPersonId"`
+
+		// 人脸识别所用的算法模型版本。
+		FaceModelVersion *string `json:"FaceModelVersion,omitempty" name:"FaceModelVersion"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -548,7 +628,9 @@ type DetectFaceRequest struct {
 	// 此参数用于控制处理待检测图片中的人脸个数，值越小，处理速度越快。
 	MaxFaceNum *uint64 `json:"MaxFaceNum,omitempty" name:"MaxFaceNum"`
 
-	// 人脸长和宽的最小尺寸，单位为像素。默认为40。低于此尺寸的人脸不会被检测。
+	// 人脸长和宽的最小尺寸，单位为像素。
+	// 默认为40。建议不低于34。
+	// 低于MinFaceSize值的人脸不会被检测。
 	MinFaceSize *uint64 `json:"MinFaceSize,omitempty" name:"MinFaceSize"`
 
 	// 图片 base64 数据，base64 编码后大小不可超过5M。
@@ -981,6 +1063,10 @@ type GetPersonGroupInfoResponse struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		GroupNum *uint64 `json:"GroupNum,omitempty" name:"GroupNum"`
 
+		// 人脸识别服务所用的算法模型版本。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		FaceModelVersion *string `json:"FaceModelVersion,omitempty" name:"FaceModelVersion"`
+
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
@@ -1072,6 +1158,10 @@ type GetPersonListResponse struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		FaceNum *uint64 `json:"FaceNum,omitempty" name:"FaceNum"`
 
+		// 人脸识别所用的算法模型版本。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		FaceModelVersion *string `json:"FaceModelVersion,omitempty" name:"FaceModelVersion"`
+
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
@@ -1084,6 +1174,15 @@ func (r *GetPersonListResponse) ToJsonString() string {
 
 func (r *GetPersonListResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
+}
+
+type GroupCandidate struct {
+
+	// 人员库ID 。
+	GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
+
+	// 识别出的最相似候选人。
+	Candidates []*Candidate `json:"Candidates,omitempty" name:"Candidates" list`
 }
 
 type GroupExDescriptionInfo struct {
@@ -1278,6 +1377,10 @@ type PersonInfo struct {
 
 	// 包含的人脸照片列表
 	FaceIds []*string `json:"FaceIds,omitempty" name:"FaceIds" list`
+
+	// Group的创建时间和日期 CreationTimestamp。CreationTimestamp 的值是自 Unix 纪元时间到Group创建时间的毫秒数。 
+	// Unix 纪元时间是 1970 年 1 月 1 日星期四，协调世界时 (UTC) 00:00:00。有关更多信息，请参阅 Unix 时间。
+	CreationTimestamp *uint64 `json:"CreationTimestamp,omitempty" name:"CreationTimestamp"`
 }
 
 type Point struct {
@@ -1296,6 +1399,23 @@ type Result struct {
 
 	// 检测出的人脸框位置
 	FaceRect *FaceRect `json:"FaceRect,omitempty" name:"FaceRect"`
+
+	// 检测出的人脸图片状态返回码。0 表示正常。 
+	// -1601代表不符合图片质量控制要求，此时Candidate内容为空。
+	RetCode *int64 `json:"RetCode,omitempty" name:"RetCode"`
+}
+
+type ResultsReturnsByGroup struct {
+
+	// 检测出的人脸框位置。
+	FaceRect *FaceRect `json:"FaceRect,omitempty" name:"FaceRect"`
+
+	// 识别结果。
+	GroupCandidates []*GroupCandidate `json:"GroupCandidates,omitempty" name:"GroupCandidates" list`
+
+	// 检测出的人脸图片状态返回码。0 表示正常。 
+	// -1601代表不符合图片质量控制要求，此时Candidate内容为空。
+	RetCode *int64 `json:"RetCode,omitempty" name:"RetCode"`
 }
 
 type SearchFacesRequest struct {
@@ -1330,6 +1450,19 @@ type SearchFacesRequest struct {
 
 	// 是否返回人员具体信息。0 为关闭，1 为开启。默认为 0。其他非0非1值默认为0
 	NeedPersonInfo *int64 `json:"NeedPersonInfo,omitempty" name:"NeedPersonInfo"`
+
+	// 图片质量控制，若图片中包含多张人脸，会对要求处理的人脸进行质量控制判断。  
+	// 0: 不进行控制， 
+	// 1:较低的质量要求， 
+	// 2: 一般的质量要求， 
+	// 3: 较高的质量要求。 
+	// 4: 很高的质量要求。 
+	// 默认 0。 
+	// 若图片质量不满足要求，则返回结果中会提示图片质量检测不符要求。
+	QualityControl *uint64 `json:"QualityControl,omitempty" name:"QualityControl"`
+
+	// 出参Score中，只有超过FaceMatchThreshold值的结果才会返回。默认为0。
+	FaceMatchThreshold *float64 `json:"FaceMatchThreshold,omitempty" name:"FaceMatchThreshold"`
 }
 
 func (r *SearchFacesRequest) ToJsonString() string {
@@ -1351,6 +1484,9 @@ type SearchFacesResponse struct {
 		// 搜索的人员库中包含的人脸数。
 		FaceNum *uint64 `json:"FaceNum,omitempty" name:"FaceNum"`
 
+		// 人脸识别所用的算法模型版本。
+		FaceModelVersion *string `json:"FaceModelVersion,omitempty" name:"FaceModelVersion"`
+
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
@@ -1362,6 +1498,253 @@ func (r *SearchFacesResponse) ToJsonString() string {
 }
 
 func (r *SearchFacesResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type SearchFacesReturnsByGroupRequest struct {
+	*tchttp.BaseRequest
+
+	// 希望搜索的人员库列表，上限10个。
+	GroupIds []*string `json:"GroupIds,omitempty" name:"GroupIds" list`
+
+	// 图片 base64 数据，base64 编码后大小不可超过5M。
+	// 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
+	Image *string `json:"Image,omitempty" name:"Image"`
+
+	// 图片的 Url 。对应图片 base64 编码后大小不可超过5M。
+	// Url、Image必须提供一个，如果都提供，只使用 Url。
+	// 图片存储于腾讯云的Url可保障更高下载速度和稳定性，建议图片存储于腾讯云。
+	// 非腾讯云存储的Url速度和稳定性可能受一定影响。
+	// 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
+	Url *string `json:"Url,omitempty" name:"Url"`
+
+	// 最多识别的人脸数目。默认值为1（仅检测图片中面积最大的那张人脸），最大值为10。
+	// MaxFaceNum用于，当输入的待识别图片包含多张人脸时，设定要搜索的人脸的数量。
+	// 例：输入的Image或Url中的图片包含多张人脸，设MaxFaceNum=5，则会识别图片中面积最大的5张人脸。
+	MaxFaceNum *uint64 `json:"MaxFaceNum,omitempty" name:"MaxFaceNum"`
+
+	// 人脸长和宽的最小尺寸，单位为像素。默认为80。低于40将影响搜索精度。建议设置为80。
+	MinFaceSize *uint64 `json:"MinFaceSize,omitempty" name:"MinFaceSize"`
+
+	// 被检测到的人脸，对应最多返回的最相似人员数目。默认值为5，最大值为10。  
+	// 例，设MaxFaceNum为3，MaxPersonNum为5，则最多可能返回3*5=15个人员。
+	MaxPersonNumPerGroup *uint64 `json:"MaxPersonNumPerGroup,omitempty" name:"MaxPersonNumPerGroup"`
+
+	// 是否返回人员具体信息。0 为关闭，1 为开启。默认为 0。其他非0非1值默认为0
+	NeedPersonInfo *int64 `json:"NeedPersonInfo,omitempty" name:"NeedPersonInfo"`
+
+	// 图片质量控制。 
+	// 0: 不进行控制； 
+	// 1:较低的质量要求，图像存在非常模糊，眼睛鼻子嘴巴遮挡至少其中一种或多种的情况； 
+	// 2: 一般的质量要求，图像存在偏亮，偏暗，模糊或一般模糊，眉毛遮挡，脸颊遮挡，下巴遮挡，至少其中三种的情况； 
+	// 3: 较高的质量要求，图像存在偏亮，偏暗，一般模糊，眉毛遮挡，脸颊遮挡，下巴遮挡，其中一到两种的情况； 
+	// 4: 很高的质量要求，各个维度均为最好或最多在某一维度上存在轻微问题； 
+	// 默认 0。 
+	// 若图片质量不满足要求，则返回结果中会提示图片质量检测不符要求。
+	QualityControl *uint64 `json:"QualityControl,omitempty" name:"QualityControl"`
+
+	// 出参Score中，只有大于等于FaceMatchThreshold值的结果才会返回。
+	// 默认为0。
+	// 取值范围[0.0,100.0) 。
+	FaceMatchThreshold *float64 `json:"FaceMatchThreshold,omitempty" name:"FaceMatchThreshold"`
+}
+
+func (r *SearchFacesReturnsByGroupRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *SearchFacesReturnsByGroupRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type SearchFacesReturnsByGroupResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 搜索的人员库中包含的人脸数。
+		FaceNum *uint64 `json:"FaceNum,omitempty" name:"FaceNum"`
+
+		// 识别结果。
+		ResultsReturnsByGroup []*ResultsReturnsByGroup `json:"ResultsReturnsByGroup,omitempty" name:"ResultsReturnsByGroup" list`
+
+		// 人脸识别所用的算法模型版本。
+		FaceModelVersion *string `json:"FaceModelVersion,omitempty" name:"FaceModelVersion"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *SearchFacesReturnsByGroupResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *SearchFacesReturnsByGroupResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type SearchPersonsRequest struct {
+	*tchttp.BaseRequest
+
+	// 希望搜索的人员库列表，上限100个。
+	GroupIds []*string `json:"GroupIds,omitempty" name:"GroupIds" list`
+
+	// 图片 base64 数据，base64 编码后大小不可超过5M。
+	// 若图片中包含多张人脸，只选取其中人脸面积最大的人脸。
+	// 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
+	Image *string `json:"Image,omitempty" name:"Image"`
+
+	// 图片的 Url 。对应图片 base64 编码后大小不可超过5M。
+	// Url、Image必须提供一个，如果都提供，只使用 Url。
+	// 图片存储于腾讯云的Url可保障更高下载速度和稳定性，建议图片存储于腾讯云。
+	// 非腾讯云存储的Url速度和稳定性可能受一定影响。
+	// 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
+	Url *string `json:"Url,omitempty" name:"Url"`
+
+	// 最多识别的人脸数目。默认值为1（仅检测图片中面积最大的那张人脸），最大值为10。
+	// MaxFaceNum用于，当输入的待识别图片包含多张人脸时，设定要搜索的人脸的数量。
+	// 例：输入的Image或Url中的图片包含多张人脸，设MaxFaceNum=5，则会识别图片中面积最大的5张人脸。
+	MaxFaceNum *uint64 `json:"MaxFaceNum,omitempty" name:"MaxFaceNum"`
+
+	// 人脸长和宽的最小尺寸，单位为像素。默认为80。低于40将影响搜索精度。建议设置为80。
+	MinFaceSize *uint64 `json:"MinFaceSize,omitempty" name:"MinFaceSize"`
+
+	// 单张被识别的人脸返回的最相似人员数量。默认值为5，最大值为100。
+	// 例，设MaxFaceNum为1，MaxPersonNum为8，则返回Top8相似的人员信息。
+	// 值越大，需要处理的时间越长。建议不要超过10。
+	MaxPersonNum *uint64 `json:"MaxPersonNum,omitempty" name:"MaxPersonNum"`
+
+	// 此参数用于控制判断 Image 或 Url 中图片包含的人脸，是否在人员库中已有疑似的同一人。 
+	// 如果判断为已有相同人在人员库中，则不会创建新的人员，返回疑似同一人的人员信息。 
+	// 如果判断没有，则完成创建人员。 
+	// 0: 不进行判断，无论是否有疑似同一人在库中均完成入库； 
+	// 1:较低的同一人判断要求（百一误识别率）； 
+	// 2: 一般的同一人判断要求（千一误识别率）； 
+	// 3: 较高的同一人判断要求（万一误识别率）； 
+	// 4: 很高的同一人判断要求（十万一误识别率）。 
+	// 默认 0。  
+	// 注： 要求越高，则疑似同一人的概率越小。不同要求对应的误识别率仅为参考值，您可以根据实际情况调整。
+	QualityControl *uint64 `json:"QualityControl,omitempty" name:"QualityControl"`
+
+	// 出参Score中，只有大于等于FaceMatchThreshold值的结果才会返回。默认为0。取值范围[0.0,100.0) 。
+	FaceMatchThreshold *float64 `json:"FaceMatchThreshold,omitempty" name:"FaceMatchThreshold"`
+}
+
+func (r *SearchPersonsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *SearchPersonsRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type SearchPersonsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 识别结果。
+		Results []*Result `json:"Results,omitempty" name:"Results" list`
+
+		// 搜索的人员库中包含的人员数。若输入图片中所有人脸均不符合质量要求，则返回0。
+		PersonNum *uint64 `json:"PersonNum,omitempty" name:"PersonNum"`
+
+		// 人脸识别所用的算法模型版本。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		FaceModelVersion *string `json:"FaceModelVersion,omitempty" name:"FaceModelVersion"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *SearchPersonsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *SearchPersonsResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type SearchPersonsReturnsByGroupRequest struct {
+	*tchttp.BaseRequest
+
+	// 希望搜索的人员库列表，上限10个。
+	GroupIds []*string `json:"GroupIds,omitempty" name:"GroupIds" list`
+
+	// 图片 base64 数据，base64 编码后大小不可超过5M。
+	// 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
+	Image *string `json:"Image,omitempty" name:"Image"`
+
+	// 图片的 Url 。对应图片 base64 编码后大小不可超过5M。
+	// Url、Image必须提供一个，如果都提供，只使用 Url。
+	// 图片存储于腾讯云的Url可保障更高下载速度和稳定性，建议图片存储于腾讯云。
+	// 非腾讯云存储的Url速度和稳定性可能受一定影响。
+	// 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
+	Url *string `json:"Url,omitempty" name:"Url"`
+
+	// 最多识别的人脸数目。默认值为1（仅检测图片中面积最大的那张人脸），最大值为10。
+	// MaxFaceNum用于，当输入的待识别图片包含多张人脸时，设定要搜索的人脸的数量。
+	// 例：输入的Image或Url中的图片包含多张人脸，设MaxFaceNum=5，则会识别图片中面积最大的5张人脸。
+	MaxFaceNum *uint64 `json:"MaxFaceNum,omitempty" name:"MaxFaceNum"`
+
+	// 人脸长和宽的最小尺寸，单位为像素。默认为80。低于40将影响搜索精度。建议设置为80。
+	MinFaceSize *uint64 `json:"MinFaceSize,omitempty" name:"MinFaceSize"`
+
+	// 被检测到的人脸，对应最多返回的最相似人员数目。默认值为5，最大值为10。  
+	// 例，设MaxFaceNum为3，MaxPersonNumPerGroup为5，GroupIds长度为3，则最多可能返回3*5*3=45个人员。
+	MaxPersonNumPerGroup *uint64 `json:"MaxPersonNumPerGroup,omitempty" name:"MaxPersonNumPerGroup"`
+
+	// 图片质量控制。 
+	// 0: 不进行控制； 
+	// 1:较低的质量要求，图像存在非常模糊，眼睛鼻子嘴巴遮挡至少其中一种或多种的情况； 
+	// 2: 一般的质量要求，图像存在偏亮，偏暗，模糊或一般模糊，眉毛遮挡，脸颊遮挡，下巴遮挡，至少其中三种的情况； 
+	// 3: 较高的质量要求，图像存在偏亮，偏暗，一般模糊，眉毛遮挡，脸颊遮挡，下巴遮挡，其中一到两种的情况； 
+	// 4: 很高的质量要求，各个维度均为最好或最多在某一维度上存在轻微问题； 
+	// 默认 0。 
+	// 若图片质量不满足要求，则返回结果中会提示图片质量检测不符要求。
+	QualityControl *uint64 `json:"QualityControl,omitempty" name:"QualityControl"`
+
+	// 出参Score中，只有超过FaceMatchThreshold值的结果才会返回。默认为0。
+	FaceMatchThreshold *float64 `json:"FaceMatchThreshold,omitempty" name:"FaceMatchThreshold"`
+}
+
+func (r *SearchPersonsReturnsByGroupRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *SearchPersonsReturnsByGroupRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type SearchPersonsReturnsByGroupResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 搜索的人员库中包含的人员数。若输入图片中所有人脸均不符合质量要求，则返回0。
+		PersonNum *uint64 `json:"PersonNum,omitempty" name:"PersonNum"`
+
+		// 识别结果。
+		ResultsReturnsByGroup []*ResultsReturnsByGroup `json:"ResultsReturnsByGroup,omitempty" name:"ResultsReturnsByGroup" list`
+
+		// 人脸识别所用的算法模型版本。
+		FaceModelVersion *string `json:"FaceModelVersion,omitempty" name:"FaceModelVersion"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *SearchPersonsReturnsByGroupResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *SearchPersonsReturnsByGroupResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -1383,6 +1766,16 @@ type VerifyFaceRequest struct {
 	// 若图片中包含多张人脸，只选取其中人脸面积最大的人脸。
 	// 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
 	Url *string `json:"Url,omitempty" name:"Url"`
+
+	// 图片质量控制。 
+	// 0: 不进行控制； 
+	// 1:较低的质量要求，图像存在非常模糊，眼睛鼻子嘴巴遮挡至少其中一种或多种的情况； 
+	// 2: 一般的质量要求，图像存在偏亮，偏暗，模糊或一般模糊，眉毛遮挡，脸颊遮挡，下巴遮挡，至少其中三种的情况； 
+	// 3: 较高的质量要求，图像存在偏亮，偏暗，一般模糊，眉毛遮挡，脸颊遮挡，下巴遮挡，其中一到两种的情况； 
+	// 4: 很高的质量要求，各个维度均为最好或最多在某一维度上存在轻微问题； 
+	// 默认 0。 
+	// 若图片质量不满足要求，则返回结果中会提示图片质量检测不符要求。
+	QualityControl *uint64 `json:"QualityControl,omitempty" name:"QualityControl"`
 }
 
 func (r *VerifyFaceRequest) ToJsonString() string {
@@ -1399,10 +1792,17 @@ type VerifyFaceResponse struct {
 	Response *struct {
 
 		// 给定的人脸图片与 PersonId 对应人脸的相似度。若 PersonId 下有多张人脸（Face），返回相似度最大的分数。
+	// 
+	// 不同算法版本返回的相似度分数不同。
+	// 若需要验证两张图片中人脸是否为同一人，3.0版本误识率千分之一对应分数为40分，误识率万分之一对应分数为50分，误识率十万分之一对应分数为60分。 一般超过50分则可认定为同一人。
+	// 2.0版本误识率千分之一对应分数为70分，误识率万分之一对应分数为80分，误识率十万分之一对应分数为90分。 一般超过80分则可认定为同一人。
 		Score *float64 `json:"Score,omitempty" name:"Score"`
 
 		// 是否为同一人的判断。
 		IsMatch *bool `json:"IsMatch,omitempty" name:"IsMatch"`
+
+		// 人脸识别所用的算法模型版本。
+		FaceModelVersion *string `json:"FaceModelVersion,omitempty" name:"FaceModelVersion"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1415,5 +1815,70 @@ func (r *VerifyFaceResponse) ToJsonString() string {
 }
 
 func (r *VerifyFaceResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type VerifyPersonRequest struct {
+	*tchttp.BaseRequest
+
+	// 图片 base64 数据。
+	// 若图片中包含多张人脸，只选取其中人脸面积最大的人脸。
+	// 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
+	Image *string `json:"Image,omitempty" name:"Image"`
+
+	// 图片的 Url 。 图片的 Url、Image必须提供一个，如果都提供，只使用 Url。 
+	// 图片存储于腾讯云的Url可保障更高下载速度和稳定性，建议图片存储于腾讯云。 
+	// 非腾讯云存储的Url速度和稳定性可能受一定影响。
+	// 若图片中包含多张人脸，只选取其中人脸面积最大的人脸。
+	// 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
+	Url *string `json:"Url,omitempty" name:"Url"`
+
+	// 待验证的人员ID。人员ID具体信息请参考人员库管理相关接口。
+	PersonId *string `json:"PersonId,omitempty" name:"PersonId"`
+
+	// 图片质量控制。 
+	// 0: 不进行控制； 
+	// 1:较低的质量要求，图像存在非常模糊，眼睛鼻子嘴巴遮挡至少其中一种或多种的情况； 
+	// 2: 一般的质量要求，图像存在偏亮，偏暗，模糊或一般模糊，眉毛遮挡，脸颊遮挡，下巴遮挡，至少其中三种的情况； 
+	// 3: 较高的质量要求，图像存在偏亮，偏暗，一般模糊，眉毛遮挡，脸颊遮挡，下巴遮挡，其中一到两种的情况； 
+	// 4: 很高的质量要求，各个维度均为最好或最多在某一维度上存在轻微问题； 
+	// 默认 0。 
+	// 若图片质量不满足要求，则返回结果中会提示图片质量检测不符要求。
+	QualityControl *uint64 `json:"QualityControl,omitempty" name:"QualityControl"`
+}
+
+func (r *VerifyPersonRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *VerifyPersonRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type VerifyPersonResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 给定的人脸照片与 PersonId 对应的相似度。若 PersonId 下有多张人脸（Face），会融合多张人脸信息进行验证。
+		Score *float64 `json:"Score,omitempty" name:"Score"`
+
+		// 是否为同一人的判断。
+		IsMatch *bool `json:"IsMatch,omitempty" name:"IsMatch"`
+
+		// 人脸识别所用的算法模型版本。
+		FaceModelVersion *string `json:"FaceModelVersion,omitempty" name:"FaceModelVersion"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *VerifyPersonResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *VerifyPersonResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }

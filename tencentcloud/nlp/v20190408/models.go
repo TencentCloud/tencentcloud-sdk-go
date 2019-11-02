@@ -246,7 +246,7 @@ type Keyword struct {
 type KeywordsExtractionRequest struct {
 	*tchttp.BaseRequest
 
-	// 待处理的文本（仅支持UTF-8格式，不超过2000字）
+	// 待处理的文本（仅支持UTF-8格式，不超过10000字）
 	Text *string `json:"Text,omitempty" name:"Text"`
 
 	// 指定关键词个数上限（默认值为5）

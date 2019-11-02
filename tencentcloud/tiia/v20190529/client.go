@@ -68,6 +68,33 @@ func (c *Client) AssessQuality(request *AssessQualityRequest) (response *AssessQ
     return
 }
 
+func NewCropImageRequest() (request *CropImageRequest) {
+    request = &CropImageRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tiia", APIVersion, "CropImage")
+    return
+}
+
+func NewCropImageResponse() (response *CropImageResponse) {
+    response = &CropImageResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 根据输入的裁剪比例，智能判断一张图片的最佳裁剪区域，确保原图的主体区域不受影响。
+// 
+// 可以自动裁剪图片，适应不同平台、设备的展示要求，避免简单拉伸带来的变形。
+func (c *Client) CropImage(request *CropImageRequest) (response *CropImageResponse, err error) {
+    if request == nil {
+        request = NewCropImageRequest()
+    }
+    response = NewCropImageResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDetectCelebrityRequest() (request *DetectCelebrityRequest) {
     request = &DetectCelebrityRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -95,6 +122,33 @@ func (c *Client) DetectCelebrity(request *DetectCelebrityRequest) (response *Det
     return
 }
 
+func NewDetectDisgustRequest() (request *DetectDisgustRequest) {
+    request = &DetectDisgustRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tiia", APIVersion, "DetectDisgust")
+    return
+}
+
+func NewDetectDisgustResponse() (response *DetectDisgustResponse) {
+    response = &DetectDisgustResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 输入一张图片，返回AI针对一张图片是否是恶心的一系列判断值。
+// 
+// 通过恶心图片识别, 可以判断一张图片是否令人恶心, 同时给出它属于的潜在类别, 让您能够过滤掉使人不愉快的图片.
+func (c *Client) DetectDisgust(request *DetectDisgustRequest) (response *DetectDisgustResponse, err error) {
+    if request == nil {
+        request = NewDetectDisgustRequest()
+    }
+    response = NewDetectDisgustResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDetectLabelRequest() (request *DetectLabelRequest) {
     request = &DetectLabelRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -116,6 +170,31 @@ func (c *Client) DetectLabel(request *DetectLabelRequest) (response *DetectLabel
         request = NewDetectLabelRequest()
     }
     response = NewDetectLabelResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDetectMisbehaviorRequest() (request *DetectMisbehaviorRequest) {
+    request = &DetectMisbehaviorRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tiia", APIVersion, "DetectMisbehavior")
+    return
+}
+
+func NewDetectMisbehaviorResponse() (response *DetectMisbehaviorResponse) {
+    response = &DetectMisbehaviorResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 可以识别输入的图片中是否包含不良行为，例如打架斗殴、赌博、抽烟等，可以应用于广告图、直播截图、短视频截图等审核，减少不良行为对平台内容质量的影响，维护健康向上的互联网环境。
+func (c *Client) DetectMisbehavior(request *DetectMisbehaviorRequest) (response *DetectMisbehaviorResponse, err error) {
+    if request == nil {
+        request = NewDetectMisbehaviorRequest()
+    }
+    response = NewDetectMisbehaviorResponse()
     err = c.Send(request, response)
     return
 }

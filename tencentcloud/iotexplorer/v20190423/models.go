@@ -20,6 +20,108 @@ import (
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
+type CallDeviceActionAsyncRequest struct {
+	*tchttp.BaseRequest
+
+	// 产品Id
+	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
+
+	// 设备名称
+	DeviceName *string `json:"DeviceName,omitempty" name:"DeviceName"`
+
+	// 动作Id
+	ActionId *string `json:"ActionId,omitempty" name:"ActionId"`
+
+	// 输入参数
+	InputParams *string `json:"InputParams,omitempty" name:"InputParams"`
+}
+
+func (r *CallDeviceActionAsyncRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CallDeviceActionAsyncRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CallDeviceActionAsyncResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 调用Id
+		ClientToken *string `json:"ClientToken,omitempty" name:"ClientToken"`
+
+		// 异步调用状态
+		Status *string `json:"Status,omitempty" name:"Status"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CallDeviceActionAsyncResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CallDeviceActionAsyncResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CallDeviceActionSyncRequest struct {
+	*tchttp.BaseRequest
+
+	// 产品Id
+	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
+
+	// 设备名称
+	DeviceName *string `json:"DeviceName,omitempty" name:"DeviceName"`
+
+	// 动作Id
+	ActionId *string `json:"ActionId,omitempty" name:"ActionId"`
+
+	// 输入参数
+	InputParams *string `json:"InputParams,omitempty" name:"InputParams"`
+}
+
+func (r *CallDeviceActionSyncRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CallDeviceActionSyncRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CallDeviceActionSyncResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 调用Id
+		ClientToken *string `json:"ClientToken,omitempty" name:"ClientToken"`
+
+		// 输出参数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		OutputParams *string `json:"OutputParams,omitempty" name:"OutputParams"`
+
+		// 返回状态
+		Status *string `json:"Status,omitempty" name:"Status"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CallDeviceActionSyncResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CallDeviceActionSyncResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type ControlDeviceDataRequest struct {
 	*tchttp.BaseRequest
 
@@ -433,6 +535,9 @@ type DescribeDeviceRequest struct {
 
 	// 设备名
 	DeviceName *string `json:"DeviceName,omitempty" name:"DeviceName"`
+
+	// 设备ID，该字段有值将代替 ProductId/DeviceName
+	DeviceId *string `json:"DeviceId,omitempty" name:"DeviceId"`
 }
 
 func (r *DescribeDeviceRequest) ToJsonString() string {

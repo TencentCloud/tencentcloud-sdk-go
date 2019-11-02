@@ -846,11 +846,9 @@ type CreateLiveTranscodeTemplateRequest struct {
 	VideoBitrate *int64 `json:"VideoBitrate,omitempty" name:"VideoBitrate"`
 
 	// 视频编码：h264/h265，默认h264。
-	// 注意：当前该参数未生效，待后续支持！
 	Vcodec *string `json:"Vcodec,omitempty" name:"Vcodec"`
 
 	// 音频编码：aac，默认原始音频格式。
-	// 注意：当前该参数未生效，待后续支持！
 	Acodec *string `json:"Acodec,omitempty" name:"Acodec"`
 
 	// 音频码率：默认0。0-500。

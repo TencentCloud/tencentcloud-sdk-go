@@ -93,6 +93,31 @@ func (c *Client) ClearInstance(request *ClearInstanceRequest) (response *ClearIn
     return
 }
 
+func NewCreateInstanceAccountRequest() (request *CreateInstanceAccountRequest) {
+    request = &CreateInstanceAccountRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("redis", APIVersion, "CreateInstanceAccount")
+    return
+}
+
+func NewCreateInstanceAccountResponse() (response *CreateInstanceAccountResponse) {
+    response = &CreateInstanceAccountResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 创建实例子账号
+func (c *Client) CreateInstanceAccount(request *CreateInstanceAccountRequest) (response *CreateInstanceAccountResponse, err error) {
+    if request == nil {
+        request = NewCreateInstanceAccountRequest()
+    }
+    response = NewCreateInstanceAccountResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateInstancesRequest() (request *CreateInstancesRequest) {
     request = &CreateInstancesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -114,6 +139,31 @@ func (c *Client) CreateInstances(request *CreateInstancesRequest) (response *Cre
         request = NewCreateInstancesRequest()
     }
     response = NewCreateInstancesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteInstanceAccountRequest() (request *DeleteInstanceAccountRequest) {
+    request = &DeleteInstanceAccountRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("redis", APIVersion, "DeleteInstanceAccount")
+    return
+}
+
+func NewDeleteInstanceAccountResponse() (response *DeleteInstanceAccountResponse) {
+    response = &DeleteInstanceAccountResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 删除实例子账号
+func (c *Client) DeleteInstanceAccount(request *DeleteInstanceAccountRequest) (response *DeleteInstanceAccountResponse, err error) {
+    if request == nil {
+        request = NewDeleteInstanceAccountRequest()
+    }
+    response = NewDeleteInstanceAccountResponse()
     err = c.Send(request, response)
     return
 }
@@ -168,6 +218,31 @@ func (c *Client) DescribeBackupUrl(request *DescribeBackupUrlRequest) (response 
     return
 }
 
+func NewDescribeInstanceAccountRequest() (request *DescribeInstanceAccountRequest) {
+    request = &DescribeInstanceAccountRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("redis", APIVersion, "DescribeInstanceAccount")
+    return
+}
+
+func NewDescribeInstanceAccountResponse() (response *DescribeInstanceAccountResponse) {
+    response = &DescribeInstanceAccountResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查看实例子账号信息
+func (c *Client) DescribeInstanceAccount(request *DescribeInstanceAccountRequest) (response *DescribeInstanceAccountResponse, err error) {
+    if request == nil {
+        request = NewDescribeInstanceAccountRequest()
+    }
+    response = NewDescribeInstanceAccountResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeInstanceBackupsRequest() (request *DescribeInstanceBackupsRequest) {
     request = &DescribeInstanceBackupsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -214,6 +289,206 @@ func (c *Client) DescribeInstanceDealDetail(request *DescribeInstanceDealDetailR
         request = NewDescribeInstanceDealDetailRequest()
     }
     response = NewDescribeInstanceDealDetailResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeInstanceMonitorBigKeyRequest() (request *DescribeInstanceMonitorBigKeyRequest) {
+    request = &DescribeInstanceMonitorBigKeyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("redis", APIVersion, "DescribeInstanceMonitorBigKey")
+    return
+}
+
+func NewDescribeInstanceMonitorBigKeyResponse() (response *DescribeInstanceMonitorBigKeyResponse) {
+    response = &DescribeInstanceMonitorBigKeyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询实例大Key
+func (c *Client) DescribeInstanceMonitorBigKey(request *DescribeInstanceMonitorBigKeyRequest) (response *DescribeInstanceMonitorBigKeyResponse, err error) {
+    if request == nil {
+        request = NewDescribeInstanceMonitorBigKeyRequest()
+    }
+    response = NewDescribeInstanceMonitorBigKeyResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeInstanceMonitorBigKeySizeDistRequest() (request *DescribeInstanceMonitorBigKeySizeDistRequest) {
+    request = &DescribeInstanceMonitorBigKeySizeDistRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("redis", APIVersion, "DescribeInstanceMonitorBigKeySizeDist")
+    return
+}
+
+func NewDescribeInstanceMonitorBigKeySizeDistResponse() (response *DescribeInstanceMonitorBigKeySizeDistResponse) {
+    response = &DescribeInstanceMonitorBigKeySizeDistResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询实例大Key大小分布
+func (c *Client) DescribeInstanceMonitorBigKeySizeDist(request *DescribeInstanceMonitorBigKeySizeDistRequest) (response *DescribeInstanceMonitorBigKeySizeDistResponse, err error) {
+    if request == nil {
+        request = NewDescribeInstanceMonitorBigKeySizeDistRequest()
+    }
+    response = NewDescribeInstanceMonitorBigKeySizeDistResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeInstanceMonitorBigKeyTypeDistRequest() (request *DescribeInstanceMonitorBigKeyTypeDistRequest) {
+    request = &DescribeInstanceMonitorBigKeyTypeDistRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("redis", APIVersion, "DescribeInstanceMonitorBigKeyTypeDist")
+    return
+}
+
+func NewDescribeInstanceMonitorBigKeyTypeDistResponse() (response *DescribeInstanceMonitorBigKeyTypeDistResponse) {
+    response = &DescribeInstanceMonitorBigKeyTypeDistResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询实例大Key类型分布
+func (c *Client) DescribeInstanceMonitorBigKeyTypeDist(request *DescribeInstanceMonitorBigKeyTypeDistRequest) (response *DescribeInstanceMonitorBigKeyTypeDistResponse, err error) {
+    if request == nil {
+        request = NewDescribeInstanceMonitorBigKeyTypeDistRequest()
+    }
+    response = NewDescribeInstanceMonitorBigKeyTypeDistResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeInstanceMonitorHotKeyRequest() (request *DescribeInstanceMonitorHotKeyRequest) {
+    request = &DescribeInstanceMonitorHotKeyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("redis", APIVersion, "DescribeInstanceMonitorHotKey")
+    return
+}
+
+func NewDescribeInstanceMonitorHotKeyResponse() (response *DescribeInstanceMonitorHotKeyResponse) {
+    response = &DescribeInstanceMonitorHotKeyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询实例热Key
+func (c *Client) DescribeInstanceMonitorHotKey(request *DescribeInstanceMonitorHotKeyRequest) (response *DescribeInstanceMonitorHotKeyResponse, err error) {
+    if request == nil {
+        request = NewDescribeInstanceMonitorHotKeyRequest()
+    }
+    response = NewDescribeInstanceMonitorHotKeyResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeInstanceMonitorSIPRequest() (request *DescribeInstanceMonitorSIPRequest) {
+    request = &DescribeInstanceMonitorSIPRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("redis", APIVersion, "DescribeInstanceMonitorSIP")
+    return
+}
+
+func NewDescribeInstanceMonitorSIPResponse() (response *DescribeInstanceMonitorSIPResponse) {
+    response = &DescribeInstanceMonitorSIPResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询实例访问来源信息
+func (c *Client) DescribeInstanceMonitorSIP(request *DescribeInstanceMonitorSIPRequest) (response *DescribeInstanceMonitorSIPResponse, err error) {
+    if request == nil {
+        request = NewDescribeInstanceMonitorSIPRequest()
+    }
+    response = NewDescribeInstanceMonitorSIPResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeInstanceMonitorTookDistRequest() (request *DescribeInstanceMonitorTookDistRequest) {
+    request = &DescribeInstanceMonitorTookDistRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("redis", APIVersion, "DescribeInstanceMonitorTookDist")
+    return
+}
+
+func NewDescribeInstanceMonitorTookDistResponse() (response *DescribeInstanceMonitorTookDistResponse) {
+    response = &DescribeInstanceMonitorTookDistResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询实例大Key大小分布
+func (c *Client) DescribeInstanceMonitorTookDist(request *DescribeInstanceMonitorTookDistRequest) (response *DescribeInstanceMonitorTookDistResponse, err error) {
+    if request == nil {
+        request = NewDescribeInstanceMonitorTookDistRequest()
+    }
+    response = NewDescribeInstanceMonitorTookDistResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeInstanceMonitorTopNCmdRequest() (request *DescribeInstanceMonitorTopNCmdRequest) {
+    request = &DescribeInstanceMonitorTopNCmdRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("redis", APIVersion, "DescribeInstanceMonitorTopNCmd")
+    return
+}
+
+func NewDescribeInstanceMonitorTopNCmdResponse() (response *DescribeInstanceMonitorTopNCmdResponse) {
+    response = &DescribeInstanceMonitorTopNCmdResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询实例访问命令
+func (c *Client) DescribeInstanceMonitorTopNCmd(request *DescribeInstanceMonitorTopNCmdRequest) (response *DescribeInstanceMonitorTopNCmdResponse, err error) {
+    if request == nil {
+        request = NewDescribeInstanceMonitorTopNCmdRequest()
+    }
+    response = NewDescribeInstanceMonitorTopNCmdResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeInstanceMonitorTopNCmdTookRequest() (request *DescribeInstanceMonitorTopNCmdTookRequest) {
+    request = &DescribeInstanceMonitorTopNCmdTookRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("redis", APIVersion, "DescribeInstanceMonitorTopNCmdTook")
+    return
+}
+
+func NewDescribeInstanceMonitorTopNCmdTookResponse() (response *DescribeInstanceMonitorTopNCmdTookResponse) {
+    response = &DescribeInstanceMonitorTopNCmdTookResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询实例CPU耗时
+func (c *Client) DescribeInstanceMonitorTopNCmdTook(request *DescribeInstanceMonitorTopNCmdTookRequest) (response *DescribeInstanceMonitorTopNCmdTookResponse, err error) {
+    if request == nil {
+        request = NewDescribeInstanceMonitorTopNCmdTookRequest()
+    }
+    response = NewDescribeInstanceMonitorTopNCmdTookResponse()
     err = c.Send(request, response)
     return
 }
@@ -639,6 +914,31 @@ func (c *Client) ModifyInstance(request *ModifyInstanceRequest) (response *Modif
         request = NewModifyInstanceRequest()
     }
     response = NewModifyInstanceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyInstanceAccountRequest() (request *ModifyInstanceAccountRequest) {
+    request = &ModifyInstanceAccountRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("redis", APIVersion, "ModifyInstanceAccount")
+    return
+}
+
+func NewModifyInstanceAccountResponse() (response *ModifyInstanceAccountResponse) {
+    response = &ModifyInstanceAccountResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 修改实例子账号
+func (c *Client) ModifyInstanceAccount(request *ModifyInstanceAccountRequest) (response *ModifyInstanceAccountResponse, err error) {
+    if request == nil {
+        request = NewModifyInstanceAccountRequest()
+    }
+    response = NewModifyInstanceAccountResponse()
     err = c.Send(request, response)
     return
 }

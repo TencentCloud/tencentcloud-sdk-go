@@ -117,6 +117,8 @@ func NewCopyPersonResponse() (response *CopyPersonResponse) {
 }
 
 // 将已存在于某人员库的人员复制到其他人员库，该人员的描述信息不会被复制。单个人员最多只能同时存在100个人员库中。
+// >     
+// - 注：若该人员创建时算法模型版本为2.0，复制到非2.0算法模型版本的Group中时，复制操作将会失败。
 func (c *Client) CopyPerson(request *CopyPersonRequest) (response *CopyPersonResponse, err error) {
     if request == nil {
         request = NewCopyPersonRequest()
@@ -612,6 +614,92 @@ func (c *Client) SearchFaces(request *SearchFacesRequest) (response *SearchFaces
     return
 }
 
+func NewSearchFacesReturnsByGroupRequest() (request *SearchFacesReturnsByGroupRequest) {
+    request = &SearchFacesReturnsByGroupRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iai", APIVersion, "SearchFacesReturnsByGroup")
+    return
+}
+
+func NewSearchFacesReturnsByGroupResponse() (response *SearchFacesReturnsByGroupResponse) {
+    response = &SearchFacesReturnsByGroupResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 用于对一张待识别的人脸图片，在一个或多个人员库中识别出最相似的 TopN 人员，按照人员库的维度以人员相似度从大到小顺序排列。
+// 此接口需与[人员库管理相关接口](https://cloud.tencent.com/document/product/867/32794)结合使用。
+func (c *Client) SearchFacesReturnsByGroup(request *SearchFacesReturnsByGroupRequest) (response *SearchFacesReturnsByGroupResponse, err error) {
+    if request == nil {
+        request = NewSearchFacesReturnsByGroupRequest()
+    }
+    response = NewSearchFacesReturnsByGroupResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewSearchPersonsRequest() (request *SearchPersonsRequest) {
+    request = &SearchPersonsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iai", APIVersion, "SearchPersons")
+    return
+}
+
+func NewSearchPersonsResponse() (response *SearchPersonsResponse) {
+    response = &SearchPersonsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 用于对一张待识别的人脸图片，在一个或多个人员库中识别出最相似的 TopN 人员，按照相似度从大到小排列。
+// 
+// 本接口会将该人员（Person）下的所有人脸（Face）进行融合特征处理，即若某个 Person 下有4张 Face ，本接口会将4张 Face 的特征进行融合处理，生成对应这个 Person 的特征，使人员搜索（确定待识别的人脸图片是某人）更加准确。
+// 
+// 人员搜索接口和人脸搜索接口的区别是：人脸搜索会比对该 Person 下所有 Face ，而人员搜索比对的是该 Person 的 Person 特征。
+// >     
+// - 公共参数中的签名方式请使用V3版本，即配置SignatureMethod参数为TC3-HMAC-SHA256。
+func (c *Client) SearchPersons(request *SearchPersonsRequest) (response *SearchPersonsResponse, err error) {
+    if request == nil {
+        request = NewSearchPersonsRequest()
+    }
+    response = NewSearchPersonsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewSearchPersonsReturnsByGroupRequest() (request *SearchPersonsReturnsByGroupRequest) {
+    request = &SearchPersonsReturnsByGroupRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iai", APIVersion, "SearchPersonsReturnsByGroup")
+    return
+}
+
+func NewSearchPersonsReturnsByGroupResponse() (response *SearchPersonsReturnsByGroupResponse) {
+    response = &SearchPersonsReturnsByGroupResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 用于对一张待识别的人脸图片，在一个或多个人员库中识别出最相似的 TopN 人员，按照人员库的维度以人员相似度从大到小顺序排列。
+// 
+// 本接口会将该人员（Person）下的所有人脸（Face）进行融合特征处理，即若某个Person下有4张 Face，本接口会将4张 Face 的特征进行融合处理，生成对应这个 Person 的特征，使人员搜索（确定待识别的人脸图片是某人员）更加准确。
+// 
+// 人员搜索和人脸搜索的区别是：人脸搜索比对该 Person 下所有 Face ，而人员搜索比对的是该 Person 的 Person 特征。
+func (c *Client) SearchPersonsReturnsByGroup(request *SearchPersonsReturnsByGroupRequest) (response *SearchPersonsReturnsByGroupResponse, err error) {
+    if request == nil {
+        request = NewSearchPersonsReturnsByGroupRequest()
+    }
+    response = NewSearchPersonsReturnsByGroupResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewVerifyFaceRequest() (request *VerifyFaceRequest) {
     request = &VerifyFaceRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -636,6 +724,38 @@ func (c *Client) VerifyFace(request *VerifyFaceRequest) (response *VerifyFaceRes
         request = NewVerifyFaceRequest()
     }
     response = NewVerifyFaceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewVerifyPersonRequest() (request *VerifyPersonRequest) {
+    request = &VerifyPersonRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iai", APIVersion, "VerifyPerson")
+    return
+}
+
+func NewVerifyPersonResponse() (response *VerifyPersonResponse) {
+    response = &VerifyPersonResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 给定一张人脸图片和一个 PersonId，判断图片中的人和 PersonId 对应的人是否为同一人。PersonId 请参考[人员库管理相关接口](https://cloud.tencent.com/document/product/867/32794)。
+// 本接口会将该人员（Person）下的所有人脸（Face）进行融合特征处理，即若某个Person下有4张 Face，本接口会将4张 Face 的特征进行融合处理，生成对应这个 Person 的特征，使人员验证（确定待识别的人脸图片是某人员）更加准确。
+// 
+//  和人脸比对相关接口不同的是，人脸验证相关接口用于判断 “此人是否是此人”，“此人”的信息已存于人员库中，“此人”可能存在多张人脸图片；而人脸比对相关接口用于判断两张人脸的相似度。
+// 
+// 
+// >     
+// - 公共参数中的签名方式请使用V3版本，即配置SignatureMethod参数为TC3-HMAC-SHA256。
+func (c *Client) VerifyPerson(request *VerifyPersonRequest) (response *VerifyPersonResponse, err error) {
+    if request == nil {
+        request = NewVerifyPersonRequest()
+    }
+    response = NewVerifyPersonResponse()
     err = c.Send(request, response)
     return
 }

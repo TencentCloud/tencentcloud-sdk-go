@@ -35,10 +35,11 @@ type FaceFusionRequest struct {
 	// 返回图像方式（url 或 base64) ，二选一。当前仅支持 url 方式，base64 方式后期开放。
 	RspImgType *string `json:"RspImgType,omitempty" name:"RspImgType"`
 
-	// 0表示不需要鉴黄，1表示需要鉴黄。2018年12月1号以前创建的活动默认值为0，其他情况默认值为1.
+	// 历史遗留字段，无需填写。因为融合只需提取人脸特征，不需要鉴黄。
 	PornDetect *int64 `json:"PornDetect,omitempty" name:"PornDetect"`
 
-	// 0表示不需要鉴政，1表示需要鉴政。2018年12月1号以前创建的活动默认值为0，其他情况默认值为1。鉴政接口同时会对名人明星进行识别，您可以根据实际需要过滤。
+	// 0表示不需要鉴政，1表示需要鉴政。默认值为0。
+	// 鉴政接口同时会对名人明星进行识别，您可以根据实际需要过滤。
 	CelebrityIdentify *int64 `json:"CelebrityIdentify,omitempty" name:"CelebrityIdentify"`
 }
 

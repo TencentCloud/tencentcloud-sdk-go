@@ -293,6 +293,31 @@ func (c *Client) EnglishOCR(request *EnglishOCRRequest) (response *EnglishOCRRes
     return
 }
 
+func NewEnterpriseLicenseOCRRequest() (request *EnterpriseLicenseOCRRequest) {
+    request = &EnterpriseLicenseOCRRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ocr", APIVersion, "EnterpriseLicenseOCR")
+    return
+}
+
+func NewEnterpriseLicenseOCRResponse() (response *EnterpriseLicenseOCRResponse) {
+    response = &EnterpriseLicenseOCRResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口支持智能化识别各类企业登记证书、许可证书、企业执照、三证合一类证书，结构化输出统一社会信用代码、公司名称、法定代表人、公司地址、注册资金、企业类型、经营范围等关键字段。
+func (c *Client) EnterpriseLicenseOCR(request *EnterpriseLicenseOCRRequest) (response *EnterpriseLicenseOCRResponse, err error) {
+    if request == nil {
+        request = NewEnterpriseLicenseOCRRequest()
+    }
+    response = NewEnterpriseLicenseOCRResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewEstateCertOCRRequest() (request *EstateCertOCRRequest) {
     request = &EstateCertOCRRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -591,6 +616,31 @@ func (c *Client) InstitutionOCR(request *InstitutionOCRRequest) (response *Insti
         request = NewInstitutionOCRRequest()
     }
     response = NewInstitutionOCRResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewInsuranceBillOCRRequest() (request *InsuranceBillOCRRequest) {
+    request = &InsuranceBillOCRRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ocr", APIVersion, "InsuranceBillOCR")
+    return
+}
+
+func NewInsuranceBillOCRResponse() (response *InsuranceBillOCRResponse) {
+    response = &InsuranceBillOCRResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口支持病案首页、费用清单、结算单、医疗发票四种保险理赔单据的文本识别和结构化输出。
+func (c *Client) InsuranceBillOCR(request *InsuranceBillOCRRequest) (response *InsuranceBillOCRResponse, err error) {
+    if request == nil {
+        request = NewInsuranceBillOCRRequest()
+    }
+    response = NewInsuranceBillOCRResponse()
     err = c.Send(request, response)
     return
 }

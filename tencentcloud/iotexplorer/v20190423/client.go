@@ -43,6 +43,56 @@ func NewClient(credential *common.Credential, region string, clientProfile *prof
 }
 
 
+func NewCallDeviceActionAsyncRequest() (request *CallDeviceActionAsyncRequest) {
+    request = &CallDeviceActionAsyncRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "CallDeviceActionAsync")
+    return
+}
+
+func NewCallDeviceActionAsyncResponse() (response *CallDeviceActionAsyncResponse) {
+    response = &CallDeviceActionAsyncResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 提供给用户异步调用设备动作的能力
+func (c *Client) CallDeviceActionAsync(request *CallDeviceActionAsyncRequest) (response *CallDeviceActionAsyncResponse, err error) {
+    if request == nil {
+        request = NewCallDeviceActionAsyncRequest()
+    }
+    response = NewCallDeviceActionAsyncResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCallDeviceActionSyncRequest() (request *CallDeviceActionSyncRequest) {
+    request = &CallDeviceActionSyncRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "CallDeviceActionSync")
+    return
+}
+
+func NewCallDeviceActionSyncResponse() (response *CallDeviceActionSyncResponse) {
+    response = &CallDeviceActionSyncResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 为用户提供同步调用设备动作的能力。
+func (c *Client) CallDeviceActionSync(request *CallDeviceActionSyncRequest) (response *CallDeviceActionSyncResponse, err error) {
+    if request == nil {
+        request = NewCallDeviceActionSyncRequest()
+    }
+    response = NewCallDeviceActionSyncResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewControlDeviceDataRequest() (request *ControlDeviceDataRequest) {
     request = &ControlDeviceDataRequest{
         BaseRequest: &tchttp.BaseRequest{},
