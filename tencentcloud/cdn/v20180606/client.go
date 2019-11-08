@@ -386,7 +386,7 @@ func NewPurgePathCacheResponse() (response *PurgePathCacheResponse) {
     return
 }
 
-// PurgeUrlsCache 用于批量刷新目录缓存，一次提交将返回一个刷新任务id。
+// PurgePathCache 用于批量刷新目录缓存，一次提交将返回一个刷新任务id。
 func (c *Client) PurgePathCache(request *PurgePathCacheRequest) (response *PurgePathCacheResponse, err error) {
     if request == nil {
         request = NewPurgePathCacheRequest()

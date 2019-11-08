@@ -20,6 +20,43 @@ import (
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
+type AttachCamRoleRequest struct {
+	*tchttp.BaseRequest
+
+	// 服务器ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 角色名称。
+	RoleName *string `json:"RoleName,omitempty" name:"RoleName"`
+}
+
+func (r *AttachCamRoleRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *AttachCamRoleRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type AttachCamRoleResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *AttachCamRoleResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *AttachCamRoleResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type BindPsaTagRequest struct {
 	*tchttp.BaseRequest
 
@@ -66,7 +103,7 @@ type BuyDevicesRequest struct {
 	// 可用区ID。通过接口[查询地域以及可用区(DescribeRegions)](https://cloud.tencent.com/document/api/386/33564)获取可用区信息
 	Zone *string `json:"Zone,omitempty" name:"Zone"`
 
-	// 部署服务器的操作系统ID。通过接口[查询操作系统信息(DescribeOsInfo)](https://cloud.tencent.com/document/api/386/31964)获取操作系统信息
+	// 部署服务器的操作系统ID。通过接口[查询操作系统信息(DescribeOsInfo)](https://cloud.tencent.com/document/product/386/32902)获取操作系统信息
 	OsTypeId *uint64 `json:"OsTypeId,omitempty" name:"OsTypeId"`
 
 	// RAID类型ID。通过接口[查询机型RAID方式以及系统盘大小(DescribeDeviceClassPartition)](https://cloud.tencent.com/document/api/386/32910)获取RAID信息
@@ -175,7 +212,7 @@ type BuyDevicesRequest struct {
 	// 指定数据盘的文件系统格式，当前支持 EXT4和XFS选项， 默认为EXT4。 参数适用于数据盘和Linux， 且在IsZoning为1时生效
 	FileSystem *string `json:"FileSystem,omitempty" name:"FileSystem"`
 
-	// 此参数是为了防止重复发货。如果两次调用传入相同的BuySession，只会发货一次。 不要以设备别名做为BuySession，这样只会第一次购买成功。参数长度为128位，合法字符为大小字母，数字，下划线，横线。
+	// 此参数是为了防止重复发货。如果两次调用传入相同的BuySession，只会发货一次。 不要以设备别名作为BuySession，这样只会第一次购买成功。参数长度为128位，合法字符为大小字母，数字，下划线，横线。
 	BuySession *string `json:"BuySession,omitempty" name:"BuySession"`
 }
 
@@ -1048,7 +1085,7 @@ type DescribeDevicesRequest struct {
 	// 返回数量
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 
-	// 机型ID，通过接口[查询设备型号(DescribeDeviceClass)](https://cloud.tencent.com/document/api/386/31968)查询
+	// 机型ID，通过接口[查询设备型号(DescribeDeviceClass)](https://cloud.tencent.com/document/api/386/32911)查询
 	DeviceClassCode *string `json:"DeviceClassCode,omitempty" name:"DeviceClassCode"`
 
 	// 设备ID数组
@@ -1695,6 +1732,40 @@ func (r *DescribeUserCmdsResponse) ToJsonString() string {
 }
 
 func (r *DescribeUserCmdsResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DetachCamRoleRequest struct {
+	*tchttp.BaseRequest
+
+	// 服务器ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+}
+
+func (r *DetachCamRoleRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DetachCamRoleRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DetachCamRoleResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DetachCamRoleResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DetachCamRoleResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 

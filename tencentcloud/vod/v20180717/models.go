@@ -1696,18 +1696,18 @@ type AudioTransform struct {
 
 type AudioVolumeParam struct {
 
-	// 音频增益，取值范围0~10。仅在Mute=0时生效。
-	// <li>大于1表示增加音量。</li>
-	// <li>小于1表示降低音量。</li>
-	// <li>1：表示不改变。</li>
-	// 默认是1。
-	Gain *float64 `json:"Gain,omitempty" name:"Gain"`
-
 	// 是否静音，取值范围0或1。
 	// <li>0表示不静音。</li>
 	// <li>1表示静音。</li>
 	// 默认是0。
 	Mute *int64 `json:"Mute,omitempty" name:"Mute"`
+
+	// 音频增益，取值范围0~10。
+	// <li>大于1表示增加音量。</li>
+	// <li>小于1表示降低音量。</li>
+	// <li>0和1：表示不改变。</li>
+	// 默认是0。
+	Gain *float64 `json:"Gain,omitempty" name:"Gain"`
 }
 
 type Canvas struct {
@@ -4034,6 +4034,11 @@ type DescribeProcedureTemplatesRequest struct {
 	// 任务流模板名字过滤条件，数组长度限制：100。
 	Names []*string `json:"Names,omitempty" name:"Names" list`
 
+	// 任务流模板类型过滤条件，可选值：
+	// <li>Preset：系统预置任务流模板；</li>
+	// <li>Custom：用户自定义任务流模板。</li>
+	Type *string `json:"Type,omitempty" name:"Type"`
+
 	// 分页偏移量，默认值：0。
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
 
@@ -4720,6 +4725,12 @@ type EditMediaRequest struct {
 
 	// 编辑后生成的文件配置。
 	OutputConfig *EditMediaOutputConfig `json:"OutputConfig,omitempty" name:"OutputConfig"`
+
+	// 标识来源上下文，用于透传用户请求信息，在EditMediaComplete回调和任务流状态变更回调将返回该字段值，最长 1000个字符。
+	SessionContext *string `json:"SessionContext,omitempty" name:"SessionContext"`
+
+	// 用于任务去重的识别码，如果一天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。
+	SessionId *string `json:"SessionId,omitempty" name:"SessionId"`
 
 	// 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
 	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`

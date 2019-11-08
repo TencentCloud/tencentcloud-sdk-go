@@ -697,7 +697,7 @@ func NewDeleteProcedureTemplateResponse() (response *DeleteProcedureTemplateResp
     return
 }
 
-// 删除指定名字的任务流模板
+// 删除用户自定义的任务流模板。  
 func (c *Client) DeleteProcedureTemplate(request *DeleteProcedureTemplateRequest) (response *DeleteProcedureTemplateResponse, err error) {
     if request == nil {
         request = NewDeleteProcedureTemplateRequest()
@@ -2073,7 +2073,7 @@ func NewResetProcedureTemplateResponse() (response *ResetProcedureTemplateRespon
     return
 }
 
-// 重新设置已存在的任务流模板的任务内容
+// 重新设置用户自定义任务流模板的内容。  
 func (c *Client) ResetProcedureTemplate(request *ResetProcedureTemplateRequest) (response *ResetProcedureTemplateResponse, err error) {
     if request == nil {
         request = NewResetProcedureTemplateRequest()

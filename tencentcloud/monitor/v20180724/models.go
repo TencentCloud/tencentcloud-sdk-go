@@ -105,7 +105,7 @@ type GetMonitorDataRequest struct {
 	// 起始时间，如2018-09-22T19:51:23+08:00
 	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
 
-	// 结束时间，默认为当前时间。 EndTime不能小于EtartTime
+	// 结束时间，默认为当前时间。 EndTime不能小于StartTime
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 }
 

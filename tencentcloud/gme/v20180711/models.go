@@ -47,19 +47,19 @@ type CreateAppRequest struct {
 	// 腾讯云项目id，默认为0，表示默认项目
 	ProjectId *uint64 `json:"ProjectId,omitempty" name:"ProjectId"`
 
-	// 需要支持的引擎列表，取值android, ios, uinty, cocos, unreal, windows。默认全选。
+	// 需要支持的引擎列表，取值android, ios, unity, cocos, unreal, windows。默认全选。
 	EngineList []*string `json:"EngineList,omitempty" name:"EngineList" list`
 
-	// 服务区域列表, 默认为空数组. 取值: mainland(美), sa(南美), eu(欧洲), oc(澳洲), me(中东)。默认全选
+	// 服务区域列表，取值: mainland(大陆地区), sa(南美), eu(欧洲), oc(澳洲), me(中东)。默认全选。
 	RegionList []*string `json:"RegionList,omitempty" name:"RegionList" list`
 
 	// 实时语音服务配置数据
 	RealtimeSpeechConf *RealtimeSpeechConf `json:"RealtimeSpeechConf,omitempty" name:"RealtimeSpeechConf"`
 
-	// 离线语音服务配置数据
+	// 语音消息及转文本服务配置数据
 	VoiceMessageConf *VoiceMessageConf `json:"VoiceMessageConf,omitempty" name:"VoiceMessageConf"`
 
-	// 语音过滤服务配置数据
+	// 语音分析服务配置数据
 	VoiceFilterConf *VoiceFilterConf `json:"VoiceFilterConf,omitempty" name:"VoiceFilterConf"`
 
 	// 需要添加的标签列表
@@ -97,10 +97,10 @@ type CreateAppResponse struct {
 		// 实时语音服务配置数据
 		RealtimeSpeechConf *RealtimeSpeechConf `json:"RealtimeSpeechConf,omitempty" name:"RealtimeSpeechConf"`
 
-		// 语音消息服务配置数据
+		// 语音消息及转文本服务配置数据
 		VoiceMessageConf *VoiceMessageConf `json:"VoiceMessageConf,omitempty" name:"VoiceMessageConf"`
 
-		// 语音过滤服务配置数据
+		// 语音分析服务配置数据
 		VoiceFilterConf *VoiceFilterConf `json:"VoiceFilterConf,omitempty" name:"VoiceFilterConf"`
 	} `json:"Response"`
 }
@@ -409,7 +409,7 @@ type RealtimeSpeechConf struct {
 
 type ScanDetail struct {
 
-	// 违规场景，参照Label定义
+	// 违规场景，参照<a href="https://cloud.tencent.com/document/product/607/37622#Label_Value">Label</a>定义
 	Label *string `json:"Label,omitempty" name:"Label"`
 
 	// 该场景下概率[0.00,100.00],分值越大违规概率越高

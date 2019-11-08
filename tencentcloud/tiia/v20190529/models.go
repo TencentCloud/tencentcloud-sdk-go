@@ -310,6 +310,12 @@ type DetectLabelItem struct {
 
 	// 算法对于Name的置信度，0-100之间，值越高，表示对于Name越确定。
 	Confidence *int64 `json:"Confidence,omitempty" name:"Confidence"`
+
+	// 标签的一级分类
+	FirstCategory *string `json:"FirstCategory,omitempty" name:"FirstCategory"`
+
+	// 标签的二级分类
+	SecondCategory *string `json:"SecondCategory,omitempty" name:"SecondCategory"`
 }
 
 type DetectLabelRequest struct {
@@ -327,6 +333,15 @@ type DetectLabelRequest struct {
 
 	// 图片经过base64编码的内容。最大不超过4M。与ImageUrl同时存在时优先使用ImageUrl字段。
 	ImageBase64 *string `json:"ImageBase64,omitempty" name:"ImageBase64"`
+
+	// 本次调用支持的识别场景，可选值如下：
+	// WEB，针对网络图片优化;
+	// CAMERA，针对手机摄像头拍摄图片优化;
+	// ALBUM，针对手机相册、网盘产品优化;
+	// 如果不传此参数，则默认为WEB。
+	// 
+	// 支持多场景（Scenes）一起检测。例如，使用 Scenes=["WEB", "CAMERA"]，即对一张图片使用两个模型同时检测，输出两套识别结果。
+	Scenes []*string `json:"Scenes,omitempty" name:"Scenes" list`
 }
 
 func (r *DetectLabelRequest) ToJsonString() string {
@@ -342,8 +357,17 @@ type DetectLabelResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 标签结果数组。
+		// Web网络版标签结果数组。如未选择WEB场景，则为空。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 		Labels []*DetectLabelItem `json:"Labels,omitempty" name:"Labels" list`
+
+		// Camera摄像头版标签结果数组。如未选择CAMERA场景，则为空。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		CameraLabels []*DetectLabelItem `json:"CameraLabels,omitempty" name:"CameraLabels" list`
+
+		// Album相册版标签结果数组。如未选择ALBUM场景，则为空。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		AlbumLabels []*DetectLabelItem `json:"AlbumLabels,omitempty" name:"AlbumLabels" list`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
