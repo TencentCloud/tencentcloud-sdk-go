@@ -342,6 +342,9 @@ type ClientIpPlaySumInfo struct {
 
 	// 总失败请求数。
 	TotalFailedRequest *uint64 `json:"TotalFailedRequest,omitempty" name:"TotalFailedRequest"`
+
+	// 客户端所在国家。
+	CountryArea *string `json:"CountryArea,omitempty" name:"CountryArea"`
 }
 
 type CreateLiveCallbackRuleRequest struct {
@@ -802,7 +805,7 @@ type CreateLiveTranscodeRuleRequest struct {
 	// 推流路径，与推流和播放地址中的AppName保持一致，默认为 live。
 	AppName *string `json:"AppName,omitempty" name:"AppName"`
 
-	// 流名称。
+	// 流名称。如果只绑定域名或路径，则此处填空。
 	StreamName *string `json:"StreamName,omitempty" name:"StreamName"`
 
 	// 指定已有的模板Id。
@@ -849,6 +852,7 @@ type CreateLiveTranscodeTemplateRequest struct {
 	Vcodec *string `json:"Vcodec,omitempty" name:"Vcodec"`
 
 	// 音频编码：aac，默认原始音频格式。
+	// 注意：当前该参数未生效，待后续支持！
 	Acodec *string `json:"Acodec,omitempty" name:"Acodec"`
 
 	// 音频码率：默认0。0-500。
@@ -3272,6 +3276,9 @@ type DescribePlayErrorCodeDetailInfoListRequest struct {
 
 	// 播放域名列表。
 	PlayDomains []*string `json:"PlayDomains,omitempty" name:"PlayDomains" list`
+
+	// 地域，可选值：Mainland，Oversea，China，Foreign，Global（默认值）；如果为空，查询总的数据；如果为“Mainland”，查询中国大陆的数据；如果为“Oversea”，则查询中国大陆以外的数据；如果为China，查询中国的数据（包括港澳台）；如果为Foreign，查询国外的数据（不包括港澳台）。
+	MainlandOrOversea *string `json:"MainlandOrOversea,omitempty" name:"MainlandOrOversea"`
 }
 
 func (r *DescribePlayErrorCodeDetailInfoListRequest) ToJsonString() string {
@@ -3322,15 +3329,20 @@ type DescribePlayErrorCodeSumInfoListRequest struct {
 	// 播放域名列表，不填表示总体数据。
 	PlayDomains []*string `json:"PlayDomains,omitempty" name:"PlayDomains" list`
 
-	// 页数，
-	// 范围[1,1000]，
-	// 默认值：1。
+	// 页数，范围[1,1000]，默认值是1。
 	PageNum *uint64 `json:"PageNum,omitempty" name:"PageNum"`
 
-	// 每页个数，
-	// 范围：[1,1000]，
-	// 默认值： 20。
+	// 每页个数，范围：[1,1000]，默认值是20。
 	PageSize *uint64 `json:"PageSize,omitempty" name:"PageSize"`
+
+	// 地域，可选值：Mainland，Oversea，China，Foreign，Global（默认值）；如果为空，查询总的数据；如果为“Mainland”，查询中国大陆的数据；如果为“Oversea”，则查询中国大陆以外的数据；如果为China，查询中国的数据（包括港澳台）；如果为Foreign，查询国外的数据（不包括港澳台）。
+	MainlandOrOversea *string `json:"MainlandOrOversea,omitempty" name:"MainlandOrOversea"`
+
+	// 分组参数，可选值：CountryProIsp（默认值），Country（国家），默认是按照国家+省份+运营商来进行分组；目前国外的省份和运营商暂时无法识别。
+	GroupType *string `json:"GroupType,omitempty" name:"GroupType"`
+
+	// 输出字段使用的语言，可选值：Chinese（默认值），English，目前国家，省份和运营商支持多语言。
+	OutLanguage *string `json:"OutLanguage,omitempty" name:"OutLanguage"`
 }
 
 func (r *DescribePlayErrorCodeSumInfoListRequest) ToJsonString() string {
@@ -3358,7 +3370,7 @@ type DescribePlayErrorCodeSumInfoListResponse struct {
 		// 状态码为5开头的总次数。
 		TotalCode5xx *uint64 `json:"TotalCode5xx,omitempty" name:"TotalCode5xx"`
 
-		// 各状态码的总次数，暂时支持400,403,404,500,502,503,504。
+		// 各状态码的总次数。
 		TotalCodeList []*PlayCodeTotalInfo `json:"TotalCodeList,omitempty" name:"TotalCodeList" list`
 
 		// 页号。
@@ -3372,6 +3384,12 @@ type DescribePlayErrorCodeSumInfoListResponse struct {
 
 		// 总记录数。
 		TotalNum *uint64 `json:"TotalNum,omitempty" name:"TotalNum"`
+
+		// 状态码为2开头的总次数。
+		TotalCode2xx *uint64 `json:"TotalCode2xx,omitempty" name:"TotalCode2xx"`
+
+		// 状态码为3开头的总次数。
+		TotalCode3xx *uint64 `json:"TotalCode3xx,omitempty" name:"TotalCode3xx"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -3399,20 +3417,23 @@ type DescribeProIspPlaySumInfoListRequest struct {
 	// 注：EndTime 和 StartTime 只支持最近1天的数据查询。
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 
-	// 统计的类型，可选值包括”Province”，”Isp”。
+	// 统计的类型，可选值：”Province”，”Isp”，“CountryOrArea”。
 	StatType *string `json:"StatType,omitempty" name:"StatType"`
 
 	// 不填则为总体数据。
 	PlayDomains []*string `json:"PlayDomains,omitempty" name:"PlayDomains" list`
 
-	// 页号，
-	// 范围是[1,1000]，
-	// 默认值是1。
+	// 页号，范围是[1,1000]，默认值是1。
 	PageNum *uint64 `json:"PageNum,omitempty" name:"PageNum"`
 
-	// 每页个数，范围是[1,1000]，
-	// 默认值是20。
+	// 每页个数，范围是[1,1000]，默认值是20。
 	PageSize *uint64 `json:"PageSize,omitempty" name:"PageSize"`
+
+	// 地域，可选值：Mainland，Oversea，China，Foreign，Global（默认值）；如果为空，查询总的数据；如果为“Mainland”，查询中国大陆的数据；如果为“Oversea”，则查询中国大陆以外的数据；如果为China，查询中国的数据（包括港澳台）；如果为Foreign，查询国外的数据（不包括港澳台）。
+	MainlandOrOversea *string `json:"MainlandOrOversea,omitempty" name:"MainlandOrOversea"`
+
+	// 输出字段使用的语言，可选值：Chinese（默认值），English；目前国家，省份和运营商支持多语言。
+	OutLanguage *string `json:"OutLanguage,omitempty" name:"OutLanguage"`
 }
 
 func (r *DescribeProIspPlaySumInfoListRequest) ToJsonString() string {
@@ -3449,7 +3470,7 @@ type DescribeProIspPlaySumInfoListResponse struct {
 		// 总页数。
 		TotalPage *uint64 `json:"TotalPage,omitempty" name:"TotalPage"`
 
-		// 省份或运营商汇总数据列表。
+		// 省份，运营商，国家或地区汇总数据列表。
 		DataInfoList []*ProIspPlaySumInfo `json:"DataInfoList,omitempty" name:"DataInfoList" list`
 
 		// 平均带宽。
@@ -3496,11 +3517,14 @@ type DescribeProvinceIspPlayInfoListRequest struct {
 	// 播放域名列表。
 	PlayDomains []*string `json:"PlayDomains,omitempty" name:"PlayDomains" list`
 
-	// 非必传参数，要查询的省份（地区）英文名称列表，如 Beijing
+	// 要查询的省份（地区）英文名称列表，如 Beijing。
 	ProvinceNames []*string `json:"ProvinceNames,omitempty" name:"ProvinceNames" list`
 
-	// 非必传参数，要查询的运营商英文名称列表，如 China Mobile ，如果为空，查询所有运营商的数据
+	// 要查询的运营商英文名称列表，如 China Mobile ，如果为空，查询所有运营商的数据。
 	IspNames []*string `json:"IspNames,omitempty" name:"IspNames" list`
+
+	// 地域，可选值：Mainland，Oversea，China，Foreign，Global（默认值）；如果为空，查询总的数据；如果为“Mainland”，查询中国大陆的数据；如果为“Oversea”，则查询中国大陆以外的数据；如果为China，查询中国的数据（包括港澳台）；如果为Foreign，查询国外的数据（不包括港澳台）。
+	MainlandOrOversea *string `json:"MainlandOrOversea,omitempty" name:"MainlandOrOversea"`
 }
 
 func (r *DescribeProvinceIspPlayInfoListRequest) ToJsonString() string {
@@ -3749,17 +3773,20 @@ type DescribeTopClientIpSumInfoListRequest struct {
 	// 播放域名，默认为不填，表示求总体数据。
 	PlayDomains []*string `json:"PlayDomains,omitempty" name:"PlayDomains" list`
 
-	// 页号，
-	// 范围是[1,1000]，
-	// 默认值是1。
+	// 页号，范围是[1,1000]，默认值是1。
 	PageNum *uint64 `json:"PageNum,omitempty" name:"PageNum"`
 
-	// 每页个数，范围是[1,1000]，
-	// 默认值是20。
+	// 每页个数，范围是[1,1000]，默认值是20。
 	PageSize *uint64 `json:"PageSize,omitempty" name:"PageSize"`
 
-	// 排序指标，可选值包括”TotalRequest”，”FailedRequest”,“TotalFlux”。
+	// 排序指标，可选值包括TotalRequest（默认值），FailedRequest,TotalFlux。
 	OrderParam *string `json:"OrderParam,omitempty" name:"OrderParam"`
+
+	// 地域，可选值：Mainland，Oversea，China，Foreign，Global（默认值）；如果为空，查询总的数据；如果为“Mainland”，查询中国大陆的数据；如果为“Oversea”，则查询中国大陆以外的数据；如果为China，查询中国的数据（包括港澳台）；如果为Foreign，查询国外的数据（不包括港澳台）。
+	MainlandOrOversea *string `json:"MainlandOrOversea,omitempty" name:"MainlandOrOversea"`
+
+	// 输出字段使用的语言，可选值：Chinese（默认值），English；目前国家，省份和运营商支持多语言。
+	OutLanguage *string `json:"OutLanguage,omitempty" name:"OutLanguage"`
 }
 
 func (r *DescribeTopClientIpSumInfoListRequest) ToJsonString() string {
@@ -3775,13 +3802,10 @@ type DescribeTopClientIpSumInfoListResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 页号，
-	// 范围是[1,1000]，
-	// 默认值是1。
+		// 页号，范围是[1,1000]，默认值是1。
 		PageNum *uint64 `json:"PageNum,omitempty" name:"PageNum"`
 
-		// 每页个数，范围是[1,1000]，
-	// 默认值是20。
+		// 每页个数，范围是[1,1000]，默认值是20。
 		PageSize *uint64 `json:"PageSize,omitempty" name:"PageSize"`
 
 		// 排序指标，可选值包括”TotalRequest”，”FailedRequest”,“TotalFlux”。
@@ -4875,6 +4899,9 @@ type PlaySumStatInfo struct {
 }
 
 type ProIspPlayCodeDataInfo struct {
+
+	// 国家或地区。
+	CountryAreaName *string `json:"CountryAreaName,omitempty" name:"CountryAreaName"`
 
 	// 省份。
 	ProvinceName *string `json:"ProvinceName,omitempty" name:"ProvinceName"`
