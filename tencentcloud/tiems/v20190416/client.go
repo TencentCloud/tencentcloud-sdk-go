@@ -343,6 +343,31 @@ func (c *Client) DescribeServices(request *DescribeServicesRequest) (response *D
     return
 }
 
+func NewExposeServiceRequest() (request *ExposeServiceRequest) {
+    request = &ExposeServiceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tiems", APIVersion, "ExposeService")
+    return
+}
+
+func NewExposeServiceResponse() (response *ExposeServiceResponse) {
+    response = &ExposeServiceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 暴露服务
+func (c *Client) ExposeService(request *ExposeServiceRequest) (response *ExposeServiceResponse, err error) {
+    if request == nil {
+        request = NewExposeServiceRequest()
+    }
+    response = NewExposeServiceResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewUpdateJobRequest() (request *UpdateJobRequest) {
     request = &UpdateJobRequest{
         BaseRequest: &tchttp.BaseRequest{},

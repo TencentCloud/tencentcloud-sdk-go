@@ -211,11 +211,11 @@ type AttachPolicyInfo struct {
 
 	// 策略关联操作者主张号
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	OperateOwnerUin *uint64 `json:"OperateOwnerUin,omitempty" name:"OperateOwnerUin"`
+	OperateOwnerUin *string `json:"OperateOwnerUin,omitempty" name:"OperateOwnerUin"`
 
 	// 策略关联操作者ID，如果UinType为0表示子帐号Uin，如果UinType为1表示角色ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	OperateUin *uint64 `json:"OperateUin,omitempty" name:"OperateUin"`
+	OperateUin *string `json:"OperateUin,omitempty" name:"OperateUin"`
 
 	// UinType为0表示OperateUin字段是子帐号Uin，如果UinType为1表示OperateUin字段是角色ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -1853,6 +1853,10 @@ type StrategyInfo struct {
 	// 策略关联的产品
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ServiceType *string `json:"ServiceType,omitempty" name:"ServiceType"`
+
+	// 当需要查询标记实体是否已经关联策略时不为null。0表示未关联策略，1表示已关联策略
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsAttached *uint64 `json:"IsAttached,omitempty" name:"IsAttached"`
 }
 
 type SubAccountInfo struct {

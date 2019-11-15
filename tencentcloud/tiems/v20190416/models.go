@@ -634,7 +634,7 @@ func (r *DescribeServicesResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
-type Expose struct {
+type ExposeInfo struct {
 
 	// 暴露方式，支持 EXTERNAL（外网暴露），VPC （VPC内网打通）
 	ExposeType *string `json:"ExposeType,omitempty" name:"ExposeType"`
@@ -644,11 +644,57 @@ type Expose struct {
 
 	// 暴露方式为 VPC 时，打通的私有网络Id
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	UnVpcId *string `json:"UnVpcId,omitempty" name:"UnVpcId"`
+	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
 
 	// 暴露方式为 VPC 时，打通的子网Id
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	UnSubnetId *string `json:"UnSubnetId,omitempty" name:"UnSubnetId"`
+	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
+}
+
+type ExposeServiceRequest struct {
+	*tchttp.BaseRequest
+
+	// 服务Id
+	ServiceId *string `json:"ServiceId,omitempty" name:"ServiceId"`
+
+	// 暴露方式，支持 EXTERNAL（外网暴露），VPC （VPC内网打通）
+	ExposeType *string `json:"ExposeType,omitempty" name:"ExposeType"`
+
+	// 暴露方式为 VPC 时，填写需要打通的私有网络Id
+	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
+
+	// 暴露方式为 VPC 时，填写需要打通的子网Id
+	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
+}
+
+func (r *ExposeServiceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ExposeServiceRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ExposeServiceResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 暴露方式
+		Expose *ExposeInfo `json:"Expose,omitempty" name:"Expose"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ExposeServiceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ExposeServiceResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
 }
 
 type Filter struct {
@@ -889,7 +935,7 @@ type ModelService struct {
 
 	// 暴露方式
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Exposes []*Expose `json:"Exposes,omitempty" name:"Exposes" list`
+	Exposes []*ExposeInfo `json:"Exposes,omitempty" name:"Exposes" list`
 
 	// Region 名
 	// 注意：此字段可能返回 null，表示取不到有效值。
