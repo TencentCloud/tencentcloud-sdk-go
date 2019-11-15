@@ -22,13 +22,13 @@ import (
 
 type PullSmsReplyStatus struct {
 
-	// 通道扩展码，默认没有开通（需要填空）
-	ExtendCode *string `json:"ExtendCode,omitempty" name:"ExtendCode"`
+	// 短信码号扩展号，默认未开通，如需开通请联系 [sms helper](https://cloud.tencent.com/document/product/382/3773)
+	ExtendCode *uint64 `json:"ExtendCode,omitempty" name:"ExtendCode"`
 
 	// 国家（或地区）码
 	NationCode *string `json:"NationCode,omitempty" name:"NationCode"`
 
-	// 手机号码（ e.164 标准）
+	// 手机号码,e.164标准，+[国家或地区码][手机号] ，示例如：+8613711112222， 其中前面有一个+号 ，86为国家码，13711112222为手机号
 	PhoneNumber *string `json:"PhoneNumber,omitempty" name:"PhoneNumber"`
 
 	// 短信签名
@@ -37,8 +37,8 @@ type PullSmsReplyStatus struct {
 	// 用户回复的内容
 	ReplyContent *string `json:"ReplyContent,omitempty" name:"ReplyContent"`
 
-	// 回复时间，UNIX 时间戳（单位：秒）
-	ReplyTime *uint64 `json:"ReplyTime,omitempty" name:"ReplyTime"`
+	// 回复时间(例如：2019-10-08 17:18:37)
+	ReplyTime *string `json:"ReplyTime,omitempty" name:"ReplyTime"`
 }
 
 type PullSmsReplyStatusByPhoneNumberRequest struct {
@@ -139,10 +139,10 @@ type PullSmsSendStatus struct {
 	// 国家（或地区）码
 	NationCode *string `json:"NationCode,omitempty" name:"NationCode"`
 
-	// 手机号码（ e.164 标准）
+	// 手机号码,e.164标准，+[国家或地区码][手机号] ，示例如：+8613711112222， 其中前面有一个+号 ，86为国家码，13711112222为手机号
 	PurePhoneNumber *string `json:"PurePhoneNumber,omitempty" name:"PurePhoneNumber"`
 
-	// 手机号码
+	// 手机号码，普通格式，示例如：13711112222
 	PhoneNumber *string `json:"PhoneNumber,omitempty" name:"PhoneNumber"`
 
 	// 本次发送标识 ID

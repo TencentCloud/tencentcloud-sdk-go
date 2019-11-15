@@ -43,6 +43,56 @@ func NewClient(credential *common.Credential, region string, clientProfile *prof
 }
 
 
+func NewCreateJobRequest() (request *CreateJobRequest) {
+    request = &CreateJobRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tiems", APIVersion, "CreateJob")
+    return
+}
+
+func NewCreateJobResponse() (response *CreateJobResponse) {
+    response = &CreateJobResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 创建任务
+func (c *Client) CreateJob(request *CreateJobRequest) (response *CreateJobResponse, err error) {
+    if request == nil {
+        request = NewCreateJobRequest()
+    }
+    response = NewCreateJobResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateRuntimeRequest() (request *CreateRuntimeRequest) {
+    request = &CreateRuntimeRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tiems", APIVersion, "CreateRuntime")
+    return
+}
+
+func NewCreateRuntimeResponse() (response *CreateRuntimeResponse) {
+    response = &CreateRuntimeResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 创建运行环境
+func (c *Client) CreateRuntime(request *CreateRuntimeRequest) (response *CreateRuntimeResponse, err error) {
+    if request == nil {
+        request = NewCreateRuntimeRequest()
+    }
+    response = NewCreateRuntimeResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateServiceRequest() (request *CreateServiceRequest) {
     request = &CreateServiceRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -93,6 +143,56 @@ func (c *Client) CreateServiceConfig(request *CreateServiceConfigRequest) (respo
     return
 }
 
+func NewDeleteJobRequest() (request *DeleteJobRequest) {
+    request = &DeleteJobRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tiems", APIVersion, "DeleteJob")
+    return
+}
+
+func NewDeleteJobResponse() (response *DeleteJobResponse) {
+    response = &DeleteJobResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 删除任务
+func (c *Client) DeleteJob(request *DeleteJobRequest) (response *DeleteJobResponse, err error) {
+    if request == nil {
+        request = NewDeleteJobRequest()
+    }
+    response = NewDeleteJobResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteRuntimeRequest() (request *DeleteRuntimeRequest) {
+    request = &DeleteRuntimeRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tiems", APIVersion, "DeleteRuntime")
+    return
+}
+
+func NewDeleteRuntimeResponse() (response *DeleteRuntimeResponse) {
+    response = &DeleteRuntimeResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 删除运行环境
+func (c *Client) DeleteRuntime(request *DeleteRuntimeRequest) (response *DeleteRuntimeResponse, err error) {
+    if request == nil {
+        request = NewDeleteRuntimeRequest()
+    }
+    response = NewDeleteRuntimeResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteServiceRequest() (request *DeleteServiceRequest) {
     request = &DeleteServiceRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -139,6 +239,31 @@ func (c *Client) DeleteServiceConfig(request *DeleteServiceConfigRequest) (respo
         request = NewDeleteServiceConfigRequest()
     }
     response = NewDeleteServiceConfigResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeInstancesRequest() (request *DescribeInstancesRequest) {
+    request = &DescribeInstancesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tiems", APIVersion, "DescribeInstances")
+    return
+}
+
+func NewDescribeInstancesResponse() (response *DescribeInstancesResponse) {
+    response = &DescribeInstancesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 获取节点列表
+func (c *Client) DescribeInstances(request *DescribeInstancesRequest) (response *DescribeInstancesResponse, err error) {
+    if request == nil {
+        request = NewDescribeInstancesRequest()
+    }
+    response = NewDescribeInstancesResponse()
     err = c.Send(request, response)
     return
 }
@@ -214,6 +339,31 @@ func (c *Client) DescribeServices(request *DescribeServicesRequest) (response *D
         request = NewDescribeServicesRequest()
     }
     response = NewDescribeServicesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewUpdateJobRequest() (request *UpdateJobRequest) {
+    request = &UpdateJobRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tiems", APIVersion, "UpdateJob")
+    return
+}
+
+func NewUpdateJobResponse() (response *UpdateJobResponse) {
+    response = &UpdateJobResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 更新任务
+func (c *Client) UpdateJob(request *UpdateJobRequest) (response *UpdateJobResponse, err error) {
+    if request == nil {
+        request = NewUpdateJobRequest()
+    }
+    response = NewUpdateJobResponse()
     err = c.Send(request, response)
     return
 }

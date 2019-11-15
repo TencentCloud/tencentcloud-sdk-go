@@ -20,37 +20,52 @@ import (
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
-type AdaptiveDynamicStreamingTaskInput struct {
-
-	// 转自适应码流模板 ID。
-	Definition *uint64 `json:"Definition,omitempty" name:"Definition"`
-
-	// 水印列表，支持多张图片或文字水印，最大可支持 10 张。
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	WatermarkSet []*WatermarkInput `json:"WatermarkSet,omitempty" name:"WatermarkSet" list`
-
-	// 转自适应码流后文件的目标存储，不填则继承上层的 OutputStorage 值。
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	OutputStorage *TaskOutputStorage `json:"OutputStorage,omitempty" name:"OutputStorage"`
-
-	// 转自适应码流后，manifest 文件的输出路径，可以为相对路径或者绝对路径。如果不填，则默认为相对路径：`{inputName}_adaptiveDynamicStreaming_{definition}.{format}`。
-	OutputObjectPath *string `json:"OutputObjectPath,omitempty" name:"OutputObjectPath"`
-
-	// 转自适应码流（HLS）后，二级 index 文件的输出路径，只能为相对路径。如果不填，则默认为相对路径：`{inputName}_adaptiveDynamicStreaming_{definition}_{trackType}_{trackDefinition}.{format}`。
-	SubStreamManifestObjectName *string `json:"SubStreamManifestObjectName,omitempty" name:"SubStreamManifestObjectName"`
-
-	// 转自适应码流后，分片文件的输出路径，只能为相对路径。如果不填，则默认为相对路径：`{inputName}_adaptiveDynamicStreaming_{definition}_{trackType}_{trackDefinition}_{number}.{format}`。
-	SegmentObjectName *string `json:"SegmentObjectName,omitempty" name:"SegmentObjectName"`
-
-	// 转自适应码流后输出路径中的`{number}`变量的规则。
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	ObjectNumberFormat *NumberFormat `json:"ObjectNumberFormat,omitempty" name:"ObjectNumberFormat"`
-}
-
 type AiAnalysisTaskInput struct {
 
 	// 视频内容分析模板 ID。
 	Definition *uint64 `json:"Definition,omitempty" name:"Definition"`
+}
+
+type AiContentReviewResult struct {
+
+	// 任务的类型，可以取的值有：
+	// <li>Porn：图片鉴黄</li>
+	// <li>Terrorism：图片鉴恐</li>
+	// <li>Political：图片鉴政</li>
+	// <li>Porn.Asr：Asr 文字鉴黄</li>
+	// <li>Porn.Ocr：Ocr 文字鉴黄</li>
+	// <li>Porn.Voice：声音鉴黄</li>
+	// <li>Political.Asr：Asr 文字鉴政</li>
+	// <li>Political.Ocr：Ocr 文字鉴政</li>
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 视频内容审核智能画面鉴黄任务的查询结果，当任务类型为 Porn 时有效。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PornTask *AiReviewTaskPornResult `json:"PornTask,omitempty" name:"PornTask"`
+
+	// 视频内容审核智能画面鉴恐任务的查询结果，当任务类型为 Terrorism 时有效。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TerrorismTask *AiReviewTaskTerrorismResult `json:"TerrorismTask,omitempty" name:"TerrorismTask"`
+
+	// 视频内容审核智能画面鉴政任务的查询结果，当任务类型为 Political 时有效。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PoliticalTask *AiReviewTaskPoliticalResult `json:"PoliticalTask,omitempty" name:"PoliticalTask"`
+
+	// 视频内容审核 Asr 文字鉴黄任务的查询结果，当任务类型为 Porn.Asr 时有效。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PornAsrTask *AiReviewTaskPornAsrResult `json:"PornAsrTask,omitempty" name:"PornAsrTask"`
+
+	// 视频内容审核 Ocr 文字鉴黄任务的查询结果，当任务类型为 Porn.Ocr 时有效。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PornOcrTask *AiReviewTaskPornOcrResult `json:"PornOcrTask,omitempty" name:"PornOcrTask"`
+
+	// 视频内容审核 Asr 文字鉴政任务的查询结果，当任务类型为 Political.Asr 时有效。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PoliticalAsrTask *AiReviewTaskPoliticalAsrResult `json:"PoliticalAsrTask,omitempty" name:"PoliticalAsrTask"`
+
+	// 视频内容审核 Ocr 文字鉴政任务的查询结果，当任务类型为 Political.Ocr 时有效。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PoliticalOcrTask *AiReviewTaskPoliticalOcrResult `json:"PoliticalOcrTask,omitempty" name:"PoliticalOcrTask"`
 }
 
 type AiContentReviewTaskInput struct {
@@ -59,10 +74,632 @@ type AiContentReviewTaskInput struct {
 	Definition *uint64 `json:"Definition,omitempty" name:"Definition"`
 }
 
+type AiRecognitionResult struct {
+
+	// 任务的类型，取值范围：
+	// <li>FaceRecognition：人脸识别，</li>
+	// <li>AsrWordsRecognition：语音关键词识别，</li>
+	// <li>OcrWordsRecognition：文本关键词识别，</li>
+	// <li>AsrFullTextRecognition：语音全文识别，</li>
+	// <li>OcrFullTextRecognition：文本全文识别，</li>
+	// <li>HeadTailRecognition：视频片头片尾识别，</li>
+	// <li>ObjectRecognition：物体识别。</li>
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 人脸识别结果，当 Type 为 
+	//  FaceRecognition 时有效。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FaceTask *AiRecognitionTaskFaceResult `json:"FaceTask,omitempty" name:"FaceTask"`
+
+	// 语音关键词识别结果，当 Type 为
+	//  AsrWordsRecognition 时有效。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AsrWordsTask *AiRecognitionTaskAsrWordsResult `json:"AsrWordsTask,omitempty" name:"AsrWordsTask"`
+
+	// 语音全文识别结果，当 Type 为
+	//  AsrFullTextRecognition 时有效。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AsrFullTextTask *AiRecognitionTaskAsrFullTextResult `json:"AsrFullTextTask,omitempty" name:"AsrFullTextTask"`
+
+	// 文本关键词识别结果，当 Type 为
+	//  OcrWordsRecognition 时有效。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OcrWordsTask *AiRecognitionTaskOcrWordsResult `json:"OcrWordsTask,omitempty" name:"OcrWordsTask"`
+
+	// 文本全文识别结果，当 Type 为
+	//  OcrFullTextRecognition 时有效。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OcrFullTextTask *AiRecognitionTaskOcrFullTextResult `json:"OcrFullTextTask,omitempty" name:"OcrFullTextTask"`
+}
+
+type AiRecognitionTaskAsrFullTextResult struct {
+
+	// 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 错误码，0：成功，其他值：失败。
+	ErrCode *int64 `json:"ErrCode,omitempty" name:"ErrCode"`
+
+	// 错误信息。
+	Message *string `json:"Message,omitempty" name:"Message"`
+
+	// 语音全文识别任务输入信息。
+	Input *AiRecognitionTaskAsrFullTextResultInput `json:"Input,omitempty" name:"Input"`
+
+	// 语音全文识别任务输出信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Output *AiRecognitionTaskAsrFullTextResultOutput `json:"Output,omitempty" name:"Output"`
+}
+
+type AiRecognitionTaskAsrFullTextResultInput struct {
+
+	// 语音全文识别模板 ID。
+	Definition *int64 `json:"Definition,omitempty" name:"Definition"`
+}
+
+type AiRecognitionTaskAsrFullTextResultOutput struct {
+
+	// 语音全文识别片段列表。
+	SegmentSet []*AiRecognitionTaskAsrFullTextSegmentItem `json:"SegmentSet,omitempty" name:"SegmentSet" list`
+
+	// 字幕文件地址。
+	SubtitlePath *string `json:"SubtitlePath,omitempty" name:"SubtitlePath"`
+
+	// 字幕文件存储位置。
+	OutputStorage *TaskOutputStorage `json:"OutputStorage,omitempty" name:"OutputStorage"`
+}
+
+type AiRecognitionTaskAsrFullTextSegmentItem struct {
+
+	// 识别片段置信度。取值：0~100。
+	Confidence *float64 `json:"Confidence,omitempty" name:"Confidence"`
+
+	// 识别片段起始的偏移时间，单位：秒。
+	StartTimeOffset *float64 `json:"StartTimeOffset,omitempty" name:"StartTimeOffset"`
+
+	// 识别片段终止的偏移时间，单位：秒。
+	EndTimeOffset *float64 `json:"EndTimeOffset,omitempty" name:"EndTimeOffset"`
+
+	// 识别文本。
+	Text *string `json:"Text,omitempty" name:"Text"`
+}
+
+type AiRecognitionTaskAsrWordsResult struct {
+
+	// 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 错误码，0：成功，其他值：失败。
+	ErrCode *int64 `json:"ErrCode,omitempty" name:"ErrCode"`
+
+	// 错误信息。
+	Message *string `json:"Message,omitempty" name:"Message"`
+
+	// 语音关键词识别任务输入信息。
+	Input *AiRecognitionTaskAsrWordsResultInput `json:"Input,omitempty" name:"Input"`
+
+	// 语音关键词识别任务输出信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Output *AiRecognitionTaskAsrWordsResultOutput `json:"Output,omitempty" name:"Output"`
+}
+
+type AiRecognitionTaskAsrWordsResultInput struct {
+
+	// 语音关键词识别模板 ID。
+	Definition *int64 `json:"Definition,omitempty" name:"Definition"`
+}
+
+type AiRecognitionTaskAsrWordsResultItem struct {
+
+	// 语音关键词。
+	Word *string `json:"Word,omitempty" name:"Word"`
+
+	// 语音关键词出现的时间片段列表。
+	SegmentSet []*AiRecognitionTaskAsrWordsSegmentItem `json:"SegmentSet,omitempty" name:"SegmentSet" list`
+}
+
+type AiRecognitionTaskAsrWordsResultOutput struct {
+
+	// 语音关键词识别结果集。
+	ResultSet []*AiRecognitionTaskAsrWordsResultItem `json:"ResultSet,omitempty" name:"ResultSet" list`
+}
+
+type AiRecognitionTaskAsrWordsSegmentItem struct {
+
+	// 识别片段起始的偏移时间，单位：秒。
+	StartTimeOffset *float64 `json:"StartTimeOffset,omitempty" name:"StartTimeOffset"`
+
+	// 识别片段终止的偏移时间，单位：秒。
+	EndTimeOffset *float64 `json:"EndTimeOffset,omitempty" name:"EndTimeOffset"`
+
+	// 识别片段置信度。取值：0~100。
+	Confidence *float64 `json:"Confidence,omitempty" name:"Confidence"`
+}
+
+type AiRecognitionTaskFaceResult struct {
+
+	// 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 错误码，0：成功，其他值：失败。
+	ErrCode *int64 `json:"ErrCode,omitempty" name:"ErrCode"`
+
+	// 错误信息。
+	Message *string `json:"Message,omitempty" name:"Message"`
+
+	// 人脸识别任务输入信息。
+	Input *AiRecognitionTaskFaceResultInput `json:"Input,omitempty" name:"Input"`
+
+	// 人脸识别任务输出信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Output *AiRecognitionTaskFaceResultOutput `json:"Output,omitempty" name:"Output"`
+}
+
+type AiRecognitionTaskFaceResultInput struct {
+
+	// 人脸识别模板 ID。
+	Definition *int64 `json:"Definition,omitempty" name:"Definition"`
+}
+
+type AiRecognitionTaskFaceResultItem struct {
+
+	// 人物唯一标识 ID。
+	Id *string `json:"Id,omitempty" name:"Id"`
+
+	// 人物库类型，表示识别出的人物来自哪个人物库：
+	// <li>Default：默认人物库；</li>
+	// <li>UserDefine：用户自定义人物库。</li>
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 人物名称。
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 人物出现的片段结果集。
+	SegmentSet []*AiRecognitionTaskFaceSegmentItem `json:"SegmentSet,omitempty" name:"SegmentSet" list`
+}
+
+type AiRecognitionTaskFaceResultOutput struct {
+
+	// 智能人脸识别结果集。
+	ResultSet []*AiRecognitionTaskFaceResultItem `json:"ResultSet,omitempty" name:"ResultSet" list`
+}
+
+type AiRecognitionTaskFaceSegmentItem struct {
+
+	// 识别片段起始的偏移时间，单位：秒。
+	StartTimeOffset *float64 `json:"StartTimeOffset,omitempty" name:"StartTimeOffset"`
+
+	// 识别片段终止的偏移时间，单位：秒。
+	EndTimeOffset *float64 `json:"EndTimeOffset,omitempty" name:"EndTimeOffset"`
+
+	// 识别片段置信度。取值：0~100。
+	Confidence *float64 `json:"Confidence,omitempty" name:"Confidence"`
+
+	// 识别结果的区域坐标。数组包含 4 个元素 [x1,y1,x2,y2]，依次表示区域左上点、右下点的横纵坐标。
+	AreaCoordSet []*int64 `json:"AreaCoordSet,omitempty" name:"AreaCoordSet" list`
+}
+
 type AiRecognitionTaskInput struct {
 
 	// 视频智能识别模板 ID 。
 	Definition *uint64 `json:"Definition,omitempty" name:"Definition"`
+}
+
+type AiRecognitionTaskOcrFullTextResult struct {
+
+	// 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 错误码，0：成功，其他值：失败。
+	ErrCode *int64 `json:"ErrCode,omitempty" name:"ErrCode"`
+
+	// 错误信息。
+	Message *string `json:"Message,omitempty" name:"Message"`
+
+	// 文本全文识别任务输入信息。
+	Input *AiRecognitionTaskOcrFullTextResultInput `json:"Input,omitempty" name:"Input"`
+
+	// 文本全文识别任务输出信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Output *AiRecognitionTaskOcrFullTextResultOutput `json:"Output,omitempty" name:"Output"`
+}
+
+type AiRecognitionTaskOcrFullTextResultInput struct {
+
+	// 文本全文识别模板 ID。
+	Definition *int64 `json:"Definition,omitempty" name:"Definition"`
+}
+
+type AiRecognitionTaskOcrFullTextResultOutput struct {
+
+	// 文本全文识别结果集。
+	SegmentSet []*AiRecognitionTaskOcrFullTextSegmentItem `json:"SegmentSet,omitempty" name:"SegmentSet" list`
+}
+
+type AiRecognitionTaskOcrFullTextSegmentItem struct {
+
+	// 识别片段起始的偏移时间，单位：秒。
+	StartTimeOffset *float64 `json:"StartTimeOffset,omitempty" name:"StartTimeOffset"`
+
+	// 识别片段终止的偏移时间，单位：秒。
+	EndTimeOffset *float64 `json:"EndTimeOffset,omitempty" name:"EndTimeOffset"`
+
+	// 识别片段结果集。
+	TextSet []*AiRecognitionTaskOcrFullTextSegmentTextItem `json:"TextSet,omitempty" name:"TextSet" list`
+}
+
+type AiRecognitionTaskOcrFullTextSegmentTextItem struct {
+
+	// 识别片段置信度。取值：0~100。
+	Confidence *float64 `json:"Confidence,omitempty" name:"Confidence"`
+
+	// 识别结果的区域坐标。数组包含 4 个元素 [x1,y1,x2,y2]，依次表示区域左上点、右下点的横纵坐标。
+	AreaCoordSet []*int64 `json:"AreaCoordSet,omitempty" name:"AreaCoordSet" list`
+
+	// 识别文本。
+	Text *string `json:"Text,omitempty" name:"Text"`
+}
+
+type AiRecognitionTaskOcrWordsResult struct {
+
+	// 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 错误码，0：成功，其他值：失败。
+	ErrCode *int64 `json:"ErrCode,omitempty" name:"ErrCode"`
+
+	// 错误信息。
+	Message *string `json:"Message,omitempty" name:"Message"`
+
+	// 文本关键词识别任务输入信息。
+	Input *AiRecognitionTaskOcrWordsResultInput `json:"Input,omitempty" name:"Input"`
+
+	// 文本关键词识别任务输出信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Output *AiRecognitionTaskOcrWordsResultOutput `json:"Output,omitempty" name:"Output"`
+}
+
+type AiRecognitionTaskOcrWordsResultInput struct {
+
+	// 文本关键词识别模板 ID。
+	Definition *int64 `json:"Definition,omitempty" name:"Definition"`
+}
+
+type AiRecognitionTaskOcrWordsResultItem struct {
+
+	// 文本关键词。
+	Word *string `json:"Word,omitempty" name:"Word"`
+
+	// 文本关键出现的片段列表。
+	SegmentSet []*AiRecognitionTaskOcrWordsSegmentItem `json:"SegmentSet,omitempty" name:"SegmentSet" list`
+}
+
+type AiRecognitionTaskOcrWordsResultOutput struct {
+
+	// 文本关键词识别结果集。
+	ResultSet []*AiRecognitionTaskOcrWordsResultItem `json:"ResultSet,omitempty" name:"ResultSet" list`
+}
+
+type AiRecognitionTaskOcrWordsSegmentItem struct {
+
+	// 识别片段起始的偏移时间，单位：秒。
+	StartTimeOffset *float64 `json:"StartTimeOffset,omitempty" name:"StartTimeOffset"`
+
+	// 识别片段终止的偏移时间，单位：秒。
+	EndTimeOffset *float64 `json:"EndTimeOffset,omitempty" name:"EndTimeOffset"`
+
+	// 识别片段置信度。取值：0~100。
+	Confidence *float64 `json:"Confidence,omitempty" name:"Confidence"`
+
+	// 识别结果的区域坐标。数组包含 4 个元素 [x1,y1,x2,y2]，依次表示区域左上点、右下点的横纵坐标。
+	AreaCoordSet []*int64 `json:"AreaCoordSet,omitempty" name:"AreaCoordSet" list`
+}
+
+type AiReviewPoliticalAsrTaskInput struct {
+
+	// 鉴政模板 ID。
+	Definition *uint64 `json:"Definition,omitempty" name:"Definition"`
+}
+
+type AiReviewPoliticalAsrTaskOutput struct {
+
+	// Asr 文字涉政、敏感评分，分值为0到100。
+	Confidence *float64 `json:"Confidence,omitempty" name:"Confidence"`
+
+	// Asr 文字涉政、敏感结果建议，取值范围：
+	// <li>pass。</li>
+	// <li>review。</li>
+	// <li>block。</li>
+	Suggestion *string `json:"Suggestion,omitempty" name:"Suggestion"`
+
+	// Asr 文字有涉政、敏感嫌疑的视频片段列表。
+	SegmentSet []*MediaContentReviewAsrTextSegmentItem `json:"SegmentSet,omitempty" name:"SegmentSet" list`
+}
+
+type AiReviewPoliticalOcrTaskInput struct {
+
+	// 鉴政模板 ID。
+	Definition *uint64 `json:"Definition,omitempty" name:"Definition"`
+}
+
+type AiReviewPoliticalOcrTaskOutput struct {
+
+	// Ocr 文字涉政、敏感评分，分值为0到100。
+	Confidence *float64 `json:"Confidence,omitempty" name:"Confidence"`
+
+	// Ocr 文字涉政、敏感结果建议，取值范围：
+	// <li>pass。</li>
+	// <li>review。</li>
+	// <li>block。</li>
+	Suggestion *string `json:"Suggestion,omitempty" name:"Suggestion"`
+
+	// Ocr 文字有涉政、敏感嫌疑的视频片段列表。
+	SegmentSet []*MediaContentReviewOcrTextSegmentItem `json:"SegmentSet,omitempty" name:"SegmentSet" list`
+}
+
+type AiReviewPoliticalTaskInput struct {
+
+	// 鉴政模板 ID。
+	Definition *uint64 `json:"Definition,omitempty" name:"Definition"`
+}
+
+type AiReviewPoliticalTaskOutput struct {
+
+	// 视频涉政评分，分值为0到100。
+	Confidence *float64 `json:"Confidence,omitempty" name:"Confidence"`
+
+	// 涉政结果建议，取值范围：
+	// <li>pass。</li>
+	// <li>review。</li>
+	// <li>block。</li>
+	Suggestion *string `json:"Suggestion,omitempty" name:"Suggestion"`
+
+	// 视频鉴政结果标签，取值范围：
+	// <li>politician：政治人物。</li>
+	// <li>violation_photo：违规图标。</li>
+	Label *string `json:"Label,omitempty" name:"Label"`
+
+	// 有涉政嫌疑的视频片段列表。
+	SegmentSet []*MediaContentReviewPoliticalSegmentItem `json:"SegmentSet,omitempty" name:"SegmentSet" list`
+}
+
+type AiReviewPornAsrTaskInput struct {
+
+	// 鉴黄模板 ID。
+	Definition *uint64 `json:"Definition,omitempty" name:"Definition"`
+}
+
+type AiReviewPornAsrTaskOutput struct {
+
+	// Asr 文字涉黄评分，分值为0到100。
+	Confidence *float64 `json:"Confidence,omitempty" name:"Confidence"`
+
+	// Asr 文字涉黄结果建议，取值范围：
+	// <li>pass。</li>
+	// <li>review。</li>
+	// <li>block。</li>
+	Suggestion *string `json:"Suggestion,omitempty" name:"Suggestion"`
+
+	// Asr 文字有涉黄嫌疑的视频片段列表。
+	SegmentSet []*MediaContentReviewAsrTextSegmentItem `json:"SegmentSet,omitempty" name:"SegmentSet" list`
+}
+
+type AiReviewPornOcrTaskInput struct {
+
+	// 鉴黄模板 ID。
+	Definition *uint64 `json:"Definition,omitempty" name:"Definition"`
+}
+
+type AiReviewPornOcrTaskOutput struct {
+
+	// Ocr 文字涉黄评分，分值为0到100。
+	Confidence *float64 `json:"Confidence,omitempty" name:"Confidence"`
+
+	// Ocr 文字涉黄结果建议，取值范围：
+	// <li>pass。</li>
+	// <li>review。</li>
+	// <li>block。</li>
+	Suggestion *string `json:"Suggestion,omitempty" name:"Suggestion"`
+
+	// Ocr 文字有涉黄嫌疑的视频片段列表。
+	SegmentSet []*MediaContentReviewOcrTextSegmentItem `json:"SegmentSet,omitempty" name:"SegmentSet" list`
+}
+
+type AiReviewPornTaskInput struct {
+
+	// 鉴黄模板 ID。
+	Definition *uint64 `json:"Definition,omitempty" name:"Definition"`
+}
+
+type AiReviewPornTaskOutput struct {
+
+	// 视频鉴黄评分，分值为0到100。
+	Confidence *float64 `json:"Confidence,omitempty" name:"Confidence"`
+
+	// 鉴黄结果建议，取值范围：
+	// <li>pass。</li>
+	// <li>review。</li>
+	// <li>block。</li>
+	Suggestion *string `json:"Suggestion,omitempty" name:"Suggestion"`
+
+	// 视频鉴黄结果标签，取值范围：
+	// <li>porn：色情。</li>
+	// <li>sexy：性感。</li>
+	// <li>vulgar：低俗。</li>
+	// <li>intimacy：亲密行为。</li>
+	Label *string `json:"Label,omitempty" name:"Label"`
+
+	// 有涉黄嫌疑的视频片段列表。
+	SegmentSet []*MediaContentReviewSegmentItem `json:"SegmentSet,omitempty" name:"SegmentSet" list`
+}
+
+type AiReviewTaskPoliticalAsrResult struct {
+
+	// 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 错误码，0：成功，其他值：失败。
+	ErrCode *int64 `json:"ErrCode,omitempty" name:"ErrCode"`
+
+	// 错误信息。
+	Message *string `json:"Message,omitempty" name:"Message"`
+
+	// 内容审核 Asr 文字鉴政任务输入。
+	Input *AiReviewPoliticalAsrTaskInput `json:"Input,omitempty" name:"Input"`
+
+	// 内容审核 Asr 文字鉴政任务输出。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Output *AiReviewPoliticalAsrTaskOutput `json:"Output,omitempty" name:"Output"`
+}
+
+type AiReviewTaskPoliticalOcrResult struct {
+
+	// 任务状态，有 PROCESSING，SUCCESS �� FAIL 三种。
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 错误码，0：成功，其他值：失败。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ErrCode *int64 `json:"ErrCode,omitempty" name:"ErrCode"`
+
+	// 错误信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Message *string `json:"Message,omitempty" name:"Message"`
+
+	// 内容审核 Ocr 文字鉴政任务输入。
+	Input *AiReviewPoliticalOcrTaskInput `json:"Input,omitempty" name:"Input"`
+
+	// 内容审核 Ocr 文字鉴政任务输出。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Output *AiReviewPoliticalOcrTaskOutput `json:"Output,omitempty" name:"Output"`
+}
+
+type AiReviewTaskPoliticalResult struct {
+
+	// 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 错误码，0：成功，其他值：失败。
+	ErrCode *int64 `json:"ErrCode,omitempty" name:"ErrCode"`
+
+	// 错误信息。
+	Message *string `json:"Message,omitempty" name:"Message"`
+
+	// 内容审核鉴政任务输入。
+	Input *AiReviewPoliticalTaskInput `json:"Input,omitempty" name:"Input"`
+
+	// 内容审核鉴政任务输出。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Output *AiReviewPoliticalTaskOutput `json:"Output,omitempty" name:"Output"`
+}
+
+type AiReviewTaskPornAsrResult struct {
+
+	// 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 错误码，0：成功，其他值：失败。
+	ErrCode *int64 `json:"ErrCode,omitempty" name:"ErrCode"`
+
+	// 错误信息。
+	Message *string `json:"Message,omitempty" name:"Message"`
+
+	// 内容审核 Asr 文字鉴黄任务输入。
+	Input *AiReviewPornAsrTaskInput `json:"Input,omitempty" name:"Input"`
+
+	// 内容审核 Asr 文字鉴黄任务输出。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Output *AiReviewPornAsrTaskOutput `json:"Output,omitempty" name:"Output"`
+}
+
+type AiReviewTaskPornOcrResult struct {
+
+	// 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 错误码，0：成功，其他值：失败。
+	ErrCode *int64 `json:"ErrCode,omitempty" name:"ErrCode"`
+
+	// 错误信息。
+	Message *string `json:"Message,omitempty" name:"Message"`
+
+	// 内容审核 Ocr 文字鉴黄任务输入。
+	Input *AiReviewPornOcrTaskInput `json:"Input,omitempty" name:"Input"`
+
+	// 内容审核 Ocr 文字鉴黄任务输出。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Output *AiReviewPornOcrTaskOutput `json:"Output,omitempty" name:"Output"`
+}
+
+type AiReviewTaskPornResult struct {
+
+	// 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 错误码，0：成功，其他值：失败。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ErrCode *int64 `json:"ErrCode,omitempty" name:"ErrCode"`
+
+	// 错误信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Message *string `json:"Message,omitempty" name:"Message"`
+
+	// 内容审核鉴黄任务输入。
+	Input *AiReviewPornTaskInput `json:"Input,omitempty" name:"Input"`
+
+	// 内容审核鉴黄任务输出。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Output *AiReviewPornTaskOutput `json:"Output,omitempty" name:"Output"`
+}
+
+type AiReviewTaskTerrorismResult struct {
+
+	// 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 错误码，0：成功，其他值：失败。
+	ErrCode *int64 `json:"ErrCode,omitempty" name:"ErrCode"`
+
+	// 错误信息。
+	Message *string `json:"Message,omitempty" name:"Message"`
+
+	// 内容审核鉴恐任务输入。
+	Input *AiReviewTerrorismTaskInput `json:"Input,omitempty" name:"Input"`
+
+	// 内容审核鉴恐任务输出。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Output *AiReviewTerrorismTaskOutput `json:"Output,omitempty" name:"Output"`
+}
+
+type AiReviewTerrorismTaskInput struct {
+
+	// 鉴恐模板 ID。
+	Definition *uint64 `json:"Definition,omitempty" name:"Definition"`
+}
+
+type AiReviewTerrorismTaskOutput struct {
+
+	// 视频暴恐评分，分值为0到100。
+	Confidence *float64 `json:"Confidence,omitempty" name:"Confidence"`
+
+	// 暴恐结果建议，取值范围：
+	// <li>pass。</li>
+	// <li>review。</li>
+	// <li>block。</li>
+	Suggestion *string `json:"Suggestion,omitempty" name:"Suggestion"`
+
+	// 视频暴恐结果标签，取值范围：
+	// <li>guns：武器枪支。</li>
+	// <li>crowd：人群聚集。</li>
+	// <li>police：警察部队。</li>
+	// <li>bloody：血腥画面。</li>
+	// <li>banners：暴恐旗帜。</li>
+	// <li>militant：武装分子。</li>
+	// <li>explosion：爆炸火灾。</li>
+	// <li>terrorists：暴恐人物。</li>
+	Label *string `json:"Label,omitempty" name:"Label"`
+
+	// 有暴恐嫌疑的视频片段列表。
+	SegmentSet []*MediaContentReviewSegmentItem `json:"SegmentSet,omitempty" name:"SegmentSet" list`
 }
 
 type AnimatedGraphicTaskInput struct {
@@ -100,11 +737,27 @@ type AnimatedGraphicsTemplate struct {
 	// 转动图模板描述。
 	Comment *string `json:"Comment,omitempty" name:"Comment"`
 
-	// 动图宽度（或长边）的最大值。
+	// 动图宽度（或长边）的最大值，取值范围：0 和 [128, 4096]，单位：px。
+	// <li>当 Width、Height 均为 0，则分辨率同源；</li>
+	// <li>当 Width 为 0，Height 非 0，则 Width 按比例缩放；</li>
+	// <li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li>
+	// <li>当 Width、Height 均非 0，则分辨率按用户指定。</li>
+	// 默认值：0。
 	Width *uint64 `json:"Width,omitempty" name:"Width"`
 
-	// 动图高度（或短边）的最大值。
+	// 动图高度（或短边）的最大值，取值范围：0 和 [128, 4096]，单位：px。
+	// <li>当 Width、Height 均为 0，则分辨率同源；</li>
+	// <li>当 Width 为 0，Height 非 0，则 Width 按比例缩放；</li>
+	// <li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li>
+	// <li>当 Width、Height 均非 0，则分辨率按用户指定。</li>
+	// 默认值：0。
 	Height *uint64 `json:"Height,omitempty" name:"Height"`
+
+	// 分辨率自适应，可选值：
+	// <li>open：开启，此时，Width 代表视频的长边，Height 表示视频的短边；</li>
+	// <li>close：关闭，此时，Width 代表视频的宽度，Height 表示视频的高度。</li>
+	// 默认值：open。
+	ResolutionAdaptive *string `json:"ResolutionAdaptive,omitempty" name:"ResolutionAdaptive"`
 
 	// 动图格式。
 	Format *string `json:"Format,omitempty" name:"Format"`
@@ -1124,7 +1777,9 @@ type DescribeTaskDetailResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 任务类型，目前仅有取值 WorkflowTask。
+		// 任务类型，目前取值有：
+	// <li>WorkflowTask：视频工作流处理任务。</li>
+	// <li>LiveStreamProcessTask：直播流处理任务。</li>
 		TaskType *string `json:"TaskType,omitempty" name:"TaskType"`
 
 		// 任务状态，取值：
@@ -1145,6 +1800,10 @@ type DescribeTaskDetailResponse struct {
 		// 视频处理任务信息，仅当 TaskType 为 WorkflowTask，该字段有值。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		WorkflowTask *WorkflowTask `json:"WorkflowTask,omitempty" name:"WorkflowTask"`
+
+		// 直播流处理任务信息，仅当 TaskType 为 LiveStreamProcessTask，该字段有值。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		LiveStreamProcessTask *LiveStreamProcessTask `json:"LiveStreamProcessTask,omitempty" name:"LiveStreamProcessTask"`
 
 		// 任务的事件通知信息。
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -1277,53 +1936,6 @@ func (r *DescribeTranscodeTemplatesResponse) ToJsonString() string {
 }
 
 func (r *DescribeTranscodeTemplatesResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
-}
-
-type DescribeUserInfoRequest struct {
-	*tchttp.BaseRequest
-}
-
-func (r *DescribeUserInfoRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-func (r *DescribeUserInfoRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
-}
-
-type DescribeUserInfoResponse struct {
-	*tchttp.BaseResponse
-	Response *struct {
-
-		// 用户状态，取值：
-	// <li>Normal：正常 ；</li>
-	// <li> Closed：下线；</li>
-	// <li> Arrearage：欠费停服。</li>
-		Status *string `json:"Status,omitempty" name:"Status"`
-
-		// 用户付费类型，取值：
-	// <li>DailyPayment：日结付费 ；</li>
-	// <li>MonthlyPayment：月结付费。</li>
-		PaymentType *string `json:"PaymentType,omitempty" name:"PaymentType"`
-
-		// 是否是旧版视频处理用户，取值：
-	// <li>0：否 ；</li>
-	// <li>1：是。</li>
-		OldMpsUser *int64 `json:"OldMpsUser,omitempty" name:"OldMpsUser"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
-}
-
-func (r *DescribeUserInfoResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-func (r *DescribeUserInfoResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -1610,6 +2222,206 @@ type ImageWatermarkTemplate struct {
 	Height *string `json:"Height,omitempty" name:"Height"`
 }
 
+type LiveStreamAiReviewImagePoliticalResult struct {
+
+	// 嫌疑片段起始的 PTS 时间，单位：秒。
+	StartPtsTime *float64 `json:"StartPtsTime,omitempty" name:"StartPtsTime"`
+
+	// 嫌疑片段结束的 PTS 时间，单位：秒。
+	EndPtsTime *float64 `json:"EndPtsTime,omitempty" name:"EndPtsTime"`
+
+	// 嫌疑片段涉政分数。
+	Confidence *float64 `json:"Confidence,omitempty" name:"Confidence"`
+
+	// 嫌疑片段鉴黄结果建议，取值范围：
+	// <li>pass</li>
+	// <li>review</li>
+	// <li>block</li>
+	Suggestion *string `json:"Suggestion,omitempty" name:"Suggestion"`
+
+	// 视频鉴政结果标签，取值范围：
+	// <li>politician：政治人物。</li>
+	// <li>violation_photo：违规图标。</li>
+	Label *string `json:"Label,omitempty" name:"Label"`
+
+	// 涉政人物、违规图标名字。
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 涉政人物、违规图标出现的区域坐标 (像素级)，[x1, y1, x2, y2]，即左上角坐标、右下角坐标。
+	AreaCoordSet []*int64 `json:"AreaCoordSet,omitempty" name:"AreaCoordSet" list`
+
+	// 嫌疑图片 URL （图片不会永久存储，到达
+	// PicUrlExpireTime 时间点后图片将被删除）。
+	Url *string `json:"Url,omitempty" name:"Url"`
+
+	// 嫌疑图片 URL 失效时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+	PicUrlExpireTime *string `json:"PicUrlExpireTime,omitempty" name:"PicUrlExpireTime"`
+}
+
+type LiveStreamAiReviewImagePornResult struct {
+
+	// 嫌疑片段起始的 PTS 时间，单位：秒。
+	StartPtsTime *float64 `json:"StartPtsTime,omitempty" name:"StartPtsTime"`
+
+	// 嫌疑片段结束的 PTS 时间，单位：秒。
+	EndPtsTime *float64 `json:"EndPtsTime,omitempty" name:"EndPtsTime"`
+
+	// 嫌疑片段涉黄分数。
+	Confidence *float64 `json:"Confidence,omitempty" name:"Confidence"`
+
+	// 嫌疑片段鉴黄结果建议，取值范围：
+	// <li>pass</li>
+	// <li>review</li>
+	// <li>block</li>
+	Suggestion *string `json:"Suggestion,omitempty" name:"Suggestion"`
+
+	// 视频鉴黄结果标签，取值范围：
+	// <li>porn：色情。</li>
+	// <li>sexy：性感。</li>
+	// <li>vulgar：低俗。</li>
+	// <li>intimacy：亲密行为。</li>
+	Label *string `json:"Label,omitempty" name:"Label"`
+
+	// 嫌疑图片 URL （图片不会永久存储，到达
+	// PicUrlExpireTime 时间点后图片将被删除）。
+	Url *string `json:"Url,omitempty" name:"Url"`
+
+	// 嫌疑图片 URL 失效时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+	PicUrlExpireTime *string `json:"PicUrlExpireTime,omitempty" name:"PicUrlExpireTime"`
+}
+
+type LiveStreamAiReviewImageTerrorismResult struct {
+
+	// 嫌疑片段起始的 PTS 时间，单位：秒。
+	StartPtsTime *float64 `json:"StartPtsTime,omitempty" name:"StartPtsTime"`
+
+	// 嫌疑片段结束的 PTS 时间，单位：秒。
+	EndPtsTime *float64 `json:"EndPtsTime,omitempty" name:"EndPtsTime"`
+
+	// 嫌疑片段涉恐分数。
+	Confidence *float64 `json:"Confidence,omitempty" name:"Confidence"`
+
+	// 嫌疑片段鉴恐结果建议，取值范围：
+	// <li>pass</li>
+	// <li>review</li>
+	// <li>block</li>
+	Suggestion *string `json:"Suggestion,omitempty" name:"Suggestion"`
+
+	// 视频暴恐结果标签，取值范围：
+	// <li>guns：武器枪支。</li>
+	// <li>crowd：人群聚集。</li>
+	// <li>police：警察部队。</li>
+	// <li>bloody：血腥画面。</li>
+	// <li>banners：暴恐旗帜。</li>
+	// <li>militant：武装分子。</li>
+	// <li>explosion：爆炸火灾。</li>
+	// <li>terrorists：暴恐人物。</li>
+	Label *string `json:"Label,omitempty" name:"Label"`
+
+	// 嫌疑图片 URL （图片不会永久存储，到达
+	// PicUrlExpireTime 时间点后图片将被删除）。
+	Url *string `json:"Url,omitempty" name:"Url"`
+
+	// 嫌疑图片 URL 失效时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+	PicUrlExpireTime *string `json:"PicUrlExpireTime,omitempty" name:"PicUrlExpireTime"`
+}
+
+type LiveStreamAiReviewResultInfo struct {
+
+	// 内容审核结果列表。
+	ResultSet []*LiveStreamAiReviewResultItem `json:"ResultSet,omitempty" name:"ResultSet" list`
+}
+
+type LiveStreamAiReviewResultItem struct {
+
+	// 审核结果的类型，可以取的值有：
+	// <li>ImagePorn：图片鉴黄</li>
+	// <li>ImageTerrorism：图片鉴恐</li>
+	// <li>ImagePolitical：图片鉴政</li>
+	// <li>PornVoice：声音鉴黄</li>
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 图片鉴黄的结果，当 Type 为 ImagePorn 时有效。
+	ImagePornResultSet []*LiveStreamAiReviewImagePornResult `json:"ImagePornResultSet,omitempty" name:"ImagePornResultSet" list`
+
+	// 图片鉴恐的结果，当 Type 为 ImageTerrorism 时有效。
+	ImageTerrorismResultSet []*LiveStreamAiReviewImageTerrorismResult `json:"ImageTerrorismResultSet,omitempty" name:"ImageTerrorismResultSet" list`
+
+	// 图片鉴政的结果，当 Type 为 ImagePolitical 时有效。
+	ImagePoliticalResultSet []*LiveStreamAiReviewImagePoliticalResult `json:"ImagePoliticalResultSet,omitempty" name:"ImagePoliticalResultSet" list`
+
+	// 声音鉴黄的结果，当 Type 为 PornVoice 时有效。
+	VoicePornResultSet []*LiveStreamAiReviewVoicePornResult `json:"VoicePornResultSet,omitempty" name:"VoicePornResultSet" list`
+}
+
+type LiveStreamAiReviewVoicePornResult struct {
+
+	// 嫌疑片段起始的 PTS 时间，单位：秒。
+	StartPtsTime *float64 `json:"StartPtsTime,omitempty" name:"StartPtsTime"`
+
+	// 嫌疑片段结束的 PTS 时间，单位：秒。
+	EndPtsTime *float64 `json:"EndPtsTime,omitempty" name:"EndPtsTime"`
+
+	// 嫌疑片段涉黄分数。
+	Confidence *float64 `json:"Confidence,omitempty" name:"Confidence"`
+
+	// 嫌疑片段鉴黄结果建议，取值范围：
+	// <li>pass</li>
+	// <li>review</li>
+	// <li>block</li>
+	Suggestion *string `json:"Suggestion,omitempty" name:"Suggestion"`
+
+	// 视频鉴黄结果标签，取值范围：
+	// <li>sexual_moan：呻吟。</li>
+	Label *string `json:"Label,omitempty" name:"Label"`
+}
+
+type LiveStreamProcessErrorInfo struct {
+
+	// 错误码：
+	// <li>0表示没有错误；</li>
+	// <li>非0表示错误，请参考 Message 错误信息。</li>
+	ErrCode *int64 `json:"ErrCode,omitempty" name:"ErrCode"`
+
+	// 错误信息。
+	Message *string `json:"Message,omitempty" name:"Message"`
+}
+
+type LiveStreamProcessTask struct {
+
+	// 视频处理任务 ID。
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 任务流状态，取值：
+	// <li>PROCESSING：处理中；</li>
+	// <li>FINISH：已完成。</li>
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 错误码，0 表示成功，其他值表示失败。
+	ErrCode *int64 `json:"ErrCode,omitempty" name:"ErrCode"`
+
+	// 错误信息。
+	Message *string `json:"Message,omitempty" name:"Message"`
+
+	// 直播流 URL。
+	Url *string `json:"Url,omitempty" name:"Url"`
+}
+
+type LiveStreamTaskNotifyConfig struct {
+
+	// CMQ 的模型，有 Queue 和 Topic 两种，目前仅支持 Queue。
+	CmqModel *string `json:"CmqModel,omitempty" name:"CmqModel"`
+
+	// CMQ 的园区，如 sh，bj 等。
+	CmqRegion *string `json:"CmqRegion,omitempty" name:"CmqRegion"`
+
+	// 当模型为 Queue 时有效，表示接收事件通知的 CMQ 的队列名。
+	QueueName *string `json:"QueueName,omitempty" name:"QueueName"`
+
+	// 当模型为 Topic 时有效，表示接收事件通知的 CMQ 的主题名。
+	TopicName *string `json:"TopicName,omitempty" name:"TopicName"`
+}
+
 type MediaAnimatedGraphicsItem struct {
 
 	// 转动图文件的存储位置。
@@ -1659,6 +2471,120 @@ type MediaAudioStreamItem struct {
 	// 音频流的编码格式，例如 aac。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Codec *string `json:"Codec,omitempty" name:"Codec"`
+}
+
+type MediaContentReviewAsrTextSegmentItem struct {
+
+	// 嫌疑片段起始的偏移时间，单位：秒。
+	StartTimeOffset *float64 `json:"StartTimeOffset,omitempty" name:"StartTimeOffset"`
+
+	// 嫌疑片段结束的偏移时间，单位：秒。
+	EndTimeOffset *float64 `json:"EndTimeOffset,omitempty" name:"EndTimeOffset"`
+
+	// 嫌疑片段置信度。
+	Confidence *float64 `json:"Confidence,omitempty" name:"Confidence"`
+
+	// 嫌疑片段审核结果建议，取值范围：
+	// <li>pass。</li>
+	// <li>review。</li>
+	// <li>block。</li>
+	Suggestion *string `json:"Suggestion,omitempty" name:"Suggestion"`
+
+	// 嫌疑关键词列表。
+	KeywordSet []*string `json:"KeywordSet,omitempty" name:"KeywordSet" list`
+}
+
+type MediaContentReviewOcrTextSegmentItem struct {
+
+	// 嫌疑片段起始的偏移时间，单位：秒。
+	StartTimeOffset *float64 `json:"StartTimeOffset,omitempty" name:"StartTimeOffset"`
+
+	// 嫌疑片段结束的偏移时间，单位：秒。
+	EndTimeOffset *float64 `json:"EndTimeOffset,omitempty" name:"EndTimeOffset"`
+
+	// 嫌疑片段置信度。
+	Confidence *float64 `json:"Confidence,omitempty" name:"Confidence"`
+
+	// 嫌疑片段审核结果建议，取值范围：
+	// <li>pass。</li>
+	// <li>review。</li>
+	// <li>block。</li>
+	Suggestion *string `json:"Suggestion,omitempty" name:"Suggestion"`
+
+	// 嫌疑关键词列表。
+	KeywordSet []*string `json:"KeywordSet,omitempty" name:"KeywordSet" list`
+
+	// 嫌疑文字出现的区域坐标 (像素级)，[x1, y1, x2, y2]，即左上角坐标、右下角坐标。
+	AreaCoordSet []*int64 `json:"AreaCoordSet,omitempty" name:"AreaCoordSet" list`
+
+	// 嫌疑图片 URL （图片不会永久存储，到达
+	// PicUrlExpireTime 时间点后图片将被删除）。
+	Url *string `json:"Url,omitempty" name:"Url"`
+
+	// 嫌疑图片 URL 失效时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+	PicUrlExpireTime *string `json:"PicUrlExpireTime,omitempty" name:"PicUrlExpireTime"`
+}
+
+type MediaContentReviewPoliticalSegmentItem struct {
+
+	// 嫌疑片段起始的偏移时间，单位：秒。
+	StartTimeOffset *float64 `json:"StartTimeOffset,omitempty" name:"StartTimeOffset"`
+
+	// 嫌疑片段结束的偏移时间，单位：秒。
+	EndTimeOffset *float64 `json:"EndTimeOffset,omitempty" name:"EndTimeOffset"`
+
+	// 嫌疑片段涉政分数。
+	Confidence *float64 `json:"Confidence,omitempty" name:"Confidence"`
+
+	// 嫌疑片段鉴政结果建议，取值范围：
+	// <li>pass。</li>
+	// <li>review。</li>
+	// <li>block。</li>
+	Suggestion *string `json:"Suggestion,omitempty" name:"Suggestion"`
+
+	// 涉政人物、违规图标名字。
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 嫌疑片段鉴政结果标签。
+	Label *string `json:"Label,omitempty" name:"Label"`
+
+	// 嫌疑图片 URL （图片不会永久存储，到达
+	//  PicUrlExpireTime 时间点后图片将被删除）。
+	Url *string `json:"Url,omitempty" name:"Url"`
+
+	// 涉政人物、违规图标出现的区域坐标 (像素级)，[x1, y1, x2, y2]，即左上角坐标、右下角坐标。
+	AreaCoordSet []*int64 `json:"AreaCoordSet,omitempty" name:"AreaCoordSet" list`
+
+	// 嫌疑图片 URL 失效时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+	PicUrlExpireTime *string `json:"PicUrlExpireTime,omitempty" name:"PicUrlExpireTime"`
+}
+
+type MediaContentReviewSegmentItem struct {
+
+	// 嫌疑片段起始的偏移时间，单位：秒。
+	StartTimeOffset *float64 `json:"StartTimeOffset,omitempty" name:"StartTimeOffset"`
+
+	// 嫌疑片段结束的偏移时间，单位：秒。
+	EndTimeOffset *float64 `json:"EndTimeOffset,omitempty" name:"EndTimeOffset"`
+
+	// 嫌疑片段涉黄分数。
+	Confidence *float64 `json:"Confidence,omitempty" name:"Confidence"`
+
+	// 嫌疑片段鉴黄结果标签。
+	Label *string `json:"Label,omitempty" name:"Label"`
+
+	// 嫌疑片段鉴黄结果建议，取值范围：
+	// <li>pass。</li>
+	// <li>review。</li>
+	// <li>block。</li>
+	Suggestion *string `json:"Suggestion,omitempty" name:"Suggestion"`
+
+	// 嫌疑图片 URL （图片不会永久存储，到达
+	//  PicUrlExpireTime 时间点后图片将被删除）。
+	Url *string `json:"Url,omitempty" name:"Url"`
+
+	// 嫌疑图片 URL 失效时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+	PicUrlExpireTime *string `json:"PicUrlExpireTime,omitempty" name:"PicUrlExpireTime"`
 }
 
 type MediaImageSpriteItem struct {
@@ -1801,9 +2727,6 @@ type MediaProcessTaskInput struct {
 
 	// 对视频截雪碧图任务列表。
 	ImageSpriteTaskSet []*ImageSpriteTaskInput `json:"ImageSpriteTaskSet,omitempty" name:"ImageSpriteTaskSet" list`
-
-	// 对视频转自适应码流任务列表。
-	AdaptiveDynamicStreamingTaskSet []*AdaptiveDynamicStreamingTaskInput `json:"AdaptiveDynamicStreamingTaskSet,omitempty" name:"AdaptiveDynamicStreamingTaskSet" list`
 }
 
 type MediaProcessTaskResult struct {
@@ -2399,6 +3322,110 @@ type NumberFormat struct {
 	PlaceHolder *string `json:"PlaceHolder,omitempty" name:"PlaceHolder"`
 }
 
+type ParseLiveStreamProcessNotificationRequest struct {
+	*tchttp.BaseRequest
+
+	// 从 CMQ 获取到的直播流事件通知内容。
+	Content *string `json:"Content,omitempty" name:"Content"`
+}
+
+func (r *ParseLiveStreamProcessNotificationRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ParseLiveStreamProcessNotificationRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ParseLiveStreamProcessNotificationResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 直播流处理结果类型，包含：
+	// <li>AiReviewResult：内容审核结果；</li>
+	// <li>ProcessEof：直播流处理结束。</li>
+		NotificationType *string `json:"NotificationType,omitempty" name:"NotificationType"`
+
+		// 视频处理任务 ID。
+		TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+		// 直播流处理错误信息，当 NotificationType 为 ProcessEof 时有效。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		ProcessEofInfo *LiveStreamProcessErrorInfo `json:"ProcessEofInfo,omitempty" name:"ProcessEofInfo"`
+
+		// 内容审核结果，当 NotificationType 为 AiReviewResult 时有效。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		AiReviewResultInfo *LiveStreamAiReviewResultInfo `json:"AiReviewResultInfo,omitempty" name:"AiReviewResultInfo"`
+
+		// 用于去重的识别码，如果七天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长50个字符，不带或者带空字符串表示不做去重。
+		SessionId *string `json:"SessionId,omitempty" name:"SessionId"`
+
+		// 来源上下文，用于透传用户请求信息，任务流状态变更回调将返回该字段值，最长1000个字符。
+		SessionContext *string `json:"SessionContext,omitempty" name:"SessionContext"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ParseLiveStreamProcessNotificationResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ParseLiveStreamProcessNotificationResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ParseNotificationRequest struct {
+	*tchttp.BaseRequest
+
+	// 从 CMQ 获取到的事件通知内容。
+	Content *string `json:"Content,omitempty" name:"Content"`
+}
+
+func (r *ParseNotificationRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ParseNotificationRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ParseNotificationResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 支持事件类型，目前取值有：
+	// <li>WorkflowTask：视频工作流处理任务。</li>
+		EventType *string `json:"EventType,omitempty" name:"EventType"`
+
+		// 视频处理任务信息，仅当 TaskType 为 WorkflowTask，该字段有值。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		WorkflowTaskEvent *WorkflowTask `json:"WorkflowTaskEvent,omitempty" name:"WorkflowTaskEvent"`
+
+		// 用于去重的识别码，如果七天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长50个字符，不带或者带空字符串表示不做去重。
+		SessionId *string `json:"SessionId,omitempty" name:"SessionId"`
+
+		// 来源上下文，用于透传用户请求信息，任务流状态变更回调将返回该字段值，最长1000个字符。
+		SessionContext *string `json:"SessionContext,omitempty" name:"SessionContext"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ParseNotificationResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ParseNotificationResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type ProcessLiveMediaRequest struct {
 	*tchttp.BaseRequest
 
@@ -2457,6 +3484,61 @@ func (r *ProcessLiveMediaResponse) ToJsonString() string {
 }
 
 func (r *ProcessLiveMediaResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ProcessLiveStreamRequest struct {
+	*tchttp.BaseRequest
+
+	// 直播流 URL（必须是直播文件地址，支持 rtmp，hls 和 flv 等）。
+	Url *string `json:"Url,omitempty" name:"Url"`
+
+	// 任务的事件通知信息，用于指定直播流处理的结果。
+	TaskNotifyConfig *LiveStreamTaskNotifyConfig `json:"TaskNotifyConfig,omitempty" name:"TaskNotifyConfig"`
+
+	// 直播流处理输出文件的目标存储。如处理有文件输出，该参数为必填项。
+	OutputStorage *TaskOutputStorage `json:"OutputStorage,omitempty" name:"OutputStorage"`
+
+	// 直播流处理生成的文件输出的目标目录，如`/movie/201909/`，如果不填为 `/` 目录。
+	OutputDir *string `json:"OutputDir,omitempty" name:"OutputDir"`
+
+	// 视频内容审核类型任务参数。
+	AiContentReviewTask *AiContentReviewTaskInput `json:"AiContentReviewTask,omitempty" name:"AiContentReviewTask"`
+
+	// 来源上下文，用于透传用户请求信息，任务流状态变更回调将返回该字段值，最长 1000 个字符。
+	SessionContext *string `json:"SessionContext,omitempty" name:"SessionContext"`
+
+	// 用于去重的识别码，如果七天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。
+	SessionId *string `json:"SessionId,omitempty" name:"SessionId"`
+}
+
+func (r *ProcessLiveStreamRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ProcessLiveStreamRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ProcessLiveStreamResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 任务 ID
+		TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ProcessLiveStreamResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ProcessLiveStreamResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -2610,11 +3692,27 @@ type SampleSnapshotTemplate struct {
 	// 模板描述信息。
 	Comment *string `json:"Comment,omitempty" name:"Comment"`
 
-	// 图片宽度。
+	// 截图宽度（或长边）的最大值，取值范围：0 和 [128, 4096]，单位：px。
+	// <li>当 Width、Height 均为 0，则分辨率同源；</li>
+	// <li>当 Width 为 0，Height 非 0，则 Width 按比例缩放；</li>
+	// <li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li>
+	// <li>当 Width、Height 均非 0，则分辨率按用户指定。</li>
+	// 默认值：0。
 	Width *uint64 `json:"Width,omitempty" name:"Width"`
 
-	// 图片高度。
+	// 截图高度（或短边）的最大值，取值范围：0 和 [128, 4096]，单位：px。
+	// <li>当 Width、Height 均为 0，则分辨率同源；</li>
+	// <li>当 Width 为 0，Height 非 0，则 Width 按比例缩放；</li>
+	// <li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li>
+	// <li>当 Width、Height 均非 0，则分辨率按用户指定。</li>
+	// 默认值：0。
 	Height *uint64 `json:"Height,omitempty" name:"Height"`
+
+	// 分辨率自适应，可选值：
+	// <li>open：开启，此时，Width 代表视频的长边，Height 表示视频的短边；</li>
+	// <li>close：关闭，此时，Width 代表视频的宽度，Height 表示视频的高度。</li>
+	// 默认值：open。
+	ResolutionAdaptive *string `json:"ResolutionAdaptive,omitempty" name:"ResolutionAdaptive"`
 
 	// 图片格式。
 	Format *string `json:"Format,omitempty" name:"Format"`
@@ -2672,11 +3770,27 @@ type SnapshotByTimeOffsetTemplate struct {
 	// 模板描述信息。
 	Comment *string `json:"Comment,omitempty" name:"Comment"`
 
-	// 图片宽度。
+	// 截图宽度（或长边）的最大值，取值范围：0 和 [128, 4096]，单位：px。
+	// <li>当 Width、Height 均为 0，则分辨率同源；</li>
+	// <li>当 Width 为 0，Height 非 0，则 Width 按比例缩放；</li>
+	// <li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li>
+	// <li>当 Width、Height 均非 0，则分辨率按用户指定。</li>
+	// 默认值：0。
 	Width *uint64 `json:"Width,omitempty" name:"Width"`
 
-	// 图片高度。
+	// 截图高度（或短边）的最大值，取值范围：0 和 [128, 4096]，单位：px。
+	// <li>当 Width、Height 均为 0，则分辨率同源；</li>
+	// <li>当 Width 为 0，Height 非 0，则 Width 按比例缩放；</li>
+	// <li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li>
+	// <li>当 Width、Height 均非 0，则分辨率按用户指定。</li>
+	// 默认值：0。
 	Height *uint64 `json:"Height,omitempty" name:"Height"`
+
+	// 分辨率自适应，可选值：
+	// <li>open：开启，此时，Width 代表视频的长边，Height 表示视频的短边；</li>
+	// <li>close：关闭，此时，Width 代表视频的宽度，Height 表示视频的高度。</li>
+	// 默认值：open。
+	ResolutionAdaptive *string `json:"ResolutionAdaptive,omitempty" name:"ResolutionAdaptive"`
 
 	// 图片格式。
 	Format *string `json:"Format,omitempty" name:"Format"`
@@ -2794,7 +3908,9 @@ type TaskSimpleInfo struct {
 	// 任务 ID。
 	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
 
-	// 任务类型，目前仅支持 WorkflowTask。
+	// 任务类型，包含：
+	// <li> WorkflowTask：工作流处理任务；</li>
+	// <li> LiveProcessTask：直播处理任务。</li>
 	TaskType *string `json:"TaskType,omitempty" name:"TaskType"`
 
 	// 任务创建时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
@@ -3151,6 +4267,12 @@ type WorkflowTask struct {
 
 	// 视频处理任务的执行状态与结果。
 	MediaProcessResultSet []*MediaProcessTaskResult `json:"MediaProcessResultSet,omitempty" name:"MediaProcessResultSet" list`
+
+	// 视频内容审核任务的执行状态与结果。
+	AiContentReviewResultSet []*AiContentReviewResult `json:"AiContentReviewResultSet,omitempty" name:"AiContentReviewResultSet" list`
+
+	// 视频内容识别任务的执行状态与结果。
+	AiRecognitionResultSet []*AiRecognitionResult `json:"AiRecognitionResultSet,omitempty" name:"AiRecognitionResultSet" list`
 }
 
 type WorkflowTrigger struct {

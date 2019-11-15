@@ -77,6 +77,31 @@ func (c *Client) DescribeCdnData(request *DescribeCdnDataRequest) (response *Des
     return
 }
 
+func NewDescribeCdnDomainLogsRequest() (request *DescribeCdnDomainLogsRequest) {
+    request = &DescribeCdnDomainLogsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cdn", APIVersion, "DescribeCdnDomainLogs")
+    return
+}
+
+func NewDescribeCdnDomainLogsResponse() (response *DescribeCdnDomainLogsResponse) {
+    response = &DescribeCdnDomainLogsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeCdnDomainLogs 用于查询访问日志下载地址，仅支持 30 天以内的境内、境外访问日志下载链接查询。
+func (c *Client) DescribeCdnDomainLogs(request *DescribeCdnDomainLogsRequest) (response *DescribeCdnDomainLogsResponse, err error) {
+    if request == nil {
+        request = NewDescribeCdnDomainLogsRequest()
+    }
+    response = NewDescribeCdnDomainLogsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeCdnIpRequest() (request *DescribeCdnIpRequest) {
     request = &DescribeCdnIpRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -230,7 +255,7 @@ func NewDescribePurgeTasksResponse() (response *DescribePurgeTasksResponse) {
     return
 }
 
-// DescribePurgeTasks 用于查询刷新任务提交历史记录及执行进度。
+// DescribePurgeTasks 用于查询提交的 URL 刷新、目录刷新记录及执行进度，通过 PurgePathCache 与 PurgeUrlsCache 接口提交的任务均可通过此接口进行查询。
 func (c *Client) DescribePurgeTasks(request *DescribePurgeTasksRequest) (response *DescribePurgeTasksResponse, err error) {
     if request == nil {
         request = NewDescribePurgeTasksRequest()
@@ -255,12 +280,38 @@ func NewDescribePushTasksResponse() (response *DescribePushTasksResponse) {
     return
 }
 
-// DescribePushTasks 用于查询预热任务提交历史记录及执行进度。（接口尚在批量公测中，暂未全量开放使用）
+// DescribePushTasks  用于查询预热任务提交历史记录及执行进度。
+// 接口灰度中，暂未全量开放，敬请期待。
 func (c *Client) DescribePushTasks(request *DescribePushTasksRequest) (response *DescribePushTasksResponse, err error) {
     if request == nil {
         request = NewDescribePushTasksRequest()
     }
     response = NewDescribePushTasksResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeTrafficPackagesRequest() (request *DescribeTrafficPackagesRequest) {
+    request = &DescribeTrafficPackagesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cdn", APIVersion, "DescribeTrafficPackages")
+    return
+}
+
+func NewDescribeTrafficPackagesResponse() (response *DescribeTrafficPackagesResponse) {
+    response = &DescribeTrafficPackagesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeTrafficPackages 用于查询境内 CDN 流量包详情。
+func (c *Client) DescribeTrafficPackages(request *DescribeTrafficPackagesRequest) (response *DescribeTrafficPackagesResponse, err error) {
+    if request == nil {
+        request = NewDescribeTrafficPackagesRequest()
+    }
+    response = NewDescribeTrafficPackagesResponse()
     err = c.Send(request, response)
     return
 }
@@ -386,7 +437,8 @@ func NewPurgePathCacheResponse() (response *PurgePathCacheResponse) {
     return
 }
 
-// PurgePathCache 用于批量刷新目录缓存，一次提交将返回一个刷新任务id。
+// PurgePathCache 用于批量提交目录刷新，根据域名的加速区域进行对应区域的刷新。
+// 默认情况下境内、境外加速区域每日目录刷新额度为各 100 条，每次最多可提交 20 条。
 func (c *Client) PurgePathCache(request *PurgePathCacheRequest) (response *PurgePathCacheResponse, err error) {
     if request == nil {
         request = NewPurgePathCacheRequest()
@@ -411,7 +463,8 @@ func NewPurgeUrlsCacheResponse() (response *PurgeUrlsCacheResponse) {
     return
 }
 
-// PurgeUrlsCache 用于批量刷新Url，一次提交将返回一个刷新任务id。
+// PurgeUrlsCache 用于批量提交 URL 进行刷新，根据 URL 中域名的当前加速区域进行对应区域的刷新。
+// 默认情况下境内、境外加速区域每日 URL 刷新额度各为 10000 条，每次最多可提交 1000 条。
 func (c *Client) PurgeUrlsCache(request *PurgeUrlsCacheRequest) (response *PurgeUrlsCacheResponse, err error) {
     if request == nil {
         request = NewPurgeUrlsCacheRequest()
@@ -436,7 +489,9 @@ func NewPushUrlsCacheResponse() (response *PushUrlsCacheResponse) {
     return
 }
 
-// PushUrlsCache 用于将指定 URL 资源列表加载至 CDN 节点，默认情况下每次调用可提交 20 条 URL，每日一共可提交 1000 条。
+// PushUrlsCache 用于将指定 URL 资源列表加载至 CDN 节点，支持指定加速区域预热。
+// 默认情况下境内、境外每日预热 URL 限额为各 1000 条，每次最多可提交 20 条。
+// 接口灰度中，暂未全量开放，敬请期待。
 func (c *Client) PushUrlsCache(request *PushUrlsCacheRequest) (response *PushUrlsCacheResponse, err error) {
     if request == nil {
         request = NewPushUrlsCacheRequest()

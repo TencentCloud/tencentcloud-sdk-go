@@ -201,6 +201,65 @@ func (r *DescribeCdnDataResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeCdnDomainLogsRequest struct {
+	*tchttp.BaseRequest
+
+	// 指定域名查询
+	Domain *string `json:"Domain,omitempty" name:"Domain"`
+
+	// 开始时间，如 2019-09-04 00:00:00
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 结束时间，如 2019-09-04 12:00:00
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 分页查询偏移量，默认为 0 （第一页）
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 分页查询限制数目，默认为 100，最大为 1000
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 指定区域下载日志
+	// mainland：获取境内加速日志包下载链接
+	// overseas：获取境外加速日志包下载链接
+	// global：同时获取境内、境外加速日志包下载链接（分开打包）
+	// 不指定时默认为 mainland
+	Area *string `json:"Area,omitempty" name:"Area"`
+}
+
+func (r *DescribeCdnDomainLogsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeCdnDomainLogsRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeCdnDomainLogsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 日志包下载链接
+		DomainLogs []*DomainLog `json:"DomainLogs,omitempty" name:"DomainLogs" list`
+
+		// 查询到的总条数
+		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeCdnDomainLogsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeCdnDomainLogsResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeCdnIpRequest struct {
 	*tchttp.BaseRequest
 
@@ -429,9 +488,10 @@ func (r *DescribeOriginDataResponse) FromJsonString(s string) error {
 type DescribePayTypeRequest struct {
 	*tchttp.BaseRequest
 
-	// 指定服务地域查询，不填充表示查询中国境内 CDN 计费方式
-	// mainland：指定查询中国境内 CDN 计费方式
-	// overseas：指定查询中国境外 CDN 计费方式
+	// 指定服务地域查询
+	// mainland：境内计费方式查询
+	// overseas：境外计费方式查询
+	// 未填充时默认为 mainland
 	Area *string `json:"Area,omitempty" name:"Area"`
 }
 
@@ -451,7 +511,7 @@ type DescribePayTypeResponse struct {
 		// 计费类型：
 	// flux：流量计费
 	// bandwidth：带宽计费
-	// 如果修改过计费方式，表示下次生效的计费类型，否则表示当前计费类型。
+	// 日结计费方式切换时，若当日产生消耗，则此字段表示第二天即将生效的计费方式，若未产生消耗，则表示已经生效的计费方式。
 		PayType *string `json:"PayType,omitempty" name:"PayType"`
 
 		// 计费周期：
@@ -467,12 +527,12 @@ type DescribePayTypeResponse struct {
 	// max：峰值带宽计费，日结模式
 		StatType *string `json:"StatType,omitempty" name:"StatType"`
 
-		// 地区计费方式，仅在查询中国境外 CDN 计费方式时可用
-	// all：表示全地区统一计费
-	// multiple：表示分地区计费。
+		// 境外计费类型：
+	// all：全地区统一计费
+	// multiple：分地区计费
 		RegionType *string `json:"RegionType,omitempty" name:"RegionType"`
 
-		// 当前计费类型：
+		// 当前生效计费类型：
 	// flux：流量计费
 	// bandwidth：带宽计费
 		CurrentPayType *string `json:"CurrentPayType,omitempty" name:"CurrentPayType"`
@@ -494,29 +554,41 @@ func (r *DescribePayTypeResponse) FromJsonString(s string) error {
 type DescribePurgeTasksRequest struct {
 	*tchttp.BaseRequest
 
-	// 查询刷新类型。url：查询 url 刷新记录；path：查询目录刷新记录。
+	// 指定刷新类型查询
+	// url：url 刷新记录
+	// path：目录刷新记录
 	PurgeType *string `json:"PurgeType,omitempty" name:"PurgeType"`
 
-	// 开始时间，如2018-08-08 00:00:00。
+	// 根据时间区间查询时，填充开始时间，如 2018-08-08 00:00:00
 	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
 
-	// 结束时间，如2018-08-08 23:59:59。
+	// 根据时间区间查询时，填充结束时间，如 2018-08-08 23:59:59
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 
-	// 提交时返回的任务 Id，查询时 TaskId 和起始时间必须指定一项。
+	// 根据任务 ID 查询时，填充任务 ID
+	// 查询时任务 ID 与起始时间必须填充一项
 	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
 
-	// 分页查询偏移量，默认为 0 （第一页）。
+	// 分页查询偏移量，默认为 0 （第一页）
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
 
-	// 分页查询限制数目，默认为20。
+	// 分页查询限制数目，默认为 20
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 
-	// 查询关键字，请输入域名或 http(s):// 开头完整 URL。
+	// 支持域名过滤，或 http(s):// 开头完整 URL 过滤
 	Keyword *string `json:"Keyword,omitempty" name:"Keyword"`
 
-	// 查询指定任务状态，fail表示失败，done表示成功，process表示刷新中。
+	// 指定任务状态查询
+	// fail：刷新失败
+	// done：刷新成功
+	// process：刷新中
 	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 指定刷新地域查询
+	// mainland：境内
+	// overseas：境外
+	// global：全球
+	Area *string `json:"Area,omitempty" name:"Area"`
 }
 
 func (r *DescribePurgeTasksRequest) ToJsonString() string {
@@ -532,7 +604,7 @@ type DescribePurgeTasksResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 刷新历史记录
+		// 详细刷新记录
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		PurgeLogs []*PurgeTask `json:"PurgeLogs,omitempty" name:"PurgeLogs" list`
 
@@ -563,22 +635,29 @@ type DescribePushTasksRequest struct {
 	// 结束时间，如2018-08-08 23:59:59。
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 
-	// 提交时返回的任务 Id，查询时 TaskId 和起始时间必须指定一项。
+	// 指定任务 ID 查询
+	// TaskId 和起始时间必须指定一项
 	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
 
-	// 查询关键字，请输入域名或 http(s):// 开头完整 URL。
+	// 查询关键字，请输入域名或 http(s):// 开头完整 URL
 	Keyword *string `json:"Keyword,omitempty" name:"Keyword"`
 
-	// 分页查询偏移量，默认为 0 （第一页）。
+	// 分页查询偏移量，默认为 0 （第一页）
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
 
-	// 分页查询限制数目，默认为20。
+	// 分页查询限制数目，默认为 20
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 
-	// 查询刷新记录指定地区。mainland：中国大陆。
+	// 指定地区查询预热纪录
+	// mainland：境内
+	// overseas：境外
+	// global：全球
 	Area *string `json:"Area,omitempty" name:"Area"`
 
-	// 查询指定任务状态，fail表示失败，done表示成功，process表示刷新中。
+	// 指定任务状态查询
+	// fail：预热失败
+	// done：预热成功
+	// process：预热中
 	Status *string `json:"Status,omitempty" name:"Status"`
 }
 
@@ -614,6 +693,55 @@ func (r *DescribePushTasksResponse) ToJsonString() string {
 }
 
 func (r *DescribePushTasksResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeTrafficPackagesRequest struct {
+	*tchttp.BaseRequest
+
+	// 分页查询起始地址，默认 0（第一页）
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 分页查询记录个数，默认100，最大1000
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+func (r *DescribeTrafficPackagesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeTrafficPackagesRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeTrafficPackagesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 流量包总个数
+		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 流量包详情
+		TrafficPackages []*TrafficPackage `json:"TrafficPackages,omitempty" name:"TrafficPackages" list`
+
+		// 即将过期的流量包个数（7天内）
+		ExpiringCount *int64 `json:"ExpiringCount,omitempty" name:"ExpiringCount"`
+
+		// 有效流量包个数
+		EnabledCount *int64 `json:"EnabledCount,omitempty" name:"EnabledCount"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeTrafficPackagesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeTrafficPackagesResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -654,6 +782,26 @@ func (r *DisableCachesResponse) ToJsonString() string {
 
 func (r *DisableCachesResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
+}
+
+type DomainLog struct {
+
+	// 日志包起始时间
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 日志包结束时间
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 日志包下载链接
+	LogPath *string `json:"LogPath,omitempty" name:"LogPath"`
+
+	// 日志包对应加速区域
+	// mainland：境内
+	// overseas：境外
+	Area *string `json:"Area,omitempty" name:"Area"`
+
+	// 日志包文件名
+	LogName *string `json:"LogName,omitempty" name:"LogName"`
 }
 
 type EnableCachesRequest struct {
@@ -855,10 +1003,12 @@ type MapInfo struct {
 type PurgePathCacheRequest struct {
 	*tchttp.BaseRequest
 
-	// 要刷新的目录列表，必须包含协议头部。
+	// 目录列表，需要包含协议头部 http:// 或 https://
 	Paths []*string `json:"Paths,omitempty" name:"Paths" list`
 
-	// 刷新类型，flush 代表刷新有更新的资源，delete 表示刷新全部资源。
+	// 刷新类型
+	// flush：刷新产生更新的资源
+	// delete：刷新全部资源
 	FlushType *string `json:"FlushType,omitempty" name:"FlushType"`
 }
 
@@ -875,7 +1025,7 @@ type PurgePathCacheResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 刷新任务Id，前十位为提交任务时的UTC时间。
+		// 刷新任务 ID，同一批次提交的目录共用一个任务 ID
 		TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -894,19 +1044,26 @@ func (r *PurgePathCacheResponse) FromJsonString(s string) error {
 
 type PurgeTask struct {
 
-	// 刷新任务ID。
+	// 刷新任务 ID
 	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
 
-	// 刷新Url。
+	// 刷新 URL
 	Url *string `json:"Url,omitempty" name:"Url"`
 
-	// 刷新任务状态，fail表示失败，done表示成功，process表示刷新中。
+	// 刷新任务状态
+	// fail：刷新失败
+	// done：刷新成功
+	// process：刷新中
 	Status *string `json:"Status,omitempty" name:"Status"`
 
-	// 刷新类型，url表示url刷新，path表示目录刷新。
+	// 刷新类型
+	// url：URL 刷新
+	// path：目录刷新
 	PurgeType *string `json:"PurgeType,omitempty" name:"PurgeType"`
 
-	// 刷新资源方式，flush代表刷新更新资源，delete代表刷新全部资源。
+	// 刷新方式
+	// flush：刷新更新资源（仅目录刷新时有此类型）
+	// delete：刷新全部资源
 	FlushType *string `json:"FlushType,omitempty" name:"FlushType"`
 
 	// 刷新任务提交时间
@@ -916,7 +1073,7 @@ type PurgeTask struct {
 type PurgeUrlsCacheRequest struct {
 	*tchttp.BaseRequest
 
-	// 要刷新的Url列表，必须包含协议头部。
+	// URL 列表，需要包含协议头部 http:// 或 https://
 	Urls []*string `json:"Urls,omitempty" name:"Urls" list`
 }
 
@@ -933,7 +1090,7 @@ type PurgeUrlsCacheResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 刷新任务Id，前十位为提交任务时的UTC时间。
+		// 刷新任务 ID，同一批次提交的 URL 共用一个任务 ID
 		TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -952,33 +1109,47 @@ func (r *PurgeUrlsCacheResponse) FromJsonString(s string) error {
 
 type PushTask struct {
 
-	// 预热任务Id，前十位为时间戳。
+	// 预热任务 ID
 	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
 
-	// 预热Url。
+	// 预热 URL
 	Url *string `json:"Url,omitempty" name:"Url"`
 
-	// 预热任务状态，fail表示失败，done表示成功，process表示预热中。
+	// 预热任务状态
+	// fail：预热失败
+	// done：预热成功
+	// process：预热中
 	Status *string `json:"Status,omitempty" name:"Status"`
 
-	// 预热百分比。
+	// 预热进度百分比
 	Percent *int64 `json:"Percent,omitempty" name:"Percent"`
 
-	// 预热任务提交时间。
+	// 预热任务提交时间
 	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
 
-	// 预热区域，mainland，overseas或global。
+	// 预热区域
+	// mainland：境内
+	// overseas：境外
+	// global：全球
 	Area *string `json:"Area,omitempty" name:"Area"`
 }
 
 type PushUrlsCacheRequest struct {
 	*tchttp.BaseRequest
 
-	// URL 列表，提交时需要包含协议头部（http:// 或 https://）
+	// URL 列表，需要包含协议头部 http:// 或 https://
 	Urls []*string `json:"Urls,omitempty" name:"Urls" list`
 
-	// 预热请求回源时 HTTP 请求的 User-Agent 头部，默认为 TencentCdn
+	// 指定预热请求回源时 HTTP 请求的 User-Agent 头部
+	// 默认为 TencentCdn
 	UserAgent *string `json:"UserAgent,omitempty" name:"UserAgent"`
+
+	// 预热生效区域
+	// mainland：预热至境内节点
+	// overseas：预热至境外节点
+	// global：预热全球节点
+	// 不填充情况下，默认为 mainland， URL 中域名必须在对应区域启用了加速服务才能提交对应区域的预热任务
+	Area *string `json:"Area,omitempty" name:"Area"`
 }
 
 func (r *PushUrlsCacheRequest) ToJsonString() string {
@@ -994,7 +1165,7 @@ type PushUrlsCacheResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 此批次提交任务对应的 Id，值唯一
+		// 此批提交的任务 ID
 		TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -1088,6 +1259,45 @@ type TopDetailData struct {
 
 	// 数据值
 	Value *float64 `json:"Value,omitempty" name:"Value"`
+}
+
+type TrafficPackage struct {
+
+	// 流量包 Id
+	Id *int64 `json:"Id,omitempty" name:"Id"`
+
+	// 流量包类型
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 流量包大小（单位为 Byte）
+	Bytes *int64 `json:"Bytes,omitempty" name:"Bytes"`
+
+	// 已消耗流量（单位为 Byte）
+	BytesUsed *int64 `json:"BytesUsed,omitempty" name:"BytesUsed"`
+
+	// 流量包状态
+	// enabled：已启用
+	// expired：已过期
+	// disabled：未启用
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 流量包发放时间
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 流量包生效时间
+	EnableTime *string `json:"EnableTime,omitempty" name:"EnableTime"`
+
+	// 流量包过期时间
+	ExpireTime *string `json:"ExpireTime,omitempty" name:"ExpireTime"`
+
+	// 流量包是否续订
+	ContractExtension *bool `json:"ContractExtension,omitempty" name:"ContractExtension"`
+
+	// 流量包是否自动续订
+	AutoExtension *bool `json:"AutoExtension,omitempty" name:"AutoExtension"`
+
+	// 流量包来源
+	Channel *string `json:"Channel,omitempty" name:"Channel"`
 }
 
 type UrlRecord struct {

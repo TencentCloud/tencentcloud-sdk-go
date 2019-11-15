@@ -747,6 +747,9 @@ type EstateCertOCRResponse struct {
 		// 图片旋转角度
 		Angle *float64 `json:"Angle,omitempty" name:"Angle"`
 
+		// 不动产权号
+		Number *string `json:"Number,omitempty" name:"Number"`
+
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
@@ -1553,6 +1556,21 @@ func (r *InvoiceGeneralOCRResponse) ToJsonString() string {
 
 func (r *InvoiceGeneralOCRResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
+}
+
+type ItemCoord struct {
+
+	// 左上角x
+	X *int64 `json:"X,omitempty" name:"X"`
+
+	// 左上角y
+	Y *int64 `json:"Y,omitempty" name:"Y"`
+
+	// 宽width
+	Width *int64 `json:"Width,omitempty" name:"Width"`
+
+	// 高height
+	Height *int64 `json:"Height,omitempty" name:"Height"`
 }
 
 type LicensePlateOCRRequest struct {
@@ -2471,12 +2489,29 @@ type TextArithmetic struct {
 	// 保留字段，暂不支持
 	Confidence *int64 `json:"Confidence,omitempty" name:"Confidence"`
 
-	// 文本行坐标，以四个顶点坐标表示（保留字段，暂不支持）
+	// 原图文本行坐标，以四个顶点坐标表示（保留字段，暂不支持）
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Polygon []*Coord `json:"Polygon,omitempty" name:"Polygon" list`
 
 	// 保留字段，暂不支持
 	AdvancedInfo *string `json:"AdvancedInfo,omitempty" name:"AdvancedInfo"`
+
+	// 文本行在旋转纠正之后的图像中的像素坐标，表示为（左上角x, 左上角y，宽width，高height）
+	ItemCoord *ItemCoord `json:"ItemCoord,omitempty" name:"ItemCoord"`
+
+	// 算式题型编号：
+	// ‘1’: 加减乘除四则
+	// ‘2’: 加减乘除已知结果求运算因子
+	// ‘3’: 判断大小
+	// ‘4’: 约等于估算
+	// ‘5’: 带余数除法
+	// ‘6’: 分数四则运算
+	// ‘7’: 单位换算
+	// ‘8’: 竖式加减法
+	// ‘9’: 竖式乘除法
+	// ‘10’: 脱式计算
+	// ‘11’: 解方程
+	ExpressionType *string `json:"ExpressionType,omitempty" name:"ExpressionType"`
 }
 
 type TextDetectRequest struct {

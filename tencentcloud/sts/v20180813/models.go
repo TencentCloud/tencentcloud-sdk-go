@@ -146,7 +146,7 @@ type Credentials struct {
 type GetFederationTokenRequest struct {
 	*tchttp.BaseRequest
 
-	// 联合身份用户昵称
+	// 调用方英文名称，由字母组成。
 	Name *string `json:"Name,omitempty" name:"Name"`
 
 	// 策略描述
@@ -156,7 +156,7 @@ type GetFederationTokenRequest struct {
 	// 3、策略中不能包含 principal 元素。
 	Policy *string `json:"Policy,omitempty" name:"Policy"`
 
-	// 指定临时证书的有效期，单位：秒，默认1800秒，最长可设定有效期为7200秒
+	// 指定临时证书的有效期，单位：秒，默认1800秒，最长可设定有效期为7200秒。
 	DurationSeconds *uint64 `json:"DurationSeconds,omitempty" name:"DurationSeconds"`
 }
 

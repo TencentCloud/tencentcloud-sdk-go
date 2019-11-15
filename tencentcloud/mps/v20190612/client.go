@@ -578,31 +578,6 @@ func (c *Client) DescribeTranscodeTemplates(request *DescribeTranscodeTemplatesR
     return
 }
 
-func NewDescribeUserInfoRequest() (request *DescribeUserInfoRequest) {
-    request = &DescribeUserInfoRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    request.Init().WithApiInfo("mps", APIVersion, "DescribeUserInfo")
-    return
-}
-
-func NewDescribeUserInfoResponse() (response *DescribeUserInfoResponse) {
-    response = &DescribeUserInfoResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    }
-    return
-}
-
-// 用户服务信息查询，返回用户状态和计费类型；若未注册则返回相应错误提示。
-func (c *Client) DescribeUserInfo(request *DescribeUserInfoRequest) (response *DescribeUserInfoResponse, err error) {
-    if request == nil {
-        request = NewDescribeUserInfoRequest()
-    }
-    response = NewDescribeUserInfoResponse()
-    err = c.Send(request, response)
-    return
-}
-
 func NewDescribeWatermarkTemplatesRequest() (request *DescribeWatermarkTemplatesRequest) {
     request = &DescribeWatermarkTemplatesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -853,6 +828,58 @@ func (c *Client) ModifyWatermarkTemplate(request *ModifyWatermarkTemplateRequest
     return
 }
 
+func NewParseLiveStreamProcessNotificationRequest() (request *ParseLiveStreamProcessNotificationRequest) {
+    request = &ParseLiveStreamProcessNotificationRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("mps", APIVersion, "ParseLiveStreamProcessNotification")
+    return
+}
+
+func NewParseLiveStreamProcessNotificationResponse() (response *ParseLiveStreamProcessNotificationResponse) {
+    response = &ParseLiveStreamProcessNotificationResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 从 CMQ 获取到消息后，从消息的 msgBody 字段中解析出 MPS 直播流处理事件通知的内容。
+// 该接口不用于发起网络调用，而是用来帮助生成各个语言平台的 SDK，您可以参考 SDK 的中解析函数的实现事件通知的解析。
+func (c *Client) ParseLiveStreamProcessNotification(request *ParseLiveStreamProcessNotificationRequest) (response *ParseLiveStreamProcessNotificationResponse, err error) {
+    if request == nil {
+        request = NewParseLiveStreamProcessNotificationRequest()
+    }
+    response = NewParseLiveStreamProcessNotificationResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewParseNotificationRequest() (request *ParseNotificationRequest) {
+    request = &ParseNotificationRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("mps", APIVersion, "ParseNotification")
+    return
+}
+
+func NewParseNotificationResponse() (response *ParseNotificationResponse) {
+    response = &ParseNotificationResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 从 CMQ 获取到消息后，从消息的 msgBody 字段中解析出 MPS 事件通知的内容。
+// 该接口不用于发起网络调用，而是用来帮助生成各个语言平台的 SDK，您可以参考 SDK 的中解析函数的实现事件通知的解析。
+func (c *Client) ParseNotification(request *ParseNotificationRequest) (response *ParseNotificationResponse, err error) {
+    if request == nil {
+        request = NewParseNotificationRequest()
+    }
+    response = NewParseNotificationResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewProcessLiveMediaRequest() (request *ProcessLiveMediaRequest) {
     request = &ProcessLiveMediaRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -879,6 +906,35 @@ func (c *Client) ProcessLiveMedia(request *ProcessLiveMediaRequest) (response *P
         request = NewProcessLiveMediaRequest()
     }
     response = NewProcessLiveMediaResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewProcessLiveStreamRequest() (request *ProcessLiveStreamRequest) {
+    request = &ProcessLiveStreamRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("mps", APIVersion, "ProcessLiveStream")
+    return
+}
+
+func NewProcessLiveStreamResponse() (response *ProcessLiveStreamResponse) {
+    response = &ProcessLiveStreamResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 对直播流媒体发起处理任务，功能包括：
+// 
+// * 智能内容审核（画面鉴黄、鉴政、鉴暴、声音鉴黄）。
+// 
+// 直播流处理事件通知实时写入用户指定的消息队列 CMQ 中，用户需要从消息队列 CMQ 中获取事件通知结果，同时处理过程中存在输出文件的，会写入用户指定的输出文件的目标存储中。
+func (c *Client) ProcessLiveStream(request *ProcessLiveStreamRequest) (response *ProcessLiveStreamResponse, err error) {
+    if request == nil {
+        request = NewProcessLiveStreamRequest()
+    }
+    response = NewProcessLiveStreamResponse()
     err = c.Send(request, response)
     return
 }

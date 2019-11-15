@@ -72,6 +72,9 @@ type TextProcessRequest struct {
 
 	// 平台类型，{小程序：MiniProgram；小微：XiaoWei；公众号：OfficialAccount；企业微信: WXWork}。
 	PlatformType *string `json:"PlatformType,omitempty" name:"PlatformType"`
+
+	// 当PlatformType为微信公众号或企业微信时，传递对应微信公众号或企业微信的唯一标识
+	PlatformId *string `json:"PlatformId,omitempty" name:"PlatformId"`
 }
 
 func (r *TextProcessRequest) ToJsonString() string {
@@ -147,6 +150,9 @@ type TextResetRequest struct {
 
 	// 平台类型，{小程序：MiniProgram；小微：XiaoWei；公众号：OfficialAccount；企业微信: WXWork}。
 	PlatformType *string `json:"PlatformType,omitempty" name:"PlatformType"`
+
+	// 当PlatformType为微信公众号或企业微信时，传递对应微信公众号或企业微信的唯一标识
+	PlatformId *string `json:"PlatformId,omitempty" name:"PlatformId"`
 }
 
 func (r *TextResetRequest) ToJsonString() string {
