@@ -256,6 +256,15 @@ type Certificate struct {
 	SubjectCN *string `json:"SubjectCN,omitempty" name:"SubjectCN"`
 }
 
+type CertificateAliasInfo struct {
+
+	// 证书ID
+	CertificateId *string `json:"CertificateId,omitempty" name:"CertificateId"`
+
+	// 证书别名
+	CertificateAlias *string `json:"CertificateAlias,omitempty" name:"CertificateAlias"`
+}
+
 type CertificateDetail struct {
 
 	// 证书ID。
@@ -500,6 +509,61 @@ func (r *CreateCertificateResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type CreateDomainErrorPageInfoRequest struct {
+	*tchttp.BaseRequest
+
+	// 监听器ID
+	ListenerId *string `json:"ListenerId,omitempty" name:"ListenerId"`
+
+	// 域名
+	Domain *string `json:"Domain,omitempty" name:"Domain"`
+
+	// 原始错误码
+	ErrorNos []*int64 `json:"ErrorNos,omitempty" name:"ErrorNos" list`
+
+	// 新的响应包体
+	Body *string `json:"Body,omitempty" name:"Body"`
+
+	// 新错误码
+	NewErrorNo *int64 `json:"NewErrorNo,omitempty" name:"NewErrorNo"`
+
+	// 需要删除的响应头
+	ClearHeaders []*string `json:"ClearHeaders,omitempty" name:"ClearHeaders" list`
+
+	// 需要设置的响应头
+	SetHeaders []*HttpHeaderParam `json:"SetHeaders,omitempty" name:"SetHeaders" list`
+}
+
+func (r *CreateDomainErrorPageInfoRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateDomainErrorPageInfoRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateDomainErrorPageInfoResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 错误定制响应的配置ID
+		ErrorPageId *string `json:"ErrorPageId,omitempty" name:"ErrorPageId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateDomainErrorPageInfoResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateDomainErrorPageInfoResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type CreateDomainRequest struct {
 	*tchttp.BaseRequest
 
@@ -513,8 +577,12 @@ type CreateDomainRequest struct {
 	CertificateId *string `json:"CertificateId,omitempty" name:"CertificateId"`
 
 	// 客户端CA证书，用于客户端与GAAP的HTTPS的交互。
-	// 仅当采用双向认证的方式时，需要设置该字段。
+	// 仅当采用双向认证的方式时，需要设置该字段或PolyClientCertificateIds字段。
 	ClientCertificateId *string `json:"ClientCertificateId,omitempty" name:"ClientCertificateId"`
+
+	// 客户端CA证书，用于客户端与GAAP的HTTPS的交互。
+	// 仅当采用双向认证的方式时，需要设置该字段或ClientCertificateId字段。
+	PolyClientCertificateIds []*string `json:"PolyClientCertificateIds,omitempty" name:"PolyClientCertificateIds" list`
 }
 
 func (r *CreateDomainRequest) ToJsonString() string {
@@ -611,8 +679,11 @@ type CreateHTTPSListenerRequest struct {
 	// 默认使用单向认证。
 	AuthType *uint64 `json:"AuthType,omitempty" name:"AuthType"`
 
-	// 客户端CA证书ID，仅当双向认证时设置该参数。
+	// 客户端CA单证书ID，仅当双向认证时设置该参数或PolyClientCertificateIds参数
 	ClientCertificateId *string `json:"ClientCertificateId,omitempty" name:"ClientCertificateId"`
+
+	// 新的客户端多CA证书ID，仅当双向认证时设置该参数或设置ClientCertificateId参数
+	PolyClientCertificateIds []*string `json:"PolyClientCertificateIds,omitempty" name:"PolyClientCertificateIds" list`
 }
 
 func (r *CreateHTTPSListenerRequest) ToJsonString() string {
@@ -1089,6 +1160,40 @@ func (r *DeleteCertificateResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DeleteDomainErrorPageInfoRequest struct {
+	*tchttp.BaseRequest
+
+	// 定制错误响应页的唯一ID，请参考CreateDomainErrorPageInfo的响应
+	ErrorPageId *string `json:"ErrorPageId,omitempty" name:"ErrorPageId"`
+}
+
+func (r *DeleteDomainErrorPageInfoRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteDomainErrorPageInfoRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteDomainErrorPageInfoResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DeleteDomainErrorPageInfoResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteDomainErrorPageInfoResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DeleteDomainRequest struct {
 	*tchttp.BaseRequest
 
@@ -1562,6 +1667,47 @@ func (r *DescribeDestRegionsResponse) ToJsonString() string {
 }
 
 func (r *DescribeDestRegionsResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeDomainErrorPageInfoRequest struct {
+	*tchttp.BaseRequest
+
+	// 监听器ID
+	ListenerId *string `json:"ListenerId,omitempty" name:"ListenerId"`
+
+	// 域名
+	Domain *string `json:"Domain,omitempty" name:"Domain"`
+}
+
+func (r *DescribeDomainErrorPageInfoRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeDomainErrorPageInfoRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeDomainErrorPageInfoResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 订制错误响应配置集
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		ErrorPageSet []*DomainErrorPageInfo `json:"ErrorPageSet,omitempty" name:"ErrorPageSet" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeDomainErrorPageInfoResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeDomainErrorPageInfoResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -2823,6 +2969,37 @@ type DomainAccessRegionDict struct {
 	RegionName *string `json:"RegionName,omitempty" name:"RegionName"`
 }
 
+type DomainErrorPageInfo struct {
+
+	// 错误定制响应的配置ID
+	ErrorPageId *string `json:"ErrorPageId,omitempty" name:"ErrorPageId"`
+
+	// 监听器ID
+	ListenerId *string `json:"ListenerId,omitempty" name:"ListenerId"`
+
+	// 域名
+	Domain *string `json:"Domain,omitempty" name:"Domain"`
+
+	// 原始错误码
+	ErrorNos []*int64 `json:"ErrorNos,omitempty" name:"ErrorNos" list`
+
+	// 新的错误码
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NewErrorNo *int64 `json:"NewErrorNo,omitempty" name:"NewErrorNo"`
+
+	// 需要清理的响应头
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClearHeaders []*string `json:"ClearHeaders,omitempty" name:"ClearHeaders" list`
+
+	// 需要设置的响应头
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SetHeaders []*HttpHeaderParam `json:"SetHeaders,omitempty" name:"SetHeaders" list`
+
+	// 设置的响应体(不包括 http头)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Body *string `json:"Body,omitempty" name:"Body"`
+}
+
 type DomainRuleSet struct {
 
 	// 转发规则域名。
@@ -2892,6 +3069,10 @@ type DomainRuleSet struct {
 	// 源站认证域名。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RealServerCertificateDomain *string `json:"RealServerCertificateDomain,omitempty" name:"RealServerCertificateDomain"`
+
+	// 多客户端证书时，返回多个证书的id和列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PolyClientCertificateAliasInfo []*CertificateAliasInfo `json:"PolyClientCertificateAliasInfo,omitempty" name:"PolyClientCertificateAliasInfo" list`
 }
 
 type Filter struct {
@@ -2989,6 +3170,19 @@ type HTTPSListener struct {
 	// 客户端CA证书别名
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ClientCertificateAlias *string `json:"ClientCertificateAlias,omitempty" name:"ClientCertificateAlias"`
+
+	// 多客户端CA证书别名信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PolyClientCertificateAliasInfo []*CertificateAliasInfo `json:"PolyClientCertificateAliasInfo,omitempty" name:"PolyClientCertificateAliasInfo" list`
+}
+
+type HttpHeaderParam struct {
+
+	// HTTP头名
+	HeaderName *string `json:"HeaderName,omitempty" name:"HeaderName"`
+
+	// HTTP头值
+	HeaderValue *string `json:"HeaderValue,omitempty" name:"HeaderValue"`
 }
 
 type InquiryPriceCreateProxyRequest struct {
@@ -3128,8 +3322,12 @@ type ModifyCertificateRequest struct {
 
 	// 新的客户端证书ID。其中：
 	// 当ClientCertificateId=default时，表示使用监听器的证书。
-	// 仅当采用双向认证方式时，需要设置该参数。
+	// 仅当采用双向认证方式时，需要设置该参数或者PolyClientCertificateIds。
 	ClientCertificateId *string `json:"ClientCertificateId,omitempty" name:"ClientCertificateId"`
+
+	// 新的多客户端证书ID列表。其中：
+	// 仅当采用双向认证方式时，需要设置该参数或ClientCertificateId参数。
+	PolyClientCertificateIds []*string `json:"PolyClientCertificateIds,omitempty" name:"PolyClientCertificateIds" list`
 }
 
 func (r *ModifyCertificateRequest) ToJsonString() string {
@@ -3177,11 +3375,17 @@ type ModifyDomainRequest struct {
 	// 其他情况，使用该CertificateId指定的证书。
 	CertificateId *string `json:"CertificateId,omitempty" name:"CertificateId"`
 
-	// 客户端CA证书ID，，仅适用于version3.0的通道。其中：
-	// 不带该字段时，表示使用原证书；
+	// 客户端CA证书ID，仅适用于version3.0的通道。其中：
+	// 不带该字段和PolyClientCertificateIds时，表示使用原证书；
 	// 携带该字段时并且ClientCertificateId=default，表示使用监听器证书；
-	// 其他情况，使用该ClientCertificateId指定的证书。
+	// 其他情况，使用该ClientCertificateId或PolyClientCertificateIds指定的证书。
 	ClientCertificateId *string `json:"ClientCertificateId,omitempty" name:"ClientCertificateId"`
+
+	// 客户端CA证书ID，仅适用于version3.0的通道。其中：
+	// 不带该字段和ClientCertificateId时，表示使用原证书；
+	// 携带该字段时并且ClientCertificateId=default，表示使用监听器证书；
+	// 其他情况，使用该ClientCertificateId或PolyClientCertificateIds指定的证书。
+	PolyClientCertificateIds []*string `json:"PolyClientCertificateIds,omitempty" name:"PolyClientCertificateIds" list`
 }
 
 func (r *ModifyDomainRequest) ToJsonString() string {
@@ -3303,14 +3507,17 @@ type ModifyHTTPSListenerAttributeRequest struct {
 	// 修改后的监听器名称
 	ListenerName *string `json:"ListenerName,omitempty" name:"ListenerName"`
 
-	// 监听器后端转发源站协议类型
+	// 监听器后端转发与源站之间的协议类型
 	ForwardProtocol *string `json:"ForwardProtocol,omitempty" name:"ForwardProtocol"`
 
 	// 修改后的监听器服务器证书ID
 	CertificateId *string `json:"CertificateId,omitempty" name:"CertificateId"`
 
-	// 修改后的监听器客户端证书ID
+	// 修改后的监听器客户端证书ID，不支持多客户端证书，多客户端证书新采用PolyClientCertificateIds字段
 	ClientCertificateId *string `json:"ClientCertificateId,omitempty" name:"ClientCertificateId"`
+
+	// 新字段,修改后的监听器客户端证书ID
+	PolyClientCertificateIds []*string `json:"PolyClientCertificateIds,omitempty" name:"PolyClientCertificateIds" list`
 }
 
 func (r *ModifyHTTPSListenerAttributeRequest) ToJsonString() string {
@@ -4023,6 +4230,10 @@ type ProxyInfo struct {
 	// 标签列表，不存在标签时，该字段为空列表。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TagSet []*TagPair `json:"TagSet,omitempty" name:"TagSet" list`
+
+	// 是否支持安全组配置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SupportSecurity *int64 `json:"SupportSecurity,omitempty" name:"SupportSecurity"`
 }
 
 type ProxySimpleInfo struct {

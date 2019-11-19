@@ -245,6 +245,31 @@ func (c *Client) CreateDomain(request *CreateDomainRequest) (response *CreateDom
     return
 }
 
+func NewCreateDomainErrorPageInfoRequest() (request *CreateDomainErrorPageInfoRequest) {
+    request = &CreateDomainErrorPageInfoRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("gaap", APIVersion, "CreateDomainErrorPageInfo")
+    return
+}
+
+func NewCreateDomainErrorPageInfoResponse() (response *CreateDomainErrorPageInfoResponse) {
+    response = &CreateDomainErrorPageInfoResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 定制域名指定错误码的错误响应
+func (c *Client) CreateDomainErrorPageInfo(request *CreateDomainErrorPageInfoRequest) (response *CreateDomainErrorPageInfoResponse, err error) {
+    if request == nil {
+        request = NewCreateDomainErrorPageInfoRequest()
+    }
+    response = NewCreateDomainErrorPageInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateHTTPListenerRequest() (request *CreateHTTPListenerRequest) {
     request = &CreateHTTPListenerRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -545,6 +570,31 @@ func (c *Client) DeleteDomain(request *DeleteDomainRequest) (response *DeleteDom
     return
 }
 
+func NewDeleteDomainErrorPageInfoRequest() (request *DeleteDomainErrorPageInfoRequest) {
+    request = &DeleteDomainErrorPageInfoRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("gaap", APIVersion, "DeleteDomainErrorPageInfo")
+    return
+}
+
+func NewDeleteDomainErrorPageInfoResponse() (response *DeleteDomainErrorPageInfoResponse) {
+    response = &DeleteDomainErrorPageInfoResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 删除域名的定制错误
+func (c *Client) DeleteDomainErrorPageInfo(request *DeleteDomainErrorPageInfoRequest) (response *DeleteDomainErrorPageInfoResponse, err error) {
+    if request == nil {
+        request = NewDeleteDomainErrorPageInfoRequest()
+    }
+    response = NewDeleteDomainErrorPageInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteListenersRequest() (request *DeleteListenersRequest) {
     request = &DeleteListenersRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -816,6 +866,31 @@ func (c *Client) DescribeDestRegions(request *DescribeDestRegionsRequest) (respo
         request = NewDescribeDestRegionsRequest()
     }
     response = NewDescribeDestRegionsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeDomainErrorPageInfoRequest() (request *DescribeDomainErrorPageInfoRequest) {
+    request = &DescribeDomainErrorPageInfoRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("gaap", APIVersion, "DescribeDomainErrorPageInfo")
+    return
+}
+
+func NewDescribeDomainErrorPageInfoResponse() (response *DescribeDomainErrorPageInfoResponse) {
+    response = &DescribeDomainErrorPageInfoResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询目前订制域名的错误响应
+func (c *Client) DescribeDomainErrorPageInfo(request *DescribeDomainErrorPageInfoRequest) (response *DescribeDomainErrorPageInfoResponse, err error) {
+    if request == nil {
+        request = NewDescribeDomainErrorPageInfoRequest()
+    }
+    response = NewDescribeDomainErrorPageInfoResponse()
     err = c.Send(request, response)
     return
 }
