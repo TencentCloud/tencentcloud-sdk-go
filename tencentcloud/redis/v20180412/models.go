@@ -547,6 +547,107 @@ func (r *DescribeInstanceBackupsResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeInstanceDTSInfoRequest struct {
+	*tchttp.BaseRequest
+
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+}
+
+func (r *DescribeInstanceDTSInfoRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeInstanceDTSInfoRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeInstanceDTSInfoResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// DTS任务ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		JobId *string `json:"JobId,omitempty" name:"JobId"`
+
+		// DTS任务名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		JobName *string `json:"JobName,omitempty" name:"JobName"`
+
+		// 状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Status *int64 `json:"Status,omitempty" name:"Status"`
+
+		// 状态描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		StatusDesc *string `json:"StatusDesc,omitempty" name:"StatusDesc"`
+
+		// 同步时延，单位：字节
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+		// 断开时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		CutDownTime *string `json:"CutDownTime,omitempty" name:"CutDownTime"`
+
+		// 源实例信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		SrcInfo *DescribeInstanceDTSInstanceInfo `json:"SrcInfo,omitempty" name:"SrcInfo"`
+
+		// 目标实例信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		DstInfo *DescribeInstanceDTSInstanceInfo `json:"DstInfo,omitempty" name:"DstInfo"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeInstanceDTSInfoResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeInstanceDTSInfoResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeInstanceDTSInstanceInfo struct {
+
+	// 地域ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RegionId *int64 `json:"RegionId,omitempty" name:"RegionId"`
+
+	// 实例ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 仓库ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SetId *int64 `json:"SetId,omitempty" name:"SetId"`
+
+	// 可用区ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ZoneId *int64 `json:"ZoneId,omitempty" name:"ZoneId"`
+
+	// 实例类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Type *int64 `json:"Type,omitempty" name:"Type"`
+
+	// 实例名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceName *string `json:"InstanceName,omitempty" name:"InstanceName"`
+
+	// 实例访问地址
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Vip *string `json:"Vip,omitempty" name:"Vip"`
+
+	// 状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *int64 `json:"Status,omitempty" name:"Status"`
+}
+
 type DescribeInstanceDealDetailRequest struct {
 	*tchttp.BaseRequest
 
@@ -1354,6 +1455,70 @@ func (r *DescribeTaskInfoResponse) ToJsonString() string {
 }
 
 func (r *DescribeTaskInfoResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeTaskListRequest struct {
+	*tchttp.BaseRequest
+
+	// 实例Id
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 实例名称
+	InstanceName *string `json:"InstanceName,omitempty" name:"InstanceName"`
+
+	// 分页大小
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 偏移量，取Limit整数倍（自动向下取整）
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 项目Id
+	ProjectIds []*int64 `json:"ProjectIds,omitempty" name:"ProjectIds" list`
+
+	// 任务类型
+	TaskTypes []*string `json:"TaskTypes,omitempty" name:"TaskTypes" list`
+
+	// 起始时间
+	BeginTime *string `json:"BeginTime,omitempty" name:"BeginTime"`
+
+	// 终止时间
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 任务状态
+	TaskStatus []*int64 `json:"TaskStatus,omitempty" name:"TaskStatus" list`
+}
+
+func (r *DescribeTaskListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeTaskListRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeTaskListResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 任务总数
+		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 任务详细信息
+		Tasks []*TaskInfoDetail `json:"Tasks,omitempty" name:"Tasks" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeTaskListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeTaskListResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -2540,6 +2705,45 @@ func (r *SwitchInstanceVipResponse) ToJsonString() string {
 
 func (r *SwitchInstanceVipResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
+}
+
+type TaskInfoDetail struct {
+
+	// 任务Id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskId *int64 `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 开始时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 任务类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskType *string `json:"TaskType,omitempty" name:"TaskType"`
+
+	// 实例名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceName *string `json:"InstanceName,omitempty" name:"InstanceName"`
+
+	// 实例Id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 项目Id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProjectId *int64 `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 任务进度
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Progress *float64 `json:"Progress,omitempty" name:"Progress"`
+
+	// 结束时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 任务状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Result *int64 `json:"Result,omitempty" name:"Result"`
 }
 
 type TradeDealDetail struct {
