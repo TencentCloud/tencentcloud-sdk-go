@@ -1099,6 +1099,53 @@ func (r *CreatePublicConfigResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type CreateServerlessGroupRequest struct {
+	*tchttp.BaseRequest
+
+	// 分组所属应用ID
+	ApplicationId *string `json:"ApplicationId,omitempty" name:"ApplicationId"`
+
+	// 分组名称字段，长度1~60，字母或下划线开头，可包含字母数字下划线
+	GroupName *string `json:"GroupName,omitempty" name:"GroupName"`
+
+	// 程序包Id
+	PkgId *string `json:"PkgId,omitempty" name:"PkgId"`
+
+	// VpcConfig对象
+	VpcConfig *VpcConfig `json:"VpcConfig,omitempty" name:"VpcConfig"`
+}
+
+func (r *CreateServerlessGroupRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateServerlessGroupRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateServerlessGroupResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 创建成功的部署组ID，返回null表示失败
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Result *string `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateServerlessGroupResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateServerlessGroupResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DeleteApplicationRequest struct {
 	*tchttp.BaseRequest
 
@@ -1456,6 +1503,43 @@ func (r *DeletePublicConfigResponse) ToJsonString() string {
 }
 
 func (r *DeletePublicConfigResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteServerlessGroupRequest struct {
+	*tchttp.BaseRequest
+
+	// groupId，分组唯一标识
+	GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
+}
+
+func (r *DeleteServerlessGroupRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteServerlessGroupRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteServerlessGroupResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 结果true：成功；false：失败。
+		Result *bool `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DeleteServerlessGroupResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteServerlessGroupResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -2764,6 +2848,97 @@ func (r *DescribeReleasedConfigResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeServerlessGroupRequest struct {
+	*tchttp.BaseRequest
+
+	// 部署组ID
+	GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
+}
+
+func (r *DescribeServerlessGroupRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeServerlessGroupRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeServerlessGroupResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 结果
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Result *ServerlessGroup `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeServerlessGroupResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeServerlessGroupResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeServerlessGroupsRequest struct {
+	*tchttp.BaseRequest
+
+	// 分组所属应用ID
+	ApplicationId *string `json:"ApplicationId,omitempty" name:"ApplicationId"`
+
+	// 搜索字段，模糊搜索groupName字段
+	SearchWord *string `json:"SearchWord,omitempty" name:"SearchWord"`
+
+	// 排序字段，默认为 createTime字段，支持id， name， createTime
+	OrderBy *string `json:"OrderBy,omitempty" name:"OrderBy"`
+
+	// 排序方式，默认为1：倒序排序，0：正序，1：倒序
+	OrderType *string `json:"OrderType,omitempty" name:"OrderType"`
+
+	// 偏移量，取值从0开始
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 分页个数，默认为20， 取值应为1~50
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+func (r *DescribeServerlessGroupsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeServerlessGroupsRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeServerlessGroupsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 数据列表对象
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Result *ServerlessGroupPage `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeServerlessGroupsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeServerlessGroupsResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeSimpleApplicationsRequest struct {
 	*tchttp.BaseRequest
 
@@ -3900,6 +4075,72 @@ func (r *RollbackConfigResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type ServerlessGroup struct {
+
+	// 部署组ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
+
+	// 分组名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GroupName *string `json:"GroupName,omitempty" name:"GroupName"`
+
+	// 创建时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 服务状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 程序包ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PkgId *string `json:"PkgId,omitempty" name:"PkgId"`
+
+	// 程序包名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PkgName *string `json:"PkgName,omitempty" name:"PkgName"`
+
+	// 集群id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 集群名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClusterName *string `json:"ClusterName,omitempty" name:"ClusterName"`
+
+	// 命名空间id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NamespaceId *string `json:"NamespaceId,omitempty" name:"NamespaceId"`
+
+	// 命名空间名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NamespaceName *string `json:"NamespaceName,omitempty" name:"NamespaceName"`
+
+	// vpc ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
+
+	// vpc 子网ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
+
+	// 程序包版本
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PkgVersion *string `json:"PkgVersion,omitempty" name:"PkgVersion"`
+}
+
+type ServerlessGroupPage struct {
+
+	// 总记录数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 列表信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Content []*ServerlessGroup `json:"Content,omitempty" name:"Content" list`
+}
+
 type ShrinkGroupRequest struct {
 	*tchttp.BaseRequest
 
@@ -4491,4 +4732,13 @@ type VmGroupSimple struct {
 	// 应用微服务类型
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MicroserviceType *string `json:"MicroserviceType,omitempty" name:"MicroserviceType"`
+}
+
+type VpcConfig struct {
+
+	// VpcId
+	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
+
+	// SubnetId 子网ID
+	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
 }

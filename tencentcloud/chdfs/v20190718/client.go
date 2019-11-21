@@ -58,7 +58,7 @@ func NewCreateAccessGroupResponse() (response *CreateAccessGroupResponse) {
     return
 }
 
-// 创建权限组
+// 创建权限组。
 func (c *Client) CreateAccessGroup(request *CreateAccessGroupRequest) (response *CreateAccessGroupResponse, err error) {
     if request == nil {
         request = NewCreateAccessGroupRequest()
@@ -83,7 +83,7 @@ func NewCreateAccessRulesResponse() (response *CreateAccessRulesResponse) {
     return
 }
 
-// 批量创建权限规则
+// 批量创建权限规则，权限规则ID和创建时间无需填写。
 func (c *Client) CreateAccessRules(request *CreateAccessRulesRequest) (response *CreateAccessRulesResponse, err error) {
     if request == nil {
         request = NewCreateAccessRulesRequest()
@@ -108,7 +108,7 @@ func NewCreateFileSystemResponse() (response *CreateFileSystemResponse) {
     return
 }
 
-// 创建文件系统（异步创建）
+// 创建文件系统（异步）。
 func (c *Client) CreateFileSystem(request *CreateFileSystemRequest) (response *CreateFileSystemResponse, err error) {
     if request == nil {
         request = NewCreateFileSystemRequest()
@@ -133,7 +133,7 @@ func NewCreateMountPointResponse() (response *CreateMountPointResponse) {
     return
 }
 
-// 创建挂载点
+// 创建文件系统挂载点，仅限于创建成功的文件系统。
 func (c *Client) CreateMountPoint(request *CreateMountPointRequest) (response *CreateMountPointResponse, err error) {
     if request == nil {
         request = NewCreateMountPointRequest()
@@ -158,7 +158,7 @@ func NewDeleteAccessGroupResponse() (response *DeleteAccessGroupResponse) {
     return
 }
 
-// 删除权限组
+// 删除权限组。
 func (c *Client) DeleteAccessGroup(request *DeleteAccessGroupRequest) (response *DeleteAccessGroupResponse, err error) {
     if request == nil {
         request = NewDeleteAccessGroupRequest()
@@ -183,7 +183,7 @@ func NewDeleteAccessRulesResponse() (response *DeleteAccessRulesResponse) {
     return
 }
 
-// 批量删除权限规则
+// 批量删除权限规则。
 func (c *Client) DeleteAccessRules(request *DeleteAccessRulesRequest) (response *DeleteAccessRulesResponse, err error) {
     if request == nil {
         request = NewDeleteAccessRulesRequest()
@@ -208,7 +208,7 @@ func NewDeleteFileSystemResponse() (response *DeleteFileSystemResponse) {
     return
 }
 
-// 删除文件系统
+// 删除文件系统，不允许删除非空文件系统。
 func (c *Client) DeleteFileSystem(request *DeleteFileSystemRequest) (response *DeleteFileSystemResponse, err error) {
     if request == nil {
         request = NewDeleteFileSystemRequest()
@@ -233,7 +233,7 @@ func NewDeleteMountPointResponse() (response *DeleteMountPointResponse) {
     return
 }
 
-// 删除挂载点
+// 删除挂载点。
 func (c *Client) DeleteMountPoint(request *DeleteMountPointRequest) (response *DeleteMountPointResponse, err error) {
     if request == nil {
         request = NewDeleteMountPointRequest()
@@ -258,7 +258,7 @@ func NewDescribeAccessGroupsResponse() (response *DescribeAccessGroupsResponse) 
     return
 }
 
-// 查看权限组列表
+// 查看权限组列表。
 func (c *Client) DescribeAccessGroups(request *DescribeAccessGroupsRequest) (response *DescribeAccessGroupsResponse, err error) {
     if request == nil {
         request = NewDescribeAccessGroupsRequest()
@@ -283,7 +283,7 @@ func NewDescribeAccessRulesResponse() (response *DescribeAccessRulesResponse) {
     return
 }
 
-// 查看权限规则列表
+// 通过权限组ID查看权限规则列表。
 func (c *Client) DescribeAccessRules(request *DescribeAccessRulesRequest) (response *DescribeAccessRulesResponse, err error) {
     if request == nil {
         request = NewDescribeAccessRulesRequest()
@@ -308,7 +308,7 @@ func NewDescribeFileSystemResponse() (response *DescribeFileSystemResponse) {
     return
 }
 
-// 查看文件系统详细信息
+// 查看文件系统详细信息。
 func (c *Client) DescribeFileSystem(request *DescribeFileSystemRequest) (response *DescribeFileSystemResponse, err error) {
     if request == nil {
         request = NewDescribeFileSystemRequest()
@@ -333,7 +333,7 @@ func NewDescribeFileSystemsResponse() (response *DescribeFileSystemsResponse) {
     return
 }
 
-// 查看文件系统列表
+// 查看文件系统列表。
 func (c *Client) DescribeFileSystems(request *DescribeFileSystemsRequest) (response *DescribeFileSystemsResponse, err error) {
     if request == nil {
         request = NewDescribeFileSystemsRequest()
@@ -358,7 +358,7 @@ func NewDescribeMountPointResponse() (response *DescribeMountPointResponse) {
     return
 }
 
-// 查看挂载点详细信息
+// 查看挂载点详细信息。
 func (c *Client) DescribeMountPoint(request *DescribeMountPointRequest) (response *DescribeMountPointResponse, err error) {
     if request == nil {
         request = NewDescribeMountPointRequest()
@@ -383,7 +383,7 @@ func NewDescribeMountPointsResponse() (response *DescribeMountPointsResponse) {
     return
 }
 
-// 查看挂载点列表
+// 通过文件系统ID或者权限组ID查看挂载点列表。
 func (c *Client) DescribeMountPoints(request *DescribeMountPointsRequest) (response *DescribeMountPointsResponse, err error) {
     if request == nil {
         request = NewDescribeMountPointsRequest()
@@ -408,7 +408,7 @@ func NewModifyAccessGroupResponse() (response *ModifyAccessGroupResponse) {
     return
 }
 
-// 修改权限组属性
+// 修改权限组属性。
 func (c *Client) ModifyAccessGroup(request *ModifyAccessGroupRequest) (response *ModifyAccessGroupResponse, err error) {
     if request == nil {
         request = NewModifyAccessGroupRequest()
@@ -433,7 +433,7 @@ func NewModifyAccessRulesResponse() (response *ModifyAccessRulesResponse) {
     return
 }
 
-// 批量修改权限规则属性
+// 批量修改权限规则属性，需要指定权限规则ID。
 func (c *Client) ModifyAccessRules(request *ModifyAccessRulesRequest) (response *ModifyAccessRulesResponse, err error) {
     if request == nil {
         request = NewModifyAccessRulesRequest()
@@ -458,7 +458,7 @@ func NewModifyFileSystemResponse() (response *ModifyFileSystemResponse) {
     return
 }
 
-// 修改文件系统属性
+// 修改文件系统属性，仅限于创建成功的文件系统。
 func (c *Client) ModifyFileSystem(request *ModifyFileSystemRequest) (response *ModifyFileSystemResponse, err error) {
     if request == nil {
         request = NewModifyFileSystemRequest()
@@ -483,7 +483,7 @@ func NewModifyMountPointResponse() (response *ModifyMountPointResponse) {
     return
 }
 
-// 修改挂载点属性
+// 修改挂载点属性。
 func (c *Client) ModifyMountPoint(request *ModifyMountPointRequest) (response *ModifyMountPointResponse, err error) {
     if request == nil {
         request = NewModifyMountPointRequest()

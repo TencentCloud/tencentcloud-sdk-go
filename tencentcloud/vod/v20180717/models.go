@@ -1070,7 +1070,10 @@ type AiReviewTaskPoliticalAsrResult struct {
 	// 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
 	Status *string `json:"Status,omitempty" name:"Status"`
 
-	// 错误码，0：成功，其他值：失败。
+	// 错误码，0 表示成功，其他值表示失败：
+	// <li>40000：输入参数不合法，请检查输入参数；</li>
+	// <li>60000：源文件错误（如视频数据损坏），请确认源文件是否正常；</li>
+	// <li>70000：内部服务错误，建议重试。</li>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ErrCode *int64 `json:"ErrCode,omitempty" name:"ErrCode"`
 
@@ -1090,7 +1093,10 @@ type AiReviewTaskPoliticalOcrResult struct {
 	// 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
 	Status *string `json:"Status,omitempty" name:"Status"`
 
-	// 错误码，0：成功，其他值：失败。
+	// 错误码，0 表示成功，其他值表示失败：
+	// <li>40000：输入参数不合法，请检查输入参数；</li>
+	// <li>60000：源文件错误（如视频数据损坏），请确认源文件是否正常；</li>
+	// <li>70000：内部服务错误，建议重试。</li>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ErrCode *int64 `json:"ErrCode,omitempty" name:"ErrCode"`
 
@@ -1111,7 +1117,10 @@ type AiReviewTaskPoliticalResult struct {
 	// 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
 	Status *string `json:"Status,omitempty" name:"Status"`
 
-	// 错误码，0：成功，其他值：失败。
+	// 错误码，0 表示成功，其他值表示失败：
+	// <li>40000：输入参数不合法，请检查输入参数；</li>
+	// <li>60000：源文件错误（如视频数据损坏），请确认源文件是否正常；</li>
+	// <li>70000：内部服务错误，建议重试。</li>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ErrCode *int64 `json:"ErrCode,omitempty" name:"ErrCode"`
 
@@ -1132,7 +1141,10 @@ type AiReviewTaskPornAsrResult struct {
 	// 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
 	Status *string `json:"Status,omitempty" name:"Status"`
 
-	// 错误码，0：成功，其他值：失败。
+	// 错误码，0 表示成功，其他值表示失败：
+	// <li>40000：输入参数不合法，请检查输入参数；</li>
+	// <li>60000：源文件错误（如视频数据损坏），请确认源文件是否正常；</li>
+	// <li>70000：内部服务错误，建议重试。</li>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ErrCode *int64 `json:"ErrCode,omitempty" name:"ErrCode"`
 
@@ -1153,7 +1165,10 @@ type AiReviewTaskPornOcrResult struct {
 	// 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
 	Status *string `json:"Status,omitempty" name:"Status"`
 
-	// 错误码，0：成功，其他值：失败。
+	// 错误码，0 表示成功，其他值表示失败：
+	// <li>40000：输入参数不合法，请检查输入参数；</li>
+	// <li>60000：源文件错误（如视频数据损坏），请确认源文件是否正常；</li>
+	// <li>70000：内部服务错误，建议重试。</li>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ErrCode *int64 `json:"ErrCode,omitempty" name:"ErrCode"`
 
@@ -1174,7 +1189,10 @@ type AiReviewTaskPornResult struct {
 	// 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
 	Status *string `json:"Status,omitempty" name:"Status"`
 
-	// 错误码，0：成功，其他值：失败。
+	// 错误码，0 表示成功，其他值表示失败：
+	// <li>40000：输入参数不合法，请检查输入参数；</li>
+	// <li>60000：源文件错误（如视频数据损坏），请确认源文件是否正常；</li>
+	// <li>70000：内部服务错误，建议重试。</li>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ErrCode *int64 `json:"ErrCode,omitempty" name:"ErrCode"`
 
@@ -1195,7 +1213,10 @@ type AiReviewTaskTerrorismResult struct {
 	// 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
 	Status *string `json:"Status,omitempty" name:"Status"`
 
-	// 错误码，0：成功，其他值：失败。
+	// 错误码，0 表示成功，其他值表示失败：
+	// <li>40000：输入参数不合法，请检查输入参数；</li>
+	// <li>60000：源文件错误（如视频数据损坏），请确认源文件是否正常；</li>
+	// <li>70000：内部服务错误，建议重试。</li>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ErrCode *int64 `json:"ErrCode,omitempty" name:"ErrCode"`
 
@@ -1380,11 +1401,27 @@ type AnimatedGraphicsTemplate struct {
 	// 转动图模板描述信息。
 	Comment *string `json:"Comment,omitempty" name:"Comment"`
 
-	// 动图宽度（或长边）的最大值。
+	// 动图宽度（或长边）的最大值，取值范围：0 和 [128, 4096]，单位：px。
+	// <li>当 Width、Height 均为 0，则分辨率同源；</li>
+	// <li>当 Width 为 0，Height 非 0，则 Width 按比例缩放；</li>
+	// <li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li>
+	// <li>当 Width、Height 均非 0，则分辨率按用户指定。</li>
+	// 默认值：0。
 	Width *uint64 `json:"Width,omitempty" name:"Width"`
 
-	// 动图高度（或短边）的最大值。
+	// 动图高度（或短边）的最大值，取值范围：0 和 [128, 4096]，单位：px。
+	// <li>当 Width、Height 均为 0，则分辨率同源；</li>
+	// <li>当 Width 为 0，Height 非 0，则 Width 按比例缩放；</li>
+	// <li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li>
+	// <li>当 Width、Height 均非 0，则分辨率按用户指定。</li>
+	// 默认值：0。
 	Height *uint64 `json:"Height,omitempty" name:"Height"`
+
+	// 分辨率自适应，可选值：
+	// <li>open：开启，此时，Width 代表视频的长边，Height 表示视频的短边；</li>
+	// <li>close：关闭，此时，Width 代表视频的宽度，Height 表示视频的高度。</li>
+	// 默认值：open。
+	ResolutionAdaptive *string `json:"ResolutionAdaptive,omitempty" name:"ResolutionAdaptive"`
 
 	// 动图格式。
 	Format *string `json:"Format,omitempty" name:"Format"`
@@ -1836,6 +1873,13 @@ type ComposeMediaOutput struct {
 	// 描述信息，最长 128 个字符。
 	Description *string `json:"Description,omitempty" name:"Description"`
 
+	// 分类ID，用于对媒体进行分类管理，可通过 [创建分类](/document/product/266/7812) 接口，创建分类，获得分类 ID。
+	// <li>默认值：0，表示其他分类。</li>
+	ClassId *int64 `json:"ClassId,omitempty" name:"ClassId"`
+
+	// 输出文件的过期时间，超过该时间文件将被删除，默认为永久不过期，格式按照 ISO 8601标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+	ExpireTime *string `json:"ExpireTime,omitempty" name:"ExpireTime"`
+
 	// 封装格式，可选值：mp4、mp3。其中，mp3 为纯音频文件。
 	Container *string `json:"Container,omitempty" name:"Container"`
 
@@ -1959,6 +2003,16 @@ type ComposeMediaTaskOutput struct {
 
 	// 媒体文件播放地址。
 	FileUrl *string `json:"FileUrl,omitempty" name:"FileUrl"`
+
+	// 文件名称，最长 64 个字符。
+	MediaName *string `json:"MediaName,omitempty" name:"MediaName"`
+
+	// 分类ID，用于对媒体进行分类管理，可通过 [创建分类](/document/product/266/7812) 接口，创建分类，获得分类 ID。
+	// <li>默认值：0，表示其他分类。</li>
+	ClassId *int64 `json:"ClassId,omitempty" name:"ClassId"`
+
+	// 输出文件的过期时间，超过该时间文件将被删除，默认为永久不过期，格式按照 ISO 8601标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+	ExpireTime *string `json:"ExpireTime,omitempty" name:"ExpireTime"`
 }
 
 type ConcatFileInfo2017 struct {
@@ -3765,12 +3819,23 @@ type DescribeCDNUsageDataRequest struct {
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 
 	// CDN 统计数据类型，有效值：
-	// <li>Flux：流量，单位为byte。</li>
-	// <li>Bandwidth：带宽，单位为bps。</li>
+	// <li>Flux：流量，单位为 byte。</li>
+	// <li>Bandwidth：带宽，单位为 bps。</li>
 	DataType *string `json:"DataType,omitempty" name:"DataType"`
 
-	// 点播 [子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+	// 用量数据的时间粒度，单位：分钟，取值有：
+	// <li>5：5 分钟粒度，返回指定查询时间内5分钟粒度的明细数据。</li>
+	// <li>60：小时粒度，返回指定查询时间内1小时粒度的数据。</li>
+	// <li>1440：天粒度，返回指定查询时间内1天粒度的数据。</li>
+	// 默认值为1440，返回天粒度的数据。
 	// 当该字段为1时，表示以管理员身份查询所有子应用（含主应用）的用量合计。
+	DataInterval *uint64 `json:"DataInterval,omitempty" name:"DataInterval"`
+
+	// 域名列表。一次最多查询20个域名的用量数据。可以指定多个域名，查询这些域名叠加的用量数据。默认返回所有域名叠加的用量数据。
+	DomainNames []*string `json:"DomainNames,omitempty" name:"DomainNames" list`
+
+	// 点播 [子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+	// 当该字段为1时，表示以管理员身份查询所有子应用（含主应用）的用量合计，此时时间粒度只支持天粒度。
 	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
 }
 
@@ -3787,7 +3852,10 @@ type DescribeCDNUsageDataResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// CDN 统计数据，每天一条数据。
+		// 时间粒度，单位：分钟。
+		DataInterval *int64 `json:"DataInterval,omitempty" name:"DataInterval"`
+
+		// CDN 统计数据。
 		Data []*StatDataItem `json:"Data,omitempty" name:"Data" list`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -4696,8 +4764,15 @@ type EditMediaFileInfo struct {
 
 type EditMediaOutputConfig struct {
 
+	// 输出文件名，最长 64 个字符。缺省由系统指定生成文件名。
+	MediaName *string `json:"MediaName,omitempty" name:"MediaName"`
+
 	// 输出文件格式，可选值：mp4、hls。默认是 mp4。
 	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 分类ID，用于对媒体进行分类管理，可通过 [创建分类](/document/product/266/7812) 接口，创建分类，获得分类 ID。
+	// <li>默认值：0，表示其他分类。</li>
+	ClassId *int64 `json:"ClassId,omitempty" name:"ClassId"`
 
 	// 输出文件的过期时间，超过该时间文件将被删除，默认为永久不过期，格式按照 ISO 8601标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
 	ExpireTime *string `json:"ExpireTime,omitempty" name:"ExpireTime"`
@@ -4843,13 +4918,26 @@ type EditMediaTaskOutput struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FileType *string `json:"FileType,omitempty" name:"FileType"`
 
+	// 媒体文件播放地址。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FileUrl *string `json:"FileUrl,omitempty" name:"FileUrl"`
+
 	// 媒体文件 ID。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FileId *string `json:"FileId,omitempty" name:"FileId"`
 
-	// 媒体文件播放地址。
+	// 输出文件名，最长 64 个字符。缺省由系统指定生成文件名。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	FileUrl *string `json:"FileUrl,omitempty" name:"FileUrl"`
+	MediaName *string `json:"MediaName,omitempty" name:"MediaName"`
+
+	// 分类ID，用于对媒体进行分类管理，可通过 [创建分类](/document/product/266/7812) 接口，创建分类，获得分类 ID。
+	// <li>默认值：0，表示其他分类。</li>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClassId *int64 `json:"ClassId,omitempty" name:"ClassId"`
+
+	// 输出文件的过期时间，超过该时间文件将被删除，默认为永久不过期，格式按照 ISO 8601标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExpireTime *string `json:"ExpireTime,omitempty" name:"ExpireTime"`
 }
 
 type EmptyTrackItem struct {
@@ -5163,6 +5251,12 @@ type ImageSpriteTemplate struct {
 
 	// 模板最后修改时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
 	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
+
+	// 填充方式，当视频流配置宽高参数与原始视频的宽高比不一致时，对转码的处理方式，即为“填充”。可选填充方式：
+	// <li> stretch：拉伸，对每一帧进行拉伸，填满整个画面，可能导致转码后的视频被“压扁“或者“拉长“；</li>
+	// <li>black：留黑，保持视频宽高比不变，边缘剩余部分使用黑色填充。</li>
+	// 默认值：black 。
+	FillType *string `json:"FillType,omitempty" name:"FillType"`
 }
 
 type ImageTransform struct {
@@ -7832,6 +7926,9 @@ type ProcessMediaRequest struct {
 	// 用于去重的识别码，如果七天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。
 	SessionId *string `json:"SessionId,omitempty" name:"SessionId"`
 
+	// 保留字段，特殊用途时使用。
+	ExtInfo *string `json:"ExtInfo,omitempty" name:"ExtInfo"`
+
 	// 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
 	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
 }
@@ -7934,6 +8031,9 @@ type PullUploadRequest struct {
 
 	// 用于去重的识别码，如果七天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。
 	SessionId *string `json:"SessionId,omitempty" name:"SessionId"`
+
+	// 保留字段，特殊用途时使用。
+	ExtInfo *string `json:"ExtInfo,omitempty" name:"ExtInfo"`
 
 	// 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
 	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
@@ -8120,11 +8220,27 @@ type SampleSnapshotTemplate struct {
 	// 模板描述信息。
 	Comment *string `json:"Comment,omitempty" name:"Comment"`
 
-	// 图片宽度。
+	// 截图宽度（或长边）的最大值，取值范围：0 和 [128, 4096]，单位：px。
+	// <li>当 Width、Height 均为 0，则分辨率同源；</li>
+	// <li>当 Width 为 0，Height 非 0，则 Width 按比例缩放；</li>
+	// <li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li>
+	// <li>当 Width、Height 均非 0，则分辨率按用户指定。</li>
+	// 默认值：0。
 	Width *uint64 `json:"Width,omitempty" name:"Width"`
 
-	// 图片高度。
+	// 截图高度（或短边）的最大值，取值范围：0 和 [128, 4096]，单位：px。
+	// <li>当 Width、Height 均为 0，则分辨率同源；</li>
+	// <li>当 Width 为 0，Height 非 0，则 Width 按比例缩放；</li>
+	// <li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li>
+	// <li>当 Width、Height 均非 0，则分辨率按用户指定。</li>
+	// 默认值：0。
 	Height *uint64 `json:"Height,omitempty" name:"Height"`
+
+	// 分辨率自适应，可选值：
+	// <li>open：开启，此时，Width 代表视频的长边，Height 表示视频的短边；</li>
+	// <li>close：关闭，此时，Width 代表视频的宽度，Height 表示视频的高度。</li>
+	// 默认值：open。
+	ResolutionAdaptive *string `json:"ResolutionAdaptive,omitempty" name:"ResolutionAdaptive"`
 
 	// 图片格式。
 	Format *string `json:"Format,omitempty" name:"Format"`
@@ -8140,16 +8256,24 @@ type SampleSnapshotTemplate struct {
 
 	// 模板最后修改时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
 	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
+
+	// 填充方式，当视频流配置宽高参数与原始视频的宽高比不一致时，对转码的处理方式，即为“填充”。可选填充方式：
+	// <li> stretch：拉伸，对每一帧进行拉伸，填满整个画面，可能导致转码后的视频被“压扁“或者“拉长“；</li>
+	// <li>black：留黑，保持视频宽高比不变，边缘剩余部分使用黑色填充。</li>
+	// <li>black：留白，保持视频宽高比不变，边缘剩余部分使用白色填充。</li>
+	// <li>black：高斯模糊，保持视频宽高比不变，边缘剩余部分使用高斯模糊。</li>
+	// 默认值：black 。
+	FillType *string `json:"FillType,omitempty" name:"FillType"`
 }
 
 type SearchMediaRequest struct {
 	*tchttp.BaseRequest
 
-	// 搜索文本，模糊匹配媒体文件名称或描述信息，匹配项越多，匹配度越高，排序越优先。长度限制：64 个字符。
+	// 搜索文本，模糊匹配媒体文件名称或描述信息，匹配项越多，匹配度越高，排序越优先。长度限制：64个字符。
 	Text *string `json:"Text,omitempty" name:"Text"`
 
 	// 标签集合，匹配集合中任意元素。
-	// <li>单个标签长度限制：8 个字符。</li>
+	// <li>单个标签长度限制：8个字符。</li>
 	// <li>数组长度限制：10。</li>
 	Tags []*string `json:"Tags,omitempty" name:"Tags" list`
 
@@ -8158,18 +8282,18 @@ type SearchMediaRequest struct {
 
 	// 创建时间的开始时间。
 	// <li>大于等于开始时间。</li>
-	// <li>格式按照 ISO 8601 标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。</li>
+	// <li>格式按照 ISO 8601标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。</li>
 	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
 
 	// 创建时间的结束时间。
 	// <li>小于结束时间。</li>
-	// <li>格式按照 ISO 8601 标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。</li>
+	// <li>格式按照 ISO 8601标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。</li>
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 
 	// 媒体文件来源，来源取值参见 [SourceType](https://cloud.tencent.com/document/product/266/31773#MediaSourceData)。
 	SourceType *string `json:"SourceType,omitempty" name:"SourceType"`
 
-	// 推流[直播码](https://cloud.tencent.com/document/product/267/5959)。
+	// 推流 [直播码](https://cloud.tencent.com/document/product/267/5959)。
 	StreamId *string `json:"StreamId,omitempty" name:"StreamId"`
 
 	// 直播录制文件的唯一标识。
@@ -8180,12 +8304,12 @@ type SearchMediaRequest struct {
 	// <li>指定 Text 搜索时，将根据匹配度排序，该字段无效</li>
 	Sort *SortBy `json:"Sort,omitempty" name:"Sort"`
 
-	// 偏移量。
-	// <li>默认值：0。</li>
-	// <li>取值范围：Offset + Limit 不超过 5000。</li>
+	// 分页返回的起始偏移量，默认值：0。将返回第 Offset 到第 Offset+Limit-1 条。
+	// <li>取值范围：Offset + Limit 不超过5000。</li>
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
 
-	// 返回记录条数，默认值：10。
+	// 分页返回的记录条数，默认值：10。将返回第 Offset 到第 Offset+Limit-1 条。
+	// <li>取值范围：Offset + Limit 不超过5000。</li>
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 
 	// 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
@@ -8205,11 +8329,11 @@ type SearchMediaResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 符合搜索条件的记录总数
-	// <li>最大值：5000，即，当命中记录数超过 5000，该字段将返回 5000，而非实际命中总数。</li>
+		// 符合搜索条件的记录总数。
+	// <li>最大值：5000。当命中记录数超过5000时，该字段将返回 5000，而非实际命中总数。</li>
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
-		// 媒体文件信息列表，只包含基础信息（BasicInfo）
+		// 媒体文件信息列表，只包含基础信息（BasicInfo）。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		MediaInfoSet []*MediaInfo `json:"MediaInfoSet,omitempty" name:"MediaInfoSet" list`
 
@@ -8351,11 +8475,27 @@ type SnapshotByTimeOffsetTemplate struct {
 	// 模板描述信息。
 	Comment *string `json:"Comment,omitempty" name:"Comment"`
 
-	// 图片宽度。
+	// 截图宽度（或长边）的最大值，取值范围：0 和 [128, 4096]，单位：px。
+	// <li>当 Width、Height 均为 0，则分辨率同源；</li>
+	// <li>当 Width 为 0，Height 非 0，则 Width 按比例缩放；</li>
+	// <li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li>
+	// <li>当 Width、Height 均非 0，则分辨率按用户指定。</li>
+	// 默认值：0。
 	Width *uint64 `json:"Width,omitempty" name:"Width"`
 
-	// 图片高度。
+	// 截图高度（或短边）的最大值，取值范围：0 和 [128, 4096]，单位：px。
+	// <li>当 Width、Height 均为 0，则分辨率同源；</li>
+	// <li>当 Width 为 0，Height 非 0，则 Width 按比例缩放；</li>
+	// <li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li>
+	// <li>当 Width、Height 均非 0，则分辨率按用户指定。</li>
+	// 默认值：0。
 	Height *uint64 `json:"Height,omitempty" name:"Height"`
+
+	// 分辨率自适应，可选值：
+	// <li>open：开启，此时，Width 代表视频的长边，Height 表示视频的短边；</li>
+	// <li>close：关闭，此时，Width 代表视频的宽度，Height 表示视频的高度。</li>
+	// 默认值：open。
+	ResolutionAdaptive *string `json:"ResolutionAdaptive,omitempty" name:"ResolutionAdaptive"`
 
 	// 图片格式。
 	Format *string `json:"Format,omitempty" name:"Format"`
@@ -8365,6 +8505,14 @@ type SnapshotByTimeOffsetTemplate struct {
 
 	// 模板最后修改时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
 	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
+
+	// 填充方式，当视频流配置宽高参数与原始视频的宽高比不一致时，对转码的处理方式，即为“填充”。可选填充方式：
+	// <li> stretch：拉伸，对每一帧进行拉伸，填满整个画面，可能导致转码后的视频被“压扁“或者“拉长“；</li>
+	// <li>black：留黑，保持视频宽高比不变，边缘剩余部分使用黑色填充。</li>
+	// <li>black：留白，保持视频宽高比不变，边缘剩余部分使用白色填充。</li>
+	// <li>black：高斯模糊，保持视频宽高比不变，边缘剩余部分使用高斯模糊。</li>
+	// 默认值：black 。
+	FillType *string `json:"FillType,omitempty" name:"FillType"`
 }
 
 type SortBy struct {
@@ -8574,7 +8722,7 @@ type TaskSimpleInfo struct {
 	TaskType *string `json:"TaskType,omitempty" name:"TaskType"`
 
 	// 任务创建时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
-	CreatTime *string `json:"CreatTime,omitempty" name:"CreatTime"`
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
 
 	// 任务开始执行时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。若任务尚未开始，该字段为空。
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -9238,6 +9386,18 @@ type WatermarkInput struct {
 	// SVG 内容。长度不超过 2000000 个字符。仅当水印类型为 SVG 水印时填写。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SvgContent *string `json:"SvgContent,omitempty" name:"SvgContent"`
+
+	// 水印的起始时间偏移，单位：秒。不填或填0，表示水印从画面出现时开始显现。
+	// <li>不填或填0，表示水印从画面开始就出现；</li>
+	// <li>当数值大于0时（假设为 n），表示水印从画面开始的第 n 秒出现；</li>
+	// <li>当数值小于0时（假设为 -n），表示水印从离画面结束 n 秒前开始出现。</li>
+	StartTimeOffset *float64 `json:"StartTimeOffset,omitempty" name:"StartTimeOffset"`
+
+	// 水印的结束时间偏移，单位：秒。
+	// <li>不填或填0，表示水印持续到画面结束；</li>
+	// <li>当数值大于0时（假设为 n），表示水印持续到第 n 秒时消失；</li>
+	// <li>当数值小于0时（假设为 -n），表示水印持续到离画面结束 n 秒前消失。</li>
+	EndTimeOffset *float64 `json:"EndTimeOffset,omitempty" name:"EndTimeOffset"`
 }
 
 type WatermarkTemplate struct {

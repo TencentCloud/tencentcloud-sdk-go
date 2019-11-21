@@ -73,6 +73,52 @@ type CCIToken struct {
 	Word *string `json:"Word,omitempty" name:"Word"`
 }
 
+type ChatBotRequest struct {
+	*tchttp.BaseRequest
+
+	// 用户请求的query
+	Query *string `json:"Query,omitempty" name:"Query"`
+
+	// 0: 通用闲聊, 1:儿童闲聊, 默认是通用闲聊
+	Flag *uint64 `json:"Flag,omitempty" name:"Flag"`
+
+	// 服务的id,  主要用于儿童闲聊接口，比如手Q的openid
+	OpenId *string `json:"OpenId,omitempty" name:"OpenId"`
+}
+
+func (r *ChatBotRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ChatBotRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ChatBotResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 对于当前输出回复的自信度
+		Confidence *float64 `json:"Confidence,omitempty" name:"Confidence"`
+
+		// 闲聊回复
+		Reply *string `json:"Reply,omitempty" name:"Reply"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ChatBotResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ChatBotResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type ClassificationResult struct {
 
 	// 一级分类名称
@@ -195,6 +241,120 @@ func (r *DependencyParsingResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeEntityRequest struct {
+	*tchttp.BaseRequest
+
+	// 实体名称
+	EntityName *string `json:"EntityName,omitempty" name:"EntityName"`
+}
+
+func (r *DescribeEntityRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeEntityRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeEntityResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 返回查询实体相关信息
+		Content *string `json:"Content,omitempty" name:"Content"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeEntityResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeEntityResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeRelationRequest struct {
+	*tchttp.BaseRequest
+
+	// 输入第一个实体
+	LeftEntityName *string `json:"LeftEntityName,omitempty" name:"LeftEntityName"`
+
+	// 输入第二个实体
+	RightEntityName *string `json:"RightEntityName,omitempty" name:"RightEntityName"`
+}
+
+func (r *DescribeRelationRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeRelationRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeRelationResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 返回查询实体间的关系
+		Content []*EntityRelationContent `json:"Content,omitempty" name:"Content" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeRelationResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeRelationResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeTripleRequest struct {
+	*tchttp.BaseRequest
+
+	// 三元组查询条件
+	TripleCondition *string `json:"TripleCondition,omitempty" name:"TripleCondition"`
+}
+
+func (r *DescribeTripleRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeTripleRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeTripleResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 返回三元组信息
+		Content []*TripleContent `json:"Content,omitempty" name:"Content" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeTripleResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeTripleResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DpToken struct {
 
 	// 当前词父节点的序号
@@ -208,6 +368,42 @@ type DpToken struct {
 
 	// 基础词
 	Word *string `json:"Word,omitempty" name:"Word"`
+}
+
+type EntityRelationContent struct {
+
+	// 实体关系查询返回关系的object
+	Object []*EntityRelationObject `json:"Object,omitempty" name:"Object" list`
+
+	// 实体关系查询返回关系的subject
+	Subject []*EntityRelationSubject `json:"Subject,omitempty" name:"Subject" list`
+
+	// 实体关系查询返回的关系名称
+	Relation *string `json:"Relation,omitempty" name:"Relation"`
+}
+
+type EntityRelationObject struct {
+
+	// object对应id
+	Id []*string `json:"Id,omitempty" name:"Id" list`
+
+	// object对应name
+	Name []*string `json:"Name,omitempty" name:"Name" list`
+
+	// object对应popular值
+	Popular []*int64 `json:"Popular,omitempty" name:"Popular" list`
+}
+
+type EntityRelationSubject struct {
+
+	// Subject对应id
+	Id []*string `json:"Id,omitempty" name:"Id" list`
+
+	// Subject对应name
+	Name []*string `json:"Name,omitempty" name:"Name" list`
+
+	// Subject对应popular
+	Popular []*int64 `json:"Popular,omitempty" name:"Popular" list`
 }
 
 type EvilToken struct {
@@ -230,7 +426,8 @@ type EvilToken struct {
 	// 5、广告/灌水；
 	// 6、迷信/邪教；
 	// 7、其他违法（如跨站追杀/恶意竞争等）；
-	// 8、综合
+	// 8、综合；
+	// 9、联系方式/链接
 	EvilType *uint64 `json:"EvilType,omitempty" name:"EvilType"`
 }
 
@@ -289,9 +486,9 @@ type LexicalAnalysisRequest struct {
 	// 待分析的文本（仅支持UTF-8格式，不超过500字）
 	Text *string `json:"Text,omitempty" name:"Text"`
 
-	// 词法分析模式（默认取1值）：
-	// 1、高精度（具备混合粒度分词能力）；
-	// 2、高性能；
+	// 词法分析模式（默认取2值）：
+	// 1、高精度（混合粒度分词能力）；
+	// 2、高性能（单粒度分词能力）；
 	Flag *uint64 `json:"Flag,omitempty" name:"Flag"`
 }
 
@@ -485,10 +682,10 @@ type SentimentAnalysisRequest struct {
 	Text *string `json:"Text,omitempty" name:"Text"`
 
 	// 文本所属类型（默认取4值）：
-	// 1、电商
-	// 2、APP
-	// 3、美食
-	// 4、酒店和其他
+	// 1、商品评论类
+	// 2、社交类
+	// 3、美食酒店类
+	// 4、通用领域类
 	Flag *uint64 `json:"Flag,omitempty" name:"Flag"`
 }
 
@@ -592,7 +789,26 @@ type TextApprovalResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 文本审核输出结果
+		// 文本审核输出结果列表，列表每个元素包含以下信息：
+	// 
+	// EvilFlag（文本恶意等级）：
+	// 0、正常；
+	// 1、恶意；
+	// 2、可疑送审
+	// 
+	// EvilType（文本恶意类型）：
+	// 0、正常；
+	// 1、政治；
+	// 2、色情；
+	// 3、辱骂/低俗；
+	// 4、暴恐/毒品；
+	// 5、广告/灌水；
+	// 6、迷信/邪教；
+	// 7、其他违法（如跨站追杀/恶意竞争等）；
+	// 8、综合；
+	// 9、联系方式/链接
+	// 
+	// EvilKeywords（恶意关键词组）
 		EvilTokens []*EvilToken `json:"EvilTokens,omitempty" name:"EvilTokens" list`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -612,7 +828,7 @@ func (r *TextApprovalResponse) FromJsonString(s string) error {
 type TextClassificationRequest struct {
 	*tchttp.BaseRequest
 
-	// 待分类的文本（仅支持UTF-8格式，不超过2000字）
+	// 待分类的文本（仅支持UTF-8格式，不超过10000字）
 	Text *string `json:"Text,omitempty" name:"Text"`
 
 	// 领域分类体系（默认取1值）：
@@ -689,6 +905,21 @@ func (r *TextCorrectionResponse) ToJsonString() string {
 
 func (r *TextCorrectionResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
+}
+
+type TripleContent struct {
+
+	// 实体id
+	Id *string `json:"Id,omitempty" name:"Id"`
+
+	// 实体名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 实体order
+	Order *int64 `json:"Order,omitempty" name:"Order"`
+
+	// 实体流行度
+	Popular *int64 `json:"Popular,omitempty" name:"Popular"`
 }
 
 type WordEmbeddingRequest struct {

@@ -509,6 +509,9 @@ type CreateDBInstanceHourRequest struct {
 
 	// 置放群组 ID。
 	DeployGroupId *string `json:"DeployGroupId,omitempty" name:"DeployGroupId"`
+
+	// 用于保证请求幂等性的字符串。该字符串由客户生成，需保证不同请求之间在当天内唯一，最大值不超过64个ASCII字符。若不指定该参数，则无法保证请求的幂等性。
+	ClientToken *string `json:"ClientToken,omitempty" name:"ClientToken"`
 }
 
 func (r *CreateDBInstanceHourRequest) ToJsonString() string {
@@ -621,6 +624,9 @@ type CreateDBInstanceRequest struct {
 
 	// 置放群组 ID。
 	DeployGroupId *string `json:"DeployGroupId,omitempty" name:"DeployGroupId"`
+
+	// 用于保证请求幂等性的字符串。该字符串由客户生成，需保证不同请求之间在当天内唯一，最大值不超过64个ASCII字符。若不指定该参数，则无法保证请求的幂等性。
+	ClientToken *string `json:"ClientToken,omitempty" name:"ClientToken"`
 }
 
 func (r *CreateDBInstanceRequest) ToJsonString() string {
@@ -2498,13 +2504,33 @@ type DescribeTasksRequest struct {
 	// 实例 ID，格式如：cdb-c1nl9rpv，与云数据库控制台页面中显示的实例 ID 相同，可使用 [查询实例列表](https://cloud.tencent.com/document/api/236/15872) 接口获取，其值为输出参数中字段 InstanceId 的值。
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
-	// 异步任务请求 ID，执行 CDB 相关操作返回的 AsyncRequestId。
+	// 异步任务请求 ID，执行云数据库相关操作返回的 AsyncRequestId。
 	AsyncRequestId *string `json:"AsyncRequestId,omitempty" name:"AsyncRequestId"`
 
-	// 任务类型，不传值则查询所有任务类型，可能的值：1-数据库回档；2-SQL操作；3-数据导入；5-参数设置；6-初始化；7-重启；8-开启GTID；9-只读实例升级；10-数据库批量回档；11-主实例升级；12-删除库表；13-切换为主实例。
+	// 任务类型，不传值则查询所有任务类型，支持的值包括：
+	// 1 - 数据库回档；
+	// 2 - SQL操作；
+	// 3 - 数据导入；
+	// 5 - 参数设置；
+	// 6 - 初始化云数据库实例；
+	// 7 - 重启云数据库实例；
+	// 8 - 开启云数据库实例GTID；
+	// 9 - 只读实例升级；
+	// 10 - 数据库批量回档；
+	// 11 - 主实例升级；
+	// 12 - 删除云数据库库表；
+	// 13 - 灾备实例提升为主。
 	TaskTypes []*int64 `json:"TaskTypes,omitempty" name:"TaskTypes" list`
 
-	// 任务状态，不传值则查询所有任务状态，可能的值：-1-未定义；0-初始化; 1-运行中；2-执行成功；3-执行失败；4-已终止；5-已删除；6-已暂停。
+	// 任务状态，不传值则查询所有任务状态，支持的值包括：
+	// -1 - 未定义；
+	// 0 - 初始化；
+	// 1 - 运行中；
+	// 2 - 执行成功；
+	// 3 - 执行失败；
+	// 4 - 已终止；
+	// 5 - 已删除；
+	// 6 - 已暂停。
 	TaskStatus []*int64 `json:"TaskStatus,omitempty" name:"TaskStatus" list`
 
 	// 第一个任务的开始时间，用于范围查询，时间格式如：2017-12-31 10:40:01。
@@ -2537,7 +2563,7 @@ type DescribeTasksResponse struct {
 		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 返回的实例任务信息。
-		Items []*string `json:"Items,omitempty" name:"Items" list`
+		Items []*TaskDetail `json:"Items,omitempty" name:"Items" list`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -2995,7 +3021,7 @@ type InstanceInfo struct {
 	// 可用区部署方式
 	DeployMode *int64 `json:"DeployMode,omitempty" name:"DeployMode"`
 
-	// 实例任务状态
+	// 实例任务状态。0 - 没有任务 ,1 - 升级中,2 - 数据导入中,3 - 开放Slave中,4 - 外网访问开通中,5 - 批量操作执行中,6 - 回档中,7 - 外网访问关闭中,8 - 密码修改中,9 - 实例名修改中,10 - 重启中,12 - 自建迁移中,13 - 删除库表中,14 - 灾备实例创建同步中,15 - 升级待切换,16 - 升级切换中,17 - 升级切换完成
 	TaskStatus *int64 `json:"TaskStatus,omitempty" name:"TaskStatus"`
 
 	// 主实例详细信息
@@ -4552,6 +4578,60 @@ type TagsInfoOfInstance struct {
 
 	// 标签信息
 	Tags []*TagInfoUnit `json:"Tags,omitempty" name:"Tags" list`
+}
+
+type TaskDetail struct {
+
+	// 错误码。
+	Code *int64 `json:"Code,omitempty" name:"Code"`
+
+	// 错误信息。
+	Message *string `json:"Message,omitempty" name:"Message"`
+
+	// 实例任务 ID。
+	JobId *int64 `json:"JobId,omitempty" name:"JobId"`
+
+	// 实例任务进度。
+	Progress *int64 `json:"Progress,omitempty" name:"Progress"`
+
+	// 实例任务状态，可能的值包括：
+	// "UNDEFINED" - 未定义；
+	// "INITIAL" - 初始化；
+	// "RUNNING" - 运行中；
+	// "SUCCEED" - 执行成功；
+	// "FAILED" - 执行失败；
+	// "KILLED" - 已终止；
+	// "REMOVED" - 已删除；
+	// "PAUSED" - 已暂停。
+	TaskStatus *string `json:"TaskStatus,omitempty" name:"TaskStatus"`
+
+	// 实例任务类型，可能的值包括：
+	// "ROLLBACK" - 数据库回档；
+	// "SQL OPERATION" - SQL操作；
+	// "IMPORT DATA" - 数据导入；
+	// "MODIFY PARAM" - 参数设置；
+	// "INITIAL" - 初始化云数据库实例；
+	// "REBOOT" - 重启云数据库实例；
+	// "OPEN GTID" - 开启云数据库实例GTID；
+	// "UPGRADE RO" - 只读实例升级；
+	// "BATCH ROLLBACK" - 数据库批量回档；
+	// "UPGRADE MASTER" - 主实例升级；
+	// "DROP TABLES" - 删除云数据库库表；
+	// "SWITCH DR TO MASTER" - 灾备实例提升为主。
+	TaskType *string `json:"TaskType,omitempty" name:"TaskType"`
+
+	// 实例任务开始时间。
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 实例任务结束时间。
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 任务关联的实例 ID。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds" list`
+
+	// 异步任务的请求 ID。
+	AsyncRequestId *string `json:"AsyncRequestId,omitempty" name:"AsyncRequestId"`
 }
 
 type UpgradeDBInstanceEngineVersionRequest struct {

@@ -452,6 +452,14 @@ type ScanPiece struct {
 	// 备注
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Info *string `json:"Info,omitempty" name:"Info"`
+
+	// 流检测时分片在流中的偏移时间，单位毫秒
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 流检测时分片时长
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Duration *uint64 `json:"Duration,omitempty" name:"Duration"`
 }
 
 type ScanVoiceRequest struct {

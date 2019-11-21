@@ -293,6 +293,31 @@ func (c *Client) GetTransListHandler(request *GetTransListHandlerRequest) (respo
     return
 }
 
+func NewGetTransactionDetailForUserRequest() (request *GetTransactionDetailForUserRequest) {
+    request = &GetTransactionDetailForUserRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tbaas", APIVersion, "GetTransactionDetailForUser")
+    return
+}
+
+func NewGetTransactionDetailForUserResponse() (response *GetTransactionDetailForUserResponse) {
+    response = &GetTransactionDetailForUserResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 获取交易详情
+func (c *Client) GetTransactionDetailForUser(request *GetTransactionDetailForUserRequest) (response *GetTransactionDetailForUserResponse, err error) {
+    if request == nil {
+        request = NewGetTransactionDetailForUserRequest()
+    }
+    response = NewGetTransactionDetailForUserResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewInvokeRequest() (request *InvokeRequest) {
     request = &InvokeRequest{
         BaseRequest: &tchttp.BaseRequest{},

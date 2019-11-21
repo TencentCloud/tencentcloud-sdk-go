@@ -43,6 +43,31 @@ func NewClient(credential *common.Credential, region string, clientProfile *prof
 }
 
 
+func NewCreateAIRecognitionTemplateRequest() (request *CreateAIRecognitionTemplateRequest) {
+    request = &CreateAIRecognitionTemplateRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("mps", APIVersion, "CreateAIRecognitionTemplate")
+    return
+}
+
+func NewCreateAIRecognitionTemplateResponse() (response *CreateAIRecognitionTemplateResponse) {
+    response = &CreateAIRecognitionTemplateResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 创建用户自定义内容识别模板，数量上限：50。
+func (c *Client) CreateAIRecognitionTemplate(request *CreateAIRecognitionTemplateRequest) (response *CreateAIRecognitionTemplateResponse, err error) {
+    if request == nil {
+        request = NewCreateAIRecognitionTemplateRequest()
+    }
+    response = NewCreateAIRecognitionTemplateResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateAnimatedGraphicsTemplateRequest() (request *CreateAnimatedGraphicsTemplateRequest) {
     request = &CreateAnimatedGraphicsTemplateRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -68,6 +93,31 @@ func (c *Client) CreateAnimatedGraphicsTemplate(request *CreateAnimatedGraphicsT
     return
 }
 
+func NewCreateContentReviewTemplateRequest() (request *CreateContentReviewTemplateRequest) {
+    request = &CreateContentReviewTemplateRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("mps", APIVersion, "CreateContentReviewTemplate")
+    return
+}
+
+func NewCreateContentReviewTemplateResponse() (response *CreateContentReviewTemplateResponse) {
+    response = &CreateContentReviewTemplateResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 创建用户自定义内容审核模板，数量上限：50。
+func (c *Client) CreateContentReviewTemplate(request *CreateContentReviewTemplateRequest) (response *CreateContentReviewTemplateResponse, err error) {
+    if request == nil {
+        request = NewCreateContentReviewTemplateRequest()
+    }
+    response = NewCreateContentReviewTemplateResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateImageSpriteTemplateRequest() (request *CreateImageSpriteTemplateRequest) {
     request = &CreateImageSpriteTemplateRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -89,6 +139,31 @@ func (c *Client) CreateImageSpriteTemplate(request *CreateImageSpriteTemplateReq
         request = NewCreateImageSpriteTemplateRequest()
     }
     response = NewCreateImageSpriteTemplateResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreatePersonSampleRequest() (request *CreatePersonSampleRequest) {
+    request = &CreatePersonSampleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("mps", APIVersion, "CreatePersonSample")
+    return
+}
+
+func NewCreatePersonSampleResponse() (response *CreatePersonSampleResponse) {
+    response = &CreatePersonSampleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 该接口用于创建人物样本，用于通过人脸识别等技术，进行内容识别、内容审核等视频处理。
+func (c *Client) CreatePersonSample(request *CreatePersonSampleRequest) (response *CreatePersonSampleResponse, err error) {
+    if request == nil {
+        request = NewCreatePersonSampleRequest()
+    }
+    response = NewCreatePersonSampleResponse()
     err = c.Send(request, response)
     return
 }
@@ -193,6 +268,31 @@ func (c *Client) CreateWatermarkTemplate(request *CreateWatermarkTemplateRequest
     return
 }
 
+func NewCreateWordSamplesRequest() (request *CreateWordSamplesRequest) {
+    request = &CreateWordSamplesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("mps", APIVersion, "CreateWordSamples")
+    return
+}
+
+func NewCreateWordSamplesResponse() (response *CreateWordSamplesResponse) {
+    response = &CreateWordSamplesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 该接口用于批量创建关键词样本，样本用于通过OCR、ASR技术，进行内容审核、内容识别等视频处理。
+func (c *Client) CreateWordSamples(request *CreateWordSamplesRequest) (response *CreateWordSamplesResponse, err error) {
+    if request == nil {
+        request = NewCreateWordSamplesRequest()
+    }
+    response = NewCreateWordSamplesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateWorkflowRequest() (request *CreateWorkflowRequest) {
     request = &CreateWorkflowRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -214,7 +314,9 @@ func NewCreateWorkflowResponse() (response *CreateWorkflowResponse) {
 // 3. 对视频按指定时间点截图；
 // 4. 对视频采样截图；
 // 5. 对视频截图雪碧图；
-// 6. 对视频转自适应码流。
+// 6. 对视频转自适应码流；
+// 7. 智能内容审核（鉴黄、鉴恐、鉴政）；
+// 8. 智能内容识别（人脸、文本全文、文本关键词、语音全文、语音关键词）。
 // 
 // 注意：创建工作流成功后是禁用状态，需要手动启用。
 func (c *Client) CreateWorkflow(request *CreateWorkflowRequest) (response *CreateWorkflowResponse, err error) {
@@ -222,6 +324,31 @@ func (c *Client) CreateWorkflow(request *CreateWorkflowRequest) (response *Creat
         request = NewCreateWorkflowRequest()
     }
     response = NewCreateWorkflowResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteAIRecognitionTemplateRequest() (request *DeleteAIRecognitionTemplateRequest) {
+    request = &DeleteAIRecognitionTemplateRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("mps", APIVersion, "DeleteAIRecognitionTemplate")
+    return
+}
+
+func NewDeleteAIRecognitionTemplateResponse() (response *DeleteAIRecognitionTemplateResponse) {
+    response = &DeleteAIRecognitionTemplateResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 删除用户自定义内容识别模板。
+func (c *Client) DeleteAIRecognitionTemplate(request *DeleteAIRecognitionTemplateRequest) (response *DeleteAIRecognitionTemplateResponse, err error) {
+    if request == nil {
+        request = NewDeleteAIRecognitionTemplateRequest()
+    }
+    response = NewDeleteAIRecognitionTemplateResponse()
     err = c.Send(request, response)
     return
 }
@@ -251,6 +378,31 @@ func (c *Client) DeleteAnimatedGraphicsTemplate(request *DeleteAnimatedGraphicsT
     return
 }
 
+func NewDeleteContentReviewTemplateRequest() (request *DeleteContentReviewTemplateRequest) {
+    request = &DeleteContentReviewTemplateRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("mps", APIVersion, "DeleteContentReviewTemplate")
+    return
+}
+
+func NewDeleteContentReviewTemplateResponse() (response *DeleteContentReviewTemplateResponse) {
+    response = &DeleteContentReviewTemplateResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 删除用户自定义内容审核模板。
+func (c *Client) DeleteContentReviewTemplate(request *DeleteContentReviewTemplateRequest) (response *DeleteContentReviewTemplateResponse, err error) {
+    if request == nil {
+        request = NewDeleteContentReviewTemplateRequest()
+    }
+    response = NewDeleteContentReviewTemplateResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteImageSpriteTemplateRequest() (request *DeleteImageSpriteTemplateRequest) {
     request = &DeleteImageSpriteTemplateRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -272,6 +424,31 @@ func (c *Client) DeleteImageSpriteTemplate(request *DeleteImageSpriteTemplateReq
         request = NewDeleteImageSpriteTemplateRequest()
     }
     response = NewDeleteImageSpriteTemplateResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeletePersonSampleRequest() (request *DeletePersonSampleRequest) {
+    request = &DeletePersonSampleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("mps", APIVersion, "DeletePersonSample")
+    return
+}
+
+func NewDeletePersonSampleResponse() (response *DeletePersonSampleResponse) {
+    response = &DeletePersonSampleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 该接口用于根据人物 ID，删除人物样本。
+func (c *Client) DeletePersonSample(request *DeletePersonSampleRequest) (response *DeletePersonSampleResponse, err error) {
+    if request == nil {
+        request = NewDeletePersonSampleRequest()
+    }
+    response = NewDeletePersonSampleResponse()
     err = c.Send(request, response)
     return
 }
@@ -376,6 +553,31 @@ func (c *Client) DeleteWatermarkTemplate(request *DeleteWatermarkTemplateRequest
     return
 }
 
+func NewDeleteWordSamplesRequest() (request *DeleteWordSamplesRequest) {
+    request = &DeleteWordSamplesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("mps", APIVersion, "DeleteWordSamples")
+    return
+}
+
+func NewDeleteWordSamplesResponse() (response *DeleteWordSamplesResponse) {
+    response = &DeleteWordSamplesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 该接口用于批量删除关键词样本。
+func (c *Client) DeleteWordSamples(request *DeleteWordSamplesRequest) (response *DeleteWordSamplesResponse, err error) {
+    if request == nil {
+        request = NewDeleteWordSamplesRequest()
+    }
+    response = NewDeleteWordSamplesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteWorkflowRequest() (request *DeleteWorkflowRequest) {
     request = &DeleteWorkflowRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -397,6 +599,31 @@ func (c *Client) DeleteWorkflow(request *DeleteWorkflowRequest) (response *Delet
         request = NewDeleteWorkflowRequest()
     }
     response = NewDeleteWorkflowResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeAIRecognitionTemplatesRequest() (request *DescribeAIRecognitionTemplatesRequest) {
+    request = &DescribeAIRecognitionTemplatesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("mps", APIVersion, "DescribeAIRecognitionTemplates")
+    return
+}
+
+func NewDescribeAIRecognitionTemplatesResponse() (response *DescribeAIRecognitionTemplatesResponse) {
+    response = &DescribeAIRecognitionTemplatesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 根据内容识别模板唯一标识，获取内容识别模板详情列表。返回结果包含符合条件的所有用户自定义内容识别模板及系统预置视频内容识别模板
+func (c *Client) DescribeAIRecognitionTemplates(request *DescribeAIRecognitionTemplatesRequest) (response *DescribeAIRecognitionTemplatesResponse, err error) {
+    if request == nil {
+        request = NewDescribeAIRecognitionTemplatesRequest()
+    }
+    response = NewDescribeAIRecognitionTemplatesResponse()
     err = c.Send(request, response)
     return
 }
@@ -426,6 +653,31 @@ func (c *Client) DescribeAnimatedGraphicsTemplates(request *DescribeAnimatedGrap
     return
 }
 
+func NewDescribeContentReviewTemplatesRequest() (request *DescribeContentReviewTemplatesRequest) {
+    request = &DescribeContentReviewTemplatesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("mps", APIVersion, "DescribeContentReviewTemplates")
+    return
+}
+
+func NewDescribeContentReviewTemplatesResponse() (response *DescribeContentReviewTemplatesResponse) {
+    response = &DescribeContentReviewTemplatesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 根据内容审核模板唯一标识，获取内容审核模板详情列表。返回结果包含符合条件的所有用户自定义模板及系统预置内容审核模板。
+func (c *Client) DescribeContentReviewTemplates(request *DescribeContentReviewTemplatesRequest) (response *DescribeContentReviewTemplatesResponse, err error) {
+    if request == nil {
+        request = NewDescribeContentReviewTemplatesRequest()
+    }
+    response = NewDescribeContentReviewTemplatesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeImageSpriteTemplatesRequest() (request *DescribeImageSpriteTemplatesRequest) {
     request = &DescribeImageSpriteTemplatesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -447,6 +699,31 @@ func (c *Client) DescribeImageSpriteTemplates(request *DescribeImageSpriteTempla
         request = NewDescribeImageSpriteTemplatesRequest()
     }
     response = NewDescribeImageSpriteTemplatesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribePersonSamplesRequest() (request *DescribePersonSamplesRequest) {
+    request = &DescribePersonSamplesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("mps", APIVersion, "DescribePersonSamples")
+    return
+}
+
+func NewDescribePersonSamplesResponse() (response *DescribePersonSamplesResponse) {
+    response = &DescribePersonSamplesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 该接口用于查询人物样本信息，支持根据人物 ID、名称、标签，分页查询。
+func (c *Client) DescribePersonSamples(request *DescribePersonSamplesRequest) (response *DescribePersonSamplesResponse, err error) {
+    if request == nil {
+        request = NewDescribePersonSamplesRequest()
+    }
+    response = NewDescribePersonSamplesResponse()
     err = c.Send(request, response)
     return
 }
@@ -603,6 +880,31 @@ func (c *Client) DescribeWatermarkTemplates(request *DescribeWatermarkTemplatesR
     return
 }
 
+func NewDescribeWordSamplesRequest() (request *DescribeWordSamplesRequest) {
+    request = &DescribeWordSamplesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("mps", APIVersion, "DescribeWordSamples")
+    return
+}
+
+func NewDescribeWordSamplesResponse() (response *DescribeWordSamplesResponse) {
+    response = &DescribeWordSamplesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 该接口用于根据应用场景、关键词、标签，分页查询关键词样本信息。
+func (c *Client) DescribeWordSamples(request *DescribeWordSamplesRequest) (response *DescribeWordSamplesResponse, err error) {
+    if request == nil {
+        request = NewDescribeWordSamplesRequest()
+    }
+    response = NewDescribeWordSamplesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeWorkflowsRequest() (request *DescribeWorkflowsRequest) {
     request = &DescribeWorkflowsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -678,6 +980,31 @@ func (c *Client) EnableWorkflow(request *EnableWorkflowRequest) (response *Enabl
     return
 }
 
+func NewModifyAIRecognitionTemplateRequest() (request *ModifyAIRecognitionTemplateRequest) {
+    request = &ModifyAIRecognitionTemplateRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("mps", APIVersion, "ModifyAIRecognitionTemplate")
+    return
+}
+
+func NewModifyAIRecognitionTemplateResponse() (response *ModifyAIRecognitionTemplateResponse) {
+    response = &ModifyAIRecognitionTemplateResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 修改用户自定义内容识别模板。
+func (c *Client) ModifyAIRecognitionTemplate(request *ModifyAIRecognitionTemplateRequest) (response *ModifyAIRecognitionTemplateResponse, err error) {
+    if request == nil {
+        request = NewModifyAIRecognitionTemplateRequest()
+    }
+    response = NewModifyAIRecognitionTemplateResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyAnimatedGraphicsTemplateRequest() (request *ModifyAnimatedGraphicsTemplateRequest) {
     request = &ModifyAnimatedGraphicsTemplateRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -703,6 +1030,31 @@ func (c *Client) ModifyAnimatedGraphicsTemplate(request *ModifyAnimatedGraphicsT
     return
 }
 
+func NewModifyContentReviewTemplateRequest() (request *ModifyContentReviewTemplateRequest) {
+    request = &ModifyContentReviewTemplateRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("mps", APIVersion, "ModifyContentReviewTemplate")
+    return
+}
+
+func NewModifyContentReviewTemplateResponse() (response *ModifyContentReviewTemplateResponse) {
+    response = &ModifyContentReviewTemplateResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 修改用户自定义内容审核模板。
+func (c *Client) ModifyContentReviewTemplate(request *ModifyContentReviewTemplateRequest) (response *ModifyContentReviewTemplateResponse, err error) {
+    if request == nil {
+        request = NewModifyContentReviewTemplateRequest()
+    }
+    response = NewModifyContentReviewTemplateResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyImageSpriteTemplateRequest() (request *ModifyImageSpriteTemplateRequest) {
     request = &ModifyImageSpriteTemplateRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -724,6 +1076,31 @@ func (c *Client) ModifyImageSpriteTemplate(request *ModifyImageSpriteTemplateReq
         request = NewModifyImageSpriteTemplateRequest()
     }
     response = NewModifyImageSpriteTemplateResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyPersonSampleRequest() (request *ModifyPersonSampleRequest) {
+    request = &ModifyPersonSampleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("mps", APIVersion, "ModifyPersonSample")
+    return
+}
+
+func NewModifyPersonSampleResponse() (response *ModifyPersonSampleResponse) {
+    response = &ModifyPersonSampleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 该接口用于根据人物 ID，修改人物样本信息，包括名称、描述的修改，以及人脸、标签的添加、删除、重置操作。人脸删除操作需保证至少剩余 1 张图片，否则，请使用重置操作。
+func (c *Client) ModifyPersonSample(request *ModifyPersonSampleRequest) (response *ModifyPersonSampleResponse, err error) {
+    if request == nil {
+        request = NewModifyPersonSampleRequest()
+    }
+    response = NewModifyPersonSampleResponse()
     err = c.Send(request, response)
     return
 }
@@ -828,6 +1205,31 @@ func (c *Client) ModifyWatermarkTemplate(request *ModifyWatermarkTemplateRequest
     return
 }
 
+func NewModifyWordSampleRequest() (request *ModifyWordSampleRequest) {
+    request = &ModifyWordSampleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("mps", APIVersion, "ModifyWordSample")
+    return
+}
+
+func NewModifyWordSampleResponse() (response *ModifyWordSampleResponse) {
+    response = &ModifyWordSampleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 该接口用于修改关键词的应用场景、标签，关键词本身不可修改，如需修改，可删除重建。
+func (c *Client) ModifyWordSample(request *ModifyWordSampleRequest) (response *ModifyWordSampleResponse, err error) {
+    if request == nil {
+        request = NewModifyWordSampleRequest()
+    }
+    response = NewModifyWordSampleResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewParseLiveStreamProcessNotificationRequest() (request *ParseLiveStreamProcessNotificationRequest) {
     request = &ParseLiveStreamProcessNotificationRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -876,36 +1278,6 @@ func (c *Client) ParseNotification(request *ParseNotificationRequest) (response 
         request = NewParseNotificationRequest()
     }
     response = NewParseNotificationResponse()
-    err = c.Send(request, response)
-    return
-}
-
-func NewProcessLiveMediaRequest() (request *ProcessLiveMediaRequest) {
-    request = &ProcessLiveMediaRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    request.Init().WithApiInfo("mps", APIVersion, "ProcessLiveMedia")
-    return
-}
-
-func NewProcessLiveMediaResponse() (response *ProcessLiveMediaResponse) {
-    response = &ProcessLiveMediaResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    }
-    return
-}
-
-// 对直播流媒体发起处理任务，功能包括：
-// 
-// 1. 智能内容识别（人脸、文本全文、文本关键词、语音全文、语音关键词、物体）。
-// 2. 智能内容分析（精彩集锦）。
-// 
-// 直播流处理事件通知实时写入用户指定的消息队列 CMQ 中，用户需要从消息队列 CMQ 中获取事件通知结果，同时处理过程中存在输出文件的，会写入用户指定的输出文件的目标存储中。
-func (c *Client) ProcessLiveMedia(request *ProcessLiveMediaRequest) (response *ProcessLiveMediaResponse, err error) {
-    if request == nil {
-        request = NewProcessLiveMediaRequest()
-    }
-    response = NewProcessLiveMediaResponse()
     err = c.Send(request, response)
     return
 }
@@ -960,7 +1332,9 @@ func NewProcessMediaResponse() (response *ProcessMediaResponse) {
 // 3. 对视频按指定时间点截图；
 // 4. 对视频采样截图；
 // 5. 对视频截图雪碧图；
-// 6. 对视频转自适应码流。
+// 6. 对视频转自适应码流；
+// 7. 智能内容审核（鉴黄、鉴恐、鉴政）；
+// 8. 智能内容识别（人脸、文本全文、文本关键词、语音全文、语音关键词）。
 func (c *Client) ProcessMedia(request *ProcessMediaRequest) (response *ProcessMediaResponse, err error) {
     if request == nil {
         request = NewProcessMediaRequest()

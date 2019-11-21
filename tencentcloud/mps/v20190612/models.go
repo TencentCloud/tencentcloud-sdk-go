@@ -20,9 +20,47 @@ import (
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
-type AiAnalysisTaskInput struct {
+type AIRecognitionTemplateItem struct {
 
-	// 视频内容分析模板 ID。
+	// 视频内容识别模板唯一标识。
+	Definition *int64 `json:"Definition,omitempty" name:"Definition"`
+
+	// 视频内容识别模板名称。
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 视频内容识别模板描述信息。
+	Comment *string `json:"Comment,omitempty" name:"Comment"`
+
+	// 人脸识别控制参数。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FaceConfigure *FaceConfigureInfo `json:"FaceConfigure,omitempty" name:"FaceConfigure"`
+
+	// 文本全文识别控制参数。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OcrFullTextConfigure *OcrFullTextConfigureInfo `json:"OcrFullTextConfigure,omitempty" name:"OcrFullTextConfigure"`
+
+	// 文本关键词识别控制参数。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OcrWordsConfigure *OcrWordsConfigureInfo `json:"OcrWordsConfigure,omitempty" name:"OcrWordsConfigure"`
+
+	// 语音全文识别控制参数。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AsrFullTextConfigure *AsrFullTextConfigureInfo `json:"AsrFullTextConfigure,omitempty" name:"AsrFullTextConfigure"`
+
+	// 语音关键词识别控制参数。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AsrWordsConfigure *AsrWordsConfigureInfo `json:"AsrWordsConfigure,omitempty" name:"AsrWordsConfigure"`
+
+	// 模板创建时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 模板最后修改时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
+}
+
+type AiClassificationTaskInput struct {
+
+	// 智能分类模板 ID。
 	Definition *uint64 `json:"Definition,omitempty" name:"Definition"`
 }
 
@@ -702,6 +740,109 @@ type AiReviewTerrorismTaskOutput struct {
 	SegmentSet []*MediaContentReviewSegmentItem `json:"SegmentSet,omitempty" name:"SegmentSet" list`
 }
 
+type AiSampleFaceInfo struct {
+
+	// 人脸图片 ID。
+	FaceId *string `json:"FaceId,omitempty" name:"FaceId"`
+
+	// 人脸图片地址。
+	Url *string `json:"Url,omitempty" name:"Url"`
+}
+
+type AiSampleFaceOperation struct {
+
+	// 操作类型，可选值：add（添加）、delete（删除）、reset（重置）。重置操作将清空该人物已有人脸数据，并添加 FaceContents 指定人脸数据。
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 人脸 ID 集合，当 Type为delete 时，该字段必填。
+	FaceIds []*string `json:"FaceIds,omitempty" name:"FaceIds" list`
+
+	// 人脸图片 [Base64](https://tools.ietf.org/html/rfc4648) 编码后的字符串集合。
+	// <li>当 Type为add 或 reset 时，该字段必填；</li>
+	// <li>数组长度限制：5 张图片。</li>
+	// 注意：图片必须是单人像正面人脸较清晰的照片，像素不低于 200*200。
+	FaceContents []*string `json:"FaceContents,omitempty" name:"FaceContents" list`
+}
+
+type AiSampleFailFaceInfo struct {
+
+	// 对应入参 FaceContents 中错误图片下标，从 0 开始。
+	Index *uint64 `json:"Index,omitempty" name:"Index"`
+
+	// 错误码，取值：
+	// <li>0：成功；</li>
+	// <li>其他：失败。</li>
+	ErrCode *int64 `json:"ErrCode,omitempty" name:"ErrCode"`
+
+	// 错误描述。
+	Message *string `json:"Message,omitempty" name:"Message"`
+}
+
+type AiSamplePerson struct {
+
+	// 人物 ID。
+	PersonId *string `json:"PersonId,omitempty" name:"PersonId"`
+
+	// 人物名称。
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 人物描述。
+	Description *string `json:"Description,omitempty" name:"Description"`
+
+	// 人脸信息。
+	FaceInfoSet []*AiSampleFaceInfo `json:"FaceInfoSet,omitempty" name:"FaceInfoSet" list`
+
+	// 人物标签。
+	TagSet []*string `json:"TagSet,omitempty" name:"TagSet" list`
+
+	// 应用场景。
+	UsageSet []*string `json:"UsageSet,omitempty" name:"UsageSet" list`
+
+	// 创建时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 最后修改时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
+}
+
+type AiSampleTagOperation struct {
+
+	// 操作类型，可选值：add（添加）、delete（删除）、reset（重置）。
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 标签，长度限制：128 个字符。
+	Tags []*string `json:"Tags,omitempty" name:"Tags" list`
+}
+
+type AiSampleWord struct {
+
+	// 关键词。
+	Keyword *string `json:"Keyword,omitempty" name:"Keyword"`
+
+	// 关键词标签。
+	TagSet []*string `json:"TagSet,omitempty" name:"TagSet" list`
+
+	// 关键词应用场景。
+	UsageSet []*string `json:"UsageSet,omitempty" name:"UsageSet" list`
+
+	// 创建时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 最后修改时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
+}
+
+type AiSampleWordInfo struct {
+
+	// 关键词，长度限制：20 个字符。
+	Keyword *string `json:"Keyword,omitempty" name:"Keyword"`
+
+	// 关键词标签
+	// <li>数组长度限制：20 个标签；</li>
+	// <li>单个标签长度限制：128 个字符。</li>
+	Tags []*string `json:"Tags,omitempty" name:"Tags" list`
+}
+
 type AnimatedGraphicTaskInput struct {
 
 	// 视频转动图模板 ID。
@@ -773,6 +914,54 @@ type AnimatedGraphicsTemplate struct {
 
 	// 模板最后修改时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
 	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
+}
+
+type AsrFullTextConfigureInfo struct {
+
+	// 语音全文识别任务开关，可选值：
+	// <li>ON：开启智能语音全文识别任务；</li>
+	// <li>OFF：关闭智能语音全文识别任务。</li>
+	Switch *string `json:"Switch,omitempty" name:"Switch"`
+
+	// 生成的字幕文件格式，不填或者填空字符串表示不生成字幕文件，可选值：
+	// <li>vtt：生成 WebVTT 字幕文件。</li>
+	SubtitleFormat *string `json:"SubtitleFormat,omitempty" name:"SubtitleFormat"`
+}
+
+type AsrFullTextConfigureInfoForUpdate struct {
+
+	// 语音全文识别任务开关，可选值：
+	// <li>ON：开启智能语音全文识别任务；</li>
+	// <li>OFF：关闭智能语音全文识别任务。</li>
+	Switch *string `json:"Switch,omitempty" name:"Switch"`
+
+	// 生成的字幕文件格式，填空字符串表示不生成字幕文件，可选值：
+	// <li>vtt：生成 WebVTT 字幕文件。</li>
+	SubtitleFormat *string `json:"SubtitleFormat,omitempty" name:"SubtitleFormat"`
+}
+
+type AsrWordsConfigureInfo struct {
+
+	// 语音关键词识别任务开关，可选值：
+	// <li>ON：开启语音关键词识别任务；</li>
+	// <li>OFF：关闭语音关键词识别任务。</li>
+	Switch *string `json:"Switch,omitempty" name:"Switch"`
+
+	// 关键词过滤标签，指定需要返回的关键词的标签。如果未填或者为空，则全部结果都返回。
+	// 标签个数最多 10 个，每个标签长度最多 16 个字符。
+	LabelSet []*string `json:"LabelSet,omitempty" name:"LabelSet" list`
+}
+
+type AsrWordsConfigureInfoForUpdate struct {
+
+	// 语音关键词识别任务开关，可选值：
+	// <li>ON：开启语音关键词识别任务；</li>
+	// <li>OFF：关闭语音关键词识别任务。</li>
+	Switch *string `json:"Switch,omitempty" name:"Switch"`
+
+	// 关键词过滤标签，指定需要返回的关键词的标签。如果未填或者为空，则全部结果都返回。
+	// 标签个数最多 10 个，每个标签长度最多 16 个字符。
+	LabelSet []*string `json:"LabelSet,omitempty" name:"LabelSet" list`
 }
 
 type AudioTemplateInfo struct {
@@ -851,6 +1040,40 @@ type AudioTemplateInfoForUpdate struct {
 	AudioChannel *int64 `json:"AudioChannel,omitempty" name:"AudioChannel"`
 }
 
+type ContentReviewTemplateItem struct {
+
+	// 内容审核模板唯一标识。
+	Definition *int64 `json:"Definition,omitempty" name:"Definition"`
+
+	// 内容审核模板名称，长度限制：64 个字符。
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 内容审核模板描述信息，长度限制：256 个字符。
+	Comment *string `json:"Comment,omitempty" name:"Comment"`
+
+	// 鉴黄控制参数。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PornConfigure *PornConfigureInfo `json:"PornConfigure,omitempty" name:"PornConfigure"`
+
+	// 鉴恐控制参数。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TerrorismConfigure *TerrorismConfigureInfo `json:"TerrorismConfigure,omitempty" name:"TerrorismConfigure"`
+
+	// 鉴政控制参数。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PoliticalConfigure *PoliticalConfigureInfo `json:"PoliticalConfigure,omitempty" name:"PoliticalConfigure"`
+
+	// 用户自定义内容审核控制参数。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UserDefineConfigure *UserDefineConfigureInfo `json:"UserDefineConfigure,omitempty" name:"UserDefineConfigure"`
+
+	// 模板创建时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 模板最后修改时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
+}
+
 type CosFileUploadTrigger struct {
 
 	// 工作流绑定的 COS Bucket 名，如 TopRankVideo-125xxx88。
@@ -885,6 +1108,61 @@ type CosOutputStorage struct {
 
 	// 视频处理生成的文件输出的目标 Bucket 的园区，如 ap-chongqing。如果不填，表示继承上层。
 	Region *string `json:"Region,omitempty" name:"Region"`
+}
+
+type CreateAIRecognitionTemplateRequest struct {
+	*tchttp.BaseRequest
+
+	// 视频内容识别模板名称，长度限制：64 个字符。
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 视频内容识别模板描述信息，长度限制：256 个字符。
+	Comment *string `json:"Comment,omitempty" name:"Comment"`
+
+	// 人脸识别控制参数。
+	FaceConfigure *FaceConfigureInfo `json:"FaceConfigure,omitempty" name:"FaceConfigure"`
+
+	// 文本全文识别控制参数。
+	OcrFullTextConfigure *OcrFullTextConfigureInfo `json:"OcrFullTextConfigure,omitempty" name:"OcrFullTextConfigure"`
+
+	// 文本关键词识别控制参数。
+	OcrWordsConfigure *OcrWordsConfigureInfo `json:"OcrWordsConfigure,omitempty" name:"OcrWordsConfigure"`
+
+	// 语音全文识别控制参数。
+	AsrFullTextConfigure *AsrFullTextConfigureInfo `json:"AsrFullTextConfigure,omitempty" name:"AsrFullTextConfigure"`
+
+	// 语音关键词识别控制参数。
+	AsrWordsConfigure *AsrWordsConfigureInfo `json:"AsrWordsConfigure,omitempty" name:"AsrWordsConfigure"`
+}
+
+func (r *CreateAIRecognitionTemplateRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateAIRecognitionTemplateRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateAIRecognitionTemplateResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 视频内容识别模板唯一标识。
+		Definition *int64 `json:"Definition,omitempty" name:"Definition"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateAIRecognitionTemplateResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateAIRecognitionTemplateResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
 }
 
 type CreateAnimatedGraphicsTemplateRequest struct {
@@ -952,6 +1230,58 @@ func (r *CreateAnimatedGraphicsTemplateResponse) FromJsonString(s string) error 
     return json.Unmarshal([]byte(s), &r)
 }
 
+type CreateContentReviewTemplateRequest struct {
+	*tchttp.BaseRequest
+
+	// 内容审核模板名称，长度限制：64 个字符。
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 内容审核模板描述信息，长度限制：256 个字符。
+	Comment *string `json:"Comment,omitempty" name:"Comment"`
+
+	// 鉴黄控制参数。
+	PornConfigure *PornConfigureInfo `json:"PornConfigure,omitempty" name:"PornConfigure"`
+
+	// 鉴恐控制参数。
+	TerrorismConfigure *TerrorismConfigureInfo `json:"TerrorismConfigure,omitempty" name:"TerrorismConfigure"`
+
+	// 鉴政控制参数。
+	PoliticalConfigure *PoliticalConfigureInfo `json:"PoliticalConfigure,omitempty" name:"PoliticalConfigure"`
+
+	// 用户自定义内容审核控制参数。
+	UserDefineConfigure *UserDefineConfigureInfo `json:"UserDefineConfigure,omitempty" name:"UserDefineConfigure"`
+}
+
+func (r *CreateContentReviewTemplateRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateContentReviewTemplateRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateContentReviewTemplateResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 内容审核模板唯一标识。
+		Definition *int64 `json:"Definition,omitempty" name:"Definition"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateContentReviewTemplateResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateContentReviewTemplateResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type CreateImageSpriteTemplateRequest struct {
 	*tchttp.BaseRequest
 
@@ -1008,6 +1338,64 @@ func (r *CreateImageSpriteTemplateResponse) ToJsonString() string {
 }
 
 func (r *CreateImageSpriteTemplateResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreatePersonSampleRequest struct {
+	*tchttp.BaseRequest
+
+	// 人物名称，长度限制：20 个字符。
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 人脸图片 [Base64](https://tools.ietf.org/html/rfc4648) 编码后的字符串，仅支持 jpeg、png 图片格式。数组长度限制：5 张图片。
+	// 注意：图片必须是单人像正面人脸较清晰的照片，像素不低于 200*200。
+	FaceContents []*string `json:"FaceContents,omitempty" name:"FaceContents" list`
+
+	// 人物应用场景，可选值：
+	// 1. Recognition：用于内容识别，等价于 Recognition.Face。
+	// 2. Review：用于内容审核，等价于 Review.Face。
+	// 3. All：用于内容识别、内容审核，等价于 1+2。
+	Usages []*string `json:"Usages,omitempty" name:"Usages" list`
+
+	// 人物描述，长度限制：1024 个字符。
+	Description *string `json:"Description,omitempty" name:"Description"`
+
+	// 人物标签
+	// <li>数组长度限制：20 个标签；</li>
+	// <li>单个标签长度限制：128 个字符。</li>
+	Tags []*string `json:"Tags,omitempty" name:"Tags" list`
+}
+
+func (r *CreatePersonSampleRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreatePersonSampleRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreatePersonSampleResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 人物信息。
+		Person *AiSamplePerson `json:"Person,omitempty" name:"Person"`
+
+		// 处理失败的人脸信息。
+		FailFaceInfoSet []*AiSampleFailFaceInfo `json:"FailFaceInfoSet,omitempty" name:"FailFaceInfoSet" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreatePersonSampleResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreatePersonSampleResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -1260,6 +1648,51 @@ func (r *CreateWatermarkTemplateResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type CreateWordSamplesRequest struct {
+	*tchttp.BaseRequest
+
+	// <b>关键词应用场景，可选值：</b>
+	// 1. Recognition.Ocr：通过光学字符识别技术，进行内容识别；
+	// 2. Recognition.Asr：通过语音识别技术，进行内容识别；
+	// 3. Review.Ocr：通过光学字符识别技术，进行内容审核；
+	// 4. Review.Asr：通过语音识别技术，进行内容审核；
+	// <b>可合并简写为：</b>
+	// 5. Recognition：通过光学字符识别技术、语音识别技术，进行内容识别，等价于 1+2；
+	// 6. Review：通过光学字符识别技术、语音识别技术，进行内容审核，等价于 3+4；
+	// 7. All：通过光学字符识别技术、语音识别技术，进行内容识别、内容审核，等价于 1+2+3+4。
+	Usages []*string `json:"Usages,omitempty" name:"Usages" list`
+
+	// 关键词，数组长度限制：100。
+	Words []*AiSampleWordInfo `json:"Words,omitempty" name:"Words" list`
+}
+
+func (r *CreateWordSamplesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateWordSamplesRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateWordSamplesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateWordSamplesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateWordSamplesResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type CreateWorkflowRequest struct {
 	*tchttp.BaseRequest
 
@@ -1277,6 +1710,12 @@ type CreateWorkflowRequest struct {
 
 	// 视频处理类型任务参数。
 	MediaProcessTask *MediaProcessTaskInput `json:"MediaProcessTask,omitempty" name:"MediaProcessTask"`
+
+	// 视频内容审核类型任务参数。
+	AiContentReviewTask *AiContentReviewTaskInput `json:"AiContentReviewTask,omitempty" name:"AiContentReviewTask"`
+
+	// 视频内容识别类型任务参数。
+	AiRecognitionTask *AiRecognitionTaskInput `json:"AiRecognitionTask,omitempty" name:"AiRecognitionTask"`
 
 	// 任务的事件通知配置，不填代表不获取事件通知。
 	TaskNotifyConfig *TaskNotifyConfig `json:"TaskNotifyConfig,omitempty" name:"TaskNotifyConfig"`
@@ -1315,6 +1754,40 @@ func (r *CreateWorkflowResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DeleteAIRecognitionTemplateRequest struct {
+	*tchttp.BaseRequest
+
+	// 视频内容识别模板唯一标识。
+	Definition *int64 `json:"Definition,omitempty" name:"Definition"`
+}
+
+func (r *DeleteAIRecognitionTemplateRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteAIRecognitionTemplateRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteAIRecognitionTemplateResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DeleteAIRecognitionTemplateResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteAIRecognitionTemplateResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DeleteAnimatedGraphicsTemplateRequest struct {
 	*tchttp.BaseRequest
 
@@ -1349,6 +1822,40 @@ func (r *DeleteAnimatedGraphicsTemplateResponse) FromJsonString(s string) error 
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DeleteContentReviewTemplateRequest struct {
+	*tchttp.BaseRequest
+
+	// 内容审核模板唯一标识。
+	Definition *int64 `json:"Definition,omitempty" name:"Definition"`
+}
+
+func (r *DeleteContentReviewTemplateRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteContentReviewTemplateRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteContentReviewTemplateResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DeleteContentReviewTemplateResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteContentReviewTemplateResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DeleteImageSpriteTemplateRequest struct {
 	*tchttp.BaseRequest
 
@@ -1380,6 +1887,40 @@ func (r *DeleteImageSpriteTemplateResponse) ToJsonString() string {
 }
 
 func (r *DeleteImageSpriteTemplateResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeletePersonSampleRequest struct {
+	*tchttp.BaseRequest
+
+	// 人物 ID。
+	PersonId *string `json:"PersonId,omitempty" name:"PersonId"`
+}
+
+func (r *DeletePersonSampleRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeletePersonSampleRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeletePersonSampleResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DeletePersonSampleResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeletePersonSampleResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -1519,6 +2060,40 @@ func (r *DeleteWatermarkTemplateResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DeleteWordSamplesRequest struct {
+	*tchttp.BaseRequest
+
+	// 关键词，数组长度限制：100 个词。
+	Keywords []*string `json:"Keywords,omitempty" name:"Keywords" list`
+}
+
+func (r *DeleteWordSamplesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteWordSamplesRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteWordSamplesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DeleteWordSamplesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteWordSamplesResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DeleteWorkflowRequest struct {
 	*tchttp.BaseRequest
 
@@ -1550,6 +2125,52 @@ func (r *DeleteWorkflowResponse) ToJsonString() string {
 }
 
 func (r *DeleteWorkflowResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeAIRecognitionTemplatesRequest struct {
+	*tchttp.BaseRequest
+
+	// 视频内容识别模板唯一标识过滤条件，数组长度限制：10。
+	Definitions []*int64 `json:"Definitions,omitempty" name:"Definitions" list`
+
+	// 分页偏移量，默认值：0。
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 返回记录条数，默认值：10，最大值：50。
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+func (r *DescribeAIRecognitionTemplatesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeAIRecognitionTemplatesRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeAIRecognitionTemplatesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 符合过滤条件的记录总数。
+		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 视频内容识别模板详情列表。
+		AIRecognitionTemplateSet []*AIRecognitionTemplateItem `json:"AIRecognitionTemplateSet,omitempty" name:"AIRecognitionTemplateSet" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeAIRecognitionTemplatesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeAIRecognitionTemplatesResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -1604,6 +2225,52 @@ func (r *DescribeAnimatedGraphicsTemplatesResponse) FromJsonString(s string) err
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeContentReviewTemplatesRequest struct {
+	*tchttp.BaseRequest
+
+	// 内容审核模板唯一标识过滤条件，数组长度限制：50。
+	Definitions []*int64 `json:"Definitions,omitempty" name:"Definitions" list`
+
+	// 分页偏移量，默认值：0。
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 返回记录条数，默认值：10，最大值：50。
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+func (r *DescribeContentReviewTemplatesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeContentReviewTemplatesRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeContentReviewTemplatesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 符合过滤条件的记录总数。
+		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 内容审核模板详情列表。
+		ContentReviewTemplateSet []*ContentReviewTemplateItem `json:"ContentReviewTemplateSet,omitempty" name:"ContentReviewTemplateSet" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeContentReviewTemplatesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeContentReviewTemplatesResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeImageSpriteTemplatesRequest struct {
 	*tchttp.BaseRequest
 
@@ -1652,6 +2319,66 @@ func (r *DescribeImageSpriteTemplatesResponse) ToJsonString() string {
 }
 
 func (r *DescribeImageSpriteTemplatesResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribePersonSamplesRequest struct {
+	*tchttp.BaseRequest
+
+	// 拉取的人物类型，可选值：
+	// <li>UserDefine：用户自定义人物库；</li>
+	// <li>Default：系统默认人物库。</li>
+	// 
+	// 默认值：UserDefine，拉取用户自定义人物库人物。
+	// 说明：如果是拉取系统默认人物库，只能使用人物名字或者人物 ID + 人物名字的方式进行拉取，且人脸图片只返回一张。
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 人物 ID，数组长度限制：100。
+	PersonIds []*string `json:"PersonIds,omitempty" name:"PersonIds" list`
+
+	// 人物名称，数组长度限制：20。
+	Names []*string `json:"Names,omitempty" name:"Names" list`
+
+	// 人物标签，数组长度限制：20。
+	Tags []*string `json:"Tags,omitempty" name:"Tags" list`
+
+	// 分页偏移量，默认值：0。
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 返回记录条数，默认值：100，最大值：100。
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+func (r *DescribePersonSamplesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribePersonSamplesRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribePersonSamplesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 符合条件的记录总数。
+		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 人物信息。
+		PersonSet []*AiSamplePerson `json:"PersonSet,omitempty" name:"PersonSet" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribePersonSamplesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribePersonSamplesResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -1992,6 +2719,68 @@ func (r *DescribeWatermarkTemplatesResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeWordSamplesRequest struct {
+	*tchttp.BaseRequest
+
+	// <b>关键词应用场景过滤条件，可选值：</b>
+	// 1. Recognition.Ocr：通过光学字符识别技术，进行内容识别；
+	// 2. Recognition.Asr：通过语音识别技术，进行内容识别；
+	// 3. Review.Ocr：通过光学字符识别技术，进行内容审核；
+	// 4. Review.Asr：通过语音识别技术，进行内容审核；
+	// <b>可合并简写为：</b>
+	// 5. Recognition：通过光学字符识别技术、语音识别技术，进行内容识别，等价于 1+2；
+	// 6. Review：通过光学字符识别技术、语音识别技术，进行内容审核，等价于 3+4；
+	// 可多选，元素间关系为 or，即关键词的应用场景包含该字段集合中任意元素的记录，均符合该条件。
+	Usages []*string `json:"Usages,omitempty" name:"Usages" list`
+
+	// 关键词过滤条件，数组长度限制：100 个词。
+	Keywords []*string `json:"Keywords,omitempty" name:"Keywords" list`
+
+	// 标签过滤条件，数组长度限制：20 个词。
+	Tags []*string `json:"Tags,omitempty" name:"Tags" list`
+
+	// 分页偏移量，默认值：0。
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 返回记录条数，默认值：100，最大值：100。
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+func (r *DescribeWordSamplesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeWordSamplesRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeWordSamplesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 符合条件的记录总数。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 关键词信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		WordSet []*AiSampleWord `json:"WordSet,omitempty" name:"WordSet" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeWordSamplesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeWordSamplesResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeWorkflowsRequest struct {
 	*tchttp.BaseRequest
 
@@ -2112,6 +2901,61 @@ func (r *EnableWorkflowResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type FaceConfigureInfo struct {
+
+	// 人脸识别任务开关，可选值：
+	// <li>ON：开启智能人脸识别任务；</li>
+	// <li>OFF：关闭智能人脸识别任务。</li>
+	Switch *string `json:"Switch,omitempty" name:"Switch"`
+
+	// 人脸识别过滤分数，当识别结果达到该分数以上，返回识别结果。默认 95 分。取值范围：0 - 100。
+	Score *float64 `json:"Score,omitempty" name:"Score"`
+
+	// 默认人物过滤标签，指定需要返回的默认人物的标签。如果未填或者为空，则全部默认人物结果都返回。标签可选值：
+	// <li>entertainment：娱乐明星；</li>
+	// <li>sport：体育明星；</li>
+	// <li>politician：政治人物。</li>
+	DefaultLibraryLabelSet []*string `json:"DefaultLibraryLabelSet,omitempty" name:"DefaultLibraryLabelSet" list`
+
+	// 用户自定义人物过滤标签，指定需要返回的用户自定义人物的标签。如果未填或者为空，则全部自定义人物结果都返回。
+	// 标签个数最多 10 个，每个标签长度最多 16 个字符。
+	UserDefineLibraryLabelSet []*string `json:"UserDefineLibraryLabelSet,omitempty" name:"UserDefineLibraryLabelSet" list`
+
+	// 人物库选择，可选值：
+	// <li>Default：使用默认人物库；</li>
+	// <li>UserDefine：使用用户自定义人物库。</li>
+	// <li>All：同时使用默认人物库和用户自定义人物库。</li>
+	// 默认值：All，使用系统默认人物库及用户自定义人物库。
+	FaceLibrary *string `json:"FaceLibrary,omitempty" name:"FaceLibrary"`
+}
+
+type FaceConfigureInfoForUpdate struct {
+
+	// 人脸识别任务开关，可选值：
+	// <li>ON：开启智能人脸识别任务；</li>
+	// <li>OFF：关闭智能人脸识别任务。</li>
+	Switch *string `json:"Switch,omitempty" name:"Switch"`
+
+	// 人脸识别过滤分数，当识别结果达到该分数以上，返回识别结果。取值范围：0-100。
+	Score *float64 `json:"Score,omitempty" name:"Score"`
+
+	// 默认人物过滤标签，指定需要返回的默认人物的标签。如果未填或者为空，则全部默认人物结果都返回。标签可选值：
+	// <li>entertainment：娱乐明星；</li>
+	// <li>sport：体育明星；</li>
+	// <li>politician：政治人物。</li>
+	DefaultLibraryLabelSet []*string `json:"DefaultLibraryLabelSet,omitempty" name:"DefaultLibraryLabelSet" list`
+
+	// 用户自定义人物过滤标签，指定需要返回的用户自定义人物的标签。如果未填或者为空，则全部自定义人物结果都返回。
+	// 标签个数最多 10 个，每个标签长度最多 16 个字符。
+	UserDefineLibraryLabelSet []*string `json:"UserDefineLibraryLabelSet,omitempty" name:"UserDefineLibraryLabelSet" list`
+
+	// 人物库选择，可选值：
+	// <li>Default：使用默认人物库；</li>
+	// <li>UserDefine：使用用户自定义人物库。</li>
+	// <li>All：同时使用默认人物库和用户自定义人物库。</li>
+	FaceLibrary *string `json:"FaceLibrary,omitempty" name:"FaceLibrary"`
+}
+
 type ImageSpriteTaskInput struct {
 
 	// 雪碧图模板 ID。
@@ -2168,6 +3012,12 @@ type ImageSpriteTemplate struct {
 
 	// 模板最后修改时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
 	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
+
+	// 填充方式，当视频流配置宽高参数与原始视频的宽高比不一致时，对转码的处理方式，即为“填充”。可选填充方式：
+	// <li> stretch：拉伸，对每一帧进行拉伸，填满整个画面，可能导致转码后的视频被“压扁“或者“拉长“；</li>
+	// <li>black：留黑，保持视频宽高比不变，边缘剩余部分使用黑色填充。</li>
+	// 默认值：black 。
+	FillType *string `json:"FillType,omitempty" name:"FillType"`
 }
 
 type ImageWatermarkInput struct {
@@ -2943,6 +3793,61 @@ type MediaVideoStreamItem struct {
 	Fps *int64 `json:"Fps,omitempty" name:"Fps"`
 }
 
+type ModifyAIRecognitionTemplateRequest struct {
+	*tchttp.BaseRequest
+
+	// 视频内容识别模板唯一标识。
+	Definition *int64 `json:"Definition,omitempty" name:"Definition"`
+
+	// 视频内容识别模板名称，长度限制：64 个字符。
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 视频内容识别模板描述信息，长度限制：256 个字符。
+	Comment *string `json:"Comment,omitempty" name:"Comment"`
+
+	// 人脸识别控制参数。
+	FaceConfigure *FaceConfigureInfoForUpdate `json:"FaceConfigure,omitempty" name:"FaceConfigure"`
+
+	// 文本全文识别控制参数。
+	OcrFullTextConfigure *OcrFullTextConfigureInfoForUpdate `json:"OcrFullTextConfigure,omitempty" name:"OcrFullTextConfigure"`
+
+	// 文本关键词识别控制参数。
+	OcrWordsConfigure *OcrWordsConfigureInfoForUpdate `json:"OcrWordsConfigure,omitempty" name:"OcrWordsConfigure"`
+
+	// 语音全文识别控制参数。
+	AsrFullTextConfigure *AsrFullTextConfigureInfoForUpdate `json:"AsrFullTextConfigure,omitempty" name:"AsrFullTextConfigure"`
+
+	// 语音关键词识别控制参数。
+	AsrWordsConfigure *AsrWordsConfigureInfoForUpdate `json:"AsrWordsConfigure,omitempty" name:"AsrWordsConfigure"`
+}
+
+func (r *ModifyAIRecognitionTemplateRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyAIRecognitionTemplateRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyAIRecognitionTemplateResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifyAIRecognitionTemplateResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyAIRecognitionTemplateResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type ModifyAnimatedGraphicsTemplateRequest struct {
 	*tchttp.BaseRequest
 
@@ -3008,6 +3913,58 @@ func (r *ModifyAnimatedGraphicsTemplateResponse) FromJsonString(s string) error 
     return json.Unmarshal([]byte(s), &r)
 }
 
+type ModifyContentReviewTemplateRequest struct {
+	*tchttp.BaseRequest
+
+	// 内容审核模板唯一标识。
+	Definition *int64 `json:"Definition,omitempty" name:"Definition"`
+
+	// 内容审核模板名称，长度限制：64 个字符。
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 内容审核模板描述信息，长度限制：256 个字符。
+	Comment *string `json:"Comment,omitempty" name:"Comment"`
+
+	// 鉴黄控制参数。
+	PornConfigure *PornConfigureInfoForUpdate `json:"PornConfigure,omitempty" name:"PornConfigure"`
+
+	// 鉴恐控制参数。
+	TerrorismConfigure *TerrorismConfigureInfoForUpdate `json:"TerrorismConfigure,omitempty" name:"TerrorismConfigure"`
+
+	// 鉴政控制参数。
+	PoliticalConfigure *PoliticalConfigureInfoForUpdate `json:"PoliticalConfigure,omitempty" name:"PoliticalConfigure"`
+
+	// 用户自定义内容审核控制参数。
+	UserDefineConfigure *UserDefineConfigureInfoForUpdate `json:"UserDefineConfigure,omitempty" name:"UserDefineConfigure"`
+}
+
+func (r *ModifyContentReviewTemplateRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyContentReviewTemplateRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyContentReviewTemplateResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifyContentReviewTemplateResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyContentReviewTemplateResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type ModifyImageSpriteTemplateRequest struct {
 	*tchttp.BaseRequest
 
@@ -3064,6 +4021,65 @@ func (r *ModifyImageSpriteTemplateResponse) ToJsonString() string {
 }
 
 func (r *ModifyImageSpriteTemplateResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyPersonSampleRequest struct {
+	*tchttp.BaseRequest
+
+	// 人物 ID。
+	PersonId *string `json:"PersonId,omitempty" name:"PersonId"`
+
+	// 名称，长度限制：128 个字符。
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 描述，长度限制：1024 个字符。
+	Description *string `json:"Description,omitempty" name:"Description"`
+
+	// 人物应用场景，可选值：
+	// 1. Recognition：用于内容识别，等价于 Recognition.Face。
+	// 2. Review：用于内容审核，等价于 Review.Face。
+	// 3. All：用于内容识别、内容审核，等价于 1+2。
+	Usages []*string `json:"Usages,omitempty" name:"Usages" list`
+
+	// 人脸操作信息。
+	FaceOperationInfo *AiSampleFaceOperation `json:"FaceOperationInfo,omitempty" name:"FaceOperationInfo"`
+
+	// 标签操作信息。
+	TagOperationInfo *AiSampleTagOperation `json:"TagOperationInfo,omitempty" name:"TagOperationInfo"`
+}
+
+func (r *ModifyPersonSampleRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyPersonSampleRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyPersonSampleResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 人物信息。
+		Person *AiSamplePerson `json:"Person,omitempty" name:"Person"`
+
+		// 处理失败的人脸信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		FailFaceInfoSet []*AiSampleFailFaceInfo `json:"FailFaceInfoSet,omitempty" name:"FailFaceInfoSet" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifyPersonSampleResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyPersonSampleResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -3307,6 +4323,54 @@ func (r *ModifyWatermarkTemplateResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type ModifyWordSampleRequest struct {
+	*tchttp.BaseRequest
+
+	// 关键词，长度限制：128 个字符。
+	Keyword *string `json:"Keyword,omitempty" name:"Keyword"`
+
+	// <b>关键词应用场景，可选值：</b>
+	// 1. Recognition.Ocr：通过光学字符识别技术，进行内容识别；
+	// 2. Recognition.Asr：通过语音识别技术，进行内容识别；
+	// 3. Review.Ocr：通过光学字符识别技术，进行内容审核；
+	// 4. Review.Asr：通过语音识别技术，进行内容审核；
+	// <b>可合并简写为：</b>
+	// 5. Recognition：通过光学字符识别技术、语音识别技术，进行内容识别，等价于 1+2；
+	// 6. Review：通过光学字符识别技术、语音识别技术，进行内容审核，等价于 3+4；
+	// 7. All：通过光学字符识别技术、语音识别技术，进行内容识别、内容审核，等价于 1+2+3+4。
+	Usages []*string `json:"Usages,omitempty" name:"Usages" list`
+
+	// 标签操作信息。
+	TagOperationInfo *AiSampleTagOperation `json:"TagOperationInfo,omitempty" name:"TagOperationInfo"`
+}
+
+func (r *ModifyWordSampleRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyWordSampleRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyWordSampleResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifyWordSampleResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyWordSampleResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type NumberFormat struct {
 
 	// `{number}`变量的起始值，默认为0。
@@ -3320,6 +4384,46 @@ type NumberFormat struct {
 
 	// `{number}`变量的长度不足时，补充的占位符。默认为"0"。
 	PlaceHolder *string `json:"PlaceHolder,omitempty" name:"PlaceHolder"`
+}
+
+type OcrFullTextConfigureInfo struct {
+
+	// 文本全文识别任务开关，可选值：
+	// <li>ON：开启智能文本全文识别任务；</li>
+	// <li>OFF：关闭智能文本全文识别任务。</li>
+	Switch *string `json:"Switch,omitempty" name:"Switch"`
+}
+
+type OcrFullTextConfigureInfoForUpdate struct {
+
+	// 文本全文识别任务开关，可选值：
+	// <li>ON：开启智能文本全文识别任务；</li>
+	// <li>OFF：关闭智能文本全文识别任务。</li>
+	Switch *string `json:"Switch,omitempty" name:"Switch"`
+}
+
+type OcrWordsConfigureInfo struct {
+
+	// 文本关键词识别任务开关，可选值：
+	// <li>ON：开启文本关键词识别任务；</li>
+	// <li>OFF：关闭文本关键词识别任务。</li>
+	Switch *string `json:"Switch,omitempty" name:"Switch"`
+
+	// 关键词过滤标签，指定需要返回的关键词的标签。如果未填或者为空，则全部结果都返回。
+	// 标签个数最多 10 个，每个标签长度最多 16 个字符。
+	LabelSet []*string `json:"LabelSet,omitempty" name:"LabelSet" list`
+}
+
+type OcrWordsConfigureInfoForUpdate struct {
+
+	// 文本关键词识别任务开关，可选值：
+	// <li>ON：开启文本关键词识别任务；</li>
+	// <li>OFF：关闭文本关键词识别任务。</li>
+	Switch *string `json:"Switch,omitempty" name:"Switch"`
+
+	// 关键词过滤标签，指定需要返回的关键词的标签。如果未填或者为空，则全部结果都返回。
+	// 标签个数最多 10 个，每个标签长度最多 16 个字符。
+	LabelSet []*string `json:"LabelSet,omitempty" name:"LabelSet" list`
 }
 
 type ParseLiveStreamProcessNotificationRequest struct {
@@ -3426,65 +4530,254 @@ func (r *ParseNotificationResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
-type ProcessLiveMediaRequest struct {
-	*tchttp.BaseRequest
+type PoliticalAsrReviewTemplateInfo struct {
 
-	// 直播流 URL。
-	Url *string `json:"Url,omitempty" name:"Url"`
+	// 语音鉴政任务开关，可选值：
+	// <li>ON：开启语音鉴政任务；</li>
+	// <li>OFF：关闭语音鉴政任务。</li>
+	Switch *string `json:"Switch,omitempty" name:"Switch"`
 
-	// 直播流处理输出文件的目标存储。如处理有文件输出，该参数为必填项。
-	OutputStorage *TaskOutputStorage `json:"OutputStorage,omitempty" name:"OutputStorage"`
+	// 判定涉嫌违规的分数阈值，当智能审核达到该分数以上，认为涉嫌违规，不填默认为 100 分。取值范围：0~100。
+	BlockConfidence *int64 `json:"BlockConfidence,omitempty" name:"BlockConfidence"`
 
-	// 直播流处理生成的文件输出的目标目录，如`/movie/201909/`，如果不填为 `/` 目录。
-	OutputDir *string `json:"OutputDir,omitempty" name:"OutputDir"`
-
-	// 直播流内容识别类型任务参数。
-	AiRecognitionTask *AiRecognitionTaskInput `json:"AiRecognitionTask,omitempty" name:"AiRecognitionTask"`
-
-	// 直播流内容分析类型任务参数。
-	AiAnalysisTask *AiAnalysisTaskInput `json:"AiAnalysisTask,omitempty" name:"AiAnalysisTask"`
-
-	// 任务的事件通知信息，不填代表不获取事件通知。
-	TaskNotifyConfig *TaskNotifyConfig `json:"TaskNotifyConfig,omitempty" name:"TaskNotifyConfig"`
-
-	// 来源上下文，用于透传用户请求信息，任务流状态变更回调将返回该字段值，最长 1000 个字符。
-	SessionContext *string `json:"SessionContext,omitempty" name:"SessionContext"`
-
-	// 用于去重的识别码，如果七天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。
-	SessionId *string `json:"SessionId,omitempty" name:"SessionId"`
-
-	// 直播开始时间戳（UTC 时间 单位为秒，该参数仅对于直播流分析有效）。
-	StartTime *uint64 `json:"StartTime,omitempty" name:"StartTime"`
+	// 判定需人工复核是否违规的分数阈值，当智能审核达到该分数以上，认为需人工复核，不填默认为 75 分。取值范围：0~100。
+	ReviewConfidence *int64 `json:"ReviewConfidence,omitempty" name:"ReviewConfidence"`
 }
 
-func (r *ProcessLiveMediaRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
+type PoliticalAsrReviewTemplateInfoForUpdate struct {
+
+	// 语音鉴政任务开关，可选值：
+	// <li>ON：开启语音鉴政任务；</li>
+	// <li>OFF：关闭语音鉴政任务。</li>
+	Switch *string `json:"Switch,omitempty" name:"Switch"`
+
+	// 判定涉嫌违规的分数阈值，当智能审核达到该分数以上，认为涉嫌违规。取值范围：0~100。
+	BlockConfidence *int64 `json:"BlockConfidence,omitempty" name:"BlockConfidence"`
+
+	// 判定需人工复核是否违规的分数阈值，当智能审核达到该分数以上，认为需人工复核。取值范围：0~100。
+	ReviewConfidence *int64 `json:"ReviewConfidence,omitempty" name:"ReviewConfidence"`
 }
 
-func (r *ProcessLiveMediaRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+type PoliticalConfigureInfo struct {
+
+	// 画面鉴政控制参数。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ImgReviewInfo *PoliticalImgReviewTemplateInfo `json:"ImgReviewInfo,omitempty" name:"ImgReviewInfo"`
+
+	// 语音鉴政控制参数。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AsrReviewInfo *PoliticalAsrReviewTemplateInfo `json:"AsrReviewInfo,omitempty" name:"AsrReviewInfo"`
+
+	// 文本鉴政控制参数。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OcrReviewInfo *PoliticalOcrReviewTemplateInfo `json:"OcrReviewInfo,omitempty" name:"OcrReviewInfo"`
 }
 
-type ProcessLiveMediaResponse struct {
-	*tchttp.BaseResponse
-	Response *struct {
+type PoliticalConfigureInfoForUpdate struct {
 
-		// 任务 ID
-		TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+	// 画面鉴政控制参数。
+	ImgReviewInfo *PoliticalImgReviewTemplateInfoForUpdate `json:"ImgReviewInfo,omitempty" name:"ImgReviewInfo"`
 
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	// 语音鉴政控制参数。
+	AsrReviewInfo *PoliticalAsrReviewTemplateInfoForUpdate `json:"AsrReviewInfo,omitempty" name:"AsrReviewInfo"`
+
+	// 文本鉴政控制参数。
+	OcrReviewInfo *PoliticalOcrReviewTemplateInfoForUpdate `json:"OcrReviewInfo,omitempty" name:"OcrReviewInfo"`
 }
 
-func (r *ProcessLiveMediaResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
+type PoliticalImgReviewTemplateInfo struct {
+
+	// 画面鉴政任务开关，可选值：
+	// <li>ON：开启画面鉴政任务；</li>
+	// <li>OFF：关闭画面鉴政任务。</li>
+	Switch *string `json:"Switch,omitempty" name:"Switch"`
+
+	// 画面鉴政过滤标签，审核结果包含选择的标签则返回结果，如果过滤标签为空，则审核结果全部返回，可选值为：
+	// <li>violation_photo：违规图标；</li>
+	// <li>politician：政治人物；</li>
+	// <li>entertainment：娱乐明星；</li>
+	// <li>sport：体育明星。</li>
+	LabelSet []*string `json:"LabelSet,omitempty" name:"LabelSet" list`
+
+	// 判定涉嫌违规的分数阈值，当智能审核达到该分数以上，认为涉嫌违规，不填默认为 97 分。取值范围：0~100。
+	BlockConfidence *int64 `json:"BlockConfidence,omitempty" name:"BlockConfidence"`
+
+	// 判定需人工复核是否违规的分数阈值，当智能审核达到该分数以上，认为需人工复核，不填默认为 95 分。取值范围：0~100。
+	ReviewConfidence *int64 `json:"ReviewConfidence,omitempty" name:"ReviewConfidence"`
 }
 
-func (r *ProcessLiveMediaResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+type PoliticalImgReviewTemplateInfoForUpdate struct {
+
+	// 画面鉴政任务开关，可选值：
+	// <li>ON：开启画面鉴政任务；</li>
+	// <li>OFF：关闭画面鉴政任务。</li>
+	Switch *string `json:"Switch,omitempty" name:"Switch"`
+
+	// 画面鉴政过滤标签，审核结果包含选择的标签则返回结果，如果过滤标签为空，则审核结果全部返回，可选值为：
+	// <li>violation_photo：违规图标；</li>
+	// <li>politician：政治人物；</li>
+	// <li>entertainment：娱乐明星；</li>
+	// <li>sport：体育明星。</li>
+	LabelSet []*string `json:"LabelSet,omitempty" name:"LabelSet" list`
+
+	// 判定涉嫌违规的分数阈值，当智能审核达到该分数以上，认为涉嫌违规。取值范围：0~100。
+	BlockConfidence *int64 `json:"BlockConfidence,omitempty" name:"BlockConfidence"`
+
+	// 判定需人工复核是否违规的分数阈值，当智能审核达到该分数以上，认为需人工复核。取值范围：0~100。
+	ReviewConfidence *int64 `json:"ReviewConfidence,omitempty" name:"ReviewConfidence"`
+}
+
+type PoliticalOcrReviewTemplateInfo struct {
+
+	// 文本鉴政任务开关，可选值：
+	// <li>ON：开启文本鉴政任务；</li>
+	// <li>OFF：关闭文本鉴政任务。</li>
+	Switch *string `json:"Switch,omitempty" name:"Switch"`
+
+	// 判定涉嫌违规的分数阈值，当智能审核达到该分数以上，认为涉嫌违规，不填默认为 100 分。取值范围：0~100。
+	BlockConfidence *int64 `json:"BlockConfidence,omitempty" name:"BlockConfidence"`
+
+	// 判定需人工复核是否违规的分数阈值，当智能审核达到该分数以上，认为需人工复核，不填默认为 75 分。取值范围：0~100。
+	ReviewConfidence *int64 `json:"ReviewConfidence,omitempty" name:"ReviewConfidence"`
+}
+
+type PoliticalOcrReviewTemplateInfoForUpdate struct {
+
+	// 文本鉴政任务开关，可选值：
+	// <li>ON：开启文本鉴政任务；</li>
+	// <li>OFF：关闭文本鉴政任务。</li>
+	Switch *string `json:"Switch,omitempty" name:"Switch"`
+
+	// 判定涉嫌违规的分数阈值，当智能审核达到该分数以上，认为涉嫌违规。取值范围：0~100。
+	BlockConfidence *int64 `json:"BlockConfidence,omitempty" name:"BlockConfidence"`
+
+	// 判定需人工复核是否违规的分数阈值，当智能审核达到该分数以上，认为需人工复核。取值范围：0~100。
+	ReviewConfidence *int64 `json:"ReviewConfidence,omitempty" name:"ReviewConfidence"`
+}
+
+type PornAsrReviewTemplateInfo struct {
+
+	// 语音鉴黄任务开关，可选值：
+	// <li>ON：开启语音鉴黄任务；</li>
+	// <li>OFF：关闭语音鉴黄任务。</li>
+	Switch *string `json:"Switch,omitempty" name:"Switch"`
+
+	// 判定涉嫌违规的分数阈值，当智能审核达到该分数以上，认为涉嫌违规，不填默认为 100 分。取值范围：0~100。
+	BlockConfidence *int64 `json:"BlockConfidence,omitempty" name:"BlockConfidence"`
+
+	// 判定需人工复核是否违规的分数阈值，当智能审核达到该分数以上，认为需人工复核，不填默认为 75 分。取值范围：0~100。
+	ReviewConfidence *int64 `json:"ReviewConfidence,omitempty" name:"ReviewConfidence"`
+}
+
+type PornAsrReviewTemplateInfoForUpdate struct {
+
+	// 语音鉴黄任务开关，可选值：
+	// <li>ON：开启语音鉴黄任务；</li>
+	// <li>OFF：关闭语音鉴黄任务。</li>
+	Switch *string `json:"Switch,omitempty" name:"Switch"`
+
+	// 判定涉嫌违规的分数阈值，当智能审核达到该分数以上，认为涉嫌违规。取值范围：0~100。
+	BlockConfidence *int64 `json:"BlockConfidence,omitempty" name:"BlockConfidence"`
+
+	// 判定需人工复核是否违规的分数阈值，当智能审核达到该分数以上，认为需人工复核。取值范围：0~100。
+	ReviewConfidence *int64 `json:"ReviewConfidence,omitempty" name:"ReviewConfidence"`
+}
+
+type PornConfigureInfo struct {
+
+	// 画面鉴黄控制参数。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ImgReviewInfo *PornImgReviewTemplateInfo `json:"ImgReviewInfo,omitempty" name:"ImgReviewInfo"`
+
+	// 语音鉴黄控制参数。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AsrReviewInfo *PornAsrReviewTemplateInfo `json:"AsrReviewInfo,omitempty" name:"AsrReviewInfo"`
+
+	// 文本鉴黄控制参数。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OcrReviewInfo *PornOcrReviewTemplateInfo `json:"OcrReviewInfo,omitempty" name:"OcrReviewInfo"`
+}
+
+type PornConfigureInfoForUpdate struct {
+
+	// 画面鉴黄控制参数。
+	ImgReviewInfo *PornImgReviewTemplateInfoForUpdate `json:"ImgReviewInfo,omitempty" name:"ImgReviewInfo"`
+
+	// 语音鉴黄控制参数。
+	AsrReviewInfo *PornAsrReviewTemplateInfoForUpdate `json:"AsrReviewInfo,omitempty" name:"AsrReviewInfo"`
+
+	// 文本鉴黄控制参数。
+	OcrReviewInfo *PornOcrReviewTemplateInfoForUpdate `json:"OcrReviewInfo,omitempty" name:"OcrReviewInfo"`
+}
+
+type PornImgReviewTemplateInfo struct {
+
+	// 画面鉴黄任务开关，可选值：
+	// <li>ON：开启画面鉴黄任务；</li>
+	// <li>OFF：关闭画面鉴黄任务。</li>
+	Switch *string `json:"Switch,omitempty" name:"Switch"`
+
+	// 画面鉴黄过滤标签，审核结果包含选择的标签则返回结果，如果过滤标签为空，则审核结果全部返回，可选值为：
+	// <li>porn：色情；</li>
+	// <li>vulgar：低俗；</li>
+	// <li>intimacy：亲密行为；</li>
+	// <li>sexy：性感。</li>
+	LabelSet []*string `json:"LabelSet,omitempty" name:"LabelSet" list`
+
+	// 判定涉嫌违规的分数阈值，当智能审核达到该分数以上，认为涉嫌违规，不填默认为 90 分。取值范围：0~100。
+	BlockConfidence *int64 `json:"BlockConfidence,omitempty" name:"BlockConfidence"`
+
+	// 判定需人工复核是否违规的分数阈值，当智能审核达到该分数以上，认为需人工复核，不填默认为 0 分。取值范围：0~100。
+	ReviewConfidence *int64 `json:"ReviewConfidence,omitempty" name:"ReviewConfidence"`
+}
+
+type PornImgReviewTemplateInfoForUpdate struct {
+
+	// 画面鉴黄任务开关，可选值：
+	// <li>ON：开启画面鉴黄任务；</li>
+	// <li>OFF：关闭画面鉴黄任务。</li>
+	Switch *string `json:"Switch,omitempty" name:"Switch"`
+
+	// 画面鉴黄过滤标签，审核结果包含选择的标签则返回结果，如果过滤标签为空，则审核结果全部返回，可选值为：
+	// <li>porn：色情；</li>
+	// <li>vulgar：低俗；</li>
+	// <li>intimacy：亲密行为；</li>
+	// <li>sexy：性感。</li>
+	LabelSet []*string `json:"LabelSet,omitempty" name:"LabelSet" list`
+
+	// 判定涉嫌违规的分数阈值，当智能审核达到该分数以上，认为涉嫌违规。取值范围：0~100。
+	BlockConfidence *int64 `json:"BlockConfidence,omitempty" name:"BlockConfidence"`
+
+	// 判定需人工复核是否违规的分数阈值，当智能审核达到该分数以上，认为需人工复核。取值范围：0~100。
+	ReviewConfidence *int64 `json:"ReviewConfidence,omitempty" name:"ReviewConfidence"`
+}
+
+type PornOcrReviewTemplateInfo struct {
+
+	// 文本鉴黄任务开关，可选值：
+	// <li>ON：开启文本鉴黄任务；</li>
+	// <li>OFF：关闭文本鉴黄任务。</li>
+	Switch *string `json:"Switch,omitempty" name:"Switch"`
+
+	// 判定涉嫌违规的分数阈值，当智能审核达到该分数以上，认为涉嫌违规，不填默认为 100 分。取值范围：0~100。
+	BlockConfidence *int64 `json:"BlockConfidence,omitempty" name:"BlockConfidence"`
+
+	// 判定需人工复核是否违规的分数阈值，当智能审核达到该分数以上，认为需人工复核，不填默认为 75 分。取值范围：0~100。
+	ReviewConfidence *int64 `json:"ReviewConfidence,omitempty" name:"ReviewConfidence"`
+}
+
+type PornOcrReviewTemplateInfoForUpdate struct {
+
+	// 文本鉴黄任务开关，可选值：
+	// <li>ON：开启文本鉴黄任务；</li>
+	// <li>OFF：关闭文本鉴黄任务。</li>
+	Switch *string `json:"Switch,omitempty" name:"Switch"`
+
+	// 判定涉嫌违规的分数阈值，当智能审核达到该分数以上，认为涉嫌违规。取值范围：0~100。
+	BlockConfidence *int64 `json:"BlockConfidence,omitempty" name:"BlockConfidence"`
+
+	// 判定需人工复核是否违规的分数阈值，当智能审核达到该分数以上，认为需人工复核。取值范围：0~100。
+	ReviewConfidence *int64 `json:"ReviewConfidence,omitempty" name:"ReviewConfidence"`
 }
 
 type ProcessLiveStreamRequest struct {
@@ -3557,6 +4850,12 @@ type ProcessMediaRequest struct {
 	// 视频处理类型任务参数。
 	MediaProcessTask *MediaProcessTaskInput `json:"MediaProcessTask,omitempty" name:"MediaProcessTask"`
 
+	// 视频内容审核类型任务参数。
+	AiContentReviewTask *AiContentReviewTaskInput `json:"AiContentReviewTask,omitempty" name:"AiContentReviewTask"`
+
+	// 视频内容识别类型任务参数。
+	AiRecognitionTask *AiRecognitionTaskInput `json:"AiRecognitionTask,omitempty" name:"AiRecognitionTask"`
+
 	// 任务的事件通知信息，不填代表不获取事件通知。
 	TaskNotifyConfig *TaskNotifyConfig `json:"TaskNotifyConfig,omitempty" name:"TaskNotifyConfig"`
 
@@ -3620,6 +4919,12 @@ type ResetWorkflowRequest struct {
 
 	// 视频处理类型任务参数。
 	MediaProcessTask *MediaProcessTaskInput `json:"MediaProcessTask,omitempty" name:"MediaProcessTask"`
+
+	// 视频内容审核类型任务参数。
+	AiContentReviewTask *AiClassificationTaskInput `json:"AiContentReviewTask,omitempty" name:"AiContentReviewTask"`
+
+	// 视频内容识别类型任务参数。
+	AiRecognitionTask *AiRecognitionTaskInput `json:"AiRecognitionTask,omitempty" name:"AiRecognitionTask"`
 
 	// 工作流的优先级，数值越大优先级越高，取值范围是 -10 到 10，不填代表 0。
 	TaskPriority *int64 `json:"TaskPriority,omitempty" name:"TaskPriority"`
@@ -3728,6 +5033,14 @@ type SampleSnapshotTemplate struct {
 
 	// 模板最后修改时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
 	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
+
+	// 填充方式，当视频流配置宽高参数与原始视频的宽高比不一致时，对转码的处理方式，即为“填充”。可选填充方式：
+	// <li> stretch：拉伸，对每一帧进行拉伸，填满整个画面，可能导致转码后的视频被“压扁“或者“拉长“；</li>
+	// <li>black：留黑，保持视频宽高比不变，边缘剩余部分使用黑色填充。</li>
+	// <li>black：留白，保持视频宽高比不变，边缘剩余部分使用白色填充。</li>
+	// <li>black：高斯模糊，保持视频宽高比不变，边缘剩余部分使用高斯模糊。</li>
+	// 默认值：black 。
+	FillType *string `json:"FillType,omitempty" name:"FillType"`
 }
 
 type SnapshotByTimeOffsetTaskInput struct {
@@ -3735,7 +5048,7 @@ type SnapshotByTimeOffsetTaskInput struct {
 	// 指定时间点截图模板 ID。
 	Definition *uint64 `json:"Definition,omitempty" name:"Definition"`
 
-	// 截图时间点列表，单位为<font color=red>毫秒</font>。
+	// 截图时间点列表，单位为<font color=red>秒</font>。
 	TimeOffsetSet []*float64 `json:"TimeOffsetSet,omitempty" name:"TimeOffsetSet" list`
 
 	// 水印列表，支持多张图片或文字水印，最大可支持 10 张。
@@ -3800,6 +5113,14 @@ type SnapshotByTimeOffsetTemplate struct {
 
 	// 模板最后修改时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
 	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
+
+	// 填充方式，当视频流配置宽高参数与原始视频的宽高比不一致时，对转码的处理方式，即为“填充”。可选填充方式：
+	// <li> stretch：拉伸，对每一帧进行拉伸，填满整个画面，可能导致转码后的视频被“压扁“或者“拉长“；</li>
+	// <li>black：留黑，保持视频宽高比不变，边缘剩余部分使用黑色填充。</li>
+	// <li>black：留白，保持视频宽高比不变，边缘剩余部分使用白色填充。</li>
+	// <li>black：高斯模糊，保持视频宽高比不变，边缘剩余部分使用高斯模糊。</li>
+	// 默认值：black 。
+	FillType *string `json:"FillType,omitempty" name:"FillType"`
 }
 
 type SvgWatermarkInput struct {
@@ -3923,6 +5244,69 @@ type TaskSimpleInfo struct {
 	FinishTime *string `json:"FinishTime,omitempty" name:"FinishTime"`
 }
 
+type TerrorismConfigureInfo struct {
+
+	// 画面鉴恐任务控制参数。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ImgReviewInfo *TerrorismImgReviewTemplateInfo `json:"ImgReviewInfo,omitempty" name:"ImgReviewInfo"`
+}
+
+type TerrorismConfigureInfoForUpdate struct {
+
+	// 画面鉴恐任务控制参数。
+	ImgReviewInfo *TerrorismImgReviewTemplateInfoForUpdate `json:"ImgReviewInfo,omitempty" name:"ImgReviewInfo"`
+}
+
+type TerrorismImgReviewTemplateInfo struct {
+
+	// 画面鉴恐任务开关，可选值：
+	// <li>ON：开启画面鉴恐任务；</li>
+	// <li>OFF：关闭画面鉴恐任务。</li>
+	Switch *string `json:"Switch,omitempty" name:"Switch"`
+
+	// 画面鉴恐过滤标签，审核结果包含选择的标签则返回结果，如果过滤标签为空，则审核结果全部返回，可选值为：
+	// <li>guns：武器枪支；</li>
+	// <li>crowd：人群聚集；</li>
+	// <li>bloody：血腥画面；</li>
+	// <li>police：警察部队；</li>
+	// <li>banners：暴恐旗帜；</li>
+	// <li>militant：武装分子；</li>
+	// <li>explosion：爆炸火灾；</li>
+	// <li>terrorists：暴恐人物。</li>
+	LabelSet []*string `json:"LabelSet,omitempty" name:"LabelSet" list`
+
+	// 判定涉嫌违规的分数阈值，当智能审核达到该分数以上，认为涉嫌违规，不填默认为 90 分。取值范围：0~100。
+	BlockConfidence *int64 `json:"BlockConfidence,omitempty" name:"BlockConfidence"`
+
+	// 判定需人工复核是否违规的分数阈值，当智能审核达到该分数以上，认为需人工复核，不填默认为 80 分。取值范围：0~100。
+	ReviewConfidence *int64 `json:"ReviewConfidence,omitempty" name:"ReviewConfidence"`
+}
+
+type TerrorismImgReviewTemplateInfoForUpdate struct {
+
+	// 画面鉴恐任务开关，可选值：
+	// <li>ON：开启画面鉴恐任务；</li>
+	// <li>OFF：关闭画面鉴恐任务。</li>
+	Switch *string `json:"Switch,omitempty" name:"Switch"`
+
+	// 画面鉴恐过滤标签，审核结果包含选择的标签则返回结果，如果过滤标签为空，则审核结果全部返回，可选值为：
+	// <li>guns：武器枪支；</li>
+	// <li>crowd：人群聚集；</li>
+	// <li>bloody：血腥画面；</li>
+	// <li>police：警察部队；</li>
+	// <li>banners：暴恐旗帜；</li>
+	// <li>militant：武装分子；</li>
+	// <li>explosion：爆炸火灾；</li>
+	// <li>terrorists：暴恐人物。</li>
+	LabelSet []*string `json:"LabelSet,omitempty" name:"LabelSet" list`
+
+	// 判定涉嫌违规的分数阈值，当智能审核达到该分数以上，认为涉嫌违规。取值范围：0~100。
+	BlockConfidence *int64 `json:"BlockConfidence,omitempty" name:"BlockConfidence"`
+
+	// 判定需人工复核是否违规的分数阈值，当智能审核达到该分数以上，认为需人工复核。取值范围：0~100。
+	ReviewConfidence *int64 `json:"ReviewConfidence,omitempty" name:"ReviewConfidence"`
+}
+
 type TextWatermarkTemplateInput struct {
 
 	// 字体类型，目前可以支持两种：
@@ -4041,6 +5425,141 @@ type TranscodeTemplate struct {
 	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
 }
 
+type UserDefineAsrTextReviewTemplateInfo struct {
+
+	// 用户自定语音审核任务开关，可选值：
+	// <li>ON：开启自定义语音审核任务；</li>
+	// <li>OFF：关闭自定义语音审核任务。</li>
+	Switch *string `json:"Switch,omitempty" name:"Switch"`
+
+	// 用户自定义语音过滤标签，审核结果包含选择的标签则返回结果，如果过滤标签为空，则审核结果全部返回。如果要使用标签过滤功能，添加自定义语音关键词素材时需要添加对应标签。
+	// 标签个数最多 10 个，每个标签长度最多 16 个字符。
+	LabelSet []*string `json:"LabelSet,omitempty" name:"LabelSet" list`
+
+	// 判定涉嫌违规的分数阈值，当智能审核达到该分数以上，认为涉嫌违规，不填默认为 100 分。取值范围：0~100。
+	BlockConfidence *int64 `json:"BlockConfidence,omitempty" name:"BlockConfidence"`
+
+	// 判定需人工复核是否违规的分数阈值，当智能审核达到该分数以上，认为需人工复核，不填默认为 75 分。取值范围：0~100。
+	ReviewConfidence *int64 `json:"ReviewConfidence,omitempty" name:"ReviewConfidence"`
+}
+
+type UserDefineAsrTextReviewTemplateInfoForUpdate struct {
+
+	// 用户自定语音审核任务开关，可选值：
+	// <li>ON：开启自定义语音审核任务；</li>
+	// <li>OFF：关闭自定义语音审核任务。</li>
+	Switch *string `json:"Switch,omitempty" name:"Switch"`
+
+	// 用户自定义语音过滤标签，审核结果包含选择的标签则返回结果，如果过滤标签为空，则审核结果全部返回。如果要使用标签过滤功能，添加自定义语音关键词素材时需要添加对应标签。
+	// 标签个数最多 10 个，每个标签长度最多 16 个字符。
+	LabelSet []*string `json:"LabelSet,omitempty" name:"LabelSet" list`
+
+	// 判定涉嫌违规的分数阈值，当智能审核达到该分数以上，认为涉嫌违规。取值范围：0~100。
+	BlockConfidence *int64 `json:"BlockConfidence,omitempty" name:"BlockConfidence"`
+
+	// 判定需人工复核是否违规的分数阈值，当智能审核达到该分数以上，认为需人工复核。取值范围：0~100。
+	ReviewConfidence *int64 `json:"ReviewConfidence,omitempty" name:"ReviewConfidence"`
+}
+
+type UserDefineConfigureInfo struct {
+
+	// 用户自定义人物审核控制参数。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FaceReviewInfo *UserDefineFaceReviewTemplateInfo `json:"FaceReviewInfo,omitempty" name:"FaceReviewInfo"`
+
+	// 用户自定义语音审核控制参数。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AsrReviewInfo *UserDefineAsrTextReviewTemplateInfo `json:"AsrReviewInfo,omitempty" name:"AsrReviewInfo"`
+
+	// 用户自定义文本审核控制参数。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OcrReviewInfo *UserDefineOcrTextReviewTemplateInfo `json:"OcrReviewInfo,omitempty" name:"OcrReviewInfo"`
+}
+
+type UserDefineConfigureInfoForUpdate struct {
+
+	// 用户自定义人物审核控制参数。
+	FaceReviewInfo *UserDefineFaceReviewTemplateInfoForUpdate `json:"FaceReviewInfo,omitempty" name:"FaceReviewInfo"`
+
+	// 用户自定义语音审核控制参数。
+	AsrReviewInfo *UserDefineAsrTextReviewTemplateInfoForUpdate `json:"AsrReviewInfo,omitempty" name:"AsrReviewInfo"`
+
+	// 用户自定义文本审核控制参数。
+	OcrReviewInfo *UserDefineOcrTextReviewTemplateInfoForUpdate `json:"OcrReviewInfo,omitempty" name:"OcrReviewInfo"`
+}
+
+type UserDefineFaceReviewTemplateInfo struct {
+
+	// 用户自定义人物审核任务开关，可选值：
+	// <li>ON：开启自定义人物审核任务；</li>
+	// <li>OFF：关闭自定义人物审核任务。</li>
+	Switch *string `json:"Switch,omitempty" name:"Switch"`
+
+	// 用户自定义人物过滤标签，审核结果包含选择的标签则返回结果，如果过滤标签为空，则审核结果全部返回。如果要使用标签过滤功能，添加自定义人物库的时，需要添加对应人物标签。
+	// 标签个数最多 10 个，每个标签长度最多 16 个字符。
+	LabelSet []*string `json:"LabelSet,omitempty" name:"LabelSet" list`
+
+	// 判定涉嫌违规的分数阈值，当智能审核达到该分数以上，认为涉嫌违规，不填默认为 97 分。取值范围：0~100。
+	BlockConfidence *int64 `json:"BlockConfidence,omitempty" name:"BlockConfidence"`
+
+	// 判定需人工复核是否违规的分数阈值，当智能审核达到该分数以上，认为需人工复核，不填默认为 95 分。取值范围：0~100。
+	ReviewConfidence *int64 `json:"ReviewConfidence,omitempty" name:"ReviewConfidence"`
+}
+
+type UserDefineFaceReviewTemplateInfoForUpdate struct {
+
+	// 用户自定义人物审核任务开关，可选值：
+	// <li>ON：开启自定义人物审核任务；</li>
+	// <li>OFF：关闭自定义人物审核任务。</li>
+	Switch *string `json:"Switch,omitempty" name:"Switch"`
+
+	// 用户自定义人物过滤标签，审核结果包含选择的标签则返回结果，如果过滤标签为空，则审核结果全部返回。如果要使用标签过滤功能，添加自定义人物库的时，需要添加对应人物标签。
+	// 标签个数最多 10 个，每个标签长度最多 16 个字符。
+	LabelSet []*string `json:"LabelSet,omitempty" name:"LabelSet" list`
+
+	// 判定涉嫌违规的分数阈值，当智能审核达到该分数以上，认为涉嫌违规。取值范围：0~100。
+	BlockConfidence *int64 `json:"BlockConfidence,omitempty" name:"BlockConfidence"`
+
+	// 判定需人工复核是否违规的分数阈值，当智能审核达到该分数以上，认为需人工复核。取值范围：0~100。
+	ReviewConfidence *int64 `json:"ReviewConfidence,omitempty" name:"ReviewConfidence"`
+}
+
+type UserDefineOcrTextReviewTemplateInfo struct {
+
+	// 用户自定文本审核任务开关，可选值：
+	// <li>ON：开启自定义文本审核任务；</li>
+	// <li>OFF：关闭自定义文本审核任务。</li>
+	Switch *string `json:"Switch,omitempty" name:"Switch"`
+
+	// 用户自定义文本过滤标签，审核结果包含选择的标签则返回结果，如果过滤标签为空，则审核结果全部返回。如果要使用标签过滤功能，添加自定义文本关键词素材时需要添加对应标签。
+	// 标签个数最多 10 个，每个标签长度最多 16 个字符。
+	LabelSet []*string `json:"LabelSet,omitempty" name:"LabelSet" list`
+
+	// 判定涉嫌违规的分数阈值，当智能审核达到该分数以上，认为涉嫌违规，不填默认为 100 分。取值范围：0~100。
+	BlockConfidence *int64 `json:"BlockConfidence,omitempty" name:"BlockConfidence"`
+
+	// 判定需人工复核是否违规的分数阈值，当智能审核达到该分数以上，认为需人工复核，不填默认为 75 分。取值范围：0~100。
+	ReviewConfidence *int64 `json:"ReviewConfidence,omitempty" name:"ReviewConfidence"`
+}
+
+type UserDefineOcrTextReviewTemplateInfoForUpdate struct {
+
+	// 用户自定文本审核任务开关，可选值：
+	// <li>ON：开启自定义文本审核任务；</li>
+	// <li>OFF：关闭自定义文本审核任务。</li>
+	Switch *string `json:"Switch,omitempty" name:"Switch"`
+
+	// 用户自定义文本过滤标签，审核结果包含选择的标签则返回结果，如果过滤标签为空，则审核结果全部返回。如果要使用标签过滤功能，添加自定义文本关键词素材时需要添加对应标签。
+	// 标签个数最多 10 个，每个标签长度最多 16 个字符。
+	LabelSet *string `json:"LabelSet,omitempty" name:"LabelSet"`
+
+	// 判定涉嫌违规的分数阈值，当智能审核达到该分数以上，认为涉嫌违规。取值范围：0~100。
+	BlockConfidence *int64 `json:"BlockConfidence,omitempty" name:"BlockConfidence"`
+
+	// 判定需人工复核是否违规的分数阈值，当智能审核达到该分数以上，认为需人工复核。取值范围：0~100。
+	ReviewConfidence *int64 `json:"ReviewConfidence,omitempty" name:"ReviewConfidence"`
+}
+
 type VideoTemplateInfo struct {
 
 	// 视频流的编码格式，可选值：
@@ -4134,6 +5653,18 @@ type WatermarkInput struct {
 
 	// SVG 内容。长度不超过 2000000 个字符。仅当水印类型为 SVG 水印时填写。
 	SvgContent *string `json:"SvgContent,omitempty" name:"SvgContent"`
+
+	// 水印的起始时间偏移，单位：秒。不填或填0，表示水印从画面出现时开始显现。
+	// <li>不填或填0，表示水印从画面开始就出现；</li>
+	// <li>当数值大于0时（假设为 n），表示水印从画面开始的第 n 秒出现；</li>
+	// <li>当数值小于0时（假设为 -n），表示水印从离画面结束 n 秒前开始出现。</li>
+	StartTimeOffset *float64 `json:"StartTimeOffset,omitempty" name:"StartTimeOffset"`
+
+	// 水印的结束时间偏移，单位：秒。
+	// <li>不填或填0，表示水印持续到画面结束；</li>
+	// <li>当数值大于0时（假设为 n），表示水印持续到第 n 秒时消失；</li>
+	// <li>当数值小于0时（假设为 -n），表示水印持续到离画面结束 n 秒前消失。</li>
+	EndTimeOffset *float64 `json:"EndTimeOffset,omitempty" name:"EndTimeOffset"`
 }
 
 type WatermarkTemplate struct {
@@ -4215,10 +5746,6 @@ type WorkflowInfo struct {
 	// 视频内容审核类型任务参数。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AiContentReviewTask *AiContentReviewTaskInput `json:"AiContentReviewTask,omitempty" name:"AiContentReviewTask"`
-
-	// 视频内容分析类型任务参数。
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	AiAnalysisTask *AiAnalysisTaskInput `json:"AiAnalysisTask,omitempty" name:"AiAnalysisTask"`
 
 	// 视频内容识别类型任务参数。
 	// 注意：此字段可能返回 null，表示取不到有效值。

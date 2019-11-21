@@ -268,6 +268,31 @@ func (c *Client) CreatePublicConfig(request *CreatePublicConfigRequest) (respons
     return
 }
 
+func NewCreateServerlessGroupRequest() (request *CreateServerlessGroupRequest) {
+    request = &CreateServerlessGroupRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tsf", APIVersion, "CreateServerlessGroup")
+    return
+}
+
+func NewCreateServerlessGroupResponse() (response *CreateServerlessGroupResponse) {
+    response = &CreateServerlessGroupResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 创建Serverless部署组
+func (c *Client) CreateServerlessGroup(request *CreateServerlessGroupRequest) (response *CreateServerlessGroupResponse, err error) {
+    if request == nil {
+        request = NewCreateServerlessGroupRequest()
+    }
+    response = NewCreateServerlessGroupResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteApplicationRequest() (request *DeleteApplicationRequest) {
     request = &DeleteApplicationRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -490,6 +515,31 @@ func (c *Client) DeletePublicConfig(request *DeletePublicConfigRequest) (respons
         request = NewDeletePublicConfigRequest()
     }
     response = NewDeletePublicConfigResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteServerlessGroupRequest() (request *DeleteServerlessGroupRequest) {
+    request = &DeleteServerlessGroupRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tsf", APIVersion, "DeleteServerlessGroup")
+    return
+}
+
+func NewDeleteServerlessGroupResponse() (response *DeleteServerlessGroupResponse) {
+    response = &DeleteServerlessGroupResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 删除Serverless部署组
+func (c *Client) DeleteServerlessGroup(request *DeleteServerlessGroupRequest) (response *DeleteServerlessGroupResponse, err error) {
+    if request == nil {
+        request = NewDeleteServerlessGroupRequest()
+    }
+    response = NewDeleteServerlessGroupResponse()
     err = c.Send(request, response)
     return
 }
@@ -1166,6 +1216,56 @@ func (c *Client) DescribeReleasedConfig(request *DescribeReleasedConfigRequest) 
         request = NewDescribeReleasedConfigRequest()
     }
     response = NewDescribeReleasedConfigResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeServerlessGroupRequest() (request *DescribeServerlessGroupRequest) {
+    request = &DescribeServerlessGroupRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tsf", APIVersion, "DescribeServerlessGroup")
+    return
+}
+
+func NewDescribeServerlessGroupResponse() (response *DescribeServerlessGroupResponse) {
+    response = &DescribeServerlessGroupResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询Serverless部署组明细
+func (c *Client) DescribeServerlessGroup(request *DescribeServerlessGroupRequest) (response *DescribeServerlessGroupResponse, err error) {
+    if request == nil {
+        request = NewDescribeServerlessGroupRequest()
+    }
+    response = NewDescribeServerlessGroupResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeServerlessGroupsRequest() (request *DescribeServerlessGroupsRequest) {
+    request = &DescribeServerlessGroupsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tsf", APIVersion, "DescribeServerlessGroups")
+    return
+}
+
+func NewDescribeServerlessGroupsResponse() (response *DescribeServerlessGroupsResponse) {
+    response = &DescribeServerlessGroupsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询Serverless部署组列表
+func (c *Client) DescribeServerlessGroups(request *DescribeServerlessGroupsRequest) (response *DescribeServerlessGroupsResponse, err error) {
+    if request == nil {
+        request = NewDescribeServerlessGroupsRequest()
+    }
+    response = NewDescribeServerlessGroupsResponse()
     err = c.Send(request, response)
     return
 }

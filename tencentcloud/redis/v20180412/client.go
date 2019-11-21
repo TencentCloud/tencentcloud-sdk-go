@@ -1118,6 +1118,31 @@ func (c *Client) RestoreInstance(request *RestoreInstanceRequest) (response *Res
     return
 }
 
+func NewStartupInstanceRequest() (request *StartupInstanceRequest) {
+    request = &StartupInstanceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("redis", APIVersion, "StartupInstance")
+    return
+}
+
+func NewStartupInstanceResponse() (response *StartupInstanceResponse) {
+    response = &StartupInstanceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 实例解隔离
+func (c *Client) StartupInstance(request *StartupInstanceRequest) (response *StartupInstanceResponse, err error) {
+    if request == nil {
+        request = NewStartupInstanceRequest()
+    }
+    response = NewStartupInstanceResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewSwitchInstanceVipRequest() (request *SwitchInstanceVipRequest) {
     request = &SwitchInstanceVipRequest{
         BaseRequest: &tchttp.BaseRequest{},

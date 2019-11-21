@@ -41,7 +41,7 @@ type ApplyUserCertRequest struct {
 	// 证书申请实体，使用腾讯云账号实名认证的名称
 	Applicant *string `json:"Applicant,omitempty" name:"Applicant"`
 
-	// 证件号码。如果腾讯云账号对应的实名认证类型为企业认证，填入企业营业执照；如果腾讯云账号对应的实名认证类型为个人认证，填入个人身份证号码
+	// 证件号码。如果腾讯云账号对应的实名认证类型为企业认证，填入“0”；如果腾讯云账号对应的实名认证类型为个人认证，填入个人身份证号码
 	IdentityNum *string `json:"IdentityNum,omitempty" name:"IdentityNum"`
 
 	// csr p10证书文件。需要用户根据文档生成证书的CSR文件
@@ -246,6 +246,15 @@ func (r *DownloadUserCertResponse) ToJsonString() string {
 
 func (r *DownloadUserCertResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
+}
+
+type EndorserGroup struct {
+
+	// 背书组织名称
+	EndorserGroupName *string `json:"EndorserGroupName,omitempty" name:"EndorserGroupName"`
+
+	// 背书节点列表
+	EndorserPeerList []*string `json:"EndorserPeerList,omitempty" name:"EndorserPeerList" list`
 }
 
 type GetBlockListHandlerRequest struct {
@@ -696,6 +705,97 @@ func (r *GetTransListHandlerResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type GetTransactionDetailForUserRequest struct {
+	*tchttp.BaseRequest
+
+	// 模块名，固定字段：transaction
+	Module *string `json:"Module,omitempty" name:"Module"`
+
+	// 操作名，固定字段：transaction_detail_for_user
+	Operation *string `json:"Operation,omitempty" name:"Operation"`
+
+	// 区块链网络ID，可在区块链网络详情或列表中获取
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 参与交易的组织名称，可以在组织管理列表中获取当前组织的名称
+	GroupName *string `json:"GroupName,omitempty" name:"GroupName"`
+
+	// 业务所属通道名称，可在通道详情或列表中获取
+	ChannelName *string `json:"ChannelName,omitempty" name:"ChannelName"`
+
+	// 区块ID，通过GetInvokeTx接口可以获取交易所在的区块ID
+	BlockId *uint64 `json:"BlockId,omitempty" name:"BlockId"`
+
+	// 交易ID，需要查询的详情的交易ID
+	TransactionId *string `json:"TransactionId,omitempty" name:"TransactionId"`
+}
+
+func (r *GetTransactionDetailForUserRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *GetTransactionDetailForUserRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type GetTransactionDetailForUserResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 交易ID
+		TransactionId *string `json:"TransactionId,omitempty" name:"TransactionId"`
+
+		// 交易hash
+		TransactionHash *string `json:"TransactionHash,omitempty" name:"TransactionHash"`
+
+		// 创建交易的组织名
+		CreateOrgName *string `json:"CreateOrgName,omitempty" name:"CreateOrgName"`
+
+		// 交易类型（普通交易和配置交易）
+		TransactionType *string `json:"TransactionType,omitempty" name:"TransactionType"`
+
+		// 交易状态
+		TransactionStatus *string `json:"TransactionStatus,omitempty" name:"TransactionStatus"`
+
+		// 交易创建时间
+		CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+		// 交易数据
+		TransactionData *string `json:"TransactionData,omitempty" name:"TransactionData"`
+
+		// 交易所在区块号
+		BlockId *uint64 `json:"BlockId,omitempty" name:"BlockId"`
+
+		// 交易所在区块哈希
+		BlockHash *string `json:"BlockHash,omitempty" name:"BlockHash"`
+
+		// 交易所在区块高度
+		BlockHeight *uint64 `json:"BlockHeight,omitempty" name:"BlockHeight"`
+
+		// 通道名称
+		ChannelName *string `json:"ChannelName,omitempty" name:"ChannelName"`
+
+		// 交易所在合约名称
+		ContractName *string `json:"ContractName,omitempty" name:"ContractName"`
+
+		// 背书组织列表
+		EndorserOrgList []*EndorserGroup `json:"EndorserOrgList,omitempty" name:"EndorserOrgList" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *GetTransactionDetailForUserResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *GetTransactionDetailForUserResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type InvokeRequest struct {
 	*tchttp.BaseRequest
 
@@ -891,7 +991,7 @@ func (r *SendTransactionHandlerResponse) FromJsonString(s string) error {
 type SrvInvokeRequest struct {
 	*tchttp.BaseRequest
 
-	// 服务类型，ss或者dam
+	// 服务类型，iss或者dam
 	Service *string `json:"Service,omitempty" name:"Service"`
 
 	// 服务接口，要调用的方法函数名

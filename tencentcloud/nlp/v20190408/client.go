@@ -68,6 +68,32 @@ func (c *Client) AutoSummarization(request *AutoSummarizationRequest) (response 
     return
 }
 
+func NewChatBotRequest() (request *ChatBotRequest) {
+    request = &ChatBotRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("nlp", APIVersion, "ChatBot")
+    return
+}
+
+func NewChatBotResponse() (response *ChatBotResponse) {
+    response = &ChatBotResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 闲聊服务基于腾讯领先的NLP引擎能力、数据运算能力和千亿级互联网语料数据的支持，同时集成了广泛的知识问答能力，可实现上百种自定义属性配置，以及儿童语言风格及说话方式，从而让聊天变得更睿智、简单和有趣。
+// 
+func (c *Client) ChatBot(request *ChatBotRequest) (response *ChatBotResponse, err error) {
+    if request == nil {
+        request = NewChatBotRequest()
+    }
+    response = NewChatBotResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewContentApprovalRequest() (request *ContentApprovalRequest) {
     request = &ContentApprovalRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -130,6 +156,81 @@ func (c *Client) DependencyParsing(request *DependencyParsingRequest) (response 
     return
 }
 
+func NewDescribeEntityRequest() (request *DescribeEntityRequest) {
+    request = &DescribeEntityRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("nlp", APIVersion, "DescribeEntity")
+    return
+}
+
+func NewDescribeEntityResponse() (response *DescribeEntityResponse) {
+    response = &DescribeEntityResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 输入实体名称，返回实体相关的信息如实体别名、实体英文名、实体详细信息、相关实体等。
+func (c *Client) DescribeEntity(request *DescribeEntityRequest) (response *DescribeEntityResponse, err error) {
+    if request == nil {
+        request = NewDescribeEntityRequest()
+    }
+    response = NewDescribeEntityResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeRelationRequest() (request *DescribeRelationRequest) {
+    request = &DescribeRelationRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("nlp", APIVersion, "DescribeRelation")
+    return
+}
+
+func NewDescribeRelationResponse() (response *DescribeRelationResponse) {
+    response = &DescribeRelationResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 输入两个实体，返回两个实体间的关系，例如马化腾与腾讯公司不仅是相关实体，二者还存在隶属关系（马化腾属于腾讯公司）。
+func (c *Client) DescribeRelation(request *DescribeRelationRequest) (response *DescribeRelationResponse, err error) {
+    if request == nil {
+        request = NewDescribeRelationRequest()
+    }
+    response = NewDescribeRelationResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeTripleRequest() (request *DescribeTripleRequest) {
+    request = &DescribeTripleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("nlp", APIVersion, "DescribeTriple")
+    return
+}
+
+func NewDescribeTripleResponse() (response *DescribeTripleResponse) {
+    response = &DescribeTripleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 三元组查询，主要分为两类，SP查询和PO查询。SP查询表示已知主语和谓语查询宾语，PO查询表示已知宾语和谓语查询主语。每一个SP或PO查询都是一个可独立执行的查询，TQL支持SP查询的嵌套查询，即主语可以是一个嵌套的子查询。其他复杂的三元组查询方法，请参考官网API文档示例。
+func (c *Client) DescribeTriple(request *DescribeTripleRequest) (response *DescribeTripleResponse, err error) {
+    if request == nil {
+        request = NewDescribeTripleRequest()
+    }
+    response = NewDescribeTripleResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewKeywordsExtractionRequest() (request *KeywordsExtractionRequest) {
     request = &KeywordsExtractionRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -176,7 +277,7 @@ func NewLexicalAnalysisResponse() (response *LexicalAnalysisResponse) {
 // 
 // 2、词性标注：为每一个词附上对应的词性，例如名词、代词、形容词、动词等；
 // 
-// 3、命名实体识别：快速识别文本中的实体，例如人名、地名、机构名、时间日期等。
+// 3、命名实体识别：快速识别文本中的实体，例如人名、地名、机构名等。
 // 
 // 所有的功能均基于千亿级大规模互联网语料进行持续迭代更新，以保证效果不断提升，用户无需担心新词发现、歧义消除、调用性能等问题。目前词法分析已经在泛互联网、金融、政务等不同垂直领域提供业务支持，并取得良好的效果。
 func (c *Client) LexicalAnalysis(request *LexicalAnalysisRequest) (response *LexicalAnalysisResponse, err error) {
@@ -346,7 +447,7 @@ func NewTextApprovalResponse() (response *TextApprovalResponse) {
 // 
 // 1、文本恶意级别：将文本分为3个级别，包括正常、恶意、可疑送审；
 // 
-// 2、文本恶意类型：把文本分为9个类别，包括正常、政治、色情、辱骂/低俗、暴恐/毒品、广告/灌水、迷信/邪教、其他违法、综合；
+// 2、文本恶意类型：把文本分为10个类别，包括正常、政治、色情、辱骂/低俗、暴恐/毒品、广告/灌水、迷信/邪教、其他违法、综合、联系方式/链接；
 // 
 // 3、恶意关键词：文本中所有涉嫌恶意的关键词。
 func (c *Client) TextApproval(request *TextApprovalRequest) (response *TextApprovalResponse, err error) {

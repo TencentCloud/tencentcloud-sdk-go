@@ -190,6 +190,9 @@ type CreateMountPointRequest struct {
 
 	// 挂载点状态（1：打开；2：关闭）
 	MountPointStatus *uint64 `json:"MountPointStatus,omitempty" name:"MountPointStatus"`
+
+	// VPC网络类型（1：CVM；2：黑石1.0；3：黑石2.0）
+	VpcType *uint64 `json:"VpcType,omitempty" name:"VpcType"`
 }
 
 func (r *CreateMountPointRequest) ToJsonString() string {
@@ -735,6 +738,7 @@ type ModifyFileSystemRequest struct {
 	Description *string `json:"Description,omitempty" name:"Description"`
 
 	// 文件系统容量（byte），下限为1M，上限为1P，且必须是1M的整数倍
+	// 注意：修改的文件系统容量不能小于当前使用量
 	CapacityQuota *uint64 `json:"CapacityQuota,omitempty" name:"CapacityQuota"`
 }
 
@@ -830,4 +834,7 @@ type MountPoint struct {
 
 	// 创建时间
 	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// VPC网络类型
+	VpcType *uint64 `json:"VpcType,omitempty" name:"VpcType"`
 }

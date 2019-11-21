@@ -118,6 +118,56 @@ func (c *Client) CreateClusterAsGroup(request *CreateClusterAsGroupRequest) (res
     return
 }
 
+func NewCreateClusterEndpointRequest() (request *CreateClusterEndpointRequest) {
+    request = &CreateClusterEndpointRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tke", APIVersion, "CreateClusterEndpoint")
+    return
+}
+
+func NewCreateClusterEndpointResponse() (response *CreateClusterEndpointResponse) {
+    response = &CreateClusterEndpointResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 创建集群访问端口(独立集群开启内网/外网访问，托管集群支持开启内网访问)
+func (c *Client) CreateClusterEndpoint(request *CreateClusterEndpointRequest) (response *CreateClusterEndpointResponse, err error) {
+    if request == nil {
+        request = NewCreateClusterEndpointRequest()
+    }
+    response = NewCreateClusterEndpointResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateClusterEndpointVipRequest() (request *CreateClusterEndpointVipRequest) {
+    request = &CreateClusterEndpointVipRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tke", APIVersion, "CreateClusterEndpointVip")
+    return
+}
+
+func NewCreateClusterEndpointVipResponse() (response *CreateClusterEndpointVipResponse) {
+    response = &CreateClusterEndpointVipResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 创建托管集群外网访问端口（老的方式，仅支持托管集群外网端口）
+func (c *Client) CreateClusterEndpointVip(request *CreateClusterEndpointVipRequest) (response *CreateClusterEndpointVipResponse, err error) {
+    if request == nil {
+        request = NewCreateClusterEndpointVipRequest()
+    }
+    response = NewCreateClusterEndpointVipResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateClusterInstancesRequest() (request *CreateClusterInstancesRequest) {
     request = &CreateClusterInstancesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -243,6 +293,56 @@ func (c *Client) DeleteClusterAsGroups(request *DeleteClusterAsGroupsRequest) (r
     return
 }
 
+func NewDeleteClusterEndpointRequest() (request *DeleteClusterEndpointRequest) {
+    request = &DeleteClusterEndpointRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tke", APIVersion, "DeleteClusterEndpoint")
+    return
+}
+
+func NewDeleteClusterEndpointResponse() (response *DeleteClusterEndpointResponse) {
+    response = &DeleteClusterEndpointResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 删除集群访问端口(独立集群开启内网/外网访问，托管集群支持开启内网访问)
+func (c *Client) DeleteClusterEndpoint(request *DeleteClusterEndpointRequest) (response *DeleteClusterEndpointResponse, err error) {
+    if request == nil {
+        request = NewDeleteClusterEndpointRequest()
+    }
+    response = NewDeleteClusterEndpointResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteClusterEndpointVipRequest() (request *DeleteClusterEndpointVipRequest) {
+    request = &DeleteClusterEndpointVipRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tke", APIVersion, "DeleteClusterEndpointVip")
+    return
+}
+
+func NewDeleteClusterEndpointVipResponse() (response *DeleteClusterEndpointVipResponse) {
+    response = &DeleteClusterEndpointVipResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 删除托管集群外网访问端口（老的方式，仅支持托管集群外网端口）
+func (c *Client) DeleteClusterEndpointVip(request *DeleteClusterEndpointVipRequest) (response *DeleteClusterEndpointVipResponse, err error) {
+    if request == nil {
+        request = NewDeleteClusterEndpointVipRequest()
+    }
+    response = NewDeleteClusterEndpointVipResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteClusterInstancesRequest() (request *DeleteClusterInstancesRequest) {
     request = &DeleteClusterInstancesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -314,6 +414,56 @@ func (c *Client) DeleteClusterRouteTable(request *DeleteClusterRouteTableRequest
         request = NewDeleteClusterRouteTableRequest()
     }
     response = NewDeleteClusterRouteTableResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeClusterEndpointStatusRequest() (request *DescribeClusterEndpointStatusRequest) {
+    request = &DescribeClusterEndpointStatusRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tke", APIVersion, "DescribeClusterEndpointStatus")
+    return
+}
+
+func NewDescribeClusterEndpointStatusResponse() (response *DescribeClusterEndpointStatusResponse) {
+    response = &DescribeClusterEndpointStatusResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询集群访问端口状态(独立集群开启内网/外网访问，托管集群支持开启内网访问)
+func (c *Client) DescribeClusterEndpointStatus(request *DescribeClusterEndpointStatusRequest) (response *DescribeClusterEndpointStatusResponse, err error) {
+    if request == nil {
+        request = NewDescribeClusterEndpointStatusRequest()
+    }
+    response = NewDescribeClusterEndpointStatusResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeClusterEndpointVipStatusRequest() (request *DescribeClusterEndpointVipStatusRequest) {
+    request = &DescribeClusterEndpointVipStatusRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tke", APIVersion, "DescribeClusterEndpointVipStatus")
+    return
+}
+
+func NewDescribeClusterEndpointVipStatusResponse() (response *DescribeClusterEndpointVipStatusResponse) {
+    response = &DescribeClusterEndpointVipStatusResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询集群开启端口流程状态(仅支持托管集群外网端口)
+func (c *Client) DescribeClusterEndpointVipStatus(request *DescribeClusterEndpointVipStatusRequest) (response *DescribeClusterEndpointVipStatusResponse, err error) {
+    if request == nil {
+        request = NewDescribeClusterEndpointVipStatusRequest()
+    }
+    response = NewDescribeClusterEndpointVipStatusResponse()
     err = c.Send(request, response)
     return
 }
@@ -489,6 +639,31 @@ func (c *Client) DescribeRouteTableConflicts(request *DescribeRouteTableConflict
         request = NewDescribeRouteTableConflictsRequest()
     }
     response = NewDescribeRouteTableConflictsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyClusterEndpointSPRequest() (request *ModifyClusterEndpointSPRequest) {
+    request = &ModifyClusterEndpointSPRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tke", APIVersion, "ModifyClusterEndpointSP")
+    return
+}
+
+func NewModifyClusterEndpointSPResponse() (response *ModifyClusterEndpointSPResponse) {
+    response = &ModifyClusterEndpointSPResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 修改托管集群外网端口的安全策略（老的方式，仅支持托管集群外网端口）
+func (c *Client) ModifyClusterEndpointSP(request *ModifyClusterEndpointSPRequest) (response *ModifyClusterEndpointSPResponse, err error) {
+    if request == nil {
+        request = NewModifyClusterEndpointSPRequest()
+    }
+    response = NewModifyClusterEndpointSPResponse()
     err = c.Send(request, response)
     return
 }

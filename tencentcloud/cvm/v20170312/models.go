@@ -2422,6 +2422,9 @@ type LocalDiskType struct {
 
 	// 本地磁盘最大值。
 	MaxSize *int64 `json:"MaxSize,omitempty" name:"MaxSize"`
+
+	// 购买时本地盘是否为必选。取值范围：<br><li>REQUIRED：表示必选<br><li>OPTIONAL：表示可选。
+	Required *string `json:"Required,omitempty" name:"Required"`
 }
 
 type LoginSettings struct {
