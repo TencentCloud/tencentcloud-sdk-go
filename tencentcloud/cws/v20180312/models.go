@@ -55,7 +55,7 @@ type CreateMonitorsResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -95,7 +95,10 @@ type CreateSitesResponse struct {
 		// 新增站点数。
 		Number *uint64 `json:"Number,omitempty" name:"Number"`
 
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 站点数组
+		Sites []*MiniSite `json:"Sites,omitempty" name:"Sites" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -135,7 +138,7 @@ type CreateSitesScansResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -169,7 +172,7 @@ type CreateVulsMisinformationResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -209,7 +212,7 @@ type CreateVulsReportResponse struct {
 		// 报告下载地址
 		ReportFileUrl *string `json:"ReportFileUrl,omitempty" name:"ReportFileUrl"`
 
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -243,7 +246,7 @@ type DeleteMonitorsResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -277,7 +280,7 @@ type DeleteSitesResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -323,7 +326,10 @@ type DescribeConfigResponse struct {
 		// 云用户appid。
 		Appid *uint64 `json:"Appid,omitempty" name:"Appid"`
 
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 内容检测通知等级-1:通知,0-不通知
+		ContentLevel *uint64 `json:"ContentLevel,omitempty" name:"ContentLevel"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -372,7 +378,7 @@ type DescribeMonitorsResponse struct {
 		// 监控任务数量。
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -412,7 +418,7 @@ type DescribeSiteQuotaResponse struct {
 		// 剩余可用的扫描次数。
 		Available *uint64 `json:"Available,omitempty" name:"Available"`
 
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -461,7 +467,7 @@ type DescribeSitesResponse struct {
 		// 站点信息列表。
 		Sites []*Site `json:"Sites,omitempty" name:"Sites" list`
 
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -501,7 +507,7 @@ type DescribeSitesVerificationResponse struct {
 		// 验证信息列表。
 		SitesVerification []*SitesVerification `json:"SitesVerification,omitempty" name:"SitesVerification" list`
 
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -559,7 +565,7 @@ type DescribeVulsNumberResponse struct {
 		// 受影响的网站列表。
 		ImpactSites []*MonitorMiniSite `json:"ImpactSites,omitempty" name:"ImpactSites" list`
 
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -596,7 +602,7 @@ type DescribeVulsNumberTimelineResponse struct {
 		// 用户漏洞数随时间变化统计数据。
 		VulsTimeline []*VulsTimeline `json:"VulsTimeline,omitempty" name:"VulsTimeline" list`
 
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -648,7 +654,7 @@ type DescribeVulsResponse struct {
 		// 漏洞信息列表。
 		Vuls []*Vul `json:"Vuls,omitempty" name:"Vuls" list`
 
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -671,6 +677,15 @@ type Filter struct {
 	Values []*string `json:"Values,omitempty" name:"Values" list`
 }
 
+type MiniSite struct {
+
+	// 站点ID。
+	SiteId *uint64 `json:"SiteId,omitempty" name:"SiteId"`
+
+	// 站点Url。
+	Url *string `json:"Url,omitempty" name:"Url"`
+}
+
 type ModifyConfigAttributeRequest struct {
 	*tchttp.BaseRequest
 
@@ -691,7 +706,7 @@ type ModifyConfigAttributeResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -746,7 +761,7 @@ type ModifyMonitorAttributeResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -798,7 +813,7 @@ type ModifySiteAttributeResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -813,9 +828,6 @@ func (r *ModifySiteAttributeResponse) FromJsonString(s string) error {
 }
 
 type Monitor struct {
-
-	// 云用户appid。
-	Appid *uint64 `json:"Appid,omitempty" name:"Appid"`
 
 	// 监控任务ID。
 	Id *uint64 `json:"Id,omitempty" name:"Id"`
@@ -855,6 +867,12 @@ type Monitor struct {
 
 	// UpdatedAt。
 	UpdatedAt *string `json:"UpdatedAt,omitempty" name:"UpdatedAt"`
+
+	// 云用户appid。
+	Appid *uint64 `json:"Appid,omitempty" name:"Appid"`
+
+	// 扫描状态：0-待检测；1-检测完成
+	ContentScanStatus *uint64 `json:"ContentScanStatus,omitempty" name:"ContentScanStatus"`
 }
 
 type MonitorMiniSite struct {
@@ -867,12 +885,6 @@ type MonitorMiniSite struct {
 }
 
 type MonitorsDetail struct {
-
-	// 监控任务包含的站点列表的平均扫描进度。
-	Progress *uint64 `json:"Progress,omitempty" name:"Progress"`
-
-	// 扫描页面总数。
-	PageCount *uint64 `json:"PageCount,omitempty" name:"PageCount"`
 
 	// 监控任务基础信息。
 	Basic *Monitor `json:"Basic,omitempty" name:"Basic"`
@@ -900,39 +912,18 @@ type MonitorsDetail struct {
 
 	// 提示数量。
 	VulsNoticeNumber *uint64 `json:"VulsNoticeNumber,omitempty" name:"VulsNoticeNumber"`
+
+	// 监控任务包含的站点列表的平均扫描进度。
+	Progress *uint64 `json:"Progress,omitempty" name:"Progress"`
+
+	// 扫描页面总数。
+	PageCount *uint64 `json:"PageCount,omitempty" name:"PageCount"`
+
+	// 内容检测数量。
+	ContentNumber *uint64 `json:"ContentNumber,omitempty" name:"ContentNumber"`
 }
 
 type Site struct {
-
-	// 扫描进度，百分比整数
-	Progress *uint64 `json:"Progress,omitempty" name:"Progress"`
-
-	// 云用户appid。
-	Appid *uint64 `json:"Appid,omitempty" name:"Appid"`
-
-	// 云用户标识。
-	Uin *string `json:"Uin,omitempty" name:"Uin"`
-
-	// 网站是否需要登录扫描：0-未知；-1-不需要；1-需要。
-	NeedLogin *int64 `json:"NeedLogin,omitempty" name:"NeedLogin"`
-
-	// 登录后的cookie。
-	LoginCookie *string `json:"LoginCookie,omitempty" name:"LoginCookie"`
-
-	// 登录后的cookie是否有效：0-无效；1-有效。
-	LoginCookieValid *uint64 `json:"LoginCookieValid,omitempty" name:"LoginCookieValid"`
-
-	// 用于测试cookie是否有效的URL。
-	LoginCheckUrl *string `json:"LoginCheckUrl,omitempty" name:"LoginCheckUrl"`
-
-	// 用于测试cookie是否有效的关键字。
-	LoginCheckKw *string `json:"LoginCheckKw,omitempty" name:"LoginCheckKw"`
-
-	// 禁止扫描器扫描的目录关键字。
-	ScanDisallow *string `json:"ScanDisallow,omitempty" name:"ScanDisallow"`
-
-	// 访问网站的客户端标识。
-	UserAgent *string `json:"UserAgent,omitempty" name:"UserAgent"`
 
 	// 站点ID。
 	Id *uint64 `json:"Id,omitempty" name:"Id"`
@@ -999,21 +990,45 @@ type Site struct {
 
 	// 最近一次扫描提示总数量
 	LastScanNoticeNum *uint64 `json:"LastScanNoticeNum,omitempty" name:"LastScanNoticeNum"`
+
+	// 扫描进度，百分比整数
+	Progress *uint64 `json:"Progress,omitempty" name:"Progress"`
+
+	// 云用户appid。
+	Appid *uint64 `json:"Appid,omitempty" name:"Appid"`
+
+	// 云用户标识。
+	Uin *string `json:"Uin,omitempty" name:"Uin"`
+
+	// 网站是否需要登录扫描：0-未知；-1-不需要；1-需要。
+	NeedLogin *int64 `json:"NeedLogin,omitempty" name:"NeedLogin"`
+
+	// 登录后的cookie。
+	LoginCookie *string `json:"LoginCookie,omitempty" name:"LoginCookie"`
+
+	// 登录后的cookie是否有效：0-无效；1-有效。
+	LoginCookieValid *uint64 `json:"LoginCookieValid,omitempty" name:"LoginCookieValid"`
+
+	// 用于测试cookie是否有效的URL。
+	LoginCheckUrl *string `json:"LoginCheckUrl,omitempty" name:"LoginCheckUrl"`
+
+	// 用于测试cookie是否有效的关键字。
+	LoginCheckKw *string `json:"LoginCheckKw,omitempty" name:"LoginCheckKw"`
+
+	// 禁止扫描器扫描的目录关键字。
+	ScanDisallow *string `json:"ScanDisallow,omitempty" name:"ScanDisallow"`
+
+	// 访问网站的客户端标识。
+	UserAgent *string `json:"UserAgent,omitempty" name:"UserAgent"`
+
+	// 内容检测状态：0-未检测；1-已检测；
+	ContentStatus *uint64 `json:"ContentStatus,omitempty" name:"ContentStatus"`
+
+	// 最近一次扫描内容检测数量
+	LastScanContentNum *uint64 `json:"LastScanContentNum,omitempty" name:"LastScanContentNum"`
 }
 
 type SitesVerification struct {
-
-	// ID。
-	Id *uint64 `json:"Id,omitempty" name:"Id"`
-
-	// 云用户appid
-	Appid *uint64 `json:"Appid,omitempty" name:"Appid"`
-
-	// 用于验证站点的url，即访问该url获取验证数据。
-	VerifyUrl *string `json:"VerifyUrl,omitempty" name:"VerifyUrl"`
-
-	// 获取验证验证文件的url。
-	VerifyFileUrl *string `json:"VerifyFileUrl,omitempty" name:"VerifyFileUrl"`
 
 	// 根域名。
 	Domain *string `json:"Domain,omitempty" name:"Domain"`
@@ -1035,6 +1050,18 @@ type SitesVerification struct {
 
 	// UpdatedAt。
 	UpdatedAt *string `json:"UpdatedAt,omitempty" name:"UpdatedAt"`
+
+	// ID。
+	Id *uint64 `json:"Id,omitempty" name:"Id"`
+
+	// 云用户appid
+	Appid *uint64 `json:"Appid,omitempty" name:"Appid"`
+
+	// 用于验证站点的url，即访问该url获取验证数据。
+	VerifyUrl *string `json:"VerifyUrl,omitempty" name:"VerifyUrl"`
+
+	// 获取验证验证文件的url。
+	VerifyFileUrl *string `json:"VerifyFileUrl,omitempty" name:"VerifyFileUrl"`
 }
 
 type VerifySitesRequest struct {
@@ -1063,7 +1090,7 @@ type VerifySitesResponse struct {
 		// 验证失败的根域名数量。
 		FailNumber *uint64 `json:"FailNumber,omitempty" name:"FailNumber"`
 
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
 }
@@ -1078,15 +1105,6 @@ func (r *VerifySitesResponse) FromJsonString(s string) error {
 }
 
 type Vul struct {
-
-	// 是否已经添加误报，0-否，1-是。
-	IsReported *uint64 `json:"IsReported,omitempty" name:"IsReported"`
-
-	// 云用户appid。
-	Appid *uint64 `json:"Appid,omitempty" name:"Appid"`
-
-	// 云用户标识。
-	Uin *string `json:"Uin,omitempty" name:"Uin"`
 
 	// 漏洞ID。
 	Id *uint64 `json:"Id,omitempty" name:"Id"`
@@ -1132,6 +1150,15 @@ type Vul struct {
 
 	// UpdatedAt。
 	UpdatedAt *string `json:"UpdatedAt,omitempty" name:"UpdatedAt"`
+
+	// 是否已经添加误报，0-否，1-是。
+	IsReported *uint64 `json:"IsReported,omitempty" name:"IsReported"`
+
+	// 云用户appid。
+	Appid *uint64 `json:"Appid,omitempty" name:"Appid"`
+
+	// 云用户标识。
+	Uin *string `json:"Uin,omitempty" name:"Uin"`
 }
 
 type VulsTimeline struct {

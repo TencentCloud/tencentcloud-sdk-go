@@ -288,7 +288,7 @@ type DescribeTaskStatusResponse struct {
 		// <p>任务结果：</p><ul style="margin-bottom:0px;"><li>处理中："Uploading Data."</li><li>上传成功："File Uploading Task Success."</li><li>上传失败：具体失败原因</li></ul>
 		TaskResult *string `json:"TaskResult,omitempty" name:"TaskResult"`
 
-		// <p>任务类型：</p><ul style="margin-bottom:0px;"><li>催收数据上传：002</li><li>还款数据上传：003</li><li>回访数据上传：004</li><li>停拨数据上传：005</li></ul>
+		// <p>任务类型：</p><ul style="margin-bottom:0px;"><li>到期/逾期提醒数据上传：002</li><li>到期/逾期提醒停拨数据上传：003</li><li>回访数据上传：004</li><li>回访停拨数据上传：005</li></ul>
 		TaskType *string `json:"TaskType,omitempty" name:"TaskType"`
 
 		// 过滤文件下载链接，有过滤数据时才存在。
@@ -430,15 +430,15 @@ type DownloadReportResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 催收日报下载地址
+		// 到期/逾期提醒日报下载地址
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		DailyReportUrl *string `json:"DailyReportUrl,omitempty" name:"DailyReportUrl"`
 
-		// 催收结果下载地址
+		// 到期/逾期提醒结果下载地址
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		ResultReportUrl *string `json:"ResultReportUrl,omitempty" name:"ResultReportUrl"`
 
-		// 催收明细下载地址
+		// 到期/逾期提醒明细下载地址
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		DetailReportUrl *string `json:"DetailReportUrl,omitempty" name:"DetailReportUrl"`
 
@@ -527,7 +527,7 @@ type UploadDataFileRequest struct {
 	// 文件名
 	FileName *string `json:"FileName,omitempty" name:"FileName"`
 
-	// <p>上传类型，不填默认催收文件，取值范围：</p><ul style="margin-bottom:0px;"><li>data：入催文件</li><li>repay：还款文件</li><li>callback：回访文件</li><li>callstop：回访停拨文件</li></ul>
+	// <p>上传类型，不填默认到期/逾期提醒文件，取值范围：</p><ul style="margin-bottom:0px;"><li>data：到期/逾期提醒文件</li><li>repay：到期/逾期提醒停拨文件</li><li>callback：回访文件</li><li>callstop：回访停拨文件</li></ul>
 	UploadModel *string `json:"UploadModel,omitempty" name:"UploadModel"`
 
 	// 文件，文件与文件地址上传只可选用一种，必须使用multipart/form-data协议来上传二进制流文件，建议使用xlsx格式，大小不超过5MB。

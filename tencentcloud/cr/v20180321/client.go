@@ -58,7 +58,7 @@ func NewApplyBlackListResponse() (response *ApplyBlackListResponse) {
     return
 }
 
-// 提交黑名单后，黑名单中有效期内的号码将停止拨打，适用于提醒、催收、回访场景。
+// 提交黑名单后，黑名单中有效期内的号码将停止拨打，适用于到期/逾期提醒、回访场景。
 func (c *Client) ApplyBlackList(request *ApplyBlackListRequest) (response *ApplyBlackListResponse, err error) {
     if request == nil {
         request = NewApplyBlackListRequest()
@@ -261,10 +261,10 @@ func NewUploadDataFileResponse() (response *UploadDataFileResponse) {
 
 // <p>该接口包含上传下列文件：</p>
 // <ol style="margin-bottom:10px;">
-//   <li>入催文件：用于每天入催文件的上传</li>
-//   <li>还款文件：实时上传当前已还款客户，用于还款客户的实时停催</li>
+//   <li>到期/逾期提醒文件：用于每天到期/逾期提醒文件的上传</li>
+//   <li>到期/逾期提醒停拨文件：用于实时上传到期/逾期提醒停拨文件，文件中的清单实时停拨</li>
 //   <li>回访文件：用于每天贷中回访文件的上传</li>
-//   <li>回访停拨文件：实时上传回访停拨名单文件，文件中的名单实时停拨</li>
+//   <li>回访停拨文件：用于实时上传回访停拨文件，文件中的清单实时停拨</li>
 // </ol>
 // 接口返回数据任务ID，支持xlsx、xls、csv、zip格式，文档大小不超过50MB。
 func (c *Client) UploadDataFile(request *UploadDataFileRequest) (response *UploadDataFileResponse, err error) {

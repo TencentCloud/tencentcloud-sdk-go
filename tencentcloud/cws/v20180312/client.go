@@ -133,7 +133,7 @@ func NewCreateVulsMisinformationResponse() (response *CreateVulsMisinformationRe
     return
 }
 
-// 本接口（CreateVulsMisinformation）用于新增一个或多个漏洞误报信息。
+// 本接口（CreateVulsMisinformation）可以用于新增一个或多个漏洞误报信息。
 func (c *Client) CreateVulsMisinformation(request *CreateVulsMisinformationRequest) (response *CreateVulsMisinformationResponse, err error) {
     if request == nil {
         request = NewCreateVulsMisinformationRequest()
@@ -183,7 +183,7 @@ func NewDeleteMonitorsResponse() (response *DeleteMonitorsResponse) {
     return
 }
 
-// 本接口 (DeleteMonitors) 用于删除监控任务。
+// 本接口 (DeleteMonitors) 用于删除用户监控任务。
 func (c *Client) DeleteMonitors(request *DeleteMonitorsRequest) (response *DeleteMonitorsResponse, err error) {
     if request == nil {
         request = NewDeleteMonitorsRequest()

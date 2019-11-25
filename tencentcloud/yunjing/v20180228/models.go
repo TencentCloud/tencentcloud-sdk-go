@@ -61,6 +61,83 @@ type AccountStatistics struct {
 	MachineNum *uint64 `json:"MachineNum,omitempty" name:"MachineNum"`
 }
 
+type AddLoginWhiteListRequest struct {
+	*tchttp.BaseRequest
+
+	// 白名单规则
+	Rules *LoginWhiteListsRule `json:"Rules,omitempty" name:"Rules"`
+}
+
+func (r *AddLoginWhiteListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *AddLoginWhiteListRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type AddLoginWhiteListResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *AddLoginWhiteListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *AddLoginWhiteListResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type AddMachineTagRequest struct {
+	*tchttp.BaseRequest
+
+	// 云主机ID
+	Quuid *string `json:"Quuid,omitempty" name:"Quuid"`
+
+	// 标签ID
+	TagId *uint64 `json:"TagId,omitempty" name:"TagId"`
+
+	// 主机地区
+	MRegion *string `json:"MRegion,omitempty" name:"MRegion"`
+
+	// 主机地区类型(CVM|BM)
+	MArea *string `json:"MArea,omitempty" name:"MArea"`
+}
+
+func (r *AddMachineTagRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *AddMachineTagRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type AddMachineTagResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *AddMachineTagResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *AddMachineTagResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type AgentVul struct {
 
 	// 漏洞ID。
@@ -92,6 +169,87 @@ type AgentVul struct {
 	// <li>UN_OPERATED : 待处理</li>
 	// <li>FIXED : 已修复</li>
 	VulStatus *string `json:"VulStatus,omitempty" name:"VulStatus"`
+}
+
+type BashEvent struct {
+
+	// ID
+	Id *uint64 `json:"Id,omitempty" name:"Id"`
+
+	// 云镜ID
+	Uuid *string `json:"Uuid,omitempty" name:"Uuid"`
+
+	// 主机ID
+	Quuid *string `json:"Quuid,omitempty" name:"Quuid"`
+
+	// 主机内网IP
+	Hostip *string `json:"Hostip,omitempty" name:"Hostip"`
+
+	// 执行用户名
+	User *string `json:"User,omitempty" name:"User"`
+
+	// 平台类型
+	Platform *uint64 `json:"Platform,omitempty" name:"Platform"`
+
+	// 执行命令
+	BashCmd *string `json:"BashCmd,omitempty" name:"BashCmd"`
+
+	// 规则ID
+	RuleId *uint64 `json:"RuleId,omitempty" name:"RuleId"`
+
+	// 规则名称
+	RuleName *string `json:"RuleName,omitempty" name:"RuleName"`
+
+	// 规则等级
+	RuleLevel *uint64 `json:"RuleLevel,omitempty" name:"RuleLevel"`
+
+	// 处理状态
+	Status *uint64 `json:"Status,omitempty" name:"Status"`
+
+	// 发生时间
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 主机名
+	MachineName *string `json:"MachineName,omitempty" name:"MachineName"`
+}
+
+type BashRule struct {
+
+	// 规则ID
+	Id *uint64 `json:"Id,omitempty" name:"Id"`
+
+	// 客户端ID
+	Uuid *string `json:"Uuid,omitempty" name:"Uuid"`
+
+	// 规则名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 危险等级(1: 高危 2:中危 3: 低危)
+	Level *uint64 `json:"Level,omitempty" name:"Level"`
+
+	// 正则表达式
+	Rule *string `json:"Rule,omitempty" name:"Rule"`
+
+	// 规则描述
+	Decription *string `json:"Decription,omitempty" name:"Decription"`
+
+	// 操作人
+	Operator *string `json:"Operator,omitempty" name:"Operator"`
+
+	// 是否全局规则
+	IsGlobal *uint64 `json:"IsGlobal,omitempty" name:"IsGlobal"`
+
+	// 状态 (0: 有效 1: 无效)
+	Status *uint64 `json:"Status,omitempty" name:"Status"`
+
+	// 创建时间
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 修改时间
+	ModifyTime *string `json:"ModifyTime,omitempty" name:"ModifyTime"`
+
+	// 主机IP
+	Hostip *string `json:"Hostip,omitempty" name:"Hostip"`
 }
 
 type BruteAttack struct {
@@ -234,6 +392,40 @@ type ComponentStatistics struct {
 	Description *string `json:"Description,omitempty" name:"Description"`
 }
 
+type CreateOpenPortTaskRequest struct {
+	*tchttp.BaseRequest
+
+	// 云镜客户端唯一Uuid。
+	Uuid *string `json:"Uuid,omitempty" name:"Uuid"`
+}
+
+func (r *CreateOpenPortTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateOpenPortTaskRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateOpenPortTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateOpenPortTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateOpenPortTaskResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type CreateProcessTaskRequest struct {
 	*tchttp.BaseRequest
 
@@ -305,6 +497,153 @@ func (r *CreateUsualLoginPlacesResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DefendAttackLog struct {
+
+	// 日志ID
+	Id *uint64 `json:"Id,omitempty" name:"Id"`
+
+	// 客户端ID
+	Uuid *string `json:"Uuid,omitempty" name:"Uuid"`
+
+	// 来源IP
+	SrcIp *string `json:"SrcIp,omitempty" name:"SrcIp"`
+
+	// 来源端口
+	SrcPort *uint64 `json:"SrcPort,omitempty" name:"SrcPort"`
+
+	// 攻击方式
+	HttpMethod *string `json:"HttpMethod,omitempty" name:"HttpMethod"`
+
+	// 攻击描述
+	HttpCgi *string `json:"HttpCgi,omitempty" name:"HttpCgi"`
+
+	// 攻击参数
+	HttpParam *string `json:"HttpParam,omitempty" name:"HttpParam"`
+
+	// 威胁类型
+	VulType *string `json:"VulType,omitempty" name:"VulType"`
+
+	// 攻击时间
+	CreatedAt *string `json:"CreatedAt,omitempty" name:"CreatedAt"`
+
+	// 目标服务器IP
+	MachineIp *string `json:"MachineIp,omitempty" name:"MachineIp"`
+
+	// 目标服务器名称
+	MachineName *string `json:"MachineName,omitempty" name:"MachineName"`
+
+	// 目标IP
+	DstIp *string `json:"DstIp,omitempty" name:"DstIp"`
+
+	// 目标端口
+	DstPort *uint64 `json:"DstPort,omitempty" name:"DstPort"`
+
+	// 攻击内容
+	HttpContent *string `json:"HttpContent,omitempty" name:"HttpContent"`
+}
+
+type DeleteAttackLogsRequest struct {
+	*tchttp.BaseRequest
+
+	// 日志ID数组，最大100条。
+	Ids []*uint64 `json:"Ids,omitempty" name:"Ids" list`
+}
+
+func (r *DeleteAttackLogsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteAttackLogsRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteAttackLogsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DeleteAttackLogsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteAttackLogsResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteBashEventsRequest struct {
+	*tchttp.BaseRequest
+
+	// ID数组，最大100条。
+	Ids []*uint64 `json:"Ids,omitempty" name:"Ids" list`
+}
+
+func (r *DeleteBashEventsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteBashEventsRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteBashEventsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DeleteBashEventsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteBashEventsResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteBashRulesRequest struct {
+	*tchttp.BaseRequest
+
+	// ID数组，最大100条。
+	Ids []*uint64 `json:"Ids,omitempty" name:"Ids" list`
+}
+
+func (r *DeleteBashRulesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteBashRulesRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteBashRulesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DeleteBashRulesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteBashRulesResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DeleteBruteAttacksRequest struct {
 	*tchttp.BaseRequest
 
@@ -339,6 +678,40 @@ func (r *DeleteBruteAttacksResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DeleteLoginWhiteListRequest struct {
+	*tchttp.BaseRequest
+
+	// 白名单ID
+	Ids []*uint64 `json:"Ids,omitempty" name:"Ids" list`
+}
+
+func (r *DeleteLoginWhiteListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteLoginWhiteListRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteLoginWhiteListResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DeleteLoginWhiteListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteLoginWhiteListResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DeleteMachineRequest struct {
 	*tchttp.BaseRequest
 
@@ -370,6 +743,40 @@ func (r *DeleteMachineResponse) ToJsonString() string {
 }
 
 func (r *DeleteMachineResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteMachineTagRequest struct {
+	*tchttp.BaseRequest
+
+	// 关联的标签ID
+	Rid *uint64 `json:"Rid,omitempty" name:"Rid"`
+}
+
+func (r *DeleteMachineTagRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteMachineTagRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteMachineTagResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DeleteMachineTagResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteMachineTagResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -472,6 +879,176 @@ func (r *DeleteNonlocalLoginPlacesResponse) ToJsonString() string {
 }
 
 func (r *DeleteNonlocalLoginPlacesResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeletePrivilegeEventsRequest struct {
+	*tchttp.BaseRequest
+
+	// ID数组，最大100条。
+	Ids []*uint64 `json:"Ids,omitempty" name:"Ids" list`
+}
+
+func (r *DeletePrivilegeEventsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeletePrivilegeEventsRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeletePrivilegeEventsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DeletePrivilegeEventsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeletePrivilegeEventsResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeletePrivilegeRulesRequest struct {
+	*tchttp.BaseRequest
+
+	// ID数组，最大100条。
+	Ids []*uint64 `json:"Ids,omitempty" name:"Ids" list`
+}
+
+func (r *DeletePrivilegeRulesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeletePrivilegeRulesRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeletePrivilegeRulesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DeletePrivilegeRulesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeletePrivilegeRulesResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteReverseShellEventsRequest struct {
+	*tchttp.BaseRequest
+
+	// ID数组，最大100条。
+	Ids []*uint64 `json:"Ids,omitempty" name:"Ids" list`
+}
+
+func (r *DeleteReverseShellEventsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteReverseShellEventsRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteReverseShellEventsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DeleteReverseShellEventsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteReverseShellEventsResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteReverseShellRulesRequest struct {
+	*tchttp.BaseRequest
+
+	// ID数组，最大100条。
+	Ids []*uint64 `json:"Ids,omitempty" name:"Ids" list`
+}
+
+func (r *DeleteReverseShellRulesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteReverseShellRulesRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteReverseShellRulesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DeleteReverseShellRulesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteReverseShellRulesResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteTagsRequest struct {
+	*tchttp.BaseRequest
+
+	// 标签ID
+	Ids []*uint64 `json:"Ids,omitempty" name:"Ids" list`
+}
+
+func (r *DeleteTagsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteTagsRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteTagsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DeleteTagsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteTagsResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -718,6 +1295,234 @@ func (r *DescribeAlarmAttributeResponse) ToJsonString() string {
 }
 
 func (r *DescribeAlarmAttributeResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeAttackLogInfoRequest struct {
+	*tchttp.BaseRequest
+
+	// 日志ID
+	Id *uint64 `json:"Id,omitempty" name:"Id"`
+}
+
+func (r *DescribeAttackLogInfoRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeAttackLogInfoRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeAttackLogInfoResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 日志ID
+		Id *uint64 `json:"Id,omitempty" name:"Id"`
+
+		// 主机ID
+		Quuid *string `json:"Quuid,omitempty" name:"Quuid"`
+
+		// 攻击来源端口
+		SrcPort *uint64 `json:"SrcPort,omitempty" name:"SrcPort"`
+
+		// 攻击来源IP
+		SrcIp *string `json:"SrcIp,omitempty" name:"SrcIp"`
+
+		// 攻击目标端口
+		DstPort *uint64 `json:"DstPort,omitempty" name:"DstPort"`
+
+		// 攻击目标IP
+		DstIp *string `json:"DstIp,omitempty" name:"DstIp"`
+
+		// 攻击方法
+		HttpMethod *string `json:"HttpMethod,omitempty" name:"HttpMethod"`
+
+		// 攻击目标主机
+		HttpHost *string `json:"HttpHost,omitempty" name:"HttpHost"`
+
+		// 攻击头信息
+		HttpHead *string `json:"HttpHead,omitempty" name:"HttpHead"`
+
+		// 攻击者浏览器标识
+		HttpUserAgent *string `json:"HttpUserAgent,omitempty" name:"HttpUserAgent"`
+
+		// 请求源
+		HttpReferer *string `json:"HttpReferer,omitempty" name:"HttpReferer"`
+
+		// 威胁类型
+		VulType *string `json:"VulType,omitempty" name:"VulType"`
+
+		// 攻击路径
+		HttpCgi *string `json:"HttpCgi,omitempty" name:"HttpCgi"`
+
+		// 攻击参数
+		HttpParam *string `json:"HttpParam,omitempty" name:"HttpParam"`
+
+		// 攻击时间
+		CreatedAt *string `json:"CreatedAt,omitempty" name:"CreatedAt"`
+
+		// 攻击内容
+		HttpContent *string `json:"HttpContent,omitempty" name:"HttpContent"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeAttackLogInfoResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeAttackLogInfoResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeAttackLogsRequest struct {
+	*tchttp.BaseRequest
+
+	// 返回数量，默认为10，最大值为100。
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 偏移量，默认为0。
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 过滤条件。
+	// <li>HttpMethod - String - 是否必填：否 - 攻击方法(POST|GET)</li>
+	// <li>MachineIp - String - 是否必填：否 - 主机内网IP</li>
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+}
+
+func (r *DescribeAttackLogsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeAttackLogsRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeAttackLogsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 日志列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		AttackLogs []*DefendAttackLog `json:"AttackLogs,omitempty" name:"AttackLogs" list`
+
+		// 总条数
+		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeAttackLogsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeAttackLogsResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeBashEventsRequest struct {
+	*tchttp.BaseRequest
+
+	// 返回数量，默认为10，最大值为100。
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 偏移量，默认为0。
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 过滤条件。
+	// <li>Keywords - String - 是否必填：否 - 关键词(主机内网IP)</li>
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+}
+
+func (r *DescribeBashEventsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeBashEventsRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeBashEventsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 总条数
+		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 高危命令事件列表
+		List []*BashEvent `json:"List,omitempty" name:"List" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeBashEventsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeBashEventsResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeBashRulesRequest struct {
+	*tchttp.BaseRequest
+
+	// 0-系统规则; 1-用户规则
+	Type *uint64 `json:"Type,omitempty" name:"Type"`
+
+	// 返回数量，默认为10，最大值为100。
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 偏移量，默认为0。
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 过滤条件。
+	// <li>Keywords - String - 是否必填：否 - 关键字(规则名称)</li>
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+}
+
+func (r *DescribeBashRulesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeBashRulesRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeBashRulesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 列表内容
+		List []*BashRule `json:"List,omitempty" name:"List" list`
+
+		// 总条数
+		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeBashRulesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeBashRulesResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -1024,6 +1829,53 @@ func (r *DescribeImpactedHostsResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeLoginWhiteListRequest struct {
+	*tchttp.BaseRequest
+
+	// 返回数量，默认为10，最大值为100。
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 偏移量，默认为0。
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 过滤条件。
+	// <li>Keywords - String - 是否必填：否 - 查询关键字 </li>
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+}
+
+func (r *DescribeLoginWhiteListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeLoginWhiteListRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeLoginWhiteListResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 记录总数
+		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 异地登录白名单数组
+		LoginWhiteLists []*LoginWhiteLists `json:"LoginWhiteLists,omitempty" name:"LoginWhiteLists" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeLoginWhiteListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeLoginWhiteListResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeMachineInfoRequest struct {
 	*tchttp.BaseRequest
 
@@ -1093,6 +1945,12 @@ type DescribeMachineInfoResponse struct {
 	// <li>POSTPAY: 表示后付费，即按量计费  </li>
 	// <li>PREPAY: 表示预付费，即包年包月</li>
 		PayMode *string `json:"PayMode,omitempty" name:"PayMode"`
+
+		// 免费木马剩余检测数量。
+		FreeMalwaresLeft *uint64 `json:"FreeMalwaresLeft,omitempty" name:"FreeMalwaresLeft"`
+
+		// 免费漏洞剩余检测数量。
+		FreeVulsLeft *uint64 `json:"FreeVulsLeft,omitempty" name:"FreeVulsLeft"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1368,6 +2226,47 @@ func (r *DescribeOpenPortStatisticsResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeOpenPortTaskStatusRequest struct {
+	*tchttp.BaseRequest
+
+	// 云镜客户端唯一Uuid。
+	Uuid *string `json:"Uuid,omitempty" name:"Uuid"`
+}
+
+func (r *DescribeOpenPortTaskStatusRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeOpenPortTaskStatusRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeOpenPortTaskStatusResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 任务状态。
+	// <li>COMPLETE：完成（此时可以调用DescribeOpenPorts接口获取实时进程列表）</li>
+	// <li>AGENT_OFFLINE：云镜客户端离线</li>
+	// <li>COLLECTING：端口获取中</li>
+	// <li>FAILED：进程获取失败</li>
+		Status *string `json:"Status,omitempty" name:"Status"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeOpenPortTaskStatusResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeOpenPortTaskStatusResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeOpenPortsRequest struct {
 	*tchttp.BaseRequest
 
@@ -1472,6 +2371,100 @@ func (r *DescribeOverviewStatisticsResponse) ToJsonString() string {
 }
 
 func (r *DescribeOverviewStatisticsResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribePrivilegeEventsRequest struct {
+	*tchttp.BaseRequest
+
+	// 返回数量，默认为10，最大值为100。
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 偏移量，默认为0。
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 过滤条件。
+	// <li>Keywords - String - 是否必填：否 - 关键词(主机IP)</li>
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+}
+
+func (r *DescribePrivilegeEventsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribePrivilegeEventsRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribePrivilegeEventsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 数据列表
+		List []*PrivilegeEscalationProcess `json:"List,omitempty" name:"List" list`
+
+		// 总条数
+		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribePrivilegeEventsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribePrivilegeEventsResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribePrivilegeRulesRequest struct {
+	*tchttp.BaseRequest
+
+	// 返回数量，默认为10，最大值为100。
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 偏移量，默认为0。
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 过滤条件。
+	// <li>Keywords - String - 是否必填：否 - 关键字(进程名称)</li>
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+}
+
+func (r *DescribePrivilegeRulesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribePrivilegeRulesRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribePrivilegeRulesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 列表内容
+		List []*PrivilegeRule `json:"List,omitempty" name:"List" list`
+
+		// 总条数
+		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribePrivilegeRulesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribePrivilegeRulesResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -1657,6 +2650,100 @@ func (r *DescribeProcessesResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeReverseShellEventsRequest struct {
+	*tchttp.BaseRequest
+
+	// 返回数量，默认为10，最大值为100。
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 偏移量，默认为0。
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 过滤条件。
+	// <li>Keywords - String - 是否必填：否 - 关键字(主机内网IP|进程名)</li>
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+}
+
+func (r *DescribeReverseShellEventsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeReverseShellEventsRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeReverseShellEventsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 列表内容
+		List []*ReverseShell `json:"List,omitempty" name:"List" list`
+
+		// 总条数
+		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeReverseShellEventsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeReverseShellEventsResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeReverseShellRulesRequest struct {
+	*tchttp.BaseRequest
+
+	// 返回数量，默认为10，最大值为100。
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 偏移量，默认为0。
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 过滤条件。
+	// <li>Keywords - String - 是否必填：否 - 关键字(进程名称)</li>
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+}
+
+func (r *DescribeReverseShellRulesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeReverseShellRulesRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeReverseShellRulesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 列表内容
+		List []*ReverseShellRule `json:"List,omitempty" name:"List" list`
+
+		// 总条数
+		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeReverseShellRulesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeReverseShellRulesResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeSecurityDynamicsRequest struct {
 	*tchttp.BaseRequest
 
@@ -1749,6 +2836,77 @@ func (r *DescribeSecurityTrendsResponse) ToJsonString() string {
 }
 
 func (r *DescribeSecurityTrendsResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeTagMachinesRequest struct {
+	*tchttp.BaseRequest
+
+	// 标签ID
+	Id *uint64 `json:"Id,omitempty" name:"Id"`
+}
+
+func (r *DescribeTagMachinesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeTagMachinesRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeTagMachinesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 列表数据
+		List []*TagMachine `json:"List,omitempty" name:"List" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeTagMachinesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeTagMachinesResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeTagsRequest struct {
+	*tchttp.BaseRequest
+}
+
+func (r *DescribeTagsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeTagsRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeTagsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 列表信息
+		List []*Tag `json:"List,omitempty" name:"List" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeTagsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeTagsResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -1872,6 +3030,12 @@ type DescribeVulScanResultResponse struct {
 
 		// 受影响的专业版主机数。
 		ImpactedHostNum *uint64 `json:"ImpactedHostNum,omitempty" name:"ImpactedHostNum"`
+
+		// 主机总数。
+		HostNum *uint64 `json:"HostNum,omitempty" name:"HostNum"`
+
+		// 基础版机器数。
+		BasicVersionNum *uint64 `json:"BasicVersionNum,omitempty" name:"BasicVersionNum"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -2046,6 +3210,9 @@ type DescribeWeeklyReportInfoResponse struct {
 
 		// 漏洞数。
 		VulNum *uint64 `json:"VulNum,omitempty" name:"VulNum"`
+
+		// 导出文件下载地址。
+		DownloadUrl *string `json:"DownloadUrl,omitempty" name:"DownloadUrl"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -2242,6 +3409,301 @@ func (r *DescribeWeeklyReportsResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type EditBashRuleRequest struct {
+	*tchttp.BaseRequest
+
+	// 规则名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 危险等级(1: 高危 2:中危 3: 低危)
+	Level *uint64 `json:"Level,omitempty" name:"Level"`
+
+	// 正则表达式
+	Rule *string `json:"Rule,omitempty" name:"Rule"`
+
+	// 规则ID(新增时不填)
+	Id *uint64 `json:"Id,omitempty" name:"Id"`
+
+	// 客户端ID(IsGlobal为1时，Uuid或Hostip必填一个)
+	Uuid *string `json:"Uuid,omitempty" name:"Uuid"`
+
+	// 主机IP(IsGlobal为1时，Uuid或Hostip必填一个)
+	Hostip *string `json:"Hostip,omitempty" name:"Hostip"`
+
+	// 是否全局规则(默认否)
+	IsGlobal *uint64 `json:"IsGlobal,omitempty" name:"IsGlobal"`
+}
+
+func (r *EditBashRuleRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *EditBashRuleRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type EditBashRuleResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *EditBashRuleResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *EditBashRuleResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type EditPrivilegeRuleRequest struct {
+	*tchttp.BaseRequest
+
+	// 规则ID(新增时请留空)
+	Id *uint64 `json:"Id,omitempty" name:"Id"`
+
+	// 客户端ID(IsGlobal为1时，Uuid或Hostip必填一个)
+	Uuid *string `json:"Uuid,omitempty" name:"Uuid"`
+
+	// 主机IP(IsGlobal为1时，Uuid或Hostip必填一个)
+	Hostip *string `json:"Hostip,omitempty" name:"Hostip"`
+
+	// 进程名
+	ProcessName *string `json:"ProcessName,omitempty" name:"ProcessName"`
+
+	// 是否S权限进程
+	SMode *uint64 `json:"SMode,omitempty" name:"SMode"`
+
+	// 是否全局规则(默认否)
+	IsGlobal *uint64 `json:"IsGlobal,omitempty" name:"IsGlobal"`
+}
+
+func (r *EditPrivilegeRuleRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *EditPrivilegeRuleRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type EditPrivilegeRuleResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *EditPrivilegeRuleResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *EditPrivilegeRuleResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type EditReverseShellRuleRequest struct {
+	*tchttp.BaseRequest
+
+	// 规则ID(新增时请留空)
+	Id *uint64 `json:"Id,omitempty" name:"Id"`
+
+	// 客户端ID(IsGlobal为1时，Uuid或Hostip必填一个)
+	Uuid *string `json:"Uuid,omitempty" name:"Uuid"`
+
+	// 主机IP(IsGlobal为1时，Uuid或Hostip必填一个)
+	Hostip *string `json:"Hostip,omitempty" name:"Hostip"`
+
+	// 目标IP
+	DestIp *string `json:"DestIp,omitempty" name:"DestIp"`
+
+	// 目标端口
+	DestPort *string `json:"DestPort,omitempty" name:"DestPort"`
+
+	// 进程名
+	ProcessName *string `json:"ProcessName,omitempty" name:"ProcessName"`
+
+	// 是否全局规则(默认否)
+	IsGlobal *uint64 `json:"IsGlobal,omitempty" name:"IsGlobal"`
+}
+
+func (r *EditReverseShellRuleRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *EditReverseShellRuleRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type EditReverseShellRuleResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *EditReverseShellRuleResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *EditReverseShellRuleResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type EditTagsRequest struct {
+	*tchttp.BaseRequest
+
+	// 标签名
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 标签ID
+	Id *uint64 `json:"Id,omitempty" name:"Id"`
+
+	// CVM主机ID
+	Quuids []*string `json:"Quuids,omitempty" name:"Quuids" list`
+}
+
+func (r *EditTagsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *EditTagsRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type EditTagsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *EditTagsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *EditTagsResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ExportAttackLogsRequest struct {
+	*tchttp.BaseRequest
+}
+
+func (r *ExportAttackLogsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ExportAttackLogsRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ExportAttackLogsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 导出文件下载链接地址。
+		DownloadUrl *string `json:"DownloadUrl,omitempty" name:"DownloadUrl"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ExportAttackLogsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ExportAttackLogsResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ExportBashEventsRequest struct {
+	*tchttp.BaseRequest
+}
+
+func (r *ExportBashEventsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ExportBashEventsRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ExportBashEventsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 导出文件下载链接地址。
+		DownloadUrl *string `json:"DownloadUrl,omitempty" name:"DownloadUrl"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ExportBashEventsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ExportBashEventsResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ExportBruteAttacksRequest struct {
+	*tchttp.BaseRequest
+}
+
+func (r *ExportBruteAttacksRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ExportBruteAttacksRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ExportBruteAttacksResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 导出文件下载链接地址。
+		DownloadUrl *string `json:"DownloadUrl,omitempty" name:"DownloadUrl"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ExportBruteAttacksResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ExportBruteAttacksResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type ExportMaliciousRequestsRequest struct {
 	*tchttp.BaseRequest
 }
@@ -2273,6 +3735,142 @@ func (r *ExportMaliciousRequestsResponse) ToJsonString() string {
 }
 
 func (r *ExportMaliciousRequestsResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ExportMalwaresRequest struct {
+	*tchttp.BaseRequest
+}
+
+func (r *ExportMalwaresRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ExportMalwaresRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ExportMalwaresResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 导出文件下载链接地址。
+		DownloadUrl *string `json:"DownloadUrl,omitempty" name:"DownloadUrl"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ExportMalwaresResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ExportMalwaresResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ExportNonlocalLoginPlacesRequest struct {
+	*tchttp.BaseRequest
+}
+
+func (r *ExportNonlocalLoginPlacesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ExportNonlocalLoginPlacesRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ExportNonlocalLoginPlacesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 导出文件下载链接地址。
+		DownloadUrl *string `json:"DownloadUrl,omitempty" name:"DownloadUrl"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ExportNonlocalLoginPlacesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ExportNonlocalLoginPlacesResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ExportPrivilegeEventsRequest struct {
+	*tchttp.BaseRequest
+}
+
+func (r *ExportPrivilegeEventsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ExportPrivilegeEventsRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ExportPrivilegeEventsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 导出文件下载链接地址。
+		DownloadUrl *string `json:"DownloadUrl,omitempty" name:"DownloadUrl"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ExportPrivilegeEventsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ExportPrivilegeEventsResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ExportReverseShellEventsRequest struct {
+	*tchttp.BaseRequest
+}
+
+func (r *ExportReverseShellEventsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ExportReverseShellEventsRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ExportReverseShellEventsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 导出文件下载链接地址。
+		DownloadUrl *string `json:"DownloadUrl,omitempty" name:"DownloadUrl"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ExportReverseShellEventsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ExportReverseShellEventsResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -2374,6 +3972,9 @@ type ImpactedHost struct {
 
 	// 漏洞种类ID。
 	VulId *uint64 `json:"VulId,omitempty" name:"VulId"`
+
+	// 是否为专业版。
+	IsProVersion *bool `json:"IsProVersion,omitempty" name:"IsProVersion"`
 }
 
 type InquiryPriceOpenProVersionPrepaidRequest struct {
@@ -2419,6 +4020,60 @@ func (r *InquiryPriceOpenProVersionPrepaidResponse) FromJsonString(s string) err
     return json.Unmarshal([]byte(s), &r)
 }
 
+type LoginWhiteLists struct {
+
+	// 记录ID
+	Id *uint64 `json:"Id,omitempty" name:"Id"`
+
+	// 云镜客户端ID
+	Uuid *string `json:"Uuid,omitempty" name:"Uuid"`
+
+	// 白名单地域
+	Places []*Place `json:"Places,omitempty" name:"Places" list`
+
+	// 白名单用户（多个用户逗号隔开）
+	UserName *string `json:"UserName,omitempty" name:"UserName"`
+
+	// 白名单IP（多个IP逗号隔开）
+	SrcIp *string `json:"SrcIp,omitempty" name:"SrcIp"`
+
+	// 是否为全局规则
+	IsGlobal *bool `json:"IsGlobal,omitempty" name:"IsGlobal"`
+
+	// 创建白名单时间
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 修改白名单时间
+	ModifyTime *string `json:"ModifyTime,omitempty" name:"ModifyTime"`
+
+	// 机器名
+	MachineName *string `json:"MachineName,omitempty" name:"MachineName"`
+
+	// 机器IP
+	HostIp *string `json:"HostIp,omitempty" name:"HostIp"`
+}
+
+type LoginWhiteListsRule struct {
+
+	// 加白地域
+	Places []*Place `json:"Places,omitempty" name:"Places" list`
+
+	// 加白源IP，支持网段，多个IP以逗号隔开
+	SrcIp *string `json:"SrcIp,omitempty" name:"SrcIp"`
+
+	// 加白用户名，多个用户名以逗号隔开
+	UserName *string `json:"UserName,omitempty" name:"UserName"`
+
+	// 是否对全局生效
+	IsGlobal *bool `json:"IsGlobal,omitempty" name:"IsGlobal"`
+
+	// 白名单生效的机器
+	HostIp *string `json:"HostIp,omitempty" name:"HostIp"`
+
+	// 规则ID，用于更新规则
+	Id *uint64 `json:"Id,omitempty" name:"Id"`
+}
+
 type Machine struct {
 
 	// 主机名称。
@@ -2438,8 +4093,8 @@ type Machine struct {
 	// CVM或BM机器唯一Uuid。
 	Quuid *string `json:"Quuid,omitempty" name:"Quuid"`
 
-	// 漏洞数，非专业版将返回：0。
-	VulNum *uint64 `json:"VulNum,omitempty" name:"VulNum"`
+	// 漏洞数。
+	VulNum *int64 `json:"VulNum,omitempty" name:"VulNum"`
 
 	// 主机IP。
 	MachineIp *string `json:"MachineIp,omitempty" name:"MachineIp"`
@@ -2456,6 +4111,21 @@ type Machine struct {
 	// <li>POSTPAY: 表示后付费，即按量计费  </li>
 	// <li>PREPAY: 表示预付费，即包年包月</li>
 	PayMode *string `json:"PayMode,omitempty" name:"PayMode"`
+
+	// 木马数。
+	MalwareNum *int64 `json:"MalwareNum,omitempty" name:"MalwareNum"`
+
+	// 标签信息
+	Tag []*MachineTag `json:"Tag,omitempty" name:"Tag" list`
+}
+
+type MachineTag struct {
+
+	// 关联标签ID
+	Rid *int64 `json:"Rid,omitempty" name:"Rid"`
+
+	// 标签名
+	Name *string `json:"Name,omitempty" name:"Name"`
 }
 
 type MaliciousRequest struct {
@@ -2665,6 +4335,40 @@ func (r *ModifyAutoOpenProVersionConfigResponse) FromJsonString(s string) error 
     return json.Unmarshal([]byte(s), &r)
 }
 
+type ModifyLoginWhiteListRequest struct {
+	*tchttp.BaseRequest
+
+	// 白名单规则
+	Rules *LoginWhiteListsRule `json:"Rules,omitempty" name:"Rules"`
+}
+
+func (r *ModifyLoginWhiteListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyLoginWhiteListRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyLoginWhiteListResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifyLoginWhiteListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyLoginWhiteListResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type ModifyProVersionRenewFlagRequest struct {
 	*tchttp.BaseRequest
 
@@ -2832,6 +4536,96 @@ type Place struct {
 
 	// 国家ID，暂只支持国内：1。
 	CountryId *uint64 `json:"CountryId,omitempty" name:"CountryId"`
+}
+
+type PrivilegeEscalationProcess struct {
+
+	// 数据ID
+	Id *uint64 `json:"Id,omitempty" name:"Id"`
+
+	// 云镜ID
+	Uuid *string `json:"Uuid,omitempty" name:"Uuid"`
+
+	// 主机ID
+	Quuid *string `json:"Quuid,omitempty" name:"Quuid"`
+
+	// 主机内网IP
+	Hostip *string `json:"Hostip,omitempty" name:"Hostip"`
+
+	// 进程名
+	ProcessName *string `json:"ProcessName,omitempty" name:"ProcessName"`
+
+	// 进程路径
+	FullPath *string `json:"FullPath,omitempty" name:"FullPath"`
+
+	// 执行命令
+	CmdLine *string `json:"CmdLine,omitempty" name:"CmdLine"`
+
+	// 用户名
+	UserName *string `json:"UserName,omitempty" name:"UserName"`
+
+	// 用户组
+	UserGroup *string `json:"UserGroup,omitempty" name:"UserGroup"`
+
+	// 进程文件权限
+	ProcFilePrivilege *string `json:"ProcFilePrivilege,omitempty" name:"ProcFilePrivilege"`
+
+	// 父进程名
+	ParentProcName *string `json:"ParentProcName,omitempty" name:"ParentProcName"`
+
+	// 父进程用户名
+	ParentProcUser *string `json:"ParentProcUser,omitempty" name:"ParentProcUser"`
+
+	// 父进程用户组
+	ParentProcGroup *string `json:"ParentProcGroup,omitempty" name:"ParentProcGroup"`
+
+	// 父进程路径
+	ParentProcPath *string `json:"ParentProcPath,omitempty" name:"ParentProcPath"`
+
+	// 进程树
+	ProcTree *string `json:"ProcTree,omitempty" name:"ProcTree"`
+
+	// 处理状态
+	Status *uint64 `json:"Status,omitempty" name:"Status"`
+
+	// 发生时间
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 机器名
+	MachineName *string `json:"MachineName,omitempty" name:"MachineName"`
+}
+
+type PrivilegeRule struct {
+
+	// 规则ID
+	Id *uint64 `json:"Id,omitempty" name:"Id"`
+
+	// 客户端ID
+	Uuid *string `json:"Uuid,omitempty" name:"Uuid"`
+
+	// 进程名
+	ProcessName *string `json:"ProcessName,omitempty" name:"ProcessName"`
+
+	// 是否S权限
+	SMode *uint64 `json:"SMode,omitempty" name:"SMode"`
+
+	// 操作人
+	Operator *string `json:"Operator,omitempty" name:"Operator"`
+
+	// 是否全局规则
+	IsGlobal *uint64 `json:"IsGlobal,omitempty" name:"IsGlobal"`
+
+	// 状态(0: 有效 1: 无效)
+	Status *uint64 `json:"Status,omitempty" name:"Status"`
+
+	// 创建时间
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 修改时间
+	ModifyTime *string `json:"ModifyTime,omitempty" name:"ModifyTime"`
+
+	// 主机IP
+	Hostip *string `json:"Hostip,omitempty" name:"Hostip"`
 }
 
 type ProVersionMachine struct {
@@ -3010,6 +4804,102 @@ func (r *RescanImpactedHostResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type ReverseShell struct {
+
+	// ID
+	Id *uint64 `json:"Id,omitempty" name:"Id"`
+
+	// 云镜UUID
+	Uuid *string `json:"Uuid,omitempty" name:"Uuid"`
+
+	// 主机ID
+	Quuid *string `json:"Quuid,omitempty" name:"Quuid"`
+
+	// 主机内网IP
+	Hostip *string `json:"Hostip,omitempty" name:"Hostip"`
+
+	// 目标IP
+	DstIp *string `json:"DstIp,omitempty" name:"DstIp"`
+
+	// 目标端口
+	DstPort *uint64 `json:"DstPort,omitempty" name:"DstPort"`
+
+	// 进程名
+	ProcessName *string `json:"ProcessName,omitempty" name:"ProcessName"`
+
+	// 进程路径
+	FullPath *string `json:"FullPath,omitempty" name:"FullPath"`
+
+	// 命令详情
+	CmdLine *string `json:"CmdLine,omitempty" name:"CmdLine"`
+
+	// 执行用户
+	UserName *string `json:"UserName,omitempty" name:"UserName"`
+
+	// 执行用户组
+	UserGroup *string `json:"UserGroup,omitempty" name:"UserGroup"`
+
+	// 父进程名
+	ParentProcName *string `json:"ParentProcName,omitempty" name:"ParentProcName"`
+
+	// 父进程用户
+	ParentProcUser *string `json:"ParentProcUser,omitempty" name:"ParentProcUser"`
+
+	// 父进程用户组
+	ParentProcGroup *string `json:"ParentProcGroup,omitempty" name:"ParentProcGroup"`
+
+	// 父进程路径
+	ParentProcPath *string `json:"ParentProcPath,omitempty" name:"ParentProcPath"`
+
+	// 处理状态
+	Status *uint64 `json:"Status,omitempty" name:"Status"`
+
+	// 产生时间
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 主机名
+	MachineName *string `json:"MachineName,omitempty" name:"MachineName"`
+
+	// 进程树
+	ProcTree *string `json:"ProcTree,omitempty" name:"ProcTree"`
+}
+
+type ReverseShellRule struct {
+
+	// 规则ID
+	Id *uint64 `json:"Id,omitempty" name:"Id"`
+
+	// 客户端ID
+	Uuid *string `json:"Uuid,omitempty" name:"Uuid"`
+
+	// 进程名称
+	ProcessName *string `json:"ProcessName,omitempty" name:"ProcessName"`
+
+	// 目标IP
+	DestIp *string `json:"DestIp,omitempty" name:"DestIp"`
+
+	// 目标端口
+	DestPort *string `json:"DestPort,omitempty" name:"DestPort"`
+
+	// 操作人
+	Operator *string `json:"Operator,omitempty" name:"Operator"`
+
+	// 是否全局规则
+	IsGlobal *uint64 `json:"IsGlobal,omitempty" name:"IsGlobal"`
+
+	// 状态 (0: 有效 1: 无效)
+	Status *uint64 `json:"Status,omitempty" name:"Status"`
+
+	// 创建时间
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 修改时间
+	ModifyTime *string `json:"ModifyTime,omitempty" name:"ModifyTime"`
+
+	// 主机IP
+	Hostip *string `json:"Hostip,omitempty" name:"Hostip"`
+}
+
 type SecurityDynamic struct {
 
 	// 云镜客户端UUID。
@@ -3077,6 +4967,116 @@ func (r *SeparateMalwaresResponse) ToJsonString() string {
 
 func (r *SeparateMalwaresResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
+}
+
+type SetBashEventsStatusRequest struct {
+	*tchttp.BaseRequest
+
+	// ID数组，最大100条。
+	Ids []*uint64 `json:"Ids,omitempty" name:"Ids" list`
+
+	// 新状态(0-待处理 1-高危 2-正常)
+	Status *uint64 `json:"Status,omitempty" name:"Status"`
+}
+
+func (r *SetBashEventsStatusRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *SetBashEventsStatusRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type SetBashEventsStatusResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *SetBashEventsStatusResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *SetBashEventsStatusResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type SwitchBashRulesRequest struct {
+	*tchttp.BaseRequest
+
+	// 规则ID
+	Id *uint64 `json:"Id,omitempty" name:"Id"`
+
+	// 是否禁用
+	Disabled *uint64 `json:"Disabled,omitempty" name:"Disabled"`
+}
+
+func (r *SwitchBashRulesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *SwitchBashRulesRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type SwitchBashRulesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *SwitchBashRulesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *SwitchBashRulesResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type Tag struct {
+
+	// 标签ID
+	Id *uint64 `json:"Id,omitempty" name:"Id"`
+
+	// 标签名
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 服务器数
+	Count *uint64 `json:"Count,omitempty" name:"Count"`
+}
+
+type TagMachine struct {
+
+	// ID
+	Id *string `json:"Id,omitempty" name:"Id"`
+
+	// 主机ID
+	Quuid *string `json:"Quuid,omitempty" name:"Quuid"`
+
+	// 主机名称
+	MachineName *string `json:"MachineName,omitempty" name:"MachineName"`
+
+	// 主机内网IP
+	MachineIp *string `json:"MachineIp,omitempty" name:"MachineIp"`
+
+	// 主机外网IP
+	MachineWanIp *string `json:"MachineWanIp,omitempty" name:"MachineWanIp"`
+
+	// 主机区域
+	MachineRegion *string `json:"MachineRegion,omitempty" name:"MachineRegion"`
+
+	// 主机区域类型
+	MachineType *string `json:"MachineType,omitempty" name:"MachineType"`
 }
 
 type TrustMaliciousRequestRequest struct {

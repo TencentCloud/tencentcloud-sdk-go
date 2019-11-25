@@ -20,6 +20,2881 @@ import (
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
+type BaradData struct {
+
+	// 指标名（connum表示TCP连接数；new_conn表示新增TCP连接数；intraffic表示入流量；outtraffic表示出流量）
+	MetricName *string `json:"MetricName,omitempty" name:"MetricName"`
+
+	// 值数组
+	Data []*float64 `json:"Data,omitempty" name:"Data" list`
+
+	// 值数组的大小
+	Count *uint64 `json:"Count,omitempty" name:"Count"`
+}
+
+type CCEventRecord struct {
+
+	// 大禹子产品代号（shield表示棋牌；bgpip表示高防IP；bgp表示高防包；bgp-multip表示多ip高防包；net表示高防IP专业版；basic表示DDos基础防护）
+	Business *string `json:"Business,omitempty" name:"Business"`
+
+	// 资源ID
+	Id *string `json:"Id,omitempty" name:"Id"`
+
+	// 资源的IP
+	Vip *string `json:"Vip,omitempty" name:"Vip"`
+
+	// 攻击开始时间
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 攻击结束时间
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 总请求QPS峰值
+	ReqQps *uint64 `json:"ReqQps,omitempty" name:"ReqQps"`
+
+	// 攻击QPS峰值
+	DropQps *uint64 `json:"DropQps,omitempty" name:"DropQps"`
+
+	// 攻击状态，取值[0（攻击中）, 1（攻击结束）]
+	AttackStatus *uint64 `json:"AttackStatus,omitempty" name:"AttackStatus"`
+
+	// 资源名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResourceName *string `json:"ResourceName,omitempty" name:"ResourceName"`
+
+	// 域名列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DomainList *string `json:"DomainList,omitempty" name:"DomainList"`
+
+	// uri列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UriList *string `json:"UriList,omitempty" name:"UriList"`
+
+	// 攻击源列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AttackipList *string `json:"AttackipList,omitempty" name:"AttackipList"`
+}
+
+type CCPolicy struct {
+
+	// 策略名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 匹配模式
+	Smode *string `json:"Smode,omitempty" name:"Smode"`
+
+	// 策略id
+	SetId *string `json:"SetId,omitempty" name:"SetId"`
+
+	// 每分钟限制的次数
+	Frequency *uint64 `json:"Frequency,omitempty" name:"Frequency"`
+
+	// 执行策略模式，拦截或者验证码
+	ExeMode *string `json:"ExeMode,omitempty" name:"ExeMode"`
+
+	// 生效开关
+	Switch *uint64 `json:"Switch,omitempty" name:"Switch"`
+
+	// 创建时间
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 规则列表
+	RuleList []*CCRule `json:"RuleList,omitempty" name:"RuleList" list`
+
+	// Ip列表
+	IpList []*string `json:"IpList,omitempty" name:"IpList" list`
+
+	// cc防护类型，取值[http，https]
+	Protocol *string `json:"Protocol,omitempty" name:"Protocol"`
+
+	// 可选字段，表示https的CC防护域名对应的转发规则ID;
+	RuleId *string `json:"RuleId,omitempty" name:"RuleId"`
+
+	// https的CC防护域名
+	Domain *string `json:"Domain,omitempty" name:"Domain"`
+}
+
+type CCRule struct {
+
+	// 规则的key, 可以为host、cgi、ua、referer
+	Skey *string `json:"Skey,omitempty" name:"Skey"`
+
+	// 规则的条件，可以为include、not_include、equal
+	Operator *string `json:"Operator,omitempty" name:"Operator"`
+
+	// 规则的值，长度小于31字节
+	Value *string `json:"Value,omitempty" name:"Value"`
+}
+
+type CCRuleConfig struct {
+
+	// 统计周期，单位秒，取值[10, 30, 60]
+	Period *uint64 `json:"Period,omitempty" name:"Period"`
+
+	// 访问次数，取值[1-10000]
+	ReqNumber *uint64 `json:"ReqNumber,omitempty" name:"ReqNumber"`
+
+	// 执行动作，取值["alg"（人机识别）, "drop"（拦截）]
+	Action *string `json:"Action,omitempty" name:"Action"`
+
+	// 执行时间，单位秒，取值[1-900]
+	ExeDuration *uint64 `json:"ExeDuration,omitempty" name:"ExeDuration"`
+}
+
+type CreateCCSelfDefinePolicyRequest struct {
+	*tchttp.BaseRequest
+
+	// 大禹子产品代号（bgpip表示高防IP；bgp表示独享包；bgp-multip表示共享包；net表示高防IP专业版）
+	Business *string `json:"Business,omitempty" name:"Business"`
+
+	// 资源ID
+	Id *string `json:"Id,omitempty" name:"Id"`
+
+	// CC策略描述
+	Policy *CCPolicy `json:"Policy,omitempty" name:"Policy"`
+}
+
+func (r *CreateCCSelfDefinePolicyRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateCCSelfDefinePolicyRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateCCSelfDefinePolicyResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 成功码
+		Success *SuccessCode `json:"Success,omitempty" name:"Success"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateCCSelfDefinePolicyResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateCCSelfDefinePolicyResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateDDoSPolicyCaseRequest struct {
+	*tchttp.BaseRequest
+
+	// 大禹子产品代号（bgpip表示高防IP；bgp表示独享包；bgp-multip表示共享包；net表示高防IP专业版）
+	Business *string `json:"Business,omitempty" name:"Business"`
+
+	// 策略场景名，字符串长度小于64
+	CaseName *string `json:"CaseName,omitempty" name:"CaseName"`
+
+	// 开发平台，取值[PC（PC客户端）， MOBILE（移动端）， TV（电视端）， SERVER（主机）]
+	PlatformTypes []*string `json:"PlatformTypes,omitempty" name:"PlatformTypes" list`
+
+	// 细分品类，取值[WEB（网站）， GAME（游戏）， APP（应用）， OTHER（其他）]
+	AppType *string `json:"AppType,omitempty" name:"AppType"`
+
+	// 应用协议，取值[tcp（TCP协议），udp（UDP协议），icmp（ICMP协议），all（其他协议）]
+	AppProtocols []*string `json:"AppProtocols,omitempty" name:"AppProtocols" list`
+
+	// TCP业务起始端口，取值(0, 65535]
+	TcpSportStart *string `json:"TcpSportStart,omitempty" name:"TcpSportStart"`
+
+	// TCP业务结束端口，取值(0, 65535]，必须大于等于TCP业务起始端口
+	TcpSportEnd *string `json:"TcpSportEnd,omitempty" name:"TcpSportEnd"`
+
+	// UDP业务起始端口，取值范围(0, 65535]
+	UdpSportStart *string `json:"UdpSportStart,omitempty" name:"UdpSportStart"`
+
+	// UDP业务结束端口，取值范围(0, 65535)，必须大于等于UDP业务起始端口
+	UdpSportEnd *string `json:"UdpSportEnd,omitempty" name:"UdpSportEnd"`
+
+	// 是否有海外客户，取值[no（没有）, yes（有）]
+	HasAbroad *string `json:"HasAbroad,omitempty" name:"HasAbroad"`
+
+	// 是否会主动对外发起TCP请求，取值[no（不会）, yes（会）]
+	HasInitiateTcp *string `json:"HasInitiateTcp,omitempty" name:"HasInitiateTcp"`
+
+	// 是否会主动对外发起UDP业务请求，取值[no（不会）, yes（会）]
+	HasInitiateUdp *string `json:"HasInitiateUdp,omitempty" name:"HasInitiateUdp"`
+
+	// 主动发起TCP请求的端口，取值范围(0, 65535]
+	PeerTcpPort *string `json:"PeerTcpPort,omitempty" name:"PeerTcpPort"`
+
+	// 主动发起UDP请求的端口，取值范围(0, 65535]
+	PeerUdpPort *string `json:"PeerUdpPort,omitempty" name:"PeerUdpPort"`
+
+	// TCP载荷的固定特征码，字符串长度小于512
+	TcpFootprint *string `json:"TcpFootprint,omitempty" name:"TcpFootprint"`
+
+	// UDP载荷的固定特征码，字符串长度小于512
+	UdpFootprint *string `json:"UdpFootprint,omitempty" name:"UdpFootprint"`
+
+	// Web业务的API的URL
+	WebApiUrl []*string `json:"WebApiUrl,omitempty" name:"WebApiUrl" list`
+
+	// TCP业务报文长度最小值，取值范围(0, 1500)
+	MinTcpPackageLen *string `json:"MinTcpPackageLen,omitempty" name:"MinTcpPackageLen"`
+
+	// TCP业务报文长度最大值，取值范围(0, 1500)，必须大于等于TCP业务报文长度最小值
+	MaxTcpPackageLen *string `json:"MaxTcpPackageLen,omitempty" name:"MaxTcpPackageLen"`
+
+	// UDP业务报文长度最小值，取值范围(0, 1500)
+	MinUdpPackageLen *string `json:"MinUdpPackageLen,omitempty" name:"MinUdpPackageLen"`
+
+	// UDP业务报文长度最大值，取值范围(0, 1500)，必须大于等于UDP业务报文长度最小值
+	MaxUdpPackageLen *string `json:"MaxUdpPackageLen,omitempty" name:"MaxUdpPackageLen"`
+
+	// 是否有VPN业务，取值[no（没有）, yes（有）]
+	HasVPN *string `json:"HasVPN,omitempty" name:"HasVPN"`
+}
+
+func (r *CreateDDoSPolicyCaseRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateDDoSPolicyCaseRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateDDoSPolicyCaseResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 策略场景ID
+		SceneId *string `json:"SceneId,omitempty" name:"SceneId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateDDoSPolicyCaseResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateDDoSPolicyCaseResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateDDoSPolicyRequest struct {
+	*tchttp.BaseRequest
+
+	// 大禹子产品代号（bgpip表示高防IP；bgp表示独享包；bgp-multip表示共享包；net表示高防IP专业版）
+	Business *string `json:"Business,omitempty" name:"Business"`
+
+	// 协议禁用，必须填写且数组长度必须为1
+	DropOptions []*DDoSPolicyDropOption `json:"DropOptions,omitempty" name:"DropOptions" list`
+
+	// 策略名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 端口禁用，当没有禁用端口时填空数组
+	PortLimits []*DDoSPolicyPortLimit `json:"PortLimits,omitempty" name:"PortLimits" list`
+
+	// IP黑白名单，当没有IP黑白名单时填空数组
+	IpAllowDenys []*IpBlackWhite `json:"IpAllowDenys,omitempty" name:"IpAllowDenys" list`
+
+	// 报文过滤，当没有报文过滤时填空数组
+	PacketFilters []*DDoSPolicyPacketFilter `json:"PacketFilters,omitempty" name:"PacketFilters" list`
+
+	// 水印策略参数，当没有启用水印功能时填空数组，最多只能传一条水印策略（即数组大小不超过1）
+	WaterPrint []*WaterPrintPolicy `json:"WaterPrint,omitempty" name:"WaterPrint" list`
+}
+
+func (r *CreateDDoSPolicyRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateDDoSPolicyRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateDDoSPolicyResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 策略ID
+		PolicyId *string `json:"PolicyId,omitempty" name:"PolicyId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateDDoSPolicyResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateDDoSPolicyResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateInstanceNameRequest struct {
+	*tchttp.BaseRequest
+
+	// 大禹子产品代号（bgpip表示高防IP；bgp表示独享包；bgp-multip表示共享包；net表示高防IP专业版）
+	Business *string `json:"Business,omitempty" name:"Business"`
+
+	// 资源ID
+	Id *string `json:"Id,omitempty" name:"Id"`
+
+	// 资源实例名称，长度不超过32个字符
+	Name *string `json:"Name,omitempty" name:"Name"`
+}
+
+func (r *CreateInstanceNameRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateInstanceNameRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateInstanceNameResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 成功码
+		Success *SuccessCode `json:"Success,omitempty" name:"Success"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateInstanceNameResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateInstanceNameResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateL4HealthConfigRequest struct {
+	*tchttp.BaseRequest
+
+	// 大禹子产品代号（bgpip表示高防IP；net表示高防IP专业版）
+	Business *string `json:"Business,omitempty" name:"Business"`
+
+	// 资源ID
+	Id *string `json:"Id,omitempty" name:"Id"`
+
+	// 四层健康检查配置数组
+	HealthConfig []*L4HealthConfig `json:"HealthConfig,omitempty" name:"HealthConfig" list`
+}
+
+func (r *CreateL4HealthConfigRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateL4HealthConfigRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateL4HealthConfigResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 成功码
+		Success *SuccessCode `json:"Success,omitempty" name:"Success"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateL4HealthConfigResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateL4HealthConfigResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateL4RulesRequest struct {
+	*tchttp.BaseRequest
+
+	// 大禹子产品代号（bgpip表示高防IP；bgp表示独享包；bgp-multip表示共享包；net表示高防IP专业版）
+	Business *string `json:"Business,omitempty" name:"Business"`
+
+	// 资源ID
+	Id *string `json:"Id,omitempty" name:"Id"`
+
+	// 规则列表
+	Rules []*L4RuleEntry `json:"Rules,omitempty" name:"Rules" list`
+}
+
+func (r *CreateL4RulesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateL4RulesRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateL4RulesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 成功码
+		Success *SuccessCode `json:"Success,omitempty" name:"Success"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateL4RulesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateL4RulesResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateL7CCRuleRequest struct {
+	*tchttp.BaseRequest
+
+	// 大禹子产品代号（bgpip表示高防IP；net表示高防IP专业版）
+	Business *string `json:"Business,omitempty" name:"Business"`
+
+	// 资源ID
+	Id *string `json:"Id,omitempty" name:"Id"`
+
+	// 操作码，取值[query(表示查询)，add(表示添加)，del(表示删除)]
+	Method *string `json:"Method,omitempty" name:"Method"`
+
+	// 7层转发规则ID，例如：rule-0000001
+	RuleId *string `json:"RuleId,omitempty" name:"RuleId"`
+
+	// 7层CC自定义规则参数，当操作码为query时，可以不用填写；当操作码为add或del时，必须填写；
+	RuleConfig []*CCRuleConfig `json:"RuleConfig,omitempty" name:"RuleConfig" list`
+}
+
+func (r *CreateL7CCRuleRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateL7CCRuleRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateL7CCRuleResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 7层CC自定义规则参数，当没有开启CC自定义规则时，返回空数组
+		RuleConfig []*CCRuleConfig `json:"RuleConfig,omitempty" name:"RuleConfig" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateL7CCRuleResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateL7CCRuleResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateL7HealthConfigRequest struct {
+	*tchttp.BaseRequest
+
+	// 大禹子产品代号（bgpip表示高防IP；net表示高防IP专业版）
+	Business *string `json:"Business,omitempty" name:"Business"`
+
+	// 资源ID
+	Id *string `json:"Id,omitempty" name:"Id"`
+
+	// 七层健康检查配置数组
+	HealthConfig []*L7HealthConfig `json:"HealthConfig,omitempty" name:"HealthConfig" list`
+}
+
+func (r *CreateL7HealthConfigRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateL7HealthConfigRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateL7HealthConfigResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 成功码
+		Success *SuccessCode `json:"Success,omitempty" name:"Success"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateL7HealthConfigResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateL7HealthConfigResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateL7RuleCertRequest struct {
+	*tchttp.BaseRequest
+
+	// 大禹子产品代号（bgpip表示高防IP；net表示高防IP专业版）
+	Business *string `json:"Business,omitempty" name:"Business"`
+
+	// 资源ID
+	Id *string `json:"Id,omitempty" name:"Id"`
+
+	// 规则ID
+	RuleId *string `json:"RuleId,omitempty" name:"RuleId"`
+
+	// 证书类型，当为协议为https协议时必须填，取值[2(腾讯云托管证书)]
+	CertType *uint64 `json:"CertType,omitempty" name:"CertType"`
+
+	// 当证书来源为腾讯云托管证书时，此字段必须填写托管证书ID
+	SSLId *string `json:"SSLId,omitempty" name:"SSLId"`
+
+	// 当证书来源为自有证书时，此字段必须填写证书内容；(因已不再支持自有证书，此字段已弃用，请不用填写此字段)
+	Cert *string `json:"Cert,omitempty" name:"Cert"`
+
+	// 当证书来源为自有证书时，此字段必须填写证书秘钥；(因已不再支持自有证书，此字段已弃用，请不用填写此字段)
+	PrivateKey *string `json:"PrivateKey,omitempty" name:"PrivateKey"`
+}
+
+func (r *CreateL7RuleCertRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateL7RuleCertRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateL7RuleCertResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 成功码
+		Success *SuccessCode `json:"Success,omitempty" name:"Success"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateL7RuleCertResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateL7RuleCertResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateL7RulesRequest struct {
+	*tchttp.BaseRequest
+
+	// 大禹子产品代号（bgpip表示高防IP；bgp表示独享包；bgp-multip表示共享包；net表示高防IP专业版）
+	Business *string `json:"Business,omitempty" name:"Business"`
+
+	// 资源ID
+	Id *string `json:"Id,omitempty" name:"Id"`
+
+	// 规则列表
+	Rules []*L7RuleEntry `json:"Rules,omitempty" name:"Rules" list`
+}
+
+func (r *CreateL7RulesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateL7RulesRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateL7RulesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 成功码
+		Success *SuccessCode `json:"Success,omitempty" name:"Success"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateL7RulesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateL7RulesResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateL7RulesUploadRequest struct {
+	*tchttp.BaseRequest
+
+	// 大禹子产品代号（bgpip表示高防IP；net表示高防IP专业版）
+	Business *string `json:"Business,omitempty" name:"Business"`
+
+	// 资源ID
+	Id *string `json:"Id,omitempty" name:"Id"`
+
+	// 规则列表
+	Rules []*L7RuleEntry `json:"Rules,omitempty" name:"Rules" list`
+}
+
+func (r *CreateL7RulesUploadRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateL7RulesUploadRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateL7RulesUploadResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 成功码
+		Success *SuccessCode `json:"Success,omitempty" name:"Success"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateL7RulesUploadResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateL7RulesUploadResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateUnblockIpRequest struct {
+	*tchttp.BaseRequest
+
+	// IP
+	Ip *string `json:"Ip,omitempty" name:"Ip"`
+
+	// 解封类型（user：自助解封；auto：自动解封； update：升级解封；bind：绑定高防包解封）
+	ActionType *string `json:"ActionType,omitempty" name:"ActionType"`
+}
+
+func (r *CreateUnblockIpRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateUnblockIpRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateUnblockIpResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// IP
+		Ip *string `json:"Ip,omitempty" name:"Ip"`
+
+		// 解封类型（user：自助解封；auto：自动解封； update：升级解封；bind：绑定高防包解封）
+		ActionType *string `json:"ActionType,omitempty" name:"ActionType"`
+
+		// 解封时间（预计解封时间）
+		UnblockTime *string `json:"UnblockTime,omitempty" name:"UnblockTime"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateUnblockIpResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateUnblockIpResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DDoSEventRecord struct {
+
+	// 大禹子产品代号（shield表示棋牌；bgpip表示高防IP；bgp表示高防包；bgp-multip表示多ip高防包；net表示高防IP专业版；basic表示DDos基础防护）
+	Business *string `json:"Business,omitempty" name:"Business"`
+
+	// 资源ID
+	Id *string `json:"Id,omitempty" name:"Id"`
+
+	// 资源的IP
+	Vip *string `json:"Vip,omitempty" name:"Vip"`
+
+	// 攻击开始时间
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 攻击结束时间
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 攻击最大带宽
+	Mbps *uint64 `json:"Mbps,omitempty" name:"Mbps"`
+
+	// 攻击最大包速率
+	Pps *uint64 `json:"Pps,omitempty" name:"Pps"`
+
+	// 攻击类型
+	AttackType *string `json:"AttackType,omitempty" name:"AttackType"`
+
+	// 是否被封堵，取值[1（是），0（否），2（无效值）]
+	BlockFlag *uint64 `json:"BlockFlag,omitempty" name:"BlockFlag"`
+
+	// 是否超过弹性防护峰值，取值取值[yes(是)，no(否)，空字符串（未知值）]
+	OverLoad *string `json:"OverLoad,omitempty" name:"OverLoad"`
+
+	// 攻击状态，取值[0（攻击中）, 1（攻击结束）]
+	AttackStatus *uint64 `json:"AttackStatus,omitempty" name:"AttackStatus"`
+
+	// 资源名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResourceName *string `json:"ResourceName,omitempty" name:"ResourceName"`
+}
+
+type DDoSPolicyDropOption struct {
+
+	// 禁用TCP协议，取值范围[0,1]
+	DropTcp *uint64 `json:"DropTcp,omitempty" name:"DropTcp"`
+
+	// 禁用UDP协议，取值范围[0,1]
+	DropUdp *uint64 `json:"DropUdp,omitempty" name:"DropUdp"`
+
+	// 禁用ICMP协议，取值范围[0,1]
+	DropIcmp *uint64 `json:"DropIcmp,omitempty" name:"DropIcmp"`
+
+	// 禁用其他协议，取值范围[0,1]
+	DropOther *uint64 `json:"DropOther,omitempty" name:"DropOther"`
+
+	// 拒绝海外流量，取值范围[0,1]
+	DropAbroad *uint64 `json:"DropAbroad,omitempty" name:"DropAbroad"`
+
+	// 空连接防护，取值范围[0,1]
+	CheckSyncConn *uint64 `json:"CheckSyncConn,omitempty" name:"CheckSyncConn"`
+
+	// 基于来源IP及目的IP的新建连接抑制，取值范围[0,4294967295]
+	SdNewLimit *uint64 `json:"SdNewLimit,omitempty" name:"SdNewLimit"`
+
+	// 基于目的IP的新建连接抑制，取值范围[0,4294967295]
+	DstNewLimit *uint64 `json:"DstNewLimit,omitempty" name:"DstNewLimit"`
+
+	// 基于来源IP及目的IP的并发连接抑制，取值范围[0,4294967295]
+	SdConnLimit *uint64 `json:"SdConnLimit,omitempty" name:"SdConnLimit"`
+
+	// 基于目的IP的并发连接抑制，取值范围[0,4294967295]
+	DstConnLimit *uint64 `json:"DstConnLimit,omitempty" name:"DstConnLimit"`
+
+	// 基于连接抑制触发阈值，取值范围[0,4294967295]
+	BadConnThreshold *uint64 `json:"BadConnThreshold,omitempty" name:"BadConnThreshold"`
+
+	// 异常连接检测条件，空连接防护开关，，取值范围[0,1]
+	NullConnEnable *uint64 `json:"NullConnEnable,omitempty" name:"NullConnEnable"`
+
+	// 异常连接检测条件，连接超时，，取值范围[0,65535]
+	ConnTimeout *uint64 `json:"ConnTimeout,omitempty" name:"ConnTimeout"`
+
+	// 异常连接检测条件，syn占比ack百分比，，取值范围[0,100]
+	SynRate *uint64 `json:"SynRate,omitempty" name:"SynRate"`
+
+	// 异常连接检测条件，syn阈值，取值范围[0,100]
+	SynLimit *uint64 `json:"SynLimit,omitempty" name:"SynLimit"`
+
+	// tcp限速，取值范围[0,4294967295]
+	DTcpMbpsLimit *uint64 `json:"DTcpMbpsLimit,omitempty" name:"DTcpMbpsLimit"`
+
+	// udp限速，取值范围[0,4294967295]
+	DUdpMbpsLimit *uint64 `json:"DUdpMbpsLimit,omitempty" name:"DUdpMbpsLimit"`
+
+	// icmp限速，取值范围[0,4294967295]
+	DIcmpMbpsLimit *uint64 `json:"DIcmpMbpsLimit,omitempty" name:"DIcmpMbpsLimit"`
+
+	// other协议限速，取值范围[0,4294967295]
+	DOtherMbpsLimit *uint64 `json:"DOtherMbpsLimit,omitempty" name:"DOtherMbpsLimit"`
+}
+
+type DDoSPolicyPacketFilter struct {
+
+	// 协议，取值范围[tcp,udp,icmp,all]
+	Protocol *string `json:"Protocol,omitempty" name:"Protocol"`
+
+	// 开始源端口，取值范围[0,65535]
+	SportStart *uint64 `json:"SportStart,omitempty" name:"SportStart"`
+
+	// 结束源端口，取值范围[0,65535]
+	SportEnd *uint64 `json:"SportEnd,omitempty" name:"SportEnd"`
+
+	// 开始目的端口，取值范围[0,65535]
+	DportStart *uint64 `json:"DportStart,omitempty" name:"DportStart"`
+
+	// 结束目的端口，取值范围[0,65535]
+	DportEnd *uint64 `json:"DportEnd,omitempty" name:"DportEnd"`
+
+	// 最小包长，取值范围[0,1500]
+	PktlenMin *uint64 `json:"PktlenMin,omitempty" name:"PktlenMin"`
+
+	// 最大包长，取值范围[0,1500]
+	PktlenMax *uint64 `json:"PktlenMax,omitempty" name:"PktlenMax"`
+
+	// 是否检测载荷，取值范围[begin_l5(表示检测), no_match(表示不检测)]
+	MatchBegin *string `json:"MatchBegin,omitempty" name:"MatchBegin"`
+
+	// 是否是正则表达式，取值范围[sunday(表示关键字),pcre(表示正则表达式)]
+	MatchType *string `json:"MatchType,omitempty" name:"MatchType"`
+
+	// 关键字或正则表达式
+	Str *string `json:"Str,omitempty" name:"Str"`
+
+	// 检测深度，取值范围[0,1500]
+	Depth *uint64 `json:"Depth,omitempty" name:"Depth"`
+
+	// 检测偏移量，取值范围[0,1500]
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 是否包括，取值范围[0(表示不包含),1(表示包含)]
+	IsNot *uint64 `json:"IsNot,omitempty" name:"IsNot"`
+
+	// 策略动作，取值范围[drop，drop_black，drop_rst，drop_black_rst，transmit]
+	Action *string `json:"Action,omitempty" name:"Action"`
+}
+
+type DDoSPolicyPortLimit struct {
+
+	// 协议，取值范围[tcp,udp,icmp,all]
+	Protocol *string `json:"Protocol,omitempty" name:"Protocol"`
+
+	// 开始目的端口，取值范围[0,65535]
+	DPortStart *uint64 `json:"DPortStart,omitempty" name:"DPortStart"`
+
+	// 结束目的端口，取值范围[0,65535]，要求大于等于开始目的端口
+	DPortEnd *uint64 `json:"DPortEnd,omitempty" name:"DPortEnd"`
+
+	// 开始源端口，取值范围[0,65535]
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SPortStart *uint64 `json:"SPortStart,omitempty" name:"SPortStart"`
+
+	// 结束源端口，取值范围[0,65535]，要求大于等于开始源端口
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SPortEnd *uint64 `json:"SPortEnd,omitempty" name:"SPortEnd"`
+
+	// 执行动作，取值[drop(丢弃) ，transmit(转发)]
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Action *string `json:"Action,omitempty" name:"Action"`
+
+	// 禁用端口类型，取值[0（目的端口范围禁用）， 1（源端口范围禁用）， 2（目的和源端口范围同时禁用）]
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Kind *uint64 `json:"Kind,omitempty" name:"Kind"`
+}
+
+type DDosPolicy struct {
+
+	// 策略绑定的资源
+	Resources []*ResourceIp `json:"Resources,omitempty" name:"Resources" list`
+
+	// 禁用协议
+	DropOptions *DDoSPolicyDropOption `json:"DropOptions,omitempty" name:"DropOptions"`
+
+	// 禁用端口
+	PortLimits []*DDoSPolicyPortLimit `json:"PortLimits,omitempty" name:"PortLimits" list`
+
+	// 报文过滤
+	PacketFilters []*DDoSPolicyPacketFilter `json:"PacketFilters,omitempty" name:"PacketFilters" list`
+
+	// 黑白IP名单
+	IpBlackWhiteLists []*IpBlackWhite `json:"IpBlackWhiteLists,omitempty" name:"IpBlackWhiteLists" list`
+
+	// 策略ID
+	PolicyId *string `json:"PolicyId,omitempty" name:"PolicyId"`
+
+	// 策略名称
+	PolicyName *string `json:"PolicyName,omitempty" name:"PolicyName"`
+
+	// 策略创建时间
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 水印策略参数，最多只有一个，当没有水印策略时数组为空
+	WaterPrint []*WaterPrintPolicy `json:"WaterPrint,omitempty" name:"WaterPrint" list`
+
+	// 水印密钥，最多只有2个，当没有水印策略时数组为空
+	WaterKey []*WaterPrintKey `json:"WaterKey,omitempty" name:"WaterKey" list`
+
+	// 策略绑定的资源实例
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BoundResources []*string `json:"BoundResources,omitempty" name:"BoundResources" list`
+
+	// 策略所属的策略场景
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SceneId *string `json:"SceneId,omitempty" name:"SceneId"`
+}
+
+type DeleteCCSelfDefinePolicyRequest struct {
+	*tchttp.BaseRequest
+
+	// 大禹子产品代号（bgpip表示高防IP；bgp表示独享包；bgp-multip表示共享包；net表示高防IP专业版）
+	Business *string `json:"Business,omitempty" name:"Business"`
+
+	// 资源ID
+	Id *string `json:"Id,omitempty" name:"Id"`
+
+	// 策略ID
+	SetId *string `json:"SetId,omitempty" name:"SetId"`
+}
+
+func (r *DeleteCCSelfDefinePolicyRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteCCSelfDefinePolicyRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteCCSelfDefinePolicyResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 成功码
+		Success *SuccessCode `json:"Success,omitempty" name:"Success"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DeleteCCSelfDefinePolicyResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteCCSelfDefinePolicyResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteDDoSPolicyCaseRequest struct {
+	*tchttp.BaseRequest
+
+	// 大禹子产品代号（bgpip表示高防IP；bgp表示独享包；bgp-multip表示共享包；net表示高防IP专业版）
+	Business *string `json:"Business,omitempty" name:"Business"`
+
+	// 策略场景ID
+	SceneId *string `json:"SceneId,omitempty" name:"SceneId"`
+}
+
+func (r *DeleteDDoSPolicyCaseRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteDDoSPolicyCaseRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteDDoSPolicyCaseResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 成功码
+		Success *SuccessCode `json:"Success,omitempty" name:"Success"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DeleteDDoSPolicyCaseResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteDDoSPolicyCaseResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteDDoSPolicyRequest struct {
+	*tchttp.BaseRequest
+
+	// 大禹子产品代号（bgpip表示高防IP；bgp表示独享包；bgp-multip表示共享包；net表示高防IP专业版）
+	Business *string `json:"Business,omitempty" name:"Business"`
+
+	// 策略ID
+	PolicyId *string `json:"PolicyId,omitempty" name:"PolicyId"`
+}
+
+func (r *DeleteDDoSPolicyRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteDDoSPolicyRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteDDoSPolicyResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 成功码
+		Success *SuccessCode `json:"Success,omitempty" name:"Success"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DeleteDDoSPolicyResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteDDoSPolicyResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteL4RulesRequest struct {
+	*tchttp.BaseRequest
+
+	// 大禹子产品代号（bgpip表示高防IP；bgp表示独享包；bgp-multip表示共享包；net表示高防IP专业版）
+	Business *string `json:"Business,omitempty" name:"Business"`
+
+	// 资源ID
+	Id *string `json:"Id,omitempty" name:"Id"`
+
+	// 规则ID列表
+	RuleIdList []*string `json:"RuleIdList,omitempty" name:"RuleIdList" list`
+}
+
+func (r *DeleteL4RulesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteL4RulesRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteL4RulesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 成功码
+		Success *SuccessCode `json:"Success,omitempty" name:"Success"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DeleteL4RulesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteL4RulesResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteL7RulesRequest struct {
+	*tchttp.BaseRequest
+
+	// 大禹子产品代号（bgpip表示高防IP；bgp表示独享包；bgp-multip表示共享包；net表示高防IP专业版）
+	Business *string `json:"Business,omitempty" name:"Business"`
+
+	// 资源ID
+	Id *string `json:"Id,omitempty" name:"Id"`
+
+	// 规则ID列表
+	RuleIdList []*string `json:"RuleIdList,omitempty" name:"RuleIdList" list`
+}
+
+func (r *DeleteL7RulesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteL7RulesRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteL7RulesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 成功码
+		Success *SuccessCode `json:"Success,omitempty" name:"Success"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DeleteL7RulesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteL7RulesResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeActionLogRequest struct {
+	*tchttp.BaseRequest
+
+	// 开始时间
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 结束时间
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 大禹子产品代号（bgpip表示高防IP；bgp表示独享包；bgp-multip表示共享包；net表示高防IP专业版）
+	Business *string `json:"Business,omitempty" name:"Business"`
+
+	// 搜索值，只支持资源ID或用户UIN
+	Filter *string `json:"Filter,omitempty" name:"Filter"`
+
+	// 一页条数，填0表示不分页
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 页起始偏移，取值为(页码-1)*一页条数
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+}
+
+func (r *DescribeActionLogRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeActionLogRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeActionLogResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 总记录数
+		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 记录数组
+		Data []*KeyValueRecord `json:"Data,omitempty" name:"Data" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeActionLogResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeActionLogResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeBaradDataRequest struct {
+	*tchttp.BaseRequest
+
+	// 大禹子产品代号（bgpip表示高防IP；net表示高防IP专业版；shield表示棋牌盾）
+	Business *string `json:"Business,omitempty" name:"Business"`
+
+	// 资源实例ID
+	Id *string `json:"Id,omitempty" name:"Id"`
+
+	// 指标名，取值：
+	// connum表示总TCP连接数（新建TCP连接数与活跃TCP连接数的和）；
+	// new_conn表示新建TCP连接数；
+	// intraffic表示入流量；
+	// outtraffic表示出流量；
+	// alltraffic表示出流量和入流量之和；
+	// inpkg表示入包速率；
+	// outpkg表示出包速率；
+	MetricName *string `json:"MetricName,omitempty" name:"MetricName"`
+
+	// 统计时间粒度，单位秒（300表示5分钟；3600表示小时；86400表示天）
+	Period *uint64 `json:"Period,omitempty" name:"Period"`
+
+	// 统计开始时间，秒部分保持为0，分钟部分为5的倍数
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 统计结束时间，秒部分保持为0，分钟部分为5的倍数
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 统计方式，取值：
+	// max表示最大值；
+	// min表示最小值；
+	// avg表示均值；
+	Statistics *string `json:"Statistics,omitempty" name:"Statistics"`
+
+	// 协议端口数组
+	ProtocolPort []*ProtocolPort `json:"ProtocolPort,omitempty" name:"ProtocolPort" list`
+
+	// 资源实例下的IP，只有当Business=net(高防IP专业版)时才必须填写资源的一个IP（因为高防IP专业版资源实例有多个IP，才需要指定）；
+	Ip *string `json:"Ip,omitempty" name:"Ip"`
+}
+
+func (r *DescribeBaradDataRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeBaradDataRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeBaradDataResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 返回指标的值
+		DataList []*BaradData `json:"DataList,omitempty" name:"DataList" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeBaradDataResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeBaradDataResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeCCEvListRequest struct {
+	*tchttp.BaseRequest
+
+	// 大禹子产品代号（shield表示棋牌盾；bgpip表示高防IP；bgp表示独享包；bgp-multip表示共享包；net表示高防IP专业版；basic表示DDoS基础防护）
+	Business *string `json:"Business,omitempty" name:"Business"`
+
+	// 开始时间
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 结束时间
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 资源实例ID
+	Id *string `json:"Id,omitempty" name:"Id"`
+
+	// 资源实例的IP，当business不为basic时，如果IpList不为空则Id也必须不能为空；
+	IpList []*string `json:"IpList,omitempty" name:"IpList" list`
+
+	// 一页条数，填0表示不分页
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 页起始偏移，取值为(页码-1)*一页条数
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+}
+
+func (r *DescribeCCEvListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeCCEvListRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeCCEvListResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 大禹子产品代号（shield表示棋牌盾；bgpip表示高防IP；bgp表示独享包；bgp-multip表示共享包；net表示高防IP专业版；basic表示DDoS基础防护）
+		Business *string `json:"Business,omitempty" name:"Business"`
+
+		// 资源实例ID
+		Id *string `json:"Id,omitempty" name:"Id"`
+
+		// 资源实例的IP列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		IpList []*string `json:"IpList,omitempty" name:"IpList" list`
+
+		// 开始时间
+		StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+		// 结束时间
+		EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+		// CC攻击事件列表
+		Data []*CCEventRecord `json:"Data,omitempty" name:"Data" list`
+
+		// 总记录数
+		Total *uint64 `json:"Total,omitempty" name:"Total"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeCCEvListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeCCEvListResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeCCIpAllowDenyRequest struct {
+	*tchttp.BaseRequest
+
+	// 大禹子产品代号（bgpip表示高防IP；bgp表示独享包；bgp-multip表示共享包；net表示高防IP专业版）
+	Business *string `json:"Business,omitempty" name:"Business"`
+
+	// 资源ID
+	Id *string `json:"Id,omitempty" name:"Id"`
+
+	// 黑或白名单，取值[white(白名单)，black(黑名单)]
+	// 注意：此数组只能有一个值，不能同时获取黑名单和白名单
+	Type []*string `json:"Type,omitempty" name:"Type" list`
+
+	// 分页参数
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 分页参数
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 可选，代表HTTP协议或HTTPS协议的CC防护，取值[http（HTTP协议的CC防护），https（HTTPS协议的CC防护）]；
+	Protocol *string `json:"Protocol,omitempty" name:"Protocol"`
+}
+
+func (r *DescribeCCIpAllowDenyRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeCCIpAllowDenyRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeCCIpAllowDenyResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 该字段被RecordList字段替代了，请不要使用
+		Data []*KeyValue `json:"Data,omitempty" name:"Data" list`
+
+		// 记录数
+		Total *uint64 `json:"Total,omitempty" name:"Total"`
+
+		// 返回黑/白名单的记录，
+	// "Key":"ip"时，"Value":值表示ip;
+	// "Key":"domain"时， "Value":值表示域名;
+	// "Key":"type"时，"Value":值表示黑白名单类型(white为白名单，block为黑名单);
+	// "Key":"protocol"时，"Value":值表示CC防护的协议(http或https);
+		RecordList []*KeyValueRecord `json:"RecordList,omitempty" name:"RecordList" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeCCIpAllowDenyResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeCCIpAllowDenyResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeCCTrendRequest struct {
+	*tchttp.BaseRequest
+
+	// 大禹子产品代号（bgpip表示高防IP；bgp表示独享包；bgp-multip表示共享包；net表示高防IP专业版；basic表示DDoS基础防护）
+	Business *string `json:"Business,omitempty" name:"Business"`
+
+	// 资源的IP
+	Ip *string `json:"Ip,omitempty" name:"Ip"`
+
+	// 指标，取值[inqps(总请求峰值，dropqps(攻击请求峰值))]
+	MetricName *string `json:"MetricName,omitempty" name:"MetricName"`
+
+	// 统计粒度，取值[300(5分钟)，3600(小时)，86400(天)]
+	Period *int64 `json:"Period,omitempty" name:"Period"`
+
+	// 统计开始时间
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 统计结束时间
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 资源实例ID，当Business为basic时，此字段不用填写（因为基础防护没有资源实例）
+	Id *string `json:"Id,omitempty" name:"Id"`
+}
+
+func (r *DescribeCCTrendRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeCCTrendRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeCCTrendResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 大禹子产品代号（bgpip表示高防IP；bgp表示独享包；bgp-multip表示共享包；net表示高防IP专业版；basic表示DDoS基础防护）
+		Business *string `json:"Business,omitempty" name:"Business"`
+
+		// 资源ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Id *string `json:"Id,omitempty" name:"Id"`
+
+		// 资源的IP
+		Ip *string `json:"Ip,omitempty" name:"Ip"`
+
+		// 指标，取值[inqps(总请求峰值，dropqps(攻击请求峰值))]
+		MetricName *string `json:"MetricName,omitempty" name:"MetricName"`
+
+		// 统计粒度，取值[300(5分钟)，3600(小时)，86400(天)]
+		Period *int64 `json:"Period,omitempty" name:"Period"`
+
+		// 统计开始时间
+		StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+		// 统计结束时间
+		EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+		// 值数组
+		Data []*uint64 `json:"Data,omitempty" name:"Data" list`
+
+		// 值个数
+		Count *uint64 `json:"Count,omitempty" name:"Count"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeCCTrendResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeCCTrendResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeCCUrlAllowRequest struct {
+	*tchttp.BaseRequest
+
+	// 大禹子产品代号（bgpip表示高防IP；bgp表示独享包；bgp-multip表示共享包；net表示高防IP专业版）
+	Business *string `json:"Business,omitempty" name:"Business"`
+
+	// 资源ID
+	Id *string `json:"Id,omitempty" name:"Id"`
+
+	// 黑或白名单，取值[white(白名单)]，目前只支持白名单
+	// 注意：此数组只能有一个值，且只能为white
+	Type []*string `json:"Type,omitempty" name:"Type" list`
+
+	// 分页参数
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 分页参数
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 可选，代表HTTP协议或HTTPS协议的CC防护，取值[http（HTTP协议的CC防护），https（HTTPS协议的CC防护）]；
+	Protocol *string `json:"Protocol,omitempty" name:"Protocol"`
+}
+
+func (r *DescribeCCUrlAllowRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeCCUrlAllowRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeCCUrlAllowResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 该字段被RecordList字段替代了，请不要使用
+		Data []*KeyValue `json:"Data,omitempty" name:"Data" list`
+
+		// 记录总数
+		Total *uint64 `json:"Total,omitempty" name:"Total"`
+
+		// 返回黑/白名单的记录，
+	// "Key":"url"时，"Value":值表示URL;
+	// "Key":"domain"时， "Value":值表示域名;
+	// "Key":"type"时，"Value":值表示黑白名单类型(white为白名单，block为黑名单);
+	// "Key":"protocol"时，"Value":值表示CC的防护类型(http防护或https域名防护);
+		RecordList []*KeyValueRecord `json:"RecordList,omitempty" name:"RecordList" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeCCUrlAllowResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeCCUrlAllowResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeDDoSCountRequest struct {
+	*tchttp.BaseRequest
+
+	// 大禹子产品代号（bgpip表示高防IP；bgp表示独享包；bgp-multip表示共享包；net表示高防IP专业版）
+	Business *string `json:"Business,omitempty" name:"Business"`
+
+	// 资源ID
+	Id *string `json:"Id,omitempty" name:"Id"`
+
+	// 资源的IP
+	Ip *string `json:"Ip,omitempty" name:"Ip"`
+
+	// 统计开始时间
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 统计结束时间
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 指标，取值[traffic（攻击协议流量, 单位KB）, pkg（攻击协议报文数）, classnum（攻击事件次数）]
+	MetricName *string `json:"MetricName,omitempty" name:"MetricName"`
+}
+
+func (r *DescribeDDoSCountRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeDDoSCountRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeDDoSCountResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 大禹子产品代号（bgpip表示高防IP；bgp表示独享包；bgp-multip表示共享包；net表示高防IP专业版）
+		Business *string `json:"Business,omitempty" name:"Business"`
+
+		// 资源ID
+		Id *string `json:"Id,omitempty" name:"Id"`
+
+		// 资源的IP
+		Ip *string `json:"Ip,omitempty" name:"Ip"`
+
+		// 统计开始时间
+		StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+		// 统计结束时间
+		EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+		// 指标，取值[traffic（攻击协议流量, 单位KB）, pkg（攻击协议报文数）, classnum（攻击事件次数）]
+		MetricName *string `json:"MetricName,omitempty" name:"MetricName"`
+
+		// Key-Value值数组，Key说明如下，
+	// 当MetricName为traffic时：
+	// key为"TcpKBSum"，表示TCP报文流量，单位KB
+	// key为"UdpKBSum"，表示UDP报文流量，单位KB
+	// key为"IcmpKBSum"，表示ICMP报文流量，单位KB
+	// key为"OtherKBSum"，表示其他报文流量，单位KB
+	// 
+	// 当MetricName为pkg时：
+	// key为"TcpPacketSum"，表示TCP报文个数，单位个
+	// key为"UdpPacketSum"，表示UDP报文个数，单位个
+	// key为"IcmpPacketSum"，表示ICMP报文个数，单位个
+	// key为"OtherPacketSum"，表示其他报文个数，单位个
+	// 
+	// 当MetricName为classnum时：
+	// key的值表示攻击事件类型，其中Key为"UNKNOWNFLOOD"，表示未知的攻击事件
+		Data []*KeyValue `json:"Data,omitempty" name:"Data" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeDDoSCountResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeDDoSCountResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeDDoSDefendStatusRequest struct {
+	*tchttp.BaseRequest
+
+	// 大禹子产品代号（basic表示基础防护；bgp表示独享包；bgp-multip表示共享包；bgpip表示高防IP；net表示高防IP专业版）
+	Business *string `json:"Business,omitempty" name:"Business"`
+
+	// 资源实例ID，只有当Business不是基础防护时才需要填写此字段；
+	Id *string `json:"Id,omitempty" name:"Id"`
+
+	// 基础防护的IP，只有当Business为基础防护时才需要填写此字段；
+	Ip *string `json:"Ip,omitempty" name:"Ip"`
+
+	// 只有当Business为基础防护时才需要填写此字段，IP所属的产品类型，取值[public（CVM产品），bm（黑石产品），eni（弹性网卡），vpngw（VPN网关）， natgw（NAT网关），waf（Web应用安全产品），fpc（金融产品），gaap（GAAP产品）, other(托管IP)]
+	BizType *string `json:"BizType,omitempty" name:"BizType"`
+
+	// 只有当Business为基础防护时才需要填写此字段，IP所属的产品子类，取值[cvm（CVM），lb（负载均衡器），eni（弹性网卡），vpngw（VPN），natgw（NAT），waf（WAF），fpc（金融），gaap（GAAP），other（托管IP），eip（黑石弹性IP）]
+	DeviceType *string `json:"DeviceType,omitempty" name:"DeviceType"`
+
+	// 只有当Business为基础防护时才需要填写此字段，IP所属的资源实例ID，当绑定新IP时必须填写此字段；例如是弹性网卡的IP，则InstanceId填写弹性网卡的ID(eni-*);
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 只有当Business为基础防护时才需要填写此字段，表示IP所属的地域，取值：
+	// "bj":     华北地区(北京)
+	// "cd":     西南地区(成都)
+	// "cq":     西南地区(重庆)
+	// "gz":     华南地区(广州)
+	// "gzopen": 华南地区(广州Open)
+	// "hk":     中国香港
+	// "kr":     东南亚地区(首尔)
+	// "sh":     华东地区(上海)
+	// "shjr":   华东地区(上海金融)
+	// "szjr":   华南地区(深圳金融)
+	// "sg":     东南亚地区(新加坡)
+	// "th":     东南亚地区(泰国)
+	// "de":     欧洲地区(德国)
+	// "usw":    美国西部（硅谷）
+	// "ca":     北美地区(多伦多)
+	// "jp":     日本
+	// "hzec":   杭州
+	// "in":     印度
+	// "use":    美东地区（弗吉尼亚）
+	// "ru":     俄罗斯
+	// "tpe":    中国台湾
+	// "nj":     南京
+	IPRegion *string `json:"IPRegion,omitempty" name:"IPRegion"`
+}
+
+func (r *DescribeDDoSDefendStatusRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeDDoSDefendStatusRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeDDoSDefendStatusResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 防护状态，为0表示防护处于关闭状态，为1表示防护处于开启状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		DefendStatus *uint64 `json:"DefendStatus,omitempty" name:"DefendStatus"`
+
+		// 防护临时关闭的过期时间，当防护状态为开启时此字段为空；
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		UndefendExpire *string `json:"UndefendExpire,omitempty" name:"UndefendExpire"`
+
+		// 控制台功能展示字段，为1表示控制台功能展示，为0表示控制台功能隐藏
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		ShowFlag *uint64 `json:"ShowFlag,omitempty" name:"ShowFlag"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeDDoSDefendStatusResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeDDoSDefendStatusResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeDDoSEvInfoRequest struct {
+	*tchttp.BaseRequest
+
+	// 大禹子产品代号（bgpip表示高防IP；bgp表示独享包；bgp-multip表示共享包；net表示高防IP专业版）
+	Business *string `json:"Business,omitempty" name:"Business"`
+
+	// 资源ID
+	Id *string `json:"Id,omitempty" name:"Id"`
+
+	// 资源的IP
+	Ip *string `json:"Ip,omitempty" name:"Ip"`
+
+	// 攻击开始时间
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 攻击结束时间
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+}
+
+func (r *DescribeDDoSEvInfoRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeDDoSEvInfoRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeDDoSEvInfoResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 大禹子产品代号（bgpip表示高防IP；bgp表示独享包；bgp-multip表示共享包；net表示高防IP专业版）
+		Business *string `json:"Business,omitempty" name:"Business"`
+
+		// 资源ID
+		Id *string `json:"Id,omitempty" name:"Id"`
+
+		// 资源的IP
+		Ip *string `json:"Ip,omitempty" name:"Ip"`
+
+		// 攻击开始时间
+		StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+		// 攻击结束时间
+		EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+		// TCP报文攻击包数
+		TcpPacketSum *uint64 `json:"TcpPacketSum,omitempty" name:"TcpPacketSum"`
+
+		// TCP报文攻击流量，单位KB
+		TcpKBSum *uint64 `json:"TcpKBSum,omitempty" name:"TcpKBSum"`
+
+		// UDP报文攻击包数
+		UdpPacketSum *uint64 `json:"UdpPacketSum,omitempty" name:"UdpPacketSum"`
+
+		// UDP报文攻击流量，单位KB
+		UdpKBSum *uint64 `json:"UdpKBSum,omitempty" name:"UdpKBSum"`
+
+		// ICMP报文攻击包数
+		IcmpPacketSum *uint64 `json:"IcmpPacketSum,omitempty" name:"IcmpPacketSum"`
+
+		// ICMP报文攻击流量，单位KB
+		IcmpKBSum *uint64 `json:"IcmpKBSum,omitempty" name:"IcmpKBSum"`
+
+		// 其他报文攻击包数
+		OtherPacketSum *uint64 `json:"OtherPacketSum,omitempty" name:"OtherPacketSum"`
+
+		// 其他报文攻击流量，单位KB
+		OtherKBSum *uint64 `json:"OtherKBSum,omitempty" name:"OtherKBSum"`
+
+		// 累计攻击流量，单位KB
+		TotalTraffic *uint64 `json:"TotalTraffic,omitempty" name:"TotalTraffic"`
+
+		// 攻击流量带宽峰值
+		Mbps *uint64 `json:"Mbps,omitempty" name:"Mbps"`
+
+		// 攻击包速率峰值
+		Pps *uint64 `json:"Pps,omitempty" name:"Pps"`
+
+		// PCAP文件下载链接
+		PcapUrl []*string `json:"PcapUrl,omitempty" name:"PcapUrl" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeDDoSEvInfoResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeDDoSEvInfoResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeDDoSEvListRequest struct {
+	*tchttp.BaseRequest
+
+	// 大禹子产品代号（bgpip表示高防IP；bgp表示独享包；bgp-multip表示共享包；net表示高防IP专业版；basic表示DDoS基础防护）
+	Business *string `json:"Business,omitempty" name:"Business"`
+
+	// 开始时间
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 结束时间
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 资源实例ID，当Business为basic时，此字段不用填写（因为基础防护没有资源实例）
+	Id *string `json:"Id,omitempty" name:"Id"`
+
+	// 资源的IP
+	IpList []*string `json:"IpList,omitempty" name:"IpList" list`
+
+	// 是否超过弹性防护峰值，取值[yes(是)，no(否)]，填写空字符串时表示不进行过滤
+	OverLoad *string `json:"OverLoad,omitempty" name:"OverLoad"`
+
+	// 一页条数，填0表示不分页
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 页起始偏移，取值为(页码-1)*一页条数
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+}
+
+func (r *DescribeDDoSEvListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeDDoSEvListRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeDDoSEvListResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 大禹子产品代号（bgpip表示高防IP；bgp表示独享包；bgp-multip表示共享包；net表示高防IP专业版；basic表示DDoS基础防护）
+		Business *string `json:"Business,omitempty" name:"Business"`
+
+		// 资源ID
+		Id *string `json:"Id,omitempty" name:"Id"`
+
+		// 资源的IP
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		IpList []*string `json:"IpList,omitempty" name:"IpList" list`
+
+		// 开始时间
+		StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+		// 结束时间
+		EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+		// DDoS攻击事件列表
+		Data []*DDoSEventRecord `json:"Data,omitempty" name:"Data" list`
+
+		// 总记录数
+		Total *uint64 `json:"Total,omitempty" name:"Total"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeDDoSEvListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeDDoSEvListResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeDDoSIpLogRequest struct {
+	*tchttp.BaseRequest
+
+	// 大禹子产品代号（net表示高防IP专业版）
+	Business *string `json:"Business,omitempty" name:"Business"`
+
+	// 资源ID
+	Id *string `json:"Id,omitempty" name:"Id"`
+
+	// 资源的IP
+	Ip *string `json:"Ip,omitempty" name:"Ip"`
+
+	// 攻击开始时间
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 攻击结束时间
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+}
+
+func (r *DescribeDDoSIpLogRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeDDoSIpLogRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeDDoSIpLogResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 大禹子产品代号（net表示高防IP专业版）
+		Business *string `json:"Business,omitempty" name:"Business"`
+
+		// 资源ID
+		Id *string `json:"Id,omitempty" name:"Id"`
+
+		// 资源的IP
+		Ip *string `json:"Ip,omitempty" name:"Ip"`
+
+		// 攻击开始时间
+		StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+		// 攻击结束时间
+		EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+		// IP攻击日志，KeyValue数组，Key-Value取值说明：
+	// Key为"LogTime"时，Value值为IP日志时间
+	// Key为"LogMessage"时，Value值为Ip日志内容
+		Data []*KeyValueRecord `json:"Data,omitempty" name:"Data" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeDDoSIpLogResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeDDoSIpLogResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeDDoSNetCountRequest struct {
+	*tchttp.BaseRequest
+
+	// 大禹子产品代号（net表示高防IP专业版）
+	Business *string `json:"Business,omitempty" name:"Business"`
+
+	// 资源ID
+	Id *string `json:"Id,omitempty" name:"Id"`
+
+	// 统计开始时间
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 统计结束时间
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 指标，取值[traffic（攻击协议流量, 单位KB）, pkg（攻击协议报文数）, classnum（攻击事件次数）]
+	MetricName *string `json:"MetricName,omitempty" name:"MetricName"`
+}
+
+func (r *DescribeDDoSNetCountRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeDDoSNetCountRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeDDoSNetCountResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 大禹子产品代号（net表示高防IP专业版）
+		Business *string `json:"Business,omitempty" name:"Business"`
+
+		// 资源ID
+		Id *string `json:"Id,omitempty" name:"Id"`
+
+		// 统计开始时间
+		StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+		// 统计结束时间
+		EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+		// 指标，取值[traffic（攻击协议流量, 单位KB）, pkg（攻击协议报文数）, classnum（攻击事件次数）]
+		MetricName *string `json:"MetricName,omitempty" name:"MetricName"`
+
+		// Key-Value值数组，Key说明如下，
+	// 当MetricName为traffic时：
+	// key为"TcpKBSum"，表示TCP报文流量，单位KB
+	// key为"UdpKBSum"，表示UDP报文流量，单位KB
+	// key为"IcmpKBSum"，表示ICMP报文流量，单位KB
+	// key为"OtherKBSum"，表示其他报文流量，单位KB
+	// 
+	// 当MetricName为pkg时：
+	// key为"TcpPacketSum"，表示TCP报文个数，单位个
+	// key为"UdpPacketSum"，表示UDP报文个数，单位个
+	// key为"IcmpPacketSum"，表示ICMP报文个数，单位个
+	// key为"OtherPacketSum"，表示其他报文个数，单位个
+	// 
+	// 当MetricName为classnum时：
+	// key的值表示攻击事件类型，其中Key为"UNKNOWNFLOOD"，表示未知的攻击事件
+		Data []*KeyValue `json:"Data,omitempty" name:"Data" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeDDoSNetCountResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeDDoSNetCountResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeDDoSNetEvInfoRequest struct {
+	*tchttp.BaseRequest
+
+	// 大禹子产品代号（net表示高防IP专业版）
+	Business *string `json:"Business,omitempty" name:"Business"`
+
+	// 资源ID
+	Id *string `json:"Id,omitempty" name:"Id"`
+
+	// 攻击开始时间
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 攻击结束时间
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+}
+
+func (r *DescribeDDoSNetEvInfoRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeDDoSNetEvInfoRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeDDoSNetEvInfoResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 大禹子产品代号（net表示高防IP专业版）
+		Business *string `json:"Business,omitempty" name:"Business"`
+
+		// 资源ID
+		Id *string `json:"Id,omitempty" name:"Id"`
+
+		// 攻击开始时间
+		StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+		// 攻击结束时间
+		EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+		// TCP报文攻击包数
+		TcpPacketSum *uint64 `json:"TcpPacketSum,omitempty" name:"TcpPacketSum"`
+
+		// TCP报文攻击流量，单位KB
+		TcpKBSum *uint64 `json:"TcpKBSum,omitempty" name:"TcpKBSum"`
+
+		// UDP报文攻击包数
+		UdpPacketSum *uint64 `json:"UdpPacketSum,omitempty" name:"UdpPacketSum"`
+
+		// UDP报文攻击流量，单位KB
+		UdpKBSum *uint64 `json:"UdpKBSum,omitempty" name:"UdpKBSum"`
+
+		// ICMP报文攻击包数
+		IcmpPacketSum *uint64 `json:"IcmpPacketSum,omitempty" name:"IcmpPacketSum"`
+
+		// ICMP报文攻击流量，单位KB
+		IcmpKBSum *uint64 `json:"IcmpKBSum,omitempty" name:"IcmpKBSum"`
+
+		// 其他报文攻击包数
+		OtherPacketSum *uint64 `json:"OtherPacketSum,omitempty" name:"OtherPacketSum"`
+
+		// 其他报文攻击流量，单位KB
+		OtherKBSum *uint64 `json:"OtherKBSum,omitempty" name:"OtherKBSum"`
+
+		// 累计攻击流量，单位KB
+		TotalTraffic *uint64 `json:"TotalTraffic,omitempty" name:"TotalTraffic"`
+
+		// 攻击流量带宽峰值
+		Mbps *uint64 `json:"Mbps,omitempty" name:"Mbps"`
+
+		// 攻击包速率峰值
+		Pps *uint64 `json:"Pps,omitempty" name:"Pps"`
+
+		// PCAP文件下载链接
+		PcapUrl []*string `json:"PcapUrl,omitempty" name:"PcapUrl" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeDDoSNetEvInfoResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeDDoSNetEvInfoResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeDDoSNetEvListRequest struct {
+	*tchttp.BaseRequest
+
+	// 大禹子产品代号（net表示高防IP专业版）
+	Business *string `json:"Business,omitempty" name:"Business"`
+
+	// 资源ID
+	Id *string `json:"Id,omitempty" name:"Id"`
+
+	// 开始时间
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 结束时间
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 一页条数，填0表示不分页
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 页起始偏移，取值为(页码-1)*一页条数
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+}
+
+func (r *DescribeDDoSNetEvListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeDDoSNetEvListRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeDDoSNetEvListResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 大禹子产品代号（net表示高防IP专业版）
+		Business *string `json:"Business,omitempty" name:"Business"`
+
+		// 资源ID
+		Id *string `json:"Id,omitempty" name:"Id"`
+
+		// 开始时间
+		StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+		// 结束时间
+		EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+		// DDoS攻击事件列表
+		Data []*DDoSEventRecord `json:"Data,omitempty" name:"Data" list`
+
+		// 总记录数
+		Total *uint64 `json:"Total,omitempty" name:"Total"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeDDoSNetEvListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeDDoSNetEvListResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeDDoSNetIpLogRequest struct {
+	*tchttp.BaseRequest
+
+	// 大禹子产品代号（net表示高防IP专业版）
+	Business *string `json:"Business,omitempty" name:"Business"`
+
+	// 资源ID
+	Id *string `json:"Id,omitempty" name:"Id"`
+
+	// 攻击开始时间
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 攻击结束时间
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+}
+
+func (r *DescribeDDoSNetIpLogRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeDDoSNetIpLogRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeDDoSNetIpLogResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 大禹子产品代号（net表示高防IP专业版）
+		Business *string `json:"Business,omitempty" name:"Business"`
+
+		// 资源ID
+		Id *string `json:"Id,omitempty" name:"Id"`
+
+		// 攻击开始时间
+		StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+		// 攻击结束时间
+		EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+		// IP攻击日志，KeyValue数组，Key-Value取值说明：
+	// Key为"LogTime"时，Value值为IP日志时间
+	// Key为"LogMessage"时，Value值为Ip日志内容
+		Data []*KeyValueRecord `json:"Data,omitempty" name:"Data" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeDDoSNetIpLogResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeDDoSNetIpLogResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeDDoSNetTrendRequest struct {
+	*tchttp.BaseRequest
+
+	// 大禹子产品代号（net表示高防IP专业版）
+	Business *string `json:"Business,omitempty" name:"Business"`
+
+	// 资源ID
+	Id *string `json:"Id,omitempty" name:"Id"`
+
+	// 指标，取值[bps(攻击流量带宽，pps(攻击包速率))]
+	MetricName *string `json:"MetricName,omitempty" name:"MetricName"`
+
+	// 统计粒度，取值[300(5分钟)，3600(小时)，86400(天)]
+	Period *uint64 `json:"Period,omitempty" name:"Period"`
+
+	// 统计开始时间
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 统计结束时间
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+}
+
+func (r *DescribeDDoSNetTrendRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeDDoSNetTrendRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeDDoSNetTrendResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 大禹子产品代号（net表示高防IP专业版）
+		Business *string `json:"Business,omitempty" name:"Business"`
+
+		// 资源ID
+		Id *string `json:"Id,omitempty" name:"Id"`
+
+		// 指标，取值[bps(攻击流量带宽，pps(攻击包速率))]
+		MetricName *string `json:"MetricName,omitempty" name:"MetricName"`
+
+		// 统计粒度，取值[300(5分钟)，3600(小时)，86400(天)]
+		Period *uint64 `json:"Period,omitempty" name:"Period"`
+
+		// 统计开始时间
+		StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+		// 统计结束时间
+		EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+		// 值数组
+		Data []*uint64 `json:"Data,omitempty" name:"Data" list`
+
+		// 值个数
+		Count *uint64 `json:"Count,omitempty" name:"Count"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeDDoSNetTrendResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeDDoSNetTrendResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeDDoSPolicyRequest struct {
+	*tchttp.BaseRequest
+
+	// 大禹子产品代号（bgpip表示高防IP；bgp表示独享包；bgp-multip表示共享包；net表示高防IP专业版）
+	Business *string `json:"Business,omitempty" name:"Business"`
+
+	// 可选字段，资源ID，如果填写则表示该资源绑定的DDoS高级策略
+	Id *string `json:"Id,omitempty" name:"Id"`
+}
+
+func (r *DescribeDDoSPolicyRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeDDoSPolicyRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeDDoSPolicyResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// DDoS高级策略列表
+		DDosPolicyList []*DDosPolicy `json:"DDosPolicyList,omitempty" name:"DDosPolicyList" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeDDoSPolicyResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeDDoSPolicyResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeDDoSTrendRequest struct {
+	*tchttp.BaseRequest
+
+	// 大禹子产品代号（bgpip表示高防IP；bgp表示独享包；bgp-multip表示共享包；net表示高防IP专业版；basic表示DDoS基础防护）
+	Business *string `json:"Business,omitempty" name:"Business"`
+
+	// 资源实例的IP
+	Ip *string `json:"Ip,omitempty" name:"Ip"`
+
+	// 指标，取值[bps(攻击流量带宽，pps(攻击包速率))]
+	MetricName *string `json:"MetricName,omitempty" name:"MetricName"`
+
+	// 统计粒度，取值[300(5分钟)，3600(小时)，86400(天)]
+	Period *int64 `json:"Period,omitempty" name:"Period"`
+
+	// 统计开始时间
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 统计结束时间
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 资源实例ID，当Business为basic时，此字段不用填写（因为基础防护没有资源实例）
+	Id *string `json:"Id,omitempty" name:"Id"`
+}
+
+func (r *DescribeDDoSTrendRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeDDoSTrendRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeDDoSTrendResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 大禹子产品代号（bgpip表示高防IP；bgp表示独享包；bgp-multip表示共享包；net表示高防IP专业版；basic表示DDoS基础防护）
+		Business *string `json:"Business,omitempty" name:"Business"`
+
+		// 资源ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Id *string `json:"Id,omitempty" name:"Id"`
+
+		// 资源的IP
+		Ip *string `json:"Ip,omitempty" name:"Ip"`
+
+		// 指标，取值[bps(攻击流量带宽，pps(攻击包速率))]
+		MetricName *string `json:"MetricName,omitempty" name:"MetricName"`
+
+		// 统计粒度，取值[300(5分钟)，3600(小时)，86400(天)]
+		Period *int64 `json:"Period,omitempty" name:"Period"`
+
+		// 统计开始时间
+		StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+		// 统计结束时间
+		EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+		// 值数组
+		Data []*uint64 `json:"Data,omitempty" name:"Data" list`
+
+		// 值个数
+		Count *uint64 `json:"Count,omitempty" name:"Count"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeDDoSTrendResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeDDoSTrendResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeDDoSUsedStatisRequest struct {
+	*tchttp.BaseRequest
+
+	// 大禹子产品代号（bgpip表示高防IP）
+	Business *string `json:"Business,omitempty" name:"Business"`
+}
+
+func (r *DescribeDDoSUsedStatisRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeDDoSUsedStatisRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeDDoSUsedStatisResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 字段值，如下：
+	// Days：高防资源使用天数
+	// Attacks：DDoS防护次数
+		Data []*KeyValue `json:"Data,omitempty" name:"Data" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeDDoSUsedStatisResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeDDoSUsedStatisResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeInsurePacksRequest struct {
+	*tchttp.BaseRequest
+
+	// 可选字段，保险包套餐ID，当要获取指定ID（例如insure-000000xe）的保险包套餐时请填写此字段；
+	IdList []*string `json:"IdList,omitempty" name:"IdList" list`
+}
+
+func (r *DescribeInsurePacksRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeInsurePacksRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeInsurePacksResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 保险包套餐列表
+		InsurePacks []*KeyValueRecord `json:"InsurePacks,omitempty" name:"InsurePacks" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeInsurePacksResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeInsurePacksResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeIpBlockListRequest struct {
+	*tchttp.BaseRequest
+}
+
+func (r *DescribeIpBlockListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeIpBlockListRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeIpBlockListResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// IP封堵列表
+		List []*IpBlockData `json:"List,omitempty" name:"List" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeIpBlockListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeIpBlockListResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeL4HealthConfigRequest struct {
+	*tchttp.BaseRequest
+
+	// 大禹子产品代号（bgpip表示高防IP；net表示高防IP专业版）
+	Business *string `json:"Business,omitempty" name:"Business"`
+
+	// 资源ID
+	Id *string `json:"Id,omitempty" name:"Id"`
+
+	// 规则ID数组，当导出所有规则的健康检查配置则不填或填空数组；
+	RuleIdList []*string `json:"RuleIdList,omitempty" name:"RuleIdList" list`
+}
+
+func (r *DescribeL4HealthConfigRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeL4HealthConfigRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeL4HealthConfigResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 四层健康检查配置数组
+		HealthConfig []*L4HealthConfig `json:"HealthConfig,omitempty" name:"HealthConfig" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeL4HealthConfigResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeL4HealthConfigResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeL4RulesErrHealthRequest struct {
+	*tchttp.BaseRequest
+
+	// 大禹子产品代号（bgpip表示高防IP；net表示高防IP专业版）
+	Business *string `json:"Business,omitempty" name:"Business"`
+
+	// 资源ID
+	Id *string `json:"Id,omitempty" name:"Id"`
+}
+
+func (r *DescribeL4RulesErrHealthRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeL4RulesErrHealthRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeL4RulesErrHealthResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 异常规则的总数
+		Total *uint64 `json:"Total,omitempty" name:"Total"`
+
+		// 异常规则列表，返回值说明: Key值为规则ID，Value值为异常IP，多个IP用","分割
+		ErrHealths []*KeyValue `json:"ErrHealths,omitempty" name:"ErrHealths" list`
+
+		// 异常规则列表(提供更多的错误相关信息)，返回值说明:
+	// Key值为RuleId时，Value值为规则ID；
+	// Key值为Protocol时，Value值为规则的转发协议；
+	// Key值为VirtualPort时，Value值为规则的转发端口；
+	// Key值为ErrMessage时，Value值为健康检查异常信息；
+	// 健康检查异常信息的格式为"SourceIp:1.1.1.1|SourcePort:1234|AbnormalStatTime:1570689065|AbnormalReason:connection time out|Interval:20|CheckNum:6|FailNum:6" 多个源IP的错误信息用，分割,
+	// SourceIp表示源站IP，SourcePort表示源站端口，AbnormalStatTime表示异常时间，AbnormalReason表示异常原因，Interval表示检查周期，CheckNum表示检查次数，FailNum表示失败次数；
+		ExtErrHealths []*KeyValueRecord `json:"ExtErrHealths,omitempty" name:"ExtErrHealths" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeL4RulesErrHealthResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeL4RulesErrHealthResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeL7HealthConfigRequest struct {
+	*tchttp.BaseRequest
+
+	// 大禹子产品代号（bgpip表示高防IP；net表示高防IP专业版）
+	Business *string `json:"Business,omitempty" name:"Business"`
+
+	// 资源ID
+	Id *string `json:"Id,omitempty" name:"Id"`
+
+	// 规则ID数组，当导出所有规则的健康检查配置则不填或填空数组；
+	RuleIdList []*string `json:"RuleIdList,omitempty" name:"RuleIdList" list`
+}
+
+func (r *DescribeL7HealthConfigRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeL7HealthConfigRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeL7HealthConfigResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 七层健康检查配置数组
+		HealthConfig []*L7HealthConfig `json:"HealthConfig,omitempty" name:"HealthConfig" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeL7HealthConfigResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeL7HealthConfigResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribePackIndexRequest struct {
+	*tchttp.BaseRequest
+
+	// 大禹子产品代号（bgpip表示高防IP；bgp表示高防包；net表示高防IP专业版）
+	Business *string `json:"Business,omitempty" name:"Business"`
+}
+
+func (r *DescribePackIndexRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribePackIndexRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribePackIndexResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 字段值，如下：
+	// TotalPackCount：资源数
+	// AttackPackCount：清洗中的资源数
+	// BlockPackCount：封堵中的资源数
+	// ExpiredPackCount：过期的资源数
+	// ExpireingPackCount：即将过期的资源数
+	// IsolatePackCount：隔离中的资源数
+		Data []*KeyValue `json:"Data,omitempty" name:"Data" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribePackIndexResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribePackIndexResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribePcapRequest struct {
+	*tchttp.BaseRequest
+
+	// 大禹子产品代号（bgpip表示高防IP；bgp表示独享包；bgp-multip表示共享包；net表示高防IP专业版；shield表示棋牌盾）
+	Business *string `json:"Business,omitempty" name:"Business"`
+
+	// 资源实例ID
+	Id *string `json:"Id,omitempty" name:"Id"`
+
+	// 攻击事件的开始时间，格式为"2018-08-28 07:00:00"
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 攻击事件的结束时间，格式为"2018-08-28 07:02:00"
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 资源的IP，只有当Business为net时才需要填写资源实例下的IP；
+	Ip *string `json:"Ip,omitempty" name:"Ip"`
+}
+
+func (r *DescribePcapRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribePcapRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribePcapResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// pcap包的下载链接列表，无pcap包时为空数组；
+		PcapUrlList []*string `json:"PcapUrlList,omitempty" name:"PcapUrlList" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribePcapResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribePcapResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribePolicyCaseRequest struct {
+	*tchttp.BaseRequest
+
+	// 大禹子产品代号（bgpip表示高防IP；bgp表示独享包；bgp-multip表示共享包；net表示高防IP专业版）
+	Business *string `json:"Business,omitempty" name:"Business"`
+
+	// 策略场景ID
+	SceneId *string `json:"SceneId,omitempty" name:"SceneId"`
+}
+
+func (r *DescribePolicyCaseRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribePolicyCaseRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribePolicyCaseResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 策略场景列表
+		CaseList []*KeyValueRecord `json:"CaseList,omitempty" name:"CaseList" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribePolicyCaseResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribePolicyCaseResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeResIpListRequest struct {
+	*tchttp.BaseRequest
+
+	// 大禹子产品代号（bgpip表示高防IP；bgp表示独享包；bgp-multip表示共享包；net表示高防IP专业版）
+	Business *string `json:"Business,omitempty" name:"Business"`
+
+	// 资源ID, 如果不填，则获取用户所有资源的IP
+	IdList []*string `json:"IdList,omitempty" name:"IdList" list`
+}
+
+func (r *DescribeResIpListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeResIpListRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeResIpListResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 资源的IP列表
+		Resource []*ResourceIp `json:"Resource,omitempty" name:"Resource" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeResIpListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeResIpListResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeResourceListRequest struct {
 	*tchttp.BaseRequest
 
@@ -99,6 +2974,438 @@ func (r *DescribeResourceListResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeRuleSetsRequest struct {
+	*tchttp.BaseRequest
+
+	// 大禹子产品代号（bgpip表示高防IP；net表示高防IP专业版）
+	Business *string `json:"Business,omitempty" name:"Business"`
+
+	// 资源ID列表
+	IdList []*string `json:"IdList,omitempty" name:"IdList" list`
+}
+
+func (r *DescribeRuleSetsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeRuleSetsRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeRuleSetsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 规则记录数数组，取值说明:
+	// Key值为"Id"时，Value表示资源ID
+	// Key值为"RuleIdList"时，Value值表示资源的规则ID，多个规则ID用","分割
+	// Key值为"RuleNameList"时，Value值表示资源的规则名，多个规则名用","分割
+	// Key值为"RuleNum"时，Value值表示资源的规则数
+		L4RuleSets []*KeyValueRecord `json:"L4RuleSets,omitempty" name:"L4RuleSets" list`
+
+		// 规则记录数数组，取值说明:
+	// Key值为"Id"时，Value表示资源ID
+	// Key值为"RuleIdList"时，Value值表示资源的规则ID，多个规则ID用","分割
+	// Key值为"RuleNameList"时，Value值表示资源的规则名，多个规则名用","分割
+	// Key值为"RuleNum"时，Value值表示资源的规则数
+		L7RuleSets []*KeyValueRecord `json:"L7RuleSets,omitempty" name:"L7RuleSets" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeRuleSetsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeRuleSetsResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeSecIndexRequest struct {
+	*tchttp.BaseRequest
+}
+
+func (r *DescribeSecIndexRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeSecIndexRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeSecIndexResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 字段值，如下：
+	// AttackIpCount：受攻击的IP数
+	// AttackCount：攻击次数
+	// BlockCount：封堵次数
+	// MaxMbps：攻击峰值Mbps
+	// IpNum：统计的IP数据
+		Data []*KeyValue `json:"Data,omitempty" name:"Data" list`
+
+		// 本月开始时间
+		BeginDate *string `json:"BeginDate,omitempty" name:"BeginDate"`
+
+		// 本月结束时间
+		EndDate *string `json:"EndDate,omitempty" name:"EndDate"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeSecIndexResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeSecIndexResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeSourceIpSegmentRequest struct {
+	*tchttp.BaseRequest
+
+	// 大禹子产品代号（bgpip表示高防IP；net表示高防IP专业版）
+	Business *string `json:"Business,omitempty" name:"Business"`
+
+	// 资源ID
+	Id *string `json:"Id,omitempty" name:"Id"`
+}
+
+func (r *DescribeSourceIpSegmentRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeSourceIpSegmentRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeSourceIpSegmentResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 回源IP段，多个用"；"分隔
+		Data *string `json:"Data,omitempty" name:"Data"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeSourceIpSegmentResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeSourceIpSegmentResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeTransmitStatisRequest struct {
+	*tchttp.BaseRequest
+
+	// 大禹子产品代号（bgpip表示高防IP；net表示高防IP专业版；shield表示棋牌盾）
+	Business *string `json:"Business,omitempty" name:"Business"`
+
+	// 资源实例ID
+	Id *string `json:"Id,omitempty" name:"Id"`
+
+	// 指标名，取值：
+	// traffic表示流量带宽；
+	// pkg表示包速率；
+	MetricName *string `json:"MetricName,omitempty" name:"MetricName"`
+
+	// 统计时间粒度（300表示5分钟；3600表示小时；86400表示天）
+	Period *uint64 `json:"Period,omitempty" name:"Period"`
+
+	// 统计开始时间，秒部分保持为0，分钟部分为5的倍数
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 统计结束时间，秒部分保持为0，分钟部分为5的倍数
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 资源的IP；当不填写时，默认统计资源实例的所有IP；资源实例有多个IP（比如高防IP专业版）时，统计方式是求和；
+	IpList []*string `json:"IpList,omitempty" name:"IpList" list`
+}
+
+func (r *DescribeTransmitStatisRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeTransmitStatisRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeTransmitStatisResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 当MetricName=traffic时，表示入流量带宽，单位bps；
+	// 当MetricName=pkg时，表示入包速率，单位pps；
+		InDataList []*float64 `json:"InDataList,omitempty" name:"InDataList" list`
+
+		// 当MetricName=traffic时，表示出流量带宽，单位bps；
+	// 当MetricName=pkg时，表示出包速率，单位pps；
+		OutDataList []*float64 `json:"OutDataList,omitempty" name:"OutDataList" list`
+
+		// 指标名：
+	// traffic表示流量带宽；
+	// pkg表示包速率；
+		MetricName *string `json:"MetricName,omitempty" name:"MetricName"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeTransmitStatisResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeTransmitStatisResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeUnBlockStatisRequest struct {
+	*tchttp.BaseRequest
+}
+
+func (r *DescribeUnBlockStatisRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeUnBlockStatisRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeUnBlockStatisResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 解封总配额数
+		Total *uint64 `json:"Total,omitempty" name:"Total"`
+
+		// 已使用次数
+		Used *uint64 `json:"Used,omitempty" name:"Used"`
+
+		// 统计起始时间
+		BeginTime *string `json:"BeginTime,omitempty" name:"BeginTime"`
+
+		// 统计结束时间
+		EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeUnBlockStatisResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeUnBlockStatisResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribleL4RulesRequest struct {
+	*tchttp.BaseRequest
+
+	// 大禹子产品代号（bgpip表示高防IP；net表示高防IP专业版）
+	Business *string `json:"Business,omitempty" name:"Business"`
+
+	// 资源ID
+	Id *string `json:"Id,omitempty" name:"Id"`
+
+	// 规则ID，可选参数，填写后获取指定的规则
+	RuleIdList []*string `json:"RuleIdList,omitempty" name:"RuleIdList" list`
+
+	// 一页条数，填0表示不分页
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 页起始偏移，取值为(页码-1)*一页条数
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+}
+
+func (r *DescribleL4RulesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribleL4RulesRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribleL4RulesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 转发规则列表
+		Rules []*L4RuleEntry `json:"Rules,omitempty" name:"Rules" list`
+
+		// 总规则数
+		Total *uint64 `json:"Total,omitempty" name:"Total"`
+
+		// 健康检查配置列表
+		Healths []*L4RuleHealth `json:"Healths,omitempty" name:"Healths" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribleL4RulesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribleL4RulesResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribleL7RulesRequest struct {
+	*tchttp.BaseRequest
+
+	// 大禹子产品代号（bgpip表示高防IP；bgp表示独享包；bgp-multip表示共享包；net表示高防IP专业版）
+	Business *string `json:"Business,omitempty" name:"Business"`
+
+	// 资源ID
+	Id *string `json:"Id,omitempty" name:"Id"`
+
+	// 规则ID，可选参数，填写后获取指定的规则
+	RuleIdList []*string `json:"RuleIdList,omitempty" name:"RuleIdList" list`
+
+	// 一页条数，填0表示不分页
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 页起始偏移，取值为(页码-1)*一页条数
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 域名搜索，选填，当需要搜索域名请填写
+	Domain *string `json:"Domain,omitempty" name:"Domain"`
+
+	// 转发协议搜索，选填，取值[http, https, http/https]
+	ProtocolList []*string `json:"ProtocolList,omitempty" name:"ProtocolList" list`
+
+	// 状态搜索，选填，取值[0(规则配置成功)，1(规则配置生效中)，2(规则配置失败)，3(规则删除生效中)，5(规则删除失败)，6(规则等待配置)，7(规则等待删除)，8(规则待配置证书)]
+	StatusList []*uint64 `json:"StatusList,omitempty" name:"StatusList" list`
+}
+
+func (r *DescribleL7RulesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribleL7RulesRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribleL7RulesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 转发规则列表
+		Rules []*L7RuleEntry `json:"Rules,omitempty" name:"Rules" list`
+
+		// 总规则数
+		Total *uint64 `json:"Total,omitempty" name:"Total"`
+
+		// 健康检查配置列表
+		Healths []*L7RuleHealth `json:"Healths,omitempty" name:"Healths" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribleL7RulesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribleL7RulesResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribleRegionCountRequest struct {
+	*tchttp.BaseRequest
+
+	// 大禹子产品代号（bgpip表示高防IP；bgp表示独享包；bgp-multip表示共享包；）
+	Business *string `json:"Business,omitempty" name:"Business"`
+
+	// 根据线路统计，取值为[1（BGP线路），2（南京电信），3（南京联通），99（第三方合作线路）]；只对高防IP产品有效，其他产品此字段忽略
+	LineList []*uint64 `json:"LineList,omitempty" name:"LineList" list`
+}
+
+func (r *DescribleRegionCountRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribleRegionCountRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribleRegionCountResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 地域资源实例数
+		RegionList []*RegionInstanceCount `json:"RegionList,omitempty" name:"RegionList" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribleRegionCountResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribleRegionCountResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type IpBlackWhite struct {
+
+	// IP地址
+	Ip *string `json:"Ip,omitempty" name:"Ip"`
+
+	// 黑白类型，取值范围[black，white]
+	Type *string `json:"Type,omitempty" name:"Type"`
+}
+
+type IpBlockData struct {
+
+	// IP
+	Ip *string `json:"Ip,omitempty" name:"Ip"`
+
+	// 状态（Blocked：被封堵；UnBlocking：解封中；UnBlockFailed：解封失败）
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 封堵时间
+	BlockTime *string `json:"BlockTime,omitempty" name:"BlockTime"`
+
+	// 解封时间（预计解封时间）
+	UnBlockTime *string `json:"UnBlockTime,omitempty" name:"UnBlockTime"`
+
+	// 解封类型（user：自助解封；auto：自动解封； update：升级解封；bind：绑定高防包解封）
+	ActionType *string `json:"ActionType,omitempty" name:"ActionType"`
+}
+
 type KeyValue struct {
 
 	// 字段名称
@@ -114,6 +3421,1399 @@ type KeyValueRecord struct {
 	Record []*KeyValue `json:"Record,omitempty" name:"Record" list`
 }
 
+type L4HealthConfig struct {
+
+	// 转发协议，取值[TCP, UDP]
+	Protocol *string `json:"Protocol,omitempty" name:"Protocol"`
+
+	// 转发端口
+	VirtualPort *uint64 `json:"VirtualPort,omitempty" name:"VirtualPort"`
+
+	// =1表示开启；=0表示关闭
+	Enable *uint64 `json:"Enable,omitempty" name:"Enable"`
+
+	// 响应超时时间，单位秒
+	TimeOut *uint64 `json:"TimeOut,omitempty" name:"TimeOut"`
+
+	// 检测间隔时间，单位秒
+	Interval *uint64 `json:"Interval,omitempty" name:"Interval"`
+
+	// 不健康阈值，单位次
+	KickNum *uint64 `json:"KickNum,omitempty" name:"KickNum"`
+
+	// 健康阈值，单位次
+	AliveNum *uint64 `json:"AliveNum,omitempty" name:"AliveNum"`
+
+	// 会话保持时间，单位秒
+	KeepTime *uint64 `json:"KeepTime,omitempty" name:"KeepTime"`
+}
+
+type L4RuleEntry struct {
+
+	// 转发协议，取值[TCP, UDP]
+	Protocol *string `json:"Protocol,omitempty" name:"Protocol"`
+
+	// 转发端口
+	VirtualPort *uint64 `json:"VirtualPort,omitempty" name:"VirtualPort"`
+
+	// 源站端口
+	SourcePort *uint64 `json:"SourcePort,omitempty" name:"SourcePort"`
+
+	// 回源方式，取值[1(域名回源)，2(IP回源)]
+	SourceType *uint64 `json:"SourceType,omitempty" name:"SourceType"`
+
+	// 会话保持时间，单位秒
+	KeepTime *uint64 `json:"KeepTime,omitempty" name:"KeepTime"`
+
+	// 回源列表
+	SourceList []*L4RuleSource `json:"SourceList,omitempty" name:"SourceList" list`
+
+	// 负载均衡方式，取值[1(加权轮询)，2(源IP hash)]
+	LbType *uint64 `json:"LbType,omitempty" name:"LbType"`
+
+	// 会话保持开关，取值[0(会话保持关闭)，1(会话保持开启)]
+	KeepEnable *uint64 `json:"KeepEnable,omitempty" name:"KeepEnable"`
+
+	// 规则ID
+	RuleId *string `json:"RuleId,omitempty" name:"RuleId"`
+
+	// 规则描述
+	RuleName *string `json:"RuleName,omitempty" name:"RuleName"`
+
+	// 移除水印状态，取值[0(关闭)，1(开启)]
+	RemoveSwitch *uint64 `json:"RemoveSwitch,omitempty" name:"RemoveSwitch"`
+}
+
+type L4RuleHealth struct {
+
+	// 规则ID
+	RuleId *string `json:"RuleId,omitempty" name:"RuleId"`
+
+	// =1表示开启；=0表示关闭
+	Enable *uint64 `json:"Enable,omitempty" name:"Enable"`
+
+	// 响应超时时间，单位秒
+	TimeOut *uint64 `json:"TimeOut,omitempty" name:"TimeOut"`
+
+	// 检测间隔时间，单位秒
+	Interval *uint64 `json:"Interval,omitempty" name:"Interval"`
+
+	// 不健康阈值，单位次
+	KickNum *uint64 `json:"KickNum,omitempty" name:"KickNum"`
+
+	// 健康阈值，单位次
+	AliveNum *uint64 `json:"AliveNum,omitempty" name:"AliveNum"`
+}
+
+type L4RuleSource struct {
+
+	// 回源IP或域名
+	Source *string `json:"Source,omitempty" name:"Source"`
+
+	// 权重值，取值[0,100]
+	Weight *uint64 `json:"Weight,omitempty" name:"Weight"`
+}
+
+type L7HealthConfig struct {
+
+	// 转发协议，取值[http, https, http/https]
+	Protocol *string `json:"Protocol,omitempty" name:"Protocol"`
+
+	// 转发域名
+	Domain *string `json:"Domain,omitempty" name:"Domain"`
+
+	// =1表示开启；=0表示关闭
+	Enable *uint64 `json:"Enable,omitempty" name:"Enable"`
+
+	// 检测间隔时间，单位秒
+	Interval *uint64 `json:"Interval,omitempty" name:"Interval"`
+
+	// 异常判定次数，单位次
+	KickNum *uint64 `json:"KickNum,omitempty" name:"KickNum"`
+
+	// 健康判定次数，单位次
+	AliveNum *uint64 `json:"AliveNum,omitempty" name:"AliveNum"`
+
+	// 健康检查探测方法，可选HEAD或GET，默认为HEAD
+	Method *string `json:"Method,omitempty" name:"Method"`
+
+	// 健康检查判定正常状态码，1xx =1, 2xx=2, 3xx=4, 4xx=8,5xx=16，多个状态码值加和
+	StatusCode *uint64 `json:"StatusCode,omitempty" name:"StatusCode"`
+
+	// 检查目录的URL，默认为/
+	Url *string `json:"Url,omitempty" name:"Url"`
+}
+
+type L7RuleEntry struct {
+
+	// 转发协议，取值[http, https]
+	Protocol *string `json:"Protocol,omitempty" name:"Protocol"`
+
+	// 转发域名
+	Domain *string `json:"Domain,omitempty" name:"Domain"`
+
+	// 回源方式，取值[1(域名回源)，2(IP回源)]
+	SourceType *uint64 `json:"SourceType,omitempty" name:"SourceType"`
+
+	// 会话保持时间，单位秒
+	KeepTime *uint64 `json:"KeepTime,omitempty" name:"KeepTime"`
+
+	// 回源列表
+	SourceList []*L4RuleSource `json:"SourceList,omitempty" name:"SourceList" list`
+
+	// 负载均衡方式，取值[1(加权轮询)]
+	LbType *uint64 `json:"LbType,omitempty" name:"LbType"`
+
+	// 会话保持开关，取值[0(会话保持关闭)，1(会话保持开启)]
+	KeepEnable *uint64 `json:"KeepEnable,omitempty" name:"KeepEnable"`
+
+	// 规则ID
+	RuleId *string `json:"RuleId,omitempty" name:"RuleId"`
+
+	// 证书来源，当为协议为https协议时必须填，取值[2(腾讯云托管证书)]，当协议为http时也可以填0
+	CertType *uint64 `json:"CertType,omitempty" name:"CertType"`
+
+	// 当证书来源为腾讯云托管证书时，此字段必须填写托管证书ID
+	SSLId *string `json:"SSLId,omitempty" name:"SSLId"`
+
+	// 当证书来源为自有证书时，此字段必须填写证书内容；(因已不再支持自有证书，此字段已弃用，请不用填写此字段)
+	Cert *string `json:"Cert,omitempty" name:"Cert"`
+
+	// 当证书来源为自有证书时，此字段必须填写证书秘钥；(因已不再支持自有证书，此字段已弃用，请不用填写此字段)
+	PrivateKey *string `json:"PrivateKey,omitempty" name:"PrivateKey"`
+
+	// 规则描述
+	RuleName *string `json:"RuleName,omitempty" name:"RuleName"`
+
+	// 规则状态，取值[0(规则配置成功)，1(规则配置生效中)，2(规则配置失败)，3(规则删除生效中)，5(规则删除失败)，6(规则等待配置)，7(规则等待删除)，8(规则待配置证书)]
+	Status *uint64 `json:"Status,omitempty" name:"Status"`
+
+	// cc防护状态，取值[0(关闭), 1(开启)]
+	CCStatus *uint64 `json:"CCStatus,omitempty" name:"CCStatus"`
+
+	// https的CC防护状态，取值[0(关闭), 1(开启)]
+	CCEnable *uint64 `json:"CCEnable,omitempty" name:"CCEnable"`
+
+	// https的CC防护阈值
+	CCThreshold *uint64 `json:"CCThreshold,omitempty" name:"CCThreshold"`
+
+	// https的CC防护等级
+	CCLevel *string `json:"CCLevel,omitempty" name:"CCLevel"`
+}
+
+type L7RuleHealth struct {
+
+	// 规则ID
+	RuleId *string `json:"RuleId,omitempty" name:"RuleId"`
+
+	// =1表示开启；=0表示关闭
+	Enable *uint64 `json:"Enable,omitempty" name:"Enable"`
+
+	// 检测间隔时间，单位秒
+	Interval *uint64 `json:"Interval,omitempty" name:"Interval"`
+
+	// 不健康阈值，单位次
+	KickNum *uint64 `json:"KickNum,omitempty" name:"KickNum"`
+
+	// 健康阈值，单位次
+	AliveNum *uint64 `json:"AliveNum,omitempty" name:"AliveNum"`
+
+	// HTTP请求方式，取值[HEAD,GET]
+	Method *string `json:"Method,omitempty" name:"Method"`
+
+	// 健康检查判定正常状态码，1xx =1, 2xx=2, 3xx=4, 4xx=8,5xx=16，多个状态码值加和
+	StatusCode *uint64 `json:"StatusCode,omitempty" name:"StatusCode"`
+
+	// 检查目录的URL，默认为/
+	Url *string `json:"Url,omitempty" name:"Url"`
+
+	// 配置状态，0： 正常，1：配置中，2：配置失败
+	Status *uint64 `json:"Status,omitempty" name:"Status"`
+}
+
+type ModifyCCHostProtectionRequest struct {
+	*tchttp.BaseRequest
+
+	// 大禹子产品代号（bgpip表示高防IP；net表示高防IP专业版）
+	Business *string `json:"Business,omitempty" name:"Business"`
+
+	// 资源ID
+	Id *string `json:"Id,omitempty" name:"Id"`
+
+	// 规则ID
+	RuleId *string `json:"RuleId,omitempty" name:"RuleId"`
+
+	// 开启/关闭CC域名防护，取值[open(表示开启)，close(表示关闭)]
+	Method *string `json:"Method,omitempty" name:"Method"`
+}
+
+func (r *ModifyCCHostProtectionRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyCCHostProtectionRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyCCHostProtectionResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 成功码
+		Success *SuccessCode `json:"Success,omitempty" name:"Success"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifyCCHostProtectionResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyCCHostProtectionResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyCCIpAllowDenyRequest struct {
+	*tchttp.BaseRequest
+
+	// 大禹子产品代号（bgpip表示高防IP；bgp表示独享包；bgp-multip表示共享包；net表示高防IP专业版）
+	Business *string `json:"Business,omitempty" name:"Business"`
+
+	// 资源ID
+	Id *string `json:"Id,omitempty" name:"Id"`
+
+	// add表示添加，delete表示删除
+	Method *string `json:"Method,omitempty" name:"Method"`
+
+	// 黑/白名单类型；取值[white(白名单)，black(黑名单)]
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 黑/白名单的IP数组
+	IpList []*string `json:"IpList,omitempty" name:"IpList" list`
+
+	// 可选字段，代表CC防护类型，取值[http（http协议的CC防护），https（https协议的CC防护）]；当不填时，默认为http协议的CC防护；当填写https时还需要填写Domain和RuleId字段；
+	Protocol *string `json:"Protocol,omitempty" name:"Protocol"`
+
+	// 可选字段，表示https协议的7层转发规则域名（通过获取7层转发规则接口可以获取域名），只有当Protocol字段为https时才必须填写此字段；
+	Domain *string `json:"Domain,omitempty" name:"Domain"`
+
+	// 可选字段，表示https协议的7层转发规则ID（通过获取7层转发规则接口可以获取规则ID），
+	// 当Method为delete时，不用填写此字段；
+	RuleId *string `json:"RuleId,omitempty" name:"RuleId"`
+}
+
+func (r *ModifyCCIpAllowDenyRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyCCIpAllowDenyRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyCCIpAllowDenyResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 成功码
+		Success *SuccessCode `json:"Success,omitempty" name:"Success"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifyCCIpAllowDenyResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyCCIpAllowDenyResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyCCLevelRequest struct {
+	*tchttp.BaseRequest
+
+	// 大禹子产品代号（bgpip表示高防IP；bgp表示独享包；bgp-multip表示共享包；net表示高防IP专业版）
+	Business *string `json:"Business,omitempty" name:"Business"`
+
+	// 资源ID
+	Id *string `json:"Id,omitempty" name:"Id"`
+
+	// CC防护等级，取值[default(正常), loose(宽松), strict(严格)];
+	Level *string `json:"Level,omitempty" name:"Level"`
+
+	// 可选字段，代表CC防护类型，取值[http（http协议的CC防护），https（https协议的CC防护）]；当不填时，默认为http协议的CC防护；当填写https时还需要填写RuleId字段；
+	Protocol *string `json:"Protocol,omitempty" name:"Protocol"`
+
+	// 可选字段，表示https协议的7层转发规则ID（通过获取7层转发规则接口可以获取规则ID）；
+	// 当Protocol=https时必须填写；
+	RuleId *string `json:"RuleId,omitempty" name:"RuleId"`
+}
+
+func (r *ModifyCCLevelRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyCCLevelRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyCCLevelResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 成功码
+		Success *SuccessCode `json:"Success,omitempty" name:"Success"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifyCCLevelResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyCCLevelResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyCCPolicySwitchRequest struct {
+	*tchttp.BaseRequest
+
+	// 大禹子产品代号（bgpip表示高防IP；bgp表示独享包；bgp-multip表示共享包；net表示高防IP专业版）
+	Business *string `json:"Business,omitempty" name:"Business"`
+
+	// 资源ID
+	Id *string `json:"Id,omitempty" name:"Id"`
+
+	// 策略ID
+	SetId *string `json:"SetId,omitempty" name:"SetId"`
+
+	// 开关状态
+	Switch *uint64 `json:"Switch,omitempty" name:"Switch"`
+}
+
+func (r *ModifyCCPolicySwitchRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyCCPolicySwitchRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyCCPolicySwitchResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 成功码
+		Success *SuccessCode `json:"Success,omitempty" name:"Success"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifyCCPolicySwitchResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyCCPolicySwitchResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyCCSelfDefinePolicyRequest struct {
+	*tchttp.BaseRequest
+
+	// 大禹子产品代号（bgpip表示高防IP；bgp表示独享包；bgp-multip表示共享包；net表示高防IP专业版）
+	Business *string `json:"Business,omitempty" name:"Business"`
+
+	// 资源ID
+	Id *string `json:"Id,omitempty" name:"Id"`
+
+	// 策略ID
+	SetId *string `json:"SetId,omitempty" name:"SetId"`
+
+	// CC策略描述
+	Policy *CCPolicy `json:"Policy,omitempty" name:"Policy"`
+}
+
+func (r *ModifyCCSelfDefinePolicyRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyCCSelfDefinePolicyRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyCCSelfDefinePolicyResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 成功码
+		Success *SuccessCode `json:"Success,omitempty" name:"Success"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifyCCSelfDefinePolicyResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyCCSelfDefinePolicyResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyCCThresholdRequest struct {
+	*tchttp.BaseRequest
+
+	// 大禹子产品代号（bgpip表示高防IP；bgp表示独享包；bgp-multip表示共享包；net表示高防IP专业版）
+	Business *string `json:"Business,omitempty" name:"Business"`
+
+	// 资源ID
+	Id *string `json:"Id,omitempty" name:"Id"`
+
+	// CC防护阈值，取值(0 100 150 240 350 480 550 700 850 1000 1500 2000 3000 5000 10000 20000);
+	// 当Business为高防IP、高防IP专业版、棋牌盾时，其CC防护最大阈值跟资源的保底防护带宽有关，对应关系如下：
+	//   保底带宽: 最大C防护阈值
+	//   10:  20000,
+	//   20:  40000,
+	//   30:  70000,
+	//   40:  100000,
+	//   50:  150000,
+	//   60:  200000,
+	//   80:  250000,
+	//   100: 300000,
+	Threshold *uint64 `json:"Threshold,omitempty" name:"Threshold"`
+
+	// 可选字段，代表CC防护类型，取值[http（http协议的CC防护），https（https协议的CC防护）]；当不填时，默认为http协议的CC防护；当填写https时还需要填写RuleId字段；
+	Protocol *string `json:"Protocol,omitempty" name:"Protocol"`
+
+	// 可选字段，表示https协议的7层转发规则ID（通过获取7层转发规则接口可以获取规则ID）；
+	// 当Protocol=https时必须填写；
+	RuleId *string `json:"RuleId,omitempty" name:"RuleId"`
+}
+
+func (r *ModifyCCThresholdRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyCCThresholdRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyCCThresholdResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 成功码
+		Success *SuccessCode `json:"Success,omitempty" name:"Success"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifyCCThresholdResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyCCThresholdResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyCCUrlAllowRequest struct {
+	*tchttp.BaseRequest
+
+	// 大禹子产品代号（bgpip表示高防IP；bgp表示独享包；bgp-multip表示共享包；net表示高防IP专业版）
+	Business *string `json:"Business,omitempty" name:"Business"`
+
+	// 资源ID
+	Id *string `json:"Id,omitempty" name:"Id"`
+
+	// =add表示添加，=delete表示删除
+	Method *string `json:"Method,omitempty" name:"Method"`
+
+	// 黑/白名单类型；取值[white(白名单)]
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// URL数组，URL格式如下：
+	// http://域名/cgi
+	// https://域名/cgi
+	UrlList []*string `json:"UrlList,omitempty" name:"UrlList" list`
+
+	// 可选字段，代表CC防护类型，取值[http（http协议的CC防护），https（https协议的CC防护）]；当不填时，默认为http协议的CC防护；当填写https时还需要填写Domain和RuleId字段；
+	Protocol *string `json:"Protocol,omitempty" name:"Protocol"`
+
+	// 可选字段，表示https协议的7层转发规则域名（通过获取7层转发规则接口可以获取域名），只有当Protocol字段为https时才必须填写此字段；
+	Domain *string `json:"Domain,omitempty" name:"Domain"`
+
+	// 可选字段，表示https协议的7层转发规则ID（通过获取7层转发规则接口可以获取规则ID），当添加并且Protocol=https时必须填写；
+	// 当Method为delete时，可以不用填写此字段；
+	RuleId *string `json:"RuleId,omitempty" name:"RuleId"`
+}
+
+func (r *ModifyCCUrlAllowRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyCCUrlAllowRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyCCUrlAllowResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 成功码
+		Success *SuccessCode `json:"Success,omitempty" name:"Success"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifyCCUrlAllowResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyCCUrlAllowResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyDDoSAIStatusRequest struct {
+	*tchttp.BaseRequest
+
+	// 大禹子产品代号（bgpip表示高防IP；bgp表示独享包；bgp-multip表示共享包；net表示高防IP专业版）
+	Business *string `json:"Business,omitempty" name:"Business"`
+
+	// 资源ID
+	Id *string `json:"Id,omitempty" name:"Id"`
+
+	// =get表示读取AI防护状态；=set表示修改AI防护状态；
+	Method *string `json:"Method,omitempty" name:"Method"`
+
+	// AI防护状态，取值[on，off]；当Method=set时必填；
+	DDoSAI *string `json:"DDoSAI,omitempty" name:"DDoSAI"`
+}
+
+func (r *ModifyDDoSAIStatusRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyDDoSAIStatusRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyDDoSAIStatusResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// AI防护状态，取值[on，off]
+		DDoSAI *string `json:"DDoSAI,omitempty" name:"DDoSAI"`
+
+		// 资源ID
+		Id *string `json:"Id,omitempty" name:"Id"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifyDDoSAIStatusResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyDDoSAIStatusResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyDDoSDefendStatusRequest struct {
+	*tchttp.BaseRequest
+
+	// 大禹子产品代号（bgp表示独享包；bgp-multip表示共享包；bgpip表示高防IP；net表示高防IP专业版；basic表示基础防护）
+	Business *string `json:"Business,omitempty" name:"Business"`
+
+	// 防护状态值，取值[0（关闭），1（开启）]
+	Status *uint64 `json:"Status,omitempty" name:"Status"`
+
+	// 关闭时长，单位小时，取值[0，1，2，3，4，5，6]；当Status=0表示关闭时，Hour必须大于0；
+	Hour *int64 `json:"Hour,omitempty" name:"Hour"`
+
+	// 资源ID；当Business不是基础防护时必须填写此字段；
+	Id *string `json:"Id,omitempty" name:"Id"`
+
+	// 基础防护的IP，只有当Business为基础防护时才需要填写此字段；
+	Ip *string `json:"Ip,omitempty" name:"Ip"`
+
+	// 只有当Business为基础防护时才需要填写此字段，IP所属的产品类型，取值[public（CVM产品），bm（黑石产品），eni（弹性网卡），vpngw（VPN网关）， natgw（NAT网关），waf（Web应用安全产品），fpc（金融产品），gaap（GAAP产品）, other(托管IP)]
+	BizType *string `json:"BizType,omitempty" name:"BizType"`
+
+	// 只有当Business为基础防护时才需要填写此字段，IP所属的产品子类，取值[cvm（CVM），lb（负载均衡器），eni（弹性网卡），vpngw（VPN），natgw（NAT），waf（WAF），fpc（金融），gaap（GAAP），other（托管IP），eip（黑石弹性IP）]
+	DeviceType *string `json:"DeviceType,omitempty" name:"DeviceType"`
+
+	// 只有当Business为基础防护时才需要填写此字段，IP所属的资源实例ID，当绑定新IP时必须填写此字段；例如是弹性网卡的IP，则InstanceId填写弹性网卡的ID(eni-*);
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 只有当Business为基础防护时才需要填写此字段，表示IP所属的地域，取值：
+	// "bj":     华北地区(北京)
+	// "cd":     西南地区(成都)
+	// "cq":     西南地区(重庆)
+	// "gz":     华南地区(广州)
+	// "gzopen": 华南地区(广州Open)
+	// "hk":     中国香港
+	// "kr":     东南亚地区(首尔)
+	// "sh":     华东地区(上海)
+	// "shjr":   华东地区(上海金融)
+	// "szjr":   华南地区(深圳金融)
+	// "sg":     东南亚地区(新加坡)
+	// "th":     东南亚地区(泰国)
+	// "de":     欧洲地区(德国)
+	// "usw":    美国西部（硅谷）
+	// "ca":     北美地区(多伦多)
+	// "jp":     日本
+	// "hzec":   杭州
+	// "in":     印度
+	// "use":    美东地区（弗吉尼亚）
+	// "ru":     俄罗斯
+	// "tpe":    中国台湾
+	// "nj":     南京
+	IPRegion *string `json:"IPRegion,omitempty" name:"IPRegion"`
+}
+
+func (r *ModifyDDoSDefendStatusRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyDDoSDefendStatusRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyDDoSDefendStatusResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 成功码
+		Success *SuccessCode `json:"Success,omitempty" name:"Success"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifyDDoSDefendStatusResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyDDoSDefendStatusResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyDDoSLevelRequest struct {
+	*tchttp.BaseRequest
+
+	// 大禹子产品代号（bgpip表示高防IP；bgp表示独享包；bgp-multip表示共享包；net表示高防IP专业版）
+	Business *string `json:"Business,omitempty" name:"Business"`
+
+	// 资源ID
+	Id *string `json:"Id,omitempty" name:"Id"`
+
+	// =get表示读取防护等级；=set表示修改防护等级
+	Method *string `json:"Method,omitempty" name:"Method"`
+
+	// 防护等级，取值[low,middle,high]；当Method=set时必填
+	DDoSLevel *string `json:"DDoSLevel,omitempty" name:"DDoSLevel"`
+}
+
+func (r *ModifyDDoSLevelRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyDDoSLevelRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyDDoSLevelResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 资源ID
+		Id *string `json:"Id,omitempty" name:"Id"`
+
+		// 防护等级，取值[low,middle,high]
+		DDoSLevel *string `json:"DDoSLevel,omitempty" name:"DDoSLevel"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifyDDoSLevelResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyDDoSLevelResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyDDoSPolicyCaseRequest struct {
+	*tchttp.BaseRequest
+
+	// 大禹子产品代号（bgpip表示高防IP；bgp表示独享包；bgp-multip表示共享包；net表示高防IP专业版）
+	Business *string `json:"Business,omitempty" name:"Business"`
+
+	// 策略场景ID
+	SceneId *string `json:"SceneId,omitempty" name:"SceneId"`
+
+	// 开发平台，取值[PC（PC客户端）， MOBILE（移动端）， TV（电视端）， SERVER（主机）]
+	PlatformTypes []*string `json:"PlatformTypes,omitempty" name:"PlatformTypes" list`
+
+	// 细分品类，取值[WEB（网站）， GAME（游戏）， APP（应用）， OTHER（其他）]
+	AppType *string `json:"AppType,omitempty" name:"AppType"`
+
+	// 应用协议，取值[tcp（TCP协议），udp（UDP协议），icmp（ICMP协议），all（其他协议）]
+	AppProtocols []*string `json:"AppProtocols,omitempty" name:"AppProtocols" list`
+
+	// TCP业务起始端口，取值(0, 65535]
+	TcpSportStart *string `json:"TcpSportStart,omitempty" name:"TcpSportStart"`
+
+	// TCP业务结束端口，取值(0, 65535]，必须大于等于TCP业务起始端口
+	TcpSportEnd *string `json:"TcpSportEnd,omitempty" name:"TcpSportEnd"`
+
+	// UDP业务起始端口，取值范围(0, 65535]
+	UdpSportStart *string `json:"UdpSportStart,omitempty" name:"UdpSportStart"`
+
+	// UDP业务结束端口，取值范围(0, 65535)，必须大于等于UDP业务起始端口
+	UdpSportEnd *string `json:"UdpSportEnd,omitempty" name:"UdpSportEnd"`
+
+	// 是否有海外客户，取值[no（没有）, yes（有）]
+	HasAbroad *string `json:"HasAbroad,omitempty" name:"HasAbroad"`
+
+	// 是否会主动对外发起TCP请求，取值[no（不会）, yes（会）]
+	HasInitiateTcp *string `json:"HasInitiateTcp,omitempty" name:"HasInitiateTcp"`
+
+	// 是否会主动对外发起UDP业务请求，取值[no（不会）, yes（会）]
+	HasInitiateUdp *string `json:"HasInitiateUdp,omitempty" name:"HasInitiateUdp"`
+
+	// 主动发起TCP请求的端口，取值范围(0, 65535]
+	PeerTcpPort *string `json:"PeerTcpPort,omitempty" name:"PeerTcpPort"`
+
+	// 主动发起UDP请求的端口，取值范围(0, 65535]
+	PeerUdpPort *string `json:"PeerUdpPort,omitempty" name:"PeerUdpPort"`
+
+	// TCP载荷的固定特征码，字符串长度小于512
+	TcpFootprint *string `json:"TcpFootprint,omitempty" name:"TcpFootprint"`
+
+	// UDP载荷的固定特征码，字符串长度小于512
+	UdpFootprint *string `json:"UdpFootprint,omitempty" name:"UdpFootprint"`
+
+	// Web业务的API的URL
+	WebApiUrl []*string `json:"WebApiUrl,omitempty" name:"WebApiUrl" list`
+
+	// TCP业务报文长度最小值，取值范围(0, 1500)
+	MinTcpPackageLen *string `json:"MinTcpPackageLen,omitempty" name:"MinTcpPackageLen"`
+
+	// TCP业务报文长度最大值，取值范围(0, 1500)，必须大于等于TCP业务报文长度最小值
+	MaxTcpPackageLen *string `json:"MaxTcpPackageLen,omitempty" name:"MaxTcpPackageLen"`
+
+	// UDP业务报文长度最小值，取值范围(0, 1500)
+	MinUdpPackageLen *string `json:"MinUdpPackageLen,omitempty" name:"MinUdpPackageLen"`
+
+	// UDP业务报文长度最大值，取值范围(0, 1500)，必须大于等于UDP业务报文长度最小值
+	MaxUdpPackageLen *string `json:"MaxUdpPackageLen,omitempty" name:"MaxUdpPackageLen"`
+
+	// 是否有VPN业务，取值[no（没有）, yes（有）]
+	HasVPN *string `json:"HasVPN,omitempty" name:"HasVPN"`
+}
+
+func (r *ModifyDDoSPolicyCaseRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyDDoSPolicyCaseRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyDDoSPolicyCaseResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 成功码
+		Success *SuccessCode `json:"Success,omitempty" name:"Success"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifyDDoSPolicyCaseResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyDDoSPolicyCaseResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyDDoSPolicyNameRequest struct {
+	*tchttp.BaseRequest
+
+	// 大禹子产品代号（bgpip表示高防IP；bgp表示独享包；bgp-multip表示共享包；net表示高防IP专业版）
+	Business *string `json:"Business,omitempty" name:"Business"`
+
+	// 策略ID
+	PolicyId *string `json:"PolicyId,omitempty" name:"PolicyId"`
+
+	// 策略名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+}
+
+func (r *ModifyDDoSPolicyNameRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyDDoSPolicyNameRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyDDoSPolicyNameResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 成功码
+		Success *SuccessCode `json:"Success,omitempty" name:"Success"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifyDDoSPolicyNameResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyDDoSPolicyNameResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyDDoSPolicyRequest struct {
+	*tchttp.BaseRequest
+
+	// 大禹子产品代号（bgpip表示高防IP；bgp表示独享包；bgp-multip表示共享包；net表示高防IP专业版）
+	Business *string `json:"Business,omitempty" name:"Business"`
+
+	// 策略ID
+	PolicyId *string `json:"PolicyId,omitempty" name:"PolicyId"`
+
+	// 协议禁用，必须填写且数组长度必须为1
+	DropOptions []*DDoSPolicyDropOption `json:"DropOptions,omitempty" name:"DropOptions" list`
+
+	// 端口禁用，当没有禁用端口时填空数组
+	PortLimits []*DDoSPolicyPortLimit `json:"PortLimits,omitempty" name:"PortLimits" list`
+
+	// IP黑白名单，当没有IP黑白名单时填空数组
+	IpAllowDenys []*IpBlackWhite `json:"IpAllowDenys,omitempty" name:"IpAllowDenys" list`
+
+	// 报文过滤，当没有报文过滤时填空数组
+	PacketFilters []*DDoSPolicyPacketFilter `json:"PacketFilters,omitempty" name:"PacketFilters" list`
+
+	// 水印策略参数，当没有启用水印功能时填空数组，最多只能传一条水印策略（即数组大小不超过1）
+	WaterPrint []*WaterPrintPolicy `json:"WaterPrint,omitempty" name:"WaterPrint" list`
+}
+
+func (r *ModifyDDoSPolicyRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyDDoSPolicyRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyDDoSPolicyResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 成功码
+		Success *SuccessCode `json:"Success,omitempty" name:"Success"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifyDDoSPolicyResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyDDoSPolicyResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyDDoSSwitchRequest struct {
+	*tchttp.BaseRequest
+
+	// 大禹子产品代号（basic表示基础防护）
+	Business *string `json:"Business,omitempty" name:"Business"`
+
+	// =get表示读取DDoS防护状态；=set表示修改DDoS防护状态；
+	Method *string `json:"Method,omitempty" name:"Method"`
+
+	// 基础防护的IP，只有当Business为基础防护时才需要填写此字段；
+	Ip *string `json:"Ip,omitempty" name:"Ip"`
+
+	// 只有当Business为基础防护时才需要填写此字段，IP所属的产品类型，取值[public（CVM产品），bm（黑石产品），eni（弹性网卡），vpngw（VPN网关）， natgw（NAT网关），waf（Web应用安全产品），fpc（金融产品），gaap（GAAP产品）, other(托管IP)]
+	BizType *string `json:"BizType,omitempty" name:"BizType"`
+
+	// 只有当Business为基础防护时才需要填写此字段，IP所属的产品子类，取值[cvm（CVM），lb（负载均衡器），eni（弹性网卡），vpngw（VPN），natgw（NAT），waf（WAF），fpc（金融），gaap（GAAP），other（托管IP），eip（黑石弹性IP）]
+	DeviceType *string `json:"DeviceType,omitempty" name:"DeviceType"`
+
+	// 只有当Business为基础防护时才需要填写此字段，IP所属的资源实例ID，当绑定新IP时必须填写此字段；例如是弹性网卡的IP，则InstanceId填写弹性网卡的ID(eni-*);
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 只有当Business为基础防护时才需要填写此字段，表示IP所属的地域，取值：
+	// "bj":     华北地区(北京)
+	// "cd":     西南地区(成都)
+	// "cq":     西南地区(重庆)
+	// "gz":     华南地区(广州)
+	// "gzopen": 华南地区(广州Open)
+	// "hk":     中国香港
+	// "kr":     东南亚地区(首尔)
+	// "sh":     华东地区(上海)
+	// "shjr":   华东地区(上海金融)
+	// "szjr":   华南地区(深圳金融)
+	// "sg":     东南亚地区(新加坡)
+	// "th":     东南亚地区(泰国)
+	// "de":     欧洲地区(德国)
+	// "usw":    美国西部（硅谷）
+	// "ca":     北美地区(多伦多)
+	// "jp":     日本
+	// "hzec":   杭州
+	// "in":     印度
+	// "use":    美东地区（弗吉尼亚）
+	// "ru":     俄罗斯
+	// "tpe":    中国台湾
+	// "nj":     南京
+	IPRegion *string `json:"IPRegion,omitempty" name:"IPRegion"`
+
+	// 可选字段，防护状态值，取值[0（关闭），1（开启）]；当Method为get时可以不填写此字段；
+	Status *uint64 `json:"Status,omitempty" name:"Status"`
+}
+
+func (r *ModifyDDoSSwitchRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyDDoSSwitchRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyDDoSSwitchResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 当前防护状态值，取值[0（关闭），1（开启）]
+		Status *uint64 `json:"Status,omitempty" name:"Status"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifyDDoSSwitchResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyDDoSSwitchResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyDDoSThresholdRequest struct {
+	*tchttp.BaseRequest
+
+	// 大禹子产品代号（bgpip表示高防IP；bgp表示独享包；bgp-multip表示共享包；net表示高防IP专业版）
+	Business *string `json:"Business,omitempty" name:"Business"`
+
+	// 资源ID
+	Id *string `json:"Id,omitempty" name:"Id"`
+
+	// DDoS清洗阈值，取值[0, 60, 80, 100, 150, 200, 250, 300, 400, 500, 700, 1000];
+	Threshold *uint64 `json:"Threshold,omitempty" name:"Threshold"`
+}
+
+func (r *ModifyDDoSThresholdRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyDDoSThresholdRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyDDoSThresholdResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 成功码
+		Success *SuccessCode `json:"Success,omitempty" name:"Success"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifyDDoSThresholdResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyDDoSThresholdResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyDDoSWaterKeyRequest struct {
+	*tchttp.BaseRequest
+
+	// 大禹子产品代号（bgpip表示高防IP；bgp表示独享包；bgp-multip表示共享包；net表示高防IP专业版）
+	Business *string `json:"Business,omitempty" name:"Business"`
+
+	// 策略ID
+	PolicyId *string `json:"PolicyId,omitempty" name:"PolicyId"`
+
+	// 密钥操作，取值：[add（添加），delete（删除），open（开启），close（关闭），get（获取密钥）]
+	Method *string `json:"Method,omitempty" name:"Method"`
+
+	// 密钥ID，当添加密钥操作时可以不填或填0，其他操作时必须填写；
+	KeyId *uint64 `json:"KeyId,omitempty" name:"KeyId"`
+}
+
+func (r *ModifyDDoSWaterKeyRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyDDoSWaterKeyRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyDDoSWaterKeyResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 水印密钥列表
+		KeyList []*WaterPrintKey `json:"KeyList,omitempty" name:"KeyList" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifyDDoSWaterKeyResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyDDoSWaterKeyResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyElasticLimitRequest struct {
+	*tchttp.BaseRequest
+
+	// 大禹子产品代号（bgpip表示高防IP；bgp表示独享包；bgp-multip表示共享包；net表示高防IP专业版）
+	Business *string `json:"Business,omitempty" name:"Business"`
+
+	// 资源ID
+	Id *string `json:"Id,omitempty" name:"Id"`
+
+	// 弹性防护阈值，取值[0 10000 20000 30000 40000 50000 60000 70000 80000 90000 100000 120000 150000 200000 250000 300000 400000 600000 800000 220000 310000 110000 270000 610000]
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+func (r *ModifyElasticLimitRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyElasticLimitRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyElasticLimitResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 成功码
+		Success *SuccessCode `json:"Success,omitempty" name:"Success"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifyElasticLimitResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyElasticLimitResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyL4HealthRequest struct {
+	*tchttp.BaseRequest
+
+	// 大禹子产品代号（bgpip表示高防IP；net表示高防IP专业版）
+	Business *string `json:"Business,omitempty" name:"Business"`
+
+	// 资源ID
+	Id *string `json:"Id,omitempty" name:"Id"`
+
+	// 健康检查参数数组
+	Healths []*L4RuleHealth `json:"Healths,omitempty" name:"Healths" list`
+}
+
+func (r *ModifyL4HealthRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyL4HealthRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyL4HealthResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 成功码
+		Success *SuccessCode `json:"Success,omitempty" name:"Success"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifyL4HealthResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyL4HealthResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyL4KeepTimeRequest struct {
+	*tchttp.BaseRequest
+
+	// 大禹子产品代号（bgpip表示高防IP；net表示高防IP专业版）
+	Business *string `json:"Business,omitempty" name:"Business"`
+
+	// 资源ID
+	Id *string `json:"Id,omitempty" name:"Id"`
+
+	// 规则ID
+	RuleId *string `json:"RuleId,omitempty" name:"RuleId"`
+
+	// 会话保持开关，取值[0(会话保持关闭)，1(会话保持开启)]
+	KeepEnable *uint64 `json:"KeepEnable,omitempty" name:"KeepEnable"`
+
+	// 会话保持时间，单位秒
+	KeepTime *uint64 `json:"KeepTime,omitempty" name:"KeepTime"`
+}
+
+func (r *ModifyL4KeepTimeRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyL4KeepTimeRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyL4KeepTimeResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 成功码
+		Success *SuccessCode `json:"Success,omitempty" name:"Success"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifyL4KeepTimeResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyL4KeepTimeResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyL4RulesRequest struct {
+	*tchttp.BaseRequest
+
+	// 大禹子产品代号（bgpip表示高防IP；bgp表示独享包；bgp-multip表示共享包；net表示高防IP专业版）
+	Business *string `json:"Business,omitempty" name:"Business"`
+
+	// 资源ID
+	Id *string `json:"Id,omitempty" name:"Id"`
+
+	// 规则
+	Rule *L4RuleEntry `json:"Rule,omitempty" name:"Rule"`
+}
+
+func (r *ModifyL4RulesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyL4RulesRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyL4RulesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 成功码
+		Success *SuccessCode `json:"Success,omitempty" name:"Success"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifyL4RulesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyL4RulesResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyL7RulesRequest struct {
+	*tchttp.BaseRequest
+
+	// 大禹子产品代号（bgpip表示高防IP；bgp表示独享包；bgp-multip表示共享包；net表示高防IP专业版）
+	Business *string `json:"Business,omitempty" name:"Business"`
+
+	// 资源ID
+	Id *string `json:"Id,omitempty" name:"Id"`
+
+	// 规则
+	Rule *L7RuleEntry `json:"Rule,omitempty" name:"Rule"`
+}
+
+func (r *ModifyL7RulesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyL7RulesRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyL7RulesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 成功码
+		Success *SuccessCode `json:"Success,omitempty" name:"Success"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifyL7RulesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyL7RulesResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyResBindDDoSPolicyRequest struct {
+	*tchttp.BaseRequest
+
+	// 大禹子产品代号（bgpip表示高防IP；bgp表示独享包；bgp-multip表示共享包；net表示高防IP专业版）
+	Business *string `json:"Business,omitempty" name:"Business"`
+
+	// 资源ID
+	Id *string `json:"Id,omitempty" name:"Id"`
+
+	// 策略ID
+	PolicyId *string `json:"PolicyId,omitempty" name:"PolicyId"`
+
+	// 绑定或解绑，bind表示绑定策略，unbind表示解绑策略
+	Method *string `json:"Method,omitempty" name:"Method"`
+}
+
+func (r *ModifyResBindDDoSPolicyRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyResBindDDoSPolicyRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyResBindDDoSPolicyResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 成功码
+		Success *SuccessCode `json:"Success,omitempty" name:"Success"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifyResBindDDoSPolicyResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyResBindDDoSPolicyResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type OrderBy struct {
 
 	// 排序字段名称，取值[
@@ -124,4 +4824,79 @@ type OrderBy struct {
 
 	// 升降序，取值为[asc（升序），（升序），desc（降序）， DESC（降序）]
 	Order *string `json:"Order,omitempty" name:"Order"`
+}
+
+type ProtocolPort struct {
+
+	// 协议（tcp；udp）
+	Protocol *string `json:"Protocol,omitempty" name:"Protocol"`
+
+	// 端口
+	Port *uint64 `json:"Port,omitempty" name:"Port"`
+}
+
+type RegionInstanceCount struct {
+
+	// 地域码
+	Region *string `json:"Region,omitempty" name:"Region"`
+
+	// 地域码（新规范）
+	RegionV3 *string `json:"RegionV3,omitempty" name:"RegionV3"`
+
+	// 资源实例数
+	Count *uint64 `json:"Count,omitempty" name:"Count"`
+}
+
+type ResourceIp struct {
+
+	// 资源ID
+	Id *string `json:"Id,omitempty" name:"Id"`
+
+	// 资源的IP数组
+	IpList []*string `json:"IpList,omitempty" name:"IpList" list`
+}
+
+type SuccessCode struct {
+
+	// 成功/错误码
+	Code *string `json:"Code,omitempty" name:"Code"`
+
+	// 描述
+	Message *string `json:"Message,omitempty" name:"Message"`
+}
+
+type WaterPrintKey struct {
+
+	// 水印KeyID
+	KeyId *string `json:"KeyId,omitempty" name:"KeyId"`
+
+	// 水印Key值
+	KeyContent *string `json:"KeyContent,omitempty" name:"KeyContent"`
+
+	// 水印Key的版本号
+	KeyVersion *string `json:"KeyVersion,omitempty" name:"KeyVersion"`
+
+	// 是否开启，取值[0（没有开启），1（已开启）]
+	OpenStatus *uint64 `json:"OpenStatus,omitempty" name:"OpenStatus"`
+
+	// 秘钥生成时间
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+}
+
+type WaterPrintPolicy struct {
+
+	// TCP端口段，例如["2000-3000","3500-4000"]
+	TcpPortList []*string `json:"TcpPortList,omitempty" name:"TcpPortList" list`
+
+	// UDP端口段，例如["2000-3000","3500-4000"]
+	UdpPortList []*string `json:"UdpPortList,omitempty" name:"UdpPortList" list`
+
+	// 水印偏移量，取值范围[0, 100)
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 是否自动剥离，取值[0（不自动剥离），1（自动剥离）]
+	RemoveSwitch *uint64 `json:"RemoveSwitch,omitempty" name:"RemoveSwitch"`
+
+	// 是否开启，取值[0（没有开启），1（已开启）]
+	OpenStatus *uint64 `json:"OpenStatus,omitempty" name:"OpenStatus"`
 }

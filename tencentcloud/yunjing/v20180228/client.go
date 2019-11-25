@@ -43,6 +43,56 @@ func NewClient(credential *common.Credential, region string, clientProfile *prof
 }
 
 
+func NewAddLoginWhiteListRequest() (request *AddLoginWhiteListRequest) {
+    request = &AddLoginWhiteListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("yunjing", APIVersion, "AddLoginWhiteList")
+    return
+}
+
+func NewAddLoginWhiteListResponse() (response *AddLoginWhiteListResponse) {
+    response = &AddLoginWhiteListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（AddLoginWhiteList）用于添加白名单规则
+func (c *Client) AddLoginWhiteList(request *AddLoginWhiteListRequest) (response *AddLoginWhiteListResponse, err error) {
+    if request == nil {
+        request = NewAddLoginWhiteListRequest()
+    }
+    response = NewAddLoginWhiteListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewAddMachineTagRequest() (request *AddMachineTagRequest) {
+    request = &AddMachineTagRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("yunjing", APIVersion, "AddMachineTag")
+    return
+}
+
+func NewAddMachineTagResponse() (response *AddMachineTagResponse) {
+    response = &AddMachineTagResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 增加机器关联标签
+func (c *Client) AddMachineTag(request *AddMachineTagRequest) (response *AddMachineTagResponse, err error) {
+    if request == nil {
+        request = NewAddMachineTagRequest()
+    }
+    response = NewAddMachineTagResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCloseProVersionRequest() (request *CloseProVersionRequest) {
     request = &CloseProVersionRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -64,6 +114,31 @@ func (c *Client) CloseProVersion(request *CloseProVersionRequest) (response *Clo
         request = NewCloseProVersionRequest()
     }
     response = NewCloseProVersionResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateOpenPortTaskRequest() (request *CreateOpenPortTaskRequest) {
+    request = &CreateOpenPortTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("yunjing", APIVersion, "CreateOpenPortTask")
+    return
+}
+
+func NewCreateOpenPortTaskResponse() (response *CreateOpenPortTaskResponse) {
+    response = &CreateOpenPortTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口 (CreateOpenPortTask) 用于创建实时获取端口任务。
+func (c *Client) CreateOpenPortTask(request *CreateOpenPortTaskRequest) (response *CreateOpenPortTaskResponse, err error) {
+    if request == nil {
+        request = NewCreateOpenPortTaskRequest()
+    }
+    response = NewCreateOpenPortTaskResponse()
     err = c.Send(request, response)
     return
 }
@@ -118,6 +193,81 @@ func (c *Client) CreateUsualLoginPlaces(request *CreateUsualLoginPlacesRequest) 
     return
 }
 
+func NewDeleteAttackLogsRequest() (request *DeleteAttackLogsRequest) {
+    request = &DeleteAttackLogsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("yunjing", APIVersion, "DeleteAttackLogs")
+    return
+}
+
+func NewDeleteAttackLogsResponse() (response *DeleteAttackLogsResponse) {
+    response = &DeleteAttackLogsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 删除网络攻击日志
+func (c *Client) DeleteAttackLogs(request *DeleteAttackLogsRequest) (response *DeleteAttackLogsResponse, err error) {
+    if request == nil {
+        request = NewDeleteAttackLogsRequest()
+    }
+    response = NewDeleteAttackLogsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteBashEventsRequest() (request *DeleteBashEventsRequest) {
+    request = &DeleteBashEventsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("yunjing", APIVersion, "DeleteBashEvents")
+    return
+}
+
+func NewDeleteBashEventsResponse() (response *DeleteBashEventsResponse) {
+    response = &DeleteBashEventsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 根据Ids删除高危命令事件
+func (c *Client) DeleteBashEvents(request *DeleteBashEventsRequest) (response *DeleteBashEventsResponse, err error) {
+    if request == nil {
+        request = NewDeleteBashEventsRequest()
+    }
+    response = NewDeleteBashEventsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteBashRulesRequest() (request *DeleteBashRulesRequest) {
+    request = &DeleteBashRulesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("yunjing", APIVersion, "DeleteBashRules")
+    return
+}
+
+func NewDeleteBashRulesResponse() (response *DeleteBashRulesResponse) {
+    response = &DeleteBashRulesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 删除高危命令规则
+func (c *Client) DeleteBashRules(request *DeleteBashRulesRequest) (response *DeleteBashRulesResponse, err error) {
+    if request == nil {
+        request = NewDeleteBashRulesRequest()
+    }
+    response = NewDeleteBashRulesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteBruteAttacksRequest() (request *DeleteBruteAttacksRequest) {
     request = &DeleteBruteAttacksRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -143,6 +293,31 @@ func (c *Client) DeleteBruteAttacks(request *DeleteBruteAttacksRequest) (respons
     return
 }
 
+func NewDeleteLoginWhiteListRequest() (request *DeleteLoginWhiteListRequest) {
+    request = &DeleteLoginWhiteListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("yunjing", APIVersion, "DeleteLoginWhiteList")
+    return
+}
+
+func NewDeleteLoginWhiteListResponse() (response *DeleteLoginWhiteListResponse) {
+    response = &DeleteLoginWhiteListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 删除白名单规则
+func (c *Client) DeleteLoginWhiteList(request *DeleteLoginWhiteListRequest) (response *DeleteLoginWhiteListResponse, err error) {
+    if request == nil {
+        request = NewDeleteLoginWhiteListRequest()
+    }
+    response = NewDeleteLoginWhiteListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteMachineRequest() (request *DeleteMachineRequest) {
     request = &DeleteMachineRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -164,6 +339,31 @@ func (c *Client) DeleteMachine(request *DeleteMachineRequest) (response *DeleteM
         request = NewDeleteMachineRequest()
     }
     response = NewDeleteMachineResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteMachineTagRequest() (request *DeleteMachineTagRequest) {
+    request = &DeleteMachineTagRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("yunjing", APIVersion, "DeleteMachineTag")
+    return
+}
+
+func NewDeleteMachineTagResponse() (response *DeleteMachineTagResponse) {
+    response = &DeleteMachineTagResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 删除服务器关联的标签
+func (c *Client) DeleteMachineTag(request *DeleteMachineTagRequest) (response *DeleteMachineTagResponse, err error) {
+    if request == nil {
+        request = NewDeleteMachineTagRequest()
+    }
+    response = NewDeleteMachineTagResponse()
     err = c.Send(request, response)
     return
 }
@@ -239,6 +439,131 @@ func (c *Client) DeleteNonlocalLoginPlaces(request *DeleteNonlocalLoginPlacesReq
         request = NewDeleteNonlocalLoginPlacesRequest()
     }
     response = NewDeleteNonlocalLoginPlacesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeletePrivilegeEventsRequest() (request *DeletePrivilegeEventsRequest) {
+    request = &DeletePrivilegeEventsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("yunjing", APIVersion, "DeletePrivilegeEvents")
+    return
+}
+
+func NewDeletePrivilegeEventsResponse() (response *DeletePrivilegeEventsResponse) {
+    response = &DeletePrivilegeEventsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 根据Ids删除本地提权
+func (c *Client) DeletePrivilegeEvents(request *DeletePrivilegeEventsRequest) (response *DeletePrivilegeEventsResponse, err error) {
+    if request == nil {
+        request = NewDeletePrivilegeEventsRequest()
+    }
+    response = NewDeletePrivilegeEventsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeletePrivilegeRulesRequest() (request *DeletePrivilegeRulesRequest) {
+    request = &DeletePrivilegeRulesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("yunjing", APIVersion, "DeletePrivilegeRules")
+    return
+}
+
+func NewDeletePrivilegeRulesResponse() (response *DeletePrivilegeRulesResponse) {
+    response = &DeletePrivilegeRulesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 删除本地提权规则
+func (c *Client) DeletePrivilegeRules(request *DeletePrivilegeRulesRequest) (response *DeletePrivilegeRulesResponse, err error) {
+    if request == nil {
+        request = NewDeletePrivilegeRulesRequest()
+    }
+    response = NewDeletePrivilegeRulesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteReverseShellEventsRequest() (request *DeleteReverseShellEventsRequest) {
+    request = &DeleteReverseShellEventsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("yunjing", APIVersion, "DeleteReverseShellEvents")
+    return
+}
+
+func NewDeleteReverseShellEventsResponse() (response *DeleteReverseShellEventsResponse) {
+    response = &DeleteReverseShellEventsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 根据Ids删除反弹Shell事件
+func (c *Client) DeleteReverseShellEvents(request *DeleteReverseShellEventsRequest) (response *DeleteReverseShellEventsResponse, err error) {
+    if request == nil {
+        request = NewDeleteReverseShellEventsRequest()
+    }
+    response = NewDeleteReverseShellEventsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteReverseShellRulesRequest() (request *DeleteReverseShellRulesRequest) {
+    request = &DeleteReverseShellRulesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("yunjing", APIVersion, "DeleteReverseShellRules")
+    return
+}
+
+func NewDeleteReverseShellRulesResponse() (response *DeleteReverseShellRulesResponse) {
+    response = &DeleteReverseShellRulesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 删除反弹Shell规则
+func (c *Client) DeleteReverseShellRules(request *DeleteReverseShellRulesRequest) (response *DeleteReverseShellRulesResponse, err error) {
+    if request == nil {
+        request = NewDeleteReverseShellRulesRequest()
+    }
+    response = NewDeleteReverseShellRulesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteTagsRequest() (request *DeleteTagsRequest) {
+    request = &DeleteTagsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("yunjing", APIVersion, "DeleteTags")
+    return
+}
+
+func NewDeleteTagsResponse() (response *DeleteTagsResponse) {
+    response = &DeleteTagsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 删除标签
+func (c *Client) DeleteTags(request *DeleteTagsRequest) (response *DeleteTagsResponse, err error) {
+    if request == nil {
+        request = NewDeleteTagsRequest()
+    }
+    response = NewDeleteTagsResponse()
     err = c.Send(request, response)
     return
 }
@@ -333,7 +658,7 @@ func NewDescribeAgentVulsResponse() (response *DescribeAgentVulsResponse) {
     return
 }
 
-// 本接口 (DescribeAgentVuls) 用于获取主机的漏洞列表。
+// 本接口 (DescribeAgentVuls) 用于获取单台主机的漏洞列表。
 func (c *Client) DescribeAgentVuls(request *DescribeAgentVulsRequest) (response *DescribeAgentVulsResponse, err error) {
     if request == nil {
         request = NewDescribeAgentVulsRequest()
@@ -364,6 +689,106 @@ func (c *Client) DescribeAlarmAttribute(request *DescribeAlarmAttributeRequest) 
         request = NewDescribeAlarmAttributeRequest()
     }
     response = NewDescribeAlarmAttributeResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeAttackLogInfoRequest() (request *DescribeAttackLogInfoRequest) {
+    request = &DescribeAttackLogInfoRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("yunjing", APIVersion, "DescribeAttackLogInfo")
+    return
+}
+
+func NewDescribeAttackLogInfoResponse() (response *DescribeAttackLogInfoResponse) {
+    response = &DescribeAttackLogInfoResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 网络攻击日志详情
+func (c *Client) DescribeAttackLogInfo(request *DescribeAttackLogInfoRequest) (response *DescribeAttackLogInfoResponse, err error) {
+    if request == nil {
+        request = NewDescribeAttackLogInfoRequest()
+    }
+    response = NewDescribeAttackLogInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeAttackLogsRequest() (request *DescribeAttackLogsRequest) {
+    request = &DescribeAttackLogsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("yunjing", APIVersion, "DescribeAttackLogs")
+    return
+}
+
+func NewDescribeAttackLogsResponse() (response *DescribeAttackLogsResponse) {
+    response = &DescribeAttackLogsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 按分页形式展示网络攻击日志列表
+func (c *Client) DescribeAttackLogs(request *DescribeAttackLogsRequest) (response *DescribeAttackLogsResponse, err error) {
+    if request == nil {
+        request = NewDescribeAttackLogsRequest()
+    }
+    response = NewDescribeAttackLogsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeBashEventsRequest() (request *DescribeBashEventsRequest) {
+    request = &DescribeBashEventsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("yunjing", APIVersion, "DescribeBashEvents")
+    return
+}
+
+func NewDescribeBashEventsResponse() (response *DescribeBashEventsResponse) {
+    response = &DescribeBashEventsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 获取高危命令列表
+func (c *Client) DescribeBashEvents(request *DescribeBashEventsRequest) (response *DescribeBashEventsResponse, err error) {
+    if request == nil {
+        request = NewDescribeBashEventsRequest()
+    }
+    response = NewDescribeBashEventsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeBashRulesRequest() (request *DescribeBashRulesRequest) {
+    request = &DescribeBashRulesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("yunjing", APIVersion, "DescribeBashRules")
+    return
+}
+
+func NewDescribeBashRulesResponse() (response *DescribeBashRulesResponse) {
+    response = &DescribeBashRulesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 获取高危命令规则列表
+func (c *Client) DescribeBashRules(request *DescribeBashRulesRequest) (response *DescribeBashRulesResponse, err error) {
+    if request == nil {
+        request = NewDescribeBashRulesRequest()
+    }
+    response = NewDescribeBashRulesResponse()
     err = c.Send(request, response)
     return
 }
@@ -518,6 +943,31 @@ func (c *Client) DescribeImpactedHosts(request *DescribeImpactedHostsRequest) (r
     return
 }
 
+func NewDescribeLoginWhiteListRequest() (request *DescribeLoginWhiteListRequest) {
+    request = &DescribeLoginWhiteListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("yunjing", APIVersion, "DescribeLoginWhiteList")
+    return
+}
+
+func NewDescribeLoginWhiteListResponse() (response *DescribeLoginWhiteListResponse) {
+    response = &DescribeLoginWhiteListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 获取异地登录白名单列表
+func (c *Client) DescribeLoginWhiteList(request *DescribeLoginWhiteListRequest) (response *DescribeLoginWhiteListResponse, err error) {
+    if request == nil {
+        request = NewDescribeLoginWhiteListRequest()
+    }
+    response = NewDescribeLoginWhiteListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeMachineInfoRequest() (request *DescribeMachineInfoRequest) {
     request = &DescribeMachineInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -668,6 +1118,31 @@ func (c *Client) DescribeOpenPortStatistics(request *DescribeOpenPortStatisticsR
     return
 }
 
+func NewDescribeOpenPortTaskStatusRequest() (request *DescribeOpenPortTaskStatusRequest) {
+    request = &DescribeOpenPortTaskStatusRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("yunjing", APIVersion, "DescribeOpenPortTaskStatus")
+    return
+}
+
+func NewDescribeOpenPortTaskStatusResponse() (response *DescribeOpenPortTaskStatusResponse) {
+    response = &DescribeOpenPortTaskStatusResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口 (DescribeOpenPortTaskStatus) 用于获取实时拉取端口任务状态。
+func (c *Client) DescribeOpenPortTaskStatus(request *DescribeOpenPortTaskStatusRequest) (response *DescribeOpenPortTaskStatusResponse, err error) {
+    if request == nil {
+        request = NewDescribeOpenPortTaskStatusRequest()
+    }
+    response = NewDescribeOpenPortTaskStatusResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeOpenPortsRequest() (request *DescribeOpenPortsRequest) {
     request = &DescribeOpenPortsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -714,6 +1189,56 @@ func (c *Client) DescribeOverviewStatistics(request *DescribeOverviewStatisticsR
         request = NewDescribeOverviewStatisticsRequest()
     }
     response = NewDescribeOverviewStatisticsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribePrivilegeEventsRequest() (request *DescribePrivilegeEventsRequest) {
+    request = &DescribePrivilegeEventsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("yunjing", APIVersion, "DescribePrivilegeEvents")
+    return
+}
+
+func NewDescribePrivilegeEventsResponse() (response *DescribePrivilegeEventsResponse) {
+    response = &DescribePrivilegeEventsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 获取本地提权事件列表
+func (c *Client) DescribePrivilegeEvents(request *DescribePrivilegeEventsRequest) (response *DescribePrivilegeEventsResponse, err error) {
+    if request == nil {
+        request = NewDescribePrivilegeEventsRequest()
+    }
+    response = NewDescribePrivilegeEventsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribePrivilegeRulesRequest() (request *DescribePrivilegeRulesRequest) {
+    request = &DescribePrivilegeRulesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("yunjing", APIVersion, "DescribePrivilegeRules")
+    return
+}
+
+func NewDescribePrivilegeRulesResponse() (response *DescribePrivilegeRulesResponse) {
+    response = &DescribePrivilegeRulesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 获取本地提权规则列表
+func (c *Client) DescribePrivilegeRules(request *DescribePrivilegeRulesRequest) (response *DescribePrivilegeRulesResponse, err error) {
+    if request == nil {
+        request = NewDescribePrivilegeRulesRequest()
+    }
+    response = NewDescribePrivilegeRulesResponse()
     err = c.Send(request, response)
     return
 }
@@ -818,6 +1343,56 @@ func (c *Client) DescribeProcesses(request *DescribeProcessesRequest) (response 
     return
 }
 
+func NewDescribeReverseShellEventsRequest() (request *DescribeReverseShellEventsRequest) {
+    request = &DescribeReverseShellEventsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("yunjing", APIVersion, "DescribeReverseShellEvents")
+    return
+}
+
+func NewDescribeReverseShellEventsResponse() (response *DescribeReverseShellEventsResponse) {
+    response = &DescribeReverseShellEventsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 获取反弹Shell列表
+func (c *Client) DescribeReverseShellEvents(request *DescribeReverseShellEventsRequest) (response *DescribeReverseShellEventsResponse, err error) {
+    if request == nil {
+        request = NewDescribeReverseShellEventsRequest()
+    }
+    response = NewDescribeReverseShellEventsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeReverseShellRulesRequest() (request *DescribeReverseShellRulesRequest) {
+    request = &DescribeReverseShellRulesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("yunjing", APIVersion, "DescribeReverseShellRules")
+    return
+}
+
+func NewDescribeReverseShellRulesResponse() (response *DescribeReverseShellRulesResponse) {
+    response = &DescribeReverseShellRulesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 获取反弹Shell规则列表
+func (c *Client) DescribeReverseShellRules(request *DescribeReverseShellRulesRequest) (response *DescribeReverseShellRulesResponse, err error) {
+    if request == nil {
+        request = NewDescribeReverseShellRulesRequest()
+    }
+    response = NewDescribeReverseShellRulesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeSecurityDynamicsRequest() (request *DescribeSecurityDynamicsRequest) {
     request = &DescribeSecurityDynamicsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -864,6 +1439,56 @@ func (c *Client) DescribeSecurityTrends(request *DescribeSecurityTrendsRequest) 
         request = NewDescribeSecurityTrendsRequest()
     }
     response = NewDescribeSecurityTrendsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeTagMachinesRequest() (request *DescribeTagMachinesRequest) {
+    request = &DescribeTagMachinesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("yunjing", APIVersion, "DescribeTagMachines")
+    return
+}
+
+func NewDescribeTagMachinesResponse() (response *DescribeTagMachinesResponse) {
+    response = &DescribeTagMachinesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 获取指定标签关联的服务器信息
+func (c *Client) DescribeTagMachines(request *DescribeTagMachinesRequest) (response *DescribeTagMachinesResponse, err error) {
+    if request == nil {
+        request = NewDescribeTagMachinesRequest()
+    }
+    response = NewDescribeTagMachinesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeTagsRequest() (request *DescribeTagsRequest) {
+    request = &DescribeTagsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("yunjing", APIVersion, "DescribeTags")
+    return
+}
+
+func NewDescribeTagsResponse() (response *DescribeTagsResponse) {
+    response = &DescribeTagsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 获取所有主机标签
+func (c *Client) DescribeTags(request *DescribeTagsRequest) (response *DescribeTagsResponse, err error) {
+    if request == nil {
+        request = NewDescribeTagsRequest()
+    }
+    response = NewDescribeTagsResponse()
     err = c.Send(request, response)
     return
 }
@@ -1118,6 +1743,181 @@ func (c *Client) DescribeWeeklyReports(request *DescribeWeeklyReportsRequest) (r
     return
 }
 
+func NewEditBashRuleRequest() (request *EditBashRuleRequest) {
+    request = &EditBashRuleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("yunjing", APIVersion, "EditBashRule")
+    return
+}
+
+func NewEditBashRuleResponse() (response *EditBashRuleResponse) {
+    response = &EditBashRuleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 新增或修改高危命令规则
+func (c *Client) EditBashRule(request *EditBashRuleRequest) (response *EditBashRuleResponse, err error) {
+    if request == nil {
+        request = NewEditBashRuleRequest()
+    }
+    response = NewEditBashRuleResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewEditPrivilegeRuleRequest() (request *EditPrivilegeRuleRequest) {
+    request = &EditPrivilegeRuleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("yunjing", APIVersion, "EditPrivilegeRule")
+    return
+}
+
+func NewEditPrivilegeRuleResponse() (response *EditPrivilegeRuleResponse) {
+    response = &EditPrivilegeRuleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 新增或修改本地提权规则
+func (c *Client) EditPrivilegeRule(request *EditPrivilegeRuleRequest) (response *EditPrivilegeRuleResponse, err error) {
+    if request == nil {
+        request = NewEditPrivilegeRuleRequest()
+    }
+    response = NewEditPrivilegeRuleResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewEditReverseShellRuleRequest() (request *EditReverseShellRuleRequest) {
+    request = &EditReverseShellRuleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("yunjing", APIVersion, "EditReverseShellRule")
+    return
+}
+
+func NewEditReverseShellRuleResponse() (response *EditReverseShellRuleResponse) {
+    response = &EditReverseShellRuleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 编辑反弹Shell规则
+func (c *Client) EditReverseShellRule(request *EditReverseShellRuleRequest) (response *EditReverseShellRuleResponse, err error) {
+    if request == nil {
+        request = NewEditReverseShellRuleRequest()
+    }
+    response = NewEditReverseShellRuleResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewEditTagsRequest() (request *EditTagsRequest) {
+    request = &EditTagsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("yunjing", APIVersion, "EditTags")
+    return
+}
+
+func NewEditTagsResponse() (response *EditTagsResponse) {
+    response = &EditTagsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 新增或编辑标签
+func (c *Client) EditTags(request *EditTagsRequest) (response *EditTagsResponse, err error) {
+    if request == nil {
+        request = NewEditTagsRequest()
+    }
+    response = NewEditTagsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewExportAttackLogsRequest() (request *ExportAttackLogsRequest) {
+    request = &ExportAttackLogsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("yunjing", APIVersion, "ExportAttackLogs")
+    return
+}
+
+func NewExportAttackLogsResponse() (response *ExportAttackLogsResponse) {
+    response = &ExportAttackLogsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 导出网络攻击日志
+func (c *Client) ExportAttackLogs(request *ExportAttackLogsRequest) (response *ExportAttackLogsResponse, err error) {
+    if request == nil {
+        request = NewExportAttackLogsRequest()
+    }
+    response = NewExportAttackLogsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewExportBashEventsRequest() (request *ExportBashEventsRequest) {
+    request = &ExportBashEventsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("yunjing", APIVersion, "ExportBashEvents")
+    return
+}
+
+func NewExportBashEventsResponse() (response *ExportBashEventsResponse) {
+    response = &ExportBashEventsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 导出高危命令事件
+func (c *Client) ExportBashEvents(request *ExportBashEventsRequest) (response *ExportBashEventsResponse, err error) {
+    if request == nil {
+        request = NewExportBashEventsRequest()
+    }
+    response = NewExportBashEventsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewExportBruteAttacksRequest() (request *ExportBruteAttacksRequest) {
+    request = &ExportBruteAttacksRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("yunjing", APIVersion, "ExportBruteAttacks")
+    return
+}
+
+func NewExportBruteAttacksResponse() (response *ExportBruteAttacksResponse) {
+    response = &ExportBruteAttacksResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口 (ExportBruteAttacks) 用于导出密码破解记录成CSV文件。
+func (c *Client) ExportBruteAttacks(request *ExportBruteAttacksRequest) (response *ExportBruteAttacksResponse, err error) {
+    if request == nil {
+        request = NewExportBruteAttacksRequest()
+    }
+    response = NewExportBruteAttacksResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewExportMaliciousRequestsRequest() (request *ExportMaliciousRequestsRequest) {
     request = &ExportMaliciousRequestsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1143,6 +1943,106 @@ func (c *Client) ExportMaliciousRequests(request *ExportMaliciousRequestsRequest
     return
 }
 
+func NewExportMalwaresRequest() (request *ExportMalwaresRequest) {
+    request = &ExportMalwaresRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("yunjing", APIVersion, "ExportMalwares")
+    return
+}
+
+func NewExportMalwaresResponse() (response *ExportMalwaresResponse) {
+    response = &ExportMalwaresResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口 (ExportMalwares) 用于导出木马记录CSV文件。
+func (c *Client) ExportMalwares(request *ExportMalwaresRequest) (response *ExportMalwaresResponse, err error) {
+    if request == nil {
+        request = NewExportMalwaresRequest()
+    }
+    response = NewExportMalwaresResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewExportNonlocalLoginPlacesRequest() (request *ExportNonlocalLoginPlacesRequest) {
+    request = &ExportNonlocalLoginPlacesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("yunjing", APIVersion, "ExportNonlocalLoginPlaces")
+    return
+}
+
+func NewExportNonlocalLoginPlacesResponse() (response *ExportNonlocalLoginPlacesResponse) {
+    response = &ExportNonlocalLoginPlacesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口 (ExportNonlocalLoginPlaces) 用于导出异地登录事件记录CSV文件。
+func (c *Client) ExportNonlocalLoginPlaces(request *ExportNonlocalLoginPlacesRequest) (response *ExportNonlocalLoginPlacesResponse, err error) {
+    if request == nil {
+        request = NewExportNonlocalLoginPlacesRequest()
+    }
+    response = NewExportNonlocalLoginPlacesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewExportPrivilegeEventsRequest() (request *ExportPrivilegeEventsRequest) {
+    request = &ExportPrivilegeEventsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("yunjing", APIVersion, "ExportPrivilegeEvents")
+    return
+}
+
+func NewExportPrivilegeEventsResponse() (response *ExportPrivilegeEventsResponse) {
+    response = &ExportPrivilegeEventsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 导出本地提权事件
+func (c *Client) ExportPrivilegeEvents(request *ExportPrivilegeEventsRequest) (response *ExportPrivilegeEventsResponse, err error) {
+    if request == nil {
+        request = NewExportPrivilegeEventsRequest()
+    }
+    response = NewExportPrivilegeEventsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewExportReverseShellEventsRequest() (request *ExportReverseShellEventsRequest) {
+    request = &ExportReverseShellEventsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("yunjing", APIVersion, "ExportReverseShellEvents")
+    return
+}
+
+func NewExportReverseShellEventsResponse() (response *ExportReverseShellEventsResponse) {
+    response = &ExportReverseShellEventsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 导出反弹Shell事件
+func (c *Client) ExportReverseShellEvents(request *ExportReverseShellEventsRequest) (response *ExportReverseShellEventsResponse, err error) {
+    if request == nil {
+        request = NewExportReverseShellEventsRequest()
+    }
+    response = NewExportReverseShellEventsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewIgnoreImpactedHostsRequest() (request *IgnoreImpactedHostsRequest) {
     request = &IgnoreImpactedHostsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1158,7 +2058,7 @@ func NewIgnoreImpactedHostsResponse() (response *IgnoreImpactedHostsResponse) {
     return
 }
 
-// 本接口 (IngoreImpactedHosts) 用于忽略漏洞。
+// 本接口 (IgnoreImpactedHosts) 用于忽略漏洞。
 func (c *Client) IgnoreImpactedHosts(request *IgnoreImpactedHostsRequest) (response *IgnoreImpactedHostsResponse, err error) {
     if request == nil {
         request = NewIgnoreImpactedHostsRequest()
@@ -1264,6 +2164,31 @@ func (c *Client) ModifyAutoOpenProVersionConfig(request *ModifyAutoOpenProVersio
         request = NewModifyAutoOpenProVersionConfigRequest()
     }
     response = NewModifyAutoOpenProVersionConfigResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyLoginWhiteListRequest() (request *ModifyLoginWhiteListRequest) {
+    request = &ModifyLoginWhiteListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("yunjing", APIVersion, "ModifyLoginWhiteList")
+    return
+}
+
+func NewModifyLoginWhiteListResponse() (response *ModifyLoginWhiteListResponse) {
+    response = &ModifyLoginWhiteListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 编辑白名单规则
+func (c *Client) ModifyLoginWhiteList(request *ModifyLoginWhiteListRequest) (response *ModifyLoginWhiteListResponse, err error) {
+    if request == nil {
+        request = NewModifyLoginWhiteListRequest()
+    }
+    response = NewModifyLoginWhiteListResponse()
     err = c.Send(request, response)
     return
 }
@@ -1383,7 +2308,7 @@ func NewRescanImpactedHostResponse() (response *RescanImpactedHostResponse) {
     return
 }
 
-// 本接口 (RescanImpactedHosts) 用于漏洞重新检测。
+// 本接口 (RescanImpactedHost) 用于漏洞重新检测。
 func (c *Client) RescanImpactedHost(request *RescanImpactedHostRequest) (response *RescanImpactedHostResponse, err error) {
     if request == nil {
         request = NewRescanImpactedHostRequest()
@@ -1414,6 +2339,56 @@ func (c *Client) SeparateMalwares(request *SeparateMalwaresRequest) (response *S
         request = NewSeparateMalwaresRequest()
     }
     response = NewSeparateMalwaresResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewSetBashEventsStatusRequest() (request *SetBashEventsStatusRequest) {
+    request = &SetBashEventsStatusRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("yunjing", APIVersion, "SetBashEventsStatus")
+    return
+}
+
+func NewSetBashEventsStatusResponse() (response *SetBashEventsStatusResponse) {
+    response = &SetBashEventsStatusResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 设置高危命令事件状态
+func (c *Client) SetBashEventsStatus(request *SetBashEventsStatusRequest) (response *SetBashEventsStatusResponse, err error) {
+    if request == nil {
+        request = NewSetBashEventsStatusRequest()
+    }
+    response = NewSetBashEventsStatusResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewSwitchBashRulesRequest() (request *SwitchBashRulesRequest) {
+    request = &SwitchBashRulesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("yunjing", APIVersion, "SwitchBashRules")
+    return
+}
+
+func NewSwitchBashRulesResponse() (response *SwitchBashRulesResponse) {
+    response = &SwitchBashRulesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 切换高危命令规则状态
+func (c *Client) SwitchBashRules(request *SwitchBashRulesRequest) (response *SwitchBashRulesResponse, err error) {
+    if request == nil {
+        request = NewSwitchBashRulesRequest()
+    }
+    response = NewSwitchBashRulesResponse()
     err = c.Send(request, response)
     return
 }

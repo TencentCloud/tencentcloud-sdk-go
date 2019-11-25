@@ -1324,26 +1324,68 @@ type EnvData struct {
 
 type EnvDataCpm struct {
 
-	// 黑石可用区列表。可通过黑石[DescribeRegions](https://cloud.tencent.com/document/api/386/33564)接口查询。目前仅支持一个可用区。
+	// 黑石可用区名称列表。如ap-guangzhou-bls-1, 可通过黑石接口[DescribeRegions]( https://cloud.tencent.com/document/api/386/33564)接口获取。不是Batch可用区名称。目前仅支持一个可用区名称。
 	Zones []*string `json:"Zones,omitempty" name:"Zones" list`
 
-	// 黑石计算单元类型列表。如v3.c2.medium，更详细的ComputeType参考[黑石竞价实例产品文档](https://cloud.tencent.com/document/product/386/30256)。目前仅支持一个计算单元类型。
-	ComputeTypes []*string `json:"ComputeTypes,omitempty" name:"ComputeTypes" list`
+	// 购买的机型ID。通过黑石接口[DescribeDeviceClass]( https://cloud.tencent.com/document/api/386/32911)查询设备型号，获取机型信息。
+	InstanceTypes []*string `json:"InstanceTypes,omitempty" name:"InstanceTypes" list`
 
-	// 黑石操作系统类型ID。
-	OsTypeId *uint64 `json:"OsTypeId,omitempty" name:"OsTypeId"`
+	// 购买时长单位，取值：m(月)。
+	TimeUnit *string `json:"TimeUnit,omitempty" name:"TimeUnit"`
+
+	// 购买时长。
+	TimeSpan *uint64 `json:"TimeSpan,omitempty" name:"TimeSpan"`
+
+	// RAID类型ID。通过黑石接口[DescribeDeviceClassPartition]( https://cloud.tencent.com/document/api/386/32910)查询机型RAID方式以及系统盘大小，获取RAID信息。
+	RaidId *int64 `json:"RaidId,omitempty" name:"RaidId"`
+
+	// 部署服务器的操作系统ID。通过黑石接口[DescribeOsInfo]( https://cloud.tencent.com/document/product/386/32902)查询操作系统信息。
+	OsTypeId *int64 `json:"OsTypeId,omitempty" name:"OsTypeId"`
 
 	// 黑石VPC列表，目前仅支持一个VPC。
 	VirtualPrivateClouds []*CpmVirtualPrivateCloud `json:"VirtualPrivateClouds,omitempty" name:"VirtualPrivateClouds" list`
 
-	// DeployType参数值为fast时，将选取黑石预部署机器发货，发货快。如果无此参数，则选取黑石常规机器发货。
-	DeployType *string `json:"DeployType,omitempty" name:"DeployType"`
+	// 是否安装安全Agent，取值：1(安装) 0(不安装)，默认取值0。
+	NeedSecurityAgent *int64 `json:"NeedSecurityAgent,omitempty" name:"NeedSecurityAgent"`
 
-	// 出价策略。默认取值为SpotAsPriceGo，表示出价方式为随市场价的策略。目前只可取值SpotAsPriceGo。
-	SpotStrategy *string `json:"SpotStrategy,omitempty" name:"SpotStrategy"`
+	// 是否安装监控Agent，取值：1(安装) 0(不安装)，默认取值0。
+	NeedMonitorAgent *int64 `json:"NeedMonitorAgent,omitempty" name:"NeedMonitorAgent"`
 
-	// 设置黑石竞价实例密码。若不指定会生成随机密码，可到站内信中查看。
-	Passwd *string `json:"Passwd,omitempty" name:"Passwd"`
+	// 自动续费标志位，取值：1(自动续费) 0(不自动续费)，默认取值0。
+	AutoRenewFlag *int64 `json:"AutoRenewFlag,omitempty" name:"AutoRenewFlag"`
+
+	// 数据盘是否格式化，取值：1(格式化) 0(不格式化)，默认取值为1。
+	IsZoning *int64 `json:"IsZoning,omitempty" name:"IsZoning"`
+
+	// 指定数据盘的文件系统格式，当前支持 ext4和xfs选项， 默认为ext4。 参数适用于数据盘和Linux， 且在IsZoning为1时生效。
+	FileSystem *string `json:"FileSystem,omitempty" name:"FileSystem"`
+
+	// 设置Linux root或Windows Administrator的密码。若不设置此参数，默认情况下会随机生成密码，并以站内信方式通知到用户。
+	Password *string `json:"Password,omitempty" name:"Password"`
+
+	// 是否分配弹性公网IP，取值：1(分配) 0(不分配)，默认取值0。
+	ApplyEip *int64 `json:"ApplyEip,omitempty" name:"ApplyEip"`
+
+	// 弹性公网IP计费模式，取值：flow(按流量计费) bandwidth(按带宽计费)，默认取值flow。
+	EipPayMode *string `json:"EipPayMode,omitempty" name:"EipPayMode"`
+
+	// 弹性公网IP带宽限制，单位Mb。
+	EipBandwidth *int64 `json:"EipBandwidth,omitempty" name:"EipBandwidth"`
+
+	// 自定义镜像ID，取值生效时用自定义镜像部署物理机。
+	ImageId *string `json:"ImageId,omitempty" name:"ImageId"`
+
+	// 系统盘根分区大小，单位为G，默认取值10G。通过黑石接口[DescribeDeviceClassPartition]( https://cloud.tencent.com/document/api/386/32910)查询机型RAID方式以及系统盘大小，获取根分区信息。
+	SysRootSpace *int64 `json:"SysRootSpace,omitempty" name:"SysRootSpace"`
+
+	// /data分区大小，单位为G。如果系统盘还有剩余大小，会分配给/data分区。（特殊情况：如果剩余空间不足10G，并且没有指定/data分区，则剩余空间会分配给Root分区）。
+	SysDataSpace *int64 `json:"SysDataSpace,omitempty" name:"SysDataSpace"`
+
+	// 是否开启超线程，取值：1(开启) 0(关闭)，默认取值1。
+	HyperThreading *int64 `json:"HyperThreading,omitempty" name:"HyperThreading"`
+
+	// 指定的内网IP列表，不指定时自动分配。
+	LanIps []*string `json:"LanIps,omitempty" name:"LanIps" list`
 }
 
 type EnvVar struct {
@@ -1610,6 +1652,9 @@ type LocalDiskType struct {
 
 	// 本地磁盘最大值。
 	MaxSize *int64 `json:"MaxSize,omitempty" name:"MaxSize"`
+
+	// 购买时本地盘是否为必选。取值范围：<br><li>REQUIRED：表示必选<br><li>OPTIONAL：表示可选。
+	Required *string `json:"Required,omitempty" name:"Required"`
 }
 
 type LoginSettings struct {
@@ -1775,7 +1820,7 @@ type NamedCpmComputeEnv struct {
 	// 计算环境描述
 	EnvDescription *string `json:"EnvDescription,omitempty" name:"EnvDescription"`
 
-	// 计算环境管理类型
+	// 计算环境管理类型， 取值MANAGED。
 	EnvType *string `json:"EnvType,omitempty" name:"EnvType"`
 
 	// 授权信息

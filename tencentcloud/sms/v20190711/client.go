@@ -43,6 +43,31 @@ func NewClient(credential *common.Credential, region string, clientProfile *prof
 }
 
 
+func NewCallbackStatusStatisticsRequest() (request *CallbackStatusStatisticsRequest) {
+    request = &CallbackStatusStatisticsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("sms", APIVersion, "CallbackStatusStatistics")
+    return
+}
+
+func NewCallbackStatusStatisticsResponse() (response *CallbackStatusStatisticsResponse) {
+    response = &CallbackStatusStatisticsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 统计用户回执的数据
+func (c *Client) CallbackStatusStatistics(request *CallbackStatusStatisticsRequest) (response *CallbackStatusStatisticsResponse, err error) {
+    if request == nil {
+        request = NewCallbackStatusStatisticsRequest()
+    }
+    response = NewCallbackStatusStatisticsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewPullSmsReplyStatusRequest() (request *PullSmsReplyStatusRequest) {
     request = &PullSmsReplyStatusRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -165,6 +190,56 @@ func (c *Client) SendSms(request *SendSmsRequest) (response *SendSmsResponse, er
         request = NewSendSmsRequest()
     }
     response = NewSendSmsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewSendStatusStatisticsRequest() (request *SendStatusStatisticsRequest) {
+    request = &SendStatusStatisticsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("sms", APIVersion, "SendStatusStatistics")
+    return
+}
+
+func NewSendStatusStatisticsResponse() (response *SendStatusStatisticsResponse) {
+    response = &SendStatusStatisticsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 统计用户发送短信的数据
+func (c *Client) SendStatusStatistics(request *SendStatusStatisticsRequest) (response *SendStatusStatisticsResponse, err error) {
+    if request == nil {
+        request = NewSendStatusStatisticsRequest()
+    }
+    response = NewSendStatusStatisticsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewSmsPackagesStatisticsRequest() (request *SmsPackagesStatisticsRequest) {
+    request = &SmsPackagesStatisticsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("sms", APIVersion, "SmsPackagesStatistics")
+    return
+}
+
+func NewSmsPackagesStatisticsResponse() (response *SmsPackagesStatisticsResponse) {
+    response = &SmsPackagesStatisticsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 用户套餐包信息统计
+func (c *Client) SmsPackagesStatistics(request *SmsPackagesStatisticsRequest) (response *SmsPackagesStatisticsResponse, err error) {
+    if request == nil {
+        request = NewSmsPackagesStatisticsRequest()
+    }
+    response = NewSmsPackagesStatisticsResponse()
     err = c.Send(request, response)
     return
 }
