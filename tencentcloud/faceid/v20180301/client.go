@@ -58,7 +58,7 @@ func NewBankCard2EVerificationResponse() (response *BankCard2EVerificationRespon
     return
 }
 
-// 输入银行卡号、姓名，校验信息的真实性和一致性。
+// 本接口用于校验姓名和银行卡号的真实性和一致性。
 func (c *Client) BankCard2EVerification(request *BankCard2EVerificationRequest) (response *BankCard2EVerificationResponse, err error) {
     if request == nil {
         request = NewBankCard2EVerificationRequest()
@@ -83,7 +83,7 @@ func NewBankCard4EVerificationResponse() (response *BankCard4EVerificationRespon
     return
 }
 
-// 输入银行卡号、姓名、开户证件号、开户手机号，校验信息的真实性和一致性。
+// 本接口用于输入银行卡号、姓名、开户证件号、开户手机号，校验信息的真实性和一致性。
 func (c *Client) BankCard4EVerification(request *BankCard4EVerificationRequest) (response *BankCard4EVerificationResponse, err error) {
     if request == nil {
         request = NewBankCard4EVerificationRequest()
@@ -108,7 +108,7 @@ func NewBankCardVerificationResponse() (response *BankCardVerificationResponse) 
     return
 }
 
-// 银行卡三要素核验，输入银行卡号、姓名、开户证件号，校验信息的真实性和一致性。
+// 本接口用于银行卡号、姓名、开户证件号信息的真实性和一致性。
 func (c *Client) BankCardVerification(request *BankCardVerificationRequest) (response *BankCardVerificationResponse, err error) {
     if request == nil {
         request = NewBankCardVerificationRequest()
@@ -364,6 +364,56 @@ func (c *Client) LivenessRecognition(request *LivenessRecognitionRequest) (respo
         request = NewLivenessRecognitionRequest()
     }
     response = NewLivenessRecognitionResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewMinorsVerificationRequest() (request *MinorsVerificationRequest) {
+    request = &MinorsVerificationRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("faceid", APIVersion, "MinorsVerification")
+    return
+}
+
+func NewMinorsVerificationResponse() (response *MinorsVerificationResponse) {
+    response = &MinorsVerificationResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 传入手机号或者姓名和身份证号，判断该信息是否已实名认证且年满18周岁。
+func (c *Client) MinorsVerification(request *MinorsVerificationRequest) (response *MinorsVerificationResponse, err error) {
+    if request == nil {
+        request = NewMinorsVerificationRequest()
+    }
+    response = NewMinorsVerificationResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewPhoneVerificationRequest() (request *PhoneVerificationRequest) {
+    request = &PhoneVerificationRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("faceid", APIVersion, "PhoneVerification")
+    return
+}
+
+func NewPhoneVerificationResponse() (response *PhoneVerificationResponse) {
+    response = &PhoneVerificationResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口用于校验手机号、姓名和身份证号的真实性和一致性。
+func (c *Client) PhoneVerification(request *PhoneVerificationRequest) (response *PhoneVerificationResponse, err error) {
+    if request == nil {
+        request = NewPhoneVerificationRequest()
+    }
+    response = NewPhoneVerificationResponse()
     err = c.Send(request, response)
     return
 }

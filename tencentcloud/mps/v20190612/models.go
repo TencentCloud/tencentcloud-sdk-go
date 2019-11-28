@@ -1576,7 +1576,8 @@ type CreateWatermarkTemplateRequest struct {
 
 	// 水印类型，可选值：
 	// <li>image：图片水印；</li>
-	// <li>text：文字水印。</li>
+	// <li>text：文字水印；</li>
+	// <li>svg：SVG 水印。</li>
 	Type *string `json:"Type,omitempty" name:"Type"`
 
 	// 水印模板名称，长度限制：64 个字符。
@@ -1590,7 +1591,7 @@ type CreateWatermarkTemplateRequest struct {
 	// <li>TopRight：表示坐标原点位于视频图像的右上角，水印原点为图片或文字的右上角；</li>
 	// <li>BottomLeft：表示坐标原点位于视频图像的左下角，水印原点为图片或文字的左下角；</li>
 	// <li>BottomRight：表示坐标原点位于视频图像的右下角，水印原点为图片或文字的右下角。</li>
-	// 默认值：TopLeft。目前，当 Type 为 image，该字段仅支持 TopLeft。
+	// 默认值：TopLeft。
 	CoordinateOrigin *string `json:"CoordinateOrigin,omitempty" name:"CoordinateOrigin"`
 
 	// 水印原点距离视频图像坐标原点的水平位置。支持 %、px 两种格式：
@@ -3072,6 +3073,43 @@ type ImageWatermarkTemplate struct {
 	Height *string `json:"Height,omitempty" name:"Height"`
 }
 
+type LiveStreamAiRecognitionResultInfo struct {
+
+	// 内容识别结果列表。
+	ResultSet []*LiveStreamAiRecognitionResultItem `json:"ResultSet,omitempty" name:"ResultSet" list`
+}
+
+type LiveStreamAiRecognitionResultItem struct {
+
+	// 结果的类型，取值范围：
+	// <li>FaceRecognition：人脸识别，</li>
+	// <li>AsrWordsRecognition：语音关键词识别，</li>
+	// <li>OcrWordsRecognition：文本关键词识别，</li>
+	// <li>AsrFullTextRecognition：语音全文识别，</li>
+	// <li>OcrFullTextRecognition：文本全文识别。</li>
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 人脸识别结果，当 Type 为
+	// FaceRecognition 时有效。
+	FaceRecognitionResultSet []*LiveStreamFaceRecognitionResult `json:"FaceRecognitionResultSet,omitempty" name:"FaceRecognitionResultSet" list`
+
+	// 语音关键词识别结果，当 Type 为
+	// AsrWordsRecognition 时有效。
+	AsrWordsRecognitionResultSet []*LiveStreamAsrWordsRecognitionResult `json:"AsrWordsRecognitionResultSet,omitempty" name:"AsrWordsRecognitionResultSet" list`
+
+	// 文本关键词识别结果，当 Type 为
+	// OcrWordsRecognition 时有效。
+	OcrWordsRecognitionResultSet []*LiveStreamOcrWordsRecognitionResult `json:"OcrWordsRecognitionResultSet,omitempty" name:"OcrWordsRecognitionResultSet" list`
+
+	// 语音全文识别结果，当 Type 为
+	// AsrFullTextRecognition 时有效。
+	AsrFullTextRecognitionResultSet []*LiveStreamAsrFullTextRecognitionResult `json:"AsrFullTextRecognitionResultSet,omitempty" name:"AsrFullTextRecognitionResultSet" list`
+
+	// 文本全文识别结果，当 Type 为
+	// OcrFullTextRecognition 时有效。
+	OcrFullTextRecognitionResultSet []*LiveStreamOcrFullTextRecognitionResult `json:"OcrFullTextRecognitionResultSet,omitempty" name:"OcrFullTextRecognitionResultSet" list`
+}
+
 type LiveStreamAiReviewImagePoliticalResult struct {
 
 	// 嫌疑片段起始的 PTS 时间，单位：秒。
@@ -3224,6 +3262,97 @@ type LiveStreamAiReviewVoicePornResult struct {
 	// 视频鉴黄结果标签，取值范围：
 	// <li>sexual_moan：呻吟。</li>
 	Label *string `json:"Label,omitempty" name:"Label"`
+}
+
+type LiveStreamAsrFullTextRecognitionResult struct {
+
+	// 识别文本。
+	Text *string `json:"Text,omitempty" name:"Text"`
+
+	// 识别片段起始的 PTS 时间，单位：秒。
+	StartPtsTime *float64 `json:"StartPtsTime,omitempty" name:"StartPtsTime"`
+
+	// 识别片段终止的 PTS 时间，单位：秒。
+	EndPtsTime *float64 `json:"EndPtsTime,omitempty" name:"EndPtsTime"`
+
+	// 识别片段置信度。取值：0~100。
+	Confidence *float64 `json:"Confidence,omitempty" name:"Confidence"`
+}
+
+type LiveStreamAsrWordsRecognitionResult struct {
+
+	// 语音关键词。
+	Word *string `json:"Word,omitempty" name:"Word"`
+
+	// 识别片段起始的 PTS 时间，单位：秒。
+	StartPtsTime *float64 `json:"StartPtsTime,omitempty" name:"StartPtsTime"`
+
+	// 识别片段终止的 PTS 时间，单位：秒。
+	EndPtsTime *float64 `json:"EndPtsTime,omitempty" name:"EndPtsTime"`
+
+	// 识别片段置信度。取值：0~100。
+	Confidence *float64 `json:"Confidence,omitempty" name:"Confidence"`
+}
+
+type LiveStreamFaceRecognitionResult struct {
+
+	// 人物唯一标识 ID。
+	Id *string `json:"Id,omitempty" name:"Id"`
+
+	// 人物名称。
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 人物库类型，表示识别出的人物来自哪个人物库：
+	// <li>Default：默认人物库；</li><li>UserDefine：用户自定义人物库。</li>
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 识别片段起始的 PTS 时间，单位：秒。
+	StartPtsTime *float64 `json:"StartPtsTime,omitempty" name:"StartPtsTime"`
+
+	// 识别片段终止的 PTS 时间，单位：秒。
+	EndPtsTime *float64 `json:"EndPtsTime,omitempty" name:"EndPtsTime"`
+
+	// 识别片段置信度。取值：0~100。
+	Confidence *float64 `json:"Confidence,omitempty" name:"Confidence"`
+
+	// 识别结果的区域坐标。数组包含 4 个元素 [x1,y1,x2,y2]，依次表示区域左上点、右下点的横纵坐标。
+	AreaCoordSet []*int64 `json:"AreaCoordSet,omitempty" name:"AreaCoordSet" list`
+}
+
+type LiveStreamOcrFullTextRecognitionResult struct {
+
+	// 语音文本。
+	Text *string `json:"Text,omitempty" name:"Text"`
+
+	// 识别片段起始的 PTS 时间，单位：秒。
+	StartPtsTime *float64 `json:"StartPtsTime,omitempty" name:"StartPtsTime"`
+
+	// 识别片段终止的 PTS 时间，单位：秒。
+	EndPtsTime *float64 `json:"EndPtsTime,omitempty" name:"EndPtsTime"`
+
+	// 识别片段置信度。取值：0~100。
+	Confidence *float64 `json:"Confidence,omitempty" name:"Confidence"`
+
+	// 识别结果的区域坐标。数组包含 4 个元素 [x1,y1,x2,y2]，依次表示区域左上点、右下点的横纵坐标。
+	AreaCoordSet []*int64 `json:"AreaCoordSet,omitempty" name:"AreaCoordSet" list`
+}
+
+type LiveStreamOcrWordsRecognitionResult struct {
+
+	// 文本关键词。
+	Word *string `json:"Word,omitempty" name:"Word"`
+
+	// 识别片段起始的 PTS 时间，单位：秒。
+	StartPtsTime *float64 `json:"StartPtsTime,omitempty" name:"StartPtsTime"`
+
+	// 识别片段终止的 PTS 时间，单位：秒。
+	EndPtsTime *float64 `json:"EndPtsTime,omitempty" name:"EndPtsTime"`
+
+	// 识别片段置信度。取值：0~100。
+	Confidence *float64 `json:"Confidence,omitempty" name:"Confidence"`
+
+	// 识别结果的区域坐标。数组包含 4 个元素 [x1,y1,x2,y2]，依次表示区域左上点、右下点的横纵坐标。
+	AreaCoords []*int64 `json:"AreaCoords,omitempty" name:"AreaCoords" list`
 }
 
 type LiveStreamProcessErrorInfo struct {
@@ -4270,7 +4399,6 @@ type ModifyWatermarkTemplateRequest struct {
 	// <li>TopRight：表示坐标原点位于视频图像的右上角，水印原点为图片或文字的右上角；</li>
 	// <li>BottomLeft：表示坐标原点位于视频图像的左下角，水印原点为图片或文字的左下角；</li>
 	// <li>BottomRight：表示坐标原点位于视频图像的右下角，水印原点为图片或文字的右下角。</li>
-	// 目前，当 Type 为 image，该字段仅支持 TopLeft。
 	CoordinateOrigin *string `json:"CoordinateOrigin,omitempty" name:"CoordinateOrigin"`
 
 	// 水印原点距离视频图像坐标原点的水平位置。支持 %、px 两种格式：
@@ -4448,6 +4576,7 @@ type ParseLiveStreamProcessNotificationResponse struct {
 
 		// 直播流处理结果类型，包含：
 	// <li>AiReviewResult：内容审核结果；</li>
+	// <li>AiRecognitionResult：内容识别结果；</li>
 	// <li>ProcessEof：直播流处理结束。</li>
 		NotificationType *string `json:"NotificationType,omitempty" name:"NotificationType"`
 
@@ -4461,6 +4590,10 @@ type ParseLiveStreamProcessNotificationResponse struct {
 		// 内容审核结果，当 NotificationType 为 AiReviewResult 时有效。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		AiReviewResultInfo *LiveStreamAiReviewResultInfo `json:"AiReviewResultInfo,omitempty" name:"AiReviewResultInfo"`
+
+		// 内容识别结果，当 NotificationType 为 AiRecognitionResult 时有效。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		AiRecognitionResultInfo *LiveStreamAiRecognitionResultInfo `json:"AiRecognitionResultInfo,omitempty" name:"AiRecognitionResultInfo"`
 
 		// 用于去重的识别码，如果七天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长50个字符，不带或者带空字符串表示不做去重。
 		SessionId *string `json:"SessionId,omitempty" name:"SessionId"`
@@ -4798,11 +4931,14 @@ type ProcessLiveStreamRequest struct {
 	// 视频内容审核类型任务参数。
 	AiContentReviewTask *AiContentReviewTaskInput `json:"AiContentReviewTask,omitempty" name:"AiContentReviewTask"`
 
-	// 来源上下文，用于透传用户请求信息，任务流状态变更回调将返回该字段值，最长 1000 个字符。
-	SessionContext *string `json:"SessionContext,omitempty" name:"SessionContext"`
+	// 视频内容识别类型任务参数。
+	AiRecognitionTask *AiRecognitionTaskInput `json:"AiRecognitionTask,omitempty" name:"AiRecognitionTask"`
 
 	// 用于去重的识别码，如果七天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。
 	SessionId *string `json:"SessionId,omitempty" name:"SessionId"`
+
+	// 来源上下文，用于透传用户请求信息，任务流状态变更回调将返回该字段值，最长 1000 个字符。
+	SessionContext *string `json:"SessionContext,omitempty" name:"SessionContext"`
 }
 
 func (r *ProcessLiveStreamRequest) ToJsonString() string {

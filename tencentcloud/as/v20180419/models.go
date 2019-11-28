@@ -261,6 +261,58 @@ func (r *CompleteLifecycleActionResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type CreateAutoScalingGroupFromInstanceRequest struct {
+	*tchttp.BaseRequest
+
+	// 伸缩组名称，在您账号中必须唯一。名称仅支持中文、英文、数字、下划线、分隔符"-"、小数点，最大长度不能超55个字节。
+	AutoScalingGroupName *string `json:"AutoScalingGroupName,omitempty" name:"AutoScalingGroupName"`
+
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 最大实例数，取值范围为0-2000。
+	MinSize *int64 `json:"MinSize,omitempty" name:"MinSize"`
+
+	// 最小实例数，取值范围为0-2000。
+	MaxSize *int64 `json:"MaxSize,omitempty" name:"MaxSize"`
+
+	// 期望实例数，大小介于最小实例数和最大实例数之间。
+	DesiredCapacity *int64 `json:"DesiredCapacity,omitempty" name:"DesiredCapacity"`
+
+	// 是否继承实例标签，默认值为False
+	InheritInstanceTag *bool `json:"InheritInstanceTag,omitempty" name:"InheritInstanceTag"`
+}
+
+func (r *CreateAutoScalingGroupFromInstanceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateAutoScalingGroupFromInstanceRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateAutoScalingGroupFromInstanceResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 伸缩组ID
+		AutoScalingGroupId *string `json:"AutoScalingGroupId,omitempty" name:"AutoScalingGroupId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateAutoScalingGroupFromInstanceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateAutoScalingGroupFromInstanceResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type CreateAutoScalingGroupRequest struct {
 	*tchttp.BaseRequest
 
@@ -2364,6 +2416,9 @@ type PaiInstance struct {
 
 	// 实例域名
 	DomainName *string `json:"DomainName,omitempty" name:"DomainName"`
+
+	// PAI管理页面URL
+	PaiMateUrl *string `json:"PaiMateUrl,omitempty" name:"PaiMateUrl"`
 }
 
 type PreviewPaiDomainNameRequest struct {

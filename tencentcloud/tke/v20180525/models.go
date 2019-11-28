@@ -40,6 +40,9 @@ type AddExistedInstancesRequest struct {
 
 	// 实例所属安全组。该参数可以通过调用 DescribeSecurityGroups 的返回值中的sgId字段来获取。若不指定该参数，则绑定默认安全组。（目前仅支持设置单个sgId）
 	SecurityGroupIds []*string `json:"SecurityGroupIds,omitempty" name:"SecurityGroupIds" list`
+
+	// 重装系统时，可以指定修改实例的HostName(集群为HostName模式时，此参数必传，规则名称除不支持大写字符外与[CVM创建实例](https://cloud.tencent.com/document/product/213/15730)接口HostName一致)
+	HostName *string `json:"HostName,omitempty" name:"HostName"`
 }
 
 func (r *AddExistedInstancesRequest) ToJsonString() string {
@@ -113,6 +116,10 @@ type Cluster struct {
 
 	// 集群状态 (Running 运行中  Creating 创建中 Abnormal 异常  )
 	ClusterStatus *string `json:"ClusterStatus,omitempty" name:"ClusterStatus"`
+
+	// 集群属性(包括集群不同属性的MAP，属性字段包括NodeNameType (lan-ip模式和hostname 模式，默认无lan-ip模式))
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Property *string `json:"Property,omitempty" name:"Property"`
 }
 
 type ClusterAdvancedSettings struct {
@@ -126,7 +133,7 @@ type ClusterAdvancedSettings struct {
 	// 集群使用的runtime类型，包括"docker"和"containerd"两种类型，默认为"docker"
 	ContainerRuntime *string `json:"ContainerRuntime,omitempty" name:"ContainerRuntime"`
 
-	// 集群中节点NodeName类型（包括 hostname,lan-ip两种形式，默认为lan-ip）
+	// 集群中节点NodeName类型（包括 hostname,lan-ip两种形式，默认为lan-ip。如果开启了hostname模式，创建节点时需要设置HostName参数，并且InstanceName需要和HostName一致）
 	NodeNameType *string `json:"NodeNameType,omitempty" name:"NodeNameType"`
 }
 
@@ -510,6 +517,27 @@ func (r *CreateClusterRouteTableResponse) ToJsonString() string {
 
 func (r *CreateClusterRouteTableResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
+}
+
+type DataDisk struct {
+
+	// 云盘类型
+	DiskType *string `json:"DiskType,omitempty" name:"DiskType"`
+
+	// 文件系统
+	FileSystem *string `json:"FileSystem,omitempty" name:"FileSystem"`
+
+	// 云盘大小(G）
+	DiskSize *int64 `json:"DiskSize,omitempty" name:"DiskSize"`
+
+	// 是否自动化格式盘并挂载
+	AutuFormatAndMount *bool `json:"AutuFormatAndMount,omitempty" name:"AutuFormatAndMount"`
+
+	// 挂载目录
+	MountTarget []*string `json:"MountTarget,omitempty" name:"MountTarget" list`
+
+	// 云盘ID
+	DiskId []*string `json:"DiskId,omitempty" name:"DiskId" list`
 }
 
 type DeleteClusterAsGroupsRequest struct {
@@ -1289,7 +1317,7 @@ type ExistedInstancesPara struct {
 	// 实例所属安全组。该参数可以通过调用 DescribeSecurityGroups 的返回值中的sgId字段来获取。若不指定该参数，则绑定默认安全组。
 	SecurityGroupIds []*string `json:"SecurityGroupIds,omitempty" name:"SecurityGroupIds" list`
 
-	// 重装系统时，可以指定修改实例的HostName。
+	// 重装系统时，可以指定修改实例的HostName(集群为HostName模式时，此参数必传，规则名称除不支持大写字符外与[CVM创建实例](https://cloud.tencent.com/document/product/213/15730)接口HostName一致)
 	HostName *string `json:"HostName,omitempty" name:"HostName"`
 }
 
@@ -1333,6 +1361,9 @@ type InstanceAdvancedSettings struct {
 
 	// 节点Label数组
 	Labels []*Label `json:"Labels,omitempty" name:"Labels" list`
+
+	// 数据盘相关信息
+	DataDisks []*DataDisk `json:"DataDisks,omitempty" name:"DataDisks" list`
 }
 
 type Label struct {

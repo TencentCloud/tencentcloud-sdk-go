@@ -2680,6 +2680,46 @@ func (r *DescribeRuleRealServersResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeRulesByRuleIdsRequest struct {
+	*tchttp.BaseRequest
+
+	// 规则ID列表。最多支持10个规则。
+	RuleIds []*string `json:"RuleIds,omitempty" name:"RuleIds" list`
+}
+
+func (r *DescribeRulesByRuleIdsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeRulesByRuleIdsRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeRulesByRuleIdsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 返回的规则总个数。
+		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 返回的规则列表。
+		RuleSet []*RuleInfo `json:"RuleSet,omitempty" name:"RuleSet" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeRulesByRuleIdsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeRulesByRuleIdsResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeRulesRequest struct {
 	*tchttp.BaseRequest
 
@@ -2773,13 +2813,55 @@ func (r *DescribeSecurityPolicyDetailResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeSecurityRulesRequest struct {
+	*tchttp.BaseRequest
+
+	// 安全规则ID列表。总数不能超过20个。
+	SecurityRuleIds []*string `json:"SecurityRuleIds,omitempty" name:"SecurityRuleIds" list`
+}
+
+func (r *DescribeSecurityRulesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeSecurityRulesRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeSecurityRulesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 返回的安全规则详情总数。
+		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 返回的安全规则详情列表。
+		SecurityRuleSet []*SecurityPolicyRuleOut `json:"SecurityRuleSet,omitempty" name:"SecurityRuleSet" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeSecurityRulesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeSecurityRulesResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeTCPListenersRequest struct {
 	*tchttp.BaseRequest
 
-	// 通道ID，ProxyId和GroupId必须设置一个，但不能同时设置。
+	// 过滤条件，根据通道ID进行拉取，ProxyId/GroupId/ListenerId必须设置一个，但ProxyId和GroupId不能同时设置。
 	ProxyId *string `json:"ProxyId,omitempty" name:"ProxyId"`
 
-	// 过滤条件，根据监听器ID精确查询
+	// 过滤条件，根据监听器ID精确查询。
+	// 当设置了ProxyId时，会检查该监听器是否归属于该通道。
+	// 当设置了GroupId时，会检查该监听器是否归属于该通道组。
 	ListenerId *string `json:"ListenerId,omitempty" name:"ListenerId"`
 
 	// 过滤条件，根据监听器名称精确查询
@@ -2794,7 +2876,7 @@ type DescribeTCPListenersRequest struct {
 	// 限制数量，默认为20
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 
-	// 通道组ID，ProxyId和GroupId必须设置一个，但不能同时设置。
+	// 过滤条件，根据通道组ID进行拉取，ProxyId/GroupId/ListenerId必须设置一个，但ProxyId和GroupId不能同时设置。
 	GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
 
 	// 过滤条件，支持按照端口或监听器名称进行模糊查询，该参数不能与ListenerName和Port同时使用
@@ -2837,10 +2919,12 @@ func (r *DescribeTCPListenersResponse) FromJsonString(s string) error {
 type DescribeUDPListenersRequest struct {
 	*tchttp.BaseRequest
 
-	// 通道ID，ProxyId和GroupId必须设置一个，但不能同时设置。
+	// 过滤条件，根据通道ID进行拉取，ProxyId/GroupId/ListenerId必须设置一个，但ProxyId和GroupId不能同时设置。
 	ProxyId *string `json:"ProxyId,omitempty" name:"ProxyId"`
 
-	// 过滤条件，根据监听器ID精确查询
+	// 过滤条件，根据监听器ID精确查询。
+	// 当设置了ProxyId时，会检查该监听器是否归属于该通道。
+	// 当设置了GroupId时，会检查该监听器是否归属于该通道组。
 	ListenerId *string `json:"ListenerId,omitempty" name:"ListenerId"`
 
 	// 过滤条件，根据监听器名称精确查询
@@ -2855,7 +2939,7 @@ type DescribeUDPListenersRequest struct {
 	// 限制数量，默认为20
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 
-	// 通道组ID，ProxyId和GroupId必须设置一个，但不能同时设置。
+	// 过滤条件，根据通道组ID进行拉取，ProxyId/GroupId/ListenerId必须设置一个，但ProxyId和GroupId不能同时设置。
 	GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
 
 	// 过滤条件，支持按照端口或监听器名称进行模糊查询，该参数不能与ListenerName和Port同时使用
@@ -4460,6 +4544,10 @@ type SecurityPolicyRuleOut struct {
 	// 要匹配的协议类型（TCP/UDP）
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Protocol *string `json:"Protocol,omitempty" name:"Protocol"`
+
+	// 安全策略ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PolicyId *string `json:"PolicyId,omitempty" name:"PolicyId"`
 }
 
 type SetAuthenticationRequest struct {

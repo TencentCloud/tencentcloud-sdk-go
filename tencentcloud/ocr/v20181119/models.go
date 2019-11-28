@@ -1811,7 +1811,7 @@ type MixedInvoiceItem struct {
 
 	// 识别结果。
 	// OK：表示识别成功；FailedOperation.UnsupportedInvioce：表示不支持识别；
-	// FailedOperation.UnKnowError： 表示识别失败；
+	// FailedOperation.UnKnowError：表示识别失败；
 	// 其它错误码见各个票据接口的定义。
 	Code *string `json:"Code,omitempty" name:"Code"`
 
@@ -1821,17 +1821,13 @@ type MixedInvoiceItem struct {
 	// 1：定额发票
 	// 2：火车票
 	// 3：增值税发票
-	// 4：客运限额发票（仅支持类型检测，不支持识别）
 	// 5：机票行程单
-	// 6：酒店账单（仅支持类型检测，不支持识别）
-	// 7：完税证明
 	// 8：通用机打发票
 	// 9：汽车票
 	// 10：轮船票
 	// 11：增值税发票（卷票 ）
 	// 12：购车发票
 	// 13：过路过桥费发票
-	// 14：购物小票（仅支持类型检测，不支持识别）
 	Type *int64 `json:"Type,omitempty" name:"Type"`
 
 	// 识别出的图片在混贴票据图片中的位置信息。
@@ -1859,6 +1855,20 @@ type MixedInvoiceOCRRequest struct {
 	// 图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。
 	// 非腾讯云存储的 Url 速度和稳定性可能受一定影响。
 	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
+
+	// 需要识别的票据类型列表，为空或不填表示识别全部类型。
+	// 0：出租车发票
+	// 1：定额发票
+	// 2：火车票
+	// 3：增值税发票
+	// 5：机票行程单
+	// 8：通用机打发票
+	// 9：汽车票
+	// 10：轮船票
+	// 11：增值税发票（卷票 ）
+	// 12：购车发票
+	// 13：过路过桥费发票
+	Types []*int64 `json:"Types,omitempty" name:"Types" list`
 }
 
 func (r *MixedInvoiceOCRRequest) ToJsonString() string {
@@ -2496,7 +2506,7 @@ type TextArithmetic struct {
 	// 保留字段，暂不支持
 	AdvancedInfo *string `json:"AdvancedInfo,omitempty" name:"AdvancedInfo"`
 
-	// 文本行在旋转纠正之后的图像中的像素坐标，表示为（左上角x, 左上角y，宽width，高height）
+	// 文本行旋转纠正之后在图像中的像素坐标，表示为（左上角x, 左上角y，宽width，高height）
 	ItemCoord *ItemCoord `json:"ItemCoord,omitempty" name:"ItemCoord"`
 
 	// 算式题型编号：

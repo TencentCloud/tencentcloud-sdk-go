@@ -34,7 +34,7 @@ type BaradData struct {
 
 type CCEventRecord struct {
 
-	// 大禹子产品代号（shield表示棋牌；bgpip表示高防IP；bgp表示高防包；bgp-multip表示多ip高防包；net表示高防IP专业版；basic表示DDos基础防护）
+	// 大禹子产品代号（shield表示棋牌；bgpip表示高防IP；bgp表示独享包；bgp-multip表示共享包；net表示高防IP专业版；basic表示DDoS基础防护）
 	Business *string `json:"Business,omitempty" name:"Business"`
 
 	// 资源ID
@@ -101,7 +101,7 @@ type CCPolicy struct {
 	// 规则列表
 	RuleList []*CCRule `json:"RuleList,omitempty" name:"RuleList" list`
 
-	// Ip列表
+	// IP列表
 	IpList []*string `json:"IpList,omitempty" name:"IpList" list`
 
 	// cc防护类型，取值[http，https]
@@ -572,7 +572,7 @@ type CreateL7RuleCertRequest struct {
 	// 规则ID
 	RuleId *string `json:"RuleId,omitempty" name:"RuleId"`
 
-	// 证书类型，当为协议为https协议时必须填，取值[2(腾讯云托管证书)]
+	// 证书类型，当为协议为HTTPS协议时必须填，取值[2(腾讯云托管证书)]
 	CertType *uint64 `json:"CertType,omitempty" name:"CertType"`
 
 	// 当证书来源为腾讯云托管证书时，此字段必须填写托管证书ID
@@ -581,7 +581,7 @@ type CreateL7RuleCertRequest struct {
 	// 当证书来源为自有证书时，此字段必须填写证书内容；(因已不再支持自有证书，此字段已弃用，请不用填写此字段)
 	Cert *string `json:"Cert,omitempty" name:"Cert"`
 
-	// 当证书来源为自有证书时，此字段必须填写证书秘钥；(因已不再支持自有证书，此字段已弃用，请不用填写此字段)
+	// 当证书来源为自有证书时，此字段必须填写证书密钥；(因已不再支持自有证书，此字段已弃用，请不用填写此字段)
 	PrivateKey *string `json:"PrivateKey,omitempty" name:"PrivateKey"`
 }
 
@@ -749,7 +749,7 @@ func (r *CreateUnblockIpResponse) FromJsonString(s string) error {
 
 type DDoSEventRecord struct {
 
-	// 大禹子产品代号（shield表示棋牌；bgpip表示高防IP；bgp表示高防包；bgp-multip表示多ip高防包；net表示高防IP专业版；basic表示DDos基础防护）
+	// 大禹子产品代号（shield表示棋牌；bgpip表示高防IP；bgp表示独享包；bgp-multip表示共享包；net表示高防IP专业版；basic表示DDoS基础防护）
 	Business *string `json:"Business,omitempty" name:"Business"`
 
 	// 资源ID
@@ -2585,6 +2585,67 @@ func (r *DescribeIpBlockListResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeIpUnBlockListRequest struct {
+	*tchttp.BaseRequest
+
+	// 开始时间
+	BeginTime *string `json:"BeginTime,omitempty" name:"BeginTime"`
+
+	// 结束时间
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// IP（不为空时，进行IP过滤）
+	Ip *string `json:"Ip,omitempty" name:"Ip"`
+
+	// 分页参数（不为空时，进行分页查询），此字段后面会弃用，请用Limit和Offset字段代替；
+	Paging *Paging `json:"Paging,omitempty" name:"Paging"`
+
+	// 一页条数，填0表示不分页
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 页起始偏移，取值为(页码-1)*一页条数
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+}
+
+func (r *DescribeIpUnBlockListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeIpUnBlockListRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeIpUnBlockListResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 开始时间
+		BeginTime *string `json:"BeginTime,omitempty" name:"BeginTime"`
+
+		// 结束时间
+		EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+		// IP解封记录
+		List []*IpUnBlockData `json:"List,omitempty" name:"List" list`
+
+		// 总记录数
+		Total *uint64 `json:"Total,omitempty" name:"Total"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeIpUnBlockListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeIpUnBlockListResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeL4HealthConfigRequest struct {
 	*tchttp.BaseRequest
 
@@ -3113,7 +3174,7 @@ func (r *DescribeSourceIpSegmentResponse) FromJsonString(s string) error {
 type DescribeTransmitStatisRequest struct {
 	*tchttp.BaseRequest
 
-	// 大禹子产品代号（bgpip表示高防IP；net表示高防IP专业版；shield表示棋牌盾）
+	// 大禹子产品代号（bgpip表示高防IP；net表示高防IP专业版；shield表示棋牌盾；bgp表示独享包；bgp-multip表示共享包）
 	Business *string `json:"Business,omitempty" name:"Business"`
 
 	// 资源实例ID
@@ -3133,7 +3194,7 @@ type DescribeTransmitStatisRequest struct {
 	// 统计结束时间，秒部分保持为0，分钟部分为5的倍数
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 
-	// 资源的IP；当不填写时，默认统计资源实例的所有IP；资源实例有多个IP（比如高防IP专业版）时，统计方式是求和；
+	// 资源的IP（当Business为bgp-multip时必填，且仅支持一个IP）；当不填写时，默认统计资源实例的所有IP；资源实例有多个IP（比如高防IP专业版）时，统计方式是求和；
 	IpList []*string `json:"IpList,omitempty" name:"IpList" list`
 }
 
@@ -3406,6 +3467,21 @@ type IpBlockData struct {
 	ActionType *string `json:"ActionType,omitempty" name:"ActionType"`
 }
 
+type IpUnBlockData struct {
+
+	// IP
+	Ip *string `json:"Ip,omitempty" name:"Ip"`
+
+	// 封堵时间
+	BlockTime *string `json:"BlockTime,omitempty" name:"BlockTime"`
+
+	// 解封时间（实际解封时间）
+	UnBlockTime *string `json:"UnBlockTime,omitempty" name:"UnBlockTime"`
+
+	// 解封类型（user：自助解封；auto：自动解封； update：升级解封；bind：绑定高防包解封）
+	ActionType *string `json:"ActionType,omitempty" name:"ActionType"`
+}
+
 type KeyValue struct {
 
 	// 字段名称
@@ -3579,7 +3655,7 @@ type L7RuleEntry struct {
 	// 当证书来源为自有证书时，此字段必须填写证书内容；(因已不再支持自有证书，此字段已弃用，请不用填写此字段)
 	Cert *string `json:"Cert,omitempty" name:"Cert"`
 
-	// 当证书来源为自有证书时，此字段必须填写证书秘钥；(因已不再支持自有证书，此字段已弃用，请不用填写此字段)
+	// 当证书来源为自有证书时，此字段必须填写证书密钥；(因已不再支持自有证书，此字段已弃用，请不用填写此字段)
 	PrivateKey *string `json:"PrivateKey,omitempty" name:"PrivateKey"`
 
 	// 规则描述
@@ -3695,13 +3771,13 @@ type ModifyCCIpAllowDenyRequest struct {
 	// 黑/白名单的IP数组
 	IpList []*string `json:"IpList,omitempty" name:"IpList" list`
 
-	// 可选字段，代表CC防护类型，取值[http（http协议的CC防护），https（https协议的CC防护）]；当不填时，默认为http协议的CC防护；当填写https时还需要填写Domain和RuleId字段；
+	// 可选字段，代表CC防护类型，取值[http（HTTP协议的CC防护），https（HTTPS协议的CC防护）]；当不填时，默认为HTTP协议的CC防护；当填写https时还需要填写Domain和RuleId字段；
 	Protocol *string `json:"Protocol,omitempty" name:"Protocol"`
 
-	// 可选字段，表示https协议的7层转发规则域名（通过获取7层转发规则接口可以获取域名），只有当Protocol字段为https时才必须填写此字段；
+	// 可选字段，表示HTTPS协议的7层转发规则域名（通过获取7层转发规则接口可以获取域名），只有当Protocol字段为https时才必须填写此字段；
 	Domain *string `json:"Domain,omitempty" name:"Domain"`
 
-	// 可选字段，表示https协议的7层转发规则ID（通过获取7层转发规则接口可以获取规则ID），
+	// 可选字段，表示HTTPS协议的7层转发规则ID（通过获取7层转发规则接口可以获取规则ID），
 	// 当Method为delete时，不用填写此字段；
 	RuleId *string `json:"RuleId,omitempty" name:"RuleId"`
 }
@@ -3739,7 +3815,7 @@ func (r *ModifyCCIpAllowDenyResponse) FromJsonString(s string) error {
 type ModifyCCLevelRequest struct {
 	*tchttp.BaseRequest
 
-	// 大禹子产品代号（bgpip表示高防IP；bgp表示独享包；bgp-multip表示共享包；net表示高防IP专业版）
+	// 大禹子产品代号（bgpip表示高防IP；net表示高防IP专业版）
 	Business *string `json:"Business,omitempty" name:"Business"`
 
 	// 资源ID
@@ -3748,11 +3824,10 @@ type ModifyCCLevelRequest struct {
 	// CC防护等级，取值[default(正常), loose(宽松), strict(严格)];
 	Level *string `json:"Level,omitempty" name:"Level"`
 
-	// 可选字段，代表CC防护类型，取值[http（http协议的CC防护），https（https协议的CC防护）]；当不填时，默认为http协议的CC防护；当填写https时还需要填写RuleId字段；
+	// 可选字段，代表CC防护类型，取值[http（HTTP协议的CC防护），https（HTTPS协议的CC防护）]；当不填时，默认为HTTP协议的CC防护；当填写https时还需要填写RuleId字段；
 	Protocol *string `json:"Protocol,omitempty" name:"Protocol"`
 
-	// 可选字段，表示https协议的7层转发规则ID（通过获取7层转发规则接口可以获取规则ID）；
-	// 当Protocol=https时必须填写；
+	// 表示7层转发规则ID（通过获取7层转发规则接口可以获取规则ID）；
 	RuleId *string `json:"RuleId,omitempty" name:"RuleId"`
 }
 
@@ -3900,10 +3975,10 @@ type ModifyCCThresholdRequest struct {
 	//   100: 300000,
 	Threshold *uint64 `json:"Threshold,omitempty" name:"Threshold"`
 
-	// 可选字段，代表CC防护类型，取值[http（http协议的CC防护），https（https协议的CC防护）]；当不填时，默认为http协议的CC防护；当填写https时还需要填写RuleId字段；
+	// 可选字段，代表CC防护类型，取值[http（HTTP协议的CC防护），https（HTTPS协议的CC防护）]；当不填时，默认为HTTP协议的CC防护；当填写https时还需要填写RuleId字段；
 	Protocol *string `json:"Protocol,omitempty" name:"Protocol"`
 
-	// 可选字段，表示https协议的7层转发规则ID（通过获取7层转发规则接口可以获取规则ID）；
+	// 可选字段，表示HTTPS协议的7层转发规则ID（通过获取7层转发规则接口可以获取规则ID）；
 	// 当Protocol=https时必须填写；
 	RuleId *string `json:"RuleId,omitempty" name:"RuleId"`
 }
@@ -3958,13 +4033,13 @@ type ModifyCCUrlAllowRequest struct {
 	// https://域名/cgi
 	UrlList []*string `json:"UrlList,omitempty" name:"UrlList" list`
 
-	// 可选字段，代表CC防护类型，取值[http（http协议的CC防护），https（https协议的CC防护）]；当不填时，默认为http协议的CC防护；当填写https时还需要填写Domain和RuleId字段；
+	// 可选字段，代表CC防护类型，取值[http（HTTP协议的CC防护），https（HTTPS协议的CC防护）]；当不填时，默认为HTTP协议的CC防护；当填写https时还需要填写Domain和RuleId字段；
 	Protocol *string `json:"Protocol,omitempty" name:"Protocol"`
 
-	// 可选字段，表示https协议的7层转发规则域名（通过获取7层转发规则接口可以获取域名），只有当Protocol字段为https时才必须填写此字段；
+	// 可选字段，表示HTTPS协议的7层转发规则域名（通过获取7层转发规则接口可以获取域名），只有当Protocol字段为https时才必须填写此字段；
 	Domain *string `json:"Domain,omitempty" name:"Domain"`
 
-	// 可选字段，表示https协议的7层转发规则ID（通过获取7层转发规则接口可以获取规则ID），当添加并且Protocol=https时必须填写；
+	// 可选字段，表示HTTPS协议的7层转发规则ID（通过获取7层转发规则接口可以获取规则ID），当添加并且Protocol=https时必须填写；
 	// 当Method为delete时，可以不用填写此字段；
 	RuleId *string `json:"RuleId,omitempty" name:"RuleId"`
 }
@@ -4826,6 +4901,15 @@ type OrderBy struct {
 	Order *string `json:"Order,omitempty" name:"Order"`
 }
 
+type Paging struct {
+
+	// 起始位置
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 数量
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+}
+
 type ProtocolPort struct {
 
 	// 协议（tcp；udp）
@@ -4879,7 +4963,7 @@ type WaterPrintKey struct {
 	// 是否开启，取值[0（没有开启），1（已开启）]
 	OpenStatus *uint64 `json:"OpenStatus,omitempty" name:"OpenStatus"`
 
-	// 秘钥生成时间
+	// 密钥生成时间
 	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
 }
 

@@ -1420,6 +1420,31 @@ func (c *Client) DescribeRules(request *DescribeRulesRequest) (response *Describ
     return
 }
 
+func NewDescribeRulesByRuleIdsRequest() (request *DescribeRulesByRuleIdsRequest) {
+    request = &DescribeRulesByRuleIdsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("gaap", APIVersion, "DescribeRulesByRuleIds")
+    return
+}
+
+func NewDescribeRulesByRuleIdsResponse() (response *DescribeRulesByRuleIdsResponse) {
+    response = &DescribeRulesByRuleIdsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（DescribeRulesByRuleIds）用于根据规则ID拉取规则信息列表。支持一个或者多个规则信息的拉取。一次最多支持10个规则信息的拉取。
+func (c *Client) DescribeRulesByRuleIds(request *DescribeRulesByRuleIdsRequest) (response *DescribeRulesByRuleIdsResponse, err error) {
+    if request == nil {
+        request = NewDescribeRulesByRuleIdsRequest()
+    }
+    response = NewDescribeRulesByRuleIdsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeSecurityPolicyDetailRequest() (request *DescribeSecurityPolicyDetailRequest) {
     request = &DescribeSecurityPolicyDetailRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1441,6 +1466,31 @@ func (c *Client) DescribeSecurityPolicyDetail(request *DescribeSecurityPolicyDet
         request = NewDescribeSecurityPolicyDetailRequest()
     }
     response = NewDescribeSecurityPolicyDetailResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeSecurityRulesRequest() (request *DescribeSecurityRulesRequest) {
+    request = &DescribeSecurityRulesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("gaap", APIVersion, "DescribeSecurityRules")
+    return
+}
+
+func NewDescribeSecurityRulesResponse() (response *DescribeSecurityRulesResponse) {
+    response = &DescribeSecurityRulesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（DescribeSecurityRules）用于根据安全规则ID查询安全规则详情列表。支持一个或多个安全规则的查询。一次最多支持20个安全规则的查询。
+func (c *Client) DescribeSecurityRules(request *DescribeSecurityRulesRequest) (response *DescribeSecurityRulesResponse, err error) {
+    if request == nil {
+        request = NewDescribeSecurityRulesRequest()
+    }
+    response = NewDescribeSecurityRulesResponse()
     err = c.Send(request, response)
     return
 }

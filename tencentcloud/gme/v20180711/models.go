@@ -304,6 +304,9 @@ type DescribeScanResultListRequest struct {
 
 	// 查询的任务 ID 列表，任务 ID 列表最多支持 100 个。
 	TaskIdList []*string `json:"TaskIdList,omitempty" name:"TaskIdList" list`
+
+	// 任务返回结果数量，默认10，上限500。大文件任务忽略此参数，返回全量结果
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 }
 
 func (r *DescribeScanResultListRequest) ToJsonString() string {
@@ -460,6 +463,10 @@ type ScanPiece struct {
 	// 流检测时分片时长
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Duration *uint64 `json:"Duration,omitempty" name:"Duration"`
+
+	// 分片开始检测时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PieceStartTime *uint64 `json:"PieceStartTime,omitempty" name:"PieceStartTime"`
 }
 
 type ScanVoiceRequest struct {

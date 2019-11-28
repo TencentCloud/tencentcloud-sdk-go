@@ -65,7 +65,7 @@ type BankCard2EVerificationResponse struct {
 	//   '-16': '服务繁忙'
 		Result *string `json:"Result,omitempty" name:"Result"`
 
-		// 认证结果信息。
+		// 业务结果描述。
 		Description *string `json:"Description,omitempty" name:"Description"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -139,7 +139,7 @@ type BankCard4EVerificationResponse struct {
 	// '-18': '服务繁忙'
 		Result *string `json:"Result,omitempty" name:"Result"`
 
-		// 认证结果信息。
+		// 业务结果描述。
 		Description *string `json:"Description,omitempty" name:"Description"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -209,7 +209,7 @@ type BankCardVerificationResponse struct {
 	// '-17': '服务繁忙'
 		Result *string `json:"Result,omitempty" name:"Result"`
 
-		// 认证结果信息。
+		// 业务结果描述。
 		Description *string `json:"Description,omitempty" name:"Description"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -486,7 +486,7 @@ type IdCardOCRVerificationResponse struct {
 	// -5: 证件库中无此身份证记录
 		Result *string `json:"Result,omitempty" name:"Result"`
 
-		// 认证结果信息。
+		// 业务结果描述。
 		Description *string `json:"Description,omitempty" name:"Description"`
 
 		// 用于验证的姓名
@@ -559,7 +559,7 @@ type IdCardVerificationResponse struct {
 	// -5: 证件库中无此身份证记录
 		Result *string `json:"Result,omitempty" name:"Result"`
 
-		// 认证结果信息。
+		// 业务结果描述。
 		Description *string `json:"Description,omitempty" name:"Description"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -612,7 +612,7 @@ type ImageRecognitionResponse struct {
 		// 业务错误码，成功情况返回Success, 错误情况请参考下方错误码 列表中FailedOperation部分
 		Result *string `json:"Result,omitempty" name:"Result"`
 
-		// 业务错误描述
+		// 业务结果描述。
 		Description *string `json:"Description,omitempty" name:"Description"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -675,7 +675,7 @@ type LivenessCompareResponse struct {
 		// 业务错误码，成功情况返回Success, 错误情况请参考下方错误码 列表中FailedOperation部分
 		Result *string `json:"Result,omitempty" name:"Result"`
 
-		// 业务错误描述
+		// 业务结果描述。
 		Description *string `json:"Description,omitempty" name:"Description"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -740,7 +740,7 @@ type LivenessRecognitionResponse struct {
 		// 业务错误码，成功情况返回Success, 错误情况请参考下方错误码 列表中FailedOperation部分
 		Result *string `json:"Result,omitempty" name:"Result"`
 
-		// 业务错误描述
+		// 业务结果描述。
 		Description *string `json:"Description,omitempty" name:"Description"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -796,7 +796,7 @@ type LivenessResponse struct {
 		// 业务错误码，成功情况返回Success, 错误情况请参考下方错误码 列表中FailedOperation部分
 		Result *string `json:"Result,omitempty" name:"Result"`
 
-		// 业务错误描述
+		// 业务结果描述。
 		Description *string `json:"Description,omitempty" name:"Description"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -810,5 +810,130 @@ func (r *LivenessResponse) ToJsonString() string {
 }
 
 func (r *LivenessResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type MinorsVerificationRequest struct {
+	*tchttp.BaseRequest
+
+	// 参与校验的参数类型。
+	// 0：使用手机号进行校验；
+	// 1：使用姓名与身份证号进行校验。
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 手机号。11位数字。
+	Mobile *string `json:"Mobile,omitempty" name:"Mobile"`
+
+	// 身份证号码。
+	IdCard *string `json:"IdCard,omitempty" name:"IdCard"`
+
+	// 姓名。
+	Name *string `json:"Name,omitempty" name:"Name"`
+}
+
+func (r *MinorsVerificationRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *MinorsVerificationRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type MinorsVerificationResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 结果码，收费情况如下。
+	// 收费结果码：
+	// 0: 成年
+	// -1: 未成年
+	// -2: 手机号未实名
+	// -3: 姓名和身份证号不一致
+	// 
+	// 不收费结果码：
+	// -4: 非法身份证号（长度、校验位等不正确）
+	// -5: 非法姓名（长度、格式等不正确）
+	// -6: 数据源服务异常
+	// -7: 数据源中无此身份证记录
+	// -8: 公安比对系统升级中，请稍后再试
+		Result *string `json:"Result,omitempty" name:"Result"`
+
+		// 业务结果描述。
+		Description *string `json:"Description,omitempty" name:"Description"`
+
+		// 当结果码为0或者-1时，该字段的值为年龄区间。
+	// 格式为[a,b)，表示年龄在a岁以上（包括a岁），b岁以下（不包括b岁）。若b为+时表示没有上限。
+		AgeRange *string `json:"AgeRange,omitempty" name:"AgeRange"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *MinorsVerificationResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *MinorsVerificationResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type PhoneVerificationRequest struct {
+	*tchttp.BaseRequest
+
+	// 身份证号
+	IdCard *string `json:"IdCard,omitempty" name:"IdCard"`
+
+	// 姓名
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 手机号
+	Phone *string `json:"Phone,omitempty" name:"Phone"`
+}
+
+func (r *PhoneVerificationRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *PhoneVerificationRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type PhoneVerificationResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 认证结果码:
+	//   '0': '认证通过',
+	//   '-1': '手机号已实名，但是身份证和姓名均与实名信息不一致 ',
+	//   '-2': '手机号已实名，手机号和证件号一致，姓名不一致',
+	//   '-3': '手机号已实名，手机号和姓名一致，身份证不一致',
+	//   '-4': '信息不一致',
+	//   '-5': '手机号未实名',
+	//   '-6': '手机号码不合法',
+	//   '-7': '身份证号码有误',
+	//   '-8': '姓名校验不通过',
+	//   '-9': '没有记录',
+	//   '-10': '认证未通过',
+	//   '-11': '服务繁忙'
+		Result *string `json:"Result,omitempty" name:"Result"`
+
+		// 业务结果描述。
+		Description *string `json:"Description,omitempty" name:"Description"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *PhoneVerificationResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *PhoneVerificationResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }

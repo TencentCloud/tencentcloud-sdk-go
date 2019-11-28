@@ -120,6 +120,33 @@ func (c *Client) CreateAutoScalingGroup(request *CreateAutoScalingGroupRequest) 
     return
 }
 
+func NewCreateAutoScalingGroupFromInstanceRequest() (request *CreateAutoScalingGroupFromInstanceRequest) {
+    request = &CreateAutoScalingGroupFromInstanceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("as", APIVersion, "CreateAutoScalingGroupFromInstance")
+    return
+}
+
+func NewCreateAutoScalingGroupFromInstanceResponse() (response *CreateAutoScalingGroupFromInstanceResponse) {
+    response = &CreateAutoScalingGroupFromInstanceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（CreateAutoScalingGroupFromInstance）用于根据实例创建启动配置及伸缩组。
+// 
+// 说明：根据按包年包月计费的实例所创建的伸缩组，其扩容的实例为按量计费实例。
+func (c *Client) CreateAutoScalingGroupFromInstance(request *CreateAutoScalingGroupFromInstanceRequest) (response *CreateAutoScalingGroupFromInstanceResponse, err error) {
+    if request == nil {
+        request = NewCreateAutoScalingGroupFromInstanceRequest()
+    }
+    response = NewCreateAutoScalingGroupFromInstanceResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateLaunchConfigurationRequest() (request *CreateLaunchConfigurationRequest) {
     request = &CreateLaunchConfigurationRequest{
         BaseRequest: &tchttp.BaseRequest{},

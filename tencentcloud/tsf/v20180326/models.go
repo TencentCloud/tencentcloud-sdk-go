@@ -131,6 +131,10 @@ type ApplicationForPage struct {
 	// 应用资源类型
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ApplicationResourceType *string `json:"ApplicationResourceType,omitempty" name:"ApplicationResourceType"`
+
+	// 应用runtime类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ApplicationRuntimeType *string `json:"ApplicationRuntimeType,omitempty" name:"ApplicationRuntimeType"`
 }
 
 type Cluster struct {
@@ -1662,6 +1666,49 @@ func (r *DeployGroupResponse) ToJsonString() string {
 }
 
 func (r *DeployGroupResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeployServerlessGroupRequest struct {
+	*tchttp.BaseRequest
+
+	// 部署组ID
+	GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
+
+	// 程序包ID
+	PkgId *string `json:"PkgId,omitempty" name:"PkgId"`
+
+	// VpcConfig对象，和创建接口中对象一致
+	VpcConfig *VpcConfig `json:"VpcConfig,omitempty" name:"VpcConfig"`
+}
+
+func (r *DeployServerlessGroupRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeployServerlessGroupRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeployServerlessGroupResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 结果true：成功；false：失败；
+		Result *bool `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DeployServerlessGroupResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeployServerlessGroupResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 

@@ -308,8 +308,9 @@ func NewScanVoiceResponse() (response *ScanVoiceResponse) {
 // 		"RoomId": "123",
 // 		"OpenId": "xxx",
 // 		"Info":"",
-//                 "Offset": 0,
-//                 "Duration": 3400,
+// 		"Offset": 0,
+// 		"Duration": 3400,
+// 		"PieceStartTime":1574684231,
 // 		"ScanDetail": [{
 // 			"EndTime": 1110,
 // 			"KeyWord": "xxx",

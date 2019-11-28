@@ -594,6 +594,31 @@ func (c *Client) DeployGroup(request *DeployGroupRequest) (response *DeployGroup
     return
 }
 
+func NewDeployServerlessGroupRequest() (request *DeployServerlessGroupRequest) {
+    request = &DeployServerlessGroupRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tsf", APIVersion, "DeployServerlessGroup")
+    return
+}
+
+func NewDeployServerlessGroupResponse() (response *DeployServerlessGroupResponse) {
+    response = &DeployServerlessGroupResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 部署Serverless应用
+func (c *Client) DeployServerlessGroup(request *DeployServerlessGroupRequest) (response *DeployServerlessGroupResponse, err error) {
+    if request == nil {
+        request = NewDeployServerlessGroupRequest()
+    }
+    response = NewDeployServerlessGroupResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeApplicationRequest() (request *DescribeApplicationRequest) {
     request = &DescribeApplicationRequest{
         BaseRequest: &tchttp.BaseRequest{},

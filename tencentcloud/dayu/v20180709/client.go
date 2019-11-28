@@ -993,6 +993,31 @@ func (c *Client) DescribeIpBlockList(request *DescribeIpBlockListRequest) (respo
     return
 }
 
+func NewDescribeIpUnBlockListRequest() (request *DescribeIpUnBlockListRequest) {
+    request = &DescribeIpUnBlockListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("dayu", APIVersion, "DescribeIpUnBlockList")
+    return
+}
+
+func NewDescribeIpUnBlockListResponse() (response *DescribeIpUnBlockListResponse) {
+    response = &DescribeIpUnBlockListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 获取IP解封记录
+func (c *Client) DescribeIpUnBlockList(request *DescribeIpUnBlockListRequest) (response *DescribeIpUnBlockListResponse, err error) {
+    if request == nil {
+        request = NewDescribeIpUnBlockListRequest()
+    }
+    response = NewDescribeIpUnBlockListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeL4HealthConfigRequest() (request *DescribeL4HealthConfigRequest) {
     request = &DescribeL4HealthConfigRequest{
         BaseRequest: &tchttp.BaseRequest{},
