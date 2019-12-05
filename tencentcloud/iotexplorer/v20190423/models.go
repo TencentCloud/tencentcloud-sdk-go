@@ -182,7 +182,7 @@ type CreateDeviceRequest struct {
 	// 产品ID。
 	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
 
-	// 设备名称。
+	// 设备名称。命名规则：[a-zA-Z0-9:_-]{1,48}。
 	DeviceName *string `json:"DeviceName,omitempty" name:"DeviceName"`
 }
 
@@ -259,22 +259,22 @@ func (r *CreateProjectResponse) FromJsonString(s string) error {
 type CreateStudioProductRequest struct {
 	*tchttp.BaseRequest
 
-	// 产品名称
+	// 产品名称，名称不能和已经存在的产品名称重复。命名规则：[a-zA-Z0-9:_-]{1,32}
 	ProductName *string `json:"ProductName,omitempty" name:"ProductName"`
 
-	// 产品分组模板ID
+	// 产品分组模板ID , ( 自定义模板填写1 , 控制台调用会使用预置的其他ID)
 	CategoryId *int64 `json:"CategoryId,omitempty" name:"CategoryId"`
 
-	// 产品类型
+	// 产品类型 填写 ( 0 普通产品 )
 	ProductType *int64 `json:"ProductType,omitempty" name:"ProductType"`
 
-	// 加密类型
+	// 加密类型 加密类型，1表示证书认证，2表示签名认证。
 	EncryptionType *string `json:"EncryptionType,omitempty" name:"EncryptionType"`
 
-	// 连接类型
+	// 连接类型 可以填写 wifi cellular else
 	NetType *string `json:"NetType,omitempty" name:"NetType"`
 
-	// 数据协议
+	// 数据协议 (1 使用物模型)
 	DataProtocol *int64 `json:"DataProtocol,omitempty" name:"DataProtocol"`
 
 	// 产品描述
@@ -495,6 +495,9 @@ type DescribeDeviceDataRequest struct {
 
 	// 设备名称
 	DeviceName *string `json:"DeviceName,omitempty" name:"DeviceName"`
+
+	// 设备ID，该字段有值将代替 ProductId/DeviceName
+	DeviceId *string `json:"DeviceId,omitempty" name:"DeviceId"`
 }
 
 func (r *DescribeDeviceDataRequest) ToJsonString() string {
@@ -740,6 +743,10 @@ type DeviceInfo struct {
 	// 设备证书
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DeviceCert *string `json:"DeviceCert,omitempty" name:"DeviceCert"`
+
+	// 日志级别
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LogLevel *int64 `json:"LogLevel,omitempty" name:"LogLevel"`
 }
 
 type EventHistoryItem struct {

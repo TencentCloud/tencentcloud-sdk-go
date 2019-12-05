@@ -496,6 +496,31 @@ func (c *Client) DescribeDBSlowLogs(request *DescribeDBSlowLogsRequest) (respons
     return
 }
 
+func NewDescribeDatabasesRequest() (request *DescribeDatabasesRequest) {
+    request = &DescribeDatabasesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("mariadb", APIVersion, "DescribeDatabases")
+    return
+}
+
+func NewDescribeDatabasesResponse() (response *DescribeDatabasesResponse) {
+    response = &DescribeDatabasesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（DescribeDatabases）用于查询云数据库实例的数据库列表。
+func (c *Client) DescribeDatabases(request *DescribeDatabasesRequest) (response *DescribeDatabasesResponse, err error) {
+    if request == nil {
+        request = NewDescribeDatabasesRequest()
+    }
+    response = NewDescribeDatabasesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeFlowRequest() (request *DescribeFlowRequest) {
     request = &DescribeFlowRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -970,6 +995,31 @@ func (c *Client) ResetAccountPassword(request *ResetAccountPasswordRequest) (res
         request = NewResetAccountPasswordRequest()
     }
     response = NewResetAccountPasswordResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewRestartDBInstancesRequest() (request *RestartDBInstancesRequest) {
+    request = &RestartDBInstancesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("mariadb", APIVersion, "RestartDBInstances")
+    return
+}
+
+func NewRestartDBInstancesResponse() (response *RestartDBInstancesResponse) {
+    response = &RestartDBInstancesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（RestartDBInstances）用于重启数据库实例
+func (c *Client) RestartDBInstances(request *RestartDBInstancesRequest) (response *RestartDBInstancesResponse, err error) {
+    if request == nil {
+        request = NewRestartDBInstancesRequest()
+    }
+    response = NewRestartDBInstancesResponse()
     err = c.Send(request, response)
     return
 }

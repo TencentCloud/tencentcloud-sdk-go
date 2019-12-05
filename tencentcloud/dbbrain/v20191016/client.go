@@ -58,7 +58,7 @@ func NewDescribeDBDiagEventResponse() (response *DescribeDBDiagEventResponse) {
     return
 }
 
-// 输入参数可以是事件Id, 若没有给定事件Id,则通过时间点查询。
+// 获取实例异常诊断事件的详情信息。
 func (c *Client) DescribeDBDiagEvent(request *DescribeDBDiagEventRequest) (response *DescribeDBDiagEventResponse, err error) {
     if request == nil {
         request = NewDescribeDBDiagEventRequest()
@@ -83,7 +83,7 @@ func NewDescribeDBDiagHistoryResponse() (response *DescribeDBDiagHistoryResponse
     return
 }
 
-// 获取实例诊断历史。
+// 获取实例诊断事件的列表。
 func (c *Client) DescribeDBDiagHistory(request *DescribeDBDiagHistoryRequest) (response *DescribeDBDiagHistoryResponse, err error) {
     if request == nil {
         request = NewDescribeDBDiagHistoryRequest()

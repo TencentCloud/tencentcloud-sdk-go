@@ -38,7 +38,7 @@ type AddDelayLiveStreamRequest struct {
 	// 延播设置的过期时间。UTC 格式，例如：2018-11-29T19:00:00Z。
 	// 注意：
 	// 1. 默认7天后过期，且最长支持7天内生效。
-	// 2. 北京时间值为 UTC 时间值 + 8 小时，格式按照 ISO 8601 标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+	// 2. 北京时间值为 UTC 时间值 + 8 小时，格式按照 ISO 8601 标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#I)。
 	ExpireTime *string `json:"ExpireTime,omitempty" name:"ExpireTime"`
 }
 
@@ -1002,7 +1002,7 @@ type CreatePullStreamConfigRequest struct {
 	// 开始时间。
 	// 使用UTC格式时间，
 	// 例如：2019-01-08T10:00:00Z。
-	// 注意：北京时间值为 UTC 时间值 + 8 小时，格式按照 ISO 8601 标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+	// 注意：北京时间值为 UTC 时间值 + 8 小时，格式按照 ISO 8601 标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#I)。
 	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
 
 	// 结束时间，注意：
@@ -1011,7 +1011,7 @@ type CreatePullStreamConfigRequest struct {
 	// 3. 结束时间 和 开始时间 间隔必须小于七天。
 	// 使用UTC格式时间，
 	// 例如：2019-01-08T10:00:00Z。
-	// 注意：北京时间值为 UTC 时间值 + 8 小时，格式按照 ISO 8601 标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+	// 注意：北京时间值为 UTC 时间值 + 8 小时，格式按照 ISO 8601 标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#I)。
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 }
 
@@ -3994,6 +3994,12 @@ type DomainInfo struct {
 
 	// 当前客户使用的cname信息
 	CurrentCName *string `json:"CurrentCName,omitempty" name:"CurrentCName"`
+
+	// 是否租用域名
+	RentTag *int64 `json:"RentTag,omitempty" name:"RentTag"`
+
+	// 租用域名过期时间
+	RentExpireTime *string `json:"RentExpireTime,omitempty" name:"RentExpireTime"`
 }
 
 type DomainInfoList struct {
@@ -4128,7 +4134,7 @@ type ForbidLiveStreamRequest struct {
 	// 恢复流的时间。UTC 格式，例如：2018-11-29T19:00:00Z。
 	// 注意：
 	// 1. 默认禁播7天，且最长支持禁播90天。
-	// 2. 北京时间值为 UTC 时间值 + 8 小时，格式按照 ISO 8601 标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+	// 2. 北京时间值为 UTC 时间值 + 8 小时，格式按照 ISO 8601 标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#I)。
 	ResumeTime *string `json:"ResumeTime,omitempty" name:"ResumeTime"`
 
 	// 禁推原因。
@@ -4245,6 +4251,9 @@ type LogInfo struct {
 
 	// 日志生成时间
 	LogTime *string `json:"LogTime,omitempty" name:"LogTime"`
+
+	// 文件大小
+	FileSize *int64 `json:"FileSize,omitempty" name:"FileSize"`
 }
 
 type ModifyLiveCallbackTemplateRequest struct {
@@ -4759,7 +4768,7 @@ type ModifyPullStreamConfigRequest struct {
 	// 开始时间。
 	// 使用UTC格式时间，
 	// 例如：2019-01-08T10:00:00Z。
-	// 注意：北京时间值为 UTC 时间值 + 8 小时，格式按照 ISO 8601 标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+	// 注意：北京时间值为 UTC 时间值 + 8 小时，格式按照 ISO 8601 标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#I)。
 	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
 
 	// 结束时间，注意：
@@ -4769,7 +4778,7 @@ type ModifyPullStreamConfigRequest struct {
 	// 
 	// 使用UTC格式时间，
 	// 例如：2019-01-08T10:00:00Z。
-	// 注意：北京时间值为 UTC 时间值 + 8 小时，格式按照 ISO 8601 标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+	// 注意：北京时间值为 UTC 时间值 + 8 小时，格式按照 ISO 8601 标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#I)。
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 }
 
@@ -4964,14 +4973,14 @@ type PullStreamConfig struct {
 	// 开始时间。
 	// UTC格式时间，
 	// 例如：2019-01-08T10:00:00Z。
-	// 注意：北京时间值为 UTC 时间值 + 8 小时，格式按照 ISO 8601 标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+	// 注意：北京时间值为 UTC 时间值 + 8 小时，格式按照 ISO 8601 标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#I)。
 	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
 
 	// 结束时间。
 	// 
 	// UTC格式时间，
 	// 例如：2019-01-08T10:00:00Z。
-	// 注意：北京时间值为 UTC 时间值 + 8 小时，格式按照 ISO 8601 标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+	// 注意：北京时间值为 UTC 时间值 + 8 小时，格式按照 ISO 8601 标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#I)。
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 
 	// 0无效，1初始状态，2正在运行，3拉起失败，4暂停。
@@ -5038,6 +5047,9 @@ type PushDataInfo struct {
 
 	// 分辨率。
 	Resolution *string `json:"Resolution,omitempty" name:"Resolution"`
+
+	// 采样率。
+	AsampleRate *uint64 `json:"AsampleRate,omitempty" name:"AsampleRate"`
 }
 
 type PushQualityData struct {

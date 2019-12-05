@@ -2121,6 +2121,68 @@ func (r *PermitOCRResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type PropOwnerCertOCRRequest struct {
+	*tchttp.BaseRequest
+
+	// 图片的 Base64 值。
+	// 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
+	// 支持的图片大小：所下载图片经Base64编码后不超过 3M。图片下载时间不超过 3 秒。
+	// 图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+	ImageBase64 *string `json:"ImageBase64,omitempty" name:"ImageBase64"`
+
+	// 图片的 Url 地址。
+	// 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
+	// 支持的图片大小：所下载图片经 Base64 编码后不超过 3M。图片下载时间不超过 3 秒。
+	// 图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。
+	// 非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
+}
+
+func (r *PropOwnerCertOCRRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *PropOwnerCertOCRRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type PropOwnerCertOCRResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 房地产权利人
+		Owner *string `json:"Owner,omitempty" name:"Owner"`
+
+		// 共有情况
+		Possession *string `json:"Possession,omitempty" name:"Possession"`
+
+		// 登记时间
+		RegisterTime *string `json:"RegisterTime,omitempty" name:"RegisterTime"`
+
+		// 规划用途
+		Purpose *string `json:"Purpose,omitempty" name:"Purpose"`
+
+		// 房屋性质
+		Nature *string `json:"Nature,omitempty" name:"Nature"`
+
+		// 房地坐落
+		Location *string `json:"Location,omitempty" name:"Location"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *PropOwnerCertOCRResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *PropOwnerCertOCRResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type QrcodeImgSize struct {
 
 	// 宽
@@ -2300,6 +2362,86 @@ type Rect struct {
 
 	// 高度
 	Height *int64 `json:"Height,omitempty" name:"Height"`
+}
+
+type ResidenceBookletOCRRequest struct {
+	*tchttp.BaseRequest
+
+	// 图片的 Base64 值。
+	// 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
+	// 支持的图片大小：所下载图片经Base64编码后不超过 3M。图片下载时间不超过 3 秒。
+	// 图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+	ImageBase64 *string `json:"ImageBase64,omitempty" name:"ImageBase64"`
+
+	// 图片的 Url 地址。
+	// 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
+	// 支持的图片大小：所下载图片经 Base64 编码后不超过 3M。图片下载时间不超过 3 秒。
+	// 图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。
+	// 非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
+}
+
+func (r *ResidenceBookletOCRRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ResidenceBookletOCRRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ResidenceBookletOCRResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 户号
+		HouseholdNumber *string `json:"HouseholdNumber,omitempty" name:"HouseholdNumber"`
+
+		// 姓名
+		Name *string `json:"Name,omitempty" name:"Name"`
+
+		// 性别
+		Sex *string `json:"Sex,omitempty" name:"Sex"`
+
+		// 出生地
+		BirthPlace *string `json:"BirthPlace,omitempty" name:"BirthPlace"`
+
+		// 民族
+		Nation *string `json:"Nation,omitempty" name:"Nation"`
+
+		// 籍贯
+		NativePlace *string `json:"NativePlace,omitempty" name:"NativePlace"`
+
+		// 出生日期
+		BirthDate *string `json:"BirthDate,omitempty" name:"BirthDate"`
+
+		// 公民身份证件编号
+		IdCardNumber *string `json:"IdCardNumber,omitempty" name:"IdCardNumber"`
+
+		// 文化程度
+		EducationDegree *string `json:"EducationDegree,omitempty" name:"EducationDegree"`
+
+		// 服务处所
+		ServicePlace *string `json:"ServicePlace,omitempty" name:"ServicePlace"`
+
+		// 户别
+		Household *string `json:"Household,omitempty" name:"Household"`
+
+		// 住址
+		Address *string `json:"Address,omitempty" name:"Address"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ResidenceBookletOCRResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ResidenceBookletOCRResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
 }
 
 type ShipInvoiceInfo struct {

@@ -1840,7 +1840,7 @@ func NewDescribePullStreamConfigsResponse() (response *DescribePullStreamConfigs
     return
 }
 
-// 查询拉流配置
+// 查询直播拉流配置。
 func (c *Client) DescribePullStreamConfigs(request *DescribePullStreamConfigsRequest) (response *DescribePullStreamConfigsResponse, err error) {
     if request == nil {
         request = NewDescribePullStreamConfigsRequest()
@@ -2316,7 +2316,7 @@ func NewModifyPullStreamConfigResponse() (response *ModifyPullStreamConfigRespon
     return
 }
 
-// 更新拉流配置
+// 更新拉流配置。
 func (c *Client) ModifyPullStreamConfig(request *ModifyPullStreamConfigRequest) (response *ModifyPullStreamConfigResponse, err error) {
     if request == nil {
         request = NewModifyPullStreamConfigRequest()
@@ -2341,7 +2341,7 @@ func NewModifyPullStreamStatusResponse() (response *ModifyPullStreamStatusRespon
     return
 }
 
-// 修改直播拉流配置状态
+// 修改直播拉流配置的状态。
 func (c *Client) ModifyPullStreamStatus(request *ModifyPullStreamStatusRequest) (response *ModifyPullStreamStatusResponse, err error) {
     if request == nil {
         request = NewModifyPullStreamStatusRequest()
@@ -2391,7 +2391,7 @@ func NewResumeLiveStreamResponse() (response *ResumeLiveStreamResponse) {
     return
 }
 
-// 恢复某条流的推送。
+// 恢复某条流的推流。
 func (c *Client) ResumeLiveStream(request *ResumeLiveStreamRequest) (response *ResumeLiveStreamResponse, err error) {
     if request == nil {
         request = NewResumeLiveStreamRequest()

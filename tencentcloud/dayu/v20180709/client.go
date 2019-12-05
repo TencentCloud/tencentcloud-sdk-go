@@ -43,6 +43,31 @@ func NewClient(credential *common.Credential, region string, clientProfile *prof
 }
 
 
+func NewCreateBasicDDoSAlarmThresholdRequest() (request *CreateBasicDDoSAlarmThresholdRequest) {
+    request = &CreateBasicDDoSAlarmThresholdRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("dayu", APIVersion, "CreateBasicDDoSAlarmThreshold")
+    return
+}
+
+func NewCreateBasicDDoSAlarmThresholdResponse() (response *CreateBasicDDoSAlarmThresholdResponse) {
+    response = &CreateBasicDDoSAlarmThresholdResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 设置基础防护的DDoS告警阈值，只支持基础防护产品
+func (c *Client) CreateBasicDDoSAlarmThreshold(request *CreateBasicDDoSAlarmThresholdRequest) (response *CreateBasicDDoSAlarmThresholdResponse, err error) {
+    if request == nil {
+        request = NewCreateBasicDDoSAlarmThresholdRequest()
+    }
+    response = NewCreateBasicDDoSAlarmThresholdResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateCCSelfDefinePolicyRequest() (request *CreateCCSelfDefinePolicyRequest) {
     request = &CreateCCSelfDefinePolicyRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -518,6 +543,31 @@ func (c *Client) DescribeBaradData(request *DescribeBaradDataRequest) (response 
     return
 }
 
+func NewDescribeBasicDeviceThresholdRequest() (request *DescribeBasicDeviceThresholdRequest) {
+    request = &DescribeBasicDeviceThresholdRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("dayu", APIVersion, "DescribeBasicDeviceThreshold")
+    return
+}
+
+func NewDescribeBasicDeviceThresholdResponse() (response *DescribeBasicDeviceThresholdResponse) {
+    response = &DescribeBasicDeviceThresholdResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 获取基础防护黑洞阈值
+func (c *Client) DescribeBasicDeviceThreshold(request *DescribeBasicDeviceThresholdRequest) (response *DescribeBasicDeviceThresholdResponse, err error) {
+    if request == nil {
+        request = NewDescribeBasicDeviceThresholdRequest()
+    }
+    response = NewDescribeBasicDeviceThresholdResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeCCEvListRequest() (request *DescribeCCEvListRequest) {
     request = &DescribeCCEvListRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -658,7 +708,7 @@ func NewDescribeDDoSDefendStatusResponse() (response *DescribeDDoSDefendStatusRe
     return
 }
 
-// 获取DDoS防护状态，支持产品：基础防护，独享包，共享包，高防IP，高防IP专业版；
+// 获取DDoS防护状态（临时关闭状态），支持产品：基础防护，独享包，共享包，高防IP，高防IP专业版；调用此接口是获取当前是否有设置临时关闭DDoS防护状态，如果有设置会返回临时关闭的时长等参数。
 func (c *Client) DescribeDDoSDefendStatus(request *DescribeDDoSDefendStatusRequest) (response *DescribeDDoSDefendStatusResponse, err error) {
     if request == nil {
         request = NewDescribeDDoSDefendStatusRequest()
@@ -939,6 +989,31 @@ func (c *Client) DescribeDDoSUsedStatis(request *DescribeDDoSUsedStatisRequest) 
         request = NewDescribeDDoSUsedStatisRequest()
     }
     response = NewDescribeDDoSUsedStatisResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeIPProductInfoRequest() (request *DescribeIPProductInfoRequest) {
+    request = &DescribeIPProductInfoRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("dayu", APIVersion, "DescribeIPProductInfo")
+    return
+}
+
+func NewDescribeIPProductInfoResponse() (response *DescribeIPProductInfoResponse) {
+    response = &DescribeIPProductInfoResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 获取独享包或共享包IP对应的云资产信息，只支持独享包和共享包的IP
+func (c *Client) DescribeIPProductInfo(request *DescribeIPProductInfoRequest) (response *DescribeIPProductInfoResponse, err error) {
+    if request == nil {
+        request = NewDescribeIPProductInfoRequest()
+    }
+    response = NewDescribeIPProductInfoResponse()
     err = c.Send(request, response)
     return
 }
@@ -1633,7 +1708,7 @@ func NewModifyDDoSDefendStatusResponse() (response *ModifyDDoSDefendStatusRespon
     return
 }
 
-// 开启或关闭DDoS防护状态
+// 开启或关闭DDoS防护状态，调用此接口允许临时关闭DDoS防护一段时间，等时间到了会自动开启DDoS防护；
 func (c *Client) ModifyDDoSDefendStatus(request *ModifyDDoSDefendStatusRequest) (response *ModifyDDoSDefendStatusResponse, err error) {
     if request == nil {
         request = NewModifyDDoSDefendStatusRequest()
@@ -1964,6 +2039,31 @@ func (c *Client) ModifyResBindDDoSPolicy(request *ModifyResBindDDoSPolicyRequest
         request = NewModifyResBindDDoSPolicyRequest()
     }
     response = NewModifyResBindDDoSPolicyResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyResourceRenewFlagRequest() (request *ModifyResourceRenewFlagRequest) {
+    request = &ModifyResourceRenewFlagRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("dayu", APIVersion, "ModifyResourceRenewFlag")
+    return
+}
+
+func NewModifyResourceRenewFlagResponse() (response *ModifyResourceRenewFlagResponse) {
+    response = &ModifyResourceRenewFlagResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 修改资源自动续费标记
+func (c *Client) ModifyResourceRenewFlag(request *ModifyResourceRenewFlagRequest) (response *ModifyResourceRenewFlagResponse, err error) {
+    if request == nil {
+        request = NewModifyResourceRenewFlagRequest()
+    }
+    response = NewModifyResourceRenewFlagResponse()
     err = c.Send(request, response)
     return
 }

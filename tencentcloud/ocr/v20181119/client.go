@@ -460,7 +460,7 @@ func NewGeneralAccurateOCRResponse() (response *GeneralAccurateOCRResponse) {
     return
 }
 
-// 本接口支持图像整体文字的检测和识别，返回文字框位置与文字内容。相比通用印刷体识别接口，准确率和召回率更高。
+// 本接口支持图像整体文字的检测和识别，返回文字框位置与文字内容。相比通用印刷体识别接口，高精度版在英文、数字、小字、模糊字、倾斜文本行等困难场景下，准确率和召回率更高。
 func (c *Client) GeneralAccurateOCR(request *GeneralAccurateOCRRequest) (response *GeneralAccurateOCRResponse, err error) {
     if request == nil {
         request = NewGeneralAccurateOCRRequest()
@@ -872,6 +872,31 @@ func (c *Client) PermitOCR(request *PermitOCRRequest) (response *PermitOCRRespon
     return
 }
 
+func NewPropOwnerCertOCRRequest() (request *PropOwnerCertOCRRequest) {
+    request = &PropOwnerCertOCRRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ocr", APIVersion, "PropOwnerCertOCR")
+    return
+}
+
+func NewPropOwnerCertOCRResponse() (response *PropOwnerCertOCRResponse) {
+    response = &PropOwnerCertOCRResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口支持房产证关键字段的识别，包括房地产权利人、共有情况、登记时间、规划用途、房屋性质、房屋坐落等。
+func (c *Client) PropOwnerCertOCR(request *PropOwnerCertOCRRequest) (response *PropOwnerCertOCRResponse, err error) {
+    if request == nil {
+        request = NewPropOwnerCertOCRRequest()
+    }
+    response = NewPropOwnerCertOCRResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewQrcodeOCRRequest() (request *QrcodeOCRRequest) {
     request = &QrcodeOCRRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -888,7 +913,7 @@ func NewQrcodeOCRResponse() (response *QrcodeOCRResponse) {
 }
 
 // 本接口支持条形码和二维码的识别（包括 DataMatrix 和 PDF417）。
-// 本接口暂未完全对外开放，如需咨询，请[联系商务](https://cloud.tencent.com/about/connect)
+// 本接口暂未完全对外开放，如需咨询，请[联系商务](https://cloud.tencent.com/about/connect) 
 func (c *Client) QrcodeOCR(request *QrcodeOCRRequest) (response *QrcodeOCRResponse, err error) {
     if request == nil {
         request = NewQrcodeOCRRequest()
@@ -919,6 +944,31 @@ func (c *Client) QuotaInvoiceOCR(request *QuotaInvoiceOCRRequest) (response *Quo
         request = NewQuotaInvoiceOCRRequest()
     }
     response = NewQuotaInvoiceOCRResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewResidenceBookletOCRRequest() (request *ResidenceBookletOCRRequest) {
+    request = &ResidenceBookletOCRRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ocr", APIVersion, "ResidenceBookletOCR")
+    return
+}
+
+func NewResidenceBookletOCRResponse() (response *ResidenceBookletOCRResponse) {
+    response = &ResidenceBookletOCRResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口支持居民户口簿户主页及成员页关键字段的识别，包括姓名、户别、地址、籍贯、身份证号码等。
+func (c *Client) ResidenceBookletOCR(request *ResidenceBookletOCRRequest) (response *ResidenceBookletOCRResponse, err error) {
+    if request == nil {
+        request = NewResidenceBookletOCRRequest()
+    }
+    response = NewResidenceBookletOCRResponse()
     err = c.Send(request, response)
     return
 }

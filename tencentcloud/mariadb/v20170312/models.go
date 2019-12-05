@@ -176,7 +176,7 @@ type CreateAccountRequest struct {
 	// 实例 ID，形如：tdsql-ow728lmc，可以通过 DescribeDBInstances 查询实例详情获得。
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
-	// 登录用户名，由字幕、数字、下划线和连字符组成，长度为1~32位。
+	// 登录用户名，由字母、数字、下划线和连字符组成，长度为1~32位。
 	UserName *string `json:"UserName,omitempty" name:"UserName"`
 
 	// 可以登录的主机，与mysql 账号的 host 格式一致，可以支持通配符，例如 %，10.%，10.20.%。
@@ -476,6 +476,12 @@ type DBParamValue struct {
 
 	// 参数值
 	Value *string `json:"Value,omitempty" name:"Value"`
+}
+
+type Database struct {
+
+	// 数据库名称
+	DbName *string `json:"DbName,omitempty" name:"DbName"`
 }
 
 type Deal struct {
@@ -1202,6 +1208,46 @@ func (r *DescribeDBSlowLogsResponse) ToJsonString() string {
 }
 
 func (r *DescribeDBSlowLogsResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeDatabasesRequest struct {
+	*tchttp.BaseRequest
+
+	// 实例 ID，形如：dcdbt-ow7t8lmc。
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+}
+
+func (r *DescribeDatabasesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeDatabasesRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeDatabasesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 该实例上的数据库列表。
+		Databases []*Database `json:"Databases,omitempty" name:"Databases" list`
+
+		// 透传入参。
+		InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeDatabasesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeDatabasesResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -2184,6 +2230,43 @@ type ResourceUsageMonitorSet struct {
 	DataDiskAvailable *MonitorData `json:"DataDiskAvailable,omitempty" name:"DataDiskAvailable"`
 }
 
+type RestartDBInstancesRequest struct {
+	*tchttp.BaseRequest
+
+	// 实例ID的数组
+	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds" list`
+}
+
+func (r *RestartDBInstancesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *RestartDBInstancesRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type RestartDBInstancesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 异步任务ID
+		FlowId *int64 `json:"FlowId,omitempty" name:"FlowId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *RestartDBInstancesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *RestartDBInstancesResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type SlowLogData struct {
 
 	// 语句校验和，用于查询详情
@@ -2236,6 +2319,10 @@ type SlowLogData struct {
 
 	// 帐号
 	User *string `json:"User,omitempty" name:"User"`
+
+	// 样例Sql
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExampleSql *string `json:"ExampleSql,omitempty" name:"ExampleSql"`
 }
 
 type SpecConfigInfo struct {

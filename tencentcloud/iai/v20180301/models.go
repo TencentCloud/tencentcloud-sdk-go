@@ -112,6 +112,50 @@ type Candidate struct {
 	PersonGroupInfos []*PersonGroupInfo `json:"PersonGroupInfos,omitempty" name:"PersonGroupInfos" list`
 }
 
+type CheckSimilarPersonRequest struct {
+	*tchttp.BaseRequest
+
+	// 待整理的人员库列表。 
+	// 人员库总人数不可超过200万，人员库个数不可超过10个。
+	GroupIds []*string `json:"GroupIds,omitempty" name:"GroupIds" list`
+
+	// 疑似同一人判断控制。  
+	// 1：宽松的同一人要求； 
+	// 2：严格的同一人要求。  
+	// 注： 要求越高，则疑似同一人的概率越小。
+	UniquePersonControl *int64 `json:"UniquePersonControl,omitempty" name:"UniquePersonControl"`
+}
+
+func (r *CheckSimilarPersonRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CheckSimilarPersonRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CheckSimilarPersonResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 查重任务ID，用于查询、获取查重的进度和结果。
+		JobId *string `json:"JobId,omitempty" name:"JobId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CheckSimilarPersonResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CheckSimilarPersonResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type CompareFaceRequest struct {
 	*tchttp.BaseRequest
 
@@ -681,7 +725,7 @@ type DetectFaceResponse struct {
 		// 请求的图片高度。
 		ImageHeight *int64 `json:"ImageHeight,omitempty" name:"ImageHeight"`
 
-		// 人脸信息列表。
+		// 人脸信息列表。包含人脸坐标信息、属性信息（若需要）、质量分信息（若需要）。
 		FaceInfos []*FaceInfo `json:"FaceInfos,omitempty" name:"FaceInfos" list`
 
 		// 人脸识别所用的算法模型版本。
@@ -760,6 +804,44 @@ func (r *DetectLiveFaceResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type EstimateCheckSimilarPersonCostTimeRequest struct {
+	*tchttp.BaseRequest
+
+	// 待整理的人员库列表。 
+	// 人员库总人数不可超过200万，人员库个数不可超过10个。
+	GroupIds []*string `json:"GroupIds,omitempty" name:"GroupIds" list`
+}
+
+func (r *EstimateCheckSimilarPersonCostTimeRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *EstimateCheckSimilarPersonCostTimeRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type EstimateCheckSimilarPersonCostTimeResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 人员查重任务预估需要耗费时间。 单位为分钟。
+		EstimatedTimeCost *uint64 `json:"EstimatedTimeCost,omitempty" name:"EstimatedTimeCost"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *EstimateCheckSimilarPersonCostTimeResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *EstimateCheckSimilarPersonCostTimeResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type FaceAttributesInfo struct {
 
 	// 性别[0~49]为女性，[50，100]为男性，越接近0和100表示置信度越高。NeedFaceAttributes 不为 1 或检测超过 5 张人脸时，此参数仍返回，但不具备参考意义。
@@ -774,15 +856,15 @@ type FaceAttributesInfo struct {
 	// 是否有眼镜 [true,false]。NeedFaceAttributes 不为1 或检测超过 5 张人脸时，此参数仍返回，但不具备参考意义。
 	Glass *bool `json:"Glass,omitempty" name:"Glass"`
 
-	// 上下偏移[-30,30]。NeedFaceAttributes 不为1 或检测超过 5 张人脸时，此参数仍返回，但不具备参考意义。 
+	// 上下偏移[-30,30]，单位角度。NeedFaceAttributes 不为1 或检测超过 5 张人脸时，此参数仍返回，但不具备参考意义。 
 	// 建议：人脸入库选择[-10,10]的图片。
 	Pitch *int64 `json:"Pitch,omitempty" name:"Pitch"`
 
-	// 左右偏移[-30,30]。 NeedFaceAttributes 不为1 或检测超过 5 张人脸时，此参数仍返回，但不具备参考意义。 
+	// 左右偏移[-30,30]，单位角度。 NeedFaceAttributes 不为1 或检测超过 5 张人脸时，此参数仍返回，但不具备参考意义。 
 	// 建议：人脸入库选择[-10,10]的图片。
 	Yaw *int64 `json:"Yaw,omitempty" name:"Yaw"`
 
-	// 平面旋转[-180,180]。 NeedFaceAttributes 不为1 或检测超过 5 张人脸时，此参数仍返回，但不具备参考意义。  
+	// 平面旋转[-180,180]，单位角度。 NeedFaceAttributes 不为1 或检测超过 5 张人脸时，此参数仍返回，但不具备参考意义。  
 	// 建议：人脸入库选择[-20,20]的图片。
 	Roll *int64 `json:"Roll,omitempty" name:"Roll"`
 
@@ -1186,6 +1268,47 @@ func (r *GetPersonListResponse) ToJsonString() string {
 }
 
 func (r *GetPersonListResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type GetSimilarPersonResultRequest struct {
+	*tchttp.BaseRequest
+
+	// 查重任务ID，用于查询、获取查重的进度和结果。
+	JobId *string `json:"JobId,omitempty" name:"JobId"`
+}
+
+func (r *GetSimilarPersonResultRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *GetSimilarPersonResultRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type GetSimilarPersonResultResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 查重任务完成进度。取值[0.0，100.0]。当且仅当值为100时，SimilarPersons才有意义。
+		Progress *float64 `json:"Progress,omitempty" name:"Progress"`
+
+		// 疑似同一人的人员信息文件临时下载链接， 有效时间为5分钟，结果文件实际保存90天。
+	// 文件内容由 SimilarPerson 的数组组成。
+		SimilarPersonsUrl *string `json:"SimilarPersonsUrl,omitempty" name:"SimilarPersonsUrl"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *GetSimilarPersonResultResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *GetSimilarPersonResultResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -1641,6 +1764,9 @@ type SearchPersonsRequest struct {
 
 	// 出参Score中，只有大于等于FaceMatchThreshold值的结果才会返回。默认为0。取值范围[0.0,100.0) 。
 	FaceMatchThreshold *float64 `json:"FaceMatchThreshold,omitempty" name:"FaceMatchThreshold"`
+
+	// 是否返回人员具体信息。0 为关闭，1 为开启。默认为 0。其他非0非1值默认为0
+	NeedPersonInfo *int64 `json:"NeedPersonInfo,omitempty" name:"NeedPersonInfo"`
 }
 
 func (r *SearchPersonsRequest) ToJsonString() string {
@@ -1721,6 +1847,9 @@ type SearchPersonsReturnsByGroupRequest struct {
 
 	// 出参Score中，只有超过FaceMatchThreshold值的结果才会返回。默认为0。
 	FaceMatchThreshold *float64 `json:"FaceMatchThreshold,omitempty" name:"FaceMatchThreshold"`
+
+	// 是否返回人员具体信息。0 为关闭，1 为开启。默认为 0。其他非0非1值默认为0
+	NeedPersonInfo *int64 `json:"NeedPersonInfo,omitempty" name:"NeedPersonInfo"`
 }
 
 func (r *SearchPersonsReturnsByGroupRequest) ToJsonString() string {

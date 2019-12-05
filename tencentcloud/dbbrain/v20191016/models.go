@@ -26,7 +26,7 @@ type DescribeDBDiagEventRequest struct {
 	// 实例 ID 。
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
-	// 事件 ID 。
+	// 事件 ID 。通过“获取实例诊断历史DescribeDBDiagHistory”获取。
 	EventId *int64 `json:"EventId,omitempty" name:"EventId"`
 }
 
@@ -97,10 +97,10 @@ type DescribeDBDiagHistoryRequest struct {
 	// 实例 ID 。
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
-	// 开始时间。
+	// 开始时间。如“2019-09-10 12:13:14”。
 	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
 
-	// 结束时间。
+	// 结束时间。如“2019-09-11 12:13:14”。
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 }
 
@@ -255,7 +255,7 @@ type DiagHistoryEventItem struct {
 	// 事件 ID 。
 	EventId *int64 `json:"EventId,omitempty" name:"EventId"`
 
-	// 严重程度。
+	// 严重程度。从1-4，严重程度递减，意义与DBBrain生成的实例健康报告中对应概念一致。
 	Severity *int64 `json:"Severity,omitempty" name:"Severity"`
 
 	// 概要。

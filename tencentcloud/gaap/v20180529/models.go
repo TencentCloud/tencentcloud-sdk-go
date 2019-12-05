@@ -3154,9 +3154,13 @@ type DomainRuleSet struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RealServerCertificateDomain *string `json:"RealServerCertificateDomain,omitempty" name:"RealServerCertificateDomain"`
 
-	// 多客户端证书时，返回多个证书的id和列表
+	// 多客户端证书时，返回多个证书的id和别名
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PolyClientCertificateAliasInfo []*CertificateAliasInfo `json:"PolyClientCertificateAliasInfo,omitempty" name:"PolyClientCertificateAliasInfo" list`
+
+	// 多源站证书时，返回多个证书的id和别名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PolyRealServerCertificateAliasInfo []*CertificateAliasInfo `json:"PolyRealServerCertificateAliasInfo,omitempty" name:"PolyRealServerCertificateAliasInfo" list`
 }
 
 type Filter struct {

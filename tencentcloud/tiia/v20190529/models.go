@@ -34,6 +34,7 @@ type AssessQualityRequest struct {
 	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
 
 	// 图片经过base64编码的内容。最大不超过4M。与ImageUrl同时存在时优先使用ImageUrl字段。
+	// **注意：图片需要base64编码，并且要去掉编码头部。**
 	ImageBase64 *string `json:"ImageBase64,omitempty" name:"ImageBase64"`
 }
 
@@ -148,6 +149,7 @@ type CropImageRequest struct {
 	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
 
 	// 图片经过base64编码的内容。最大不超过4M。与ImageUrl同时存在时优先使用ImageUrl字段。
+	// **注意：图片需要base64编码，并且要去掉编码头部。**
 	ImageBase64 *string `json:"ImageBase64,omitempty" name:"ImageBase64"`
 }
 
@@ -220,6 +222,7 @@ type DetectCelebrityRequest struct {
 	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
 
 	// 图片经过base64编码的内容。最大不超过4M。与ImageUrl同时存在时优先使用ImageUrl字段。
+	// **注意：图片需要base64编码，并且要去掉编码头部。**
 	ImageBase64 *string `json:"ImageBase64,omitempty" name:"ImageBase64"`
 }
 
@@ -267,6 +270,7 @@ type DetectDisgustRequest struct {
 	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
 
 	// 图片经过base64编码的内容。最大不超过4M。与ImageUrl同时存在时优先使用ImageUrl字段。
+	// **注意：图片需要base64编码，并且要去掉编码头部。**
 	ImageBase64 *string `json:"ImageBase64,omitempty" name:"ImageBase64"`
 }
 
@@ -332,6 +336,7 @@ type DetectLabelRequest struct {
 	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
 
 	// 图片经过base64编码的内容。最大不超过4M。与ImageUrl同时存在时优先使用ImageUrl字段。
+	// **注意：图片需要base64编码，并且要去掉编码头部。**
 	ImageBase64 *string `json:"ImageBase64,omitempty" name:"ImageBase64"`
 
 	// 本次调用支持的识别场景，可选值如下：
@@ -397,6 +402,7 @@ type DetectMisbehaviorRequest struct {
 	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
 
 	// 图片经过base64编码的内容。最大不超过4M。与ImageUrl同时存在时优先使用ImageUrl字段。
+	// **注意：图片需要base64编码，并且要去掉编码头部。**
 	ImageBase64 *string `json:"ImageBase64,omitempty" name:"ImageBase64"`
 }
 
@@ -447,6 +453,7 @@ type DetectProductRequest struct {
 	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
 
 	// 图片经过base64编码的内容。最大不超过4M。与ImageUrl同时存在时优先使用ImageUrl字段。
+	// **注意：图片需要base64编码，并且要去掉编码头部。**
 	ImageBase64 *string `json:"ImageBase64,omitempty" name:"ImageBase64"`
 }
 
@@ -514,7 +521,8 @@ type EnhanceImageRequest struct {
 	// 接口响应时间会受到图片下载时间的影响，建议使用更可靠的存储服务，推荐将图片存储在腾讯云COS。
 	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
 
-	// 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。图片经过base64编码的内容。最大不超过4M。与ImageUrl同时存在时优先使用ImageUrl字段
+	// 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。图片经过base64编码的内容。最大不超过4M。与ImageUrl同时存在时优先使用ImageUrl字段。
+	// **注意：图片需要base64编码，并且要去掉编码头部。**
 	ImageBase64 *string `json:"ImageBase64,omitempty" name:"ImageBase64"`
 }
 
@@ -628,6 +636,7 @@ type ImageModerationRequest struct {
 	Extra *string `json:"Extra,omitempty" name:"Extra"`
 
 	// 图片经过base64编码的内容。最大不超过4M。与ImageUrl同时存在时优先使用ImageUrl字段。
+	// **注意：图片需要base64编码，并且要去掉编码头部。**
 	ImageBase64 *string `json:"ImageBase64,omitempty" name:"ImageBase64"`
 }
 
@@ -804,8 +813,8 @@ type RecognizeCarRequest struct {
 	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
 
 	// 图片经过base64编码的内容。最大不超过4M。与ImageUrl同时存在时优先使用ImageUrl字段。
-	// 
-	// 图片URL地址。支持的图片格式：PNG、JPG、JPEG、BMP，暂不支持GIF格式。支持的图片大小：所下载图片经Base64编码后不超过4M。图片下载时间不超过3秒。
+	// **注意：图片需要base64编码，并且要去掉编码头部。**
+	// 支持的图片格式：PNG、JPG、JPEG、BMP，暂不支持GIF格式。支持的图片大小：所下载图片经Base64编码后不超过4M。图片下载时间不超过3秒。
 	ImageBase64 *string `json:"ImageBase64,omitempty" name:"ImageBase64"`
 }
 
@@ -923,6 +932,8 @@ type TextResult struct {
 	// CURSE：谩骂
 	// TERRORISM：暴恐
 	// OTHERS：其他
+	// 
+	// 本服务利用微信团队提供的算法，可以准确识别图片中是否包含二维码。当图片中存在二维码时，分类为ADS，关键词输出为“二维码”。
 	Type *string `json:"Type,omitempty" name:"Type"`
 
 	// 预留字段，后期用于展示更多识别信息。

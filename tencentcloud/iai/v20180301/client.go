@@ -71,6 +71,37 @@ func (c *Client) AnalyzeFace(request *AnalyzeFaceRequest) (response *AnalyzeFace
     return
 }
 
+func NewCheckSimilarPersonRequest() (request *CheckSimilarPersonRequest) {
+    request = &CheckSimilarPersonRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iai", APIVersion, "CheckSimilarPerson")
+    return
+}
+
+func NewCheckSimilarPersonResponse() (response *CheckSimilarPersonResponse) {
+    response = &CheckSimilarPersonResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 对指定的人员库进行查重，给出疑似相同人的信息。
+// 
+// 不支持跨算法模型版本查重，且目前仅支持算法模型为3.0的人员库使用查重功能。
+// 
+// >     
+// - 若对完全相同的指定人员库进行查重操作，需等待上次操作完成才可。即，若两次请求输入的 GroupIds 相同，第一次请求若未完成，第二次请求将返回失败。<br>
+// 查重的人员库状态为腾讯云开始进行查重任务的那一刻，即您可以理解为当您发起查重请求后，若您的查重任务需要排队，在排队期间您对人员库的增删操作均会会影响查重的结果。腾讯云将以开始进行查重任务的那一刻人员库的状态进行查重。查重任务开始后，您对人员库的任何操作均不影响查重任务的进行。但建议查重任务开始后，请不要对人员库中人员和人脸进行增删操作。
+func (c *Client) CheckSimilarPerson(request *CheckSimilarPersonRequest) (response *CheckSimilarPersonResponse, err error) {
+    if request == nil {
+        request = NewCheckSimilarPersonRequest()
+    }
+    response = NewCheckSimilarPersonResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCompareFaceRequest() (request *CompareFaceRequest) {
     request = &CompareFaceRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -385,6 +416,35 @@ func (c *Client) DetectLiveFace(request *DetectLiveFaceRequest) (response *Detec
     return
 }
 
+func NewEstimateCheckSimilarPersonCostTimeRequest() (request *EstimateCheckSimilarPersonCostTimeRequest) {
+    request = &EstimateCheckSimilarPersonCostTimeRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iai", APIVersion, "EstimateCheckSimilarPersonCostTime")
+    return
+}
+
+func NewEstimateCheckSimilarPersonCostTimeResponse() (response *EstimateCheckSimilarPersonCostTimeResponse) {
+    response = &EstimateCheckSimilarPersonCostTimeResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 获取若要开始一个人员查重任务，这个任务结束的预估时间。
+// 
+// 若EndTimestamp符合您预期，请您尽快发起人员查重请求，否则导致可能需要更多处理时间。
+// 
+// 若预估时间超过5小时，则无法使用人员查重功能。
+func (c *Client) EstimateCheckSimilarPersonCostTime(request *EstimateCheckSimilarPersonCostTimeRequest) (response *EstimateCheckSimilarPersonCostTimeResponse, err error) {
+    if request == nil {
+        request = NewEstimateCheckSimilarPersonCostTimeRequest()
+    }
+    response = NewEstimateCheckSimilarPersonCostTimeResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewGetGroupListRequest() (request *GetGroupListRequest) {
     request = &GetGroupListRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -506,6 +566,31 @@ func (c *Client) GetPersonListNum(request *GetPersonListNumRequest) (response *G
         request = NewGetPersonListNumRequest()
     }
     response = NewGetPersonListNumResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewGetSimilarPersonResultRequest() (request *GetSimilarPersonResultRequest) {
+    request = &GetSimilarPersonResultRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iai", APIVersion, "GetSimilarPersonResult")
+    return
+}
+
+func NewGetSimilarPersonResultResponse() (response *GetSimilarPersonResultResponse) {
+    response = &GetSimilarPersonResultResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 获取人员查重接口（CheckSimilarPerson）结果。
+func (c *Client) GetSimilarPersonResult(request *GetSimilarPersonResultRequest) (response *GetSimilarPersonResultResponse, err error) {
+    if request == nil {
+        request = NewGetSimilarPersonResultRequest()
+    }
+    response = NewGetSimilarPersonResultResponse()
     err = c.Send(request, response)
     return
 }
@@ -662,6 +747,7 @@ func NewSearchPersonsResponse() (response *SearchPersonsResponse) {
 // 人员搜索接口和人脸搜索接口的区别是：人脸搜索会比对该 Person 下所有 Face ，而人员搜索比对的是该 Person 的 Person 特征。
 // >     
 // - 公共参数中的签名方式请使用V3版本，即配置SignatureMethod参数为TC3-HMAC-SHA256。
+// - 仅支持算法模型版本（FaceModelVersion）为3.0的人员库。
 func (c *Client) SearchPersons(request *SearchPersonsRequest) (response *SearchPersonsResponse, err error) {
     if request == nil {
         request = NewSearchPersonsRequest()
@@ -691,6 +777,9 @@ func NewSearchPersonsReturnsByGroupResponse() (response *SearchPersonsReturnsByG
 // 本接口会将该人员（Person）下的所有人脸（Face）进行融合特征处理，即若某个Person下有4张 Face，本接口会将4张 Face 的特征进行融合处理，生成对应这个 Person 的特征，使人员搜索（确定待识别的人脸图片是某人员）更加准确。
 // 
 // 人员搜索和人脸搜索的区别是：人脸搜索比对该 Person 下所有 Face ，而人员搜索比对的是该 Person 的 Person 特征。
+// >     
+// - 公共参数中的签名方式请使用V3版本，即配置SignatureMethod参数为TC3-HMAC-SHA256。
+// - 仅支持算法模型版本（FaceModelVersion）为3.0的人员库。
 func (c *Client) SearchPersonsReturnsByGroup(request *SearchPersonsReturnsByGroupRequest) (response *SearchPersonsReturnsByGroupResponse, err error) {
     if request == nil {
         request = NewSearchPersonsReturnsByGroupRequest()
@@ -751,6 +840,7 @@ func NewVerifyPersonResponse() (response *VerifyPersonResponse) {
 // 
 // >     
 // - 公共参数中的签名方式请使用V3版本，即配置SignatureMethod参数为TC3-HMAC-SHA256。
+// - 仅支持算法模型版本（FaceModelVersion）为3.0的人员库。
 func (c *Client) VerifyPerson(request *VerifyPersonRequest) (response *VerifyPersonResponse, err error) {
     if request == nil {
         request = NewVerifyPersonRequest()

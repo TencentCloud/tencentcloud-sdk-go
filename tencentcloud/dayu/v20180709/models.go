@@ -22,7 +22,14 @@ import (
 
 type BaradData struct {
 
-	// 指标名（connum表示TCP连接数；new_conn表示新增TCP连接数；intraffic表示入流量；outtraffic表示出流量）
+	// 指标名（connum表示TCP活跃连接数；
+	// new_conn表示新建TCP连接数；
+	// inactive_conn表示非活跃连接数;
+	// intraffic表示入流量；
+	// outtraffic表示出流量；
+	// alltraffic表示出流量和入流量之和；
+	// inpkg表示入包速率；
+	// outpkg表示出包速率；）
 	MetricName *string `json:"MetricName,omitempty" name:"MetricName"`
 
 	// 值数组
@@ -139,6 +146,55 @@ type CCRuleConfig struct {
 
 	// 执行时间，单位秒，取值[1-900]
 	ExeDuration *uint64 `json:"ExeDuration,omitempty" name:"ExeDuration"`
+}
+
+type CreateBasicDDoSAlarmThresholdRequest struct {
+	*tchttp.BaseRequest
+
+	// 大禹子产品代号（basic表示DDoS基础防护）
+	Business *string `json:"Business,omitempty" name:"Business"`
+
+	// =get表示读取告警阈值；=set表示设置告警阈值；
+	Method *string `json:"Method,omitempty" name:"Method"`
+
+	// 可选，告警阈值类型，1-入流量，2-清洗流量；当Method为set时必须填写；
+	AlarmType *uint64 `json:"AlarmType,omitempty" name:"AlarmType"`
+
+	// 可选，告警阈值，当Method为set时必须填写；当设置阈值为0时表示清除告警阈值配置；
+	AlarmThreshold *uint64 `json:"AlarmThreshold,omitempty" name:"AlarmThreshold"`
+}
+
+func (r *CreateBasicDDoSAlarmThresholdRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateBasicDDoSAlarmThresholdRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateBasicDDoSAlarmThresholdResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 当存在告警阈值配置时，返回告警阈值大于0，当不存在告警配置时，返回告警阈值为0；
+		AlarmThreshold *uint64 `json:"AlarmThreshold,omitempty" name:"AlarmThreshold"`
+
+		// 告警阈值类型，1-入流量，2-清洗流量；当AlarmThreshold大于0时有效；
+		AlarmType *uint64 `json:"AlarmType,omitempty" name:"AlarmType"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateBasicDDoSAlarmThresholdResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateBasicDDoSAlarmThresholdResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
 }
 
 type CreateCCSelfDefinePolicyRequest struct {
@@ -1235,8 +1291,9 @@ type DescribeBaradDataRequest struct {
 	Id *string `json:"Id,omitempty" name:"Id"`
 
 	// 指标名，取值：
-	// connum表示总TCP连接数（新建TCP连接数与活跃TCP连接数的和）；
+	// connum表示TCP活跃连接数；
 	// new_conn表示新建TCP连接数；
+	// inactive_conn表示非活跃连接数;
 	// intraffic表示入流量；
 	// outtraffic表示出流量；
 	// alltraffic表示出流量和入流量之和；
@@ -1293,6 +1350,61 @@ func (r *DescribeBaradDataResponse) ToJsonString() string {
 }
 
 func (r *DescribeBaradDataResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeBasicDeviceThresholdRequest struct {
+	*tchttp.BaseRequest
+
+	// 查询的IP地址，取值如：1.1.1.1
+	BasicIp *string `json:"BasicIp,omitempty" name:"BasicIp"`
+
+	// 查询IP所属地域，取值如：gz、bj、sh、hk等地域缩写
+	BasicRegion *string `json:"BasicRegion,omitempty" name:"BasicRegion"`
+
+	// 专区类型，取值如：公有云专区：public，黑石专区：bm, NAT服务器专区：nat，互联网通道：channel。
+	BasicBizType *string `json:"BasicBizType,omitempty" name:"BasicBizType"`
+
+	// 设备类型，取值如：服务器：cvm，公有云负载均衡：clb，黑石负载均衡：lb，NAT服务器：nat，互联网通道：channel.
+	BasicDeviceType *string `json:"BasicDeviceType,omitempty" name:"BasicDeviceType"`
+
+	// 有效性检查，取值为1
+	BasicCheckFlag *uint64 `json:"BasicCheckFlag,omitempty" name:"BasicCheckFlag"`
+
+	// 可选，IPInstance Nat 网关（如果查询的设备类型是NAT服务器，需要传此参数，通过nat资源查询接口获取）
+	BasicIpInstance *string `json:"BasicIpInstance,omitempty" name:"BasicIpInstance"`
+
+	// 可选，运营商线路（如果查询的设备类型是NAT服务器，需要传此参数为5）
+	BasicIspCode *uint64 `json:"BasicIspCode,omitempty" name:"BasicIspCode"`
+}
+
+func (r *DescribeBasicDeviceThresholdRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeBasicDeviceThresholdRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeBasicDeviceThresholdResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 返回黑洞封堵值
+		Threshold *uint64 `json:"Threshold,omitempty" name:"Threshold"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeBasicDeviceThresholdResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeBasicDeviceThresholdResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -2514,6 +2626,50 @@ func (r *DescribeDDoSUsedStatisResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeIPProductInfoRequest struct {
+	*tchttp.BaseRequest
+
+	// 大禹子产品代号（bgp表示独享包；bgp-multip表示共享包）
+	Business *string `json:"Business,omitempty" name:"Business"`
+
+	// IP列表
+	IpList []*string `json:"IpList,omitempty" name:"IpList" list`
+}
+
+func (r *DescribeIPProductInfoRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeIPProductInfoRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeIPProductInfoResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 云产品信息列表，如果没有查询到则返回空数组，值说明如下：
+	// Key为ProductName时，value表示云产品实例的名称；
+	// Key为ProductInstanceId时，value表示云产品实例的ID；
+	// Key为ProductType时，value表示的是云产品的类型（cvm表示云主机、clb表示负载均衡）;
+	// Key为IP时，value表示云产品实例的IP；
+		Data []*KeyValueRecord `json:"Data,omitempty" name:"Data" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeIPProductInfoResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeIPProductInfoResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeInsurePacksRequest struct {
 	*tchttp.BaseRequest
 
@@ -3571,7 +3727,7 @@ type L4RuleHealth struct {
 	// 响应超时时间，单位秒
 	TimeOut *uint64 `json:"TimeOut,omitempty" name:"TimeOut"`
 
-	// 检测间隔时间，单位秒
+	// 检测间隔时间，单位秒，必须要大于响应超时时间
 	Interval *uint64 `json:"Interval,omitempty" name:"Interval"`
 
 	// 不健康阈值，单位次
@@ -4543,6 +4699,7 @@ type ModifyDDoSThresholdRequest struct {
 	Id *string `json:"Id,omitempty" name:"Id"`
 
 	// DDoS清洗阈值，取值[0, 60, 80, 100, 150, 200, 250, 300, 400, 500, 700, 1000];
+	// 当设置值为0时，表示采用默认值；
 	Threshold *uint64 `json:"Threshold,omitempty" name:"Threshold"`
 }
 
@@ -4886,6 +5043,49 @@ func (r *ModifyResBindDDoSPolicyResponse) ToJsonString() string {
 }
 
 func (r *ModifyResBindDDoSPolicyResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyResourceRenewFlagRequest struct {
+	*tchttp.BaseRequest
+
+	// 大禹子产品代号（bgpip表示高防IP；net表示高防IP专业版；shield表示棋牌盾；bgp表示独享包；bgp-multip表示共享包；insurance表示保险包；staticpack表示三网套餐包）
+	Business *string `json:"Business,omitempty" name:"Business"`
+
+	// 资源Id
+	Id *string `json:"Id,omitempty" name:"Id"`
+
+	// 自动续费标记（0手动续费；1自动续费；2到期不续费）
+	RenewFlag *uint64 `json:"RenewFlag,omitempty" name:"RenewFlag"`
+}
+
+func (r *ModifyResourceRenewFlagRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyResourceRenewFlagRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyResourceRenewFlagResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 成功码
+		Success *SuccessCode `json:"Success,omitempty" name:"Success"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifyResourceRenewFlagResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyResourceRenewFlagResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 

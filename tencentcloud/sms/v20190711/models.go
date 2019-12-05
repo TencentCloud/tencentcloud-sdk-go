@@ -53,14 +53,6 @@ type CallbackStatusStatistics struct {
 type CallbackStatusStatisticsRequest struct {
 	*tchttp.BaseRequest
 
-	// 最大上限
-	// 注：目前固定设置为0
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
-
-	// 偏移量
-	// 注：目前固定设置为0
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
-
 	// 开始时间，yyyymmddhh 需要拉取的起始时间，精确到小时
 	StartDateTime *uint64 `json:"StartDateTime,omitempty" name:"StartDateTime"`
 
@@ -70,6 +62,14 @@ type CallbackStatusStatisticsRequest struct {
 
 	// 短信SdkAppid在[短信控制台](https://console.cloud.tencent.com/sms/smslist) 添加应用后生成的实际SdkAppid,示例如1400006666。
 	SmsSdkAppid *string `json:"SmsSdkAppid,omitempty" name:"SmsSdkAppid"`
+
+	// 最大上限
+	// 注：目前固定设置为0
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 偏移量
+	// 注：目前固定设置为0
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
 }
 
 func (r *CallbackStatusStatisticsRequest) ToJsonString() string {
@@ -105,7 +105,7 @@ func (r *CallbackStatusStatisticsResponse) FromJsonString(s string) error {
 type PullSmsReplyStatus struct {
 
 	// 短信码号扩展号，默认未开通，如需开通请联系 [sms helper](https://cloud.tencent.com/document/product/382/3773)
-	ExtendCode *uint64 `json:"ExtendCode,omitempty" name:"ExtendCode"`
+	ExtendCode *string `json:"ExtendCode,omitempty" name:"ExtendCode"`
 
 	// 国家（或地区）码
 	NationCode *string `json:"NationCode,omitempty" name:"NationCode"`
@@ -127,7 +127,7 @@ type PullSmsReplyStatusByPhoneNumberRequest struct {
 	*tchttp.BaseRequest
 
 	// 拉取起始时间，UNIX 时间戳（时间：秒）
-	SendDateTime *string `json:"SendDateTime,omitempty" name:"SendDateTime"`
+	SendDateTime *uint64 `json:"SendDateTime,omitempty" name:"SendDateTime"`
 
 	// 偏移量
 	// 注：目前固定设置为0
@@ -241,7 +241,7 @@ type PullSmsSendStatusByPhoneNumberRequest struct {
 	*tchttp.BaseRequest
 
 	// 拉取起始时间，UNIX 时间戳（时间：秒）
-	SendDateTime *string `json:"SendDateTime,omitempty" name:"SendDateTime"`
+	SendDateTime *uint64 `json:"SendDateTime,omitempty" name:"SendDateTime"`
 
 	// 偏移量
 	// 注：目前固定设置为0
@@ -347,7 +347,7 @@ type SendSmsRequest struct {
 	TemplateParamSet []*string `json:"TemplateParamSet,omitempty" name:"TemplateParamSet" list`
 
 	// 短信码号扩展号，默认未开通，如需开通请联系 [sms helper](https://cloud.tencent.com/document/product/382/3773)
-	ExtendCode *uint64 `json:"ExtendCode,omitempty" name:"ExtendCode"`
+	ExtendCode *string `json:"ExtendCode,omitempty" name:"ExtendCode"`
 
 	// 用户的 session 内容，可以携带用户侧ID等上下文信息,server 会原样返回
 	SessionContext *string `json:"SessionContext,omitempty" name:"SessionContext"`
@@ -411,25 +411,17 @@ type SendStatus struct {
 type SendStatusStatistics struct {
 
 	// 短信计费条数统计，例如提交成功量为100条，其中有20条是长短信（长度为80字）被拆分成2条，则计费条数为： ```80 * 1 + 20 * 2 = 120``` 条
-	BillingStatistics *uint64 `json:"BillingStatistics,omitempty" name:"BillingStatistics"`
+	FeeCount *uint64 `json:"FeeCount,omitempty" name:"FeeCount"`
 
 	// 短信提交量统计
-	RequestStatistics *uint64 `json:"RequestStatistics,omitempty" name:"RequestStatistics"`
+	RequestCount *uint64 `json:"RequestCount,omitempty" name:"RequestCount"`
 
 	// 短信提交成功量统计
-	RequestSuccessStatistics *uint64 `json:"RequestSuccessStatistics,omitempty" name:"RequestSuccessStatistics"`
+	RequestSuccessCount *uint64 `json:"RequestSuccessCount,omitempty" name:"RequestSuccessCount"`
 }
 
 type SendStatusStatisticsRequest struct {
 	*tchttp.BaseRequest
-
-	// 最大上限
-	// 注：目前固定设置为0
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
-
-	// 偏移量
-	// 注：目前固定设置为0
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
 
 	// 拉取起始时间，yyyymmddhh 需要拉取的起始时间，精确到小时
 	StartDateTime *uint64 `json:"StartDateTime,omitempty" name:"StartDateTime"`
@@ -440,6 +432,14 @@ type SendStatusStatisticsRequest struct {
 
 	// 短信SdkAppid在[短信控制台](https://console.cloud.tencent.com/sms/smslist) 添加应用后生成的实际SdkAppid,示例如1400006666。
 	SmsSdkAppid *string `json:"SmsSdkAppid,omitempty" name:"SmsSdkAppid"`
+
+	// 最大上限
+	// 注：目前固定设置为0
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 偏移量
+	// 注：目前固定设置为0
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
 }
 
 func (r *SendStatusStatisticsRequest) ToJsonString() string {
@@ -499,19 +499,15 @@ type SmsPackagesStatistics struct {
 type SmsPackagesStatisticsRequest struct {
 	*tchttp.BaseRequest
 
-	// 最大上限
-	// 注：目前固定设置为0
+	// 短信SdkAppid在[短信控制台](https://console.cloud.tencent.com/sms/smslist) 添加应用后生成的实际SdkAppid,示例如1400006666。
+	SmsSdkAppid *string `json:"SmsSdkAppid,omitempty" name:"SmsSdkAppid"`
+
+	// 最大上限(需要拉取的套餐包个数)
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 
 	// 偏移量
 	// 注：目前固定设置为0
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
-
-	// 需要拉取的套餐包个数
-	NumberOfPullPackages *uint64 `json:"NumberOfPullPackages,omitempty" name:"NumberOfPullPackages"`
-
-	// 短信SdkAppid在[短信控制台](https://console.cloud.tencent.com/sms/smslist) 添加应用后生成的实际SdkAppid,示例如1400006666。
-	SmsSdkAppid *string `json:"SmsSdkAppid,omitempty" name:"SmsSdkAppid"`
 }
 
 func (r *SmsPackagesStatisticsRequest) ToJsonString() string {
