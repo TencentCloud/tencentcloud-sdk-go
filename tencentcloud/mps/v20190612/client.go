@@ -43,6 +43,31 @@ func NewClient(credential *common.Credential, region string, clientProfile *prof
 }
 
 
+func NewCreateAIAnalysisTemplateRequest() (request *CreateAIAnalysisTemplateRequest) {
+    request = &CreateAIAnalysisTemplateRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("mps", APIVersion, "CreateAIAnalysisTemplate")
+    return
+}
+
+func NewCreateAIAnalysisTemplateResponse() (response *CreateAIAnalysisTemplateResponse) {
+    response = &CreateAIAnalysisTemplateResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 创建用户自定义内容分析模板，数量上限：50。
+func (c *Client) CreateAIAnalysisTemplate(request *CreateAIAnalysisTemplateRequest) (response *CreateAIAnalysisTemplateResponse, err error) {
+    if request == nil {
+        request = NewCreateAIAnalysisTemplateRequest()
+    }
+    response = NewCreateAIAnalysisTemplateResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateAIRecognitionTemplateRequest() (request *CreateAIRecognitionTemplateRequest) {
     request = &CreateAIRecognitionTemplateRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -316,7 +341,8 @@ func NewCreateWorkflowResponse() (response *CreateWorkflowResponse) {
 // 5. 对视频截图雪碧图；
 // 6. 对视频转自适应码流；
 // 7. 智能内容审核（鉴黄、鉴恐、鉴政）；
-// 8. 智能内容识别（人脸、文本全文、文本关键词、语音全文、语音关键词）。
+// 8. 智能内容分析（标签、分类、封面、按帧标签）；
+// 9. 智能内容识别（人脸、文本全文、文本关键词、语音全文、语音关键词）。
 // 
 // 注意：创建工作流成功后是禁用状态，需要手动启用。
 func (c *Client) CreateWorkflow(request *CreateWorkflowRequest) (response *CreateWorkflowResponse, err error) {
@@ -324,6 +350,33 @@ func (c *Client) CreateWorkflow(request *CreateWorkflowRequest) (response *Creat
         request = NewCreateWorkflowRequest()
     }
     response = NewCreateWorkflowResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteAIAnalysisTemplateRequest() (request *DeleteAIAnalysisTemplateRequest) {
+    request = &DeleteAIAnalysisTemplateRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("mps", APIVersion, "DeleteAIAnalysisTemplate")
+    return
+}
+
+func NewDeleteAIAnalysisTemplateResponse() (response *DeleteAIAnalysisTemplateResponse) {
+    response = &DeleteAIAnalysisTemplateResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 删除用户自定义内容分析模板。
+// 
+// 注意：模板 ID 为 10000 以下的为系统预置模板，不允许删除。
+func (c *Client) DeleteAIAnalysisTemplate(request *DeleteAIAnalysisTemplateRequest) (response *DeleteAIAnalysisTemplateResponse, err error) {
+    if request == nil {
+        request = NewDeleteAIAnalysisTemplateRequest()
+    }
+    response = NewDeleteAIAnalysisTemplateResponse()
     err = c.Send(request, response)
     return
 }
@@ -599,6 +652,31 @@ func (c *Client) DeleteWorkflow(request *DeleteWorkflowRequest) (response *Delet
         request = NewDeleteWorkflowRequest()
     }
     response = NewDeleteWorkflowResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeAIAnalysisTemplatesRequest() (request *DescribeAIAnalysisTemplatesRequest) {
+    request = &DescribeAIAnalysisTemplatesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("mps", APIVersion, "DescribeAIAnalysisTemplates")
+    return
+}
+
+func NewDescribeAIAnalysisTemplatesResponse() (response *DescribeAIAnalysisTemplatesResponse) {
+    response = &DescribeAIAnalysisTemplatesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 根据内容分析模板唯一标识，获取内容分析模板详情列表。返回结果包含符合条件的所有用户自定义内容分析模板及系统预置视频内容分析模板
+func (c *Client) DescribeAIAnalysisTemplates(request *DescribeAIAnalysisTemplatesRequest) (response *DescribeAIAnalysisTemplatesResponse, err error) {
+    if request == nil {
+        request = NewDescribeAIAnalysisTemplatesRequest()
+    }
+    response = NewDescribeAIAnalysisTemplatesResponse()
     err = c.Send(request, response)
     return
 }
@@ -980,6 +1058,33 @@ func (c *Client) EnableWorkflow(request *EnableWorkflowRequest) (response *Enabl
     return
 }
 
+func NewModifyAIAnalysisTemplateRequest() (request *ModifyAIAnalysisTemplateRequest) {
+    request = &ModifyAIAnalysisTemplateRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("mps", APIVersion, "ModifyAIAnalysisTemplate")
+    return
+}
+
+func NewModifyAIAnalysisTemplateResponse() (response *ModifyAIAnalysisTemplateResponse) {
+    response = &ModifyAIAnalysisTemplateResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 修改用户自定义内容分析模板。
+// 
+// 注意：模板 ID 10000 以下的为系统预置模板，不允许修改。
+func (c *Client) ModifyAIAnalysisTemplate(request *ModifyAIAnalysisTemplateRequest) (response *ModifyAIAnalysisTemplateResponse, err error) {
+    if request == nil {
+        request = NewModifyAIAnalysisTemplateRequest()
+    }
+    response = NewModifyAIAnalysisTemplateResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyAIRecognitionTemplateRequest() (request *ModifyAIRecognitionTemplateRequest) {
     request = &ModifyAIRecognitionTemplateRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1334,7 +1439,8 @@ func NewProcessMediaResponse() (response *ProcessMediaResponse) {
 // 5. 对视频截图雪碧图；
 // 6. 对视频转自适应码流；
 // 7. 智能内容审核（鉴黄、鉴恐、鉴政）；
-// 8. 智能内容识别（人脸、文本全文、文本关键词、语音全文、语音关键词）。
+// 8. 智能内容分析（标签、分类、封面、按帧标签）；
+// 9. 智能内容识别（人脸、文本全文、文本关键词、语音全文、语音关键词）。
 func (c *Client) ProcessMedia(request *ProcessMediaRequest) (response *ProcessMediaResponse, err error) {
     if request == nil {
         request = NewProcessMediaRequest()

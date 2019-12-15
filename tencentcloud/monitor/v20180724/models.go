@@ -157,6 +157,15 @@ type Instance struct {
 	Dimensions []*Dimension `json:"Dimensions,omitempty" name:"Dimensions" list`
 }
 
+type MetricDatum struct {
+
+	// 指标名称
+	MetricName *string `json:"MetricName,omitempty" name:"MetricName"`
+
+	// 指标的值
+	Value *uint64 `json:"Value,omitempty" name:"Value"`
+}
+
 type MetricObjectMeaning struct {
 
 	// 指标英文解释
@@ -200,4 +209,47 @@ type PeriodsSt struct {
 
 	// 统计方式
 	StatType []*string `json:"StatType,omitempty" name:"StatType" list`
+}
+
+type PutMonitorDataRequest struct {
+	*tchttp.BaseRequest
+
+	// 一组指标和数据
+	Metrics []*MetricDatum `json:"Metrics,omitempty" name:"Metrics" list`
+
+	// 上报时自行指定的 IP
+	AnnounceIp *string `json:"AnnounceIp,omitempty" name:"AnnounceIp"`
+
+	// 上报时自行指定的时间戳
+	AnnounceTimestamp *uint64 `json:"AnnounceTimestamp,omitempty" name:"AnnounceTimestamp"`
+
+	// 上报时自行指定的 IP 或 产品实例ID
+	AnnounceInstance *string `json:"AnnounceInstance,omitempty" name:"AnnounceInstance"`
+}
+
+func (r *PutMonitorDataRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *PutMonitorDataRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type PutMonitorDataResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *PutMonitorDataResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *PutMonitorDataResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
 }

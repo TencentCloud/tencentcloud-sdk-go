@@ -94,3 +94,34 @@ func (c *Client) GetMonitorData(request *GetMonitorDataRequest) (response *GetMo
     err = c.Send(request, response)
     return
 }
+
+func NewPutMonitorDataRequest() (request *PutMonitorDataRequest) {
+    request = &PutMonitorDataRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("monitor", APIVersion, "PutMonitorData")
+    return
+}
+
+func NewPutMonitorDataResponse() (response *PutMonitorDataResponse) {
+    response = &PutMonitorDataResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 默认接口请求频率限制：50次/秒。
+// 默认单租户指标上限：100个。
+// 单次上报最多 30 个指标/值对，请求返回错误时，请求中所有的指标/值均不会被保存。
+// 
+// 上报的时间戳为期望保存的时间戳，建议构造整数分钟时刻的时间戳。
+// 时间戳时间范围必须为当前时间到 300 秒前之间。
+// 同一 IP 指标对的数据需按分钟先后顺序上报。
+func (c *Client) PutMonitorData(request *PutMonitorDataRequest) (response *PutMonitorDataResponse, err error) {
+    if request == nil {
+        request = NewPutMonitorDataRequest()
+    }
+    response = NewPutMonitorDataResponse()
+    err = c.Send(request, response)
+    return
+}

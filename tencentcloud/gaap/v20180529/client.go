@@ -885,7 +885,7 @@ func NewDescribeDomainErrorPageInfoResponse() (response *DescribeDomainErrorPage
     return
 }
 
-// 查询目前订制域名的错误响应
+// 查询目前定制域名的错误响应
 func (c *Client) DescribeDomainErrorPageInfo(request *DescribeDomainErrorPageInfoRequest) (response *DescribeDomainErrorPageInfoResponse, err error) {
     if request == nil {
         request = NewDescribeDomainErrorPageInfoRequest()

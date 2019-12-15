@@ -23,10 +23,12 @@ import (
 type CreateRecTaskRequest struct {
 	*tchttp.BaseRequest
 
-	// 引擎类型。
-	// 8k_0：电话 8k 通用模型，可用于双声道音频的识别；
-	// 8k_6：电话 8k 话者分离模型，仅用于单声道；
-	// 16k_0：16k 通用模型。
+	// 引擎模型类型。
+	// 8k_0：电话 8k 中文普通话通用，可用于双声道音频的识别；
+	// 8k_6：电话 8k 中文普通话话者分离，仅用于单声道；
+	// 16k_0：16k 中文普通话通用；
+	// 16k_en：16k 英语；
+	// 16k_ca：16k 粤语。
 	EngineModelType *string `json:"EngineModelType,omitempty" name:"EngineModelType"`
 
 	// 语音声道数。1：单声道；2：双声道（仅在电话 8k 通用模型下支持）。

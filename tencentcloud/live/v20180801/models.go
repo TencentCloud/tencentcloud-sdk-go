@@ -2059,7 +2059,7 @@ type DescribeLiveDomainPlayInfoListResponse struct {
 		// 实时总流量。
 		TotalFlux *float64 `json:"TotalFlux,omitempty" name:"TotalFlux"`
 
-		// TotalRequest。
+		// 总请求数。
 		TotalRequest *uint64 `json:"TotalRequest,omitempty" name:"TotalRequest"`
 
 		// 实时总连接数。
@@ -3841,7 +3841,7 @@ type DescribeVisitTopSumInfoListRequest struct {
 	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
 
 	// 结束时间点，格式为yyyy-mm-dd HH:MM:SS
-	// 时间跨度在（0,4小时]，支持最近1天数据查询。
+	// 时间跨度在[0,4小时]，支持最近1天数据查询。
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 
 	// 峰值指标，可选值包括”Domain”，”StreamId”。

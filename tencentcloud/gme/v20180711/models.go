@@ -44,13 +44,13 @@ type CreateAppRequest struct {
 	// 应用名称
 	AppName *string `json:"AppName,omitempty" name:"AppName"`
 
-	// 腾讯云项目id，默认为0，表示默认项目
+	// 腾讯云项目ID，默认为0，表示默认项目
 	ProjectId *uint64 `json:"ProjectId,omitempty" name:"ProjectId"`
 
-	// 需要支持的引擎列表，取值android, ios, unity, cocos, unreal, windows。默认全选。
+	// 需要支持的引擎列表，默认全选。
 	EngineList []*string `json:"EngineList,omitempty" name:"EngineList" list`
 
-	// 服务区域列表，取值: mainland(大陆地区), sa(南美), eu(欧洲), oc(澳洲), me(中东)。默认全选。
+	// 服务区域列表，默认全选。
 	RegionList []*string `json:"RegionList,omitempty" name:"RegionList" list`
 
 	// 实时语音服务配置数据
@@ -79,13 +79,13 @@ type CreateAppResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 应用id，由后台自动生成。
+		// 应用ID，由后台自动生成。
 		BizId *uint64 `json:"BizId,omitempty" name:"BizId"`
 
 		// 应用名称，透传输入参数的AppName
 		AppName *string `json:"AppName,omitempty" name:"AppName"`
 
-		// 项目id，透传输入的ProjectId
+		// 项目ID，透传输入的ProjectId
 		ProjectId *uint64 `json:"ProjectId,omitempty" name:"ProjectId"`
 
 		// 应用密钥，GME SDK初始化时使用
@@ -117,7 +117,7 @@ func (r *CreateAppResponse) FromJsonString(s string) error {
 type DescribeAppStatisticsRequest struct {
 	*tchttp.BaseRequest
 
-	// GME应用id
+	// GME应用ID
 	BizId *uint64 `json:"BizId,omitempty" name:"BizId"`
 
 	// 数据开始时间，东八区时间，格式: 年-月-日，如: 2018-07-13
@@ -343,7 +343,7 @@ func (r *DescribeScanResultListResponse) FromJsonString(s string) error {
 type ModifyAppStatusRequest struct {
 	*tchttp.BaseRequest
 
-	// 应用id，创建应用后由后台生成并返回。
+	// 应用ID，创建应用后由后台生成并返回。
 	BizId *uint64 `json:"BizId,omitempty" name:"BizId"`
 
 	// 应用状态，取值：open/close
@@ -363,7 +363,7 @@ type ModifyAppStatusResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// GME应用id
+		// GME应用ID
 		BizId *uint64 `json:"BizId,omitempty" name:"BizId"`
 
 		// 应用状态，取值：open/close

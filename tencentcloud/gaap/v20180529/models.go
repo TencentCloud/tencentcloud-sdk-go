@@ -229,21 +229,21 @@ type Certificate struct {
 	// 证书名称（旧参数，请使用CertificateAlias）。
 	CertificateName *string `json:"CertificateName,omitempty" name:"CertificateName"`
 
-	// 证书类型
+	// 证书类型。
 	CertificateType *int64 `json:"CertificateType,omitempty" name:"CertificateType"`
 
 	// 证书名称。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CertificateAlias *string `json:"CertificateAlias,omitempty" name:"CertificateAlias"`
 
-	// 证书创建时间，采用unix时间戳的方式，表示从1970年1月1日（UTC/GMT的午夜）开始所经过的秒数。
+	// 证书创建时间，采用Unix时间戳的方式，表示从1970年1月1日（UTC/GMT的午夜）开始所经过的秒数。
 	CreateTime *uint64 `json:"CreateTime,omitempty" name:"CreateTime"`
 
-	// 证书生效起始时间，采用unix时间戳的方式，表示从1970年1月1日（UTC/GMT的午夜）开始所经过的秒数。
+	// 证书生效起始时间，采用Unix时间戳的方式，表示从1970年1月1日（UTC/GMT的午夜）开始所经过的秒数。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	BeginTime *uint64 `json:"BeginTime,omitempty" name:"BeginTime"`
 
-	// 证书过期时间，采用unix时间戳的方式，表示从1970年1月1日（UTC/GMT的午夜）开始所经过的秒数。
+	// 证书过期时间，采用Unix时间戳的方式，表示从1970年1月1日（UTC/GMT的午夜）开始所经过的秒数。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	EndTime *uint64 `json:"EndTime,omitempty" name:"EndTime"`
 
@@ -284,15 +284,15 @@ type CertificateDetail struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CertificateKey *string `json:"CertificateKey,omitempty" name:"CertificateKey"`
 
-	// 创建时间，采用unix时间戳的方式，表示从1970年1月1日（UTC/GMT的午夜）开始所经过的秒数。
+	// 创建时间，采用Unix时间戳的方式，表示从1970年1月1日（UTC/GMT的午夜）开始所经过的秒数。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreateTime *uint64 `json:"CreateTime,omitempty" name:"CreateTime"`
 
-	// 证书生效起始时间，采用unix时间戳的方式，表示从1970年1月1日（UTC/GMT的午夜）开始所经过的秒数。
+	// 证书生效起始时间，采用Unix时间戳的方式，表示从1970年1月1日（UTC/GMT的午夜）开始所经过的秒数。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	BeginTime *uint64 `json:"BeginTime,omitempty" name:"BeginTime"`
 
-	// 证书过期时间，采用unix时间戳的方式，表示从1970年1月1日（UTC/GMT的午夜）开始所经过的秒数。
+	// 证书过期时间，采用Unix时间戳的方式，表示从1970年1月1日（UTC/GMT的午夜）开始所经过的秒数。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	EndTime *uint64 `json:"EndTime,omitempty" name:"EndTime"`
 
@@ -1693,7 +1693,7 @@ type DescribeDomainErrorPageInfoResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 订制错误响应配置集
+		// 定制错误响应配置集
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		ErrorPageSet []*DomainErrorPageInfo `json:"ErrorPageSet,omitempty" name:"ErrorPageSet" list`
 
@@ -3079,7 +3079,7 @@ type DomainErrorPageInfo struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SetHeaders []*HttpHeaderParam `json:"SetHeaders,omitempty" name:"SetHeaders" list`
 
-	// 设置的响应体(不包括 http头)
+	// 设置的响应体(不包括 HTTP头)
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Body *string `json:"Body,omitempty" name:"Body"`
 }
@@ -4242,7 +4242,7 @@ type ProxyInfo struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
-	// 创建时间，采用unix时间戳的方式，表示从1970年1月1日（UTC/GMT的午夜）开始所经过的秒数。
+	// 创建时间，采用Unix时间戳的方式，表示从1970年1月1日（UTC/GMT的午夜）开始所经过的秒数。
 	CreateTime *uint64 `json:"CreateTime,omitempty" name:"CreateTime"`
 
 	// 项目ID。
@@ -4587,11 +4587,14 @@ type SetAuthenticationRequest struct {
 	// 通道SSL证书ID，从证书管理页获取。
 	GaapCertificateId *string `json:"GaapCertificateId,omitempty" name:"GaapCertificateId"`
 
-	// 源站CA证书ID，从证书管理页获取。
+	// 源站CA证书ID，从证书管理页获取。源站认证时，填写该参数或RealServerCertificateId参数
 	RealServerCertificateId *string `json:"RealServerCertificateId,omitempty" name:"RealServerCertificateId"`
 
 	// 源站证书域名。
 	RealServerCertificateDomain *string `json:"RealServerCertificateDomain,omitempty" name:"RealServerCertificateDomain"`
+
+	// 多源站CA证书ID，从证书管理页获取。源站认证时，填写该参数或RealServerCertificateId参数
+	PolyRealServerCertificateIds []*string `json:"PolyRealServerCertificateIds,omitempty" name:"PolyRealServerCertificateIds" list`
 }
 
 func (r *SetAuthenticationRequest) ToJsonString() string {

@@ -771,7 +771,11 @@ type PornResult struct {
 	// 预留字段，后期用于展示更多识别信息。
 	AdvancedInfo *string `json:"AdvancedInfo,omitempty" name:"AdvancedInfo"`
 
-	// 取值'LABEL‘，LABEL表示结论和置信度来自标签分类。
+	// 色情识别类型：
+	// PORN：色情
+	// HOT：性感
+	// NORMAL：正常
+	// FAIL：识别失败
 	Type *string `json:"Type,omitempty" name:"Type"`
 }
 
