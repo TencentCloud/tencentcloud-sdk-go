@@ -1128,6 +1128,62 @@ func (c *Client) SetInstancesProtection(request *SetInstancesProtectionRequest) 
     return
 }
 
+func NewStartAutoScalingInstancesRequest() (request *StartAutoScalingInstancesRequest) {
+    request = &StartAutoScalingInstancesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("as", APIVersion, "StartAutoScalingInstances")
+    return
+}
+
+func NewStartAutoScalingInstancesResponse() (response *StartAutoScalingInstancesResponse) {
+    response = &StartAutoScalingInstancesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（StartAutoScalingInstances）用于开启伸缩组内 CVM 实例。
+// * 开机成功，实例转为`IN_SERVICE`状态后，会增加期望实例数，期望实例数不可超过设置的最大值
+// * 本接口支持批量操作，每次请求开机实例的上限为100
+func (c *Client) StartAutoScalingInstances(request *StartAutoScalingInstancesRequest) (response *StartAutoScalingInstancesResponse, err error) {
+    if request == nil {
+        request = NewStartAutoScalingInstancesRequest()
+    }
+    response = NewStartAutoScalingInstancesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewStopAutoScalingInstancesRequest() (request *StopAutoScalingInstancesRequest) {
+    request = &StopAutoScalingInstancesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("as", APIVersion, "StopAutoScalingInstances")
+    return
+}
+
+func NewStopAutoScalingInstancesResponse() (response *StopAutoScalingInstancesResponse) {
+    response = &StopAutoScalingInstancesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（StopAutoScalingInstances）用于关闭伸缩组内 CVM 实例。
+// * 关机方式采用`SOFT_FIRST`方式，表示在正常关闭失败后进行强制关闭
+// * 关闭`IN_SERVICE`状态的实例，会减少期望实例数，期望实例数不可低于设置的最小值
+// * 使用`STOP_CHARGING`选项关机，待关机的实例需要满足[关机不收费条件](https://cloud.tencent.com/document/product/213/19918)
+// * 本接口支持批量操作，每次请求关机实例的上限为100
+func (c *Client) StopAutoScalingInstances(request *StopAutoScalingInstancesRequest) (response *StopAutoScalingInstancesResponse, err error) {
+    if request == nil {
+        request = NewStopAutoScalingInstancesRequest()
+    }
+    response = NewStopAutoScalingInstancesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewUpgradeLaunchConfigurationRequest() (request *UpgradeLaunchConfigurationRequest) {
     request = &UpgradeLaunchConfigurationRequest{
         BaseRequest: &tchttp.BaseRequest{},

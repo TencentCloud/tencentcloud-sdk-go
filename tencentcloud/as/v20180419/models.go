@@ -29,7 +29,9 @@ type Activity struct {
 	ActivityId *string `json:"ActivityId,omitempty" name:"ActivityId"`
 
 	// 伸缩活动类型。取值如下：<br>
-	// <li>SCALE_OUT：扩容活动<li>SCALE_IN：缩容活动<li>ATTACH_INSTANCES：添加实例<li>REMOVE_INSTANCES：销毁实例<li>DETACH_INSTANCES：移出实例<li>TERMINATE_INSTANCES_UNEXPECTEDLY：实例在CVM控制台被销毁<li>REPLACE_UNHEALTHY_INSTANCE：替换不健康实例）
+	// <li>SCALE_OUT：扩容活动<li>SCALE_IN：缩容活动<li>ATTACH_INSTANCES：添加实例<li>REMOVE_INSTANCES：销毁实例<li>DETACH_INSTANCES：移出实例<li>TERMINATE_INSTANCES_UNEXPECTEDLY：实例在CVM控制台被销毁<li>REPLACE_UNHEALTHY_INSTANCE：替换不健康实例
+	// <li>START_INSTANCES：开启实例
+	// <li>STOP_INSTANCES：关闭实例
 	ActivityType *string `json:"ActivityType,omitempty" name:"ActivityType"`
 
 	// 伸缩活动状态。取值如下：<br>
@@ -192,6 +194,9 @@ type AutoScalingGroup struct {
 
 	// 服务设置
 	ServiceSettings *ServiceSettings `json:"ServiceSettings,omitempty" name:"ServiceSettings"`
+
+	// 实例具有IPv6地址数量的配置
+	Ipv6AddressCount *int64 `json:"Ipv6AddressCount,omitempty" name:"Ipv6AddressCount"`
 }
 
 type AutoScalingGroupAbstract struct {
@@ -376,6 +381,9 @@ type CreateAutoScalingGroupRequest struct {
 
 	// 服务设置，包括云监控不健康替换等服务设置。
 	ServiceSettings *ServiceSettings `json:"ServiceSettings,omitempty" name:"ServiceSettings"`
+
+	// 实例具有IPv6地址数量的配置，取值包括 0、1，默认值为0。
+	Ipv6AddressCount *int64 `json:"Ipv6AddressCount,omitempty" name:"Ipv6AddressCount"`
 }
 
 func (r *CreateAutoScalingGroupRequest) ToJsonString() string {
@@ -624,7 +632,7 @@ type CreatePaiInstanceRequest struct {
 	// 可用区列表。
 	Zones []*string `json:"Zones,omitempty" name:"Zones" list`
 
-	// VpcId。
+	// VPC ID。
 	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
 
 	// 子网列表。
@@ -1784,7 +1792,20 @@ type Instance struct {
 	// 启动配置名称
 	LaunchConfigurationName *string `json:"LaunchConfigurationName,omitempty" name:"LaunchConfigurationName"`
 
-	// 生命周期状态，取值包括IN_SERVICE, CREATING, TERMINATING, ATTACHING, DETACHING, ATTACHING_LB, DETACHING_LB等
+	// 生命周期状态，取值如下：<br>
+	// <li>IN_SERVICE：运行中
+	// <li>CREATING：创建中
+	// <li>CREATION_FAILED：创建失败
+	// <li>TERMINATING：中止中
+	// <li>TERMINATION_FAILED：中止失败
+	// <li>ATTACHING：绑定中
+	// <li>DETACHING：解绑中
+	// <li>ATTACHING_LB：绑定LB中<li>DETACHING_LB：解绑LB中
+	// <li>STARTING：开机中
+	// <li>START_FAILED：开机失败
+	// <li>STOPPING：关机中
+	// <li>STOP_FAILED：关机失败
+	// <li>STOPPED：已关机
 	LifeCycleState *string `json:"LifeCycleState,omitempty" name:"LifeCycleState"`
 
 	// 健康状态，取值包括HEALTHY和UNHEALTHY
@@ -2072,6 +2093,9 @@ type ModifyAutoScalingGroupRequest struct {
 
 	// 服务设置，包括云监控不健康替换等服务设置。
 	ServiceSettings *ServiceSettings `json:"ServiceSettings,omitempty" name:"ServiceSettings"`
+
+	// 实例具有IPv6地址数量的配置，取值包括0、1。
+	Ipv6AddressCount *int64 `json:"Ipv6AddressCount,omitempty" name:"Ipv6AddressCount"`
 }
 
 func (r *ModifyAutoScalingGroupRequest) ToJsonString() string {
@@ -2576,6 +2600,12 @@ type ServiceSettings struct {
 
 	// 开启监控不健康替换服务。若开启则对于云监控标记为不健康的实例，弹性伸缩服务会进行替换。若不指定该参数，则默认为 False。
 	ReplaceMonitorUnhealthy *bool `json:"ReplaceMonitorUnhealthy,omitempty" name:"ReplaceMonitorUnhealthy"`
+
+	// 取值范围： 
+	// CLASSIC_SCALING：经典方式，使用创建、销毁实例来实现扩缩容； 
+	// WAKE_UP_STOPPED_SCALING：扩容优先开机。扩容时优先对已关机的实例执行开机操作，若开机后实例数仍低于期望实例数，则创建实例，缩容仍采用销毁实例的方式。用户可以使用StopAutoScalingInstances接口来关闭伸缩组内的实例。监控告警触发的扩容仍将创建实例
+	// 默认取值：CLASSIC_SCALING
+	ScalingMode *string `json:"ScalingMode,omitempty" name:"ScalingMode"`
 }
 
 type SetInstancesProtectionRequest struct {
@@ -2626,6 +2656,92 @@ type SpotMarketOptions struct {
 	// 竞价请求类型，当前仅支持类型：one-time，默认值为one-time
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SpotInstanceType *string `json:"SpotInstanceType,omitempty" name:"SpotInstanceType"`
+}
+
+type StartAutoScalingInstancesRequest struct {
+	*tchttp.BaseRequest
+
+	// 伸缩组ID
+	AutoScalingGroupId *string `json:"AutoScalingGroupId,omitempty" name:"AutoScalingGroupId"`
+
+	// 待开启的CVM实例ID列表
+	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds" list`
+}
+
+func (r *StartAutoScalingInstancesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *StartAutoScalingInstancesRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type StartAutoScalingInstancesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 伸缩活动ID
+		ActivityId *string `json:"ActivityId,omitempty" name:"ActivityId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *StartAutoScalingInstancesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *StartAutoScalingInstancesResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type StopAutoScalingInstancesRequest struct {
+	*tchttp.BaseRequest
+
+	// 伸缩组ID
+	AutoScalingGroupId *string `json:"AutoScalingGroupId,omitempty" name:"AutoScalingGroupId"`
+
+	// 待关闭的CVM实例ID列表
+	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds" list`
+
+	// 关闭的实例是否收费，取值为：  
+	// KEEP_CHARGING：关机继续收费  
+	// STOP_CHARGING：关机停止收费
+	// 默认为 KEEP_CHARGING
+	StoppedMode *string `json:"StoppedMode,omitempty" name:"StoppedMode"`
+}
+
+func (r *StopAutoScalingInstancesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *StopAutoScalingInstancesRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type StopAutoScalingInstancesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 伸缩活动ID
+		ActivityId *string `json:"ActivityId,omitempty" name:"ActivityId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *StopAutoScalingInstancesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *StopAutoScalingInstancesResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
 }
 
 type SystemDisk struct {
