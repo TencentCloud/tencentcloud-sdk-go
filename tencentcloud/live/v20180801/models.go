@@ -191,7 +191,7 @@ type BillDataInfo struct {
 type BindLiveDomainCertRequest struct {
 	*tchttp.BaseRequest
 
-	// 证书Id。
+	// 证书Id。使用添加证书接口获取证书Id。
 	CertId *int64 `json:"CertId,omitempty" name:"CertId"`
 
 	// 播放域名。
@@ -846,6 +846,7 @@ type CreateLiveTranscodeTemplateRequest struct {
 	TemplateName *string `json:"TemplateName,omitempty" name:"TemplateName"`
 
 	// 视频码率。范围：100-8000。
+	// 注意：码率必须是100的倍数。
 	VideoBitrate *int64 `json:"VideoBitrate,omitempty" name:"VideoBitrate"`
 
 	// 视频编码：h264/h265，默认h264。

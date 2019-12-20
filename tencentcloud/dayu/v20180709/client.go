@@ -568,6 +568,31 @@ func (c *Client) DescribeBasicDeviceThreshold(request *DescribeBasicDeviceThresh
     return
 }
 
+func NewDescribeCCAlarmThresholdRequest() (request *DescribeCCAlarmThresholdRequest) {
+    request = &DescribeCCAlarmThresholdRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("dayu", APIVersion, "DescribeCCAlarmThreshold")
+    return
+}
+
+func NewDescribeCCAlarmThresholdResponse() (response *DescribeCCAlarmThresholdResponse) {
+    response = &DescribeCCAlarmThresholdResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 获取高防包、高防IP、高防IP专业版、棋牌盾产品设置CC攻击的告警通知阈值
+func (c *Client) DescribeCCAlarmThreshold(request *DescribeCCAlarmThresholdRequest) (response *DescribeCCAlarmThresholdResponse, err error) {
+    if request == nil {
+        request = NewDescribeCCAlarmThresholdRequest()
+    }
+    response = NewDescribeCCAlarmThresholdResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeCCEvListRequest() (request *DescribeCCEvListRequest) {
     request = &DescribeCCEvListRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -618,6 +643,31 @@ func (c *Client) DescribeCCIpAllowDeny(request *DescribeCCIpAllowDenyRequest) (r
     return
 }
 
+func NewDescribeCCSelfDefinePolicyRequest() (request *DescribeCCSelfDefinePolicyRequest) {
+    request = &DescribeCCSelfDefinePolicyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("dayu", APIVersion, "DescribeCCSelfDefinePolicy")
+    return
+}
+
+func NewDescribeCCSelfDefinePolicyResponse() (response *DescribeCCSelfDefinePolicyResponse) {
+    response = &DescribeCCSelfDefinePolicyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 获取CC自定义策略
+func (c *Client) DescribeCCSelfDefinePolicy(request *DescribeCCSelfDefinePolicyRequest) (response *DescribeCCSelfDefinePolicyResponse, err error) {
+    if request == nil {
+        request = NewDescribeCCSelfDefinePolicyRequest()
+    }
+    response = NewDescribeCCSelfDefinePolicyResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeCCTrendRequest() (request *DescribeCCTrendRequest) {
     request = &DescribeCCTrendRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -664,6 +714,56 @@ func (c *Client) DescribeCCUrlAllow(request *DescribeCCUrlAllowRequest) (respons
         request = NewDescribeCCUrlAllowRequest()
     }
     response = NewDescribeCCUrlAllowResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeDDoSAlarmThresholdRequest() (request *DescribeDDoSAlarmThresholdRequest) {
+    request = &DescribeDDoSAlarmThresholdRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("dayu", APIVersion, "DescribeDDoSAlarmThreshold")
+    return
+}
+
+func NewDescribeDDoSAlarmThresholdResponse() (response *DescribeDDoSAlarmThresholdResponse) {
+    response = &DescribeDDoSAlarmThresholdResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 获取高防包、高防IP、高防IP专业版、棋牌盾产品设置DDoS攻击的告警通知阈值
+func (c *Client) DescribeDDoSAlarmThreshold(request *DescribeDDoSAlarmThresholdRequest) (response *DescribeDDoSAlarmThresholdResponse, err error) {
+    if request == nil {
+        request = NewDescribeDDoSAlarmThresholdRequest()
+    }
+    response = NewDescribeDDoSAlarmThresholdResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeDDoSAttackSourceRequest() (request *DescribeDDoSAttackSourceRequest) {
+    request = &DescribeDDoSAttackSourceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("dayu", APIVersion, "DescribeDDoSAttackSource")
+    return
+}
+
+func NewDescribeDDoSAttackSourceResponse() (response *DescribeDDoSAttackSourceResponse) {
+    response = &DescribeDDoSAttackSourceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 获取DDoS攻击源列表
+func (c *Client) DescribeDDoSAttackSource(request *DescribeDDoSAttackSourceRequest) (response *DescribeDDoSAttackSourceResponse, err error) {
+    if request == nil {
+        request = NewDescribeDDoSAttackSourceRequest()
+    }
+    response = NewDescribeDDoSAttackSourceResponse()
     err = c.Send(request, response)
     return
 }
@@ -1493,6 +1593,31 @@ func (c *Client) DescribleRegionCount(request *DescribleRegionCountRequest) (res
     return
 }
 
+func NewModifyCCAlarmThresholdRequest() (request *ModifyCCAlarmThresholdRequest) {
+    request = &ModifyCCAlarmThresholdRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("dayu", APIVersion, "ModifyCCAlarmThreshold")
+    return
+}
+
+func NewModifyCCAlarmThresholdResponse() (response *ModifyCCAlarmThresholdResponse) {
+    response = &ModifyCCAlarmThresholdResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 为高防包、高防IP、高防IP专业版、棋牌盾产品设置CC攻击的告警通知阈值
+func (c *Client) ModifyCCAlarmThreshold(request *ModifyCCAlarmThresholdRequest) (response *ModifyCCAlarmThresholdResponse, err error) {
+    if request == nil {
+        request = NewModifyCCAlarmThresholdRequest()
+    }
+    response = NewModifyCCAlarmThresholdResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyCCHostProtectionRequest() (request *ModifyCCHostProtectionRequest) {
     request = &ModifyCCHostProtectionRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1689,6 +1814,31 @@ func (c *Client) ModifyDDoSAIStatus(request *ModifyDDoSAIStatusRequest) (respons
         request = NewModifyDDoSAIStatusRequest()
     }
     response = NewModifyDDoSAIStatusResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyDDoSAlarmThresholdRequest() (request *ModifyDDoSAlarmThresholdRequest) {
+    request = &ModifyDDoSAlarmThresholdRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("dayu", APIVersion, "ModifyDDoSAlarmThreshold")
+    return
+}
+
+func NewModifyDDoSAlarmThresholdResponse() (response *ModifyDDoSAlarmThresholdResponse) {
+    response = &ModifyDDoSAlarmThresholdResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 为高防包、高防IP、高防IP专业版、棋牌盾等产品设置DDoS攻击的告警通知阈值
+func (c *Client) ModifyDDoSAlarmThreshold(request *ModifyDDoSAlarmThresholdRequest) (response *ModifyDDoSAlarmThresholdResponse, err error) {
+    if request == nil {
+        request = NewModifyDDoSAlarmThresholdRequest()
+    }
+    response = NewModifyDDoSAlarmThresholdResponse()
     err = c.Send(request, response)
     return
 }

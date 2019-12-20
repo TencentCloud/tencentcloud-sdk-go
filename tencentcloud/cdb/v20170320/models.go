@@ -1115,7 +1115,7 @@ func (r *DescribeAsyncRequestInfoResponse) FromJsonString(s string) error {
 type DescribeBackupConfigRequest struct {
 	*tchttp.BaseRequest
 
-	// 实例短实例 ID，格式如：cdb-c1nl9rpv。与云数据库控制台页面中显示的实例 ID 相同。
+	// 实例 ID，格式如：cdb-c1nl9rpv。与云数据库控制台页面中显示的实例 ID 相同。
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 }
 
@@ -2455,10 +2455,10 @@ type DescribeTagsOfInstanceIdsRequest struct {
 	// 实例列表。
 	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds" list`
 
-	// 偏移量。
+	// 分页偏移量。
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
 
-	// 每页返回多少个标签。
+	// 分页大小。
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 }
 
@@ -2475,10 +2475,10 @@ type DescribeTagsOfInstanceIdsResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 偏移量。
+		// 分页偏移量。
 		Offset *int64 `json:"Offset,omitempty" name:"Offset"`
 
-		// 每页返回多少个标签。
+		// 分页大小。
 		Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 
 		// 实例标签信息。
@@ -2727,16 +2727,16 @@ type DeviceNetInfo struct {
 	// tcp连接数
 	Conn []*int64 `json:"Conn,omitempty" name:"Conn" list`
 
-	// 网卡入包量
+	// 网卡入包量，单位：个/秒
 	PackageIn []*int64 `json:"PackageIn,omitempty" name:"PackageIn" list`
 
-	// 网卡出包量
+	// 网卡出包量，单位：个/秒
 	PackageOut []*int64 `json:"PackageOut,omitempty" name:"PackageOut" list`
 
-	// 入流量，单位：KB
+	// 入流量，单位：kbps
 	FlowIn []*int64 `json:"FlowIn,omitempty" name:"FlowIn" list`
 
-	// 出流量，单位：KB
+	// 出流量，单位：kbps
 	FlowOut []*int64 `json:"FlowOut,omitempty" name:"FlowOut" list`
 }
 
@@ -3300,15 +3300,19 @@ type ModifyAccountPrivilegesRequest struct {
 	Accounts []*Account `json:"Accounts,omitempty" name:"Accounts" list`
 
 	// 全局权限。其中，GlobalPrivileges 中权限的可选值为："SELECT","INSERT","UPDATE","DELETE","CREATE", "PROCESS", "DROP","REFERENCES","INDEX","ALTER","SHOW DATABASES","CREATE TEMPORARY TABLES","LOCK TABLES","EXECUTE","CREATE VIEW","SHOW VIEW","CREATE ROUTINE","ALTER ROUTINE","EVENT","TRIGGER"。
+	// 注意，不传该参数表示清除该权限。
 	GlobalPrivileges []*string `json:"GlobalPrivileges,omitempty" name:"GlobalPrivileges" list`
 
 	// 数据库的权限。Privileges 权限的可选值为："SELECT","INSERT","UPDATE","DELETE","CREATE",	"DROP","REFERENCES","INDEX","ALTER","CREATE TEMPORARY TABLES","LOCK TABLES","EXECUTE","CREATE VIEW","SHOW VIEW","CREATE ROUTINE","ALTER ROUTINE","EVENT","TRIGGER"。
+	// 注意，不传该参数表示清除该权限。
 	DatabasePrivileges []*DatabasePrivilege `json:"DatabasePrivileges,omitempty" name:"DatabasePrivileges" list`
 
 	// 数据库中表的权限。Privileges 权限的可选值为：权限的可选值为："SELECT","INSERT","UPDATE","DELETE","CREATE",	"DROP","REFERENCES","INDEX","ALTER","CREATE VIEW","SHOW VIEW", "TRIGGER"。
+	// 注意，不传该参数表示清除该权限。
 	TablePrivileges []*TablePrivilege `json:"TablePrivileges,omitempty" name:"TablePrivileges" list`
 
 	// 数据库表中列的权限。Privileges 权限的可选值为："SELECT","INSERT","UPDATE","REFERENCES"。
+	// 注意，不传该参数表示清除该权限。
 	ColumnPrivileges []*ColumnPrivilege `json:"ColumnPrivileges,omitempty" name:"ColumnPrivileges" list`
 }
 

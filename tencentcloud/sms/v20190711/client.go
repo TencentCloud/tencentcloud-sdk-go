@@ -58,7 +58,7 @@ func NewCallbackStatusStatisticsResponse() (response *CallbackStatusStatisticsRe
     return
 }
 
-// 统计用户回执的数据
+// 统计用户回执的数据。
 func (c *Client) CallbackStatusStatistics(request *CallbackStatusStatisticsRequest) (response *CallbackStatusStatisticsResponse, err error) {
     if request == nil {
         request = NewCallbackStatusStatisticsRequest()
@@ -83,7 +83,7 @@ func NewPullSmsReplyStatusResponse() (response *PullSmsReplyStatusResponse) {
     return
 }
 
-// 拉取短信回复状态
+// 拉取短信回复状态。
 func (c *Client) PullSmsReplyStatus(request *PullSmsReplyStatusRequest) (response *PullSmsReplyStatusResponse, err error) {
     if request == nil {
         request = NewPullSmsReplyStatusRequest()
@@ -108,7 +108,7 @@ func NewPullSmsReplyStatusByPhoneNumberResponse() (response *PullSmsReplyStatusB
     return
 }
 
-// 拉取单个号码短信回复状态
+// 拉取单个号码短信回复状态。
 func (c *Client) PullSmsReplyStatusByPhoneNumber(request *PullSmsReplyStatusByPhoneNumberRequest) (response *PullSmsReplyStatusByPhoneNumberResponse, err error) {
     if request == nil {
         request = NewPullSmsReplyStatusByPhoneNumberRequest()
@@ -133,7 +133,7 @@ func NewPullSmsSendStatusResponse() (response *PullSmsSendStatusResponse) {
     return
 }
 
-// 拉取短信下发状态
+// 拉取短信下发状态。
 func (c *Client) PullSmsSendStatus(request *PullSmsSendStatusRequest) (response *PullSmsSendStatusResponse, err error) {
     if request == nil {
         request = NewPullSmsSendStatusRequest()
@@ -158,7 +158,7 @@ func NewPullSmsSendStatusByPhoneNumberResponse() (response *PullSmsSendStatusByP
     return
 }
 
-// 拉取单个号码短信下发状态
+// 拉取单个号码短信下发状态。
 func (c *Client) PullSmsSendStatusByPhoneNumber(request *PullSmsSendStatusByPhoneNumberRequest) (response *PullSmsSendStatusByPhoneNumberResponse, err error) {
     if request == nil {
         request = NewPullSmsSendStatusByPhoneNumberRequest()
@@ -209,7 +209,7 @@ func NewSendStatusStatisticsResponse() (response *SendStatusStatisticsResponse) 
     return
 }
 
-// 统计用户发送短信的数据
+// 统计用户发送短信的数据。
 func (c *Client) SendStatusStatistics(request *SendStatusStatisticsRequest) (response *SendStatusStatisticsResponse, err error) {
     if request == nil {
         request = NewSendStatusStatisticsRequest()
@@ -234,7 +234,7 @@ func NewSmsPackagesStatisticsResponse() (response *SmsPackagesStatisticsResponse
     return
 }
 
-// 用户套餐包信息统计
+// 用户套餐包信息统计。
 func (c *Client) SmsPackagesStatistics(request *SmsPackagesStatisticsRequest) (response *SmsPackagesStatisticsResponse, err error) {
     if request == nil {
         request = NewSmsPackagesStatisticsRequest()
