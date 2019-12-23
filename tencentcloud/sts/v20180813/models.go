@@ -20,6 +20,18 @@ import (
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
+type ApiKey struct {
+
+	// 密钥ID
+	SecretId *string `json:"SecretId,omitempty" name:"SecretId"`
+
+	// 创建时间(时间戳)
+	CreateTime *uint64 `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 状态(2:有效, 3:禁用, 4:已删除)
+	Status *uint64 `json:"Status,omitempty" name:"Status"`
+}
+
 type AssumeRoleRequest struct {
 	*tchttp.BaseRequest
 
@@ -35,7 +47,7 @@ type AssumeRoleRequest struct {
 	// 策略描述
 	// 注意：
 	// 1、policy 需要做 urlencode（如果通过 GET 方法请求云 API，发送请求前，所有参数都需要按照[云 API 规范](https://cloud.tencent.com/document/api/598/33159#1.-.E6.8B.BC.E6.8E.A5.E8.A7.84.E8.8C.83.E8.AF.B7.E6.B1.82.E4.B8.B2)再 urlencode 一次）。
-	// 2、策略语法参照 CAM 策略语法。
+	// 2、策略语法参照[ CAM 策略语法](https://cloud.tencent.com/document/product/598/10603)。
 	// 3、策略中不能包含 principal 元素。
 	Policy *string `json:"Policy,omitempty" name:"Policy"`
 }
@@ -190,5 +202,42 @@ func (r *GetFederationTokenResponse) ToJsonString() string {
 }
 
 func (r *GetFederationTokenResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type QueryApiKeyRequest struct {
+	*tchttp.BaseRequest
+
+	// 待查询的账号(不填默认查当前账号)
+	TargetUin *uint64 `json:"TargetUin,omitempty" name:"TargetUin"`
+}
+
+func (r *QueryApiKeyRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *QueryApiKeyRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type QueryApiKeyResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 密钥ID列表
+		IdKeys []*ApiKey `json:"IdKeys,omitempty" name:"IdKeys" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *QueryApiKeyResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *QueryApiKeyResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }

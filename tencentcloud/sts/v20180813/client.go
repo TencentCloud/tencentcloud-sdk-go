@@ -117,3 +117,28 @@ func (c *Client) GetFederationToken(request *GetFederationTokenRequest) (respons
     err = c.Send(request, response)
     return
 }
+
+func NewQueryApiKeyRequest() (request *QueryApiKeyRequest) {
+    request = &QueryApiKeyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("sts", APIVersion, "QueryApiKey")
+    return
+}
+
+func NewQueryApiKeyResponse() (response *QueryApiKeyResponse) {
+    response = &QueryApiKeyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 拉取API密钥列表
+func (c *Client) QueryApiKey(request *QueryApiKeyRequest) (response *QueryApiKeyResponse, err error) {
+    if request == nil {
+        request = NewQueryApiKeyRequest()
+    }
+    response = NewQueryApiKeyResponse()
+    err = c.Send(request, response)
+    return
+}

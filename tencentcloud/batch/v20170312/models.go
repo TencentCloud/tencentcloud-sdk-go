@@ -176,6 +176,9 @@ type ComputeEnvView struct {
 
 	// 计算节点期望个数
 	DesiredComputeNodeCount *uint64 `json:"DesiredComputeNodeCount,omitempty" name:"DesiredComputeNodeCount"`
+
+	// 计算环境资源类型，当前为CVM和CPM（黑石）
+	ResourceType *string `json:"ResourceType,omitempty" name:"ResourceType"`
 }
 
 type ComputeNode struct {
@@ -209,6 +212,9 @@ type ComputeNode struct {
 
 	// 实例公网IP
 	PublicIpAddresses []*string `json:"PublicIpAddresses,omitempty" name:"PublicIpAddresses" list`
+
+	// 计算环境资源类型，当前为CVM和CPM（黑石）
+	ResourceType *string `json:"ResourceType,omitempty" name:"ResourceType"`
 }
 
 type ComputeNodeMetrics struct {
@@ -665,13 +671,14 @@ func (r *DescribeComputeEnvCreateInfoResponse) FromJsonString(s string) error {
 type DescribeComputeEnvCreateInfosRequest struct {
 	*tchttp.BaseRequest
 
-	// 计算环境ID
+	// 计算环境ID列表，与Filters参数不能同时指定。
 	EnvIds []*string `json:"EnvIds,omitempty" name:"EnvIds" list`
 
 	// 过滤条件
 	// <li> zone - String - 是否必填：否 -（过滤条件）按照可用区过滤。</li>
 	// <li> env-id - String - 是否必填：否 -（过滤条件）按照计算环境ID过滤。</li>
 	// <li> env-name - String - 是否必填：否 -（过滤条件）按照计算环境名称过滤。</li>
+	// 与EnvIds参数不能同时指定。
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
 
 	// 偏移量
@@ -758,6 +765,9 @@ type DescribeComputeEnvResponse struct {
 		// 计算环境类型
 		EnvType *string `json:"EnvType,omitempty" name:"EnvType"`
 
+		// 计算环境资源类型，当前为CVM和CPM（黑石）
+		ResourceType *string `json:"ResourceType,omitempty" name:"ResourceType"`
+
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
@@ -775,13 +785,15 @@ func (r *DescribeComputeEnvResponse) FromJsonString(s string) error {
 type DescribeComputeEnvsRequest struct {
 	*tchttp.BaseRequest
 
-	// 计算环境ID
+	// 计算环境ID列表，与Filters参数不能同时指定。
 	EnvIds []*string `json:"EnvIds,omitempty" name:"EnvIds" list`
 
 	// 过滤条件
 	// <li> zone - String - 是否必填：否 -（过滤条件）按照可用区过滤。</li>
 	// <li> env-id - String - 是否必填：否 -（过滤条件）按照计算环境ID过滤。</li>
 	// <li> env-name - String - 是否必填：否 -（过滤条件）按照计算环境名称过滤。</li>
+	// <li> resource-type - String - 是否必填：否 -（过滤条件）按照计算资源类型过滤，取值CVM或者CPM(黑石)。</li>
+	// 与EnvIds参数不能同时指定。
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
 
 	// 偏移量
@@ -821,6 +833,43 @@ func (r *DescribeComputeEnvsResponse) ToJsonString() string {
 }
 
 func (r *DescribeComputeEnvsResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeCpmOsInfoRequest struct {
+	*tchttp.BaseRequest
+
+	// 黑石设备类型代号。 可以从[DescribeDeviceClass](https://cloud.tencent.com/document/api/386/32911)查询设备类型列表。
+	DeviceClassCode *string `json:"DeviceClassCode,omitempty" name:"DeviceClassCode"`
+}
+
+func (r *DescribeCpmOsInfoRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeCpmOsInfoRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeCpmOsInfoResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 操作系统信息列表。
+		OsInfoSet []*OsInfo `json:"OsInfoSet,omitempty" name:"OsInfoSet" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeCpmOsInfoResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeCpmOsInfoResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -1024,7 +1073,7 @@ func (r *DescribeJobSubmitInfoResponse) FromJsonString(s string) error {
 type DescribeJobsRequest struct {
 	*tchttp.BaseRequest
 
-	// 作业ID
+	// 作业ID列表，与Filters参数不能同时指定。
 	JobIds []*string `json:"JobIds,omitempty" name:"JobIds" list`
 
 	// 过滤条件
@@ -1032,6 +1081,7 @@ type DescribeJobsRequest struct {
 	// <li> job-name - String - 是否必填：否 -（过滤条件）按照作业名称过滤。</li>
 	// <li> job-state - String - 是否必填：否 -（过滤条件）按照作业状态过滤。</li>
 	// <li> zone - String - 是否必填：否 -（过滤条件）按照可用区过滤。</li>
+	// 与JobIds参数不能同时指定。
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
 
 	// 偏移量
@@ -1200,11 +1250,12 @@ func (r *DescribeTaskResponse) FromJsonString(s string) error {
 type DescribeTaskTemplatesRequest struct {
 	*tchttp.BaseRequest
 
-	// 任务模板ID
+	// 任务模板ID列表，与Filters参数不能同时指定。
 	TaskTemplateIds []*string `json:"TaskTemplateIds,omitempty" name:"TaskTemplateIds" list`
 
 	// 过滤条件
 	// <li> task-template-name - String - 是否必填：否 -（过滤条件）按照任务模板名称过滤。</li>
+	// 与TaskTemplateIds参数不能同时指定。
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
 
 	// 偏移量
@@ -1339,7 +1390,7 @@ type EnvDataCpm struct {
 	// RAID类型ID。通过黑石接口[DescribeDeviceClassPartition]( https://cloud.tencent.com/document/api/386/32910)查询机型RAID方式以及系统盘大小，获取RAID信息。
 	RaidId *int64 `json:"RaidId,omitempty" name:"RaidId"`
 
-	// 部署服务器的操作系统ID。通过黑石接口[DescribeOsInfo]( https://cloud.tencent.com/document/product/386/32902)查询操作系统信息。
+	// 部署服务器的操作系统ID。通过批量计算接口DescribeCpmOsInfo查询操作系统信息。
 	OsTypeId *int64 `json:"OsTypeId,omitempty" name:"OsTypeId"`
 
 	// 黑石VPC列表，目前仅支持一个VPC。
@@ -1843,6 +1894,30 @@ type Notification struct {
 
 	// 事件配置
 	EventConfigs []*EventConfig `json:"EventConfigs,omitempty" name:"EventConfigs" list`
+}
+
+type OsInfo struct {
+
+	// 操作系统ID。
+	OsTypeId *uint64 `json:"OsTypeId,omitempty" name:"OsTypeId"`
+
+	// 操作系统名称。
+	OsName *string `json:"OsName,omitempty" name:"OsName"`
+
+	// 操作系统名称描述。
+	OsDescription *string `json:"OsDescription,omitempty" name:"OsDescription"`
+
+	// 操作系统英文名称。
+	OsEnglishDescription *string `json:"OsEnglishDescription,omitempty" name:"OsEnglishDescription"`
+
+	// 操作系统的分类，如CentOs Debian。
+	OsClass *string `json:"OsClass,omitempty" name:"OsClass"`
+
+	// 标识镜像分类。public:公共镜像; private: 专属镜像。
+	ImageTag *string `json:"ImageTag,omitempty" name:"ImageTag"`
+
+	// 操作系统，ext4文件下所支持的最大的磁盘大小。单位为T。
+	MaxPartitionSize *uint64 `json:"MaxPartitionSize,omitempty" name:"MaxPartitionSize"`
 }
 
 type OutputMapping struct {
@@ -2413,4 +2488,7 @@ type VirtualPrivateCloud struct {
 
 	// 私有网络子网 IP 数组，在创建实例、修改实例vpc属性操作中可使用此参数。当前仅批量创建多台实例时支持传入相同子网的多个 IP。
 	PrivateIpAddresses []*string `json:"PrivateIpAddresses,omitempty" name:"PrivateIpAddresses" list`
+
+	// 为弹性网卡指定随机生成的 IPv6 地址数量。
+	Ipv6AddressCount *uint64 `json:"Ipv6AddressCount,omitempty" name:"Ipv6AddressCount"`
 }

@@ -43,6 +43,81 @@ func NewClient(credential *common.Credential, region string, clientProfile *prof
 }
 
 
+func NewBindingPolicyObjectRequest() (request *BindingPolicyObjectRequest) {
+    request = &BindingPolicyObjectRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("monitor", APIVersion, "BindingPolicyObject")
+    return
+}
+
+func NewBindingPolicyObjectResponse() (response *BindingPolicyObjectResponse) {
+    response = &BindingPolicyObjectResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 将告警策略绑定到特定对象
+func (c *Client) BindingPolicyObject(request *BindingPolicyObjectRequest) (response *BindingPolicyObjectResponse, err error) {
+    if request == nil {
+        request = NewBindingPolicyObjectRequest()
+    }
+    response = NewBindingPolicyObjectResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreatePolicyGroupRequest() (request *CreatePolicyGroupRequest) {
+    request = &CreatePolicyGroupRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("monitor", APIVersion, "CreatePolicyGroup")
+    return
+}
+
+func NewCreatePolicyGroupResponse() (response *CreatePolicyGroupResponse) {
+    response = &CreatePolicyGroupResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 增加策略组
+func (c *Client) CreatePolicyGroup(request *CreatePolicyGroupRequest) (response *CreatePolicyGroupResponse, err error) {
+    if request == nil {
+        request = NewCreatePolicyGroupRequest()
+    }
+    response = NewCreatePolicyGroupResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeAccidentEventListRequest() (request *DescribeAccidentEventListRequest) {
+    request = &DescribeAccidentEventListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("monitor", APIVersion, "DescribeAccidentEventList")
+    return
+}
+
+func NewDescribeAccidentEventListResponse() (response *DescribeAccidentEventListResponse) {
+    response = &DescribeAccidentEventListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 获取平台事件列表
+func (c *Client) DescribeAccidentEventList(request *DescribeAccidentEventListRequest) (response *DescribeAccidentEventListResponse, err error) {
+    if request == nil {
+        request = NewDescribeAccidentEventListRequest()
+    }
+    response = NewDescribeAccidentEventListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeBaseMetricsRequest() (request *DescribeBaseMetricsRequest) {
     request = &DescribeBaseMetricsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -64,6 +139,31 @@ func (c *Client) DescribeBaseMetrics(request *DescribeBaseMetricsRequest) (respo
         request = NewDescribeBaseMetricsRequest()
     }
     response = NewDescribeBaseMetricsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeProductEventListRequest() (request *DescribeProductEventListRequest) {
+    request = &DescribeProductEventListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("monitor", APIVersion, "DescribeProductEventList")
+    return
+}
+
+func NewDescribeProductEventListResponse() (response *DescribeProductEventListResponse) {
+    response = &DescribeProductEventListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 分页获取产品事件的列表
+func (c *Client) DescribeProductEventList(request *DescribeProductEventListRequest) (response *DescribeProductEventListResponse, err error) {
+    if request == nil {
+        request = NewDescribeProductEventListRequest()
+    }
+    response = NewDescribeProductEventListResponse()
     err = c.Send(request, response)
     return
 }
@@ -91,6 +191,31 @@ func (c *Client) GetMonitorData(request *GetMonitorDataRequest) (response *GetMo
         request = NewGetMonitorDataRequest()
     }
     response = NewGetMonitorDataResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyAlarmReceiversRequest() (request *ModifyAlarmReceiversRequest) {
+    request = &ModifyAlarmReceiversRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("monitor", APIVersion, "ModifyAlarmReceivers")
+    return
+}
+
+func NewModifyAlarmReceiversResponse() (response *ModifyAlarmReceiversResponse) {
+    response = &ModifyAlarmReceiversResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 修改告警接收人
+func (c *Client) ModifyAlarmReceivers(request *ModifyAlarmReceiversRequest) (response *ModifyAlarmReceiversResponse, err error) {
+    if request == nil {
+        request = NewModifyAlarmReceiversRequest()
+    }
+    response = NewModifyAlarmReceiversResponse()
     err = c.Send(request, response)
     return
 }

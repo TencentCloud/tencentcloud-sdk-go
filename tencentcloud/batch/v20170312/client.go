@@ -345,6 +345,31 @@ func (c *Client) DescribeComputeEnvs(request *DescribeComputeEnvsRequest) (respo
     return
 }
 
+func NewDescribeCpmOsInfoRequest() (request *DescribeCpmOsInfoRequest) {
+    request = &DescribeCpmOsInfoRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("batch", APIVersion, "DescribeCpmOsInfo")
+    return
+}
+
+func NewDescribeCpmOsInfoResponse() (response *DescribeCpmOsInfoResponse) {
+    response = &DescribeCpmOsInfoResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 创建黑石计算环境时，查询批量计算环境支持的黑石操作系统信息
+func (c *Client) DescribeCpmOsInfo(request *DescribeCpmOsInfoRequest) (response *DescribeCpmOsInfoResponse, err error) {
+    if request == nil {
+        request = NewDescribeCpmOsInfoRequest()
+    }
+    response = NewDescribeCpmOsInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeCvmZoneInstanceConfigInfosRequest() (request *DescribeCvmZoneInstanceConfigInfosRequest) {
     request = &DescribeCvmZoneInstanceConfigInfosRequest{
         BaseRequest: &tchttp.BaseRequest{},
