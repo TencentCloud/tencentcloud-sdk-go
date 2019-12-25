@@ -48,7 +48,7 @@ func main() {
 	client, _ := sms.NewClient(credential, "ap-guangzhou", cpf)
 
 	/* 实例化一个请求对象，根据调用的接口和实际情况，可以进一步设置请求参数
-	 * 你可以直接查询SDK源码确定SendSmsRequest有哪些属性可以设置
+	 * 你可以直接查询SDK源码确定接口有哪些属性可以设置
 	 * 属性可能是基本类型，也可能引用了另一个数据结构
 	 * 推荐使用IDE进行开发，可以方便的跳转查阅各个接口和数据结构的文档说明 */
 	request := sms.NewPullSmsReplyStatusRequest()
