@@ -2052,8 +2052,12 @@ type ConcatTask2017 struct {
 type ConfirmEventsRequest struct {
 	*tchttp.BaseRequest
 
-	// 事件句柄，数组长度限制：16。
+	// 事件句柄，即 [拉取事件通知](/document/product/266/33433) 接口输出参数中的 EventSet. EventHandle 字段。
+	// 数组长度限制：16。
 	EventHandles []*string `json:"EventHandles,omitempty" name:"EventHandles" list`
+
+	// 保留字段，特殊用途时使用。
+	ExtInfo *string `json:"ExtInfo,omitempty" name:"ExtInfo"`
 
 	// 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
 	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
@@ -2867,7 +2871,8 @@ type CreateWatermarkTemplateRequest struct {
 
 	// 水印类型，可选值：
 	// <li>image：图片水印；</li>
-	// <li>text：文字水印。</li>
+	// <li>text：文字水印；</li>
+	// <li>svg：SVG 水印。</li>
 	Type *string `json:"Type,omitempty" name:"Type"`
 
 	// 水印模板名称，长度限制：64 个字符。
@@ -2881,7 +2886,7 @@ type CreateWatermarkTemplateRequest struct {
 	// <li>TopRight：表示坐标原点位于视频图像的右上角，水印原点为图片或文字的右上角；</li>
 	// <li>BottomLeft：表示坐标原点位于视频图像的左下角，水印原点为图片或文字的左下角；</li>
 	// <li>BottomRight：表示坐标原点位于视频图像的右下角，水印原点为图片或文字的右下角。</li>
-	// 默认值：TopLeft。目前，当 Type 为 image，该字段仅支持 TopLeft。
+	// 默认值：TopLeft。
 	CoordinateOrigin *string `json:"CoordinateOrigin,omitempty" name:"CoordinateOrigin"`
 
 	// 水印原点距离视频图像坐标原点的水平位置。支持 %、px 两种格式：
@@ -5030,6 +5035,15 @@ type ExecuteFunctionRequest struct {
 	// 接口参数，具体参数格式调用时与后端协调。
 	FunctionArg *string `json:"FunctionArg,omitempty" name:"FunctionArg"`
 
+	// 来源上下文，用于透传用户请求信息，任务流状态变更回调将返回该字段值，最长 1000 个字符。
+	SessionContext *string `json:"SessionContext,omitempty" name:"SessionContext"`
+
+	// 用于去重的识别码，如果七天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。
+	SessionId *string `json:"SessionId,omitempty" name:"SessionId"`
+
+	// 保留字段，特殊用途时使用。
+	ExtInfo *string `json:"ExtInfo,omitempty" name:"ExtInfo"`
+
 	// 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
 	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
 }
@@ -5228,11 +5242,27 @@ type ImageSpriteTemplate struct {
 	// 雪碧图模板名称。
 	Name *string `json:"Name,omitempty" name:"Name"`
 
-	// 雪碧图中小图的宽度。
+	// 雪碧图中小图的宽度（或长边）的最大值，取值范围：0 和 [128, 4096]，单位：px。
+	// <li>当 Width、Height 均为 0，则分辨率同源；</li>
+	// <li>当 Width 为 0，Height 非 0，则 Width 按比例缩放；</li>
+	// <li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li>
+	// <li>当 Width、Height 均非 0，则分辨率按用户指定。</li>
+	// 默认值：0。
 	Width *uint64 `json:"Width,omitempty" name:"Width"`
 
-	// 雪碧图中小图的高度。
+	// 雪碧图中小图的高度（或短边）的最大值，取值范围：0 和 [128, 4096]，单位：px。
+	// <li>当 Width、Height 均为 0，则分辨率同源；</li>
+	// <li>当 Width 为 0，Height 非 0，则 Width 按比例缩放；</li>
+	// <li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li>
+	// <li>当 Width、Height 均非 0，则分辨率按用户指定。</li>
+	// 默认值：0。
 	Height *uint64 `json:"Height,omitempty" name:"Height"`
+
+	// 分辨率自适应，可选值：
+	// <li>open：开启，此时，Width 代表视频的长边，Height 表示视频的短边；</li>
+	// <li>close：关闭，此时，Width 代表视频的宽度，Height 表示视频的高度。</li>
+	// 默认值：open。
+	ResolutionAdaptive *string `json:"ResolutionAdaptive,omitempty" name:"ResolutionAdaptive"`
 
 	// 采样类型。
 	SampleType *string `json:"SampleType,omitempty" name:"SampleType"`
@@ -6210,6 +6240,7 @@ type MediaProcessTaskTranscodeResult struct {
 	Input *TranscodeTaskInput `json:"Input,omitempty" name:"Input"`
 
 	// 转码任务的输出。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Output *MediaTranscodeItem `json:"Output,omitempty" name:"Output"`
 }
 
@@ -7204,7 +7235,6 @@ type ModifyWatermarkTemplateRequest struct {
 	// <li>TopRight：表示坐标原点位于视频图像的右上角，水印原点为图片或文字的右上角；</li>
 	// <li>BottomLeft：表示坐标原点位于视频图像的左下角，水印原点为图片或文字的左下角；</li>
 	// <li>BottomRight：表示坐标原点位于视频图像的右下角，水印原点为图片或文字的右下角。</li>
-	// 目前，当 Type 为 image，该字段仅支持 TopLeft。
 	CoordinateOrigin *string `json:"CoordinateOrigin,omitempty" name:"CoordinateOrigin"`
 
 	// 水印原点距离视频图像坐标原点的水平位置。支持 %、px 两种格式：
@@ -7798,6 +7828,9 @@ type ProcessMediaByProcedureRequest struct {
 	// 用于去重的识别码，如果一天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。
 	SessionId *string `json:"SessionId,omitempty" name:"SessionId"`
 
+	// 保留字段，特殊用途时使用。
+	ExtInfo *string `json:"ExtInfo,omitempty" name:"ExtInfo"`
+
 	// 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
 	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
 }
@@ -7965,6 +7998,9 @@ func (r *ProcessMediaResponse) FromJsonString(s string) error {
 
 type PullEventsRequest struct {
 	*tchttp.BaseRequest
+
+	// 保留字段，特殊用途时使用。
+	ExtInfo *string `json:"ExtInfo,omitempty" name:"ExtInfo"`
 
 	// 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
 	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
@@ -8260,8 +8296,8 @@ type SampleSnapshotTemplate struct {
 	// 填充方式，当视频流配置宽高参数与原始视频的宽高比不一致时，对转码的处理方式，即为“填充”。可选填充方式：
 	// <li> stretch：拉伸，对每一帧进行拉伸，填满整个画面，可能导致转码后的视频被“压扁“或者“拉长“；</li>
 	// <li>black：留黑，保持视频宽高比不变，边缘剩余部分使用黑色填充。</li>
-	// <li>black：留白，保持视频宽高比不变，边缘剩余部分使用白色填充。</li>
-	// <li>black：高斯模糊，保持视频宽高比不变，边缘剩余部分使用高斯模糊。</li>
+	// <li>white：留白，保持视频宽高比不变，边缘剩余部分使用白色填充。</li>
+	// <li>gauss：高斯模糊，保持视频宽高比不变，边缘剩余部分使用高斯模糊。</li>
 	// 默认值：black 。
 	FillType *string `json:"FillType,omitempty" name:"FillType"`
 }
@@ -8304,12 +8340,12 @@ type SearchMediaRequest struct {
 	// <li>指定 Text 搜索时，将根据匹配度排序，该字段无效</li>
 	Sort *SortBy `json:"Sort,omitempty" name:"Sort"`
 
-	// 分页返回的起始偏移量，默认值：0。将返回第 Offset 到第 Offset+Limit-1 条。
-	// <li>取值范围：Offset + Limit 不超过5000。</li>
+	// <div id="p_offset">分页返回的起始偏移量，默认值：0。将返回第 Offset 到第 Offset+Limit-1 条。
+	// <li>取值范围：Offset + Limit 不超过5000。（参见：<a href="#maxResultsDesc">接口返回结果数限制</a>）</li></div>
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
 
-	// 分页返回的记录条数，默认值：10。将返回第 Offset 到第 Offset+Limit-1 条。
-	// <li>取值范围：Offset + Limit 不超过5000。</li>
+	// <div id="p_limit">分页返回的记录条数，默认值：10。将返回第 Offset 到第 Offset+Limit-1 条。
+	// <li>取值范围：Offset + Limit 不超过5000。（参见：<a href="#maxResultsDesc">接口返回结果数限制</a>）</li></div>
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 
 	// 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
@@ -8731,6 +8767,12 @@ type TaskSimpleInfo struct {
 	// 任务结束时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。若任务尚未完成，该字段为空。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FinishTime *string `json:"FinishTime,omitempty" name:"FinishTime"`
+
+	// 用于去重的识别码，如果七天内曾有过相同的识别码的请求。
+	SessionId *string `json:"SessionId,omitempty" name:"SessionId"`
+
+	// 来源上下文，用于透传用户请求信息。
+	SessionContext *string `json:"SessionContext,omitempty" name:"SessionContext"`
 }
 
 type TempCertificate struct {

@@ -2610,68 +2610,6 @@ func (r *DescribeLiveStreamEventListResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
-type DescribeLiveStreamOnlineInfoRequest struct {
-	*tchttp.BaseRequest
-
-	// 取得第几页。
-	// 默认值：1。
-	PageNum *uint64 `json:"PageNum,omitempty" name:"PageNum"`
-
-	// 分页大小。
-	// 最大值：100。
-	// 取值范围：1~100 之前的任意整数。
-	// 默认值：10。
-	PageSize *uint64 `json:"PageSize,omitempty" name:"PageSize"`
-
-	// 0:未开始推流 1:正在推流
-	Status *int64 `json:"Status,omitempty" name:"Status"`
-
-	// 流名称。
-	StreamName *string `json:"StreamName,omitempty" name:"StreamName"`
-}
-
-func (r *DescribeLiveStreamOnlineInfoRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-func (r *DescribeLiveStreamOnlineInfoRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
-}
-
-type DescribeLiveStreamOnlineInfoResponse struct {
-	*tchttp.BaseResponse
-	Response *struct {
-
-		// 分页的页码。
-		PageNum *uint64 `json:"PageNum,omitempty" name:"PageNum"`
-
-		// 每页大小。
-		PageSize *uint64 `json:"PageSize,omitempty" name:"PageSize"`
-
-		// 符合条件的总个数。
-		TotalNum *uint64 `json:"TotalNum,omitempty" name:"TotalNum"`
-
-		// 总页数。
-		TotalPage *uint64 `json:"TotalPage,omitempty" name:"TotalPage"`
-
-		// 流信息列表。
-		StreamInfoList []*StreamInfo `json:"StreamInfoList,omitempty" name:"StreamInfoList" list`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
-}
-
-func (r *DescribeLiveStreamOnlineInfoResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-func (r *DescribeLiveStreamOnlineInfoResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
-}
-
 type DescribeLiveStreamOnlineListRequest struct {
 	*tchttp.BaseRequest
 
@@ -3768,7 +3706,7 @@ type DescribeTopClientIpSumInfoListRequest struct {
 	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
 
 	// 结束时间点，格式为yyyy-mm-dd HH:MM:SS
-	// 时间跨度在（0,4小时]，支持最近1天数据查询。
+	// 时间跨度在[0,4小时]，支持最近1天数据查询。
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 
 	// 播放域名，默认为不填，表示求总体数据。
@@ -3842,7 +3780,7 @@ type DescribeVisitTopSumInfoListRequest struct {
 	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
 
 	// 结束时间点，格式为yyyy-mm-dd HH:MM:SS
-	// 时间跨度在[0,4小时]，支持最近1天数据查询。
+	// 时间跨度在(0,4小时]，支持最近1天数据查询。
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 
 	// 峰值指标，可选值包括”Domain”，”StreamId”。
@@ -4284,7 +4222,7 @@ type ModifyLiveCallbackTemplateRequest struct {
 	// 鉴黄回调URL。
 	PornCensorshipNotifyUrl *string `json:"PornCensorshipNotifyUrl,omitempty" name:"PornCensorshipNotifyUrl"`
 
-	// 回调key，回调URL公用，鉴权回调说明详见回调格式文档
+	// 回调key，回调URL公用，鉴权回调说明详见回调格式文档。
 	CallbackKey *string `json:"CallbackKey,omitempty" name:"CallbackKey"`
 }
 
@@ -5358,30 +5296,6 @@ type StreamEventInfo struct {
 
 	// 分辨率。
 	Resolution *string `json:"Resolution,omitempty" name:"Resolution"`
-}
-
-type StreamInfo struct {
-
-	// 直播流所属应用名称
-	AppName *string `json:"AppName,omitempty" name:"AppName"`
-
-	// 创建模式
-	CreateMode *string `json:"CreateMode,omitempty" name:"CreateMode"`
-
-	// 创建时间，如: 2018-07-13 14:48:23
-	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
-
-	// 流状态
-	Status *int64 `json:"Status,omitempty" name:"Status"`
-
-	// 流id
-	StreamId *string `json:"StreamId,omitempty" name:"StreamId"`
-
-	// 流名称
-	StreamName *string `json:"StreamName,omitempty" name:"StreamName"`
-
-	// 水印id
-	WaterMarkId *string `json:"WaterMarkId,omitempty" name:"WaterMarkId"`
 }
 
 type StreamName struct {

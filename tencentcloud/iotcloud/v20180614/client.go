@@ -83,7 +83,7 @@ func NewCancelTaskResponse() (response *CancelTaskResponse) {
     return
 }
 
-// 本接口（CancelTask）用于取消一个未被调度的任务。
+// 本接口（CancelTask）用于取消一个未被调度的任务。 
 func (c *Client) CancelTask(request *CancelTaskRequest) (response *CancelTaskResponse, err error) {
     if request == nil {
         request = NewCancelTaskRequest()
@@ -108,7 +108,7 @@ func NewCreateDeviceResponse() (response *CreateDeviceResponse) {
     return
 }
 
-// 本接口（CreateDevice）用于新建一个物联网通信设备。
+// 本接口（CreateDevice）用于新建一个物联网通信设备。 
 func (c *Client) CreateDevice(request *CreateDeviceRequest) (response *CreateDeviceResponse, err error) {
     if request == nil {
         request = NewCreateDeviceRequest()
@@ -183,7 +183,7 @@ func NewCreateProductResponse() (response *CreateProductResponse) {
     return
 }
 
-// 本接口（CreateProduct）用于创建一个新的物联网通信产品
+// 本接口（CreateProduct）用于创建一个新的物联网通信产品 
 func (c *Client) CreateProduct(request *CreateProductRequest) (response *CreateProductResponse, err error) {
     if request == nil {
         request = NewCreateProductRequest()
@@ -208,7 +208,7 @@ func NewCreateTaskResponse() (response *CreateTaskResponse) {
     return
 }
 
-// 本接口（CreateTask）用于创建一个批量任务。目前此接口可以创建批量更新影子以及批量下发消息的任务
+// 本接口（CreateTask）用于创建一个批量任务。目前此接口可以创建批量更新影子以及批量下发消息的任务 
 func (c *Client) CreateTask(request *CreateTaskRequest) (response *CreateTaskResponse, err error) {
     if request == nil {
         request = NewCreateTaskRequest()
@@ -233,7 +233,7 @@ func NewCreateTopicPolicyResponse() (response *CreateTopicPolicyResponse) {
     return
 }
 
-// 本接口（CreateTopicPolicy）用于创建一个Topic
+// 本接口（CreateTopicPolicy）用于创建一个Topic 
 func (c *Client) CreateTopicPolicy(request *CreateTopicPolicyRequest) (response *CreateTopicPolicyResponse, err error) {
     if request == nil {
         request = NewCreateTopicPolicyRequest()
@@ -283,7 +283,7 @@ func NewDeleteDeviceResponse() (response *DeleteDeviceResponse) {
     return
 }
 
-// 本接口（DeleteDevice）用于删除物联网通信设备。
+// 本接口（DeleteDevice）用于删除物联网通信设备。 
 func (c *Client) DeleteDevice(request *DeleteDeviceRequest) (response *DeleteDeviceResponse, err error) {
     if request == nil {
         request = NewDeleteDeviceRequest()
@@ -333,7 +333,7 @@ func NewDeleteProductResponse() (response *DeleteProductResponse) {
     return
 }
 
-// 本接口（DeleteProduct）用于删除一个物联网通信产品。
+// 本接口（DeleteProduct）用于删除一个物联网通信产品
 func (c *Client) DeleteProduct(request *DeleteProductRequest) (response *DeleteProductResponse, err error) {
     if request == nil {
         request = NewDeleteProductRequest()
@@ -383,7 +383,7 @@ func NewDescribeDeviceResponse() (response *DescribeDeviceResponse) {
     return
 }
 
-// 本接口（DescribeDevice）用于查看设备信息
+// 本接口（DescribeDevice）用于查看设备信息 
 func (c *Client) DescribeDevice(request *DescribeDeviceRequest) (response *DescribeDeviceResponse, err error) {
     if request == nil {
         request = NewDescribeDeviceRequest()
@@ -433,7 +433,7 @@ func NewDescribeDeviceShadowResponse() (response *DescribeDeviceShadowResponse) 
     return
 }
 
-// 本接口（DescribeDeviceShadow）用于查询虚拟设备信息。
+// 本接口（DescribeDeviceShadow）用于查询虚拟设备信息。 
 func (c *Client) DescribeDeviceShadow(request *DescribeDeviceShadowRequest) (response *DescribeDeviceShadowResponse, err error) {
     if request == nil {
         request = NewDescribeDeviceShadowRequest()
@@ -458,7 +458,7 @@ func NewDescribeDevicesResponse() (response *DescribeDevicesResponse) {
     return
 }
 
-// 本接口（DescribeDevices）用于查询物联网通信设备的设备列表。
+// 本接口（DescribeDevices）用于查询物联网通信设备的设备列表。 
 func (c *Client) DescribeDevices(request *DescribeDevicesRequest) (response *DescribeDevicesResponse, err error) {
     if request == nil {
         request = NewDescribeDevicesRequest()
@@ -558,7 +558,7 @@ func NewDescribeProductsResponse() (response *DescribeProductsResponse) {
     return
 }
 
-// 本接口（DescribeProducts）用于列出产品列表。
+// 本接口（DescribeProducts）用于列出产品列表。 
 func (c *Client) DescribeProducts(request *DescribeProductsRequest) (response *DescribeProductsResponse, err error) {
     if request == nil {
         request = NewDescribeProductsRequest()
@@ -583,7 +583,7 @@ func NewDescribeTaskResponse() (response *DescribeTaskResponse) {
     return
 }
 
-// 本接口（DescribeTask）用于查询一个已创建任务的详情，任务保留一个月
+// 本接口（DescribeTask）用于查询一个已创建任务的详情，任务保留一个月 
 func (c *Client) DescribeTask(request *DescribeTaskRequest) (response *DescribeTaskResponse, err error) {
     if request == nil {
         request = NewDescribeTaskRequest()
@@ -608,7 +608,7 @@ func NewDescribeTasksResponse() (response *DescribeTasksResponse) {
     return
 }
 
-// 本接口（DescribeTasks）用于查询已创建的任务列表，任务保留一个月
+// 本接口（DescribeTasks）用于查询已创建的任务列表，任务保留一个月 
 func (c *Client) DescribeTasks(request *DescribeTasksRequest) (response *DescribeTasksResponse, err error) {
     if request == nil {
         request = NewDescribeTasksRequest()
@@ -708,7 +708,7 @@ func NewPublishMessageResponse() (response *PublishMessageResponse) {
     return
 }
 
-// 本接口（PublishMessage）用于向某个主题发消息。
+// 本接口（PublishMessage）用于向某个主题发消息。 
 func (c *Client) PublishMessage(request *PublishMessageRequest) (response *PublishMessageResponse, err error) {
     if request == nil {
         request = NewPublishMessageRequest()
@@ -783,7 +783,7 @@ func NewResetDeviceStateResponse() (response *ResetDeviceStateResponse) {
     return
 }
 
-// 重置设备的连接状态
+// 重置设备的连接状态 
 func (c *Client) ResetDeviceState(request *ResetDeviceStateRequest) (response *ResetDeviceStateResponse, err error) {
     if request == nil {
         request = NewResetDeviceStateRequest()

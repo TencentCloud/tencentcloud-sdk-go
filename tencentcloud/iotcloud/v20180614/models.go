@@ -426,7 +426,7 @@ func (r *CreateTaskResponse) FromJsonString(s string) error {
 type CreateTopicPolicyRequest struct {
 	*tchttp.BaseRequest
 
-	// 产品自身id
+	// 产品自身ID
 	ProductID *string `json:"ProductID,omitempty" name:"ProductID"`
 
 	// Topic名称
@@ -435,7 +435,7 @@ type CreateTopicPolicyRequest struct {
 	// Topic权限，1发布，2订阅，3订阅和发布
 	Privilege *uint64 `json:"Privilege,omitempty" name:"Privilege"`
 
-	// 代理订阅信息，网关产品为绑定的子产品创建topic时需要填写，内容为子产品的id和设备信息。
+	// 代理订阅信息，网关产品为绑定的子产品创建topic时需要填写，内容为子产品的ID和设备信息。
 	BrokerSubscribe *BrokerSubscribe `json:"BrokerSubscribe,omitempty" name:"BrokerSubscribe"`
 }
 
@@ -546,7 +546,7 @@ func (r *DeleteDeviceResponse) FromJsonString(s string) error {
 type DeleteLoraDeviceRequest struct {
 	*tchttp.BaseRequest
 
-	// 设备所属产品id
+	// 设备所属产品ID
 	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
 
 	// 设备名称
@@ -783,6 +783,10 @@ type DescribeDeviceResponse struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		EnableState *uint64 `json:"EnableState,omitempty" name:"EnableState"`
 
+		// 设备标签
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Labels []*DeviceLabel `json:"Labels,omitempty" name:"Labels" list`
+
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
@@ -889,7 +893,7 @@ func (r *DescribeDevicesResponse) FromJsonString(s string) error {
 type DescribeLoraDeviceRequest struct {
 	*tchttp.BaseRequest
 
-	// 产品Id
+	// 产品id
 	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
 
 	// 设备名称
@@ -1044,9 +1048,6 @@ type DescribeProductsRequest struct {
 
 	// 分页大小，当前页面中显示的最大数量，值范围 10-250。
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
-
-	// 过滤条件
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
 }
 
 func (r *DescribeProductsRequest) ToJsonString() string {
@@ -1268,6 +1269,19 @@ type DeviceInfo struct {
 	// 设备可用状态，0禁用，1启用
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	EnableState *uint64 `json:"EnableState,omitempty" name:"EnableState"`
+
+	// 设备标签
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Labels []*DeviceLabel `json:"Labels,omitempty" name:"Labels" list`
+}
+
+type DeviceLabel struct {
+
+	// 标签标识
+	Key *string `json:"Key,omitempty" name:"Key"`
+
+	// 标签值
+	Value *string `json:"Value,omitempty" name:"Value"`
 }
 
 type DeviceTag struct {
@@ -1348,15 +1362,6 @@ func (r *EnableTopicRuleResponse) ToJsonString() string {
 
 func (r *EnableTopicRuleResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
-}
-
-type Filter struct {
-
-	// 过滤键的名称
-	Name *string `json:"Name,omitempty" name:"Name"`
-
-	// 一个或者多个过滤值
-	Values []*string `json:"Values,omitempty" name:"Values" list`
 }
 
 type MultiDevicesInfo struct {
@@ -1447,7 +1452,7 @@ type ProductProperties struct {
 type PublishAsDeviceRequest struct {
 	*tchttp.BaseRequest
 
-	// 产品id
+	// 产品ID
 	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
 
 	// 设备名称
@@ -1622,7 +1627,7 @@ func (r *ReplaceTopicRuleResponse) FromJsonString(s string) error {
 type ResetDeviceStateRequest struct {
 	*tchttp.BaseRequest
 
-	// 产品Id
+	// 产品ID
 	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
 
 	// 设备名称
@@ -1808,6 +1813,9 @@ type UpdateDeviceShadowRequest struct {
 
 	// 当前版本号，需要和后台的version保持一致，才能更新成功
 	ShadowVersion *uint64 `json:"ShadowVersion,omitempty" name:"ShadowVersion"`
+
+	// 下发delta消息的topic前缀，可选类型: "$shadow","$template"。不填写默认"$shadow"。
+	Prefix *string `json:"Prefix,omitempty" name:"Prefix"`
 }
 
 func (r *UpdateDeviceShadowRequest) ToJsonString() string {

@@ -418,6 +418,56 @@ func (c *Client) DeleteClusterRouteTable(request *DeleteClusterRouteTableRequest
     return
 }
 
+func NewDescribeClusterAsGroupOptionRequest() (request *DescribeClusterAsGroupOptionRequest) {
+    request = &DescribeClusterAsGroupOptionRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tke", APIVersion, "DescribeClusterAsGroupOption")
+    return
+}
+
+func NewDescribeClusterAsGroupOptionResponse() (response *DescribeClusterAsGroupOptionResponse) {
+    response = &DescribeClusterAsGroupOptionResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 集群弹性伸缩配置
+func (c *Client) DescribeClusterAsGroupOption(request *DescribeClusterAsGroupOptionRequest) (response *DescribeClusterAsGroupOptionResponse, err error) {
+    if request == nil {
+        request = NewDescribeClusterAsGroupOptionRequest()
+    }
+    response = NewDescribeClusterAsGroupOptionResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeClusterAsGroupsRequest() (request *DescribeClusterAsGroupsRequest) {
+    request = &DescribeClusterAsGroupsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tke", APIVersion, "DescribeClusterAsGroups")
+    return
+}
+
+func NewDescribeClusterAsGroupsResponse() (response *DescribeClusterAsGroupsResponse) {
+    response = &DescribeClusterAsGroupsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 集群关联的伸缩组列表
+func (c *Client) DescribeClusterAsGroups(request *DescribeClusterAsGroupsRequest) (response *DescribeClusterAsGroupsResponse, err error) {
+    if request == nil {
+        request = NewDescribeClusterAsGroupsRequest()
+    }
+    response = NewDescribeClusterAsGroupsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeClusterEndpointStatusRequest() (request *DescribeClusterEndpointStatusRequest) {
     request = &DescribeClusterEndpointStatusRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -639,6 +689,31 @@ func (c *Client) DescribeRouteTableConflicts(request *DescribeRouteTableConflict
         request = NewDescribeRouteTableConflictsRequest()
     }
     response = NewDescribeRouteTableConflictsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyClusterAsGroupAttributeRequest() (request *ModifyClusterAsGroupAttributeRequest) {
+    request = &ModifyClusterAsGroupAttributeRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tke", APIVersion, "ModifyClusterAsGroupAttribute")
+    return
+}
+
+func NewModifyClusterAsGroupAttributeResponse() (response *ModifyClusterAsGroupAttributeResponse) {
+    response = &ModifyClusterAsGroupAttributeResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 修改集群伸缩组属性
+func (c *Client) ModifyClusterAsGroupAttribute(request *ModifyClusterAsGroupAttributeRequest) (response *ModifyClusterAsGroupAttributeResponse, err error) {
+    if request == nil {
+        request = NewModifyClusterAsGroupAttributeRequest()
+    }
+    response = NewModifyClusterAsGroupAttributeResponse()
     err = c.Send(request, response)
     return
 }

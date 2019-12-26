@@ -81,6 +81,15 @@ func (r *AddExistedInstancesResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type AutoScalingGroupRange struct {
+
+	// 伸缩组最小实例数
+	MinSize *int64 `json:"MinSize,omitempty" name:"MinSize"`
+
+	// 伸缩组最大实例数
+	MaxSize *int64 `json:"MaxSize,omitempty" name:"MaxSize"`
+}
+
 type Cluster struct {
 
 	// 集群ID
@@ -135,6 +144,74 @@ type ClusterAdvancedSettings struct {
 
 	// 集群中节点NodeName类型（包括 hostname,lan-ip两种形式，默认为lan-ip。如果开启了hostname模式，创建节点时需要设置HostName参数，并且InstanceName需要和HostName一致）
 	NodeNameType *string `json:"NodeNameType,omitempty" name:"NodeNameType"`
+}
+
+type ClusterAsGroup struct {
+
+	// 伸缩组ID
+	AutoScalingGroupId *string `json:"AutoScalingGroupId,omitempty" name:"AutoScalingGroupId"`
+
+	// 伸缩组状态(开启 enabled 开启中 enabling 关闭 disabled 关闭中 disabling 更新中 updating 删除中 deleting 开启缩容中 scaleDownEnabling 关闭缩容中 scaleDownDisabling)
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 节点是否设置成不可调度
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsUnschedulable *bool `json:"IsUnschedulable,omitempty" name:"IsUnschedulable"`
+
+	// 伸缩组的label列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Labels []*Label `json:"Labels,omitempty" name:"Labels" list`
+}
+
+type ClusterAsGroupAttribute struct {
+
+	// 伸缩组ID
+	AutoScalingGroupId *string `json:"AutoScalingGroupId,omitempty" name:"AutoScalingGroupId"`
+
+	// 是否开启
+	AutoScalingGroupEnabled *bool `json:"AutoScalingGroupEnabled,omitempty" name:"AutoScalingGroupEnabled"`
+
+	// 伸缩组最大最小实例数
+	AutoScalingGroupRange *AutoScalingGroupRange `json:"AutoScalingGroupRange,omitempty" name:"AutoScalingGroupRange"`
+}
+
+type ClusterAsGroupOption struct {
+
+	// 是否开启缩容
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsScaleDownEnabled *bool `json:"IsScaleDownEnabled,omitempty" name:"IsScaleDownEnabled"`
+
+	// 多伸缩组情况下扩容选择算法(random 随机选择，most-pods 最多类型的Pod least-waste 最少的资源浪费，默认为random)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Expander *string `json:"Expander,omitempty" name:"Expander"`
+
+	// 最大并发缩容数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MaxEmptyBulkDelete *int64 `json:"MaxEmptyBulkDelete,omitempty" name:"MaxEmptyBulkDelete"`
+
+	// 集群扩容后多少分钟开始判断缩容（默认为10分钟）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ScaleDownDelay *int64 `json:"ScaleDownDelay,omitempty" name:"ScaleDownDelay"`
+
+	// 节点连续空闲多少分钟后被缩容（默认为 10分钟）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ScaleDownUnneededTime *int64 `json:"ScaleDownUnneededTime,omitempty" name:"ScaleDownUnneededTime"`
+
+	// 节点资源使用量低于多少(百分比)时认为空闲(默认: 50(百分比))
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ScaleDownUtilizationThreshold *int64 `json:"ScaleDownUtilizationThreshold,omitempty" name:"ScaleDownUtilizationThreshold"`
+
+	// 含有本地存储Pod的节点是否不缩容(默认： FALSE)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SkipNodesWithLocalStorage *bool `json:"SkipNodesWithLocalStorage,omitempty" name:"SkipNodesWithLocalStorage"`
+
+	// 含有kube-system namespace下非DaemonSet管理的Pod的节点是否不缩容 (默认： FALSE)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SkipNodesWithSystemPods *bool `json:"SkipNodesWithSystemPods,omitempty" name:"SkipNodesWithSystemPods"`
+
+	// 计算资源使用量时是否默认忽略DaemonSet的实例(默认值: False，不忽略)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IgnoreDaemonSetsUtilization *bool `json:"IgnoreDaemonSetsUtilization,omitempty" name:"IgnoreDaemonSetsUtilization"`
 }
 
 type ClusterBasicSettings struct {
@@ -404,6 +481,9 @@ type CreateClusterRequest struct {
 
 	// 已存在实例的配置信息。所有实例必须在同一个VPC中，最大数量不超过100。
 	ExistedInstancesForNode []*ExistedInstancesForNode `json:"ExistedInstancesForNode,omitempty" name:"ExistedInstancesForNode" list`
+
+	// CVM类型和其对应的数据盘挂载配置信息
+	InstanceDataDiskMountSettings []*InstanceDataDiskMountSetting `json:"InstanceDataDiskMountSettings,omitempty" name:"InstanceDataDiskMountSettings" list`
 }
 
 func (r *CreateClusterRequest) ToJsonString() string {
@@ -531,13 +611,10 @@ type DataDisk struct {
 	DiskSize *int64 `json:"DiskSize,omitempty" name:"DiskSize"`
 
 	// 是否自动化格式盘并挂载
-	AutuFormatAndMount *bool `json:"AutuFormatAndMount,omitempty" name:"AutuFormatAndMount"`
+	AutoFormatAndMount *bool `json:"AutoFormatAndMount,omitempty" name:"AutoFormatAndMount"`
 
 	// 挂载目录
-	MountTarget []*string `json:"MountTarget,omitempty" name:"MountTarget" list`
-
-	// 云盘ID
-	DiskId []*string `json:"DiskId,omitempty" name:"DiskId" list`
+	MountTarget *string `json:"MountTarget,omitempty" name:"MountTarget"`
 }
 
 type DeleteClusterAsGroupsRequest struct {
@@ -802,6 +879,93 @@ func (r *DeleteClusterRouteTableResponse) ToJsonString() string {
 }
 
 func (r *DeleteClusterRouteTableResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeClusterAsGroupOptionRequest struct {
+	*tchttp.BaseRequest
+
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+}
+
+func (r *DescribeClusterAsGroupOptionRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeClusterAsGroupOptionRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeClusterAsGroupOptionResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 集群弹性伸缩属性
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		ClusterAsGroupOption *ClusterAsGroupOption `json:"ClusterAsGroupOption,omitempty" name:"ClusterAsGroupOption"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeClusterAsGroupOptionResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeClusterAsGroupOptionResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeClusterAsGroupsRequest struct {
+	*tchttp.BaseRequest
+
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 伸缩组ID列表，如果为空，表示拉取集群关联的所有伸缩组。
+	AutoScalingGroupIds []*string `json:"AutoScalingGroupIds,omitempty" name:"AutoScalingGroupIds" list`
+
+	// 偏移量，默认为0。关于Offset的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 返回数量，默认为20，最大值为100。关于Limit的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+func (r *DescribeClusterAsGroupsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeClusterAsGroupsRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeClusterAsGroupsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 集群关联的伸缩组总数
+		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 集群关联的伸缩组列表
+		ClusterAsGroupSet *ClusterAsGroup `json:"ClusterAsGroupSet,omitempty" name:"ClusterAsGroupSet"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeClusterAsGroupsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeClusterAsGroupsResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -1323,10 +1487,10 @@ type ExistedInstancesPara struct {
 
 type Filter struct {
 
-	// 属性名称, 若存在多个Filter时，Filter间的关系为逻辑与（AND）关系。
+	// 需要过滤的字段。
 	Name *string `json:"Name,omitempty" name:"Name"`
 
-	// 属性值, 若同一个Filter存在多个Values，同一Filter下Values间的关系为逻辑或（OR）关系。
+	// 字段的过滤值。
 	Values []*string `json:"Values,omitempty" name:"Values" list`
 }
 
@@ -1366,6 +1530,18 @@ type InstanceAdvancedSettings struct {
 	DataDisks []*DataDisk `json:"DataDisks,omitempty" name:"DataDisks" list`
 }
 
+type InstanceDataDiskMountSetting struct {
+
+	// CVM实例类型
+	InstanceType *string `json:"InstanceType,omitempty" name:"InstanceType"`
+
+	// 数据盘挂载信息
+	DataDisks []*DataDisk `json:"DataDisks,omitempty" name:"DataDisks" list`
+
+	// CVM实例所属可用区
+	Zone *string `json:"Zone,omitempty" name:"Zone"`
+}
+
 type Label struct {
 
 	// map表中的Name
@@ -1388,6 +1564,43 @@ type LoginSettings struct {
 	// 保持镜像的原始设置。该参数与Password或KeyIds.N不能同时指定。只有使用自定义镜像、共享镜像或外部导入镜像创建实例时才能指定该参数为TRUE。取值范围：<br><li>TRUE：表示保持镜像的登录设置<br><li>FALSE：表示不保持镜像的登录设置<br><br>默认取值：FALSE。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	KeepImageLogin *string `json:"KeepImageLogin,omitempty" name:"KeepImageLogin"`
+}
+
+type ModifyClusterAsGroupAttributeRequest struct {
+	*tchttp.BaseRequest
+
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 集群关联的伸缩组属性
+	ClusterAsGroupAttribute *ClusterAsGroupAttribute `json:"ClusterAsGroupAttribute,omitempty" name:"ClusterAsGroupAttribute"`
+}
+
+func (r *ModifyClusterAsGroupAttributeRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyClusterAsGroupAttributeRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyClusterAsGroupAttributeResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifyClusterAsGroupAttributeResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyClusterAsGroupAttributeResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
 }
 
 type ModifyClusterEndpointSPRequest struct {

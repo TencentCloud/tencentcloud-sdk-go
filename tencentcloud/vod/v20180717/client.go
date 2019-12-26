@@ -2099,7 +2099,7 @@ func NewSearchMediaResponse() (response *SearchMediaResponse) {
     return
 }
 
-// 搜索媒体信息，支持各种条件筛选，以及对返回结果进行排序、过滤等功能，具体包括：
+// 搜索媒体信息，支持多种条件筛选，以及支持对返回结果排序、过滤等功能，具体包括：
 // - 根据媒体文件名或描述信息进行模糊搜索。
 // - 根据媒体分类、标签进行检索。
 //     - 指定分类集合 ClassIds（见输入参数），返回满足集合中任意分类的媒体。例如：媒体分类有电影、电视剧、综艺，其中电影分类下又有子分类历史片、动作片、言情片。如果 ClassIds 指定了电影、电视剧，那么电影和电视剧下的所有子分类都会返回；而如果 ClassIds 指定的是历史片、动作片，那么只有这2个子分类下的媒体才会返回。
@@ -2110,8 +2110,9 @@ func NewSearchMediaResponse() (response *SearchMediaResponse) {
 // - 允许对上述条件进行任意组合，检索同时满足以上条件的媒体。例如：筛选创建时间在2018年12月1日到2018年12月8日之间、分类为电影、带有宫斗标签的媒体。
 // - 允许对结果进行排序并分页返回，通过 Offset 和 Limit （见输入参数）来控制分页。
 // 
-// 接口搜索限制：
-// - 如果搜索结果超过5000条，不再支持分页查询超出部分的数据。如果搜索结果数量太多，建议使用更精细的筛选条件来减少搜索结果。
+// <div id="maxResultsDesc">接口返回结果数限制：</div>
+// - <b><a href="#p_offset">Offset</a> 和 <a href="#p_limit">Limit</a> 两个参数影响单次分页查询结果数。特别注意：当这2个值都缺省时，本接口最多只返回10条查询结果。</b>
+// - <b>最大支持返回5000条搜索结果，超出部分不再支持查询。如果搜索结果量太大，建议使用更精细的筛选条件来减少搜索结果。</b>
 func (c *Client) SearchMedia(request *SearchMediaRequest) (response *SearchMediaResponse, err error) {
     if request == nil {
         request = NewSearchMediaRequest()

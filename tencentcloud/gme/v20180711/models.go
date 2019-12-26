@@ -406,7 +406,7 @@ type RealtimeSpeechConf struct {
 	// 实时语音服务开关，取值：open/close
 	Status *string `json:"Status,omitempty" name:"Status"`
 
-	// 实时语音音质类型，取值：high-高音质，ordinary-普通音质。 默认为普通音质。
+	// 实时语音音质类型，取值：high-高音质，ordinary-普通音质。默认高音质。普通音质仅白名单开放，如需要普通音质，请联系腾讯云商务。
 	Quality *string `json:"Quality,omitempty" name:"Quality"`
 }
 
@@ -444,11 +444,11 @@ type ScanPiece struct {
 	// 语音检测详情
 	ScanDetail []*ScanDetail `json:"ScanDetail,omitempty" name:"ScanDetail" list`
 
-	// gme实时语音房间id，透传任务传入时的RoomId
+	// gme实时语音房间ID，透传任务传入时的RoomId
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RoomId *string `json:"RoomId,omitempty" name:"RoomId"`
 
-	// gme实时语音用户id，透传任务传入时的OpenId
+	// gme实时语音用户ID，透传任务传入时的OpenId
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	OpenId *string `json:"OpenId,omitempty" name:"OpenId"`
 
@@ -549,10 +549,10 @@ type Task struct {
 	// 数据文件的url，为 urlencode 编码，流式则为拉流地址
 	Url *string `json:"Url,omitempty" name:"Url"`
 
-	// gme实时语音房间id，通过gme实时语音进行语音分析时输入
+	// gme实时语音房间ID，通过gme实时语音进行语音分析时输入
 	RoomId *string `json:"RoomId,omitempty" name:"RoomId"`
 
-	// gme实时语音用户id，通过gme实时语音进行语音分析时输入
+	// gme实时语音用户ID，通过gme实时语音进行语音分析时输入
 	OpenId *string `json:"OpenId,omitempty" name:"OpenId"`
 }
 
@@ -575,11 +575,11 @@ type VoiceFilterConf struct {
 
 type VoiceFilterInfo struct {
 
-	// 应用id
+	// 应用ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	BizId *uint64 `json:"BizId,omitempty" name:"BizId"`
 
-	// 文件id，表示文件唯一id
+	// 文件ID，表示文件唯一ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FileId *string `json:"FileId,omitempty" name:"FileId"`
 
@@ -587,7 +587,7 @@ type VoiceFilterInfo struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FileName *string `json:"FileName,omitempty" name:"FileName"`
 
-	// 用户id
+	// 用户ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	OpenId *string `json:"OpenId,omitempty" name:"OpenId"`
 

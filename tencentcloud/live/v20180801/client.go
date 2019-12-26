@@ -1399,31 +1399,6 @@ func (c *Client) DescribeLiveStreamEventList(request *DescribeLiveStreamEventLis
     return
 }
 
-func NewDescribeLiveStreamOnlineInfoRequest() (request *DescribeLiveStreamOnlineInfoRequest) {
-    request = &DescribeLiveStreamOnlineInfoRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    request.Init().WithApiInfo("live", APIVersion, "DescribeLiveStreamOnlineInfo")
-    return
-}
-
-func NewDescribeLiveStreamOnlineInfoResponse() (response *DescribeLiveStreamOnlineInfoResponse) {
-    response = &DescribeLiveStreamOnlineInfoResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    }
-    return
-}
-
-// 查询在线推流信息列表
-func (c *Client) DescribeLiveStreamOnlineInfo(request *DescribeLiveStreamOnlineInfoRequest) (response *DescribeLiveStreamOnlineInfoResponse, err error) {
-    if request == nil {
-        request = NewDescribeLiveStreamOnlineInfoRequest()
-    }
-    response = NewDescribeLiveStreamOnlineInfoResponse()
-    err = c.Send(request, response)
-    return
-}
-
 func NewDescribeLiveStreamOnlineListRequest() (request *DescribeLiveStreamOnlineListRequest) {
     request = &DescribeLiveStreamOnlineListRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2092,7 +2067,7 @@ func NewModifyLiveCallbackTemplateResponse() (response *ModifyLiveCallbackTempla
     return
 }
 
-// 修改回调模板
+// 修改回调模板。
 func (c *Client) ModifyLiveCallbackTemplate(request *ModifyLiveCallbackTemplateRequest) (response *ModifyLiveCallbackTemplateResponse, err error) {
     if request == nil {
         request = NewModifyLiveCallbackTemplateRequest()
