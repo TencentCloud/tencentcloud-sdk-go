@@ -1670,6 +1670,44 @@ func (r *DescribeDestRegionsResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeDomainErrorPageInfoByIdsRequest struct {
+	*tchttp.BaseRequest
+
+	// 定制错误ID列表,最多支持10个
+	ErrorPageIds []*string `json:"ErrorPageIds,omitempty" name:"ErrorPageIds" list`
+}
+
+func (r *DescribeDomainErrorPageInfoByIdsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeDomainErrorPageInfoByIdsRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeDomainErrorPageInfoByIdsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 定制错误响应配置集
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		ErrorPageSet []*DomainErrorPageInfo `json:"ErrorPageSet,omitempty" name:"ErrorPageSet" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeDomainErrorPageInfoByIdsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeDomainErrorPageInfoByIdsResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeDomainErrorPageInfoRequest struct {
 	*tchttp.BaseRequest
 

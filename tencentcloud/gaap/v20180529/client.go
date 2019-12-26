@@ -895,6 +895,31 @@ func (c *Client) DescribeDomainErrorPageInfo(request *DescribeDomainErrorPageInf
     return
 }
 
+func NewDescribeDomainErrorPageInfoByIdsRequest() (request *DescribeDomainErrorPageInfoByIdsRequest) {
+    request = &DescribeDomainErrorPageInfoByIdsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("gaap", APIVersion, "DescribeDomainErrorPageInfoByIds")
+    return
+}
+
+func NewDescribeDomainErrorPageInfoByIdsResponse() (response *DescribeDomainErrorPageInfoByIdsResponse) {
+    response = &DescribeDomainErrorPageInfoByIdsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 根据定制错误ID查询错误响应
+func (c *Client) DescribeDomainErrorPageInfoByIds(request *DescribeDomainErrorPageInfoByIdsRequest) (response *DescribeDomainErrorPageInfoByIdsResponse, err error) {
+    if request == nil {
+        request = NewDescribeDomainErrorPageInfoByIdsRequest()
+    }
+    response = NewDescribeDomainErrorPageInfoByIdsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeGroupAndStatisticsProxyRequest() (request *DescribeGroupAndStatisticsProxyRequest) {
     request = &DescribeGroupAndStatisticsProxyRequest{
         BaseRequest: &tchttp.BaseRequest{},

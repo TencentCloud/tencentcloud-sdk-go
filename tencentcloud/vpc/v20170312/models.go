@@ -267,9 +267,10 @@ type AllocateAddressesRequest struct {
 	AddressType *string `json:"AddressType,omitempty" name:"AddressType"`
 
 	// Anycast发布域。
-	// <ul style="margin:0"><li>已开通Anycast公网加速白名单的用户，可选值：<ul><li>ANYCAST_ZONE_GLOBAL：全球发布域（需要额外开通Anycast全球加速白名单）</li><li>ANYCAST_ZONE_OVERSEAS：境外发布域</li></ul>默认值：ANYCAST_ZONE_OVERSEAS。</li></ul>
+	// <ul style="margin:0"><li>已开通Anycast公网加速白名单的用户，可选值：<ul><li>ANYCAST_ZONE_GLOBAL：全球发布域（需要额外开通Anycast全球加速白名单）</li><li>ANYCAST_ZONE_OVERSEAS：境外发布域</li><li><b>[已废弃]</b> ANYCAST_ZONE_A：发布域A（已更新为全球发布域）</li><li><b>[已废弃]</b> ANYCAST_ZONE_B：发布域B（已更新为全球发布域）</li></ul>默认值：ANYCAST_ZONE_OVERSEAS。</li></ul>
 	AnycastZone *string `json:"AnycastZone,omitempty" name:"AnycastZone"`
 
+	// <b>[已废弃]</b> AnycastEIP不再区分是否负载均衡。原参数说明如下：
 	// AnycastEIP是否用于绑定负载均衡。
 	// <ul style="margin:0"><li>已开通Anycast公网加速白名单的用户，可选值：<ul><li>TRUE：AnycastEIP可绑定对象为负载均衡</li>
 	// <li>FALSE：AnycastEIP可绑定对象为云服务器、NAT网关、高可用虚拟IP等</li></ul>默认值：FALSE。</li></ul>
@@ -1825,7 +1826,7 @@ type CreateSecurityGroupRequest struct {
 	// 安全组备注，最多100个字符。
 	GroupDescription *string `json:"GroupDescription,omitempty" name:"GroupDescription"`
 
-	// 项目id，默认0。可在qcloud控制台项目管理页面查询到。
+	// 项目ID，默认0。可在qcloud控制台项目管理页面查询到。
 	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
 }
 
@@ -4432,7 +4433,7 @@ type DescribeNetworkInterfaceLimitResponse struct {
 		// 弹性网卡配额
 		EniQuantity *int64 `json:"EniQuantity,omitempty" name:"EniQuantity"`
 
-		// 每个弹性网卡可以分配的ip配额
+		// 每个弹性网卡可以分配的IP配额
 		EniPrivateIpAddressQuantity *int64 `json:"EniPrivateIpAddressQuantity,omitempty" name:"EniPrivateIpAddressQuantity"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -4466,6 +4467,7 @@ type DescribeNetworkInterfacesRequest struct {
 	// <li>address-ip - String - （过滤条件）内网IPv4地址。</li>
 	// <li>tag-key - String -是否必填：否- （过滤条件）按照标签键进行过滤。使用请参考示例2</li>
 	// <li>tag:tag-key - String - 是否必填：否 - （过滤条件）按照标签键值对进行过滤。 tag-key使用具体的标签键进行替换。使用请参考示例3。</li>
+	// <li>is-primary - Boolean - 是否必填：否 - （过滤条件）按照是否主网卡进行过滤。值为true时，仅过滤主网卡；值为false时，仅过滤辅助网卡；次过滤参数为提供时，同时过滤主网卡和辅助网卡。</li>
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
 
 	// 偏移量，默认为0。
@@ -5747,6 +5749,9 @@ type HaVip struct {
 
 	// 创建时间。
 	CreatedTime *string `json:"CreatedTime,omitempty" name:"CreatedTime"`
+
+	// 使用havip的业务标识。
+	Business *string `json:"Business,omitempty" name:"Business"`
 }
 
 type HaVipAssociateAddressIpRequest struct {
@@ -6459,6 +6464,43 @@ func (r *ModifyCcnAttributeResponse) ToJsonString() string {
 }
 
 func (r *ModifyCcnAttributeResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyCcnRegionBandwidthLimitsTypeRequest struct {
+	*tchttp.BaseRequest
+
+	// 云联网实例ID。
+	CcnId *string `json:"CcnId,omitempty" name:"CcnId"`
+
+	// 云联网限速类型，INTER_REGION_LIMIT：地域间限速，OUTER_REGION_LIMIT：地域出口限速。
+	BandwidthLimitType *string `json:"BandwidthLimitType,omitempty" name:"BandwidthLimitType"`
+}
+
+func (r *ModifyCcnRegionBandwidthLimitsTypeRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyCcnRegionBandwidthLimitsTypeRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyCcnRegionBandwidthLimitsTypeResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifyCcnRegionBandwidthLimitsTypeResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyCcnRegionBandwidthLimitsTypeResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -7484,7 +7526,7 @@ type NetDetect struct {
 	// DIRECTCONNECT：专线网关；
 	// PEERCONNECTION：对等连接；
 	// NAT：NAT网关；
-	// NORMAL_CVM：普通云主机；
+	// NORMAL_CVM：普通云服务器；
 	NextHopType *string `json:"NextHopType,omitempty" name:"NextHopType"`
 
 	// 下一跳目的网关，取值与“下一跳类型”相关：
@@ -7492,7 +7534,7 @@ type NetDetect struct {
 	// 下一跳类型为DIRECTCONNECT，取值专线网关ID，形如：dcg-12345678；
 	// 下一跳类型为PEERCONNECTION，取值对等连接ID，形如：pcx-12345678；
 	// 下一跳类型为NAT，取值Nat网关，形如：nat-12345678；
-	// 下一跳类型为NORMAL_CVM，取值云主机IPv4地址，形如：10.0.0.12；
+	// 下一跳类型为NORMAL_CVM，取值云服务器IPv4地址，形如：10.0.0.12；
 	NextHopDestination *string `json:"NextHopDestination,omitempty" name:"NextHopDestination"`
 
 	// 下一跳网关名称。
@@ -8243,14 +8285,14 @@ type Route struct {
 	DestinationCidrBlock *string `json:"DestinationCidrBlock,omitempty" name:"DestinationCidrBlock"`
 
 	// 下一跳类型，目前我们支持的类型有：
-	// CVM：公网网关类型的云主机；
+	// CVM：公网网关类型的云服务器；
 	// VPN：VPN网关；
 	// DIRECTCONNECT：专线网关；
 	// PEERCONNECTION：对等连接；
 	// SSLVPN：sslvpn网关；
 	// NAT：NAT网关; 
-	// NORMAL_CVM：普通云主机；
-	// EIP：云主机的公网IP；
+	// NORMAL_CVM：普通云服务器；
+	// EIP：云服务器的公网IP；
 	// CCN：云联网。
 	GatewayType *string `json:"GatewayType,omitempty" name:"GatewayType"`
 
@@ -8339,6 +8381,9 @@ type SecurityGroup struct {
 
 	// 安全组创建时间。
 	CreatedTime *string `json:"CreatedTime,omitempty" name:"CreatedTime"`
+
+	// 标签键值对。
+	TagSet []*Tag `json:"TagSet,omitempty" name:"TagSet" list`
 }
 
 type SecurityGroupAssociationStatistics struct {
@@ -8346,7 +8391,7 @@ type SecurityGroupAssociationStatistics struct {
 	// 安全组实例ID。
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" name:"SecurityGroupId"`
 
-	// 云主机实例数。
+	// 云服务器实例数。
 	CVM *uint64 `json:"CVM,omitempty" name:"CVM"`
 
 	// 数据库实例数。
@@ -8918,6 +8963,9 @@ type VpnGateway struct {
 
 	// 网关带宽配额信息
 	VpnGatewayQuotaSet []*VpnGatewayQuota `json:"VpnGatewayQuotaSet,omitempty" name:"VpnGatewayQuotaSet" list`
+
+	// 网关实例版本信息
+	Version *string `json:"Version,omitempty" name:"Version"`
 }
 
 type VpnGatewayQuota struct {
