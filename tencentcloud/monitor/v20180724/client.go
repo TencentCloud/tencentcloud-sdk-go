@@ -93,6 +93,31 @@ func (c *Client) CreatePolicyGroup(request *CreatePolicyGroupRequest) (response 
     return
 }
 
+func NewDeletePolicyGroupRequest() (request *DeletePolicyGroupRequest) {
+    request = &DeletePolicyGroupRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("monitor", APIVersion, "DeletePolicyGroup")
+    return
+}
+
+func NewDeletePolicyGroupResponse() (response *DeletePolicyGroupResponse) {
+    response = &DeletePolicyGroupResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 删除告警策略组
+func (c *Client) DeletePolicyGroup(request *DeletePolicyGroupRequest) (response *DeletePolicyGroupResponse, err error) {
+    if request == nil {
+        request = NewDeletePolicyGroupRequest()
+    }
+    response = NewDeletePolicyGroupResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeAccidentEventListRequest() (request *DescribeAccidentEventListRequest) {
     request = &DescribeAccidentEventListRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -139,6 +164,56 @@ func (c *Client) DescribeBaseMetrics(request *DescribeBaseMetricsRequest) (respo
         request = NewDescribeBaseMetricsRequest()
     }
     response = NewDescribeBaseMetricsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeBindingPolicyObjectListRequest() (request *DescribeBindingPolicyObjectListRequest) {
+    request = &DescribeBindingPolicyObjectListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("monitor", APIVersion, "DescribeBindingPolicyObjectList")
+    return
+}
+
+func NewDescribeBindingPolicyObjectListResponse() (response *DescribeBindingPolicyObjectListResponse) {
+    response = &DescribeBindingPolicyObjectListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 获取已绑定对象列表
+func (c *Client) DescribeBindingPolicyObjectList(request *DescribeBindingPolicyObjectListRequest) (response *DescribeBindingPolicyObjectListResponse, err error) {
+    if request == nil {
+        request = NewDescribeBindingPolicyObjectListRequest()
+    }
+    response = NewDescribeBindingPolicyObjectListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribePolicyGroupInfoRequest() (request *DescribePolicyGroupInfoRequest) {
+    request = &DescribePolicyGroupInfoRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("monitor", APIVersion, "DescribePolicyGroupInfo")
+    return
+}
+
+func NewDescribePolicyGroupInfoResponse() (response *DescribePolicyGroupInfoResponse) {
+    response = &DescribePolicyGroupInfoResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 获取基础策略组详情
+func (c *Client) DescribePolicyGroupInfo(request *DescribePolicyGroupInfoRequest) (response *DescribePolicyGroupInfoResponse, err error) {
+    if request == nil {
+        request = NewDescribePolicyGroupInfoRequest()
+    }
+    response = NewDescribePolicyGroupInfoResponse()
     err = c.Send(request, response)
     return
 }
@@ -247,6 +322,56 @@ func (c *Client) PutMonitorData(request *PutMonitorDataRequest) (response *PutMo
         request = NewPutMonitorDataRequest()
     }
     response = NewPutMonitorDataResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewUnBindingAllPolicyObjectRequest() (request *UnBindingAllPolicyObjectRequest) {
+    request = &UnBindingAllPolicyObjectRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("monitor", APIVersion, "UnBindingAllPolicyObject")
+    return
+}
+
+func NewUnBindingAllPolicyObjectResponse() (response *UnBindingAllPolicyObjectResponse) {
+    response = &UnBindingAllPolicyObjectResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 删除全部的关联对象
+func (c *Client) UnBindingAllPolicyObject(request *UnBindingAllPolicyObjectRequest) (response *UnBindingAllPolicyObjectResponse, err error) {
+    if request == nil {
+        request = NewUnBindingAllPolicyObjectRequest()
+    }
+    response = NewUnBindingAllPolicyObjectResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewUnBindingPolicyObjectRequest() (request *UnBindingPolicyObjectRequest) {
+    request = &UnBindingPolicyObjectRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("monitor", APIVersion, "UnBindingPolicyObject")
+    return
+}
+
+func NewUnBindingPolicyObjectResponse() (response *UnBindingPolicyObjectResponse) {
+    response = &UnBindingPolicyObjectResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 删除策略的关联对象
+func (c *Client) UnBindingPolicyObject(request *UnBindingPolicyObjectRequest) (response *UnBindingPolicyObjectResponse, err error) {
+    if request == nil {
+        request = NewUnBindingPolicyObjectRequest()
+    }
+    response = NewUnBindingPolicyObjectResponse()
     err = c.Send(request, response)
     return
 }

@@ -43,6 +43,32 @@ func NewClient(credential *common.Credential, region string, clientProfile *prof
 }
 
 
+func NewAssociateTargetGroupsRequest() (request *AssociateTargetGroupsRequest) {
+    request = &AssociateTargetGroupsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("clb", APIVersion, "AssociateTargetGroups")
+    return
+}
+
+func NewAssociateTargetGroupsResponse() (response *AssociateTargetGroupsResponse) {
+    response = &AssociateTargetGroupsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 监听器或转发规则绑定目标组。
+// 本接口为异步接口，本接口返回成功后需以返回的 RequestID 为入参，调用 DescribeTaskStatus 接口查询本次任务是否成功。
+func (c *Client) AssociateTargetGroups(request *AssociateTargetGroupsRequest) (response *AssociateTargetGroupsResponse, err error) {
+    if request == nil {
+        request = NewAssociateTargetGroupsRequest()
+    }
+    response = NewAssociateTargetGroupsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewAutoRewriteRequest() (request *AutoRewriteRequest) {
     request = &AutoRewriteRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -224,6 +250,31 @@ func (c *Client) CreateRule(request *CreateRuleRequest) (response *CreateRuleRes
     return
 }
 
+func NewCreateTargetGroupRequest() (request *CreateTargetGroupRequest) {
+    request = &CreateTargetGroupRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("clb", APIVersion, "CreateTargetGroup")
+    return
+}
+
+func NewCreateTargetGroupResponse() (response *CreateTargetGroupResponse) {
+    response = &CreateTargetGroupResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 创建目标组。（目标组功能正在灰度中，需要开通白名单支持）
+func (c *Client) CreateTargetGroup(request *CreateTargetGroupRequest) (response *CreateTargetGroupResponse, err error) {
+    if request == nil {
+        request = NewCreateTargetGroupRequest()
+    }
+    response = NewCreateTargetGroupResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteListenerRequest() (request *DeleteListenerRequest) {
     request = &DeleteListenerRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -324,6 +375,57 @@ func (c *Client) DeleteRule(request *DeleteRuleRequest) (response *DeleteRuleRes
         request = NewDeleteRuleRequest()
     }
     response = NewDeleteRuleResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteTargetGroupsRequest() (request *DeleteTargetGroupsRequest) {
+    request = &DeleteTargetGroupsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("clb", APIVersion, "DeleteTargetGroups")
+    return
+}
+
+func NewDeleteTargetGroupsResponse() (response *DeleteTargetGroupsResponse) {
+    response = &DeleteTargetGroupsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 删除目标组
+func (c *Client) DeleteTargetGroups(request *DeleteTargetGroupsRequest) (response *DeleteTargetGroupsResponse, err error) {
+    if request == nil {
+        request = NewDeleteTargetGroupsRequest()
+    }
+    response = NewDeleteTargetGroupsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeregisterTargetGroupInstancesRequest() (request *DeregisterTargetGroupInstancesRequest) {
+    request = &DeregisterTargetGroupInstancesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("clb", APIVersion, "DeregisterTargetGroupInstances")
+    return
+}
+
+func NewDeregisterTargetGroupInstancesResponse() (response *DeregisterTargetGroupInstancesResponse) {
+    response = &DeregisterTargetGroupInstancesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 将服务器从目标组中解绑。
+// 本接口为异步接口，本接口返回成功后需以返回的 RequestID 为入参，调用 DescribeTaskStatus 接口查询本次任务是否成功。
+func (c *Client) DeregisterTargetGroupInstances(request *DeregisterTargetGroupInstancesRequest) (response *DeregisterTargetGroupInstancesResponse, err error) {
+    if request == nil {
+        request = NewDeregisterTargetGroupInstancesRequest()
+    }
+    response = NewDeregisterTargetGroupInstancesResponse()
     err = c.Send(request, response)
     return
 }
@@ -605,6 +707,81 @@ func (c *Client) DescribeRewrite(request *DescribeRewriteRequest) (response *Des
     return
 }
 
+func NewDescribeTargetGroupInstancesRequest() (request *DescribeTargetGroupInstancesRequest) {
+    request = &DescribeTargetGroupInstancesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("clb", APIVersion, "DescribeTargetGroupInstances")
+    return
+}
+
+func NewDescribeTargetGroupInstancesResponse() (response *DescribeTargetGroupInstancesResponse) {
+    response = &DescribeTargetGroupInstancesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 获取目标组绑定的服务器信息
+func (c *Client) DescribeTargetGroupInstances(request *DescribeTargetGroupInstancesRequest) (response *DescribeTargetGroupInstancesResponse, err error) {
+    if request == nil {
+        request = NewDescribeTargetGroupInstancesRequest()
+    }
+    response = NewDescribeTargetGroupInstancesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeTargetGroupListRequest() (request *DescribeTargetGroupListRequest) {
+    request = &DescribeTargetGroupListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("clb", APIVersion, "DescribeTargetGroupList")
+    return
+}
+
+func NewDescribeTargetGroupListResponse() (response *DescribeTargetGroupListResponse) {
+    response = &DescribeTargetGroupListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 获取目标组列表
+func (c *Client) DescribeTargetGroupList(request *DescribeTargetGroupListRequest) (response *DescribeTargetGroupListResponse, err error) {
+    if request == nil {
+        request = NewDescribeTargetGroupListRequest()
+    }
+    response = NewDescribeTargetGroupListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeTargetGroupsRequest() (request *DescribeTargetGroupsRequest) {
+    request = &DescribeTargetGroupsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("clb", APIVersion, "DescribeTargetGroups")
+    return
+}
+
+func NewDescribeTargetGroupsResponse() (response *DescribeTargetGroupsResponse) {
+    response = &DescribeTargetGroupsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询目标组信息
+func (c *Client) DescribeTargetGroups(request *DescribeTargetGroupsRequest) (response *DescribeTargetGroupsResponse, err error) {
+    if request == nil {
+        request = NewDescribeTargetGroupsRequest()
+    }
+    response = NewDescribeTargetGroupsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeTargetHealthRequest() (request *DescribeTargetHealthRequest) {
     request = &DescribeTargetHealthRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -676,6 +853,32 @@ func (c *Client) DescribeTaskStatus(request *DescribeTaskStatusRequest) (respons
         request = NewDescribeTaskStatusRequest()
     }
     response = NewDescribeTaskStatusResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDisassociateTargetGroupsRequest() (request *DisassociateTargetGroupsRequest) {
+    request = &DisassociateTargetGroupsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("clb", APIVersion, "DisassociateTargetGroups")
+    return
+}
+
+func NewDisassociateTargetGroupsResponse() (response *DisassociateTargetGroupsResponse) {
+    response = &DisassociateTargetGroupsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 解除规则的目标组关联关系。
+// 本接口为异步接口，本接口返回成功后需以返回的 RequestID 为入参，调用 DescribeTaskStatus 接口查询本次任务是否成功。
+func (c *Client) DisassociateTargetGroups(request *DisassociateTargetGroupsRequest) (response *DisassociateTargetGroupsResponse, err error) {
+    if request == nil {
+        request = NewDisassociateTargetGroupsRequest()
+    }
+    response = NewDisassociateTargetGroupsResponse()
     err = c.Send(request, response)
     return
 }
@@ -861,6 +1064,83 @@ func (c *Client) ModifyRule(request *ModifyRuleRequest) (response *ModifyRuleRes
     return
 }
 
+func NewModifyTargetGroupAttributeRequest() (request *ModifyTargetGroupAttributeRequest) {
+    request = &ModifyTargetGroupAttributeRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("clb", APIVersion, "ModifyTargetGroupAttribute")
+    return
+}
+
+func NewModifyTargetGroupAttributeResponse() (response *ModifyTargetGroupAttributeResponse) {
+    response = &ModifyTargetGroupAttributeResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 修改目标组的名称或者默认端口属性
+func (c *Client) ModifyTargetGroupAttribute(request *ModifyTargetGroupAttributeRequest) (response *ModifyTargetGroupAttributeResponse, err error) {
+    if request == nil {
+        request = NewModifyTargetGroupAttributeRequest()
+    }
+    response = NewModifyTargetGroupAttributeResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyTargetGroupInstancesPortRequest() (request *ModifyTargetGroupInstancesPortRequest) {
+    request = &ModifyTargetGroupInstancesPortRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("clb", APIVersion, "ModifyTargetGroupInstancesPort")
+    return
+}
+
+func NewModifyTargetGroupInstancesPortResponse() (response *ModifyTargetGroupInstancesPortResponse) {
+    response = &ModifyTargetGroupInstancesPortResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 批量修改目标组服务器端口。
+// 本接口为异步接口，本接口返回成功后需以返回的 RequestID 为入参，调用 DescribeTaskStatus 接口查询本次任务是否成功。
+func (c *Client) ModifyTargetGroupInstancesPort(request *ModifyTargetGroupInstancesPortRequest) (response *ModifyTargetGroupInstancesPortResponse, err error) {
+    if request == nil {
+        request = NewModifyTargetGroupInstancesPortRequest()
+    }
+    response = NewModifyTargetGroupInstancesPortResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyTargetGroupInstancesWeightRequest() (request *ModifyTargetGroupInstancesWeightRequest) {
+    request = &ModifyTargetGroupInstancesWeightRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("clb", APIVersion, "ModifyTargetGroupInstancesWeight")
+    return
+}
+
+func NewModifyTargetGroupInstancesWeightResponse() (response *ModifyTargetGroupInstancesWeightResponse) {
+    response = &ModifyTargetGroupInstancesWeightResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 批量修改目标组的服务器权重。
+// 本接口为异步接口，本接口返回成功后需以返回的 RequestID 为入参，调用 DescribeTaskStatus 接口查询本次任务是否成功。
+func (c *Client) ModifyTargetGroupInstancesWeight(request *ModifyTargetGroupInstancesWeightRequest) (response *ModifyTargetGroupInstancesWeightResponse, err error) {
+    if request == nil {
+        request = NewModifyTargetGroupInstancesWeightRequest()
+    }
+    response = NewModifyTargetGroupInstancesWeightResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyTargetPortRequest() (request *ModifyTargetPortRequest) {
     request = &ModifyTargetPortRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -909,6 +1189,32 @@ func (c *Client) ModifyTargetWeight(request *ModifyTargetWeightRequest) (respons
         request = NewModifyTargetWeightRequest()
     }
     response = NewModifyTargetWeightResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewRegisterTargetGroupInstancesRequest() (request *RegisterTargetGroupInstancesRequest) {
+    request = &RegisterTargetGroupInstancesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("clb", APIVersion, "RegisterTargetGroupInstances")
+    return
+}
+
+func NewRegisterTargetGroupInstancesResponse() (response *RegisterTargetGroupInstancesResponse) {
+    response = &RegisterTargetGroupInstancesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 注册服务器到目标组。
+// 本接口为异步接口，本接口返回成功后需以返回的 RequestID 为入参，调用 DescribeTaskStatus 接口查询本次任务是否成功。
+func (c *Client) RegisterTargetGroupInstances(request *RegisterTargetGroupInstancesRequest) (response *RegisterTargetGroupInstancesResponse, err error) {
+    if request == nil {
+        request = NewRegisterTargetGroupInstancesRequest()
+    }
+    response = NewRegisterTargetGroupInstancesResponse()
     err = c.Send(request, response)
     return
 }

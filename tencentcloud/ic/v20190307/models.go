@@ -22,7 +22,7 @@ import (
 
 type AppInfo struct {
 
-	// 应用id
+	// 应用ID
 	Sdkappid *string `json:"Sdkappid,omitempty" name:"Sdkappid"`
 
 	// 应用key
@@ -50,7 +50,7 @@ type AppInfo struct {
 
 type CardInfo struct {
 
-	// 卡片id
+	// 卡片ID
 	Iccid *string `json:"Iccid,omitempty" name:"Iccid"`
 
 	// 卡电话号码
@@ -65,7 +65,7 @@ type CardInfo struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Imei *string `json:"Imei,omitempty" name:"Imei"`
 
-	// 应用id
+	// 应用ID
 	Sdkappid *string `json:"Sdkappid,omitempty" name:"Sdkappid"`
 
 	// 运营商编号
@@ -89,7 +89,7 @@ type CardInfo struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
 
-	// 流量池id
+	// 流量池ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PoolId *string `json:"PoolId,omitempty" name:"PoolId"`
 
@@ -123,7 +123,7 @@ type CardInfo struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsActivated *int64 `json:"IsActivated,omitempty" name:"IsActivated"`
 
-	// 订单id
+	// 订单ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	OrderId *string `json:"OrderId,omitempty" name:"OrderId"`
 
@@ -197,10 +197,10 @@ func (r *DescribeAppResponse) FromJsonString(s string) error {
 type DescribeCardRequest struct {
 	*tchttp.BaseRequest
 
-	// 应用id
+	// 应用ID
 	Sdkappid *int64 `json:"Sdkappid,omitempty" name:"Sdkappid"`
 
-	// 卡片id
+	// 卡片ID
 	Iccid *string `json:"Iccid,omitempty" name:"Iccid"`
 }
 
@@ -238,7 +238,7 @@ func (r *DescribeCardResponse) FromJsonString(s string) error {
 type DescribeCardsRequest struct {
 	*tchttp.BaseRequest
 
-	// 应用id
+	// 应用ID
 	Sdkappid *string `json:"Sdkappid,omitempty" name:"Sdkappid"`
 
 	// 偏移值
@@ -281,13 +281,13 @@ func (r *DescribeCardsResponse) FromJsonString(s string) error {
 type SendMultiSmsRequest struct {
 	*tchttp.BaseRequest
 
-	// 应用id
+	// 应用ID
 	Sdkappid *string `json:"Sdkappid,omitempty" name:"Sdkappid"`
 
 	// 卡片列表
 	Iccids []*string `json:"Iccids,omitempty" name:"Iccids" list`
 
-	// 短信内容
+	// 短信内容 长度限制 70
 	Content *string `json:"Content,omitempty" name:"Content"`
 }
 
@@ -324,13 +324,13 @@ func (r *SendMultiSmsResponse) FromJsonString(s string) error {
 type SendSmsRequest struct {
 	*tchttp.BaseRequest
 
-	// 应用id
+	// 应用ID
 	Sdkappid *int64 `json:"Sdkappid,omitempty" name:"Sdkappid"`
 
-	// 卡片id
+	// 卡片ID
 	Iccid *string `json:"Iccid,omitempty" name:"Iccid"`
 
-	// 短信内容
+	// 短信内容长度70限制
 	Content *string `json:"Content,omitempty" name:"Content"`
 }
 
@@ -372,19 +372,19 @@ type SmsRet struct {
 	// 短信发送返回信息
 	Msg *string `json:"Msg,omitempty" name:"Msg"`
 
-	// 卡片id
+	// 卡片ID
 	Iccid *string `json:"Iccid,omitempty" name:"Iccid"`
 
-	// 流水id
+	// 流水ID
 	Sid *string `json:"Sid,omitempty" name:"Sid"`
 }
 
 type SmsSid struct {
 
-	// 卡片id
+	// 卡片ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Iccid *string `json:"Iccid,omitempty" name:"Iccid"`
 
-	// 信息流水id
+	// 信息流水ID
 	Sid *string `json:"Sid,omitempty" name:"Sid"`
 }

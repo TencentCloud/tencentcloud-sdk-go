@@ -670,6 +670,12 @@ type CreateDeployGroupRequest struct {
 
 	// 置放群组描述，最长不能超过200个字符。
 	Description *string `json:"Description,omitempty" name:"Description"`
+
+	// 置放群组的亲和性策略。
+	Affinity []*int64 `json:"Affinity,omitempty" name:"Affinity" list`
+
+	// 置放群组亲和性策略1的实例限制个数。
+	LimitNum *int64 `json:"LimitNum,omitempty" name:"LimitNum"`
 }
 
 func (r *CreateDeployGroupRequest) ToJsonString() string {
@@ -685,7 +691,7 @@ type CreateDeployGroupResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 置放群组ID
+		// 置放群组ID。
 		DeployGroupId *string `json:"DeployGroupId,omitempty" name:"DeployGroupId"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -965,11 +971,19 @@ type DeployGroupInfo struct {
 	// 创建时间。
 	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
 
-	// 置放群组描述。
-	Description *string `json:"Description,omitempty" name:"Description"`
-
 	// 置放群组实例配额。
 	Quota *int64 `json:"Quota,omitempty" name:"Quota"`
+
+	// 置放群组亲和性策略。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Affinity *string `json:"Affinity,omitempty" name:"Affinity"`
+
+	// 置放群组亲和性策略1的限制实例个数。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LimitNum *int64 `json:"LimitNum,omitempty" name:"LimitNum"`
+
+	// 置放群组详细信息。
+	Description *string `json:"Description,omitempty" name:"Description"`
 }
 
 type DescribeAccountPrivilegesRequest struct {
@@ -1652,6 +1666,9 @@ type DescribeDBInstancesRequest struct {
 
 	// 是否包含主实例，可取值：0 - 不包含，1 - 包含。默认取值为1。
 	WithMaster *int64 `json:"WithMaster,omitempty" name:"WithMaster"`
+
+	// 置放群组ID列表。
+	DeployGroupIds []*string `json:"DeployGroupIds,omitempty" name:"DeployGroupIds" list`
 }
 
 func (r *DescribeDBInstancesRequest) ToJsonString() string {
@@ -1986,12 +2003,12 @@ type DescribeDeployGroupListResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
+		// 符合条件的记录总数。
+		Total *int64 `json:"Total,omitempty" name:"Total"`
+
 		// 返回列表。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		Items []*DeployGroupInfo `json:"Items,omitempty" name:"Items" list`
-
-		// 符合条件的记录总数
-		Total *int64 `json:"Total,omitempty" name:"Total"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -3083,6 +3100,10 @@ type InstanceInfo struct {
 	// 物理机型
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DeviceClass *string `json:"DeviceClass,omitempty" name:"DeviceClass"`
+
+	// 置放群组ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DeployGroupId *string `json:"DeployGroupId,omitempty" name:"DeployGroupId"`
 }
 
 type InstanceRebootTime struct {

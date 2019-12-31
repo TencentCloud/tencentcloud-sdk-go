@@ -393,6 +393,56 @@ func (c *Client) MinorsVerification(request *MinorsVerificationRequest) (respons
     return
 }
 
+func NewMobileNetworkTimeVerificationRequest() (request *MobileNetworkTimeVerificationRequest) {
+    request = &MobileNetworkTimeVerificationRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("faceid", APIVersion, "MobileNetworkTimeVerification")
+    return
+}
+
+func NewMobileNetworkTimeVerificationResponse() (response *MobileNetworkTimeVerificationResponse) {
+    response = &MobileNetworkTimeVerificationResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口用于查询手机号在网时长，输入手机号进行查询。
+func (c *Client) MobileNetworkTimeVerification(request *MobileNetworkTimeVerificationRequest) (response *MobileNetworkTimeVerificationResponse, err error) {
+    if request == nil {
+        request = NewMobileNetworkTimeVerificationRequest()
+    }
+    response = NewMobileNetworkTimeVerificationResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewMobileStatusRequest() (request *MobileStatusRequest) {
+    request = &MobileStatusRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("faceid", APIVersion, "MobileStatus")
+    return
+}
+
+func NewMobileStatusResponse() (response *MobileStatusResponse) {
+    response = &MobileStatusResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口用于验证手机号的状态，您可以输入手机号进行查询。
+func (c *Client) MobileStatus(request *MobileStatusRequest) (response *MobileStatusResponse, err error) {
+    if request == nil {
+        request = NewMobileStatusRequest()
+    }
+    response = NewMobileStatusResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewPhoneVerificationRequest() (request *PhoneVerificationRequest) {
     request = &PhoneVerificationRequest{
         BaseRequest: &tchttp.BaseRequest{},

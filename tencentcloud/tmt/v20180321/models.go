@@ -231,6 +231,59 @@ func (r *SpeechTranslateResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type TextTranslateBatchRequest struct {
+	*tchttp.BaseRequest
+
+	// 源语言，参照Target支持语言列表
+	Source *string `json:"Source,omitempty" name:"Source"`
+
+	// 目标语言，参照支持语言列表
+	// <li> zh : 简体中文 </li> <li> zh-TW : 繁体中文 </li><li> en : 英文 </li><li> jp : 日语 </li> <li> kr : 韩语 </li><li> de : 德语 </li><li> fr : 法语 </li><li> es : 西班牙文 </li> <li> it : 意大利文 </li><li> tr : 土耳其文 </li><li> ru : 俄文 </li><li> pt : 葡萄牙文 </li><li> vi : 越南文 </li><li> id : 印度尼西亚文 </li><li> ms : 马来西亚文 </li><li> th : 泰文 </li><li> auto : 自动识别源语言，只能用于source字段 </li>
+	Target *string `json:"Target,omitempty" name:"Target"`
+
+	// 项目ID，可以根据控制台-账号中心-项目管理中的配置填写，如无配置请填写默认项目ID:0
+	ProjectId *int64 `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 待翻译的文本列表，批量接口可以以数组方式在一次请求中填写多个待翻译文本。文本统一使用utf-8格式编码，非utf-8格式编码字符会翻译失败，请传入有效文本，html标记等非常规翻译文本会翻译失败。单次请求的文本长度总和需要低于2000。
+	SourceTextList []*string `json:"SourceTextList,omitempty" name:"SourceTextList" list`
+}
+
+func (r *TextTranslateBatchRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *TextTranslateBatchRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type TextTranslateBatchResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 源语言，详见入参Target
+		Source *string `json:"Source,omitempty" name:"Source"`
+
+		// 目标语言，详见入参Target
+		Target *string `json:"Target,omitempty" name:"Target"`
+
+		// 翻译后的文本列表
+		TargetTextList []*string `json:"TargetTextList,omitempty" name:"TargetTextList" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *TextTranslateBatchResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *TextTranslateBatchResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type TextTranslateRequest struct {
 	*tchttp.BaseRequest
 

@@ -89,13 +89,13 @@ type CreatePolicyGroupCondition struct {
 	// 告警发送周期单位秒。<0 不触发, 0 只触发一次, >0 每隔triggerTime秒触发一次
 	AlarmNotifyPeriod *int64 `json:"AlarmNotifyPeriod,omitempty" name:"AlarmNotifyPeriod"`
 
-	// 比较类型，范围0-6，分别对应[>,<,>=,<=,==,!=,!]。如果指标有配置默认比较类型值可以不填。
+	// 比较类型，1表示大于，2表示大于等于，3表示小于，4表示小于等于，5表示相等，6表示不相等。如果指标有配置默认比较类型值可以不填。
 	CalcType *int64 `json:"CalcType,omitempty" name:"CalcType"`
 
 	// 比较的值，如果指标不必须CalcValue可不填
 	CalcValue *float64 `json:"CalcValue,omitempty" name:"CalcValue"`
 
-	// Storm检测周期单位秒，若指标有默认值可不填
+	// 数据聚合周期(单位秒)，若指标有默认值可不填
 	CalcPeriod *int64 `json:"CalcPeriod,omitempty" name:"CalcPeriod"`
 
 	// 持续几个检测周期触发规则会告警
@@ -199,6 +199,43 @@ type DataPoint struct {
 	Values []*float64 `json:"Values,omitempty" name:"Values" list`
 }
 
+type DeletePolicyGroupRequest struct {
+	*tchttp.BaseRequest
+
+	// 固定值，为"monitor"
+	Module *string `json:"Module,omitempty" name:"Module"`
+
+	// 策略组id
+	GroupId []*int64 `json:"GroupId,omitempty" name:"GroupId" list`
+}
+
+func (r *DeletePolicyGroupRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeletePolicyGroupRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeletePolicyGroupResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DeletePolicyGroupResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeletePolicyGroupResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeAccidentEventListAlarms struct {
 
 	// 事件分类
@@ -237,7 +274,7 @@ type DescribeAccidentEventListAlarms struct {
 type DescribeAccidentEventListRequest struct {
 	*tchttp.BaseRequest
 
-	// 接口模块名，当前接口取值policy
+	// 接口模块名，当前接口取值monitor
 	Module *string `json:"Module,omitempty" name:"Module"`
 
 	// 起始时间，默认一天前的时间戳
@@ -346,6 +383,282 @@ func (r *DescribeBaseMetricsResponse) ToJsonString() string {
 }
 
 func (r *DescribeBaseMetricsResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeBindingPolicyObjectListInstance struct {
+
+	// 对象唯一id
+	UniqueId *string `json:"UniqueId,omitempty" name:"UniqueId"`
+
+	// 表示对象实例的维度集合，jsonObj字符串
+	Dimensions *string `json:"Dimensions,omitempty" name:"Dimensions"`
+
+	// 对象是否被屏蔽，0表示未屏蔽，1表示被屏蔽
+	IsShielded *int64 `json:"IsShielded,omitempty" name:"IsShielded"`
+
+	// 对象所在的地域
+	Region *string `json:"Region,omitempty" name:"Region"`
+}
+
+type DescribeBindingPolicyObjectListRequest struct {
+	*tchttp.BaseRequest
+
+	// 固定值，为"monitor"
+	Module *string `json:"Module,omitempty" name:"Module"`
+
+	// 策略组id
+	GroupId *int64 `json:"GroupId,omitempty" name:"GroupId"`
+}
+
+func (r *DescribeBindingPolicyObjectListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeBindingPolicyObjectListRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeBindingPolicyObjectListResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 绑定的对象实例列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		List []*DescribeBindingPolicyObjectListInstance `json:"List,omitempty" name:"List" list`
+
+		// 绑定的对象实例总数
+		Total *int64 `json:"Total,omitempty" name:"Total"`
+
+		// 未屏蔽的对象实例数
+		NoShieldedSum *int64 `json:"NoShieldedSum,omitempty" name:"NoShieldedSum"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeBindingPolicyObjectListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeBindingPolicyObjectListResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribePolicyGroupInfoCallback struct {
+
+	// 用户回调接口地址
+	CallbackUrl *string `json:"CallbackUrl,omitempty" name:"CallbackUrl"`
+
+	// 用户回调接口状态，0表示未验证，1表示已验证，2表示存在url但没有通过验证
+	ValidFlag *int64 `json:"ValidFlag,omitempty" name:"ValidFlag"`
+
+	// 用户回调接口验证码
+	VerifyCode *string `json:"VerifyCode,omitempty" name:"VerifyCode"`
+}
+
+type DescribePolicyGroupInfoCondition struct {
+
+	// 指标名称
+	MetricShowName *string `json:"MetricShowName,omitempty" name:"MetricShowName"`
+
+	// 数据聚合周期(单位秒)
+	Period *int64 `json:"Period,omitempty" name:"Period"`
+
+	// 指标id
+	MetricId *int64 `json:"MetricId,omitempty" name:"MetricId"`
+
+	// 阈值规则id
+	RuleId *int64 `json:"RuleId,omitempty" name:"RuleId"`
+
+	// 指标单位
+	Unit *string `json:"Unit,omitempty" name:"Unit"`
+
+	// 告警发送收敛类型。0连续告警，1指数告警
+	AlarmNotifyType *int64 `json:"AlarmNotifyType,omitempty" name:"AlarmNotifyType"`
+
+	// 告警发送周期单位秒。<0 不触发, 0 只触发一次, >0 每隔triggerTime秒触发一次
+	AlarmNotifyPeriod *int64 `json:"AlarmNotifyPeriod,omitempty" name:"AlarmNotifyPeriod"`
+
+	// 比较类型，1表示大于，2表示大于等于，3表示小于，4表示小于等于，5表示相等，6表示不相等，7表示日同比上涨，8表示日同比下降，9表示周同比上涨，10表示周同比下降，11表示周期环比上涨，12表示周期环比下降
+	CalcType *int64 `json:"CalcType,omitempty" name:"CalcType"`
+
+	// 检测阈值
+	CalcValue *string `json:"CalcValue,omitempty" name:"CalcValue"`
+
+	// 持续多长时间触发规则会告警(单位秒)
+	ContinueTime *int64 `json:"ContinueTime,omitempty" name:"ContinueTime"`
+}
+
+type DescribePolicyGroupInfoConditionTpl struct {
+
+	// 策略组id
+	GroupId *int64 `json:"GroupId,omitempty" name:"GroupId"`
+
+	// 策略组名称
+	GroupName *string `json:"GroupName,omitempty" name:"GroupName"`
+
+	// 策略类型
+	ViewName *string `json:"ViewName,omitempty" name:"ViewName"`
+
+	// 策略组说明
+	Remark *string `json:"Remark,omitempty" name:"Remark"`
+
+	// 最后编辑的用户uin
+	LastEditUin *string `json:"LastEditUin,omitempty" name:"LastEditUin"`
+}
+
+type DescribePolicyGroupInfoEventCondition struct {
+
+	// 事件id
+	EventId *int64 `json:"EventId,omitempty" name:"EventId"`
+
+	// 事件告警规则id
+	RuleId *int64 `json:"RuleId,omitempty" name:"RuleId"`
+
+	// 事件名称
+	EventShowName *string `json:"EventShowName,omitempty" name:"EventShowName"`
+
+	// 告警发送周期单位秒。<0 不触发, 0 只触发一次, >0 每隔triggerTime秒触发一次
+	AlarmNotifyPeriod *int64 `json:"AlarmNotifyPeriod,omitempty" name:"AlarmNotifyPeriod"`
+
+	// 告警发送收敛类型。0连续告警，1指数告警
+	AlarmNotifyType *int64 `json:"AlarmNotifyType,omitempty" name:"AlarmNotifyType"`
+}
+
+type DescribePolicyGroupInfoReceiverInfo struct {
+
+	// 告警接收组id列表
+	ReceiverGroupList []*int64 `json:"ReceiverGroupList,omitempty" name:"ReceiverGroupList" list`
+
+	// 告警接收人id列表
+	ReceiverUserList []*int64 `json:"ReceiverUserList,omitempty" name:"ReceiverUserList" list`
+
+	// 告警时间段开始时间。范围[0,86400)，作为unix时间戳转成北京时间后去掉日期，例如7200表示"10:0:0"
+	StartTime *int64 `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 告警时间段结束时间。含义同StartTime
+	EndTime *int64 `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 接收类型。“group”(接收组)或“user”(接收人)
+	ReceiverType *string `json:"ReceiverType,omitempty" name:"ReceiverType"`
+
+	// 告警通知方式。可选 "SMS","SITE","EMAIL","CALL","WECHAT"
+	NotifyWay []*string `json:"NotifyWay,omitempty" name:"NotifyWay" list`
+
+	// 电话告警接收者uid
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UidList []*int64 `json:"UidList,omitempty" name:"UidList" list`
+
+	// 电话告警轮数
+	RoundNumber *int64 `json:"RoundNumber,omitempty" name:"RoundNumber"`
+
+	// 电话告警每轮间隔（秒）
+	RoundInterval *int64 `json:"RoundInterval,omitempty" name:"RoundInterval"`
+
+	// 电话告警对个人间隔（秒）
+	PersonInterval *int64 `json:"PersonInterval,omitempty" name:"PersonInterval"`
+
+	// 是否需要电话告警触达提示。0不需要，1需要
+	NeedSendNotice *int64 `json:"NeedSendNotice,omitempty" name:"NeedSendNotice"`
+
+	// 电话告警通知时机。可选"OCCUR"(告警时通知),"RECOVER"(恢复时通知)
+	SendFor []*string `json:"SendFor,omitempty" name:"SendFor" list`
+
+	// 恢复通知方式。可选"SMS"
+	RecoverNotify []*string `json:"RecoverNotify,omitempty" name:"RecoverNotify" list`
+}
+
+type DescribePolicyGroupInfoRequest struct {
+	*tchttp.BaseRequest
+
+	// 固定值，为"monitor"
+	Module *string `json:"Module,omitempty" name:"Module"`
+
+	// 策略组id
+	GroupId *int64 `json:"GroupId,omitempty" name:"GroupId"`
+}
+
+func (r *DescribePolicyGroupInfoRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribePolicyGroupInfoRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribePolicyGroupInfoResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 策略组名称
+		GroupName *string `json:"GroupName,omitempty" name:"GroupName"`
+
+		// 策略组所属的项目id
+		ProjectId *int64 `json:"ProjectId,omitempty" name:"ProjectId"`
+
+		// 是否为默认策略，0表示非默认策略，1表示默认策略
+		IsDefault *int64 `json:"IsDefault,omitempty" name:"IsDefault"`
+
+		// 策略类型
+		ViewName *string `json:"ViewName,omitempty" name:"ViewName"`
+
+		// 策略说明
+		Remark *string `json:"Remark,omitempty" name:"Remark"`
+
+		// 策略类型名称
+		ShowName *string `json:"ShowName,omitempty" name:"ShowName"`
+
+		// 最近编辑的用户uin
+		LastEditUin *string `json:"LastEditUin,omitempty" name:"LastEditUin"`
+
+		// 最近编辑时间
+		UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
+
+		// 该策略支持的地域
+		Region []*string `json:"Region,omitempty" name:"Region" list`
+
+		// 策略类型的维度列表
+		DimensionGroup []*string `json:"DimensionGroup,omitempty" name:"DimensionGroup" list`
+
+		// 阈值规则列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		ConditionsConfig []*DescribePolicyGroupInfoCondition `json:"ConditionsConfig,omitempty" name:"ConditionsConfig" list`
+
+		// 产品事件规则列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		EventConfig []*DescribePolicyGroupInfoEventCondition `json:"EventConfig,omitempty" name:"EventConfig" list`
+
+		// 用户接收人列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		ReceiverInfos []*DescribePolicyGroupInfoReceiverInfo `json:"ReceiverInfos,omitempty" name:"ReceiverInfos" list`
+
+		// 用户回调信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Callback *DescribePolicyGroupInfoCallback `json:"Callback,omitempty" name:"Callback"`
+
+		// 模板策略组
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		ConditionsTemp *DescribePolicyGroupInfoConditionTpl `json:"ConditionsTemp,omitempty" name:"ConditionsTemp"`
+
+		// 是否可以设置成默认策略
+		CanSetDefault *bool `json:"CanSetDefault,omitempty" name:"CanSetDefault"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribePolicyGroupInfoResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribePolicyGroupInfoResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -838,4 +1151,81 @@ type ReceiverInfo struct {
 
 	// 接收人列表。通过平台接口查询到的接收人id列表
 	ReceiverUserList []*int64 `json:"ReceiverUserList,omitempty" name:"ReceiverUserList" list`
+}
+
+type UnBindingAllPolicyObjectRequest struct {
+	*tchttp.BaseRequest
+
+	// 固定值，为"monitor"
+	Module *string `json:"Module,omitempty" name:"Module"`
+
+	// 策略组id
+	GroupId *int64 `json:"GroupId,omitempty" name:"GroupId"`
+}
+
+func (r *UnBindingAllPolicyObjectRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *UnBindingAllPolicyObjectRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type UnBindingAllPolicyObjectResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *UnBindingAllPolicyObjectResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *UnBindingAllPolicyObjectResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type UnBindingPolicyObjectRequest struct {
+	*tchttp.BaseRequest
+
+	// 固定值，为"monitor"
+	Module *string `json:"Module,omitempty" name:"Module"`
+
+	// 策略组id
+	GroupId *int64 `json:"GroupId,omitempty" name:"GroupId"`
+
+	// 待删除对象实例的唯一id列表
+	UniqueId []*string `json:"UniqueId,omitempty" name:"UniqueId" list`
+}
+
+func (r *UnBindingPolicyObjectRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *UnBindingPolicyObjectRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type UnBindingPolicyObjectResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *UnBindingPolicyObjectResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *UnBindingPolicyObjectResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
 }

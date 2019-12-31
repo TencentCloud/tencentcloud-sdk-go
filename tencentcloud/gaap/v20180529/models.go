@@ -3120,6 +3120,10 @@ type DomainErrorPageInfo struct {
 	// 设置的响应体(不包括 HTTP头)
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Body *string `json:"Body,omitempty" name:"Body"`
+
+	// 规则状态,0为成功
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *int64 `json:"Status,omitempty" name:"Status"`
 }
 
 type DomainRuleSet struct {

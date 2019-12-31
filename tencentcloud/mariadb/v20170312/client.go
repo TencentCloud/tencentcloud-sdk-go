@@ -169,6 +169,31 @@ func (c *Client) CreateDBInstance(request *CreateDBInstanceRequest) (response *C
     return
 }
 
+func NewCreateTmpInstancesRequest() (request *CreateTmpInstancesRequest) {
+    request = &CreateTmpInstancesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("mariadb", APIVersion, "CreateTmpInstances")
+    return
+}
+
+func NewCreateTmpInstancesResponse() (response *CreateTmpInstancesResponse) {
+    response = &CreateTmpInstancesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（CreateTmpInstances）用于创建临时实例。
+func (c *Client) CreateTmpInstances(request *CreateTmpInstancesRequest) (response *CreateTmpInstancesResponse, err error) {
+    if request == nil {
+        request = NewCreateTmpInstancesRequest()
+    }
+    response = NewCreateTmpInstancesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteAccountRequest() (request *DeleteAccountRequest) {
     request = &DeleteAccountRequest{
         BaseRequest: &tchttp.BaseRequest{},

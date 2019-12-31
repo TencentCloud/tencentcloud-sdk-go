@@ -257,7 +257,7 @@ type CreateInstancesRequest struct {
 	// 安全组id数组
 	SecurityGroupIdList []*string `json:"SecurityGroupIdList,omitempty" name:"SecurityGroupIdList" list`
 
-	// 用户自定义的端口 不填则默认为6379
+	// 用户自定义的端口 不填则默认为6379，范围[1024,65535]
 	VPort *uint64 `json:"VPort,omitempty" name:"VPort"`
 
 	// 实例分片数量，Redis2.8主从版、CKV主从版和Redis2.8单机版、Redis4.0主从版不需要填写
@@ -575,7 +575,7 @@ type DescribeInstanceDTSInfoResponse struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		JobName *string `json:"JobName,omitempty" name:"JobName"`
 
-		// 状态
+		// 任务状态,取值为：1-创建中(Creating),3-校验中(Checking)4-校验通过(CheckPass),5-校验不通过（CheckNotPass）,7-任务运行(Running),8-准备完成（ReadyComplete）,9-任务成功（Success）,10-任务失败（Failed）,11-撤销中（Stopping）,12-完成中（Completing）
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		Status *int64 `json:"Status,omitempty" name:"Status"`
 
@@ -1835,7 +1835,7 @@ type InstanceMultiParam struct {
 	Tips *string `json:"Tips,omitempty" name:"Tips"`
 
 	// 参数说明
-	EnumValue *string `json:"EnumValue,omitempty" name:"EnumValue"`
+	EnumValue []*string `json:"EnumValue,omitempty" name:"EnumValue" list`
 
 	// 参数状态, 1: 修改中， 2：修改完成
 	Status *int64 `json:"Status,omitempty" name:"Status"`
@@ -2294,15 +2294,24 @@ type ModifyInstanceRequest struct {
 	Operation *string `json:"Operation,omitempty" name:"Operation"`
 
 	// 实例Id
-	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds" list`
 
 	// 实例的新名称
-	InstanceName *string `json:"InstanceName,omitempty" name:"InstanceName"`
+	InstanceNames []*string `json:"InstanceNames,omitempty" name:"InstanceNames" list`
 
 	// 项目Id
 	ProjectId *int64 `json:"ProjectId,omitempty" name:"ProjectId"`
 
 	// 自动续费标识。0 - 默认状态（手动续费）；1 - 自动续费；2 - 明确不自动续费
+	AutoRenews []*int64 `json:"AutoRenews,omitempty" name:"AutoRenews" list`
+
+	// 已经废弃
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 已经废弃
+	InstanceName *string `json:"InstanceName,omitempty" name:"InstanceName"`
+
+	// 已经废弃
 	AutoRenew *int64 `json:"AutoRenew,omitempty" name:"AutoRenew"`
 }
 

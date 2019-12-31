@@ -61,7 +61,7 @@ type DescribeDBDiagEventResponse struct {
 		// 诊断出的问题。
 		Problem *string `json:"Problem,omitempty" name:"Problem"`
 
-		// 严重程度。
+		// 严重程度。严重程度分为5级，按影响程度从高至低分别为：1：致命，2：严重，3：告警，4：提示，5：健康。
 		Severity *int64 `json:"Severity,omitempty" name:"Severity"`
 
 		// 开始时间
@@ -255,7 +255,7 @@ type DiagHistoryEventItem struct {
 	// 事件 ID 。
 	EventId *int64 `json:"EventId,omitempty" name:"EventId"`
 
-	// 严重程度。从1-4，严重程度递减，意义与DBBrain生成的实例健康报告中对应概念一致。
+	// 严重程度。严重程度分为5级，按影响程度从高至低分别为：1：致命，2：严重，3：告警，4：提示，5：健康。
 	Severity *int64 `json:"Severity,omitempty" name:"Severity"`
 
 	// 概要。

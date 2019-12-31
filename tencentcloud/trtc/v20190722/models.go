@@ -20,7 +20,7 @@ import (
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
-type DissolveRoomRequest struct {
+type DismissRoomRequest struct {
 	*tchttp.BaseRequest
 
 	// TRTC的SDKAppId。
@@ -30,16 +30,16 @@ type DissolveRoomRequest struct {
 	RoomId *uint64 `json:"RoomId,omitempty" name:"RoomId"`
 }
 
-func (r *DissolveRoomRequest) ToJsonString() string {
+func (r *DismissRoomRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
-func (r *DissolveRoomRequest) FromJsonString(s string) error {
+func (r *DismissRoomRequest) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
-type DissolveRoomResponse struct {
+type DismissRoomResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
@@ -48,16 +48,16 @@ type DissolveRoomResponse struct {
 	} `json:"Response"`
 }
 
-func (r *DissolveRoomResponse) ToJsonString() string {
+func (r *DismissRoomResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
-func (r *DissolveRoomResponse) FromJsonString(s string) error {
+func (r *DismissRoomResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
-type KickOutUserRequest struct {
+type RemoveUserRequest struct {
 	*tchttp.BaseRequest
 
 	// TRTC的SDKAppId。
@@ -66,20 +66,20 @@ type KickOutUserRequest struct {
 	// 房间号。
 	RoomId *uint64 `json:"RoomId,omitempty" name:"RoomId"`
 
-	// 要踢的用户列表，最多10个。
+	// 要移出的用户列表，最多10个。
 	UserIds []*string `json:"UserIds,omitempty" name:"UserIds" list`
 }
 
-func (r *KickOutUserRequest) ToJsonString() string {
+func (r *RemoveUserRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
-func (r *KickOutUserRequest) FromJsonString(s string) error {
+func (r *RemoveUserRequest) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
-type KickOutUserResponse struct {
+type RemoveUserResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
@@ -88,11 +88,11 @@ type KickOutUserResponse struct {
 	} `json:"Response"`
 }
 
-func (r *KickOutUserResponse) ToJsonString() string {
+func (r *RemoveUserResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
-func (r *KickOutUserResponse) FromJsonString(s string) error {
+func (r *RemoveUserResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }

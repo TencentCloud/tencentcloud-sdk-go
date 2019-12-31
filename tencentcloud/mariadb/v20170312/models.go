@@ -312,6 +312,46 @@ func (r *CreateDBInstanceResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type CreateTmpInstancesRequest struct {
+	*tchttp.BaseRequest
+
+	// 回档实例的ID列表，形如：tdsql-ow728lmc。
+	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds" list`
+
+	// 回档时间点
+	RollbackTime *string `json:"RollbackTime,omitempty" name:"RollbackTime"`
+}
+
+func (r *CreateTmpInstancesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateTmpInstancesRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateTmpInstancesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 异步任务流程ID。
+		FlowId *int64 `json:"FlowId,omitempty" name:"FlowId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateTmpInstancesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateTmpInstancesResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DBAccount struct {
 
 	// 用户名

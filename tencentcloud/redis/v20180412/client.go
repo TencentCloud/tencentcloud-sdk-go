@@ -958,7 +958,7 @@ func NewModifyInstanceResponse() (response *ModifyInstanceResponse) {
     return
 }
 
-// 修改实例相关信息（目前支持：实例重命名）
+// 修改实例相关信息
 func (c *Client) ModifyInstance(request *ModifyInstanceRequest) (response *ModifyInstanceResponse, err error) {
     if request == nil {
         request = NewModifyInstanceRequest()

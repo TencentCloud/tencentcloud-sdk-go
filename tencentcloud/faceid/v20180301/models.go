@@ -62,7 +62,7 @@ type BankCard2EVerificationResponse struct {
 	// 不计费结果码：
 	//   '-2': '姓名校验不通过'
 	//   '-3': '银行卡号码有误'
-	//   '-16': '服务繁忙'
+	//   '-16': '验证中心服务繁忙'
 		Result *string `json:"Result,omitempty" name:"Result"`
 
 		// 业务结果描述。
@@ -136,7 +136,7 @@ type BankCard4EVerificationResponse struct {
 	// '-3': '身份证号码有误'
 	// '-4': '银行卡号码有误'
 	// '-5': '手机号码不合法'
-	// '-18': '服务繁忙'
+	// '-18': '验证中心服务繁忙'
 		Result *string `json:"Result,omitempty" name:"Result"`
 
 		// 业务结果描述。
@@ -206,7 +206,7 @@ type BankCardVerificationResponse struct {
 	// '-2': '姓名校验不通过'
 	// '-3': '身份证号码有误'
 	// '-4': '银行卡号码有误'
-	// '-17': '服务繁忙'
+	// '-17': '验证中心服务繁忙'
 		Result *string `json:"Result,omitempty" name:"Result"`
 
 		// 业务结果描述。
@@ -880,6 +880,112 @@ func (r *MinorsVerificationResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type MobileNetworkTimeVerificationRequest struct {
+	*tchttp.BaseRequest
+
+	// 手机号码。不支持电信手机号。
+	Mobile *string `json:"Mobile,omitempty" name:"Mobile"`
+}
+
+func (r *MobileNetworkTimeVerificationRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *MobileNetworkTimeVerificationRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type MobileNetworkTimeVerificationResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 认证结果码，收费情况如下。
+	// 收费结果码：
+	// 0: 成功
+	// -2: 手机号不存在
+	// -3: 手机号存在，但无法查询到在网时长
+	// 不收费结果码：
+	// -1: 手机号格式不正确
+	// -4: 验证中心服务繁忙
+		Result *string `json:"Result,omitempty" name:"Result"`
+
+		// 业务结果描述。
+		Description *string `json:"Description,omitempty" name:"Description"`
+
+		// 在网时长区间。
+	// 格式为(a,b]，表示在网时长在a个月以上，b个月以下。若b为+时表示没有上限。
+		Range *string `json:"Range,omitempty" name:"Range"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *MobileNetworkTimeVerificationResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *MobileNetworkTimeVerificationResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type MobileStatusRequest struct {
+	*tchttp.BaseRequest
+
+	// 手机号码
+	Mobile *string `json:"Mobile,omitempty" name:"Mobile"`
+}
+
+func (r *MobileStatusRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *MobileStatusRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type MobileStatusResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 认证结果码，收费情况如下。
+	// 收费结果码：
+	// 0：成功
+	// 不收费结果码：
+	// -1：未查询到结果
+	// -2：手机号格式不正确
+	// -3：验证中心服务繁忙
+		Result *string `json:"Result,omitempty" name:"Result"`
+
+		// 业务结果描述。
+		Description *string `json:"Description,omitempty" name:"Description"`
+
+		// 状态码：
+	// 0：正常
+	// 1：停机
+	// 2：销号
+	// 3：空号
+	// 4：不在网
+	// 99：未知状态
+		StatusCode *int64 `json:"StatusCode,omitempty" name:"StatusCode"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *MobileStatusResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *MobileStatusResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type PhoneVerificationRequest struct {
 	*tchttp.BaseRequest
 
@@ -907,18 +1013,18 @@ type PhoneVerificationResponse struct {
 	Response *struct {
 
 		// 认证结果码:
-	//   '0': '认证通过',
-	//   '-1': '手机号已实名，但是身份证和姓名均与实名信息不一致 ',
-	//   '-2': '手机号已实名，手机号和证件号一致，姓名不一致',
-	//   '-3': '手机号已实名，手机号和姓名一致，身份证不一致',
-	//   '-4': '信息不一致',
-	//   '-5': '手机号未实名',
-	//   '-6': '手机号码不合法',
-	//   '-7': '身份证号码有误',
-	//   '-8': '姓名校验不通过',
-	//   '-9': '没有记录',
-	//   '-10': '认证未通过',
-	//   '-11': '服务繁忙'
+	// 0: 认证通过
+	// -1: 手机号已实名，但是身份证和姓名均与实名信息不一致 
+	// -2: 手机号已实名，手机号和证件号一致，姓名不一致
+	// -3: 手机号已实名，手机号和姓名一致，身份证不一致
+	// -4: 信息不一致
+	// -5: 手机号未实名
+	// -6: 手机号码不合法
+	// -7: 身份证号码有误
+	// -8: 姓名校验不通过
+	// -9: 没有记录
+	// -10: 认证未通过
+	// -11: 验证中心服务繁忙
 		Result *string `json:"Result,omitempty" name:"Result"`
 
 		// 业务结果描述。
