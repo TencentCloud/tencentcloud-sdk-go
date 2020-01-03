@@ -418,7 +418,7 @@ func NewCreateTranscodeTemplateResponse() (response *CreateTranscodeTemplateResp
     return
 }
 
-// 创建用户自定义转码模板，数量上限：1000。
+// 创建用户自定义转码模板，数量上限：100。
 func (c *Client) CreateTranscodeTemplate(request *CreateTranscodeTemplateRequest) (response *CreateTranscodeTemplateResponse, err error) {
     if request == nil {
         request = NewCreateTranscodeTemplateRequest()
@@ -1458,6 +1458,32 @@ func (c *Client) ExecuteFunction(request *ExecuteFunctionRequest) (response *Exe
         request = NewExecuteFunctionRequest()
     }
     response = NewExecuteFunctionResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewForbidMediaDistributionRequest() (request *ForbidMediaDistributionRequest) {
+    request = &ForbidMediaDistributionRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vod", APIVersion, "ForbidMediaDistribution")
+    return
+}
+
+func NewForbidMediaDistributionResponse() (response *ForbidMediaDistributionResponse) {
+    response = &ForbidMediaDistributionResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// * 对媒体禁播后，除了点播控制台预览，其他场景访问视频各种资源的 URL（原始文件、转码输出文件、截图等）均会返回 403。
+//   禁播/解禁操作全网生效时间约 5~10 分钟。
+func (c *Client) ForbidMediaDistribution(request *ForbidMediaDistributionRequest) (response *ForbidMediaDistributionResponse, err error) {
+    if request == nil {
+        request = NewForbidMediaDistributionRequest()
+    }
+    response = NewForbidMediaDistributionResponse()
     err = c.Send(request, response)
     return
 }

@@ -184,6 +184,21 @@ type CreateDeviceRequest struct {
 
 	// 设备名称。命名规则：[a-zA-Z0-9:_-]{1,48}。
 	DeviceName *string `json:"DeviceName,omitempty" name:"DeviceName"`
+
+	// LoRaWAN 设备地址
+	DevAddr *string `json:"DevAddr,omitempty" name:"DevAddr"`
+
+	// LoRaWAN 应用密钥
+	AppKey *string `json:"AppKey,omitempty" name:"AppKey"`
+
+	// LoRaWAN 设备唯一标识
+	DevEUI *string `json:"DevEUI,omitempty" name:"DevEUI"`
+
+	// LoRaWAN 应用会话密钥
+	AppSKey *string `json:"AppSKey,omitempty" name:"AppSKey"`
+
+	// LoRaWAN 网络会话密钥
+	NwkSKey *string `json:"NwkSKey,omitempty" name:"NwkSKey"`
 }
 
 func (r *CreateDeviceRequest) ToJsonString() string {
@@ -747,6 +762,26 @@ type DeviceInfo struct {
 	// 日志级别
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	LogLevel *int64 `json:"LogLevel,omitempty" name:"LogLevel"`
+
+	// LoRaWAN 设备地址
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DevAddr *string `json:"DevAddr,omitempty" name:"DevAddr"`
+
+	// LoRaWAN 应用密钥
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AppKey *string `json:"AppKey,omitempty" name:"AppKey"`
+
+	// LoRaWAN 设备唯一标识
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DevEUI *string `json:"DevEUI,omitempty" name:"DevEUI"`
+
+	// LoRaWAN 应用会话密钥
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AppSKey *string `json:"AppSKey,omitempty" name:"AppSKey"`
+
+	// LoRaWAN 网络会话密钥
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NwkSKey *string `json:"NwkSKey,omitempty" name:"NwkSKey"`
 }
 
 type EventHistoryItem struct {

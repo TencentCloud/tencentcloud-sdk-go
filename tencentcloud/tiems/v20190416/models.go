@@ -63,11 +63,8 @@ type CreateJobRequest struct {
 	// 任务名称
 	Name *string `json:"Name,omitempty" name:"Name"`
 
-	// 同时处理任务的 Worker 个数
-	WorkerCount *uint64 `json:"WorkerCount,omitempty" name:"WorkerCount"`
-
-	// 使用的配置 Id
-	ConfigId *string `json:"ConfigId,omitempty" name:"ConfigId"`
+	// 使用的资源组 Id，默认使用共享资源组
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" name:"ResourceGroupId"`
 
 	// 处理器配置, 单位为1/1000核；范围[100, 256000]
 	Cpu *uint64 `json:"Cpu,omitempty" name:"Cpu"`
@@ -84,8 +81,11 @@ type CreateJobRequest struct {
 	// 任务描述
 	Description *string `json:"Description,omitempty" name:"Description"`
 
-	// 使用的资源组 Id，默认使用共享资源组
-	ResourceGroupId *string `json:"ResourceGroupId,omitempty" name:"ResourceGroupId"`
+	// 同时处理任务的 Worker 个数
+	WorkerCount *uint64 `json:"WorkerCount,omitempty" name:"WorkerCount"`
+
+	// 使用的配置 Id
+	ConfigId *string `json:"ConfigId,omitempty" name:"ConfigId"`
 
 	// GPU算力配置，单位为1/1000 卡，范围 [0, 256000]
 	Gpu *uint64 `json:"Gpu,omitempty" name:"Gpu"`
@@ -95,6 +95,9 @@ type CreateJobRequest struct {
 
 	// GPU类型
 	GpuType *string `json:"GpuType,omitempty" name:"GpuType"`
+
+	// 量化输入
+	QuantizationInput *QuantizationInput `json:"QuantizationInput,omitempty" name:"QuantizationInput"`
 }
 
 func (r *CreateJobRequest) ToJsonString() string {
@@ -124,6 +127,55 @@ func (r *CreateJobResponse) ToJsonString() string {
 }
 
 func (r *CreateJobResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateRsgAsGroupRequest struct {
+	*tchttp.BaseRequest
+
+	// 资源组 ID
+	RsgId *string `json:"RsgId,omitempty" name:"RsgId"`
+
+	// 伸缩组允许的最大节点数
+	MaxSize *uint64 `json:"MaxSize,omitempty" name:"MaxSize"`
+
+	// 伸缩组允许的最小节点数
+	MinSize *uint64 `json:"MinSize,omitempty" name:"MinSize"`
+
+	// 资源组所在的集群名
+	Cluster *string `json:"Cluster,omitempty" name:"Cluster"`
+
+	// 伸缩组名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+}
+
+func (r *CreateRsgAsGroupRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateRsgAsGroupRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateRsgAsGroupResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 所创建的资源组的伸缩组
+		RsgAsGroup *RsgAsGroup `json:"RsgAsGroup,omitempty" name:"RsgAsGroup"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateRsgAsGroupResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateRsgAsGroupResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -237,6 +289,9 @@ type CreateServiceRequest struct {
 	// 扩缩容方式，支持AUTO, MANUAL，分别表示自动扩缩容和手动扩缩容
 	ScaleMode *string `json:"ScaleMode,omitempty" name:"ScaleMode"`
 
+	// 部署要使用的资源组Id，默认为共享资源组
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" name:"ResourceGroupId"`
+
 	// 处理器配置, 单位为1/1000核；范围[100, 256000]
 	Cpu *uint64 `json:"Cpu,omitempty" name:"Cpu"`
 
@@ -245,9 +300,6 @@ type CreateServiceRequest struct {
 
 	// 集群，不填则使用默认集群
 	Cluster *string `json:"Cluster,omitempty" name:"Cluster"`
-
-	// 部署要使用的资源组Id，默认为共享资源组
-	ResourceGroupId *string `json:"ResourceGroupId,omitempty" name:"ResourceGroupId"`
 
 	// 默认为空，表示不需要鉴权，TOKEN 表示选择 Token 鉴权方式
 	Authentication *string `json:"Authentication,omitempty" name:"Authentication"`
@@ -295,6 +347,40 @@ func (r *CreateServiceResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DeleteInstanceRequest struct {
+	*tchttp.BaseRequest
+
+	// 要删除的节点 ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+}
+
+func (r *DeleteInstanceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteInstanceRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteInstanceResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DeleteInstanceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteInstanceResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DeleteJobRequest struct {
 	*tchttp.BaseRequest
 
@@ -326,6 +412,74 @@ func (r *DeleteJobResponse) ToJsonString() string {
 }
 
 func (r *DeleteJobResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteResourceGroupRequest struct {
+	*tchttp.BaseRequest
+
+	// 要删除的资源组 ID
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" name:"ResourceGroupId"`
+}
+
+func (r *DeleteResourceGroupRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteResourceGroupRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteResourceGroupResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DeleteResourceGroupResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteResourceGroupResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteRsgAsGroupRequest struct {
+	*tchttp.BaseRequest
+
+	// 伸缩组 ID
+	Id *string `json:"Id,omitempty" name:"Id"`
+}
+
+func (r *DeleteRsgAsGroupRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteRsgAsGroupRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteRsgAsGroupResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DeleteRsgAsGroupResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteRsgAsGroupResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -489,6 +643,173 @@ func (r *DescribeInstancesResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeResourceGroupsRequest struct {
+	*tchttp.BaseRequest
+
+	// 筛选选项
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+
+	// 偏移量，默认为0
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 返回数量，默认为20，最大值为200
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 输出列表的排列顺序。取值范围：ASC：升序排列 DESC：降序排列
+	Order *string `json:"Order,omitempty" name:"Order"`
+
+	// 排序的依据字段， 取值范围 "CREATE_TIME", "UPDATE_TIME", "NAME"
+	OrderField *string `json:"OrderField,omitempty" name:"OrderField"`
+}
+
+func (r *DescribeResourceGroupsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeResourceGroupsRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeResourceGroupsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 资源组总数
+		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 资源组列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		ResourceGroups []*ResourceGroup `json:"ResourceGroups,omitempty" name:"ResourceGroups" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeResourceGroupsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeResourceGroupsResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeRsgAsGroupActivitiesRequest struct {
+	*tchttp.BaseRequest
+
+	// 伸缩组 ID
+	Id *string `json:"Id,omitempty" name:"Id"`
+
+	// 查询活动的开始时间
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 查询互动的结束时间
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 筛选选项
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+
+	// 偏移量，默认为 0
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 返回数量，默认为 20，最大值为 200
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 输出列表的排列顺序。取值范围："ASC", "DESC"
+	Order *string `json:"Order,omitempty" name:"Order"`
+
+	// 排序的依据字段， 取值范围 "CREATE_TIME", "UPDATE_TIME", "NAME"
+	OrderField *string `json:"OrderField,omitempty" name:"OrderField"`
+}
+
+func (r *DescribeRsgAsGroupActivitiesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeRsgAsGroupActivitiesRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeRsgAsGroupActivitiesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 伸缩组活动数组
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		RsgAsGroupActivitySet []*RsgAsGroupActivity `json:"RsgAsGroupActivitySet,omitempty" name:"RsgAsGroupActivitySet" list`
+
+		// 所查询的伸缩组活动总数目
+		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeRsgAsGroupActivitiesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeRsgAsGroupActivitiesResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeRsgAsGroupsRequest struct {
+	*tchttp.BaseRequest
+
+	// 筛选选项
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+
+	// 偏移量，默认为 0
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 返回数量，默认为 20，最大值为 200
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 输出列表的排列顺序。取值范围："ASC", "DESC"
+	Order *string `json:"Order,omitempty" name:"Order"`
+
+	// 排序的依据字段， 取值范围 "CREATE_TIME", "UPDATE_TIME", "NAME"
+	OrderField *string `json:"OrderField,omitempty" name:"OrderField"`
+}
+
+func (r *DescribeRsgAsGroupsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeRsgAsGroupsRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeRsgAsGroupsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 所查询的伸缩组数组
+		RsgAsGroupSet []*RsgAsGroup `json:"RsgAsGroupSet,omitempty" name:"RsgAsGroupSet" list`
+
+		// 伸缩组数组总数目
+		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeRsgAsGroupsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeRsgAsGroupsResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeRuntimesRequest struct {
 	*tchttp.BaseRequest
 }
@@ -634,6 +955,74 @@ func (r *DescribeServicesResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DisableRsgAsGroupRequest struct {
+	*tchttp.BaseRequest
+
+	// 伸缩组 ID
+	Id *string `json:"Id,omitempty" name:"Id"`
+}
+
+func (r *DisableRsgAsGroupRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DisableRsgAsGroupRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DisableRsgAsGroupResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DisableRsgAsGroupResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DisableRsgAsGroupResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type EnableRsgAsGroupRequest struct {
+	*tchttp.BaseRequest
+
+	// 伸缩组 ID
+	Id *string `json:"Id,omitempty" name:"Id"`
+}
+
+func (r *EnableRsgAsGroupRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *EnableRsgAsGroupRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type EnableRsgAsGroupResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *EnableRsgAsGroupResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *EnableRsgAsGroupResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type ExposeInfo struct {
 
 	// 暴露方式，支持 EXTERNAL（外网暴露），VPC （VPC内网打通）
@@ -649,6 +1038,18 @@ type ExposeInfo struct {
 	// 暴露方式为 VPC 时，打通的子网Id
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
+
+	// GATEWAY 服务id，ExposeType = GATEWAY 时返回
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GateWayServiceId *string `json:"GateWayServiceId,omitempty" name:"GateWayServiceId"`
+
+	// GATEWAY api id，ExposeType = GATEWAY 时返回
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GateWayAPIId *string `json:"GateWayAPIId,omitempty" name:"GateWayAPIId"`
+
+	// GATEWAY domain，ExposeType = GATEWAY 时返回
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GateWayDomain *string `json:"GateWayDomain,omitempty" name:"GateWayDomain"`
 }
 
 type ExposeServiceRequest struct {
@@ -761,6 +1162,9 @@ type Instance struct {
 
 	// 当前 Gpu 申请使用量
 	GpuRequested *uint64 `json:"GpuRequested,omitempty" name:"GpuRequested"`
+
+	// 节点所在伸缩组 ID
+	RsgAsGroupId *string `json:"RsgAsGroupId,omitempty" name:"RsgAsGroupId"`
 }
 
 type Job struct {
@@ -769,6 +1173,7 @@ type Job struct {
 	Id *string `json:"Id,omitempty" name:"Id"`
 
 	// 集群名
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Cluster *string `json:"Cluster,omitempty" name:"Cluster"`
 
 	// Region 名
@@ -778,6 +1183,7 @@ type Job struct {
 	Name *string `json:"Name,omitempty" name:"Name"`
 
 	// Worker 使用的运行环境
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Runtime *string `json:"Runtime,omitempty" name:"Runtime"`
 
 	// 任务描述
@@ -785,9 +1191,11 @@ type Job struct {
 	Description *string `json:"Description,omitempty" name:"Description"`
 
 	// 配置 Id
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	ConfigId *string `json:"ConfigId,omitempty" name:"ConfigId"`
 
 	// 预测输入
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	PredictInput *PredictInput `json:"PredictInput,omitempty" name:"PredictInput"`
 
 	// 任务状态
@@ -843,6 +1251,14 @@ type Job struct {
 	// 配置版本
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ConfigVersion *string `json:"ConfigVersion,omitempty" name:"ConfigVersion"`
+
+	// Job类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	JobType *string `json:"JobType,omitempty" name:"JobType"`
+
+	// 量化输入
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	QuantizationInput *QuantizationInput `json:"QuantizationInput,omitempty" name:"QuantizationInput"`
 }
 
 type JobStatus struct {
@@ -985,6 +1401,220 @@ type PredictInput struct {
 	SignatureName *string `json:"SignatureName,omitempty" name:"SignatureName"`
 }
 
+type QuantizationInput struct {
+
+	// 量化输入路径
+	InputPath *string `json:"InputPath,omitempty" name:"InputPath"`
+
+	// 量化输出路径
+	OutputPath *string `json:"OutputPath,omitempty" name:"OutputPath"`
+
+	// 量化批大小
+	BatchSize *uint64 `json:"BatchSize,omitempty" name:"BatchSize"`
+
+	// 量化精度，支持：FP32，FP16，INT8
+	Precision *string `json:"Precision,omitempty" name:"Precision"`
+
+	// 转换类型
+	ConvertType *string `json:"ConvertType,omitempty" name:"ConvertType"`
+}
+
+type ReplicaInfo struct {
+
+	// 实例名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 弹性网卡模式时，弹性网卡Ip
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EniIp *string `json:"EniIp,omitempty" name:"EniIp"`
+
+	// Normal: 正常运行中; Abnormal: 异常；Waiting：等待中
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 当 status为 Abnormal 的时候，一些额外的信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Message *string `json:"Message,omitempty" name:"Message"`
+
+	// 启动时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 创建时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 重启次数
+	Restarted *uint64 `json:"Restarted,omitempty" name:"Restarted"`
+}
+
+type ResourceGroup struct {
+
+	// 资源组 Id
+	Id *string `json:"Id,omitempty" name:"Id"`
+
+	// 地域
+	Region *string `json:"Region,omitempty" name:"Region"`
+
+	// 集群
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Cluster *string `json:"Cluster,omitempty" name:"Cluster"`
+
+	// 资源组名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 资源组描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Description *string `json:"Description,omitempty" name:"Description"`
+
+	// 创建时间
+	Created *string `json:"Created,omitempty" name:"Created"`
+
+	// 更新时间
+	Updated *string `json:"Updated,omitempty" name:"Updated"`
+
+	// 资源组主机数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceCount *uint64 `json:"InstanceCount,omitempty" name:"InstanceCount"`
+
+	// 使用资源组的服务数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ServiceCount *uint64 `json:"ServiceCount,omitempty" name:"ServiceCount"`
+
+	// 使用资源组的任务数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	JobCount *uint64 `json:"JobCount,omitempty" name:"JobCount"`
+
+	// 资源组是否为公共资源组
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Public *bool `json:"Public,omitempty" name:"Public"`
+
+	// 机器类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceType *string `json:"InstanceType,omitempty" name:"InstanceType"`
+
+	// 资源组状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 显卡总张数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Gpu *uint64 `json:"Gpu,omitempty" name:"Gpu"`
+
+	// 处理器总核数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Cpu *uint64 `json:"Cpu,omitempty" name:"Cpu"`
+
+	// 内存总量，单位为G
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Memory *uint64 `json:"Memory,omitempty" name:"Memory"`
+
+	// 可用区
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Zone *string `json:"Zone,omitempty" name:"Zone"`
+
+	// Gpu类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GpuType []*string `json:"GpuType,omitempty" name:"GpuType" list`
+
+	// 该资源组下是否有预付费资源
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HasPrepaid *bool `json:"HasPrepaid,omitempty" name:"HasPrepaid"`
+
+	// 资源组是否允许预付费或后付费模式
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PayMode *string `json:"PayMode,omitempty" name:"PayMode"`
+}
+
+type RsgAsActivityRelatedInstance struct {
+
+	// 节点 ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 节点状态
+	InstanceStatus *string `json:"InstanceStatus,omitempty" name:"InstanceStatus"`
+}
+
+type RsgAsGroup struct {
+
+	// 伸缩组 ID
+	Id *string `json:"Id,omitempty" name:"Id"`
+
+	// 伸缩组所在地域
+	Region *string `json:"Region,omitempty" name:"Region"`
+
+	// 伸缩组所在可用区
+	Zone *string `json:"Zone,omitempty" name:"Zone"`
+
+	// 伸缩组所在集群
+	Cluster *string `json:"Cluster,omitempty" name:"Cluster"`
+
+	// 伸缩组所在资源组 ID
+	RsgId *string `json:"RsgId,omitempty" name:"RsgId"`
+
+	// 伸缩组名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 伸缩组允许的最大节点个数
+	MaxSize *uint64 `json:"MaxSize,omitempty" name:"MaxSize"`
+
+	// 伸缩组允许的最小节点个数
+	MinSize *uint64 `json:"MinSize,omitempty" name:"MinSize"`
+
+	// 伸缩组创建时间
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 伸缩组更新时间
+	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
+
+	// 伸缩组状态
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 伸缩组节点类型
+	InstanceType *string `json:"InstanceType,omitempty" name:"InstanceType"`
+
+	// 伸缩组内节点个数
+	InstanceCount *uint64 `json:"InstanceCount,omitempty" name:"InstanceCount"`
+}
+
+type RsgAsGroupActivity struct {
+
+	// 伸缩组活动 ID
+	Id *string `json:"Id,omitempty" name:"Id"`
+
+	// 关联的伸缩组 ID
+	RsgAsGroupId *string `json:"RsgAsGroupId,omitempty" name:"RsgAsGroupId"`
+
+	// 活动类型
+	ActivityType *string `json:"ActivityType,omitempty" name:"ActivityType"`
+
+	// 状态的编码
+	StatusCode *string `json:"StatusCode,omitempty" name:"StatusCode"`
+
+	// 状态的消息
+	StatusMessage *string `json:"StatusMessage,omitempty" name:"StatusMessage"`
+
+	// 活动原因
+	Cause *string `json:"Cause,omitempty" name:"Cause"`
+
+	// 活动描述
+	Description *string `json:"Description,omitempty" name:"Description"`
+
+	// 活动开始时间
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 活动结束时间
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 活动创建时间
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 活动相关联的节点
+	RsgAsActivityRelatedInstance []*RsgAsActivityRelatedInstance `json:"RsgAsActivityRelatedInstance,omitempty" name:"RsgAsActivityRelatedInstance" list`
+
+	// 简略的状态消息
+	StatusMessageSimplified *string `json:"StatusMessageSimplified,omitempty" name:"StatusMessageSimplified"`
+}
+
 type Runtime struct {
 
 	// 运行环境名称
@@ -1050,6 +1680,10 @@ type ServiceStatus struct {
 	// 运行状态对额外信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Message *string `json:"Message,omitempty" name:"Message"`
+
+	// 副本信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ReplicaInfos []*ReplicaInfo `json:"ReplicaInfos,omitempty" name:"ReplicaInfos" list`
 }
 
 type UpdateJobRequest struct {
@@ -1096,6 +1730,46 @@ func (r *UpdateJobResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type UpdateRsgAsGroupRequest struct {
+	*tchttp.BaseRequest
+
+	// 伸缩组 ID
+	Id *string `json:"Id,omitempty" name:"Id"`
+
+	// 重命名名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+}
+
+func (r *UpdateRsgAsGroupRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *UpdateRsgAsGroupRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type UpdateRsgAsGroupResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 资源组的伸缩组
+		RsgAsGroup *RsgAsGroup `json:"RsgAsGroup,omitempty" name:"RsgAsGroup"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *UpdateRsgAsGroupResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *UpdateRsgAsGroupResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type UpdateServiceRequest struct {
 	*tchttp.BaseRequest
 
@@ -1119,6 +1793,15 @@ type UpdateServiceRequest struct {
 
 	// GPU卡类型
 	GpuType *string `json:"GpuType,omitempty" name:"GpuType"`
+
+	// 处理器配置，单位为 1/1000 核
+	Cpu *uint64 `json:"Cpu,omitempty" name:"Cpu"`
+
+	// 内存配置，单位为1M
+	Memory *uint64 `json:"Memory,omitempty" name:"Memory"`
+
+	// 显卡配置，单位为 1/1000 卡
+	Gpu *uint64 `json:"Gpu,omitempty" name:"Gpu"`
 }
 
 func (r *UpdateServiceRequest) ToJsonString() string {

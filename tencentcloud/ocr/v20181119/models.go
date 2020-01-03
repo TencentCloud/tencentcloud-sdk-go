@@ -449,6 +449,17 @@ type DriverLicenseOCRResponse struct {
 		// 证号
 		CardCode *string `json:"CardCode,omitempty" name:"CardCode"`
 
+		// 告警码	告警码消息	                                                告警码说明
+	// -9102	WARN_DRIVER_LICENSE_COPY_CARD	        复印件告警
+	// -9103	WARN_DRIVER_LICENSE_SCREENED_CARD	翻拍件告警
+	// -9106	WARN_DRIVER_LICENSE_PS_CARD	                ps告警
+	// 注：告警码可以同时存在多个
+		RecognizeWarnCode []*int64 `json:"RecognizeWarnCode,omitempty" name:"RecognizeWarnCode" list`
+
+		// 告警码说明
+	// 注：告警信息可以同时存在多个
+		RecognizeWarnMsg []*string `json:"RecognizeWarnMsg,omitempty" name:"RecognizeWarnMsg" list`
+
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
@@ -1675,6 +1686,17 @@ type MLIDCardOCRResponse struct {
 		// 证件图片
 		Image *string `json:"Image,omitempty" name:"Image"`
 
+		// 扩展字段:
+	// {
+	//     ID:{
+	//         Confidence:0.9999
+	//     },
+	//     Name:{
+	//         Confidence:0.9996
+	//     }
+	// }
+		AdvancedInfo *string `json:"AdvancedInfo,omitempty" name:"AdvancedInfo"`
+
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
@@ -1742,6 +1764,17 @@ type MLIDPassportOCRResponse struct {
 
 		// 证件图片
 		Image *string `json:"Image,omitempty" name:"Image"`
+
+		// 扩展字段:
+	// {
+	//     ID:{
+	//         Confidence:0.9999
+	//     },
+	//     Name:{
+	//         Confidence:0.9996
+	//     }
+	// }
+		AdvancedInfo *string `json:"AdvancedInfo,omitempty" name:"AdvancedInfo"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -2335,6 +2368,24 @@ type QuotaInvoiceOCRResponse struct {
 		// 大写金额
 		Rate *string `json:"Rate,omitempty" name:"Rate"`
 
+		// 小写金额
+		RateNum *string `json:"RateNum,omitempty" name:"RateNum"`
+
+		// 发票消费类型
+		InvoiceType *string `json:"InvoiceType,omitempty" name:"InvoiceType"`
+
+		// 省
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Province *string `json:"Province,omitempty" name:"Province"`
+
+		// 市
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		City *string `json:"City,omitempty" name:"City"`
+
+		// 是否有公司印章（1有 0无 空为识别不出）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		HasStamp *string `json:"HasStamp,omitempty" name:"HasStamp"`
+
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
@@ -2615,6 +2666,23 @@ type TaxiInvoiceOCRResponse struct {
 
 		// 里程
 		Distance *string `json:"Distance,omitempty" name:"Distance"`
+
+		// 发票所在地
+		Location *string `json:"Location,omitempty" name:"Location"`
+
+		// 车牌号
+		PlateNumber *string `json:"PlateNumber,omitempty" name:"PlateNumber"`
+
+		// 发票消费类型
+		InvoiceType *string `json:"InvoiceType,omitempty" name:"InvoiceType"`
+
+		// 省
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Province *string `json:"Province,omitempty" name:"Province"`
+
+		// 市
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		City *string `json:"City,omitempty" name:"City"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -3048,6 +3116,12 @@ type TrainTicketOCRResponse struct {
 		// 身份证号
 		ID *string `json:"ID,omitempty" name:"ID"`
 
+		// 发票消费类型
+		InvoiceType *string `json:"InvoiceType,omitempty" name:"InvoiceType"`
+
+		// 序列号
+		SerialNumber *string `json:"SerialNumber,omitempty" name:"SerialNumber"`
+
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
@@ -3212,6 +3286,17 @@ type VehicleLicenseOCRResponse struct {
 		// 行驶证副页正面的识别结果，CardSide 为 BACK。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		BackInfo *TextVehicleBack `json:"BackInfo,omitempty" name:"BackInfo"`
+
+		// 告警码	告警码消息	                                                告警码说明
+	// -9102	WARN_DRIVER_LICENSE_COPY_CARD	        复印件告警
+	// -9103	WARN_DRIVER_LICENSE_SCREENED_CARD	翻拍件告警
+	// -9106	WARN_DRIVER_LICENSE_PS_CARD	                ps告警
+	// 注：告警码可以同时存在多个
+		RecognizeWarnCode []*int64 `json:"RecognizeWarnCode,omitempty" name:"RecognizeWarnCode" list`
+
+		// 告警码说明
+	// 注：告警信息可以同时存在多个
+		RecognizeWarnMsg []*string `json:"RecognizeWarnMsg,omitempty" name:"RecognizeWarnMsg" list`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`

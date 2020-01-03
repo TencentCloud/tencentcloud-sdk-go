@@ -2305,6 +2305,9 @@ func (r *CreateAIRecognitionTemplateResponse) FromJsonString(s string) error {
 type CreateAnimatedGraphicsTemplateRequest struct {
 	*tchttp.BaseRequest
 
+	// 帧率，取值范围：[1, 30]，单位：Hz。
+	Fps *uint64 `json:"Fps,omitempty" name:"Fps"`
+
 	// 动图宽度（或长边）的最大值，取值范围：0 和 [128, 4096]，单位：px。
 	// <li>当 Width、Height 均为 0，则分辨率同源；</li>
 	// <li>当 Width 为 0，Height 非 0，则 Width 按比例缩放；</li>
@@ -2313,7 +2316,7 @@ type CreateAnimatedGraphicsTemplateRequest struct {
 	// 默认值：0。
 	Width *uint64 `json:"Width,omitempty" name:"Width"`
 
-	// 视频流高度（或短边）的最大值，取值范围：0 和 [128, 4096]，单位：px。
+	// 动图高度（或短边）的最大值，取值范围：0 和 [128, 4096]，单位：px。
 	// <li>当 Width、Height 均为 0，则分辨率同源；</li>
 	// <li>当 Width 为 0，Height 非 0，则 Width 按比例缩放；</li>
 	// <li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li>
@@ -2321,8 +2324,11 @@ type CreateAnimatedGraphicsTemplateRequest struct {
 	// 默认值：0。
 	Height *uint64 `json:"Height,omitempty" name:"Height"`
 
-	// 帧率，取值范围：[1, 30]，单位：Hz。
-	Fps *uint64 `json:"Fps,omitempty" name:"Fps"`
+	// 分辨率自适应，可选值：
+	// <li>open：开启，此时，Width 代表视频的长边，Height 表示视频的短边；</li>
+	// <li>close：关闭，此时，Width 代表视频的宽度，Height 表示视频的高度。</li>
+	// 默认值：open。
+	ResolutionAdaptive *string `json:"ResolutionAdaptive,omitempty" name:"ResolutionAdaptive"`
 
 	// 动图格式，取值为 gif 和 webp。默认为 gif。
 	Format *string `json:"Format,omitempty" name:"Format"`
@@ -2515,12 +2521,6 @@ type CreateImageSpriteTask2017 struct {
 type CreateImageSpriteTemplateRequest struct {
 	*tchttp.BaseRequest
 
-	// 雪碧图中小图的宽度，取值范围： [128, 4096]，单位：px。
-	Width *uint64 `json:"Width,omitempty" name:"Width"`
-
-	// 雪碧图中小图的高度，取值范围： [128, 4096]，单位：px。
-	Height *uint64 `json:"Height,omitempty" name:"Height"`
-
 	// 采样类型，取值：
 	// <li>Percent：按百分比。</li>
 	// <li>Time：按时间间隔。</li>
@@ -2540,8 +2540,36 @@ type CreateImageSpriteTemplateRequest struct {
 	// 雪碧图模板名称，长度限制：64 个字符。
 	Name *string `json:"Name,omitempty" name:"Name"`
 
+	// 雪碧图中小图的宽度（或长边）的最大值，取值范围：0 和 [128, 4096]，单位：px。
+	// <li>当 Width、Height 均为 0，则分辨率同源；</li>
+	// <li>当 Width 为 0，Height 非 0，则 Width 按比例缩放；</li>
+	// <li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li>
+	// <li>当 Width、Height 均非 0，则分辨率按用户指定。</li>
+	// 默认值：0。
+	Width *uint64 `json:"Width,omitempty" name:"Width"`
+
+	// 雪碧图中小图的高度（或短边）的最大值，取值范围：0 和 [128, 4096]，单位：px。
+	// <li>当 Width、Height 均为 0，则分辨率同源；</li>
+	// <li>当 Width 为 0，Height 非 0，则 Width 按比例缩放；</li>
+	// <li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li>
+	// <li>当 Width、Height 均非 0，则分辨率按用户指定。</li>
+	// 默认值：0。
+	Height *uint64 `json:"Height,omitempty" name:"Height"`
+
+	// 分辨率自适应，可选值：
+	// <li>open：开启，此时，Width 代表视频的长边，Height 表示视频的短边；</li>
+	// <li>close：关闭，此时，Width 代表视频的宽度，Height 表示视频的高度。</li>
+	// 默认值：open。
+	ResolutionAdaptive *string `json:"ResolutionAdaptive,omitempty" name:"ResolutionAdaptive"`
+
 	// 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
 	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
+
+	// 填充方式，当视频流配置宽高参数与原始视频的宽高比不一致时，对转码的处理方式，即为“填充”。可选填充方式：
+	// <li> stretch：拉伸，对每一帧进行拉伸，填满整个画面，可能导致转码后的视频被“压扁“或者“拉长“；</li>
+	// <li>black：留黑，保持视频宽高比不变，边缘剩余部分使用黑色填充。</li>
+	// 默认值：black 。
+	FillType *string `json:"FillType,omitempty" name:"FillType"`
 }
 
 func (r *CreateImageSpriteTemplateRequest) ToJsonString() string {
@@ -2688,12 +2716,6 @@ func (r *CreateProcedureTemplateResponse) FromJsonString(s string) error {
 type CreateSampleSnapshotTemplateRequest struct {
 	*tchttp.BaseRequest
 
-	// 图片宽度，取值范围： [128, 4096]，单位：px。
-	Width *uint64 `json:"Width,omitempty" name:"Width"`
-
-	// 图片高度，取值范围： [128, 4096]，单位：px。
-	Height *uint64 `json:"Height,omitempty" name:"Height"`
-
 	// 采样截图类型，取值：
 	// <li>Percent：按百分比。</li>
 	// <li>Time：按时间间隔。</li>
@@ -2707,6 +2729,28 @@ type CreateSampleSnapshotTemplateRequest struct {
 	// 采样截图模板名称，长度限制：64 个字符。
 	Name *string `json:"Name,omitempty" name:"Name"`
 
+	// 截图宽度（或长边）的最大值，取值范围：0 和 [128, 4096]，单位：px。
+	// <li>当 Width、Height 均为 0，则分辨率同源；</li>
+	// <li>当 Width 为 0，Height 非 0，则 Width 按比例缩放；</li>
+	// <li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li>
+	// <li>当 Width、Height 均非 0，则分辨率按用户指定。</li>
+	// 默认值：0。
+	Width *uint64 `json:"Width,omitempty" name:"Width"`
+
+	// 截图高度（或短边）的最大值，取值范围：0 和 [128, 4096]，单位：px。
+	// <li>当 Width、Height 均为 0，则分辨率同源；</li>
+	// <li>当 Width 为 0，Height 非 0，则 Width 按比例缩放；</li>
+	// <li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li>
+	// <li>当 Width、Height 均非 0，则分辨率按用户指定。</li>
+	// 默认值：0。
+	Height *uint64 `json:"Height,omitempty" name:"Height"`
+
+	// 分辨率自适应，可选值：
+	// <li>open：开启，此时，Width 代表视频的长边，Height 表示视频的短边；</li>
+	// <li>close：关闭，此时，Width 代表视频的宽度，Height 表示视频的高度。</li>
+	// 默认值：open。
+	ResolutionAdaptive *string `json:"ResolutionAdaptive,omitempty" name:"ResolutionAdaptive"`
+
 	// 图片格式，取值为 jpg 和 png。默认为 jpg。
 	Format *string `json:"Format,omitempty" name:"Format"`
 
@@ -2715,6 +2759,14 @@ type CreateSampleSnapshotTemplateRequest struct {
 
 	// 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
 	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
+
+	// 填充方式，当视频流配置宽高参数与原始视频的宽高比不一致时，对转码的处理方式，即为“填充”。可选填充方式：
+	// <li> stretch：拉伸，对每一帧进行拉伸，填满整个画面，可能导致转码后的视频被“压扁“或者“拉长“；</li>
+	// <li>black：留黑，保持视频宽高比不变，边缘剩余部分使用黑色填充。</li>
+	// <li>white：留白，保持视频宽高比不变，边缘剩余部分使用白色填充。</li>
+	// <li>gauss：高斯模糊，保持视频宽高比不变，边缘剩余部分使用高斯模糊。</li>
+	// 默认值：black 。
+	FillType *string `json:"FillType,omitempty" name:"FillType"`
 }
 
 func (r *CreateSampleSnapshotTemplateRequest) ToJsonString() string {
@@ -2750,14 +2802,30 @@ func (r *CreateSampleSnapshotTemplateResponse) FromJsonString(s string) error {
 type CreateSnapshotByTimeOffsetTemplateRequest struct {
 	*tchttp.BaseRequest
 
-	// 图片宽度，取值范围： [128, 4096]，单位：px。
-	Width *uint64 `json:"Width,omitempty" name:"Width"`
-
-	// 图片高度，取值范围： [128, 4096]，单位：px。
-	Height *uint64 `json:"Height,omitempty" name:"Height"`
-
 	// 指定时间点截图模板名称，长度限制：64 个字符。
 	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 截图宽度（或长边）的最大值，取值范围：0 和 [128, 4096]，单位：px。
+	// <li>当 Width、Height 均为 0，则分辨率同源；</li>
+	// <li>当 Width 为 0，Height 非 0，则 Width 按比例缩放；</li>
+	// <li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li>
+	// <li>当 Width、Height 均非 0，则分辨率按用户指定。</li>
+	// 默认值：0。
+	Width *uint64 `json:"Width,omitempty" name:"Width"`
+
+	// 截图高度（或短边）的最大值，取值范围：0 和 [128, 4096]，单位：px。
+	// <li>当 Width、Height 均为 0，则分辨率同源；</li>
+	// <li>当 Width 为 0，Height 非 0，则 Width 按比例缩放；</li>
+	// <li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li>
+	// <li>当 Width、Height 均非 0，则分辨率按用户指定。</li>
+	// 默认值：0。
+	Height *uint64 `json:"Height,omitempty" name:"Height"`
+
+	// 分辨率自适应，可选值：
+	// <li>open：开启，此时，Width 代表视频的长边，Height 表示视频的短边；</li>
+	// <li>close：关闭，此时，Width 代表视频的宽度，Height 表示视频的高度。</li>
+	// 默认值：open。
+	ResolutionAdaptive *string `json:"ResolutionAdaptive,omitempty" name:"ResolutionAdaptive"`
 
 	// 图片格式，取值可以为 jpg 和 png。默认为 jpg。
 	Format *string `json:"Format,omitempty" name:"Format"`
@@ -2767,6 +2835,14 @@ type CreateSnapshotByTimeOffsetTemplateRequest struct {
 
 	// 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
 	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
+
+	// 填充方式，当视频流配置宽高参数与原始视频的宽高比不一致时，对转码的处理方式，即为“填充”。可选填充方式：
+	// <li> stretch：拉伸，对每一帧进行拉伸，填满整个画面，可能导致转码后的视频被“压扁“或者“拉长“；</li>
+	// <li>black：留黑，保持视频宽高比不变，边缘剩余部分使用黑色填充。</li>
+	// <li>white：留白，保持视频宽高比不变，边缘剩余部分使用白色填充。</li>
+	// <li>gauss：高斯模糊，保持视频宽高比不变，边缘剩余部分使用高斯模糊。</li>
+	// 默认值：black 。
+	FillType *string `json:"FillType,omitempty" name:"FillType"`
 }
 
 func (r *CreateSnapshotByTimeOffsetTemplateRequest) ToJsonString() string {
@@ -2829,7 +2905,7 @@ type CreateTranscodeTemplateRequest struct {
 	// 音频流配置参数，当 RemoveAudio 为 0，该字段必填。
 	AudioTemplate *AudioTemplateInfo `json:"AudioTemplate,omitempty" name:"AudioTemplate"`
 
-	// 极速高清转码参数，需联系商务架构师开通后才能使用。
+	// 极速高清转码参数。
 	TEHDConfig *TEHDConfig `json:"TEHDConfig,omitempty" name:"TEHDConfig"`
 
 	// 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
@@ -5157,6 +5233,49 @@ type FileUploadTask struct {
 	MetaData *MediaMetaData `json:"MetaData,omitempty" name:"MetaData"`
 }
 
+type ForbidMediaDistributionRequest struct {
+	*tchttp.BaseRequest
+
+	// 媒体文件列表，每次最多可提交 20 条。
+	FileIds []*string `json:"FileIds,omitempty" name:"FileIds" list`
+
+	// forbid：禁播，recover：解禁。
+	Operation *string `json:"Operation,omitempty" name:"Operation"`
+
+	// 点播[子应用](/document/product/266/14574) ID 。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
+}
+
+func (r *ForbidMediaDistributionRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ForbidMediaDistributionRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ForbidMediaDistributionResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 不存在的文件 ID 列表。
+		NotExistFileIdSet []*string `json:"NotExistFileIdSet,omitempty" name:"NotExistFileIdSet" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ForbidMediaDistributionResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ForbidMediaDistributionResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type FrameTagConfigureInfo struct {
 
 	// 智能按帧标签任务开关，可选值：
@@ -6605,13 +6724,19 @@ type ModifyAnimatedGraphicsTemplateRequest struct {
 	// 默认值：0。
 	Width *uint64 `json:"Width,omitempty" name:"Width"`
 
-	// 视频流高度（或短边）的最大值，取值范围：0 和 [128, 4096]，单位：px。
+	// 动图高度（或短边）的最大值，取值范围：0 和 [128, 4096]，单位：px。
 	// <li>当 Width、Height 均为 0，则分辨率同源；</li>
 	// <li>当 Width 为 0，Height 非 0，则 Width 按比例缩放；</li>
 	// <li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li>
 	// <li>当 Width、Height 均非 0，则分辨率按用户指定。</li>
 	// 默认值：0。
 	Height *uint64 `json:"Height,omitempty" name:"Height"`
+
+	// 分辨率自适应，可选值：
+	// <li>open：开启，此时，Width 代表视频的长边，Height 表示视频的短边；</li>
+	// <li>close：关闭，此时，Width 代表视频的宽度，Height 表示视频的高度。</li>
+	// 默认值：open。
+	ResolutionAdaptive *string `json:"ResolutionAdaptive,omitempty" name:"ResolutionAdaptive"`
 
 	// 动图格式，取值为 gif 和 webp。
 	Format *string `json:"Format,omitempty" name:"Format"`
@@ -6774,6 +6899,12 @@ type ModifyImageSpriteTemplateRequest struct {
 	// 雪碧图中小图的高度，取值范围： [128, 4096]，单位：px。
 	Height *uint64 `json:"Height,omitempty" name:"Height"`
 
+	// 分辨率自适应，可选值：
+	// <li>open：开启，此时，Width 代表视频的长边，Height 表示视频的短边；</li>
+	// <li>close：关闭，此时，Width 代表视频的宽度，Height 表示视频的高度。</li>
+	// 默认值：open。
+	ResolutionAdaptive *string `json:"ResolutionAdaptive,omitempty" name:"ResolutionAdaptive"`
+
 	// 采样类型，取值：
 	// <li>Percent：按百分比。</li>
 	// <li>Time：按时间间隔。</li>
@@ -6792,6 +6923,12 @@ type ModifyImageSpriteTemplateRequest struct {
 
 	// 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
 	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
+
+	// 填充方式，当视频流配置宽高参数与原始视频的宽高比不一致时，对转码的处理方式，即为“填充”。可选填充方式：
+	// <li> stretch：拉伸，对每一帧进行拉伸，填满整个画面，可能导致转码后的视频被“压扁“或者“拉长“；</li>
+	// <li>black：留黑，保持视频宽高比不变，边缘剩余部分使用黑色填充。</li>
+	// 默认值：black 。
+	FillType *string `json:"FillType,omitempty" name:"FillType"`
 }
 
 func (r *ModifyImageSpriteTemplateRequest) ToJsonString() string {
@@ -6969,11 +7106,27 @@ type ModifySampleSnapshotTemplateRequest struct {
 	// 采样截图模板名称，长度限制：64 个字符。
 	Name *string `json:"Name,omitempty" name:"Name"`
 
-	// 图片宽度，取值范围： [128, 4096]，单位：px。
+	// 截图宽度（或长边）的最大值，取值范围：0 和 [128, 4096]，单位：px。
+	// <li>当 Width、Height 均为 0，则分辨率同源；</li>
+	// <li>当 Width 为 0，Height 非 0，则 Width 按比例缩放；</li>
+	// <li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li>
+	// <li>当 Width、Height 均非 0，则分辨率按用户指定。</li>
+	// 默认值：0。
 	Width *uint64 `json:"Width,omitempty" name:"Width"`
 
-	// 图片高度，取值范围： [128, 4096]，单位：px。
+	// 截图高度（或短边）的最大值，取值范围：0 和 [128, 4096]，单位：px。
+	// <li>当 Width、Height 均为 0，则分辨率同源；</li>
+	// <li>当 Width 为 0，Height 非 0，则 Width 按比例缩放；</li>
+	// <li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li>
+	// <li>当 Width、Height 均非 0，则分辨率按用户指定。</li>
+	// 默认值：0。
 	Height *uint64 `json:"Height,omitempty" name:"Height"`
+
+	// 分辨率自适应，可选值：
+	// <li>open：开启，此时，Width 代表视频的长边，Height 表示视频的短边；</li>
+	// <li>close：关闭，此时，Width 代表视频的宽度，Height 表示视频的高度。</li>
+	// 默认值：open。
+	ResolutionAdaptive *string `json:"ResolutionAdaptive,omitempty" name:"ResolutionAdaptive"`
 
 	// 采样截图类型，取值：
 	// <li>Percent：按百分比。</li>
@@ -6993,6 +7146,14 @@ type ModifySampleSnapshotTemplateRequest struct {
 
 	// 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
 	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
+
+	// 填充方式，当视频流配置宽高参数与原始视频的宽高比不一致时，对转码的处理方式，即为“填充”。可选填充方式：
+	// <li> stretch：拉伸，对每一帧进行拉伸，填满整个画面，可能导致转码后的视频被“压扁“或者“拉长“；</li>
+	// <li>black：留黑，保持视频宽高比不变，边缘剩余部分使用黑色填充。</li>
+	// <li>white：留白，保持视频宽高比不变，边缘剩余部分使用白色填充。</li>
+	// <li>gauss：高斯模糊，保持视频宽高比不变，边缘剩余部分使用高斯模糊。</li>
+	// 默认值：black 。
+	FillType *string `json:"FillType,omitempty" name:"FillType"`
 }
 
 func (r *ModifySampleSnapshotTemplateRequest) ToJsonString() string {
@@ -7031,11 +7192,27 @@ type ModifySnapshotByTimeOffsetTemplateRequest struct {
 	// 指定时间点截图模板名称，长度限制：64 个字符。
 	Name *string `json:"Name,omitempty" name:"Name"`
 
-	// 图片宽度，取值范围： [128, 4096]，单位：px。
+	// 截图宽度（或长边）的最大值，取值范围：0 和 [128, 4096]，单位：px。
+	// <li>当 Width、Height 均为 0，则分辨率同源；</li>
+	// <li>当 Width 为 0，Height 非 0，则 Width 按比例缩放；</li>
+	// <li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li>
+	// <li>当 Width、Height 均非 0，则分辨率按用户指定。</li>
+	// 默认值：0。
 	Width *uint64 `json:"Width,omitempty" name:"Width"`
 
-	// 图片高度，取值范围： [128, 4096]，单位：px。
+	// 截图高度（或短边）的最大值，取值范围：0 和 [128, 4096]，单位：px。
+	// <li>当 Width、Height 均为 0，则分辨率同源；</li>
+	// <li>当 Width 为 0，Height 非 0，则 Width 按比例缩放；</li>
+	// <li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li>
+	// <li>当 Width、Height 均非 0，则分辨率按用户指定。</li>
+	// 默认值：0。
 	Height *uint64 `json:"Height,omitempty" name:"Height"`
+
+	// 分辨率自适应，可选值：
+	// <li>open：开启，此时，Width 代表视频的长边，Height 表示视频的短边；</li>
+	// <li>close：关闭，此时，Width 代表视频的宽度，Height 表示视频的高度。</li>
+	// 默认值：open。
+	ResolutionAdaptive *string `json:"ResolutionAdaptive,omitempty" name:"ResolutionAdaptive"`
 
 	// 图片格式，取值可以为 jpg 和 png。
 	Format *string `json:"Format,omitempty" name:"Format"`
@@ -7045,6 +7222,14 @@ type ModifySnapshotByTimeOffsetTemplateRequest struct {
 
 	// 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
 	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
+
+	// 填充方式，当视频流配置宽高参数与原始视频的宽高比不一致时，对转码的处理方式，即为“填充”。可选填充方式：
+	// <li> stretch：拉伸，对每一帧进行拉伸，填满整个画面，可能导致转码后的视频被“压扁“或者“拉长“；</li>
+	// <li>black：留黑，保持视频宽高比不变，边缘剩余部分使用黑色填充。</li>
+	// <li>white：留白，保持视频宽高比不变，边缘剩余部分使用白色填充。</li>
+	// <li>gauss：高斯模糊，保持视频宽高比不变，边缘剩余部分使用高斯模糊。</li>
+	// 默认值：black 。
+	FillType *string `json:"FillType,omitempty" name:"FillType"`
 }
 
 func (r *ModifySnapshotByTimeOffsetTemplateRequest) ToJsonString() string {
@@ -7184,7 +7369,7 @@ type ModifyTranscodeTemplateRequest struct {
 	// 音频流配置参数。
 	AudioTemplate *AudioTemplateInfoForUpdate `json:"AudioTemplate,omitempty" name:"AudioTemplate"`
 
-	// 极速高清转码参数，需联系商务架构师开通后才能使用。
+	// 极速高清转码参数。
 	TEHDConfig *TEHDConfigForUpdate `json:"TEHDConfig,omitempty" name:"TEHDConfig"`
 
 	// 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
@@ -8995,7 +9180,7 @@ type TranscodeTemplate struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AudioTemplate *AudioTemplateInfo `json:"AudioTemplate,omitempty" name:"AudioTemplate"`
 
-	// 极速高清转码参数，需联系商务架构师开通后才能使用。
+	// 极速高清转码参数。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TEHDConfig *TEHDConfig `json:"TEHDConfig,omitempty" name:"TEHDConfig"`
 

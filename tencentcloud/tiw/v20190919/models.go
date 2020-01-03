@@ -105,7 +105,44 @@ type CustomLayout struct {
 	Canvas *Canvas `json:"Canvas,omitempty" name:"Canvas"`
 
 	// 流布局参数
-	InputStreamList *StreamLayout `json:"InputStreamList,omitempty" name:"InputStreamList"`
+	InputStreamList []*StreamLayout `json:"InputStreamList,omitempty" name:"InputStreamList" list`
+}
+
+type DescribeOnlineRecordCallbackRequest struct {
+	*tchttp.BaseRequest
+
+	// 应用的SdkAppId
+	SdkAppId *int64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+}
+
+func (r *DescribeOnlineRecordCallbackRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeOnlineRecordCallbackRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeOnlineRecordCallbackResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 实时录制事件回调地址，如果未设置回调地址，该字段为空字符串
+		Callback *string `json:"Callback,omitempty" name:"Callback"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeOnlineRecordCallbackResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeOnlineRecordCallbackResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeOnlineRecordRequest struct {
@@ -143,7 +180,9 @@ type DescribeOnlineRecordResponse struct {
 		// 录制任务状态
 	// - PREPARED: 表示录制正在准备中（进房/启动录制服务等操作）
 	// - RECORDING: 表示录制已开始
-	// - FINISHED: 表示录制完成
+	// - PAUSED: 表示录制已暂停
+	// - STOPPED: 表示录制已停止，正在处理并上传视频
+	// - FINISHED: 表示视频处理并上传完成，成功生成录制结果
 		Status *string `json:"Status,omitempty" name:"Status"`
 
 		// 房间号
@@ -184,6 +223,43 @@ func (r *DescribeOnlineRecordResponse) ToJsonString() string {
 }
 
 func (r *DescribeOnlineRecordResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeTranscodeCallbackRequest struct {
+	*tchttp.BaseRequest
+
+	// 应用的SdkAppId
+	SdkAppId *int64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+}
+
+func (r *DescribeTranscodeCallbackRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeTranscodeCallbackRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeTranscodeCallbackResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 文档转码回调地址
+		Callback *string `json:"Callback,omitempty" name:"Callback"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeTranscodeCallbackResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeTranscodeCallbackResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -265,10 +341,10 @@ func (r *DescribeTranscodeResponse) FromJsonString(s string) error {
 
 type LayoutParams struct {
 
-	// 流画面宽，取值范围[1,3000]
+	// 流画面宽，取值范围[2,3000]
 	Width *int64 `json:"Width,omitempty" name:"Width"`
 
-	// 流画面高，取值范围[1,3000]
+	// 流画面高，取值范围[2,3000]
 	Height *int64 `json:"Height,omitempty" name:"Height"`
 
 	// 当前画面左上角顶点相对于Canvas左上角顶点的x轴偏移量，默认为0，取值范围[0,3000]
@@ -396,7 +472,7 @@ type SetOnlineRecordCallbackRequest struct {
 	// 客户的SdkAppId
 	SdkAppId *int64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
 
-	// 在线录制任务结果回调地址，如果传空字符串会删除原来的回调地址配置，回调地址仅支持 http或https协议，即回调地址以http://或https://开头
+	// 实时录制任务结果回调地址，如果传空字符串会删除原来的回调地址配置，回调地址仅支持 http或https协议，即回调地址以http://或https://开头
 	Callback *string `json:"Callback,omitempty" name:"Callback"`
 }
 
@@ -473,7 +549,7 @@ type StartOnlineRecordRequest struct {
 	// 需要录制的房间号
 	RoomId *int64 `json:"RoomId,omitempty" name:"RoomId"`
 
-	// 用于实时录制服务进房的用户Id，格式为"tic_record_user_${RoomId}_${Random}"，其中 ${RoomId} 与录制房间号对应，${Random}为一个随机字符串。
+	// 用于实时录制服务进房的用户Id，格式为`tic_record_user_${RoomId}_${Random}`，其中 `${RoomId}` 与录制房间号对应，`${Random}`为一个随机字符串。
 	// 实时录制服务会使用这个用户Id进房进行录制房间内的音视频与白板，为了防止进房冲突，请保证此 用户Id不重复
 	RecordUserId *string `json:"RecordUserId,omitempty" name:"RecordUserId"`
 

@@ -68,6 +68,31 @@ func (c *Client) CreateJob(request *CreateJobRequest) (response *CreateJobRespon
     return
 }
 
+func NewCreateRsgAsGroupRequest() (request *CreateRsgAsGroupRequest) {
+    request = &CreateRsgAsGroupRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tiems", APIVersion, "CreateRsgAsGroup")
+    return
+}
+
+func NewCreateRsgAsGroupResponse() (response *CreateRsgAsGroupResponse) {
+    response = &CreateRsgAsGroupResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 创建资源组的伸缩组。当前一个资源组仅允许创建一个伸缩组。
+func (c *Client) CreateRsgAsGroup(request *CreateRsgAsGroupRequest) (response *CreateRsgAsGroupResponse, err error) {
+    if request == nil {
+        request = NewCreateRsgAsGroupRequest()
+    }
+    response = NewCreateRsgAsGroupResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateRuntimeRequest() (request *CreateRuntimeRequest) {
     request = &CreateRuntimeRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -143,6 +168,31 @@ func (c *Client) CreateServiceConfig(request *CreateServiceConfigRequest) (respo
     return
 }
 
+func NewDeleteInstanceRequest() (request *DeleteInstanceRequest) {
+    request = &DeleteInstanceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tiems", APIVersion, "DeleteInstance")
+    return
+}
+
+func NewDeleteInstanceResponse() (response *DeleteInstanceResponse) {
+    response = &DeleteInstanceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 删除资源组中的节点。目前仅支持删除已经到期的预付费节点，和按量付费节点。
+func (c *Client) DeleteInstance(request *DeleteInstanceRequest) (response *DeleteInstanceResponse, err error) {
+    if request == nil {
+        request = NewDeleteInstanceRequest()
+    }
+    response = NewDeleteInstanceResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteJobRequest() (request *DeleteJobRequest) {
     request = &DeleteJobRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -164,6 +214,56 @@ func (c *Client) DeleteJob(request *DeleteJobRequest) (response *DeleteJobRespon
         request = NewDeleteJobRequest()
     }
     response = NewDeleteJobResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteResourceGroupRequest() (request *DeleteResourceGroupRequest) {
+    request = &DeleteResourceGroupRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tiems", APIVersion, "DeleteResourceGroup")
+    return
+}
+
+func NewDeleteResourceGroupResponse() (response *DeleteResourceGroupResponse) {
+    response = &DeleteResourceGroupResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 删除资源组
+func (c *Client) DeleteResourceGroup(request *DeleteResourceGroupRequest) (response *DeleteResourceGroupResponse, err error) {
+    if request == nil {
+        request = NewDeleteResourceGroupRequest()
+    }
+    response = NewDeleteResourceGroupResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteRsgAsGroupRequest() (request *DeleteRsgAsGroupRequest) {
+    request = &DeleteRsgAsGroupRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tiems", APIVersion, "DeleteRsgAsGroup")
+    return
+}
+
+func NewDeleteRsgAsGroupResponse() (response *DeleteRsgAsGroupResponse) {
+    response = &DeleteRsgAsGroupResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 伸缩
+func (c *Client) DeleteRsgAsGroup(request *DeleteRsgAsGroupRequest) (response *DeleteRsgAsGroupResponse, err error) {
+    if request == nil {
+        request = NewDeleteRsgAsGroupRequest()
+    }
+    response = NewDeleteRsgAsGroupResponse()
     err = c.Send(request, response)
     return
 }
@@ -268,6 +368,81 @@ func (c *Client) DescribeInstances(request *DescribeInstancesRequest) (response 
     return
 }
 
+func NewDescribeResourceGroupsRequest() (request *DescribeResourceGroupsRequest) {
+    request = &DescribeResourceGroupsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tiems", APIVersion, "DescribeResourceGroups")
+    return
+}
+
+func NewDescribeResourceGroupsResponse() (response *DescribeResourceGroupsResponse) {
+    response = &DescribeResourceGroupsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 获取资源组列表
+func (c *Client) DescribeResourceGroups(request *DescribeResourceGroupsRequest) (response *DescribeResourceGroupsResponse, err error) {
+    if request == nil {
+        request = NewDescribeResourceGroupsRequest()
+    }
+    response = NewDescribeResourceGroupsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeRsgAsGroupActivitiesRequest() (request *DescribeRsgAsGroupActivitiesRequest) {
+    request = &DescribeRsgAsGroupActivitiesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tiems", APIVersion, "DescribeRsgAsGroupActivities")
+    return
+}
+
+func NewDescribeRsgAsGroupActivitiesResponse() (response *DescribeRsgAsGroupActivitiesResponse) {
+    response = &DescribeRsgAsGroupActivitiesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询伸缩组活动
+func (c *Client) DescribeRsgAsGroupActivities(request *DescribeRsgAsGroupActivitiesRequest) (response *DescribeRsgAsGroupActivitiesResponse, err error) {
+    if request == nil {
+        request = NewDescribeRsgAsGroupActivitiesRequest()
+    }
+    response = NewDescribeRsgAsGroupActivitiesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeRsgAsGroupsRequest() (request *DescribeRsgAsGroupsRequest) {
+    request = &DescribeRsgAsGroupsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tiems", APIVersion, "DescribeRsgAsGroups")
+    return
+}
+
+func NewDescribeRsgAsGroupsResponse() (response *DescribeRsgAsGroupsResponse) {
+    response = &DescribeRsgAsGroupsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询资源组的伸缩组信息
+func (c *Client) DescribeRsgAsGroups(request *DescribeRsgAsGroupsRequest) (response *DescribeRsgAsGroupsResponse, err error) {
+    if request == nil {
+        request = NewDescribeRsgAsGroupsRequest()
+    }
+    response = NewDescribeRsgAsGroupsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeRuntimesRequest() (request *DescribeRuntimesRequest) {
     request = &DescribeRuntimesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -343,6 +518,56 @@ func (c *Client) DescribeServices(request *DescribeServicesRequest) (response *D
     return
 }
 
+func NewDisableRsgAsGroupRequest() (request *DisableRsgAsGroupRequest) {
+    request = &DisableRsgAsGroupRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tiems", APIVersion, "DisableRsgAsGroup")
+    return
+}
+
+func NewDisableRsgAsGroupResponse() (response *DisableRsgAsGroupResponse) {
+    response = &DisableRsgAsGroupResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 停用资源组的伸缩组
+func (c *Client) DisableRsgAsGroup(request *DisableRsgAsGroupRequest) (response *DisableRsgAsGroupResponse, err error) {
+    if request == nil {
+        request = NewDisableRsgAsGroupRequest()
+    }
+    response = NewDisableRsgAsGroupResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewEnableRsgAsGroupRequest() (request *EnableRsgAsGroupRequest) {
+    request = &EnableRsgAsGroupRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tiems", APIVersion, "EnableRsgAsGroup")
+    return
+}
+
+func NewEnableRsgAsGroupResponse() (response *EnableRsgAsGroupResponse) {
+    response = &EnableRsgAsGroupResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 启用资源组的伸缩组
+func (c *Client) EnableRsgAsGroup(request *EnableRsgAsGroupRequest) (response *EnableRsgAsGroupResponse, err error) {
+    if request == nil {
+        request = NewEnableRsgAsGroupRequest()
+    }
+    response = NewEnableRsgAsGroupResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewExposeServiceRequest() (request *ExposeServiceRequest) {
     request = &ExposeServiceRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -389,6 +614,31 @@ func (c *Client) UpdateJob(request *UpdateJobRequest) (response *UpdateJobRespon
         request = NewUpdateJobRequest()
     }
     response = NewUpdateJobResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewUpdateRsgAsGroupRequest() (request *UpdateRsgAsGroupRequest) {
+    request = &UpdateRsgAsGroupRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tiems", APIVersion, "UpdateRsgAsGroup")
+    return
+}
+
+func NewUpdateRsgAsGroupResponse() (response *UpdateRsgAsGroupResponse) {
+    response = &UpdateRsgAsGroupResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 更新资源组的伸缩组
+func (c *Client) UpdateRsgAsGroup(request *UpdateRsgAsGroupRequest) (response *UpdateRsgAsGroupResponse, err error) {
+    if request == nil {
+        request = NewUpdateRsgAsGroupRequest()
+    }
+    response = NewUpdateRsgAsGroupResponse()
     err = c.Send(request, response)
     return
 }

@@ -93,6 +93,31 @@ func (c *Client) DescribeOnlineRecord(request *DescribeOnlineRecordRequest) (res
     return
 }
 
+func NewDescribeOnlineRecordCallbackRequest() (request *DescribeOnlineRecordCallbackRequest) {
+    request = &DescribeOnlineRecordCallbackRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tiw", APIVersion, "DescribeOnlineRecordCallback")
+    return
+}
+
+func NewDescribeOnlineRecordCallbackResponse() (response *DescribeOnlineRecordCallbackResponse) {
+    response = &DescribeOnlineRecordCallbackResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询实时录制回调地址
+func (c *Client) DescribeOnlineRecordCallback(request *DescribeOnlineRecordCallbackRequest) (response *DescribeOnlineRecordCallbackResponse, err error) {
+    if request == nil {
+        request = NewDescribeOnlineRecordCallbackRequest()
+    }
+    response = NewDescribeOnlineRecordCallbackResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeTranscodeRequest() (request *DescribeTranscodeRequest) {
     request = &DescribeTranscodeRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -114,6 +139,31 @@ func (c *Client) DescribeTranscode(request *DescribeTranscodeRequest) (response 
         request = NewDescribeTranscodeRequest()
     }
     response = NewDescribeTranscodeResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeTranscodeCallbackRequest() (request *DescribeTranscodeCallbackRequest) {
+    request = &DescribeTranscodeCallbackRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tiw", APIVersion, "DescribeTranscodeCallback")
+    return
+}
+
+func NewDescribeTranscodeCallbackResponse() (response *DescribeTranscodeCallbackResponse) {
+    response = &DescribeTranscodeCallbackResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询文档转码回调地址
+func (c *Client) DescribeTranscodeCallback(request *DescribeTranscodeCallbackRequest) (response *DescribeTranscodeCallbackResponse, err error) {
+    if request == nil {
+        request = NewDescribeTranscodeCallbackRequest()
+    }
+    response = NewDescribeTranscodeCallbackResponse()
     err = c.Send(request, response)
     return
 }

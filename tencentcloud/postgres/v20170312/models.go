@@ -116,6 +116,9 @@ type CreateDBInstancesRequest struct {
 
 	// 私有网络子网ID。
 	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
+
+	// 续费标记：0-正常续费（默认）；1-自动续费；
+	AutoRenewFlag *int64 `json:"AutoRenewFlag,omitempty" name:"AutoRenewFlag"`
 }
 
 func (r *CreateDBInstancesRequest) ToJsonString() string {
@@ -254,6 +257,9 @@ type DBInstance struct {
 
 	// 实例网络连接信息
 	DBInstanceNetInfo []*DBInstanceNetInfo `json:"DBInstanceNetInfo,omitempty" name:"DBInstanceNetInfo" list`
+
+	// 机器类型
+	Type *string `json:"Type,omitempty" name:"Type"`
 }
 
 type DBInstanceNetInfo struct {
@@ -1459,6 +1465,9 @@ type SpecItemInfo struct {
 
 	// 该规格对应的计费ID
 	Pid *uint64 `json:"Pid,omitempty" name:"Pid"`
+
+	// 机器类型
+	Type *string `json:"Type,omitempty" name:"Type"`
 }
 
 type UpgradeDBInstanceRequest struct {

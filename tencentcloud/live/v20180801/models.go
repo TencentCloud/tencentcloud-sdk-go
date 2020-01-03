@@ -456,7 +456,12 @@ type CreateLiveCertRequest struct {
 	*tchttp.BaseRequest
 
 	// 证书类型。0-用户添加证书；1-腾讯云托管证书。
+	// 注意：当证书类型为0时，HttpsCrt和HttpsKey必选；
+	// 当证书类型为1时，优先使用CloudCertId对应证书，若CloudCertId为空则使用HttpsCrt和HttpsKey。
 	CertType *uint64 `json:"CertType,omitempty" name:"CertType"`
+
+	// 证书名称。
+	CertName *string `json:"CertName,omitempty" name:"CertName"`
 
 	// 证书内容，即公钥。
 	HttpsCrt *string `json:"HttpsCrt,omitempty" name:"HttpsCrt"`
@@ -464,11 +469,11 @@ type CreateLiveCertRequest struct {
 	// 私钥。
 	HttpsKey *string `json:"HttpsKey,omitempty" name:"HttpsKey"`
 
-	// 证书名称。
-	CertName *string `json:"CertName,omitempty" name:"CertName"`
-
 	// 描述。
 	Description *string `json:"Description,omitempty" name:"Description"`
+
+	// 腾讯云证书托管ID。
+	CloudCertId *string `json:"CloudCertId,omitempty" name:"CloudCertId"`
 }
 
 func (r *CreateLiveCertRequest) ToJsonString() string {
@@ -896,10 +901,10 @@ type CreateLiveTranscodeTemplateRequest struct {
 	// 是否不超过原始帧率，0：否，1：是。默认0。
 	FpsToOrig *int64 `json:"FpsToOrig,omitempty" name:"FpsToOrig"`
 
-	// 是否是急速高清模板，0：否，1：是。默认0。
+	// 是否是极速高清模板，0：否，1：是。默认0。
 	AiTransCode *int64 `json:"AiTransCode,omitempty" name:"AiTransCode"`
 
-	// 急速高清相比VideoBitrate少多少码率，0.1到0.5
+	// 极速高清相比VideoBitrate少多少码率，0.1到0.5
 	AdaptBitratePercent *float64 `json:"AdaptBitratePercent,omitempty" name:"AdaptBitratePercent"`
 }
 
@@ -3871,8 +3876,8 @@ type DomainCertInfo struct {
 	HttpsCrt *string `json:"HttpsCrt,omitempty" name:"HttpsCrt"`
 
 	// 证书类型。
-	// 0：腾讯云托管证书
-	// 1：用户添加证书。
+	// 0：用户添加证书，
+	// 1：腾讯云托管证书。
 	CertType *int64 `json:"CertType,omitempty" name:"CertType"`
 
 	// 证书过期时间，UTC格式。

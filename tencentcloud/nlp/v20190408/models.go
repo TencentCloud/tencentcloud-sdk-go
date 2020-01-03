@@ -134,61 +134,6 @@ type ClassificationResult struct {
 	SecondClassProbability *float64 `json:"SecondClassProbability,omitempty" name:"SecondClassProbability"`
 }
 
-type ContentApprovalRequest struct {
-	*tchttp.BaseRequest
-
-	// 待审核的文本（仅支持UTF-8格式，不超过2000字）
-	Text *string `json:"Text,omitempty" name:"Text"`
-}
-
-func (r *ContentApprovalRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-func (r *ContentApprovalRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
-}
-
-type ContentApprovalResponse struct {
-	*tchttp.BaseResponse
-	Response *struct {
-
-		// 文本是否恶意：
-	// 0、正常；
-	// 1、恶意；
-	// 2、可疑送审
-		EvilFlag *uint64 `json:"EvilFlag,omitempty" name:"EvilFlag"`
-
-		// 恶意关键词组
-		EvilKeywords []*string `json:"EvilKeywords,omitempty" name:"EvilKeywords" list`
-
-		// 文本恶意类型：
-	// 0、正常；
-	// 1、政治；
-	// 2、色情；
-	// 3、辱骂/低俗；
-	// 4、暴恐/毒品；
-	// 5、广告/灌水；
-	// 6、迷信/邪教；
-	// 7、其他违法（如跨站追杀/恶意竞争等）；
-	// 8、综合
-		EvilType *uint64 `json:"EvilType,omitempty" name:"EvilType"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
-}
-
-func (r *ContentApprovalResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-func (r *ContentApprovalResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
-}
-
 type DependencyParsingRequest struct {
 	*tchttp.BaseRequest
 
@@ -804,7 +749,7 @@ type TextApprovalResponse struct {
 	// 4、暴恐/毒品；
 	// 5、广告/灌水；
 	// 6、迷信/邪教；
-	// 7、其他违法（如跨站追杀/恶意竞争等）；
+	// 7、其他违法(如赌博/造假/违法交易等)；
 	// 8、综合；
 	// 9、联系方式/链接
 	// 

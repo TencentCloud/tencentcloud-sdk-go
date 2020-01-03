@@ -35,17 +35,8 @@ type CreateInstanceRequest struct {
 	// 可用区
 	Zone *string `json:"Zone,omitempty" name:"Zone"`
 
-	// 节点数量（2-50个）
-	NodeNum *uint64 `json:"NodeNum,omitempty" name:"NodeNum"`
-
 	// 实例版本（支持"5.6.4"、"6.4.3"）
 	EsVersion *string `json:"EsVersion,omitempty" name:"EsVersion"`
-
-	// 节点规格<li>ES.S1.SMALL2：1核2G</li><li>ES.S1.MEDIUM4：2核4G</li><li>ES.S1.MEDIUM8：2核8G</li><li>ES.S1.LARGE16：4核16G</li><li>ES.S1.2XLARGE32：8核32G</li><li>ES.S1.4XLARGE32：16核32G</li><li>ES.S1.4XLARGE64：16核64G</li>
-	NodeType *string `json:"NodeType,omitempty" name:"NodeType"`
-
-	// 节点磁盘容量（单位GB）
-	DiskSize *uint64 `json:"DiskSize,omitempty" name:"DiskSize"`
 
 	// 私有网络ID
 	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
@@ -59,6 +50,10 @@ type CreateInstanceRequest struct {
 	// 实例名称（1-50 个英文、汉字、数字、连接线-或下划线_）
 	InstanceName *string `json:"InstanceName,omitempty" name:"InstanceName"`
 
+	// 已废弃请使用NodeInfoList
+	// 节点数量（2-50个）
+	NodeNum *uint64 `json:"NodeNum,omitempty" name:"NodeNum"`
+
 	// 计费类型<li>PREPAID：预付费，即包年包月</li><li>POSTPAID_BY_HOUR：按小时后付费</li>默认值POSTPAID_BY_HOUR
 	ChargeType *string `json:"ChargeType,omitempty" name:"ChargeType"`
 
@@ -68,8 +63,17 @@ type CreateInstanceRequest struct {
 	// 自动续费标识<li>RENEW_FLAG_AUTO：自动续费</li><li>RENEW_FLAG_MANUAL：不自动续费，用户手动续费</li>ChargeType为PREPAID时需要设置，如不传递该参数，普通用户默认不自动续费，SVIP用户自动续费
 	RenewFlag *string `json:"RenewFlag,omitempty" name:"RenewFlag"`
 
+	// 已废弃请使用NodeInfoList
+	// 节点规格<li>ES.S1.SMALL2：1核2G</li><li>ES.S1.MEDIUM4：2核4G</li><li>ES.S1.MEDIUM8：2核8G</li><li>ES.S1.LARGE16：4核16G</li><li>ES.S1.2XLARGE32：8核32G</li><li>ES.S1.4XLARGE32：16核32G</li><li>ES.S1.4XLARGE64：16核64G</li>
+	NodeType *string `json:"NodeType,omitempty" name:"NodeType"`
+
+	// 已废弃请使用NodeInfoList
 	// 节点磁盘类型<li>CLOUD_SSD：SSD云硬盘</li><li>CLOUD_PREMIUM：高硬能云硬盘</li>默认值CLOUD_SSD
 	DiskType *string `json:"DiskType,omitempty" name:"DiskType"`
+
+	// 已废弃请使用NodeInfoList
+	// 节点磁盘容量（单位GB）
+	DiskSize *uint64 `json:"DiskSize,omitempty" name:"DiskSize"`
 
 	// 计费时长单位（ChargeType为PREPAID时需要设置，默认值为“m”，表示月，当前只支持“m”）
 	TimeUnit *string `json:"TimeUnit,omitempty" name:"TimeUnit"`
@@ -80,15 +84,19 @@ type CreateInstanceRequest struct {
 	// 代金券ID列表（目前仅支持指定一张代金券）
 	VoucherIds []*string `json:"VoucherIds,omitempty" name:"VoucherIds" list`
 
+	// 已废弃请使用NodeInfoList
 	// 是否创建专用主节点<li>true：开启专用主节点</li><li>false：不开启专用主节点</li>默认值false
 	EnableDedicatedMaster *bool `json:"EnableDedicatedMaster,omitempty" name:"EnableDedicatedMaster"`
 
+	// 已废弃请使用NodeInfoList
 	// 专用主节点个数（只支持3个和5个，EnableDedicatedMaster为true时该值必传）
 	MasterNodeNum *uint64 `json:"MasterNodeNum,omitempty" name:"MasterNodeNum"`
 
+	// 已废弃请使用NodeInfoList
 	// 专用主节点类型（EnableDedicatedMaster为true时必传）<li>ES.S1.SMALL2：1核2G</li><li>ES.S1.MEDIUM4：2核4G</li><li>ES.S1.MEDIUM8：2核8G</li><li>ES.S1.LARGE16：4核16G</li><li>ES.S1.2XLARGE32：8核32G</li><li>ES.S1.4XLARGE32：16核32G</li><li>ES.S1.4XLARGE64：16核64G</li>
 	MasterNodeType *string `json:"MasterNodeType,omitempty" name:"MasterNodeType"`
 
+	// 已废弃请使用NodeInfoList
 	// 专用主节点磁盘大小（单位GB，非必传，若传递则必须为50，暂不支持自定义）
 	MasterNodeDiskSize *uint64 `json:"MasterNodeDiskSize,omitempty" name:"MasterNodeDiskSize"`
 
@@ -99,10 +107,19 @@ type CreateInstanceRequest struct {
 	DeployMode *uint64 `json:"DeployMode,omitempty" name:"DeployMode"`
 
 	// 多可用区部署时可用区的详细信息(DeployMode为1时必传)
-	MultiZoneInfo []*MultiZoneInfo `json:"MultiZoneInfo,omitempty" name:"MultiZoneInfo" list`
+	MultiZoneInfo []*ZoneDetail `json:"MultiZoneInfo,omitempty" name:"MultiZoneInfo" list`
 
 	// License类型<li>oss：开源版</li><li>basic：基础版</li><li>platinum：白金版</li>默认值platinum
 	LicenseType *string `json:"LicenseType,omitempty" name:"LicenseType"`
+
+	// 节点信息列表， 用于描述集群各类节点的规格信息如节点类型，节点个数，节点规格，磁盘类型，磁盘大小等
+	NodeInfoList []*NodeInfo `json:"NodeInfoList,omitempty" name:"NodeInfoList" list`
+
+	// 节点标签信息列表
+	TagList []*TagInfo `json:"TagList,omitempty" name:"TagList" list`
+
+	// 6.8（及以上版本）基础版是否开启xpack security认证<li>1：不开启</li><li>2：开启</li>
+	BasicSecurityType *uint64 `json:"BasicSecurityType,omitempty" name:"BasicSecurityType"`
 }
 
 func (r *CreateInstanceRequest) ToJsonString() string {
@@ -311,6 +328,12 @@ type DescribeInstancesRequest struct {
 
 	// 排序方式<li>0：升序</li><li>1：降序</li>若传递了orderByKey未传递orderByType, 则默认升序
 	OrderByType *uint64 `json:"OrderByType,omitempty" name:"OrderByType"`
+
+	// 节点标签信息列表
+	TagList []*TagInfo `json:"TagList,omitempty" name:"TagList" list`
+
+	// 私有网络vip列表
+	IpList []*string `json:"IpList,omitempty" name:"IpList" list`
 }
 
 func (r *DescribeInstancesRequest) ToJsonString() string {
@@ -374,6 +397,15 @@ type EsDictionaryInfo struct {
 
 	// 停用词词典列表
 	Stopwords []*DictInfo `json:"Stopwords,omitempty" name:"Stopwords" list`
+}
+
+type EsPublicAcl struct {
+
+	// 访问黑名单
+	BlackIpList []*string `json:"BlackIpList,omitempty" name:"BlackIpList" list`
+
+	// 访问白名单
+	WhiteIpList []*string `json:"WhiteIpList,omitempty" name:"WhiteIpList" list`
 }
 
 type InstanceInfo struct {
@@ -450,7 +482,7 @@ type InstanceInfo struct {
 	// ES配置项
 	EsConfig *string `json:"EsConfig,omitempty" name:"EsConfig"`
 
-	// ES访问控制配置
+	// Kibana访问控制配置
 	EsAcl *EsAcl `json:"EsAcl,omitempty" name:"EsAcl"`
 
 	// 实例创建时间
@@ -482,6 +514,73 @@ type InstanceInfo struct {
 
 	// License类型<li>oss：开源版</li><li>basic：基础版</li><li>platinum：白金版</li>默认值platinum
 	LicenseType *string `json:"LicenseType,omitempty" name:"LicenseType"`
+
+	// 是否为冷热集群<li>true: 冷热集群</li><li>false: 非冷热集群</li>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EnableHotWarmMode *bool `json:"EnableHotWarmMode,omitempty" name:"EnableHotWarmMode"`
+
+	// 冷节点规格<li>ES.S1.SMALL2：1核2G</li><li>ES.S1.MEDIUM4：2核4G</li><li>ES.S1.MEDIUM8：2核8G</li><li>ES.S1.LARGE16：4核16G</li><li>ES.S1.2XLARGE32：8核32G</li><li>ES.S1.4XLARGE32：16核32G</li><li>ES.S1.4XLARGE64：16核64G</li>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WarmNodeType *string `json:"WarmNodeType,omitempty" name:"WarmNodeType"`
+
+	// 冷节点个数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WarmNodeNum *uint64 `json:"WarmNodeNum,omitempty" name:"WarmNodeNum"`
+
+	// 冷节点CPU核数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WarmCpuNum *uint64 `json:"WarmCpuNum,omitempty" name:"WarmCpuNum"`
+
+	// 冷节点内存内存大小，单位GB
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WarmMemSize *uint64 `json:"WarmMemSize,omitempty" name:"WarmMemSize"`
+
+	// 冷节点磁盘类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WarmDiskType *string `json:"WarmDiskType,omitempty" name:"WarmDiskType"`
+
+	// 冷节点磁盘大小，单位GB
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WarmDiskSize *uint64 `json:"WarmDiskSize,omitempty" name:"WarmDiskSize"`
+
+	// 集群节点信息列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NodeInfoList []*NodeInfo `json:"NodeInfoList,omitempty" name:"NodeInfoList" list`
+
+	// Es公网地址
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EsPublicUrl *string `json:"EsPublicUrl,omitempty" name:"EsPublicUrl"`
+
+	// 多可用区网络信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MultiZoneInfo []*ZoneDetail `json:"MultiZoneInfo,omitempty" name:"MultiZoneInfo" list`
+
+	// 部署模式<li>0：单可用区</li><li>1：多可用区</li>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DeployMode *uint64 `json:"DeployMode,omitempty" name:"DeployMode"`
+
+	// ES公网访问状态<li>OPEN：开启</li><li>CLOSE：关闭
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PublicAccess *string `json:"PublicAccess,omitempty" name:"PublicAccess"`
+
+	// ES公网访问控制配置
+	EsPublicAcl *EsAcl `json:"EsPublicAcl,omitempty" name:"EsPublicAcl"`
+
+	// Kibana内网地址
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	KibanaPrivateUrl *string `json:"KibanaPrivateUrl,omitempty" name:"KibanaPrivateUrl"`
+
+	// Kibana公网访问状态<li>OPEN：开启</li><li>CLOSE：关闭
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	KibanaPublicAccess *string `json:"KibanaPublicAccess,omitempty" name:"KibanaPublicAccess"`
+
+	// Kibana内网访问状态<li>OPEN：开启</li><li>CLOSE：关闭
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	KibanaPrivateAccess *string `json:"KibanaPrivateAccess,omitempty" name:"KibanaPrivateAccess"`
+
+	// 6.8（及以上版本）基础版是否开启xpack security认证<li>1：不开启</li><li>2：开启</li>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SecurityType *uint64 `json:"SecurityType,omitempty" name:"SecurityType"`
 }
 
 type InstanceLog struct {
@@ -532,13 +631,25 @@ type MasterNodeInfo struct {
 	MasterNodeDiskType *string `json:"MasterNodeDiskType,omitempty" name:"MasterNodeDiskType"`
 }
 
-type MultiZoneInfo struct {
+type NodeInfo struct {
 
-	// 可用区
-	Zone *string `json:"Zone,omitempty" name:"Zone"`
+	// 节点数量
+	NodeNum *uint64 `json:"NodeNum,omitempty" name:"NodeNum"`
 
-	// 子网ID
-	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
+	// 节点规格<li>ES.S1.SMALL2：1核2G</li><li>ES.S1.MEDIUM4：2核4G</li><li>ES.S1.MEDIUM8：2核8G</li><li>ES.S1.LARGE16：4核16G</li><li>ES.S1.2XLARGE32：8核32G</li><li>ES.S1.4XLARGE32：16核32G</li><li>ES.S1.4XLARGE64：16核64G</li>
+	NodeType *string `json:"NodeType,omitempty" name:"NodeType"`
+
+	// 节点类型<li>hotData: 热数据节点</li>
+	// <li>warmData: 冷数据节点</li>
+	// <li>dedicatedMaster: 专用主节点</li>
+	// 默认值为hotData
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 节点磁盘类型<li>CLOUD_SSD：SSD云硬盘</li><li>CLOUD_PREMIUM：高硬能云硬盘</li>默认值CLOUD_SSD
+	DiskType *string `json:"DiskType,omitempty" name:"DiskType"`
+
+	// 节点磁盘容量（单位GB）
+	DiskSize *uint64 `json:"DiskSize,omitempty" name:"DiskSize"`
 }
 
 type Operation struct {
@@ -671,6 +782,7 @@ type UpdateInstanceRequest struct {
 	// 实例名称（1-50 个英文、汉字、数字、连接线-或下划线_）
 	InstanceName *string `json:"InstanceName,omitempty" name:"InstanceName"`
 
+	// 已废弃请使用NodeInfoList
 	// 节点个数（2-50个）
 	NodeNum *uint64 `json:"NodeNum,omitempty" name:"NodeNum"`
 
@@ -683,18 +795,23 @@ type UpdateInstanceRequest struct {
 	// 访问控制列表
 	EsAcl *EsAcl `json:"EsAcl,omitempty" name:"EsAcl"`
 
+	// 已废弃请使用NodeInfoList
 	// 磁盘大小（单位GB）
 	DiskSize *uint64 `json:"DiskSize,omitempty" name:"DiskSize"`
 
+	// 已废弃请使用NodeInfoList
 	// 节点规格<li>ES.S1.SMALL2：1核2G</li><li>ES.S1.MEDIUM4：2核4G</li><li>ES.S1.MEDIUM8：2核8G</li><li>ES.S1.LARGE16：4核16G</li><li>ES.S1.2XLARGE32：8核32G</li><li>ES.S1.4XLARGE32：16核32G</li><li>ES.S1.4XLARGE64：16核64G</li>
 	NodeType *string `json:"NodeType,omitempty" name:"NodeType"`
 
+	// 已废弃请使用NodeInfoList
 	// 专用主节点个数（只支持3个或5个）
 	MasterNodeNum *uint64 `json:"MasterNodeNum,omitempty" name:"MasterNodeNum"`
 
+	// 已废弃请使用NodeInfoList
 	// 专用主节点规格<li>ES.S1.SMALL2：1核2G</li><li>ES.S1.MEDIUM4：2核4G</li><li>ES.S1.MEDIUM8：2核8G</li><li>ES.S1.LARGE16：4核16G</li><li>ES.S1.2XLARGE32：8核32G</li><li>ES.S1.4XLARGE32：16核32G</li><li>ES.S1.4XLARGE64：16核64G</li>
 	MasterNodeType *string `json:"MasterNodeType,omitempty" name:"MasterNodeType"`
 
+	// 已废弃请使用NodeInfoList
 	// 专用主节点磁盘大小（单位GB系统默认配置为50GB,暂不支持自定义）
 	MasterNodeDiskSize *uint64 `json:"MasterNodeDiskSize,omitempty" name:"MasterNodeDiskSize"`
 
@@ -703,6 +820,21 @@ type UpdateInstanceRequest struct {
 
 	// COS自动备份信息
 	CosBackup *CosBackup `json:"CosBackup,omitempty" name:"CosBackup"`
+
+	// 节点信息列表，可以只传递要更新的节点及其对应的规格信息。支持的操作包括<li>修改一种节点的个数</li><li>修改一种节点的节点规格及磁盘大小</li><li>增加一种节点类型（需要同时指定该节点的类型，个数，规格，磁盘等信息）</li>上述操作一次只能进行一种，且磁盘类型不支持修改
+	NodeInfoList []*NodeInfo `json:"NodeInfoList,omitempty" name:"NodeInfoList" list`
+
+	// 公网访问状态
+	PublicAccess *string `json:"PublicAccess,omitempty" name:"PublicAccess"`
+
+	// 公网访问控制列表
+	EsPublicAcl *EsPublicAcl `json:"EsPublicAcl,omitempty" name:"EsPublicAcl"`
+
+	// Kibana公网访问状态
+	KibanaPublicAccess *string `json:"KibanaPublicAccess,omitempty" name:"KibanaPublicAccess"`
+
+	// Kibana内网访问状态
+	KibanaPrivateAccess *string `json:"KibanaPrivateAccess,omitempty" name:"KibanaPrivateAccess"`
 }
 
 func (r *UpdateInstanceRequest) ToJsonString() string {
@@ -746,6 +878,9 @@ type UpgradeInstanceRequest struct {
 
 	// 目标商业特性版本：<li>oss 开源版</li><li>basic 基础版</li>当前仅在5.6.4升级6.x版本时使用，默认值为basic
 	LicenseType *string `json:"LicenseType,omitempty" name:"LicenseType"`
+
+	// 6.8（及以上版本）基础版是否开启xpack security认证<li>1：不开启</li><li>2：开启</li>
+	BasicSecurityType *uint64 `json:"BasicSecurityType,omitempty" name:"BasicSecurityType"`
 }
 
 func (r *UpgradeInstanceRequest) ToJsonString() string {
@@ -789,6 +924,12 @@ type UpgradeLicenseRequest struct {
 
 	// 代金券ID列表（目前仅支持指定一张代金券）
 	VoucherIds []*string `json:"VoucherIds,omitempty" name:"VoucherIds" list`
+
+	// 6.8（及以上版本）基础版是否开启xpack security认证<li>1：不开启</li><li>2：开启</li>
+	BasicSecurityType *uint64 `json:"BasicSecurityType,omitempty" name:"BasicSecurityType"`
+
+	// 是否强制重启<li>true强制重启</li><li>false不强制重启</li> 默认值false
+	ForceRestart *bool `json:"ForceRestart,omitempty" name:"ForceRestart"`
 }
 
 func (r *UpgradeLicenseRequest) ToJsonString() string {
@@ -816,4 +957,13 @@ func (r *UpgradeLicenseResponse) ToJsonString() string {
 
 func (r *UpgradeLicenseResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
+}
+
+type ZoneDetail struct {
+
+	// 可用区
+	Zone *string `json:"Zone,omitempty" name:"Zone"`
+
+	// 子网ID
+	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
 }

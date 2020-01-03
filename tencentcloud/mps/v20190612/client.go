@@ -781,6 +781,31 @@ func (c *Client) DescribeImageSpriteTemplates(request *DescribeImageSpriteTempla
     return
 }
 
+func NewDescribeMediaMetaDataRequest() (request *DescribeMediaMetaDataRequest) {
+    request = &DescribeMediaMetaDataRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("mps", APIVersion, "DescribeMediaMetaData")
+    return
+}
+
+func NewDescribeMediaMetaDataResponse() (response *DescribeMediaMetaDataResponse) {
+    response = &DescribeMediaMetaDataResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 获取媒体的元信息，包括视频画面宽、高、编码格式、时长、帧率等。
+func (c *Client) DescribeMediaMetaData(request *DescribeMediaMetaDataRequest) (response *DescribeMediaMetaDataResponse, err error) {
+    if request == nil {
+        request = NewDescribeMediaMetaDataRequest()
+    }
+    response = NewDescribeMediaMetaDataResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribePersonSamplesRequest() (request *DescribePersonSamplesRequest) {
     request = &DescribePersonSamplesRequest{
         BaseRequest: &tchttp.BaseRequest{},
