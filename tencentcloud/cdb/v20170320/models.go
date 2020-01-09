@@ -199,6 +199,40 @@ type BackupItem struct {
 	Table *string `json:"Table,omitempty" name:"Table"`
 }
 
+type BalanceRoGroupLoadRequest struct {
+	*tchttp.BaseRequest
+
+	// RO 组的 ID，格式如：cdbrg-c1nl9rpv。
+	RoGroupId *string `json:"RoGroupId,omitempty" name:"RoGroupId"`
+}
+
+func (r *BalanceRoGroupLoadRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *BalanceRoGroupLoadRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type BalanceRoGroupLoadResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *BalanceRoGroupLoadResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *BalanceRoGroupLoadResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type BinlogInfo struct {
 
 	// 备份文件名
@@ -671,10 +705,10 @@ type CreateDeployGroupRequest struct {
 	// 置放群组描述，最长不能超过200个字符。
 	Description *string `json:"Description,omitempty" name:"Description"`
 
-	// 置放群组的亲和性策略。
+	// 置放群组的亲和性策略，目前仅支持取值为1，策略1表示同台物理机上限制实例的个数。
 	Affinity []*int64 `json:"Affinity,omitempty" name:"Affinity" list`
 
-	// 置放群组亲和性策略1的实例限制个数。
+	// 置放群组亲和性策略1中同台物理机上实例的限制个数。
 	LimitNum *int64 `json:"LimitNum,omitempty" name:"LimitNum"`
 }
 
@@ -971,14 +1005,14 @@ type DeployGroupInfo struct {
 	// 创建时间。
 	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
 
-	// 置放群组实例配额。
+	// 置放群组实例配额，表示一个置放群组中可容纳的最大实例数目。
 	Quota *int64 `json:"Quota,omitempty" name:"Quota"`
 
-	// 置放群组亲和性策略。
+	// 置放群组亲和性策略，目前仅支持策略1，即在物理机纬度打散实例的分布。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Affinity *string `json:"Affinity,omitempty" name:"Affinity"`
 
-	// 置放群组亲和性策略1的限制实例个数。
+	// 置放群组亲和性策略1中，同台物理机上同个置放群组实例的限制个数。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	LimitNum *int64 `json:"LimitNum,omitempty" name:"LimitNum"`
 
@@ -1146,20 +1180,23 @@ type DescribeBackupConfigResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 备份开始的最早时间点，单位为时刻。例如，2 - 凌晨 2:00。
+		// 自动备份开始的最早时间点，单位为时刻。例如，2 - 凌晨 2:00。（该字段已废弃，建议使用 BackupTimeWindow 字段）
 		StartTimeMin *int64 `json:"StartTimeMin,omitempty" name:"StartTimeMin"`
 
-		// 备份开始的最晚时间点，单位为时刻。例如，6 - 凌晨 6:00。
+		// 自动备份开始的最晚时间点，单位为时刻。例如，6 - 凌晨 6:00。（该字段已废弃，建议使用 BackupTimeWindow 字段）
 		StartTimeMax *int64 `json:"StartTimeMax,omitempty" name:"StartTimeMax"`
 
-		// 备份过期时间，单位为天。
+		// 备份文件保留时间，单位为天。
 		BackupExpireDays *int64 `json:"BackupExpireDays,omitempty" name:"BackupExpireDays"`
 
 		// 备份方式，可能的值为：physical - 物理备份，logical - 逻辑备份。
 		BackupMethod *string `json:"BackupMethod,omitempty" name:"BackupMethod"`
 
-		// Binlog 过期时间，单位为天。
+		// Binlog 文件保留时间，单位为天。
 		BinlogExpireDays *int64 `json:"BinlogExpireDays,omitempty" name:"BinlogExpireDays"`
+
+		// 实例自动备份的时间窗。
+		BackupTimeWindow *CommonTimeWindow `json:"BackupTimeWindow,omitempty" name:"BackupTimeWindow"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -2282,6 +2319,43 @@ func (r *DescribeProjectSecurityGroupsResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeRoGroupsRequest struct {
+	*tchttp.BaseRequest
+
+	// 实例ID，格式如：cdb-c1nl9rpv或者cdb-c1nl9rpv，与云数据库控制台页面中显示的实例ID相同。
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+}
+
+func (r *DescribeRoGroupsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeRoGroupsRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeRoGroupsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// RO组信息数组，一个实例可关联多个RO组。
+		RoGroups []*RoGroup `json:"RoGroups,omitempty" name:"RoGroups" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeRoGroupsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeRoGroupsResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeRollbackRangeTimeRequest struct {
 	*tchttp.BaseRequest
 
@@ -3150,7 +3224,7 @@ type IsolateDBInstanceResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 异步任务的请求 ID，可使用此 ID 查询异步任务的执行结果。
+		// 异步任务的请求 ID，可使用此 ID 查询异步任务的执行结果。(该返回字段目前已废弃，可以通过 DescribeDBInstances 接口查询实例的隔离状态)
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		AsyncRequestId *string `json:"AsyncRequestId,omitempty" name:"AsyncRequestId"`
 
@@ -3776,6 +3850,49 @@ func (r *ModifyParamTemplateResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type ModifyRoGroupInfoRequest struct {
+	*tchttp.BaseRequest
+
+	// RO 组的实例 ID。
+	RoGroupId *string `json:"RoGroupId,omitempty" name:"RoGroupId"`
+
+	// RO 组的详细信息。
+	RoGroupInfo *RoGroupAttr `json:"RoGroupInfo,omitempty" name:"RoGroupInfo"`
+
+	// RO 组内实例的权重。若修改 RO 组的权重模式为用户自定义模式（custom），则必须设置该参数，且需要设置每个 RO 实例的权重值。
+	RoWeightValues []*RoWeightValue `json:"RoWeightValues,omitempty" name:"RoWeightValues" list`
+
+	// 是否重新均衡 RO 组内的 RO 实例的负载。支持值包括：1 - 重新均衡负载；0 - 不重新均衡负载。默认值为 0。注意，设置为重新均衡负载是，RO 组内 RO 实例会有一次数据库连接瞬断，请确保应用程序能重连数据库。
+	IsBalanceRoLoad *int64 `json:"IsBalanceRoLoad,omitempty" name:"IsBalanceRoLoad"`
+}
+
+func (r *ModifyRoGroupInfoRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyRoGroupInfoRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyRoGroupInfoResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifyRoGroupInfoResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyRoGroupInfoResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type ModifyTimeWindowRequest struct {
 	*tchttp.BaseRequest
 
@@ -4044,6 +4161,55 @@ type RegionSellConf struct {
 	ZonesConf []*ZoneSellConf `json:"ZonesConf,omitempty" name:"ZonesConf" list`
 }
 
+type ReleaseIsolatedDBInstancesRequest struct {
+	*tchttp.BaseRequest
+
+	// 实例 ID 数组，单个实例 ID 格式如：cdb-c1nl9rpv，与云数据库控制台页面中显示的实例 ID 相同，可使用 [查询实例列表](https://cloud.tencent.com/document/api/236/15872) 接口获取，其值为输出参数中字段 InstanceId 的值。
+	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds" list`
+}
+
+func (r *ReleaseIsolatedDBInstancesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ReleaseIsolatedDBInstancesRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ReleaseIsolatedDBInstancesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 解隔离操作的结果集。
+		Items []*ReleaseResult `json:"Items,omitempty" name:"Items" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ReleaseIsolatedDBInstancesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ReleaseIsolatedDBInstancesResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ReleaseResult struct {
+
+	// 实例 ID。
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 实例解隔离操作的结果值。返回值为0表示成功。
+	Code *int64 `json:"Code,omitempty" name:"Code"`
+
+	// 实例解隔离操作的错误信息。
+	Message *string `json:"Message,omitempty" name:"Message"`
+}
+
 type RenewDBInstanceRequest struct {
 	*tchttp.BaseRequest
 
@@ -4123,38 +4289,72 @@ func (r *RestartDBInstancesResponse) FromJsonString(s string) error {
 
 type RoGroup struct {
 
-	// 只读组模式，可选值为：alone-系统自动分配只读组；allinone-新建只读组；join-使用现有只读组
+	// 只读组模式，可选值为：alone-系统自动分配只读组；allinone-新建只读组；join-使用现有只读组。
 	RoGroupMode *string `json:"RoGroupMode,omitempty" name:"RoGroupMode"`
 
-	// 只读组ID
+	// 只读组 ID。
 	RoGroupId *string `json:"RoGroupId,omitempty" name:"RoGroupId"`
 
-	// 只读组名称
+	// 只读组名称。
 	RoGroupName *string `json:"RoGroupName,omitempty" name:"RoGroupName"`
 
-	// 是否启用延迟超限剔除功能，启用该功能后，只读实例与主实例的延迟超过延迟阈值，只读实例将被隔离。可选值：1-启用；0-不启用
+	// 是否启用延迟超限剔除功能，启用该功能后，只读实例与主实例的延迟超过延迟阈值，只读实例将被隔离。可选值：1-启用；0-不启用。
 	RoOfflineDelay *int64 `json:"RoOfflineDelay,omitempty" name:"RoOfflineDelay"`
 
-	// 延迟阈值
+	// 延迟阈值。
 	RoMaxDelayTime *int64 `json:"RoMaxDelayTime,omitempty" name:"RoMaxDelayTime"`
 
-	// 最少实例保留个数，若购买只读实例数量小于设置数量将不做剔除
+	// 最少实例保留个数，若购买只读实例数量小于设置数量将不做剔除。
 	MinRoInGroup *int64 `json:"MinRoInGroup,omitempty" name:"MinRoInGroup"`
 
-	// 读写权重分配模式，可选值：system-系统自动分配；custom-自定义
+	// 读写权重分配模式，可选值：system-系统自动分配；custom-自定义。
 	WeightMode *string `json:"WeightMode,omitempty" name:"WeightMode"`
 
-	// 权重值
+	// 权重值。
 	Weight *int64 `json:"Weight,omitempty" name:"Weight"`
 
-	// 只读组中的只读实例详情
+	// 只读组中的只读实例详情。
 	RoInstances []*RoInstanceInfo `json:"RoInstances,omitempty" name:"RoInstances" list`
 
-	// 只读组的内网IP
+	// 只读组的内网 IP。
 	Vip *string `json:"Vip,omitempty" name:"Vip"`
 
-	// 只读组的内网端口号
+	// 只读组的内网端口号。
 	Vport *int64 `json:"Vport,omitempty" name:"Vport"`
+
+	// 私有网络 ID。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UniqVpcId *string `json:"UniqVpcId,omitempty" name:"UniqVpcId"`
+
+	// 子网 ID。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UniqSubnetId *string `json:"UniqSubnetId,omitempty" name:"UniqSubnetId"`
+
+	// 只读组所在的地域。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RoGroupRegion *string `json:"RoGroupRegion,omitempty" name:"RoGroupRegion"`
+
+	// 只读组所在的可用区。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RoGroupZone *string `json:"RoGroupZone,omitempty" name:"RoGroupZone"`
+}
+
+type RoGroupAttr struct {
+
+	// RO 组名称。
+	RoGroupName *string `json:"RoGroupName,omitempty" name:"RoGroupName"`
+
+	// RO 实例最大延迟阀值。单位为秒，最小值为 1。注意，RO 组必须设置了开启实例延迟剔除策略，该值才有效。
+	RoMaxDelayTime *int64 `json:"RoMaxDelayTime,omitempty" name:"RoMaxDelayTime"`
+
+	// 是否开启实例延迟剔除。支持的值包括：1 - 开启；0 - 不开启。注意，若设置开启实例延迟剔除，则必须设置延迟阈值（RoMaxDelayTime）参数。
+	RoOfflineDelay *int64 `json:"RoOfflineDelay,omitempty" name:"RoOfflineDelay"`
+
+	// 最少保留实例数。可设置为小于或等于该 RO 组下 RO 实例个数的任意值。注意，若设置值大于 RO 实例数量将不做剔除；若设置为 0，所有实例延迟超限都会被剔除。
+	MinRoInGroup *int64 `json:"MinRoInGroup,omitempty" name:"MinRoInGroup"`
+
+	// 权重模式。支持值包括："system" - 系统自动分配； "custom" - 用户自定义设置。注意，若设置 "custom" 模式，则必须设置 RO 实例权重配置（RoWeightValues）参数。
+	WeightMode *string `json:"WeightMode,omitempty" name:"WeightMode"`
 }
 
 type RoInstanceInfo struct {
@@ -4245,6 +4445,15 @@ type RoVipInfo struct {
 
 	// 只读vip
 	RoVip *string `json:"RoVip,omitempty" name:"RoVip"`
+}
+
+type RoWeightValue struct {
+
+	// RO 实例 ID。
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 权重值。取值范围为 [0, 100]。
+	Weight *int64 `json:"Weight,omitempty" name:"Weight"`
 }
 
 type RollbackDBName struct {

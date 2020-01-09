@@ -158,7 +158,7 @@ func NewGetBlockListHandlerResponse() (response *GetBlockListHandlerResponse) {
     return
 }
 
-// bcos分页查询当前群组下的区块列表
+// Bcos分页查询当前群组下的区块列表
 func (c *Client) GetBlockListHandler(request *GetBlockListHandlerRequest) (response *GetBlockListHandlerResponse, err error) {
     if request == nil {
         request = NewGetBlockListHandlerRequest()

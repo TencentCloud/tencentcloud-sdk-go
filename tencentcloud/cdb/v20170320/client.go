@@ -93,6 +93,31 @@ func (c *Client) AssociateSecurityGroups(request *AssociateSecurityGroupsRequest
     return
 }
 
+func NewBalanceRoGroupLoadRequest() (request *BalanceRoGroupLoadRequest) {
+    request = &BalanceRoGroupLoadRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cdb", APIVersion, "BalanceRoGroupLoad")
+    return
+}
+
+func NewBalanceRoGroupLoadResponse() (response *BalanceRoGroupLoadResponse) {
+    response = &BalanceRoGroupLoadResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口(BalanceRoGroupLoad)用于重新均衡 RO 组内实例的负载。注意，RO 组内 RO 实例会有一次数据库连接瞬断，请确保应用程序能重连数据库，谨慎操作。
+func (c *Client) BalanceRoGroupLoad(request *BalanceRoGroupLoadRequest) (response *BalanceRoGroupLoadResponse, err error) {
+    if request == nil {
+        request = NewBalanceRoGroupLoadRequest()
+    }
+    response = NewBalanceRoGroupLoadResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCloseWanServiceRequest() (request *CloseWanServiceRequest) {
     request = &CloseWanServiceRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1117,6 +1142,31 @@ func (c *Client) DescribeProjectSecurityGroups(request *DescribeProjectSecurityG
     return
 }
 
+func NewDescribeRoGroupsRequest() (request *DescribeRoGroupsRequest) {
+    request = &DescribeRoGroupsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cdb", APIVersion, "DescribeRoGroups")
+    return
+}
+
+func NewDescribeRoGroupsResponse() (response *DescribeRoGroupsResponse) {
+    response = &DescribeRoGroupsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口(DescribeRoGroups)用于查询云数据库实例的所有的RO组的信息。
+func (c *Client) DescribeRoGroups(request *DescribeRoGroupsRequest) (response *DescribeRoGroupsResponse, err error) {
+    if request == nil {
+        request = NewDescribeRoGroupsRequest()
+    }
+    response = NewDescribeRoGroupsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeRollbackRangeTimeRequest() (request *DescribeRollbackRangeTimeRequest) {
     request = &DescribeRollbackRangeTimeRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1745,6 +1795,31 @@ func (c *Client) ModifyParamTemplate(request *ModifyParamTemplateRequest) (respo
     return
 }
 
+func NewModifyRoGroupInfoRequest() (request *ModifyRoGroupInfoRequest) {
+    request = &ModifyRoGroupInfoRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cdb", APIVersion, "ModifyRoGroupInfo")
+    return
+}
+
+func NewModifyRoGroupInfoResponse() (response *ModifyRoGroupInfoResponse) {
+    response = &ModifyRoGroupInfoResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（ModifyRoGroupInfo）用于更新云数据库只读组的信息。包括设置实例延迟超限剔除策略，设置只读实例读权重等。
+func (c *Client) ModifyRoGroupInfo(request *ModifyRoGroupInfoRequest) (response *ModifyRoGroupInfoResponse, err error) {
+    if request == nil {
+        request = NewModifyRoGroupInfoRequest()
+    }
+    response = NewModifyRoGroupInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyTimeWindowRequest() (request *ModifyTimeWindowRequest) {
     request = &ModifyTimeWindowRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1847,6 +1922,31 @@ func (c *Client) OpenWanService(request *OpenWanServiceRequest) (response *OpenW
         request = NewOpenWanServiceRequest()
     }
     response = NewOpenWanServiceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewReleaseIsolatedDBInstancesRequest() (request *ReleaseIsolatedDBInstancesRequest) {
+    request = &ReleaseIsolatedDBInstancesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cdb", APIVersion, "ReleaseIsolatedDBInstances")
+    return
+}
+
+func NewReleaseIsolatedDBInstancesResponse() (response *ReleaseIsolatedDBInstancesResponse) {
+    response = &ReleaseIsolatedDBInstancesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（ReleaseIsolatedDBInstances）用于恢复已隔离云数据库实例。
+func (c *Client) ReleaseIsolatedDBInstances(request *ReleaseIsolatedDBInstancesRequest) (response *ReleaseIsolatedDBInstancesResponse, err error) {
+    if request == nil {
+        request = NewReleaseIsolatedDBInstancesRequest()
+    }
+    response = NewReleaseIsolatedDBInstancesResponse()
     err = c.Send(request, response)
     return
 }

@@ -89,7 +89,7 @@ type BcosBlockObj struct {
 	// 区块时间戳
 	BlockTimestamp *string `json:"BlockTimestamp,omitempty" name:"BlockTimestamp"`
 
-	// 打包节点id
+	// 打包节点ID
 	Sealer *string `json:"Sealer,omitempty" name:"Sealer"`
 
 	// 打包节点索引
@@ -944,9 +944,6 @@ type SendTransactionHandlerRequest struct {
 
 	// 群组编号
 	GroupPk *string `json:"GroupPk,omitempty" name:"GroupPk"`
-
-	// 私钥用户编号
-	KeyUser *string `json:"KeyUser,omitempty" name:"KeyUser"`
 
 	// 合约编号
 	ContractId *int64 `json:"ContractId,omitempty" name:"ContractId"`

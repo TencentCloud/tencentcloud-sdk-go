@@ -5678,6 +5678,33 @@ func (r *ProcessMediaResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type RawTranscodeParameter struct {
+
+	// 封装格式，可选值：mp4、flv、hls、mp3、flac、ogg、m4a。其中，mp3、flac、ogg、m4a 为纯音频文件。
+	Container *string `json:"Container,omitempty" name:"Container"`
+
+	// 是否去除视频数据，取值：
+	// <li>0：保留；</li>
+	// <li>1：去除。</li>
+	// 默认值：0。
+	RemoveVideo *int64 `json:"RemoveVideo,omitempty" name:"RemoveVideo"`
+
+	// 是否去除音频数据，取值：
+	// <li>0：保留；</li>
+	// <li>1：去除。</li>
+	// 默认值：0。
+	RemoveAudio *int64 `json:"RemoveAudio,omitempty" name:"RemoveAudio"`
+
+	// 视频流配置参数，当 RemoveVideo 为 0，该字段必填。
+	VideoTemplate *VideoTemplateInfo `json:"VideoTemplate,omitempty" name:"VideoTemplate"`
+
+	// 音频流配置参数，当 RemoveAudio 为 0，该字段必填。
+	AudioTemplate *AudioTemplateInfo `json:"AudioTemplate,omitempty" name:"AudioTemplate"`
+
+	// 极速高清转码参数。
+	TEHDConfig *TEHDConfig `json:"TEHDConfig,omitempty" name:"TEHDConfig"`
+}
+
 type ResetWorkflowRequest struct {
 	*tchttp.BaseRequest
 
@@ -6163,6 +6190,11 @@ type TranscodeTaskInput struct {
 	// 转码后输出路径中的`{number}`变量的规则。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ObjectNumberFormat *NumberFormat `json:"ObjectNumberFormat,omitempty" name:"ObjectNumberFormat"`
+
+	// 视频转码自定义参数，当 Definition 填 0 时有效。
+	// 该参数用于高度定制场景，建议您优先使用 Definition 指定转码参数。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RawParameter *RawTranscodeParameter `json:"RawParameter,omitempty" name:"RawParameter"`
 }
 
 type TranscodeTemplate struct {
@@ -6353,7 +6385,8 @@ type VideoTemplateInfo struct {
 	// 视频流的编码格式，可选值：
 	// <li>libx264：H.264 编码</li>
 	// <li>libx265：H.265 编码</li>
-	// 目前 H.265 编码必须指定分辨率，并且需要在 640*480 以内。
+	// <li>av1：AOMedia Video 1 编码</li>
+	// 目前 H.265 编码必须指定分辨率，并且需要在 640*480 以内。av1 编码容器目前只支持 mp4 。
 	Codec *string `json:"Codec,omitempty" name:"Codec"`
 
 	// 视频帧率，取值范围：[0, 60]，单位：Hz。
@@ -6398,7 +6431,8 @@ type VideoTemplateInfoForUpdate struct {
 	// 视频流的编码格式，可选值：
 	// <li>libx264：H.264 编码</li>
 	// <li>libx265：H.265 编码</li>
-	// 目前 H.265 编码必须指定分辨率，并且需要在 640*480 以内。
+	// <li>av1：AOMedia Video 1 编码</li>
+	// 目前 H.265 编码必须指定分辨率，并且需要在 640*480 以内。av1 编码容器目前只支持 mp4 。
 	Codec *string `json:"Codec,omitempty" name:"Codec"`
 
 	// 视频帧率，取值范围：[0, 60]，单位：Hz。

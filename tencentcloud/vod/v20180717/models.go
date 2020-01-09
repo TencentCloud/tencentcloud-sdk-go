@@ -9388,7 +9388,8 @@ type VideoTemplateInfo struct {
 	// 视频流的编码格式，可选值：
 	// <li>libx264：H.264 编码</li>
 	// <li>libx265：H.265 编码</li>
-	// 目前 H.265 编码必须指定分辨率，并且需要在 640*480 以内。
+	// <li>av1：AOMedia Video 1 编码</li>
+	// 目前 H.265 编码必须指定分辨率，并且需要在 640*480 以内。av1 编码容器目前只支持 mp4 。
 	Codec *string `json:"Codec,omitempty" name:"Codec"`
 
 	// 视频帧率，取值范围：[0, 60]，单位：Hz。
@@ -9437,7 +9438,8 @@ type VideoTemplateInfoForUpdate struct {
 	// 视频流的编码格式，可选值：
 	// <li>libx264：H.264 编码</li>
 	// <li>libx265：H.265 编码</li>
-	// 目前 H.265 编码必须指定分辨率，并且需要在 640*480 以内。
+	// <li>av1：AOMedia Video 1 编码</li>
+	// 目前 H.265 编码必须指定分辨率，并且需要在 640*480 以内。av1 编码容器目前只支持 mp4 。
 	Codec *string `json:"Codec,omitempty" name:"Codec"`
 
 	// 视频帧率，取值范围：[0, 60]，单位：Hz。
