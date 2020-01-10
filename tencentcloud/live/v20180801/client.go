@@ -1172,6 +1172,31 @@ func (c *Client) DescribeLiveForbidStreamList(request *DescribeLiveForbidStreamL
     return
 }
 
+func NewDescribeLivePackageInfoRequest() (request *DescribeLivePackageInfoRequest) {
+    request = &DescribeLivePackageInfoRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("live", APIVersion, "DescribeLivePackageInfo")
+    return
+}
+
+func NewDescribeLivePackageInfoResponse() (response *DescribeLivePackageInfoResponse) {
+    response = &DescribeLivePackageInfoResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询用户套餐包总量、使用量、剩余量、包状态、购买时间和过期时间等。
+func (c *Client) DescribeLivePackageInfo(request *DescribeLivePackageInfoRequest) (response *DescribeLivePackageInfoResponse, err error) {
+    if request == nil {
+        request = NewDescribeLivePackageInfoRequest()
+    }
+    response = NewDescribeLivePackageInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeLivePlayAuthKeyRequest() (request *DescribeLivePlayAuthKeyRequest) {
     request = &DescribeLivePlayAuthKeyRequest{
         BaseRequest: &tchttp.BaseRequest{},

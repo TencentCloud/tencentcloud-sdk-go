@@ -69,6 +69,31 @@ func (c *Client) AddFairPlayPem(request *AddFairPlayPemRequest) (response *AddFa
     return
 }
 
+func NewCreateEncryptKeysRequest() (request *CreateEncryptKeysRequest) {
+    request = &CreateEncryptKeysRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("drm", APIVersion, "CreateEncryptKeys")
+    return
+}
+
+func NewCreateEncryptKeysResponse() (response *CreateEncryptKeysResponse) {
+    response = &CreateEncryptKeysResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 该接口用来设置加密的秘钥。注意，同一个content id，只能设置一次！
+func (c *Client) CreateEncryptKeys(request *CreateEncryptKeysRequest) (response *CreateEncryptKeysResponse, err error) {
+    if request == nil {
+        request = NewCreateEncryptKeysRequest()
+    }
+    response = NewCreateEncryptKeysResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateLicenseRequest() (request *CreateLicenseRequest) {
     request = &CreateLicenseRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -118,6 +143,31 @@ func (c *Client) DeleteFairPlayPem(request *DeleteFairPlayPemRequest) (response 
         request = NewDeleteFairPlayPemRequest()
     }
     response = NewDeleteFairPlayPemResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeAllKeysRequest() (request *DescribeAllKeysRequest) {
+    request = &DescribeAllKeysRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("drm", APIVersion, "DescribeAllKeys")
+    return
+}
+
+func NewDescribeAllKeysResponse() (response *DescribeAllKeysResponse) {
+    response = &DescribeAllKeysResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口用来查询指定DRM类型、ContentType的所有加密秘钥
+func (c *Client) DescribeAllKeys(request *DescribeAllKeysRequest) (response *DescribeAllKeysResponse, err error) {
+    if request == nil {
+        request = NewDescribeAllKeysRequest()
+    }
+    response = NewDescribeAllKeysResponse()
     err = c.Send(request, response)
     return
 }

@@ -322,6 +322,16 @@ type BlockedIP struct {
 	ExpireTime *string `json:"ExpireTime,omitempty" name:"ExpireTime"`
 }
 
+type CertIdRelatedWithLoadBalancers struct {
+
+	// 证书ID
+	CertId *string `json:"CertId,omitempty" name:"CertId"`
+
+	// 与证书关联的负载均衡实例列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LoadBalancers []*LoadBalancer `json:"LoadBalancers,omitempty" name:"LoadBalancers" list`
+}
+
 type CertificateInput struct {
 
 	// 认证类型，UNIDIRECTIONAL：单向认证，MUTUAL：双向认证
@@ -517,7 +527,7 @@ type CreateListenerRequest struct {
 	// 健康检查相关参数，此参数仅适用于TCP/UDP/TCP_SSL监听器
 	HealthCheck *HealthCheck `json:"HealthCheck,omitempty" name:"HealthCheck"`
 
-	// 证书相关信息，此参数仅适用于HTTPS/TCP_SSL监听器
+	// 证书相关信息，此参数仅适用于TCP_SSL监听器和未开启SNI特性的HTTPS监听器。
 	Certificate *CertificateInput `json:"Certificate,omitempty" name:"Certificate"`
 
 	// 会话保持时间，单位：秒。可选值：30~3600，默认 0，表示不开启。此参数仅适用于TCP/UDP监听器。
@@ -597,8 +607,11 @@ type CreateLoadBalancerRequest struct {
 	// 仅适用于公网负载均衡。可用区ID，指定可用区以创建负载均衡实例。如：ap-guangzhou-1
 	ZoneId *string `json:"ZoneId,omitempty" name:"ZoneId"`
 
-	// 仅适用于公网负载均衡。负载均衡的网络计费方式，此参数仅对带宽上移用户生效。
+	// 仅适用于公网负载均衡。负载均衡的网络计费模式。
 	InternetAccessible *InternetAccessible `json:"InternetAccessible,omitempty" name:"InternetAccessible"`
+
+	// 仅适用于公网负载均衡。CMCC | CTCC | CUCC，分别对应 移动 | 电信 | 联通，如果不指定本参数，则默认使用BGP。可通过 DescribeSingleIsp 接口查询一个地域所支持的Isp。如果指定运营商，则网络计费式只能使用按带宽包计费(BANDWIDTH_PACKAGE)。
+	VipIsp *string `json:"VipIsp,omitempty" name:"VipIsp"`
 
 	// 购买负载均衡同时，给负载均衡打上标签
 	Tags []*TagInfo `json:"Tags,omitempty" name:"Tags" list`
@@ -1324,6 +1337,10 @@ type DescribeListenersResponse struct {
 		// 监听器列表
 		Listeners []*Listener `json:"Listeners,omitempty" name:"Listeners" list`
 
+		// 总的监听器个数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
@@ -1335,6 +1352,43 @@ func (r *DescribeListenersResponse) ToJsonString() string {
 }
 
 func (r *DescribeListenersResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeLoadBalancerListByCertIdRequest struct {
+	*tchttp.BaseRequest
+
+	// 服务端证书的ID，或客户端证书的ID
+	CertIds []*string `json:"CertIds,omitempty" name:"CertIds" list`
+}
+
+func (r *DescribeLoadBalancerListByCertIdRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeLoadBalancerListByCertIdRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeLoadBalancerListByCertIdResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 证书ID，以及与该证书ID关联的负载均衡实例列表
+		CertSet []*CertIdRelatedWithLoadBalancers `json:"CertSet,omitempty" name:"CertSet" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeLoadBalancerListByCertIdResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeLoadBalancerListByCertIdResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -2442,6 +2496,9 @@ type ModifyLoadBalancerAttributesRequest struct {
 
 	// 网络计费相关参数
 	InternetChargeInfo *InternetAccessible `json:"InternetChargeInfo,omitempty" name:"InternetChargeInfo"`
+
+	// Target是否放通来自CLB的流量。开启放通（true）：只验证CLB上的安全组；不开启放通（false）：需同时验证CLB和后端实例上的安全组。
+	LoadBalancerPassToTarget *bool `json:"LoadBalancerPassToTarget,omitempty" name:"LoadBalancerPassToTarget"`
 }
 
 func (r *ModifyLoadBalancerAttributesRequest) ToJsonString() string {

@@ -1083,6 +1083,32 @@ func (c *Client) EnableWorkflow(request *EnableWorkflowRequest) (response *Enabl
     return
 }
 
+func NewManageTaskRequest() (request *ManageTaskRequest) {
+    request = &ManageTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("mps", APIVersion, "ManageTask")
+    return
+}
+
+func NewManageTaskResponse() (response *ManageTaskResponse) {
+    response = &ManageTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 对已发起的任务进行管理。
+// > 注意：目前仅支持终止执行中的直播流处理任务。
+func (c *Client) ManageTask(request *ManageTaskRequest) (response *ManageTaskResponse, err error) {
+    if request == nil {
+        request = NewManageTaskRequest()
+    }
+    response = NewManageTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyAIAnalysisTemplateRequest() (request *ModifyAIAnalysisTemplateRequest) {
     request = &ModifyAIAnalysisTemplateRequest{
         BaseRequest: &tchttp.BaseRequest{},

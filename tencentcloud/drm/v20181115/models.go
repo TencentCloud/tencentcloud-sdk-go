@@ -79,6 +79,49 @@ func (r *AddFairPlayPemResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type CreateEncryptKeysRequest struct {
+	*tchttp.BaseRequest
+
+	// 使用的DRM方案类型，接口取值WIDEVINE、FAIRPLAY、NORMALAES。
+	DrmType *string `json:"DrmType,omitempty" name:"DrmType"`
+
+	// 设置的加密密钥列表。
+	Keys []*KeyParam `json:"Keys,omitempty" name:"Keys" list`
+
+	// 一个加密内容的唯一标识。
+	ContentId *string `json:"ContentId,omitempty" name:"ContentId"`
+
+	// 内容类型。接口取值VodVideo,LiveVideo。
+	ContentType *string `json:"ContentType,omitempty" name:"ContentType"`
+}
+
+func (r *CreateEncryptKeysRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateEncryptKeysRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateEncryptKeysResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateEncryptKeysResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateEncryptKeysResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type CreateLicenseRequest struct {
 	*tchttp.BaseRequest
 
@@ -167,6 +210,64 @@ func (r *DeleteFairPlayPemResponse) ToJsonString() string {
 }
 
 func (r *DeleteFairPlayPemResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeAllKeysRequest struct {
+	*tchttp.BaseRequest
+
+	// 使用的DRM方案类型，接口取值WIDEVINE、FAIRPLAY、NORMALAES。
+	DrmType *string `json:"DrmType,omitempty" name:"DrmType"`
+
+	// Base64编码的Rsa公钥，用来加密出参中的SessionKey。
+	// 如果该参数为空，则出参中SessionKey为明文。
+	RsaPublicKey *string `json:"RsaPublicKey,omitempty" name:"RsaPublicKey"`
+
+	// 一个加密内容的唯一标识。
+	ContentId *string `json:"ContentId,omitempty" name:"ContentId"`
+
+	// 内容类型。接口取值VodVideo,LiveVideo。
+	ContentType *string `json:"ContentType,omitempty" name:"ContentType"`
+}
+
+func (r *DescribeAllKeysRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeAllKeysRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeAllKeysResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 加密密钥列表。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Keys []*Key `json:"Keys,omitempty" name:"Keys" list`
+
+		// 用来加密密钥。
+	// 如果入参中带有RsaPublicKey，则SessionKey为使用Rsa公钥加密后的二进制数据，Base64编码字符串。
+	// 如果入参中没有RsaPublicKey，则SessionKey为原始数据的字符串形式。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		SessionKey *string `json:"SessionKey,omitempty" name:"SessionKey"`
+
+		// 内容ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		ContentId *string `json:"ContentId,omitempty" name:"ContentId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeAllKeysResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeAllKeysResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -330,7 +431,7 @@ type FairPlayPemDigestInfo struct {
 
 type Key struct {
 
-	// 加密track类型。
+	// 加密track类型。Widevine支持SD、HD、UHD1、UHD2、AUDIO。Fairplay只支持HD。
 	Track *string `json:"Track,omitempty" name:"Track"`
 
 	// 密钥ID。
@@ -340,6 +441,26 @@ type Key struct {
 	Key *string `json:"Key,omitempty" name:"Key"`
 
 	// 原始IV使用AES-128 ECB模式和SessionKey加密的后的二进制数据，Base64编码的字符串。
+	Iv *string `json:"Iv,omitempty" name:"Iv"`
+
+	// 该key生成时的时间戳
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InsertTimestamp *uint64 `json:"InsertTimestamp,omitempty" name:"InsertTimestamp"`
+}
+
+type KeyParam struct {
+
+	// 加密track类型。取值范围：
+	// SD、HD、UHD1、UHD2、AUDIO
+	Track *string `json:"Track,omitempty" name:"Track"`
+
+	// 请使用腾讯云DRM 提供的公钥，使用rsa加密算法，PKCS1填充方式对解密密钥进行加密，并对加密结果进行base64编码。
+	Key *string `json:"Key,omitempty" name:"Key"`
+
+	// 密钥ID。
+	KeyId *string `json:"KeyId,omitempty" name:"KeyId"`
+
+	// 请使用腾讯云DRM 提供的公钥，使用rsa加密算法，PKCS1填充方式对解密密钥进行加密，并对加密结果进行base64编码。
 	Iv *string `json:"Iv,omitempty" name:"Iv"`
 }
 

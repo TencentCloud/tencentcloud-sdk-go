@@ -445,6 +445,58 @@ func (c *Client) EstimateCheckSimilarPersonCostTime(request *EstimateCheckSimila
     return
 }
 
+func NewGetCheckSimilarPersonJobIdListRequest() (request *GetCheckSimilarPersonJobIdListRequest) {
+    request = &GetCheckSimilarPersonJobIdListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iai", APIVersion, "GetCheckSimilarPersonJobIdList")
+    return
+}
+
+func NewGetCheckSimilarPersonJobIdListResponse() (response *GetCheckSimilarPersonJobIdListResponse) {
+    response = &GetCheckSimilarPersonJobIdListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 获取人员查重任务列表，按任务创建时间逆序（最新的在前面）。
+// 
+// 只保留最近1年的数据。
+func (c *Client) GetCheckSimilarPersonJobIdList(request *GetCheckSimilarPersonJobIdListRequest) (response *GetCheckSimilarPersonJobIdListResponse, err error) {
+    if request == nil {
+        request = NewGetCheckSimilarPersonJobIdListRequest()
+    }
+    response = NewGetCheckSimilarPersonJobIdListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewGetGroupInfoRequest() (request *GetGroupInfoRequest) {
+    request = &GetGroupInfoRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iai", APIVersion, "GetGroupInfo")
+    return
+}
+
+func NewGetGroupInfoResponse() (response *GetGroupInfoResponse) {
+    response = &GetGroupInfoResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 获取人员库信息。
+func (c *Client) GetGroupInfo(request *GetGroupInfoRequest) (response *GetGroupInfoResponse, err error) {
+    if request == nil {
+        request = NewGetGroupInfoRequest()
+    }
+    response = NewGetGroupInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewGetGroupListRequest() (request *GetGroupListRequest) {
     request = &GetGroupListRequest{
         BaseRequest: &tchttp.BaseRequest{},

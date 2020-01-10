@@ -64,6 +64,12 @@ type ApplyUserCertResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
+		// 证书ID
+		CertId *uint64 `json:"CertId,omitempty" name:"CertId"`
+
+		// 证书DN
+		CertDn *string `json:"CertDn,omitempty" name:"CertDn"`
+
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
@@ -376,6 +382,67 @@ func (r *GetBlockListResponse) ToJsonString() string {
 }
 
 func (r *GetBlockListResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type GetBlockTransactionListForUserRequest struct {
+	*tchttp.BaseRequest
+
+	// 模块名，固定字段：transaction
+	Module *string `json:"Module,omitempty" name:"Module"`
+
+	// 操作名，固定字段：block_transaction_list_for_user
+	Operation *string `json:"Operation,omitempty" name:"Operation"`
+
+	// 区块链网络ID，可在区块链网络详情或列表中获取
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 参与交易的组织名称，可以在组织管理列表中获取当前组织的名称
+	GroupName *string `json:"GroupName,omitempty" name:"GroupName"`
+
+	// 业务所属通道名称，可在通道详情或列表中获取
+	ChannelName *string `json:"ChannelName,omitempty" name:"ChannelName"`
+
+	// 区块ID，通过GetInvokeTx接口可以获取交易所在的区块ID
+	BlockId *uint64 `json:"BlockId,omitempty" name:"BlockId"`
+
+	// 查询的交易列表起始偏移地址
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 查询的交易列表数量
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+func (r *GetBlockTransactionListForUserRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *GetBlockTransactionListForUserRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type GetBlockTransactionListForUserResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 交易总数量
+		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 交易列表
+		TransactionList []*TransactionItem `json:"TransactionList,omitempty" name:"TransactionList" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *GetBlockTransactionListForUserResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *GetBlockTransactionListForUserResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 

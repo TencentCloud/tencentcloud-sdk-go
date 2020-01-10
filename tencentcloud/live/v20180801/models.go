@@ -2234,6 +2234,46 @@ func (r *DescribeLiveForbidStreamListResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeLivePackageInfoRequest struct {
+	*tchttp.BaseRequest
+
+	// 包类型，可选值：
+	// 0：流量包；
+	// 1：转码包。
+	PackageType *int64 `json:"PackageType,omitempty" name:"PackageType"`
+}
+
+func (r *DescribeLivePackageInfoRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeLivePackageInfoRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeLivePackageInfoResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 套餐包信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		LivePackageInfoList []*LivePackageInfo `json:"LivePackageInfoList,omitempty" name:"LivePackageInfoList" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeLivePackageInfoResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeLivePackageInfoResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeLivePlayAuthKeyRequest struct {
 	*tchttp.BaseRequest
 
@@ -4183,6 +4223,45 @@ type HttpStatusInfo struct {
 
 	// 个数。
 	Num *uint64 `json:"Num,omitempty" name:"Num"`
+}
+
+type LivePackageInfo struct {
+
+	// 包ID。
+	Id *string `json:"Id,omitempty" name:"Id"`
+
+	// 总量。
+	// 注意：当为流量包时单位为字节；
+	// 当为转码包时单位为分钟。
+	Total *int64 `json:"Total,omitempty" name:"Total"`
+
+	// 使用量。
+	// 注意：当为流量包时单位为字节；
+	// 当为转码包时单位为分钟。
+	Used *int64 `json:"Used,omitempty" name:"Used"`
+
+	// 剩余量。
+	// 注意：当为流量包时单位为字节；
+	// 当为转码包时单位为分钟。
+	Left *int64 `json:"Left,omitempty" name:"Left"`
+
+	// 购买时间。
+	BuyTime *string `json:"BuyTime,omitempty" name:"BuyTime"`
+
+	// 过期时间。
+	ExpireTime *string `json:"ExpireTime,omitempty" name:"ExpireTime"`
+
+	// 包类型，可选值：
+	// 0：流量包；
+	// 1：普通转码包；
+	// 2：极速高清包。
+	Type *int64 `json:"Type,omitempty" name:"Type"`
+
+	// 包状态，可选值：
+	// 0：未使用；
+	// 1：使用中；
+	// 2：已过期。
+	Status *int64 `json:"Status,omitempty" name:"Status"`
 }
 
 type LogInfo struct {

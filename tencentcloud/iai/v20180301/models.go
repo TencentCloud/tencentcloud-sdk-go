@@ -1037,6 +1037,101 @@ type FaceShape struct {
 	RightPupil []*Point `json:"RightPupil,omitempty" name:"RightPupil" list`
 }
 
+type GetCheckSimilarPersonJobIdListRequest struct {
+	*tchttp.BaseRequest
+
+	// 起始序号，默认值为0。
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 返回数量，默认值为10，最大值为1000。
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+func (r *GetCheckSimilarPersonJobIdListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *GetCheckSimilarPersonJobIdListRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type GetCheckSimilarPersonJobIdListResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 人员查重任务信息列表。
+		JobIdInfos []*JobIdInfo `json:"JobIdInfos,omitempty" name:"JobIdInfos" list`
+
+		// 查重任务总数量。
+		JobIdNum *uint64 `json:"JobIdNum,omitempty" name:"JobIdNum"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *GetCheckSimilarPersonJobIdListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *GetCheckSimilarPersonJobIdListResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type GetGroupInfoRequest struct {
+	*tchttp.BaseRequest
+
+	// 人员库 ID。
+	GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
+}
+
+func (r *GetGroupInfoRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *GetGroupInfoRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type GetGroupInfoResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 人员库名称
+		GroupName *string `json:"GroupName,omitempty" name:"GroupName"`
+
+		// 人员库ID
+		GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
+
+		// 人员库自定义描述字段
+		GroupExDescriptions []*string `json:"GroupExDescriptions,omitempty" name:"GroupExDescriptions" list`
+
+		// 人员库信息备注
+		Tag *string `json:"Tag,omitempty" name:"Tag"`
+
+		// 人脸识别所用的算法模型版本。
+		FaceModelVersion *string `json:"FaceModelVersion,omitempty" name:"FaceModelVersion"`
+
+		// Group的创建时间和日期 CreationTimestamp。CreationTimestamp 的值是自 Unix 纪元时间到Group创建时间的毫秒数。
+		CreationTimestamp *uint64 `json:"CreationTimestamp,omitempty" name:"CreationTimestamp"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *GetGroupInfoResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *GetGroupInfoResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type GetGroupListRequest struct {
 	*tchttp.BaseRequest
 
@@ -1355,6 +1450,21 @@ type GroupInfo struct {
 	CreationTimestamp *uint64 `json:"CreationTimestamp,omitempty" name:"CreationTimestamp"`
 }
 
+type JobIdInfo struct {
+
+	// 查重任务ID，用于查询、获取查重的进度和结果。
+	JobId *string `json:"JobId,omitempty" name:"JobId"`
+
+	// 查重起始时间。 
+	// StartTime的值是自 Unix 纪元时间到Group创建时间的毫秒数。 
+	// Unix 纪元时间是 1970 年 1 月 1 日星期四，协调世界时 (UTC) 00:00:00。 
+	// 有关更多信息，请参阅 Unix 时间。
+	StartTime *uint64 `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 查重任务是否已完成。0: 成功 1: 未完成 2: 失败
+	JobStatus *int64 `json:"JobStatus,omitempty" name:"JobStatus"`
+}
+
 type ModifyGroupRequest struct {
 	*tchttp.BaseRequest
 
@@ -1513,7 +1623,7 @@ type PersonInfo struct {
 	// 包含的人脸照片列表
 	FaceIds []*string `json:"FaceIds,omitempty" name:"FaceIds" list`
 
-	// Group的创建时间和日期 CreationTimestamp。CreationTimestamp 的值是自 Unix 纪元时间到Group创建时间的毫秒数。 
+	// 人员的创建时间和日期 CreationTimestamp。CreationTimestamp 的值是自 Unix 纪元时间到Group创建时间的毫秒数。 
 	// Unix 纪元时间是 1970 年 1 月 1 日星期四，协调世界时 (UTC) 00:00:00。有关更多信息，请参阅 Unix 时间。
 	CreationTimestamp *uint64 `json:"CreationTimestamp,omitempty" name:"CreationTimestamp"`
 }
@@ -1639,7 +1749,7 @@ func (r *SearchFacesResponse) FromJsonString(s string) error {
 type SearchFacesReturnsByGroupRequest struct {
 	*tchttp.BaseRequest
 
-	// 希望搜索的人员库列表，上限10个。
+	// 希望搜索的人员库列表，上限60个。
 	GroupIds []*string `json:"GroupIds,omitempty" name:"GroupIds" list`
 
 	// 图片 base64 数据，base64 编码后大小不可超过5M。
@@ -1808,7 +1918,7 @@ func (r *SearchPersonsResponse) FromJsonString(s string) error {
 type SearchPersonsReturnsByGroupRequest struct {
 	*tchttp.BaseRequest
 
-	// 希望搜索的人员库列表，上限10个。
+	// 希望搜索的人员库列表，上限60个。
 	GroupIds []*string `json:"GroupIds,omitempty" name:"GroupIds" list`
 
 	// 图片 base64 数据，base64 编码后大小不可超过5M。

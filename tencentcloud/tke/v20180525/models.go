@@ -144,6 +144,9 @@ type ClusterAdvancedSettings struct {
 
 	// 集群中节点NodeName类型（包括 hostname,lan-ip两种形式，默认为lan-ip。如果开启了hostname模式，创建节点时需要设置HostName参数，并且InstanceName需要和HostName一致）
 	NodeNameType *string `json:"NodeNameType,omitempty" name:"NodeNameType"`
+
+	// 集群自定义参数
+	ExtraArgs *ClusterExtraArgs `json:"ExtraArgs,omitempty" name:"ExtraArgs"`
 }
 
 type ClusterAsGroup struct {
@@ -257,6 +260,21 @@ type ClusterCIDRSettings struct {
 
 	// 集群最大的service数量。取值范围32～32768，不为2的幂值时会向上取最接近的2的幂值。
 	MaxClusterServiceNum *uint64 `json:"MaxClusterServiceNum,omitempty" name:"MaxClusterServiceNum"`
+}
+
+type ClusterExtraArgs struct {
+
+	// kube-apiserver自定义参数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	KubeAPIServer []*string `json:"KubeAPIServer,omitempty" name:"KubeAPIServer" list`
+
+	// kube-controller-manager自定义参数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	KubeControllerManager []*string `json:"KubeControllerManager,omitempty" name:"KubeControllerManager" list`
+
+	// kube-scheduler自定义参数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	KubeScheduler []*string `json:"KubeScheduler,omitempty" name:"KubeScheduler" list`
 }
 
 type ClusterNetworkSettings struct {
@@ -1462,6 +1480,9 @@ type ExistedInstancesForNode struct {
 
 	// 已存在实例的重装参数
 	ExistedInstancesPara *ExistedInstancesPara `json:"ExistedInstancesPara,omitempty" name:"ExistedInstancesPara"`
+
+	// 节点高级设置，会覆盖集群级别设置的InstanceAdvancedSettings（当前只对节点自定义参数ExtraArgs生效）
+	InstanceAdvancedSettingsOverride *InstanceAdvancedSettings `json:"InstanceAdvancedSettingsOverride,omitempty" name:"InstanceAdvancedSettingsOverride"`
 }
 
 type ExistedInstancesPara struct {
@@ -1528,6 +1549,9 @@ type InstanceAdvancedSettings struct {
 
 	// 数据盘相关信息
 	DataDisks []*DataDisk `json:"DataDisks,omitempty" name:"DataDisks" list`
+
+	// 节点相关的自定义参数信息
+	ExtraArgs *InstanceExtraArgs `json:"ExtraArgs,omitempty" name:"ExtraArgs"`
 }
 
 type InstanceDataDiskMountSetting struct {
@@ -1540,6 +1564,13 @@ type InstanceDataDiskMountSetting struct {
 
 	// CVM实例所属可用区
 	Zone *string `json:"Zone,omitempty" name:"Zone"`
+}
+
+type InstanceExtraArgs struct {
+
+	// kubelet自定义参数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Kubelet []*string `json:"Kubelet,omitempty" name:"Kubelet" list`
 }
 
 type Label struct {
@@ -1689,6 +1720,9 @@ type RunInstancesForNode struct {
 
 	// CVM创建透传参数，json化字符串格式，详见[CVM创建实例](https://cloud.tencent.com/document/product/213/15730)接口，传入公共参数外的其他参数即可，其中ImageId会替换为TKE集群OS对应的镜像。
 	RunInstancesPara []*string `json:"RunInstancesPara,omitempty" name:"RunInstancesPara" list`
+
+	// 节点高级设置，该参数会覆盖集群级别设置的InstanceAdvancedSettings，和上边的RunInstancesPara按照顺序一一对应（当前只对节点自定义参数ExtraArgs生效）。
+	InstanceAdvancedSettingsOverrides []*InstanceAdvancedSettings `json:"InstanceAdvancedSettingsOverrides,omitempty" name:"InstanceAdvancedSettingsOverrides" list`
 }
 
 type RunMonitorServiceEnabled struct {

@@ -3894,6 +3894,44 @@ type LiveStreamTaskNotifyConfig struct {
 	TopicName *string `json:"TopicName,omitempty" name:"TopicName"`
 }
 
+type ManageTaskRequest struct {
+	*tchttp.BaseRequest
+
+	// 操作类型，取值范围：
+	// <li>Abort：终止任务。</li>
+	OperationType *string `json:"OperationType,omitempty" name:"OperationType"`
+
+	// 视频处理的任务 ID。
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+}
+
+func (r *ManageTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ManageTaskRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ManageTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ManageTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ManageTaskResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type MediaAiAnalysisClassificationItem struct {
 
 	// 智能分类的类别名称。
@@ -6173,6 +6211,11 @@ type TranscodeTaskInput struct {
 	// 视频转码模板 ID。
 	Definition *uint64 `json:"Definition,omitempty" name:"Definition"`
 
+	// 视频转码自定义参数，当 Definition 填 0 时有效。
+	// 该参数用于高度定制场景，建议您优先使用 Definition 指定转码参数。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RawParameter *RawTranscodeParameter `json:"RawParameter,omitempty" name:"RawParameter"`
+
 	// 水印列表，支持多张图片或文字水印，最大可支持 10 张。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	WatermarkSet []*WatermarkInput `json:"WatermarkSet,omitempty" name:"WatermarkSet" list`
@@ -6190,11 +6233,6 @@ type TranscodeTaskInput struct {
 	// 转码后输出路径中的`{number}`变量的规则。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ObjectNumberFormat *NumberFormat `json:"ObjectNumberFormat,omitempty" name:"ObjectNumberFormat"`
-
-	// 视频转码自定义参数，当 Definition 填 0 时有效。
-	// 该参数用于高度定制场景，建议您优先使用 Definition 指定转码参数。
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	RawParameter *RawTranscodeParameter `json:"RawParameter,omitempty" name:"RawParameter"`
 }
 
 type TranscodeTemplate struct {
@@ -6419,6 +6457,10 @@ type VideoTemplateInfo struct {
 	// 默认值：0。
 	Height *uint64 `json:"Height,omitempty" name:"Height"`
 
+	// 关键帧 I 帧之间的间隔，取值范围：0 和 [1, 100000]，单位：帧数。
+	// 当填 0 或不填时，系统将自动设置 gop 长度。
+	Gop *uint64 `json:"Gop,omitempty" name:"Gop"`
+
 	// 填充方式，当视频流配置宽高参数与原始视频的宽高比不一致时，对转码的处理方式，即为“填充”。可选填充方式：
 	// <li> stretch：拉伸，对每一帧进行拉伸，填满整个画面，可能导致转码后的视频被“压扁“或者“拉长“；</li>
 	// <li>black：留黑，保持视频宽高比不变，边缘剩余部分使用黑色填充。</li>
@@ -6458,10 +6500,12 @@ type VideoTemplateInfoForUpdate struct {
 	// 视频流高度（或短边）的最大值，取值范围：0 和 [128, 4096]，单位：px。
 	Height *uint64 `json:"Height,omitempty" name:"Height"`
 
+	// 关键帧 I 帧之间的间隔，取值范围：0 和 [1, 100000]，单位：帧数。当填 0 时，系统将自动设置 gop 长度。
+	Gop *string `json:"Gop,omitempty" name:"Gop"`
+
 	// 填充方式，当视频流配置宽高参数与原始视频的宽高比不一致时，对转码的处理方式，即为“填充”。可选填充方式：
 	// <li> stretch：拉伸，对每一帧进行拉伸，填满整个画面，可能导致转码后的视频被“压扁“或者“拉长“；</li>
 	// <li>black：留黑，保持视频宽高比不变，边缘剩余部分使用黑色填充。</li>
-	// 默认值：black 。
 	FillType *string `json:"FillType,omitempty" name:"FillType"`
 }
 

@@ -168,6 +168,31 @@ func (c *Client) GetBlockListHandler(request *GetBlockListHandlerRequest) (respo
     return
 }
 
+func NewGetBlockTransactionListForUserRequest() (request *GetBlockTransactionListForUserRequest) {
+    request = &GetBlockTransactionListForUserRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tbaas", APIVersion, "GetBlockTransactionListForUser")
+    return
+}
+
+func NewGetBlockTransactionListForUserResponse() (response *GetBlockTransactionListForUserResponse) {
+    response = &GetBlockTransactionListForUserResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 获取区块内的交易列表
+func (c *Client) GetBlockTransactionListForUser(request *GetBlockTransactionListForUserRequest) (response *GetBlockTransactionListForUserResponse, err error) {
+    if request == nil {
+        request = NewGetBlockTransactionListForUserRequest()
+    }
+    response = NewGetBlockTransactionListForUserResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewGetClusterSummaryRequest() (request *GetClusterSummaryRequest) {
     request = &GetClusterSummaryRequest{
         BaseRequest: &tchttp.BaseRequest{},

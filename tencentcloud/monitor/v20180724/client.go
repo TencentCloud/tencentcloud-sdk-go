@@ -193,6 +193,31 @@ func (c *Client) DescribeBindingPolicyObjectList(request *DescribeBindingPolicyO
     return
 }
 
+func NewDescribePolicyConditionListRequest() (request *DescribePolicyConditionListRequest) {
+    request = &DescribePolicyConditionListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("monitor", APIVersion, "DescribePolicyConditionList")
+    return
+}
+
+func NewDescribePolicyConditionListResponse() (response *DescribePolicyConditionListResponse) {
+    response = &DescribePolicyConditionListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 获取基础告警策略条件
+func (c *Client) DescribePolicyConditionList(request *DescribePolicyConditionListRequest) (response *DescribePolicyConditionListResponse, err error) {
+    if request == nil {
+        request = NewDescribePolicyConditionListRequest()
+    }
+    response = NewDescribePolicyConditionListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribePolicyGroupInfoRequest() (request *DescribePolicyGroupInfoRequest) {
     request = &DescribePolicyGroupInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -214,6 +239,31 @@ func (c *Client) DescribePolicyGroupInfo(request *DescribePolicyGroupInfoRequest
         request = NewDescribePolicyGroupInfoRequest()
     }
     response = NewDescribePolicyGroupInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribePolicyGroupListRequest() (request *DescribePolicyGroupListRequest) {
+    request = &DescribePolicyGroupListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("monitor", APIVersion, "DescribePolicyGroupList")
+    return
+}
+
+func NewDescribePolicyGroupListResponse() (response *DescribePolicyGroupListResponse) {
+    response = &DescribePolicyGroupListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 获取基础策略告警组列表
+func (c *Client) DescribePolicyGroupList(request *DescribePolicyGroupListRequest) (response *DescribePolicyGroupListResponse, err error) {
+    if request == nil {
+        request = NewDescribePolicyGroupListRequest()
+    }
+    response = NewDescribePolicyGroupListResponse()
     err = c.Send(request, response)
     return
 }
