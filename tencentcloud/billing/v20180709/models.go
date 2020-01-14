@@ -106,6 +106,18 @@ type BillDetail struct {
 	// Tag 信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Tags []*BillTagInfo `json:"Tags,omitempty" name:"Tags" list`
+
+	// 商品名称代码
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BusinessCode *string `json:"BusinessCode,omitempty" name:"BusinessCode"`
+
+	// 子商品名称代码
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProductCode *string `json:"ProductCode,omitempty" name:"ProductCode"`
+
+	// 交易类型代码
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ActionType *string `json:"ActionType,omitempty" name:"ActionType"`
 }
 
 type BillDetailComponent struct {
@@ -157,6 +169,18 @@ type BillDetailComponent struct {
 
 	// 赠送账户支付金额
 	IncentivePayAmount *string `json:"IncentivePayAmount,omitempty" name:"IncentivePayAmount"`
+
+	// 组件类型代码
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ItemCode *string `json:"ItemCode,omitempty" name:"ItemCode"`
+
+	// 组件名称代码
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ComponentCode *string `json:"ComponentCode,omitempty" name:"ComponentCode"`
+
+	// 合同价
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ContractPrice *string `json:"ContractPrice,omitempty" name:"ContractPrice"`
 }
 
 type BillResourceSummary struct {
@@ -305,6 +329,314 @@ type BusinessSummaryTotal struct {
 	CashPayAmount *string `json:"CashPayAmount,omitempty" name:"CashPayAmount"`
 }
 
+type ConditionBusiness struct {
+
+	// 产品码
+	BusinessCode *string `json:"BusinessCode,omitempty" name:"BusinessCode"`
+
+	// 产品名称
+	BusinessCodeName *string `json:"BusinessCodeName,omitempty" name:"BusinessCodeName"`
+}
+
+type ConditionPayMode struct {
+
+	// 付费模式
+	PayMode *string `json:"PayMode,omitempty" name:"PayMode"`
+
+	// 付费模式名称
+	PayModeName *string `json:"PayModeName,omitempty" name:"PayModeName"`
+}
+
+type ConditionProject struct {
+
+	// 项目ID
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 项目名称
+	ProjectName *string `json:"ProjectName,omitempty" name:"ProjectName"`
+}
+
+type ConditionRegion struct {
+
+	// 地域ID
+	RegionId *string `json:"RegionId,omitempty" name:"RegionId"`
+
+	// 地域名称
+	RegionName *string `json:"RegionName,omitempty" name:"RegionName"`
+}
+
+type Conditions struct {
+
+	// 只支持6和12两个值
+	TimeRange *uint64 `json:"TimeRange,omitempty" name:"TimeRange"`
+
+	// 产品编码
+	BusinessCode *string `json:"BusinessCode,omitempty" name:"BusinessCode"`
+
+	// 项目ID
+	ProjectId *int64 `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 地域ID
+	RegionId *int64 `json:"RegionId,omitempty" name:"RegionId"`
+
+	// 付费模式，可选prePay和postPay
+	PayMode *string `json:"PayMode,omitempty" name:"PayMode"`
+
+	// 资源关键字
+	ResourceKeyword *string `json:"ResourceKeyword,omitempty" name:"ResourceKeyword"`
+
+	// 产品编码
+	BusinessCodes []*string `json:"BusinessCodes,omitempty" name:"BusinessCodes" list`
+
+	// 子产品编码
+	ProductCodes []*string `json:"ProductCodes,omitempty" name:"ProductCodes" list`
+
+	// 地域ID
+	RegionIds []*int64 `json:"RegionIds,omitempty" name:"RegionIds" list`
+
+	// 项目ID
+	ProjectIds []*int64 `json:"ProjectIds,omitempty" name:"ProjectIds" list`
+
+	// 付费模式，可选prePay和postPay
+	PayModes []*string `json:"PayModes,omitempty" name:"PayModes" list`
+
+	// 交易类型
+	ActionTypes []*string `json:"ActionTypes,omitempty" name:"ActionTypes" list`
+
+	// 是否隐藏0元流水
+	HideFreeCost *int64 `json:"HideFreeCost,omitempty" name:"HideFreeCost"`
+
+	// 排序规则，可选desc和asc
+	OrderByCost *string `json:"OrderByCost,omitempty" name:"OrderByCost"`
+
+	// 交易ID
+	BillIds []*string `json:"BillIds,omitempty" name:"BillIds" list`
+
+	// 组件编码
+	ComponentCodes []*string `json:"ComponentCodes,omitempty" name:"ComponentCodes" list`
+
+	// 文件ID
+	FileIds []*string `json:"FileIds,omitempty" name:"FileIds" list`
+
+	// 文件类型
+	FileTypes []*string `json:"FileTypes,omitempty" name:"FileTypes" list`
+
+	// 状态
+	Status []*uint64 `json:"Status,omitempty" name:"Status" list`
+}
+
+type ConsumptionBusinessSummaryDataItem struct {
+
+	// 产品码
+	BusinessCode *string `json:"BusinessCode,omitempty" name:"BusinessCode"`
+
+	// 产品名称
+	BusinessCodeName *string `json:"BusinessCodeName,omitempty" name:"BusinessCodeName"`
+
+	// 折后总价
+	RealTotalCost *string `json:"RealTotalCost,omitempty" name:"RealTotalCost"`
+
+	// 费用趋势
+	Trend *ConsumptionSummaryTrend `json:"Trend,omitempty" name:"Trend"`
+}
+
+type ConsumptionProjectSummaryDataItem struct {
+
+	// 项目ID
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 项目名称
+	ProjectName *string `json:"ProjectName,omitempty" name:"ProjectName"`
+
+	// 折后总价
+	RealTotalCost *string `json:"RealTotalCost,omitempty" name:"RealTotalCost"`
+
+	// 趋势
+	Trend *ConsumptionSummaryTrend `json:"Trend,omitempty" name:"Trend"`
+
+	// 产品消耗详情
+	Business []*ConsumptionBusinessSummaryDataItem `json:"Business,omitempty" name:"Business" list`
+}
+
+type ConsumptionRegionSummaryDataItem struct {
+
+	// 地域ID
+	RegionId *string `json:"RegionId,omitempty" name:"RegionId"`
+
+	// 地域名称
+	RegionName *string `json:"RegionName,omitempty" name:"RegionName"`
+
+	// 折后总价
+	RealTotalCost *string `json:"RealTotalCost,omitempty" name:"RealTotalCost"`
+
+	// 趋势
+	Trend *ConsumptionSummaryTrend `json:"Trend,omitempty" name:"Trend"`
+
+	// 产品消费详情
+	Business []*ConsumptionBusinessSummaryDataItem `json:"Business,omitempty" name:"Business" list`
+}
+
+type ConsumptionResourceSummaryConditionValue struct {
+
+	// 产品列表
+	Business []*ConditionBusiness `json:"Business,omitempty" name:"Business" list`
+
+	// 项目列表
+	Project []*ConditionProject `json:"Project,omitempty" name:"Project" list`
+
+	// 地域列表
+	Region []*ConditionRegion `json:"Region,omitempty" name:"Region" list`
+
+	// 付费模式列表
+	PayMode []*ConditionPayMode `json:"PayMode,omitempty" name:"PayMode" list`
+}
+
+type ConsumptionResourceSummaryDataItem struct {
+
+	// 资源ID
+	ResourceId *string `json:"ResourceId,omitempty" name:"ResourceId"`
+
+	// 资源名称
+	ResourceName *string `json:"ResourceName,omitempty" name:"ResourceName"`
+
+	// 折后总价
+	RealTotalCost *string `json:"RealTotalCost,omitempty" name:"RealTotalCost"`
+
+	// 现金花费
+	CashPayAmount *string `json:"CashPayAmount,omitempty" name:"CashPayAmount"`
+
+	// 项目ID
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 项目名称
+	ProjectName *string `json:"ProjectName,omitempty" name:"ProjectName"`
+
+	// 地域ID
+	RegionId *string `json:"RegionId,omitempty" name:"RegionId"`
+
+	// 地域名称
+	RegionName *string `json:"RegionName,omitempty" name:"RegionName"`
+
+	// 付费模式
+	PayMode *string `json:"PayMode,omitempty" name:"PayMode"`
+
+	// 付费模式名称
+	PayModeName *string `json:"PayModeName,omitempty" name:"PayModeName"`
+
+	// 产品码
+	BusinessCode *string `json:"BusinessCode,omitempty" name:"BusinessCode"`
+
+	// 产品名称
+	BusinessCodeName *string `json:"BusinessCodeName,omitempty" name:"BusinessCodeName"`
+}
+
+type ConsumptionSummaryTotal struct {
+
+	// 折后总价
+	RealTotalCost *string `json:"RealTotalCost,omitempty" name:"RealTotalCost"`
+}
+
+type ConsumptionSummaryTrend struct {
+
+	// 趋势类型，upward上升/downward下降/none无
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 趋势值，Type为none是该字段值为null
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Value *string `json:"Value,omitempty" name:"Value"`
+}
+
+type CostComponentSet struct {
+
+	// 组件类型名称
+	ComponentCodeName *string `json:"ComponentCodeName,omitempty" name:"ComponentCodeName"`
+
+	// 组件名称
+	ItemCodeName *string `json:"ItemCodeName,omitempty" name:"ItemCodeName"`
+
+	// 刊例价
+	SinglePrice *string `json:"SinglePrice,omitempty" name:"SinglePrice"`
+
+	// 刊例价单位
+	PriceUnit *string `json:"PriceUnit,omitempty" name:"PriceUnit"`
+
+	// 用量
+	UsedAmount *string `json:"UsedAmount,omitempty" name:"UsedAmount"`
+
+	// 用量单位
+	UsedAmountUnit *string `json:"UsedAmountUnit,omitempty" name:"UsedAmountUnit"`
+
+	// 原价
+	Cost *string `json:"Cost,omitempty" name:"Cost"`
+
+	// 折扣
+	Discount *string `json:"Discount,omitempty" name:"Discount"`
+
+	// 折后价
+	RealCost *string `json:"RealCost,omitempty" name:"RealCost"`
+
+	// 代金券支付金额
+	VoucherPayAmount *string `json:"VoucherPayAmount,omitempty" name:"VoucherPayAmount"`
+
+	// 现金支付金额
+	CashPayAmount *string `json:"CashPayAmount,omitempty" name:"CashPayAmount"`
+
+	// 赠送金支付金额
+	IncentivePayAmount *string `json:"IncentivePayAmount,omitempty" name:"IncentivePayAmount"`
+}
+
+type CostDetail struct {
+
+	// 支付者uin
+	PayerUin *string `json:"PayerUin,omitempty" name:"PayerUin"`
+
+	// 业务名称
+	BusinessCodeName *string `json:"BusinessCodeName,omitempty" name:"BusinessCodeName"`
+
+	// 产品名称
+	ProductCodeName *string `json:"ProductCodeName,omitempty" name:"ProductCodeName"`
+
+	// 计费模式名称
+	PayModeName *string `json:"PayModeName,omitempty" name:"PayModeName"`
+
+	// 项目名称
+	ProjectName *string `json:"ProjectName,omitempty" name:"ProjectName"`
+
+	// 区域名称
+	RegionName *string `json:"RegionName,omitempty" name:"RegionName"`
+
+	// 地区名称
+	ZoneName *string `json:"ZoneName,omitempty" name:"ZoneName"`
+
+	// 资源id
+	ResourceId *string `json:"ResourceId,omitempty" name:"ResourceId"`
+
+	// 资源名称
+	ResourceName *string `json:"ResourceName,omitempty" name:"ResourceName"`
+
+	// 类型名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ActionTypeName *string `json:"ActionTypeName,omitempty" name:"ActionTypeName"`
+
+	// 订单id
+	OrderId *string `json:"OrderId,omitempty" name:"OrderId"`
+
+	// 交易id
+	BillId *string `json:"BillId,omitempty" name:"BillId"`
+
+	// 费用开始时间
+	FeeBeginTime *string `json:"FeeBeginTime,omitempty" name:"FeeBeginTime"`
+
+	// 费用结束时间
+	FeeEndTime *string `json:"FeeEndTime,omitempty" name:"FeeEndTime"`
+
+	// 组件明细
+	ComponentSet *CostComponentSet `json:"ComponentSet,omitempty" name:"ComponentSet"`
+
+	// 产品代码
+	ProductCode *string `json:"ProductCode,omitempty" name:"ProductCode"`
+}
+
 type Deal struct {
 
 	// 订单号
@@ -354,6 +686,13 @@ type Deal struct {
 
 	// 原价（分）
 	TotalCost *float64 `json:"TotalCost,omitempty" name:"TotalCost"`
+
+	// 产品编码
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProductCode *string `json:"ProductCode,omitempty" name:"ProductCode"`
+
+	// 子产品编码
+	SubProductCode *string `json:"SubProductCode,omitempty" name:"SubProductCode"`
 }
 
 type DescribeAccountBalanceRequest struct {
@@ -752,6 +1091,333 @@ func (r *DescribeBillSummaryByTagResponse) ToJsonString() string {
 }
 
 func (r *DescribeBillSummaryByTagResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeCostDetailRequest struct {
+	*tchttp.BaseRequest
+
+	// 数量，最大值为100
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 偏移量
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 周期开始时间，格式为Y-m-d H:i:s，Month和BeginTime&EndTime必传一个，如果有该字段则Month字段无效。BeginTime和EndTime必须一起传。不能早于开通成本分析的月份，最多可拉取24个月内的数据。
+	BeginTime *string `json:"BeginTime,omitempty" name:"BeginTime"`
+
+	// 周期结束时间，格式为Y-m-d H:i:s，Month和BeginTime&EndTime必传一个，如果有该字段则Month字段无效。BeginTime和EndTime必须一起传。不能早于开通成本分析的月份，最多可拉取24个月内的数据。
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 是否需要访问列表的总记录数，用于前端分页
+	// 1-表示需要， 0-表示不需要
+	NeedRecordNum *uint64 `json:"NeedRecordNum,omitempty" name:"NeedRecordNum"`
+
+	// 月份，格式为yyyy-mm，Month和BeginTime&EndTime必传一个，如果有传BeginTime&EndTime则Month字段无效。不能早于开通成本分析的月份，最多可拉取24个月内的数据。
+	Month *string `json:"Month,omitempty" name:"Month"`
+
+	// 查询指定产品信息
+	ProductCode *string `json:"ProductCode,omitempty" name:"ProductCode"`
+
+	// 付费模式 prePay/postPay
+	PayMode *string `json:"PayMode,omitempty" name:"PayMode"`
+
+	// 查询指定资源信息
+	ResourceId *string `json:"ResourceId,omitempty" name:"ResourceId"`
+}
+
+func (r *DescribeCostDetailRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeCostDetailRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeCostDetailResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 消耗明细
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		DetailSet []*CostDetail `json:"DetailSet,omitempty" name:"DetailSet" list`
+
+		// 记录数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Total *uint64 `json:"Total,omitempty" name:"Total"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeCostDetailResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeCostDetailResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeCostSummaryByProductRequest struct {
+	*tchttp.BaseRequest
+
+	// 查询账单数据的用户UIN
+	PayerUin *string `json:"PayerUin,omitempty" name:"PayerUin"`
+
+	// 目前只支持传当月1号 00:00:00，且必须和EndTime为相同月份，不支持跨月查询，例 2018-09-01 00:00:00
+	BeginTime *string `json:"BeginTime,omitempty" name:"BeginTime"`
+
+	// 目前只支持传当月最后一天 23:59:59，且必须和BeginTime为相同月份，不支持跨月查询，例 2018-09-30 23:59:59
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 每次获取数据量
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 偏移量
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 是否需要返回记录数量，0不需要，1需要，默认不需要
+	NeedRecordNum *uint64 `json:"NeedRecordNum,omitempty" name:"NeedRecordNum"`
+}
+
+func (r *DescribeCostSummaryByProductRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeCostSummaryByProductRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeCostSummaryByProductResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 数据是否准备好，0未准备好，1准备好
+		Ready *uint64 `json:"Ready,omitempty" name:"Ready"`
+
+		// 消耗详情
+		Total *ConsumptionSummaryTotal `json:"Total,omitempty" name:"Total"`
+
+		// 消耗按产品汇总详情
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Data []*ConsumptionBusinessSummaryDataItem `json:"Data,omitempty" name:"Data" list`
+
+		// 记录数量，NeedRecordNum为0是返回null
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		RecordNum *uint64 `json:"RecordNum,omitempty" name:"RecordNum"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeCostSummaryByProductResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeCostSummaryByProductResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeCostSummaryByProjectRequest struct {
+	*tchttp.BaseRequest
+
+	// 查询账单数据的用户UIN
+	PayerUin *string `json:"PayerUin,omitempty" name:"PayerUin"`
+
+	// 目前只支持传当月1号 00:00:00，且必须和EndTime为相同月份，不支持跨月查询，例 2018-09-01 00:00:00
+	BeginTime *string `json:"BeginTime,omitempty" name:"BeginTime"`
+
+	// 目前只支持传当月最后一天 23:59:59，且必须和BeginTime为相同月份，不支持跨月查询，例 2018-09-30 23:59:59
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 每次获取数据量
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 偏移量
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 是否需要返回记录数量，0不需要，1需要，默认不需要
+	NeedRecordNum *uint64 `json:"NeedRecordNum,omitempty" name:"NeedRecordNum"`
+}
+
+func (r *DescribeCostSummaryByProjectRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeCostSummaryByProjectRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeCostSummaryByProjectResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 数据是否准备好，0未准备好，1准备好
+		Ready *uint64 `json:"Ready,omitempty" name:"Ready"`
+
+		// 消耗详情
+		Total *ConsumptionSummaryTotal `json:"Total,omitempty" name:"Total"`
+
+		// 消耗按业务汇总详情
+		Data []*ConsumptionProjectSummaryDataItem `json:"Data,omitempty" name:"Data" list`
+
+		// 记录数量，NeedRecordNum为0是返回null
+		RecordNum *uint64 `json:"RecordNum,omitempty" name:"RecordNum"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeCostSummaryByProjectResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeCostSummaryByProjectResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeCostSummaryByRegionRequest struct {
+	*tchttp.BaseRequest
+
+	// 查询账单数据的用户UIN
+	PayerUin *string `json:"PayerUin,omitempty" name:"PayerUin"`
+
+	// 目前只支持传当月1号 00:00:00，且必须和EndTime为相同月份，不支持跨月查询，例 2018-09-01 00:00:00
+	BeginTime *string `json:"BeginTime,omitempty" name:"BeginTime"`
+
+	// 目前只支持传当月最后一天 23:59:59，且必须和BeginTime为相同月份，不支持跨月查询，例 2018-09-30 23:59:59
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 每次获取数据量
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 偏移量
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 是否需要返回记录数量，0不需要，1需要，默认不需要
+	NeedRecordNum *uint64 `json:"NeedRecordNum,omitempty" name:"NeedRecordNum"`
+}
+
+func (r *DescribeCostSummaryByRegionRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeCostSummaryByRegionRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeCostSummaryByRegionResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 数据是否准备好，0未准备好，1准备好
+		Ready *uint64 `json:"Ready,omitempty" name:"Ready"`
+
+		// 消耗详情
+		Total *ConsumptionSummaryTotal `json:"Total,omitempty" name:"Total"`
+
+		// 消耗按地域汇总详情
+		Data []*ConsumptionRegionSummaryDataItem `json:"Data,omitempty" name:"Data" list`
+
+		// 记录数量，NeedRecordNum为0是返回null
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		RecordNum *uint64 `json:"RecordNum,omitempty" name:"RecordNum"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeCostSummaryByRegionResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeCostSummaryByRegionResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeCostSummaryByResourceRequest struct {
+	*tchttp.BaseRequest
+
+	// 查询账单数据的用户UIN
+	PayerUin *string `json:"PayerUin,omitempty" name:"PayerUin"`
+
+	// 目前只支持传当月1号 00:00:00，且必须和EndTime为相同月份，不支持跨月查询，例 2018-09-01 00:00:00
+	BeginTime *string `json:"BeginTime,omitempty" name:"BeginTime"`
+
+	// 目前只支持传当月最后一天 23:59:59，且必须和BeginTime为相同月份，不支持跨月查询，例 2018-09-30 23:59:59
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 每次获取数据量
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 偏移量
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 是否需要返回记录数量，0不需要，1需要，默认不需要
+	NeedRecordNum *uint64 `json:"NeedRecordNum,omitempty" name:"NeedRecordNum"`
+
+	// 是否需要返回过滤条件，0不需要，1需要，默认不需要
+	NeedConditionValue *uint64 `json:"NeedConditionValue,omitempty" name:"NeedConditionValue"`
+
+	// 过滤条件，只支持ResourceKeyword(资源关键字，支持资源id及资源名称模糊查询)，ProjectIds（项目id），RegionIds(地域id)，PayModes(付费模式，可选prePay和postPay)，HideFreeCost（是否隐藏0元流水，可选0和1），OrderByCost（按费用排序规则，可选desc和asc）
+	Conditions *Conditions `json:"Conditions,omitempty" name:"Conditions"`
+}
+
+func (r *DescribeCostSummaryByResourceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeCostSummaryByResourceRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeCostSummaryByResourceResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 数据是否准备好，0未准备好，1准备好
+		Ready *uint64 `json:"Ready,omitempty" name:"Ready"`
+
+		// 消耗详情
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Total *ConsumptionSummaryTotal `json:"Total,omitempty" name:"Total"`
+
+		// 过滤条件
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		ConditionValue *ConsumptionResourceSummaryConditionValue `json:"ConditionValue,omitempty" name:"ConditionValue"`
+
+		// 记录数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		RecordNum *uint64 `json:"RecordNum,omitempty" name:"RecordNum"`
+
+		// 资源消耗详情
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Data []*ConsumptionResourceSummaryDataItem `json:"Data,omitempty" name:"Data" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeCostSummaryByResourceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeCostSummaryByResourceResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 

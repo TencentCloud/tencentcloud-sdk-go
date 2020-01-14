@@ -93,59 +93,6 @@ func (c *Client) CreateAgentGroup(request *CreateAgentGroupRequest) (response *C
     return
 }
 
-func NewCreateAlarmPloicyRequest() (request *CreateAlarmPloicyRequest) {
-    request = &CreateAlarmPloicyRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    request.Init().WithApiInfo("cat", APIVersion, "CreateAlarmPloicy")
-    return
-}
-
-func NewCreateAlarmPloicyResponse() (response *CreateAlarmPloicyResponse) {
-    response = &CreateAlarmPloicyResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    }
-    return
-}
-
-// 为拨测任务创建告警策略
-func (c *Client) CreateAlarmPloicy(request *CreateAlarmPloicyRequest) (response *CreateAlarmPloicyResponse, err error) {
-    if request == nil {
-        request = NewCreateAlarmPloicyRequest()
-    }
-    response = NewCreateAlarmPloicyResponse()
-    err = c.Send(request, response)
-    return
-}
-
-func NewCreateTaskRequest() (request *CreateTaskRequest) {
-    request = &CreateTaskRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    request.Init().WithApiInfo("cat", APIVersion, "CreateTask")
-    return
-}
-
-func NewCreateTaskResponse() (response *CreateTaskResponse) {
-    response = &CreateTaskResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    }
-    return
-}
-
-// 创建拨测任务（创建任务并发起验证）
-// 
-// 操作提示：
-// 下一步，请通过VerifyCatResult 接口，验证一下拨测验证是否成功。如果成功，则可通过RunTask 接口运行该任务。
-func (c *Client) CreateTask(request *CreateTaskRequest) (response *CreateTaskResponse, err error) {
-    if request == nil {
-        request = NewCreateTaskRequest()
-    }
-    response = NewCreateTaskResponse()
-    err = c.Send(request, response)
-    return
-}
-
 func NewCreateTaskExRequest() (request *CreateTaskExRequest) {
     request = &CreateTaskExRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -221,31 +168,6 @@ func (c *Client) DeleteTasks(request *DeleteTasksRequest) (response *DeleteTasks
     return
 }
 
-func NewDescribeAgentGroupRequest() (request *DescribeAgentGroupRequest) {
-    request = &DescribeAgentGroupRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    request.Init().WithApiInfo("cat", APIVersion, "DescribeAgentGroup")
-    return
-}
-
-func NewDescribeAgentGroupResponse() (response *DescribeAgentGroupResponse) {
-    response = &DescribeAgentGroupResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    }
-    return
-}
-
-// 查询拨测分组详情
-func (c *Client) DescribeAgentGroup(request *DescribeAgentGroupRequest) (response *DescribeAgentGroupResponse, err error) {
-    if request == nil {
-        request = NewDescribeAgentGroupRequest()
-    }
-    response = NewDescribeAgentGroupResponse()
-    err = c.Send(request, response)
-    return
-}
-
 func NewDescribeAgentGroupsRequest() (request *DescribeAgentGroupsRequest) {
     request = &DescribeAgentGroupsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -292,31 +214,6 @@ func (c *Client) DescribeAgents(request *DescribeAgentsRequest) (response *Descr
         request = NewDescribeAgentsRequest()
     }
     response = NewDescribeAgentsResponse()
-    err = c.Send(request, response)
-    return
-}
-
-func NewDescribeAlarmGroupsRequest() (request *DescribeAlarmGroupsRequest) {
-    request = &DescribeAlarmGroupsRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    request.Init().WithApiInfo("cat", APIVersion, "DescribeAlarmGroups")
-    return
-}
-
-func NewDescribeAlarmGroupsResponse() (response *DescribeAlarmGroupsResponse) {
-    response = &DescribeAlarmGroupsResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    }
-    return
-}
-
-// 查询用户的告警接收组列表
-func (c *Client) DescribeAlarmGroups(request *DescribeAlarmGroupsRequest) (response *DescribeAlarmGroupsResponse, err error) {
-    if request == nil {
-        request = NewDescribeAlarmGroupsRequest()
-    }
-    response = NewDescribeAlarmGroupsResponse()
     err = c.Send(request, response)
     return
 }
@@ -421,31 +318,6 @@ func (c *Client) DescribeCatLogs(request *DescribeCatLogsRequest) (response *Des
     return
 }
 
-func NewDescribeTaskRequest() (request *DescribeTaskRequest) {
-    request = &DescribeTaskRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    request.Init().WithApiInfo("cat", APIVersion, "DescribeTask")
-    return
-}
-
-func NewDescribeTaskResponse() (response *DescribeTaskResponse) {
-    response = &DescribeTaskResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    }
-    return
-}
-
-// 查询拨测任务详情
-func (c *Client) DescribeTask(request *DescribeTaskRequest) (response *DescribeTaskResponse, err error) {
-    if request == nil {
-        request = NewDescribeTaskRequest()
-    }
-    response = NewDescribeTaskResponse()
-    err = c.Send(request, response)
-    return
-}
-
 func NewDescribeTaskDetailRequest() (request *DescribeTaskDetailRequest) {
     request = &DescribeTaskDetailRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -467,31 +339,6 @@ func (c *Client) DescribeTaskDetail(request *DescribeTaskDetailRequest) (respons
         request = NewDescribeTaskDetailRequest()
     }
     response = NewDescribeTaskDetailResponse()
-    err = c.Send(request, response)
-    return
-}
-
-func NewDescribeTasksRequest() (request *DescribeTasksRequest) {
-    request = &DescribeTasksRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    request.Init().WithApiInfo("cat", APIVersion, "DescribeTasks")
-    return
-}
-
-func NewDescribeTasksResponse() (response *DescribeTasksResponse) {
-    response = &DescribeTasksResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    }
-    return
-}
-
-// 查询拨测任务列表
-func (c *Client) DescribeTasks(request *DescribeTasksRequest) (response *DescribeTasksResponse, err error) {
-    if request == nil {
-        request = NewDescribeTasksRequest()
-    }
-    response = NewDescribeTasksResponse()
     err = c.Send(request, response)
     return
 }
@@ -617,31 +464,6 @@ func (c *Client) GetRealAvailRatio(request *GetRealAvailRatioRequest) (response 
         request = NewGetRealAvailRatioRequest()
     }
     response = NewGetRealAvailRatioResponse()
-    err = c.Send(request, response)
-    return
-}
-
-func NewGetRespTimeTrendRequest() (request *GetRespTimeTrendRequest) {
-    request = &GetRespTimeTrendRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    request.Init().WithApiInfo("cat", APIVersion, "GetRespTimeTrend")
-    return
-}
-
-func NewGetRespTimeTrendResponse() (response *GetRespTimeTrendResponse) {
-    response = &GetRespTimeTrendResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    }
-    return
-}
-
-// 查询拨测任务的统计数据
-func (c *Client) GetRespTimeTrend(request *GetRespTimeTrendRequest) (response *GetRespTimeTrendResponse, err error) {
-    if request == nil {
-        request = NewGetRespTimeTrendRequest()
-    }
-    response = NewGetRespTimeTrendResponse()
     err = c.Send(request, response)
     return
 }
@@ -792,57 +614,6 @@ func (c *Client) ModifyAgentGroup(request *ModifyAgentGroupRequest) (response *M
         request = NewModifyAgentGroupRequest()
     }
     response = NewModifyAgentGroupResponse()
-    err = c.Send(request, response)
-    return
-}
-
-func NewModifyAlarmPloicyRequest() (request *ModifyAlarmPloicyRequest) {
-    request = &ModifyAlarmPloicyRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    request.Init().WithApiInfo("cat", APIVersion, "ModifyAlarmPloicy")
-    return
-}
-
-func NewModifyAlarmPloicyResponse() (response *ModifyAlarmPloicyResponse) {
-    response = &ModifyAlarmPloicyResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    }
-    return
-}
-
-// 为拨测任务修改告警策略
-func (c *Client) ModifyAlarmPloicy(request *ModifyAlarmPloicyRequest) (response *ModifyAlarmPloicyResponse, err error) {
-    if request == nil {
-        request = NewModifyAlarmPloicyRequest()
-    }
-    response = NewModifyAlarmPloicyResponse()
-    err = c.Send(request, response)
-    return
-}
-
-func NewModifyTaskRequest() (request *ModifyTaskRequest) {
-    request = &ModifyTaskRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    request.Init().WithApiInfo("cat", APIVersion, "ModifyTask")
-    return
-}
-
-func NewModifyTaskResponse() (response *ModifyTaskResponse) {
-    response = &ModifyTaskResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    }
-    return
-}
-
-// 修改 拨测任务。
-// 如果验证未成功，请先验证成功。避免修改为失败率100%的拨测任务。
-func (c *Client) ModifyTask(request *ModifyTaskRequest) (response *ModifyTaskResponse, err error) {
-    if request == nil {
-        request = NewModifyTaskRequest()
-    }
-    response = NewModifyTaskResponse()
     err = c.Send(request, response)
     return
 }

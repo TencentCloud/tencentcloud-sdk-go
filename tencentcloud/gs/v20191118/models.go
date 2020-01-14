@@ -32,20 +32,35 @@ type CreateSessionRequest struct {
 	// 游戏ID
 	GameId *string `json:"GameId,omitempty" name:"GameId"`
 
-	// 游戏区域
+	// 游戏区域，ap-guangzhou、ap-shanghai、ap-beijing等
 	GameRegion *string `json:"GameRegion,omitempty" name:"GameRegion"`
 
 	// 游戏参数
 	GameParas *string `json:"GameParas,omitempty" name:"GameParas"`
 
-	// 分辨率
+	// 分辨率,，可设置为1080p或720p
 	Resolution *string `json:"Resolution,omitempty" name:"Resolution"`
 
-	// 背景图url
+	// 背景图url，格式为png或jpeg，宽高1920*1080
 	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
 
-	// 资源池编号
+	// 资源池编号，1表示正式，2表示测试
 	SetNo *uint64 `json:"SetNo,omitempty" name:"SetNo"`
+
+	// 单位Mbps，固定码率，后端不动态调整(MaxBitrate和MinBitrate将无效)
+	Bitrate *uint64 `json:"Bitrate,omitempty" name:"Bitrate"`
+
+	// 单位Mbps，动态调整最大码率
+	MaxBitrate *uint64 `json:"MaxBitrate,omitempty" name:"MaxBitrate"`
+
+	// 单位Mbps，动态调整最小码率
+	MinBitrate *uint64 `json:"MinBitrate,omitempty" name:"MinBitrate"`
+
+	// 帧率，可设置为30、45或60
+	Fps *uint64 `json:"Fps,omitempty" name:"Fps"`
+
+	// 游戏用户IP，用于就近调度，例如125.127.178.228
+	UserIp *string `json:"UserIp,omitempty" name:"UserIp"`
 }
 
 func (r *CreateSessionRequest) ToJsonString() string {
@@ -81,7 +96,7 @@ func (r *CreateSessionResponse) FromJsonString(s string) error {
 type DescribeWorkersRequest struct {
 	*tchttp.BaseRequest
 
-	// 资源池编号，值为2的幂，1表示共用，2表示测试
+	// 资源池编号，1表示正式，2表示测试
 	SetNo *uint64 `json:"SetNo,omitempty" name:"SetNo"`
 }
 
@@ -169,6 +184,9 @@ type TrylockWorkerRequest struct {
 
 	// 资源池编号，1表示共用，2表示测试
 	SetNo *uint64 `json:"SetNo,omitempty" name:"SetNo"`
+
+	// 游戏用户IP，用于就近调度，例如125.127.178.228
+	UserIp *string `json:"UserIp,omitempty" name:"UserIp"`
 }
 
 func (r *TrylockWorkerRequest) ToJsonString() string {

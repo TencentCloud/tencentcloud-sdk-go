@@ -199,6 +199,61 @@ func (r *BlockByNumberHandlerResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DeployDynamicContractHandlerRequest struct {
+	*tchttp.BaseRequest
+
+	// 模块名，固定字段：contract
+	Module *string `json:"Module,omitempty" name:"Module"`
+
+	// 操作名，固定字段：deploy_by_dynamic_contract
+	Operation *string `json:"Operation,omitempty" name:"Operation"`
+
+	// 群组编号
+	GroupPk *string `json:"GroupPk,omitempty" name:"GroupPk"`
+
+	// 合约名称
+	ContractName *string `json:"ContractName,omitempty" name:"ContractName"`
+
+	// 合约编译后的abi
+	AbiInfo *string `json:"AbiInfo,omitempty" name:"AbiInfo"`
+
+	// 合约编译后的binary
+	ByteCodeBin *string `json:"ByteCodeBin,omitempty" name:"ByteCodeBin"`
+
+	// 构造函数入参
+	ConstructorParams []*string `json:"ConstructorParams,omitempty" name:"ConstructorParams" list`
+}
+
+func (r *DeployDynamicContractHandlerRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeployDynamicContractHandlerRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeployDynamicContractHandlerResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 部署成功返回的合约地址
+		ContractAddress *string `json:"ContractAddress,omitempty" name:"ContractAddress"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DeployDynamicContractHandlerResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeployDynamicContractHandlerResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DownloadUserCertRequest struct {
 	*tchttp.BaseRequest
 
@@ -1098,6 +1153,64 @@ func (r *SrvInvokeResponse) ToJsonString() string {
 }
 
 func (r *SrvInvokeResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type TransByDynamicContractHandlerRequest struct {
+	*tchttp.BaseRequest
+
+	// 模块名，固定字段：transaction
+	Module *string `json:"Module,omitempty" name:"Module"`
+
+	// 操作名，固定字段：trans_by_dynamic_contract
+	Operation *string `json:"Operation,omitempty" name:"Operation"`
+
+	// 群组编号
+	GroupPk *string `json:"GroupPk,omitempty" name:"GroupPk"`
+
+	// 合约地址（合约部署成功，可得到合约地址）
+	ContractAddress *string `json:"ContractAddress,omitempty" name:"ContractAddress"`
+
+	// 合约名
+	ContractName *string `json:"ContractName,omitempty" name:"ContractName"`
+
+	// 合约编译后的abi
+	AbiInfo *string `json:"AbiInfo,omitempty" name:"AbiInfo"`
+
+	// 合约被调用方法名
+	FuncName *string `json:"FuncName,omitempty" name:"FuncName"`
+
+	// 合约被调用方法的入参
+	FuncParam []*string `json:"FuncParam,omitempty" name:"FuncParam" list`
+}
+
+func (r *TransByDynamicContractHandlerRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *TransByDynamicContractHandlerRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type TransByDynamicContractHandlerResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 交易结果json字符串
+		TransactionRsp *string `json:"TransactionRsp,omitempty" name:"TransactionRsp"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *TransByDynamicContractHandlerResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *TransByDynamicContractHandlerResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 

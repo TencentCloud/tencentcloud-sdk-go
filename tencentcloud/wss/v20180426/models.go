@@ -23,10 +23,10 @@ import (
 type DeleteCertRequest struct {
 	*tchttp.BaseRequest
 
-	// 证书 ID，即通过 GetList 拿到的证书列表的 ID 字段
+	// 证书 ID，即通过 GetList 拿到的证书列表的 ID 字段。
 	Id *string `json:"Id,omitempty" name:"Id"`
 
-	// 模块名称，应填ssl
+	// 模块名称，应填 ssl。
 	ModuleType *string `json:"ModuleType,omitempty" name:"ModuleType"`
 }
 
@@ -60,28 +60,28 @@ func (r *DeleteCertResponse) FromJsonString(s string) error {
 type DescribeCertListRequest struct {
 	*tchttp.BaseRequest
 
-	// 模块名称，应填ssl
+	// 模块名称，应填 ssl。
 	ModuleType *string `json:"ModuleType,omitempty" name:"ModuleType"`
 
-	// 页数，默认第一页
+	// 页数，默认第一页。
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
 
-	// 每页条数，默认每页20条
+	// 每页条数，默认每页20条。
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 
-	// 搜索关键字
+	// 搜索关键字。
 	SearchKey *string `json:"SearchKey,omitempty" name:"SearchKey"`
 
-	// 证书类型（目前支持:CA=客户端证书,SVR=服务器证书）
+	// 证书类型（目前支持:CA=客户端证书,SVR=服务器证书）。
 	CertType *string `json:"CertType,omitempty" name:"CertType"`
 
-	// 证书id
+	// 证书ID。
 	Id *string `json:"Id,omitempty" name:"Id"`
 
-	// 是否同时获取证书内容
+	// 是否同时获取证书内容。
 	WithCert *string `json:"WithCert,omitempty" name:"WithCert"`
 
-	// 如传，则只返回可以给该域名使用的证书
+	// 如传，则只返回可以给该域名使用的证书。
 	AltDomain *string `json:"AltDomain,omitempty" name:"AltDomain"`
 }
 
@@ -98,10 +98,10 @@ type DescribeCertListResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 总数量
+		// 总数量。
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
-		// 列表
+		// 列表。
 		CertificateSet []*SSLCertificate `json:"CertificateSet,omitempty" name:"CertificateSet" list`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -188,7 +188,7 @@ type SSLCertificate struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProjectInfo *SSLProjectInfo `json:"ProjectInfo,omitempty" name:"ProjectInfo"`
 
-	// 证书Id
+	// 证书ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Id *string `json:"Id,omitempty" name:"Id"`
 
@@ -255,22 +255,22 @@ type SSLProjectInfo struct {
 type UploadCertRequest struct {
 	*tchttp.BaseRequest
 
-	// 证书内容
+	// 证书内容。
 	Cert *string `json:"Cert,omitempty" name:"Cert"`
 
-	// 证书类型（目前支持：CA 为客户端证书，SVR 为服务器证书）
+	// 证书类型（目前支持：CA 为客户端证书，SVR 为服务器证书）。
 	CertType *string `json:"CertType,omitempty" name:"CertType"`
 
-	// 项目ID
+	// 项目ID，详见用户指南的 [项目与标签](https://cloud.tencent.com/document/product/598/32738)。
 	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
 
-	// 模块名称，应填ssl
+	// 模块名称，应填 ssl。
 	ModuleType *string `json:"ModuleType,omitempty" name:"ModuleType"`
 
-	// 证书私钥，certType=SVR 时必填
+	// 证书私钥，certType=SVR 时必填。
 	Key *string `json:"Key,omitempty" name:"Key"`
 
-	// 证书备注
+	// 证书备注。
 	Alias *string `json:"Alias,omitempty" name:"Alias"`
 }
 
@@ -287,7 +287,7 @@ type UploadCertResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 证书ID
+		// 证书ID。
 		Id *string `json:"Id,omitempty" name:"Id"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。

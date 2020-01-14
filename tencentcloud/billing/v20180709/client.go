@@ -243,6 +243,131 @@ func (c *Client) DescribeBillSummaryByTag(request *DescribeBillSummaryByTagReque
     return
 }
 
+func NewDescribeCostDetailRequest() (request *DescribeCostDetailRequest) {
+    request = &DescribeCostDetailRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("billing", APIVersion, "DescribeCostDetail")
+    return
+}
+
+func NewDescribeCostDetailResponse() (response *DescribeCostDetailResponse) {
+    response = &DescribeCostDetailResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询消耗明细
+func (c *Client) DescribeCostDetail(request *DescribeCostDetailRequest) (response *DescribeCostDetailResponse, err error) {
+    if request == nil {
+        request = NewDescribeCostDetailRequest()
+    }
+    response = NewDescribeCostDetailResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeCostSummaryByProductRequest() (request *DescribeCostSummaryByProductRequest) {
+    request = &DescribeCostSummaryByProductRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("billing", APIVersion, "DescribeCostSummaryByProduct")
+    return
+}
+
+func NewDescribeCostSummaryByProductResponse() (response *DescribeCostSummaryByProductResponse) {
+    response = &DescribeCostSummaryByProductResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 获取按产品汇总消耗详情
+func (c *Client) DescribeCostSummaryByProduct(request *DescribeCostSummaryByProductRequest) (response *DescribeCostSummaryByProductResponse, err error) {
+    if request == nil {
+        request = NewDescribeCostSummaryByProductRequest()
+    }
+    response = NewDescribeCostSummaryByProductResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeCostSummaryByProjectRequest() (request *DescribeCostSummaryByProjectRequest) {
+    request = &DescribeCostSummaryByProjectRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("billing", APIVersion, "DescribeCostSummaryByProject")
+    return
+}
+
+func NewDescribeCostSummaryByProjectResponse() (response *DescribeCostSummaryByProjectResponse) {
+    response = &DescribeCostSummaryByProjectResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 获取按项目汇总消耗详情
+func (c *Client) DescribeCostSummaryByProject(request *DescribeCostSummaryByProjectRequest) (response *DescribeCostSummaryByProjectResponse, err error) {
+    if request == nil {
+        request = NewDescribeCostSummaryByProjectRequest()
+    }
+    response = NewDescribeCostSummaryByProjectResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeCostSummaryByRegionRequest() (request *DescribeCostSummaryByRegionRequest) {
+    request = &DescribeCostSummaryByRegionRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("billing", APIVersion, "DescribeCostSummaryByRegion")
+    return
+}
+
+func NewDescribeCostSummaryByRegionResponse() (response *DescribeCostSummaryByRegionResponse) {
+    response = &DescribeCostSummaryByRegionResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 获取按地域汇总消耗详情
+func (c *Client) DescribeCostSummaryByRegion(request *DescribeCostSummaryByRegionRequest) (response *DescribeCostSummaryByRegionResponse, err error) {
+    if request == nil {
+        request = NewDescribeCostSummaryByRegionRequest()
+    }
+    response = NewDescribeCostSummaryByRegionResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeCostSummaryByResourceRequest() (request *DescribeCostSummaryByResourceRequest) {
+    request = &DescribeCostSummaryByResourceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("billing", APIVersion, "DescribeCostSummaryByResource")
+    return
+}
+
+func NewDescribeCostSummaryByResourceResponse() (response *DescribeCostSummaryByResourceResponse) {
+    response = &DescribeCostSummaryByResourceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 获取按资源汇总消耗详情
+func (c *Client) DescribeCostSummaryByResource(request *DescribeCostSummaryByResourceRequest) (response *DescribeCostSummaryByResourceResponse, err error) {
+    if request == nil {
+        request = NewDescribeCostSummaryByResourceRequest()
+    }
+    response = NewDescribeCostSummaryByResourceResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeDealsByCondRequest() (request *DescribeDealsByCondRequest) {
     request = &DescribeDealsByCondRequest{
         BaseRequest: &tchttp.BaseRequest{},

@@ -3899,6 +3899,11 @@ type DescribeFlowLogsRequest struct {
 
 	// 每页行数，默认为10
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 过滤条件，参数不支持同时指定FlowLogIds和Filters。
+	// <li>tag-key - String -是否必填：否- （过滤条件）按照标签键进行过滤。</li>
+	// <li>tag:tag-key - String - 是否必填：否 - （过滤条件）按照标签键值对进行过滤。 tag-key使用具体的标签键进行替换。</li>
+	Filters *Filter `json:"Filters,omitempty" name:"Filters"`
 }
 
 func (r *DescribeFlowLogsRequest) ToJsonString() string {
@@ -6398,6 +6403,9 @@ type ModifyBandwidthPackageAttributeRequest struct {
 
 	// 带宽包名称
 	BandwidthPackageName *string `json:"BandwidthPackageName,omitempty" name:"BandwidthPackageName"`
+
+	// 带宽包计费模式
+	ChargeType *string `json:"ChargeType,omitempty" name:"ChargeType"`
 }
 
 func (r *ModifyBandwidthPackageAttributeRequest) ToJsonString() string {

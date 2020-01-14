@@ -39,6 +39,7 @@ type FaceFusionRequest struct {
 	PornDetect *int64 `json:"PornDetect,omitempty" name:"PornDetect"`
 
 	// 0表示不需要鉴政，1表示需要鉴政。默认值为0。
+	// 请注意，鉴政服务开启后，您需要根据返回结果自行判断是否调整您的业务逻辑。例如提示您的用户图片非法，请更换图片。
 	CelebrityIdentify *int64 `json:"CelebrityIdentify,omitempty" name:"CelebrityIdentify"`
 }
 
@@ -114,6 +115,7 @@ type FuseFaceRequest struct {
 	FuseFaceDegree *int64 `json:"FuseFaceDegree,omitempty" name:"FuseFaceDegree"`
 
 	// 0表示不需要鉴政，1表示需要鉴政。默认值为0。
+	// 请注意，鉴政服务开启后，您需要根据返回结果自行判断是否调整您的业务逻辑。例如提示您的用户图片非法，请更换图片。
 	CelebrityIdentify *int64 `json:"CelebrityIdentify,omitempty" name:"CelebrityIdentify"`
 }
 

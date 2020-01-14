@@ -114,6 +114,9 @@ type CarTagItem struct {
 
 	// 年份，没识别出年份的时候返回0
 	Year *int64 `json:"Year,omitempty" name:"Year"`
+
+	// 车辆在图片中的坐标信息
+	CarLocation []*Coord `json:"CarLocation,omitempty" name:"CarLocation" list`
 }
 
 type Coord struct {
@@ -836,10 +839,10 @@ type RecognizeCarResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 汽车的四个矩形顶点坐标
+		// 汽车的四个矩形顶点坐标，如果图片中存在多辆车，则输出最大车辆的坐标。
 		CarCoords []*Coord `json:"CarCoords,omitempty" name:"CarCoords" list`
 
-		// 车辆属性识别的结果数组
+		// 车辆属性识别的结果数组，如果识别到多辆车，则会输出每辆车的top1结果。
 		CarTags []*CarTagItem `json:"CarTags,omitempty" name:"CarTags" list`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。

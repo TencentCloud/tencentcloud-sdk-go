@@ -41,24 +41,6 @@ type AgentGroup struct {
 	MaxGroupNum *uint64 `json:"MaxGroupNum,omitempty" name:"MaxGroupNum"`
 }
 
-type AlarmGroupInfo struct {
-
-	// 告警接受组Id
-	GroupId *uint64 `json:"GroupId,omitempty" name:"GroupId"`
-
-	// 告警接受组名称
-	GroupName *string `json:"GroupName,omitempty" name:"GroupName"`
-
-	// 告警接受通道数(一个邮件或短信接收人为一个通道)
-	Channel *uint64 `json:"Channel,omitempty" name:"Channel"`
-
-	// 备注信息
-	Remarks *string `json:"Remarks,omitempty" name:"Remarks"`
-
-	// 接受组创建时间
-	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
-}
-
 type AlarmInfo struct {
 
 	// 告警对象的名称
@@ -266,48 +248,6 @@ type CatReturnSummary struct {
 	ErrorReason *string `json:"ErrorReason,omitempty" name:"ErrorReason"`
 }
 
-type CatTask struct {
-
-	// 任务Id
-	TaskId *uint64 `json:"TaskId,omitempty" name:"TaskId"`
-
-	// 任务名称
-	TaskName *string `json:"TaskName,omitempty" name:"TaskName"`
-
-	// 任务周期，单位为分钟。目前支持1，5，15，30几种取值
-	Period *uint64 `json:"Period,omitempty" name:"Period"`
-
-	// 拨测类型。http, https, ping, tcp 之一
-	CatTypeName *string `json:"CatTypeName,omitempty" name:"CatTypeName"`
-
-	// 拨测任务的Url
-	CgiUrl *string `json:"CgiUrl,omitempty" name:"CgiUrl"`
-
-	// 告警的可用率门限(0~100)
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	AvailRatioThres *uint64 `json:"AvailRatioThres,omitempty" name:"AvailRatioThres"`
-
-	// 告警的可用率持续时间。值为Period的0~4倍
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	AvailRatioInterval *uint64 `json:"AvailRatioInterval,omitempty" name:"AvailRatioInterval"`
-
-	// 告警接收组
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	ReceiverGroupId *uint64 `json:"ReceiverGroupId,omitempty" name:"ReceiverGroupId"`
-
-	// 拨测分组id
-	AgentGroupId *uint64 `json:"AgentGroupId,omitempty" name:"AgentGroupId"`
-
-	// 任务状态。1表示暂停，2表示运行中，0为初始态
-	Status *uint64 `json:"Status,omitempty" name:"Status"`
-
-	// 任务创建时间
-	AddTime *string `json:"AddTime,omitempty" name:"AddTime"`
-
-	// 任务更新时间
-	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
-}
-
 type CatTaskDetail struct {
 
 	// 任务Id
@@ -453,55 +393,6 @@ func (r *CreateAgentGroupResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
-type CreateAlarmPloicyRequest struct {
-	*tchttp.BaseRequest
-
-	// 正整数。拨测任务id
-	TaskId *uint64 `json:"TaskId,omitempty" name:"TaskId"`
-
-	// 持续周期。值为任务的Period 乘以0、1、2、3、4。单位：分钟
-	Interval *uint64 `json:"Interval,omitempty" name:"Interval"`
-
-	// 目前取值仅支持 lt (小于)。
-	Operate *string `json:"Operate,omitempty" name:"Operate"`
-
-	// 门限百分比。比如：80，表示80%。成功率低于80%时告警。
-	Threshold *uint64 `json:"Threshold,omitempty" name:"Threshold"`
-
-	// 告警接收组的id。参见： DescribeAlarmGroups 接口。从返回结果里的GroupId 中选取一个。
-	ReceiverGroupId *uint64 `json:"ReceiverGroupId,omitempty" name:"ReceiverGroupId"`
-}
-
-func (r *CreateAlarmPloicyRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-func (r *CreateAlarmPloicyRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
-}
-
-type CreateAlarmPloicyResponse struct {
-	*tchttp.BaseResponse
-	Response *struct {
-
-		// 告警策略Id
-		PolicyId *uint64 `json:"PolicyId,omitempty" name:"PolicyId"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
-}
-
-func (r *CreateAlarmPloicyResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-func (r *CreateAlarmPloicyResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
-}
-
 type CreateTaskExRequest struct {
 	*tchttp.BaseRequest
 
@@ -626,88 +517,6 @@ func (r *CreateTaskExResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
-type CreateTaskRequest struct {
-	*tchttp.BaseRequest
-
-	// 拨测分组id，体现本拨测任务要采用那些运营商作为拨测源。一般可直接填写本用户的默认拨测分组。参见：DescribeAgentGroupList 接口，本参数使用返回结果里的groupId的值。
-	AgentGroupId *uint64 `json:"AgentGroupId,omitempty" name:"AgentGroupId"`
-
-	// http, https, ping, tcp 之一
-	CatTypeName *string `json:"CatTypeName,omitempty" name:"CatTypeName"`
-
-	// 拨测的url  例如：www.baidu.com (url域名解析需要能解析出具体的ip)
-	Url *string `json:"Url,omitempty" name:"Url"`
-
-	// 拨测任务名称不能超过32个字符。同一个用户创建的任务名不可重复
-	TaskName *string `json:"TaskName,omitempty" name:"TaskName"`
-
-	// 需要满足ip 的格式
-	Host *string `json:"Host,omitempty" name:"Host"`
-
-	// 服务端监听或接收数据的端口
-	Port *uint64 `json:"Port,omitempty" name:"Port"`
-
-	// 是否为Header请求（非0 发起Header 请求。为0，且PostData 非空，发起POST请求。为0，PostData 为空，发起GET请求）
-	IsHeader *uint64 `json:"IsHeader,omitempty" name:"IsHeader"`
-
-	// url中含有https时有用。缺省为SSLv23。需要为 TLSv1_2, TLSv1_1, TLSv1, SSLv2, SSLv23, SSLv3 之一
-	SslVer *string `json:"SslVer,omitempty" name:"SslVer"`
-
-	// POST 请求数据。空字符串表示非POST请求
-	PostData *string `json:"PostData,omitempty" name:"PostData"`
-
-	// 用户agent 信息
-	UserAgent *string `json:"UserAgent,omitempty" name:"UserAgent"`
-
-	// 要在结果中进行匹配的字符串
-	CheckStr *string `json:"CheckStr,omitempty" name:"CheckStr"`
-
-	// 1 表示通过检查结果是否包含CheckStr 进行校验
-	CheckType *uint64 `json:"CheckType,omitempty" name:"CheckType"`
-
-	// 需要设置的cookie信息
-	Cookie *string `json:"Cookie,omitempty" name:"Cookie"`
-
-	// 拨测周期。取值可为1,5,15,30之一, 单位：分钟。精度不能低于用户等级规定的最小精度
-	Period *uint64 `json:"Period,omitempty" name:"Period"`
-
-	// 任务号。用于验证且修改任务时传入原任务号
-	TaskId *uint64 `json:"TaskId,omitempty" name:"TaskId"`
-}
-
-func (r *CreateTaskRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-func (r *CreateTaskRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
-}
-
-type CreateTaskResponse struct {
-	*tchttp.BaseResponse
-	Response *struct {
-
-		// 拨测结果查询id。接下来可以使用查询拨测是否能够成功，验证能否通过。
-		ResultId *uint64 `json:"ResultId,omitempty" name:"ResultId"`
-
-		// 拨测任务id。验证通过后，创建任务时使用，传递给CreateTask 接口。
-		TaskId *uint64 `json:"TaskId,omitempty" name:"TaskId"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
-}
-
-func (r *CreateTaskResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-func (r *CreateTaskResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
-}
-
 type DataPoint struct {
 
 	// 数据点的时间
@@ -794,55 +603,6 @@ func (r *DeleteTasksResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
-type DescribeAgentGroupRequest struct {
-	*tchttp.BaseRequest
-
-	// 拨测分组id
-	GroupId *uint64 `json:"GroupId,omitempty" name:"GroupId"`
-}
-
-func (r *DescribeAgentGroupRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-func (r *DescribeAgentGroupRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
-}
-
-type DescribeAgentGroupResponse struct {
-	*tchttp.BaseResponse
-	Response *struct {
-
-		// 拨测分组Id
-		GroupId *uint64 `json:"GroupId,omitempty" name:"GroupId"`
-
-		// 拨测分组名称
-		GroupName *string `json:"GroupName,omitempty" name:"GroupName"`
-
-		// 是否为默认拨测分组
-		IsDefault *uint64 `json:"IsDefault,omitempty" name:"IsDefault"`
-
-		// 使用本拨测分组的任务数
-		TaskNum *uint64 `json:"TaskNum,omitempty" name:"TaskNum"`
-
-		// 拨测分组运营商列表
-		Agents []*CatAgent `json:"Agents,omitempty" name:"Agents" list`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
-}
-
-func (r *DescribeAgentGroupResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-func (r *DescribeAgentGroupResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
-}
-
 type DescribeAgentGroupsRequest struct {
 	*tchttp.BaseRequest
 }
@@ -911,49 +671,6 @@ func (r *DescribeAgentsResponse) ToJsonString() string {
 }
 
 func (r *DescribeAgentsResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
-}
-
-type DescribeAlarmGroupsRequest struct {
-	*tchttp.BaseRequest
-
-	// 满足条件的第几条开始
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
-
-	// 每批多少条
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
-}
-
-func (r *DescribeAlarmGroupsRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-func (r *DescribeAlarmGroupsRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
-}
-
-type DescribeAlarmGroupsResponse struct {
-	*tchttp.BaseResponse
-	Response *struct {
-
-		// 用户名下总的告警接收组数目
-		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
-
-		// 满足条件的告警接收组列表
-		AlarmGroupInfos []*AlarmGroupInfo `json:"AlarmGroupInfos,omitempty" name:"AlarmGroupInfos" list`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
-}
-
-func (r *DescribeAlarmGroupsResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-func (r *DescribeAlarmGroupsResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -1217,43 +934,6 @@ func (r *DescribeTaskDetailResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
-type DescribeTaskRequest struct {
-	*tchttp.BaseRequest
-
-	// 拨测任务id 数组
-	TaskIds []*uint64 `json:"TaskIds,omitempty" name:"TaskIds" list`
-}
-
-func (r *DescribeTaskRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-func (r *DescribeTaskRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
-}
-
-type DescribeTaskResponse struct {
-	*tchttp.BaseResponse
-	Response *struct {
-
-		// 拨测任务列表
-		Tasks []*CatTask `json:"Tasks,omitempty" name:"Tasks" list`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
-}
-
-func (r *DescribeTaskResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-func (r *DescribeTaskResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
-}
-
 type DescribeTasksByTypeRequest struct {
 	*tchttp.BaseRequest
 
@@ -1297,52 +977,6 @@ func (r *DescribeTasksByTypeResponse) ToJsonString() string {
 }
 
 func (r *DescribeTasksByTypeResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
-}
-
-type DescribeTasksRequest struct {
-	*tchttp.BaseRequest
-
-	// 从第Offset 条开始查询。缺省值为0
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
-
-	// 本批次查询Limit 条记录。缺省值为20
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
-
-	// 任务所使用的拨测分组Id
-	GroupId *uint64 `json:"GroupId,omitempty" name:"GroupId"`
-}
-
-func (r *DescribeTasksRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-func (r *DescribeTasksRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
-}
-
-type DescribeTasksResponse struct {
-	*tchttp.BaseResponse
-	Response *struct {
-
-		// 用户的拨测任务总条数
-		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
-
-		// 满足条件的拨测任务列表
-		Tasks []*CatTask `json:"Tasks,omitempty" name:"Tasks" list`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
-}
-
-func (r *DescribeTasksResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-func (r *DescribeTasksResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -1654,55 +1288,6 @@ func (r *GetRespTimeTrendExResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
-type GetRespTimeTrendRequest struct {
-	*tchttp.BaseRequest
-
-	// 验证成功的拨测任务id
-	TaskId *uint64 `json:"TaskId,omitempty" name:"TaskId"`
-
-	// 统计数据的发生日期。格式如：2017-05-09
-	Date *string `json:"Date,omitempty" name:"Date"`
-
-	// 数据的采集周期，单位分钟
-	Period *uint64 `json:"Period,omitempty" name:"Period"`
-
-	// 可为 Isp, Province
-	Dimentions []*string `json:"Dimentions,omitempty" name:"Dimentions" list`
-
-	// 可为  totalTime, parseTime, connectTime, sendTime, waitTime, receiveTime
-	MetricName *string `json:"MetricName,omitempty" name:"MetricName"`
-}
-
-func (r *GetRespTimeTrendRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-func (r *GetRespTimeTrendRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
-}
-
-type GetRespTimeTrendResponse struct {
-	*tchttp.BaseResponse
-	Response *struct {
-
-		// 数据点集合，时延等走势数据
-		DataPoints []*DataPoint `json:"DataPoints,omitempty" name:"DataPoints" list`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
-}
-
-func (r *GetRespTimeTrendResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-func (r *GetRespTimeTrendResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
-}
-
 type GetResultSummaryRequest struct {
 	*tchttp.BaseRequest
 
@@ -1943,55 +1528,6 @@ func (r *ModifyAgentGroupResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
-type ModifyAlarmPloicyRequest struct {
-	*tchttp.BaseRequest
-
-	// 验证成功的拨测任务id
-	TaskId *uint64 `json:"TaskId,omitempty" name:"TaskId"`
-
-	// 持续周期。值为任务的Period 乘以0、1、2、3、4。单位：分钟
-	Interval *uint64 `json:"Interval,omitempty" name:"Interval"`
-
-	// 目前取值仅支持 lt (小于)
-	Operate *string `json:"Operate,omitempty" name:"Operate"`
-
-	// 门限百分比。比如：80，表示80%。成功率低于80%时告警
-	Threshold *uint64 `json:"Threshold,omitempty" name:"Threshold"`
-
-	// 拨测告警策略id
-	PolicyId *int64 `json:"PolicyId,omitempty" name:"PolicyId"`
-
-	// 告警接收组的id。参见： DescribeAlarmGroups 接口。从返回结果里的GroupId 中选取一个
-	ReceiverGroupId *uint64 `json:"ReceiverGroupId,omitempty" name:"ReceiverGroupId"`
-}
-
-func (r *ModifyAlarmPloicyRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-func (r *ModifyAlarmPloicyRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
-}
-
-type ModifyAlarmPloicyResponse struct {
-	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
-}
-
-func (r *ModifyAlarmPloicyResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-func (r *ModifyAlarmPloicyResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
-}
-
 type ModifyTaskExRequest struct {
 	*tchttp.BaseRequest
 
@@ -2107,82 +1643,6 @@ func (r *ModifyTaskExResponse) ToJsonString() string {
 }
 
 func (r *ModifyTaskExResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
-}
-
-type ModifyTaskRequest struct {
-	*tchttp.BaseRequest
-
-	// 拨测分组id，体现本拨测任务要采用那些运营商作为拨测源。一般可直接填写本用户的默认拨测分组。参见：DescribeAgentGroupList 接口，本参数使用返回结果里的groupId的值。
-	AgentGroupId *uint64 `json:"AgentGroupId,omitempty" name:"AgentGroupId"`
-
-	// http, https, ping, tcp 之一
-	CatTypeName *string `json:"CatTypeName,omitempty" name:"CatTypeName"`
-
-	// 拨测的url  例如：www.baidu.com (url域名解析需要能解析出具体的ip)
-	Url *string `json:"Url,omitempty" name:"Url"`
-
-	// 拨测周期。取值可为1,5,15,30之一, 单位：分钟。精度不能低于用户等级规定的最小精度
-	Period *uint64 `json:"Period,omitempty" name:"Period"`
-
-	// 拨测任务名称不能超过32个字符。同一个用户创建的任务名不可重复
-	TaskName *string `json:"TaskName,omitempty" name:"TaskName"`
-
-	// 验证成功的拨测任务id
-	TaskId *int64 `json:"TaskId,omitempty" name:"TaskId"`
-
-	// 需要满足ip 的格式
-	Host *string `json:"Host,omitempty" name:"Host"`
-
-	// 服务端监听或接收数据的端口
-	Port *uint64 `json:"Port,omitempty" name:"Port"`
-
-	// 是否为Header请求（非0 发起Header 请求。为0，且PostData 非空，发起POST请求。为0，PostData 为空，发起GET请求）
-	IsHeader *uint64 `json:"IsHeader,omitempty" name:"IsHeader"`
-
-	// url中含有https时有用。缺省为SSLv23。需要为 TLSv1_2, TLSv1_1, TLSv1, SSLv2, SSLv23, SSLv3 之一
-	SslVer *string `json:"SslVer,omitempty" name:"SslVer"`
-
-	// POST 请求数据。空字符串表示非POST请求
-	PostData *string `json:"PostData,omitempty" name:"PostData"`
-
-	// 用户agent 信息
-	UserAgent *string `json:"UserAgent,omitempty" name:"UserAgent"`
-
-	// 要在结果中进行匹配的字符串
-	CheckStr *string `json:"CheckStr,omitempty" name:"CheckStr"`
-
-	// 1 表示通过检查结果是否包含checkStr 进行校验
-	CheckType *uint64 `json:"CheckType,omitempty" name:"CheckType"`
-
-	// 需要设置的cookie信息
-	Cookie *string `json:"Cookie,omitempty" name:"Cookie"`
-}
-
-func (r *ModifyTaskRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-func (r *ModifyTaskRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
-}
-
-type ModifyTaskResponse struct {
-	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
-}
-
-func (r *ModifyTaskResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-func (r *ModifyTaskResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 

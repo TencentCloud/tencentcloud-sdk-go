@@ -93,6 +93,31 @@ func (c *Client) BlockByNumberHandler(request *BlockByNumberHandlerRequest) (res
     return
 }
 
+func NewDeployDynamicContractHandlerRequest() (request *DeployDynamicContractHandlerRequest) {
+    request = &DeployDynamicContractHandlerRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tbaas", APIVersion, "DeployDynamicContractHandler")
+    return
+}
+
+func NewDeployDynamicContractHandlerResponse() (response *DeployDynamicContractHandlerResponse) {
+    response = &DeployDynamicContractHandlerResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 动态部署合约
+func (c *Client) DeployDynamicContractHandler(request *DeployDynamicContractHandlerRequest) (response *DeployDynamicContractHandlerResponse, err error) {
+    if request == nil {
+        request = NewDeployDynamicContractHandlerRequest()
+    }
+    response = NewDeployDynamicContractHandlerResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDownloadUserCertRequest() (request *DownloadUserCertRequest) {
     request = &DownloadUserCertRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -439,6 +464,31 @@ func (c *Client) SrvInvoke(request *SrvInvokeRequest) (response *SrvInvokeRespon
         request = NewSrvInvokeRequest()
     }
     response = NewSrvInvokeResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewTransByDynamicContractHandlerRequest() (request *TransByDynamicContractHandlerRequest) {
+    request = &TransByDynamicContractHandlerRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tbaas", APIVersion, "TransByDynamicContractHandler")
+    return
+}
+
+func NewTransByDynamicContractHandlerResponse() (response *TransByDynamicContractHandlerResponse) {
+    response = &TransByDynamicContractHandlerResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 根据动态部署的合约发送交易
+func (c *Client) TransByDynamicContractHandler(request *TransByDynamicContractHandlerRequest) (response *TransByDynamicContractHandlerResponse, err error) {
+    if request == nil {
+        request = NewTransByDynamicContractHandlerRequest()
+    }
+    response = NewTransByDynamicContractHandlerResponse()
     err = c.Send(request, response)
     return
 }
