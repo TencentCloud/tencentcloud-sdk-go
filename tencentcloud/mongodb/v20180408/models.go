@@ -554,7 +554,7 @@ type MongoDBInstanceDetail struct {
 	// 实例状态描述
 	InstanceStatusDesc *string `json:"InstanceStatusDesc,omitempty" name:"InstanceStatusDesc"`
 
-	// 实例对应的物理实例id，回档并替换过的实例有不同的InstanceId和RealInstanceId，从barad获取监控数据等场景下需要用物理id获取
+	// 实例对应的物理实例ID，回档并替换过的实例有不同的InstanceId和RealInstanceId，从barad获取监控数据等场景下需要用物理id获取
 	RealInstanceId *string `json:"RealInstanceId,omitempty" name:"RealInstanceId"`
 }
 
@@ -581,7 +581,7 @@ type MongodbShardInfo struct {
 	// 分片从节点数
 	SecondaryNum *uint64 `json:"SecondaryNum,omitempty" name:"SecondaryNum"`
 
-	// 分片物理id
+	// 分片物理ID
 	RealReplicaSetId *string `json:"RealReplicaSetId,omitempty" name:"RealReplicaSetId"`
 }
 
@@ -777,7 +777,7 @@ type SpecificationInfo struct {
 	Zone *string `json:"Zone,omitempty" name:"Zone"`
 
 	// 售卖规格信息
-	SpecItem []*SpecItem `json:"SpecItem,omitempty" name:"SpecItem" list`
+	SpecItems []*SpecItem `json:"SpecItems,omitempty" name:"SpecItems" list`
 }
 
 type TagInfo struct {

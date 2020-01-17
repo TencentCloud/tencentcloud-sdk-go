@@ -2218,6 +2218,31 @@ func (c *Client) ModifyProVersionRenewFlag(request *ModifyProVersionRenewFlagReq
     return
 }
 
+func NewOpenProVersionRequest() (request *OpenProVersionRequest) {
+    request = &OpenProVersionRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("yunjing", APIVersion, "OpenProVersion")
+    return
+}
+
+func NewOpenProVersionResponse() (response *OpenProVersionResponse) {
+    response = &OpenProVersionResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口 (OpenProVersion) 用于开通专业版。
+func (c *Client) OpenProVersion(request *OpenProVersionRequest) (response *OpenProVersionResponse, err error) {
+    if request == nil {
+        request = NewOpenProVersionRequest()
+    }
+    response = NewOpenProVersionResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewOpenProVersionPrepaidRequest() (request *OpenProVersionPrepaidRequest) {
     request = &OpenProVersionPrepaidRequest{
         BaseRequest: &tchttp.BaseRequest{},

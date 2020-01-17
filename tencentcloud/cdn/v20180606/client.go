@@ -43,6 +43,56 @@ func NewClient(credential *common.Credential, region string, clientProfile *prof
 }
 
 
+func NewAddCdnDomainRequest() (request *AddCdnDomainRequest) {
+    request = &AddCdnDomainRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cdn", APIVersion, "AddCdnDomain")
+    return
+}
+
+func NewAddCdnDomainResponse() (response *AddCdnDomainResponse) {
+    response = &AddCdnDomainResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// AddCdnDomain 用于新增内容分发网络加速域名。
+func (c *Client) AddCdnDomain(request *AddCdnDomainRequest) (response *AddCdnDomainResponse, err error) {
+    if request == nil {
+        request = NewAddCdnDomainRequest()
+    }
+    response = NewAddCdnDomainResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteCdnDomainRequest() (request *DeleteCdnDomainRequest) {
+    request = &DeleteCdnDomainRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cdn", APIVersion, "DeleteCdnDomain")
+    return
+}
+
+func NewDeleteCdnDomainResponse() (response *DeleteCdnDomainResponse) {
+    response = &DeleteCdnDomainResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DeleteCdnDomain 用于删除指定加速域名
+func (c *Client) DeleteCdnDomain(request *DeleteCdnDomainRequest) (response *DeleteCdnDomainResponse, err error) {
+    if request == nil {
+        request = NewDeleteCdnDomainRequest()
+    }
+    response = NewDeleteCdnDomainResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeCdnDataRequest() (request *DescribeCdnDataRequest) {
     request = &DescribeCdnDataRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -123,6 +173,56 @@ func (c *Client) DescribeCdnIp(request *DescribeCdnIpRequest) (response *Describ
         request = NewDescribeCdnIpRequest()
     }
     response = NewDescribeCdnIpResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeDomainsRequest() (request *DescribeDomainsRequest) {
+    request = &DescribeDomainsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cdn", APIVersion, "DescribeDomains")
+    return
+}
+
+func NewDescribeDomainsResponse() (response *DescribeDomainsResponse) {
+    response = &DescribeDomainsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeDomains 用于查询内容分发网络加速域名（含境内、境外）基本配置信息，包括项目ID、服务状态，业务类型、创建时间、更新时间等信息。
+func (c *Client) DescribeDomains(request *DescribeDomainsRequest) (response *DescribeDomainsResponse, err error) {
+    if request == nil {
+        request = NewDescribeDomainsRequest()
+    }
+    response = NewDescribeDomainsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeDomainsConfigRequest() (request *DescribeDomainsConfigRequest) {
+    request = &DescribeDomainsConfigRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cdn", APIVersion, "DescribeDomainsConfig")
+    return
+}
+
+func NewDescribeDomainsConfigResponse() (response *DescribeDomainsConfigResponse) {
+    response = &DescribeDomainsConfigResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeDomainsConfig 用于查询内容分发网络加速域名（含境内、境外）的所有配置信息。
+func (c *Client) DescribeDomainsConfig(request *DescribeDomainsConfigRequest) (response *DescribeDomainsConfigResponse, err error) {
+    if request == nil {
+        request = NewDescribeDomainsConfigRequest()
+    }
+    response = NewDescribeDomainsConfigResponse()
     err = c.Send(request, response)
     return
 }
@@ -316,6 +416,32 @@ func (c *Client) DescribeTrafficPackages(request *DescribeTrafficPackagesRequest
     return
 }
 
+func NewDescribeUrlViolationsRequest() (request *DescribeUrlViolationsRequest) {
+    request = &DescribeUrlViolationsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cdn", APIVersion, "DescribeUrlViolations")
+    return
+}
+
+func NewDescribeUrlViolationsResponse() (response *DescribeUrlViolationsResponse) {
+    response = &DescribeUrlViolationsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeUrlViolations 用于查询被 CDN 系统扫描到的域名违规 URL 列表及当前状态。
+// 对应内容分发网络控制台【图片鉴黄】页面。
+func (c *Client) DescribeUrlViolations(request *DescribeUrlViolationsRequest) (response *DescribeUrlViolationsResponse, err error) {
+    if request == nil {
+        request = NewDescribeUrlViolationsRequest()
+    }
+    response = NewDescribeUrlViolationsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDisableCachesRequest() (request *DisableCachesRequest) {
     request = &DisableCachesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -381,7 +507,7 @@ func NewGetDisableRecordsResponse() (response *GetDisableRecordsResponse) {
     return
 }
 
-// GetDisableRecords 用户查询资源禁用历史，及 URL 当前状态。（接口尚在内测中，暂未全量开放使用）
+// GetDisableRecords 用于查询资源禁用历史，及 URL 当前状态。（接口尚在内测中，暂未全量开放使用）
 func (c *Client) GetDisableRecords(request *GetDisableRecordsRequest) (response *GetDisableRecordsResponse, err error) {
     if request == nil {
         request = NewGetDisableRecordsRequest()
@@ -413,6 +539,8 @@ func NewListTopDataResponse() (response *ListTopDataResponse) {
 // + 依据总流量、总请求数对客户端运营商排序，从大至小返回运营商列表
 // + 依据总流量、峰值带宽、总请求数、平均命中率、2XX/3XX/4XX/5XX 状态码对域名排序，从大至小返回域名列表
 // + 依据总回源流量、回源峰值带宽、总回源请求数、平均回源失败率、2XX/3XX/4XX/5XX 回源状态码对域名排序，从大至小返回域名列表
+// 
+// 注意：仅支持 90 天内数据查询
 func (c *Client) ListTopData(request *ListTopDataRequest) (response *ListTopDataResponse, err error) {
     if request == nil {
         request = NewListTopDataRequest()
@@ -497,6 +625,108 @@ func (c *Client) PushUrlsCache(request *PushUrlsCacheRequest) (response *PushUrl
         request = NewPushUrlsCacheRequest()
     }
     response = NewPushUrlsCacheResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewStartCdnDomainRequest() (request *StartCdnDomainRequest) {
+    request = &StartCdnDomainRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cdn", APIVersion, "StartCdnDomain")
+    return
+}
+
+func NewStartCdnDomainResponse() (response *StartCdnDomainResponse) {
+    response = &StartCdnDomainResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// StartCdnDomain 用于启用已停用域名的加速服务
+func (c *Client) StartCdnDomain(request *StartCdnDomainRequest) (response *StartCdnDomainResponse, err error) {
+    if request == nil {
+        request = NewStartCdnDomainRequest()
+    }
+    response = NewStartCdnDomainResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewStopCdnDomainRequest() (request *StopCdnDomainRequest) {
+    request = &StopCdnDomainRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cdn", APIVersion, "StopCdnDomain")
+    return
+}
+
+func NewStopCdnDomainResponse() (response *StopCdnDomainResponse) {
+    response = &StopCdnDomainResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// StopCdnDomain 用于停止域名的加速服务。
+// 注意：停止加速服务后，访问至加速节点的请求将会直接返回 404。为避免对您的业务造成影响，请在停止加速服务前将解析切走。
+func (c *Client) StopCdnDomain(request *StopCdnDomainRequest) (response *StopCdnDomainResponse, err error) {
+    if request == nil {
+        request = NewStopCdnDomainRequest()
+    }
+    response = NewStopCdnDomainResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewUpdateDomainConfigRequest() (request *UpdateDomainConfigRequest) {
+    request = &UpdateDomainConfigRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cdn", APIVersion, "UpdateDomainConfig")
+    return
+}
+
+func NewUpdateDomainConfigResponse() (response *UpdateDomainConfigResponse) {
+    response = &UpdateDomainConfigResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// UpdateDomainConfig 用于修改内容分发网络加速域名配置信息
+// 注意：如果需要更新复杂类型的配置项，必须传递整个对象的所有属性，未传递的属性将使用默认值，建议通过查询接口获取配置属性后，直接修改后传递给本接口。Https配置由于证书的特殊性，更新时不用传递证书和密钥字段。
+func (c *Client) UpdateDomainConfig(request *UpdateDomainConfigRequest) (response *UpdateDomainConfigResponse, err error) {
+    if request == nil {
+        request = NewUpdateDomainConfigRequest()
+    }
+    response = NewUpdateDomainConfigResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewUpdatePayTypeRequest() (request *UpdatePayTypeRequest) {
+    request = &UpdatePayTypeRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cdn", APIVersion, "UpdatePayType")
+    return
+}
+
+func NewUpdatePayTypeResponse() (response *UpdatePayTypeResponse) {
+    response = &UpdatePayTypeResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口(UpdatePayType)用于修改账号计费类型，暂不支持月结用户或子账号修改。
+func (c *Client) UpdatePayType(request *UpdatePayTypeRequest) (response *UpdatePayTypeResponse, err error) {
+    if request == nil {
+        request = NewUpdatePayTypeRequest()
+    }
+    response = NewUpdatePayTypeResponse()
     err = c.Send(request, response)
     return
 }

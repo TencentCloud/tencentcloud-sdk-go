@@ -63,10 +63,12 @@ type DescribeItemsRequest struct {
 	// 条数，必须大于0，最大值为30
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 
-	// （电台/歌单）ID，CategoryId和CategoryCode两个必传1个
+	// （电台/歌单）ID，CategoryId和CategoryCode两个必传1个，可以从【获取分类内容（Station）列表接口】中获取。
+	// 链接地址：https://cloud.tencent.com/document/product/1155/40109
 	CategoryId *string `json:"CategoryId,omitempty" name:"CategoryId"`
 
-	// （电台/歌单）代码，CategoryId和CategoryCode两个必传1个
+	// （电台/歌单）ID，CategoryId和CategoryCode两个必传1个，可以从【获取分类内容（Station）列表接口】中获取。
+	// 链接地址：https://cloud.tencent.com/document/product/1155/40109
 	CategoryCode *string `json:"CategoryCode,omitempty" name:"CategoryCode"`
 }
 
@@ -315,6 +317,52 @@ type Music struct {
 	// Song fragment end.试听片段结束时间, 试听时长为auditionEnd-auditionBegin
 	// Unit :ms
 	AuditionEnd *uint64 `json:"AuditionEnd,omitempty" name:"AuditionEnd"`
+}
+
+type ReportDataRequest struct {
+	*tchttp.BaseRequest
+
+	// 上报数据
+	// 注:reportData为客户端压缩后的上报数据进行16进制转换的字符串数据
+	// 压缩说明：
+	// a) 上报的json格式字符串通过流的转换（ByteArrayInputStream, java.util.zip.GZIPOutputStream），获取到压缩后的字节数组。
+	// b) 将压缩后的字节数组转成16进制字符串。
+	// 
+	// reportData由两部分数据组成：
+	// 1）report_type（上报类型）
+	// 2）data（歌曲上报数据）
+	// 不同的report_type对应的data数据结构不一样。
+	// 
+	// 详细说明请参考文档reportdata.docx：
+	// https://github.com/ame-demo/doc
+	ReportData *string `json:"ReportData,omitempty" name:"ReportData"`
+}
+
+func (r *ReportDataRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ReportDataRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ReportDataResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ReportDataResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ReportDataResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
 }
 
 type Station struct {

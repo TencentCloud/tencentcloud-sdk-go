@@ -43,6 +43,36 @@ func NewClient(credential *common.Credential, region string, clientProfile *prof
 }
 
 
+func NewCreateAsrVocabRequest() (request *CreateAsrVocabRequest) {
+    request = &CreateAsrVocabRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("asr", APIVersion, "CreateAsrVocab")
+    return
+}
+
+func NewCreateAsrVocabResponse() (response *CreateAsrVocabResponse) {
+    response = &CreateAsrVocabResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 用户通过本接口进行热词表的创建。
+// <br>•   默认最多可创建30个热词表。
+// <br>•   每个热词表最多可添加128个词，每个词最长10个字，不能超出限制。
+// <br>•   热词表可以通过数组或者本地文件形式上传。
+// <br>•   本地文件必须为UTF-8编码格式，每行仅添加一个热词且不能包含标点和特殊字符。
+// <br>•   热词权重取值范围为[1,10]之间的整数，权重越大代表该词被识别出来的概率越大。
+func (c *Client) CreateAsrVocab(request *CreateAsrVocabRequest) (response *CreateAsrVocabResponse, err error) {
+    if request == nil {
+        request = NewCreateAsrVocabRequest()
+    }
+    response = NewCreateAsrVocabResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateRecTaskRequest() (request *CreateRecTaskRequest) {
     request = &CreateRecTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -74,6 +104,31 @@ func (c *Client) CreateRecTask(request *CreateRecTaskRequest) (response *CreateR
     return
 }
 
+func NewDeleteAsrVocabRequest() (request *DeleteAsrVocabRequest) {
+    request = &DeleteAsrVocabRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("asr", APIVersion, "DeleteAsrVocab")
+    return
+}
+
+func NewDeleteAsrVocabResponse() (response *DeleteAsrVocabResponse) {
+    response = &DeleteAsrVocabResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 用户通过本接口进行热词表的删除。
+func (c *Client) DeleteAsrVocab(request *DeleteAsrVocabRequest) (response *DeleteAsrVocabResponse, err error) {
+    if request == nil {
+        request = NewDeleteAsrVocabRequest()
+    }
+    response = NewDeleteAsrVocabResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeTaskStatusRequest() (request *DescribeTaskStatusRequest) {
     request = &DescribeTaskStatusRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -97,6 +152,31 @@ func (c *Client) DescribeTaskStatus(request *DescribeTaskStatusRequest) (respons
         request = NewDescribeTaskStatusRequest()
     }
     response = NewDescribeTaskStatusResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewGetAsrVocabRequest() (request *GetAsrVocabRequest) {
+    request = &GetAsrVocabRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("asr", APIVersion, "GetAsrVocab")
+    return
+}
+
+func NewGetAsrVocabResponse() (response *GetAsrVocabResponse) {
+    response = &GetAsrVocabResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 用户根据词表的ID可以获取对应的热词表信息
+func (c *Client) GetAsrVocab(request *GetAsrVocabRequest) (response *GetAsrVocabResponse, err error) {
+    if request == nil {
+        request = NewGetAsrVocabRequest()
+    }
+    response = NewGetAsrVocabResponse()
     err = c.Send(request, response)
     return
 }
@@ -127,6 +207,31 @@ func (c *Client) SentenceRecognition(request *SentenceRecognitionRequest) (respo
         request = NewSentenceRecognitionRequest()
     }
     response = NewSentenceRecognitionResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewUpdateAsrVocabRequest() (request *UpdateAsrVocabRequest) {
+    request = &UpdateAsrVocabRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("asr", APIVersion, "UpdateAsrVocab")
+    return
+}
+
+func NewUpdateAsrVocabResponse() (response *UpdateAsrVocabResponse) {
+    response = &UpdateAsrVocabResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 用户通过本接口进行对应的词表信息更新。
+func (c *Client) UpdateAsrVocab(request *UpdateAsrVocabRequest) (response *UpdateAsrVocabResponse, err error) {
+    if request == nil {
+        request = NewUpdateAsrVocabRequest()
+    }
+    response = NewUpdateAsrVocabResponse()
     err = c.Send(request, response)
     return
 }

@@ -98,16 +98,16 @@ func (r *AddLoginWhiteListResponse) FromJsonString(s string) error {
 type AddMachineTagRequest struct {
 	*tchttp.BaseRequest
 
-	// 云主机ID
+	// 云服务器ID
 	Quuid *string `json:"Quuid,omitempty" name:"Quuid"`
 
 	// 标签ID
 	TagId *uint64 `json:"TagId,omitempty" name:"TagId"`
 
-	// 主机地区
+	// 云服务器地区
 	MRegion *string `json:"MRegion,omitempty" name:"MRegion"`
 
-	// 主机地区类型(CVM|BM)
+	// 云服务器类型(CVM|BM)
 	MArea *string `json:"MArea,omitempty" name:"MArea"`
 }
 
@@ -292,6 +292,15 @@ type BruteAttack struct {
 
 	// 云镜客户端唯一标识UUID。
 	Uuid *string `json:"Uuid,omitempty" name:"Uuid"`
+
+	// 是否专业版。
+	IsProVersion *bool `json:"IsProVersion,omitempty" name:"IsProVersion"`
+
+	// 阻断状态。
+	BanStatus *string `json:"BanStatus,omitempty" name:"BanStatus"`
+
+	// 机器UUID
+	Quuid *string `json:"Quuid,omitempty" name:"Quuid"`
 }
 
 type ChargePrepaid struct {
@@ -362,7 +371,7 @@ type Component struct {
 
 	// 组件类型。
 	// <li>SYSTEM：系统组件</li>
-	// <li>WEB：WEB组件</li>
+	// <li>WEB：Web组件</li>
 	ComponentType *string `json:"ComponentType,omitempty" name:"ComponentType"`
 
 	// 组件名称。
@@ -384,7 +393,7 @@ type ComponentStatistics struct {
 	ComponentName *string `json:"ComponentName,omitempty" name:"ComponentName"`
 
 	// 组件类型。
-	// <li>WEB：web组件</li>
+	// <li>WEB：Web组件</li>
 	// <li>SYSTEM：系统组件</li>
 	ComponentType *string `json:"ComponentType,omitempty" name:"ComponentType"`
 
@@ -851,7 +860,7 @@ func (r *DeleteMalwaresResponse) FromJsonString(s string) error {
 type DeleteNonlocalLoginPlacesRequest struct {
 	*tchttp.BaseRequest
 
-	// 异地登录事件Id数组。
+	// 异地登录事件ID数组。
 	Ids []*uint64 `json:"Ids,omitempty" name:"Ids" list`
 }
 
@@ -1392,6 +1401,7 @@ type DescribeAttackLogsRequest struct {
 	// 过滤条件。
 	// <li>HttpMethod - String - 是否必填：否 - 攻击方法(POST|GET)</li>
 	// <li>MachineIp - String - 是否必填：否 - 主机内网IP</li>
+	// <li>DateRange - String - 是否必填：否 - 时间范围(存储最近3个月的数据)，如最近一个月["2019-11-17", "2019-12-17"]</li>
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
 }
 
@@ -4085,6 +4095,7 @@ type Machine struct {
 	// 主机状态。
 	// <li>OFFLINE: 离线  </li>
 	// <li>ONLINE: 在线</li>
+	// <li>MACHINE_STOPPED: 已关机</li>
 	MachineStatus *string `json:"MachineStatus,omitempty" name:"MachineStatus"`
 
 	// 云镜客户端唯一Uuid，若客户端长时间不在线将返回空字符。
@@ -4526,6 +4537,53 @@ func (r *OpenProVersionPrepaidResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type OpenProVersionRequest struct {
+	*tchttp.BaseRequest
+
+	// 云主机类型。
+	// <li>CVM：表示虚拟主机</li>
+	// <li>BM:  表示黑石物理机</li>
+	MachineType *string `json:"MachineType,omitempty" name:"MachineType"`
+
+	// 机器所属地域。
+	// 如：ap-guangzhou，ap-shanghai
+	MachineRegion *string `json:"MachineRegion,omitempty" name:"MachineRegion"`
+
+	// 主机唯一标识Uuid数组。
+	// 黑石的InstanceId，CVM的Uuid
+	Quuids []*string `json:"Quuids,omitempty" name:"Quuids" list`
+
+	// 活动ID。
+	ActivityId *uint64 `json:"ActivityId,omitempty" name:"ActivityId"`
+}
+
+func (r *OpenProVersionRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *OpenProVersionRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type OpenProVersionResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *OpenProVersionResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *OpenProVersionResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type Place struct {
 
 	// 城市 ID。
@@ -4932,7 +4990,7 @@ type SecurityTrend struct {
 type SeparateMalwaresRequest struct {
 	*tchttp.BaseRequest
 
-	// 木马事件Id数组。
+	// 木马事件ID数组。
 	Ids []*uint64 `json:"Ids,omitempty" name:"Ids" list`
 }
 
@@ -5184,7 +5242,7 @@ func (r *UntrustMaliciousRequestResponse) FromJsonString(s string) error {
 type UntrustMalwaresRequest struct {
 	*tchttp.BaseRequest
 
-	// 木马Id数组，单次最大处理不能超过200条。
+	// 木马ID数组，单次最大处理不能超过200条。
 	Ids []*uint64 `json:"Ids,omitempty" name:"Ids" list`
 }
 
@@ -5343,7 +5401,7 @@ type WeeklyReportVul struct {
 	VulName *string `json:"VulName,omitempty" name:"VulName"`
 
 	// 漏洞类型。
-	// <li> WEB : WEB漏洞</li>
+	// <li> WEB : Web漏洞</li>
 	// <li> SYSTEM :系统组件漏洞</li>
 	// <li> BASELINE : 安全基线</li>
 	VulType *string `json:"VulType,omitempty" name:"VulType"`

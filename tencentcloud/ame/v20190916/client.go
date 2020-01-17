@@ -142,3 +142,28 @@ func (c *Client) DescribeStations(request *DescribeStationsRequest) (response *D
     err = c.Send(request, response)
     return
 }
+
+func NewReportDataRequest() (request *ReportDataRequest) {
+    request = &ReportDataRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ame", APIVersion, "ReportData")
+    return
+}
+
+func NewReportDataResponse() (response *ReportDataResponse) {
+    response = &ReportDataResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 客户上报用户数据功能，为了更好的为用户提供优质服务
+func (c *Client) ReportData(request *ReportDataRequest) (response *ReportDataResponse, err error) {
+    if request == nil {
+        request = NewReportDataRequest()
+    }
+    response = NewReportDataResponse()
+    err = c.Send(request, response)
+    return
+}

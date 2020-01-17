@@ -20,6 +20,149 @@ import (
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
+type AddSignStatus struct {
+
+	// 签名Id。
+	SignId *uint64 `json:"SignId,omitempty" name:"SignId"`
+
+	// 签名申请Id。
+	SignApplyId *uint64 `json:"SignApplyId,omitempty" name:"SignApplyId"`
+}
+
+type AddSmsSignRequest struct {
+	*tchttp.BaseRequest
+
+	// 签名名称。
+	SignName *string `json:"SignName,omitempty" name:"SignName"`
+
+	// 签名类型。其中每种类型后面标注了其可选的 DocumentType（证明类型）：
+	// 0：公司（0，1，2，3）。
+	// 1：APP（0，1，2，3，4） 。
+	// 2：网站（0，1，2，3，5）。
+	// 3：公众号或者小程序（0，1，2，3，6）。
+	// 4：商标（7）。
+	// 5：政府/机关事业单位/其他机构（2，3）。
+	// 注：必须按照对应关系选择证明类型，否则会审核失败。
+	SignType *uint64 `json:"SignType,omitempty" name:"SignType"`
+
+	// 证明类型。其中：
+	// 0：三证合一。
+	// 1：企业营业执照。
+	// 2：组织机构代码证书。
+	// 3：社会信用代码证书。
+	// 4：应用后台管理截图(个人开发APP)。
+	// 5：网站备案后台截图(个人开发网站)。
+	// 6：小程序设置页面截图(个人认证小程序)。
+	// 7：商标注册书。
+	DocumentType *uint64 `json:"DocumentType,omitempty" name:"DocumentType"`
+
+	// 是否国际短信。其中：
+	// 0：表示国内短信。
+	// 1：表示海外短信。
+	International *uint64 `json:"International,omitempty" name:"International"`
+
+	// 签名用途。其中：
+	// 0：自用。
+	// 1：他用。
+	UsedMethod *uint64 `json:"UsedMethod,omitempty" name:"UsedMethod"`
+
+	// 签名对应的资质证明图片需先进行 base64 编码格式转换，将转换后的字符串去掉前缀`data:image/jpeg;base64,`再赋值给该参数。
+	ProofImage *string `json:"ProofImage,omitempty" name:"ProofImage"`
+
+	// 委托授权证明。选择 UsedMethod 为他用之后需要提交委托的授权证明。
+	// 图片需先进行 base64 编码格式转换，将转换后的字符串去掉前缀`data:image/jpeg;base64,`再赋值给该参数。
+	// 注：只有 UsedMethod 在选择为 1（他用）时，这个字段才会生效。
+	CommissionImage *string `json:"CommissionImage,omitempty" name:"CommissionImage"`
+
+	// 签名的申请备注。
+	Remark *string `json:"Remark,omitempty" name:"Remark"`
+}
+
+func (r *AddSmsSignRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *AddSmsSignRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type AddSmsSignResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 添加签名响应
+		AddSignStatus *AddSignStatus `json:"AddSignStatus,omitempty" name:"AddSignStatus"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *AddSmsSignResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *AddSmsSignResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type AddSmsTemplateRequest struct {
+	*tchttp.BaseRequest
+
+	// 模板名称。
+	TemplateName *string `json:"TemplateName,omitempty" name:"TemplateName"`
+
+	// 模板内容。
+	TemplateContent *string `json:"TemplateContent,omitempty" name:"TemplateContent"`
+
+	// 短信类型，0表示普通短信, 1表示营销短信。
+	SmsType *uint64 `json:"SmsType,omitempty" name:"SmsType"`
+
+	// 0表示国内短信，1表示国际/港澳台短信，默认为0。
+	International *uint64 `json:"International,omitempty" name:"International"`
+
+	// 模板备注，例如申请原因，使用场景等。
+	Remark *string `json:"Remark,omitempty" name:"Remark"`
+}
+
+func (r *AddSmsTemplateRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *AddSmsTemplateRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type AddSmsTemplateResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 添加短信模板响应包体
+		AddTemplateStatus *AddTemplateStatus `json:"AddTemplateStatus,omitempty" name:"AddTemplateStatus"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *AddSmsTemplateResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *AddSmsTemplateResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type AddTemplateStatus struct {
+
+	// 模板参数
+	TemplateId *string `json:"TemplateId,omitempty" name:"TemplateId"`
+}
+
 type CallbackStatusStatistics struct {
 
 	// 短信回执量统计。
@@ -100,6 +243,247 @@ func (r *CallbackStatusStatisticsResponse) ToJsonString() string {
 
 func (r *CallbackStatusStatisticsResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteSignStatus struct {
+
+	// 删除状态信息。
+	DeleteStatus *string `json:"DeleteStatus,omitempty" name:"DeleteStatus"`
+
+	// 删除时间，UNIX 时间戳（单位：秒）。
+	DeleteTime *uint64 `json:"DeleteTime,omitempty" name:"DeleteTime"`
+}
+
+type DeleteSmsSignRequest struct {
+	*tchttp.BaseRequest
+
+	// 待删除的签名 ID。
+	SignId *uint64 `json:"SignId,omitempty" name:"SignId"`
+}
+
+func (r *DeleteSmsSignRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteSmsSignRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteSmsSignResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 删除签名响应
+		DeleteSignStatus *DeleteSignStatus `json:"DeleteSignStatus,omitempty" name:"DeleteSignStatus"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DeleteSmsSignResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteSmsSignResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteSmsTemplateRequest struct {
+	*tchttp.BaseRequest
+
+	// 待删除的模板 ID。
+	TemplateId *uint64 `json:"TemplateId,omitempty" name:"TemplateId"`
+}
+
+func (r *DeleteSmsTemplateRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteSmsTemplateRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteSmsTemplateResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 删除模板响应
+		DeleteTemplateStatus *DeleteTemplateStatus `json:"DeleteTemplateStatus,omitempty" name:"DeleteTemplateStatus"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DeleteSmsTemplateResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteSmsTemplateResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteTemplateStatus struct {
+
+	// 删除状态信息。
+	DeleteStatus *string `json:"DeleteStatus,omitempty" name:"DeleteStatus"`
+
+	// 删除时间，UNIX 时间戳（单位：秒）。
+	DeleteTime *uint64 `json:"DeleteTime,omitempty" name:"DeleteTime"`
+}
+
+type ModifySignStatus struct {
+
+	// 签名Id
+	SignId *uint64 `json:"SignId,omitempty" name:"SignId"`
+
+	// 签名修改申请Id
+	SignApplyId *string `json:"SignApplyId,omitempty" name:"SignApplyId"`
+}
+
+type ModifySmsSignRequest struct {
+	*tchttp.BaseRequest
+
+	// 待修改的签名Id。
+	SignId *uint64 `json:"SignId,omitempty" name:"SignId"`
+
+	// 签名名称。
+	SignName *string `json:"SignName,omitempty" name:"SignName"`
+
+	// 签名类型。其中每种类型后面标注了其可选的 DocumentType（证明类型）：
+	// 0：公司（0，1，2，3）。
+	// 1：APP（0，1，2，3，4） 。
+	// 2：网站（0，1，2，3，5）。
+	// 3：公众号或者小程序（0，1，2，3，6）。
+	// 4：商标（7）。
+	// 5：政府/机关事业单位/其他机构（2，3）。
+	// 注：必须按照对应关系选择证明类型，否则会审核失败。
+	SignType *uint64 `json:"SignType,omitempty" name:"SignType"`
+
+	// 证明类型。其中：
+	// 0：三证合一。
+	// 1：企业营业执照。
+	// 2：组织机构代码证书。
+	// 3：社会信用代码证书。
+	// 4：应用后台管理截图(个人开发APP)。
+	// 5：网站备案后台截图(个人开发网站)。
+	// 6：小程序设置页面截图(个人认证小程序)。
+	// 7：商标注册书。
+	DocumentType *uint64 `json:"DocumentType,omitempty" name:"DocumentType"`
+
+	// 是否国际短信。其中：
+	// 0：表示国内短信。
+	// 1：表示海外短信。
+	International *uint64 `json:"International,omitempty" name:"International"`
+
+	// 签名用途。其中：
+	// 0：自用。
+	// 1：他用。
+	UsedMethod *uint64 `json:"UsedMethod,omitempty" name:"UsedMethod"`
+
+	// 签名对应的资质证明图片需先进行 base64 编码格式转换，将转换后的字符串去掉前缀`data:image/jpeg;base64,`再赋值给该参数。
+	ProofImage *string `json:"ProofImage,omitempty" name:"ProofImage"`
+
+	// 委托授权证明。选择 UsedMethod 为他用之后需要提交委托的授权证明。
+	// 图片需先进行 base64 编码格式转换，将转换后的字符串去掉前缀`data:image/jpeg;base64,`再赋值给该参数。
+	// 注：只有 UsedMethod 在选择为 1（他用）时，这个字段才会生效。
+	CommissionImage *string `json:"CommissionImage,omitempty" name:"CommissionImage"`
+
+	// 签名的申请备注。
+	Remark *string `json:"Remark,omitempty" name:"Remark"`
+}
+
+func (r *ModifySmsSignRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifySmsSignRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifySmsSignResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 修改签名响应
+		ModifySignStatus *ModifySignStatus `json:"ModifySignStatus,omitempty" name:"ModifySignStatus"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifySmsSignResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifySmsSignResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifySmsTemplateRequest struct {
+	*tchttp.BaseRequest
+
+	// 待修改的模板的模板 ID。
+	TemplateId *uint64 `json:"TemplateId,omitempty" name:"TemplateId"`
+
+	// 新的模板名称。
+	TemplateName *string `json:"TemplateName,omitempty" name:"TemplateName"`
+
+	// 新的模板内容。
+	TemplateContent *string `json:"TemplateContent,omitempty" name:"TemplateContent"`
+
+	// 短信类型，0表示普通短信, 1表示营销短信。
+	SmsType *uint64 `json:"SmsType,omitempty" name:"SmsType"`
+
+	// 0表示国内短信，1表示国际/港澳台短信，默认为0。
+	International *uint64 `json:"International,omitempty" name:"International"`
+
+	// 模板备注，例如申请原因，使用场景等。
+	Remark *string `json:"Remark,omitempty" name:"Remark"`
+}
+
+func (r *ModifySmsTemplateRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifySmsTemplateRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifySmsTemplateResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 修改模板参数响应
+		ModifyTemplateStatus *ModifyTemplateStatus `json:"ModifyTemplateStatus,omitempty" name:"ModifyTemplateStatus"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifySmsTemplateResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifySmsTemplateResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyTemplateStatus struct {
+
+	// 模板参数
+	TemplateId *uint64 `json:"TemplateId,omitempty" name:"TemplateId"`
 }
 
 type PullSmsReplyStatus struct {
@@ -345,7 +729,7 @@ type SendSmsRequest struct {
 	// 短信SdkAppid在 [短信控制台](https://console.cloud.tencent.com/sms/smslist)  添加应用后生成的实际SdkAppid，示例如1400006666。
 	SmsSdkAppid *string `json:"SmsSdkAppid,omitempty" name:"SmsSdkAppid"`
 
-	// 短信签名内容，使用 UTF-8 编码，必须填写已审核通过的签名，签名信息可登录 [短信控制台](https://console.cloud.tencent.com/sms/smslist)  查看。
+	// 短信签名内容，使用 UTF-8 编码，必须填写已审核通过的签名，签名信息可登录 [短信控制台](https://console.cloud.tencent.com/sms/smslist)  查看。注：国内短信为必填参数。
 	Sign *string `json:"Sign,omitempty" name:"Sign"`
 
 	// 模板参数，若无模板参数，则设置为空。

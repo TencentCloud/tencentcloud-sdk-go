@@ -356,6 +356,14 @@ type DataDisk struct {
 	// 数据盘快照ID。选择的数据盘快照大小需小于数据盘大小。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SnapshotId *string `json:"SnapshotId,omitempty" name:"SnapshotId"`
+
+	// 数据盘是否随子机销毁。取值范围：
+	// <li>TRUE：加密
+	// <li>FALSE：不加密<br>
+	// 默认取值：FALSE<br>
+	// 该参数目前仅用于 `RunInstances` 接口。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Encrypt *bool `json:"Encrypt,omitempty" name:"Encrypt"`
 }
 
 type DeleteDisasterRecoverGroupsRequest struct {
@@ -2878,11 +2886,14 @@ type Placement struct {
 	// 实例所属项目ID。该参数可以通过调用 [DescribeProject](/document/api/378/4400) 的返回值中的 projectId 字段来获取。不填为默认项目。
 	ProjectId *int64 `json:"ProjectId,omitempty" name:"ProjectId"`
 
-	// 实例所属的专用宿主机ID列表。如果您有购买专用宿主机并且指定了该参数，则您购买的实例就会随机的部署在这些专用宿主机上。
+	// 实例所属的专用宿主机ID列表，仅用于入参。如果您有购买专用宿主机并且指定了该参数，则您购买的实例就会随机的部署在这些专用宿主机上。
 	HostIds []*string `json:"HostIds,omitempty" name:"HostIds" list`
 
 	// 指定母机ip生产子机
 	HostIps []*string `json:"HostIps,omitempty" name:"HostIps" list`
+
+	// 实例所属的专用宿主机ID，仅用于出参。
+	HostId *string `json:"HostId,omitempty" name:"HostId"`
 }
 
 type Price struct {

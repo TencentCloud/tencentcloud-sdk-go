@@ -1018,6 +1018,10 @@ type DeployGroupInfo struct {
 
 	// 置放群组详细信息。
 	Description *string `json:"Description,omitempty" name:"Description"`
+
+	// 置放群组物理机型属性。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DevClass *string `json:"DevClass,omitempty" name:"DevClass"`
 }
 
 type DescribeAccountPrivilegesRequest struct {
@@ -2359,7 +2363,7 @@ func (r *DescribeRoGroupsResponse) FromJsonString(s string) error {
 type DescribeRollbackRangeTimeRequest struct {
 	*tchttp.BaseRequest
 
-	// 实例 ID 列表，单个实例Id的格式如：cdb-c1nl9rpv。与云数据库控制台页面中显示的实例 ID 相同。
+	// 实例 ID 列表，单个实例 ID 的格式如：cdb-c1nl9rpv。与云数据库控制台页面中显示的实例 ID 相同。
 	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds" list`
 }
 
@@ -3087,7 +3091,7 @@ type InstanceInfo struct {
 	// 自动续费标志，可能的返回值：0-未开通自动续费；1-已开通自动续费；2-已关闭自动续费
 	AutoRenew *int64 `json:"AutoRenew,omitempty" name:"AutoRenew"`
 
-	// 数据复制方式
+	// 数据复制方式。0 - 异步复制；1 - 半同步复制；2 - 强同步复制
 	ProtectMode *int64 `json:"ProtectMode,omitempty" name:"ProtectMode"`
 
 	// 只读组详细信息
@@ -3109,7 +3113,7 @@ type InstanceInfo struct {
 	// 实例到期时间
 	DeadlineTime *string `json:"DeadlineTime,omitempty" name:"DeadlineTime"`
 
-	// 可用区部署方式
+	// 可用区部署方式。可能的值为：0 - 单可用区；1 - 多可用区
 	DeployMode *int64 `json:"DeployMode,omitempty" name:"DeployMode"`
 
 	// 实例任务状态。0 - 没有任务 ,1 - 升级中,2 - 数据导入中,3 - 开放Slave中,4 - 外网访问开通中,5 - 批量操作执行中,6 - 回档中,7 - 外网访问关闭中,8 - 密码修改中,9 - 实例名修改中,10 - 重启中,12 - 自建迁移中,13 - 删除库表中,14 - 灾备实例创建同步中,15 - 升级待切换,16 - 升级切换中,17 - 升级切换完成
@@ -4344,7 +4348,7 @@ type RoGroupAttr struct {
 	// RO 组名称。
 	RoGroupName *string `json:"RoGroupName,omitempty" name:"RoGroupName"`
 
-	// RO 实例最大延迟阀值。单位为秒，最小值为 1。注意，RO 组必须设置了开启实例延迟剔除策略，该值才有效。
+	// RO 实例最大延迟阈值。单位为秒，最小值为 1。注意，RO 组必须设置了开启实例延迟剔除策略，该值才有效。
 	RoMaxDelayTime *int64 `json:"RoMaxDelayTime,omitempty" name:"RoMaxDelayTime"`
 
 	// 是否开启实例延迟剔除。支持的值包括：1 - 开启；0 - 不开启。注意，若设置开启实例延迟剔除，则必须设置延迟阈值（RoMaxDelayTime）参数。

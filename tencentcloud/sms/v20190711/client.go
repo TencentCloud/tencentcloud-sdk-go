@@ -43,6 +43,56 @@ func NewClient(credential *common.Credential, region string, clientProfile *prof
 }
 
 
+func NewAddSmsSignRequest() (request *AddSmsSignRequest) {
+    request = &AddSmsSignRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("sms", APIVersion, "AddSmsSign")
+    return
+}
+
+func NewAddSmsSignResponse() (response *AddSmsSignResponse) {
+    response = &AddSmsSignResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 添加短信签名
+func (c *Client) AddSmsSign(request *AddSmsSignRequest) (response *AddSmsSignResponse, err error) {
+    if request == nil {
+        request = NewAddSmsSignRequest()
+    }
+    response = NewAddSmsSignResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewAddSmsTemplateRequest() (request *AddSmsTemplateRequest) {
+    request = &AddSmsTemplateRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("sms", APIVersion, "AddSmsTemplate")
+    return
+}
+
+func NewAddSmsTemplateResponse() (response *AddSmsTemplateResponse) {
+    response = &AddSmsTemplateResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 添加短信模板
+func (c *Client) AddSmsTemplate(request *AddSmsTemplateRequest) (response *AddSmsTemplateResponse, err error) {
+    if request == nil {
+        request = NewAddSmsTemplateRequest()
+    }
+    response = NewAddSmsTemplateResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCallbackStatusStatisticsRequest() (request *CallbackStatusStatisticsRequest) {
     request = &CallbackStatusStatisticsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -64,6 +114,106 @@ func (c *Client) CallbackStatusStatistics(request *CallbackStatusStatisticsReque
         request = NewCallbackStatusStatisticsRequest()
     }
     response = NewCallbackStatusStatisticsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteSmsSignRequest() (request *DeleteSmsSignRequest) {
+    request = &DeleteSmsSignRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("sms", APIVersion, "DeleteSmsSign")
+    return
+}
+
+func NewDeleteSmsSignResponse() (response *DeleteSmsSignResponse) {
+    response = &DeleteSmsSignResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 删除短信签名
+func (c *Client) DeleteSmsSign(request *DeleteSmsSignRequest) (response *DeleteSmsSignResponse, err error) {
+    if request == nil {
+        request = NewDeleteSmsSignRequest()
+    }
+    response = NewDeleteSmsSignResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteSmsTemplateRequest() (request *DeleteSmsTemplateRequest) {
+    request = &DeleteSmsTemplateRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("sms", APIVersion, "DeleteSmsTemplate")
+    return
+}
+
+func NewDeleteSmsTemplateResponse() (response *DeleteSmsTemplateResponse) {
+    response = &DeleteSmsTemplateResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 删除短信模板
+func (c *Client) DeleteSmsTemplate(request *DeleteSmsTemplateRequest) (response *DeleteSmsTemplateResponse, err error) {
+    if request == nil {
+        request = NewDeleteSmsTemplateRequest()
+    }
+    response = NewDeleteSmsTemplateResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifySmsSignRequest() (request *ModifySmsSignRequest) {
+    request = &ModifySmsSignRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("sms", APIVersion, "ModifySmsSign")
+    return
+}
+
+func NewModifySmsSignResponse() (response *ModifySmsSignResponse) {
+    response = &ModifySmsSignResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 修改短信签名
+func (c *Client) ModifySmsSign(request *ModifySmsSignRequest) (response *ModifySmsSignResponse, err error) {
+    if request == nil {
+        request = NewModifySmsSignRequest()
+    }
+    response = NewModifySmsSignResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifySmsTemplateRequest() (request *ModifySmsTemplateRequest) {
+    request = &ModifySmsTemplateRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("sms", APIVersion, "ModifySmsTemplate")
+    return
+}
+
+func NewModifySmsTemplateResponse() (response *ModifySmsTemplateResponse) {
+    response = &ModifySmsTemplateResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 修改短信模板
+func (c *Client) ModifySmsTemplate(request *ModifySmsTemplateRequest) (response *ModifySmsTemplateResponse, err error) {
+    if request == nil {
+        request = NewModifySmsTemplateRequest()
+    }
+    response = NewModifySmsTemplateResponse()
     err = c.Send(request, response)
     return
 }

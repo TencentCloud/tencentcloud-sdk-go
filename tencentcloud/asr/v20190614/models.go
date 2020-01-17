@@ -20,13 +20,60 @@ import (
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
+type CreateAsrVocabRequest struct {
+	*tchttp.BaseRequest
+
+	// 热词表名称，长度在1-255之间
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 热词表描述，长度在0-1000之间
+	Description *string `json:"Description,omitempty" name:"Description"`
+
+	// 词权重数组，包含全部的热词和对应的权重。每个热词的长度不大于10，权重为[1,10]之间整数，数组长度不大于128
+	WordWeights []*HotWord `json:"WordWeights,omitempty" name:"WordWeights" list`
+
+	// 词权重文件（纯文本文件）的二进制base64编码，以行分隔，每行的格式为word|weight，即以英文符号|为分割，左边为词，右边为权重，如：你好|5。
+	// 当用户传此参数（参数长度大于0），即以此参数解析词权重，WordWeights会被忽略
+	WordWeightStr *string `json:"WordWeightStr,omitempty" name:"WordWeightStr"`
+}
+
+func (r *CreateAsrVocabRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateAsrVocabRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateAsrVocabResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 词表ID，可用于获取词表信息
+		VocabId *string `json:"VocabId,omitempty" name:"VocabId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateAsrVocabResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateAsrVocabResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type CreateRecTaskRequest struct {
 	*tchttp.BaseRequest
 
 	// 引擎模型类型。
-	// 8k_0：电话 8k 中文普通话通用，可用于双声道音频的识别；
-	// 8k_6：电话 8k 中文普通话话者分离，仅用于单声道；
-	// 16k_0：16k 中文普通话通用；
+	// 8k_zh：电话 8k 中文普通话通用，可用于双声道音频的识别；
+	// 8k_zh_s：电话 8k 中文普通话话者分离，仅用于单声道；
+	// 16k_zh：16k 中文普通话通用；
 	// 16k_en：16k 英语；
 	// 16k_ca：16k 粤语。
 	EngineModelType *string `json:"EngineModelType,omitempty" name:"EngineModelType"`
@@ -51,6 +98,9 @@ type CreateRecTaskRequest struct {
 
 	// 数据长度，当 SourceType 值为1时必须填写，为0可不写（此数据长度为数据未进行base64编码时的数据长度）。
 	DataLen *uint64 `json:"DataLen,omitempty" name:"DataLen"`
+
+	// 热词id。用于调用对应的热词表，如果在调用语音识别服务时，不进行单独的热词id设置，自动生效默认热词；如果进行了单独的热词id设置，那么将生效单独设置的热词id。
+	HotwordId *string `json:"HotwordId,omitempty" name:"HotwordId"`
 }
 
 func (r *CreateRecTaskRequest) ToJsonString() string {
@@ -80,6 +130,40 @@ func (r *CreateRecTaskResponse) ToJsonString() string {
 }
 
 func (r *CreateRecTaskResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteAsrVocabRequest struct {
+	*tchttp.BaseRequest
+
+	// 热词表Id
+	VocabId *string `json:"VocabId,omitempty" name:"VocabId"`
+}
+
+func (r *DeleteAsrVocabRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteAsrVocabRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteAsrVocabResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DeleteAsrVocabResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteAsrVocabResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -120,6 +204,70 @@ func (r *DescribeTaskStatusResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type GetAsrVocabRequest struct {
+	*tchttp.BaseRequest
+
+	// 热词表ID
+	VocabId *string `json:"VocabId,omitempty" name:"VocabId"`
+}
+
+func (r *GetAsrVocabRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *GetAsrVocabRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type GetAsrVocabResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 热词表名称
+		Name *string `json:"Name,omitempty" name:"Name"`
+
+		// 热词表描述
+		Description *string `json:"Description,omitempty" name:"Description"`
+
+		// 热词表ID
+		VocabId *string `json:"VocabId,omitempty" name:"VocabId"`
+
+		// 词权重列表
+		WordWeights []*HotWord `json:"WordWeights,omitempty" name:"WordWeights" list`
+
+		// 词表创建时间
+		CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+		// 词表更新时间
+		UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
+
+		// 热词表状态，1为默认状态即在识别时默认加载该热词表进行识别，0为初始状态
+		State *int64 `json:"State,omitempty" name:"State"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *GetAsrVocabResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *GetAsrVocabResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type HotWord struct {
+
+	// 热词
+	Word *string `json:"Word,omitempty" name:"Word"`
+
+	// 权重
+	Weight *int64 `json:"Weight,omitempty" name:"Weight"`
+}
+
 type SentenceRecognitionRequest struct {
 	*tchttp.BaseRequest
 
@@ -129,9 +277,9 @@ type SentenceRecognitionRequest struct {
 	// 子服务类型。2： 一句话识别。
 	SubServiceType *uint64 `json:"SubServiceType,omitempty" name:"SubServiceType"`
 
-	// 引擎类型。
-	// 8k：电话 8k 中文普通话通用；
-	// 16k：16k 中文普通话通用；
+	// 引擎模型类型。
+	// 8k_zh：电话 8k 中文普通话通用；
+	// 16k_zh：16k 中文普通话通用；
 	// 16k_en：16k 英语；
 	// 16k_ca：16k 粤语。
 	EngSerViceType *string `json:"EngSerViceType,omitempty" name:"EngSerViceType"`
@@ -153,6 +301,9 @@ type SentenceRecognitionRequest struct {
 
 	// 数据长度，单位为字节。当 SourceType 值为1（本地语音数据上传）时必须填写，当 SourceType 值为0（语音 URL上传）可不写（此数据长度为数据未进行base64编码时的数据长度）。
 	DataLen *int64 `json:"DataLen,omitempty" name:"DataLen"`
+
+	// 热词id。用于调用对应的热词表，如果在调用语音识别服务时，不进行单独的热词id设置，自动生效默认热词；如果进行了单独的热词id设置，那么将生效单独设置的热词id。
+	HotwordId *string `json:"HotwordId,omitempty" name:"HotwordId"`
 }
 
 func (r *SentenceRecognitionRequest) ToJsonString() string {
@@ -207,4 +358,54 @@ type TaskStatus struct {
 
 	// 失败原因说明。
 	ErrorMsg *string `json:"ErrorMsg,omitempty" name:"ErrorMsg"`
+}
+
+type UpdateAsrVocabRequest struct {
+	*tchttp.BaseRequest
+
+	// 热词表ID
+	VocabId *string `json:"VocabId,omitempty" name:"VocabId"`
+
+	// 热词表名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 词权重数组，包含全部的热词和对应的权重。每个热词的长度不大于10，权重为[1,10]之间整数，数组长度不大于128
+	WordWeights []*HotWord `json:"WordWeights,omitempty" name:"WordWeights" list`
+
+	// 词权重文件（纯文本文件）的二进制base64编码，以行分隔，每行的格式为word|weight，即以英文符号|为分割，左边为词，右边为权重，如：你好|5。
+	// 当用户传此参数（参数长度大于0），即以此参数解析词权重，WordWeights会被忽略
+	WordWeightStr *string `json:"WordWeightStr,omitempty" name:"WordWeightStr"`
+
+	// 热词表描述
+	Description *string `json:"Description,omitempty" name:"Description"`
+}
+
+func (r *UpdateAsrVocabRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *UpdateAsrVocabRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type UpdateAsrVocabResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 热词表ID
+		VocabId *string `json:"VocabId,omitempty" name:"VocabId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *UpdateAsrVocabResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *UpdateAsrVocabResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
 }
