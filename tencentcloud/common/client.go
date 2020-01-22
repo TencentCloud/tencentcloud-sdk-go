@@ -257,6 +257,11 @@ func (c *Client) WithHttpTransport(transport http.RoundTripper) *Client {
 	return c
 }
 
+func (c *Client) WithDebug(flag bool) *Client {
+	c.debug = flag
+	return c
+}
+
 func NewClientWithSecretId(secretId, secretKey, region string) (client *Client, err error) {
 	client = &Client{}
 	client.Init(region).WithSecretId(secretId, secretKey)
