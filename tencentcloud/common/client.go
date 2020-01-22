@@ -65,7 +65,7 @@ func (c *Client) sendWithSignatureV1(request tchttp.Request, response tchttp.Res
 		return err
 	}
 	if request.GetHttpMethod() == "POST" {
-		httpRequest.Header["Content-Type"] = []string{"application/x-www-form-urlencoded"}
+		httpRequest.Header.Set("Content-Type", "application/x-www-form-urlencoded")
 	}
 	if c.debug {
 		outbytes, err := httputil.DumpRequest(httpRequest, true)
