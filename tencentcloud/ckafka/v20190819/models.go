@@ -66,16 +66,12 @@ func (r *AclResponse) FromJsonString(s string) error {
 }
 
 type AppIdResponse struct {
-	*tchttp.BaseResponse
-	Response *struct {
+	// 符合要求的所有AppId数量
+	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
-		// 符合要求的所有AppId数量
-		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
-
-		// 符合要求的App Id列表
+	// 符合要求的App Id列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		AppIdList []*int64 `json:"AppIdList,omitempty" name:"AppIdList" list`
-	} `json:"Response"`
+	AppIdList []*int64 `json:"AppIdList,omitempty" name:"AppIdList" list`
 }
 
 func (r *AppIdResponse) ToJsonString() string {
@@ -139,40 +135,36 @@ type ConsumerGroup struct {
 }
 
 type ConsumerGroupResponse struct {
-	*tchttp.BaseResponse
-	Response *struct {
+	// 符合条件的消费组数量
+	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
-		// 符合条件的消费组数量
-		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
-
-		// 主题列表
+	// 主题列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		TopicList []*ConsumerGroupTopic `json:"TopicList,omitempty" name:"TopicList" list`
+	TopicList []*ConsumerGroupTopic `json:"TopicList,omitempty" name:"TopicList" list`
 
-		// 消费分组List
+	// 消费分组List
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		GroupList []*ConsumerGroup `json:"GroupList,omitempty" name:"GroupList" list`
+	GroupList []*ConsumerGroup `json:"GroupList,omitempty" name:"GroupList" list`
 
-		// 所有分区数量
+	// 所有分区数量
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		TotalPartition *int64 `json:"TotalPartition,omitempty" name:"TotalPartition"`
+	TotalPartition *int64 `json:"TotalPartition,omitempty" name:"TotalPartition"`
 
-		// 监控的分区列表
+	// 监控的分区列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		PartitionListForMonitor []*Partition `json:"PartitionListForMonitor,omitempty" name:"PartitionListForMonitor" list`
+	PartitionListForMonitor []*Partition `json:"PartitionListForMonitor,omitempty" name:"PartitionListForMonitor" list`
 
-		// 主题总数
+	// 主题总数
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		TotalTopic *int64 `json:"TotalTopic,omitempty" name:"TotalTopic"`
+	TotalTopic *int64 `json:"TotalTopic,omitempty" name:"TotalTopic"`
 
-		// 监控的主题列表
+	// 监控的主题列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		TopicListForMonitor []*ConsumerGroupTopic `json:"TopicListForMonitor,omitempty" name:"TopicListForMonitor" list`
+	TopicListForMonitor []*ConsumerGroupTopic `json:"TopicListForMonitor,omitempty" name:"TopicListForMonitor" list`
 
-		// 监控的组列表
+	// 监控的组列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		GroupListForMonitor []*Group `json:"GroupListForMonitor,omitempty" name:"GroupListForMonitor" list`
-	} `json:"Response"`
+	GroupListForMonitor []*Group `json:"GroupListForMonitor,omitempty" name:"GroupListForMonitor" list`
 }
 
 func (r *ConsumerGroupResponse) ToJsonString() string {
@@ -941,7 +933,7 @@ type DescribeInstanceAttributesResponse struct {
 	Response *struct {
 
 		// 实例属性返回结果对象
-		Result *InstanceAttributesResponse `json:"Result,omitempty" name:"Result"`
+		Result *InstanceAttributes `json:"Result,omitempty" name:"Result"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1088,7 +1080,7 @@ type DescribeTopicAttributesResponse struct {
 	Response *struct {
 
 		// 返回的结果对象
-		Result *TopicAttributesResponse `json:"Result,omitempty" name:"Result"`
+		Result *TopicAttributes `json:"Result,omitempty" name:"Result"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1274,32 +1266,28 @@ type GroupInfoMember struct {
 }
 
 type GroupInfoResponse struct {
-	*tchttp.BaseResponse
-	Response *struct {
+	// 错误码，正常为0
+	ErrorCode *string `json:"ErrorCode,omitempty" name:"ErrorCode"`
 
-		// 错误码，正常为0
-		ErrorCode *string `json:"ErrorCode,omitempty" name:"ErrorCode"`
-
-		// group 状态描述（常见的为 Empty、Stable、Dead 三种状态）：
+	// group 状态描述（常见的为 Empty、Stable、Dead 三种状态）：
 	// Dead：消费分组不存在
 	// Empty：消费分组，当前没有任何消费者订阅
 	// PreparingRebalance：消费分组处于 rebalance 状态
 	// CompletingRebalance：消费分组处于 rebalance 状态
 	// Stable：消费分组中各个消费者已经加入，处于稳定状态
-		State *string `json:"State,omitempty" name:"State"`
+	State *string `json:"State,omitempty" name:"State"`
 
-		// 消费分组选择的协议类型正常的消费者一般为 consumer 但有些系统采用了自己的协议如 kafka-connect 用的就是 connect。只有标准的 consumer 协议，本接口才知道具体的分配方式的格式，才能解析到具体的 partition 的分配情况
-		ProtocolType *string `json:"ProtocolType,omitempty" name:"ProtocolType"`
+	// 消费分组选择的协议类型正常的消费者一般为 consumer 但有些系统采用了自己的协议如 kafka-connect 用的就是 connect。只有标准的 consumer 协议，本接口才知道具体的分配方式的格式，才能解析到具体的 partition 的分配情况
+	ProtocolType *string `json:"ProtocolType,omitempty" name:"ProtocolType"`
 
-		// 消费者 partition 分配算法常见的有如下几种(Kafka 消费者 SDK 默认的选择项为 range)：range、 roundrobin、 sticky
-		Protocol *string `json:"Protocol,omitempty" name:"Protocol"`
+	// 消费者 partition 分配算法常见的有如下几种(Kafka 消费者 SDK 默认的选择项为 range)：range、 roundrobin、 sticky
+	Protocol *string `json:"Protocol,omitempty" name:"Protocol"`
 
-		// 仅当 state 为 Stable 且 protocol_type 为 consumer 时， 该数组才包含信息
-		Members []*GroupInfoMember `json:"Members,omitempty" name:"Members" list`
+	// 仅当 state 为 Stable 且 protocol_type 为 consumer 时， 该数组才包含信息
+	Members []*GroupInfoMember `json:"Members,omitempty" name:"Members" list`
 
-		// Kafka 消费分组
-		Group *string `json:"Group,omitempty" name:"Group"`
-	} `json:"Response"`
+	// Kafka 消费分组
+	Group *string `json:"Group,omitempty" name:"Group"`
 }
 
 func (r *GroupInfoResponse) ToJsonString() string {
@@ -1344,16 +1332,12 @@ type GroupOffsetPartition struct {
 }
 
 type GroupOffsetResponse struct {
-	*tchttp.BaseResponse
-	Response *struct {
+	// 符合调节的总结果数
+	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
-		// 符合调节的总结果数
-		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
-
-		// 该主题分区数组，其中每个元素为一个 json object
+	// 该主题分区数组，其中每个元素为一个 json object
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		TopicList []*GroupOffsetTopic `json:"TopicList,omitempty" name:"TopicList" list`
-	} `json:"Response"`
+	TopicList []*GroupOffsetTopic `json:"TopicList,omitempty" name:"TopicList" list`
 }
 
 func (r *GroupOffsetResponse) ToJsonString() string {
@@ -1414,102 +1398,98 @@ type Instance struct {
 	IfCommunity *bool `json:"IfCommunity,omitempty" name:"IfCommunity"`
 }
 
-type InstanceAttributesResponse struct {
-	*tchttp.BaseResponse
-	Response *struct {
+type InstanceAttributes struct {
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
-		// 实例ID
-		InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+	// 实例名称
+	InstanceName *string `json:"InstanceName,omitempty" name:"InstanceName"`
 
-		// 实例名称
-		InstanceName *string `json:"InstanceName,omitempty" name:"InstanceName"`
+	// 接入点 VIP 列表信息
+	VipList []*VipEntity `json:"VipList,omitempty" name:"VipList" list`
 
-		// 接入点 VIP 列表信息
-		VipList []*VipEntity `json:"VipList,omitempty" name:"VipList" list`
+	// 虚拟IP
+	Vip *string `json:"Vip,omitempty" name:"Vip"`
 
-		// 虚拟IP
-		Vip *string `json:"Vip,omitempty" name:"Vip"`
+	// 虚拟端口
+	Vport *string `json:"Vport,omitempty" name:"Vport"`
 
-		// 虚拟端口
-		Vport *string `json:"Vport,omitempty" name:"Vport"`
+	// 实例的状态。0：创建中，1：运行中，2：删除中
+	Status *int64 `json:"Status,omitempty" name:"Status"`
 
-		// 实例的状态。0：创建中，1：运行中，2：删除中
-		Status *int64 `json:"Status,omitempty" name:"Status"`
+	// 实例带宽，单位：Mbps
+	Bandwidth *int64 `json:"Bandwidth,omitempty" name:"Bandwidth"`
 
-		// 实例带宽，单位：Mbps
-		Bandwidth *int64 `json:"Bandwidth,omitempty" name:"Bandwidth"`
+	// 实例的存储大小，单位：GB
+	DiskSize *int64 `json:"DiskSize,omitempty" name:"DiskSize"`
 
-		// 实例的存储大小，单位：GB
-		DiskSize *int64 `json:"DiskSize,omitempty" name:"DiskSize"`
+	// 可用区
+	ZoneId *int64 `json:"ZoneId,omitempty" name:"ZoneId"`
 
-		// 可用区
-		ZoneId *int64 `json:"ZoneId,omitempty" name:"ZoneId"`
+	// VPC 的 ID，为空表示是基础网络
+	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
 
-		// VPC 的 ID，为空表示是基础网络
-		VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
+	// 子网 ID， 为空表示基础网络
+	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
 
-		// 子网 ID， 为空表示基础网络
-		SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
+	// 实例健康状态， 1：健康，2：告警，3：异常
+	Healthy *int64 `json:"Healthy,omitempty" name:"Healthy"`
 
-		// 实例健康状态， 1：健康，2：告警，3：异常
-		Healthy *int64 `json:"Healthy,omitempty" name:"Healthy"`
+	// 实例健康信息，当前会展示磁盘利用率，最大长度为256
+	HealthyMessage *string `json:"HealthyMessage,omitempty" name:"HealthyMessage"`
 
-		// 实例健康信息，当前会展示磁盘利用率，最大长度为256
-		HealthyMessage *string `json:"HealthyMessage,omitempty" name:"HealthyMessage"`
+	// 创建时间
+	CreateTime *uint64 `json:"CreateTime,omitempty" name:"CreateTime"`
 
-		// 创建时间
-		CreateTime *uint64 `json:"CreateTime,omitempty" name:"CreateTime"`
+	// 消息保存时间,单位为分钟
+	MsgRetentionTime *int64 `json:"MsgRetentionTime,omitempty" name:"MsgRetentionTime"`
 
-		// 消息保存时间,单位为分钟
-		MsgRetentionTime *int64 `json:"MsgRetentionTime,omitempty" name:"MsgRetentionTime"`
+	// 自动创建 Topic 配置， 若该字段为空，则表示未开启自动创建
+	Config *InstanceConfigDO `json:"Config,omitempty" name:"Config"`
 
-		// 自动创建 Topic 配置， 若该字段为空，则表示未开启自动创建
-		Config *InstanceConfigDO `json:"Config,omitempty" name:"Config"`
+	// 剩余创建分区数
+	RemainderPartitions *int64 `json:"RemainderPartitions,omitempty" name:"RemainderPartitions"`
 
-		// 剩余创建分区数
-		RemainderPartitions *int64 `json:"RemainderPartitions,omitempty" name:"RemainderPartitions"`
+	// 剩余创建主题数
+	RemainderTopics *int64 `json:"RemainderTopics,omitempty" name:"RemainderTopics"`
 
-		// 剩余创建主题数
-		RemainderTopics *int64 `json:"RemainderTopics,omitempty" name:"RemainderTopics"`
+	// 当前创建分区数
+	CreatedPartitions *int64 `json:"CreatedPartitions,omitempty" name:"CreatedPartitions"`
 
-		// 当前创建分区数
-		CreatedPartitions *int64 `json:"CreatedPartitions,omitempty" name:"CreatedPartitions"`
+	// 当前创建主题数
+	CreatedTopics *int64 `json:"CreatedTopics,omitempty" name:"CreatedTopics"`
 
-		// 当前创建主题数
-		CreatedTopics *int64 `json:"CreatedTopics,omitempty" name:"CreatedTopics"`
-
-		// 标签数组
+	// 标签数组
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		Tags []*Tag `json:"Tags,omitempty" name:"Tags" list`
+	Tags []*Tag `json:"Tags,omitempty" name:"Tags" list`
 
-		// 过期时间
+	// 过期时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		ExpireTime *uint64 `json:"ExpireTime,omitempty" name:"ExpireTime"`
+	ExpireTime *uint64 `json:"ExpireTime,omitempty" name:"ExpireTime"`
 
-		// 跨可用区
+	// 跨可用区
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		ZoneIds []*int64 `json:"ZoneIds,omitempty" name:"ZoneIds" list`
+	ZoneIds []*int64 `json:"ZoneIds,omitempty" name:"ZoneIds" list`
 
-		// kafka版本信息
+	// kafka版本信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		Version *string `json:"Version,omitempty" name:"Version"`
+	Version *string `json:"Version,omitempty" name:"Version"`
 
-		// 最大分组数
+	// 最大分组数
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		MaxGroupNum *int64 `json:"MaxGroupNum,omitempty" name:"MaxGroupNum"`
+	MaxGroupNum *int64 `json:"MaxGroupNum,omitempty" name:"MaxGroupNum"`
 
-		// 售卖类型
+	// 售卖类型
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		Cvm *int64 `json:"Cvm,omitempty" name:"Cvm"`
-	} `json:"Response"`
+	Cvm *int64 `json:"Cvm,omitempty" name:"Cvm"`
 }
 
-func (r *InstanceAttributesResponse) ToJsonString() string {
+func (r *InstanceAttributes) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
-func (r *InstanceAttributesResponse) FromJsonString(s string) error {
+func (r *InstanceAttributes) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -1949,43 +1929,39 @@ type Topic struct {
 	Note *string `json:"Note,omitempty" name:"Note"`
 }
 
-type TopicAttributesResponse struct {
-	*tchttp.BaseResponse
-	Response *struct {
+type TopicAttributes struct {
+	// 主题 ID
+	TopicId *string `json:"TopicId,omitempty" name:"TopicId"`
 
-		// 主题 ID
-		TopicId *string `json:"TopicId,omitempty" name:"TopicId"`
+	// 创建时间
+	CreateTime *int64 `json:"CreateTime,omitempty" name:"CreateTime"`
 
-		// 创建时间
-		CreateTime *int64 `json:"CreateTime,omitempty" name:"CreateTime"`
-
-		// 主题备注
+	// 主题备注
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		Note *string `json:"Note,omitempty" name:"Note"`
+	Note *string `json:"Note,omitempty" name:"Note"`
 
-		// 分区个数
-		PartitionNum *int64 `json:"PartitionNum,omitempty" name:"PartitionNum"`
+	// 分区个数
+	PartitionNum *int64 `json:"PartitionNum,omitempty" name:"PartitionNum"`
 
-		// IP 白名单开关，1：打开； 0：关闭
-		EnableWhiteList *int64 `json:"EnableWhiteList,omitempty" name:"EnableWhiteList"`
+	// IP 白名单开关，1：打开； 0：关闭
+	EnableWhiteList *int64 `json:"EnableWhiteList,omitempty" name:"EnableWhiteList"`
 
-		// IP 白名单列表
-		IpWhiteList []*string `json:"IpWhiteList,omitempty" name:"IpWhiteList" list`
+	// IP 白名单列表
+	IpWhiteList []*string `json:"IpWhiteList,omitempty" name:"IpWhiteList" list`
 
-		// topic 配置数组
-		Config *Config `json:"Config,omitempty" name:"Config"`
+	// topic 配置数组
+	Config *Config `json:"Config,omitempty" name:"Config"`
 
-		// 分区详情
-		Partitions []*TopicPartitionDO `json:"Partitions,omitempty" name:"Partitions" list`
-	} `json:"Response"`
+	// 分区详情
+	Partitions []*TopicPartitionDO `json:"Partitions,omitempty" name:"Partitions" list`
 }
 
-func (r *TopicAttributesResponse) ToJsonString() string {
+func (r *TopicAttributes) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
-func (r *TopicAttributesResponse) FromJsonString(s string) error {
+func (r *TopicAttributes) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -2032,16 +2008,12 @@ type TopicDetail struct {
 }
 
 type TopicDetailResponse struct {
-	*tchttp.BaseResponse
-	Response *struct {
-
-		// 返回的主题详情列表
+	// 返回的主题详情列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		TopicList []*TopicDetail `json:"TopicList,omitempty" name:"TopicList" list`
+	TopicList []*TopicDetail `json:"TopicList,omitempty" name:"TopicList" list`
 
-		// 符合条件的所有主题详情数量
-		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
-	} `json:"Response"`
+	// 符合条件的所有主题详情数量
+	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
 }
 
 func (r *TopicDetailResponse) ToJsonString() string {
