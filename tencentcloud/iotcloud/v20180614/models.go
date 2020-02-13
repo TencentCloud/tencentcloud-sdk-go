@@ -847,10 +847,10 @@ type DescribeDevicesRequest struct {
 	// 需要查看设备列表的产品 ID
 	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
 
-	// 分页偏移
+	// 偏移量，Offset从0开始
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
 
-	// 分页的大小，数值范围 10-100
+	// 分页的大小，数值范围 10-250
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 
 	// 设备固件版本号，若不带此参数会返回所有固件版本的设备
@@ -1043,7 +1043,7 @@ func (r *DescribeMultiDevicesResponse) FromJsonString(s string) error {
 type DescribeProductsRequest struct {
 	*tchttp.BaseRequest
 
-	// 分页偏移，Offset从0开始
+	// 偏移量，Offset从0开始
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
 
 	// 分页大小，当前页面中显示的最大数量，值范围 10-250。
@@ -1159,7 +1159,7 @@ func (r *DescribeTaskResponse) FromJsonString(s string) error {
 type DescribeTasksRequest struct {
 	*tchttp.BaseRequest
 
-	// 分页偏移，从0开始
+	// 偏移l量，从0开始
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
 
 	// 分页的大小，数值范围 1-250

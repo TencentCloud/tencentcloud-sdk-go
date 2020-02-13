@@ -588,6 +588,56 @@ func (c *Client) DescribeBackupDatabases(request *DescribeBackupDatabasesRequest
     return
 }
 
+func NewDescribeBackupOverviewRequest() (request *DescribeBackupOverviewRequest) {
+    request = &DescribeBackupOverviewRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cdb", APIVersion, "DescribeBackupOverview")
+    return
+}
+
+func NewDescribeBackupOverviewResponse() (response *DescribeBackupOverviewResponse) {
+    response = &DescribeBackupOverviewResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口(DescribeBackupOverview)用于查询用户的备份概览。返回用户当前备份总个数、备份总的占用容量、赠送的免费容量、计费容量（容量单位为字节）。
+func (c *Client) DescribeBackupOverview(request *DescribeBackupOverviewRequest) (response *DescribeBackupOverviewResponse, err error) {
+    if request == nil {
+        request = NewDescribeBackupOverviewRequest()
+    }
+    response = NewDescribeBackupOverviewResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeBackupSummariesRequest() (request *DescribeBackupSummariesRequest) {
+    request = &DescribeBackupSummariesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cdb", APIVersion, "DescribeBackupSummaries")
+    return
+}
+
+func NewDescribeBackupSummariesResponse() (response *DescribeBackupSummariesResponse) {
+    response = &DescribeBackupSummariesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口(DescribeBackupSummaries)用于查询备份的统计情况，返回以实例为维度的备份占用容量，以及每个实例的数据备份和日志备份的个数和容量（容量单位为字节）。
+func (c *Client) DescribeBackupSummaries(request *DescribeBackupSummariesRequest) (response *DescribeBackupSummariesResponse, err error) {
+    if request == nil {
+        request = NewDescribeBackupSummariesRequest()
+    }
+    response = NewDescribeBackupSummariesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeBackupTablesRequest() (request *DescribeBackupTablesRequest) {
     request = &DescribeBackupTablesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -636,6 +686,31 @@ func (c *Client) DescribeBackups(request *DescribeBackupsRequest) (response *Des
         request = NewDescribeBackupsRequest()
     }
     response = NewDescribeBackupsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeBinlogBackupOverviewRequest() (request *DescribeBinlogBackupOverviewRequest) {
+    request = &DescribeBinlogBackupOverviewRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cdb", APIVersion, "DescribeBinlogBackupOverview")
+    return
+}
+
+func NewDescribeBinlogBackupOverviewResponse() (response *DescribeBinlogBackupOverviewResponse) {
+    response = &DescribeBinlogBackupOverviewResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口(DescribeBinlogBackupOverview)用于查询用户在当前地域总的日志备份概览。
+func (c *Client) DescribeBinlogBackupOverview(request *DescribeBinlogBackupOverviewRequest) (response *DescribeBinlogBackupOverviewResponse, err error) {
+    if request == nil {
+        request = NewDescribeBinlogBackupOverviewRequest()
+    }
+    response = NewDescribeBinlogBackupOverviewResponse()
     err = c.Send(request, response)
     return
 }
@@ -913,6 +988,31 @@ func (c *Client) DescribeDBZoneConfig(request *DescribeDBZoneConfigRequest) (res
         request = NewDescribeDBZoneConfigRequest()
     }
     response = NewDescribeDBZoneConfigResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeDataBackupOverviewRequest() (request *DescribeDataBackupOverviewRequest) {
+    request = &DescribeDataBackupOverviewRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cdb", APIVersion, "DescribeDataBackupOverview")
+    return
+}
+
+func NewDescribeDataBackupOverviewResponse() (response *DescribeDataBackupOverviewResponse) {
+    response = &DescribeDataBackupOverviewResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口(DescribeDataBackupOverview)用于查询用户在当前地域总的数据备份概览。
+func (c *Client) DescribeDataBackupOverview(request *DescribeDataBackupOverviewRequest) (response *DescribeDataBackupOverviewResponse, err error) {
+    if request == nil {
+        request = NewDescribeDataBackupOverviewRequest()
+    }
+    response = NewDescribeDataBackupOverviewResponse()
     err = c.Send(request, response)
     return
 }

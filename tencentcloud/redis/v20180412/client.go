@@ -43,6 +43,31 @@ func NewClient(credential *common.Credential, region string, clientProfile *prof
 }
 
 
+func NewAssociateSecurityGroupsRequest() (request *AssociateSecurityGroupsRequest) {
+    request = &AssociateSecurityGroupsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("redis", APIVersion, "AssociateSecurityGroups")
+    return
+}
+
+func NewAssociateSecurityGroupsResponse() (response *AssociateSecurityGroupsResponse) {
+    response = &AssociateSecurityGroupsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口 (AssociateSecurityGroups) 用于绑定安全组到指定实例。
+func (c *Client) AssociateSecurityGroups(request *AssociateSecurityGroupsRequest) (response *AssociateSecurityGroupsResponse, err error) {
+    if request == nil {
+        request = NewAssociateSecurityGroupsRequest()
+    }
+    response = NewAssociateSecurityGroupsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCleanUpInstanceRequest() (request *CleanUpInstanceRequest) {
     request = &CleanUpInstanceRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -214,6 +239,31 @@ func (c *Client) DescribeBackupUrl(request *DescribeBackupUrlRequest) (response 
         request = NewDescribeBackupUrlRequest()
     }
     response = NewDescribeBackupUrlResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeDBSecurityGroupsRequest() (request *DescribeDBSecurityGroupsRequest) {
+    request = &DescribeDBSecurityGroupsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("redis", APIVersion, "DescribeDBSecurityGroups")
+    return
+}
+
+func NewDescribeDBSecurityGroupsResponse() (response *DescribeDBSecurityGroupsResponse) {
+    response = &DescribeDBSecurityGroupsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口(DescribeDBSecurityGroups)用于查询实例的安全组详情。
+func (c *Client) DescribeDBSecurityGroups(request *DescribeDBSecurityGroupsRequest) (response *DescribeDBSecurityGroupsResponse, err error) {
+    if request == nil {
+        request = NewDescribeDBSecurityGroupsRequest()
+    }
+    response = NewDescribeDBSecurityGroupsResponse()
     err = c.Send(request, response)
     return
 }
@@ -693,6 +743,31 @@ func (c *Client) DescribeProjectSecurityGroup(request *DescribeProjectSecurityGr
     return
 }
 
+func NewDescribeProjectSecurityGroupsRequest() (request *DescribeProjectSecurityGroupsRequest) {
+    request = &DescribeProjectSecurityGroupsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("redis", APIVersion, "DescribeProjectSecurityGroups")
+    return
+}
+
+func NewDescribeProjectSecurityGroupsResponse() (response *DescribeProjectSecurityGroupsResponse) {
+    response = &DescribeProjectSecurityGroupsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口(DescribeProjectSecurityGroups)用于查询项目的安全组详情。
+func (c *Client) DescribeProjectSecurityGroups(request *DescribeProjectSecurityGroupsRequest) (response *DescribeProjectSecurityGroupsResponse, err error) {
+    if request == nil {
+        request = NewDescribeProjectSecurityGroupsRequest()
+    }
+    response = NewDescribeProjectSecurityGroupsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeSlowLogRequest() (request *DescribeSlowLogRequest) {
     request = &DescribeSlowLogRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -843,6 +918,31 @@ func (c *Client) DisableReplicaReadonly(request *DisableReplicaReadonlyRequest) 
     return
 }
 
+func NewDisassociateSecurityGroupsRequest() (request *DisassociateSecurityGroupsRequest) {
+    request = &DisassociateSecurityGroupsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("redis", APIVersion, "DisassociateSecurityGroups")
+    return
+}
+
+func NewDisassociateSecurityGroupsResponse() (response *DisassociateSecurityGroupsResponse) {
+    response = &DisassociateSecurityGroupsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口(DisassociateSecurityGroups)用于安全组批量解绑实例。
+func (c *Client) DisassociateSecurityGroups(request *DisassociateSecurityGroupsRequest) (response *DisassociateSecurityGroupsResponse, err error) {
+    if request == nil {
+        request = NewDisassociateSecurityGroupsRequest()
+    }
+    response = NewDisassociateSecurityGroupsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewEnableReplicaReadonlyRequest() (request *EnableReplicaReadonlyRequest) {
     request = &EnableReplicaReadonlyRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -864,6 +964,81 @@ func (c *Client) EnableReplicaReadonly(request *EnableReplicaReadonlyRequest) (r
         request = NewEnableReplicaReadonlyRequest()
     }
     response = NewEnableReplicaReadonlyResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewInquiryPriceCreateInstanceRequest() (request *InquiryPriceCreateInstanceRequest) {
+    request = &InquiryPriceCreateInstanceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("redis", APIVersion, "InquiryPriceCreateInstance")
+    return
+}
+
+func NewInquiryPriceCreateInstanceResponse() (response *InquiryPriceCreateInstanceResponse) {
+    response = &InquiryPriceCreateInstanceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询新购实例价格
+func (c *Client) InquiryPriceCreateInstance(request *InquiryPriceCreateInstanceRequest) (response *InquiryPriceCreateInstanceResponse, err error) {
+    if request == nil {
+        request = NewInquiryPriceCreateInstanceRequest()
+    }
+    response = NewInquiryPriceCreateInstanceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewInquiryPriceRenewInstanceRequest() (request *InquiryPriceRenewInstanceRequest) {
+    request = &InquiryPriceRenewInstanceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("redis", APIVersion, "InquiryPriceRenewInstance")
+    return
+}
+
+func NewInquiryPriceRenewInstanceResponse() (response *InquiryPriceRenewInstanceResponse) {
+    response = &InquiryPriceRenewInstanceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询实例续费价格（包年包月）
+func (c *Client) InquiryPriceRenewInstance(request *InquiryPriceRenewInstanceRequest) (response *InquiryPriceRenewInstanceResponse, err error) {
+    if request == nil {
+        request = NewInquiryPriceRenewInstanceRequest()
+    }
+    response = NewInquiryPriceRenewInstanceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewInquiryPriceUpgradeInstanceRequest() (request *InquiryPriceUpgradeInstanceRequest) {
+    request = &InquiryPriceUpgradeInstanceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("redis", APIVersion, "InquiryPriceUpgradeInstance")
+    return
+}
+
+func NewInquiryPriceUpgradeInstanceResponse() (response *InquiryPriceUpgradeInstanceResponse) {
+    response = &InquiryPriceUpgradeInstanceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询实例扩容价格
+func (c *Client) InquiryPriceUpgradeInstance(request *InquiryPriceUpgradeInstanceRequest) (response *InquiryPriceUpgradeInstanceResponse, err error) {
+    if request == nil {
+        request = NewInquiryPriceUpgradeInstanceRequest()
+    }
+    response = NewInquiryPriceUpgradeInstanceResponse()
     err = c.Send(request, response)
     return
 }
@@ -939,6 +1114,31 @@ func (c *Client) ModifyAutoBackupConfig(request *ModifyAutoBackupConfigRequest) 
         request = NewModifyAutoBackupConfigRequest()
     }
     response = NewModifyAutoBackupConfigResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyDBInstanceSecurityGroupsRequest() (request *ModifyDBInstanceSecurityGroupsRequest) {
+    request = &ModifyDBInstanceSecurityGroupsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("redis", APIVersion, "ModifyDBInstanceSecurityGroups")
+    return
+}
+
+func NewModifyDBInstanceSecurityGroupsResponse() (response *ModifyDBInstanceSecurityGroupsResponse) {
+    response = &ModifyDBInstanceSecurityGroupsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口(ModifyDBInstanceSecurityGroups)用于修改实例绑定的安全组
+func (c *Client) ModifyDBInstanceSecurityGroups(request *ModifyDBInstanceSecurityGroupsRequest) (response *ModifyDBInstanceSecurityGroupsResponse, err error) {
+    if request == nil {
+        request = NewModifyDBInstanceSecurityGroupsRequest()
+    }
+    response = NewModifyDBInstanceSecurityGroupsResponse()
     err = c.Send(request, response)
     return
 }

@@ -386,6 +386,168 @@ func (r *DescribeBaseMetricsResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeBasicAlarmListAlarms struct {
+
+	// 该条告警的ID
+	Id *uint64 `json:"Id,omitempty" name:"Id"`
+
+	// 项目ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProjectId *int64 `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 项目名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProjectName *string `json:"ProjectName,omitempty" name:"ProjectName"`
+
+	// 告警状态ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *int64 `json:"Status,omitempty" name:"Status"`
+
+	// 告警状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AlarmStatus *string `json:"AlarmStatus,omitempty" name:"AlarmStatus"`
+
+	// 策略组ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GroupId *int64 `json:"GroupId,omitempty" name:"GroupId"`
+
+	// 策略组名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GroupName *string `json:"GroupName,omitempty" name:"GroupName"`
+
+	// 发生时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FirstOccurTime *string `json:"FirstOccurTime,omitempty" name:"FirstOccurTime"`
+
+	// 持续时间，单位s
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Duration *int64 `json:"Duration,omitempty" name:"Duration"`
+
+	// 结束时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LastOccurTime *string `json:"LastOccurTime,omitempty" name:"LastOccurTime"`
+
+	// 告警内容
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Content *string `json:"Content,omitempty" name:"Content"`
+
+	// 告警对象
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ObjName *string `json:"ObjName,omitempty" name:"ObjName"`
+
+	// 告警对象ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ObjId *string `json:"ObjId,omitempty" name:"ObjId"`
+
+	// 策略类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ViewName *string `json:"ViewName,omitempty" name:"ViewName"`
+
+	// VPC，只有CVM有
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Vpc *string `json:"Vpc,omitempty" name:"Vpc"`
+
+	// 指标ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MetricId *int64 `json:"MetricId,omitempty" name:"MetricId"`
+
+	// 指标名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MetricName *string `json:"MetricName,omitempty" name:"MetricName"`
+
+	// 告警类型，0表示指标告警，2表示产品事件告警，3表示平台事件告警
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AlarmType *int64 `json:"AlarmType,omitempty" name:"AlarmType"`
+
+	// 地域
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Region *string `json:"Region,omitempty" name:"Region"`
+
+	// 告警对象维度信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Dimensions *string `json:"Dimensions,omitempty" name:"Dimensions"`
+
+	// 通知方式
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NotifyWay []*string `json:"NotifyWay,omitempty" name:"NotifyWay" list`
+
+	// 所属实例组信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceGroup []*InstanceGroup `json:"InstanceGroup,omitempty" name:"InstanceGroup" list`
+}
+
+type DescribeBasicAlarmListRequest struct {
+	*tchttp.BaseRequest
+
+	// 接口模块名，当前取值monitor
+	Module *string `json:"Module,omitempty" name:"Module"`
+
+	// 起始时间，默认一天前的时间戳
+	StartTime *int64 `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 结束时间，默认当前时间戳
+	EndTime *int64 `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 每页返回的数量，默认20
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 页偏移量，默认0
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 根据发生时间排序，取值ASC或DESC
+	OccurTimeOrder *string `json:"OccurTimeOrder,omitempty" name:"OccurTimeOrder"`
+
+	// 根据项目ID过滤
+	ProjectIds []*int64 `json:"ProjectIds,omitempty" name:"ProjectIds" list`
+
+	// 根据策略类型过滤
+	ViewNames []*string `json:"ViewNames,omitempty" name:"ViewNames" list`
+
+	// 根据告警状态过滤
+	AlarmStatus []*int64 `json:"AlarmStatus,omitempty" name:"AlarmStatus" list`
+
+	// 根据告警对象过滤
+	ObjLike *string `json:"ObjLike,omitempty" name:"ObjLike"`
+
+	// 根据实例组ID过滤
+	InstanceGroupIds []*int64 `json:"InstanceGroupIds,omitempty" name:"InstanceGroupIds" list`
+}
+
+func (r *DescribeBasicAlarmListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeBasicAlarmListRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeBasicAlarmListResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 告警列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Alarms []*DescribeBasicAlarmListAlarms `json:"Alarms,omitempty" name:"Alarms" list`
+
+		// 总数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Total *int64 `json:"Total,omitempty" name:"Total"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeBasicAlarmListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeBasicAlarmListResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeBindingPolicyObjectListInstance struct {
 
 	// 对象唯一id
@@ -1333,6 +1495,17 @@ type Instance struct {
 
 	// 实例的维度组合
 	Dimensions []*Dimension `json:"Dimensions,omitempty" name:"Dimensions" list`
+}
+
+type InstanceGroup struct {
+
+	// 实例组ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceGroupId *int64 `json:"InstanceGroupId,omitempty" name:"InstanceGroupId"`
+
+	// 实例组名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceGroupName *string `json:"InstanceGroupName,omitempty" name:"InstanceGroupName"`
 }
 
 type MetricDatum struct {

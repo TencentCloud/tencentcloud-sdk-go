@@ -112,7 +112,7 @@ type CreateMigrateJobRequest struct {
 	// 源实例数据库类型，目前支持：mysql，redis，mongodb，postgresql，mariadb，percona。不同地域数据库类型的具体支持情况，请参考控制台创建迁移页面。
 	SrcDatabaseType *string `json:"SrcDatabaseType,omitempty" name:"SrcDatabaseType"`
 
-	// 源实例接入类型，值包括：extranet(外网),cvm(cvm自建实例),dcg(专线接入的实例),vpncloud(云vpn接入的实例),cdb(腾讯云数据库实例),ccn(云联网实例)
+	// 源实例接入类型，值包括：extranet(外网),cvm(CVM自建实例),dcg(专线接入的实例),vpncloud(云VPN接入的实例),cdb(腾讯云数据库实例),ccn(云联网实例)
 	SrcAccessType *string `json:"SrcAccessType,omitempty" name:"SrcAccessType"`
 
 	// 源实例信息，具体内容跟迁移任务类型相关
@@ -544,7 +544,7 @@ func (r *DescribeSyncJobsResponse) FromJsonString(s string) error {
 
 type DstInfo struct {
 
-	// 目标实例Id，如cdb-jd92ijd8
+	// 目标实例ID，如cdb-jd92ijd8
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
 	// 目标实例地域，如ap-guangzhou
@@ -701,13 +701,13 @@ type ModifyMigrateJobRequest struct {
 	// 迁移任务配置选项
 	MigrateOption *MigrateOption `json:"MigrateOption,omitempty" name:"MigrateOption"`
 
-	// 源实例接入类型，值包括：extranet(外网),cvm(cvm自建实例),dcg(专线接入的实例),vpncloud(云vpn接入的实例),vpnselfbuild(自建vpn接入的实例)，cdb(云上cdb实例)
+	// 源实例接入类型，值包括：extranet(外网),cvm(CVM自建实例),dcg(专线接入的实例),vpncloud(云VPN接入的实例),cdb(云上CDB实例)
 	SrcAccessType *string `json:"SrcAccessType,omitempty" name:"SrcAccessType"`
 
 	// 源实例信息，具体内容跟迁移任务类型相关
 	SrcInfo *SrcInfo `json:"SrcInfo,omitempty" name:"SrcInfo"`
 
-	// 目标实例接入类型，值包括：extranet(外网),cvm(cvm自建实例),dcg(专线接入的实例),vpncloud(云vpn接入的实例),vpnselfbuild(自建vpn接入的实例)，cdb(云上cdb实例). 目前只支持cdb.
+	// 目标实例接入类型，值包括：extranet(外网),cvm(CVM自建实例),dcg(专线接入的实例),vpncloud(云VPN接入的实例)，cdb(云上CDB实例). 目前只支持cdb.
 	DstAccessType *string `json:"DstAccessType,omitempty" name:"DstAccessType"`
 
 	// 目标实例信息, 其中目标实例地域不允许修改.
@@ -816,7 +816,7 @@ type SrcInfo struct {
 	// 阿里云RDS实例ID。源库是阿里云RDS5.6/5.6适用
 	RdsInstanceId *string `json:"RdsInstanceId,omitempty" name:"RdsInstanceId"`
 
-	// CVM实例短ID，格式如：ins-olgl39y8，与云主机控制台页面显示的实例ID相同。如果是CVM自建实例，需要传递此字段
+	// CVM实例短ID，格式如：ins-olgl39y8，与云服务器控制台页面显示的实例ID相同。如果是CVM自建实例，需要传递此字段
 	CvmInstanceId *string `json:"CvmInstanceId,omitempty" name:"CvmInstanceId"`
 
 	// 专线网关ID，格式如：dcg-0rxtqqxb
@@ -1034,7 +1034,7 @@ type SyncInstanceInfo struct {
 	// 地域英文名，如：ap-guangzhou
 	Region *string `json:"Region,omitempty" name:"Region"`
 
-	// 实例短Id
+	// 实例短ID
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 }
 

@@ -174,20 +174,29 @@ type BackupInfo struct {
 	// 外网下载地址
 	InternetUrl *string `json:"InternetUrl,omitempty" name:"InternetUrl"`
 
-	// 日志具体类型，可能的值有：logic - 逻辑冷备，physical - 物理冷备
+	// 日志具体类型。可能的值有 "logical": 逻辑冷备， "physical": 物理冷备。
 	Type *string `json:"Type,omitempty" name:"Type"`
 
 	// 备份子任务的ID，删除备份文件时使用
 	BackupId *int64 `json:"BackupId,omitempty" name:"BackupId"`
 
-	// 备份任务状态
+	// 备份任务状态。可能的值有 "SUCCESS": 备份成功， "FAILED": 备份失败， "RUNNING": 备份进行中。
 	Status *string `json:"Status,omitempty" name:"Status"`
 
 	// 备份任务的完成时间
 	FinishTime *string `json:"FinishTime,omitempty" name:"FinishTime"`
 
-	// 备份的创建者，可能的值：SYSTEM - 系统创建，Uin - 发起者Uin值
+	// （该值将废弃，不建议使用）备份的创建者，可能的值：SYSTEM - 系统创建，Uin - 发起者Uin值。
 	Creator *string `json:"Creator,omitempty" name:"Creator"`
+
+	// 备份任务的开始时间
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 备份方法。可能的值有 "full": 全量备份， "partial": 部分备份。
+	Method *string `json:"Method,omitempty" name:"Method"`
+
+	// 备份方式。可能的值有 "manual": 手动备份， "automatic": 自动备份。
+	Way *string `json:"Way,omitempty" name:"Way"`
 }
 
 type BackupItem struct {
@@ -197,6 +206,39 @@ type BackupItem struct {
 
 	// 需要备份的表名。 如果传该参数，表示备份该库中的指定表。如果不传该参数则备份该db库
 	Table *string `json:"Table,omitempty" name:"Table"`
+}
+
+type BackupSummaryItem struct {
+
+	// 实例ID。
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 该实例自动数据备份的个数。
+	AutoBackupCount *int64 `json:"AutoBackupCount,omitempty" name:"AutoBackupCount"`
+
+	// 该实例自动数据备份的容量。
+	AutoBackupVolume *int64 `json:"AutoBackupVolume,omitempty" name:"AutoBackupVolume"`
+
+	// 该实例手动数据备份的个数。
+	ManualBackupCount *int64 `json:"ManualBackupCount,omitempty" name:"ManualBackupCount"`
+
+	// 该实例手动数据备份的容量。
+	ManualBackupVolume *int64 `json:"ManualBackupVolume,omitempty" name:"ManualBackupVolume"`
+
+	// 该实例总的数据备份（包含自动备份和手动备份）个数。
+	DataBackupCount *int64 `json:"DataBackupCount,omitempty" name:"DataBackupCount"`
+
+	// 该实例总的数据备份容量。
+	DataBackupVolume *int64 `json:"DataBackupVolume,omitempty" name:"DataBackupVolume"`
+
+	// 该实例日志备份的个数。
+	BinlogBackupCount *int64 `json:"BinlogBackupCount,omitempty" name:"BinlogBackupCount"`
+
+	// 该实例日志备份的容量。
+	BinlogBackupVolume *int64 `json:"BinlogBackupVolume,omitempty" name:"BinlogBackupVolume"`
+
+	// 该实例的总备份（包含数据备份和日志备份）占用容量。
+	BackupVolume *int64 `json:"BackupVolume,omitempty" name:"BackupVolume"`
 }
 
 type BalanceRoGroupLoadRequest struct {
@@ -1268,6 +1310,104 @@ func (r *DescribeBackupDatabasesResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeBackupOverviewRequest struct {
+	*tchttp.BaseRequest
+
+	// 需要查询的云数据库产品类型，目前仅支持 "mysql"。
+	Product *string `json:"Product,omitempty" name:"Product"`
+}
+
+func (r *DescribeBackupOverviewRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeBackupOverviewRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeBackupOverviewResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 用户在当前地域备份的总个数（包含数据备份和日志备份）。
+		BackupCount *int64 `json:"BackupCount,omitempty" name:"BackupCount"`
+
+		// 用户在当前地域备份的总容量
+		BackupVolume *int64 `json:"BackupVolume,omitempty" name:"BackupVolume"`
+
+		// 用户在当前地域备份的计费容量，即超出赠送容量的部分。
+		BillingVolume *int64 `json:"BillingVolume,omitempty" name:"BillingVolume"`
+
+		// 用户在当前地域获得的赠送备份容量。
+		FreeVolume *int64 `json:"FreeVolume,omitempty" name:"FreeVolume"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeBackupOverviewResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeBackupOverviewResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeBackupSummariesRequest struct {
+	*tchttp.BaseRequest
+
+	// 需要查询的云数据库产品类型，目前仅支持 "mysql"。
+	Product *string `json:"Product,omitempty" name:"Product"`
+
+	// 分页查询数据的偏移量。
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 分页查询数据的条目限制，默认值为20。
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 指定按某一项排序，可选值包括： BackupVolume: 备份容量， DataBackupVolume: 数据备份容量， BinlogBackupVolume: 日志备份容量， AutoBackupVolume: 自动备份容量， ManualBackupVolume: 手动备份容量。
+	OrderBy *string `json:"OrderBy,omitempty" name:"OrderBy"`
+
+	// 指定排序方向，可选值包括： ASC: 正序， DESC: 逆序。
+	OrderDirection *string `json:"OrderDirection,omitempty" name:"OrderDirection"`
+}
+
+func (r *DescribeBackupSummariesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeBackupSummariesRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeBackupSummariesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 实例备份统计条目。
+		Items []*BackupSummaryItem `json:"Items,omitempty" name:"Items" list`
+
+		// 实例备份统计总条目数。
+		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeBackupSummariesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeBackupSummariesResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeBackupTablesRequest struct {
 	*tchttp.BaseRequest
 
@@ -1366,6 +1506,46 @@ func (r *DescribeBackupsResponse) ToJsonString() string {
 }
 
 func (r *DescribeBackupsResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeBinlogBackupOverviewRequest struct {
+	*tchttp.BaseRequest
+
+	// 需要查询的云数据库产品类型，目前仅支持 "mysql"。
+	Product *string `json:"Product,omitempty" name:"Product"`
+}
+
+func (r *DescribeBinlogBackupOverviewRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeBinlogBackupOverviewRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeBinlogBackupOverviewResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 总的日志备份容量（单位为字节）。
+		BinlogBackupVolume *int64 `json:"BinlogBackupVolume,omitempty" name:"BinlogBackupVolume"`
+
+		// 总的日志备份个数。
+		BinlogBackupCount *int64 `json:"BinlogBackupCount,omitempty" name:"BinlogBackupCount"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeBinlogBackupOverviewResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeBinlogBackupOverviewResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -1923,6 +2103,58 @@ func (r *DescribeDBZoneConfigResponse) ToJsonString() string {
 }
 
 func (r *DescribeDBZoneConfigResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeDataBackupOverviewRequest struct {
+	*tchttp.BaseRequest
+
+	// 需要查询的云数据库产品类型，目前仅支持 "mysql"。
+	Product *string `json:"Product,omitempty" name:"Product"`
+}
+
+func (r *DescribeDataBackupOverviewRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeDataBackupOverviewRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeDataBackupOverviewResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 当前地域的数据备份总容量（包含自动备份和手动备份，单位为字节）。
+		DataBackupVolume *int64 `json:"DataBackupVolume,omitempty" name:"DataBackupVolume"`
+
+		// 当前地域的数据备份总个数。
+		DataBackupCount *int64 `json:"DataBackupCount,omitempty" name:"DataBackupCount"`
+
+		// 当前地域的自动备份总容量。
+		AutoBackupVolume *int64 `json:"AutoBackupVolume,omitempty" name:"AutoBackupVolume"`
+
+		// 当前地域的自动备份总个数。
+		AutoBackupCount *int64 `json:"AutoBackupCount,omitempty" name:"AutoBackupCount"`
+
+		// 当前地域的手动备份总容量。
+		ManualBackupVolume *int64 `json:"ManualBackupVolume,omitempty" name:"ManualBackupVolume"`
+
+		// 当前地域的手动备份总个数。
+		ManualBackupCount *int64 `json:"ManualBackupCount,omitempty" name:"ManualBackupCount"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeDataBackupOverviewResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeDataBackupOverviewResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 

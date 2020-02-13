@@ -43,6 +43,32 @@ func NewClient(credential *common.Credential, region string, clientProfile *prof
 }
 
 
+func NewCorrectMultiImageRequest() (request *CorrectMultiImageRequest) {
+    request = &CorrectMultiImageRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ecc", APIVersion, "CorrectMultiImage")
+    return
+}
+
+func NewCorrectMultiImageResponse() (response *CorrectMultiImageResponse) {
+    response = &CorrectMultiImageResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// https://ecc.tencentcloudapi.com/?Action=CorrectMultiImage
+// 多图像识别批改接口
+func (c *Client) CorrectMultiImage(request *CorrectMultiImageRequest) (response *CorrectMultiImageResponse, err error) {
+    if request == nil {
+        request = NewCorrectMultiImageRequest()
+    }
+    response = NewCorrectMultiImageResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeTaskRequest() (request *DescribeTaskRequest) {
     request = &DescribeTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},

@@ -43,6 +43,31 @@ func NewClient(credential *common.Credential, region string, clientProfile *prof
 }
 
 
+func NewAddClusterInstancesRequest() (request *AddClusterInstancesRequest) {
+    request = &AddClusterInstancesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tsf", APIVersion, "AddClusterInstances")
+    return
+}
+
+func NewAddClusterInstancesResponse() (response *AddClusterInstancesResponse) {
+    response = &AddClusterInstancesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 添加云主机节点至TSF集群
+func (c *Client) AddClusterInstances(request *AddClusterInstancesRequest) (response *AddClusterInstancesResponse, err error) {
+    if request == nil {
+        request = NewAddClusterInstancesRequest()
+    }
+    response = NewAddClusterInstancesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewAddInstancesRequest() (request *AddInstancesRequest) {
     request = &AddInstancesRequest{
         BaseRequest: &tchttp.BaseRequest{},

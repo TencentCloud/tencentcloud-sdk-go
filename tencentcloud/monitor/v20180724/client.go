@@ -168,6 +168,31 @@ func (c *Client) DescribeBaseMetrics(request *DescribeBaseMetricsRequest) (respo
     return
 }
 
+func NewDescribeBasicAlarmListRequest() (request *DescribeBasicAlarmListRequest) {
+    request = &DescribeBasicAlarmListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("monitor", APIVersion, "DescribeBasicAlarmList")
+    return
+}
+
+func NewDescribeBasicAlarmListResponse() (response *DescribeBasicAlarmListResponse) {
+    response = &DescribeBasicAlarmListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 获取基础告警列表
+func (c *Client) DescribeBasicAlarmList(request *DescribeBasicAlarmListRequest) (response *DescribeBasicAlarmListResponse, err error) {
+    if request == nil {
+        request = NewDescribeBasicAlarmListRequest()
+    }
+    response = NewDescribeBasicAlarmListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeBindingPolicyObjectListRequest() (request *DescribeBindingPolicyObjectListRequest) {
     request = &DescribeBindingPolicyObjectListRequest{
         BaseRequest: &tchttp.BaseRequest{},

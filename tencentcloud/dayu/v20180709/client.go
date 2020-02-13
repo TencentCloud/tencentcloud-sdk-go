@@ -68,6 +68,31 @@ func (c *Client) CreateBasicDDoSAlarmThreshold(request *CreateBasicDDoSAlarmThre
     return
 }
 
+func NewCreateCCFrequencyRulesRequest() (request *CreateCCFrequencyRulesRequest) {
+    request = &CreateCCFrequencyRulesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("dayu", APIVersion, "CreateCCFrequencyRules")
+    return
+}
+
+func NewCreateCCFrequencyRulesResponse() (response *CreateCCFrequencyRulesResponse) {
+    response = &CreateCCFrequencyRulesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 添加CC防护的访问频率控制规则
+func (c *Client) CreateCCFrequencyRules(request *CreateCCFrequencyRulesRequest) (response *CreateCCFrequencyRulesResponse, err error) {
+    if request == nil {
+        request = NewCreateCCFrequencyRulesRequest()
+    }
+    response = NewCreateCCFrequencyRulesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateCCSelfDefinePolicyRequest() (request *CreateCCSelfDefinePolicyRequest) {
     request = &CreateCCSelfDefinePolicyRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -158,7 +183,7 @@ func NewCreateInstanceNameResponse() (response *CreateInstanceNameResponse) {
     return
 }
 
-// 资源实例重命名，支持独享包、共享包、高防IP、高防IP专业版、棋牌盾；
+// 资源实例重命名，支持独享包、共享包、高防IP、高防IP专业版；
 func (c *Client) CreateInstanceName(request *CreateInstanceNameRequest) (response *CreateInstanceNameResponse, err error) {
     if request == nil {
         request = NewCreateInstanceNameRequest()
@@ -214,31 +239,6 @@ func (c *Client) CreateL4Rules(request *CreateL4RulesRequest) (response *CreateL
         request = NewCreateL4RulesRequest()
     }
     response = NewCreateL4RulesResponse()
-    err = c.Send(request, response)
-    return
-}
-
-func NewCreateL7CCRuleRequest() (request *CreateL7CCRuleRequest) {
-    request = &CreateL7CCRuleRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    request.Init().WithApiInfo("dayu", APIVersion, "CreateL7CCRule")
-    return
-}
-
-func NewCreateL7CCRuleResponse() (response *CreateL7CCRuleResponse) {
-    response = &CreateL7CCRuleResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    }
-    return
-}
-
-// 支持读取，添加，删除7层CC自定义规则
-func (c *Client) CreateL7CCRule(request *CreateL7CCRuleRequest) (response *CreateL7CCRuleResponse, err error) {
-    if request == nil {
-        request = NewCreateL7CCRuleRequest()
-    }
-    response = NewCreateL7CCRuleResponse()
     err = c.Send(request, response)
     return
 }
@@ -364,6 +364,31 @@ func (c *Client) CreateUnblockIp(request *CreateUnblockIpRequest) (response *Cre
         request = NewCreateUnblockIpRequest()
     }
     response = NewCreateUnblockIpResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteCCFrequencyRulesRequest() (request *DeleteCCFrequencyRulesRequest) {
+    request = &DeleteCCFrequencyRulesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("dayu", APIVersion, "DeleteCCFrequencyRules")
+    return
+}
+
+func NewDeleteCCFrequencyRulesResponse() (response *DeleteCCFrequencyRulesResponse) {
+    response = &DeleteCCFrequencyRulesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 删除CC防护的访问频率控制规则
+func (c *Client) DeleteCCFrequencyRules(request *DeleteCCFrequencyRulesRequest) (response *DeleteCCFrequencyRulesResponse, err error) {
+    if request == nil {
+        request = NewDeleteCCFrequencyRulesRequest()
+    }
+    response = NewDeleteCCFrequencyRulesResponse()
     err = c.Send(request, response)
     return
 }
@@ -533,12 +558,37 @@ func NewDescribeBaradDataResponse() (response *DescribeBaradDataResponse) {
     return
 }
 
-// 为大禹子产品提供从巴拉多获取指标统计数据的接口
+// 为大禹子产品提供业务转发指标数据的接口
 func (c *Client) DescribeBaradData(request *DescribeBaradDataRequest) (response *DescribeBaradDataResponse, err error) {
     if request == nil {
         request = NewDescribeBaradDataRequest()
     }
     response = NewDescribeBaradDataResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeBasicCCThresholdRequest() (request *DescribeBasicCCThresholdRequest) {
+    request = &DescribeBasicCCThresholdRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("dayu", APIVersion, "DescribeBasicCCThreshold")
+    return
+}
+
+func NewDescribeBasicCCThresholdResponse() (response *DescribeBasicCCThresholdResponse) {
+    response = &DescribeBasicCCThresholdResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 获取基础防护CC防护阈值
+func (c *Client) DescribeBasicCCThreshold(request *DescribeBasicCCThresholdRequest) (response *DescribeBasicCCThresholdResponse, err error) {
+    if request == nil {
+        request = NewDescribeBasicCCThresholdRequest()
+    }
+    response = NewDescribeBasicCCThresholdResponse()
     err = c.Send(request, response)
     return
 }
@@ -614,6 +664,31 @@ func (c *Client) DescribeCCEvList(request *DescribeCCEvListRequest) (response *D
         request = NewDescribeCCEvListRequest()
     }
     response = NewDescribeCCEvListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeCCFrequencyRulesRequest() (request *DescribeCCFrequencyRulesRequest) {
+    request = &DescribeCCFrequencyRulesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("dayu", APIVersion, "DescribeCCFrequencyRules")
+    return
+}
+
+func NewDescribeCCFrequencyRulesResponse() (response *DescribeCCFrequencyRulesResponse) {
+    response = &DescribeCCFrequencyRulesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 获取CC防护的访问频率控制规则
+func (c *Client) DescribeCCFrequencyRules(request *DescribeCCFrequencyRulesRequest) (response *DescribeCCFrequencyRulesResponse, err error) {
+    if request == nil {
+        request = NewDescribeCCFrequencyRulesRequest()
+    }
+    response = NewDescribeCCFrequencyRulesResponse()
     err = c.Send(request, response)
     return
 }
@@ -739,6 +814,31 @@ func (c *Client) DescribeDDoSAlarmThreshold(request *DescribeDDoSAlarmThresholdR
         request = NewDescribeDDoSAlarmThresholdRequest()
     }
     response = NewDescribeDDoSAlarmThresholdResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeDDoSAttackIPRegionMapRequest() (request *DescribeDDoSAttackIPRegionMapRequest) {
+    request = &DescribeDDoSAttackIPRegionMapRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("dayu", APIVersion, "DescribeDDoSAttackIPRegionMap")
+    return
+}
+
+func NewDescribeDDoSAttackIPRegionMapResponse() (response *DescribeDDoSAttackIPRegionMapResponse) {
+    response = &DescribeDDoSAttackIPRegionMapResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 获取DDoS攻击源IP地域分布图，支持全球攻击分布和国内省份攻击分布；
+func (c *Client) DescribeDDoSAttackIPRegionMap(request *DescribeDDoSAttackIPRegionMapRequest) (response *DescribeDDoSAttackIPRegionMapResponse, err error) {
+    if request == nil {
+        request = NewDescribeDDoSAttackIPRegionMapRequest()
+    }
+    response = NewDescribeDDoSAttackIPRegionMapResponse()
     err = c.Send(request, response)
     return
 }
@@ -1283,7 +1383,7 @@ func NewDescribePackIndexResponse() (response *DescribePackIndexResponse) {
     return
 }
 
-// 获取产品总览统计，支持高防包、高防IP、高防IP专业版、棋牌盾
+// 获取产品总览统计，支持高防包、高防IP、高防IP专业版；
 func (c *Client) DescribePackIndex(request *DescribePackIndexRequest) (response *DescribePackIndexResponse, err error) {
     if request == nil {
         request = NewDescribePackIndexRequest()
@@ -1458,7 +1558,7 @@ func NewDescribeSourceIpSegmentResponse() (response *DescribeSourceIpSegmentResp
     return
 }
 
-// 获取回源IP段，支持的产品：高防IP，高防IP专业版，棋牌盾；
+// 获取回源IP段，支持的产品：高防IP，高防IP专业版；
 func (c *Client) DescribeSourceIpSegment(request *DescribeSourceIpSegmentRequest) (response *DescribeSourceIpSegmentResponse, err error) {
     if request == nil {
         request = NewDescribeSourceIpSegmentRequest()
@@ -1614,6 +1714,56 @@ func (c *Client) ModifyCCAlarmThreshold(request *ModifyCCAlarmThresholdRequest) 
         request = NewModifyCCAlarmThresholdRequest()
     }
     response = NewModifyCCAlarmThresholdResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyCCFrequencyRulesRequest() (request *ModifyCCFrequencyRulesRequest) {
+    request = &ModifyCCFrequencyRulesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("dayu", APIVersion, "ModifyCCFrequencyRules")
+    return
+}
+
+func NewModifyCCFrequencyRulesResponse() (response *ModifyCCFrequencyRulesResponse) {
+    response = &ModifyCCFrequencyRulesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 修改CC防护的访问频率控制规则
+func (c *Client) ModifyCCFrequencyRules(request *ModifyCCFrequencyRulesRequest) (response *ModifyCCFrequencyRulesResponse, err error) {
+    if request == nil {
+        request = NewModifyCCFrequencyRulesRequest()
+    }
+    response = NewModifyCCFrequencyRulesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyCCFrequencyRulesStatusRequest() (request *ModifyCCFrequencyRulesStatusRequest) {
+    request = &ModifyCCFrequencyRulesStatusRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("dayu", APIVersion, "ModifyCCFrequencyRulesStatus")
+    return
+}
+
+func NewModifyCCFrequencyRulesStatusResponse() (response *ModifyCCFrequencyRulesStatusResponse) {
+    response = &ModifyCCFrequencyRulesStatusResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 开启或关闭CC防护的访问频率控制规则
+func (c *Client) ModifyCCFrequencyRulesStatus(request *ModifyCCFrequencyRulesStatusRequest) (response *ModifyCCFrequencyRulesStatusResponse, err error) {
+    if request == nil {
+        request = NewModifyCCFrequencyRulesStatusRequest()
+    }
+    response = NewModifyCCFrequencyRulesStatusResponse()
     err = c.Send(request, response)
     return
 }

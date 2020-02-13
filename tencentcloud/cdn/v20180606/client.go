@@ -93,6 +93,31 @@ func (c *Client) DeleteCdnDomain(request *DeleteCdnDomainRequest) (response *Del
     return
 }
 
+func NewDescribeBillingDataRequest() (request *DescribeBillingDataRequest) {
+    request = &DescribeBillingDataRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cdn", APIVersion, "DescribeBillingData")
+    return
+}
+
+func NewDescribeBillingDataResponse() (response *DescribeBillingDataResponse) {
+    response = &DescribeBillingDataResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeBillingData 用于查询实际计费数据明细。
+func (c *Client) DescribeBillingData(request *DescribeBillingDataRequest) (response *DescribeBillingDataResponse, err error) {
+    if request == nil {
+        request = NewDescribeBillingDataRequest()
+    }
+    response = NewDescribeBillingDataResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeCdnDataRequest() (request *DescribeCdnDataRequest) {
     request = &DescribeCdnDataRequest{
         BaseRequest: &tchttp.BaseRequest{},

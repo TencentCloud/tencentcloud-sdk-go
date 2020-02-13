@@ -531,7 +531,7 @@ type DBPrivilegeModifyInfo struct {
 
 type DBRemark struct {
 
-	// 据库名
+	// 数据库名称
 	Name *string `json:"Name,omitempty" name:"Name"`
 
 	// 备注信息

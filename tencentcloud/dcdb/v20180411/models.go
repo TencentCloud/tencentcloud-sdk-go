@@ -104,7 +104,7 @@ type CloseDBExtranetAccessResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 异步任务Id，可通过 DescribeFlow 查询任务状态。
+		// 异步任务ID，可通过 DescribeFlow 查询任务状态。
 		FlowId *int64 `json:"FlowId,omitempty" name:"FlowId"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -221,7 +221,7 @@ type CreateAccountResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 实例Id，透传入参。
+		// 实例ID，透传入参。
 		InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
 		// 用户名，透传入参。
@@ -271,7 +271,7 @@ type CreateDCDBInstanceRequest struct {
 	// 实例分片个数，可选范围2-8，可以通过升级实例进行新增分片到最多64个分片。
 	ShardCount *int64 `json:"ShardCount,omitempty" name:"ShardCount"`
 
-	// 欲购买实例的数量，目前只支持购买1个实例
+	// 欲购买实例的数量
 	Count *int64 `json:"Count,omitempty" name:"Count"`
 
 	// 项目 ID，可以通过查看项目列表获取，不传则关联到默认项目
@@ -295,6 +295,12 @@ type CreateDCDBInstanceRequest struct {
 
 	// 代金券ID列表，目前仅支持指定一张代金券。
 	VoucherIds []*string `json:"VoucherIds,omitempty" name:"VoucherIds" list`
+
+	// 安全组id
+	SecurityGroupId *string `json:"SecurityGroupId,omitempty" name:"SecurityGroupId"`
+
+	// 实例名称， 可以通过该字段自主的设置实例的名字
+	InstanceName *string `json:"InstanceName,omitempty" name:"InstanceName"`
 }
 
 func (r *CreateDCDBInstanceRequest) ToJsonString() string {
@@ -374,7 +380,7 @@ type DCDBInstanceInfo struct {
 	// 实例名称
 	InstanceName *string `json:"InstanceName,omitempty" name:"InstanceName"`
 
-	// APPID
+	// AppID
 	AppId *int64 `json:"AppId,omitempty" name:"AppId"`
 
 	// 项目ID
@@ -437,16 +443,16 @@ type DCDBInstanceInfo struct {
 	// 临时实例标记，0 为非临时实例
 	IsTmp *int64 `json:"IsTmp,omitempty" name:"IsTmp"`
 
-	// 独享集群Id，为空表示非独享集群实例
+	// 独享集群ID，为空表示非独享集群实例
 	ExclusterId *string `json:"ExclusterId,omitempty" name:"ExclusterId"`
 
-	// 字符串型的私有网络Id
+	// 字符串型的私有网络ID
 	UniqueVpcId *string `json:"UniqueVpcId,omitempty" name:"UniqueVpcId"`
 
-	// 字符串型的私有网络子网Id
+	// 字符串型的私有网络子网ID
 	UniqueSubnetId *string `json:"UniqueSubnetId,omitempty" name:"UniqueSubnetId"`
 
-	// 数字实例Id（过时字段，请勿依赖该值）
+	// 数字实例ID（过时字段，请勿依赖该值）
 	Id *uint64 `json:"Id,omitempty" name:"Id"`
 
 	// 外网访问的域名，公网可解析
@@ -458,7 +464,7 @@ type DCDBInstanceInfo struct {
 	// 外网端口
 	WanPort *int64 `json:"WanPort,omitempty" name:"WanPort"`
 
-	// 产品类型 Id（过时字段，请勿依赖该值）
+	// 产品类型 ID（过时字段，请勿依赖该值）
 	Pid *int64 `json:"Pid,omitempty" name:"Pid"`
 
 	// 实例最后更新时间，格式为 2006-01-02 15:04:05
@@ -545,6 +551,18 @@ type DCDBShardInfo struct {
 
 	// Proxy版本
 	ProxyVersion *string `json:"ProxyVersion,omitempty" name:"ProxyVersion"`
+
+	// 付费模型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Paymode *string `json:"Paymode,omitempty" name:"Paymode"`
+
+	// 分片的主可用区
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ShardMasterZone *string `json:"ShardMasterZone,omitempty" name:"ShardMasterZone"`
+
+	// 分片的从可用区列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ShardSlaveZones []*string `json:"ShardSlaveZones,omitempty" name:"ShardSlaveZones" list`
 }
 
 type Database struct {
@@ -677,7 +695,7 @@ type DescribeAccountPrivilegesResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 实例Id
+		// 实例ID
 		InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
 		// 权限列表。
@@ -970,7 +988,7 @@ type DescribeDCDBPriceRequest struct {
 	// 欲新购实例的可用区ID。
 	Zone *string `json:"Zone,omitempty" name:"Zone"`
 
-	// 欲购买实例的数量，目前只支持购买1个实例
+	// 欲购买实例的数量，目前支持购买1-10个实例
 	Count *int64 `json:"Count,omitempty" name:"Count"`
 
 	// 欲购买的时长，单位：月。
@@ -990,6 +1008,9 @@ type DescribeDCDBPriceRequest struct {
 
 	// 实例分片个数，可选范围2-8，可以通过升级实例进行新增分片到最多64个分片。
 	ShardCount *int64 `json:"ShardCount,omitempty" name:"ShardCount"`
+
+	// 付费类型。postpaid：按量付费   prepaid：预付费
+	Paymode *string `json:"Paymode,omitempty" name:"Paymode"`
 }
 
 func (r *DescribeDCDBPriceRequest) ToJsonString() string {
@@ -1108,7 +1129,7 @@ type DescribeDCDBShardsRequest struct {
 	// 实例ID，形如：dcdbt-ow728lmc。
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
-	// 分片Id列表。
+	// 分片ID列表。
 	ShardInstanceIds []*string `json:"ShardInstanceIds,omitempty" name:"ShardInstanceIds" list`
 
 	// 偏移量，默认为 0
@@ -1565,7 +1586,7 @@ func (r *GrantAccountPrivilegesResponse) FromJsonString(s string) error {
 type InitDCDBInstancesRequest struct {
 	*tchttp.BaseRequest
 
-	// 待初始化的实例Id列表，形如：dcdbt-ow728lmc，可以通过 DescribeDCDBInstances 查询实例详情获得。
+	// 待初始化的实例ID列表，形如：dcdbt-ow728lmc，可以通过 DescribeDCDBInstances 查询实例详情获得。
 	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds" list`
 
 	// 参数列表。本接口的可选值为：character_set_server（字符集，必传），lower_case_table_names（表名大小写敏感，必传，0 - 敏感；1-不敏感），innodb_page_size（innodb数据页，默认16K），sync_mode（同步模式：0 - 异步； 1 - 强同步；2 - 强同步可退化。默认为强同步）。
@@ -1585,7 +1606,7 @@ type InitDCDBInstancesResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 异步任务Id，可通过 DescribeFlow 查询任务状态。
+		// 异步任务ID，可通过 DescribeFlow 查询任务状态。
 		FlowIds []*uint64 `json:"FlowIds,omitempty" name:"FlowIds" list`
 
 		// 透传入参。
@@ -1803,7 +1824,7 @@ type OpenDBExtranetAccessResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 异步任务Id，可通过 DescribeFlow 查询任务状态。
+		// 异步任务ID，可通过 DescribeFlow 查询任务状态。
 		FlowId *int64 `json:"FlowId,omitempty" name:"FlowId"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。

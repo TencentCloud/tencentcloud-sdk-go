@@ -50,10 +50,10 @@ type AIAnalysisTemplateItem struct {
 	// 智能精彩集锦任务控制参数。
 	HighlightConfigure *HighlightsConfigureInfo `json:"HighlightConfigure,omitempty" name:"HighlightConfigure"`
 
-	// 模板创建时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+	// 模板创建时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
 	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
 
-	// 模板最后修改时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+	// 模板最后修改时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
 	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
 }
 
@@ -103,10 +103,10 @@ type AIRecognitionTemplateItem struct {
 	// 截图时间间隔，单位：秒。
 	ScreenshotInterval *float64 `json:"ScreenshotInterval,omitempty" name:"ScreenshotInterval"`
 
-	// 模板创建时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+	// 模板创建时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
 	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
 
-	// 模板最后修改时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+	// 模板最后修改时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
 	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
 }
 
@@ -179,10 +179,10 @@ type AdaptiveDynamicStreamingTemplate struct {
 	// <li>1：是。</li>
 	DisableHigherVideoResolution *uint64 `json:"DisableHigherVideoResolution,omitempty" name:"DisableHigherVideoResolution"`
 
-	// 模板创建时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+	// 模板创建时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
 	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
 
-	// 模板最后修改时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+	// 模板最后修改时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
 	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
 }
 
@@ -388,6 +388,9 @@ type AiContentReviewResult struct {
 	// <li>Porn.Ocr：Ocr 文字鉴黄</li>
 	// <li>Political.Asr：Asr 文字鉴政</li>
 	// <li>Political.Ocr：Ocr 文字鉴政</li>
+	// <li>Terrorism.Ocr：Ocr 文字鉴恐</li>
+	// <li>Prohibited.Asr：Asr 文字鉴违禁</li>
+	// <li>Prohibited.Ocr：Ocr 文字鉴违禁</li>
 	Type *string `json:"Type,omitempty" name:"Type"`
 
 	// 视频内容审核智能画面鉴黄任务的查询结果，当任务类型为 Porn 时有效。
@@ -417,6 +420,18 @@ type AiContentReviewResult struct {
 	// 视频内容审核 Ocr 文字鉴政任务的查询结果，当任务类型为 Political.Ocr 时有效。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PoliticalOcrTask *AiReviewTaskPoliticalOcrResult `json:"PoliticalOcrTask,omitempty" name:"PoliticalOcrTask"`
+
+	// 视频内容审核 Ocr 文字鉴恐任务的查询结果，当任务类型为 Terrorism.Ocr 时有效。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TerrorismOcrTask *AiReviewTaskTerrorismOcrResult `json:"TerrorismOcrTask,omitempty" name:"TerrorismOcrTask"`
+
+	// 视频内容审核 Asr 文字鉴违禁任务的查询结果，当任务类型为 Prohibited.Asr 时有效。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProhibitedAsrTask *AiReviewTaskProhibitedAsrResult `json:"ProhibitedAsrTask,omitempty" name:"ProhibitedAsrTask"`
+
+	// 视频内容审核 Ocr 文字鉴违禁任务的查询结果，当任务类型为 Prohibited.Ocr 时有效。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProhibitedOcrTask *AiReviewTaskProhibitedOcrResult `json:"ProhibitedOcrTask,omitempty" name:"ProhibitedOcrTask"`
 }
 
 type AiContentReviewTaskInput struct {
@@ -918,18 +933,15 @@ type AiReviewPoliticalAsrTaskInput struct {
 type AiReviewPoliticalAsrTaskOutput struct {
 
 	// Asr 文字涉政、敏感评分，分值为0到100。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Confidence *float64 `json:"Confidence,omitempty" name:"Confidence"`
 
 	// Asr 文字涉政、敏感结果建议，取值范围：
 	// <li>pass。</li>
 	// <li>review。</li>
 	// <li>block。</li>
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Suggestion *string `json:"Suggestion,omitempty" name:"Suggestion"`
 
 	// Asr 文字有涉政、敏感嫌疑的视频片段列表。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SegmentSet []*MediaContentReviewAsrTextSegmentItem `json:"SegmentSet,omitempty" name:"SegmentSet" list`
 }
 
@@ -951,7 +963,6 @@ type AiReviewPoliticalOcrTaskOutput struct {
 	Suggestion *string `json:"Suggestion,omitempty" name:"Suggestion"`
 
 	// Ocr 文字有涉政、敏感嫌疑的视频片段列表。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SegmentSet []*MediaContentReviewOcrTextSegmentItem `json:"SegmentSet,omitempty" name:"SegmentSet" list`
 }
 
@@ -994,18 +1005,15 @@ type AiReviewPornAsrTaskInput struct {
 type AiReviewPornAsrTaskOutput struct {
 
 	// Asr 文字涉黄评分，分值为0到100。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Confidence *float64 `json:"Confidence,omitempty" name:"Confidence"`
 
 	// Asr 文字涉黄结果建议，取值范围：
 	// <li>pass。</li>
 	// <li>review。</li>
 	// <li>block。</li>
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Suggestion *string `json:"Suggestion,omitempty" name:"Suggestion"`
 
 	// Asr 文字有涉黄嫌疑的视频片段列表。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SegmentSet []*MediaContentReviewAsrTextSegmentItem `json:"SegmentSet,omitempty" name:"SegmentSet" list`
 }
 
@@ -1018,18 +1026,15 @@ type AiReviewPornOcrTaskInput struct {
 type AiReviewPornOcrTaskOutput struct {
 
 	// Ocr 文字涉黄评分，分值为0到100。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Confidence *float64 `json:"Confidence,omitempty" name:"Confidence"`
 
 	// Ocr 文字涉黄结果建议，取值范围：
 	// <li>pass。</li>
 	// <li>review。</li>
 	// <li>block。</li>
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Suggestion *string `json:"Suggestion,omitempty" name:"Suggestion"`
 
 	// Ocr 文字有涉黄嫌疑的视频片段列表。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SegmentSet []*MediaContentReviewOcrTextSegmentItem `json:"SegmentSet,omitempty" name:"SegmentSet" list`
 }
 
@@ -1063,6 +1068,48 @@ type AiReviewPornTaskOutput struct {
 	// 有涉黄嫌疑的视频片段列表。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SegmentSet []*MediaContentReviewSegmentItem `json:"SegmentSet,omitempty" name:"SegmentSet" list`
+}
+
+type AiReviewProhibitedAsrTaskInput struct {
+
+	// 鉴违禁模板 ID。
+	Definition *uint64 `json:"Definition,omitempty" name:"Definition"`
+}
+
+type AiReviewProhibitedAsrTaskOutput struct {
+
+	// Asr 文字涉违禁评分，分值为0到100。
+	Confidence *float64 `json:"Confidence,omitempty" name:"Confidence"`
+
+	// Asr 文字涉违禁结果建议，取值范围：
+	// <li>pass。</li>
+	// <li>review。</li>
+	// <li>block。</li>
+	Suggestion *string `json:"Suggestion,omitempty" name:"Suggestion"`
+
+	// Asr 文字有涉违禁嫌疑的视频片段列表。
+	SegmentSet []*MediaContentReviewAsrTextSegmentItem `json:"SegmentSet,omitempty" name:"SegmentSet" list`
+}
+
+type AiReviewProhibitedOcrTaskInput struct {
+
+	// 鉴违禁模板 ID。
+	Definition *uint64 `json:"Definition,omitempty" name:"Definition"`
+}
+
+type AiReviewProhibitedOcrTaskOutput struct {
+
+	// Ocr 文字涉违禁评分，分值为0到100。
+	Confidence *float64 `json:"Confidence,omitempty" name:"Confidence"`
+
+	// Ocr 文字涉违禁结果建议，取值范围：
+	// <li>pass。</li>
+	// <li>review。</li>
+	// <li>block。</li>
+	Suggestion *string `json:"Suggestion,omitempty" name:"Suggestion"`
+
+	// Ocr 文字有涉违禁嫌疑的视频片段列表。
+	SegmentSet []*MediaContentReviewOcrTextSegmentItem `json:"SegmentSet,omitempty" name:"SegmentSet" list`
 }
 
 type AiReviewTaskPoliticalAsrResult struct {
@@ -1208,6 +1255,72 @@ type AiReviewTaskPornResult struct {
 	Output *AiReviewPornTaskOutput `json:"Output,omitempty" name:"Output"`
 }
 
+type AiReviewTaskProhibitedAsrResult struct {
+
+	// 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 错误码，0 表示成功，其他值表示失败：
+	// <li>40000：输入参数不合法，请检查输入参数；</li>
+	// <li>60000：源文件错误（如视频数据损坏），请确认源文件是否正常；</li>
+	// <li>70000：内部服务错误，建议重试。</li>
+	ErrCode *int64 `json:"ErrCode,omitempty" name:"ErrCode"`
+
+	// 错误信息。
+	Message *string `json:"Message,omitempty" name:"Message"`
+
+	// 内容审核 Asr 文字鉴违禁任务输入。
+	Input *AiReviewProhibitedAsrTaskInput `json:"Input,omitempty" name:"Input"`
+
+	// 内容审核 Asr 文字鉴违禁任务输出。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Output *AiReviewProhibitedAsrTaskOutput `json:"Output,omitempty" name:"Output"`
+}
+
+type AiReviewTaskProhibitedOcrResult struct {
+
+	// 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 错误码，0 表示成功，其他值表示失败：
+	// <li>40000：输入参数不合法，请检查输入参数；</li>
+	// <li>60000：源文件错误（如视频数据损坏），请确认源文件是否正常；</li>
+	// <li>70000：内部服务错误，建议重试。</li>
+	ErrCode *int64 `json:"ErrCode,omitempty" name:"ErrCode"`
+
+	// 错误信息。
+	Message *string `json:"Message,omitempty" name:"Message"`
+
+	// 内容审核 Ocr 文字鉴违禁任务输入。
+	Input *AiReviewProhibitedOcrTaskInput `json:"Input,omitempty" name:"Input"`
+
+	// 内容审核 Ocr 文字鉴违禁任务输出。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Output *AiReviewProhibitedOcrTaskOutput `json:"Output,omitempty" name:"Output"`
+}
+
+type AiReviewTaskTerrorismOcrResult struct {
+
+	// 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 错误码，0 表示成功，其他值表示失败：
+	// <li>40000：输入参数不合法，请检查输入参数；</li>
+	// <li>60000：源文件错误（如视频数据损坏），请确认源文件是否正常；</li>
+	// <li>70000：内部服务错误，建议重试。</li>
+	ErrCode *int64 `json:"ErrCode,omitempty" name:"ErrCode"`
+
+	// 错误信息。
+	Message *string `json:"Message,omitempty" name:"Message"`
+
+	// 内容审核 Ocr 文字鉴恐任务输入。
+	Input *AiReviewTerrorismOcrTaskInput `json:"Input,omitempty" name:"Input"`
+
+	// 内容审核 Ocr 文字鉴恐任务输出。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Output *AiReviewTerrorismOcrTaskOutput `json:"Output,omitempty" name:"Output"`
+}
+
 type AiReviewTaskTerrorismResult struct {
 
 	// 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
@@ -1230,6 +1343,27 @@ type AiReviewTaskTerrorismResult struct {
 	// 内容审核鉴恐任务输出。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Output *AiReviewTerrorismTaskOutput `json:"Output,omitempty" name:"Output"`
+}
+
+type AiReviewTerrorismOcrTaskInput struct {
+
+	// 鉴恐模板 ID。
+	Definition *uint64 `json:"Definition,omitempty" name:"Definition"`
+}
+
+type AiReviewTerrorismOcrTaskOutput struct {
+
+	// Ocr 文字涉恐评分，分值为0到100。
+	Confidence *float64 `json:"Confidence,omitempty" name:"Confidence"`
+
+	// Ocr 文字涉恐结果建议，取值范围：
+	// <li>pass。</li>
+	// <li>review。</li>
+	// <li>block。</li>
+	Suggestion *string `json:"Suggestion,omitempty" name:"Suggestion"`
+
+	// Ocr 文字有涉恐嫌疑的视频片段列表。
+	SegmentSet []*MediaContentReviewOcrTextSegmentItem `json:"SegmentSet,omitempty" name:"SegmentSet" list`
 }
 
 type AiReviewTerrorismTaskInput struct {
@@ -1328,10 +1462,10 @@ type AiSamplePerson struct {
 	// 应用场景。
 	UsageSet []*string `json:"UsageSet,omitempty" name:"UsageSet" list`
 
-	// 创建时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+	// 创建时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
 	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
 
-	// 最后修改时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+	// 最后修改时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
 	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
 }
 
@@ -1355,10 +1489,10 @@ type AiSampleWord struct {
 	// 关键词应用场景。
 	UsageSet []*string `json:"UsageSet,omitempty" name:"UsageSet" list`
 
-	// 创建时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+	// 创建时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
 	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
 
-	// 最后修改时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+	// 最后修改时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
 	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
 }
 
@@ -1432,10 +1566,10 @@ type AnimatedGraphicsTemplate struct {
 	// 图片质量。
 	Quality *float64 `json:"Quality,omitempty" name:"Quality"`
 
-	// 模板创建时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+	// 模板创建时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
 	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
 
-	// 模板最后修改时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+	// 模板最后修改时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
 	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
 }
 
@@ -1713,10 +1847,10 @@ type AudioTrackTemplateInfo struct {
 	// 默认值：2。
 	AudioChannel *int64 `json:"AudioChannel,omitempty" name:"AudioChannel"`
 
-	// 模板创建时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+	// 模板创建时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
 	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
 
-	// 模板最后修改时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+	// 模板最后修改时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
 	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
 }
 
@@ -1877,7 +2011,7 @@ type ComposeMediaOutput struct {
 	// <li>默认值：0，表示其他分类。</li>
 	ClassId *int64 `json:"ClassId,omitempty" name:"ClassId"`
 
-	// 输出文件的过期时间，超过该时间文件将被删除，默认为永久不过期，格式按照 ISO 8601标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+	// 输出文件的过期时间，超过该时间文件将被删除，默认为永久不过期，格式按照 ISO 8601标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#I)。
 	ExpireTime *string `json:"ExpireTime,omitempty" name:"ExpireTime"`
 
 	// 封装格式，可选值：mp4、mp3。其中，mp3 为纯音频文件。
@@ -2011,7 +2145,7 @@ type ComposeMediaTaskOutput struct {
 	// <li>默认值：0，表示其他分类。</li>
 	ClassId *int64 `json:"ClassId,omitempty" name:"ClassId"`
 
-	// 输出文件的过期时间，超过该时间文件将被删除，默认为永久不过期，格式按照 ISO 8601标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+	// 输出文件的过期时间，超过该时间文件将被删除，默认为永久不过期，格式按照 ISO 8601标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#I)。
 	ExpireTime *string `json:"ExpireTime,omitempty" name:"ExpireTime"`
 }
 
@@ -2113,6 +2247,13 @@ type ContentReviewTemplateItem struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PoliticalConfigure *PoliticalConfigureInfo `json:"PoliticalConfigure,omitempty" name:"PoliticalConfigure"`
 
+	// 违禁控制参数。违禁内容包括：
+	// <li>谩骂；</li>
+	// <li>涉毒违法。</li>
+	// 注意：此参数尚未支持。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProhibitedConfigure *ProhibitedConfigureInfo `json:"ProhibitedConfigure,omitempty" name:"ProhibitedConfigure"`
+
 	// 用户自定义内容审核控制参数。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UserDefineConfigure *UserDefineConfigureInfo `json:"UserDefineConfigure,omitempty" name:"UserDefineConfigure"`
@@ -2125,10 +2266,10 @@ type ContentReviewTemplateItem struct {
 	// 截帧间隔，单位为秒。当不填时，默认截帧间隔为 1 秒，最小值为 0.5 秒。
 	ScreenshotInterval *float64 `json:"ScreenshotInterval,omitempty" name:"ScreenshotInterval"`
 
-	// 模板创建时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+	// 模板创建时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
 	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
 
-	// 模板最后修改时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+	// 模板最后修改时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
 	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
 }
 
@@ -3893,10 +4034,10 @@ func (r *DescribeAudioTrackTemplatesResponse) FromJsonString(s string) error {
 type DescribeCDNUsageDataRequest struct {
 	*tchttp.BaseRequest
 
-	// 起始日期，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+	// 起始日期，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
 	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
 
-	// 结束日期，需大于开始日期，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+	// 结束日期，需大于开始日期，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 
 	// CDN 统计数据类型，有效值：
@@ -4234,10 +4375,10 @@ func (r *DescribeProcedureTemplatesResponse) FromJsonString(s string) error {
 type DescribeReviewDetailsRequest struct {
 	*tchttp.BaseRequest
 
-	// 起始日期。使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+	// 起始日期。使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
 	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
 
-	// 结束日期，需大于起始日期。使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+	// 结束日期，需大于起始日期。使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 
 	// 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
@@ -4855,7 +4996,7 @@ type EditMediaOutputConfig struct {
 	// <li>默认值：0，表示其他分类。</li>
 	ClassId *int64 `json:"ClassId,omitempty" name:"ClassId"`
 
-	// 输出文件的过期时间，超过该时间文件将被删除，默认为永久不过期，格式按照 ISO 8601标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+	// 输出文件的过期时间，超过该时间文件将被删除，默认为永久不过期，格式按照 ISO 8601标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#I)。
 	ExpireTime *string `json:"ExpireTime,omitempty" name:"ExpireTime"`
 }
 
@@ -4927,11 +5068,11 @@ type EditMediaStreamInfo struct {
 	// 录制的流 ID
 	StreamId *string `json:"StreamId,omitempty" name:"StreamId"`
 
-	// 流剪辑的起始时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+	// 流剪辑的起始时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
 
-	// 流剪辑的结束时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+	// 流剪辑的结束时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 }
@@ -5016,7 +5157,7 @@ type EditMediaTaskOutput struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ClassId *int64 `json:"ClassId,omitempty" name:"ClassId"`
 
-	// 输出文件的过期时间，超过该时间文件将被删除，默认为永久不过期，格式按照 ISO 8601标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+	// 输出文件的过期时间，超过该时间文件将被删除，默认为永久不过期，格式按照 ISO 8601标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#I)。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExpireTime *string `json:"ExpireTime,omitempty" name:"ExpireTime"`
 }
@@ -5395,10 +5536,10 @@ type ImageSpriteTemplate struct {
 	// 雪碧图中小图的列数。
 	ColumnCount *uint64 `json:"ColumnCount,omitempty" name:"ColumnCount"`
 
-	// 模板创建时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+	// 模板创建时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
 	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
 
-	// 模板最后修改时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+	// 模板最后修改时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
 	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
 
 	// 填充方式，当视频流配置宽高参数与原始视频的宽高比不一致时，对转码的处理方式，即为“填充”。可选填充方式：
@@ -5483,16 +5624,16 @@ type LiveRealTimeClipRequest struct {
 	// 推流[直播码](https://cloud.tencent.com/document/product/267/5959)。
 	StreamId *string `json:"StreamId,omitempty" name:"StreamId"`
 
-	// 流剪辑的开始时间，格式参照 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+	// 流剪辑的开始时间，格式参照 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#I)。
 	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
 
-	// 流剪辑的结束时间，格式参照 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+	// 流剪辑的结束时间，格式参照 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#I)。
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 
 	// 是否固化。0 不固化，1 固化。默认不固化。
 	IsPersistence *int64 `json:"IsPersistence,omitempty" name:"IsPersistence"`
 
-	// 剪辑固化后的视频存储过期时间。格式参照 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。填“9999-12-31T23:59:59Z”表示永不过期。过期后该媒体文件及其相关资源（转码结果、雪碧图等）将被永久删除。仅 IsPersistence 为 1 时有效，默认剪辑固化的视频永不过期。
+	// 剪辑固化后的视频存储过期时间。格式参照 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。填“9999-12-31T23:59:59Z”表示永不过期。过期后该媒体文件及其相关资源（转码结果、雪碧图等）将被永久删除。仅 IsPersistence 为 1 时有效，默认剪辑固化的视频永不过期。
 	ExpireTime *string `json:"ExpireTime,omitempty" name:"ExpireTime"`
 
 	// 剪辑固化后的视频点播任务流处理，详见[上传指定任务流](https://cloud.tencent.com/document/product/266/9759)。仅 IsPersistence 为 1 时有效。
@@ -5500,6 +5641,12 @@ type LiveRealTimeClipRequest struct {
 
 	// 是否需要返回剪辑后的视频元信息。0 不需要，1 需要。默认不需要。
 	MetaDataRequired *uint64 `json:"MetaDataRequired,omitempty" name:"MetaDataRequired"`
+
+	// 即时剪辑使用的域名，必须在直播侧开通时移。
+	Host *string `json:"Host,omitempty" name:"Host"`
+
+	// 系统保留字段，请勿填写。
+	ExtInfo *string `json:"ExtInfo,omitempty" name:"ExtInfo"`
 
 	// 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
 	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
@@ -5633,7 +5780,7 @@ type MediaAnimatedGraphicsItem struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Url *string `json:"Url,omitempty" name:"Url"`
 
-	// 转动图模板 ID，参见[转动图参数模板](https://cloud.tencent.com/document/product/266/33481#.E8.BD.AC.E5.8A.A8.E5.9B.BE.E6.A8.A1.E6.9D.BF)。
+	// 转动图模板 ID，参见[转动图参数模板](https://cloud.tencent.com/document/product/266/33481#.3Cspan-id-.3D-.22zdt.22.3E.3C.2Fspan.3E.E8.BD.AC.E5.8A.A8.E5.9B.BE.E6.A8.A1.E6.9D.BF)。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Definition *int64 `json:"Definition,omitempty" name:"Definition"`
 
@@ -5695,15 +5842,15 @@ type MediaBasicInfo struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Description *string `json:"Description,omitempty" name:"Description"`
 
-	// 媒体文件的创建时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+	// 媒体文件的创建时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
 
-	// 媒体文件的最近更新时间（如修改视频属性、发起视频处理等会触发更新媒体文件信息的操作），使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+	// 媒体文件的最近更新时间（如修改视频属性、发起视频处理等会触发更新媒体文件信息的操作），使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
 
-	// 媒体文件的过期时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。过期后该媒体文件及其相关资源（转码结果、雪碧图等）将被永久删除。“9999-12-31T23:59:59Z”表示永不过期。
+	// 媒体文件的过期时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。过期后该媒体文件及其相关资源（转码结果、雪碧图等）将被永久删除。“9999-12-31T23:59:59Z”表示永不过期。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExpireTime *string `json:"ExpireTime,omitempty" name:"ExpireTime"`
 
@@ -5826,7 +5973,7 @@ type MediaContentReviewOcrTextSegmentItem struct {
 	// PicUrlExpireTime 时间点后图片将被删除）。
 	Url *string `json:"Url,omitempty" name:"Url"`
 
-	// 嫌疑图片 URL 失效时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+	// 嫌疑图片 URL 失效时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
 	PicUrlExpireTime *string `json:"PicUrlExpireTime,omitempty" name:"PicUrlExpireTime"`
 }
 
@@ -5863,7 +6010,7 @@ type MediaContentReviewPoliticalSegmentItem struct {
 	// 该字段已废弃，请使用 PicUrlExpireTime。
 	PicUrlExpireTimeStamp *int64 `json:"PicUrlExpireTimeStamp,omitempty" name:"PicUrlExpireTimeStamp"`
 
-	// 嫌疑图片 URL 失效时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+	// 嫌疑图片 URL 失效时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
 	PicUrlExpireTime *string `json:"PicUrlExpireTime,omitempty" name:"PicUrlExpireTime"`
 }
 
@@ -5894,7 +6041,7 @@ type MediaContentReviewSegmentItem struct {
 	// 该字段已废弃，请使用 PicUrlExpireTime。
 	PicUrlExpireTimeStamp *int64 `json:"PicUrlExpireTimeStamp,omitempty" name:"PicUrlExpireTimeStamp"`
 
-	// 嫌疑图片 URL 失效时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+	// 嫌疑图片 URL 失效时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
 	PicUrlExpireTime *string `json:"PicUrlExpireTime,omitempty" name:"PicUrlExpireTime"`
 }
 
@@ -5905,7 +6052,7 @@ type MediaDeleteItem struct {
 	// <li>WechatPublishFiles（删除微信发布文件）。</li>
 	Type *string `json:"Type,omitempty" name:"Type"`
 
-	// 删除由Type参数指定的种类下的视频模板号，模板定义参见[转码模板](https://cloud.tencent.com/document/product/266/33478#.E8.BD.AC.E7.A0.81.E6.A8.A1.E6.9D.BF)。
+	// 删除由Type参数指定的种类下的视频模板号，模板定义参见[转码模板](https://cloud.tencent.com/document/product/266/33478#.3Cspan-id-.3D-.22zm.22-.3E.3C.2Fspan.3E.E8.BD.AC.E7.A0.81.E6.A8.A1.E6.9D.BF)。
 	// 默认值为0，表示删除参数Type指定种类下所有的视频。
 	Definition *int64 `json:"Definition,omitempty" name:"Definition"`
 }
@@ -5939,7 +6086,7 @@ type MediaImageSpriteItem struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ImageUrlSet []*string `json:"ImageUrlSet,omitempty" name:"ImageUrlSet" list`
 
-	// 雪碧图子图位置与时间关系的 WebVtt 文件地址。WebVtt 文件表明了各个雪碧图小图对应的时间点，以及在在雪碧大图里的坐标位置，一般被播放器用于实现预览。
+	// 雪碧图子图位置与时间关系的 WebVtt 文件地址。WebVtt 文件表明了各个雪碧图小图对应的时间点，以及在雪碧大图里的坐标位置，一般被播放器用于实现预览。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	WebVttUrl *string `json:"WebVttUrl,omitempty" name:"WebVttUrl"`
 }
@@ -6973,7 +7120,7 @@ type ModifyMediaInfoRequest struct {
 	// 媒体文件分类 ID。
 	ClassId *int64 `json:"ClassId,omitempty" name:"ClassId"`
 
-	// 媒体文件过期时间，采用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。填“9999-12-31T23:59:59Z”表示永不过期。过期后该媒体文件及其相关资源（转码结果、雪碧图等）将被永久删除。
+	// 媒体文件过期时间，采用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。填“9999-12-31T23:59:59Z”表示永不过期。过期后该媒体文件及其相关资源（转码结果、雪碧图等）将被永久删除。
 	ExpireTime *string `json:"ExpireTime,omitempty" name:"ExpireTime"`
 
 	// 视频封面图片文件（如 jpeg, png 等）进行 [Base64](https://tools.ietf.org/html/rfc4648) 编码后的字符串，仅支持 gif、jpeg、png 三种图片格式。
@@ -7527,6 +7674,50 @@ func (r *ModifyWordSampleResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type MosaicInput struct {
+
+	// 原点位置，目前仅支持：
+	// <li>TopLeft：表示坐标原点位于视频图像左上角，马赛克原点为图片或文字的左上角。</li>
+	// 默认值：TopLeft。
+	CoordinateOrigin *string `json:"CoordinateOrigin,omitempty" name:"CoordinateOrigin"`
+
+	// 马赛克原点距离视频图像坐标原点的水平位置。支持 %、px 两种格式：
+	// <li>当字符串以 % 结尾，表示马赛克 XPos 为视频宽度指定百分比，如 10% 表示 XPos 为视频宽度的 10%；</li>
+	// <li>当字符串以 px 结尾，表示马赛克 XPos 为指定像素，如 100px 表示 XPos 为 100 像素。</li>
+	// 默认值：0px。
+	XPos *string `json:"XPos,omitempty" name:"XPos"`
+
+	// 马赛克原点距离视频图像坐标原点的垂直位置。支持 %、px 两种格式：
+	// <li>当字符串以 % 结尾，表示马赛克 YPos 为视频高度指定百分比，如 10% 表示 YPos 为视频高度的 10%；</li>
+	// <li>当字符串以 px 结尾，表示马赛克 YPos 为指定像素，如 100px 表示 YPos 为 100 像素。</li>
+	// 默认值：0px。
+	YPos *string `json:"YPos,omitempty" name:"YPos"`
+
+	// 马赛克的宽度。支持 %、px 两种格式：
+	// <li>当字符串以 % 结尾，表示马赛克 Width 为视频宽度的百分比大小，如 10% 表示 Width 为视频宽度的 10%；</li>
+	// <li>当字符串以 px 结尾，表示马赛克 Width 单位为像素，如 100px 表示 Width 为 100 像素。</li>
+	// 默认值：10%。
+	Width *string `json:"Width,omitempty" name:"Width"`
+
+	// 马赛克的高度。支持 %、px 两种格式：
+	// <li>当字符串以 % 结尾，表示马赛克 Height 为视频高度的百分比大小，如 10% 表示 Height 为视频高度的 10%；</li>
+	// <li>当字符串以 px 结尾，表示马赛克 Height 单位为像素，如 100px 表示 Height 为 100 像素。</li>
+	// 默认值：10%。
+	Height *string `json:"Height,omitempty" name:"Height"`
+
+	// 马赛克的起始时间偏移，单位：秒。不填或填0，表示马赛克从画面出现时开始显现。
+	// <li>不填或填0，表示马赛克从画面开始就出现；</li>
+	// <li>当数值大于0时（假设为 n），表示马赛克从画面开始的第 n 秒出现；</li>
+	// <li>当数值小于0时（假设为 -n），表示马赛克从离画面结束 n 秒前开始出现。</li>
+	StartTimeOffset *float64 `json:"StartTimeOffset,omitempty" name:"StartTimeOffset"`
+
+	// 马赛克的结束时间偏移，单位：秒。
+	// <li>不填或填0，表示马赛克持续到画面结束；</li>
+	// <li>当数值大于0时（假设为 n），表示马赛克持续到第 n 秒时消失；</li>
+	// <li>当数值小于0时（假设为 -n），表示马赛克持续到离画面结束 n 秒前消失。</li>
+	EndTimeOffset *float64 `json:"EndTimeOffset,omitempty" name:"EndTimeOffset"`
+}
+
 type ObjectConfigureInfo struct {
 
 	// 物体识别任务开关，可选值：
@@ -7985,10 +8176,10 @@ type ProcedureTemplate struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MiniProgramPublishTask *WechatMiniProgramPublishTaskInput `json:"MiniProgramPublishTask,omitempty" name:"MiniProgramPublishTask"`
 
-	// 模板创建时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+	// 模板创建时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
 	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
 
-	// 模板最后修改时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+	// 模板最后修改时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
 	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
 }
 
@@ -8181,6 +8372,45 @@ func (r *ProcessMediaResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type ProhibitedAsrReviewTemplateInfo struct {
+
+	// 语音违禁任务开关，可选值：
+	// <li>ON：开启语音违禁任务；</li>
+	// <li>OFF：关闭语音违禁任务。</li>
+	Switch *string `json:"Switch,omitempty" name:"Switch"`
+
+	// 判定涉嫌违规的分数阈值，当智能审核达到该分数以上，认为涉嫌违规，不填默认为 100 分。取值范围：0~100。
+	BlockConfidence *int64 `json:"BlockConfidence,omitempty" name:"BlockConfidence"`
+
+	// 判定需人工复核是否违规的分数阈值，当智能审核达到该分数以上，认为需人工复核，不填默认为 75 分。取值范围：0~100。
+	ReviewConfidence *int64 `json:"ReviewConfidence,omitempty" name:"ReviewConfidence"`
+}
+
+type ProhibitedConfigureInfo struct {
+
+	// 语音违禁控制参数。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AsrReviewInfo *ProhibitedAsrReviewTemplateInfo `json:"AsrReviewInfo,omitempty" name:"AsrReviewInfo"`
+
+	// 文本违禁控制参数。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OcrReviewInfo *ProhibitedOcrReviewTemplateInfo `json:"OcrReviewInfo,omitempty" name:"OcrReviewInfo"`
+}
+
+type ProhibitedOcrReviewTemplateInfo struct {
+
+	// 文本违禁任务开关，可选值：
+	// <li>ON：开启文本违禁任务；</li>
+	// <li>OFF：关闭文本违禁任务。</li>
+	Switch *string `json:"Switch,omitempty" name:"Switch"`
+
+	// 判定涉嫌违规的分数阈值，当智能审核达到该分数以上，认为涉嫌违规，不填默认为 100 分。取值范围：0~100。
+	BlockConfidence *int64 `json:"BlockConfidence,omitempty" name:"BlockConfidence"`
+
+	// 判定需人工复核是否违规的分数阈值，当智能审核达到该分数以上，认为需人工复核，不填默认为 75 分。取值范围：0~100。
+	ReviewConfidence *int64 `json:"ReviewConfidence,omitempty" name:"ReviewConfidence"`
+}
+
 type PullEventsRequest struct {
 	*tchttp.BaseRequest
 
@@ -8226,7 +8456,7 @@ type PullUploadRequest struct {
 	*tchttp.BaseRequest
 
 	// 要拉取的媒体 URL，暂不支持拉取 HLS 和 Dash 格式。
-	// 支持的扩展名详见[文件类型](https://cloud.tencent.com/document/product/266/9760#.E6.96.87.E4.BB.B6.E7.B1.BB.E5.9E.8B)。
+	// 支持的扩展名详见[媒体类型](https://cloud.tencent.com/document/product/266/9760#.E5.AA.92.E4.BD.93.E7.B1.BB.E5.9E.8B)。
 	MediaUrl *string `json:"MediaUrl,omitempty" name:"MediaUrl"`
 
 	// 媒体名称。
@@ -8238,7 +8468,7 @@ type PullUploadRequest struct {
 	// 媒体后续任务操作，详见[上传指定任务流](https://cloud.tencent.com/document/product/266/9759)。
 	Procedure *string `json:"Procedure,omitempty" name:"Procedure"`
 
-	// 媒体文件过期时间，格式按照 ISO 8601 标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+	// 媒体文件过期时间，格式按照 ISO 8601 标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#I)。
 	ExpireTime *string `json:"ExpireTime,omitempty" name:"ExpireTime"`
 
 	// 指定上传园区，仅适用于对上传地域有特殊需求的用户（目前仅支持北京、上海和重庆园区）。
@@ -8472,10 +8702,10 @@ type SampleSnapshotTemplate struct {
 	// 采样间隔。
 	SampleInterval *uint64 `json:"SampleInterval,omitempty" name:"SampleInterval"`
 
-	// 模板创建时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+	// 模板创建时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
 	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
 
-	// 模板最后修改时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+	// 模板最后修改时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
 	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
 
 	// 填充方式，当视频流配置宽高参数与原始视频的宽高比不一致时，对转码的处理方式，即为“填充”。可选填充方式：
@@ -8503,12 +8733,12 @@ type SearchMediaRequest struct {
 
 	// 创建时间的开始时间。
 	// <li>大于等于开始时间。</li>
-	// <li>格式按照 ISO 8601标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。</li>
+	// <li>格式按照 ISO 8601标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#I)。</li>
 	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
 
 	// 创建时间的结束时间。
 	// <li>小于结束时间。</li>
-	// <li>格式按照 ISO 8601标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。</li>
+	// <li>格式按照 ISO 8601标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#I)。</li>
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 
 	// 媒体文件来源，来源取值参见 [SourceType](https://cloud.tencent.com/document/product/266/31773#MediaSourceData)。
@@ -8594,11 +8824,14 @@ type SimpleHlsClipRequest struct {
 	// 需要裁剪的腾讯云点播 HLS 视频 URL。
 	Url *string `json:"Url,omitempty" name:"Url"`
 
-	// 裁剪的开始偏移时间，单位秒。默认 0，即从视频开头开始裁剪。负数表示距离视频结束多少秒开始裁剪。比如 -10 表示从倒数第 10 秒开始裁剪。
+	// 裁剪的开始偏移时间，单位秒。默认 0，即从视频开头开始裁剪。负数表示距离视频结束多少秒开始裁剪。例如 -10 表示从倒数第 10 秒开始裁剪。
 	StartTimeOffset *float64 `json:"StartTimeOffset,omitempty" name:"StartTimeOffset"`
 
-	// 裁剪的结束偏移时间，单位秒。默认 0，即裁剪到视频尾部。负数表示距离视频结束多少秒结束裁剪。比如 -10 表示到倒数第 10 秒结束裁剪。
+	// 裁剪的结束偏移时间，单位秒。默认 0，即裁剪到视频尾部。负数表示距离视频结束多少秒结束裁剪。例如 -10 表示到倒数第 10 秒结束裁剪。
 	EndTimeOffset *float64 `json:"EndTimeOffset,omitempty" name:"EndTimeOffset"`
+
+	// 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
 }
 
 func (r *SimpleHlsClipRequest) ToJsonString() string {
@@ -8721,10 +8954,10 @@ type SnapshotByTimeOffsetTemplate struct {
 	// 图片格式。
 	Format *string `json:"Format,omitempty" name:"Format"`
 
-	// 模板创建时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+	// 模板创建时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
 	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
 
-	// 模板最后修改时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+	// 模板最后修改时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
 	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
 
 	// 填充方式，当视频流配置宽高参数与原始视频的宽高比不一致时，对转码的处理方式，即为“填充”。可选填充方式：
@@ -8747,7 +8980,7 @@ type SortBy struct {
 
 type StatDataItem struct {
 
-	// 数据所在时间区间的开始时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。如：当时间粒度为天，2018-12-01T00:00:00+08:00，表示2018年12月1日（含）到2018年12月2日（不含）区间。
+	// 数据所在时间区间的开始时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。如：当时间粒度为天，2018-12-01T00:00:00+08:00，表示2018年12月1日（含）到2018年12月2日（不含）区间。
 	// <li>表示小时级别数据时，2019-08-22T00:00:00+08:00表示2019-08-22日0点到1点的统计数据。</li>
 	// <li>表示天级别数据时，2019-08-22T00:00:00+08:00表示2019-08-22日的统计数据。</li>
 	Time *string `json:"Time,omitempty" name:"Time"`
@@ -8819,7 +9052,7 @@ type SubAppIdInfo struct {
 	// 子应用简介。
 	Description *string `json:"Description,omitempty" name:"Description"`
 
-	// 子应用创建时间，采用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+	// 子应用创建时间，采用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
 	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
 
 	// 子应用状态，有效值：
@@ -8942,14 +9175,14 @@ type TaskSimpleInfo struct {
 	// <li>ImageSprites：截取雪碧图任务。</li>
 	TaskType *string `json:"TaskType,omitempty" name:"TaskType"`
 
-	// 任务创建时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+	// 任务创建时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
 	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
 
-	// 任务开始执行时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。若任务尚未开始，该字段为空。
+	// 任务开始执行时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。若任务尚未开始，该字段为空。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	BeginProcessTime *string `json:"BeginProcessTime,omitempty" name:"BeginProcessTime"`
 
-	// 任务结束时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。若任务尚未完成，该字段为空。
+	// 任务结束时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。若任务尚未完成，该字段为空。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FinishTime *string `json:"FinishTime,omitempty" name:"FinishTime"`
 
@@ -8980,12 +9213,19 @@ type TerrorismConfigureInfo struct {
 	// 画面鉴恐任务控制参数。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ImgReviewInfo *TerrorismImgReviewTemplateInfo `json:"ImgReviewInfo,omitempty" name:"ImgReviewInfo"`
+
+	// 文字鉴恐任务控制参数。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OcrReviewInfo *TerrorismOcrReviewTemplateInfo `json:"OcrReviewInfo,omitempty" name:"OcrReviewInfo"`
 }
 
 type TerrorismConfigureInfoForUpdate struct {
 
 	// 画面鉴恐任务控制参数。
 	ImgReviewInfo *TerrorismImgReviewTemplateInfoForUpdate `json:"ImgReviewInfo,omitempty" name:"ImgReviewInfo"`
+
+	// 文本鉴恐任务控制参数。
+	OcrReviewInfo *TerrorismOcrReviewTemplateInfoForUpdate `json:"OcrReviewInfo,omitempty" name:"OcrReviewInfo"`
 }
 
 type TerrorismImgReviewTemplateInfo struct {
@@ -9035,6 +9275,34 @@ type TerrorismImgReviewTemplateInfoForUpdate struct {
 	BlockConfidence *int64 `json:"BlockConfidence,omitempty" name:"BlockConfidence"`
 
 	// 判定需人工复核是否违规的分数阈值，当智能审核达到该分数以上，认为需人工复核。取值范围：0~100。
+	ReviewConfidence *int64 `json:"ReviewConfidence,omitempty" name:"ReviewConfidence"`
+}
+
+type TerrorismOcrReviewTemplateInfo struct {
+
+	// 文本鉴恐任务开关，可选值：
+	// <li>ON：开启文本鉴恐任务；</li>
+	// <li>OFF：关闭文本鉴恐任务。</li>
+	Switch *string `json:"Switch,omitempty" name:"Switch"`
+
+	// 判定涉嫌违规的分数阈值，当智能审核达到该分数以上，认为涉嫌违规，不填默认为 100 分。取值范围：0~100。
+	BlockConfidence *int64 `json:"BlockConfidence,omitempty" name:"BlockConfidence"`
+
+	// 判定需人工复核是否违规的分数阈值，当智能审核达到该分数以上，认为需人工复核，不填默认为 75 分。取值范围：0~100。
+	ReviewConfidence *int64 `json:"ReviewConfidence,omitempty" name:"ReviewConfidence"`
+}
+
+type TerrorismOcrReviewTemplateInfoForUpdate struct {
+
+	// 文本鉴恐任务开关，可选值：
+	// <li>ON：开启文本鉴恐任务；</li>
+	// <li>OFF：关闭文本鉴恐任务。</li>
+	Switch *string `json:"Switch,omitempty" name:"Switch"`
+
+	// 判定涉嫌违规的分数阈值，当智能审核达到该分数以上，认为涉嫌违规，不填默认为 100 分。取值范围：0~100。
+	BlockConfidence *int64 `json:"BlockConfidence,omitempty" name:"BlockConfidence"`
+
+	// 判定需人工复核是否违规的分数阈值，当智能审核达到该分数以上，认为需人工复核，不填默认为 75 分。取值范围：0~100。
 	ReviewConfidence *int64 `json:"ReviewConfidence,omitempty" name:"ReviewConfidence"`
 }
 
@@ -9139,6 +9407,9 @@ type TranscodeTaskInput struct {
 	// 水印列表，支持多张图片或文字水印，最大可支持 10 张。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	WatermarkSet []*WatermarkInput `json:"WatermarkSet,omitempty" name:"WatermarkSet" list`
+
+	// 马赛克列表，最大可支持 10 张。
+	MosaicSet []*MosaicInput `json:"MosaicSet,omitempty" name:"MosaicSet" list`
 }
 
 type TranscodeTemplate struct {
@@ -9189,10 +9460,10 @@ type TranscodeTemplate struct {
 	// <li>PureAudio：纯音频格式，只能包含音频流的封装格式板。</li>
 	ContainerType *string `json:"ContainerType,omitempty" name:"ContainerType"`
 
-	// 模板创建时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+	// 模板创建时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
 	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
 
-	// 模板最后修改时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+	// 模板最后修改时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
 	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
 }
 
@@ -9583,10 +9854,10 @@ type VideoTrackTemplateInfo struct {
 	// 默认值：black 。
 	FillType *string `json:"FillType,omitempty" name:"FillType"`
 
-	// 模板创建时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+	// 模板创建时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
 	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
 
-	// 模板最后修改时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+	// 模板最后修改时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
 	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
 }
 
@@ -9668,10 +9939,10 @@ type WatermarkTemplate struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SvgTemplate *SvgWatermarkInput `json:"SvgTemplate,omitempty" name:"SvgTemplate"`
 
-	// 模板创建时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+	// 模板创建时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
 	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
 
-	// 模板最后修改时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+	// 模板最后修改时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
 	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
 
 	// 原点位置，可选值：

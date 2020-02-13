@@ -20,6 +20,92 @@ import (
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
+type CommonServiceAPIRequest struct {
+	*tchttp.BaseRequest
+
+	// Service名，需要转发访问的接口名
+	Service *string `json:"Service,omitempty" name:"Service"`
+
+	// 需要转发的云API参数，要转成JSON格式
+	JSONData *string `json:"JSONData,omitempty" name:"JSONData"`
+}
+
+func (r *CommonServiceAPIRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CommonServiceAPIRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CommonServiceAPIResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// json格式response
+		JSONResp *string `json:"JSONResp,omitempty" name:"JSONResp"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CommonServiceAPIResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CommonServiceAPIResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateMysqlInstanceRequest struct {
+	*tchttp.BaseRequest
+
+	// 环境名称
+	EnvId *string `json:"EnvId,omitempty" name:"EnvId"`
+
+	// 实例别名
+	Alias *string `json:"Alias,omitempty" name:"Alias"`
+
+	// 实例内存大小，单位：MB
+	Memory *int64 `json:"Memory,omitempty" name:"Memory"`
+
+	// 实例硬盘大小，单位：GB
+	Volume *int64 `json:"Volume,omitempty" name:"Volume"`
+
+	// MySQL 版本，值包括：5.7
+	EngineVersion *string `json:"EngineVersion,omitempty" name:"EngineVersion"`
+}
+
+func (r *CreateMysqlInstanceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateMysqlInstanceRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateMysqlInstanceResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateMysqlInstanceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateMysqlInstanceResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DatabasesInfo struct {
 
 	// 数据库唯一标识
@@ -60,7 +146,7 @@ type DescribeDatabaseACLResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 权限标签。取值范围：
+		// 权限标签。包含以下取值：
 	// <li> READONLY：所有用户可读，仅创建者和管理员可写</li>
 	// <li> PRIVATE：仅创建者及管理员可读写</li>
 	// <li> ADMINWRITE：所有用户可读，仅管理员可写</li>
@@ -139,7 +225,6 @@ type EnvInfo struct {
 
 	// 环境状态。包含以下取值：
 	// <li>NORMAL：正常可用</li>
-	// <li>HALTED：停服，用量超限或后台封禁</li>
 	// <li>UNAVAILABLE：服务不可用，可能是尚未初始化或者初始化过程中</li>
 	Status *string `json:"Status,omitempty" name:"Status"`
 
@@ -159,6 +244,18 @@ type EnvInfo struct {
 	// 套餐中文名称，参考DescribePackages接口的返回值。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PackageName *string `json:"PackageName,omitempty" name:"PackageName"`
+
+	// 云日志服务列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LogServices []*LogServiceInfo `json:"LogServices,omitempty" name:"LogServices" list`
+
+	// 静态资源信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StaticStorages []*StaticStorageInfo `json:"StaticStorages,omitempty" name:"StaticStorages" list`
+
+	// 是否到期自动降为免费版
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsAutoDegrade *bool `json:"IsAutoDegrade,omitempty" name:"IsAutoDegrade"`
 }
 
 type FunctionInfo struct {
@@ -171,6 +268,61 @@ type FunctionInfo struct {
 	Region *string `json:"Region,omitempty" name:"Region"`
 }
 
+type IsolateMysqlInstanceRequest struct {
+	*tchttp.BaseRequest
+
+	// 环境id
+	EnvId *string `json:"EnvId,omitempty" name:"EnvId"`
+
+	// 实例别名
+	Alias *string `json:"Alias,omitempty" name:"Alias"`
+}
+
+func (r *IsolateMysqlInstanceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *IsolateMysqlInstanceRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type IsolateMysqlInstanceResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *IsolateMysqlInstanceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *IsolateMysqlInstanceResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type LogServiceInfo struct {
+
+	// log名
+	LogsetName *string `json:"LogsetName,omitempty" name:"LogsetName"`
+
+	// log-id
+	LogsetId *string `json:"LogsetId,omitempty" name:"LogsetId"`
+
+	// topic名
+	TopicName *string `json:"TopicName,omitempty" name:"TopicName"`
+
+	// topic-id
+	TopicId *string `json:"TopicId,omitempty" name:"TopicId"`
+
+	// cls日志所属地域
+	Region *string `json:"Region,omitempty" name:"Region"`
+}
+
 type ModifyDatabaseACLRequest struct {
 	*tchttp.BaseRequest
 
@@ -180,7 +332,7 @@ type ModifyDatabaseACLRequest struct {
 	// 集合名称
 	CollectionName *string `json:"CollectionName,omitempty" name:"CollectionName"`
 
-	// 权限标签。取值范围：
+	// 权限标签。包含以下取值：
 	// <li> READONLY：所有用户可读，仅创建者和管理员可写</li>
 	// <li> PRIVATE：仅创建者及管理员可读写</li>
 	// <li> ADMINWRITE：所有用户可读，仅管理员可写</li>
@@ -252,6 +404,66 @@ func (r *ModifyEnvResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type OfflineMysqlInstanceRequest struct {
+	*tchttp.BaseRequest
+
+	// 环境id
+	EnvId *string `json:"EnvId,omitempty" name:"EnvId"`
+
+	// 实例别名
+	Alias *string `json:"Alias,omitempty" name:"Alias"`
+}
+
+func (r *OfflineMysqlInstanceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *OfflineMysqlInstanceRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type OfflineMysqlInstanceResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *OfflineMysqlInstanceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *OfflineMysqlInstanceResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type StaticStorageInfo struct {
+
+	// 静态CDN域名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StaticDomain *string `json:"StaticDomain,omitempty" name:"StaticDomain"`
+
+	// 静态CDN默认文件夹，当前为根目录
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DefaultDirName *string `json:"DefaultDirName,omitempty" name:"DefaultDirName"`
+
+	// 资源状态(process/online/offline/init)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// cos所属区域
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Region *string `json:"Region,omitempty" name:"Region"`
+
+	// bucket信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Bucket *string `json:"Bucket,omitempty" name:"Bucket"`
+}
+
 type StorageInfo struct {
 
 	// 资源所属地域。
@@ -266,4 +478,50 @@ type StorageInfo struct {
 
 	// 资源所属用户的腾讯云appId
 	AppId *string `json:"AppId,omitempty" name:"AppId"`
+}
+
+type UpgradeMysqlInstanceRequest struct {
+	*tchttp.BaseRequest
+
+	// 环境id
+	EnvId *string `json:"EnvId,omitempty" name:"EnvId"`
+
+	// 实例别名
+	Alias *string `json:"Alias,omitempty" name:"Alias"`
+
+	// 实例内存大小，单位：MB
+	Memory *int64 `json:"Memory,omitempty" name:"Memory"`
+
+	// 实例硬盘大小，单位：GB
+	Volume *int64 `json:"Volume,omitempty" name:"Volume"`
+
+	// MySQL 版本，值包括: 5.7
+	EngineVersion *string `json:"EngineVersion,omitempty" name:"EngineVersion"`
+}
+
+func (r *UpgradeMysqlInstanceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *UpgradeMysqlInstanceRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type UpgradeMysqlInstanceResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *UpgradeMysqlInstanceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *UpgradeMysqlInstanceResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
 }

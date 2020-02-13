@@ -92,7 +92,7 @@ type CloseDBExtranetAccessResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 异步任务Id，可通过 DescribeFlow 查询任务状态。
+		// 异步任务ID，可通过 DescribeFlow 查询任务状态。
 		FlowId *int64 `json:"FlowId,omitempty" name:"FlowId"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -208,7 +208,7 @@ type CreateAccountResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 实例Id，透传入参。
+		// 实例ID，透传入参。
 		InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
 		// 用户名，透传入参。
@@ -379,7 +379,7 @@ type DBAccount struct {
 
 type DBBackupTimeConfig struct {
 
-	// 实例 Id
+	// 实例 ID
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
 	// 每天备份执行的区间的开始时间，格式 mm:ss，形如 22:00
@@ -391,16 +391,16 @@ type DBBackupTimeConfig struct {
 
 type DBInstance struct {
 
-	// 实例 Id，唯一标识一个 TDSQL 实例
+	// 实例 ID，唯一标识一个 TDSQL 实例
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
 	// 实例名称，用户可修改
 	InstanceName *string `json:"InstanceName,omitempty" name:"InstanceName"`
 
-	// 实例所属应用 Id
+	// 实例所属应用 ID
 	AppId *int64 `json:"AppId,omitempty" name:"AppId"`
 
-	// 实例所属项目 Id
+	// 实例所属项目 ID
 	ProjectId *int64 `json:"ProjectId,omitempty" name:"ProjectId"`
 
 	// 实例所在地域名称，如 ap-shanghai
@@ -409,10 +409,10 @@ type DBInstance struct {
 	// 实例所在可用区名称，如 ap-shanghai-1
 	Zone *string `json:"Zone,omitempty" name:"Zone"`
 
-	// 私有网络 Id，基础网络时为 0
+	// 私有网络 ID，基础网络时为 0
 	VpcId *int64 `json:"VpcId,omitempty" name:"VpcId"`
 
-	// 子网 Id，基础网络时为 0
+	// 子网 ID，基础网络时为 0
 	SubnetId *int64 `json:"SubnetId,omitempty" name:"SubnetId"`
 
 	// 实例状态：0 创建中，1 流程处理中， 2 运行中，3 实例未初始化，-1 实例已隔离，-2 实例已删除
@@ -457,10 +457,10 @@ type DBInstance struct {
 	// 实例存储大小，单位 GB
 	Storage *int64 `json:"Storage,omitempty" name:"Storage"`
 
-	// 字符串型的私有网络Id
+	// 字符串型的私有网络ID
 	UniqueVpcId *string `json:"UniqueVpcId,omitempty" name:"UniqueVpcId"`
 
-	// 字符串型的私有网络子网Id
+	// 字符串型的私有网络子网ID
 	UniqueSubnetId *string `json:"UniqueSubnetId,omitempty" name:"UniqueSubnetId"`
 
 	// 原始实例ID（过时字段，请勿依赖该值）
@@ -472,13 +472,13 @@ type DBInstance struct {
 	// 是否临时实例，0为否，非0为是
 	IsTmp *uint64 `json:"IsTmp,omitempty" name:"IsTmp"`
 
-	// 独享集群Id，为空表示为普通实例
+	// 独享集群ID，为空表示为普通实例
 	ExclusterId *string `json:"ExclusterId,omitempty" name:"ExclusterId"`
 
-	// 数字实例Id（过时字段，请勿依赖该值）
+	// 数字实例ID（过时字段，请勿依赖该值）
 	Id *uint64 `json:"Id,omitempty" name:"Id"`
 
-	// 产品类型 Id
+	// 产品类型 ID
 	Pid *int64 `json:"Pid,omitempty" name:"Pid"`
 
 	// 最大 Qps 值
@@ -624,7 +624,7 @@ type DescribeAccountPrivilegesResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 实例Id
+		// 实例ID
 		InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
 		// 权限列表。
@@ -810,7 +810,7 @@ type DescribeDBInstancesRequest struct {
 	// 实例所属独享集群类型。取值范围：1-非独享集群，2-独享集群， 0-全部
 	ExclusterType *int64 `json:"ExclusterType,omitempty" name:"ExclusterType"`
 
-	// 按独享集群Id过滤实例，独享集群Id形如dbdc-4ih6uct9
+	// 按独享集群ID过滤实例，独享集群ID形如dbdc-4ih6uct9
 	ExclusterIds []*string `json:"ExclusterIds,omitempty" name:"ExclusterIds" list`
 }
 
@@ -1711,7 +1711,7 @@ func (r *GrantAccountPrivilegesResponse) FromJsonString(s string) error {
 type InitDBInstancesRequest struct {
 	*tchttp.BaseRequest
 
-	// 待初始化的实例Id列表，形如：tdsql-ow728lmc，可以通过 DescribeDBInstances 查询实例详情获得。
+	// 待初始化的实例ID列表，形如：tdsql-ow728lmc，可以通过 DescribeDBInstances 查询实例详情获得。
 	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds" list`
 
 	// 参数列表。本接口的可选值为：character_set_server（字符集，必传），lower_case_table_names（表名大小写敏感，必传，0 - 敏感；1-不敏感），innodb_page_size（innodb数据页，默认16K），sync_mode（同步模式：0 - 异步； 1 - 强同步；2 - 强同步可退化。默认为强同步）。
@@ -1731,7 +1731,7 @@ type InitDBInstancesResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 异步任务Id，可通过 DescribeFlow 查询任务状态。
+		// 异步任务ID，可通过 DescribeFlow 查询任务状态。
 		FlowId *int64 `json:"FlowId,omitempty" name:"FlowId"`
 
 		// 透传入参。
@@ -2050,7 +2050,7 @@ type OpenDBExtranetAccessResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 异步任务Id，可通过 DescribeFlow 查询任务状态。
+		// 异步任务ID，可通过 DescribeFlow 查询任务状态。
 		FlowId *int64 `json:"FlowId,omitempty" name:"FlowId"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。

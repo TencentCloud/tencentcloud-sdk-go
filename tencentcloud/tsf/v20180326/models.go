@@ -20,6 +20,80 @@ import (
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
+type AddClusterInstancesRequest struct {
+	*tchttp.BaseRequest
+
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 云主机ID列表
+	InstanceIdList []*string `json:"InstanceIdList,omitempty" name:"InstanceIdList" list`
+
+	// 操作系统名称
+	OsName *string `json:"OsName,omitempty" name:"OsName"`
+
+	// 操作系统镜像ID
+	ImageId *string `json:"ImageId,omitempty" name:"ImageId"`
+
+	// 重装系统密码设置
+	Password *string `json:"Password,omitempty" name:"Password"`
+
+	// 重装系统，关联密钥设置
+	KeyId *string `json:"KeyId,omitempty" name:"KeyId"`
+
+	// 安全组设置
+	SgId *string `json:"SgId,omitempty" name:"SgId"`
+
+	// 云主机导入方式，虚拟机集群必填，容器集群不填写此字段，R：重装TSF系统镜像，M：手动安装agent
+	InstanceImportMode *string `json:"InstanceImportMode,omitempty" name:"InstanceImportMode"`
+}
+
+func (r *AddClusterInstancesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *AddClusterInstancesRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type AddClusterInstancesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 添加云主机的返回列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Result *AddInstanceResult `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *AddClusterInstancesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *AddClusterInstancesResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type AddInstanceResult struct {
+
+	// 添加集群失败的节点列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FailedInstanceIds []*string `json:"FailedInstanceIds,omitempty" name:"FailedInstanceIds" list`
+
+	// 添加集群成功的节点列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SuccInstanceIds []*string `json:"SuccInstanceIds,omitempty" name:"SuccInstanceIds" list`
+
+	// 添加集群超时的节点列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TimeoutInstanceIds []*string `json:"TimeoutInstanceIds,omitempty" name:"TimeoutInstanceIds" list`
+}
+
 type AddInstancesRequest struct {
 	*tchttp.BaseRequest
 
@@ -679,8 +753,11 @@ type CreateApplicationRequest struct {
 	// 应用名称
 	ApplicationName *string `json:"ApplicationName,omitempty" name:"ApplicationName"`
 
-	// 应用类型
+	// 应用类型，V：虚拟机应用；C：容器应用；S：serverless应用
 	ApplicationType *string `json:"ApplicationType,omitempty" name:"ApplicationType"`
+
+	// 应用微服务类型，M：service mesh应用；N：普通应用；G：网关应用
+	MicroserviceType *string `json:"MicroserviceType,omitempty" name:"MicroserviceType"`
 
 	// 应用描述
 	ApplicationDesc *string `json:"ApplicationDesc,omitempty" name:"ApplicationDesc"`
@@ -688,11 +765,11 @@ type CreateApplicationRequest struct {
 	// 应用日志配置项，废弃参数
 	ApplicationLogConfig *string `json:"ApplicationLogConfig,omitempty" name:"ApplicationLogConfig"`
 
-	// 应用微服务类型
-	MicroserviceType *string `json:"MicroserviceType,omitempty" name:"MicroserviceType"`
-
-	// 应有资源类型
+	// 应用资源类型，废弃参数
 	ApplicationResourceType *string `json:"ApplicationResourceType,omitempty" name:"ApplicationResourceType"`
+
+	// 应用runtime类型
+	ApplicationRuntimeType *string `json:"ApplicationRuntimeType,omitempty" name:"ApplicationRuntimeType"`
 }
 
 func (r *CreateApplicationRequest) ToJsonString() string {
@@ -749,6 +826,9 @@ type CreateClusterRequest struct {
 
 	// 集群所属TSF可用区
 	TsfZoneId *string `json:"TsfZoneId,omitempty" name:"TsfZoneId"`
+
+	// 私有网络子网ID
+	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
 }
 
 func (r *CreateClusterRequest) ToJsonString() string {
@@ -1009,17 +1089,23 @@ func (r *CreateMicroserviceResponse) FromJsonString(s string) error {
 type CreateNamespaceRequest struct {
 	*tchttp.BaseRequest
 
-	// 集群ID
-	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
-
 	// 命名空间名称
 	NamespaceName *string `json:"NamespaceName,omitempty" name:"NamespaceName"`
+
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
 
 	// 命名空间描述
 	NamespaceDesc *string `json:"NamespaceDesc,omitempty" name:"NamespaceDesc"`
 
 	// 命名空间资源类型(默认值为DEF)
 	NamespaceResourceType *string `json:"NamespaceResourceType,omitempty" name:"NamespaceResourceType"`
+
+	// 是否是全局命名空间(默认是DEF，表示普通命名空间；GLOBAL表示全局命名空间)
+	NamespaceType *string `json:"NamespaceType,omitempty" name:"NamespaceType"`
+
+	// 命名空间ID
+	NamespaceId *string `json:"NamespaceId,omitempty" name:"NamespaceId"`
 }
 
 func (r *CreateNamespaceRequest) ToJsonString() string {
@@ -1112,11 +1198,11 @@ type CreateServerlessGroupRequest struct {
 	// 分组名称字段，长度1~60，字母或下划线开头，可包含字母数字下划线
 	GroupName *string `json:"GroupName,omitempty" name:"GroupName"`
 
-	// 程序包Id
-	PkgId *string `json:"PkgId,omitempty" name:"PkgId"`
+	// 分组所属名字空间ID
+	NamespaceId *string `json:"NamespaceId,omitempty" name:"NamespaceId"`
 
-	// VpcConfig对象
-	VpcConfig *VpcConfig `json:"VpcConfig,omitempty" name:"VpcConfig"`
+	// 分组所属集群ID
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
 }
 
 func (r *CreateServerlessGroupRequest) ToJsonString() string {
@@ -1678,8 +1764,14 @@ type DeployServerlessGroupRequest struct {
 	// 程序包ID
 	PkgId *string `json:"PkgId,omitempty" name:"PkgId"`
 
-	// VpcConfig对象，和创建接口中对象一致
-	VpcConfig *VpcConfig `json:"VpcConfig,omitempty" name:"VpcConfig"`
+	// 所需实例内存大小，取值为 1Gi 2Gi 4Gi 8Gi 16Gi，缺省为 1Gi，不传表示维持原态
+	Memory *string `json:"Memory,omitempty" name:"Memory"`
+
+	// 要求最小实例数，取值范围 [1, 4]，缺省为 1，不传表示维持原态
+	InstanceRequest *uint64 `json:"InstanceRequest,omitempty" name:"InstanceRequest"`
+
+	// 部署组启动参数，不传表示维持原态
+	StartupParameters *string `json:"StartupParameters,omitempty" name:"StartupParameters"`
 }
 
 func (r *DeployServerlessGroupRequest) ToJsonString() string {
@@ -2936,11 +3028,11 @@ func (r *DescribeServerlessGroupResponse) FromJsonString(s string) error {
 type DescribeServerlessGroupsRequest struct {
 	*tchttp.BaseRequest
 
-	// 分组所属应用ID
-	ApplicationId *string `json:"ApplicationId,omitempty" name:"ApplicationId"`
-
 	// 搜索字段，模糊搜索groupName字段
 	SearchWord *string `json:"SearchWord,omitempty" name:"SearchWord"`
+
+	// 分组所属应用ID
+	ApplicationId *string `json:"ApplicationId,omitempty" name:"ApplicationId"`
 
 	// 排序字段，默认为 createTime字段，支持id， name， createTime
 	OrderBy *string `json:"OrderBy,omitempty" name:"OrderBy"`
@@ -2953,6 +3045,12 @@ type DescribeServerlessGroupsRequest struct {
 
 	// 分页个数，默认为20， 取值应为1~50
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 分组所属名字空间ID
+	NamespaceId *string `json:"NamespaceId,omitempty" name:"NamespaceId"`
+
+	// 分组所属集群ID
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
 }
 
 func (r *DescribeServerlessGroupsRequest) ToJsonString() string {
@@ -3118,6 +3216,9 @@ type DescribeSimpleGroupsRequest struct {
 
 	// 模糊查询，部署组名称，不填写时查询全量
 	SearchWord *string `json:"SearchWord,omitempty" name:"SearchWord"`
+
+	// 部署组类型，精确过滤字段，M：service mesh, P：原生应用， M：网关应用
+	AppMicroServiceType *string `json:"AppMicroServiceType,omitempty" name:"AppMicroServiceType"`
 }
 
 func (r *DescribeSimpleGroupsRequest) ToJsonString() string {
@@ -3177,6 +3278,12 @@ type DescribeSimpleNamespacesRequest struct {
 
 	// 查询的命名空间类型列表
 	NamespaceTypeList []*string `json:"NamespaceTypeList,omitempty" name:"NamespaceTypeList" list`
+
+	// 通过命名空间名精确过滤
+	NamespaceName *string `json:"NamespaceName,omitempty" name:"NamespaceName"`
+
+	// 通过是否是默认命名空间过滤，不传表示拉取全部命名空间。0：默认，命名空间。1：非默认命名空间
+	IsDefault *string `json:"IsDefault,omitempty" name:"IsDefault"`
 }
 
 func (r *DescribeSimpleNamespacesRequest) ToJsonString() string {
@@ -4175,6 +4282,26 @@ type ServerlessGroup struct {
 	// 程序包版本
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PkgVersion *string `json:"PkgVersion,omitempty" name:"PkgVersion"`
+
+	// 所需实例内存大小
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Memory *string `json:"Memory,omitempty" name:"Memory"`
+
+	// 要求最小实例数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceRequest *uint64 `json:"InstanceRequest,omitempty" name:"InstanceRequest"`
+
+	// 部署组启动参数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StartupParameters *string `json:"StartupParameters,omitempty" name:"StartupParameters"`
+
+	// 应用ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ApplicationId *string `json:"ApplicationId,omitempty" name:"ApplicationId"`
+
+	// 部署组实例数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceCount *uint64 `json:"InstanceCount,omitempty" name:"InstanceCount"`
 }
 
 type ServerlessGroupPage struct {
@@ -4779,13 +4906,4 @@ type VmGroupSimple struct {
 	// 应用微服务类型
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MicroserviceType *string `json:"MicroserviceType,omitempty" name:"MicroserviceType"`
-}
-
-type VpcConfig struct {
-
-	// VpcId
-	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
-
-	// SubnetId 子网ID
-	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
 }

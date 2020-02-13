@@ -583,6 +583,90 @@ func (r *DeleteCdnDomainResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeBillingDataRequest struct {
+	*tchttp.BaseRequest
+
+	// 查询起始时间，如：2018-09-04 10:40:00，返回结果大于等于指定时间
+	// 根据指定时间粒度参数不同，会进行向前取整，如指定起始时间为 2018-09-04 10:40:00 按小时粒度查询，返回的第一个数据对应时间点为 2018-09-04 10:00:00
+	// 起始时间与结束时间间隔小于等于 90 天
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 查询结束时间，如：2018-09-04 10:40:00，返回结果小于等于指定时间
+	// 根据指定时间粒度参数不同，会进行向前取整，如指定结束时间为  2018-09-04 10:40:00 按小时粒度查询时，返回的最后一个数据对应时间点为 2018-09-04 10:00:00
+	// 起始时间与结束时间间隔小于等于 90 天
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 时间粒度，支持模式如下：
+	// min：1 分钟粒度，查询区间需要小于等于 24 小时
+	// 5min：5 分钟粒度，查询区间需要小于等于 31 天
+	// hour：1 小时粒度，查询区间需要小于等于 31 天内
+	// day：天粒度，查询区间需要大于 31 天
+	// 
+	// Area 字段为 overseas 时暂不支持1分钟粒度数据查询
+	Interval *string `json:"Interval,omitempty" name:"Interval"`
+
+	// 指定域名查询计费数据
+	Domain *string `json:"Domain,omitempty" name:"Domain"`
+
+	// 指定项目 ID 查询，[前往查看项目 ID](https://console.cloud.tencent.com/project)
+	// 若 Domain 参数填充了具体域名信息，则返回该域名的计费数据，而非指定项目计费数据
+	Project *int64 `json:"Project,omitempty" name:"Project"`
+
+	// 指定加速区域查询计费数据：
+	// mainland：中国境内
+	// overseas：中国境外
+	// 不填充时，默认为 mainland
+	Area *string `json:"Area,omitempty" name:"Area"`
+
+	// Area 为 overseas 时，指定国家/地区查询
+	// 省份、国家/地区编码可以查看 [省份编码映射](https://cloud.tencent.com/document/product/228/6316#.E7.9C.81.E4.BB.BD.E6.98.A0.E5.B0.84)
+	// 不填充时，查询所有国家/地区
+	District *int64 `json:"District,omitempty" name:"District"`
+
+	// 计费统计类型
+	// flux：计费流量
+	// bandwidth：计费带宽
+	// 默认为 bandwidth
+	Metric *string `json:"Metric,omitempty" name:"Metric"`
+}
+
+func (r *DescribeBillingDataRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeBillingDataRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeBillingDataResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 时间粒度，根据查询时传递参数指定：
+	// min：1 分钟粒度
+	// 5min：5 分钟粒度
+	// hour：1 小时粒度
+	// day：天粒度
+		Interval *string `json:"Interval,omitempty" name:"Interval"`
+
+		// 数据明细
+		Data []*ResourceBillingData `json:"Data,omitempty" name:"Data" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeBillingDataResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeBillingDataResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeCdnDataRequest struct {
 	*tchttp.BaseRequest
 
@@ -2590,6 +2674,19 @@ type RequestHeader struct {
 	// 自定义请求头配置规则
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	HeaderRules []*HttpHeaderPathRule `json:"HeaderRules,omitempty" name:"HeaderRules" list`
+}
+
+type ResourceBillingData struct {
+
+	// 资源名称，根据查询条件不同分为以下几类：
+	// 某一个具体域名：表示该域名明细数据
+	// multiDomains：表示多域名汇总明细数据
+	// 某一个项目 ID：指定项目查询时，显示为项目 ID
+	// all：账号维度数据明细
+	Resource *string `json:"Resource,omitempty" name:"Resource"`
+
+	// 计费数据详情
+	BillingData []*CdnData `json:"BillingData,omitempty" name:"BillingData" list`
 }
 
 type ResourceData struct {

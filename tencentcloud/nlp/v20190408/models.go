@@ -26,8 +26,8 @@ type AutoSummarizationRequest struct {
 	// 待处理的文本（仅支持UTF-8格式，不超过2000字）
 	Text *string `json:"Text,omitempty" name:"Text"`
 
-	// 指定摘要的长度（默认值为200）
-	// 注：为保证摘要的可读性，最终生成的摘要长度并不会严格遵循这个值，会有略微的浮动
+	// 指定摘要的长度上限（默认值为200）
+	// 注：为保证摘要的可读性，最终生成的摘要长度会低于指定的长度上限。
 	Length *uint64 `json:"Length,omitempty" name:"Length"`
 }
 
@@ -351,31 +351,6 @@ type EntityRelationSubject struct {
 	Popular []*int64 `json:"Popular,omitempty" name:"Popular" list`
 }
 
-type EvilToken struct {
-
-	// 文本是否恶意：
-	// 0、正常；
-	// 1、恶意；
-	// 2、可疑送审
-	EvilFlag *uint64 `json:"EvilFlag,omitempty" name:"EvilFlag"`
-
-	// 恶意关键词组
-	EvilKeywords []*string `json:"EvilKeywords,omitempty" name:"EvilKeywords" list`
-
-	// 文本恶意类型：
-	// 0、正常；
-	// 1、政治；
-	// 2、色情；
-	// 3、辱骂/低俗；
-	// 4、暴恐/毒品；
-	// 5、广告/灌水；
-	// 6、迷信/邪教；
-	// 7、其他违法（如跨站追杀/恶意竞争等）；
-	// 8、综合；
-	// 9、联系方式/链接
-	EvilType *uint64 `json:"EvilType,omitempty" name:"EvilType"`
-}
-
 type Keyword struct {
 
 	// 权重
@@ -501,43 +476,6 @@ type PosToken struct {
 
 	// 基础词
 	Word *string `json:"Word,omitempty" name:"Word"`
-}
-
-type SensitiveWordsRecognitionRequest struct {
-	*tchttp.BaseRequest
-
-	// 待识别的文本（仅支持UTF-8格式，不超过2000字）
-	Text *string `json:"Text,omitempty" name:"Text"`
-}
-
-func (r *SensitiveWordsRecognitionRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-func (r *SensitiveWordsRecognitionRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
-}
-
-type SensitiveWordsRecognitionResponse struct {
-	*tchttp.BaseResponse
-	Response *struct {
-
-		// 敏感词数组
-		SensitiveWords []*string `json:"SensitiveWords,omitempty" name:"SensitiveWords" list`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
-}
-
-func (r *SensitiveWordsRecognitionResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-func (r *SensitiveWordsRecognitionResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
 }
 
 type SentenceEmbeddingRequest struct {
@@ -707,66 +645,6 @@ func (r *SimilarWordsResponse) ToJsonString() string {
 }
 
 func (r *SimilarWordsResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
-}
-
-type TextApprovalRequest struct {
-	*tchttp.BaseRequest
-
-	// 待审核的文本（仅支持UTF-8格式，不超过2000字）
-	Text *string `json:"Text,omitempty" name:"Text"`
-
-	// 文本审核模式（默认取1值）：
-	// 1、全领域审核
-	Flag *uint64 `json:"Flag,omitempty" name:"Flag"`
-}
-
-func (r *TextApprovalRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-func (r *TextApprovalRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
-}
-
-type TextApprovalResponse struct {
-	*tchttp.BaseResponse
-	Response *struct {
-
-		// 文本审核输出结果列表，列表每个元素包含以下信息：
-	// 
-	// EvilFlag（文本恶意等级）：
-	// 0、正常；
-	// 1、恶意；
-	// 2、可疑送审
-	// 
-	// EvilType（文本恶意类型）：
-	// 0、正常；
-	// 1、政治；
-	// 2、色情；
-	// 3、辱骂/低俗；
-	// 4、暴恐/毒品；
-	// 5、广告/灌水；
-	// 6、迷信/邪教；
-	// 7、其他违法(如赌博/造假/违法交易等)；
-	// 8、综合；
-	// 9、联系方式/链接
-	// 
-	// EvilKeywords（恶意关键词组）
-		EvilTokens []*EvilToken `json:"EvilTokens,omitempty" name:"EvilTokens" list`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
-}
-
-func (r *TextApprovalResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-func (r *TextApprovalResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
