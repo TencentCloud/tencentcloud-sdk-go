@@ -169,6 +169,13 @@ type AdaptiveDynamicStreamingTemplate struct {
 	// 音频轨模板列表。
 	AudioTrackTemplateSet []*AudioTrackTemplateInfo `json:"AudioTrackTemplateSet,omitempty" name:"AudioTrackTemplateSet" list`
 
+	// 自适应转码格式，取值范围：
+	// <li>HLS。</li>
+	Format *string `json:"Format,omitempty" name:"Format"`
+
+	// 自适应转码输入流参数信息，最多输入10路流。
+	StreamInfos []*AdaptiveStreamTemplate `json:"StreamInfos,omitempty" name:"StreamInfos" list`
+
 	// 是否禁止视频低码率转高码率，取值范围：
 	// <li>0：否，</li>
 	// <li>1：是。</li>
@@ -184,6 +191,20 @@ type AdaptiveDynamicStreamingTemplate struct {
 
 	// 模板最后修改时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
 	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
+}
+
+type AdaptiveStreamTemplate struct {
+
+	// 视频参数信息。
+	Video *VideoTemplateInfo `json:"Video,omitempty" name:"Video"`
+
+	// 音频参数信息。
+	Audio *AudioTemplateInfo `json:"Audio,omitempty" name:"Audio"`
+
+	// 是否移除音频流，取值范围：
+	// <li>0：否，</li>
+	// <li>1：是。</li>
+	RemoveAudio *uint64 `json:"RemoveAudio,omitempty" name:"RemoveAudio"`
 }
 
 type AiAnalysisResult struct {
@@ -7820,6 +7841,48 @@ type OutputVideoStream struct {
 	// 视频帧率，取值范围：[0, 60]，单位：Hz。
 	// 默认值：0，表示和第一个视频轨的第一个视频片段的视频帧率一致。
 	Fps *int64 `json:"Fps,omitempty" name:"Fps"`
+}
+
+type ParseStreamingManifestRequest struct {
+	*tchttp.BaseRequest
+
+	// 待解析的索引文件内容。
+	MediaManifestContent *string `json:"MediaManifestContent,omitempty" name:"MediaManifestContent"`
+
+	// 视频索引文件格式。默认 m3u8 格式。
+	// <li>m3u8</li>
+	// <li>mpd</li>
+	ManifestType *string `json:"ManifestType,omitempty" name:"ManifestType"`
+}
+
+func (r *ParseStreamingManifestRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ParseStreamingManifestRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ParseStreamingManifestResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 分片文件列表。
+		MediaSegmentSet []*string `json:"MediaSegmentSet,omitempty" name:"MediaSegmentSet" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ParseStreamingManifestResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ParseStreamingManifestResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
 }
 
 type PoliticalAsrReviewTemplateInfo struct {

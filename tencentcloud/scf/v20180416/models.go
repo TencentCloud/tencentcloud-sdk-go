@@ -181,6 +181,12 @@ type CreateFunctionRequest struct {
 
 	// CodeSource 代码来源，支持以下'ZipFile', 'Cos', 'Demo', 'TempCos', 'Git'之一，使用Git来源必须指定此字段
 	CodeSource *string `json:"CodeSource,omitempty" name:"CodeSource"`
+
+	// 函数要关联的Layer版本列表，Layer会按照在列表中顺序依次覆盖。
+	Layers []*LayerVersionSimple `json:"Layers,omitempty" name:"Layers" list`
+
+	// 死信队列参数
+	DeadLetterConfig *DeadLetterConfig `json:"DeadLetterConfig,omitempty" name:"DeadLetterConfig"`
 }
 
 func (r *CreateFunctionRequest) ToJsonString() string {
@@ -259,7 +265,7 @@ type CreateTriggerRequest struct {
 	// 触发器类型，目前支持 cos 、cmq、 timer、 ckafka类型
 	Type *string `json:"Type,omitempty" name:"Type"`
 
-	// 触发器对应的参数，如果是 timer 类型的触发器其内容是 Linux cron 表达式。如果是cos类型的触发器，其内容是json字符串 {"event":"cos:ObjectCreated:*","filter":{"Prefix":"","Suffix":""}},其中event是触发的cos事件，fitler中Prefix是对应的文件前缀过滤条件，Suffix是后缀过滤条件，如果不需要filter条件可不传。如果是其他触发器，见具体触发器说明
+	// 触发器对应的参数，可见具体[触发器描述说明](https://cloud.tencent.com/document/product/583/39901)
 	TriggerDesc *string `json:"TriggerDesc,omitempty" name:"TriggerDesc"`
 
 	// 函数的命名空间
@@ -302,6 +308,18 @@ func (r *CreateTriggerResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DeadLetterConfig struct {
+
+	// 死信队列模式
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 死信队列名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 死信队列主题模式的标签形式
+	FilterType *string `json:"FilterType,omitempty" name:"FilterType"`
+}
+
 type DeleteFunctionRequest struct {
 	*tchttp.BaseRequest
 
@@ -336,6 +354,43 @@ func (r *DeleteFunctionResponse) ToJsonString() string {
 }
 
 func (r *DeleteFunctionResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteLayerVersionRequest struct {
+	*tchttp.BaseRequest
+
+	// 层名称
+	LayerName *string `json:"LayerName,omitempty" name:"LayerName"`
+
+	// 版本号
+	LayerVersion *int64 `json:"LayerVersion,omitempty" name:"LayerVersion"`
+}
+
+func (r *DeleteLayerVersionRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteLayerVersionRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteLayerVersionResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DeleteLayerVersionResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteLayerVersionResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -420,6 +475,16 @@ func (r *DeleteTriggerResponse) ToJsonString() string {
 
 func (r *DeleteTriggerResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
+}
+
+type EipConfigOut struct {
+
+	// 是否是固定IP，["ENABLE","DISABLE"]
+	EipStatus *string `json:"EipStatus,omitempty" name:"EipStatus"`
+
+	// IP列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EipAddress []*string `json:"EipAddress,omitempty" name:"EipAddress" list`
 }
 
 type EipOutConfig struct {
@@ -595,7 +660,7 @@ type GetFunctionLogsRequest struct {
 	// 根据某个字段排序日志,支持以下字段：function_name, duration, mem_usage, start_time
 	OrderBy *string `json:"OrderBy,omitempty" name:"OrderBy"`
 
-	// 日志过滤条件。可用来区分正确和错误日志，filter.retCode=not0 表示只返回错误日志，filter.retCode=is0 表示只返回正确日志，不传，则返回所有日志
+	// 日志过滤条件。可用来区分正确和错误日志，filter.RetCode=not0 表示只返回错误日志，filter.RetCode=is0 表示只返回正确日志，不传，则返回所有日志
 	Filter *LogFilter `json:"Filter,omitempty" name:"Filter"`
 
 	// 函数的命名空间
@@ -772,6 +837,23 @@ type GetFunctionResponse struct {
 		// 是否启用L5
 		L5Enable *string `json:"L5Enable,omitempty" name:"L5Enable"`
 
+		// 函数关联的Layer版本信息
+		Layers []*LayerVersionInfo `json:"Layers,omitempty" name:"Layers" list`
+
+		// 函数关联的死信队列信息
+		DeadLetterConfig *DeadLetterConfig `json:"DeadLetterConfig,omitempty" name:"DeadLetterConfig"`
+
+		// 函数创建回见
+		AddTime *string `json:"AddTime,omitempty" name:"AddTime"`
+
+		// 公网访问配置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		PublicNetConfig *PublicNetConfigOut `json:"PublicNetConfig,omitempty" name:"PublicNetConfig"`
+
+		// 是否启用Ons
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		OnsEnable *string `json:"OnsEnable,omitempty" name:"OnsEnable"`
+
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
@@ -783,6 +865,74 @@ func (r *GetFunctionResponse) ToJsonString() string {
 }
 
 func (r *GetFunctionResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type GetLayerVersionRequest struct {
+	*tchttp.BaseRequest
+
+	// 层名称
+	LayerName *string `json:"LayerName,omitempty" name:"LayerName"`
+
+	// 版本号
+	LayerVersion *int64 `json:"LayerVersion,omitempty" name:"LayerVersion"`
+}
+
+func (r *GetLayerVersionRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *GetLayerVersionRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type GetLayerVersionResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 适配的运行时
+		CompatibleRuntimes []*string `json:"CompatibleRuntimes,omitempty" name:"CompatibleRuntimes" list`
+
+		// 层中版本文件的SHA256编码
+		CodeSha256 *string `json:"CodeSha256,omitempty" name:"CodeSha256"`
+
+		// 层中版本文件的下载地址
+		Location *string `json:"Location,omitempty" name:"Location"`
+
+		// 版本的创建时间
+		AddTime *string `json:"AddTime,omitempty" name:"AddTime"`
+
+		// 版本的描述
+		Description *string `json:"Description,omitempty" name:"Description"`
+
+		// 许可证信息
+		LicenseInfo *string `json:"LicenseInfo,omitempty" name:"LicenseInfo"`
+
+		// 版本号
+		LayerVersion *int64 `json:"LayerVersion,omitempty" name:"LayerVersion"`
+
+		// 层名称
+		LayerName *string `json:"LayerName,omitempty" name:"LayerName"`
+
+		// 层的具体版本当前状态，可能取值：
+	// Active 正常
+	// Publishing  发布中
+	// PublishFailed  发布失败
+	// Deleted 已删除
+		Status *string `json:"Status,omitempty" name:"Status"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *GetLayerVersionResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *GetLayerVersionResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -836,6 +986,46 @@ func (r *InvokeResponse) ToJsonString() string {
 
 func (r *InvokeResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
+}
+
+type LayerVersionInfo struct {
+
+	// 版本适用的运行时
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CompatibleRuntimes []*string `json:"CompatibleRuntimes,omitempty" name:"CompatibleRuntimes" list`
+
+	// 创建时间
+	AddTime *string `json:"AddTime,omitempty" name:"AddTime"`
+
+	// 版本描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Description *string `json:"Description,omitempty" name:"Description"`
+
+	// 许可证信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LicenseInfo *string `json:"LicenseInfo,omitempty" name:"LicenseInfo"`
+
+	// 版本号
+	LayerVersion *int64 `json:"LayerVersion,omitempty" name:"LayerVersion"`
+
+	// 层名称
+	LayerName *string `json:"LayerName,omitempty" name:"LayerName"`
+
+	// 层的具体版本当前状态，可能取值：
+	// Active 正常
+	// Publishing  发布中
+	// PublishFailed  发布失败
+	// Deleted 已删除
+	Status *string `json:"Status,omitempty" name:"Status"`
+}
+
+type LayerVersionSimple struct {
+
+	// layer名称
+	LayerName *string `json:"LayerName,omitempty" name:"LayerName"`
+
+	// 版本号
+	LayerVersion *int64 `json:"LayerVersion,omitempty" name:"LayerVersion"`
 }
 
 type ListFunctionsRequest struct {
@@ -899,6 +1089,95 @@ func (r *ListFunctionsResponse) ToJsonString() string {
 }
 
 func (r *ListFunctionsResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ListLayerVersionsRequest struct {
+	*tchttp.BaseRequest
+
+	// 层名称
+	LayerName *string `json:"LayerName,omitempty" name:"LayerName"`
+
+	// 适配的运行时
+	CompatibleRuntime []*string `json:"CompatibleRuntime,omitempty" name:"CompatibleRuntime" list`
+}
+
+func (r *ListLayerVersionsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ListLayerVersionsRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ListLayerVersionsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 层版本列表
+		LayerVersions []*LayerVersionInfo `json:"LayerVersions,omitempty" name:"LayerVersions" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ListLayerVersionsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ListLayerVersionsResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ListLayersRequest struct {
+	*tchttp.BaseRequest
+
+	// 适配的运行时
+	CompatibleRuntime *string `json:"CompatibleRuntime,omitempty" name:"CompatibleRuntime"`
+
+	// Offset
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// Limit
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 查询key，模糊匹配名称
+	SearchKey *string `json:"SearchKey,omitempty" name:"SearchKey"`
+}
+
+func (r *ListLayersRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ListLayersRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ListLayersResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 层列表
+		Layers []*LayerVersionInfo `json:"Layers,omitempty" name:"Layers" list`
+
+		// 层总数
+		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ListLayersResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ListLayersResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -1038,6 +1317,64 @@ type Namespace struct {
 
 	// 默认default，TCB表示是小程序云开发创建的
 	Type *string `json:"Type,omitempty" name:"Type"`
+}
+
+type PublicNetConfigOut struct {
+
+	// 是否开启公网访问能力取值['DISABLE','ENABLE']
+	PublicNetStatus *string `json:"PublicNetStatus,omitempty" name:"PublicNetStatus"`
+
+	// Eip配置
+	EipConfig *EipConfigOut `json:"EipConfig,omitempty" name:"EipConfig"`
+}
+
+type PublishLayerVersionRequest struct {
+	*tchttp.BaseRequest
+
+	// 层名称，支持26个英文字母大小写、数字、连接符和下划线，第一个字符只能以字母开头，最后一个字符不能为连接符或者下划线，名称长度1-64
+	LayerName *string `json:"LayerName,omitempty" name:"LayerName"`
+
+	// 层适用的运行时，可多选，可选的值对应函数的 Runtime 可选值。
+	CompatibleRuntimes []*string `json:"CompatibleRuntimes,omitempty" name:"CompatibleRuntimes" list`
+
+	// 层的文件来源或文件内容
+	Content *Code `json:"Content,omitempty" name:"Content"`
+
+	// 层的版本的描述
+	Description *string `json:"Description,omitempty" name:"Description"`
+
+	// 层的软件许可证
+	LicenseInfo *string `json:"LicenseInfo,omitempty" name:"LicenseInfo"`
+}
+
+func (r *PublishLayerVersionRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *PublishLayerVersionRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type PublishLayerVersionResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 本次创建的层的版本号
+		LayerVersion *int64 `json:"LayerVersion,omitempty" name:"LayerVersion"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *PublishLayerVersionResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *PublishLayerVersionResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
 }
 
 type PublishVersionRequest struct {
@@ -1269,6 +1606,15 @@ type UpdateFunctionConfigurationRequest struct {
 
 	// 是否开启L5访问能力，TRUE 为开启，FALSE为关闭
 	L5Enable *string `json:"L5Enable,omitempty" name:"L5Enable"`
+
+	// 函数要关联的层版本列表，层的版本会按照在列表中顺序依次覆盖。
+	Layers []*LayerVersionSimple `json:"Layers,omitempty" name:"Layers" list`
+
+	// 函数关联的死信队列信息
+	DeadLetterConfig *DeadLetterConfig `json:"DeadLetterConfig,omitempty" name:"DeadLetterConfig"`
+
+	// 是否开启Ons访问能力，TRUE 为开启，FALSE为关闭
+	OnsEnable *string `json:"OnsEnable,omitempty" name:"OnsEnable"`
 }
 
 func (r *UpdateFunctionConfigurationRequest) ToJsonString() string {
@@ -1346,9 +1692,9 @@ type Variable struct {
 
 type VpcConfig struct {
 
-	// 私有网络 的 id
+	// 私有网络 的 Id
 	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
 
-	// 子网的 id
+	// 子网的 Id
 	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
 }

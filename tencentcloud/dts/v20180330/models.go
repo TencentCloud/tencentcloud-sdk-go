@@ -574,10 +574,10 @@ type MigrateDetailInfo struct {
 	// 当前步骤进度,如:
 	CurrentStepProgress *string `json:"CurrentStepProgress,omitempty" name:"CurrentStepProgress"`
 
-	// 主从差距，MB
+	// 主从差距，MB；在增量同步阶段有效，目前支持产品为：redis和mysql
 	MasterSlaveDistance *int64 `json:"MasterSlaveDistance,omitempty" name:"MasterSlaveDistance"`
 
-	// 主从差距，秒
+	// 主从差距，秒；在增量同步阶段有效，目前支持产品为：mysql
 	SecondsBehindMaster *int64 `json:"SecondsBehindMaster,omitempty" name:"SecondsBehindMaster"`
 
 	// 步骤信息

@@ -1913,6 +1913,31 @@ func (c *Client) ModifyWordSample(request *ModifyWordSampleRequest) (response *M
     return
 }
 
+func NewParseStreamingManifestRequest() (request *ParseStreamingManifestRequest) {
+    request = &ParseStreamingManifestRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vod", APIVersion, "ParseStreamingManifest")
+    return
+}
+
+func NewParseStreamingManifestResponse() (response *ParseStreamingManifestResponse) {
+    response = &ParseStreamingManifestResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 上传 HLS 视频时，解析索引文件内容，返回待上传的分片文件列表。分片文件路径必须是当前目录或子目录的相对路径，不能是 URL，不能是绝对路径。
+func (c *Client) ParseStreamingManifest(request *ParseStreamingManifestRequest) (response *ParseStreamingManifestResponse, err error) {
+    if request == nil {
+        request = NewParseStreamingManifestRequest()
+    }
+    response = NewParseStreamingManifestResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewProcessMediaRequest() (request *ProcessMediaRequest) {
     request = &ProcessMediaRequest{
         BaseRequest: &tchttp.BaseRequest{},

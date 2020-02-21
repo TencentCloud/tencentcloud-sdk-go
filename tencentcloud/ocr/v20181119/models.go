@@ -551,6 +551,17 @@ type EduPaperOCRRequest struct {
 	// 图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。
 	// 非腾讯云存储的 Url 速度和稳定性可能受一定影响。
 	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
+
+	// 扩展配置信息。
+	// 配置格式：{"option1":value1,"option2":value2}
+	// 可配置信息：
+	//       参数名称  是否必选   类型   可选值  默认值  描述
+	//       task_type  否  Int32  [0,1]  1  用于选择任务类型: 0: 关闭版式分析与处理 1: 开启版式分析处理
+	//       is_structuralization 否 Bool false\true true  用于选择是否结构化输出：false：返回包体返回通用输出 true：返回包体同时返回通用和结构化输出
+	//       if_readable_format 否 Bool false\true false 是否按照版式整合通用文本/公式输出结果
+	// 例子：
+	// {"task_type": 1,"is_structuralization": true,"if_readable_format": true}
+	Config *string `json:"Config,omitempty" name:"Config"`
 }
 
 func (r *EduPaperOCRRequest) ToJsonString() string {

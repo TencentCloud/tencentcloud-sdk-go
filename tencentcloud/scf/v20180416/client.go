@@ -174,6 +174,31 @@ func (c *Client) DeleteFunction(request *DeleteFunctionRequest) (response *Delet
     return
 }
 
+func NewDeleteLayerVersionRequest() (request *DeleteLayerVersionRequest) {
+    request = &DeleteLayerVersionRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("scf", APIVersion, "DeleteLayerVersion")
+    return
+}
+
+func NewDeleteLayerVersionResponse() (response *DeleteLayerVersionResponse) {
+    response = &DeleteLayerVersionResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 删除指定层的指定版本，被删除的版本无法再关联到函数上，但不会影响正在引用这个层的函数。
+func (c *Client) DeleteLayerVersion(request *DeleteLayerVersionRequest) (response *DeleteLayerVersionResponse, err error) {
+    if request == nil {
+        request = NewDeleteLayerVersionRequest()
+    }
+    response = NewDeleteLayerVersionResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteNamespaceRequest() (request *DeleteNamespaceRequest) {
     request = &DeleteNamespaceRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -299,6 +324,31 @@ func (c *Client) GetFunctionLogs(request *GetFunctionLogsRequest) (response *Get
     return
 }
 
+func NewGetLayerVersionRequest() (request *GetLayerVersionRequest) {
+    request = &GetLayerVersionRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("scf", APIVersion, "GetLayerVersion")
+    return
+}
+
+func NewGetLayerVersionResponse() (response *GetLayerVersionResponse) {
+    response = &GetLayerVersionResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 获取层版本详细信息，包括用于下载层中文件的链接。
+func (c *Client) GetLayerVersion(request *GetLayerVersionRequest) (response *GetLayerVersionResponse, err error) {
+    if request == nil {
+        request = NewGetLayerVersionRequest()
+    }
+    response = NewGetLayerVersionResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewInvokeRequest() (request *InvokeRequest) {
     request = &InvokeRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -349,6 +399,56 @@ func (c *Client) ListFunctions(request *ListFunctionsRequest) (response *ListFun
     return
 }
 
+func NewListLayerVersionsRequest() (request *ListLayerVersionsRequest) {
+    request = &ListLayerVersionsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("scf", APIVersion, "ListLayerVersions")
+    return
+}
+
+func NewListLayerVersionsResponse() (response *ListLayerVersionsResponse) {
+    response = &ListLayerVersionsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 返回指定层的全部版本的信息
+func (c *Client) ListLayerVersions(request *ListLayerVersionsRequest) (response *ListLayerVersionsResponse, err error) {
+    if request == nil {
+        request = NewListLayerVersionsRequest()
+    }
+    response = NewListLayerVersionsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewListLayersRequest() (request *ListLayersRequest) {
+    request = &ListLayersRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("scf", APIVersion, "ListLayers")
+    return
+}
+
+func NewListLayersResponse() (response *ListLayersResponse) {
+    response = &ListLayersResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 返回全部层的列表，其中包含了每个层最新版本的信息，可以通过适配运行时进行过滤。
+func (c *Client) ListLayers(request *ListLayersRequest) (response *ListLayersResponse, err error) {
+    if request == nil {
+        request = NewListLayersRequest()
+    }
+    response = NewListLayersResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewListNamespacesRequest() (request *ListNamespacesRequest) {
     request = &ListNamespacesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -395,6 +495,31 @@ func (c *Client) ListVersionByFunction(request *ListVersionByFunctionRequest) (r
         request = NewListVersionByFunctionRequest()
     }
     response = NewListVersionByFunctionResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewPublishLayerVersionRequest() (request *PublishLayerVersionRequest) {
+    request = &PublishLayerVersionRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("scf", APIVersion, "PublishLayerVersion")
+    return
+}
+
+func NewPublishLayerVersionResponse() (response *PublishLayerVersionResponse) {
+    response = &PublishLayerVersionResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 使用给定的zip文件或cos对象创建一个层的新版本，每次使用相同的层的名称调用本接口，都会生成一个新版本。
+func (c *Client) PublishLayerVersion(request *PublishLayerVersionRequest) (response *PublishLayerVersionResponse, err error) {
+    if request == nil {
+        request = NewPublishLayerVersionRequest()
+    }
+    response = NewPublishLayerVersionResponse()
     err = c.Send(request, response)
     return
 }

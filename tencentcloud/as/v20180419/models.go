@@ -1782,6 +1782,9 @@ type ForwardLoadBalancer struct {
 
 	// 转发规则ID，注意：针对七层监听器此参数必填
 	LocationId *string `json:"LocationId,omitempty" name:"LocationId"`
+
+	// 负载均衡实例所属地域，默认取AS服务所在地域
+	Region *string `json:"Region,omitempty" name:"Region"`
 }
 
 type HostNameSettings struct {
@@ -2006,7 +2009,7 @@ type LaunchConfiguration struct {
 	HostNameSettings *HostNameSettings `json:"HostNameSettings,omitempty" name:"HostNameSettings"`
 
 	// 云服务器实例名（InstanceName）的相关设置。
-	InstanceNameSettings []*InstanceNameSettings `json:"InstanceNameSettings,omitempty" name:"InstanceNameSettings" list`
+	InstanceNameSettings *InstanceNameSettings `json:"InstanceNameSettings,omitempty" name:"InstanceNameSettings"`
 
 	// 预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月实例的购买时长、是否设置自动续费等属性。若指定实例的付费模式为预付费则该参数必传。
 	InstanceChargePrepaid *InstanceChargePrepaid `json:"InstanceChargePrepaid,omitempty" name:"InstanceChargePrepaid"`
@@ -2900,7 +2903,7 @@ type UpgradeLaunchConfigurationRequest struct {
 	HostNameSettings *HostNameSettings `json:"HostNameSettings,omitempty" name:"HostNameSettings"`
 
 	// 云服务器实例名（InstanceName）的相关设置。
-	InstanceNameSettings []*InstanceNameSettings `json:"InstanceNameSettings,omitempty" name:"InstanceNameSettings" list`
+	InstanceNameSettings *InstanceNameSettings `json:"InstanceNameSettings,omitempty" name:"InstanceNameSettings"`
 
 	// 预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月实例的购买时长、是否设置自动续费等属性。若指定实例的付费模式为预付费则该参数必传。
 	InstanceChargePrepaid *InstanceChargePrepaid `json:"InstanceChargePrepaid,omitempty" name:"InstanceChargePrepaid"`

@@ -63,12 +63,10 @@ type DescribeItemsRequest struct {
 	// 条数，必须大于0，最大值为30
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 
-	// （电台/歌单）ID，CategoryId和CategoryCode两个必传1个，可以从【获取分类内容（Station）列表接口】中获取。
-	// 链接地址：https://cloud.tencent.com/document/product/1155/40109
+	// （电台/歌单）ID，CategoryId和CategoryCode两个必传1个，可以从<a href="https://cloud.tencent.com/document/product/1155/40109">获取分类内容（Station）列表接口</a>中获取。
 	CategoryId *string `json:"CategoryId,omitempty" name:"CategoryId"`
 
-	// （电台/歌单）ID，CategoryId和CategoryCode两个必传1个，可以从【获取分类内容（Station）列表接口】中获取。
-	// 链接地址：https://cloud.tencent.com/document/product/1155/40109
+	// （电台/歌单）ID，CategoryId和CategoryCode两个必传1个，可以从<a href="https://cloud.tencent.com/document/product/1155/40109">获取分类内容（Station）列表接口</a>中获取。
 	CategoryCode *string `json:"CategoryCode,omitempty" name:"CategoryCode"`
 }
 
@@ -301,7 +299,7 @@ type Lyric struct {
 
 type Music struct {
 
-	// 音乐播放链接相对路径，必须通过在音乐版权助手上登记的域名进行拼接。
+	// 音乐播放链接相对路径，必须通过在正版曲库直通车控制台上登记的域名进行拼接。
 	Url *string `json:"Url,omitempty" name:"Url"`
 
 	// 音频文件大小
@@ -317,6 +315,10 @@ type Music struct {
 	// Song fragment end.试听片段结束时间, 试听时长为auditionEnd-auditionBegin
 	// Unit :ms
 	AuditionEnd *uint64 `json:"AuditionEnd,omitempty" name:"AuditionEnd"`
+
+	// 音乐播放链接全路径，前提是在正版曲库直通车控制台添加过域名，否则返回空字符。
+	// 如果添加过多个域名只返回第一个添加域名的播放全路径。
+	FullUrl *string `json:"FullUrl,omitempty" name:"FullUrl"`
 }
 
 type ReportDataRequest struct {

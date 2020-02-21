@@ -283,45 +283,6 @@ func (c *Client) EnhanceImage(request *EnhanceImageRequest) (response *EnhanceIm
     return
 }
 
-func NewImageModerationRequest() (request *ImageModerationRequest) {
-    request = &ImageModerationRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    request.Init().WithApiInfo("tiia", APIVersion, "ImageModeration")
-    return
-}
-
-func NewImageModerationResponse() (response *ImageModerationResponse) {
-    response = &ImageModerationResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    }
-    return
-}
-
-// 图像审核包含鉴黄、政治敏感识别、暴恐识别、图文审核等服务。
-// 
-// • 鉴黄：识别图片中是否存在涉黄内容，将图片分为正常、性感、色情三类，并输出分类的置信度。
-// 
-// • 政治敏感识别：识别图片中是否存在政治人物、政治恶搞、著名政治事件照片等内容。
-// 
-// • 暴恐识别：识别图片中的暴力恐怖元素，例如武器、管制刀具、血腥、恐怖主义等。
-// 
-// • 图文审核：结合OCR、NLP和二维码识别算法，分析图片中的文字是否违规，或是否存在二维码等营销内容，并输出违规内容的类别（涉黄、涉政、谩骂、广告营销、暴恐等）。
-// 
-// 为了方便使用、减少图片传输次数，图像审核包装成多合一接口，实际上是多个服务。
-// 
-// 图像审核根据服务的调用次数收费。例如一张图片同时调用鉴黄、图文审核两个服务，那么此次调用按照两次计费。
-// >     
-// - 公共参数中的签名方式必须指定为V3版本，即配置SignatureMethod参数为TC3-HMAC-SHA256。
-func (c *Client) ImageModeration(request *ImageModerationRequest) (response *ImageModerationResponse, err error) {
-    if request == nil {
-        request = NewImageModerationRequest()
-    }
-    response = NewImageModerationResponse()
-    err = c.Send(request, response)
-    return
-}
-
 func NewRecognizeCarRequest() (request *RecognizeCarRequest) {
     request = &RecognizeCarRequest{
         BaseRequest: &tchttp.BaseRequest{},

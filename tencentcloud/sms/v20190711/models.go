@@ -45,23 +45,23 @@ type AddSmsSignRequest struct {
 	// 注：必须按照对应关系选择证明类型，否则会审核失败。
 	SignType *uint64 `json:"SignType,omitempty" name:"SignType"`
 
-	// 证明类型。其中：
+	// 证明类型：
 	// 0：三证合一。
 	// 1：企业营业执照。
 	// 2：组织机构代码证书。
 	// 3：社会信用代码证书。
-	// 4：应用后台管理截图(个人开发APP)。
-	// 5：网站备案后台截图(个人开发网站)。
-	// 6：小程序设置页面截图(个人认证小程序)。
+	// 4：应用后台管理截图（个人开发APP）。
+	// 5：网站备案后台截图（个人开发网站）。
+	// 6：小程序设置页面截图（个人认证小程序）。
 	// 7：商标注册书。
 	DocumentType *uint64 `json:"DocumentType,omitempty" name:"DocumentType"`
 
-	// 是否国际短信。其中：
+	// 是否国际/港澳台短信：
 	// 0：表示国内短信。
-	// 1：表示海外短信。
+	// 1：表示国际/港澳台短信。
 	International *uint64 `json:"International,omitempty" name:"International"`
 
-	// 签名用途。其中：
+	// 签名用途：
 	// 0：自用。
 	// 1：他用。
 	UsedMethod *uint64 `json:"UsedMethod,omitempty" name:"UsedMethod"`
@@ -120,7 +120,9 @@ type AddSmsTemplateRequest struct {
 	// 短信类型，0表示普通短信, 1表示营销短信。
 	SmsType *uint64 `json:"SmsType,omitempty" name:"SmsType"`
 
-	// 0表示国内短信，1表示国际/港澳台短信，默认为0。
+	// 是否国际/港澳台短信：
+	// 0：表示国内短信。
+	// 1：表示国际/港澳台短信。
 	International *uint64 `json:"International,omitempty" name:"International"`
 
 	// 模板备注，例如申请原因，使用场景等。
@@ -349,7 +351,7 @@ type ModifySignStatus struct {
 type ModifySmsSignRequest struct {
 	*tchttp.BaseRequest
 
-	// 待修改的签名Id。
+	// 待修改的签名 ID。
 	SignId *uint64 `json:"SignId,omitempty" name:"SignId"`
 
 	// 签名名称。
@@ -365,7 +367,7 @@ type ModifySmsSignRequest struct {
 	// 注：必须按照对应关系选择证明类型，否则会审核失败。
 	SignType *uint64 `json:"SignType,omitempty" name:"SignType"`
 
-	// 证明类型。其中：
+	// 证明类型：
 	// 0：三证合一。
 	// 1：企业营业执照。
 	// 2：组织机构代码证书。
@@ -376,12 +378,12 @@ type ModifySmsSignRequest struct {
 	// 7：商标注册书。
 	DocumentType *uint64 `json:"DocumentType,omitempty" name:"DocumentType"`
 
-	// 是否国际短信。其中：
+	// 是否国际/港澳台短信：
 	// 0：表示国内短信。
-	// 1：表示海外短信。
+	// 1：表示国际/港澳台短信。
 	International *uint64 `json:"International,omitempty" name:"International"`
 
-	// 签名用途。其中：
+	// 签名用途：
 	// 0：自用。
 	// 1：他用。
 	UsedMethod *uint64 `json:"UsedMethod,omitempty" name:"UsedMethod"`
@@ -443,7 +445,9 @@ type ModifySmsTemplateRequest struct {
 	// 短信类型，0表示普通短信, 1表示营销短信。
 	SmsType *uint64 `json:"SmsType,omitempty" name:"SmsType"`
 
-	// 0表示国内短信，1表示国际/港澳台短信，默认为0。
+	// 是否国际/港澳台短信：
+	// 0：表示国内短信。
+	// 1：表示国际/港澳台短信。
 	International *uint64 `json:"International,omitempty" name:"International"`
 
 	// 模板备注，例如申请原因，使用场景等。

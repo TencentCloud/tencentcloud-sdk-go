@@ -277,13 +277,13 @@ func (r *BalanceRoGroupLoadResponse) FromJsonString(s string) error {
 
 type BinlogInfo struct {
 
-	// 备份文件名
+	// binlog 日志备份文件名
 	Name *string `json:"Name,omitempty" name:"Name"`
 
 	// 备份文件大小，单位：Byte
 	Size *int64 `json:"Size,omitempty" name:"Size"`
 
-	// 备份快照时间，时间格式：2016-03-17 02:10:37
+	// 文件存储时间，时间格式：2016-03-17 02:10:37
 	Date *string `json:"Date,omitempty" name:"Date"`
 
 	// 内网下载地址
@@ -294,6 +294,12 @@ type BinlogInfo struct {
 
 	// 日志具体类型，可能的值有：binlog - 二进制日志
 	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// binlog 文件起始时间
+	BinlogStartTime *string `json:"BinlogStartTime,omitempty" name:"BinlogStartTime"`
+
+	// binlog 文件截止时间
+	BinlogFinishTime *string `json:"BinlogFinishTime,omitempty" name:"BinlogFinishTime"`
 }
 
 type CloseWanServiceRequest struct {

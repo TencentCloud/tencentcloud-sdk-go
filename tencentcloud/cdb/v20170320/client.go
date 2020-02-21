@@ -730,7 +730,7 @@ func NewDescribeBinlogsResponse() (response *DescribeBinlogsResponse) {
     return
 }
 
-// 本接口(DescribeBinlogs)用于查询云数据库实例的二进制数据。
+// 本接口(DescribeBinlogs)用于查询云数据库实例的 binlog 文件列表。
 func (c *Client) DescribeBinlogs(request *DescribeBinlogsRequest) (response *DescribeBinlogsResponse, err error) {
     if request == nil {
         request = NewDescribeBinlogsRequest()
