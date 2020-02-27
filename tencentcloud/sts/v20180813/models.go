@@ -191,6 +191,10 @@ type GetFederationTokenResponse struct {
 		// 临时证书有效的时间，返回 Unix 时间戳，精确到秒
 		ExpiredTime *uint64 `json:"ExpiredTime,omitempty" name:"ExpiredTime"`
 
+		// 证书有效的时间，以 iso8601 格式的 UTC 时间表示
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Expiration *string `json:"Expiration,omitempty" name:"Expiration"`
+
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`

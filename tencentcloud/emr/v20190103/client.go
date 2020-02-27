@@ -233,7 +233,7 @@ func NewTerminateInstanceResponse() (response *TerminateInstanceResponse) {
     return
 }
 
-// 销毁EMR实例
+// 销毁EMR实例。此接口仅支持弹性MapReduce正式计费版本。
 func (c *Client) TerminateInstance(request *TerminateInstanceRequest) (response *TerminateInstanceResponse, err error) {
     if request == nil {
         request = NewTerminateInstanceRequest()

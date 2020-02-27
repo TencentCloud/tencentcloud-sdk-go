@@ -2604,6 +2604,12 @@ type CreateContentReviewTemplateRequest struct {
 	// 鉴政控制参数。
 	PoliticalConfigure *PoliticalConfigureInfo `json:"PoliticalConfigure,omitempty" name:"PoliticalConfigure"`
 
+	// 违禁控制参数。违禁内容包括：
+	// <li>谩骂；</li>
+	// <li>涉毒违法。</li>
+	// 注意：此参数尚未支持。
+	ProhibitedConfigure *ProhibitedConfigureInfo `json:"ProhibitedConfigure,omitempty" name:"ProhibitedConfigure"`
+
 	// 用户自定义内容审核控制参数。
 	UserDefineConfigure *UserDefineConfigureInfo `json:"UserDefineConfigure,omitempty" name:"UserDefineConfigure"`
 
@@ -4276,6 +4282,53 @@ func (r *DescribeMediaInfosResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeMediaProcessUsageDataRequest struct {
+	*tchttp.BaseRequest
+
+	// 起始日期。使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 结束日期，需大于等于起始日期。使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 查询视频处理任务类型，默认查询转码。目前只支持转码类型数据查询。
+	// <li>Transcode: 转码</li>
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 点播 [子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
+}
+
+func (r *DescribeMediaProcessUsageDataRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeMediaProcessUsageDataRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeMediaProcessUsageDataResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 视频处理统计数据概览，展示所查询任务的概览以及详细数据。
+		MediaProcessDataSet []*TaskStatData `json:"MediaProcessDataSet,omitempty" name:"MediaProcessDataSet" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeMediaProcessUsageDataResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeMediaProcessUsageDataResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribePersonSamplesRequest struct {
 	*tchttp.BaseRequest
 
@@ -4550,6 +4603,110 @@ func (r *DescribeSnapshotByTimeOffsetTemplatesResponse) FromJsonString(s string)
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeStorageDataRequest struct {
+	*tchttp.BaseRequest
+
+	// 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
+}
+
+func (r *DescribeStorageDataRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeStorageDataRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeStorageDataResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 当前媒体总量。
+		MediaCount *uint64 `json:"MediaCount,omitempty" name:"MediaCount"`
+
+		// 当前总存储量，单位是字节。
+		TotalStorage *uint64 `json:"TotalStorage,omitempty" name:"TotalStorage"`
+
+		// 当前低频存储量，单位是字节。
+		InfrequentStorage *uint64 `json:"InfrequentStorage,omitempty" name:"InfrequentStorage"`
+
+		// 当前标准存储量，单位是字节。
+		StandardStorage *uint64 `json:"StandardStorage,omitempty" name:"StandardStorage"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeStorageDataResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeStorageDataResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeStorageDetailsRequest struct {
+	*tchttp.BaseRequest
+
+	// 起始时间，格式按照 ISO 8601 标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 结束时间，需大于开始日期，格式按照 ISO 8601 标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 查询时间间隔，有效值：
+	// <li>Minute：每分钟一个统计数据。</li>
+	// <li>Hour：每小时一个统计数据。</li>
+	// <li>Day：每天一个统计数据。</li>
+	// 默认按时间跨度决定，小于1小时按分钟，小于等于7天按小时，大于7天按天展示。
+	Interval *string `json:"Interval,omitempty" name:"Interval"`
+
+	// 查询的存储类型，有效值：
+	// <li>TotalStorage：存储总量。</li>
+	// <li>StandardStorage：标准存储。</li>
+	// <li>InfrequentStorage：低频存储。</li>
+	// 默认值为 TotalStorage。
+	StorageType *string `json:"StorageType,omitempty" name:"StorageType"`
+
+	// 点播 [子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+	// 当该字段为1时，表示以管理员身份查询所有子应用（含主应用）的用量合计。
+	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
+}
+
+func (r *DescribeStorageDetailsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeStorageDetailsRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeStorageDetailsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 存储统计数据，每分钟/小时/天一条数据。
+		Data []*StatDataItem `json:"Data,omitempty" name:"Data" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeStorageDetailsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeStorageDetailsResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeSubAppIdsRequest struct {
 	*tchttp.BaseRequest
 }
@@ -4629,13 +4786,13 @@ type DescribeTaskDetailResponse struct {
 	// <li>FINISH：已完成。</li>
 		Status *string `json:"Status,omitempty" name:"Status"`
 
-		// 任务的创建时间，采用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+		// 任务的创建时间，采用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
 		CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
 
-		// 任务开始执行的时间，采用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+		// 任务开始执行的时间，采用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
 		BeginProcessTime *string `json:"BeginProcessTime,omitempty" name:"BeginProcessTime"`
 
-		// 任务执行完毕的时间，采用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+		// 任务执行完毕的时间，采用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
 		FinishTime *string `json:"FinishTime,omitempty" name:"FinishTime"`
 
 		// 视频处理任务信息，仅当 TaskType 为 Procedure，该字段有值。
@@ -5046,6 +5203,9 @@ type EditMediaRequest struct {
 
 	// 标识来源上下文，用于透传用户请求信息，在EditMediaComplete回调和任务流状态变更回调将返回该字段值，最长 1000个字符。
 	SessionContext *string `json:"SessionContext,omitempty" name:"SessionContext"`
+
+	// 任务的优先级，数值越大优先级越高，取值范围是 -10 到 10，不填代表 0。
+	TasksPriority *int64 `json:"TasksPriority,omitempty" name:"TasksPriority"`
 
 	// 用于任务去重的识别码，如果一天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。
 	SessionId *string `json:"SessionId,omitempty" name:"SessionId"`
@@ -7010,6 +7170,12 @@ type ModifyContentReviewTemplateRequest struct {
 	// 鉴政控制参数。
 	PoliticalConfigure *PoliticalConfigureInfoForUpdate `json:"PoliticalConfigure,omitempty" name:"PoliticalConfigure"`
 
+	// 违禁控制参数。违禁内容包括：
+	// <li>谩骂；</li>
+	// <li>涉毒违法。</li>
+	// 注意：此参数尚未支持。
+	ProhibitedConfigure *ProhibitedConfigureInfoForUpdate `json:"ProhibitedConfigure,omitempty" name:"ProhibitedConfigure"`
+
 	// 用户自定义内容审核控制参数。
 	UserDefineConfigure *UserDefineConfigureInfoForUpdate `json:"UserDefineConfigure,omitempty" name:"UserDefineConfigure"`
 
@@ -8449,6 +8615,20 @@ type ProhibitedAsrReviewTemplateInfo struct {
 	ReviewConfidence *int64 `json:"ReviewConfidence,omitempty" name:"ReviewConfidence"`
 }
 
+type ProhibitedAsrReviewTemplateInfoForUpdate struct {
+
+	// 语音违禁任务开关，可选值：
+	// <li>ON：开启语音违禁任务；</li>
+	// <li>OFF：关闭语音违禁任务。</li>
+	Switch *string `json:"Switch,omitempty" name:"Switch"`
+
+	// 判定涉嫌违规的分数阈值，当智能审核达到该分数以上，认为涉嫌违规，不填默认为 100 分。取值范围：0~100。
+	BlockConfidence *int64 `json:"BlockConfidence,omitempty" name:"BlockConfidence"`
+
+	// 判定需人工复核是否违规的分数阈值，当智能审核达到该分数以上，认为需人工复核，不填默认为 75 分。取值范围：0~100。
+	ReviewConfidence *int64 `json:"ReviewConfidence,omitempty" name:"ReviewConfidence"`
+}
+
 type ProhibitedConfigureInfo struct {
 
 	// 语音违禁控制参数。
@@ -8460,7 +8640,30 @@ type ProhibitedConfigureInfo struct {
 	OcrReviewInfo *ProhibitedOcrReviewTemplateInfo `json:"OcrReviewInfo,omitempty" name:"OcrReviewInfo"`
 }
 
+type ProhibitedConfigureInfoForUpdate struct {
+
+	// 语音违禁控制参数。
+	AsrReviewInfo *ProhibitedAsrReviewTemplateInfoForUpdate `json:"AsrReviewInfo,omitempty" name:"AsrReviewInfo"`
+
+	// 文本违禁控制参数。
+	OcrReviewInfo *ProhibitedOcrReviewTemplateInfoForUpdate `json:"OcrReviewInfo,omitempty" name:"OcrReviewInfo"`
+}
+
 type ProhibitedOcrReviewTemplateInfo struct {
+
+	// 文本违禁任务开关，可选值：
+	// <li>ON：开启文本违禁任务；</li>
+	// <li>OFF：关闭文本违禁任务。</li>
+	Switch *string `json:"Switch,omitempty" name:"Switch"`
+
+	// 判定涉嫌违规的分数阈值，当智能审核达到该分数以上，认为涉嫌违规，不填默认为 100 分。取值范围：0~100。
+	BlockConfidence *int64 `json:"BlockConfidence,omitempty" name:"BlockConfidence"`
+
+	// 判定需人工复核是否违规的分数阈值，当智能审核达到该分数以上，认为需人工复核，不填默认为 75 分。取值范围：0~100。
+	ReviewConfidence *int64 `json:"ReviewConfidence,omitempty" name:"ReviewConfidence"`
+}
+
+type ProhibitedOcrReviewTemplateInfoForUpdate struct {
 
 	// 文本违禁任务开关，可选值：
 	// <li>ON：开启文本违禁任务；</li>
@@ -9041,6 +9244,15 @@ type SortBy struct {
 	Order *string `json:"Order,omitempty" name:"Order"`
 }
 
+type SpecificationDataItem struct {
+
+	// 任务规格。
+	Specification *string `json:"Specification,omitempty" name:"Specification"`
+
+	// 统计数据。
+	Data []*TaskStatDataItem `json:"Data,omitempty" name:"Data" list`
+}
+
 type StatDataItem struct {
 
 	// 数据所在时间区间的开始时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。如：当时间粒度为天，2018-12-01T00:00:00+08:00，表示2018年12月1日（含）到2018年12月2日（不含）区间。
@@ -9254,6 +9466,67 @@ type TaskSimpleInfo struct {
 
 	// 来源上下文，用于透传用户请求信息。
 	SessionContext *string `json:"SessionContext,omitempty" name:"SessionContext"`
+}
+
+type TaskStatData struct {
+
+	// 任务类型。
+	// <li>Transcode: 转码</li>
+	// <li>Snapshot: 截图</li>
+	TaskType *string `json:"TaskType,omitempty" name:"TaskType"`
+
+	// 任务数统计数据概览。
+	// <li>Transcode: 用量单位为秒</li>
+	Summary []*TaskStatDataItem `json:"Summary,omitempty" name:"Summary" list`
+
+	// 不同规格任务统计数据详情。
+	// 转码规格：
+	// <li>Remuxing: 转封装</li>
+	// <li>Audio: 音频转码</li>
+	// <li>Standard.H264.SD: H.264编码方式标清转码</li>
+	// <li>Standard.H264.HD: H.264编码方式高清转码</li>
+	// <li>Standard.H264.FHD: H.264编码方式全高清转码</li>
+	// <li>Standard.H264.2K: H.264编码方式2K转码</li>
+	// <li>Standard.H264.4K: H.264编码方式4K转码</li>
+	// <li>Standard.H265.SD: H.265编码方式标清转码</li>
+	// <li>Standard.H265.HD: H.265编码方式高清转码</li>
+	// <li>Standard.H265.FHD: H.265编码方式全高清转码</li>
+	// <li>Standard.H265.2K: H.265编码方式2K转码</li>
+	// <li>Standard.H265.4K: H.265编码方式4K转码</li>
+	// <li>TESHD-10.H264.SD: H.264编码方式标清极速高清转码</li>
+	// <li>TESHD-10.H264.HD: H.264编码方式高清极速高清转码</li>
+	// <li>TESHD-10.H264.FHD: H.264编码方式全高清极速高清转码</li>
+	// <li>TESHD-10.H264.2K: H.264编码方式2K极速高清转码</li>
+	// <li>TESHD-10.H264.4K: H.264编码方式4K极速高清转码</li>
+	// <li>TESHD-10.H265.SD: H.265编码方式标清极速高清转码</li>
+	// <li>TESHD-10.H265.HD: H.265编码方式高清极速高清转码</li>
+	// <li>TESHD-10.H265.FHD: H.265编码方式全高清极速高清转码</li>
+	// <li>TESHD-10.H265.2K: H.265编码方式2K极速高清转码</li>
+	// <li>TESHD-10.H265.4K: H.265编码方式4K极速高清转码</li>
+	// <li>Edit.Audio: 音频编辑</li>
+	// <li>Edit.H264.SD: H.264编码方式标清视频编辑</li>
+	// <li>Edit.H264.HD: H.264编码方式高清视频编辑</li>
+	// <li>Edit.H264.FHD: H.264编码方式全高清视频编辑</li>
+	// <li>Edit.H264.2K: H.264编码方式2K视频编辑</li>
+	// <li>Edit.H264.4K: H.264编码方式4K视频编辑</li>
+	// <li>Edit.H265.SD: H.265编码方式标清视频编辑</li>
+	// <li>Edit.H265.HD: H.265编码方式高清视频编辑</li>
+	// <li>Edit.H265.FHD: H.265编码方式全高清视频编辑</li>
+	// <li>Edit.H265.2K: H.265编码方式2K视频编辑</li>
+	// <li>Edit.H265.4K: H.265编码方式4K视频编辑</li>
+	Details []*SpecificationDataItem `json:"Details,omitempty" name:"Details" list`
+}
+
+type TaskStatDataItem struct {
+
+	// 数据所在时间区间的开始时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。如：当时间粒度为天，2018-12-01T00:00:00+08:00，表示2018年12月1日（含）到2018年12月2日（不含）区间。
+	Time *string `json:"Time,omitempty" name:"Time"`
+
+	// 任务数。
+	Count *int64 `json:"Count,omitempty" name:"Count"`
+
+	// 任务用量。
+	Usage *int64 `json:"Usage,omitempty" name:"Usage"`
 }
 
 type TempCertificate struct {

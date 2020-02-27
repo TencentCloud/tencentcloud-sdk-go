@@ -20,60 +20,14 @@ import (
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
-type AppInfo struct {
-
-	// 应用名称
-	AppName *string `json:"AppName,omitempty" name:"AppName"`
-
-	// 应用实例ID
-	ApplicationId *string `json:"ApplicationId,omitempty" name:"ApplicationId"`
-
-	// 所在地域
-	Region *string `json:"Region,omitempty" name:"Region"`
-
-	// 数据描述语言类型，如：`PROTO`,`TDR`或`MIX`
-	IdlType *string `json:"IdlType,omitempty" name:"IdlType"`
-
-	// 网络类型
-	NetworkType *string `json:"NetworkType,omitempty" name:"NetworkType"`
-
-	// 关联的用户私有网络实例ID
-	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
-
-	// 关联的用户子网实例ID
-	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
-
-	// 创建时间
-	CreatedTime *string `json:"CreatedTime,omitempty" name:"CreatedTime"`
-
-	// 应用密码
-	Password *string `json:"Password,omitempty" name:"Password"`
-
-	// 密码状态
-	PasswordStatus *string `json:"PasswordStatus,omitempty" name:"PasswordStatus"`
-
-	// TcaplusDB SDK连接参数，接入ID
-	ApiAccessId *string `json:"ApiAccessId,omitempty" name:"ApiAccessId"`
-
-	// TcaplusDB SDK连接参数，接入地址
-	ApiAccessIp *string `json:"ApiAccessIp,omitempty" name:"ApiAccessIp"`
-
-	// TcaplusDB SDK连接参数，接入端口
-	ApiAccessPort *int64 `json:"ApiAccessPort,omitempty" name:"ApiAccessPort"`
-
-	// 如果PasswordStatus是unmodifiable说明有旧密码还未过期，此字段将显示旧密码过期的时间，否则为空
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	OldPasswordExpireTime *string `json:"OldPasswordExpireTime,omitempty" name:"OldPasswordExpireTime"`
-}
-
 type ClearTablesRequest struct {
 	*tchttp.BaseRequest
 
-	// 表所属应用实例ID
-	ApplicationId *string `json:"ApplicationId,omitempty" name:"ApplicationId"`
+	// 表所属集群实例ID
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
 
 	// 待清理表信息列表
-	SelectedTables []*SelectedTableInfo `json:"SelectedTables,omitempty" name:"SelectedTables" list`
+	SelectedTables []*SelectedTableInfoNew `json:"SelectedTables,omitempty" name:"SelectedTables" list`
 }
 
 func (r *ClearTablesRequest) ToJsonString() string {
@@ -93,7 +47,7 @@ type ClearTablesResponse struct {
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 清除表结果列表
-		TableResults []*TableResult `json:"TableResults,omitempty" name:"TableResults" list`
+		TableResults []*TableResultNew `json:"TableResults,omitempty" name:"TableResults" list`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -109,14 +63,60 @@ func (r *ClearTablesResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type ClusterInfo struct {
+
+	// 集群名称
+	ClusterName *string `json:"ClusterName,omitempty" name:"ClusterName"`
+
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 集群所在地域
+	Region *string `json:"Region,omitempty" name:"Region"`
+
+	// 集群数据描述语言类型，如：`PROTO`,`TDR`或`MIX`
+	IdlType *string `json:"IdlType,omitempty" name:"IdlType"`
+
+	// 网络类型
+	NetworkType *string `json:"NetworkType,omitempty" name:"NetworkType"`
+
+	// 集群关联的用户私有网络实例ID
+	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
+
+	// 集群关联的用户子网实例ID
+	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
+
+	// 创建时间
+	CreatedTime *string `json:"CreatedTime,omitempty" name:"CreatedTime"`
+
+	// 集群密码
+	Password *string `json:"Password,omitempty" name:"Password"`
+
+	// 密码状态
+	PasswordStatus *string `json:"PasswordStatus,omitempty" name:"PasswordStatus"`
+
+	// TcaplusDB SDK连接参数，接入ID
+	ApiAccessId *string `json:"ApiAccessId,omitempty" name:"ApiAccessId"`
+
+	// TcaplusDB SDK连接参数，接入地址
+	ApiAccessIp *string `json:"ApiAccessIp,omitempty" name:"ApiAccessIp"`
+
+	// TcaplusDB SDK连接参数，接入端口
+	ApiAccessPort *int64 `json:"ApiAccessPort,omitempty" name:"ApiAccessPort"`
+
+	// 如果PasswordStatus是unmodifiable说明有旧密码还未过期，此字段将显示旧密码过期的时间，否则为空
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OldPasswordExpireTime *string `json:"OldPasswordExpireTime,omitempty" name:"OldPasswordExpireTime"`
+}
+
 type CompareIdlFilesRequest struct {
 	*tchttp.BaseRequest
 
-	// 待修改表所在应用实例ID
-	ApplicationId *string `json:"ApplicationId,omitempty" name:"ApplicationId"`
+	// 待修改表格所在集群ID
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
 
-	// 待修改表列表
-	SelectedTables []*SelectedTableInfo `json:"SelectedTables,omitempty" name:"SelectedTables" list`
+	// 待修改表格列表
+	SelectedTables []*SelectedTableInfoNew `json:"SelectedTables,omitempty" name:"SelectedTables" list`
 
 	// 选中的已上传IDL文件列表，与NewIdlFiles必选其一
 	ExistingIdlFiles []*IdlFileInfo `json:"ExistingIdlFiles,omitempty" name:"ExistingIdlFiles" list`
@@ -138,14 +138,14 @@ type CompareIdlFilesResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 本次上传校验所有的Idl文件信息列表
+		// 本次上传校验所有的IDL文件信息列表
 		IdlFiles []*IdlFileInfo `json:"IdlFiles,omitempty" name:"IdlFiles" list`
 
-		// 本次校验合法的表数量
+		// 本次校验合法的表格数量
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
-		// 读取IDL描述文件后,根据用户指示的所选中表解析校验结果
-		TableInfos []*ParsedTableInfo `json:"TableInfos,omitempty" name:"TableInfos" list`
+		// 读取IDL描述文件后,根据用户指示的所选中表格解析校验结果
+		TableInfos []*ParsedTableInfoNew `json:"TableInfos,omitempty" name:"TableInfos" list`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -161,66 +161,152 @@ func (r *CompareIdlFilesResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
-type CreateAppRequest struct {
+type CreateBackupRequest struct {
 	*tchttp.BaseRequest
 
-	// 应用数据描述语言类型，如：`PROTO`，`TDR`或`MIX`
-	IdlType *string `json:"IdlType,omitempty" name:"IdlType"`
+	// 待创建备份表所属集群ID
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
 
-	// 应用名称，可使用中文或英文字符，长度在30个字符以内
-	AppName *string `json:"AppName,omitempty" name:"AppName"`
+	// 待创建备份表信息列表
+	SelectedTables []*SelectedTableInfoNew `json:"SelectedTables,omitempty" name:"SelectedTables" list`
 
-	// 应用所绑定的私有网络实例ID，形如：vpc-f49l6u0z
-	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
-
-	// 应用所绑定的子网实例ID，形如：subnet-pxir56ns
-	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
-
-	// 应用访问密码，可使用英文和数字字符，长度为12~16个字符
-	Password *string `json:"Password,omitempty" name:"Password"`
+	// 备注信息
+	Remark *string `json:"Remark,omitempty" name:"Remark"`
 }
 
-func (r *CreateAppRequest) ToJsonString() string {
+func (r *CreateBackupRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
-func (r *CreateAppRequest) FromJsonString(s string) error {
+func (r *CreateBackupRequest) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
-type CreateAppResponse struct {
+type CreateBackupResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 应用ID
-		ApplicationId *string `json:"ApplicationId,omitempty" name:"ApplicationId"`
+		// 创建的备份任务ID列表
+		TaskIds []*string `json:"TaskIds,omitempty" name:"TaskIds" list`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
 }
 
-func (r *CreateAppResponse) ToJsonString() string {
+func (r *CreateBackupResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
-func (r *CreateAppResponse) FromJsonString(s string) error {
+func (r *CreateBackupResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateClusterRequest struct {
+	*tchttp.BaseRequest
+
+	// 集群数据描述语言类型，如：`PROTO`，`TDR`或`MIX`
+	IdlType *string `json:"IdlType,omitempty" name:"IdlType"`
+
+	// 集群名称，可使用中文或英文字符，最大长度32个字符
+	ClusterName *string `json:"ClusterName,omitempty" name:"ClusterName"`
+
+	// 集群所绑定的私有网络实例ID，形如：vpc-f49l6u0z
+	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
+
+	// 集群所绑定的子网实例ID，形如：subnet-pxir56ns
+	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
+
+	// 集群访问密码，必须是a-zA-Z0-9的字符,且必须包含数字和大小写字母
+	Password *string `json:"Password,omitempty" name:"Password"`
+}
+
+func (r *CreateClusterRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateClusterRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateClusterResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 集群ID
+		ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateClusterResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateClusterResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateTableGroupRequest struct {
+	*tchttp.BaseRequest
+
+	// 表格组所属集群ID
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 表格组名称，可以采用中文、英文或数字字符，最大长度32个字符
+	TableGroupName *string `json:"TableGroupName,omitempty" name:"TableGroupName"`
+
+	// 表格组ID，可以由用户指定，但在同一个集群内不能重复，如果不指定则采用自增的模式
+	TableGroupId *string `json:"TableGroupId,omitempty" name:"TableGroupId"`
+}
+
+func (r *CreateTableGroupRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateTableGroupRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateTableGroupResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 创建成功的表格组ID
+		TableGroupId *string `json:"TableGroupId,omitempty" name:"TableGroupId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateTableGroupResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateTableGroupResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
 type CreateTablesRequest struct {
 	*tchttp.BaseRequest
 
-	// 待创建表所属应用实例ID
-	ApplicationId *string `json:"ApplicationId,omitempty" name:"ApplicationId"`
+	// 待创建表格所属集群ID
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
 
-	// 用户选定的建表IDL文件列表
+	// 用户选定的建表格IDL文件列表
 	IdlFiles []*IdlFileInfo `json:"IdlFiles,omitempty" name:"IdlFiles" list`
 
-	// 待创建表信息列表
-	SelectedTables []*SelectedTableInfo `json:"SelectedTables,omitempty" name:"SelectedTables" list`
+	// 待创建表格信息列表
+	SelectedTables []*SelectedTableInfoNew `json:"SelectedTables,omitempty" name:"SelectedTables" list`
 }
 
 func (r *CreateTablesRequest) ToJsonString() string {
@@ -236,11 +322,11 @@ type CreateTablesResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 批量创建表结果数量
+		// 批量创建表格结果数量
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
-		// 批量创建表结果列表
-		TableResults []*TableResult `json:"TableResults,omitempty" name:"TableResults" list`
+		// 批量创建表格结果列表
+		TableResults []*TableResultNew `json:"TableResults,omitempty" name:"TableResults" list`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -256,70 +342,27 @@ func (r *CreateTablesResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
-type CreateZoneRequest struct {
+type DeleteClusterRequest struct {
 	*tchttp.BaseRequest
 
-	// 大区所属应用实例ID
-	ApplicationId *string `json:"ApplicationId,omitempty" name:"ApplicationId"`
-
-	// 大区名称，可以采用中文、英文或数字字符，长度不能超过30
-	ZoneName *string `json:"ZoneName,omitempty" name:"ZoneName"`
-
-	// 大区ID，可以由用户指定，但在同一个App内不能重复，如果不指定则采用自增的模式
-	LogicZoneId *string `json:"LogicZoneId,omitempty" name:"LogicZoneId"`
+	// 待删除的集群ID
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
 }
 
-func (r *CreateZoneRequest) ToJsonString() string {
+func (r *DeleteClusterRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
-func (r *CreateZoneRequest) FromJsonString(s string) error {
+func (r *DeleteClusterRequest) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
-type CreateZoneResponse struct {
+type DeleteClusterResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 创建的大区ID
-		LogicZoneId *string `json:"LogicZoneId,omitempty" name:"LogicZoneId"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
-}
-
-func (r *CreateZoneResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-func (r *CreateZoneResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
-}
-
-type DeleteAppRequest struct {
-	*tchttp.BaseRequest
-
-	// 待删除的应用实例ID
-	ApplicationId *string `json:"ApplicationId,omitempty" name:"ApplicationId"`
-}
-
-func (r *DeleteAppRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-func (r *DeleteAppRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
-}
-
-type DeleteAppResponse struct {
-	*tchttp.BaseResponse
-	Response *struct {
-
-		// 删除应用生成的任务ID
+		// 删除集群生成的任务ID
 		TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -327,20 +370,20 @@ type DeleteAppResponse struct {
 	} `json:"Response"`
 }
 
-func (r *DeleteAppResponse) ToJsonString() string {
+func (r *DeleteClusterResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
-func (r *DeleteAppResponse) FromJsonString(s string) error {
+func (r *DeleteClusterResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
 type DeleteIdlFilesRequest struct {
 	*tchttp.BaseRequest
 
-	// 应用实例ID
-	ApplicationId *string `json:"ApplicationId,omitempty" name:"ApplicationId"`
+	// IDL所属集群ID
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
 
 	// 待删除的IDL文件信息列表
 	IdlFiles []*IdlFileInfo `json:"IdlFiles,omitempty" name:"IdlFiles" list`
@@ -379,14 +422,54 @@ func (r *DeleteIdlFilesResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DeleteTableGroupRequest struct {
+	*tchttp.BaseRequest
+
+	// 表格组所属的集群ID
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 表格组ID
+	TableGroupId *string `json:"TableGroupId,omitempty" name:"TableGroupId"`
+}
+
+func (r *DeleteTableGroupRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteTableGroupRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteTableGroupResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 删除表格组所创建的任务ID
+		TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DeleteTableGroupResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteTableGroupResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DeleteTablesRequest struct {
 	*tchttp.BaseRequest
 
-	// 待删除表所在应用实例ID
-	ApplicationId *string `json:"ApplicationId,omitempty" name:"ApplicationId"`
+	// 待删除表所在集群ID
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
 
 	// 待删除表信息列表
-	SelectedTables []*SelectedTableInfo `json:"SelectedTables,omitempty" name:"SelectedTables" list`
+	SelectedTables []*SelectedTableInfoNew `json:"SelectedTables,omitempty" name:"SelectedTables" list`
 }
 
 func (r *DeleteTablesRequest) ToJsonString() string {
@@ -406,7 +489,7 @@ type DeleteTablesResponse struct {
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 删除表结果详情列表
-		TableResults []*TableResult `json:"TableResults,omitempty" name:"TableResults" list`
+		TableResults []*TableResultNew `json:"TableResults,omitempty" name:"TableResults" list`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -422,111 +505,71 @@ func (r *DeleteTablesResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
-type DeleteZoneRequest struct {
+type DescribeClustersRequest struct {
 	*tchttp.BaseRequest
 
-	// 大区所属的应用实例ID
-	ApplicationId *string `json:"ApplicationId,omitempty" name:"ApplicationId"`
-
-	// 大区ID
-	LogicZoneId *string `json:"LogicZoneId,omitempty" name:"LogicZoneId"`
-}
-
-func (r *DeleteZoneRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-func (r *DeleteZoneRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
-}
-
-type DeleteZoneResponse struct {
-	*tchttp.BaseResponse
-	Response *struct {
-
-		// 删除大区所创建的任务ID
-		TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
-}
-
-func (r *DeleteZoneResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-func (r *DeleteZoneResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
-}
-
-type DescribeAppsRequest struct {
-	*tchttp.BaseRequest
-
-	// 指定查询的应用ID
-	ApplicationIds []*string `json:"ApplicationIds,omitempty" name:"ApplicationIds" list`
+	// 指定查询的集群ID列表
+	ClusterIds []*string `json:"ClusterIds,omitempty" name:"ClusterIds" list`
 
 	// 查询过滤条件
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
 
-	// 偏移量
+	// 查询列表偏移量
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
 
-	// 应用列表的大小，默认值20
+	// 查询列表返回记录数，默认值20
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 }
 
-func (r *DescribeAppsRequest) ToJsonString() string {
+func (r *DescribeClustersRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
-func (r *DescribeAppsRequest) FromJsonString(s string) error {
+func (r *DescribeClustersRequest) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
-type DescribeAppsResponse struct {
+type DescribeClustersResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 应用实例数
+		// 集群实例数
 		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
-		// 应用实例列表
-		Apps []*AppInfo `json:"Apps,omitempty" name:"Apps" list`
+		// 集群实例列表
+		Clusters []*ClusterInfo `json:"Clusters,omitempty" name:"Clusters" list`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
 }
 
-func (r *DescribeAppsResponse) ToJsonString() string {
+func (r *DescribeClustersResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
-func (r *DescribeAppsResponse) FromJsonString(s string) error {
+func (r *DescribeClustersResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeIdlFileInfosRequest struct {
 	*tchttp.BaseRequest
 
-	// 文件所属应用实例ID
-	ApplicationId *string `json:"ApplicationId,omitempty" name:"ApplicationId"`
+	// 文件所属集群ID
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
 
-	// 文件所属大区ID
-	LogicZoneIds []*string `json:"LogicZoneIds,omitempty" name:"LogicZoneIds" list`
+	// 文件所属表格组ID
+	TableGroupIds []*string `json:"TableGroupIds,omitempty" name:"TableGroupIds" list`
 
-	// 指定文件ID
+	// 指定文件ID列表
 	IdlFileIds []*string `json:"IdlFileIds,omitempty" name:"IdlFileIds" list`
 
-	// 偏移量
+	// 查询列表偏移量
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
 
-	// 文件列表大小
+	// 查询列表返回记录数
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 }
 
@@ -600,22 +643,74 @@ func (r *DescribeRegionsResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeTableGroupsRequest struct {
+	*tchttp.BaseRequest
+
+	// 表格组所属集群ID
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 表格组ID列表
+	TableGroupIds []*string `json:"TableGroupIds,omitempty" name:"TableGroupIds" list`
+
+	// 过滤条件，本接口支持：TableGroupName，TableGroupId
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+
+	// 查询列表偏移量
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 查询列表返回记录数
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+func (r *DescribeTableGroupsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeTableGroupsRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeTableGroupsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 表格组数量
+		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 表格组信息列表
+		TableGroups []*TableGroupInfo `json:"TableGroups,omitempty" name:"TableGroups" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeTableGroupsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeTableGroupsResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeTablesInRecycleRequest struct {
 	*tchttp.BaseRequest
 
-	// 待查询表所属应用实例ID
-	ApplicationId *string `json:"ApplicationId,omitempty" name:"ApplicationId"`
+	// 待查询表格所属集群ID
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
 
-	// 待查询表所属大区列表
-	LogicZoneIds []*string `json:"LogicZoneIds,omitempty" name:"LogicZoneIds" list`
+	// 待查询表格所属表格组ID列表
+	TableGroupIds []*string `json:"TableGroupIds,omitempty" name:"TableGroupIds" list`
 
 	// 过滤条件，本接口支持：TableName，TableInstanceId
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
 
-	// 偏移量
+	// 查询结果偏移量
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
 
-	// 结果列表数量
+	// 查询结果返回记录数量
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 }
 
@@ -632,11 +727,11 @@ type DescribeTablesInRecycleResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 表数量
+		// 表格数量
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
-		// 表详情结果列表
-		TableInfos []*TableInfo `json:"TableInfos,omitempty" name:"TableInfos" list`
+		// 表格详情结果列表
+		TableInfos []*TableInfoNew `json:"TableInfos,omitempty" name:"TableInfos" list`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -655,22 +750,22 @@ func (r *DescribeTablesInRecycleResponse) FromJsonString(s string) error {
 type DescribeTablesRequest struct {
 	*tchttp.BaseRequest
 
-	// 待查询表所属应用实例ID
-	ApplicationId *string `json:"ApplicationId,omitempty" name:"ApplicationId"`
+	// 待查询表格所属集群ID
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
 
-	// 待查询表所属大区列表
-	LogicZoneIds []*string `json:"LogicZoneIds,omitempty" name:"LogicZoneIds" list`
+	// 待查询表格所属表格组ID列表
+	TableGroupIds []*string `json:"TableGroupIds,omitempty" name:"TableGroupIds" list`
 
-	// 待查询表信息列表
-	SelectedTables []*SelectedTableInfo `json:"SelectedTables,omitempty" name:"SelectedTables" list`
+	// 待查询表格信息列表
+	SelectedTables []*SelectedTableInfoNew `json:"SelectedTables,omitempty" name:"SelectedTables" list`
 
 	// 过滤条件，本接口支持：TableName，TableInstanceId
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
 
-	// 偏移量
+	// 查询结果偏移量
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
 
-	// 结果列表数量
+	// 查询结果返回记录数量
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 }
 
@@ -687,11 +782,11 @@ type DescribeTablesResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 表数量
+		// 表格数量
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
-		// 表详情结果列表
-		TableInfos []*TableInfo `json:"TableInfos,omitempty" name:"TableInfos" list`
+		// 表格详情结果列表
+		TableInfos []*TableInfoNew `json:"TableInfos,omitempty" name:"TableInfos" list`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -710,8 +805,8 @@ func (r *DescribeTablesResponse) FromJsonString(s string) error {
 type DescribeTasksRequest struct {
 	*tchttp.BaseRequest
 
-	// 需要查询任务所属的应用ID列表
-	ApplicationIds []*string `json:"ApplicationIds,omitempty" name:"ApplicationIds" list`
+	// 需要查询任务所属的集群ID列表
+	ClusterIds []*string `json:"ClusterIds,omitempty" name:"ClusterIds" list`
 
 	// 需要查询的任务ID列表
 	TaskIds []*string `json:"TaskIds,omitempty" name:"TaskIds" list`
@@ -719,10 +814,10 @@ type DescribeTasksRequest struct {
 	// 过滤条件，本接口支持：Content，TaskType, Operator, Time
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
 
-	// 偏移量
+	// 查询列表偏移量
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
 
-	// 任务列表大小
+	// 查询列表返回记录数
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 }
 
@@ -743,7 +838,7 @@ type DescribeTasksResponse struct {
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 查询到的任务详情列表
-		TaskInfos []*TaskInfo `json:"TaskInfos,omitempty" name:"TaskInfos" list`
+		TaskInfos []*TaskInfoNew `json:"TaskInfos,omitempty" name:"TaskInfos" list`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -790,58 +885,6 @@ func (r *DescribeUinInWhitelistResponse) ToJsonString() string {
 }
 
 func (r *DescribeUinInWhitelistResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
-}
-
-type DescribeZonesRequest struct {
-	*tchttp.BaseRequest
-
-	// 大区所属应用实例ID
-	ApplicationId *string `json:"ApplicationId,omitempty" name:"ApplicationId"`
-
-	// 大区ID
-	LogicZoneIds []*string `json:"LogicZoneIds,omitempty" name:"LogicZoneIds" list`
-
-	// 过滤条件，本接口支持：ZoneName，ZoneId
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
-
-	// 偏移量
-	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
-
-	// 大区列表大小
-	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
-}
-
-func (r *DescribeZonesRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-func (r *DescribeZonesRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
-}
-
-type DescribeZonesResponse struct {
-	*tchttp.BaseResponse
-	Response *struct {
-
-		// 大区数量
-		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
-
-		// 大区信息列表
-		Zones []*ZoneInfo `json:"Zones,omitempty" name:"Zones" list`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
-}
-
-func (r *DescribeZonesResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-func (r *DescribeZonesResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -950,35 +993,26 @@ func (r *ModifyAppNameResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
-type ModifyAppPasswordRequest struct {
+type ModifyClusterNameRequest struct {
 	*tchttp.BaseRequest
 
-	// 需要修改密码的应用实例ID
-	ApplicationId *string `json:"ApplicationId,omitempty" name:"ApplicationId"`
+	// 需要修改名称的集群ID
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
 
-	// 应用旧密码
-	OldPassword *string `json:"OldPassword,omitempty" name:"OldPassword"`
-
-	// 应用旧密码预期失效时间
-	OldPasswordExpireTime *string `json:"OldPasswordExpireTime,omitempty" name:"OldPasswordExpireTime"`
-
-	// 应用新密码
-	NewPassword *string `json:"NewPassword,omitempty" name:"NewPassword"`
-
-	// 更新模式： `1` 更新密码；`2` 更新旧密码失效时间，默认为`1` 模式
-	Mode *string `json:"Mode,omitempty" name:"Mode"`
+	// 需要修改的集群名称，可使用中文或英文字符，最大长度32个字符
+	ClusterName *string `json:"ClusterName,omitempty" name:"ClusterName"`
 }
 
-func (r *ModifyAppPasswordRequest) ToJsonString() string {
+func (r *ModifyClusterNameRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
-func (r *ModifyAppPasswordRequest) FromJsonString(s string) error {
+func (r *ModifyClusterNameRequest) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
-type ModifyAppPasswordResponse struct {
+type ModifyClusterNameResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
@@ -987,23 +1021,109 @@ type ModifyAppPasswordResponse struct {
 	} `json:"Response"`
 }
 
-func (r *ModifyAppPasswordResponse) ToJsonString() string {
+func (r *ModifyClusterNameResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
-func (r *ModifyAppPasswordResponse) FromJsonString(s string) error {
+func (r *ModifyClusterNameResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyClusterPasswordRequest struct {
+	*tchttp.BaseRequest
+
+	// 需要修改密码的集群ID
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 集群旧密码
+	OldPassword *string `json:"OldPassword,omitempty" name:"OldPassword"`
+
+	// 集群旧密码预期失效时间
+	OldPasswordExpireTime *string `json:"OldPasswordExpireTime,omitempty" name:"OldPasswordExpireTime"`
+
+	// 集群新密码，密码必须是a-zA-Z0-9的字符,且必须包含数字和大小写字母
+	NewPassword *string `json:"NewPassword,omitempty" name:"NewPassword"`
+
+	// 更新模式： `1` 更新密码；`2` 更新旧密码失效时间，默认为`1` 模式
+	Mode *string `json:"Mode,omitempty" name:"Mode"`
+}
+
+func (r *ModifyClusterPasswordRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyClusterPasswordRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyClusterPasswordResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifyClusterPasswordResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyClusterPasswordResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyTableGroupNameRequest struct {
+	*tchttp.BaseRequest
+
+	// 表格组所属的集群ID
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 待修改名称的表格组ID
+	TableGroupId *string `json:"TableGroupId,omitempty" name:"TableGroupId"`
+
+	// 新的大区名称，可以使用中英文字符和符号
+	TableGroupName *string `json:"TableGroupName,omitempty" name:"TableGroupName"`
+}
+
+func (r *ModifyTableGroupNameRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyTableGroupNameRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyTableGroupNameResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifyTableGroupNameResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyTableGroupNameResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
 type ModifyTableMemosRequest struct {
 	*tchttp.BaseRequest
 
-	// 表所属应用实例ID
-	ApplicationId *string `json:"ApplicationId,omitempty" name:"ApplicationId"`
+	// 表所属集群实例ID
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
 
 	// 选定表详情列表
-	TableMemos []*SelectedTableInfo `json:"TableMemos,omitempty" name:"TableMemos" list`
+	TableMemos []*SelectedTableInfoNew `json:"TableMemos,omitempty" name:"TableMemos" list`
 }
 
 func (r *ModifyTableMemosRequest) ToJsonString() string {
@@ -1023,7 +1143,7 @@ type ModifyTableMemosResponse struct {
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 表备注修改结果列表
-		TableResults []*TableResult `json:"TableResults,omitempty" name:"TableResults" list`
+		TableResults []*TableResultNew `json:"TableResults,omitempty" name:"TableResults" list`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1042,11 +1162,11 @@ func (r *ModifyTableMemosResponse) FromJsonString(s string) error {
 type ModifyTableQuotasRequest struct {
 	*tchttp.BaseRequest
 
-	// 带扩缩容表所属应用实例ID
-	ApplicationId *string `json:"ApplicationId,omitempty" name:"ApplicationId"`
+	// 带扩缩容表所属集群ID
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
 
 	// 已选中待修改的表配额列表
-	TableQuotas []*SelectedTableInfo `json:"TableQuotas,omitempty" name:"TableQuotas" list`
+	TableQuotas []*SelectedTableInfoNew `json:"TableQuotas,omitempty" name:"TableQuotas" list`
 }
 
 func (r *ModifyTableQuotasRequest) ToJsonString() string {
@@ -1066,7 +1186,7 @@ type ModifyTableQuotasResponse struct {
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 扩缩容结果列表
-		TableResults []*TableResult `json:"TableResults,omitempty" name:"TableResults" list`
+		TableResults []*TableResultNew `json:"TableResults,omitempty" name:"TableResults" list`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1085,14 +1205,14 @@ func (r *ModifyTableQuotasResponse) FromJsonString(s string) error {
 type ModifyTablesRequest struct {
 	*tchttp.BaseRequest
 
-	// 待修改表所在应用实例ID
-	ApplicationId *string `json:"ApplicationId,omitempty" name:"ApplicationId"`
+	// 待修改表格所在集群ID
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
 
 	// 选中的改表IDL文件
 	IdlFiles []*IdlFileInfo `json:"IdlFiles,omitempty" name:"IdlFiles" list`
 
-	// 待改表列表
-	SelectedTables []*SelectedTableInfo `json:"SelectedTables,omitempty" name:"SelectedTables" list`
+	// 待改表格列表
+	SelectedTables []*SelectedTableInfoNew `json:"SelectedTables,omitempty" name:"SelectedTables" list`
 }
 
 func (r *ModifyTablesRequest) ToJsonString() string {
@@ -1112,7 +1232,7 @@ type ModifyTablesResponse struct {
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 修改表结果列表
-		TableResults []*TableResult `json:"TableResults,omitempty" name:"TableResults" list`
+		TableResults []*TableResultNew `json:"TableResults,omitempty" name:"TableResults" list`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1128,61 +1248,21 @@ func (r *ModifyTablesResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
-type ModifyZoneNameRequest struct {
-	*tchttp.BaseRequest
+type ParsedTableInfoNew struct {
 
-	// 大区所属的应用实例ID
-	ApplicationId *string `json:"ApplicationId,omitempty" name:"ApplicationId"`
-
-	// 待修改名称的大区ID
-	LogicZoneId *string `json:"LogicZoneId,omitempty" name:"LogicZoneId"`
-
-	// 新的大区名称
-	ZoneName *string `json:"ZoneName,omitempty" name:"ZoneName"`
-}
-
-func (r *ModifyZoneNameRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-func (r *ModifyZoneNameRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
-}
-
-type ModifyZoneNameResponse struct {
-	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
-}
-
-func (r *ModifyZoneNameResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-func (r *ModifyZoneNameResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
-}
-
-type ParsedTableInfo struct {
-
-	// 表描述语言类型：`PROTO`或`TDR`
+	// 表格描述语言类型：`PROTO`或`TDR`
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TableIdlType *string `json:"TableIdlType,omitempty" name:"TableIdlType"`
 
-	// 表实例ID
+	// 表格实例ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TableInstanceId *string `json:"TableInstanceId,omitempty" name:"TableInstanceId"`
 
-	// 表名
+	// 表格名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TableName *string `json:"TableName,omitempty" name:"TableName"`
 
-	// 表数据类型：`GENERIC`或`TDR`
+	// 表格数据结构类型：`GENERIC`或`LIST`
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TableType *string `json:"TableType,omitempty" name:"TableType"`
 
@@ -1202,9 +1282,9 @@ type ParsedTableInfo struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	OldValueFields *string `json:"OldValueFields,omitempty" name:"OldValueFields"`
 
-	// 所属大区ID
+	// 所属表格组ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	LogicZoneId *string `json:"LogicZoneId,omitempty" name:"LogicZoneId"`
+	TableGroupId *string `json:"TableGroupId,omitempty" name:"TableGroupId"`
 
 	// 主键字段总大小
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -1229,16 +1309,28 @@ type ParsedTableInfo struct {
 	// 错误信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Error *ErrorInfo `json:"Error,omitempty" name:"Error"`
+
+	// LIST类型表格元素个数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ListElementNum *int64 `json:"ListElementNum,omitempty" name:"ListElementNum"`
+
+	// SORTLIST类型表格排序字段个数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SortFieldNum *int64 `json:"SortFieldNum,omitempty" name:"SortFieldNum"`
+
+	// SORTLIST类型表格排序顺序
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SortRule *int64 `json:"SortRule,omitempty" name:"SortRule"`
 }
 
 type RecoverRecycleTablesRequest struct {
 	*tchttp.BaseRequest
 
-	// 表所在应用实例ID
-	ApplicationId *string `json:"ApplicationId,omitempty" name:"ApplicationId"`
+	// 表所在集群ID
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
 
 	// 待恢复表信息
-	SelectedTables []*SelectedTableInfo `json:"SelectedTables,omitempty" name:"SelectedTables" list`
+	SelectedTables []*SelectedTableInfoNew `json:"SelectedTables,omitempty" name:"SelectedTables" list`
 }
 
 func (r *RecoverRecycleTablesRequest) ToJsonString() string {
@@ -1258,7 +1350,7 @@ type RecoverRecycleTablesResponse struct {
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 恢复表信息列表
-		TableResults []*TableResult `json:"TableResults,omitempty" name:"TableResults" list`
+		TableResults []*TableResultNew `json:"TableResults,omitempty" name:"TableResults" list`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1289,11 +1381,11 @@ type RegionInfo struct {
 type RollbackTablesRequest struct {
 	*tchttp.BaseRequest
 
-	// 待回档表所在应用实例ID
-	ApplicationId *string `json:"ApplicationId,omitempty" name:"ApplicationId"`
+	// 待回档表格所在集群ID
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
 
-	// 待回档表列表
-	SelectedTables []*SelectedTableInfo `json:"SelectedTables,omitempty" name:"SelectedTables" list`
+	// 待回档表格列表
+	SelectedTables []*SelectedTableInfoNew `json:"SelectedTables,omitempty" name:"SelectedTables" list`
 
 	// 待回档时间
 	RollbackTime *string `json:"RollbackTime,omitempty" name:"RollbackTime"`
@@ -1315,11 +1407,11 @@ type RollbackTablesResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 表回档任务结果数量
+		// 表格回档任务结果数量
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
-		// 表回档任务结果列表
-		TableResults []*TableRollbackResult `json:"TableResults,omitempty" name:"TableResults" list`
+		// 表格回档任务结果列表
+		TableResults []*TableRollbackResultNew `json:"TableResults,omitempty" name:"TableResults" list`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1335,36 +1427,36 @@ func (r *RollbackTablesResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
-type SelectedTableInfo struct {
+type SelectedTableInfoNew struct {
 
-	// 表所属大区ID
-	LogicZoneId *string `json:"LogicZoneId,omitempty" name:"LogicZoneId"`
+	// 表所属表格组ID
+	TableGroupId *string `json:"TableGroupId,omitempty" name:"TableGroupId"`
 
-	// 表名称
+	// 表格名称
 	TableName *string `json:"TableName,omitempty" name:"TableName"`
 
 	// 表实例ID
 	TableInstanceId *string `json:"TableInstanceId,omitempty" name:"TableInstanceId"`
 
-	// 表描述语言类型：`PROTO`或`TDR`
+	// 表格描述语言类型：`PROTO`或`TDR`
 	TableIdlType *string `json:"TableIdlType,omitempty" name:"TableIdlType"`
 
-	// 表数据结构类型：`GENERIC`或`LIST`
+	// 表格数据结构类型：`GENERIC`或`LIST`
 	TableType *string `json:"TableType,omitempty" name:"TableType"`
 
 	// LIST表元素个数
 	ListElementNum *int64 `json:"ListElementNum,omitempty" name:"ListElementNum"`
 
-	// 表预留容量（GB）
+	// 表格预留容量（GB）
 	ReservedVolume *int64 `json:"ReservedVolume,omitempty" name:"ReservedVolume"`
 
-	// 表预留读QPS
+	// 表格预留读QPS
 	ReservedReadQps *int64 `json:"ReservedReadQps,omitempty" name:"ReservedReadQps"`
 
-	// 表预留写QPS
+	// 表格预留写QPS
 	ReservedWriteQps *int64 `json:"ReservedWriteQps,omitempty" name:"ReservedWriteQps"`
 
-	// 表备注信息
+	// 表格备注信息
 	Memo *string `json:"Memo,omitempty" name:"Memo"`
 
 	// Key回档文件名，回档专用
@@ -1380,93 +1472,111 @@ type SelectedTableInfo struct {
 	FileContent *string `json:"FileContent,omitempty" name:"FileContent"`
 }
 
-type TableInfo struct {
+type TableGroupInfo struct {
 
-	// 表名称
+	// 表格组ID
+	TableGroupId *string `json:"TableGroupId,omitempty" name:"TableGroupId"`
+
+	// 表格组名称
+	TableGroupName *string `json:"TableGroupName,omitempty" name:"TableGroupName"`
+
+	// 表格组创建时间
+	CreatedTime *string `json:"CreatedTime,omitempty" name:"CreatedTime"`
+
+	// 表格组包含的表格数量
+	TableCount *uint64 `json:"TableCount,omitempty" name:"TableCount"`
+
+	// 表格组包含的表格存储总量（MB）
+	TotalSize *uint64 `json:"TotalSize,omitempty" name:"TotalSize"`
+}
+
+type TableInfoNew struct {
+
+	// 表格名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TableName *string `json:"TableName,omitempty" name:"TableName"`
 
-	// 表实例ID
+	// 表格实例ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TableInstanceId *string `json:"TableInstanceId,omitempty" name:"TableInstanceId"`
 
-	// 表数据结构类型，如：`GENERIC`或`LIST`
+	// 表格数据结构类型，如：`GENERIC`或`LIST`
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TableType *string `json:"TableType,omitempty" name:"TableType"`
 
-	// 表数据描述语言（IDL）类型，如：`PROTO`或`TDR`
+	// 表格数据描述语言（IDL）类型，如：`PROTO`或`TDR`
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TableIdlType *string `json:"TableIdlType,omitempty" name:"TableIdlType"`
 
-	// 表所属应用实例ID
+	// 表格所属集群ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ApplicationId *string `json:"ApplicationId,omitempty" name:"ApplicationId"`
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
 
-	// 表所属应用名称
+	// 表格所属集群名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	AppName *string `json:"AppName,omitempty" name:"AppName"`
+	ClusterName *string `json:"ClusterName,omitempty" name:"ClusterName"`
 
-	// 表所属大区ID
+	// 表格所属表格组ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	LogicZoneId *string `json:"LogicZoneId,omitempty" name:"LogicZoneId"`
+	TableGroupId *string `json:"TableGroupId,omitempty" name:"TableGroupId"`
 
-	// 表所属大区名称
+	// 表格所属表格组名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ZoneName *string `json:"ZoneName,omitempty" name:"ZoneName"`
+	TableGroupName *string `json:"TableGroupName,omitempty" name:"TableGroupName"`
 
-	// 表主键结构json字符串
+	// 表格主键字段结构json字符串
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	KeyStruct *string `json:"KeyStruct,omitempty" name:"KeyStruct"`
 
-	// 表非主键结构json字符串
+	// 表格非主键字段结构json字符串
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ValueStruct *string `json:"ValueStruct,omitempty" name:"ValueStruct"`
 
-	// 表分表因子集合，PROTO表有效
+	// 表格分表因子集合，对PROTO类型表格有效
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ShardingKeySet *string `json:"ShardingKeySet,omitempty" name:"ShardingKeySet"`
 
-	// 表索引键集合，PROTO表有效
+	// 表格索引键字段集合，对PROTO类型表格有效
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IndexStruct *string `json:"IndexStruct,omitempty" name:"IndexStruct"`
 
-	// LIST表元素个数
+	// LIST类型表格元素个数
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ListElementNum *uint64 `json:"ListElementNum,omitempty" name:"ListElementNum"`
 
-	// 表所关联IDL文件信息列表
+	// 表格所关联IDL文件信息列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IdlFiles []*IdlFileInfo `json:"IdlFiles,omitempty" name:"IdlFiles" list`
 
-	// 表预留容量（GB）
+	// 表格预留容量（GB）
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ReservedVolume *int64 `json:"ReservedVolume,omitempty" name:"ReservedVolume"`
 
-	// 表预留读QPS
+	// 表格预留读QPS
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ReservedReadQps *int64 `json:"ReservedReadQps,omitempty" name:"ReservedReadQps"`
 
-	// 表预留写QPS
+	// 表格预留写QPS
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ReservedWriteQps *int64 `json:"ReservedWriteQps,omitempty" name:"ReservedWriteQps"`
 
-	// 表实际数据量大小（MB）
+	// 表格实际数据量大小（MB）
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TableSize *int64 `json:"TableSize,omitempty" name:"TableSize"`
 
-	// 表状态
+	// 表格状态
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *string `json:"Status,omitempty" name:"Status"`
 
-	// 表创建时间
+	// 表格创建时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreatedTime *string `json:"CreatedTime,omitempty" name:"CreatedTime"`
 
-	// 最后一次更新时间
+	// 表格最后一次修改时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpdatedTime *string `json:"UpdatedTime,omitempty" name:"UpdatedTime"`
 
-	// 表备注信息
+	// 表格备注信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Memo *string `json:"Memo,omitempty" name:"Memo"`
 
@@ -1474,14 +1584,22 @@ type TableInfo struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Error *ErrorInfo `json:"Error,omitempty" name:"Error"`
 
-	// Api接入ID
+	// TcaplusDB SDK数据访问接入ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ApiAccessId *string `json:"ApiAccessId,omitempty" name:"ApiAccessId"`
+
+	// SORTLIST类型表格排序字段个数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SortFieldNum *int64 `json:"SortFieldNum,omitempty" name:"SortFieldNum"`
+
+	// SORTLIST类型表格排序顺序
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SortRule *int64 `json:"SortRule,omitempty" name:"SortRule"`
 }
 
-type TableResult struct {
+type TableResultNew struct {
 
-	// 表实例ID，形如：tcaplus-3be64cbb
+	// 表格实例ID，形如：tcaplus-3be64cbb
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TableInstanceId *string `json:"TableInstanceId,omitempty" name:"TableInstanceId"`
 
@@ -1489,11 +1607,11 @@ type TableResult struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
 
-	// 表名
+	// 表格名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TableName *string `json:"TableName,omitempty" name:"TableName"`
 
-	// 表数据结构类型，如：`GENERIC`或`LIST`
+	// 表格数据结构类型，如：`GENERIC`或`LIST`
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TableType *string `json:"TableType,omitempty" name:"TableType"`
 
@@ -1501,9 +1619,9 @@ type TableResult struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TableIdlType *string `json:"TableIdlType,omitempty" name:"TableIdlType"`
 
-	// 表所属大区ID
+	// 表格所属表格组ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	LogicZoneId *string `json:"LogicZoneId,omitempty" name:"LogicZoneId"`
+	TableGroupId *string `json:"TableGroupId,omitempty" name:"TableGroupId"`
 
 	// 错误信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -1514,9 +1632,9 @@ type TableResult struct {
 	TaskIds []*string `json:"TaskIds,omitempty" name:"TaskIds" list`
 }
 
-type TableRollbackResult struct {
+type TableRollbackResultNew struct {
 
-	// 表实例ID，形如：tcaplus-3be64cbb
+	// 表格实例ID，形如：tcaplus-3be64cbb
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TableInstanceId *string `json:"TableInstanceId,omitempty" name:"TableInstanceId"`
 
@@ -1524,21 +1642,21 @@ type TableRollbackResult struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
 
-	// 表名
+	// 表格名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TableName *string `json:"TableName,omitempty" name:"TableName"`
 
-	// 表数据结构类型，如：`GENERIC`或`LIST`
+	// 表格数据结构类型，如：`GENERIC`或`LIST`
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TableType *string `json:"TableType,omitempty" name:"TableType"`
 
-	// 表数据描述语言（IDL）类型，如：`PROTO`或`TDR`
+	// 表格数据描述语言（IDL）类型，如：`PROTO`或`TDR`
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TableIdlType *string `json:"TableIdlType,omitempty" name:"TableIdlType"`
 
-	// 表所属大区ID
+	// 表格所属表格组ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	LogicZoneId *string `json:"LogicZoneId,omitempty" name:"LogicZoneId"`
+	TableGroupId *string `json:"TableGroupId,omitempty" name:"TableGroupId"`
 
 	// 错误信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -1561,7 +1679,7 @@ type TableRollbackResult struct {
 	TotalKeyNum *uint64 `json:"TotalKeyNum,omitempty" name:"TotalKeyNum"`
 }
 
-type TaskInfo struct {
+type TaskInfoNew struct {
 
 	// 任务ID
 	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
@@ -1572,11 +1690,11 @@ type TaskInfo struct {
 	// 任务所关联的TcaplusDB内部事务ID
 	TransId *string `json:"TransId,omitempty" name:"TransId"`
 
-	// 任务所属应用实例ID
-	ApplicationId *string `json:"ApplicationId,omitempty" name:"ApplicationId"`
+	// 任务所属集群ID
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
 
-	// 任务所属应用名称
-	AppName *string `json:"AppName,omitempty" name:"AppName"`
+	// 任务所属集群名称
+	ClusterName *string `json:"ClusterName,omitempty" name:"ClusterName"`
 
 	// 任务进度
 	Progress *int64 `json:"Progress,omitempty" name:"Progress"`
@@ -1597,11 +1715,11 @@ type TaskInfo struct {
 type VerifyIdlFilesRequest struct {
 	*tchttp.BaseRequest
 
-	// 待加表的应用实例ID
-	ApplicationId *string `json:"ApplicationId,omitempty" name:"ApplicationId"`
+	// 待创建表格的集群ID
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
 
-	// 待加表的大区ID
-	LogicZoneId *string `json:"LogicZoneId,omitempty" name:"LogicZoneId"`
+	// 待创建表格的表格组ID
+	TableGroupId *string `json:"TableGroupId,omitempty" name:"TableGroupId"`
 
 	// 曾经上传过的IDL文件信息列表，与NewIdlFiles至少有一者
 	ExistingIdlFiles []*IdlFileInfo `json:"ExistingIdlFiles,omitempty" name:"ExistingIdlFiles" list`
@@ -1623,14 +1741,14 @@ type VerifyIdlFilesResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 本次上传校验所有的Idl文件信息列表
+		// 本次上传校验所有的IDL文件信息列表
 		IdlFiles []*IdlFileInfo `json:"IdlFiles,omitempty" name:"IdlFiles" list`
 
-		// 读取Idl描述文件后解析出的合法表数量，不包含已经创建的表
+		// 读取IDL描述文件后解析出的合法表数量，不包含已经创建的表
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
-		// 读取Idl描述文件后解析出的合法表列表，不包含已经创建的表
-		TableInfos []*ParsedTableInfo `json:"TableInfos,omitempty" name:"TableInfos" list`
+		// 读取IDL描述文件后解析出的合法表列表，不包含已经创建的表
+		TableInfos []*ParsedTableInfoNew `json:"TableInfos,omitempty" name:"TableInfos" list`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1644,22 +1762,4 @@ func (r *VerifyIdlFilesResponse) ToJsonString() string {
 
 func (r *VerifyIdlFilesResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
-}
-
-type ZoneInfo struct {
-
-	// 大区ID
-	LogicZoneId *string `json:"LogicZoneId,omitempty" name:"LogicZoneId"`
-
-	// 大区名称
-	ZoneName *string `json:"ZoneName,omitempty" name:"ZoneName"`
-
-	// 大区创建时间
-	CreatedTime *string `json:"CreatedTime,omitempty" name:"CreatedTime"`
-
-	// 大区表格数量
-	TableCount *uint64 `json:"TableCount,omitempty" name:"TableCount"`
-
-	// 大区表格存储总量（MB）
-	TotalSize *uint64 `json:"TotalSize,omitempty" name:"TotalSize"`
 }

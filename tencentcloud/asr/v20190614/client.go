@@ -156,6 +156,31 @@ func (c *Client) DescribeTaskStatus(request *DescribeTaskStatusRequest) (respons
     return
 }
 
+func NewDownloadAsrVocabRequest() (request *DownloadAsrVocabRequest) {
+    request = &DownloadAsrVocabRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("asr", APIVersion, "DownloadAsrVocab")
+    return
+}
+
+func NewDownloadAsrVocabResponse() (response *DownloadAsrVocabResponse) {
+    response = &DownloadAsrVocabResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 用户通过本接口进行热词表的下载，获得词表权重文件形式的 base64 值，文件形式为通过 “|” 分割的词和权重，即 word|weight 的形式。
+func (c *Client) DownloadAsrVocab(request *DownloadAsrVocabRequest) (response *DownloadAsrVocabResponse, err error) {
+    if request == nil {
+        request = NewDownloadAsrVocabRequest()
+    }
+    response = NewDownloadAsrVocabResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewGetAsrVocabRequest() (request *GetAsrVocabRequest) {
     request = &GetAsrVocabRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -177,6 +202,31 @@ func (c *Client) GetAsrVocab(request *GetAsrVocabRequest) (response *GetAsrVocab
         request = NewGetAsrVocabRequest()
     }
     response = NewGetAsrVocabResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewGetAsrVocabListRequest() (request *GetAsrVocabListRequest) {
+    request = &GetAsrVocabListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("asr", APIVersion, "GetAsrVocabList")
+    return
+}
+
+func NewGetAsrVocabListResponse() (response *GetAsrVocabListResponse) {
+    response = &GetAsrVocabListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 用户通过该接口，可获得所有的热词表及其信息。
+func (c *Client) GetAsrVocabList(request *GetAsrVocabListRequest) (response *GetAsrVocabListResponse, err error) {
+    if request == nil {
+        request = NewGetAsrVocabListRequest()
+    }
+    response = NewGetAsrVocabListResponse()
     err = c.Send(request, response)
     return
 }
@@ -207,6 +257,31 @@ func (c *Client) SentenceRecognition(request *SentenceRecognitionRequest) (respo
         request = NewSentenceRecognitionRequest()
     }
     response = NewSentenceRecognitionResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewSetVocabStateRequest() (request *SetVocabStateRequest) {
+    request = &SetVocabStateRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("asr", APIVersion, "SetVocabState")
+    return
+}
+
+func NewSetVocabStateResponse() (response *SetVocabStateResponse) {
+    response = &SetVocabStateResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 用户通过该接口可以设置热词表的默认状态。初始状态为0，用户可设置状态为1，即为默认状态。默认状态表示用户在请求识别时，如不设置热词表ID，则默认使用状态为1的热词表。
+func (c *Client) SetVocabState(request *SetVocabStateRequest) (response *SetVocabStateResponse, err error) {
+    if request == nil {
+        request = NewSetVocabStateRequest()
+    }
+    response = NewSetVocabStateResponse()
     err = c.Send(request, response)
     return
 }

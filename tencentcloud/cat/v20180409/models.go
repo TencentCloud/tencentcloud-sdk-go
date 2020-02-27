@@ -22,7 +22,7 @@ import (
 
 type AgentGroup struct {
 
-	// 拨测分组Id
+	// 拨测分组ID
 	GroupId *uint64 `json:"GroupId,omitempty" name:"GroupId"`
 
 	// 拨测分组名称
@@ -73,7 +73,7 @@ type AlarmInfo struct {
 
 type AlarmTopic struct {
 
-	// 主题的Id
+	// 主题的ID
 	TopicId *string `json:"TopicId,omitempty" name:"TopicId"`
 
 	// 主题的名称
@@ -148,7 +148,7 @@ type CatLog struct {
 	// 拨测类型
 	CatTypeName *string `json:"CatTypeName,omitempty" name:"CatTypeName"`
 
-	// 任务Id
+	// 任务ID
 	TaskId *uint64 `json:"TaskId,omitempty" name:"TaskId"`
 
 	// 拨测点所在城市
@@ -157,10 +157,10 @@ type CatLog struct {
 	// 拨测点所在运营商
 	Isp *string `json:"Isp,omitempty" name:"Isp"`
 
-	// 被拨测Server 的Ip
+	// 被拨测Server的IP
 	ServerIp *string `json:"ServerIp,omitempty" name:"ServerIp"`
 
-	// 被拨测Server 的域名
+	// 被拨测Server的域名
 	DomainName *string `json:"DomainName,omitempty" name:"DomainName"`
 
 	// 执行耗时，单位毫秒
@@ -184,7 +184,7 @@ type CatLog struct {
 	// 拨测回应
 	RespMsg *string `json:"RespMsg,omitempty" name:"RespMsg"`
 
-	// 客户端ip
+	// 客户端IP
 	ClientIp *string `json:"ClientIp,omitempty" name:"ClientIp"`
 
 	// 拨测点所在城市名称
@@ -223,7 +223,7 @@ type CatReturnDetail struct {
 	// Map键值
 	MapKey *string `json:"MapKey,omitempty" name:"MapKey"`
 
-	// 拨测目标的ip
+	// 拨测目标的IP
 	ServerIp *string `json:"ServerIp,omitempty" name:"ServerIp"`
 
 	// 拨测失败个数
@@ -250,7 +250,7 @@ type CatReturnSummary struct {
 
 type CatTaskDetail struct {
 
-	// 任务Id
+	// 任务ID
 	TaskId *uint64 `json:"TaskId,omitempty" name:"TaskId"`
 
 	// 任务名称
@@ -262,13 +262,13 @@ type CatTaskDetail struct {
 	// 拨测类型。http, https, ping, tcp 之一
 	CatTypeName *string `json:"CatTypeName,omitempty" name:"CatTypeName"`
 
-	// 拨测任务的Url
+	// 拨测任务的URL
 	CgiUrl *string `json:"CgiUrl,omitempty" name:"CgiUrl"`
 
-	// 拨测分组id
+	// 拨测分组ID
 	AgentGroupId *uint64 `json:"AgentGroupId,omitempty" name:"AgentGroupId"`
 
-	// 告警策略组id
+	// 告警策略组ID
 	PolicyGroupId *uint64 `json:"PolicyGroupId,omitempty" name:"PolicyGroupId"`
 
 	// 任务状态。1表示暂停，2表示运行中，0为初始态
@@ -280,7 +280,7 @@ type CatTaskDetail struct {
 	// 任务类型。0 站点监控，2 可用性监控
 	Type *uint64 `json:"Type,omitempty" name:"Type"`
 
-	// 绑定的统一告警主题Id
+	// 绑定的统一告警主题ID
 	TopicId *string `json:"TopicId,omitempty" name:"TopicId"`
 
 	// 告警状态。0 未启用，1, 启用
@@ -298,10 +298,10 @@ type CatTaskDetail struct {
 	// 1 表示通过检查结果是否包含CheckStr 进行校验
 	CheckType *uint64 `json:"CheckType,omitempty" name:"CheckType"`
 
-	// 用户agent 信息
+	// 用户Agent信息
 	UserAgent *string `json:"UserAgent,omitempty" name:"UserAgent"`
 
-	// 设置的cookie信息
+	// 设置的Cookie信息
 	Cookie *string `json:"Cookie,omitempty" name:"Cookie"`
 
 	// POST 请求数据。空字符串表示非POST请求
@@ -313,37 +313,37 @@ type CatTaskDetail struct {
 	// 是否为Header请求。非0 Header 请求
 	IsHeader *uint64 `json:"IsHeader,omitempty" name:"IsHeader"`
 
-	// 目的dns服务器
+	// 目的DNS服务器
 	DnsSvr *string `json:"DnsSvr,omitempty" name:"DnsSvr"`
 
-	// 需要检验是否在dns ip列表的ip
+	// 需要检验是否在DNS IP列表的IP
 	DnsCheckIp *string `json:"DnsCheckIp,omitempty" name:"DnsCheckIp"`
 
-	// dns查询类型
+	// DNS查询类型
 	DnsQueryType *string `json:"DnsQueryType,omitempty" name:"DnsQueryType"`
 
-	// 登陆服务器的账号
+	// 登录服务器的账号
 	UserName *string `json:"UserName,omitempty" name:"UserName"`
 
-	// 登陆服务器的密码
+	// 登录服务器的密码
 	PassWord *string `json:"PassWord,omitempty" name:"PassWord"`
 
-	// 是否使用安全链接ssl  0 不使用，1 使用
+	// 是否使用安全链接SSL， 0 不使用，1 使用
 	UseSecConn *uint64 `json:"UseSecConn,omitempty" name:"UseSecConn"`
 
-	// ftp登陆验证方式  0 不验证  1 匿名登陆  2 需要身份验证
+	// FTP登录验证方式  0 不验证  1 匿名登录  2 需要身份验证
 	NeedAuth *uint64 `json:"NeedAuth,omitempty" name:"NeedAuth"`
 
 	// 请求数据类型。0 表示请求为字符串类型。1表示为二进制类型
 	ReqDataType *uint64 `json:"ReqDataType,omitempty" name:"ReqDataType"`
 
-	// 发起tcp, udp请求的协议请求数据
+	// 发起TCP, UDP请求的协议请求数据
 	ReqData *string `json:"ReqData,omitempty" name:"ReqData"`
 
 	// 响应数据类型。0 表示响应为字符串类型。1表示为二进制类型
 	RespDataType *uint64 `json:"RespDataType,omitempty" name:"RespDataType"`
 
-	// 预期的udp请求的回应数据
+	// 预期的UDP请求的回应数据
 	RespData *string `json:"RespData,omitempty" name:"RespData"`
 
 	// 跟随跳转次数
@@ -399,7 +399,7 @@ type CreateTaskExRequest struct {
 	// http, https, ping, tcp, ftp, smtp, udp, dns 之一
 	CatTypeName *string `json:"CatTypeName,omitempty" name:"CatTypeName"`
 
-	// 拨测的url  例如：www.qq.com (url域名解析需要能解析出具体的ip)
+	// 拨测的URL， 例如：www.qq.com (URL域名解析需要能解析出具体的IP)
 	Url *string `json:"Url,omitempty" name:"Url"`
 
 	// 拨测周期。取值可为1,5,15,30之一, 单位：分钟。精度不能低于用户等级规定的最小精度
@@ -408,7 +408,7 @@ type CreateTaskExRequest struct {
 	// 拨测任务名称不能超过32个字符。同一个用户创建的任务名不可重复
 	TaskName *string `json:"TaskName,omitempty" name:"TaskName"`
 
-	// 拨测分组id，体现本拨测任务要采用那些运营商作为拨测源。一般可直接填写本用户的默认拨测分组。参见：DescribeAgentGroups 接口，本参数使用返回结果里的GroupId的值。注意： Type为0时，AgentGroupId为必填
+	// 拨测分组ID，体现本拨测任务要采用那些运营商作为拨测源。一般可直接填写本用户的默认拨测分组。参见：DescribeAgentGroups 接口，本参数使用返回结果里的GroupId的值。注意： Type为0时，AgentGroupId为必填
 	AgentGroupId *uint64 `json:"AgentGroupId,omitempty" name:"AgentGroupId"`
 
 	// 指定域名(如需要)
@@ -417,13 +417,13 @@ type CreateTaskExRequest struct {
 	// 是否为Header请求（非0 发起Header 请求。为0，且PostData 非空，发起POST请求。为0，PostData 为空，发起GET请求）
 	IsHeader *uint64 `json:"IsHeader,omitempty" name:"IsHeader"`
 
-	// url中含有https时有用。缺省为SSLv23。需要为 TLSv1_2, TLSv1_1, TLSv1, SSLv2, SSLv23, SSLv3 之一
+	// URL中含有"https"时有用。缺省为SSLv23。需要为 TLSv1_2, TLSv1_1, TLSv1, SSLv2, SSLv23, SSLv3 之一
 	SslVer *string `json:"SslVer,omitempty" name:"SslVer"`
 
-	// POST 请求数据。空字符串表示非POST请求
+	// POST请求数据。空字符串表示非POST请求
 	PostData *string `json:"PostData,omitempty" name:"PostData"`
 
-	// 用户agent 信息
+	// 用户Agent信息
 	UserAgent *string `json:"UserAgent,omitempty" name:"UserAgent"`
 
 	// 要在结果中进行匹配的字符串
@@ -432,43 +432,43 @@ type CreateTaskExRequest struct {
 	// 1 表示通过检查结果是否包含CheckStr 进行校验
 	CheckType *uint64 `json:"CheckType,omitempty" name:"CheckType"`
 
-	// 需要设置的cookie信息
+	// 需要设置的Cookie信息
 	Cookie *string `json:"Cookie,omitempty" name:"Cookie"`
 
-	// 任务号。用于验证且修改任务时传入原任务号
+	// 任务ID，用于验证且修改任务时传入原任务ID
 	TaskId *uint64 `json:"TaskId,omitempty" name:"TaskId"`
 
-	// 登陆服务器的账号。如果为空字符串，表示不用校验用户密码。只做简单连接服务器的拨测。
+	// 登录服务器的账号。如果为空字符串，表示不用校验用户密码。只做简单连接服务器的拨测
 	UserName *string `json:"UserName,omitempty" name:"UserName"`
 
-	// 登陆服务器的密码
+	// 登录服务器的密码
 	PassWord *string `json:"PassWord,omitempty" name:"PassWord"`
 
 	// 缺省为0。0 表示请求为字符串类型。1表示为二进制类型
 	ReqDataType *uint64 `json:"ReqDataType,omitempty" name:"ReqDataType"`
 
-	// 发起tcp, udp请求的协议请求数据
+	// 发起TCP, UDP请求的协议请求数据
 	ReqData *string `json:"ReqData,omitempty" name:"ReqData"`
 
 	// 缺省为0。0 表示响应为字符串类型。1表示为二进制类型
 	RespDataType *uint64 `json:"RespDataType,omitempty" name:"RespDataType"`
 
-	// 预期的udp请求的回应数据。字符串型，只需要返回的结果里包含本字符串算校验通过。二进制型，则需要严格等于才算通过
+	// 预期的UDP请求的回应数据。字符串型，只需要返回的结果里包含本字符串算校验通过。二进制型，则需要严格等于才算通过
 	RespData *string `json:"RespData,omitempty" name:"RespData"`
 
-	// 目的dns服务器  可以为空字符串
+	// 目的DNS服务器  可以为空字符串
 	DnsSvr *string `json:"DnsSvr,omitempty" name:"DnsSvr"`
 
-	// 需要检验是否在dns ip列表的ip。可以为空字符串，表示不校验
+	// 需要检验是否在DNS IP列表的IP。可以为空字符串，表示不校验
 	DnsCheckIp *string `json:"DnsCheckIp,omitempty" name:"DnsCheckIp"`
 
 	// 需要为下列值之一。缺省为A。A, MX, NS, CNAME, TXT, ANY
 	DnsQueryType *string `json:"DnsQueryType,omitempty" name:"DnsQueryType"`
 
-	// 是否使用安全链接ssl  0 不使用，1 使用
+	// 是否使用安全链接SSL， 0 不使用，1 使用
 	UseSecConn *uint64 `json:"UseSecConn,omitempty" name:"UseSecConn"`
 
-	// ftp登陆验证方式  0 不验证  1 匿名登陆  2 需要身份验证
+	// FTP登录验证方式， 0 不验证 ， 1 匿名登录， 2 需要身份验证
 	NeedAuth *uint64 `json:"NeedAuth,omitempty" name:"NeedAuth"`
 
 	// 拨测目标的端口号
@@ -497,10 +497,10 @@ type CreateTaskExResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 拨测结果查询id。接下来可以使用查询拨测是否能够成功，验证能否通过。
+		// 拨测结果查询ID。接下来可以使用查询拨测是否能够成功，验证能否通过。
 		ResultId *uint64 `json:"ResultId,omitempty" name:"ResultId"`
 
-		// 拨测任务id。验证通过后，创建任务时使用，传递给CreateTask 接口。
+		// 拨测任务ID。验证通过后，创建任务时使用，传递给CreateTask 接口。
 		TaskId *uint64 `json:"TaskId,omitempty" name:"TaskId"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -1534,7 +1534,7 @@ type ModifyTaskExRequest struct {
 	// http, https, ping, tcp, ftp, smtp, udp, dns 之一
 	CatTypeName *string `json:"CatTypeName,omitempty" name:"CatTypeName"`
 
-	// 拨测的url  例如：www.qq.com (url域名解析需要能解析出具体的ip)
+	// 拨测的URL，例如：www.qq.com (URL域名解析需要能解析出具体的IP)
 	Url *string `json:"Url,omitempty" name:"Url"`
 
 	// 拨测周期。取值可为1,5,15,30之一, 单位：分钟。精度不能低于用户等级规定的最小精度
@@ -1543,10 +1543,10 @@ type ModifyTaskExRequest struct {
 	// 拨测任务名称不能超过32个字符。同一个用户创建的任务名不可重复
 	TaskName *string `json:"TaskName,omitempty" name:"TaskName"`
 
-	// 验证成功的拨测任务id
+	// 验证成功的拨测任务ID
 	TaskId *uint64 `json:"TaskId,omitempty" name:"TaskId"`
 
-	// 拨测分组id，体现本拨测任务要采用那些运营商作为拨测源。一般可直接填写本用户的默认拨测分组。参见：DescribeAgentGroupList 接口，本参数使用返回结果里的groupId的值。注意，Type为0时，AgentGroupId为必填
+	// 拨测分组ID，体现本拨测任务要采用那些运营商作为拨测源。一般可直接填写本用户的默认拨测分组。参见：DescribeAgentGroupList 接口，本参数使用返回结果里的GroupId的值。注意，Type为0时，AgentGroupId为必填
 	AgentGroupId *uint64 `json:"AgentGroupId,omitempty" name:"AgentGroupId"`
 
 	// 指定域名(如需要)
@@ -1555,58 +1555,58 @@ type ModifyTaskExRequest struct {
 	// 拨测目标的端口号
 	Port *uint64 `json:"Port,omitempty" name:"Port"`
 
-	// 是否为Header请求（非0 发起Header 请求。为0，且PostData 非空，发起POST请求。为0，PostData 为空，发起GET请求）
+	// 是否为Header请求（非0 发起Header 请求。为0，且PostData非空，发起POST请求。为0，PostData为空，发起GET请求）
 	IsHeader *uint64 `json:"IsHeader,omitempty" name:"IsHeader"`
 
-	// url中含有https时有用。缺省为SSLv23。需要为 TLSv1_2, TLSv1_1, TLSv1, SSLv2, SSLv23, SSLv3 之一
+	// URL中含有"https"时有用。缺省为SSLv23。需要为 TLSv1_2, TLSv1_1, TLSv1, SSLv2, SSLv23, SSLv3 之一
 	SslVer *string `json:"SslVer,omitempty" name:"SslVer"`
 
-	// POST 请求数据。空字符串表示非POST请求
+	// POST 请求数据，空字符串表示非POST请求
 	PostData *string `json:"PostData,omitempty" name:"PostData"`
 
-	// 用户agent 信息
+	// 用户Agent信息
 	UserAgent *string `json:"UserAgent,omitempty" name:"UserAgent"`
 
 	// 要在结果中进行匹配的字符串
 	CheckStr *string `json:"CheckStr,omitempty" name:"CheckStr"`
 
-	// 1 表示通过检查结果是否包含checkStr 进行校验
+	// 1 表示通过检查结果是否包含CheckStr 进行校验
 	CheckType *uint64 `json:"CheckType,omitempty" name:"CheckType"`
 
-	// 需要设置的cookie信息
+	// 需要设置的Cookie信息
 	Cookie *string `json:"Cookie,omitempty" name:"Cookie"`
 
-	// 登陆服务器的账号。如果为空字符串，表示不用校验用户密码。只做简单连接服务器的拨测。
+	// 登录服务器的账号。如果为空字符串，表示不用校验用户密码。只做简单连接服务器的拨测
 	UserName *string `json:"UserName,omitempty" name:"UserName"`
 
-	// 登陆服务器的密码
+	// 登录服务器的密码
 	PassWord *string `json:"PassWord,omitempty" name:"PassWord"`
 
-	// 缺省为0。0 表示请求为字符串类型。1表示为二进制类型
+	// 缺省为0，0 表示请求为字符串类型, 1表示为二进制类型
 	ReqDataType *uint64 `json:"ReqDataType,omitempty" name:"ReqDataType"`
 
-	// 发起tcp, udp请求的协议请求数据
+	// 发起TCP, UDP请求的协议请求数据
 	ReqData *string `json:"ReqData,omitempty" name:"ReqData"`
 
 	// 缺省为0。0 表示请求为字符串类型。1表示为二进制类型
 	RespDataType *string `json:"RespDataType,omitempty" name:"RespDataType"`
 
-	// 预期的udp请求的回应数据。字符串型，只需要返回的结果里包含本字符串算校验通过。二进制型，则需要严格等于才算通过
+	// 预期的UDP请求的回应数据。字符串型，只需要返回的结果里包含本字符串算校验通过。二进制型，则需要严格等于才算通过
 	RespData *string `json:"RespData,omitempty" name:"RespData"`
 
-	// 目的dns服务器  可以为空字符串
+	// 目的DNS服务器，可以为空字符串
 	DnsSvr *string `json:"DnsSvr,omitempty" name:"DnsSvr"`
 
-	// 需要检验是否在dns ip列表的ip。可以为空字符串，表示不校验
+	// 需要检验是否在DNS IP列表的IP。可以为空字符串，表示不校验
 	DnsCheckIp *string `json:"DnsCheckIp,omitempty" name:"DnsCheckIp"`
 
 	// 需要为下列值之一。缺省为A。A, MX, NS, CNAME, TXT, ANY
 	DnsQueryType *string `json:"DnsQueryType,omitempty" name:"DnsQueryType"`
 
-	// 是否使用安全链接ssl  0 不使用，1 使用
+	// 是否使用安全链接SSL， 0 不使用，1 使用
 	UseSecConn *uint64 `json:"UseSecConn,omitempty" name:"UseSecConn"`
 
-	// ftp登陆验证方式  0 不验证  1 匿名登陆  2 需要身份验证
+	// FTP登录验证方式，  0 不验证  1 匿名登录  2 需要身份验证
 	NeedAuth *uint64 `json:"NeedAuth,omitempty" name:"NeedAuth"`
 
 	// Type=0 默认 （站点监控） Type=2 可用率监控
@@ -1629,7 +1629,7 @@ type ModifyTaskExResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 拨测任务id。验证通过后，创建任务时使用，传递给CreateTask 接口。
+		// 拨测任务ID。验证通过后，创建任务时使用，传递给CreateTask 接口。
 		TaskId *uint64 `json:"TaskId,omitempty" name:"TaskId"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -1709,7 +1709,7 @@ type ResultSummary struct {
 	// 统计时间
 	LogTime *string `json:"LogTime,omitempty" name:"LogTime"`
 
-	// 任务Id
+	// 任务ID
 	TaskId *uint64 `json:"TaskId,omitempty" name:"TaskId"`
 
 	// 实时可用率
@@ -1755,7 +1755,7 @@ func (r *RunTaskResponse) FromJsonString(s string) error {
 
 type TaskAlarm struct {
 
-	// 任务Id
+	// 任务ID
 	TaskId *uint64 `json:"TaskId,omitempty" name:"TaskId"`
 
 	// 任务名称
@@ -1770,7 +1770,7 @@ type TaskAlarm struct {
 	// 任务状态。1表示暂停，2表示运行中，0为初始态
 	Status *uint64 `json:"Status,omitempty" name:"Status"`
 
-	// 拨测任务的Url
+	// 拨测任务的URL
 	CgiUrl *string `json:"CgiUrl,omitempty" name:"CgiUrl"`
 
 	// 任务创建时间

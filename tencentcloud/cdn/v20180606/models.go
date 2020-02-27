@@ -340,43 +340,65 @@ type BandwidthAlert struct {
 
 type BriefDomain struct {
 
-	// 域名ID。
+	// 域名 ID
 	ResourceId *string `json:"ResourceId,omitempty" name:"ResourceId"`
 
-	// 腾讯云账号ID。
+	// 腾讯云账号 ID
 	AppId *int64 `json:"AppId,omitempty" name:"AppId"`
 
-	// CDN加速域名。
+	// 加速域名
 	Domain *string `json:"Domain,omitempty" name:"Domain"`
 
-	// 域名CName。
+	// 域名对应的 CNAME 地址
 	Cname *string `json:"Cname,omitempty" name:"Cname"`
 
-	// 域名状态，pending，rejected，processing， online，offline，deleted分别表示审核中，审核未通过，审核通过部署中，已开启，已关闭，已删除。
+	// 加速服务状态
+	// rejected：域名审核未通过，域名备案过期/被注销导致
+	// processing：部署中
+	// online：已启动
+	// offline：已关闭
 	Status *string `json:"Status,omitempty" name:"Status"`
 
-	// 项目ID。
+	// 项目 ID，可前往腾讯云项目管理页面查看
 	ProjectId *int64 `json:"ProjectId,omitempty" name:"ProjectId"`
 
-	// 域名业务类型，web，download，media分别表示静态加速，下载加速和流媒体加速。
+	// 域名业务类型
+	// web：静态加速
+	// download：下载加速
+	// media：流媒体点播加速
 	ServiceType *string `json:"ServiceType,omitempty" name:"ServiceType"`
 
-	// 域名创建时间。
+	// 域名创建时间
 	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
 
-	// 域名更新时间。
+	// 域名更新时间
 	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
 
-	// 源站配置详情。
+	// 源站配置详情
 	Origin *Origin `json:"Origin,omitempty" name:"Origin"`
 
-	// 域名封禁状态，normal，overdue，quota，malicious，ddos，idle，unlicensed，capping，readonly分别表示。
+	// 域名封禁状态
+	// normal：正常状态
+	// overdue：账号欠费导致域名关闭，充值完成后可自行启动加速服务
+	// malicious：域名出现恶意行为，强制关闭加速服务
+	// ddos：域名被大规模 DDoS 攻击，关闭加速服务
+	// idle：域名超过 90 天内无任何操作、数据产生，判定为不活跃域名自动关闭加速服务，可自行启动加速服务
+	// unlicensed：域名未备案/备案注销，自动关闭加速服务，备案完成后可自行启动加速服务
+	// capping：触发配置的带宽阈值上限
+	// readonly：域名存在特殊配置，被锁定
 	Disable *string `json:"Disable,omitempty" name:"Disable"`
 
-	// 加速区域，mainland，oversea或global。
+	// 加速区域
+	// mainland：中国境内加速
+	// overseas：中国境外加速
+	// global：全球加速
 	Area *string `json:"Area,omitempty" name:"Area"`
 
-	// 域名锁定状态，normal，mainland，overseas或global，分别表示未被锁定，国内锁定，海外锁定或全球锁定。
+	// 域名锁定状态
+	// normal：未锁定
+	// mainland：中国境内锁定
+	// overseas：中国境外锁定
+	// global：全球锁定
 	Readonly *string `json:"Readonly,omitempty" name:"Readonly"`
 }
 
@@ -454,28 +476,37 @@ type CdnData struct {
 
 type CdnIp struct {
 
-	// 节点 ip。
+	// 指定查询的 IP
 	Ip *string `json:"Ip,omitempty" name:"Ip"`
 
-	// 是否为腾讯云 CDN 加速节点。yes 表示该节点为腾讯云 CDN 节点，no 表示该节点不是腾讯云 CDN 节点。
+	// IP 归属：
+	// yes：节点归属于腾讯云 CDN
+	// no：节点不属于腾讯云 CDN
 	Platform *string `json:"Platform,omitempty" name:"Platform"`
 
-	// 表示该节点所处的省份/国家。unknown 表示节点位置未知。
+	// 节点所处的省份/国家
+	// unknown 表示节点位置未知
 	Location *string `json:"Location,omitempty" name:"Location"`
 
-	// 节点上下线历史记录。
+	// 节点上下线历史记录
 	History []*CdnIpHistory `json:"History,omitempty" name:"History" list`
 
-	// 节点的服务地域。mainland 表示服务地域为中国境内，overseas 表示服务地域为中国境外， unknown 表示服务地域未知。
+	// 节点的所在区域
+	// mainland：中国境内加速节点
+	// overseas：中国境外加速节点
+	// unknown：服务地域无法获取
 	Area *string `json:"Area,omitempty" name:"Area"`
 }
 
 type CdnIpHistory struct {
 
-	// 上下线状态。online 为上线，offline 为下线。
+	// 操作类型
+	// online：节点上线
+	// offline：节点下线
 	Status *string `json:"Status,omitempty" name:"Status"`
 
-	// 操作时间。当该值为 null 时表示无历史状态变更记录。
+	// 操作类型对应的操作时间
+	// 当该值为 null 时表示无历史状态变更记录
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Datetime *string `json:"Datetime,omitempty" name:"Datetime"`
 }
@@ -1477,146 +1508,168 @@ func (r *DescribeUrlViolationsResponse) FromJsonString(s string) error {
 
 type DetailDomain struct {
 
-	// 域名ID。
+	// 域名 ID
 	ResourceId *string `json:"ResourceId,omitempty" name:"ResourceId"`
 
-	// 腾讯云账号ID。
+	// 腾讯云账号ID
 	AppId *int64 `json:"AppId,omitempty" name:"AppId"`
 
-	// 加速域名。
+	// 加速域名
 	Domain *string `json:"Domain,omitempty" name:"Domain"`
 
-	// 域名CName。
+	// 域名对应的 CNAME 地址
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Cname *string `json:"Cname,omitempty" name:"Cname"`
 
-	// 域名状态，pending，rejected，processing， online，offline，deleted分别表示审核中，审核未通过，审核通过部署中，已开启，已关闭，已删除。
+	// 加速服务状态
+	// rejected：域名审核未通过，域名备案过期/被注销导致
+	// processing：部署中
+	// online：已启动
+	// offline：已关闭
 	Status *string `json:"Status,omitempty" name:"Status"`
 
-	// 项目ID。
+	// 项目 ID，可前往腾讯云项目管理页面查看
 	ProjectId *int64 `json:"ProjectId,omitempty" name:"ProjectId"`
 
-	// 域名业务类型，web，download，media分别表示静态加速，下载加速和流媒体加速。
+	// 域名业务类型
+	// web：静态加速
+	// download：下载加速
+	// media：流媒体点播加速
 	ServiceType *string `json:"ServiceType,omitempty" name:"ServiceType"`
 
-	// 域名创建时间。
+	// 域名创建时间
 	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
 
-	// 域名更新时间。
+	// 域名更新时间
 	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
 
-	// 源站配置。
+	// 源站配置
 	Origin *Origin `json:"Origin,omitempty" name:"Origin"`
 
-	// IP黑白名单配置。
+	// IP 黑白名单配置
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IpFilter *IpFilter `json:"IpFilter,omitempty" name:"IpFilter"`
 
-	// IP限频配置。
+	// IP 访问限频配置
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IpFreqLimit *IpFreqLimit `json:"IpFreqLimit,omitempty" name:"IpFreqLimit"`
 
-	// 状态码缓存配置。
+	// 状态码缓存配置
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	StatusCodeCache *StatusCodeCache `json:"StatusCodeCache,omitempty" name:"StatusCodeCache"`
 
-	// 智能压缩配置。
+	// 智能压缩配置
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Compression *Compression `json:"Compression,omitempty" name:"Compression"`
 
-	// 带宽封顶配置。
+	// 带宽封顶配置
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	BandwidthAlert *BandwidthAlert `json:"BandwidthAlert,omitempty" name:"BandwidthAlert"`
 
-	// Range回源配置。
+	// Range 回源配置
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RangeOriginPull *RangeOriginPull `json:"RangeOriginPull,omitempty" name:"RangeOriginPull"`
 
-	// 301和302自动回源跟随配置。
+	// 301/302 回源自动跟随配置
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FollowRedirect *FollowRedirect `json:"FollowRedirect,omitempty" name:"FollowRedirect"`
 
-	// 错误码重定向配置。
+	// 自定义错误页面配置（功能灰度中，敬请期待）
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ErrorPage *ErrorPage `json:"ErrorPage,omitempty" name:"ErrorPage"`
 
-	// 回源请求头部配置。
+	// 自定义请求头部配置
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RequestHeader *RequestHeader `json:"RequestHeader,omitempty" name:"RequestHeader"`
 
-	// 源站响应头部配置。
+	// 自定义响应头部配置
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResponseHeader *ResponseHeader `json:"ResponseHeader,omitempty" name:"ResponseHeader"`
 
-	// 下载速度配置。
+	// 单链接下行限速配置
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DownstreamCapping *DownstreamCapping `json:"DownstreamCapping,omitempty" name:"DownstreamCapping"`
 
-	// 节点缓存配置。
+	// 带参/不带参缓存配置
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CacheKey *CacheKey `json:"CacheKey,omitempty" name:"CacheKey"`
 
-	// 遵循源站缓存头部配置。
+	// 源站头部缓存配置
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResponseHeaderCache *ResponseHeaderCache `json:"ResponseHeaderCache,omitempty" name:"ResponseHeaderCache"`
 
-	// 视频拖拽配置。
+	// 视频拖拽配置
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	VideoSeek *VideoSeek `json:"VideoSeek,omitempty" name:"VideoSeek"`
 
-	// 缓存规则配置。
+	// 节点缓存过期规则配置
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Cache *Cache `json:"Cache,omitempty" name:"Cache"`
 
-	// 跨国优化配置。
+	// 跨国链路优化配置（功能灰度中，敬请期待）
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	OriginPullOptimization *OriginPullOptimization `json:"OriginPullOptimization,omitempty" name:"OriginPullOptimization"`
 
-	// Https配置。
+	// Https 加速相关配置
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Https *Https `json:"Https,omitempty" name:"Https"`
 
-	// 时间戳防盗链配置。
+	// 时间戳防盗链配置
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Authentication *Authentication `json:"Authentication,omitempty" name:"Authentication"`
 
-	// seo优化配置。
+	// SEO 优化配置
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Seo *Seo `json:"Seo,omitempty" name:"Seo"`
 
-	// 域名封禁状态，normal，overdue，quota，malicious，ddos，idle，unlicensed，capping分别表示。
+	// 域名封禁状态
+	// normal：正常状态
+	// overdue：账号欠费导致域名关闭，充值完成后可自行启动加速服务
+	// malicious：域名出现恶意行为，强制关闭加速服务
+	// ddos：域名被大规模 DDoS 攻击，关闭加速服务
+	// idle：域名超过 90 天内无任何操作、数据产生，判定为不活跃域名自动关闭加速服务，可自行启动加速服务
+	// unlicensed：域名未备案/备案注销，自动关闭加速服务，备案完成后可自行启动加速服务
+	// capping：触发配置的带宽阈值上限
+	// readonly：域名存在特殊配置，被锁定
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Disable *string `json:"Disable,omitempty" name:"Disable"`
 
-	// 访问协议强制跳转配置。
+	// 访问协议强制跳转配置
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ForceRedirect *ForceRedirect `json:"ForceRedirect,omitempty" name:"ForceRedirect"`
 
-	// 防盗链配置。
+	// Referer 防盗链配置
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Referer *Referer `json:"Referer,omitempty" name:"Referer"`
 
-	// 浏览器缓存规则配置。
+	// 浏览器缓存过期规则配置（功能灰度中，敬请期待）
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MaxAge *MaxAge `json:"MaxAge,omitempty" name:"MaxAge"`
 
-	// Ipv6配置。
+	// Ipv6 配置（功能灰度中，敬请期待）
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Ipv6 *Ipv6 `json:"Ipv6,omitempty" name:"Ipv6"`
 
-	// 是否兼容旧版本配置。
+	// 是否兼容旧版本配置（内部兼容性字段）
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Compatibility *Compatibility `json:"Compatibility,omitempty" name:"Compatibility"`
 
-	// 分地区特殊配置。
+	// 区域特殊配置
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SpecificConfig *SpecificConfig `json:"SpecificConfig,omitempty" name:"SpecificConfig"`
 
-	// 加速区域，mainland，overseas或global。
+	// 加速区域
+	// mainland：中国境内加速
+	// overseas：中国境外加速
+	// global：全球加速
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Area *string `json:"Area,omitempty" name:"Area"`
 
-	// 域名锁定状态，normal，mainland，overseas或global，分别表示未被锁定，国内锁定，海外锁定或全球锁定。
+	// 域名锁定状态
+	// normal：未锁定
+	// mainland：中国境内锁定
+	// overseas：中国境外锁定
+	// global：全球锁定
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Readonly *string `json:"Readonly,omitempty" name:"Readonly"`
 

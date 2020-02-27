@@ -147,6 +147,12 @@ type ClusterAdvancedSettings struct {
 
 	// 集群自定义参数
 	ExtraArgs *ClusterExtraArgs `json:"ExtraArgs,omitempty" name:"ExtraArgs"`
+
+	// 集群网络类型（包括GR(全局路由)和VPC-CNI两种模式，默认为GR。
+	NetworkType *string `json:"NetworkType,omitempty" name:"NetworkType"`
+
+	// 集群VPC-CNI模式是否为非固定IP，默认: FALSE 固定IP。
+	IsNonStaticIpMode *bool `json:"IsNonStaticIpMode,omitempty" name:"IsNonStaticIpMode"`
 }
 
 type ClusterAsGroup struct {
@@ -260,6 +266,15 @@ type ClusterCIDRSettings struct {
 
 	// 集群最大的service数量。取值范围32～32768，不为2的幂值时会向上取最接近的2的幂值。
 	MaxClusterServiceNum *uint64 `json:"MaxClusterServiceNum,omitempty" name:"MaxClusterServiceNum"`
+
+	// 用于分配集群服务 IP 的 CIDR，不得与 VPC CIDR 冲突，也不得与同 VPC 内其他集群 CIDR 冲突。且网段范围必须在内网网段内，例如:10.1.0.0/14, 192.168.0.1/18,172.16.0.0/16。
+	ServiceCIDR *string `json:"ServiceCIDR,omitempty" name:"ServiceCIDR"`
+
+	// VPC-CNI网络模式下，弹性网卡的子网Id。
+	EniSubnetIds []*string `json:"EniSubnetIds,omitempty" name:"EniSubnetIds" list`
+
+	// VPC-CNI网络模式下，弹性网卡IP的回收时间，取值范围[300,15768000)
+	ClaimExpiredSeconds *int64 `json:"ClaimExpiredSeconds,omitempty" name:"ClaimExpiredSeconds"`
 }
 
 type ClusterExtraArgs struct {
@@ -622,7 +637,7 @@ type DataDisk struct {
 	// 云盘类型
 	DiskType *string `json:"DiskType,omitempty" name:"DiskType"`
 
-	// 文件系统
+	// 文件系统(ext3/ext4/xfs)
 	FileSystem *string `json:"FileSystem,omitempty" name:"FileSystem"`
 
 	// 云盘大小(G）
@@ -1584,7 +1599,7 @@ type Label struct {
 
 type LoginSettings struct {
 
-	// 实例登录密码。不同操作系统类型密码复杂度限制不一样，具体如下：<br><li>Linux实例密码必须8到16位，至少包括两项[a-z，A-Z]、[0-9] 和 [( ) ` ~ ! @ # $ % ^ & * - + = | { } [ ] : ; ' , . ? / ]中的特殊符号。<br><li>Windows实例密码必须12到16位，至少包括三项[a-z]，[A-Z]，[0-9] 和 [( ) ` ~ ! @ # $ % ^ & * - + = { } [ ] : ; ' , . ? /]中的特殊符号。<br><br>若不指定该参数，则由系统随机生成密码，并通过站内信方式通知到用户。
+	// 实例登录密码。不同操作系统类型密码复杂度限制不一样，具体如下：<br><li>Linux实例密码必须8到30位，至少包括两项[a-z]，[A-Z]、[0-9] 和 [( ) \` ~ ! @ # $ % ^ & &#42;  - + = | { } [ ] : ; ' , . ? / ]中的特殊符号。<br><li>Windows实例密码必须12到30位，至少包括三项[a-z]，[A-Z]，[0-9] 和 [( ) \` ~ ! @ # $ % ^ & &#42; - + = | { } [ ] : ; ' , . ? /]中的特殊符号。<br><br>若不指定该参数，则由系统随机生成密码，并通过站内信方式通知到用户。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Password *string `json:"Password,omitempty" name:"Password"`
 

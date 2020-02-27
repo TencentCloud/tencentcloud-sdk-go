@@ -1674,6 +1674,12 @@ type CreateContentReviewTemplateRequest struct {
 	// 鉴政控制参数。
 	PoliticalConfigure *PoliticalConfigureInfo `json:"PoliticalConfigure,omitempty" name:"PoliticalConfigure"`
 
+	// 违禁控制参数。违禁内容包括：
+	// <li>谩骂；</li>
+	// <li>涉毒违法。</li>
+	// 注意：此参数尚未支持。
+	ProhibitedConfigure *ProhibitedConfigureInfo `json:"ProhibitedConfigure,omitempty" name:"ProhibitedConfigure"`
+
 	// 用户自定义内容审核控制参数。
 	UserDefineConfigure *UserDefineConfigureInfo `json:"UserDefineConfigure,omitempty" name:"UserDefineConfigure"`
 }
@@ -3132,13 +3138,13 @@ type DescribeTaskDetailResponse struct {
 	// <li>FINISH：已完成。</li>
 		Status *string `json:"Status,omitempty" name:"Status"`
 
-		// 任务的创建时间，采用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+		// 任务的创建时间，采用 [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。
 		CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
 
-		// 任务开始执行的时间，采用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+		// 任务开始执行的时间，采用 [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。
 		BeginProcessTime *string `json:"BeginProcessTime,omitempty" name:"BeginProcessTime"`
 
-		// 任务执行完毕的时间，采用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+		// 任务执行完毕的时间，采用 [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。
 		FinishTime *string `json:"FinishTime,omitempty" name:"FinishTime"`
 
 		// 视频处理任务信息，仅当 TaskType 为 WorkflowTask，该字段有值。
@@ -4832,6 +4838,12 @@ type ModifyContentReviewTemplateRequest struct {
 	// 鉴政控制参数。
 	PoliticalConfigure *PoliticalConfigureInfoForUpdate `json:"PoliticalConfigure,omitempty" name:"PoliticalConfigure"`
 
+	// 违禁控制参数。违禁内容包括：
+	// <li>谩骂；</li>
+	// <li>涉毒违法。</li>
+	// 注意：此参数尚未支持。
+	ProhibitedConfigure *ProhibitedConfigureInfoForUpdate `json:"ProhibitedConfigure,omitempty" name:"ProhibitedConfigure"`
+
 	// 用户自定义内容审核控制参数。
 	UserDefineConfigure *UserDefineConfigureInfoForUpdate `json:"UserDefineConfigure,omitempty" name:"UserDefineConfigure"`
 }
@@ -5885,6 +5897,20 @@ type ProhibitedAsrReviewTemplateInfo struct {
 	ReviewConfidence *int64 `json:"ReviewConfidence,omitempty" name:"ReviewConfidence"`
 }
 
+type ProhibitedAsrReviewTemplateInfoForUpdate struct {
+
+	// 语音违禁任务开关，可选值：
+	// <li>ON：开启语音违禁任务；</li>
+	// <li>OFF：关闭语音违禁任务。</li>
+	Switch *string `json:"Switch,omitempty" name:"Switch"`
+
+	// 判定涉嫌违规的分数阈值，当智能审核达到该分数以上，认为涉嫌违规，不填默认为 100 分。取值范围：0~100。
+	BlockConfidence *int64 `json:"BlockConfidence,omitempty" name:"BlockConfidence"`
+
+	// 判定需人工复核是否违规的分数阈值，当智能审核达到该分数以上，认为需人工复核，不填默认为 75 分。取值范围：0~100。
+	ReviewConfidence *int64 `json:"ReviewConfidence,omitempty" name:"ReviewConfidence"`
+}
+
 type ProhibitedConfigureInfo struct {
 
 	// 语音违禁控制参数。
@@ -5896,7 +5922,30 @@ type ProhibitedConfigureInfo struct {
 	OcrReviewInfo *ProhibitedOcrReviewTemplateInfo `json:"OcrReviewInfo,omitempty" name:"OcrReviewInfo"`
 }
 
+type ProhibitedConfigureInfoForUpdate struct {
+
+	// 语音违禁控制参数。
+	AsrReviewInfo *ProhibitedAsrReviewTemplateInfoForUpdate `json:"AsrReviewInfo,omitempty" name:"AsrReviewInfo"`
+
+	// 文本违禁控制参数。
+	OcrReviewInfo *ProhibitedOcrReviewTemplateInfoForUpdate `json:"OcrReviewInfo,omitempty" name:"OcrReviewInfo"`
+}
+
 type ProhibitedOcrReviewTemplateInfo struct {
+
+	// 文本违禁任务开关，可选值：
+	// <li>ON：开启文本违禁任务；</li>
+	// <li>OFF：关闭文本违禁任务。</li>
+	Switch *string `json:"Switch,omitempty" name:"Switch"`
+
+	// 判定涉嫌违规的分数阈值，当智能审核达到该分数以上，认为涉嫌违规，不填默认为 100 分。取值范围：0~100。
+	BlockConfidence *int64 `json:"BlockConfidence,omitempty" name:"BlockConfidence"`
+
+	// 判定需人工复核是否违规的分数阈值，当智能审核达到该分数以上，认为需人工复核，不填默认为 75 分。取值范围：0~100。
+	ReviewConfidence *int64 `json:"ReviewConfidence,omitempty" name:"ReviewConfidence"`
+}
+
+type ProhibitedOcrReviewTemplateInfoForUpdate struct {
 
 	// 文本违禁任务开关，可选值：
 	// <li>ON：开启文本违禁任务；</li>

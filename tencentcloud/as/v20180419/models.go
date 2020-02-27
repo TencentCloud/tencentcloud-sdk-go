@@ -2043,6 +2043,9 @@ type LifecycleHook struct {
 
 	// 通知目标
 	NotificationTarget *NotificationTarget `json:"NotificationTarget,omitempty" name:"NotificationTarget"`
+
+	// 生命周期挂钩适用场景
+	LifecycleTransitionType *string `json:"LifecycleTransitionType,omitempty" name:"LifecycleTransitionType"`
 }
 
 type LimitedLoginSettings struct {

@@ -647,6 +647,43 @@ func (r *CreateLoadBalancerResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type CreateLoadBalancerSnatIpsRequest struct {
+	*tchttp.BaseRequest
+
+	// 负载均衡唯一性Id，如lb-12345678
+	LoadBalancerId *string `json:"LoadBalancerId,omitempty" name:"LoadBalancerId"`
+
+	// 添加SnatIp信息，可指定Ip申请，或者指定子网自动申请
+	SnatIps []*SnatIp `json:"SnatIps,omitempty" name:"SnatIps" list`
+}
+
+func (r *CreateLoadBalancerSnatIpsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateLoadBalancerSnatIpsRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateLoadBalancerSnatIpsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateLoadBalancerSnatIpsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateLoadBalancerSnatIpsResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type CreateRuleRequest struct {
 	*tchttp.BaseRequest
 
@@ -773,6 +810,43 @@ func (r *DeleteListenerResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DeleteLoadBalancerListenersRequest struct {
+	*tchttp.BaseRequest
+
+	// 负载均衡实例 ID
+	LoadBalancerId *string `json:"LoadBalancerId,omitempty" name:"LoadBalancerId"`
+
+	// 指定删除的监听器ID数组，若不填则删除负载均衡的所有监听器
+	ListenerIds []*string `json:"ListenerIds,omitempty" name:"ListenerIds" list`
+}
+
+func (r *DeleteLoadBalancerListenersRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteLoadBalancerListenersRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteLoadBalancerListenersResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DeleteLoadBalancerListenersResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteLoadBalancerListenersResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DeleteLoadBalancerRequest struct {
 	*tchttp.BaseRequest
 
@@ -804,6 +878,43 @@ func (r *DeleteLoadBalancerResponse) ToJsonString() string {
 }
 
 func (r *DeleteLoadBalancerResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteLoadBalancerSnatIpsRequest struct {
+	*tchttp.BaseRequest
+
+	// 负载均衡唯一Id，如lb-12345678
+	LoadBalancerId *string `json:"LoadBalancerId,omitempty" name:"LoadBalancerId"`
+
+	// 删除SnatIp地址数组
+	Ips []*string `json:"Ips,omitempty" name:"Ips" list`
+}
+
+func (r *DeleteLoadBalancerSnatIpsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteLoadBalancerSnatIpsRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteLoadBalancerSnatIpsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DeleteLoadBalancerSnatIpsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteLoadBalancerSnatIpsResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -2030,6 +2141,10 @@ type ListenerBackend struct {
 	// 监听器上绑定的后端服务列表（仅适用于TCP/UDP/TCP_SSL监听器）
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Targets []*Backend `json:"Targets,omitempty" name:"Targets" list`
+
+	// 若支持端口段，则为端口段结束端口；若不支持端口段，则为0
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EndPort *int64 `json:"EndPort,omitempty" name:"EndPort"`
 }
 
 type ListenerHealth struct {
@@ -2499,6 +2614,9 @@ type ModifyLoadBalancerAttributesRequest struct {
 
 	// Target是否放通来自CLB的流量。开启放通（true）：只验证CLB上的安全组；不开启放通（false）：需同时验证CLB和后端实例上的安全组。
 	LoadBalancerPassToTarget *bool `json:"LoadBalancerPassToTarget,omitempty" name:"LoadBalancerPassToTarget"`
+
+	// 是否开启SnatPro
+	SnatPro *bool `json:"SnatPro,omitempty" name:"SnatPro"`
 }
 
 func (r *ModifyLoadBalancerAttributesRequest) ToJsonString() string {

@@ -33,6 +33,9 @@ type AccountCreateInfo struct {
 
 	// 账号备注信息
 	Remark *string `json:"Remark,omitempty" name:"Remark"`
+
+	// 是否为管理员账户，默认为否
+	IsAdmin *bool `json:"IsAdmin,omitempty" name:"IsAdmin"`
 }
 
 type AccountDetail struct {
@@ -157,7 +160,7 @@ type CreateAccountResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 任务流id
+		// 任务流ID
 		FlowId *int64 `json:"FlowId,omitempty" name:"FlowId"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -290,7 +293,7 @@ func (r *CreateDBInstancesResponse) FromJsonString(s string) error {
 type CreateDBRequest struct {
 	*tchttp.BaseRequest
 
-	// 实例id
+	// 实例ID
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
 	// 数据库创建信息
@@ -310,7 +313,7 @@ type CreateDBResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 任务流id
+		// 任务流ID
 		FlowId *int64 `json:"FlowId,omitempty" name:"FlowId"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -336,7 +339,7 @@ type CreateMigrationRequest struct {
 	// 迁移类型（1:结构迁移 2:数据迁移 3:增量同步）
 	MigrateType *uint64 `json:"MigrateType,omitempty" name:"MigrateType"`
 
-	// 迁移源的类型 1:CDB for SQLServer 2:云服务器自建SQLServer数据库 4:SQLServer备份还原 5:SQLServer备份还原（COS方式）
+	// 迁移源的类型 1:TencentDB for SQLServer 2:云服务器自建SQLServer数据库 4:SQLServer备份还原 5:SQLServer备份还原（COS方式）
 	SourceType *uint64 `json:"SourceType,omitempty" name:"SourceType"`
 
 	// 迁移源
@@ -558,7 +561,7 @@ type DealInfo struct {
 	// 商品数量
 	Count *uint64 `json:"Count,omitempty" name:"Count"`
 
-	// 关联的流程 Id，可用于查询流程执行状态
+	// 关联的流程 ID，可用于查询流程执行状态
 	FlowId *int64 `json:"FlowId,omitempty" name:"FlowId"`
 
 	// 只有创建实例的订单会填充该字段，表示该订单创建的实例的 ID。
@@ -594,7 +597,7 @@ type DeleteAccountResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 任务流id
+		// 任务流ID
 		FlowId *int64 `json:"FlowId,omitempty" name:"FlowId"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -634,7 +637,7 @@ type DeleteDBResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 任务流id
+		// 任务流ID
 		FlowId *int64 `json:"FlowId,omitempty" name:"FlowId"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -694,7 +697,7 @@ type DescribeAccountsRequest struct {
 	// 分页返回，每页返回的数目，取值为1-100，默认值为20
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 
-	// 分页返回，从第几页开始返回。从第0页开始，默认第0页
+	// 分页返回，页编号，默认值为第0页
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
 }
 
@@ -746,10 +749,10 @@ type DescribeBackupsRequest struct {
 	// 实例ID，形如mssql-njj2mtpl
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
-	// 分页返回，每页返回数量，默认为20，最大值为 100
+	// 分页返回，每页返回的数目，取值为1-100，默认值为20
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 
-	// 偏移量，默认为 0
+	// 分页返回，页编号，默认值为第0页
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
 }
 
@@ -807,10 +810,10 @@ type DescribeDBInstancesRequest struct {
 	// <li>12：重启中</li>
 	Status *int64 `json:"Status,omitempty" name:"Status"`
 
-	// 页数，默认为 0
+	// 分页返回，页编号，默认值为第0页
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
 
-	// 页大小，默认为50
+	// 分页返回，每页返回的数目，取值为1-100，默认值为100
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 
 	// 一个或者多个实例ID。实例ID，格式如：mssql-si2823jyl
@@ -859,10 +862,10 @@ type DescribeDBsRequest struct {
 	// 实例ID
 	InstanceIdSet []*string `json:"InstanceIdSet,omitempty" name:"InstanceIdSet" list`
 
-	// 每页记录数，最大为100，默认20
+	// 分页返回，每页返回的数目，取值为1-100，默认值为20
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 
-	// 页编号，从第0页开始
+	// 分页返回，页编号，默认值为第0页
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
 }
 
@@ -968,7 +971,7 @@ type DescribeMigrationDetailResponse struct {
 		// 迁移任务所属的地域
 		Region *string `json:"Region,omitempty" name:"Region"`
 
-		// 迁移源的类型 1:CDB for SQLServer 2:云服务器自建SQLServer数据库 4:SQLServer备份还原 5:SQLServer备份还原（COS方式）
+		// 迁移源的类型 1:TencentDB for SQLServer 2:云服务器自建SQLServer数据库 4:SQLServer备份还原 5:SQLServer备份还原（COS方式）
 		SourceType *int64 `json:"SourceType,omitempty" name:"SourceType"`
 
 		// 迁移任务的创建时间
@@ -1021,10 +1024,10 @@ type DescribeMigrationsRequest struct {
 	// 迁移任务的名称，模糊匹配
 	MigrateName *string `json:"MigrateName,omitempty" name:"MigrateName"`
 
-	// 每页的记录数
+	// 分页返回，每页返回的数目，取值为1-100，默认值为100
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 
-	// 查询第几页的记录
+	// 分页返回，页编号，默认值为第0页
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
 
 	// 查询结果按照关键字排序，可选值为name、createTime、startTime，endTime，status
@@ -1236,10 +1239,10 @@ type DescribeSlowlogsRequest struct {
 	// 查询结束时间
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 
-	// 分页返回结果，分页大小，默认20，不超过100
+	// 分页返回，每页返回的数目，取值为1-100，默认值为20
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 
-	// 从第几页开始返回，起始页，从0开始，默认为0
+	// 分页返回，页编号，默认值为第0页
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
 }
 
@@ -1351,10 +1354,10 @@ type InquiryPriceCreateDBInstancesResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 未打折前价格，其值除以100表示多少钱。比如10010表示100.10元
+		// 未打折前价格，其值除以100表示多少钱。例如10010表示100.10元
 		OriginalPrice *int64 `json:"OriginalPrice,omitempty" name:"OriginalPrice"`
 
-		// 实际需要支付的价格，其值除以100表示多少钱。比如10010表示100.10元
+		// 实际需要支付的价格，其值除以100表示多少钱。例如10010表示100.10元
 		Price *int64 `json:"Price,omitempty" name:"Price"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -1397,10 +1400,10 @@ type InquiryPriceRenewDBInstanceResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 未打折的原价，其值除以100表示最终的价格。比如10094表示100.94元
+		// 未打折的原价，其值除以100表示最终的价格。例如10094表示100.94元
 		OriginalPrice *uint64 `json:"OriginalPrice,omitempty" name:"OriginalPrice"`
 
-		// 实际需要支付价格，其值除以100表示最终的价格。比如10094表示100.94元
+		// 实际需要支付价格，其值除以100表示最终的价格。例如10094表示100.94元
 		Price *uint64 `json:"Price,omitempty" name:"Price"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -1443,10 +1446,10 @@ type InquiryPriceUpgradeDBInstanceResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 未打折的原价，其值除以100表示最终的价格。比如10094表示100.94元
+		// 未打折的原价，其值除以100表示最终的价格。例如10094表示100.94元
 		OriginalPrice *int64 `json:"OriginalPrice,omitempty" name:"OriginalPrice"`
 
-		// 实际需要支付价格，其值除以100表示最终的价格。比如10094表示100.94元
+		// 实际需要支付价格，其值除以100表示最终的价格。例如10094表示100.94元
 		Price *int64 `json:"Price,omitempty" name:"Price"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -1465,7 +1468,7 @@ func (r *InquiryPriceUpgradeDBInstanceResponse) FromJsonString(s string) error {
 
 type InstanceDBDetail struct {
 
-	// 实例id
+	// 实例ID
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
 	// 数据库信息列表
@@ -1498,7 +1501,7 @@ type MigrateDetail struct {
 
 type MigrateSource struct {
 
-	// 迁移源实例的ID，MigrateType=1(CDB for SQLServers)时使用，格式如：mssql-si2823jyl
+	// 迁移源实例的ID，MigrateType=1(TencentDB for SQLServers)时使用，格式如：mssql-si2823jyl
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
 	// 迁移源Cvm的ID，MigrateType=2(云服务器自建SQLServer数据库)时使用
@@ -1555,7 +1558,7 @@ type MigrateTask struct {
 	// 迁移任务所属的地域
 	Region *string `json:"Region,omitempty" name:"Region"`
 
-	// 迁移源的类型 1:CDB for SQLServer 2:云服务器自建SQLServer数据库 4:SQLServer备份还原 5:SQLServer备份还原（COS方式）
+	// 迁移源的类型 1:TencentDB for SQLServer 2:云服务器自建SQLServer数据库 4:SQLServer备份还原 5:SQLServer备份还原（COS方式）
 	SourceType *int64 `json:"SourceType,omitempty" name:"SourceType"`
 
 	// 迁移任务的创建时间
@@ -1777,7 +1780,7 @@ func (r *ModifyDBInstanceRenewFlagResponse) FromJsonString(s string) error {
 type ModifyDBNameRequest struct {
 	*tchttp.BaseRequest
 
-	// 实例id
+	// 实例ID
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
 	// 旧数据库名
@@ -1800,7 +1803,7 @@ type ModifyDBNameResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 任务流id
+		// 任务流ID
 		FlowId *int64 `json:"FlowId,omitempty" name:"FlowId"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -1866,7 +1869,7 @@ type ModifyMigrationRequest struct {
 	// 新的迁移类型（1:结构迁移 2:数据迁移 3:增量同步），若不填则不修改
 	MigrateType *uint64 `json:"MigrateType,omitempty" name:"MigrateType"`
 
-	// 迁移源的类型 1:CDB for SQLServer 2:云服务器自建SQLServer数据库 4:SQLServer备份还原 5:SQLServer备份还原（COS方式），若不填则不修改
+	// 迁移源的类型 1:TencentDB for SQLServer 2:云服务器自建SQLServer数据库 4:SQLServer备份还原 5:SQLServer备份还原（COS方式），若不填则不修改
 	SourceType *uint64 `json:"SourceType,omitempty" name:"SourceType"`
 
 	// 迁移源，若不填则不修改

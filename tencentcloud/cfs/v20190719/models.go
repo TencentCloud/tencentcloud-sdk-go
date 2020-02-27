@@ -69,6 +69,9 @@ type AvailableZone struct {
 
 	// Type数组
 	Types []*AvailableType `json:"Types,omitempty" name:"Types" list`
+
+	// 可用区中英文名称
+	ZoneName *string `json:"ZoneName,omitempty" name:"ZoneName"`
 }
 
 type CreateCfsFileSystemRequest struct {
@@ -86,13 +89,13 @@ type CreateCfsFileSystemRequest struct {
 	// 文件系统协议类型， 值为 NFS、CIFS; 若留空则默认为 NFS协议
 	Protocol *string `json:"Protocol,omitempty" name:"Protocol"`
 
-	// 文件系统存储类型，值为 SD ；其中 SD 为标准型存储
+	// 文件系统存储类型，值为 SD ；其中 SD 为标准型存储， HP为性能存储。
 	StorageType *string `json:"StorageType,omitempty" name:"StorageType"`
 
-	// 私有网路（VPC） ID
+	// 私有网络（VPC） ID，若网络类型选择的是VPC，该字段为必填。
 	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
 
-	// 子网 ID
+	// 子网 ID，若网络类型选择的是VPC，该字段为必填。
 	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
 
 	// 指定IP地址，仅VPC网络支持；若不填写、将在该子网下随机分配 IP
@@ -100,6 +103,9 @@ type CreateCfsFileSystemRequest struct {
 
 	// 用户自定义文件系统名称
 	FsName *string `json:"FsName,omitempty" name:"FsName"`
+
+	// 文件系统标签
+	ResourceTags []*TagInfo `json:"ResourceTags,omitempty" name:"ResourceTags" list`
 }
 
 func (r *CreateCfsFileSystemRequest) ToJsonString() string {
@@ -486,6 +492,9 @@ type DescribeCfsFileSystemsResponse struct {
 		// 文件系统信息
 		FileSystems []*FileSystemInfo `json:"FileSystems,omitempty" name:"FileSystems" list`
 
+		// 文件系统总数
+		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
@@ -806,6 +815,15 @@ func (r *SignUpCfsServiceResponse) ToJsonString() string {
 
 func (r *SignUpCfsServiceResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
+}
+
+type TagInfo struct {
+
+	// 标签键
+	TagKey *string `json:"TagKey,omitempty" name:"TagKey"`
+
+	// 标签值
+	TagValue *string `json:"TagValue,omitempty" name:"TagValue"`
 }
 
 type UpdateCfsFileSystemNameRequest struct {

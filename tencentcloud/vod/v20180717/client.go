@@ -1096,6 +1096,33 @@ func (c *Client) DescribeMediaInfos(request *DescribeMediaInfosRequest) (respons
     return
 }
 
+func NewDescribeMediaProcessUsageDataRequest() (request *DescribeMediaProcessUsageDataRequest) {
+    request = &DescribeMediaProcessUsageDataRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vod", APIVersion, "DescribeMediaProcessUsageData")
+    return
+}
+
+func NewDescribeMediaProcessUsageDataResponse() (response *DescribeMediaProcessUsageDataResponse) {
+    response = &DescribeMediaProcessUsageDataResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 该接口返回查询时间范围内每天使用的视频处理用量信息。
+//    1. 可以查询最近365天内的视频处理统计数据。
+//    2. 查询时间跨度不超过90天。
+func (c *Client) DescribeMediaProcessUsageData(request *DescribeMediaProcessUsageDataRequest) (response *DescribeMediaProcessUsageDataResponse, err error) {
+    if request == nil {
+        request = NewDescribeMediaProcessUsageDataRequest()
+    }
+    response = NewDescribeMediaProcessUsageDataResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribePersonSamplesRequest() (request *DescribePersonSamplesRequest) {
     request = &DescribePersonSamplesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1220,6 +1247,60 @@ func (c *Client) DescribeSnapshotByTimeOffsetTemplates(request *DescribeSnapshot
         request = NewDescribeSnapshotByTimeOffsetTemplatesRequest()
     }
     response = NewDescribeSnapshotByTimeOffsetTemplatesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeStorageDataRequest() (request *DescribeStorageDataRequest) {
+    request = &DescribeStorageDataRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vod", APIVersion, "DescribeStorageData")
+    return
+}
+
+func NewDescribeStorageDataResponse() (response *DescribeStorageDataResponse) {
+    response = &DescribeStorageDataResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询存储空间使用情况和文件数量。
+func (c *Client) DescribeStorageData(request *DescribeStorageDataRequest) (response *DescribeStorageDataResponse, err error) {
+    if request == nil {
+        request = NewDescribeStorageDataRequest()
+    }
+    response = NewDescribeStorageDataResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeStorageDetailsRequest() (request *DescribeStorageDetailsRequest) {
+    request = &DescribeStorageDetailsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vod", APIVersion, "DescribeStorageDetails")
+    return
+}
+
+func NewDescribeStorageDetailsResponse() (response *DescribeStorageDetailsResponse) {
+    response = &DescribeStorageDetailsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 该接口返回查询时间范围内使用的点播存储空间，单位：字节。
+//    1. 可以查询最近365天内的存储空间数据；
+//    2. 查询时间跨度不超过90天；
+//    3. 分钟粒度查询跨度不超过5天；
+//    4. 小时粒度查询跨度不超过10天。
+func (c *Client) DescribeStorageDetails(request *DescribeStorageDetailsRequest) (response *DescribeStorageDetailsResponse, err error) {
+    if request == nil {
+        request = NewDescribeStorageDetailsRequest()
+    }
+    response = NewDescribeStorageDetailsResponse()
     err = c.Send(request, response)
     return
 }

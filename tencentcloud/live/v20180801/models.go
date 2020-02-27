@@ -2133,22 +2133,22 @@ func (r *DescribeLiveDomainResponse) FromJsonString(s string) error {
 type DescribeLiveDomainsRequest struct {
 	*tchttp.BaseRequest
 
-	// 域名状态过滤。0-停用，1-启用
+	// 域名状态过滤。0-停用，1-启用。
 	DomainStatus *uint64 `json:"DomainStatus,omitempty" name:"DomainStatus"`
 
-	// 域名类型过滤。0-推流，1-播放
+	// 域名类型过滤。0-推流，1-播放。
 	DomainType *uint64 `json:"DomainType,omitempty" name:"DomainType"`
 
-	// 分页大小，范围：10~100。默认10
+	// 分页大小，范围：10~100。默认10。
 	PageSize *uint64 `json:"PageSize,omitempty" name:"PageSize"`
 
-	// 取第几页，范围：1~100000。默认1
+	// 取第几页，范围：1~100000。默认1。
 	PageNum *uint64 `json:"PageNum,omitempty" name:"PageNum"`
 
-	// 0 普通直播 1慢直播 默认0
+	// 0 普通直播 1慢直播 默认0。
 	IsDelayLive *uint64 `json:"IsDelayLive,omitempty" name:"IsDelayLive"`
 
-	// 域名前缀
+	// 域名前缀。
 	DomainPrefix *string `json:"DomainPrefix,omitempty" name:"DomainPrefix"`
 }
 
@@ -2165,10 +2165,10 @@ type DescribeLiveDomainsResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 总记录数
+		// 总记录数。
 		AllCount *uint64 `json:"AllCount,omitempty" name:"AllCount"`
 
-		// 域名详细信息列表
+		// 域名详细信息列表。
 		DomainList []*DomainInfo `json:"DomainList,omitempty" name:"DomainList" list`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。

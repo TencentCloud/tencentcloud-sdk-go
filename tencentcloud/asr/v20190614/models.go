@@ -81,7 +81,7 @@ type CreateRecTaskRequest struct {
 	// 语音声道数。1：单声道；2：双声道（仅在电话 8k 通用模型下支持）。
 	ChannelNum *uint64 `json:"ChannelNum,omitempty" name:"ChannelNum"`
 
-	// 识别结果文本编码方式。0：UTF-8。
+	// 识别结果返回形式。0：标准结果  1：含词时间戳列表结果(一般用于生成字幕场景)
 	ResTextFormat *uint64 `json:"ResTextFormat,omitempty" name:"ResTextFormat"`
 
 	// 语音数据来源。0：语音 URL；1：语音数据（post body）。
@@ -204,6 +204,80 @@ func (r *DescribeTaskStatusResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DownloadAsrVocabRequest struct {
+	*tchttp.BaseRequest
+
+	// 词表ID。
+	VocabId *string `json:"VocabId,omitempty" name:"VocabId"`
+}
+
+func (r *DownloadAsrVocabRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DownloadAsrVocabRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DownloadAsrVocabResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 词表ID。
+		VocabId *string `json:"VocabId,omitempty" name:"VocabId"`
+
+		// 词表权重文件形式的base64值。
+		WordWeightStr *string `json:"WordWeightStr,omitempty" name:"WordWeightStr"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DownloadAsrVocabResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DownloadAsrVocabResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type GetAsrVocabListRequest struct {
+	*tchttp.BaseRequest
+}
+
+func (r *GetAsrVocabListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *GetAsrVocabListRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type GetAsrVocabListResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 热词表列表
+		VocabList []*Vocab `json:"VocabList,omitempty" name:"VocabList" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *GetAsrVocabListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *GetAsrVocabListResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type GetAsrVocabRequest struct {
 	*tchttp.BaseRequest
 
@@ -266,6 +340,33 @@ type HotWord struct {
 
 	// 权重
 	Weight *int64 `json:"Weight,omitempty" name:"Weight"`
+}
+
+type SentenceDetail struct {
+
+	// 单句最终识别结果
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FinalSentence *string `json:"FinalSentence,omitempty" name:"FinalSentence"`
+
+	// 单句中间识别结果，使用空格拆分为多个词
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SliceSentence *string `json:"SliceSentence,omitempty" name:"SliceSentence"`
+
+	// 单句开始时间（毫秒）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StartMs *int64 `json:"StartMs,omitempty" name:"StartMs"`
+
+	// 单句结束时间（毫秒）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EndMs *int64 `json:"EndMs,omitempty" name:"EndMs"`
+
+	// 单句中词个数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WordsNum *int64 `json:"WordsNum,omitempty" name:"WordsNum"`
+
+	// 单句中词详情
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Words []*SentenceWords `json:"Words,omitempty" name:"Words" list`
 }
 
 type SentenceRecognitionRequest struct {
@@ -336,6 +437,61 @@ func (r *SentenceRecognitionResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type SentenceWords struct {
+
+	// 词文本
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Word *string `json:"Word,omitempty" name:"Word"`
+
+	// 在句子中的开始时间偏移量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OffsetStartMs *int64 `json:"OffsetStartMs,omitempty" name:"OffsetStartMs"`
+
+	// 在句子中的结束时间偏移量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OffsetEndMs *int64 `json:"OffsetEndMs,omitempty" name:"OffsetEndMs"`
+}
+
+type SetVocabStateRequest struct {
+	*tchttp.BaseRequest
+
+	// 热词表ID。
+	VocabId *string `json:"VocabId,omitempty" name:"VocabId"`
+
+	// 热词表状态，1：设为默认状态；0：设为非默认状态。
+	State *int64 `json:"State,omitempty" name:"State"`
+}
+
+func (r *SetVocabStateRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *SetVocabStateRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type SetVocabStateResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 热词表ID
+		VocabId *string `json:"VocabId,omitempty" name:"VocabId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *SetVocabStateResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *SetVocabStateResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type Task struct {
 
 	// 任务ID，可通过此ID在轮询接口获取识别状态与结果
@@ -358,6 +514,10 @@ type TaskStatus struct {
 
 	// 失败原因说明。
 	ErrorMsg *string `json:"ErrorMsg,omitempty" name:"ErrorMsg"`
+
+	// 识别结果详情，包含每个句子中的词时间偏移，一般用于生成字幕的场景。(录音识别请求中ResTextFormat=1时该字段不为空)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResultDetail []*SentenceDetail `json:"ResultDetail,omitempty" name:"ResultDetail" list`
 }
 
 type UpdateAsrVocabRequest struct {
@@ -408,4 +568,28 @@ func (r *UpdateAsrVocabResponse) ToJsonString() string {
 
 func (r *UpdateAsrVocabResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
+}
+
+type Vocab struct {
+
+	// 热词表名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 热词表描述
+	Description *string `json:"Description,omitempty" name:"Description"`
+
+	// 热词表ID
+	VocabId *string `json:"VocabId,omitempty" name:"VocabId"`
+
+	// 词权重列表
+	WordWeights []*HotWord `json:"WordWeights,omitempty" name:"WordWeights" list`
+
+	// 词表创建时间
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 词表更新时间
+	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
+
+	// 热词表状态，1为默认状态即在识别时默认加载该热词表进行识别，0为初始状态
+	State *int64 `json:"State,omitempty" name:"State"`
 }

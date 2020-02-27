@@ -513,7 +513,7 @@ func NewCreateBandwidthPackageResponse() (response *CreateBandwidthPackageRespon
     return
 }
 
-// 接口支持创建[设备带宽包](https://cloud.tencent.com/document/product/684/15246#.E8.AE.BE.E5.A4.87.E5.B8.A6.E5.AE.BD.E5.8C.85)和[ip带宽包](https://cloud.tencent.com/document/product/684/15246#ip-.E5.B8.A6.E5.AE.BD.E5.8C.85)
+// 接口支持创建[设备带宽包](https://cloud.tencent.com/document/product/684/15246#.E8.AE.BE.E5.A4.87.E5.B8.A6.E5.AE.BD.E5.8C.85)和[IP带宽包](https://cloud.tencent.com/document/product/684/15246#ip-.E5.B8.A6.E5.AE.BD.E5.8C.85)
 func (c *Client) CreateBandwidthPackage(request *CreateBandwidthPackageRequest) (response *CreateBandwidthPackageResponse, err error) {
     if request == nil {
         request = NewCreateBandwidthPackageRequest()
@@ -539,6 +539,7 @@ func NewCreateCcnResponse() (response *CreateCcnResponse) {
 }
 
 // 本接口（CreateCcn）用于创建云联网（CCN）。<br />
+// * 创建云联网同时可以绑定标签, 应答里的标签列表代表添加成功的标签。
 // 每个账号能创建的云联网实例个数是有限的，详请参考产品文档。如果需要扩充请联系在线客服。
 func (c *Client) CreateCcn(request *CreateCcnRequest) (response *CreateCcnResponse, err error) {
     if request == nil {
@@ -855,6 +856,7 @@ func NewCreateRouteTableResponse() (response *CreateRouteTableResponse) {
 
 // 本接口(CreateRouteTable)用于创建路由表。
 // * 创建了VPC后，系统会创建一个默认路由表，所有新建的子网都会关联到默认路由表。默认情况下您可以直接使用默认路由表来管理您的路由策略。当您的路由策略较多时，您可以调用创建路由表接口创建更多路由表管理您的路由策略。
+// * 创建路由表同时可以绑定标签, 应答里的标签列表代表添加成功的标签。
 func (c *Client) CreateRouteTable(request *CreateRouteTableRequest) (response *CreateRouteTableResponse, err error) {
     if request == nil {
         request = NewCreateRouteTableRequest()
@@ -908,6 +910,7 @@ func NewCreateSecurityGroupResponse() (response *CreateSecurityGroupResponse) {
 // 本接口（CreateSecurityGroup）用于创建新的安全组（SecurityGroup）。
 // * 每个账户下每个地域的每个项目的<a href="https://cloud.tencent.com/document/product/213/12453">安全组数量限制</a>。
 // * 新建的安全组的入站和出站规则默认都是全部拒绝，在创建后通常您需要再调用CreateSecurityGroupPolicies将安全组的规则设置为需要的规则。
+// * 创建安全组同时可以绑定标签, 应答里的标签列表代表添加成功的标签。
 func (c *Client) CreateSecurityGroup(request *CreateSecurityGroupRequest) (response *CreateSecurityGroupResponse, err error) {
     if request == nil {
         request = NewCreateSecurityGroupRequest()
@@ -1023,6 +1026,7 @@ func NewCreateSubnetResponse() (response *CreateSubnetResponse) {
 // * 您可以创建的最小网段子网掩码为28（有16个IP地址），最大网段子网掩码为16（65,536个IP地址）。
 // * 同一个VPC内，多个子网的网段不能重叠。
 // * 子网创建后会自动关联到默认路由表。
+// * 创建子网同时可以绑定标签, 应答里的标签列表代表添加成功的标签。
 func (c *Client) CreateSubnet(request *CreateSubnetRequest) (response *CreateSubnetResponse, err error) {
     if request == nil {
         request = NewCreateSubnetRequest()
@@ -1053,6 +1057,7 @@ func NewCreateSubnetsResponse() (response *CreateSubnetsResponse) {
 // * 您可以创建的最小网段子网掩码为28（有16个IP地址），最大网段子网掩码为16（65,536个IP地址）。
 // * 同一个VPC内，多个子网的网段不能重叠。
 // * 子网创建后会自动关联到默认路由表。
+// * 创建子网同时可以绑定标签, 应答里的标签列表代表添加成功的标签。
 func (c *Client) CreateSubnets(request *CreateSubnetsRequest) (response *CreateSubnetsResponse, err error) {
     if request == nil {
         request = NewCreateSubnetsRequest()
@@ -1080,6 +1085,7 @@ func NewCreateVpcResponse() (response *CreateVpcResponse) {
 // 本接口(CreateVpc)用于创建私有网络(VPC)。
 // * 用户可以创建的最小网段子网掩码为28（有16个IP地址），最大网段子网掩码为16（65,536个IP地址）,如果规划VPC网段请参见VPC网段规划说明。
 // * 同一个地域能创建的VPC资源个数也是有限制的，详见 <a href="https://cloud.tencent.com/doc/product/215/537" title="VPC使用限制">VPC使用限制</a>,如果需要扩充请联系在线客服。
+// * 创建VPC同时可以绑定标签, 应答里的标签列表代表添加成功的标签。
 func (c *Client) CreateVpc(request *CreateVpcRequest) (response *CreateVpcResponse, err error) {
     if request == nil {
         request = NewCreateVpcRequest()
@@ -1204,7 +1210,7 @@ func NewDeleteBandwidthPackageResponse() (response *DeleteBandwidthPackageRespon
     return
 }
 
-// 接口支持删除共享带宽包，包括[设备带宽包](https://cloud.tencent.com/document/product/684/15246#.E8.AE.BE.E5.A4.87.E5.B8.A6.E5.AE.BD.E5.8C.85)和[ip带宽包](https://cloud.tencent.com/document/product/684/15246#ip-.E5.B8.A6.E5.AE.BD.E5.8C.85)
+// 接口支持删除共享带宽包，包括[设备带宽包](https://cloud.tencent.com/document/product/684/15246#.E8.AE.BE.E5.A4.87.E5.B8.A6.E5.AE.BD.E5.8C.85)和[IP带宽包](https://cloud.tencent.com/document/product/684/15246#ip-.E5.B8.A6.E5.AE.BD.E5.8C.85)
 func (c *Client) DeleteBandwidthPackage(request *DeleteBandwidthPackageRequest) (response *DeleteBandwidthPackageResponse, err error) {
     if request == nil {
         request = NewDeleteBandwidthPackageRequest()
@@ -2556,6 +2562,31 @@ func (c *Client) DescribeSecurityGroupAssociationStatistics(request *DescribeSec
         request = NewDescribeSecurityGroupAssociationStatisticsRequest()
     }
     response = NewDescribeSecurityGroupAssociationStatisticsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeSecurityGroupLimitsRequest() (request *DescribeSecurityGroupLimitsRequest) {
+    request = &DescribeSecurityGroupLimitsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "DescribeSecurityGroupLimits")
+    return
+}
+
+func NewDescribeSecurityGroupLimitsResponse() (response *DescribeSecurityGroupLimitsResponse) {
+    response = &DescribeSecurityGroupLimitsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口(DescribeSecurityGroupLimits)用于查询用户安全组配额。
+func (c *Client) DescribeSecurityGroupLimits(request *DescribeSecurityGroupLimitsRequest) (response *DescribeSecurityGroupLimitsResponse, err error) {
+    if request == nil {
+        request = NewDescribeSecurityGroupLimitsRequest()
+    }
+    response = NewDescribeSecurityGroupLimitsResponse()
     err = c.Send(request, response)
     return
 }

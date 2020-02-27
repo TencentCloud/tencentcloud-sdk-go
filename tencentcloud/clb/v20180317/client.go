@@ -58,7 +58,7 @@ func NewAssociateTargetGroupsResponse() (response *AssociateTargetGroupsResponse
     return
 }
 
-// 监听器或转发规则绑定目标组。
+// 本接口(AssociateTargetGroups)用来将目标组绑定到负载均衡的监听器（四层协议）或转发规则（七层协议）上。
 // 本接口为异步接口，本接口返回成功后需以返回的 RequestID 为入参，调用 DescribeTaskStatus 接口查询本次任务是否成功。
 func (c *Client) AssociateTargetGroups(request *AssociateTargetGroupsRequest) (response *AssociateTargetGroupsResponse, err error) {
     if request == nil {
@@ -224,6 +224,31 @@ func (c *Client) CreateLoadBalancer(request *CreateLoadBalancerRequest) (respons
     return
 }
 
+func NewCreateLoadBalancerSnatIpsRequest() (request *CreateLoadBalancerSnatIpsRequest) {
+    request = &CreateLoadBalancerSnatIpsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("clb", APIVersion, "CreateLoadBalancerSnatIps")
+    return
+}
+
+func NewCreateLoadBalancerSnatIpsResponse() (response *CreateLoadBalancerSnatIpsResponse) {
+    response = &CreateLoadBalancerSnatIpsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 针对SnatPro负载均衡，这个接口用于添加SnatIp，如果负载均衡没有开启SnatPro，添加SnatIp后会自动开启
+func (c *Client) CreateLoadBalancerSnatIps(request *CreateLoadBalancerSnatIpsRequest) (response *CreateLoadBalancerSnatIpsResponse, err error) {
+    if request == nil {
+        request = NewCreateLoadBalancerSnatIpsRequest()
+    }
+    response = NewCreateLoadBalancerSnatIpsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateRuleRequest() (request *CreateRuleRequest) {
     request = &CreateRuleRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -323,6 +348,57 @@ func (c *Client) DeleteLoadBalancer(request *DeleteLoadBalancerRequest) (respons
         request = NewDeleteLoadBalancerRequest()
     }
     response = NewDeleteLoadBalancerResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteLoadBalancerListenersRequest() (request *DeleteLoadBalancerListenersRequest) {
+    request = &DeleteLoadBalancerListenersRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("clb", APIVersion, "DeleteLoadBalancerListeners")
+    return
+}
+
+func NewDeleteLoadBalancerListenersResponse() (response *DeleteLoadBalancerListenersResponse) {
+    response = &DeleteLoadBalancerListenersResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 该接口支持删除负载均衡的多个监听器。
+// 本接口为异步接口，本接口返回成功后需以返回的 RequestID 为入参，调用 DescribeTaskStatus 接口查询本次任务是否成功。
+func (c *Client) DeleteLoadBalancerListeners(request *DeleteLoadBalancerListenersRequest) (response *DeleteLoadBalancerListenersResponse, err error) {
+    if request == nil {
+        request = NewDeleteLoadBalancerListenersRequest()
+    }
+    response = NewDeleteLoadBalancerListenersResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteLoadBalancerSnatIpsRequest() (request *DeleteLoadBalancerSnatIpsRequest) {
+    request = &DeleteLoadBalancerSnatIpsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("clb", APIVersion, "DeleteLoadBalancerSnatIps")
+    return
+}
+
+func NewDeleteLoadBalancerSnatIpsResponse() (response *DeleteLoadBalancerSnatIpsResponse) {
+    response = &DeleteLoadBalancerSnatIpsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 对于SnatPro的负载均衡，这个接口用于删除SnatIp
+func (c *Client) DeleteLoadBalancerSnatIps(request *DeleteLoadBalancerSnatIpsRequest) (response *DeleteLoadBalancerSnatIpsResponse, err error) {
+    if request == nil {
+        request = NewDeleteLoadBalancerSnatIpsRequest()
+    }
+    response = NewDeleteLoadBalancerSnatIpsResponse()
     err = c.Send(request, response)
     return
 }

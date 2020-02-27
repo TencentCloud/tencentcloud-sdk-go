@@ -68,31 +68,6 @@ func (c *Client) CommonServiceAPI(request *CommonServiceAPIRequest) (response *C
     return
 }
 
-func NewCreateMysqlInstanceRequest() (request *CreateMysqlInstanceRequest) {
-    request = &CreateMysqlInstanceRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    request.Init().WithApiInfo("tcb", APIVersion, "CreateMysqlInstance")
-    return
-}
-
-func NewCreateMysqlInstanceResponse() (response *CreateMysqlInstanceResponse) {
-    response = &CreateMysqlInstanceResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    }
-    return
-}
-
-// 创建mysql实例
-func (c *Client) CreateMysqlInstance(request *CreateMysqlInstanceRequest) (response *CreateMysqlInstanceResponse, err error) {
-    if request == nil {
-        request = NewCreateMysqlInstanceRequest()
-    }
-    response = NewCreateMysqlInstanceResponse()
-    err = c.Send(request, response)
-    return
-}
-
 func NewDescribeDatabaseACLRequest() (request *DescribeDatabaseACLRequest) {
     request = &DescribeDatabaseACLRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -143,31 +118,6 @@ func (c *Client) DescribeEnvs(request *DescribeEnvsRequest) (response *DescribeE
     return
 }
 
-func NewIsolateMysqlInstanceRequest() (request *IsolateMysqlInstanceRequest) {
-    request = &IsolateMysqlInstanceRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    request.Init().WithApiInfo("tcb", APIVersion, "IsolateMysqlInstance")
-    return
-}
-
-func NewIsolateMysqlInstanceResponse() (response *IsolateMysqlInstanceResponse) {
-    response = &IsolateMysqlInstanceResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    }
-    return
-}
-
-// 隔离mysql实例
-func (c *Client) IsolateMysqlInstance(request *IsolateMysqlInstanceRequest) (response *IsolateMysqlInstanceResponse, err error) {
-    if request == nil {
-        request = NewIsolateMysqlInstanceRequest()
-    }
-    response = NewIsolateMysqlInstanceResponse()
-    err = c.Send(request, response)
-    return
-}
-
 func NewModifyDatabaseACLRequest() (request *ModifyDatabaseACLRequest) {
     request = &ModifyDatabaseACLRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -214,56 +164,6 @@ func (c *Client) ModifyEnv(request *ModifyEnvRequest) (response *ModifyEnvRespon
         request = NewModifyEnvRequest()
     }
     response = NewModifyEnvResponse()
-    err = c.Send(request, response)
-    return
-}
-
-func NewOfflineMysqlInstanceRequest() (request *OfflineMysqlInstanceRequest) {
-    request = &OfflineMysqlInstanceRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    request.Init().WithApiInfo("tcb", APIVersion, "OfflineMysqlInstance")
-    return
-}
-
-func NewOfflineMysqlInstanceResponse() (response *OfflineMysqlInstanceResponse) {
-    response = &OfflineMysqlInstanceResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    }
-    return
-}
-
-// 下线mysql实例
-func (c *Client) OfflineMysqlInstance(request *OfflineMysqlInstanceRequest) (response *OfflineMysqlInstanceResponse, err error) {
-    if request == nil {
-        request = NewOfflineMysqlInstanceRequest()
-    }
-    response = NewOfflineMysqlInstanceResponse()
-    err = c.Send(request, response)
-    return
-}
-
-func NewUpgradeMysqlInstanceRequest() (request *UpgradeMysqlInstanceRequest) {
-    request = &UpgradeMysqlInstanceRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    request.Init().WithApiInfo("tcb", APIVersion, "UpgradeMysqlInstance")
-    return
-}
-
-func NewUpgradeMysqlInstanceResponse() (response *UpgradeMysqlInstanceResponse) {
-    response = &UpgradeMysqlInstanceResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    }
-    return
-}
-
-// 升级mysql实例
-func (c *Client) UpgradeMysqlInstance(request *UpgradeMysqlInstanceRequest) (response *UpgradeMysqlInstanceResponse, err error) {
-    if request == nil {
-        request = NewUpgradeMysqlInstanceRequest()
-    }
-    response = NewUpgradeMysqlInstanceResponse()
     err = c.Send(request, response)
     return
 }

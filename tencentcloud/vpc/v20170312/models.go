@@ -195,6 +195,9 @@ type Address struct {
 
 	// eip是否在解绑后自动释放。true表示eip将会在解绑后自动释放，false表示eip在解绑后不会自动释放
 	CascadeRelease *bool `json:"CascadeRelease,omitempty" name:"CascadeRelease"`
+
+	// EIP ALG开启的协议类型。
+	EipAlgType *AlgType `json:"EipAlgType,omitempty" name:"EipAlgType"`
 }
 
 type AddressTemplate struct {
@@ -225,6 +228,18 @@ type AddressTemplateGroup struct {
 
 	// 创建时间。
 	CreatedTime *string `json:"CreatedTime,omitempty" name:"CreatedTime"`
+
+	// IP地址模板实例。
+	AddressTemplateSet []*AddressTemplateItem `json:"AddressTemplateSet,omitempty" name:"AddressTemplateSet" list`
+}
+
+type AddressTemplateItem struct {
+
+	// 起始地址。
+	From *string `json:"From,omitempty" name:"From"`
+
+	// 结束地址。
+	To *string `json:"To,omitempty" name:"To"`
 }
 
 type AddressTemplateSpecification struct {
@@ -234,6 +249,15 @@ type AddressTemplateSpecification struct {
 
 	// IP地址组ID，例如：ipmg-2uw6ujo6。
 	AddressGroupId *string `json:"AddressGroupId,omitempty" name:"AddressGroupId"`
+}
+
+type AlgType struct {
+
+	// Ftp协议Alg功能是否开启
+	Ftp *bool `json:"Ftp,omitempty" name:"Ftp"`
+
+	// Sip协议Alg功能是否开启
+	Sip *bool `json:"Sip,omitempty" name:"Sip"`
 }
 
 type AllocateAddressesRequest struct {
@@ -795,6 +819,9 @@ type CCN struct {
 	// 限速类型，INTER_REGION_LIMIT为地域间限速；OUTER_REGION_LIMIT为地域出口限速。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	BandwidthLimitType *string `json:"BandwidthLimitType,omitempty" name:"BandwidthLimitType"`
+
+	// 标签键值对。
+	TagSet []*Tag `json:"TagSet,omitempty" name:"TagSet" list`
 }
 
 type CcnAttachedInstance struct {
@@ -1135,6 +1162,9 @@ type CreateCcnRequest struct {
 
 	// 限速类型，OUTER_REGION_LIMIT表示地域出口限速，INTER_REGION_LIMIT为地域间限速，默认为OUTER_REGION_LIMIT
 	BandwidthLimitType *string `json:"BandwidthLimitType,omitempty" name:"BandwidthLimitType"`
+
+	// 指定绑定的标签列表，例如：[{"Key": "city", "Value": "shanghai"}]
+	Tags []*Tag `json:"Tags,omitempty" name:"Tags" list`
 }
 
 func (r *CreateCcnRequest) ToJsonString() string {
@@ -1705,6 +1735,9 @@ type CreateRouteTableRequest struct {
 
 	// 路由表名称，最大长度不能超过60个字节。
 	RouteTableName *string `json:"RouteTableName,omitempty" name:"RouteTableName"`
+
+	// 指定绑定的标签列表，例如：[{"Key": "city", "Value": "shanghai"}]
+	Tags []*Tag `json:"Tags,omitempty" name:"Tags" list`
 }
 
 func (r *CreateRouteTableRequest) ToJsonString() string {
@@ -1828,6 +1861,9 @@ type CreateSecurityGroupRequest struct {
 
 	// 项目ID，默认0。可在qcloud控制台项目管理页面查询到。
 	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 指定绑定的标签列表，例如：[{"Key": "city", "Value": "shanghai"}]
+	Tags []*Tag `json:"Tags,omitempty" name:"Tags" list`
 }
 
 func (r *CreateSecurityGroupRequest) ToJsonString() string {
@@ -1954,6 +1990,9 @@ type CreateSubnetRequest struct {
 
 	// 子网所在的可用区ID，不同子网选择不同可用区可以做跨可用区灾备。
 	Zone *string `json:"Zone,omitempty" name:"Zone"`
+
+	// 指定绑定的标签列表，例如：[{"Key": "city", "Value": "shanghai"}]
+	Tags []*Tag `json:"Tags,omitempty" name:"Tags" list`
 }
 
 func (r *CreateSubnetRequest) ToJsonString() string {
@@ -1994,6 +2033,9 @@ type CreateSubnetsRequest struct {
 
 	// 子网对象列表。
 	Subnets []*SubnetInput `json:"Subnets,omitempty" name:"Subnets" list`
+
+	// 指定绑定的标签列表，注意这里的标签集合为列表中所有子网对象所共享，不能为每个子网对象单独指定标签，例如：[{"Key": "city", "Value": "shanghai"}]
+	Tags []*Tag `json:"Tags,omitempty" name:"Tags" list`
 }
 
 func (r *CreateSubnetsRequest) ToJsonString() string {
@@ -2043,6 +2085,9 @@ type CreateVpcRequest struct {
 
 	// 域名
 	DomainName *string `json:"DomainName,omitempty" name:"DomainName"`
+
+	// 指定绑定的标签列表，例如：[{"Key": "city", "Value": "shanghai"}]
+	Tags []*Tag `json:"Tags,omitempty" name:"Tags" list`
 }
 
 func (r *CreateVpcRequest) ToJsonString() string {
@@ -4647,6 +4692,40 @@ func (r *DescribeSecurityGroupAssociationStatisticsResponse) FromJsonString(s st
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeSecurityGroupLimitsRequest struct {
+	*tchttp.BaseRequest
+}
+
+func (r *DescribeSecurityGroupLimitsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeSecurityGroupLimitsRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeSecurityGroupLimitsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 用户安全组配额限制。
+		SecurityGroupLimitSet *SecurityGroupLimitSet `json:"SecurityGroupLimitSet,omitempty" name:"SecurityGroupLimitSet"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeSecurityGroupLimitsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeSecurityGroupLimitsResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeSecurityGroupPoliciesRequest struct {
 	*tchttp.BaseRequest
 
@@ -5085,7 +5164,7 @@ type DescribeVpnConnectionsRequest struct {
 	// VPN通道实例ID。形如：vpnx-f49l6u0z。每次请求的实例的上限为100。参数不支持同时指定VpnConnectionIds和Filters。
 	VpnConnectionIds []*string `json:"VpnConnectionIds,omitempty" name:"VpnConnectionIds" list`
 
-	// 过滤条件，详见下表：实例过滤条件表。每次请求的Filters的上限为10，Filter.Values的上限为5。参数不支持同时指定VpnConnectionIds和Filters。
+	// 过滤条件。每次请求的Filters的上限为10，Filter.Values的上限为5。参数不支持同时指定VpnConnectionIds和Filters。
 	// <li>vpc-id - String - VPC实例ID，形如：`vpc-0a36uwkr`。</li>
 	// <li>vpn-gateway-id - String - VPN网关实例ID，形如：`vpngw-p4lmqawn`。</li>
 	// <li>customer-gateway-id - String - 对端网关实例ID，形如：`cgw-l4rblw63`。</li>
@@ -8359,6 +8438,9 @@ type RouteTable struct {
 
 	// 创建时间。
 	CreatedTime *string `json:"CreatedTime,omitempty" name:"CreatedTime"`
+
+	// 标签键值对。
+	TagSet []*Tag `json:"TagSet,omitempty" name:"TagSet" list`
 }
 
 type RouteTableAssociation struct {
@@ -8416,6 +8498,24 @@ type SecurityGroupAssociationStatistics struct {
 
 	// 全量实例的绑定统计。
 	InstanceStatistics []*InstanceStatistic `json:"InstanceStatistics,omitempty" name:"InstanceStatistics" list`
+}
+
+type SecurityGroupLimitSet struct {
+
+	// 每个项目每个地域可创建安全组数
+	SecurityGroupLimit *uint64 `json:"SecurityGroupLimit,omitempty" name:"SecurityGroupLimit"`
+
+	// 安全组下的最大规则数
+	SecurityGroupPolicyLimit *uint64 `json:"SecurityGroupPolicyLimit,omitempty" name:"SecurityGroupPolicyLimit"`
+
+	// 安全组下嵌套安全组规则数
+	ReferedSecurityGroupLimit *uint64 `json:"ReferedSecurityGroupLimit,omitempty" name:"ReferedSecurityGroupLimit"`
+
+	// 单安全组关联实例数
+	SecurityGroupInstanceLimit *uint64 `json:"SecurityGroupInstanceLimit,omitempty" name:"SecurityGroupInstanceLimit"`
+
+	// 实例关联安全组数
+	InstanceSecurityGroupLimit *uint64 `json:"InstanceSecurityGroupLimit,omitempty" name:"InstanceSecurityGroupLimit"`
 }
 
 type SecurityGroupPolicy struct {
@@ -8503,6 +8603,9 @@ type ServiceTemplateGroup struct {
 
 	// 创建时间。
 	CreatedTime *string `json:"CreatedTime,omitempty" name:"CreatedTime"`
+
+	// 协议端口模板实例信息。
+	ServiceTemplateSet []*ServiceTemplate `json:"ServiceTemplateSet,omitempty" name:"ServiceTemplateSet" list`
 }
 
 type ServiceTemplateSpecification struct {
@@ -8591,6 +8694,12 @@ type Subnet struct {
 
 	// 是否为 `SNAT` 地址池子网。
 	IsRemoteVpcSnat *bool `json:"IsRemoteVpcSnat,omitempty" name:"IsRemoteVpcSnat"`
+
+	// 子网`IP`总数。
+	TotalIpAddressCount *uint64 `json:"TotalIpAddressCount,omitempty" name:"TotalIpAddressCount"`
+
+	// 标签键值对。
+	TagSet []*Tag `json:"TagSet,omitempty" name:"TagSet" list`
 }
 
 type SubnetInput struct {

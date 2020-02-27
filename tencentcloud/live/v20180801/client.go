@@ -1137,7 +1137,7 @@ func NewDescribeLiveDomainsResponse() (response *DescribeLiveDomainsResponse) {
     return
 }
 
-// 根据域名状态、类型等信息查询用户的域名信息
+// 根据域名状态、类型等信息查询用户的域名信息。
 func (c *Client) DescribeLiveDomains(request *DescribeLiveDomainsRequest) (response *DescribeLiveDomainsResponse, err error) {
     if request == nil {
         request = NewDescribeLiveDomainsRequest()
@@ -2192,7 +2192,7 @@ func NewModifyLivePlayDomainResponse() (response *ModifyLivePlayDomainResponse) 
     return
 }
 
-// 修改播放域名信息
+// 修改播放域名信息。
 func (c *Client) ModifyLivePlayDomain(request *ModifyLivePlayDomainRequest) (response *ModifyLivePlayDomainResponse, err error) {
     if request == nil {
         request = NewModifyLivePlayDomainRequest()

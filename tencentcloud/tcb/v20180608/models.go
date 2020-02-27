@@ -60,52 +60,6 @@ func (r *CommonServiceAPIResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
-type CreateMysqlInstanceRequest struct {
-	*tchttp.BaseRequest
-
-	// 环境名称
-	EnvId *string `json:"EnvId,omitempty" name:"EnvId"`
-
-	// 实例别名
-	Alias *string `json:"Alias,omitempty" name:"Alias"`
-
-	// 实例内存大小，单位：MB
-	Memory *int64 `json:"Memory,omitempty" name:"Memory"`
-
-	// 实例硬盘大小，单位：GB
-	Volume *int64 `json:"Volume,omitempty" name:"Volume"`
-
-	// MySQL 版本，值包括：5.7
-	EngineVersion *string `json:"EngineVersion,omitempty" name:"EngineVersion"`
-}
-
-func (r *CreateMysqlInstanceRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-func (r *CreateMysqlInstanceRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
-}
-
-type CreateMysqlInstanceResponse struct {
-	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
-}
-
-func (r *CreateMysqlInstanceResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-func (r *CreateMysqlInstanceResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
-}
-
 type DatabasesInfo struct {
 
 	// 数据库唯一标识
@@ -268,43 +222,6 @@ type FunctionInfo struct {
 	Region *string `json:"Region,omitempty" name:"Region"`
 }
 
-type IsolateMysqlInstanceRequest struct {
-	*tchttp.BaseRequest
-
-	// 环境id
-	EnvId *string `json:"EnvId,omitempty" name:"EnvId"`
-
-	// 实例别名
-	Alias *string `json:"Alias,omitempty" name:"Alias"`
-}
-
-func (r *IsolateMysqlInstanceRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-func (r *IsolateMysqlInstanceRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
-}
-
-type IsolateMysqlInstanceResponse struct {
-	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
-}
-
-func (r *IsolateMysqlInstanceResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-func (r *IsolateMysqlInstanceResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
-}
-
 type LogServiceInfo struct {
 
 	// log名
@@ -404,43 +321,6 @@ func (r *ModifyEnvResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
-type OfflineMysqlInstanceRequest struct {
-	*tchttp.BaseRequest
-
-	// 环境id
-	EnvId *string `json:"EnvId,omitempty" name:"EnvId"`
-
-	// 实例别名
-	Alias *string `json:"Alias,omitempty" name:"Alias"`
-}
-
-func (r *OfflineMysqlInstanceRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-func (r *OfflineMysqlInstanceRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
-}
-
-type OfflineMysqlInstanceResponse struct {
-	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
-}
-
-func (r *OfflineMysqlInstanceResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-func (r *OfflineMysqlInstanceResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
-}
-
 type StaticStorageInfo struct {
 
 	// 静态CDN域名
@@ -478,50 +358,4 @@ type StorageInfo struct {
 
 	// 资源所属用户的腾讯云appId
 	AppId *string `json:"AppId,omitempty" name:"AppId"`
-}
-
-type UpgradeMysqlInstanceRequest struct {
-	*tchttp.BaseRequest
-
-	// 环境id
-	EnvId *string `json:"EnvId,omitempty" name:"EnvId"`
-
-	// 实例别名
-	Alias *string `json:"Alias,omitempty" name:"Alias"`
-
-	// 实例内存大小，单位：MB
-	Memory *int64 `json:"Memory,omitempty" name:"Memory"`
-
-	// 实例硬盘大小，单位：GB
-	Volume *int64 `json:"Volume,omitempty" name:"Volume"`
-
-	// MySQL 版本，值包括: 5.7
-	EngineVersion *string `json:"EngineVersion,omitempty" name:"EngineVersion"`
-}
-
-func (r *UpgradeMysqlInstanceRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-func (r *UpgradeMysqlInstanceRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
-}
-
-type UpgradeMysqlInstanceResponse struct {
-	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
-}
-
-func (r *UpgradeMysqlInstanceResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-func (r *UpgradeMysqlInstanceResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
 }

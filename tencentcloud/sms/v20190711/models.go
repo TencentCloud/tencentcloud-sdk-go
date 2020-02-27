@@ -339,6 +339,140 @@ type DeleteTemplateStatus struct {
 	DeleteTime *uint64 `json:"DeleteTime,omitempty" name:"DeleteTime"`
 }
 
+type DescribeSignListStatus struct {
+
+	// 签名Id
+	SignId *uint64 `json:"SignId,omitempty" name:"SignId"`
+
+	// 是否国际短信。其中：
+	// 0：表示国内短信。
+	// 1：表示海外短信。
+	International *uint64 `json:"International,omitempty" name:"International"`
+
+	// 申请签名状态。其中：
+	// 0：表示审核通过。
+	// -1：表示审核未通过或审核失败。
+	StatusCode *int64 `json:"StatusCode,omitempty" name:"StatusCode"`
+
+	// 审核回复，审核人员审核后给出的回复，通常是审核未通过的原因。
+	ReviewReply *string `json:"ReviewReply,omitempty" name:"ReviewReply"`
+
+	// 签名名称。
+	SignName *string `json:"SignName,omitempty" name:"SignName"`
+
+	// 提交审核时间，UNIX 时间戳（单位：秒）。
+	CreateTime *uint64 `json:"CreateTime,omitempty" name:"CreateTime"`
+}
+
+type DescribeSmsSignListRequest struct {
+	*tchttp.BaseRequest
+
+	// 签名 ID 数组。
+	SignIdSet []*uint64 `json:"SignIdSet,omitempty" name:"SignIdSet" list`
+
+	// 是否国际/港澳台短信：
+	// 0：表示国内短信。
+	// 1：表示国际/港澳台短信。
+	International *uint64 `json:"International,omitempty" name:"International"`
+}
+
+func (r *DescribeSmsSignListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeSmsSignListRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeSmsSignListResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 获取签名信息响应
+		DescribeSignListStatusSet []*DescribeSignListStatus `json:"DescribeSignListStatusSet,omitempty" name:"DescribeSignListStatusSet" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeSmsSignListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeSmsSignListResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeSmsTemplateListRequest struct {
+	*tchttp.BaseRequest
+
+	// 模板 ID 数组。
+	TemplateIdSet []*uint64 `json:"TemplateIdSet,omitempty" name:"TemplateIdSet" list`
+
+	// 是否国际/港澳台短信：
+	// 0：表示国内短信。
+	// 1：表示国际/港澳台短信。
+	International *uint64 `json:"International,omitempty" name:"International"`
+}
+
+func (r *DescribeSmsTemplateListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeSmsTemplateListRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeSmsTemplateListResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 获取短信签名信息响应
+		DescribeTemplateStatusSet []*DescribeTemplateListStatus `json:"DescribeTemplateStatusSet,omitempty" name:"DescribeTemplateStatusSet" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeSmsTemplateListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeSmsTemplateListResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeTemplateListStatus struct {
+
+	// 模板Id
+	TemplateId *uint64 `json:"TemplateId,omitempty" name:"TemplateId"`
+
+	// 是否国际短信。其中：
+	// 0：表示国内短信。
+	// 1：表示海外短信。
+	International *uint64 `json:"International,omitempty" name:"International"`
+
+	// 申请签名状态。其中：
+	// 0：表示审核通过。
+	// -1：表示审核未通过或审核失败。
+	StatusCode *int64 `json:"StatusCode,omitempty" name:"StatusCode"`
+
+	// 审核回复，审核人员审核后给出的回复，通常是审核未通过的原因。
+	ReviewReply *string `json:"ReviewReply,omitempty" name:"ReviewReply"`
+
+	// 模板名称。
+	TemplateName *string `json:"TemplateName,omitempty" name:"TemplateName"`
+
+	// 提交审核时间，UNIX 时间戳（单位：秒）。
+	CreateTime *uint64 `json:"CreateTime,omitempty" name:"CreateTime"`
+}
+
 type ModifySignStatus struct {
 
 	// 签名Id
@@ -724,7 +858,8 @@ func (r *PullSmsSendStatusResponse) FromJsonString(s string) error {
 type SendSmsRequest struct {
 	*tchttp.BaseRequest
 
-	// 下发手机号码，采用 e.164 标准，+[国家或地区码][手机号] ，示例如：+8613711112222， 其中前面有一个+号 ，86为国家码，13711112222为手机号，最多不要超过200个手机号。
+	// 下发手机号码，采用 e.164 标准，格式为+[国家或地区码][手机号]，单次请求最多支持200个手机号且要求全为境内手机号或全为境外手机号。
+	// 例如：+8613711112222， 其中前面有一个+号 ，86为国家码，13711112222为手机号。
 	PhoneNumberSet []*string `json:"PhoneNumberSet,omitempty" name:"PhoneNumberSet" list`
 
 	// 模板 ID，必须填写已审核通过的模板 ID。模板ID可登录 [短信控制台](https://console.cloud.tencent.com/sms/smslist) 查看。
