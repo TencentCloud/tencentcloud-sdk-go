@@ -144,6 +144,14 @@ type AgentClientElem struct {
 
 	// 1:待代理商审核;2:待腾讯云审核
 	Status *uint64 `json:"Status,omitempty" name:"Status"`
+
+	// 业务员ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SalesUin *string `json:"SalesUin,omitempty" name:"SalesUin"`
+
+	// 业务员姓名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SalesName *string `json:"SalesName,omitempty" name:"SalesName"`
 }
 
 type AgentDealElem struct {
@@ -579,6 +587,12 @@ type DescribeAgentClientsRequest struct {
 
 	// 限制数目
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 业务员ID
+	SalesUin *string `json:"SalesUin,omitempty" name:"SalesUin"`
+
+	// 业务员姓名（模糊查询）
+	SalesName *string `json:"SalesName,omitempty" name:"SalesName"`
 }
 
 func (r *DescribeAgentClientsRequest) ToJsonString() string {

@@ -43,6 +43,37 @@ func NewClient(credential *common.Credential, region string, clientProfile *prof
 }
 
 
+func NewAttachInstancesRequest() (request *AttachInstancesRequest) {
+    request = &AttachInstancesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("batch", APIVersion, "AttachInstances")
+    return
+}
+
+func NewAttachInstancesResponse() (response *AttachInstancesResponse) {
+    response = &AttachInstancesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 此接口可将已存在实例添加到计算环境中。
+// 实例需要满足如下条件：<br/>
+// 1.实例不在批量计算系统中。<br/>
+// 2.实例状态要求处于运行中。<br/>
+// 3.支持预付费实例，按小时后付费实例，专享子机实例。不支持竞价实例。<br/>
+// 
+// 此接口会将加入到计算环境中的实例重设UserData和重装操作系统。
+func (c *Client) AttachInstances(request *AttachInstancesRequest) (response *AttachInstancesResponse, err error) {
+    if request == nil {
+        request = NewAttachInstancesRequest()
+    }
+    response = NewAttachInstancesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateComputeEnvRequest() (request *CreateComputeEnvRequest) {
     request = &CreateComputeEnvRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -566,6 +597,31 @@ func (c *Client) DescribeTaskTemplates(request *DescribeTaskTemplatesRequest) (r
         request = NewDescribeTaskTemplatesRequest()
     }
     response = NewDescribeTaskTemplatesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDetachInstancesRequest() (request *DetachInstancesRequest) {
+    request = &DetachInstancesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("batch", APIVersion, "DetachInstances")
+    return
+}
+
+func NewDetachInstancesResponse() (response *DetachInstancesResponse) {
+    response = &DetachInstancesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 将添加到计算环境中的实例从计算环境中移出。若是由批量计算自动创建的计算节点实例则不允许移出。
+func (c *Client) DetachInstances(request *DetachInstancesRequest) (response *DetachInstancesResponse, err error) {
+    if request == nil {
+        request = NewDetachInstancesRequest()
+    }
+    response = NewDetachInstancesResponse()
     err = c.Send(request, response)
     return
 }

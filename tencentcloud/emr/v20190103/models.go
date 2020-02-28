@@ -32,6 +32,69 @@ type COSSettings struct {
 	LogOnCosPath *string `json:"LogOnCosPath,omitempty" name:"LogOnCosPath"`
 }
 
+type CdbInfo struct {
+
+	// 数据库实例
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceName *string `json:"InstanceName,omitempty" name:"InstanceName"`
+
+	// 数据库IP
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Ip *string `json:"Ip,omitempty" name:"Ip"`
+
+	// 数据库端口
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Port *int64 `json:"Port,omitempty" name:"Port"`
+
+	// 数据库内存规格
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MemSize *int64 `json:"MemSize,omitempty" name:"MemSize"`
+
+	// 数据库磁盘规格
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Volume *int64 `json:"Volume,omitempty" name:"Volume"`
+
+	// 服务标识
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Service *string `json:"Service,omitempty" name:"Service"`
+
+	// 过期时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExpireTime *string `json:"ExpireTime,omitempty" name:"ExpireTime"`
+
+	// 申请时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ApplyTime *string `json:"ApplyTime,omitempty" name:"ApplyTime"`
+
+	// 付费类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PayType *int64 `json:"PayType,omitempty" name:"PayType"`
+
+	// 过期标识
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExpireFlag *bool `json:"ExpireFlag,omitempty" name:"ExpireFlag"`
+
+	// 数据库状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *int64 `json:"Status,omitempty" name:"Status"`
+
+	// 续费标识
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsAutoRenew *int64 `json:"IsAutoRenew,omitempty" name:"IsAutoRenew"`
+
+	// 数据库字符串
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SerialNo *string `json:"SerialNo,omitempty" name:"SerialNo"`
+
+	// ZoneId
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ZoneId *int64 `json:"ZoneId,omitempty" name:"ZoneId"`
+
+	// RegionId
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RegionId *int64 `json:"RegionId,omitempty" name:"RegionId"`
+}
+
 type ClusterInstancesInfo struct {
 
 	// ID
@@ -307,6 +370,70 @@ type CustomMetaInfo struct {
 
 	// 自定义MetaDB密码
 	MetaDataPass *string `json:"MetaDataPass,omitempty" name:"MetaDataPass"`
+}
+
+type DescribeClusterNodesRequest struct {
+	*tchttp.BaseRequest
+
+	// 集群实例ID,实例ID形如: emr-xxxxxxxx
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 节点标识，取值为：
+	// <li>all：表示获取全部类型节点，cdb信息除外。</li>
+	// <li>master：表示获取master节点信息。</li>
+	// <li>core：表示获取core节点信息。</li>
+	// <li>task：表示获取task节点信息。</li>
+	// <li>common：表示获取common节点信息。</li>
+	// <li>router：表示获取router节点信息。</li>
+	// <li>db：表示获取正常状态的cdb信息。</li>
+	// <li>recyle：表示获取回收站隔离中的节点信息，包括cdb信息。</li>
+	// <li>renew：表示获取所有待续费的节点信息，包括cdb信息，自动续费节点不会返回。</li>
+	// 注意：现在只支持以上取值，输入其他值会导致错误。
+	NodeFlag *string `json:"NodeFlag,omitempty" name:"NodeFlag"`
+
+	// 页编号，默认值为0，表示第一页。
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 每页返回数量，默认值为100，最大值为100。
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+func (r *DescribeClusterNodesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeClusterNodesRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeClusterNodesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 查询到的节点总数
+		TotalCnt *int64 `json:"TotalCnt,omitempty" name:"TotalCnt"`
+
+		// 节点详细信息列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		NodeList []*NodeHardwareInfo `json:"NodeList,omitempty" name:"NodeList" list`
+
+		// 用户所有的标签键列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		TagKeys []*string `json:"TagKeys,omitempty" name:"TagKeys" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeClusterNodesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeClusterNodesResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeInstancesRequest struct {
@@ -792,6 +919,21 @@ type MultiDisk struct {
 	Count *int64 `json:"Count,omitempty" name:"Count"`
 }
 
+type MultiDiskMC struct {
+
+	// 该类型云盘个数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Count *int64 `json:"Count,omitempty" name:"Count"`
+
+	// 磁盘类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Type *int64 `json:"Type,omitempty" name:"Type"`
+
+	// 云盘大小
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Volume *int64 `json:"Volume,omitempty" name:"Volume"`
+}
+
 type NewResourceSpec struct {
 
 	// 描述Master节点资源
@@ -817,6 +959,149 @@ type NewResourceSpec struct {
 
 	// Common节点数量
 	CommonCount *int64 `json:"CommonCount,omitempty" name:"CommonCount"`
+}
+
+type NodeHardwareInfo struct {
+
+	// 用户APPID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AppId *int64 `json:"AppId,omitempty" name:"AppId"`
+
+	// 序列号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SerialNo *string `json:"SerialNo,omitempty" name:"SerialNo"`
+
+	// 机器实例ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OrderNo *string `json:"OrderNo,omitempty" name:"OrderNo"`
+
+	// master节点绑定外网IP
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WanIp *string `json:"WanIp,omitempty" name:"WanIp"`
+
+	// 节点类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Flag *int64 `json:"Flag,omitempty" name:"Flag"`
+
+	// 节点规格
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Spec *string `json:"Spec,omitempty" name:"Spec"`
+
+	// 节点核数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CpuNum *int64 `json:"CpuNum,omitempty" name:"CpuNum"`
+
+	// 节点内存
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MemSize *int64 `json:"MemSize,omitempty" name:"MemSize"`
+
+	// 节点内存描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MemDesc *string `json:"MemDesc,omitempty" name:"MemDesc"`
+
+	// 节点所在region
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RegionId *int64 `json:"RegionId,omitempty" name:"RegionId"`
+
+	// 节点所在Zone
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ZoneId *int64 `json:"ZoneId,omitempty" name:"ZoneId"`
+
+	// 申请时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ApplyTime *string `json:"ApplyTime,omitempty" name:"ApplyTime"`
+
+	// 释放时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FreeTime *string `json:"FreeTime,omitempty" name:"FreeTime"`
+
+	// 硬盘大小
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DiskSize *string `json:"DiskSize,omitempty" name:"DiskSize"`
+
+	// 节点描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NameTag *string `json:"NameTag,omitempty" name:"NameTag"`
+
+	// 节点部署服务
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Services *string `json:"Services,omitempty" name:"Services"`
+
+	// 磁盘类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StorageType *int64 `json:"StorageType,omitempty" name:"StorageType"`
+
+	// 系统盘大小
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RootSize *int64 `json:"RootSize,omitempty" name:"RootSize"`
+
+	// 付费类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ChargeType *int64 `json:"ChargeType,omitempty" name:"ChargeType"`
+
+	// 数据库IP
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CdbIp *string `json:"CdbIp,omitempty" name:"CdbIp"`
+
+	// 数据库端口
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CdbPort *int64 `json:"CdbPort,omitempty" name:"CdbPort"`
+
+	// 硬盘容量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HwDiskSize *int64 `json:"HwDiskSize,omitempty" name:"HwDiskSize"`
+
+	// 硬盘容量描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HwDiskSizeDesc *string `json:"HwDiskSizeDesc,omitempty" name:"HwDiskSizeDesc"`
+
+	// 内存容量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HwMemSize *int64 `json:"HwMemSize,omitempty" name:"HwMemSize"`
+
+	// 内存容量描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HwMemSizeDesc *string `json:"HwMemSizeDesc,omitempty" name:"HwMemSizeDesc"`
+
+	// 过期时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExpireTime *string `json:"ExpireTime,omitempty" name:"ExpireTime"`
+
+	// 节点资源ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EmrResourceId *string `json:"EmrResourceId,omitempty" name:"EmrResourceId"`
+
+	// 续费标志
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsAutoRenew *int64 `json:"IsAutoRenew,omitempty" name:"IsAutoRenew"`
+
+	// 设备标识
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DeviceClass *string `json:"DeviceClass,omitempty" name:"DeviceClass"`
+
+	// 支持变配
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Mutable *int64 `json:"Mutable,omitempty" name:"Mutable"`
+
+	// 多云盘
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MCMultiDisk []*MultiDiskMC `json:"MCMultiDisk,omitempty" name:"MCMultiDisk" list`
+
+	// 数据库信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CdbNodeInfo *CdbInfo `json:"CdbNodeInfo,omitempty" name:"CdbNodeInfo"`
+
+	// 内网IP
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Ip *string `json:"Ip,omitempty" name:"Ip"`
+
+	// 此节点是否可销毁，1可销毁，0不可销毁
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Destroyable *int64 `json:"Destroyable,omitempty" name:"Destroyable"`
+
+	// 节点绑定的标签
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Tags []*Tag `json:"Tags,omitempty" name:"Tags" list`
 }
 
 type OutterResource struct {

@@ -97,6 +97,43 @@ type Application struct {
 	Docker *Docker `json:"Docker,omitempty" name:"Docker"`
 }
 
+type AttachInstancesRequest struct {
+	*tchttp.BaseRequest
+
+	// 计算环境ID
+	EnvId *string `json:"EnvId,omitempty" name:"EnvId"`
+
+	// 加入计算环境实例列表
+	Instances []*Instance `json:"Instances,omitempty" name:"Instances" list`
+}
+
+func (r *AttachInstancesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *AttachInstancesRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type AttachInstancesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *AttachInstancesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *AttachInstancesResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type Authentication struct {
 
 	// 授权场景，例如COS
@@ -182,6 +219,9 @@ type ComputeEnvView struct {
 
 	// 下一步动作
 	NextAction *string `json:"NextAction,omitempty" name:"NextAction"`
+
+	// 用户添加到计算环境中的计算节点个数
+	AttachedComputeNodeCount *uint64 `json:"AttachedComputeNodeCount,omitempty" name:"AttachedComputeNodeCount"`
 }
 
 type ComputeNode struct {
@@ -218,6 +258,10 @@ type ComputeNode struct {
 
 	// 计算环境资源类型，当前为CVM和CPM（黑石）
 	ResourceType *string `json:"ResourceType,omitempty" name:"ResourceType"`
+
+	// 计算环境资源来源。<br>BATCH_CREATED：由批量计算创建的实例资源。<br>
+	// USER_ATTACHED：用户添加到计算环境中的实例资源。
+	ResourceOrigin *string `json:"ResourceOrigin,omitempty" name:"ResourceOrigin"`
 }
 
 type ComputeNodeMetrics struct {
@@ -782,6 +826,9 @@ type DescribeComputeEnvResponse struct {
 		// 下一步动作
 		NextAction *string `json:"NextAction,omitempty" name:"NextAction"`
 
+		// 用户添加到计算环境中的计算节点个数
+		AttachedComputeNodeCount *uint64 `json:"AttachedComputeNodeCount,omitempty" name:"AttachedComputeNodeCount"`
+
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
@@ -1312,6 +1359,43 @@ func (r *DescribeTaskTemplatesResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DetachInstancesRequest struct {
+	*tchttp.BaseRequest
+
+	// 计算环境ID
+	EnvId *string `json:"EnvId,omitempty" name:"EnvId"`
+
+	// 实例ID列表
+	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds" list`
+}
+
+func (r *DetachInstancesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DetachInstancesRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DetachInstancesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DetachInstancesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DetachInstancesResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type Docker struct {
 
 	// Docker Hub 用户名或 Tencent Registry 用户名
@@ -1514,6 +1598,18 @@ type InputMapping struct {
 
 	// 挂载配置项参数
 	MountOptionParameter *string `json:"MountOptionParameter,omitempty" name:"MountOptionParameter"`
+}
+
+type Instance struct {
+
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 镜像ID
+	ImageId *string `json:"ImageId,omitempty" name:"ImageId"`
+
+	// 实例登录设置。
+	LoginSettings *LoginSettings `json:"LoginSettings,omitempty" name:"LoginSettings"`
 }
 
 type InstanceCategoryItem struct {
@@ -1724,16 +1820,13 @@ type LocalDiskType struct {
 
 type LoginSettings struct {
 
-	// 实例登录密码。不同操作系统类型密码复杂度限制不一样，具体如下：<br><li>Linux实例密码必须8到16位，至少包括两项[a-z，A-Z]、[0-9] 和 [( ) ` ~ ! @ # $ % ^ & * - + = | { } [ ] : ; ' , . ? / ]中的特殊符号。<br><li>Windows实例密码必须12到16位，至少包括三项[a-z]，[A-Z]，[0-9] 和 [( ) ` ~ ! @ # $ % ^ & * - + = { } [ ] : ; ' , . ? /]中的特殊符号。<br><br>若不指定该参数，则由系统随机生成密码，并通过站内信方式通知到用户。
-	// 注意：此字段可能返回 null，表示取不到有效值。
+	// 实例登录密码。不同操作系统类型密码复杂度限制不一样，具体如下：<br><li>Linux实例密码必须8到16位，至少包括两项[a-z，A-Z]、[0-9] 和 [( ) ` ~ ! @ # $ % ^ & * - + = | { } [ ] : ; ' , . ? \/ ]中的特殊符号。<br><li>Windows实例密码必须12到16位，至少包括三项[a-z]，[A-Z]，[0-9] 和 [( ) ` ~ ! @ # $ % ^ & * - + = { } [ ] : ; ' , . ? \/]中的特殊符号。<br><br>若不指定该参数，则由系统随机生成密码，并通过站内信方式通知到用户。
 	Password *string `json:"Password,omitempty" name:"Password"`
 
 	// 密钥ID列表。关联密钥后，就可以通过对应的私钥来访问实例；KeyId可通过接口DescribeKeyPairs获取，密钥与密码不能同时指定，同时Windows操作系统不支持指定密钥。当前仅支持购买的时候指定一个密钥。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	KeyIds []*string `json:"KeyIds,omitempty" name:"KeyIds" list`
 
 	// 保持镜像的原始设置。该参数与Password或KeyIds.N不能同时指定。只有使用自定义镜像、共享镜像或外部导入镜像创建实例时才能指定该参数为TRUE。取值范围：<br><li>TRUE：表示保持镜像的登录设置<br><li>FALSE：表示不保持镜像的登录设置<br><br>默认取值：FALSE。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	KeepImageLogin *string `json:"KeepImageLogin,omitempty" name:"KeepImageLogin"`
 }
 
@@ -1869,6 +1962,9 @@ type NamedComputeEnv struct {
 
 	// 非活跃节点处理策略，默认“RECREATE”，即对于实例创建失败或异常退还的计算节点，定期重新创建实例资源。
 	ActionIfComputeNodeInactive *string `json:"ActionIfComputeNodeInactive,omitempty" name:"ActionIfComputeNodeInactive"`
+
+	// 对于实例创建失败或异常退还的计算节点，定期重新创建实例资源的最大重试次数，最大值11，如果不设置的话，系统会设置一个默认值，当前为7
+	ResourceMaxRetryCount *int64 `json:"ResourceMaxRetryCount,omitempty" name:"ResourceMaxRetryCount"`
 }
 
 type NamedCpmComputeEnv struct {
@@ -1899,6 +1995,9 @@ type NamedCpmComputeEnv struct {
 
 	// 非活跃节点处理策略，默认“RECREATE”，即对于实例创建失败或异常退还的计算节点，定期重新创建实例资源。
 	ActionIfComputeNodeInactive *string `json:"ActionIfComputeNodeInactive,omitempty" name:"ActionIfComputeNodeInactive"`
+
+	// 对于实例创建失败或异常退还的计算节点，定期重新创建实例资源的最大重试次数，最大值11，如果不设置的话，系统会设置一个默认值，当前为7
+	ResourceMaxRetryCount *int64 `json:"ResourceMaxRetryCount,omitempty" name:"ResourceMaxRetryCount"`
 }
 
 type Notification struct {

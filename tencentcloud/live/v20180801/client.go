@@ -1851,6 +1851,31 @@ func (c *Client) DescribePullStreamConfigs(request *DescribePullStreamConfigsReq
     return
 }
 
+func NewDescribeScreenShotSheetNumListRequest() (request *DescribeScreenShotSheetNumListRequest) {
+    request = &DescribeScreenShotSheetNumListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("live", APIVersion, "DescribeScreenShotSheetNumList")
+    return
+}
+
+func NewDescribeScreenShotSheetNumListResponse() (response *DescribeScreenShotSheetNumListResponse) {
+    response = &DescribeScreenShotSheetNumListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 接口用来查询直播增值业务--截图的张数
+func (c *Client) DescribeScreenShotSheetNumList(request *DescribeScreenShotSheetNumListRequest) (response *DescribeScreenShotSheetNumListResponse, err error) {
+    if request == nil {
+        request = NewDescribeScreenShotSheetNumListRequest()
+    }
+    response = NewDescribeScreenShotSheetNumListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeStreamDayPlayInfoListRequest() (request *DescribeStreamDayPlayInfoListRequest) {
     request = &DescribeStreamDayPlayInfoListRequest{
         BaseRequest: &tchttp.BaseRequest{},

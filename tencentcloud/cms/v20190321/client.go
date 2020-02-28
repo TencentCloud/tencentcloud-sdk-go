@@ -113,7 +113,9 @@ func NewCreateFileSampleResponse() (response *CreateFileSampleResponse) {
     return
 }
 
-// 通过该接口可以将文件新增到样本库
+// 本文档适用于图片内容安全、视频内容安全自定义识别库的管理。
+// <br>
+// 通过该接口可以将图片新增到样本库。
 func (c *Client) CreateFileSample(request *CreateFileSampleRequest) (response *CreateFileSampleResponse, err error) {
     if request == nil {
         request = NewCreateFileSampleRequest()
@@ -138,7 +140,9 @@ func NewCreateTextSampleResponse() (response *CreateTextSampleResponse) {
     return
 }
 
-// 新增文本类型样本库
+// 本文档适用于文本内容安全、音频内容安全自定义识别库的管理。
+// <br>
+// 通过该接口可以将文本新增到样本库。
 func (c *Client) CreateTextSample(request *CreateTextSampleRequest) (response *CreateTextSampleResponse, err error) {
     if request == nil {
         request = NewCreateTextSampleRequest()
@@ -163,7 +167,9 @@ func NewDeleteFileSampleResponse() (response *DeleteFileSampleResponse) {
     return
 }
 
-// 删除文件样本库，支持批量删除，一次提交不超过20个
+// 本文档适用于图片内容安全、视频内容安全自定义识别库的管理。
+// <br>
+// 删除图片样本库，支持批量删除，一次提交不超过20个。
 func (c *Client) DeleteFileSample(request *DeleteFileSampleRequest) (response *DeleteFileSampleResponse, err error) {
     if request == nil {
         request = NewDeleteFileSampleRequest()
@@ -188,7 +194,9 @@ func NewDeleteTextSampleResponse() (response *DeleteTextSampleResponse) {
     return
 }
 
-// 删除文字样本库，暂时只支持单个删除
+// 本文档适用于文本内容安全、音频内容安全自定义识别库的管理。
+// <br>
+// 删除文本样本库，暂时只支持单个删除。
 func (c *Client) DeleteTextSample(request *DeleteTextSampleRequest) (response *DeleteTextSampleResponse, err error) {
     if request == nil {
         request = NewDeleteTextSampleRequest()
@@ -213,7 +221,9 @@ func NewDescribeFileSampleResponse() (response *DescribeFileSampleResponse) {
     return
 }
 
-// 查询文件样本库，支持批量查询
+// 本文档适用于图片内容安全、视频内容安全自定义识别库的管理。
+// <br>
+// 查询图片样本库，支持批量查询。
 func (c *Client) DescribeFileSample(request *DescribeFileSampleRequest) (response *DescribeFileSampleResponse, err error) {
     if request == nil {
         request = NewDescribeFileSampleRequest()
@@ -263,7 +273,9 @@ func NewDescribeTextSampleResponse() (response *DescribeTextSampleResponse) {
     return
 }
 
-// 支持批量查询文字样本库
+// 本文档适用于文本内容安全、音频内容安全自定义识别库的管理。
+// <br>
+// 支持批量查询文本样本库。
 func (c *Client) DescribeTextSample(request *DescribeTextSampleRequest) (response *DescribeTextSampleResponse, err error) {
     if request == nil {
         request = NewDescribeTextSampleRequest()

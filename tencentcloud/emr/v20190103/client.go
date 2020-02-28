@@ -68,6 +68,31 @@ func (c *Client) CreateInstance(request *CreateInstanceRequest) (response *Creat
     return
 }
 
+func NewDescribeClusterNodesRequest() (request *DescribeClusterNodesRequest) {
+    request = &DescribeClusterNodesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("emr", APIVersion, "DescribeClusterNodes")
+    return
+}
+
+func NewDescribeClusterNodesResponse() (response *DescribeClusterNodesResponse) {
+    response = &DescribeClusterNodesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询硬件节点信息
+func (c *Client) DescribeClusterNodes(request *DescribeClusterNodesRequest) (response *DescribeClusterNodesResponse, err error) {
+    if request == nil {
+        request = NewDescribeClusterNodesRequest()
+    }
+    response = NewDescribeClusterNodesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeInstancesRequest() (request *DescribeInstancesRequest) {
     request = &DescribeInstancesRequest{
         BaseRequest: &tchttp.BaseRequest{},

@@ -72,7 +72,7 @@ func (r *AudioModerationResponse) FromJsonString(s string) error {
 
 type CodeDetail struct {
 
-	// 二维码在图片中的位置，由4个点的坐标表示
+	// 二维码在图片中的位置，由边界点的坐标表示
 	CodePosition []*CodePosition `json:"CodePosition,omitempty" name:"CodePosition" list`
 
 	// 二维码文本的编码格式
@@ -81,7 +81,7 @@ type CodeDetail struct {
 	// 二维码的文本内容
 	CodeText *string `json:"CodeText,omitempty" name:"CodeText"`
 
-	// 二维码的类型：1：ONED_BARCODE，2：QRCOD，3:WXCODE，4：PDF417，5:DATAMATRIX
+	// 二维码的类型：1:ONED_BARCODE，2:QRCOD，3:WXCODE，4:PDF417，5:DATAMATRIX
 	CodeType *int64 `json:"CodeType,omitempty" name:"CodeType"`
 }
 
@@ -116,14 +116,10 @@ type CreateFileSampleRequest struct {
 	// 20006：涉毒违法
 	// 20007：谩骂 
 	// 24001：暴恐
-	// 21000：综合
 	// 20105：广告引流
 	EvilType *int64 `json:"EvilType,omitempty" name:"EvilType"`
 
-	// 文件类型
 	// image：图片
-	// audio：音频
-	// video：视频
 	FileType *string `json:"FileType,omitempty" name:"FileType"`
 
 	// 样本类型
@@ -177,7 +173,6 @@ type CreateTextSampleRequest struct {
 	// 20006：涉毒违法
 	// 20007：谩骂 
 	// 24001：暴恐
-	// 21000：综合
 	// 20105：广告引流
 	EvilType *int64 `json:"EvilType,omitempty" name:"EvilType"`
 
@@ -185,6 +180,9 @@ type CreateTextSampleRequest struct {
 	// 1：黑库
 	// 2：白库
 	Label *uint64 `json:"Label,omitempty" name:"Label"`
+
+	// 测试修改参数
+	Test *string `json:"Test,omitempty" name:"Test"`
 }
 
 func (r *CreateTextSampleRequest) ToJsonString() string {
@@ -199,6 +197,9 @@ func (r *CreateTextSampleRequest) FromJsonString(s string) error {
 type CreateTextSampleResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
+
+		// 操作样本失败时返回的错误信息示例：  "样本1":错误码，"样本2":错误码
+		ErrMsg *string `json:"ErrMsg,omitempty" name:"ErrMsg"`
 
 		// 任务状态
 	// 1：已完成
@@ -454,6 +455,9 @@ type FileSample struct {
 
 	// 文件url
 	FileUrl *string `json:"FileUrl,omitempty" name:"FileUrl"`
+
+	// 文件压缩后云url
+	CompressFileUrl *string `json:"CompressFileUrl,omitempty" name:"CompressFileUrl"`
 }
 
 type FileSampleInfo struct {
@@ -471,7 +475,6 @@ type FileSampleInfo struct {
 	// 20006：涉毒违法
 	// 20007：谩骂 
 	// 24001：暴恐
-	// 21000：综合
 	EvilType *uint64 `json:"EvilType,omitempty" name:"EvilType"`
 
 	// 文件的md5
@@ -495,6 +498,9 @@ type FileSampleInfo struct {
 	// 1：已完成
 	// 2：处理中
 	Status *uint64 `json:"Status,omitempty" name:"Status"`
+
+	// 文件压缩后云url
+	CompressFileUrl *string `json:"CompressFileUrl,omitempty" name:"CompressFileUrl"`
 
 	// 文件的url
 	FileUrl *string `json:"FileUrl,omitempty" name:"FileUrl"`
@@ -522,7 +528,6 @@ type ImageData struct {
 	// 20007：谩骂 
 	// 20103：性感
 	// 24001：暴恐
-	// 21000：综合
 	EvilType *int64 `json:"EvilType,omitempty" name:"EvilType"`
 
 	// 图片二维码详情
@@ -533,6 +538,9 @@ type ImageData struct {
 
 	// 图片违法详情
 	IllegalDetect *ImageIllegalDetect `json:"IllegalDetect,omitempty" name:"IllegalDetect"`
+
+	// logo详情
+	LogoDetect *LogoDetail `json:"LogoDetect,omitempty" name:"LogoDetect"`
 
 	// 图片OCR详情
 	OCRDetect *OCRDetect `json:"OCRDetect,omitempty" name:"OCRDetect"`
@@ -646,6 +654,9 @@ type ImagePolityDetect struct {
 	// 处置判定  0：正常 1：可疑
 	HitFlag *int64 `json:"HitFlag,omitempty" name:"HitFlag"`
 
+	// 命中的logo标签信息
+	PolityLogoDetail []*Logo `json:"PolityLogoDetail,omitempty" name:"PolityLogoDetail" list`
+
 	// 命中的人脸名称
 	FaceNames []*string `json:"FaceNames,omitempty" name:"FaceNames" list`
 
@@ -699,6 +710,24 @@ type ImageTerrorDetect struct {
 	Score *int64 `json:"Score,omitempty" name:"Score"`
 }
 
+type Logo struct {
+
+	// logo图标坐标信息
+	RrectF *RrectF `json:"RrectF,omitempty" name:"RrectF"`
+
+	// logo图标置信度
+	Confidence *float64 `json:"Confidence,omitempty" name:"Confidence"`
+
+	// logo图标名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+}
+
+type LogoDetail struct {
+
+	// 命中的Applogo详情
+	AppLogoDetail []*Logo `json:"AppLogoDetail,omitempty" name:"AppLogoDetail" list`
+}
+
 type OCRDetect struct {
 
 	// 识别到的文本信息
@@ -720,6 +749,24 @@ type OverviewRecord struct {
 	Yoy *string `json:"Yoy,omitempty" name:"Yoy"`
 }
 
+type RrectF struct {
+
+	// logo横坐标
+	Cx *float64 `json:"Cx,omitempty" name:"Cx"`
+
+	// logo纵坐标
+	Cy *float64 `json:"Cy,omitempty" name:"Cy"`
+
+	// logo图标高度
+	Height *float64 `json:"Height,omitempty" name:"Height"`
+
+	// logo图标中心旋转度
+	Rotate *float64 `json:"Rotate,omitempty" name:"Rotate"`
+
+	// logo图标宽度
+	Width *float64 `json:"Width,omitempty" name:"Width"`
+}
+
 type Similar struct {
 
 	// 恶意类型
@@ -729,7 +776,6 @@ type Similar struct {
 	// 20006：涉毒违法
 	// 20007：谩骂 
 	// 24001：暴恐
-	// 21000：综合
 	EvilType *int64 `json:"EvilType,omitempty" name:"EvilType"`
 
 	// 处置判定 0：未匹配到 1：恶意 2：白样本
@@ -752,7 +798,6 @@ type TextData struct {
 	// 20007：谩骂
 	// 20105：广告引流 
 	// 24001：暴恐
-	// 21000：综合
 	EvilType *int64 `json:"EvilType,omitempty" name:"EvilType"`
 
 	// 命中的关键词
@@ -762,7 +807,7 @@ type TextData struct {
 type TextModerationRequest struct {
 	*tchttp.BaseRequest
 
-	// 文本内容Base64编码
+	// 文本内容Base64编码。原文长度需小于15000字节，即5000个汉字以内。
 	Content *string `json:"Content,omitempty" name:"Content"`
 }
 
@@ -818,7 +863,6 @@ type TextSample struct {
 	// 20007：谩骂 
 	// 20105：广告引流 
 	// 24001：暴恐
-	// 20004/21000：综合
 	EvilType *uint64 `json:"EvilType,omitempty" name:"EvilType"`
 
 	// 唯一标识

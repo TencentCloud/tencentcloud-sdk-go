@@ -1,0 +1,1313 @@
+// Copyright (c) 2017-2018 THL A29 Limited, a Tencent company. All Rights Reserved.
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//    http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+package v20191205
+
+import (
+    "encoding/json"
+
+    tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
+)
+
+type ApplyCertificateRequest struct {
+	*tchttp.BaseRequest
+
+	// 验证方式（'DNS_AUTO'， 'DNS'， 'FILE'）：DNS_AUTO = 自动DNS验证。
+	DvAuthMethod *string `json:"DvAuthMethod,omitempty" name:"DvAuthMethod"`
+
+	// 域名。
+	DomainName *string `json:"DomainName,omitempty" name:"DomainName"`
+
+	// 项目ID。
+	ProjectId *uint64 `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 证书类型，默认2。免费证书目前只有 2 了。
+	PackageType *string `json:"PackageType,omitempty" name:"PackageType"`
+
+	// 邮箱。
+	ContactEmail *string `json:"ContactEmail,omitempty" name:"ContactEmail"`
+
+	// 手机。
+	ContactPhone *string `json:"ContactPhone,omitempty" name:"ContactPhone"`
+
+	// 有效期，默认12。
+	ValidityPeriod *string `json:"ValidityPeriod,omitempty" name:"ValidityPeriod"`
+
+	// 加密算法，仅支持RSA。
+	CsrEncryptAlgo *string `json:"CsrEncryptAlgo,omitempty" name:"CsrEncryptAlgo"`
+
+	// 密钥对参数，仅支持2048。
+	CsrKeyParameter *string `json:"CsrKeyParameter,omitempty" name:"CsrKeyParameter"`
+
+	// csr的加密密码。
+	CsrKeyPassword *string `json:"CsrKeyPassword,omitempty" name:"CsrKeyPassword"`
+
+	// 备注名称。
+	Alias *string `json:"Alias,omitempty" name:"Alias"`
+
+	// 原证书id，用于重新申请。
+	OldCertificateId *string `json:"OldCertificateId,omitempty" name:"OldCertificateId"`
+}
+
+func (r *ApplyCertificateRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ApplyCertificateRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ApplyCertificateResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 证书ID。
+		CertificateId *string `json:"CertificateId,omitempty" name:"CertificateId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ApplyCertificateResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ApplyCertificateResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CancelCertificateOrderRequest struct {
+	*tchttp.BaseRequest
+
+	// 证书id。
+	CertificateId *string `json:"CertificateId,omitempty" name:"CertificateId"`
+}
+
+func (r *CancelCertificateOrderRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CancelCertificateOrderRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CancelCertificateOrderResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 取消订单成功的证书id
+		CertificateId *string `json:"CertificateId,omitempty" name:"CertificateId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CancelCertificateOrderResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CancelCertificateOrderResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CertificateExtra struct {
+
+	// 证书可配置域名数量。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DomainNumber *string `json:"DomainNumber,omitempty" name:"DomainNumber"`
+
+	// 原始证书ID。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OriginCertificateId *string `json:"OriginCertificateId,omitempty" name:"OriginCertificateId"`
+
+	// 重颁发证书原始ID。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ReplacedBy *string `json:"ReplacedBy,omitempty" name:"ReplacedBy"`
+
+	// 重颁发证书新ID。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ReplacedFor *string `json:"ReplacedFor,omitempty" name:"ReplacedFor"`
+
+	// 新订单证书ID。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RenewOrder *string `json:"RenewOrder,omitempty" name:"RenewOrder"`
+}
+
+type Certificates struct {
+
+	// 用户UIN。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OwnerUin *string `json:"OwnerUin,omitempty" name:"OwnerUin"`
+
+	// 项目ID。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 证书来源。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	From *string `json:"From,omitempty" name:"From"`
+
+	// 证书套餐类型。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PackageType *string `json:"PackageType,omitempty" name:"PackageType"`
+
+	// 证书类型（目前支持：CA = 客户端证书，SVR = 服务器证书）。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CertificateType *string `json:"CertificateType,omitempty" name:"CertificateType"`
+
+	// 证书办法者名称。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProductZhName *string `json:"ProductZhName,omitempty" name:"ProductZhName"`
+
+	// 主域名。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Domain *string `json:"Domain,omitempty" name:"Domain"`
+
+	// 别名。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Alias *string `json:"Alias,omitempty" name:"Alias"`
+
+	// 状态值 0：审核中，1：已通过，2：审核失败，3：已过期，4：已添加云解析记录，5：OV/EV 证书，待提交资料，6：订单取消中，7：已取消，8：已提交资料， 待上传确认函。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *uint64 `json:"Status,omitempty" name:"Status"`
+
+	// 证书扩展信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CertificateExtra *CertificateExtra `json:"CertificateExtra,omitempty" name:"CertificateExtra"`
+
+	// 漏洞扫描状态：INACTIVE = 未开启，ACTIVE = 已开启
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VulnerabilityStatus *string `json:"VulnerabilityStatus,omitempty" name:"VulnerabilityStatus"`
+
+	// 状态信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StatusMsg *string `json:"StatusMsg,omitempty" name:"StatusMsg"`
+
+	// 验证类型。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VerifyType *string `json:"VerifyType,omitempty" name:"VerifyType"`
+
+	// 证书生效时间。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CertBeginTime *string `json:"CertBeginTime,omitempty" name:"CertBeginTime"`
+
+	// 证书过期时间。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CertEndTime *string `json:"CertEndTime,omitempty" name:"CertEndTime"`
+
+	// 证书过期时间。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ValidityPeriod *string `json:"ValidityPeriod,omitempty" name:"ValidityPeriod"`
+
+	// 创建时间。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InsertTime *string `json:"InsertTime,omitempty" name:"InsertTime"`
+
+	// 证书ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CertificateId *string `json:"CertificateId,omitempty" name:"CertificateId"`
+
+	// 证书包含的多个域名（包含主域名）。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SubjectAltName []*string `json:"SubjectAltName,omitempty" name:"SubjectAltName" list`
+
+	// 证书类型名称。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PackageTypeName *string `json:"PackageTypeName,omitempty" name:"PackageTypeName"`
+
+	// 状态名称。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StatusName *string `json:"StatusName,omitempty" name:"StatusName"`
+
+	// 是否为 VIP 客户。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsVip *bool `json:"IsVip,omitempty" name:"IsVip"`
+
+	// 是否为 DV 版证书。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsDv *bool `json:"IsDv,omitempty" name:"IsDv"`
+
+	// 是否为泛域名证书。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsWildcard *bool `json:"IsWildcard,omitempty" name:"IsWildcard"`
+
+	// 是否启用了漏洞扫描功能。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsVulnerability *bool `json:"IsVulnerability,omitempty" name:"IsVulnerability"`
+
+	// 是否可重颁发证书。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RenewAble *bool `json:"RenewAble,omitempty" name:"RenewAble"`
+
+	// 项目信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProjectInfo *ProjectInfo `json:"ProjectInfo,omitempty" name:"ProjectInfo"`
+
+	// 需要权限的资源。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BoundResource []*string `json:"BoundResource,omitempty" name:"BoundResource" list`
+
+	// 是否可部署。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Deployable *bool `json:"Deployable,omitempty" name:"Deployable"`
+}
+
+type CommitCertificateInformationRequest struct {
+	*tchttp.BaseRequest
+
+	// 证书id。
+	CertificateId *string `json:"CertificateId,omitempty" name:"CertificateId"`
+}
+
+func (r *CommitCertificateInformationRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CommitCertificateInformationRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CommitCertificateInformationResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 亚信订单号。
+		OrderId *string `json:"OrderId,omitempty" name:"OrderId"`
+
+		// 证书状态。
+		Status *uint64 `json:"Status,omitempty" name:"Status"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CommitCertificateInformationResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CommitCertificateInformationResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteCertificateRequest struct {
+	*tchttp.BaseRequest
+
+	// 证书ID。
+	CertificateId *string `json:"CertificateId,omitempty" name:"CertificateId"`
+}
+
+func (r *DeleteCertificateRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteCertificateRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteCertificateResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 删除结果。
+		DeleteResult *bool `json:"DeleteResult,omitempty" name:"DeleteResult"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DeleteCertificateResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteCertificateResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeCertificateDetailRequest struct {
+	*tchttp.BaseRequest
+
+	// 证书id
+	CertificateId *string `json:"CertificateId,omitempty" name:"CertificateId"`
+}
+
+func (r *DescribeCertificateDetailRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeCertificateDetailRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeCertificateDetailResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 用户uin。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		OwnerUin *string `json:"OwnerUin,omitempty" name:"OwnerUin"`
+
+		// 项目ID。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+
+		// 证书来源（trustasia = 亚洲诚信，upload = 用户上传）。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		From *string `json:"From,omitempty" name:"From"`
+
+		// 证书类型（目前支持：CA = 客户端证书，SVR = 服务器证书）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		CertificateType *string `json:"CertificateType,omitempty" name:"CertificateType"`
+
+		// 证书类型。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		PackageType *string `json:"PackageType,omitempty" name:"PackageType"`
+
+		// 证书办法者名称。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		ProductZhName *string `json:"ProductZhName,omitempty" name:"ProductZhName"`
+
+		// 域名。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Domain *string `json:"Domain,omitempty" name:"Domain"`
+
+		// 别名。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Alias *string `json:"Alias,omitempty" name:"Alias"`
+
+		// 证书状态。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Status *uint64 `json:"Status,omitempty" name:"Status"`
+
+		// 状态信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		StatusMsg *string `json:"StatusMsg,omitempty" name:"StatusMsg"`
+
+		// 证书验证类型。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		VerifyType *string `json:"VerifyType,omitempty" name:"VerifyType"`
+
+		// 漏洞扫描状态。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		VulnerabilityStatus *string `json:"VulnerabilityStatus,omitempty" name:"VulnerabilityStatus"`
+
+		// 证书生效时间。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		CertBeginTime *string `json:"CertBeginTime,omitempty" name:"CertBeginTime"`
+
+		// 证书失效时间。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		CertEndTime *string `json:"CertEndTime,omitempty" name:"CertEndTime"`
+
+		// 证书有效期：单位(月)。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		ValidityPeriod *string `json:"ValidityPeriod,omitempty" name:"ValidityPeriod"`
+
+		// 申请时间。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		InsertTime *string `json:"InsertTime,omitempty" name:"InsertTime"`
+
+		// 订单ID。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		OrderId *string `json:"OrderId,omitempty" name:"OrderId"`
+
+		// 证书扩展信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		CertificateExtra *CertificateExtra `json:"CertificateExtra,omitempty" name:"CertificateExtra"`
+
+		// 证书私钥
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		CertificatePrivateKey *string `json:"CertificatePrivateKey,omitempty" name:"CertificatePrivateKey"`
+
+		// 证书公钥
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		CertificatePublicKey *string `json:"CertificatePublicKey,omitempty" name:"CertificatePublicKey"`
+
+		// DV认证信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		DvAuthDetail *DvAuthDetail `json:"DvAuthDetail,omitempty" name:"DvAuthDetail"`
+
+		// 漏洞扫描评估报告。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		VulnerabilityReport *string `json:"VulnerabilityReport,omitempty" name:"VulnerabilityReport"`
+
+		// 证书ID。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		CertificateId *string `json:"CertificateId,omitempty" name:"CertificateId"`
+
+		// 证书类型名称。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		TypeName *string `json:"TypeName,omitempty" name:"TypeName"`
+
+		// 状态描述。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		StatusName *string `json:"StatusName,omitempty" name:"StatusName"`
+
+		// 证书包含的多个域名（包含主域名）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		SubjectAltName []*string `json:"SubjectAltName,omitempty" name:"SubjectAltName" list`
+
+		// 是否为 VIP 客户。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		IsVip *bool `json:"IsVip,omitempty" name:"IsVip"`
+
+		// 是否为泛域名证书。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		IsWildcard *bool `json:"IsWildcard,omitempty" name:"IsWildcard"`
+
+		// 是否为 DV 版证书。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		IsDv *bool `json:"IsDv,omitempty" name:"IsDv"`
+
+		// 是否启用了漏洞扫描功能。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		IsVulnerability *bool `json:"IsVulnerability,omitempty" name:"IsVulnerability"`
+
+		// 提交的资料信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		SubmittedData *SubmittedData `json:"SubmittedData,omitempty" name:"SubmittedData"`
+
+		// 是否可重颁发证书。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		RenewAble *bool `json:"RenewAble,omitempty" name:"RenewAble"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeCertificateDetailResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeCertificateDetailResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeCertificateOperateLogsRequest struct {
+	*tchttp.BaseRequest
+
+	// 偏移量，默认为0。
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 请求日志数量，默认为20。
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 开始时间，默认15天前。
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 结束时间，默认现在时间。
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+}
+
+func (r *DescribeCertificateOperateLogsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeCertificateOperateLogsRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeCertificateOperateLogsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 当前查询条件日志总数。
+		AllTotal *uint64 `json:"AllTotal,omitempty" name:"AllTotal"`
+
+		// 本次请求返回的日志数量。
+		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 证书操作日志列表。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		OperateLogs []*OperationLog `json:"OperateLogs,omitempty" name:"OperateLogs" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeCertificateOperateLogsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeCertificateOperateLogsResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeCertificateRequest struct {
+	*tchttp.BaseRequest
+
+	// 证书ID。
+	CertificateId *string `json:"CertificateId,omitempty" name:"CertificateId"`
+}
+
+func (r *DescribeCertificateRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeCertificateRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeCertificateResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 用户uin。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		OwnerUin *string `json:"OwnerUin,omitempty" name:"OwnerUin"`
+
+		// 项目ID。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+
+		// 证书来源（trustasia = 亚洲诚信，upload = 用户上传）。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		From *string `json:"From,omitempty" name:"From"`
+
+		// 证书类型（目前支持：CA = 客户端证书，SVR = 服务器证书）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		CertificateType *string `json:"CertificateType,omitempty" name:"CertificateType"`
+
+		// 证书类型。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		PackageType *string `json:"PackageType,omitempty" name:"PackageType"`
+
+		// 证书办法者名称。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		ProductZhName *string `json:"ProductZhName,omitempty" name:"ProductZhName"`
+
+		// 域名。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Domain *string `json:"Domain,omitempty" name:"Domain"`
+
+		// 别名。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Alias *string `json:"Alias,omitempty" name:"Alias"`
+
+		// 证书类型。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Status *uint64 `json:"Status,omitempty" name:"Status"`
+
+		// 状态信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		StatusMsg *string `json:"StatusMsg,omitempty" name:"StatusMsg"`
+
+		// 证书验证类型。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		VerifyType *string `json:"VerifyType,omitempty" name:"VerifyType"`
+
+		// 漏洞扫描状态。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		VulnerabilityStatus *string `json:"VulnerabilityStatus,omitempty" name:"VulnerabilityStatus"`
+
+		// 证书生效时间。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		CertBeginTime *string `json:"CertBeginTime,omitempty" name:"CertBeginTime"`
+
+		// 证书失效时间。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		CertEndTime *string `json:"CertEndTime,omitempty" name:"CertEndTime"`
+
+		// 证书有效期：单位(月)。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		ValidityPeriod *string `json:"ValidityPeriod,omitempty" name:"ValidityPeriod"`
+
+		// 申请时间。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		InsertTime *string `json:"InsertTime,omitempty" name:"InsertTime"`
+
+		// 订单ID。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		OrderId *string `json:"OrderId,omitempty" name:"OrderId"`
+
+		// 证书扩展信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		CertificateExtra *CertificateExtra `json:"CertificateExtra,omitempty" name:"CertificateExtra"`
+
+		// DV认证信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		DvAuthDetail *DvAuthDetail `json:"DvAuthDetail,omitempty" name:"DvAuthDetail"`
+
+		// 漏洞扫描评估报告。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		VulnerabilityReport *string `json:"VulnerabilityReport,omitempty" name:"VulnerabilityReport"`
+
+		// 证书ID。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		CertificateId *string `json:"CertificateId,omitempty" name:"CertificateId"`
+
+		// 证书类型名称。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		PackageTypeName *string `json:"PackageTypeName,omitempty" name:"PackageTypeName"`
+
+		// 状态描述。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		StatusName *string `json:"StatusName,omitempty" name:"StatusName"`
+
+		// 证书包含的多个域名（包含主域名）。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		SubjectAltName []*string `json:"SubjectAltName,omitempty" name:"SubjectAltName" list`
+
+		// 是否为 VIP 客户。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		IsVip *bool `json:"IsVip,omitempty" name:"IsVip"`
+
+		// 是否为泛域名证书。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		IsWildcard *bool `json:"IsWildcard,omitempty" name:"IsWildcard"`
+
+		// 是否为 DV 版证书。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		IsDv *bool `json:"IsDv,omitempty" name:"IsDv"`
+
+		// 是否启用了漏洞扫描功能。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		IsVulnerability *bool `json:"IsVulnerability,omitempty" name:"IsVulnerability"`
+
+		// 是否可重颁发证书。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		RenewAble *bool `json:"RenewAble,omitempty" name:"RenewAble"`
+
+		// 提交的资料信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		SubmittedData *SubmittedData `json:"SubmittedData,omitempty" name:"SubmittedData"`
+
+		// 是否可部署。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Deployable *bool `json:"Deployable,omitempty" name:"Deployable"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeCertificateResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeCertificateResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeCertificatesRequest struct {
+	*tchttp.BaseRequest
+
+	// 页数。
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 每页数量。
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 搜索关键词。
+	SearchKey *string `json:"SearchKey,omitempty" name:"SearchKey"`
+
+	// 证书类型，可选值：CA，SVR。
+	CertificateType *string `json:"CertificateType,omitempty" name:"CertificateType"`
+
+	// 项目ID。
+	ProjectId *uint64 `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 按到期时间排序：DESC降序， ASC 升序。
+	ExpirationSort *string `json:"ExpirationSort,omitempty" name:"ExpirationSort"`
+
+	// 证书状态。
+	CertificateStatus []*uint64 `json:"CertificateStatus,omitempty" name:"CertificateStatus" list`
+
+	// 是否可部署，可选值：1 = 可部署，0 =  不可部署。
+	Deployable *uint64 `json:"Deployable,omitempty" name:"Deployable"`
+}
+
+func (r *DescribeCertificatesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeCertificatesRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeCertificatesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 总数量。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 列表。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Certificates []*Certificates `json:"Certificates,omitempty" name:"Certificates" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeCertificatesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeCertificatesResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DownloadCertificateRequest struct {
+	*tchttp.BaseRequest
+
+	// 证书ID。
+	CertificateId *string `json:"CertificateId,omitempty" name:"CertificateId"`
+}
+
+func (r *DownloadCertificateRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DownloadCertificateRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DownloadCertificateResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// ZIP base64编码内容。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Content *string `json:"Content,omitempty" name:"Content"`
+
+		// MIME类型。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		ContentType *string `json:"ContentType,omitempty" name:"ContentType"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DownloadCertificateResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DownloadCertificateResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DvAuthDetail struct {
+
+	// DV认证密钥。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DvAuthKey *string `json:"DvAuthKey,omitempty" name:"DvAuthKey"`
+
+	// DV认证值。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DvAuthValue *string `json:"DvAuthValue,omitempty" name:"DvAuthValue"`
+
+	// DV认证值域名。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DvAuthDomain *string `json:"DvAuthDomain,omitempty" name:"DvAuthDomain"`
+
+	// DV认证值路径。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DvAuthPath *string `json:"DvAuthPath,omitempty" name:"DvAuthPath"`
+
+	// DV认证子域名。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DvAuthKeySubDomain *string `json:"DvAuthKeySubDomain,omitempty" name:"DvAuthKeySubDomain"`
+
+	// DV认证信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DvAuths []*DvAuths `json:"DvAuths,omitempty" name:"DvAuths" list`
+}
+
+type DvAuths struct {
+
+	// DV认证密钥。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DvAuthKey *string `json:"DvAuthKey,omitempty" name:"DvAuthKey"`
+
+	// DV认证值。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DvAuthValue *string `json:"DvAuthValue,omitempty" name:"DvAuthValue"`
+
+	// DV认证值域名。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DvAuthDomain *string `json:"DvAuthDomain,omitempty" name:"DvAuthDomain"`
+
+	// DV认证值路径。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DvAuthPath *string `json:"DvAuthPath,omitempty" name:"DvAuthPath"`
+
+	// DV认证子域名，
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DvAuthSubDomain *string `json:"DvAuthSubDomain,omitempty" name:"DvAuthSubDomain"`
+
+	// DV认证类型。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DvAuthVerifyType *string `json:"DvAuthVerifyType,omitempty" name:"DvAuthVerifyType"`
+}
+
+type ModifyCertificateAliasRequest struct {
+	*tchttp.BaseRequest
+
+	// 证书id。
+	CertificateId *string `json:"CertificateId,omitempty" name:"CertificateId"`
+
+	// 证书备注。
+	Alias *string `json:"Alias,omitempty" name:"Alias"`
+}
+
+func (r *ModifyCertificateAliasRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyCertificateAliasRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyCertificateAliasResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 修改成功的证书id。
+		CertificateId *string `json:"CertificateId,omitempty" name:"CertificateId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifyCertificateAliasResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyCertificateAliasResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyCertificateProjectRequest struct {
+	*tchttp.BaseRequest
+
+	// 需要修改所属项目的证书id集合，最多100个证书
+	CertificateIdList []*string `json:"CertificateIdList,omitempty" name:"CertificateIdList" list`
+
+	// 项目id。
+	ProjectId *uint64 `json:"ProjectId,omitempty" name:"ProjectId"`
+}
+
+func (r *ModifyCertificateProjectRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyCertificateProjectRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyCertificateProjectResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 修改所属项目成功的证书集合
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		SuccessCertificates []*string `json:"SuccessCertificates,omitempty" name:"SuccessCertificates" list`
+
+		// 修改所属项目失败的证书集合
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		FailCertificates []*string `json:"FailCertificates,omitempty" name:"FailCertificates" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifyCertificateProjectResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyCertificateProjectResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type OperationLog struct {
+
+	// 操作证书动作
+	Action *string `json:"Action,omitempty" name:"Action"`
+
+	// 操作时间
+	CreatedOn *string `json:"CreatedOn,omitempty" name:"CreatedOn"`
+}
+
+type ProjectInfo struct {
+
+	// 项目名称。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProjectName *string `json:"ProjectName,omitempty" name:"ProjectName"`
+
+	// 项目创建用户UIN。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProjectCreatorUin *uint64 `json:"ProjectCreatorUin,omitempty" name:"ProjectCreatorUin"`
+
+	// 项目创建时间。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProjectCreateTime *string `json:"ProjectCreateTime,omitempty" name:"ProjectCreateTime"`
+
+	// 项目信息简述。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProjectResume *string `json:"ProjectResume,omitempty" name:"ProjectResume"`
+
+	// 用户UIN。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OwnerUin *uint64 `json:"OwnerUin,omitempty" name:"OwnerUin"`
+
+	// 项目ID。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+}
+
+type ReplaceCertificateRequest struct {
+	*tchttp.BaseRequest
+
+	// 证书ID。
+	CertificateId *string `json:"CertificateId,omitempty" name:"CertificateId"`
+
+	// 验证类型 DNS,DNS_AUTO,FILE
+	ValidType *string `json:"ValidType,omitempty" name:"ValidType"`
+
+	// 类型，可选项：Original、Upload、Online，默认original。
+	CsrType *string `json:"CsrType,omitempty" name:"CsrType"`
+
+	// CSR内容。
+	CsrContent *string `json:"CsrContent,omitempty" name:"CsrContent"`
+
+	// key密码。
+	CsrkeyPassword *string `json:"CsrkeyPassword,omitempty" name:"CsrkeyPassword"`
+}
+
+func (r *ReplaceCertificateRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ReplaceCertificateRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ReplaceCertificateResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 证书ID。
+		CertificateId *string `json:"CertificateId,omitempty" name:"CertificateId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ReplaceCertificateResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ReplaceCertificateResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type SubmitCertificateInformationRequest struct {
+	*tchttp.BaseRequest
+
+	// 证书id。
+	CertificateId *string `json:"CertificateId,omitempty" name:"CertificateId"`
+
+	// Csr生成方式: online = 在线生成, parse = 手动上传 。
+	CsrType *string `json:"CsrType,omitempty" name:"CsrType"`
+
+	// 上传的Csr内容。
+	CsrContent *string `json:"CsrContent,omitempty" name:"CsrContent"`
+
+	// 绑定证书的域名 。
+	CertificateDomain *string `json:"CertificateDomain,omitempty" name:"CertificateDomain"`
+
+	// 上传的域名数组（多域名证书可以上传）。
+	DomainList []*string `json:"DomainList,omitempty" name:"DomainList" list`
+
+	// 私钥密码 。
+	KeyPassword *string `json:"KeyPassword,omitempty" name:"KeyPassword"`
+
+	// 公司名称 。
+	OrganizationName *string `json:"OrganizationName,omitempty" name:"OrganizationName"`
+
+	// 部门名称。
+	OrganizationDivision *string `json:"OrganizationDivision,omitempty" name:"OrganizationDivision"`
+
+	// 公司详细地址 。
+	OrganizationAddress *string `json:"OrganizationAddress,omitempty" name:"OrganizationAddress"`
+
+	// 国家名称 如中国:CN 。
+	OrganizationCountry *string `json:"OrganizationCountry,omitempty" name:"OrganizationCountry"`
+
+	// 公司所在城市 。
+	OrganizationCity *string `json:"OrganizationCity,omitempty" name:"OrganizationCity"`
+
+	// 公司所在省份。
+	OrganizationRegion *string `json:"OrganizationRegion,omitempty" name:"OrganizationRegion"`
+
+	// 公司邮编 。
+	PostalCode *string `json:"PostalCode,omitempty" name:"PostalCode"`
+
+	// 公司座机区号 。
+	PhoneAreaCode *string `json:"PhoneAreaCode,omitempty" name:"PhoneAreaCode"`
+
+	// 公司座机号码 。
+	PhoneNumber *string `json:"PhoneNumber,omitempty" name:"PhoneNumber"`
+
+	// 证书验证方式 。
+	VerifyType *string `json:"VerifyType,omitempty" name:"VerifyType"`
+
+	// 管理人姓。
+	AdminFirstName *string `json:"AdminFirstName,omitempty" name:"AdminFirstName"`
+
+	// 管理人名。
+	AdminLastName *string `json:"AdminLastName,omitempty" name:"AdminLastName"`
+
+	// 管理人手机号码。
+	AdminPhoneNum *string `json:"AdminPhoneNum,omitempty" name:"AdminPhoneNum"`
+
+	// 管理人邮箱地址。
+	AdminEmail *string `json:"AdminEmail,omitempty" name:"AdminEmail"`
+
+	// 管理人职位。
+	AdminPosition *string `json:"AdminPosition,omitempty" name:"AdminPosition"`
+
+	// 联系人姓。
+	ContactFirstName *string `json:"ContactFirstName,omitempty" name:"ContactFirstName"`
+
+	// 联系人名。
+	ContactLastName *string `json:"ContactLastName,omitempty" name:"ContactLastName"`
+
+	// 联系人邮箱地址 。
+	ContactEmail *string `json:"ContactEmail,omitempty" name:"ContactEmail"`
+
+	// 联系人手机号码 。
+	ContactNumber *string `json:"ContactNumber,omitempty" name:"ContactNumber"`
+
+	// 联系人职位。
+	ContactPosition *string `json:"ContactPosition,omitempty" name:"ContactPosition"`
+}
+
+func (r *SubmitCertificateInformationRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *SubmitCertificateInformationRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type SubmitCertificateInformationResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 证书id。
+		CertificateId *string `json:"CertificateId,omitempty" name:"CertificateId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *SubmitCertificateInformationResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *SubmitCertificateInformationResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type SubmittedData struct {
+
+	// CSR类型，（online = 在线生成CSR，parse = 粘贴CSR）。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CsrType *string `json:"CsrType,omitempty" name:"CsrType"`
+
+	// CSR内容。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CsrContent *string `json:"CsrContent,omitempty" name:"CsrContent"`
+
+	// 域名信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CertificateDomain *string `json:"CertificateDomain,omitempty" name:"CertificateDomain"`
+
+	// DNS信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DomainList []*string `json:"DomainList,omitempty" name:"DomainList" list`
+
+	// 私钥密码。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	KeyPassword *string `json:"KeyPassword,omitempty" name:"KeyPassword"`
+
+	// 企业或单位名称。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OrganizationName *string `json:"OrganizationName,omitempty" name:"OrganizationName"`
+
+	// 部门。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OrganizationDivision *string `json:"OrganizationDivision,omitempty" name:"OrganizationDivision"`
+
+	// 地址。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OrganizationAddress *string `json:"OrganizationAddress,omitempty" name:"OrganizationAddress"`
+
+	// 国家。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OrganizationCountry *string `json:"OrganizationCountry,omitempty" name:"OrganizationCountry"`
+
+	// 省。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OrganizationCity *string `json:"OrganizationCity,omitempty" name:"OrganizationCity"`
+
+	// 市。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OrganizationRegion *string `json:"OrganizationRegion,omitempty" name:"OrganizationRegion"`
+
+	// 邮政编码。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PostalCode *string `json:"PostalCode,omitempty" name:"PostalCode"`
+
+	// 座机区号。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PhoneAreaCode *string `json:"PhoneAreaCode,omitempty" name:"PhoneAreaCode"`
+
+	// 座机号码。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PhoneNumber *string `json:"PhoneNumber,omitempty" name:"PhoneNumber"`
+
+	// 管理员名。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AdminFirstName *string `json:"AdminFirstName,omitempty" name:"AdminFirstName"`
+
+	// 管理员姓。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AdminLastName *string `json:"AdminLastName,omitempty" name:"AdminLastName"`
+
+	// 管理员电话号码。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AdminPhoneNum *string `json:"AdminPhoneNum,omitempty" name:"AdminPhoneNum"`
+
+	// 管理员邮箱地址。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AdminEmail *string `json:"AdminEmail,omitempty" name:"AdminEmail"`
+
+	// 管理员职位。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AdminPosition *string `json:"AdminPosition,omitempty" name:"AdminPosition"`
+
+	// 联系人名。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ContactFirstName *string `json:"ContactFirstName,omitempty" name:"ContactFirstName"`
+
+	// 联系人姓。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ContactLastName *string `json:"ContactLastName,omitempty" name:"ContactLastName"`
+
+	// 联系人电话号码。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ContactNumber *string `json:"ContactNumber,omitempty" name:"ContactNumber"`
+
+	// 联系人邮箱地址，
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ContactEmail *string `json:"ContactEmail,omitempty" name:"ContactEmail"`
+
+	// 联系人职位。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ContactPosition *string `json:"ContactPosition,omitempty" name:"ContactPosition"`
+
+	// 验证类型。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VerifyType *string `json:"VerifyType,omitempty" name:"VerifyType"`
+}
+
+type UploadCertificateRequest struct {
+	*tchttp.BaseRequest
+
+	// 证书公钥。
+	CertificatePublicKey *string `json:"CertificatePublicKey,omitempty" name:"CertificatePublicKey"`
+
+	// 私钥内容，证书类型为SVR时必填，为CA时可不填。
+	CertificatePrivateKey *string `json:"CertificatePrivateKey,omitempty" name:"CertificatePrivateKey"`
+
+	// 证书类型，可选值：CA，SVR，默认SVR。
+	CertificateType *string `json:"CertificateType,omitempty" name:"CertificateType"`
+
+	// 证书别名。
+	Alias *string `json:"Alias,omitempty" name:"Alias"`
+
+	// 项目id。
+	ProjectId *uint64 `json:"ProjectId,omitempty" name:"ProjectId"`
+}
+
+func (r *UploadCertificateRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *UploadCertificateRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type UploadCertificateResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 证书ID。
+		CertificateId *string `json:"CertificateId,omitempty" name:"CertificateId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *UploadCertificateResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *UploadCertificateResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}

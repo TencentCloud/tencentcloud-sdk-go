@@ -3586,6 +3586,55 @@ func (r *DescribePullStreamConfigsResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeScreenShotSheetNumListRequest struct {
+	*tchttp.BaseRequest
+
+	// utc起始时间，格式为yyyy-mm-ddTHH:MM:SSZ
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// utc结束时间，格式为yyyy-mm-ddTHH:MM:SSZ，支持查询最近1年数据。
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 地域信息，可选值包括Mainland，Oversea，前者是查询中国大陆范围内的数据，后者是除中国大陆范围之外的数据，若不传该参数，则查询所有地区的数据。
+	Zone *string `json:"Zone,omitempty" name:"Zone"`
+
+	// 推流域名（支持查询2019年11 月1日之后的域名维度数据）。
+	PushDomains []*string `json:"PushDomains,omitempty" name:"PushDomains" list`
+
+	// 数据维度，数据延迟1个半小时，可选值包括：1、Minute（5分钟粒度，最大支持查询时间范围是31天），2、Day（天粒度，默认值，最大支持查询时间范围是186天当天）。
+	Granularity *string `json:"Granularity,omitempty" name:"Granularity"`
+}
+
+func (r *DescribeScreenShotSheetNumListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeScreenShotSheetNumListRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeScreenShotSheetNumListResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 数据信息列表。
+		DataInfoList []*TimeValue `json:"DataInfoList,omitempty" name:"DataInfoList" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeScreenShotSheetNumListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeScreenShotSheetNumListResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeStreamDayPlayInfoListRequest struct {
 	*tchttp.BaseRequest
 
@@ -5500,6 +5549,15 @@ type TemplateInfo struct {
 
 	// 急速高清相比VideoBitrate少多少码率，0.1到0.5
 	AdaptBitratePercent *float64 `json:"AdaptBitratePercent,omitempty" name:"AdaptBitratePercent"`
+}
+
+type TimeValue struct {
+
+	// utc时间，时间格式为yyyy-mm-ddTHH:MM:SSZ。
+	Time *string `json:"Time,omitempty" name:"Time"`
+
+	// 数值。
+	Num *uint64 `json:"Num,omitempty" name:"Num"`
 }
 
 type TranscodeDetailInfo struct {

@@ -183,7 +183,7 @@ func NewCreateInstanceTokenResponse() (response *CreateInstanceTokenResponse) {
     return
 }
 
-// 获取临时登陆密码
+// 获取临时登录密码
 func (c *Client) CreateInstanceToken(request *CreateInstanceTokenRequest) (response *CreateInstanceTokenResponse, err error) {
     if request == nil {
         request = NewCreateInstanceTokenRequest()
@@ -633,7 +633,7 @@ func NewDescribeRepositoryFilterPersonalResponse() (response *DescribeRepository
     return
 }
 
-// 用于在个人版版镜像仓库中，获取满足输入搜索条件的用户镜像仓库
+// 用于在个人版镜像仓库中，获取满足输入搜索条件的用户镜像仓库
 func (c *Client) DescribeRepositoryFilterPersonal(request *DescribeRepositoryFilterPersonalRequest) (response *DescribeRepositoryFilterPersonalResponse, err error) {
     if request == nil {
         request = NewDescribeRepositoryFilterPersonalRequest()
@@ -833,7 +833,7 @@ func NewModifyUserPasswordPersonalResponse() (response *ModifyUserPasswordPerson
     return
 }
 
-// 修改个人用户登陆密码
+// 修改个人用户登录密码
 func (c *Client) ModifyUserPasswordPersonal(request *ModifyUserPasswordPersonalRequest) (response *ModifyUserPasswordPersonalResponse, err error) {
     if request == nil {
         request = NewModifyUserPasswordPersonalRequest()

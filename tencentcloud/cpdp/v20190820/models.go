@@ -596,10 +596,10 @@ type ClearItem struct {
 type CloseOrderRequest struct {
 	*tchttp.BaseRequest
 
-	// 聚鑫分配的支付主MidasAppid
+	// 聚鑫分配的支付主MidasAppId
 	MidasAppId *string `json:"MidasAppId,omitempty" name:"MidasAppId"`
 
-	// 用户Id，长度不小于5位， 仅支持字母和数字的组合
+	// 用户ID，长度不小于5位， 仅支持字母和数字的组合
 	UserId *string `json:"UserId,omitempty" name:"UserId"`
 
 	// 聚鑫分配的安全ID
@@ -648,7 +648,7 @@ type CreateAcctRequest struct {
 	// 聚鑫平台分配的支付MidasAppId
 	MidasAppId *string `json:"MidasAppId,omitempty" name:"MidasAppId"`
 
-	// 业务平台的子商户Id，唯一
+	// 业务平台的子商户ID，唯一
 	SubMchId *string `json:"SubMchId,omitempty" name:"SubMchId"`
 
 	// 子商户名称
@@ -1752,7 +1752,7 @@ type QueryOrderRequest struct {
 	// 聚鑫分配的支付主 MidasAppId
 	MidasAppId *string `json:"MidasAppId,omitempty" name:"MidasAppId"`
 
-	// 用户Id，长度不小于5位， 仅支持字母和数字的组合
+	// 用户ID，长度不小于5位， 仅支持字母和数字的组合
 	UserId *string `json:"UserId,omitempty" name:"UserId"`
 
 	// type=by_order根据订单号 查订单；
@@ -1884,13 +1884,13 @@ func (r *QueryReconciliationDocumentResponse) FromJsonString(s string) error {
 type QueryRefundRequest struct {
 	*tchttp.BaseRequest
 
-	// 用户Id，长度不小于5位，仅支持字母和数字的组合。
+	// 用户ID，长度不小于5位，仅支持字母和数字的组合。
 	UserId *string `json:"UserId,omitempty" name:"UserId"`
 
 	// 退款订单号，仅支持数字、字母、下划线（_）、横杠字符（-）、点（.）的组合。
 	RefundId *string `json:"RefundId,omitempty" name:"RefundId"`
 
-	// 聚鑫分配的支付主MidasAppid
+	// 聚鑫分配的支付主MidasAppId
 	MidasAppId *string `json:"MidasAppId,omitempty" name:"MidasAppId"`
 
 	// 聚鑫分配的安全ID
@@ -2207,19 +2207,19 @@ type RefundOutSubOrderRefundList struct {
 type RefundRequest struct {
 	*tchttp.BaseRequest
 
-	// 用户Id，长度不小于5位， 仅支持字母和数字的组合
+	// 用户ID，长度不小于5位， 仅支持字母和数字的组合
 	UserId *string `json:"UserId,omitempty" name:"UserId"`
 
 	// 退款订单号，仅支持数字、 字母、下划线（_）、横杠字 符（-）、点（.）的组合
 	RefundId *string `json:"RefundId,omitempty" name:"RefundId"`
 
-	// 聚鑫分配的支付主MidasAppid
+	// 聚鑫分配的支付主MidasAppId
 	MidasAppId *string `json:"MidasAppId,omitempty" name:"MidasAppId"`
 
-	// 退款金额，单位：分。备 注：当该字段为空或者为0 时，系统会默认使用订单当 实付金额做为退款金额
+	// 退款金额，单位：分。备注：当该字段为空或者为0 时，系统会默认使用订单当 实付金额作为退款金额
 	TotalRefundAmt *int64 `json:"TotalRefundAmt,omitempty" name:"TotalRefundAmt"`
 
-	// 支持多个子订单批量退款单 个子订单退款支持传 SubOutTradeNo ，也支持传 SubOutTradeNoList ，都传的时候以 SubOutTradeNoList 为准。  如果传了子单退款细节，外 部不需要再传退款金额，平 台应退，商户应退金额，我 们可以直接根据子单退款算 出来总和。
+	// 支持多个子订单批量退款单 个子订单退款支持传 SubOutTradeNo ，也支持传 SubOutTradeNoList ，都传的时候以 SubOutTradeNoList 为准。  如果传了子单退款细节，外 部不需要再传退款金额，平 台应退，商户应退金额，我 们可以直接根据子单退款算出来总和。
 	SubOrderRefundList []*RefundOutSubOrderRefundList `json:"SubOrderRefundList,omitempty" name:"SubOrderRefundList" list`
 
 	// 聚鑫分配的安全ID
@@ -2847,7 +2847,7 @@ type UnifiedOrderRequest struct {
 	// ISO 货币代码，CNY
 	CurrencyType *string `json:"CurrencyType,omitempty" name:"CurrencyType"`
 
-	// 聚鑫分配的支付主MidasAppid
+	// 聚鑫分配的支付主MidasAppId
 	MidasAppId *string `json:"MidasAppId,omitempty" name:"MidasAppId"`
 
 	// 支付订单号，仅支持数字、字母、下划线（_）、横杠字符（-）、点（.）的组合
@@ -2856,7 +2856,7 @@ type UnifiedOrderRequest struct {
 	// 商品详情，需要URL编码
 	ProductDetail *string `json:"ProductDetail,omitempty" name:"ProductDetail"`
 
-	// 商品id，仅支持数字、字母、下划线（_）、横杠字符（-）、点（.）的组合
+	// 商品ID，仅支持数字、字母、下划线（_）、横杠字符（-）、点（.）的组合
 	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
 
 	// 商品名称，需要URL编码
@@ -2865,13 +2865,13 @@ type UnifiedOrderRequest struct {
 	// 支付金额，单位： 分
 	TotalAmt *int64 `json:"TotalAmt,omitempty" name:"TotalAmt"`
 
-	// 用户Id，长度不小于5位，仅支持字母和数字的组合
+	// 用户ID，长度不小于5位，仅支持字母和数字的组合
 	UserId *string `json:"UserId,omitempty" name:"UserId"`
 
-	// 银行真实渠道.如:bank_ccb
+	// 银行真实渠道.如:bank_pingan
 	RealChannel *string `json:"RealChannel,omitempty" name:"RealChannel"`
 
-	// 子订单信息列表，格式：子订单号、子应用Id、金额。 压缩后最长不可超过65535字节(去除空格，换行，制表符等无意义字符)
+	// 子订单信息列表，格式：子订单号、子应用ID、金额。 压缩后最长不可超过65535字节(去除空格，换行，制表符等无意义字符)
 	SubOrderList []*UnifiedOrderInSubOrderList `json:"SubOrderList,omitempty" name:"SubOrderList" list`
 
 	// 原始金额
