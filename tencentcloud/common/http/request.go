@@ -22,6 +22,7 @@ const (
 type Request interface {
 	GetAction() string
 	GetBodyReader() io.Reader
+	GetScheme() string
 	GetDomain() string
 	GetHttpMethod() string
 	GetParams() map[string]string
@@ -29,16 +30,17 @@ type Request interface {
 	GetService() string
 	GetUrl() string
 	GetVersion() string
+	SetScheme(scheme string)
 	SetDomain(string)
 	SetHttpMethod(string)
 }
 
 type BaseRequest struct {
 	httpMethod string
+	scheme     string
 	domain     string
 	path       string
 	params     map[string]string
-	formParams map[string]string
 
 	service string
 	version string
@@ -59,6 +61,14 @@ func (r *BaseRequest) GetParams() map[string]string {
 
 func (r *BaseRequest) GetPath() string {
 	return r.path
+}
+
+func (r *BaseRequest) GetScheme() string {
+	return r.scheme
+}
+
+func (r *BaseRequest) SetScheme(scheme string) {
+	r.scheme = scheme
 }
 
 func (r *BaseRequest) GetDomain() string {
@@ -92,9 +102,9 @@ func (r *BaseRequest) GetService() string {
 
 func (r *BaseRequest) GetUrl() string {
 	if r.httpMethod == GET {
-		return "https://" + r.domain + r.path + "?" + GetUrlQueriesEncoded(r.params)
+		return r.scheme + "://" + r.domain + r.path + "?" + GetUrlQueriesEncoded(r.params)
 	} else if r.httpMethod == POST {
-		return "https://" + r.domain + r.path
+		return r.scheme + "://" + r.domain + r.path
 	} else {
 		return ""
 	}
@@ -127,7 +137,6 @@ func (r *BaseRequest) Init() *BaseRequest {
 	r.domain = ""
 	r.path = Path
 	r.params = make(map[string]string)
-	r.formParams = make(map[string]string)
 	return r
 }
 

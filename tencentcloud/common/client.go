@@ -36,6 +36,10 @@ func (c *Client) Send(request tchttp.Request, response tchttp.Response) (err err
 		request.SetDomain(domain)
 	}
 
+	if request.GetScheme() == "" {
+		request.SetScheme(c.httpProfile.Scheme)
+	}
+
 	if request.GetHttpMethod() == "" {
 		request.SetHttpMethod(c.httpProfile.ReqMethod)
 	}
@@ -187,11 +191,7 @@ func (c *Client) sendWithSignatureV3(request tchttp.Request, response tchttp.Res
 	//log.Println("authorization", authorization)
 
 	headers["Authorization"] = authorization
-	url := "https://" + request.GetDomain() + request.GetPath()
-	if canonicalQueryString != "" {
-		url = url + "?" + canonicalQueryString
-	}
-	httpRequest, err := http.NewRequest(httpRequestMethod, url, strings.NewReader(requestPayload))
+	httpRequest, err := http.NewRequest(httpRequestMethod, request.GetUrl(), strings.NewReader(requestPayload))
 	if err != nil {
 		return err
 	}
