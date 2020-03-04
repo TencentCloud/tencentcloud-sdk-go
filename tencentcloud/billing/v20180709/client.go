@@ -93,6 +93,31 @@ func (c *Client) DescribeBillDetail(request *DescribeBillDetailRequest) (respons
     return
 }
 
+func NewDescribeBillListRequest() (request *DescribeBillListRequest) {
+    request = &DescribeBillListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("billing", APIVersion, "DescribeBillList")
+    return
+}
+
+func NewDescribeBillListResponse() (response *DescribeBillListResponse) {
+    response = &DescribeBillListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 获取收支明细列表，支持翻页和参数过滤
+func (c *Client) DescribeBillList(request *DescribeBillListRequest) (response *DescribeBillListResponse, err error) {
+    if request == nil {
+        request = NewDescribeBillListRequest()
+    }
+    response = NewDescribeBillListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeBillResourceSummaryRequest() (request *DescribeBillResourceSummaryRequest) {
     request = &DescribeBillResourceSummaryRequest{
         BaseRequest: &tchttp.BaseRequest{},

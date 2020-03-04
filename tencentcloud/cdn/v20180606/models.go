@@ -117,6 +117,9 @@ type AddCdnDomainRequest struct {
 	// global：全球加速
 	// 使用中国境外加速、全球加速时，需要先开通中国境外加速服务
 	Area *string `json:"Area,omitempty" name:"Area"`
+
+	// 回源超时配置
+	OriginPullTimeout *OriginPullTimeout `json:"OriginPullTimeout,omitempty" name:"OriginPullTimeout"`
 }
 
 func (r *AddCdnDomainRequest) ToJsonString() string {
@@ -3184,6 +3187,9 @@ type UpdateDomainConfigRequest struct {
 	// overseas：中国境外加速
 	// global：全球加速
 	Area *string `json:"Area,omitempty" name:"Area"`
+
+	// 回源超时配置
+	OriginPullTimeout *OriginPullTimeout `json:"OriginPullTimeout,omitempty" name:"OriginPullTimeout"`
 }
 
 func (r *UpdateDomainConfigRequest) ToJsonString() string {

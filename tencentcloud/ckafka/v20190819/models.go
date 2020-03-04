@@ -199,16 +199,16 @@ type CreateAclRequest struct {
 	// 实例id信息
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
-	// Acl资源类型，（0:UNKNOWN，1:ANY，2:TOPIC，3:GROUP，4:CLUSTER，5:TRANSACTIONAL_ID）当前只有TOPIC，其它字段用于后续兼容开源kafka的acl时使用
+	// Acl资源类型，(0:UNKNOWN，1:ANY，2:TOPIC，3:GROUP，4:CLUSTER，5:TRANSACTIONAL_ID)，当前只有TOPIC，其它字段用于后续兼容开源kafka的acl时使用
 	ResourceType *int64 `json:"ResourceType,omitempty" name:"ResourceType"`
 
-	// 资源名称，和resourceType相关如当resourceType为TOPIC时，则该字段表示topic名称，当resourceType为GROUP时，该字段表示group名称
+	// 资源名称，和resourceType相关，如当resourceType为TOPIC时，则该字段表示topic名称，当resourceType为GROUP时，该字段表示group名称
 	ResourceName *string `json:"ResourceName,omitempty" name:"ResourceName"`
 
-	// Acl操作方式(0:UNKNOWN，1:ANY，2:ALL，3:READ，4:WRITE，5:CREATE，6:DELETE，7:ALTER，8:DESCRIBE，9:CLUSTER_ACTION，10:DESCRIBE_CONFIGS，11:ALTER_CONFIGS，
+	// Acl操作方式，(0:UNKNOWN，1:ANY，2:ALL，3:READ，4:WRITE，5:CREATE，6:DELETE，7:ALTER，8:DESCRIBE，9:CLUSTER_ACTION，10:DESCRIBE_CONFIGS，11:ALTER_CONFIGS)
 	Operation *int64 `json:"Operation,omitempty" name:"Operation"`
 
-	// 权限类型(0:UNKNOWN，1:ANY，2:DENY，3:ALLOW)，当前ckakfa支持ALLOW(相当于白名单)，其它用于后续兼容开源kafka的acl时使用
+	// 权限类型，(0:UNKNOWN，1:ANY，2:DENY，3:ALLOW)，当前ckakfa支持ALLOW(相当于白名单)，其它用于后续兼容开源kafka的acl时使用
 	PermissionType *int64 `json:"PermissionType,omitempty" name:"PermissionType"`
 
 	// 默认为*，表示任何host都可以访问，当前ckafka不支持host为*，但是后面开源kafka的产品化会直接支持
@@ -459,16 +459,16 @@ type DeleteAclRequest struct {
 	// 实例id信息
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
-	// Acl资源类型，（0:UNKNOWN，1:ANY，2:TOPIC，3:GROUP，4:CLUSTER，5:TRANSACTIONAL_ID）当前只有TOPIC，其它字段用于后续兼容开源kafka的acl时使用
+	// Acl资源类型，(0:UNKNOWN，1:ANY，2:TOPIC，3:GROUP，4:CLUSTER，5:TRANSACTIONAL_ID)，当前只有TOPIC，其它字段用于后续兼容开源kafka的acl时使用
 	ResourceType *int64 `json:"ResourceType,omitempty" name:"ResourceType"`
 
-	// 资源名称，和resourceType相关如当resourceType为TOPIC时，则该字段表示topic名称，当resourceType为GROUP时，该字段表示group名称
+	// 资源名称，和resourceType相关，如当resourceType为TOPIC时，则该字段表示topic名称，当resourceType为GROUP时，该字段表示group名称
 	ResourceName *string `json:"ResourceName,omitempty" name:"ResourceName"`
 
-	// Acl操作方式(0:UNKNOWN，1:ANY，2:ALL，3:READ，4:WRITE，5:CREATE，6:DELETE，7:ALTER，8:DESCRIBE，9:CLUSTER_ACTION，10:DESCRIBE_CONFIGS，11:ALTER_CONFIGS，12:IDEMPOTEN_WRITE)，当前ckafka只支持READ,WRITE，其它用于后续兼容开源kafka的acl时使用
+	// Acl操作方式，(0:UNKNOWN，1:ANY，2:ALL，3:READ，4:WRITE，5:CREATE，6:DELETE，7:ALTER，8:DESCRIBE，9:CLUSTER_ACTION，10:DESCRIBE_CONFIGS，11:ALTER_CONFIGS，12:IDEMPOTEN_WRITE)，当前ckafka只支持READ,WRITE，其它用于后续兼容开源kafka的acl时使用
 	Operation *int64 `json:"Operation,omitempty" name:"Operation"`
 
-	// 权限类型(0:UNKNOWN，1:ANY，2:DENY，3:ALLOW)，当前ckakfa支持ALLOW(相当于白名单)，其它用于后续兼容开源kafka的acl时使用
+	// 权限类型，(0:UNKNOWN，1:ANY，2:DENY，3:ALLOW)，当前ckakfa支持ALLOW(相当于白名单)，其它用于后续兼容开源kafka的acl时使用
 	PermissionType *int64 `json:"PermissionType,omitempty" name:"PermissionType"`
 
 	// 默认为*，表示任何host都可以访问，当前ckafka不支持host为*，但是后面开源kafka的产品化会直接支持
@@ -637,10 +637,10 @@ type DescribeACLRequest struct {
 	// 实例Id
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
-	// Acl资源类型，（0:UNKNOWN，1:ANY，2:TOPIC，3:GROUP，4:CLUSTER，5:TRANSACTIONAL_ID）当前只有TOPIC，其它字段用于后续兼容开源kafka的acl时使用
+	// Acl资源类型，(0:UNKNOWN，1:ANY，2:TOPIC，3:GROUP，4:CLUSTER，5:TRANSACTIONAL_ID)，当前只有TOPIC，其它字段用于后续兼容开源kafka的acl时使用
 	ResourceType *int64 `json:"ResourceType,omitempty" name:"ResourceType"`
 
-	// 资源名称，和resourceType相关如当resourceType为TOPIC时，则该字段表示topic名称，当resourceType为GROUP时，该字段表示group名称
+	// 资源名称，和resourceType相关，如当resourceType为TOPIC时，则该字段表示topic名称，当resourceType为GROUP时，该字段表示group名称
 	ResourceName *string `json:"ResourceName,omitempty" name:"ResourceName"`
 
 	// 偏移位置
@@ -904,7 +904,7 @@ type DescribeGroupResponse struct {
 	Response *struct {
 
 		// 返回结果集列表
-		Result []*DescribeGroup `json:"Result,omitempty" name:"Result" list`
+		Result *GroupResponse `json:"Result,omitempty" name:"Result"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1375,6 +1375,29 @@ type GroupOffsetTopic struct {
 	Partitions []*GroupOffsetPartition `json:"Partitions,omitempty" name:"Partitions" list`
 }
 
+type GroupResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 计数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// GroupList
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		GroupList []*DescribeGroup `json:"GroupList,omitempty" name:"GroupList" list`
+	} `json:"Response"`
+}
+
+func (r *GroupResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *GroupResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type Instance struct {
 
 	// 实例id
@@ -1462,6 +1485,22 @@ type InstanceAttributesResponse struct {
 		// 过期时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		ExpireTime *uint64 `json:"ExpireTime,omitempty" name:"ExpireTime"`
+
+		// 跨可用区
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		ZoneIds []*int64 `json:"ZoneIds,omitempty" name:"ZoneIds" list`
+
+		// kafka版本信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Version *string `json:"Version,omitempty" name:"Version"`
+
+		// 最大分组数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		MaxGroupNum *int64 `json:"MaxGroupNum,omitempty" name:"MaxGroupNum"`
+
+		// 售卖类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Cvm *int64 `json:"Cvm,omitempty" name:"Cvm"`
 	} `json:"Response"`
 }
 
@@ -1525,7 +1564,7 @@ type InstanceDetail struct {
 	RenewFlag *int64 `json:"RenewFlag,omitempty" name:"RenewFlag"`
 
 	// 实例状态 int：0表示健康，1表示告警，2 表示实例状态异常
-	Healthy *string `json:"Healthy,omitempty" name:"Healthy"`
+	Healthy *int64 `json:"Healthy,omitempty" name:"Healthy"`
 
 	// 实例状态信息
 	HealthyMessage *string `json:"HealthyMessage,omitempty" name:"HealthyMessage"`
@@ -1544,6 +1583,18 @@ type InstanceDetail struct {
 
 	// 标识tag
 	Tags []*Tag `json:"Tags,omitempty" name:"Tags" list`
+
+	// kafka版本信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Version *string `json:"Version,omitempty" name:"Version"`
+
+	// 跨可用区
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ZoneIds []*int64 `json:"ZoneIds,omitempty" name:"ZoneIds" list`
+
+	// ckafka售卖类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Cvm *int64 `json:"Cvm,omitempty" name:"Cvm"`
 }
 
 type InstanceDetailResponse struct {
@@ -1599,6 +1650,10 @@ type JgwOperateResponse struct {
 
 		// 成功消息
 		ReturnMessage *string `json:"ReturnMessage,omitempty" name:"ReturnMessage"`
+
+		// 操作型返回的Data数据,可能有flowId等
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Data *OperateResponseData `json:"Data,omitempty" name:"Data"`
 	} `json:"Response"`
 }
 
@@ -1834,10 +1889,28 @@ func (r *ModifyTopicAttributesResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type OperateResponseData struct {
+
+	// FlowId
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FlowId *int64 `json:"FlowId,omitempty" name:"FlowId"`
+}
+
 type Partition struct {
 
 	// 分区ID
 	PartitionId *int64 `json:"PartitionId,omitempty" name:"PartitionId"`
+}
+
+type PartitionOffset struct {
+
+	// Partition,例如"0"或"1"
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Partition *string `json:"Partition,omitempty" name:"Partition"`
+
+	// Offset,例如100
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
 }
 
 type SubscribedInfo struct {
@@ -1848,6 +1921,10 @@ type SubscribedInfo struct {
 	// 订阅的分区
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Partition []*int64 `json:"Partition,omitempty" name:"Partition" list`
+
+	// 分区offset信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PartitionOffset []*PartitionOffset `json:"PartitionOffset,omitempty" name:"PartitionOffset" list`
 }
 
 type Tag struct {

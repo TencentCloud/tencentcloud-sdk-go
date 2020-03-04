@@ -493,6 +493,31 @@ func (c *Client) UnbindRs(request *UnbindRsRequest) (response *UnbindRsResponse,
     return
 }
 
+func NewUnbindRsListRequest() (request *UnbindRsListRequest) {
+    request = &UnbindRsListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("bmeip", APIVersion, "UnbindRsList")
+    return
+}
+
+func NewUnbindRsListResponse() (response *UnbindRsListResponse) {
+    response = &UnbindRsListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 批量解绑物理机弹性公网IP接口
+func (c *Client) UnbindRsList(request *UnbindRsListRequest) (response *UnbindRsListResponse, err error) {
+    if request == nil {
+        request = NewUnbindRsListRequest()
+    }
+    response = NewUnbindRsListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewUnbindVpcIpRequest() (request *UnbindVpcIpRequest) {
     request = &UnbindVpcIpRequest{
         BaseRequest: &tchttp.BaseRequest{},

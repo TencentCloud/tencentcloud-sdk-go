@@ -107,15 +107,15 @@ type BillDetail struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Tags []*BillTagInfo `json:"Tags,omitempty" name:"Tags" list`
 
-	// 商品名称代码
+	// 商品名称代码（未开放的字段）
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	BusinessCode *string `json:"BusinessCode,omitempty" name:"BusinessCode"`
 
-	// 子商品名称代码
+	// 子商品名称代码 （未开放的字段）
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProductCode *string `json:"ProductCode,omitempty" name:"ProductCode"`
 
-	// 交易类型代码
+	// 交易类型代码（未开放的字段）
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ActionType *string `json:"ActionType,omitempty" name:"ActionType"`
 }
@@ -170,11 +170,11 @@ type BillDetailComponent struct {
 	// 赠送账户支付金额
 	IncentivePayAmount *string `json:"IncentivePayAmount,omitempty" name:"IncentivePayAmount"`
 
-	// 组件类型代码
+	// 组件类型代码（未开放的字段）
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ItemCode *string `json:"ItemCode,omitempty" name:"ItemCode"`
 
-	// 组件名称代码
+	// 组件名称代码（未开放的字段）
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ComponentCode *string `json:"ComponentCode,omitempty" name:"ComponentCode"`
 
@@ -284,6 +284,36 @@ type BillTagInfo struct {
 
 	// 标签值
 	TagValue *string `json:"TagValue,omitempty" name:"TagValue"`
+}
+
+type BillTransactionInfo struct {
+
+	// 收支类型：deduct 扣费, recharge 充值, return 退费， block 冻结, unblock 解冻
+	ActionType *string `json:"ActionType,omitempty" name:"ActionType"`
+
+	// 流水金额，单位（分）；正数表示入账，负数表示出账
+	Amount *int64 `json:"Amount,omitempty" name:"Amount"`
+
+	// 可用余额，单位（分）；正数表示入账，负数表示出账
+	Balance *int64 `json:"Balance,omitempty" name:"Balance"`
+
+	// 流水号，如20190131020000236005203583326401
+	BillId *string `json:"BillId,omitempty" name:"BillId"`
+
+	// 描述信息
+	OperationInfo *string `json:"OperationInfo,omitempty" name:"OperationInfo"`
+
+	// 操作时间"2019-01-31 23:35:10.000"
+	OperationTime *string `json:"OperationTime,omitempty" name:"OperationTime"`
+
+	// 现金账户余额，单位（分）
+	Cash *int64 `json:"Cash,omitempty" name:"Cash"`
+
+	// 赠送金余额，单位（分）
+	Incentive *int64 `json:"Incentive,omitempty" name:"Incentive"`
+
+	// 冻结余额，单位（分）
+	Freezing *int64 `json:"Freezing,omitempty" name:"Freezing"`
 }
 
 type BusinessSummaryOverviewItem struct {
@@ -528,6 +558,9 @@ type ConsumptionResourceSummaryDataItem struct {
 
 	// 产品名称
 	BusinessCodeName *string `json:"BusinessCodeName,omitempty" name:"BusinessCodeName"`
+
+	// 消耗类型
+	ConsumptionTypeName *string `json:"ConsumptionTypeName,omitempty" name:"ConsumptionTypeName"`
 }
 
 type ConsumptionSummaryTotal struct {
@@ -795,6 +828,79 @@ func (r *DescribeBillDetailResponse) ToJsonString() string {
 }
 
 func (r *DescribeBillDetailResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeBillListRequest struct {
+	*tchttp.BaseRequest
+
+	// 查询范围的起始时间（包含）
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 查询范围的结束时间（包含）
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 翻页偏移量，初始值为0
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 每页的限制数量
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 交易类型： all所有交易类型，recharge充值，return退款，unblock解冻，agentin资金转入，advanced垫付，cash提现，deduct扣费，block冻结，agentout资金转出，repay垫付回款，repayment还款(仅国际信用账户)，adj_refund调增(仅国际信用账户)，adj_deduct调减(仅国际信用账户)
+	PayType []*string `json:"PayType,omitempty" name:"PayType" list`
+
+	// 扣费模式，当所选的交易类型中包含扣费deduct时有意义： all所有扣费类型，trade预付费支付，hour_h按量小时结，hour_d按量日结，hour_m按量月结，decompensate调账扣费，other其他扣费
+	SubPayType []*string `json:"SubPayType,omitempty" name:"SubPayType" list`
+
+	// 是否返回0元交易金额的交易项，取值：0-不返回，1-返回。不传该参数则不返回
+	WithZeroAmount *uint64 `json:"WithZeroAmount,omitempty" name:"WithZeroAmount"`
+}
+
+func (r *DescribeBillListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeBillListRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeBillListResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 收支明细列表
+		TransactionList []*BillTransactionInfo `json:"TransactionList,omitempty" name:"TransactionList" list`
+
+		// 总条数
+		Total *int64 `json:"Total,omitempty" name:"Total"`
+
+		// 退费总额，单位（分）
+		ReturnAmount *float64 `json:"ReturnAmount,omitempty" name:"ReturnAmount"`
+
+		// 充值总额，单位（分）
+		RechargeAmount *float64 `json:"RechargeAmount,omitempty" name:"RechargeAmount"`
+
+		// 冻结总额，单位（分）
+		BlockAmount *float64 `json:"BlockAmount,omitempty" name:"BlockAmount"`
+
+		// 解冻总额，单位（分）
+		UnblockAmount *float64 `json:"UnblockAmount,omitempty" name:"UnblockAmount"`
+
+		// 扣费总额，单位（分）
+		DeductAmount *float64 `json:"DeductAmount,omitempty" name:"DeductAmount"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeBillListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeBillListResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 

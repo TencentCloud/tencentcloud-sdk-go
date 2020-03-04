@@ -369,6 +369,21 @@ type DescribeEipAclsRequest struct {
 
 	// 分页参数。每一页的 EIPACL 列表数目
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// EIP实例ID列表
+	EipIds []*string `json:"EipIds,omitempty" name:"EipIds" list`
+
+	// EIP IP地址列表
+	EipIps []*string `json:"EipIps,omitempty" name:"EipIps" list`
+
+	// EIP名称列表
+	EipNames []*string `json:"EipNames,omitempty" name:"EipNames" list`
+
+	// 排序字段
+	OrderField *string `json:"OrderField,omitempty" name:"OrderField"`
+
+	// 排序方式，取值：0:增序(默认)，1:降序
+	Order *uint64 `json:"Order,omitempty" name:"Order"`
 }
 
 func (r *DescribeEipAclsRequest) ToJsonString() string {
@@ -552,6 +567,9 @@ type DescribeEipsResponse struct {
 		// 返回EIP信息数组
 		EipSet []*EipInfo `json:"EipSet,omitempty" name:"EipSet" list`
 
+		// 返回EIP数量
+		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
@@ -702,6 +720,15 @@ type EipInfo struct {
 
 	// 托管机器别名
 	HInstanceAlias *string `json:"HInstanceAlias,omitempty" name:"HInstanceAlias"`
+}
+
+type EipRsMap struct {
+
+	// EIP实例 ID
+	EipId *string `json:"EipId,omitempty" name:"EipId"`
+
+	// 黑石物理机实例ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 }
 
 type ModifyEipAclRequest struct {
@@ -904,6 +931,43 @@ func (r *UnbindHostedResponse) ToJsonString() string {
 }
 
 func (r *UnbindHostedResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type UnbindRsListRequest struct {
+	*tchttp.BaseRequest
+
+	// 物理机绑定的EIP列表
+	EipRsList []*EipRsMap `json:"EipRsList,omitempty" name:"EipRsList" list`
+}
+
+func (r *UnbindRsListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *UnbindRsListRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type UnbindRsListResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 解绑操作的异步任务ID，可以通过查询EIP任务状态查询任务状态
+		TaskId *int64 `json:"TaskId,omitempty" name:"TaskId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *UnbindRsListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *UnbindRsListResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 

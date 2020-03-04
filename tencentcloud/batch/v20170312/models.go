@@ -449,7 +449,7 @@ type DataDisk struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SnapshotId *string `json:"SnapshotId,omitempty" name:"SnapshotId"`
 
-	// 数据盘是否随子机销毁。取值范围：
+	// 数据盘是加密。取值范围：
 	// <li>TRUE：加密
 	// <li>FALSE：不加密<br>
 	// 默认取值：FALSE<br>
@@ -1708,6 +1708,10 @@ type InstanceTypeQuotaItem struct {
 
 	// 实例的售卖价格。
 	Price *ItemPrice `json:"Price,omitempty" name:"Price"`
+
+	// 售罄原因。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SoldOutReason *string `json:"SoldOutReason,omitempty" name:"SoldOutReason"`
 }
 
 type InternetAccessible struct {

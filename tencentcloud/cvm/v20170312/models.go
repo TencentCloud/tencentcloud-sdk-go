@@ -357,7 +357,7 @@ type DataDisk struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SnapshotId *string `json:"SnapshotId,omitempty" name:"SnapshotId"`
 
-	// 数据盘是否随子机销毁。取值范围：
+	// 数据盘是加密。取值范围：
 	// <li>TRUE：加密
 	// <li>FALSE：不加密<br>
 	// 默认取值：FALSE<br>
@@ -2344,6 +2344,10 @@ type InstanceTypeQuotaItem struct {
 
 	// 实例的售卖价格。
 	Price *ItemPrice `json:"Price,omitempty" name:"Price"`
+
+	// 售罄原因。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SoldOutReason *string `json:"SoldOutReason,omitempty" name:"SoldOutReason"`
 }
 
 type InternetAccessible struct {
@@ -3427,7 +3431,7 @@ type RunInstancesRequest struct {
 	// 实例所属安全组。该参数可以通过调用 [DescribeSecurityGroups](https://cloud.tencent.com/document/api/215/15808) 的返回值中的sgId字段来获取。若不指定该参数，则绑定默认安全组。
 	SecurityGroupIds []*string `json:"SecurityGroupIds,omitempty" name:"SecurityGroupIds" list`
 
-	// 增强服务。通过该参数可以指定是否开启云安全、云监控等服务。若不指定该参数，则默认开启云监控、云安全服务。
+	// 增强服务。通过该参数可以指定是否开启云安全、云监控等服务。若不指定该参数，则默认公共镜像开启云监控、云安全服务；自定义镜像与镜像市场镜像默认不开启云监控，云安全服务，而使用镜像里保留的服务。
 	EnhancedService *EnhancedService `json:"EnhancedService,omitempty" name:"EnhancedService"`
 
 	// 用于保证请求幂等性的字符串。该字符串由客户生成，需保证不同请求之间唯一，最大值不超过64个ASCII字符。若不指定该参数，则无法保证请求的幂等性。

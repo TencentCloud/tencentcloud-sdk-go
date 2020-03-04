@@ -380,6 +380,9 @@ type CreateL7Listener struct {
 
 	// 用于计费模式为固定带宽计费，指定监听器最大带宽值，可选值：0-1000，单位：Mbps。
 	Bandwidth *int64 `json:"Bandwidth,omitempty" name:"Bandwidth"`
+
+	// 转发协议。当Protocol为https时并且SslMode为1或2时，有意义。可选的值为0：https，1：spdy，2：http2，3：spdy+http2。
+	ForwardProtocol *int64 `json:"ForwardProtocol,omitempty" name:"ForwardProtocol"`
 }
 
 type CreateL7ListenersRequest struct {
@@ -534,7 +537,7 @@ type CreateLoadBalancersRequest struct {
 	// 黑石负载均衡的计费模式，取值为flow和bandwidth，其中flow模式表示流量模式，bandwidth表示带宽模式。默认值为flow。
 	PayMode *string `json:"PayMode,omitempty" name:"PayMode"`
 
-	// 负载均衡对应的TGW集群类别，取值为tunnel、fullnat或dnat。tunnel表示隧道集群，fullnat表示FULLNAT集群，dnat表示DNAT集群。默认值为fullnat。如需获取client IP，可以选择 tunnel 模式，fullnat 模式（tcp 通过toa 获取），dnat 模式。
+	// 负载均衡对应的TGW集群类别，取值为tunnel、fullnat或dnat。tunnel表示隧道集群，fullnat表示FULLNAT集群（普通外网负载均衡），dnat表示DNAT集群（增强型外网负载均衡）。默认值为fullnat。如需获取client IP，可以选择 tunnel 模式，fullnat 模式（tcp 通过toa 获取），dnat 模式。
 	TgwSetType *string `json:"TgwSetType,omitempty" name:"TgwSetType"`
 
 	// 负载均衡的独占类别，取值为0表示非独占，1表示四层独占，2表示七层独占，3表示四层和七层独占，4表示共享容灾。
@@ -1080,7 +1083,7 @@ type DescribeL7BackendsRequest struct {
 	// 转发路径实例ID，可通过接口DescribeL7Rules查询。
 	LocationId *string `json:"LocationId,omitempty" name:"LocationId"`
 
-	// 查询条件，传'all'则查询所有与规则绑定的主机信息。
+	// 查询条件，传'all'则查询所有与规则绑定的主机信息。如果为all时，DomainId和LocationId参数没有意义不必传入，否则DomainId和LocationId参数必须传入。
 	QueryType *string `json:"QueryType,omitempty" name:"QueryType"`
 }
 
@@ -1655,6 +1658,15 @@ type DescribeTrafficMirrorsRequest struct {
 
 	// 单次查询返回的条目数，默认值：500。
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 排序字段。trafficMirrorId或者createTime。
+	OrderField *string `json:"OrderField,omitempty" name:"OrderField"`
+
+	// 排序方式，取值：0:增序(默认)，1:降序
+	Order *int64 `json:"Order,omitempty" name:"Order"`
+
+	// 模糊匹配trafficMirrorId或者alias字段。
+	SearchKey *string `json:"SearchKey,omitempty" name:"SearchKey"`
 }
 
 func (r *DescribeTrafficMirrorsRequest) ToJsonString() string {
@@ -2079,7 +2091,7 @@ type L7Listener struct {
 	// 创建时间戳。
 	AddTimestamp *string `json:"AddTimestamp,omitempty" name:"AddTimestamp"`
 
-	// https转发类型。0：关闭。1：spdy。2：http2。3：spdy+http2。
+	// https转发类型。0：https。1：spdy。2：http2。3：spdy+http2。
 	ForwardProtocol *int64 `json:"ForwardProtocol,omitempty" name:"ForwardProtocol"`
 }
 
@@ -2120,6 +2132,9 @@ type L7ListenerInfo struct {
 
 	// 返回的转发规则列表。
 	RuleSet []*L7ListenerInfoRule `json:"RuleSet,omitempty" name:"RuleSet" list`
+
+	// https转发类型。0：https。1：spdy。2：http2。3：spdy+http2。
+	ForwardProtocol *int64 `json:"ForwardProtocol,omitempty" name:"ForwardProtocol"`
 }
 
 type L7ListenerInfoBackend struct {
@@ -2348,6 +2363,9 @@ type LoadBalancer struct {
 
 	// 保障型网关七层计费指标
 	BzL7Metrics *string `json:"BzL7Metrics,omitempty" name:"BzL7Metrics"`
+
+	// 该负载均衡对应的所在的整形类型的VpcId
+	IntVpcId *uint64 `json:"IntVpcId,omitempty" name:"IntVpcId"`
 }
 
 type LoadBalancerPortInfoListener struct {
@@ -2769,6 +2787,9 @@ type ModifyL7ListenerRequest struct {
 
 	// 计费模式为按固定带宽方式时监听器的限速值，可选值：0-1000，单位：Mbps。
 	Bandwidth *int64 `json:"Bandwidth,omitempty" name:"Bandwidth"`
+
+	// 转发协议。当监听器Protocol为https时并且SslMode为1或2时，有意义。可选的值为0：https，1：spdy，2：http2，3：spdy+http2。
+	ForwardProtocol *int64 `json:"ForwardProtocol,omitempty" name:"ForwardProtocol"`
 }
 
 func (r *ModifyL7ListenerRequest) ToJsonString() string {
@@ -3279,6 +3300,9 @@ type TrafficMirrorReceiver struct {
 
 	// 接收机的健康状态。
 	HealthStatus *string `json:"HealthStatus,omitempty" name:"HealthStatus"`
+
+	// 接收机的可以执行的操作集合。
+	Operates []*string `json:"Operates,omitempty" name:"Operates" list`
 }
 
 type TrafficMirrorReciversStatus struct {
