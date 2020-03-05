@@ -287,6 +287,185 @@ func (r *DetectAuthResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DetectDetail struct {
+
+	// 请求时间戳。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ReqTime *string `json:"ReqTime,omitempty" name:"ReqTime"`
+
+	// 本次活体一比一请求的唯一标记。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Seq *string `json:"Seq,omitempty" name:"Seq"`
+
+	// 参与本次活体一比一的身份证号。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Idcard *string `json:"Idcard,omitempty" name:"Idcard"`
+
+	// 参与本次活体一比一的姓名。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 本次活体一比一的相似度。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Sim *string `json:"Sim,omitempty" name:"Sim"`
+
+	// 本次活体一比一是否收费
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsNeedCharge *bool `json:"IsNeedCharge,omitempty" name:"IsNeedCharge"`
+
+	// 本次活体一比一最终结果。0为成功
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Errcode *int64 `json:"Errcode,omitempty" name:"Errcode"`
+
+	// 本次活体一比一最终结果描述。（仅描述用，文案更新时不会通知。）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Errmsg *string `json:"Errmsg,omitempty" name:"Errmsg"`
+
+	// 本次活体结果。0为成功
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Livestatus *int64 `json:"Livestatus,omitempty" name:"Livestatus"`
+
+	// 本次活体结果描述。（仅描述用，文案更新时不会通知。）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Livemsg *string `json:"Livemsg,omitempty" name:"Livemsg"`
+
+	// 本次一比一结果。0为成功
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Comparestatus *int64 `json:"Comparestatus,omitempty" name:"Comparestatus"`
+
+	// 本次一比一结果描述。（仅描述用，文案更新时不会通知。）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Comparemsg *string `json:"Comparemsg,omitempty" name:"Comparemsg"`
+}
+
+type DetectInfoBestFrame struct {
+
+	// 活体比对最佳帧。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BestFrame *string `json:"BestFrame,omitempty" name:"BestFrame"`
+
+	// 自截帧。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BestFrames []*string `json:"BestFrames,omitempty" name:"BestFrames" list`
+}
+
+type DetectInfoIdCardData struct {
+
+	// OCR正面照片的base64编码。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OcrFront *string `json:"OcrFront,omitempty" name:"OcrFront"`
+
+	// OCR反面照片的base64编码
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OcrBack *string `json:"OcrBack,omitempty" name:"OcrBack"`
+
+	// 旋转裁边后的正面照片base64编码。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProcessedFrontImage *string `json:"ProcessedFrontImage,omitempty" name:"ProcessedFrontImage"`
+
+	// 旋转裁边后的背面照片base64编码。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProcessedBackImage *string `json:"ProcessedBackImage,omitempty" name:"ProcessedBackImage"`
+
+	// 身份证正面人像图base64编码。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Avatar *string `json:"Avatar,omitempty" name:"Avatar"`
+}
+
+type DetectInfoText struct {
+
+	// 本次流程最终验证结果。0为成功
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ErrCode *int64 `json:"ErrCode,omitempty" name:"ErrCode"`
+
+	// 本次流程最终验证结果描述。（仅描述用，文案更新时不会通知。）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ErrMsg *string `json:"ErrMsg,omitempty" name:"ErrMsg"`
+
+	// 本次验证使用的身份证号。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IdCard *string `json:"IdCard,omitempty" name:"IdCard"`
+
+	// 本次验证使用的姓名。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// Ocr识别结果。民族。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OcrNation *string `json:"OcrNation,omitempty" name:"OcrNation"`
+
+	// Ocr识别结果。家庭住址。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OcrAddress *string `json:"OcrAddress,omitempty" name:"OcrAddress"`
+
+	// Ocr识别结果。生日。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OcrBirth *string `json:"OcrBirth,omitempty" name:"OcrBirth"`
+
+	// Ocr识别结果。签发机关。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OcrAuthority *string `json:"OcrAuthority,omitempty" name:"OcrAuthority"`
+
+	// Ocr识别结果。有效日期。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OcrValidDate *string `json:"OcrValidDate,omitempty" name:"OcrValidDate"`
+
+	// Ocr识别结果。姓名。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OcrName *string `json:"OcrName,omitempty" name:"OcrName"`
+
+	// Ocr识别结果。身份证号。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OcrIdCard *string `json:"OcrIdCard,omitempty" name:"OcrIdCard"`
+
+	// Ocr识别结果。性别。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OcrGender *string `json:"OcrGender,omitempty" name:"OcrGender"`
+
+	// 本次流程最终活体结果。0为成功
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LiveStatus *int64 `json:"LiveStatus,omitempty" name:"LiveStatus"`
+
+	// 本次流程最终活体结果描述。（仅描述用，文案更新时不会通知。）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LiveMsg *string `json:"LiveMsg,omitempty" name:"LiveMsg"`
+
+	// 本次流程最终一比一结果。0为成功
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Comparestatus *int64 `json:"Comparestatus,omitempty" name:"Comparestatus"`
+
+	// 本次流程最终一比一结果描述。（仅描述用，文案更新时不会通知。）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Comparemsg *string `json:"Comparemsg,omitempty" name:"Comparemsg"`
+
+	// 本次流程活体一比一的分数。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Sim *string `json:"Sim,omitempty" name:"Sim"`
+
+	// 地理位置经纬度。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Location *string `json:"Location,omitempty" name:"Location"`
+
+	// Auth接口带入额外信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Extra *string `json:"Extra,omitempty" name:"Extra"`
+
+	// 本次流程进行的活体一比一流水。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LivenessDetail []*DetectDetail `json:"LivenessDetail,omitempty" name:"LivenessDetail" list`
+
+	// 手机号码。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Mobile *string `json:"Mobile,omitempty" name:"Mobile"`
+}
+
+type DetectInfoVideoData struct {
+
+	// 活体视频的base64编码
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LivenessVideo *string `json:"LivenessVideo,omitempty" name:"LivenessVideo"`
+}
+
 type GetActionSequenceRequest struct {
 	*tchttp.BaseRequest
 }
@@ -318,6 +497,73 @@ func (r *GetActionSequenceResponse) ToJsonString() string {
 }
 
 func (r *GetActionSequenceResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type GetDetectInfoEnhancedRequest struct {
+	*tchttp.BaseRequest
+
+	// 人脸核身流程的标识，调用DetectAuth接口时生成。
+	BizToken *string `json:"BizToken,omitempty" name:"BizToken"`
+
+	// 用于细分客户使用场景，由腾讯侧在线下对接时分配。
+	RuleId *string `json:"RuleId,omitempty" name:"RuleId"`
+
+	// 指定拉取的结果信息，取值（0：全部；1：文本类；2：身份证信息；3：视频最佳截图信息；4：视频信息）。
+	// 如 134表示拉取文本类、视频最佳截图信息、视频信息。
+	// 默认值：0
+	InfoType *string `json:"InfoType,omitempty" name:"InfoType"`
+
+	// 从活体视频中截取一定张数的最佳帧。默认为0，最大为10，超出10的最多只给10张。（InfoType需要包含3）
+	BestFramesCount *uint64 `json:"BestFramesCount,omitempty" name:"BestFramesCount"`
+
+	// 是否对身份证照片进行裁边。默认为false。（InfoType需要包含2）
+	IsCutIdCardImage *bool `json:"IsCutIdCardImage,omitempty" name:"IsCutIdCardImage"`
+
+	// 是否需要从身份证中抠出头像。默认为false。（InfoType需要包含2）
+	IsNeedIdCardAvatar *bool `json:"IsNeedIdCardAvatar,omitempty" name:"IsNeedIdCardAvatar"`
+}
+
+func (r *GetDetectInfoEnhancedRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *GetDetectInfoEnhancedRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type GetDetectInfoEnhancedResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 文本类信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Text *DetectInfoText `json:"Text,omitempty" name:"Text"`
+
+		// 身份证照片信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		IdCardData *DetectInfoIdCardData `json:"IdCardData,omitempty" name:"IdCardData"`
+
+		// 最佳帧信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		BestFrame *DetectInfoBestFrame `json:"BestFrame,omitempty" name:"BestFrame"`
+
+		// 视频信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		VideoData *DetectInfoVideoData `json:"VideoData,omitempty" name:"VideoData"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *GetDetectInfoEnhancedResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *GetDetectInfoEnhancedResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 

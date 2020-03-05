@@ -252,6 +252,32 @@ func (c *Client) DescribeDomainsConfig(request *DescribeDomainsConfigRequest) (r
     return
 }
 
+func NewDescribeIpStatusRequest() (request *DescribeIpStatusRequest) {
+    request = &DescribeIpStatusRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cdn", APIVersion, "DescribeIpStatus")
+    return
+}
+
+func NewDescribeIpStatusResponse() (response *DescribeIpStatusResponse) {
+    response = &DescribeIpStatusResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeIpStatus 用于查询域名所在加速平台的边缘节点、回源节点明细
+// 注意事项：接口尚未全量开放，未在内测名单中的账号不支持调用
+func (c *Client) DescribeIpStatus(request *DescribeIpStatusRequest) (response *DescribeIpStatusResponse, err error) {
+    if request == nil {
+        request = NewDescribeIpStatusRequest()
+    }
+    response = NewDescribeIpStatusResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeIpVisitRequest() (request *DescribeIpVisitRequest) {
     request = &DescribeIpVisitRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -365,6 +391,31 @@ func (c *Client) DescribePayType(request *DescribePayTypeRequest) (response *Des
     return
 }
 
+func NewDescribePurgeQuotaRequest() (request *DescribePurgeQuotaRequest) {
+    request = &DescribePurgeQuotaRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cdn", APIVersion, "DescribePurgeQuota")
+    return
+}
+
+func NewDescribePurgeQuotaResponse() (response *DescribePurgeQuotaResponse) {
+    response = &DescribePurgeQuotaResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribePurgeQuota 用于查询账户刷新配额和每日可用量。
+func (c *Client) DescribePurgeQuota(request *DescribePurgeQuotaRequest) (response *DescribePurgeQuotaResponse, err error) {
+    if request == nil {
+        request = NewDescribePurgeQuotaRequest()
+    }
+    response = NewDescribePurgeQuotaResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribePurgeTasksRequest() (request *DescribePurgeTasksRequest) {
     request = &DescribePurgeTasksRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -386,6 +437,31 @@ func (c *Client) DescribePurgeTasks(request *DescribePurgeTasksRequest) (respons
         request = NewDescribePurgeTasksRequest()
     }
     response = NewDescribePurgeTasksResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribePushQuotaRequest() (request *DescribePushQuotaRequest) {
+    request = &DescribePushQuotaRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cdn", APIVersion, "DescribePushQuota")
+    return
+}
+
+func NewDescribePushQuotaResponse() (response *DescribePushQuotaResponse) {
+    response = &DescribePushQuotaResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribePushQuota  用于查询预热配额和每日可用量。
+func (c *Client) DescribePushQuota(request *DescribePushQuotaRequest) (response *DescribePushQuotaResponse, err error) {
+    if request == nil {
+        request = NewDescribePushQuotaRequest()
+    }
+    response = NewDescribePushQuotaResponse()
     err = c.Send(request, response)
     return
 }

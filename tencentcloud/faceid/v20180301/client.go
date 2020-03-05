@@ -193,6 +193,31 @@ func (c *Client) GetDetectInfo(request *GetDetectInfoRequest) (response *GetDete
     return
 }
 
+func NewGetDetectInfoEnhancedRequest() (request *GetDetectInfoEnhancedRequest) {
+    request = &GetDetectInfoEnhancedRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("faceid", APIVersion, "GetDetectInfoEnhanced")
+    return
+}
+
+func NewGetDetectInfoEnhancedResponse() (response *GetDetectInfoEnhancedResponse) {
+    response = &GetDetectInfoEnhancedResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 完成验证后，用BizToken调用本接口获取结果信息，BizToken生成后三天内（3\*24\*3,600秒）可多次拉取。
+func (c *Client) GetDetectInfoEnhanced(request *GetDetectInfoEnhancedRequest) (response *GetDetectInfoEnhancedResponse, err error) {
+    if request == nil {
+        request = NewGetDetectInfoEnhancedRequest()
+    }
+    response = NewGetDetectInfoEnhancedResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewGetLiveCodeRequest() (request *GetLiveCodeRequest) {
     request = &GetLiveCodeRequest{
         BaseRequest: &tchttp.BaseRequest{},

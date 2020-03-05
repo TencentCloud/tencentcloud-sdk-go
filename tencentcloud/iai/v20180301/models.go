@@ -672,7 +672,7 @@ type DetectFaceRequest struct {
 	MaxFaceNum *uint64 `json:"MaxFaceNum,omitempty" name:"MaxFaceNum"`
 
 	// 人脸长和宽的最小尺寸，单位为像素。
-	// 默认为40。建议不低于34。
+	// 默认为34。建议不低于34。
 	// 低于MinFaceSize值的人脸不会被检测。
 	MinFaceSize *uint64 `json:"MinFaceSize,omitempty" name:"MinFaceSize"`
 
@@ -1418,6 +1418,7 @@ type GroupCandidate struct {
 type GroupExDescriptionInfo struct {
 
 	// 人员库自定义描述字段Index，从0开始
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	GroupExDescriptionIndex *uint64 `json:"GroupExDescriptionIndex,omitempty" name:"GroupExDescriptionIndex"`
 
 	// 需要更新的人员库自定义描述字段内容
@@ -1591,6 +1592,7 @@ func (r *ModifyPersonGroupInfoResponse) FromJsonString(s string) error {
 type PersonExDescriptionInfo struct {
 
 	// 人员描述字段Index，从0开始
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	PersonExDescriptionIndex *uint64 `json:"PersonExDescriptionIndex,omitempty" name:"PersonExDescriptionIndex"`
 
 	// 需要更新的人员描述字段内容
@@ -1685,7 +1687,7 @@ type SearchFacesRequest struct {
 	// 例：输入的Image或Url中的图片包含多张人脸，设MaxFaceNum=5，则会识别图片中面积最大的5张人脸。
 	MaxFaceNum *uint64 `json:"MaxFaceNum,omitempty" name:"MaxFaceNum"`
 
-	// 人脸长和宽的最小尺寸，单位为像素。默认为80。低于40的人脸图片无法被识别。建议设置为80。
+	// 人脸长和宽的最小尺寸，单位为像素。默认为34。低于34的人脸图片无法被识别。建议设置为80。
 	MinFaceSize *uint64 `json:"MinFaceSize,omitempty" name:"MinFaceSize"`
 
 	// 单张被识别的人脸返回的最相似人员数量。默认值为5，最大值为100。 
@@ -1768,7 +1770,7 @@ type SearchFacesReturnsByGroupRequest struct {
 	// 例：输入的Image或Url中的图片包含多张人脸，设MaxFaceNum=5，则会识别图片中面积最大的5张人脸。
 	MaxFaceNum *uint64 `json:"MaxFaceNum,omitempty" name:"MaxFaceNum"`
 
-	// 人脸长和宽的最小尺寸，单位为像素。默认为80。低于40将影响搜索精度。建议设置为80。
+	// 人脸长和宽的最小尺寸，单位为像素。默认为34。低于34将影响搜索精度。建议设置为80。
 	MinFaceSize *uint64 `json:"MinFaceSize,omitempty" name:"MinFaceSize"`
 
 	// 被检测到的人脸，对应最多返回的最相似人员数目。默认值为5，最大值为10。  
@@ -1853,7 +1855,7 @@ type SearchPersonsRequest struct {
 	// 例：输入的Image或Url中的图片包含多张人脸，设MaxFaceNum=5，则会识别图片中面积最大的5张人脸。
 	MaxFaceNum *uint64 `json:"MaxFaceNum,omitempty" name:"MaxFaceNum"`
 
-	// 人脸长和宽的最小尺寸，单位为像素。默认为80。低于40将影响搜索精度。建议设置为80。
+	// 人脸长和宽的最小尺寸，单位为像素。默认为34。低于34将影响搜索精度。建议设置为80。
 	MinFaceSize *uint64 `json:"MinFaceSize,omitempty" name:"MinFaceSize"`
 
 	// 单张被识别的人脸返回的最相似人员数量。默认值为5，最大值为100。
@@ -1937,7 +1939,7 @@ type SearchPersonsReturnsByGroupRequest struct {
 	// 例：输入的Image或Url中的图片包含多张人脸，设MaxFaceNum=5，则会识别图片中面积最大的5张人脸。
 	MaxFaceNum *uint64 `json:"MaxFaceNum,omitempty" name:"MaxFaceNum"`
 
-	// 人脸长和宽的最小尺寸，单位为像素。默认为80。低于40将影响搜索精度。建议设置为80。
+	// 人脸长和宽的最小尺寸，单位为像素。默认为34。低于34将影响搜索精度。建议设置为80。
 	MinFaceSize *uint64 `json:"MinFaceSize,omitempty" name:"MinFaceSize"`
 
 	// 被检测到的人脸，对应最多返回的最相似人员数目。默认值为5，最大值为10。  

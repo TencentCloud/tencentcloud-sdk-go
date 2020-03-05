@@ -1014,6 +1014,52 @@ func (r *DescribeDomainsResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeIpStatusRequest struct {
+	*tchttp.BaseRequest
+
+	// 加速域名
+	Domain *string `json:"Domain,omitempty" name:"Domain"`
+
+	// 节点类型：
+	// edge：表示边缘节点
+	// last：表示回源层节点
+	// 不填充情况下，默认返回边缘节点信息
+	Layer *string `json:"Layer,omitempty" name:"Layer"`
+}
+
+func (r *DescribeIpStatusRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeIpStatusRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeIpStatusResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 节点列表
+		Ips []*IpStatus `json:"Ips,omitempty" name:"Ips" list`
+
+		// 节点总个数
+		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeIpStatusResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeIpStatusResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeIpVisitRequest struct {
 	*tchttp.BaseRequest
 
@@ -1268,6 +1314,43 @@ func (r *DescribePayTypeResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribePurgeQuotaRequest struct {
+	*tchttp.BaseRequest
+}
+
+func (r *DescribePurgeQuotaRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribePurgeQuotaRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribePurgeQuotaResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// Url刷新用量及配额。
+		UrlPurge []*Quota `json:"UrlPurge,omitempty" name:"UrlPurge" list`
+
+		// 目录刷新用量及配额。
+		PathPurge []*Quota `json:"PathPurge,omitempty" name:"PathPurge" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribePurgeQuotaResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribePurgeQuotaResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribePurgeTasksRequest struct {
 	*tchttp.BaseRequest
 
@@ -1340,6 +1423,40 @@ func (r *DescribePurgeTasksResponse) ToJsonString() string {
 }
 
 func (r *DescribePurgeTasksResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribePushQuotaRequest struct {
+	*tchttp.BaseRequest
+}
+
+func (r *DescribePushQuotaRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribePushQuotaRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribePushQuotaResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// Url预热用量及配额。
+		UrlPush []*Quota `json:"UrlPush,omitempty" name:"UrlPush" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribePushQuotaResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribePushQuotaResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -2051,6 +2168,26 @@ type IpFreqLimit struct {
 	Qps *int64 `json:"Qps,omitempty" name:"Qps"`
 }
 
+type IpStatus struct {
+
+	// 节点 IP
+	Ip *string `json:"Ip,omitempty" name:"Ip"`
+
+	// 节点所属区域
+	District *string `json:"District,omitempty" name:"District"`
+
+	// 节点所属运营商
+	Isp *string `json:"Isp,omitempty" name:"Isp"`
+
+	// 节点所在城市
+	City *string `json:"City,omitempty" name:"City"`
+
+	// 节点状态
+	// online：上线状态，正常调度服务中
+	// offline：下线状态
+	Status *string `json:"Status,omitempty" name:"Status"`
+}
+
 type Ipv6 struct {
 
 	// 域名是否开启ipv6功能，on或off。
@@ -2659,6 +2796,21 @@ func (r *PushUrlsCacheResponse) ToJsonString() string {
 
 func (r *PushUrlsCacheResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
+}
+
+type Quota struct {
+
+	// 单次批量提交配额上限。
+	Batch *int64 `json:"Batch,omitempty" name:"Batch"`
+
+	// 每日提交配额上限。
+	Total *int64 `json:"Total,omitempty" name:"Total"`
+
+	// 每日剩余的可提交配额。
+	Available *int64 `json:"Available,omitempty" name:"Available"`
+
+	// 配额的区域。
+	Area *string `json:"Area,omitempty" name:"Area"`
 }
 
 type RangeOriginPull struct {

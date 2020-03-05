@@ -836,7 +836,7 @@ type DescribeShieldResultResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 任务状态: 1-已完成,2-处理中,3-处理出错,4-处理超时
+		// 任务状态: 0-请返回,1-已完成,2-处理中,3-处理出错,4-处理超时
 		TaskStatus *uint64 `json:"TaskStatus,omitempty" name:"TaskStatus"`
 
 		// app加固前的详细信息
