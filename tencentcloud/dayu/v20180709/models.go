@@ -39,6 +39,21 @@ type BaradData struct {
 	Count *uint64 `json:"Count,omitempty" name:"Count"`
 }
 
+type BoundIpInfo struct {
+
+	// IP
+	Ip *string `json:"Ip,omitempty" name:"Ip"`
+
+	// 绑定的产品分类，取值[public（CVM产品），bm（黑石产品），eni（弹性网卡），vpngw（VPN网关）， natgw（NAT网关），waf（Web应用安全产品），fpc（金融产品），gaap（GAAP产品）, other(托管IP)]
+	BizType *string `json:"BizType,omitempty" name:"BizType"`
+
+	// 产品分类下的子类型，取值[cvm（CVM），lb（负载均衡器），eni（弹性网卡），vpngw（VPN），natgw（NAT），waf（WAF），fpc（金融），gaap（GAAP），other（托管IP），eip（黑石弹性IP）]
+	DeviceType *string `json:"DeviceType,omitempty" name:"DeviceType"`
+
+	// IP所属的资源实例ID，当绑定新IP时必须填写此字段；例如是弹性网卡的IP，则InstanceId填写弹性网卡的ID(eni-*); 如果绑定的是托管IP没有对应的资源实例ID，请填写"none";
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+}
+
 type CCAlarmThreshold struct {
 
 	// CC告警阈值
@@ -144,7 +159,7 @@ type CCPolicy struct {
 	// 规则列表
 	RuleList []*CCRule `json:"RuleList,omitempty" name:"RuleList" list`
 
-	// IP列表
+	// IP列表，如果不填时，请传空数组但不能为null；
 	IpList []*string `json:"IpList,omitempty" name:"IpList" list`
 
 	// cc防护类型，取值[http，https]
@@ -215,6 +230,55 @@ func (r *CreateBasicDDoSAlarmThresholdResponse) ToJsonString() string {
 }
 
 func (r *CreateBasicDDoSAlarmThresholdResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateBoundIPRequest struct {
+	*tchttp.BaseRequest
+
+	// 大禹子产品代号（bgp表示独享包；bgp-multip表示共享包）
+	Business *string `json:"Business,omitempty" name:"Business"`
+
+	// 资源实例ID
+	Id *string `json:"Id,omitempty" name:"Id"`
+
+	// 绑定到资源实例的IP数组，当资源实例为高防包(独享包)时，数组只允许填1个IP；当没有要绑定的IP时可以为空数组；但是BoundDevList和UnBoundDevList至少有一个不为空；
+	BoundDevList []*BoundIpInfo `json:"BoundDevList,omitempty" name:"BoundDevList" list`
+
+	// 与资源实例解绑的IP数组，当资源实例为高防包(独享包)时，数组只允许填1个IP；当没有要解绑的IP时可以为空数组；但是BoundDevList和UnBoundDevList至少有一个不为空；
+	UnBoundDevList []*BoundIpInfo `json:"UnBoundDevList,omitempty" name:"UnBoundDevList" list`
+
+	// 已弃用，不填
+	CopyPolicy *string `json:"CopyPolicy,omitempty" name:"CopyPolicy"`
+}
+
+func (r *CreateBoundIPRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateBoundIPRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateBoundIPResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 成功码
+		Success *SuccessCode `json:"Success,omitempty" name:"Success"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateBoundIPResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateBoundIPResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 

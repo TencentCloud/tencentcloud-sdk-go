@@ -129,7 +129,7 @@ type AutoScalingGroup struct {
 	// 伸缩组名称
 	AutoScalingGroupName *string `json:"AutoScalingGroupName,omitempty" name:"AutoScalingGroupName"`
 
-	// 伸缩组当前状态。取值范围：<br><li>NORMAL：正常<br><li>CVM_ABNORMAL：启动配置异常<br><li>LB_ABNORMAL：负载均衡器异常<br><li>VPC_ABNORMAL：VPC网络异常<br><li>INSUFFICIENT_BALANCE：余额不足<br>
+	// 伸缩组当前状态。取值范围：<br><li>NORMAL：正常<br><li>CVM_ABNORMAL：启动配置异常<br><li>LB_ABNORMAL：负载均衡器异常<br><li>VPC_ABNORMAL：VPC网络异常<br><li>INSUFFICIENT_BALANCE：余额不足<br><li>LB_BACKEND_REGION_NOT_MATCH：CLB实例后端地域与AS服务所在地域不匹配<br>
 	AutoScalingGroupStatus *string `json:"AutoScalingGroupStatus,omitempty" name:"AutoScalingGroupStatus"`
 
 	// 创建时间，采用UTC标准计时
@@ -558,6 +558,9 @@ type CreateLifecycleHookRequest struct {
 
 	// 通知目标
 	NotificationTarget *NotificationTarget `json:"NotificationTarget,omitempty" name:"NotificationTarget"`
+
+	// 进行生命周期挂钩的场景类型，取值范围包括NORMAL 和 EXTENSION。说明：设置为EXTENSION值，在AttachInstances、DetachInstances、RemoveInstaces接口时会触发生命周期挂钩操作，值为NORMAL则不会在这些接口中触发生命周期挂钩。
+	LifecycleTransitionType *string `json:"LifecycleTransitionType,omitempty" name:"LifecycleTransitionType"`
 }
 
 func (r *CreateLifecycleHookRequest) ToJsonString() string {
@@ -1783,7 +1786,7 @@ type ForwardLoadBalancer struct {
 	// 转发规则ID，注意：针对七层监听器此参数必填
 	LocationId *string `json:"LocationId,omitempty" name:"LocationId"`
 
-	// 负载均衡实例所属地域，默认取AS服务所在地域
+	// 负载均衡实例所属地域，默认取AS服务所在地域。格式与公共参数Region相同，如："ap-guangzhou"。
 	Region *string `json:"Region,omitempty" name:"Region"`
 }
 
@@ -2962,6 +2965,9 @@ type UpgradeLifecycleHookRequest struct {
 
 	// 通知目标
 	NotificationTarget *NotificationTarget `json:"NotificationTarget,omitempty" name:"NotificationTarget"`
+
+	// 进行生命周期挂钩的场景类型，取值范围包括NORMAL 和 EXTENSION。说明：设置为EXTENSION值，在AttachInstances、DetachInstances、RemoveInstaces接口时会触发生命周期挂钩操作，值为NORMAL则不会在这些接口中触发生命周期挂钩。
+	LifecycleTransitionType *string `json:"LifecycleTransitionType,omitempty" name:"LifecycleTransitionType"`
 }
 
 func (r *UpgradeLifecycleHookRequest) ToJsonString() string {

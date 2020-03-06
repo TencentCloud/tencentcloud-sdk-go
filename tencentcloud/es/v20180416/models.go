@@ -35,7 +35,7 @@ type CreateInstanceRequest struct {
 	// 可用区
 	Zone *string `json:"Zone,omitempty" name:"Zone"`
 
-	// 实例版本（支持"5.6.4"、"6.4.3"）
+	// 实例版本（支持"5.6.4"、"6.4.3"、"6.8.2"、"7.5.1"）
 	EsVersion *string `json:"EsVersion,omitempty" name:"EsVersion"`
 
 	// 私有网络ID

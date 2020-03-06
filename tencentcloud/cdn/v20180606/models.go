@@ -319,6 +319,20 @@ type AuthenticationTypeD struct {
 	TimeFormat *string `json:"TimeFormat,omitempty" name:"TimeFormat"`
 }
 
+type AwsPrivateAccess struct {
+
+	// 开关，on/off。
+	Switch *string `json:"Switch,omitempty" name:"Switch"`
+
+	// 访问ID。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AccessKey *string `json:"AccessKey,omitempty" name:"AccessKey"`
+
+	// 密钥。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SecretKey *string `json:"SecretKey,omitempty" name:"SecretKey"`
+}
+
 type BandwidthAlert struct {
 
 	// 带宽封顶配置开关
@@ -1796,6 +1810,10 @@ type DetailDomain struct {
 	// 回源超时配置
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	OriginPullTimeout *OriginPullTimeout `json:"OriginPullTimeout,omitempty" name:"OriginPullTimeout"`
+
+	// 回源S3鉴权配置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AwsPrivateAccess *AwsPrivateAccess `json:"AwsPrivateAccess,omitempty" name:"AwsPrivateAccess"`
 }
 
 type DisableCachesRequest struct {
@@ -3342,6 +3360,9 @@ type UpdateDomainConfigRequest struct {
 
 	// 回源超时配置
 	OriginPullTimeout *OriginPullTimeout `json:"OriginPullTimeout,omitempty" name:"OriginPullTimeout"`
+
+	// 回源S3私有鉴权
+	AwsPrivateAccess *AwsPrivateAccess `json:"AwsPrivateAccess,omitempty" name:"AwsPrivateAccess"`
 }
 
 func (r *UpdateDomainConfigRequest) ToJsonString() string {
