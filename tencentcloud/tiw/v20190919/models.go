@@ -104,7 +104,7 @@ type CustomLayout struct {
 	// 混流画布参数
 	Canvas *Canvas `json:"Canvas,omitempty" name:"Canvas"`
 
-	// 流布局参数
+	// 流布局参数，每路流的布局不能超出画布区域
 	InputStreamList []*StreamLayout `json:"InputStreamList,omitempty" name:"InputStreamList" list`
 }
 

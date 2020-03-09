@@ -111,7 +111,7 @@ type DescribeBRIRequest struct {
 	// 业务风险情报请求体
 	RequestData *BRIRequest `json:"RequestData,omitempty" name:"RequestData"`
 
-	// 客户用于计费的资源Id
+	// 客户用于计费的资源ID
 	ResourceId *string `json:"ResourceId,omitempty" name:"ResourceId"`
 }
 

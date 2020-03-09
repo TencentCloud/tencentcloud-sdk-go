@@ -2018,7 +2018,7 @@ func NewDropLiveStreamResponse() (response *DropLiveStreamResponse) {
     return
 }
 
-// 断开推流连接，但可以重新推流
+// 断开推流连接，但可以重新推流。
 func (c *Client) DropLiveStream(request *DropLiveStreamRequest) (response *DropLiveStreamResponse, err error) {
     if request == nil {
         request = NewDropLiveStreamRequest()

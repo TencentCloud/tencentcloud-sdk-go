@@ -43,6 +43,31 @@ func NewClient(credential *common.Credential, region string, clientProfile *prof
 }
 
 
+func NewCreateSessionRequest() (request *CreateSessionRequest) {
+    request = &CreateSessionRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("bizlive", APIVersion, "CreateSession")
+    return
+}
+
+func NewCreateSessionResponse() (response *CreateSessionResponse) {
+    response = &CreateSessionResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 创建会话
+func (c *Client) CreateSession(request *CreateSessionRequest) (response *CreateSessionResponse, err error) {
+    if request == nil {
+        request = NewCreateSessionRequest()
+    }
+    response = NewCreateSessionResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeStreamPlayInfoListRequest() (request *DescribeStreamPlayInfoListRequest) {
     request = &DescribeStreamPlayInfoListRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -64,6 +89,31 @@ func (c *Client) DescribeStreamPlayInfoList(request *DescribeStreamPlayInfoListR
         request = NewDescribeStreamPlayInfoListRequest()
     }
     response = NewDescribeStreamPlayInfoListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeWorkersRequest() (request *DescribeWorkersRequest) {
+    request = &DescribeWorkersRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("bizlive", APIVersion, "DescribeWorkers")
+    return
+}
+
+func NewDescribeWorkersResponse() (response *DescribeWorkersResponse) {
+    response = &DescribeWorkersResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询空闲机器数量
+func (c *Client) DescribeWorkers(request *DescribeWorkersRequest) (response *DescribeWorkersResponse, err error) {
+    if request == nil {
+        request = NewDescribeWorkersRequest()
+    }
+    response = NewDescribeWorkersResponse()
     err = c.Send(request, response)
     return
 }
@@ -114,6 +164,31 @@ func (c *Client) RegisterIM(request *RegisterIMRequest) (response *RegisterIMRes
         request = NewRegisterIMRequest()
     }
     response = NewRegisterIMResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewStopGameRequest() (request *StopGameRequest) {
+    request = &StopGameRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("bizlive", APIVersion, "StopGame")
+    return
+}
+
+func NewStopGameResponse() (response *StopGameResponse) {
+    response = &StopGameResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 强制退出游戏
+func (c *Client) StopGame(request *StopGameRequest) (response *StopGameResponse, err error) {
+    if request == nil {
+        request = NewStopGameRequest()
+    }
+    response = NewStopGameResponse()
     err = c.Send(request, response)
     return
 }

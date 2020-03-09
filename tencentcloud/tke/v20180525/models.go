@@ -129,6 +129,25 @@ type Cluster struct {
 	// 集群属性(包括集群不同属性的MAP，属性字段包括NodeNameType (lan-ip模式和hostname 模式，默认无lan-ip模式))
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Property *string `json:"Property,omitempty" name:"Property"`
+
+	// 集群当前master数量
+	ClusterMaterNodeNum *uint64 `json:"ClusterMaterNodeNum,omitempty" name:"ClusterMaterNodeNum"`
+
+	// 集群使用镜像id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ImageId *string `json:"ImageId,omitempty" name:"ImageId"`
+
+	// OsCustomizeType
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OsCustomizeType *string `json:"OsCustomizeType,omitempty" name:"OsCustomizeType"`
+
+	// 集群运行环境docker或container
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ContainerRuntime *string `json:"ContainerRuntime,omitempty" name:"ContainerRuntime"`
+
+	// 创建时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreatedTime *string `json:"CreatedTime,omitempty" name:"CreatedTime"`
 }
 
 type ClusterAdvancedSettings struct {
@@ -1543,6 +1562,17 @@ type Instance struct {
 
 	// 实例的状态（running 运行中，initializing 初始化中，failed 异常）
 	InstanceState *string `json:"InstanceState,omitempty" name:"InstanceState"`
+
+	// 实例是否封锁状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DrainStatus *string `json:"DrainStatus,omitempty" name:"DrainStatus"`
+
+	// 配置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceAdvancedSettings *InstanceAdvancedSettings `json:"InstanceAdvancedSettings,omitempty" name:"InstanceAdvancedSettings"`
+
+	// 添加时间
+	CreatedTime *string `json:"CreatedTime,omitempty" name:"CreatedTime"`
 }
 
 type InstanceAdvancedSettings struct {

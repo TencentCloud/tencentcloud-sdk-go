@@ -388,6 +388,9 @@ type DescribeCaptchaResultRequest struct {
 
 	// 手机设备号
 	Imei *string `json:"Imei,omitempty" name:"Imei"`
+
+	// 是否返回前端获取验证码时间，取值1：需要返回
+	NeedGetCaptchaTime *int64 `json:"NeedGetCaptchaTime,omitempty" name:"NeedGetCaptchaTime"`
 }
 
 func (r *DescribeCaptchaResultRequest) ToJsonString() string {
@@ -434,6 +437,10 @@ type DescribeCaptchaResultResponse struct {
 		// [0,100]，恶意等级
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		EvilLevel *int64 `json:"EvilLevel,omitempty" name:"EvilLevel"`
+
+		// 前端获取验证码时间，时间戳格式
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		GetCaptchaTime *int64 `json:"GetCaptchaTime,omitempty" name:"GetCaptchaTime"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`

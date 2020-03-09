@@ -64,7 +64,7 @@ func NewDescribeBRIResponse() (response *DescribeBRIResponse) {
 // 
 // 当业务名为bri_dev时, 必须填Imei字段.
 // 
-// 当业务名为bri_ip时，必须填Ip字段.
+// 当业务名为bri_ip时，必须填IP字段.
 // 
 // 当业务名为bri_apk时，必须填 (PackageName,CertMd5,FileSize) 三个字段 或者 FileMd5一个字段.
 // 

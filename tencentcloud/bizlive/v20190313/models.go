@@ -20,6 +20,61 @@ import (
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
+type CreateSessionRequest struct {
+	*tchttp.BaseRequest
+
+	// 客户端session信息，从JSSDK请求中获得
+	ClientSession *string `json:"ClientSession,omitempty" name:"ClientSession"`
+
+	// 游戏ID
+	GameId *string `json:"GameId,omitempty" name:"GameId"`
+
+	// 游戏用户ID
+	UserId *string `json:"UserId,omitempty" name:"UserId"`
+
+	// 游戏参数
+	GameParas *string `json:"GameParas,omitempty" name:"GameParas"`
+
+	// 游戏区域
+	GameRegion *string `json:"GameRegion,omitempty" name:"GameRegion"`
+
+	// 背景图url
+	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
+
+	// 分辨率
+	Resolution *string `json:"Resolution,omitempty" name:"Resolution"`
+}
+
+func (r *CreateSessionRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateSessionRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateSessionResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 服务端session信息，返回给JSSDK
+		ServerSession *string `json:"ServerSession,omitempty" name:"ServerSession"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateSessionResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateSessionResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DayStreamPlayInfo struct {
 
 	// 带宽（单位Mbps）。
@@ -41,14 +96,14 @@ type DayStreamPlayInfo struct {
 type DescribeStreamPlayInfoListRequest struct {
 	*tchttp.BaseRequest
 
-	// 结束时间，北京时间，
+	// 结束时间，北京时间，格式：2019-04-28 10:36:00
 	// 结束时间 和 开始时间  必须在同一天内。
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 
 	// 播放域名。
 	PlayDomain *string `json:"PlayDomain,omitempty" name:"PlayDomain"`
 
-	// 开始时间，北京时间，
+	// 开始时间，北京时间，格式：2019-04-28 10:36:00
 	// 当前时间 和 开始时间 间隔不超过30天。
 	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
 
@@ -87,13 +142,53 @@ func (r *DescribeStreamPlayInfoListResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeWorkersRequest struct {
+	*tchttp.BaseRequest
+}
+
+func (r *DescribeWorkersRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeWorkersRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeWorkersResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 各个区域的机器情况
+		RegionDetail []*WorkerRegionInfo `json:"RegionDetail,omitempty" name:"RegionDetail" list`
+
+		// 空闲机器总数量
+		Idle *uint64 `json:"Idle,omitempty" name:"Idle"`
+
+		// 区域个数
+		RegionNum *uint64 `json:"RegionNum,omitempty" name:"RegionNum"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeWorkersResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeWorkersResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type ForbidLiveStreamRequest struct {
 	*tchttp.BaseRequest
 
 	// 应用名称。
 	AppName *string `json:"AppName,omitempty" name:"AppName"`
 
-	// 您的加速域名。
+	// 您的推流域名。
 	DomainName *string `json:"DomainName,omitempty" name:"DomainName"`
 
 	// 流名称。
@@ -175,4 +270,47 @@ func (r *RegisterIMResponse) ToJsonString() string {
 
 func (r *RegisterIMResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
+}
+
+type StopGameRequest struct {
+	*tchttp.BaseRequest
+
+	// 游戏用户ID
+	UserId *string `json:"UserId,omitempty" name:"UserId"`
+}
+
+func (r *StopGameRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *StopGameRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type StopGameResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *StopGameResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *StopGameResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type WorkerRegionInfo struct {
+
+	// 该区域空闲机器数量
+	Idle *uint64 `json:"Idle,omitempty" name:"Idle"`
+
+	// 区域
+	Region *string `json:"Region,omitempty" name:"Region"`
 }

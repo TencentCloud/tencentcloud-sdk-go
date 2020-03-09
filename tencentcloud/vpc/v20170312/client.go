@@ -3755,6 +3755,31 @@ func (c *Client) ModifyNetDetect(request *ModifyNetDetectRequest) (response *Mod
     return
 }
 
+func NewModifyNetworkAclEntriesRequest() (request *ModifyNetworkAclEntriesRequest) {
+    request = &ModifyNetworkAclEntriesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "ModifyNetworkAclEntries")
+    return
+}
+
+func NewModifyNetworkAclEntriesResponse() (response *ModifyNetworkAclEntriesResponse) {
+    response = &ModifyNetworkAclEntriesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（ModifyNetworkAclEntries）用于修改（包括添加和删除）网络ACL的入站规则和出站规则。
+func (c *Client) ModifyNetworkAclEntries(request *ModifyNetworkAclEntriesRequest) (response *ModifyNetworkAclEntriesResponse, err error) {
+    if request == nil {
+        request = NewModifyNetworkAclEntriesRequest()
+    }
+    response = NewModifyNetworkAclEntriesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyNetworkInterfaceAttributeRequest() (request *ModifyNetworkInterfaceAttributeRequest) {
     request = &ModifyNetworkInterfaceAttributeRequest{
         BaseRequest: &tchttp.BaseRequest{},

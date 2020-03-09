@@ -5195,6 +5195,9 @@ type RecordParam struct {
 
 	// 是否开启当前格式录制，0 否 1是。默认值0。
 	Enable *int64 `json:"Enable,omitempty" name:"Enable"`
+
+	// 点播子应用ID。
+	VodSubAppId *int64 `json:"VodSubAppId,omitempty" name:"VodSubAppId"`
 }
 
 type RecordTemplateInfo struct {

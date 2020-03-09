@@ -1569,6 +1569,9 @@ type CreateNatGatewayRequest struct {
 
 	// 可用区，形如：`ap-guangzhou-1`。
 	Zone *string `json:"Zone,omitempty" name:"Zone"`
+
+	// 指定绑定的标签列表，例如：[{"Key": "city", "Value": "shanghai"}]
+	Tags []*Tag `json:"Tags,omitempty" name:"Tags" list`
 }
 
 func (r *CreateNatGatewayRequest) ToJsonString() string {
@@ -7047,6 +7050,43 @@ func (r *ModifyNetDetectResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type ModifyNetworkAclEntriesRequest struct {
+	*tchttp.BaseRequest
+
+	// 网络ACL实例ID。例如：acl-12345678。
+	NetworkAclId *string `json:"NetworkAclId,omitempty" name:"NetworkAclId"`
+
+	// 网络ACL规则集。
+	NetworkAclEntrySet *NetworkAclEntrySet `json:"NetworkAclEntrySet,omitempty" name:"NetworkAclEntrySet"`
+}
+
+func (r *ModifyNetworkAclEntriesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyNetworkAclEntriesRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyNetworkAclEntriesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifyNetworkAclEntriesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyNetworkAclEntriesResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type ModifyNetworkInterfaceAttributeRequest struct {
 	*tchttp.BaseRequest
 
@@ -7664,6 +7704,39 @@ type NetDetectState struct {
 
 	// 网络探测目的IP验证结果对象数组。
 	NetDetectIpStateSet []*NetDetectIpState `json:"NetDetectIpStateSet,omitempty" name:"NetDetectIpStateSet" list`
+}
+
+type NetworkAclEntry struct {
+
+	// 修改时间。
+	ModifyTime *string `json:"ModifyTime,omitempty" name:"ModifyTime"`
+
+	// 协议, 取值: TCP,UDP, ICMP。
+	Protocol *string `json:"Protocol,omitempty" name:"Protocol"`
+
+	// 端口(all, 单个port,  range)。
+	Port *string `json:"Port,omitempty" name:"Port"`
+
+	// 网段或IP(互斥)。
+	CidrBlock *string `json:"CidrBlock,omitempty" name:"CidrBlock"`
+
+	// 网段或IPv6(互斥)。
+	Ipv6CidrBlock *string `json:"Ipv6CidrBlock,omitempty" name:"Ipv6CidrBlock"`
+
+	// ACCEPT 或 DROP。
+	Action *string `json:"Action,omitempty" name:"Action"`
+
+	// 规则描述，最大长度100。
+	Description *string `json:"Description,omitempty" name:"Description"`
+}
+
+type NetworkAclEntrySet struct {
+
+	// 入站规则。
+	Ingress []*NetworkAclEntry `json:"Ingress,omitempty" name:"Ingress" list`
+
+	// 出站规则。
+	Egress []*NetworkAclEntry `json:"Egress,omitempty" name:"Egress" list`
 }
 
 type NetworkInterface struct {
@@ -8402,6 +8475,9 @@ type Route struct {
 	// CCN：云联网路由，系统默认下发，不可编辑与删除。
 	// 用户只能添加和操作 USER 类型的路由。
 	RouteType *string `json:"RouteType,omitempty" name:"RouteType"`
+
+	// 路由表实例ID，例如：rtb-azd4dt1c。
+	RouteTableId *string `json:"RouteTableId,omitempty" name:"RouteTableId"`
 }
 
 type RouteConflict struct {
@@ -9042,7 +9118,7 @@ type VpnGateway struct {
 	// 网关实例名称。
 	VpnGatewayName *string `json:"VpnGatewayName,omitempty" name:"VpnGatewayName"`
 
-	// 网关实例类型：'IPSEC', 'SSL'。
+	// 网关实例类型：'IPSEC', 'SSL','CCN'。
 	Type *string `json:"Type,omitempty" name:"Type"`
 
 	// 网关实例状态， 'PENDING'：生产中，'DELETING'：删除中，'AVAILABLE'：运行中。
@@ -9083,6 +9159,9 @@ type VpnGateway struct {
 
 	// 网关实例版本信息
 	Version *string `json:"Version,omitempty" name:"Version"`
+
+	// Type值为CCN时，该值表示云联网实例ID
+	NetworkInstanceId *string `json:"NetworkInstanceId,omitempty" name:"NetworkInstanceId"`
 }
 
 type VpnGatewayQuota struct {

@@ -101,6 +101,15 @@ type CreateAuditRequest struct {
 	// 是否创建新的队列。1：是，0：否。如果IsEnableCmqNotify值是1的话，此值属于必填字段。
 	IsCreateNewQueue *int64 `json:"IsCreateNewQueue,omitempty" name:"IsCreateNewQueue"`
 
+	// 是否开启kms加密。1：是，0：否。如果开启KMS加密，数据在投递到cos时，会将数据加密。
+	IsEnableKmsEncry *int64 `json:"IsEnableKmsEncry,omitempty" name:"IsEnableKmsEncry"`
+
+	// CMK的全局唯一标识符，如果不是新创建的kms，该值是必填值。可以通过ListKeyAliasByRegion来获取。云审计不会校验KeyId的合法性，请您谨慎填写，避免给您的数据造成损失。
+	KeyId *string `json:"KeyId,omitempty" name:"KeyId"`
+
+	// kms地域。目前支持的地域可以使用ListKmsEnableRegion来获取。必须要和cos的地域保持一致。
+	KmsRegion *string `json:"KmsRegion,omitempty" name:"KmsRegion"`
+
 	// 日志文件前缀。3-40个字符，只能包含 ASCII 编码字母 a-z，A-Z，数字 0-9。可以不填，默认以账号ID作为日志前缀。
 	LogFilePrefix *string `json:"LogFilePrefix,omitempty" name:"LogFilePrefix"`
 }
@@ -213,6 +222,18 @@ type DescribeAuditResponse struct {
 		// 是否开启cmq消息通知。1：是，0：否。
 		IsEnableCmqNotify *int64 `json:"IsEnableCmqNotify,omitempty" name:"IsEnableCmqNotify"`
 
+		// 是否开启kms加密。1：是，0：否。如果开启KMS加密，数据在投递到cos时，会将数据加密。
+		IsEnableKmsEncry *int64 `json:"IsEnableKmsEncry,omitempty" name:"IsEnableKmsEncry"`
+
+		// CMK的全局唯一标识符。
+		KeyId *string `json:"KeyId,omitempty" name:"KeyId"`
+
+		// CMK别名。
+		KmsAlias *string `json:"KmsAlias,omitempty" name:"KmsAlias"`
+
+		// kms地域。
+		KmsRegion *string `json:"KmsRegion,omitempty" name:"KmsRegion"`
+
 		// 日志前缀。
 		LogFilePrefix *string `json:"LogFilePrefix,omitempty" name:"LogFilePrefix"`
 
@@ -253,7 +274,7 @@ type Event struct {
 	// 事件名称
 	EventName *string `json:"EventName,omitempty" name:"EventName"`
 
-	// 事件名称中文描述
+	// 事件名称中文描述（此字段请按需使用，如果您是其他语言使用者，可以忽略该字段描述）
 	EventNameCn *string `json:"EventNameCn,omitempty" name:"EventNameCn"`
 
 	// 事件地域
@@ -268,7 +289,10 @@ type Event struct {
 	// 请求ID
 	RequestID *string `json:"RequestID,omitempty" name:"RequestID"`
 
-	// 资源类型中文描述
+	// 资源地域
+	ResourceRegion *string `json:"ResourceRegion,omitempty" name:"ResourceRegion"`
+
+	// 资源类型中文描述（此字段请按需使用，如果您是其他语言使用者，可以忽略该字段描述）
 	ResourceTypeCn *string `json:"ResourceTypeCn,omitempty" name:"ResourceTypeCn"`
 
 	// 证书ID
@@ -633,6 +657,15 @@ type UpdateAuditRequest struct {
 
 	// 是否开启cmq消息通知。1：是，0：否。目前仅支持cmq的队列服务。如果开启cmq消息通知服务，云审计会将您的日志内容实时投递到您指定地域的指定队列中。
 	IsEnableCmqNotify *int64 `json:"IsEnableCmqNotify,omitempty" name:"IsEnableCmqNotify"`
+
+	// 是否开启kms加密。1：是，0：否。如果开启KMS加密，数据在投递到cos时，会将数据加密。
+	IsEnableKmsEncry *int64 `json:"IsEnableKmsEncry,omitempty" name:"IsEnableKmsEncry"`
+
+	// CMK的全局唯一标识符，如果不是新创建的kms，该值是必填值。可以通过ListKeyAliasByRegion来获取。云审计不会校验KeyId的合法性，请您谨慎填写，避免给您的数据造成损失。
+	KeyId *string `json:"KeyId,omitempty" name:"KeyId"`
+
+	// kms地域。目前支持的地域可以使用ListKmsEnableRegion来获取。必须要和cos的地域保持一致。
+	KmsRegion *string `json:"KmsRegion,omitempty" name:"KmsRegion"`
 
 	// 日志文件前缀。3-40个字符，只能包含 ASCII 编码字母 a-z，A-Z，数字 0-9。
 	LogFilePrefix *string `json:"LogFilePrefix,omitempty" name:"LogFilePrefix"`

@@ -800,6 +800,15 @@ type TextData struct {
 	// 24001：暴恐
 	EvilType *int64 `json:"EvilType,omitempty" name:"EvilType"`
 
+	// 消息类公共相关参数
+	Common *TextOutputComm `json:"Common,omitempty" name:"Common"`
+
+	// 消息类ID信息
+	ID *TextOutputID `json:"ID,omitempty" name:"ID"`
+
+	// 消息类输出结果
+	Res *TextOutputRes `json:"Res,omitempty" name:"Res"`
+
 	// 命中的关键词
 	Keywords []*string `json:"Keywords,omitempty" name:"Keywords" list`
 }
@@ -842,6 +851,46 @@ func (r *TextModerationResponse) ToJsonString() string {
 
 func (r *TextModerationResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
+}
+
+type TextOutputComm struct {
+
+	// 接入业务的唯一ID
+	AppID *int64 `json:"AppID,omitempty" name:"AppID"`
+
+	// 接口唯一ID，旁路调用接口返回有该字段，标识唯一接口
+	BUCtrlID *int64 `json:"BUCtrlID,omitempty" name:"BUCtrlID"`
+
+	// 消息发送时间
+	SendTime *int64 `json:"SendTime,omitempty" name:"SendTime"`
+
+	// 请求字段里的Common.Uin
+	Uin *int64 `json:"Uin,omitempty" name:"Uin"`
+}
+
+type TextOutputID struct {
+
+	// 接入业务的唯一ID
+	MsgID *string `json:"MsgID,omitempty" name:"MsgID"`
+
+	// 用户账号uin，对应请求协议里的Content.User.Uin。旁路结果有回带，串联结果无该字段
+	Uin *string `json:"Uin,omitempty" name:"Uin"`
+}
+
+type TextOutputRes struct {
+
+	// 操作人,信安处理人企业微信ID
+	Operator *string `json:"Operator,omitempty" name:"Operator"`
+
+	// 恶意操作码，
+	// 删除（1）， 通过（2）， 先审后发（100012）
+	ResultCode *int64 `json:"ResultCode,omitempty" name:"ResultCode"`
+
+	// 操作结果备注说明
+	ResultMsg *string `json:"ResultMsg,omitempty" name:"ResultMsg"`
+
+	// 恶意类型，广告（10001）， 政治（20001）， 色情（20002）， 社会事件（20004）， 暴力（20011）， 低俗（20012）， 违法犯罪（20006）， 欺诈（20008）， 版权（20013）， 谣言（20104）， 其他（21000）
+	ResultType *int64 `json:"ResultType,omitempty" name:"ResultType"`
 }
 
 type TextSample struct {
