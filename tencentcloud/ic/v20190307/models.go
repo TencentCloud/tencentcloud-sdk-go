@@ -305,6 +305,7 @@ type SendMultiSmsResponse struct {
 	Response *struct {
 
 		// 短信流水数组
+	// 注意：此字段可能返回 null，表示取不到有效值。
 		Data []*SmsRet `json:"Data,omitempty" name:"Data" list`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -348,6 +349,7 @@ type SendSmsResponse struct {
 	Response *struct {
 
 		// 短信流水信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
 		Data *SmsSid `json:"Data,omitempty" name:"Data"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。

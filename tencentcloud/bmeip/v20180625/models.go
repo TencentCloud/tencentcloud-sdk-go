@@ -384,6 +384,9 @@ type DescribeEipAclsRequest struct {
 
 	// 排序方式，取值：0:增序(默认)，1:降序
 	Order *uint64 `json:"Order,omitempty" name:"Order"`
+
+	// ACL名称列表，支持模糊查找
+	AclNames []*string `json:"AclNames,omitempty" name:"AclNames" list`
 }
 
 func (r *DescribeEipAclsRequest) ToJsonString() string {
