@@ -20,6 +20,65 @@ import (
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
+type AuthDomain struct {
+
+	// 域名ID
+	Id *string `json:"Id,omitempty" name:"Id"`
+
+	// 域名
+	Domain *string `json:"Domain,omitempty" name:"Domain"`
+
+	// 域名类型。包含以下取值：
+	// <li>system</li>
+	// <li>user</li>
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 状态。包含以下取值：
+	// <li>ENABLE</li>
+	// <li>DISABLE</li>
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 创建时间
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 更新时间
+	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
+}
+
+type CheckTcbServiceRequest struct {
+	*tchttp.BaseRequest
+}
+
+func (r *CheckTcbServiceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CheckTcbServiceRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CheckTcbServiceResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// true表示已开通
+		Initialized *bool `json:"Initialized,omitempty" name:"Initialized"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CheckTcbServiceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CheckTcbServiceResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type CommonServiceAPIRequest struct {
 	*tchttp.BaseRequest
 
@@ -60,6 +119,84 @@ func (r *CommonServiceAPIResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type CreateHostingDomainRequest struct {
+	*tchttp.BaseRequest
+
+	// 环境ID
+	EnvId *string `json:"EnvId,omitempty" name:"EnvId"`
+
+	// 域名
+	Domain *string `json:"Domain,omitempty" name:"Domain"`
+
+	// 证书ID
+	CertId *string `json:"CertId,omitempty" name:"CertId"`
+}
+
+func (r *CreateHostingDomainRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateHostingDomainRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateHostingDomainResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateHostingDomainResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateHostingDomainResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateStaticStoreRequest struct {
+	*tchttp.BaseRequest
+
+	// 环境ID
+	EnvId *string `json:"EnvId,omitempty" name:"EnvId"`
+}
+
+func (r *CreateStaticStoreRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateStaticStoreRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateStaticStoreResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 创建静态资源结果(succ/fail)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Result *string `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateStaticStoreResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateStaticStoreResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DatabasesInfo struct {
 
 	// 数据库唯一标识
@@ -75,6 +212,80 @@ type DatabasesInfo struct {
 	// 所属地域。
 	// 当前支持ap-shanghai
 	Region *string `json:"Region,omitempty" name:"Region"`
+}
+
+type DeleteEndUserRequest struct {
+	*tchttp.BaseRequest
+
+	// 环境ID
+	EnvId *string `json:"EnvId,omitempty" name:"EnvId"`
+
+	// 用户列表，每一项都是uuid
+	UserList []*string `json:"UserList,omitempty" name:"UserList" list`
+}
+
+func (r *DeleteEndUserRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteEndUserRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteEndUserResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DeleteEndUserResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteEndUserResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeAuthDomainsRequest struct {
+	*tchttp.BaseRequest
+
+	// 环境ID
+	EnvId *string `json:"EnvId,omitempty" name:"EnvId"`
+}
+
+func (r *DescribeAuthDomainsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeAuthDomainsRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeAuthDomainsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 安全域名列表列表
+		Domains []*AuthDomain `json:"Domains,omitempty" name:"Domains" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeAuthDomainsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeAuthDomainsResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeDatabaseACLRequest struct {
@@ -121,6 +332,104 @@ func (r *DescribeDatabaseACLResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeEndUsersRequest struct {
+	*tchttp.BaseRequest
+
+	// 开发者的环境ID
+	EnvId *string `json:"EnvId,omitempty" name:"EnvId"`
+
+	// 按照 uuid 列表过滤，最大个数为100
+	UUIds []*string `json:"UUIds,omitempty" name:"UUIds" list`
+}
+
+func (r *DescribeEndUsersRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeEndUsersRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeEndUsersResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 用户总数
+		Total *uint64 `json:"Total,omitempty" name:"Total"`
+
+		// 用户列表
+		Users []*EndUserInfo `json:"Users,omitempty" name:"Users" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeEndUsersResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeEndUsersResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeEnvLimitRequest struct {
+	*tchttp.BaseRequest
+}
+
+func (r *DescribeEnvLimitRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeEnvLimitRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeEnvLimitResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 环境总数上限
+		MaxEnvNum *int64 `json:"MaxEnvNum,omitempty" name:"MaxEnvNum"`
+
+		// 目前环境总数
+		CurrentEnvNum *int64 `json:"CurrentEnvNum,omitempty" name:"CurrentEnvNum"`
+
+		// 免费环境数量上限
+		MaxFreeEnvNum *int64 `json:"MaxFreeEnvNum,omitempty" name:"MaxFreeEnvNum"`
+
+		// 目前免费环境数量
+		CurrentFreeEnvNum *int64 `json:"CurrentFreeEnvNum,omitempty" name:"CurrentFreeEnvNum"`
+
+		// 总计允许销毁环境次数上限
+		MaxDeleteTotal *int64 `json:"MaxDeleteTotal,omitempty" name:"MaxDeleteTotal"`
+
+		// 目前已销毁环境次数
+		CurrentDeleteTotal *int64 `json:"CurrentDeleteTotal,omitempty" name:"CurrentDeleteTotal"`
+
+		// 每月允许销毁环境次数上限
+		MaxDeleteMonthly *int64 `json:"MaxDeleteMonthly,omitempty" name:"MaxDeleteMonthly"`
+
+		// 本月已销毁环境次数
+		CurrentDeleteMonthly *int64 `json:"CurrentDeleteMonthly,omitempty" name:"CurrentDeleteMonthly"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeEnvLimitResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeEnvLimitResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeEnvsRequest struct {
 	*tchttp.BaseRequest
 
@@ -156,6 +465,189 @@ func (r *DescribeEnvsResponse) ToJsonString() string {
 
 func (r *DescribeEnvsResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeQuotaDataRequest struct {
+	*tchttp.BaseRequest
+
+	// 环境ID
+	EnvId *string `json:"EnvId,omitempty" name:"EnvId"`
+
+	// <li> 指标名: </li>
+	// <li> StorageSizepkg: 当月存储空间容量, 单位MB </li>
+	// <li> StorageReadpkg: 当月存储读请求次数 </li>
+	// <li> StorageWritepkg: 当月存储写请求次数 </li>
+	// <li> StorageCdnOriginFluxpkg: 当月CDN回源流量, 单位字节 </li>
+	// <li> StorageCdnOriginFluxpkgDay: 当日CDN回源流量, 单位字节 </li>
+	// <li> StorageReadpkgDay: 当日存储读请求次数 </li>
+	// <li> StorageWritepkgDay: 当日写请求次数 </li>
+	// <li> CDNFluxpkg: 当月CDN流量, 单位为字节 </li>
+	// <li> CDNFluxpkgDay: 当日CDN流量, 单位为字节 </li>
+	// <li> FunctionInvocationpkg: 当月云函数调用次数 </li>
+	// <li> FunctionGBspkg: 当月云函数资源使用量, 单位Mb*Ms </li>
+	// <li> FunctionFluxpkg: 当月云函数流量, 单位千字节(KB) </li>
+	// <li> FunctionInvocationpkgDay: 当日云函数调用次数 </li>
+	// <li> FunctionGBspkgDay: 当日云函数资源使用量, 单位Mb*Ms </li>
+	// <li> FunctionFluxpkgDay: 当日云函数流量, 单位千字节(KB) </li>
+	// <li> DbSizepkg: 当月数据库容量大小, 单位MB </li>
+	// <li> DbReadpkg: 当日数据库读请求数 </li>
+	// <li> DbWritepkg: 当日数据库写请求数 </li>
+	// <li> StaticFsFluxPkgDay: 当日静态托管流量 </li>
+	// <li> StaticFsFluxPkg: 当月静态托管流量</li>
+	// <li> StaticFsSizePkg: 当月静态托管容量 </li>
+	MetricName *string `json:"MetricName,omitempty" name:"MetricName"`
+
+	// 资源ID, 目前仅对云函数相关的指标(FunctionInvocationpkg, FunctionGBspkg, FunctionFluxpkg)有意义, 如果想查询某个云函数的指标则在ResourceId中传入函数名; 如果只想查询整个namespace的指标, 则留空或不传.
+	ResourceID *string `json:"ResourceID,omitempty" name:"ResourceID"`
+}
+
+func (r *DescribeQuotaDataRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeQuotaDataRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeQuotaDataResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 指标名
+		MetricName *string `json:"MetricName,omitempty" name:"MetricName"`
+
+		// 指标的值
+		Value *int64 `json:"Value,omitempty" name:"Value"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeQuotaDataResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeQuotaDataResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DestroyEnvRequest struct {
+	*tchttp.BaseRequest
+
+	// 环境Id
+	EnvId *string `json:"EnvId,omitempty" name:"EnvId"`
+
+	// 针对预付费 删除隔离中的环境时要传true 正常环境直接跳过隔离期删除
+	IsForce *bool `json:"IsForce,omitempty" name:"IsForce"`
+}
+
+func (r *DestroyEnvRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DestroyEnvRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DestroyEnvResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DestroyEnvResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DestroyEnvResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DestroyStaticStoreRequest struct {
+	*tchttp.BaseRequest
+
+	// 环境ID
+	EnvId *string `json:"EnvId,omitempty" name:"EnvId"`
+
+	// cdn域名
+	CdnDomain *string `json:"CdnDomain,omitempty" name:"CdnDomain"`
+}
+
+func (r *DestroyStaticStoreRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DestroyStaticStoreRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DestroyStaticStoreResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 条件任务结果(succ/fail)
+		Result *string `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DestroyStaticStoreResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DestroyStaticStoreResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type EndUserInfo struct {
+
+	// 用户唯一ID
+	UUId *string `json:"UUId,omitempty" name:"UUId"`
+
+	// 微信ID
+	WXOpenId *string `json:"WXOpenId,omitempty" name:"WXOpenId"`
+
+	// qq ID
+	QQOpenId *string `json:"QQOpenId,omitempty" name:"QQOpenId"`
+
+	// 手机号
+	Phone *string `json:"Phone,omitempty" name:"Phone"`
+
+	// 邮箱
+	Email *string `json:"Email,omitempty" name:"Email"`
+
+	// 昵称
+	NickName *string `json:"NickName,omitempty" name:"NickName"`
+
+	// 性别
+	Gender *string `json:"Gender,omitempty" name:"Gender"`
+
+	// 头像地址
+	AvatarUrl *string `json:"AvatarUrl,omitempty" name:"AvatarUrl"`
+
+	// 更新时间
+	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
+
+	// 创建时间
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 是否为匿名用户
+	IsAnonymous *bool `json:"IsAnonymous,omitempty" name:"IsAnonymous"`
+
+	// 是否禁用账户
+	IsDisabled *bool `json:"IsDisabled,omitempty" name:"IsDisabled"`
 }
 
 type EnvInfo struct {
@@ -318,6 +810,40 @@ func (r *ModifyEnvResponse) ToJsonString() string {
 }
 
 func (r *ModifyEnvResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ReinstateEnvRequest struct {
+	*tchttp.BaseRequest
+
+	// 环境ID
+	EnvId *string `json:"EnvId,omitempty" name:"EnvId"`
+}
+
+func (r *ReinstateEnvRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ReinstateEnvRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ReinstateEnvResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ReinstateEnvResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ReinstateEnvResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 

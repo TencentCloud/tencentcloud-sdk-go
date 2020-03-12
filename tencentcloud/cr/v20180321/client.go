@@ -234,7 +234,7 @@ func NewDownloadReportResponse() (response *DownloadReportResponse) {
     return
 }
 
-// 用于下载当日催收和回访结果报表。当日23:00后，可获取当日催收结果，次日00:30后，可获取昨日回访结果。
+// 用于下载结果报表。当日23:00后，可获取当日到期/逾期提醒结果，次日00:30后，可获取昨日回访结果。
 func (c *Client) DownloadReport(request *DownloadReportRequest) (response *DownloadReportResponse, err error) {
     if request == nil {
         request = NewDownloadReportRequest()

@@ -293,6 +293,31 @@ func (c *Client) DeleteApplicationTriggerPersonal(request *DeleteApplicationTrig
     return
 }
 
+func NewDeleteImageLifecycleGlobalPersonalRequest() (request *DeleteImageLifecycleGlobalPersonalRequest) {
+    request = &DeleteImageLifecycleGlobalPersonalRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tcr", APIVersion, "DeleteImageLifecycleGlobalPersonal")
+    return
+}
+
+func NewDeleteImageLifecycleGlobalPersonalResponse() (response *DeleteImageLifecycleGlobalPersonalResponse) {
+    response = &DeleteImageLifecycleGlobalPersonalResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 用于删除个人版全局镜像版本自动清理策略
+func (c *Client) DeleteImageLifecycleGlobalPersonal(request *DeleteImageLifecycleGlobalPersonalRequest) (response *DeleteImageLifecycleGlobalPersonalResponse, err error) {
+    if request == nil {
+        request = NewDeleteImageLifecycleGlobalPersonalRequest()
+    }
+    response = NewDeleteImageLifecycleGlobalPersonalResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteImageLifecyclePersonalRequest() (request *DeleteImageLifecyclePersonalRequest) {
     request = &DeleteImageLifecyclePersonalRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -489,6 +514,31 @@ func (c *Client) DescribeImageFilterPersonal(request *DescribeImageFilterPersona
         request = NewDescribeImageFilterPersonalRequest()
     }
     response = NewDescribeImageFilterPersonalResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeImageLifecycleGlobalPersonalRequest() (request *DescribeImageLifecycleGlobalPersonalRequest) {
+    request = &DescribeImageLifecycleGlobalPersonalRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tcr", APIVersion, "DescribeImageLifecycleGlobalPersonal")
+    return
+}
+
+func NewDescribeImageLifecycleGlobalPersonalResponse() (response *DescribeImageLifecycleGlobalPersonalResponse) {
+    response = &DescribeImageLifecycleGlobalPersonalResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 用于获取个人版全局镜像版本自动清理策略
+func (c *Client) DescribeImageLifecycleGlobalPersonal(request *DescribeImageLifecycleGlobalPersonalRequest) (response *DescribeImageLifecycleGlobalPersonalResponse, err error) {
+    if request == nil {
+        request = NewDescribeImageLifecycleGlobalPersonalRequest()
+    }
+    response = NewDescribeImageLifecycleGlobalPersonalResponse()
     err = c.Send(request, response)
     return
 }
@@ -739,6 +789,31 @@ func (c *Client) DuplicateImagePersonal(request *DuplicateImagePersonalRequest) 
         request = NewDuplicateImagePersonalRequest()
     }
     response = NewDuplicateImagePersonalResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewManageImageLifecycleGlobalPersonalRequest() (request *ManageImageLifecycleGlobalPersonalRequest) {
+    request = &ManageImageLifecycleGlobalPersonalRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tcr", APIVersion, "ManageImageLifecycleGlobalPersonal")
+    return
+}
+
+func NewManageImageLifecycleGlobalPersonalResponse() (response *ManageImageLifecycleGlobalPersonalResponse) {
+    response = &ManageImageLifecycleGlobalPersonalResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 用于设置个人版全局镜像版本自动清理策略
+func (c *Client) ManageImageLifecycleGlobalPersonal(request *ManageImageLifecycleGlobalPersonalRequest) (response *ManageImageLifecycleGlobalPersonalResponse, err error) {
+    if request == nil {
+        request = NewManageImageLifecycleGlobalPersonalRequest()
+    }
+    response = NewManageImageLifecycleGlobalPersonalResponse()
     err = c.Send(request, response)
     return
 }

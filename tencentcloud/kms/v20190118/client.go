@@ -43,6 +43,56 @@ func NewClient(credential *common.Credential, region string, clientProfile *prof
 }
 
 
+func NewAsymmetricRsaDecryptRequest() (request *AsymmetricRsaDecryptRequest) {
+    request = &AsymmetricRsaDecryptRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("kms", APIVersion, "AsymmetricRsaDecrypt")
+    return
+}
+
+func NewAsymmetricRsaDecryptResponse() (response *AsymmetricRsaDecryptResponse) {
+    response = &AsymmetricRsaDecryptResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 使用指定的RSA非对称密钥的私钥进行数据解密，密文必须是使用对应公钥加密的。处于Enabled 状态的非对称密钥才能进行解密操作。
+func (c *Client) AsymmetricRsaDecrypt(request *AsymmetricRsaDecryptRequest) (response *AsymmetricRsaDecryptResponse, err error) {
+    if request == nil {
+        request = NewAsymmetricRsaDecryptRequest()
+    }
+    response = NewAsymmetricRsaDecryptResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewAsymmetricSm2DecryptRequest() (request *AsymmetricSm2DecryptRequest) {
+    request = &AsymmetricSm2DecryptRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("kms", APIVersion, "AsymmetricSm2Decrypt")
+    return
+}
+
+func NewAsymmetricSm2DecryptResponse() (response *AsymmetricSm2DecryptResponse) {
+    response = &AsymmetricSm2DecryptResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 使用指定的SM2非对称密钥的私钥进行数据解密，密文必须是使用对应公钥加密的。处于Enabled 状态的非对称密钥才能进行解密操作。传入的密文的长度不能超过256字节。
+func (c *Client) AsymmetricSm2Decrypt(request *AsymmetricSm2DecryptRequest) (response *AsymmetricSm2DecryptResponse, err error) {
+    if request == nil {
+        request = NewAsymmetricSm2DecryptRequest()
+    }
+    response = NewAsymmetricSm2DecryptResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCancelKeyDeletionRequest() (request *CancelKeyDeletionRequest) {
     request = &CancelKeyDeletionRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -468,6 +518,31 @@ func (c *Client) GetParametersForImport(request *GetParametersForImportRequest) 
     return
 }
 
+func NewGetPublicKeyRequest() (request *GetPublicKeyRequest) {
+    request = &GetPublicKeyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("kms", APIVersion, "GetPublicKey")
+    return
+}
+
+func NewGetPublicKeyResponse() (response *GetPublicKeyResponse) {
+    response = &GetPublicKeyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 该接口用户获取 KeyUsage为ASYMMETRIC_DECRYPT_RSA_2048 和 ASYMMETRIC_DECRYPT_SM2 的非对称密钥的公钥信息，使用该公钥用户可在本地进行数据加密，使用该公钥加密的数据只能通过KMS使用对应的私钥进行解密。只有处于Enabled状态的非对称密钥才可能获取公钥。
+func (c *Client) GetPublicKey(request *GetPublicKeyRequest) (response *GetPublicKeyResponse, err error) {
+    if request == nil {
+        request = NewGetPublicKeyRequest()
+    }
+    response = NewGetPublicKeyResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewGetServiceStatusRequest() (request *GetServiceStatusRequest) {
     request = &GetServiceStatusRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -515,6 +590,31 @@ func (c *Client) ImportKeyMaterial(request *ImportKeyMaterialRequest) (response 
         request = NewImportKeyMaterialRequest()
     }
     response = NewImportKeyMaterialResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewListAlgorithmsRequest() (request *ListAlgorithmsRequest) {
+    request = &ListAlgorithmsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("kms", APIVersion, "ListAlgorithms")
+    return
+}
+
+func NewListAlgorithmsResponse() (response *ListAlgorithmsResponse) {
+    response = &ListAlgorithmsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 列出当前Region支持的加密方式
+func (c *Client) ListAlgorithms(request *ListAlgorithmsRequest) (response *ListAlgorithmsResponse, err error) {
+    if request == nil {
+        request = NewListAlgorithmsRequest()
+    }
+    response = NewListAlgorithmsResponse()
     err = c.Send(request, response)
     return
 }

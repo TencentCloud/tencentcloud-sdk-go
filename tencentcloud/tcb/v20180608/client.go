@@ -43,6 +43,31 @@ func NewClient(credential *common.Credential, region string, clientProfile *prof
 }
 
 
+func NewCheckTcbServiceRequest() (request *CheckTcbServiceRequest) {
+    request = &CheckTcbServiceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tcb", APIVersion, "CheckTcbService")
+    return
+}
+
+func NewCheckTcbServiceResponse() (response *CheckTcbServiceResponse) {
+    response = &CheckTcbServiceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 检查是否开通Tcb服务
+func (c *Client) CheckTcbService(request *CheckTcbServiceRequest) (response *CheckTcbServiceResponse, err error) {
+    if request == nil {
+        request = NewCheckTcbServiceRequest()
+    }
+    response = NewCheckTcbServiceResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCommonServiceAPIRequest() (request *CommonServiceAPIRequest) {
     request = &CommonServiceAPIRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -64,6 +89,106 @@ func (c *Client) CommonServiceAPI(request *CommonServiceAPIRequest) (response *C
         request = NewCommonServiceAPIRequest()
     }
     response = NewCommonServiceAPIResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateHostingDomainRequest() (request *CreateHostingDomainRequest) {
+    request = &CreateHostingDomainRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tcb", APIVersion, "CreateHostingDomain")
+    return
+}
+
+func NewCreateHostingDomainResponse() (response *CreateHostingDomainResponse) {
+    response = &CreateHostingDomainResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 创建托管域名
+func (c *Client) CreateHostingDomain(request *CreateHostingDomainRequest) (response *CreateHostingDomainResponse, err error) {
+    if request == nil {
+        request = NewCreateHostingDomainRequest()
+    }
+    response = NewCreateHostingDomainResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateStaticStoreRequest() (request *CreateStaticStoreRequest) {
+    request = &CreateStaticStoreRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tcb", APIVersion, "CreateStaticStore")
+    return
+}
+
+func NewCreateStaticStoreResponse() (response *CreateStaticStoreResponse) {
+    response = &CreateStaticStoreResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 创建静态托管资源，包括COS和CDN，异步任务创建，查看创建结果需要根据DescribeStaticStore接口来查看
+func (c *Client) CreateStaticStore(request *CreateStaticStoreRequest) (response *CreateStaticStoreResponse, err error) {
+    if request == nil {
+        request = NewCreateStaticStoreRequest()
+    }
+    response = NewCreateStaticStoreResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteEndUserRequest() (request *DeleteEndUserRequest) {
+    request = &DeleteEndUserRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tcb", APIVersion, "DeleteEndUser")
+    return
+}
+
+func NewDeleteEndUserResponse() (response *DeleteEndUserResponse) {
+    response = &DeleteEndUserResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 删除终端用户
+func (c *Client) DeleteEndUser(request *DeleteEndUserRequest) (response *DeleteEndUserResponse, err error) {
+    if request == nil {
+        request = NewDeleteEndUserRequest()
+    }
+    response = NewDeleteEndUserResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeAuthDomainsRequest() (request *DescribeAuthDomainsRequest) {
+    request = &DescribeAuthDomainsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tcb", APIVersion, "DescribeAuthDomains")
+    return
+}
+
+func NewDescribeAuthDomainsResponse() (response *DescribeAuthDomainsResponse) {
+    response = &DescribeAuthDomainsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 获取安全域名列表
+func (c *Client) DescribeAuthDomains(request *DescribeAuthDomainsRequest) (response *DescribeAuthDomainsResponse, err error) {
+    if request == nil {
+        request = NewDescribeAuthDomainsRequest()
+    }
+    response = NewDescribeAuthDomainsResponse()
     err = c.Send(request, response)
     return
 }
@@ -93,6 +218,56 @@ func (c *Client) DescribeDatabaseACL(request *DescribeDatabaseACLRequest) (respo
     return
 }
 
+func NewDescribeEndUsersRequest() (request *DescribeEndUsersRequest) {
+    request = &DescribeEndUsersRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tcb", APIVersion, "DescribeEndUsers")
+    return
+}
+
+func NewDescribeEndUsersResponse() (response *DescribeEndUsersResponse) {
+    response = &DescribeEndUsersResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 获取终端用户列表
+func (c *Client) DescribeEndUsers(request *DescribeEndUsersRequest) (response *DescribeEndUsersResponse, err error) {
+    if request == nil {
+        request = NewDescribeEndUsersRequest()
+    }
+    response = NewDescribeEndUsersResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeEnvLimitRequest() (request *DescribeEnvLimitRequest) {
+    request = &DescribeEnvLimitRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tcb", APIVersion, "DescribeEnvLimit")
+    return
+}
+
+func NewDescribeEnvLimitResponse() (response *DescribeEnvLimitResponse) {
+    response = &DescribeEnvLimitResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询环境个数上限
+func (c *Client) DescribeEnvLimit(request *DescribeEnvLimitRequest) (response *DescribeEnvLimitResponse, err error) {
+    if request == nil {
+        request = NewDescribeEnvLimitRequest()
+    }
+    response = NewDescribeEnvLimitResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeEnvsRequest() (request *DescribeEnvsRequest) {
     request = &DescribeEnvsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -114,6 +289,81 @@ func (c *Client) DescribeEnvs(request *DescribeEnvsRequest) (response *DescribeE
         request = NewDescribeEnvsRequest()
     }
     response = NewDescribeEnvsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeQuotaDataRequest() (request *DescribeQuotaDataRequest) {
+    request = &DescribeQuotaDataRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tcb", APIVersion, "DescribeQuotaData")
+    return
+}
+
+func NewDescribeQuotaDataResponse() (response *DescribeQuotaDataResponse) {
+    response = &DescribeQuotaDataResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询指定指标的配额使用量
+func (c *Client) DescribeQuotaData(request *DescribeQuotaDataRequest) (response *DescribeQuotaDataResponse, err error) {
+    if request == nil {
+        request = NewDescribeQuotaDataRequest()
+    }
+    response = NewDescribeQuotaDataResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDestroyEnvRequest() (request *DestroyEnvRequest) {
+    request = &DestroyEnvRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tcb", APIVersion, "DestroyEnv")
+    return
+}
+
+func NewDestroyEnvResponse() (response *DestroyEnvResponse) {
+    response = &DestroyEnvResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 销毁环境
+func (c *Client) DestroyEnv(request *DestroyEnvRequest) (response *DestroyEnvResponse, err error) {
+    if request == nil {
+        request = NewDestroyEnvRequest()
+    }
+    response = NewDestroyEnvResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDestroyStaticStoreRequest() (request *DestroyStaticStoreRequest) {
+    request = &DestroyStaticStoreRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tcb", APIVersion, "DestroyStaticStore")
+    return
+}
+
+func NewDestroyStaticStoreResponse() (response *DestroyStaticStoreResponse) {
+    response = &DestroyStaticStoreResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 销毁静态托管资源，该接口创建异步销毁任务，资源最终状态可从DestroyStaticStore接口查看
+func (c *Client) DestroyStaticStore(request *DestroyStaticStoreRequest) (response *DestroyStaticStoreResponse, err error) {
+    if request == nil {
+        request = NewDestroyStaticStoreRequest()
+    }
+    response = NewDestroyStaticStoreResponse()
     err = c.Send(request, response)
     return
 }
@@ -164,6 +414,31 @@ func (c *Client) ModifyEnv(request *ModifyEnvRequest) (response *ModifyEnvRespon
         request = NewModifyEnvRequest()
     }
     response = NewModifyEnvResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewReinstateEnvRequest() (request *ReinstateEnvRequest) {
+    request = &ReinstateEnvRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tcb", APIVersion, "ReinstateEnv")
+    return
+}
+
+func NewReinstateEnvResponse() (response *ReinstateEnvResponse) {
+    response = &ReinstateEnvResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 针对已隔离的免费环境，可以通过本接口将其恢复访问。
+func (c *Client) ReinstateEnv(request *ReinstateEnvRequest) (response *ReinstateEnvResponse, err error) {
+    if request == nil {
+        request = NewReinstateEnvRequest()
+    }
+    response = NewReinstateEnvResponse()
     err = c.Send(request, response)
     return
 }

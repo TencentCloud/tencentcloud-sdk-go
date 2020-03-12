@@ -20,6 +20,104 @@ import (
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
+type AlgorithmInfo struct {
+
+	// 算法的标识
+	KeyUsage *string `json:"KeyUsage,omitempty" name:"KeyUsage"`
+
+	// 算法的名称
+	Algorithm *string `json:"Algorithm,omitempty" name:"Algorithm"`
+}
+
+type AsymmetricRsaDecryptRequest struct {
+	*tchttp.BaseRequest
+
+	// CMK的唯一标识
+	KeyId *string `json:"KeyId,omitempty" name:"KeyId"`
+
+	// 使用PublicKey加密的密文，Base64编码
+	Ciphertext *string `json:"Ciphertext,omitempty" name:"Ciphertext"`
+
+	// 在使用公钥加密时对应的算法：当前支持RSAES_PKCS1_V1_5、RSAES_OAEP_SHA_1、RSAES_OAEP_SHA_256
+	Algorithm *string `json:"Algorithm,omitempty" name:"Algorithm"`
+}
+
+func (r *AsymmetricRsaDecryptRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *AsymmetricRsaDecryptRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type AsymmetricRsaDecryptResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// CMK的唯一标识
+		KeyId *string `json:"KeyId,omitempty" name:"KeyId"`
+
+		// 解密后的明文，base64编码
+		Plaintext *string `json:"Plaintext,omitempty" name:"Plaintext"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *AsymmetricRsaDecryptResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *AsymmetricRsaDecryptResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type AsymmetricSm2DecryptRequest struct {
+	*tchttp.BaseRequest
+
+	// CMK的唯一标识
+	KeyId *string `json:"KeyId,omitempty" name:"KeyId"`
+
+	// 使用PublicKey加密的密文，Base64编码。密文长度不能超过256字节。
+	Ciphertext *string `json:"Ciphertext,omitempty" name:"Ciphertext"`
+}
+
+func (r *AsymmetricSm2DecryptRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *AsymmetricSm2DecryptRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type AsymmetricSm2DecryptResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// CMK的唯一标识
+		KeyId *string `json:"KeyId,omitempty" name:"KeyId"`
+
+		// 解密后的明文，base64编码
+		Plaintext *string `json:"Plaintext,omitempty" name:"Plaintext"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *AsymmetricSm2DecryptResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *AsymmetricSm2DecryptResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type CancelKeyDeletionRequest struct {
 	*tchttp.BaseRequest
 
@@ -60,13 +158,13 @@ func (r *CancelKeyDeletionResponse) FromJsonString(s string) error {
 type CreateKeyRequest struct {
 	*tchttp.BaseRequest
 
-	// 作为密钥更容易辨识，更容易被人看懂的别名， 不可为空，1-60个字母数字 - _ 的组合。以 kms- 作为前缀的用于云产品使用，Alias 不可重复。
+	// 作为密钥更容易辨识，更容易被人看懂的别名， 不可为空，1-60个字母数字 - _ 的组合，首字符必须为字母或者数字。以 kms- 作为前缀的用于云产品使用，Alias 不可重复。
 	Alias *string `json:"Alias,omitempty" name:"Alias"`
 
 	// CMK 的描述，最大1024字节
 	Description *string `json:"Description,omitempty" name:"Description"`
 
-	// 指定key的用途。目前，仅支持"ENCRYPT_DECRYPT"，默认为  "ENCRYPT_DECRYPT"，即key用于加密和解密
+	// 指定key的用途，默认为  "ENCRYPT_DECRYPT" 表示创建对称加解密密钥，其它支持用途 “ASYMMETRIC_DECRYPT_RSA_2048” 表示创建用于加解密的RSA2048非对称密钥，“ASYMMETRIC_DECRYPT_SM2” 表示创建用于加解密的SM2非对称密钥
 	KeyUsage *string `json:"KeyUsage,omitempty" name:"KeyUsage"`
 
 	// 指定key类型，默认为1，1表示默认类型，由KMS创建CMK密钥，2 表示EXTERNAL 类型，该类型需要用户导入密钥材料，参考 GetParametersForImport 和 ImportKeyMaterial 接口
@@ -700,6 +798,49 @@ func (r *GetParametersForImportResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type GetPublicKeyRequest struct {
+	*tchttp.BaseRequest
+
+	// CMK的唯一标识。
+	KeyId *string `json:"KeyId,omitempty" name:"KeyId"`
+}
+
+func (r *GetPublicKeyRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *GetPublicKeyRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type GetPublicKeyResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// CMK的唯一标识。
+		KeyId *string `json:"KeyId,omitempty" name:"KeyId"`
+
+		// 经过base64编码的公钥内容。
+		PublicKey *string `json:"PublicKey,omitempty" name:"PublicKey"`
+
+		// PEM格式的公钥内容。
+		PublicKeyPem *string `json:"PublicKeyPem,omitempty" name:"PublicKeyPem"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *GetPublicKeyResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *GetPublicKeyResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type GetServiceStatusRequest struct {
 	*tchttp.BaseRequest
 }
@@ -804,7 +945,7 @@ type KeyMetadata struct {
 	// CMK的状态， 取值为：Enabled | Disabled | PendingDelete | PendingImport
 	KeyState *string `json:"KeyState,omitempty" name:"KeyState"`
 
-	// CMK用途，当前是 ENCRYPT_DECRYPT
+	// CMK用途，取值为: ENCRYPT_DECRYPT | ASYMMETRIC_DECRYPT_RSA_2048 | ASYMMETRIC_DECRYPT_SM2
 	KeyUsage *string `json:"KeyUsage,omitempty" name:"KeyUsage"`
 
 	// CMK类型，2 表示符合FIPS标准，4表示符合国密标准
@@ -835,13 +976,50 @@ type KeyMetadata struct {
 	ValidTo *uint64 `json:"ValidTo,omitempty" name:"ValidTo"`
 }
 
+type ListAlgorithmsRequest struct {
+	*tchttp.BaseRequest
+}
+
+func (r *ListAlgorithmsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ListAlgorithmsRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ListAlgorithmsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 本地区支持的对称加密算法
+		SymmetricAlgorithms []*AlgorithmInfo `json:"SymmetricAlgorithms,omitempty" name:"SymmetricAlgorithms" list`
+
+		// 本地区支持的非对称加密算法
+		AsymmetricAlgorithms []*AlgorithmInfo `json:"AsymmetricAlgorithms,omitempty" name:"AsymmetricAlgorithms" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ListAlgorithmsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ListAlgorithmsResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type ListKeyDetailRequest struct {
 	*tchttp.BaseRequest
 
 	// 含义跟 SQL 查询的 Offset 一致，表示本次获取从按一定顺序排列数组的第 Offset 个元素开始，缺省为0
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
 
-	// 含义跟 SQL 查询的 Limit 一致，表示本次获最多获取 Limit 个元素。缺省值为10，最大值为200
+	// 含义跟 SQL 查询的 Limit 一致，表示本次最多获取 Limit 个元素。缺省值为10，最大值为200
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 
 	// 根据创建者角色筛选，默认 0 表示用户自己创建的cmk， 1 表示授权其它云产品自动创建的cmk
@@ -858,6 +1036,9 @@ type ListKeyDetailRequest struct {
 
 	// 根据CMK类型筛选， "TENCENT_KMS" 表示筛选密钥材料由KMS创建的CMK， "EXTERNAL" 表示筛选密钥材料需要用户导入的 EXTERNAL类型CMK，"ALL" 或者不设置表示两种类型都查询，大小写敏感。
 	Origin *string `json:"Origin,omitempty" name:"Origin"`
+
+	// 根据CMK的KeyUsage筛选，为空表示筛选全部，可使用的参数为：ENCRYPT_DECRYPT 或 ASYMMETRIC_DECRYPT_RSA_2048 或 ASYMMETRIC_DECRYPT_SM2
+	KeyUsage *string `json:"KeyUsage,omitempty" name:"KeyUsage"`
 }
 
 func (r *ListKeyDetailRequest) ToJsonString() string {
@@ -876,7 +1057,7 @@ type ListKeyDetailResponse struct {
 		// CMK的总数量
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
-		// 返回的属性信息列表，此字段可能返回 null，表示取不到有效值。
+		// 返回的属性信息列表。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		KeyMetadatas []*KeyMetadata `json:"KeyMetadatas,omitempty" name:"KeyMetadatas" list`
 
@@ -1082,7 +1263,7 @@ type UpdateKeyDescriptionRequest struct {
 	// 新的描述信息，最大支持1024字节
 	Description *string `json:"Description,omitempty" name:"Description"`
 
-	// 需要修改描述信息的的CMK ID
+	// 需要修改描述信息的CMK ID
 	KeyId *string `json:"KeyId,omitempty" name:"KeyId"`
 }
 

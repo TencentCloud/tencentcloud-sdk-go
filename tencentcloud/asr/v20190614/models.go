@@ -81,7 +81,7 @@ type CreateRecTaskRequest struct {
 	// 语音声道数。1：单声道；2：双声道（仅在电话 8k 通用模型下支持）。
 	ChannelNum *uint64 `json:"ChannelNum,omitempty" name:"ChannelNum"`
 
-	// 识别结果返回形式。0：标准结果  1：含词时间戳列表结果(一般用于生成字幕场景)
+	// 识别结果返回形式。0： 识别结果文本(含分段时间戳)； 1：仅支持16k中文引擎，含识别结果详情(词时间戳列表，一般用于生成字幕场景)。
 	ResTextFormat *uint64 `json:"ResTextFormat,omitempty" name:"ResTextFormat"`
 
 	// 语音数据来源。0：语音 URL；1：语音数据（post body）。

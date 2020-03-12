@@ -445,6 +445,37 @@ func (r *DeleteApplicationTriggerPersonalResponse) FromJsonString(s string) erro
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DeleteImageLifecycleGlobalPersonalRequest struct {
+	*tchttp.BaseRequest
+}
+
+func (r *DeleteImageLifecycleGlobalPersonalRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteImageLifecycleGlobalPersonalRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteImageLifecycleGlobalPersonalResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DeleteImageLifecycleGlobalPersonalResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteImageLifecycleGlobalPersonalResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DeleteImageLifecyclePersonalRequest struct {
 	*tchttp.BaseRequest
 
@@ -778,6 +809,40 @@ func (r *DescribeImageFilterPersonalResponse) ToJsonString() string {
 }
 
 func (r *DescribeImageFilterPersonalResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeImageLifecycleGlobalPersonalRequest struct {
+	*tchttp.BaseRequest
+}
+
+func (r *DescribeImageLifecycleGlobalPersonalRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeImageLifecycleGlobalPersonalRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeImageLifecycleGlobalPersonalResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 全局自动删除策略信息
+		Data *AutoDelStrategyInfoResp `json:"Data,omitempty" name:"Data"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeImageLifecycleGlobalPersonalResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeImageLifecycleGlobalPersonalResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -1276,6 +1341,43 @@ type Limit struct {
 
 	// 配置的值
 	Value *int64 `json:"Value,omitempty" name:"Value"`
+}
+
+type ManageImageLifecycleGlobalPersonalRequest struct {
+	*tchttp.BaseRequest
+
+	// global_keep_last_days:全局保留最近几天的数据;global_keep_last_nums:全局保留最近多少个
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 策略值
+	Val *int64 `json:"Val,omitempty" name:"Val"`
+}
+
+func (r *ManageImageLifecycleGlobalPersonalRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ManageImageLifecycleGlobalPersonalRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ManageImageLifecycleGlobalPersonalResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ManageImageLifecycleGlobalPersonalResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ManageImageLifecycleGlobalPersonalResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
 }
 
 type ModifyApplicationTriggerPersonalRequest struct {
