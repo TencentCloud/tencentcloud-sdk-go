@@ -2207,6 +2207,9 @@ type DescribeConfigsRequest struct {
 
 	// 配置项名称，精确查询，不传入时查询全量
 	ConfigName *string `json:"ConfigName,omitempty" name:"ConfigName"`
+
+	// 配置项版本，精确查询，不传入时查询全量
+	ConfigVersion *string `json:"ConfigVersion,omitempty" name:"ConfigVersion"`
 }
 
 func (r *DescribeConfigsRequest) ToJsonString() string {
@@ -2542,6 +2545,9 @@ type DescribeImageTagsRequest struct {
 
 	// 不填和0:查询 1:不查询
 	QueryImageIdFlag *int64 `json:"QueryImageIdFlag,omitempty" name:"QueryImageIdFlag"`
+
+	// 可用于搜索的 tag 名字
+	SearchWord *string `json:"SearchWord,omitempty" name:"SearchWord"`
 }
 
 func (r *DescribeImageTagsRequest) ToJsonString() string {
@@ -2916,6 +2922,9 @@ type DescribePublicConfigsRequest struct {
 
 	// 配置项名称，精确查询，不传入时查询全量
 	ConfigName *string `json:"ConfigName,omitempty" name:"ConfigName"`
+
+	// 配置项版本，精确查询，不传入时查询全量
+	ConfigVersion *string `json:"ConfigVersion,omitempty" name:"ConfigVersion"`
 }
 
 func (r *DescribePublicConfigsRequest) ToJsonString() string {

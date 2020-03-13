@@ -648,6 +648,43 @@ func (r *AssociateNatGatewayAddressResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type AssociateNetworkAclSubnetsRequest struct {
+	*tchttp.BaseRequest
+
+	// 网络ACL实例ID。例如：acl-12345678。
+	NetworkAclId *string `json:"NetworkAclId,omitempty" name:"NetworkAclId"`
+
+	// 子网实例ID数组。例如：[subnet-12345678]
+	SubnetIds []*string `json:"SubnetIds,omitempty" name:"SubnetIds" list`
+}
+
+func (r *AssociateNetworkAclSubnetsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *AssociateNetworkAclSubnetsRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type AssociateNetworkAclSubnetsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *AssociateNetworkAclSubnetsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *AssociateNetworkAclSubnetsResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type AttachCcnInstancesRequest struct {
 	*tchttp.BaseRequest
 
@@ -1669,6 +1706,46 @@ func (r *CreateNetDetectResponse) ToJsonString() string {
 }
 
 func (r *CreateNetDetectResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateNetworkAclRequest struct {
+	*tchttp.BaseRequest
+
+	// VPC实例ID。可通过DescribeVpcs接口返回值中的VpcId获取。
+	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
+
+	// 网络ACL名称，最大长度不能超过60个字节。
+	NetworkAclName *string `json:"NetworkAclName,omitempty" name:"NetworkAclName"`
+}
+
+func (r *CreateNetworkAclRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateNetworkAclRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateNetworkAclResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 网络ACL实例。
+		NetworkAcl *NetworkAcl `json:"NetworkAcl,omitempty" name:"NetworkAcl"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateNetworkAclResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateNetworkAclResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -2717,6 +2794,40 @@ func (r *DeleteNetDetectResponse) ToJsonString() string {
 }
 
 func (r *DeleteNetDetectResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteNetworkAclRequest struct {
+	*tchttp.BaseRequest
+
+	// 网络ACL实例ID。例如：acl-12345678。
+	NetworkAclId *string `json:"NetworkAclId,omitempty" name:"NetworkAclId"`
+}
+
+func (r *DeleteNetworkAclRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteNetworkAclRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteNetworkAclResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DeleteNetworkAclResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteNetworkAclResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -4463,6 +4574,58 @@ func (r *DescribeNetDetectsResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeNetworkAclsRequest struct {
+	*tchttp.BaseRequest
+
+	// 网络ACL实例ID数组。形如：[acl-12345678]。每次请求的实例的上限为100。参数不支持同时指定NetworkAclIds和Filters。
+	NetworkAclIds []*string `json:"NetworkAclIds,omitempty" name:"NetworkAclIds" list`
+
+	// 过滤条件，参数不支持同时指定NetworkAclIds和Filters。
+	// <li>vpc-id - String - （过滤条件）VPC实例ID，形如：vpc-12345678。</li>
+	// <li>network-acl-id - String - （过滤条件）网络ACL实例ID，形如：acl-12345678。</li>
+	// <li>network-acl-name - String - （过滤条件）网络ACL实例名称。</li>
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+
+	// 偏移量，默认为0。
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 返回数量，默认为20，最小值为1，最大值为100。
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+func (r *DescribeNetworkAclsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeNetworkAclsRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeNetworkAclsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 实例详细信息列表。
+		NetworkAclSet []*NetworkAcl `json:"NetworkAclSet,omitempty" name:"NetworkAclSet" list`
+
+		// 符合条件的实例数量。
+		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeNetworkAclsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeNetworkAclsResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeNetworkInterfaceLimitRequest struct {
 	*tchttp.BaseRequest
 
@@ -5611,6 +5774,43 @@ func (r *DisassociateNatGatewayAddressResponse) ToJsonString() string {
 }
 
 func (r *DisassociateNatGatewayAddressResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DisassociateNetworkAclSubnetsRequest struct {
+	*tchttp.BaseRequest
+
+	// 网络ACL实例ID。例如：acl-12345678。
+	NetworkAclId *string `json:"NetworkAclId,omitempty" name:"NetworkAclId"`
+
+	// 子网实例ID数组。例如：[subnet-12345678]
+	SubnetIds []*string `json:"SubnetIds,omitempty" name:"SubnetIds" list`
+}
+
+func (r *DisassociateNetworkAclSubnetsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DisassociateNetworkAclSubnetsRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DisassociateNetworkAclSubnetsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DisassociateNetworkAclSubnetsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DisassociateNetworkAclSubnetsResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -7050,6 +7250,43 @@ func (r *ModifyNetDetectResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type ModifyNetworkAclAttributeRequest struct {
+	*tchttp.BaseRequest
+
+	// 网络ACL实例ID。例如：acl-12345678。
+	NetworkAclId *string `json:"NetworkAclId,omitempty" name:"NetworkAclId"`
+
+	// 网络ACL名称，最大长度不能超过60个字节。
+	NetworkAclName *string `json:"NetworkAclName,omitempty" name:"NetworkAclName"`
+}
+
+func (r *ModifyNetworkAclAttributeRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyNetworkAclAttributeRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyNetworkAclAttributeResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifyNetworkAclAttributeResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyNetworkAclAttributeResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type ModifyNetworkAclEntriesRequest struct {
 	*tchttp.BaseRequest
 
@@ -7704,6 +7941,30 @@ type NetDetectState struct {
 
 	// 网络探测目的IP验证结果对象数组。
 	NetDetectIpStateSet []*NetDetectIpState `json:"NetDetectIpStateSet,omitempty" name:"NetDetectIpStateSet" list`
+}
+
+type NetworkAcl struct {
+
+	// `VPC`实例`ID`。
+	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
+
+	// 网络ACL实例`ID`。
+	NetworkAclId *string `json:"NetworkAclId,omitempty" name:"NetworkAclId"`
+
+	// 网络ACL名称，最大长度为60。
+	NetworkAclName *string `json:"NetworkAclName,omitempty" name:"NetworkAclName"`
+
+	// 创建时间。
+	CreatedTime *string `json:"CreatedTime,omitempty" name:"CreatedTime"`
+
+	// 网络ACL关联的子网数组。
+	SubnetSet []*Subnet `json:"SubnetSet,omitempty" name:"SubnetSet" list`
+
+	// 网络ACl入站规则。
+	IngressEntries []*NetworkAclEntry `json:"IngressEntries,omitempty" name:"IngressEntries" list`
+
+	// 网络ACL出站规则。
+	EgressEntries []*NetworkAclEntry `json:"EgressEntries,omitempty" name:"EgressEntries" list`
 }
 
 type NetworkAclEntry struct {

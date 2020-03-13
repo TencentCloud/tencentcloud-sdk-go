@@ -161,7 +161,7 @@ type DescribeMusicRequest struct {
 	// 歌曲ID
 	ItemId *string `json:"ItemId,omitempty" name:"ItemId"`
 
-	// User identity ID，用来唯一标识用户
+	// 在应用前端播放音乐C端用户的唯一标识。无需是账户信息，用户唯一标识即可。
 	IdentityId *string `json:"IdentityId,omitempty" name:"IdentityId"`
 
 	// 填 MP3-64K-FTD-P 获取歌曲热门片段

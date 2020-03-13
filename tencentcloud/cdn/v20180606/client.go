@@ -68,6 +68,31 @@ func (c *Client) AddCdnDomain(request *AddCdnDomainRequest) (response *AddCdnDom
     return
 }
 
+func NewCreateClsLogTopicRequest() (request *CreateClsLogTopicRequest) {
+    request = &CreateClsLogTopicRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cdn", APIVersion, "CreateClsLogTopic")
+    return
+}
+
+func NewCreateClsLogTopicResponse() (response *CreateClsLogTopicResponse) {
+    response = &CreateClsLogTopicResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreatClsLogTopic 用于创建日志主题。注意：一个日志集下至多可创建10个日志主题。
+func (c *Client) CreateClsLogTopic(request *CreateClsLogTopicRequest) (response *CreateClsLogTopicResponse, err error) {
+    if request == nil {
+        request = NewCreateClsLogTopicRequest()
+    }
+    response = NewCreateClsLogTopicResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteCdnDomainRequest() (request *DeleteCdnDomainRequest) {
     request = &DeleteCdnDomainRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -89,6 +114,31 @@ func (c *Client) DeleteCdnDomain(request *DeleteCdnDomainRequest) (response *Del
         request = NewDeleteCdnDomainRequest()
     }
     response = NewDeleteCdnDomainResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteClsLogTopicRequest() (request *DeleteClsLogTopicRequest) {
+    request = &DeleteClsLogTopicRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cdn", APIVersion, "DeleteClsLogTopic")
+    return
+}
+
+func NewDeleteClsLogTopicResponse() (response *DeleteClsLogTopicResponse) {
+    response = &DeleteClsLogTopicResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DeleteClsLogTopic 用于删除日志主题。注意：删除后，所有该日志主题下绑定域名的日志将不再继续投递至该主题，已经投递的日志将会被全部清空。生效时间约 5~15 分钟。
+func (c *Client) DeleteClsLogTopic(request *DeleteClsLogTopicRequest) (response *DeleteClsLogTopicResponse, err error) {
+    if request == nil {
+        request = NewDeleteClsLogTopicRequest()
+    }
+    response = NewDeleteClsLogTopicResponse()
     err = c.Send(request, response)
     return
 }
@@ -568,6 +618,31 @@ func (c *Client) DisableCaches(request *DisableCachesRequest) (response *Disable
     return
 }
 
+func NewDisableClsLogTopicRequest() (request *DisableClsLogTopicRequest) {
+    request = &DisableClsLogTopicRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cdn", APIVersion, "DisableClsLogTopic")
+    return
+}
+
+func NewDisableClsLogTopicResponse() (response *DisableClsLogTopicResponse) {
+    response = &DisableClsLogTopicResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DisableClsLogTopic 用于停止日志主题投递。注意：停止后，所有绑定该日志主题域名的日志将不再继续投递至该主题，已经投递的日志将会继续保留。生效时间约 5~15 分钟。
+func (c *Client) DisableClsLogTopic(request *DisableClsLogTopicRequest) (response *DisableClsLogTopicResponse, err error) {
+    if request == nil {
+        request = NewDisableClsLogTopicRequest()
+    }
+    response = NewDisableClsLogTopicResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewEnableCachesRequest() (request *EnableCachesRequest) {
     request = &EnableCachesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -593,6 +668,31 @@ func (c *Client) EnableCaches(request *EnableCachesRequest) (response *EnableCac
     return
 }
 
+func NewEnableClsLogTopicRequest() (request *EnableClsLogTopicRequest) {
+    request = &EnableClsLogTopicRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cdn", APIVersion, "EnableClsLogTopic")
+    return
+}
+
+func NewEnableClsLogTopicResponse() (response *EnableClsLogTopicResponse) {
+    response = &EnableClsLogTopicResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// EnableClsLogTopic 用于启动日志主题投递。注意：启动后，所有绑定该日志主题域名的日志将继续投递至该主题。生效时间约 5~15 分钟。
+func (c *Client) EnableClsLogTopic(request *EnableClsLogTopicRequest) (response *EnableClsLogTopicResponse, err error) {
+    if request == nil {
+        request = NewEnableClsLogTopicRequest()
+    }
+    response = NewEnableClsLogTopicResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewGetDisableRecordsRequest() (request *GetDisableRecordsRequest) {
     request = &GetDisableRecordsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -614,6 +714,56 @@ func (c *Client) GetDisableRecords(request *GetDisableRecordsRequest) (response 
         request = NewGetDisableRecordsRequest()
     }
     response = NewGetDisableRecordsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewListClsLogTopicsRequest() (request *ListClsLogTopicsRequest) {
+    request = &ListClsLogTopicsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cdn", APIVersion, "ListClsLogTopics")
+    return
+}
+
+func NewListClsLogTopicsResponse() (response *ListClsLogTopicsResponse) {
+    response = &ListClsLogTopicsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ListClsLogTopics 用于显示日志主题列表。注意：一个日志集下至多含10个日志主题。
+func (c *Client) ListClsLogTopics(request *ListClsLogTopicsRequest) (response *ListClsLogTopicsResponse, err error) {
+    if request == nil {
+        request = NewListClsLogTopicsRequest()
+    }
+    response = NewListClsLogTopicsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewListClsTopicDomainsRequest() (request *ListClsTopicDomainsRequest) {
+    request = &ListClsTopicDomainsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cdn", APIVersion, "ListClsTopicDomains")
+    return
+}
+
+func NewListClsTopicDomainsResponse() (response *ListClsTopicDomainsResponse) {
+    response = &ListClsTopicDomainsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 获取主题下绑定的域名列表
+func (c *Client) ListClsTopicDomains(request *ListClsTopicDomainsRequest) (response *ListClsTopicDomainsResponse, err error) {
+    if request == nil {
+        request = NewListClsTopicDomainsRequest()
+    }
+    response = NewListClsTopicDomainsResponse()
     err = c.Send(request, response)
     return
 }
@@ -647,6 +797,31 @@ func (c *Client) ListTopData(request *ListTopDataRequest) (response *ListTopData
         request = NewListTopDataRequest()
     }
     response = NewListTopDataResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewManageClsTopicDomainsRequest() (request *ManageClsTopicDomainsRequest) {
+    request = &ManageClsTopicDomainsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cdn", APIVersion, "ManageClsTopicDomains")
+    return
+}
+
+func NewManageClsTopicDomainsResponse() (response *ManageClsTopicDomainsResponse) {
+    response = &ManageClsTopicDomainsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ManageClsTopicDomains 用于管理某日志主题下绑定的域名列表。
+func (c *Client) ManageClsTopicDomains(request *ManageClsTopicDomainsRequest) (response *ManageClsTopicDomainsResponse, err error) {
+    if request == nil {
+        request = NewManageClsTopicDomainsRequest()
+    }
+    response = NewManageClsTopicDomainsResponse()
     err = c.Send(request, response)
     return
 }
@@ -726,6 +901,31 @@ func (c *Client) PushUrlsCache(request *PushUrlsCacheRequest) (response *PushUrl
         request = NewPushUrlsCacheRequest()
     }
     response = NewPushUrlsCacheResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewSearchClsLogRequest() (request *SearchClsLogRequest) {
+    request = &SearchClsLogRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cdn", APIVersion, "SearchClsLog")
+    return
+}
+
+func NewSearchClsLogResponse() (response *SearchClsLogResponse) {
+    response = &SearchClsLogResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// SearchClsLog 用于 CLS 日志检索。支持检索今天，24小时（可选近7中的某一天），近7天的日志数据。
+func (c *Client) SearchClsLog(request *SearchClsLogRequest) (response *SearchClsLogResponse, err error) {
+    if request == nil {
+        request = NewSearchClsLogRequest()
+    }
+    response = NewSearchClsLogResponse()
     err = c.Send(request, response)
     return
 }

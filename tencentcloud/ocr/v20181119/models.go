@@ -392,17 +392,12 @@ type Coord struct {
 type DriverLicenseOCRRequest struct {
 	*tchttp.BaseRequest
 
-	// 图片的 Base64 值。
-	// 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
-	// 支持的图片大小：所下载图片经Base64编码后不超过 7M。图片下载时间不超过 3 秒。
+	// 图片的 Base64 值。要求图片经Base64编码后不超过 7M，分辨率建议500*800以上，支持PNG、JPG、JPEG、BMP格式。建议卡片部分占据图片2/3以上。
 	// 图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
 	ImageBase64 *string `json:"ImageBase64,omitempty" name:"ImageBase64"`
 
-	// 图片的 Url 地址。
-	// 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
-	// 支持的图片大小：所下载图片经 Base64 编码后不超过 7M。图片下载时间不超过 3 秒。
-	// 图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。
-	// 非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+	// 图片的 Url 地址。要求图片经Base64编码后不超过 7M，分辨率建议500*800以上，支持PNG、JPG、JPEG、BMP格式。建议卡片部分占据图片2/3以上。图片下载时间不超过 3 秒。
+	// 建议图片存储于腾讯云，可保障更高的下载速度和稳定性。
 	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
 }
 
@@ -449,14 +444,17 @@ type DriverLicenseOCRResponse struct {
 		// 证号
 		CardCode *string `json:"CardCode,omitempty" name:"CardCode"`
 
-		// 告警码	告警码消息	                                                告警码说明
-	// -9102	WARN_DRIVER_LICENSE_COPY_CARD	        复印件告警
-	// -9103	WARN_DRIVER_LICENSE_SCREENED_CARD	翻拍件告警
-	// -9106	WARN_DRIVER_LICENSE_PS_CARD	                ps告警
+		// Code 告警码列表和释义：
+	// -9102  复印件告警
+	// -9103  翻拍件告警
+	// -9106  ps告警
 	// 注：告警码可以同时存在多个
 		RecognizeWarnCode []*int64 `json:"RecognizeWarnCode,omitempty" name:"RecognizeWarnCode" list`
 
-		// 告警码说明
+		// 告警码说明：
+	// WARN_DRIVER_LICENSE_COPY_CARD 复印件告警
+	// WARN_DRIVER_LICENSE_SCREENED_CARD 翻拍件告警
+	// WARN_DRIVER_LICENSE_PS_CARD ps告警
 	// 注：告警信息可以同时存在多个
 		RecognizeWarnMsg []*string `json:"RecognizeWarnMsg,omitempty" name:"RecognizeWarnMsg" list`
 
@@ -1507,7 +1505,7 @@ type InvoiceDetectInfo struct {
 	// 14：购物小票
 	Type *int64 `json:"Type,omitempty" name:"Type"`
 
-	// 识别出的图片在混贴票据图片中的位置信息。
+	// 识别出的图片在混贴票据图片中的位置信息。与Angel结合可以得出原图位置，组成RotatedRect((X,Y), (Width, Height), Angle)，详情可参考OpenCV文档。
 	Rect *Rect `json:"Rect,omitempty" name:"Rect"`
 
 	// 入参 ReturnImage 为 True 时返回 Base64 编码后的图片。
@@ -1768,6 +1766,7 @@ type MLIDPassportOCRResponse struct {
 		// 告警码
 	// -9103	证照翻拍告警
 	// -9102	证照复印件告警
+	// -9106       证件遮挡告警
 		Warn []*int64 `json:"Warn,omitempty" name:"Warn" list`
 
 		// 证件图片
@@ -1871,7 +1870,7 @@ type MixedInvoiceItem struct {
 	// 13：过路过桥费发票
 	Type *int64 `json:"Type,omitempty" name:"Type"`
 
-	// 识别出的图片在混贴票据图片中的位置信息。
+	// 识别出的图片在混贴票据图片中的位置信息。与Angel结合可以得出原图位置，组成RotatedRect((X,Y), (Width, Height), Angle)，详情可参考OpenCV文档。
 	Rect *Rect `json:"Rect,omitempty" name:"Rect"`
 
 	// 识别出的图片在混贴票据图片中的旋转角度。
@@ -2014,11 +2013,8 @@ type PassportOCRRequest struct {
 	// 非腾讯云存储的 Url 速度和稳定性可能受一定影响。
 	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
 
-	// 护照类型（默认CN）：
-	// CN：支持中国大陆居民护照，字段较多，精度更高；
-	// HK：支持中国香港护照（部分主要字段）；
-	// GENERAL：支持国外护照（部分主要字段）；
-	// THAI：支持泰国护照（部分主要字段）。
+	// 默认填写CN
+	// 支持中国大陆居民护照。
 	Type *string `json:"Type,omitempty" name:"Type"`
 }
 
@@ -3264,17 +3260,12 @@ func (r *VatRollInvoiceOCRResponse) FromJsonString(s string) error {
 type VehicleLicenseOCRRequest struct {
 	*tchttp.BaseRequest
 
-	// 图片的 Base64 值。
-	// 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
-	// 支持的图片大小：所下载图片经Base64编码后不超过 7M。图片下载时间不超过 3 秒。
+	// 图片的 Base64 值。要求图片经Base64编码后不超过 7M，分辨率建议500*800以上，支持PNG、JPG、JPEG、BMP格式。建议卡片部分占据图片2/3以上。
 	// 图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
 	ImageBase64 *string `json:"ImageBase64,omitempty" name:"ImageBase64"`
 
-	// 图片的 Url 地址。
-	// 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
-	// 支持的图片大小：所下载图片经 Base64 编码后不超过 7M。图片下载时间不超过 3 秒。
-	// 图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。
-	// 非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+	// 图片的 Url 地址。要求图片经Base64编码后不超过 7M，分辨率建议500*800以上，支持PNG、JPG、JPEG、BMP格式。建议卡片部分占据图片2/3以上。图片下载时间不超过 3 秒。
+	// 建议图片存储于腾讯云，可保障更高的下载速度和稳定性。
 	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
 
 	// FRONT 为行驶证主页正面（有红色印章的一面），
@@ -3303,14 +3294,17 @@ type VehicleLicenseOCRResponse struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		BackInfo *TextVehicleBack `json:"BackInfo,omitempty" name:"BackInfo"`
 
-		// 告警码	告警码消息	                                                告警码说明
-	// -9102	WARN_DRIVER_LICENSE_COPY_CARD	        复印件告警
-	// -9103	WARN_DRIVER_LICENSE_SCREENED_CARD	翻拍件告警
-	// -9106	WARN_DRIVER_LICENSE_PS_CARD	                ps告警
+		// Code 告警码列表和释义：
+	// -9102 复印件告警
+	// -9103 翻拍件告警
+	// -9106 ps告警
 	// 注：告警码可以同时存在多个
 		RecognizeWarnCode []*int64 `json:"RecognizeWarnCode,omitempty" name:"RecognizeWarnCode" list`
 
-		// 告警码说明
+		// 告警码说明：
+	// WARN_DRIVER_LICENSE_COPY_CARD 复印件告警
+	// WARN_DRIVER_LICENSE_SCREENED_CARD 翻拍件告警
+	// WARN_DRIVER_LICENSE_PS_CARD ps告警
 	// 注：告警信息可以同时存在多个
 		RecognizeWarnMsg []*string `json:"RecognizeWarnMsg,omitempty" name:"RecognizeWarnMsg" list`
 

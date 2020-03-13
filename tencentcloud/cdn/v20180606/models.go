@@ -550,6 +550,39 @@ type ClientCert struct {
 	DeployTime *string `json:"DeployTime,omitempty" name:"DeployTime"`
 }
 
+type ClsLogObject struct {
+
+	// 主题ID
+	TopicId *string `json:"TopicId,omitempty" name:"TopicId"`
+
+	// 主题名字
+	TopicName *string `json:"TopicName,omitempty" name:"TopicName"`
+
+	// 日志时间
+	Timestamp *string `json:"Timestamp,omitempty" name:"Timestamp"`
+
+	// 日志内容
+	Content *string `json:"Content,omitempty" name:"Content"`
+
+	// 采集路径
+	Filename *string `json:"Filename,omitempty" name:"Filename"`
+
+	// 日志来源设备
+	Source *string `json:"Source,omitempty" name:"Source"`
+}
+
+type ClsSearchLogs struct {
+
+	// 获取更多检索结果的游标
+	Context *string `json:"Context,omitempty" name:"Context"`
+
+	// 搜索结果是否已经全部返回
+	Listover *bool `json:"Listover,omitempty" name:"Listover"`
+
+	// 日志内容信息
+	Results []*ClsLogObject `json:"Results,omitempty" name:"Results" list`
+}
+
 type Compatibility struct {
 
 	// 兼容标志状态码。
@@ -596,6 +629,49 @@ type CompressionRule struct {
 	Algorithms []*string `json:"Algorithms,omitempty" name:"Algorithms" list`
 }
 
+type CreateClsLogTopicRequest struct {
+	*tchttp.BaseRequest
+
+	// 日志主题名称
+	TopicName *string `json:"TopicName,omitempty" name:"TopicName"`
+
+	// 日志集ID
+	LogsetId *string `json:"LogsetId,omitempty" name:"LogsetId"`
+
+	// 接入渠道，默认值为cdn
+	Channel *string `json:"Channel,omitempty" name:"Channel"`
+
+	// 域名区域信息
+	DomainAreaConfigs []*DomainAreaConfig `json:"DomainAreaConfigs,omitempty" name:"DomainAreaConfigs" list`
+}
+
+func (r *CreateClsLogTopicRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateClsLogTopicRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateClsLogTopicResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateClsLogTopicResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateClsLogTopicResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DeleteCdnDomainRequest struct {
 	*tchttp.BaseRequest
 
@@ -628,6 +704,46 @@ func (r *DeleteCdnDomainResponse) ToJsonString() string {
 }
 
 func (r *DeleteCdnDomainResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteClsLogTopicRequest struct {
+	*tchttp.BaseRequest
+
+	// 主日志题ID
+	TopicId *string `json:"TopicId,omitempty" name:"TopicId"`
+
+	// 日志集ID
+	LogsetId *string `json:"LogsetId,omitempty" name:"LogsetId"`
+
+	// 接入渠道，默认值为cdn
+	Channel *string `json:"Channel,omitempty" name:"Channel"`
+}
+
+func (r *DeleteClsLogTopicRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteClsLogTopicRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteClsLogTopicResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DeleteClsLogTopicResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteClsLogTopicResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -1855,6 +1971,55 @@ func (r *DisableCachesResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DisableClsLogTopicRequest struct {
+	*tchttp.BaseRequest
+
+	// 日志集ID
+	LogsetId *string `json:"LogsetId,omitempty" name:"LogsetId"`
+
+	// 日志主题ID
+	TopicId *string `json:"TopicId,omitempty" name:"TopicId"`
+
+	// 接入渠道，默认值为cdn
+	Channel *string `json:"Channel,omitempty" name:"Channel"`
+}
+
+func (r *DisableClsLogTopicRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DisableClsLogTopicRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DisableClsLogTopicResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DisableClsLogTopicResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DisableClsLogTopicResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DomainAreaConfig struct {
+
+	// 域名
+	Domain *string `json:"Domain,omitempty" name:"Domain"`
+
+	// 地区列表，其中元素可为mainland/overseas
+	Area []*string `json:"Area,omitempty" name:"Area" list`
+}
+
 type DomainFilter struct {
 
 	// 过滤字段名，支持的列表如下：
@@ -1946,6 +2111,46 @@ func (r *EnableCachesResponse) ToJsonString() string {
 }
 
 func (r *EnableCachesResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type EnableClsLogTopicRequest struct {
+	*tchttp.BaseRequest
+
+	// 日志集ID
+	LogsetId *string `json:"LogsetId,omitempty" name:"LogsetId"`
+
+	// 日志主题ID
+	TopicId *string `json:"TopicId,omitempty" name:"TopicId"`
+
+	// 接入渠道，默认值为cdn
+	Channel *string `json:"Channel,omitempty" name:"Channel"`
+}
+
+func (r *EnableClsLogTopicRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *EnableClsLogTopicRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type EnableClsLogTopicResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *EnableClsLogTopicResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *EnableClsLogTopicResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -2213,6 +2418,109 @@ type Ipv6 struct {
 	Switch *string `json:"Switch,omitempty" name:"Switch"`
 }
 
+type ListClsLogTopicsRequest struct {
+	*tchttp.BaseRequest
+
+	// 接入渠道，默认值为cdn
+	Channel *string `json:"Channel,omitempty" name:"Channel"`
+}
+
+func (r *ListClsLogTopicsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ListClsLogTopicsRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ListClsLogTopicsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 日志集信息
+		Logset *LogSetInfo `json:"Logset,omitempty" name:"Logset"`
+
+		// 主题信息列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Topics []*TopicInfo `json:"Topics,omitempty" name:"Topics" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ListClsLogTopicsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ListClsLogTopicsResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ListClsTopicDomainsRequest struct {
+	*tchttp.BaseRequest
+
+	// 日志集ID
+	LogsetId *string `json:"LogsetId,omitempty" name:"LogsetId"`
+
+	// 主题ID
+	TopicId *string `json:"TopicId,omitempty" name:"TopicId"`
+
+	// 接入渠道，默认值为cdn，后期可扩充dsa/ecdn等
+	Channel *string `json:"Channel,omitempty" name:"Channel"`
+}
+
+func (r *ListClsTopicDomainsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ListClsTopicDomainsRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ListClsTopicDomainsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 开发者ID
+		AppId *uint64 `json:"AppId,omitempty" name:"AppId"`
+
+		// 渠道
+		Channel *string `json:"Channel,omitempty" name:"Channel"`
+
+		// 日志集ID
+		LogsetId *string `json:"LogsetId,omitempty" name:"LogsetId"`
+
+		// 主题ID
+		TopicId *string `json:"TopicId,omitempty" name:"TopicId"`
+
+		// 域名区域配置，其中可能含有已删除的域名，如果要再传回ManageClsTopicDomains接口，需要结合ListCdnDomains接口排除掉已删除的域名。
+		DomainAreaConfigs []*DomainAreaConfig `json:"DomainAreaConfigs,omitempty" name:"DomainAreaConfigs" list`
+
+		// 主题名称
+		TopicName *string `json:"TopicName,omitempty" name:"TopicName"`
+
+		// 主题最近更新时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ListClsTopicDomainsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ListClsTopicDomainsResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type ListTopDataRequest struct {
 	*tchttp.BaseRequest
 
@@ -2307,6 +2615,34 @@ func (r *ListTopDataResponse) ToJsonString() string {
 
 func (r *ListTopDataResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
+}
+
+type LogSetInfo struct {
+
+	// 开发者ID
+	AppId *uint64 `json:"AppId,omitempty" name:"AppId"`
+
+	// 渠道
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Channel *string `json:"Channel,omitempty" name:"Channel"`
+
+	// 日志集ID
+	LogsetId *string `json:"LogsetId,omitempty" name:"LogsetId"`
+
+	// 日志集名字
+	LogsetName *string `json:"LogsetName,omitempty" name:"LogsetName"`
+
+	// 是否默认日志集
+	IsDefault *uint64 `json:"IsDefault,omitempty" name:"IsDefault"`
+
+	// 日志保存时间，单位为天
+	LogsetSavePeriod *uint64 `json:"LogsetSavePeriod,omitempty" name:"LogsetSavePeriod"`
+
+	// 创建日期
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 区域
+	Region *string `json:"Region,omitempty" name:"Region"`
 }
 
 type MainlandConfig struct {
@@ -2406,6 +2742,49 @@ type MainlandConfig struct {
 	// 视频拖拽配置。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	VideoSeek *VideoSeek `json:"VideoSeek,omitempty" name:"VideoSeek"`
+}
+
+type ManageClsTopicDomainsRequest struct {
+	*tchttp.BaseRequest
+
+	// 日志集ID
+	LogsetId *string `json:"LogsetId,omitempty" name:"LogsetId"`
+
+	// 日志主题ID
+	TopicId *string `json:"TopicId,omitempty" name:"TopicId"`
+
+	// 接入渠道，默认值为cdn
+	Channel *string `json:"Channel,omitempty" name:"Channel"`
+
+	// 域名区域配置，注意：如果此字段为空，则表示解绑对应主题下的所有域名
+	DomainAreaConfigs []*DomainAreaConfig `json:"DomainAreaConfigs,omitempty" name:"DomainAreaConfigs" list`
+}
+
+func (r *ManageClsTopicDomainsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ManageClsTopicDomainsRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ManageClsTopicDomainsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ManageClsTopicDomainsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ManageClsTopicDomainsResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
 }
 
 type MapInfo struct {
@@ -2961,6 +3340,67 @@ type ResponseHeaderCache struct {
 	Switch *string `json:"Switch,omitempty" name:"Switch"`
 }
 
+type SearchClsLogRequest struct {
+	*tchttp.BaseRequest
+
+	// 需要查询的日志集ID
+	LogsetId *string `json:"LogsetId,omitempty" name:"LogsetId"`
+
+	// 需要查询的日志主题ID组合，以逗号分隔
+	TopicIds *string `json:"TopicIds,omitempty" name:"TopicIds"`
+
+	// 需要查询的日志的起始时间，格式 YYYY-mm-dd HH:MM:SS
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 需要查询的日志的结束时间，格式 YYYY-mm-dd HH:MM:SS
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 单次要返回的日志条数，单次返回的最大条数为100
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 接入渠道，默认值为cdn
+	Channel *string `json:"Channel,omitempty" name:"Channel"`
+
+	// 需要查询的内容，详情请参考https://cloud.tencent.com/document/product/614/16982
+	Query *string `json:"Query,omitempty" name:"Query"`
+
+	// 加载更多使用，透传上次返回的 context 值，获取后续的日志内容，通过游标最多可获取10000条，请尽可能缩小时间范围
+	Context *string `json:"Context,omitempty" name:"Context"`
+
+	// 按日志时间排序， asc（升序）或者 desc（降序），默认为 desc
+	Sort *string `json:"Sort,omitempty" name:"Sort"`
+}
+
+func (r *SearchClsLogRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *SearchClsLogRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type SearchClsLogResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 查询结果
+		Logs *ClsSearchLogs `json:"Logs,omitempty" name:"Logs"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *SearchClsLogResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *SearchClsLogResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type Seo struct {
 
 	// SEO 配置开关
@@ -3223,6 +3663,22 @@ type TopDetailData struct {
 
 	// 数据值
 	Value *float64 `json:"Value,omitempty" name:"Value"`
+}
+
+type TopicInfo struct {
+
+	// 主题ID
+	TopicId *string `json:"TopicId,omitempty" name:"TopicId"`
+
+	// 主题名字
+	TopicName *string `json:"TopicName,omitempty" name:"TopicName"`
+
+	// 是否启用投递
+	Enabled *int64 `json:"Enabled,omitempty" name:"Enabled"`
+
+	// 创建时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
 }
 
 type TrafficPackage struct {

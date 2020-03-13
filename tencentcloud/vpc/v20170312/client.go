@@ -341,6 +341,31 @@ func (c *Client) AssociateNatGatewayAddress(request *AssociateNatGatewayAddressR
     return
 }
 
+func NewAssociateNetworkAclSubnetsRequest() (request *AssociateNetworkAclSubnetsRequest) {
+    request = &AssociateNetworkAclSubnetsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "AssociateNetworkAclSubnets")
+    return
+}
+
+func NewAssociateNetworkAclSubnetsResponse() (response *AssociateNetworkAclSubnetsResponse) {
+    response = &AssociateNetworkAclSubnetsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（AssociateNetworkAclSubnets）用于网络ACL关联vpc下的子网。
+func (c *Client) AssociateNetworkAclSubnets(request *AssociateNetworkAclSubnetsRequest) (response *AssociateNetworkAclSubnetsResponse, err error) {
+    if request == nil {
+        request = NewAssociateNetworkAclSubnetsRequest()
+    }
+    response = NewAssociateNetworkAclSubnetsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewAttachCcnInstancesRequest() (request *AttachCcnInstancesRequest) {
     request = &AttachCcnInstancesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -805,6 +830,32 @@ func (c *Client) CreateNetDetect(request *CreateNetDetectRequest) (response *Cre
         request = NewCreateNetDetectRequest()
     }
     response = NewCreateNetDetectResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateNetworkAclRequest() (request *CreateNetworkAclRequest) {
+    request = &CreateNetworkAclRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "CreateNetworkAcl")
+    return
+}
+
+func NewCreateNetworkAclResponse() (response *CreateNetworkAclResponse) {
+    response = &CreateNetworkAclResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（CreateNetworkAcl）用于创建新的<a href="https://cloud.tencent.com/document/product/215/20088">网络ACL</a>。
+// * 新建的网络ACL的入站和出站规则默认都是全部拒绝，在创建后通常您需要再调用ModifyNetworkAclEntries将网络ACL的规则设置为需要的规则。
+func (c *Client) CreateNetworkAcl(request *CreateNetworkAclRequest) (response *CreateNetworkAclResponse, err error) {
+    if request == nil {
+        request = NewCreateNetworkAclRequest()
+    }
+    response = NewCreateNetworkAclResponse()
     err = c.Send(request, response)
     return
 }
@@ -1474,6 +1525,31 @@ func (c *Client) DeleteNetDetect(request *DeleteNetDetectRequest) (response *Del
         request = NewDeleteNetDetectRequest()
     }
     response = NewDeleteNetDetectResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteNetworkAclRequest() (request *DeleteNetworkAclRequest) {
+    request = &DeleteNetworkAclRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "DeleteNetworkAcl")
+    return
+}
+
+func NewDeleteNetworkAclResponse() (response *DeleteNetworkAclResponse) {
+    response = &DeleteNetworkAclResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（DeleteNetworkAcl）用于删除网络ACL。
+func (c *Client) DeleteNetworkAcl(request *DeleteNetworkAclRequest) (response *DeleteNetworkAclResponse, err error) {
+    if request == nil {
+        request = NewDeleteNetworkAclRequest()
+    }
+    response = NewDeleteNetworkAclResponse()
     err = c.Send(request, response)
     return
 }
@@ -2441,6 +2517,31 @@ func (c *Client) DescribeNetDetects(request *DescribeNetDetectsRequest) (respons
     return
 }
 
+func NewDescribeNetworkAclsRequest() (request *DescribeNetworkAclsRequest) {
+    request = &DescribeNetworkAclsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "DescribeNetworkAcls")
+    return
+}
+
+func NewDescribeNetworkAclsResponse() (response *DescribeNetworkAclsResponse) {
+    response = &DescribeNetworkAclsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（DescribeNetworkAcls）用于查询网络ACL列表。
+func (c *Client) DescribeNetworkAcls(request *DescribeNetworkAclsRequest) (response *DescribeNetworkAclsResponse, err error) {
+    if request == nil {
+        request = NewDescribeNetworkAclsRequest()
+    }
+    response = NewDescribeNetworkAclsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeNetworkInterfaceLimitRequest() (request *DescribeNetworkInterfaceLimitRequest) {
     request = &DescribeNetworkInterfaceLimitRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3044,6 +3145,31 @@ func (c *Client) DisassociateNatGatewayAddress(request *DisassociateNatGatewayAd
         request = NewDisassociateNatGatewayAddressRequest()
     }
     response = NewDisassociateNatGatewayAddressResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDisassociateNetworkAclSubnetsRequest() (request *DisassociateNetworkAclSubnetsRequest) {
+    request = &DisassociateNetworkAclSubnetsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "DisassociateNetworkAclSubnets")
+    return
+}
+
+func NewDisassociateNetworkAclSubnetsResponse() (response *DisassociateNetworkAclSubnetsResponse) {
+    response = &DisassociateNetworkAclSubnetsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（DisassociateNetworkAclSubnets）用于网络ACL解关联vpc下的子网。
+func (c *Client) DisassociateNetworkAclSubnets(request *DisassociateNetworkAclSubnetsRequest) (response *DisassociateNetworkAclSubnetsResponse, err error) {
+    if request == nil {
+        request = NewDisassociateNetworkAclSubnetsRequest()
+    }
+    response = NewDisassociateNetworkAclSubnetsResponse()
     err = c.Send(request, response)
     return
 }
@@ -3751,6 +3877,31 @@ func (c *Client) ModifyNetDetect(request *ModifyNetDetectRequest) (response *Mod
         request = NewModifyNetDetectRequest()
     }
     response = NewModifyNetDetectResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyNetworkAclAttributeRequest() (request *ModifyNetworkAclAttributeRequest) {
+    request = &ModifyNetworkAclAttributeRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "ModifyNetworkAclAttribute")
+    return
+}
+
+func NewModifyNetworkAclAttributeResponse() (response *ModifyNetworkAclAttributeResponse) {
+    response = &ModifyNetworkAclAttributeResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（ModifyNetworkAclAttribute）用于修改网络ACL属性。
+func (c *Client) ModifyNetworkAclAttribute(request *ModifyNetworkAclAttributeRequest) (response *ModifyNetworkAclAttributeResponse, err error) {
+    if request == nil {
+        request = NewModifyNetworkAclAttributeRequest()
+    }
+    response = NewModifyNetworkAclAttributeResponse()
     err = c.Send(request, response)
     return
 }

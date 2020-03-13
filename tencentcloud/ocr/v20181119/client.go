@@ -208,7 +208,9 @@ func NewDriverLicenseOCRResponse() (response *DriverLicenseOCRResponse) {
     return
 }
 
-// 本接口支持对驾驶证主页所有字段的自动定位与识别，包含证号、姓名、性别、国籍、住址、出生日期、初次领证日期、准驾车型、有效期限等。
+// 本接口支持对驾驶证主页所有字段的自动定位与识别，包括证号、姓名、性别、国籍、住址、出生日期、初次领证日期、准驾车型、有效期限，重点字段的识别准确度达到99%以上。
+// 
+// 另外，本接口还支持复印件、翻拍和PS告警功能。
 func (c *Client) DriverLicenseOCR(request *DriverLicenseOCRRequest) (response *DriverLicenseOCRResponse, err error) {
     if request == nil {
         request = NewDriverLicenseOCRRequest()
@@ -1233,7 +1235,13 @@ func NewVehicleLicenseOCRResponse() (response *VehicleLicenseOCRResponse) {
     return
 }
 
-// 本接口支持行驶证主页和副页所有字段的自动定位与识别，包含车牌号码、车辆类型、所有人、住址、使用性质、品牌型号、车辆识别代码、发动机号、注册日期、发证日期等。
+// 本接口支持行驶证主页和副页所有字段的自动定位与识别。
+// 
+// 行驶证主页：车牌号码、车辆类型、所有人、住址、使用性质、品牌型号、识别代码、发动机号、注册日期、发证日期、发证单位。
+// 
+// 行驶证副页：号牌号码、档案编号、核定载人数、总质量、整备质量、核定载质量、外廓尺寸、准牵引总质量、备注、检验记录。
+// 
+// 另外，本接口还支持复印件、翻拍和PS告警功能。
 func (c *Client) VehicleLicenseOCR(request *VehicleLicenseOCRRequest) (response *VehicleLicenseOCRResponse, err error) {
     if request == nil {
         request = NewVehicleLicenseOCRRequest()

@@ -20,56 +20,6 @@ import (
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
-type AudioModerationRequest struct {
-	*tchttp.BaseRequest
-
-	// 回调URL，音频识别结果将以POST请求方式发送到此地址
-	CallbackUrl *string `json:"CallbackUrl,omitempty" name:"CallbackUrl"`
-
-	// 音频内容的base64
-	FileContent *string `json:"FileContent,omitempty" name:"FileContent"`
-
-	// 音频文件的MD5值
-	FileMD5 *string `json:"FileMD5,omitempty" name:"FileMD5"`
-
-	// 音频内容Url ，其中FileUrl和FileContent二选一
-	FileUrl *string `json:"FileUrl,omitempty" name:"FileUrl"`
-}
-
-func (r *AudioModerationRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-func (r *AudioModerationRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
-}
-
-type AudioModerationResponse struct {
-	*tchttp.BaseResponse
-	Response *struct {
-
-		// 业务返回码 
-	// 60001：成功请求回调任务
-		BusinessCode *int64 `json:"BusinessCode,omitempty" name:"BusinessCode"`
-
-		// 识别返回结果
-		Data []*string `json:"Data,omitempty" name:"Data" list`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
-}
-
-func (r *AudioModerationResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-func (r *AudioModerationResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
-}
-
 type CodeDetail struct {
 
 	// 二维码在图片中的位置，由边界点的坐标表示
@@ -347,49 +297,6 @@ func (r *DescribeFileSampleResponse) ToJsonString() string {
 }
 
 func (r *DescribeFileSampleResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
-}
-
-type DescribeModerationOverviewRequest struct {
-	*tchttp.BaseRequest
-
-	// 日期，如2019-01-01， 查询该日期的概览数据
-	Date *string `json:"Date,omitempty" name:"Date"`
-
-	// 服务类型数组，可以动态配置，Text:文本，Image:图片，Audio:音频，Video:视频, 使用"ALL"表示所有类型, 不区分大小写，如 ["Text", "Image"]查询文本和图片服务的数据，["all"]查询所有服务的数据。
-	ServiceTypes []*string `json:"ServiceTypes,omitempty" name:"ServiceTypes" list`
-
-	// 渠道号数组，1:直播 2:点播 3:IM 4:GME，统计指定渠道组合的汇总数据，如[1,2]表示获取直播和点播两个渠道的汇总数据，不填[]为所有渠道汇总数据
-	Channels []*uint64 `json:"Channels,omitempty" name:"Channels" list`
-}
-
-func (r *DescribeModerationOverviewRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-func (r *DescribeModerationOverviewRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
-}
-
-type DescribeModerationOverviewResponse struct {
-	*tchttp.BaseResponse
-	Response *struct {
-
-		// 概览数据集合
-		Results []*OverviewRecord `json:"Results,omitempty" name:"Results" list`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
-}
-
-func (r *DescribeModerationOverviewResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-func (r *DescribeModerationOverviewResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -734,21 +641,6 @@ type OCRDetect struct {
 	TextInfo *string `json:"TextInfo,omitempty" name:"TextInfo"`
 }
 
-type OverviewRecord struct {
-
-	// 调用恶意量
-	EvilCount *uint64 `json:"EvilCount,omitempty" name:"EvilCount"`
-
-	// Text表示文本，Image表示图片，Audio表示音频，Video表示视频
-	ServiceType *string `json:"ServiceType,omitempty" name:"ServiceType"`
-
-	// 调用总量
-	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
-
-	// 恶意量同比增长率
-	Yoy *string `json:"Yoy,omitempty" name:"Yoy"`
-}
-
 type RrectF struct {
 
 	// logo横坐标
@@ -926,54 +818,4 @@ type TextSample struct {
 	// 1：已完成
 	// 2：处理中
 	Status *uint64 `json:"Status,omitempty" name:"Status"`
-}
-
-type VideoModerationRequest struct {
-	*tchttp.BaseRequest
-
-	// 回调URL，音频识别结果将以POST请求方式发送到此地址
-	CallbackUrl *string `json:"CallbackUrl,omitempty" name:"CallbackUrl"`
-
-	// 视频文件MD5
-	FileMD5 *string `json:"FileMD5,omitempty" name:"FileMD5"`
-
-	// 视频内容base64
-	FileContent *string `json:"FileContent,omitempty" name:"FileContent"`
-
-	// 视频内容Url,其中FileUrl与FileContent二选一
-	FileUrl *string `json:"FileUrl,omitempty" name:"FileUrl"`
-}
-
-func (r *VideoModerationRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-func (r *VideoModerationRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
-}
-
-type VideoModerationResponse struct {
-	*tchttp.BaseResponse
-	Response *struct {
-
-		// 业务返回码
-	// 60001：成功请求回调任务
-		BusinessCode *int64 `json:"BusinessCode,omitempty" name:"BusinessCode"`
-
-		// 识别返回结果
-		Data *string `json:"Data,omitempty" name:"Data"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
-}
-
-func (r *VideoModerationResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-func (r *VideoModerationResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
 }
