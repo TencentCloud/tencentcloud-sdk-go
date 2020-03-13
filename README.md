@@ -169,6 +169,7 @@ import "crypto/tls"
 | billing | 计费 |
 | bm | 黑石物理服务器 |
 | bmeip | 黑石弹性 IP |
+| captcha | 天御验证码 |
 | cbs | 云硬盘 |
 | cdb | 数据库 MySQL |
 | cdn | 内容分发网络 |
