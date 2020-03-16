@@ -368,6 +368,31 @@ func (c *Client) CreateL7RulesUpload(request *CreateL7RulesUploadRequest) (respo
     return
 }
 
+func NewCreateNetReturnRequest() (request *CreateNetReturnRequest) {
+    request = &CreateNetReturnRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("dayu", APIVersion, "CreateNetReturn")
+    return
+}
+
+func NewCreateNetReturnResponse() (response *CreateNetReturnResponse) {
+    response = &CreateNetReturnResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 高防IP专业版一键切回源站
+func (c *Client) CreateNetReturn(request *CreateNetReturnRequest) (response *CreateNetReturnResponse, err error) {
+    if request == nil {
+        request = NewCreateNetReturnRequest()
+    }
+    response = NewCreateNetReturnResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateUnblockIpRequest() (request *CreateUnblockIpRequest) {
     request = &CreateUnblockIpRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2339,6 +2364,31 @@ func (c *Client) ModifyL7Rules(request *ModifyL7RulesRequest) (response *ModifyL
         request = NewModifyL7RulesRequest()
     }
     response = NewModifyL7RulesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyNetReturnSwitchRequest() (request *ModifyNetReturnSwitchRequest) {
+    request = &ModifyNetReturnSwitchRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("dayu", APIVersion, "ModifyNetReturnSwitch")
+    return
+}
+
+func NewModifyNetReturnSwitchResponse() (response *ModifyNetReturnSwitchResponse) {
+    response = &ModifyNetReturnSwitchResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 在客户收攻击或者被封堵时，切回到源站，并设置回切的时长
+func (c *Client) ModifyNetReturnSwitch(request *ModifyNetReturnSwitchRequest) (response *ModifyNetReturnSwitchResponse, err error) {
+    if request == nil {
+        request = NewModifyNetReturnSwitchRequest()
+    }
+    response = NewModifyNetReturnSwitchResponse()
     err = c.Send(request, response)
     return
 }

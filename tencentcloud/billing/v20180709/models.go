@@ -118,6 +118,10 @@ type BillDetail struct {
 	// 交易类型代码（未开放的字段）
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ActionType *string `json:"ActionType,omitempty" name:"ActionType"`
+
+	// 区域ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RegionId *uint64 `json:"RegionId,omitempty" name:"RegionId"`
 }
 
 type BillDetailComponent struct {
@@ -275,6 +279,15 @@ type BillResourceSummary struct {
 
 	// 操作者uin,无值则返回"-"
 	OperateUin *string `json:"OperateUin,omitempty" name:"OperateUin"`
+
+	// 商品名称代码
+	BusinessCode *string `json:"BusinessCode,omitempty" name:"BusinessCode"`
+
+	// 子商品名称代码
+	ProductCode *string `json:"ProductCode,omitempty" name:"ProductCode"`
+
+	// 区域ID
+	RegionId *int64 `json:"RegionId,omitempty" name:"RegionId"`
 }
 
 type BillTagInfo struct {

@@ -23,12 +23,15 @@ import (
 type Action struct {
 
 	// 转发至topic
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Topic *TopicAction `json:"Topic,omitempty" name:"Topic"`
 
 	// 转发至第三发
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Service *ServiceAction `json:"Service,omitempty" name:"Service"`
 
 	// 转发至第三发Ckafka
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Ckafka *CkafkaAction `json:"Ckafka,omitempty" name:"Ckafka"`
 }
 
@@ -939,15 +942,19 @@ type DataHistoryEntry struct {
 type DataTemplate struct {
 
 	// 数字类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Number *NumberData `json:"Number,omitempty" name:"Number"`
 
 	// 字符串类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	String *StringData `json:"String,omitempty" name:"String"`
 
 	// 枚举类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Enum *EnumData `json:"Enum,omitempty" name:"Enum"`
 
 	// 布尔类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Bool *BoolData `json:"Bool,omitempty" name:"Bool"`
 }
 
@@ -1244,9 +1251,11 @@ type DeviceStatus struct {
 	Status *string `json:"Status,omitempty" name:"Status"`
 
 	// 首次上线时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	FirstOnline *string `json:"FirstOnline,omitempty" name:"FirstOnline"`
 
 	// 最后上线时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	LastOnline *string `json:"LastOnline,omitempty" name:"LastOnline"`
 
 	// 上线次数
@@ -1284,7 +1293,7 @@ type GetDataHistoryRequest struct {
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 
 	// 查询数据量
-	Size []*uint64 `json:"Size,omitempty" name:"Size" list`
+	Size *uint64 `json:"Size,omitempty" name:"Size"`
 
 	// 时间排序（desc/asc）
 	Order *string `json:"Order,omitempty" name:"Order"`
@@ -2255,9 +2264,11 @@ type RuleQuery struct {
 	Condition *string `json:"Condition,omitempty" name:"Condition"`
 
 	// Topic
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Topic *string `json:"Topic,omitempty" name:"Topic"`
 
 	// 产品Id
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
 }
 

@@ -224,6 +224,10 @@ type AttachPolicyInfo struct {
 	// 是否已下线
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Deactived *uint64 `json:"Deactived,omitempty" name:"Deactived"`
+
+	// 已下线的产品列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DeactivedDetail []*string `json:"DeactivedDetail,omitempty" name:"DeactivedDetail" list`
 }
 
 type AttachRolePolicyRequest struct {
@@ -321,9 +325,13 @@ type AttachedPolicyOfRole struct {
 	// 策略创建方式，1表示按产品功能或项目权限创建，其他表示按策略语法创建
 	CreateMode *uint64 `json:"CreateMode,omitempty" name:"CreateMode"`
 
-	// 是否已下线
+	// 是否已下线(0:否 1:是)
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Deactived *uint64 `json:"Deactived,omitempty" name:"Deactived"`
+
+	// 已下线的产品列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DeactivedDetail []*string `json:"DeactivedDetail,omitempty" name:"DeactivedDetail" list`
 }
 
 type ConsumeCustomMFATokenRequest struct {
@@ -457,6 +465,9 @@ type CreateRoleRequest struct {
 
 	// 是否允许登录 1 为允许 0 为不允许
 	ConsoleLogin *uint64 `json:"ConsoleLogin,omitempty" name:"ConsoleLogin"`
+
+	// 申请角色临时密钥的最长有效期限制(范围：0~43200)
+	SessionDuration *uint64 `json:"SessionDuration,omitempty" name:"SessionDuration"`
 }
 
 func (r *CreateRoleRequest) ToJsonString() string {
@@ -677,6 +688,9 @@ type DeleteUserRequest struct {
 
 	// 子用户用户名
 	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 是否强制删除该子用户，默认入参为0。0：若该用户存在未删除API密钥，则不删除用户；1：若该用户存在未删除API密钥，则先删除密钥后删除用户。删除密钥需要您拥有cam:DeleteApiKey权限，您将可以删除该用户下启用或禁用状态的所有密钥，无权限则删除密钥和用户失败
+	Force *uint64 `json:"Force,omitempty" name:"Force"`
 }
 
 func (r *DeleteUserRequest) ToJsonString() string {
@@ -1780,6 +1794,10 @@ type RoleInfo struct {
 	// 角色类型，取user或system
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RoleType *string `json:"RoleType,omitempty" name:"RoleType"`
+
+	// 有效时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SessionDuration *uint64 `json:"SessionDuration,omitempty" name:"SessionDuration"`
 }
 
 type SAMLProviderInfo struct {
@@ -1879,6 +1897,10 @@ type StrategyInfo struct {
 	// 是否已下线
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Deactived *uint64 `json:"Deactived,omitempty" name:"Deactived"`
+
+	// 已下线产品列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DeactivedDetail []*string `json:"DeactivedDetail,omitempty" name:"DeactivedDetail" list`
 }
 
 type SubAccountInfo struct {

@@ -703,6 +703,9 @@ type FileSystemInfo struct {
 
 	// 加密所使用的密钥，可以为密钥的 ID 或者 ARN
 	KmsKeyId *string `json:"KmsKeyId,omitempty" name:"KmsKeyId"`
+
+	// 应用ID
+	AppId *int64 `json:"AppId,omitempty" name:"AppId"`
 }
 
 type MountInfo struct {

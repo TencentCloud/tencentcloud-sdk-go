@@ -78,79 +78,6 @@ func (r *CloseDBExtranetAccessResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
-type CreateDBInstancesRequest struct {
-	*tchttp.BaseRequest
-
-	// 售卖规格ID。该参数可以通过调用DescribeProductConfig的返回值中的SpecCode字段来获取。
-	SpecCode *string `json:"SpecCode,omitempty" name:"SpecCode"`
-
-	// PostgreSQL内核版本，目前只支持：9.3.5、9.5.4两种版本。
-	DBVersion *string `json:"DBVersion,omitempty" name:"DBVersion"`
-
-	// 实例容量大小，单位：GB。
-	Storage *uint64 `json:"Storage,omitempty" name:"Storage"`
-
-	// 一次性购买的实例数量。取值1-100
-	InstanceCount *uint64 `json:"InstanceCount,omitempty" name:"InstanceCount"`
-
-	// 购买时长，单位：月。目前只支持1,2,3,4,5,6,7,8,9,10,11,12,24,36这些值。
-	Period *uint64 `json:"Period,omitempty" name:"Period"`
-
-	// 可用区ID。该参数可以通过调用 DescribeZones 接口的返回值中的Zone字段来获取。
-	Zone *string `json:"Zone,omitempty" name:"Zone"`
-
-	// 项目ID。
-	ProjectId *int64 `json:"ProjectId,omitempty" name:"ProjectId"`
-
-	// 实例计费类型。目前只支持：PREPAID（预付费，即包年包月）。
-	InstanceChargeType *string `json:"InstanceChargeType,omitempty" name:"InstanceChargeType"`
-
-	// 是否自动使用代金券。1（是），0（否），默认不使用。
-	AutoVoucher *uint64 `json:"AutoVoucher,omitempty" name:"AutoVoucher"`
-
-	// 代金券ID列表，目前仅支持指定一张代金券。
-	VoucherIds []*string `json:"VoucherIds,omitempty" name:"VoucherIds" list`
-
-	// 私有网络ID。
-	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
-
-	// 私有网络子网ID。
-	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
-
-	// 续费标记：0-正常续费（默认）；1-自动续费；
-	AutoRenewFlag *int64 `json:"AutoRenewFlag,omitempty" name:"AutoRenewFlag"`
-}
-
-func (r *CreateDBInstancesRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-func (r *CreateDBInstancesRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
-}
-
-type CreateDBInstancesResponse struct {
-	*tchttp.BaseResponse
-	Response *struct {
-
-		// 订单号列表。每个实例对应一个订单号。
-		DealNames []*string `json:"DealNames,omitempty" name:"DealNames" list`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
-}
-
-func (r *CreateDBInstancesResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-func (r *CreateDBInstancesResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
-}
-
 type DBBackup struct {
 
 	// 备份文件唯一标识
@@ -482,52 +409,6 @@ func (r *DescribeDBInstanceAttributeResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
-type DescribeDBInstancesRequest struct {
-	*tchttp.BaseRequest
-
-	// 过滤条件，目前支持：db-instance-id、db-instance-name两种。
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
-
-	// 每页显示数量，默认返回10条。
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
-
-	// 分页序号，从0开始。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
-}
-
-func (r *DescribeDBInstancesRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-func (r *DescribeDBInstancesRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
-}
-
-type DescribeDBInstancesResponse struct {
-	*tchttp.BaseResponse
-	Response *struct {
-
-		// 查询到的实例数量。
-		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
-
-		// 实例详细信息集合。
-		DBInstanceSet []*DBInstance `json:"DBInstanceSet,omitempty" name:"DBInstanceSet" list`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
-}
-
-func (r *DescribeDBInstancesResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-func (r *DescribeDBInstancesResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
-}
-
 type DescribeDBSlowlogsRequest struct {
 	*tchttp.BaseRequest
 
@@ -805,15 +686,6 @@ type ErrLogDetail struct {
 
 	// 错误消息
 	ErrMsg *string `json:"ErrMsg,omitempty" name:"ErrMsg"`
-}
-
-type Filter struct {
-
-	// 过滤键的名称。
-	Name *string `json:"Name,omitempty" name:"Name"`
-
-	// 一个或者多个过滤值。
-	Values []*string `json:"Values,omitempty" name:"Values" list`
 }
 
 type InitDBInstancesRequest struct {
@@ -1468,55 +1340,6 @@ type SpecItemInfo struct {
 
 	// 机器类型
 	Type *string `json:"Type,omitempty" name:"Type"`
-}
-
-type UpgradeDBInstanceRequest struct {
-	*tchttp.BaseRequest
-
-	// 升级后的实例内存大小，单位GB
-	Memory *int64 `json:"Memory,omitempty" name:"Memory"`
-
-	// 升级后的实例磁盘大小，单位GB
-	Storage *int64 `json:"Storage,omitempty" name:"Storage"`
-
-	// 实例ID，形如postgres-lnp6j617
-	DBInstanceId *string `json:"DBInstanceId,omitempty" name:"DBInstanceId"`
-
-	// 是否自动使用代金券,1是,0否，默认不使用
-	AutoVoucher *int64 `json:"AutoVoucher,omitempty" name:"AutoVoucher"`
-
-	// 代金券ID列表，目前仅支持指定一张代金券
-	VoucherIds []*string `json:"VoucherIds,omitempty" name:"VoucherIds" list`
-}
-
-func (r *UpgradeDBInstanceRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-func (r *UpgradeDBInstanceRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
-}
-
-type UpgradeDBInstanceResponse struct {
-	*tchttp.BaseResponse
-	Response *struct {
-
-		// 交易名字。
-		DealName *string `json:"DealName,omitempty" name:"DealName"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
-}
-
-func (r *UpgradeDBInstanceResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-func (r *UpgradeDBInstanceResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
 }
 
 type Xlog struct {

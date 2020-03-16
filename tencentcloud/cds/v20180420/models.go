@@ -54,6 +54,25 @@ type CdsAuditInstance struct {
 
 	// 实例过期时间，格式：yyyy-mm-dd HH:ii:ss
 	ExpireTime *string `json:"ExpireTime,omitempty" name:"ExpireTime"`
+
+	// 实例名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceName *string `json:"InstanceName,omitempty" name:"InstanceName"`
+
+	// 实例公网IP
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PublicIp *string `json:"PublicIp,omitempty" name:"PublicIp"`
+
+	// 实例私网IP
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PrivateIp *string `json:"PrivateIp,omitempty" name:"PrivateIp"`
+
+	// 实例类型（版本）
+	InstanceType *string `json:"InstanceType,omitempty" name:"InstanceType"`
+
+	// 实例域名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Pdomain *string `json:"Pdomain,omitempty" name:"Pdomain"`
 }
 
 type DbauditTypesInfo struct {
@@ -78,6 +97,43 @@ type DbauditTypesInfo struct {
 
 	// 最大归档存储量，单位：条
 	ArchivingStorageCapacity *uint64 `json:"ArchivingStorageCapacity,omitempty" name:"ArchivingStorageCapacity"`
+}
+
+type DescribeDasbImageIdsRequest struct {
+	*tchttp.BaseRequest
+}
+
+func (r *DescribeDasbImageIdsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeDasbImageIdsRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeDasbImageIdsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 基础镜像ID
+		BaseImageId *string `json:"BaseImageId,omitempty" name:"BaseImageId"`
+
+		// AI镜像ID
+		AiImageId *string `json:"AiImageId,omitempty" name:"AiImageId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeDasbImageIdsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeDasbImageIdsResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeDbauditInstanceTypeRequest struct {

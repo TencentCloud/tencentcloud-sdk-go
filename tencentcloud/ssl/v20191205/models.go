@@ -260,7 +260,7 @@ type Certificates struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProjectInfo *ProjectInfo `json:"ProjectInfo,omitempty" name:"ProjectInfo"`
 
-	// 需要权限的资源。
+	// 关联的云资源，暂不可用
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	BoundResource []*string `json:"BoundResource,omitempty" name:"BoundResource" list`
 
@@ -722,7 +722,7 @@ func (r *DescribeCertificateResponse) FromJsonString(s string) error {
 type DescribeCertificatesRequest struct {
 	*tchttp.BaseRequest
 
-	// 页数。
+	// 分页偏移量，从0开始
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
 
 	// 每页数量。

@@ -25,6 +25,9 @@ type CheckDomainRequest struct {
 
 	// 所查询域名名称
 	DomainName *string `json:"DomainName,omitempty" name:"DomainName"`
+
+	// 年限
+	Period *string `json:"Period,omitempty" name:"Period"`
 }
 
 func (r *CheckDomainRequest) ToJsonString() string {
@@ -52,11 +55,33 @@ type CheckDomainResponse struct {
 		// 是否是溢价词
 		Premium *bool `json:"Premium,omitempty" name:"Premium"`
 
-		// 价格
+		// 域名价格
 		Price *uint64 `json:"Price,omitempty" name:"Price"`
 
 		// 是否是敏感词
 		BlackWord *bool `json:"BlackWord,omitempty" name:"BlackWord"`
+
+		// 溢价词描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Describe *string `json:"Describe,omitempty" name:"Describe"`
+
+		// 溢价词的续费价格
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		FeeRenew *uint64 `json:"FeeRenew,omitempty" name:"FeeRenew"`
+
+		// 域名真实价格
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		RealPrice *uint64 `json:"RealPrice,omitempty" name:"RealPrice"`
+
+		// 溢价词的转入价格
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		FeeTransfer *uint64 `json:"FeeTransfer,omitempty" name:"FeeTransfer"`
+
+		// 溢价词的赎回价格
+		FeeRestore *uint64 `json:"FeeRestore,omitempty" name:"FeeRestore"`
+
+		// 检测年限
+		Period *uint64 `json:"Period,omitempty" name:"Period"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -77,6 +102,12 @@ type DescribeDomainPriceListRequest struct {
 
 	// 查询价格的后缀列表。默认则为全部后缀
 	TldList []*string `json:"TldList,omitempty" name:"TldList" list`
+
+	// 查询购买的年份，默认会列出所有年份的价格
+	Year []*int64 `json:"Year,omitempty" name:"Year" list`
+
+	// 域名的购买类型：new  新购，renew 续费，redem 赎回，tran 转入
+	Operation []*string `json:"Operation,omitempty" name:"Operation" list`
 }
 
 func (r *DescribeDomainPriceListRequest) ToJsonString() string {

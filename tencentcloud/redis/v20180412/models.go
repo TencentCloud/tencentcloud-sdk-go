@@ -2350,6 +2350,30 @@ type InstanceSet struct {
 	// 是否为免密实例，true-免密实例；false-非免密实例
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	NoAuth *bool `json:"NoAuth,omitempty" name:"NoAuth"`
+
+	// 客户端连接数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClientLimit *int64 `json:"ClientLimit,omitempty" name:"ClientLimit"`
+
+	// DTS状态（内部参数，用户可忽略）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DtsStatus *int64 `json:"DtsStatus,omitempty" name:"DtsStatus"`
+
+	// 分片带宽上限，单位MB
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NetLimit *int64 `json:"NetLimit,omitempty" name:"NetLimit"`
+
+	// 免密实例标识（内部参数，用户可忽略）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PasswordFree *int64 `json:"PasswordFree,omitempty" name:"PasswordFree"`
+
+	// 实例只读标识（内部参数，用户可忽略）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ReadOnly *int64 `json:"ReadOnly,omitempty" name:"ReadOnly"`
+
+	// 内部参数，用户可忽略
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Vip6 *string `json:"Vip6,omitempty" name:"Vip6"`
 }
 
 type InstanceSlowlogDetail struct {

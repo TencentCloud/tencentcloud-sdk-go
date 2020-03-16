@@ -93,6 +93,43 @@ func (r *CreateSessionResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeWorkersInfoRequest struct {
+	*tchttp.BaseRequest
+}
+
+func (r *DescribeWorkersInfoRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeWorkersInfoRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeWorkersInfoResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 机器数量
+		WorkerNum *uint64 `json:"WorkerNum,omitempty" name:"WorkerNum"`
+
+		// 机器详细信息
+		WorkerDetail []*WorkerDetail `json:"WorkerDetail,omitempty" name:"WorkerDetail" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeWorkersInfoResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeWorkersInfoResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeWorkersRequest struct {
 	*tchttp.BaseRequest
 
@@ -133,6 +170,43 @@ func (r *DescribeWorkersResponse) ToJsonString() string {
 }
 
 func (r *DescribeWorkersResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyWorkersRequest struct {
+	*tchttp.BaseRequest
+
+	// 批量机器ID，最多不超过100个
+	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds" list`
+
+	// 资源池编号，修改有效范围为[1,100]，在idle状态下才能修改成功
+	SetNo *uint64 `json:"SetNo,omitempty" name:"SetNo"`
+}
+
+func (r *ModifyWorkersRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyWorkersRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyWorkersResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifyWorkersResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyWorkersResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -214,6 +288,40 @@ func (r *TrylockWorkerResponse) ToJsonString() string {
 
 func (r *TrylockWorkerResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
+}
+
+type WorkerDetail struct {
+
+	// 客户appid
+	AppId *uint64 `json:"AppId,omitempty" name:"AppId"`
+
+	// 资源池编号
+	SetNo *uint64 `json:"SetNo,omitempty" name:"SetNo"`
+
+	// 机器所属区域
+	Region *string `json:"Region,omitempty" name:"Region"`
+
+	// 机器ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 机器类型：
+	// LARGE-大型
+	// MEDIUM-中型
+	// SMALL-小型
+	InstanceType *string `json:"InstanceType,omitempty" name:"InstanceType"`
+
+	// 机器IP
+	Ip *string `json:"Ip,omitempty" name:"Ip"`
+
+	// 服务状态：
+	// IDLE-空闲
+	// LOCK-锁定
+	// ESTABLISHED-游戏中
+	// RECONNECT-等待重连
+	// RECOVERY-清理恢复
+	// FORBID-禁用
+	// UNAVAILABLE-不可用
+	ServiceState *string `json:"ServiceState,omitempty" name:"ServiceState"`
 }
 
 type WorkerRegionInfo struct {

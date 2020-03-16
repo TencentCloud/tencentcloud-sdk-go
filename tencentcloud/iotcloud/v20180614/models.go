@@ -1159,7 +1159,7 @@ func (r *DescribeTaskResponse) FromJsonString(s string) error {
 type DescribeTasksRequest struct {
 	*tchttp.BaseRequest
 
-	// 偏移l量，从0开始
+	// 偏移量，从0开始
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
 
 	// 分页的大小，数值范围 1-250

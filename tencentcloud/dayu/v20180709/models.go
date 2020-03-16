@@ -866,6 +866,43 @@ func (r *CreateL7RulesUploadResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type CreateNetReturnRequest struct {
+	*tchttp.BaseRequest
+
+	// 大禹子产品代号（net表示高防IP专业版）
+	Business *string `json:"Business,omitempty" name:"Business"`
+
+	// 资源实例ID
+	Id *string `json:"Id,omitempty" name:"Id"`
+}
+
+func (r *CreateNetReturnRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateNetReturnRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateNetReturnResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateNetReturnResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateNetReturnResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type CreateUnblockIpRequest struct {
 	*tchttp.BaseRequest
 
@@ -1062,7 +1099,12 @@ type DDoSPolicyPacketFilter struct {
 	// 最大包长，取值范围[0,1500]
 	PktlenMax *uint64 `json:"PktlenMax,omitempty" name:"PktlenMax"`
 
-	// 是否检测载荷，取值范围[begin_l5(表示检测), no_match(表示不检测)]
+	// 是否检测载荷，取值范围[
+	// begin_l3(IP头)
+	// begin_l4(TCP头)
+	// begin_l5(载荷)
+	// no_match(不检测)
+	// ]
 	MatchBegin *string `json:"MatchBegin,omitempty" name:"MatchBegin"`
 
 	// 是否是正则表达式，取值范围[sunday(表示关键字),pcre(表示正则表达式)]
@@ -5769,6 +5811,49 @@ func (r *ModifyL7RulesResponse) ToJsonString() string {
 }
 
 func (r *ModifyL7RulesResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyNetReturnSwitchRequest struct {
+	*tchttp.BaseRequest
+
+	// 大禹子产品代号（net表示高防IP专业版）
+	Business *string `json:"Business,omitempty" name:"Business"`
+
+	// 资源实例ID
+	Id *string `json:"Id,omitempty" name:"Id"`
+
+	// Status 表示回切开关，0: 关闭， 1:打开
+	Status *uint64 `json:"Status,omitempty" name:"Status"`
+
+	// 回切时长，单位：小时，取值[0,1,2,3,4,5,6;]当status=1时必选填写Hour>0
+	Hour *uint64 `json:"Hour,omitempty" name:"Hour"`
+}
+
+func (r *ModifyNetReturnSwitchRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyNetReturnSwitchRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyNetReturnSwitchResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifyNetReturnSwitchResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyNetReturnSwitchResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 

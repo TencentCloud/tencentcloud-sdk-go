@@ -1153,6 +1153,31 @@ func (c *Client) RecoverDevices(request *RecoverDevicesRequest) (response *Recov
     return
 }
 
+func NewReloadDeviceOsRequest() (request *ReloadDeviceOsRequest) {
+    request = &ReloadDeviceOsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("bm", APIVersion, "ReloadDeviceOs")
+    return
+}
+
+func NewReloadDeviceOsResponse() (response *ReloadDeviceOsResponse) {
+    response = &ReloadDeviceOsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 重装操作系统
+func (c *Client) ReloadDeviceOs(request *ReloadDeviceOsRequest) (response *ReloadDeviceOsResponse, err error) {
+    if request == nil {
+        request = NewReloadDeviceOsRequest()
+    }
+    response = NewReloadDeviceOsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewRepairTaskControlRequest() (request *RepairTaskControlRequest) {
     request = &RepairTaskControlRequest{
         BaseRequest: &tchttp.BaseRequest{},

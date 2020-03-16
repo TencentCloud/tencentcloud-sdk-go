@@ -3936,6 +3936,14 @@ type Namespace struct {
 	// 集群ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 集群资源类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NamespaceResourceType *string `json:"NamespaceResourceType,omitempty" name:"NamespaceResourceType"`
+
+	// 命名空间类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NamespaceType *string `json:"NamespaceType,omitempty" name:"NamespaceType"`
 }
 
 type PkgInfo struct {

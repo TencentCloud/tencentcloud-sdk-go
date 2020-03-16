@@ -847,6 +847,31 @@ func (c *Client) DescribeBillBandwidthAndFluxList(request *DescribeBillBandwidth
     return
 }
 
+func NewDescribeConcurrentRecordStreamNumRequest() (request *DescribeConcurrentRecordStreamNumRequest) {
+    request = &DescribeConcurrentRecordStreamNumRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("live", APIVersion, "DescribeConcurrentRecordStreamNum")
+    return
+}
+
+func NewDescribeConcurrentRecordStreamNumResponse() (response *DescribeConcurrentRecordStreamNumResponse) {
+    response = &DescribeConcurrentRecordStreamNumResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询并发录制路数，对慢直播和普通直播适用。
+func (c *Client) DescribeConcurrentRecordStreamNum(request *DescribeConcurrentRecordStreamNumRequest) (response *DescribeConcurrentRecordStreamNumResponse, err error) {
+    if request == nil {
+        request = NewDescribeConcurrentRecordStreamNumRequest()
+    }
+    response = NewDescribeConcurrentRecordStreamNumResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeGroupProIspPlayInfoListRequest() (request *DescribeGroupProIspPlayInfoListRequest) {
     request = &DescribeGroupProIspPlayInfoListRequest{
         BaseRequest: &tchttp.BaseRequest{},

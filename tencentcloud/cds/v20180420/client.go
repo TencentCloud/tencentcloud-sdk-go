@@ -43,6 +43,31 @@ func NewClient(credential *common.Credential, region string, clientProfile *prof
 }
 
 
+func NewDescribeDasbImageIdsRequest() (request *DescribeDasbImageIdsRequest) {
+    request = &DescribeDasbImageIdsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cds", APIVersion, "DescribeDasbImageIds")
+    return
+}
+
+func NewDescribeDasbImageIdsResponse() (response *DescribeDasbImageIdsResponse) {
+    response = &DescribeDasbImageIdsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 获取镜像列表
+func (c *Client) DescribeDasbImageIds(request *DescribeDasbImageIdsRequest) (response *DescribeDasbImageIdsResponse, err error) {
+    if request == nil {
+        request = NewDescribeDasbImageIdsRequest()
+    }
+    response = NewDescribeDasbImageIdsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeDbauditInstanceTypeRequest() (request *DescribeDbauditInstanceTypeRequest) {
     request = &DescribeDbauditInstanceTypeRequest{
         BaseRequest: &tchttp.BaseRequest{},

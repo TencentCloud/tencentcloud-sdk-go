@@ -20,6 +20,49 @@ import (
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
+type CreateBotRequest struct {
+	*tchttp.BaseRequest
+
+	// 机器人名称
+	BotName *string `json:"BotName,omitempty" name:"BotName"`
+
+	// 机器人中文名称
+	BotCnName *string `json:"BotCnName,omitempty" name:"BotCnName"`
+}
+
+func (r *CreateBotRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateBotRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateBotResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 任务ID
+		TaskRequestId *string `json:"TaskRequestId,omitempty" name:"TaskRequestId"`
+
+		// 任务信息
+		Msg *string `json:"Msg,omitempty" name:"Msg"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateBotResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateBotResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type ResetRequest struct {
 	*tchttp.BaseRequest
 

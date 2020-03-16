@@ -1115,6 +1115,9 @@ type ModifyStudioProductRequest struct {
 
 	// 模型ID
 	ModuleId *int64 `json:"ModuleId,omitempty" name:"ModuleId"`
+
+	// 是否打开二进制转Json功能, 取值为字符串 true/false
+	EnableProductScript *string `json:"EnableProductScript,omitempty" name:"EnableProductScript"`
 }
 
 func (r *ModifyStudioProductRequest) ToJsonString() string {
@@ -1190,6 +1193,10 @@ type ProductEntry struct {
 
 	// 产品ModuleId
 	ModuleId *int64 `json:"ModuleId,omitempty" name:"ModuleId"`
+
+	// 是否使用脚本进行二进制转json功能 可以取值 true / false
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EnableProductScript *string `json:"EnableProductScript,omitempty" name:"EnableProductScript"`
 }
 
 type ProductModelDefinition struct {

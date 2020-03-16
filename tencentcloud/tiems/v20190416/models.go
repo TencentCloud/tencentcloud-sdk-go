@@ -1259,6 +1259,10 @@ type Job struct {
 	// 量化输入
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	QuantizationInput *QuantizationInput `json:"QuantizationInput,omitempty" name:"QuantizationInput"`
+
+	// Cls日志主题ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LogTopicId *string `json:"LogTopicId,omitempty" name:"LogTopicId"`
 }
 
 type JobStatus struct {
@@ -1281,6 +1285,10 @@ type JobStatus struct {
 	// 副本名
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Replicas []*string `json:"Replicas,omitempty" name:"Replicas" list`
+
+	// 副本实例
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ReplicaInfos []*ReplicaInfo `json:"ReplicaInfos,omitempty" name:"ReplicaInfos" list`
 }
 
 type ModelService struct {
@@ -1368,6 +1376,10 @@ type ModelService struct {
 	// GPU类型
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	GpuType *string `json:"GpuType,omitempty" name:"GpuType"`
+
+	// Cls日志主题Id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LogTopicId *string `json:"LogTopicId,omitempty" name:"LogTopicId"`
 }
 
 type Option struct {
@@ -1645,10 +1657,10 @@ type Runtime struct {
 
 type Scaler struct {
 
-	// 最大副本数
+	// 最大副本数，ScaleMode 为 MANUAL 时辞会此值会被置为 StartReplicas 取值
 	MaxReplicas *uint64 `json:"MaxReplicas,omitempty" name:"MaxReplicas"`
 
-	// 最小副本数
+	// 最小副本数，ScaleMode 为 MANUAL 时辞会此值会被置为 StartReplicas 取值
 	MinReplicas *uint64 `json:"MinReplicas,omitempty" name:"MinReplicas"`
 
 	// 起始副本数
@@ -1738,6 +1750,12 @@ type UpdateRsgAsGroupRequest struct {
 
 	// 重命名名称
 	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 伸缩组最大节点数
+	MaxSize *uint64 `json:"MaxSize,omitempty" name:"MaxSize"`
+
+	// 伸缩组最小节点数
+	MinSize *uint64 `json:"MinSize,omitempty" name:"MinSize"`
 }
 
 func (r *UpdateRsgAsGroupRequest) ToJsonString() string {

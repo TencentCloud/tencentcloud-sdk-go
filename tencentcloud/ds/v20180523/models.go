@@ -84,11 +84,11 @@ type CreateContractByUploadRequest struct {
 	// 合同名称
 	ContractName *string `json:"ContractName,omitempty" name:"ContractName"`
 
-	// 合同发起方帐号ID
-	Initiator *string `json:"Initiator,omitempty" name:"Initiator"`
-
 	// 备注
 	Remarks *string `json:"Remarks,omitempty" name:"Remarks"`
+
+	// 合同发起方腾讯云帐号ID（由平台自动填写）
+	Initiator *string `json:"Initiator,omitempty" name:"Initiator"`
 
 	// 合同长时间未签署的过期时间
 	ExpireTime *string `json:"ExpireTime,omitempty" name:"ExpireTime"`
@@ -156,6 +156,9 @@ type CreateEnterpriseAccountRequest struct {
 
 	// 经办人手机号
 	TransactorPhone *string `json:"TransactorPhone,omitempty" name:"TransactorPhone"`
+
+	// 企业联系人邮箱
+	Email *string `json:"Email,omitempty" name:"Email"`
 }
 
 func (r *CreateEnterpriseAccountRequest) ToJsonString() string {
@@ -528,14 +531,14 @@ type SignContractByCoordinateRequest struct {
 	// 帐户ID
 	AccountResId *string `json:"AccountResId,omitempty" name:"AccountResId"`
 
-	// 授权时间，格式为年月日时分秒，例20160801095509
-	AuthorizationTime *string `json:"AuthorizationTime,omitempty" name:"AuthorizationTime"`
-
-	// 授权IP地址
-	Position *string `json:"Position,omitempty" name:"Position"`
-
 	// 签署坐标，坐标原点在文件左下角，坐标单位为磅，坐标不得超过合同文件边界
 	SignLocations []*SignLocation `json:"SignLocations,omitempty" name:"SignLocations" list`
+
+	// 授权时间（由平台自动填充）
+	AuthorizationTime *string `json:"AuthorizationTime,omitempty" name:"AuthorizationTime"`
+
+	// 授权IP地址（由平台自动填充）
+	Position *string `json:"Position,omitempty" name:"Position"`
 
 	// 签章ID
 	SealResId *string `json:"SealResId,omitempty" name:"SealResId"`
@@ -589,14 +592,14 @@ type SignContractByKeywordRequest struct {
 	// 账户ID
 	AccountResId *string `json:"AccountResId,omitempty" name:"AccountResId"`
 
-	// 授权时间，格式为年月日时分秒，例20160801095509
-	AuthorizationTime *string `json:"AuthorizationTime,omitempty" name:"AuthorizationTime"`
-
-	// 授权IP地址
-	Position *string `json:"Position,omitempty" name:"Position"`
-
 	// 签署关键字，偏移坐标原点为关键字中心
 	SignKeyword *SignKeyword `json:"SignKeyword,omitempty" name:"SignKeyword"`
+
+	// 授权时间（由平台自动填充）
+	AuthorizationTime *string `json:"AuthorizationTime,omitempty" name:"AuthorizationTime"`
+
+	// 授权IP地址（由平台自动填充）
+	Position *string `json:"Position,omitempty" name:"Position"`
 
 	// 签章ID
 	SealResId *string `json:"SealResId,omitempty" name:"SealResId"`
@@ -640,10 +643,10 @@ type SignInfo struct {
 	// 账户ID
 	AccountResId *string `json:"AccountResId,omitempty" name:"AccountResId"`
 
-	// 授权时间，格式为年月日时分秒，例20160801095509
+	// 授权时间（上传合同可不传该参数）
 	AuthorizationTime *string `json:"AuthorizationTime,omitempty" name:"AuthorizationTime"`
 
-	// 授权IP地址
+	// 授权IP地址（上传合同可不传该参数）
 	Location *string `json:"Location,omitempty" name:"Location"`
 
 	// 签章ID

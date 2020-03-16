@@ -43,6 +43,31 @@ func NewClient(credential *common.Credential, region string, clientProfile *prof
 }
 
 
+func NewCreateBotRequest() (request *CreateBotRequest) {
+    request = &CreateBotRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tbp", APIVersion, "CreateBot")
+    return
+}
+
+func NewCreateBotResponse() (response *CreateBotResponse) {
+    response = &CreateBotResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 创建机器人
+func (c *Client) CreateBot(request *CreateBotRequest) (response *CreateBotResponse, err error) {
+    if request == nil {
+        request = NewCreateBotRequest()
+    }
+    response = NewCreateBotResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewResetRequest() (request *ResetRequest) {
     request = &ResetRequest{
         BaseRequest: &tchttp.BaseRequest{},

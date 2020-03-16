@@ -5958,58 +5958,45 @@ type MediaAnimatedGraphicsInfo struct {
 type MediaAnimatedGraphicsItem struct {
 
 	// 转动图的文件地址。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Url *string `json:"Url,omitempty" name:"Url"`
 
 	// 转动图模板 ID，参见[转动图参数模板](https://cloud.tencent.com/document/product/266/33481#.3Cspan-id-.3D-.22zdt.22.3E.3C.2Fspan.3E.E8.BD.AC.E5.8A.A8.E5.9B.BE.E6.A8.A1.E6.9D.BF)。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Definition *int64 `json:"Definition,omitempty" name:"Definition"`
 
 	// 动图格式，如 gif。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Container *string `json:"Container,omitempty" name:"Container"`
 
 	// 动图的高度，单位：px。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Height *int64 `json:"Height,omitempty" name:"Height"`
 
 	// 动图的宽度，单位：px。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Width *int64 `json:"Width,omitempty" name:"Width"`
 
 	// 动图码率，单位：bps。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Bitrate *int64 `json:"Bitrate,omitempty" name:"Bitrate"`
 
 	// 动图大小，单位：字节。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Size *int64 `json:"Size,omitempty" name:"Size"`
 
 	// 动图的md5值。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Md5 *string `json:"Md5,omitempty" name:"Md5"`
 
 	// 动图在视频中的起始时间偏移，单位：秒。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	StartTimeOffset *float64 `json:"StartTimeOffset,omitempty" name:"StartTimeOffset"`
 
 	// 动图在视频中的结束时间偏移，单位：秒。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	EndTimeOffset *float64 `json:"EndTimeOffset,omitempty" name:"EndTimeOffset"`
 }
 
 type MediaAudioStreamItem struct {
 
 	// 音频流的码率，单位：bps。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Bitrate *int64 `json:"Bitrate,omitempty" name:"Bitrate"`
 
 	// 音频流的采样率，单位：hz。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SamplingRate *int64 `json:"SamplingRate,omitempty" name:"SamplingRate"`
 
 	// 音频流的编码格式，例如 aac。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Codec *string `json:"Codec,omitempty" name:"Codec"`
 }
 
@@ -6248,27 +6235,21 @@ type MediaImageSpriteInfo struct {
 type MediaImageSpriteItem struct {
 
 	// 雪碧图规格，参见[雪碧图参数模板](https://cloud.tencent.com/document/product/266/33480#.E9.9B.AA.E7.A2.A7.E5.9B.BE.E6.A8.A1.E6.9D.BF)。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Definition *int64 `json:"Definition,omitempty" name:"Definition"`
 
 	// 雪碧图小图的高度。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Height *int64 `json:"Height,omitempty" name:"Height"`
 
 	// 雪碧图小图的宽度。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Width *int64 `json:"Width,omitempty" name:"Width"`
 
 	// 每一张雪碧图大图里小图的数量。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 	// 每一张雪碧图大图的地址。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ImageUrlSet []*string `json:"ImageUrlSet,omitempty" name:"ImageUrlSet" list`
 
 	// 雪碧图子图位置与时间关系的 WebVtt 文件地址。WebVtt 文件表明了各个雪碧图小图对应的时间点，以及在雪碧大图里的坐标位置，一般被播放器用于实现预览。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	WebVttUrl *string `json:"WebVttUrl,omitempty" name:"WebVttUrl"`
 }
 
@@ -6349,31 +6330,24 @@ type MediaKeyFrameDescItem struct {
 type MediaMetaData struct {
 
 	// 上传的媒体文件大小（视频为 HLS 时，大小是 m3u8 和 ts 文件大小的总和），单位：字节。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Size *int64 `json:"Size,omitempty" name:"Size"`
 
 	// 容器类型，例如 m4a，mp4 等。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Container *string `json:"Container,omitempty" name:"Container"`
 
 	// 视频流码率平均值与音频流码率平均值之和，单位：bps。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Bitrate *int64 `json:"Bitrate,omitempty" name:"Bitrate"`
 
 	// 视频流高度的最大值，单位：px。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Height *int64 `json:"Height,omitempty" name:"Height"`
 
 	// 视频流宽度的最大值，单位：px。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Width *int64 `json:"Width,omitempty" name:"Width"`
 
 	// 视频时长，单位：秒。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Duration *float64 `json:"Duration,omitempty" name:"Duration"`
 
 	// 视频拍摄时的选择角度，单位：度。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Rotate *int64 `json:"Rotate,omitempty" name:"Rotate"`
 
 	// 视频流信息。
@@ -6385,11 +6359,9 @@ type MediaMetaData struct {
 	AudioStreamSet []*MediaAudioStreamItem `json:"AudioStreamSet,omitempty" name:"AudioStreamSet" list`
 
 	// 视频时长，单位：秒。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	VideoDuration *float64 `json:"VideoDuration,omitempty" name:"VideoDuration"`
 
 	// 音频时长，单位：秒。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AudioDuration *float64 `json:"AudioDuration,omitempty" name:"AudioDuration"`
 }
 
@@ -6485,11 +6457,9 @@ type MediaProcessTaskAnimatedGraphicResult struct {
 	// <li>40000：输入参数不合法，请检查输入参数；</li>
 	// <li>60000：源文件错误（如视频数据损坏），请确认源文件是否正常；</li>
 	// <li>70000：内部服务错误，建议重试。</li>
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ErrCode *int64 `json:"ErrCode,omitempty" name:"ErrCode"`
 
 	// 错误信息。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Message *string `json:"Message,omitempty" name:"Message"`
 
 	// 转动图任务的输入。
@@ -6509,11 +6479,9 @@ type MediaProcessTaskCoverBySnapshotResult struct {
 	// <li>40000：输入参数不合法，请检查输入参数；</li>
 	// <li>60000：源文件错误（如视频数据损坏），请确认源文件是否正常；</li>
 	// <li>70000：内部服务错误，建议重试。</li>
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ErrCode *int64 `json:"ErrCode,omitempty" name:"ErrCode"`
 
 	// 错误信息。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Message *string `json:"Message,omitempty" name:"Message"`
 
 	// 对视频截图做封面任务的输入。
@@ -6532,11 +6500,9 @@ type MediaProcessTaskImageSpriteResult struct {
 	// <li>40000：输入参数不合法，请检查输入参数；</li>
 	// <li>60000：源文件错误（如视频数据损坏），请确认源文件是否正常；</li>
 	// <li>70000：内部服务错误，建议重试。</li>
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ErrCode *int64 `json:"ErrCode,omitempty" name:"ErrCode"`
 
 	// 错误信息。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Message *string `json:"Message,omitempty" name:"Message"`
 
 	// 对视频截雪碧图任务的输入。
@@ -6628,11 +6594,9 @@ type MediaProcessTaskSampleSnapshotResult struct {
 	// <li>40000：输入参数不合法，请检查输入参数；</li>
 	// <li>60000：源文件错误（如视频数据损坏），请确认源文件是否正常；</li>
 	// <li>70000：内部服务错误，建议重试。</li>
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ErrCode *int64 `json:"ErrCode,omitempty" name:"ErrCode"`
 
 	// 错误信息。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Message *string `json:"Message,omitempty" name:"Message"`
 
 	// 对视频做采样截图任务输入。
@@ -6652,11 +6616,9 @@ type MediaProcessTaskSnapshotByTimeOffsetResult struct {
 	// <li>40000：输入参数不合法，请检查输入参数；</li>
 	// <li>60000：源文件错误（如视频数据损坏），请确认源文件是否正常；</li>
 	// <li>70000：内部服务错误，建议重试。</li>
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ErrCode *int64 `json:"ErrCode,omitempty" name:"ErrCode"`
 
 	// 错误信息。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Message *string `json:"Message,omitempty" name:"Message"`
 
 	// 对视频按指定时间点截图任务输入。
@@ -6676,11 +6638,9 @@ type MediaProcessTaskTranscodeResult struct {
 	// <li>40000：输入参数不合法，请检查输入参数；</li>
 	// <li>60000：源文件错误（如视频数据损坏），请确认源文件是否正常；</li>
 	// <li>70000：内部服务错误，建议重试。</li>
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ErrCode *int64 `json:"ErrCode,omitempty" name:"ErrCode"`
 
 	// 错误信息。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Message *string `json:"Message,omitempty" name:"Message"`
 
 	// 转码任务的输入。
@@ -6701,27 +6661,22 @@ type MediaSampleSnapshotInfo struct {
 type MediaSampleSnapshotItem struct {
 
 	// 采样截图规格 ID，参见[采样截图参数模板](https://cloud.tencent.com/document/product/266/33480#.E9.87.87.E6.A0.B7.E6.88.AA.E5.9B.BE.E6.A8.A1.E6.9D.BF)。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Definition *int64 `json:"Definition,omitempty" name:"Definition"`
 
 	// 采样方式，取值范围：
 	// <li>Percent：根据百分比间隔采样。</li>
 	// <li>Time：根据时间间隔采样。</li>
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SampleType *string `json:"SampleType,omitempty" name:"SampleType"`
 
 	// 采样间隔
 	// <li>当 SampleType 为 Percent 时，该值表示多少百分比一张图。</li>
 	// <li>当 SampleType 为 Time 时，该值表示多少时间间隔一张图，单位秒， 第一张图均为视频首帧。</li>
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Interval *int64 `json:"Interval,omitempty" name:"Interval"`
 
 	// 生成的截图 url 列表。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ImageUrlSet []*string `json:"ImageUrlSet,omitempty" name:"ImageUrlSet" list`
 
 	// 截图如果被打上了水印，被打水印的模板 ID 列表。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	WaterMarkDefinition []*int64 `json:"WaterMarkDefinition,omitempty" name:"WaterMarkDefinition" list`
 }
 
@@ -6735,7 +6690,6 @@ type MediaSnapshotByTimeOffsetInfo struct {
 type MediaSnapshotByTimeOffsetItem struct {
 
 	// 指定时间点截图规格，参见[指定时间点截图参数模板](https://cloud.tencent.com/document/product/266/33480#.E6.97.B6.E9.97.B4.E7.82.B9.E6.88.AA.E5.9B.BE.E6.A8.A1.E6.9D.BF)。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Definition *int64 `json:"Definition,omitempty" name:"Definition"`
 
 	// 同一规格的截图信息集合，每个元素代表一张截图。
@@ -6833,7 +6787,7 @@ type MediaTranscodeItem struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Url *string `json:"Url,omitempty" name:"Url"`
 
-	// 转码规格 ID，参见[转码参数模板](https://cloud.tencent.com/document/product/266/33478#.E8.BD.AC.E7.A0.81.E6.A8.A1.E6.9D.BF)。
+	// 转码规格 ID，参见[转码参数模板](https://cloud.tencent.com/document/product/266/33476)。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Definition *int64 `json:"Definition,omitempty" name:"Definition"`
 
@@ -6887,23 +6841,18 @@ type MediaTransitionItem struct {
 type MediaVideoStreamItem struct {
 
 	// 视频流的码率，单位：bps。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Bitrate *int64 `json:"Bitrate,omitempty" name:"Bitrate"`
 
 	// 视频流的高度，单位：px。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Height *int64 `json:"Height,omitempty" name:"Height"`
 
 	// 视频流的宽度，单位：px。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Width *int64 `json:"Width,omitempty" name:"Width"`
 
 	// 视频流的编码格式，例如 h264。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Codec *string `json:"Codec,omitempty" name:"Codec"`
 
 	// 帧率，单位：hz。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Fps *int64 `json:"Fps,omitempty" name:"Fps"`
 }
 
@@ -8312,23 +8261,19 @@ type ProcedureTask struct {
 	Status *string `json:"Status,omitempty" name:"Status"`
 
 	// 已弃用，请使用各个具体任务的 ErrCode。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ErrCode *int64 `json:"ErrCode,omitempty" name:"ErrCode"`
 
 	// 已弃用，请使用各个具体任务的 Message。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Message *string `json:"Message,omitempty" name:"Message"`
 
 	// 媒体文件 ID
 	// <li>若流程由 [ProcessMedia](https://cloud.tencent.com/document/product/266/33427) 发起，该字段表示 [MediaInfo](https://cloud.tencent.com/document/product/266/31773#MediaInfo) 的 FileId；</li>
 	// <li>若流程由 [ProcessMediaByUrl](https://cloud.tencent.com/document/product/266/33426) 发起，该字段表示 [MediaInputInfo](https://cloud.tencent.com/document/product/266/31773#MediaInputInfo) 的 Id。</li>
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FileId *string `json:"FileId,omitempty" name:"FileId"`
 
 	// 媒体文件名称
 	// <li>若流程由 [ProcessMedia](https://cloud.tencent.com/document/product/266/33427) 发起，该字段表示 [MediaInfo](https://cloud.tencent.com/document/product/266/31773#MediaInfo) 的 BasicInfo.Name；</li>
 	// <li>若流程由 [ProcessMediaByUrl](https://cloud.tencent.com/document/product/266/33426) 发起，该字段表示 [MediaInputInfo](https://cloud.tencent.com/document/product/266/31773#MediaInputInfo) 的 Name。</li>
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FileName *string `json:"FileName,omitempty" name:"FileName"`
 
 	// 媒体文件地址
@@ -8337,6 +8282,7 @@ type ProcedureTask struct {
 	FileUrl *string `json:"FileUrl,omitempty" name:"FileUrl"`
 
 	// 原始视频的元信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	MetaData *MediaMetaData `json:"MetaData,omitempty" name:"MetaData"`
 
 	// 视频处理任务的执行状态与结果。
@@ -8356,22 +8302,18 @@ type ProcedureTask struct {
 	AiRecognitionResultSet []*AiRecognitionResult `json:"AiRecognitionResultSet,omitempty" name:"AiRecognitionResultSet" list`
 
 	// 任务流的优先级，取值范围为 [-10, 10]。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TasksPriority *int64 `json:"TasksPriority,omitempty" name:"TasksPriority"`
 
 	// 任务流状态变更通知模式。
 	// <li>Finish：只有当任务流全部执行完毕时，才发起一次事件通知；</li>
 	// <li>Change：只要任务流中每个子任务的状态发生变化，都进行事件通知；</li>
 	// <li>None：不接受该任务流回调。</li>
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TasksNotifyMode *string `json:"TasksNotifyMode,omitempty" name:"TasksNotifyMode"`
 
 	// 来源上下文，用于透传用户请求信息，任务流状态变更回调将返回该字段值，最长 1000 个字符。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SessionContext *string `json:"SessionContext,omitempty" name:"SessionContext"`
 
 	// 用于去重的识别码，如果七天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SessionId *string `json:"SessionId,omitempty" name:"SessionId"`
 }
 
@@ -9171,7 +9113,6 @@ type SnapshotByTimeOffsetTaskInput struct {
 	Definition *uint64 `json:"Definition,omitempty" name:"Definition"`
 
 	// 截图时间点列表，单位为<font color=red>毫秒</font>。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TimeOffsetSet []*float64 `json:"TimeOffsetSet,omitempty" name:"TimeOffsetSet" list`
 
 	// 水印列表，支持多张图片或文字水印，最大可支持 10 张。
@@ -9387,7 +9328,7 @@ type SvgWatermarkInputForUpdate struct {
 
 	// 水印周期配置，用于配置水印周期性地显示与隐藏。
 	// 主要使用场景是：为了视频防遮标，在视频多个地方设置水印，这些水印按固定顺序周期性地显示与隐藏。
-	// 比如，设置 A、B、C、D 4 个水印分别位于视频的左上角、右上角、右下角、左下角处，视频开始时，{ A 显示 5 秒 -> B 显示 5 秒 -> C 显示 5 秒 -> D 显示 5 秒 } -> A 显示 5 秒 -> B 显示 5 秒 -> ...，任何时刻只显示一处水印。
+	// 例如，设置 A、B、C、D 4 个水印分别位于视频的左上角、右上角、右下角、左下角处，视频开始时，{ A 显示 5 秒 -> B 显示 5 秒 -> C 显示 5 秒 -> D 显示 5 秒 } -> A 显示 5 秒 -> B 显示 5 秒 -> ...，任何时刻只显示一处水印。
 	// 花括号 {} 表示由 A、B、C、D 4 个水印组成的大周期，可以看出每个大周期持续 20 秒。
 	// 可以看出，A、B、C、D 都是周期性地显示 5 秒、隐藏 15 秒，且四者有固定的显示顺序。
 	// 此配置项即用来描述单个水印的周期配置。
@@ -9519,7 +9460,7 @@ type TaskStatData struct {
 
 type TaskStatDataItem struct {
 
-	// 数据所在时间区间的开始时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。如：当时间粒度为天，2018-12-01T00:00:00+08:00，表示2018年12月1日（含）到2018年12月2日（不含）区间。
+	// 数据所在时间区间的开始时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#52)。如：当时间粒度为天，2018-12-01T00:00:00+08:00，表示2018年12月1日（含）到2018年12月2日（不含）区间。
 	Time *string `json:"Time,omitempty" name:"Time"`
 
 	// 任务数。
@@ -9686,7 +9627,7 @@ type TranscodePlayInfo2017 struct {
 	// 播放地址。
 	Url *string `json:"Url,omitempty" name:"Url"`
 
-	// 转码规格 ID，参见[转码参数模板](https://cloud.tencent.com/document/product/266/33478#.E8.BD.AC.E7.A0.81.E6.A8.A1.E6.9D.BF)。
+	// 转码规格 ID，参见[转码参数模板](https://cloud.tencent.com/document/product/266/33476)。
 	Definition *int64 `json:"Definition,omitempty" name:"Definition"`
 
 	// 视频流码率平均值与音频流码率平均值之和， 单位：bps。
@@ -10216,11 +10157,9 @@ type WatermarkInput struct {
 	Definition *uint64 `json:"Definition,omitempty" name:"Definition"`
 
 	// 文字内容，长度不超过100个字符。仅当水印类型为文字水印时填写。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TextContent *string `json:"TextContent,omitempty" name:"TextContent"`
 
 	// SVG 内容。长度不超过 2000000 个字符。仅当水印类型为 SVG 水印时填写。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SvgContent *string `json:"SvgContent,omitempty" name:"SvgContent"`
 
 	// 水印的起始时间偏移，单位：秒。不填或填0，表示水印从画面出现时开始显现。

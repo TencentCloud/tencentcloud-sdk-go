@@ -507,6 +507,9 @@ type DBInstance struct {
 
 	// 是否支持数据加密。1-支持；0-不支持
 	IsEncryptSupported *int64 `json:"IsEncryptSupported,omitempty" name:"IsEncryptSupported"`
+
+	// 实例CPU核数
+	Cpu *int64 `json:"Cpu,omitempty" name:"Cpu"`
 }
 
 type DBParamValue struct {
@@ -2390,6 +2393,9 @@ type SpecConfigInfo struct {
 
 	// 节点个数，2 表示一主一从，3 表示一主二从
 	NodeCount *int64 `json:"NodeCount,omitempty" name:"NodeCount"`
+
+	// Cpu核数
+	Cpu *int64 `json:"Cpu,omitempty" name:"Cpu"`
 }
 
 type SqlLogItem struct {

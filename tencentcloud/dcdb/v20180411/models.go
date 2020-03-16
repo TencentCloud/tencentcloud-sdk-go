@@ -488,6 +488,9 @@ type DCDBInstanceInfo struct {
 
 	// 该实例是否支持审计。1-支持；0-不支持
 	IsAuditSupported *uint64 `json:"IsAuditSupported,omitempty" name:"IsAuditSupported"`
+
+	// Cpu核数
+	Cpu *uint64 `json:"Cpu,omitempty" name:"Cpu"`
 }
 
 type DCDBShardInfo struct {
@@ -1874,6 +1877,9 @@ type ParamDesc struct {
 
 	// 参数限制
 	Constraint *ParamConstraint `json:"Constraint,omitempty" name:"Constraint"`
+
+	// 是否有设置过值，false:没有设置过值，true:有设置过值。
+	HaveSetValue *bool `json:"HaveSetValue,omitempty" name:"HaveSetValue"`
 }
 
 type ParamModifyResult struct {
@@ -2021,6 +2027,9 @@ type ShardInfo struct {
 
 	// 产品类型 Id（过时字段，请勿依赖该值）
 	Pid *int64 `json:"Pid,omitempty" name:"Pid"`
+
+	// Cpu核数
+	Cpu *uint64 `json:"Cpu,omitempty" name:"Cpu"`
 }
 
 type ShardZoneChooseInfo struct {

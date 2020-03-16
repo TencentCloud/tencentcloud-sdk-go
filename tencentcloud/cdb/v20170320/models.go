@@ -3124,7 +3124,12 @@ type DrInfo struct {
 	// 地域信息
 	Region *string `json:"Region,omitempty" name:"Region"`
 
-	// 实例同步状态
+	// 实例同步状态。可能的返回值为：
+	// 0 - 灾备未同步；
+	// 1 - 灾备同步中；
+	// 2 - 灾备同步成功；
+	// 3 - 灾备同步失败；
+	// 4 - 灾备同步修复中。
 	SyncStatus *int64 `json:"SyncStatus,omitempty" name:"SyncStatus"`
 
 	// 实例名称
@@ -3307,23 +3312,23 @@ type InstanceInfo struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RoVipInfo *RoVipInfo `json:"RoVipInfo,omitempty" name:"RoVipInfo"`
 
-	// 内存容量，单位为MB
+	// 内存容量，单位为 MB
 	Memory *int64 `json:"Memory,omitempty" name:"Memory"`
 
 	// 实例状态，可能的返回值：0-创建中；1-运行中；4-隔离中；5-已隔离
 	Status *int64 `json:"Status,omitempty" name:"Status"`
 
-	// 私有网络ID，例如：51102
+	// 私有网络 ID，例如：51102
 	VpcId *int64 `json:"VpcId,omitempty" name:"VpcId"`
 
 	// 备机信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SlaveInfo *SlaveInfo `json:"SlaveInfo,omitempty" name:"SlaveInfo"`
 
-	// 实例ID
+	// 实例 ID
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
-	// 硬盘容量，单位为GB
+	// 硬盘容量，单位为 GB
 	Volume *int64 `json:"Volume,omitempty" name:"Volume"`
 
 	// 自动续费标志，可能的返回值：0-未开通自动续费；1-已开通自动续费；2-已关闭自动续费
@@ -3336,13 +3341,13 @@ type InstanceInfo struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RoGroups []*RoGroup `json:"RoGroups,omitempty" name:"RoGroups" list`
 
-	// 子网ID，例如：2333
+	// 子网 ID，例如：2333
 	SubnetId *int64 `json:"SubnetId,omitempty" name:"SubnetId"`
 
 	// 实例类型，可能的返回值：1-主实例；2-灾备实例；3-只读实例
 	InstanceType *int64 `json:"InstanceType,omitempty" name:"InstanceType"`
 
-	// 项目ID
+	// 项目 ID
 	ProjectId *int64 `json:"ProjectId,omitempty" name:"ProjectId"`
 
 	// 地域信息
@@ -3386,7 +3391,7 @@ type InstanceInfo struct {
 	// 实例创建时间
 	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
 
-	// 实例IP
+	// 实例 IP
 	Vip *string `json:"Vip,omitempty" name:"Vip"`
 
 	// 端口号
@@ -3401,7 +3406,7 @@ type InstanceInfo struct {
 	// 子网描述符，例如：“subnet-1typ0s7d”
 	UniqSubnetId *string `json:"UniqSubnetId,omitempty" name:"UniqSubnetId"`
 
-	// 物理ID
+	// 物理 ID
 	PhysicalId *string `json:"PhysicalId,omitempty" name:"PhysicalId"`
 
 	// 核心数
@@ -3417,9 +3422,13 @@ type InstanceInfo struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DeviceClass *string `json:"DeviceClass,omitempty" name:"DeviceClass"`
 
-	// 置放群组ID
+	// 置放群组 ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DeployGroupId *string `json:"DeployGroupId,omitempty" name:"DeployGroupId"`
+
+	// 可用区 ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ZoneId *int64 `json:"ZoneId,omitempty" name:"ZoneId"`
 }
 
 type InstanceRebootTime struct {
@@ -4095,7 +4104,7 @@ func (r *ModifyParamTemplateResponse) FromJsonString(s string) error {
 type ModifyRoGroupInfoRequest struct {
 	*tchttp.BaseRequest
 
-	// RO 组的实例 ID。
+	// RO 组的 ID。
 	RoGroupId *string `json:"RoGroupId,omitempty" name:"RoGroupId"`
 
 	// RO 组的详细信息。

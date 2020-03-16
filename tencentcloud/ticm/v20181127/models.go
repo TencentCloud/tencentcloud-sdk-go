@@ -29,6 +29,76 @@ type Candidate struct {
 	Confidence *int64 `json:"Confidence,omitempty" name:"Confidence"`
 }
 
+type DescribeVideoTaskRequest struct {
+	*tchttp.BaseRequest
+
+	// 需要查询的视频审核的任务ID
+	VodTaskId *string `json:"VodTaskId,omitempty" name:"VodTaskId"`
+}
+
+func (r *DescribeVideoTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeVideoTaskRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeVideoTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 任务状态，取值：
+	// WAITING：等待中；
+	// PROCESSING：处理中；
+	// FINISH：已完成。
+		Status *string `json:"Status,omitempty" name:"Status"`
+
+		// 任务开始执行的时间，采用 ISO 日期格式。
+		BeginProcessTime *string `json:"BeginProcessTime,omitempty" name:"BeginProcessTime"`
+
+		// 任务执行完毕的时间，采用 ISO 日期格式。
+		FinishTime *string `json:"FinishTime,omitempty" name:"FinishTime"`
+
+		// 视频内容审核智能画面鉴黄任务的查询结果。
+		PornResult *VodPornReviewResult `json:"PornResult,omitempty" name:"PornResult"`
+
+		// 视频内容审核智能画面鉴恐任务的查询结果。
+		TerrorismResult *VodTerrorismReviewResult `json:"TerrorismResult,omitempty" name:"TerrorismResult"`
+
+		// 视频内容审核智能画面鉴政任务的查询结果。
+		PoliticalResult *VodPoliticalReviewResult `json:"PoliticalResult,omitempty" name:"PoliticalResult"`
+
+		// 视频内容审核 Ocr 文字鉴政任务的查询结果。
+		PoliticalOcrResult *VodPoliticalOcrReviewResult `json:"PoliticalOcrResult,omitempty" name:"PoliticalOcrResult"`
+
+		// 视频内容审核 Asr 文字鉴黄任务的查询结果。
+		PornAsrResult *VodPornAsrReviewResult `json:"PornAsrResult,omitempty" name:"PornAsrResult"`
+
+		// 视频内容审核 Asr 文字鉴政任务的查询结果。
+		PoliticalAsrResult *VodPoliticalAsrReviewResult `json:"PoliticalAsrResult,omitempty" name:"PoliticalAsrResult"`
+
+		// 视频内容审核 Ocr 文字鉴黄任务的查询结果。
+		PornOcrResult *VodPornOcrResult `json:"PornOcrResult,omitempty" name:"PornOcrResult"`
+
+		// 原始视频的元信息。
+		MetaData *VodMetaData `json:"MetaData,omitempty" name:"MetaData"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeVideoTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeVideoTaskResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DisgustResult struct {
 
 	// 该识别场景的错误码：
@@ -261,4 +331,514 @@ type TerrorismResult struct {
 
 	// 取值'LABEL' 或‘FACE’，LABEL表示结论和置信度来自标签分类，FACE表示结论和置信度来自人脸识别。
 	Type *string `json:"Type,omitempty" name:"Type"`
+}
+
+type VideoModerationRequest struct {
+	*tchttp.BaseRequest
+
+	// 需要审核的视频的URL地址
+	VideoUrl *string `json:"VideoUrl,omitempty" name:"VideoUrl"`
+
+	// 开发者标识
+	DeveloperId *string `json:"DeveloperId,omitempty" name:"DeveloperId"`
+
+	// 审核完成后回调地址
+	CBUrl *string `json:"CBUrl,omitempty" name:"CBUrl"`
+
+	// 透传字段，透传简单信息。
+	Extra *string `json:"Extra,omitempty" name:"Extra"`
+}
+
+func (r *VideoModerationRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *VideoModerationRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type VideoModerationResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 视频审核任务ID
+		VodTaskId *string `json:"VodTaskId,omitempty" name:"VodTaskId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *VideoModerationResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *VideoModerationResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type VodAsrTextSegmentItem struct {
+
+	// 嫌疑片段起始的偏移时间，单位：秒。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StartTimeOffset *float64 `json:"StartTimeOffset,omitempty" name:"StartTimeOffset"`
+
+	// 嫌疑片段结束的偏移时间，单位：秒。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EndTimeOffset *float64 `json:"EndTimeOffset,omitempty" name:"EndTimeOffset"`
+
+	// 嫌疑片段置信度。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Confidence *float64 `json:"Confidence,omitempty" name:"Confidence"`
+
+	// 嫌疑片段审核结果建议，取值范围：
+	// pass。
+	// review。
+	// block。
+	// 
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Suggestion *string `json:"Suggestion,omitempty" name:"Suggestion"`
+
+	// 嫌疑关键词列表。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	KeywordSet []*string `json:"KeywordSet,omitempty" name:"KeywordSet" list`
+}
+
+type VodAudioStreamItem struct {
+
+	// 音频流的码率，单位：bps。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Bitrate *int64 `json:"Bitrate,omitempty" name:"Bitrate"`
+
+	// 音频流的采样率，单位：hz。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SamplingRate *int64 `json:"SamplingRate,omitempty" name:"SamplingRate"`
+
+	// 音频流的编码格式，例如 aac。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Codec *string `json:"Codec,omitempty" name:"Codec"`
+}
+
+type VodMetaData struct {
+
+	// 上传的媒体文件大小（视频为 HLS 时，大小是 m3u8 和 ts 文件大小的总和），单位：字节。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Size *int64 `json:"Size,omitempty" name:"Size"`
+
+	// 容器类型，例如 m4a，mp4 等。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Container *string `json:"Container,omitempty" name:"Container"`
+
+	// 视频流码率平均值与音频流码率平均值之和，单位：bps。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Bitrate *int64 `json:"Bitrate,omitempty" name:"Bitrate"`
+
+	// 视频流高度的最大值，单位：px。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Height *int64 `json:"Height,omitempty" name:"Height"`
+
+	// 视频流宽度的最大值，单位：px。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Width *int64 `json:"Width,omitempty" name:"Width"`
+
+	// 视频时长，单位：秒。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Duration *float64 `json:"Duration,omitempty" name:"Duration"`
+
+	// 视频拍摄时的选择角度，单位：度。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Rotate *int64 `json:"Rotate,omitempty" name:"Rotate"`
+
+	// 视频流信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VideoStreamSet []*VodVideoStreamItem `json:"VideoStreamSet,omitempty" name:"VideoStreamSet" list`
+
+	// 音频流信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AudioStreamSet []*VodAudioStreamItem `json:"AudioStreamSet,omitempty" name:"AudioStreamSet" list`
+
+	// 视频时长，单位：秒。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VideoDuration *float64 `json:"VideoDuration,omitempty" name:"VideoDuration"`
+
+	// 音频时长，单位：秒。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AudioDuration *float64 `json:"AudioDuration,omitempty" name:"AudioDuration"`
+}
+
+type VodOcrTextSegmentItem struct {
+
+	// 嫌疑片段起始的偏移时间，单位：秒。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StartTimeOffset *float64 `json:"StartTimeOffset,omitempty" name:"StartTimeOffset"`
+
+	// 嫌疑片段结束的偏移时间，单位：秒。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EndTimeOffset *float64 `json:"EndTimeOffset,omitempty" name:"EndTimeOffset"`
+
+	// 嫌疑片段置信度。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Confidence *float64 `json:"Confidence,omitempty" name:"Confidence"`
+
+	// 嫌疑片段审核结果建议，取值范围：
+	// pass。
+	// review。
+	// block。
+	// 
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Suggestion *string `json:"Suggestion,omitempty" name:"Suggestion"`
+
+	// 嫌疑关键词列表。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	KeywordSet []*string `json:"KeywordSet,omitempty" name:"KeywordSet" list`
+
+	// 嫌疑文字出现的区域坐标 (像素级)，[x1, y1, x2, y2]，即左上角坐标、右下角坐标。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AreaCoordSet []*int64 `json:"AreaCoordSet,omitempty" name:"AreaCoordSet" list`
+}
+
+type VodPoliticalAsrReviewResult struct {
+
+	// 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 错误码，0：成功，其他值：失败。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Code *int64 `json:"Code,omitempty" name:"Code"`
+
+	// 错误信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Msg *string `json:"Msg,omitempty" name:"Msg"`
+
+	// 嫌疑片段审核结果建议，取值范围：
+	// pass。
+	// review。
+	// block。
+	// 
+	// Asr 文字涉政、敏感评分，分值为0到100。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Confidence *float64 `json:"Confidence,omitempty" name:"Confidence"`
+
+	// Asr 文字涉政、敏感结果建议，取值范围：
+	// pass。
+	// review。
+	// block。
+	// 
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Suggestion *string `json:"Suggestion,omitempty" name:"Suggestion"`
+
+	// Asr 文字有涉政、敏感嫌疑的视频片段列表。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SegmentSet []*VodAsrTextSegmentItem `json:"SegmentSet,omitempty" name:"SegmentSet" list`
+}
+
+type VodPoliticalOcrReviewResult struct {
+
+	// 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 错误码，0：成功，其他值：失败。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Code *int64 `json:"Code,omitempty" name:"Code"`
+
+	// 错误信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Msg *string `json:"Msg,omitempty" name:"Msg"`
+
+	// Ocr 文字涉政、敏感评分，分值为0到100。
+	Confidence *float64 `json:"Confidence,omitempty" name:"Confidence"`
+
+	// Ocr 文字涉政、敏感结果建议，取值范围：
+	// pass。
+	// review。
+	// block。
+	Suggestion *string `json:"Suggestion,omitempty" name:"Suggestion"`
+
+	// Ocr 文字有涉政、敏感嫌疑的视频片段列表。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SegmentSet []*VodOcrTextSegmentItem `json:"SegmentSet,omitempty" name:"SegmentSet" list`
+}
+
+type VodPoliticalReviewResult struct {
+
+	// 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 错误码，0：成功，其他值：失败。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Code *int64 `json:"Code,omitempty" name:"Code"`
+
+	// 错误信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Msg *string `json:"Msg,omitempty" name:"Msg"`
+
+	// 视频涉政评分，分值为0到100。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Confidence *float64 `json:"Confidence,omitempty" name:"Confidence"`
+
+	// 涉政结果建议，取值范围：
+	// pass。
+	// review。
+	// block。
+	// 
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Suggestion *string `json:"Suggestion,omitempty" name:"Suggestion"`
+
+	// 视频鉴政结果标签，取值范围：
+	// politician：政治人物。
+	// violation_photo：违规图标。
+	// 
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Label *string `json:"Label,omitempty" name:"Label"`
+
+	// 有涉政嫌疑的视频片段列表。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SegmentSet []*VodPoliticalReviewSegmentItem `json:"SegmentSet,omitempty" name:"SegmentSet" list`
+}
+
+type VodPoliticalReviewSegmentItem struct {
+
+	// 嫌疑片段起始的偏移时间，单位：秒。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StartTimeOffset *float64 `json:"StartTimeOffset,omitempty" name:"StartTimeOffset"`
+
+	// 嫌疑片段结束的偏移时间，单位：秒。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EndTimeOffset *float64 `json:"EndTimeOffset,omitempty" name:"EndTimeOffset"`
+
+	// 嫌疑片段涉政分数。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Confidence *float64 `json:"Confidence,omitempty" name:"Confidence"`
+
+	// 嫌疑片段鉴政结果建议，取值范围：
+	// pass。
+	// review。
+	// block。
+	// 
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Suggestion *string `json:"Suggestion,omitempty" name:"Suggestion"`
+
+	// 涉政人物、违规图标名字。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 嫌疑片段鉴政结果标签。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Label *string `json:"Label,omitempty" name:"Label"`
+
+	// 嫌疑图片 URL （图片不会永久存储，到达
+	// PicUrlExpireTime 时间点后图片将被删除）。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Url *string `json:"Url,omitempty" name:"Url"`
+
+	// 嫌疑图片 URL 失效时间，使用 ISO 日期格式。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PicUrlExpireTimeStamp *int64 `json:"PicUrlExpireTimeStamp,omitempty" name:"PicUrlExpireTimeStamp"`
+
+	// 涉政人物、违规图标出现的区域坐标 (像素级)，[x1, y1, x2, y2]，即左上角坐标、右下角坐标。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AreaCoordSet []*int64 `json:"AreaCoordSet,omitempty" name:"AreaCoordSet" list`
+}
+
+type VodPornAsrReviewResult struct {
+
+	// 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 错误码，0：成功，其他值：失败。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Code *int64 `json:"Code,omitempty" name:"Code"`
+
+	// 错误信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Msg *string `json:"Msg,omitempty" name:"Msg"`
+
+	// Asr 文字涉黄评分，分值为0到100。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Confidence *float64 `json:"Confidence,omitempty" name:"Confidence"`
+
+	// Asr 文字涉黄结果建议，取值范围：
+	// pass。
+	// review。
+	// block。
+	// 
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Suggestion *string `json:"Suggestion,omitempty" name:"Suggestion"`
+
+	// Asr 文字有涉黄嫌疑的视频片段列表。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SegmentSet []*VodAsrTextSegmentItem `json:"SegmentSet,omitempty" name:"SegmentSet" list`
+}
+
+type VodPornOcrResult struct {
+
+	// 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 错误码，0：成功，其他值：失败。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Code *int64 `json:"Code,omitempty" name:"Code"`
+
+	// 错误信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Msg *string `json:"Msg,omitempty" name:"Msg"`
+
+	// Ocr 文字涉黄评分，分值为0到100。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Confidence *float64 `json:"Confidence,omitempty" name:"Confidence"`
+
+	// Ocr 文字涉黄结果建议，取值范围：
+	// pass。
+	// review。
+	// block。
+	// 
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Suggestion *string `json:"Suggestion,omitempty" name:"Suggestion"`
+
+	// Ocr 文字有涉黄嫌疑的视频片段列表。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SegmentSet []*VodOcrTextSegmentItem `json:"SegmentSet,omitempty" name:"SegmentSet" list`
+}
+
+type VodPornReviewResult struct {
+
+	// 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 错误码，0：成功，其他值：失败。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Code *int64 `json:"Code,omitempty" name:"Code"`
+
+	// 错误信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Msg *string `json:"Msg,omitempty" name:"Msg"`
+
+	// 视频鉴黄评分，分值为0到100。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Confidence *float64 `json:"Confidence,omitempty" name:"Confidence"`
+
+	// 鉴黄结果建议，取值范围：
+	// pass。
+	// review。
+	// block。
+	// 
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Suggestion *string `json:"Suggestion,omitempty" name:"Suggestion"`
+
+	// 视频鉴黄结果标签，取值范围：
+	// porn：色情。
+	// sexy：性感。
+	// vulgar：低俗。
+	// intimacy：亲密行为。
+	// 
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Label *string `json:"Label,omitempty" name:"Label"`
+
+	// 有涉黄嫌疑的视频片段列表。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SegmentSet []*VodPornReviewSegmentItem `json:"SegmentSet,omitempty" name:"SegmentSet" list`
+}
+
+type VodPornReviewSegmentItem struct {
+
+	// 嫌疑片段起始的偏移时间，单位：秒。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StartTimeOffset *float64 `json:"StartTimeOffset,omitempty" name:"StartTimeOffset"`
+
+	// 嫌疑片段结束的偏移时间，单位：秒。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EndTimeOffset *float64 `json:"EndTimeOffset,omitempty" name:"EndTimeOffset"`
+
+	// 嫌疑片段涉黄分数。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Confidence *float64 `json:"Confidence,omitempty" name:"Confidence"`
+
+	// 嫌疑片段鉴黄结果标签。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Label *string `json:"Label,omitempty" name:"Label"`
+
+	// 嫌疑片段鉴黄结果建议，取值范围：
+	// pass。
+	// review。
+	// block。
+	// 
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Suggestion *string `json:"Suggestion,omitempty" name:"Suggestion"`
+
+	// 嫌疑图片 URL （图片不会永久存储，到达
+	// PicUrlExpireTime 时间点后图片将被删除）。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Url *string `json:"Url,omitempty" name:"Url"`
+
+	// 嫌疑图片 URL 失效时间，使用 ISO 日期格式。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PicUrlExpireTimeStamp *int64 `json:"PicUrlExpireTimeStamp,omitempty" name:"PicUrlExpireTimeStamp"`
+}
+
+type VodTerrorismReviewResult struct {
+
+	// 视频暴恐评分，分值为0到100。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Confidence *float64 `json:"Confidence,omitempty" name:"Confidence"`
+
+	// 暴恐结果建议，取值范围：
+	// pass。
+	// review。
+	// block。
+	// 
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Suggestion *string `json:"Suggestion,omitempty" name:"Suggestion"`
+
+	// 视频暴恐结果标签，取值范围：
+	// guns：武器枪支。
+	// crowd：人群聚集。
+	// police：警察部队。
+	// bloody：血腥画面。
+	// banners：暴恐旗帜。
+	// militant：武装分子。
+	// explosion：爆炸火灾。
+	// terrorists：暴恐人物。
+	// 
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Label *string `json:"Label,omitempty" name:"Label"`
+
+	// 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 错误码，0：成功，其他值：失败。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Code *int64 `json:"Code,omitempty" name:"Code"`
+
+	// 错误信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Msg *string `json:"Msg,omitempty" name:"Msg"`
+
+	// 有暴恐嫌疑的视频片段列表。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SegmentSet []*VodPornReviewSegmentItem `json:"SegmentSet,omitempty" name:"SegmentSet" list`
+}
+
+type VodVideoStreamItem struct {
+
+	// 视频流的码率，单位：bps。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Bitrate *int64 `json:"Bitrate,omitempty" name:"Bitrate"`
+
+	// 视频流的高度，单位：px。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Height *int64 `json:"Height,omitempty" name:"Height"`
+
+	// 视频流的宽度，单位：px。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Width *int64 `json:"Width,omitempty" name:"Width"`
+
+	// 视频流的编码格式，例如 h264。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Codec *string `json:"Codec,omitempty" name:"Codec"`
+
+	// 帧率，单位：hz。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Fps *int64 `json:"Fps,omitempty" name:"Fps"`
 }

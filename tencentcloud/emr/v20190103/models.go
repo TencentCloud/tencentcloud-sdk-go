@@ -227,6 +227,10 @@ type ClusterInstancesInfo struct {
 	// Hive元数据信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	HiveMetaDb *string `json:"HiveMetaDb,omitempty" name:"HiveMetaDb"`
+
+	// 集群类型:EMR,CLICKHOUSE,DRUID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ServiceClass *string `json:"ServiceClass,omitempty" name:"ServiceClass"`
 }
 
 type CreateInstanceRequest struct {
@@ -1104,6 +1108,10 @@ type NodeHardwareInfo struct {
 	// 节点绑定的标签
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Tags []*Tag `json:"Tags,omitempty" name:"Tags" list`
+
+	// 是否是自动扩缩容节点，0为普通节点，1为自动扩缩容节点。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AutoFlag *int64 `json:"AutoFlag,omitempty" name:"AutoFlag"`
 }
 
 type OutterResource struct {
@@ -1147,7 +1155,7 @@ type OutterResource struct {
 
 type Placement struct {
 
-	// 实例所属项目ID。该参数可以通过调用 DescribeProject 的返回值中的 projectId 字段来获取。不填为默认项目。
+	// 实例所属项目ID。该参数可以通过调用 DescribeProject 的返回值中的 projectId 字段来获取。填0为默认项目。
 	ProjectId *int64 `json:"ProjectId,omitempty" name:"ProjectId"`
 
 	// 实例所属的可用区，例如ap-guangzhou-1。该参数也可以通过调用 DescribeZones 的返回值中的Zone字段来获取。
@@ -1238,6 +1246,14 @@ type PriceResource struct {
 	// 标签
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Tags []*Tag `json:"Tags,omitempty" name:"Tags" list`
+
+	// 磁盘数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DiskNum *int64 `json:"DiskNum,omitempty" name:"DiskNum"`
+
+	// 本地盘的数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LocalDiskNum *int64 `json:"LocalDiskNum,omitempty" name:"LocalDiskNum"`
 }
 
 type Resource struct {

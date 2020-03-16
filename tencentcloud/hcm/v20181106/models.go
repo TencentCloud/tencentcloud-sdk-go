@@ -40,6 +40,9 @@ type EvaluationRequest struct {
 
 	// 拒绝非速算图（如风景图、人物图）开关，若开启，则遇到非速算图会快速返回拒绝的结果，但极端情况下可能会影响评估结果（比如算式截图贴到风景画里可能被判为非速算图直接返回了）。
 	RejectNonArithmeticImage *bool `json:"RejectNonArithmeticImage,omitempty" name:"RejectNonArithmeticImage"`
+
+	// 异步模式标识，0：同步模式，1：异步模式。默认为同步模式
+	IsAsync *int64 `json:"IsAsync,omitempty" name:"IsAsync"`
 }
 
 func (r *EvaluationRequest) ToJsonString() string {
@@ -59,7 +62,11 @@ type EvaluationResponse struct {
 		SessionId *string `json:"SessionId,omitempty" name:"SessionId"`
 
 		// 识别出的算式信息；
+	// 注意：此字段可能返回 null，表示取不到有效值。
 		Items []*Item `json:"Items,omitempty" name:"Items" list`
+
+		// 任务 id，用于查询接口
+		TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`

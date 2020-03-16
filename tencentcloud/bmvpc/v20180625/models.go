@@ -1231,6 +1231,12 @@ type DescribeCustomerGatewaysRequest struct {
 
 	// 返回数量，默认为20，最大值为100。
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 排序字段, 支持"CreateTime"排序
+	OrderField *string `json:"OrderField,omitempty" name:"OrderField"`
+
+	// 排序方向, “asc”、“desc”
+	OrderDirection *string `json:"OrderDirection,omitempty" name:"OrderDirection"`
 }
 
 func (r *DescribeCustomerGatewaysRequest) ToJsonString() string {
@@ -1286,6 +1292,15 @@ type DescribeNatGatewaysRequest struct {
 
 	// 偏移值，默认值为 20
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// NAT所在可用区，形如：ap-guangzhou-2。
+	Zone *string `json:"Zone,omitempty" name:"Zone"`
+
+	// 排序字段, 支持"CreateTime"排序
+	OrderField *string `json:"OrderField,omitempty" name:"OrderField"`
+
+	// 排序方向, “asc”、“desc”
+	OrderDirection *string `json:"OrderDirection,omitempty" name:"OrderDirection"`
 }
 
 func (r *DescribeNatGatewaysRequest) ToJsonString() string {
@@ -1640,6 +1655,12 @@ type DescribeSubnetsRequest struct {
 
 	// 返回数量
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 排序字段, 支持按“CreateTime”，“VlanId”
+	OrderField *string `json:"OrderField,omitempty" name:"OrderField"`
+
+	// 排序方向, “asc”、“desc”
+	OrderDirection *string `json:"OrderDirection,omitempty" name:"OrderDirection"`
 }
 
 func (r *DescribeSubnetsRequest) ToJsonString() string {
@@ -1728,6 +1749,9 @@ type DescribeVpcPeerConnectionsRequest struct {
 
 	// 返回数量，默认为20，最大值为100。
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 私有网络ID
+	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
 }
 
 func (r *DescribeVpcPeerConnectionsRequest) ToJsonString() string {
@@ -1810,7 +1834,7 @@ type DescribeVpcResourceRequest struct {
 	// vpc-id - String - （过滤条件）私有网络实例ID，形如：vpc-f49l6u0z。
 	// vpc-name - String - （过滤条件）私有网络名称。
 	// zone - String - （过滤条件）可用区。
-	// state - String - （过滤条件）VPC状态。
+	// state - String - （过滤条件）VPC状态。available: 运营中; pending: 创建中; failed: 创建失败; deleting: 删除中
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
 
 	// 偏移量
@@ -1818,6 +1842,12 @@ type DescribeVpcResourceRequest struct {
 
 	// 返回数量
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 排序字段
+	OrderField *string `json:"OrderField,omitempty" name:"OrderField"`
+
+	// 排序方向, “asc”、“desc”
+	OrderDirection *string `json:"OrderDirection,omitempty" name:"OrderDirection"`
 }
 
 func (r *DescribeVpcResourceRequest) ToJsonString() string {
@@ -1958,6 +1988,18 @@ type DescribeVpnConnectionsRequest struct {
 
 	// 返回数量，默认为20，最大值为100。
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// VPN网关实例ID
+	VpnGatewayId *string `json:"VpnGatewayId,omitempty" name:"VpnGatewayId"`
+
+	// VPN通道名称
+	VpnConnectionName *string `json:"VpnConnectionName,omitempty" name:"VpnConnectionName"`
+
+	// 排序字段, 支持"CreateTime"排序
+	OrderField *string `json:"OrderField,omitempty" name:"OrderField"`
+
+	// 排序方向, “asc”、“desc”
+	OrderDirection *string `json:"OrderDirection,omitempty" name:"OrderDirection"`
 }
 
 func (r *DescribeVpnConnectionsRequest) ToJsonString() string {
@@ -2011,6 +2053,12 @@ type DescribeVpnGatewaysRequest struct {
 
 	// 请求对象个数
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 排序字段, 支持"CreateTime"排序
+	OrderField *string `json:"OrderField,omitempty" name:"OrderField"`
+
+	// 排序方向, “asc”、“desc”
+	OrderDirection *string `json:"OrderDirection,omitempty" name:"OrderDirection"`
 }
 
 func (r *DescribeVpnGatewaysRequest) ToJsonString() string {
@@ -2153,6 +2201,9 @@ type IPSECOptionsSpecification struct {
 
 	// 安全协议，默认为ESP
 	SecurityProto *string `json:"SecurityProto,omitempty" name:"SecurityProto"`
+
+	// 报文封装模式:默认为Tunnel
+	EncapMode *string `json:"EncapMode,omitempty" name:"EncapMode"`
 }
 
 type IpInfo struct {
@@ -2553,7 +2604,7 @@ type NatGatewayInfo struct {
 	// 私有网络名称
 	VpcName *string `json:"VpcName,omitempty" name:"VpcName"`
 
-	// 网关状态，其中0表示创建中，1表示运行中，2表示创建失败
+	// 网关创建状态，其中0表示创建中，1表示运行中，2表示创建失败
 	ProductionStatus *uint64 `json:"ProductionStatus,omitempty" name:"ProductionStatus"`
 
 	// EIP列表
@@ -2579,6 +2630,15 @@ type NatGatewayInfo struct {
 
 	// 创建时间
 	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 网关启用状态，1为禁用，0为启用。
+	State *uint64 `json:"State,omitempty" name:"State"`
+
+	// 私有网络整型ID
+	IntVpcId *uint64 `json:"IntVpcId,omitempty" name:"IntVpcId"`
+
+	// NAT资源ID
+	NatResourceId *uint64 `json:"NatResourceId,omitempty" name:"NatResourceId"`
 }
 
 type NatSubnetInfo struct {
@@ -2791,7 +2851,7 @@ type SubnetInfo struct {
 	// 子网类型。0: 黑石物理机子网; 6: ccs子网; 7 Docker子网; 8: 虚拟机子网
 	Type *uint64 `json:"Type,omitempty" name:"Type"`
 
-	// 可用区ID。
+	// 子网可用区ID。
 	ZoneId *uint64 `json:"ZoneId,omitempty" name:"ZoneId"`
 
 	// 子网物理机的个数
@@ -2823,6 +2883,19 @@ type SubnetInfo struct {
 
 	// 25G子网标识
 	IsSmartNic *uint64 `json:"IsSmartNic,omitempty" name:"IsSmartNic"`
+
+	// 子网可用区。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Zone *string `json:"Zone,omitempty" name:"Zone"`
+
+	// VPC所在可用区ID
+	VpcZoneId *uint64 `json:"VpcZoneId,omitempty" name:"VpcZoneId"`
+
+	// VPC所在可用区
+	VpcZone *string `json:"VpcZone,omitempty" name:"VpcZone"`
+
+	// 是否开启广播，关闭为0，开启为1。
+	BroadcastFlag *uint64 `json:"BroadcastFlag,omitempty" name:"BroadcastFlag"`
 }
 
 type UnbindEipsFromNatGatewayRequest struct {
@@ -3145,6 +3218,18 @@ type VpcResource struct {
 
 	// 是否老专区VPC
 	IsOld *bool `json:"IsOld,omitempty" name:"IsOld"`
+
+	// 云联网服务个数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CcnServiceNum *uint64 `json:"CcnServiceNum,omitempty" name:"CcnServiceNum"`
+
+	// VPC允许创建的对等连接个数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VpcPeerLimitToAllRegion *uint64 `json:"VpcPeerLimitToAllRegion,omitempty" name:"VpcPeerLimitToAllRegion"`
+
+	// VPC允许创建的同地域的对等连接的个数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VpcPeerLimitToSameRegion *uint64 `json:"VpcPeerLimitToSameRegion,omitempty" name:"VpcPeerLimitToSameRegion"`
 }
 
 type VpcSubnetCreateInfo struct {
@@ -3256,6 +3341,16 @@ type VpnConnection struct {
 
 	// VPC名称
 	VpcName *string `json:"VpcName,omitempty" name:"VpcName"`
+
+	// VPN网关名称
+	VpnGatewayName *string `json:"VpnGatewayName,omitempty" name:"VpnGatewayName"`
+
+	// 对端网关名称
+	CustomerGatewayName *string `json:"CustomerGatewayName,omitempty" name:"CustomerGatewayName"`
+
+	// IPSEC VPN通道路由策略
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DestinationCidr []*string `json:"DestinationCidr,omitempty" name:"DestinationCidr" list`
 }
 
 type VpnGateway struct {

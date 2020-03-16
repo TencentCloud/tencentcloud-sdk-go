@@ -93,6 +93,56 @@ func (c *Client) DescribeWorkers(request *DescribeWorkersRequest) (response *Des
     return
 }
 
+func NewDescribeWorkersInfoRequest() (request *DescribeWorkersInfoRequest) {
+    request = &DescribeWorkersInfoRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("gs", APIVersion, "DescribeWorkersInfo")
+    return
+}
+
+func NewDescribeWorkersInfoResponse() (response *DescribeWorkersInfoResponse) {
+    response = &DescribeWorkersInfoResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 获取机器信息
+func (c *Client) DescribeWorkersInfo(request *DescribeWorkersInfoRequest) (response *DescribeWorkersInfoResponse, err error) {
+    if request == nil {
+        request = NewDescribeWorkersInfoRequest()
+    }
+    response = NewDescribeWorkersInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyWorkersRequest() (request *ModifyWorkersRequest) {
+    request = &ModifyWorkersRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("gs", APIVersion, "ModifyWorkers")
+    return
+}
+
+func NewModifyWorkersResponse() (response *ModifyWorkersResponse) {
+    response = &ModifyWorkersResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 修改机器信息
+func (c *Client) ModifyWorkers(request *ModifyWorkersRequest) (response *ModifyWorkersResponse, err error) {
+    if request == nil {
+        request = NewModifyWorkersRequest()
+    }
+    response = NewModifyWorkersResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewStopGameRequest() (request *StopGameRequest) {
     request = &StopGameRequest{
         BaseRequest: &tchttp.BaseRequest{},

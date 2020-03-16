@@ -646,6 +646,15 @@ type ProjectInfo struct {
 
 	// 归属者。
 	Owner *Entity `json:"Owner,omitempty" name:"Owner"`
+
+	// 项目封面图片地址。
+	CoverUrl *string `json:"CoverUrl,omitempty" name:"CoverUrl"`
+
+	// 项目创建时间，格式按照 ISO 8601 标准表示。
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 项目更新时间，格式按照 ISO 8601 标准表示。
+	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
 }
 
 type TaskBaseInfo struct {

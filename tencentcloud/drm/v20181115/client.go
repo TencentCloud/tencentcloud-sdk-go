@@ -84,7 +84,7 @@ func NewCreateEncryptKeysResponse() (response *CreateEncryptKeysResponse) {
     return
 }
 
-// 该接口用来设置加密的秘钥。注意，同一个content id，只能设置一次！
+// 该接口用来设置加密的密钥。注意，同一个content id，只能设置一次！
 func (c *Client) CreateEncryptKeys(request *CreateEncryptKeysRequest) (response *CreateEncryptKeysResponse, err error) {
     if request == nil {
         request = NewCreateEncryptKeysRequest()
@@ -162,7 +162,7 @@ func NewDescribeAllKeysResponse() (response *DescribeAllKeysResponse) {
     return
 }
 
-// 本接口用来查询指定DRM类型、ContentType的所有加密秘钥
+// 本接口用来查询指定DRM类型、ContentType的所有加密密钥
 func (c *Client) DescribeAllKeys(request *DescribeAllKeysRequest) (response *DescribeAllKeysResponse, err error) {
     if request == nil {
         request = NewDescribeAllKeysRequest()

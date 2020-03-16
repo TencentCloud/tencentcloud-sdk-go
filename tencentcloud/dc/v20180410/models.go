@@ -556,6 +556,13 @@ type DirectConnect struct {
 	// 报障联系电话。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FaultReportContactNumber *string `json:"FaultReportContactNumber,omitempty" name:"FaultReportContactNumber"`
+
+	// 标签键值对
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TagSet []*Tag `json:"TagSet,omitempty" name:"TagSet" list`
+
+	// 物理专线的接入点类型。
+	AccessPointType *string `json:"AccessPointType,omitempty" name:"AccessPointType"`
 }
 
 type DirectConnectTunnel struct {
@@ -588,7 +595,7 @@ type DirectConnectTunnel struct {
 	//  VPC：私有网络 ，BMVPC：黑石网络，CCN：云联网
 	NetworkType *string `json:"NetworkType,omitempty" name:"NetworkType"`
 
-	// VPC地域
+	// VPC地域对应的网络名，如ap-guangzhou
 	NetworkRegion *string `json:"NetworkRegion,omitempty" name:"NetworkRegion"`
 
 	// 私有网络统一 ID 或者黑石网络统一 ID
@@ -623,6 +630,33 @@ type DirectConnectTunnel struct {
 
 	// 专线通道带宽值
 	Bandwidth *int64 `json:"Bandwidth,omitempty" name:"Bandwidth"`
+
+	// 专线通道标签值
+	TagSet []*Tag `json:"TagSet,omitempty" name:"TagSet" list`
+
+	// 关联的网络自定义探测ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NetDetectId *string `json:"NetDetectId,omitempty" name:"NetDetectId"`
+
+	// BGP community开关
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EnableBGPCommunity *bool `json:"EnableBGPCommunity,omitempty" name:"EnableBGPCommunity"`
+
+	// 是否为Nat通道
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NatType *int64 `json:"NatType,omitempty" name:"NatType"`
+
+	// VPC地域简码，如gz、cd
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VpcRegion *string `json:"VpcRegion,omitempty" name:"VpcRegion"`
+
+	// 是否开启BFD
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BfdEnable *int64 `json:"BfdEnable,omitempty" name:"BfdEnable"`
+
+	// 专线通道接入点类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AccessPointType *string `json:"AccessPointType,omitempty" name:"AccessPointType"`
 }
 
 type Filter struct {
@@ -788,4 +822,15 @@ type RouteFilterPrefix struct {
 
 	// 用户侧网段地址
 	Cidr *string `json:"Cidr,omitempty" name:"Cidr"`
+}
+
+type Tag struct {
+
+	// 标签键
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Key *string `json:"Key,omitempty" name:"Key"`
+
+	// 标签值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Value *string `json:"Value,omitempty" name:"Value"`
 }

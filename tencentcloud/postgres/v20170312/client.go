@@ -68,31 +68,6 @@ func (c *Client) CloseDBExtranetAccess(request *CloseDBExtranetAccessRequest) (r
     return
 }
 
-func NewCreateDBInstancesRequest() (request *CreateDBInstancesRequest) {
-    request = &CreateDBInstancesRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    request.Init().WithApiInfo("postgres", APIVersion, "CreateDBInstances")
-    return
-}
-
-func NewCreateDBInstancesResponse() (response *CreateDBInstancesResponse) {
-    response = &CreateDBInstancesResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    }
-    return
-}
-
-// 本接口 (CreateDBInstances) 用于创建一个或者多个PostgreSQL实例。
-func (c *Client) CreateDBInstances(request *CreateDBInstancesRequest) (response *CreateDBInstancesResponse, err error) {
-    if request == nil {
-        request = NewCreateDBInstancesRequest()
-    }
-    response = NewCreateDBInstancesResponse()
-    err = c.Send(request, response)
-    return
-}
-
 func NewDescribeAccountsRequest() (request *DescribeAccountsRequest) {
     request = &DescribeAccountsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -189,31 +164,6 @@ func (c *Client) DescribeDBInstanceAttribute(request *DescribeDBInstanceAttribut
         request = NewDescribeDBInstanceAttributeRequest()
     }
     response = NewDescribeDBInstanceAttributeResponse()
-    err = c.Send(request, response)
-    return
-}
-
-func NewDescribeDBInstancesRequest() (request *DescribeDBInstancesRequest) {
-    request = &DescribeDBInstancesRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    request.Init().WithApiInfo("postgres", APIVersion, "DescribeDBInstances")
-    return
-}
-
-func NewDescribeDBInstancesResponse() (response *DescribeDBInstancesResponse) {
-    response = &DescribeDBInstancesResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    }
-    return
-}
-
-// 本接口 (DescribeDBInstances) 用于查询一个或多个实例的详细信息。
-func (c *Client) DescribeDBInstances(request *DescribeDBInstancesRequest) (response *DescribeDBInstancesResponse, err error) {
-    if request == nil {
-        request = NewDescribeDBInstancesRequest()
-    }
-    response = NewDescribeDBInstancesResponse()
     err = c.Send(request, response)
     return
 }
@@ -664,31 +614,6 @@ func (c *Client) SetAutoRenewFlag(request *SetAutoRenewFlagRequest) (response *S
         request = NewSetAutoRenewFlagRequest()
     }
     response = NewSetAutoRenewFlagResponse()
-    err = c.Send(request, response)
-    return
-}
-
-func NewUpgradeDBInstanceRequest() (request *UpgradeDBInstanceRequest) {
-    request = &UpgradeDBInstanceRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    request.Init().WithApiInfo("postgres", APIVersion, "UpgradeDBInstance")
-    return
-}
-
-func NewUpgradeDBInstanceResponse() (response *UpgradeDBInstanceResponse) {
-    response = &UpgradeDBInstanceResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    }
-    return
-}
-
-// 本接口（UpgradeDBInstance）用于升级实例。
-func (c *Client) UpgradeDBInstance(request *UpgradeDBInstanceRequest) (response *UpgradeDBInstanceResponse, err error) {
-    if request == nil {
-        request = NewUpgradeDBInstanceRequest()
-    }
-    response = NewUpgradeDBInstanceResponse()
     err = c.Send(request, response)
     return
 }

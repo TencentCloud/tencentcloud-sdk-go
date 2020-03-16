@@ -758,7 +758,7 @@ func NewListClsTopicDomainsResponse() (response *ListClsTopicDomainsResponse) {
     return
 }
 
-// 获取主题下绑定的域名列表
+// ListClsTopicDomains 用于获取某日志主题下绑定的域名列表。
 func (c *Client) ListClsTopicDomains(request *ListClsTopicDomainsRequest) (response *ListClsTopicDomainsResponse, err error) {
     if request == nil {
         request = NewListClsTopicDomainsRequest()

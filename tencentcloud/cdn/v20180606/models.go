@@ -2465,10 +2465,10 @@ type ListClsTopicDomainsRequest struct {
 	// 日志集ID
 	LogsetId *string `json:"LogsetId,omitempty" name:"LogsetId"`
 
-	// 主题ID
+	// 日志主题ID
 	TopicId *string `json:"TopicId,omitempty" name:"TopicId"`
 
-	// 接入渠道，默认值为cdn，后期可扩充dsa/ecdn等
+	// 接入渠道，默认值为cdn
 	Channel *string `json:"Channel,omitempty" name:"Channel"`
 }
 

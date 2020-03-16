@@ -62,7 +62,7 @@ func (r *AssignProjectResponse) FromJsonString(s string) error {
 
 type BackupFile struct {
 
-	// 备份文件所属的副本集/分片id
+	// 备份文件所属的副本集/分片ID
 	ReplicateSetId *string `json:"ReplicateSetId,omitempty" name:"ReplicateSetId"`
 
 	// 备份文件保存路径

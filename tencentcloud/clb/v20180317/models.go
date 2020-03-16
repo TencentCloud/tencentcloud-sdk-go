@@ -2329,6 +2329,14 @@ type LoadBalancer struct {
 	// 开启SnatPro负载均衡后，SnatIp列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SnatIps []*SnatIp `json:"SnatIps,omitempty" name:"SnatIps" list`
+
+	// 性能保障规格
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SlaType *string `json:"SlaType,omitempty" name:"SlaType"`
+
+	// vip是否被封堵
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsBlock *bool `json:"IsBlock,omitempty" name:"IsBlock"`
 }
 
 type LoadBalancerHealth struct {

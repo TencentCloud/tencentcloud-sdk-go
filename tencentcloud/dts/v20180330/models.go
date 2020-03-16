@@ -687,6 +687,10 @@ type MigrateStepDetailInfo struct {
 
 	// 步骤状态:0-默认值,1-成功,2-失败,3-执行中,4-未执行
 	Status *int64 `json:"Status,omitempty" name:"Status"`
+
+	// 当前步骤开始的时间，格式为"yyyy-mm-dd hh:mm:ss"，该字段不存在或者为空是无意义
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
 }
 
 type ModifyMigrateJobRequest struct {

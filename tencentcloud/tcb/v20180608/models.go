@@ -29,8 +29,8 @@ type AuthDomain struct {
 	Domain *string `json:"Domain,omitempty" name:"Domain"`
 
 	// 域名类型。包含以下取值：
-	// <li>system</li>
-	// <li>user</li>
+	// <li>SYSTEM</li>
+	// <li>USER</li>
 	Type *string `json:"Type,omitempty" name:"Type"`
 
 	// 状态。包含以下取值：

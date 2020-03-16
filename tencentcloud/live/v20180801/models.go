@@ -347,6 +347,15 @@ type ClientIpPlaySumInfo struct {
 	CountryArea *string `json:"CountryArea,omitempty" name:"CountryArea"`
 }
 
+type ConcurrentRecordStreamNum struct {
+
+	// 时间点。
+	Time *string `json:"Time,omitempty" name:"Time"`
+
+	// 路数。
+	Num *uint64 `json:"Num,omitempty" name:"Num"`
+}
+
 type CreateLiveCallbackRuleRequest struct {
 	*tchttp.BaseRequest
 
@@ -1691,6 +1700,58 @@ func (r *DescribeBillBandwidthAndFluxListResponse) ToJsonString() string {
 }
 
 func (r *DescribeBillBandwidthAndFluxListResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeConcurrentRecordStreamNumRequest struct {
+	*tchttp.BaseRequest
+
+	// 直播类型，SlowLive：慢直播。
+	// NormalLive：普通直播。
+	LiveType *string `json:"LiveType,omitempty" name:"LiveType"`
+
+	// 起始时间，格式：yyyy-mm-dd HH:MM:SS。
+	// 可以查询最近180天的数据。
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 结束时间，格式：yyyy-mm-dd HH:MM:SS。
+	// 时间跨度最大支持31天。
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 如果为空，查询所有地区数据；如果为“Mainland”，查询国内数据；如果为“Oversea”，则查询国外数据。
+	MainlandOrOversea *string `json:"MainlandOrOversea,omitempty" name:"MainlandOrOversea"`
+
+	// 推流域名列表，不填表示总体数据。
+	PushDomains []*string `json:"PushDomains,omitempty" name:"PushDomains" list`
+}
+
+func (r *DescribeConcurrentRecordStreamNumRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeConcurrentRecordStreamNumRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeConcurrentRecordStreamNumResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 统计信息列表。
+		DataInfoList []*ConcurrentRecordStreamNum `json:"DataInfoList,omitempty" name:"DataInfoList" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeConcurrentRecordStreamNumResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeConcurrentRecordStreamNumResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -4038,6 +4099,11 @@ type DomainInfo struct {
 
 	// 租用域名过期时间
 	RentExpireTime *string `json:"RentExpireTime,omitempty" name:"RentExpireTime"`
+
+	// 0：标准直播，
+	// 1：小程序直播。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsMiniProgramLive *int64 `json:"IsMiniProgramLive,omitempty" name:"IsMiniProgramLive"`
 }
 
 type DomainInfoList struct {
@@ -5127,6 +5193,15 @@ type PushDataInfo struct {
 
 	// 采样率。
 	AsampleRate *uint64 `json:"AsampleRate,omitempty" name:"AsampleRate"`
+
+	// metadata中的音频码率，单位是Kbps。
+	MetaAudioSpeed *uint64 `json:"MetaAudioSpeed,omitempty" name:"MetaAudioSpeed"`
+
+	// metadata中的视频码率，单位是Kbps。
+	MetaVideoSpeed *uint64 `json:"MetaVideoSpeed,omitempty" name:"MetaVideoSpeed"`
+
+	// metadata中的帧率。
+	MetaFps *uint64 `json:"MetaFps,omitempty" name:"MetaFps"`
 }
 
 type PushQualityData struct {
@@ -5178,6 +5253,15 @@ type PushQualityData struct {
 
 	// 音频流逝时间，单位是ms。
 	AudioTs *uint64 `json:"AudioTs,omitempty" name:"AudioTs"`
+
+	// metadata中的视频码率，单位是kbps。
+	MetaVideoRate *uint64 `json:"MetaVideoRate,omitempty" name:"MetaVideoRate"`
+
+	// metadata中的音频码率，单位是kbps。
+	MetaAudioRate *uint64 `json:"MetaAudioRate,omitempty" name:"MetaAudioRate"`
+
+	// metadata中的帧率。
+	MateFps *uint64 `json:"MateFps,omitempty" name:"MateFps"`
 }
 
 type RecordParam struct {
@@ -5596,6 +5680,9 @@ type TranscodeDetailInfo struct {
 
 	// 推流域名。
 	PushDomain *string `json:"PushDomain,omitempty" name:"PushDomain"`
+
+	// 分辨率。
+	Resolution *string `json:"Resolution,omitempty" name:"Resolution"`
 }
 
 type UnBindLiveDomainCertRequest struct {
