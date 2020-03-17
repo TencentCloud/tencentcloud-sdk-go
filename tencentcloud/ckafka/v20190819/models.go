@@ -211,7 +211,7 @@ type CreateAclRequest struct {
 	// 权限类型，(0:UNKNOWN，1:ANY，2:DENY，3:ALLOW)，当前ckakfa支持ALLOW(相当于白名单)，其它用于后续兼容开源kafka的acl时使用
 	PermissionType *int64 `json:"PermissionType,omitempty" name:"PermissionType"`
 
-	// 默认为*，表示任何host都可以访问，当前ckafka不支持host为*，但是后面开源kafka的产品化会直接支持
+	// 默认为\*，表示任何host都可以访问，当前ckafka不支持host为\*，但是后面开源kafka的产品化会直接支持
 	Host *string `json:"Host,omitempty" name:"Host"`
 
 	// 用户列表，默认为*，表示任何user都可以访问，当前用户只能是用户列表中包含的用户
@@ -471,7 +471,7 @@ type DeleteAclRequest struct {
 	// 权限类型，(0:UNKNOWN，1:ANY，2:DENY，3:ALLOW)，当前ckakfa支持ALLOW(相当于白名单)，其它用于后续兼容开源kafka的acl时使用
 	PermissionType *int64 `json:"PermissionType,omitempty" name:"PermissionType"`
 
-	// 默认为*，表示任何host都可以访问，当前ckafka不支持host为*，但是后面开源kafka的产品化会直接支持
+	// 默认为\*，表示任何host都可以访问，当前ckafka不支持host为\*，但是后面开源kafka的产品化会直接支持
 	Host *string `json:"Host,omitempty" name:"Host"`
 
 	// 用户列表，默认为*，表示任何user都可以访问，当前用户只能是用户列表中包含的用户
@@ -1162,7 +1162,7 @@ type DescribeTopicRequest struct {
 	// 偏移量，不填默认为0
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
 
-	// 返回数量，不填则默认为10，最大值为20
+	// 返回数量，不填则默认为10，最大值为50
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 }
 

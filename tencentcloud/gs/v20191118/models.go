@@ -61,6 +61,9 @@ type CreateSessionRequest struct {
 
 	// 游戏用户IP，用于就近调度，例如125.127.178.228
 	UserIp *string `json:"UserIp,omitempty" name:"UserIp"`
+
+	// 优化项，便于客户灰度开启新的优化项，默认为0
+	Optimization *uint64 `json:"Optimization,omitempty" name:"Optimization"`
 }
 
 func (r *CreateSessionRequest) ToJsonString() string {

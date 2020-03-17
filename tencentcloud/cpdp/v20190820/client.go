@@ -351,6 +351,31 @@ func (c *Client) ModifyMntMbrBindRelateAcctBankCode(request *ModifyMntMbrBindRel
     return
 }
 
+func NewQueryAcctBindingRequest() (request *QueryAcctBindingRequest) {
+    request = &QueryAcctBindingRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cpdp", APIVersion, "QueryAcctBinding")
+    return
+}
+
+func NewQueryAcctBindingResponse() (response *QueryAcctBindingResponse) {
+    response = &QueryAcctBindingResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 聚鑫-查询子账户绑定银行卡
+func (c *Client) QueryAcctBinding(request *QueryAcctBindingRequest) (response *QueryAcctBindingResponse, err error) {
+    if request == nil {
+        request = NewQueryAcctBindingRequest()
+    }
+    response = NewQueryAcctBindingResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewQueryBalanceRequest() (request *QueryBalanceRequest) {
     request = &QueryBalanceRequest{
         BaseRequest: &tchttp.BaseRequest{},

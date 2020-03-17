@@ -121,6 +121,51 @@ func (r *ApplyWithdrawalResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type BankCardItem struct {
+
+	// 超级网银行号
+	EiconBankBranchId *string `json:"EiconBankBranchId,omitempty" name:"EiconBankBranchId"`
+
+	// 大小额行号
+	CnapsBranchId *string `json:"CnapsBranchId,omitempty" name:"CnapsBranchId"`
+
+	// 结算账户类型
+	// 1 – 本行账户
+	// 2 – 他行账户
+	SettleAcctType *int64 `json:"SettleAcctType,omitempty" name:"SettleAcctType"`
+
+	// 结算账户户名
+	// <敏感信息>
+	SettleAcctName *string `json:"SettleAcctName,omitempty" name:"SettleAcctName"`
+
+	// 开户行名称
+	AcctBranchName *string `json:"AcctBranchName,omitempty" name:"AcctBranchName"`
+
+	// 用于提现
+	// <敏感信息>
+	SettleAcctNo *string `json:"SettleAcctNo,omitempty" name:"SettleAcctNo"`
+
+	// 聚鑫计费SubAppId，代表子商户
+	SubAppId *string `json:"SubAppId,omitempty" name:"SubAppId"`
+
+	// 验证类型
+	// 1 – 小额转账验证
+	// 2 – 短信验证
+	BindType *int64 `json:"BindType,omitempty" name:"BindType"`
+
+	// 用于短信验证
+	// BindType==2时必填
+	// <敏感信息>
+	Mobile *string `json:"Mobile,omitempty" name:"Mobile"`
+
+	// 证件类型
+	IdType *string `json:"IdType,omitempty" name:"IdType"`
+
+	// 证件号码
+	// <敏感信息>
+	IdCode *string `json:"IdCode,omitempty" name:"IdCode"`
+}
+
 type BindAcctRequest struct {
 	*tchttp.BaseRequest
 
@@ -683,6 +728,9 @@ type CreateAcctRequest struct {
 
 	// 不填则默认子商户名称
 	ShortName *string `json:"ShortName,omitempty" name:"ShortName"`
+
+	// 平台参数，沙箱环境传sandbox，生产环境传release，默认release
+	PlatformId *string `json:"PlatformId,omitempty" name:"PlatformId"`
 }
 
 func (r *CreateAcctRequest) ToJsonString() string {
@@ -941,6 +989,58 @@ func (r *ModifyMntMbrBindRelateAcctBankCodeResponse) ToJsonString() string {
 }
 
 func (r *ModifyMntMbrBindRelateAcctBankCodeResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type QueryAcctBindingRequest struct {
+	*tchttp.BaseRequest
+
+	// 聚鑫分配的支付主MidasAppId
+	MidasAppId *string `json:"MidasAppId,omitempty" name:"MidasAppId"`
+
+	// 聚鑫计费SubAppId，代表子商户
+	SubAppId *string `json:"SubAppId,omitempty" name:"SubAppId"`
+
+	// 由平台客服提供的计费密钥Id
+	MidasSecretId *string `json:"MidasSecretId,omitempty" name:"MidasSecretId"`
+
+	// 计费签名
+	MidasSignature *string `json:"MidasSignature,omitempty" name:"MidasSignature"`
+
+	// 平台参数，沙箱环境传sandbox，生产环境传release，默认release
+	PlatformId *string `json:"PlatformId,omitempty" name:"PlatformId"`
+}
+
+func (r *QueryAcctBindingRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *QueryAcctBindingRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type QueryAcctBindingResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 总行数
+		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 银行卡信息列表
+		BankCardItems []*BankCardItem `json:"BankCardItems,omitempty" name:"BankCardItems" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *QueryAcctBindingResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *QueryAcctBindingResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 

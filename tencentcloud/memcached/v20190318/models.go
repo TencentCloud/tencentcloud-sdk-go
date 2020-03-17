@@ -47,6 +47,12 @@ type DescribeInstancesRequest struct {
 	// 搜索关键词：支持实例ID、实例名称、完整IP
 	SearchKeys []*string `json:"SearchKeys,omitempty" name:"SearchKeys" list`
 
+	// 子网ID数组，数组下标从0开始，如：subnet-fdj24n34j2
+	UniqSubnetIds []*string `json:"UniqSubnetIds,omitempty" name:"UniqSubnetIds" list`
+
+	// 私有网络ID数组，数组下标从0开始，如果不传则默认选择基础网络，如：vpc-sad23jfdfk
+	UniqVpcIds []*string `json:"UniqVpcIds,omitempty" name:"UniqVpcIds" list`
+
 	// 实例服务IP组成的数组，数组下标从0开始
 	Vips []*string `json:"Vips,omitempty" name:"Vips" list`
 }
