@@ -2758,6 +2758,9 @@ type ReloadDeviceOsRequest struct {
 
 	// 是否保留安全组配置，取值：1(保留) 0(不保留)，默认取值0
 	ReserveSgConfig *uint64 `json:"ReserveSgConfig,omitempty" name:"ReserveSgConfig"`
+
+	// /data分区大小，可不填。除root、swap、usr/local的剩余空间会自动分配到data分区
+	SysDataSpace *uint64 `json:"SysDataSpace,omitempty" name:"SysDataSpace"`
 }
 
 func (r *ReloadDeviceOsRequest) ToJsonString() string {

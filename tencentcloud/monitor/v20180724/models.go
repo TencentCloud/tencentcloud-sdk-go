@@ -286,10 +286,10 @@ type DescribeAccidentEventListRequest struct {
 	// 结束时间，默认当前时间戳
 	EndTime *int64 `json:"EndTime,omitempty" name:"EndTime"`
 
-	// 每页返回的数量，默认20
+	// 分页参数，每页返回的数量，取值1~100，默认20
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 
-	// 页偏移量，默认0
+	// 分页参数，页偏移量，从0开始计数，默认0
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
 
 	// 根据UpdateTime排序的规则，取值asc或desc
@@ -491,10 +491,10 @@ type DescribeBasicAlarmListRequest struct {
 	// 结束时间，默认当前时间戳
 	EndTime *int64 `json:"EndTime,omitempty" name:"EndTime"`
 
-	// 每页返回的数量，默认20
+	// 分页参数，每页返回的数量，取值1~100，默认20
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 
-	// 页偏移量，默认0
+	// 分页参数，页偏移量，从0开始计数，默认0
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
 
 	// 根据发生时间排序，取值ASC或DESC

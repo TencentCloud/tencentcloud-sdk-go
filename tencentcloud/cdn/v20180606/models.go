@@ -1047,6 +1047,48 @@ func (r *DescribeCdnIpResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeCertDomainsRequest struct {
+	*tchttp.BaseRequest
+
+	// PEM格式证书Base64编码后的字符串
+	Cert *string `json:"Cert,omitempty" name:"Cert"`
+}
+
+func (r *DescribeCertDomainsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeCertDomainsRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeCertDomainsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 已接入CDN的域名列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Domains []*string `json:"Domains,omitempty" name:"Domains" list`
+
+		// CDN已配置证书的域名列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		CertifiedDomains []*string `json:"CertifiedDomains,omitempty" name:"CertifiedDomains" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeCertDomainsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeCertDomainsResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeDomainsConfigRequest struct {
 	*tchttp.BaseRequest
 

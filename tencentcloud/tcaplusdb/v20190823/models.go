@@ -1085,7 +1085,7 @@ type ModifyTableGroupNameRequest struct {
 	// 待修改名称的表格组ID
 	TableGroupId *string `json:"TableGroupId,omitempty" name:"TableGroupId"`
 
-	// 新的大区名称，可以使用中英文字符和符号
+	// 新的表格组名称，可以使用中英文字符和符号
 	TableGroupName *string `json:"TableGroupName,omitempty" name:"TableGroupName"`
 }
 

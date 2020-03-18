@@ -108,7 +108,7 @@ func NewCreateTaskExResponse() (response *CreateTaskExResponse) {
     return
 }
 
-// 创建拨测任务(扩充)
+// 创建拨测任务(扩展)
 func (c *Client) CreateTaskEx(request *CreateTaskExRequest) (response *CreateTaskExResponse, err error) {
     if request == nil {
         request = NewCreateTaskExRequest()

@@ -252,6 +252,31 @@ func (c *Client) DescribeCdnIp(request *DescribeCdnIpRequest) (response *Describ
     return
 }
 
+func NewDescribeCertDomainsRequest() (request *DescribeCertDomainsRequest) {
+    request = &DescribeCertDomainsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cdn", APIVersion, "DescribeCertDomains")
+    return
+}
+
+func NewDescribeCertDomainsResponse() (response *DescribeCertDomainsResponse) {
+    response = &DescribeCertDomainsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 校验证书并提取SSL证书中包含的域名，返回CDN已接入的域名列表，及已配置证书的域名列表
+func (c *Client) DescribeCertDomains(request *DescribeCertDomainsRequest) (response *DescribeCertDomainsResponse, err error) {
+    if request == nil {
+        request = NewDescribeCertDomainsRequest()
+    }
+    response = NewDescribeCertDomainsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeDomainsRequest() (request *DescribeDomainsRequest) {
     request = &DescribeDomainsRequest{
         BaseRequest: &tchttp.BaseRequest{},

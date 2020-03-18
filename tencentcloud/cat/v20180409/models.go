@@ -356,10 +356,10 @@ type CreateAgentGroupRequest struct {
 	// 拨测分组名称，不超过32个字符
 	GroupName *string `json:"GroupName,omitempty" name:"GroupName"`
 
-	// 是否为默认分组，取值可为 0 或 1
+	// 是否为默认分组，取值可为 0 或 1。取 1 时表示设置为默认分组
 	IsDefault *int64 `json:"IsDefault,omitempty" name:"IsDefault"`
 
-	// Province, Isp 需要成对地进行选择。参数对的取值范围。参见：DescribeAgentList 的返回结果。
+	// Province, Isp 需要成对地进行选择。参数对的取值范围。参见：DescribeAgents 的返回结果。
 	Agents []*CatAgent `json:"Agents,omitempty" name:"Agents" list`
 }
 
@@ -408,7 +408,7 @@ type CreateTaskExRequest struct {
 	// 拨测任务名称不能超过32个字符。同一个用户创建的任务名不可重复
 	TaskName *string `json:"TaskName,omitempty" name:"TaskName"`
 
-	// 拨测分组ID，体现本拨测任务要采用那些运营商作为拨测源。一般可直接填写本用户的默认拨测分组。参见：DescribeAgentGroups 接口，本参数使用返回结果里的GroupId的值。注意： Type为0时，AgentGroupId为必填
+	// 拨测分组ID，体现本拨测任务要采用哪些运营商作为拨测源。一般可直接填写本用户的默认拨测分组。参见：DescribeAgentGroups 接口，本参数使用返回结果里的GroupId的值。注意： Type为0时，AgentGroupId为必填
 	AgentGroupId *uint64 `json:"AgentGroupId,omitempty" name:"AgentGroupId"`
 
 	// 指定域名(如需要)
@@ -1488,13 +1488,13 @@ type IspDetail struct {
 type ModifyAgentGroupRequest struct {
 	*tchttp.BaseRequest
 
-	// 拨测分组id
+	// 拨测分组ID
 	GroupId *uint64 `json:"GroupId,omitempty" name:"GroupId"`
 
 	// 拨测分组名称
 	GroupName *string `json:"GroupName,omitempty" name:"GroupName"`
 
-	// 是否为默认分组。取值可为0，1
+	// 是否为默认分组。取值可为0，1。取 1 时表示设置为默认分组
 	IsDefault *int64 `json:"IsDefault,omitempty" name:"IsDefault"`
 
 	// Province, Isp 需要成对地进行选择。参数对的取值范围。参见：DescribeAgents 的返回结果。
@@ -1546,7 +1546,7 @@ type ModifyTaskExRequest struct {
 	// 验证成功的拨测任务ID
 	TaskId *uint64 `json:"TaskId,omitempty" name:"TaskId"`
 
-	// 拨测分组ID，体现本拨测任务要采用那些运营商作为拨测源。一般可直接填写本用户的默认拨测分组。参见：DescribeAgentGroupList 接口，本参数使用返回结果里的GroupId的值。注意，Type为0时，AgentGroupId为必填
+	// 拨测分组ID，体现本拨测任务要采用哪些运营商作为拨测源。一般可直接填写本用户的默认拨测分组。参见：DescribeAgentGroupList 接口，本参数使用返回结果里的GroupId的值。注意，Type为0时，AgentGroupId为必填
 	AgentGroupId *uint64 `json:"AgentGroupId,omitempty" name:"AgentGroupId"`
 
 	// 指定域名(如需要)
