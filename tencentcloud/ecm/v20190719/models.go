@@ -1308,16 +1308,16 @@ type Position struct {
 	ZoneInfo *ZoneInfo `json:"ZoneInfo,omitempty" name:"ZoneInfo"`
 
 	// 实例所在的国家的信息。
-	Country * `json:"Country,omitempty" name:"Country"`
+	Country *Country `json:"Country,omitempty" name:"Country"`
 
 	// 实例所在的Area的信息。
 	Area *Area `json:"Area,omitempty" name:"Area"`
 
 	// 实例所在的省份的信息。
-	Province * `json:"Province,omitempty" name:"Province"`
+	Province *Province `json:"Province,omitempty" name:"Province"`
 
 	// 实例所在的城市的信息。
-	City * `json:"City,omitempty" name:"City"`
+	City *City `json:"City,omitempty" name:"City"`
 
 	// 实例所在的Region的信息。
 	RegionInfo *RegionInfo `json:"RegionInfo,omitempty" name:"RegionInfo"`
