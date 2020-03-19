@@ -512,6 +512,12 @@ type DBInstance struct {
 
 	// 计费ID
 	Pid *int64 `json:"Pid,omitempty" name:"Pid"`
+
+	// 实例所属VPC的唯一字符串ID，格式如：vpc-xxx，基础网络时为空字符串
+	UniqVpcId *string `json:"UniqVpcId,omitempty" name:"UniqVpcId"`
+
+	// 实例所属子网的唯一字符串ID，格式如： subnet-xxx，基础网络时为空字符串
+	UniqSubnetId *string `json:"UniqSubnetId,omitempty" name:"UniqSubnetId"`
 }
 
 type DBPrivilege struct {

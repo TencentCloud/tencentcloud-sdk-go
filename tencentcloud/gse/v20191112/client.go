@@ -68,56 +68,6 @@ func (c *Client) CreateGameServerSession(request *CreateGameServerSessionRequest
     return
 }
 
-func NewDeleteScalingPolicyRequest() (request *DeleteScalingPolicyRequest) {
-    request = &DeleteScalingPolicyRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    request.Init().WithApiInfo("gse", APIVersion, "DeleteScalingPolicy")
-    return
-}
-
-func NewDeleteScalingPolicyResponse() (response *DeleteScalingPolicyResponse) {
-    response = &DeleteScalingPolicyResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    }
-    return
-}
-
-// 用于删除扩缩容配置
-func (c *Client) DeleteScalingPolicy(request *DeleteScalingPolicyRequest) (response *DeleteScalingPolicyResponse, err error) {
-    if request == nil {
-        request = NewDeleteScalingPolicyRequest()
-    }
-    response = NewDeleteScalingPolicyResponse()
-    err = c.Send(request, response)
-    return
-}
-
-func NewDescribeFleetCapacityRequest() (request *DescribeFleetCapacityRequest) {
-    request = &DescribeFleetCapacityRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    request.Init().WithApiInfo("gse", APIVersion, "DescribeFleetCapacity")
-    return
-}
-
-func NewDescribeFleetCapacityResponse() (response *DescribeFleetCapacityResponse) {
-    response = &DescribeFleetCapacityResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    }
-    return
-}
-
-// 用于查询服务部署容量配置
-func (c *Client) DescribeFleetCapacity(request *DescribeFleetCapacityRequest) (response *DescribeFleetCapacityResponse, err error) {
-    if request == nil {
-        request = NewDescribeFleetCapacityRequest()
-    }
-    response = NewDescribeFleetCapacityResponse()
-    err = c.Send(request, response)
-    return
-}
-
 func NewDescribeGameServerSessionDetailsRequest() (request *DescribeGameServerSessionDetailsRequest) {
     request = &DescribeGameServerSessionDetailsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -193,6 +143,31 @@ func (c *Client) DescribeGameServerSessions(request *DescribeGameServerSessionsR
     return
 }
 
+func NewDescribeInstancesRequest() (request *DescribeInstancesRequest) {
+    request = &DescribeInstancesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("gse", APIVersion, "DescribeInstances")
+    return
+}
+
+func NewDescribeInstancesResponse() (response *DescribeInstancesResponse) {
+    response = &DescribeInstancesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 用于查询服务器实例列表
+func (c *Client) DescribeInstances(request *DescribeInstancesRequest) (response *DescribeInstancesResponse, err error) {
+    if request == nil {
+        request = NewDescribeInstancesRequest()
+    }
+    response = NewDescribeInstancesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribePlayerSessionsRequest() (request *DescribePlayerSessionsRequest) {
     request = &DescribePlayerSessionsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -214,31 +189,6 @@ func (c *Client) DescribePlayerSessions(request *DescribePlayerSessionsRequest) 
         request = NewDescribePlayerSessionsRequest()
     }
     response = NewDescribePlayerSessionsResponse()
-    err = c.Send(request, response)
-    return
-}
-
-func NewDescribeScalingPoliciesRequest() (request *DescribeScalingPoliciesRequest) {
-    request = &DescribeScalingPoliciesRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    request.Init().WithApiInfo("gse", APIVersion, "DescribeScalingPolicies")
-    return
-}
-
-func NewDescribeScalingPoliciesResponse() (response *DescribeScalingPoliciesResponse) {
-    response = &DescribeScalingPoliciesResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    }
-    return
-}
-
-// 用于查询服务部署的动态扩缩容配置
-func (c *Client) DescribeScalingPolicies(request *DescribeScalingPoliciesRequest) (response *DescribeScalingPoliciesResponse, err error) {
-    if request == nil {
-        request = NewDescribeScalingPoliciesRequest()
-    }
-    response = NewDescribeScalingPoliciesResponse()
     err = c.Send(request, response)
     return
 }
@@ -268,6 +218,31 @@ func (c *Client) GetGameServerSessionLogUrl(request *GetGameServerSessionLogUrlR
     return
 }
 
+func NewGetInstanceAccessRequest() (request *GetInstanceAccessRequest) {
+    request = &GetInstanceAccessRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("gse", APIVersion, "GetInstanceAccess")
+    return
+}
+
+func NewGetInstanceAccessResponse() (response *GetInstanceAccessResponse) {
+    response = &GetInstanceAccessResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 获取实例登录所需要的凭据
+func (c *Client) GetInstanceAccess(request *GetInstanceAccessRequest) (response *GetInstanceAccessResponse, err error) {
+    if request == nil {
+        request = NewGetInstanceAccessRequest()
+    }
+    response = NewGetInstanceAccessResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewJoinGameServerSessionRequest() (request *JoinGameServerSessionRequest) {
     request = &JoinGameServerSessionRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -289,31 +264,6 @@ func (c *Client) JoinGameServerSession(request *JoinGameServerSessionRequest) (r
         request = NewJoinGameServerSessionRequest()
     }
     response = NewJoinGameServerSessionResponse()
-    err = c.Send(request, response)
-    return
-}
-
-func NewPutScalingPolicyRequest() (request *PutScalingPolicyRequest) {
-    request = &PutScalingPolicyRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    request.Init().WithApiInfo("gse", APIVersion, "PutScalingPolicy")
-    return
-}
-
-func NewPutScalingPolicyResponse() (response *PutScalingPolicyResponse) {
-    response = &PutScalingPolicyResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    }
-    return
-}
-
-// 用于设置动态扩缩容配置
-func (c *Client) PutScalingPolicy(request *PutScalingPolicyRequest) (response *PutScalingPolicyResponse, err error) {
-    if request == nil {
-        request = NewPutScalingPolicyRequest()
-    }
-    response = NewPutScalingPolicyResponse()
     err = c.Send(request, response)
     return
 }
@@ -364,31 +314,6 @@ func (c *Client) StopGameServerSessionPlacement(request *StopGameServerSessionPl
         request = NewStopGameServerSessionPlacementRequest()
     }
     response = NewStopGameServerSessionPlacementResponse()
-    err = c.Send(request, response)
-    return
-}
-
-func NewUpdateFleetCapacityRequest() (request *UpdateFleetCapacityRequest) {
-    request = &UpdateFleetCapacityRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    request.Init().WithApiInfo("gse", APIVersion, "UpdateFleetCapacity")
-    return
-}
-
-func NewUpdateFleetCapacityResponse() (response *UpdateFleetCapacityResponse) {
-    response = &UpdateFleetCapacityResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    }
-    return
-}
-
-// 用于更新服务部署容量配置
-func (c *Client) UpdateFleetCapacity(request *UpdateFleetCapacityRequest) (response *UpdateFleetCapacityResponse, err error) {
-    if request == nil {
-        request = NewUpdateFleetCapacityRequest()
-    }
-    response = NewUpdateFleetCapacityResponse()
     err = c.Send(request, response)
     return
 }

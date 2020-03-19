@@ -677,7 +677,7 @@ type CostDetail struct {
 	FeeEndTime *string `json:"FeeEndTime,omitempty" name:"FeeEndTime"`
 
 	// 组件明细
-	ComponentSet *CostComponentSet `json:"ComponentSet,omitempty" name:"ComponentSet"`
+	ComponentSet []*CostComponentSet `json:"ComponentSet,omitempty" name:"ComponentSet" list`
 
 	// 产品代码
 	ProductCode *string `json:"ProductCode,omitempty" name:"ProductCode"`

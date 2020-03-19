@@ -268,6 +268,31 @@ func (c *Client) CreateL4Rules(request *CreateL4RulesRequest) (response *CreateL
     return
 }
 
+func NewCreateL7CCRuleRequest() (request *CreateL7CCRuleRequest) {
+    request = &CreateL7CCRuleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("dayu", APIVersion, "CreateL7CCRule")
+    return
+}
+
+func NewCreateL7CCRuleResponse() (response *CreateL7CCRuleResponse) {
+    response = &CreateL7CCRuleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 此接口是7层CC的访问频控自定义规则（IP+Host维度，不支持具体的URI），此接口已弃用，请调用新接口CreateCCFrequencyRules，新接口同时支持IP+Host维度以及具体的URI；
+func (c *Client) CreateL7CCRule(request *CreateL7CCRuleRequest) (response *CreateL7CCRuleResponse, err error) {
+    if request == nil {
+        request = NewCreateL7CCRuleRequest()
+    }
+    response = NewCreateL7CCRuleResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateL7HealthConfigRequest() (request *CreateL7HealthConfigRequest) {
     request = &CreateL7HealthConfigRequest{
         BaseRequest: &tchttp.BaseRequest{},

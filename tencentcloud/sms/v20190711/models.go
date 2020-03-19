@@ -344,9 +344,9 @@ type DescribeSignListStatus struct {
 	// 签名Id
 	SignId *uint64 `json:"SignId,omitempty" name:"SignId"`
 
-	// 是否国际短信。其中：
+	// 是否国际/港澳台短信：
 	// 0：表示国内短信。
-	// 1：表示海外短信。
+	// 1：表示国际/港澳台短信。
 	International *uint64 `json:"International,omitempty" name:"International"`
 
 	// 申请签名状态。其中：
@@ -453,9 +453,9 @@ type DescribeTemplateListStatus struct {
 	// 模板Id
 	TemplateId *uint64 `json:"TemplateId,omitempty" name:"TemplateId"`
 
-	// 是否国际短信。其中：
+	// 是否国际/港澳台短信：
 	// 0：表示国内短信。
-	// 1：表示海外短信。
+	// 1：表示国际/港澳台短信。
 	International *uint64 `json:"International,omitempty" name:"International"`
 
 	// 申请签名状态。其中：

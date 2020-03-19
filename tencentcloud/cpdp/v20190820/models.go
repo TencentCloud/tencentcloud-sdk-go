@@ -728,9 +728,6 @@ type CreateAcctRequest struct {
 
 	// 不填则默认子商户名称
 	ShortName *string `json:"ShortName,omitempty" name:"ShortName"`
-
-	// 平台参数，沙箱环境传sandbox，生产环境传release，默认release
-	PlatformId *string `json:"PlatformId,omitempty" name:"PlatformId"`
 }
 
 func (r *CreateAcctRequest) ToJsonString() string {
@@ -1006,9 +1003,6 @@ type QueryAcctBindingRequest struct {
 
 	// 计费签名
 	MidasSignature *string `json:"MidasSignature,omitempty" name:"MidasSignature"`
-
-	// 平台参数，沙箱环境传sandbox，生产环境传release，默认release
-	PlatformId *string `json:"PlatformId,omitempty" name:"PlatformId"`
 }
 
 func (r *QueryAcctBindingRequest) ToJsonString() string {

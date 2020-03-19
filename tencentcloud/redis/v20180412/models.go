@@ -2374,6 +2374,10 @@ type InstanceSet struct {
 	// 内部参数，用户可忽略
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Vip6 *string `json:"Vip6,omitempty" name:"Vip6"`
+
+	// 内部参数，用户可忽略
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RemainBandwidthDuration *string `json:"RemainBandwidthDuration,omitempty" name:"RemainBandwidthDuration"`
 }
 
 type InstanceSlowlogDetail struct {

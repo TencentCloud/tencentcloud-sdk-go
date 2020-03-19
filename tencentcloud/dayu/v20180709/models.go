@@ -184,6 +184,21 @@ type CCRule struct {
 	Value *string `json:"Value,omitempty" name:"Value"`
 }
 
+type CCRuleConfig struct {
+
+	// 统计周期，单位秒，取值[10, 30, 60]
+	Period *uint64 `json:"Period,omitempty" name:"Period"`
+
+	// 访问次数，取值[1-10000]
+	ReqNumber *uint64 `json:"ReqNumber,omitempty" name:"ReqNumber"`
+
+	// 执行动作，取值["alg"（人机识别）, "drop"（拦截）]
+	Action *string `json:"Action,omitempty" name:"Action"`
+
+	// 执行时间，单位秒，取值[1-900]
+	ExeDuration *uint64 `json:"ExeDuration,omitempty" name:"ExeDuration"`
+}
+
 type CreateBasicDDoSAlarmThresholdRequest struct {
 	*tchttp.BaseRequest
 
@@ -679,6 +694,55 @@ func (r *CreateL4RulesResponse) ToJsonString() string {
 }
 
 func (r *CreateL4RulesResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateL7CCRuleRequest struct {
+	*tchttp.BaseRequest
+
+	// 大禹子产品代号（bgpip表示高防IP；net表示高防IP专业版）
+	Business *string `json:"Business,omitempty" name:"Business"`
+
+	// 资源ID
+	Id *string `json:"Id,omitempty" name:"Id"`
+
+	// 操作码，取值[query(表示查询)，add(表示添加)，del(表示删除)]
+	Method *string `json:"Method,omitempty" name:"Method"`
+
+	// 7层转发规则ID，例如：rule-0000001
+	RuleId *string `json:"RuleId,omitempty" name:"RuleId"`
+
+	// 7层CC自定义规则参数，当操作码为query时，可以不用填写；当操作码为add或del时，必须填写，且数组长度只能为1；
+	RuleConfig []*CCRuleConfig `json:"RuleConfig,omitempty" name:"RuleConfig" list`
+}
+
+func (r *CreateL7CCRuleRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateL7CCRuleRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateL7CCRuleResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 7层CC自定义规则参数，当没有开启CC自定义规则时，返回空数组
+		RuleConfig []*CCRuleConfig `json:"RuleConfig,omitempty" name:"RuleConfig" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateL7CCRuleResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateL7CCRuleResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 

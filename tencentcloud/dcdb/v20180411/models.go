@@ -566,6 +566,9 @@ type DCDBShardInfo struct {
 	// 分片的从可用区列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ShardSlaveZones []*string `json:"ShardSlaveZones,omitempty" name:"ShardSlaveZones" list`
+
+	// CPU核数
+	Cpu *int64 `json:"Cpu,omitempty" name:"Cpu"`
 }
 
 type Database struct {
@@ -2072,6 +2075,9 @@ type SpecConfigInfo struct {
 
 	// 最大 Qps 值
 	Qps *int64 `json:"Qps,omitempty" name:"Qps"`
+
+	// CPU核数
+	Cpu *int64 `json:"Cpu,omitempty" name:"Cpu"`
 }
 
 type SplitShardConfig struct {

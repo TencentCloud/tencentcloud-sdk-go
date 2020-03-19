@@ -332,6 +332,10 @@ type AttachedPolicyOfRole struct {
 	// 已下线的产品列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DeactivedDetail []*string `json:"DeactivedDetail,omitempty" name:"DeactivedDetail" list`
+
+	// 策略描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Description *string `json:"Description,omitempty" name:"Description"`
 }
 
 type ConsumeCustomMFATokenRequest struct {

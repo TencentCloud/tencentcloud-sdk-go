@@ -560,6 +560,15 @@ type DstInfo struct {
 	ReadOnly *int64 `json:"ReadOnly,omitempty" name:"ReadOnly"`
 }
 
+type ErrorInfo struct {
+
+	// 具体的报错日志, 包含错误码和错误信息
+	ErrorLog *string `json:"ErrorLog,omitempty" name:"ErrorLog"`
+
+	// 报错对应的帮助文档Ur
+	HelpDoc *string `json:"HelpDoc,omitempty" name:"HelpDoc"`
+}
+
 type MigrateDetailInfo struct {
 
 	// 总步骤数
@@ -630,6 +639,9 @@ type MigrateJobInfo struct {
 
 	// 任务详情
 	Detail *MigrateDetailInfo `json:"Detail,omitempty" name:"Detail"`
+
+	// 任务错误信息提示，当任务发生错误时，不为null或者空值
+	ErrorInfo []*ErrorInfo `json:"ErrorInfo,omitempty" name:"ErrorInfo" list`
 }
 
 type MigrateOption struct {

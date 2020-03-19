@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package v20200304
+package v20190926
 
 import (
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
@@ -20,7 +20,7 @@ import (
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
 )
 
-const APIVersion = "2020-03-04"
+const APIVersion = "2019-09-26"
 
 type Client struct {
     common.Client
@@ -43,52 +43,29 @@ func NewClient(credential *common.Credential, region string, clientProfile *prof
 }
 
 
-func NewChangeAgePicRequest() (request *ChangeAgePicRequest) {
-    request = &ChangeAgePicRequest{
+func NewMarketingValueJudgementRequest() (request *MarketingValueJudgementRequest) {
+    request = &MarketingValueJudgementRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
-    request.Init().WithApiInfo("ft", APIVersion, "ChangeAgePic")
+    request.Init().WithApiInfo("mvj", APIVersion, "MarketingValueJudgement")
     return
 }
 
-func NewChangeAgePicResponse() (response *ChangeAgePicResponse) {
-    response = &ChangeAgePicResponse{
+func NewMarketingValueJudgementResponse() (response *MarketingValueJudgementResponse) {
+    response = &MarketingValueJudgementResponse{
         BaseResponse: &tchttp.BaseResponse{},
     }
     return
 }
 
-// 用户上传一张人脸图片，基于人脸编辑与生成算法，输出一张人脸变老或变年轻的图片，支持实现人脸不同年龄的变化。（目前暂只支持变10岁，后续放开再通知） 
-func (c *Client) ChangeAgePic(request *ChangeAgePicRequest) (response *ChangeAgePicResponse, err error) {
+// 欢迎使用营销价值判断（Marketing Value Judgement，简称 MVJ）。
+// 
+// 营销价值判断（MVJ）是针对零售场景的风控服务，通过识别高价值顾客，以帮助零售商保障营销资金
+func (c *Client) MarketingValueJudgement(request *MarketingValueJudgementRequest) (response *MarketingValueJudgementResponse, err error) {
     if request == nil {
-        request = NewChangeAgePicRequest()
+        request = NewMarketingValueJudgementRequest()
     }
-    response = NewChangeAgePicResponse()
-    err = c.Send(request, response)
-    return
-}
-
-func NewSwapGenderPicRequest() (request *SwapGenderPicRequest) {
-    request = &SwapGenderPicRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    request.Init().WithApiInfo("ft", APIVersion, "SwapGenderPic")
-    return
-}
-
-func NewSwapGenderPicResponse() (response *SwapGenderPicResponse) {
-    response = &SwapGenderPicResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    }
-    return
-}
-
-// 用户上传一张人脸图片，基于人脸编辑与生成算法，输出一张人脸性别转换的图片。男变女可实现美颜、淡妆、加刘海和长发的效果；女变男可实现加胡须、变短发的效果。 
-func (c *Client) SwapGenderPic(request *SwapGenderPicRequest) (response *SwapGenderPicResponse, err error) {
-    if request == nil {
-        request = NewSwapGenderPicRequest()
-    }
-    response = NewSwapGenderPicResponse()
+    response = NewMarketingValueJudgementResponse()
     err = c.Send(request, response)
     return
 }

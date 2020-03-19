@@ -3348,9 +3348,13 @@ type VpnConnection struct {
 	// 对端网关名称
 	CustomerGatewayName *string `json:"CustomerGatewayName,omitempty" name:"CustomerGatewayName"`
 
-	// IPSEC VPN通道路由策略
+	// IPSEC VPN通道路由策略目的端地址
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DestinationCidr []*string `json:"DestinationCidr,omitempty" name:"DestinationCidr" list`
+
+	// IPSEC VPN通道路由策略源端地址
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SourceCidr []*string `json:"SourceCidr,omitempty" name:"SourceCidr" list`
 }
 
 type VpnGateway struct {

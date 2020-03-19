@@ -131,14 +131,17 @@ type ControlDeviceDataRequest struct {
 	// 设备名称
 	DeviceName *string `json:"DeviceName,omitempty" name:"DeviceName"`
 
-	// 属性数据
+	// 属性数据, JSON格式字符串, 注意字段需要在物模型属性里定义
 	Data *string `json:"Data,omitempty" name:"Data"`
 
-	// 请求类型
+	// 请求类型 , 不填该参数或者 desired 表示下发属性给设备,  reported 表示模拟设备上报属性
 	Method *string `json:"Method,omitempty" name:"Method"`
 
-	// 设备ID，该字段有值将代替 ProductId/DeviceName
+	// 设备ID，该字段有值将代替 ProductId/DeviceName , 通常情况不需要填写
 	DeviceId *string `json:"DeviceId,omitempty" name:"DeviceId"`
+
+	// 上报数据UNIX时间戳(毫秒), 仅对Method:reported有效
+	DataTimestamp *int64 `json:"DataTimestamp,omitempty" name:"DataTimestamp"`
 }
 
 func (r *ControlDeviceDataRequest) ToJsonString() string {
