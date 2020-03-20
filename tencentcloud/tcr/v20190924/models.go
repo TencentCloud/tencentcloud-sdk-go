@@ -337,6 +337,46 @@ func (r *CreateNamespacePersonalResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type CreateNamespaceRequest struct {
+	*tchttp.BaseRequest
+
+	// 实例ID
+	RegistryId *string `json:"RegistryId,omitempty" name:"RegistryId"`
+
+	// 命名空间的名称
+	NamespaceName *string `json:"NamespaceName,omitempty" name:"NamespaceName"`
+
+	// 是否公开，true为公开，fale为私有
+	IsPublic *bool `json:"IsPublic,omitempty" name:"IsPublic"`
+}
+
+func (r *CreateNamespaceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateNamespaceRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateNamespaceResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateNamespaceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateNamespaceResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type CreateRepositoryPersonalRequest struct {
 	*tchttp.BaseRequest
 
@@ -374,6 +414,52 @@ func (r *CreateRepositoryPersonalResponse) ToJsonString() string {
 }
 
 func (r *CreateRepositoryPersonalResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateRepositoryRequest struct {
+	*tchttp.BaseRequest
+
+	// 实例ID
+	RegistryId *string `json:"RegistryId,omitempty" name:"RegistryId"`
+
+	// 命名空间名称
+	NamespaceName *string `json:"NamespaceName,omitempty" name:"NamespaceName"`
+
+	// 仓库名称
+	RepositoryName *string `json:"RepositoryName,omitempty" name:"RepositoryName"`
+
+	// 仓库简短描述
+	BriefDescription *string `json:"BriefDescription,omitempty" name:"BriefDescription"`
+
+	// 仓库详细描述
+	Description *string `json:"Description,omitempty" name:"Description"`
+}
+
+func (r *CreateRepositoryRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateRepositoryRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateRepositoryResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateRepositoryResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateRepositoryResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -581,6 +667,43 @@ func (r *DeleteNamespacePersonalResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DeleteNamespaceRequest struct {
+	*tchttp.BaseRequest
+
+	// 实例ID
+	RegistryId *string `json:"RegistryId,omitempty" name:"RegistryId"`
+
+	// 命名空间的名称
+	NamespaceName *string `json:"NamespaceName,omitempty" name:"NamespaceName"`
+}
+
+func (r *DeleteNamespaceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteNamespaceRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteNamespaceResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DeleteNamespaceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteNamespaceResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DeleteRepositoryPersonalRequest struct {
 	*tchttp.BaseRequest
 
@@ -612,6 +735,46 @@ func (r *DeleteRepositoryPersonalResponse) ToJsonString() string {
 }
 
 func (r *DeleteRepositoryPersonalResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteRepositoryRequest struct {
+	*tchttp.BaseRequest
+
+	// 实例Id
+	RegistryId *string `json:"RegistryId,omitempty" name:"RegistryId"`
+
+	// 命名空间的名称
+	NamespaceName *string `json:"NamespaceName,omitempty" name:"NamespaceName"`
+
+	// 仓库名称的名称
+	RepositoryName *string `json:"RepositoryName,omitempty" name:"RepositoryName"`
+}
+
+func (r *DeleteRepositoryRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteRepositoryRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteRepositoryResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DeleteRepositoryResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteRepositoryResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -929,6 +1092,61 @@ func (r *DescribeImagePersonalResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeImagesRequest struct {
+	*tchttp.BaseRequest
+
+	// 实例ID
+	RegistryId *string `json:"RegistryId,omitempty" name:"RegistryId"`
+
+	// 镜像仓库名称
+	RepositoryName *string `json:"RepositoryName,omitempty" name:"RepositoryName"`
+
+	// 命名空间名称
+	NamespaceName *string `json:"NamespaceName,omitempty" name:"NamespaceName"`
+
+	// 每页个数，用于分页，默认20
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 页数，默认值为1
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 镜像版本(Tag)，置空则返回仓库内全部的容器镜像
+	ImageVersion *string `json:"ImageVersion,omitempty" name:"ImageVersion"`
+}
+
+func (r *DescribeImagesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeImagesRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeImagesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 容器镜像信息列表
+		ImageInfoList []*TcrImageInfo `json:"ImageInfoList,omitempty" name:"ImageInfoList" list`
+
+		// 容器镜像总数
+		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeImagesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeImagesResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeInstanceStatusRequest struct {
 	*tchttp.BaseRequest
 
@@ -1061,6 +1279,61 @@ func (r *DescribeNamespacePersonalResponse) ToJsonString() string {
 }
 
 func (r *DescribeNamespacePersonalResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeRepositoriesRequest struct {
+	*tchttp.BaseRequest
+
+	// 实例Id
+	RegistryId *string `json:"RegistryId,omitempty" name:"RegistryId"`
+
+	// 仓库名称，用于查询
+	RepositoryName *string `json:"RepositoryName,omitempty" name:"RepositoryName"`
+
+	// 页数，用于分页
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 每页个数，用于分页
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 基于字段排序，支持的值有-creation_time,-name, -update_time
+	SortBy *string `json:"SortBy,omitempty" name:"SortBy"`
+
+	// 命名空间名称，用于查询改命名空间下的仓库，如果不填写默认为所有命名空间下
+	NamespaceName *string `json:"NamespaceName,omitempty" name:"NamespaceName"`
+}
+
+func (r *DescribeRepositoriesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeRepositoriesRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeRepositoriesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 仓库信息列表
+		RepositoryList []*TcrRepositoryInfo `json:"RepositoryList,omitempty" name:"RepositoryList" list`
+
+		// 总个数
+		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeRepositoriesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeRepositoriesResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -1444,6 +1717,46 @@ func (r *ModifyApplicationTriggerPersonalResponse) FromJsonString(s string) erro
     return json.Unmarshal([]byte(s), &r)
 }
 
+type ModifyNamespaceRequest struct {
+	*tchttp.BaseRequest
+
+	// 实例的Id
+	RegistryId *string `json:"RegistryId,omitempty" name:"RegistryId"`
+
+	// 命名空间的名称
+	NamespaceName *string `json:"NamespaceName,omitempty" name:"NamespaceName"`
+
+	// 访问级别，True为公开，False为私有
+	IsPublic *bool `json:"IsPublic,omitempty" name:"IsPublic"`
+}
+
+func (r *ModifyNamespaceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyNamespaceRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyNamespaceResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifyNamespaceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyNamespaceResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type ModifyRepositoryAccessPersonalRequest struct {
 	*tchttp.BaseRequest
 
@@ -1515,6 +1828,52 @@ func (r *ModifyRepositoryInfoPersonalResponse) ToJsonString() string {
 }
 
 func (r *ModifyRepositoryInfoPersonalResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyRepositoryRequest struct {
+	*tchttp.BaseRequest
+
+	// 实例ID
+	RegistryId *string `json:"RegistryId,omitempty" name:"RegistryId"`
+
+	// 镜像仓库名称
+	RepositoryName *string `json:"RepositoryName,omitempty" name:"RepositoryName"`
+
+	// 仓库描述
+	Description *string `json:"Description,omitempty" name:"Description"`
+
+	// 仓库的简短描述
+	BriefDescription *string `json:"BriefDescription,omitempty" name:"BriefDescription"`
+
+	// 命名空间名称
+	NamespaceName *string `json:"NamespaceName,omitempty" name:"NamespaceName"`
+}
+
+func (r *ModifyRepositoryRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyRepositoryRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyRepositoryResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifyRepositoryResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyRepositoryResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -1816,6 +2175,44 @@ type TagInfoResp struct {
 
 	// 仓库名称
 	RepoName *string `json:"RepoName,omitempty" name:"RepoName"`
+}
+
+type TcrImageInfo struct {
+
+	// 哈希值
+	Digest *string `json:"Digest,omitempty" name:"Digest"`
+
+	// 镜像大小
+	Size *int64 `json:"Size,omitempty" name:"Size"`
+
+	// Tag名称
+	ImageVersion *string `json:"ImageVersion,omitempty" name:"ImageVersion"`
+}
+
+type TcrRepositoryInfo struct {
+
+	// 仓库名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 命名空间名称
+	Namespace *string `json:"Namespace,omitempty" name:"Namespace"`
+
+	// 创建时间
+	CreationTime *string `json:"CreationTime,omitempty" name:"CreationTime"`
+
+	// 是否公开
+	Public *bool `json:"Public,omitempty" name:"Public"`
+
+	// 仓库详细描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Description *string `json:"Description,omitempty" name:"Description"`
+
+	// 简单描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BriefDescription *string `json:"BriefDescription,omitempty" name:"BriefDescription"`
+
+	// 更新时间
+	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
 }
 
 type TriggerInvokeCondition struct {

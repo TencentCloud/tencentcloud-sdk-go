@@ -124,13 +124,13 @@ func (r *AddLiveDomainResponse) FromJsonString(s string) error {
 type AddLiveWatermarkRequest struct {
 	*tchttp.BaseRequest
 
-	// 水印图片url。
+	// 水印图片 URL。
 	PictureUrl *string `json:"PictureUrl,omitempty" name:"PictureUrl"`
 
 	// 水印名称。
 	WatermarkName *string `json:"WatermarkName,omitempty" name:"WatermarkName"`
 
-	// 显示位置,X轴偏移。
+	// 显示位置, X轴偏移。
 	XPosition *int64 `json:"XPosition,omitempty" name:"XPosition"`
 
 	// 显示位置,Y轴偏移。
@@ -521,17 +521,17 @@ type CreateLiveRecordRequest struct {
 	// 流名称。
 	StreamName *string `json:"StreamName,omitempty" name:"StreamName"`
 
-	// 推流路径，与推流和播放地址中的AppName保持一致，默认为 live。
+	// 推流路径，与推流和播放地址中的 AppName保持一致，默认为 live。
 	AppName *string `json:"AppName,omitempty" name:"AppName"`
 
 	// 推流域名。多域名推流必须设置。
 	DomainName *string `json:"DomainName,omitempty" name:"DomainName"`
 
-	// 录制开始时间。中国标准时间，需要URLEncode(rfc3986)。如 2017-01-01 10:10:01，编码为：2017-01-01+10%3a10%3a01。
+	// 录制开始时间。中国标准时间，需要 URLEncode(rfc3986)。如 2017-01-01 10:10:01，编码为：2017-01-01+10%3a10%3a01。
 	// 定时录制模式，必须设置该字段；实时视频录制模式，忽略该字段。
 	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
 
-	// 录制结束时间。中国标准时间，需要URLEncode(rfc3986)。如 2017-01-01 10:30:01，编码为：2017-01-01+10%3a30%3a01。
+	// 录制结束时间。中国标准时间，需要 URLEncode(rfc3986)。如 2017-01-01 10:30:01，编码为：2017-01-01+10%3a30%3a01。
 	// 定时录制模式，必须设置该字段；实时录制模式，为可选字段。如果通过Highlight参数，设置录制为实时视频录制模式，其设置的结束时间不应超过当前时间+30分钟，如果设置的结束时间超过当前时间+30分钟或者小于当前时间或者不设置该参数，则实际结束时间为当前时间+30分钟。
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 
@@ -551,16 +551,16 @@ type CreateLiveRecordRequest struct {
 	// 1：开启实时视频录制模式。见[示例二](#.E7.A4.BA.E4.BE.8B2-.E5.88.9B.E5.BB.BA.E5.AE.9E.E6.97.B6.E5.BD.95.E5.88.B6.E4.BB.BB.E5.8A.A1)。
 	Highlight *int64 `json:"Highlight,omitempty" name:"Highlight"`
 
-	// 开启A+B=C混流C流录制标志。
-	// 0：不开启A+B=C混流C流录制【默认】。
-	// 1：开启A+B=C混流C流录制。
+	// 开启 A+B=C混流C流录制标志。
+	// 0：不开启 A+B=C混流C流录制【默认】。
+	// 1：开启 A+B=C混流C流录制。
 	// 在定时录制模式或实时视频录制模式下，该参数均有效。
 	MixStream *int64 `json:"MixStream,omitempty" name:"MixStream"`
 
 	// 录制流参数。当前支持以下参数：
-	// record_interval - 录制分片时长，单位 秒，1800 - 7200
-	// storage_time - 录制文件存储时长，单位 秒
-	// eg. record_interval=3600&storage_time=2592000
+	// record_interval - 录制分片时长，单位 秒，1800 - 7200。
+	// storage_time - 录制文件存储时长，单位 秒。
+	// eg. record_interval=3600&storage_time=2592000。
 	// 注：参数需要url encode。
 	// 在定时录制模式或实时视频录制模式下，该参数均有效。
 	StreamParam *string `json:"StreamParam,omitempty" name:"StreamParam"`
@@ -579,7 +579,7 @@ type CreateLiveRecordResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 任务ID，全局唯一标识录制任务。
+		// 任务 ID，全局唯一标识录制任务。
 		TaskId *uint64 `json:"TaskId,omitempty" name:"TaskId"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -993,15 +993,15 @@ func (r *CreateLiveWatermarkRuleResponse) FromJsonString(s string) error {
 type CreatePullStreamConfigRequest struct {
 	*tchttp.BaseRequest
 
-	// 源Url。目前可支持直播流及点播文件。
+	// 源 Url。目前可支持直播流及点播文件。
 	// 注意：
 	// 1. 多个点播url之间使用空格拼接。
 	// 2. 目前上限支持10个url。
 	// 3. 支持拉流文件格式：flv，rtmp，hls，mp4。
 	FromUrl *string `json:"FromUrl,omitempty" name:"FromUrl"`
 
-	// 目的Url，目前限制该目标地址为腾讯域名。
-	// 仅支持：rtmp协议。
+	// 目的 Url，目前限制该目标地址为腾讯域名。
+	// 仅支持：rtmp 协议。
 	ToUrl *string `json:"ToUrl,omitempty" name:"ToUrl"`
 
 	// 选择完成转拉推的服务所在区域:
@@ -1016,11 +1016,11 @@ type CreatePullStreamConfigRequest struct {
 	// 2-移动，
 	// 3-联通，
 	// 4-其他。
-	// 注：AreaId为4的时候,IspId只能为其他。
+	// 注：AreaId 为4的时候，IspId 只能为其他。
 	IspId *int64 `json:"IspId,omitempty" name:"IspId"`
 
 	// 开始时间。
-	// 使用UTC格式时间，
+	// 使用 UTC 格式时间，
 	// 例如：2019-01-08T10:00:00Z。
 	// 注意：北京时间值为 UTC 时间值 + 8 小时，格式按照 ISO 8601 标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#I)。
 	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
@@ -1029,7 +1029,7 @@ type CreatePullStreamConfigRequest struct {
 	// 1. 结束时间必须大于开始时间；
 	// 2. 结束时间和开始时间必须大于当前时间；
 	// 3. 结束时间 和 开始时间 间隔必须小于七天。
-	// 使用UTC格式时间，
+	// 使用 UTC 格式时间，
 	// 例如：2019-01-08T10:00:00Z。
 	// 注意：北京时间值为 UTC 时间值 + 8 小时，格式按照 ISO 8601 标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#I)。
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
@@ -1048,7 +1048,7 @@ type CreatePullStreamConfigResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 配置成功后的id。
+		// 配置成功后的 ID。
 		ConfigId *string `json:"ConfigId,omitempty" name:"ConfigId"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。

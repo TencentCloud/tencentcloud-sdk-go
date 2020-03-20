@@ -536,6 +536,31 @@ func (c *Client) DetachDisks(request *DetachDisksRequest) (response *DetachDisks
     return
 }
 
+func NewGetSnapOverviewRequest() (request *GetSnapOverviewRequest) {
+    request = &GetSnapOverviewRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cbs", APIVersion, "GetSnapOverview")
+    return
+}
+
+func NewGetSnapOverviewResponse() (response *GetSnapOverviewResponse) {
+    response = &GetSnapOverviewResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 获取快照概览信息
+func (c *Client) GetSnapOverview(request *GetSnapOverviewRequest) (response *GetSnapOverviewResponse, err error) {
+    if request == nil {
+        request = NewGetSnapOverviewRequest()
+    }
+    response = NewGetSnapOverviewResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewInquiryPriceCreateDisksRequest() (request *InquiryPriceCreateDisksRequest) {
     request = &InquiryPriceCreateDisksRequest{
         BaseRequest: &tchttp.BaseRequest{},

@@ -133,7 +133,7 @@ func NewDeleteClsLogTopicResponse() (response *DeleteClsLogTopicResponse) {
     return
 }
 
-// DeleteClsLogTopic 用于删除日志主题。注意：删除后，所有该日志主题下绑定域名的日志将不再继续投递至该主题，已经投递的日志将会被全部清空。生效时间约 5~15 分钟。
+// DeleteClsLogTopic 用于删除日志主题。注意：删除后，所有该日志主题下绑定域名的日志将不再继续投递至该主题，已经投递的日志将会被全部清空。生效时间约为 5~15 分钟。
 func (c *Client) DeleteClsLogTopic(request *DeleteClsLogTopicRequest) (response *DeleteClsLogTopicResponse, err error) {
     if request == nil {
         request = NewDeleteClsLogTopicRequest()
@@ -658,7 +658,7 @@ func NewDisableClsLogTopicResponse() (response *DisableClsLogTopicResponse) {
     return
 }
 
-// DisableClsLogTopic 用于停止日志主题投递。注意：停止后，所有绑定该日志主题域名的日志将不再继续投递至该主题，已经投递的日志将会继续保留。生效时间约 5~15 分钟。
+// DisableClsLogTopic 用于停止日志主题投递。注意：停止后，所有绑定该日志主题域名的日志将不再继续投递至该主题，已经投递的日志将会继续保留。生效时间约为 5~15 分钟。
 func (c *Client) DisableClsLogTopic(request *DisableClsLogTopicRequest) (response *DisableClsLogTopicResponse, err error) {
     if request == nil {
         request = NewDisableClsLogTopicRequest()
@@ -708,7 +708,7 @@ func NewEnableClsLogTopicResponse() (response *EnableClsLogTopicResponse) {
     return
 }
 
-// EnableClsLogTopic 用于启动日志主题投递。注意：启动后，所有绑定该日志主题域名的日志将继续投递至该主题。生效时间约 5~15 分钟。
+// EnableClsLogTopic 用于启动日志主题投递。注意：启动后，所有绑定该日志主题域名的日志将继续投递至该主题。生效时间约为 5~15 分钟。
 func (c *Client) EnableClsLogTopic(request *EnableClsLogTopicRequest) (response *EnableClsLogTopicResponse, err error) {
     if request == nil {
         request = NewEnableClsLogTopicRequest()

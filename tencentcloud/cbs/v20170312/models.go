@@ -1076,6 +1076,49 @@ type Filter struct {
 	Values []*string `json:"Values,omitempty" name:"Values" list`
 }
 
+type GetSnapOverviewRequest struct {
+	*tchttp.BaseRequest
+}
+
+func (r *GetSnapOverviewRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *GetSnapOverviewRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type GetSnapOverviewResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 用户快照总大小
+		TotalSize *float64 `json:"TotalSize,omitempty" name:"TotalSize"`
+
+		// 用户快照总大小（用于计费）
+		RealTradeSize *float64 `json:"RealTradeSize,omitempty" name:"RealTradeSize"`
+
+		// 快照免费额度
+		FreeQuota *float64 `json:"FreeQuota,omitempty" name:"FreeQuota"`
+
+		// 快照总个数
+		TotalNums *int64 `json:"TotalNums,omitempty" name:"TotalNums"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *GetSnapOverviewResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *GetSnapOverviewResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type Image struct {
 
 	// 镜像实例ID。

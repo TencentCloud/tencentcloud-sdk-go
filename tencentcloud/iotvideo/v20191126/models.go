@@ -1928,6 +1928,52 @@ func (r *ModifyDeviceActionResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type ModifyDevicePropertyRequest struct {
+	*tchttp.BaseRequest
+
+	// 设备TID
+	Tid *string `json:"Tid,omitempty" name:"Tid"`
+
+	// 如果设备处于休眠状态，是否唤醒设备
+	Wakeup *bool `json:"Wakeup,omitempty" name:"Wakeup"`
+
+	// 物模型的分支路径
+	Branch *string `json:"Branch,omitempty" name:"Branch"`
+
+	// 写入的物模型数据，如果是json需要转义成字符串
+	Value *string `json:"Value,omitempty" name:"Value"`
+
+	// Value字段是否为数值（float、int）
+	IsNum *bool `json:"IsNum,omitempty" name:"IsNum"`
+}
+
+func (r *ModifyDevicePropertyRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyDevicePropertyRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyDevicePropertyResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifyDevicePropertyResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyDevicePropertyResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type ModifyProductRequest struct {
 	*tchttp.BaseRequest
 

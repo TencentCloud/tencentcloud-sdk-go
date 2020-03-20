@@ -110,7 +110,7 @@ func NewAddLiveWatermarkResponse() (response *AddLiveWatermarkResponse) {
     return
 }
 
-// 添加水印，成功返回水印id后，需要调用[CreateLiveWatermarkRule](/document/product/267/32629)接口将水印id绑定到流使用。
+// 添加水印，成功返回水印 ID 后，需要调用[CreateLiveWatermarkRule](/document/product/267/32629)接口将水印 ID 绑定到流使用。
 func (c *Client) AddLiveWatermark(request *AddLiveWatermarkRequest) (response *AddLiveWatermarkResponse, err error) {
     if request == nil {
         request = NewAddLiveWatermarkRequest()
@@ -252,7 +252,7 @@ func NewCreateLiveRecordResponse() (response *CreateLiveRecordResponse) {
 // - 注意事项
 //   1. 调用接口超时设置应大于3秒，小于3秒重试以及频繁调用都有可能产生重复录制任务。
 //   2. 受限于音视频文件格式（FLV/MP4/HLS）对编码类型的支持，视频编码类型支持 H.264，音频编码类型支持 AAC。
-//   3. 为避免恶意或非主观的频繁API请求，对定时录制模式最大创建任务数做了限制：其中，当天可以创建的最大任务数不超过4000（不含已删除的任务）；当前时刻并发运行的任务数不超过400。有超出此限制的需要提工单申请。
+//   3. 为避免恶意或非主观的频繁 API 请求，对定时录制模式最大创建任务数做了限制：其中，当天可以创建的最大任务数不超过4000（不含已删除的任务）；当前时刻并发运行的任务数不超过400。有超出此限制的需要提工单申请。
 func (c *Client) CreateLiveRecord(request *CreateLiveRecordRequest) (response *CreateLiveRecordResponse, err error) {
     if request == nil {
         request = NewCreateLiveRecordRequest()
@@ -461,8 +461,8 @@ func NewCreatePullStreamConfigResponse() (response *CreatePullStreamConfigRespon
 // 创建临时拉流转推任务，目前限制添加10条任务。
 // 
 // 注意：该接口用于创建临时拉流转推任务，
-// 拉流源地址即FromUrl 可以是腾讯或非腾讯数据源，
-// 但转推目标地址即ToUrl 目前限制为已注册的腾讯直播域名。
+// 拉流源地址即 FromUrl 可以是腾讯或非腾讯数据源，
+// 但转推目标地址即 ToUrl 目前限制为已注册的腾讯直播域名。
 func (c *Client) CreatePullStreamConfig(request *CreatePullStreamConfigRequest) (response *CreatePullStreamConfigResponse, err error) {
     if request == nil {
         request = NewCreatePullStreamConfigRequest()

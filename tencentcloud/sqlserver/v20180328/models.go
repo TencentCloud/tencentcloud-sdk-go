@@ -258,6 +258,9 @@ type CreateDBInstancesRequest struct {
 
 	// sqlserver版本，目前只支持：2008R2（SQL Server 2008 Enterprise），2012SP3（SQL Server 2012 Enterprise），2016SP1（SQL Server 2016 Enterprise），201602（SQL Server 2016 Standard）2017（SQL Server 2017 Enterprise）版本。每个地域支持售卖的版本不同，可通过DescribeProductConfig接口来拉取每个地域可售卖的版本信息。不填，默认为版本2008R2。
 	DBVersion *string `json:"DBVersion,omitempty" name:"DBVersion"`
+
+	// 自动续费标志：0-正常续费  1-自动续费，默认为1自动续费。只在购买预付费实例时有效。
+	AutoRenewFlag *int64 `json:"AutoRenewFlag,omitempty" name:"AutoRenewFlag"`
 }
 
 func (r *CreateDBInstancesRequest) ToJsonString() string {
@@ -275,6 +278,9 @@ type CreateDBInstancesResponse struct {
 
 		// 订单名称
 		DealName *string `json:"DealName,omitempty" name:"DealName"`
+
+		// 订单名称数组
+		DealNames []*string `json:"DealNames,omitempty" name:"DealNames" list`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -827,6 +833,12 @@ type DescribeDBInstancesRequest struct {
 
 	// 付费类型检索 1-包年包月，0-按量计费
 	PayMode *int64 `json:"PayMode,omitempty" name:"PayMode"`
+
+	// 实例所属VPC的唯一字符串ID，格式如：vpc-xxx，传空字符串(“”)则按照基础网络筛选。
+	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
+
+	// 实例所属子网的唯一字符串ID，格式如： subnet-xxx，传空字符串(“”)则按照基础网络筛选。
+	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
 }
 
 func (r *DescribeDBInstancesRequest) ToJsonString() string {

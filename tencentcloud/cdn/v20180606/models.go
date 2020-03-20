@@ -2483,7 +2483,7 @@ type ListClsLogTopicsResponse struct {
 		// 日志集信息
 		Logset *LogSetInfo `json:"Logset,omitempty" name:"Logset"`
 
-		// 主题信息列表
+		// 日志主题信息列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		Topics []*TopicInfo `json:"Topics,omitempty" name:"Topics" list`
 
@@ -2536,16 +2536,16 @@ type ListClsTopicDomainsResponse struct {
 		// 日志集ID
 		LogsetId *string `json:"LogsetId,omitempty" name:"LogsetId"`
 
-		// 主题ID
+		// 日志主题ID
 		TopicId *string `json:"TopicId,omitempty" name:"TopicId"`
 
-		// 域名区域配置，其中可能含有已删除的域名，如果要再传回ManageClsTopicDomains接口，需要结合ListCdnDomains接口排除掉已删除的域名。
+		// 域名区域配置，其中可能含有已删除的域名，如果要再传回ManageClsTopicDomains接口，需要结合ListCdnDomains接口排除掉已删除的域名
 		DomainAreaConfigs []*DomainAreaConfig `json:"DomainAreaConfigs,omitempty" name:"DomainAreaConfigs" list`
 
-		// 主题名称
+		// 日志主题名称
 		TopicName *string `json:"TopicName,omitempty" name:"TopicName"`
 
-		// 主题最近更新时间
+		// 日志主题最近更新时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
 

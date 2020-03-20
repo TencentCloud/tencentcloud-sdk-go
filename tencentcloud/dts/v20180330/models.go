@@ -20,6 +20,58 @@ import (
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
+type ActivateSubscribeRequest struct {
+	*tchttp.BaseRequest
+
+	// 订阅实例ID。
+	SubscribeId *string `json:"SubscribeId,omitempty" name:"SubscribeId"`
+
+	// 数据库实例ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 数据订阅类型0-全实例订阅，1数据订阅，2结构订阅，3数据订阅与结构订阅
+	SubscribeObjectType *int64 `json:"SubscribeObjectType,omitempty" name:"SubscribeObjectType"`
+
+	// 订阅对象
+	Objects *SubscribeObject `json:"Objects,omitempty" name:"Objects"`
+
+	// 数据订阅服务所在子网。默认为数据库实例所在的子网内。
+	UniqSubnetId *string `json:"UniqSubnetId,omitempty" name:"UniqSubnetId"`
+
+	// 订阅服务端口；默认为7507
+	Vport *int64 `json:"Vport,omitempty" name:"Vport"`
+}
+
+func (r *ActivateSubscribeRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ActivateSubscribeRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ActivateSubscribeResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 配置数据订阅任务任务ID。
+		AsyncRequestId *string `json:"AsyncRequestId,omitempty" name:"AsyncRequestId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ActivateSubscribeResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ActivateSubscribeResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type CompleteMigrateJobRequest struct {
 	*tchttp.BaseRequest
 
@@ -166,6 +218,56 @@ func (r *CreateMigrateJobResponse) ToJsonString() string {
 }
 
 func (r *CreateMigrateJobResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateSubscribeRequest struct {
+	*tchttp.BaseRequest
+
+	// 订阅的数据库类型，目前支持的有 mysql
+	Product *string `json:"Product,omitempty" name:"Product"`
+
+	// 实例付费类型，1小时计费，0包年包月
+	PayType *int64 `json:"PayType,omitempty" name:"PayType"`
+
+	// 购买时长。PayType为0时必填。单位为月，最大支持120
+	Duration *int64 `json:"Duration,omitempty" name:"Duration"`
+
+	// 购买数量,默认为1，最大为10
+	Count *int64 `json:"Count,omitempty" name:"Count"`
+
+	// 是否自动续费，默认为0，1表示自动续费。小时计费实例设置该标识无效。
+	AutoRenew *int64 `json:"AutoRenew,omitempty" name:"AutoRenew"`
+}
+
+func (r *CreateSubscribeRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateSubscribeRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateSubscribeResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 数据订阅实例的ID数组
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		SubscribeIds []*string `json:"SubscribeIds,omitempty" name:"SubscribeIds" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateSubscribeResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateSubscribeResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -334,6 +436,46 @@ func (r *DeleteSyncJobResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeAsyncRequestInfoRequest struct {
+	*tchttp.BaseRequest
+
+	// 任务 ID
+	AsyncRequestId *string `json:"AsyncRequestId,omitempty" name:"AsyncRequestId"`
+}
+
+func (r *DescribeAsyncRequestInfoRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeAsyncRequestInfoRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeAsyncRequestInfoResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 任务执行结果信息
+		Info *string `json:"Info,omitempty" name:"Info"`
+
+		// 任务执行状态，可能的值有：success，failed，running
+		Status *string `json:"Status,omitempty" name:"Status"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeAsyncRequestInfoResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeAsyncRequestInfoResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeMigrateCheckJobRequest struct {
 	*tchttp.BaseRequest
 
@@ -435,6 +577,219 @@ func (r *DescribeMigrateJobsResponse) ToJsonString() string {
 }
 
 func (r *DescribeMigrateJobsResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeRegionConfRequest struct {
+	*tchttp.BaseRequest
+}
+
+func (r *DescribeRegionConfRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeRegionConfRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeRegionConfResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 可售卖地域的数量
+		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 可售卖地域详情
+		Items []*SubscribeRegionConf `json:"Items,omitempty" name:"Items" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeRegionConfResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeRegionConfResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeSubscribeConfRequest struct {
+	*tchttp.BaseRequest
+
+	// 订阅实例ID
+	SubscribeId *string `json:"SubscribeId,omitempty" name:"SubscribeId"`
+}
+
+func (r *DescribeSubscribeConfRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeSubscribeConfRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeSubscribeConfResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 订阅实例ID
+		SubscribeId *string `json:"SubscribeId,omitempty" name:"SubscribeId"`
+
+		// 订阅实例名称
+		SubscribeName *string `json:"SubscribeName,omitempty" name:"SubscribeName"`
+
+		// 订阅通道
+		ChannelId *string `json:"ChannelId,omitempty" name:"ChannelId"`
+
+		// 订阅数据库类型
+		Product *string `json:"Product,omitempty" name:"Product"`
+
+		// 被订阅的实例
+		InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+		// 被订阅的实例的状态，可能的值有running,offline,isolate
+		InstanceStatus *string `json:"InstanceStatus,omitempty" name:"InstanceStatus"`
+
+		// 订阅实例状态，可能的值有unconfigure-未配置，configuring-配置中，configured-已配置
+		SubsStatus *string `json:"SubsStatus,omitempty" name:"SubsStatus"`
+
+		// 订阅实例生命周期状态，可能的值有：normal-正常，isolating-隔离中，isolated-已隔离，offlining-下线中
+		Status *string `json:"Status,omitempty" name:"Status"`
+
+		// 订阅实例创建时间
+		CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+		// 订阅实例被隔离时间
+		IsolateTime *string `json:"IsolateTime,omitempty" name:"IsolateTime"`
+
+		// 订阅实例到期时间
+		ExpireTime *string `json:"ExpireTime,omitempty" name:"ExpireTime"`
+
+		// 订阅实例下线时间
+		OfflineTime *string `json:"OfflineTime,omitempty" name:"OfflineTime"`
+
+		// 订阅实例消费时间起点。
+		ConsumeStartTime *string `json:"ConsumeStartTime,omitempty" name:"ConsumeStartTime"`
+
+		// 订阅实例计费类型，1-小时计费，0-包年包月
+		PayType *int64 `json:"PayType,omitempty" name:"PayType"`
+
+		// 订阅通道Vip
+		Vip *string `json:"Vip,omitempty" name:"Vip"`
+
+		// 订阅通道Port
+		Vport *int64 `json:"Vport,omitempty" name:"Vport"`
+
+		// 订阅通道所在VpcId
+		UniqVpcId *string `json:"UniqVpcId,omitempty" name:"UniqVpcId"`
+
+		// 订阅通道所在SubnetId
+		UniqSubnetId *string `json:"UniqSubnetId,omitempty" name:"UniqSubnetId"`
+
+		// 当前SDK消费时间位点
+		SdkConsumedTime *string `json:"SdkConsumedTime,omitempty" name:"SdkConsumedTime"`
+
+		// 订阅SDK IP地址
+		SdkHost *string `json:"SdkHost,omitempty" name:"SdkHost"`
+
+		// 订阅对象类型0-全实例订阅，1-DDL数据订阅，2-DML结构订阅，3-DDL数据订阅+DML结构订阅
+		SubscribeObjectType *int64 `json:"SubscribeObjectType,omitempty" name:"SubscribeObjectType"`
+
+		// 订阅对象，当SubscribeObjectType 为0时，此字段为空数组
+		SubscribeObjects []*SubscribeObject `json:"SubscribeObjects,omitempty" name:"SubscribeObjects" list`
+
+		// 修改时间
+		ModifyTime *string `json:"ModifyTime,omitempty" name:"ModifyTime"`
+
+		// 地域
+		Region *string `json:"Region,omitempty" name:"Region"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeSubscribeConfResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeSubscribeConfResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeSubscribesRequest struct {
+	*tchttp.BaseRequest
+
+	// 数据订阅的实例ID
+	SubscribeId *string `json:"SubscribeId,omitempty" name:"SubscribeId"`
+
+	// 数据订阅的实例名称
+	SubscribeName *string `json:"SubscribeName,omitempty" name:"SubscribeName"`
+
+	// 绑定数据库实例的ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 数据订阅实例的通道ID
+	ChannelId *string `json:"ChannelId,omitempty" name:"ChannelId"`
+
+	// 计费模式筛选，可能的值：0-包年包月，1-按量计费
+	PayType *string `json:"PayType,omitempty" name:"PayType"`
+
+	// 订阅的数据库产品，如mysql
+	Product *string `json:"Product,omitempty" name:"Product"`
+
+	// 数据订阅实例的状态，creating - 创建中，normal - 正常运行，isolating - 隔离中，isolated - 已隔离，offlining - 下线中
+	Status []*string `json:"Status,omitempty" name:"Status" list`
+
+	// 数据订阅实例的配置状态，unconfigure - 未配置， configuring - 配置中，configured - 已配置
+	SubsStatus []*string `json:"SubsStatus,omitempty" name:"SubsStatus" list`
+
+	// 返回记录的起始偏移量
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 单次返回的记录数量
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 排序方向，可选的值为"DESC"和"ASC"，默认为"DESC"，按创建时间逆序排序
+	OrderDirection *string `json:"OrderDirection,omitempty" name:"OrderDirection"`
+}
+
+func (r *DescribeSubscribesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeSubscribesRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeSubscribesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 符合查询条件的实例总数
+		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 数据订阅实例的信息列表
+		Items []*SubscribeInfo `json:"Items,omitempty" name:"Items" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeSubscribesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeSubscribesResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -567,6 +922,40 @@ type ErrorInfo struct {
 
 	// 报错对应的帮助文档Ur
 	HelpDoc *string `json:"HelpDoc,omitempty" name:"HelpDoc"`
+}
+
+type IsolateSubscribeRequest struct {
+	*tchttp.BaseRequest
+
+	// 订阅实例ID
+	SubscribeId *string `json:"SubscribeId,omitempty" name:"SubscribeId"`
+}
+
+func (r *IsolateSubscribeRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *IsolateSubscribeRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type IsolateSubscribeResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *IsolateSubscribeResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *IsolateSubscribeResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
 }
 
 type MigrateDetailInfo struct {
@@ -767,6 +1156,166 @@ func (r *ModifyMigrateJobResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type ModifySubscribeConsumeTimeRequest struct {
+	*tchttp.BaseRequest
+
+	// 数据订阅实例的ID
+	SubscribeId *string `json:"SubscribeId,omitempty" name:"SubscribeId"`
+
+	// 消费时间起点，也即是指定订阅数据的时间起点，时间格式如：Y-m-d h:m:s，取值范围为过去24小时之内
+	ConsumeStartTime *string `json:"ConsumeStartTime,omitempty" name:"ConsumeStartTime"`
+}
+
+func (r *ModifySubscribeConsumeTimeRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifySubscribeConsumeTimeRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifySubscribeConsumeTimeResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifySubscribeConsumeTimeResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifySubscribeConsumeTimeResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifySubscribeNameRequest struct {
+	*tchttp.BaseRequest
+
+	// 数据订阅实例的ID
+	SubscribeId *string `json:"SubscribeId,omitempty" name:"SubscribeId"`
+
+	// 数据订阅实例的名称，长度限制为[1,60]
+	SubscribeName *string `json:"SubscribeName,omitempty" name:"SubscribeName"`
+}
+
+func (r *ModifySubscribeNameRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifySubscribeNameRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifySubscribeNameResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifySubscribeNameResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifySubscribeNameResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifySubscribeObjectsRequest struct {
+	*tchttp.BaseRequest
+
+	// 数据订阅实例的ID
+	SubscribeId *string `json:"SubscribeId,omitempty" name:"SubscribeId"`
+
+	// 数据订阅的类型，可选的值有：0 - 全实例订阅；1 - 数据订阅；2 - 结构订阅；3 - 数据订阅+结构订阅
+	SubscribeObjectType *int64 `json:"SubscribeObjectType,omitempty" name:"SubscribeObjectType"`
+
+	// 订阅的数据库表信息
+	Objects []*SubscribeObject `json:"Objects,omitempty" name:"Objects" list`
+}
+
+func (r *ModifySubscribeObjectsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifySubscribeObjectsRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifySubscribeObjectsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 异步任务的ID
+		AsyncRequestId *string `json:"AsyncRequestId,omitempty" name:"AsyncRequestId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifySubscribeObjectsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifySubscribeObjectsResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifySubscribeVipVportRequest struct {
+	*tchttp.BaseRequest
+
+	// 数据订阅实例的ID
+	SubscribeId *string `json:"SubscribeId,omitempty" name:"SubscribeId"`
+
+	// 指定目的子网，如果传此参数，DstIp必须在目的子网内
+	DstUniqSubnetId *string `json:"DstUniqSubnetId,omitempty" name:"DstUniqSubnetId"`
+
+	// 目标IP，与DstPort至少传一个
+	DstIp *string `json:"DstIp,omitempty" name:"DstIp"`
+
+	// 目标PORT，支持范围为：[1025-65535]
+	DstPort *int64 `json:"DstPort,omitempty" name:"DstPort"`
+}
+
+func (r *ModifySubscribeVipVportRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifySubscribeVipVportRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifySubscribeVipVportResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifySubscribeVipVportResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifySubscribeVipVportResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type ModifySyncJobRequest struct {
 	*tchttp.BaseRequest
 
@@ -809,6 +1358,74 @@ func (r *ModifySyncJobResponse) ToJsonString() string {
 }
 
 func (r *ModifySyncJobResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type OfflineIsolatedSubscribeRequest struct {
+	*tchttp.BaseRequest
+
+	// 数据订阅实例的ID
+	SubscribeId *string `json:"SubscribeId,omitempty" name:"SubscribeId"`
+}
+
+func (r *OfflineIsolatedSubscribeRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *OfflineIsolatedSubscribeRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type OfflineIsolatedSubscribeResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *OfflineIsolatedSubscribeResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *OfflineIsolatedSubscribeResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ResetSubscribeRequest struct {
+	*tchttp.BaseRequest
+
+	// 数据订阅实例的ID
+	SubscribeId *string `json:"SubscribeId,omitempty" name:"SubscribeId"`
+}
+
+func (r *ResetSubscribeRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ResetSubscribeRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ResetSubscribeResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ResetSubscribeResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ResetSubscribeResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -964,6 +1581,110 @@ func (r *StopMigrateJobResponse) ToJsonString() string {
 
 func (r *StopMigrateJobResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
+}
+
+type SubscribeInfo struct {
+
+	// 数据订阅的实例ID
+	SubscribeId *string `json:"SubscribeId,omitempty" name:"SubscribeId"`
+
+	// 数据订阅实例的名称
+	SubscribeName *string `json:"SubscribeName,omitempty" name:"SubscribeName"`
+
+	// 数据订阅实例绑定的通道ID
+	ChannelId *string `json:"ChannelId,omitempty" name:"ChannelId"`
+
+	// 数据订阅绑定实例对应的产品名称
+	Product *string `json:"Product,omitempty" name:"Product"`
+
+	// 数据订阅实例绑定的数据库实例ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 数据订阅实例绑定的数据库实例状态
+	InstanceStatus *string `json:"InstanceStatus,omitempty" name:"InstanceStatus"`
+
+	// 数据订阅实例的配置状态，unconfigure - 未配置， configuring - 配置中，configured - 已配置
+	SubsStatus *string `json:"SubsStatus,omitempty" name:"SubsStatus"`
+
+	// 上次修改时间
+	ModifyTime *string `json:"ModifyTime,omitempty" name:"ModifyTime"`
+
+	// 创建时间
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 隔离时间
+	IsolateTime *string `json:"IsolateTime,omitempty" name:"IsolateTime"`
+
+	// 到期时间
+	ExpireTime *string `json:"ExpireTime,omitempty" name:"ExpireTime"`
+
+	// 下线时间
+	OfflineTime *string `json:"OfflineTime,omitempty" name:"OfflineTime"`
+
+	// 最近一次修改的消费时间起点，如果从未修改则为零值
+	ConsumeStartTime *string `json:"ConsumeStartTime,omitempty" name:"ConsumeStartTime"`
+
+	// 数据订阅实例所属地域
+	Region *string `json:"Region,omitempty" name:"Region"`
+
+	// 计费方式，0 - 包年包月，1 - 按量计费
+	PayType *int64 `json:"PayType,omitempty" name:"PayType"`
+
+	// 数据订阅实例的Vip
+	Vip *string `json:"Vip,omitempty" name:"Vip"`
+
+	// 数据订阅实例的Vport
+	Vport *int64 `json:"Vport,omitempty" name:"Vport"`
+
+	// 数据订阅实例Vip所在VPC的唯一ID
+	UniqVpcId *string `json:"UniqVpcId,omitempty" name:"UniqVpcId"`
+
+	// 数据订阅实例Vip所在子网的唯一ID
+	UniqSubnetId *string `json:"UniqSubnetId,omitempty" name:"UniqSubnetId"`
+
+	// 数据订阅实例的状态，creating - 创建中，normal - 正常运行，isolating - 隔离中，isolated - 已隔离，offlining - 下线中，offline - 已下线
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// SDK最后一条确认消息的时间戳，如果SDK一直消费，也可以作为SDK当前消费时间点
+	SdkConsumedTime *string `json:"SdkConsumedTime,omitempty" name:"SdkConsumedTime"`
+}
+
+type SubscribeObject struct {
+
+	// 数据订阅对象的类型，0-数据库，1-数据库内的表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ObjectsType *int64 `json:"ObjectsType,omitempty" name:"ObjectsType"`
+
+	// 订阅数据库的名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DatabaseName *string `json:"DatabaseName,omitempty" name:"DatabaseName"`
+
+	// 订阅数据库中表名称数组
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TableNames []*string `json:"TableNames,omitempty" name:"TableNames" list`
+}
+
+type SubscribeRegionConf struct {
+
+	// 地域名称，如广州
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RegionName *string `json:"RegionName,omitempty" name:"RegionName"`
+
+	// 地区标识，如ap-guangzhou
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Region *string `json:"Region,omitempty" name:"Region"`
+
+	// 地域名称，如华南地区
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Area *string `json:"Area,omitempty" name:"Area"`
+
+	// 是否为默认地域，0 - 不是，1 - 是的
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsDefaultRegion *int64 `json:"IsDefaultRegion,omitempty" name:"IsDefaultRegion"`
+
+	// 当前地域的售卖情况，1 - 正常， 2-灰度，3 - 停售
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *int64 `json:"Status,omitempty" name:"Status"`
 }
 
 type SwitchDrToMasterRequest struct {

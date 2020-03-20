@@ -43,6 +43,31 @@ func NewClient(credential *common.Credential, region string, clientProfile *prof
 }
 
 
+func NewActivateSubscribeRequest() (request *ActivateSubscribeRequest) {
+    request = &ActivateSubscribeRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("dts", APIVersion, "ActivateSubscribe")
+    return
+}
+
+func NewActivateSubscribeResponse() (response *ActivateSubscribeResponse) {
+    response = &ActivateSubscribeResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口用于配置数据订阅，只有在未配置状态的订阅实例才能调用此接口。
+func (c *Client) ActivateSubscribe(request *ActivateSubscribeRequest) (response *ActivateSubscribeResponse, err error) {
+    if request == nil {
+        request = NewActivateSubscribeRequest()
+    }
+    response = NewActivateSubscribeResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCompleteMigrateJobRequest() (request *CompleteMigrateJobRequest) {
     request = &CompleteMigrateJobRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -120,6 +145,31 @@ func (c *Client) CreateMigrateJob(request *CreateMigrateJobRequest) (response *C
         request = NewCreateMigrateJobRequest()
     }
     response = NewCreateMigrateJobResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateSubscribeRequest() (request *CreateSubscribeRequest) {
+    request = &CreateSubscribeRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("dts", APIVersion, "CreateSubscribe")
+    return
+}
+
+func NewCreateSubscribeResponse() (response *CreateSubscribeResponse) {
+    response = &CreateSubscribeResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口(CreateSubscribe)用于创建一个数据订阅实例。
+func (c *Client) CreateSubscribe(request *CreateSubscribeRequest) (response *CreateSubscribeResponse, err error) {
+    if request == nil {
+        request = NewCreateSubscribeRequest()
+    }
+    response = NewCreateSubscribeResponse()
     err = c.Send(request, response)
     return
 }
@@ -226,6 +276,31 @@ func (c *Client) DeleteSyncJob(request *DeleteSyncJobRequest) (response *DeleteS
     return
 }
 
+func NewDescribeAsyncRequestInfoRequest() (request *DescribeAsyncRequestInfoRequest) {
+    request = &DescribeAsyncRequestInfoRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("dts", APIVersion, "DescribeAsyncRequestInfo")
+    return
+}
+
+func NewDescribeAsyncRequestInfoResponse() (response *DescribeAsyncRequestInfoResponse) {
+    response = &DescribeAsyncRequestInfoResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（DescribeAsyncRequestInfo）用于查询任务执行结果
+func (c *Client) DescribeAsyncRequestInfo(request *DescribeAsyncRequestInfoRequest) (response *DescribeAsyncRequestInfoResponse, err error) {
+    if request == nil {
+        request = NewDescribeAsyncRequestInfoRequest()
+    }
+    response = NewDescribeAsyncRequestInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeMigrateCheckJobRequest() (request *DescribeMigrateCheckJobRequest) {
     request = &DescribeMigrateCheckJobRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -275,6 +350,81 @@ func (c *Client) DescribeMigrateJobs(request *DescribeMigrateJobsRequest) (respo
         request = NewDescribeMigrateJobsRequest()
     }
     response = NewDescribeMigrateJobsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeRegionConfRequest() (request *DescribeRegionConfRequest) {
+    request = &DescribeRegionConfRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("dts", APIVersion, "DescribeRegionConf")
+    return
+}
+
+func NewDescribeRegionConfResponse() (response *DescribeRegionConfResponse) {
+    response = &DescribeRegionConfResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（DescribeRegionConf）用于查询可售卖订阅实例的地域
+func (c *Client) DescribeRegionConf(request *DescribeRegionConfRequest) (response *DescribeRegionConfResponse, err error) {
+    if request == nil {
+        request = NewDescribeRegionConfRequest()
+    }
+    response = NewDescribeRegionConfResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeSubscribeConfRequest() (request *DescribeSubscribeConfRequest) {
+    request = &DescribeSubscribeConfRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("dts", APIVersion, "DescribeSubscribeConf")
+    return
+}
+
+func NewDescribeSubscribeConfResponse() (response *DescribeSubscribeConfResponse) {
+    response = &DescribeSubscribeConfResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（DescribeSubscribeConf）用于查询订阅实例配置
+func (c *Client) DescribeSubscribeConf(request *DescribeSubscribeConfRequest) (response *DescribeSubscribeConfResponse, err error) {
+    if request == nil {
+        request = NewDescribeSubscribeConfRequest()
+    }
+    response = NewDescribeSubscribeConfResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeSubscribesRequest() (request *DescribeSubscribesRequest) {
+    request = &DescribeSubscribesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("dts", APIVersion, "DescribeSubscribes")
+    return
+}
+
+func NewDescribeSubscribesResponse() (response *DescribeSubscribesResponse) {
+    response = &DescribeSubscribesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口(DescribeSubscribes)获取数据订阅实例信息列表，默认分页，每次返回20条
+func (c *Client) DescribeSubscribes(request *DescribeSubscribesRequest) (response *DescribeSubscribesResponse, err error) {
+    if request == nil {
+        request = NewDescribeSubscribesRequest()
+    }
+    response = NewDescribeSubscribesResponse()
     err = c.Send(request, response)
     return
 }
@@ -334,6 +484,31 @@ func (c *Client) DescribeSyncJobs(request *DescribeSyncJobsRequest) (response *D
     return
 }
 
+func NewIsolateSubscribeRequest() (request *IsolateSubscribeRequest) {
+    request = &IsolateSubscribeRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("dts", APIVersion, "IsolateSubscribe")
+    return
+}
+
+func NewIsolateSubscribeResponse() (response *IsolateSubscribeResponse) {
+    response = &IsolateSubscribeResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（IsolateSubscribe）用于隔离小时计费的订阅实例。调用后，订阅实例将不能使用，同时停止计费。
+func (c *Client) IsolateSubscribe(request *IsolateSubscribeRequest) (response *IsolateSubscribeResponse, err error) {
+    if request == nil {
+        request = NewIsolateSubscribeRequest()
+    }
+    response = NewIsolateSubscribeResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyMigrateJobRequest() (request *ModifyMigrateJobRequest) {
     request = &ModifyMigrateJobRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -362,6 +537,106 @@ func (c *Client) ModifyMigrateJob(request *ModifyMigrateJobRequest) (response *M
     return
 }
 
+func NewModifySubscribeConsumeTimeRequest() (request *ModifySubscribeConsumeTimeRequest) {
+    request = &ModifySubscribeConsumeTimeRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("dts", APIVersion, "ModifySubscribeConsumeTime")
+    return
+}
+
+func NewModifySubscribeConsumeTimeResponse() (response *ModifySubscribeConsumeTimeResponse) {
+    response = &ModifySubscribeConsumeTimeResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口(ModifySubscribeConsumeTime)用于修改数据订阅通道的消费时间点
+func (c *Client) ModifySubscribeConsumeTime(request *ModifySubscribeConsumeTimeRequest) (response *ModifySubscribeConsumeTimeResponse, err error) {
+    if request == nil {
+        request = NewModifySubscribeConsumeTimeRequest()
+    }
+    response = NewModifySubscribeConsumeTimeResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifySubscribeNameRequest() (request *ModifySubscribeNameRequest) {
+    request = &ModifySubscribeNameRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("dts", APIVersion, "ModifySubscribeName")
+    return
+}
+
+func NewModifySubscribeNameResponse() (response *ModifySubscribeNameResponse) {
+    response = &ModifySubscribeNameResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口(ModifySubscribeName)用于修改数据订阅实例的名称
+func (c *Client) ModifySubscribeName(request *ModifySubscribeNameRequest) (response *ModifySubscribeNameResponse, err error) {
+    if request == nil {
+        request = NewModifySubscribeNameRequest()
+    }
+    response = NewModifySubscribeNameResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifySubscribeObjectsRequest() (request *ModifySubscribeObjectsRequest) {
+    request = &ModifySubscribeObjectsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("dts", APIVersion, "ModifySubscribeObjects")
+    return
+}
+
+func NewModifySubscribeObjectsResponse() (response *ModifySubscribeObjectsResponse) {
+    response = &ModifySubscribeObjectsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口(ModifySubscribeObjects)用于修改数据订阅通道的订阅规则
+func (c *Client) ModifySubscribeObjects(request *ModifySubscribeObjectsRequest) (response *ModifySubscribeObjectsResponse, err error) {
+    if request == nil {
+        request = NewModifySubscribeObjectsRequest()
+    }
+    response = NewModifySubscribeObjectsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifySubscribeVipVportRequest() (request *ModifySubscribeVipVportRequest) {
+    request = &ModifySubscribeVipVportRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("dts", APIVersion, "ModifySubscribeVipVport")
+    return
+}
+
+func NewModifySubscribeVipVportResponse() (response *ModifySubscribeVipVportResponse) {
+    response = &ModifySubscribeVipVportResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口(ModifySubscribeVipVport)用于修改数据订阅实例的IP和端口号
+func (c *Client) ModifySubscribeVipVport(request *ModifySubscribeVipVportRequest) (response *ModifySubscribeVipVportResponse, err error) {
+    if request == nil {
+        request = NewModifySubscribeVipVportRequest()
+    }
+    response = NewModifySubscribeVipVportResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifySyncJobRequest() (request *ModifySyncJobRequest) {
     request = &ModifySyncJobRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -385,6 +660,56 @@ func (c *Client) ModifySyncJob(request *ModifySyncJobRequest) (response *ModifyS
         request = NewModifySyncJobRequest()
     }
     response = NewModifySyncJobResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewOfflineIsolatedSubscribeRequest() (request *OfflineIsolatedSubscribeRequest) {
+    request = &OfflineIsolatedSubscribeRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("dts", APIVersion, "OfflineIsolatedSubscribe")
+    return
+}
+
+func NewOfflineIsolatedSubscribeResponse() (response *OfflineIsolatedSubscribeResponse) {
+    response = &OfflineIsolatedSubscribeResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（OfflineIsolatedSubscribe）用于下线已隔离的数据订阅实例
+func (c *Client) OfflineIsolatedSubscribe(request *OfflineIsolatedSubscribeRequest) (response *OfflineIsolatedSubscribeResponse, err error) {
+    if request == nil {
+        request = NewOfflineIsolatedSubscribeRequest()
+    }
+    response = NewOfflineIsolatedSubscribeResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewResetSubscribeRequest() (request *ResetSubscribeRequest) {
+    request = &ResetSubscribeRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("dts", APIVersion, "ResetSubscribe")
+    return
+}
+
+func NewResetSubscribeResponse() (response *ResetSubscribeResponse) {
+    response = &ResetSubscribeResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口(ResetSubscribe)用于重置数据订阅实例，已经激活的数据订阅实例，重置后可以使用ActivateSubscribe接口绑定其他的数据库实例
+func (c *Client) ResetSubscribe(request *ResetSubscribeRequest) (response *ResetSubscribeResponse, err error) {
+    if request == nil {
+        request = NewResetSubscribeRequest()
+    }
+    response = NewResetSubscribeResponse()
     err = c.Send(request, response)
     return
 }

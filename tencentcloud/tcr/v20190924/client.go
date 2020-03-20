@@ -193,6 +193,31 @@ func (c *Client) CreateInstanceToken(request *CreateInstanceTokenRequest) (respo
     return
 }
 
+func NewCreateNamespaceRequest() (request *CreateNamespaceRequest) {
+    request = &CreateNamespaceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tcr", APIVersion, "CreateNamespace")
+    return
+}
+
+func NewCreateNamespaceResponse() (response *CreateNamespaceResponse) {
+    response = &CreateNamespaceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 用于在企业版中创建命名空间
+func (c *Client) CreateNamespace(request *CreateNamespaceRequest) (response *CreateNamespaceResponse, err error) {
+    if request == nil {
+        request = NewCreateNamespaceRequest()
+    }
+    response = NewCreateNamespaceResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateNamespacePersonalRequest() (request *CreateNamespacePersonalRequest) {
     request = &CreateNamespacePersonalRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -214,6 +239,31 @@ func (c *Client) CreateNamespacePersonal(request *CreateNamespacePersonalRequest
         request = NewCreateNamespacePersonalRequest()
     }
     response = NewCreateNamespacePersonalResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateRepositoryRequest() (request *CreateRepositoryRequest) {
+    request = &CreateRepositoryRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tcr", APIVersion, "CreateRepository")
+    return
+}
+
+func NewCreateRepositoryResponse() (response *CreateRepositoryResponse) {
+    response = &CreateRepositoryResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 用于企业版创建镜像仓库
+func (c *Client) CreateRepository(request *CreateRepositoryRequest) (response *CreateRepositoryResponse, err error) {
+    if request == nil {
+        request = NewCreateRepositoryRequest()
+    }
+    response = NewCreateRepositoryResponse()
     err = c.Send(request, response)
     return
 }
@@ -368,6 +418,31 @@ func (c *Client) DeleteImagePersonal(request *DeleteImagePersonalRequest) (respo
     return
 }
 
+func NewDeleteNamespaceRequest() (request *DeleteNamespaceRequest) {
+    request = &DeleteNamespaceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tcr", APIVersion, "DeleteNamespace")
+    return
+}
+
+func NewDeleteNamespaceResponse() (response *DeleteNamespaceResponse) {
+    response = &DeleteNamespaceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 删除命名空间
+func (c *Client) DeleteNamespace(request *DeleteNamespaceRequest) (response *DeleteNamespaceResponse, err error) {
+    if request == nil {
+        request = NewDeleteNamespaceRequest()
+    }
+    response = NewDeleteNamespaceResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteNamespacePersonalRequest() (request *DeleteNamespacePersonalRequest) {
     request = &DeleteNamespacePersonalRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -389,6 +464,31 @@ func (c *Client) DeleteNamespacePersonal(request *DeleteNamespacePersonalRequest
         request = NewDeleteNamespacePersonalRequest()
     }
     response = NewDeleteNamespacePersonalResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteRepositoryRequest() (request *DeleteRepositoryRequest) {
+    request = &DeleteRepositoryRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tcr", APIVersion, "DeleteRepository")
+    return
+}
+
+func NewDeleteRepositoryResponse() (response *DeleteRepositoryResponse) {
+    response = &DeleteRepositoryResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 删除镜像仓库
+func (c *Client) DeleteRepository(request *DeleteRepositoryRequest) (response *DeleteRepositoryResponse, err error) {
+    if request == nil {
+        request = NewDeleteRepositoryRequest()
+    }
+    response = NewDeleteRepositoryResponse()
     err = c.Send(request, response)
     return
 }
@@ -593,6 +693,31 @@ func (c *Client) DescribeImagePersonal(request *DescribeImagePersonalRequest) (r
     return
 }
 
+func NewDescribeImagesRequest() (request *DescribeImagesRequest) {
+    request = &DescribeImagesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tcr", APIVersion, "DescribeImages")
+    return
+}
+
+func NewDescribeImagesResponse() (response *DescribeImagesResponse) {
+    response = &DescribeImagesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 用于在企业版中查询镜像仓库内容器镜像信息，获取镜像版本列表
+func (c *Client) DescribeImages(request *DescribeImagesRequest) (response *DescribeImagesResponse, err error) {
+    if request == nil {
+        request = NewDescribeImagesRequest()
+    }
+    response = NewDescribeImagesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeInstanceStatusRequest() (request *DescribeInstanceStatusRequest) {
     request = &DescribeInstanceStatusRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -664,6 +789,31 @@ func (c *Client) DescribeNamespacePersonal(request *DescribeNamespacePersonalReq
         request = NewDescribeNamespacePersonalRequest()
     }
     response = NewDescribeNamespacePersonalResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeRepositoriesRequest() (request *DescribeRepositoriesRequest) {
+    request = &DescribeRepositoriesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tcr", APIVersion, "DescribeRepositories")
+    return
+}
+
+func NewDescribeRepositoriesResponse() (response *DescribeRepositoriesResponse) {
+    response = &DescribeRepositoriesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询镜像仓库信息
+func (c *Client) DescribeRepositories(request *DescribeRepositoriesRequest) (response *DescribeRepositoriesResponse, err error) {
+    if request == nil {
+        request = NewDescribeRepositoriesRequest()
+    }
+    response = NewDescribeRepositoriesResponse()
     err = c.Send(request, response)
     return
 }
@@ -839,6 +989,56 @@ func (c *Client) ModifyApplicationTriggerPersonal(request *ModifyApplicationTrig
         request = NewModifyApplicationTriggerPersonalRequest()
     }
     response = NewModifyApplicationTriggerPersonalResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyNamespaceRequest() (request *ModifyNamespaceRequest) {
+    request = &ModifyNamespaceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tcr", APIVersion, "ModifyNamespace")
+    return
+}
+
+func NewModifyNamespaceResponse() (response *ModifyNamespaceResponse) {
+    response = &ModifyNamespaceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 更新命名空间信息
+func (c *Client) ModifyNamespace(request *ModifyNamespaceRequest) (response *ModifyNamespaceResponse, err error) {
+    if request == nil {
+        request = NewModifyNamespaceRequest()
+    }
+    response = NewModifyNamespaceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyRepositoryRequest() (request *ModifyRepositoryRequest) {
+    request = &ModifyRepositoryRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tcr", APIVersion, "ModifyRepository")
+    return
+}
+
+func NewModifyRepositoryResponse() (response *ModifyRepositoryResponse) {
+    response = &ModifyRepositoryResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 更新镜像仓库描述
+func (c *Client) ModifyRepository(request *ModifyRepositoryRequest) (response *ModifyRepositoryResponse, err error) {
+    if request == nil {
+        request = NewModifyRepositoryRequest()
+    }
+    response = NewModifyRepositoryResponse()
     err = c.Send(request, response)
     return
 }

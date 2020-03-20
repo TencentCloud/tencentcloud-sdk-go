@@ -677,6 +677,10 @@ type ContainerGroupDetail struct {
 	// 初始分配的内存 MiB 数，对应 K8S request
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MemRequest *string `json:"MemRequest,omitempty" name:"MemRequest"`
+
+	// 子网id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
 }
 
 type CosCredentials struct {
@@ -4001,6 +4005,9 @@ type ProtocolPort struct {
 
 	// 容器端口
 	TargetPort *int64 `json:"TargetPort,omitempty" name:"TargetPort"`
+
+	// 主机端口
+	NodePort *int64 `json:"NodePort,omitempty" name:"NodePort"`
 }
 
 type ReleaseConfigRequest struct {

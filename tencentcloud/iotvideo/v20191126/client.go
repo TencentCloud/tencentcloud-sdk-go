@@ -1081,6 +1081,37 @@ func (c *Client) ModifyDeviceAction(request *ModifyDeviceActionRequest) (respons
     return
 }
 
+func NewModifyDevicePropertyRequest() (request *ModifyDevicePropertyRequest) {
+    request = &ModifyDevicePropertyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iotvideo", APIVersion, "ModifyDeviceProperty")
+    return
+}
+
+func NewModifyDevicePropertyResponse() (response *ModifyDevicePropertyResponse) {
+    response = &ModifyDevicePropertyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（ModifyDeviceProperty）用于修改设备物模型的属性（ProWritable）。
+// 可对setVal数据属性进行写入,如:
+// ProWritable.Pos.setVal
+// 对于嵌套类型的可写属性，可以仅对其部分数据内容进行写入，如:
+// ProWritable.Pos.setVal.x;
+// 可写属性云端写入成功即返回;云端向设备端发布属性变更参数;若当前设备不在线,在设备下次上线时会自动更新这些属性参数;
+// 物模型写入数据时,不需要传入时标信息,平台以当前时标作为数据的时标更新物模型中的时标信息。
+func (c *Client) ModifyDeviceProperty(request *ModifyDevicePropertyRequest) (response *ModifyDevicePropertyResponse, err error) {
+    if request == nil {
+        request = NewModifyDevicePropertyRequest()
+    }
+    response = NewModifyDevicePropertyResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyProductRequest() (request *ModifyProductRequest) {
     request = &ModifyProductRequest{
         BaseRequest: &tchttp.BaseRequest{},

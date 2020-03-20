@@ -563,6 +563,14 @@ type DirectConnect struct {
 
 	// 物理专线的接入点类型。
 	AccessPointType *string `json:"AccessPointType,omitempty" name:"AccessPointType"`
+
+	// IDC所在城市
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IdcCity *string `json:"IdcCity,omitempty" name:"IdcCity"`
+
+	// 计费状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ChargeState *string `json:"ChargeState,omitempty" name:"ChargeState"`
 }
 
 type DirectConnectTunnel struct {
@@ -657,6 +665,14 @@ type DirectConnectTunnel struct {
 	// 专线通道接入点类型
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AccessPointType *string `json:"AccessPointType,omitempty" name:"AccessPointType"`
+
+	// 专线网关名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DirectConnectGatewayName *string `json:"DirectConnectGatewayName,omitempty" name:"DirectConnectGatewayName"`
+
+	// VPC名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VpcName *string `json:"VpcName,omitempty" name:"VpcName"`
 }
 
 type Filter struct {
