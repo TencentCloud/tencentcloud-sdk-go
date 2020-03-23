@@ -1282,6 +1282,55 @@ func (r *DescribeNamespacePersonalResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeNamespacesRequest struct {
+	*tchttp.BaseRequest
+
+	// 实例Id
+	RegistryId *string `json:"RegistryId,omitempty" name:"RegistryId"`
+
+	// 指定命名空间，不填写默认查询所有命名空间
+	NamespaceName *string `json:"NamespaceName,omitempty" name:"NamespaceName"`
+
+	// 每页个数
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 页偏移
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+}
+
+func (r *DescribeNamespacesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeNamespacesRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeNamespacesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 命名空间列表信息
+		NamespaceList []*TcrNamespaceInfo `json:"NamespaceList,omitempty" name:"NamespaceList" list`
+
+		// 总个数
+		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeNamespacesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeNamespacesResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeRepositoriesRequest struct {
 	*tchttp.BaseRequest
 
@@ -1720,10 +1769,10 @@ func (r *ModifyApplicationTriggerPersonalResponse) FromJsonString(s string) erro
 type ModifyNamespaceRequest struct {
 	*tchttp.BaseRequest
 
-	// 实例的Id
+	// 实例Id
 	RegistryId *string `json:"RegistryId,omitempty" name:"RegistryId"`
 
-	// 命名空间的名称
+	// 命名空间名称
 	NamespaceName *string `json:"NamespaceName,omitempty" name:"NamespaceName"`
 
 	// 访问级别，True为公开，False为私有
@@ -2187,6 +2236,18 @@ type TcrImageInfo struct {
 
 	// Tag名称
 	ImageVersion *string `json:"ImageVersion,omitempty" name:"ImageVersion"`
+}
+
+type TcrNamespaceInfo struct {
+
+	// 命名空间名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 创建时间
+	CreationTime *string `json:"CreationTime,omitempty" name:"CreationTime"`
+
+	// 访问级别
+	Public *bool `json:"Public,omitempty" name:"Public"`
 }
 
 type TcrRepositoryInfo struct {

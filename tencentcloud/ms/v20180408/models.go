@@ -76,7 +76,7 @@ type AppInfo struct {
 	// app的大小
 	AppSize *uint64 `json:"AppSize,omitempty" name:"AppSize"`
 
-	// app的文件名，指定后加固后的文件名是{FileName}_legu.apk
+	// app的文件名
 	FileName *string `json:"FileName,omitempty" name:"FileName"`
 
 	// app的包名，需要正确的传递此字段

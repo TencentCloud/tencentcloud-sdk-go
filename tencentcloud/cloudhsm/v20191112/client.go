@@ -43,6 +43,56 @@ func NewClient(credential *common.Credential, region string, clientProfile *prof
 }
 
 
+func NewDescribeHSMBySubnetIdRequest() (request *DescribeHSMBySubnetIdRequest) {
+    request = &DescribeHSMBySubnetIdRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cloudhsm", APIVersion, "DescribeHSMBySubnetId")
+    return
+}
+
+func NewDescribeHSMBySubnetIdResponse() (response *DescribeHSMBySubnetIdResponse) {
+    response = &DescribeHSMBySubnetIdResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 通过SubnetId获取Hsm资源数
+func (c *Client) DescribeHSMBySubnetId(request *DescribeHSMBySubnetIdRequest) (response *DescribeHSMBySubnetIdResponse, err error) {
+    if request == nil {
+        request = NewDescribeHSMBySubnetIdRequest()
+    }
+    response = NewDescribeHSMBySubnetIdResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeHSMByVpcIdRequest() (request *DescribeHSMByVpcIdRequest) {
+    request = &DescribeHSMByVpcIdRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cloudhsm", APIVersion, "DescribeHSMByVpcId")
+    return
+}
+
+func NewDescribeHSMByVpcIdResponse() (response *DescribeHSMByVpcIdResponse) {
+    response = &DescribeHSMByVpcIdResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 通过VpcId获取Hsm资源数
+func (c *Client) DescribeHSMByVpcId(request *DescribeHSMByVpcIdRequest) (response *DescribeHSMByVpcIdResponse, err error) {
+    if request == nil {
+        request = NewDescribeHSMByVpcIdRequest()
+    }
+    response = NewDescribeHSMByVpcIdResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeSubnetRequest() (request *DescribeSubnetRequest) {
     request = &DescribeSubnetRequest{
         BaseRequest: &tchttp.BaseRequest{},

@@ -2334,7 +2334,7 @@ type LoadBalancer struct {
 	// 私有网络Cidr。
 	VpcCidrBlock *string `json:"VpcCidrBlock,omitempty" name:"VpcCidrBlock"`
 
-	// 负载均衡获得的公网IP地址,支持多个
+	// 负载均衡的IPV4的VIP。
 	LoadBalancerVips []*string `json:"LoadBalancerVips,omitempty" name:"LoadBalancerVips" list`
 
 	// 无
@@ -2366,6 +2366,10 @@ type LoadBalancer struct {
 
 	// 该负载均衡对应的所在的整形类型的VpcId
 	IntVpcId *uint64 `json:"IntVpcId,omitempty" name:"IntVpcId"`
+
+	// 负载均衡的IPV6或者IPV4的VIP。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CurVips []*string `json:"CurVips,omitempty" name:"CurVips" list`
 }
 
 type LoadBalancerPortInfoListener struct {

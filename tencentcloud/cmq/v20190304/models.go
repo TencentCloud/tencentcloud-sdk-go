@@ -23,7 +23,7 @@ import (
 type ClearQueueRequest struct {
 	*tchttp.BaseRequest
 
-	// 队列名称
+	// 队列名字，在单个地域同一帐号下唯一。队列名称是一个不超过64个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线(-)。
 	QueueName *string `json:"QueueName,omitempty" name:"QueueName"`
 }
 
@@ -57,10 +57,10 @@ func (r *ClearQueueResponse) FromJsonString(s string) error {
 type ClearSubscriptionFilterTagsRequest struct {
 	*tchttp.BaseRequest
 
-	// TopicName
+	// 主题名字，在单个地域同一帐号下唯一。主题名称是一个不超过64个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线（-）。
 	TopicName *string `json:"TopicName,omitempty" name:"TopicName"`
 
-	// SubscriptionName
+	// 订阅名字，在单个地域同一帐号的同一主题下唯一。订阅名称是一个不超过64个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线(-)。
 	SubscriptionName *string `json:"SubscriptionName,omitempty" name:"SubscriptionName"`
 }
 
@@ -173,28 +173,28 @@ func (r *CreateQueueResponse) FromJsonString(s string) error {
 type CreateSubscribeRequest struct {
 	*tchttp.BaseRequest
 
-	// TopicName
+	// 主题名字，在单个地域同一帐号下唯一。主题名称是一个不超过64个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线（-）。
 	TopicName *string `json:"TopicName,omitempty" name:"TopicName"`
 
-	// SubscriptionName
+	// 订阅名字，在单个地域同一帐号的同一主题下唯一。订阅名称是一个不超过64个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线(-)。
 	SubscriptionName *string `json:"SubscriptionName,omitempty" name:"SubscriptionName"`
 
-	// Protocol
+	// 订阅的协议，目前支持两种协议：http、queue。使用http协议，用户需自己搭建接受消息的web server。使用queue，消息会自动推送到CMQ queue，用户可以并发地拉取消息。
 	Protocol *string `json:"Protocol,omitempty" name:"Protocol"`
 
-	// Endpoint
+	// 接收通知的Endpoint，根据协议Protocol区分：对于http，Endpoint必须以“http://”开头，host可以是域名或IP；对于Queue，则填QueueName。 请注意，目前推送服务不能推送到私有网络中，因此Endpoint填写为私有网络域名或地址将接收不到推送的消息，目前支持推送到公网和基础网络。
 	Endpoint *string `json:"Endpoint,omitempty" name:"Endpoint"`
 
-	// NotifyStrategy
+	// 向Endpoint推送消息出现错误时，CMQ推送服务器的重试策略。取值有：1）BACKOFF_RETRY，退避重试。每隔一定时间重试一次，重试够一定次数后，就把该消息丢弃，继续推送下一条消息；2）EXPONENTIAL_DECAY_RETRY，指数衰退重试。每次重试的间隔是指数递增的，例如开始1s，后面是2s，4s，8s...由于Topic消息的周期是一天，所以最多重试一天就把消息丢弃。默认值是EXPONENTIAL_DECAY_RETRY。
 	NotifyStrategy *string `json:"NotifyStrategy,omitempty" name:"NotifyStrategy"`
 
-	// FilterTag
+	// 消息正文。消息标签（用于消息过滤)。标签数量不能超过5个，每个标签不超过16个字符。与(Batch)PublishMessage的MsgTag参数配合使用，规则：1）如果FilterTag没有设置，则无论MsgTag是否有设置，订阅接收所有发布到Topic的消息；2）如果FilterTag数组有值，则只有数组中至少有一个值在MsgTag数组中也存在时（即FilterTag和MsgTag有交集），订阅才接收该发布到Topic的消息；3）如果FilterTag数组有值，但MsgTag没设置，则不接收任何发布到Topic的消息，可以认为是2）的一种特例，此时FilterTag和MsgTag没有交集。规则整体的设计思想是以订阅者的意愿为主。
 	FilterTag []*string `json:"FilterTag,omitempty" name:"FilterTag" list`
 
-	// BindingKey
+	// BindingKey数量不超过5个， 每个BindingKey长度不超过64字节，该字段表示订阅接收消息的过滤策略，每个BindingKey最多含有15个“.”， 即最多16个词组。
 	BindingKey []*string `json:"BindingKey,omitempty" name:"BindingKey" list`
 
-	// NotifyContentFormat
+	// 推送内容的格式。取值：1）JSON；2）SIMPLIFIED，即raw格式。如果Protocol是queue，则取值必须为SIMPLIFIED。如果Protocol是http，两个值均可以，默认值是JSON。
 	NotifyContentFormat *string `json:"NotifyContentFormat,omitempty" name:"NotifyContentFormat"`
 }
 
@@ -231,16 +231,16 @@ func (r *CreateSubscribeResponse) FromJsonString(s string) error {
 type CreateTopicRequest struct {
 	*tchttp.BaseRequest
 
-	// TopicName
+	// 主题名字，在单个地域同一帐号下唯一。主题名称是一个不超过64个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线（-）。
 	TopicName *string `json:"TopicName,omitempty" name:"TopicName"`
 
-	// MaxMsgSize
+	// 消息最大长度。取值范围 1024-65536 Byte（即1-64K），默认值 65536。
 	MaxMsgSize *uint64 `json:"MaxMsgSize,omitempty" name:"MaxMsgSize"`
 
-	// FilterType
+	// 用于指定主题的消息匹配策略。
 	FilterType *uint64 `json:"FilterType,omitempty" name:"FilterType"`
 
-	// MsgRetentionSeconds
+	// 消息保存时间。取值范围60 - 86400 s（即1分钟 - 1天），默认值86400。
 	MsgRetentionSeconds *uint64 `json:"MsgRetentionSeconds,omitempty" name:"MsgRetentionSeconds"`
 
 	// 是否开启消息轨迹标识，true表示开启，false表示不开启，不填表示不开启。
@@ -314,7 +314,7 @@ type DeadLetterSource struct {
 type DeleteQueueRequest struct {
 	*tchttp.BaseRequest
 
-	// 队列名称
+	// 队列名字，在单个地域同一帐号下唯一。队列名称是一个不超过64个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线(-)。
 	QueueName *string `json:"QueueName,omitempty" name:"QueueName"`
 }
 
@@ -348,10 +348,10 @@ func (r *DeleteQueueResponse) FromJsonString(s string) error {
 type DeleteSubscribeRequest struct {
 	*tchttp.BaseRequest
 
-	// TopicName
+	// 主题名字，在单个地域同一帐号下唯一。主题名称是一个不超过64个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线(-)。
 	TopicName *string `json:"TopicName,omitempty" name:"TopicName"`
 
-	// SubscriptionName
+	// 订阅名字，在单个地域同一帐号的同一主题下唯一。订阅名称是一个不超过64个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线(-)。
 	SubscriptionName *string `json:"SubscriptionName,omitempty" name:"SubscriptionName"`
 }
 
@@ -385,7 +385,7 @@ func (r *DeleteSubscribeResponse) FromJsonString(s string) error {
 type DeleteTopicRequest struct {
 	*tchttp.BaseRequest
 
-	// TopicName
+	// 主题名字，在单个地域同一帐号下唯一。主题名称是一个不超过64个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线(-)。
 	TopicName *string `json:"TopicName,omitempty" name:"TopicName"`
 }
 
@@ -422,10 +422,10 @@ type DescribeDeadLetterSourceQueuesRequest struct {
 	// 死信队列名称
 	DeadLetterQueueName *string `json:"DeadLetterQueueName,omitempty" name:"DeadLetterQueueName"`
 
-	// limit
+	// 分页时本页获取主题列表的起始位置。如果填写了该值，必须也要填写 limit 。该值缺省时，后台取默认值 0。
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 
-	// offset
+	// 分页时本页获取主题的个数，如果不传递该参数，则该参数默认为20，最大值为50。
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
 
 	// 过滤死信队列源队列名称，目前仅支持SourceQueueName过滤
@@ -520,16 +520,16 @@ func (r *DescribeQueueDetailResponse) FromJsonString(s string) error {
 type DescribeSubscriptionDetailRequest struct {
 	*tchttp.BaseRequest
 
-	// TopicName
+	// 主题名字，在单个地域同一帐号下唯一。主题名称是一个不超过64个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线（-）。
 	TopicName *string `json:"TopicName,omitempty" name:"TopicName"`
 
-	// Offset
+	// 分页时本页获取主题列表的起始位置。如果填写了该值，必须也要填写 limit 。该值缺省时，后台取默认值 0
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
 
-	// Limit
+	// 分页时本页获取主题的个数，如果不传递该参数，则该参数默认为20，最大值为50。
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 
-	// 目前只支持SubscriptionName，且仅支持一个关键字
+	// 筛选参数，目前只支持SubscriptionName，且仅支持一个关键字。
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
 }
 
@@ -570,16 +570,16 @@ func (r *DescribeSubscriptionDetailResponse) FromJsonString(s string) error {
 type DescribeTopicDetailRequest struct {
 	*tchttp.BaseRequest
 
-	// Offset
+	// 分页时本页获取队列列表的起始位置。如果填写了该值，必须也要填写 limit 。该值缺省时，后台取默认值 0。
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
 
-	// Limit
+	// 分页时本页获取队列的个数，如果不传递该参数，则该参数默认为20，最大值为50。
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 
 	// 目前只支持过滤TopicName ， 且只能填一个过滤值
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
 
-	// TagKey
+	// 标签匹配
 	TagKey *string `json:"TagKey,omitempty" name:"TagKey"`
 
 	// 精确匹配TopicName
@@ -631,43 +631,43 @@ type Filter struct {
 type ModifyQueueAttributeRequest struct {
 	*tchttp.BaseRequest
 
-	// QueueName
+	// 队列名字，在单个地域同一帐号下唯一。队列名称是一个不超过 64 个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线(-)。
 	QueueName *string `json:"QueueName,omitempty" name:"QueueName"`
 
-	// MaxMsgHeapNum
+	// 最大堆积消息数。取值范围在公测期间为 1,000,000 - 10,000,000，正式上线后范围可达到 1000,000-1000,000,000。默认取值在公测期间为 10,000,000，正式上线后为 100,000,000。
 	MaxMsgHeapNum *uint64 `json:"MaxMsgHeapNum,omitempty" name:"MaxMsgHeapNum"`
 
-	// PollingWaitSeconds
+	// 消息接收长轮询等待时间。取值范围 0-30 秒，默认值 0。
 	PollingWaitSeconds *uint64 `json:"PollingWaitSeconds,omitempty" name:"PollingWaitSeconds"`
 
-	// VisibilityTimeout
+	// 消息可见性超时。取值范围 1-43200 秒（即12小时内），默认值 30。
 	VisibilityTimeout *uint64 `json:"VisibilityTimeout,omitempty" name:"VisibilityTimeout"`
 
-	// MaxMsgSize
+	// 消息最大长度。取值范围 1024-65536 Byte（即1-64K），默认值 65536。
 	MaxMsgSize *uint64 `json:"MaxMsgSize,omitempty" name:"MaxMsgSize"`
 
-	// MsgRetentionSeconds
+	// 消息保留周期。取值范围 60-1296000 秒（1min-15天），默认值 345600 (4 天)。
 	MsgRetentionSeconds *uint64 `json:"MsgRetentionSeconds,omitempty" name:"MsgRetentionSeconds"`
 
-	// RewindSeconds
+	// 消息最长回溯时间，取值范围0-msgRetentionSeconds，消息的最大回溯之间为消息在队列中的保存周期，0表示不开启消息回溯。
 	RewindSeconds *uint64 `json:"RewindSeconds,omitempty" name:"RewindSeconds"`
 
-	// FirstQueryInterval
+	// 第一次查询时间
 	FirstQueryInterval *uint64 `json:"FirstQueryInterval,omitempty" name:"FirstQueryInterval"`
 
-	// MaxQueryCount
+	// 最大查询次数
 	MaxQueryCount *uint64 `json:"MaxQueryCount,omitempty" name:"MaxQueryCount"`
 
-	// DeadLetterQueueName
+	// 死信队列名称
 	DeadLetterQueueName *string `json:"DeadLetterQueueName,omitempty" name:"DeadLetterQueueName"`
 
-	// MaxTimeToLive
+	// MaxTimeToLivepolicy为1时必选。最大未消费过期时间。范围300-43200，单位秒，需要小于消息最大保留时间MsgRetentionSeconds
 	MaxTimeToLive *uint64 `json:"MaxTimeToLive,omitempty" name:"MaxTimeToLive"`
 
-	// MaxReceiveCount
+	// 最大接收次数
 	MaxReceiveCount *uint64 `json:"MaxReceiveCount,omitempty" name:"MaxReceiveCount"`
 
-	// Policy
+	// 死信队列策略
 	Policy *uint64 `json:"Policy,omitempty" name:"Policy"`
 
 	// 是否开启消息轨迹标识，true表示开启，false表示不开启，不填表示不开启。
@@ -704,22 +704,24 @@ func (r *ModifyQueueAttributeResponse) FromJsonString(s string) error {
 type ModifySubscriptionAttributeRequest struct {
 	*tchttp.BaseRequest
 
-	// TopicName
+	// 主题名字，在单个地域同一帐号下唯一。主题名称是一个不超过64个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线（-）。
 	TopicName *string `json:"TopicName,omitempty" name:"TopicName"`
 
-	// SubscriptionName
+	// 订阅名字，在单个地域同一帐号的同一主题下唯一。订阅名称是一个不超过64个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线(-)。
 	SubscriptionName *string `json:"SubscriptionName,omitempty" name:"SubscriptionName"`
 
-	// NotifyStrategy
+	// 向 Endpoint 推送消息出现错误时，CMQ 推送服务器的重试策略。取值如下：
+	// （1）BACKOFF_RETRY，退避重试。每隔一定时间重试一次，重试够一定次数后，就把该消息丢弃，继续推送下一条消息。
+	// （2）EXPONENTIAL_DECAY_RETRY，指数衰退重试。每次重试的间隔是指数递增的，例如开始1s，后面是2s，4s，8s···由于 Topic 消息的周期是一天，所以最多重试一天就把消息丢弃。默认值是 EXPONENTIAL_DECAY_RETRY。
 	NotifyStrategy *string `json:"NotifyStrategy,omitempty" name:"NotifyStrategy"`
 
-	// NotifyContentFormat
+	// 推送内容的格式。取值：（1）JSON；（2）SIMPLIFIED，即 raw 格式。如果 Protocol 是 queue，则取值必须为 SIMPLIFIED。如果 Protocol 是 HTTP，两个值均可以，默认值是 JSON。
 	NotifyContentFormat *string `json:"NotifyContentFormat,omitempty" name:"NotifyContentFormat"`
 
-	// FilterTags
+	// 消息正文。消息标签（用于消息过滤)。标签数量不能超过5个，每个标签不超过16个字符。与(Batch)PublishMessage的MsgTag参数配合使用，规则：1）如果FilterTag没有设置，则无论MsgTag是否有设置，订阅接收所有发布到Topic的消息；2）如果FilterTag数组有值，则只有数组中至少有一个值在MsgTag数组中也存在时（即FilterTag和MsgTag有交集），订阅才接收该发布到Topic的消息；3）如果FilterTag数组有值，但MsgTag没设置，则不接收任何发布到Topic的消息，可以认为是2）的一种特例，此时FilterTag和MsgTag没有交集。规则整体的设计思想是以订阅者的意愿为主。
 	FilterTags []*string `json:"FilterTags,omitempty" name:"FilterTags" list`
 
-	// BindingKey
+	// BindingKey数量不超过5个， 每个BindingKey长度不超过64字节，该字段表示订阅接收消息的过滤策略，每个BindingKey最多含有15个“.”， 即最多16个词组。
 	BindingKey []*string `json:"BindingKey,omitempty" name:"BindingKey" list`
 }
 
@@ -753,13 +755,13 @@ func (r *ModifySubscriptionAttributeResponse) FromJsonString(s string) error {
 type ModifyTopicAttributeRequest struct {
 	*tchttp.BaseRequest
 
-	// TopicName
+	// 主题名字，在单个地域同一帐号下唯一。主题名称是一个不超过64个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线(-)。
 	TopicName *string `json:"TopicName,omitempty" name:"TopicName"`
 
-	// MaxMsgSize
+	// 消息最大长度。取值范围1024 - 65536 Byte（即1 - 64K），默认值65536。
 	MaxMsgSize *uint64 `json:"MaxMsgSize,omitempty" name:"MaxMsgSize"`
 
-	// MsgRetentionSeconds
+	// 消息保存时间。取值范围60 - 86400 s（即1分钟 - 1天），默认值86400。
 	MsgRetentionSeconds *uint64 `json:"MsgRetentionSeconds,omitempty" name:"MsgRetentionSeconds"`
 
 	// 是否开启消息轨迹标识，true表示开启，false表示不开启，不填表示不开启。
@@ -897,7 +899,7 @@ type QueueSet struct {
 type RewindQueueRequest struct {
 	*tchttp.BaseRequest
 
-	// QueueName
+	// 队列名字，在单个地域同一帐号下唯一。队列名称是一个不超过64个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线(-)。
 	QueueName *string `json:"QueueName,omitempty" name:"QueueName"`
 
 	// 设定该时间，则（Batch）receiveMessage接口，会按照生产消息的先后顺序消费该时间戳以后的消息。

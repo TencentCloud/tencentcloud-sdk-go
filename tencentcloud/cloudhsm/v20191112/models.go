@@ -20,6 +20,86 @@ import (
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
+type DescribeHSMBySubnetIdRequest struct {
+	*tchttp.BaseRequest
+
+	// Subnet标识符
+	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
+}
+
+func (r *DescribeHSMBySubnetIdRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeHSMBySubnetIdRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeHSMBySubnetIdResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// HSM数量
+		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 作为查询条件的SubnetId
+		SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeHSMBySubnetIdResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeHSMBySubnetIdResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeHSMByVpcIdRequest struct {
+	*tchttp.BaseRequest
+
+	// VPC标识符
+	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
+}
+
+func (r *DescribeHSMByVpcIdRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeHSMByVpcIdRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeHSMByVpcIdResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// HSM数量
+		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 作为查询条件的VpcId
+		VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeHSMByVpcIdResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeHSMByVpcIdResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeSubnetRequest struct {
 	*tchttp.BaseRequest
 

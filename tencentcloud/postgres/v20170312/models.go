@@ -78,6 +78,98 @@ func (r *CloseDBExtranetAccessResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type CloseServerlessDBExtranetAccessRequest struct {
+	*tchttp.BaseRequest
+
+	// 实例唯一标识符
+	DBInstanceId *string `json:"DBInstanceId,omitempty" name:"DBInstanceId"`
+
+	// 实例名称
+	DBInstanceName *string `json:"DBInstanceName,omitempty" name:"DBInstanceName"`
+}
+
+func (r *CloseServerlessDBExtranetAccessRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CloseServerlessDBExtranetAccessRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CloseServerlessDBExtranetAccessResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CloseServerlessDBExtranetAccessResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CloseServerlessDBExtranetAccessResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateServerlessDBInstanceRequest struct {
+	*tchttp.BaseRequest
+
+	// 可用区ID。该参数可以通过调用 DescribeZones 接口的返回值中的Zone字段来获取。
+	Zone *string `json:"Zone,omitempty" name:"Zone"`
+
+	// DB实例名称，同一个账号下该值必须唯一。
+	DBInstanceName *string `json:"DBInstanceName,omitempty" name:"DBInstanceName"`
+
+	// PostgreSQL内核版本，目前只支持：9.3.5、9.5.4、10.4三种版本。
+	DBVersion *string `json:"DBVersion,omitempty" name:"DBVersion"`
+
+	// PostgreSQL数据库字符集，目前支持UTF8、LATIN1两种。
+	DBCharset *string `json:"DBCharset,omitempty" name:"DBCharset"`
+
+	// 项目ID。
+	ProjectId *uint64 `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 私有网络ID。
+	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
+
+	// 私有网络子网ID。
+	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
+}
+
+func (r *CreateServerlessDBInstanceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateServerlessDBInstanceRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateServerlessDBInstanceResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 实例ID，该ID全局唯一，如：postgres-xxxxx
+		DBInstanceId *string `json:"DBInstanceId,omitempty" name:"DBInstanceId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateServerlessDBInstanceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateServerlessDBInstanceResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DBBackup struct {
 
 	// 备份文件唯一标识
@@ -205,6 +297,43 @@ type DBInstanceNetInfo struct {
 
 	// 网络连接状态
 	Status *string `json:"Status,omitempty" name:"Status"`
+}
+
+type DeleteServerlessDBInstanceRequest struct {
+	*tchttp.BaseRequest
+
+	// DB实例名称，实例名和实例ID必须至少传一个，如果同时存在，将只以实例ID为准。
+	DBInstanceName *string `json:"DBInstanceName,omitempty" name:"DBInstanceName"`
+
+	// DB实例ID，实例名和实例ID必须至少传一个，如果同时存在，将只以实例ID为准。
+	DBInstanceId *string `json:"DBInstanceId,omitempty" name:"DBInstanceId"`
+}
+
+func (r *DeleteServerlessDBInstanceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteServerlessDBInstanceRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteServerlessDBInstanceResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DeleteServerlessDBInstanceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteServerlessDBInstanceResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeAccountsRequest struct {
@@ -636,6 +765,53 @@ func (r *DescribeRegionsResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeServerlessDBInstancesRequest struct {
+	*tchttp.BaseRequest
+
+	// 查询条件
+	Filter []*Filter `json:"Filter,omitempty" name:"Filter" list`
+
+	// 查询个数
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 偏移量
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+}
+
+func (r *DescribeServerlessDBInstancesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeServerlessDBInstancesRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeServerlessDBInstancesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 查询结果数
+		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 查询结果
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		DBInstanceSet []*ServerlessDBInstance `json:"DBInstanceSet,omitempty" name:"DBInstanceSet" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeServerlessDBInstancesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeServerlessDBInstancesResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeZonesRequest struct {
 	*tchttp.BaseRequest
 }
@@ -686,6 +862,15 @@ type ErrLogDetail struct {
 
 	// 错误消息
 	ErrMsg *string `json:"ErrMsg,omitempty" name:"ErrMsg"`
+}
+
+type Filter struct {
+
+	// 过滤键的名称。
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 一个或者多个过滤值。
+	Values []*string `json:"Values,omitempty" name:"Values" list`
 }
 
 type InitDBInstancesRequest struct {
@@ -1086,6 +1271,43 @@ func (r *OpenDBExtranetAccessResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type OpenServerlessDBExtranetAccessRequest struct {
+	*tchttp.BaseRequest
+
+	// 实例的唯一标识符
+	DBInstanceId *string `json:"DBInstanceId,omitempty" name:"DBInstanceId"`
+
+	// 实例名称
+	DBInstanceName *string `json:"DBInstanceName,omitempty" name:"DBInstanceName"`
+}
+
+func (r *OpenServerlessDBExtranetAccessRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *OpenServerlessDBExtranetAccessRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type OpenServerlessDBExtranetAccessResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *OpenServerlessDBExtranetAccessResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *OpenServerlessDBExtranetAccessResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type PgDeal struct {
 
 	// 订单名
@@ -1243,6 +1465,103 @@ func (r *RestartDBInstanceResponse) ToJsonString() string {
 
 func (r *RestartDBInstanceResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
+}
+
+type ServerlessDBAccount struct {
+
+	// 用户名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DBUser *string `json:"DBUser,omitempty" name:"DBUser"`
+
+	// 密码
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DBPassword *string `json:"DBPassword,omitempty" name:"DBPassword"`
+
+	// 连接数限制
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DBConnLimit *int64 `json:"DBConnLimit,omitempty" name:"DBConnLimit"`
+}
+
+type ServerlessDBInstance struct {
+
+	// 实例id，唯一标识符
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DBInstanceId *string `json:"DBInstanceId,omitempty" name:"DBInstanceId"`
+
+	// 实例名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DBInstanceName *string `json:"DBInstanceName,omitempty" name:"DBInstanceName"`
+
+	// 实例状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DBInstanceStatus *string `json:"DBInstanceStatus,omitempty" name:"DBInstanceStatus"`
+
+	// 地域
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Region *string `json:"Region,omitempty" name:"Region"`
+
+	// 可用区
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Zone *string `json:"Zone,omitempty" name:"Zone"`
+
+	// projectId
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProjectId *int64 `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// VpcId
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
+
+	// 子网id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
+
+	// 字符集
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DBCharset *string `json:"DBCharset,omitempty" name:"DBCharset"`
+
+	// 数据库版本
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DBVersion *string `json:"DBVersion,omitempty" name:"DBVersion"`
+
+	// 创建时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 实例网络信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DBInstanceNetInfo []*ServerlessDBInstanceNetInfo `json:"DBInstanceNetInfo,omitempty" name:"DBInstanceNetInfo" list`
+
+	// 实例账户信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DBAccountSet []*ServerlessDBAccount `json:"DBAccountSet,omitempty" name:"DBAccountSet" list`
+
+	// 实例下的db信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DBDatabaseList []*string `json:"DBDatabaseList,omitempty" name:"DBDatabaseList" list`
+}
+
+type ServerlessDBInstanceNetInfo struct {
+
+	// 地址
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Address *string `json:"Address,omitempty" name:"Address"`
+
+	// ip地址
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Ip *string `json:"Ip,omitempty" name:"Ip"`
+
+	// 端口号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Port *int64 `json:"Port,omitempty" name:"Port"`
+
+	// 状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 网络类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NetType *string `json:"NetType,omitempty" name:"NetType"`
 }
 
 type SetAutoRenewFlagRequest struct {

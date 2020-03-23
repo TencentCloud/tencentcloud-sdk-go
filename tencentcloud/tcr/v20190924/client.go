@@ -793,6 +793,31 @@ func (c *Client) DescribeNamespacePersonal(request *DescribeNamespacePersonalReq
     return
 }
 
+func NewDescribeNamespacesRequest() (request *DescribeNamespacesRequest) {
+    request = &DescribeNamespacesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tcr", APIVersion, "DescribeNamespaces")
+    return
+}
+
+func NewDescribeNamespacesResponse() (response *DescribeNamespacesResponse) {
+    response = &DescribeNamespacesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询命名空间列表或指定命名空间信息
+func (c *Client) DescribeNamespaces(request *DescribeNamespacesRequest) (response *DescribeNamespacesResponse, err error) {
+    if request == nil {
+        request = NewDescribeNamespacesRequest()
+    }
+    response = NewDescribeNamespacesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeRepositoriesRequest() (request *DescribeRepositoriesRequest) {
     request = &DescribeRepositoriesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1008,7 +1033,7 @@ func NewModifyNamespaceResponse() (response *ModifyNamespaceResponse) {
     return
 }
 
-// 更新命名空间信息
+// 更新命名空间信息，当前仅支持修改命名空间访问级别
 func (c *Client) ModifyNamespace(request *ModifyNamespaceRequest) (response *ModifyNamespaceResponse, err error) {
     if request == nil {
         request = NewModifyNamespaceRequest()

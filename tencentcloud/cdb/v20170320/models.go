@@ -4825,6 +4825,9 @@ type SellConfig struct {
 
 	// 状态值
 	Status *int64 `json:"Status,omitempty" name:"Status"`
+
+	// 标签值
+	Tag *int64 `json:"Tag,omitempty" name:"Tag"`
 }
 
 type SellType struct {
@@ -5336,4 +5339,11 @@ type ZoneSellConf struct {
 
 	// 可支持的灾备可用区信息
 	DrZone []*string `json:"DrZone,omitempty" name:"DrZone" list`
+
+	// 是否支持跨可用区只读
+	IsSupportRemoteRo *bool `json:"IsSupportRemoteRo,omitempty" name:"IsSupportRemoteRo"`
+
+	// 可支持的跨可用区只读区信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RemoteRoZone []*string `json:"RemoteRoZone,omitempty" name:"RemoteRoZone" list`
 }

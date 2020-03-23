@@ -93,6 +93,31 @@ func (c *Client) CommonServiceAPI(request *CommonServiceAPIRequest) (response *C
     return
 }
 
+func NewCreateAuthDomainRequest() (request *CreateAuthDomainRequest) {
+    request = &CreateAuthDomainRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tcb", APIVersion, "CreateAuthDomain")
+    return
+}
+
+func NewCreateAuthDomainResponse() (response *CreateAuthDomainResponse) {
+    response = &CreateAuthDomainResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 增加安全域名
+func (c *Client) CreateAuthDomain(request *CreateAuthDomainRequest) (response *CreateAuthDomainResponse, err error) {
+    if request == nil {
+        request = NewCreateAuthDomainRequest()
+    }
+    response = NewCreateAuthDomainResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateHostingDomainRequest() (request *CreateHostingDomainRequest) {
     request = &CreateHostingDomainRequest{
         BaseRequest: &tchttp.BaseRequest{},

@@ -710,7 +710,7 @@ func (r *DeleteCdnDomainResponse) FromJsonString(s string) error {
 type DeleteClsLogTopicRequest struct {
 	*tchttp.BaseRequest
 
-	// 主日志题ID
+	// 日志主题ID
 	TopicId *string `json:"TopicId,omitempty" name:"TopicId"`
 
 	// 日志集ID
