@@ -163,13 +163,13 @@ import "crypto/tls"
 
 | 包名 | 产品中文名 |
 |------------|------|
-| aai | 智能语音服务 |
+| aai | 智能语音服务，不推荐 |
 | ame | 正版曲库直通车 |
 | as | 弹性伸缩 |
 | asr | 语音识别 |
 | batch | 批量计算 |
 | billing | 计费相关 |
-| bizlive | 商业直播 |
+| bizlive | 小程序·云直播 |
 | bm | 黑石物理服务器 |
 | bmeip | 黑石弹性公网IP |
 | bmlb | 黑石负载均衡 |
@@ -184,8 +184,8 @@ import "crypto/tls"
 | cds | 数盾 |
 | cfs | 文件存储 |
 | chdfs | 云 HDFS |
-| cim | 已废弃 |
-| cis | 容器实例服务 |
+| cim | 云通信，不推荐 |
+| cis | 容器实例服务，不推荐 |
 | ckafka | 消息队列 Ckafka |
 | clb | 负载均衡 |
 | cloudaudit | 云审计 |
@@ -222,7 +222,7 @@ import "crypto/tls"
 | hcm | 数学作业批改 |
 | iai | 人脸识别 |
 | ic | 物联卡 |
-| iot | 加速物联网套件 |
+| iot | 加速物联网套件，不推荐 |
 | iotcloud | 物联网通信 |
 | iotexplorer | 物联网开发平台 |
 | iottid | 物联网设备身份认证TID |
@@ -236,7 +236,7 @@ import "crypto/tls"
 | mps | 视频处理 |
 | ms | 应用安全 |
 | msp | 迁移服务平台 |
-| mvj | 营销价值判断 |
+| mvj | 营销价值判断，不推荐 |
 | nlp | 腾讯知文自然语言处理 |
 | npp | 号码保护 |
 | ocr | 文字识别 |
@@ -248,13 +248,13 @@ import "crypto/tls"
 | smpn | 营销号码安全 |
 | sms | 短信 |
 | soe | 智聆口语评测 |
-| solar | 智汇零售 |
+| solar | 智汇零售，不推荐 |
 | sqlserver | 云数据库 SQL Server |
 | ssl | 证书 |
 | ssm | 凭据管理服务 |
 | sts | 安全凭证服务 |
 | tag | 标签 |
-| tav | 文件检测 |
+| tav | 文件检测，不推荐 |
 | tbaas | TBaaS |
 | tbm | 腾讯优评 |
 | tbp | 腾讯智能对话平台 |
@@ -262,10 +262,10 @@ import "crypto/tls"
 | tcb | 云开发 |
 | tci | 腾讯智学课堂分析 |
 | tcr | 容器镜像服务 |
-| tia | 智能钛机器学习 |
-| ticm | 智能鉴黄 |
+| tia | 智能钛机器学习，不推荐 |
+| ticm | 智能鉴黄，不推荐 |
 | tics | 威胁情报云查 |
-| tiems | 智能钛机器学习 |
+| tiems | 智能钛弹性模型服务 |
 | tiia | 图像分析 |
 | tione | 智能钛机器学习平台 |
 | tiw | 互动白板 |
@@ -278,6 +278,6 @@ import "crypto/tls"
 | vod | 点播 |
 | vpc | 私有网络 |
 | wss | SSL证书管理服务 |
-| youmall | 腾讯优Mall |
+| youmall | 腾讯优Mall，不推荐 |
 | yunjing | 主机安全 |
 | yunsou | 云搜 |
