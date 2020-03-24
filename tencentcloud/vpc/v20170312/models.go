@@ -3330,6 +3330,46 @@ func (r *DescribeAddressTemplateGroupsResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeAddressTemplateInstancesRequest struct {
+	*tchttp.BaseRequest
+
+	// IP地址实例ID。例如：ipm-12345678。
+	AddressTemplateId *string `json:"AddressTemplateId,omitempty" name:"AddressTemplateId"`
+
+	// 偏移量，默认为0。
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 返回数量，默认为20，最大值为100。
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+func (r *DescribeAddressTemplateInstancesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeAddressTemplateInstancesRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeAddressTemplateInstancesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeAddressTemplateInstancesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeAddressTemplateInstancesResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeAddressTemplatesRequest struct {
 	*tchttp.BaseRequest
 
@@ -5177,6 +5217,40 @@ func (r *DescribeTaskResultResponse) ToJsonString() string {
 }
 
 func (r *DescribeTaskResultResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeTemplateLimitsRequest struct {
+	*tchttp.BaseRequest
+}
+
+func (r *DescribeTemplateLimitsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeTemplateLimitsRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeTemplateLimitsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 参数模板配额对象。
+		TemplateLimit *TemplateLimit `json:"TemplateLimit,omitempty" name:"TemplateLimit"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeTemplateLimitsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeTemplateLimitsResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -9063,6 +9137,21 @@ type Tag struct {
 	// 标签值
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Value *string `json:"Value,omitempty" name:"Value"`
+}
+
+type TemplateLimit struct {
+
+	// 参数模板IP地址成员配额。
+	AddressTemplateMemberLimit *uint64 `json:"AddressTemplateMemberLimit,omitempty" name:"AddressTemplateMemberLimit"`
+
+	// 参数模板IP地址组成员配额。
+	AddressTemplateGroupMemberLimit *uint64 `json:"AddressTemplateGroupMemberLimit,omitempty" name:"AddressTemplateGroupMemberLimit"`
+
+	// 参数模板I协议端口成员配额。
+	ServiceTemplateMemberLimit *uint64 `json:"ServiceTemplateMemberLimit,omitempty" name:"ServiceTemplateMemberLimit"`
+
+	// 参数模板协议端口组成员配额。
+	ServiceTemplateGroupMemberLimit *uint64 `json:"ServiceTemplateGroupMemberLimit,omitempty" name:"ServiceTemplateGroupMemberLimit"`
 }
 
 type TransformAddressRequest struct {

@@ -1037,6 +1037,10 @@ type DescribePolicyGroupInfoReceiverInfo struct {
 
 	// 恢复通知方式。可选"SMS"
 	RecoverNotify []*string `json:"RecoverNotify,omitempty" name:"RecoverNotify" list`
+
+	// 告警发送语言
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ReceiveLanguage *string `json:"ReceiveLanguage,omitempty" name:"ReceiveLanguage"`
 }
 
 type DescribePolicyGroupInfoRequest struct {
@@ -1806,6 +1810,9 @@ type ReceiverInfo struct {
 
 	// 接收人列表。通过平台接口查询到的接收人id列表
 	ReceiverUserList []*int64 `json:"ReceiverUserList,omitempty" name:"ReceiverUserList" list`
+
+	// 告警接收语言，枚举值（zh-CN，en-US）
+	ReceiveLanguage *string `json:"ReceiveLanguage,omitempty" name:"ReceiveLanguage"`
 }
 
 type UnBindingAllPolicyObjectRequest struct {

@@ -1633,7 +1633,7 @@ type DeviceCertificate struct {
 	// 设备初始证书信息，base64编码
 	Certificate *string `json:"Certificate,omitempty" name:"Certificate"`
 
-	// 白盒私钥下载地址
+	// 设备私钥下载地址
 	WhiteBoxSoUrl *string `json:"WhiteBoxSoUrl,omitempty" name:"WhiteBoxSoUrl"`
 }
 
@@ -1679,7 +1679,7 @@ type DeviceData struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Certificate *string `json:"Certificate,omitempty" name:"Certificate"`
 
-	// 白盒秘钥库文件下载地址
+	// 设备私钥下载地址
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	WhiteBoxSoUrl *string `json:"WhiteBoxSoUrl,omitempty" name:"WhiteBoxSoUrl"`
 

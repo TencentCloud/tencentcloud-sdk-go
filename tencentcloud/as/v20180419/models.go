@@ -1871,7 +1871,6 @@ type InstanceChargePrepaid struct {
 }
 
 type InstanceMarketOptionsRequest struct {
-	*tchttp.BaseRequest
 
 	// 竞价相关选项
 	SpotOptions *SpotMarketOptions `json:"SpotOptions,omitempty" name:"SpotOptions"`
@@ -1879,15 +1878,6 @@ type InstanceMarketOptionsRequest struct {
 	// 市场选项类型，当前只支持取值：spot
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MarketType *string `json:"MarketType,omitempty" name:"MarketType"`
-}
-
-func (r *InstanceMarketOptionsRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-func (r *InstanceMarketOptionsRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
 }
 
 type InstanceNameSettings struct {

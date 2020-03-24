@@ -21,26 +21,14 @@ import (
 )
 
 type CHPRequest struct {
-	*tchttp.BaseRequest
 
 	// 电话号码
 	PhoneNumber *string `json:"PhoneNumber,omitempty" name:"PhoneNumber"`
 }
 
-func (r *CHPRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-func (r *CHPRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
-}
-
 type CHPResponse struct {
-	*tchttp.BaseResponse
-	Response *struct {
 
-		// 标记类型
+	// 标记类型
 	//  0: 无标记
 	//  50:骚扰电话
 	//  51:房产中介
@@ -49,20 +37,11 @@ type CHPResponse struct {
 	//  54:诈骗电话
 	//  55:快递电话
 	//  56:出租车专车
-		TagType *int64 `json:"TagType,omitempty" name:"TagType"`
+	TagType *int64 `json:"TagType,omitempty" name:"TagType"`
 
-		// 标记次数
-		TagCount *int64 `json:"TagCount,omitempty" name:"TagCount"`
+	// 标记次数
+	TagCount *int64 `json:"TagCount,omitempty" name:"TagCount"`
 	} `json:"Response"`
-}
-
-func (r *CHPResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-func (r *CHPResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
 }
 
 type CreateSmpnEpaRequest struct {
@@ -266,7 +245,6 @@ func (r *DescribeSmpnMrlResponse) FromJsonString(s string) error {
 }
 
 type EPARequest struct {
-	*tchttp.BaseRequest
 
 	// 电话号码
 	PhoneNumber *string `json:"PhoneNumber,omitempty" name:"PhoneNumber"`
@@ -275,88 +253,35 @@ type EPARequest struct {
 	Name *string `json:"Name,omitempty" name:"Name"`
 }
 
-func (r *EPARequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-func (r *EPARequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
-}
-
 type EPAResponse struct {
-	*tchttp.BaseResponse
-	Response *struct {
 
-		// 0成功 其他失败
-		RetCode *int64 `json:"RetCode,omitempty" name:"RetCode"`
+	// 0成功 其他失败
+	RetCode *int64 `json:"RetCode,omitempty" name:"RetCode"`
 	} `json:"Response"`
-}
-
-func (r *EPAResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-func (r *EPAResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
 }
 
 type FNRRequest struct {
-	*tchttp.BaseRequest
 
 	// 电话号码
 	PhoneNumber *string `json:"PhoneNumber,omitempty" name:"PhoneNumber"`
-}
-
-func (r *FNRRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-func (r *FNRRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
 }
 
 type FNRResponse struct {
-	*tchttp.BaseResponse
-	Response *struct {
 
-		// 虚假号码描述
-		Status *int64 `json:"Status,omitempty" name:"Status"`
+	// 虚假号码描述
+	Status *int64 `json:"Status,omitempty" name:"Status"`
 	} `json:"Response"`
 }
 
-func (r *FNRResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-func (r *FNRResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
-}
-
 type MHMRequest struct {
-	*tchttp.BaseRequest
 
 	// 电话号码
 	PhoneNumber *string `json:"PhoneNumber,omitempty" name:"PhoneNumber"`
 }
 
-func (r *MHMRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-func (r *MHMRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
-}
-
 type MHMResponse struct {
-	*tchttp.BaseResponse
-	Response *struct {
 
-		// 标记类型
+	// 标记类型
 	//  0: 无标记
 	//  50:骚扰电话
 	//  51:房产中介
@@ -365,64 +290,34 @@ type MHMResponse struct {
 	//  54:诈骗电话
 	//  55:快递电话
 	//  56:出租车专车
-		TagType *int64 `json:"TagType,omitempty" name:"TagType"`
+	TagType *int64 `json:"TagType,omitempty" name:"TagType"`
 
-		// 标记次数
-		TagCount *int64 `json:"TagCount,omitempty" name:"TagCount"`
+	// 标记次数
+	TagCount *int64 `json:"TagCount,omitempty" name:"TagCount"`
 	} `json:"Response"`
 }
 
-func (r *MHMResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-func (r *MHMResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
-}
-
 type MRLRequest struct {
-	*tchttp.BaseRequest
 
 	// 电话号码
 	PhoneNumber *string `json:"PhoneNumber,omitempty" name:"PhoneNumber"`
 }
 
-func (r *MRLRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-func (r *MRLRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
-}
-
 type MRLResponse struct {
-	*tchttp.BaseResponse
-	Response *struct {
 
-		// 骚扰电话恶意标记等级
-		DisturbLevel *int64 `json:"DisturbLevel,omitempty" name:"DisturbLevel"`
+	// 骚扰电话恶意标记等级
+	DisturbLevel *int64 `json:"DisturbLevel,omitempty" name:"DisturbLevel"`
 
-		// 房产中介恶意标记等级
-		HouseAgentLevel *int64 `json:"HouseAgentLevel,omitempty" name:"HouseAgentLevel"`
+	// 房产中介恶意标记等级
+	HouseAgentLevel *int64 `json:"HouseAgentLevel,omitempty" name:"HouseAgentLevel"`
 
-		// 保险理财恶意标记等级
-		InsuranceLevel *int64 `json:"InsuranceLevel,omitempty" name:"InsuranceLevel"`
+	// 保险理财恶意标记等级
+	InsuranceLevel *int64 `json:"InsuranceLevel,omitempty" name:"InsuranceLevel"`
 
-		// 广告推销恶意标记等级
-		SalesLevel *int64 `json:"SalesLevel,omitempty" name:"SalesLevel"`
+	// 广告推销恶意标记等级
+	SalesLevel *int64 `json:"SalesLevel,omitempty" name:"SalesLevel"`
 
-		// 诈骗电话恶意标记等级
-		CheatLevel *int64 `json:"CheatLevel,omitempty" name:"CheatLevel"`
+	// 诈骗电话恶意标记等级
+	CheatLevel *int64 `json:"CheatLevel,omitempty" name:"CheatLevel"`
 	} `json:"Response"`
-}
-
-func (r *MRLResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-func (r *MRLResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
 }

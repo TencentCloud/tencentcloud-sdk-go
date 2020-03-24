@@ -21,7 +21,6 @@ import (
 )
 
 type BRIRequest struct {
-	*tchttp.BaseRequest
 
 	// 业务名, 必须是以下五个业务名之一(bri_num,bri_dev,bri_ip_bri_apk,bri_url)
 	Service *string `json:"Service,omitempty" name:"Service"`
@@ -51,23 +50,12 @@ type BRIRequest struct {
 	Url *string `json:"Url,omitempty" name:"Url"`
 }
 
-func (r *BRIRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-func (r *BRIRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
-}
-
 type BRIResponse struct {
-	*tchttp.BaseResponse
-	Response *struct {
 
-		// 风险分值，取值[0,100], 分值越高风险越高
-		Score *float64 `json:"Score,omitempty" name:"Score"`
+	// 风险分值，取值[0,100], 分值越高风险越高
+	Score *float64 `json:"Score,omitempty" name:"Score"`
 
-		// 当Service为bri_num时,返回的风险标签有:
+	// 当Service为bri_num时,返回的风险标签有:
 	// 1) 疑似垃圾流量     说明: 结合号码的历史数据表现，判断该号码历史用互联网业务作恶行为，其产生的互联网行为对于其他业务来说属于作弊或垃圾流量。 
 	// 2) 疑似新客户       说明: 通过号码互联网行为（社交，浏览等）是否异常判断为小号或接码平台帐号。 
 	// 
@@ -92,17 +80,8 @@ type BRIResponse struct {
 	// 2) 一般   说明: APK为未发现问题的正常应用
 	// 3) 风险   说明: APK为外挂或色情等风险应用
 	// 4) 病毒   说明: APK为包含恶意代码的恶意软件吗,可能破坏系统或者其他app正常使用
-		Tags []*string `json:"Tags,omitempty" name:"Tags" list`
+	Tags []*string `json:"Tags,omitempty" name:"Tags" list`
 	} `json:"Response"`
-}
-
-func (r *BRIResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-func (r *BRIResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeBRIRequest struct {

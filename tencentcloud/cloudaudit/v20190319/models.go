@@ -499,6 +499,9 @@ type LookUpEventsRequest struct {
 	// 返回日志的最大条数
 	MaxResults *int64 `json:"MaxResults,omitempty" name:"MaxResults"`
 
+	// 云审计模式，有效值：standard | quick，其中standard是标准模式，quick是极速模式。默认为标准模式
+	Mode *string `json:"Mode,omitempty" name:"Mode"`
+
 	// 查看更多日志的凭证
 	NextToken *string `json:"NextToken,omitempty" name:"NextToken"`
 }

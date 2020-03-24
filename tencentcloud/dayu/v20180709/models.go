@@ -1563,6 +1563,46 @@ func (r *DescribeActionLogResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeBGPIPL7RuleMaxCntRequest struct {
+	*tchttp.BaseRequest
+
+	// 大禹子产品代号（bgpip表示高防IP）
+	Business *string `json:"Business,omitempty" name:"Business"`
+
+	// 资源实例ID
+	Id *string `json:"Id,omitempty" name:"Id"`
+}
+
+func (r *DescribeBGPIPL7RuleMaxCntRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeBGPIPL7RuleMaxCntRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeBGPIPL7RuleMaxCntResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 高防IP最多可添加的7层规则数量
+		Count *uint64 `json:"Count,omitempty" name:"Count"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeBGPIPL7RuleMaxCntResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeBGPIPL7RuleMaxCntResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeBaradDataRequest struct {
 	*tchttp.BaseRequest
 

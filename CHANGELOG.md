@@ -1,10 +1,92 @@
 # 本版本更新包含以下内容：
 
-## 黑石负载均衡(bmlb) 版本：2018-06-25
+## 云审计(cloudaudit) 版本：2019-03-19
 
 ### 第 4 次发布
 
-发布时间：2020-03-23 08:03:08
+发布时间：2020-03-24 08:05:13
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [LookUpEvents](https://cloud.tencent.com/document/api/629/35344)
+
+	* 新增入参：Mode
+
+
+
+
+## 大禹网络安全(dayu) 版本：2018-07-09
+
+### 第 10 次发布
+
+发布时间：2020-03-24 08:05:50
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeBGPIPL7RuleMaxCnt](https://cloud.tencent.com/document/api/1021/42835)
+
+
+
+## 智能编辑(ie) 版本：2020-03-04
+
+### 第 1 次发布
+
+发布时间：2020-03-23 16:46:34
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CreateEditingTask](https://cloud.tencent.com/document/api/1186/42823)
+* [DescribeEditingTaskResult](https://cloud.tencent.com/document/api/1186/42822)
+
+新增数据结构：
+
+* [CallbackInfo](https://cloud.tencent.com/document/api/1186/42824#CallbackInfo)
+* [ClassificationEditingInfo](https://cloud.tencent.com/document/api/1186/42824#ClassificationEditingInfo)
+* [ClassificationTaskResult](https://cloud.tencent.com/document/api/1186/42824#ClassificationTaskResult)
+* [ClassificationTaskResultItem](https://cloud.tencent.com/document/api/1186/42824#ClassificationTaskResultItem)
+* [CosAuthMode](https://cloud.tencent.com/document/api/1186/42824#CosAuthMode)
+* [CosInfo](https://cloud.tencent.com/document/api/1186/42824#CosInfo)
+* [CoverEditingInfo](https://cloud.tencent.com/document/api/1186/42824#CoverEditingInfo)
+* [CoverTaskResult](https://cloud.tencent.com/document/api/1186/42824#CoverTaskResult)
+* [CoverTaskResultItem](https://cloud.tencent.com/document/api/1186/42824#CoverTaskResultItem)
+* [DownInfo](https://cloud.tencent.com/document/api/1186/42824#DownInfo)
+* [EditingInfo](https://cloud.tencent.com/document/api/1186/42824#EditingInfo)
+* [EditingTaskResult](https://cloud.tencent.com/document/api/1186/42824#EditingTaskResult)
+* [HighlightsEditingInfo](https://cloud.tencent.com/document/api/1186/42824#HighlightsEditingInfo)
+* [HighlightsTaskResult](https://cloud.tencent.com/document/api/1186/42824#HighlightsTaskResult)
+* [HighlightsTaskResultItem](https://cloud.tencent.com/document/api/1186/42824#HighlightsTaskResultItem)
+* [HighlightsTaskResultItemSegment](https://cloud.tencent.com/document/api/1186/42824#HighlightsTaskResultItemSegment)
+* [OpeningEndingEditingInfo](https://cloud.tencent.com/document/api/1186/42824#OpeningEndingEditingInfo)
+* [OpeningEndingTaskResult](https://cloud.tencent.com/document/api/1186/42824#OpeningEndingTaskResult)
+* [OpeningEndingTaskResultItem](https://cloud.tencent.com/document/api/1186/42824#OpeningEndingTaskResultItem)
+* [SaveInfo](https://cloud.tencent.com/document/api/1186/42824#SaveInfo)
+* [StripEditingInfo](https://cloud.tencent.com/document/api/1186/42824#StripEditingInfo)
+* [StripTaskResult](https://cloud.tencent.com/document/api/1186/42824#StripTaskResult)
+* [StripTaskResultItem](https://cloud.tencent.com/document/api/1186/42824#StripTaskResultItem)
+* [TagEditingInfo](https://cloud.tencent.com/document/api/1186/42824#TagEditingInfo)
+* [TagTaskResult](https://cloud.tencent.com/document/api/1186/42824#TagTaskResult)
+* [TagTaskResultItem](https://cloud.tencent.com/document/api/1186/42824#TagTaskResultItem)
+* [UrlInfo](https://cloud.tencent.com/document/api/1186/42824#UrlInfo)
+
+
+
+## 云监控(monitor) 版本：2018-07-24
+
+### 第 8 次发布
+
+发布时间：2020-03-24 08:10:13
 
 本次发布包含了以下内容：
 
@@ -12,41 +94,22 @@
 
 修改数据结构：
 
-* [LoadBalancer](https://cloud.tencent.com/document/api/1027/33287#LoadBalancer)
+* [DescribePolicyGroupInfoReceiverInfo](https://cloud.tencent.com/document/api/248/30354#DescribePolicyGroupInfoReceiverInfo)
 
-	* 新增成员：CurVips
+	* 新增成员：ReceiveLanguage
 
+* [ReceiverInfo](https://cloud.tencent.com/document/api/248/30354#ReceiverInfo)
 
-
-
-## 云数据库 MySQL(cdb) 版本：2017-03-20
-
-### 第 33 次发布
-
-发布时间：2020-03-23 08:04:09
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [SellConfig](https://cloud.tencent.com/document/api/236/15878#SellConfig)
-
-	* 新增成员：Tag
-
-* [ZoneSellConf](https://cloud.tencent.com/document/api/236/15878#ZoneSellConf)
-
-	* 新增成员：IsSupportRemoteRo, RemoteRoZone
+	* 新增成员：ReceiveLanguage
 
 
 
 
-## 数据加密服务(cloudhsm) 版本：2019-11-12
+## 私有网络(vpc) 版本：2017-03-12
 
-### 第 2 次发布
+### 第 38 次发布
 
-发布时间：2020-03-23 08:17:13
+发布时间：2020-03-24 08:14:43
 
 本次发布包含了以下内容：
 
@@ -54,71 +117,12 @@
 
 新增接口：
 
-* [DescribeHSMBySubnetId](https://cloud.tencent.com/document/api/639/42767)
-* [DescribeHSMByVpcId](https://cloud.tencent.com/document/api/639/42766)
-
-
-
-## 云数据库 PostgreSQL(postgres) 版本：2017-03-12
-
-### 第 5 次发布
-
-发布时间：2020-03-23 08:11:25
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [CloseServerlessDBExtranetAccess](https://cloud.tencent.com/document/api/409/42763)
-* [CreateServerlessDBInstance](https://cloud.tencent.com/document/api/409/42762)
-* [DeleteServerlessDBInstance](https://cloud.tencent.com/document/api/409/42761)
-* [DescribeServerlessDBInstances](https://cloud.tencent.com/document/api/409/42760)
-* [OpenServerlessDBExtranetAccess](https://cloud.tencent.com/document/api/409/42759)
+* [DescribeAddressTemplateInstances](https://cloud.tencent.com/document/api/215/42837)
+* [DescribeTemplateLimits](https://cloud.tencent.com/document/api/215/42836)
 
 新增数据结构：
 
-* [Filter](https://cloud.tencent.com/document/api/409/16778#Filter)
-* [ServerlessDBAccount](https://cloud.tencent.com/document/api/409/16778#ServerlessDBAccount)
-* [ServerlessDBInstance](https://cloud.tencent.com/document/api/409/16778#ServerlessDBInstance)
-* [ServerlessDBInstanceNetInfo](https://cloud.tencent.com/document/api/409/16778#ServerlessDBInstanceNetInfo)
-
-
-
-## 云开发(tcb) 版本：2018-06-08
-
-### 第 6 次发布
-
-发布时间：2020-03-23 08:13:05
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [CreateAuthDomain](https://cloud.tencent.com/document/api/876/42764)
-
-
-
-## 容器镜像服务(tcr) 版本：2019-09-24
-
-### 第 4 次发布
-
-发布时间：2020-03-23 08:16:53
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [DescribeNamespaces](https://cloud.tencent.com/document/api/1141/42765)
-
-新增数据结构：
-
-* [TcrNamespaceInfo](https://cloud.tencent.com/document/api/1141/41603#TcrNamespaceInfo)
+* [TemplateLimit](https://cloud.tencent.com/document/api/215/15824#TemplateLimit)
 
 
 
@@ -198,7 +202,7 @@
 
 * [TextToVoice](https://cloud.tencent.com/document/api/441/18086)
 
-	* <font color="#dd0000">**修改入参：</font>**ProjectId
+	* <font color="#dd0000">**修改入参**：</font>ProjectId
 
 
 ### 第 2 次发布
@@ -334,7 +338,7 @@
 
 * [UpgradeLaunchConfiguration](https://cloud.tencent.com/document/api/377/35199)
 
-	* <font color="#dd0000">**修改入参：</font>**InstanceNameSettings
+	* <font color="#dd0000">**修改入参**：</font>InstanceNameSettings
 
 
 修改数据结构：
@@ -345,7 +349,7 @@
 
 * [LaunchConfiguration](https://cloud.tencent.com/document/api/377/20453#LaunchConfiguration)
 
-	* <font color="#dd0000">**修改成员：</font>**InstanceNameSettings
+	* <font color="#dd0000">**修改成员**：</font>InstanceNameSettings
 
 
 ### 第 23 次发布
@@ -634,11 +638,11 @@
 
 * [LifecycleHook](https://cloud.tencent.com/document/api/377/20453#LifecycleHook)
 
-	* <font color="#dd0000">**修改成员：</font>**NotificationTarget
+	* <font color="#dd0000">**修改成员**：</font>NotificationTarget
 
 * [ScalingPolicy](https://cloud.tencent.com/document/api/377/20453#ScalingPolicy)
 
-	* <font color="#dd0000">**修改成员：</font>**AdjustmentValue
+	* <font color="#dd0000">**修改成员**：</font>AdjustmentValue
 
 
 ### 第 12 次发布
@@ -761,7 +765,7 @@
 
 * [AutoScalingGroup](https://cloud.tencent.com/document/api/377/20453#AutoScalingGroup)
 
-	* <font color="#dd0000">**修改成员：</font>**DefaultCooldown, DesiredCapacity, InstanceCount, InServiceInstanceCount, MaxSize, MinSize, ProjectId
+	* <font color="#dd0000">**修改成员**：</font>DefaultCooldown, DesiredCapacity, InstanceCount, InServiceInstanceCount, MaxSize, MinSize, ProjectId
 
 
 ### 第 7 次发布
@@ -860,7 +864,7 @@
 
 	* 新增入参：InstanceTypes
 
-	* <font color="#dd0000">**修改入参：</font>**InstanceType
+	* <font color="#dd0000">**修改入参**：</font>InstanceType
 
 * [ModifyAutoScalingGroup](https://cloud.tencent.com/document/api/377/20433)
 
@@ -906,7 +910,7 @@
 
 * [Instance](https://cloud.tencent.com/document/api/377/20453#Instance)
 
-	* <font color="#dd0000">**修改成员：</font>**CreationType
+	* <font color="#dd0000">**修改成员**：</font>CreationType
 
 * [LaunchConfiguration](https://cloud.tencent.com/document/api/377/20453#LaunchConfiguration)
 
@@ -1014,7 +1018,7 @@
 
 改善已有的文档。
 
-<font color="#dd0000">**删除数据结构：</font>**
+<font color="#dd0000">**删除数据结构**：</font>
 
 * SentenceDetail
 * SentenceWords
@@ -1023,7 +1027,7 @@
 
 * [TaskStatus](https://cloud.tencent.com/document/api/1093/37824#TaskStatus)
 
-	* <font color="#dd0000">**删除成员：</font>**ResultDetail
+	* <font color="#dd0000">**删除成员**：</font>ResultDetail
 
 
 ### 第 4 次发布
@@ -1273,9 +1277,9 @@
 
 	* 新增成员：InstanceTypes, TimeUnit, TimeSpan, RaidId, NeedSecurityAgent, NeedMonitorAgent, AutoRenewFlag, IsZoning, FileSystem, Password, ApplyEip, EipPayMode, EipBandwidth, ImageId, SysRootSpace, SysDataSpace, HyperThreading, LanIps
 
-	* <font color="#dd0000">**删除成员：</font>**ComputeTypes, DeployType, SpotStrategy, Passwd
+	* <font color="#dd0000">**删除成员**：</font>ComputeTypes, DeployType, SpotStrategy, Passwd
 
-	* <font color="#dd0000">**修改成员：</font>**OsTypeId
+	* <font color="#dd0000">**修改成员**：</font>OsTypeId
 
 * [LocalDiskType](https://cloud.tencent.com/document/api/599/15912#LocalDiskType)
 
@@ -1350,7 +1354,7 @@
 
 * [ComputeNodeMetrics](https://cloud.tencent.com/document/api/599/15912#ComputeNodeMetrics)
 
-	* <font color="#dd0000">**修改成员：</font>**SubmittedCount, CreatingCount, CreationFailedCount, CreatedCount, RunningCount, DeletingCount, AbnormalCount
+	* <font color="#dd0000">**修改成员**：</font>SubmittedCount, CreatingCount, CreationFailedCount, CreatedCount, RunningCount, DeletingCount, AbnormalCount
 
 
 ### 第 17 次发布
@@ -1396,7 +1400,7 @@
 
 * [InstanceMarketOptionsRequest](https://cloud.tencent.com/document/api/599/15912#InstanceMarketOptionsRequest)
 
-	* <font color="#dd0000">**修改成员：</font>**SpotOptions
+	* <font color="#dd0000">**修改成员**：</font>SpotOptions
 
 * [InternetAccessible](https://cloud.tencent.com/document/api/599/15912#InternetAccessible)
 
@@ -1464,7 +1468,7 @@
 
 	* 新增入参：EnvName, EnvDescription, EnvData
 
-	* <font color="#dd0000">**修改入参：</font>**DesiredComputeNodeCount
+	* <font color="#dd0000">**修改入参**：</font>DesiredComputeNodeCount
 
 
 新增数据结构：
@@ -1498,7 +1502,7 @@
 
 * [DescribeCvmZoneInstanceConfigInfos](https://cloud.tencent.com/document/api/599/18565)
 
-	* <font color="#dd0000">**修改入参：</font>**Filters
+	* <font color="#dd0000">**修改入参**：</font>Filters
 
 
 ### 第 9 次发布
@@ -1528,7 +1532,7 @@
 
 * [DescribeJobs](https://cloud.tencent.com/document/api/599/15909)
 
-	* <font color="#dd0000">**修改出参：</font>**JobSet
+	* <font color="#dd0000">**修改出参**：</font>JobSet
 
 
 ### 第 7 次发布
@@ -1543,7 +1547,7 @@
 
 * [Task](https://cloud.tencent.com/document/api/599/15912#Task)
 
-	* <font color="#dd0000">**修改成员：</font>**EnvVars, Authentications
+	* <font color="#dd0000">**修改成员**：</font>EnvVars, Authentications
 
 
 ### 第 6 次发布
@@ -1558,7 +1562,7 @@
 
 * [AnonymousComputeEnv](https://cloud.tencent.com/document/api/599/15912#AnonymousComputeEnv)
 
-	* <font color="#dd0000">**修改成员：</font>**EnvType, EnvData
+	* <font color="#dd0000">**修改成员**：</font>EnvType, EnvData
 
 * [DataDisk](https://cloud.tencent.com/document/api/599/15912#DataDisk)
 
@@ -1566,19 +1570,19 @@
 
 * [EnvData](https://cloud.tencent.com/document/api/599/15912#EnvData)
 
-	* <font color="#dd0000">**修改成员：</font>**InstanceType, ImageId
+	* <font color="#dd0000">**修改成员**：</font>InstanceType, ImageId
 
 * [Job](https://cloud.tencent.com/document/api/599/15912#Job)
 
-	* <font color="#dd0000">**修改成员：</font>**JobName, Priority
+	* <font color="#dd0000">**修改成员**：</font>JobName, Priority
 
 * [NamedComputeEnv](https://cloud.tencent.com/document/api/599/15912#NamedComputeEnv)
 
-	* <font color="#dd0000">**修改成员：</font>**EnvType, EnvData
+	* <font color="#dd0000">**修改成员**：</font>EnvType, EnvData
 
 * [Task](https://cloud.tencent.com/document/api/599/15912#Task)
 
-	* <font color="#dd0000">**修改成员：</font>**TaskName, TaskInstanceNum, RedirectInfo, MaxRetryCount, Timeout
+	* <font color="#dd0000">**修改成员**：</font>TaskName, TaskInstanceNum, RedirectInfo, MaxRetryCount, Timeout
 
 
 ### 第 5 次发布
@@ -1595,9 +1599,9 @@
 
 	* 新增成员：Mem, Cpu
 
-	* <font color="#dd0000">**删除成员：</font>**GPU, CPU, Memory, CbsSupport, InstanceTypeState
+	* <font color="#dd0000">**删除成员**：</font>GPU, CPU, Memory, CbsSupport, InstanceTypeState
 
-	* <font color="#dd0000">**修改成员：</font>**InstanceType, Zone, InstanceFamily
+	* <font color="#dd0000">**修改成员**：</font>InstanceType, Zone, InstanceFamily
 
 
 ### 第 4 次发布
@@ -1770,7 +1774,7 @@
 
 * [BillDetail](https://cloud.tencent.com/document/api/555/19183#BillDetail)
 
-	* <font color="#dd0000">**修改成员：</font>**RegionId
+	* <font color="#dd0000">**修改成员**：</font>RegionId
 
 
 ### 第 15 次发布
@@ -1785,7 +1789,7 @@
 
 * [CostDetail](https://cloud.tencent.com/document/api/555/19183#CostDetail)
 
-	* <font color="#dd0000">**修改成员：</font>**ComponentSet
+	* <font color="#dd0000">**修改成员**：</font>ComponentSet
 
 
 ### 第 14 次发布
@@ -1890,7 +1894,7 @@
 
 * [DescribeBillSummaryByTag](https://cloud.tencent.com/document/api/555/38208)
 
-	* <font color="#dd0000">**修改出参：</font>**SummaryOverview
+	* <font color="#dd0000">**修改出参**：</font>SummaryOverview
 
 
 ### 第 10 次发布
@@ -2069,7 +2073,7 @@
 
 	* 新增入参：BeginTime, EndTime
 
-	* <font color="#dd0000">**修改入参：</font>**Month
+	* <font color="#dd0000">**修改入参**：</font>Month
 
 
 新增数据结构：
@@ -2212,7 +2216,7 @@
 
 	* 新增入参：MemSize, ContainRaidCard, SystemDiskTypeId, SystemDiskCount, DataDiskTypeId, DataDiskCount
 
-	* <font color="#dd0000">**删除入参：</font>**DiskType, DiskSize, DiskNum, Mem, HaveRaidCard
+	* <font color="#dd0000">**删除入参**：</font>DiskType, DiskSize, DiskNum, Mem, HaveRaidCard
 
 
 修改数据结构：
@@ -2456,7 +2460,7 @@
 
 	* 新增出参：TaskTypeSet
 
-	* <font color="#dd0000">**删除出参：</font>**TaskTypeList
+	* <font color="#dd0000">**删除出参**：</font>TaskTypeList
 
 
 新增数据结构：
@@ -2544,7 +2548,7 @@
 
 * [DescribeEips](https://cloud.tencent.com/document/api/1028/32853)
 
-	* <font color="#dd0000">**修改入参：</font>**AclId
+	* <font color="#dd0000">**修改入参**：</font>AclId
 
 
 ### 第 1 次发布
@@ -2616,7 +2620,7 @@
 
 * [DescribeL7Backends](https://cloud.tencent.com/document/api/1027/33256)
 
-	* <font color="#dd0000">**修改入参：</font>**DomainId, LocationId
+	* <font color="#dd0000">**修改入参**：</font>DomainId, LocationId
 
 * [DescribeTrafficMirrors](https://cloud.tencent.com/document/api/1027/33238)
 
@@ -2658,15 +2662,15 @@
 
 * [CreateL4Listeners](https://cloud.tencent.com/document/api/1027/33271)
 
-	* <font color="#dd0000">**修改出参：</font>**TaskId
+	* <font color="#dd0000">**修改出参**：</font>TaskId
 
 * [DeleteLoadBalancer](https://cloud.tencent.com/document/api/1027/33284)
 
-	* <font color="#dd0000">**修改出参：</font>**TaskId
+	* <font color="#dd0000">**修改出参**：</font>TaskId
 
 * [ModifyL7Listener](https://cloud.tencent.com/document/api/1027/33249)
 
-	* <font color="#dd0000">**修改出参：</font>**TaskId
+	* <font color="#dd0000">**修改出参**：</font>TaskId
 
 
 修改数据结构：
@@ -2677,7 +2681,7 @@
 
 * [LoadBalancer](https://cloud.tencent.com/document/api/1027/33287#LoadBalancer)
 
-	* <font color="#dd0000">**删除成员：</font>**IspId
+	* <font color="#dd0000">**删除成员**：</font>IspId
 
 
 ### 第 1 次发布
@@ -3099,7 +3103,7 @@
 
 * [AttachPolicyInfo](https://cloud.tencent.com/document/api/598/33167#AttachPolicyInfo)
 
-	* <font color="#dd0000">**修改成员：</font>**OperateOwnerUin, OperateUin
+	* <font color="#dd0000">**修改成员**：</font>OperateOwnerUin, OperateUin
 
 * [StrategyInfo](https://cloud.tencent.com/document/api/598/33167#StrategyInfo)
 
@@ -3148,27 +3152,27 @@
 
 * [AttachGroupPolicy](https://cloud.tencent.com/document/api/598/34580)
 
-	* <font color="#dd0000">**修改入参：</font>**PolicyId, AttachGroupId
+	* <font color="#dd0000">**修改入参**：</font>PolicyId, AttachGroupId
 
 * [AttachUserPolicy](https://cloud.tencent.com/document/api/598/34579)
 
-	* <font color="#dd0000">**修改入参：</font>**PolicyId, AttachUin
+	* <font color="#dd0000">**修改入参**：</font>PolicyId, AttachUin
 
 * [CreatePolicy](https://cloud.tencent.com/document/api/598/34578)
 
-	* <font color="#dd0000">**修改出参：</font>**PolicyId
+	* <font color="#dd0000">**修改出参**：</font>PolicyId
 
 * [DetachGroupPolicy](https://cloud.tencent.com/document/api/598/34576)
 
-	* <font color="#dd0000">**修改入参：</font>**PolicyId, DetachGroupId
+	* <font color="#dd0000">**修改入参**：</font>PolicyId, DetachGroupId
 
 * [DetachUserPolicy](https://cloud.tencent.com/document/api/598/34575)
 
-	* <font color="#dd0000">**修改入参：</font>**DetachUin
+	* <font color="#dd0000">**修改入参**：</font>DetachUin
 
 * [UpdatePolicy](https://cloud.tencent.com/document/api/598/34569)
 
-	* <font color="#dd0000">**修改入参：</font>**PolicyId
+	* <font color="#dd0000">**修改入参**：</font>PolicyId
 
 
 新增数据结构：
@@ -3334,7 +3338,7 @@
 
 改善已有的文档。
 
-<font color="#dd0000">**删除接口：</font>**
+<font color="#dd0000">**删除接口**：</font>
 
 * CreateAlarmPloicy
 * CreateTask
@@ -3346,7 +3350,7 @@
 * ModifyAlarmPloicy
 * ModifyTask
 
-<font color="#dd0000">**删除数据结构：</font>**
+<font color="#dd0000">**删除数据结构**：</font>
 
 * AlarmGroupInfo
 * CatTask
@@ -3493,7 +3497,7 @@
 
 	* 新增成员：SnapshotCount, SnapshotSize
 
-	* <font color="#dd0000">**删除成员：</font>**AttachDeviceId, AttachDeviceType
+	* <font color="#dd0000">**删除成员**：</font>AttachDeviceId, AttachDeviceType
 
 * [Snapshot](https://cloud.tencent.com/document/api/362/15669#Snapshot)
 
@@ -3543,7 +3547,7 @@
 
 * [CreateDisks](https://cloud.tencent.com/document/api/362/16312)
 
-	* <font color="#dd0000">**删除入参：</font>**DeleteWithInstance
+	* <font color="#dd0000">**删除入参**：</font>DeleteWithInstance
 
 * [DetachDisks](https://cloud.tencent.com/document/api/362/16316)
 
@@ -3631,7 +3635,7 @@
 
 	* 新增成员：Images, ImageCount
 
-	* <font color="#dd0000">**删除成员：</font>**ImageIds
+	* <font color="#dd0000">**删除成员**：</font>ImageIds
 
 
 ### 第 8 次发布
@@ -3687,15 +3691,15 @@
 
 	* 新增出参：AttachDetail
 
-	* <font color="#dd0000">**删除出参：</font>**AttachedDiskCount, MaxAttachCount
+	* <font color="#dd0000">**删除出参**：</font>AttachedDiskCount, MaxAttachCount
 
 * [InquiryPriceRenewDisks](https://cloud.tencent.com/document/api/362/16317)
 
-	* <font color="#dd0000">**修改出参：</font>**DiskPrice
+	* <font color="#dd0000">**修改出参**：</font>DiskPrice
 
 * [InquiryPriceResizeDisk](https://cloud.tencent.com/document/api/362/16320)
 
-	* <font color="#dd0000">**修改出参：</font>**DiskPrice
+	* <font color="#dd0000">**修改出参**：</font>DiskPrice
 
 
 新增数据结构：
@@ -3710,7 +3714,7 @@
 
 	* 新增成员：DifferDaysOfDeadline
 
-	* <font color="#dd0000">**修改成员：</font>**ReturnFailCode
+	* <font color="#dd0000">**修改成员**：</font>ReturnFailCode
 
 
 ### 第 6 次发布
@@ -3805,7 +3809,7 @@
 
 	* 新增入参：DiskTypes
 
-	* <font color="#dd0000">**删除入参：</font>**DiskType
+	* <font color="#dd0000">**删除入参**：</font>DiskType
 
 
 修改数据结构：
@@ -4035,7 +4039,7 @@
 
 * [DescribeTasks](https://cloud.tencent.com/document/api/236/15848)
 
-	* <font color="#dd0000">**修改出参：</font>**Items
+	* <font color="#dd0000">**修改出参**：</font>Items
 
 
 新增数据结构：
@@ -4046,7 +4050,7 @@
 
 * [SlowLogInfo](https://cloud.tencent.com/document/api/236/15878#SlowLogInfo)
 
-	* <font color="#dd0000">**修改成员：</font>**Date
+	* <font color="#dd0000">**修改成员**：</font>Date
 
 
 ### 第 25 次发布
@@ -4160,7 +4164,7 @@
 
 * [BackupConfig](https://cloud.tencent.com/document/api/236/15878#BackupConfig)
 
-	* <font color="#dd0000">**修改成员：</font>**Vport
+	* <font color="#dd0000">**修改成员**：</font>Vport
 
 
 ### 第 19 次发布
@@ -4318,7 +4322,7 @@
 * [SqlFileInfo](https://cloud.tencent.com/document/api/236/15878#SqlFileInfo)
 * [UploadInfo](https://cloud.tencent.com/document/api/236/15878#UploadInfo)
 
-<font color="#dd0000">**删除数据结构：</font>**
+<font color="#dd0000">**删除数据结构**：</font>
 
 * First
 
@@ -4326,7 +4330,7 @@
 
 * [SlaveInfo](https://cloud.tencent.com/document/api/236/15878#SlaveInfo)
 
-	* <font color="#dd0000">**修改成员：</font>**First, Second
+	* <font color="#dd0000">**修改成员**：</font>First, Second
 
 
 ### 第 11 次发布
@@ -4401,11 +4405,11 @@
 
 改善已有的文档。
 
-<font color="#dd0000">**删除接口：</font>**
+<font color="#dd0000">**删除接口**：</font>
 
 * DescribeBackupDownloadDbTableCode
 
-<font color="#dd0000">**删除数据结构：</font>**
+<font color="#dd0000">**删除数据结构**：</font>
 
 * DatabaseTableList
 
@@ -4425,7 +4429,7 @@
 
 * [InstanceInfo](https://cloud.tencent.com/document/api/236/15878#InstanceInfo)
 
-	* <font color="#dd0000">**修改成员：</font>**RoVipInfo
+	* <font color="#dd0000">**修改成员**：</font>RoVipInfo
 
 * [RoGroup](https://cloud.tencent.com/document/api/236/15878#RoGroup)
 
@@ -4448,26 +4452,26 @@
 
 * [CreateDBInstance](https://cloud.tencent.com/document/api/236/15871)
 
-	* <font color="#dd0000">**修改出参：</font>**DealIds
+	* <font color="#dd0000">**修改出参**：</font>DealIds
 
 * [CreateDBInstanceHour](https://cloud.tencent.com/document/api/236/15865)
 
-	* <font color="#dd0000">**修改出参：</font>**DealIds
+	* <font color="#dd0000">**修改出参**：</font>DealIds
 
 * [DescribeBackupTables](https://cloud.tencent.com/document/api/236/15846)
 
-	* <font color="#dd0000">**修改入参：</font>**SearchTable
+	* <font color="#dd0000">**修改入参**：</font>SearchTable
 
 * [UpgradeDBInstance](https://cloud.tencent.com/document/api/236/15876)
 
-	* <font color="#dd0000">**删除出参：</font>**DealNames
+	* <font color="#dd0000">**删除出参**：</font>DealNames
 
 
 修改数据结构：
 
 * [RoGroup](https://cloud.tencent.com/document/api/236/15878#RoGroup)
 
-	* <font color="#dd0000">**修改成员：</font>**RoGroupMode
+	* <font color="#dd0000">**修改成员**：</font>RoGroupMode
 
 
 ### 第 4 次发布
@@ -4544,7 +4548,7 @@
 
 * [InstanceInfo](https://cloud.tencent.com/document/api/236/15878#InstanceInfo)
 
-	* <font color="#dd0000">**修改成员：</font>**RoVipInfo
+	* <font color="#dd0000">**修改成员**：</font>RoVipInfo
 
 
 ### 第 1 次发布
@@ -5263,7 +5267,7 @@
 
 * [DescribeGroup](https://cloud.tencent.com/document/api/597/40840)
 
-	* <font color="#dd0000">**修改出参：</font>**Result
+	* <font color="#dd0000">**修改出参**：</font>Result
 
 
 新增数据结构：
@@ -5282,7 +5286,7 @@
 
 	* 新增成员：Version, ZoneIds, Cvm
 
-	* <font color="#dd0000">**修改成员：</font>**Healthy
+	* <font color="#dd0000">**修改成员**：</font>Healthy
 
 * [JgwOperateResponse](https://cloud.tencent.com/document/api/597/40861#JgwOperateResponse)
 
@@ -5443,7 +5447,7 @@
 
 * [DescribeTaskStatus](https://cloud.tencent.com/document/api/214/30683)
 
-	* <font color="#dd0000">**修改入参：</font>**TaskId
+	* <font color="#dd0000">**修改入参**：</font>TaskId
 
 * [ModifyLoadBalancerAttributes](https://cloud.tencent.com/document/api/214/30680)
 
@@ -5504,7 +5508,7 @@
 
 * [CreateLoadBalancer](https://cloud.tencent.com/document/api/214/30692)
 
-	* <font color="#dd0000">**删除入参：</font>**AnycastZone
+	* <font color="#dd0000">**删除入参**：</font>AnycastZone
 
 * [CreateRule](https://cloud.tencent.com/document/api/214/30691)
 
@@ -5573,7 +5577,7 @@
 
 * [RsWeightRule](https://cloud.tencent.com/document/api/214/30694#RsWeightRule)
 
-	* <font color="#dd0000">**修改成员：</font>**LocationId
+	* <font color="#dd0000">**修改成员**：</font>LocationId
 
 * [RuleInput](https://cloud.tencent.com/document/api/214/30694#RuleInput)
 
@@ -5601,7 +5605,7 @@
 
 * [LoadBalancer](https://cloud.tencent.com/document/api/214/30694#LoadBalancer)
 
-	* <font color="#dd0000">**删除成员：</font>**LoadBalancerPassToTarget
+	* <font color="#dd0000">**删除成员**：</font>LoadBalancerPassToTarget
 
 
 ### 第 10 次发布
@@ -5709,11 +5713,11 @@
 
 	* 新增入参：Tags
 
-	* <font color="#dd0000">**删除入参：</font>**VipIsp
+	* <font color="#dd0000">**删除入参**：</font>VipIsp
 
 * [ModifyTargetWeight](https://cloud.tencent.com/document/api/214/30677)
 
-	* <font color="#dd0000">**修改入参：</font>**Weight
+	* <font color="#dd0000">**修改入参**：</font>Weight
 
 
 修改数据结构：
@@ -5782,7 +5786,7 @@
 
 	* 新增成员：EniIp
 
-	* <font color="#dd0000">**修改成员：</font>**InstanceId
+	* <font color="#dd0000">**修改成员**：</font>InstanceId
 
 
 ### 第 4 次发布
@@ -5851,7 +5855,7 @@
 
 * [CertificateInput](https://cloud.tencent.com/document/api/214/30694#CertificateInput)
 
-	* <font color="#dd0000">**修改成员：</font>**SSLMode
+	* <font color="#dd0000">**修改成员**：</font>SSLMode
 
 * [LoadBalancer](https://cloud.tencent.com/document/api/214/30694#LoadBalancer)
 
@@ -5935,6 +5939,21 @@
 
 ## 云审计(cloudaudit) 版本：2019-03-19
 
+### 第 4 次发布
+
+发布时间：2020-03-24 08:05:13
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [LookUpEvents](https://cloud.tencent.com/document/api/629/35344)
+
+	* 新增入参：Mode
+
+
 ### 第 3 次发布
 
 发布时间：2020-03-10 00:51:28
@@ -5977,7 +5996,7 @@
 
 * [LookUpEvents](https://cloud.tencent.com/document/api/629/35344)
 
-	* <font color="#dd0000">**删除入参：</font>**IsApiV3
+	* <font color="#dd0000">**删除入参**：</font>IsApiV3
 
 
 ### 第 1 次发布
@@ -6028,8 +6047,8 @@
 
 新增接口：
 
-* [[DescribeHSMBySubnetId](https://cloud.tencent.com/document/api/639/42767)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeHSMByVpcId](https://cloud.tencent.com/document/api/639/42766)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeHSMBySubnetId](https://cloud.tencent.com/document/api/639/42767)
+* [DescribeHSMByVpcId](https://cloud.tencent.com/document/api/639/42766)
 
 ### 第 1 次发布
 
@@ -6171,13 +6190,13 @@
 
 改善已有的文档。
 
-<font color="#dd0000">**删除接口：</font>**
+<font color="#dd0000">**删除接口**：</font>
 
 * AudioModeration
 * DescribeModerationOverview
 * VideoModeration
 
-<font color="#dd0000">**删除数据结构：</font>**
+<font color="#dd0000">**删除数据结构**：</font>
 
 * OverviewRecord
 
@@ -6367,11 +6386,11 @@
 
 * [CreateAcct](https://cloud.tencent.com/document/api/1122/40674)
 
-	* <font color="#dd0000">**删除入参：</font>**PlatformId
+	* <font color="#dd0000">**删除入参**：</font>PlatformId
 
 * [QueryAcctBinding](https://cloud.tencent.com/document/api/1122/42434)
 
-	* <font color="#dd0000">**删除入参：</font>**PlatformId
+	* <font color="#dd0000">**删除入参**：</font>PlatformId
 
 
 ### 第 2 次发布
@@ -6570,7 +6589,7 @@
 
 * [DescribeTaskStatus](https://cloud.tencent.com/document/api/656/18291)
 
-	* <font color="#dd0000">**修改入参：</font>**TaskId
+	* <font color="#dd0000">**修改入参**：</font>TaskId
 
 
 ### 第 3 次发布
@@ -6606,7 +6625,7 @@
 
 	* 新增出参：DailyReportUrl, ResultReportUrl, DetailReportUrl
 
-	* <font color="#dd0000">**删除出参：</font>**ReportUrl
+	* <font color="#dd0000">**删除出参**：</font>ReportUrl
 
 
 ### 第 1 次发布
@@ -6797,7 +6816,7 @@
 
 * [CreateImage](https://cloud.tencent.com/document/api/213/16726)
 
-	* <font color="#dd0000">**删除入参：</font>**Reboot
+	* <font color="#dd0000">**删除入参**：</font>Reboot
 
 
 修改数据结构：
@@ -6875,7 +6894,7 @@
 
 * [RenewInstances](https://cloud.tencent.com/document/api/213/15740)
 
-	* <font color="#dd0000">**修改入参：</font>**InstanceChargePrepaid
+	* <font color="#dd0000">**修改入参**：</font>InstanceChargePrepaid
 
 * [ResetInstance](https://cloud.tencent.com/document/api/213/15724)
 
@@ -6928,7 +6947,7 @@
 
 * [InquiryPriceResetInstancesType](https://cloud.tencent.com/document/api/213/15733)
 
-	* <font color="#dd0000">**删除入参：</font>**ForceStop
+	* <font color="#dd0000">**删除入参**：</font>ForceStop
 
 
 修改数据结构：
@@ -6965,7 +6984,7 @@
 
 * [InstanceMarketOptionsRequest](https://cloud.tencent.com/document/api/213/15753#InstanceMarketOptionsRequest)
 
-	* <font color="#dd0000">**修改成员：</font>**SpotOptions
+	* <font color="#dd0000">**修改成员**：</font>SpotOptions
 
 
 ### 第 19 次发布
@@ -7002,7 +7021,7 @@
 
 	* 新增入参：DataDiskIds, SnapshotIds
 
-	* <font color="#dd0000">**修改入参：</font>**InstanceId
+	* <font color="#dd0000">**修改入参**：</font>InstanceId
 
 
 ### 第 17 次发布
@@ -7039,7 +7058,7 @@
 
 * [InstanceTypeConfig](https://cloud.tencent.com/document/api/213/15753#InstanceTypeConfig)
 
-	* <font color="#dd0000">**删除成员：</font>**CbsSupport, InstanceTypeState
+	* <font color="#dd0000">**删除成员**：</font>CbsSupport, InstanceTypeState
 
 
 ### 第 15 次发布
@@ -7058,7 +7077,7 @@
 
 * [KeyPair](https://cloud.tencent.com/document/api/213/15753#KeyPair)
 
-	* <font color="#dd0000">**修改成员：</font>**ProjectId
+	* <font color="#dd0000">**修改成员**：</font>ProjectId
 
 
 ### 第 14 次发布
@@ -7094,7 +7113,7 @@
 
 	* 新增成员：CreatedTime, AccountId
 
-	* <font color="#dd0000">**删除成员：</font>**CreateTime, Account
+	* <font color="#dd0000">**删除成员**：</font>CreateTime, Account
 
 
 ### 第 12 次发布
@@ -7117,7 +7136,7 @@
 
 * [StopInstances](https://cloud.tencent.com/document/api/213/15743)
 
-	* <font color="#dd0000">**删除入参：</font>**StoppedMode
+	* <font color="#dd0000">**删除入参**：</font>StoppedMode
 
 
 ### 第 10 次发布
@@ -7222,9 +7241,9 @@
 
 	* 新增出参：ImportImageOsVersionSet
 
-	* <font color="#dd0000">**删除出参：</font>**ImportImageOsVersionSupported
+	* <font color="#dd0000">**删除出参**：</font>ImportImageOsVersionSupported
 
-	* <font color="#dd0000">**修改出参：</font>**ImportImageOsListSupported
+	* <font color="#dd0000">**修改出参**：</font>ImportImageOsListSupported
 
 
 新增数据结构：
@@ -7237,7 +7256,7 @@
 
 * [HostItem](https://cloud.tencent.com/document/api/213/15753#HostItem)
 
-	* <font color="#dd0000">**修改成员：</font>**InstanceIds
+	* <font color="#dd0000">**修改成员**：</font>InstanceIds
 
 
 ### 第 5 次发布
@@ -7248,7 +7267,7 @@
 
 改善已有的文档。
 
-<font color="#dd0000">**删除接口：</font>**
+<font color="#dd0000">**删除接口**：</font>
 
 * DescribeInstanceOperationLogs
 * UpdateInstanceVpcConfig
@@ -7304,7 +7323,7 @@
 
 改善已有的文档。
 
-<font color="#dd0000">**删除接口：</font>**
+<font color="#dd0000">**删除接口**：</font>
 
 * QueryMigrateTask
 
@@ -7324,7 +7343,7 @@
 
 * [TerminateInstances](https://cloud.tencent.com/document/api/213/15723)
 
-	* <font color="#dd0000">**删除入参：</font>**DryRun
+	* <font color="#dd0000">**删除入参**：</font>DryRun
 
 
 新增数据结构：
@@ -7336,7 +7355,7 @@
 
 * [Image](https://cloud.tencent.com/document/api/213/15753#Image)
 
-	* <font color="#dd0000">**修改成员：</font>**ImageSize, Platform, ImageCreator
+	* <font color="#dd0000">**修改成员**：</font>ImageSize, Platform, ImageCreator
 
 * [Instance](https://cloud.tencent.com/document/api/213/15753#Instance)
 
@@ -7521,7 +7540,7 @@
 
 * [DescribeSitesVerification](https://cloud.tencent.com/document/api/692/16753)
 
-	* <font color="#dd0000">**修改出参：</font>**SitesVerification
+	* <font color="#dd0000">**修改出参**：</font>SitesVerification
 
 * [ModifySiteAttribute](https://cloud.tencent.com/document/api/692/16754)
 
@@ -7534,7 +7553,7 @@
 
 	* 新增成员：NeedLogin, LoginCookie, LoginCookieValid, LoginCheckUrl, LoginCheckKw, ScanDisallow, UserAgent
 
-	* <font color="#dd0000">**删除成员：</font>**LastScanExtsCount
+	* <font color="#dd0000">**删除成员**：</font>LastScanExtsCount
 
 * [SitesVerification](https://cloud.tencent.com/document/api/692/16759#SitesVerification)
 
@@ -7559,7 +7578,7 @@
 
 	* 新增成员：Id, Appid
 
-	* <font color="#dd0000">**删除成员：</font>**ID
+	* <font color="#dd0000">**删除成员**：</font>ID
 
 * [Site](https://cloud.tencent.com/document/api/692/16759#Site)
 
@@ -7611,6 +7630,18 @@
 
 
 ## 大禹网络安全(dayu) 版本：2018-07-09
+
+### 第 10 次发布
+
+发布时间：2020-03-24 08:05:50
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeBGPIPL7RuleMaxCnt](https://cloud.tencent.com/document/api/1021/42835)](https://cloud.tencent.com/document/api/#/#)
 
 ### 第 9 次发布
 
@@ -7675,7 +7706,7 @@
 * [ModifyCCFrequencyRules](https://cloud.tencent.com/document/api/1021/41269)
 * [ModifyCCFrequencyRulesStatus](https://cloud.tencent.com/document/api/1021/41268)
 
-<font color="#dd0000">**删除接口：</font>**
+<font color="#dd0000">**删除接口**：</font>
 
 * CreateL7CCRule
 
@@ -7689,7 +7720,7 @@
 
 	* 新增入参：BasicIp, BasicRegion, BasicBizType, BasicDeviceType, BasicIpInstance, BasicIspCode
 
-	* <font color="#dd0000">**修改入参：</font>**Id
+	* <font color="#dd0000">**修改入参**：</font>Id
 
 * [ModifyDDoSPolicyCase](https://cloud.tencent.com/document/api/1021/39504)
 
@@ -7700,7 +7731,7 @@
 
 * [CCFrequencyRule](https://cloud.tencent.com/document/api/1021/39225#CCFrequencyRule)
 
-<font color="#dd0000">**删除数据结构：</font>**
+<font color="#dd0000">**删除数据结构**：</font>
 
 * CCRuleConfig
 
@@ -8206,7 +8237,7 @@
 
 	* 新增入参：ExclusterType, IsFilterExcluster
 
-	* <font color="#dd0000">**修改入参：</font>**IsFilterVpc
+	* <font color="#dd0000">**修改入参**：</font>IsFilterVpc
 
 
 新增数据结构：
@@ -8422,7 +8453,7 @@
 
 * [CreateContractByUpload](https://cloud.tencent.com/document/api/869/17795)
 
-	* <font color="#dd0000">**修改入参：</font>**Initiator
+	* <font color="#dd0000">**修改入参**：</font>Initiator
 
 * [CreateEnterpriseAccount](https://cloud.tencent.com/document/api/869/17794)
 
@@ -8430,18 +8461,18 @@
 
 * [SignContractByCoordinate](https://cloud.tencent.com/document/api/869/17786)
 
-	* <font color="#dd0000">**修改入参：</font>**AuthorizationTime, Position
+	* <font color="#dd0000">**修改入参**：</font>AuthorizationTime, Position
 
 * [SignContractByKeyword](https://cloud.tencent.com/document/api/869/17960)
 
-	* <font color="#dd0000">**修改入参：</font>**AuthorizationTime, Position
+	* <font color="#dd0000">**修改入参**：</font>AuthorizationTime, Position
 
 
 修改数据结构：
 
 * [SignInfo](https://cloud.tencent.com/document/api/869/17797#SignInfo)
 
-	* <font color="#dd0000">**修改成员：</font>**AuthorizationTime, Location
+	* <font color="#dd0000">**修改成员**：</font>AuthorizationTime, Location
 
 
 ### 第 3 次发布
@@ -8624,7 +8655,7 @@
 
 * [DstInfo](https://cloud.tencent.com/document/api/571/18131#DstInfo)
 
-	* <font color="#dd0000">**修改成员：</font>**Region
+	* <font color="#dd0000">**修改成员**：</font>Region
 
 
 ### 第 3 次发布
@@ -8735,7 +8766,7 @@
 
 	* 新增入参：Requirement, ModelTitle, EccAppid, IsAsync, SessionId
 
-	* <font color="#dd0000">**删除入参：</font>**Outline, ModelSubject
+	* <font color="#dd0000">**删除入参**：</font>Outline, ModelSubject
 
 	* 新增出参：TaskId
 
@@ -8864,7 +8895,7 @@
 
 * [Position](https://cloud.tencent.com/document/api/1108/42574#Position)
 
-	* <font color="#dd0000">**修改成员：</font>**Country, Province, City
+	* <font color="#dd0000">**修改成员**：</font>Country, Province, City
 
 
 ### 第 1 次发布
@@ -9089,9 +9120,9 @@
 
 	* 新增入参：CheckSecurity, ExtendFsField
 
-	* <font color="#dd0000">**修改入参：</font>**ResourceSpec, ClientToken
+	* <font color="#dd0000">**修改入参**：</font>ResourceSpec, ClientToken
 
-	* <font color="#dd0000">**删除出参：</font>**Result
+	* <font color="#dd0000">**删除出参**：</font>Result
 
 * [DescribeInstances](https://cloud.tencent.com/document/api/589/34266)
 
@@ -9099,41 +9130,41 @@
 
 	* 新增出参：TotalCnt, ClusterList
 
-	* <font color="#dd0000">**删除出参：</font>**Result
+	* <font color="#dd0000">**删除出参**：</font>Result
 
 * [InquiryPriceCreateInstance](https://cloud.tencent.com/document/api/589/33980)
 
-	* <font color="#dd0000">**修改入参：</font>**ResourceSpec
+	* <font color="#dd0000">**修改入参**：</font>ResourceSpec
 
 	* 新增出参：OriginalCost, DiscountCost, TimeUnit, TimeSpan
 
-	* <font color="#dd0000">**删除出参：</font>**Result
+	* <font color="#dd0000">**删除出参**：</font>Result
 
 * [InquiryPriceScaleOutInstance](https://cloud.tencent.com/document/api/589/34265)
 
 	* 新增出参：OriginalCost, DiscountCost, Unit, PriceSpec
 
-	* <font color="#dd0000">**删除出参：</font>**Result
+	* <font color="#dd0000">**删除出参**：</font>Result
 
 * [ScaleOutInstance](https://cloud.tencent.com/document/api/589/34264)
 
 	* 新增入参：UnNecessaryNodeList
 
-	* <font color="#dd0000">**修改入参：</font>**ClientToken
+	* <font color="#dd0000">**修改入参**：</font>ClientToken
 
 	* 新增出参：InstanceId, DealNames, ClientToken
 
-	* <font color="#dd0000">**删除出参：</font>**Result
+	* <font color="#dd0000">**删除出参**：</font>Result
 
 * [TerminateInstance](https://cloud.tencent.com/document/api/589/34260)
 
 	* 新增入参：ResourceIds
 
-	* <font color="#dd0000">**删除出参：</font>**Result
+	* <font color="#dd0000">**删除出参**：</font>Result
 
 * [TerminateTasks](https://cloud.tencent.com/document/api/589/34263)
 
-	* <font color="#dd0000">**删除出参：</font>**Result
+	* <font color="#dd0000">**删除出参**：</font>Result
 
 
 新增数据结构：
@@ -9146,7 +9177,7 @@
 * [Resource](https://cloud.tencent.com/document/api/589/33981#Resource)
 * [UpdateInstanceSettings](https://cloud.tencent.com/document/api/589/33981#UpdateInstanceSettings)
 
-<font color="#dd0000">**删除数据结构：</font>**
+<font color="#dd0000">**删除数据结构**：</font>
 
 * ClusterInfoResult
 * ClusterInstanceInfo
@@ -9162,11 +9193,11 @@
 
 * [COSSettings](https://cloud.tencent.com/document/api/589/33981#COSSettings)
 
-	* <font color="#dd0000">**修改成员：</font>**LogOnCosPath
+	* <font color="#dd0000">**修改成员**：</font>LogOnCosPath
 
 * [Placement](https://cloud.tencent.com/document/api/589/33981#Placement)
 
-	* <font color="#dd0000">**修改成员：</font>**ProjectId
+	* <font color="#dd0000">**修改成员**：</font>ProjectId
 
 
 ### 第 4 次发布
@@ -9183,11 +9214,11 @@
 
 	* 新增入参：RemoteLoginAtCreate
 
-	* <font color="#dd0000">**修改入参：</font>**PreExecutedFileSettings
+	* <font color="#dd0000">**修改入参**：</font>PreExecutedFileSettings
 
 * [ScaleOutInstance](https://cloud.tencent.com/document/api/589/34264)
 
-	* <font color="#dd0000">**修改入参：</font>**PreExecutedFileSettings
+	* <font color="#dd0000">**修改入参**：</font>PreExecutedFileSettings
 
 
 修改数据结构：
@@ -9196,13 +9227,13 @@
 
 	* 新增成员：Count
 
-	* <font color="#dd0000">**修改成员：</font>**DiskType, Volume
+	* <font color="#dd0000">**修改成员**：</font>DiskType, Volume
 
 * [PreExecuteFileSettings](https://cloud.tencent.com/document/api/589/33981#PreExecuteFileSettings)
 
 	* 新增成员：RunOrder, WhenRun, CosFileName, CosFileURI, CosSecretId, CosSecretKey, AppId
 
-	* <font color="#dd0000">**修改成员：</font>**Path, Args, Bucket, Region, Domain
+	* <font color="#dd0000">**修改成员**：</font>Path, Args, Bucket, Region, Domain
 
 
 ### 第 3 次发布
@@ -9299,7 +9330,7 @@
 
 	* 新增入参：NodeInfoList, TagList, BasicSecurityType
 
-	* <font color="#dd0000">**修改入参：</font>**NodeNum, NodeType, DiskSize, MultiZoneInfo
+	* <font color="#dd0000">**修改入参**：</font>NodeNum, NodeType, DiskSize, MultiZoneInfo
 
 * [DescribeInstances](https://cloud.tencent.com/document/api/845/30631)
 
@@ -9324,7 +9355,7 @@
 * [NodeInfo](https://cloud.tencent.com/document/api/845/30634#NodeInfo)
 * [ZoneDetail](https://cloud.tencent.com/document/api/845/30634#ZoneDetail)
 
-<font color="#dd0000">**删除数据结构：</font>**
+<font color="#dd0000">**删除数据结构**：</font>
 
 * MultiZoneInfo
 
@@ -9938,7 +9969,7 @@
 
 * [RealServerBindSetReq](https://cloud.tencent.com/document/api/608/37023#RealServerBindSetReq)
 
-	* <font color="#dd0000">**修改成员：</font>**RealServerWeight
+	* <font color="#dd0000">**修改成员**：</font>RealServerWeight
 
 
 ### 第 1 次发布
@@ -10305,7 +10336,7 @@
 * [DescribeInstances](https://cloud.tencent.com/document/api/1165/42604)
 * [GetInstanceAccess](https://cloud.tencent.com/document/api/1165/42603)
 
-<font color="#dd0000">**删除接口：</font>**
+<font color="#dd0000">**删除接口**：</font>
 
 * DeleteScalingPolicy
 * DescribeFleetCapacity
@@ -10319,7 +10350,7 @@
 * [Instance](https://cloud.tencent.com/document/api/1165/42074#Instance)
 * [InstanceAccess](https://cloud.tencent.com/document/api/1165/42074#InstanceAccess)
 
-<font color="#dd0000">**删除数据结构：</font>**
+<font color="#dd0000">**删除数据结构**：</font>
 
 * FleetCapacity
 * InstanceCounts
@@ -10458,7 +10489,7 @@
 
 	* 新增入参：HcmAppid, Url
 
-	* <font color="#dd0000">**修改入参：</font>**Image
+	* <font color="#dd0000">**修改入参**：</font>Image
 
 
 ### 第 1 次发布
@@ -10630,7 +10661,7 @@
 
 * [GroupInfo](https://cloud.tencent.com/document/api/867/32807#GroupInfo)
 
-	* <font color="#dd0000">**修改成员：</font>**CreationTimestamp
+	* <font color="#dd0000">**修改成员**：</font>CreationTimestamp
 
 
 ### 第 9 次发布
@@ -10724,7 +10755,7 @@
 
 * [GroupInfo](https://cloud.tencent.com/document/api/867/32807#GroupInfo)
 
-	* <font color="#dd0000">**删除成员：</font>**FaceModelVersion, CreationTimestamp
+	* <font color="#dd0000">**删除成员**：</font>FaceModelVersion, CreationTimestamp
 
 
 ### 第 4 次发布
@@ -10769,7 +10800,7 @@
 
 * [FaceRect](https://cloud.tencent.com/document/api/867/32807#FaceRect)
 
-	* <font color="#dd0000">**修改成员：</font>**X, Y
+	* <font color="#dd0000">**修改成员**：</font>X, Y
 
 
 ### 第 1 次发布
@@ -10855,6 +10886,54 @@
 
 
 
+## 智能编辑(ie) 版本：2020-03-04
+
+### 第 1 次发布
+
+发布时间：2020-03-23 16:46:34
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[CreateEditingTask](https://cloud.tencent.com/document/api/1186/42823)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeEditingTaskResult](https://cloud.tencent.com/document/api/1186/42822)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[CallbackInfo](https://cloud.tencent.com/document/api/1186/42824#CallbackInfo)](https://cloud.tencent.com/document/api/1186/42824#[CallbackInfo](https://cloud.tencent.com/document/api/1186/42824#CallbackInfo))
+* [[ClassificationEditingInfo](https://cloud.tencent.com/document/api/1186/42824#ClassificationEditingInfo)](https://cloud.tencent.com/document/api/1186/42824#[ClassificationEditingInfo](https://cloud.tencent.com/document/api/1186/42824#ClassificationEditingInfo))
+* [[ClassificationTaskResult](https://cloud.tencent.com/document/api/1186/42824#ClassificationTaskResult)](https://cloud.tencent.com/document/api/1186/42824#[ClassificationTaskResult](https://cloud.tencent.com/document/api/1186/42824#ClassificationTaskResult))
+* [[ClassificationTaskResultItem](https://cloud.tencent.com/document/api/1186/42824#ClassificationTaskResultItem)](https://cloud.tencent.com/document/api/1186/42824#[ClassificationTaskResultItem](https://cloud.tencent.com/document/api/1186/42824#ClassificationTaskResultItem))
+* [[CosAuthMode](https://cloud.tencent.com/document/api/1186/42824#CosAuthMode)](https://cloud.tencent.com/document/api/1186/42824#[CosAuthMode](https://cloud.tencent.com/document/api/1186/42824#CosAuthMode))
+* [[CosInfo](https://cloud.tencent.com/document/api/1186/42824#CosInfo)](https://cloud.tencent.com/document/api/1186/42824#[CosInfo](https://cloud.tencent.com/document/api/1186/42824#CosInfo))
+* [[CoverEditingInfo](https://cloud.tencent.com/document/api/1186/42824#CoverEditingInfo)](https://cloud.tencent.com/document/api/1186/42824#[CoverEditingInfo](https://cloud.tencent.com/document/api/1186/42824#CoverEditingInfo))
+* [[CoverTaskResult](https://cloud.tencent.com/document/api/1186/42824#CoverTaskResult)](https://cloud.tencent.com/document/api/1186/42824#[CoverTaskResult](https://cloud.tencent.com/document/api/1186/42824#CoverTaskResult))
+* [[CoverTaskResultItem](https://cloud.tencent.com/document/api/1186/42824#CoverTaskResultItem)](https://cloud.tencent.com/document/api/1186/42824#[CoverTaskResultItem](https://cloud.tencent.com/document/api/1186/42824#CoverTaskResultItem))
+* [[DownInfo](https://cloud.tencent.com/document/api/1186/42824#DownInfo)](https://cloud.tencent.com/document/api/1186/42824#[DownInfo](https://cloud.tencent.com/document/api/1186/42824#DownInfo))
+* [[EditingInfo](https://cloud.tencent.com/document/api/1186/42824#EditingInfo)](https://cloud.tencent.com/document/api/1186/42824#[EditingInfo](https://cloud.tencent.com/document/api/1186/42824#EditingInfo))
+* [[EditingTaskResult](https://cloud.tencent.com/document/api/1186/42824#EditingTaskResult)](https://cloud.tencent.com/document/api/1186/42824#[EditingTaskResult](https://cloud.tencent.com/document/api/1186/42824#EditingTaskResult))
+* [[HighlightsEditingInfo](https://cloud.tencent.com/document/api/1186/42824#HighlightsEditingInfo)](https://cloud.tencent.com/document/api/1186/42824#[HighlightsEditingInfo](https://cloud.tencent.com/document/api/1186/42824#HighlightsEditingInfo))
+* [[HighlightsTaskResult](https://cloud.tencent.com/document/api/1186/42824#HighlightsTaskResult)](https://cloud.tencent.com/document/api/1186/42824#[HighlightsTaskResult](https://cloud.tencent.com/document/api/1186/42824#HighlightsTaskResult))
+* [[HighlightsTaskResultItem](https://cloud.tencent.com/document/api/1186/42824#HighlightsTaskResultItem)](https://cloud.tencent.com/document/api/1186/42824#[HighlightsTaskResultItem](https://cloud.tencent.com/document/api/1186/42824#HighlightsTaskResultItem))
+* [[HighlightsTaskResultItemSegment](https://cloud.tencent.com/document/api/1186/42824#HighlightsTaskResultItemSegment)](https://cloud.tencent.com/document/api/1186/42824#[HighlightsTaskResultItemSegment](https://cloud.tencent.com/document/api/1186/42824#HighlightsTaskResultItemSegment))
+* [[OpeningEndingEditingInfo](https://cloud.tencent.com/document/api/1186/42824#OpeningEndingEditingInfo)](https://cloud.tencent.com/document/api/1186/42824#[OpeningEndingEditingInfo](https://cloud.tencent.com/document/api/1186/42824#OpeningEndingEditingInfo))
+* [[OpeningEndingTaskResult](https://cloud.tencent.com/document/api/1186/42824#OpeningEndingTaskResult)](https://cloud.tencent.com/document/api/1186/42824#[OpeningEndingTaskResult](https://cloud.tencent.com/document/api/1186/42824#OpeningEndingTaskResult))
+* [[OpeningEndingTaskResultItem](https://cloud.tencent.com/document/api/1186/42824#OpeningEndingTaskResultItem)](https://cloud.tencent.com/document/api/1186/42824#[OpeningEndingTaskResultItem](https://cloud.tencent.com/document/api/1186/42824#OpeningEndingTaskResultItem))
+* [[SaveInfo](https://cloud.tencent.com/document/api/1186/42824#SaveInfo)](https://cloud.tencent.com/document/api/1186/42824#[SaveInfo](https://cloud.tencent.com/document/api/1186/42824#SaveInfo))
+* [[StripEditingInfo](https://cloud.tencent.com/document/api/1186/42824#StripEditingInfo)](https://cloud.tencent.com/document/api/1186/42824#[StripEditingInfo](https://cloud.tencent.com/document/api/1186/42824#StripEditingInfo))
+* [[StripTaskResult](https://cloud.tencent.com/document/api/1186/42824#StripTaskResult)](https://cloud.tencent.com/document/api/1186/42824#[StripTaskResult](https://cloud.tencent.com/document/api/1186/42824#StripTaskResult))
+* [[StripTaskResultItem](https://cloud.tencent.com/document/api/1186/42824#StripTaskResultItem)](https://cloud.tencent.com/document/api/1186/42824#[StripTaskResultItem](https://cloud.tencent.com/document/api/1186/42824#StripTaskResultItem))
+* [[TagEditingInfo](https://cloud.tencent.com/document/api/1186/42824#TagEditingInfo)](https://cloud.tencent.com/document/api/1186/42824#[TagEditingInfo](https://cloud.tencent.com/document/api/1186/42824#TagEditingInfo))
+* [[TagTaskResult](https://cloud.tencent.com/document/api/1186/42824#TagTaskResult)](https://cloud.tencent.com/document/api/1186/42824#[TagTaskResult](https://cloud.tencent.com/document/api/1186/42824#TagTaskResult))
+* [[TagTaskResultItem](https://cloud.tencent.com/document/api/1186/42824#TagTaskResultItem)](https://cloud.tencent.com/document/api/1186/42824#[TagTaskResultItem](https://cloud.tencent.com/document/api/1186/42824#TagTaskResultItem))
+* [[UrlInfo](https://cloud.tencent.com/document/api/1186/42824#UrlInfo)](https://cloud.tencent.com/document/api/1186/42824#[UrlInfo](https://cloud.tencent.com/document/api/1186/42824#UrlInfo))
+
+
+
+
 ## 加速物联网套件(iot) 版本：2018-01-23
 
 ### 第 6 次发布
@@ -10869,7 +10948,7 @@
 
 * [GetDataHistory](https://cloud.tencent.com/document/api/568/30087)
 
-	* <font color="#dd0000">**修改入参：</font>**Size
+	* <font color="#dd0000">**修改入参**：</font>Size
 
 
 ### 第 5 次发布
@@ -10885,7 +10964,7 @@
 * [AssociateSubDeviceToGatewayProduct](https://cloud.tencent.com/document/api/568/30065)
 * [UnassociateSubDeviceFromGatewayProduct](https://cloud.tencent.com/document/api/568/30061)
 
-<font color="#dd0000">**删除接口：</font>**
+<font color="#dd0000">**删除接口**：</font>
 
 * AddFirmware
 * AddOtaTask
@@ -10906,7 +10985,7 @@
 	* 新增入参：DeviceType
 
 
-<font color="#dd0000">**删除数据结构：</font>**
+<font color="#dd0000">**删除数据结构**：</font>
 
 * Firmware
 * FirmwareEntry
@@ -10957,39 +11036,39 @@
 
 	* 新增入参：CommProtocol
 
-	* <font color="#dd0000">**修改入参：</font>**DataTemplate
+	* <font color="#dd0000">**修改入参**：</font>DataTemplate
 
 * [AddRule](https://cloud.tencent.com/document/api/568/16458)
 
 	* 新增入参：DataType
 
-	* <font color="#dd0000">**修改入参：</font>**Actions
+	* <font color="#dd0000">**修改入参**：</font>Actions
 
 * [GetDataHistory](https://cloud.tencent.com/document/api/568/30087)
 
 	* 新增出参：ScrollTimeout
 
-	* <font color="#dd0000">**修改出参：</font>**DataHistory
+	* <font color="#dd0000">**修改出参**：</font>DataHistory
 
 * [GetDeviceData](https://cloud.tencent.com/document/api/568/16522)
 
-	* <font color="#dd0000">**修改出参：</font>**DeviceData
+	* <font color="#dd0000">**修改出参**：</font>DeviceData
 
 * [GetDeviceLog](https://cloud.tencent.com/document/api/568/30085)
 
 	* 新增出参：ScrollTimeout
 
-	* <font color="#dd0000">**修改出参：</font>**DeviceLog, ScrollId
+	* <font color="#dd0000">**修改出参**：</font>DeviceLog, ScrollId
 
 * [GetDevices](https://cloud.tencent.com/document/api/568/16468)
 
 	* 新增入参：Keyword
 
-	* <font color="#dd0000">**修改出参：</font>**Devices
+	* <font color="#dd0000">**修改出参**：</font>Devices
 
 * [GetProducts](https://cloud.tencent.com/document/api/568/16450)
 
-	* <font color="#dd0000">**修改出参：</font>**Products
+	* <font color="#dd0000">**修改出参**：</font>Products
 
 * [GetRules](https://cloud.tencent.com/document/api/568/16462)
 
@@ -11005,13 +11084,13 @@
 
 * [UpdateProduct](https://cloud.tencent.com/document/api/568/16451)
 
-	* <font color="#dd0000">**修改入参：</font>**DataTemplate
+	* <font color="#dd0000">**修改入参**：</font>DataTemplate
 
 * [UpdateRule](https://cloud.tencent.com/document/api/568/16463)
 
 	* 新增入参：DataType
 
-	* <font color="#dd0000">**修改入参：</font>**Actions
+	* <font color="#dd0000">**修改入参**：</font>Actions
 
 	* 新增出参：Rule
 
@@ -11043,7 +11122,7 @@
 * [StringData](https://cloud.tencent.com/document/api/568/16469#StringData)
 * [TopicAction](https://cloud.tencent.com/document/api/568/16469#TopicAction)
 
-<font color="#dd0000">**删除数据结构：</font>**
+<font color="#dd0000">**删除数据结构**：</font>
 
 * Object
 
@@ -11051,11 +11130,11 @@
 
 * [AppUser](https://cloud.tencent.com/document/api/568/16469#AppUser)
 
-	* <font color="#dd0000">**删除成员：</font>**Devices
+	* <font color="#dd0000">**删除成员**：</font>Devices
 
 * [Device](https://cloud.tencent.com/document/api/568/16469#Device)
 
-	* <font color="#dd0000">**修改成员：</font>**DeviceInfo
+	* <font color="#dd0000">**修改成员**：</font>DeviceInfo
 
 * [DeviceStatus](https://cloud.tencent.com/document/api/568/16469#DeviceStatus)
 
@@ -11065,25 +11144,25 @@
 
 	* 新增成员：DataProtocol, Username, Password, CommProtocol, Qps, Region, DeviceType, AssociatedProducts
 
-	* <font color="#dd0000">**删除成员：</font>**ProductSecret
+	* <font color="#dd0000">**删除成员**：</font>ProductSecret
 
-	* <font color="#dd0000">**修改成员：</font>**DataTemplate
+	* <font color="#dd0000">**修改成员**：</font>DataTemplate
 
 * [Rule](https://cloud.tencent.com/document/api/568/16469#Rule)
 
 	* 新增成员：MsgOrder, DataType
 
-	* <font color="#dd0000">**修改成员：</font>**Actions
+	* <font color="#dd0000">**修改成员**：</font>Actions
 
 * [RuleQuery](https://cloud.tencent.com/document/api/568/16469#RuleQuery)
 
 	* 新增成员：ProductId
 
-	* <font color="#dd0000">**修改成员：</font>**Topic
+	* <font color="#dd0000">**修改成员**：</font>Topic
 
 * [Topic](https://cloud.tencent.com/document/api/568/16469#Topic)
 
-	* <font color="#dd0000">**修改成员：</font>**UpdateTime
+	* <font color="#dd0000">**修改成员**：</font>UpdateTime
 
 
 ### 第 3 次发布
@@ -11200,7 +11279,7 @@
 
 * [DescribeProducts](https://cloud.tencent.com/document/api/634/19477)
 
-	* <font color="#dd0000">**删除入参：</font>**Filters
+	* <font color="#dd0000">**删除入参**：</font>Filters
 
 * [UpdateDeviceShadow](https://cloud.tencent.com/document/api/634/19488)
 
@@ -11211,7 +11290,7 @@
 
 * [DeviceLabel](https://cloud.tencent.com/document/api/634/19497#DeviceLabel)
 
-<font color="#dd0000">**删除数据结构：</font>**
+<font color="#dd0000">**删除数据结构**：</font>
 
 * Filter
 
@@ -11240,7 +11319,7 @@
 
 * [TopicRulePayload](https://cloud.tencent.com/document/api/634/19497#TopicRulePayload)
 
-	* <font color="#dd0000">**修改成员：</font>**Sql
+	* <font color="#dd0000">**修改成员**：</font>Sql
 
 
 ### 第 10 次发布
@@ -11423,7 +11502,7 @@
 
 改善已有的文档。
 
-<font color="#dd0000">**删除接口：</font>**
+<font color="#dd0000">**删除接口**：</font>
 
 * GetDeviceShadow
 
@@ -11664,29 +11743,29 @@
 
 * [DeleteProject](https://cloud.tencent.com/document/api/1081/34970)
 
-	* <font color="#dd0000">**修改入参：</font>**ProjectId
+	* <font color="#dd0000">**修改入参**：</font>ProjectId
 
 * [DescribeProject](https://cloud.tencent.com/document/api/1081/34969)
 
-	* <font color="#dd0000">**修改入参：</font>**ProjectId
+	* <font color="#dd0000">**修改入参**：</font>ProjectId
 
 * [GetProjectList](https://cloud.tencent.com/document/api/1081/34968)
 
-	* <font color="#dd0000">**修改入参：</font>**Offset, Limit
+	* <font color="#dd0000">**修改入参**：</font>Offset, Limit
 
 * [GetStudioProductList](https://cloud.tencent.com/document/api/1081/34984)
 
-	* <font color="#dd0000">**修改入参：</font>**ProjectId, DevStatus, Offset, Limit
+	* <font color="#dd0000">**修改入参**：</font>ProjectId, DevStatus, Offset, Limit
 
 * [ModifyProject](https://cloud.tencent.com/document/api/1081/34967)
 
-	* <font color="#dd0000">**修改入参：</font>**ProjectId
+	* <font color="#dd0000">**修改入参**：</font>ProjectId
 
 * [SearchStudioProduct](https://cloud.tencent.com/document/api/1081/34981)
 
 	* 新增入参：DevStatus
 
-	* <font color="#dd0000">**修改入参：</font>**ProjectId, ProductName, Limit, Offset
+	* <font color="#dd0000">**修改入参**：</font>ProjectId, ProductName, Limit, Offset
 
 
 新增数据结构：
@@ -11701,11 +11780,11 @@
 
 * [ProjectEntry](https://cloud.tencent.com/document/api/1081/34988#ProjectEntry)
 
-	* <font color="#dd0000">**修改成员：</font>**ProjectId
+	* <font color="#dd0000">**修改成员**：</font>ProjectId
 
 * [ProjectEntryEx](https://cloud.tencent.com/document/api/1081/34988#ProjectEntryEx)
 
-	* <font color="#dd0000">**修改成员：</font>**ProjectId
+	* <font color="#dd0000">**修改成员**：</font>ProjectId
 
 
 ### 第 1 次发布
@@ -12166,7 +12245,7 @@
 
 	* 新增入参：CloudCertId
 
-	* <font color="#dd0000">**修改入参：</font>**HttpsCrt, HttpsKey
+	* <font color="#dd0000">**修改入参**：</font>HttpsCrt, HttpsKey
 
 
 ### 第 28 次发布
@@ -12177,11 +12256,11 @@
 
 改善已有的文档。
 
-<font color="#dd0000">**删除接口：</font>**
+<font color="#dd0000">**删除接口**：</font>
 
 * DescribeLiveStreamOnlineInfo
 
-<font color="#dd0000">**删除数据结构：</font>**
+<font color="#dd0000">**删除数据结构**：</font>
 
 * StreamInfo
 
@@ -12266,7 +12345,7 @@
 
 	* 新增入参：StartDayTime, EndDayTime
 
-	* <font color="#dd0000">**修改入参：</font>**DayTime
+	* <font color="#dd0000">**修改入参**：</font>DayTime
 
 
 修改数据结构：
@@ -12384,7 +12463,7 @@
 
 改善已有的文档。
 
-<font color="#dd0000">**删除接口：</font>**
+<font color="#dd0000">**删除接口**：</font>
 
 * SetLiveWatermarkStatus
 
@@ -12457,11 +12536,11 @@
 
 * [CreateLiveSnapshotRule](https://cloud.tencent.com/document/api/267/32625)
 
-	* <font color="#dd0000">**修改入参：</font>**AppName, StreamName
+	* <font color="#dd0000">**修改入参**：</font>AppName, StreamName
 
 * [DeleteLiveSnapshotRule](https://cloud.tencent.com/document/api/267/32623)
 
-	* <font color="#dd0000">**修改入参：</font>**AppName, StreamName
+	* <font color="#dd0000">**修改入参**：</font>AppName, StreamName
 
 
 ### 第 16 次发布
@@ -12506,7 +12585,7 @@
 
 * [CreateLiveRecordRule](https://cloud.tencent.com/document/api/267/32615)
 
-	* <font color="#dd0000">**修改入参：</font>**AppName, StreamName
+	* <font color="#dd0000">**修改入参**：</font>AppName, StreamName
 
 * [CreateLiveRecordTemplate](https://cloud.tencent.com/document/api/267/32614)
 
@@ -12514,7 +12593,7 @@
 
 * [DeleteLiveRecordRule](https://cloud.tencent.com/document/api/267/32613)
 
-	* <font color="#dd0000">**修改入参：</font>**AppName, StreamName
+	* <font color="#dd0000">**修改入参**：</font>AppName, StreamName
 
 * [DescribeStreamPlayInfoList](https://cloud.tencent.com/document/api/267/33850)
 
@@ -12590,7 +12669,7 @@
 * [DescribeProvinceIspPlayInfoList](https://cloud.tencent.com/document/api/267/33988)
 * [DescribeStreamDayPlayInfoList](https://cloud.tencent.com/document/api/267/33987)
 
-<font color="#dd0000">**删除接口：</font>**
+<font color="#dd0000">**删除接口**：</font>
 
 * CreateLiveDomainStrategy
 * DeleteLiveDomainStrategy
@@ -12603,7 +12682,7 @@
 * [ProIspPlaySumInfo](https://cloud.tencent.com/document/api/267/20474#ProIspPlaySumInfo)
 * [PushDataInfo](https://cloud.tencent.com/document/api/267/20474#PushDataInfo)
 
-<font color="#dd0000">**删除数据结构：</font>**
+<font color="#dd0000">**删除数据结构**：</font>
 
 * StrategyInfo
 
@@ -12754,7 +12833,7 @@
 
 	* 新增入参：StreamName
 
-	* <font color="#dd0000">**修改入参：</font>**DomainName
+	* <font color="#dd0000">**修改入参**：</font>DomainName
 
 
 新增数据结构：
@@ -12796,18 +12875,18 @@
 
 * [CreatePullStreamConfig](https://cloud.tencent.com/document/api/267/30159)
 
-	* <font color="#dd0000">**修改入参：</font>**StartTime, EndTime
+	* <font color="#dd0000">**修改入参**：</font>StartTime, EndTime
 
 * [ModifyPullStreamConfig](https://cloud.tencent.com/document/api/267/30157)
 
-	* <font color="#dd0000">**修改入参：</font>**StartTime, EndTime
+	* <font color="#dd0000">**修改入参**：</font>StartTime, EndTime
 
 
 修改数据结构：
 
 * [PullStreamConfig](https://cloud.tencent.com/document/api/267/20474#PullStreamConfig)
 
-	* <font color="#dd0000">**修改成员：</font>**StartTime, EndTime
+	* <font color="#dd0000">**修改成员**：</font>StartTime, EndTime
 
 * [StreamOnlineInfo](https://cloud.tencent.com/document/api/267/20474#StreamOnlineInfo)
 
@@ -13002,7 +13081,7 @@
 
 * [DescribeBackupTime](https://cloud.tencent.com/document/api/237/16182)
 
-	* <font color="#dd0000">**修改出参：</font>**Items
+	* <font color="#dd0000">**修改出参**：</font>Items
 
 * [DescribeDBInstances](https://cloud.tencent.com/document/api/237/16184)
 
@@ -13029,7 +13108,7 @@
 	* 新增入参：Slave
 
 
-<font color="#dd0000">**删除数据结构：</font>**
+<font color="#dd0000">**删除数据结构**：</font>
 
 * MonitorIntData
 
@@ -13049,11 +13128,11 @@
 
 * [ResourceUsageMonitorSet](https://cloud.tencent.com/document/api/237/16191#ResourceUsageMonitorSet)
 
-	* <font color="#dd0000">**修改成员：</font>**DataDiskAvailable
+	* <font color="#dd0000">**修改成员**：</font>DataDiskAvailable
 
 * [SlowLogData](https://cloud.tencent.com/document/api/237/16191#SlowLogData)
 
-	* <font color="#dd0000">**修改成员：</font>**LockTimeAvg, LockTimeMax, LockTimeMin, LockTimeSum, QueryCount, QueryTimeAvg, QueryTimeMax, QueryTimeMin, QueryTimeSum, RowsExaminedSum, RowsSentSum, TsMax, TsMin
+	* <font color="#dd0000">**修改成员**：</font>LockTimeAvg, LockTimeMax, LockTimeMin, LockTimeSum, QueryCount, QueryTimeAvg, QueryTimeMax, QueryTimeMin, QueryTimeSum, RowsExaminedSum, RowsSentSum, TsMax, TsMin
 
 
 ### 第 4 次发布
@@ -13112,29 +13191,29 @@
 
 	* 新增入参：IsFilterExcluster, ExclusterType
 
-	* <font color="#dd0000">**修改入参：</font>**IsFilterVpc, VpcId, SubnetId
+	* <font color="#dd0000">**修改入参**：</font>IsFilterVpc, VpcId, SubnetId
 
-	* <font color="#dd0000">**修改出参：</font>**TotalCount
+	* <font color="#dd0000">**修改出参**：</font>TotalCount
 
 * [DescribeDBLogFiles](https://cloud.tencent.com/document/api/237/16162)
 
 	* 新增出参：VpcPrefix, NormalPrefix
 
-	* <font color="#dd0000">**删除出参：</font>**Vpcprefix, Normalprefix
+	* <font color="#dd0000">**删除出参**：</font>Vpcprefix, Normalprefix
 
 * [DescribeDBSlowLogs](https://cloud.tencent.com/document/api/237/16159)
 
-	* <font color="#dd0000">**修改出参：</font>**LockTimeSum, QueryCount, Total, QueryTimeSum
+	* <font color="#dd0000">**修改出参**：</font>LockTimeSum, QueryCount, Total, QueryTimeSum
 
 * [ModifyDBParameters](https://cloud.tencent.com/document/api/237/16153)
 
 	* 新增出参：Result
 
-	* <font color="#dd0000">**删除出参：</font>**Config
+	* <font color="#dd0000">**删除出参**：</font>Config
 
 * [UpgradeDBInstance](https://cloud.tencent.com/document/api/237/16189)
 
-	* <font color="#dd0000">**修改入参：</font>**VoucherIds
+	* <font color="#dd0000">**修改入参**：</font>VoucherIds
 
 
 新增数据结构：
@@ -13155,11 +13234,11 @@
 
 	* 新增成员：Count, PayMode
 
-	* <font color="#dd0000">**删除成员：</font>**Quantity
+	* <font color="#dd0000">**删除成员**：</font>Quantity
 
 * [LogFileInfo](https://cloud.tencent.com/document/api/237/16191#LogFileInfo)
 
-	* <font color="#dd0000">**修改成员：</font>**Uri
+	* <font color="#dd0000">**修改成员**：</font>Uri
 
 * [ParamConstraint](https://cloud.tencent.com/document/api/237/16191#ParamConstraint)
 
@@ -13167,11 +13246,11 @@
 
 * [ParamModifyResult](https://cloud.tencent.com/document/api/237/16191#ParamModifyResult)
 
-	* <font color="#dd0000">**修改成员：</font>**Code
+	* <font color="#dd0000">**修改成员**：</font>Code
 
 * [SlowLogData](https://cloud.tencent.com/document/api/237/16191#SlowLogData)
 
-	* <font color="#dd0000">**修改成员：</font>**LockTimeAvg, LockTimeMax, LockTimeMin, LockTimeSum, QueryCount, QueryTimeAvg, QueryTimeMax, QueryTimeMin, QueryTimeSum, RowsExaminedSum, RowsSentSum
+	* <font color="#dd0000">**修改成员**：</font>LockTimeAvg, LockTimeMax, LockTimeMin, LockTimeSum, QueryCount, QueryTimeAvg, QueryTimeMax, QueryTimeMin, QueryTimeSum, RowsExaminedSum, RowsSentSum
 
 
 ### 第 1 次发布
@@ -13300,7 +13379,7 @@
 
 	* 新增成员：SpecItems
 
-	* <font color="#dd0000">**删除成员：</font>**SpecItem
+	* <font color="#dd0000">**删除成员**：</font>SpecItem
 
 
 ### 第 4 次发布
@@ -13424,6 +13503,25 @@
 
 
 ## 云监控(monitor) 版本：2018-07-24
+
+### 第 8 次发布
+
+发布时间：2020-03-24 08:10:13
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [DescribePolicyGroupInfoReceiverInfo](https://cloud.tencent.com/document/api/248/30354#DescribePolicyGroupInfoReceiverInfo)
+
+	* 新增成员：ReceiveLanguage
+
+* [ReceiverInfo](https://cloud.tencent.com/document/api/248/30354#ReceiverInfo)
+
+	* 新增成员：ReceiveLanguage
+
 
 ### 第 7 次发布
 
@@ -13704,7 +13802,7 @@
 
 * [VideoTemplateInfoForUpdate](https://cloud.tencent.com/document/api/862/37615#VideoTemplateInfoForUpdate)
 
-	* <font color="#dd0000">**修改成员：</font>**Gop
+	* <font color="#dd0000">**修改成员**：</font>Gop
 
 
 ### 第 11 次发布
@@ -13763,25 +13861,25 @@
 
 	* 新增入参：ResolutionAdaptive
 
-	* <font color="#dd0000">**修改入参：</font>**Width, Height
+	* <font color="#dd0000">**修改入参**：</font>Width, Height
 
 * [CreateImageSpriteTemplate](https://cloud.tencent.com/document/api/862/37608)
 
 	* 新增入参：ResolutionAdaptive, FillType
 
-	* <font color="#dd0000">**修改入参：</font>**Width, Height
+	* <font color="#dd0000">**修改入参**：</font>Width, Height
 
 * [CreateSampleSnapshotTemplate](https://cloud.tencent.com/document/api/862/37607)
 
 	* 新增入参：ResolutionAdaptive, FillType
 
-	* <font color="#dd0000">**修改入参：</font>**Width, Height
+	* <font color="#dd0000">**修改入参**：</font>Width, Height
 
 * [CreateSnapshotByTimeOffsetTemplate](https://cloud.tencent.com/document/api/862/37606)
 
 	* 新增入参：ResolutionAdaptive, FillType
 
-	* <font color="#dd0000">**修改入参：</font>**Width, Height
+	* <font color="#dd0000">**修改入参**：</font>Width, Height
 
 * [ModifyAnimatedGraphicsTemplate](https://cloud.tencent.com/document/api/862/37591)
 
@@ -13848,7 +13946,7 @@
 
 	* 新增入参：AiAnalysisTask
 
-	* <font color="#dd0000">**修改入参：</font>**AiContentReviewTask
+	* <font color="#dd0000">**修改入参**：</font>AiContentReviewTask
 
 
 新增数据结构：
@@ -13882,7 +13980,7 @@
 * [TagConfigureInfo](https://cloud.tencent.com/document/api/862/37615#TagConfigureInfo)
 * [TagConfigureInfoForUpdate](https://cloud.tencent.com/document/api/862/37615#TagConfigureInfoForUpdate)
 
-<font color="#dd0000">**删除数据结构：</font>**
+<font color="#dd0000">**删除数据结构**：</font>
 
 * AiClassificationTaskInput
 
@@ -13957,7 +14055,7 @@
 * [ModifyPersonSample](https://cloud.tencent.com/document/api/862/39439)
 * [ModifyWordSample](https://cloud.tencent.com/document/api/862/39438)
 
-<font color="#dd0000">**删除接口：</font>**
+<font color="#dd0000">**删除接口**：</font>
 
 * ProcessLiveMedia
 
@@ -14027,7 +14125,7 @@
 * [UserDefineOcrTextReviewTemplateInfo](https://cloud.tencent.com/document/api/862/37615#UserDefineOcrTextReviewTemplateInfo)
 * [UserDefineOcrTextReviewTemplateInfoForUpdate](https://cloud.tencent.com/document/api/862/37615#UserDefineOcrTextReviewTemplateInfoForUpdate)
 
-<font color="#dd0000">**删除数据结构：</font>**
+<font color="#dd0000">**删除数据结构**：</font>
 
 * AiAnalysisTaskInput
 
@@ -14051,7 +14149,7 @@
 
 * [WorkflowInfo](https://cloud.tencent.com/document/api/862/37615#WorkflowInfo)
 
-	* <font color="#dd0000">**删除成员：</font>**AiAnalysisTask
+	* <font color="#dd0000">**删除成员**：</font>AiAnalysisTask
 
 
 ### 第 4 次发布
@@ -14068,7 +14166,7 @@
 * [ParseNotification](https://cloud.tencent.com/document/api/862/39228)
 * [ProcessLiveStream](https://cloud.tencent.com/document/api/862/39227)
 
-<font color="#dd0000">**删除接口：</font>**
+<font color="#dd0000">**删除接口**：</font>
 
 * DescribeUserInfo
 
@@ -14142,7 +14240,7 @@
 * [MediaContentReviewPoliticalSegmentItem](https://cloud.tencent.com/document/api/862/37615#MediaContentReviewPoliticalSegmentItem)
 * [MediaContentReviewSegmentItem](https://cloud.tencent.com/document/api/862/37615#MediaContentReviewSegmentItem)
 
-<font color="#dd0000">**删除数据结构：</font>**
+<font color="#dd0000">**删除数据结构**：</font>
 
 * AdaptiveDynamicStreamingTaskInput
 
@@ -14154,7 +14252,7 @@
 
 * [MediaProcessTaskInput](https://cloud.tencent.com/document/api/862/37615#MediaProcessTaskInput)
 
-	* <font color="#dd0000">**删除成员：</font>**AdaptiveDynamicStreamingTaskSet
+	* <font color="#dd0000">**删除成员**：</font>AdaptiveDynamicStreamingTaskSet
 
 * [SampleSnapshotTemplate](https://cloud.tencent.com/document/api/862/37615#SampleSnapshotTemplate)
 
@@ -14227,7 +14325,7 @@
 * [TEHDConfig](https://cloud.tencent.com/document/api/862/37615#TEHDConfig)
 * [TEHDConfigForUpdate](https://cloud.tencent.com/document/api/862/37615#TEHDConfigForUpdate)
 
-<font color="#dd0000">**删除数据结构：</font>**
+<font color="#dd0000">**删除数据结构**：</font>
 
 * AdaptiveDynamicStreamingTaskInput
 
@@ -14235,7 +14333,7 @@
 
 * [MediaProcessTaskInput](https://cloud.tencent.com/document/api/862/37615#MediaProcessTaskInput)
 
-	* <font color="#dd0000">**删除成员：</font>**AdaptiveDynamicStreamingTaskSet
+	* <font color="#dd0000">**删除成员**：</font>AdaptiveDynamicStreamingTaskSet
 
 * [TranscodeTemplate](https://cloud.tencent.com/document/api/862/37615#TranscodeTemplate)
 
@@ -14433,7 +14531,7 @@
 
 * [PlanInfo](https://cloud.tencent.com/document/api/283/17759#PlanInfo)
 
-	* <font color="#dd0000">**修改成员：</font>**SoType
+	* <font color="#dd0000">**修改成员**：</font>SoType
 
 
 ### 第 2 次发布
@@ -14455,11 +14553,11 @@
 
 * [DescribeScanInstances](https://cloud.tencent.com/document/api/283/17756)
 
-	* <font color="#dd0000">**修改入参：</font>**Filters
+	* <font color="#dd0000">**修改入参**：</font>Filters
 
 * [DescribeShieldInstances](https://cloud.tencent.com/document/api/283/17751)
 
-	* <font color="#dd0000">**修改入参：</font>**Filters
+	* <font color="#dd0000">**修改入参**：</font>Filters
 
 
 新增数据结构：
@@ -14473,7 +14571,7 @@
 * [ShieldPlanInfo](https://cloud.tencent.com/document/api/283/17759#ShieldPlanInfo)
 * [SoInfo](https://cloud.tencent.com/document/api/283/17759#SoInfo)
 
-<font color="#dd0000">**删除数据结构：</font>**
+<font color="#dd0000">**删除数据结构**：</font>
 
 * Filters
 
@@ -14590,12 +14688,12 @@
 
 改善已有的文档。
 
-<font color="#dd0000">**删除接口：</font>**
+<font color="#dd0000">**删除接口**：</font>
 
 * SensitiveWordsRecognition
 * TextApproval
 
-<font color="#dd0000">**删除数据结构：</font>**
+<font color="#dd0000">**删除数据结构**：</font>
 
 * EvilToken
 
@@ -14607,7 +14705,7 @@
 
 改善已有的文档。
 
-<font color="#dd0000">**删除接口：</font>**
+<font color="#dd0000">**删除接口**：</font>
 
 * ContentApproval
 
@@ -15244,7 +15342,7 @@
 
 * [AgentAuditedClient](https://cloud.tencent.com/document/api/563/16047#AgentAuditedClient)
 
-	* <font color="#dd0000">**修改成员：</font>**LastMonthAmt, ThisMonthAmt
+	* <font color="#dd0000">**修改成员**：</font>LastMonthAmt, ThisMonthAmt
 
 
 ### 第 8 次发布
@@ -15296,7 +15394,7 @@
 
 * [AgentBillElem](https://cloud.tencent.com/document/api/563/16047#AgentBillElem)
 
-	* <font color="#dd0000">**修改成员：</font>**Amt
+	* <font color="#dd0000">**修改成员**：</font>Amt
 
 
 ### 第 5 次发布
@@ -15344,7 +15442,7 @@
 
 * [DescribeAgentBills](https://cloud.tencent.com/document/api/563/16042)
 
-	* <font color="#dd0000">**修改入参：</font>**SettleMonth
+	* <font color="#dd0000">**修改入参**：</font>SettleMonth
 
 
 新增数据结构：
@@ -15403,18 +15501,18 @@
 
 新增接口：
 
-* [[CloseServerlessDBExtranetAccess](https://cloud.tencent.com/document/api/409/42763)](https://cloud.tencent.com/document/api/#/#)
-* [[CreateServerlessDBInstance](https://cloud.tencent.com/document/api/409/42762)](https://cloud.tencent.com/document/api/#/#)
-* [[DeleteServerlessDBInstance](https://cloud.tencent.com/document/api/409/42761)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeServerlessDBInstances](https://cloud.tencent.com/document/api/409/42760)](https://cloud.tencent.com/document/api/#/#)
-* [[OpenServerlessDBExtranetAccess](https://cloud.tencent.com/document/api/409/42759)](https://cloud.tencent.com/document/api/#/#)
+* [CloseServerlessDBExtranetAccess](https://cloud.tencent.com/document/api/409/42763)
+* [CreateServerlessDBInstance](https://cloud.tencent.com/document/api/409/42762)
+* [DeleteServerlessDBInstance](https://cloud.tencent.com/document/api/409/42761)
+* [DescribeServerlessDBInstances](https://cloud.tencent.com/document/api/409/42760)
+* [OpenServerlessDBExtranetAccess](https://cloud.tencent.com/document/api/409/42759)
 
 新增数据结构：
 
-* [[Filter](https://cloud.tencent.com/document/api/409/16778#Filter)](https://cloud.tencent.com/document/api/409/16778#[Filter](https://cloud.tencent.com/document/api/409/16778#Filter))
-* [[ServerlessDBAccount](https://cloud.tencent.com/document/api/409/16778#ServerlessDBAccount)](https://cloud.tencent.com/document/api/409/16778#[ServerlessDBAccount](https://cloud.tencent.com/document/api/409/16778#ServerlessDBAccount))
-* [[ServerlessDBInstance](https://cloud.tencent.com/document/api/409/16778#ServerlessDBInstance)](https://cloud.tencent.com/document/api/409/16778#[ServerlessDBInstance](https://cloud.tencent.com/document/api/409/16778#ServerlessDBInstance))
-* [[ServerlessDBInstanceNetInfo](https://cloud.tencent.com/document/api/409/16778#ServerlessDBInstanceNetInfo)](https://cloud.tencent.com/document/api/409/16778#[ServerlessDBInstanceNetInfo](https://cloud.tencent.com/document/api/409/16778#ServerlessDBInstanceNetInfo))
+* [Filter](https://cloud.tencent.com/document/api/409/16778#Filter)
+* [ServerlessDBAccount](https://cloud.tencent.com/document/api/409/16778#ServerlessDBAccount)
+* [ServerlessDBInstance](https://cloud.tencent.com/document/api/409/16778#ServerlessDBInstance)
+* [ServerlessDBInstanceNetInfo](https://cloud.tencent.com/document/api/409/16778#ServerlessDBInstanceNetInfo)
 
 ### 第 4 次发布
 
@@ -15424,13 +15522,13 @@
 
 改善已有的文档。
 
-<font color="#dd0000">**删除接口：</font>**
+<font color="#dd0000">**删除接口**：</font>
 
 * CreateDBInstances
 * DescribeDBInstances
 * UpgradeDBInstance
 
-<font color="#dd0000">**删除数据结构：</font>**
+<font color="#dd0000">**删除数据结构**：</font>
 
 * Filter
 
@@ -15495,7 +15593,7 @@
 
 	* 新增入参：Limit, Offset
 
-	* <font color="#dd0000">**删除入参：</font>**PageSize, PageNumber
+	* <font color="#dd0000">**删除入参**：</font>PageSize, PageNumber
 
 
 新增数据结构：
@@ -15512,7 +15610,7 @@
 
 * [SpecItemInfo](https://cloud.tencent.com/document/api/409/16778#SpecItemInfo)
 
-	* <font color="#dd0000">**修改成员：</font>**Cpu, Memory
+	* <font color="#dd0000">**修改成员**：</font>Cpu, Memory
 
 
 ### 第 1 次发布
@@ -15641,7 +15739,7 @@
 
 * [InstanceMultiParam](https://cloud.tencent.com/document/api/239/20022#InstanceMultiParam)
 
-	* <font color="#dd0000">**修改成员：</font>**EnumValue
+	* <font color="#dd0000">**修改成员**：</font>EnumValue
 
 
 ### 第 11 次发布
@@ -15755,13 +15853,13 @@
 
 * [ClearInstance](https://cloud.tencent.com/document/api/239/20021)
 
-	* <font color="#dd0000">**修改入参：</font>**Password
+	* <font color="#dd0000">**修改入参**：</font>Password
 
 * [CreateInstances](https://cloud.tencent.com/document/api/239/20026)
 
 	* 新增入参：NoAuth
 
-	* <font color="#dd0000">**修改入参：</font>**Password
+	* <font color="#dd0000">**修改入参**：</font>Password
 
 	* 新增出参：InstanceIds
 
@@ -15777,11 +15875,11 @@
 
 	* 新增入参：NoAuth
 
-	* <font color="#dd0000">**修改入参：</font>**Password
+	* <font color="#dd0000">**修改入参**：</font>Password
 
 * [RestoreInstance](https://cloud.tencent.com/document/api/239/34435)
 
-	* <font color="#dd0000">**修改入参：</font>**Password
+	* <font color="#dd0000">**修改入参**：</font>Password
 
 
 新增数据结构：
@@ -15840,7 +15938,7 @@
 
 * [DescribeInstanceBackups](https://cloud.tencent.com/document/api/239/20011)
 
-	* <font color="#dd0000">**修改入参：</font>**Status
+	* <font color="#dd0000">**修改入参**：</font>Status
 
 * [DescribeInstances](https://cloud.tencent.com/document/api/239/20018)
 
@@ -15996,7 +16094,7 @@
 
 * [GetFunctionLogs](https://cloud.tencent.com/document/api/583/18583)
 
-	* <font color="#dd0000">**修改入参：</font>**FunctionName
+	* <font color="#dd0000">**修改入参**：</font>FunctionName
 
 * [UpdateFunctionConfiguration](https://cloud.tencent.com/document/api/583/18580)
 
@@ -16027,7 +16125,7 @@
 
 * [GetFunctionLogs](https://cloud.tencent.com/document/api/583/18583)
 
-	* <font color="#dd0000">**修改入参：</font>**FunctionName
+	* <font color="#dd0000">**修改入参**：</font>FunctionName
 
 * [UpdateFunctionCode](https://cloud.tencent.com/document/api/583/18581)
 
@@ -16156,7 +16254,7 @@
 
 * [GetFunctionLogs](https://cloud.tencent.com/document/api/583/18583)
 
-	* <font color="#dd0000">**修改入参：</font>**Filter
+	* <font color="#dd0000">**修改入参**：</font>Filter
 
 * [ListFunctions](https://cloud.tencent.com/document/api/583/18582)
 
@@ -16178,7 +16276,7 @@
 
 	* 新增成员：Name, Values
 
-	* <font color="#dd0000">**删除成员：</font>**RetCode
+	* <font color="#dd0000">**删除成员**：</font>RetCode
 
 * [Function](https://cloud.tencent.com/document/api/583/17244#Function)
 
@@ -16361,32 +16459,32 @@
 
 * [PullSmsReplyStatusByPhoneNumber](https://cloud.tencent.com/document/api/382/38775)
 
-	* <font color="#dd0000">**修改入参：</font>**SendDateTime
+	* <font color="#dd0000">**修改入参**：</font>SendDateTime
 
 * [PullSmsSendStatusByPhoneNumber](https://cloud.tencent.com/document/api/382/38773)
 
-	* <font color="#dd0000">**修改入参：</font>**SendDateTime
+	* <font color="#dd0000">**修改入参**：</font>SendDateTime
 
 * [SendSms](https://cloud.tencent.com/document/api/382/38778)
 
-	* <font color="#dd0000">**修改入参：</font>**ExtendCode
+	* <font color="#dd0000">**修改入参**：</font>ExtendCode
 
 * [SmsPackagesStatistics](https://cloud.tencent.com/document/api/382/39533)
 
-	* <font color="#dd0000">**删除入参：</font>**NumberOfPullPackages
+	* <font color="#dd0000">**删除入参**：</font>NumberOfPullPackages
 
 
 修改数据结构：
 
 * [PullSmsReplyStatus](https://cloud.tencent.com/document/api/382/38779#PullSmsReplyStatus)
 
-	* <font color="#dd0000">**修改成员：</font>**ExtendCode
+	* <font color="#dd0000">**修改成员**：</font>ExtendCode
 
 * [SendStatusStatistics](https://cloud.tencent.com/document/api/382/38779#SendStatusStatistics)
 
 	* 新增成员：FeeCount, RequestCount, RequestSuccessCount
 
-	* <font color="#dd0000">**删除成员：</font>**BillingStatistics, RequestStatistics, RequestSuccessStatistics
+	* <font color="#dd0000">**删除成员**：</font>BillingStatistics, RequestStatistics, RequestSuccessStatistics
 
 
 ### 第 3 次发布
@@ -16421,7 +16519,7 @@
 
 * [PullSmsReplyStatus](https://cloud.tencent.com/document/api/382/38779#PullSmsReplyStatus)
 
-	* <font color="#dd0000">**修改成员：</font>**ExtendCode, ReplyTime
+	* <font color="#dd0000">**修改成员**：</font>ExtendCode, ReplyTime
 
 
 ### 第 1 次发布
@@ -17027,7 +17125,7 @@
 
 * [GetFederationToken](https://cloud.tencent.com/document/api/598/33416)
 
-	* <font color="#dd0000">**删除入参：</font>**OpenUin, OpenOwnerUin, Ua, Mfa, InterfaceName, ExtraInfo, ThUin, ThOwnerUin, CodeMode
+	* <font color="#dd0000">**删除入参**：</font>OpenUin, OpenOwnerUin, Ua, Mfa, InterfaceName, ExtraInfo, ThUin, ThOwnerUin, CodeMode
 
 
 ### 第 1 次发布
@@ -17064,9 +17162,9 @@
 
 * [DescribeResourcesByTags](https://cloud.tencent.com/document/api/651/38320)
 
-	* <font color="#dd0000">**修改入参：</font>**TagFilters
+	* <font color="#dd0000">**修改入参**：</font>TagFilters
 
-	* <font color="#dd0000">**修改出参：</font>**Rows
+	* <font color="#dd0000">**修改出参**：</font>Rows
 
 
 新增数据结构：
@@ -17074,7 +17172,7 @@
 * [ResourceTag](https://cloud.tencent.com/document/api/651/35327#ResourceTag)
 * [TagFilter](https://cloud.tencent.com/document/api/651/35327#TagFilter)
 
-<font color="#dd0000">**删除数据结构：</font>**
+<font color="#dd0000">**删除数据结构**：</font>
 
 * ResourcesTag
 * TagFilters
@@ -17193,7 +17291,7 @@
 
 * [SendTransactionHandler](https://cloud.tencent.com/document/api/663/38527)
 
-	* <font color="#dd0000">**删除入参：</font>**KeyUser
+	* <font color="#dd0000">**删除入参**：</font>KeyUser
 
 
 ### 第 5 次发布
@@ -17237,7 +17335,7 @@
 
 	* 新增出参：OrderCount
 
-	* <font color="#dd0000">**删除出参：</font>**OtherChannelCount, NoneChannelCount, OtherPeerCount, OtherGroupCount, OtherChaincodeCount, OrderCertCount
+	* <font color="#dd0000">**删除出参**：</font>OtherChannelCount, NoneChannelCount, OtherPeerCount, OtherGroupCount, OtherChaincodeCount, OrderCertCount
 
 
 新增数据结构：
@@ -17385,7 +17483,7 @@
 * [TextProcess](https://cloud.tencent.com/document/api/1060/34557)
 * [TextReset](https://cloud.tencent.com/document/api/1060/35522)
 
-<font color="#dd0000">**删除接口：</font>**
+<font color="#dd0000">**删除接口**：</font>
 
 * PostText
 
@@ -17397,7 +17495,7 @@
 
 改善已有的文档。
 
-<font color="#dd0000">**删除接口：</font>**
+<font color="#dd0000">**删除接口**：</font>
 
 * PostAudio
 
@@ -17474,7 +17572,7 @@
 
 改善已有的文档。
 
-<font color="#dd0000">**删除接口：</font>**
+<font color="#dd0000">**删除接口**：</font>
 
 * CreateApp
 * CreateZone
@@ -17485,7 +17583,7 @@
 * ModifyAppPassword
 * ModifyZoneName
 
-<font color="#dd0000">**删除数据结构：</font>**
+<font color="#dd0000">**删除数据结构**：</font>
 
 * AppInfo
 * ZoneInfo
@@ -17517,137 +17615,137 @@
 
 	* 新增入参：ClusterId
 
-	* <font color="#dd0000">**删除入参：</font>**ApplicationId
+	* <font color="#dd0000">**删除入参**：</font>ApplicationId
 
-	* <font color="#dd0000">**修改入参：</font>**SelectedTables
+	* <font color="#dd0000">**修改入参**：</font>SelectedTables
 
-	* <font color="#dd0000">**修改出参：</font>**TableResults
+	* <font color="#dd0000">**修改出参**：</font>TableResults
 
 * [CompareIdlFiles](https://cloud.tencent.com/document/api/596/39668)
 
 	* 新增入参：ClusterId
 
-	* <font color="#dd0000">**删除入参：</font>**ApplicationId
+	* <font color="#dd0000">**删除入参**：</font>ApplicationId
 
-	* <font color="#dd0000">**修改入参：</font>**SelectedTables
+	* <font color="#dd0000">**修改入参**：</font>SelectedTables
 
-	* <font color="#dd0000">**修改出参：</font>**TableInfos
+	* <font color="#dd0000">**修改出参**：</font>TableInfos
 
 * [CreateTables](https://cloud.tencent.com/document/api/596/39667)
 
 	* 新增入参：ClusterId
 
-	* <font color="#dd0000">**删除入参：</font>**ApplicationId
+	* <font color="#dd0000">**删除入参**：</font>ApplicationId
 
-	* <font color="#dd0000">**修改入参：</font>**SelectedTables
+	* <font color="#dd0000">**修改入参**：</font>SelectedTables
 
-	* <font color="#dd0000">**修改出参：</font>**TableResults
+	* <font color="#dd0000">**修改出参**：</font>TableResults
 
 * [DeleteIdlFiles](https://cloud.tencent.com/document/api/596/39683)
 
 	* 新增入参：ClusterId
 
-	* <font color="#dd0000">**删除入参：</font>**ApplicationId
+	* <font color="#dd0000">**删除入参**：</font>ApplicationId
 
 * [DeleteTables](https://cloud.tencent.com/document/api/596/39666)
 
 	* 新增入参：ClusterId
 
-	* <font color="#dd0000">**删除入参：</font>**ApplicationId
+	* <font color="#dd0000">**删除入参**：</font>ApplicationId
 
-	* <font color="#dd0000">**修改入参：</font>**SelectedTables
+	* <font color="#dd0000">**修改入参**：</font>SelectedTables
 
-	* <font color="#dd0000">**修改出参：</font>**TableResults
+	* <font color="#dd0000">**修改出参**：</font>TableResults
 
 * [DescribeIdlFileInfos](https://cloud.tencent.com/document/api/596/39665)
 
 	* 新增入参：ClusterId, TableGroupIds
 
-	* <font color="#dd0000">**删除入参：</font>**ApplicationId, LogicZoneIds
+	* <font color="#dd0000">**删除入参**：</font>ApplicationId, LogicZoneIds
 
 * [DescribeTables](https://cloud.tencent.com/document/api/596/39664)
 
 	* 新增入参：ClusterId, TableGroupIds
 
-	* <font color="#dd0000">**删除入参：</font>**ApplicationId, LogicZoneIds
+	* <font color="#dd0000">**删除入参**：</font>ApplicationId, LogicZoneIds
 
-	* <font color="#dd0000">**修改入参：</font>**SelectedTables
+	* <font color="#dd0000">**修改入参**：</font>SelectedTables
 
-	* <font color="#dd0000">**修改出参：</font>**TableInfos
+	* <font color="#dd0000">**修改出参**：</font>TableInfos
 
 * [DescribeTablesInRecycle](https://cloud.tencent.com/document/api/596/39663)
 
 	* 新增入参：ClusterId, TableGroupIds
 
-	* <font color="#dd0000">**删除入参：</font>**ApplicationId, LogicZoneIds
+	* <font color="#dd0000">**删除入参**：</font>ApplicationId, LogicZoneIds
 
-	* <font color="#dd0000">**修改出参：</font>**TableInfos
+	* <font color="#dd0000">**修改出参**：</font>TableInfos
 
 * [DescribeTasks](https://cloud.tencent.com/document/api/596/39677)
 
 	* 新增入参：ClusterIds
 
-	* <font color="#dd0000">**删除入参：</font>**ApplicationIds
+	* <font color="#dd0000">**删除入参**：</font>ApplicationIds
 
-	* <font color="#dd0000">**修改出参：</font>**TaskInfos
+	* <font color="#dd0000">**修改出参**：</font>TaskInfos
 
 * [ModifyTableMemos](https://cloud.tencent.com/document/api/596/39662)
 
 	* 新增入参：ClusterId
 
-	* <font color="#dd0000">**删除入参：</font>**ApplicationId
+	* <font color="#dd0000">**删除入参**：</font>ApplicationId
 
-	* <font color="#dd0000">**修改入参：</font>**TableMemos
+	* <font color="#dd0000">**修改入参**：</font>TableMemos
 
-	* <font color="#dd0000">**修改出参：</font>**TableResults
+	* <font color="#dd0000">**修改出参**：</font>TableResults
 
 * [ModifyTableQuotas](https://cloud.tencent.com/document/api/596/39661)
 
 	* 新增入参：ClusterId
 
-	* <font color="#dd0000">**删除入参：</font>**ApplicationId
+	* <font color="#dd0000">**删除入参**：</font>ApplicationId
 
-	* <font color="#dd0000">**修改入参：</font>**TableQuotas
+	* <font color="#dd0000">**修改入参**：</font>TableQuotas
 
-	* <font color="#dd0000">**修改出参：</font>**TableResults
+	* <font color="#dd0000">**修改出参**：</font>TableResults
 
 * [ModifyTables](https://cloud.tencent.com/document/api/596/39660)
 
 	* 新增入参：ClusterId
 
-	* <font color="#dd0000">**删除入参：</font>**ApplicationId
+	* <font color="#dd0000">**删除入参**：</font>ApplicationId
 
-	* <font color="#dd0000">**修改入参：</font>**SelectedTables
+	* <font color="#dd0000">**修改入参**：</font>SelectedTables
 
-	* <font color="#dd0000">**修改出参：</font>**TableResults
+	* <font color="#dd0000">**修改出参**：</font>TableResults
 
 * [RecoverRecycleTables](https://cloud.tencent.com/document/api/596/39659)
 
 	* 新增入参：ClusterId
 
-	* <font color="#dd0000">**删除入参：</font>**ApplicationId
+	* <font color="#dd0000">**删除入参**：</font>ApplicationId
 
-	* <font color="#dd0000">**修改入参：</font>**SelectedTables
+	* <font color="#dd0000">**修改入参**：</font>SelectedTables
 
-	* <font color="#dd0000">**修改出参：</font>**TableResults
+	* <font color="#dd0000">**修改出参**：</font>TableResults
 
 * [RollbackTables](https://cloud.tencent.com/document/api/596/39658)
 
 	* 新增入参：ClusterId
 
-	* <font color="#dd0000">**删除入参：</font>**ApplicationId
+	* <font color="#dd0000">**删除入参**：</font>ApplicationId
 
-	* <font color="#dd0000">**修改入参：</font>**SelectedTables
+	* <font color="#dd0000">**修改入参**：</font>SelectedTables
 
-	* <font color="#dd0000">**修改出参：</font>**TableResults
+	* <font color="#dd0000">**修改出参**：</font>TableResults
 
 * [VerifyIdlFiles](https://cloud.tencent.com/document/api/596/39657)
 
 	* 新增入参：ClusterId, TableGroupId
 
-	* <font color="#dd0000">**删除入参：</font>**ApplicationId, LogicZoneId
+	* <font color="#dd0000">**删除入参**：</font>ApplicationId, LogicZoneId
 
-	* <font color="#dd0000">**修改出参：</font>**TableInfos
+	* <font color="#dd0000">**修改出参**：</font>TableInfos
 
 
 新增数据结构：
@@ -17661,7 +17759,7 @@
 * [TableRollbackResultNew](https://cloud.tencent.com/document/api/596/39686#TableRollbackResultNew)
 * [TaskInfoNew](https://cloud.tencent.com/document/api/596/39686#TaskInfoNew)
 
-<font color="#dd0000">**删除数据结构：</font>**
+<font color="#dd0000">**删除数据结构**：</font>
 
 * ParsedTableInfo
 * SelectedTableInfo
@@ -17738,7 +17836,7 @@
 
 新增接口：
 
-* [[CreateAuthDomain](https://cloud.tencent.com/document/api/876/42764)](https://cloud.tencent.com/document/api/#/#)
+* [CreateAuthDomain](https://cloud.tencent.com/document/api/876/42764)
 
 ### 第 5 次发布
 
@@ -17781,7 +17879,7 @@
 
 * [ModifyEnv](https://cloud.tencent.com/document/api/876/34818)
 
-	* <font color="#dd0000">**修改入参：</font>**Alias
+	* <font color="#dd0000">**修改入参**：</font>Alias
 
 
 新增数据结构：
@@ -17797,7 +17895,7 @@
 
 改善已有的文档。
 
-<font color="#dd0000">**删除接口：</font>**
+<font color="#dd0000">**删除接口**：</font>
 
 * CreateMysqlInstance
 * IsolateMysqlInstance
@@ -17920,19 +18018,19 @@
 
 * [DeletePerson](https://cloud.tencent.com/document/api/1059/36022)
 
-	* <font color="#dd0000">**修改入参：</font>**LibraryId
+	* <font color="#dd0000">**修改入参**：</font>LibraryId
 
 * [DescribePerson](https://cloud.tencent.com/document/api/1059/36015)
 
-	* <font color="#dd0000">**修改入参：</font>**LibraryId
+	* <font color="#dd0000">**修改入参**：</font>LibraryId
 
 * [ModifyPerson](https://cloud.tencent.com/document/api/1059/36012)
 
-	* <font color="#dd0000">**修改入参：</font>**LibraryId
+	* <font color="#dd0000">**修改入参**：</font>LibraryId
 
 * [SubmitConversationTask](https://cloud.tencent.com/document/api/1059/36307)
 
-	* <font color="#dd0000">**修改入参：</font>**StudentUrl, TeacherUrl
+	* <font color="#dd0000">**修改入参**：</font>StudentUrl, TeacherUrl
 
 
 新增数据结构：
@@ -17943,7 +18041,7 @@
 
 * [ImageTaskResult](https://cloud.tencent.com/document/api/1059/36031#ImageTaskResult)
 
-	* <font color="#dd0000">**修改成员：</font>**StudentBodyMovement
+	* <font color="#dd0000">**修改成员**：</font>StudentBodyMovement
 
 
 ### 第 4 次发布
@@ -17962,7 +18060,7 @@
 
 * [SubmitDoubleVideoHighlights](https://cloud.tencent.com/document/api/1059/36010)
 
-	* <font color="#dd0000">**修改入参：</font>**SimThreshold
+	* <font color="#dd0000">**修改入参**：</font>SimThreshold
 
 
 ### 第 3 次发布
@@ -17981,7 +18079,7 @@
 * [SubmitPartialBodyClassTask](https://cloud.tencent.com/document/api/1059/37228)
 * [SubmitTraditionalClassTask](https://cloud.tencent.com/document/api/1059/37230)
 
-<font color="#dd0000">**删除接口：</font>**
+<font color="#dd0000">**删除接口**：</font>
 
 * CheckAttendance
 
@@ -18022,7 +18120,7 @@
 
 	* 新增成员：RatioUseDuration
 
-	* <font color="#dd0000">**修改成员：</font>**Express, Ratio
+	* <font color="#dd0000">**修改成员**：</font>Express, Ratio
 
 * [ImageTaskFunction](https://cloud.tencent.com/document/api/1059/36031#ImageTaskFunction)
 
@@ -18060,7 +18158,7 @@
 
 	* 新增入参：FileType
 
-	* <font color="#dd0000">**删除入参：</font>**ClassId, Identity
+	* <font color="#dd0000">**删除入参**：</font>ClassId, Identity
 
 * [TransmitAudioStream](https://cloud.tencent.com/document/api/1059/35997)
 
@@ -18075,7 +18173,7 @@
 
 * [VocabDetailInfomation](https://cloud.tencent.com/document/api/1059/36031#VocabDetailInfomation)
 
-	* <font color="#dd0000">**修改成员：</font>**VocabDetailInfo
+	* <font color="#dd0000">**修改成员**：</font>VocabDetailInfo
 
 
 ### 第 1 次发布
@@ -18192,11 +18290,11 @@
 
 新增接口：
 
-* [[DescribeNamespaces](https://cloud.tencent.com/document/api/1141/42765)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeNamespaces](https://cloud.tencent.com/document/api/1141/42765)
 
 新增数据结构：
 
-* [[TcrNamespaceInfo](https://cloud.tencent.com/document/api/1141/41603#TcrNamespaceInfo)](https://cloud.tencent.com/document/api/1141/41603#[TcrNamespaceInfo](https://cloud.tencent.com/document/api/1141/41603#TcrNamespaceInfo))
+* [TcrNamespaceInfo](https://cloud.tencent.com/document/api/1141/41603#TcrNamespaceInfo)
 
 ### 第 3 次发布
 
@@ -18351,25 +18449,25 @@
 
 	* 新增入参：RuntimeConf
 
-	* <font color="#dd0000">**修改入参：</font>**Cluster
+	* <font color="#dd0000">**修改入参**：</font>Cluster
 
 * [DeleteModel](https://cloud.tencent.com/document/api/851/18314)
 
 	* 新增入参：ServType
 
-	* <font color="#dd0000">**修改入参：</font>**Cluster
+	* <font color="#dd0000">**修改入参**：</font>Cluster
 
 * [DescribeModel](https://cloud.tencent.com/document/api/851/18313)
 
 	* 新增入参：ServType
 
-	* <font color="#dd0000">**修改入参：</font>**Cluster
+	* <font color="#dd0000">**修改入参**：</font>Cluster
 
 * [ListModels](https://cloud.tencent.com/document/api/851/18312)
 
 	* 新增入参：ServType
 
-	* <font color="#dd0000">**修改入参：</font>**Cluster
+	* <font color="#dd0000">**修改入参**：</font>Cluster
 
 
 修改数据结构：
@@ -18492,7 +18590,7 @@
 
 
 
-## 智能钛机器学习(tiems) 版本：2019-04-16
+## 智能钛弹性模型服务(tiems) 版本：2019-04-16
 
 ### 第 5 次发布
 
@@ -18551,11 +18649,11 @@
 
 	* 新增入参：QuantizationInput
 
-	* <font color="#dd0000">**修改入参：</font>**ResourceGroupId, WorkerCount, ConfigId
+	* <font color="#dd0000">**修改入参**：</font>ResourceGroupId, WorkerCount, ConfigId
 
 * [CreateService](https://cloud.tencent.com/document/api/1120/37560)
 
-	* <font color="#dd0000">**修改入参：</font>**ResourceGroupId
+	* <font color="#dd0000">**修改入参**：</font>ResourceGroupId
 
 * [UpdateService](https://cloud.tencent.com/document/api/1120/37557)
 
@@ -18606,7 +18704,7 @@
 
 * [ExposeInfo](https://cloud.tencent.com/document/api/1120/37561#ExposeInfo)
 
-<font color="#dd0000">**删除数据结构：</font>**
+<font color="#dd0000">**删除数据结构**：</font>
 
 * Expose
 
@@ -18614,7 +18712,7 @@
 
 * [ModelService](https://cloud.tencent.com/document/api/1120/37561#ModelService)
 
-	* <font color="#dd0000">**修改成员：</font>**Exposes
+	* <font color="#dd0000">**修改成员**：</font>Exposes
 
 
 ### 第 2 次发布
@@ -18640,43 +18738,43 @@
 
 	* 新增入参：Cpu, Memory, ResourceGroupId, Authentication, Gpu, GpuMemory, Description, GpuType
 
-	* <font color="#dd0000">**修改入参：</font>**ServiceConfigId
+	* <font color="#dd0000">**修改入参**：</font>ServiceConfigId
 
-	* <font color="#dd0000">**修改出参：</font>**Service
+	* <font color="#dd0000">**修改出参**：</font>Service
 
 * [CreateServiceConfig](https://cloud.tencent.com/document/api/1120/37555)
 
 	* 新增入参：Description
 
-	* <font color="#dd0000">**删除入参：</font>**Cpu, Memory, TflopUnits, GpuMemory
+	* <font color="#dd0000">**删除入参**：</font>Cpu, Memory, TflopUnits, GpuMemory
 
-	* <font color="#dd0000">**修改出参：</font>**ServiceConfig
+	* <font color="#dd0000">**修改出参**：</font>ServiceConfig
 
 * [DeleteService](https://cloud.tencent.com/document/api/1120/37559)
 
-	* <font color="#dd0000">**修改入参：</font>**ServiceId
+	* <font color="#dd0000">**修改入参**：</font>ServiceId
 
 * [DeleteServiceConfig](https://cloud.tencent.com/document/api/1120/37554)
 
-	* <font color="#dd0000">**修改入参：</font>**ServiceConfigId
+	* <font color="#dd0000">**修改入参**：</font>ServiceConfigId
 
 * [DescribeServiceConfigs](https://cloud.tencent.com/document/api/1120/37552)
 
 	* 新增入参：PageByName
 
-	* <font color="#dd0000">**修改出参：</font>**ServiceConfigs
+	* <font color="#dd0000">**修改出参**：</font>ServiceConfigs
 
 * [DescribeServices](https://cloud.tencent.com/document/api/1120/37558)
 
-	* <font color="#dd0000">**修改出参：</font>**Services
+	* <font color="#dd0000">**修改出参**：</font>Services
 
 * [UpdateService](https://cloud.tencent.com/document/api/1120/37557)
 
 	* 新增入参：Description, GpuType
 
-	* <font color="#dd0000">**修改入参：</font>**ServiceId, ServiceConfigId
+	* <font color="#dd0000">**修改入参**：</font>ServiceId, ServiceConfigId
 
-	* <font color="#dd0000">**修改出参：</font>**Service
+	* <font color="#dd0000">**修改出参**：</font>Service
 
 
 新增数据结构：
@@ -18689,7 +18787,7 @@
 * [ModelService](https://cloud.tencent.com/document/api/1120/37561#ModelService)
 * [PredictInput](https://cloud.tencent.com/document/api/1120/37561#PredictInput)
 
-<font color="#dd0000">**删除数据结构：</font>**
+<font color="#dd0000">**删除数据结构**：</font>
 
 * Service
 * ServiceConfig
@@ -18744,11 +18842,11 @@
 
 改善已有的文档。
 
-<font color="#dd0000">**删除接口：</font>**
+<font color="#dd0000">**删除接口**：</font>
 
 * ImageModeration
 
-<font color="#dd0000">**删除数据结构：</font>**
+<font color="#dd0000">**删除数据结构**：</font>
 
 * Candidate
 * DisgustResult
@@ -18959,7 +19057,7 @@
 
 * [CustomLayout](https://cloud.tencent.com/document/api/1137/40068#CustomLayout)
 
-	* <font color="#dd0000">**修改成员：</font>**InputStreamList
+	* <font color="#dd0000">**修改成员**：</font>InputStreamList
 
 
 ### 第 1 次发布
@@ -19036,7 +19134,7 @@
 
 	* 新增成员：ServiceCIDR, EniSubnetIds, ClaimExpiredSeconds
 
-	* <font color="#dd0000">**修改成员：</font>**ClusterCIDR
+	* <font color="#dd0000">**修改成员**：</font>ClusterCIDR
 
 
 ### 第 13 次发布
@@ -19106,9 +19204,9 @@
 
 	* 新增成员：AutoFormatAndMount
 
-	* <font color="#dd0000">**删除成员：</font>**AutuFormatAndMount, DiskId
+	* <font color="#dd0000">**删除成员**：</font>AutuFormatAndMount, DiskId
 
-	* <font color="#dd0000">**修改成员：</font>**MountTarget
+	* <font color="#dd0000">**修改成员**：</font>MountTarget
 
 
 ### 第 11 次发布
@@ -19281,7 +19379,7 @@
 
 * [DescribeExistedInstances](https://cloud.tencent.com/document/api/457/36706)
 
-	* <font color="#dd0000">**修改入参：</font>**Filters
+	* <font color="#dd0000">**修改入参**：</font>Filters
 
 
 新增数据结构：
@@ -19328,7 +19426,7 @@
 
 * [Instance](https://cloud.tencent.com/document/api/457/31866#Instance)
 
-	* <font color="#dd0000">**删除成员：</font>**InstanceAdvanceSettings
+	* <font color="#dd0000">**删除成员**：</font>InstanceAdvanceSettings
 
 
 ### 第 3 次发布
@@ -19347,7 +19445,7 @@
 
 * [DescribeClusterInstances](https://cloud.tencent.com/document/api/457/31863)
 
-	* <font color="#dd0000">**修改入参：</font>**InstanceIds
+	* <font color="#dd0000">**修改入参**：</font>InstanceIds
 
 
 新增数据结构：
@@ -19391,13 +19489,13 @@
 
 	* 新增成员：ClusterNodeNum
 
-	* <font color="#dd0000">**修改成员：</font>**ClusterDescription
+	* <font color="#dd0000">**修改成员**：</font>ClusterDescription
 
 * [ClusterNetworkSettings](https://cloud.tencent.com/document/api/457/31866#ClusterNetworkSettings)
 
 	* 新增成员：Ipvs
 
-	* <font color="#dd0000">**删除成员：</font>**IPVS
+	* <font color="#dd0000">**删除成员**：</font>IPVS
 
 
 ### 第 1 次发布
@@ -19554,7 +19652,7 @@
 
 改善已有的文档。
 
-<font color="#dd0000">**删除接口：</font>**
+<font color="#dd0000">**删除接口**：</font>
 
 * DissolveRoom
 * KickOutUser
@@ -19670,7 +19768,7 @@
 
 * [CreateApplication](https://cloud.tencent.com/document/api/649/36094)
 
-	* <font color="#dd0000">**修改入参：</font>**MicroserviceType
+	* <font color="#dd0000">**修改入参**：</font>MicroserviceType
 
 
 ### 第 6 次发布
@@ -19699,29 +19797,29 @@
 
 	* 新增入参：NamespaceType, NamespaceId
 
-	* <font color="#dd0000">**修改入参：</font>**ClusterId
+	* <font color="#dd0000">**修改入参**：</font>ClusterId
 
 * [CreateServerlessGroup](https://cloud.tencent.com/document/api/649/39424)
 
 	* 新增入参：NamespaceId, ClusterId
 
-	* <font color="#dd0000">**删除入参：</font>**PkgId, VpcConfig
+	* <font color="#dd0000">**删除入参**：</font>PkgId, VpcConfig
 
 * [DeleteNamespace](https://cloud.tencent.com/document/api/649/36097)
 
-	* <font color="#dd0000">**修改入参：</font>**ClusterId
+	* <font color="#dd0000">**修改入参**：</font>ClusterId
 
 * [DeployServerlessGroup](https://cloud.tencent.com/document/api/649/39774)
 
 	* 新增入参：Memory, InstanceRequest, StartupParameters
 
-	* <font color="#dd0000">**删除入参：</font>**VpcConfig
+	* <font color="#dd0000">**删除入参**：</font>VpcConfig
 
 * [DescribeServerlessGroups](https://cloud.tencent.com/document/api/649/39421)
 
 	* 新增入参：NamespaceId, ClusterId
 
-	* <font color="#dd0000">**修改入参：</font>**ApplicationId
+	* <font color="#dd0000">**修改入参**：</font>ApplicationId
 
 * [DescribeSimpleGroups](https://cloud.tencent.com/document/api/649/36064)
 
@@ -19736,7 +19834,7 @@
 
 * [AddInstanceResult](https://cloud.tencent.com/document/api/649/36099#AddInstanceResult)
 
-<font color="#dd0000">**删除数据结构：</font>**
+<font color="#dd0000">**删除数据结构**：</font>
 
 * VpcConfig
 
@@ -19860,7 +19958,7 @@
 
 	* 新增入参：NamespaceResourceType
 
-	* <font color="#dd0000">**修改出参：</font>**Result
+	* <font color="#dd0000">**修改出参**：</font>Result
 
 * [DescribeApplications](https://cloud.tencent.com/document/api/649/36090)
 
@@ -20153,25 +20251,25 @@
 
 	* 新增入参：ResolutionAdaptive
 
-	* <font color="#dd0000">**修改入参：</font>**Width, Height
+	* <font color="#dd0000">**修改入参**：</font>Width, Height
 
 * [CreateImageSpriteTemplate](https://cloud.tencent.com/document/api/266/37788)
 
 	* 新增入参：ResolutionAdaptive, FillType
 
-	* <font color="#dd0000">**修改入参：</font>**Width, Height
+	* <font color="#dd0000">**修改入参**：</font>Width, Height
 
 * [CreateSampleSnapshotTemplate](https://cloud.tencent.com/document/api/266/37787)
 
 	* 新增入参：ResolutionAdaptive, FillType
 
-	* <font color="#dd0000">**修改入参：</font>**Width, Height
+	* <font color="#dd0000">**修改入参**：</font>Width, Height
 
 * [CreateSnapshotByTimeOffsetTemplate](https://cloud.tencent.com/document/api/266/37786)
 
 	* 新增入参：ResolutionAdaptive, FillType
 
-	* <font color="#dd0000">**修改入参：</font>**Width, Height
+	* <font color="#dd0000">**修改入参**：</font>Width, Height
 
 * [ModifyAnimatedGraphicsTemplate](https://cloud.tencent.com/document/api/266/37777)
 
@@ -20303,7 +20401,7 @@
 
 	* 新增成员：CreateTime
 
-	* <font color="#dd0000">**删除成员：</font>**CreatTime
+	* <font color="#dd0000">**删除成员**：</font>CreatTime
 
 * [WatermarkInput](https://cloud.tencent.com/document/api/266/31773#WatermarkInput)
 
@@ -20333,7 +20431,7 @@
 
 * [AudioVolumeParam](https://cloud.tencent.com/document/api/266/31773#AudioVolumeParam)
 
-	* <font color="#dd0000">**修改成员：</font>**Gain
+	* <font color="#dd0000">**修改成员**：</font>Gain
 
 
 ### 第 28 次发布
@@ -20353,7 +20451,7 @@
 
 * [MediaContentReviewOcrTextSegmentItem](https://cloud.tencent.com/document/api/266/31773#MediaContentReviewOcrTextSegmentItem)
 
-	* <font color="#dd0000">**修改成员：</font>**PicUrlExpireTime
+	* <font color="#dd0000">**修改成员**：</font>PicUrlExpireTime
 
 * [ProcedureTemplate](https://cloud.tencent.com/document/api/266/31773#ProcedureTemplate)
 
@@ -20505,7 +20603,7 @@
 
 	* 新增成员：HighlightTask
 
-	* <font color="#dd0000">**删除成员：</font>**HighlightsTask
+	* <font color="#dd0000">**删除成员**：</font>HighlightsTask
 
 * [MediaAiAnalysisHighlightItem](https://cloud.tencent.com/document/api/266/31773#MediaAiAnalysisHighlightItem)
 
@@ -20513,13 +20611,13 @@
 
 * [MediaMiniProgramReviewElem](https://cloud.tencent.com/document/api/266/31773#MediaMiniProgramReviewElem)
 
-	* <font color="#dd0000">**修改成员：</font>**Confidence
+	* <font color="#dd0000">**修改成员**：</font>Confidence
 
 * [MediaMiniProgramReviewInfoItem](https://cloud.tencent.com/document/api/266/31773#MediaMiniProgramReviewInfoItem)
 
 	* 新增成员：ReviewSummary
 
-	* <font color="#dd0000">**删除成员：</font>**ReviewSummery
+	* <font color="#dd0000">**删除成员**：</font>ReviewSummery
 
 
 ### 第 23 次发布
@@ -20536,11 +20634,11 @@
 
 	* 新增成员：MiniProgramReviewList
 
-	* <font color="#dd0000">**删除成员：</font>**MiniProgramReivewList
+	* <font color="#dd0000">**删除成员**：</font>MiniProgramReivewList
 
 * [MediaMiniProgramReviewInfoItem](https://cloud.tencent.com/document/api/266/31773#MediaMiniProgramReviewInfoItem)
 
-	* <font color="#dd0000">**修改成员：</font>**ReviewSummery
+	* <font color="#dd0000">**修改成员**：</font>ReviewSummery
 
 
 ### 第 22 次发布
@@ -20736,7 +20834,7 @@
 
 * [PullUploadTask](https://cloud.tencent.com/document/api/266/31773#PullUploadTask)
 
-<font color="#dd0000">**删除数据结构：</font>**
+<font color="#dd0000">**删除数据结构**：</font>
 
 * PullFileTask
 
@@ -20748,7 +20846,7 @@
 
 * [EventContent](https://cloud.tencent.com/document/api/266/31773#EventContent)
 
-	* <font color="#dd0000">**修改成员：</font>**PullCompleteEvent
+	* <font color="#dd0000">**修改成员**：</font>PullCompleteEvent
 
 
 ### 第 15 次发布
@@ -20768,7 +20866,7 @@
 
 * [PullFileTask](https://cloud.tencent.com/document/api/266/31773#PullFileTask)
 
-	* <font color="#dd0000">**修改成员：</font>**MediaBasicInfo
+	* <font color="#dd0000">**修改成员**：</font>MediaBasicInfo
 
 
 ### 第 14 次发布
@@ -20806,7 +20904,7 @@
 	* 新增出参：ComposeMediaTask
 
 
-<font color="#dd0000">**删除数据结构：</font>**
+<font color="#dd0000">**删除数据结构**：</font>
 
 * WechatMiniProgramPublishTask
 
@@ -20814,7 +20912,7 @@
 
 * [EventContent](https://cloud.tencent.com/document/api/266/31773#EventContent)
 
-	* <font color="#dd0000">**删除成员：</font>**WechatMiniProgramPublishEvent
+	* <font color="#dd0000">**删除成员**：</font>WechatMiniProgramPublishEvent
 
 
 ### 第 12 次发布
@@ -20967,7 +21065,7 @@
 
 	* 新增成员：FaceTask
 
-	* <font color="#dd0000">**删除成员：</font>**FaceRecognitionTask
+	* <font color="#dd0000">**删除成员**：</font>FaceRecognitionTask
 
 
 ### 第 10 次发布
@@ -21086,7 +21184,7 @@
 
 	* 新增入参：SvgTemplate
 
-	* <font color="#dd0000">**修改入参：</font>**TextTemplate
+	* <font color="#dd0000">**修改入参**：</font>TextTemplate
 
 * [LiveRealTimeClip](https://cloud.tencent.com/document/api/266/32587)
 
@@ -21096,13 +21194,13 @@
 
 * [ModifyTranscodeTemplate](https://cloud.tencent.com/document/api/266/33767)
 
-	* <font color="#dd0000">**修改入参：</font>**VideoTemplate, AudioTemplate
+	* <font color="#dd0000">**修改入参**：</font>VideoTemplate, AudioTemplate
 
 * [ModifyWatermarkTemplate](https://cloud.tencent.com/document/api/266/33766)
 
 	* 新增入参：SvgTemplate
 
-	* <font color="#dd0000">**修改入参：</font>**ImageTemplate, TextTemplate
+	* <font color="#dd0000">**修改入参**：</font>ImageTemplate, TextTemplate
 
 
 新增数据结构：
@@ -21120,7 +21218,7 @@
 * [TextWatermarkTemplateInputForUpdate](https://cloud.tencent.com/document/api/266/31773#TextWatermarkTemplateInputForUpdate)
 * [VideoTemplateInfoForUpdate](https://cloud.tencent.com/document/api/266/31773#VideoTemplateInfoForUpdate)
 
-<font color="#dd0000">**删除数据结构：</font>**
+<font color="#dd0000">**删除数据结构**：</font>
 
 * TextWatermarkTemplate
 
@@ -21128,21 +21226,21 @@
 
 * [AiAnalysisTaskTagOutput](https://cloud.tencent.com/document/api/266/31773#AiAnalysisTaskTagOutput)
 
-	* <font color="#dd0000">**修改成员：</font>**TagSet
+	* <font color="#dd0000">**修改成员**：</font>TagSet
 
 * [AiAnalysisTaskTagResult](https://cloud.tencent.com/document/api/266/31773#AiAnalysisTaskTagResult)
 
-	* <font color="#dd0000">**修改成员：</font>**Output
+	* <font color="#dd0000">**修改成员**：</font>Output
 
 * [ClipFileInfo2017](https://cloud.tencent.com/document/api/266/31773#ClipFileInfo2017)
 
-	* <font color="#dd0000">**修改成员：</font>**Message
+	* <font color="#dd0000">**修改成员**：</font>Message
 
 * [EventContent](https://cloud.tencent.com/document/api/266/31773#EventContent)
 
 	* 新增成员：WechatPublishCompleteEvent
 
-	* <font color="#dd0000">**删除成员：</font>**WechatPublishComplete
+	* <font color="#dd0000">**删除成员**：</font>WechatPublishComplete
 
 * [MediaProcessTaskInput](https://cloud.tencent.com/document/api/266/31773#MediaProcessTaskInput)
 
@@ -21154,7 +21252,7 @@
 
 * [SnapshotByTimeOffset2017](https://cloud.tencent.com/document/api/266/31773#SnapshotByTimeOffset2017)
 
-	* <font color="#dd0000">**修改成员：</font>**ErrCode
+	* <font color="#dd0000">**修改成员**：</font>ErrCode
 
 * [WatermarkInput](https://cloud.tencent.com/document/api/266/31773#WatermarkInput)
 
@@ -21162,7 +21260,7 @@
 
 * [WatermarkTemplate](https://cloud.tencent.com/document/api/266/31773#WatermarkTemplate)
 
-	* <font color="#dd0000">**修改成员：</font>**TextTemplate
+	* <font color="#dd0000">**修改成员**：</font>TextTemplate
 
 
 ### 第 7 次发布
@@ -21337,7 +21435,7 @@
 
 * [SearchMedia](https://cloud.tencent.com/document/api/266/31813)
 
-	* <font color="#dd0000">**修改入参：</font>**SourceType
+	* <font color="#dd0000">**修改入参**：</font>SourceType
 
 
 ### 第 2 次发布
@@ -21405,6 +21503,23 @@
 
 
 ## 私有网络(vpc) 版本：2017-03-12
+
+### 第 38 次发布
+
+发布时间：2020-03-24 08:14:43
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeAddressTemplateInstances](https://cloud.tencent.com/document/api/215/42837)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeTemplateLimits](https://cloud.tencent.com/document/api/215/42836)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[TemplateLimit](https://cloud.tencent.com/document/api/215/15824#TemplateLimit)](https://cloud.tencent.com/document/api/215/15824#[TemplateLimit](https://cloud.tencent.com/document/api/215/15824#TemplateLimit))
 
 ### 第 37 次发布
 
@@ -21718,7 +21833,7 @@
 
 * [ReleaseAddresses](https://cloud.tencent.com/document/api/215/16705)
 
-	* <font color="#dd0000">**修改入参：</font>**AddressIds
+	* <font color="#dd0000">**修改入参**：</font>AddressIds
 
 	* 新增出参：TaskId
 
@@ -21959,7 +22074,7 @@
 
 * [SecurityGroupAssociationStatistics](https://cloud.tencent.com/document/api/215/15824#SecurityGroupAssociationStatistics)
 
-	* <font color="#dd0000">**修改成员：</font>**InstanceStatistics
+	* <font color="#dd0000">**修改成员**：</font>InstanceStatistics
 
 
 ### 第 16 次发布
@@ -22137,7 +22252,7 @@
 
 	* 新增成员：DirectConnectGatewayIp, CcnId, CcnRouteType, EnableBGP
 
-	* <font color="#dd0000">**删除成员：</font>**DirectConnectTunnelCount
+	* <font color="#dd0000">**删除成员**：</font>DirectConnectTunnelCount
 
 * [DirectConnectGatewayCcnRoute](https://cloud.tencent.com/document/api/215/15824#DirectConnectGatewayCcnRoute)
 
@@ -22194,13 +22309,13 @@
 
 	* 新增入参：Filters
 
-	* <font color="#dd0000">**修改入参：</font>**CcnId
+	* <font color="#dd0000">**修改入参**：</font>CcnId
 
-	* <font color="#dd0000">**修改出参：</font>**InstanceSet
+	* <font color="#dd0000">**修改出参**：</font>InstanceSet
 
 * [ModifyAddressAttribute](https://cloud.tencent.com/document/api/215/16704)
 
-	* <font color="#dd0000">**修改入参：</font>**AddressName
+	* <font color="#dd0000">**修改入参**：</font>AddressName
 
 
 新增数据结构：
@@ -22215,7 +22330,7 @@
 
 * [CcnInstance](https://cloud.tencent.com/document/api/215/15824#CcnInstance)
 
-	* <font color="#dd0000">**删除成员：</font>**CcnId, InstanceName, CidrBlock
+	* <font color="#dd0000">**删除成员**：</font>CcnId, InstanceName, CidrBlock
 
 * [CcnRoute](https://cloud.tencent.com/document/api/215/15824#CcnRoute)
 
@@ -22285,7 +22400,7 @@
 
 	* 新增成员：InstanceId, NetworkInterfaceId, PrivateAddressIp, IsArrears, IsBlocked, IsEipDirectConnection, AddressType
 
-	* <font color="#dd0000">**删除成员：</font>**BindedResourceId
+	* <font color="#dd0000">**删除成员**：</font>BindedResourceId
 
 * [PrivateIpAddressSpecification](https://cloud.tencent.com/document/api/215/15824#PrivateIpAddressSpecification)
 
@@ -22297,7 +22412,7 @@
 
 * [SecurityGroupPolicy](https://cloud.tencent.com/document/api/215/15824#SecurityGroupPolicy)
 
-	* <font color="#dd0000">**修改成员：</font>**ServiceTemplate, AddressTemplate
+	* <font color="#dd0000">**修改成员**：</font>ServiceTemplate, AddressTemplate
 
 
 ### 第 7 次发布
@@ -22312,11 +22427,11 @@
 
 * [CreateRoutes](https://cloud.tencent.com/document/api/215/16724)
 
-	* <font color="#dd0000">**修改入参：</font>**Routes
+	* <font color="#dd0000">**修改入参**：</font>Routes
 
 * [DeleteRoutes](https://cloud.tencent.com/document/api/215/16725)
 
-	* <font color="#dd0000">**修改入参：</font>**Routes
+	* <font color="#dd0000">**修改入参**：</font>Routes
 
 
 修改数据结构：
@@ -22353,7 +22468,7 @@
 
 * [NetworkInterface](https://cloud.tencent.com/document/api/215/15824#NetworkInterface)
 
-	* <font color="#dd0000">**修改成员：</font>**Attachment
+	* <font color="#dd0000">**修改成员**：</font>Attachment
 
 * [SecurityGroupAssociationStatistics](https://cloud.tencent.com/document/api/215/15824#SecurityGroupAssociationStatistics)
 
@@ -22415,11 +22530,11 @@
 
 * [ReplaceRoutes](https://cloud.tencent.com/document/api/215/15764)
 
-	* <font color="#dd0000">**修改入参：</font>**Routes
+	* <font color="#dd0000">**修改入参**：</font>Routes
 
 * [ResetRoutes](https://cloud.tencent.com/document/api/215/15769)
 
-	* <font color="#dd0000">**修改入参：</font>**Routes
+	* <font color="#dd0000">**修改入参**：</font>Routes
 
 
 新增数据结构：
@@ -22438,7 +22553,7 @@
 
 * [Route](https://cloud.tencent.com/document/api/215/15824#Route)
 
-	* <font color="#dd0000">**修改成员：</font>**RouteId
+	* <font color="#dd0000">**修改成员**：</font>RouteId
 
 * [Subnet](https://cloud.tencent.com/document/api/215/15824#Subnet)
 
@@ -22459,7 +22574,7 @@
 
 	* 新增成员：AddressStatus
 
-	* <font color="#dd0000">**删除成员：</font>**AddressState
+	* <font color="#dd0000">**删除成员**：</font>AddressState
 
 
 ### 第 2 次发布
@@ -22492,7 +22607,7 @@
 
 	* 新增出参：SubnetSet
 
-	* <font color="#dd0000">**删除出参：</font>**DescribeSubnets
+	* <font color="#dd0000">**删除出参**：</font>DescribeSubnets
 
 * [ModifyVpcAttribute](https://cloud.tencent.com/document/api/215/15773)
 
@@ -22672,7 +22787,7 @@
 
 * [CreateFacePicture](https://cloud.tencent.com/document/api/860/20420)
 
-	* <font color="#dd0000">**修改入参：</font>**ShopId
+	* <font color="#dd0000">**修改入参**：</font>ShopId
 
 
 ### 第 6 次发布
@@ -22695,7 +22810,7 @@
 
 	* 新增入参：StartDateTime, EndDateTime
 
-	* <font color="#dd0000">**修改入参：</font>**StartDate, EndDate
+	* <font color="#dd0000">**修改入参**：</font>StartDate, EndDate
 
 
 新增数据结构：
@@ -22739,7 +22854,7 @@
 
 	* 新增成员：PersonSubType
 
-	* <font color="#dd0000">**修改成员：</font>**Gender, Age, PersonType
+	* <font color="#dd0000">**修改成员**：</font>Gender, Age, PersonType
 
 
 ### 第 4 次发布
@@ -22797,7 +22912,7 @@
 * [ZoneFlowAndAvrStayTime](https://cloud.tencent.com/document/api/860/18465#ZoneFlowAndAvrStayTime)
 * [ZoneHourFlow](https://cloud.tencent.com/document/api/860/18465#ZoneHourFlow)
 
-<font color="#dd0000">**删除数据结构：</font>**
+<font color="#dd0000">**删除数据结构**：</font>
 
 * NetworkInfoNoShop
 
@@ -22805,15 +22920,15 @@
 
 * [NetworkHistoryInfo](https://cloud.tencent.com/document/api/860/18465#NetworkHistoryInfo)
 
-	* <font color="#dd0000">**修改成员：</font>**Infos
+	* <font color="#dd0000">**修改成员**：</font>Infos
 
 * [NetworkInfo](https://cloud.tencent.com/document/api/860/18465#NetworkInfo)
 
-	* <font color="#dd0000">**删除成员：</font>**CompanyId, ShopId, Province, City, ShopName
+	* <font color="#dd0000">**删除成员**：</font>CompanyId, ShopId, Province, City, ShopName
 
 * [NetworkLastInfo](https://cloud.tencent.com/document/api/860/18465#NetworkLastInfo)
 
-	* <font color="#dd0000">**修改成员：</font>**Infos
+	* <font color="#dd0000">**修改成员**：</font>Infos
 
 
 ### 第 2 次发布
@@ -23007,7 +23122,7 @@
 
 	* 新增成员：MalwareNum, Tag
 
-	* <font color="#dd0000">**修改成员：</font>**VulNum
+	* <font color="#dd0000">**修改成员**：</font>VulNum
 
 
 ### 第 4 次发布

@@ -2267,22 +2267,12 @@ type InstanceFamilyConfig struct {
 }
 
 type InstanceMarketOptionsRequest struct {
-	*tchttp.BaseRequest
 
 	// 竞价相关选项
 	SpotOptions *SpotMarketOptions `json:"SpotOptions,omitempty" name:"SpotOptions"`
 
 	// 市场选项类型，当前只支持取值：spot
 	MarketType *string `json:"MarketType,omitempty" name:"MarketType"`
-}
-
-func (r *InstanceMarketOptionsRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-func (r *InstanceMarketOptionsRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
 }
 
 type InstanceStatus struct {

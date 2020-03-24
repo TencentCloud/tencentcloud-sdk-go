@@ -618,6 +618,31 @@ func (c *Client) DescribeActionLog(request *DescribeActionLogRequest) (response 
     return
 }
 
+func NewDescribeBGPIPL7RuleMaxCntRequest() (request *DescribeBGPIPL7RuleMaxCntRequest) {
+    request = &DescribeBGPIPL7RuleMaxCntRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("dayu", APIVersion, "DescribeBGPIPL7RuleMaxCnt")
+    return
+}
+
+func NewDescribeBGPIPL7RuleMaxCntResponse() (response *DescribeBGPIPL7RuleMaxCntResponse) {
+    response = &DescribeBGPIPL7RuleMaxCntResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 获取高防IP可添加的最多7层规则数量
+func (c *Client) DescribeBGPIPL7RuleMaxCnt(request *DescribeBGPIPL7RuleMaxCntRequest) (response *DescribeBGPIPL7RuleMaxCntResponse, err error) {
+    if request == nil {
+        request = NewDescribeBGPIPL7RuleMaxCntRequest()
+    }
+    response = NewDescribeBGPIPL7RuleMaxCntResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeBaradDataRequest() (request *DescribeBaradDataRequest) {
     request = &DescribeBaradDataRequest{
         BaseRequest: &tchttp.BaseRequest{},

@@ -1913,6 +1913,31 @@ func (c *Client) DescribeAddressTemplateGroups(request *DescribeAddressTemplateG
     return
 }
 
+func NewDescribeAddressTemplateInstancesRequest() (request *DescribeAddressTemplateInstancesRequest) {
+    request = &DescribeAddressTemplateInstancesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "DescribeAddressTemplateInstances")
+    return
+}
+
+func NewDescribeAddressTemplateInstancesResponse() (response *DescribeAddressTemplateInstancesResponse) {
+    response = &DescribeAddressTemplateInstancesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（DescribeAddressTemplateInstances）用于查询参数模板IP地址关联的实例列表。本接口不会返回查询的结果，需要根据返回的RequestId调用DescribeVpcTaskResult接口获取结果。
+func (c *Client) DescribeAddressTemplateInstances(request *DescribeAddressTemplateInstancesRequest) (response *DescribeAddressTemplateInstancesResponse, err error) {
+    if request == nil {
+        request = NewDescribeAddressTemplateInstancesRequest()
+    }
+    response = NewDescribeAddressTemplateInstancesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeAddressTemplatesRequest() (request *DescribeAddressTemplatesRequest) {
     request = &DescribeAddressTemplatesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2838,6 +2863,31 @@ func (c *Client) DescribeTaskResult(request *DescribeTaskResultRequest) (respons
         request = NewDescribeTaskResultRequest()
     }
     response = NewDescribeTaskResultResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeTemplateLimitsRequest() (request *DescribeTemplateLimitsRequest) {
+    request = &DescribeTemplateLimitsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "DescribeTemplateLimits")
+    return
+}
+
+func NewDescribeTemplateLimitsResponse() (response *DescribeTemplateLimitsResponse) {
+    response = &DescribeTemplateLimitsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（DescribeTemplateLimits）用于查询参数模板配额列表。
+func (c *Client) DescribeTemplateLimits(request *DescribeTemplateLimitsRequest) (response *DescribeTemplateLimitsResponse, err error) {
+    if request == nil {
+        request = NewDescribeTemplateLimitsRequest()
+    }
+    response = NewDescribeTemplateLimitsResponse()
     err = c.Send(request, response)
     return
 }

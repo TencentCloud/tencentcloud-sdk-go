@@ -4140,7 +4140,6 @@ type MachineTag struct {
 }
 
 type MaliciousRequest struct {
-	*tchttp.BaseRequest
 
 	// 记录ID。
 	Id *uint64 `json:"Id,omitempty" name:"Id"`
@@ -4190,15 +4189,6 @@ type MaliciousRequest struct {
 
 	// 进程PID。
 	Pid *uint64 `json:"Pid,omitempty" name:"Pid"`
-}
-
-func (r *MaliciousRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-func (r *MaliciousRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
 }
 
 type Malware struct {

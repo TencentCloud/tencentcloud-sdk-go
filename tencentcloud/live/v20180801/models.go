@@ -1446,7 +1446,7 @@ func (r *DeleteLiveSnapshotTemplateResponse) FromJsonString(s string) error {
 type DeleteLiveTranscodeRuleRequest struct {
 	*tchttp.BaseRequest
 
-	// 推流域名。
+	// 播放域名。
 	// 域名维度转码，域名+AppName+StreamName唯一标识单个转码规则，如需删除需要强匹配，例如AppName为空也需要传空字符串进行强匹配。
 	DomainName *string `json:"DomainName,omitempty" name:"DomainName"`
 
@@ -5364,7 +5364,7 @@ type ResumeLiveStreamRequest struct {
 	// 推流路径，与推流和播放地址中的AppName保持一致，默认为 live。
 	AppName *string `json:"AppName,omitempty" name:"AppName"`
 
-	// 您的加速域名。
+	// 您的推流域名。
 	DomainName *string `json:"DomainName,omitempty" name:"DomainName"`
 
 	// 流名称。
