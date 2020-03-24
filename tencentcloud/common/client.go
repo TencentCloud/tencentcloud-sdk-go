@@ -243,6 +243,7 @@ func (c *Client) WithProfile(clientProfile *profile.ClientProfile) *Client {
 	c.signMethod = clientProfile.SignMethod
 	c.unsignedPayload = clientProfile.UnsignedPayload
 	c.httpProfile = clientProfile.HttpProfile
+	c.debug = clientProfile.Debug
 	c.httpClient.Timeout = time.Duration(c.httpProfile.ReqTimeout) * time.Second
 	return c
 }

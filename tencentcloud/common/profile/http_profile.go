@@ -7,6 +7,7 @@ type HttpProfile struct {
 	// Deprecated, use Scheme instead
 	Protocol string
 	Scheme   string
+	Debug    bool
 }
 
 func NewHttpProfile() *HttpProfile {
@@ -15,5 +16,6 @@ func NewHttpProfile() *HttpProfile {
 		ReqTimeout: 60,
 		Endpoint:   "",
 		Scheme:     "HTTPS",
+		Debug:      false,
 	}
 }
