@@ -58,7 +58,7 @@ func NewCreateAppUsrResponse() (response *CreateAppUsrResponse) {
     return
 }
 
-// 本接口（CreateAppUsr）用于接收由厂商云发送过来的注册请求,建立厂商云终端用户与IotVideo终端用户的映射关系。
+// 本接口（CreateAppUsr）用于接收由厂商云发送过来的注册请求,建立厂商云终端用户与IoT Video终端用户的映射关系。
 func (c *Client) CreateAppUsr(request *CreateAppUsrRequest) (response *CreateAppUsrResponse, err error) {
     if request == nil {
         request = NewCreateAppUsrRequest()
@@ -295,31 +295,6 @@ func (c *Client) CreateUploadPath(request *CreateUploadPathRequest) (response *C
         request = NewCreateUploadPathRequest()
     }
     response = NewCreateUploadPathResponse()
-    err = c.Send(request, response)
-    return
-}
-
-func NewCreateUploadTestRequest() (request *CreateUploadTestRequest) {
-    request = &CreateUploadTestRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    request.Init().WithApiInfo("iotvideo", APIVersion, "CreateUploadTest")
-    return
-}
-
-func NewCreateUploadTestResponse() (response *CreateUploadTestResponse) {
-    response = &CreateUploadTestResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    }
-    return
-}
-
-// 设备申请cos上传证书
-func (c *Client) CreateUploadTest(request *CreateUploadTestRequest) (response *CreateUploadTestResponse, err error) {
-    if request == nil {
-        request = NewCreateUploadTestRequest()
-    }
-    response = NewCreateUploadTestResponse()
     err = c.Send(request, response)
     return
 }
@@ -1133,31 +1108,6 @@ func (c *Client) ModifyProduct(request *ModifyProductRequest) (response *ModifyP
         request = NewModifyProductRequest()
     }
     response = NewModifyProductResponse()
-    err = c.Send(request, response)
-    return
-}
-
-func NewRenewUploadTestRequest() (request *RenewUploadTestRequest) {
-    request = &RenewUploadTestRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    request.Init().WithApiInfo("iotvideo", APIVersion, "RenewUploadTest")
-    return
-}
-
-func NewRenewUploadTestResponse() (response *RenewUploadTestResponse) {
-    response = &RenewUploadTestResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    }
-    return
-}
-
-// 设备刷新cos上传证书
-func (c *Client) RenewUploadTest(request *RenewUploadTestRequest) (response *RenewUploadTestResponse, err error) {
-    if request == nil {
-        request = NewRenewUploadTestRequest()
-    }
-    response = NewRenewUploadTestResponse()
     err = c.Send(request, response)
     return
 }

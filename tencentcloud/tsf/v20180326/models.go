@@ -209,6 +209,10 @@ type ApplicationForPage struct {
 	// 应用runtime类型
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ApplicationRuntimeType *string `json:"ApplicationRuntimeType,omitempty" name:"ApplicationRuntimeType"`
+
+	// Apigateway的serviceId
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ApigatewayServiceId *string `json:"ApigatewayServiceId,omitempty" name:"ApigatewayServiceId"`
 }
 
 type Cluster struct {
@@ -312,6 +316,14 @@ type Cluster struct {
 	// 集群可用的服务实例数量
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RunServiceInstanceCount *int64 `json:"RunServiceInstanceCount,omitempty" name:"RunServiceInstanceCount"`
+
+	// 集群所属子网ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
+
+	// 返回给前端的控制信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OperationInfo *OperationInfo `json:"OperationInfo,omitempty" name:"OperationInfo"`
 }
 
 type Config struct {
@@ -3599,6 +3611,34 @@ type Instance struct {
 	// 实例执行状态
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	OperationState *int64 `json:"OperationState,omitempty" name:"OperationState"`
+
+	// NamespaceId
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NamespaceId *string `json:"NamespaceId,omitempty" name:"NamespaceId"`
+
+	// InstanceZoneId
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceZoneId *string `json:"InstanceZoneId,omitempty" name:"InstanceZoneId"`
+
+	// InstanceImportMode
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceImportMode *string `json:"InstanceImportMode,omitempty" name:"InstanceImportMode"`
+
+	// ApplicationType
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ApplicationType *string `json:"ApplicationType,omitempty" name:"ApplicationType"`
+
+	// ApplicationResourceType
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ApplicationResourceType *string `json:"ApplicationResourceType,omitempty" name:"ApplicationResourceType"`
+
+	// ServiceSidecarStatus
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ServiceSidecarStatus *string `json:"ServiceSidecarStatus,omitempty" name:"ServiceSidecarStatus"`
+
+	// GroupName
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GroupName *string `json:"GroupName,omitempty" name:"GroupName"`
 }
 
 type Microservice struct {
@@ -3948,6 +3988,36 @@ type Namespace struct {
 	// 命名空间类型
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	NamespaceType *string `json:"NamespaceType,omitempty" name:"NamespaceType"`
+}
+
+type OperationInfo struct {
+
+	// 初始化按钮的控制信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Init *OperationInfoDetail `json:"Init,omitempty" name:"Init"`
+
+	// 添加实例按钮的控制信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AddInstance *OperationInfoDetail `json:"AddInstance,omitempty" name:"AddInstance"`
+
+	// 销毁机器的控制信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Destroy *OperationInfoDetail `json:"Destroy,omitempty" name:"Destroy"`
+}
+
+type OperationInfoDetail struct {
+
+	// 不显示的原因
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DisabledReason *string `json:"DisabledReason,omitempty" name:"DisabledReason"`
+
+	// 该按钮是否可点击
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Enabled *bool `json:"Enabled,omitempty" name:"Enabled"`
+
+	// 是否显示该按钮
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Supported *bool `json:"Supported,omitempty" name:"Supported"`
 }
 
 type PkgInfo struct {
@@ -4454,6 +4524,14 @@ type SimpleApplication struct {
 	// UpdateTime
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
+
+	// ApigatewayServiceId
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ApigatewayServiceId *string `json:"ApigatewayServiceId,omitempty" name:"ApigatewayServiceId"`
+
+	// ApplicationRuntimeType
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ApplicationRuntimeType *string `json:"ApplicationRuntimeType,omitempty" name:"ApplicationRuntimeType"`
 }
 
 type SimpleGroup struct {
@@ -4871,6 +4949,14 @@ type VmGroup struct {
 	// 微服务类型
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MicroserviceType *string `json:"MicroserviceType,omitempty" name:"MicroserviceType"`
+
+	// ApplicationType
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ApplicationType *string `json:"ApplicationType,omitempty" name:"ApplicationType"`
+
+	// GroupResourceType
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GroupResourceType *string `json:"GroupResourceType,omitempty" name:"GroupResourceType"`
 }
 
 type VmGroupSimple struct {
@@ -4930,4 +5016,8 @@ type VmGroupSimple struct {
 	// 应用微服务类型
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MicroserviceType *string `json:"MicroserviceType,omitempty" name:"MicroserviceType"`
+
+	// GroupResourceType
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GroupResourceType *string `json:"GroupResourceType,omitempty" name:"GroupResourceType"`
 }

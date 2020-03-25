@@ -1819,10 +1819,10 @@ type SubscribedInfo struct {
 
 type Tag struct {
 
-	// 标识的key
+	// 标签的key
 	TagKey *string `json:"TagKey,omitempty" name:"TagKey"`
 
-	// 标识的值
+	// 标签的值
 	TagValue *string `json:"TagValue,omitempty" name:"TagValue"`
 }
 

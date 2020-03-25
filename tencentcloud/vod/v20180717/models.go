@@ -2776,10 +2776,6 @@ type CreatePersonSampleRequest struct {
 	// 人物名称，长度限制：20 个字符。
 	Name *string `json:"Name,omitempty" name:"Name"`
 
-	// 人脸图片 [Base64](https://tools.ietf.org/html/rfc4648) 编码后的字符串，仅支持 jpeg、png 图片格式。数组长度限制：5 张图片。
-	// 注意：图片必须是单人像正面人脸较清晰的照片，像素不低于 200*200。
-	FaceContents []*string `json:"FaceContents,omitempty" name:"FaceContents" list`
-
 	// 人物应用场景，可选值：
 	// 1. Recognition：用于内容识别，等价于 Recognition.Face。
 	// 2. Review：用于内容审核，等价于 Review.Face。
@@ -2788,6 +2784,10 @@ type CreatePersonSampleRequest struct {
 
 	// 人物描述，长度限制：1024 个字符。
 	Description *string `json:"Description,omitempty" name:"Description"`
+
+	// 人脸图片 [Base64](https://tools.ietf.org/html/rfc4648) 编码后的字符串，仅支持 jpeg、png 图片格式。数组长度限制：5 张图片。
+	// 注意：图片必须是单人像正面人脸较清晰的照片，像素不低于 200*200。
+	FaceContents []*string `json:"FaceContents,omitempty" name:"FaceContents" list`
 
 	// 人物标签
 	// <li>数组长度限制：20 个标签；</li>
@@ -2815,7 +2815,6 @@ type CreatePersonSampleResponse struct {
 		Person *AiSamplePerson `json:"Person,omitempty" name:"Person"`
 
 		// 处理失败的人脸信息。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 		FailFaceInfoSet []*AiSampleFailFaceInfo `json:"FailFaceInfoSet,omitempty" name:"FailFaceInfoSet" list`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -4285,10 +4284,10 @@ func (r *DescribeMediaInfosResponse) FromJsonString(s string) error {
 type DescribeMediaProcessUsageDataRequest struct {
 	*tchttp.BaseRequest
 
-	// 起始日期。使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+	// 起始日期。使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#52)。
 	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
 
-	// 结束日期，需大于等于起始日期。使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+	// 结束日期，需大于等于起始日期。使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#52)。
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 
 	// 查询视频处理任务类型，默认查询转码。目前只支持转码类型数据查询。
@@ -4652,10 +4651,10 @@ func (r *DescribeStorageDataResponse) FromJsonString(s string) error {
 type DescribeStorageDetailsRequest struct {
 	*tchttp.BaseRequest
 
-	// 起始时间，格式按照 ISO 8601 标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+	// 起始时间，格式按照 ISO 8601 标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#52)。
 	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
 
-	// 结束时间，需大于开始日期，格式按照 ISO 8601 标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+	// 结束时间，需大于开始日期，格式按照 ISO 8601 标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#52)。
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 
 	// 查询时间间隔，有效值：

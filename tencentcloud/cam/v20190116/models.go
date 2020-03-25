@@ -1905,6 +1905,10 @@ type StrategyInfo struct {
 	// 已下线产品列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DeactivedDetail []*string `json:"DeactivedDetail,omitempty" name:"DeactivedDetail" list`
+
+	// 是否是服务相关角色策略
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsServiceLinkedPolicy *uint64 `json:"IsServiceLinkedPolicy,omitempty" name:"IsServiceLinkedPolicy"`
 }
 
 type SubAccountInfo struct {

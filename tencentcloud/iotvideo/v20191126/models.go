@@ -45,52 +45,10 @@ type BindUsrInfo struct {
 	Role *string `json:"Role,omitempty" name:"Role"`
 }
 
-type CertificateInfo struct {
-
-	// SecretId
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	SecretId *string `json:"SecretId,omitempty" name:"SecretId"`
-
-	// SecretKey
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	SecretKey *string `json:"SecretKey,omitempty" name:"SecretKey"`
-
-	// Token
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	Token *string `json:"Token,omitempty" name:"Token"`
-
-	// 过期时间，UNIX时间戳，单位秒
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	ExpiredTime *uint64 `json:"ExpiredTime,omitempty" name:"ExpiredTime"`
-}
-
-type CosCertificate struct {
-
-	// cos存储桶
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	StorageBucket *string `json:"StorageBucket,omitempty" name:"StorageBucket"`
-
-	// cos存储园区
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	StorageRegion *string `json:"StorageRegion,omitempty" name:"StorageRegion"`
-
-	// 存储路径，录制场景下该值为存储目录
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	StoragePath *string `json:"StoragePath,omitempty" name:"StoragePath"`
-
-	// 证书信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	TempCertificate *CertificateInfo `json:"TempCertificate,omitempty" name:"TempCertificate"`
-
-	// SessionKey
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	SessionKey *string `json:"SessionKey,omitempty" name:"SessionKey"`
-}
-
 type CreateAppUsrRequest struct {
 	*tchttp.BaseRequest
 
-	// 标识用户的唯一id，防止同一个用户多次注册
+	// 标识用户的唯一ID，防止同一个用户多次注册
 	CunionId *string `json:"CunionId,omitempty" name:"CunionId"`
 }
 
@@ -107,10 +65,10 @@ type CreateAppUsrResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 厂商云标识用户的唯一id
+		// 厂商云标识用户的唯一ID
 		CunionId *string `json:"CunionId,omitempty" name:"CunionId"`
 
-		// 客户的终端用户在IotVideo上的唯一标识id
+		// 客户的终端用户在IoT Video上的唯一标识ID
 		AccessId *string `json:"AccessId,omitempty" name:"AccessId"`
 
 		// 用户是否为新创建
@@ -133,7 +91,7 @@ func (r *CreateAppUsrResponse) FromJsonString(s string) error {
 type CreateBindingRequest struct {
 	*tchttp.BaseRequest
 
-	// 终端用户在IotVideo上的唯一标识id
+	// 终端用户在IoT Video上的唯一标识ID
 	AccessId *string `json:"AccessId,omitempty" name:"AccessId"`
 
 	// 设备TID
@@ -159,7 +117,7 @@ type CreateBindingResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 访问设备的accessToken
+		// 访问设备的AccessToken
 		AccessToken *string `json:"AccessToken,omitempty" name:"AccessToken"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -179,7 +137,7 @@ func (r *CreateBindingResponse) FromJsonString(s string) error {
 type CreateDevTokenRequest struct {
 	*tchttp.BaseRequest
 
-	// 客户的终端用户在IotVideo上的唯一标识id
+	// 客户的终端用户在IoT Video上的唯一标识ID
 	AccessId *string `json:"AccessId,omitempty" name:"AccessId"`
 
 	// 设备TID列表,0<元素数量<=100
@@ -507,54 +465,13 @@ func (r *CreateUploadPathResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
-type CreateUploadTestRequest struct {
-	*tchttp.BaseRequest
-
-	// package ID
-	PkgId *string `json:"PkgId,omitempty" name:"PkgId"`
-
-	// 设备TID
-	Tid *string `json:"Tid,omitempty" name:"Tid"`
-}
-
-func (r *CreateUploadTestRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-func (r *CreateUploadTestRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
-}
-
-type CreateUploadTestResponse struct {
-	*tchttp.BaseResponse
-	Response *struct {
-
-		// 申请设备证书返回的信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		Data *CosCertificate `json:"Data,omitempty" name:"Data"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
-}
-
-func (r *CreateUploadTestResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-func (r *CreateUploadTestResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
-}
-
 type CreateUsrTokenRequest struct {
 	*tchttp.BaseRequest
 
-	// 终端用户在IotVideo上的唯一标识id
+	// 终端用户在IoT Video上的唯一标识ID
 	AccessId *string `json:"AccessId,omitempty" name:"AccessId"`
 
-	// 终端唯一id,用于区分同一个用户的多个终端
+	// 终端唯一ID，用于区分同一个用户的多个终端
 	UniqueId *string `json:"UniqueId,omitempty" name:"UniqueId"`
 
 	// Token的TTL(time to alive)分钟数
@@ -574,16 +491,16 @@ type CreateUsrTokenResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 终端用户在IotVideo上的唯一标识id
+		// 终端用户在IoT Video上的唯一标识ID
 		AccessId *string `json:"AccessId,omitempty" name:"AccessId"`
 
-		// IotVideo平台的accessToken
+		// IoT Video平台的AccessToken
 		AccessToken *string `json:"AccessToken,omitempty" name:"AccessToken"`
 
 		// Token的过期时间，单位秒(UTC时间)
 		ExpireTime *uint64 `json:"ExpireTime,omitempty" name:"ExpireTime"`
 
-		// 终端id
+		// 终端ID
 		TerminalId *string `json:"TerminalId,omitempty" name:"TerminalId"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -603,7 +520,7 @@ func (r *CreateUsrTokenResponse) FromJsonString(s string) error {
 type DeleteBindingRequest struct {
 	*tchttp.BaseRequest
 
-	// 终端用户在IotVideo上的唯一标识id
+	// 终端用户在IoT Video上的唯一标识ID
 	AccessId *string `json:"AccessId,omitempty" name:"AccessId"`
 
 	// 设备TID
@@ -853,7 +770,7 @@ func (r *DeleteTraceIdsResponse) FromJsonString(s string) error {
 type DescribeBindDevRequest struct {
 	*tchttp.BaseRequest
 
-	// 终端用户在IotVideo上的唯一标识id
+	// 终端用户在IoT Video上的唯一标识ID
 	AccessId *string `json:"AccessId,omitempty" name:"AccessId"`
 }
 
@@ -1323,7 +1240,7 @@ type DescribeOtaVersionsRequest struct {
 	// 分页偏移量
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
 
-	// 每页数量,,0<取值范围<=100
+	// 每页数量，0<取值范围<=100
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 
 	// 产品ID，为空时查询客户所有产品的版本信息
@@ -1876,7 +1793,7 @@ type LogData struct {
 type ModifyDeviceActionRequest struct {
 	*tchttp.BaseRequest
 
-	// 设备Tid
+	// 设备TID
 	Tid *string `json:"Tid,omitempty" name:"Tid"`
 
 	// 如果设备处于休眠状态，是否唤醒设备
@@ -2106,57 +2023,6 @@ type ProductData struct {
 	// 主芯片型号
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ChipId *string `json:"ChipId,omitempty" name:"ChipId"`
-}
-
-type RenewCertificate struct {
-
-	// 刷新证书信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	TempCertificate *CertificateInfo `json:"TempCertificate,omitempty" name:"TempCertificate"`
-}
-
-type RenewUploadTestRequest struct {
-	*tchttp.BaseRequest
-
-	// package ID
-	PkgId *string `json:"PkgId,omitempty" name:"PkgId"`
-
-	// 设备TID
-	Tid *string `json:"Tid,omitempty" name:"Tid"`
-
-	// SessionKey
-	SessionKey *string `json:"SessionKey,omitempty" name:"SessionKey"`
-}
-
-func (r *RenewUploadTestRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-func (r *RenewUploadTestRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
-}
-
-type RenewUploadTestResponse struct {
-	*tchttp.BaseResponse
-	Response *struct {
-
-		// 刷新证书返回的信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		Data *RenewCertificate `json:"Data,omitempty" name:"Data"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
-}
-
-func (r *RenewUploadTestResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-func (r *RenewUploadTestResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
 }
 
 type RunDeviceRequest struct {
