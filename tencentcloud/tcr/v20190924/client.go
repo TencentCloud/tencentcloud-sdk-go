@@ -183,7 +183,7 @@ func NewCreateInstanceTokenResponse() (response *CreateInstanceTokenResponse) {
     return
 }
 
-// 获取临时登录密码
+// 创建实例的临时或长期访问凭证
 func (c *Client) CreateInstanceToken(request *CreateInstanceTokenRequest) (response *CreateInstanceTokenResponse, err error) {
     if request == nil {
         request = NewCreateInstanceTokenRequest()
@@ -414,6 +414,31 @@ func (c *Client) DeleteImagePersonal(request *DeleteImagePersonalRequest) (respo
         request = NewDeleteImagePersonalRequest()
     }
     response = NewDeleteImagePersonalResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteInstanceTokenRequest() (request *DeleteInstanceTokenRequest) {
+    request = &DeleteInstanceTokenRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tcr", APIVersion, "DeleteInstanceToken")
+    return
+}
+
+func NewDeleteInstanceTokenResponse() (response *DeleteInstanceTokenResponse) {
+    response = &DeleteInstanceTokenResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 删除长期访问凭证
+func (c *Client) DeleteInstanceToken(request *DeleteInstanceTokenRequest) (response *DeleteInstanceTokenResponse, err error) {
+    if request == nil {
+        request = NewDeleteInstanceTokenRequest()
+    }
+    response = NewDeleteInstanceTokenResponse()
     err = c.Send(request, response)
     return
 }
@@ -708,7 +733,7 @@ func NewDescribeImagesResponse() (response *DescribeImagesResponse) {
     return
 }
 
-// 用于在企业版中查询镜像仓库内容器镜像信息，获取镜像版本列表
+// 查询镜像版本列表或指定容器镜像信息
 func (c *Client) DescribeImages(request *DescribeImagesRequest) (response *DescribeImagesResponse, err error) {
     if request == nil {
         request = NewDescribeImagesRequest()
@@ -739,6 +764,31 @@ func (c *Client) DescribeInstanceStatus(request *DescribeInstanceStatusRequest) 
         request = NewDescribeInstanceStatusRequest()
     }
     response = NewDescribeInstanceStatusResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeInstanceTokenRequest() (request *DescribeInstanceTokenRequest) {
+    request = &DescribeInstanceTokenRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tcr", APIVersion, "DescribeInstanceToken")
+    return
+}
+
+func NewDescribeInstanceTokenResponse() (response *DescribeInstanceTokenResponse) {
+    response = &DescribeInstanceTokenResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询长期访问凭证信息
+func (c *Client) DescribeInstanceToken(request *DescribeInstanceTokenRequest) (response *DescribeInstanceTokenResponse, err error) {
+    if request == nil {
+        request = NewDescribeInstanceTokenRequest()
+    }
+    response = NewDescribeInstanceTokenResponse()
     err = c.Send(request, response)
     return
 }
@@ -833,7 +883,7 @@ func NewDescribeRepositoriesResponse() (response *DescribeRepositoriesResponse) 
     return
 }
 
-// 查询镜像仓库信息
+// 查询镜像仓库列表或指定镜像仓库信息
 func (c *Client) DescribeRepositories(request *DescribeRepositoriesRequest) (response *DescribeRepositoriesResponse, err error) {
     if request == nil {
         request = NewDescribeRepositoriesRequest()
@@ -1018,6 +1068,31 @@ func (c *Client) ModifyApplicationTriggerPersonal(request *ModifyApplicationTrig
     return
 }
 
+func NewModifyInstanceTokenRequest() (request *ModifyInstanceTokenRequest) {
+    request = &ModifyInstanceTokenRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tcr", APIVersion, "ModifyInstanceToken")
+    return
+}
+
+func NewModifyInstanceTokenResponse() (response *ModifyInstanceTokenResponse) {
+    response = &ModifyInstanceTokenResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 更新实例内指定长期访问凭证的启用状态
+func (c *Client) ModifyInstanceToken(request *ModifyInstanceTokenRequest) (response *ModifyInstanceTokenResponse, err error) {
+    if request == nil {
+        request = NewModifyInstanceTokenRequest()
+    }
+    response = NewModifyInstanceTokenResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyNamespaceRequest() (request *ModifyNamespaceRequest) {
     request = &ModifyNamespaceRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1058,7 +1133,7 @@ func NewModifyRepositoryResponse() (response *ModifyRepositoryResponse) {
     return
 }
 
-// 更新镜像仓库描述
+// 更新镜像仓库信息，可修改仓库描述信息
 func (c *Client) ModifyRepository(request *ModifyRepositoryRequest) (response *ModifyRepositoryResponse, err error) {
     if request == nil {
         request = NewModifyRepositoryRequest()

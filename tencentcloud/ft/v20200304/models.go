@@ -22,7 +22,7 @@ import (
 
 type AgeInfo struct {
 
-	// 选择变化范围，参数为【10，80】，当前默认值为10且不可调整（算法有待调整）。
+	// 当前只支持设置为10且不可调整（后续放开后再知会）。
 	Age *int64 `json:"Age,omitempty" name:"Age"`
 
 	// 人脸框位置。若不输入则选择 Image 或 Url 中面积最大的人脸。  

@@ -3639,6 +3639,10 @@ type Instance struct {
 	// GroupName
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	GroupName *string `json:"GroupName,omitempty" name:"GroupName"`
+
+	// NamespaceName
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NamespaceName *string `json:"NamespaceName,omitempty" name:"NamespaceName"`
 }
 
 type Microservice struct {

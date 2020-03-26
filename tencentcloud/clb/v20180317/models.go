@@ -2337,6 +2337,10 @@ type LoadBalancer struct {
 	// vip是否被封堵
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsBlock *bool `json:"IsBlock,omitempty" name:"IsBlock"`
+
+	// 封堵或解封时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsBlockTime *string `json:"IsBlockTime,omitempty" name:"IsBlockTime"`
 }
 
 type LoadBalancerHealth struct {

@@ -568,6 +568,10 @@ type TagResource struct {
 
 	// 标签值MD5值
 	TagValueMd5 *string `json:"TagValueMd5,omitempty" name:"TagValueMd5"`
+
+	// 资源类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ServiceType *string `json:"ServiceType,omitempty" name:"ServiceType"`
 }
 
 type TagWithDelete struct {

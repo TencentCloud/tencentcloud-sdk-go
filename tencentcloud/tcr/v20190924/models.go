@@ -268,6 +268,12 @@ type CreateInstanceTokenRequest struct {
 
 	// 实例Id
 	RegistryId *string `json:"RegistryId,omitempty" name:"RegistryId"`
+
+	// 访问凭证类型，longterm 为长期访问凭证，temp 为临时访问凭证，默认是临时访问凭证，有效期1小时
+	TokenType *string `json:"TokenType,omitempty" name:"TokenType"`
+
+	// 长期访问凭证描述信息
+	Desc *string `json:"Desc,omitempty" name:"Desc"`
 }
 
 func (r *CreateInstanceTokenRequest) ToJsonString() string {
@@ -283,10 +289,10 @@ type CreateInstanceTokenResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 临时密码
+		// 访问凭证
 		Token *string `json:"Token,omitempty" name:"Token"`
 
-		// 临时密码有效期时间戳
+		// 访问凭证过期时间戳
 		ExpTime *int64 `json:"ExpTime,omitempty" name:"ExpTime"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -630,6 +636,43 @@ func (r *DeleteImagePersonalResponse) ToJsonString() string {
 }
 
 func (r *DeleteImagePersonalResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteInstanceTokenRequest struct {
+	*tchttp.BaseRequest
+
+	// 实例 ID
+	RegistryId *string `json:"RegistryId,omitempty" name:"RegistryId"`
+
+	// 访问凭证 ID
+	TokenId *string `json:"TokenId,omitempty" name:"TokenId"`
+}
+
+func (r *DeleteInstanceTokenRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteInstanceTokenRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteInstanceTokenResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DeleteInstanceTokenResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteInstanceTokenResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -1098,20 +1141,20 @@ type DescribeImagesRequest struct {
 	// 实例ID
 	RegistryId *string `json:"RegistryId,omitempty" name:"RegistryId"`
 
+	// 命名空间名称
+	NamespaceName *string `json:"NamespaceName,omitempty" name:"NamespaceName"`
+
 	// 镜像仓库名称
 	RepositoryName *string `json:"RepositoryName,omitempty" name:"RepositoryName"`
 
-	// 命名空间名称
-	NamespaceName *string `json:"NamespaceName,omitempty" name:"NamespaceName"`
+	// 指定镜像版本(Tag)，不填默认返回仓库内全部容器镜像
+	ImageVersion *string `json:"ImageVersion,omitempty" name:"ImageVersion"`
 
 	// 每页个数，用于分页，默认20
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 
 	// 页数，默认值为1
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
-
-	// 镜像版本(Tag)，置空则返回仓库内全部的容器镜像
-	ImageVersion *string `json:"ImageVersion,omitempty" name:"ImageVersion"`
 }
 
 func (r *DescribeImagesRequest) ToJsonString() string {
@@ -1182,6 +1225,52 @@ func (r *DescribeInstanceStatusResponse) ToJsonString() string {
 }
 
 func (r *DescribeInstanceStatusResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeInstanceTokenRequest struct {
+	*tchttp.BaseRequest
+
+	// 实例 ID
+	RegistryId *string `json:"RegistryId,omitempty" name:"RegistryId"`
+
+	// 分页单页数量
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 分页偏移量
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+}
+
+func (r *DescribeInstanceTokenRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeInstanceTokenRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeInstanceTokenResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 长期访问凭证总数
+		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 长期访问凭证列表
+		Tokens []*TcrInstanceToken `json:"Tokens,omitempty" name:"Tokens" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeInstanceTokenResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeInstanceTokenResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -1337,7 +1426,10 @@ type DescribeRepositoriesRequest struct {
 	// 实例Id
 	RegistryId *string `json:"RegistryId,omitempty" name:"RegistryId"`
 
-	// 仓库名称，用于查询
+	// 指定命名空间，不填写默认为查询所有命名空间下镜像仓库
+	NamespaceName *string `json:"NamespaceName,omitempty" name:"NamespaceName"`
+
+	// 指定镜像仓库，不填写默认查询指定命名空间下所有镜像仓库
 	RepositoryName *string `json:"RepositoryName,omitempty" name:"RepositoryName"`
 
 	// 页数，用于分页
@@ -1348,9 +1440,6 @@ type DescribeRepositoriesRequest struct {
 
 	// 基于字段排序，支持的值有-creation_time,-name, -update_time
 	SortBy *string `json:"SortBy,omitempty" name:"SortBy"`
-
-	// 命名空间名称，用于查询改命名空间下的仓库，如果不填写默认为所有命名空间下
-	NamespaceName *string `json:"NamespaceName,omitempty" name:"NamespaceName"`
 }
 
 func (r *DescribeRepositoriesRequest) ToJsonString() string {
@@ -1766,6 +1855,46 @@ func (r *ModifyApplicationTriggerPersonalResponse) FromJsonString(s string) erro
     return json.Unmarshal([]byte(s), &r)
 }
 
+type ModifyInstanceTokenRequest struct {
+	*tchttp.BaseRequest
+
+	// 实例长期访问凭证 ID
+	TokenId *string `json:"TokenId,omitempty" name:"TokenId"`
+
+	// 启用或禁用实例长期访问凭证
+	Enable *bool `json:"Enable,omitempty" name:"Enable"`
+
+	// 实例 ID
+	RegistryId *string `json:"RegistryId,omitempty" name:"RegistryId"`
+}
+
+func (r *ModifyInstanceTokenRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyInstanceTokenRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyInstanceTokenResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifyInstanceTokenResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyInstanceTokenResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type ModifyNamespaceRequest struct {
 	*tchttp.BaseRequest
 
@@ -1886,17 +2015,17 @@ type ModifyRepositoryRequest struct {
 	// 实例ID
 	RegistryId *string `json:"RegistryId,omitempty" name:"RegistryId"`
 
+	// 命名空间名称
+	NamespaceName *string `json:"NamespaceName,omitempty" name:"NamespaceName"`
+
 	// 镜像仓库名称
 	RepositoryName *string `json:"RepositoryName,omitempty" name:"RepositoryName"`
 
-	// 仓库描述
-	Description *string `json:"Description,omitempty" name:"Description"`
-
-	// 仓库的简短描述
+	// 仓库简短描述
 	BriefDescription *string `json:"BriefDescription,omitempty" name:"BriefDescription"`
 
-	// 命名空间名称
-	NamespaceName *string `json:"NamespaceName,omitempty" name:"NamespaceName"`
+	// 仓库详细描述
+	Description *string `json:"Description,omitempty" name:"Description"`
 }
 
 func (r *ModifyRepositoryRequest) ToJsonString() string {
@@ -2236,6 +2365,27 @@ type TcrImageInfo struct {
 
 	// Tag名称
 	ImageVersion *string `json:"ImageVersion,omitempty" name:"ImageVersion"`
+}
+
+type TcrInstanceToken struct {
+
+	// 令牌ID
+	Id *string `json:"Id,omitempty" name:"Id"`
+
+	// 令牌描述
+	Desc *string `json:"Desc,omitempty" name:"Desc"`
+
+	// 令牌所属实例ID
+	RegistryId *string `json:"RegistryId,omitempty" name:"RegistryId"`
+
+	// 令牌启用状态
+	Enabled *bool `json:"Enabled,omitempty" name:"Enabled"`
+
+	// 令牌创建时间
+	CreatedAt *string `json:"CreatedAt,omitempty" name:"CreatedAt"`
+
+	// 令牌过期时间戳
+	ExpiredAt *int64 `json:"ExpiredAt,omitempty" name:"ExpiredAt"`
 }
 
 type TcrNamespaceInfo struct {

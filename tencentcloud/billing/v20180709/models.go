@@ -790,10 +790,10 @@ type DescribeBillDetailRequest struct {
 	// 月份，格式为yyyy-mm，Month和BeginTime&EndTime必传一个，如果有传BeginTime&EndTime则Month字段无效。不能早于开通账单2.0的月份，最多可拉取24个月内的数据。
 	Month *string `json:"Month,omitempty" name:"Month"`
 
-	// 周期开始时间，格式为Y-m-d H:i:s，Month和BeginTime&EndTime必传一个，如果有该字段则Month字段无效。BeginTime和EndTime必须一起传。不能早于开通账单2.0的月份，最多可拉取24个月内的数据。
+	// 周期开始时间，格式为Y-m-d H:i:s，Month和BeginTime&EndTime必传一个，如果有该字段则Month字段无效。BeginTime和EndTime必须一起传。不能早于开通账单2.0的月份，最多可拉取24个月内的数据。(不支持跨月查询)
 	BeginTime *string `json:"BeginTime,omitempty" name:"BeginTime"`
 
-	// 周期结束时间，格式为Y-m-d H:i:s，Month和BeginTime&EndTime必传一个，如果有该字段则Month字段无效。BeginTime和EndTime必须一起传。不能早于开通账单2.0的月份，最多可拉取24个月内的数据。
+	// 周期结束时间，格式为Y-m-d H:i:s，Month和BeginTime&EndTime必传一个，如果有该字段则Month字段无效。BeginTime和EndTime必须一起传。不能早于开通账单2.0的月份，最多可拉取24个月内的数据。（不支持跨月查询）
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 
 	// 是否需要访问列表的总记录数，用于前端分页
@@ -808,6 +808,9 @@ type DescribeBillDetailRequest struct {
 
 	// 查询指定资源信息
 	ResourceId *string `json:"ResourceId,omitempty" name:"ResourceId"`
+
+	// 查询交易类型。如 按量计费日结，按量计费小时结 等
+	ActionType *string `json:"ActionType,omitempty" name:"ActionType"`
 }
 
 func (r *DescribeBillDetailRequest) ToJsonString() string {
@@ -935,6 +938,9 @@ type DescribeBillResourceSummaryRequest struct {
 	// 是否需要访问列表的总记录数，用于前端分页
 	// 1-表示需要， 0-表示不需要
 	NeedRecordNum *int64 `json:"NeedRecordNum,omitempty" name:"NeedRecordNum"`
+
+	// 查询交易类型。如 按量计费日结，按量计费小时结 等
+	ActionType *string `json:"ActionType,omitempty" name:"ActionType"`
 }
 
 func (r *DescribeBillResourceSummaryRequest) ToJsonString() string {

@@ -575,13 +575,13 @@ type DirectConnect struct {
 
 type DirectConnectTunnel struct {
 
-	// 专线通道ID
+	// 专用通道ID
 	DirectConnectTunnelId *string `json:"DirectConnectTunnelId,omitempty" name:"DirectConnectTunnelId"`
 
 	// 物理专线ID
 	DirectConnectId *string `json:"DirectConnectId,omitempty" name:"DirectConnectId"`
 
-	// 专线通道状态
+	// 专用通道状态
 	// AVAILABLE:就绪或者已连接
 	// PENDING:申请中
 	// ALLOCATING:配置中
@@ -596,7 +596,7 @@ type DirectConnectTunnel struct {
 	// 物理专线的拥有者，开发商账号 ID
 	DirectConnectOwnerAccount *string `json:"DirectConnectOwnerAccount,omitempty" name:"DirectConnectOwnerAccount"`
 
-	// 专线通道的拥有者，开发商账号 ID
+	// 专用通道的拥有者，开发商账号 ID
 	OwnerAccount *string `json:"OwnerAccount,omitempty" name:"OwnerAccount"`
 
 	// 网络类型，分别为VPC、BMVPC、CCN
@@ -621,7 +621,7 @@ type DirectConnectTunnel struct {
 	// 用户侧网段地址
 	RouteFilterPrefixes []*RouteFilterPrefix `json:"RouteFilterPrefixes,omitempty" name:"RouteFilterPrefixes" list`
 
-	// 专线通道的Vlan
+	// 专用通道的Vlan
 	Vlan *int64 `json:"Vlan,omitempty" name:"Vlan"`
 
 	// TencentAddress，腾讯侧互联 IP
@@ -630,16 +630,16 @@ type DirectConnectTunnel struct {
 	// CustomerAddress，用户侧互联 IP
 	CustomerAddress *string `json:"CustomerAddress,omitempty" name:"CustomerAddress"`
 
-	// 专线通道名称
+	// 专用通道名称
 	DirectConnectTunnelName *string `json:"DirectConnectTunnelName,omitempty" name:"DirectConnectTunnelName"`
 
-	// 专线通道创建时间
+	// 专用通道创建时间
 	CreatedTime *string `json:"CreatedTime,omitempty" name:"CreatedTime"`
 
-	// 专线通道带宽值
+	// 专用通道带宽值
 	Bandwidth *int64 `json:"Bandwidth,omitempty" name:"Bandwidth"`
 
-	// 专线通道标签值
+	// 专用通道标签值
 	TagSet []*Tag `json:"TagSet,omitempty" name:"TagSet" list`
 
 	// 关联的网络自定义探测ID
@@ -662,7 +662,7 @@ type DirectConnectTunnel struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	BfdEnable *int64 `json:"BfdEnable,omitempty" name:"BfdEnable"`
 
-	// 专线通道接入点类型
+	// 专用通道接入点类型
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AccessPointType *string `json:"AccessPointType,omitempty" name:"AccessPointType"`
 
