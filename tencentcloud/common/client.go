@@ -191,7 +191,11 @@ func (c *Client) sendWithSignatureV3(request tchttp.Request, response tchttp.Res
 	//log.Println("authorization", authorization)
 
 	headers["Authorization"] = authorization
-	httpRequest, err := http.NewRequest(httpRequestMethod, request.GetUrl(), strings.NewReader(requestPayload))
+	url := request.GetScheme() + "://" + request.GetDomain() + request.GetPath()
+	if canonicalQueryString != "" {
+		url = url + "?" + canonicalQueryString
+	}
+	httpRequest, err := http.NewRequest(httpRequestMethod, url, strings.NewReader(requestPayload))
 	if err != nil {
 		return err
 	}

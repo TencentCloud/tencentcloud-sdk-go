@@ -64,6 +64,9 @@ func (r *BaseRequest) GetPath() string {
 }
 
 func (r *BaseRequest) GetScheme() string {
+	if r.scheme == "" {
+		return "https"
+	}
 	return r.scheme
 }
 
