@@ -177,6 +177,9 @@ type BizLicenseOCRResponse struct {
 		// 组成形式
 		ComposingForm *string `json:"ComposingForm,omitempty" name:"ComposingForm"`
 
+		// 成立日期
+		SetDate *string `json:"SetDate,omitempty" name:"SetDate"`
+
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`

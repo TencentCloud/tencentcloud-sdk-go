@@ -973,6 +973,43 @@ type CcnRoute struct {
 	InstanceUin *string `json:"InstanceUin,omitempty" name:"InstanceUin"`
 }
 
+type CheckDefaultSubnetRequest struct {
+	*tchttp.BaseRequest
+
+	// 子网所在的可用区ID，不同子网选择不同可用区可以做跨可用区灾备。
+	Zone *string `json:"Zone,omitempty" name:"Zone"`
+}
+
+func (r *CheckDefaultSubnetRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CheckDefaultSubnetRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CheckDefaultSubnetResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 检查结果。true为可以创建默认子网，false为不可以创建默认子网。
+		Result *bool `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CheckDefaultSubnetResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CheckDefaultSubnetResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type CheckNetDetectStateRequest struct {
 	*tchttp.BaseRequest
 
@@ -3333,46 +3370,6 @@ func (r *DescribeAddressTemplateGroupsResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
-type DescribeAddressTemplateInstancesRequest struct {
-	*tchttp.BaseRequest
-
-	// IP地址实例ID。例如：ipm-12345678。
-	AddressTemplateId *string `json:"AddressTemplateId,omitempty" name:"AddressTemplateId"`
-
-	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
-
-	// 返回数量，默认为20，最大值为100。
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
-}
-
-func (r *DescribeAddressTemplateInstancesRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-func (r *DescribeAddressTemplateInstancesRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
-}
-
-type DescribeAddressTemplateInstancesResponse struct {
-	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
-}
-
-func (r *DescribeAddressTemplateInstancesResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-func (r *DescribeAddressTemplateInstancesResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
-}
-
 type DescribeAddressTemplatesRequest struct {
 	*tchttp.BaseRequest
 
@@ -5303,6 +5300,43 @@ func (r *DescribeVpcIpv6AddressesResponse) ToJsonString() string {
 }
 
 func (r *DescribeVpcIpv6AddressesResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeVpcLimitsRequest struct {
+	*tchttp.BaseRequest
+
+	// 配额名称。每次最大查询100个配额类型。
+	LimitTypes []*string `json:"LimitTypes,omitempty" name:"LimitTypes" list`
+}
+
+func (r *DescribeVpcLimitsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeVpcLimitsRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeVpcLimitsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 私有网络配额
+		VpcLimitSet []*VpcLimit `json:"VpcLimitSet,omitempty" name:"VpcLimitSet" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeVpcLimitsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeVpcLimitsResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -9395,6 +9429,15 @@ type VpcIpv6Address struct {
 
 	// `IPv6`申请时间。
 	CreatedTime *string `json:"CreatedTime,omitempty" name:"CreatedTime"`
+}
+
+type VpcLimit struct {
+
+	// 私有网络配额描述
+	LimitType *string `json:"LimitType,omitempty" name:"LimitType"`
+
+	// 私有网络配额值
+	LimitValue *uint64 `json:"LimitValue,omitempty" name:"LimitValue"`
 }
 
 type VpcPrivateIpAddress struct {

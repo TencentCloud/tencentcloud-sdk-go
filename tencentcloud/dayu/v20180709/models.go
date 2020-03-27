@@ -1078,6 +1078,10 @@ type DDoSEventRecord struct {
 	// 资源名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResourceName *string `json:"ResourceName,omitempty" name:"ResourceName"`
+
+	// 攻击事件Id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EventId *string `json:"EventId,omitempty" name:"EventId"`
 }
 
 type DDoSPolicyDropOption struct {

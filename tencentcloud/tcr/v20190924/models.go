@@ -2398,6 +2398,9 @@ type TcrNamespaceInfo struct {
 
 	// 访问级别
 	Public *bool `json:"Public,omitempty" name:"Public"`
+
+	// 命名空间的Id
+	NamespaceId *int64 `json:"NamespaceId,omitempty" name:"NamespaceId"`
 }
 
 type TcrRepositoryInfo struct {

@@ -2068,7 +2068,7 @@ func NewEnableLiveDomainResponse() (response *EnableLiveDomainResponse) {
     return
 }
 
-// 启用状态为停用的直播域名
+// 启用状态为停用的直播域名。
 func (c *Client) EnableLiveDomain(request *EnableLiveDomainRequest) (response *EnableLiveDomainResponse, err error) {
     if request == nil {
         request = NewEnableLiveDomainRequest()

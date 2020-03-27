@@ -1,10 +1,48 @@
 # 本版本更新包含以下内容：
 
-## 计费相关(billing) 版本：2018-07-09
+## 腾讯云剪(cme) 版本：2019-10-29
 
-### 第 17 次发布
+### 第 3 次发布
 
-发布时间：2020-03-26 08:02:35
+发布时间：2020-03-27 08:01:55
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [MediaMetaData](https://cloud.tencent.com/document/api/1156/40360#MediaMetaData)
+
+	* 新增成员：Rotate
+
+
+
+
+## 大禹网络安全(dayu) 版本：2018-07-09
+
+### 第 11 次发布
+
+发布时间：2020-03-27 08:05:57
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [DDoSEventRecord](https://cloud.tencent.com/document/api/1021/39225#DDoSEventRecord)
+
+	* 新增成员：EventId
+
+
+
+
+## 文字识别(ocr) 版本：2018-11-19
+
+### 第 18 次发布
+
+发布时间：2020-03-27 08:11:10
 
 本次发布包含了以下内容：
 
@@ -12,79 +50,56 @@
 
 修改接口：
 
-* [DescribeBillDetail](https://cloud.tencent.com/document/api/555/19182)
+* [BizLicenseOCR](https://cloud.tencent.com/document/api/866/36215)
 
-	* 新增入参：ActionType
-
-* [DescribeBillResourceSummary](https://cloud.tencent.com/document/api/555/19181)
-
-	* 新增入参：ActionType
+	* 新增出参：SetDate
 
 
 
 
-## 访问管理(cam) 版本：2019-01-16
+## 证书(ssl) 版本：2019-12-05
 
-### 第 11 次发布
+### 第 2 次发布
 
-发布时间：2020-03-26 08:03:40
+发布时间：2020-03-27 08:01:22
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-修改数据结构：
+修改接口：
 
-* [RoleInfo](https://cloud.tencent.com/document/api/598/33167#RoleInfo)
+* [DescribeCertificateDetail](https://cloud.tencent.com/document/api/400/41673)
 
-	* 新增成员：DeletionTaskId
-
-
-
-
-## 负载均衡(clb) 版本：2018-03-17
-
-### 第 18 次发布
-
-发布时间：2020-03-26 08:05:08
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [LoadBalancer](https://cloud.tencent.com/document/api/214/30694#LoadBalancer)
-
-	* 新增成员：IsBlockTime
-
-
-
-
-## 标签(tag) 版本：2018-08-13
-
-### 第 4 次发布
-
-发布时间：2020-03-26 08:12:32
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [TagResource](https://cloud.tencent.com/document/api/651/35327#TagResource)
-
-	* 新增成员：ServiceType
+	* 新增出参：Deployable
 
 
 
 
 ## 容器镜像服务(tcr) 版本：2019-09-24
 
-### 第 5 次发布
+### 第 6 次发布
 
-发布时间：2020-03-26 08:16:53
+发布时间：2020-03-27 08:17:23
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [TcrNamespaceInfo](https://cloud.tencent.com/document/api/1141/41603#TcrNamespaceInfo)
+
+	* 新增成员：NamespaceId
+
+
+
+
+## 容器服务(tke) 版本：2018-05-25
+
+### 第 16 次发布
+
+发布时间：2020-03-27 08:14:10
 
 本次发布包含了以下内容：
 
@@ -92,28 +107,22 @@
 
 新增接口：
 
-* [DeleteInstanceToken](https://cloud.tencent.com/document/api/1141/42912)
-* [DescribeInstanceToken](https://cloud.tencent.com/document/api/1141/42911)
-* [ModifyInstanceToken](https://cloud.tencent.com/document/api/1141/42910)
-
-修改接口：
-
-* [CreateInstanceToken](https://cloud.tencent.com/document/api/1141/41571)
-
-	* 新增入参：TokenType, Desc
-
+* [DescribeImages](https://cloud.tencent.com/document/api/457/42941)
+* [DescribeRegions](https://cloud.tencent.com/document/api/457/42940)
+* [ModifyClusterAttribute](https://cloud.tencent.com/document/api/457/42938)
 
 新增数据结构：
 
-* [TcrInstanceToken](https://cloud.tencent.com/document/api/1141/41603#TcrInstanceToken)
+* [ImageInstance](https://cloud.tencent.com/document/api/457/31866#ImageInstance)
+* [RegionInstance](https://cloud.tencent.com/document/api/457/31866#RegionInstance)
 
 
 
 ## 腾讯分布式服务框架(tsf) 版本：2018-03-26
 
-### 第 12 次发布
+### 第 13 次发布
 
-发布时间：2020-03-26 08:14:05
+发布时间：2020-03-27 08:14:33
 
 本次发布包含了以下内容：
 
@@ -121,29 +130,35 @@
 
 修改数据结构：
 
-* [Instance](https://cloud.tencent.com/document/api/649/36099#Instance)
+* [SimpleGroup](https://cloud.tencent.com/document/api/649/36099#SimpleGroup)
 
-	* 新增成员：NamespaceName
+	* 新增成员：StartupParameters, GroupResourceType, AppMicroServiceType
 
 
 
 
 ## 私有网络(vpc) 版本：2017-03-12
 
-### 第 39 次发布
+### 第 40 次发布
 
-发布时间：2020-03-26 08:14:31
+发布时间：2020-03-27 08:14:59
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-修改接口：
+新增接口：
 
-* [AllocateAddresses](https://cloud.tencent.com/document/api/215/16699)
+* [CheckDefaultSubnet](https://cloud.tencent.com/document/api/215/42943)
+* [DescribeVpcLimits](https://cloud.tencent.com/document/api/215/42942)
 
-	* 新增入参：BandwidthPackageId
+<font color="#dd0000">**删除接口**：</font>
 
+* DescribeAddressTemplateInstances
+
+新增数据结构：
+
+* [VpcLimit](https://cloud.tencent.com/document/api/215/15824#VpcLimit)
 
 
 
@@ -6168,6 +6183,21 @@
 
 ## 腾讯云剪(cme) 版本：2019-10-29
 
+### 第 3 次发布
+
+发布时间：2020-03-27 08:01:55
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [MediaMetaData](https://cloud.tencent.com/document/api/1156/40360#MediaMetaData)
+
+	* 新增成员：Rotate
+
+
 ### 第 2 次发布
 
 发布时间：2020-03-16 08:01:06
@@ -7715,6 +7745,21 @@
 
 
 ## 大禹网络安全(dayu) 版本：2018-07-09
+
+### 第 11 次发布
+
+发布时间：2020-03-27 08:05:57
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [DDoSEventRecord](https://cloud.tencent.com/document/api/1021/39225#DDoSEventRecord)
+
+	* 新增成员：EventId
+
 
 ### 第 10 次发布
 
@@ -14944,6 +14989,21 @@
 
 ## 文字识别(ocr) 版本：2018-11-19
 
+### 第 18 次发布
+
+发布时间：2020-03-27 08:11:10
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [BizLicenseOCR](https://cloud.tencent.com/document/api/866/36215)
+
+	* 新增出参：SetDate
+
+
 ### 第 17 次发布
 
 发布时间：2020-02-20 15:29:50
@@ -17106,6 +17166,21 @@
 
 ## 证书(ssl) 版本：2019-12-05
 
+### 第 2 次发布
+
+发布时间：2020-03-27 08:01:22
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeCertificateDetail](https://cloud.tencent.com/document/api/400/41673)
+
+	* 新增出参：Deployable
+
+
 ### 第 1 次发布
 
 发布时间：2020-02-28 14:51:47
@@ -18414,6 +18489,21 @@
 
 ## 容器镜像服务(tcr) 版本：2019-09-24
 
+### 第 6 次发布
+
+发布时间：2020-03-27 08:17:23
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [TcrNamespaceInfo](https://cloud.tencent.com/document/api/1141/41603#TcrNamespaceInfo)
+
+	* 新增成员：NamespaceId
+
+
 ### 第 5 次发布
 
 发布时间：2020-03-26 08:16:53
@@ -18424,9 +18514,9 @@
 
 新增接口：
 
-* [[DeleteInstanceToken](https://cloud.tencent.com/document/api/1141/42912)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeInstanceToken](https://cloud.tencent.com/document/api/1141/42911)](https://cloud.tencent.com/document/api/#/#)
-* [[ModifyInstanceToken](https://cloud.tencent.com/document/api/1141/42910)](https://cloud.tencent.com/document/api/#/#)
+* [DeleteInstanceToken](https://cloud.tencent.com/document/api/1141/42912)
+* [DescribeInstanceToken](https://cloud.tencent.com/document/api/1141/42911)
+* [ModifyInstanceToken](https://cloud.tencent.com/document/api/1141/42910)
 
 修改接口：
 
@@ -18437,7 +18527,7 @@
 
 新增数据结构：
 
-* [[TcrInstanceToken](https://cloud.tencent.com/document/api/1141/41603#TcrInstanceToken)](https://cloud.tencent.com/document/api/1141/41603#[TcrInstanceToken](https://cloud.tencent.com/document/api/1141/41603#TcrInstanceToken))
+* [TcrInstanceToken](https://cloud.tencent.com/document/api/1141/41603#TcrInstanceToken)
 
 ### 第 4 次发布
 
@@ -19256,6 +19346,25 @@
 
 ## 容器服务(tke) 版本：2018-05-25
 
+### 第 16 次发布
+
+发布时间：2020-03-27 08:14:10
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeImages](https://cloud.tencent.com/document/api/457/42941)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeRegions](https://cloud.tencent.com/document/api/457/42940)](https://cloud.tencent.com/document/api/#/#)
+* [[ModifyClusterAttribute](https://cloud.tencent.com/document/api/457/42938)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[ImageInstance](https://cloud.tencent.com/document/api/457/31866#ImageInstance)](https://cloud.tencent.com/document/api/457/31866#[ImageInstance](https://cloud.tencent.com/document/api/457/31866#ImageInstance))
+* [[RegionInstance](https://cloud.tencent.com/document/api/457/31866#RegionInstance)](https://cloud.tencent.com/document/api/457/31866#[RegionInstance](https://cloud.tencent.com/document/api/457/31866#RegionInstance))
+
 ### 第 15 次发布
 
 发布时间：2020-03-10 00:50:32
@@ -19857,6 +19966,21 @@
 
 
 ## 腾讯分布式服务框架(tsf) 版本：2018-03-26
+
+### 第 13 次发布
+
+发布时间：2020-03-27 08:14:33
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [SimpleGroup](https://cloud.tencent.com/document/api/649/36099#SimpleGroup)
+
+	* 新增成员：StartupParameters, GroupResourceType, AppMicroServiceType
+
 
 ### 第 12 次发布
 
@@ -21732,6 +21856,27 @@
 
 
 ## 私有网络(vpc) 版本：2017-03-12
+
+### 第 40 次发布
+
+发布时间：2020-03-27 08:14:59
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[CheckDefaultSubnet](https://cloud.tencent.com/document/api/215/42943)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeVpcLimits](https://cloud.tencent.com/document/api/215/42942)](https://cloud.tencent.com/document/api/#/#)
+
+<font color="#dd0000">**删除接口**：</font>
+
+* DescribeAddressTemplateInstances
+
+新增数据结构：
+
+* [[VpcLimit](https://cloud.tencent.com/document/api/215/15824#VpcLimit)](https://cloud.tencent.com/document/api/215/15824#[VpcLimit](https://cloud.tencent.com/document/api/215/15824#VpcLimit))
 
 ### 第 39 次发布
 

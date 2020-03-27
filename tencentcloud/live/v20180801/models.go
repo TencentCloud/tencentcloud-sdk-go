@@ -23,7 +23,7 @@ import (
 type AddDelayLiveStreamRequest struct {
 	*tchttp.BaseRequest
 
-	// 推流路径，与推流和播放地址中的AppName保持一致，默认为live。
+	// 推流路径，与推流和播放地址中的 AppName 保持一致，默认为 live。
 	AppName *string `json:"AppName,omitempty" name:"AppName"`
 
 	// 推流域名。
@@ -993,14 +993,14 @@ func (r *CreateLiveWatermarkRuleResponse) FromJsonString(s string) error {
 type CreatePullStreamConfigRequest struct {
 	*tchttp.BaseRequest
 
-	// 源 Url。目前可支持直播流及点播文件。
+	// 源 Url ，用于拉流的地址。目前可支持直播流及点播文件。
 	// 注意：
 	// 1. 多个点播url之间使用空格拼接。
 	// 2. 目前上限支持10个url。
 	// 3. 支持拉流文件格式：flv，rtmp，hls，mp4。
 	FromUrl *string `json:"FromUrl,omitempty" name:"FromUrl"`
 
-	// 目的 Url，目前限制该目标地址为腾讯域名。
+	// 目的 Url ，用于推流的地址，目前限制该目标地址为腾讯域名。
 	// 仅支持：rtmp 协议。
 	ToUrl *string `json:"ToUrl,omitempty" name:"ToUrl"`
 
@@ -4158,7 +4158,7 @@ func (r *DropLiveStreamResponse) FromJsonString(s string) error {
 type EnableLiveDomainRequest struct {
 	*tchttp.BaseRequest
 
-	// 待启用的直播域名
+	// 待启用的直播域名。
 	DomainName *string `json:"DomainName,omitempty" name:"DomainName"`
 }
 

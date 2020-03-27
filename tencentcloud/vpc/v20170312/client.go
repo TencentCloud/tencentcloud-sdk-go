@@ -448,6 +448,31 @@ func (c *Client) AttachNetworkInterface(request *AttachNetworkInterfaceRequest) 
     return
 }
 
+func NewCheckDefaultSubnetRequest() (request *CheckDefaultSubnetRequest) {
+    request = &CheckDefaultSubnetRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "CheckDefaultSubnet")
+    return
+}
+
+func NewCheckDefaultSubnetResponse() (response *CheckDefaultSubnetResponse) {
+    response = &CheckDefaultSubnetResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（CheckDefaultSubnet）用于预判是否可建默认子网。
+func (c *Client) CheckDefaultSubnet(request *CheckDefaultSubnetRequest) (response *CheckDefaultSubnetResponse, err error) {
+    if request == nil {
+        request = NewCheckDefaultSubnetRequest()
+    }
+    response = NewCheckDefaultSubnetResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCheckNetDetectStateRequest() (request *CheckNetDetectStateRequest) {
     request = &CheckNetDetectStateRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1913,31 +1938,6 @@ func (c *Client) DescribeAddressTemplateGroups(request *DescribeAddressTemplateG
     return
 }
 
-func NewDescribeAddressTemplateInstancesRequest() (request *DescribeAddressTemplateInstancesRequest) {
-    request = &DescribeAddressTemplateInstancesRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    request.Init().WithApiInfo("vpc", APIVersion, "DescribeAddressTemplateInstances")
-    return
-}
-
-func NewDescribeAddressTemplateInstancesResponse() (response *DescribeAddressTemplateInstancesResponse) {
-    response = &DescribeAddressTemplateInstancesResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    }
-    return
-}
-
-// 本接口（DescribeAddressTemplateInstances）用于查询参数模板IP地址关联的实例列表。本接口不会返回查询的结果，需要根据返回的RequestId调用DescribeVpcTaskResult接口获取结果。
-func (c *Client) DescribeAddressTemplateInstances(request *DescribeAddressTemplateInstancesRequest) (response *DescribeAddressTemplateInstancesResponse, err error) {
-    if request == nil {
-        request = NewDescribeAddressTemplateInstancesRequest()
-    }
-    response = NewDescribeAddressTemplateInstancesResponse()
-    err = c.Send(request, response)
-    return
-}
-
 func NewDescribeAddressTemplatesRequest() (request *DescribeAddressTemplatesRequest) {
     request = &DescribeAddressTemplatesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2914,6 +2914,60 @@ func (c *Client) DescribeVpcIpv6Addresses(request *DescribeVpcIpv6AddressesReque
         request = NewDescribeVpcIpv6AddressesRequest()
     }
     response = NewDescribeVpcIpv6AddressesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeVpcLimitsRequest() (request *DescribeVpcLimitsRequest) {
+    request = &DescribeVpcLimitsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "DescribeVpcLimits")
+    return
+}
+
+func NewDescribeVpcLimitsResponse() (response *DescribeVpcLimitsResponse) {
+    response = &DescribeVpcLimitsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 获取私有网络配额，部分私有网络的配额有地域属性。
+// LimitTypes取值范围：
+// * appid-max-vpcs （每个开发商每个地域可创建的VPC数）
+// * vpc-max-subnets（每个VPC可创建的子网数）
+// * vpc-max-route-tables（每个VPC可创建的路由表数）
+// * route-table-max-policies（每个路由表可添加的策略数）
+// * vpc-max-vpn-gateways（每个VPC可创建的VPN网关数）
+// * appid-max-custom-gateways（每个开发商可创建的对端网关数）
+// * appid-max-vpn-connections（每个开发商可创建的VPN通道数）
+// * custom-gateway-max-vpn-connections（每个对端网关可创建的VPN通道数）
+// * vpn-gateway-max-custom-gateways（每个VPNGW可以创建的通道数）
+// * vpc-max-network-acls（每个VPC可创建的网络ACL数）
+// * network-acl-max-inbound-policies（每个网络ACL可添加的入站规则数）
+// * network-acl-max-outbound-policies（每个网络ACL可添加的出站规则数）
+// * vpc-max-vpcpeers（每个VPC可创建的对等连接数）
+// * vpc-max-available-vpcpeers（每个VPC可创建的有效对等连接数）
+// * vpc-max-basic-network-interconnections（每个VPC可创建的基础网络云主机与VPC互通数）
+// * direct-connection-max-snats（每个专线网关可创建的SNAT数）
+// * direct-connection-max-dnats（每个专线网关可创建的DNAT数）
+// * direct-connection-max-snapts（每个专线网关可创建的SNAPT数）
+// * direct-connection-max-dnapts（每个专线网关可创建的DNAPT数）
+// * vpc-max-nat-gateways（每个VPC可创建的NAT网关数）
+// * nat-gateway-max-eips（每个NAT可以购买的外网IP数量）
+// * vpc-max-enis（每个VPC可创建弹性网卡数）
+// * vpc-max-havips（每个VPC可创建HAVIP数）
+// * eni-max-private-ips（每个ENI可以绑定的内网IP数（ENI未绑定子机））
+// * nat-gateway-max-dnapts（每个NAT网关可创建的DNAPT数）
+// * vpc-max-ipv6s（每个VPC可分配的IPv6地址数）
+// * eni-max-ipv6s（每个ENI可分配的IPv6地址数）
+// * vpc-max-assistant_cidrs（每个VPC可分配的辅助CIDR数）
+func (c *Client) DescribeVpcLimits(request *DescribeVpcLimitsRequest) (response *DescribeVpcLimitsResponse, err error) {
+    if request == nil {
+        request = NewDescribeVpcLimitsRequest()
+    }
+    response = NewDescribeVpcLimitsResponse()
     err = c.Send(request, response)
     return
 }

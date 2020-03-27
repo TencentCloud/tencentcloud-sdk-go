@@ -580,6 +580,9 @@ type MediaMetaData struct {
 	// 时长，单位：秒。
 	Duration *float64 `json:"Duration,omitempty" name:"Duration"`
 
+	// 视频拍摄时的选择角度，单位：度
+	Rotate *int64 `json:"Rotate,omitempty" name:"Rotate"`
+
 	// 视频流信息。
 	VideoStreamInfoSet []*VideoStreamInfo `json:"VideoStreamInfoSet,omitempty" name:"VideoStreamInfoSet" list`
 

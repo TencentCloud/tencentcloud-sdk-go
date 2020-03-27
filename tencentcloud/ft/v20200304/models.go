@@ -107,8 +107,8 @@ type GenderInfo struct {
 type SwapGenderPicRequest struct {
 	*tchttp.BaseRequest
 
-	// 人脸变化性别信息。 
-	// 您可以输入最多3个 GenderInfo 来实现给一张图中的最多3张人脸变换性别。
+	// 人脸转化性别信息。 
+	// 您可以输入最多3个 GenderInfo 来实现给一张图中的最多3张人脸转换性别。
 	GenderInfos []*GenderInfo `json:"GenderInfos,omitempty" name:"GenderInfos" list`
 
 	// 图片 base64 数据，base64 编码后大小不可超过5M。 

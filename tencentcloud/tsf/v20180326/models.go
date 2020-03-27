@@ -4579,6 +4579,18 @@ type SimpleGroup struct {
 	// 命名空间名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	NamespaceName *string `json:"NamespaceName,omitempty" name:"NamespaceName"`
+
+	// 启动参数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StartupParameters *string `json:"StartupParameters,omitempty" name:"StartupParameters"`
+
+	// 部署组资源类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GroupResourceType *string `json:"GroupResourceType,omitempty" name:"GroupResourceType"`
+
+	// 应用微服务类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AppMicroServiceType *string `json:"AppMicroServiceType,omitempty" name:"AppMicroServiceType"`
 }
 
 type StartContainerGroupRequest struct {

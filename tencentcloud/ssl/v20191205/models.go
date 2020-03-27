@@ -23,7 +23,7 @@ import (
 type ApplyCertificateRequest struct {
 	*tchttp.BaseRequest
 
-	// 验证方式（'DNS_AUTO'， 'DNS'， 'FILE'）：DNS_AUTO = 自动DNS验证。
+	// 验证方式：DNS_AUTO = 自动DNS验证，DNS = 手动DNS验证，FILE = 文件验证。
 	DvAuthMethod *string `json:"DvAuthMethod,omitempty" name:"DvAuthMethod"`
 
 	// 域名。
@@ -32,7 +32,7 @@ type ApplyCertificateRequest struct {
 	// 项目ID。
 	ProjectId *uint64 `json:"ProjectId,omitempty" name:"ProjectId"`
 
-	// 证书类型，默认2。免费证书目前只有 2 了。
+	// 证书类型，目前仅支持类型2。2 = TrustAsia TLS RSA CA。
 	PackageType *string `json:"PackageType,omitempty" name:"PackageType"`
 
 	// 邮箱。
@@ -41,7 +41,7 @@ type ApplyCertificateRequest struct {
 	// 手机。
 	ContactPhone *string `json:"ContactPhone,omitempty" name:"ContactPhone"`
 
-	// 有效期，默认12。
+	// 有效期，默认12个月，目前仅支持12个月。
 	ValidityPeriod *string `json:"ValidityPeriod,omitempty" name:"ValidityPeriod"`
 
 	// 加密算法，仅支持RSA。
@@ -292,7 +292,7 @@ type CommitCertificateInformationResponse struct {
 		// 亚信订单号。
 		OrderId *string `json:"OrderId,omitempty" name:"OrderId"`
 
-		// 证书状态。
+		// 证书状态：0 = 审核中，1 = 已通过，2 = 审核失败，3 = 已过期，4 = 已添加DNS记录，5 = 企业证书，待提交，6 = 订单取消中，7 = 已取消，8 = 已提交资料， 待上传确认函，9 = 证书吊销中，10 = 已吊销，11 = 重颁发中，12 = 待上传吊销确认函。
 		Status *uint64 `json:"Status,omitempty" name:"Status"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -382,11 +382,11 @@ type DescribeCertificateDetailResponse struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		CertificateType *string `json:"CertificateType,omitempty" name:"CertificateType"`
 
-		// 证书类型。
+		// 证书套餐类型：1 = GeoTrust DV SSL CA - G3， 2 = TrustAsia TLS RSA CA， 3 = Symantec 增强型企业版(EV Pro)， 4 = Symantec 增强型(EV)， 5 = Symantec 企业型专业版(OV Pro)， 6 = Symantec 企业型(OV)， 7 = Symantec 企业型(OV)通配符， 8 = Geotrust 增强型(EV)， 9 = Geotrust 企业型(OV)， 10 = Geotrust 企业型(OV)通配符， 11 = TrustAsia 域名型多域名 SSL证书， 12 = TrustAsia 域名型(DV)通配符， 13 = TrustAsia 企业型通配符 （OV）SSL证书(D3)， 14 = TrustAsia 企业型 （OV）SSL证书(D3)， 15 = TrustAsia 企业型多域名 （OV）SSL证书(D3)， 16 = TrustAsia 增强型 （EV）SSL证书(D3)， 17 = TrustAsia 增强型多域名（EV）SSL证书(D3)， 18 = GlobalSign 企业型（OV）SSL证， 19 = GlobalSign 企业型通配符 （OV）SSL证书， 20 = GlobalSign 增强型 （EV）SSL证书， 21 = TrustAsia 企业型通配符多域名 （OV）SSL证书(D3)， 22 = GlobalSign 企业型多域名 （OV）SSL证书， 23 = GlobalSign 企业型通配符多域名 （OV）SSL证书， 24 = GlobalSign 增强型多域名（EV） SSL证书。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		PackageType *string `json:"PackageType,omitempty" name:"PackageType"`
 
-		// 证书办法者名称。
+		// 颁发者。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		ProductZhName *string `json:"ProductZhName,omitempty" name:"ProductZhName"`
 
@@ -394,11 +394,11 @@ type DescribeCertificateDetailResponse struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		Domain *string `json:"Domain,omitempty" name:"Domain"`
 
-		// 别名。
+		// 备注名称。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		Alias *string `json:"Alias,omitempty" name:"Alias"`
 
-		// 证书状态。
+		// 证书状态：0 = 审核中，1 = 已通过，2 = 审核失败，3 = 已过期，4 = 已添加DNS记录，5 = 企业证书，待提交，6 = 订单取消中，7 = 已取消，8 = 已提交资料， 待上传确认函，9 = 证书吊销中，10 = 已吊销，11 = 重颁发中，12 = 待上传吊销确认函。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		Status *uint64 `json:"Status,omitempty" name:"Status"`
 
@@ -406,7 +406,7 @@ type DescribeCertificateDetailResponse struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		StatusMsg *string `json:"StatusMsg,omitempty" name:"StatusMsg"`
 
-		// 证书验证类型。
+		// 验证类型：DNS_AUTO = 自动DNS验证，DNS = 手动DNS验证，FILE = 文件验证，EMAIL = 邮件验证。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		VerifyType *string `json:"VerifyType,omitempty" name:"VerifyType"`
 
@@ -493,6 +493,10 @@ type DescribeCertificateDetailResponse struct {
 		// 是否可重颁发证书。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		RenewAble *bool `json:"RenewAble,omitempty" name:"RenewAble"`
+
+		// 是否可部署。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Deployable *bool `json:"Deployable,omitempty" name:"Deployable"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -597,7 +601,7 @@ type DescribeCertificateResponse struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		CertificateType *string `json:"CertificateType,omitempty" name:"CertificateType"`
 
-		// 证书类型。
+		// 证书套餐类型：1 = GeoTrust DV SSL CA - G3， 2 = TrustAsia TLS RSA CA， 3 = Symantec 增强型企业版(EV Pro)， 4 = Symantec 增强型(EV)， 5 = Symantec 企业型专业版(OV Pro)， 6 = Symantec 企业型(OV)， 7 = Symantec 企业型(OV)通配符， 8 = Geotrust 增强型(EV)， 9 = Geotrust 企业型(OV)， 10 = Geotrust 企业型(OV)通配符， 11 = TrustAsia 域名型多域名 SSL证书， 12 = TrustAsia 域名型(DV)通配符， 13 = TrustAsia 企业型通配符 （OV）SSL证书(D3)， 14 = TrustAsia 企业型 （OV）SSL证书(D3)， 15 = TrustAsia 企业型多域名 （OV）SSL证书(D3)， 16 = TrustAsia 增强型 （EV）SSL证书(D3)， 17 = TrustAsia 增强型多域名（EV）SSL证书(D3)， 18 = GlobalSign 企业型（OV）SSL证， 19 = GlobalSign 企业型通配符 （OV）SSL证书， 20 = GlobalSign 增强型 （EV）SSL证书， 21 = TrustAsia 企业型通配符多域名 （OV）SSL证书(D3)， 22 = GlobalSign 企业型多域名 （OV）SSL证书， 23 = GlobalSign 企业型通配符多域名 （OV）SSL证书， 24 = GlobalSign 增强型多域名（EV） SSL证书。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		PackageType *string `json:"PackageType,omitempty" name:"PackageType"`
 
@@ -609,11 +613,11 @@ type DescribeCertificateResponse struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		Domain *string `json:"Domain,omitempty" name:"Domain"`
 
-		// 别名。
+		// 备注名称。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		Alias *string `json:"Alias,omitempty" name:"Alias"`
 
-		// 证书类型。
+		// 证书状态：0 = 审核中，1 = 已通过，2 = 审核失败，3 = 已过期，4 = 已添加DNS记录，5 = 企业证书，待提交，6 = 订单取消中，7 = 已取消，8 = 已提交资料， 待上传确认函，9 = 证书吊销中，10 = 已吊销，11 = 重颁发中，12 = 待上传吊销确认函。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		Status *uint64 `json:"Status,omitempty" name:"Status"`
 
@@ -621,7 +625,7 @@ type DescribeCertificateResponse struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		StatusMsg *string `json:"StatusMsg,omitempty" name:"StatusMsg"`
 
-		// 证书验证类型。
+		// 验证类型：DNS_AUTO = 自动DNS验证，DNS = 手动DNS验证，FILE = 文件验证，EMAIL = 邮件验证。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		VerifyType *string `json:"VerifyType,omitempty" name:"VerifyType"`
 
@@ -802,11 +806,11 @@ type DownloadCertificateResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// ZIP base64编码内容。
+		// ZIP base64编码内容，base64解码后可保存为ZIP文件。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		Content *string `json:"Content,omitempty" name:"Content"`
 
-		// MIME类型。
+		// MIME类型：application/zip = ZIP压缩文件。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		ContentType *string `json:"ContentType,omitempty" name:"ContentType"`
 
@@ -884,7 +888,7 @@ type ModifyCertificateAliasRequest struct {
 	// 证书id。
 	CertificateId *string `json:"CertificateId,omitempty" name:"CertificateId"`
 
-	// 证书备注。
+	// 备注名称。
 	Alias *string `json:"Alias,omitempty" name:"Alias"`
 }
 
@@ -1005,10 +1009,10 @@ type ReplaceCertificateRequest struct {
 	// 证书ID。
 	CertificateId *string `json:"CertificateId,omitempty" name:"CertificateId"`
 
-	// 验证类型 DNS,DNS_AUTO,FILE
+	// 验证类型：DNS_AUTO = 自动DNS验证，DNS = 手动DNS验证，FILE = 文件验证。
 	ValidType *string `json:"ValidType,omitempty" name:"ValidType"`
 
-	// 类型，可选项：Original、Upload、Online，默认original。
+	// 类型，默认Original。可选项：Original = 原证书csr，Upload = 手动上传，Online = 在线生成。
 	CsrType *string `json:"CsrType,omitempty" name:"CsrType"`
 
 	// CSR内容。
@@ -1272,7 +1276,7 @@ type UploadCertificateRequest struct {
 	// 私钥内容，证书类型为SVR时必填，为CA时可不填。
 	CertificatePrivateKey *string `json:"CertificatePrivateKey,omitempty" name:"CertificatePrivateKey"`
 
-	// 证书类型，可选值：CA，SVR，默认SVR。
+	// 证书类型，默认SVR。CA = 客户端证书，SVR = 服务器证书。
 	CertificateType *string `json:"CertificateType,omitempty" name:"CertificateType"`
 
 	// 证书别名。
