@@ -3089,6 +3089,9 @@ type VpcInfo struct {
 
 	// 创建时间
 	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 整型私有网络ID。
+	IntVpcId *uint64 `json:"IntVpcId,omitempty" name:"IntVpcId"`
 }
 
 type VpcPeerConnection struct {
@@ -3111,7 +3114,7 @@ type VpcPeerConnection struct {
 	// 对等连接名称
 	VpcPeerConnectionName *string `json:"VpcPeerConnectionName,omitempty" name:"VpcPeerConnectionName"`
 
-	// 对等连接状态
+	// 对等连接状态。pending:申请中,available:运行中,expired:已过期,rejected:已拒绝,deleted:已删除
 	State *string `json:"State,omitempty" name:"State"`
 
 	// 本端VPC所属可用区
@@ -3230,6 +3233,9 @@ type VpcResource struct {
 	// VPC允许创建的同地域的对等连接的个数
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	VpcPeerLimitToSameRegion *uint64 `json:"VpcPeerLimitToSameRegion,omitempty" name:"VpcPeerLimitToSameRegion"`
+
+	// 整型私有网络ID
+	IntVpcId *uint64 `json:"IntVpcId,omitempty" name:"IntVpcId"`
 }
 
 type VpcSubnetCreateInfo struct {

@@ -657,7 +657,7 @@ func (r *CreateL4HealthConfigResponse) FromJsonString(s string) error {
 type CreateL4RulesRequest struct {
 	*tchttp.BaseRequest
 
-	// 大禹子产品代号（bgpip表示高防IP；bgp表示独享包；bgp-multip表示共享包；net表示高防IP专业版）
+	// 大禹子产品代号（bgpip表示高防IP；net表示高防IP专业版）
 	Business *string `json:"Business,omitempty" name:"Business"`
 
 	// 资源ID
@@ -795,7 +795,7 @@ type CreateL7RuleCertRequest struct {
 	// 大禹子产品代号（bgpip表示高防IP；net表示高防IP专业版）
 	Business *string `json:"Business,omitempty" name:"Business"`
 
-	// 资源ID
+	// 资源实例ID，比如高防IP实例的ID，高防IP专业版实例的ID
 	Id *string `json:"Id,omitempty" name:"Id"`
 
 	// 规则ID
@@ -847,7 +847,7 @@ func (r *CreateL7RuleCertResponse) FromJsonString(s string) error {
 type CreateL7RulesRequest struct {
 	*tchttp.BaseRequest
 
-	// 大禹子产品代号（bgpip表示高防IP；bgp表示独享包；bgp-multip表示共享包；net表示高防IP专业版）
+	// 大禹子产品代号（bgpip表示高防IP；net表示高防IP专业版）
 	Business *string `json:"Business,omitempty" name:"Business"`
 
 	// 资源ID
@@ -1429,7 +1429,7 @@ func (r *DeleteDDoSPolicyResponse) FromJsonString(s string) error {
 type DeleteL4RulesRequest struct {
 	*tchttp.BaseRequest
 
-	// 大禹子产品代号（bgpip表示高防IP；bgp表示独享包；bgp-multip表示共享包；net表示高防IP专业版）
+	// 大禹子产品代号（bgpip表示高防IP；net表示高防IP专业版）
 	Business *string `json:"Business,omitempty" name:"Business"`
 
 	// 资源ID
@@ -1472,7 +1472,7 @@ func (r *DeleteL4RulesResponse) FromJsonString(s string) error {
 type DeleteL7RulesRequest struct {
 	*tchttp.BaseRequest
 
-	// 大禹子产品代号（bgpip表示高防IP；bgp表示独享包；bgp-multip表示共享包；net表示高防IP专业版）
+	// 大禹子产品代号（bgpip表示高防IP；net表示高防IP专业版）
 	Business *string `json:"Business,omitempty" name:"Business"`
 
 	// 资源ID
@@ -5839,7 +5839,7 @@ func (r *ModifyL4KeepTimeResponse) FromJsonString(s string) error {
 type ModifyL4RulesRequest struct {
 	*tchttp.BaseRequest
 
-	// 大禹子产品代号（bgpip表示高防IP；bgp表示独享包；bgp-multip表示共享包；net表示高防IP专业版）
+	// 大禹子产品代号（bgpip表示高防IP；net表示高防IP专业版）
 	Business *string `json:"Business,omitempty" name:"Business"`
 
 	// 资源ID
@@ -5882,7 +5882,7 @@ func (r *ModifyL4RulesResponse) FromJsonString(s string) error {
 type ModifyL7RulesRequest struct {
 	*tchttp.BaseRequest
 
-	// 大禹子产品代号（bgpip表示高防IP；bgp表示独享包；bgp-multip表示共享包；net表示高防IP专业版）
+	// 大禹子产品代号（bgpip表示高防IP；net表示高防IP专业版）
 	Business *string `json:"Business,omitempty" name:"Business"`
 
 	// 资源ID

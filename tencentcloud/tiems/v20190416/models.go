@@ -1586,6 +1586,9 @@ type RsgAsGroup struct {
 
 	// 伸缩组内节点个数
 	InstanceCount *uint64 `json:"InstanceCount,omitempty" name:"InstanceCount"`
+
+	// 伸缩组起始节点数
+	DesiredSize *uint64 `json:"DesiredSize,omitempty" name:"DesiredSize"`
 }
 
 type RsgAsGroupActivity struct {

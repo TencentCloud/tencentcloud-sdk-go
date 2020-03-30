@@ -289,6 +289,10 @@ type CreateInstanceTokenResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
+		// 用户名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Username *string `json:"Username,omitempty" name:"Username"`
+
 		// 访问凭证
 		Token *string `json:"Token,omitempty" name:"Token"`
 

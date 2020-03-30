@@ -279,6 +279,12 @@ type DBInstance struct {
 
 	// 机器类型
 	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 用户的AppId
+	AppId *uint64 `json:"AppId,omitempty" name:"AppId"`
+
+	// 实例的Uid
+	Uid *uint64 `json:"Uid,omitempty" name:"Uid"`
 }
 
 type DBInstanceNetInfo struct {
@@ -1677,6 +1683,9 @@ type Xlog struct {
 
 	// 外网下载地址
 	ExternalAddr *string `json:"ExternalAddr,omitempty" name:"ExternalAddr"`
+
+	// 备份文件大小
+	Size *int64 `json:"Size,omitempty" name:"Size"`
 }
 
 type ZoneInfo struct {

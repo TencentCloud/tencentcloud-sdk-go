@@ -133,30 +133,30 @@ type CertificateExtra struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DomainNumber *string `json:"DomainNumber,omitempty" name:"DomainNumber"`
 
-	// 原始证书ID。
+	// 原始证书 ID。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	OriginCertificateId *string `json:"OriginCertificateId,omitempty" name:"OriginCertificateId"`
 
-	// 重颁发证书原始ID。
+	// 重颁发证书原始 ID。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ReplacedBy *string `json:"ReplacedBy,omitempty" name:"ReplacedBy"`
 
-	// 重颁发证书新ID。
+	// 重颁发证书新 ID。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ReplacedFor *string `json:"ReplacedFor,omitempty" name:"ReplacedFor"`
 
-	// 新订单证书ID。
+	// 新订单证书 ID。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RenewOrder *string `json:"RenewOrder,omitempty" name:"RenewOrder"`
 }
 
 type Certificates struct {
 
-	// 用户UIN。
+	// 用户 UIN。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	OwnerUin *string `json:"OwnerUin,omitempty" name:"OwnerUin"`
 
-	// 项目ID。
+	// 项目 ID。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
 
@@ -164,11 +164,11 @@ type Certificates struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	From *string `json:"From,omitempty" name:"From"`
 
-	// 证书套餐类型：1 = GeoTrust DV SSL CA - G3， 2 = TrustAsia TLS RSA CA， 3 = Symantec 增强型企业版(EV Pro)， 4 = Symantec 增强型(EV)， 5 = Symantec 企业型专业版(OV Pro)， 6 = Symantec 企业型(OV)， 7 = Symantec 企业型(OV)通配符， 8 = Geotrust 增强型(EV)， 9 = Geotrust 企业型(OV)， 10 = Geotrust 企业型(OV)通配符， 11 = TrustAsia 域名型多域名 SSL证书， 12 = TrustAsia 域名型(DV)通配符， 13 = TrustAsia 企业型通配符 （OV）SSL证书(D3)， 14 = TrustAsia 企业型 （OV）SSL证书(D3)， 15 = TrustAsia 企业型多域名 （OV）SSL证书(D3)， 16 = TrustAsia 增强型 （EV）SSL证书(D3)， 17 = TrustAsia 增强型多域名（EV）SSL证书(D3)， 18 = GlobalSign 企业型（OV）SSL证， 19 = GlobalSign 企业型通配符 （OV）SSL证书， 20 = GlobalSign 增强型 （EV）SSL证书， 21 = TrustAsia 企业型通配符多域名 （OV）SSL证书(D3)， 22 = GlobalSign 企业型多域名 （OV）SSL证书， 23 = GlobalSign 企业型通配符多域名 （OV）SSL证书， 24 = GlobalSign 增强型多域名（EV） SSL证书。
+	// 证书套餐类型：1 = GeoTrust DV SSL CA - G3， 2 = TrustAsia TLS RSA CA， 3 = Symantec 增强型企业版（EV Pro）， 4 = Symantec 增强型（EV）， 5 = Symantec 企业型专业版（OV Pro）， 6 = Symantec 企业型（OV）， 7 = Symantec 企业型（OV）通配符， 8 = Geotrust 增强型（EV）， 9 = Geotrust 企业型（OV）， 10 = Geotrust 企业型（OV）通配符， 11 = TrustAsia 域名型多域名 SSL 证书， 12 = TrustAsia 域名型（DV）通配符， 13 = TrustAsia 企业型通配符（OV）SSL 证书（D3）， 14 = TrustAsia 企业型（OV）SSL 证书（D3）， 15 = TrustAsia 企业型多域名 （OV）SSL 证书（D3）， 16 = TrustAsia 增强型 （EV）SSL 证书（D3）， 17 = TrustAsia 增强型多域名（EV）SSL 证书（D3）， 18 = GlobalSign 企业型（OV）SSL 证书， 19 = GlobalSign 企业型通配符 （OV）SSL 证书， 20 = GlobalSign 增强型 （EV）SSL 证书， 21 = TrustAsia 企业型通配符多域名（OV）SSL 证书（D3）， 22 = GlobalSign 企业型多域名（OV）SSL 证书， 23 = GlobalSign 企业型通配符多域名（OV）SSL 证书， 24 = GlobalSign 增强型多域名（EV）SSL 证书。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PackageType *string `json:"PackageType,omitempty" name:"PackageType"`
 
-	// 证书类型（目前支持：CA = 客户端证书，SVR = 服务器证书）。
+	// 证书类型：CA = 客户端证书，SVR = 服务器证书。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CertificateType *string `json:"CertificateType,omitempty" name:"CertificateType"`
 
@@ -220,7 +220,7 @@ type Certificates struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	InsertTime *string `json:"InsertTime,omitempty" name:"InsertTime"`
 
-	// 证书ID
+	// 证书 ID。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CertificateId *string `json:"CertificateId,omitempty" name:"CertificateId"`
 
@@ -830,54 +830,54 @@ func (r *DownloadCertificateResponse) FromJsonString(s string) error {
 
 type DvAuthDetail struct {
 
-	// DV认证密钥。
+	// DV 认证密钥。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DvAuthKey *string `json:"DvAuthKey,omitempty" name:"DvAuthKey"`
 
-	// DV认证值。
+	// DV 认证值。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DvAuthValue *string `json:"DvAuthValue,omitempty" name:"DvAuthValue"`
 
-	// DV认证值域名。
+	// DV 认证值域名。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DvAuthDomain *string `json:"DvAuthDomain,omitempty" name:"DvAuthDomain"`
 
-	// DV认证值路径。
+	// DV 认证值路径。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DvAuthPath *string `json:"DvAuthPath,omitempty" name:"DvAuthPath"`
 
-	// DV认证子域名。
+	// DV 认证子域名。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DvAuthKeySubDomain *string `json:"DvAuthKeySubDomain,omitempty" name:"DvAuthKeySubDomain"`
 
-	// DV认证信息。
+	// DV 认证信息。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DvAuths []*DvAuths `json:"DvAuths,omitempty" name:"DvAuths" list`
 }
 
 type DvAuths struct {
 
-	// DV认证密钥。
+	// DV 认证密钥。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DvAuthKey *string `json:"DvAuthKey,omitempty" name:"DvAuthKey"`
 
-	// DV认证值。
+	// DV 认证值。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DvAuthValue *string `json:"DvAuthValue,omitempty" name:"DvAuthValue"`
 
-	// DV认证值域名。
+	// DV 认证值域名。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DvAuthDomain *string `json:"DvAuthDomain,omitempty" name:"DvAuthDomain"`
 
-	// DV认证值路径。
+	// DV 认证值路径。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DvAuthPath *string `json:"DvAuthPath,omitempty" name:"DvAuthPath"`
 
-	// DV认证子域名，
+	// DV 认证子域名，
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DvAuthSubDomain *string `json:"DvAuthSubDomain,omitempty" name:"DvAuthSubDomain"`
 
-	// DV认证类型。
+	// DV 认证类型。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DvAuthVerifyType *string `json:"DvAuthVerifyType,omitempty" name:"DvAuthVerifyType"`
 }
@@ -969,10 +969,10 @@ func (r *ModifyCertificateProjectResponse) FromJsonString(s string) error {
 
 type OperationLog struct {
 
-	// 操作证书动作
+	// 操作证书动作。
 	Action *string `json:"Action,omitempty" name:"Action"`
 
-	// 操作时间
+	// 操作时间。
 	CreatedOn *string `json:"CreatedOn,omitempty" name:"CreatedOn"`
 }
 
@@ -982,7 +982,7 @@ type ProjectInfo struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProjectName *string `json:"ProjectName,omitempty" name:"ProjectName"`
 
-	// 项目创建用户UIN。
+	// 项目创建用户 UIN。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProjectCreatorUin *uint64 `json:"ProjectCreatorUin,omitempty" name:"ProjectCreatorUin"`
 
@@ -994,11 +994,11 @@ type ProjectInfo struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProjectResume *string `json:"ProjectResume,omitempty" name:"ProjectResume"`
 
-	// 用户UIN。
+	// 用户 UIN。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	OwnerUin *uint64 `json:"OwnerUin,omitempty" name:"OwnerUin"`
 
-	// 项目ID。
+	// 项目 ID。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
 }
@@ -1166,11 +1166,11 @@ func (r *SubmitCertificateInformationResponse) FromJsonString(s string) error {
 
 type SubmittedData struct {
 
-	// CSR类型，（online = 在线生成CSR，parse = 粘贴CSR）。
+	// CSR 类型，（online = 在线生成CSR，parse = 粘贴 CSR）。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CsrType *string `json:"CsrType,omitempty" name:"CsrType"`
 
-	// CSR内容。
+	// CSR 内容。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CsrContent *string `json:"CsrContent,omitempty" name:"CsrContent"`
 
@@ -1178,7 +1178,7 @@ type SubmittedData struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CertificateDomain *string `json:"CertificateDomain,omitempty" name:"CertificateDomain"`
 
-	// DNS信息。
+	// DNS 信息。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DomainList []*string `json:"DomainList,omitempty" name:"DomainList" list`
 
