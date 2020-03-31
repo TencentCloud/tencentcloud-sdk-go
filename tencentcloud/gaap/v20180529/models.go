@@ -4364,6 +4364,10 @@ type ProxyInfo struct {
 	// 是否支持安全组配置
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SupportSecurity *int64 `json:"SupportSecurity,omitempty" name:"SupportSecurity"`
+
+	// 计费类型:(0:按带宽计费  1:按流量计费）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BillingType *int64 `json:"BillingType,omitempty" name:"BillingType"`
 }
 
 type ProxySimpleInfo struct {

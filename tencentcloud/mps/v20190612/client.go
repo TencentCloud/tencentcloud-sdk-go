@@ -1058,6 +1058,35 @@ func (c *Client) DisableWorkflow(request *DisableWorkflowRequest) (response *Dis
     return
 }
 
+func NewEditMediaRequest() (request *EditMediaRequest) {
+    request = &EditMediaRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("mps", APIVersion, "EditMedia")
+    return
+}
+
+func NewEditMediaResponse() (response *EditMediaResponse) {
+    response = &EditMediaResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 对视频进行编辑（剪辑、拼接等），生成一个新的点播视频。编辑的功能包括：
+// 
+// 1. 对一个文件进行剪辑，生成一个新的视频；
+// 2. 对多个文件进行拼接，生成一个新的视频；
+// 3. 对多个文件进行剪辑，然后再拼接，生成一个新的视频。
+func (c *Client) EditMedia(request *EditMediaRequest) (response *EditMediaResponse, err error) {
+    if request == nil {
+        request = NewEditMediaRequest()
+    }
+    response = NewEditMediaResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewEnableWorkflowRequest() (request *EnableWorkflowRequest) {
     request = &EnableWorkflowRequest{
         BaseRequest: &tchttp.BaseRequest{},

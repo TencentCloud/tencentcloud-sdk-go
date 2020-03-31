@@ -1,10 +1,88 @@
 # 本版本更新包含以下内容：
 
-## 人体分析(bda) 版本：2020-03-24
+## 访问管理(cam) 版本：2019-01-16
 
-### 第 1 次发布
+### 第 12 次发布
 
-发布时间：2020-03-30 08:31:45
+发布时间：2020-03-31 08:03:45
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [ListGroupsForUser](https://cloud.tencent.com/document/api/598/34588)
+
+	* 新增入参：SubUin
+
+	* <font color="#dd0000">**修改入参**：</font>Uid
+
+
+
+
+## 负载均衡(clb) 版本：2018-03-17
+
+### 第 20 次发布
+
+发布时间：2020-03-31 08:05:13
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [ModifyRule](https://cloud.tencent.com/document/api/214/30679)
+
+	* 新增入参：TrpcCallee, TrpcFunc
+
+
+
+
+## 全球应用加速(gaap) 版本：2018-05-29
+
+### 第 10 次发布
+
+发布时间：2020-03-31 08:07:50
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [ProxyInfo](https://cloud.tencent.com/document/api/608/37023#ProxyInfo)
+
+	* 新增成员：BillingType
+
+
+
+
+## 直播(live) 版本：2018-08-01
+
+### 第 35 次发布
+
+发布时间：2020-03-31 08:09:29
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeBillBandwidthAndFluxList](https://cloud.tencent.com/document/api/267/35971)
+
+	* 新增入参：ServiceName
+
+
+
+
+## 视频处理(mps) 版本：2019-06-12
+
+### 第 16 次发布
+
+发布时间：2020-03-31 08:10:29
 
 本次发布包含了以下内容：
 
@@ -12,36 +90,33 @@
 
 新增接口：
 
-* [CreateGroup](https://cloud.tencent.com/document/api/#/#)
-* [CreatePerson](https://cloud.tencent.com/document/api/#/#)
-* [CreateTrace](https://cloud.tencent.com/document/api/#/#)
-* [DeleteGroup](https://cloud.tencent.com/document/api/#/#)
-* [DeletePerson](https://cloud.tencent.com/document/api/#/#)
-* [DetectBody](https://cloud.tencent.com/document/api/#/#)
-* [GetGroupList](https://cloud.tencent.com/document/api/#/#)
-* [GetPersonList](https://cloud.tencent.com/document/api/#/#)
-* [ModifyGroup](https://cloud.tencent.com/document/api/#/#)
-* [ModifyPersonInfo](https://cloud.tencent.com/document/api/#/#)
-* [SearchTrace](https://cloud.tencent.com/document/api/#/#)
-* [SegmentPortraitPic](https://cloud.tencent.com/document/api/#/#)
+* [EditMedia](https://cloud.tencent.com/document/api/862/43010)
+
+修改接口：
+
+* [DescribeTaskDetail](https://cloud.tencent.com/document/api/862/37614)
+
+	* 新增出参：EditMediaTask
+
+* [ParseNotification](https://cloud.tencent.com/document/api/862/39228)
+
+	* 新增出参：EditMediaTaskEvent
+
 
 新增数据结构：
 
-* [BodyDetectResult](https://cloud.tencent.com/document/api/#/##BodyDetectResult)
-* [BodyRect](https://cloud.tencent.com/document/api/#/##BodyRect)
-* [Candidate](https://cloud.tencent.com/document/api/#/##Candidate)
-* [GroupInfo](https://cloud.tencent.com/document/api/#/##GroupInfo)
-* [PersonInfo](https://cloud.tencent.com/document/api/#/##PersonInfo)
-* [Trace](https://cloud.tencent.com/document/api/#/##Trace)
-* [TraceInfo](https://cloud.tencent.com/document/api/#/##TraceInfo)
+* [EditMediaFileInfo](https://cloud.tencent.com/document/api/862/37615#EditMediaFileInfo)
+* [EditMediaTask](https://cloud.tencent.com/document/api/862/37615#EditMediaTask)
+* [EditMediaTaskInput](https://cloud.tencent.com/document/api/862/37615#EditMediaTaskInput)
+* [EditMediaTaskOutput](https://cloud.tencent.com/document/api/862/37615#EditMediaTaskOutput)
 
 
 
-## 黑石私有网络(bmvpc) 版本：2018-06-25
+## 图像分析(tiia) 版本：2019-05-29
 
-### 第 5 次发布
+### 第 9 次发布
 
-发布时间：2020-03-30 08:35:00
+发布时间：2020-03-31 08:13:35
 
 本次发布包含了以下内容：
 
@@ -49,22 +124,18 @@
 
 修改数据结构：
 
-* [VpcInfo](https://cloud.tencent.com/document/api/1024/34257#VpcInfo)
+* [Face](https://cloud.tencent.com/document/api/865/35474#Face)
 
-	* 新增成员：IntVpcId
-
-* [VpcResource](https://cloud.tencent.com/document/api/1024/34257#VpcResource)
-
-	* 新增成员：IntVpcId
+	* 新增成员：ID
 
 
 
 
-## 负载均衡(clb) 版本：2018-03-17
+## 智能钛机器学习平台(tione) 版本：2019-10-22
 
-### 第 19 次发布
+### 第 2 次发布
 
-发布时间：2020-03-30 08:36:44
+发布时间：2020-03-31 08:00:28
 
 本次发布包含了以下内容：
 
@@ -72,71 +143,26 @@
 
 修改接口：
 
-* [DescribeLoadBalancers](https://cloud.tencent.com/document/api/214/30685)
+* [CreateTrainingJob](https://cloud.tencent.com/document/api/851/42518)
 
-	* 新增入参：Filters
-
-
-
-
-## 云数据库 PostgreSQL(postgres) 版本：2017-03-12
-
-### 第 6 次发布
-
-发布时间：2020-03-30 08:43:08
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [DBInstance](https://cloud.tencent.com/document/api/409/16778#DBInstance)
-
-	* 新增成员：AppId, Uid
-
-* [Xlog](https://cloud.tencent.com/document/api/409/16778#Xlog)
-
-	* 新增成员：Size
+	* <font color="#dd0000">**修改入参**：</font>AlgorithmSpecification, InputDataConfig, OutputDataConfig, ResourceConfig
 
 
 
 
-## 容器镜像服务(tcr) 版本：2019-09-24
+## 点播(vod) 版本：2018-07-17
 
-### 第 7 次发布
+### 第 39 次发布
 
-发布时间：2020-03-30 08:48:28
+发布时间：2020-03-31 08:15:34
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-修改接口：
+新增接口：
 
-* [CreateInstanceToken](https://cloud.tencent.com/document/api/1141/41571)
-
-	* 新增出参：Username
-
-
-
-
-## 智能钛弹性模型服务(tiems) 版本：2019-04-16
-
-### 第 6 次发布
-
-发布时间：2020-03-30 08:45:21
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [RsgAsGroup](https://cloud.tencent.com/document/api/1120/37561#RsgAsGroup)
-
-	* 新增成员：DesiredSize
-
+* [ModifyEventNotificationConfigForConsole](https://cloud.tencent.com/document/api/266/43011)
 
 
 
@@ -1786,28 +1812,28 @@
 
 新增接口：
 
-* [[CreateGroup](https://cloud.tencent.com/document/api/#/#)](https://cloud.tencent.com/document/api/#/#)
-* [[CreatePerson](https://cloud.tencent.com/document/api/#/#)](https://cloud.tencent.com/document/api/#/#)
-* [[CreateTrace](https://cloud.tencent.com/document/api/#/#)](https://cloud.tencent.com/document/api/#/#)
-* [[DeleteGroup](https://cloud.tencent.com/document/api/#/#)](https://cloud.tencent.com/document/api/#/#)
-* [[DeletePerson](https://cloud.tencent.com/document/api/#/#)](https://cloud.tencent.com/document/api/#/#)
-* [[DetectBody](https://cloud.tencent.com/document/api/#/#)](https://cloud.tencent.com/document/api/#/#)
-* [[GetGroupList](https://cloud.tencent.com/document/api/#/#)](https://cloud.tencent.com/document/api/#/#)
-* [[GetPersonList](https://cloud.tencent.com/document/api/#/#)](https://cloud.tencent.com/document/api/#/#)
-* [[ModifyGroup](https://cloud.tencent.com/document/api/#/#)](https://cloud.tencent.com/document/api/#/#)
-* [[ModifyPersonInfo](https://cloud.tencent.com/document/api/#/#)](https://cloud.tencent.com/document/api/#/#)
-* [[SearchTrace](https://cloud.tencent.com/document/api/#/#)](https://cloud.tencent.com/document/api/#/#)
-* [[SegmentPortraitPic](https://cloud.tencent.com/document/api/#/#)](https://cloud.tencent.com/document/api/#/#)
+* [CreateGroup](https://cloud.tencent.com/document/api/1208/42984)
+* [CreatePerson](https://cloud.tencent.com/document/api/1208/42983)
+* [CreateTrace](https://cloud.tencent.com/document/api/1208/42982)
+* [DeleteGroup](https://cloud.tencent.com/document/api/1208/42981)
+* [DeletePerson](https://cloud.tencent.com/document/api/1208/42980)
+* [DetectBody](https://cloud.tencent.com/document/api/1208/42972)
+* [GetGroupList](https://cloud.tencent.com/document/api/1208/42979)
+* [GetPersonList](https://cloud.tencent.com/document/api/1208/42978)
+* [ModifyGroup](https://cloud.tencent.com/document/api/1208/42977)
+* [ModifyPersonInfo](https://cloud.tencent.com/document/api/1208/42976)
+* [SearchTrace](https://cloud.tencent.com/document/api/1208/42974)
+* [SegmentPortraitPic](https://cloud.tencent.com/document/api/1208/42970)
 
 新增数据结构：
 
-* [[BodyDetectResult](https://cloud.tencent.com/document/api/#/##BodyDetectResult)](https://cloud.tencent.com/document/api/#/##[BodyDetectResult](https://cloud.tencent.com/document/api/#/##BodyDetectResult))
-* [[BodyRect](https://cloud.tencent.com/document/api/#/##BodyRect)](https://cloud.tencent.com/document/api/#/##[BodyRect](https://cloud.tencent.com/document/api/#/##BodyRect))
-* [[Candidate](https://cloud.tencent.com/document/api/#/##Candidate)](https://cloud.tencent.com/document/api/#/##[Candidate](https://cloud.tencent.com/document/api/#/##Candidate))
-* [[GroupInfo](https://cloud.tencent.com/document/api/#/##GroupInfo)](https://cloud.tencent.com/document/api/#/##[GroupInfo](https://cloud.tencent.com/document/api/#/##GroupInfo))
-* [[PersonInfo](https://cloud.tencent.com/document/api/#/##PersonInfo)](https://cloud.tencent.com/document/api/#/##[PersonInfo](https://cloud.tencent.com/document/api/#/##PersonInfo))
-* [[Trace](https://cloud.tencent.com/document/api/#/##Trace)](https://cloud.tencent.com/document/api/#/##[Trace](https://cloud.tencent.com/document/api/#/##Trace))
-* [[TraceInfo](https://cloud.tencent.com/document/api/#/##TraceInfo)](https://cloud.tencent.com/document/api/#/##[TraceInfo](https://cloud.tencent.com/document/api/#/##TraceInfo))
+* [BodyDetectResult](https://cloud.tencent.com/document/api/1208/42985#BodyDetectResult)
+* [BodyRect](https://cloud.tencent.com/document/api/1208/42985#BodyRect)
+* [Candidate](https://cloud.tencent.com/document/api/1208/42985#Candidate)
+* [GroupInfo](https://cloud.tencent.com/document/api/1208/42985#GroupInfo)
+* [PersonInfo](https://cloud.tencent.com/document/api/1208/42985#PersonInfo)
+* [Trace](https://cloud.tencent.com/document/api/1208/42985#Trace)
+* [TraceInfo](https://cloud.tencent.com/document/api/1208/42985#TraceInfo)
 
 
 
@@ -3096,6 +3122,23 @@
 
 
 ## 访问管理(cam) 版本：2019-01-16
+
+### 第 12 次发布
+
+发布时间：2020-03-31 08:03:45
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [ListGroupsForUser](https://cloud.tencent.com/document/api/598/34588)
+
+	* 新增入参：SubUin
+
+	* <font color="#dd0000">**修改入参**：</font>Uid
+
 
 ### 第 11 次发布
 
@@ -5499,6 +5542,21 @@
 
 
 ## 负载均衡(clb) 版本：2018-03-17
+
+### 第 20 次发布
+
+发布时间：2020-03-31 08:05:13
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [ModifyRule](https://cloud.tencent.com/document/api/214/30679)
+
+	* 新增入参：TrpcCallee, TrpcFunc
+
 
 ### 第 19 次发布
 
@@ -9983,6 +10041,21 @@
 
 ## 全球应用加速(gaap) 版本：2018-05-29
 
+### 第 10 次发布
+
+发布时间：2020-03-31 08:07:50
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [ProxyInfo](https://cloud.tencent.com/document/api/608/37023#ProxyInfo)
+
+	* 新增成员：BillingType
+
+
 ### 第 9 次发布
 
 发布时间：2019-12-27 11:54:41
@@ -12337,6 +12410,21 @@
 
 ## 直播(live) 版本：2018-08-01
 
+### 第 35 次发布
+
+发布时间：2020-03-31 08:09:29
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeBillBandwidthAndFluxList](https://cloud.tencent.com/document/api/267/35971)
+
+	* 新增入参：ServiceName
+
+
 ### 第 34 次发布
 
 发布时间：2020-03-16 08:13:24
@@ -13913,6 +14001,36 @@
 
 
 ## 视频处理(mps) 版本：2019-06-12
+
+### 第 16 次发布
+
+发布时间：2020-03-31 08:10:29
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[EditMedia](https://cloud.tencent.com/document/api/862/43010)](https://cloud.tencent.com/document/api/#/#)
+
+修改接口：
+
+* [DescribeTaskDetail](https://cloud.tencent.com/document/api/862/37614)
+
+	* 新增出参：EditMediaTask
+
+* [ParseNotification](https://cloud.tencent.com/document/api/862/39228)
+
+	* 新增出参：EditMediaTaskEvent
+
+
+新增数据结构：
+
+* [[EditMediaFileInfo](https://cloud.tencent.com/document/api/862/37615#EditMediaFileInfo)](https://cloud.tencent.com/document/api/862/37615#[EditMediaFileInfo](https://cloud.tencent.com/document/api/862/37615#EditMediaFileInfo))
+* [[EditMediaTask](https://cloud.tencent.com/document/api/862/37615#EditMediaTask)](https://cloud.tencent.com/document/api/862/37615#[EditMediaTask](https://cloud.tencent.com/document/api/862/37615#EditMediaTask))
+* [[EditMediaTaskInput](https://cloud.tencent.com/document/api/862/37615#EditMediaTaskInput)](https://cloud.tencent.com/document/api/862/37615#[EditMediaTaskInput](https://cloud.tencent.com/document/api/862/37615#EditMediaTaskInput))
+* [[EditMediaTaskOutput](https://cloud.tencent.com/document/api/862/37615#EditMediaTaskOutput)](https://cloud.tencent.com/document/api/862/37615#[EditMediaTaskOutput](https://cloud.tencent.com/document/api/862/37615#EditMediaTaskOutput))
 
 ### 第 15 次发布
 
@@ -19182,6 +19300,21 @@
 
 ## 图像分析(tiia) 版本：2019-05-29
 
+### 第 9 次发布
+
+发布时间：2020-03-31 08:13:35
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [Face](https://cloud.tencent.com/document/api/865/35474#Face)
+
+	* 新增成员：ID
+
+
 ### 第 8 次发布
 
 发布时间：2020-02-18 14:48:02
@@ -19343,6 +19476,21 @@
 
 
 ## 智能钛机器学习平台(tione) 版本：2019-10-22
+
+### 第 2 次发布
+
+发布时间：2020-03-31 08:00:28
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateTrainingJob](https://cloud.tencent.com/document/api/851/42518)
+
+	* <font color="#dd0000">**修改入参**：</font>AlgorithmSpecification, InputDataConfig, OutputDataConfig, ResourceConfig
+
 
 ### 第 1 次发布
 
@@ -20541,6 +20689,18 @@
 
 
 ## 点播(vod) 版本：2018-07-17
+
+### 第 39 次发布
+
+发布时间：2020-03-31 08:15:34
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[ModifyEventNotificationConfigForConsole](https://cloud.tencent.com/document/api/266/43011)](https://cloud.tencent.com/document/api/#/#)
 
 ### 第 38 次发布
 

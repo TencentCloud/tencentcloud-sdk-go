@@ -556,6 +556,10 @@ type Face struct {
 
 	// 人脸区域高度。
 	Height *int64 `json:"Height,omitempty" name:"Height"`
+
+	// 公众人物的唯一编号，可以用于区分同名人物、一个人物不同称呼等情况。唯一编号为8个字符构成的字符串。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ID *string `json:"ID,omitempty" name:"ID"`
 }
 
 type Labels struct {

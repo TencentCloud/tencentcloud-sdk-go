@@ -2693,8 +2693,14 @@ type ModifyRuleRequest struct {
 	// 会话保持时间
 	SessionExpireTime *int64 `json:"SessionExpireTime,omitempty" name:"SessionExpireTime"`
 
-	// 负载均衡实例与后端服务之间的转发协议，默认HTTP，可取值：HTTP、HTTPS
+	// 负载均衡实例与后端服务之间的转发协议，默认HTTP，可取值：HTTP、HTTPS、TRPC
 	ForwardType *string `json:"ForwardType,omitempty" name:"ForwardType"`
+
+	// TRPC被调服务器路由，ForwardType为TRPC时必填
+	TrpcCallee *string `json:"TrpcCallee,omitempty" name:"TrpcCallee"`
+
+	// TRPC调用服务接口，ForwardType为TRPC时必填
+	TrpcFunc *string `json:"TrpcFunc,omitempty" name:"TrpcFunc"`
 }
 
 func (r *ModifyRuleRequest) ToJsonString() string {

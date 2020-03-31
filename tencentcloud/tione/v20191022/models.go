@@ -159,9 +159,6 @@ func (r *CreatePresignedNotebookInstanceUrlResponse) FromJsonString(s string) er
 type CreateTrainingJobRequest struct {
 	*tchttp.BaseRequest
 
-	// 训练任务名称
-	TrainingJobName *string `json:"TrainingJobName,omitempty" name:"TrainingJobName"`
-
 	// 算法镜像配置
 	AlgorithmSpecification *AlgorithmSpecification `json:"AlgorithmSpecification,omitempty" name:"AlgorithmSpecification"`
 
@@ -174,6 +171,9 @@ type CreateTrainingJobRequest struct {
 	// 资源实例配置
 	ResourceConfig *ResourceConfig `json:"ResourceConfig,omitempty" name:"ResourceConfig"`
 
+	// 训练任务名称
+	TrainingJobName *string `json:"TrainingJobName,omitempty" name:"TrainingJobName"`
+
 	// 中止条件
 	StoppingCondition *StoppingCondition `json:"StoppingCondition,omitempty" name:"StoppingCondition"`
 
@@ -183,11 +183,11 @@ type CreateTrainingJobRequest struct {
 	// 算法超级参数
 	HyperParameters *string `json:"HyperParameters,omitempty" name:"HyperParameters"`
 
-	// 角色名称
-	RoleName *string `json:"RoleName,omitempty" name:"RoleName"`
-
 	// 环境变量配置
 	EnvConfig []*EnvConfig `json:"EnvConfig,omitempty" name:"EnvConfig" list`
+
+	// 角色名称
+	RoleName *string `json:"RoleName,omitempty" name:"RoleName"`
 }
 
 func (r *CreateTrainingJobRequest) ToJsonString() string {
@@ -204,7 +204,6 @@ type CreateTrainingJobResponse struct {
 	Response *struct {
 
 		// 训练任务名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 		TrainingJobName *string `json:"TrainingJobName,omitempty" name:"TrainingJobName"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。

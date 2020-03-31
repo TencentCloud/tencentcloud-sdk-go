@@ -3129,6 +3129,7 @@ type DescribeTaskDetailResponse struct {
 
 		// 任务类型，目前取值有：
 	// <li>WorkflowTask：视频工作流处理任务。</li>
+	// <li>EditMediaTask：视频编辑任务。</li>
 	// <li>LiveStreamProcessTask：直播流处理任务。</li>
 		TaskType *string `json:"TaskType,omitempty" name:"TaskType"`
 
@@ -3150,6 +3151,10 @@ type DescribeTaskDetailResponse struct {
 		// 视频处理任务信息，仅当 TaskType 为 WorkflowTask，该字段有值。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		WorkflowTask *WorkflowTask `json:"WorkflowTask,omitempty" name:"WorkflowTask"`
+
+		// 视频编辑任务信息，仅当 TaskType 为 EditMediaTask，该字段有值。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		EditMediaTask *EditMediaTask `json:"EditMediaTask,omitempty" name:"EditMediaTask"`
 
 		// 直播流处理任务信息，仅当 TaskType 为 LiveStreamProcessTask，该字段有值。
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -3488,6 +3493,114 @@ func (r *DisableWorkflowResponse) ToJsonString() string {
 
 func (r *DisableWorkflowResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
+}
+
+type EditMediaFileInfo struct {
+
+	// 视频的输入信息。
+	InputInfo *MediaInputInfo `json:"InputInfo,omitempty" name:"InputInfo"`
+
+	// 视频剪辑的起始时间偏移，单位：秒。
+	StartTimeOffset *float64 `json:"StartTimeOffset,omitempty" name:"StartTimeOffset"`
+
+	// 视频剪辑的结束时间偏移，单位：秒。
+	EndTimeOffset *float64 `json:"EndTimeOffset,omitempty" name:"EndTimeOffset"`
+}
+
+type EditMediaRequest struct {
+	*tchttp.BaseRequest
+
+	// 输入的视频文件信息。
+	FileInfos []*EditMediaFileInfo `json:"FileInfos,omitempty" name:"FileInfos" list`
+
+	// 视频处理输出文件的目标存储。
+	OutputStorage *TaskOutputStorage `json:"OutputStorage,omitempty" name:"OutputStorage"`
+
+	// 视频处理输出文件的目标路径。
+	OutputObjectPath *string `json:"OutputObjectPath,omitempty" name:"OutputObjectPath"`
+
+	// 任务的事件通知信息，不填代表不获取事件通知。
+	TaskNotifyConfig *TaskNotifyConfig `json:"TaskNotifyConfig,omitempty" name:"TaskNotifyConfig"`
+
+	// 任务优先级，数值越大优先级越高，取值范围是-10到 10，不填代表0。
+	TasksPriority *int64 `json:"TasksPriority,omitempty" name:"TasksPriority"`
+
+	// 用于去重的识别码，如果七天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。
+	SessionId *string `json:"SessionId,omitempty" name:"SessionId"`
+
+	// 来源上下文，用于透传用户请求信息，任务流状态变更回调将返回该字段值，最长 1000 个字符。
+	SessionContext *string `json:"SessionContext,omitempty" name:"SessionContext"`
+}
+
+func (r *EditMediaRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *EditMediaRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type EditMediaResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 编辑视频的任务 ID，可以通过该 ID 查询编辑任务的状态。
+		TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *EditMediaResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *EditMediaResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type EditMediaTask struct {
+
+	// 任务 ID。
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 任务状态，取值：
+	// <li>PROCESSING：处理中；</li>
+	// <li>FINISH：已完成。</li>
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 错误码
+	// <li>0：成功；</li>
+	// <li>其他值：失败。</li>
+	ErrCode *int64 `json:"ErrCode,omitempty" name:"ErrCode"`
+
+	// 错误信息。
+	Message *string `json:"Message,omitempty" name:"Message"`
+
+	// 视频编辑任务的输入。
+	Input *EditMediaTaskInput `json:"Input,omitempty" name:"Input"`
+
+	// 视频编辑任务的输出。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Output *EditMediaTaskOutput `json:"Output,omitempty" name:"Output"`
+}
+
+type EditMediaTaskInput struct {
+
+	// 输入的视频文件信息。
+	FileInfoSet []*EditMediaFileInfo `json:"FileInfoSet,omitempty" name:"FileInfoSet" list`
+}
+
+type EditMediaTaskOutput struct {
+
+	// 编辑后文件的目标存储。
+	OutputStorage *TaskOutputStorage `json:"OutputStorage,omitempty" name:"OutputStorage"`
+
+	// 编辑后的视频文件路径。
+	Path *string `json:"Path,omitempty" name:"Path"`
 }
 
 type EnableWorkflowRequest struct {
@@ -5488,11 +5601,16 @@ type ParseNotificationResponse struct {
 
 		// 支持事件类型，目前取值有：
 	// <li>WorkflowTask：视频工作流处理任务。</li>
+	// <li>EditMediaTask：视频编辑任务。</li>
 		EventType *string `json:"EventType,omitempty" name:"EventType"`
 
 		// 视频处理任务信息，仅当 TaskType 为 WorkflowTask，该字段有值。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		WorkflowTaskEvent *WorkflowTask `json:"WorkflowTaskEvent,omitempty" name:"WorkflowTaskEvent"`
+
+		// 视频编辑任务信息，仅当 TaskType 为 EditMediaTask，该字段有值。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		EditMediaTaskEvent *EditMediaTask `json:"EditMediaTaskEvent,omitempty" name:"EditMediaTaskEvent"`
 
 		// 用于去重的识别码，如果七天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长50个字符，不带或者带空字符串表示不做去重。
 		SessionId *string `json:"SessionId,omitempty" name:"SessionId"`
@@ -6380,6 +6498,7 @@ type TaskSimpleInfo struct {
 
 	// 任务类型，包含：
 	// <li> WorkflowTask：工作流处理任务；</li>
+	// <li> EditMediaTask：视频编辑任务；</li>
 	// <li> LiveProcessTask：直播处理任务。</li>
 	TaskType *string `json:"TaskType,omitempty" name:"TaskType"`
 

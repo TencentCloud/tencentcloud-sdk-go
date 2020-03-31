@@ -1442,6 +1442,9 @@ type ListGroupsForUserRequest struct {
 
 	// 页码。默认为1。
 	Page *uint64 `json:"Page,omitempty" name:"Page"`
+
+	// 子账号UIN
+	SubUin *uint64 `json:"SubUin,omitempty" name:"SubUin"`
 }
 
 func (r *ListGroupsForUserRequest) ToJsonString() string {

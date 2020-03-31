@@ -7166,6 +7166,67 @@ func (r *ModifyContentReviewTemplateResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type ModifyEventNotificationConfigForConsoleRequest struct {
+	*tchttp.BaseRequest
+
+	// 接收事件通知的方式。默认 "PUSH" 为[ HTTP 回调通知](https://cloud.tencent.com/document/product/266/7829#http.E5.9B.9E.E8.B0.83)，"PULL" 为[基于消息队列的可靠通知](https://cloud.tencent.com/document/product/266/7829#.E5.9F.BA.E4.BA.8E.E6.B6.88.E6.81.AF.E9.98.9F.E5.88.97.E7.9A.84.E5.8F.AF.E9.9D.A0.E9.80.9A.E7.9F.A5)。
+	Mode *string `json:"Mode,omitempty" name:"Mode"`
+
+	// 采用[ HTTP 回调通知](https://cloud.tencent.com/document/product/266/7829#http.E5.9B.9E.E8.B0.83)接收方式时，用于接收 V3 版本事件通知的地址。
+	NotificationUrlV3 *string `json:"NotificationUrlV3,omitempty" name:"NotificationUrlV3"`
+
+	// 采用[ HTTP 回调通知](https://cloud.tencent.com/document/product/266/7829#http.E5.9B.9E.E8.B0.83)接收方式时，用于接收 V2 版本事件通知的地址。
+	NotificationUrlV2 *string `json:"NotificationUrlV2,omitempty" name:"NotificationUrlV2"`
+
+	// 是否接收[视频上传完成](https://cloud.tencent.com/document/product/266/7830)事件通知， 默认 "OFF" 为忽略该事件通知，"ON" 为接收事件通知。
+	UploadMediaCompleteEventSwitch *string `json:"UploadMediaCompleteEventSwitch,omitempty" name:"UploadMediaCompleteEventSwitch"`
+
+	// 是否接收[视频转码完成](https://cloud.tencent.com/document/product/266/7832)事件通知， 默认 "OFF" 为忽略该事件通知，"ON" 为接收事件通知。
+	TranscodeCompleteEventSwitch *string `json:"TranscodeCompleteEventSwitch,omitempty" name:"TranscodeCompleteEventSwitch"`
+
+	// 是否接收[指定时间点截图完成](https://cloud.tencent.com/document/product/266/8105)事件通知，  默认 "OFF" 为忽略该事件通知，"ON" 为接收事件通知。
+	CreateSnapshotByTimeOffsetCompleteEventSwitch *string `json:"CreateSnapshotByTimeOffsetCompleteEventSwitch,omitempty" name:"CreateSnapshotByTimeOffsetCompleteEventSwitch"`
+
+	// 是否接收[视频截取雪碧图完成](https://cloud.tencent.com/document/product/266/8104)事件通知，  默认 "OFF" 为忽略该事件通知，"ON" 为接收事件通知。
+	CreateImageSpriteCompleteEventSwitch *string `json:"CreateImageSpriteCompleteEventSwitch,omitempty" name:"CreateImageSpriteCompleteEventSwitch"`
+
+	// 是否接收[视频拼接完成](https://cloud.tencent.com/document/product/266/7834)事件通知，  默认 "OFF" 为忽略该事件通知，"ON" 为接收事件通知。
+	ConcatMediaCompleteEventSwitch *string `json:"ConcatMediaCompleteEventSwitch,omitempty" name:"ConcatMediaCompleteEventSwitch"`
+
+	// 是否接收[视频删除完成](https://cloud.tencent.com/document/product/266/13434)事件通知，  默认 "OFF" 为忽略该事件通知，"ON" 为接收事件通知。
+	DeleteMediaCompleteEventSwitch *string `json:"DeleteMediaCompleteEventSwitch,omitempty" name:"DeleteMediaCompleteEventSwitch"`
+
+	// 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
+}
+
+func (r *ModifyEventNotificationConfigForConsoleRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyEventNotificationConfigForConsoleRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyEventNotificationConfigForConsoleResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifyEventNotificationConfigForConsoleResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyEventNotificationConfigForConsoleResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type ModifyImageSpriteTemplateRequest struct {
 	*tchttp.BaseRequest
 

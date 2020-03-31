@@ -1646,8 +1646,9 @@ type DescribeBillBandwidthAndFluxListRequest struct {
 
 	// 可选值：
 	// Mainland：查询国内数据，
-	// Oversea：则查询国外数据。
+	// Oversea：则查询国外数据，
 	// 默认：查询国内+国外的数据。
+	// 注：LEB（快直播）只支持国内+国外数据查询。
 	MainlandOrOversea *string `json:"MainlandOrOversea,omitempty" name:"MainlandOrOversea"`
 
 	// 数据粒度，支持如下粒度：
@@ -1656,6 +1657,9 @@ type DescribeBillBandwidthAndFluxListRequest struct {
 	// 1440：天粒度（跨度不支持超过一个月）。
 	// 默认值：5。
 	Granularity *uint64 `json:"Granularity,omitempty" name:"Granularity"`
+
+	// 服务名称，可选值包括LVB(标准直播)，LEB(快直播)，默认值是LVB。
+	ServiceName *string `json:"ServiceName,omitempty" name:"ServiceName"`
 }
 
 func (r *DescribeBillBandwidthAndFluxListRequest) ToJsonString() string {
@@ -3699,14 +3703,14 @@ func (r *DescribeScreenShotSheetNumListResponse) FromJsonString(s string) error 
 type DescribeStreamDayPlayInfoListRequest struct {
 	*tchttp.BaseRequest
 
-	// 日期，
-	// 格式：YYYY-mm-dd。
+	// 日期，格式：YYYY-mm-dd。
+	// 第二天凌晨3点出昨天的数据，建议在这个时间点之后查询最新数据。
 	DayTime *string `json:"DayTime,omitempty" name:"DayTime"`
 
 	// 播放域名。
 	PlayDomain *string `json:"PlayDomain,omitempty" name:"PlayDomain"`
 
-	// 页号，范围[1,10]，默认值是1。
+	// 页号，范围[1,1000]，默认值是1。
 	PageNum *uint64 `json:"PageNum,omitempty" name:"PageNum"`
 
 	// 每页个数，范围[100,1000]，默认值是1000。
