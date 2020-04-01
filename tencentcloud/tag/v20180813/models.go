@@ -232,6 +232,74 @@ func (r *DescribeResourceTagsByResourceIdsResponse) FromJsonString(s string) err
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeResourceTagsRequest struct {
+	*tchttp.BaseRequest
+
+	// 创建者uin
+	CreateUin *uint64 `json:"CreateUin,omitempty" name:"CreateUin"`
+
+	// 资源所在地域
+	ResourceRegion *string `json:"ResourceRegion,omitempty" name:"ResourceRegion"`
+
+	// 业务类型
+	ServiceType *string `json:"ServiceType,omitempty" name:"ServiceType"`
+
+	// 资源前缀
+	ResourcePrefix *string `json:"ResourcePrefix,omitempty" name:"ResourcePrefix"`
+
+	// 资源唯一标识
+	ResourceId *string `json:"ResourceId,omitempty" name:"ResourceId"`
+
+	// 数据偏移量，默认为 0, 必须为Limit参数的整数倍
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 每页大小，默认为 15
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 是否是Cos的资源id
+	CosResourceId *uint64 `json:"CosResourceId,omitempty" name:"CosResourceId"`
+}
+
+func (r *DescribeResourceTagsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeResourceTagsRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeResourceTagsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 结果总数
+		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 数据位移偏量
+		Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+		// 每页大小
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+		// 资源标签
+		Rows []*TagResource `json:"Rows,omitempty" name:"Rows" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeResourceTagsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeResourceTagsResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeResourcesByTagsRequest struct {
 	*tchttp.BaseRequest
 

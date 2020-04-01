@@ -2566,6 +2566,14 @@ type OsInfo struct {
 
 	// 操作系统，ext4文件下所支持的最大的磁盘大小。单位为T
 	MaxPartitionSize *uint64 `json:"MaxPartitionSize,omitempty" name:"MaxPartitionSize"`
+
+	// 黑石版本号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OsMinorVersion *string `json:"OsMinorVersion,omitempty" name:"OsMinorVersion"`
+
+	// 黑石版本
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OsMinorClass *string `json:"OsMinorClass,omitempty" name:"OsMinorClass"`
 }
 
 type PartitionInfo struct {

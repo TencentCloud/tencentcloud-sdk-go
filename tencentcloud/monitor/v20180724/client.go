@@ -401,6 +401,31 @@ func (c *Client) PutMonitorData(request *PutMonitorDataRequest) (response *PutMo
     return
 }
 
+func NewSendCustomAlarmMsgRequest() (request *SendCustomAlarmMsgRequest) {
+    request = &SendCustomAlarmMsgRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("monitor", APIVersion, "SendCustomAlarmMsg")
+    return
+}
+
+func NewSendCustomAlarmMsgResponse() (response *SendCustomAlarmMsgResponse) {
+    response = &SendCustomAlarmMsgResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 发送自定义消息告警
+func (c *Client) SendCustomAlarmMsg(request *SendCustomAlarmMsgRequest) (response *SendCustomAlarmMsgResponse, err error) {
+    if request == nil {
+        request = NewSendCustomAlarmMsgRequest()
+    }
+    response = NewSendCustomAlarmMsgResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewUnBindingAllPolicyObjectRequest() (request *UnBindingAllPolicyObjectRequest) {
     request = &UnBindingAllPolicyObjectRequest{
         BaseRequest: &tchttp.BaseRequest{},

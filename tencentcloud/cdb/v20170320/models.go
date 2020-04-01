@@ -2352,6 +2352,62 @@ func (r *DescribeDeviceMonitorInfoResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeErrorLogDataRequest struct {
+	*tchttp.BaseRequest
+
+	// 实例 ID 。
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 开始时间戳。
+	StartTime *uint64 `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 结束时间戳。
+	EndTime *uint64 `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 要匹配的关键字列表，最多支持15个关键字。
+	KeyWords []*string `json:"KeyWords,omitempty" name:"KeyWords" list`
+
+	// 分页的返回数量，最大为400。
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 偏移量，默认为0。
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+}
+
+func (r *DescribeErrorLogDataRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeErrorLogDataRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeErrorLogDataResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 符合条件的记录总数。
+		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 返回的记录。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Items []*ErrlogItem `json:"Items,omitempty" name:"Items" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeErrorLogDataResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeErrorLogDataResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeInstanceParamRecordsRequest struct {
 	*tchttp.BaseRequest
 
@@ -3137,6 +3193,17 @@ type DrInfo struct {
 
 	// 实例类型
 	InstanceType *int64 `json:"InstanceType,omitempty" name:"InstanceType"`
+}
+
+type ErrlogItem struct {
+
+	// 错误发生时间。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Timestamp *uint64 `json:"Timestamp,omitempty" name:"Timestamp"`
+
+	// 错误详情
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Content *string `json:"Content,omitempty" name:"Content"`
 }
 
 type ImportRecord struct {

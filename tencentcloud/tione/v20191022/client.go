@@ -43,6 +43,31 @@ func NewClient(credential *common.Credential, region string, clientProfile *prof
 }
 
 
+func NewCreateCodeRepositoryRequest() (request *CreateCodeRepositoryRequest) {
+    request = &CreateCodeRepositoryRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tione", APIVersion, "CreateCodeRepository")
+    return
+}
+
+func NewCreateCodeRepositoryResponse() (response *CreateCodeRepositoryResponse) {
+    response = &CreateCodeRepositoryResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 创建存储库
+func (c *Client) CreateCodeRepository(request *CreateCodeRepositoryRequest) (response *CreateCodeRepositoryResponse, err error) {
+    if request == nil {
+        request = NewCreateCodeRepositoryRequest()
+    }
+    response = NewCreateCodeRepositoryResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateNotebookInstanceRequest() (request *CreateNotebookInstanceRequest) {
     request = &CreateNotebookInstanceRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -64,6 +89,31 @@ func (c *Client) CreateNotebookInstance(request *CreateNotebookInstanceRequest) 
         request = NewCreateNotebookInstanceRequest()
     }
     response = NewCreateNotebookInstanceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateNotebookLifecycleScriptRequest() (request *CreateNotebookLifecycleScriptRequest) {
+    request = &CreateNotebookLifecycleScriptRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tione", APIVersion, "CreateNotebookLifecycleScript")
+    return
+}
+
+func NewCreateNotebookLifecycleScriptResponse() (response *CreateNotebookLifecycleScriptResponse) {
+    response = &CreateNotebookLifecycleScriptResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 创建Notebook生命周期脚本
+func (c *Client) CreateNotebookLifecycleScript(request *CreateNotebookLifecycleScriptRequest) (response *CreateNotebookLifecycleScriptResponse, err error) {
+    if request == nil {
+        request = NewCreateNotebookLifecycleScriptRequest()
+    }
+    response = NewCreateNotebookLifecycleScriptResponse()
     err = c.Send(request, response)
     return
 }
@@ -118,6 +168,31 @@ func (c *Client) CreateTrainingJob(request *CreateTrainingJobRequest) (response 
     return
 }
 
+func NewDeleteCodeRepositoryRequest() (request *DeleteCodeRepositoryRequest) {
+    request = &DeleteCodeRepositoryRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tione", APIVersion, "DeleteCodeRepository")
+    return
+}
+
+func NewDeleteCodeRepositoryResponse() (response *DeleteCodeRepositoryResponse) {
+    response = &DeleteCodeRepositoryResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 删除存储库
+func (c *Client) DeleteCodeRepository(request *DeleteCodeRepositoryRequest) (response *DeleteCodeRepositoryResponse, err error) {
+    if request == nil {
+        request = NewDeleteCodeRepositoryRequest()
+    }
+    response = NewDeleteCodeRepositoryResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteNotebookInstanceRequest() (request *DeleteNotebookInstanceRequest) {
     request = &DeleteNotebookInstanceRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -139,6 +214,81 @@ func (c *Client) DeleteNotebookInstance(request *DeleteNotebookInstanceRequest) 
         request = NewDeleteNotebookInstanceRequest()
     }
     response = NewDeleteNotebookInstanceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteNotebookLifecycleScriptRequest() (request *DeleteNotebookLifecycleScriptRequest) {
+    request = &DeleteNotebookLifecycleScriptRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tione", APIVersion, "DeleteNotebookLifecycleScript")
+    return
+}
+
+func NewDeleteNotebookLifecycleScriptResponse() (response *DeleteNotebookLifecycleScriptResponse) {
+    response = &DeleteNotebookLifecycleScriptResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 删除Notebook生命周期脚本
+func (c *Client) DeleteNotebookLifecycleScript(request *DeleteNotebookLifecycleScriptRequest) (response *DeleteNotebookLifecycleScriptResponse, err error) {
+    if request == nil {
+        request = NewDeleteNotebookLifecycleScriptRequest()
+    }
+    response = NewDeleteNotebookLifecycleScriptResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeCodeRepositoriesRequest() (request *DescribeCodeRepositoriesRequest) {
+    request = &DescribeCodeRepositoriesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tione", APIVersion, "DescribeCodeRepositories")
+    return
+}
+
+func NewDescribeCodeRepositoriesResponse() (response *DescribeCodeRepositoriesResponse) {
+    response = &DescribeCodeRepositoriesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询存储库列表
+func (c *Client) DescribeCodeRepositories(request *DescribeCodeRepositoriesRequest) (response *DescribeCodeRepositoriesResponse, err error) {
+    if request == nil {
+        request = NewDescribeCodeRepositoriesRequest()
+    }
+    response = NewDescribeCodeRepositoriesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeCodeRepositoryRequest() (request *DescribeCodeRepositoryRequest) {
+    request = &DescribeCodeRepositoryRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tione", APIVersion, "DescribeCodeRepository")
+    return
+}
+
+func NewDescribeCodeRepositoryResponse() (response *DescribeCodeRepositoryResponse) {
+    response = &DescribeCodeRepositoryResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询存储库详情
+func (c *Client) DescribeCodeRepository(request *DescribeCodeRepositoryRequest) (response *DescribeCodeRepositoryResponse, err error) {
+    if request == nil {
+        request = NewDescribeCodeRepositoryRequest()
+    }
+    response = NewDescribeCodeRepositoryResponse()
     err = c.Send(request, response)
     return
 }
@@ -189,6 +339,56 @@ func (c *Client) DescribeNotebookInstances(request *DescribeNotebookInstancesReq
         request = NewDescribeNotebookInstancesRequest()
     }
     response = NewDescribeNotebookInstancesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeNotebookLifecycleScriptRequest() (request *DescribeNotebookLifecycleScriptRequest) {
+    request = &DescribeNotebookLifecycleScriptRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tione", APIVersion, "DescribeNotebookLifecycleScript")
+    return
+}
+
+func NewDescribeNotebookLifecycleScriptResponse() (response *DescribeNotebookLifecycleScriptResponse) {
+    response = &DescribeNotebookLifecycleScriptResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查看notebook生命周期脚本详情
+func (c *Client) DescribeNotebookLifecycleScript(request *DescribeNotebookLifecycleScriptRequest) (response *DescribeNotebookLifecycleScriptResponse, err error) {
+    if request == nil {
+        request = NewDescribeNotebookLifecycleScriptRequest()
+    }
+    response = NewDescribeNotebookLifecycleScriptResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeNotebookLifecycleScriptsRequest() (request *DescribeNotebookLifecycleScriptsRequest) {
+    request = &DescribeNotebookLifecycleScriptsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tione", APIVersion, "DescribeNotebookLifecycleScripts")
+    return
+}
+
+func NewDescribeNotebookLifecycleScriptsResponse() (response *DescribeNotebookLifecycleScriptsResponse) {
+    response = &DescribeNotebookLifecycleScriptsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查看notebook生命周期脚本列表
+func (c *Client) DescribeNotebookLifecycleScripts(request *DescribeNotebookLifecycleScriptsRequest) (response *DescribeNotebookLifecycleScriptsResponse, err error) {
+    if request == nil {
+        request = NewDescribeNotebookLifecycleScriptsRequest()
+    }
+    response = NewDescribeNotebookLifecycleScriptsResponse()
     err = c.Send(request, response)
     return
 }
@@ -293,6 +493,31 @@ func (c *Client) StopTrainingJob(request *StopTrainingJobRequest) (response *Sto
     return
 }
 
+func NewUpdateCodeRepositoryRequest() (request *UpdateCodeRepositoryRequest) {
+    request = &UpdateCodeRepositoryRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tione", APIVersion, "UpdateCodeRepository")
+    return
+}
+
+func NewUpdateCodeRepositoryResponse() (response *UpdateCodeRepositoryResponse) {
+    response = &UpdateCodeRepositoryResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 更新存储库
+func (c *Client) UpdateCodeRepository(request *UpdateCodeRepositoryRequest) (response *UpdateCodeRepositoryResponse, err error) {
+    if request == nil {
+        request = NewUpdateCodeRepositoryRequest()
+    }
+    response = NewUpdateCodeRepositoryResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewUpdateNotebookInstanceRequest() (request *UpdateNotebookInstanceRequest) {
     request = &UpdateNotebookInstanceRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -314,6 +539,31 @@ func (c *Client) UpdateNotebookInstance(request *UpdateNotebookInstanceRequest) 
         request = NewUpdateNotebookInstanceRequest()
     }
     response = NewUpdateNotebookInstanceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewUpdateNotebookLifecycleScriptRequest() (request *UpdateNotebookLifecycleScriptRequest) {
+    request = &UpdateNotebookLifecycleScriptRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tione", APIVersion, "UpdateNotebookLifecycleScript")
+    return
+}
+
+func NewUpdateNotebookLifecycleScriptResponse() (response *UpdateNotebookLifecycleScriptResponse) {
+    response = &UpdateNotebookLifecycleScriptResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 更新notebook生命周期脚本
+func (c *Client) UpdateNotebookLifecycleScript(request *UpdateNotebookLifecycleScriptRequest) (response *UpdateNotebookLifecycleScriptResponse, err error) {
+    if request == nil {
+        request = NewUpdateNotebookLifecycleScriptRequest()
+    }
+    response = NewUpdateNotebookLifecycleScriptResponse()
     err = c.Send(request, response)
     return
 }

@@ -1818,6 +1818,46 @@ type ReceiverInfo struct {
 	ReceiveLanguage *string `json:"ReceiveLanguage,omitempty" name:"ReceiveLanguage"`
 }
 
+type SendCustomAlarmMsgRequest struct {
+	*tchttp.BaseRequest
+
+	// 接口模块名，当前取值monitor
+	Module *string `json:"Module,omitempty" name:"Module"`
+
+	// 消息策略ID，在云监控自定义消息页面配置
+	PolicyId *string `json:"PolicyId,omitempty" name:"PolicyId"`
+
+	// 用户想要发送的自定义消息内容
+	Msg *string `json:"Msg,omitempty" name:"Msg"`
+}
+
+func (r *SendCustomAlarmMsgRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *SendCustomAlarmMsgRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type SendCustomAlarmMsgResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *SendCustomAlarmMsgResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *SendCustomAlarmMsgResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type UnBindingAllPolicyObjectRequest struct {
 	*tchttp.BaseRequest
 

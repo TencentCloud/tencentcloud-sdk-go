@@ -98,6 +98,9 @@ type CreateJobRequest struct {
 
 	// 量化输入
 	QuantizationInput *QuantizationInput `json:"QuantizationInput,omitempty" name:"QuantizationInput"`
+
+	// Cls日志主题ID
+	LogTopicId *string `json:"LogTopicId,omitempty" name:"LogTopicId"`
 }
 
 func (r *CreateJobRequest) ToJsonString() string {
@@ -142,11 +145,17 @@ type CreateRsgAsGroupRequest struct {
 	// 伸缩组允许的最小节点数
 	MinSize *uint64 `json:"MinSize,omitempty" name:"MinSize"`
 
+	// 伸缩组的节点规格
+	InstanceType *string `json:"InstanceType,omitempty" name:"InstanceType"`
+
 	// 资源组所在的集群名
 	Cluster *string `json:"Cluster,omitempty" name:"Cluster"`
 
 	// 伸缩组名称
 	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 伸缩组期望的节点数
+	DesiredSize *uint64 `json:"DesiredSize,omitempty" name:"DesiredSize"`
 }
 
 func (r *CreateRsgAsGroupRequest) ToJsonString() string {
@@ -315,6 +324,9 @@ type CreateServiceRequest struct {
 
 	// GPU类型
 	GpuType *string `json:"GpuType,omitempty" name:"GpuType"`
+
+	// Cls日志主题ID
+	LogTopicId *string `json:"LogTopicId,omitempty" name:"LogTopicId"`
 }
 
 func (r *CreateServiceRequest) ToJsonString() string {
@@ -906,7 +918,7 @@ func (r *DescribeServiceConfigsResponse) FromJsonString(s string) error {
 type DescribeServicesRequest struct {
 	*tchttp.BaseRequest
 
-	// 筛选选项，支持按照name等字段进行筛选
+	// 筛选选项，支持筛选的字段：id, region, zone, cluster, status, runtime, rsg_id
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
 
 	// 偏移量，默认为0
@@ -1759,6 +1771,9 @@ type UpdateRsgAsGroupRequest struct {
 
 	// 伸缩组最小节点数
 	MinSize *uint64 `json:"MinSize,omitempty" name:"MinSize"`
+
+	// 伸缩组期望的节点数
+	DesiredSize *uint64 `json:"DesiredSize,omitempty" name:"DesiredSize"`
 }
 
 func (r *UpdateRsgAsGroupRequest) ToJsonString() string {
@@ -1823,6 +1838,9 @@ type UpdateServiceRequest struct {
 
 	// 显卡配置，单位为 1/1000 卡
 	Gpu *uint64 `json:"Gpu,omitempty" name:"Gpu"`
+
+	// Cls日志主题ID
+	LogTopicId *string `json:"LogTopicId,omitempty" name:"LogTopicId"`
 }
 
 func (r *UpdateServiceRequest) ToJsonString() string {

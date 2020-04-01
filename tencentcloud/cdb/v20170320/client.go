@@ -1117,6 +1117,31 @@ func (c *Client) DescribeDeviceMonitorInfo(request *DescribeDeviceMonitorInfoReq
     return
 }
 
+func NewDescribeErrorLogDataRequest() (request *DescribeErrorLogDataRequest) {
+    request = &DescribeErrorLogDataRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cdb", APIVersion, "DescribeErrorLogData")
+    return
+}
+
+func NewDescribeErrorLogDataResponse() (response *DescribeErrorLogDataResponse) {
+    response = &DescribeErrorLogDataResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 根据检索条件查询实例错误日志详情。只能查询一个月之内的错误日志。
+func (c *Client) DescribeErrorLogData(request *DescribeErrorLogDataRequest) (response *DescribeErrorLogDataResponse, err error) {
+    if request == nil {
+        request = NewDescribeErrorLogDataRequest()
+    }
+    response = NewDescribeErrorLogDataResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeInstanceParamRecordsRequest() (request *DescribeInstanceParamRecordsRequest) {
     request = &DescribeInstanceParamRecordsRequest{
         BaseRequest: &tchttp.BaseRequest{},

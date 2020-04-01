@@ -35,6 +35,24 @@ type AlgorithmSpecification struct {
 	AlgorithmName *string `json:"AlgorithmName,omitempty" name:"AlgorithmName"`
 }
 
+type CodeRepoSummary struct {
+
+	// 创建时间
+	CreationTime *string `json:"CreationTime,omitempty" name:"CreationTime"`
+
+	// 更新时间
+	LastModifiedTime *string `json:"LastModifiedTime,omitempty" name:"LastModifiedTime"`
+
+	// 存储库名称
+	CodeRepositoryName *string `json:"CodeRepositoryName,omitempty" name:"CodeRepositoryName"`
+
+	// Git配置
+	GitConfig *GitConfig `json:"GitConfig,omitempty" name:"GitConfig"`
+
+	// 是否有Git凭证
+	NoSecret *bool `json:"NoSecret,omitempty" name:"NoSecret"`
+}
+
 type CosDataSource struct {
 
 	// cos桶
@@ -52,6 +70,49 @@ type CosDataSource struct {
 	// 数据类型
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DataType *string `json:"DataType,omitempty" name:"DataType"`
+}
+
+type CreateCodeRepositoryRequest struct {
+	*tchttp.BaseRequest
+
+	// 存储库名称
+	CodeRepositoryName *string `json:"CodeRepositoryName,omitempty" name:"CodeRepositoryName"`
+
+	// Git相关配置
+	GitConfig *GitConfig `json:"GitConfig,omitempty" name:"GitConfig"`
+
+	// Git凭证
+	GitSecret *GitSecret `json:"GitSecret,omitempty" name:"GitSecret"`
+}
+
+func (r *CreateCodeRepositoryRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateCodeRepositoryRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateCodeRepositoryResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 存储库名称
+		CodeRepositoryName *string `json:"CodeRepositoryName,omitempty" name:"CodeRepositoryName"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateCodeRepositoryResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateCodeRepositoryResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
 }
 
 type CreateNotebookInstanceRequest struct {
@@ -113,6 +174,49 @@ func (r *CreateNotebookInstanceResponse) ToJsonString() string {
 }
 
 func (r *CreateNotebookInstanceResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateNotebookLifecycleScriptRequest struct {
+	*tchttp.BaseRequest
+
+	// Notebook生命周期脚本名称
+	NotebookLifecycleScriptsName *string `json:"NotebookLifecycleScriptsName,omitempty" name:"NotebookLifecycleScriptsName"`
+
+	// 创建脚本，base64编码格式
+	CreateScript *string `json:"CreateScript,omitempty" name:"CreateScript"`
+
+	// 启动脚本，base64编码格式
+	StartScript *string `json:"StartScript,omitempty" name:"StartScript"`
+}
+
+func (r *CreateNotebookLifecycleScriptRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateNotebookLifecycleScriptRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateNotebookLifecycleScriptResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 生命周期脚本名称
+		NotebookLifecycleScriptsName *string `json:"NotebookLifecycleScriptsName,omitempty" name:"NotebookLifecycleScriptsName"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateNotebookLifecycleScriptResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateNotebookLifecycleScriptResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -231,6 +335,43 @@ type DataSource struct {
 	FileSystemDataSource *FileSystemDataSource `json:"FileSystemDataSource,omitempty" name:"FileSystemDataSource"`
 }
 
+type DeleteCodeRepositoryRequest struct {
+	*tchttp.BaseRequest
+
+	// 存储库名称
+	CodeRepositoryName *string `json:"CodeRepositoryName,omitempty" name:"CodeRepositoryName"`
+}
+
+func (r *DeleteCodeRepositoryRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteCodeRepositoryRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteCodeRepositoryResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 存储库名称
+		CodeRepositoryName *string `json:"CodeRepositoryName,omitempty" name:"CodeRepositoryName"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DeleteCodeRepositoryResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteCodeRepositoryResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DeleteNotebookInstanceRequest struct {
 	*tchttp.BaseRequest
 
@@ -262,6 +403,146 @@ func (r *DeleteNotebookInstanceResponse) ToJsonString() string {
 }
 
 func (r *DeleteNotebookInstanceResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteNotebookLifecycleScriptRequest struct {
+	*tchttp.BaseRequest
+
+	// 生命周期脚本名称
+	NotebookLifecycleScriptsName *string `json:"NotebookLifecycleScriptsName,omitempty" name:"NotebookLifecycleScriptsName"`
+
+	// 是否忽略已关联的 notebook 实例强行删除生命周期脚本，默认 false
+	Forcible *bool `json:"Forcible,omitempty" name:"Forcible"`
+}
+
+func (r *DeleteNotebookLifecycleScriptRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteNotebookLifecycleScriptRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteNotebookLifecycleScriptResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DeleteNotebookLifecycleScriptResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteNotebookLifecycleScriptResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeCodeRepositoriesRequest struct {
+	*tchttp.BaseRequest
+
+	// 偏移量，默认为0
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 返回数量，默认为20
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 过滤条件。
+	// instance-name - String - 是否必填：否 -（过滤条件）按照名称过滤。
+	// search-by-name - String - 是否必填：否 -（过滤条件）按照名称检索，模糊匹配。
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+
+	// 排序规则。默认取Descending
+	// Descending 按更新时间降序
+	// Ascending 按更新时间升序
+	SortOrder *string `json:"SortOrder,omitempty" name:"SortOrder"`
+}
+
+func (r *DescribeCodeRepositoriesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeCodeRepositoriesRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeCodeRepositoriesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 存储库总数目
+		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 存储库列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		CodeRepoSet []*CodeRepoSummary `json:"CodeRepoSet,omitempty" name:"CodeRepoSet" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeCodeRepositoriesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeCodeRepositoriesResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeCodeRepositoryRequest struct {
+	*tchttp.BaseRequest
+
+	// 存储库名称
+	CodeRepositoryName *string `json:"CodeRepositoryName,omitempty" name:"CodeRepositoryName"`
+}
+
+func (r *DescribeCodeRepositoryRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeCodeRepositoryRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeCodeRepositoryResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 创建时间
+		CreationTime *string `json:"CreationTime,omitempty" name:"CreationTime"`
+
+		// 更新时间
+		LastModifiedTime *string `json:"LastModifiedTime,omitempty" name:"LastModifiedTime"`
+
+		// 存储库名称
+		CodeRepositoryName *string `json:"CodeRepositoryName,omitempty" name:"CodeRepositoryName"`
+
+		// Git存储配置
+		GitConfig *GitConfig `json:"GitConfig,omitempty" name:"GitConfig"`
+
+		// 是否有Git凭证
+		NoSecret *bool `json:"NoSecret,omitempty" name:"NoSecret"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeCodeRepositoryResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeCodeRepositoryResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -371,32 +652,21 @@ type DescribeNotebookInstancesRequest struct {
 	// 限制数目
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 
-	// 排序字段
-	SortBy *string `json:"SortBy,omitempty" name:"SortBy"`
-
-	// 排序方式
+	// 排序规则。默认取Descending
+	// Descending 按更新时间降序
+	// Ascending 按更新时间升序
 	SortOrder *string `json:"SortOrder,omitempty" name:"SortOrder"`
 
-	// 创建时间晚于
-	CreationTimeAfter *string `json:"CreationTimeAfter,omitempty" name:"CreationTimeAfter"`
+	// 过滤条件。
+	// instance-name - String - 是否必填：否 -（过滤条件）按照名称过滤。
+	// search-by-name - String - 是否必填：否 -（过滤条件）按照名称检索，模糊匹配。
+	// lifecycle-name - String - 是否必填：否 -（过滤条件）按照生命周期脚本名称过滤。
+	// default-code-repo-name - String - 是否必填：否 -（过滤条件）按照默认存储库名称过滤。
+	// additional-code-repo-name - String - 是否必填：否 -（过滤条件）按照其他存储库名称过滤。
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
 
-	// 创建时间早于
-	CreationTimeBefore *string `json:"CreationTimeBefore,omitempty" name:"CreationTimeBefore"`
-
-	// 最近修改时间晚于
-	LastModifiedTimeAfter *string `json:"LastModifiedTimeAfter,omitempty" name:"LastModifiedTimeAfter"`
-
-	// 最近修改时间早于
-	LastModifiedTimeBefore *string `json:"LastModifiedTimeBefore,omitempty" name:"LastModifiedTimeBefore"`
-
-	// 根据名称过滤
-	NameContains *string `json:"NameContains,omitempty" name:"NameContains"`
-
-	// 根据状态过滤
-	StatusEquals *string `json:"StatusEquals,omitempty" name:"StatusEquals"`
-
-	// 最大返回个数
-	MaxResults *uint64 `json:"MaxResults,omitempty" name:"MaxResults"`
+	// 【废弃字段】排序字段
+	SortBy *string `json:"SortBy,omitempty" name:"SortBy"`
 }
 
 func (r *DescribeNotebookInstancesRequest) ToJsonString() string {
@@ -432,6 +702,110 @@ func (r *DescribeNotebookInstancesResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeNotebookLifecycleScriptRequest struct {
+	*tchttp.BaseRequest
+
+	// 生命周期脚本名称
+	NotebookLifecycleScriptsName *string `json:"NotebookLifecycleScriptsName,omitempty" name:"NotebookLifecycleScriptsName"`
+}
+
+func (r *DescribeNotebookLifecycleScriptRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeNotebookLifecycleScriptRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeNotebookLifecycleScriptResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 生命周期脚本名称
+		NotebookLifecycleScriptsName *string `json:"NotebookLifecycleScriptsName,omitempty" name:"NotebookLifecycleScriptsName"`
+
+		// 创建脚本
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		CreateScript *string `json:"CreateScript,omitempty" name:"CreateScript"`
+
+		// 启动脚本
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		StartScript *string `json:"StartScript,omitempty" name:"StartScript"`
+
+		// 创建时间
+		CreationTime *string `json:"CreationTime,omitempty" name:"CreationTime"`
+
+		// 最后修改时间
+		LastModifiedTime *string `json:"LastModifiedTime,omitempty" name:"LastModifiedTime"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeNotebookLifecycleScriptResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeNotebookLifecycleScriptResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeNotebookLifecycleScriptsRequest struct {
+	*tchttp.BaseRequest
+
+	// 偏移量，默认为0
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 返回数量，默认为20
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 过滤条件。
+	// instance-name - String - 是否必填：否 -（过滤条件）按照名称过滤。
+	// search-by-name - String - 是否必填：否 -（过滤条件）按照名称检索，模糊匹配。
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+
+	// 排序规则。默认取Descending
+	// Descending 按更新时间降序
+	// Ascending 按更新时间升序
+	SortOrder *string `json:"SortOrder,omitempty" name:"SortOrder"`
+}
+
+func (r *DescribeNotebookLifecycleScriptsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeNotebookLifecycleScriptsRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeNotebookLifecycleScriptsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// Notebook生命周期脚本列表
+		NotebookLifecycleScriptsSet []*NotebookLifecycleScriptsSummary `json:"NotebookLifecycleScriptsSet,omitempty" name:"NotebookLifecycleScriptsSet" list`
+
+		// Notebook生命周期脚本总数量
+		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeNotebookLifecycleScriptsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeNotebookLifecycleScriptsResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeTrainingJobRequest struct {
 	*tchttp.BaseRequest
 
@@ -453,11 +827,9 @@ type DescribeTrainingJobResponse struct {
 	Response *struct {
 
 		// 算法镜像配置
-	// 注意：此字段可能返回 null，表示取不到有效值。
 		AlgorithmSpecification *AlgorithmSpecification `json:"AlgorithmSpecification,omitempty" name:"AlgorithmSpecification"`
 
 		// 任务名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 		TrainingJobName *string `json:"TrainingJobName,omitempty" name:"TrainingJobName"`
 
 		// 算法超级参数
@@ -465,11 +837,9 @@ type DescribeTrainingJobResponse struct {
 		HyperParameters *string `json:"HyperParameters,omitempty" name:"HyperParameters"`
 
 		// 输入数据配置
-	// 注意：此字段可能返回 null，表示取不到有效值。
 		InputDataConfig []*InputDataConfig `json:"InputDataConfig,omitempty" name:"InputDataConfig" list`
 
 		// 输出数据配置
-	// 注意：此字段可能返回 null，表示取不到有效值。
 		OutputDataConfig *OutputDataConfig `json:"OutputDataConfig,omitempty" name:"OutputDataConfig"`
 
 		// 中止条件
@@ -477,7 +847,6 @@ type DescribeTrainingJobResponse struct {
 		StoppingCondition *StoppingCondition `json:"StoppingCondition,omitempty" name:"StoppingCondition"`
 
 		// 计算实例配置
-	// 注意：此字段可能返回 null，表示取不到有效值。
 		ResourceConfig *ResourceConfig `json:"ResourceConfig,omitempty" name:"ResourceConfig"`
 
 		// 私有网络配置
@@ -489,7 +858,6 @@ type DescribeTrainingJobResponse struct {
 		FailureReason *string `json:"FailureReason,omitempty" name:"FailureReason"`
 
 		// 最近修改时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 		LastModifiedTime *string `json:"LastModifiedTime,omitempty" name:"LastModifiedTime"`
 
 		// 任务开始时间
@@ -505,7 +873,6 @@ type DescribeTrainingJobResponse struct {
 		ModelArtifacts *ModelArtifacts `json:"ModelArtifacts,omitempty" name:"ModelArtifacts"`
 
 		// 详细状态
-	// 注意：此字段可能返回 null，表示取不到有效值。
 		SecondaryStatus *string `json:"SecondaryStatus,omitempty" name:"SecondaryStatus"`
 
 		// 详细状态事件记录
@@ -517,7 +884,6 @@ type DescribeTrainingJobResponse struct {
 		RoleName *string `json:"RoleName,omitempty" name:"RoleName"`
 
 		// 任务状态
-	// 注意：此字段可能返回 null，表示取不到有效值。
 		TrainingJobStatus *string `json:"TrainingJobStatus,omitempty" name:"TrainingJobStatus"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -560,6 +926,36 @@ type FileSystemDataSource struct {
 	// 文件系统ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FileSystemId *string `json:"FileSystemId,omitempty" name:"FileSystemId"`
+}
+
+type Filter struct {
+
+	// 过滤字段名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 过滤字段取值
+	Values []*string `json:"Values,omitempty" name:"Values" list`
+}
+
+type GitConfig struct {
+
+	// git地址
+	RepositoryUrl *string `json:"RepositoryUrl,omitempty" name:"RepositoryUrl"`
+
+	// 代码分支
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Branch *string `json:"Branch,omitempty" name:"Branch"`
+}
+
+type GitSecret struct {
+
+	// 无秘钥，默认选项
+	None *bool `json:"None,omitempty" name:"None"`
+
+	// Git用户名密码base64编码后的字符串
+	// 编码前的内容应为Json字符串，如
+	// {"UserName": "用户名", "Password":"密码"}
+	Secret *string `json:"Secret,omitempty" name:"Secret"`
 }
 
 type InputDataConfig struct {
@@ -613,6 +1009,18 @@ type NotebookInstanceSummary struct {
 	// 算力Id
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+}
+
+type NotebookLifecycleScriptsSummary struct {
+
+	// notebook生命周期脚本名称
+	NotebookLifecycleScriptsName *string `json:"NotebookLifecycleScriptsName,omitempty" name:"NotebookLifecycleScriptsName"`
+
+	// 创建时间
+	CreationTime *string `json:"CreationTime,omitempty" name:"CreationTime"`
+
+	// 修改时间
+	LastModifiedTime *string `json:"LastModifiedTime,omitempty" name:"LastModifiedTime"`
 }
 
 type OutputDataConfig struct {
@@ -780,6 +1188,46 @@ type Tag struct {
 	Value *string `json:"Value,omitempty" name:"Value"`
 }
 
+type UpdateCodeRepositoryRequest struct {
+	*tchttp.BaseRequest
+
+	// 查询存储库名称
+	CodeRepositoryName *string `json:"CodeRepositoryName,omitempty" name:"CodeRepositoryName"`
+
+	// Git凭证
+	GitSecret *GitSecret `json:"GitSecret,omitempty" name:"GitSecret"`
+}
+
+func (r *UpdateCodeRepositoryRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *UpdateCodeRepositoryRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type UpdateCodeRepositoryResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 存储库名称
+		CodeRepositoryName *string `json:"CodeRepositoryName,omitempty" name:"CodeRepositoryName"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *UpdateCodeRepositoryResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *UpdateCodeRepositoryResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type UpdateNotebookInstanceRequest struct {
 	*tchttp.BaseRequest
 
@@ -823,6 +1271,46 @@ func (r *UpdateNotebookInstanceResponse) ToJsonString() string {
 }
 
 func (r *UpdateNotebookInstanceResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type UpdateNotebookLifecycleScriptRequest struct {
+	*tchttp.BaseRequest
+
+	// notebook生命周期脚本名称
+	NotebookLifecycleScriptsName *string `json:"NotebookLifecycleScriptsName,omitempty" name:"NotebookLifecycleScriptsName"`
+
+	// 创建脚本
+	CreateScript *string `json:"CreateScript,omitempty" name:"CreateScript"`
+
+	// 启动脚本
+	StartScript *string `json:"StartScript,omitempty" name:"StartScript"`
+}
+
+func (r *UpdateNotebookLifecycleScriptRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *UpdateNotebookLifecycleScriptRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type UpdateNotebookLifecycleScriptResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *UpdateNotebookLifecycleScriptResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *UpdateNotebookLifecycleScriptResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
