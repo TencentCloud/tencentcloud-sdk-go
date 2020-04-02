@@ -4524,6 +4524,10 @@ type L7RuleEntry struct {
 
 	// HTTPS协议的CC防护等级
 	CCLevel *string `json:"CCLevel,omitempty" name:"CCLevel"`
+
+	// 是否开启Https协议使用Http回源，取值[0(关闭), 1(开启)]，不填写默认是关闭
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HttpsToHttpEnable *uint64 `json:"HttpsToHttpEnable,omitempty" name:"HttpsToHttpEnable"`
 }
 
 type L7RuleHealth struct {

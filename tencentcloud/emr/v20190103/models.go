@@ -231,6 +231,10 @@ type ClusterInstancesInfo struct {
 	// 集群类型:EMR,CLICKHOUSE,DRUID
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ServiceClass *string `json:"ServiceClass,omitempty" name:"ServiceClass"`
+
+	// 集群所有节点的别名序列化
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AliasInfo *string `json:"AliasInfo,omitempty" name:"AliasInfo"`
 }
 
 type CreateInstanceRequest struct {

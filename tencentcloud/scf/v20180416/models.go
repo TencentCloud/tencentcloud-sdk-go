@@ -594,6 +594,14 @@ type FunctionVersion struct {
 	// 版本描述信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Description *string `json:"Description,omitempty" name:"Description"`
+
+	// 创建时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AddTime *string `json:"AddTime,omitempty" name:"AddTime"`
+
+	// 更新时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ModTime *string `json:"ModTime,omitempty" name:"ModTime"`
 }
 
 type GetFunctionAddressRequest struct {

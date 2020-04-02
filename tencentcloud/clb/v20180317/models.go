@@ -3207,6 +3207,9 @@ type RuleInput struct {
 
 	// TRPC调用服务接口，ForwardType为TRPC时必填
 	TrpcFunc *string `json:"TrpcFunc,omitempty" name:"TrpcFunc"`
+
+	// 是否开启QUIC，注意，只有HTTPS域名才能开启QUIC
+	Quic *bool `json:"Quic,omitempty" name:"Quic"`
 }
 
 type RuleOutput struct {
@@ -3279,6 +3282,10 @@ type RuleOutput struct {
 	// TRPC调用服务接口，ForwardType为TRPC时有效
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TrpcFunc *string `json:"TrpcFunc,omitempty" name:"TrpcFunc"`
+
+	// QUIC状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	QuicStatus *string `json:"QuicStatus,omitempty" name:"QuicStatus"`
 }
 
 type RuleTargets struct {

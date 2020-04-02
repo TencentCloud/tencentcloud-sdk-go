@@ -2254,7 +2254,7 @@ type Instance struct {
 
 	// 实例的IPv6地址。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	IPv6Addresses *string `json:"IPv6Addresses,omitempty" name:"IPv6Addresses"`
+	IPv6Addresses []*string `json:"IPv6Addresses,omitempty" name:"IPv6Addresses" list`
 
 	// CAM角色名。
 	// 注意：此字段可能返回 null，表示取不到有效值。

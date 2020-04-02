@@ -200,6 +200,31 @@ func (c *Client) CreateAIRecognitionTemplate(request *CreateAIRecognitionTemplat
     return
 }
 
+func NewCreateAdaptiveDynamicStreamingTemplateRequest() (request *CreateAdaptiveDynamicStreamingTemplateRequest) {
+    request = &CreateAdaptiveDynamicStreamingTemplateRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vod", APIVersion, "CreateAdaptiveDynamicStreamingTemplate")
+    return
+}
+
+func NewCreateAdaptiveDynamicStreamingTemplateResponse() (response *CreateAdaptiveDynamicStreamingTemplateResponse) {
+    response = &CreateAdaptiveDynamicStreamingTemplateResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 创建自适应转码模板，数量上限：100。
+func (c *Client) CreateAdaptiveDynamicStreamingTemplate(request *CreateAdaptiveDynamicStreamingTemplateRequest) (response *CreateAdaptiveDynamicStreamingTemplateResponse, err error) {
+    if request == nil {
+        request = NewCreateAdaptiveDynamicStreamingTemplateRequest()
+    }
+    response = NewCreateAdaptiveDynamicStreamingTemplateResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateAnimatedGraphicsTemplateRequest() (request *CreateAnimatedGraphicsTemplateRequest) {
     request = &CreateAnimatedGraphicsTemplateRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -403,6 +428,31 @@ func (c *Client) CreateSnapshotByTimeOffsetTemplate(request *CreateSnapshotByTim
     return
 }
 
+func NewCreateSuperPlayerConfigRequest() (request *CreateSuperPlayerConfigRequest) {
+    request = &CreateSuperPlayerConfigRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vod", APIVersion, "CreateSuperPlayerConfig")
+    return
+}
+
+func NewCreateSuperPlayerConfigResponse() (response *CreateSuperPlayerConfigResponse) {
+    response = &CreateSuperPlayerConfigResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 创建超级播放器配置，数量上限：100。
+func (c *Client) CreateSuperPlayerConfig(request *CreateSuperPlayerConfigRequest) (response *CreateSuperPlayerConfigResponse, err error) {
+    if request == nil {
+        request = NewCreateSuperPlayerConfigRequest()
+    }
+    response = NewCreateSuperPlayerConfigResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateTranscodeTemplateRequest() (request *CreateTranscodeTemplateRequest) {
     request = &CreateTranscodeTemplateRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -526,6 +576,31 @@ func (c *Client) DeleteAIRecognitionTemplate(request *DeleteAIRecognitionTemplat
         request = NewDeleteAIRecognitionTemplateRequest()
     }
     response = NewDeleteAIRecognitionTemplateResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteAdaptiveDynamicStreamingTemplateRequest() (request *DeleteAdaptiveDynamicStreamingTemplateRequest) {
+    request = &DeleteAdaptiveDynamicStreamingTemplateRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vod", APIVersion, "DeleteAdaptiveDynamicStreamingTemplate")
+    return
+}
+
+func NewDeleteAdaptiveDynamicStreamingTemplateResponse() (response *DeleteAdaptiveDynamicStreamingTemplateResponse) {
+    response = &DeleteAdaptiveDynamicStreamingTemplateResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 删除自适应转码模板
+func (c *Client) DeleteAdaptiveDynamicStreamingTemplate(request *DeleteAdaptiveDynamicStreamingTemplateRequest) (response *DeleteAdaptiveDynamicStreamingTemplateResponse, err error) {
+    if request == nil {
+        request = NewDeleteAdaptiveDynamicStreamingTemplateRequest()
+    }
+    response = NewDeleteAdaptiveDynamicStreamingTemplateResponse()
     err = c.Send(request, response)
     return
 }
@@ -753,6 +828,32 @@ func (c *Client) DeleteSnapshotByTimeOffsetTemplate(request *DeleteSnapshotByTim
         request = NewDeleteSnapshotByTimeOffsetTemplateRequest()
     }
     response = NewDeleteSnapshotByTimeOffsetTemplateResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteSuperPlayerConfigRequest() (request *DeleteSuperPlayerConfigRequest) {
+    request = &DeleteSuperPlayerConfigRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vod", APIVersion, "DeleteSuperPlayerConfig")
+    return
+}
+
+func NewDeleteSuperPlayerConfigResponse() (response *DeleteSuperPlayerConfigResponse) {
+    response = &DeleteSuperPlayerConfigResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 删除超级播放器配置。  
+// *注：系统预置播放器配置不允许删除。*
+func (c *Client) DeleteSuperPlayerConfig(request *DeleteSuperPlayerConfigRequest) (response *DeleteSuperPlayerConfigResponse, err error) {
+    if request == nil {
+        request = NewDeleteSuperPlayerConfigRequest()
+    }
+    response = NewDeleteSuperPlayerConfigResponse()
     err = c.Send(request, response)
     return
 }
@@ -1331,6 +1432,31 @@ func (c *Client) DescribeSubAppIds(request *DescribeSubAppIdsRequest) (response 
     return
 }
 
+func NewDescribeSuperPlayerConfigsRequest() (request *DescribeSuperPlayerConfigsRequest) {
+    request = &DescribeSuperPlayerConfigsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vod", APIVersion, "DescribeSuperPlayerConfigs")
+    return
+}
+
+func NewDescribeSuperPlayerConfigsResponse() (response *DescribeSuperPlayerConfigsResponse) {
+    response = &DescribeSuperPlayerConfigsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询超级播放器配置，支持根据条件，分页查询。
+func (c *Client) DescribeSuperPlayerConfigs(request *DescribeSuperPlayerConfigsRequest) (response *DescribeSuperPlayerConfigsResponse, err error) {
+    if request == nil {
+        request = NewDescribeSuperPlayerConfigsRequest()
+    }
+    response = NewDescribeSuperPlayerConfigsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeTaskDetailRequest() (request *DescribeTaskDetailRequest) {
     request = &DescribeTaskDetailRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1671,6 +1797,31 @@ func (c *Client) ModifyAIRecognitionTemplate(request *ModifyAIRecognitionTemplat
     return
 }
 
+func NewModifyAdaptiveDynamicStreamingTemplateRequest() (request *ModifyAdaptiveDynamicStreamingTemplateRequest) {
+    request = &ModifyAdaptiveDynamicStreamingTemplateRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vod", APIVersion, "ModifyAdaptiveDynamicStreamingTemplate")
+    return
+}
+
+func NewModifyAdaptiveDynamicStreamingTemplateResponse() (response *ModifyAdaptiveDynamicStreamingTemplateResponse) {
+    response = &ModifyAdaptiveDynamicStreamingTemplateResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 修改自适应转码模板
+func (c *Client) ModifyAdaptiveDynamicStreamingTemplate(request *ModifyAdaptiveDynamicStreamingTemplateRequest) (response *ModifyAdaptiveDynamicStreamingTemplateResponse, err error) {
+    if request == nil {
+        request = NewModifyAdaptiveDynamicStreamingTemplateRequest()
+    }
+    response = NewModifyAdaptiveDynamicStreamingTemplateResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyAnimatedGraphicsTemplateRequest() (request *ModifyAnimatedGraphicsTemplateRequest) {
     request = &ModifyAnimatedGraphicsTemplateRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1917,6 +2068,31 @@ func (c *Client) ModifySubAppIdStatus(request *ModifySubAppIdStatusRequest) (res
         request = NewModifySubAppIdStatusRequest()
     }
     response = NewModifySubAppIdStatusResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifySuperPlayerConfigRequest() (request *ModifySuperPlayerConfigRequest) {
+    request = &ModifySuperPlayerConfigRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vod", APIVersion, "ModifySuperPlayerConfig")
+    return
+}
+
+func NewModifySuperPlayerConfigResponse() (response *ModifySuperPlayerConfigResponse) {
+    response = &ModifySuperPlayerConfigResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 修改超级播放器配置。
+func (c *Client) ModifySuperPlayerConfig(request *ModifySuperPlayerConfigRequest) (response *ModifySuperPlayerConfigResponse, err error) {
+    if request == nil {
+        request = NewModifySuperPlayerConfigRequest()
+    }
+    response = NewModifySuperPlayerConfigResponse()
     err = c.Send(request, response)
     return
 }

@@ -124,8 +124,8 @@ type CreateNotebookInstanceRequest struct {
 	// Notebook算力类型
 	InstanceType *string `json:"InstanceType,omitempty" name:"InstanceType"`
 
-	// 角色的资源描述
-	RoleArn *string `json:"RoleArn,omitempty" name:"RoleArn"`
+	// 数据卷大小(GB)
+	VolumeSizeInGB *uint64 `json:"VolumeSizeInGB,omitempty" name:"VolumeSizeInGB"`
 
 	// 外网访问权限，可取值Enabled/Disabled
 	DirectInternetAccess *string `json:"DirectInternetAccess,omitempty" name:"DirectInternetAccess"`
@@ -133,17 +133,19 @@ type CreateNotebookInstanceRequest struct {
 	// Root用户权限，可取值Enabled/Disabled
 	RootAccess *string `json:"RootAccess,omitempty" name:"RootAccess"`
 
-	// 安全组ID
-	SecurityGroupIds []*string `json:"SecurityGroupIds,omitempty" name:"SecurityGroupIds" list`
-
 	// 子网ID
 	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
 
-	// 数据卷大小(GB)
-	VolumeSizeInGB *uint64 `json:"VolumeSizeInGB,omitempty" name:"VolumeSizeInGB"`
+	// 生命周期脚本名称
+	LifecycleScriptsName *string `json:"LifecycleScriptsName,omitempty" name:"LifecycleScriptsName"`
 
-	// Notebook标签
-	Tags []*Tag `json:"Tags,omitempty" name:"Tags" list`
+	// 默认存储库名称
+	// 可以是已创建的存储库名称或者已https://开头的公共git库
+	DefaultCodeRepository *string `json:"DefaultCodeRepository,omitempty" name:"DefaultCodeRepository"`
+
+	// 其他存储库列表
+	// 每个元素可以是已创建的存储库名称或者已https://开头的公共git库
+	AdditionalCodeRepositories []*string `json:"AdditionalCodeRepositories,omitempty" name:"AdditionalCodeRepositories" list`
 }
 
 func (r *CreateNotebookInstanceRequest) ToJsonString() string {
@@ -160,7 +162,6 @@ type CreateNotebookInstanceResponse struct {
 	Response *struct {
 
 		// Notebook实例名字
-	// 注意：此字段可能返回 null，表示取不到有效值。
 		NotebookInstanceName *string `json:"NotebookInstanceName,omitempty" name:"NotebookInstanceName"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -585,10 +586,6 @@ type DescribeNotebookInstanceResponse struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		RootAccess *string `json:"RootAccess,omitempty" name:"RootAccess"`
 
-		// 安全组ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		SecurityGroupIds []*string `json:"SecurityGroupIds,omitempty" name:"SecurityGroupIds" list`
-
 		// 子网ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
@@ -596,10 +593,6 @@ type DescribeNotebookInstanceResponse struct {
 		// 数据卷大小(GB)
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		VolumeSizeInGB *uint64 `json:"VolumeSizeInGB,omitempty" name:"VolumeSizeInGB"`
-
-		// Notebook实例链接
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		Url *string `json:"Url,omitempty" name:"Url"`
 
 		// 创建失败原因
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -613,10 +606,6 @@ type DescribeNotebookInstanceResponse struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		LastModifiedTime *string `json:"LastModifiedTime,omitempty" name:"LastModifiedTime"`
 
-		// Notebook实例网卡ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		NetworkInterfaceId *string `json:"NetworkInterfaceId,omitempty" name:"NetworkInterfaceId"`
-
 		// Notebook实例日志链接
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		LogUrl *string `json:"LogUrl,omitempty" name:"LogUrl"`
@@ -628,6 +617,20 @@ type DescribeNotebookInstanceResponse struct {
 		// Notebook实例ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+		// notebook生命周期脚本名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		LifecycleScriptsName *string `json:"LifecycleScriptsName,omitempty" name:"LifecycleScriptsName"`
+
+		// 默认存储库名称
+	// 可以是已创建的存储库名称或者已https://开头的公共git库
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		DefaultCodeRepository *string `json:"DefaultCodeRepository,omitempty" name:"DefaultCodeRepository"`
+
+		// 其他存储库列表
+	// 每个元素可以是已创建的存储库名称或者已https://开头的公共git库
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		AdditionalCodeRepositories []*string `json:"AdditionalCodeRepositories,omitempty" name:"AdditionalCodeRepositories" list`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -950,7 +953,7 @@ type GitConfig struct {
 type GitSecret struct {
 
 	// 无秘钥，默认选项
-	None *bool `json:"None,omitempty" name:"None"`
+	NoSecret *bool `json:"NoSecret,omitempty" name:"NoSecret"`
 
 	// Git用户名密码base64编码后的字符串
 	// 编码前的内容应为Json字符串，如
@@ -1177,17 +1180,6 @@ type StoppingCondition struct {
 	MaxRuntimeInSeconds *uint64 `json:"MaxRuntimeInSeconds,omitempty" name:"MaxRuntimeInSeconds"`
 }
 
-type Tag struct {
-
-	// key
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	Key *string `json:"Key,omitempty" name:"Key"`
-
-	// value
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	Value *string `json:"Value,omitempty" name:"Value"`
-}
-
 type UpdateCodeRepositoryRequest struct {
 	*tchttp.BaseRequest
 
@@ -1245,6 +1237,31 @@ type UpdateNotebookInstanceRequest struct {
 
 	// 算力资源类型
 	InstanceType *string `json:"InstanceType,omitempty" name:"InstanceType"`
+
+	// notebook生命周期脚本名称
+	LifecycleScriptsName *string `json:"LifecycleScriptsName,omitempty" name:"LifecycleScriptsName"`
+
+	// 是否解绑生命周期脚本，默认 false。
+	// 如果本来就没有绑定脚本，则忽略此参数；
+	// 如果本来有绑定脚本，此参数为 true 则解绑；
+	// 如果本来有绑定脚本，此参数为 false，则需要额外填入 LifecycleScriptsName
+	DisassociateLifecycleScript *bool `json:"DisassociateLifecycleScript,omitempty" name:"DisassociateLifecycleScript"`
+
+	// 默认存储库名称
+	// 可以是已创建的存储库名称或者已https://开头的公共git库
+	DefaultCodeRepository *string `json:"DefaultCodeRepository,omitempty" name:"DefaultCodeRepository"`
+
+	// 其他存储库列表
+	// 每个元素可以是已创建的存储库名称或者已https://开头的公共git库
+	AdditionalCodeRepositories []*string `json:"AdditionalCodeRepositories,omitempty" name:"AdditionalCodeRepositories" list`
+
+	// 是否取消关联默认存储库，默认false
+	// 该值为true时，DefaultCodeRepository将被忽略
+	DisassociateDefaultCodeRepository *bool `json:"DisassociateDefaultCodeRepository,omitempty" name:"DisassociateDefaultCodeRepository"`
+
+	// 是否取消关联其他存储库，默认false
+	// 该值为true时，AdditionalCodeRepositories将被忽略
+	DisassociateAdditionalCodeRepositories *bool `json:"DisassociateAdditionalCodeRepositories,omitempty" name:"DisassociateAdditionalCodeRepositories"`
 }
 
 func (r *UpdateNotebookInstanceRequest) ToJsonString() string {

@@ -232,6 +232,70 @@ func (r *DescribeResourceTagsByResourceIdsResponse) FromJsonString(s string) err
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeResourceTagsByTagKeysRequest struct {
+	*tchttp.BaseRequest
+
+	// 业务类型
+	ServiceType *string `json:"ServiceType,omitempty" name:"ServiceType"`
+
+	// 资源前缀
+	ResourcePrefix *string `json:"ResourcePrefix,omitempty" name:"ResourcePrefix"`
+
+	// 资源地域
+	ResourceRegion *string `json:"ResourceRegion,omitempty" name:"ResourceRegion"`
+
+	// 资源唯一标识
+	ResourceIds []*string `json:"ResourceIds,omitempty" name:"ResourceIds" list`
+
+	// 资源标签键
+	TagKeys []*string `json:"TagKeys,omitempty" name:"TagKeys" list`
+
+	// 每页大小，默认为 400
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 数据偏移量，默认为 0, 必须为Limit参数的整数倍
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+}
+
+func (r *DescribeResourceTagsByTagKeysRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeResourceTagsByTagKeysRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeResourceTagsByTagKeysResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 结果总数
+		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 数据位移偏量
+		Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+		// 每页大小
+		Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+		// 资源标签
+		Rows []*ResourceIdTag `json:"Rows,omitempty" name:"Rows" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeResourceTagsByTagKeysResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeResourceTagsByTagKeysResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeResourceTagsRequest struct {
 	*tchttp.BaseRequest
 
@@ -379,6 +443,9 @@ type DescribeTagKeysRequest struct {
 
 	// 每页大小，默认为 15
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 是否展现项目
+	ShowProject *uint64 `json:"ShowProject,omitempty" name:"ShowProject"`
 }
 
 func (r *DescribeTagKeysRequest) ToJsonString() string {
@@ -492,6 +559,9 @@ type DescribeTagsRequest struct {
 
 	// 创建者用户 Uin，不传或为空只将 Uin 作为条件查询
 	CreateUin *uint64 `json:"CreateUin,omitempty" name:"CreateUin"`
+
+	// 标签键数组,与标签值同时存在或同时不存在，不存在时表示查询该用户所有标签,当与TagKey同时传递时只会本值
+	TagKeys []*string `json:"TagKeys,omitempty" name:"TagKeys" list`
 }
 
 func (r *DescribeTagsRequest) ToJsonString() string {
@@ -571,6 +641,17 @@ func (r *ModifyResourceTagsResponse) ToJsonString() string {
 
 func (r *ModifyResourceTagsResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
+}
+
+type ResourceIdTag struct {
+
+	// 资源唯一标识
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResourceId *string `json:"ResourceId,omitempty" name:"ResourceId"`
+
+	// 标签键值对
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TagKeyValues []*Tag `json:"TagKeyValues,omitempty" name:"TagKeyValues" list`
 }
 
 type ResourceTag struct {

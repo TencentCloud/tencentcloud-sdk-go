@@ -376,7 +376,7 @@ func NewDeleteBackupResponse() (response *DeleteBackupResponse) {
     return
 }
 
-// 本接口(DeleteBackup)用于删除数据库备份。
+// 本接口(DeleteBackup)用于删除数据库备份。本接口只支持删除手动发起的备份。
 func (c *Client) DeleteBackup(request *DeleteBackupRequest) (response *DeleteBackupResponse, err error) {
     if request == nil {
         request = NewDeleteBackupRequest()
@@ -1313,6 +1313,31 @@ func (c *Client) DescribeRollbackRangeTime(request *DescribeRollbackRangeTimeReq
         request = NewDescribeRollbackRangeTimeRequest()
     }
     response = NewDescribeRollbackRangeTimeResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeSLowLogDataRequest() (request *DescribeSLowLogDataRequest) {
+    request = &DescribeSLowLogDataRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cdb", APIVersion, "DescribeSLowLogData")
+    return
+}
+
+func NewDescribeSLowLogDataResponse() (response *DescribeSLowLogDataResponse) {
+    response = &DescribeSLowLogDataResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 条件检索实例的慢日志。只允许查看一个月之内的慢日志
+func (c *Client) DescribeSLowLogData(request *DescribeSLowLogDataRequest) (response *DescribeSLowLogDataResponse, err error) {
+    if request == nil {
+        request = NewDescribeSLowLogDataRequest()
+    }
+    response = NewDescribeSLowLogDataResponse()
     err = c.Send(request, response)
     return
 }

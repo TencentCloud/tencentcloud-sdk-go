@@ -2453,6 +2453,73 @@ func (r *CreateAIRecognitionTemplateResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type CreateAdaptiveDynamicStreamingTemplateRequest struct {
+	*tchttp.BaseRequest
+
+	// 自适应转码格式，取值范围：
+	// <li>HLS。</li>
+	Format *string `json:"Format,omitempty" name:"Format"`
+
+	// 自适应转码输出子流参数信息，最多输出10路子流。
+	// 注意：各个子流的帧率必须保持一致；如果不一致，采用第一个子流的帧率作为输出帧率。
+	StreamInfos []*AdaptiveStreamTemplate `json:"StreamInfos,omitempty" name:"StreamInfos" list`
+
+	// 模板名称，长度限制：64 个字符。
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// DRM方案类型，取值范围：
+	// <li>FairPlay；</li>
+	// <li>SimpleAES；</li>
+	// <li>Widevine。</li>
+	// 如果取值为空字符串，代表不对视频做 DRM 保护。
+	DrmType *string `json:"DrmType,omitempty" name:"DrmType"`
+
+	// 是否禁止视频低码率转高码率，取值范围：
+	// <li>0：否，</li>
+	// <li>1：是。</li>
+	// 默认为否。
+	DisableHigherVideoBitrate *uint64 `json:"DisableHigherVideoBitrate,omitempty" name:"DisableHigherVideoBitrate"`
+
+	// 是否禁止视频分辨率转高分辨率，取值范围：
+	// <li>0：否，</li>
+	// <li>1：是。</li>
+	// 默认为否。
+	DisableHigherVideoResolution *uint64 `json:"DisableHigherVideoResolution,omitempty" name:"DisableHigherVideoResolution"`
+
+	// 模板描述信息，长度限制：256 个字符。
+	Comment *string `json:"Comment,omitempty" name:"Comment"`
+}
+
+func (r *CreateAdaptiveDynamicStreamingTemplateRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateAdaptiveDynamicStreamingTemplateRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateAdaptiveDynamicStreamingTemplateResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 自适应转码模板唯一标识。
+		Definition *uint64 `json:"Definition,omitempty" name:"Definition"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateAdaptiveDynamicStreamingTemplateResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateAdaptiveDynamicStreamingTemplateResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type CreateAnimatedGraphicsTemplateRequest struct {
 	*tchttp.BaseRequest
 
@@ -3031,6 +3098,68 @@ func (r *CreateSnapshotByTimeOffsetTemplateResponse) FromJsonString(s string) er
     return json.Unmarshal([]byte(s), &r)
 }
 
+type CreateSuperPlayerConfigRequest struct {
+	*tchttp.BaseRequest
+
+	// 播放器配置名称，长度限制：64 个字符。只允许出现 [0-9a-zA-Z] 及 _- 字符（如 test_ABC-123），同一个用户该名称唯一。
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 播放 DRM 保护的自适应码流开关：
+	// <li>ON：开启，表示仅播放 DRM  保护的自适应码流输出；</li>
+	// <li>OFF：关闭，表示播放未加密的自适应码流输出。</li>
+	// 默认为 OFF。
+	DrmSwitch *string `json:"DrmSwitch,omitempty" name:"DrmSwitch"`
+
+	// 允许输出的未加密的自适应码流模板 ID，当 DrmSwitch 为 OFF 时必填。
+	AdaptiveDynamicStreamingDefinition *uint64 `json:"AdaptiveDynamicStreamingDefinition,omitempty" name:"AdaptiveDynamicStreamingDefinition"`
+
+	// 允许输出的 DRM 自适应码流模板内容，当 DrmSwitch 为 ON 时必填。
+	DrmStreamingsInfo *DrmStreamingsInfo `json:"DrmStreamingsInfo,omitempty" name:"DrmStreamingsInfo"`
+
+	// 允许输出的雪碧图模板 ID。
+	ImageSpriteDefinition *uint64 `json:"ImageSpriteDefinition,omitempty" name:"ImageSpriteDefinition"`
+
+	// 播放器对不于不同分辨率的子流展示名字，不填或者填空数组则使用默认配置：
+	// <li>MinEdgeLength：240，Name：流畅；</li>
+	// <li>MinEdgeLength：480，Name：标清；</li>
+	// <li>MinEdgeLength：720，Name：高清；</li>
+	// <li>MinEdgeLength：1080，Name：全高清；</li>
+	// <li>MinEdgeLength：1440，Name：2K；</li>
+	// <li>MinEdgeLength：2160，Name：4K；</li>
+	// <li>MinEdgeLength：4320，Name：8K。</li>
+	ResolutionNames []*ResolutionNameInfo `json:"ResolutionNames,omitempty" name:"ResolutionNames" list`
+
+	// 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
+}
+
+func (r *CreateSuperPlayerConfigRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateSuperPlayerConfigRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateSuperPlayerConfigResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateSuperPlayerConfigResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateSuperPlayerConfigResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type CreateTranscodeTemplateRequest struct {
 	*tchttp.BaseRequest
 
@@ -3298,6 +3427,40 @@ func (r *DeleteAIRecognitionTemplateResponse) ToJsonString() string {
 }
 
 func (r *DeleteAIRecognitionTemplateResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteAdaptiveDynamicStreamingTemplateRequest struct {
+	*tchttp.BaseRequest
+
+	// 自适应转码模板唯一标识。
+	Definition *uint64 `json:"Definition,omitempty" name:"Definition"`
+}
+
+func (r *DeleteAdaptiveDynamicStreamingTemplateRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteAdaptiveDynamicStreamingTemplateRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteAdaptiveDynamicStreamingTemplateResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DeleteAdaptiveDynamicStreamingTemplateResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteAdaptiveDynamicStreamingTemplateResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -3634,6 +3797,43 @@ func (r *DeleteSnapshotByTimeOffsetTemplateResponse) ToJsonString() string {
 }
 
 func (r *DeleteSnapshotByTimeOffsetTemplateResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteSuperPlayerConfigRequest struct {
+	*tchttp.BaseRequest
+
+	// 播放器配置名称。
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
+}
+
+func (r *DeleteSuperPlayerConfigRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteSuperPlayerConfigRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteSuperPlayerConfigResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DeleteSuperPlayerConfigResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteSuperPlayerConfigResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -4729,6 +4929,60 @@ func (r *DescribeSubAppIdsResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeSuperPlayerConfigsRequest struct {
+	*tchttp.BaseRequest
+
+	// 播放器配置名字过滤条件，数组长度限制：100。
+	Names []*string `json:"Names,omitempty" name:"Names" list`
+
+	// 分页偏移量，默认值：0。
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 返回记录条数，默认值：10，最大值：100。
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 播放器配置类型过滤条件，可选值：
+	// <li>Preset：系统预置配置；</li>
+	// <li>Custom：用户自定义配置。</li>
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
+}
+
+func (r *DescribeSuperPlayerConfigsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeSuperPlayerConfigsRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeSuperPlayerConfigsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 符合过滤条件的记录总数。
+		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 播放器配置数组。
+		PlayerConfigSet []*PlayerConfig `json:"PlayerConfigSet,omitempty" name:"PlayerConfigSet" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeSuperPlayerConfigsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeSuperPlayerConfigsResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeTaskDetailRequest struct {
 	*tchttp.BaseRequest
 
@@ -5134,6 +5388,18 @@ func (r *DescribeWordSamplesResponse) ToJsonString() string {
 
 func (r *DescribeWordSamplesResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
+}
+
+type DrmStreamingsInfo struct {
+
+	// 保护类型为 SimpleAES 的转自适应码流模板 ID。
+	SimpleAesDefinition *uint64 `json:"SimpleAesDefinition,omitempty" name:"SimpleAesDefinition"`
+}
+
+type DrmStreamingsInfoForUpdate struct {
+
+	// 保护类型为 SimpleAES 的转自适应码流模板 ID。
+	SimpleAesDefinition *uint64 `json:"SimpleAesDefinition,omitempty" name:"SimpleAesDefinition"`
 }
 
 type EditMediaFileInfo struct {
@@ -6972,6 +7238,64 @@ func (r *ModifyAIRecognitionTemplateResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type ModifyAdaptiveDynamicStreamingTemplateRequest struct {
+	*tchttp.BaseRequest
+
+	// 自适应转码模板唯一标识。
+	Definition *uint64 `json:"Definition,omitempty" name:"Definition"`
+
+	// 模板名称，长度限制：64 个字符。
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 自适应转码格式，取值范围：
+	// <li>HLS。</li>
+	Format *string `json:"Format,omitempty" name:"Format"`
+
+	// 是否禁止视频低码率转高码率，取值范围：
+	// <li>0：否，</li>
+	// <li>1：是。</li>
+	DisableHigherVideoBitrate *uint64 `json:"DisableHigherVideoBitrate,omitempty" name:"DisableHigherVideoBitrate"`
+
+	// 是否禁止视频分辨率转高分辨率，取值范围：
+	// <li>0：否，</li>
+	// <li>1：是。</li>
+	DisableHigherVideoResolution *uint64 `json:"DisableHigherVideoResolution,omitempty" name:"DisableHigherVideoResolution"`
+
+	// 自适应转码输入流参数信息，最多输入10路流。
+	// 注意：各个流的帧率必须保持一致；如果不一致，采用第一个流的帧率作为输出帧率。
+	StreamInfos []*AdaptiveStreamTemplate `json:"StreamInfos,omitempty" name:"StreamInfos" list`
+
+	// 模板描述信息，长度限制：256 个字符。
+	Comment *string `json:"Comment,omitempty" name:"Comment"`
+}
+
+func (r *ModifyAdaptiveDynamicStreamingTemplateRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyAdaptiveDynamicStreamingTemplateRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyAdaptiveDynamicStreamingTemplateResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifyAdaptiveDynamicStreamingTemplateResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyAdaptiveDynamicStreamingTemplateResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type ModifyAnimatedGraphicsTemplateRequest struct {
 	*tchttp.BaseRequest
 
@@ -7609,6 +7933,60 @@ func (r *ModifySubAppIdStatusResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type ModifySuperPlayerConfigRequest struct {
+	*tchttp.BaseRequest
+
+	// 播放器配置名称。
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 播放 DRM 保护的自适应码流开关：
+	// <li>ON：开启，表示仅播放 DRM  保护的自适应码流输出；</li>
+	// <li>OFF：关闭，表示播放未加密的自适应码流输出。</li>
+	DrmSwitch *string `json:"DrmSwitch,omitempty" name:"DrmSwitch"`
+
+	// 允许输出的未加密的自适应码流模板 ID。
+	AdaptiveDynamicStreamingDefinition *uint64 `json:"AdaptiveDynamicStreamingDefinition,omitempty" name:"AdaptiveDynamicStreamingDefinition"`
+
+	// 允许输出的 DRM 自适应码流模板内容。
+	DrmStreamingsInfo *DrmStreamingsInfoForUpdate `json:"DrmStreamingsInfo,omitempty" name:"DrmStreamingsInfo"`
+
+	// 允许输出的雪碧图模板 ID。
+	ImageSpriteDefinition *uint64 `json:"ImageSpriteDefinition,omitempty" name:"ImageSpriteDefinition"`
+
+	// 播放器对不于不同分辨率的子流展示名字。
+	ResolutionNames []*ResolutionNameInfo `json:"ResolutionNames,omitempty" name:"ResolutionNames" list`
+
+	// 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
+}
+
+func (r *ModifySuperPlayerConfigRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifySuperPlayerConfigRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifySuperPlayerConfigResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifySuperPlayerConfigResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifySuperPlayerConfigResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type ModifyTranscodeTemplateRequest struct {
 	*tchttp.BaseRequest
 
@@ -7986,6 +8364,41 @@ func (r *ParseStreamingManifestResponse) ToJsonString() string {
 
 func (r *ParseStreamingManifestResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
+}
+
+type PlayerConfig struct {
+
+	// 播放器配置名字。
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 播放器配置类型，取值范围：
+	// <li>Preset：系统预置配置；</li>
+	// <li>Custom：用户自定义配置。</li>
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 播放 DRM 保护的自适应码流开关：
+	// <li>ON：开启，表示仅播放 DRM  保护的自适应码流输出；</li>
+	// <li>OFF：关闭，表示播放未加密的自适应码流输出。</li>
+	DrmSwitch *string `json:"DrmSwitch,omitempty" name:"DrmSwitch"`
+
+	// 允许输出的未加密的自适应码流模板 ID。
+	AdaptiveDynamicStreamingDefinition *uint64 `json:"AdaptiveDynamicStreamingDefinition,omitempty" name:"AdaptiveDynamicStreamingDefinition"`
+
+	// 允许输出的 DRM 自适应码流模板内容。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DrmStreamingsInfo *DrmStreamingsInfo `json:"DrmStreamingsInfo,omitempty" name:"DrmStreamingsInfo"`
+
+	// 允许输出的雪碧图模板 ID。
+	ImageSpriteDefinition *uint64 `json:"ImageSpriteDefinition,omitempty" name:"ImageSpriteDefinition"`
+
+	// 播放器对不于不同分辨率的子流展示名字。
+	ResolutionNameSet []*ResolutionNameInfo `json:"ResolutionNameSet,omitempty" name:"ResolutionNameSet" list`
+
+	// 播放器配置创建时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 播放器配置最后修改时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
 }
 
 type PoliticalAsrReviewTemplateInfo struct {
@@ -8839,6 +9252,15 @@ func (r *ResetProcedureTemplateResponse) ToJsonString() string {
 
 func (r *ResetProcedureTemplateResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
+}
+
+type ResolutionNameInfo struct {
+
+	// 视频短边长度，单位：像素。
+	MinEdgeLength *uint64 `json:"MinEdgeLength,omitempty" name:"MinEdgeLength"`
+
+	// 展示名字。
+	Name *string `json:"Name,omitempty" name:"Name"`
 }
 
 type SampleSnapshotTaskInput struct {

@@ -440,10 +440,10 @@ func (r *DeleteStudioProductResponse) FromJsonString(s string) error {
 type DescribeDeviceDataHistoryRequest struct {
 	*tchttp.BaseRequest
 
-	// 区间开始时间
+	// 区间开始时间（Unix 时间戳，毫秒级）
 	MinTime *uint64 `json:"MinTime,omitempty" name:"MinTime"`
 
-	// 区间结束时间
+	// 区间结束时间（Unix 时间戳，毫秒级）
 	MaxTime *uint64 `json:"MaxTime,omitempty" name:"MaxTime"`
 
 	// 产品ID
@@ -452,7 +452,7 @@ type DescribeDeviceDataHistoryRequest struct {
 	// 设备名称
 	DeviceName *string `json:"DeviceName,omitempty" name:"DeviceName"`
 
-	// 属性字段名称
+	// 属性字段名称，对应数据模板中功能属性的标识符
 	FieldName *string `json:"FieldName,omitempty" name:"FieldName"`
 
 	// 返回条数
@@ -475,7 +475,7 @@ type DescribeDeviceDataHistoryResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 属性字段名称
+		// 属性字段名称，对应数据模板中功能属性的标识符
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		FieldName *string `json:"FieldName,omitempty" name:"FieldName"`
 
@@ -965,13 +965,13 @@ type ListEventHistoryRequest struct {
 	// 设备名称
 	DeviceName *string `json:"DeviceName,omitempty" name:"DeviceName"`
 
-	// 搜索的事件类型
+	// 搜索的事件类型：alert 表示告警，fault 表示故障，info 表示信息，为空则表示查询上述所有类型事件
 	Type *string `json:"Type,omitempty" name:"Type"`
 
-	// 起始时间, 为0 表示 当前时间 - 24h
+	// 起始时间（Unix 时间戳，秒级）, 为0 表示 当前时间 - 24h
 	StartTime *int64 `json:"StartTime,omitempty" name:"StartTime"`
 
-	// 结束时间, 为0 表示当前时间
+	// 结束时间（Unix 时间戳，秒级）, 为0 表示当前时间
 	EndTime *uint64 `json:"EndTime,omitempty" name:"EndTime"`
 
 	// 搜索上下文, 用作查询游标

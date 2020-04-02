@@ -1,10 +1,37 @@
 # 本版本更新包含以下内容：
 
-## 黑石物理服务器(bm) 版本：2018-04-23
+## 云数据库 MySQL(cdb) 版本：2017-03-20
 
-### 第 14 次发布
+### 第 35 次发布
 
-发布时间：2020-04-01 08:07:20
+发布时间：2020-04-02 08:04:57
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeSLowLogData](https://cloud.tencent.com/document/api/236/43060)
+
+修改接口：
+
+* [CreateDeployGroup](https://cloud.tencent.com/document/api/236/38681)
+
+	* 新增入参：DevClass
+
+
+新增数据结构：
+
+* [SlowLogItem](https://cloud.tencent.com/document/api/236/15878#SlowLogItem)
+
+
+
+## 负载均衡(clb) 版本：2018-03-17
+
+### 第 21 次发布
+
+发布时间：2020-04-02 08:06:08
 
 本次发布包含了以下内容：
 
@@ -12,124 +39,98 @@
 
 修改数据结构：
 
-* [OsInfo](https://cloud.tencent.com/document/api/386/18649#OsInfo)
+* [RuleInput](https://cloud.tencent.com/document/api/214/30694#RuleInput)
 
-	* 新增成员：OsMinorVersion, OsMinorClass
+	* 新增成员：Quic
 
+* [RuleOutput](https://cloud.tencent.com/document/api/214/30694#RuleOutput)
 
-
-
-## 云数据库 MySQL(cdb) 版本：2017-03-20
-
-### 第 34 次发布
-
-发布时间：2020-04-01 08:10:41
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [DescribeErrorLogData](https://cloud.tencent.com/document/api/236/43041)
-
-新增数据结构：
-
-* [ErrlogItem](https://cloud.tencent.com/document/api/236/15878#ErrlogItem)
+	* 新增成员：QuicStatus
 
 
 
-## 企业收付平台(cpdp) 版本：2019-08-20
 
-### 第 4 次发布
+## 云服务器(cvm) 版本：2017-03-12
 
-发布时间：2020-04-01 08:54:23
+### 第 38 次发布
+
+发布时间：2020-04-02 08:06:49
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-修改接口：
+修改数据结构：
 
-* [UnifiedOrder](https://cloud.tencent.com/document/api/1122/40649)
+* [Instance](https://cloud.tencent.com/document/api/213/15753#Instance)
 
-	* <font color="#dd0000">**修改入参**：</font>SubOrderList
-
-
+	* <font color="#dd0000">**修改成员**：</font>IPv6Addresses
 
 
-## 云监控(monitor) 版本：2018-07-24
 
-### 第 9 次发布
 
-发布时间：2020-04-01 08:30:38
+## 大禹网络安全(dayu) 版本：2018-07-09
+
+### 第 12 次发布
+
+发布时间：2020-04-02 08:07:12
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-新增接口：
+修改数据结构：
 
-* [SendCustomAlarmMsg](https://cloud.tencent.com/document/api/248/43042)
+* [L7RuleEntry](https://cloud.tencent.com/document/api/1021/39225#L7RuleEntry)
+
+	* 新增成员：HttpsToHttpEnable
+
+
+
+
+## 弹性 MapReduce(emr) 版本：2019-01-03
+
+### 第 10 次发布
+
+发布时间：2020-04-02 08:08:50
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [ClusterInstancesInfo](https://cloud.tencent.com/document/api/589/33981#ClusterInstancesInfo)
+
+	* 新增成员：AliasInfo
+
+
+
+
+## 云函数(scf) 版本：2018-04-16
+
+### 第 7 次发布
+
+发布时间：2020-04-02 08:14:22
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [FunctionVersion](https://cloud.tencent.com/document/api/583/17244#FunctionVersion)
+
+	* 新增成员：AddTime, ModTime
+
 
 
 
 ## 标签(tag) 版本：2018-08-13
 
-### 第 5 次发布
+### 第 6 次发布
 
-发布时间：2020-04-01 08:37:05
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [DescribeResourceTags](https://cloud.tencent.com/document/api/651/43044)
-
-
-
-## 智能钛弹性模型服务(tiems) 版本：2019-04-16
-
-### 第 7 次发布
-
-发布时间：2020-04-01 08:39:10
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [CreateJob](https://cloud.tencent.com/document/api/1120/39242)
-
-	* 新增入参：LogTopicId
-
-* [CreateRsgAsGroup](https://cloud.tencent.com/document/api/1120/40695)
-
-	* 新增入参：InstanceType, DesiredSize
-
-* [CreateService](https://cloud.tencent.com/document/api/1120/37560)
-
-	* 新增入参：LogTopicId
-
-* [UpdateRsgAsGroup](https://cloud.tencent.com/document/api/1120/40686)
-
-	* 新增入参：DesiredSize
-
-* [UpdateService](https://cloud.tencent.com/document/api/1120/37557)
-
-	* 新增入参：LogTopicId
-
-
-
-
-## 智能钛机器学习平台(tione) 版本：2019-10-22
-
-### 第 3 次发布
-
-发布时间：2020-04-01 08:01:02
+发布时间：2020-04-02 08:15:07
 
 本次发布包含了以下内容：
 
@@ -137,41 +138,30 @@
 
 新增接口：
 
-* [CreateCodeRepository](https://cloud.tencent.com/document/api/851/43039)
-* [CreateNotebookLifecycleScript](https://cloud.tencent.com/document/api/851/43033)
-* [DeleteCodeRepository](https://cloud.tencent.com/document/api/851/43038)
-* [DeleteNotebookLifecycleScript](https://cloud.tencent.com/document/api/851/43032)
-* [DescribeCodeRepositories](https://cloud.tencent.com/document/api/851/43037)
-* [DescribeCodeRepository](https://cloud.tencent.com/document/api/851/43036)
-* [DescribeNotebookLifecycleScript](https://cloud.tencent.com/document/api/851/43031)
-* [DescribeNotebookLifecycleScripts](https://cloud.tencent.com/document/api/851/43030)
-* [UpdateCodeRepository](https://cloud.tencent.com/document/api/851/43035)
-* [UpdateNotebookLifecycleScript](https://cloud.tencent.com/document/api/851/43029)
+* [DescribeResourceTagsByTagKeys](https://cloud.tencent.com/document/api/651/43061)
 
 修改接口：
 
-* [DescribeNotebookInstances](https://cloud.tencent.com/document/api/851/42523)
+* [DescribeTagKeys](https://cloud.tencent.com/document/api/651/35318)
 
-	* 新增入参：Filters
+	* 新增入参：ShowProject
 
-	* <font color="#dd0000">**删除入参**：</font>CreationTimeAfter, CreationTimeBefore, LastModifiedTimeAfter, LastModifiedTimeBefore, NameContains, StatusEquals, MaxResults
+* [DescribeTags](https://cloud.tencent.com/document/api/651/35316)
+
+	* 新增入参：TagKeys
 
 
 新增数据结构：
 
-* [CodeRepoSummary](https://cloud.tencent.com/document/api/851/42528#CodeRepoSummary)
-* [Filter](https://cloud.tencent.com/document/api/851/42528#Filter)
-* [GitConfig](https://cloud.tencent.com/document/api/851/42528#GitConfig)
-* [GitSecret](https://cloud.tencent.com/document/api/851/42528#GitSecret)
-* [NotebookLifecycleScriptsSummary](https://cloud.tencent.com/document/api/851/42528#NotebookLifecycleScriptsSummary)
+* [ResourceIdTag](https://cloud.tencent.com/document/api/651/35327#ResourceIdTag)
 
 
 
-## 点播(vod) 版本：2018-07-17
+## 游戏数据库 TcaplusDB(tcaplusdb) 版本：2019-08-23
 
-### 第 40 次发布
+### 第 4 次发布
 
-发布时间：2020-04-01 08:49:22
+发布时间：2020-04-02 08:15:33
 
 本次发布包含了以下内容：
 
@@ -179,14 +169,82 @@
 
 <font color="#dd0000">**删除接口**：</font>
 
-* ModifyEventNotificationConfigForConsole
+* ModifyAppName
+
+
+
+## 智能钛机器学习平台(tione) 版本：2019-10-22
+
+### 第 4 次发布
+
+发布时间：2020-04-02 08:00:31
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateNotebookInstance](https://cloud.tencent.com/document/api/851/42527)
+
+	* 新增入参：LifecycleScriptsName, DefaultCodeRepository, AdditionalCodeRepositories
+
+	* <font color="#dd0000">**删除入参**：</font>RoleArn, SecurityGroupIds, Tags
+
+	* <font color="#dd0000">**修改入参**：</font>NotebookInstanceName, InstanceType, VolumeSizeInGB
+
+* [DescribeNotebookInstance](https://cloud.tencent.com/document/api/851/42524)
+
+	* 新增出参：LifecycleScriptsName, DefaultCodeRepository, AdditionalCodeRepositories
+
+	* <font color="#dd0000">**删除出参**：</font>SecurityGroupIds, Url, NetworkInterfaceId
+
+* [UpdateNotebookInstance](https://cloud.tencent.com/document/api/851/42520)
+
+	* 新增入参：LifecycleScriptsName, DisassociateLifecycleScript, DefaultCodeRepository, AdditionalCodeRepositories, DisassociateDefaultCodeRepository, DisassociateAdditionalCodeRepositories
+
+
+<font color="#dd0000">**删除数据结构**：</font>
+
+* Tag
 
 修改数据结构：
 
-* [AdaptiveDynamicStreamingTemplate](https://cloud.tencent.com/document/api/266/31773#AdaptiveDynamicStreamingTemplate)
+* [GitSecret](https://cloud.tencent.com/document/api/851/42528#GitSecret)
 
-	* <font color="#dd0000">**删除成员**：</font>PackageType, VideoTrackTemplateSet, AudioTrackTemplateSet
+	* 新增成员：NoSecret
 
+	* <font color="#dd0000">**删除成员**：</font>None
+
+
+
+
+## 点播(vod) 版本：2018-07-17
+
+### 第 41 次发布
+
+发布时间：2020-04-02 08:18:42
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CreateAdaptiveDynamicStreamingTemplate](https://cloud.tencent.com/document/api/266/43068)
+* [CreateSuperPlayerConfig](https://cloud.tencent.com/document/api/266/43067)
+* [DeleteAdaptiveDynamicStreamingTemplate](https://cloud.tencent.com/document/api/266/43066)
+* [DeleteSuperPlayerConfig](https://cloud.tencent.com/document/api/266/43065)
+* [DescribeSuperPlayerConfigs](https://cloud.tencent.com/document/api/266/43064)
+* [ModifyAdaptiveDynamicStreamingTemplate](https://cloud.tencent.com/document/api/266/43063)
+* [ModifySuperPlayerConfig](https://cloud.tencent.com/document/api/266/43062)
+
+新增数据结构：
+
+* [DrmStreamingsInfo](https://cloud.tencent.com/document/api/266/31773#DrmStreamingsInfo)
+* [DrmStreamingsInfoForUpdate](https://cloud.tencent.com/document/api/266/31773#DrmStreamingsInfoForUpdate)
+* [PlayerConfig](https://cloud.tencent.com/document/api/266/31773#PlayerConfig)
+* [ResolutionNameInfo](https://cloud.tencent.com/document/api/266/31773#ResolutionNameInfo)
 
 
 
@@ -4066,6 +4124,29 @@
 
 ## 云数据库 MySQL(cdb) 版本：2017-03-20
 
+### 第 35 次发布
+
+发布时间：2020-04-02 08:04:57
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeSLowLogData](https://cloud.tencent.com/document/api/236/43060)](https://cloud.tencent.com/document/api/#/#)
+
+修改接口：
+
+* [CreateDeployGroup](https://cloud.tencent.com/document/api/236/38681)
+
+	* 新增入参：DevClass
+
+
+新增数据结构：
+
+* [[SlowLogItem](https://cloud.tencent.com/document/api/236/15878#SlowLogItem)](https://cloud.tencent.com/document/api/236/15878#[SlowLogItem](https://cloud.tencent.com/document/api/236/15878#SlowLogItem))
+
 ### 第 34 次发布
 
 发布时间：2020-04-01 08:10:41
@@ -4076,11 +4157,11 @@
 
 新增接口：
 
-* [[DescribeErrorLogData](https://cloud.tencent.com/document/api/236/43041)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeErrorLogData](https://cloud.tencent.com/document/api/236/43041)
 
 新增数据结构：
 
-* [[ErrlogItem](https://cloud.tencent.com/document/api/236/15878#ErrlogItem)](https://cloud.tencent.com/document/api/236/15878#[ErrlogItem](https://cloud.tencent.com/document/api/236/15878#ErrlogItem))
+* [ErrlogItem](https://cloud.tencent.com/document/api/236/15878#ErrlogItem)
 
 ### 第 33 次发布
 
@@ -5598,6 +5679,25 @@
 
 ## 负载均衡(clb) 版本：2018-03-17
 
+### 第 21 次发布
+
+发布时间：2020-04-02 08:06:08
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [RuleInput](https://cloud.tencent.com/document/api/214/30694#RuleInput)
+
+	* 新增成员：Quic
+
+* [RuleOutput](https://cloud.tencent.com/document/api/214/30694#RuleOutput)
+
+	* 新增成员：QuicStatus
+
+
 ### 第 20 次发布
 
 发布时间：2020-03-31 08:05:13
@@ -6939,6 +7039,21 @@
 
 ## 云服务器(cvm) 版本：2017-03-12
 
+### 第 38 次发布
+
+发布时间：2020-04-02 08:06:49
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [Instance](https://cloud.tencent.com/document/api/213/15753#Instance)
+
+	* <font color="#dd0000">**修改成员**：</font>IPv6Addresses
+
+
 ### 第 37 次发布
 
 发布时间：2020-03-16 08:06:56
@@ -7923,6 +8038,21 @@
 
 
 ## 大禹网络安全(dayu) 版本：2018-07-09
+
+### 第 12 次发布
+
+发布时间：2020-04-02 08:07:12
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [L7RuleEntry](https://cloud.tencent.com/document/api/1021/39225#L7RuleEntry)
+
+	* 新增成员：HttpsToHttpEnable
+
 
 ### 第 11 次发布
 
@@ -9284,6 +9414,21 @@
 
 
 ## 弹性 MapReduce(emr) 版本：2019-01-03
+
+### 第 10 次发布
+
+发布时间：2020-04-02 08:08:50
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [ClusterInstancesInfo](https://cloud.tencent.com/document/api/589/33981#ClusterInstancesInfo)
+
+	* 新增成员：AliasInfo
+
 
 ### 第 9 次发布
 
@@ -13871,7 +14016,7 @@
 
 新增接口：
 
-* [[SendCustomAlarmMsg](https://cloud.tencent.com/document/api/248/43042)](https://cloud.tencent.com/document/api/#/#)
+* [SendCustomAlarmMsg](https://cloud.tencent.com/document/api/248/43042)
 
 ### 第 8 次发布
 
@@ -16234,7 +16379,7 @@
 * [DeleteInstanceAccount](https://cloud.tencent.com/document/api/239/38925)
 * [DescribeInstanceAccount](https://cloud.tencent.com/document/api/239/38924)
 * [DescribeInstanceMonitorBigKey](https://cloud.tencent.com/document/api/239/38922)
-* [DescribeInstanceMonitorBigKeySizeDist](https://cloud.tencent.com/document/api/239/38918)
+* [DescribeInstanceMonitorBigKeySizeDist](https://cloud.tencent.com/document/api/239/40601)
 * [DescribeInstanceMonitorBigKeyTypeDist](https://cloud.tencent.com/document/api/239/38921)
 * [DescribeInstanceMonitorHotKey](https://cloud.tencent.com/document/api/239/38920)
 * [DescribeInstanceMonitorSIP](https://cloud.tencent.com/document/api/239/38919)
@@ -16513,6 +16658,21 @@
 
 
 ## 云函数(scf) 版本：2018-04-16
+
+### 第 7 次发布
+
+发布时间：2020-04-02 08:14:22
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [FunctionVersion](https://cloud.tencent.com/document/api/583/17244#FunctionVersion)
+
+	* 新增成员：AddTime, ModTime
+
 
 ### 第 6 次发布
 
@@ -17613,6 +17773,33 @@
 
 ## 标签(tag) 版本：2018-08-13
 
+### 第 6 次发布
+
+发布时间：2020-04-02 08:15:07
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeResourceTagsByTagKeys](https://cloud.tencent.com/document/api/651/43061)](https://cloud.tencent.com/document/api/#/#)
+
+修改接口：
+
+* [DescribeTagKeys](https://cloud.tencent.com/document/api/651/35318)
+
+	* 新增入参：ShowProject
+
+* [DescribeTags](https://cloud.tencent.com/document/api/651/35316)
+
+	* 新增入参：TagKeys
+
+
+新增数据结构：
+
+* [[ResourceIdTag](https://cloud.tencent.com/document/api/651/35327#ResourceIdTag)](https://cloud.tencent.com/document/api/651/35327#[ResourceIdTag](https://cloud.tencent.com/document/api/651/35327#ResourceIdTag))
+
 ### 第 5 次发布
 
 发布时间：2020-04-01 08:37:05
@@ -17623,7 +17810,7 @@
 
 新增接口：
 
-* [[DescribeResourceTags](https://cloud.tencent.com/document/api/651/43044)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeResourceTags](https://cloud.tencent.com/document/api/651/43044)
 
 ### 第 4 次发布
 
@@ -18053,6 +18240,18 @@
 
 
 ## 游戏数据库 TcaplusDB(tcaplusdb) 版本：2019-08-23
+
+### 第 4 次发布
+
+发布时间：2020-04-02 08:15:33
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+<font color="#dd0000">**删除接口**：</font>
+
+* ModifyAppName
 
 ### 第 3 次发布
 
@@ -19602,6 +19801,48 @@
 
 ## 智能钛机器学习平台(tione) 版本：2019-10-22
 
+### 第 4 次发布
+
+发布时间：2020-04-02 08:00:31
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateNotebookInstance](https://cloud.tencent.com/document/api/851/42527)
+
+	* 新增入参：LifecycleScriptsName, DefaultCodeRepository, AdditionalCodeRepositories
+
+	* <font color="#dd0000">**删除入参**：</font>RoleArn, SecurityGroupIds, Tags
+
+	* <font color="#dd0000">**修改入参**：</font>NotebookInstanceName, InstanceType, VolumeSizeInGB
+
+* [DescribeNotebookInstance](https://cloud.tencent.com/document/api/851/42524)
+
+	* 新增出参：LifecycleScriptsName, DefaultCodeRepository, AdditionalCodeRepositories
+
+	* <font color="#dd0000">**删除出参**：</font>SecurityGroupIds, Url, NetworkInterfaceId
+
+* [UpdateNotebookInstance](https://cloud.tencent.com/document/api/851/42520)
+
+	* 新增入参：LifecycleScriptsName, DisassociateLifecycleScript, DefaultCodeRepository, AdditionalCodeRepositories, DisassociateDefaultCodeRepository, DisassociateAdditionalCodeRepositories
+
+
+<font color="#dd0000">**删除数据结构**：</font>
+
+* Tag
+
+修改数据结构：
+
+* [GitSecret](https://cloud.tencent.com/document/api/851/42528#GitSecret)
+
+	* 新增成员：NoSecret
+
+	* <font color="#dd0000">**删除成员**：</font>None
+
+
 ### 第 3 次发布
 
 发布时间：2020-04-01 08:01:02
@@ -19612,16 +19853,16 @@
 
 新增接口：
 
-* [[CreateCodeRepository](https://cloud.tencent.com/document/api/851/43039)](https://cloud.tencent.com/document/api/#/#)
-* [[CreateNotebookLifecycleScript](https://cloud.tencent.com/document/api/851/43033)](https://cloud.tencent.com/document/api/#/#)
-* [[DeleteCodeRepository](https://cloud.tencent.com/document/api/851/43038)](https://cloud.tencent.com/document/api/#/#)
-* [[DeleteNotebookLifecycleScript](https://cloud.tencent.com/document/api/851/43032)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeCodeRepositories](https://cloud.tencent.com/document/api/851/43037)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeCodeRepository](https://cloud.tencent.com/document/api/851/43036)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeNotebookLifecycleScript](https://cloud.tencent.com/document/api/851/43031)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeNotebookLifecycleScripts](https://cloud.tencent.com/document/api/851/43030)](https://cloud.tencent.com/document/api/#/#)
-* [[UpdateCodeRepository](https://cloud.tencent.com/document/api/851/43035)](https://cloud.tencent.com/document/api/#/#)
-* [[UpdateNotebookLifecycleScript](https://cloud.tencent.com/document/api/851/43029)](https://cloud.tencent.com/document/api/#/#)
+* [CreateCodeRepository](https://cloud.tencent.com/document/api/851/43039)
+* [CreateNotebookLifecycleScript](https://cloud.tencent.com/document/api/851/43033)
+* [DeleteCodeRepository](https://cloud.tencent.com/document/api/851/43038)
+* [DeleteNotebookLifecycleScript](https://cloud.tencent.com/document/api/851/43032)
+* [DescribeCodeRepositories](https://cloud.tencent.com/document/api/851/43037)
+* [DescribeCodeRepository](https://cloud.tencent.com/document/api/851/43036)
+* [DescribeNotebookLifecycleScript](https://cloud.tencent.com/document/api/851/43031)
+* [DescribeNotebookLifecycleScripts](https://cloud.tencent.com/document/api/851/43030)
+* [UpdateCodeRepository](https://cloud.tencent.com/document/api/851/43035)
+* [UpdateNotebookLifecycleScript](https://cloud.tencent.com/document/api/851/43029)
 
 修改接口：
 
@@ -19634,11 +19875,11 @@
 
 新增数据结构：
 
-* [[CodeRepoSummary](https://cloud.tencent.com/document/api/851/42528#CodeRepoSummary)](https://cloud.tencent.com/document/api/851/42528#[CodeRepoSummary](https://cloud.tencent.com/document/api/851/42528#CodeRepoSummary))
-* [[Filter](https://cloud.tencent.com/document/api/851/42528#Filter)](https://cloud.tencent.com/document/api/851/42528#[Filter](https://cloud.tencent.com/document/api/851/42528#Filter))
-* [[GitConfig](https://cloud.tencent.com/document/api/851/42528#GitConfig)](https://cloud.tencent.com/document/api/851/42528#[GitConfig](https://cloud.tencent.com/document/api/851/42528#GitConfig))
-* [[GitSecret](https://cloud.tencent.com/document/api/851/42528#GitSecret)](https://cloud.tencent.com/document/api/851/42528#[GitSecret](https://cloud.tencent.com/document/api/851/42528#GitSecret))
-* [[NotebookLifecycleScriptsSummary](https://cloud.tencent.com/document/api/851/42528#NotebookLifecycleScriptsSummary)](https://cloud.tencent.com/document/api/851/42528#[NotebookLifecycleScriptsSummary](https://cloud.tencent.com/document/api/851/42528#NotebookLifecycleScriptsSummary))
+* [CodeRepoSummary](https://cloud.tencent.com/document/api/851/42528#CodeRepoSummary)
+* [Filter](https://cloud.tencent.com/document/api/851/42528#Filter)
+* [GitConfig](https://cloud.tencent.com/document/api/851/42528#GitConfig)
+* [GitSecret](https://cloud.tencent.com/document/api/851/42528#GitSecret)
+* [NotebookLifecycleScriptsSummary](https://cloud.tencent.com/document/api/851/42528#NotebookLifecycleScriptsSummary)
 
 ### 第 2 次发布
 
@@ -20852,6 +21093,31 @@
 
 
 ## 点播(vod) 版本：2018-07-17
+
+### 第 41 次发布
+
+发布时间：2020-04-02 08:18:42
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[CreateAdaptiveDynamicStreamingTemplate](https://cloud.tencent.com/document/api/266/43068)](https://cloud.tencent.com/document/api/#/#)
+* [[CreateSuperPlayerConfig](https://cloud.tencent.com/document/api/266/43067)](https://cloud.tencent.com/document/api/#/#)
+* [[DeleteAdaptiveDynamicStreamingTemplate](https://cloud.tencent.com/document/api/266/43066)](https://cloud.tencent.com/document/api/#/#)
+* [[DeleteSuperPlayerConfig](https://cloud.tencent.com/document/api/266/43065)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeSuperPlayerConfigs](https://cloud.tencent.com/document/api/266/43064)](https://cloud.tencent.com/document/api/#/#)
+* [[ModifyAdaptiveDynamicStreamingTemplate](https://cloud.tencent.com/document/api/266/43063)](https://cloud.tencent.com/document/api/#/#)
+* [[ModifySuperPlayerConfig](https://cloud.tencent.com/document/api/266/43062)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[DrmStreamingsInfo](https://cloud.tencent.com/document/api/266/31773#DrmStreamingsInfo)](https://cloud.tencent.com/document/api/266/31773#[DrmStreamingsInfo](https://cloud.tencent.com/document/api/266/31773#DrmStreamingsInfo))
+* [[DrmStreamingsInfoForUpdate](https://cloud.tencent.com/document/api/266/31773#DrmStreamingsInfoForUpdate)](https://cloud.tencent.com/document/api/266/31773#[DrmStreamingsInfoForUpdate](https://cloud.tencent.com/document/api/266/31773#DrmStreamingsInfoForUpdate))
+* [[PlayerConfig](https://cloud.tencent.com/document/api/266/31773#PlayerConfig)](https://cloud.tencent.com/document/api/266/31773#[PlayerConfig](https://cloud.tencent.com/document/api/266/31773#PlayerConfig))
+* [[ResolutionNameInfo](https://cloud.tencent.com/document/api/266/31773#ResolutionNameInfo)](https://cloud.tencent.com/document/api/266/31773#[ResolutionNameInfo](https://cloud.tencent.com/document/api/266/31773#ResolutionNameInfo))
 
 ### 第 40 次发布
 

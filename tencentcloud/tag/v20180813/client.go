@@ -193,6 +193,31 @@ func (c *Client) DescribeResourceTagsByResourceIds(request *DescribeResourceTags
     return
 }
 
+func NewDescribeResourceTagsByTagKeysRequest() (request *DescribeResourceTagsByTagKeysRequest) {
+    request = &DescribeResourceTagsByTagKeysRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tag", APIVersion, "DescribeResourceTagsByTagKeys")
+    return
+}
+
+func NewDescribeResourceTagsByTagKeysResponse() (response *DescribeResourceTagsByTagKeysResponse) {
+    response = &DescribeResourceTagsByTagKeysResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 根据标签键获取资源标签
+func (c *Client) DescribeResourceTagsByTagKeys(request *DescribeResourceTagsByTagKeysRequest) (response *DescribeResourceTagsByTagKeysResponse, err error) {
+    if request == nil {
+        request = NewDescribeResourceTagsByTagKeysRequest()
+    }
+    response = NewDescribeResourceTagsByTagKeysResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeResourcesByTagsRequest() (request *DescribeResourcesByTagsRequest) {
     request = &DescribeResourcesByTagsRequest{
         BaseRequest: &tchttp.BaseRequest{},

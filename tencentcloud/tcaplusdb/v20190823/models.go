@@ -956,43 +956,6 @@ type IdlFileInfoWithoutContent struct {
 	Error *ErrorInfo `json:"Error,omitempty" name:"Error"`
 }
 
-type ModifyAppNameRequest struct {
-	*tchttp.BaseRequest
-
-	// 需要修改名称的应用实例ID
-	ApplicationId *string `json:"ApplicationId,omitempty" name:"ApplicationId"`
-
-	// 需要修改的应用名称，需要URLEncode
-	AppName *string `json:"AppName,omitempty" name:"AppName"`
-}
-
-func (r *ModifyAppNameRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-func (r *ModifyAppNameRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
-}
-
-type ModifyAppNameResponse struct {
-	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
-}
-
-func (r *ModifyAppNameResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-func (r *ModifyAppNameResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
-}
-
 type ModifyClusterNameRequest struct {
 	*tchttp.BaseRequest
 

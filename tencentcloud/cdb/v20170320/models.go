@@ -758,6 +758,9 @@ type CreateDeployGroupRequest struct {
 
 	// 置放群组亲和性策略1中同台物理机上实例的限制个数。
 	LimitNum *int64 `json:"LimitNum,omitempty" name:"LimitNum"`
+
+	// 置放群组机型属性，可选参数：SH12+SH02、TS85。
+	DevClass []*string `json:"DevClass,omitempty" name:"DevClass" list`
 }
 
 func (r *CreateDeployGroupRequest) ToJsonString() string {
@@ -2691,6 +2694,74 @@ func (r *DescribeRollbackRangeTimeResponse) ToJsonString() string {
 }
 
 func (r *DescribeRollbackRangeTimeResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeSLowLogDataRequest struct {
+	*tchttp.BaseRequest
+
+	// 实例 ID。
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 开始时间戳。
+	StartTime *uint64 `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 结束时间戳。
+	EndTime *uint64 `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 客户端 Host 列表。
+	UserHosts []*string `json:"UserHosts,omitempty" name:"UserHosts" list`
+
+	// 客户端 用户名 列表。
+	UserNames []*string `json:"UserNames,omitempty" name:"UserNames" list`
+
+	// 访问的 数据库 列表。
+	DataBases []*string `json:"DataBases,omitempty" name:"DataBases" list`
+
+	// 排序字段。当前支持：Timestamp,QueryTime,LockTime,RowsExamined,RowsSent 。
+	SortBy *string `json:"SortBy,omitempty" name:"SortBy"`
+
+	// 升序还是降序排列。当前支持：ASC,DESC 。
+	OrderBy *string `json:"OrderBy,omitempty" name:"OrderBy"`
+
+	// 偏移量，默认为0。
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 一次性返回的记录数量，最大为400。
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+func (r *DescribeSLowLogDataRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeSLowLogDataRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeSLowLogDataResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 符合条件的记录总数。
+		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 查询到的记录。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Items []*SlowLogItem `json:"Items,omitempty" name:"Items" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeSLowLogDataResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeSLowLogDataResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -4962,6 +5033,53 @@ type SlowLogInfo struct {
 
 	// 日志具体类型，可能的值：slowlog - 慢日志
 	Type *string `json:"Type,omitempty" name:"Type"`
+}
+
+type SlowLogItem struct {
+
+	// Sql的执行时间。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Timestamp *uint64 `json:"Timestamp,omitempty" name:"Timestamp"`
+
+	// Sql的执行时长。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	QueryTime *float64 `json:"QueryTime,omitempty" name:"QueryTime"`
+
+	// Sql语句。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SqlText *string `json:"SqlText,omitempty" name:"SqlText"`
+
+	// 客户端地址。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UserHost *string `json:"UserHost,omitempty" name:"UserHost"`
+
+	// 用户名。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UserName *string `json:"UserName,omitempty" name:"UserName"`
+
+	// 数据库名。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Database *string `json:"Database,omitempty" name:"Database"`
+
+	// 锁时长。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LockTime *float64 `json:"LockTime,omitempty" name:"LockTime"`
+
+	// 扫描行数。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RowsExamined *int64 `json:"RowsExamined,omitempty" name:"RowsExamined"`
+
+	// 结果集行数。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RowsSent *int64 `json:"RowsSent,omitempty" name:"RowsSent"`
+
+	// Sql模板。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SqlTemplate *string `json:"SqlTemplate,omitempty" name:"SqlTemplate"`
+
+	// Sql语句的md5。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Md5 *string `json:"Md5,omitempty" name:"Md5"`
 }
 
 type SqlFileInfo struct {

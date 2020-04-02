@@ -493,31 +493,6 @@ func (c *Client) DescribeUinInWhitelist(request *DescribeUinInWhitelistRequest) 
     return
 }
 
-func NewModifyAppNameRequest() (request *ModifyAppNameRequest) {
-    request = &ModifyAppNameRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    request.Init().WithApiInfo("tcaplusdb", APIVersion, "ModifyAppName")
-    return
-}
-
-func NewModifyAppNameResponse() (response *ModifyAppNameResponse) {
-    response = &ModifyAppNameResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    }
-    return
-}
-
-// 修改指定的应用名称
-func (c *Client) ModifyAppName(request *ModifyAppNameRequest) (response *ModifyAppNameResponse, err error) {
-    if request == nil {
-        request = NewModifyAppNameRequest()
-    }
-    response = NewModifyAppNameResponse()
-    err = c.Send(request, response)
-    return
-}
-
 func NewModifyClusterNameRequest() (request *ModifyClusterNameRequest) {
     request = &ModifyClusterNameRequest{
         BaseRequest: &tchttp.BaseRequest{},
