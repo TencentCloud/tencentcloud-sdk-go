@@ -402,6 +402,10 @@ type DriverLicenseOCRRequest struct {
 	// 图片的 Url 地址。要求图片经Base64编码后不超过 7M，分辨率建议500*800以上，支持PNG、JPG、JPEG、BMP格式。建议卡片部分占据图片2/3以上。图片下载时间不超过 3 秒。
 	// 建议图片存储于腾讯云，可保障更高的下载速度和稳定性。
 	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
+
+	// FRONT 为驾驶证主页正面（有红色印章的一面），
+	// BACK 为驾驶证副页正面（有档案编号的一面）。
+	CardSide *string `json:"CardSide,omitempty" name:"CardSide"`
 }
 
 func (r *DriverLicenseOCRRequest) ToJsonString() string {
@@ -446,6 +450,12 @@ type DriverLicenseOCRResponse struct {
 
 		// 证号
 		CardCode *string `json:"CardCode,omitempty" name:"CardCode"`
+
+		// 档案编号
+		ArchivesCode *string `json:"ArchivesCode,omitempty" name:"ArchivesCode"`
+
+		// 记录
+		Record *string `json:"Record,omitempty" name:"Record"`
 
 		// Code 告警码列表和释义：
 	// -9102  复印件告警
@@ -1270,6 +1280,80 @@ func (r *GeneralHandwritingOCRResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type HmtResidentPermitOCRRequest struct {
+	*tchttp.BaseRequest
+
+	// 图片的 Base64 值。
+	// 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
+	// 支持的图片大小：所下载图片经Base64编码后不超过 3M。图片下载时间不超过 3 秒。
+	// 图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+	ImageBase64 *string `json:"ImageBase64,omitempty" name:"ImageBase64"`
+
+	// 图片的 Url 地址。
+	// 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
+	// 支持的图片大小：所下载图片经 Base64 编码后不超过 3M。图片下载时间不超过 3 秒。
+	// 图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。
+	// 非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
+
+	// FRONT：有照片的一面（人像面），
+	// BACK：无照片的一面（国徽面），
+	// 该参数如果不填或填错，将为您自动判断正反面。
+	CardSide *string `json:"CardSide,omitempty" name:"CardSide"`
+}
+
+func (r *HmtResidentPermitOCRRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *HmtResidentPermitOCRRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type HmtResidentPermitOCRResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 证件姓名
+		Name *string `json:"Name,omitempty" name:"Name"`
+
+		// 性别
+		Sex *string `json:"Sex,omitempty" name:"Sex"`
+
+		// 出生日期
+		Birth *string `json:"Birth,omitempty" name:"Birth"`
+
+		// 地址
+		Address *string `json:"Address,omitempty" name:"Address"`
+
+		// 身份证号
+		IdCardNo *string `json:"IdCardNo,omitempty" name:"IdCardNo"`
+
+		// 0-正面
+	// 1-反面
+		CardType *int64 `json:"CardType,omitempty" name:"CardType"`
+
+		// 证件有效期限
+		ValidDate *string `json:"ValidDate,omitempty" name:"ValidDate"`
+
+		// 签发机关
+		Authority *string `json:"Authority,omitempty" name:"Authority"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *HmtResidentPermitOCRResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *HmtResidentPermitOCRResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type IDCardOCRRequest struct {
 	*tchttp.BaseRequest
 
@@ -1797,6 +1881,86 @@ func (r *MLIDPassportOCRResponse) ToJsonString() string {
 }
 
 func (r *MLIDPassportOCRResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type MainlandPermitOCRRequest struct {
+	*tchttp.BaseRequest
+
+	// 图片的 Base64 值。
+	// 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
+	// 支持的图片大小：所下载图片经Base64编码后不超过 3M。图片下载时间不超过 3 秒。
+	// 图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+	ImageBase64 *string `json:"ImageBase64,omitempty" name:"ImageBase64"`
+
+	// 图片的 Url 地址。
+	// 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
+	// 支持的图片大小：所下载图片经 Base64 编码后不超过 3M。图片下载时间不超过 3 秒。
+	// 图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。
+	// 非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
+
+	// 是非返回头像。默认不返回。
+	RetProfile *bool `json:"RetProfile,omitempty" name:"RetProfile"`
+}
+
+func (r *MainlandPermitOCRRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *MainlandPermitOCRRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type MainlandPermitOCRResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 中文姓名
+		Name *string `json:"Name,omitempty" name:"Name"`
+
+		// 英文姓名
+		EnglishName *string `json:"EnglishName,omitempty" name:"EnglishName"`
+
+		// 性别
+		Sex *string `json:"Sex,omitempty" name:"Sex"`
+
+		// 出生日期
+		Birthday *string `json:"Birthday,omitempty" name:"Birthday"`
+
+		// 签发机关
+		IssueAuthority *string `json:"IssueAuthority,omitempty" name:"IssueAuthority"`
+
+		// 有效期限
+		ValidDate *string `json:"ValidDate,omitempty" name:"ValidDate"`
+
+		// 证件号
+		Number *string `json:"Number,omitempty" name:"Number"`
+
+		// 签发地点
+		IssueAddress *string `json:"IssueAddress,omitempty" name:"IssueAddress"`
+
+		// 签发次数
+		IssueNumber *string `json:"IssueNumber,omitempty" name:"IssueNumber"`
+
+		// 证件类别， 如：台湾居民来往大陆通行证、港澳居民来往内地通行证。
+		Type *string `json:"Type,omitempty" name:"Type"`
+
+		// RetProfile为True时返回头像字段， Base64编码
+		Profile *string `json:"Profile,omitempty" name:"Profile"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *MainlandPermitOCRResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *MainlandPermitOCRResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 

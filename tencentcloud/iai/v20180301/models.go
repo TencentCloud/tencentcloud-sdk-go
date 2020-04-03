@@ -38,7 +38,7 @@ type AnalyzeFaceRequest struct {
 	Url *string `json:"Url,omitempty" name:"Url"`
 
 	// 人脸识别服务所用的算法模型版本。目前入参支持 “2.0”和“3.0“ 两个输入。  
-	// 默认为"2.0"。 
+	// 2020年4月2日开始，默认为“3.0”，之前使用过本接口的账号若未填写本参数默认为“2.0”。  
 	// 不同算法模型版本对应的人脸识别算法不同，新版本的整体效果会优于旧版本，建议使用最新版本。
 	FaceModelVersion *string `json:"FaceModelVersion,omitempty" name:"FaceModelVersion"`
 }
@@ -186,7 +186,7 @@ type CompareFaceRequest struct {
 	UrlB *string `json:"UrlB,omitempty" name:"UrlB"`
 
 	// 人脸识别服务所用的算法模型版本。目前入参支持 “2.0”和“3.0“ 两个输入。 
-	// 默认为"2.0"。 
+	// 2020年4月2日开始，默认为“3.0”，之前使用过本接口的账号若未填写本参数默认为“2.0”。 
 	// 不同算法模型版本对应的人脸识别算法不同，新版本的整体效果会优于旧版本，建议使用“3.0”版本。
 	FaceModelVersion *string `json:"FaceModelVersion,omitempty" name:"FaceModelVersion"`
 
@@ -388,7 +388,7 @@ type CreateGroupRequest struct {
 	Tag *string `json:"Tag,omitempty" name:"Tag"`
 
 	// 人脸识别服务所用的算法模型版本。目前入参支持 “2.0”和“3.0“ 两个输入。
-	// 默认为"2.0"。
+	// 2020年4月2日开始，默认为“3.0”，之前使用过本接口的账号若未填写本参数默认为“2.0”。 
 	// 不同算法模型版本对应的人脸识别算法不同，新版本的整体效果会优于旧版本，建议使用“3.0”版本。
 	FaceModelVersion *string `json:"FaceModelVersion,omitempty" name:"FaceModelVersion"`
 }
@@ -700,7 +700,7 @@ type DetectFaceRequest struct {
 	NeedQualityDetection *uint64 `json:"NeedQualityDetection,omitempty" name:"NeedQualityDetection"`
 
 	// 人脸识别服务所用的算法模型版本。目前入参支持 “2.0”和“3.0“ 两个输入。  
-	// 默认为"2.0"。 
+	// 2020年4月2日开始，默认为“3.0”，之前使用过本接口的账号若未填写本参数默认为“2.0”。 
 	// 不同算法模型版本对应的人脸识别算法不同，新版本的整体效果会优于旧版本，建议使用“3.0”版本。
 	FaceModelVersion *string `json:"FaceModelVersion,omitempty" name:"FaceModelVersion"`
 }
@@ -760,7 +760,7 @@ type DetectLiveFaceRequest struct {
 	Url *string `json:"Url,omitempty" name:"Url"`
 
 	// 人脸识别服务所用的算法模型版本。目前入参支持 “2.0”和“3.0“ 两个输入。  
-	// 默认为"2.0"。 
+	// 2020年4月2日开始，默认为“3.0”，之前使用过本接口的账号若未填写本参数默认为“2.0”。 
 	// 不同算法模型版本对应的人脸识别算法不同，新版本的整体效果会优于旧版本，建议使用“3.0”版本。
 	FaceModelVersion *string `json:"FaceModelVersion,omitempty" name:"FaceModelVersion"`
 }

@@ -208,7 +208,11 @@ func NewDriverLicenseOCRResponse() (response *DriverLicenseOCRResponse) {
     return
 }
 
-// 本接口支持对驾驶证主页所有字段的自动定位与识别，包括证号、姓名、性别、国籍、住址、出生日期、初次领证日期、准驾车型、有效期限，重点字段的识别准确度达到99%以上。
+// 本接口支持驾驶证主页和副页所有字段的自动定位与识别，重点字段的识别准确度达到99%以上。
+// 
+// 驾驶证主页：包括证号、姓名、性别、国籍、住址、出生日期、初次领证日期、准驾车型、有效期限。
+// 
+// 驾驶证副页：包括证号、姓名、档案编号、记录。
 // 
 // 另外，本接口还支持复印件、翻拍和PS告警功能。
 func (c *Client) DriverLicenseOCR(request *DriverLicenseOCRRequest) (response *DriverLicenseOCRResponse, err error) {
@@ -572,6 +576,31 @@ func (c *Client) GeneralHandwritingOCR(request *GeneralHandwritingOCRRequest) (r
     return
 }
 
+func NewHmtResidentPermitOCRRequest() (request *HmtResidentPermitOCRRequest) {
+    request = &HmtResidentPermitOCRRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ocr", APIVersion, "HmtResidentPermitOCR")
+    return
+}
+
+func NewHmtResidentPermitOCRResponse() (response *HmtResidentPermitOCRResponse) {
+    response = &HmtResidentPermitOCRResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 港澳台居住证OCR支持港澳台居住证正反面全字段内容检测识别功能，包括姓名、性别、出生日期、地址、身份证ID、签发机关、有效期限、签发次数、通行证号码关键字段识别。可以应用于港澳台居住证信息有效性校验场景，例如银行开户、用户注册等场景。
+func (c *Client) HmtResidentPermitOCR(request *HmtResidentPermitOCRRequest) (response *HmtResidentPermitOCRResponse, err error) {
+    if request == nil {
+        request = NewHmtResidentPermitOCRRequest()
+    }
+    response = NewHmtResidentPermitOCRResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewIDCardOCRRequest() (request *IDCardOCRRequest) {
     request = &IDCardOCRRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -790,6 +819,31 @@ func (c *Client) MLIDPassportOCR(request *MLIDPassportOCRRequest) (response *MLI
         request = NewMLIDPassportOCRRequest()
     }
     response = NewMLIDPassportOCRResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewMainlandPermitOCRRequest() (request *MainlandPermitOCRRequest) {
+    request = &MainlandPermitOCRRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ocr", APIVersion, "MainlandPermitOCR")
+    return
+}
+
+func NewMainlandPermitOCRResponse() (response *MainlandPermitOCRResponse) {
+    response = &MainlandPermitOCRResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 智能识别并结构化港澳台居民来往内地通行证正面全部字段，包含中文姓名、英文姓名、性别、出生日期、签发机关、有效期限、证件号、签发地点、签发次数、证件类别。
+func (c *Client) MainlandPermitOCR(request *MainlandPermitOCRRequest) (response *MainlandPermitOCRResponse, err error) {
+    if request == nil {
+        request = NewMainlandPermitOCRRequest()
+    }
+    response = NewMainlandPermitOCRResponse()
     err = c.Send(request, response)
     return
 }

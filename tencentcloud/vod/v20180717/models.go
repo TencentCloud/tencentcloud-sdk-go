@@ -2060,6 +2060,12 @@ type ComposeMediaRequest struct {
 	// 制作视频文件时使用的画布。
 	Canvas *Canvas `json:"Canvas,omitempty" name:"Canvas"`
 
+	// 标识来源上下文，用于透传用户请求信息，在ComposeMediaComplete回调将返回该字段值，最长 1000个字符。
+	SessionContext *string `json:"SessionContext,omitempty" name:"SessionContext"`
+
+	// 用于任务去重的识别码，如果一天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。
+	SessionId *string `json:"SessionId,omitempty" name:"SessionId"`
+
 	// 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
 	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
 }

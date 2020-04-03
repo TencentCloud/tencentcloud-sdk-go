@@ -1120,6 +1120,31 @@ func (c *Client) DescribePkgs(request *DescribePkgsRequest) (response *DescribeP
     return
 }
 
+func NewDescribePodInstancesRequest() (request *DescribePodInstancesRequest) {
+    request = &DescribePodInstancesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tsf", APIVersion, "DescribePodInstances")
+    return
+}
+
+func NewDescribePodInstancesResponse() (response *DescribePodInstancesResponse) {
+    response = &DescribePodInstancesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 获取部署组实例列表
+func (c *Client) DescribePodInstances(request *DescribePodInstancesRequest) (response *DescribePodInstancesResponse, err error) {
+    if request == nil {
+        request = NewDescribePodInstancesRequest()
+    }
+    response = NewDescribePodInstancesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribePublicConfigRequest() (request *DescribePublicConfigRequest) {
     request = &DescribePublicConfigRequest{
         BaseRequest: &tchttp.BaseRequest{},

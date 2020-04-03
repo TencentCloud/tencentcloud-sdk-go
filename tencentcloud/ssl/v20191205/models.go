@@ -29,7 +29,7 @@ type ApplyCertificateRequest struct {
 	// 域名。
 	DomainName *string `json:"DomainName,omitempty" name:"DomainName"`
 
-	// 项目ID。
+	// 项目 ID。
 	ProjectId *uint64 `json:"ProjectId,omitempty" name:"ProjectId"`
 
 	// 证书类型，目前仅支持类型2。2 = TrustAsia TLS RSA CA。
@@ -44,19 +44,19 @@ type ApplyCertificateRequest struct {
 	// 有效期，默认12个月，目前仅支持12个月。
 	ValidityPeriod *string `json:"ValidityPeriod,omitempty" name:"ValidityPeriod"`
 
-	// 加密算法，仅支持RSA。
+	// 加密算法，仅支持 RSA。
 	CsrEncryptAlgo *string `json:"CsrEncryptAlgo,omitempty" name:"CsrEncryptAlgo"`
 
 	// 密钥对参数，仅支持2048。
 	CsrKeyParameter *string `json:"CsrKeyParameter,omitempty" name:"CsrKeyParameter"`
 
-	// csr的加密密码。
+	// CSR 的加密密码。
 	CsrKeyPassword *string `json:"CsrKeyPassword,omitempty" name:"CsrKeyPassword"`
 
 	// 备注名称。
 	Alias *string `json:"Alias,omitempty" name:"Alias"`
 
-	// 原证书id，用于重新申请。
+	// 原证书 ID，用于重新申请。
 	OldCertificateId *string `json:"OldCertificateId,omitempty" name:"OldCertificateId"`
 }
 
@@ -73,7 +73,7 @@ type ApplyCertificateResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 证书ID。
+		// 证书 ID。
 		CertificateId *string `json:"CertificateId,omitempty" name:"CertificateId"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -93,7 +93,7 @@ func (r *ApplyCertificateResponse) FromJsonString(s string) error {
 type CancelCertificateOrderRequest struct {
 	*tchttp.BaseRequest
 
-	// 证书id。
+	// 证书 ID。
 	CertificateId *string `json:"CertificateId,omitempty" name:"CertificateId"`
 }
 
@@ -110,7 +110,7 @@ type CancelCertificateOrderResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 取消订单成功的证书id
+		// 取消订单成功的证书 ID。
 		CertificateId *string `json:"CertificateId,omitempty" name:"CertificateId"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -272,7 +272,7 @@ type Certificates struct {
 type CommitCertificateInformationRequest struct {
 	*tchttp.BaseRequest
 
-	// 证书id。
+	// 证书 ID。
 	CertificateId *string `json:"CertificateId,omitempty" name:"CertificateId"`
 }
 
@@ -312,7 +312,7 @@ func (r *CommitCertificateInformationResponse) FromJsonString(s string) error {
 type DeleteCertificateRequest struct {
 	*tchttp.BaseRequest
 
-	// 证书ID。
+	// 证书 ID。
 	CertificateId *string `json:"CertificateId,omitempty" name:"CertificateId"`
 }
 
@@ -349,7 +349,7 @@ func (r *DeleteCertificateResponse) FromJsonString(s string) error {
 type DescribeCertificateDetailRequest struct {
 	*tchttp.BaseRequest
 
-	// 证书id
+	// 证书 ID。
 	CertificateId *string `json:"CertificateId,omitempty" name:"CertificateId"`
 }
 
@@ -366,23 +366,23 @@ type DescribeCertificateDetailResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 用户uin。
+		// 用户 UIN。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		OwnerUin *string `json:"OwnerUin,omitempty" name:"OwnerUin"`
 
-		// 项目ID。
+		// 项目 ID。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
 
-		// 证书来源（trustasia = 亚洲诚信，upload = 用户上传）。
+		// 证书来源：trustasia = 亚洲诚信，upload = 用户上传。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		From *string `json:"From,omitempty" name:"From"`
 
-		// 证书类型（目前支持：CA = 客户端证书，SVR = 服务器证书）
+		// 证书类型：CA = 客户端证书，SVR = 服务器证书。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		CertificateType *string `json:"CertificateType,omitempty" name:"CertificateType"`
 
-		// 证书套餐类型：1 = GeoTrust DV SSL CA - G3， 2 = TrustAsia TLS RSA CA， 3 = Symantec 增强型企业版(EV Pro)， 4 = Symantec 增强型(EV)， 5 = Symantec 企业型专业版(OV Pro)， 6 = Symantec 企业型(OV)， 7 = Symantec 企业型(OV)通配符， 8 = Geotrust 增强型(EV)， 9 = Geotrust 企业型(OV)， 10 = Geotrust 企业型(OV)通配符， 11 = TrustAsia 域名型多域名 SSL证书， 12 = TrustAsia 域名型(DV)通配符， 13 = TrustAsia 企业型通配符 （OV）SSL证书(D3)， 14 = TrustAsia 企业型 （OV）SSL证书(D3)， 15 = TrustAsia 企业型多域名 （OV）SSL证书(D3)， 16 = TrustAsia 增强型 （EV）SSL证书(D3)， 17 = TrustAsia 增强型多域名（EV）SSL证书(D3)， 18 = GlobalSign 企业型（OV）SSL证， 19 = GlobalSign 企业型通配符 （OV）SSL证书， 20 = GlobalSign 增强型 （EV）SSL证书， 21 = TrustAsia 企业型通配符多域名 （OV）SSL证书(D3)， 22 = GlobalSign 企业型多域名 （OV）SSL证书， 23 = GlobalSign 企业型通配符多域名 （OV）SSL证书， 24 = GlobalSign 增强型多域名（EV） SSL证书。
+		// 证书套餐类型：1 = GeoTrust DV SSL CA - G3， 2 = TrustAsia TLS RSA CA， 3 = Symantec 增强型企业版（EV Pro）， 4 = Symantec 增强型（EV）， 5 = Symantec 企业型专业版（OV Pro）， 6 = Symantec 企业型（OV）， 7 = Symantec 企业型（OV）通配符， 8 = Geotrust 增强型（EV）， 9 = Geotrust 企业型（OV）， 10 = Geotrust 企业型（OV）通配符， 11 = TrustAsia 域名型多域名 SSL 证书， 12 = TrustAsia 域名型（DV）通配符， 13 = TrustAsia 企业型通配符（OV）SSL 证书（D3）， 14 = TrustAsia 企业型（OV）SSL 证书（D3）， 15 = TrustAsia 企业型多域名 （OV）SSL 证书（D3）， 16 = TrustAsia 增强型 （EV）SSL 证书（D3）， 17 = TrustAsia 增强型多域名（EV）SSL 证书（D3）， 18 = GlobalSign 企业型（OV）SSL 证书， 19 = GlobalSign 企业型通配符 （OV）SSL 证书， 20 = GlobalSign 增强型 （EV）SSL 证书， 21 = TrustAsia 企业型通配符多域名（OV）SSL 证书（D3）， 22 = GlobalSign 企业型多域名（OV）SSL 证书， 23 = GlobalSign 企业型通配符多域名（OV）SSL 证书， 24 = GlobalSign 增强型多域名（EV）SSL 证书。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		PackageType *string `json:"PackageType,omitempty" name:"PackageType"`
 
@@ -422,7 +422,7 @@ type DescribeCertificateDetailResponse struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		CertEndTime *string `json:"CertEndTime,omitempty" name:"CertEndTime"`
 
-		// 证书有效期：单位(月)。
+		// 证书有效期：单位（月）。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		ValidityPeriod *string `json:"ValidityPeriod,omitempty" name:"ValidityPeriod"`
 
@@ -430,7 +430,7 @@ type DescribeCertificateDetailResponse struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		InsertTime *string `json:"InsertTime,omitempty" name:"InsertTime"`
 
-		// 订单ID。
+		// 订单 ID。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		OrderId *string `json:"OrderId,omitempty" name:"OrderId"`
 
@@ -446,7 +446,7 @@ type DescribeCertificateDetailResponse struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		CertificatePublicKey *string `json:"CertificatePublicKey,omitempty" name:"CertificatePublicKey"`
 
-		// DV认证信息。
+		// DV 认证信息。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		DvAuthDetail *DvAuthDetail `json:"DvAuthDetail,omitempty" name:"DvAuthDetail"`
 
@@ -454,7 +454,7 @@ type DescribeCertificateDetailResponse struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		VulnerabilityReport *string `json:"VulnerabilityReport,omitempty" name:"VulnerabilityReport"`
 
-		// 证书ID。
+		// 证书 ID。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		CertificateId *string `json:"CertificateId,omitempty" name:"CertificateId"`
 
@@ -568,7 +568,7 @@ func (r *DescribeCertificateOperateLogsResponse) FromJsonString(s string) error 
 type DescribeCertificateRequest struct {
 	*tchttp.BaseRequest
 
-	// 证书ID。
+	// 证书 ID。
 	CertificateId *string `json:"CertificateId,omitempty" name:"CertificateId"`
 }
 
@@ -585,23 +585,23 @@ type DescribeCertificateResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 用户uin。
+		// 用户 UIN。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		OwnerUin *string `json:"OwnerUin,omitempty" name:"OwnerUin"`
 
-		// 项目ID。
+		// 项目 ID。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
 
-		// 证书来源（trustasia = 亚洲诚信，upload = 用户上传）。
+		// 证书来源：trustasia = 亚洲诚信，upload = 用户上传。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		From *string `json:"From,omitempty" name:"From"`
 
-		// 证书类型（目前支持：CA = 客户端证书，SVR = 服务器证书）
+		// 证书类型：CA = 客户端证书，SVR = 服务器证书。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		CertificateType *string `json:"CertificateType,omitempty" name:"CertificateType"`
 
-		// 证书套餐类型：1 = GeoTrust DV SSL CA - G3， 2 = TrustAsia TLS RSA CA， 3 = Symantec 增强型企业版(EV Pro)， 4 = Symantec 增强型(EV)， 5 = Symantec 企业型专业版(OV Pro)， 6 = Symantec 企业型(OV)， 7 = Symantec 企业型(OV)通配符， 8 = Geotrust 增强型(EV)， 9 = Geotrust 企业型(OV)， 10 = Geotrust 企业型(OV)通配符， 11 = TrustAsia 域名型多域名 SSL证书， 12 = TrustAsia 域名型(DV)通配符， 13 = TrustAsia 企业型通配符 （OV）SSL证书(D3)， 14 = TrustAsia 企业型 （OV）SSL证书(D3)， 15 = TrustAsia 企业型多域名 （OV）SSL证书(D3)， 16 = TrustAsia 增强型 （EV）SSL证书(D3)， 17 = TrustAsia 增强型多域名（EV）SSL证书(D3)， 18 = GlobalSign 企业型（OV）SSL证， 19 = GlobalSign 企业型通配符 （OV）SSL证书， 20 = GlobalSign 增强型 （EV）SSL证书， 21 = TrustAsia 企业型通配符多域名 （OV）SSL证书(D3)， 22 = GlobalSign 企业型多域名 （OV）SSL证书， 23 = GlobalSign 企业型通配符多域名 （OV）SSL证书， 24 = GlobalSign 增强型多域名（EV） SSL证书。
+		// 证书套餐类型：1 = GeoTrust DV SSL CA - G3， 2 = TrustAsia TLS RSA CA， 3 = Symantec 增强型企业版（EV Pro）， 4 = Symantec 增强型（EV）， 5 = Symantec 企业型专业版（OV Pro）， 6 = Symantec 企业型（OV）， 7 = Symantec 企业型（OV）通配符， 8 = Geotrust 增强型（EV）， 9 = Geotrust 企业型（OV）， 10 = Geotrust 企业型（OV）通配符， 11 = TrustAsia 域名型多域名 SSL 证书， 12 = TrustAsia 域名型（DV）通配符， 13 = TrustAsia 企业型通配符（OV）SSL 证书（D3）， 14 = TrustAsia 企业型（OV）SSL 证书（D3）， 15 = TrustAsia 企业型多域名 （OV）SSL 证书（D3）， 16 = TrustAsia 增强型 （EV）SSL 证书（D3）， 17 = TrustAsia 增强型多域名（EV）SSL 证书（D3）， 18 = GlobalSign 企业型（OV）SSL 证书， 19 = GlobalSign 企业型通配符 （OV）SSL 证书， 20 = GlobalSign 增强型 （EV）SSL 证书， 21 = TrustAsia 企业型通配符多域名（OV）SSL 证书（D3）， 22 = GlobalSign 企业型多域名（OV）SSL 证书， 23 = GlobalSign 企业型通配符多域名（OV）SSL 证书， 24 = GlobalSign 增强型多域名（EV）SSL 证书。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		PackageType *string `json:"PackageType,omitempty" name:"PackageType"`
 
@@ -649,7 +649,7 @@ type DescribeCertificateResponse struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		InsertTime *string `json:"InsertTime,omitempty" name:"InsertTime"`
 
-		// 订单ID。
+		// 订单 ID。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		OrderId *string `json:"OrderId,omitempty" name:"OrderId"`
 
@@ -657,7 +657,7 @@ type DescribeCertificateResponse struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		CertificateExtra *CertificateExtra `json:"CertificateExtra,omitempty" name:"CertificateExtra"`
 
-		// DV认证信息。
+		// DV 认证信息。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		DvAuthDetail *DvAuthDetail `json:"DvAuthDetail,omitempty" name:"DvAuthDetail"`
 
@@ -665,7 +665,7 @@ type DescribeCertificateResponse struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		VulnerabilityReport *string `json:"VulnerabilityReport,omitempty" name:"VulnerabilityReport"`
 
-		// 证书ID。
+		// 证书 ID。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		CertificateId *string `json:"CertificateId,omitempty" name:"CertificateId"`
 
@@ -726,7 +726,7 @@ func (r *DescribeCertificateResponse) FromJsonString(s string) error {
 type DescribeCertificatesRequest struct {
 	*tchttp.BaseRequest
 
-	// 分页偏移量，从0开始
+	// 分页偏移量，从0开始。
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
 
 	// 每页数量。
@@ -735,13 +735,13 @@ type DescribeCertificatesRequest struct {
 	// 搜索关键词。
 	SearchKey *string `json:"SearchKey,omitempty" name:"SearchKey"`
 
-	// 证书类型，可选值：CA，SVR。
+	// 证书类型：CA = 客户端证书，SVR = 服务器证书。
 	CertificateType *string `json:"CertificateType,omitempty" name:"CertificateType"`
 
-	// 项目ID。
+	// 项目 ID。
 	ProjectId *uint64 `json:"ProjectId,omitempty" name:"ProjectId"`
 
-	// 按到期时间排序：DESC降序， ASC 升序。
+	// 按到期时间排序：DESC = 降序， ASC = 升序。
 	ExpirationSort *string `json:"ExpirationSort,omitempty" name:"ExpirationSort"`
 
 	// 证书状态。
@@ -789,7 +789,7 @@ func (r *DescribeCertificatesResponse) FromJsonString(s string) error {
 type DownloadCertificateRequest struct {
 	*tchttp.BaseRequest
 
-	// 证书ID。
+	// 证书 ID。
 	CertificateId *string `json:"CertificateId,omitempty" name:"CertificateId"`
 }
 
@@ -806,11 +806,11 @@ type DownloadCertificateResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// ZIP base64编码内容，base64解码后可保存为ZIP文件。
+		// ZIP base64 编码内容，base64 解码后可保存为 ZIP 文件。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		Content *string `json:"Content,omitempty" name:"Content"`
 
-		// MIME类型：application/zip = ZIP压缩文件。
+		// MIME 类型：application/zip = ZIP 压缩文件。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		ContentType *string `json:"ContentType,omitempty" name:"ContentType"`
 
@@ -885,7 +885,7 @@ type DvAuths struct {
 type ModifyCertificateAliasRequest struct {
 	*tchttp.BaseRequest
 
-	// 证书id。
+	// 证书 ID。
 	CertificateId *string `json:"CertificateId,omitempty" name:"CertificateId"`
 
 	// 备注名称。
@@ -905,7 +905,7 @@ type ModifyCertificateAliasResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 修改成功的证书id。
+		// 修改成功的证书 ID。
 		CertificateId *string `json:"CertificateId,omitempty" name:"CertificateId"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -925,10 +925,10 @@ func (r *ModifyCertificateAliasResponse) FromJsonString(s string) error {
 type ModifyCertificateProjectRequest struct {
 	*tchttp.BaseRequest
 
-	// 需要修改所属项目的证书id集合，最多100个证书
+	// 需要修改所属项目的证书 ID 集合，最多100个证书。
 	CertificateIdList []*string `json:"CertificateIdList,omitempty" name:"CertificateIdList" list`
 
-	// 项目id。
+	// 项目 ID。
 	ProjectId *uint64 `json:"ProjectId,omitempty" name:"ProjectId"`
 }
 
@@ -945,11 +945,11 @@ type ModifyCertificateProjectResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 修改所属项目成功的证书集合
+		// 修改所属项目成功的证书集合。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		SuccessCertificates []*string `json:"SuccessCertificates,omitempty" name:"SuccessCertificates" list`
 
-		// 修改所属项目失败的证书集合
+		// 修改所属项目失败的证书集合。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		FailCertificates []*string `json:"FailCertificates,omitempty" name:"FailCertificates" list`
 
@@ -1006,19 +1006,19 @@ type ProjectInfo struct {
 type ReplaceCertificateRequest struct {
 	*tchttp.BaseRequest
 
-	// 证书ID。
+	// 证书 ID。
 	CertificateId *string `json:"CertificateId,omitempty" name:"CertificateId"`
 
 	// 验证类型：DNS_AUTO = 自动DNS验证，DNS = 手动DNS验证，FILE = 文件验证。
 	ValidType *string `json:"ValidType,omitempty" name:"ValidType"`
 
-	// 类型，默认Original。可选项：Original = 原证书csr，Upload = 手动上传，Online = 在线生成。
+	// 类型，默认 Original。可选项：Original = 原证书 CSR，Upload = 手动上传，Online = 在线生成。
 	CsrType *string `json:"CsrType,omitempty" name:"CsrType"`
 
-	// CSR内容。
+	// CSR 内容。
 	CsrContent *string `json:"CsrContent,omitempty" name:"CsrContent"`
 
-	// key密码。
+	// KEY 密码。
 	CsrkeyPassword *string `json:"CsrkeyPassword,omitempty" name:"CsrkeyPassword"`
 }
 
@@ -1035,7 +1035,7 @@ type ReplaceCertificateResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 证书ID。
+		// 证书 ID。
 		CertificateId *string `json:"CertificateId,omitempty" name:"CertificateId"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -1055,13 +1055,13 @@ func (r *ReplaceCertificateResponse) FromJsonString(s string) error {
 type SubmitCertificateInformationRequest struct {
 	*tchttp.BaseRequest
 
-	// 证书id。
+	// 证书 ID。
 	CertificateId *string `json:"CertificateId,omitempty" name:"CertificateId"`
 
-	// Csr生成方式: online = 在线生成, parse = 手动上传 。
+	// CSR 生成方式：online = 在线生成, parse = 手动上传 。
 	CsrType *string `json:"CsrType,omitempty" name:"CsrType"`
 
-	// 上传的Csr内容。
+	// 上传的 CSR 内容。
 	CsrContent *string `json:"CsrContent,omitempty" name:"CsrContent"`
 
 	// 绑定证书的域名 。
@@ -1082,7 +1082,7 @@ type SubmitCertificateInformationRequest struct {
 	// 公司详细地址 。
 	OrganizationAddress *string `json:"OrganizationAddress,omitempty" name:"OrganizationAddress"`
 
-	// 国家名称 如中国:CN 。
+	// 国家名称 如中国：CN 。
 	OrganizationCountry *string `json:"OrganizationCountry,omitempty" name:"OrganizationCountry"`
 
 	// 公司所在城市 。
@@ -1147,7 +1147,7 @@ type SubmitCertificateInformationResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 证书id。
+		// 证书 ID。
 		CertificateId *string `json:"CertificateId,omitempty" name:"CertificateId"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -1273,16 +1273,16 @@ type UploadCertificateRequest struct {
 	// 证书公钥。
 	CertificatePublicKey *string `json:"CertificatePublicKey,omitempty" name:"CertificatePublicKey"`
 
-	// 私钥内容，证书类型为SVR时必填，为CA时可不填。
+	// 私钥内容，证书类型为 SVR 时必填，为 CA 时可不填。
 	CertificatePrivateKey *string `json:"CertificatePrivateKey,omitempty" name:"CertificatePrivateKey"`
 
-	// 证书类型，默认SVR。CA = 客户端证书，SVR = 服务器证书。
+	// 证书类型，默认 SVR。CA = 客户端证书，SVR = 服务器证书。
 	CertificateType *string `json:"CertificateType,omitempty" name:"CertificateType"`
 
-	// 证书别名。
+	// 备注名称。
 	Alias *string `json:"Alias,omitempty" name:"Alias"`
 
-	// 项目id。
+	// 项目 ID。
 	ProjectId *uint64 `json:"ProjectId,omitempty" name:"ProjectId"`
 }
 
@@ -1299,7 +1299,7 @@ type UploadCertificateResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 证书ID。
+		// 证书 ID。
 		CertificateId *string `json:"CertificateId,omitempty" name:"CertificateId"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。

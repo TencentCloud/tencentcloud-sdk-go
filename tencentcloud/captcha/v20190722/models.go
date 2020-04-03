@@ -359,7 +359,7 @@ func (r *DescribeCaptchaOperDataResponse) FromJsonString(s string) error {
 type DescribeCaptchaResultRequest struct {
 	*tchttp.BaseRequest
 
-	// 验证码类型，9：滑块验证码
+	// 固定填值：9。可在控制台配置不同验证码类型。
 	CaptchaType *uint64 `json:"CaptchaType,omitempty" name:"CaptchaType"`
 
 	// 验证码返回给用户的票据

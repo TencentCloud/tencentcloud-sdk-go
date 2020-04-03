@@ -583,7 +583,7 @@ func NewModifyStudioProductResponse() (response *ModifyStudioProductResponse) {
     return
 }
 
-// 提供修改产品的名称和描述等信息的能力
+// 提供修改产品的名称和描述等信息的能力，对于已发布产品不允许进行修改。
 func (c *Client) ModifyStudioProduct(request *ModifyStudioProductRequest) (response *ModifyStudioProductResponse, err error) {
     if request == nil {
         request = NewModifyStudioProductRequest()

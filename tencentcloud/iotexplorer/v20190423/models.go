@@ -292,7 +292,7 @@ type CreateStudioProductRequest struct {
 	// 连接类型 可以填写 wifi cellular else
 	NetType *string `json:"NetType,omitempty" name:"NetType"`
 
-	// 数据协议 (1 使用物模型)
+	// 数据协议 (1 使用物模型 2 为自定义)
 	DataProtocol *int64 `json:"DataProtocol,omitempty" name:"DataProtocol"`
 
 	// 产品描述

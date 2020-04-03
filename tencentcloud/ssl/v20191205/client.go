@@ -58,7 +58,7 @@ func NewApplyCertificateResponse() (response *ApplyCertificateResponse) {
     return
 }
 
-// 本接口(ApplyCertificate)用于免费证书申请。
+// 本接口（ApplyCertificate）用于免费证书申请。
 func (c *Client) ApplyCertificate(request *ApplyCertificateRequest) (response *ApplyCertificateResponse, err error) {
     if request == nil {
         request = NewApplyCertificateRequest()
@@ -133,7 +133,7 @@ func NewDeleteCertificateResponse() (response *DeleteCertificateResponse) {
     return
 }
 
-// 本接口(DeleteCertificate)用于删除证书。
+// 本接口（DeleteCertificate）用于删除证书。
 func (c *Client) DeleteCertificate(request *DeleteCertificateRequest) (response *DeleteCertificateResponse, err error) {
     if request == nil {
         request = NewDeleteCertificateRequest()
@@ -158,7 +158,7 @@ func NewDescribeCertificateResponse() (response *DescribeCertificateResponse) {
     return
 }
 
-// 本接口(DescribeCertificate)用于获取证书信息。
+// 本接口（DescribeCertificate）用于获取证书信息。
 func (c *Client) DescribeCertificate(request *DescribeCertificateRequest) (response *DescribeCertificateResponse, err error) {
     if request == nil {
         request = NewDescribeCertificateRequest()
@@ -183,7 +183,7 @@ func NewDescribeCertificateDetailResponse() (response *DescribeCertificateDetail
     return
 }
 
-// 获取证书详情
+// 获取证书详情。
 func (c *Client) DescribeCertificateDetail(request *DescribeCertificateDetailRequest) (response *DescribeCertificateDetailResponse, err error) {
     if request == nil {
         request = NewDescribeCertificateDetailRequest()
@@ -208,7 +208,7 @@ func NewDescribeCertificateOperateLogsResponse() (response *DescribeCertificateO
     return
 }
 
-// 获取用户账号下有关证书的操作日志
+// 获取用户账号下有关证书的操作日志。
 func (c *Client) DescribeCertificateOperateLogs(request *DescribeCertificateOperateLogsRequest) (response *DescribeCertificateOperateLogsResponse, err error) {
     if request == nil {
         request = NewDescribeCertificateOperateLogsRequest()
@@ -233,7 +233,7 @@ func NewDescribeCertificatesResponse() (response *DescribeCertificatesResponse) 
     return
 }
 
-// 本接口(DescribeCertificates)用于获取证书列表。
+// 本接口（DescribeCertificates）用于获取证书列表。
 func (c *Client) DescribeCertificates(request *DescribeCertificatesRequest) (response *DescribeCertificatesResponse, err error) {
     if request == nil {
         request = NewDescribeCertificatesRequest()
@@ -258,7 +258,7 @@ func NewDownloadCertificateResponse() (response *DownloadCertificateResponse) {
     return
 }
 
-// 本接口(DownloadCertificate)用于下载证书。
+// 本接口（DownloadCertificate）用于下载证书。
 func (c *Client) DownloadCertificate(request *DownloadCertificateRequest) (response *DownloadCertificateResponse, err error) {
     if request == nil {
         request = NewDownloadCertificateRequest()
@@ -308,7 +308,7 @@ func NewModifyCertificateProjectResponse() (response *ModifyCertificateProjectRe
     return
 }
 
-// 批量修改证书所属项目
+// 批量修改证书所属项目。
 func (c *Client) ModifyCertificateProject(request *ModifyCertificateProjectRequest) (response *ModifyCertificateProjectResponse, err error) {
     if request == nil {
         request = NewModifyCertificateProjectRequest()
@@ -333,7 +333,7 @@ func NewReplaceCertificateResponse() (response *ReplaceCertificateResponse) {
     return
 }
 
-// 本接口(ReplaceCertificate)用于重颁发证书。已申请的免费证书仅支持RSA算法、密钥对参数为2048的证书重颁发。
+// 本接口（ReplaceCertificate）用于重颁发证书。已申请的免费证书仅支持 RSA 算法、密钥对参数为2048的证书重颁发。
 func (c *Client) ReplaceCertificate(request *ReplaceCertificateRequest) (response *ReplaceCertificateResponse, err error) {
     if request == nil {
         request = NewReplaceCertificateRequest()
@@ -383,7 +383,7 @@ func NewUploadCertificateResponse() (response *UploadCertificateResponse) {
     return
 }
 
-// 本接口(UploadCertificate)用于上传证书。
+// 本接口（UploadCertificate）用于上传证书。
 func (c *Client) UploadCertificate(request *UploadCertificateRequest) (response *UploadCertificateResponse, err error) {
     if request == nil {
         request = NewUploadCertificateRequest()

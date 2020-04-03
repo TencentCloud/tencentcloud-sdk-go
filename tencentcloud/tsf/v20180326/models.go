@@ -2745,6 +2745,49 @@ func (r *DescribePkgsResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribePodInstancesRequest struct {
+	*tchttp.BaseRequest
+
+	// 实例所属groupId
+	GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
+
+	// 偏移量，取值从0开始
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 分页个数，默认为20， 取值应为1~50
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+func (r *DescribePodInstancesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribePodInstancesRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribePodInstancesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 查询的权限数据对象
+		Result *GroupPodResult `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribePodInstancesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribePodInstancesResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribePublicConfigReleaseLogsRequest struct {
 	*tchttp.BaseRequest
 
@@ -3441,6 +3484,72 @@ func (r *ExpandGroupResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type GroupPod struct {
+
+	// 实例名称(对应到kubernetes的pod名称)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PodName *string `json:"PodName,omitempty" name:"PodName"`
+
+	// 实例ID(对应到kubernetes的pod id)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PodId *string `json:"PodId,omitempty" name:"PodId"`
+
+	// 实例状态，请参考后面的实例以及容器的状态定义
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 实例处于当前状态的原因，例如容器下载镜像失败
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Reason *string `json:"Reason,omitempty" name:"Reason"`
+
+	// 主机IP
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NodeIp *string `json:"NodeIp,omitempty" name:"NodeIp"`
+
+	// 实例IP
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Ip *string `json:"Ip,omitempty" name:"Ip"`
+
+	// 实例中容器的重启次数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RestartCount *int64 `json:"RestartCount,omitempty" name:"RestartCount"`
+
+	// 实例中已就绪容器的个数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ReadyCount *int64 `json:"ReadyCount,omitempty" name:"ReadyCount"`
+
+	// 运行时长
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Runtime *string `json:"Runtime,omitempty" name:"Runtime"`
+
+	// 实例启动时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreatedAt *string `json:"CreatedAt,omitempty" name:"CreatedAt"`
+
+	// 服务实例状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ServiceInstanceStatus *string `json:"ServiceInstanceStatus,omitempty" name:"ServiceInstanceStatus"`
+
+	// 机器实例可使用状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceAvailableStatus *string `json:"InstanceAvailableStatus,omitempty" name:"InstanceAvailableStatus"`
+
+	// 机器实例状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceStatus *string `json:"InstanceStatus,omitempty" name:"InstanceStatus"`
+}
+
+type GroupPodResult struct {
+
+	// 总记录数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 列表信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Content []*GroupPod `json:"Content,omitempty" name:"Content" list`
+}
+
 type ImageTag struct {
 
 	// 仓库名
@@ -4081,6 +4190,7 @@ type ProtocolPort struct {
 	TargetPort *int64 `json:"TargetPort,omitempty" name:"TargetPort"`
 
 	// 主机端口
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	NodePort *int64 `json:"NodePort,omitempty" name:"NodePort"`
 }
 

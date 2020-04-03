@@ -1,136 +1,29 @@
 # 本版本更新包含以下内容：
 
-## 云数据库 MySQL(cdb) 版本：2017-03-20
-
-### 第 35 次发布
-
-发布时间：2020-04-02 08:04:57
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [DescribeSLowLogData](https://cloud.tencent.com/document/api/236/43060)
-
-修改接口：
-
-* [CreateDeployGroup](https://cloud.tencent.com/document/api/236/38681)
-
-	* 新增入参：DevClass
-
-
-新增数据结构：
-
-* [SlowLogItem](https://cloud.tencent.com/document/api/236/15878#SlowLogItem)
-
-
-
-## 负载均衡(clb) 版本：2018-03-17
-
-### 第 21 次发布
-
-发布时间：2020-04-02 08:06:08
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [RuleInput](https://cloud.tencent.com/document/api/214/30694#RuleInput)
-
-	* 新增成员：Quic
-
-* [RuleOutput](https://cloud.tencent.com/document/api/214/30694#RuleOutput)
-
-	* 新增成员：QuicStatus
-
-
-
-
 ## 云服务器(cvm) 版本：2017-03-12
 
-### 第 38 次发布
+### 第 39 次发布
 
-发布时间：2020-04-02 08:06:49
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [Instance](https://cloud.tencent.com/document/api/213/15753#Instance)
-
-	* <font color="#dd0000">**修改成员**：</font>IPv6Addresses
-
-
-
-
-## 大禹网络安全(dayu) 版本：2018-07-09
-
-### 第 12 次发布
-
-发布时间：2020-04-02 08:07:12
+发布时间：2020-04-03 08:06:18
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-修改数据结构：
+修改接口：
 
-* [L7RuleEntry](https://cloud.tencent.com/document/api/1021/39225#L7RuleEntry)
+* [ModifyHostsAttribute](https://cloud.tencent.com/document/api/213/16475)
 
-	* 新增成员：HttpsToHttpEnable
-
-
-
-
-## 弹性 MapReduce(emr) 版本：2019-01-03
-
-### 第 10 次发布
-
-发布时间：2020-04-02 08:08:50
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [ClusterInstancesInfo](https://cloud.tencent.com/document/api/589/33981#ClusterInstancesInfo)
-
-	* 新增成员：AliasInfo
+	* 新增入参：ProjectId
 
 
 
 
-## 云函数(scf) 版本：2018-04-16
+## 文字识别(ocr) 版本：2018-11-19
 
-### 第 7 次发布
+### 第 19 次发布
 
-发布时间：2020-04-02 08:14:22
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [FunctionVersion](https://cloud.tencent.com/document/api/583/17244#FunctionVersion)
-
-	* 新增成员：AddTime, ModTime
-
-
-
-
-## 标签(tag) 版本：2018-08-13
-
-### 第 6 次发布
-
-发布时间：2020-04-02 08:15:07
+发布时间：2020-04-03 08:12:13
 
 本次发布包含了以下内容：
 
@@ -138,113 +31,57 @@
 
 新增接口：
 
-* [DescribeResourceTagsByTagKeys](https://cloud.tencent.com/document/api/651/43061)
+* [HmtResidentPermitOCR](https://cloud.tencent.com/document/api/866/43106)
+* [MainlandPermitOCR](https://cloud.tencent.com/document/api/866/43105)
 
 修改接口：
 
-* [DescribeTagKeys](https://cloud.tencent.com/document/api/651/35318)
+* [DriverLicenseOCR](https://cloud.tencent.com/document/api/866/36213)
 
-	* 新增入参：ShowProject
+	* 新增入参：CardSide
 
-* [DescribeTags](https://cloud.tencent.com/document/api/651/35316)
+	* 新增出参：ArchivesCode, Record
 
-	* 新增入参：TagKeys
 
+
+
+## 腾讯分布式服务框架(tsf) 版本：2018-03-26
+
+### 第 14 次发布
+
+发布时间：2020-04-03 08:15:41
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribePodInstances](https://cloud.tencent.com/document/api/649/43108)
 
 新增数据结构：
 
-* [ResourceIdTag](https://cloud.tencent.com/document/api/651/35327#ResourceIdTag)
-
-
-
-## 游戏数据库 TcaplusDB(tcaplusdb) 版本：2019-08-23
-
-### 第 4 次发布
-
-发布时间：2020-04-02 08:15:33
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-<font color="#dd0000">**删除接口**：</font>
-
-* ModifyAppName
-
-
-
-## 智能钛机器学习平台(tione) 版本：2019-10-22
-
-### 第 4 次发布
-
-发布时间：2020-04-02 08:00:31
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [CreateNotebookInstance](https://cloud.tencent.com/document/api/851/42527)
-
-	* 新增入参：LifecycleScriptsName, DefaultCodeRepository, AdditionalCodeRepositories
-
-	* <font color="#dd0000">**删除入参**：</font>RoleArn, SecurityGroupIds, Tags
-
-	* <font color="#dd0000">**修改入参**：</font>NotebookInstanceName, InstanceType, VolumeSizeInGB
-
-* [DescribeNotebookInstance](https://cloud.tencent.com/document/api/851/42524)
-
-	* 新增出参：LifecycleScriptsName, DefaultCodeRepository, AdditionalCodeRepositories
-
-	* <font color="#dd0000">**删除出参**：</font>SecurityGroupIds, Url, NetworkInterfaceId
-
-* [UpdateNotebookInstance](https://cloud.tencent.com/document/api/851/42520)
-
-	* 新增入参：LifecycleScriptsName, DisassociateLifecycleScript, DefaultCodeRepository, AdditionalCodeRepositories, DisassociateDefaultCodeRepository, DisassociateAdditionalCodeRepositories
-
-
-<font color="#dd0000">**删除数据结构**：</font>
-
-* Tag
-
-修改数据结构：
-
-* [GitSecret](https://cloud.tencent.com/document/api/851/42528#GitSecret)
-
-	* 新增成员：NoSecret
-
-	* <font color="#dd0000">**删除成员**：</font>None
-
+* [GroupPod](https://cloud.tencent.com/document/api/649/36099#GroupPod)
+* [GroupPodResult](https://cloud.tencent.com/document/api/649/36099#GroupPodResult)
 
 
 
 ## 点播(vod) 版本：2018-07-17
 
-### 第 41 次发布
+### 第 42 次发布
 
-发布时间：2020-04-02 08:18:42
+发布时间：2020-04-03 08:16:56
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-新增接口：
+修改接口：
 
-* [CreateAdaptiveDynamicStreamingTemplate](https://cloud.tencent.com/document/api/266/43068)
-* [CreateSuperPlayerConfig](https://cloud.tencent.com/document/api/266/43067)
-* [DeleteAdaptiveDynamicStreamingTemplate](https://cloud.tencent.com/document/api/266/43066)
-* [DeleteSuperPlayerConfig](https://cloud.tencent.com/document/api/266/43065)
-* [DescribeSuperPlayerConfigs](https://cloud.tencent.com/document/api/266/43064)
-* [ModifyAdaptiveDynamicStreamingTemplate](https://cloud.tencent.com/document/api/266/43063)
-* [ModifySuperPlayerConfig](https://cloud.tencent.com/document/api/266/43062)
+* [ComposeMedia](https://cloud.tencent.com/document/api/266/35286)
 
-新增数据结构：
+	* 新增入参：SessionContext, SessionId
 
-* [DrmStreamingsInfo](https://cloud.tencent.com/document/api/266/31773#DrmStreamingsInfo)
-* [DrmStreamingsInfoForUpdate](https://cloud.tencent.com/document/api/266/31773#DrmStreamingsInfoForUpdate)
-* [PlayerConfig](https://cloud.tencent.com/document/api/266/31773#PlayerConfig)
-* [ResolutionNameInfo](https://cloud.tencent.com/document/api/266/31773#ResolutionNameInfo)
 
 
 
@@ -4134,7 +3971,7 @@
 
 新增接口：
 
-* [[DescribeSLowLogData](https://cloud.tencent.com/document/api/236/43060)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeSLowLogData](https://cloud.tencent.com/document/api/236/43060)
 
 修改接口：
 
@@ -4145,7 +3982,7 @@
 
 新增数据结构：
 
-* [[SlowLogItem](https://cloud.tencent.com/document/api/236/15878#SlowLogItem)](https://cloud.tencent.com/document/api/236/15878#[SlowLogItem](https://cloud.tencent.com/document/api/236/15878#SlowLogItem))
+* [SlowLogItem](https://cloud.tencent.com/document/api/236/15878#SlowLogItem)
 
 ### 第 34 次发布
 
@@ -7038,6 +6875,21 @@
 
 
 ## 云服务器(cvm) 版本：2017-03-12
+
+### 第 39 次发布
+
+发布时间：2020-04-03 08:06:18
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [ModifyHostsAttribute](https://cloud.tencent.com/document/api/213/16475)
+
+	* 新增入参：ProjectId
+
 
 ### 第 38 次发布
 
@@ -15384,6 +15236,28 @@
 
 ## 文字识别(ocr) 版本：2018-11-19
 
+### 第 19 次发布
+
+发布时间：2020-04-03 08:12:13
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[HmtResidentPermitOCR](https://cloud.tencent.com/document/api/866/43106)](https://cloud.tencent.com/document/api/#/#)
+* [[MainlandPermitOCR](https://cloud.tencent.com/document/api/866/43105)](https://cloud.tencent.com/document/api/#/#)
+
+修改接口：
+
+* [DriverLicenseOCR](https://cloud.tencent.com/document/api/866/36213)
+
+	* 新增入参：CardSide
+
+	* 新增出参：ArchivesCode, Record
+
+
 ### 第 18 次发布
 
 发布时间：2020-03-27 08:11:10
@@ -17783,7 +17657,7 @@
 
 新增接口：
 
-* [[DescribeResourceTagsByTagKeys](https://cloud.tencent.com/document/api/651/43061)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeResourceTagsByTagKeys](https://cloud.tencent.com/document/api/651/43061)
 
 修改接口：
 
@@ -17798,7 +17672,7 @@
 
 新增数据结构：
 
-* [[ResourceIdTag](https://cloud.tencent.com/document/api/651/35327#ResourceIdTag)](https://cloud.tencent.com/document/api/651/35327#[ResourceIdTag](https://cloud.tencent.com/document/api/651/35327#ResourceIdTag))
+* [ResourceIdTag](https://cloud.tencent.com/document/api/651/35327#ResourceIdTag)
 
 ### 第 5 次发布
 
@@ -20618,6 +20492,23 @@
 
 ## 腾讯分布式服务框架(tsf) 版本：2018-03-26
 
+### 第 14 次发布
+
+发布时间：2020-04-03 08:15:41
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribePodInstances](https://cloud.tencent.com/document/api/649/43108)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[GroupPod](https://cloud.tencent.com/document/api/649/36099#GroupPod)](https://cloud.tencent.com/document/api/649/36099#[GroupPod](https://cloud.tencent.com/document/api/649/36099#GroupPod))
+* [[GroupPodResult](https://cloud.tencent.com/document/api/649/36099#GroupPodResult)](https://cloud.tencent.com/document/api/649/36099#[GroupPodResult](https://cloud.tencent.com/document/api/649/36099#GroupPodResult))
+
 ### 第 13 次发布
 
 发布时间：2020-03-27 08:14:33
@@ -21094,6 +20985,21 @@
 
 ## 点播(vod) 版本：2018-07-17
 
+### 第 42 次发布
+
+发布时间：2020-04-03 08:16:56
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [ComposeMedia](https://cloud.tencent.com/document/api/266/35286)
+
+	* 新增入参：SessionContext, SessionId
+
+
 ### 第 41 次发布
 
 发布时间：2020-04-02 08:18:42
@@ -21104,20 +21010,20 @@
 
 新增接口：
 
-* [[CreateAdaptiveDynamicStreamingTemplate](https://cloud.tencent.com/document/api/266/43068)](https://cloud.tencent.com/document/api/#/#)
-* [[CreateSuperPlayerConfig](https://cloud.tencent.com/document/api/266/43067)](https://cloud.tencent.com/document/api/#/#)
-* [[DeleteAdaptiveDynamicStreamingTemplate](https://cloud.tencent.com/document/api/266/43066)](https://cloud.tencent.com/document/api/#/#)
-* [[DeleteSuperPlayerConfig](https://cloud.tencent.com/document/api/266/43065)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeSuperPlayerConfigs](https://cloud.tencent.com/document/api/266/43064)](https://cloud.tencent.com/document/api/#/#)
-* [[ModifyAdaptiveDynamicStreamingTemplate](https://cloud.tencent.com/document/api/266/43063)](https://cloud.tencent.com/document/api/#/#)
-* [[ModifySuperPlayerConfig](https://cloud.tencent.com/document/api/266/43062)](https://cloud.tencent.com/document/api/#/#)
+* [CreateAdaptiveDynamicStreamingTemplate](https://cloud.tencent.com/document/api/266/43068)
+* [CreateSuperPlayerConfig](https://cloud.tencent.com/document/api/266/43067)
+* [DeleteAdaptiveDynamicStreamingTemplate](https://cloud.tencent.com/document/api/266/43066)
+* [DeleteSuperPlayerConfig](https://cloud.tencent.com/document/api/266/43065)
+* [DescribeSuperPlayerConfigs](https://cloud.tencent.com/document/api/266/43064)
+* [ModifyAdaptiveDynamicStreamingTemplate](https://cloud.tencent.com/document/api/266/43063)
+* [ModifySuperPlayerConfig](https://cloud.tencent.com/document/api/266/43062)
 
 新增数据结构：
 
-* [[DrmStreamingsInfo](https://cloud.tencent.com/document/api/266/31773#DrmStreamingsInfo)](https://cloud.tencent.com/document/api/266/31773#[DrmStreamingsInfo](https://cloud.tencent.com/document/api/266/31773#DrmStreamingsInfo))
-* [[DrmStreamingsInfoForUpdate](https://cloud.tencent.com/document/api/266/31773#DrmStreamingsInfoForUpdate)](https://cloud.tencent.com/document/api/266/31773#[DrmStreamingsInfoForUpdate](https://cloud.tencent.com/document/api/266/31773#DrmStreamingsInfoForUpdate))
-* [[PlayerConfig](https://cloud.tencent.com/document/api/266/31773#PlayerConfig)](https://cloud.tencent.com/document/api/266/31773#[PlayerConfig](https://cloud.tencent.com/document/api/266/31773#PlayerConfig))
-* [[ResolutionNameInfo](https://cloud.tencent.com/document/api/266/31773#ResolutionNameInfo)](https://cloud.tencent.com/document/api/266/31773#[ResolutionNameInfo](https://cloud.tencent.com/document/api/266/31773#ResolutionNameInfo))
+* [DrmStreamingsInfo](https://cloud.tencent.com/document/api/266/31773#DrmStreamingsInfo)
+* [DrmStreamingsInfoForUpdate](https://cloud.tencent.com/document/api/266/31773#DrmStreamingsInfoForUpdate)
+* [PlayerConfig](https://cloud.tencent.com/document/api/266/31773#PlayerConfig)
+* [ResolutionNameInfo](https://cloud.tencent.com/document/api/266/31773#ResolutionNameInfo)
 
 ### 第 40 次发布
 

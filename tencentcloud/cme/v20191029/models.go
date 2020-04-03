@@ -402,9 +402,10 @@ type Entity struct {
 
 	// 类型，取值有：
 	// <li>PERSON：个人。</li>
+	// <li>TEAM：团队。</li>
 	Type *string `json:"Type,omitempty" name:"Type"`
 
-	// Id，当 Type=PERSON，取值为用户 Id。
+	// Id，当 Type=PERSON，取值为用户 Id，当 Type=TEAM，取值为团队 Id。
 	Id *string `json:"Id,omitempty" name:"Id"`
 }
 
