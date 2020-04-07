@@ -562,6 +562,9 @@ type DescribeTagsRequest struct {
 
 	// 标签键数组,与标签值同时存在或同时不存在，不存在时表示查询该用户所有标签,当与TagKey同时传递时只会本值
 	TagKeys []*string `json:"TagKeys,omitempty" name:"TagKeys" list`
+
+	// 是否展现项目标签
+	ShowProject *uint64 `json:"ShowProject,omitempty" name:"ShowProject"`
 }
 
 func (r *DescribeTagsRequest) ToJsonString() string {

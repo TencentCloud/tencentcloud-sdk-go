@@ -366,6 +366,31 @@ func (c *Client) AssociateNetworkAclSubnets(request *AssociateNetworkAclSubnetsR
     return
 }
 
+func NewAssociateNetworkInterfaceSecurityGroupsRequest() (request *AssociateNetworkInterfaceSecurityGroupsRequest) {
+    request = &AssociateNetworkInterfaceSecurityGroupsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "AssociateNetworkInterfaceSecurityGroups")
+    return
+}
+
+func NewAssociateNetworkInterfaceSecurityGroupsResponse() (response *AssociateNetworkInterfaceSecurityGroupsResponse) {
+    response = &AssociateNetworkInterfaceSecurityGroupsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（AssociateNetworkInterfaceSecurityGroups）用于弹性网卡绑定安全组（SecurityGroup）。
+func (c *Client) AssociateNetworkInterfaceSecurityGroups(request *AssociateNetworkInterfaceSecurityGroupsRequest) (response *AssociateNetworkInterfaceSecurityGroupsResponse, err error) {
+    if request == nil {
+        request = NewAssociateNetworkInterfaceSecurityGroupsRequest()
+    }
+    response = NewAssociateNetworkInterfaceSecurityGroupsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewAttachCcnInstancesRequest() (request *AttachCcnInstancesRequest) {
     request = &AttachCcnInstancesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3274,6 +3299,31 @@ func (c *Client) DisassociateNetworkAclSubnets(request *DisassociateNetworkAclSu
         request = NewDisassociateNetworkAclSubnetsRequest()
     }
     response = NewDisassociateNetworkAclSubnetsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDisassociateNetworkInterfaceSecurityGroupsRequest() (request *DisassociateNetworkInterfaceSecurityGroupsRequest) {
+    request = &DisassociateNetworkInterfaceSecurityGroupsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "DisassociateNetworkInterfaceSecurityGroups")
+    return
+}
+
+func NewDisassociateNetworkInterfaceSecurityGroupsResponse() (response *DisassociateNetworkInterfaceSecurityGroupsResponse) {
+    response = &DisassociateNetworkInterfaceSecurityGroupsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（DisassociateNetworkInterfaceSecurityGroups）用于弹性网卡解绑安全组。支持弹性网卡完全解绑安全组。
+func (c *Client) DisassociateNetworkInterfaceSecurityGroups(request *DisassociateNetworkInterfaceSecurityGroupsRequest) (response *DisassociateNetworkInterfaceSecurityGroupsResponse, err error) {
+    if request == nil {
+        request = NewDisassociateNetworkInterfaceSecurityGroupsRequest()
+    }
+    response = NewDisassociateNetworkInterfaceSecurityGroupsResponse()
     err = c.Send(request, response)
     return
 }

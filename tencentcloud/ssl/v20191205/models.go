@@ -729,7 +729,7 @@ type DescribeCertificatesRequest struct {
 	// 分页偏移量，从0开始。
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
 
-	// 每页数量。
+	// 每页数量，默认20。
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 
 	// 搜索关键词。
@@ -1058,49 +1058,49 @@ type SubmitCertificateInformationRequest struct {
 	// 证书 ID。
 	CertificateId *string `json:"CertificateId,omitempty" name:"CertificateId"`
 
-	// CSR 生成方式：online = 在线生成, parse = 手动上传 。
+	// CSR 生成方式：online = 在线生成, parse = 手动上传。
 	CsrType *string `json:"CsrType,omitempty" name:"CsrType"`
 
 	// 上传的 CSR 内容。
 	CsrContent *string `json:"CsrContent,omitempty" name:"CsrContent"`
 
-	// 绑定证书的域名 。
+	// 绑定证书的域名。
 	CertificateDomain *string `json:"CertificateDomain,omitempty" name:"CertificateDomain"`
 
 	// 上传的域名数组（多域名证书可以上传）。
 	DomainList []*string `json:"DomainList,omitempty" name:"DomainList" list`
 
-	// 私钥密码 。
+	// 私钥密码。
 	KeyPassword *string `json:"KeyPassword,omitempty" name:"KeyPassword"`
 
-	// 公司名称 。
+	// 公司名称。
 	OrganizationName *string `json:"OrganizationName,omitempty" name:"OrganizationName"`
 
 	// 部门名称。
 	OrganizationDivision *string `json:"OrganizationDivision,omitempty" name:"OrganizationDivision"`
 
-	// 公司详细地址 。
+	// 公司详细地址。
 	OrganizationAddress *string `json:"OrganizationAddress,omitempty" name:"OrganizationAddress"`
 
-	// 国家名称 如中国：CN 。
+	// 国家名称，如中国：CN 。
 	OrganizationCountry *string `json:"OrganizationCountry,omitempty" name:"OrganizationCountry"`
 
-	// 公司所在城市 。
+	// 公司所在城市。
 	OrganizationCity *string `json:"OrganizationCity,omitempty" name:"OrganizationCity"`
 
 	// 公司所在省份。
 	OrganizationRegion *string `json:"OrganizationRegion,omitempty" name:"OrganizationRegion"`
 
-	// 公司邮编 。
+	// 公司邮编。
 	PostalCode *string `json:"PostalCode,omitempty" name:"PostalCode"`
 
-	// 公司座机区号 。
+	// 公司座机区号。
 	PhoneAreaCode *string `json:"PhoneAreaCode,omitempty" name:"PhoneAreaCode"`
 
-	// 公司座机号码 。
+	// 公司座机号码。
 	PhoneNumber *string `json:"PhoneNumber,omitempty" name:"PhoneNumber"`
 
-	// 证书验证方式 。
+	// 证书验证方式。
 	VerifyType *string `json:"VerifyType,omitempty" name:"VerifyType"`
 
 	// 管理人姓。
@@ -1124,10 +1124,10 @@ type SubmitCertificateInformationRequest struct {
 	// 联系人名。
 	ContactLastName *string `json:"ContactLastName,omitempty" name:"ContactLastName"`
 
-	// 联系人邮箱地址 。
+	// 联系人邮箱地址。
 	ContactEmail *string `json:"ContactEmail,omitempty" name:"ContactEmail"`
 
-	// 联系人手机号码 。
+	// 联系人手机号码。
 	ContactNumber *string `json:"ContactNumber,omitempty" name:"ContactNumber"`
 
 	// 联系人职位。

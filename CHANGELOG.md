@@ -1,10 +1,10 @@
 # 本版本更新包含以下内容：
 
-## 云服务器(cvm) 版本：2017-03-12
+## 企业收付平台(cpdp) 版本：2019-08-20
 
-### 第 39 次发布
+### 第 5 次发布
 
-发布时间：2020-04-03 08:06:18
+发布时间：2020-04-07 08:18:11
 
 本次发布包含了以下内容：
 
@@ -12,18 +12,37 @@
 
 修改接口：
 
-* [ModifyHostsAttribute](https://cloud.tencent.com/document/api/213/16475)
+* [Refund](https://cloud.tencent.com/document/api/1122/40656)
 
-	* 新增入参：ProjectId
-
-
+	* <font color="#dd0000">**修改入参**：</font>SubOrderRefundList
 
 
-## 文字识别(ocr) 版本：2018-11-19
 
-### 第 19 次发布
 
-发布时间：2020-04-03 08:12:13
+## 标签(tag) 版本：2018-08-13
+
+### 第 7 次发布
+
+发布时间：2020-04-07 08:13:55
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeTags](https://cloud.tencent.com/document/api/651/35316)
+
+	* 新增入参：ShowProject
+
+
+
+
+## 私有网络(vpc) 版本：2017-03-12
+
+### 第 41 次发布
+
+发布时间：2020-04-07 08:16:03
 
 本次发布包含了以下内容：
 
@@ -31,57 +50,8 @@
 
 新增接口：
 
-* [HmtResidentPermitOCR](https://cloud.tencent.com/document/api/866/43106)
-* [MainlandPermitOCR](https://cloud.tencent.com/document/api/866/43105)
-
-修改接口：
-
-* [DriverLicenseOCR](https://cloud.tencent.com/document/api/866/36213)
-
-	* 新增入参：CardSide
-
-	* 新增出参：ArchivesCode, Record
-
-
-
-
-## 腾讯分布式服务框架(tsf) 版本：2018-03-26
-
-### 第 14 次发布
-
-发布时间：2020-04-03 08:15:41
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [DescribePodInstances](https://cloud.tencent.com/document/api/649/43108)
-
-新增数据结构：
-
-* [GroupPod](https://cloud.tencent.com/document/api/649/36099#GroupPod)
-* [GroupPodResult](https://cloud.tencent.com/document/api/649/36099#GroupPodResult)
-
-
-
-## 点播(vod) 版本：2018-07-17
-
-### 第 42 次发布
-
-发布时间：2020-04-03 08:16:56
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [ComposeMedia](https://cloud.tencent.com/document/api/266/35286)
-
-	* 新增入参：SessionContext, SessionId
-
+* [AssociateNetworkInterfaceSecurityGroups](https://cloud.tencent.com/document/api/215/43132)
+* [DisassociateNetworkInterfaceSecurityGroups](https://cloud.tencent.com/document/api/215/43131)
 
 
 
@@ -6588,6 +6558,21 @@
 
 
 ## 企业收付平台(cpdp) 版本：2019-08-20
+
+### 第 5 次发布
+
+发布时间：2020-04-07 08:18:11
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [Refund](https://cloud.tencent.com/document/api/1122/40656)
+
+	* <font color="#dd0000">**修改入参**：</font>SubOrderRefundList
+
 
 ### 第 4 次发布
 
@@ -15246,8 +15231,8 @@
 
 新增接口：
 
-* [[HmtResidentPermitOCR](https://cloud.tencent.com/document/api/866/43106)](https://cloud.tencent.com/document/api/#/#)
-* [[MainlandPermitOCR](https://cloud.tencent.com/document/api/866/43105)](https://cloud.tencent.com/document/api/#/#)
+* [HmtResidentPermitOCR](https://cloud.tencent.com/document/api/866/43106)
+* [MainlandPermitOCR](https://cloud.tencent.com/document/api/866/43105)
 
 修改接口：
 
@@ -17646,6 +17631,21 @@
 
 
 ## 标签(tag) 版本：2018-08-13
+
+### 第 7 次发布
+
+发布时间：2020-04-07 08:13:55
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeTags](https://cloud.tencent.com/document/api/651/35316)
+
+	* 新增入参：ShowProject
+
 
 ### 第 6 次发布
 
@@ -20502,12 +20502,12 @@
 
 新增接口：
 
-* [[DescribePodInstances](https://cloud.tencent.com/document/api/649/43108)](https://cloud.tencent.com/document/api/#/#)
+* [DescribePodInstances](https://cloud.tencent.com/document/api/649/43108)
 
 新增数据结构：
 
-* [[GroupPod](https://cloud.tencent.com/document/api/649/36099#GroupPod)](https://cloud.tencent.com/document/api/649/36099#[GroupPod](https://cloud.tencent.com/document/api/649/36099#GroupPod))
-* [[GroupPodResult](https://cloud.tencent.com/document/api/649/36099#GroupPodResult)](https://cloud.tencent.com/document/api/649/36099#[GroupPodResult](https://cloud.tencent.com/document/api/649/36099#GroupPodResult))
+* [GroupPod](https://cloud.tencent.com/document/api/649/36099#GroupPod)
+* [GroupPodResult](https://cloud.tencent.com/document/api/649/36099#GroupPodResult)
 
 ### 第 13 次发布
 
@@ -22469,6 +22469,19 @@
 
 
 ## 私有网络(vpc) 版本：2017-03-12
+
+### 第 41 次发布
+
+发布时间：2020-04-07 08:16:03
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[AssociateNetworkInterfaceSecurityGroups](https://cloud.tencent.com/document/api/215/43132)](https://cloud.tencent.com/document/api/#/#)
+* [[DisassociateNetworkInterfaceSecurityGroups](https://cloud.tencent.com/document/api/215/43131)](https://cloud.tencent.com/document/api/#/#)
 
 ### 第 40 次发布
 
