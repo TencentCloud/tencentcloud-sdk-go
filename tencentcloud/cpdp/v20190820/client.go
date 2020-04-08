@@ -301,6 +301,81 @@ func (c *Client) CreateCustAcctId(request *CreateCustAcctIdRequest) (response *C
     return
 }
 
+func NewCreateInvoiceRequest() (request *CreateInvoiceRequest) {
+    request = &CreateInvoiceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cpdp", APIVersion, "CreateInvoice")
+    return
+}
+
+func NewCreateInvoiceResponse() (response *CreateInvoiceResponse) {
+    response = &CreateInvoiceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 智慧零售-发票开具
+func (c *Client) CreateInvoice(request *CreateInvoiceRequest) (response *CreateInvoiceResponse, err error) {
+    if request == nil {
+        request = NewCreateInvoiceRequest()
+    }
+    response = NewCreateInvoiceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateMerchantRequest() (request *CreateMerchantRequest) {
+    request = &CreateMerchantRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cpdp", APIVersion, "CreateMerchant")
+    return
+}
+
+func NewCreateMerchantResponse() (response *CreateMerchantResponse) {
+    response = &CreateMerchantResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 智慧零售-商户注册
+func (c *Client) CreateMerchant(request *CreateMerchantRequest) (response *CreateMerchantResponse, err error) {
+    if request == nil {
+        request = NewCreateMerchantRequest()
+    }
+    response = NewCreateMerchantResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateRedInvoiceRequest() (request *CreateRedInvoiceRequest) {
+    request = &CreateRedInvoiceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cpdp", APIVersion, "CreateRedInvoice")
+    return
+}
+
+func NewCreateRedInvoiceResponse() (response *CreateRedInvoiceResponse) {
+    response = &CreateRedInvoiceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 智慧零售-发票红冲
+func (c *Client) CreateRedInvoice(request *CreateRedInvoiceRequest) (response *CreateRedInvoiceResponse, err error) {
+    if request == nil {
+        request = NewCreateRedInvoiceRequest()
+    }
+    response = NewCreateRedInvoiceResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDownloadBillRequest() (request *DownloadBillRequest) {
     request = &DownloadBillRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -526,6 +601,56 @@ func (c *Client) QueryCustAcctIdBalance(request *QueryCustAcctIdBalanceRequest) 
     return
 }
 
+func NewQueryInvoiceRequest() (request *QueryInvoiceRequest) {
+    request = &QueryInvoiceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cpdp", APIVersion, "QueryInvoice")
+    return
+}
+
+func NewQueryInvoiceResponse() (response *QueryInvoiceResponse) {
+    response = &QueryInvoiceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 智慧零售-发票查询
+func (c *Client) QueryInvoice(request *QueryInvoiceRequest) (response *QueryInvoiceResponse, err error) {
+    if request == nil {
+        request = NewQueryInvoiceRequest()
+    }
+    response = NewQueryInvoiceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewQueryInvoiceForManagementRequest() (request *QueryInvoiceForManagementRequest) {
+    request = &QueryInvoiceForManagementRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cpdp", APIVersion, "QueryInvoiceForManagement")
+    return
+}
+
+func NewQueryInvoiceForManagementResponse() (response *QueryInvoiceForManagementResponse) {
+    response = &QueryInvoiceForManagementResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 智慧零售-查询管理端发票
+func (c *Client) QueryInvoiceForManagement(request *QueryInvoiceForManagementRequest) (response *QueryInvoiceForManagementResponse, err error) {
+    if request == nil {
+        request = NewQueryInvoiceForManagementRequest()
+    }
+    response = NewQueryInvoiceForManagementResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewQueryMemberBindRequest() (request *QueryMemberBindRequest) {
     request = &QueryMemberBindRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -573,6 +698,31 @@ func (c *Client) QueryMemberTransaction(request *QueryMemberTransactionRequest) 
         request = NewQueryMemberTransactionRequest()
     }
     response = NewQueryMemberTransactionResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewQueryMerchantInfoForManagementRequest() (request *QueryMerchantInfoForManagementRequest) {
+    request = &QueryMerchantInfoForManagementRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cpdp", APIVersion, "QueryMerchantInfoForManagement")
+    return
+}
+
+func NewQueryMerchantInfoForManagementResponse() (response *QueryMerchantInfoForManagementResponse) {
+    response = &QueryMerchantInfoForManagementResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 智慧零售-查询管理端商户
+func (c *Client) QueryMerchantInfoForManagement(request *QueryMerchantInfoForManagementRequest) (response *QueryMerchantInfoForManagementResponse, err error) {
+    if request == nil {
+        request = NewQueryMerchantInfoForManagementRequest()
+    }
+    response = NewQueryMerchantInfoForManagementResponse()
     err = c.Send(request, response)
     return
 }
@@ -798,6 +948,31 @@ func (c *Client) RevRegisterBillSupportWithdraw(request *RevRegisterBillSupportW
         request = NewRevRegisterBillSupportWithdrawRequest()
     }
     response = NewRevRegisterBillSupportWithdrawResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewRevResigterBillSupportWithdrawRequest() (request *RevResigterBillSupportWithdrawRequest) {
+    request = &RevResigterBillSupportWithdrawRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cpdp", APIVersion, "RevResigterBillSupportWithdraw")
+    return
+}
+
+func NewRevResigterBillSupportWithdrawResponse() (response *RevResigterBillSupportWithdrawResponse) {
+    response = &RevResigterBillSupportWithdrawResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 登记挂账撤销。此接口可以实现把RegisterBillSupportWithdraw接口完成的登记挂账进行撤销，即调减普通会员子账户的可提现和可用余额，调增挂账子账户的可用余额。
+func (c *Client) RevResigterBillSupportWithdraw(request *RevResigterBillSupportWithdrawRequest) (response *RevResigterBillSupportWithdrawResponse, err error) {
+    if request == nil {
+        request = NewRevResigterBillSupportWithdrawRequest()
+    }
+    response = NewRevResigterBillSupportWithdrawResponse()
     err = c.Send(request, response)
     return
 }

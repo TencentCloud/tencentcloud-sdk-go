@@ -771,6 +771,46 @@ type Image struct {
 	SrcImage *SrcImage `json:"SrcImage,omitempty" name:"SrcImage"`
 }
 
+type ImportImageRequest struct {
+	*tchttp.BaseRequest
+
+	// 镜像的Id。
+	ImageId *string `json:"ImageId,omitempty" name:"ImageId"`
+
+	// 镜像的描述。
+	ImageDescription *string `json:"ImageDescription,omitempty" name:"ImageDescription"`
+
+	// 源地域
+	SourceRegion *string `json:"SourceRegion,omitempty" name:"SourceRegion"`
+}
+
+func (r *ImportImageRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ImportImageRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ImportImageResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ImportImageResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ImportImageResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type Instance struct {
 
 	// 实例ID。

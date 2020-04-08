@@ -728,6 +728,12 @@ type CreateAcctRequest struct {
 
 	// 不填则默认子商户名称
 	ShortName *string `json:"ShortName,omitempty" name:"ShortName"`
+
+	// 子商户会员类型：
+	// general:普通子账户
+	// merchant:商户子账户
+	// 缺省： general
+	SubMerchantMemberType *string `json:"SubMerchantMemberType,omitempty" name:"SubMerchantMemberType"`
 }
 
 func (r *CreateAcctRequest) ToJsonString() string {
@@ -853,6 +859,426 @@ func (r *CreateCustAcctIdResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type CreateInvoiceItem struct {
+
+	// 商品名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 税收商品编码
+	TaxCode *string `json:"TaxCode,omitempty" name:"TaxCode"`
+
+	// 不含税商品总价（商品含税价总额/（1+税率））。单位为分
+	TotalPrice *int64 `json:"TotalPrice,omitempty" name:"TotalPrice"`
+
+	// 商品税率
+	TaxRate *int64 `json:"TaxRate,omitempty" name:"TaxRate"`
+
+	// 商品税额（不含税商品总价*税率）。单位为分
+	TaxAmount *int64 `json:"TaxAmount,omitempty" name:"TaxAmount"`
+
+	// 税收商品类别
+	TaxType *string `json:"TaxType,omitempty" name:"TaxType"`
+
+	// 商品规格
+	Models *string `json:"Models,omitempty" name:"Models"`
+
+	// 商品单位
+	Unit *string `json:"Unit,omitempty" name:"Unit"`
+
+	// 商品数量
+	Total *string `json:"Total,omitempty" name:"Total"`
+
+	// 不含税商品单价
+	Price *string `json:"Price,omitempty" name:"Price"`
+
+	// 含税折扣总额。单位为分
+	Discount *int64 `json:"Discount,omitempty" name:"Discount"`
+
+	// 优惠政策标志。0：不使用优惠政策；1：使用优惠政策。
+	PreferentialPolicyFlag *string `json:"PreferentialPolicyFlag,omitempty" name:"PreferentialPolicyFlag"`
+
+	// 零税率标识：
+	// 空：非零税率；
+	// 0：出口零税率；
+	// 1：免税；
+	// 2：不征税；
+	// 3：普通零税率。
+	ZeroTaxFlag *string `json:"ZeroTaxFlag,omitempty" name:"ZeroTaxFlag"`
+
+	// 增值税特殊管理。PreferentialPolicyFlag字段为1时，必填。目前仅支持5%(3%，2%，1.5%)简易征税、免税、不征税。
+	VatSpecialManagement *string `json:"VatSpecialManagement,omitempty" name:"VatSpecialManagement"`
+}
+
+type CreateInvoiceRequest struct {
+	*tchttp.BaseRequest
+
+	// 开票平台ID。0：高灯
+	InvoicePlatformId *int64 `json:"InvoicePlatformId,omitempty" name:"InvoicePlatformId"`
+
+	// 抬头类型：1：个人/政府事业单位；2：企业
+	TitleType *int64 `json:"TitleType,omitempty" name:"TitleType"`
+
+	// 购方名称
+	BuyerTitle *string `json:"BuyerTitle,omitempty" name:"BuyerTitle"`
+
+	// 业务开票号
+	OrderId *string `json:"OrderId,omitempty" name:"OrderId"`
+
+	// 含税总金额（单位为分）
+	AmountHasTax *int64 `json:"AmountHasTax,omitempty" name:"AmountHasTax"`
+
+	// 总税额（单位为分）
+	TaxAmount *int64 `json:"TaxAmount,omitempty" name:"TaxAmount"`
+
+	// 不含税总金额（单位为分）
+	AmountWithoutTax *int64 `json:"AmountWithoutTax,omitempty" name:"AmountWithoutTax"`
+
+	// 销方纳税人识别号
+	SellerTaxpayerNum *string `json:"SellerTaxpayerNum,omitempty" name:"SellerTaxpayerNum"`
+
+	// 销方名称。（不填默认读取商户注册时输入的信息）
+	SellerName *string `json:"SellerName,omitempty" name:"SellerName"`
+
+	// 销方地址。（不填默认读取商户注册时输入的信息）
+	SellerAddress *string `json:"SellerAddress,omitempty" name:"SellerAddress"`
+
+	// 销方电话。（不填默认读取商户注册时输入的信息）
+	SellerPhone *string `json:"SellerPhone,omitempty" name:"SellerPhone"`
+
+	// 销方银行名称。（不填默认读取商户注册时输入的信息）
+	SellerBankName *string `json:"SellerBankName,omitempty" name:"SellerBankName"`
+
+	// 销方银行账号。（不填默认读取商户注册时输入的信息）
+	SellerBankAccount *string `json:"SellerBankAccount,omitempty" name:"SellerBankAccount"`
+
+	// 购方纳税人识别号（购方票面信息）,若抬头类型为2时，必传
+	BuyerTaxpayerNum *string `json:"BuyerTaxpayerNum,omitempty" name:"BuyerTaxpayerNum"`
+
+	// 购方地址。开具专用发票时必填
+	BuyerAddress *string `json:"BuyerAddress,omitempty" name:"BuyerAddress"`
+
+	// 购方银行名称。开具专用发票时必填
+	BuyerBankName *string `json:"BuyerBankName,omitempty" name:"BuyerBankName"`
+
+	// 购方银行账号。开具专用发票时必填
+	BuyerBankAccount *string `json:"BuyerBankAccount,omitempty" name:"BuyerBankAccount"`
+
+	// 购方电话。开具专用发票时必填
+	BuyerPhone *string `json:"BuyerPhone,omitempty" name:"BuyerPhone"`
+
+	// 收票人邮箱。若填入，会收到发票推送邮件
+	BuyerEmail *string `json:"BuyerEmail,omitempty" name:"BuyerEmail"`
+
+	// 收票人手机号。若填入，会收到发票推送短信
+	TakerPhone *string `json:"TakerPhone,omitempty" name:"TakerPhone"`
+
+	// 开票类型：
+	// 1：增值税专用发票；
+	// 2：增值税普通发票；
+	// 3：增值税电子发票；
+	// 4：增值税卷式发票；
+	// 5：区块链电子发票。
+	// 若该字段不填，或值不为1-5，则认为开具”增值税电子发票”
+	InvoiceType *int64 `json:"InvoiceType,omitempty" name:"InvoiceType"`
+
+	// 发票结果回传地址
+	CallbackUrl *string `json:"CallbackUrl,omitempty" name:"CallbackUrl"`
+
+	// 开票人姓名。（不填默认读取商户注册时输入的信息）
+	Drawer *string `json:"Drawer,omitempty" name:"Drawer"`
+
+	// 收款人姓名。（不填默认读取商户注册时输入的信息）
+	Payee *string `json:"Payee,omitempty" name:"Payee"`
+
+	// 复核人姓名。（不填默认读取商户注册时输入的信息）
+	Checker *string `json:"Checker,omitempty" name:"Checker"`
+
+	// 税盘号
+	TerminalCode *string `json:"TerminalCode,omitempty" name:"TerminalCode"`
+
+	// 征收方式。开具差额征税发票时必填2。开具普通征税发票时为空
+	LevyMethod *string `json:"LevyMethod,omitempty" name:"LevyMethod"`
+
+	// 差额征税扣除额（单位为分）
+	Deduction *int64 `json:"Deduction,omitempty" name:"Deduction"`
+
+	// 备注（票面信息）
+	Remark *string `json:"Remark,omitempty" name:"Remark"`
+
+	// 项目商品明细
+	Items []*CreateInvoiceItem `json:"Items,omitempty" name:"Items" list`
+
+	// 接入环境。沙箱环境填sandbox。
+	Profile *string `json:"Profile,omitempty" name:"Profile"`
+}
+
+func (r *CreateInvoiceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateInvoiceRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateInvoiceResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 发票开具结果
+		Result *CreateInvoiceResult `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateInvoiceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateInvoiceResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateInvoiceResult struct {
+
+	// 错误消息
+	Message *string `json:"Message,omitempty" name:"Message"`
+
+	// 错误码
+	Code *int64 `json:"Code,omitempty" name:"Code"`
+
+	// 数据
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Data *CreateInvoiceResultData `json:"Data,omitempty" name:"Data"`
+}
+
+type CreateInvoiceResultData struct {
+
+	// 开票状态
+	State *int64 `json:"State,omitempty" name:"State"`
+
+	// 发票ID
+	InvoiceId *string `json:"InvoiceId,omitempty" name:"InvoiceId"`
+
+	// 业务开票号
+	OrderSn *string `json:"OrderSn,omitempty" name:"OrderSn"`
+}
+
+type CreateMerchantRequest struct {
+	*tchttp.BaseRequest
+
+	// 开票平台ID
+	InvoicePlatformId *int64 `json:"InvoicePlatformId,omitempty" name:"InvoicePlatformId"`
+
+	// 企业名称
+	TaxpayerName *string `json:"TaxpayerName,omitempty" name:"TaxpayerName"`
+
+	// 销方纳税人识别号
+	TaxpayerNum *string `json:"TaxpayerNum,omitempty" name:"TaxpayerNum"`
+
+	// 注册企业法人代表名称
+	LegalPersonName *string `json:"LegalPersonName,omitempty" name:"LegalPersonName"`
+
+	// 联系人
+	ContactsName *string `json:"ContactsName,omitempty" name:"ContactsName"`
+
+	// 联系人手机号
+	Phone *string `json:"Phone,omitempty" name:"Phone"`
+
+	// 不包含省市名称的地址
+	Address *string `json:"Address,omitempty" name:"Address"`
+
+	// 地区编码
+	RegionCode *int64 `json:"RegionCode,omitempty" name:"RegionCode"`
+
+	// 市（地区）名称
+	CityName *string `json:"CityName,omitempty" name:"CityName"`
+
+	// 开票人
+	Drawer *string `json:"Drawer,omitempty" name:"Drawer"`
+
+	// 税务登记证图片（Base64）字符串，需小于 3M
+	TaxRegistrationCertificate *string `json:"TaxRegistrationCertificate,omitempty" name:"TaxRegistrationCertificate"`
+
+	// 联系人邮箱地址
+	Email *string `json:"Email,omitempty" name:"Email"`
+
+	// 企业电话
+	BusinessMobile *string `json:"BusinessMobile,omitempty" name:"BusinessMobile"`
+
+	// 银行名称
+	BankName *string `json:"BankName,omitempty" name:"BankName"`
+
+	// 银行账号
+	BankAccount *string `json:"BankAccount,omitempty" name:"BankAccount"`
+
+	// 复核人
+	Reviewer *string `json:"Reviewer,omitempty" name:"Reviewer"`
+
+	// 收款人
+	Payee *string `json:"Payee,omitempty" name:"Payee"`
+
+	// 注册邀请码
+	RegisterCode *string `json:"RegisterCode,omitempty" name:"RegisterCode"`
+
+	// 不填默认为1，有效状态
+	// 0：表示无效；
+	// 1:表示有效；
+	// 2:表示禁止开蓝票；
+	// 3:表示禁止冲红。
+	State *string `json:"State,omitempty" name:"State"`
+
+	// 接收推送的消息地址
+	CallbackUrl *string `json:"CallbackUrl,omitempty" name:"CallbackUrl"`
+
+	// 接入环境。沙箱环境填 sandbox。
+	Profile *string `json:"Profile,omitempty" name:"Profile"`
+}
+
+func (r *CreateMerchantRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateMerchantRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateMerchantResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 商户注册结果
+		Result *CreateMerchantResult `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateMerchantResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateMerchantResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateMerchantResult struct {
+
+	// 状态码
+	Code *int64 `json:"Code,omitempty" name:"Code"`
+
+	// 响应消息
+	Message *string `json:"Message,omitempty" name:"Message"`
+
+	// 创建商户结果数据
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Data *CreateMerchantResultData `json:"Data,omitempty" name:"Data"`
+}
+
+type CreateMerchantResultData struct {
+
+	// 企业名称
+	TaxpayerName *string `json:"TaxpayerName,omitempty" name:"TaxpayerName"`
+
+	// 请求流水号
+	SerialNo *string `json:"SerialNo,omitempty" name:"SerialNo"`
+
+	// 纳税号
+	TaxpayerNum *string `json:"TaxpayerNum,omitempty" name:"TaxpayerNum"`
+}
+
+type CreateRedInvoiceItem struct {
+
+	// 订单号
+	OrderId *string `json:"OrderId,omitempty" name:"OrderId"`
+
+	// 发票结果回传地址
+	CallbackUrl *string `json:"CallbackUrl,omitempty" name:"CallbackUrl"`
+
+	// 业务开票号
+	OrderSn *string `json:"OrderSn,omitempty" name:"OrderSn"`
+
+	// 红字信息表编码
+	RedSerialNo *string `json:"RedSerialNo,omitempty" name:"RedSerialNo"`
+}
+
+type CreateRedInvoiceRequest struct {
+	*tchttp.BaseRequest
+
+	// 开票平台ID
+	InvoicePlatformId *int64 `json:"InvoicePlatformId,omitempty" name:"InvoicePlatformId"`
+
+	// 红冲明细
+	Invoices []*CreateRedInvoiceItem `json:"Invoices,omitempty" name:"Invoices" list`
+
+	// 接入环境。沙箱环境填 sandbox。
+	Profile *string `json:"Profile,omitempty" name:"Profile"`
+}
+
+func (r *CreateRedInvoiceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateRedInvoiceRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateRedInvoiceResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 红冲结果
+		Result *CreateRedInvoiceResult `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateRedInvoiceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateRedInvoiceResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateRedInvoiceResult struct {
+
+	// 错误消息
+	Message *string `json:"Message,omitempty" name:"Message"`
+
+	// 错误码
+	Code *int64 `json:"Code,omitempty" name:"Code"`
+
+	// 红票数据
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Data []*CreateRedInvoiceResultData `json:"Data,omitempty" name:"Data" list`
+}
+
+type CreateRedInvoiceResultData struct {
+
+	// 红冲状态码
+	Code *int64 `json:"Code,omitempty" name:"Code"`
+
+	// 红冲状态消息
+	Message *string `json:"Message,omitempty" name:"Message"`
+
+	// 发票ID
+	InvoiceId *string `json:"InvoiceId,omitempty" name:"InvoiceId"`
+
+	// 业务开票号
+	OrderSn *string `json:"OrderSn,omitempty" name:"OrderSn"`
+}
+
 type DownloadBillRequest struct {
 	*tchttp.BaseRequest
 
@@ -922,6 +1348,92 @@ type FileItem struct {
 	// STRING(64)，提取码
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DrawCode *string `json:"DrawCode,omitempty" name:"DrawCode"`
+}
+
+type InvoiceManagementList struct {
+
+	// 发票ID
+	InvoiceId *string `json:"InvoiceId,omitempty" name:"InvoiceId"`
+
+	// 订单号
+	OrderId *string `json:"OrderId,omitempty" name:"OrderId"`
+
+	// 销方名称
+	SellerName *string `json:"SellerName,omitempty" name:"SellerName"`
+
+	// 业务开票号
+	OrderSn *string `json:"OrderSn,omitempty" name:"OrderSn"`
+
+	// 开票平台ID
+	InvoicePlatformId *int64 `json:"InvoicePlatformId,omitempty" name:"InvoicePlatformId"`
+
+	// 腾讯云AppId
+	AppId *string `json:"AppId,omitempty" name:"AppId"`
+
+	// 开票号码
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InvoiceSn *string `json:"InvoiceSn,omitempty" name:"InvoiceSn"`
+
+	// 开票代码
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InvoiceCode *string `json:"InvoiceCode,omitempty" name:"InvoiceCode"`
+
+	// 红冲状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RedStatus *int64 `json:"RedStatus,omitempty" name:"RedStatus"`
+
+	// 开票通知时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NotifyTime *string `json:"NotifyTime,omitempty" name:"NotifyTime"`
+
+	// 含税总金额
+	AmountHasTax *string `json:"AmountHasTax,omitempty" name:"AmountHasTax"`
+
+	// 发票类型
+	InvoiceType *int64 `json:"InvoiceType,omitempty" name:"InvoiceType"`
+
+	// 开票状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InvoiceStatus *int64 `json:"InvoiceStatus,omitempty" name:"InvoiceStatus"`
+
+	// 创建时间
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 更新时间
+	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
+}
+
+type InvoiceManangementResult struct {
+
+	// 总数。
+	Total *int64 `json:"Total,omitempty" name:"Total"`
+
+	// 发票列表。
+	List []*InvoiceManagementList `json:"List,omitempty" name:"List" list`
+}
+
+type MerchantManagementList struct {
+
+	// 企业名称。
+	TaxpayerName *string `json:"TaxpayerName,omitempty" name:"TaxpayerName"`
+
+	// 纳税人识别号(税号)	。
+	TaxpayerNum *string `json:"TaxpayerNum,omitempty" name:"TaxpayerNum"`
+
+	// 请求流水号。
+	SerialNo *string `json:"SerialNo,omitempty" name:"SerialNo"`
+
+	// 开票系统ID
+	InvoicePlatformId *int64 `json:"InvoicePlatformId,omitempty" name:"InvoicePlatformId"`
+}
+
+type MerchantManagementResult struct {
+
+	// 总数。
+	Total *int64 `json:"Total,omitempty" name:"Total"`
+
+	// 商户列表。
+	List []*MerchantManagementList `json:"List,omitempty" name:"List" list`
 }
 
 type ModifyMntMbrBindRelateAcctBankCodeRequest struct {
@@ -1522,6 +2034,186 @@ func (r *QueryCustAcctIdBalanceResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type QueryInvoiceForManagementRequest struct {
+	*tchttp.BaseRequest
+
+	// 开票平台ID
+	InvoicePlatformId *int64 `json:"InvoicePlatformId,omitempty" name:"InvoicePlatformId"`
+
+	// 开票状态
+	InvoiceStatus *int64 `json:"InvoiceStatus,omitempty" name:"InvoiceStatus"`
+
+	// 红冲状态
+	RedInvoiceStatus *int64 `json:"RedInvoiceStatus,omitempty" name:"RedInvoiceStatus"`
+
+	// 开始时间
+	BeginTime *string `json:"BeginTime,omitempty" name:"BeginTime"`
+
+	// 结束时间
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 页码
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 页大小
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 订单号
+	OrderId *string `json:"OrderId,omitempty" name:"OrderId"`
+
+	// 发票ID
+	InvoiceId *string `json:"InvoiceId,omitempty" name:"InvoiceId"`
+
+	// 业务开票号
+	OrderSn *string `json:"OrderSn,omitempty" name:"OrderSn"`
+
+	// 发票号码
+	InvoiceSn *string `json:"InvoiceSn,omitempty" name:"InvoiceSn"`
+
+	// 发票代码
+	InvoiceCode *string `json:"InvoiceCode,omitempty" name:"InvoiceCode"`
+
+	// 接入环境。沙箱环境填 sandbox。
+	Profile *string `json:"Profile,omitempty" name:"Profile"`
+}
+
+func (r *QueryInvoiceForManagementRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *QueryInvoiceForManagementRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type QueryInvoiceForManagementResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 发票结果
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Result *InvoiceManangementResult `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *QueryInvoiceForManagementResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *QueryInvoiceForManagementResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type QueryInvoiceRequest struct {
+	*tchttp.BaseRequest
+
+	// 开票平台ID
+	InvoicePlatformId *int64 `json:"InvoicePlatformId,omitempty" name:"InvoicePlatformId"`
+
+	// 订单号
+	OrderId *string `json:"OrderId,omitempty" name:"OrderId"`
+
+	// 业务开票号
+	OrderSn *string `json:"OrderSn,omitempty" name:"OrderSn"`
+
+	// 发票种类：
+	// 0：蓝票
+	// 1：红票【该字段默认为0， 如果需要查询红票信息，本字段必须传1，否则可能查询不到需要的发票信息】。
+	IsRed *int64 `json:"IsRed,omitempty" name:"IsRed"`
+
+	// 接入环境。沙箱环境填sandbox。
+	Profile *string `json:"Profile,omitempty" name:"Profile"`
+}
+
+func (r *QueryInvoiceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *QueryInvoiceRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type QueryInvoiceResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 发票查询结果
+		Result *QueryInvoiceResult `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *QueryInvoiceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *QueryInvoiceResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type QueryInvoiceResult struct {
+
+	// 错误消息
+	Message *string `json:"Message,omitempty" name:"Message"`
+
+	// 错误码
+	Code *int64 `json:"Code,omitempty" name:"Code"`
+
+	// 查询发票数据
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Data *QueryInvoiceResultData `json:"Data,omitempty" name:"Data"`
+}
+
+type QueryInvoiceResultData struct {
+
+	// 订单号
+	OrderId *string `json:"OrderId,omitempty" name:"OrderId"`
+
+	// 业务开票号
+	OrderSn *string `json:"OrderSn,omitempty" name:"OrderSn"`
+
+	// 发票状态
+	Status *int64 `json:"Status,omitempty" name:"Status"`
+
+	// 开票描述
+	Message *string `json:"Message,omitempty" name:"Message"`
+
+	// 开票日期
+	TicketDate *string `json:"TicketDate,omitempty" name:"TicketDate"`
+
+	// 发票号码
+	TicketSn *string `json:"TicketSn,omitempty" name:"TicketSn"`
+
+	// 发票代码
+	TicketCode *string `json:"TicketCode,omitempty" name:"TicketCode"`
+
+	// 检验码
+	CheckCode *string `json:"CheckCode,omitempty" name:"CheckCode"`
+
+	// 含税金额(元)
+	AmountWithTax *string `json:"AmountWithTax,omitempty" name:"AmountWithTax"`
+
+	// 不含税金额(元)
+	AmountWithoutTax *string `json:"AmountWithoutTax,omitempty" name:"AmountWithoutTax"`
+
+	// 税额(元)
+	TaxAmount *string `json:"TaxAmount,omitempty" name:"TaxAmount"`
+
+	// 是否被红冲
+	IsRedWashed *int64 `json:"IsRedWashed,omitempty" name:"IsRedWashed"`
+
+	// pdf地址
+	PdfUrl *string `json:"PdfUrl,omitempty" name:"PdfUrl"`
+}
+
 type QueryItem struct {
 
 	// 子商户账户
@@ -1726,6 +2418,53 @@ func (r *QueryMemberTransactionResponse) ToJsonString() string {
 }
 
 func (r *QueryMemberTransactionResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type QueryMerchantInfoForManagementRequest struct {
+	*tchttp.BaseRequest
+
+	// 开票平台ID
+	InvoicePlatformId *int64 `json:"InvoicePlatformId,omitempty" name:"InvoicePlatformId"`
+
+	// 页码
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 页大小
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 接入环境。沙箱环境填sandbox。
+	Profile *string `json:"Profile,omitempty" name:"Profile"`
+}
+
+func (r *QueryMerchantInfoForManagementRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *QueryMerchantInfoForManagementRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type QueryMerchantInfoForManagementResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 商户结果
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Result *MerchantManagementResult `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *QueryMerchantInfoForManagementResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *QueryMerchantInfoForManagementResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -2194,10 +2933,13 @@ type RechargeMemberThirdPayRequest struct {
 	// STRING(20)，手续费金额
 	Commission *string `json:"Commission,omitempty" name:"Commission"`
 
-	// STRING(3)，币种
+	// STRING(3)，币种。如RMB
 	Ccy *string `json:"Ccy,omitempty" name:"Ccy"`
 
-	// STRING(20)，支付渠道类型
+	// STRING(20)，支付渠道类型。
+	// 0001-微信
+	// 0002-支付宝
+	// 0003-京东支付
 	PayChannelType *string `json:"PayChannelType,omitempty" name:"PayChannelType"`
 
 	// STRING(50)，支付渠道所分配的商户号
@@ -2510,6 +3252,81 @@ func (r *RevRegisterBillSupportWithdrawResponse) ToJsonString() string {
 }
 
 func (r *RevRegisterBillSupportWithdrawResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type RevResigterBillSupportWithdrawRequest struct {
+	*tchttp.BaseRequest
+
+	// String(22)，商户号（签约客户号）
+	MrchCode *string `json:"MrchCode,omitempty" name:"MrchCode"`
+
+	// STRING(32)，交易网会员代码
+	TranNetMemberCode *string `json:"TranNetMemberCode,omitempty" name:"TranNetMemberCode"`
+
+	// STRING(30)，原订单号（RegisterBillSupportWithdraw接口中的订单号）
+	OldOrderNo *string `json:"OldOrderNo,omitempty" name:"OldOrderNo"`
+
+	// STRING(20)，撤销金额（支持部分撤销，不能大于原订单可用金额，包含交易费用）
+	CancelAmt *string `json:"CancelAmt,omitempty" name:"CancelAmt"`
+
+	// STRING(20)，交易费用（暂未使用，默认传0.0）
+	TranFee *string `json:"TranFee,omitempty" name:"TranFee"`
+
+	// STRING(300)，备注
+	Remark *string `json:"Remark,omitempty" name:"Remark"`
+
+	// STRING(300)，保留域1
+	ReservedMsgOne *string `json:"ReservedMsgOne,omitempty" name:"ReservedMsgOne"`
+
+	// STRING(300)，保留域2
+	ReservedMsgTwo *string `json:"ReservedMsgTwo,omitempty" name:"ReservedMsgTwo"`
+
+	// STRING(300)，保留域3
+	ReservedMsgThree *string `json:"ReservedMsgThree,omitempty" name:"ReservedMsgThree"`
+}
+
+func (r *RevResigterBillSupportWithdrawRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *RevResigterBillSupportWithdrawRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type RevResigterBillSupportWithdrawResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// String(20)，返回码
+		TxnReturnCode *string `json:"TxnReturnCode,omitempty" name:"TxnReturnCode"`
+
+		// String(100)，返回信息
+		TxnReturnMsg *string `json:"TxnReturnMsg,omitempty" name:"TxnReturnMsg"`
+
+		// String(22)，交易流水号
+		CnsmrSeqNo *string `json:"CnsmrSeqNo,omitempty" name:"CnsmrSeqNo"`
+
+		// STRING(52)，见证系统流水号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		FrontSeqNo *string `json:"FrontSeqNo,omitempty" name:"FrontSeqNo"`
+
+		// STRING(1027)，保留域
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		ReservedMsg *string `json:"ReservedMsg,omitempty" name:"ReservedMsg"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *RevResigterBillSupportWithdrawResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *RevResigterBillSupportWithdrawResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 

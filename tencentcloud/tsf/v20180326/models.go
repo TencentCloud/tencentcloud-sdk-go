@@ -693,6 +693,14 @@ type ContainerGroupDetail struct {
 	// 子网id
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
+
+	// 部署组资源类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GroupResourceType *string `json:"GroupResourceType,omitempty" name:"GroupResourceType"`
+
+	// 部署组实例个数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceCount *uint64 `json:"InstanceCount,omitempty" name:"InstanceCount"`
 }
 
 type CosCredentials struct {
@@ -3583,6 +3591,7 @@ type ImageTag struct {
 	DockerVersion *string `json:"DockerVersion,omitempty" name:"DockerVersion"`
 
 	// 操作系统
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Os *string `json:"Os,omitempty" name:"Os"`
 
 	// push时间

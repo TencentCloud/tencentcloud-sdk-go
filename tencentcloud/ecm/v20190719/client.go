@@ -393,6 +393,31 @@ func (c *Client) DescribePeakNetworkOverview(request *DescribePeakNetworkOvervie
     return
 }
 
+func NewImportImageRequest() (request *ImportImageRequest) {
+    request = &ImportImageRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ecm", APIVersion, "ImportImage")
+    return
+}
+
+func NewImportImageResponse() (response *ImportImageResponse) {
+    response = &ImportImageResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 从CVM产品导入镜像到ECM
+func (c *Client) ImportImage(request *ImportImageRequest) (response *ImportImageResponse, err error) {
+    if request == nil {
+        request = NewImportImageRequest()
+    }
+    response = NewImportImageResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyInstancesAttributeRequest() (request *ModifyInstancesAttributeRequest) {
     request = &ModifyInstancesAttributeRequest{
         BaseRequest: &tchttp.BaseRequest{},

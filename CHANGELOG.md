@@ -2,47 +2,9 @@
 
 ## 企业收付平台(cpdp) 版本：2019-08-20
 
-### 第 5 次发布
+### 第 6 次发布
 
-发布时间：2020-04-07 08:18:11
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [Refund](https://cloud.tencent.com/document/api/1122/40656)
-
-	* <font color="#dd0000">**修改入参**：</font>SubOrderRefundList
-
-
-
-
-## 标签(tag) 版本：2018-08-13
-
-### 第 7 次发布
-
-发布时间：2020-04-07 08:13:55
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [DescribeTags](https://cloud.tencent.com/document/api/651/35316)
-
-	* 新增入参：ShowProject
-
-
-
-
-## 私有网络(vpc) 版本：2017-03-12
-
-### 第 41 次发布
-
-发布时间：2020-04-07 08:16:03
+发布时间：2020-04-08 08:17:50
 
 本次发布包含了以下内容：
 
@@ -50,8 +12,107 @@
 
 新增接口：
 
-* [AssociateNetworkInterfaceSecurityGroups](https://cloud.tencent.com/document/api/215/43132)
-* [DisassociateNetworkInterfaceSecurityGroups](https://cloud.tencent.com/document/api/215/43131)
+* [CreateInvoice](https://cloud.tencent.com/document/api/1122/43190)
+* [CreateMerchant](https://cloud.tencent.com/document/api/1122/43189)
+* [CreateRedInvoice](https://cloud.tencent.com/document/api/1122/43188)
+* [QueryInvoice](https://cloud.tencent.com/document/api/1122/43187)
+* [QueryInvoiceForManagement](https://cloud.tencent.com/document/api/1122/43186)
+* [QueryMerchantInfoForManagement](https://cloud.tencent.com/document/api/1122/43185)
+* [RevResigterBillSupportWithdraw](https://cloud.tencent.com/document/api/1122/40654)
+
+修改接口：
+
+* [CreateAcct](https://cloud.tencent.com/document/api/1122/40674)
+
+	* 新增入参：SubMerchantMemberType
+
+
+新增数据结构：
+
+* [CreateInvoiceItem](https://cloud.tencent.com/document/api/1122/40683#CreateInvoiceItem)
+* [CreateInvoiceResult](https://cloud.tencent.com/document/api/1122/40683#CreateInvoiceResult)
+* [CreateInvoiceResultData](https://cloud.tencent.com/document/api/1122/40683#CreateInvoiceResultData)
+* [CreateMerchantResult](https://cloud.tencent.com/document/api/1122/40683#CreateMerchantResult)
+* [CreateMerchantResultData](https://cloud.tencent.com/document/api/1122/40683#CreateMerchantResultData)
+* [CreateRedInvoiceItem](https://cloud.tencent.com/document/api/1122/40683#CreateRedInvoiceItem)
+* [CreateRedInvoiceResult](https://cloud.tencent.com/document/api/1122/40683#CreateRedInvoiceResult)
+* [CreateRedInvoiceResultData](https://cloud.tencent.com/document/api/1122/40683#CreateRedInvoiceResultData)
+* [InvoiceManagementList](https://cloud.tencent.com/document/api/1122/40683#InvoiceManagementList)
+* [InvoiceManangementResult](https://cloud.tencent.com/document/api/1122/40683#InvoiceManangementResult)
+* [MerchantManagementList](https://cloud.tencent.com/document/api/1122/40683#MerchantManagementList)
+* [MerchantManagementResult](https://cloud.tencent.com/document/api/1122/40683#MerchantManagementResult)
+* [QueryInvoiceResult](https://cloud.tencent.com/document/api/1122/40683#QueryInvoiceResult)
+* [QueryInvoiceResultData](https://cloud.tencent.com/document/api/1122/40683#QueryInvoiceResultData)
+
+
+
+## 边缘计算模块(ecm) 版本：2019-07-19
+
+### 第 3 次发布
+
+发布时间：2020-04-08 08:00:24
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [ImportImage](https://cloud.tencent.com/document/api/1108/43183)
+
+
+
+## 物联网智能视频服务(iotvideo) 版本：2019-11-26
+
+### 第 4 次发布
+
+发布时间：2020-04-08 08:01:03
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DeleteAppUsr](https://cloud.tencent.com/document/api/1131/43184)
+
+
+
+## 腾讯分布式服务框架(tsf) 版本：2018-03-26
+
+### 第 15 次发布
+
+发布时间：2020-04-08 08:15:17
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [ContainerGroupDetail](https://cloud.tencent.com/document/api/649/36099#ContainerGroupDetail)
+
+	* 新增成员：GroupResourceType, InstanceCount
+
+
+
+
+## 私有网络(vpc) 版本：2017-03-12
+
+### 第 42 次发布
+
+发布时间：2020-04-08 08:15:45
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [AllocateAddresses](https://cloud.tencent.com/document/api/215/16699)
+
+	* 新增入参：Tags
+
 
 
 
@@ -6559,6 +6620,48 @@
 
 ## 企业收付平台(cpdp) 版本：2019-08-20
 
+### 第 6 次发布
+
+发布时间：2020-04-08 08:17:50
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[CreateInvoice](https://cloud.tencent.com/document/api/1122/43190)](https://cloud.tencent.com/document/api/#/#)
+* [[CreateMerchant](https://cloud.tencent.com/document/api/1122/43189)](https://cloud.tencent.com/document/api/#/#)
+* [[CreateRedInvoice](https://cloud.tencent.com/document/api/1122/43188)](https://cloud.tencent.com/document/api/#/#)
+* [[QueryInvoice](https://cloud.tencent.com/document/api/1122/43187)](https://cloud.tencent.com/document/api/#/#)
+* [[QueryInvoiceForManagement](https://cloud.tencent.com/document/api/1122/43186)](https://cloud.tencent.com/document/api/#/#)
+* [[QueryMerchantInfoForManagement](https://cloud.tencent.com/document/api/1122/43185)](https://cloud.tencent.com/document/api/#/#)
+* [[RevResigterBillSupportWithdraw](https://cloud.tencent.com/document/api/1122/40654)](https://cloud.tencent.com/document/api/#/#)
+
+修改接口：
+
+* [CreateAcct](https://cloud.tencent.com/document/api/1122/40674)
+
+	* 新增入参：SubMerchantMemberType
+
+
+新增数据结构：
+
+* [[CreateInvoiceItem](https://cloud.tencent.com/document/api/1122/40683#CreateInvoiceItem)](https://cloud.tencent.com/document/api/1122/40683#[CreateInvoiceItem](https://cloud.tencent.com/document/api/1122/40683#CreateInvoiceItem))
+* [[CreateInvoiceResult](https://cloud.tencent.com/document/api/1122/40683#CreateInvoiceResult)](https://cloud.tencent.com/document/api/1122/40683#[CreateInvoiceResult](https://cloud.tencent.com/document/api/1122/40683#CreateInvoiceResult))
+* [[CreateInvoiceResultData](https://cloud.tencent.com/document/api/1122/40683#CreateInvoiceResultData)](https://cloud.tencent.com/document/api/1122/40683#[CreateInvoiceResultData](https://cloud.tencent.com/document/api/1122/40683#CreateInvoiceResultData))
+* [[CreateMerchantResult](https://cloud.tencent.com/document/api/1122/40683#CreateMerchantResult)](https://cloud.tencent.com/document/api/1122/40683#[CreateMerchantResult](https://cloud.tencent.com/document/api/1122/40683#CreateMerchantResult))
+* [[CreateMerchantResultData](https://cloud.tencent.com/document/api/1122/40683#CreateMerchantResultData)](https://cloud.tencent.com/document/api/1122/40683#[CreateMerchantResultData](https://cloud.tencent.com/document/api/1122/40683#CreateMerchantResultData))
+* [[CreateRedInvoiceItem](https://cloud.tencent.com/document/api/1122/40683#CreateRedInvoiceItem)](https://cloud.tencent.com/document/api/1122/40683#[CreateRedInvoiceItem](https://cloud.tencent.com/document/api/1122/40683#CreateRedInvoiceItem))
+* [[CreateRedInvoiceResult](https://cloud.tencent.com/document/api/1122/40683#CreateRedInvoiceResult)](https://cloud.tencent.com/document/api/1122/40683#[CreateRedInvoiceResult](https://cloud.tencent.com/document/api/1122/40683#CreateRedInvoiceResult))
+* [[CreateRedInvoiceResultData](https://cloud.tencent.com/document/api/1122/40683#CreateRedInvoiceResultData)](https://cloud.tencent.com/document/api/1122/40683#[CreateRedInvoiceResultData](https://cloud.tencent.com/document/api/1122/40683#CreateRedInvoiceResultData))
+* [[InvoiceManagementList](https://cloud.tencent.com/document/api/1122/40683#InvoiceManagementList)](https://cloud.tencent.com/document/api/1122/40683#[InvoiceManagementList](https://cloud.tencent.com/document/api/1122/40683#InvoiceManagementList))
+* [[InvoiceManangementResult](https://cloud.tencent.com/document/api/1122/40683#InvoiceManangementResult)](https://cloud.tencent.com/document/api/1122/40683#[InvoiceManangementResult](https://cloud.tencent.com/document/api/1122/40683#InvoiceManangementResult))
+* [[MerchantManagementList](https://cloud.tencent.com/document/api/1122/40683#MerchantManagementList)](https://cloud.tencent.com/document/api/1122/40683#[MerchantManagementList](https://cloud.tencent.com/document/api/1122/40683#MerchantManagementList))
+* [[MerchantManagementResult](https://cloud.tencent.com/document/api/1122/40683#MerchantManagementResult)](https://cloud.tencent.com/document/api/1122/40683#[MerchantManagementResult](https://cloud.tencent.com/document/api/1122/40683#MerchantManagementResult))
+* [[QueryInvoiceResult](https://cloud.tencent.com/document/api/1122/40683#QueryInvoiceResult)](https://cloud.tencent.com/document/api/1122/40683#[QueryInvoiceResult](https://cloud.tencent.com/document/api/1122/40683#QueryInvoiceResult))
+* [[QueryInvoiceResultData](https://cloud.tencent.com/document/api/1122/40683#QueryInvoiceResultData)](https://cloud.tencent.com/document/api/1122/40683#[QueryInvoiceResultData](https://cloud.tencent.com/document/api/1122/40683#QueryInvoiceResultData))
+
 ### 第 5 次发布
 
 发布时间：2020-04-07 08:18:11
@@ -9157,6 +9260,18 @@
 
 
 ## 边缘计算模块(ecm) 版本：2019-07-19
+
+### 第 3 次发布
+
+发布时间：2020-04-08 08:00:24
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[ImportImage](https://cloud.tencent.com/document/api/1108/43183)](https://cloud.tencent.com/document/api/#/#)
 
 ### 第 2 次发布
 
@@ -12208,6 +12323,18 @@
 
 
 ## 物联网智能视频服务(iotvideo) 版本：2019-11-26
+
+### 第 4 次发布
+
+发布时间：2020-04-08 08:01:03
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DeleteAppUsr](https://cloud.tencent.com/document/api/1131/43184)](https://cloud.tencent.com/document/api/#/#)
 
 ### 第 3 次发布
 
@@ -20492,6 +20619,21 @@
 
 ## 腾讯分布式服务框架(tsf) 版本：2018-03-26
 
+### 第 15 次发布
+
+发布时间：2020-04-08 08:15:17
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [ContainerGroupDetail](https://cloud.tencent.com/document/api/649/36099#ContainerGroupDetail)
+
+	* 新增成员：GroupResourceType, InstanceCount
+
+
 ### 第 14 次发布
 
 发布时间：2020-04-03 08:15:41
@@ -22470,6 +22612,21 @@
 
 ## 私有网络(vpc) 版本：2017-03-12
 
+### 第 42 次发布
+
+发布时间：2020-04-08 08:15:45
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [AllocateAddresses](https://cloud.tencent.com/document/api/215/16699)
+
+	* 新增入参：Tags
+
+
 ### 第 41 次发布
 
 发布时间：2020-04-07 08:16:03
@@ -22480,8 +22637,8 @@
 
 新增接口：
 
-* [[AssociateNetworkInterfaceSecurityGroups](https://cloud.tencent.com/document/api/215/43132)](https://cloud.tencent.com/document/api/#/#)
-* [[DisassociateNetworkInterfaceSecurityGroups](https://cloud.tencent.com/document/api/215/43131)](https://cloud.tencent.com/document/api/#/#)
+* [AssociateNetworkInterfaceSecurityGroups](https://cloud.tencent.com/document/api/215/43132)
+* [DisassociateNetworkInterfaceSecurityGroups](https://cloud.tencent.com/document/api/215/43131)
 
 ### 第 40 次发布
 

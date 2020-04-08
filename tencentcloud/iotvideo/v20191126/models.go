@@ -517,6 +517,40 @@ func (r *CreateUsrTokenResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DeleteAppUsrRequest struct {
+	*tchttp.BaseRequest
+
+	// 客户的终端用户在IoT Video上的唯一标识ID
+	AccessId *string `json:"AccessId,omitempty" name:"AccessId"`
+}
+
+func (r *DeleteAppUsrRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteAppUsrRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteAppUsrResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DeleteAppUsrResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteAppUsrResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DeleteBindingRequest struct {
 	*tchttp.BaseRequest
 

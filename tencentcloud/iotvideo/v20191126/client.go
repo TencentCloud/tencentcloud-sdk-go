@@ -324,6 +324,31 @@ func (c *Client) CreateUsrToken(request *CreateUsrTokenRequest) (response *Creat
     return
 }
 
+func NewDeleteAppUsrRequest() (request *DeleteAppUsrRequest) {
+    request = &DeleteAppUsrRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iotvideo", APIVersion, "DeleteAppUsr")
+    return
+}
+
+func NewDeleteAppUsrResponse() (response *DeleteAppUsrResponse) {
+    response = &DeleteAppUsrResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（DeleteAppUsr）用于删除终端用户。
+func (c *Client) DeleteAppUsr(request *DeleteAppUsrRequest) (response *DeleteAppUsrResponse, err error) {
+    if request == nil {
+        request = NewDeleteAppUsrRequest()
+    }
+    response = NewDeleteAppUsrResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteBindingRequest() (request *DeleteBindingRequest) {
     request = &DeleteBindingRequest{
         BaseRequest: &tchttp.BaseRequest{},
