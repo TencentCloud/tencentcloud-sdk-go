@@ -1400,6 +1400,31 @@ func (c *Client) ReplaceCertForLoadBalancers(request *ReplaceCertForLoadBalancer
     return
 }
 
+func NewSetLoadBalancerClsLogRequest() (request *SetLoadBalancerClsLogRequest) {
+    request = &SetLoadBalancerClsLogRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("clb", APIVersion, "SetLoadBalancerClsLog")
+    return
+}
+
+func NewSetLoadBalancerClsLogResponse() (response *SetLoadBalancerClsLogResponse) {
+    response = &SetLoadBalancerClsLogResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 增加、删除、更新负载均衡的日志服务(CLS)主题
+func (c *Client) SetLoadBalancerClsLog(request *SetLoadBalancerClsLogRequest) (response *SetLoadBalancerClsLogResponse, err error) {
+    if request == nil {
+        request = NewSetLoadBalancerClsLogRequest()
+    }
+    response = NewSetLoadBalancerClsLogResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewSetLoadBalancerSecurityGroupsRequest() (request *SetLoadBalancerSecurityGroupsRequest) {
     request = &SetLoadBalancerSecurityGroupsRequest{
         BaseRequest: &tchttp.BaseRequest{},

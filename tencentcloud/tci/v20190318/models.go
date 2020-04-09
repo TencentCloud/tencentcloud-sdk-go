@@ -1650,13 +1650,13 @@ type ImageTaskFunction struct {
 	// 大教室场景学生肢体动作识别选项
 	EnableActionClass *bool `json:"EnableActionClass,omitempty" name:"EnableActionClass"`
 
-	// 人脸检测选项
+	// 人脸检测选项（默认为true，目前不可编辑）
 	EnableFaceDetect *bool `json:"EnableFaceDetect,omitempty" name:"EnableFaceDetect"`
 
 	// 人脸表情识别选项
 	EnableFaceExpression *bool `json:"EnableFaceExpression,omitempty" name:"EnableFaceExpression"`
 
-	// 人脸检索选项
+	// 人脸检索选项（默认为true，目前不可编辑）
 	EnableFaceIdentify *bool `json:"EnableFaceIdentify,omitempty" name:"EnableFaceIdentify"`
 
 	// 手势选项
@@ -1674,7 +1674,7 @@ type ImageTaskFunction struct {
 	// 教师动作选项（该功能尚未支持）
 	EnableTeacherBodyMovements *bool `json:"EnableTeacherBodyMovements,omitempty" name:"EnableTeacherBodyMovements"`
 
-	// 判断老师是否在屏幕中
+	// 判断老师是否在屏幕中（该功能尚未支持）
 	EnableTeacherOutScreen *bool `json:"EnableTeacherOutScreen,omitempty" name:"EnableTeacherOutScreen"`
 }
 
@@ -2579,6 +2579,9 @@ type SubmitImageTaskRequest struct {
 
 	// 光照标准列表
 	LightStandardSet []*LightStandard `json:"LightStandardSet,omitempty" name:"LightStandardSet" list`
+
+	// 结果更新回调地址。
+	EventsCallBack *string `json:"EventsCallBack,omitempty" name:"EventsCallBack"`
 
 	// 抽帧的时间间隔，单位毫秒，默认值1000，保留字段，当前不支持填写。
 	FrameInterval *int64 `json:"FrameInterval,omitempty" name:"FrameInterval"`

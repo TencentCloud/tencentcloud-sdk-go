@@ -527,7 +527,7 @@ func (r *Get400CdrResponse) FromJsonString(s string) error {
 type GetVirtualNumRequest struct {
 	*tchttp.BaseRequest
 
-	// appId 值测试时由腾讯统一分配
+	// 业务appid
 	BizAppId *string `json:"BizAppId,omitempty" name:"BizAppId"`
 
 	// 被叫号码(号码前加 0086，如 008613631686024)

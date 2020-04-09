@@ -842,11 +842,11 @@ func (r *DescribeBindDevResponse) FromJsonString(s string) error {
 type DescribeBindUsrRequest struct {
 	*tchttp.BaseRequest
 
-	// 设备主人的AccessId
-	AccessId *string `json:"AccessId,omitempty" name:"AccessId"`
-
 	// 设备TID
 	Tid *string `json:"Tid,omitempty" name:"Tid"`
+
+	// 设备主人的AccessId
+	AccessId *string `json:"AccessId,omitempty" name:"AccessId"`
 }
 
 func (r *DescribeBindUsrRequest) ToJsonString() string {

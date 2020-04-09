@@ -3304,6 +3304,46 @@ type RuleTargets struct {
 	Targets []*Backend `json:"Targets,omitempty" name:"Targets" list`
 }
 
+type SetLoadBalancerClsLogRequest struct {
+	*tchttp.BaseRequest
+
+	// 负载均衡实例 ID
+	LoadBalancerId *string `json:"LoadBalancerId,omitempty" name:"LoadBalancerId"`
+
+	// 日志服务(CLS)的日志集ID
+	LogSetId *string `json:"LogSetId,omitempty" name:"LogSetId"`
+
+	// 日志服务(CLS)的日志主题ID
+	LogTopicId *string `json:"LogTopicId,omitempty" name:"LogTopicId"`
+}
+
+func (r *SetLoadBalancerClsLogRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *SetLoadBalancerClsLogRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type SetLoadBalancerClsLogResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *SetLoadBalancerClsLogResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *SetLoadBalancerClsLogResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type SetLoadBalancerSecurityGroupsRequest struct {
 	*tchttp.BaseRequest
 
