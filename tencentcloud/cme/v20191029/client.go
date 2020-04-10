@@ -827,6 +827,32 @@ func (c *Client) ModifyTeamMember(request *ModifyTeamMemberRequest) (response *M
     return
 }
 
+func NewMoveClassRequest() (request *MoveClassRequest) {
+    request = &MoveClassRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cme", APIVersion, "MoveClass")
+    return
+}
+
+func NewMoveClassResponse() (response *MoveClassResponse) {
+    response = &MoveClassResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 移动某一个分类到另外一个分类下，也可用于分类重命名。
+// <li>如果 SourceClassPath = /素材/视频/NBA，DestinationClassPath = /素材/视频/篮球，当 DestinationClassPath 不存在时候，操作结果为重命名 ClassPath，如果 DestinationClassPath 存在时候，操作结果为产生新目录 /素材/视频/篮球/NBA。</li>
+func (c *Client) MoveClass(request *MoveClassRequest) (response *MoveClassResponse, err error) {
+    if request == nil {
+        request = NewMoveClassRequest()
+    }
+    response = NewMoveClassResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewRevokeResourceAuthorizationRequest() (request *RevokeResourceAuthorizationRequest) {
     request = &RevokeResourceAuthorizationRequest{
         BaseRequest: &tchttp.BaseRequest{},

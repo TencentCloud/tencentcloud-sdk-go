@@ -2961,6 +2961,9 @@ type TextDetection struct {
 	// 此字段为扩展字段。
 	// GeneralBasicOcr接口返回段落信息Parag，包含ParagNo。
 	AdvancedInfo *string `json:"AdvancedInfo,omitempty" name:"AdvancedInfo"`
+
+	// 文本行在旋转纠正之后的图像中的像素坐标，表示为（左上角x, 左上角y，宽width，高height）
+	ItemPolygon *ItemCoord `json:"ItemPolygon,omitempty" name:"ItemPolygon"`
 }
 
 type TextDetectionEn struct {

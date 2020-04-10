@@ -249,6 +249,31 @@ func (c *Client) CreateProduct(request *CreateProductRequest) (response *CreateP
     return
 }
 
+func NewCreateStorageRequest() (request *CreateStorageRequest) {
+    request = &CreateStorageRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iotvideo", APIVersion, "CreateStorage")
+    return
+}
+
+func NewCreateStorageResponse() (response *CreateStorageResponse) {
+    response = &CreateStorageResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（CreateStorage）用于购买云存套餐。
+func (c *Client) CreateStorage(request *CreateStorageRequest) (response *CreateStorageResponse, err error) {
+    if request == nil {
+        request = NewCreateStorageRequest()
+    }
+    response = NewCreateStorageResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateTraceIdsRequest() (request *CreateTraceIdsRequest) {
     request = &CreateTraceIdsRequest{
         BaseRequest: &tchttp.BaseRequest{},

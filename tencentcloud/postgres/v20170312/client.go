@@ -93,6 +93,31 @@ func (c *Client) CloseServerlessDBExtranetAccess(request *CloseServerlessDBExtra
     return
 }
 
+func NewCreateDBInstancesRequest() (request *CreateDBInstancesRequest) {
+    request = &CreateDBInstancesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("postgres", APIVersion, "CreateDBInstances")
+    return
+}
+
+func NewCreateDBInstancesResponse() (response *CreateDBInstancesResponse) {
+    response = &CreateDBInstancesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口 (CreateDBInstances) 用于创建一个或者多个PostgreSQL实例。
+func (c *Client) CreateDBInstances(request *CreateDBInstancesRequest) (response *CreateDBInstancesResponse, err error) {
+    if request == nil {
+        request = NewCreateDBInstancesRequest()
+    }
+    response = NewCreateDBInstancesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateServerlessDBInstanceRequest() (request *CreateServerlessDBInstanceRequest) {
     request = &CreateServerlessDBInstanceRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -243,6 +268,31 @@ func (c *Client) DescribeDBInstanceAttribute(request *DescribeDBInstanceAttribut
     return
 }
 
+func NewDescribeDBInstancesRequest() (request *DescribeDBInstancesRequest) {
+    request = &DescribeDBInstancesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("postgres", APIVersion, "DescribeDBInstances")
+    return
+}
+
+func NewDescribeDBInstancesResponse() (response *DescribeDBInstancesResponse) {
+    response = &DescribeDBInstancesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口 (DescribeDBInstances) 用于查询一个或多个实例的详细信息。
+func (c *Client) DescribeDBInstances(request *DescribeDBInstancesRequest) (response *DescribeDBInstancesResponse, err error) {
+    if request == nil {
+        request = NewDescribeDBInstancesRequest()
+    }
+    response = NewDescribeDBInstancesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeDBSlowlogsRequest() (request *DescribeDBSlowlogsRequest) {
     request = &DescribeDBSlowlogsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -289,6 +339,31 @@ func (c *Client) DescribeDBXlogs(request *DescribeDBXlogsRequest) (response *Des
         request = NewDescribeDBXlogsRequest()
     }
     response = NewDescribeDBXlogsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeDatabasesRequest() (request *DescribeDatabasesRequest) {
+    request = &DescribeDatabasesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("postgres", APIVersion, "DescribeDatabases")
+    return
+}
+
+func NewDescribeDatabasesResponse() (response *DescribeDatabasesResponse) {
+    response = &DescribeDatabasesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 接口（DescribeDatabases）用来拉取数据库列表
+func (c *Client) DescribeDatabases(request *DescribeDatabasesRequest) (response *DescribeDatabasesResponse, err error) {
+    if request == nil {
+        request = NewDescribeDatabasesRequest()
+    }
+    response = NewDescribeDatabasesResponse()
     err = c.Send(request, response)
     return
 }
@@ -414,6 +489,31 @@ func (c *Client) DescribeZones(request *DescribeZonesRequest) (response *Describ
         request = NewDescribeZonesRequest()
     }
     response = NewDescribeZonesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDestroyDBInstanceRequest() (request *DestroyDBInstanceRequest) {
+    request = &DestroyDBInstanceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("postgres", APIVersion, "DestroyDBInstance")
+    return
+}
+
+func NewDestroyDBInstanceResponse() (response *DestroyDBInstanceResponse) {
+    response = &DestroyDBInstanceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口 (DestroyDBInstance) 用于销毁指定DBInstanceId对应的实例。
+func (c *Client) DestroyDBInstance(request *DestroyDBInstanceRequest) (response *DestroyDBInstanceResponse, err error) {
+    if request == nil {
+        request = NewDestroyDBInstanceRequest()
+    }
+    response = NewDestroyDBInstanceResponse()
     err = c.Send(request, response)
     return
 }
@@ -739,6 +839,31 @@ func (c *Client) SetAutoRenewFlag(request *SetAutoRenewFlagRequest) (response *S
         request = NewSetAutoRenewFlagRequest()
     }
     response = NewSetAutoRenewFlagResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewUpgradeDBInstanceRequest() (request *UpgradeDBInstanceRequest) {
+    request = &UpgradeDBInstanceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("postgres", APIVersion, "UpgradeDBInstance")
+    return
+}
+
+func NewUpgradeDBInstanceResponse() (response *UpgradeDBInstanceResponse) {
+    response = &UpgradeDBInstanceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（UpgradeDBInstance）用于升级实例。
+func (c *Client) UpgradeDBInstance(request *UpgradeDBInstanceRequest) (response *UpgradeDBInstanceResponse, err error) {
+    if request == nil {
+        request = NewUpgradeDBInstanceRequest()
+    }
+    response = NewUpgradeDBInstanceResponse()
     err = c.Send(request, response)
     return
 }

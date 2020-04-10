@@ -5873,6 +5873,43 @@ func (r *DescribeVpcPrivateIpAddressesResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeVpcResourceDashboardRequest struct {
+	*tchttp.BaseRequest
+
+	// Vpc实例ID，例如：vpc-f1xjkw1b。
+	VpcIds []*string `json:"VpcIds,omitempty" name:"VpcIds" list`
+}
+
+func (r *DescribeVpcResourceDashboardRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeVpcResourceDashboardRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeVpcResourceDashboardResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 资源对象列表。
+		ResourceDashboardSet []*ResourceDashboard `json:"ResourceDashboardSet,omitempty" name:"ResourceDashboardSet" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeVpcResourceDashboardResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeVpcResourceDashboardResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeVpcsRequest struct {
 	*tchttp.BaseRequest
 
@@ -9524,6 +9561,135 @@ type Resource struct {
 
 	// 带宽包资源Ip
 	AddressIp *string `json:"AddressIp,omitempty" name:"AddressIp"`
+}
+
+type ResourceDashboard struct {
+
+	// Vpc实例ID，例如：vpc-f1xjkw1b。
+	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
+
+	// 子网实例ID，例如：subnet-bthucmmy。
+	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
+
+	// 基础网络互通。
+	Classiclink *uint64 `json:"Classiclink,omitempty" name:"Classiclink"`
+
+	// 专线网关。
+	Dcg *uint64 `json:"Dcg,omitempty" name:"Dcg"`
+
+	// 对等连接。
+	Pcx *uint64 `json:"Pcx,omitempty" name:"Pcx"`
+
+	// 当前已使用的IP总数。
+	Ip *uint64 `json:"Ip,omitempty" name:"Ip"`
+
+	// NAT网关。
+	Nat *uint64 `json:"Nat,omitempty" name:"Nat"`
+
+	// VPN网关。
+	Vpngw *uint64 `json:"Vpngw,omitempty" name:"Vpngw"`
+
+	// 流日志。
+	FlowLog *uint64 `json:"FlowLog,omitempty" name:"FlowLog"`
+
+	// 网络探测。
+	NetworkDetect *uint64 `json:"NetworkDetect,omitempty" name:"NetworkDetect"`
+
+	// 网络ACL。
+	NetworkACL *uint64 `json:"NetworkACL,omitempty" name:"NetworkACL"`
+
+	// 云主机。
+	CVM *uint64 `json:"CVM,omitempty" name:"CVM"`
+
+	// 负载均衡。
+	LB *uint64 `json:"LB,omitempty" name:"LB"`
+
+	// 关系型数据库。
+	CDB *uint64 `json:"CDB,omitempty" name:"CDB"`
+
+	// 云数据库 TencentDB for Memcached。
+	Cmem *uint64 `json:"Cmem,omitempty" name:"Cmem"`
+
+	// 时序数据库。
+	CTSDB *uint64 `json:"CTSDB,omitempty" name:"CTSDB"`
+
+	// 数据库 TencentDB for MariaDB（TDSQL）。
+	MariaDB *uint64 `json:"MariaDB,omitempty" name:"MariaDB"`
+
+	// 数据库 TencentDB for SQL Server。
+	SQLServer *uint64 `json:"SQLServer,omitempty" name:"SQLServer"`
+
+	// 云数据库 TencentDB for PostgreSQL。
+	Postgres *uint64 `json:"Postgres,omitempty" name:"Postgres"`
+
+	// 网络附加存储。
+	NAS *uint64 `json:"NAS,omitempty" name:"NAS"`
+
+	// Snova云数据仓库。
+	Greenplumn *uint64 `json:"Greenplumn,omitempty" name:"Greenplumn"`
+
+	// 消息队列 CKAFKA。
+	Ckafka *uint64 `json:"Ckafka,omitempty" name:"Ckafka"`
+
+	// Grocery。
+	Grocery *uint64 `json:"Grocery,omitempty" name:"Grocery"`
+
+	// 数据加密服务。
+	HSM *uint64 `json:"HSM,omitempty" name:"HSM"`
+
+	// 游戏存储 Tcaplus。
+	Tcaplus *uint64 `json:"Tcaplus,omitempty" name:"Tcaplus"`
+
+	// Cnas。
+	Cnas *uint64 `json:"Cnas,omitempty" name:"Cnas"`
+
+	// HTAP 数据库 TiDB。
+	TiDB *uint64 `json:"TiDB,omitempty" name:"TiDB"`
+
+	// EMR 集群。
+	Emr *uint64 `json:"Emr,omitempty" name:"Emr"`
+
+	// SEAL。
+	SEAL *uint64 `json:"SEAL,omitempty" name:"SEAL"`
+
+	// 文件存储 CFS。
+	CFS *uint64 `json:"CFS,omitempty" name:"CFS"`
+
+	// Oracle。
+	Oracle *uint64 `json:"Oracle,omitempty" name:"Oracle"`
+
+	// ElasticSearch服务。
+	ElasticSearch *uint64 `json:"ElasticSearch,omitempty" name:"ElasticSearch"`
+
+	// 区块链服务。
+	TBaaS *uint64 `json:"TBaaS,omitempty" name:"TBaaS"`
+
+	// Itop。
+	Itop *uint64 `json:"Itop,omitempty" name:"Itop"`
+
+	// 云数据库审计。
+	DBAudit *uint64 `json:"DBAudit,omitempty" name:"DBAudit"`
+
+	// 企业级云数据库 CynosDB for Postgres。
+	CynosDBPostgres *uint64 `json:"CynosDBPostgres,omitempty" name:"CynosDBPostgres"`
+
+	// 数据库 TencentDB for Redis。
+	Redis *uint64 `json:"Redis,omitempty" name:"Redis"`
+
+	// 数据库 TencentDB for MongoDB。
+	MongoDB *uint64 `json:"MongoDB,omitempty" name:"MongoDB"`
+
+	// 分布式数据库 TencentDB for TDSQL。
+	DCDB *uint64 `json:"DCDB,omitempty" name:"DCDB"`
+
+	// 企业级云数据库 CynosDB for MySQL。
+	CynosDBMySQL *uint64 `json:"CynosDBMySQL,omitempty" name:"CynosDBMySQL"`
+
+	// 子网。
+	Subnet *uint64 `json:"Subnet,omitempty" name:"Subnet"`
+
+	// 路由表。
+	RouteTable *uint64 `json:"RouteTable,omitempty" name:"RouteTable"`
 }
 
 type Route struct {

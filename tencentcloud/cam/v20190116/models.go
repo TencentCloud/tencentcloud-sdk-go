@@ -233,7 +233,7 @@ type AttachPolicyInfo struct {
 type AttachRolePolicyRequest struct {
 	*tchttp.BaseRequest
 
-	// 策略ID
+	// 策略ID，入参PolicyId与PolicyName二选一
 	PolicyId *uint64 `json:"PolicyId,omitempty" name:"PolicyId"`
 
 	// 角色ID，用于指定角色，入参 AttachRoleId 与 AttachRoleName 二选一
@@ -241,6 +241,9 @@ type AttachRolePolicyRequest struct {
 
 	// 角色名称，用于指定角色，入参 AttachRoleId 与 AttachRoleName 二选一
 	AttachRoleName *string `json:"AttachRoleName,omitempty" name:"AttachRoleName"`
+
+	// 策略名，入参PolicyId与PolicyName二选一
+	PolicyName *string `json:"PolicyName,omitempty" name:"PolicyName"`
 }
 
 func (r *AttachRolePolicyRequest) ToJsonString() string {
@@ -808,7 +811,7 @@ func (r *DetachGroupPolicyResponse) FromJsonString(s string) error {
 type DetachRolePolicyRequest struct {
 	*tchttp.BaseRequest
 
-	// 策略ID
+	// 策略ID，入参PolicyId与PolicyName二选一
 	PolicyId *uint64 `json:"PolicyId,omitempty" name:"PolicyId"`
 
 	// 角色ID，用于指定角色，入参 AttachRoleId 与 AttachRoleName 二选一
@@ -816,6 +819,9 @@ type DetachRolePolicyRequest struct {
 
 	// 角色名称，用于指定角色，入参 AttachRoleId 与 AttachRoleName 二选一
 	DetachRoleName *string `json:"DetachRoleName,omitempty" name:"DetachRoleName"`
+
+	// 策略名，入参PolicyId与PolicyName二选一
+	PolicyName *string `json:"PolicyName,omitempty" name:"PolicyName"`
 }
 
 func (r *DetachRolePolicyRequest) ToJsonString() string {
@@ -1841,7 +1847,7 @@ type SetFlagRequest struct {
 	// 异地登录设置
 	OffsiteFlag *OffsiteFlag `json:"OffsiteFlag,omitempty" name:"OffsiteFlag"`
 
-	// 是否需要充值mfa
+	// 是否需要重置mfa
 	NeedResetMfa *uint64 `json:"NeedResetMfa,omitempty" name:"NeedResetMfa"`
 }
 

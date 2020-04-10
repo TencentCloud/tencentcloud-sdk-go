@@ -3267,6 +3267,31 @@ func (c *Client) DescribeVpcPrivateIpAddresses(request *DescribeVpcPrivateIpAddr
     return
 }
 
+func NewDescribeVpcResourceDashboardRequest() (request *DescribeVpcResourceDashboardRequest) {
+    request = &DescribeVpcResourceDashboardRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "DescribeVpcResourceDashboard")
+    return
+}
+
+func NewDescribeVpcResourceDashboardResponse() (response *DescribeVpcResourceDashboardResponse) {
+    response = &DescribeVpcResourceDashboardResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查看VPC资源
+func (c *Client) DescribeVpcResourceDashboard(request *DescribeVpcResourceDashboardRequest) (response *DescribeVpcResourceDashboardResponse, err error) {
+    if request == nil {
+        request = NewDescribeVpcResourceDashboardRequest()
+    }
+    response = NewDescribeVpcResourceDashboardResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeVpcsRequest() (request *DescribeVpcsRequest) {
     request = &DescribeVpcsRequest{
         BaseRequest: &tchttp.BaseRequest{},

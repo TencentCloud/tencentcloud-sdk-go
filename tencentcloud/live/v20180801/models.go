@@ -4098,10 +4098,10 @@ type DomainInfo struct {
 	// 当前客户使用的cname信息
 	CurrentCName *string `json:"CurrentCName,omitempty" name:"CurrentCName"`
 
-	// 是否租用域名
+	// 已无效，可忽略。
 	RentTag *int64 `json:"RentTag,omitempty" name:"RentTag"`
 
-	// 租用域名过期时间
+	// 已无效，可忽略。
 	RentExpireTime *string `json:"RentExpireTime,omitempty" name:"RentExpireTime"`
 
 	// 0：标准直播，

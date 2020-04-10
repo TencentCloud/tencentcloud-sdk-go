@@ -390,6 +390,46 @@ func (r *CreateProductResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type CreateStorageRequest struct {
+	*tchttp.BaseRequest
+
+	// 云存套餐ID
+	PkgId *string `json:"PkgId,omitempty" name:"PkgId"`
+
+	// 设备TID
+	Tid *string `json:"Tid,omitempty" name:"Tid"`
+
+	// 用户唯一标识，由厂商保证内部唯一性
+	UserTag *string `json:"UserTag,omitempty" name:"UserTag"`
+}
+
+func (r *CreateStorageRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateStorageRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateStorageResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateStorageResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateStorageResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type CreateTraceIdsRequest struct {
 	*tchttp.BaseRequest
 
