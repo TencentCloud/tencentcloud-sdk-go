@@ -174,7 +174,7 @@ func NewDetectLabelResponse() (response *DetectLabelResponse) {
 
 // 图像标签利用深度学习技术、海量训练数据，可以对图片进行智能分类、物体识别等。
 // 
-// 目前支持8个大类、六十多个子类、数千个标签。涵盖各种日常场景、动植物、物品、美食、卡证等。具体分类请见图像分析常见问题功能和限制部分（https://cloud.tencent.com/document/product/865/17629 ）
+// 目前支持8个大类、六十多个子类、数千个标签。涵盖各种日常场景、动植物、物品、美食、卡证等。具体分类请见[图像分析常见问题功能与限制相关](https://cloud.tencent.com/document/product/865/39164)。
 // 
 // 图像标签提供三个版本供选择：
 // 

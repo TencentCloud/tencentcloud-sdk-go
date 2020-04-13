@@ -567,6 +567,31 @@ func (c *Client) DescribePushTasks(request *DescribePushTasksRequest) (response 
     return
 }
 
+func NewDescribeReportDataRequest() (request *DescribeReportDataRequest) {
+    request = &DescribeReportDataRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cdn", APIVersion, "DescribeReportData")
+    return
+}
+
+func NewDescribeReportDataResponse() (response *DescribeReportDataResponse) {
+    response = &DescribeReportDataResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeReportData 用于查询域名/项目维度的日/周/月报表数据。
+func (c *Client) DescribeReportData(request *DescribeReportDataRequest) (response *DescribeReportDataResponse, err error) {
+    if request == nil {
+        request = NewDescribeReportDataRequest()
+    }
+    response = NewDescribeReportDataResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeTrafficPackagesRequest() (request *DescribeTrafficPackagesRequest) {
     request = &DescribeTrafficPackagesRequest{
         BaseRequest: &tchttp.BaseRequest{},

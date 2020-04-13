@@ -1618,6 +1618,31 @@ func (c *Client) DescribeRuleSets(request *DescribeRuleSetsRequest) (response *D
     return
 }
 
+func NewDescribeSchedulingDomainListRequest() (request *DescribeSchedulingDomainListRequest) {
+    request = &DescribeSchedulingDomainListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("dayu", APIVersion, "DescribeSchedulingDomainList")
+    return
+}
+
+func NewDescribeSchedulingDomainListResponse() (response *DescribeSchedulingDomainListResponse) {
+    response = &DescribeSchedulingDomainListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 获取调度域名列表
+func (c *Client) DescribeSchedulingDomainList(request *DescribeSchedulingDomainListRequest) (response *DescribeSchedulingDomainListResponse, err error) {
+    if request == nil {
+        request = NewDescribeSchedulingDomainListRequest()
+    }
+    response = NewDescribeSchedulingDomainListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeSecIndexRequest() (request *DescribeSecIndexRequest) {
     request = &DescribeSecIndexRequest{
         BaseRequest: &tchttp.BaseRequest{},

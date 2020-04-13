@@ -666,6 +666,9 @@ type NodeInfo struct {
 	// 节点本地盘信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	LocalDiskInfo *LocalDiskInfo `json:"LocalDiskInfo,omitempty" name:"LocalDiskInfo"`
+
+	// 节点磁盘块数
+	DiskCount *uint64 `json:"DiskCount,omitempty" name:"DiskCount"`
 }
 
 type Operation struct {
@@ -889,7 +892,7 @@ type UpgradeInstanceRequest struct {
 	// 实例ID
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
-	// 目标ES版本
+	// 目标ES版本，支持：”6.4.3“, "6.8.2"，"7.5.1"
 	EsVersion *string `json:"EsVersion,omitempty" name:"EsVersion"`
 
 	// 是否只做升级检查，默认值为false

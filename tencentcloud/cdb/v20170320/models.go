@@ -1138,6 +1138,9 @@ type DescribeAccountsRequest struct {
 
 	// 单次请求返回的数量，默认值为20，最小值为1，最大值为100。
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 匹配账号名的正则表达式，规则同 MySQL 官网。
+	AccountRegexp *string `json:"AccountRegexp,omitempty" name:"AccountRegexp"`
 }
 
 func (r *DescribeAccountsRequest) ToJsonString() string {
@@ -2697,7 +2700,7 @@ func (r *DescribeRollbackRangeTimeResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
-type DescribeSLowLogDataRequest struct {
+type DescribeSlowLogDataRequest struct {
 	*tchttp.BaseRequest
 
 	// 实例 ID。
@@ -2731,16 +2734,16 @@ type DescribeSLowLogDataRequest struct {
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 }
 
-func (r *DescribeSLowLogDataRequest) ToJsonString() string {
+func (r *DescribeSlowLogDataRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
-func (r *DescribeSLowLogDataRequest) FromJsonString(s string) error {
+func (r *DescribeSlowLogDataRequest) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
-type DescribeSLowLogDataResponse struct {
+type DescribeSlowLogDataResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
@@ -2756,12 +2759,12 @@ type DescribeSLowLogDataResponse struct {
 	} `json:"Response"`
 }
 
-func (r *DescribeSLowLogDataResponse) ToJsonString() string {
+func (r *DescribeSlowLogDataResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
-func (r *DescribeSLowLogDataResponse) FromJsonString(s string) error {
+func (r *DescribeSlowLogDataResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -4044,6 +4047,9 @@ type ModifyDBInstanceVipVportRequest struct {
 
 	// 子网统一 ID。
 	UniqSubnetId *string `json:"UniqSubnetId,omitempty" name:"UniqSubnetId"`
+
+	// 进行基础网络转 VPC 网络和 VPC 网络下的子网变更时，原网络中旧IP的回收时间，单位为小时，取值范围为0-168，默认值为24小时。
+	ReleaseDuration *int64 `json:"ReleaseDuration,omitempty" name:"ReleaseDuration"`
 }
 
 func (r *ModifyDBInstanceVipVportRequest) ToJsonString() string {
@@ -4059,7 +4065,8 @@ type ModifyDBInstanceVipVportResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 异步任务ID。
+		// 异步任务ID。(该返回字段目前已废弃)
+	// 注意：此字段可能返回 null，表示取不到有效值。
 		AsyncRequestId *string `json:"AsyncRequestId,omitempty" name:"AsyncRequestId"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。

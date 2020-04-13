@@ -1317,27 +1317,27 @@ func (c *Client) DescribeRollbackRangeTime(request *DescribeRollbackRangeTimeReq
     return
 }
 
-func NewDescribeSLowLogDataRequest() (request *DescribeSLowLogDataRequest) {
-    request = &DescribeSLowLogDataRequest{
+func NewDescribeSlowLogDataRequest() (request *DescribeSlowLogDataRequest) {
+    request = &DescribeSlowLogDataRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
-    request.Init().WithApiInfo("cdb", APIVersion, "DescribeSLowLogData")
+    request.Init().WithApiInfo("cdb", APIVersion, "DescribeSlowLogData")
     return
 }
 
-func NewDescribeSLowLogDataResponse() (response *DescribeSLowLogDataResponse) {
-    response = &DescribeSLowLogDataResponse{
+func NewDescribeSlowLogDataResponse() (response *DescribeSlowLogDataResponse) {
+    response = &DescribeSlowLogDataResponse{
         BaseResponse: &tchttp.BaseResponse{},
     }
     return
 }
 
 // 条件检索实例的慢日志。只允许查看一个月之内的慢日志
-func (c *Client) DescribeSLowLogData(request *DescribeSLowLogDataRequest) (response *DescribeSLowLogDataResponse, err error) {
+func (c *Client) DescribeSlowLogData(request *DescribeSlowLogDataRequest) (response *DescribeSlowLogDataResponse, err error) {
     if request == nil {
-        request = NewDescribeSLowLogDataRequest()
+        request = NewDescribeSlowLogDataRequest()
     }
-    response = NewDescribeSLowLogDataResponse()
+    response = NewDescribeSlowLogDataResponse()
     err = c.Send(request, response)
     return
 }

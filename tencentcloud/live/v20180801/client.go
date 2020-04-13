@@ -797,31 +797,6 @@ func (c *Client) DeleteLiveWatermarkRule(request *DeleteLiveWatermarkRuleRequest
     return
 }
 
-func NewDeletePullStreamConfigRequest() (request *DeletePullStreamConfigRequest) {
-    request = &DeletePullStreamConfigRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    request.Init().WithApiInfo("live", APIVersion, "DeletePullStreamConfig")
-    return
-}
-
-func NewDeletePullStreamConfigResponse() (response *DeletePullStreamConfigResponse) {
-    response = &DeletePullStreamConfigResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    }
-    return
-}
-
-// 删除直播拉流配置
-func (c *Client) DeletePullStreamConfig(request *DeletePullStreamConfigRequest) (response *DeletePullStreamConfigResponse, err error) {
-    if request == nil {
-        request = NewDeletePullStreamConfigRequest()
-    }
-    response = NewDeletePullStreamConfigResponse()
-    err = c.Send(request, response)
-    return
-}
-
 func NewDescribeBillBandwidthAndFluxListRequest() (request *DescribeBillBandwidthAndFluxListRequest) {
     request = &DescribeBillBandwidthAndFluxListRequest{
         BaseRequest: &tchttp.BaseRequest{},

@@ -1670,6 +1670,10 @@ type Instance struct {
 
 	// 添加时间
 	CreatedTime *string `json:"CreatedTime,omitempty" name:"CreatedTime"`
+
+	// 节点内网IP
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LanIP *string `json:"LanIP,omitempty" name:"LanIP"`
 }
 
 type InstanceAdvancedSettings struct {

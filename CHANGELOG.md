@@ -1,10 +1,10 @@
 # 本版本更新包含以下内容：
 
-## 访问管理(cam) 版本：2019-01-16
+## 云数据库 MySQL(cdb) 版本：2017-03-20
 
-### 第 13 次发布
+### 第 36 次发布
 
-发布时间：2020-04-09 16:33:09
+发布时间：2020-04-13 08:05:16
 
 本次发布包含了以下内容：
 
@@ -12,42 +12,42 @@
 
 修改接口：
 
-* [AttachRolePolicy](https://cloud.tencent.com/document/api/598/36226)
+* [DescribeAccounts](https://cloud.tencent.com/document/api/236/17499)
 
-	* 新增入参：PolicyName
+	* 新增入参：AccountRegexp
 
-	* <font color="#dd0000">**修改入参**：</font>PolicyId
+* [ModifyDBInstanceVipVport](https://cloud.tencent.com/document/api/236/15867)
 
-* [DetachRolePolicy](https://cloud.tencent.com/document/api/598/36222)
+	* 新增入参：ReleaseDuration
 
-	* 新增入参：PolicyName
 
-	* <font color="#dd0000">**修改入参**：</font>PolicyId
 
+
+## 内容分发网络(cdn) 版本：2018-06-06
+
+### 第 14 次发布
+
+发布时间：2020-04-13 08:05:44
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeReportData](https://cloud.tencent.com/document/api/228/43367)
+
+新增数据结构：
+
+* [ReportData](https://cloud.tencent.com/document/api/228/30987#ReportData)
 
 
 
 ## 腾讯云剪(cme) 版本：2019-10-29
 
-### 第 5 次发布
-
-发布时间：2020-04-10 08:02:25
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [MoveClass](https://cloud.tencent.com/document/api/1156/43351)
-
-
-
-## 物联网智能视频服务(iotvideo) 版本：2019-11-26
-
 ### 第 6 次发布
 
-发布时间：2020-04-10 08:01:14
+发布时间：2020-04-13 08:02:23
 
 本次发布包含了以下内容：
 
@@ -55,15 +55,35 @@
 
 新增接口：
 
-* [CreateStorage](https://cloud.tencent.com/document/api/1131/43350)
+* [CreateLink](https://cloud.tencent.com/document/api/1156/43366)
 
 
 
-## 文字识别(ocr) 版本：2018-11-19
+## 大禹网络安全(dayu) 版本：2018-07-09
 
-### 第 20 次发布
+### 第 13 次发布
 
-发布时间：2020-04-10 08:12:27
+发布时间：2020-04-13 08:07:17
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeSchedulingDomainList](https://cloud.tencent.com/document/api/1021/43369)
+
+新增数据结构：
+
+* [SchedulingDomain](https://cloud.tencent.com/document/api/1021/39225#SchedulingDomain)
+
+
+
+## Elasticsearch服务(es) 版本：2018-04-16
+
+### 第 8 次发布
+
+发布时间：2020-04-13 08:08:57
 
 本次发布包含了以下内容：
 
@@ -71,96 +91,53 @@
 
 修改数据结构：
 
-* [TextDetection](https://cloud.tencent.com/document/api/866/33527#TextDetection)
+* [NodeInfo](https://cloud.tencent.com/document/api/845/30634#NodeInfo)
 
-	* 新增成员：ItemPolygon
-
-
-
-
-## 云数据库 PostgreSQL(postgres) 版本：2017-03-12
-
-### 第 7 次发布
-
-发布时间：2020-04-10 08:13:04
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [CreateDBInstances](https://cloud.tencent.com/document/api/409/16771)
-* [DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)
-* [DescribeDatabases](https://cloud.tencent.com/document/api/409/43353)
-* [DestroyDBInstance](https://cloud.tencent.com/document/api/409/43352)
-* [UpgradeDBInstance](https://cloud.tencent.com/document/api/409/18095)
+	* 新增成员：DiskCount
 
 
 
-## 流量反欺诈(taf) 版本：2020-02-10
 
-### 第 1 次发布
+## 直播(live) 版本：2018-08-01
 
-发布时间：2020-04-09 10:50:09
+### 第 36 次发布
+
+发布时间：2020-04-13 08:11:12
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-新增接口：
+<font color="#dd0000">**删除接口**：</font>
 
-* [DetectFraudKOL](https://cloud.tencent.com/document/api/1031/43309)
-* [EnhanceTaDegree](https://cloud.tencent.com/document/api/1031/43308)
-* [RecognizeCustomizedAudience](https://cloud.tencent.com/document/api/1031/43307)
-* [RecognizePreciseTargetAudience](https://cloud.tencent.com/document/api/1031/43306)
-* [RecognizeTargetAudience](https://cloud.tencent.com/document/api/1031/43305)
-* [SendTrafficSecuritySmsMessage](https://cloud.tencent.com/document/api/1031/43304)
-
-新增数据结构：
-
-* [InputKolBspData](https://cloud.tencent.com/document/api/1031/43310#InputKolBspData)
-* [InputKolDataList](https://cloud.tencent.com/document/api/1031/43310#InputKolDataList)
-* [InputRecognizeTargetAudience](https://cloud.tencent.com/document/api/1031/43310#InputRecognizeTargetAudience)
-* [InputSendTrafficSecuritySmsMsg](https://cloud.tencent.com/document/api/1031/43310#InputSendTrafficSecuritySmsMsg)
-* [InputTaBspData](https://cloud.tencent.com/document/api/1031/43310#InputTaBspData)
-* [OutputKolData](https://cloud.tencent.com/document/api/1031/43310#OutputKolData)
-* [OutputKolValue](https://cloud.tencent.com/document/api/1031/43310#OutputKolValue)
-* [OutputRecognizeTargetAudience](https://cloud.tencent.com/document/api/1031/43310#OutputRecognizeTargetAudience)
-* [OutputRecognizeTargetAudienceValue](https://cloud.tencent.com/document/api/1031/43310#OutputRecognizeTargetAudienceValue)
-* [OutputSendTrafficSecuritySmsMsg](https://cloud.tencent.com/document/api/1031/43310#OutputSendTrafficSecuritySmsMsg)
-* [OutputTaData](https://cloud.tencent.com/document/api/1031/43310#OutputTaData)
-* [OutputTaValue](https://cloud.tencent.com/document/api/1031/43310#OutputTaValue)
+* DeletePullStreamConfig
 
 
 
-## 图像分析(tiia) 版本：2019-05-29
+## 容器服务(tke) 版本：2018-05-25
 
-### 第 10 次发布
+### 第 17 次发布
 
-发布时间：2020-04-10 08:15:09
+发布时间：2020-04-13 08:15:58
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-新增接口：
+修改数据结构：
 
-* [DetectProductBeta](https://cloud.tencent.com/document/api/865/43354)
+* [Instance](https://cloud.tencent.com/document/api/457/31866#Instance)
 
-新增数据结构：
+	* 新增成员：LanIP
 
-* [Location](https://cloud.tencent.com/document/api/865/35474#Location)
-* [ProductInfo](https://cloud.tencent.com/document/api/865/35474#ProductInfo)
-* [RegionDetected](https://cloud.tencent.com/document/api/865/35474#RegionDetected)
 
 
 
 ## 私有网络(vpc) 版本：2017-03-12
 
-### 第 44 次发布
+### 第 45 次发布
 
-发布时间：2020-04-10 08:16:25
+发布时间：2020-04-13 08:16:45
 
 本次发布包含了以下内容：
 
@@ -168,11 +145,7 @@
 
 新增接口：
 
-* [DescribeVpcResourceDashboard](https://cloud.tencent.com/document/api/215/43355)
-
-新增数据结构：
-
-* [ResourceDashboard](https://cloud.tencent.com/document/api/215/15824#ResourceDashboard)
+* [CreateAndAttachNetworkInterface](https://cloud.tencent.com/document/api/215/43370)
 
 
 
@@ -4075,6 +4048,25 @@
 
 ## 云数据库 MySQL(cdb) 版本：2017-03-20
 
+### 第 36 次发布
+
+发布时间：2020-04-13 08:05:16
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeAccounts](https://cloud.tencent.com/document/api/236/17499)
+
+	* 新增入参：AccountRegexp
+
+* [ModifyDBInstanceVipVport](https://cloud.tencent.com/document/api/236/15867)
+
+	* 新增入参：ReleaseDuration
+
+
 ### 第 35 次发布
 
 发布时间：2020-04-02 08:04:57
@@ -4875,6 +4867,22 @@
 
 
 ## 内容分发网络(cdn) 版本：2018-06-06
+
+### 第 14 次发布
+
+发布时间：2020-04-13 08:05:44
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeReportData](https://cloud.tencent.com/document/api/228/43367)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[ReportData](https://cloud.tencent.com/document/api/228/30987#ReportData)](https://cloud.tencent.com/document/api/228/30987#[ReportData](https://cloud.tencent.com/document/api/228/30987#ReportData))
 
 ### 第 13 次发布
 
@@ -6409,6 +6417,18 @@
 
 ## 腾讯云剪(cme) 版本：2019-10-29
 
+### 第 6 次发布
+
+发布时间：2020-04-13 08:02:23
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[CreateLink](https://cloud.tencent.com/document/api/1156/43366)](https://cloud.tencent.com/document/api/#/#)
+
 ### 第 5 次发布
 
 发布时间：2020-04-10 08:02:25
@@ -6419,7 +6439,7 @@
 
 新增接口：
 
-* [[MoveClass](https://cloud.tencent.com/document/api/1156/43351)](https://cloud.tencent.com/document/api/#/#)
+* [MoveClass](https://cloud.tencent.com/document/api/1156/43351)
 
 ### 第 4 次发布
 
@@ -8153,6 +8173,22 @@
 
 
 ## 大禹网络安全(dayu) 版本：2018-07-09
+
+### 第 13 次发布
+
+发布时间：2020-04-13 08:07:17
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeSchedulingDomainList](https://cloud.tencent.com/document/api/1021/43369)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[SchedulingDomain](https://cloud.tencent.com/document/api/1021/39225#SchedulingDomain)](https://cloud.tencent.com/document/api/1021/39225#[SchedulingDomain](https://cloud.tencent.com/document/api/1021/39225#SchedulingDomain))
 
 ### 第 12 次发布
 
@@ -9895,6 +9931,21 @@
 
 
 ## Elasticsearch服务(es) 版本：2018-04-16
+
+### 第 8 次发布
+
+发布时间：2020-04-13 08:08:57
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [NodeInfo](https://cloud.tencent.com/document/api/845/30634#NodeInfo)
+
+	* 新增成员：DiskCount
+
 
 ### 第 7 次发布
 
@@ -12535,7 +12586,7 @@
 
 新增接口：
 
-* [[CreateStorage](https://cloud.tencent.com/document/api/1131/43350)](https://cloud.tencent.com/document/api/#/#)
+* [CreateStorage](https://cloud.tencent.com/document/api/1131/43350)
 
 ### 第 5 次发布
 
@@ -12816,6 +12867,18 @@
 
 
 ## 直播(live) 版本：2018-08-01
+
+### 第 36 次发布
+
+发布时间：2020-04-13 08:11:12
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+<font color="#dd0000">**删除接口**：</font>
+
+* DeletePullStreamConfig
 
 ### 第 35 次发布
 
@@ -16304,11 +16367,11 @@
 
 新增接口：
 
-* [[CreateDBInstances](https://cloud.tencent.com/document/api/409/16771)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeDatabases](https://cloud.tencent.com/document/api/409/43353)](https://cloud.tencent.com/document/api/#/#)
-* [[DestroyDBInstance](https://cloud.tencent.com/document/api/409/43352)](https://cloud.tencent.com/document/api/#/#)
-* [[UpgradeDBInstance](https://cloud.tencent.com/document/api/409/18095)](https://cloud.tencent.com/document/api/#/#)
+* [CreateDBInstances](https://cloud.tencent.com/document/api/409/16771)
+* [DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)
+* [DescribeDatabases](https://cloud.tencent.com/document/api/409/43353)
+* [DestroyDBInstance](https://cloud.tencent.com/document/api/409/43352)
+* [UpgradeDBInstance](https://cloud.tencent.com/document/api/409/18095)
 
 ### 第 6 次发布
 
@@ -18028,27 +18091,27 @@
 
 新增接口：
 
-* [[DetectFraudKOL](https://cloud.tencent.com/document/api/1031/43309)](https://cloud.tencent.com/document/api/#/#)
-* [[EnhanceTaDegree](https://cloud.tencent.com/document/api/1031/43308)](https://cloud.tencent.com/document/api/#/#)
-* [[RecognizeCustomizedAudience](https://cloud.tencent.com/document/api/1031/43307)](https://cloud.tencent.com/document/api/#/#)
-* [[RecognizePreciseTargetAudience](https://cloud.tencent.com/document/api/1031/43306)](https://cloud.tencent.com/document/api/#/#)
-* [[RecognizeTargetAudience](https://cloud.tencent.com/document/api/1031/43305)](https://cloud.tencent.com/document/api/#/#)
-* [[SendTrafficSecuritySmsMessage](https://cloud.tencent.com/document/api/1031/43304)](https://cloud.tencent.com/document/api/#/#)
+* [DetectFraudKOL](https://cloud.tencent.com/document/api/1031/43309)
+* [EnhanceTaDegree](https://cloud.tencent.com/document/api/1031/43308)
+* [RecognizeCustomizedAudience](https://cloud.tencent.com/document/api/1031/43307)
+* [RecognizePreciseTargetAudience](https://cloud.tencent.com/document/api/1031/43306)
+* [RecognizeTargetAudience](https://cloud.tencent.com/document/api/1031/43305)
+* [SendTrafficSecuritySmsMessage](https://cloud.tencent.com/document/api/1031/43304)
 
 新增数据结构：
 
-* [[InputKolBspData](https://cloud.tencent.com/document/api/1031/43310#InputKolBspData)](https://cloud.tencent.com/document/api/1031/43310#[InputKolBspData](https://cloud.tencent.com/document/api/1031/43310#InputKolBspData))
-* [[InputKolDataList](https://cloud.tencent.com/document/api/1031/43310#InputKolDataList)](https://cloud.tencent.com/document/api/1031/43310#[InputKolDataList](https://cloud.tencent.com/document/api/1031/43310#InputKolDataList))
-* [[InputRecognizeTargetAudience](https://cloud.tencent.com/document/api/1031/43310#InputRecognizeTargetAudience)](https://cloud.tencent.com/document/api/1031/43310#[InputRecognizeTargetAudience](https://cloud.tencent.com/document/api/1031/43310#InputRecognizeTargetAudience))
-* [[InputSendTrafficSecuritySmsMsg](https://cloud.tencent.com/document/api/1031/43310#InputSendTrafficSecuritySmsMsg)](https://cloud.tencent.com/document/api/1031/43310#[InputSendTrafficSecuritySmsMsg](https://cloud.tencent.com/document/api/1031/43310#InputSendTrafficSecuritySmsMsg))
-* [[InputTaBspData](https://cloud.tencent.com/document/api/1031/43310#InputTaBspData)](https://cloud.tencent.com/document/api/1031/43310#[InputTaBspData](https://cloud.tencent.com/document/api/1031/43310#InputTaBspData))
-* [[OutputKolData](https://cloud.tencent.com/document/api/1031/43310#OutputKolData)](https://cloud.tencent.com/document/api/1031/43310#[OutputKolData](https://cloud.tencent.com/document/api/1031/43310#OutputKolData))
-* [[OutputKolValue](https://cloud.tencent.com/document/api/1031/43310#OutputKolValue)](https://cloud.tencent.com/document/api/1031/43310#[OutputKolValue](https://cloud.tencent.com/document/api/1031/43310#OutputKolValue))
-* [[OutputRecognizeTargetAudience](https://cloud.tencent.com/document/api/1031/43310#OutputRecognizeTargetAudience)](https://cloud.tencent.com/document/api/1031/43310#[OutputRecognizeTargetAudience](https://cloud.tencent.com/document/api/1031/43310#OutputRecognizeTargetAudience))
-* [[OutputRecognizeTargetAudienceValue](https://cloud.tencent.com/document/api/1031/43310#OutputRecognizeTargetAudienceValue)](https://cloud.tencent.com/document/api/1031/43310#[OutputRecognizeTargetAudienceValue](https://cloud.tencent.com/document/api/1031/43310#OutputRecognizeTargetAudienceValue))
-* [[OutputSendTrafficSecuritySmsMsg](https://cloud.tencent.com/document/api/1031/43310#OutputSendTrafficSecuritySmsMsg)](https://cloud.tencent.com/document/api/1031/43310#[OutputSendTrafficSecuritySmsMsg](https://cloud.tencent.com/document/api/1031/43310#OutputSendTrafficSecuritySmsMsg))
-* [[OutputTaData](https://cloud.tencent.com/document/api/1031/43310#OutputTaData)](https://cloud.tencent.com/document/api/1031/43310#[OutputTaData](https://cloud.tencent.com/document/api/1031/43310#OutputTaData))
-* [[OutputTaValue](https://cloud.tencent.com/document/api/1031/43310#OutputTaValue)](https://cloud.tencent.com/document/api/1031/43310#[OutputTaValue](https://cloud.tencent.com/document/api/1031/43310#OutputTaValue))
+* [InputKolBspData](https://cloud.tencent.com/document/api/1031/43310#InputKolBspData)
+* [InputKolDataList](https://cloud.tencent.com/document/api/1031/43310#InputKolDataList)
+* [InputRecognizeTargetAudience](https://cloud.tencent.com/document/api/1031/43310#InputRecognizeTargetAudience)
+* [InputSendTrafficSecuritySmsMsg](https://cloud.tencent.com/document/api/1031/43310#InputSendTrafficSecuritySmsMsg)
+* [InputTaBspData](https://cloud.tencent.com/document/api/1031/43310#InputTaBspData)
+* [OutputKolData](https://cloud.tencent.com/document/api/1031/43310#OutputKolData)
+* [OutputKolValue](https://cloud.tencent.com/document/api/1031/43310#OutputKolValue)
+* [OutputRecognizeTargetAudience](https://cloud.tencent.com/document/api/1031/43310#OutputRecognizeTargetAudience)
+* [OutputRecognizeTargetAudienceValue](https://cloud.tencent.com/document/api/1031/43310#OutputRecognizeTargetAudienceValue)
+* [OutputSendTrafficSecuritySmsMsg](https://cloud.tencent.com/document/api/1031/43310#OutputSendTrafficSecuritySmsMsg)
+* [OutputTaData](https://cloud.tencent.com/document/api/1031/43310#OutputTaData)
+* [OutputTaValue](https://cloud.tencent.com/document/api/1031/43310#OutputTaValue)
 
 
 
@@ -19946,13 +20009,13 @@
 
 新增接口：
 
-* [[DetectProductBeta](https://cloud.tencent.com/document/api/865/43354)](https://cloud.tencent.com/document/api/#/#)
+* [DetectProductBeta](https://cloud.tencent.com/document/api/865/43354)
 
 新增数据结构：
 
-* [[Location](https://cloud.tencent.com/document/api/865/35474#Location)](https://cloud.tencent.com/document/api/865/35474#[Location](https://cloud.tencent.com/document/api/865/35474#Location))
-* [[ProductInfo](https://cloud.tencent.com/document/api/865/35474#ProductInfo)](https://cloud.tencent.com/document/api/865/35474#[ProductInfo](https://cloud.tencent.com/document/api/865/35474#ProductInfo))
-* [[RegionDetected](https://cloud.tencent.com/document/api/865/35474#RegionDetected)](https://cloud.tencent.com/document/api/865/35474#[RegionDetected](https://cloud.tencent.com/document/api/865/35474#RegionDetected))
+* [Location](https://cloud.tencent.com/document/api/865/35474#Location)
+* [ProductInfo](https://cloud.tencent.com/document/api/865/35474#ProductInfo)
+* [RegionDetected](https://cloud.tencent.com/document/api/865/35474#RegionDetected)
 
 ### 第 9 次发布
 
@@ -20326,6 +20389,21 @@
 
 
 ## 容器服务(tke) 版本：2018-05-25
+
+### 第 17 次发布
+
+发布时间：2020-04-13 08:15:58
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [Instance](https://cloud.tencent.com/document/api/457/31866#Instance)
+
+	* 新增成员：LanIP
+
 
 ### 第 16 次发布
 
@@ -22941,6 +23019,18 @@
 
 ## 私有网络(vpc) 版本：2017-03-12
 
+### 第 45 次发布
+
+发布时间：2020-04-13 08:16:45
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[CreateAndAttachNetworkInterface](https://cloud.tencent.com/document/api/215/43370)](https://cloud.tencent.com/document/api/#/#)
+
 ### 第 44 次发布
 
 发布时间：2020-04-10 08:16:25
@@ -22951,11 +23041,11 @@
 
 新增接口：
 
-* [[DescribeVpcResourceDashboard](https://cloud.tencent.com/document/api/215/43355)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeVpcResourceDashboard](https://cloud.tencent.com/document/api/215/43355)
 
 新增数据结构：
 
-* [[ResourceDashboard](https://cloud.tencent.com/document/api/215/15824#ResourceDashboard)](https://cloud.tencent.com/document/api/215/15824#[ResourceDashboard](https://cloud.tencent.com/document/api/215/15824#ResourceDashboard))
+* [ResourceDashboard](https://cloud.tencent.com/document/api/215/15824#ResourceDashboard)
 
 ### 第 43 次发布
 

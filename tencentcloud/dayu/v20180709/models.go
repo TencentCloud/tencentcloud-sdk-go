@@ -3935,6 +3935,52 @@ func (r *DescribeRuleSetsResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeSchedulingDomainListRequest struct {
+	*tchttp.BaseRequest
+
+	// 一页条数，填0表示不分页
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 页起始偏移，取值为(页码-1)*一页条数
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 可选，筛选特定的域名
+	Domain *string `json:"Domain,omitempty" name:"Domain"`
+}
+
+func (r *DescribeSchedulingDomainListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeSchedulingDomainListRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeSchedulingDomainListResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 调度域名总数
+		Total *uint64 `json:"Total,omitempty" name:"Total"`
+
+		// 调度域名列表信息
+		DomainList []*SchedulingDomain `json:"DomainList,omitempty" name:"DomainList" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeSchedulingDomainListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeSchedulingDomainListResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeSecIndexRequest struct {
 	*tchttp.BaseRequest
 }
@@ -6107,6 +6153,44 @@ type ResourceIp struct {
 
 	// 资源的IP数组
 	IpList []*string `json:"IpList,omitempty" name:"IpList" list`
+}
+
+type SchedulingDomain struct {
+
+	// 调度域名
+	Domain *string `json:"Domain,omitempty" name:"Domain"`
+
+	// BGP线路IP列表
+	BGPIpList []*string `json:"BGPIpList,omitempty" name:"BGPIpList" list`
+
+	// 电信线路IP列表
+	CTCCIpList []*string `json:"CTCCIpList,omitempty" name:"CTCCIpList" list`
+
+	// 联通线路IP列表
+	CUCCIpList []*string `json:"CUCCIpList,omitempty" name:"CUCCIpList" list`
+
+	// 移动线路IP列表
+	CMCCIpList []*string `json:"CMCCIpList,omitempty" name:"CMCCIpList" list`
+
+	// 海外线路IP列表
+	OverseaIpList []*string `json:"OverseaIpList,omitempty" name:"OverseaIpList" list`
+
+	// 调度方式，当前仅支持优先级, 取值为priority
+	Method *string `json:"Method,omitempty" name:"Method"`
+
+	// 创建时间
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// ttl
+	TTL *uint64 `json:"TTL,omitempty" name:"TTL"`
+
+	// 状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *uint64 `json:"Status,omitempty" name:"Status"`
+
+	// 修改时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ModifyTime *string `json:"ModifyTime,omitempty" name:"ModifyTime"`
 }
 
 type SuccessCode struct {

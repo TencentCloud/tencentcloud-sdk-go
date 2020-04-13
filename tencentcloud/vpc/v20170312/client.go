@@ -601,6 +601,36 @@ func (c *Client) CreateAddressTemplateGroup(request *CreateAddressTemplateGroupR
     return
 }
 
+func NewCreateAndAttachNetworkInterfaceRequest() (request *CreateAndAttachNetworkInterfaceRequest) {
+    request = &CreateAndAttachNetworkInterfaceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "CreateAndAttachNetworkInterface")
+    return
+}
+
+func NewCreateAndAttachNetworkInterfaceResponse() (response *CreateAndAttachNetworkInterfaceResponse) {
+    response = &CreateAndAttachNetworkInterfaceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（CreateAndAttachNetworkInterface）用于创建弹性网卡并绑定云主机。
+// * 创建弹性网卡时可以指定内网IP，并且可以指定一个主IP，指定的内网IP必须在弹性网卡所在子网内，而且不能被占用。
+// * 创建弹性网卡时可以指定需要申请的内网IP数量，系统会随机生成内网IP地址。
+// * 一个弹性网卡支持绑定的IP地址是有限制的，更多资源限制信息详见<a href="/document/product/576/18527">弹性网卡使用限制</a>。
+// * 创建弹性网卡同时可以绑定已有安全组。
+// * 创建弹性网卡同时可以绑定标签, 应答里的标签列表代表添加成功的标签。
+func (c *Client) CreateAndAttachNetworkInterface(request *CreateAndAttachNetworkInterfaceRequest) (response *CreateAndAttachNetworkInterfaceResponse, err error) {
+    if request == nil {
+        request = NewCreateAndAttachNetworkInterfaceRequest()
+    }
+    response = NewCreateAndAttachNetworkInterfaceResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateAssistantCidrRequest() (request *CreateAssistantCidrRequest) {
     request = &CreateAssistantCidrRequest{
         BaseRequest: &tchttp.BaseRequest{},

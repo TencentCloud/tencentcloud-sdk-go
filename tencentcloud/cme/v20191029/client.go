@@ -95,6 +95,31 @@ func (c *Client) CreateClass(request *CreateClassRequest) (response *CreateClass
     return
 }
 
+func NewCreateLinkRequest() (request *CreateLinkRequest) {
+    request = &CreateLinkRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cme", APIVersion, "CreateLink")
+    return
+}
+
+func NewCreateLinkResponse() (response *CreateLinkResponse) {
+    response = &CreateLinkResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+//  创建素材链接或分类路径链接，将源资源信息链接到目标。
+func (c *Client) CreateLink(request *CreateLinkRequest) (response *CreateLinkResponse, err error) {
+    if request == nil {
+        request = NewCreateLinkRequest()
+    }
+    response = NewCreateLinkResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateProjectRequest() (request *CreateProjectRequest) {
     request = &CreateProjectRequest{
         BaseRequest: &tchttp.BaseRequest{},

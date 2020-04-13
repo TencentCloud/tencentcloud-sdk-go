@@ -1598,40 +1598,6 @@ func (r *DeleteLiveWatermarkRuleResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
-type DeletePullStreamConfigRequest struct {
-	*tchttp.BaseRequest
-
-	// 配置id。
-	ConfigId *string `json:"ConfigId,omitempty" name:"ConfigId"`
-}
-
-func (r *DeletePullStreamConfigRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-func (r *DeletePullStreamConfigRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
-}
-
-type DeletePullStreamConfigResponse struct {
-	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
-}
-
-func (r *DeletePullStreamConfigResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-func (r *DeletePullStreamConfigResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
-}
-
 type DescribeBillBandwidthAndFluxListRequest struct {
 	*tchttp.BaseRequest
 
@@ -2492,7 +2458,10 @@ func (r *DescribeLiveRecordTemplateResponse) FromJsonString(s string) error {
 type DescribeLiveRecordTemplatesRequest struct {
 	*tchttp.BaseRequest
 
-	// 是否属于慢直播模板
+	// 是否属于慢直播模板。默认：0。
+	// 示例：
+	// 0 - 标准直播。
+	// 1 - 慢直播。
 	IsDelayLive *int64 `json:"IsDelayLive,omitempty" name:"IsDelayLive"`
 }
 

@@ -190,6 +190,71 @@ func (r *CreateClassResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type CreateLinkRequest struct {
+	*tchttp.BaseRequest
+
+	// 平台名称，指定访问的平台。
+	Platform *string `json:"Platform,omitempty" name:"Platform"`
+
+	// 链接类型，取值有:
+	// <li>CLASS: 分类链接；</li>
+	// <li> MATERIAL：素材链接。</li>
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 链接名称，不能超过30个字符。
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 链接归属实体。
+	Owner *Entity `json:"Owner,omitempty" name:"Owner"`
+
+	// 目标资源Id。取值：
+	// <li>当 Type 为 MATERIAL 时填素材 ID；</li>
+	// <li>当 Type 为 CLASS 时填写分类路径。</li>
+	DestinationId *string `json:"DestinationId,omitempty" name:"DestinationId"`
+
+	// 目标资源归属者。
+	DestinationOwner *Entity `json:"DestinationOwner,omitempty" name:"DestinationOwner"`
+
+	// 链接的分类路径，如填"/a/b"则代表链接属于该分类路径，不填则默认为根路径。
+	ClassPath *string `json:"ClassPath,omitempty" name:"ClassPath"`
+
+	// 链接标签，单个标签长度不能超过10，数组长度不能超过10。
+	Tags []*string `json:"Tags,omitempty" name:"Tags" list`
+
+	// 操作者。填写用户的 Id，用于标识调用者及校验操作权限。
+	Operator *string `json:"Operator,omitempty" name:"Operator"`
+}
+
+func (r *CreateLinkRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateLinkRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateLinkResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 新建链接的素材 Id。
+		MaterialId *string `json:"MaterialId,omitempty" name:"MaterialId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateLinkResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateLinkResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type CreateProjectRequest struct {
 	*tchttp.BaseRequest
 

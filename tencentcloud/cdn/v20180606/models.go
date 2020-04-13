@@ -1702,6 +1702,69 @@ func (r *DescribePushTasksResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeReportDataRequest struct {
+	*tchttp.BaseRequest
+
+	// 查询起始时间
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 查询结束时间
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 报表类型
+	// daily：日报表
+	// weekly：周报表
+	// monthly：月报表
+	ReportType *string `json:"ReportType,omitempty" name:"ReportType"`
+
+	// 域名加速区域
+	// mainland：中国境内
+	// overseas：中国境外
+	Area *string `json:"Area,omitempty" name:"Area"`
+
+	// 偏移量，默认0。
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 数据个数，默认1000。
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 按项目ID筛选
+	Project *int64 `json:"Project,omitempty" name:"Project"`
+}
+
+func (r *DescribeReportDataRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeReportDataRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeReportDataResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 域名维度数据详情
+		DomainReport []*ReportData `json:"DomainReport,omitempty" name:"DomainReport" list`
+
+		// 项目维度数据详情
+		ProjectReport []*ReportData `json:"ProjectReport,omitempty" name:"ProjectReport" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeReportDataResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeReportDataResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeTrafficPackagesRequest struct {
 	*tchttp.BaseRequest
 
@@ -3309,6 +3372,27 @@ type RegionMapRelation struct {
 
 	// 子区域ID列表
 	SubRegionIdList []*int64 `json:"SubRegionIdList,omitempty" name:"SubRegionIdList" list`
+}
+
+type ReportData struct {
+
+	// 项目ID/域名ID。
+	ResourceId *string `json:"ResourceId,omitempty" name:"ResourceId"`
+
+	// 项目名称/域名。
+	Resource *string `json:"Resource,omitempty" name:"Resource"`
+
+	// 流量总和/带宽最大值，单位分别为bytes，bps。
+	Value *int64 `json:"Value,omitempty" name:"Value"`
+
+	// 单个资源占总体百分比。
+	Percentage *float64 `json:"Percentage,omitempty" name:"Percentage"`
+
+	// 计费流量总和/计费带宽最大值，单位分别为bytes，bps。
+	BillingValue *int64 `json:"BillingValue,omitempty" name:"BillingValue"`
+
+	// 计费数值占总体百分比。
+	BillingPercentage *float64 `json:"BillingPercentage,omitempty" name:"BillingPercentage"`
 }
 
 type RequestHeader struct {
