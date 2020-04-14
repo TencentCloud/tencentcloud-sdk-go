@@ -41,7 +41,6 @@ type CHPResponse struct {
 
 	// 标记次数
 	TagCount *int64 `json:"TagCount,omitempty" name:"TagCount"`
-	} `json:"Response"`
 }
 
 type CreateSmpnEpaRequest struct {
@@ -257,7 +256,6 @@ type EPAResponse struct {
 
 	// 0成功 其他失败
 	RetCode *int64 `json:"RetCode,omitempty" name:"RetCode"`
-	} `json:"Response"`
 }
 
 type FNRRequest struct {
@@ -270,7 +268,6 @@ type FNRResponse struct {
 
 	// 虚假号码描述
 	Status *int64 `json:"Status,omitempty" name:"Status"`
-	} `json:"Response"`
 }
 
 type MHMRequest struct {
@@ -294,7 +291,6 @@ type MHMResponse struct {
 
 	// 标记次数
 	TagCount *int64 `json:"TagCount,omitempty" name:"TagCount"`
-	} `json:"Response"`
 }
 
 type MRLRequest struct {
@@ -319,5 +315,4 @@ type MRLResponse struct {
 
 	// 诈骗电话恶意标记等级
 	CheatLevel *int64 `json:"CheatLevel,omitempty" name:"CheatLevel"`
-	} `json:"Response"`
 }

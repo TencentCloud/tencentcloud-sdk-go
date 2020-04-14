@@ -81,7 +81,6 @@ type BRIResponse struct {
 	// 3) 风险   说明: APK为外挂或色情等风险应用
 	// 4) 病毒   说明: APK为包含恶意代码的恶意软件吗,可能破坏系统或者其他app正常使用
 	Tags []*string `json:"Tags,omitempty" name:"Tags" list`
-	} `json:"Response"`
 }
 
 type DescribeBRIRequest struct {

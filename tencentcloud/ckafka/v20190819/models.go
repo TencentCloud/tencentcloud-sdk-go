@@ -51,7 +51,6 @@ type AclResponse struct {
 	// ACL列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AclList []*Acl `json:"AclList,omitempty" name:"AclList" list`
-	} `json:"Response"`
 }
 
 type AppIdResponse struct {
@@ -62,7 +61,6 @@ type AppIdResponse struct {
 	// 符合要求的App Id列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AppIdList []*int64 `json:"AppIdList,omitempty" name:"AppIdList" list`
-	} `json:"Response"`
 }
 
 type Assignment struct {
@@ -148,7 +146,6 @@ type ConsumerGroupResponse struct {
 	// 监控的组列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	GroupListForMonitor []*Group `json:"GroupListForMonitor,omitempty" name:"GroupListForMonitor" list`
-	} `json:"Response"`
 }
 
 type ConsumerGroupTopic struct {
@@ -1264,7 +1261,6 @@ type GroupInfoResponse struct {
 
 	// Kafka 消费分组
 	Group *string `json:"Group,omitempty" name:"Group"`
-	} `json:"Response"`
 }
 
 type GroupInfoTopics struct {
@@ -1307,7 +1303,6 @@ type GroupOffsetResponse struct {
 	// 该主题分区数组，其中每个元素为一个 json object
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TopicList []*GroupOffsetTopic `json:"TopicList,omitempty" name:"TopicList" list`
-	} `json:"Response"`
 }
 
 type GroupOffsetTopic struct {
@@ -1329,7 +1324,6 @@ type GroupResponse struct {
 	// GroupList
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	GroupList []*DescribeGroup `json:"GroupList,omitempty" name:"GroupList" list`
-	} `json:"Response"`
 }
 
 type Instance struct {
@@ -1433,7 +1427,6 @@ type InstanceAttributesResponse struct {
 	// 售卖类型
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Cvm *int64 `json:"Cvm,omitempty" name:"Cvm"`
-	} `json:"Response"`
 }
 
 type InstanceConfigDO struct {
@@ -1527,7 +1520,6 @@ type InstanceDetailResponse struct {
 
 	// 符合条件的实例详情列表
 	InstanceList []*InstanceDetail `json:"InstanceList,omitempty" name:"InstanceList" list`
-	} `json:"Response"`
 }
 
 type InstanceResponse struct {
@@ -1539,7 +1531,6 @@ type InstanceResponse struct {
 	// 符合条件的结果总数
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
-	} `json:"Response"`
 }
 
 type JgwOperateResponse struct {
@@ -1553,7 +1544,6 @@ type JgwOperateResponse struct {
 	// 操作型返回的Data数据,可能有flowId等
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Data *OperateResponseData `json:"Data,omitempty" name:"Data"`
-	} `json:"Response"`
 }
 
 type ModifyGroupOffsetsRequest struct {
@@ -1865,7 +1855,6 @@ type TopicAttributesResponse struct {
 
 	// 分区详情
 	Partitions []*TopicPartitionDO `json:"Partitions,omitempty" name:"Partitions" list`
-	} `json:"Response"`
 }
 
 type TopicDetail struct {
@@ -1918,7 +1907,6 @@ type TopicDetailResponse struct {
 
 	// 符合条件的所有主题详情数量
 	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
-	} `json:"Response"`
 }
 
 type TopicPartitionDO struct {
@@ -1970,7 +1958,6 @@ type UserResponse struct {
 
 	// 符合条件的总用户数
 	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
-	} `json:"Response"`
 }
 
 type VipEntity struct {
