@@ -51,6 +51,55 @@ type Acct struct {
 	MaintenanceDate *string `json:"MaintenanceDate,omitempty" name:"MaintenanceDate"`
 }
 
+type ApplyReWithdrawalRequest struct {
+	*tchttp.BaseRequest
+
+	// 聚鑫业务类型
+	BusinessType *uint64 `json:"BusinessType,omitempty" name:"BusinessType"`
+
+	// 由平台客服提供的计费密钥Id
+	MidasSecretId *string `json:"MidasSecretId,omitempty" name:"MidasSecretId"`
+
+	// 计费签名
+	MidasSignature *string `json:"MidasSignature,omitempty" name:"MidasSignature"`
+
+	// 提现信息
+	Body *WithdrawBill `json:"Body,omitempty" name:"Body"`
+
+	// 聚鑫业务ID
+	MidasAppId *string `json:"MidasAppId,omitempty" name:"MidasAppId"`
+}
+
+func (r *ApplyReWithdrawalRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ApplyReWithdrawalRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ApplyReWithdrawalResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 重新提现业务订单号
+		WithdrawOrderId *string `json:"WithdrawOrderId,omitempty" name:"WithdrawOrderId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ApplyReWithdrawalResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ApplyReWithdrawalResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type ApplyWithdrawalRequest struct {
 	*tchttp.BaseRequest
 
@@ -1548,6 +1597,196 @@ func (r *QueryAcctBindingResponse) ToJsonString() string {
 
 func (r *QueryAcctBindingResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
+}
+
+type QueryAcctInfoListRequest struct {
+	*tchttp.BaseRequest
+
+	// 聚鑫分配的支付主MidasAppId
+	MidasAppId *string `json:"MidasAppId,omitempty" name:"MidasAppId"`
+
+	// 查询开始时间(以开户时间为准)
+	QueryAcctBeginTime *string `json:"QueryAcctBeginTime,omitempty" name:"QueryAcctBeginTime"`
+
+	// 查询结束时间(以开户时间为准)
+	QueryAcctEndTime *string `json:"QueryAcctEndTime,omitempty" name:"QueryAcctEndTime"`
+
+	// 分页号,  起始值为1，每次最多返回20条记录，第二页返回的记录数为第21至40条记录，第三页为41至60条记录，顺序均按照开户时间的先后
+	PageOffset *string `json:"PageOffset,omitempty" name:"PageOffset"`
+
+	// 由平台客服提供的计费密钥Id
+	MidasSecretId *string `json:"MidasSecretId,omitempty" name:"MidasSecretId"`
+
+	// 计费签名
+	MidasSignature *string `json:"MidasSignature,omitempty" name:"MidasSignature"`
+}
+
+func (r *QueryAcctInfoListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *QueryAcctInfoListRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type QueryAcctInfoListResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 本次交易返回查询结果记录数
+		ResultCount *int64 `json:"ResultCount,omitempty" name:"ResultCount"`
+
+		// 符合业务查询条件的记录总数
+		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 查询结果项 [object,object]
+		QueryAcctItems []*QueryAcctItem `json:"QueryAcctItems,omitempty" name:"QueryAcctItems" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *QueryAcctInfoListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *QueryAcctInfoListResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type QueryAcctInfoRequest struct {
+	*tchttp.BaseRequest
+
+	// 聚鑫平台分配的支付MidasAppId
+	MidasAppId *string `json:"MidasAppId,omitempty" name:"MidasAppId"`
+
+	// 业务平台的子商户Id，唯一
+	SubMchId *string `json:"SubMchId,omitempty" name:"SubMchId"`
+
+	// 由平台客服提供的计费密钥Id
+	MidasSecretId *string `json:"MidasSecretId,omitempty" name:"MidasSecretId"`
+
+	// 计费签名
+	MidasSignature *string `json:"MidasSignature,omitempty" name:"MidasSignature"`
+}
+
+func (r *QueryAcctInfoRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *QueryAcctInfoRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type QueryAcctInfoResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 聚鑫计费SubAppId，代表子商户
+		SubAppId *string `json:"SubAppId,omitempty" name:"SubAppId"`
+
+		// 子商户名称
+		SubMchName *string `json:"SubMchName,omitempty" name:"SubMchName"`
+
+		// 子商户类型：
+	// 个人: personal
+	// 企业：enterprise
+	// 缺省： enterprise
+		SubMchType *string `json:"SubMchType,omitempty" name:"SubMchType"`
+
+		// 不填则默认子商户名称
+		ShortName *string `json:"ShortName,omitempty" name:"ShortName"`
+
+		// 子商户地址
+		Address *string `json:"Address,omitempty" name:"Address"`
+
+		// 子商户联系人子商户联系人
+	// <敏感信息>
+		Contact *string `json:"Contact,omitempty" name:"Contact"`
+
+		// 联系人手机号
+	// <敏感信息>
+		Mobile *string `json:"Mobile,omitempty" name:"Mobile"`
+
+		// 邮箱 
+	// <敏感信息>
+		Email *string `json:"Email,omitempty" name:"Email"`
+
+		// 子商户id
+		SubMchId *string `json:"SubMchId,omitempty" name:"SubMchId"`
+
+		// 子账户
+		SubAcctNo *string `json:"SubAcctNo,omitempty" name:"SubAcctNo"`
+
+		// 子商户会员类型：
+	// general:普通子账户
+	// merchant:商户子账户
+	// 缺省： general
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		SubMerchantMemberType *string `json:"SubMerchantMemberType,omitempty" name:"SubMerchantMemberType"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *QueryAcctInfoResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *QueryAcctInfoResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type QueryAcctItem struct {
+
+	// 子商户类型：
+	// 个人: personal
+	// 企业：enterprise
+	// 缺省： enterprise
+	SubMchType *string `json:"SubMchType,omitempty" name:"SubMchType"`
+
+	// 子商户名称
+	SubMchName *string `json:"SubMchName,omitempty" name:"SubMchName"`
+
+	// 子账号号
+	SubAcctNo *string `json:"SubAcctNo,omitempty" name:"SubAcctNo"`
+
+	// 不填则默认子商户名称
+	ShortName *string `json:"ShortName,omitempty" name:"ShortName"`
+
+	// 业务平台的子商户Id，唯一
+	SubMchId *string `json:"SubMchId,omitempty" name:"SubMchId"`
+
+	// 聚鑫计费SubAppId，代表子商户
+	SubAppId *string `json:"SubAppId,omitempty" name:"SubAppId"`
+
+	// 子商户联系人
+	// <敏感信息>
+	Contact *string `json:"Contact,omitempty" name:"Contact"`
+
+	// 子商户地址
+	Address *string `json:"Address,omitempty" name:"Address"`
+
+	// 联系人手机号
+	// <敏感信息>
+	Mobile *string `json:"Mobile,omitempty" name:"Mobile"`
+
+	// 邮箱 
+	// <敏感信息>
+	Email *string `json:"Email,omitempty" name:"Email"`
+
+	// 子商户会员类型：
+	// general:普通子账户
+	// merchant:商户子账户
+	// 缺省： general
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SubMerchantMemberType *string `json:"SubMerchantMemberType,omitempty" name:"SubMerchantMemberType"`
 }
 
 type QueryBalanceRequest struct {
@@ -3861,6 +4100,33 @@ func (r *UnifiedOrderResponse) ToJsonString() string {
 
 func (r *UnifiedOrderResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
+}
+
+type WithdrawBill struct {
+
+	// 业务提现订单号
+	WithdrawOrderId *string `json:"WithdrawOrderId,omitempty" name:"WithdrawOrderId"`
+
+	// 提现日期
+	Date *string `json:"Date,omitempty" name:"Date"`
+
+	// 提现金额，单位： 分
+	PayAmt *string `json:"PayAmt,omitempty" name:"PayAmt"`
+
+	// 聚鑫分配转入账户appid
+	InSubAppId *string `json:"InSubAppId,omitempty" name:"InSubAppId"`
+
+	// 聚鑫分配转出账户appid
+	OutSubAppId *string `json:"OutSubAppId,omitempty" name:"OutSubAppId"`
+
+	// ISO货币代码
+	CurrencyType *string `json:"CurrencyType,omitempty" name:"CurrencyType"`
+
+	// 透传字段
+	MetaData *string `json:"MetaData,omitempty" name:"MetaData"`
+
+	// 扩展字段
+	ExtendFieldData *string `json:"ExtendFieldData,omitempty" name:"ExtendFieldData"`
 }
 
 type WithdrawCashMembershipRequest struct {

@@ -146,6 +146,56 @@ func (c *Client) BindLiveDomainCert(request *BindLiveDomainCertRequest) (respons
     return
 }
 
+func NewCancelCommonMixStreamRequest() (request *CancelCommonMixStreamRequest) {
+    request = &CancelCommonMixStreamRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("live", APIVersion, "CancelCommonMixStream")
+    return
+}
+
+func NewCancelCommonMixStreamResponse() (response *CancelCommonMixStreamResponse) {
+    response = &CancelCommonMixStreamResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 该接口用来取消混流。用法与 mix_streamv2.cancel_mix_stream 基本一致。
+func (c *Client) CancelCommonMixStream(request *CancelCommonMixStreamRequest) (response *CancelCommonMixStreamResponse, err error) {
+    if request == nil {
+        request = NewCancelCommonMixStreamRequest()
+    }
+    response = NewCancelCommonMixStreamResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateCommonMixStreamRequest() (request *CreateCommonMixStreamRequest) {
+    request = &CreateCommonMixStreamRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("live", APIVersion, "CreateCommonMixStream")
+    return
+}
+
+func NewCreateCommonMixStreamResponse() (response *CreateCommonMixStreamResponse) {
+    response = &CreateCommonMixStreamResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 该接口用来创建通用混流。用法与旧接口 mix_streamv2.start_mix_stream_advanced 基本一致。
+func (c *Client) CreateCommonMixStream(request *CreateCommonMixStreamRequest) (response *CreateCommonMixStreamResponse, err error) {
+    if request == nil {
+        request = NewCreateCommonMixStreamRequest()
+    }
+    response = NewCreateCommonMixStreamResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateLiveCallbackRuleRequest() (request *CreateLiveCallbackRuleRequest) {
     request = &CreateLiveCallbackRuleRequest{
         BaseRequest: &tchttp.BaseRequest{},

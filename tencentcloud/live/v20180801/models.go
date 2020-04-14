@@ -279,6 +279,40 @@ type CallBackTemplateInfo struct {
 	CallbackKey *string `json:"CallbackKey,omitempty" name:"CallbackKey"`
 }
 
+type CancelCommonMixStreamRequest struct {
+	*tchttp.BaseRequest
+
+	// 混流会话（申请混流开始到取消混流结束）标识 ID。
+	MixStreamSessionId *string `json:"MixStreamSessionId,omitempty" name:"MixStreamSessionId"`
+}
+
+func (r *CancelCommonMixStreamRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CancelCommonMixStreamRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CancelCommonMixStreamResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CancelCommonMixStreamResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CancelCommonMixStreamResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type CdnPlayStatData struct {
 
 	// 时间点，格式为yyyy-mm-dd HH:MM:SS。
@@ -347,6 +381,141 @@ type ClientIpPlaySumInfo struct {
 	CountryArea *string `json:"CountryArea,omitempty" name:"CountryArea"`
 }
 
+type CommonMixControlParams struct {
+
+	// 取值范围[0,1]。
+	// 填1时，当参数中图层分辨率参数与视频实际分辨率不一致时，自动从视频中按图层设置的分辨率比例进行裁剪。
+	UseMixCropCenter *int64 `json:"UseMixCropCenter,omitempty" name:"UseMixCropCenter"`
+}
+
+type CommonMixCropParams struct {
+
+	// 裁剪的宽度。取值范围[0，3000]。
+	CropWidth *float64 `json:"CropWidth,omitempty" name:"CropWidth"`
+
+	// 裁剪的高度。取值范围[0，3000]。
+	CropHeight *float64 `json:"CropHeight,omitempty" name:"CropHeight"`
+
+	// 裁剪的起始X坐标。取值范围[0，3000]。
+	CropStartLocationX *float64 `json:"CropStartLocationX,omitempty" name:"CropStartLocationX"`
+
+	// 裁剪的起始Y坐标。取值范围[0，3000]。
+	CropStartLocationY *float64 `json:"CropStartLocationY,omitempty" name:"CropStartLocationY"`
+}
+
+type CommonMixInputParam struct {
+
+	// 输入流名称。80字节以内，仅含字母、数字以及下划线的字符串。
+	InputStreamName *string `json:"InputStreamName,omitempty" name:"InputStreamName"`
+
+	// 输入流布局参数。
+	LayoutParams *CommonMixLayoutParams `json:"LayoutParams,omitempty" name:"LayoutParams"`
+
+	// 输入流裁剪参数。
+	CropParams *CommonMixCropParams `json:"CropParams,omitempty" name:"CropParams"`
+}
+
+type CommonMixLayoutParams struct {
+
+	// 输入图层。取值范围[1，16]。
+	// 1)背景流（即大主播画面或画布）的 image_layer 填1。
+	// 2)纯音频混流，该参数也需填。
+	ImageLayer *int64 `json:"ImageLayer,omitempty" name:"ImageLayer"`
+
+	// 输入类型。取值范围[0，5]。
+	// 不填默认为0。
+	// 0表示输入流为音视频。
+	// 2表示输入流为图片。
+	// 3表示输入流为画布。 
+	// 4表示输入流为音频。
+	// 5表示输入流为纯视频。
+	InputType *int64 `json:"InputType,omitempty" name:"InputType"`
+
+	// 输入画面在输出时的宽度。取值范围：
+	// 像素：[0，3000]
+	// 百分比：[0.01，0.99]
+	// 不填默认为输入流的宽度。
+	// 使用百分比时，期望输出为（百分比 * 背景宽）。
+	ImageWidth *float64 `json:"ImageWidth,omitempty" name:"ImageWidth"`
+
+	// 输入画面在输出时的高度。取值范围：
+	// 像素：[0，3000]
+	// 百分比：[0.01，0.99]
+	// 不填默认为输入流的高度。
+	// 使用百分比时，期望输出为（百分比 * 背景高）。
+	ImageHeight *float64 `json:"ImageHeight,omitempty" name:"ImageHeight"`
+
+	// 输入在输出画面的X偏移。取值范围：
+	// 像素：[0，3000]
+	// 百分比：[0.01，0.99]
+	// 不填默认为0。
+	// 相对于大主播背景画面左上角的横向偏移。 
+	// 使用百分比时，期望输出为（百分比 * 背景宽）。
+	LocationX *float64 `json:"LocationX,omitempty" name:"LocationX"`
+
+	// 输入在输出画面的Y偏移。取值范围：
+	// 像素：[0，3000]
+	// 百分比：[0.01，0.99]
+	// 不填默认为0。
+	// 相对于大主播背景画面左上角的纵向偏移。 
+	// 使用百分比时，期望输出为（百分比 * 背景宽）
+	LocationY *float64 `json:"LocationY,omitempty" name:"LocationY"`
+
+	// 当InputType为3(画布)时，该值表示画布的颜色。
+	// 常用的颜色有：
+	// 红色：0xcc0033。
+	// 黄色：0xcc9900。
+	// 绿色：0xcccc33。
+	// 蓝色：0x99CCFF。
+	// 黑色：0x000000。
+	// 白色：0xFFFFFF。
+	// 灰色：0x999999。
+	Color *string `json:"Color,omitempty" name:"Color"`
+
+	// 当InputType为2(图片)时，该值是水印ID。
+	WatermarkId *int64 `json:"WatermarkId,omitempty" name:"WatermarkId"`
+}
+
+type CommonMixOutputParams struct {
+
+	// 输出流名称。
+	OutputStreamName *string `json:"OutputStreamName,omitempty" name:"OutputStreamName"`
+
+	// 输出流类型，取值范围[0,1]。
+	// 不填默认为0。
+	// 当输出流为输入流 list 中的一条时，填写0。
+	// 当期望生成的混流结果成为一条新流时，该值填为1。
+	// 该值为1时，output_stream_id 不能出现在 input_stram_list 中，且直播后台中，不能存在相同 ID 的流。
+	OutputStreamType *int64 `json:"OutputStreamType,omitempty" name:"OutputStreamType"`
+
+	// 输出流比特率。取值范围[1，50000]。
+	// 不填的情况下，系统会自动判断。
+	OutputStreamBitRate *int64 `json:"OutputStreamBitRate,omitempty" name:"OutputStreamBitRate"`
+
+	// 输出流GOP大小。取值范围[1,10]。
+	// 不填的情况下，系统会自动判断。
+	OutputStreamGop *int64 `json:"OutputStreamGop,omitempty" name:"OutputStreamGop"`
+
+	// 输出流帧率大小。取值范围[1,60]。
+	// 不填的情况下，系统会自动判断。
+	OutputStreamFrameRate *int64 `json:"OutputStreamFrameRate,omitempty" name:"OutputStreamFrameRate"`
+
+	// 输出流音频比特率。取值范围[1,500]
+	// 不填的情况下，系统会自动判断。
+	OutputAudioBitRate *int64 `json:"OutputAudioBitRate,omitempty" name:"OutputAudioBitRate"`
+
+	// 输出流音频采样率。取值范围[96000, 88200, 64000, 48000, 44100, 32000,24000, 22050, 16000, 12000, 11025, 8000]。
+	// 不填的情况下，系统会自动判断。
+	OutputAudioSampleRate *int64 `json:"OutputAudioSampleRate,omitempty" name:"OutputAudioSampleRate"`
+
+	// 输出流音频声道数。取值范围[1,2]。
+	// 不填的情况下，系统会自动判断。
+	OutputAudioChannels *int64 `json:"OutputAudioChannels,omitempty" name:"OutputAudioChannels"`
+
+	// 输出流中的sei信息。如果无特殊需要，不填。
+	MixSei *string `json:"MixSei,omitempty" name:"MixSei"`
+}
+
 type ConcurrentRecordStreamNum struct {
 
 	// 时间点。
@@ -354,6 +523,58 @@ type ConcurrentRecordStreamNum struct {
 
 	// 路数。
 	Num *uint64 `json:"Num,omitempty" name:"Num"`
+}
+
+type CreateCommonMixStreamRequest struct {
+	*tchttp.BaseRequest
+
+	// 混流会话（申请混流开始到取消混流结束）标识 ID。
+	MixStreamSessionId *string `json:"MixStreamSessionId,omitempty" name:"MixStreamSessionId"`
+
+	// 混流输入流列表。
+	InputStreamList []*CommonMixInputParam `json:"InputStreamList,omitempty" name:"InputStreamList" list`
+
+	// 混流输出流参数。
+	OutputParams *CommonMixOutputParams `json:"OutputParams,omitempty" name:"OutputParams"`
+
+	// 输入模板 ID，若设置该参数，将按默认模板布局输出，无需填入自定义位置参数。
+	// 不填默认为0。
+	// 两输入源支持10，20，30，40，50。
+	// 三输入源支持310，390，391。
+	// 四输入源支持410。
+	// 五输入源支持510，590。
+	// 六输入源支持610。
+	MixStreamTemplateId *int64 `json:"MixStreamTemplateId,omitempty" name:"MixStreamTemplateId"`
+
+	// 混流的特殊控制参数。如无特殊需求，无需填写。
+	ControlParams *CommonMixControlParams `json:"ControlParams,omitempty" name:"ControlParams"`
+}
+
+func (r *CreateCommonMixStreamRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateCommonMixStreamRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateCommonMixStreamResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateCommonMixStreamResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateCommonMixStreamResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
 }
 
 type CreateLiveCallbackRuleRequest struct {

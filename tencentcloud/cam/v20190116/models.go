@@ -2031,49 +2031,6 @@ func (r *UpdateGroupResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
-type UpdatePolicyRequest struct {
-	*tchttp.BaseRequest
-
-	// 策略ID
-	PolicyId *uint64 `json:"PolicyId,omitempty" name:"PolicyId"`
-
-	// 策略名
-	PolicyName *string `json:"PolicyName,omitempty" name:"PolicyName"`
-
-	// 策略描述
-	Description *string `json:"Description,omitempty" name:"Description"`
-
-	// 策略文档，示例：{"version":"2.0","statement":[{"action":"name/sts:AssumeRole","effect":"allow","principal":{"service":["cloudaudit.cloud.tencent.com","cls.cloud.tencent.com"]}}]}，principal用于指定角色的授权对象。获取该参数可参阅 获取角色详情（https://cloud.tencent.com/document/product/598/36221） 输出参数RoleInfo
-	PolicyDocument *string `json:"PolicyDocument,omitempty" name:"PolicyDocument"`
-}
-
-func (r *UpdatePolicyRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-func (r *UpdatePolicyRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
-}
-
-type UpdatePolicyResponse struct {
-	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
-}
-
-func (r *UpdatePolicyResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-func (r *UpdatePolicyResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
-}
-
 type UpdateRoleDescriptionRequest struct {
 	*tchttp.BaseRequest
 

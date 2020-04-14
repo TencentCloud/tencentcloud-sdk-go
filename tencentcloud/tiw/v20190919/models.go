@@ -686,13 +686,13 @@ type VideoInfo struct {
 
 	// 视频流类型 
 	// - 0：摄像头视频 
-	// - 1：屏幕分享视频（仅课后录制支持）
+	// - 1：屏幕分享视频
 	// - 2：白板视频 
 	// - 3：混流视频
 	// - 4：纯音频（mp3)
 	VideoType *int64 `json:"VideoType,omitempty" name:"VideoType"`
 
-	// 摄像头/屏幕分享视频所属用户的 Id（白板视频为空、混流视频tic_mixstream_房间号_混流布局类型）
+	// 摄像头/屏幕分享视频所属用户的 Id（白板视频为空、混流视频tic_mixstream_房间号_混流布局类型、辅路视频tic_substream_用户Id）
 	UserId *string `json:"UserId,omitempty" name:"UserId"`
 }
 

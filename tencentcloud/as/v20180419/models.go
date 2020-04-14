@@ -608,7 +608,7 @@ type CreateNotificationConfigurationRequest struct {
 	// <li>REPLACE_UNHEALTHY_INSTANCE_FAILED：替换不健康子机失败</li>
 	NotificationTypes []*string `json:"NotificationTypes,omitempty" name:"NotificationTypes" list`
 
-	// 通知组ID，即为用户组ID集合，用户组ID可以通过[DescribeUserGroup](https://cloud.tencent.com/document/api/378/4404)查询。
+	// 通知组ID，即为用户组ID集合，用户组ID可以通过[ListGroups](https://cloud.tencent.com/document/product/598/34589)查询。
 	NotificationUserGroupIds []*string `json:"NotificationUserGroupIds,omitempty" name:"NotificationUserGroupIds" list`
 }
 
@@ -730,7 +730,7 @@ type CreateScalingPolicyRequest struct {
 	// 冷却时间，单位为秒。默认冷却时间300秒。
 	Cooldown *uint64 `json:"Cooldown,omitempty" name:"Cooldown"`
 
-	// 通知组ID，即为用户组ID集合，用户组ID可以通过[DescribeUserGroup](https://cloud.tencent.com/document/api/378/4404)查询。
+	// 通知组ID，即为用户组ID集合，用户组ID可以通过[ListGroups](https://cloud.tencent.com/document/product/598/34589)查询。
 	NotificationUserGroupIds []*string `json:"NotificationUserGroupIds,omitempty" name:"NotificationUserGroupIds" list`
 }
 
@@ -2337,7 +2337,7 @@ type ModifyNotificationConfigurationRequest struct {
 	// <li>REPLACE_UNHEALTHY_INSTANCE_FAILED：替换不健康子机失败</li>
 	NotificationTypes []*string `json:"NotificationTypes,omitempty" name:"NotificationTypes" list`
 
-	// 通知组ID，即为用户组ID集合，用户组ID可以通过[DescribeUserGroup](https://cloud.tencent.com/document/api/378/4404)查询。
+	// 通知组ID，即为用户组ID集合，用户组ID可以通过[ListGroups](https://cloud.tencent.com/document/product/598/34589)查询。
 	NotificationUserGroupIds []*string `json:"NotificationUserGroupIds,omitempty" name:"NotificationUserGroupIds" list`
 }
 
@@ -2389,7 +2389,7 @@ type ModifyScalingPolicyRequest struct {
 	// 告警监控指标。
 	MetricAlarm *MetricAlarm `json:"MetricAlarm,omitempty" name:"MetricAlarm"`
 
-	// 通知组ID，即为用户组ID集合，用户组ID可以通过[DescribeUserGroup](https://cloud.tencent.com/document/api/378/4404)查询。
+	// 通知组ID，即为用户组ID集合，用户组ID可以通过[ListGroups](https://cloud.tencent.com/document/product/598/34589)查询。
 	// 如果需要清空通知用户组，需要在列表中传入特定字符串 "NULL"。
 	NotificationUserGroupIds []*string `json:"NotificationUserGroupIds,omitempty" name:"NotificationUserGroupIds" list`
 }

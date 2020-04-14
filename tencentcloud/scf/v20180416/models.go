@@ -1241,11 +1241,23 @@ func (r *ListNamespacesResponse) FromJsonString(s string) error {
 type ListVersionByFunctionRequest struct {
 	*tchttp.BaseRequest
 
-	// 函数ID
+	// 函数名
 	FunctionName *string `json:"FunctionName,omitempty" name:"FunctionName"`
 
-	// 命名空间
+	// 函数所在命名空间
 	Namespace *string `json:"Namespace,omitempty" name:"Namespace"`
+
+	// 数据偏移量，默认值为 0
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 返回数据长度，默认值为 20
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 以升序还是降序的方式返回结果，可选值 ASC 和 DESC
+	Order *string `json:"Order,omitempty" name:"Order"`
+
+	// 根据哪个字段进行返回结果排序,支持以下字段：AddTime, ModTime
+	OrderBy *string `json:"OrderBy,omitempty" name:"OrderBy"`
 }
 
 func (r *ListVersionByFunctionRequest) ToJsonString() string {
@@ -1267,6 +1279,10 @@ type ListVersionByFunctionResponse struct {
 		// 函数版本列表。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		Versions []*FunctionVersion `json:"Versions,omitempty" name:"Versions" list`
+
+		// 函数版本总数。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`

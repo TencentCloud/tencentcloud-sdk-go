@@ -43,6 +43,31 @@ func NewClient(credential *common.Credential, region string, clientProfile *prof
 }
 
 
+func NewApplyReWithdrawalRequest() (request *ApplyReWithdrawalRequest) {
+    request = &ApplyReWithdrawalRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cpdp", APIVersion, "ApplyReWithdrawal")
+    return
+}
+
+func NewApplyReWithdrawalResponse() (response *ApplyReWithdrawalResponse) {
+    response = &ApplyReWithdrawalResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 正常结算提现失败情况下，发起重新提现的请求接口
+func (c *Client) ApplyReWithdrawal(request *ApplyReWithdrawalRequest) (response *ApplyReWithdrawalResponse, err error) {
+    if request == nil {
+        request = NewApplyReWithdrawalRequest()
+    }
+    response = NewApplyReWithdrawalResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewApplyWithdrawalRequest() (request *ApplyWithdrawalRequest) {
     request = &ApplyWithdrawalRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -447,6 +472,56 @@ func (c *Client) QueryAcctBinding(request *QueryAcctBindingRequest) (response *Q
         request = NewQueryAcctBindingRequest()
     }
     response = NewQueryAcctBindingResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewQueryAcctInfoRequest() (request *QueryAcctInfoRequest) {
+    request = &QueryAcctInfoRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cpdp", APIVersion, "QueryAcctInfo")
+    return
+}
+
+func NewQueryAcctInfoResponse() (response *QueryAcctInfoResponse) {
+    response = &QueryAcctInfoResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 聚鑫-开户信息查询
+func (c *Client) QueryAcctInfo(request *QueryAcctInfoRequest) (response *QueryAcctInfoResponse, err error) {
+    if request == nil {
+        request = NewQueryAcctInfoRequest()
+    }
+    response = NewQueryAcctInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewQueryAcctInfoListRequest() (request *QueryAcctInfoListRequest) {
+    request = &QueryAcctInfoListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cpdp", APIVersion, "QueryAcctInfoList")
+    return
+}
+
+func NewQueryAcctInfoListResponse() (response *QueryAcctInfoListResponse) {
+    response = &QueryAcctInfoListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 聚鑫-开户信息列表查询, 查询某一段时间的开户信息
+func (c *Client) QueryAcctInfoList(request *QueryAcctInfoListRequest) (response *QueryAcctInfoListResponse, err error) {
+    if request == nil {
+        request = NewQueryAcctInfoListRequest()
+    }
+    response = NewQueryAcctInfoListResponse()
     err = c.Send(request, response)
     return
 }

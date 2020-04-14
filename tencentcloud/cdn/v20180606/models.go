@@ -2035,6 +2035,10 @@ type DetailDomain struct {
 	// 回源S3鉴权配置
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AwsPrivateAccess *AwsPrivateAccess `json:"AwsPrivateAccess,omitempty" name:"AwsPrivateAccess"`
+
+	// Scdn配置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SecurityConfig []*SecurityConfig `json:"SecurityConfig,omitempty" name:"SecurityConfig" list`
 }
 
 type DisableCachesRequest struct {
@@ -3525,6 +3529,12 @@ func (r *SearchClsLogResponse) ToJsonString() string {
 
 func (r *SearchClsLogResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
+}
+
+type SecurityConfig struct {
+
+	// on|off
+	Switch *string `json:"Switch,omitempty" name:"Switch"`
 }
 
 type Seo struct {

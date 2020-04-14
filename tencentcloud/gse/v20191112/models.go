@@ -433,6 +433,22 @@ type GameServerSession struct {
 	// 实例类型
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceType *string `json:"InstanceType,omitempty" name:"InstanceType"`
+
+	// 当前自定义数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CurrentCustomCount *int64 `json:"CurrentCustomCount,omitempty" name:"CurrentCustomCount"`
+
+	// 最大自定义数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MaxCustomCount *int64 `json:"MaxCustomCount,omitempty" name:"MaxCustomCount"`
+
+	// 权重
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Weight *int64 `json:"Weight,omitempty" name:"Weight"`
+
+	// 会话可用性状态，是否被屏蔽
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AvailabilityStatus *string `json:"AvailabilityStatus,omitempty" name:"AvailabilityStatus"`
 }
 
 type GameServerSessionDetail struct {

@@ -1,108 +1,10 @@
 # 本版本更新包含以下内容：
 
-## 云数据库 MySQL(cdb) 版本：2017-03-20
-
-### 第 36 次发布
-
-发布时间：2020-04-13 08:05:16
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [DescribeAccounts](https://cloud.tencent.com/document/api/236/17499)
-
-	* 新增入参：AccountRegexp
-
-* [ModifyDBInstanceVipVport](https://cloud.tencent.com/document/api/236/15867)
-
-	* 新增入参：ReleaseDuration
-
-
-
-
-## 内容分发网络(cdn) 版本：2018-06-06
+## 访问管理(cam) 版本：2019-01-16
 
 ### 第 14 次发布
 
-发布时间：2020-04-13 08:05:44
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [DescribeReportData](https://cloud.tencent.com/document/api/228/43367)
-
-新增数据结构：
-
-* [ReportData](https://cloud.tencent.com/document/api/228/30987#ReportData)
-
-
-
-## 腾讯云剪(cme) 版本：2019-10-29
-
-### 第 6 次发布
-
-发布时间：2020-04-13 08:02:23
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [CreateLink](https://cloud.tencent.com/document/api/1156/43366)
-
-
-
-## 大禹网络安全(dayu) 版本：2018-07-09
-
-### 第 13 次发布
-
-发布时间：2020-04-13 08:07:17
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [DescribeSchedulingDomainList](https://cloud.tencent.com/document/api/1021/43369)
-
-新增数据结构：
-
-* [SchedulingDomain](https://cloud.tencent.com/document/api/1021/39225#SchedulingDomain)
-
-
-
-## Elasticsearch服务(es) 版本：2018-04-16
-
-### 第 8 次发布
-
-发布时间：2020-04-13 08:08:57
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [NodeInfo](https://cloud.tencent.com/document/api/845/30634#NodeInfo)
-
-	* 新增成员：DiskCount
-
-
-
-
-## 直播(live) 版本：2018-08-01
-
-### 第 36 次发布
-
-发布时间：2020-04-13 08:11:12
+发布时间：2020-04-14 08:04:46
 
 本次发布包含了以下内容：
 
@@ -110,34 +12,38 @@
 
 <font color="#dd0000">**删除接口**：</font>
 
-* DeletePullStreamConfig
+* UpdatePolicy
 
 
 
-## 容器服务(tke) 版本：2018-05-25
+## 内容分发网络(cdn) 版本：2018-06-06
 
-### 第 17 次发布
+### 第 15 次发布
 
-发布时间：2020-04-13 08:15:58
+发布时间：2020-04-14 08:05:44
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
+新增数据结构：
+
+* [SecurityConfig](https://cloud.tencent.com/document/api/228/30987#SecurityConfig)
+
 修改数据结构：
 
-* [Instance](https://cloud.tencent.com/document/api/457/31866#Instance)
+* [DetailDomain](https://cloud.tencent.com/document/api/228/30987#DetailDomain)
 
-	* 新增成员：LanIP
-
-
+	* 新增成员：SecurityConfig
 
 
-## 私有网络(vpc) 版本：2017-03-12
 
-### 第 45 次发布
 
-发布时间：2020-04-13 08:16:45
+## 企业收付平台(cpdp) 版本：2019-08-20
+
+### 第 7 次发布
+
+发布时间：2020-04-14 08:18:55
 
 本次发布包含了以下内容：
 
@@ -145,7 +51,98 @@
 
 新增接口：
 
-* [CreateAndAttachNetworkInterface](https://cloud.tencent.com/document/api/215/43370)
+* [ApplyReWithdrawal](https://cloud.tencent.com/document/api/1122/43408)
+* [QueryAcctInfo](https://cloud.tencent.com/document/api/1122/43407)
+* [QueryAcctInfoList](https://cloud.tencent.com/document/api/1122/43406)
+
+新增数据结构：
+
+* [QueryAcctItem](https://cloud.tencent.com/document/api/1122/40683#QueryAcctItem)
+* [WithdrawBill](https://cloud.tencent.com/document/api/1122/40683#WithdrawBill)
+
+
+
+## 游戏服务器引擎(gse) 版本：2019-11-12
+
+### 第 3 次发布
+
+发布时间：2020-04-14 08:01:44
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [GameServerSession](https://cloud.tencent.com/document/api/1165/42074#GameServerSession)
+
+	* 新增成员：CurrentCustomCount, MaxCustomCount, Weight, AvailabilityStatus
+
+
+
+
+## 直播(live) 版本：2018-08-01
+
+### 第 37 次发布
+
+发布时间：2020-04-14 08:11:00
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CancelCommonMixStream](https://cloud.tencent.com/document/api/267/43405)
+* [CreateCommonMixStream](https://cloud.tencent.com/document/api/267/43404)
+
+新增数据结构：
+
+* [CommonMixControlParams](https://cloud.tencent.com/document/api/267/20474#CommonMixControlParams)
+* [CommonMixCropParams](https://cloud.tencent.com/document/api/267/20474#CommonMixCropParams)
+* [CommonMixInputParam](https://cloud.tencent.com/document/api/267/20474#CommonMixInputParam)
+* [CommonMixLayoutParams](https://cloud.tencent.com/document/api/267/20474#CommonMixLayoutParams)
+* [CommonMixOutputParams](https://cloud.tencent.com/document/api/267/20474#CommonMixOutputParams)
+
+
+
+## 云函数(scf) 版本：2018-04-16
+
+### 第 8 次发布
+
+发布时间：2020-04-14 08:13:51
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [ListVersionByFunction](https://cloud.tencent.com/document/api/583/37162)
+
+	* 新增入参：Offset, Limit, Order, OrderBy
+
+	* 新增出参：TotalCount
+
+
+
+
+## 游戏数据库 TcaplusDB(tcaplusdb) 版本：2019-08-23
+
+### 第 5 次发布
+
+发布时间：2020-04-14 08:14:54
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [TableInfoNew](https://cloud.tencent.com/document/api/596/39686#TableInfoNew)
+
+	* 新增成员：DbClusterInfoStruct
+
 
 
 
@@ -3121,6 +3118,18 @@
 
 ## 访问管理(cam) 版本：2019-01-16
 
+### 第 14 次发布
+
+发布时间：2020-04-14 08:04:46
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+<font color="#dd0000">**删除接口**：</font>
+
+* UpdatePolicy
+
 ### 第 13 次发布
 
 发布时间：2020-04-09 16:33:09
@@ -4868,6 +4877,25 @@
 
 ## 内容分发网络(cdn) 版本：2018-06-06
 
+### 第 15 次发布
+
+发布时间：2020-04-14 08:05:44
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增数据结构：
+
+* [[SecurityConfig](https://cloud.tencent.com/document/api/228/30987#SecurityConfig)](https://cloud.tencent.com/document/api/228/30987#[SecurityConfig](https://cloud.tencent.com/document/api/228/30987#SecurityConfig))
+
+修改数据结构：
+
+* [DetailDomain](https://cloud.tencent.com/document/api/228/30987#DetailDomain)
+
+	* 新增成员：SecurityConfig
+
+
 ### 第 14 次发布
 
 发布时间：2020-04-13 08:05:44
@@ -4878,11 +4906,11 @@
 
 新增接口：
 
-* [[DescribeReportData](https://cloud.tencent.com/document/api/228/43367)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeReportData](https://cloud.tencent.com/document/api/228/43367)
 
 新增数据结构：
 
-* [[ReportData](https://cloud.tencent.com/document/api/228/30987#ReportData)](https://cloud.tencent.com/document/api/228/30987#[ReportData](https://cloud.tencent.com/document/api/228/30987#ReportData))
+* [ReportData](https://cloud.tencent.com/document/api/228/30987#ReportData)
 
 ### 第 13 次发布
 
@@ -6427,7 +6455,7 @@
 
 新增接口：
 
-* [[CreateLink](https://cloud.tencent.com/document/api/1156/43366)](https://cloud.tencent.com/document/api/#/#)
+* [CreateLink](https://cloud.tencent.com/document/api/1156/43366)
 
 ### 第 5 次发布
 
@@ -6814,6 +6842,25 @@
 
 
 ## 企业收付平台(cpdp) 版本：2019-08-20
+
+### 第 7 次发布
+
+发布时间：2020-04-14 08:18:55
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[ApplyReWithdrawal](https://cloud.tencent.com/document/api/1122/43408)](https://cloud.tencent.com/document/api/#/#)
+* [[QueryAcctInfo](https://cloud.tencent.com/document/api/1122/43407)](https://cloud.tencent.com/document/api/#/#)
+* [[QueryAcctInfoList](https://cloud.tencent.com/document/api/1122/43406)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[QueryAcctItem](https://cloud.tencent.com/document/api/1122/40683#QueryAcctItem)](https://cloud.tencent.com/document/api/1122/40683#[QueryAcctItem](https://cloud.tencent.com/document/api/1122/40683#QueryAcctItem))
+* [[WithdrawBill](https://cloud.tencent.com/document/api/1122/40683#WithdrawBill)](https://cloud.tencent.com/document/api/1122/40683#[WithdrawBill](https://cloud.tencent.com/document/api/1122/40683#WithdrawBill))
 
 ### 第 6 次发布
 
@@ -8184,11 +8231,11 @@
 
 新增接口：
 
-* [[DescribeSchedulingDomainList](https://cloud.tencent.com/document/api/1021/43369)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeSchedulingDomainList](https://cloud.tencent.com/document/api/1021/43369)
 
 新增数据结构：
 
-* [[SchedulingDomain](https://cloud.tencent.com/document/api/1021/39225#SchedulingDomain)](https://cloud.tencent.com/document/api/1021/39225#[SchedulingDomain](https://cloud.tencent.com/document/api/1021/39225#SchedulingDomain))
+* [SchedulingDomain](https://cloud.tencent.com/document/api/1021/39225#SchedulingDomain)
 
 ### 第 12 次发布
 
@@ -10995,6 +11042,21 @@
 
 ## 游戏服务器引擎(gse) 版本：2019-11-12
 
+### 第 3 次发布
+
+发布时间：2020-04-14 08:01:44
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [GameServerSession](https://cloud.tencent.com/document/api/1165/42074#GameServerSession)
+
+	* 新增成员：CurrentCustomCount, MaxCustomCount, Weight, AvailabilityStatus
+
+
 ### 第 2 次发布
 
 发布时间：2020-03-19 08:01:38
@@ -12867,6 +12929,27 @@
 
 
 ## 直播(live) 版本：2018-08-01
+
+### 第 37 次发布
+
+发布时间：2020-04-14 08:11:00
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[CancelCommonMixStream](https://cloud.tencent.com/document/api/267/43405)](https://cloud.tencent.com/document/api/#/#)
+* [[CreateCommonMixStream](https://cloud.tencent.com/document/api/267/43404)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[CommonMixControlParams](https://cloud.tencent.com/document/api/267/20474#CommonMixControlParams)](https://cloud.tencent.com/document/api/267/20474#[CommonMixControlParams](https://cloud.tencent.com/document/api/267/20474#CommonMixControlParams))
+* [[CommonMixCropParams](https://cloud.tencent.com/document/api/267/20474#CommonMixCropParams)](https://cloud.tencent.com/document/api/267/20474#[CommonMixCropParams](https://cloud.tencent.com/document/api/267/20474#CommonMixCropParams))
+* [[CommonMixInputParam](https://cloud.tencent.com/document/api/267/20474#CommonMixInputParam)](https://cloud.tencent.com/document/api/267/20474#[CommonMixInputParam](https://cloud.tencent.com/document/api/267/20474#CommonMixInputParam))
+* [[CommonMixLayoutParams](https://cloud.tencent.com/document/api/267/20474#CommonMixLayoutParams)](https://cloud.tencent.com/document/api/267/20474#[CommonMixLayoutParams](https://cloud.tencent.com/document/api/267/20474#CommonMixLayoutParams))
+* [[CommonMixOutputParams](https://cloud.tencent.com/document/api/267/20474#CommonMixOutputParams)](https://cloud.tencent.com/document/api/267/20474#[CommonMixOutputParams](https://cloud.tencent.com/document/api/267/20474#CommonMixOutputParams))
 
 ### 第 36 次发布
 
@@ -16967,6 +17050,23 @@
 
 ## 云函数(scf) 版本：2018-04-16
 
+### 第 8 次发布
+
+发布时间：2020-04-14 08:13:51
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [ListVersionByFunction](https://cloud.tencent.com/document/api/583/37162)
+
+	* 新增入参：Offset, Limit, Order, OrderBy
+
+	* 新增出参：TotalCount
+
+
 ### 第 7 次发布
 
 发布时间：2020-04-02 08:14:22
@@ -18600,6 +18700,21 @@
 
 
 ## 游戏数据库 TcaplusDB(tcaplusdb) 版本：2019-08-23
+
+### 第 5 次发布
+
+发布时间：2020-04-14 08:14:54
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [TableInfoNew](https://cloud.tencent.com/document/api/596/39686#TableInfoNew)
+
+	* 新增成员：DbClusterInfoStruct
+
 
 ### 第 4 次发布
 
@@ -23029,7 +23144,7 @@
 
 新增接口：
 
-* [[CreateAndAttachNetworkInterface](https://cloud.tencent.com/document/api/215/43370)](https://cloud.tencent.com/document/api/#/#)
+* [CreateAndAttachNetworkInterface](https://cloud.tencent.com/document/api/215/43370)
 
 ### 第 44 次发布
 

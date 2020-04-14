@@ -1558,6 +1558,10 @@ type TableInfoNew struct {
 	// SORTLIST类型表格排序顺序
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SortRule *int64 `json:"SortRule,omitempty" name:"SortRule"`
+
+	// 表格分布式索引信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DbClusterInfoStruct *string `json:"DbClusterInfoStruct,omitempty" name:"DbClusterInfoStruct"`
 }
 
 type TableResultNew struct {
