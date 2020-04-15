@@ -250,7 +250,11 @@ type CreateInstanceRequest struct {
 	// 私有网络相关信息配置。通过该参数可以指定私有网络的ID，子网ID等信息。
 	VPCSettings *VPCSettings `json:"VPCSettings,omitempty" name:"VPCSettings"`
 
-	// 部署的组件列表。不同ProductId对应特定版本的组件。例如，当ProductId取值为4时，该参数可以填写Software.0=hadoop-2.8.4&Software.1=zookeeper-3.4.9；当ProductId取值为2时，该参数可以填写Software.0=hadoop-2.7.3&Software.1=zookeeper-3.4.9。
+	// 部署的组件列表。不同的EMR产品ID（ProductId：具体含义参考入参ProductId字段）需要选择不同的必选组件：
+	// <li>ProductId为1的时候，必选组件包括：hadoop-2.7.3、knox-1.2.0、zookeeper-3.4.9</li>
+	// <li>ProductId为2的时候，必选组件包括：hadoop-2.7.3、knox-1.2.0、zookeeper-3.4.9</li>
+	// <li>ProductId为4的时候，必选组件包括：hadoop-2.8.4、knox-1.2.0、zookeeper-3.4.9</li>
+	// <li>ProductId为7的时候，必选组件包括：hadoop-3.1.2、knox-1.2.0、zookeeper-3.4.9</li>
 	Software []*string `json:"Software,omitempty" name:"Software" list`
 
 	// 节点资源的规格。
@@ -274,8 +278,9 @@ type CreateInstanceRequest struct {
 	// 实例所在的位置。通过该参数可以指定实例所属可用区，所属项目等属性。
 	Placement *Placement `json:"Placement,omitempty" name:"Placement"`
 
-	// 购买实例的时长。需要结合TimeUnit一起使用。
-	// <li>PayMode取值为0时，TimeSpan只能取值为3600。</li>
+	// 购买实例的时长。结合TimeUnit一起使用。
+	// <li>TimeUnit为s时，该参数只能填写3600，表示按量计费实例。</li>
+	// <li>TimeUnit为m时，该参数填写的数字表示包年包月实例的购买时长，如1表示购买一个月</li>
 	TimeSpan *uint64 `json:"TimeSpan,omitempty" name:"TimeSpan"`
 
 	// 购买实例的时间单位。取值范围：
@@ -589,10 +594,12 @@ type InquiryPriceCreateInstanceRequest struct {
 
 	// 购买实例的时间单位。取值范围：
 	// <li>s：表示秒。PayMode取值为0时，TimeUnit只能取值为s。</li>
-	// <li>m：表示月份。PayMode取值为1时，TimeUnit只能取值为m。</li>
+	// <li>m：表示月份。PayMode取值为1时，TimeUnit只能取值为m。</li>
 	TimeUnit *string `json:"TimeUnit,omitempty" name:"TimeUnit"`
 
-	// 购买实例的时长。需要结合TimeUnit一起使用。
+	// 购买实例的时长。结合TimeUnit一起使用。
+	// <li>TimeUnit为s时，该参数只能填写3600，表示按量计费实例。</li>
+	// <li>TimeUnit为m时，该参数填写的数字表示包年包月实例的购买时长，如1表示购买一个月</li>
 	TimeSpan *uint64 `json:"TimeSpan,omitempty" name:"TimeSpan"`
 
 	// 询价的节点规格。
@@ -604,7 +611,7 @@ type InquiryPriceCreateInstanceRequest struct {
 
 	// 实例计费模式。取值范围：
 	// <li>0：表示按量计费。</li>
-	// <li>1：表示包年包月。</li>
+	// <li>1：表示包年包月。</li>
 	PayMode *uint64 `json:"PayMode,omitempty" name:"PayMode"`
 
 	// 是否开启节点高可用。取值范围：
@@ -612,7 +619,11 @@ type InquiryPriceCreateInstanceRequest struct {
 	// <li>1：表示开启节点高可用。</li>
 	SupportHA *uint64 `json:"SupportHA,omitempty" name:"SupportHA"`
 
-	// 部署的组件列表。
+	// 部署的组件列表。不同的EMR产品ID（ProductId：具体含义参考入参ProductId字段）需要选择不同的必选组件：
+	// <li>ProductId为1的时候，必选组件包括：hadoop-2.7.3、knox-1.2.0、zookeeper-3.4.9</li>
+	// <li>ProductId为2的时候，必选组件包括：hadoop-2.7.3、knox-1.2.0、zookeeper-3.4.9</li>
+	// <li>ProductId为4的时候，必选组件包括：hadoop-2.8.4、knox-1.2.0、zookeeper-3.4.9</li>
+	// <li>ProductId为7的时候，必选组件包括：hadoop-3.1.2、knox-1.2.0、zookeeper-3.4.9</li>
 	Software []*string `json:"Software,omitempty" name:"Software" list`
 
 	// 实例所在的位置。通过该参数可以指定实例所属可用区，所属项目等属性。
@@ -689,7 +700,7 @@ func (r *InquiryPriceCreateInstanceResponse) FromJsonString(s string) error {
 type InquiryPriceRenewInstanceRequest struct {
 	*tchttp.BaseRequest
 
-	// 实例续费的时长。需要结合TimeUnit一起使用。
+	// 实例续费的时长。需要结合TimeUnit一起使用。1表示续费1一个月
 	TimeSpan *uint64 `json:"TimeSpan,omitempty" name:"TimeSpan"`
 
 	// 待续费节点的资源ID列表。资源ID形如：emr-vm-xxxxxxxx。有效的资源ID可通过登录[控制台](https://console.cloud.tencent.com/emr/static/hardware)查询。
@@ -702,7 +713,7 @@ type InquiryPriceRenewInstanceRequest struct {
 	PayMode *int64 `json:"PayMode,omitempty" name:"PayMode"`
 
 	// 实例续费的时间单位。取值范围：
-	// <li>m：表示月份。</li>
+	// <li>m：表示月份。</li>
 	TimeUnit *string `json:"TimeUnit,omitempty" name:"TimeUnit"`
 
 	// 货币种类。取值范围：
@@ -759,10 +770,12 @@ type InquiryPriceScaleOutInstanceRequest struct {
 
 	// 扩容的时间单位。取值范围：
 	// <li>s：表示秒。PayMode取值为0时，TimeUnit只能取值为s。</li>
-	// <li>m：表示月份。PayMode取值为1时，TimeUnit只能取值为m。</li>
+	// <li>m：表示月份。PayMode取值为1时，TimeUnit只能取值为m。</li>
 	TimeUnit *string `json:"TimeUnit,omitempty" name:"TimeUnit"`
 
-	// 扩容的时长。需要结合TimeUnit一起使用。
+	// 扩容的时长。结合TimeUnit一起使用。
+	// <li>TimeUnit为s时，该参数只能填写3600，表示按量计费实例。</li>
+	// <li>TimeUnit为m时，该参数填写的数字表示包年包月实例的购买时长，如1表示购买一个月</li>
 	TimeSpan *uint64 `json:"TimeSpan,omitempty" name:"TimeSpan"`
 
 	// 实例所属的可用区ID，例如100003。该参数可以通过调用 [DescribeZones](https://cloud.tencent.com/document/api/213/15707) 的返回值中的ZoneId字段来获取。
@@ -770,7 +783,7 @@ type InquiryPriceScaleOutInstanceRequest struct {
 
 	// 实例计费模式。取值范围：
 	// <li>0：表示按量计费。</li>
-	// <li>1：表示包年包月。</li>
+	// <li>1：表示包年包月。</li>
 	PayMode *uint64 `json:"PayMode,omitempty" name:"PayMode"`
 
 	// 实例ID。
@@ -843,8 +856,9 @@ type InquiryPriceUpdateInstanceRequest struct {
 	// <li>m：表示月份。PayMode取值为1时，TimeUnit只能取值为m。</li>
 	TimeUnit *string `json:"TimeUnit,omitempty" name:"TimeUnit"`
 
-	// 变配的时长。需要结合TimeUnit一起使用。
-	// <li>PayMode取值为0时，TimeSpan只能取值为3600。</li>
+	// 变配的时长。结合TimeUnit一起使用。
+	// <li>TimeUnit为s时，该参数只能填写3600，表示按量计费实例。</li>
+	// <li>TimeUnit为m时，该参数填写的数字表示包年包月实例的购买时长，如1表示购买一个月</li>
 	TimeSpan *uint64 `json:"TimeSpan,omitempty" name:"TimeSpan"`
 
 	// 节点变配的目标配置。
@@ -1319,7 +1333,9 @@ type ScaleOutInstanceRequest struct {
 	// <li>m：表示月份。PayMode取值为1时，TimeUnit只能取值为m。</li>
 	TimeUnit *string `json:"TimeUnit,omitempty" name:"TimeUnit"`
 
-	// 扩容的时长。需要结合TimeUnit一起使用。
+	// 扩容的时长。结合TimeUnit一起使用。
+	// <li>TimeUnit为s时，该参数只能填写3600，表示按量计费实例。</li>
+	// <li>TimeUnit为m时，该参数填写的数字表示包年包月实例的购买时长，如1表示购买一个月</li>
 	TimeSpan *uint64 `json:"TimeSpan,omitempty" name:"TimeSpan"`
 
 	// 实例ID。

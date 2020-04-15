@@ -1490,6 +1490,43 @@ func (r *DescribePubVersionsResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeRegistrationStatusRequest struct {
+	*tchttp.BaseRequest
+
+	// 终端用户的唯一ID列表，0<元素数量<=100
+	CunionIds []*string `json:"CunionIds,omitempty" name:"CunionIds" list`
+}
+
+func (r *DescribeRegistrationStatusRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeRegistrationStatusRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeRegistrationStatusResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 终端用户注册状态列表
+		Data []*RegisteredStatus `json:"Data,omitempty" name:"Data" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeRegistrationStatusResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeRegistrationStatusResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeRunLogRequest struct {
 	*tchttp.BaseRequest
 
@@ -1976,6 +2013,12 @@ type ModifyProductRequest struct {
 
 	// 产品描述
 	ProductDescription *string `json:"ProductDescription,omitempty" name:"ProductDescription"`
+
+	// 主芯片产商ID
+	ChipManufactureId *string `json:"ChipManufactureId,omitempty" name:"ChipManufactureId"`
+
+	// 主芯片ID
+	ChipId *string `json:"ChipId,omitempty" name:"ChipId"`
 }
 
 func (r *ModifyProductRequest) ToJsonString() string {
@@ -2097,6 +2140,15 @@ type ProductData struct {
 	// 主芯片型号
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ChipId *string `json:"ChipId,omitempty" name:"ChipId"`
+}
+
+type RegisteredStatus struct {
+
+	// 终端用户的唯一ID
+	CunionId *string `json:"CunionId,omitempty" name:"CunionId"`
+
+	// 注册状态
+	IsRegisted *bool `json:"IsRegisted,omitempty" name:"IsRegisted"`
 }
 
 type RunDeviceRequest struct {

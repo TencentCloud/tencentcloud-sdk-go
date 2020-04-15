@@ -594,6 +594,9 @@ type CreateDBInstanceHourRequest struct {
 
 	// 用于保证请求幂等性的字符串。该字符串由客户生成，需保证不同请求之间在当天内唯一，最大值不超过64个ASCII字符。若不指定该参数，则无法保证请求的幂等性。
 	ClientToken *string `json:"ClientToken,omitempty" name:"ClientToken"`
+
+	// 实例类型。支持值包括： "HA" - 高可用版实例， "BASIC" - 基础版实例。 不指定则默认为高可用版。
+	DeviceType *string `json:"DeviceType,omitempty" name:"DeviceType"`
 }
 
 func (r *CreateDBInstanceHourRequest) ToJsonString() string {
@@ -709,6 +712,9 @@ type CreateDBInstanceRequest struct {
 
 	// 用于保证请求幂等性的字符串。该字符串由客户生成，需保证不同请求之间在当天内唯一，最大值不超过64个ASCII字符。若不指定该参数，则无法保证请求的幂等性。
 	ClientToken *string `json:"ClientToken,omitempty" name:"ClientToken"`
+
+	// 实例类型。支持值包括： "HA" - 高可用版实例， "BASIC" - 基础版实例。 不指定则默认为高可用版。
+	DeviceType *string `json:"DeviceType,omitempty" name:"DeviceType"`
 }
 
 func (r *CreateDBInstanceRequest) ToJsonString() string {
@@ -2182,7 +2188,7 @@ type DescribeDatabasesRequest struct {
 	// 单次请求数量，默认值为20，最小值为1，最大值为100。
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 
-	// 匹配数据库库名的正则表达式，规则同 MySQL 官网
+	// 匹配数据库库名的正则表达式。
 	DatabaseRegexp *string `json:"DatabaseRegexp,omitempty" name:"DatabaseRegexp"`
 }
 

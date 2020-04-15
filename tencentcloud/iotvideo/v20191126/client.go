@@ -925,6 +925,31 @@ func (c *Client) DescribePubVersions(request *DescribePubVersionsRequest) (respo
     return
 }
 
+func NewDescribeRegistrationStatusRequest() (request *DescribeRegistrationStatusRequest) {
+    request = &DescribeRegistrationStatusRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iotvideo", APIVersion, "DescribeRegistrationStatus")
+    return
+}
+
+func NewDescribeRegistrationStatusResponse() (response *DescribeRegistrationStatusResponse) {
+    response = &DescribeRegistrationStatusResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（DescribeRegistrationStatus）用于查询终端用户的注册状态。
+func (c *Client) DescribeRegistrationStatus(request *DescribeRegistrationStatusRequest) (response *DescribeRegistrationStatusResponse, err error) {
+    if request == nil {
+        request = NewDescribeRegistrationStatusRequest()
+    }
+    response = NewDescribeRegistrationStatusResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeRunLogRequest() (request *DescribeRunLogRequest) {
     request = &DescribeRunLogRequest{
         BaseRequest: &tchttp.BaseRequest{},

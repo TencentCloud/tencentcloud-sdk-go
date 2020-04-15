@@ -673,6 +673,10 @@ type DirectConnectTunnel struct {
 	// VPC名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	VpcName *string `json:"VpcName,omitempty" name:"VpcName"`
+
+	// TencentBackupAddress，腾讯侧备用互联 IP
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TencentBackupAddress *string `json:"TencentBackupAddress,omitempty" name:"TencentBackupAddress"`
 }
 
 type Filter struct {

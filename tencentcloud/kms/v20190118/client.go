@@ -143,6 +143,31 @@ func (c *Client) CreateKey(request *CreateKeyRequest) (response *CreateKeyRespon
     return
 }
 
+func NewCreateWhiteBoxKeyRequest() (request *CreateWhiteBoxKeyRequest) {
+    request = &CreateWhiteBoxKeyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("kms", APIVersion, "CreateWhiteBoxKey")
+    return
+}
+
+func NewCreateWhiteBoxKeyResponse() (response *CreateWhiteBoxKeyResponse) {
+    response = &CreateWhiteBoxKeyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 创建白盒密钥。 密钥个数的上限为 50。
+func (c *Client) CreateWhiteBoxKey(request *CreateWhiteBoxKeyRequest) (response *CreateWhiteBoxKeyResponse, err error) {
+    if request == nil {
+        request = NewCreateWhiteBoxKeyRequest()
+    }
+    response = NewCreateWhiteBoxKeyResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDecryptRequest() (request *DecryptRequest) {
     request = &DecryptRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -193,6 +218,31 @@ func (c *Client) DeleteImportedKeyMaterial(request *DeleteImportedKeyMaterialReq
     return
 }
 
+func NewDeleteWhiteBoxKeyRequest() (request *DeleteWhiteBoxKeyRequest) {
+    request = &DeleteWhiteBoxKeyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("kms", APIVersion, "DeleteWhiteBoxKey")
+    return
+}
+
+func NewDeleteWhiteBoxKeyResponse() (response *DeleteWhiteBoxKeyResponse) {
+    response = &DeleteWhiteBoxKeyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 删除白盒密钥, 注意：必须先禁用后，才可以删除。
+func (c *Client) DeleteWhiteBoxKey(request *DeleteWhiteBoxKeyRequest) (response *DeleteWhiteBoxKeyResponse, err error) {
+    if request == nil {
+        request = NewDeleteWhiteBoxKeyRequest()
+    }
+    response = NewDeleteWhiteBoxKeyResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeKeyRequest() (request *DescribeKeyRequest) {
     request = &DescribeKeyRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -239,6 +289,106 @@ func (c *Client) DescribeKeys(request *DescribeKeysRequest) (response *DescribeK
         request = NewDescribeKeysRequest()
     }
     response = NewDescribeKeysResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeWhiteBoxDecryptKeyRequest() (request *DescribeWhiteBoxDecryptKeyRequest) {
+    request = &DescribeWhiteBoxDecryptKeyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("kms", APIVersion, "DescribeWhiteBoxDecryptKey")
+    return
+}
+
+func NewDescribeWhiteBoxDecryptKeyResponse() (response *DescribeWhiteBoxDecryptKeyResponse) {
+    response = &DescribeWhiteBoxDecryptKeyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 获取白盒解密密钥
+func (c *Client) DescribeWhiteBoxDecryptKey(request *DescribeWhiteBoxDecryptKeyRequest) (response *DescribeWhiteBoxDecryptKeyResponse, err error) {
+    if request == nil {
+        request = NewDescribeWhiteBoxDecryptKeyRequest()
+    }
+    response = NewDescribeWhiteBoxDecryptKeyResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeWhiteBoxKeyRequest() (request *DescribeWhiteBoxKeyRequest) {
+    request = &DescribeWhiteBoxKeyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("kms", APIVersion, "DescribeWhiteBoxKey")
+    return
+}
+
+func NewDescribeWhiteBoxKeyResponse() (response *DescribeWhiteBoxKeyResponse) {
+    response = &DescribeWhiteBoxKeyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 展示白盒密钥的信息
+func (c *Client) DescribeWhiteBoxKey(request *DescribeWhiteBoxKeyRequest) (response *DescribeWhiteBoxKeyResponse, err error) {
+    if request == nil {
+        request = NewDescribeWhiteBoxKeyRequest()
+    }
+    response = NewDescribeWhiteBoxKeyResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeWhiteBoxKeyDetailsRequest() (request *DescribeWhiteBoxKeyDetailsRequest) {
+    request = &DescribeWhiteBoxKeyDetailsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("kms", APIVersion, "DescribeWhiteBoxKeyDetails")
+    return
+}
+
+func NewDescribeWhiteBoxKeyDetailsResponse() (response *DescribeWhiteBoxKeyDetailsResponse) {
+    response = &DescribeWhiteBoxKeyDetailsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 获取白盒密钥列表
+func (c *Client) DescribeWhiteBoxKeyDetails(request *DescribeWhiteBoxKeyDetailsRequest) (response *DescribeWhiteBoxKeyDetailsResponse, err error) {
+    if request == nil {
+        request = NewDescribeWhiteBoxKeyDetailsRequest()
+    }
+    response = NewDescribeWhiteBoxKeyDetailsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeWhiteBoxServiceStatusRequest() (request *DescribeWhiteBoxServiceStatusRequest) {
+    request = &DescribeWhiteBoxServiceStatusRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("kms", APIVersion, "DescribeWhiteBoxServiceStatus")
+    return
+}
+
+func NewDescribeWhiteBoxServiceStatusResponse() (response *DescribeWhiteBoxServiceStatusResponse) {
+    response = &DescribeWhiteBoxServiceStatusResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 获取白盒密钥服务状态
+func (c *Client) DescribeWhiteBoxServiceStatus(request *DescribeWhiteBoxServiceStatusRequest) (response *DescribeWhiteBoxServiceStatusResponse, err error) {
+    if request == nil {
+        request = NewDescribeWhiteBoxServiceStatusRequest()
+    }
+    response = NewDescribeWhiteBoxServiceStatusResponse()
     err = c.Send(request, response)
     return
 }
@@ -318,6 +468,56 @@ func (c *Client) DisableKeys(request *DisableKeysRequest) (response *DisableKeys
     return
 }
 
+func NewDisableWhiteBoxKeyRequest() (request *DisableWhiteBoxKeyRequest) {
+    request = &DisableWhiteBoxKeyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("kms", APIVersion, "DisableWhiteBoxKey")
+    return
+}
+
+func NewDisableWhiteBoxKeyResponse() (response *DisableWhiteBoxKeyResponse) {
+    response = &DisableWhiteBoxKeyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 禁用白盒密钥
+func (c *Client) DisableWhiteBoxKey(request *DisableWhiteBoxKeyRequest) (response *DisableWhiteBoxKeyResponse, err error) {
+    if request == nil {
+        request = NewDisableWhiteBoxKeyRequest()
+    }
+    response = NewDisableWhiteBoxKeyResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDisableWhiteBoxKeysRequest() (request *DisableWhiteBoxKeysRequest) {
+    request = &DisableWhiteBoxKeysRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("kms", APIVersion, "DisableWhiteBoxKeys")
+    return
+}
+
+func NewDisableWhiteBoxKeysResponse() (response *DisableWhiteBoxKeysResponse) {
+    response = &DisableWhiteBoxKeysResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 批量禁用白盒密钥
+func (c *Client) DisableWhiteBoxKeys(request *DisableWhiteBoxKeysRequest) (response *DisableWhiteBoxKeysResponse, err error) {
+    if request == nil {
+        request = NewDisableWhiteBoxKeysRequest()
+    }
+    response = NewDisableWhiteBoxKeysResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewEnableKeyRequest() (request *EnableKeyRequest) {
     request = &EnableKeyRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -393,6 +593,56 @@ func (c *Client) EnableKeys(request *EnableKeysRequest) (response *EnableKeysRes
     return
 }
 
+func NewEnableWhiteBoxKeyRequest() (request *EnableWhiteBoxKeyRequest) {
+    request = &EnableWhiteBoxKeyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("kms", APIVersion, "EnableWhiteBoxKey")
+    return
+}
+
+func NewEnableWhiteBoxKeyResponse() (response *EnableWhiteBoxKeyResponse) {
+    response = &EnableWhiteBoxKeyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 批量启用白盒密钥
+func (c *Client) EnableWhiteBoxKey(request *EnableWhiteBoxKeyRequest) (response *EnableWhiteBoxKeyResponse, err error) {
+    if request == nil {
+        request = NewEnableWhiteBoxKeyRequest()
+    }
+    response = NewEnableWhiteBoxKeyResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewEnableWhiteBoxKeysRequest() (request *EnableWhiteBoxKeysRequest) {
+    request = &EnableWhiteBoxKeysRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("kms", APIVersion, "EnableWhiteBoxKeys")
+    return
+}
+
+func NewEnableWhiteBoxKeysResponse() (response *EnableWhiteBoxKeysResponse) {
+    response = &EnableWhiteBoxKeysResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 批量启用白盒密钥
+func (c *Client) EnableWhiteBoxKeys(request *EnableWhiteBoxKeysRequest) (response *EnableWhiteBoxKeysResponse, err error) {
+    if request == nil {
+        request = NewEnableWhiteBoxKeysRequest()
+    }
+    response = NewEnableWhiteBoxKeysResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewEncryptRequest() (request *EncryptRequest) {
     request = &EncryptRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -414,6 +664,31 @@ func (c *Client) Encrypt(request *EncryptRequest) (response *EncryptResponse, er
         request = NewEncryptRequest()
     }
     response = NewEncryptResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewEncryptByWhiteBoxRequest() (request *EncryptByWhiteBoxRequest) {
+    request = &EncryptByWhiteBoxRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("kms", APIVersion, "EncryptByWhiteBox")
+    return
+}
+
+func NewEncryptByWhiteBoxResponse() (response *EncryptByWhiteBoxResponse) {
+    response = &EncryptByWhiteBoxResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 使用白盒密钥进行加密
+func (c *Client) EncryptByWhiteBox(request *EncryptByWhiteBoxRequest) (response *EncryptByWhiteBoxResponse, err error) {
+    if request == nil {
+        request = NewEncryptByWhiteBoxRequest()
+    }
+    response = NewEncryptByWhiteBoxResponse()
     err = c.Send(request, response)
     return
 }

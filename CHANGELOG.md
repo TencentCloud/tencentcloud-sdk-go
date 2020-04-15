@@ -2,48 +2,9 @@
 
 ## 访问管理(cam) 版本：2019-01-16
 
-### 第 14 次发布
-
-发布时间：2020-04-14 08:04:46
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-<font color="#dd0000">**删除接口**：</font>
-
-* UpdatePolicy
-
-
-
-## 内容分发网络(cdn) 版本：2018-06-06
-
 ### 第 15 次发布
 
-发布时间：2020-04-14 08:05:44
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增数据结构：
-
-* [SecurityConfig](https://cloud.tencent.com/document/api/228/30987#SecurityConfig)
-
-修改数据结构：
-
-* [DetailDomain](https://cloud.tencent.com/document/api/228/30987#DetailDomain)
-
-	* 新增成员：SecurityConfig
-
-
-
-
-## 企业收付平台(cpdp) 版本：2019-08-20
-
-### 第 7 次发布
-
-发布时间：2020-04-14 08:18:55
+发布时间：2020-04-15 08:05:30
 
 本次发布包含了以下内容：
 
@@ -51,66 +12,20 @@
 
 新增接口：
 
-* [ApplyReWithdrawal](https://cloud.tencent.com/document/api/1122/43408)
-* [QueryAcctInfo](https://cloud.tencent.com/document/api/1122/43407)
-* [QueryAcctInfoList](https://cloud.tencent.com/document/api/1122/43406)
-
-新增数据结构：
-
-* [QueryAcctItem](https://cloud.tencent.com/document/api/1122/40683#QueryAcctItem)
-* [WithdrawBill](https://cloud.tencent.com/document/api/1122/40683#WithdrawBill)
+* [Check](https://cloud.tencent.com/document/api/598/43431)
+* [CheckNewMfaCode](https://cloud.tencent.com/document/api/598/43430)
+* [DescribeMfaCodeStatus](https://cloud.tencent.com/document/api/598/43429)
+* [DetectAuth](https://cloud.tencent.com/document/api/598/43428)
+* [DetectMaskAuth](https://cloud.tencent.com/document/api/598/43427)
+* [DetectState](https://cloud.tencent.com/document/api/598/43426)
 
 
 
-## 游戏服务器引擎(gse) 版本：2019-11-12
-
-### 第 3 次发布
-
-发布时间：2020-04-14 08:01:44
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [GameServerSession](https://cloud.tencent.com/document/api/1165/42074#GameServerSession)
-
-	* 新增成员：CurrentCustomCount, MaxCustomCount, Weight, AvailabilityStatus
-
-
-
-
-## 直播(live) 版本：2018-08-01
+## 云数据库 MySQL(cdb) 版本：2017-03-20
 
 ### 第 37 次发布
 
-发布时间：2020-04-14 08:11:00
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [CancelCommonMixStream](https://cloud.tencent.com/document/api/267/43405)
-* [CreateCommonMixStream](https://cloud.tencent.com/document/api/267/43404)
-
-新增数据结构：
-
-* [CommonMixControlParams](https://cloud.tencent.com/document/api/267/20474#CommonMixControlParams)
-* [CommonMixCropParams](https://cloud.tencent.com/document/api/267/20474#CommonMixCropParams)
-* [CommonMixInputParam](https://cloud.tencent.com/document/api/267/20474#CommonMixInputParam)
-* [CommonMixLayoutParams](https://cloud.tencent.com/document/api/267/20474#CommonMixLayoutParams)
-* [CommonMixOutputParams](https://cloud.tencent.com/document/api/267/20474#CommonMixOutputParams)
-
-
-
-## 云函数(scf) 版本：2018-04-16
-
-### 第 8 次发布
-
-发布时间：2020-04-14 08:13:51
+发布时间：2020-04-15 08:06:12
 
 本次发布包含了以下内容：
 
@@ -118,20 +33,22 @@
 
 修改接口：
 
-* [ListVersionByFunction](https://cloud.tencent.com/document/api/583/37162)
+* [CreateDBInstance](https://cloud.tencent.com/document/api/236/15871)
 
-	* 新增入参：Offset, Limit, Order, OrderBy
+	* 新增入参：DeviceType
 
-	* 新增出参：TotalCount
+* [CreateDBInstanceHour](https://cloud.tencent.com/document/api/236/15865)
+
+	* 新增入参：DeviceType
 
 
 
 
-## 游戏数据库 TcaplusDB(tcaplusdb) 版本：2019-08-23
+## 专线接入(dc) 版本：2018-04-10
 
-### 第 5 次发布
+### 第 6 次发布
 
-发布时间：2020-04-14 08:14:54
+发布时间：2020-04-15 08:08:41
 
 本次发布包含了以下内容：
 
@@ -139,10 +56,89 @@
 
 修改数据结构：
 
-* [TableInfoNew](https://cloud.tencent.com/document/api/596/39686#TableInfoNew)
+* [DirectConnectTunnel](https://cloud.tencent.com/document/api/216/18418#DirectConnectTunnel)
 
-	* 新增成员：DbClusterInfoStruct
+	* 新增成员：TencentBackupAddress
 
+
+
+
+## 物联网智能视频服务(iotvideo) 版本：2019-11-26
+
+### 第 7 次发布
+
+发布时间：2020-04-15 08:02:12
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeRegistrationStatus](https://cloud.tencent.com/document/api/1131/43425)
+
+修改接口：
+
+* [ModifyProduct](https://cloud.tencent.com/document/api/1131/42374)
+
+	* 新增入参：ChipManufactureId, ChipId
+
+
+新增数据结构：
+
+* [RegisteredStatus](https://cloud.tencent.com/document/api/1131/42400#RegisteredStatus)
+
+
+
+## 密钥管理系统(kms) 版本：2019-01-18
+
+### 第 6 次发布
+
+发布时间：2020-04-15 08:11:54
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CreateWhiteBoxKey](https://cloud.tencent.com/document/api/573/43443)
+* [DeleteWhiteBoxKey](https://cloud.tencent.com/document/api/573/43442)
+* [DescribeWhiteBoxDecryptKey](https://cloud.tencent.com/document/api/573/43441)
+* [DescribeWhiteBoxKey](https://cloud.tencent.com/document/api/573/43440)
+* [DescribeWhiteBoxKeyDetails](https://cloud.tencent.com/document/api/573/43439)
+* [DescribeWhiteBoxServiceStatus](https://cloud.tencent.com/document/api/573/43438)
+* [DisableWhiteBoxKey](https://cloud.tencent.com/document/api/573/43437)
+* [DisableWhiteBoxKeys](https://cloud.tencent.com/document/api/573/43436)
+* [EnableWhiteBoxKey](https://cloud.tencent.com/document/api/573/43435)
+* [EnableWhiteBoxKeys](https://cloud.tencent.com/document/api/573/43434)
+* [EncryptByWhiteBox](https://cloud.tencent.com/document/api/573/43433)
+
+新增数据结构：
+
+* [WhiteboxKeyInfo](https://cloud.tencent.com/document/api/573/34431#WhiteboxKeyInfo)
+
+
+
+## 直播(live) 版本：2018-08-01
+
+### 第 38 次发布
+
+发布时间：2020-04-15 08:12:18
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+<font color="#dd0000">**删除接口**：</font>
+
+* DescribePullStreamConfigs
+* ModifyPullStreamConfig
+* ModifyPullStreamStatus
+
+<font color="#dd0000">**删除数据结构**：</font>
+
+* PullStreamConfig
 
 
 
@@ -3118,6 +3114,23 @@
 
 ## 访问管理(cam) 版本：2019-01-16
 
+### 第 15 次发布
+
+发布时间：2020-04-15 08:05:30
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[Check](https://cloud.tencent.com/document/api/598/43431)](https://cloud.tencent.com/document/api/#/#)
+* [[CheckNewMfaCode](https://cloud.tencent.com/document/api/598/43430)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeMfaCodeStatus](https://cloud.tencent.com/document/api/598/43429)](https://cloud.tencent.com/document/api/#/#)
+* [[DetectAuth](https://cloud.tencent.com/document/api/598/43428)](https://cloud.tencent.com/document/api/#/#)
+* [[DetectMaskAuth](https://cloud.tencent.com/document/api/598/43427)](https://cloud.tencent.com/document/api/#/#)
+* [[DetectState](https://cloud.tencent.com/document/api/598/43426)](https://cloud.tencent.com/document/api/#/#)
+
 ### 第 14 次发布
 
 发布时间：2020-04-14 08:04:46
@@ -4057,6 +4070,25 @@
 
 ## 云数据库 MySQL(cdb) 版本：2017-03-20
 
+### 第 37 次发布
+
+发布时间：2020-04-15 08:06:12
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateDBInstance](https://cloud.tencent.com/document/api/236/15871)
+
+	* 新增入参：DeviceType
+
+* [CreateDBInstanceHour](https://cloud.tencent.com/document/api/236/15865)
+
+	* 新增入参：DeviceType
+
+
 ### 第 36 次发布
 
 发布时间：2020-04-13 08:05:16
@@ -4887,7 +4919,7 @@
 
 新增数据结构：
 
-* [[SecurityConfig](https://cloud.tencent.com/document/api/228/30987#SecurityConfig)](https://cloud.tencent.com/document/api/228/30987#[SecurityConfig](https://cloud.tencent.com/document/api/228/30987#SecurityConfig))
+* [SecurityConfig](https://cloud.tencent.com/document/api/228/30987#SecurityConfig)
 
 修改数据结构：
 
@@ -6853,14 +6885,14 @@
 
 新增接口：
 
-* [[ApplyReWithdrawal](https://cloud.tencent.com/document/api/1122/43408)](https://cloud.tencent.com/document/api/#/#)
-* [[QueryAcctInfo](https://cloud.tencent.com/document/api/1122/43407)](https://cloud.tencent.com/document/api/#/#)
-* [[QueryAcctInfoList](https://cloud.tencent.com/document/api/1122/43406)](https://cloud.tencent.com/document/api/#/#)
+* [ApplyReWithdrawal](https://cloud.tencent.com/document/api/1122/43408)
+* [QueryAcctInfo](https://cloud.tencent.com/document/api/1122/43407)
+* [QueryAcctInfoList](https://cloud.tencent.com/document/api/1122/43406)
 
 新增数据结构：
 
-* [[QueryAcctItem](https://cloud.tencent.com/document/api/1122/40683#QueryAcctItem)](https://cloud.tencent.com/document/api/1122/40683#[QueryAcctItem](https://cloud.tencent.com/document/api/1122/40683#QueryAcctItem))
-* [[WithdrawBill](https://cloud.tencent.com/document/api/1122/40683#WithdrawBill)](https://cloud.tencent.com/document/api/1122/40683#[WithdrawBill](https://cloud.tencent.com/document/api/1122/40683#WithdrawBill))
+* [QueryAcctItem](https://cloud.tencent.com/document/api/1122/40683#QueryAcctItem)
+* [WithdrawBill](https://cloud.tencent.com/document/api/1122/40683#WithdrawBill)
 
 ### 第 6 次发布
 
@@ -8590,6 +8622,21 @@
 
 
 ## 专线接入(dc) 版本：2018-04-10
+
+### 第 6 次发布
+
+发布时间：2020-04-15 08:08:41
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [DirectConnectTunnel](https://cloud.tencent.com/document/api/216/18418#DirectConnectTunnel)
+
+	* 新增成员：TencentBackupAddress
+
 
 ### 第 5 次发布
 
@@ -12638,6 +12685,29 @@
 
 ## 物联网智能视频服务(iotvideo) 版本：2019-11-26
 
+### 第 7 次发布
+
+发布时间：2020-04-15 08:02:12
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeRegistrationStatus](https://cloud.tencent.com/document/api/1131/43425)](https://cloud.tencent.com/document/api/#/#)
+
+修改接口：
+
+* [ModifyProduct](https://cloud.tencent.com/document/api/1131/42374)
+
+	* 新增入参：ChipManufactureId, ChipId
+
+
+新增数据结构：
+
+* [[RegisteredStatus](https://cloud.tencent.com/document/api/1131/42400#RegisteredStatus)](https://cloud.tencent.com/document/api/1131/42400#[RegisteredStatus](https://cloud.tencent.com/document/api/1131/42400#RegisteredStatus))
+
 ### 第 6 次发布
 
 发布时间：2020-04-10 08:01:14
@@ -12797,6 +12867,32 @@
 
 ## 密钥管理系统(kms) 版本：2019-01-18
 
+### 第 6 次发布
+
+发布时间：2020-04-15 08:11:54
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[CreateWhiteBoxKey](https://cloud.tencent.com/document/api/573/43443)](https://cloud.tencent.com/document/api/#/#)
+* [[DeleteWhiteBoxKey](https://cloud.tencent.com/document/api/573/43442)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeWhiteBoxDecryptKey](https://cloud.tencent.com/document/api/573/43441)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeWhiteBoxKey](https://cloud.tencent.com/document/api/573/43440)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeWhiteBoxKeyDetails](https://cloud.tencent.com/document/api/573/43439)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeWhiteBoxServiceStatus](https://cloud.tencent.com/document/api/573/43438)](https://cloud.tencent.com/document/api/#/#)
+* [[DisableWhiteBoxKey](https://cloud.tencent.com/document/api/573/43437)](https://cloud.tencent.com/document/api/#/#)
+* [[DisableWhiteBoxKeys](https://cloud.tencent.com/document/api/573/43436)](https://cloud.tencent.com/document/api/#/#)
+* [[EnableWhiteBoxKey](https://cloud.tencent.com/document/api/573/43435)](https://cloud.tencent.com/document/api/#/#)
+* [[EnableWhiteBoxKeys](https://cloud.tencent.com/document/api/573/43434)](https://cloud.tencent.com/document/api/#/#)
+* [[EncryptByWhiteBox](https://cloud.tencent.com/document/api/573/43433)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[WhiteboxKeyInfo](https://cloud.tencent.com/document/api/573/34431#WhiteboxKeyInfo)](https://cloud.tencent.com/document/api/573/34431#[WhiteboxKeyInfo](https://cloud.tencent.com/document/api/573/34431#WhiteboxKeyInfo))
+
 ### 第 5 次发布
 
 发布时间：2020-03-12 07:59:55
@@ -12930,6 +13026,24 @@
 
 ## 直播(live) 版本：2018-08-01
 
+### 第 38 次发布
+
+发布时间：2020-04-15 08:12:18
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+<font color="#dd0000">**删除接口**：</font>
+
+* DescribePullStreamConfigs
+* ModifyPullStreamConfig
+* ModifyPullStreamStatus
+
+<font color="#dd0000">**删除数据结构**：</font>
+
+* PullStreamConfig
+
 ### 第 37 次发布
 
 发布时间：2020-04-14 08:11:00
@@ -12940,16 +13054,16 @@
 
 新增接口：
 
-* [[CancelCommonMixStream](https://cloud.tencent.com/document/api/267/43405)](https://cloud.tencent.com/document/api/#/#)
-* [[CreateCommonMixStream](https://cloud.tencent.com/document/api/267/43404)](https://cloud.tencent.com/document/api/#/#)
+* [CancelCommonMixStream](https://cloud.tencent.com/document/api/267/43405)
+* [CreateCommonMixStream](https://cloud.tencent.com/document/api/267/43404)
 
 新增数据结构：
 
-* [[CommonMixControlParams](https://cloud.tencent.com/document/api/267/20474#CommonMixControlParams)](https://cloud.tencent.com/document/api/267/20474#[CommonMixControlParams](https://cloud.tencent.com/document/api/267/20474#CommonMixControlParams))
-* [[CommonMixCropParams](https://cloud.tencent.com/document/api/267/20474#CommonMixCropParams)](https://cloud.tencent.com/document/api/267/20474#[CommonMixCropParams](https://cloud.tencent.com/document/api/267/20474#CommonMixCropParams))
-* [[CommonMixInputParam](https://cloud.tencent.com/document/api/267/20474#CommonMixInputParam)](https://cloud.tencent.com/document/api/267/20474#[CommonMixInputParam](https://cloud.tencent.com/document/api/267/20474#CommonMixInputParam))
-* [[CommonMixLayoutParams](https://cloud.tencent.com/document/api/267/20474#CommonMixLayoutParams)](https://cloud.tencent.com/document/api/267/20474#[CommonMixLayoutParams](https://cloud.tencent.com/document/api/267/20474#CommonMixLayoutParams))
-* [[CommonMixOutputParams](https://cloud.tencent.com/document/api/267/20474#CommonMixOutputParams)](https://cloud.tencent.com/document/api/267/20474#[CommonMixOutputParams](https://cloud.tencent.com/document/api/267/20474#CommonMixOutputParams))
+* [CommonMixControlParams](https://cloud.tencent.com/document/api/267/20474#CommonMixControlParams)
+* [CommonMixCropParams](https://cloud.tencent.com/document/api/267/20474#CommonMixCropParams)
+* [CommonMixInputParam](https://cloud.tencent.com/document/api/267/20474#CommonMixInputParam)
+* [CommonMixLayoutParams](https://cloud.tencent.com/document/api/267/20474#CommonMixLayoutParams)
+* [CommonMixOutputParams](https://cloud.tencent.com/document/api/267/20474#CommonMixOutputParams)
 
 ### 第 36 次发布
 

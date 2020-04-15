@@ -217,6 +217,55 @@ func (r *CreateKeyResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type CreateWhiteBoxKeyRequest struct {
+	*tchttp.BaseRequest
+
+	// 作为密钥更容易辨识，更容易被人看懂的别名， 不可为空，1-60个字母数字 - _ 的组合，首字符必须为字母或者数字。Alias不可重复。
+	Alias *string `json:"Alias,omitempty" name:"Alias"`
+
+	// 创建密钥所有的算法类型，支持的取值：AES_256,SM4
+	Algorithm *string `json:"Algorithm,omitempty" name:"Algorithm"`
+
+	// 密钥的描述，最大1024字节
+	Description *string `json:"Description,omitempty" name:"Description"`
+}
+
+func (r *CreateWhiteBoxKeyRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateWhiteBoxKeyRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateWhiteBoxKeyResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 用于加密的密钥，base64编码
+		EncryptKey *string `json:"EncryptKey,omitempty" name:"EncryptKey"`
+
+		// 用于解密的密钥，base64编码
+		DecryptKey *string `json:"DecryptKey,omitempty" name:"DecryptKey"`
+
+		// 白盒密钥的全局唯一标识符
+		KeyId *string `json:"KeyId,omitempty" name:"KeyId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateWhiteBoxKeyResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateWhiteBoxKeyResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DecryptRequest struct {
 	*tchttp.BaseRequest
 
@@ -294,6 +343,40 @@ func (r *DeleteImportedKeyMaterialResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DeleteWhiteBoxKeyRequest struct {
+	*tchttp.BaseRequest
+
+	// 白盒密钥的全局唯一标识符
+	KeyId *string `json:"KeyId,omitempty" name:"KeyId"`
+}
+
+func (r *DeleteWhiteBoxKeyRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteWhiteBoxKeyRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteWhiteBoxKeyResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DeleteWhiteBoxKeyResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteWhiteBoxKeyResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeKeyRequest struct {
 	*tchttp.BaseRequest
 
@@ -367,6 +450,151 @@ func (r *DescribeKeysResponse) ToJsonString() string {
 }
 
 func (r *DescribeKeysResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeWhiteBoxDecryptKeyRequest struct {
+	*tchttp.BaseRequest
+
+	// 白盒密钥的全局唯一标识符
+	KeyId *string `json:"KeyId,omitempty" name:"KeyId"`
+}
+
+func (r *DescribeWhiteBoxDecryptKeyRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeWhiteBoxDecryptKeyRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeWhiteBoxDecryptKeyResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 白盒解密密钥，base64编码
+		DecryptKey *string `json:"DecryptKey,omitempty" name:"DecryptKey"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeWhiteBoxDecryptKeyResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeWhiteBoxDecryptKeyResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeWhiteBoxKeyDetailsRequest struct {
+	*tchttp.BaseRequest
+
+	// 过滤条件：密钥的状态，0：disabled，1：enabled
+	KeyStatus *int64 `json:"KeyStatus,omitempty" name:"KeyStatus"`
+}
+
+func (r *DescribeWhiteBoxKeyDetailsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeWhiteBoxKeyDetailsRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeWhiteBoxKeyDetailsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 白盒密钥信息列表
+		KeyInfos []*WhiteboxKeyInfo `json:"KeyInfos,omitempty" name:"KeyInfos" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeWhiteBoxKeyDetailsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeWhiteBoxKeyDetailsResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeWhiteBoxKeyRequest struct {
+	*tchttp.BaseRequest
+
+	// 白盒密钥的全局唯一标识符
+	KeyId *string `json:"KeyId,omitempty" name:"KeyId"`
+}
+
+func (r *DescribeWhiteBoxKeyRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeWhiteBoxKeyRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeWhiteBoxKeyResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 白盒密钥信息
+		KeyInfo *WhiteboxKeyInfo `json:"KeyInfo,omitempty" name:"KeyInfo"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeWhiteBoxKeyResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeWhiteBoxKeyResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeWhiteBoxServiceStatusRequest struct {
+	*tchttp.BaseRequest
+}
+
+func (r *DescribeWhiteBoxServiceStatusRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeWhiteBoxServiceStatusRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeWhiteBoxServiceStatusResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 用户的白盒密钥服务是否可用
+		ServiceEnabled *bool `json:"ServiceEnabled,omitempty" name:"ServiceEnabled"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeWhiteBoxServiceStatusResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeWhiteBoxServiceStatusResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -472,6 +700,74 @@ func (r *DisableKeysResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DisableWhiteBoxKeyRequest struct {
+	*tchttp.BaseRequest
+
+	// 白盒密钥的全局唯一标识符
+	KeyId *string `json:"KeyId,omitempty" name:"KeyId"`
+}
+
+func (r *DisableWhiteBoxKeyRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DisableWhiteBoxKeyRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DisableWhiteBoxKeyResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DisableWhiteBoxKeyResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DisableWhiteBoxKeyResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DisableWhiteBoxKeysRequest struct {
+	*tchttp.BaseRequest
+
+	// 白盒密钥的全局唯一标识符列表。注意：要确保所有提供的KeyId是格式有效的，没有重复，个数不超过50个，并且都是有效存在的。
+	KeyIds []*string `json:"KeyIds,omitempty" name:"KeyIds" list`
+}
+
+func (r *DisableWhiteBoxKeysRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DisableWhiteBoxKeysRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DisableWhiteBoxKeysResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DisableWhiteBoxKeysResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DisableWhiteBoxKeysResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type EnableKeyRequest struct {
 	*tchttp.BaseRequest
 
@@ -571,6 +867,120 @@ func (r *EnableKeysResponse) ToJsonString() string {
 }
 
 func (r *EnableKeysResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type EnableWhiteBoxKeyRequest struct {
+	*tchttp.BaseRequest
+
+	// 白盒密钥的全局唯一标识符
+	KeyId *string `json:"KeyId,omitempty" name:"KeyId"`
+}
+
+func (r *EnableWhiteBoxKeyRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *EnableWhiteBoxKeyRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type EnableWhiteBoxKeyResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *EnableWhiteBoxKeyResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *EnableWhiteBoxKeyResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type EnableWhiteBoxKeysRequest struct {
+	*tchttp.BaseRequest
+
+	// 白盒密钥的全局唯一标识符列表。注意：要确保所有提供的KeyId是格式有效的，没有重复，个数不超过50个，并且都是有效存在的。
+	KeyIds []*string `json:"KeyIds,omitempty" name:"KeyIds" list`
+}
+
+func (r *EnableWhiteBoxKeysRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *EnableWhiteBoxKeysRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type EnableWhiteBoxKeysResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *EnableWhiteBoxKeysResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *EnableWhiteBoxKeysResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type EncryptByWhiteBoxRequest struct {
+	*tchttp.BaseRequest
+
+	// 白盒密钥的全局唯一标识符
+	KeyId *string `json:"KeyId,omitempty" name:"KeyId"`
+
+	// 待加密的文本， base64编码，文本的原始长度最大不超过4KB
+	PlainText *string `json:"PlainText,omitempty" name:"PlainText"`
+
+	// 初始化向量，大小为 16 Bytes，加密算法会使用到, base64编码；如果不传，则由后端服务随机生成。用户需要自行保存该值，作为解密的参数。
+	InitializationVector *string `json:"InitializationVector,omitempty" name:"InitializationVector"`
+}
+
+func (r *EncryptByWhiteBoxRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *EncryptByWhiteBoxRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type EncryptByWhiteBoxResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 初始化向量，加密算法会使用到, base64编码。如果由调用方在入参中传入，则原样返回。如果调用方没有传入，则后端服务随机生成，并返回
+		InitializationVector *string `json:"InitializationVector,omitempty" name:"InitializationVector"`
+
+		// 加密后的密文，base64编码
+		CipherText *string `json:"CipherText,omitempty" name:"CipherText"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *EncryptByWhiteBoxResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *EncryptByWhiteBoxResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -1292,4 +1702,37 @@ func (r *UpdateKeyDescriptionResponse) ToJsonString() string {
 
 func (r *UpdateKeyDescriptionResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
+}
+
+type WhiteboxKeyInfo struct {
+
+	// 白盒密钥的全局唯一标识符
+	KeyId *string `json:"KeyId,omitempty" name:"KeyId"`
+
+	// 作为密钥更容易辨识，更容易被人看懂的别名， 不可为空，1-60个字母数字 - _ 的组合，首字符必须为字母或者数字. 不可重复
+	Alias *string `json:"Alias,omitempty" name:"Alias"`
+
+	// 创建者
+	CreatorUin *uint64 `json:"CreatorUin,omitempty" name:"CreatorUin"`
+
+	// 密钥的描述信息
+	Description *string `json:"Description,omitempty" name:"Description"`
+
+	// 密钥创建时间，Unix时间戳
+	CreateTime *uint64 `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 白盒密钥的状态， 取值为：Enabled | Disabled
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 创建者
+	OwnerUin *uint64 `json:"OwnerUin,omitempty" name:"OwnerUin"`
+
+	// 密钥所用的算法类型
+	Algorithm *string `json:"Algorithm,omitempty" name:"Algorithm"`
+
+	// 白盒加密密钥，base64编码
+	EncryptKey *string `json:"EncryptKey,omitempty" name:"EncryptKey"`
+
+	// 白盒解密密钥，base64编码
+	DecryptKey *string `json:"DecryptKey,omitempty" name:"DecryptKey"`
 }

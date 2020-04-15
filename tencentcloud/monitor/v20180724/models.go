@@ -150,7 +150,7 @@ type CreatePolicyGroupRequest struct {
 	// 策略组中的阈值告警规则
 	Conditions []*CreatePolicyGroupCondition `json:"Conditions,omitempty" name:"Conditions" list`
 
-	// 策略组中的时间告警规则
+	// 策略组中的事件告警规则
 	EventConditions []*CreatePolicyGroupEventCondition `json:"EventConditions,omitempty" name:"EventConditions" list`
 
 	// 是否为后端调用。当且仅当值为1时，后台拉取策略模版中的规则填充入Conditions以及EventConditions字段

@@ -168,6 +168,56 @@ func (c *Client) AttachUserPolicy(request *AttachUserPolicyRequest) (response *A
     return
 }
 
+func NewCheckRequest() (request *CheckRequest) {
+    request = &CheckRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cam", APIVersion, "Check")
+    return
+}
+
+func NewCheckResponse() (response *CheckResponse) {
+    response = &CheckResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// mfa校验
+func (c *Client) Check(request *CheckRequest) (response *CheckResponse, err error) {
+    if request == nil {
+        request = NewCheckRequest()
+    }
+    response = NewCheckResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCheckNewMfaCodeRequest() (request *CheckNewMfaCodeRequest) {
+    request = &CheckNewMfaCodeRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cam", APIVersion, "CheckNewMfaCode")
+    return
+}
+
+func NewCheckNewMfaCodeResponse() (response *CheckNewMfaCodeResponse) {
+    response = &CheckNewMfaCodeResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 校验新手机新邮箱接口
+func (c *Client) CheckNewMfaCode(request *CheckNewMfaCodeRequest) (response *CheckNewMfaCodeResponse, err error) {
+    if request == nil {
+        request = NewCheckNewMfaCodeRequest()
+    }
+    response = NewCheckNewMfaCodeResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewConsumeCustomMFATokenRequest() (request *ConsumeCustomMFATokenRequest) {
     request = &ConsumeCustomMFATokenRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -418,6 +468,31 @@ func (c *Client) DeleteUser(request *DeleteUserRequest) (response *DeleteUserRes
     return
 }
 
+func NewDescribeMfaCodeStatusRequest() (request *DescribeMfaCodeStatusRequest) {
+    request = &DescribeMfaCodeStatusRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cam", APIVersion, "DescribeMfaCodeStatus")
+    return
+}
+
+func NewDescribeMfaCodeStatusResponse() (response *DescribeMfaCodeStatusResponse) {
+    response = &DescribeMfaCodeStatusResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询微信code状态
+func (c *Client) DescribeMfaCodeStatus(request *DescribeMfaCodeStatusRequest) (response *DescribeMfaCodeStatusResponse, err error) {
+    if request == nil {
+        request = NewDescribeMfaCodeStatusRequest()
+    }
+    response = NewDescribeMfaCodeStatusResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeRoleListRequest() (request *DescribeRoleListRequest) {
     request = &DescribeRoleListRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -514,6 +589,81 @@ func (c *Client) DetachUserPolicy(request *DetachUserPolicyRequest) (response *D
         request = NewDetachUserPolicyRequest()
     }
     response = NewDetachUserPolicyResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDetectAuthRequest() (request *DetectAuthRequest) {
+    request = &DetectAuthRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cam", APIVersion, "DetectAuth")
+    return
+}
+
+func NewDetectAuthResponse() (response *DetectAuthResponse) {
+    response = &DetectAuthResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 发起人脸核身
+func (c *Client) DetectAuth(request *DetectAuthRequest) (response *DetectAuthResponse, err error) {
+    if request == nil {
+        request = NewDetectAuthRequest()
+    }
+    response = NewDetectAuthResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDetectMaskAuthRequest() (request *DetectMaskAuthRequest) {
+    request = &DetectMaskAuthRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cam", APIVersion, "DetectMaskAuth")
+    return
+}
+
+func NewDetectMaskAuthResponse() (response *DetectMaskAuthResponse) {
+    response = &DetectMaskAuthResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 获取并更新人脸核身校验状态实名传递参数比对
+func (c *Client) DetectMaskAuth(request *DetectMaskAuthRequest) (response *DetectMaskAuthResponse, err error) {
+    if request == nil {
+        request = NewDetectMaskAuthRequest()
+    }
+    response = NewDetectMaskAuthResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDetectStateRequest() (request *DetectStateRequest) {
+    request = &DetectStateRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cam", APIVersion, "DetectState")
+    return
+}
+
+func NewDetectStateResponse() (response *DetectStateResponse) {
+    response = &DetectStateResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 获取并且更新人联合身状态
+func (c *Client) DetectState(request *DetectStateRequest) (response *DetectStateResponse, err error) {
+    if request == nil {
+        request = NewDetectStateRequest()
+    }
+    response = NewDetectStateResponse()
     err = c.Send(request, response)
     return
 }
