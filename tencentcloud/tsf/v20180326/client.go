@@ -208,7 +208,7 @@ func NewCreateGroupResponse() (response *CreateGroupResponse) {
     return
 }
 
-// 创建容器部署组
+// 创建虚拟机部署组
 func (c *Client) CreateGroup(request *CreateGroupRequest) (response *CreateGroupResponse, err error) {
     if request == nil {
         request = NewCreateGroupRequest()

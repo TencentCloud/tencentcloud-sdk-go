@@ -2,9 +2,9 @@
 
 ## 访问管理(cam) 版本：2019-01-16
 
-### 第 15 次发布
+### 第 16 次发布
 
-发布时间：2020-04-15 08:05:30
+发布时间：2020-04-16 08:04:28
 
 本次发布包含了以下内容：
 
@@ -12,43 +12,43 @@
 
 新增接口：
 
-* [Check](https://cloud.tencent.com/document/api/598/43431)
-* [CheckNewMfaCode](https://cloud.tencent.com/document/api/598/43430)
-* [DescribeMfaCodeStatus](https://cloud.tencent.com/document/api/598/43429)
-* [DetectAuth](https://cloud.tencent.com/document/api/598/43428)
-* [DetectMaskAuth](https://cloud.tencent.com/document/api/598/43427)
-* [DetectState](https://cloud.tencent.com/document/api/598/43426)
+* [ListCollaborators](https://cloud.tencent.com/document/api/598/43470)
+* [UpdateRoleConsoleLogin](https://cloud.tencent.com/document/api/598/43469)
+
+修改接口：
+
+* [GetPolicy](https://cloud.tencent.com/document/api/598/34574)
+
+	* 新增出参：PresetAlias, IsServiceLinkedRolePolicy
 
 
 
-## 云数据库 MySQL(cdb) 版本：2017-03-20
 
-### 第 37 次发布
+## 分布式数据库 TDSQL(dcdb) 版本：2018-04-11
 
-发布时间：2020-04-15 08:06:12
+### 第 10 次发布
+
+发布时间：2020-04-16 08:07:40
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-修改接口：
+新增接口：
 
-* [CreateDBInstance](https://cloud.tencent.com/document/api/236/15871)
+* [DescribeProjects](https://cloud.tencent.com/document/api/557/43471)
 
-	* 新增入参：DeviceType
+新增数据结构：
 
-* [CreateDBInstanceHour](https://cloud.tencent.com/document/api/236/15865)
-
-	* 新增入参：DeviceType
+* [Project](https://cloud.tencent.com/document/api/557/16142#Project)
 
 
 
+## 全站加速网络(ecdn) 版本：2019-10-12
 
-## 专线接入(dc) 版本：2018-04-10
+### 第 2 次发布
 
-### 第 6 次发布
-
-发布时间：2020-04-15 08:08:41
+发布时间：2020-04-16 08:01:06
 
 本次发布包含了以下内容：
 
@@ -56,89 +56,83 @@
 
 修改数据结构：
 
-* [DirectConnectTunnel](https://cloud.tencent.com/document/api/216/18418#DirectConnectTunnel)
+* [Cache](https://cloud.tencent.com/document/api/570/42478#Cache)
 
-	* 新增成员：TencentBackupAddress
+	* 新增成员：FollowOrigin
 
-
-
-
-## 物联网智能视频服务(iotvideo) 版本：2019-11-26
-
-### 第 7 次发布
-
-发布时间：2020-04-15 08:02:12
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [DescribeRegistrationStatus](https://cloud.tencent.com/document/api/1131/43425)
-
-修改接口：
-
-* [ModifyProduct](https://cloud.tencent.com/document/api/1131/42374)
-
-	* 新增入参：ChipManufactureId, ChipId
-
-
-新增数据结构：
-
-* [RegisteredStatus](https://cloud.tencent.com/document/api/1131/42400#RegisteredStatus)
-
-
-
-## 密钥管理系统(kms) 版本：2019-01-18
-
-### 第 6 次发布
-
-发布时间：2020-04-15 08:11:54
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [CreateWhiteBoxKey](https://cloud.tencent.com/document/api/573/43443)
-* [DeleteWhiteBoxKey](https://cloud.tencent.com/document/api/573/43442)
-* [DescribeWhiteBoxDecryptKey](https://cloud.tencent.com/document/api/573/43441)
-* [DescribeWhiteBoxKey](https://cloud.tencent.com/document/api/573/43440)
-* [DescribeWhiteBoxKeyDetails](https://cloud.tencent.com/document/api/573/43439)
-* [DescribeWhiteBoxServiceStatus](https://cloud.tencent.com/document/api/573/43438)
-* [DisableWhiteBoxKey](https://cloud.tencent.com/document/api/573/43437)
-* [DisableWhiteBoxKeys](https://cloud.tencent.com/document/api/573/43436)
-* [EnableWhiteBoxKey](https://cloud.tencent.com/document/api/573/43435)
-* [EnableWhiteBoxKeys](https://cloud.tencent.com/document/api/573/43434)
-* [EncryptByWhiteBox](https://cloud.tencent.com/document/api/573/43433)
-
-新增数据结构：
-
-* [WhiteboxKeyInfo](https://cloud.tencent.com/document/api/573/34431#WhiteboxKeyInfo)
 
 
 
 ## 直播(live) 版本：2018-08-01
 
-### 第 38 次发布
+### 第 39 次发布
 
-发布时间：2020-04-15 08:12:18
+发布时间：2020-04-16 08:10:54
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-<font color="#dd0000">**删除接口**：</font>
+新增接口：
 
-* DescribePullStreamConfigs
-* ModifyPullStreamConfig
-* ModifyPullStreamStatus
+* [DeletePullStreamConfig](https://cloud.tencent.com/document/api/267/31311)
+* [DescribePullStreamConfigs](https://cloud.tencent.com/document/api/267/30158)
+* [ModifyPullStreamConfig](https://cloud.tencent.com/document/api/267/30157)
+* [ModifyPullStreamStatus](https://cloud.tencent.com/document/api/267/30156)
 
-<font color="#dd0000">**删除数据结构**：</font>
+新增数据结构：
 
-* PullStreamConfig
+* [PullStreamConfig](https://cloud.tencent.com/document/api/267/20474#PullStreamConfig)
+
+
+
+## 云函数(scf) 版本：2018-04-16
+
+### 第 9 次发布
+
+发布时间：2020-04-16 08:14:01
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [Invoke](https://cloud.tencent.com/document/api/583/17243)
+
+	* 新增入参：RoutingKey
+
+
+
+
+## 腾讯分布式服务框架(tsf) 版本：2018-03-26
+
+### 第 16 次发布
+
+发布时间：2020-04-16 08:16:24
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateCluster](https://cloud.tencent.com/document/api/649/36049)
+
+	* <font color="#dd0000">**修改出参**：</font>Result
+
+* [CreateContainGroup](https://cloud.tencent.com/document/api/649/36075)
+
+	* 新增入参：GroupResourceType, SubnetId, AgentCpuRequest, AgentCpuLimit, AgentMemRequest, AgentMemLimit, IstioCpuRequest, IstioCpuLimit, IstioMemRequest, IstioMemLimit
+
+* [CreateGroup](https://cloud.tencent.com/document/api/649/36074)
+
+	* 新增入参：GroupResourceType
+
+* [DeployContainerGroup](https://cloud.tencent.com/document/api/649/36071)
+
+	* 新增入参：AgentCpuRequest, AgentCpuLimit, AgentMemRequest, AgentMemLimit, IstioCpuRequest, IstioCpuLimit, IstioMemRequest, IstioMemLimit
+
 
 
 
@@ -3114,6 +3108,26 @@
 
 ## 访问管理(cam) 版本：2019-01-16
 
+### 第 16 次发布
+
+发布时间：2020-04-16 08:04:28
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[ListCollaborators](https://cloud.tencent.com/document/api/598/43470)](https://cloud.tencent.com/document/api/#/#)
+* [[UpdateRoleConsoleLogin](https://cloud.tencent.com/document/api/598/43469)](https://cloud.tencent.com/document/api/#/#)
+
+修改接口：
+
+* [GetPolicy](https://cloud.tencent.com/document/api/598/34574)
+
+	* 新增出参：PresetAlias, IsServiceLinkedRolePolicy
+
+
 ### 第 15 次发布
 
 发布时间：2020-04-15 08:05:30
@@ -3124,12 +3138,12 @@
 
 新增接口：
 
-* [[Check](https://cloud.tencent.com/document/api/598/43431)](https://cloud.tencent.com/document/api/#/#)
-* [[CheckNewMfaCode](https://cloud.tencent.com/document/api/598/43430)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeMfaCodeStatus](https://cloud.tencent.com/document/api/598/43429)](https://cloud.tencent.com/document/api/#/#)
-* [[DetectAuth](https://cloud.tencent.com/document/api/598/43428)](https://cloud.tencent.com/document/api/#/#)
-* [[DetectMaskAuth](https://cloud.tencent.com/document/api/598/43427)](https://cloud.tencent.com/document/api/#/#)
-* [[DetectState](https://cloud.tencent.com/document/api/598/43426)](https://cloud.tencent.com/document/api/#/#)
+* [Check](https://cloud.tencent.com/document/api/598/43431)
+* [CheckNewMfaCode](https://cloud.tencent.com/document/api/598/43430)
+* [DescribeMfaCodeStatus](https://cloud.tencent.com/document/api/598/43429)
+* [DetectAuth](https://cloud.tencent.com/document/api/598/43428)
+* [DetectMaskAuth](https://cloud.tencent.com/document/api/598/43427)
+* [DetectState](https://cloud.tencent.com/document/api/598/43426)
 
 ### 第 14 次发布
 
@@ -8738,6 +8752,22 @@
 
 ## 分布式数据库 TDSQL(dcdb) 版本：2018-04-11
 
+### 第 10 次发布
+
+发布时间：2020-04-16 08:07:40
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeProjects](https://cloud.tencent.com/document/api/557/43471)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[Project](https://cloud.tencent.com/document/api/557/16142#Project)](https://cloud.tencent.com/document/api/557/16142#[Project](https://cloud.tencent.com/document/api/557/16142#Project))
+
 ### 第 9 次发布
 
 发布时间：2020-03-19 08:07:20
@@ -9508,6 +9538,21 @@
 
 
 ## 全站加速网络(ecdn) 版本：2019-10-12
+
+### 第 2 次发布
+
+发布时间：2020-04-16 08:01:06
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [Cache](https://cloud.tencent.com/document/api/570/42478#Cache)
+
+	* 新增成员：FollowOrigin
+
 
 ### 第 1 次发布
 
@@ -12695,7 +12740,7 @@
 
 新增接口：
 
-* [[DescribeRegistrationStatus](https://cloud.tencent.com/document/api/1131/43425)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeRegistrationStatus](https://cloud.tencent.com/document/api/1131/43425)
 
 修改接口：
 
@@ -12706,7 +12751,7 @@
 
 新增数据结构：
 
-* [[RegisteredStatus](https://cloud.tencent.com/document/api/1131/42400#RegisteredStatus)](https://cloud.tencent.com/document/api/1131/42400#[RegisteredStatus](https://cloud.tencent.com/document/api/1131/42400#RegisteredStatus))
+* [RegisteredStatus](https://cloud.tencent.com/document/api/1131/42400#RegisteredStatus)
 
 ### 第 6 次发布
 
@@ -12877,21 +12922,21 @@
 
 新增接口：
 
-* [[CreateWhiteBoxKey](https://cloud.tencent.com/document/api/573/43443)](https://cloud.tencent.com/document/api/#/#)
-* [[DeleteWhiteBoxKey](https://cloud.tencent.com/document/api/573/43442)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeWhiteBoxDecryptKey](https://cloud.tencent.com/document/api/573/43441)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeWhiteBoxKey](https://cloud.tencent.com/document/api/573/43440)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeWhiteBoxKeyDetails](https://cloud.tencent.com/document/api/573/43439)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeWhiteBoxServiceStatus](https://cloud.tencent.com/document/api/573/43438)](https://cloud.tencent.com/document/api/#/#)
-* [[DisableWhiteBoxKey](https://cloud.tencent.com/document/api/573/43437)](https://cloud.tencent.com/document/api/#/#)
-* [[DisableWhiteBoxKeys](https://cloud.tencent.com/document/api/573/43436)](https://cloud.tencent.com/document/api/#/#)
-* [[EnableWhiteBoxKey](https://cloud.tencent.com/document/api/573/43435)](https://cloud.tencent.com/document/api/#/#)
-* [[EnableWhiteBoxKeys](https://cloud.tencent.com/document/api/573/43434)](https://cloud.tencent.com/document/api/#/#)
-* [[EncryptByWhiteBox](https://cloud.tencent.com/document/api/573/43433)](https://cloud.tencent.com/document/api/#/#)
+* [CreateWhiteBoxKey](https://cloud.tencent.com/document/api/573/43443)
+* [DeleteWhiteBoxKey](https://cloud.tencent.com/document/api/573/43442)
+* [DescribeWhiteBoxDecryptKey](https://cloud.tencent.com/document/api/573/43441)
+* [DescribeWhiteBoxKey](https://cloud.tencent.com/document/api/573/43440)
+* [DescribeWhiteBoxKeyDetails](https://cloud.tencent.com/document/api/573/43439)
+* [DescribeWhiteBoxServiceStatus](https://cloud.tencent.com/document/api/573/43438)
+* [DisableWhiteBoxKey](https://cloud.tencent.com/document/api/573/43437)
+* [DisableWhiteBoxKeys](https://cloud.tencent.com/document/api/573/43436)
+* [EnableWhiteBoxKey](https://cloud.tencent.com/document/api/573/43435)
+* [EnableWhiteBoxKeys](https://cloud.tencent.com/document/api/573/43434)
+* [EncryptByWhiteBox](https://cloud.tencent.com/document/api/573/43433)
 
 新增数据结构：
 
-* [[WhiteboxKeyInfo](https://cloud.tencent.com/document/api/573/34431#WhiteboxKeyInfo)](https://cloud.tencent.com/document/api/573/34431#[WhiteboxKeyInfo](https://cloud.tencent.com/document/api/573/34431#WhiteboxKeyInfo))
+* [WhiteboxKeyInfo](https://cloud.tencent.com/document/api/573/34431#WhiteboxKeyInfo)
 
 ### 第 5 次发布
 
@@ -13025,6 +13070,25 @@
 
 
 ## 直播(live) 版本：2018-08-01
+
+### 第 39 次发布
+
+发布时间：2020-04-16 08:10:54
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DeletePullStreamConfig](https://cloud.tencent.com/document/api/267/31311)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribePullStreamConfigs](https://cloud.tencent.com/document/api/267/30158)](https://cloud.tencent.com/document/api/#/#)
+* [[ModifyPullStreamConfig](https://cloud.tencent.com/document/api/267/30157)](https://cloud.tencent.com/document/api/#/#)
+* [[ModifyPullStreamStatus](https://cloud.tencent.com/document/api/267/30156)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[PullStreamConfig](https://cloud.tencent.com/document/api/267/20474#PullStreamConfig)](https://cloud.tencent.com/document/api/267/20474#[PullStreamConfig](https://cloud.tencent.com/document/api/267/20474#PullStreamConfig))
 
 ### 第 38 次发布
 
@@ -17164,6 +17228,21 @@
 
 ## 云函数(scf) 版本：2018-04-16
 
+### 第 9 次发布
+
+发布时间：2020-04-16 08:14:01
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [Invoke](https://cloud.tencent.com/document/api/583/17243)
+
+	* 新增入参：RoutingKey
+
+
 ### 第 8 次发布
 
 发布时间：2020-04-14 08:13:51
@@ -21254,6 +21333,33 @@
 
 
 ## 腾讯分布式服务框架(tsf) 版本：2018-03-26
+
+### 第 16 次发布
+
+发布时间：2020-04-16 08:16:24
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateCluster](https://cloud.tencent.com/document/api/649/36049)
+
+	* <font color="#dd0000">**修改出参**：</font>Result
+
+* [CreateContainGroup](https://cloud.tencent.com/document/api/649/36075)
+
+	* 新增入参：GroupResourceType, SubnetId, AgentCpuRequest, AgentCpuLimit, AgentMemRequest, AgentMemLimit, IstioCpuRequest, IstioCpuLimit, IstioMemRequest, IstioMemLimit
+
+* [CreateGroup](https://cloud.tencent.com/document/api/649/36074)
+
+	* 新增入参：GroupResourceType
+
+* [DeployContainerGroup](https://cloud.tencent.com/document/api/649/36071)
+
+	* 新增入参：AgentCpuRequest, AgentCpuLimit, AgentMemRequest, AgentMemLimit, IstioCpuRequest, IstioCpuLimit, IstioMemRequest, IstioMemLimit
+
 
 ### 第 15 次发布
 

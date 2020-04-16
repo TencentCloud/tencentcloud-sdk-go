@@ -1819,6 +1819,40 @@ func (r *DeleteLiveWatermarkRuleResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DeletePullStreamConfigRequest struct {
+	*tchttp.BaseRequest
+
+	// 配置id。
+	ConfigId *string `json:"ConfigId,omitempty" name:"ConfigId"`
+}
+
+func (r *DeletePullStreamConfigRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeletePullStreamConfigRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeletePullStreamConfigResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DeletePullStreamConfigResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeletePullStreamConfigResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeBillBandwidthAndFluxListRequest struct {
 	*tchttp.BaseRequest
 
@@ -3804,6 +3838,43 @@ func (r *DescribeProvinceIspPlayInfoListResponse) FromJsonString(s string) error
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribePullStreamConfigsRequest struct {
+	*tchttp.BaseRequest
+
+	// 配置id。
+	ConfigId *string `json:"ConfigId,omitempty" name:"ConfigId"`
+}
+
+func (r *DescribePullStreamConfigsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribePullStreamConfigsRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribePullStreamConfigsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 拉流配置。
+		PullStreamConfigs []*PullStreamConfig `json:"PullStreamConfigs,omitempty" name:"PullStreamConfigs" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribePullStreamConfigsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribePullStreamConfigsResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeScreenShotSheetNumListRequest struct {
 	*tchttp.BaseRequest
 
@@ -5042,6 +5113,110 @@ func (r *ModifyLiveTranscodeTemplateResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type ModifyPullStreamConfigRequest struct {
+	*tchttp.BaseRequest
+
+	// 配置id。
+	ConfigId *string `json:"ConfigId,omitempty" name:"ConfigId"`
+
+	// 源Url。
+	FromUrl *string `json:"FromUrl,omitempty" name:"FromUrl"`
+
+	// 目的Url。
+	ToUrl *string `json:"ToUrl,omitempty" name:"ToUrl"`
+
+	// 区域id：
+	// 1-深圳，
+	// 2-上海，
+	// 3-天津，
+	// 4-中国香港。
+	// 如有改动，需同时传入IspId。
+	AreaId *int64 `json:"AreaId,omitempty" name:"AreaId"`
+
+	// 运营商id,1-电信,2-移动,3-联通,4-其他,AreaId为4的时候,IspId只能为其他。如有改动，需同时传入AreaId。
+	IspId *int64 `json:"IspId,omitempty" name:"IspId"`
+
+	// 开始时间。
+	// 使用UTC格式时间，
+	// 例如：2019-01-08T10:00:00Z。
+	// 注意：北京时间值为 UTC 时间值 + 8 小时，格式按照 ISO 8601 标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#I)。
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 结束时间，注意：
+	// 1. 结束时间必须大于开始时间；
+	// 2. 结束时间和开始时间必须大于当前时间；
+	// 3. 结束时间 和 开始时间 间隔必须小于七天。
+	// 
+	// 使用UTC格式时间，
+	// 例如：2019-01-08T10:00:00Z。
+	// 注意：北京时间值为 UTC 时间值 + 8 小时，格式按照 ISO 8601 标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#I)。
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+}
+
+func (r *ModifyPullStreamConfigRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyPullStreamConfigRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyPullStreamConfigResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifyPullStreamConfigResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyPullStreamConfigResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyPullStreamStatusRequest struct {
+	*tchttp.BaseRequest
+
+	// 配置id列表。
+	ConfigIds []*string `json:"ConfigIds,omitempty" name:"ConfigIds" list`
+
+	// 目标状态。0无效，2正在运行，4暂停。
+	Status *string `json:"Status,omitempty" name:"Status"`
+}
+
+func (r *ModifyPullStreamStatusRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyPullStreamStatusRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyPullStreamStatusResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifyPullStreamStatusResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyPullStreamStatusResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type PlayAuthKeyInfo struct {
 
 	// 域名。
@@ -5147,6 +5322,40 @@ type PublishTime struct {
 	// 推流时间
 	// UTC 格式，例如：2018-06-29T19:00:00Z。
 	PublishTime *string `json:"PublishTime,omitempty" name:"PublishTime"`
+}
+
+type PullStreamConfig struct {
+
+	// 拉流配置Id。
+	ConfigId *string `json:"ConfigId,omitempty" name:"ConfigId"`
+
+	// 源Url。
+	FromUrl *string `json:"FromUrl,omitempty" name:"FromUrl"`
+
+	// 目的Url。
+	ToUrl *string `json:"ToUrl,omitempty" name:"ToUrl"`
+
+	// 区域名。
+	AreaName *string `json:"AreaName,omitempty" name:"AreaName"`
+
+	// 运营商名。
+	IspName *string `json:"IspName,omitempty" name:"IspName"`
+
+	// 开始时间。
+	// UTC格式时间，
+	// 例如：2019-01-08T10:00:00Z。
+	// 注意：北京时间值为 UTC 时间值 + 8 小时，格式按照 ISO 8601 标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#I)。
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 结束时间。
+	// 
+	// UTC格式时间，
+	// 例如：2019-01-08T10:00:00Z。
+	// 注意：北京时间值为 UTC 时间值 + 8 小时，格式按照 ISO 8601 标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#I)。
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 0无效，1初始状态，2正在运行，3拉起失败，4暂停。
+	Status *string `json:"Status,omitempty" name:"Status"`
 }
 
 type PushAuthKeyInfo struct {

@@ -571,6 +571,31 @@ func (c *Client) DescribeOrders(request *DescribeOrdersRequest) (response *Descr
     return
 }
 
+func NewDescribeProjectsRequest() (request *DescribeProjectsRequest) {
+    request = &DescribeProjectsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("dcdb", APIVersion, "DescribeProjects")
+    return
+}
+
+func NewDescribeProjectsResponse() (response *DescribeProjectsResponse) {
+    response = &DescribeProjectsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（DescribeProjects）用于查询项目列表
+func (c *Client) DescribeProjects(request *DescribeProjectsRequest) (response *DescribeProjectsResponse, err error) {
+    if request == nil {
+        request = NewDescribeProjectsRequest()
+    }
+    response = NewDescribeProjectsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeShardSpecRequest() (request *DescribeShardSpecRequest) {
     request = &DescribeShardSpecRequest{
         BaseRequest: &tchttp.BaseRequest{},

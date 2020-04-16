@@ -5986,10 +5986,10 @@ type DescribeVpcsRequest struct {
 	// <li>tag:tag-key - String - 是否必填：否 - （过滤条件）按照标签键值对进行过滤。 tag-key使用具体的标签键进行替换。使用请参考示例2。</li>
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
 
-	// 偏移量
+	// 偏移量，默认为0。
 	Offset *string `json:"Offset,omitempty" name:"Offset"`
 
-	// 返回数量
+	// 返回数量，默认为20，最大值为100。
 	Limit *string `json:"Limit,omitempty" name:"Limit"`
 }
 

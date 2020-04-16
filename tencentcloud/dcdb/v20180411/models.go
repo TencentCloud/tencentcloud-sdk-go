@@ -251,6 +251,7 @@ type CreateDCDBInstanceRequest struct {
 	*tchttp.BaseRequest
 
 	// 分片节点可用区分布，最多可填两个可用区。当分片规格为一主两从时，其中两个节点在第一个可用区。
+	// 注意当前可售卖的可用区需要通过DescribeDCDBSaleInfo接口拉取。
 	Zones []*string `json:"Zones,omitempty" name:"Zones" list`
 
 	// 欲购买的时长，单位：月。
@@ -1426,6 +1427,40 @@ func (r *DescribeOrdersResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeProjectsRequest struct {
+	*tchttp.BaseRequest
+}
+
+func (r *DescribeProjectsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeProjectsRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeProjectsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 项目列表
+		Projects []*Project `json:"Projects,omitempty" name:"Projects" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeProjectsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeProjectsResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeShardSpecRequest struct {
 	*tchttp.BaseRequest
 }
@@ -1892,6 +1927,42 @@ type ParamModifyResult struct {
 
 	// 参数修改结果。0表示修改成功；-1表示修改失败；-2表示该参数值非法
 	Code *int64 `json:"Code,omitempty" name:"Code"`
+}
+
+type Project struct {
+
+	// 项目ID
+	ProjectId *int64 `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 资源拥有者（主账号）uin
+	OwnerUin *int64 `json:"OwnerUin,omitempty" name:"OwnerUin"`
+
+	// 应用Id
+	AppId *int64 `json:"AppId,omitempty" name:"AppId"`
+
+	// 项目名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 创建者uin
+	CreatorUin *int64 `json:"CreatorUin,omitempty" name:"CreatorUin"`
+
+	// 来源平台
+	SrcPlat *string `json:"SrcPlat,omitempty" name:"SrcPlat"`
+
+	// 来源AppId
+	SrcAppId *int64 `json:"SrcAppId,omitempty" name:"SrcAppId"`
+
+	// 项目状态,0正常，-1关闭。默认项目为3
+	Status *int64 `json:"Status,omitempty" name:"Status"`
+
+	// 创建时间
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 是否默认项目，1 是，0 不是
+	IsDefault *int64 `json:"IsDefault,omitempty" name:"IsDefault"`
+
+	// 描述信息
+	Info *string `json:"Info,omitempty" name:"Info"`
 }
 
 type RegionInfo struct {

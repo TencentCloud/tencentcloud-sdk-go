@@ -137,7 +137,7 @@ func NewDeleteDirectConnectResponse() (response *DeleteDirectConnectResponse) {
 }
 
 // 删除物理专线。
-// 只能删除处于状态的物理专线。
+// 只能删除处于已连接状态的物理专线。
 func (c *Client) DeleteDirectConnect(request *DeleteDirectConnectRequest) (response *DeleteDirectConnectResponse, err error) {
     if request == nil {
         request = NewDeleteDirectConnectRequest()

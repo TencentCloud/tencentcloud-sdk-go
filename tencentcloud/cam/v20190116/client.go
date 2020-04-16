@@ -893,6 +893,31 @@ func (c *Client) ListAttachedUserPolicies(request *ListAttachedUserPoliciesReque
     return
 }
 
+func NewListCollaboratorsRequest() (request *ListCollaboratorsRequest) {
+    request = &ListCollaboratorsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cam", APIVersion, "ListCollaborators")
+    return
+}
+
+func NewListCollaboratorsResponse() (response *ListCollaboratorsResponse) {
+    response = &ListCollaboratorsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 获取协作者列表
+func (c *Client) ListCollaborators(request *ListCollaboratorsRequest) (response *ListCollaboratorsResponse, err error) {
+    if request == nil {
+        request = NewListCollaboratorsRequest()
+    }
+    response = NewListCollaboratorsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewListEntitiesForPolicyRequest() (request *ListEntitiesForPolicyRequest) {
     request = &ListEntitiesForPolicyRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1164,6 +1189,31 @@ func (c *Client) UpdateGroup(request *UpdateGroupRequest) (response *UpdateGroup
         request = NewUpdateGroupRequest()
     }
     response = NewUpdateGroupResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewUpdateRoleConsoleLoginRequest() (request *UpdateRoleConsoleLoginRequest) {
+    request = &UpdateRoleConsoleLoginRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cam", APIVersion, "UpdateRoleConsoleLogin")
+    return
+}
+
+func NewUpdateRoleConsoleLoginResponse() (response *UpdateRoleConsoleLoginResponse) {
+    response = &UpdateRoleConsoleLoginResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（UpdateRoleConsoleLogin）用于修改角色是否可登录。
+func (c *Client) UpdateRoleConsoleLogin(request *UpdateRoleConsoleLoginRequest) (response *UpdateRoleConsoleLoginResponse, err error) {
+    if request == nil {
+        request = NewUpdateRoleConsoleLoginRequest()
+    }
+    response = NewUpdateRoleConsoleLoginResponse()
     err = c.Send(request, response)
     return
 }

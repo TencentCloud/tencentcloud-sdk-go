@@ -847,6 +847,31 @@ func (c *Client) DeleteLiveWatermarkRule(request *DeleteLiveWatermarkRuleRequest
     return
 }
 
+func NewDeletePullStreamConfigRequest() (request *DeletePullStreamConfigRequest) {
+    request = &DeletePullStreamConfigRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("live", APIVersion, "DeletePullStreamConfig")
+    return
+}
+
+func NewDeletePullStreamConfigResponse() (response *DeletePullStreamConfigResponse) {
+    response = &DeletePullStreamConfigResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 删除直播拉流配置
+func (c *Client) DeletePullStreamConfig(request *DeletePullStreamConfigRequest) (response *DeletePullStreamConfigResponse, err error) {
+    if request == nil {
+        request = NewDeletePullStreamConfigRequest()
+    }
+    response = NewDeletePullStreamConfigResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeBillBandwidthAndFluxListRequest() (request *DescribeBillBandwidthAndFluxListRequest) {
     request = &DescribeBillBandwidthAndFluxListRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1877,6 +1902,31 @@ func (c *Client) DescribeProvinceIspPlayInfoList(request *DescribeProvinceIspPla
     return
 }
 
+func NewDescribePullStreamConfigsRequest() (request *DescribePullStreamConfigsRequest) {
+    request = &DescribePullStreamConfigsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("live", APIVersion, "DescribePullStreamConfigs")
+    return
+}
+
+func NewDescribePullStreamConfigsResponse() (response *DescribePullStreamConfigsResponse) {
+    response = &DescribePullStreamConfigsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询直播拉流配置。
+func (c *Client) DescribePullStreamConfigs(request *DescribePullStreamConfigsRequest) (response *DescribePullStreamConfigsResponse, err error) {
+    if request == nil {
+        request = NewDescribePullStreamConfigsRequest()
+    }
+    response = NewDescribePullStreamConfigsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeScreenShotSheetNumListRequest() (request *DescribeScreenShotSheetNumListRequest) {
     request = &DescribeScreenShotSheetNumListRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2349,6 +2399,56 @@ func (c *Client) ModifyLiveTranscodeTemplate(request *ModifyLiveTranscodeTemplat
         request = NewModifyLiveTranscodeTemplateRequest()
     }
     response = NewModifyLiveTranscodeTemplateResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyPullStreamConfigRequest() (request *ModifyPullStreamConfigRequest) {
+    request = &ModifyPullStreamConfigRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("live", APIVersion, "ModifyPullStreamConfig")
+    return
+}
+
+func NewModifyPullStreamConfigResponse() (response *ModifyPullStreamConfigResponse) {
+    response = &ModifyPullStreamConfigResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 更新拉流配置。
+func (c *Client) ModifyPullStreamConfig(request *ModifyPullStreamConfigRequest) (response *ModifyPullStreamConfigResponse, err error) {
+    if request == nil {
+        request = NewModifyPullStreamConfigRequest()
+    }
+    response = NewModifyPullStreamConfigResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyPullStreamStatusRequest() (request *ModifyPullStreamStatusRequest) {
+    request = &ModifyPullStreamStatusRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("live", APIVersion, "ModifyPullStreamStatus")
+    return
+}
+
+func NewModifyPullStreamStatusResponse() (response *ModifyPullStreamStatusResponse) {
+    response = &ModifyPullStreamStatusResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 修改直播拉流配置的状态。
+func (c *Client) ModifyPullStreamStatus(request *ModifyPullStreamStatusRequest) (response *ModifyPullStreamStatusResponse, err error) {
+    if request == nil {
+        request = NewModifyPullStreamStatusRequest()
+    }
+    response = NewModifyPullStreamStatusResponse()
     err = c.Send(request, response)
     return
 }

@@ -5132,11 +5132,9 @@ type DescribeTasksResponse struct {
 	Response *struct {
 
 		// 任务概要列表。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 		TaskSet []*TaskSimpleInfo `json:"TaskSet,omitempty" name:"TaskSet" list`
 
 		// 翻页标识，当请求未返回所有数据，该字段表示下一条记录的 ID。当该字段为空，说明已无更多数据。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 		ScrollToken *string `json:"ScrollToken,omitempty" name:"ScrollToken"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -5373,11 +5371,9 @@ type DescribeWordSamplesResponse struct {
 	Response *struct {
 
 		// 符合条件的记录总数。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 关键词信息。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 		WordSet []*AiSampleWord `json:"WordSet,omitempty" name:"WordSet" list`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -5718,7 +5714,6 @@ type ExecuteFunctionResponse struct {
 	Response *struct {
 
 		// 处理结果打包后的字符串，具体与后台一同协调。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 		Result *string `json:"Result,omitempty" name:"Result"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -6108,11 +6103,9 @@ type LiveRealTimeClipResponse struct {
 		Url *string `json:"Url,omitempty" name:"Url"`
 
 		// 剪辑固化后的视频的媒体文件的唯一标识。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 		FileId *string `json:"FileId,omitempty" name:"FileId"`
 
 		// 剪辑固化后的视频任务流 ID。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 		VodTaskId *string `json:"VodTaskId,omitempty" name:"VodTaskId"`
 
 		// 剪辑后的视频元信息。
@@ -8112,7 +8105,6 @@ type ModifyWatermarkTemplateResponse struct {
 	Response *struct {
 
 		// 图片水印地址，仅当 ImageTemplate.ImageContent 非空，该字段有值。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 		ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。

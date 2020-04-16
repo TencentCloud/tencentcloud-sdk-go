@@ -871,7 +871,7 @@ type CreateClusterResponse struct {
 		// 创建集群操作是否成功。
 	// true：操作成功。
 	// false：操作失败。
-		Result *bool `json:"Result,omitempty" name:"Result"`
+		Result *string `json:"Result,omitempty" name:"Result"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -983,6 +983,36 @@ type CreateContainGroupRequest struct {
 
 	// 初始分配的内存 MiB 数，对应 K8S request
 	MemRequest *string `json:"MemRequest,omitempty" name:"MemRequest"`
+
+	// 部署组资源类型
+	GroupResourceType *string `json:"GroupResourceType,omitempty" name:"GroupResourceType"`
+
+	// 子网ID
+	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
+
+	// agent 容器分配的 CPU 核数，对应 K8S 的 request
+	AgentCpuRequest *string `json:"AgentCpuRequest,omitempty" name:"AgentCpuRequest"`
+
+	// agent 容器最大的 CPU 核数，对应 K8S 的 limit
+	AgentCpuLimit *string `json:"AgentCpuLimit,omitempty" name:"AgentCpuLimit"`
+
+	// agent 容器分配的内存 MiB 数，对应 K8S 的 request
+	AgentMemRequest *string `json:"AgentMemRequest,omitempty" name:"AgentMemRequest"`
+
+	// agent 容器最大的内存 MiB 数，对应 K8S 的 limit
+	AgentMemLimit *string `json:"AgentMemLimit,omitempty" name:"AgentMemLimit"`
+
+	// istioproxy 容器分配的 CPU 核数，对应 K8S 的 request
+	IstioCpuRequest *string `json:"IstioCpuRequest,omitempty" name:"IstioCpuRequest"`
+
+	// istioproxy 容器最大的 CPU 核数，对应 K8S 的 limit
+	IstioCpuLimit *string `json:"IstioCpuLimit,omitempty" name:"IstioCpuLimit"`
+
+	// istioproxy 容器分配的内存 MiB 数，对应 K8S 的 request
+	IstioMemRequest *string `json:"IstioMemRequest,omitempty" name:"IstioMemRequest"`
+
+	// istioproxy 容器最大的内存 MiB 数，对应 K8S 的 limit
+	IstioMemLimit *string `json:"IstioMemLimit,omitempty" name:"IstioMemLimit"`
 }
 
 func (r *CreateContainGroupRequest) ToJsonString() string {
@@ -1032,6 +1062,9 @@ type CreateGroupRequest struct {
 
 	// 部署组描述
 	GroupDesc *string `json:"GroupDesc,omitempty" name:"GroupDesc"`
+
+	// 部署组资源类型
+	GroupResourceType *string `json:"GroupResourceType,omitempty" name:"GroupResourceType"`
 }
 
 func (r *CreateGroupRequest) ToJsonString() string {
@@ -1675,19 +1708,19 @@ type DeployContainerGroupRequest struct {
 	// 旧版镜像名，如/tsf/nginx
 	Reponame *string `json:"Reponame,omitempty" name:"Reponame"`
 
-	// 最大的 CPU 核数，对应 K8S 的 limit；不填时默认为 request 的 2 倍
+	// 业务容器最大的 CPU 核数，对应 K8S 的 limit；不填时默认为 request 的 2 倍
 	CpuLimit *string `json:"CpuLimit,omitempty" name:"CpuLimit"`
 
-	// 最大的内存 MiB 数，对应 K8S 的 limit；不填时默认为 request 的 2 倍
+	// 业务容器最大的内存 MiB 数，对应 K8S 的 limit；不填时默认为 request 的 2 倍
 	MemLimit *string `json:"MemLimit,omitempty" name:"MemLimit"`
 
 	// jvm参数
 	JvmOpts *string `json:"JvmOpts,omitempty" name:"JvmOpts"`
 
-	// 分配的 CPU 核数，对应 K8S 的 request
+	// 业务容器分配的 CPU 核数，对应 K8S 的 request
 	CpuRequest *string `json:"CpuRequest,omitempty" name:"CpuRequest"`
 
-	// 分配的内存 MiB 数，对应 K8S 的 request
+	// 业务容器分配的内存 MiB 数，对应 K8S 的 request
 	MemRequest *string `json:"MemRequest,omitempty" name:"MemRequest"`
 
 	// 是否不立即启动
@@ -1701,6 +1734,30 @@ type DeployContainerGroupRequest struct {
 
 	// 滚动更新必填，更新间隔
 	UpdateIvl *int64 `json:"UpdateIvl,omitempty" name:"UpdateIvl"`
+
+	// agent 容器分配的 CPU 核数，对应 K8S 的 request
+	AgentCpuRequest *string `json:"AgentCpuRequest,omitempty" name:"AgentCpuRequest"`
+
+	// agent 容器最大的 CPU 核数，对应 K8S 的 limit
+	AgentCpuLimit *string `json:"AgentCpuLimit,omitempty" name:"AgentCpuLimit"`
+
+	// agent 容器分配的内存 MiB 数，对应 K8S 的 request
+	AgentMemRequest *string `json:"AgentMemRequest,omitempty" name:"AgentMemRequest"`
+
+	// agent 容器最大的内存 MiB 数，对应 K8S 的 limit
+	AgentMemLimit *string `json:"AgentMemLimit,omitempty" name:"AgentMemLimit"`
+
+	// istioproxy 容器分配的 CPU 核数，对应 K8S 的 request
+	IstioCpuRequest *string `json:"IstioCpuRequest,omitempty" name:"IstioCpuRequest"`
+
+	// istioproxy 容器最大的 CPU 核数，对应 K8S 的 limit
+	IstioCpuLimit *string `json:"IstioCpuLimit,omitempty" name:"IstioCpuLimit"`
+
+	// istioproxy 容器分配的内存 MiB 数，对应 K8S 的 request
+	IstioMemRequest *string `json:"IstioMemRequest,omitempty" name:"IstioMemRequest"`
+
+	// istioproxy 容器最大的内存 MiB 数，对应 K8S 的 limit
+	IstioMemLimit *string `json:"IstioMemLimit,omitempty" name:"IstioMemLimit"`
 }
 
 func (r *DeployContainerGroupRequest) ToJsonString() string {
