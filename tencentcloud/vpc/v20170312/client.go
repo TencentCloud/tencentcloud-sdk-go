@@ -4769,6 +4769,31 @@ func (c *Client) ModifyVpnGatewayAttribute(request *ModifyVpnGatewayAttributeReq
     return
 }
 
+func NewModifyVpnGatewayCcnRoutesRequest() (request *ModifyVpnGatewayCcnRoutesRequest) {
+    request = &ModifyVpnGatewayCcnRoutesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "ModifyVpnGatewayCcnRoutes")
+    return
+}
+
+func NewModifyVpnGatewayCcnRoutesResponse() (response *ModifyVpnGatewayCcnRoutesResponse) {
+    response = &ModifyVpnGatewayCcnRoutesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（ModifyVpnGatewayCcnRoutes）用于修改VPN网关云联网路由
+func (c *Client) ModifyVpnGatewayCcnRoutes(request *ModifyVpnGatewayCcnRoutesRequest) (response *ModifyVpnGatewayCcnRoutesResponse, err error) {
+    if request == nil {
+        request = NewModifyVpnGatewayCcnRoutesRequest()
+    }
+    response = NewModifyVpnGatewayCcnRoutesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewRejectAttachCcnInstancesRequest() (request *RejectAttachCcnInstancesRequest) {
     request = &RejectAttachCcnInstancesRequest{
         BaseRequest: &tchttp.BaseRequest{},

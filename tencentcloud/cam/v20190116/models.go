@@ -843,6 +843,51 @@ func (r *DeleteUserResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeMFADeviceCollRequest struct {
+	*tchttp.BaseRequest
+
+	// 子用户Uin
+	SubUin *uint64 `json:"SubUin,omitempty" name:"SubUin"`
+}
+
+func (r *DescribeMFADeviceCollRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeMFADeviceCollRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeMFADeviceCollResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// Token状态
+		Status *uint64 `json:"Status,omitempty" name:"Status"`
+
+		// Token值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		TokenSn *string `json:"TokenSn,omitempty" name:"TokenSn"`
+
+		// token类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		TokenType *uint64 `json:"TokenType,omitempty" name:"TokenType"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeMFADeviceCollResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeMFADeviceCollResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeMfaCodeStatusRequest struct {
 	*tchttp.BaseRequest
 

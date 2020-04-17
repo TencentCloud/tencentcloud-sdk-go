@@ -468,6 +468,31 @@ func (c *Client) DeleteUser(request *DeleteUserRequest) (response *DeleteUserRes
     return
 }
 
+func NewDescribeMFADeviceCollRequest() (request *DescribeMFADeviceCollRequest) {
+    request = &DescribeMFADeviceCollRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cam", APIVersion, "DescribeMFADeviceColl")
+    return
+}
+
+func NewDescribeMFADeviceCollResponse() (response *DescribeMFADeviceCollResponse) {
+    response = &DescribeMFADeviceCollResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询mfa设备
+func (c *Client) DescribeMFADeviceColl(request *DescribeMFADeviceCollRequest) (response *DescribeMFADeviceCollResponse, err error) {
+    if request == nil {
+        request = NewDescribeMFADeviceCollRequest()
+    }
+    response = NewDescribeMFADeviceCollResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeMfaCodeStatusRequest() (request *DescribeMfaCodeStatusRequest) {
     request = &DescribeMfaCodeStatusRequest{
         BaseRequest: &tchttp.BaseRequest{},

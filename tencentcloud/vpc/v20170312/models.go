@@ -2607,6 +2607,9 @@ type CreateVpnGatewayRequest struct {
 
 	// 可用区，如：ap-guangzhou-2。
 	Zone *string `json:"Zone,omitempty" name:"Zone"`
+
+	// VPN网关类型。值“CCN”云联网类型VPN网关
+	Type *string `json:"Type,omitempty" name:"Type"`
 }
 
 func (r *CreateVpnGatewayRequest) ToJsonString() string {
@@ -8691,6 +8694,43 @@ func (r *ModifyVpnGatewayAttributeResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type ModifyVpnGatewayCcnRoutesRequest struct {
+	*tchttp.BaseRequest
+
+	// VPN网关实例ID
+	VpnGatewayId *string `json:"VpnGatewayId,omitempty" name:"VpnGatewayId"`
+
+	// 云联网路由（IDC网段）列表
+	Routes []*VpngwCcnRoutes `json:"Routes,omitempty" name:"Routes" list`
+}
+
+func (r *ModifyVpnGatewayCcnRoutesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyVpnGatewayCcnRoutesRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyVpnGatewayCcnRoutesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifyVpnGatewayCcnRoutesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyVpnGatewayCcnRoutesResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type NatGateway struct {
 
 	// NAT网关的ID。
@@ -8887,10 +8927,10 @@ type NetworkAclEntry struct {
 	// 修改时间。
 	ModifyTime *string `json:"ModifyTime,omitempty" name:"ModifyTime"`
 
-	// 协议, 取值: TCP,UDP, ICMP。
+	// 协议, 取值: TCP,UDP, ICMP, ALL。
 	Protocol *string `json:"Protocol,omitempty" name:"Protocol"`
 
-	// 端口(all, 单个port,  range)。
+	// 端口(all, 单个port,  range)。当Protocol为ALL或ICMP时，不能指定Port。
 	Port *string `json:"Port,omitempty" name:"Port"`
 
 	// 网段或IP(互斥)。
@@ -10512,4 +10552,15 @@ type VpnGatewayQuota struct {
 
 	// 配额英文名称
 	Name *string `json:"Name,omitempty" name:"Name"`
+}
+
+type VpngwCcnRoutes struct {
+
+	// 路由信息ID
+	RouteId *string `json:"RouteId,omitempty" name:"RouteId"`
+
+	// 路由信息是否启用
+	// ENABLE：启用该路由
+	// DISABLE：不启用该路由
+	Status *string `json:"Status,omitempty" name:"Status"`
 }

@@ -4620,6 +4620,9 @@ type RenewDBInstanceRequest struct {
 
 	// 续费时长，单位：月，可选值包括 [1,2,3,4,5,6,7,8,9,10,11,12,24,36]。
 	TimeSpan *int64 `json:"TimeSpan,omitempty" name:"TimeSpan"`
+
+	// 如果需要将按量计费实例续费为包年包月的实例，该入参的值需要指定为 "PREPAID" 。
+	ModifyPayType *string `json:"ModifyPayType,omitempty" name:"ModifyPayType"`
 }
 
 func (r *RenewDBInstanceRequest) ToJsonString() string {

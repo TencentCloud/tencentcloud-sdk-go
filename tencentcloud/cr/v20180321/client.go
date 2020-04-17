@@ -259,14 +259,7 @@ func NewUploadDataFileResponse() (response *UploadDataFileResponse) {
     return
 }
 
-// <p>该接口包含上传下列文件：</p>
-// <ol style="margin-bottom:10px;">
-//   <li>到期/逾期提醒文件：用于每天到期/逾期提醒文件的上传</li>
-//   <li>到期/逾期提醒停拨文件：用于实时上传到期/逾期提醒停拨文件，文件中的清单实时停拨</li>
-//   <li>回访文件：用于每天贷中回访文件的上传</li>
-//   <li>回访停拨文件：用于实时上传回访停拨文件，文件中的清单实时停拨</li>
-// </ol>
-// 接口返回数据任务ID，支持xlsx、xls、csv、zip格式，文档大小不超过50MB。
+// 上传文件，接口返回数据任务ID，支持xlsx、xls、csv、zip格式。
 func (c *Client) UploadDataFile(request *UploadDataFileRequest) (response *UploadDataFileResponse, err error) {
     if request == nil {
         request = NewUploadDataFileRequest()

@@ -2,9 +2,9 @@
 
 ## 访问管理(cam) 版本：2019-01-16
 
-### 第 16 次发布
+### 第 17 次发布
 
-发布时间：2020-04-16 08:04:28
+发布时间：2020-04-17 08:04:31
 
 本次发布包含了以下内容：
 
@@ -12,23 +12,84 @@
 
 新增接口：
 
-* [ListCollaborators](https://cloud.tencent.com/document/api/598/43470)
-* [UpdateRoleConsoleLogin](https://cloud.tencent.com/document/api/598/43469)
+* [DescribeMFADeviceColl](https://cloud.tencent.com/document/api/598/43496)
+
+
+
+## 云数据库 MySQL(cdb) 版本：2017-03-20
+
+### 第 38 次发布
+
+发布时间：2020-04-17 08:05:09
+
+本次发布包含了以下内容：
+
+改善已有的文档。
 
 修改接口：
 
-* [GetPolicy](https://cloud.tencent.com/document/api/598/34574)
+* [RenewDBInstance](https://cloud.tencent.com/document/api/236/30160)
 
-	* 新增出参：PresetAlias, IsServiceLinkedRolePolicy
-
-
+	* 新增入参：ModifyPayType
 
 
-## 分布式数据库 TDSQL(dcdb) 版本：2018-04-11
 
-### 第 10 次发布
 
-发布时间：2020-04-16 08:07:40
+## 专线接入(dc) 版本：2018-04-10
+
+### 第 7 次发布
+
+发布时间：2020-04-17 08:07:36
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateDirectConnectTunnel](https://cloud.tencent.com/document/api/216/19821)
+
+	* 新增入参：TencentBackupAddress
+
+
+
+
+## 文字识别(ocr) 版本：2018-11-19
+
+### 第 21 次发布
+
+发布时间：2020-04-17 08:12:36
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [GeneralAccurateOCR](https://cloud.tencent.com/document/api/866/34937)
+
+	* 新增出参：Angel
+
+* [GeneralBasicOCR](https://cloud.tencent.com/document/api/866/33526)
+
+	* 新增出参：Angel
+
+* [GeneralEfficientOCR](https://cloud.tencent.com/document/api/866/37831)
+
+	* 新增出参：Angel
+
+* [GeneralFastOCR](https://cloud.tencent.com/document/api/866/33525)
+
+	* 新增出参：Angel
+
+
+
+
+## 私有网络(vpc) 版本：2017-03-12
+
+### 第 46 次发布
+
+发布时间：2020-04-17 08:16:30
 
 本次发布包含了以下内容：
 
@@ -36,103 +97,18 @@
 
 新增接口：
 
-* [DescribeProjects](https://cloud.tencent.com/document/api/557/43471)
+* [ModifyVpnGatewayCcnRoutes](https://cloud.tencent.com/document/api/215/43497)
+
+修改接口：
+
+* [CreateVpnGateway](https://cloud.tencent.com/document/api/215/17521)
+
+	* 新增入参：Type
+
 
 新增数据结构：
 
-* [Project](https://cloud.tencent.com/document/api/557/16142#Project)
-
-
-
-## 全站加速网络(ecdn) 版本：2019-10-12
-
-### 第 2 次发布
-
-发布时间：2020-04-16 08:01:06
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [Cache](https://cloud.tencent.com/document/api/570/42478#Cache)
-
-	* 新增成员：FollowOrigin
-
-
-
-
-## 直播(live) 版本：2018-08-01
-
-### 第 39 次发布
-
-发布时间：2020-04-16 08:10:54
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [DeletePullStreamConfig](https://cloud.tencent.com/document/api/267/31311)
-* [DescribePullStreamConfigs](https://cloud.tencent.com/document/api/267/30158)
-* [ModifyPullStreamConfig](https://cloud.tencent.com/document/api/267/30157)
-* [ModifyPullStreamStatus](https://cloud.tencent.com/document/api/267/30156)
-
-新增数据结构：
-
-* [PullStreamConfig](https://cloud.tencent.com/document/api/267/20474#PullStreamConfig)
-
-
-
-## 云函数(scf) 版本：2018-04-16
-
-### 第 9 次发布
-
-发布时间：2020-04-16 08:14:01
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [Invoke](https://cloud.tencent.com/document/api/583/17243)
-
-	* 新增入参：RoutingKey
-
-
-
-
-## 腾讯分布式服务框架(tsf) 版本：2018-03-26
-
-### 第 16 次发布
-
-发布时间：2020-04-16 08:16:24
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [CreateCluster](https://cloud.tencent.com/document/api/649/36049)
-
-	* <font color="#dd0000">**修改出参**：</font>Result
-
-* [CreateContainGroup](https://cloud.tencent.com/document/api/649/36075)
-
-	* 新增入参：GroupResourceType, SubnetId, AgentCpuRequest, AgentCpuLimit, AgentMemRequest, AgentMemLimit, IstioCpuRequest, IstioCpuLimit, IstioMemRequest, IstioMemLimit
-
-* [CreateGroup](https://cloud.tencent.com/document/api/649/36074)
-
-	* 新增入参：GroupResourceType
-
-* [DeployContainerGroup](https://cloud.tencent.com/document/api/649/36071)
-
-	* 新增入参：AgentCpuRequest, AgentCpuLimit, AgentMemRequest, AgentMemLimit, IstioCpuRequest, IstioCpuLimit, IstioMemRequest, IstioMemLimit
-
+* [VpngwCcnRoutes](https://cloud.tencent.com/document/api/215/15824#VpngwCcnRoutes)
 
 
 
@@ -3108,6 +3084,18 @@
 
 ## 访问管理(cam) 版本：2019-01-16
 
+### 第 17 次发布
+
+发布时间：2020-04-17 08:04:31
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeMFADeviceColl](https://cloud.tencent.com/document/api/598/43496)](https://cloud.tencent.com/document/api/#/#)
+
 ### 第 16 次发布
 
 发布时间：2020-04-16 08:04:28
@@ -3118,8 +3106,8 @@
 
 新增接口：
 
-* [[ListCollaborators](https://cloud.tencent.com/document/api/598/43470)](https://cloud.tencent.com/document/api/#/#)
-* [[UpdateRoleConsoleLogin](https://cloud.tencent.com/document/api/598/43469)](https://cloud.tencent.com/document/api/#/#)
+* [ListCollaborators](https://cloud.tencent.com/document/api/598/43470)
+* [UpdateRoleConsoleLogin](https://cloud.tencent.com/document/api/598/43469)
 
 修改接口：
 
@@ -4083,6 +4071,21 @@
 
 
 ## 云数据库 MySQL(cdb) 版本：2017-03-20
+
+### 第 38 次发布
+
+发布时间：2020-04-17 08:05:09
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [RenewDBInstance](https://cloud.tencent.com/document/api/236/30160)
+
+	* 新增入参：ModifyPayType
+
 
 ### 第 37 次发布
 
@@ -8637,6 +8640,21 @@
 
 ## 专线接入(dc) 版本：2018-04-10
 
+### 第 7 次发布
+
+发布时间：2020-04-17 08:07:36
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateDirectConnectTunnel](https://cloud.tencent.com/document/api/216/19821)
+
+	* 新增入参：TencentBackupAddress
+
+
 ### 第 6 次发布
 
 发布时间：2020-04-15 08:08:41
@@ -8762,11 +8780,11 @@
 
 新增接口：
 
-* [[DescribeProjects](https://cloud.tencent.com/document/api/557/43471)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeProjects](https://cloud.tencent.com/document/api/557/43471)
 
 新增数据结构：
 
-* [[Project](https://cloud.tencent.com/document/api/557/16142#Project)](https://cloud.tencent.com/document/api/557/16142#[Project](https://cloud.tencent.com/document/api/557/16142#Project))
+* [Project](https://cloud.tencent.com/document/api/557/16142#Project)
 
 ### 第 9 次发布
 
@@ -13081,14 +13099,14 @@
 
 新增接口：
 
-* [[DeletePullStreamConfig](https://cloud.tencent.com/document/api/267/31311)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribePullStreamConfigs](https://cloud.tencent.com/document/api/267/30158)](https://cloud.tencent.com/document/api/#/#)
-* [[ModifyPullStreamConfig](https://cloud.tencent.com/document/api/267/30157)](https://cloud.tencent.com/document/api/#/#)
-* [[ModifyPullStreamStatus](https://cloud.tencent.com/document/api/267/30156)](https://cloud.tencent.com/document/api/#/#)
+* [DeletePullStreamConfig](https://cloud.tencent.com/document/api/267/31311)
+* [DescribePullStreamConfigs](https://cloud.tencent.com/document/api/267/30158)
+* [ModifyPullStreamConfig](https://cloud.tencent.com/document/api/267/30157)
+* [ModifyPullStreamStatus](https://cloud.tencent.com/document/api/267/30156)
 
 新增数据结构：
 
-* [[PullStreamConfig](https://cloud.tencent.com/document/api/267/20474#PullStreamConfig)](https://cloud.tencent.com/document/api/267/20474#[PullStreamConfig](https://cloud.tencent.com/document/api/267/20474#PullStreamConfig))
+* [PullStreamConfig](https://cloud.tencent.com/document/api/267/20474#PullStreamConfig)
 
 ### 第 38 次发布
 
@@ -15899,6 +15917,33 @@
 
 
 ## 文字识别(ocr) 版本：2018-11-19
+
+### 第 21 次发布
+
+发布时间：2020-04-17 08:12:36
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [GeneralAccurateOCR](https://cloud.tencent.com/document/api/866/34937)
+
+	* 新增出参：Angel
+
+* [GeneralBasicOCR](https://cloud.tencent.com/document/api/866/33526)
+
+	* 新增出参：Angel
+
+* [GeneralEfficientOCR](https://cloud.tencent.com/document/api/866/37831)
+
+	* 新增出参：Angel
+
+* [GeneralFastOCR](https://cloud.tencent.com/document/api/866/33525)
+
+	* 新增出参：Angel
+
 
 ### 第 20 次发布
 
@@ -23353,6 +23398,29 @@
 
 
 ## 私有网络(vpc) 版本：2017-03-12
+
+### 第 46 次发布
+
+发布时间：2020-04-17 08:16:30
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[ModifyVpnGatewayCcnRoutes](https://cloud.tencent.com/document/api/215/43497)](https://cloud.tencent.com/document/api/#/#)
+
+修改接口：
+
+* [CreateVpnGateway](https://cloud.tencent.com/document/api/215/17521)
+
+	* 新增入参：Type
+
+
+新增数据结构：
+
+* [[VpngwCcnRoutes](https://cloud.tencent.com/document/api/215/15824#VpngwCcnRoutes)](https://cloud.tencent.com/document/api/215/15824#[VpngwCcnRoutes](https://cloud.tencent.com/document/api/215/15824#VpngwCcnRoutes))
 
 ### 第 45 次发布
 

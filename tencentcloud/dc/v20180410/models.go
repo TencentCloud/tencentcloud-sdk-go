@@ -220,6 +220,9 @@ type CreateDirectConnectTunnelRequest struct {
 
 	// CustomerAddress，用户侧互联 IP
 	CustomerAddress *string `json:"CustomerAddress,omitempty" name:"CustomerAddress"`
+
+	// TencentBackupAddress，腾讯侧备用互联 IP
+	TencentBackupAddress *string `json:"TencentBackupAddress,omitempty" name:"TencentBackupAddress"`
 }
 
 func (r *CreateDirectConnectTunnelRequest) ToJsonString() string {
