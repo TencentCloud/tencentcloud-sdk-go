@@ -43,6 +43,112 @@ func NewClient(credential *common.Credential, region string, clientProfile *prof
 }
 
 
+func NewAllocateAddressesRequest() (request *AllocateAddressesRequest) {
+    request = &AllocateAddressesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ecm", APIVersion, "AllocateAddresses")
+    return
+}
+
+func NewAllocateAddressesResponse() (response *AllocateAddressesResponse) {
+    response = &AllocateAddressesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 申请一个或多个弹性公网IP（简称 EIP）
+func (c *Client) AllocateAddresses(request *AllocateAddressesRequest) (response *AllocateAddressesResponse, err error) {
+    if request == nil {
+        request = NewAllocateAddressesRequest()
+    }
+    response = NewAllocateAddressesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewAssignPrivateIpAddressesRequest() (request *AssignPrivateIpAddressesRequest) {
+    request = &AssignPrivateIpAddressesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ecm", APIVersion, "AssignPrivateIpAddresses")
+    return
+}
+
+func NewAssignPrivateIpAddressesResponse() (response *AssignPrivateIpAddressesResponse) {
+    response = &AssignPrivateIpAddressesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 弹性网卡申请内网 IP
+func (c *Client) AssignPrivateIpAddresses(request *AssignPrivateIpAddressesRequest) (response *AssignPrivateIpAddressesResponse, err error) {
+    if request == nil {
+        request = NewAssignPrivateIpAddressesRequest()
+    }
+    response = NewAssignPrivateIpAddressesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewAssociateAddressRequest() (request *AssociateAddressRequest) {
+    request = &AssociateAddressRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ecm", APIVersion, "AssociateAddress")
+    return
+}
+
+func NewAssociateAddressResponse() (response *AssociateAddressResponse) {
+    response = &AssociateAddressResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 将弹性公网IP（简称 EIP）绑定到实例或弹性网卡的指定内网 IP 上。
+// 将 EIP 绑定到实例（CVM）上，其本质是将 EIP 绑定到实例上主网卡的主内网 IP 上。
+// 将 EIP 绑定到主网卡的主内网IP上，绑定过程会把其上绑定的普通公网 IP 自动解绑并释放。
+// 将 EIP 绑定到指定网卡的内网 IP上（非主网卡的主内网IP），则必须先解绑该 EIP，才能再绑定新的。
+// 将 EIP 绑定到NAT网关，请使用接口EipBindNatGateway
+// EIP 如果欠费或被封堵，则不能被绑定。
+// 只有状态为 UNBIND 的 EIP 才能够被绑定。
+func (c *Client) AssociateAddress(request *AssociateAddressRequest) (response *AssociateAddressResponse, err error) {
+    if request == nil {
+        request = NewAssociateAddressRequest()
+    }
+    response = NewAssociateAddressResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewAttachNetworkInterfaceRequest() (request *AttachNetworkInterfaceRequest) {
+    request = &AttachNetworkInterfaceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ecm", APIVersion, "AttachNetworkInterface")
+    return
+}
+
+func NewAttachNetworkInterfaceResponse() (response *AttachNetworkInterfaceResponse) {
+    response = &AttachNetworkInterfaceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 弹性网卡绑定云主机
+func (c *Client) AttachNetworkInterface(request *AttachNetworkInterfaceRequest) (response *AttachNetworkInterfaceResponse, err error) {
+    if request == nil {
+        request = NewAttachNetworkInterfaceRequest()
+    }
+    response = NewAttachNetworkInterfaceResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateModuleRequest() (request *CreateModuleRequest) {
     request = &CreateModuleRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -64,6 +170,81 @@ func (c *Client) CreateModule(request *CreateModuleRequest) (response *CreateMod
         request = NewCreateModuleRequest()
     }
     response = NewCreateModuleResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateNetworkInterfaceRequest() (request *CreateNetworkInterfaceRequest) {
+    request = &CreateNetworkInterfaceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ecm", APIVersion, "CreateNetworkInterface")
+    return
+}
+
+func NewCreateNetworkInterfaceResponse() (response *CreateNetworkInterfaceResponse) {
+    response = &CreateNetworkInterfaceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 创建弹性网卡
+func (c *Client) CreateNetworkInterface(request *CreateNetworkInterfaceRequest) (response *CreateNetworkInterfaceResponse, err error) {
+    if request == nil {
+        request = NewCreateNetworkInterfaceRequest()
+    }
+    response = NewCreateNetworkInterfaceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateSubnetRequest() (request *CreateSubnetRequest) {
+    request = &CreateSubnetRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ecm", APIVersion, "CreateSubnet")
+    return
+}
+
+func NewCreateSubnetResponse() (response *CreateSubnetResponse) {
+    response = &CreateSubnetResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 创建子网
+func (c *Client) CreateSubnet(request *CreateSubnetRequest) (response *CreateSubnetResponse, err error) {
+    if request == nil {
+        request = NewCreateSubnetRequest()
+    }
+    response = NewCreateSubnetResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateVpcRequest() (request *CreateVpcRequest) {
+    request = &CreateVpcRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ecm", APIVersion, "CreateVpc")
+    return
+}
+
+func NewCreateVpcResponse() (response *CreateVpcResponse) {
+    response = &CreateVpcResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 创建私有网络
+func (c *Client) CreateVpc(request *CreateVpcRequest) (response *CreateVpcResponse, err error) {
+    if request == nil {
+        request = NewCreateVpcRequest()
+    }
+    response = NewCreateVpcResponse()
     err = c.Send(request, response)
     return
 }
@@ -114,6 +295,131 @@ func (c *Client) DeleteModule(request *DeleteModuleRequest) (response *DeleteMod
         request = NewDeleteModuleRequest()
     }
     response = NewDeleteModuleResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteNetworkInterfaceRequest() (request *DeleteNetworkInterfaceRequest) {
+    request = &DeleteNetworkInterfaceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ecm", APIVersion, "DeleteNetworkInterface")
+    return
+}
+
+func NewDeleteNetworkInterfaceResponse() (response *DeleteNetworkInterfaceResponse) {
+    response = &DeleteNetworkInterfaceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 删除弹性网卡
+func (c *Client) DeleteNetworkInterface(request *DeleteNetworkInterfaceRequest) (response *DeleteNetworkInterfaceResponse, err error) {
+    if request == nil {
+        request = NewDeleteNetworkInterfaceRequest()
+    }
+    response = NewDeleteNetworkInterfaceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteSubnetRequest() (request *DeleteSubnetRequest) {
+    request = &DeleteSubnetRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ecm", APIVersion, "DeleteSubnet")
+    return
+}
+
+func NewDeleteSubnetResponse() (response *DeleteSubnetResponse) {
+    response = &DeleteSubnetResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 删除子网
+func (c *Client) DeleteSubnet(request *DeleteSubnetRequest) (response *DeleteSubnetResponse, err error) {
+    if request == nil {
+        request = NewDeleteSubnetRequest()
+    }
+    response = NewDeleteSubnetResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteVpcRequest() (request *DeleteVpcRequest) {
+    request = &DeleteVpcRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ecm", APIVersion, "DeleteVpc")
+    return
+}
+
+func NewDeleteVpcResponse() (response *DeleteVpcResponse) {
+    response = &DeleteVpcResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 删除私有网络
+func (c *Client) DeleteVpc(request *DeleteVpcRequest) (response *DeleteVpcResponse, err error) {
+    if request == nil {
+        request = NewDeleteVpcRequest()
+    }
+    response = NewDeleteVpcResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeAddressQuotaRequest() (request *DescribeAddressQuotaRequest) {
+    request = &DescribeAddressQuotaRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ecm", APIVersion, "DescribeAddressQuota")
+    return
+}
+
+func NewDescribeAddressQuotaResponse() (response *DescribeAddressQuotaResponse) {
+    response = &DescribeAddressQuotaResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询您账户的弹性公网IP（简称 EIP）在当前地域的配额信息
+func (c *Client) DescribeAddressQuota(request *DescribeAddressQuotaRequest) (response *DescribeAddressQuotaResponse, err error) {
+    if request == nil {
+        request = NewDescribeAddressQuotaRequest()
+    }
+    response = NewDescribeAddressQuotaResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeAddressesRequest() (request *DescribeAddressesRequest) {
+    request = &DescribeAddressesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ecm", APIVersion, "DescribeAddresses")
+    return
+}
+
+func NewDescribeAddressesResponse() (response *DescribeAddressesResponse) {
+    response = &DescribeAddressesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询弹性公网IP列表
+func (c *Client) DescribeAddresses(request *DescribeAddressesRequest) (response *DescribeAddressesResponse, err error) {
+    if request == nil {
+        request = NewDescribeAddressesRequest()
+    }
+    response = NewDescribeAddressesResponse()
     err = c.Send(request, response)
     return
 }
@@ -318,6 +624,31 @@ func (c *Client) DescribeModuleDetail(request *DescribeModuleDetailRequest) (res
     return
 }
 
+func NewDescribeNetworkInterfacesRequest() (request *DescribeNetworkInterfacesRequest) {
+    request = &DescribeNetworkInterfacesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ecm", APIVersion, "DescribeNetworkInterfaces")
+    return
+}
+
+func NewDescribeNetworkInterfacesResponse() (response *DescribeNetworkInterfacesResponse) {
+    response = &DescribeNetworkInterfacesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询弹性网卡列表
+func (c *Client) DescribeNetworkInterfaces(request *DescribeNetworkInterfacesRequest) (response *DescribeNetworkInterfacesResponse, err error) {
+    if request == nil {
+        request = NewDescribeNetworkInterfacesRequest()
+    }
+    response = NewDescribeNetworkInterfacesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeNodeRequest() (request *DescribeNodeRequest) {
     request = &DescribeNodeRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -393,6 +724,108 @@ func (c *Client) DescribePeakNetworkOverview(request *DescribePeakNetworkOvervie
     return
 }
 
+func NewDescribeSubnetsRequest() (request *DescribeSubnetsRequest) {
+    request = &DescribeSubnetsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ecm", APIVersion, "DescribeSubnets")
+    return
+}
+
+func NewDescribeSubnetsResponse() (response *DescribeSubnetsResponse) {
+    response = &DescribeSubnetsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询子网列表
+func (c *Client) DescribeSubnets(request *DescribeSubnetsRequest) (response *DescribeSubnetsResponse, err error) {
+    if request == nil {
+        request = NewDescribeSubnetsRequest()
+    }
+    response = NewDescribeSubnetsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeTaskResultRequest() (request *DescribeTaskResultRequest) {
+    request = &DescribeTaskResultRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ecm", APIVersion, "DescribeTaskResult")
+    return
+}
+
+func NewDescribeTaskResultResponse() (response *DescribeTaskResultResponse) {
+    response = &DescribeTaskResultResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询EIP异步任务执行结果
+func (c *Client) DescribeTaskResult(request *DescribeTaskResultRequest) (response *DescribeTaskResultResponse, err error) {
+    if request == nil {
+        request = NewDescribeTaskResultRequest()
+    }
+    response = NewDescribeTaskResultResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDetachNetworkInterfaceRequest() (request *DetachNetworkInterfaceRequest) {
+    request = &DetachNetworkInterfaceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ecm", APIVersion, "DetachNetworkInterface")
+    return
+}
+
+func NewDetachNetworkInterfaceResponse() (response *DetachNetworkInterfaceResponse) {
+    response = &DetachNetworkInterfaceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 弹性网卡解绑云主机
+func (c *Client) DetachNetworkInterface(request *DetachNetworkInterfaceRequest) (response *DetachNetworkInterfaceResponse, err error) {
+    if request == nil {
+        request = NewDetachNetworkInterfaceRequest()
+    }
+    response = NewDetachNetworkInterfaceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDisassociateAddressRequest() (request *DisassociateAddressRequest) {
+    request = &DisassociateAddressRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ecm", APIVersion, "DisassociateAddress")
+    return
+}
+
+func NewDisassociateAddressResponse() (response *DisassociateAddressResponse) {
+    response = &DisassociateAddressResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 解绑弹性公网IP（简称 EIP）
+// 只有状态为 BIND 和 BIND_ENI 的 EIP 才能进行解绑定操作。
+// EIP 如果被封堵，则不能进行解绑定操作。
+func (c *Client) DisassociateAddress(request *DisassociateAddressRequest) (response *DisassociateAddressResponse, err error) {
+    if request == nil {
+        request = NewDisassociateAddressRequest()
+    }
+    response = NewDisassociateAddressResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewImportImageRequest() (request *ImportImageRequest) {
     request = &ImportImageRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -414,6 +847,108 @@ func (c *Client) ImportImage(request *ImportImageRequest) (response *ImportImage
         request = NewImportImageRequest()
     }
     response = NewImportImageResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewMigrateNetworkInterfaceRequest() (request *MigrateNetworkInterfaceRequest) {
+    request = &MigrateNetworkInterfaceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ecm", APIVersion, "MigrateNetworkInterface")
+    return
+}
+
+func NewMigrateNetworkInterfaceResponse() (response *MigrateNetworkInterfaceResponse) {
+    response = &MigrateNetworkInterfaceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 弹性网卡迁移
+func (c *Client) MigrateNetworkInterface(request *MigrateNetworkInterfaceRequest) (response *MigrateNetworkInterfaceResponse, err error) {
+    if request == nil {
+        request = NewMigrateNetworkInterfaceRequest()
+    }
+    response = NewMigrateNetworkInterfaceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewMigratePrivateIpAddressRequest() (request *MigratePrivateIpAddressRequest) {
+    request = &MigratePrivateIpAddressRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ecm", APIVersion, "MigratePrivateIpAddress")
+    return
+}
+
+func NewMigratePrivateIpAddressResponse() (response *MigratePrivateIpAddressResponse) {
+    response = &MigratePrivateIpAddressResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 弹性网卡内网IP迁移。
+// 该接口用于将一个内网IP从一个弹性网卡上迁移到另外一个弹性网卡，主IP地址不支持迁移。
+// 迁移前后的弹性网卡必须在同一个子网内。
+func (c *Client) MigratePrivateIpAddress(request *MigratePrivateIpAddressRequest) (response *MigratePrivateIpAddressResponse, err error) {
+    if request == nil {
+        request = NewMigratePrivateIpAddressRequest()
+    }
+    response = NewMigratePrivateIpAddressResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyAddressAttributeRequest() (request *ModifyAddressAttributeRequest) {
+    request = &ModifyAddressAttributeRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ecm", APIVersion, "ModifyAddressAttribute")
+    return
+}
+
+func NewModifyAddressAttributeResponse() (response *ModifyAddressAttributeResponse) {
+    response = &ModifyAddressAttributeResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 修改弹性公网IP属性
+func (c *Client) ModifyAddressAttribute(request *ModifyAddressAttributeRequest) (response *ModifyAddressAttributeResponse, err error) {
+    if request == nil {
+        request = NewModifyAddressAttributeRequest()
+    }
+    response = NewModifyAddressAttributeResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyAddressesBandwidthRequest() (request *ModifyAddressesBandwidthRequest) {
+    request = &ModifyAddressesBandwidthRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ecm", APIVersion, "ModifyAddressesBandwidth")
+    return
+}
+
+func NewModifyAddressesBandwidthResponse() (response *ModifyAddressesBandwidthResponse) {
+    response = &ModifyAddressesBandwidthResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 调整弹性公网IP带宽
+func (c *Client) ModifyAddressesBandwidth(request *ModifyAddressesBandwidthRequest) (response *ModifyAddressesBandwidthResponse, err error) {
+    if request == nil {
+        request = NewModifyAddressesBandwidthRequest()
+    }
+    response = NewModifyAddressesBandwidthResponse()
     err = c.Send(request, response)
     return
 }
@@ -518,6 +1053,56 @@ func (c *Client) ModifyModuleNetwork(request *ModifyModuleNetworkRequest) (respo
     return
 }
 
+func NewModifySubnetAttributeRequest() (request *ModifySubnetAttributeRequest) {
+    request = &ModifySubnetAttributeRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ecm", APIVersion, "ModifySubnetAttribute")
+    return
+}
+
+func NewModifySubnetAttributeResponse() (response *ModifySubnetAttributeResponse) {
+    response = &ModifySubnetAttributeResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 修改子网属性
+func (c *Client) ModifySubnetAttribute(request *ModifySubnetAttributeRequest) (response *ModifySubnetAttributeResponse, err error) {
+    if request == nil {
+        request = NewModifySubnetAttributeRequest()
+    }
+    response = NewModifySubnetAttributeResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyVpcAttributeRequest() (request *ModifyVpcAttributeRequest) {
+    request = &ModifyVpcAttributeRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ecm", APIVersion, "ModifyVpcAttribute")
+    return
+}
+
+func NewModifyVpcAttributeResponse() (response *ModifyVpcAttributeResponse) {
+    response = &ModifyVpcAttributeResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 修改私有网络（VPC）的相关属性
+func (c *Client) ModifyVpcAttribute(request *ModifyVpcAttributeRequest) (response *ModifyVpcAttributeResponse, err error) {
+    if request == nil {
+        request = NewModifyVpcAttributeRequest()
+    }
+    response = NewModifyVpcAttributeResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewRebootInstancesRequest() (request *RebootInstancesRequest) {
     request = &RebootInstancesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -539,6 +1124,59 @@ func (c *Client) RebootInstances(request *RebootInstancesRequest) (response *Reb
         request = NewRebootInstancesRequest()
     }
     response = NewRebootInstancesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewReleaseAddressesRequest() (request *ReleaseAddressesRequest) {
+    request = &ReleaseAddressesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ecm", APIVersion, "ReleaseAddresses")
+    return
+}
+
+func NewReleaseAddressesResponse() (response *ReleaseAddressesResponse) {
+    response = &ReleaseAddressesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 释放一个或多个弹性公网IP（简称 EIP）。
+// 该操作不可逆，释放后 EIP 关联的 IP 地址将不再属于您的名下。
+// 只有状态为 UNBIND 的 EIP 才能进行释放操作。
+func (c *Client) ReleaseAddresses(request *ReleaseAddressesRequest) (response *ReleaseAddressesResponse, err error) {
+    if request == nil {
+        request = NewReleaseAddressesRequest()
+    }
+    response = NewReleaseAddressesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewRemovePrivateIpAddressesRequest() (request *RemovePrivateIpAddressesRequest) {
+    request = &RemovePrivateIpAddressesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ecm", APIVersion, "RemovePrivateIpAddresses")
+    return
+}
+
+func NewRemovePrivateIpAddressesResponse() (response *RemovePrivateIpAddressesResponse) {
+    response = &RemovePrivateIpAddressesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 弹性网卡退还内网 IP。
+// 退还弹性网卡上的辅助内网IP，接口自动解关联弹性公网 IP。不能退还弹性网卡的主内网IP。
+func (c *Client) RemovePrivateIpAddresses(request *RemovePrivateIpAddressesRequest) (response *RemovePrivateIpAddressesResponse, err error) {
+    if request == nil {
+        request = NewRemovePrivateIpAddressesRequest()
+    }
+    response = NewRemovePrivateIpAddressesResponse()
     err = c.Send(request, response)
     return
 }
@@ -589,6 +1227,31 @@ func (c *Client) ResetInstancesMaxBandwidth(request *ResetInstancesMaxBandwidthR
         request = NewResetInstancesMaxBandwidthRequest()
     }
     response = NewResetInstancesMaxBandwidthResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewRunInstancesRequest() (request *RunInstancesRequest) {
+    request = &RunInstancesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ecm", APIVersion, "RunInstances")
+    return
+}
+
+func NewRunInstancesResponse() (response *RunInstancesResponse) {
+    response = &RunInstancesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 创建ECM实例
+func (c *Client) RunInstances(request *RunInstancesRequest) (response *RunInstancesResponse, err error) {
+    if request == nil {
+        request = NewRunInstancesRequest()
+    }
+    response = NewRunInstancesResponse()
     err = c.Send(request, response)
     return
 }

@@ -3372,6 +3372,31 @@ func (c *Client) DescribeVpnConnections(request *DescribeVpnConnectionsRequest) 
     return
 }
 
+func NewDescribeVpnGatewayCcnRoutesRequest() (request *DescribeVpnGatewayCcnRoutesRequest) {
+    request = &DescribeVpnGatewayCcnRoutesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "DescribeVpnGatewayCcnRoutes")
+    return
+}
+
+func NewDescribeVpnGatewayCcnRoutesResponse() (response *DescribeVpnGatewayCcnRoutesResponse) {
+    response = &DescribeVpnGatewayCcnRoutesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（DescribeVpnGatewayCcnRoutes）用于查询VPN网关云联网路由
+func (c *Client) DescribeVpnGatewayCcnRoutes(request *DescribeVpnGatewayCcnRoutesRequest) (response *DescribeVpnGatewayCcnRoutesResponse, err error) {
+    if request == nil {
+        request = NewDescribeVpnGatewayCcnRoutesRequest()
+    }
+    response = NewDescribeVpnGatewayCcnRoutesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeVpnGatewaysRequest() (request *DescribeVpnGatewaysRequest) {
     request = &DescribeVpnGatewaysRequest{
         BaseRequest: &tchttp.BaseRequest{},

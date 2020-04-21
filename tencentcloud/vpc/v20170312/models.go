@@ -5491,10 +5491,10 @@ type DescribeSecurityGroupsRequest struct {
 	// <li>tag:tag-key - String - 是否必填：否 - （过滤条件）按照标签键值对进行过滤。 tag-key使用具体的标签键进行替换。使用请参考示例3。</li>
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
 
-	// 偏移量。
+	// 偏移量，默认为0。
 	Offset *string `json:"Offset,omitempty" name:"Offset"`
 
-	// 返回数量。
+	// 返回数量，默认为20，最大值为100。
 	Limit *string `json:"Limit,omitempty" name:"Limit"`
 }
 
@@ -6080,6 +6080,52 @@ func (r *DescribeVpnConnectionsResponse) ToJsonString() string {
 }
 
 func (r *DescribeVpnConnectionsResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeVpnGatewayCcnRoutesRequest struct {
+	*tchttp.BaseRequest
+
+	// VPN网关实例ID
+	VpnGatewayId *string `json:"VpnGatewayId,omitempty" name:"VpnGatewayId"`
+
+	// 偏移量
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 返回数量
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+func (r *DescribeVpnGatewayCcnRoutesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeVpnGatewayCcnRoutesRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeVpnGatewayCcnRoutesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 云联网路由（IDC网段）列表。
+		RouteSet []*VpngwCcnRoutes `json:"RouteSet,omitempty" name:"RouteSet" list`
+
+		// 符合条件的对象数。
+		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeVpnGatewayCcnRoutesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeVpnGatewayCcnRoutesResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 

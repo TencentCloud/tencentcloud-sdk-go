@@ -507,6 +507,46 @@ func (r *CreateUserPersonalResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type CreateWebhookTriggerRequest struct {
+	*tchttp.BaseRequest
+
+	// 实例 Id
+	RegistryId *string `json:"RegistryId,omitempty" name:"RegistryId"`
+
+	// 触发器参数
+	Trigger *WebhookTrigger `json:"Trigger,omitempty" name:"Trigger"`
+
+	// 命名空间
+	Namespace *string `json:"Namespace,omitempty" name:"Namespace"`
+}
+
+func (r *CreateWebhookTriggerRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateWebhookTriggerRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateWebhookTriggerResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateWebhookTriggerResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateWebhookTriggerResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DeleteApplicationTriggerPersonalRequest struct {
 	*tchttp.BaseRequest
 
@@ -825,6 +865,46 @@ func (r *DeleteRepositoryResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DeleteWebhookTriggerRequest struct {
+	*tchttp.BaseRequest
+
+	// 实例Id
+	RegistryId *string `json:"RegistryId,omitempty" name:"RegistryId"`
+
+	// 命名空间
+	Namespace *string `json:"Namespace,omitempty" name:"Namespace"`
+
+	// 触发器 Id
+	Id *int64 `json:"Id,omitempty" name:"Id"`
+}
+
+func (r *DeleteWebhookTriggerRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteWebhookTriggerRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteWebhookTriggerResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DeleteWebhookTriggerResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteWebhookTriggerResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeApplicationTriggerLogPersonalRequest struct {
 	*tchttp.BaseRequest
 
@@ -1090,6 +1170,55 @@ func (r *DescribeImageLifecyclePersonalResponse) ToJsonString() string {
 }
 
 func (r *DescribeImageLifecyclePersonalResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeImageManifestsRequest struct {
+	*tchttp.BaseRequest
+
+	// 实例ID
+	RegistryId *string `json:"RegistryId,omitempty" name:"RegistryId"`
+
+	// 命名空间名称
+	NamespaceName *string `json:"NamespaceName,omitempty" name:"NamespaceName"`
+
+	// 镜像仓库名称
+	RepositoryName *string `json:"RepositoryName,omitempty" name:"RepositoryName"`
+
+	// 镜像版本
+	ImageVersion *string `json:"ImageVersion,omitempty" name:"ImageVersion"`
+}
+
+func (r *DescribeImageManifestsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeImageManifestsRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeImageManifestsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 镜像的Manifest信息
+		Manifest *string `json:"Manifest,omitempty" name:"Manifest"`
+
+		// 镜像的配置信息
+		Config *string `json:"Config,omitempty" name:"Config"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeImageManifestsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeImageManifestsResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -1642,6 +1771,107 @@ func (r *DescribeUserQuotaPersonalResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeWebhookTriggerLogRequest struct {
+	*tchttp.BaseRequest
+
+	// 实例 Id
+	RegistryId *string `json:"RegistryId,omitempty" name:"RegistryId"`
+
+	// 命名空间
+	Namespace *string `json:"Namespace,omitempty" name:"Namespace"`
+
+	// 触发器 Id
+	Id *int64 `json:"Id,omitempty" name:"Id"`
+
+	// 分页单页数量
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 分页偏移量
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+}
+
+func (r *DescribeWebhookTriggerLogRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeWebhookTriggerLogRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeWebhookTriggerLogResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 总数
+		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 日志列表
+		Logs []*WebhookTriggerLog `json:"Logs,omitempty" name:"Logs" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeWebhookTriggerLogResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeWebhookTriggerLogResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeWebhookTriggerRequest struct {
+	*tchttp.BaseRequest
+
+	// 实例Id
+	RegistryId *string `json:"RegistryId,omitempty" name:"RegistryId"`
+
+	// 分页单页数量
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 分页偏移量
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 命名空间
+	Namespace *string `json:"Namespace,omitempty" name:"Namespace"`
+}
+
+func (r *DescribeWebhookTriggerRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeWebhookTriggerRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeWebhookTriggerResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 触发器总数
+		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 触发器列表
+		Triggers []*WebhookTrigger `json:"Triggers,omitempty" name:"Triggers" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeWebhookTriggerResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeWebhookTriggerResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DupImageTagResp struct {
 
 	// 镜像Digest值
@@ -1743,6 +1973,15 @@ type Filter struct {
 	Name *string `json:"Name,omitempty" name:"Name"`
 
 	// 属性值, 若同一个Filter存在多个Values，同一Filter下Values间的关系为逻辑或（OR）关系。
+	Values []*string `json:"Values,omitempty" name:"Values" list`
+}
+
+type Header struct {
+
+	// Header Key
+	Key *string `json:"Key,omitempty" name:"Key"`
+
+	// Header Values
 	Values []*string `json:"Values,omitempty" name:"Values" list`
 }
 
@@ -2093,6 +2332,46 @@ func (r *ModifyUserPasswordPersonalResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type ModifyWebhookTriggerRequest struct {
+	*tchttp.BaseRequest
+
+	// 实例Id
+	RegistryId *string `json:"RegistryId,omitempty" name:"RegistryId"`
+
+	// 触发器参数
+	Trigger *WebhookTrigger `json:"Trigger,omitempty" name:"Trigger"`
+
+	// 命名空间
+	Namespace *string `json:"Namespace,omitempty" name:"Namespace"`
+}
+
+func (r *ModifyWebhookTriggerRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyWebhookTriggerRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyWebhookTriggerResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifyWebhookTriggerResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyWebhookTriggerResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type NamespaceInfo struct {
 
 	// 命名空间
@@ -2369,6 +2648,9 @@ type TcrImageInfo struct {
 
 	// Tag名称
 	ImageVersion *string `json:"ImageVersion,omitempty" name:"ImageVersion"`
+
+	// 更新时间
+	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
 }
 
 type TcrInstanceToken struct {
@@ -2623,4 +2905,64 @@ func (r *ValidateRepositoryExistPersonalResponse) ToJsonString() string {
 
 func (r *ValidateRepositoryExistPersonalResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
+}
+
+type WebhookTarget struct {
+
+	// 目标地址
+	Address *string `json:"Address,omitempty" name:"Address"`
+
+	// 自定义 Headers
+	Headers []*Header `json:"Headers,omitempty" name:"Headers" list`
+}
+
+type WebhookTrigger struct {
+
+	// 触发器名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 触发器目标
+	Targets []*WebhookTarget `json:"Targets,omitempty" name:"Targets" list`
+
+	// 触发动作
+	EventTypes []*string `json:"EventTypes,omitempty" name:"EventTypes" list`
+
+	// 触发规则
+	Condition *string `json:"Condition,omitempty" name:"Condition"`
+
+	// 启用触发器
+	Enabled *bool `json:"Enabled,omitempty" name:"Enabled"`
+
+	// 触发器Id
+	Id *int64 `json:"Id,omitempty" name:"Id"`
+
+	// 触发器描述
+	Description *string `json:"Description,omitempty" name:"Description"`
+}
+
+type WebhookTriggerLog struct {
+
+	// 日志 Id
+	Id *int64 `json:"Id,omitempty" name:"Id"`
+
+	// 触发器 Id
+	TriggerId *int64 `json:"TriggerId,omitempty" name:"TriggerId"`
+
+	// 事件类型
+	EventType *string `json:"EventType,omitempty" name:"EventType"`
+
+	// 通知类型
+	NotifyType *string `json:"NotifyType,omitempty" name:"NotifyType"`
+
+	// 详情
+	Detail *string `json:"Detail,omitempty" name:"Detail"`
+
+	// 创建时间
+	CreationTime *string `json:"CreationTime,omitempty" name:"CreationTime"`
+
+	// 更新时间
+	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
+
+	// 状态
+	Status *string `json:"Status,omitempty" name:"Status"`
 }

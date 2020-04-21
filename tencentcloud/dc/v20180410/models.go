@@ -778,6 +778,9 @@ type ModifyDirectConnectTunnelAttributeRequest struct {
 
 	// 专用通道带宽值，单位为M。
 	Bandwidth *int64 `json:"Bandwidth,omitempty" name:"Bandwidth"`
+
+	// 腾讯侧备用互联IP
+	TencentBackupAddress *string `json:"TencentBackupAddress,omitempty" name:"TencentBackupAddress"`
 }
 
 func (r *ModifyDirectConnectTunnelAttributeRequest) ToJsonString() string {

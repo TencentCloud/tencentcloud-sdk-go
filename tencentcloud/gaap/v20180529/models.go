@@ -833,6 +833,9 @@ type CreateProxyRequest struct {
 	// 被复制的通道ID。只有处于运行中状态的通道可以被复制。
 	// 当设置该参数时，表示复制该通道。
 	ClonedProxyId *string `json:"ClonedProxyId,omitempty" name:"ClonedProxyId"`
+
+	// 计费方式 (0:按带宽计费，1:按流量计费 默认按带宽计费）
+	BillingType *int64 `json:"BillingType,omitempty" name:"BillingType"`
 }
 
 func (r *CreateProxyRequest) ToJsonString() string {
@@ -3335,6 +3338,9 @@ type InquiryPriceCreateProxyRequest struct {
 
 	// （新参数）通道并发量上限，表示同时在线的连接数，单位：万。
 	Concurrent *int64 `json:"Concurrent,omitempty" name:"Concurrent"`
+
+	// 计费方式 (0:按带宽计费，1:按流量计费 默认按带宽计费）
+	BillingType *int64 `json:"BillingType,omitempty" name:"BillingType"`
 }
 
 func (r *InquiryPriceCreateProxyRequest) ToJsonString() string {
@@ -3354,6 +3360,7 @@ type InquiryPriceCreateProxyResponse struct {
 		ProxyDailyPrice *float64 `json:"ProxyDailyPrice,omitempty" name:"ProxyDailyPrice"`
 
 		// 通道带宽费用梯度价格。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 		BandwidthUnitPrice []*BandwidthPriceGradient `json:"BandwidthUnitPrice,omitempty" name:"BandwidthUnitPrice" list`
 
 		// 通道基础费用折扣价格，单位：元/天。
@@ -3361,6 +3368,14 @@ type InquiryPriceCreateProxyResponse struct {
 
 		// 价格使用的货币，支持人民币，美元等。
 		Currency *string `json:"Currency,omitempty" name:"Currency"`
+
+		// 通道的流量费用价格，单位: 元/GB
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		FlowUnitPrice *float64 `json:"FlowUnitPrice,omitempty" name:"FlowUnitPrice"`
+
+		// 通道的流量费用折扣价格，单位:元/GB
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		DiscountFlowUnitPrice *float64 `json:"DiscountFlowUnitPrice,omitempty" name:"DiscountFlowUnitPrice"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -3785,6 +3800,9 @@ type ModifyProxyConfigurationRequest struct {
 
 	// （新参数）通道的实例ID。
 	ProxyId *string `json:"ProxyId,omitempty" name:"ProxyId"`
+
+	// 计费方式 (0:按带宽计费，1:按流量计费 默认按带宽计费）
+	BillingType *int64 `json:"BillingType,omitempty" name:"BillingType"`
 }
 
 func (r *ModifyProxyConfigurationRequest) ToJsonString() string {

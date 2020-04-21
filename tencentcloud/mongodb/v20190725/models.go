@@ -336,6 +336,12 @@ type DescribeClientConnectionsRequest struct {
 
 	// 实例ID，格式如：cmgo-p8vnipr5。与云数据库控制台页面中显示的实例ID相同
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 查询返回记录条数，默认为10000。
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 偏移量，默认值为0。
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
 }
 
 func (r *DescribeClientConnectionsRequest) ToJsonString() string {
@@ -351,8 +357,11 @@ type DescribeClientConnectionsResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 客户端连接信息，包括客户端IP和对应IP的连接数量
+		// 客户端连接信息，包括客户端IP和对应IP的连接数量。
 		Clients []*ClientConnection `json:"Clients,omitempty" name:"Clients" list`
+
+		// 满足条件的记录总条数，可用于分页查询。
+		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -484,6 +493,117 @@ func (r *DescribeDBInstancesResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeSlowLogPatternsRequest struct {
+	*tchttp.BaseRequest
+
+	// 实例ID，格式如：cmgo-p8vnipr5。与云数据库控制台页面中显示的实例ID相同
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 慢日志起始时间，格式：yyyy-mm-dd hh:mm:ss，如：2019-06-01 10:00:00。查询起止时间间隔不能超过24小时，只允许查询最近7天内慢日志。
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 慢日志终止时间，格式：yyyy-mm-dd hh:mm:ss，如：2019-06-02 12:00:00。查询起止时间间隔不能超过24小时，只允许查询最近7天内慢日志。
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 慢日志执行时间阈值，返回执行时间超过该阈值的慢日志，单位为毫秒(ms)，最小为100毫秒。
+	SlowMS *uint64 `json:"SlowMS,omitempty" name:"SlowMS"`
+
+	// 偏移量，最小值为0，最大值为10000，默认值为0。
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 分页大小，最小值为1，最大值为100，默认值为20。
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+func (r *DescribeSlowLogPatternsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeSlowLogPatternsRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeSlowLogPatternsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 慢日志统计信息总数
+		Count *uint64 `json:"Count,omitempty" name:"Count"`
+
+		// 慢日志统计信息
+		SlowLogPatterns []*SlowLogPattern `json:"SlowLogPatterns,omitempty" name:"SlowLogPatterns" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeSlowLogPatternsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeSlowLogPatternsResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeSlowLogsRequest struct {
+	*tchttp.BaseRequest
+
+	// 实例ID，格式如：cmgo-p8vnipr5。与云数据库控制台页面中显示的实例ID相同
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 慢日志起始时间，格式：yyyy-mm-dd hh:mm:ss，如：2019-06-01 10:00:00。查询起止时间间隔不能超过24小时，只允许查询最近7天内慢日志。
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 慢日志终止时间，格式：yyyy-mm-dd hh:mm:ss，如：2019-06-02 12:00:00。查询起止时间间隔不能超过24小时，只允许查询最近7天内慢日志。
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 慢日志执行时间阈值，返回执行时间超过该阈值的慢日志，单位为毫秒(ms)，最小为100毫秒。
+	SlowMS *uint64 `json:"SlowMS,omitempty" name:"SlowMS"`
+
+	// 偏移量，最小值为0，最大值为10000，默认值为0。
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 分页大小，最小值为1，最大值为100，默认值为20。
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+func (r *DescribeSlowLogsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeSlowLogsRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeSlowLogsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 慢日志总数
+		Count *uint64 `json:"Count,omitempty" name:"Count"`
+
+		// 慢日志详情
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		SlowLogs []*string `json:"SlowLogs,omitempty" name:"SlowLogs" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeSlowLogsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeSlowLogsResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeSpecInfoRequest struct {
 	*tchttp.BaseRequest
 
@@ -519,6 +639,20 @@ func (r *DescribeSpecInfoResponse) ToJsonString() string {
 
 func (r *DescribeSpecInfoResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
+}
+
+type InstanceChargePrepaid struct {
+
+	// 购买实例的时长，单位：月。取值范围：1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 24, 36。默认为1。
+	Period *int64 `json:"Period,omitempty" name:"Period"`
+
+	// 自动续费标识。取值范围：
+	// NOTIFY_AND_AUTO_RENEW：通知过期且自动续费
+	// NOTIFY_AND_MANUAL_RENEW：通知过期不自动续费
+	// DISABLE_NOTIFY_AND_MANUAL_RENEW：不通知过期不自动续费
+	// 
+	// 默认取值：NOTIFY_AND_MANUAL_RENEW。若该参数指定为NOTIFY_AND_AUTO_RENEW，在账户余额充足的情况下，实例到期后将按月自动续费。
+	RenewFlag *string `json:"RenewFlag,omitempty" name:"RenewFlag"`
 }
 
 type InstanceDetail struct {
@@ -795,6 +929,43 @@ func (r *RenameInstanceResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type RenewDBInstancesRequest struct {
+	*tchttp.BaseRequest
+
+	// 一个或多个待操作的实例ID。可通过DescribeInstances接口返回值中的InstanceId获取。每次请求批量实例的上限为100。
+	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds" list`
+
+	// 预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月实例的续费时长、是否设置自动续费等属性。包年包月实例该参数为必传参数。
+	InstanceChargePrepaid *InstanceChargePrepaid `json:"InstanceChargePrepaid,omitempty" name:"InstanceChargePrepaid"`
+}
+
+func (r *RenewDBInstancesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *RenewDBInstancesRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type RenewDBInstancesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *RenewDBInstancesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *RenewDBInstancesResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type ShardInfo struct {
 
 	// 分片已使用容量
@@ -820,6 +991,21 @@ type ShardInfo struct {
 
 	// 分片物理id
 	RealReplicaSetId *string `json:"RealReplicaSetId,omitempty" name:"RealReplicaSetId"`
+}
+
+type SlowLogPattern struct {
+
+	// 慢日志模式
+	Pattern *string `json:"Pattern,omitempty" name:"Pattern"`
+
+	// 最大执行时间
+	MaxTime *uint64 `json:"MaxTime,omitempty" name:"MaxTime"`
+
+	// 平均执行时间
+	AverageTime *uint64 `json:"AverageTime,omitempty" name:"AverageTime"`
+
+	// 该模式慢日志条数
+	Total *uint64 `json:"Total,omitempty" name:"Total"`
 }
 
 type SpecItem struct {

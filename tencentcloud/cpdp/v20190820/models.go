@@ -51,6 +51,305 @@ type Acct struct {
 	MaintenanceDate *string `json:"MaintenanceDate,omitempty" name:"MaintenanceDate"`
 }
 
+type ApplyApplicationMaterialRequest struct {
+	*tchttp.BaseRequest
+
+	// 对接方汇出指令编号
+	TransactionId *string `json:"TransactionId,omitempty" name:"TransactionId"`
+
+	// 申报流水号
+	DeclareId *string `json:"DeclareId,omitempty" name:"DeclareId"`
+
+	// 付款人ID
+	PayerId *string `json:"PayerId,omitempty" name:"PayerId"`
+
+	// 源币种
+	SourceCurrency *string `json:"SourceCurrency,omitempty" name:"SourceCurrency"`
+
+	// 目的币种
+	TargetCurrency *string `json:"TargetCurrency,omitempty" name:"TargetCurrency"`
+
+	// 贸易编码
+	TradeCode *string `json:"TradeCode,omitempty" name:"TradeCode"`
+
+	// 原申报流水号
+	OriginalDeclareId *string `json:"OriginalDeclareId,omitempty" name:"OriginalDeclareId"`
+
+	// 源金额
+	SourceAmount *int64 `json:"SourceAmount,omitempty" name:"SourceAmount"`
+
+	// 目的金额
+	TargetAmount *int64 `json:"TargetAmount,omitempty" name:"TargetAmount"`
+
+	// 接入环境。沙箱环境填sandbox
+	Profile *string `json:"Profile,omitempty" name:"Profile"`
+}
+
+func (r *ApplyApplicationMaterialRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ApplyApplicationMaterialRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ApplyApplicationMaterialResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 提交申报材料结果
+		Result *ApplyDeclareResult `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ApplyApplicationMaterialResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ApplyApplicationMaterialResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ApplyDeclareData struct {
+
+	// 商户号
+	MerchantId *string `json:"MerchantId,omitempty" name:"MerchantId"`
+
+	// 第三方指令编号
+	TransactionId *string `json:"TransactionId,omitempty" name:"TransactionId"`
+
+	// 受理状态
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 申报流水号
+	DeclareId *string `json:"DeclareId,omitempty" name:"DeclareId"`
+
+	// 原申报流水号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OriginalDeclareId *string `json:"OriginalDeclareId,omitempty" name:"OriginalDeclareId"`
+
+	// 付款人ID
+	PayerId *string `json:"PayerId,omitempty" name:"PayerId"`
+}
+
+type ApplyDeclareResult struct {
+
+	// 错误码
+	Code *string `json:"Code,omitempty" name:"Code"`
+
+	// 提交申报材料数据
+	Data *ApplyDeclareData `json:"Data,omitempty" name:"Data"`
+}
+
+type ApplyOutwardOrderData struct {
+
+	// 商户号
+	MerchantId *string `json:"MerchantId,omitempty" name:"MerchantId"`
+
+	// 对接方汇出指令编号
+	TransactionId *string `json:"TransactionId,omitempty" name:"TransactionId"`
+
+	// 受理状态
+	Status *string `json:"Status,omitempty" name:"Status"`
+}
+
+type ApplyOutwardOrderRequest struct {
+	*tchttp.BaseRequest
+
+	// 对接方汇出指令编号
+	TransactionId *string `json:"TransactionId,omitempty" name:"TransactionId"`
+
+	// 定价币种
+	PricingCurrency *string `json:"PricingCurrency,omitempty" name:"PricingCurrency"`
+
+	// 源币种
+	SourceCurrency *string `json:"SourceCurrency,omitempty" name:"SourceCurrency"`
+
+	// 目的币种
+	TargetCurrency *string `json:"TargetCurrency,omitempty" name:"TargetCurrency"`
+
+	// 收款人类型
+	PayeeType *string `json:"PayeeType,omitempty" name:"PayeeType"`
+
+	// 收款人账号
+	PayeeAccount *string `json:"PayeeAccount,omitempty" name:"PayeeAccount"`
+
+	// 源币种金额
+	SourceAmount *float64 `json:"SourceAmount,omitempty" name:"SourceAmount"`
+
+	// 目的金额
+	TargetAmount *float64 `json:"TargetAmount,omitempty" name:"TargetAmount"`
+
+	// 收款人姓名
+	PayeeName *string `json:"PayeeName,omitempty" name:"PayeeName"`
+
+	// 收款人地址
+	PayeeAddress *string `json:"PayeeAddress,omitempty" name:"PayeeAddress"`
+
+	// 收款人银行账号类型
+	PayeeBankAccountType *string `json:"PayeeBankAccountType,omitempty" name:"PayeeBankAccountType"`
+
+	// 收款人国家或地区编码
+	PayeeCountryCode *string `json:"PayeeCountryCode,omitempty" name:"PayeeCountryCode"`
+
+	// 收款人开户银行名称
+	PayeeBankName *string `json:"PayeeBankName,omitempty" name:"PayeeBankName"`
+
+	// 收款人开户银行地址
+	PayeeBankAddress *string `json:"PayeeBankAddress,omitempty" name:"PayeeBankAddress"`
+
+	// 收款人开户银行所在国家或地区编码
+	PayeeBankDistrict *string `json:"PayeeBankDistrict,omitempty" name:"PayeeBankDistrict"`
+
+	// 收款银行SwiftCode
+	PayeeBankSwiftCode *string `json:"PayeeBankSwiftCode,omitempty" name:"PayeeBankSwiftCode"`
+
+	// 收款银行国际编码类型
+	PayeeBankType *string `json:"PayeeBankType,omitempty" name:"PayeeBankType"`
+
+	// 收款银行国际编码
+	PayeeBankCode *string `json:"PayeeBankCode,omitempty" name:"PayeeBankCode"`
+
+	// 收款人附言
+	ReferenceForBeneficiary *string `json:"ReferenceForBeneficiary,omitempty" name:"ReferenceForBeneficiary"`
+
+	// 接入环境。沙箱环境填sandbox
+	Profile *string `json:"Profile,omitempty" name:"Profile"`
+}
+
+func (r *ApplyOutwardOrderRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ApplyOutwardOrderRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ApplyOutwardOrderResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 汇出指令申请
+		Result *ApplyOutwardOrderResult `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ApplyOutwardOrderResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ApplyOutwardOrderResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ApplyOutwardOrderResult struct {
+
+	// 汇出指令申请数据
+	Data *ApplyOutwardOrderData `json:"Data,omitempty" name:"Data"`
+
+	// 错误码
+	Code *string `json:"Code,omitempty" name:"Code"`
+}
+
+type ApplyPayerInfoRequest struct {
+	*tchttp.BaseRequest
+
+	// 付款人ID
+	PayerId *string `json:"PayerId,omitempty" name:"PayerId"`
+
+	// 付款人类型 (个人: INDIVIDUAL, 企业: CORPORATE)
+	PayerType *string `json:"PayerType,omitempty" name:"PayerType"`
+
+	// 付款人姓名
+	PayerName *string `json:"PayerName,omitempty" name:"PayerName"`
+
+	// 付款人证件类型 (身份证: ID_CARD, 统一社会信用代码: UNIFIED_CREDIT_CODE)
+	PayerIdType *string `json:"PayerIdType,omitempty" name:"PayerIdType"`
+
+	// 付款人证件号
+	PayerIdNo *string `json:"PayerIdNo,omitempty" name:"PayerIdNo"`
+
+	// 付款人常驻国家或地区编码 (见常见问题-国家/地区编码)
+	PayerCountryCode *string `json:"PayerCountryCode,omitempty" name:"PayerCountryCode"`
+
+	// 付款人联系人名称
+	PayerContactName *string `json:"PayerContactName,omitempty" name:"PayerContactName"`
+
+	// 付款人联系电话 (PayerType=CORPORATE 必填)
+	PayerContactNumber *string `json:"PayerContactNumber,omitempty" name:"PayerContactNumber"`
+
+	// 付款人联系邮箱
+	PayerEmailAddress *string `json:"PayerEmailAddress,omitempty" name:"PayerEmailAddress"`
+
+	// 接入环境。沙箱环境填sandbox
+	Profile *string `json:"Profile,omitempty" name:"Profile"`
+}
+
+func (r *ApplyPayerInfoRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ApplyPayerInfoRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ApplyPayerInfoResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 付款人申请结果
+		Result *ApplyPayerinfoResult `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ApplyPayerInfoResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ApplyPayerInfoResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ApplyPayerinfoData struct {
+
+	// 商户号
+	MerchantId *string `json:"MerchantId,omitempty" name:"MerchantId"`
+
+	// 付款人ID
+	PayerId *string `json:"PayerId,omitempty" name:"PayerId"`
+
+	// 状态
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 失败原因
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FailReason *string `json:"FailReason,omitempty" name:"FailReason"`
+}
+
+type ApplyPayerinfoResult struct {
+
+	// 错误码
+	Code *string `json:"Code,omitempty" name:"Code"`
+
+	// 数据
+	Data *ApplyPayerinfoData `json:"Data,omitempty" name:"Data"`
+}
+
 type ApplyReWithdrawalRequest struct {
 	*tchttp.BaseRequest
 
@@ -98,6 +397,117 @@ func (r *ApplyReWithdrawalResponse) ToJsonString() string {
 
 func (r *ApplyReWithdrawalResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
+}
+
+type ApplyTradeData struct {
+
+	// 商户号
+	MerchantId *string `json:"MerchantId,omitempty" name:"MerchantId"`
+
+	// 贸易材料流水号
+	TradeFileId *string `json:"TradeFileId,omitempty" name:"TradeFileId"`
+
+	// 交易币种
+	TradeCurrency *string `json:"TradeCurrency,omitempty" name:"TradeCurrency"`
+
+	// 交易金额
+	TradeAmount *string `json:"TradeAmount,omitempty" name:"TradeAmount"`
+
+	// 付款人ID
+	PayerId *string `json:"PayerId,omitempty" name:"PayerId"`
+
+	// 状态
+	Status *string `json:"Status,omitempty" name:"Status"`
+}
+
+type ApplyTradeRequest struct {
+	*tchttp.BaseRequest
+
+	// 贸易材料流水号
+	TradeFileId *string `json:"TradeFileId,omitempty" name:"TradeFileId"`
+
+	// 贸易材料订单号
+	TradeOrderId *string `json:"TradeOrderId,omitempty" name:"TradeOrderId"`
+
+	// 付款人ID
+	PayerId *string `json:"PayerId,omitempty" name:"PayerId"`
+
+	// 付款人姓名
+	PayeeName *string `json:"PayeeName,omitempty" name:"PayeeName"`
+
+	// 收款人常驻国家或地区编码 (见常见问题)
+	PayeeCountryCode *string `json:"PayeeCountryCode,omitempty" name:"PayeeCountryCode"`
+
+	// 贸易类型 (GOODS: 商品, SERVICE: 服务)
+	TradeType *string `json:"TradeType,omitempty" name:"TradeType"`
+
+	// 交易时间 (格式: yyyyMMdd)
+	TradeTime *string `json:"TradeTime,omitempty" name:"TradeTime"`
+
+	// 交易币种
+	TradeCurrency *string `json:"TradeCurrency,omitempty" name:"TradeCurrency"`
+
+	// 交易金额
+	TradeAmount *float64 `json:"TradeAmount,omitempty" name:"TradeAmount"`
+
+	// 交易名称 
+	// (TradeType=GOODS时填写物品名称，可填写多个，格式无要求；
+	// TradeType=SERVICE时填写贸易类别，见常见问题-贸易类别)
+	TradeName *string `json:"TradeName,omitempty" name:"TradeName"`
+
+	// 交易数量 (TradeType=GOODS 填写物品数量, TradeType=SERVICE填写服务次数)
+	TradeCount *int64 `json:"TradeCount,omitempty" name:"TradeCount"`
+
+	// 货贸承运人 (TradeType=GOODS 必填)
+	GoodsCarrier *string `json:"GoodsCarrier,omitempty" name:"GoodsCarrier"`
+
+	// 服贸交易细节 (TradeType=GOODS 必填, 见常见问题-交易细节)
+	ServiceDetail *string `json:"ServiceDetail,omitempty" name:"ServiceDetail"`
+
+	// 服贸服务时间 (TradeType=GOODS 必填, 见常见问题-服务时间)
+	ServiceTime *string `json:"ServiceTime,omitempty" name:"ServiceTime"`
+
+	// 接入环境。沙箱环境填sandbox
+	Profile *string `json:"Profile,omitempty" name:"Profile"`
+}
+
+func (r *ApplyTradeRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ApplyTradeRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ApplyTradeResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 提交贸易材料结果
+		Result *ApplyTradeResult `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ApplyTradeResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ApplyTradeResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ApplyTradeResult struct {
+
+	// 错误码
+	Code *string `json:"Code,omitempty" name:"Code"`
+
+	// 提交贸易材料数据
+	Data *ApplyTradeData `json:"Data,omitempty" name:"Data"`
 }
 
 type ApplyWithdrawalRequest struct {
@@ -1789,6 +2199,46 @@ type QueryAcctItem struct {
 	SubMerchantMemberType *string `json:"SubMerchantMemberType,omitempty" name:"SubMerchantMemberType"`
 }
 
+type QueryApplicationMaterialRequest struct {
+	*tchttp.BaseRequest
+
+	// 申报流水号
+	DeclareId *string `json:"DeclareId,omitempty" name:"DeclareId"`
+
+	// 接入环境。沙箱环境填sandbox
+	Profile *string `json:"Profile,omitempty" name:"Profile"`
+}
+
+func (r *QueryApplicationMaterialRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *QueryApplicationMaterialRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type QueryApplicationMaterialResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 成功申报材料查询结果
+		Result *QueryDeclareResult `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *QueryApplicationMaterialResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *QueryApplicationMaterialResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type QueryBalanceRequest struct {
 	*tchttp.BaseRequest
 
@@ -2273,6 +2723,125 @@ func (r *QueryCustAcctIdBalanceResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type QueryDeclareData struct {
+
+	// 商户号
+	MerchantId *string `json:"MerchantId,omitempty" name:"MerchantId"`
+
+	// 对接方汇出指令编号
+	TransactionId *string `json:"TransactionId,omitempty" name:"TransactionId"`
+
+	// 申报流水号
+	DeclareId *string `json:"DeclareId,omitempty" name:"DeclareId"`
+
+	// 原申报流水号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OriginalDeclareId *string `json:"OriginalDeclareId,omitempty" name:"OriginalDeclareId"`
+
+	// 付款人ID
+	PayerId *string `json:"PayerId,omitempty" name:"PayerId"`
+
+	// 源币种
+	SourceCurrency *string `json:"SourceCurrency,omitempty" name:"SourceCurrency"`
+
+	// 源金额
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SourceAmount *string `json:"SourceAmount,omitempty" name:"SourceAmount"`
+
+	// 目的币种
+	TargetCurrency *string `json:"TargetCurrency,omitempty" name:"TargetCurrency"`
+
+	// 目的金额
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TargetAmount *string `json:"TargetAmount,omitempty" name:"TargetAmount"`
+
+	// 交易编码
+	TradeCode *string `json:"TradeCode,omitempty" name:"TradeCode"`
+
+	// 状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *string `json:"Status,omitempty" name:"Status"`
+}
+
+type QueryDeclareResult struct {
+
+	// 成功申报材料查询数据
+	Data *QueryDeclareData `json:"Data,omitempty" name:"Data"`
+
+	// 错误码
+	Code *string `json:"Code,omitempty" name:"Code"`
+}
+
+type QueryExchangeRateRequest struct {
+	*tchttp.BaseRequest
+
+	// 源币种 (默认CNY)
+	SourceCurrency *string `json:"SourceCurrency,omitempty" name:"SourceCurrency"`
+
+	// 目的币种 (见常见问题-汇出币种)
+	TargetCurrency *string `json:"TargetCurrency,omitempty" name:"TargetCurrency"`
+
+	// 接入环境。沙箱环境填sandbox
+	Profile *string `json:"Profile,omitempty" name:"Profile"`
+}
+
+func (r *QueryExchangeRateRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *QueryExchangeRateRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type QueryExchangeRateResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 查询汇率结果
+		Result *QueryExchangerateResult `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *QueryExchangeRateResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *QueryExchangeRateResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type QueryExchangerateData struct {
+
+	// 汇率
+	Rate *string `json:"Rate,omitempty" name:"Rate"`
+
+	// 源币种
+	SourceCurrency *string `json:"SourceCurrency,omitempty" name:"SourceCurrency"`
+
+	// 目的币种
+	TargetCurrency *string `json:"TargetCurrency,omitempty" name:"TargetCurrency"`
+
+	// 汇率时间
+	RateTime *string `json:"RateTime,omitempty" name:"RateTime"`
+
+	// 基准币种
+	BaseCurrency *string `json:"BaseCurrency,omitempty" name:"BaseCurrency"`
+}
+
+type QueryExchangerateResult struct {
+
+	// 错误码
+	Code *string `json:"Code,omitempty" name:"Code"`
+
+	// 查询汇率数据数组
+	Data []*QueryExchangerateData `json:"Data,omitempty" name:"Data" list`
+}
+
 type QueryInvoiceForManagementRequest struct {
 	*tchttp.BaseRequest
 
@@ -2660,6 +3229,67 @@ func (r *QueryMemberTransactionResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type QueryMerchantBalanceData struct {
+
+	// 余额币种
+	Currency *string `json:"Currency,omitempty" name:"Currency"`
+
+	// 账户余额
+	Balance *string `json:"Balance,omitempty" name:"Balance"`
+
+	// 商户ID
+	MerchantId *string `json:"MerchantId,omitempty" name:"MerchantId"`
+}
+
+type QueryMerchantBalanceRequest struct {
+	*tchttp.BaseRequest
+
+	// 余额币种
+	Currency *string `json:"Currency,omitempty" name:"Currency"`
+
+	// 接入环境。沙箱环境填sandbox
+	Profile *string `json:"Profile,omitempty" name:"Profile"`
+}
+
+func (r *QueryMerchantBalanceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *QueryMerchantBalanceRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type QueryMerchantBalanceResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 对接方账户余额查询结果
+		Result *QueryMerchantBalanceResult `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *QueryMerchantBalanceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *QueryMerchantBalanceResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type QueryMerchantBalanceResult struct {
+
+	// 错误码
+	Code *string `json:"Code,omitempty" name:"Code"`
+
+	// 对接账户余额查询数据
+	Data *QueryMerchantBalanceData `json:"Data,omitempty" name:"Data"`
+}
+
 type QueryMerchantInfoForManagementRequest struct {
 	*tchttp.BaseRequest
 
@@ -2887,6 +3517,199 @@ func (r *QueryOrderResponse) ToJsonString() string {
 
 func (r *QueryOrderResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
+}
+
+type QueryOutwardOrderData struct {
+
+	// 商户号
+	MerchantId *string `json:"MerchantId,omitempty" name:"MerchantId"`
+
+	// 对接方汇出指令编号
+	TransactionId *string `json:"TransactionId,omitempty" name:"TransactionId"`
+
+	// 财务日期
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AcctDate *string `json:"AcctDate,omitempty" name:"AcctDate"`
+
+	// 定价币种
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PricingCurrency *string `json:"PricingCurrency,omitempty" name:"PricingCurrency"`
+
+	// 源币种
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SourceCurrency *string `json:"SourceCurrency,omitempty" name:"SourceCurrency"`
+
+	// 源金额
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SourceAmount *string `json:"SourceAmount,omitempty" name:"SourceAmount"`
+
+	// 目的币种
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TargetCurrency *string `json:"TargetCurrency,omitempty" name:"TargetCurrency"`
+
+	// 目的金额
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TargetAmount *string `json:"TargetAmount,omitempty" name:"TargetAmount"`
+
+	// 汇率
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FxRate *string `json:"FxRate,omitempty" name:"FxRate"`
+
+	// 指令状态
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 失败原因
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FailReason *string `json:"FailReason,omitempty" name:"FailReason"`
+
+	// 退汇金额
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RefundAmount *string `json:"RefundAmount,omitempty" name:"RefundAmount"`
+
+	// 退汇币种
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RefundCurrency *string `json:"RefundCurrency,omitempty" name:"RefundCurrency"`
+}
+
+type QueryOutwardOrderRequest struct {
+	*tchttp.BaseRequest
+
+	// 对接方汇出指令编号
+	TransactionId *string `json:"TransactionId,omitempty" name:"TransactionId"`
+
+	// 接入环境。沙箱环境填sandbox
+	Profile *string `json:"Profile,omitempty" name:"Profile"`
+}
+
+func (r *QueryOutwardOrderRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *QueryOutwardOrderRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type QueryOutwardOrderResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 查询汇出结果
+		Result *QueryOutwardOrderResult `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *QueryOutwardOrderResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *QueryOutwardOrderResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type QueryOutwardOrderResult struct {
+
+	// 错误码
+	Code *string `json:"Code,omitempty" name:"Code"`
+
+	// 查询汇出数据
+	Data *QueryOutwardOrderData `json:"Data,omitempty" name:"Data"`
+}
+
+type QueryPayerInfoRequest struct {
+	*tchttp.BaseRequest
+
+	// 付款人ID
+	PayerId *string `json:"PayerId,omitempty" name:"PayerId"`
+
+	// 接入环境。沙箱环境填sandbox
+	Profile *string `json:"Profile,omitempty" name:"Profile"`
+}
+
+func (r *QueryPayerInfoRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *QueryPayerInfoRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type QueryPayerInfoResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 付款人查询结果
+		Result *QueryPayerinfoResult `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *QueryPayerInfoResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *QueryPayerInfoResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type QueryPayerinfoData struct {
+
+	// 商户号
+	MerchantId *string `json:"MerchantId,omitempty" name:"MerchantId"`
+
+	// 付款人ID
+	PayerId *string `json:"PayerId,omitempty" name:"PayerId"`
+
+	// 审核状态
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 失败原因
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FailReason *string `json:"FailReason,omitempty" name:"FailReason"`
+
+	// 付款人类型
+	PayerType *string `json:"PayerType,omitempty" name:"PayerType"`
+
+	// 付款人姓名
+	PayerName *string `json:"PayerName,omitempty" name:"PayerName"`
+
+	// 付款人证件类型
+	PayerIdType *string `json:"PayerIdType,omitempty" name:"PayerIdType"`
+
+	// 付款人证件号
+	PayerIdNo *string `json:"PayerIdNo,omitempty" name:"PayerIdNo"`
+
+	// 付款人联系电话
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PayerContactNumber *string `json:"PayerContactNumber,omitempty" name:"PayerContactNumber"`
+
+	// 付款人联系邮箱
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PayerEmailAddress *string `json:"PayerEmailAddress,omitempty" name:"PayerEmailAddress"`
+
+	// 付款人常驻国家或地区编码
+	PayerCountryCode *string `json:"PayerCountryCode,omitempty" name:"PayerCountryCode"`
+
+	// 付款人联系名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PayerContactName *string `json:"PayerContactName,omitempty" name:"PayerContactName"`
+}
+
+type QueryPayerinfoResult struct {
+
+	// 错误码
+	Code *string `json:"Code,omitempty" name:"Code"`
+
+	// 付款人查询数据
+	Data *QueryPayerinfoData `json:"Data,omitempty" name:"Data"`
 }
 
 type QueryReconciliationDocumentRequest struct {
@@ -3158,6 +3981,113 @@ func (r *QuerySmallAmountTransferResponse) ToJsonString() string {
 
 func (r *QuerySmallAmountTransferResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
+}
+
+type QueryTradeData struct {
+
+	// 商户号
+	MerchantId *string `json:"MerchantId,omitempty" name:"MerchantId"`
+
+	// 贸易材料流水号
+	TradeFileId *string `json:"TradeFileId,omitempty" name:"TradeFileId"`
+
+	// 贸易材料订单号
+	TradeOrderId *string `json:"TradeOrderId,omitempty" name:"TradeOrderId"`
+
+	// 审核状态
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 失败原因
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FailReason *string `json:"FailReason,omitempty" name:"FailReason"`
+
+	// 付款人ID
+	PayerId *string `json:"PayerId,omitempty" name:"PayerId"`
+
+	// 收款人姓名
+	PayeeName *string `json:"PayeeName,omitempty" name:"PayeeName"`
+
+	// 收款人常驻国家或地区编码
+	PayeeCountryCode *string `json:"PayeeCountryCode,omitempty" name:"PayeeCountryCode"`
+
+	// 交易类型
+	TradeType *string `json:"TradeType,omitempty" name:"TradeType"`
+
+	// 交易日期
+	TradeTime *string `json:"TradeTime,omitempty" name:"TradeTime"`
+
+	// 交易币种
+	TradeCurrency *string `json:"TradeCurrency,omitempty" name:"TradeCurrency"`
+
+	// 交易金额
+	TradeAmount *string `json:"TradeAmount,omitempty" name:"TradeAmount"`
+
+	// 交易名称
+	TradeName *string `json:"TradeName,omitempty" name:"TradeName"`
+
+	// 交易数量
+	TradeCount *int64 `json:"TradeCount,omitempty" name:"TradeCount"`
+
+	// 货贸承运人
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GoodsCarrier *string `json:"GoodsCarrier,omitempty" name:"GoodsCarrier"`
+
+	// 服贸交易细节
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ServiceDetail *string `json:"ServiceDetail,omitempty" name:"ServiceDetail"`
+
+	// 服贸服务时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ServiceTime *string `json:"ServiceTime,omitempty" name:"ServiceTime"`
+}
+
+type QueryTradeRequest struct {
+	*tchttp.BaseRequest
+
+	// 贸易材料流水号
+	TradeFileId *string `json:"TradeFileId,omitempty" name:"TradeFileId"`
+
+	// 接入环境。沙箱环境填sandbox
+	Profile *string `json:"Profile,omitempty" name:"Profile"`
+}
+
+func (r *QueryTradeRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *QueryTradeRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type QueryTradeResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 贸易材料明细查询结果
+		Result *QueryTradeResult `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *QueryTradeResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *QueryTradeResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type QueryTradeResult struct {
+
+	// 贸易材料明细查询数据
+	Data *QueryTradeData `json:"Data,omitempty" name:"Data"`
+
+	// 错误码
+	Code *string `json:"Code,omitempty" name:"Code"`
 }
 
 type RechargeMemberThirdPayRequest struct {

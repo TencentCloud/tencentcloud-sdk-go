@@ -868,9 +868,7 @@ type CreateClusterResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 创建集群操作是否成功。
-	// true：操作成功。
-	// false：操作失败。
+		// 集群ID
 		Result *string `json:"Result,omitempty" name:"Result"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。

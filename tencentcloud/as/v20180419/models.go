@@ -66,6 +66,9 @@ type Activity struct {
 
 	// 伸缩活动状态简要描述。
 	StatusMessageSimplified *string `json:"StatusMessageSimplified,omitempty" name:"StatusMessageSimplified"`
+
+	// 伸缩活动中生命周期挂钩的执行结果。
+	LifecycleActionResultSet []*LifecycleActionResultInfo `json:"LifecycleActionResultSet,omitempty" name:"LifecycleActionResultSet" list`
 }
 
 type ActivtyRelatedInstance struct {
@@ -2006,6 +2009,24 @@ type LaunchConfiguration struct {
 
 	// 预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月实例的购买时长、是否设置自动续费等属性。若指定实例的付费模式为预付费则该参数必传。
 	InstanceChargePrepaid *InstanceChargePrepaid `json:"InstanceChargePrepaid,omitempty" name:"InstanceChargePrepaid"`
+}
+
+type LifecycleActionResultInfo struct {
+
+	// 生命周期挂钩标识。
+	LifecycleHookId *string `json:"LifecycleHookId,omitempty" name:"LifecycleHookId"`
+
+	// 实例标识。
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 通知的结果，表示通知CMQ是否成功。
+	NotificationResult *string `json:"NotificationResult,omitempty" name:"NotificationResult"`
+
+	// 生命周期挂钩动作的执行结果，取值包括 CONTINUE、ABANDON。
+	LifecycleActionResult *string `json:"LifecycleActionResult,omitempty" name:"LifecycleActionResult"`
+
+	// 结果的原因。
+	ResultReason *string `json:"ResultReason,omitempty" name:"ResultReason"`
 }
 
 type LifecycleHook struct {

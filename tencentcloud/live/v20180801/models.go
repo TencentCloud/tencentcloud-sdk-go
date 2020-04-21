@@ -92,6 +92,12 @@ type AddLiveDomainRequest struct {
 	// 1 ：慢直播 。
 	// 默认值： 0。
 	IsDelayLive *int64 `json:"IsDelayLive,omitempty" name:"IsDelayLive"`
+
+	// 是否是小程序直播：
+	// 0： 标准直播，
+	// 1 ：小程序直播 。
+	// 默认值： 0。
+	IsMiniProgramLive *int64 `json:"IsMiniProgramLive,omitempty" name:"IsMiniProgramLive"`
 }
 
 func (r *AddLiveDomainRequest) ToJsonString() string {

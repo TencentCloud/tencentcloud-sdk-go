@@ -318,6 +318,31 @@ func (c *Client) CreateUserPersonal(request *CreateUserPersonalRequest) (respons
     return
 }
 
+func NewCreateWebhookTriggerRequest() (request *CreateWebhookTriggerRequest) {
+    request = &CreateWebhookTriggerRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tcr", APIVersion, "CreateWebhookTrigger")
+    return
+}
+
+func NewCreateWebhookTriggerResponse() (response *CreateWebhookTriggerResponse) {
+    response = &CreateWebhookTriggerResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 创建触发器
+func (c *Client) CreateWebhookTrigger(request *CreateWebhookTriggerRequest) (response *CreateWebhookTriggerResponse, err error) {
+    if request == nil {
+        request = NewCreateWebhookTriggerRequest()
+    }
+    response = NewCreateWebhookTriggerResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteApplicationTriggerPersonalRequest() (request *DeleteApplicationTriggerPersonalRequest) {
     request = &DeleteApplicationTriggerPersonalRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -543,6 +568,31 @@ func (c *Client) DeleteRepositoryPersonal(request *DeleteRepositoryPersonalReque
     return
 }
 
+func NewDeleteWebhookTriggerRequest() (request *DeleteWebhookTriggerRequest) {
+    request = &DeleteWebhookTriggerRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tcr", APIVersion, "DeleteWebhookTrigger")
+    return
+}
+
+func NewDeleteWebhookTriggerResponse() (response *DeleteWebhookTriggerResponse) {
+    response = &DeleteWebhookTriggerResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 删除触发器
+func (c *Client) DeleteWebhookTrigger(request *DeleteWebhookTriggerRequest) (response *DeleteWebhookTriggerResponse, err error) {
+    if request == nil {
+        request = NewDeleteWebhookTriggerRequest()
+    }
+    response = NewDeleteWebhookTriggerResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeApplicationTriggerLogPersonalRequest() (request *DescribeApplicationTriggerLogPersonalRequest) {
     request = &DescribeApplicationTriggerLogPersonalRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -689,6 +739,31 @@ func (c *Client) DescribeImageLifecyclePersonal(request *DescribeImageLifecycleP
         request = NewDescribeImageLifecyclePersonalRequest()
     }
     response = NewDescribeImageLifecyclePersonalResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeImageManifestsRequest() (request *DescribeImageManifestsRequest) {
+    request = &DescribeImageManifestsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tcr", APIVersion, "DescribeImageManifests")
+    return
+}
+
+func NewDescribeImageManifestsResponse() (response *DescribeImageManifestsResponse) {
+    response = &DescribeImageManifestsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询容器镜像Manifest信息
+func (c *Client) DescribeImageManifests(request *DescribeImageManifestsRequest) (response *DescribeImageManifestsResponse, err error) {
+    if request == nil {
+        request = NewDescribeImageManifestsRequest()
+    }
+    response = NewDescribeImageManifestsResponse()
     err = c.Send(request, response)
     return
 }
@@ -993,6 +1068,56 @@ func (c *Client) DescribeUserQuotaPersonal(request *DescribeUserQuotaPersonalReq
     return
 }
 
+func NewDescribeWebhookTriggerRequest() (request *DescribeWebhookTriggerRequest) {
+    request = &DescribeWebhookTriggerRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tcr", APIVersion, "DescribeWebhookTrigger")
+    return
+}
+
+func NewDescribeWebhookTriggerResponse() (response *DescribeWebhookTriggerResponse) {
+    response = &DescribeWebhookTriggerResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询触发器
+func (c *Client) DescribeWebhookTrigger(request *DescribeWebhookTriggerRequest) (response *DescribeWebhookTriggerResponse, err error) {
+    if request == nil {
+        request = NewDescribeWebhookTriggerRequest()
+    }
+    response = NewDescribeWebhookTriggerResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeWebhookTriggerLogRequest() (request *DescribeWebhookTriggerLogRequest) {
+    request = &DescribeWebhookTriggerLogRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tcr", APIVersion, "DescribeWebhookTriggerLog")
+    return
+}
+
+func NewDescribeWebhookTriggerLogResponse() (response *DescribeWebhookTriggerLogResponse) {
+    response = &DescribeWebhookTriggerLogResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 获取触发器日志
+func (c *Client) DescribeWebhookTriggerLog(request *DescribeWebhookTriggerLogRequest) (response *DescribeWebhookTriggerLogResponse, err error) {
+    if request == nil {
+        request = NewDescribeWebhookTriggerLogRequest()
+    }
+    response = NewDescribeWebhookTriggerLogResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDuplicateImagePersonalRequest() (request *DuplicateImagePersonalRequest) {
     request = &DuplicateImagePersonalRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1214,6 +1339,31 @@ func (c *Client) ModifyUserPasswordPersonal(request *ModifyUserPasswordPersonalR
         request = NewModifyUserPasswordPersonalRequest()
     }
     response = NewModifyUserPasswordPersonalResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyWebhookTriggerRequest() (request *ModifyWebhookTriggerRequest) {
+    request = &ModifyWebhookTriggerRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tcr", APIVersion, "ModifyWebhookTrigger")
+    return
+}
+
+func NewModifyWebhookTriggerResponse() (response *ModifyWebhookTriggerResponse) {
+    response = &ModifyWebhookTriggerResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 更新触发器
+func (c *Client) ModifyWebhookTrigger(request *ModifyWebhookTriggerRequest) (response *ModifyWebhookTriggerResponse, err error) {
+    if request == nil {
+        request = NewModifyWebhookTriggerRequest()
+    }
+    response = NewModifyWebhookTriggerResponse()
     err = c.Send(request, response)
     return
 }

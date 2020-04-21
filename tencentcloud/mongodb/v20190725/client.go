@@ -158,7 +158,7 @@ func NewDescribeClientConnectionsResponse() (response *DescribeClientConnections
     return
 }
 
-// 本接口(DescribeClientConnections)用于查询实例客户端连接信息，包括连接IP和连接数量。目前只支持3.2版本的MongoDB实例。
+// 本接口(DescribeClientConnections)用于查询实例客户端连接信息，包括连接IP和连接数量。
 func (c *Client) DescribeClientConnections(request *DescribeClientConnectionsRequest) (response *DescribeClientConnectionsResponse, err error) {
     if request == nil {
         request = NewDescribeClientConnectionsRequest()
@@ -214,6 +214,56 @@ func (c *Client) DescribeDBInstances(request *DescribeDBInstancesRequest) (respo
         request = NewDescribeDBInstancesRequest()
     }
     response = NewDescribeDBInstancesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeSlowLogPatternsRequest() (request *DescribeSlowLogPatternsRequest) {
+    request = &DescribeSlowLogPatternsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("mongodb", APIVersion, "DescribeSlowLogPatterns")
+    return
+}
+
+func NewDescribeSlowLogPatternsResponse() (response *DescribeSlowLogPatternsResponse) {
+    response = &DescribeSlowLogPatternsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（DescribeSlowLogPatterns）用于获取数据库实例慢日志的统计信息。
+func (c *Client) DescribeSlowLogPatterns(request *DescribeSlowLogPatternsRequest) (response *DescribeSlowLogPatternsResponse, err error) {
+    if request == nil {
+        request = NewDescribeSlowLogPatternsRequest()
+    }
+    response = NewDescribeSlowLogPatternsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeSlowLogsRequest() (request *DescribeSlowLogsRequest) {
+    request = &DescribeSlowLogsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("mongodb", APIVersion, "DescribeSlowLogs")
+    return
+}
+
+func NewDescribeSlowLogsResponse() (response *DescribeSlowLogsResponse) {
+    response = &DescribeSlowLogsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（DescribeSlowLogs）用于获取云数据库慢日志信息。接口只支持查询最近7天内慢日志。
+func (c *Client) DescribeSlowLogs(request *DescribeSlowLogsRequest) (response *DescribeSlowLogsResponse, err error) {
+    if request == nil {
+        request = NewDescribeSlowLogsRequest()
+    }
+    response = NewDescribeSlowLogsResponse()
     err = c.Send(request, response)
     return
 }
@@ -339,6 +389,31 @@ func (c *Client) RenameInstance(request *RenameInstanceRequest) (response *Renam
         request = NewRenameInstanceRequest()
     }
     response = NewRenameInstanceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewRenewDBInstancesRequest() (request *RenewDBInstancesRequest) {
+    request = &RenewDBInstancesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("mongodb", APIVersion, "RenewDBInstances")
+    return
+}
+
+func NewRenewDBInstancesResponse() (response *RenewDBInstancesResponse) {
+    response = &RenewDBInstancesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口(RenewDBInstance)用于续费云数据库实例，仅支持付费模式为包年包月的实例。按量计费实例不需要续费。
+func (c *Client) RenewDBInstances(request *RenewDBInstancesRequest) (response *RenewDBInstancesResponse, err error) {
+    if request == nil {
+        request = NewRenewDBInstancesRequest()
+    }
+    response = NewRenewDBInstancesResponse()
     err = c.Send(request, response)
     return
 }

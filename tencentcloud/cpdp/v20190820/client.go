@@ -43,6 +43,81 @@ func NewClient(credential *common.Credential, region string, clientProfile *prof
 }
 
 
+func NewApplyApplicationMaterialRequest() (request *ApplyApplicationMaterialRequest) {
+    request = &ApplyApplicationMaterialRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cpdp", APIVersion, "ApplyApplicationMaterial")
+    return
+}
+
+func NewApplyApplicationMaterialResponse() (response *ApplyApplicationMaterialResponse) {
+    response = &ApplyApplicationMaterialResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 跨境-提交申报材料
+func (c *Client) ApplyApplicationMaterial(request *ApplyApplicationMaterialRequest) (response *ApplyApplicationMaterialResponse, err error) {
+    if request == nil {
+        request = NewApplyApplicationMaterialRequest()
+    }
+    response = NewApplyApplicationMaterialResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewApplyOutwardOrderRequest() (request *ApplyOutwardOrderRequest) {
+    request = &ApplyOutwardOrderRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cpdp", APIVersion, "ApplyOutwardOrder")
+    return
+}
+
+func NewApplyOutwardOrderResponse() (response *ApplyOutwardOrderResponse) {
+    response = &ApplyOutwardOrderResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 跨境-汇出指令申请
+func (c *Client) ApplyOutwardOrder(request *ApplyOutwardOrderRequest) (response *ApplyOutwardOrderResponse, err error) {
+    if request == nil {
+        request = NewApplyOutwardOrderRequest()
+    }
+    response = NewApplyOutwardOrderResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewApplyPayerInfoRequest() (request *ApplyPayerInfoRequest) {
+    request = &ApplyPayerInfoRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cpdp", APIVersion, "ApplyPayerInfo")
+    return
+}
+
+func NewApplyPayerInfoResponse() (response *ApplyPayerInfoResponse) {
+    response = &ApplyPayerInfoResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 跨境-付款人申请
+func (c *Client) ApplyPayerInfo(request *ApplyPayerInfoRequest) (response *ApplyPayerInfoResponse, err error) {
+    if request == nil {
+        request = NewApplyPayerInfoRequest()
+    }
+    response = NewApplyPayerInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewApplyReWithdrawalRequest() (request *ApplyReWithdrawalRequest) {
     request = &ApplyReWithdrawalRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -64,6 +139,31 @@ func (c *Client) ApplyReWithdrawal(request *ApplyReWithdrawalRequest) (response 
         request = NewApplyReWithdrawalRequest()
     }
     response = NewApplyReWithdrawalResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewApplyTradeRequest() (request *ApplyTradeRequest) {
+    request = &ApplyTradeRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cpdp", APIVersion, "ApplyTrade")
+    return
+}
+
+func NewApplyTradeResponse() (response *ApplyTradeResponse) {
+    response = &ApplyTradeResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 跨境-提交贸易材料
+func (c *Client) ApplyTrade(request *ApplyTradeRequest) (response *ApplyTradeResponse, err error) {
+    if request == nil {
+        request = NewApplyTradeRequest()
+    }
+    response = NewApplyTradeResponse()
     err = c.Send(request, response)
     return
 }
@@ -526,6 +626,31 @@ func (c *Client) QueryAcctInfoList(request *QueryAcctInfoListRequest) (response 
     return
 }
 
+func NewQueryApplicationMaterialRequest() (request *QueryApplicationMaterialRequest) {
+    request = &QueryApplicationMaterialRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cpdp", APIVersion, "QueryApplicationMaterial")
+    return
+}
+
+func NewQueryApplicationMaterialResponse() (response *QueryApplicationMaterialResponse) {
+    response = &QueryApplicationMaterialResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 跨境-成功申报材料查询
+func (c *Client) QueryApplicationMaterial(request *QueryApplicationMaterialRequest) (response *QueryApplicationMaterialResponse, err error) {
+    if request == nil {
+        request = NewQueryApplicationMaterialRequest()
+    }
+    response = NewQueryApplicationMaterialResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewQueryBalanceRequest() (request *QueryBalanceRequest) {
     request = &QueryBalanceRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -676,6 +801,31 @@ func (c *Client) QueryCustAcctIdBalance(request *QueryCustAcctIdBalanceRequest) 
     return
 }
 
+func NewQueryExchangeRateRequest() (request *QueryExchangeRateRequest) {
+    request = &QueryExchangeRateRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cpdp", APIVersion, "QueryExchangeRate")
+    return
+}
+
+func NewQueryExchangeRateResponse() (response *QueryExchangeRateResponse) {
+    response = &QueryExchangeRateResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 跨境-查询汇率
+func (c *Client) QueryExchangeRate(request *QueryExchangeRateRequest) (response *QueryExchangeRateResponse, err error) {
+    if request == nil {
+        request = NewQueryExchangeRateRequest()
+    }
+    response = NewQueryExchangeRateResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewQueryInvoiceRequest() (request *QueryInvoiceRequest) {
     request = &QueryInvoiceRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -777,6 +927,31 @@ func (c *Client) QueryMemberTransaction(request *QueryMemberTransactionRequest) 
     return
 }
 
+func NewQueryMerchantBalanceRequest() (request *QueryMerchantBalanceRequest) {
+    request = &QueryMerchantBalanceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cpdp", APIVersion, "QueryMerchantBalance")
+    return
+}
+
+func NewQueryMerchantBalanceResponse() (response *QueryMerchantBalanceResponse) {
+    response = &QueryMerchantBalanceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 跨境-对接方账户余额查询
+func (c *Client) QueryMerchantBalance(request *QueryMerchantBalanceRequest) (response *QueryMerchantBalanceResponse, err error) {
+    if request == nil {
+        request = NewQueryMerchantBalanceRequest()
+    }
+    response = NewQueryMerchantBalanceResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewQueryMerchantInfoForManagementRequest() (request *QueryMerchantInfoForManagementRequest) {
     request = &QueryMerchantInfoForManagementRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -823,6 +998,56 @@ func (c *Client) QueryOrder(request *QueryOrderRequest) (response *QueryOrderRes
         request = NewQueryOrderRequest()
     }
     response = NewQueryOrderResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewQueryOutwardOrderRequest() (request *QueryOutwardOrderRequest) {
+    request = &QueryOutwardOrderRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cpdp", APIVersion, "QueryOutwardOrder")
+    return
+}
+
+func NewQueryOutwardOrderResponse() (response *QueryOutwardOrderResponse) {
+    response = &QueryOutwardOrderResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 跨境-查询汇出结果
+func (c *Client) QueryOutwardOrder(request *QueryOutwardOrderRequest) (response *QueryOutwardOrderResponse, err error) {
+    if request == nil {
+        request = NewQueryOutwardOrderRequest()
+    }
+    response = NewQueryOutwardOrderResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewQueryPayerInfoRequest() (request *QueryPayerInfoRequest) {
+    request = &QueryPayerInfoRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cpdp", APIVersion, "QueryPayerInfo")
+    return
+}
+
+func NewQueryPayerInfoResponse() (response *QueryPayerInfoResponse) {
+    response = &QueryPayerInfoResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 跨境-付款人查询
+func (c *Client) QueryPayerInfo(request *QueryPayerInfoRequest) (response *QueryPayerInfoResponse, err error) {
+    if request == nil {
+        request = NewQueryPayerInfoRequest()
+    }
+    response = NewQueryPayerInfoResponse()
     err = c.Send(request, response)
     return
 }
@@ -923,6 +1148,31 @@ func (c *Client) QuerySmallAmountTransfer(request *QuerySmallAmountTransferReque
         request = NewQuerySmallAmountTransferRequest()
     }
     response = NewQuerySmallAmountTransferResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewQueryTradeRequest() (request *QueryTradeRequest) {
+    request = &QueryTradeRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cpdp", APIVersion, "QueryTrade")
+    return
+}
+
+func NewQueryTradeResponse() (response *QueryTradeResponse) {
+    response = &QueryTradeResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 跨境-贸易材料明细查询
+func (c *Client) QueryTrade(request *QueryTradeRequest) (response *QueryTradeResponse, err error) {
+    if request == nil {
+        request = NewQueryTradeRequest()
+    }
+    response = NewQueryTradeResponse()
     err = c.Send(request, response)
     return
 }
