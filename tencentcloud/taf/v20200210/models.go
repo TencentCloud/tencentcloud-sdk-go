@@ -20,6 +20,43 @@ import (
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
+type DetectAccountActivityRequest struct {
+	*tchttp.BaseRequest
+
+	// 业务入参
+	BusinessSecurityData *InputDetectAccountActivity `json:"BusinessSecurityData,omitempty" name:"BusinessSecurityData"`
+}
+
+func (r *DetectAccountActivityRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DetectAccountActivityRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DetectAccountActivityResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 回包数据
+		Data *OutputDetectAccountActivity `json:"Data,omitempty" name:"Data"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DetectAccountActivityResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DetectAccountActivityResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DetectFraudKOLRequest struct {
 	*tchttp.BaseRequest
 
@@ -94,6 +131,55 @@ func (r *EnhanceTaDegreeResponse) ToJsonString() string {
 
 func (r *EnhanceTaDegreeResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
+}
+
+type InputDetectAccountActivity struct {
+
+	// 用户ID值，如微信/QQ openid，或 手机号等（如15912345687）
+	Uid *string `json:"Uid,omitempty" name:"Uid"`
+
+	// 用户账号类型 
+	// 1：QQ开放帐号 
+	// 2：微信开放账号 
+	// 4：手机号 （暂仅支持国内手机号）
+	// 10004： 手机号MD5
+	AccountType *uint64 `json:"AccountType,omitempty" name:"AccountType"`
+
+	// 用户真实外网IP
+	UserIp *string `json:"UserIp,omitempty" name:"UserIp"`
+
+	// 用户操作时间戳，单位秒（格林威治时间精确到秒，如1501590972）
+	PostTime *uint64 `json:"PostTime,omitempty" name:"PostTime"`
+
+	// accountType是QQ或微信开放账号时，该参数必填，表示QQ或微信分配给网站或应用的appId，用来唯一标识网站或应用
+	AppIdU *string `json:"AppIdU,omitempty" name:"AppIdU"`
+
+	// 昵称，UTF-8 编码
+	NickName *string `json:"NickName,omitempty" name:"NickName"`
+
+	// 手机号。若 accountType 选4（手机号）、或10004（手机号 MD5），则无需重复填写。否则填入对应的手机号（如15912345687）
+	PhoneNumber *string `json:"PhoneNumber,omitempty" name:"PhoneNumber"`
+
+	// 用户邮箱地址（非系统自动生成）
+	EmailAddress *string `json:"EmailAddress,omitempty" name:"EmailAddress"`
+
+	// 用户 HTTP 请求中的 cookie 进行2次 hash 的值，只要保证相同 cookie 的 hash 值一致即可
+	CookieHash *float64 `json:"CookieHash,omitempty" name:"CookieHash"`
+
+	// 用户HTTP请求的 userAgent
+	UserAgent *string `json:"UserAgent,omitempty" name:"UserAgent"`
+
+	// 用户HTTP请求中的 x_forward_for
+	XForwardedFor *string `json:"XForwardedFor,omitempty" name:"XForwardedFor"`
+
+	// Mac地址或设备唯一标识
+	MacAddress *string `json:"MacAddress,omitempty" name:"MacAddress"`
+
+	// 手机制造商ID，如果手机注册，请带上此信息
+	VendorId *string `json:"VendorId,omitempty" name:"VendorId"`
+
+	// 手机设备号
+	Imei *string `json:"Imei,omitempty" name:"Imei"`
 }
 
 type InputKolBspData struct {
@@ -322,6 +408,41 @@ type InputTaBspData struct {
 
 	// 辅助区分信息
 	Context *string `json:"Context,omitempty" name:"Context"`
+}
+
+type OutputDetectAccountActivity struct {
+
+	// 返回码（0，成功，其他失败）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Code *int64 `json:"Code,omitempty" name:"Code"`
+
+	// 返回码对应的信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Message *string `json:"Message,omitempty" name:"Message"`
+
+	// 返回活跃度信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Value *OutputDetectAccountActivityValue `json:"Value,omitempty" name:"Value"`
+}
+
+type OutputDetectAccountActivityValue struct {
+
+	// 用户 ID accountType 不同对应不同的用户 ID。如是 QQ 或微信用户则填入对应的 openId
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Uid *string `json:"Uid,omitempty" name:"Uid"`
+
+	// 操作时间戳，单位：秒
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PostTime *int64 `json:"PostTime,omitempty" name:"PostTime"`
+
+	// 用户操作的真实外网 IP
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UserIp *string `json:"UserIp,omitempty" name:"UserIp"`
+
+	// 0：表示不活跃
+	// 1 - 4：活跃等级由低到高
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Level *int64 `json:"Level,omitempty" name:"Level"`
 }
 
 type OutputKolData struct {

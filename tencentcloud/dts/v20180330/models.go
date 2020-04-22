@@ -55,7 +55,7 @@ type ActivateSubscribeResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 配置数据订阅任务任务ID。
+		// 配置数据订阅任务ID。
 		AsyncRequestId *string `json:"AsyncRequestId,omitempty" name:"AsyncRequestId"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -966,10 +966,10 @@ type MigrateDetailInfo struct {
 	// 当前步骤
 	StepNow *int64 `json:"StepNow,omitempty" name:"StepNow"`
 
-	// 总进度,如：
+	// 总进度,如："10"
 	Progress *string `json:"Progress,omitempty" name:"Progress"`
 
-	// 当前步骤进度,如:
+	// 当前步骤进度,如:"1"
 	CurrentStepProgress *string `json:"CurrentStepProgress,omitempty" name:"CurrentStepProgress"`
 
 	// 主从差距，MB；在增量同步阶段有效，目前支持产品为：redis和mysql

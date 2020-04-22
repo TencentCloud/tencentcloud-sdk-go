@@ -193,6 +193,31 @@ func (c *Client) DescribeDBBackups(request *DescribeDBBackupsRequest) (response 
     return
 }
 
+func NewDescribeDBInstanceDealRequest() (request *DescribeDBInstanceDealRequest) {
+    request = &DescribeDBInstanceDealRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("mongodb", APIVersion, "DescribeDBInstanceDeal")
+    return
+}
+
+func NewDescribeDBInstanceDealResponse() (response *DescribeDBInstanceDealResponse) {
+    response = &DescribeDBInstanceDealResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（DescribeDBInstanceDeal）用于获取MongoDB购买、续费及变配订单详细。
+func (c *Client) DescribeDBInstanceDeal(request *DescribeDBInstanceDealRequest) (response *DescribeDBInstanceDealResponse, err error) {
+    if request == nil {
+        request = NewDescribeDBInstanceDealRequest()
+    }
+    response = NewDescribeDBInstanceDealResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeDBInstancesRequest() (request *DescribeDBInstancesRequest) {
     request = &DescribeDBInstancesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -289,6 +314,81 @@ func (c *Client) DescribeSpecInfo(request *DescribeSpecInfoRequest) (response *D
         request = NewDescribeSpecInfoRequest()
     }
     response = NewDescribeSpecInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewInquirePriceCreateDBInstancesRequest() (request *InquirePriceCreateDBInstancesRequest) {
+    request = &InquirePriceCreateDBInstancesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("mongodb", APIVersion, "InquirePriceCreateDBInstances")
+    return
+}
+
+func NewInquirePriceCreateDBInstancesResponse() (response *InquirePriceCreateDBInstancesResponse) {
+    response = &InquirePriceCreateDBInstancesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口用于创建数据库实例询价。本接口参数中必须传入region参数，否则无法通过校验。本接口仅允许针对购买限制范围内的实例配置进行询价。
+func (c *Client) InquirePriceCreateDBInstances(request *InquirePriceCreateDBInstancesRequest) (response *InquirePriceCreateDBInstancesResponse, err error) {
+    if request == nil {
+        request = NewInquirePriceCreateDBInstancesRequest()
+    }
+    response = NewInquirePriceCreateDBInstancesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewInquirePriceModifyDBInstanceSpecRequest() (request *InquirePriceModifyDBInstanceSpecRequest) {
+    request = &InquirePriceModifyDBInstanceSpecRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("mongodb", APIVersion, "InquirePriceModifyDBInstanceSpec")
+    return
+}
+
+func NewInquirePriceModifyDBInstanceSpecResponse() (response *InquirePriceModifyDBInstanceSpecResponse) {
+    response = &InquirePriceModifyDBInstanceSpecResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口 (InquirePriceModifyDBInstanceSpec) 用于调整实例的配置询价。
+func (c *Client) InquirePriceModifyDBInstanceSpec(request *InquirePriceModifyDBInstanceSpecRequest) (response *InquirePriceModifyDBInstanceSpecResponse, err error) {
+    if request == nil {
+        request = NewInquirePriceModifyDBInstanceSpecRequest()
+    }
+    response = NewInquirePriceModifyDBInstanceSpecResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewInquirePriceRenewDBInstancesRequest() (request *InquirePriceRenewDBInstancesRequest) {
+    request = &InquirePriceRenewDBInstancesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("mongodb", APIVersion, "InquirePriceRenewDBInstances")
+    return
+}
+
+func NewInquirePriceRenewDBInstancesResponse() (response *InquirePriceRenewDBInstancesResponse) {
+    response = &InquirePriceRenewDBInstancesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口 (InquiryPriceRenewDBInstances) 用于续费包年包月实例询价。
+func (c *Client) InquirePriceRenewDBInstances(request *InquirePriceRenewDBInstancesRequest) (response *InquirePriceRenewDBInstancesResponse, err error) {
+    if request == nil {
+        request = NewInquirePriceRenewDBInstancesRequest()
+    }
+    response = NewInquirePriceRenewDBInstancesResponse()
     err = c.Send(request, response)
     return
 }

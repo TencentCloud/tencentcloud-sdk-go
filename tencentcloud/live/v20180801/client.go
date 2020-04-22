@@ -238,7 +238,7 @@ func NewCreateLiveCallbackTemplateResponse() (response *CreateLiveCallbackTempla
     return
 }
 
-// 创建回调模板，成功返回模板id后，需要调用[CreateLiveCallbackRule](/document/product/267/32638)接口将模板id绑定到域名/路径使用。
+// 创建回调模板，成功返回模板id后，需要调用[CreateLiveCallbackRule](/document/product/267/32638)接口将模板 ID 绑定到域名/路径使用。
 // <br>回调协议相关文档：[事件消息通知](/document/product/267/32744)。
 func (c *Client) CreateLiveCallbackTemplate(request *CreateLiveCallbackTemplateRequest) (response *CreateLiveCallbackTemplateResponse, err error) {
     if request == nil {
@@ -380,8 +380,9 @@ func NewCreateLiveSnapshotRuleResponse() (response *CreateLiveSnapshotRuleRespon
     return
 }
 
-// 创建截图规则，需要先调用[CreateLiveSnapshotTemplate](/document/product/267/32624)接口创建截图模板，然后将返回的模板id绑定到流进行使用。
+// 创建截图规则，需要先调用[CreateLiveSnapshotTemplate](/document/product/267/32624)接口创建截图模板，然后将返回的模板 ID 绑定到流进行使用。
 // <br>截图相关文档：[直播截图](/document/product/267/32737)。
+// 注意：单个域名仅支持关联一个截图模板。
 func (c *Client) CreateLiveSnapshotRule(request *CreateLiveSnapshotRuleRequest) (response *CreateLiveSnapshotRuleResponse, err error) {
     if request == nil {
         request = NewCreateLiveSnapshotRuleRequest()
@@ -538,7 +539,7 @@ func NewDeleteLiveCallbackRuleResponse() (response *DeleteLiveCallbackRuleRespon
     return
 }
 
-// 删除回调规则
+// 删除回调规则。
 func (c *Client) DeleteLiveCallbackRule(request *DeleteLiveCallbackRuleRequest) (response *DeleteLiveCallbackRuleResponse, err error) {
     if request == nil {
         request = NewDeleteLiveCallbackRuleRequest()
@@ -563,7 +564,7 @@ func NewDeleteLiveCallbackTemplateResponse() (response *DeleteLiveCallbackTempla
     return
 }
 
-// 删除回调模板
+// 删除回调模板。
 func (c *Client) DeleteLiveCallbackTemplate(request *DeleteLiveCallbackTemplateRequest) (response *DeleteLiveCallbackTemplateResponse, err error) {
     if request == nil {
         request = NewDeleteLiveCallbackTemplateRequest()
@@ -663,7 +664,7 @@ func NewDeleteLiveRecordRuleResponse() (response *DeleteLiveRecordRuleResponse) 
     return
 }
 
-// 删除录制规则
+// 删除录制规则。
 func (c *Client) DeleteLiveRecordRule(request *DeleteLiveRecordRuleRequest) (response *DeleteLiveRecordRuleResponse, err error) {
     if request == nil {
         request = NewDeleteLiveRecordRuleRequest()
@@ -688,7 +689,7 @@ func NewDeleteLiveRecordTemplateResponse() (response *DeleteLiveRecordTemplateRe
     return
 }
 
-// 删除录制模板
+// 删除录制模板。
 func (c *Client) DeleteLiveRecordTemplate(request *DeleteLiveRecordTemplateRequest) (response *DeleteLiveRecordTemplateResponse, err error) {
     if request == nil {
         request = NewDeleteLiveRecordTemplateRequest()
@@ -713,7 +714,7 @@ func NewDeleteLiveSnapshotRuleResponse() (response *DeleteLiveSnapshotRuleRespon
     return
 }
 
-// 删除截图规则
+// 删除截图规则。
 func (c *Client) DeleteLiveSnapshotRule(request *DeleteLiveSnapshotRuleRequest) (response *DeleteLiveSnapshotRuleResponse, err error) {
     if request == nil {
         request = NewDeleteLiveSnapshotRuleRequest()
@@ -813,7 +814,7 @@ func NewDeleteLiveWatermarkResponse() (response *DeleteLiveWatermarkResponse) {
     return
 }
 
-// 删除水印
+// 删除水印。
 func (c *Client) DeleteLiveWatermark(request *DeleteLiveWatermarkRequest) (response *DeleteLiveWatermarkResponse, err error) {
     if request == nil {
         request = NewDeleteLiveWatermarkRequest()
@@ -863,7 +864,7 @@ func NewDeletePullStreamConfigResponse() (response *DeletePullStreamConfigRespon
     return
 }
 
-// 删除直播拉流配置
+// 删除直播拉流配置。
 func (c *Client) DeletePullStreamConfig(request *DeletePullStreamConfigRequest) (response *DeletePullStreamConfigResponse, err error) {
     if request == nil {
         request = NewDeletePullStreamConfigRequest()
@@ -1014,7 +1015,7 @@ func NewDescribeLiveCallbackTemplateResponse() (response *DescribeLiveCallbackTe
     return
 }
 
-// 获取单个回调模板
+// 获取单个回调模板。
 func (c *Client) DescribeLiveCallbackTemplate(request *DescribeLiveCallbackTemplateRequest) (response *DescribeLiveCallbackTemplateResponse, err error) {
     if request == nil {
         request = NewDescribeLiveCallbackTemplateRequest()
@@ -1239,7 +1240,7 @@ func NewDescribeLiveForbidStreamListResponse() (response *DescribeLiveForbidStre
     return
 }
 
-// 获取禁推流列表
+// 获取禁推流列表。
 func (c *Client) DescribeLiveForbidStreamList(request *DescribeLiveForbidStreamListRequest) (response *DescribeLiveForbidStreamListResponse, err error) {
     if request == nil {
         request = NewDescribeLiveForbidStreamListRequest()
@@ -1364,7 +1365,7 @@ func NewDescribeLiveRecordTemplateResponse() (response *DescribeLiveRecordTempla
     return
 }
 
-// 获取单个录制模板
+// 获取单个录制模板。
 func (c *Client) DescribeLiveRecordTemplate(request *DescribeLiveRecordTemplateRequest) (response *DescribeLiveRecordTemplateResponse, err error) {
     if request == nil {
         request = NewDescribeLiveRecordTemplateRequest()
@@ -1389,7 +1390,7 @@ func NewDescribeLiveRecordTemplatesResponse() (response *DescribeLiveRecordTempl
     return
 }
 
-// 获取录制模板列表
+// 获取录制模板列表。
 func (c *Client) DescribeLiveRecordTemplates(request *DescribeLiveRecordTemplatesRequest) (response *DescribeLiveRecordTemplatesResponse, err error) {
     if request == nil {
         request = NewDescribeLiveRecordTemplatesRequest()
@@ -1439,7 +1440,7 @@ func NewDescribeLiveSnapshotTemplateResponse() (response *DescribeLiveSnapshotTe
     return
 }
 
-// 获取单个截图模板
+// 获取单个截图模板。
 func (c *Client) DescribeLiveSnapshotTemplate(request *DescribeLiveSnapshotTemplateRequest) (response *DescribeLiveSnapshotTemplateResponse, err error) {
     if request == nil {
         request = NewDescribeLiveSnapshotTemplateRequest()
@@ -1464,7 +1465,7 @@ func NewDescribeLiveSnapshotTemplatesResponse() (response *DescribeLiveSnapshotT
     return
 }
 
-// 获取截图模板列表
+// 获取截图模板列表。
 func (c *Client) DescribeLiveSnapshotTemplates(request *DescribeLiveSnapshotTemplatesRequest) (response *DescribeLiveSnapshotTemplatesResponse, err error) {
     if request == nil {
         request = NewDescribeLiveSnapshotTemplatesRequest()
@@ -1516,7 +1517,7 @@ func NewDescribeLiveStreamOnlineListResponse() (response *DescribeLiveStreamOnli
     return
 }
 
-// 返回正在直播中的流列表
+// 返回正在直播中的流列表。
 func (c *Client) DescribeLiveStreamOnlineList(request *DescribeLiveStreamOnlineListRequest) (response *DescribeLiveStreamOnlineListResponse, err error) {
     if request == nil {
         request = NewDescribeLiveStreamOnlineListRequest()
@@ -1717,7 +1718,7 @@ func NewDescribeLiveWatermarkResponse() (response *DescribeLiveWatermarkResponse
     return
 }
 
-// 获取单个水印信息
+// 获取单个水印信息。
 func (c *Client) DescribeLiveWatermark(request *DescribeLiveWatermarkRequest) (response *DescribeLiveWatermarkResponse, err error) {
     if request == nil {
         request = NewDescribeLiveWatermarkRequest()
@@ -1742,7 +1743,7 @@ func NewDescribeLiveWatermarkRulesResponse() (response *DescribeLiveWatermarkRul
     return
 }
 
-// 获取水印规则列表
+// 获取水印规则列表。
 func (c *Client) DescribeLiveWatermarkRules(request *DescribeLiveWatermarkRulesRequest) (response *DescribeLiveWatermarkRulesResponse, err error) {
     if request == nil {
         request = NewDescribeLiveWatermarkRulesRequest()
@@ -1767,7 +1768,7 @@ func NewDescribeLiveWatermarksResponse() (response *DescribeLiveWatermarksRespon
     return
 }
 
-// 查询水印列表
+// 查询水印列表。
 func (c *Client) DescribeLiveWatermarks(request *DescribeLiveWatermarksRequest) (response *DescribeLiveWatermarksResponse, err error) {
     if request == nil {
         request = NewDescribeLiveWatermarksRequest()
@@ -2344,7 +2345,7 @@ func NewModifyLiveRecordTemplateResponse() (response *ModifyLiveRecordTemplateRe
     return
 }
 
-// 修改录制模板配置
+// 修改录制模板配置。
 func (c *Client) ModifyLiveRecordTemplate(request *ModifyLiveRecordTemplateRequest) (response *ModifyLiveRecordTemplateResponse, err error) {
     if request == nil {
         request = NewModifyLiveRecordTemplateRequest()
@@ -2369,7 +2370,7 @@ func NewModifyLiveSnapshotTemplateResponse() (response *ModifyLiveSnapshotTempla
     return
 }
 
-// 修改截图模板配置
+// 修改截图模板配置。
 func (c *Client) ModifyLiveSnapshotTemplate(request *ModifyLiveSnapshotTemplateRequest) (response *ModifyLiveSnapshotTemplateResponse, err error) {
     if request == nil {
         request = NewModifyLiveSnapshotTemplateRequest()
@@ -2394,7 +2395,7 @@ func NewModifyLiveTranscodeTemplateResponse() (response *ModifyLiveTranscodeTemp
     return
 }
 
-// 修改转码模板配置
+// 修改转码模板配置。
 func (c *Client) ModifyLiveTranscodeTemplate(request *ModifyLiveTranscodeTemplateRequest) (response *ModifyLiveTranscodeTemplateResponse, err error) {
     if request == nil {
         request = NewModifyLiveTranscodeTemplateRequest()
@@ -2569,7 +2570,7 @@ func NewUpdateLiveWatermarkResponse() (response *UpdateLiveWatermarkResponse) {
     return
 }
 
-// 更新水印
+// 更新水印。
 func (c *Client) UpdateLiveWatermark(request *UpdateLiveWatermarkRequest) (response *UpdateLiveWatermarkResponse, err error) {
     if request == nil {
         request = NewUpdateLiveWatermarkRequest()

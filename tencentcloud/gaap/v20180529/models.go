@@ -148,8 +148,8 @@ type BindRealServer struct {
 	RealServerWeight *int64 `json:"RealServerWeight,omitempty" name:"RealServerWeight"`
 
 	// 源站健康检查状态，其中：
-	// 0，正常；
-	// 1，异常。
+	// 0表示正常；
+	// 1表示异常。
 	// 未开启健康检查状态时，该状态始终为正常。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RealServerStatus *int64 `json:"RealServerStatus,omitempty" name:"RealServerStatus"`
@@ -3247,11 +3247,11 @@ type HTTPListener struct {
 	Protocol *string `json:"Protocol,omitempty" name:"Protocol"`
 
 	// 监听器状态，其中：
-	// 0， 运行中；
-	// 1， 创建中；
-	// 2，销毁中；
-	// 3，源站调整中；
-	// 4，配置变更中。
+	// 0表示运行中；
+	// 1表示创建中；
+	// 2表示销毁中；
+	// 3表示源站调整中；
+	// 4表示配置变更中。
 	ListenerStatus *uint64 `json:"ListenerStatus,omitempty" name:"ListenerStatus"`
 }
 
@@ -3270,11 +3270,11 @@ type HTTPSListener struct {
 	Protocol *string `json:"Protocol,omitempty" name:"Protocol"`
 
 	// 监听器状态，其中：
-	// 0， 运行中；
-	// 1， 创建中；
-	// 2，销毁中；
-	// 3，源站调整中；
-	// 4，配置变更中。
+	// 0表示运行中；
+	// 1表示创建中；
+	// 2表示销毁中；
+	// 3表示源站调整中；
+	// 4表示配置变更中。
 	ListenerStatus *uint64 `json:"ListenerStatus,omitempty" name:"ListenerStatus"`
 
 	// 监听器服务器SSL证书ID
@@ -4223,10 +4223,10 @@ type ProxyGroupDetail struct {
 	ProxyNum *int64 `json:"ProxyNum,omitempty" name:"ProxyNum"`
 
 	// 通道组状态：
-	// 0 正常运行
-	// 1 创建中
-	// 4 销毁中
-	// 11 迁移中
+	// 0表示正常运行；
+	// 1表示创建中；
+	// 4表示销毁中；
+	// 11表示迁移中；
 	Status *int64 `json:"Status,omitempty" name:"Status"`
 
 	// 归属Uin
@@ -4280,10 +4280,10 @@ type ProxyGroupInfo struct {
 
 	// 通道组状态。
 	// 其中，
-	// 0，运行中；
-	// 1，创建中；
-	// 4，销毁中；
-	// 11，通道迁移中。
+	// 0表示运行中；
+	// 1表示创建中；
+	// 4表示销毁中；
+	// 11表示通道迁移中。
 	Status *string `json:"Status,omitempty" name:"Status"`
 
 	// 标签列表。
@@ -4324,17 +4324,17 @@ type ProxyInfo struct {
 	Concurrent *int64 `json:"Concurrent,omitempty" name:"Concurrent"`
 
 	// 通道状态。其中：
-	// RUNNING，运行中；
-	// CREATING，创建中；
-	// DESTROYING，销毁中；
-	// OPENING，开启中；
-	// CLOSING，关闭中；
-	// CLOSED，已关闭；
-	// ADJUSTING，配置变更中；
-	// ISOLATING，隔离中（欠费触发）；
-	// ISOLATED，已隔离（欠费触发）；
-	// CLONING，复制中；
-	// UNKNOWN，未知状态。
+	// RUNNING表示运行中；
+	// CREATING表示创建中；
+	// DESTROYING表示销毁中；
+	// OPENING表示开启中；
+	// CLOSING表示关闭中；
+	// CLOSED表示已关闭；
+	// ADJUSTING表示配置变更中；
+	// ISOLATING表示隔离中（欠费触发）；
+	// ISOLATED表示已隔离（欠费触发）；
+	// CLONING表示复制中；
+	// UNKNOWN表示未知状态。
 	Status *string `json:"Status,omitempty" name:"Status"`
 
 	// 接入域名。
@@ -4407,16 +4407,16 @@ type ProxyStatus struct {
 
 	// 通道状态。
 	// 其中：
-	// RUNNING，运行中；
-	// CREATING，创建中；
-	// DESTROYING，销毁中；
-	// OPENING，开启中；
-	// CLOSING，关闭中；
-	// CLOSED，已关闭；
-	// ADJUSTING，配置变更中；
-	// ISOLATING，隔离中；
-	// ISOLATED，已隔离；
-	// UNKNOWN，未知状态。
+	// RUNNING表示运行中；
+	// CREATING表示创建中；
+	// DESTROYING表示销毁中；
+	// OPENING表示开启中；
+	// CLOSING表示关闭中；
+	// CLOSED表示已关闭；
+	// ADJUSTING表示配置变更中；
+	// ISOLATING表示隔离中；
+	// ISOLATED表示已隔离；
+	// UNKNOWN表示未知状态。
 	Status *string `json:"Status,omitempty" name:"Status"`
 }
 
@@ -4455,7 +4455,7 @@ type RealServerStatus struct {
 	// 源站ID。
 	RealServerId *string `json:"RealServerId,omitempty" name:"RealServerId"`
 
-	// 0: 未被绑定 1：被规则或者监听器绑定。
+	// 0表示未被绑定 1表示被规则或者监听器绑定。
 	BindStatus *int64 `json:"BindStatus,omitempty" name:"BindStatus"`
 
 	// 绑定此源站的通道ID，没有绑定时为空字符串。
@@ -4547,10 +4547,10 @@ type RuleInfo struct {
 	// 转发源站策略
 	Scheduler *string `json:"Scheduler,omitempty" name:"Scheduler"`
 
-	// 是否开启健康检查标志，1开启，0关闭
+	// 是否开启健康检查标志，1表示开启，0表示关闭
 	HealthCheck *uint64 `json:"HealthCheck,omitempty" name:"HealthCheck"`
 
-	// 规则状态，0运行中，1创建中，2销毁中，3绑定解绑源站中，4配置更新中
+	// 规则状态，0表示运行中，1表示创建中，2表示销毁中，3表示绑定解绑源站中，4表示配置更新中
 	RuleStatus *uint64 `json:"RuleStatus,omitempty" name:"RuleStatus"`
 
 	// 健康检查相关参数
@@ -4559,7 +4559,7 @@ type RuleInfo struct {
 	// 已绑定的源站相关信息
 	RealServerSet []*BindRealServer `json:"RealServerSet,omitempty" name:"RealServerSet" list`
 
-	// 源站的服务状态，0：异常，1：正常。
+	// 源站的服务状态，0表示异常，1表示正常。
 	// 未开启健康检查时，该状态始终未正常。
 	// 只要有一个源站健康状态为异常时，该状态为异常，具体源站的状态请查看RealServerSet。
 	BindStatus *uint64 `json:"BindStatus,omitempty" name:"BindStatus"`
@@ -4720,17 +4720,17 @@ type TCPListener struct {
 	Protocol *string `json:"Protocol,omitempty" name:"Protocol"`
 
 	// 监听器状态，其中：
-	// 0， 运行中；
-	// 1， 创建中；
-	// 2，销毁中；
-	// 3，源站调整中；
-	// 4，配置变更中。
+	// 0表示运行中；
+	// 1表示创建中；
+	// 2表示销毁中；
+	// 3表示源站调整中；
+	// 4表示配置变更中。
 	ListenerStatus *uint64 `json:"ListenerStatus,omitempty" name:"ListenerStatus"`
 
 	// 监听器源站访问策略，其中：
-	// rr，轮询；
-	// wrr，加权轮询；
-	// lc，最小连接数。
+	// rr表示轮询；
+	// wrr表示加权轮询；
+	// lc表示最小连接数。
 	Scheduler *string `json:"Scheduler,omitempty" name:"Scheduler"`
 
 	// 源站健康检查响应超时时间，单位：秒
@@ -4740,13 +4740,13 @@ type TCPListener struct {
 	DelayLoop *uint64 `json:"DelayLoop,omitempty" name:"DelayLoop"`
 
 	// 监听器是否开启健康检查，其中：
-	// 0，关闭；
-	// 1，开启
+	// 0表示关闭；
+	// 1表示开启
 	HealthCheck *uint64 `json:"HealthCheck,omitempty" name:"HealthCheck"`
 
 	// 监听器绑定的源站状态， 其中：
-	// 0，异常；
-	// 1，正常。
+	// 0表示异常；
+	// 1表示正常。
 	BindStatus *uint64 `json:"BindStatus,omitempty" name:"BindStatus"`
 
 	// 监听器绑定的源站信息
@@ -4800,17 +4800,17 @@ type UDPListener struct {
 	Protocol *string `json:"Protocol,omitempty" name:"Protocol"`
 
 	// 监听器状态，其中：
-	// 0， 运行中；
-	// 1， 创建中；
-	// 2，销毁中；
-	// 3，源站调整中；
-	// 4，配置变更中。
+	// 0表示运行中；
+	// 1表示创建中；
+	// 2表示销毁中；
+	// 3表示源站调整中；
+	// 4表示配置变更中。
 	ListenerStatus *uint64 `json:"ListenerStatus,omitempty" name:"ListenerStatus"`
 
 	// 监听器源站访问策略
 	Scheduler *string `json:"Scheduler,omitempty" name:"Scheduler"`
 
-	// 监听器绑定源站状态， 0正常，1IP异常，2域名解析异常
+	// 监听器绑定源站状态， 0表示正常，1表示IP异常，2表示域名解析异常
 	BindStatus *uint64 `json:"BindStatus,omitempty" name:"BindStatus"`
 
 	// 监听器绑定的源站信息

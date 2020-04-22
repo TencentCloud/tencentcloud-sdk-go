@@ -774,6 +774,31 @@ func (c *Client) DescribeTaskResult(request *DescribeTaskResultRequest) (respons
     return
 }
 
+func NewDescribeVpcsRequest() (request *DescribeVpcsRequest) {
+    request = &DescribeVpcsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ecm", APIVersion, "DescribeVpcs")
+    return
+}
+
+func NewDescribeVpcsResponse() (response *DescribeVpcsResponse) {
+    response = &DescribeVpcsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询私有网络列表
+func (c *Client) DescribeVpcs(request *DescribeVpcsRequest) (response *DescribeVpcsResponse, err error) {
+    if request == nil {
+        request = NewDescribeVpcsRequest()
+    }
+    response = NewDescribeVpcsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDetachNetworkInterfaceRequest() (request *DetachNetworkInterfaceRequest) {
     request = &DetachNetworkInterfaceRequest{
         BaseRequest: &tchttp.BaseRequest{},

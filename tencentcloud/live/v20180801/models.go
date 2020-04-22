@@ -136,16 +136,16 @@ type AddLiveWatermarkRequest struct {
 	// 水印名称。
 	WatermarkName *string `json:"WatermarkName,omitempty" name:"WatermarkName"`
 
-	// 显示位置, X轴偏移。
+	// 显示位置，X轴偏移，默认 0。
 	XPosition *int64 `json:"XPosition,omitempty" name:"XPosition"`
 
-	// 显示位置,Y轴偏移。
+	// 显示位置，Y轴偏移，默认 0。
 	YPosition *int64 `json:"YPosition,omitempty" name:"YPosition"`
 
-	// 水印宽度，占直播原始画面宽度百分比，建议高宽只设置一项，另外一项会自适应缩放，避免变形。
+	// 水印宽度，占直播原始画面宽度百分比，建议高宽只设置一项，另外一项会自适应缩放，避免变形。默认原始宽度。
 	Width *int64 `json:"Width,omitempty" name:"Width"`
 
-	// 水印高度，占直播原始画面宽度百分比，建议高宽只设置一项，另外一项会自适应缩放，避免变形。
+	// 水印高度，占直播原始画面宽度百分比，建议高宽只设置一项，另外一项会自适应缩放，避免变形。默认原始高度。
 	Height *int64 `json:"Height,omitempty" name:"Height"`
 }
 
@@ -181,16 +181,16 @@ func (r *AddLiveWatermarkResponse) FromJsonString(s string) error {
 
 type BillDataInfo struct {
 
-	// 时间点，格式为yyyy-mm-dd HH:MM:SS。
+	// 时间点，格式: yyyy-mm-dd HH:MM:SS。
 	Time *string `json:"Time,omitempty" name:"Time"`
 
-	// 带宽，单位是Mbps。
+	// 带宽，单位是 Mbps。
 	Bandwidth *float64 `json:"Bandwidth,omitempty" name:"Bandwidth"`
 
-	// 流量，单位是MB。
+	// 流量，单位是 MB。
 	Flux *float64 `json:"Flux,omitempty" name:"Flux"`
 
-	// 峰值时间点，格式为yyyy-mm-dd HH:MM:SS，原始数据为5分钟粒度，如果查询小时和天粒度数据，则返回对应粒度内的带宽峰值时间点。
+	// 峰值时间点，格式: yyyy-mm-dd HH:MM:SS，原始数据为5分钟粒度，如果查询小时和天粒度数据，则返回对应粒度内的带宽峰值时间点。
 	PeakTime *string `json:"PeakTime,omitempty" name:"PeakTime"`
 }
 
@@ -242,7 +242,7 @@ type CallBackRuleInfo struct {
 	// 规则更新时间。
 	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
 
-	// 模板Id。
+	// 模板 ID。
 	TemplateId *int64 `json:"TemplateId,omitempty" name:"TemplateId"`
 
 	// 推流域名。
@@ -254,7 +254,7 @@ type CallBackRuleInfo struct {
 
 type CallBackTemplateInfo struct {
 
-	// 模板Id。
+	// 模板 ID。
 	TemplateId *int64 `json:"TemplateId,omitempty" name:"TemplateId"`
 
 	// 模板名称。
@@ -263,25 +263,25 @@ type CallBackTemplateInfo struct {
 	// 描述信息。
 	Description *string `json:"Description,omitempty" name:"Description"`
 
-	// 开播回调URL。
+	// 开播回调 URL。
 	StreamBeginNotifyUrl *string `json:"StreamBeginNotifyUrl,omitempty" name:"StreamBeginNotifyUrl"`
 
-	// 断流回调URL。
+	// 断流回调 URL。
 	StreamEndNotifyUrl *string `json:"StreamEndNotifyUrl,omitempty" name:"StreamEndNotifyUrl"`
 
-	// 混流回调URL。
+	// 混流回调 URL。
 	StreamMixNotifyUrl *string `json:"StreamMixNotifyUrl,omitempty" name:"StreamMixNotifyUrl"`
 
-	// 录制回调URL。
+	// 录制回调 URL。
 	RecordNotifyUrl *string `json:"RecordNotifyUrl,omitempty" name:"RecordNotifyUrl"`
 
-	// 截图回调URL。
+	// 截图回调 URL。
 	SnapshotNotifyUrl *string `json:"SnapshotNotifyUrl,omitempty" name:"SnapshotNotifyUrl"`
 
-	// 鉴黄回调URL。
+	// 鉴黄回调 URL。
 	PornCensorshipNotifyUrl *string `json:"PornCensorshipNotifyUrl,omitempty" name:"PornCensorshipNotifyUrl"`
 
-	// 回调的鉴权key
+	// 回调的鉴权 key。
 	CallbackKey *string `json:"CallbackKey,omitempty" name:"CallbackKey"`
 }
 
@@ -321,13 +321,13 @@ func (r *CancelCommonMixStreamResponse) FromJsonString(s string) error {
 
 type CdnPlayStatData struct {
 
-	// 时间点，格式为yyyy-mm-dd HH:MM:SS。
+	// 时间点，格式: yyyy-mm-dd HH:MM:SS。
 	Time *string `json:"Time,omitempty" name:"Time"`
 
-	// 带宽，（单位Mbps）。
+	// 带宽，单位: Mbps。
 	Bandwidth *float64 `json:"Bandwidth,omitempty" name:"Bandwidth"`
 
-	// 流量，（单位MB）。
+	// 流量，单位: MB。
 	Flux *float64 `json:"Flux,omitempty" name:"Flux"`
 
 	// 新增请求数。
@@ -339,7 +339,7 @@ type CdnPlayStatData struct {
 
 type CertInfo struct {
 
-	// 证书Id。
+	// 证书 ID。
 	CertId *int64 `json:"CertId,omitempty" name:"CertId"`
 
 	// 证书名称。
@@ -348,18 +348,18 @@ type CertInfo struct {
 	// 描述信息。
 	Description *string `json:"Description,omitempty" name:"Description"`
 
-	// 创建时间，UTC格式。
+	// 创建时间，UTC 格式。
 	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
 
 	// 证书内容。
 	HttpsCrt *string `json:"HttpsCrt,omitempty" name:"HttpsCrt"`
 
-	// 证书类型。
-	// 0：腾讯云托管证书
+	// 证书类型:
+	// 0：腾讯云托管证书。
 	// 1：用户添加证书。
 	CertType *int64 `json:"CertType,omitempty" name:"CertType"`
 
-	// 证书过期时间，UTC格式。
+	// 证书过期时间，UTC 格式。
 	CertExpireTime *string `json:"CertExpireTime,omitempty" name:"CertExpireTime"`
 
 	// 使用此证书的域名列表。
@@ -368,7 +368,7 @@ type CertInfo struct {
 
 type ClientIpPlaySumInfo struct {
 
-	// 客户端ip，点分型。
+	// 客户端 IP，点分型。
 	ClientIp *string `json:"ClientIp,omitempty" name:"ClientIp"`
 
 	// 客户端所在省份。
@@ -626,35 +626,38 @@ func (r *CreateLiveCallbackRuleResponse) FromJsonString(s string) error {
 type CreateLiveCallbackTemplateRequest struct {
 	*tchttp.BaseRequest
 
-	// 模板名称，非空的字符串。
+	// 模板名称。
 	// 长度上限：255字节。
+	// 仅支持中文、英文、数字、_、-。
 	TemplateName *string `json:"TemplateName,omitempty" name:"TemplateName"`
 
 	// 描述信息。
 	// 长度上限：1024字节。
+	// 仅支持中文、英文、数字、_、-。
 	Description *string `json:"Description,omitempty" name:"Description"`
 
-	// 开播回调URL，
+	// 开播回调 URL，
 	// 相关协议文档：[事件消息通知](/document/product/267/32744)。
 	StreamBeginNotifyUrl *string `json:"StreamBeginNotifyUrl,omitempty" name:"StreamBeginNotifyUrl"`
 
-	// 断流回调URL，
+	// 断流回调 URL，
 	// 相关协议文档：[事件消息通知](/document/product/267/32744)。
 	StreamEndNotifyUrl *string `json:"StreamEndNotifyUrl,omitempty" name:"StreamEndNotifyUrl"`
 
-	// 录制回调URL，
+	// 录制回调 URL，
 	// 相关协议文档：[事件消息通知](/document/product/267/32744)。
 	RecordNotifyUrl *string `json:"RecordNotifyUrl,omitempty" name:"RecordNotifyUrl"`
 
-	// 截图回调URL，
+	// 截图回调 URL，
 	// 相关协议文档：[事件消息通知](/document/product/267/32744)。
 	SnapshotNotifyUrl *string `json:"SnapshotNotifyUrl,omitempty" name:"SnapshotNotifyUrl"`
 
-	// 鉴黄回调URL，
+	// 鉴黄回调 URL，
 	// 相关协议文档：[事件消息通知](/document/product/267/32741)。
 	PornCensorshipNotifyUrl *string `json:"PornCensorshipNotifyUrl,omitempty" name:"PornCensorshipNotifyUrl"`
 
-	// 回调key，回调URL公用，鉴权回调说明详见回调格式文档
+	// 回调 Key，回调 URL 公用，回调签名详见事件消息通知文档。
+	// [事件消息通知](/document/product/267/32744)。
 	CallbackKey *string `json:"CallbackKey,omitempty" name:"CallbackKey"`
 }
 
@@ -829,7 +832,7 @@ type CreateLiveRecordRuleRequest struct {
 	// 推流域名。
 	DomainName *string `json:"DomainName,omitempty" name:"DomainName"`
 
-	// 模板Id。
+	// 模板 ID。
 	TemplateId *int64 `json:"TemplateId,omitempty" name:"TemplateId"`
 
 	// 推流路径，与推流和播放地址中的AppName保持一致，默认为 live。
@@ -870,7 +873,7 @@ func (r *CreateLiveRecordRuleResponse) FromJsonString(s string) error {
 type CreateLiveRecordTemplateRequest struct {
 	*tchttp.BaseRequest
 
-	// 模板名。非空的字符串
+	// 模板名。仅支持中文、英文、数字、_、-。
 	TemplateName *string `json:"TemplateName,omitempty" name:"TemplateName"`
 
 	// 描述信息。
@@ -888,6 +891,7 @@ type CreateLiveRecordTemplateRequest struct {
 	// Aac录制参数，开启Aac录制时设置。
 	AacParam *RecordParam `json:"AacParam,omitempty" name:"AacParam"`
 
+	// 直播类型，默认 0。
 	// 0：普通直播，
 	// 1：慢直播。
 	IsDelayLive *int64 `json:"IsDelayLive,omitempty" name:"IsDelayLive"`
@@ -935,10 +939,10 @@ type CreateLiveSnapshotRuleRequest struct {
 	// 推流域名。
 	DomainName *string `json:"DomainName,omitempty" name:"DomainName"`
 
-	// 模板Id。
+	// 模板 ID。
 	TemplateId *int64 `json:"TemplateId,omitempty" name:"TemplateId"`
 
-	// 推流路径，与推流和播放地址中的AppName保持一致，默认为 live。
+	// 推流路径，与推流和播放地址中的 AppName 保持一致，默认为 live。
 	AppName *string `json:"AppName,omitempty" name:"AppName"`
 
 	// 流名称。
@@ -976,11 +980,12 @@ func (r *CreateLiveSnapshotRuleResponse) FromJsonString(s string) error {
 type CreateLiveSnapshotTemplateRequest struct {
 	*tchttp.BaseRequest
 
-	// 模板名称，非空的字符串。
+	// 模板名称。
 	// 长度上限：255字节。
+	// 仅支持中文、英文、数字、_、-。
 	TemplateName *string `json:"TemplateName,omitempty" name:"TemplateName"`
 
-	// Cos AppId。
+	// Cos 应用 ID。
 	CosAppId *int64 `json:"CosAppId,omitempty" name:"CosAppId"`
 
 	// Cos Bucket名称。
@@ -991,6 +996,7 @@ type CreateLiveSnapshotTemplateRequest struct {
 
 	// 描述信息。
 	// 长度上限：1024字节。
+	// 仅支持中文、英文、数字、_、-。
 	Description *string `json:"Description,omitempty" name:"Description"`
 
 	// 截图间隔，单位s，默认10s。
@@ -1315,7 +1321,8 @@ type DelayInfo struct {
 	// 推流域名。
 	DomainName *string `json:"DomainName,omitempty" name:"DomainName"`
 
-	// 推流路径，与推流和播放地址中的AppName保持一致，默认为 live。
+	// 推流路径，与推流和播放地址中的 
+	//  AppName 保持一致，默认为 live。
 	AppName *string `json:"AppName,omitempty" name:"AppName"`
 
 	// 流名称。
@@ -1324,18 +1331,18 @@ type DelayInfo struct {
 	// 延播时间，单位：秒。
 	DelayInterval *uint64 `json:"DelayInterval,omitempty" name:"DelayInterval"`
 
-	// 创建时间，UTC时间。
+	// 创建时间，UTC 时间。
 	// 注意：UTC时间和北京时间相差8小时。
 	// 例如：2019-06-18T12:00:00Z（为北京时间 2019 年 6 月 18 日 20 点 0 分 0 秒）。
 	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
 
-	// 过期时间，UTC时间。
+	// 过期时间，UTC 时间。
 	// 注意：UTC时间和北京时间相差8小时。
 	// 例如：2019-06-18T12:00:00Z（为北京时间 2019 年 6 月 18 日 20 点 0 分 0 秒）。
 	ExpireTime *string `json:"ExpireTime,omitempty" name:"ExpireTime"`
 
-	// 当前状态，
-	// -1：已过期，
+	// 当前状态:
+	// -1：已过期。
 	// 1： 生效中。
 	Status *int64 `json:"Status,omitempty" name:"Status"`
 }
@@ -1346,7 +1353,7 @@ type DeleteLiveCallbackRuleRequest struct {
 	// 推流域名。
 	DomainName *string `json:"DomainName,omitempty" name:"DomainName"`
 
-	// 推流路径，与推流和播放地址中的AppName保持一致，默认为live。
+	// 推流路径，与推流和播放地址中的 AppName 保持一致，默认为 live。
 	AppName *string `json:"AppName,omitempty" name:"AppName"`
 }
 
@@ -1380,7 +1387,9 @@ func (r *DeleteLiveCallbackRuleResponse) FromJsonString(s string) error {
 type DeleteLiveCallbackTemplateRequest struct {
 	*tchttp.BaseRequest
 
-	// 模板Id。
+	// 模板 ID。
+	// 1. 在创建回调模板接口 [CreateLiveCallbackTemplate](/document/product/267/32637) 调用的返回值中获取模板 ID。
+	// 2. 可以从接口 [DescribeLiveCallbackTemplates](/document/product/267/32632) 查询已经创建的过的模板列表。
 	TemplateId *int64 `json:"TemplateId,omitempty" name:"TemplateId"`
 }
 
@@ -1489,6 +1498,7 @@ type DeleteLiveRecordRequest struct {
 	StreamName *string `json:"StreamName,omitempty" name:"StreamName"`
 
 	// 任务ID，全局唯一标识录制任务。
+	// 从接口 [CreateLiveRecord](/document/product/267/30148) 的返回值中获取TaskId。
 	TaskId *int64 `json:"TaskId,omitempty" name:"TaskId"`
 }
 
@@ -1565,7 +1575,7 @@ func (r *DeleteLiveRecordRuleResponse) FromJsonString(s string) error {
 type DeleteLiveRecordTemplateRequest struct {
 	*tchttp.BaseRequest
 
-	// 模板ID。
+	// 模板 ID。
 	TemplateId *int64 `json:"TemplateId,omitempty" name:"TemplateId"`
 }
 
@@ -1602,7 +1612,7 @@ type DeleteLiveSnapshotRuleRequest struct {
 	// 推流域名。
 	DomainName *string `json:"DomainName,omitempty" name:"DomainName"`
 
-	// 推流路径，与推流和播放地址中的AppName保持一致，默认为 live。
+	// 推流路径，与推流和播放地址中的 AppName 保持一致，默认为 live。
 	AppName *string `json:"AppName,omitempty" name:"AppName"`
 
 	// 流名称。
@@ -1639,7 +1649,9 @@ func (r *DeleteLiveSnapshotRuleResponse) FromJsonString(s string) error {
 type DeleteLiveSnapshotTemplateRequest struct {
 	*tchttp.BaseRequest
 
-	// 模板Id。
+	// 模板 ID。
+	// 1. 在创建截图模板接口 [CreateLiveSnapshotTemplate](/document/product/267/32624) 调用的返回值中获取。
+	// 2. 可以从接口 [DescribeLiveSnapshotTemplates](/document/product/267/32619) 中查询已创建的截图模板列表。
 	TemplateId *int64 `json:"TemplateId,omitempty" name:"TemplateId"`
 }
 
@@ -1754,7 +1766,8 @@ func (r *DeleteLiveTranscodeTemplateResponse) FromJsonString(s string) error {
 type DeleteLiveWatermarkRequest struct {
 	*tchttp.BaseRequest
 
-	// 水印ID。
+	// 水印 ID。
+	// 在添加水印接口 [AddLiveWatermark](/document/product/267/30154) 调用返回值中获取水印 ID。
 	WatermarkId *int64 `json:"WatermarkId,omitempty" name:"WatermarkId"`
 }
 
@@ -1791,7 +1804,7 @@ type DeleteLiveWatermarkRuleRequest struct {
 	// 推流域名。
 	DomainName *string `json:"DomainName,omitempty" name:"DomainName"`
 
-	// 推流路径。
+	// 推流路径。与推流和播放地址中的 AppName 保持一致，默认为live。
 	AppName *string `json:"AppName,omitempty" name:"AppName"`
 
 	// 流名称。
@@ -1828,7 +1841,9 @@ func (r *DeleteLiveWatermarkRuleResponse) FromJsonString(s string) error {
 type DeletePullStreamConfigRequest struct {
 	*tchttp.BaseRequest
 
-	// 配置id。
+	// 配置 ID。
+	// 1. 在添加拉流配置接口 [CreatePullStreamConfig](/document/api/267/30159) 调用返回值中获取配置 ID。
+	// 2. 可以从接口 [DescribePullStreamConfigs](/document/api/267/30158) 中查询已创建过的拉流配置列表。
 	ConfigId *string `json:"ConfigId,omitempty" name:"ConfigId"`
 }
 
@@ -2123,7 +2138,9 @@ func (r *DescribeLiveCallbackRulesResponse) FromJsonString(s string) error {
 type DescribeLiveCallbackTemplateRequest struct {
 	*tchttp.BaseRequest
 
-	// 模板Id。
+	// 模板 ID。
+	// 1. 在创建回调模板接口 [CreateLiveCallbackTemplate](/document/product/267/32637) 调用的返回值中获取模板 ID。
+	// 2. 可以从接口 [DescribeLiveCallbackTemplates](/document/product/267/32632) 查询已经创建的过的模板列表。
 	TemplateId *int64 `json:"TemplateId,omitempty" name:"TemplateId"`
 }
 
@@ -2682,7 +2699,7 @@ func (r *DescribeLiveRecordRulesResponse) FromJsonString(s string) error {
 type DescribeLiveRecordTemplateRequest struct {
 	*tchttp.BaseRequest
 
-	// 模板Id。
+	// 模板 ID。
 	TemplateId *int64 `json:"TemplateId,omitempty" name:"TemplateId"`
 }
 
@@ -2719,10 +2736,9 @@ func (r *DescribeLiveRecordTemplateResponse) FromJsonString(s string) error {
 type DescribeLiveRecordTemplatesRequest struct {
 	*tchttp.BaseRequest
 
-	// 是否属于慢直播模板。默认：0。
-	// 示例：
-	// 0 - 标准直播。
-	// 1 - 慢直播。
+	// 是否属于慢直播模板，默认：0。
+	// 0： 标准直播。
+	// 1：慢直播。
 	IsDelayLive *int64 `json:"IsDelayLive,omitempty" name:"IsDelayLive"`
 }
 
@@ -2793,7 +2809,8 @@ func (r *DescribeLiveSnapshotRulesResponse) FromJsonString(s string) error {
 type DescribeLiveSnapshotTemplateRequest struct {
 	*tchttp.BaseRequest
 
-	// 模板Id。
+	// 模板 ID。
+	// 调用 [CreateLiveSnapshotTemplate](/document/product/267/32624) 时返回的模板 ID。
 	TemplateId *int64 `json:"TemplateId,omitempty" name:"TemplateId"`
 }
 
@@ -2958,10 +2975,10 @@ func (r *DescribeLiveStreamEventListResponse) FromJsonString(s string) error {
 type DescribeLiveStreamOnlineListRequest struct {
 	*tchttp.BaseRequest
 
-	// 推流域名。多域名用户需要填写DomainName。
+	// 推流域名。多域名用户需要填写 DomainName。
 	DomainName *string `json:"DomainName,omitempty" name:"DomainName"`
 
-	// 推流路径，与推流和播放地址中的AppName保持一致，默认为 live。多路径用户需要填写AppName。
+	// 推流路径，与推流和播放地址中的 AppName 保持一致，默认为 live。多路径用户需要填写 AppName。
 	AppName *string `json:"AppName,omitempty" name:"AppName"`
 
 	// 取得第几页，默认1。
@@ -3035,7 +3052,7 @@ type DescribeLiveStreamPublishedListRequest struct {
 	// 最长支持查询60天内数据。
 	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
 
-	// 推流路径，与推流和播放地址中的AppName保持一致，默认为 live。不支持模糊匹配。
+	// 推流路径，与推流和播放地址中的 AppName 保持一致，默认为 live。不支持模糊匹配。
 	AppName *string `json:"AppName,omitempty" name:"AppName"`
 
 	// 取得第几页。
@@ -3385,7 +3402,7 @@ func (r *DescribeLiveTranscodeTemplatesResponse) FromJsonString(s string) error 
 type DescribeLiveWatermarkRequest struct {
 	*tchttp.BaseRequest
 
-	// 水印ID。
+	// 水印 ID。
 	WatermarkId *uint64 `json:"WatermarkId,omitempty" name:"WatermarkId"`
 }
 
@@ -3847,7 +3864,7 @@ func (r *DescribeProvinceIspPlayInfoListResponse) FromJsonString(s string) error
 type DescribePullStreamConfigsRequest struct {
 	*tchttp.BaseRequest
 
-	// 配置id。
+	// 配置 ID。
 	ConfigId *string `json:"ConfigId,omitempty" name:"ConfigId"`
 }
 
@@ -4281,13 +4298,15 @@ type DomainCertInfo struct {
 
 type DomainDetailInfo struct {
 
-	// 国内还是国外，可选值包括Mainland和Oversea，如果为“Mainland”，表示国内数据；如果为“Oversea”，表示国外数据。
+	// 国内还是国外:
+	// Mainland: 表示国内数据。
+	// Oversea: 表示国外数据。
 	MainlandOrOversea *string `json:"MainlandOrOversea,omitempty" name:"MainlandOrOversea"`
 
-	// 带宽，单位是Mbps。
+	// 带宽，单位: Mbps。
 	Bandwidth *float64 `json:"Bandwidth,omitempty" name:"Bandwidth"`
 
-	// 流量，单位是MB。
+	// 流量，单位: MB。
 	Flux *float64 `json:"Flux,omitempty" name:"Flux"`
 
 	// 人数。
@@ -4299,43 +4318,52 @@ type DomainDetailInfo struct {
 
 type DomainInfo struct {
 
-	// 直播域名
+	// 直播域名。
 	Name *string `json:"Name,omitempty" name:"Name"`
 
-	// 域名类型。0-推流，1-播放
+	// 域名类型:
+	// 0: 推流。
+	// 1: 播放。
 	Type *uint64 `json:"Type,omitempty" name:"Type"`
 
-	// 域名状态。0-停用，1-启用
+	// 域名状态:
+	// 0: 停用。
+	// 1: 启用。
 	Status *uint64 `json:"Status,omitempty" name:"Status"`
 
-	// 添加时间
+	// 添加时间。
 	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
 
-	// 是否有CName到固定规则域名。0-否，1-是
+	// 是否有 CName 到固定规则域名:
+	// 0: 否。
+	// 1: 是。
 	BCName *uint64 `json:"BCName,omitempty" name:"BCName"`
 
-	// cname对应的域名
+	// cname 对应的域名。
 	TargetDomain *string `json:"TargetDomain,omitempty" name:"TargetDomain"`
 
-	// 播放区域，只在Type=1时该参数有意义。
-	// 1-国内，2-全球，3-海外。
+	// 播放区域，只在 Type=1 时该参数有意义。
+	// 1: 国内。
+	// 2: 全球。
+	// 3: 海外。
 	PlayType *int64 `json:"PlayType,omitempty" name:"PlayType"`
 
-	// 0：普通直播，
-	// 1：慢直播。
+	// 是否慢直播:
+	// 0: 普通直播。
+	// 1: 慢直播。
 	IsDelayLive *int64 `json:"IsDelayLive,omitempty" name:"IsDelayLive"`
 
-	// 当前客户使用的cname信息
+	// 当前客户使用的 cname 信息。
 	CurrentCName *string `json:"CurrentCName,omitempty" name:"CurrentCName"`
 
-	// 已无效，可忽略。
+	// 失效参数，可忽略。
 	RentTag *int64 `json:"RentTag,omitempty" name:"RentTag"`
 
-	// 已无效，可忽略。
+	// 失效参数，可忽略。
 	RentExpireTime *string `json:"RentExpireTime,omitempty" name:"RentExpireTime"`
 
-	// 0：标准直播，
-	// 1：小程序直播。
+	// 0: 标准直播。
+	// 1: 小程序直播。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsMiniProgramLive *int64 `json:"IsMiniProgramLive,omitempty" name:"IsMiniProgramLive"`
 }
@@ -4581,21 +4609,21 @@ type HttpStatusInfo struct {
 
 type LivePackageInfo struct {
 
-	// 包ID。
+	// 包 ID。
 	Id *string `json:"Id,omitempty" name:"Id"`
 
 	// 总量。
-	// 注意：当为流量包时单位为字节；
+	// 注意：当为流量包时单位为字节。
 	// 当为转码包时单位为分钟。
 	Total *int64 `json:"Total,omitempty" name:"Total"`
 
 	// 使用量。
-	// 注意：当为流量包时单位为字节；
+	// 注意：当为流量包时单位为字节。
 	// 当为转码包时单位为分钟。
 	Used *int64 `json:"Used,omitempty" name:"Used"`
 
 	// 剩余量。
-	// 注意：当为流量包时单位为字节；
+	// 注意：当为流量包时单位为字节。
 	// 当为转码包时单位为分钟。
 	Left *int64 `json:"Left,omitempty" name:"Left"`
 
@@ -4605,16 +4633,16 @@ type LivePackageInfo struct {
 	// 过期时间。
 	ExpireTime *string `json:"ExpireTime,omitempty" name:"ExpireTime"`
 
-	// 包类型，可选值：
-	// 0：流量包；
-	// 1：普通转码包；
-	// 2：极速高清包。
+	// 包类型，可选值:
+	// 0: 流量包。
+	// 1: 普通转码包。
+	// 2: 极速高清包。
 	Type *int64 `json:"Type,omitempty" name:"Type"`
 
-	// 包状态，可选值：
-	// 0：未使用；
-	// 1：使用中；
-	// 2：已过期。
+	// 包状态，可选值:
+	// 0: 未使用。
+	// 1: 使用中。
+	// 2: 已过期。
 	Status *int64 `json:"Status,omitempty" name:"Status"`
 }
 
@@ -4623,20 +4651,20 @@ type LogInfo struct {
 	// 日志名称。
 	LogName *string `json:"LogName,omitempty" name:"LogName"`
 
-	// 日志Url。
+	// 日志 URL。
 	LogUrl *string `json:"LogUrl,omitempty" name:"LogUrl"`
 
-	// 日志生成时间
+	// 日志生成时间。
 	LogTime *string `json:"LogTime,omitempty" name:"LogTime"`
 
-	// 文件大小
+	// 文件大小。
 	FileSize *int64 `json:"FileSize,omitempty" name:"FileSize"`
 }
 
 type ModifyLiveCallbackTemplateRequest struct {
 	*tchttp.BaseRequest
 
-	// 模板Id。
+	// 模板 ID。
 	TemplateId *int64 `json:"TemplateId,omitempty" name:"TemplateId"`
 
 	// 模板名称。
@@ -4645,22 +4673,23 @@ type ModifyLiveCallbackTemplateRequest struct {
 	// 描述信息。
 	Description *string `json:"Description,omitempty" name:"Description"`
 
-	// 开播回调URL。
+	// 开播回调 URL。
 	StreamBeginNotifyUrl *string `json:"StreamBeginNotifyUrl,omitempty" name:"StreamBeginNotifyUrl"`
 
-	// 断流回调URL。
+	// 断流回调 URL。
 	StreamEndNotifyUrl *string `json:"StreamEndNotifyUrl,omitempty" name:"StreamEndNotifyUrl"`
 
-	// 录制回调URL。
+	// 录制回调 URL。
 	RecordNotifyUrl *string `json:"RecordNotifyUrl,omitempty" name:"RecordNotifyUrl"`
 
-	// 截图回调URL。
+	// 截图回调 URL。
 	SnapshotNotifyUrl *string `json:"SnapshotNotifyUrl,omitempty" name:"SnapshotNotifyUrl"`
 
-	// 鉴黄回调URL。
+	// 鉴黄回调 URL。
 	PornCensorshipNotifyUrl *string `json:"PornCensorshipNotifyUrl,omitempty" name:"PornCensorshipNotifyUrl"`
 
-	// 回调key，回调URL公用，鉴权回调说明详见回调格式文档。
+	// 回调 Key，回调 URL 公用，回调签名详见事件消息通知文档。
+	// [事件消息通知](/document/product/267/32744)。
 	CallbackKey *string `json:"CallbackKey,omitempty" name:"CallbackKey"`
 }
 
@@ -4912,7 +4941,7 @@ func (r *ModifyLivePushAuthKeyResponse) FromJsonString(s string) error {
 type ModifyLiveRecordTemplateRequest struct {
 	*tchttp.BaseRequest
 
-	// 模板Id。
+	// 模板 ID。
 	TemplateId *int64 `json:"TemplateId,omitempty" name:"TemplateId"`
 
 	// 模板名称。
@@ -4921,22 +4950,22 @@ type ModifyLiveRecordTemplateRequest struct {
 	// 描述信息。
 	Description *string `json:"Description,omitempty" name:"Description"`
 
-	// Flv录制参数，开启Flv录制时设置。
+	// FLV 录制参数，开启 FLV 录制时设置。
 	FlvParam *RecordParam `json:"FlvParam,omitempty" name:"FlvParam"`
 
-	// Hls录制参数，开启hls录制时设置。
+	// HLS 录制参数，开启 HLS 录制时设置。
 	HlsParam *RecordParam `json:"HlsParam,omitempty" name:"HlsParam"`
 
-	// Mp4录制参数，开启Mp4录制时设置。
+	// MP4 录制参数，开启 MP4 录制时设置。
 	Mp4Param *RecordParam `json:"Mp4Param,omitempty" name:"Mp4Param"`
 
-	// Aac录制参数，开启Aac录制时设置。
+	// AAC 录制参数，开启 AAC 录制时设置。
 	AacParam *RecordParam `json:"AacParam,omitempty" name:"AacParam"`
 
-	// HLS录制定制参数
+	// HLS 录制定制参数。
 	HlsSpecialParam *HlsSpecialParam `json:"HlsSpecialParam,omitempty" name:"HlsSpecialParam"`
 
-	// Mp3录制参数，开启Mp3录制时设置。
+	// MP3 录制参数，开启 MP3 录制时设置。
 	Mp3Param *RecordParam `json:"Mp3Param,omitempty" name:"Mp3Param"`
 }
 
@@ -4970,7 +4999,7 @@ func (r *ModifyLiveRecordTemplateResponse) FromJsonString(s string) error {
 type ModifyLiveSnapshotTemplateRequest struct {
 	*tchttp.BaseRequest
 
-	// 模板Id。
+	// 模板 ID。
 	TemplateId *int64 `json:"TemplateId,omitempty" name:"TemplateId"`
 
 	// 模板名称。
@@ -4991,10 +5020,12 @@ type ModifyLiveSnapshotTemplateRequest struct {
 	// 截图高度。默认：0（原始高）。
 	Height *int64 `json:"Height,omitempty" name:"Height"`
 
-	// 是否开启鉴黄，0：不开启，1：开启。
+	// 是否开启鉴黄，默认 0 。
+	// 0：不开启。
+	// 1：开启。
 	PornFlag *int64 `json:"PornFlag,omitempty" name:"PornFlag"`
 
-	// Cos AppId。
+	// Cos 应用 ID。
 	CosAppId *int64 `json:"CosAppId,omitempty" name:"CosAppId"`
 
 	// Cos Bucket名称。
@@ -5034,7 +5065,7 @@ func (r *ModifyLiveSnapshotTemplateResponse) FromJsonString(s string) error {
 type ModifyLiveTranscodeTemplateRequest struct {
 	*tchttp.BaseRequest
 
-	// 模板Id。
+	// 模板 Id。
 	TemplateId *int64 `json:"TemplateId,omitempty" name:"TemplateId"`
 
 	// 视频编码：
@@ -5045,16 +5076,18 @@ type ModifyLiveTranscodeTemplateRequest struct {
 	// aac/mp3。
 	Acodec *string `json:"Acodec,omitempty" name:"Acodec"`
 
-	// 音频码率，默认0。0-500
+	// 音频码率，默认0。
+	// 范围：0-500。
 	AudioBitrate *int64 `json:"AudioBitrate,omitempty" name:"AudioBitrate"`
 
 	// 模板描述。
 	Description *string `json:"Description,omitempty" name:"Description"`
 
-	// 视频码率。100-8000
+	// 视频码率。
+	// 范围：100-8000。
 	VideoBitrate *int64 `json:"VideoBitrate,omitempty" name:"VideoBitrate"`
 
-	// 宽。0-3000
+	// 宽。0-3000。
 	Width *int64 `json:"Width,omitempty" name:"Width"`
 
 	// 是否保留视频，0：否，1：是。默认1。
@@ -5063,16 +5096,17 @@ type ModifyLiveTranscodeTemplateRequest struct {
 	// 是否保留音频，0：否，1：是。默认1。
 	NeedAudio *int64 `json:"NeedAudio,omitempty" name:"NeedAudio"`
 
-	// 高。0-3000
+	// 高。0-3000。
 	Height *int64 `json:"Height,omitempty" name:"Height"`
 
-	// 帧率。0-200
+	// 帧率。0-200。
 	Fps *int64 `json:"Fps,omitempty" name:"Fps"`
 
-	// 关键帧间隔，单位：秒。0-50
+	// 关键帧间隔，单位：秒。0-50。
 	Gop *int64 `json:"Gop,omitempty" name:"Gop"`
 
-	// 旋转角度。0 90 180 270
+	// 旋转角度。
+	// 0 90 180 270。
 	Rotate *int64 `json:"Rotate,omitempty" name:"Rotate"`
 
 	// 编码质量：
@@ -5088,7 +5122,7 @@ type ModifyLiveTranscodeTemplateRequest struct {
 	// 是否不超过原始帧率。0：否，1：是。默认0。
 	FpsToOrig *int64 `json:"FpsToOrig,omitempty" name:"FpsToOrig"`
 
-	// 急速高清相比VideoBitrate少多少码率，0.1到0.5
+	// 极速高清相比 VideoBitrate 少多少码率，0.1到0.5。
 	AdaptBitratePercent *float64 `json:"AdaptBitratePercent,omitempty" name:"AdaptBitratePercent"`
 }
 
@@ -5189,7 +5223,7 @@ func (r *ModifyPullStreamConfigResponse) FromJsonString(s string) error {
 type ModifyPullStreamStatusRequest struct {
 	*tchttp.BaseRequest
 
-	// 配置id列表。
+	// 配置 ID 列表。
 	ConfigIds []*string `json:"ConfigIds,omitempty" name:"ConfigIds" list`
 
 	// 目标状态。0无效，2正在运行，4暂停。
@@ -5228,25 +5262,28 @@ type PlayAuthKeyInfo struct {
 	// 域名。
 	DomainName *string `json:"DomainName,omitempty" name:"DomainName"`
 
-	// 是否启用，0：关闭，1：启用。
+	// 是否启用:
+	// 0: 关闭。
+	// 1: 启用。
 	Enable *int64 `json:"Enable,omitempty" name:"Enable"`
 
-	// 鉴权key。
+	// 鉴权 Key。
 	AuthKey *string `json:"AuthKey,omitempty" name:"AuthKey"`
 
 	// 有效时间，单位：秒。
 	AuthDelta *uint64 `json:"AuthDelta,omitempty" name:"AuthDelta"`
 
-	// 鉴权BackKey。
+	// 鉴权 BackKey。
 	AuthBackKey *string `json:"AuthBackKey,omitempty" name:"AuthBackKey"`
 }
 
 type PlayCodeTotalInfo struct {
 
-	// HTTP code，可选值包括400,403,404,500,502,503,504
+	// HTTP code，可选值包括:
+	// 400，403，404，500，502，503，504。
 	Code *string `json:"Code,omitempty" name:"Code"`
 
-	// 总次数
+	// 总次数。
 	Num *uint64 `json:"Num,omitempty" name:"Num"`
 }
 
@@ -5255,7 +5292,7 @@ type PlayDataInfoByStream struct {
 	// 流名称。
 	StreamName *string `json:"StreamName,omitempty" name:"StreamName"`
 
-	// 总流量（单位MB）。
+	// 总流量，单位: MB。
 	TotalFlux *float64 `json:"TotalFlux,omitempty" name:"TotalFlux"`
 }
 
@@ -5264,20 +5301,22 @@ type PlayStatInfo struct {
 	// 数据时间点。
 	Time *string `json:"Time,omitempty" name:"Time"`
 
-	// 带宽/流量/请求数/并发连接数/下载速度的值，若没数据返回时该值为0
+	// 带宽/流量/请求数/并发连接数/下载速度的值，若没数据返回时该值为0。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Value *float64 `json:"Value,omitempty" name:"Value"`
 }
 
 type PlaySumStatInfo struct {
 
-	// 域名或流id。
+	// 域名或流 ID。
 	Name *string `json:"Name,omitempty" name:"Name"`
 
-	// 平均下载速度，单位是MB/s，计算公式是每分钟的下载速度求平均值。
+	// 平均下载速度，
+	// 单位: MB/s。
+	// 计算公式: 每分钟的下载速度求平均值。
 	AvgFluxPerSecond *float64 `json:"AvgFluxPerSecond,omitempty" name:"AvgFluxPerSecond"`
 
-	// 总流量，单位是MB。
+	// 总流量，单位: MB。
 	TotalFlux *float64 `json:"TotalFlux,omitempty" name:"TotalFlux"`
 
 	// 总请求数。
@@ -5313,32 +5352,32 @@ type ProIspPlaySumInfo struct {
 	// 省份/运营商/国家或地区。
 	Name *string `json:"Name,omitempty" name:"Name"`
 
-	// 总流量，单位：MB。
+	// 总流量，单位: MB。
 	TotalFlux *float64 `json:"TotalFlux,omitempty" name:"TotalFlux"`
 
 	// 总请求数。
 	TotalRequest *uint64 `json:"TotalRequest,omitempty" name:"TotalRequest"`
 
-	// 平均下载流量，单位：MB/s
+	// 平均下载流量，单位: MB/s。
 	AvgFluxPerSecond *float64 `json:"AvgFluxPerSecond,omitempty" name:"AvgFluxPerSecond"`
 }
 
 type PublishTime struct {
 
-	// 推流时间
+	// 推流时间。
 	// UTC 格式，例如：2018-06-29T19:00:00Z。
 	PublishTime *string `json:"PublishTime,omitempty" name:"PublishTime"`
 }
 
 type PullStreamConfig struct {
 
-	// 拉流配置Id。
+	// 拉流配置 ID。
 	ConfigId *string `json:"ConfigId,omitempty" name:"ConfigId"`
 
-	// 源Url。
+	// 源 URL。
 	FromUrl *string `json:"FromUrl,omitempty" name:"FromUrl"`
 
-	// 目的Url。
+	// 目的 URL。
 	ToUrl *string `json:"ToUrl,omitempty" name:"ToUrl"`
 
 	// 区域名。
@@ -5348,19 +5387,22 @@ type PullStreamConfig struct {
 	IspName *string `json:"IspName,omitempty" name:"IspName"`
 
 	// 开始时间。
-	// UTC格式时间，
-	// 例如：2019-01-08T10:00:00Z。
+	// UTC格式时间，例如: 2019-01-08T10:00:00Z。
 	// 注意：北京时间值为 UTC 时间值 + 8 小时，格式按照 ISO 8601 标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#I)。
 	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
 
 	// 结束时间。
 	// 
-	// UTC格式时间，
-	// 例如：2019-01-08T10:00:00Z。
+	// UTC格式时间，例如：2019-01-08T10:00:00Z。
 	// 注意：北京时间值为 UTC 时间值 + 8 小时，格式按照 ISO 8601 标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#I)。
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 
-	// 0无效，1初始状态，2正在运行，3拉起失败，4暂停。
+	// 状态:
+	// 0: 无效。
+	// 1: 初始状态。
+	// 2: 正在运行。
+	// 3: 拉起失败。
+	// 4: 暂停。
 	Status *string `json:"Status,omitempty" name:"Status"`
 }
 
@@ -5372,10 +5414,10 @@ type PushAuthKeyInfo struct {
 	// 是否启用，0：关闭，1：启用。
 	Enable *int64 `json:"Enable,omitempty" name:"Enable"`
 
-	// 主鉴权key。
+	// 主鉴权 Key。
 	MasterAuthKey *string `json:"MasterAuthKey,omitempty" name:"MasterAuthKey"`
 
-	// 备鉴权key。
+	// 备鉴权 Key。
 	BackupAuthKey *string `json:"BackupAuthKey,omitempty" name:"BackupAuthKey"`
 
 	// 有效时间，单位：秒。
@@ -5390,22 +5432,22 @@ type PushDataInfo struct {
 	// 推流路径。
 	AppName *string `json:"AppName,omitempty" name:"AppName"`
 
-	// 推流客户端ip。
+	// 推流客户端 IP。
 	ClientIp *string `json:"ClientIp,omitempty" name:"ClientIp"`
 
-	// 接流服务器ip。
+	// 接流服务器 IP。
 	ServerIp *string `json:"ServerIp,omitempty" name:"ServerIp"`
 
-	// 推流视频帧率，单位是Hz。
+	// 推流视频帧率，单位: Hz。
 	VideoFps *uint64 `json:"VideoFps,omitempty" name:"VideoFps"`
 
-	// 推流视频码率，单位是bps。
+	// 推流视频码率，单位: bps。
 	VideoSpeed *uint64 `json:"VideoSpeed,omitempty" name:"VideoSpeed"`
 
-	// 推流音频帧率，单位是Hz。
+	// 推流音频帧率，单位: Hz。
 	AudioFps *uint64 `json:"AudioFps,omitempty" name:"AudioFps"`
 
-	// 推流音频码率，单位是bps。
+	// 推流音频码率，单位: bps。
 	AudioSpeed *uint64 `json:"AudioSpeed,omitempty" name:"AudioSpeed"`
 
 	// 推流域名。
@@ -5428,19 +5470,19 @@ type PushDataInfo struct {
 	// 采样率。
 	AsampleRate *uint64 `json:"AsampleRate,omitempty" name:"AsampleRate"`
 
-	// metadata中的音频码率，单位是Kbps。
+	// metadata 中的音频码率，单位: Kbps。
 	MetaAudioSpeed *uint64 `json:"MetaAudioSpeed,omitempty" name:"MetaAudioSpeed"`
 
-	// metadata中的视频码率，单位是Kbps。
+	// metadata 中的视频码率，单位: Kbps。
 	MetaVideoSpeed *uint64 `json:"MetaVideoSpeed,omitempty" name:"MetaVideoSpeed"`
 
-	// metadata中的帧率。
+	// metadata 中的帧率。
 	MetaFps *uint64 `json:"MetaFps,omitempty" name:"MetaFps"`
 }
 
 type PushQualityData struct {
 
-	// 数据时间，格式是%Y-%m-%d %H:%M:%S.%ms，精确到毫秒级。
+	// 数据时间，格式: %Y-%m-%d %H:%M:%S.%ms，精确到毫秒级。
 	Time *string `json:"Time,omitempty" name:"Time"`
 
 	// 推流域名。
@@ -5449,10 +5491,10 @@ type PushQualityData struct {
 	// 推流路径。
 	AppName *string `json:"AppName,omitempty" name:"AppName"`
 
-	// 推流客户端ip。
+	// 推流客户端 IP。
 	ClientIp *string `json:"ClientIp,omitempty" name:"ClientIp"`
 
-	// 开始推流时间，格式是%Y-%m-%d %H:%M:%S.%ms，精确到毫秒级。
+	// 开始推流时间，格式: %Y-%m-%d %H:%M:%S.%ms，精确到毫秒级。
 	BeginPushTime *string `json:"BeginPushTime,omitempty" name:"BeginPushTime"`
 
 	// 分辨率信息。
@@ -5470,57 +5512,57 @@ type PushQualityData struct {
 	// 视频帧率。
 	VideoFps *uint64 `json:"VideoFps,omitempty" name:"VideoFps"`
 
-	// 视频码率，单位是bps。
+	// 视频码率，单位: bps。
 	VideoRate *uint64 `json:"VideoRate,omitempty" name:"VideoRate"`
 
 	// 音频帧率。
 	AudioFps *uint64 `json:"AudioFps,omitempty" name:"AudioFps"`
 
-	// 音频码率，单位是bps。
+	// 音频码率，单位: bps。
 	AudioRate *uint64 `json:"AudioRate,omitempty" name:"AudioRate"`
 
-	// 本地流逝时间，单位是ms，音视频流逝时间与本地流逝时间的差距越大表示推流质量越差，上行卡顿越严重。
+	// 本地流逝时间，单位: ms，音视频流逝时间与本地流逝时间的差距越大表示推流质量越差，上行卡顿越严重。
 	LocalTs *uint64 `json:"LocalTs,omitempty" name:"LocalTs"`
 
-	// 视频流逝时间，单位是ms。
+	// 视频流逝时间，单位: ms。
 	VideoTs *uint64 `json:"VideoTs,omitempty" name:"VideoTs"`
 
-	// 音频流逝时间，单位是ms。
+	// 音频流逝时间，单位: ms。
 	AudioTs *uint64 `json:"AudioTs,omitempty" name:"AudioTs"`
 
-	// metadata中的视频码率，单位是kbps。
+	// metadata 中的视频码率，单位: kbps。
 	MetaVideoRate *uint64 `json:"MetaVideoRate,omitempty" name:"MetaVideoRate"`
 
-	// metadata中的音频码率，单位是kbps。
+	// metadata 中的音频码率，单位: kbps。
 	MetaAudioRate *uint64 `json:"MetaAudioRate,omitempty" name:"MetaAudioRate"`
 
-	// metadata中的帧率。
+	// metadata 中的帧率。
 	MateFps *uint64 `json:"MateFps,omitempty" name:"MateFps"`
 }
 
 type RecordParam struct {
 
 	// 录制间隔。
-	// 单位秒，默认值1800。
-	// 取值范围:300-7200。
+	// 单位秒，默认：1800。
+	// 取值范围：300-7200。
 	// 此参数对 HLS 无效，当录制 HLS 时从推流到断流生成一个文件。
 	RecordInterval *int64 `json:"RecordInterval,omitempty" name:"RecordInterval"`
 
 	// 录制存储时长。
-	// 单位秒，取值范围： 0-93312000。
-	// 0表示永久存储。
+	// 单位秒，取值范围： 0 - 93312000。
+	// 0：表示永久存储。
 	StorageTime *int64 `json:"StorageTime,omitempty" name:"StorageTime"`
 
-	// 是否开启当前格式录制，0 否 1是。默认值0。
+	// 是否开启当前格式录制，默认值为0，0：否， 1：是。
 	Enable *int64 `json:"Enable,omitempty" name:"Enable"`
 
-	// 点播子应用ID。
+	// 点播子应用 ID。
 	VodSubAppId *int64 `json:"VodSubAppId,omitempty" name:"VodSubAppId"`
 }
 
 type RecordTemplateInfo struct {
 
-	// 模板Id。
+	// 模板 ID。
 	TemplateId *int64 `json:"TemplateId,omitempty" name:"TemplateId"`
 
 	// 模板名称。
@@ -5529,26 +5571,26 @@ type RecordTemplateInfo struct {
 	// 描述信息。
 	Description *string `json:"Description,omitempty" name:"Description"`
 
-	// Flv录制参数。
+	// FLV 录制参数。
 	FlvParam *RecordParam `json:"FlvParam,omitempty" name:"FlvParam"`
 
-	// Hls录制参数。
+	// HLS 录制参数。
 	HlsParam *RecordParam `json:"HlsParam,omitempty" name:"HlsParam"`
 
-	// Mp4录制参数。
+	// MP4 录制参数。
 	Mp4Param *RecordParam `json:"Mp4Param,omitempty" name:"Mp4Param"`
 
-	// Aac录制参数。
+	// AAC 录制参数。
 	AacParam *RecordParam `json:"AacParam,omitempty" name:"AacParam"`
 
 	// 0：普通直播，
 	// 1：慢直播。
 	IsDelayLive *int64 `json:"IsDelayLive,omitempty" name:"IsDelayLive"`
 
-	// HLS录制定制参数
+	// HLS 录制定制参数
 	HlsSpecialParam *HlsSpecialParam `json:"HlsSpecialParam,omitempty" name:"HlsSpecialParam"`
 
-	// Mp3录制参数。
+	// MP3 录制参数。
 	Mp3Param *RecordParam `json:"Mp3Param,omitempty" name:"Mp3Param"`
 }
 
@@ -5640,7 +5682,7 @@ type RuleInfo struct {
 	// 规则更新时间。
 	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
 
-	// 模板Id。
+	// 模板 ID。
 	TemplateId *int64 `json:"TemplateId,omitempty" name:"TemplateId"`
 
 	// 推流域名。
@@ -5655,25 +5697,27 @@ type RuleInfo struct {
 
 type SnapshotTemplateInfo struct {
 
-	// 模板Id。
+	// 模板 ID。
 	TemplateId *int64 `json:"TemplateId,omitempty" name:"TemplateId"`
 
 	// 模板名称。
 	TemplateName *string `json:"TemplateName,omitempty" name:"TemplateName"`
 
-	// 截图时间间隔。5-300秒。
+	// 截图时间间隔，5-300秒。
 	SnapshotInterval *int64 `json:"SnapshotInterval,omitempty" name:"SnapshotInterval"`
 
-	// 截图宽度。0-3000 0原始宽度并适配原始比例
+	// 截图宽度，范围：0-3000。 
+	// 0：原始宽度并适配原始比例。
 	Width *int64 `json:"Width,omitempty" name:"Width"`
 
-	// 截图高度。0-2000 0原始高度并适配原始比例
+	// 截图高度，范围：0-2000。
+	// 0：原始高度并适配原始比例。
 	Height *int64 `json:"Height,omitempty" name:"Height"`
 
 	// 是否开启鉴黄，0：不开启，1：开启。
 	PornFlag *int64 `json:"PornFlag,omitempty" name:"PornFlag"`
 
-	// Cos AppId。
+	// Cos 应用 ID。
 	CosAppId *int64 `json:"CosAppId,omitempty" name:"CosAppId"`
 
 	// Cos Bucket名称。
@@ -5682,7 +5726,7 @@ type SnapshotTemplateInfo struct {
 	// Cos 地域。
 	CosRegion *string `json:"CosRegion,omitempty" name:"CosRegion"`
 
-	// 模板描述
+	// 模板描述。
 	Description *string `json:"Description,omitempty" name:"Description"`
 }
 
@@ -5735,13 +5779,11 @@ type StreamEventInfo struct {
 	StreamName *string `json:"StreamName,omitempty" name:"StreamName"`
 
 	// 推流开始时间。
-	// UTC格式时间，
-	// 例如：2019-01-07T12:00:00Z。
+	// UTC 格式时间，例如：2019-01-07T12:00:00Z。
 	StreamStartTime *string `json:"StreamStartTime,omitempty" name:"StreamStartTime"`
 
 	// 推流结束时间。
-	// UTC格式时间，
-	// 例如：2019-01-07T15:00:00Z。
+	// UTC 格式时间，例如：2019-01-07T15:00:00Z。
 	StreamEndTime *string `json:"StreamEndTime,omitempty" name:"StreamEndTime"`
 
 	// 停止原因。
@@ -5750,7 +5792,7 @@ type StreamEventInfo struct {
 	// 推流持续时长，单位：秒。
 	Duration *uint64 `json:"Duration,omitempty" name:"Duration"`
 
-	// 主播IP。
+	// 主播 IP。
 	ClientIp *string `json:"ClientIp,omitempty" name:"ClientIp"`
 
 	// 分辨率。
@@ -5769,13 +5811,11 @@ type StreamName struct {
 	DomainName *string `json:"DomainName,omitempty" name:"DomainName"`
 
 	// 推流开始时间。
-	// UTC格式时间，
-	// 例如：2019-01-07T12:00:00Z。
+	// UTC格式时间，例如：2019-01-07T12:00:00Z。
 	StreamStartTime *string `json:"StreamStartTime,omitempty" name:"StreamStartTime"`
 
 	// 推流结束时间。
-	// UTC格式时间，
-	// 例如：2019-01-07T15:00:00Z。
+	// UTC格式时间，例如：2019-01-07T15:00:00Z。
 	StreamEndTime *string `json:"StreamEndTime,omitempty" name:"StreamEndTime"`
 
 	// 停止原因。
@@ -5784,7 +5824,7 @@ type StreamName struct {
 	// 推流持续时长，单位：秒。
 	Duration *uint64 `json:"Duration,omitempty" name:"Duration"`
 
-	// 主播IP。
+	// 主播 IP。
 	ClientIp *string `json:"ClientIp,omitempty" name:"ClientIp"`
 
 	// 分辨率。
@@ -5812,33 +5852,32 @@ type TemplateInfo struct {
 	// h264/h265。
 	Vcodec *string `json:"Vcodec,omitempty" name:"Vcodec"`
 
-	// 视频码率。100-8000kbps
+	// 视频码率，取值范围：100kbps - 8000kbps。
 	VideoBitrate *int64 `json:"VideoBitrate,omitempty" name:"VideoBitrate"`
 
-	// 音频编码：aac/mp3
-	// aac/mp3。
+	// 音频编码，可选 aac 或 mp3。
 	Acodec *string `json:"Acodec,omitempty" name:"Acodec"`
 
-	// 音频码率。0-500
+	// 音频码率。取值范围：0kbps - 500kbps。
 	AudioBitrate *int64 `json:"AudioBitrate,omitempty" name:"AudioBitrate"`
 
-	// 宽。0-3000
+	// 宽，取值范围：0-3000。
 	Width *int64 `json:"Width,omitempty" name:"Width"`
 
-	// 高。0-3000
+	// 高，取值范围：0-3000。
 	Height *int64 `json:"Height,omitempty" name:"Height"`
 
-	// 帧率。0-200
+	// 帧率。取值范围：0fps - 200fps。
 	Fps *int64 `json:"Fps,omitempty" name:"Fps"`
 
-	// 关键帧间隔，单位：秒。1-50
+	// 关键帧间隔，取值范围：1秒 - 50秒。
 	Gop *int64 `json:"Gop,omitempty" name:"Gop"`
 
-	// 旋转角度。0 90 180 270
+	// 旋转角度。可选择：0 90 180 270。
 	Rotate *int64 `json:"Rotate,omitempty" name:"Rotate"`
 
-	// 编码质量：
-	// baseline/main/high。
+	// 编码质量，可选择：
+	// baseline，main，high。
 	Profile *string `json:"Profile,omitempty" name:"Profile"`
 
 	// 是否不超过原始码率。0：否，1：是。
@@ -5856,25 +5895,25 @@ type TemplateInfo struct {
 	// 是否保留音频。0：否，1：是。
 	NeedAudio *int64 `json:"NeedAudio,omitempty" name:"NeedAudio"`
 
-	// 模板Id。
+	// 模板 ID。
 	TemplateId *int64 `json:"TemplateId,omitempty" name:"TemplateId"`
 
-	// 模板名称
+	// 模板名称。
 	TemplateName *string `json:"TemplateName,omitempty" name:"TemplateName"`
 
-	// 模板描述
+	// 模板描述。
 	Description *string `json:"Description,omitempty" name:"Description"`
 
-	// 是否是急速高清模板，0：否，1：是。默认0。
+	// 是否是极速高清模板，0：否，1：是。默认0。
 	AiTransCode *int64 `json:"AiTransCode,omitempty" name:"AiTransCode"`
 
-	// 急速高清相比VideoBitrate少多少码率，0.1到0.5
+	// 极速高清相比 VideoBitrate 少多少码率，0.1到0.5。
 	AdaptBitratePercent *float64 `json:"AdaptBitratePercent,omitempty" name:"AdaptBitratePercent"`
 }
 
 type TimeValue struct {
 
-	// utc时间，时间格式为yyyy-mm-ddTHH:MM:SSZ。
+	// UTC 时间，时间格式：yyyy-mm-ddTHH:MM:SSZ。
 	Time *string `json:"Time,omitempty" name:"Time"`
 
 	// 数值。
@@ -5886,12 +5925,10 @@ type TranscodeDetailInfo struct {
 	// 流名称。
 	StreamName *string `json:"StreamName,omitempty" name:"StreamName"`
 
-	// 开始时间，北京时间，
-	// 格式：yyyy-mm-dd HH:MM。
+	// 开始时间（北京时间），格式：yyyy-mm-dd HH:MM。
 	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
 
-	// 结束时间，北京时间，
-	// 格式：yyyy-mm-dd HH:MM。
+	// 结束时间（北京时间），格式：yyyy-mm-dd HH:MM。
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 
 	// 转码时长，单位：分钟。
@@ -5900,16 +5937,16 @@ type TranscodeDetailInfo struct {
 
 	// 编码方式，带模块，
 	// 示例：
-	// liveprocessor_H264 =》直播转码-H264，
-	// liveprocessor_H265 =》 直播转码-H265，
-	// topspeed_H264 =》极速高清-H264，
-	// topspeed_H265 =》极速高清-H265。
+	// liveprocessor_H264：直播转码-H264，
+	// liveprocessor_H265： 直播转码-H265，
+	// topspeed_H264：极速高清-H264，
+	// topspeed_H265：极速高清-H265。
 	ModuleCodec *string `json:"ModuleCodec,omitempty" name:"ModuleCodec"`
 
 	// 码率。
 	Bitrate *uint64 `json:"Bitrate,omitempty" name:"Bitrate"`
 
-	// 类型，包含：转码(Transcode)，混流(MixStream)，水印(WaterMark)。
+	// 类型，包含：转码（Transcode），混流（MixStream），水印（WaterMark）。
 	Type *string `json:"Type,omitempty" name:"Type"`
 
 	// 推流域名。
@@ -5956,25 +5993,26 @@ func (r *UnBindLiveDomainCertResponse) FromJsonString(s string) error {
 type UpdateLiveWatermarkRequest struct {
 	*tchttp.BaseRequest
 
-	// 水印ID。
+	// 水印 ID。
+	// 在添加水印接口 [AddLiveWatermark](/document/product/267/30154) 调用返回值中获取水印 ID。
 	WatermarkId *int64 `json:"WatermarkId,omitempty" name:"WatermarkId"`
 
-	// 水印图片url。
+	// 水印图片 URL。
 	PictureUrl *string `json:"PictureUrl,omitempty" name:"PictureUrl"`
 
-	// 显示位置，X轴偏移。
+	// 显示位置，X轴偏移，默认 0。
 	XPosition *int64 `json:"XPosition,omitempty" name:"XPosition"`
 
-	// 显示位置，Y轴偏移。
+	// 显示位置，Y轴偏移，默认 0。
 	YPosition *int64 `json:"YPosition,omitempty" name:"YPosition"`
 
 	// 水印名称。
 	WatermarkName *string `json:"WatermarkName,omitempty" name:"WatermarkName"`
 
-	// 水印宽度，占直播原始画面宽度百分比，建议高宽只设置一项，另外一项会自适应缩放，避免变形。
+	// 水印宽度，占直播原始画面宽度百分比，建议高宽只设置一项，另外一项会自适应缩放，避免变形。默认原始宽度。
 	Width *int64 `json:"Width,omitempty" name:"Width"`
 
-	// 水印高度，占直播原始画面宽度百分比，建议高宽只设置一项，另外一项会自适应缩放，避免变形。
+	// 水印高度，占直播原始画面宽度百分比，建议高宽只设置一项，另外一项会自适应缩放，避免变形。默认原始高度。
 	Height *int64 `json:"Height,omitempty" name:"Height"`
 }
 
@@ -6007,16 +6045,16 @@ func (r *UpdateLiveWatermarkResponse) FromJsonString(s string) error {
 
 type WatermarkInfo struct {
 
-	// 水印ID。
+	// 水印 ID。
 	WatermarkId *int64 `json:"WatermarkId,omitempty" name:"WatermarkId"`
 
-	// 水印图片url。
+	// 水印图片 URL。
 	PictureUrl *string `json:"PictureUrl,omitempty" name:"PictureUrl"`
 
-	// 显示位置，X轴偏移。
+	// 显示位置，X 轴偏移。
 	XPosition *int64 `json:"XPosition,omitempty" name:"XPosition"`
 
-	// 显示位置，Y轴偏移。
+	// 显示位置，Y 轴偏移。
 	YPosition *int64 `json:"YPosition,omitempty" name:"YPosition"`
 
 	// 水印名称。
@@ -6028,9 +6066,9 @@ type WatermarkInfo struct {
 	// 添加时间。
 	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
 
-	// 水印宽
+	// 水印宽。
 	Width *int64 `json:"Width,omitempty" name:"Width"`
 
-	// 水印高
+	// 水印高。
 	Height *int64 `json:"Height,omitempty" name:"Height"`
 }

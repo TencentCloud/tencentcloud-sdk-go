@@ -131,7 +131,6 @@ type AdaptiveDynamicStreamingTaskInput struct {
 	Definition *uint64 `json:"Definition,omitempty" name:"Definition"`
 
 	// 水印列表，支持多张图片或文字水印，最大可支持 10 张。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	WatermarkSet []*WatermarkInput `json:"WatermarkSet,omitempty" name:"WatermarkSet" list`
 }
 
@@ -1053,7 +1052,6 @@ type AiReviewPornTaskInput struct {
 type AiReviewPornTaskOutput struct {
 
 	// 视频鉴黄评分，分值为0到100。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Confidence *float64 `json:"Confidence,omitempty" name:"Confidence"`
 
 	// 鉴黄结果建议，取值范围：
@@ -2274,7 +2272,6 @@ type CoverBySnapshotTaskInput struct {
 	PositionValue *float64 `json:"PositionValue,omitempty" name:"PositionValue"`
 
 	// 水印列表，支持多张图片或文字水印，最大可支持 10 张。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	WatermarkSet []*WatermarkInput `json:"WatermarkSet,omitempty" name:"WatermarkSet" list`
 }
 
@@ -2461,6 +2458,9 @@ type CreateAdaptiveDynamicStreamingTemplateRequest struct {
 
 	// 模板描述信息，长度限制：256 个字符。
 	Comment *string `json:"Comment,omitempty" name:"Comment"`
+
+	// 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
 }
 
 func (r *CreateAdaptiveDynamicStreamingTemplateRequest) ToJsonString() string {
@@ -3408,6 +3408,9 @@ type DeleteAdaptiveDynamicStreamingTemplateRequest struct {
 
 	// 自适应转码模板唯一标识。
 	Definition *uint64 `json:"Definition,omitempty" name:"Definition"`
+
+	// 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
 }
 
 func (r *DeleteAdaptiveDynamicStreamingTemplateRequest) ToJsonString() string {
@@ -5377,11 +5380,9 @@ type EditMediaFileInfo struct {
 	FileId *string `json:"FileId,omitempty" name:"FileId"`
 
 	// 视频剪辑的起始偏移时间偏移，单位：秒。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	StartTimeOffset *float64 `json:"StartTimeOffset,omitempty" name:"StartTimeOffset"`
 
 	// 视频剪辑的起始结束时间偏移，单位：秒。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	EndTimeOffset *float64 `json:"EndTimeOffset,omitempty" name:"EndTimeOffset"`
 }
 
@@ -5473,11 +5474,9 @@ type EditMediaStreamInfo struct {
 	StreamId *string `json:"StreamId,omitempty" name:"StreamId"`
 
 	// 流剪辑的起始时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
 
 	// 流剪辑的结束时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 }
 
@@ -5524,11 +5523,9 @@ type EditMediaTaskInput struct {
 	InputType *string `json:"InputType,omitempty" name:"InputType"`
 
 	// 输入的视频文件信息，当 InputType 为 File 时，该字段有值。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FileInfoSet []*EditMediaFileInfo `json:"FileInfoSet,omitempty" name:"FileInfoSet" list`
 
 	// 输入的流信息，当 InputType 为 Stream 时，该字段有值。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	StreamInfoSet []*EditMediaStreamInfo `json:"StreamInfoSet,omitempty" name:"StreamInfoSet" list`
 }
 
@@ -5757,7 +5754,6 @@ type FileUploadTask struct {
 	MediaBasicInfo *MediaBasicInfo `json:"MediaBasicInfo,omitempty" name:"MediaBasicInfo"`
 
 	// 若视频上传时指定了视频处理流程，则该字段为流程任务 ID。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProcedureTaskId *string `json:"ProcedureTaskId,omitempty" name:"ProcedureTaskId"`
 
 	// 元信息。包括大小、时长、视频流信息、音频流信息等。
@@ -6690,31 +6686,24 @@ type MediaProcessTaskImageSpriteResult struct {
 type MediaProcessTaskInput struct {
 
 	// 视频转码任务列表。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TranscodeTaskSet []*TranscodeTaskInput `json:"TranscodeTaskSet,omitempty" name:"TranscodeTaskSet" list`
 
 	// 视频转动图任务列表。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AnimatedGraphicTaskSet []*AnimatedGraphicTaskInput `json:"AnimatedGraphicTaskSet,omitempty" name:"AnimatedGraphicTaskSet" list`
 
 	// 对视频按时间点截图任务列表。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SnapshotByTimeOffsetTaskSet []*SnapshotByTimeOffsetTaskInput `json:"SnapshotByTimeOffsetTaskSet,omitempty" name:"SnapshotByTimeOffsetTaskSet" list`
 
 	// 对视频采样截图任务列表。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SampleSnapshotTaskSet []*SampleSnapshotTaskInput `json:"SampleSnapshotTaskSet,omitempty" name:"SampleSnapshotTaskSet" list`
 
 	// 对视频截雪碧图任务列表。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ImageSpriteTaskSet []*ImageSpriteTaskInput `json:"ImageSpriteTaskSet,omitempty" name:"ImageSpriteTaskSet" list`
 
 	// 对视频截图做封面任务列表。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CoverBySnapshotTaskSet []*CoverBySnapshotTaskInput `json:"CoverBySnapshotTaskSet,omitempty" name:"CoverBySnapshotTaskSet" list`
 
 	// 对视频转自适应码流任务列表。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AdaptiveDynamicStreamingTaskSet []*AdaptiveDynamicStreamingTaskInput `json:"AdaptiveDynamicStreamingTaskSet,omitempty" name:"AdaptiveDynamicStreamingTaskSet" list`
 }
 
@@ -7165,6 +7154,9 @@ type ModifyAdaptiveDynamicStreamingTemplateRequest struct {
 
 	// 模板描述信息，长度限制：256 个字符。
 	Comment *string `json:"Comment,omitempty" name:"Comment"`
+
+	// 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
 }
 
 func (r *ModifyAdaptiveDynamicStreamingTemplateRequest) ToJsonString() string {
@@ -9162,7 +9154,6 @@ type SampleSnapshotTaskInput struct {
 	Definition *uint64 `json:"Definition,omitempty" name:"Definition"`
 
 	// 水印列表，支持多张图片或文字水印，最大可支持 10 张。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	WatermarkSet []*WatermarkInput `json:"WatermarkSet,omitempty" name:"WatermarkSet" list`
 }
 
@@ -9419,7 +9410,6 @@ type SnapshotByTimeOffsetTaskInput struct {
 	TimeOffsetSet []*float64 `json:"TimeOffsetSet,omitempty" name:"TimeOffsetSet" list`
 
 	// 水印列表，支持多张图片或文字水印，最大可支持 10 张。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	WatermarkSet []*WatermarkInput `json:"WatermarkSet,omitempty" name:"WatermarkSet" list`
 }
 
@@ -9982,7 +9972,6 @@ type TranscodeTaskInput struct {
 	Definition *uint64 `json:"Definition,omitempty" name:"Definition"`
 
 	// 水印列表，支持多张图片或文字水印，最大可支持 10 张。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	WatermarkSet []*WatermarkInput `json:"WatermarkSet,omitempty" name:"WatermarkSet" list`
 
 	// 马赛克列表，最大可支持 10 张。

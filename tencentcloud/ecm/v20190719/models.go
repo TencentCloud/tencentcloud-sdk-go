@@ -1474,6 +1474,65 @@ func (r *DescribeTaskResultResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeVpcsRequest struct {
+	*tchttp.BaseRequest
+
+	// VPC实例ID。形如：vpc-f49l6u0z。每次请求的实例的上限为100。参数不支持同时指定VpcIds和Filters。
+	VpcIds []*string `json:"VpcIds,omitempty" name:"VpcIds" list`
+
+	// 过滤条件，参数不支持同时指定VpcIds和Filters。
+	// vpc-name - String - （过滤条件）VPC实例名称。
+	// is-default - String - （过滤条件）是否默认VPC。
+	// vpc-id - String - （过滤条件）VPC实例ID形如：vpc-f49l6u0z。
+	// cidr-block - String - （过滤条件）vpc的cidr。
+	// tag-key - String -是否必填：否- （过滤条件）按照标签键进行过滤。
+	// tag:tag-key - String - 是否必填：否 - （过滤条件）按照标签键值对进行过滤。 tag-key使用具体的标签键进行替换。使用请参考示例
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+
+	// 偏移量
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 返回数量
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 地域
+	EcmRegion *string `json:"EcmRegion,omitempty" name:"EcmRegion"`
+}
+
+func (r *DescribeVpcsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeVpcsRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeVpcsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 符合条件的对象数。
+		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 私有网络对象。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		VpcSet []*VpcInfo `json:"VpcSet,omitempty" name:"VpcSet" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeVpcsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeVpcsResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DetachNetworkInterfaceRequest struct {
 	*tchttp.BaseRequest
 
