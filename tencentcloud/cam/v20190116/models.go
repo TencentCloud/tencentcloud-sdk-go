@@ -341,70 +341,6 @@ type AttachedPolicyOfRole struct {
 	Description *string `json:"Description,omitempty" name:"Description"`
 }
 
-type CheckNewMfaCodeRequest struct {
-	*tchttp.BaseRequest
-
-	// 登录态Skey
-	Skey *string `json:"Skey,omitempty" name:"Skey"`
-
-	// 接口名
-	Interface *string `json:"Interface,omitempty" name:"Interface"`
-
-	// IP
-	ClientIP *string `json:"ClientIP,omitempty" name:"ClientIP"`
-
-	// 浏览器UA
-	ClientUA *string `json:"ClientUA,omitempty" name:"ClientUA"`
-
-	// 验证类型
-	AuthType *uint64 `json:"AuthType,omitempty" name:"AuthType"`
-
-	// 主账号uin
-	OwnerUin *uint64 `json:"OwnerUin,omitempty" name:"OwnerUin"`
-
-	// 手机验证码
-	PhoneCode *uint64 `json:"PhoneCode,omitempty" name:"PhoneCode"`
-
-	// 手机号码
-	PhoneNumber *uint64 `json:"PhoneNumber,omitempty" name:"PhoneNumber"`
-
-	// 邮箱验证码
-	MailCode *uint64 `json:"MailCode,omitempty" name:"MailCode"`
-
-	// 邮箱
-	Mail *string `json:"Mail,omitempty" name:"Mail"`
-
-	// 手机国码
-	CountryCode *uint64 `json:"CountryCode,omitempty" name:"CountryCode"`
-}
-
-func (r *CheckNewMfaCodeRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-func (r *CheckNewMfaCodeRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
-}
-
-type CheckNewMfaCodeResponse struct {
-	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
-}
-
-func (r *CheckNewMfaCodeResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-func (r *CheckNewMfaCodeResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
-}
-
 type ConsumeCustomMFATokenRequest struct {
 	*tchttp.BaseRequest
 
@@ -615,6 +551,49 @@ func (r *CreateSAMLProviderResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type CreateServiceLinkedRoleRequest struct {
+	*tchttp.BaseRequest
+
+	// 授权服务，附加了此角色的腾讯云服务主体。
+	QCSServiceName []*string `json:"QCSServiceName,omitempty" name:"QCSServiceName" list`
+
+	// 自定义后缀，根据您提供的字符串，与服务提供的前缀组合在一起以形成完整的角色名称。
+	CustomSuffix *string `json:"CustomSuffix,omitempty" name:"CustomSuffix"`
+
+	// 角色说明。
+	Description *string `json:"Description,omitempty" name:"Description"`
+}
+
+func (r *CreateServiceLinkedRoleRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateServiceLinkedRoleRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateServiceLinkedRoleResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 角色ID
+		RoleId *string `json:"RoleId,omitempty" name:"RoleId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateServiceLinkedRoleResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateServiceLinkedRoleResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DeleteGroupRequest struct {
 	*tchttp.BaseRequest
 
@@ -751,6 +730,43 @@ func (r *DeleteSAMLProviderResponse) ToJsonString() string {
 }
 
 func (r *DeleteSAMLProviderResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteServiceLinkedRoleRequest struct {
+	*tchttp.BaseRequest
+
+	// 要删除的服务相关角色的名称。
+	RoleName *string `json:"RoleName,omitempty" name:"RoleName"`
+}
+
+func (r *DeleteServiceLinkedRoleRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteServiceLinkedRoleRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteServiceLinkedRoleResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 删除任务ID，可用于检查删除服务相关角色状态。
+		DeletionTaskId *string `json:"DeletionTaskId,omitempty" name:"DeletionTaskId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DeleteServiceLinkedRoleResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteServiceLinkedRoleResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -1193,6 +1209,54 @@ func (r *GetSAMLProviderResponse) ToJsonString() string {
 }
 
 func (r *GetSAMLProviderResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type GetServiceLinkedRoleDeletionStatusRequest struct {
+	*tchttp.BaseRequest
+
+	// 删除任务ID
+	DeletionTaskId *string `json:"DeletionTaskId,omitempty" name:"DeletionTaskId"`
+}
+
+func (r *GetServiceLinkedRoleDeletionStatusRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *GetServiceLinkedRoleDeletionStatusRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type GetServiceLinkedRoleDeletionStatusResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 状态：NOT_STARTED，IN_PROGRESS，SUCCEEDED，FAILED
+		Status *string `json:"Status,omitempty" name:"Status"`
+
+		// 失败原因
+		Reason *string `json:"Reason,omitempty" name:"Reason"`
+
+		// 服务类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		ServiceType *string `json:"ServiceType,omitempty" name:"ServiceType"`
+
+		// 服务名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		ServiceName *string `json:"ServiceName,omitempty" name:"ServiceName"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *GetServiceLinkedRoleDeletionStatusResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *GetServiceLinkedRoleDeletionStatusResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -1826,42 +1890,6 @@ func (r *ListUsersResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
-type LoginActionFlag struct {
-
-	// 手机
-	Phone *uint64 `json:"Phone,omitempty" name:"Phone"`
-
-	// 硬token
-	Token *uint64 `json:"Token,omitempty" name:"Token"`
-
-	// 软token
-	Stoken *uint64 `json:"Stoken,omitempty" name:"Stoken"`
-
-	// 微信
-	Wechat *uint64 `json:"Wechat,omitempty" name:"Wechat"`
-
-	// 自定义
-	Custom *uint64 `json:"Custom,omitempty" name:"Custom"`
-}
-
-type OffsiteFlag struct {
-
-	// 验证标识
-	VerifyFlag *uint64 `json:"VerifyFlag,omitempty" name:"VerifyFlag"`
-
-	// 手机通知
-	NotifyPhone *uint64 `json:"NotifyPhone,omitempty" name:"NotifyPhone"`
-
-	// 邮箱通知
-	NotifyEmail *int64 `json:"NotifyEmail,omitempty" name:"NotifyEmail"`
-
-	// 微信通知
-	NotifyWechat *uint64 `json:"NotifyWechat,omitempty" name:"NotifyWechat"`
-
-	// 提示
-	Tips *uint64 `json:"Tips,omitempty" name:"Tips"`
-}
-
 type RemoveUserFromGroupRequest struct {
 	*tchttp.BaseRequest
 
@@ -1945,52 +1973,6 @@ type SAMLProviderInfo struct {
 
 	// SAML身份提供商上次修改时间
 	ModifyTime *string `json:"ModifyTime,omitempty" name:"ModifyTime"`
-}
-
-type SetFlagRequest struct {
-	*tchttp.BaseRequest
-
-	// 设置用户的uin
-	OpUin *uint64 `json:"OpUin,omitempty" name:"OpUin"`
-
-	// 登录设置
-	LoginFlag *LoginActionFlag `json:"LoginFlag,omitempty" name:"LoginFlag"`
-
-	// 敏感操作设置
-	ActionFlag *LoginActionFlag `json:"ActionFlag,omitempty" name:"ActionFlag"`
-
-	// 异地登录设置
-	OffsiteFlag *OffsiteFlag `json:"OffsiteFlag,omitempty" name:"OffsiteFlag"`
-
-	// 是否需要重置mfa
-	NeedResetMfa *uint64 `json:"NeedResetMfa,omitempty" name:"NeedResetMfa"`
-}
-
-func (r *SetFlagRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-func (r *SetFlagRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
-}
-
-type SetFlagResponse struct {
-	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
-}
-
-func (r *SetFlagResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-func (r *SetFlagResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
 }
 
 type StrategyInfo struct {

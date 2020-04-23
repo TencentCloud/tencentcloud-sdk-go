@@ -198,6 +198,9 @@ type Address struct {
 
 	// EIP ALG开启的协议类型。
 	EipAlgType *AlgType `json:"EipAlgType,omitempty" name:"EipAlgType"`
+
+	// 弹性公网IP的运营商信息，当前可能返回值包括"CMCC","CTCC","CUCC","BGP"
+	InternetServiceProvider *string `json:"InternetServiceProvider,omitempty" name:"InternetServiceProvider"`
 }
 
 type AddressTemplate struct {

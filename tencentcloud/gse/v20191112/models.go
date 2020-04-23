@@ -765,6 +765,79 @@ type PlayerSession struct {
 	TerminationTime *string `json:"TerminationTime,omitempty" name:"TerminationTime"`
 }
 
+type SearchGameServerSessionsRequest struct {
+	*tchttp.BaseRequest
+
+	// 别名ID
+	AliasId *string `json:"AliasId,omitempty" name:"AliasId"`
+
+	// 舰队ID
+	FleetId *string `json:"FleetId,omitempty" name:"FleetId"`
+
+	// 单次查询记录数上限
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 页偏移，用于查询下一页
+	NextToken *string `json:"NextToken,omitempty" name:"NextToken"`
+
+	// 搜索条件表达式，支持如下变量
+	// gameServerSessionName 游戏会话名称 String
+	// gameServerSessionId 游戏会话ID String
+	// maximumSessions 最大的玩家会话数 Number
+	// creationTimeMillis 创建时间，单位：毫秒 Number
+	// playerSessionCount 当前玩家会话数 Number
+	// hasAvailablePlayerSessions 是否有可用玩家数 String 取值true或false
+	// gameServerSessionProperties 游戏会话属性 String
+	// 
+	// 表达式String类型 等于=，不等于<>判断
+	// 表示Number类型支持 =,<>,>,>=,<,<=
+	FilterExpression *string `json:"FilterExpression,omitempty" name:"FilterExpression"`
+
+	// 排序条件关键字
+	// 支持排序字段
+	// gameServerSessionName 游戏会话名称 String
+	// gameServerSessionId 游戏会话ID String
+	// maximumSessions 最大的玩家会话数 Number
+	// creationTimeMillis 创建时间，单位：毫秒 Number
+	// playerSessionCount 当前玩家会话数 Number
+	SortExpression *string `json:"SortExpression,omitempty" name:"SortExpression"`
+}
+
+func (r *SearchGameServerSessionsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *SearchGameServerSessionsRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type SearchGameServerSessionsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 游戏服务器会话列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		GameServerSessions []*GameServerSession `json:"GameServerSessions,omitempty" name:"GameServerSessions" list`
+
+		// 页偏移，用于查询下一页
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		NextToken *string `json:"NextToken,omitempty" name:"NextToken"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *SearchGameServerSessionsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *SearchGameServerSessionsResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type StartGameServerSessionPlacementRequest struct {
 	*tchttp.BaseRequest
 

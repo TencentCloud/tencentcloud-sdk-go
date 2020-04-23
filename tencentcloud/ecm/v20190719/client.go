@@ -1256,6 +1256,31 @@ func (c *Client) ResetInstancesMaxBandwidth(request *ResetInstancesMaxBandwidthR
     return
 }
 
+func NewResetInstancesPasswordRequest() (request *ResetInstancesPasswordRequest) {
+    request = &ResetInstancesPasswordRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ecm", APIVersion, "ResetInstancesPassword")
+    return
+}
+
+func NewResetInstancesPasswordResponse() (response *ResetInstancesPasswordResponse) {
+    response = &ResetInstancesPasswordResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 重置处于运行中状态的实例的密码，需要显式指定强制关机参数ForceStop。如果没有显式指定强制关机参数，则只有处于关机状态的实例才允许执行重置密码操作。
+func (c *Client) ResetInstancesPassword(request *ResetInstancesPasswordRequest) (response *ResetInstancesPasswordResponse, err error) {
+    if request == nil {
+        request = NewResetInstancesPasswordRequest()
+    }
+    response = NewResetInstancesPasswordResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewRunInstancesRequest() (request *RunInstancesRequest) {
     request = &RunInstancesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1277,6 +1302,58 @@ func (c *Client) RunInstances(request *RunInstancesRequest) (response *RunInstan
         request = NewRunInstancesRequest()
     }
     response = NewRunInstancesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewStartInstancesRequest() (request *StartInstancesRequest) {
+    request = &StartInstancesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ecm", APIVersion, "StartInstances")
+    return
+}
+
+func NewStartInstancesResponse() (response *StartInstancesResponse) {
+    response = &StartInstancesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 只有状态为STOPPED的实例才可以进行此操作；接口调用成功时，实例会进入STARTING状态；启动实例成功时，实例会进入RUNNING状态。
+func (c *Client) StartInstances(request *StartInstancesRequest) (response *StartInstancesResponse, err error) {
+    if request == nil {
+        request = NewStartInstancesRequest()
+    }
+    response = NewStartInstancesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewStopInstancesRequest() (request *StopInstancesRequest) {
+    request = &StopInstancesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ecm", APIVersion, "StopInstances")
+    return
+}
+
+func NewStopInstancesResponse() (response *StopInstancesResponse) {
+    response = &StopInstancesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 只有处于"RUNNING"状态的实例才能够进行关机操作；
+// 调用成功时，实例会进入STOPPING状态；关闭实例成功时，实例会进入STOPPED状态；
+// 支持强制关闭，强制关机的效果等同于关闭物理计算机的电源开关，强制关机可能会导致数据丢失或文件系统损坏，请仅在服务器不能正常关机时使用。
+func (c *Client) StopInstances(request *StopInstancesRequest) (response *StopInstancesResponse, err error) {
+    if request == nil {
+        request = NewStopInstancesRequest()
+    }
+    response = NewStopInstancesResponse()
     err = c.Send(request, response)
     return
 }

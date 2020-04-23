@@ -168,31 +168,6 @@ func (c *Client) AttachUserPolicy(request *AttachUserPolicyRequest) (response *A
     return
 }
 
-func NewCheckNewMfaCodeRequest() (request *CheckNewMfaCodeRequest) {
-    request = &CheckNewMfaCodeRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    request.Init().WithApiInfo("cam", APIVersion, "CheckNewMfaCode")
-    return
-}
-
-func NewCheckNewMfaCodeResponse() (response *CheckNewMfaCodeResponse) {
-    response = &CheckNewMfaCodeResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    }
-    return
-}
-
-// 校验新手机新邮箱接口
-func (c *Client) CheckNewMfaCode(request *CheckNewMfaCodeRequest) (response *CheckNewMfaCodeResponse, err error) {
-    if request == nil {
-        request = NewCheckNewMfaCodeRequest()
-    }
-    response = NewCheckNewMfaCodeResponse()
-    err = c.Send(request, response)
-    return
-}
-
 func NewConsumeCustomMFATokenRequest() (request *ConsumeCustomMFATokenRequest) {
     request = &ConsumeCustomMFATokenRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -318,6 +293,31 @@ func (c *Client) CreateSAMLProvider(request *CreateSAMLProviderRequest) (respons
     return
 }
 
+func NewCreateServiceLinkedRoleRequest() (request *CreateServiceLinkedRoleRequest) {
+    request = &CreateServiceLinkedRoleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cam", APIVersion, "CreateServiceLinkedRole")
+    return
+}
+
+func NewCreateServiceLinkedRoleResponse() (response *CreateServiceLinkedRoleResponse) {
+    response = &CreateServiceLinkedRoleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 创建服务相关角色
+func (c *Client) CreateServiceLinkedRole(request *CreateServiceLinkedRoleRequest) (response *CreateServiceLinkedRoleResponse, err error) {
+    if request == nil {
+        request = NewCreateServiceLinkedRoleRequest()
+    }
+    response = NewCreateServiceLinkedRoleResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteGroupRequest() (request *DeleteGroupRequest) {
     request = &DeleteGroupRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -414,6 +414,31 @@ func (c *Client) DeleteSAMLProvider(request *DeleteSAMLProviderRequest) (respons
         request = NewDeleteSAMLProviderRequest()
     }
     response = NewDeleteSAMLProviderResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteServiceLinkedRoleRequest() (request *DeleteServiceLinkedRoleRequest) {
+    request = &DeleteServiceLinkedRoleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cam", APIVersion, "DeleteServiceLinkedRole")
+    return
+}
+
+func NewDeleteServiceLinkedRoleResponse() (response *DeleteServiceLinkedRoleResponse) {
+    response = &DeleteServiceLinkedRoleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 删除服务相关角色
+func (c *Client) DeleteServiceLinkedRole(request *DeleteServiceLinkedRoleRequest) (response *DeleteServiceLinkedRoleResponse, err error) {
+    if request == nil {
+        request = NewDeleteServiceLinkedRoleRequest()
+    }
+    response = NewDeleteServiceLinkedRoleResponse()
     err = c.Send(request, response)
     return
 }
@@ -668,6 +693,31 @@ func (c *Client) GetSAMLProvider(request *GetSAMLProviderRequest) (response *Get
     return
 }
 
+func NewGetServiceLinkedRoleDeletionStatusRequest() (request *GetServiceLinkedRoleDeletionStatusRequest) {
+    request = &GetServiceLinkedRoleDeletionStatusRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cam", APIVersion, "GetServiceLinkedRoleDeletionStatus")
+    return
+}
+
+func NewGetServiceLinkedRoleDeletionStatusResponse() (response *GetServiceLinkedRoleDeletionStatusResponse) {
+    response = &GetServiceLinkedRoleDeletionStatusResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 根据删除TaskId获取服务相关角色删除状态
+func (c *Client) GetServiceLinkedRoleDeletionStatus(request *GetServiceLinkedRoleDeletionStatusRequest) (response *GetServiceLinkedRoleDeletionStatusResponse, err error) {
+    if request == nil {
+        request = NewGetServiceLinkedRoleDeletionStatusRequest()
+    }
+    response = NewGetServiceLinkedRoleDeletionStatusResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewGetUserRequest() (request *GetUserRequest) {
     request = &GetUserRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -883,7 +933,7 @@ func NewListPoliciesResponse() (response *ListPoliciesResponse) {
     return
 }
 
-// 本接口（ListPolicies）可用于查询策略列表
+// 本接口（ListPolicies）可用于查询策略列表。
 func (c *Client) ListPolicies(request *ListPoliciesRequest) (response *ListPoliciesResponse, err error) {
     if request == nil {
         request = NewListPoliciesRequest()
@@ -989,31 +1039,6 @@ func (c *Client) RemoveUserFromGroup(request *RemoveUserFromGroupRequest) (respo
         request = NewRemoveUserFromGroupRequest()
     }
     response = NewRemoveUserFromGroupResponse()
-    err = c.Send(request, response)
-    return
-}
-
-func NewSetFlagRequest() (request *SetFlagRequest) {
-    request = &SetFlagRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    request.Init().WithApiInfo("cam", APIVersion, "SetFlag")
-    return
-}
-
-func NewSetFlagResponse() (response *SetFlagResponse) {
-    response = &SetFlagResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    }
-    return
-}
-
-// 设置用户的登录保护和敏感操作校验方式
-func (c *Client) SetFlag(request *SetFlagRequest) (response *SetFlagResponse, err error) {
-    if request == nil {
-        request = NewSetFlagRequest()
-    }
-    response = NewSetFlagResponse()
     err = c.Send(request, response)
     return
 }

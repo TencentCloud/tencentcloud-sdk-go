@@ -97,7 +97,7 @@ type CdbInfo struct {
 
 type ClusterInstancesInfo struct {
 
-	// ID
+	// ID号
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Id *int64 `json:"Id,omitempty" name:"Id"`
 
@@ -235,6 +235,10 @@ type ClusterInstancesInfo struct {
 	// 集群所有节点的别名序列化
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AliasInfo *string `json:"AliasInfo,omitempty" name:"AliasInfo"`
+
+	// 集群版本Id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProductId *int64 `json:"ProductId,omitempty" name:"ProductId"`
 }
 
 type CreateInstanceRequest struct {

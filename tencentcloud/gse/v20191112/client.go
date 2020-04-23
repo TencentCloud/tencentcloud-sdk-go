@@ -268,6 +268,31 @@ func (c *Client) JoinGameServerSession(request *JoinGameServerSessionRequest) (r
     return
 }
 
+func NewSearchGameServerSessionsRequest() (request *SearchGameServerSessionsRequest) {
+    request = &SearchGameServerSessionsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("gse", APIVersion, "SearchGameServerSessions")
+    return
+}
+
+func NewSearchGameServerSessionsResponse() (response *SearchGameServerSessionsResponse) {
+    response = &SearchGameServerSessionsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（SearchGameServerSessions）用于搜索游戏服务器会话列表
+func (c *Client) SearchGameServerSessions(request *SearchGameServerSessionsRequest) (response *SearchGameServerSessionsResponse, err error) {
+    if request == nil {
+        request = NewSearchGameServerSessionsRequest()
+    }
+    response = NewSearchGameServerSessionsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewStartGameServerSessionPlacementRequest() (request *StartGameServerSessionPlacementRequest) {
     request = &StartGameServerSessionPlacementRequest{
         BaseRequest: &tchttp.BaseRequest{},

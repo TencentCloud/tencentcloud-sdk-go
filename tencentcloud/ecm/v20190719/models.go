@@ -2924,6 +2924,51 @@ func (r *ResetInstancesMaxBandwidthResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type ResetInstancesPasswordRequest struct {
+	*tchttp.BaseRequest
+
+	// 待重置密码的实例ID列表。在单次请求的过程中，单个region下的请求实例数上限为100。
+	InstanceIdSet []*string `json:"InstanceIdSet,omitempty" name:"InstanceIdSet" list`
+
+	// 新密码，Linux实例密码必须8到16位，至少包括两项[a-z，A-Z]、[0-9]和[( ) ~ ~ ! @ # $ % ^ & * - + = _ | { } [ ] : ; ' < > , . ? /]中的符号。密码不允许以/符号开头。
+	// Windows实例密码必须12到16位，至少包括三项[a-z]，[A-Z]，[0-9]和[( ) ~ ~ ! @ # $ % ^ & * - + = _ | { } [ ] : ; ' < > , . ? /]中的符号。密码不允许以/符号开头。
+	// 如果实例即包含Linux实例又包含Windows实例，则密码复杂度限制按照Windows实例的限制。
+	Password *string `json:"Password,omitempty" name:"Password"`
+
+	// 是否强制关机，默认为false。
+	ForceStop *bool `json:"ForceStop,omitempty" name:"ForceStop"`
+
+	// 待重置密码的实例的用户名，不得超过64个字符。若未指定用户名，则对于Linux而言，默认重置root用户的密码，对于Windows而言，默认重置administrator的密码。
+	UserName *string `json:"UserName,omitempty" name:"UserName"`
+}
+
+func (r *ResetInstancesPasswordRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ResetInstancesPasswordRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ResetInstancesPasswordResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ResetInstancesPasswordResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ResetInstancesPasswordResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type ResetInstancesRequest struct {
 	*tchttp.BaseRequest
 
@@ -3091,6 +3136,84 @@ type SrcImage struct {
 
 	// 区域名称
 	RegionName *string `json:"RegionName,omitempty" name:"RegionName"`
+}
+
+type StartInstancesRequest struct {
+	*tchttp.BaseRequest
+
+	// 待开启的实例ID列表。在单次请求的过程中，单个region下的请求实例数上限为100。
+	InstanceIdSet []*string `json:"InstanceIdSet,omitempty" name:"InstanceIdSet" list`
+}
+
+func (r *StartInstancesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *StartInstancesRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type StartInstancesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *StartInstancesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *StartInstancesResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type StopInstancesRequest struct {
+	*tchttp.BaseRequest
+
+	// 需要关机的实例ID列表。在单次请求的过程中，单个region下的请求实例数上限为100。
+	InstanceIdSet []*string `json:"InstanceIdSet,omitempty" name:"InstanceIdSet" list`
+
+	// 是否在正常关闭失败后选择强制关闭实例，默认为false，即否。
+	ForceStop *bool `json:"ForceStop,omitempty" name:"ForceStop"`
+
+	// 实例的关闭模式。取值范围：
+	// SOFT_FIRST：表示在正常关闭失败后进行强制关闭;
+	// HARD：直接强制关闭;
+	// SOFT：仅软关机；
+	// 默认为SOFT。
+	StopType *string `json:"StopType,omitempty" name:"StopType"`
+}
+
+func (r *StopInstancesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *StopInstancesRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type StopInstancesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *StopInstancesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *StopInstancesResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
 }
 
 type Subnet struct {

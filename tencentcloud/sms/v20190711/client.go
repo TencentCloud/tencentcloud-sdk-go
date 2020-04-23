@@ -290,6 +290,7 @@ func NewPullSmsReplyStatusResponse() (response *PullSmsReplyStatusResponse) {
 }
 
 // 拉取短信回复状态。
+// 目前也支持 [配置回复回调](https://cloud.tencent.com/document/product/382/42907) 的方式来获取上行回复。
 func (c *Client) PullSmsReplyStatus(request *PullSmsReplyStatusRequest) (response *PullSmsReplyStatusResponse, err error) {
     if request == nil {
         request = NewPullSmsReplyStatusRequest()
@@ -315,6 +316,7 @@ func NewPullSmsReplyStatusByPhoneNumberResponse() (response *PullSmsReplyStatusB
 }
 
 // 拉取单个号码短信回复状态。
+// 目前也支持 [配置回复回调](https://cloud.tencent.com/document/product/382/42907) 的方式来获取上行回复。
 func (c *Client) PullSmsReplyStatusByPhoneNumber(request *PullSmsReplyStatusByPhoneNumberRequest) (response *PullSmsReplyStatusByPhoneNumberResponse, err error) {
     if request == nil {
         request = NewPullSmsReplyStatusByPhoneNumberRequest()
@@ -340,6 +342,7 @@ func NewPullSmsSendStatusResponse() (response *PullSmsSendStatusResponse) {
 }
 
 // 拉取短信下发状态。
+// >- 目前也支持 [配置回调](https://cloud.tencent.com/document/product/382/37809#.E8.AE.BE.E7.BD.AE.E4.BA.8B.E4.BB.B6.E5.9B.9E.E8.B0.83.E9.85.8D.E7.BD.AE) 的方式来获取下发状态。
 func (c *Client) PullSmsSendStatus(request *PullSmsSendStatusRequest) (response *PullSmsSendStatusResponse, err error) {
     if request == nil {
         request = NewPullSmsSendStatusRequest()
@@ -365,6 +368,7 @@ func NewPullSmsSendStatusByPhoneNumberResponse() (response *PullSmsSendStatusByP
 }
 
 // 拉取单个号码短信下发状态。
+// >- 目前也支持 [配置回调](https://cloud.tencent.com/document/product/382/37809#.E8.AE.BE.E7.BD.AE.E4.BA.8B.E4.BB.B6.E5.9B.9E.E8.B0.83.E9.85.8D.E7.BD.AE) 的方式来获取下发状态。
 func (c *Client) PullSmsSendStatusByPhoneNumber(request *PullSmsSendStatusByPhoneNumberRequest) (response *PullSmsSendStatusByPhoneNumberResponse, err error) {
     if request == nil {
         request = NewPullSmsSendStatusByPhoneNumberRequest()

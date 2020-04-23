@@ -3312,7 +3312,7 @@ func NewDescribeVpcResourceDashboardResponse() (response *DescribeVpcResourceDas
     return
 }
 
-// 查看VPC资源
+// 本接口(DescribeVpcResourceDashboard)用于查看VPC资源信息。
 func (c *Client) DescribeVpcResourceDashboard(request *DescribeVpcResourceDashboardRequest) (response *DescribeVpcResourceDashboardResponse, err error) {
     if request == nil {
         request = NewDescribeVpcResourceDashboardRequest()

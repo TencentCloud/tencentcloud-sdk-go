@@ -2,46 +2,37 @@
 
 ## 访问管理(cam) 版本：2019-01-16
 
-### 第 18 次发布
+### 第 19 次发布
 
-发布时间：2020-04-22 08:04:48
+发布时间：2020-04-23 08:04:56
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
+新增接口：
+
+* [CreateServiceLinkedRole](https://cloud.tencent.com/document/api/598/43711)
+* [DeleteServiceLinkedRole](https://cloud.tencent.com/document/api/598/43710)
+* [GetServiceLinkedRoleDeletionStatus](https://cloud.tencent.com/document/api/598/43709)
+
 <font color="#dd0000">**删除接口**：</font>
 
-* Check
-* DescribeMFADeviceColl
-* DescribeMfaCodeStatus
-* DetectAuth
-* DetectMaskAuth
-* DetectState
+* CheckNewMfaCode
+* SetFlag
+
+<font color="#dd0000">**删除数据结构**：</font>
+
+* LoginActionFlag
+* OffsiteFlag
 
 
 
 ## 边缘计算模块(ecm) 版本：2019-07-19
 
-### 第 6 次发布
+### 第 7 次发布
 
-发布时间：2020-04-22 08:00:43
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [DescribeVpcs](https://cloud.tencent.com/document/api/1108/43663)
-
-
-
-## 云数据库 MongoDB(mongodb) 版本：2019-07-25
-
-### 第 3 次发布
-
-发布时间：2020-04-22 08:12:39
+发布时间：2020-04-23 08:00:50
 
 本次发布包含了以下内容：
 
@@ -49,26 +40,36 @@
 
 新增接口：
 
-* [DescribeDBInstanceDeal](https://cloud.tencent.com/document/api/240/43667)
-* [InquirePriceCreateDBInstances](https://cloud.tencent.com/document/api/240/43666)
-* [InquirePriceModifyDBInstanceSpec](https://cloud.tencent.com/document/api/240/43665)
-* [InquirePriceRenewDBInstances](https://cloud.tencent.com/document/api/240/43664)
-
-新增数据结构：
-
-* [DBInstancePrice](https://cloud.tencent.com/document/api/240/38576#DBInstancePrice)
+* [ResetInstancesPassword](https://cloud.tencent.com/document/api/1108/43707)
+* [StartInstances](https://cloud.tencent.com/document/api/1108/43706)
+* [StopInstances](https://cloud.tencent.com/document/api/1108/43705)
 
 
 
-## 云数据库 MongoDB(mongodb) 版本：2018-04-08
+## 弹性 MapReduce(emr) 版本：2019-01-03
+
+### 第 11 次发布
+
+发布时间：2020-04-23 08:09:03
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [ClusterInstancesInfo](https://cloud.tencent.com/document/api/589/33981#ClusterInstancesInfo)
+
+	* 新增成员：ProductId
 
 
 
-## 流量反欺诈(taf) 版本：2020-02-10
 
-### 第 2 次发布
+## 游戏服务器引擎(gse) 版本：2019-11-12
 
-发布时间：2020-04-22 08:00:09
+### 第 4 次发布
+
+发布时间：2020-04-23 08:01:55
 
 本次发布包含了以下内容：
 
@@ -76,21 +77,15 @@
 
 新增接口：
 
-* [DetectAccountActivity](https://cloud.tencent.com/document/api/1031/43662)
-
-新增数据结构：
-
-* [InputDetectAccountActivity](https://cloud.tencent.com/document/api/1031/43310#InputDetectAccountActivity)
-* [OutputDetectAccountActivity](https://cloud.tencent.com/document/api/1031/43310#OutputDetectAccountActivity)
-* [OutputDetectAccountActivityValue](https://cloud.tencent.com/document/api/1031/43310#OutputDetectAccountActivityValue)
+* [SearchGameServerSessions](https://cloud.tencent.com/document/api/1165/43708)
 
 
 
-## 点播(vod) 版本：2018-07-17
+## 图像分析(tiia) 版本：2019-05-29
 
-### 第 43 次发布
+### 第 11 次发布
 
-发布时间：2020-04-22 08:18:38
+发布时间：2020-04-23 08:16:03
 
 本次发布包含了以下内容：
 
@@ -98,17 +93,32 @@
 
 修改接口：
 
-* [CreateAdaptiveDynamicStreamingTemplate](https://cloud.tencent.com/document/api/266/43068)
+* [DetectCelebrity](https://cloud.tencent.com/document/api/865/36900)
 
-	* 新增入参：SubAppId
+	* 新增出参：Threshold
 
-* [DeleteAdaptiveDynamicStreamingTemplate](https://cloud.tencent.com/document/api/266/43066)
 
-	* 新增入参：SubAppId
+新增数据结构：
 
-* [ModifyAdaptiveDynamicStreamingTemplate](https://cloud.tencent.com/document/api/266/43063)
+* [Threshold](https://cloud.tencent.com/document/api/865/35474#Threshold)
 
-	* 新增入参：SubAppId
+
+
+## 私有网络(vpc) 版本：2017-03-12
+
+### 第 48 次发布
+
+发布时间：2020-04-23 08:17:22
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [Address](https://cloud.tencent.com/document/api/215/15824#Address)
+
+	* 新增成员：InternetServiceProvider
 
 
 
@@ -3103,6 +3113,30 @@
 
 
 ## 访问管理(cam) 版本：2019-01-16
+
+### 第 19 次发布
+
+发布时间：2020-04-23 08:04:56
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[CreateServiceLinkedRole](https://cloud.tencent.com/document/api/598/43711)](https://cloud.tencent.com/document/api/#/#)
+* [[DeleteServiceLinkedRole](https://cloud.tencent.com/document/api/598/43710)](https://cloud.tencent.com/document/api/#/#)
+* [[GetServiceLinkedRoleDeletionStatus](https://cloud.tencent.com/document/api/598/43709)](https://cloud.tencent.com/document/api/#/#)
+
+<font color="#dd0000">**删除接口**：</font>
+
+* CheckNewMfaCode
+* SetFlag
+
+<font color="#dd0000">**删除数据结构**：</font>
+
+* LoginActionFlag
+* OffsiteFlag
 
 ### 第 18 次发布
 
@@ -9740,6 +9774,20 @@
 
 ## 边缘计算模块(ecm) 版本：2019-07-19
 
+### 第 7 次发布
+
+发布时间：2020-04-23 08:00:50
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[ResetInstancesPassword](https://cloud.tencent.com/document/api/1108/43707)](https://cloud.tencent.com/document/api/#/#)
+* [[StartInstances](https://cloud.tencent.com/document/api/1108/43706)](https://cloud.tencent.com/document/api/#/#)
+* [[StopInstances](https://cloud.tencent.com/document/api/1108/43705)](https://cloud.tencent.com/document/api/#/#)
+
 ### 第 6 次发布
 
 发布时间：2020-04-22 08:00:43
@@ -9750,7 +9798,7 @@
 
 新增接口：
 
-* [[DescribeVpcs](https://cloud.tencent.com/document/api/1108/43663)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeVpcs](https://cloud.tencent.com/document/api/1108/43663)
 
 ### 第 5 次发布
 
@@ -9922,6 +9970,21 @@
 
 
 ## 弹性 MapReduce(emr) 版本：2019-01-03
+
+### 第 11 次发布
+
+发布时间：2020-04-23 08:09:03
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [ClusterInstancesInfo](https://cloud.tencent.com/document/api/589/33981#ClusterInstancesInfo)
+
+	* 新增成员：ProductId
+
 
 ### 第 10 次发布
 
@@ -11364,6 +11427,18 @@
 
 
 ## 游戏服务器引擎(gse) 版本：2019-11-12
+
+### 第 4 次发布
+
+发布时间：2020-04-23 08:01:55
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[SearchGameServerSessions](https://cloud.tencent.com/document/api/1165/43708)](https://cloud.tencent.com/document/api/#/#)
 
 ### 第 3 次发布
 
@@ -14793,14 +14868,14 @@
 
 新增接口：
 
-* [[DescribeDBInstanceDeal](https://cloud.tencent.com/document/api/240/43667)](https://cloud.tencent.com/document/api/#/#)
-* [[InquirePriceCreateDBInstances](https://cloud.tencent.com/document/api/240/43666)](https://cloud.tencent.com/document/api/#/#)
-* [[InquirePriceModifyDBInstanceSpec](https://cloud.tencent.com/document/api/240/43665)](https://cloud.tencent.com/document/api/#/#)
-* [[InquirePriceRenewDBInstances](https://cloud.tencent.com/document/api/240/43664)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeDBInstanceDeal](https://cloud.tencent.com/document/api/240/43667)
+* [InquirePriceCreateDBInstances](https://cloud.tencent.com/document/api/240/43666)
+* [InquirePriceModifyDBInstanceSpec](https://cloud.tencent.com/document/api/240/43665)
+* [InquirePriceRenewDBInstances](https://cloud.tencent.com/document/api/240/43664)
 
 新增数据结构：
 
-* [[DBInstancePrice](https://cloud.tencent.com/document/api/240/38576#DBInstancePrice)](https://cloud.tencent.com/document/api/240/38576#[DBInstancePrice](https://cloud.tencent.com/document/api/240/38576#DBInstancePrice))
+* [DBInstancePrice](https://cloud.tencent.com/document/api/240/38576#DBInstancePrice)
 
 ### 第 2 次发布
 
@@ -18759,13 +18834,13 @@
 
 新增接口：
 
-* [[DetectAccountActivity](https://cloud.tencent.com/document/api/1031/43662)](https://cloud.tencent.com/document/api/#/#)
+* [DetectAccountActivity](https://cloud.tencent.com/document/api/1031/43662)
 
 新增数据结构：
 
-* [[InputDetectAccountActivity](https://cloud.tencent.com/document/api/1031/43310#InputDetectAccountActivity)](https://cloud.tencent.com/document/api/1031/43310#[InputDetectAccountActivity](https://cloud.tencent.com/document/api/1031/43310#InputDetectAccountActivity))
-* [[OutputDetectAccountActivity](https://cloud.tencent.com/document/api/1031/43310#OutputDetectAccountActivity)](https://cloud.tencent.com/document/api/1031/43310#[OutputDetectAccountActivity](https://cloud.tencent.com/document/api/1031/43310#OutputDetectAccountActivity))
-* [[OutputDetectAccountActivityValue](https://cloud.tencent.com/document/api/1031/43310#OutputDetectAccountActivityValue)](https://cloud.tencent.com/document/api/1031/43310#[OutputDetectAccountActivityValue](https://cloud.tencent.com/document/api/1031/43310#OutputDetectAccountActivityValue))
+* [InputDetectAccountActivity](https://cloud.tencent.com/document/api/1031/43310#InputDetectAccountActivity)
+* [OutputDetectAccountActivity](https://cloud.tencent.com/document/api/1031/43310#OutputDetectAccountActivity)
+* [OutputDetectAccountActivityValue](https://cloud.tencent.com/document/api/1031/43310#OutputDetectAccountActivityValue)
 
 ### 第 1 次发布
 
@@ -20738,6 +20813,25 @@
 
 
 ## 图像分析(tiia) 版本：2019-05-29
+
+### 第 11 次发布
+
+发布时间：2020-04-23 08:16:03
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DetectCelebrity](https://cloud.tencent.com/document/api/865/36900)
+
+	* 新增出参：Threshold
+
+
+新增数据结构：
+
+* [[Threshold](https://cloud.tencent.com/document/api/865/35474#Threshold)](https://cloud.tencent.com/document/api/865/35474#[Threshold](https://cloud.tencent.com/document/api/865/35474#Threshold))
 
 ### 第 10 次发布
 
@@ -23808,6 +23902,21 @@
 
 
 ## 私有网络(vpc) 版本：2017-03-12
+
+### 第 48 次发布
+
+发布时间：2020-04-23 08:17:22
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [Address](https://cloud.tencent.com/document/api/215/15824#Address)
+
+	* 新增成员：InternetServiceProvider
+
 
 ### 第 47 次发布
 
