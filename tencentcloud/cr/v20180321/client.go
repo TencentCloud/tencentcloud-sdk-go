@@ -244,6 +244,31 @@ func (c *Client) DownloadReport(request *DownloadReportRequest) (response *Downl
     return
 }
 
+func NewQueryInstantDataRequest() (request *QueryInstantDataRequest) {
+    request = &QueryInstantDataRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cr", APIVersion, "QueryInstantData")
+    return
+}
+
+func NewQueryInstantDataResponse() (response *QueryInstantDataResponse) {
+    response = &QueryInstantDataResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 实时数据查询
+func (c *Client) QueryInstantData(request *QueryInstantDataRequest) (response *QueryInstantDataResponse, err error) {
+    if request == nil {
+        request = NewQueryInstantDataRequest()
+    }
+    response = NewQueryInstantDataResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewUploadDataFileRequest() (request *UploadDataFileRequest) {
     request = &UploadDataFileRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -265,6 +290,31 @@ func (c *Client) UploadDataFile(request *UploadDataFileRequest) (response *Uploa
         request = NewUploadDataFileRequest()
     }
     response = NewUploadDataFileResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewUploadDataJsonRequest() (request *UploadDataJsonRequest) {
+    request = &UploadDataJsonRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cr", APIVersion, "UploadDataJson")
+    return
+}
+
+func NewUploadDataJsonResponse() (response *UploadDataJsonResponse) {
+    response = &UploadDataJsonResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 上传Json格式数据，接口返回数据任务ID
+func (c *Client) UploadDataJson(request *UploadDataJsonRequest) (response *UploadDataJsonResponse, err error) {
+    if request == nil {
+        request = NewUploadDataJsonRequest()
+    }
+    response = NewUploadDataJsonResponse()
     err = c.Send(request, response)
     return
 }

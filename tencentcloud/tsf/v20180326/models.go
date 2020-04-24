@@ -5207,7 +5207,11 @@ type VmGroupSimple struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MicroserviceType *string `json:"MicroserviceType,omitempty" name:"MicroserviceType"`
 
-	// GroupResourceType
+	// 部署组资源类型
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	GroupResourceType *string `json:"GroupResourceType,omitempty" name:"GroupResourceType"`
+
+	// 部署组更新时间戳
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UpdatedTime *int64 `json:"UpdatedTime,omitempty" name:"UpdatedTime"`
 }

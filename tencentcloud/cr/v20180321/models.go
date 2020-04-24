@@ -468,6 +468,63 @@ func (r *DownloadReportResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type QueryInstantDataRequest struct {
+	*tchttp.BaseRequest
+
+	// 模块名，本接口取值：Data
+	Module *string `json:"Module,omitempty" name:"Module"`
+
+	// 操作名，本接口取值：Query
+	Operation *string `json:"Operation,omitempty" name:"Operation"`
+
+	// 产品ID
+	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
+
+	// 实例ID，不传默认为系统分配的初始实例
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 查询类型：callRecord 通话记录
+	QueryModel *string `json:"QueryModel,omitempty" name:"QueryModel"`
+
+	// 查询参数
+	Data *string `json:"Data,omitempty" name:"Data"`
+}
+
+func (r *QueryInstantDataRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *QueryInstantDataRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type QueryInstantDataResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 总数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 返回内容
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Data *string `json:"Data,omitempty" name:"Data"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *QueryInstantDataResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *QueryInstantDataResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type SingleBlackApply struct {
 
 	// 黑名单类型，01代表手机号码。
@@ -567,6 +624,56 @@ func (r *UploadDataFileResponse) ToJsonString() string {
 }
 
 func (r *UploadDataFileResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type UploadDataJsonRequest struct {
+	*tchttp.BaseRequest
+
+	// 模块名，本接口取值：Data
+	Module *string `json:"Module,omitempty" name:"Module"`
+
+	// 操作名，本接口取值：UploadJson
+	Operation *string `json:"Operation,omitempty" name:"Operation"`
+
+	// 报文信息
+	Data *string `json:"Data,omitempty" name:"Data"`
+
+	// <p>上传类型，不填默认到期/逾期提醒数据，取值范围：</p><ul style="margin-bottom:0px;"><li>data：到期/逾期提醒数据</li><li>repay：到期/逾期提醒停拨数据</li></ul>
+	UploadModel *string `json:"UploadModel,omitempty" name:"UploadModel"`
+
+	// 实例ID，不传默认为系统分配的初始实例。
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+}
+
+func (r *UploadDataJsonRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *UploadDataJsonRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type UploadDataJsonResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 响应报文信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Data *string `json:"Data,omitempty" name:"Data"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *UploadDataJsonResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *UploadDataJsonResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 

@@ -3071,6 +3071,46 @@ func (r *CreateSnapshotByTimeOffsetTemplateResponse) FromJsonString(s string) er
     return json.Unmarshal([]byte(s), &r)
 }
 
+type CreateSubAppIdRequest struct {
+	*tchttp.BaseRequest
+
+	// 子应用名称，长度限制：40个字符。
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 子应用简介，长度限制： 300个字符。
+	Description *string `json:"Description,omitempty" name:"Description"`
+}
+
+func (r *CreateSubAppIdRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateSubAppIdRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateSubAppIdResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 新创建的子应用 ID。
+		SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateSubAppIdResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateSubAppIdResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type CreateSuperPlayerConfigRequest struct {
 	*tchttp.BaseRequest
 
@@ -5935,6 +5975,9 @@ type ImageSpriteTemplate struct {
 	// <li>black：留黑，保持视频宽高比不变，边缘剩余部分使用黑色填充。</li>
 	// 默认值：black 。
 	FillType *string `json:"FillType,omitempty" name:"FillType"`
+
+	// 模板描述信息。
+	Comment *string `json:"Comment,omitempty" name:"Comment"`
 }
 
 type ImageTransform struct {
@@ -8289,6 +8332,9 @@ type PlayerConfig struct {
 
 	// 播放器配置最后修改时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
 	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
+
+	// 模板描述信息。
+	Comment *string `json:"Comment,omitempty" name:"Comment"`
 }
 
 type PoliticalAsrReviewTemplateInfo struct {
@@ -8613,6 +8659,9 @@ type ProcedureTemplate struct {
 	// <li>Preset：系统预置任务流模板；</li>
 	// <li>Custom：用户自定义任务流模板。</li>
 	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 模板描述信息，长度限制：256 个字符。
+	Comment *string `json:"Comment,omitempty" name:"Comment"`
 
 	// 视频处理类型任务参数。
 	// 注意：此字段可能返回 null，表示取不到有效值。

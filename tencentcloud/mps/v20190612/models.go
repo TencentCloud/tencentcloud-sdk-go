@@ -3786,6 +3786,9 @@ type ImageSpriteTemplate struct {
 	// <li>black：留黑，保持视频宽高比不变，边缘剩余部分使用黑色填充。</li>
 	// 默认值：black 。
 	FillType *string `json:"FillType,omitempty" name:"FillType"`
+
+	// 模板描述信息。
+	Comment *string `json:"Comment,omitempty" name:"Comment"`
 }
 
 type ImageWatermarkInput struct {

@@ -325,6 +325,14 @@ type WorkerDetail struct {
 	// FORBID-禁用
 	// UNAVAILABLE-不可用
 	ServiceState *string `json:"ServiceState,omitempty" name:"ServiceState"`
+
+	// 用户ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UserId *string `json:"UserId,omitempty" name:"UserId"`
+
+	// 游戏ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GameId *string `json:"GameId,omitempty" name:"GameId"`
 }
 
 type WorkerRegionInfo struct {

@@ -2039,6 +2039,10 @@ type DetailDomain struct {
 	// Scdn配置
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SecurityConfig *SecurityConfig `json:"SecurityConfig,omitempty" name:"SecurityConfig"`
+
+	// ImageOptimization配置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ImageOptimization *ImageOptimization `json:"ImageOptimization,omitempty" name:"ImageOptimization"`
 }
 
 type DisableCachesRequest struct {
@@ -2378,6 +2382,13 @@ func (r *GetDisableRecordsResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type GuetzliAdapter struct {
+
+	// 开关，"on/off"
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Switch *string `json:"Switch,omitempty" name:"Switch"`
+}
+
 type HttpHeaderPathRule struct {
 
 	// http 头部设置方式
@@ -2465,6 +2476,21 @@ type Https struct {
 	// failed：部署失败
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SslStatus *string `json:"SslStatus,omitempty" name:"SslStatus"`
+}
+
+type ImageOptimization struct {
+
+	// WebpAdapter配置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WebpAdapter *WebpAdapter `json:"WebpAdapter,omitempty" name:"WebpAdapter"`
+
+	// TpgAdapter配置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TpgAdapter *TpgAdapter `json:"TpgAdapter,omitempty" name:"TpgAdapter"`
+
+	// GuetzliAdapter配置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GuetzliAdapter *GuetzliAdapter `json:"GuetzliAdapter,omitempty" name:"GuetzliAdapter"`
 }
 
 type IpFilter struct {
@@ -3817,6 +3843,13 @@ type TopicInfo struct {
 	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
 }
 
+type TpgAdapter struct {
+
+	// 开关，"on/off"
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Switch *string `json:"Switch,omitempty" name:"Switch"`
+}
+
 type TrafficPackage struct {
 
 	// 流量包 Id
@@ -4072,4 +4105,11 @@ type ViolationUrl struct {
 
 	// 更新时间
 	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
+}
+
+type WebpAdapter struct {
+
+	// 开关，"on/off"
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Switch *string `json:"Switch,omitempty" name:"Switch"`
 }

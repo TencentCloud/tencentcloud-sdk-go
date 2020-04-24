@@ -1,10 +1,36 @@
 # 本版本更新包含以下内容：
 
-## 访问管理(cam) 版本：2019-01-16
+## 内容分发网络(cdn) 版本：2018-06-06
 
-### 第 19 次发布
+### 第 17 次发布
 
-发布时间：2020-04-23 08:04:56
+发布时间：2020-04-24 08:05:45
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增数据结构：
+
+* [GuetzliAdapter](https://cloud.tencent.com/document/api/228/30987#GuetzliAdapter)
+* [ImageOptimization](https://cloud.tencent.com/document/api/228/30987#ImageOptimization)
+* [TpgAdapter](https://cloud.tencent.com/document/api/228/30987#TpgAdapter)
+* [WebpAdapter](https://cloud.tencent.com/document/api/228/30987#WebpAdapter)
+
+修改数据结构：
+
+* [DetailDomain](https://cloud.tencent.com/document/api/228/30987#DetailDomain)
+
+	* 新增成员：ImageOptimization
+
+
+
+
+## 金融联络机器人(cr) 版本：2018-03-21
+
+### 第 10 次发布
+
+发布时间：2020-04-24 08:06:49
 
 本次发布包含了以下内容：
 
@@ -12,45 +38,16 @@
 
 新增接口：
 
-* [CreateServiceLinkedRole](https://cloud.tencent.com/document/api/598/43711)
-* [DeleteServiceLinkedRole](https://cloud.tencent.com/document/api/598/43710)
-* [GetServiceLinkedRoleDeletionStatus](https://cloud.tencent.com/document/api/598/43709)
-
-<font color="#dd0000">**删除接口**：</font>
-
-* CheckNewMfaCode
-* SetFlag
-
-<font color="#dd0000">**删除数据结构**：</font>
-
-* LoginActionFlag
-* OffsiteFlag
+* [QueryInstantData](https://cloud.tencent.com/document/api/656/43742)
+* [UploadDataJson](https://cloud.tencent.com/document/api/656/43741)
 
 
 
-## 边缘计算模块(ecm) 版本：2019-07-19
+## 云游戏解决方案(gs) 版本：2019-11-18
 
-### 第 7 次发布
+### 第 5 次发布
 
-发布时间：2020-04-23 08:00:50
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [ResetInstancesPassword](https://cloud.tencent.com/document/api/1108/43707)
-* [StartInstances](https://cloud.tencent.com/document/api/1108/43706)
-* [StopInstances](https://cloud.tencent.com/document/api/1108/43705)
-
-
-
-## 弹性 MapReduce(emr) 版本：2019-01-03
-
-### 第 11 次发布
-
-发布时间：2020-04-23 08:09:03
+发布时间：2020-04-24 08:02:17
 
 本次发布包含了以下内容：
 
@@ -58,18 +55,18 @@
 
 修改数据结构：
 
-* [ClusterInstancesInfo](https://cloud.tencent.com/document/api/589/33981#ClusterInstancesInfo)
+* [WorkerDetail](https://cloud.tencent.com/document/api/1162/40743#WorkerDetail)
 
-	* 新增成员：ProductId
-
-
+	* 新增成员：UserId, GameId
 
 
-## 游戏服务器引擎(gse) 版本：2019-11-12
 
-### 第 4 次发布
 
-发布时间：2020-04-23 08:01:55
+## 直播(live) 版本：2018-08-01
+
+### 第 41 次发布
+
+发布时间：2020-04-24 08:11:08
 
 本次发布包含了以下内容：
 
@@ -77,15 +74,19 @@
 
 新增接口：
 
-* [SearchGameServerSessions](https://cloud.tencent.com/document/api/1165/43708)
+* [DescribeAllStreamPlayInfoList](https://cloud.tencent.com/document/api/267/43743)
+
+新增数据结构：
+
+* [MonitorStreamPlayInfo](https://cloud.tencent.com/document/api/267/20474#MonitorStreamPlayInfo)
 
 
 
-## 图像分析(tiia) 版本：2019-05-29
+## 云数据库 MariaDB(mariadb) 版本：2017-03-12
 
-### 第 11 次发布
+### 第 9 次发布
 
-发布时间：2020-04-23 08:16:03
+发布时间：2020-04-24 08:11:39
 
 本次发布包含了以下内容：
 
@@ -93,22 +94,26 @@
 
 修改接口：
 
-* [DetectCelebrity](https://cloud.tencent.com/document/api/865/36900)
+* [CreateDBInstance](https://cloud.tencent.com/document/api/237/16180)
 
-	* 新增出参：Threshold
+	* 新增入参：InstanceName, SecurityGroupIds, AutoRenewFlag
+
+* [DescribePrice](https://cloud.tencent.com/document/api/237/16175)
+
+	* 新增入参：Paymode
+
+* [ModifyDBInstanceName](https://cloud.tencent.com/document/api/237/16190)
+
+	* 新增出参：InstanceId
 
 
-新增数据结构：
-
-* [Threshold](https://cloud.tencent.com/document/api/865/35474#Threshold)
 
 
+## 视频处理(mps) 版本：2019-06-12
 
-## 私有网络(vpc) 版本：2017-03-12
+### 第 17 次发布
 
-### 第 48 次发布
-
-发布时间：2020-04-23 08:17:22
+发布时间：2020-04-24 08:12:21
 
 本次发布包含了以下内容：
 
@@ -116,9 +121,78 @@
 
 修改数据结构：
 
-* [Address](https://cloud.tencent.com/document/api/215/15824#Address)
+* [ImageSpriteTemplate](https://cloud.tencent.com/document/api/862/37615#ImageSpriteTemplate)
 
-	* 新增成员：InternetServiceProvider
+	* 新增成员：Comment
+
+
+
+
+## 云函数(scf) 版本：2018-04-16
+
+### 第 10 次发布
+
+发布时间：2020-04-24 08:14:03
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [Trigger](https://cloud.tencent.com/document/api/583/17244#Trigger)
+
+	* 新增成员：AvailableStatus
+
+
+
+
+## 腾讯分布式服务框架(tsf) 版本：2018-03-26
+
+### 第 17 次发布
+
+发布时间：2020-04-24 08:16:28
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [VmGroupSimple](https://cloud.tencent.com/document/api/649/36099#VmGroupSimple)
+
+	* 新增成员：UpdatedTime
+
+
+
+
+## 点播(vod) 版本：2018-07-17
+
+### 第 44 次发布
+
+发布时间：2020-04-24 08:17:44
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CreateSubAppId](https://cloud.tencent.com/document/api/266/43744)
+
+修改数据结构：
+
+* [ImageSpriteTemplate](https://cloud.tencent.com/document/api/266/31773#ImageSpriteTemplate)
+
+	* 新增成员：Comment
+
+* [PlayerConfig](https://cloud.tencent.com/document/api/266/31773#PlayerConfig)
+
+	* 新增成员：Comment
+
+* [ProcedureTemplate](https://cloud.tencent.com/document/api/266/31773#ProcedureTemplate)
+
+	* 新增成员：Comment
 
 
 
@@ -3124,9 +3198,9 @@
 
 新增接口：
 
-* [[CreateServiceLinkedRole](https://cloud.tencent.com/document/api/598/43711)](https://cloud.tencent.com/document/api/#/#)
-* [[DeleteServiceLinkedRole](https://cloud.tencent.com/document/api/598/43710)](https://cloud.tencent.com/document/api/#/#)
-* [[GetServiceLinkedRoleDeletionStatus](https://cloud.tencent.com/document/api/598/43709)](https://cloud.tencent.com/document/api/#/#)
+* [CreateServiceLinkedRole](https://cloud.tencent.com/document/api/598/43711)
+* [DeleteServiceLinkedRole](https://cloud.tencent.com/document/api/598/43710)
+* [GetServiceLinkedRoleDeletionStatus](https://cloud.tencent.com/document/api/598/43709)
 
 <font color="#dd0000">**删除接口**：</font>
 
@@ -4996,6 +5070,28 @@
 
 
 ## 内容分发网络(cdn) 版本：2018-06-06
+
+### 第 17 次发布
+
+发布时间：2020-04-24 08:05:45
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增数据结构：
+
+* [[GuetzliAdapter](https://cloud.tencent.com/document/api/228/30987#GuetzliAdapter)](https://cloud.tencent.com/document/api/228/30987#[GuetzliAdapter](https://cloud.tencent.com/document/api/228/30987#GuetzliAdapter))
+* [[ImageOptimization](https://cloud.tencent.com/document/api/228/30987#ImageOptimization)](https://cloud.tencent.com/document/api/228/30987#[ImageOptimization](https://cloud.tencent.com/document/api/228/30987#ImageOptimization))
+* [[TpgAdapter](https://cloud.tencent.com/document/api/228/30987#TpgAdapter)](https://cloud.tencent.com/document/api/228/30987#[TpgAdapter](https://cloud.tencent.com/document/api/228/30987#TpgAdapter))
+* [[WebpAdapter](https://cloud.tencent.com/document/api/228/30987#WebpAdapter)](https://cloud.tencent.com/document/api/228/30987#[WebpAdapter](https://cloud.tencent.com/document/api/228/30987#WebpAdapter))
+
+修改数据结构：
+
+* [DetailDomain](https://cloud.tencent.com/document/api/228/30987#DetailDomain)
+
+	* 新增成员：ImageOptimization
+
 
 ### 第 16 次发布
 
@@ -7220,6 +7316,19 @@
 
 
 ## 金融联络机器人(cr) 版本：2018-03-21
+
+### 第 10 次发布
+
+发布时间：2020-04-24 08:06:49
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[QueryInstantData](https://cloud.tencent.com/document/api/656/43742)](https://cloud.tencent.com/document/api/#/#)
+* [[UploadDataJson](https://cloud.tencent.com/document/api/656/43741)](https://cloud.tencent.com/document/api/#/#)
 
 ### 第 9 次发布
 
@@ -9784,9 +9893,9 @@
 
 新增接口：
 
-* [[ResetInstancesPassword](https://cloud.tencent.com/document/api/1108/43707)](https://cloud.tencent.com/document/api/#/#)
-* [[StartInstances](https://cloud.tencent.com/document/api/1108/43706)](https://cloud.tencent.com/document/api/#/#)
-* [[StopInstances](https://cloud.tencent.com/document/api/1108/43705)](https://cloud.tencent.com/document/api/#/#)
+* [ResetInstancesPassword](https://cloud.tencent.com/document/api/1108/43707)
+* [StartInstances](https://cloud.tencent.com/document/api/1108/43706)
+* [StopInstances](https://cloud.tencent.com/document/api/1108/43705)
 
 ### 第 6 次发布
 
@@ -11353,6 +11462,21 @@
 
 ## 云游戏解决方案(gs) 版本：2019-11-18
 
+### 第 5 次发布
+
+发布时间：2020-04-24 08:02:17
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [WorkerDetail](https://cloud.tencent.com/document/api/1162/40743#WorkerDetail)
+
+	* 新增成员：UserId, GameId
+
+
 ### 第 4 次发布
 
 发布时间：2020-03-17 08:00:26
@@ -11438,7 +11562,7 @@
 
 新增接口：
 
-* [[SearchGameServerSessions](https://cloud.tencent.com/document/api/1165/43708)](https://cloud.tencent.com/document/api/#/#)
+* [SearchGameServerSessions](https://cloud.tencent.com/document/api/1165/43708)
 
 ### 第 3 次发布
 
@@ -13432,6 +13556,22 @@
 
 ## 直播(live) 版本：2018-08-01
 
+### 第 41 次发布
+
+发布时间：2020-04-24 08:11:08
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeAllStreamPlayInfoList](https://cloud.tencent.com/document/api/267/43743)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[MonitorStreamPlayInfo](https://cloud.tencent.com/document/api/267/20474#MonitorStreamPlayInfo)](https://cloud.tencent.com/document/api/267/20474#[MonitorStreamPlayInfo](https://cloud.tencent.com/document/api/267/20474#MonitorStreamPlayInfo))
+
 ### 第 40 次发布
 
 发布时间：2020-04-20 08:11:19
@@ -14408,6 +14548,29 @@
 
 ## 云数据库 MariaDB(mariadb) 版本：2017-03-12
 
+### 第 9 次发布
+
+发布时间：2020-04-24 08:11:39
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateDBInstance](https://cloud.tencent.com/document/api/237/16180)
+
+	* 新增入参：InstanceName, SecurityGroupIds, AutoRenewFlag
+
+* [DescribePrice](https://cloud.tencent.com/document/api/237/16175)
+
+	* 新增入参：Paymode
+
+* [ModifyDBInstanceName](https://cloud.tencent.com/document/api/237/16190)
+
+	* 新增出参：InstanceId
+
+
 ### 第 8 次发布
 
 发布时间：2020-03-16 08:13:52
@@ -15167,6 +15330,21 @@
 
 
 ## 视频处理(mps) 版本：2019-06-12
+
+### 第 17 次发布
+
+发布时间：2020-04-24 08:12:21
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [ImageSpriteTemplate](https://cloud.tencent.com/document/api/862/37615#ImageSpriteTemplate)
+
+	* 新增成员：Comment
+
 
 ### 第 16 次发布
 
@@ -17677,6 +17855,21 @@
 
 
 ## 云函数(scf) 版本：2018-04-16
+
+### 第 10 次发布
+
+发布时间：2020-04-24 08:14:03
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [Trigger](https://cloud.tencent.com/document/api/583/17244#Trigger)
+
+	* 新增成员：AvailableStatus
+
 
 ### 第 9 次发布
 
@@ -20831,7 +21024,7 @@
 
 新增数据结构：
 
-* [[Threshold](https://cloud.tencent.com/document/api/865/35474#Threshold)](https://cloud.tencent.com/document/api/865/35474#[Threshold](https://cloud.tencent.com/document/api/865/35474#Threshold))
+* [Threshold](https://cloud.tencent.com/document/api/865/35474#Threshold)
 
 ### 第 10 次发布
 
@@ -21860,6 +22053,21 @@
 
 ## 腾讯分布式服务框架(tsf) 版本：2018-03-26
 
+### 第 17 次发布
+
+发布时间：2020-04-24 08:16:28
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [VmGroupSimple](https://cloud.tencent.com/document/api/649/36099#VmGroupSimple)
+
+	* 新增成员：UpdatedTime
+
+
 ### 第 16 次发布
 
 发布时间：2020-04-16 08:16:24
@@ -22394,6 +22602,33 @@
 
 
 ## 点播(vod) 版本：2018-07-17
+
+### 第 44 次发布
+
+发布时间：2020-04-24 08:17:44
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[CreateSubAppId](https://cloud.tencent.com/document/api/266/43744)](https://cloud.tencent.com/document/api/#/#)
+
+修改数据结构：
+
+* [ImageSpriteTemplate](https://cloud.tencent.com/document/api/266/31773#ImageSpriteTemplate)
+
+	* 新增成员：Comment
+
+* [PlayerConfig](https://cloud.tencent.com/document/api/266/31773#PlayerConfig)
+
+	* 新增成员：Comment
+
+* [ProcedureTemplate](https://cloud.tencent.com/document/api/266/31773#ProcedureTemplate)
+
+	* 新增成员：Comment
+
 
 ### 第 43 次发布
 

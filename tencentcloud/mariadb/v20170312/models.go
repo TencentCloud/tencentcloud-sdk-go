@@ -275,6 +275,15 @@ type CreateDBInstanceRequest struct {
 
 	// 数据库引擎版本，当前可选：10.0.10，10.1.9，5.7.17。如果不传的话，默认为 Mariadb 10.1.9。
 	DbVersionId *string `json:"DbVersionId,omitempty" name:"DbVersionId"`
+
+	// 实例名称， 可以通过该字段自主的设置实例的名字
+	InstanceName *string `json:"InstanceName,omitempty" name:"InstanceName"`
+
+	// 安全组ID列表
+	SecurityGroupIds []*string `json:"SecurityGroupIds,omitempty" name:"SecurityGroupIds" list`
+
+	// 自动续费标志，1:自动续费，2:不自动续费
+	AutoRenewFlag *int64 `json:"AutoRenewFlag,omitempty" name:"AutoRenewFlag"`
 }
 
 func (r *CreateDBInstanceRequest) ToJsonString() string {
@@ -1434,6 +1443,9 @@ type DescribePriceRequest struct {
 
 	// 欲购买的数量，默认查询购买1个实例的价格。
 	Count *int64 `json:"Count,omitempty" name:"Count"`
+
+	// 付费类型。postpaid：按量付费   prepaid：预付费
+	Paymode *string `json:"Paymode,omitempty" name:"Paymode"`
 }
 
 func (r *DescribePriceRequest) ToJsonString() string {
@@ -1886,6 +1898,9 @@ func (r *ModifyDBInstanceNameRequest) FromJsonString(s string) error {
 type ModifyDBInstanceNameResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
+
+		// 实例ID
+		InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`

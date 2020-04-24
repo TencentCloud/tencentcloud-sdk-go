@@ -430,6 +430,31 @@ func (c *Client) CreateSnapshotByTimeOffsetTemplate(request *CreateSnapshotByTim
     return
 }
 
+func NewCreateSubAppIdRequest() (request *CreateSubAppIdRequest) {
+    request = &CreateSubAppIdRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vod", APIVersion, "CreateSubAppId")
+    return
+}
+
+func NewCreateSubAppIdResponse() (response *CreateSubAppIdResponse) {
+    response = &CreateSubAppIdResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 该接口用于创建点播子应用。
+func (c *Client) CreateSubAppId(request *CreateSubAppIdRequest) (response *CreateSubAppIdResponse, err error) {
+    if request == nil {
+        request = NewCreateSubAppIdRequest()
+    }
+    response = NewCreateSubAppIdResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateSuperPlayerConfigRequest() (request *CreateSuperPlayerConfigRequest) {
     request = &CreateSuperPlayerConfigRequest{
         BaseRequest: &tchttp.BaseRequest{},

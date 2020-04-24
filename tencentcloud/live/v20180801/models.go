@@ -1874,6 +1874,46 @@ func (r *DeletePullStreamConfigResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeAllStreamPlayInfoListRequest struct {
+	*tchttp.BaseRequest
+
+	// 查询时间点，精确到分钟粒度，支持最近1个月的数据查询，数据延迟为5分钟左右，如果要查询实时的数据，建议传递5分钟前的时间点，格式为yyyy-mm-dd HH:MM:SS。
+	QueryTime *string `json:"QueryTime,omitempty" name:"QueryTime"`
+}
+
+func (r *DescribeAllStreamPlayInfoListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeAllStreamPlayInfoListRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeAllStreamPlayInfoListResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 查询时间点，回传的输入参数中的查询时间。
+		QueryTime *string `json:"QueryTime,omitempty" name:"QueryTime"`
+
+		// 数据信息列表。
+		DataInfoList []*MonitorStreamPlayInfo `json:"DataInfoList,omitempty" name:"DataInfoList" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeAllStreamPlayInfoListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeAllStreamPlayInfoListResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeBillBandwidthAndFluxListRequest struct {
 	*tchttp.BaseRequest
 
@@ -5255,6 +5295,30 @@ func (r *ModifyPullStreamStatusResponse) ToJsonString() string {
 
 func (r *ModifyPullStreamStatusResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
+}
+
+type MonitorStreamPlayInfo struct {
+
+	// 播放域名。
+	PlayDomain *string `json:"PlayDomain,omitempty" name:"PlayDomain"`
+
+	// 流id。
+	StreamName *string `json:"StreamName,omitempty" name:"StreamName"`
+
+	// 播放码率，0表示原始码率。
+	Rate *uint64 `json:"Rate,omitempty" name:"Rate"`
+
+	// 播放协议，可选值包括 Unknown，Flv，Hls，Rtmp，Huyap2p。
+	Protocol *string `json:"Protocol,omitempty" name:"Protocol"`
+
+	// 带宽，单位是Mbps。
+	Bandwidth *float64 `json:"Bandwidth,omitempty" name:"Bandwidth"`
+
+	// 在线人数，1分钟采样一个点，统计采样点的tcp链接数目。
+	Online *uint64 `json:"Online,omitempty" name:"Online"`
+
+	// 请求数。
+	Request *uint64 `json:"Request,omitempty" name:"Request"`
 }
 
 type PlayAuthKeyInfo struct {

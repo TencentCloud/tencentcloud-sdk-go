@@ -732,7 +732,7 @@ type DescribeCertificatesRequest struct {
 	// 每页数量，默认20。
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 
-	// 搜索关键词。
+	// 搜索关键词，可搜索证书 ID、备注名称、域名。例如： a8xHcaIs。
 	SearchKey *string `json:"SearchKey,omitempty" name:"SearchKey"`
 
 	// 证书类型：CA = 客户端证书，SVR = 服务器证书。

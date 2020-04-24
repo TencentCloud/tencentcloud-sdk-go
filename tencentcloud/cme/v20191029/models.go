@@ -2265,7 +2265,7 @@ type VideoMaterial struct {
 	// 素材媒体文件的封面图片地址。
 	CoverUrl *string `json:"CoverUrl,omitempty" name:"CoverUrl"`
 
-	// 媒体文件分辨率。
+	// 媒体文件分辨率。取值为：LD/SD/HD/FHD/2K/4K。
 	Resolution *string `json:"Resolution,omitempty" name:"Resolution"`
 }
 

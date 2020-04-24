@@ -874,6 +874,31 @@ func (c *Client) DeletePullStreamConfig(request *DeletePullStreamConfigRequest) 
     return
 }
 
+func NewDescribeAllStreamPlayInfoListRequest() (request *DescribeAllStreamPlayInfoListRequest) {
+    request = &DescribeAllStreamPlayInfoListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("live", APIVersion, "DescribeAllStreamPlayInfoList")
+    return
+}
+
+func NewDescribeAllStreamPlayInfoListResponse() (response *DescribeAllStreamPlayInfoListResponse) {
+    response = &DescribeAllStreamPlayInfoListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 输入某个时间点（1分钟维度），查询该时间点所有流的下行信息。
+func (c *Client) DescribeAllStreamPlayInfoList(request *DescribeAllStreamPlayInfoListRequest) (response *DescribeAllStreamPlayInfoListResponse, err error) {
+    if request == nil {
+        request = NewDescribeAllStreamPlayInfoListRequest()
+    }
+    response = NewDescribeAllStreamPlayInfoListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeBillBandwidthAndFluxListRequest() (request *DescribeBillBandwidthAndFluxListRequest) {
     request = &DescribeBillBandwidthAndFluxListRequest{
         BaseRequest: &tchttp.BaseRequest{},
