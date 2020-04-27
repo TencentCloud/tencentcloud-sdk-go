@@ -122,10 +122,9 @@ type CheckSimilarPersonRequest struct {
 	// 人员库总人数不可超过200万，人员库个数不可超过10个。
 	GroupIds []*string `json:"GroupIds,omitempty" name:"GroupIds" list`
 
-	// 疑似同一人判断控制。  
-	// 1：宽松的同一人要求； 
-	// 2：严格的同一人要求。  
-	// 注： 要求越高，则疑似同一人的概率越小。
+	// 人员查重整理力度的控制。
+	// 1：力度较高的档案整理，能够消除更多的重复身份，对应稍高的非重复身份误清除率；
+	// 2：力度较低的档案整理，非重复身份的误清除率较低，对应稍低的重复身份消除率。
 	UniquePersonControl *int64 `json:"UniquePersonControl,omitempty" name:"UniquePersonControl"`
 }
 

@@ -851,31 +851,6 @@ func (c *Client) QueryInvoice(request *QueryInvoiceRequest) (response *QueryInvo
     return
 }
 
-func NewQueryInvoiceForManagementRequest() (request *QueryInvoiceForManagementRequest) {
-    request = &QueryInvoiceForManagementRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    request.Init().WithApiInfo("cpdp", APIVersion, "QueryInvoiceForManagement")
-    return
-}
-
-func NewQueryInvoiceForManagementResponse() (response *QueryInvoiceForManagementResponse) {
-    response = &QueryInvoiceForManagementResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    }
-    return
-}
-
-// 智慧零售-查询管理端发票
-func (c *Client) QueryInvoiceForManagement(request *QueryInvoiceForManagementRequest) (response *QueryInvoiceForManagementResponse, err error) {
-    if request == nil {
-        request = NewQueryInvoiceForManagementRequest()
-    }
-    response = NewQueryInvoiceForManagementResponse()
-    err = c.Send(request, response)
-    return
-}
-
 func NewQueryMemberBindRequest() (request *QueryMemberBindRequest) {
     request = &QueryMemberBindRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -948,31 +923,6 @@ func (c *Client) QueryMerchantBalance(request *QueryMerchantBalanceRequest) (res
         request = NewQueryMerchantBalanceRequest()
     }
     response = NewQueryMerchantBalanceResponse()
-    err = c.Send(request, response)
-    return
-}
-
-func NewQueryMerchantInfoForManagementRequest() (request *QueryMerchantInfoForManagementRequest) {
-    request = &QueryMerchantInfoForManagementRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    request.Init().WithApiInfo("cpdp", APIVersion, "QueryMerchantInfoForManagement")
-    return
-}
-
-func NewQueryMerchantInfoForManagementResponse() (response *QueryMerchantInfoForManagementResponse) {
-    response = &QueryMerchantInfoForManagementResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    }
-    return
-}
-
-// 智慧零售-查询管理端商户
-func (c *Client) QueryMerchantInfoForManagement(request *QueryMerchantInfoForManagementRequest) (response *QueryMerchantInfoForManagementResponse, err error) {
-    if request == nil {
-        request = NewQueryMerchantInfoForManagementRequest()
-    }
-    response = NewQueryMerchantInfoForManagementResponse()
     err = c.Send(request, response)
     return
 }

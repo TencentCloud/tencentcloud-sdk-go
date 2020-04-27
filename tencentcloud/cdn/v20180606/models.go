@@ -1186,6 +1186,52 @@ func (r *DescribeDomainsResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeImageConfigRequest struct {
+	*tchttp.BaseRequest
+
+	// 域名
+	Domain *string `json:"Domain,omitempty" name:"Domain"`
+}
+
+func (r *DescribeImageConfigRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeImageConfigRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeImageConfigResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// WebpAdapter配置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		WebpAdapter *WebpAdapter `json:"WebpAdapter,omitempty" name:"WebpAdapter"`
+
+		// TpgAdapter配置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		TpgAdapter *TpgAdapter `json:"TpgAdapter,omitempty" name:"TpgAdapter"`
+
+		// GuetzliAdapter配置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		GuetzliAdapter *GuetzliAdapter `json:"GuetzliAdapter,omitempty" name:"GuetzliAdapter"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeImageConfigResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeImageConfigResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeIpStatusRequest struct {
 	*tchttp.BaseRequest
 
@@ -4014,6 +4060,49 @@ func (r *UpdateDomainConfigResponse) ToJsonString() string {
 }
 
 func (r *UpdateDomainConfigResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type UpdateImageConfigRequest struct {
+	*tchttp.BaseRequest
+
+	// 域名
+	Domain *string `json:"Domain,omitempty" name:"Domain"`
+
+	// WebpAdapter配置项
+	WebpAdapter *WebpAdapter `json:"WebpAdapter,omitempty" name:"WebpAdapter"`
+
+	// TpgAdapter配置项
+	TpgAdapter *TpgAdapter `json:"TpgAdapter,omitempty" name:"TpgAdapter"`
+
+	// GuetzliAdapter配置项
+	GuetzliAdapter *GuetzliAdapter `json:"GuetzliAdapter,omitempty" name:"GuetzliAdapter"`
+}
+
+func (r *UpdateImageConfigRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *UpdateImageConfigRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type UpdateImageConfigResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *UpdateImageConfigResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *UpdateImageConfigResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 

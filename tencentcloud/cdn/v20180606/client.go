@@ -327,6 +327,31 @@ func (c *Client) DescribeDomainsConfig(request *DescribeDomainsConfigRequest) (r
     return
 }
 
+func NewDescribeImageConfigRequest() (request *DescribeImageConfigRequest) {
+    request = &DescribeImageConfigRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cdn", APIVersion, "DescribeImageConfig")
+    return
+}
+
+func NewDescribeImageConfigResponse() (response *DescribeImageConfigResponse) {
+    response = &DescribeImageConfigResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 获取域名图片优化的当前配置，支持Webp、TPG、Guetzli 
+func (c *Client) DescribeImageConfig(request *DescribeImageConfigRequest) (response *DescribeImageConfigResponse, err error) {
+    if request == nil {
+        request = NewDescribeImageConfigRequest()
+    }
+    response = NewDescribeImageConfigResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeIpStatusRequest() (request *DescribeIpStatusRequest) {
     request = &DescribeIpStatusRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1053,6 +1078,31 @@ func (c *Client) UpdateDomainConfig(request *UpdateDomainConfigRequest) (respons
         request = NewUpdateDomainConfigRequest()
     }
     response = NewUpdateDomainConfigResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewUpdateImageConfigRequest() (request *UpdateImageConfigRequest) {
+    request = &UpdateImageConfigRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cdn", APIVersion, "UpdateImageConfig")
+    return
+}
+
+func NewUpdateImageConfigResponse() (response *UpdateImageConfigResponse) {
+    response = &UpdateImageConfigResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 更新控制台图片优化的相关配置，支持Webp、TPG、Guetzli 
+func (c *Client) UpdateImageConfig(request *UpdateImageConfigRequest) (response *UpdateImageConfigResponse, err error) {
+    if request == nil {
+        request = NewUpdateImageConfigRequest()
+    }
+    response = NewUpdateImageConfigResponse()
     err = c.Send(request, response)
     return
 }

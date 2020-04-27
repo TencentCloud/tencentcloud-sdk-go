@@ -176,6 +176,55 @@ func (r *DescribeWorkersResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type EnterQueueRequest struct {
+	*tchttp.BaseRequest
+
+	// true：第一次请求排队 false：已在排队中，查询当前排名
+	First *bool `json:"First,omitempty" name:"First"`
+
+	// 游戏ID
+	GameId *string `json:"GameId,omitempty" name:"GameId"`
+
+	// 用户ID
+	UserId *string `json:"UserId,omitempty" name:"UserId"`
+
+	// 资源池编号
+	SetNumber *uint64 `json:"SetNumber,omitempty" name:"SetNumber"`
+}
+
+func (r *EnterQueueRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *EnterQueueRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type EnterQueueResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 排名
+		Rank *uint64 `json:"Rank,omitempty" name:"Rank"`
+
+		// 机器锁定成功
+		LockSuccess *bool `json:"LockSuccess,omitempty" name:"LockSuccess"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *EnterQueueResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *EnterQueueResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type ModifyWorkersRequest struct {
 	*tchttp.BaseRequest
 
@@ -210,6 +259,43 @@ func (r *ModifyWorkersResponse) ToJsonString() string {
 }
 
 func (r *ModifyWorkersResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type QuitQueueRequest struct {
+	*tchttp.BaseRequest
+
+	// 用户ID
+	UserId *string `json:"UserId,omitempty" name:"UserId"`
+
+	// 资源池编号
+	SetNumber *uint64 `json:"SetNumber,omitempty" name:"SetNumber"`
+}
+
+func (r *QuitQueueRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *QuitQueueRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type QuitQueueResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *QuitQueueResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *QuitQueueResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 

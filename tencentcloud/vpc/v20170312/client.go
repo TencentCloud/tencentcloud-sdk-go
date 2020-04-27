@@ -3984,6 +3984,33 @@ func (c *Client) ModifyAddressAttribute(request *ModifyAddressAttributeRequest) 
     return
 }
 
+func NewModifyAddressInternetChargeTypeRequest() (request *ModifyAddressInternetChargeTypeRequest) {
+    request = &ModifyAddressInternetChargeTypeRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "ModifyAddressInternetChargeType")
+    return
+}
+
+func NewModifyAddressInternetChargeTypeResponse() (response *ModifyAddressInternetChargeTypeResponse) {
+    response = &ModifyAddressInternetChargeTypeResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 该接口用于调整具有带宽属性弹性公网IP的网络计费模式
+// * 支持BANDWIDTH_PREPAID_BY_MONTH和TRAFFIC_POSTPAID_BY_HOUR两种网络计费模式之间的切换。
+// * 每个弹性公网IP支持调整两次，次数超出则无法调整。
+func (c *Client) ModifyAddressInternetChargeType(request *ModifyAddressInternetChargeTypeRequest) (response *ModifyAddressInternetChargeTypeResponse, err error) {
+    if request == nil {
+        request = NewModifyAddressInternetChargeTypeRequest()
+    }
+    response = NewModifyAddressInternetChargeTypeResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyAddressTemplateAttributeRequest() (request *ModifyAddressTemplateAttributeRequest) {
     request = &ModifyAddressTemplateAttributeRequest{
         BaseRequest: &tchttp.BaseRequest{},

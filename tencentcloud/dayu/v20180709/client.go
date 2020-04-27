@@ -418,6 +418,56 @@ func (c *Client) CreateNetReturn(request *CreateNetReturnRequest) (response *Cre
     return
 }
 
+func NewCreateNewL4RulesRequest() (request *CreateNewL4RulesRequest) {
+    request = &CreateNewL4RulesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("dayu", APIVersion, "CreateNewL4Rules")
+    return
+}
+
+func NewCreateNewL4RulesResponse() (response *CreateNewL4RulesResponse) {
+    response = &CreateNewL4RulesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 添加L4转发规则
+func (c *Client) CreateNewL4Rules(request *CreateNewL4RulesRequest) (response *CreateNewL4RulesResponse, err error) {
+    if request == nil {
+        request = NewCreateNewL4RulesRequest()
+    }
+    response = NewCreateNewL4RulesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateNewL7RulesRequest() (request *CreateNewL7RulesRequest) {
+    request = &CreateNewL7RulesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("dayu", APIVersion, "CreateNewL7Rules")
+    return
+}
+
+func NewCreateNewL7RulesResponse() (response *CreateNewL7RulesResponse) {
+    response = &CreateNewL7RulesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 添加7层转发规则
+func (c *Client) CreateNewL7Rules(request *CreateNewL7RulesRequest) (response *CreateNewL7RulesResponse, err error) {
+    if request == nil {
+        request = NewCreateNewL7RulesRequest()
+    }
+    response = NewCreateNewL7RulesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateUnblockIpRequest() (request *CreateUnblockIpRequest) {
     request = &CreateUnblockIpRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -589,6 +639,56 @@ func (c *Client) DeleteL7Rules(request *DeleteL7RulesRequest) (response *DeleteL
         request = NewDeleteL7RulesRequest()
     }
     response = NewDeleteL7RulesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteNewL4RulesRequest() (request *DeleteNewL4RulesRequest) {
+    request = &DeleteNewL4RulesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("dayu", APIVersion, "DeleteNewL4Rules")
+    return
+}
+
+func NewDeleteNewL4RulesResponse() (response *DeleteNewL4RulesResponse) {
+    response = &DeleteNewL4RulesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 删除L4转发规则
+func (c *Client) DeleteNewL4Rules(request *DeleteNewL4RulesRequest) (response *DeleteNewL4RulesResponse, err error) {
+    if request == nil {
+        request = NewDeleteNewL4RulesRequest()
+    }
+    response = NewDeleteNewL4RulesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteNewL7RulesRequest() (request *DeleteNewL7RulesRequest) {
+    request = &DeleteNewL7RulesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("dayu", APIVersion, "DeleteNewL7Rules")
+    return
+}
+
+func NewDeleteNewL7RulesResponse() (response *DeleteNewL7RulesResponse) {
+    response = &DeleteNewL7RulesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 删除L7转发规则
+func (c *Client) DeleteNewL7Rules(request *DeleteNewL7RulesRequest) (response *DeleteNewL7RulesResponse, err error) {
+    if request == nil {
+        request = NewDeleteNewL7RulesRequest()
+    }
+    response = NewDeleteNewL7RulesResponse()
     err = c.Send(request, response)
     return
 }
@@ -1468,6 +1568,81 @@ func (c *Client) DescribeL7HealthConfig(request *DescribeL7HealthConfigRequest) 
     return
 }
 
+func NewDescribeNewL4RulesRequest() (request *DescribeNewL4RulesRequest) {
+    request = &DescribeNewL4RulesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("dayu", APIVersion, "DescribeNewL4Rules")
+    return
+}
+
+func NewDescribeNewL4RulesResponse() (response *DescribeNewL4RulesResponse) {
+    response = &DescribeNewL4RulesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 获取L4转发规则
+func (c *Client) DescribeNewL4Rules(request *DescribeNewL4RulesRequest) (response *DescribeNewL4RulesResponse, err error) {
+    if request == nil {
+        request = NewDescribeNewL4RulesRequest()
+    }
+    response = NewDescribeNewL4RulesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeNewL4RulesErrHealthRequest() (request *DescribeNewL4RulesErrHealthRequest) {
+    request = &DescribeNewL4RulesErrHealthRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("dayu", APIVersion, "DescribeNewL4RulesErrHealth")
+    return
+}
+
+func NewDescribeNewL4RulesErrHealthResponse() (response *DescribeNewL4RulesErrHealthResponse) {
+    response = &DescribeNewL4RulesErrHealthResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 获取L4转发规则健康检查异常结果
+func (c *Client) DescribeNewL4RulesErrHealth(request *DescribeNewL4RulesErrHealthRequest) (response *DescribeNewL4RulesErrHealthResponse, err error) {
+    if request == nil {
+        request = NewDescribeNewL4RulesErrHealthRequest()
+    }
+    response = NewDescribeNewL4RulesErrHealthResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeNewL7RulesErrHealthRequest() (request *DescribeNewL7RulesErrHealthRequest) {
+    request = &DescribeNewL7RulesErrHealthRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("dayu", APIVersion, "DescribeNewL7RulesErrHealth")
+    return
+}
+
+func NewDescribeNewL7RulesErrHealthResponse() (response *DescribeNewL7RulesErrHealthResponse) {
+    response = &DescribeNewL7RulesErrHealthResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 获取L7转发规则健康检查异常结果
+func (c *Client) DescribeNewL7RulesErrHealth(request *DescribeNewL7RulesErrHealthRequest) (response *DescribeNewL7RulesErrHealthResponse, err error) {
+    if request == nil {
+        request = NewDescribeNewL7RulesErrHealthRequest()
+    }
+    response = NewDescribeNewL7RulesErrHealthResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribePackIndexRequest() (request *DescribePackIndexRequest) {
     request = &DescribePackIndexRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1789,6 +1964,31 @@ func (c *Client) DescribleL7Rules(request *DescribleL7RulesRequest) (response *D
         request = NewDescribleL7RulesRequest()
     }
     response = NewDescribleL7RulesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribleNewL7RulesRequest() (request *DescribleNewL7RulesRequest) {
+    request = &DescribleNewL7RulesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("dayu", APIVersion, "DescribleNewL7Rules")
+    return
+}
+
+func NewDescribleNewL7RulesResponse() (response *DescribleNewL7RulesResponse) {
+    response = &DescribleNewL7RulesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 获取7层规则
+func (c *Client) DescribleNewL7Rules(request *DescribleNewL7RulesRequest) (response *DescribleNewL7RulesResponse, err error) {
+    if request == nil {
+        request = NewDescribleNewL7RulesRequest()
+    }
+    response = NewDescribleNewL7RulesResponse()
     err = c.Send(request, response)
     return
 }

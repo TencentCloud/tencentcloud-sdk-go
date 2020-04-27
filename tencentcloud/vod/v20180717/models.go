@@ -2737,6 +2737,15 @@ type CreateImageSpriteTemplateRequest struct {
 	// 雪碧图模板名称，长度限制：64 个字符。
 	Name *string `json:"Name,omitempty" name:"Name"`
 
+	// 模板描述信息，长度限制：256 个字符。
+	Comment *string `json:"Comment,omitempty" name:"Comment"`
+
+	// 填充方式，当视频流配置宽高参数与原始视频的宽高比不一致时，对转码的处理方式，即为“填充”。可选填充方式：
+	// <li> stretch：拉伸，对每一帧进行拉伸，填满整个画面，可能导致转码后的视频被“压扁“或者“拉长“；</li>
+	// <li>black：留黑，保持视频宽高比不变，边缘剩余部分使用黑色填充。</li>
+	// 默认值：black 。
+	FillType *string `json:"FillType,omitempty" name:"FillType"`
+
 	// 雪碧图中小图的宽度（或长边）的最大值，取值范围：0 和 [128, 4096]，单位：px。
 	// <li>当 Width、Height 均为 0，则分辨率同源；</li>
 	// <li>当 Width 为 0，Height 非 0，则 Width 按比例缩放；</li>
@@ -2761,12 +2770,6 @@ type CreateImageSpriteTemplateRequest struct {
 
 	// 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
 	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
-
-	// 填充方式，当视频流配置宽高参数与原始视频的宽高比不一致时，对转码的处理方式，即为“填充”。可选填充方式：
-	// <li> stretch：拉伸，对每一帧进行拉伸，填满整个画面，可能导致转码后的视频被“压扁“或者“拉长“；</li>
-	// <li>black：留黑，保持视频宽高比不变，边缘剩余部分使用黑色填充。</li>
-	// 默认值：black 。
-	FillType *string `json:"FillType,omitempty" name:"FillType"`
 }
 
 func (r *CreateImageSpriteTemplateRequest) ToJsonString() string {
@@ -2865,6 +2868,9 @@ type CreateProcedureTemplateRequest struct {
 
 	// 任务流名字（支持中文，不超过20个字）。
 	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 模板描述信息，长度限制：256 个字符。
+	Comment *string `json:"Comment,omitempty" name:"Comment"`
 
 	// 视频处理类型任务参数。
 	MediaProcessTask *MediaProcessTaskInput `json:"MediaProcessTask,omitempty" name:"MediaProcessTask"`
@@ -3116,6 +3122,9 @@ type CreateSuperPlayerConfigRequest struct {
 
 	// 播放器配置名称，长度限制：64 个字符。只允许出现 [0-9a-zA-Z] 及 _- 字符（如 test_ABC-123），同一个用户该名称唯一。
 	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 模板描述信息，长度限制：256 个字符。
+	Comment *string `json:"Comment,omitempty" name:"Comment"`
 
 	// 播放 DRM 保护的自适应码流开关：
 	// <li>ON：开启，表示仅播放 DRM  保护的自适应码流输出；</li>
@@ -6293,6 +6302,12 @@ type MediaBasicInfo struct {
 
 	// 直播录制文件的唯一标识
 	Vid *string `json:"Vid,omitempty" name:"Vid"`
+
+	// 文件类型：
+	// <li>Video: 视频文件</li>
+	// <li>Audio: 音频文件</li>
+	// <li>Image: 图片文件</li>
+	Category *string `json:"Category,omitempty" name:"Category"`
 }
 
 type MediaClassInfo struct {
@@ -7450,14 +7465,17 @@ type ModifyImageSpriteTemplateRequest struct {
 	// 雪碧图中小图的列数。
 	ColumnCount *uint64 `json:"ColumnCount,omitempty" name:"ColumnCount"`
 
-	// 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
-	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
-
 	// 填充方式，当视频流配置宽高参数与原始视频的宽高比不一致时，对转码的处理方式，即为“填充”。可选填充方式：
 	// <li> stretch：拉伸，对每一帧进行拉伸，填满整个画面，可能导致转码后的视频被“压扁“或者“拉长“；</li>
 	// <li>black：留黑，保持视频宽高比不变，边缘剩余部分使用黑色填充。</li>
 	// 默认值：black 。
 	FillType *string `json:"FillType,omitempty" name:"FillType"`
+
+	// 模板描述信息，长度限制：256 个字符。
+	Comment *string `json:"Comment,omitempty" name:"Comment"`
+
+	// 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
 }
 
 func (r *ModifyImageSpriteTemplateRequest) ToJsonString() string {
@@ -7889,6 +7907,9 @@ type ModifySuperPlayerConfigRequest struct {
 
 	// 播放器对不于不同分辨率的子流展示名字。
 	ResolutionNames []*ResolutionNameInfo `json:"ResolutionNames,omitempty" name:"ResolutionNames" list`
+
+	// 模板描述信息，长度限制：256 个字符。
+	Comment *string `json:"Comment,omitempty" name:"Comment"`
 
 	// 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
 	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
@@ -9145,6 +9166,9 @@ type ResetProcedureTemplateRequest struct {
 
 	// 任务流名字
 	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 模板描述信息，长度限制：256 个字符。
+	Comment *string `json:"Comment,omitempty" name:"Comment"`
 
 	// 视频处理类型任务参数。
 	MediaProcessTask *MediaProcessTaskInput `json:"MediaProcessTask,omitempty" name:"MediaProcessTask"`

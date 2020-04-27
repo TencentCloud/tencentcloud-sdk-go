@@ -672,11 +672,11 @@ type BindAcctRequest struct {
 	// <敏感信息>加密详见《商户端接口敏感信息加密说明》
 	Mobile *string `json:"Mobile,omitempty" name:"Mobile"`
 
-	// 超级网银行号和大小额行号
+	// 大小额行号，超级网银行号和大小额行号
 	// 二选一
 	CnapsBranchId *string `json:"CnapsBranchId,omitempty" name:"CnapsBranchId"`
 
-	// 超级网银行号和大小额行号
+	// 超级网银行号，超级网银行号和大小额行号
 	// 二选一
 	EiconBankBranchId *string `json:"EiconBankBranchId,omitempty" name:"EiconBankBranchId"`
 }
@@ -1538,7 +1538,7 @@ type CreateMerchantRequest struct {
 	// 销方纳税人识别号
 	TaxpayerNum *string `json:"TaxpayerNum,omitempty" name:"TaxpayerNum"`
 
-	// 注册企业法人代表名称
+	// 注册企业法定代表人名称
 	LegalPersonName *string `json:"LegalPersonName,omitempty" name:"LegalPersonName"`
 
 	// 联系人
@@ -1807,92 +1807,6 @@ type FileItem struct {
 	// STRING(64)，提取码
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DrawCode *string `json:"DrawCode,omitempty" name:"DrawCode"`
-}
-
-type InvoiceManagementList struct {
-
-	// 发票ID
-	InvoiceId *string `json:"InvoiceId,omitempty" name:"InvoiceId"`
-
-	// 订单号
-	OrderId *string `json:"OrderId,omitempty" name:"OrderId"`
-
-	// 销方名称
-	SellerName *string `json:"SellerName,omitempty" name:"SellerName"`
-
-	// 业务开票号
-	OrderSn *string `json:"OrderSn,omitempty" name:"OrderSn"`
-
-	// 开票平台ID
-	InvoicePlatformId *int64 `json:"InvoicePlatformId,omitempty" name:"InvoicePlatformId"`
-
-	// 腾讯云AppId
-	AppId *string `json:"AppId,omitempty" name:"AppId"`
-
-	// 开票号码
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	InvoiceSn *string `json:"InvoiceSn,omitempty" name:"InvoiceSn"`
-
-	// 开票代码
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	InvoiceCode *string `json:"InvoiceCode,omitempty" name:"InvoiceCode"`
-
-	// 红冲状态
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	RedStatus *int64 `json:"RedStatus,omitempty" name:"RedStatus"`
-
-	// 开票通知时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	NotifyTime *string `json:"NotifyTime,omitempty" name:"NotifyTime"`
-
-	// 含税总金额
-	AmountHasTax *string `json:"AmountHasTax,omitempty" name:"AmountHasTax"`
-
-	// 发票类型
-	InvoiceType *int64 `json:"InvoiceType,omitempty" name:"InvoiceType"`
-
-	// 开票状态
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	InvoiceStatus *int64 `json:"InvoiceStatus,omitempty" name:"InvoiceStatus"`
-
-	// 创建时间
-	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
-
-	// 更新时间
-	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
-}
-
-type InvoiceManangementResult struct {
-
-	// 总数。
-	Total *int64 `json:"Total,omitempty" name:"Total"`
-
-	// 发票列表。
-	List []*InvoiceManagementList `json:"List,omitempty" name:"List" list`
-}
-
-type MerchantManagementList struct {
-
-	// 企业名称。
-	TaxpayerName *string `json:"TaxpayerName,omitempty" name:"TaxpayerName"`
-
-	// 纳税人识别号(税号)	。
-	TaxpayerNum *string `json:"TaxpayerNum,omitempty" name:"TaxpayerNum"`
-
-	// 请求流水号。
-	SerialNo *string `json:"SerialNo,omitempty" name:"SerialNo"`
-
-	// 开票系统ID
-	InvoicePlatformId *int64 `json:"InvoicePlatformId,omitempty" name:"InvoicePlatformId"`
-}
-
-type MerchantManagementResult struct {
-
-	// 总数。
-	Total *int64 `json:"Total,omitempty" name:"Total"`
-
-	// 商户列表。
-	List []*MerchantManagementList `json:"List,omitempty" name:"List" list`
 }
 
 type ModifyMntMbrBindRelateAcctBankCodeRequest struct {
@@ -2842,80 +2756,6 @@ type QueryExchangerateResult struct {
 	Data []*QueryExchangerateData `json:"Data,omitempty" name:"Data" list`
 }
 
-type QueryInvoiceForManagementRequest struct {
-	*tchttp.BaseRequest
-
-	// 开票平台ID
-	InvoicePlatformId *int64 `json:"InvoicePlatformId,omitempty" name:"InvoicePlatformId"`
-
-	// 开票状态
-	InvoiceStatus *int64 `json:"InvoiceStatus,omitempty" name:"InvoiceStatus"`
-
-	// 红冲状态
-	RedInvoiceStatus *int64 `json:"RedInvoiceStatus,omitempty" name:"RedInvoiceStatus"`
-
-	// 开始时间
-	BeginTime *string `json:"BeginTime,omitempty" name:"BeginTime"`
-
-	// 结束时间
-	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
-
-	// 页码
-	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
-
-	// 页大小
-	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
-
-	// 订单号
-	OrderId *string `json:"OrderId,omitempty" name:"OrderId"`
-
-	// 发票ID
-	InvoiceId *string `json:"InvoiceId,omitempty" name:"InvoiceId"`
-
-	// 业务开票号
-	OrderSn *string `json:"OrderSn,omitempty" name:"OrderSn"`
-
-	// 发票号码
-	InvoiceSn *string `json:"InvoiceSn,omitempty" name:"InvoiceSn"`
-
-	// 发票代码
-	InvoiceCode *string `json:"InvoiceCode,omitempty" name:"InvoiceCode"`
-
-	// 接入环境。沙箱环境填 sandbox。
-	Profile *string `json:"Profile,omitempty" name:"Profile"`
-}
-
-func (r *QueryInvoiceForManagementRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-func (r *QueryInvoiceForManagementRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
-}
-
-type QueryInvoiceForManagementResponse struct {
-	*tchttp.BaseResponse
-	Response *struct {
-
-		// 发票结果
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		Result *InvoiceManangementResult `json:"Result,omitempty" name:"Result"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
-}
-
-func (r *QueryInvoiceForManagementResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-func (r *QueryInvoiceForManagementResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
-}
-
 type QueryInvoiceRequest struct {
 	*tchttp.BaseRequest
 
@@ -3288,53 +3128,6 @@ type QueryMerchantBalanceResult struct {
 
 	// 对接账户余额查询数据
 	Data *QueryMerchantBalanceData `json:"Data,omitempty" name:"Data"`
-}
-
-type QueryMerchantInfoForManagementRequest struct {
-	*tchttp.BaseRequest
-
-	// 开票平台ID
-	InvoicePlatformId *int64 `json:"InvoicePlatformId,omitempty" name:"InvoicePlatformId"`
-
-	// 页码
-	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
-
-	// 页大小
-	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
-
-	// 接入环境。沙箱环境填sandbox。
-	Profile *string `json:"Profile,omitempty" name:"Profile"`
-}
-
-func (r *QueryMerchantInfoForManagementRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-func (r *QueryMerchantInfoForManagementRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
-}
-
-type QueryMerchantInfoForManagementResponse struct {
-	*tchttp.BaseResponse
-	Response *struct {
-
-		// 商户结果
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		Result *MerchantManagementResult `json:"Result,omitempty" name:"Result"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
-}
-
-func (r *QueryMerchantInfoForManagementResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-func (r *QueryMerchantInfoForManagementResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
 }
 
 type QueryOrderOutOrderList struct {

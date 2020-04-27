@@ -1763,6 +1763,9 @@ type CreateImageSpriteTemplateRequest struct {
 	// <li>black：留黑，保持视频宽高比不变，边缘剩余部分使用黑色填充。</li>
 	// 默认值：black 。
 	FillType *string `json:"FillType,omitempty" name:"FillType"`
+
+	// 模板描述信息，长度限制：256 个字符。
+	Comment *string `json:"Comment,omitempty" name:"Comment"`
 }
 
 func (r *CreateImageSpriteTemplateRequest) ToJsonString() string {
@@ -5043,6 +5046,9 @@ type ModifyImageSpriteTemplateRequest struct {
 	// <li>black：留黑，保持视频宽高比不变，边缘剩余部分使用黑色填充。</li>
 	// 默认值：black 。
 	FillType *string `json:"FillType,omitempty" name:"FillType"`
+
+	// 模板描述信息，长度限制：256 个字符。
+	Comment *string `json:"Comment,omitempty" name:"Comment"`
 }
 
 func (r *ModifyImageSpriteTemplateRequest) ToJsonString() string {

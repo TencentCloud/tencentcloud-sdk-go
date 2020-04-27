@@ -118,6 +118,31 @@ func (c *Client) DescribeWorkersInfo(request *DescribeWorkersInfoRequest) (respo
     return
 }
 
+func NewEnterQueueRequest() (request *EnterQueueRequest) {
+    request = &EnterQueueRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("gs", APIVersion, "EnterQueue")
+    return
+}
+
+func NewEnterQueueResponse() (response *EnterQueueResponse) {
+    response = &EnterQueueResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 进入排队锁定机器
+func (c *Client) EnterQueue(request *EnterQueueRequest) (response *EnterQueueResponse, err error) {
+    if request == nil {
+        request = NewEnterQueueRequest()
+    }
+    response = NewEnterQueueResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyWorkersRequest() (request *ModifyWorkersRequest) {
     request = &ModifyWorkersRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -139,6 +164,31 @@ func (c *Client) ModifyWorkers(request *ModifyWorkersRequest) (response *ModifyW
         request = NewModifyWorkersRequest()
     }
     response = NewModifyWorkersResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewQuitQueueRequest() (request *QuitQueueRequest) {
+    request = &QuitQueueRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("gs", APIVersion, "QuitQueue")
+    return
+}
+
+func NewQuitQueueResponse() (response *QuitQueueResponse) {
+    response = &QuitQueueResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 退出排队
+func (c *Client) QuitQueue(request *QuitQueueRequest) (response *QuitQueueResponse, err error) {
+    if request == nil {
+        request = NewQuitQueueRequest()
+    }
+    response = NewQuitQueueResponse()
     err = c.Send(request, response)
     return
 }

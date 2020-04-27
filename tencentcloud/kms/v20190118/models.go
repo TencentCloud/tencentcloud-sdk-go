@@ -1384,6 +1384,9 @@ type KeyMetadata struct {
 	// 在Origin为  EXTERNAL 时有效，表示密钥材料的有效日期， 0 表示不过期
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ValidTo *uint64 `json:"ValidTo,omitempty" name:"ValidTo"`
+
+	// 资源ID，格式：creatorUin/$creatorUin/$keyId
+	ResourceId *string `json:"ResourceId,omitempty" name:"ResourceId"`
 }
 
 type ListAlgorithmsRequest struct {
@@ -1735,4 +1738,7 @@ type WhiteboxKeyInfo struct {
 
 	// 白盒解密密钥，base64编码
 	DecryptKey *string `json:"DecryptKey,omitempty" name:"DecryptKey"`
+
+	// 资源ID，格式：creatorUin/$creatorUin/$keyId
+	ResourceId *string `json:"ResourceId,omitempty" name:"ResourceId"`
 }

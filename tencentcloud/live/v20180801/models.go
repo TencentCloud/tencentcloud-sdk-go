@@ -1011,6 +1011,12 @@ type CreateLiveSnapshotTemplateRequest struct {
 
 	// 是否开启鉴黄，0：不开启，1：开启。默认：0。
 	PornFlag *int64 `json:"PornFlag,omitempty" name:"PornFlag"`
+
+	// Cos Bucket文件夹前缀。
+	CosPrefix *string `json:"CosPrefix,omitempty" name:"CosPrefix"`
+
+	// Cos 文件名称。
+	CosFileName *string `json:"CosFileName,omitempty" name:"CosFileName"`
 }
 
 func (r *CreateLiveSnapshotTemplateRequest) ToJsonString() string {
@@ -5073,6 +5079,12 @@ type ModifyLiveSnapshotTemplateRequest struct {
 
 	// Cos 地域。
 	CosRegion *string `json:"CosRegion,omitempty" name:"CosRegion"`
+
+	// Cos Bucket文件夹前缀。
+	CosPrefix *string `json:"CosPrefix,omitempty" name:"CosPrefix"`
+
+	// Cos 文件名称。
+	CosFileName *string `json:"CosFileName,omitempty" name:"CosFileName"`
 }
 
 func (r *ModifyLiveSnapshotTemplateRequest) ToJsonString() string {
@@ -5792,6 +5804,14 @@ type SnapshotTemplateInfo struct {
 
 	// 模板描述。
 	Description *string `json:"Description,omitempty" name:"Description"`
+
+	// Cos Bucket文件夹前缀。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CosPrefix *string `json:"CosPrefix,omitempty" name:"CosPrefix"`
+
+	// Cos 文件名称。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CosFileName *string `json:"CosFileName,omitempty" name:"CosFileName"`
 }
 
 type StopLiveRecordRequest struct {

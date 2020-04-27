@@ -701,6 +701,10 @@ type ContainerGroupDetail struct {
 	// 部署组实例个数
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceCount *uint64 `json:"InstanceCount,omitempty" name:"InstanceCount"`
+
+	// 部署组更新时间戳
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UpdatedTime *int64 `json:"UpdatedTime,omitempty" name:"UpdatedTime"`
 }
 
 type CosCredentials struct {
@@ -4574,6 +4578,10 @@ type ServerlessGroup struct {
 	// 部署组实例数
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceCount *uint64 `json:"InstanceCount,omitempty" name:"InstanceCount"`
+
+	// 应用名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ApplicationName []*string `json:"ApplicationName,omitempty" name:"ApplicationName" list`
 }
 
 type ServerlessGroupPage struct {
@@ -5140,13 +5148,17 @@ type VmGroup struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MicroserviceType *string `json:"MicroserviceType,omitempty" name:"MicroserviceType"`
 
-	// ApplicationType
+	// 应用类型
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ApplicationType *string `json:"ApplicationType,omitempty" name:"ApplicationType"`
 
-	// GroupResourceType
+	// 部署组资源类型
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	GroupResourceType *string `json:"GroupResourceType,omitempty" name:"GroupResourceType"`
+
+	// 部署组更新时间戳
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UpdatedTime *int64 `json:"UpdatedTime,omitempty" name:"UpdatedTime"`
 }
 
 type VmGroupSimple struct {

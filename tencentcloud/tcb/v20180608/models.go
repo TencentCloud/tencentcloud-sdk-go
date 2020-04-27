@@ -412,6 +412,48 @@ func (r *DescribeEndUsersResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeEnvFreeQuotaRequest struct {
+	*tchttp.BaseRequest
+
+	// 环境ID
+	EnvId *string `json:"EnvId,omitempty" name:"EnvId"`
+
+	// 资源类型：可选值：CDN, COS, FLEXDB, HOSTING, SCF
+	// 不传则返回全部资源指标
+	ResourceTypes []*string `json:"ResourceTypes,omitempty" name:"ResourceTypes" list`
+}
+
+func (r *DescribeEnvFreeQuotaRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeEnvFreeQuotaRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeEnvFreeQuotaResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 免费抵扣配额详情
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		QuotaItems []*PostpayEnvQuota `json:"QuotaItems,omitempty" name:"QuotaItems" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeEnvFreeQuotaResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeEnvFreeQuotaResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeEnvLimitRequest struct {
 	*tchttp.BaseRequest
 }
@@ -855,6 +897,26 @@ func (r *ModifyEnvResponse) ToJsonString() string {
 
 func (r *ModifyEnvResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
+}
+
+type PostpayEnvQuota struct {
+
+	// 资源类型
+	ResourceType *string `json:"ResourceType,omitempty" name:"ResourceType"`
+
+	// 指标名
+	MetricName *string `json:"MetricName,omitempty" name:"MetricName"`
+
+	// 配额值
+	Value *uint64 `json:"Value,omitempty" name:"Value"`
+
+	// 配额生效时间
+	// 为空表示没有时间限制
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 配额失效时间
+	// 为空表示没有时间限制
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 }
 
 type ReinstateEnvRequest struct {

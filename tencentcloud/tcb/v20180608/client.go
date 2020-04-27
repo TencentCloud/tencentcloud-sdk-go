@@ -268,6 +268,31 @@ func (c *Client) DescribeEndUsers(request *DescribeEndUsersRequest) (response *D
     return
 }
 
+func NewDescribeEnvFreeQuotaRequest() (request *DescribeEnvFreeQuotaRequest) {
+    request = &DescribeEnvFreeQuotaRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tcb", APIVersion, "DescribeEnvFreeQuota")
+    return
+}
+
+func NewDescribeEnvFreeQuotaResponse() (response *DescribeEnvFreeQuotaResponse) {
+    response = &DescribeEnvFreeQuotaResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询后付费免费配额信息
+func (c *Client) DescribeEnvFreeQuota(request *DescribeEnvFreeQuotaRequest) (response *DescribeEnvFreeQuotaResponse, err error) {
+    if request == nil {
+        request = NewDescribeEnvFreeQuotaRequest()
+    }
+    response = NewDescribeEnvFreeQuotaResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeEnvLimitRequest() (request *DescribeEnvLimitRequest) {
     request = &DescribeEnvLimitRequest{
         BaseRequest: &tchttp.BaseRequest{},

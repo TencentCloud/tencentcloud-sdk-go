@@ -203,6 +203,15 @@ type Address struct {
 	InternetServiceProvider *string `json:"InternetServiceProvider,omitempty" name:"InternetServiceProvider"`
 }
 
+type AddressChargePrepaid struct {
+
+	// 购买实例的时长
+	Period *int64 `json:"Period,omitempty" name:"Period"`
+
+	// 自动续费标志
+	RenewFlag *string `json:"RenewFlag,omitempty" name:"RenewFlag"`
+}
+
 type AddressTemplate struct {
 
 	// IP地址模板名称。
@@ -7431,6 +7440,49 @@ func (r *ModifyAddressAttributeResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type ModifyAddressInternetChargeTypeRequest struct {
+	*tchttp.BaseRequest
+
+	// 弹性公网IP的唯一ID，形如eip-xxx
+	AddressId *string `json:"AddressId,omitempty" name:"AddressId"`
+
+	// 弹性公网IP调整目标计费模式，只支持"BANDWIDTH_PREPAID_BY_MONTH"和"TRAFFIC_POSTPAID_BY_HOUR"
+	InternetChargeType *string `json:"InternetChargeType,omitempty" name:"InternetChargeType"`
+
+	// 弹性公网IP调整目标带宽值
+	InternetMaxBandwidthOut *uint64 `json:"InternetMaxBandwidthOut,omitempty" name:"InternetMaxBandwidthOut"`
+
+	// 包月带宽网络计费模式参数。弹性公网IP的调整目标计费模式是"BANDWIDTH_PREPAID_BY_MONTH"时，必传该参数。
+	AddressChargePrepaid *AddressChargePrepaid `json:"AddressChargePrepaid,omitempty" name:"AddressChargePrepaid"`
+}
+
+func (r *ModifyAddressInternetChargeTypeRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyAddressInternetChargeTypeRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyAddressInternetChargeTypeResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifyAddressInternetChargeTypeResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyAddressInternetChargeTypeResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type ModifyAddressTemplateAttributeRequest struct {
 	*tchttp.BaseRequest
 
@@ -9977,6 +10029,9 @@ type SecurityGroupAssociationStatistics struct {
 
 	// 全量实例的绑定统计。
 	InstanceStatistics []*InstanceStatistic `json:"InstanceStatistics,omitempty" name:"InstanceStatistics" list`
+
+	// 所有资源的总计数。
+	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 }
 
 type SecurityGroupLimitSet struct {

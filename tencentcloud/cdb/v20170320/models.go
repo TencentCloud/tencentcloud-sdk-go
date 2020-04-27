@@ -4864,15 +4864,18 @@ type RoWeightValue struct {
 type RollbackDBName struct {
 
 	// 回档前的原数据库名
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	DatabaseName *string `json:"DatabaseName,omitempty" name:"DatabaseName"`
 
 	// 回档后的新数据库名
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	NewDatabaseName *string `json:"NewDatabaseName,omitempty" name:"NewDatabaseName"`
 }
 
 type RollbackInstancesInfo struct {
 
 	// 云数据库实例ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
 	// 回档策略。可选值为：table、db、full；默认值为full。table - 急速回档模式，仅导入所选中表级别的备份和binlog，如有跨表操作，且关联表未被同时选中，将会导致回档失败，该模式下参数Databases必须为空；db - 快速模式，仅导入所选中库级别的备份和binlog，如有跨库操作，且关联库未被同时选中，将会导致回档失败；full - 普通回档模式，将导入整个实例的备份和binlog，速度较慢。
@@ -4882,27 +4885,33 @@ type RollbackInstancesInfo struct {
 	RollbackTime *string `json:"RollbackTime,omitempty" name:"RollbackTime"`
 
 	// 待回档的数据库信息，表示整库回档
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Databases []*RollbackDBName `json:"Databases,omitempty" name:"Databases" list`
 
 	// 待回档的数据库表信息，表示按表回档
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Tables []*RollbackTables `json:"Tables,omitempty" name:"Tables" list`
 }
 
 type RollbackTableName struct {
 
 	// 回档前的原数据库表名
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	TableName *string `json:"TableName,omitempty" name:"TableName"`
 
 	// 回档后的新数据库表名
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	NewTableName *string `json:"NewTableName,omitempty" name:"NewTableName"`
 }
 
 type RollbackTables struct {
 
 	// 数据库名
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Database *string `json:"Database,omitempty" name:"Database"`
 
 	// 数据库表详情
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Table []*RollbackTableName `json:"Table,omitempty" name:"Table" list`
 }
 

@@ -458,6 +458,50 @@ func (r *CreatePolicyResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type CreatePolicyVersionRequest struct {
+	*tchttp.BaseRequest
+
+	// 策略ID
+	PolicyId *uint64 `json:"PolicyId,omitempty" name:"PolicyId"`
+
+	// 策略文本信息
+	PolicyDocument *string `json:"PolicyDocument,omitempty" name:"PolicyDocument"`
+
+	// 是否设置为当前策略的版本
+	SetAsDefault *bool `json:"SetAsDefault,omitempty" name:"SetAsDefault"`
+}
+
+func (r *CreatePolicyVersionRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreatePolicyVersionRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreatePolicyVersionResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 策略版本号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		VersionId *uint64 `json:"VersionId,omitempty" name:"VersionId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreatePolicyVersionResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreatePolicyVersionResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type CreateRoleRequest struct {
 	*tchttp.BaseRequest
 
@@ -659,6 +703,43 @@ func (r *DeletePolicyResponse) ToJsonString() string {
 }
 
 func (r *DeletePolicyResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeletePolicyVersionRequest struct {
+	*tchttp.BaseRequest
+
+	// 策略ID
+	PolicyId *uint64 `json:"PolicyId,omitempty" name:"PolicyId"`
+
+	// 策略版本号
+	VersionId []*uint64 `json:"VersionId,omitempty" name:"VersionId" list`
+}
+
+func (r *DeletePolicyVersionRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeletePolicyVersionRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeletePolicyVersionResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DeletePolicyVersionResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeletePolicyVersionResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -1120,6 +1201,47 @@ func (r *GetPolicyResponse) ToJsonString() string {
 }
 
 func (r *GetPolicyResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type GetPolicyVersionRequest struct {
+	*tchttp.BaseRequest
+
+	// 策略ID
+	PolicyId *uint64 `json:"PolicyId,omitempty" name:"PolicyId"`
+
+	// 策略版本号
+	VersionId *uint64 `json:"VersionId,omitempty" name:"VersionId"`
+}
+
+func (r *GetPolicyVersionRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *GetPolicyVersionRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type GetPolicyVersionResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 策略版本详情
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		PolicyVersion *PolicyVersionDetail `json:"PolicyVersion,omitempty" name:"PolicyVersion"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *GetPolicyVersionResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *GetPolicyVersionResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -1773,6 +1895,44 @@ func (r *ListPoliciesResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type ListPolicyVersionsRequest struct {
+	*tchttp.BaseRequest
+
+	// 策略ID
+	PolicyId *uint64 `json:"PolicyId,omitempty" name:"PolicyId"`
+}
+
+func (r *ListPolicyVersionsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ListPolicyVersionsRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ListPolicyVersionsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 策略版本列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Versions []*PolicyVersionItem `json:"Versions,omitempty" name:"Versions" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ListPolicyVersionsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ListPolicyVersionsResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type ListSAMLProvidersRequest struct {
 	*tchttp.BaseRequest
 }
@@ -1890,6 +2050,40 @@ func (r *ListUsersResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type PolicyVersionDetail struct {
+
+	// 策略版本号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VersionId *uint64 `json:"VersionId,omitempty" name:"VersionId"`
+
+	// 策略版本创建时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateDate *string `json:"CreateDate,omitempty" name:"CreateDate"`
+
+	// 是否是正在生效的版本。0表示不是，1表示是
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsDefaultVersion *uint64 `json:"IsDefaultVersion,omitempty" name:"IsDefaultVersion"`
+
+	// 策略语法文本
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Document *string `json:"Document,omitempty" name:"Document"`
+}
+
+type PolicyVersionItem struct {
+
+	// 策略版本号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VersionId *uint64 `json:"VersionId,omitempty" name:"VersionId"`
+
+	// 策略版本创建时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateDate *string `json:"CreateDate,omitempty" name:"CreateDate"`
+
+	// 是否是正在生效的版本。0表示不是，1表示是
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsDefaultVersion *int64 `json:"IsDefaultVersion,omitempty" name:"IsDefaultVersion"`
+}
+
 type RemoveUserFromGroupRequest struct {
 	*tchttp.BaseRequest
 
@@ -1973,6 +2167,43 @@ type SAMLProviderInfo struct {
 
 	// SAML身份提供商上次修改时间
 	ModifyTime *string `json:"ModifyTime,omitempty" name:"ModifyTime"`
+}
+
+type SetDefaultPolicyVersionRequest struct {
+	*tchttp.BaseRequest
+
+	// 策略ID
+	PolicyId *uint64 `json:"PolicyId,omitempty" name:"PolicyId"`
+
+	// 策略版本号
+	VersionId *uint64 `json:"VersionId,omitempty" name:"VersionId"`
+}
+
+func (r *SetDefaultPolicyVersionRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *SetDefaultPolicyVersionRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type SetDefaultPolicyVersionResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *SetDefaultPolicyVersionResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *SetDefaultPolicyVersionResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
 }
 
 type StrategyInfo struct {
