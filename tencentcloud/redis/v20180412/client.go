@@ -508,7 +508,7 @@ func NewDescribeInstanceMonitorTookDistResponse() (response *DescribeInstanceMon
     return
 }
 
-// 查询实例大Key大小分布
+// 查询实例访问的耗时分布
 func (c *Client) DescribeInstanceMonitorTookDist(request *DescribeInstanceMonitorTookDistRequest) (response *DescribeInstanceMonitorTookDistResponse, err error) {
     if request == nil {
         request = NewDescribeInstanceMonitorTookDistRequest()

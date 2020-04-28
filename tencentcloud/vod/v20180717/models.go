@@ -1775,65 +1775,6 @@ type AudioTrackItem struct {
 	AudioOperations []*AudioTransform `json:"AudioOperations,omitempty" name:"AudioOperations" list`
 }
 
-type AudioTrackTemplateInfo struct {
-
-	// 模板唯一标识。
-	Definition *int64 `json:"Definition,omitempty" name:"Definition"`
-
-	// 音频轨编码格式。
-	// 当 Container 为 mp3 时，可选值为：
-	// <li>libmp3lame。</li>
-	// 当 Container 为 ogg 或 flac 时，可选值为：
-	// <li>flac。</li>
-	// 当 Container 为 m4a 时，可选值为：
-	// <li>libfdk_aac；</li>
-	// <li>libmp3lame；</li>
-	// <li>ac3。</li>
-	// 当视频轨 Container 为 mp4 或 flv 时，可选值为：
-	// <li>libfdk_aac：更适合 mp4；</li>
-	// <li>libmp3lame：更适合 flv；</li>
-	// <li>mp2。</li>
-	// 当视频轨 Container 为  hls 时，可选值为：
-	// <li>libfdk_aac；</li>
-	// <li>libmp3lame。</li>
-	Codec *string `json:"Codec,omitempty" name:"Codec"`
-
-	// 音频流的码率，取值范围：0 和 [26, 256]，单位：kbps。
-	// 当取值为 0，表示音频码率和原始音频保持一致。
-	Bitrate *uint64 `json:"Bitrate,omitempty" name:"Bitrate"`
-
-	// 音频流的采样率，可选值：
-	// <li>32000</li>
-	// <li>44100</li>
-	// <li>48000</li>
-	// 单位：Hz。
-	SampleRate *uint64 `json:"SampleRate,omitempty" name:"SampleRate"`
-
-	// 模板类型，可选值：
-	// <li>Preset：系统预置模板；</li>
-	// <li>Custom：用户自定义模板。</li>
-	Type *string `json:"Type,omitempty" name:"Type"`
-
-	// 模板名称，长度限制：64 个字符。
-	Name *string `json:"Name,omitempty" name:"Name"`
-
-	// 模板描述信息，长度限制：256 个字符。
-	Comment *string `json:"Comment,omitempty" name:"Comment"`
-
-	// 音频通道方式，可选值：
-	// <li>1：单通道</li>
-	// <li>2：双通道</li>
-	// <li>6：立体声</li>
-	// 默认值：2。
-	AudioChannel *int64 `json:"AudioChannel,omitempty" name:"AudioChannel"`
-
-	// 模板创建时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
-	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
-
-	// 模板最后修改时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
-	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
-}
-
 type AudioTransform struct {
 
 	// 音频操作类型，取值有：
@@ -1899,23 +1840,18 @@ type ClipFileInfo2017 struct {
 	// 错误码
 	// <li>0：成功；</li>
 	// <li>其他值：失败。</li>
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ErrCode *int64 `json:"ErrCode,omitempty" name:"ErrCode"`
 
 	// 错误描述。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Message *string `json:"Message,omitempty" name:"Message"`
 
 	// 输出目标文件的文件 ID。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FileId *string `json:"FileId,omitempty" name:"FileId"`
 
 	// 输出目标文件的文件地址。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FileUrl *string `json:"FileUrl,omitempty" name:"FileUrl"`
 
 	// 输出目标文件的文件类型。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FileType *string `json:"FileType,omitempty" name:"FileType"`
 }
 
@@ -2137,23 +2073,18 @@ type ConcatFileInfo2017 struct {
 	// 错误码
 	// <li>0：成功；</li>
 	// <li>其他值：失败。</li>
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ErrCode *int64 `json:"ErrCode,omitempty" name:"ErrCode"`
 
 	// 错误信息。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Message *string `json:"Message,omitempty" name:"Message"`
 
 	// 视频拼接源文件的 ID。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FileId *string `json:"FileId,omitempty" name:"FileId"`
 
 	// 视频拼接源文件的地址。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FileUrl *string `json:"FileUrl,omitempty" name:"FileUrl"`
 
 	// 视频拼接源文件的格式。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FileType *string `json:"FileType,omitempty" name:"FileType"`
 }
 
@@ -2687,31 +2618,24 @@ type CreateImageSpriteTask2017 struct {
 	// 错误码
 	// <li>0：成功；</li>
 	// <li>其他值：失败。</li>
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ErrCode *int64 `json:"ErrCode,omitempty" name:"ErrCode"`
 
 	// 错误信息。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Message *string `json:"Message,omitempty" name:"Message"`
 
 	// 截取雪碧图文件 ID。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FileId *string `json:"FileId,omitempty" name:"FileId"`
 
 	// 雪碧图规格，参见[雪碧图截图模板](https://cloud.tencent.com/document/product/266/33480#.E9.9B.AA.E7.A2.A7.E5.9B.BE.E6.A8.A1.E6.9D.BF)。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Definition *int64 `json:"Definition,omitempty" name:"Definition"`
 
 	// 雪碧图小图总数量。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 	// 截取雪碧图输出的地址。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ImageSpriteUrlSet []*string `json:"ImageSpriteUrlSet,omitempty" name:"ImageSpriteUrlSet" list`
 
 	// 雪碧图子图位置与时间关系 WebVtt 文件地址。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	WebVttUrl *string `json:"WebVttUrl,omitempty" name:"WebVttUrl"`
 }
 
@@ -4217,60 +4141,6 @@ func (r *DescribeAnimatedGraphicsTemplatesResponse) FromJsonString(s string) err
     return json.Unmarshal([]byte(s), &r)
 }
 
-type DescribeAudioTrackTemplatesRequest struct {
-	*tchttp.BaseRequest
-
-	// 模板唯一标识过滤条件，数组长度限制：100。
-	Definitions []*uint64 `json:"Definitions,omitempty" name:"Definitions" list`
-
-	// 分页偏移量，默认值：0。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
-
-	// 返回记录条数，默认值：10，最大值：100。
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
-
-	// 模板类型过滤条件，可选值：
-	// <li>Preset：系统预置模板；</li>
-	// <li>Custom：用户自定义模板。</li>
-	Type *string `json:"Type,omitempty" name:"Type"`
-
-	// 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
-	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
-}
-
-func (r *DescribeAudioTrackTemplatesRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-func (r *DescribeAudioTrackTemplatesRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
-}
-
-type DescribeAudioTrackTemplatesResponse struct {
-	*tchttp.BaseResponse
-	Response *struct {
-
-		// 符合过滤条件的记录总数。
-		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
-
-		// 音频轨模板详情列表。
-		AudioTrackTemplateSet []*AudioTrackTemplateInfo `json:"AudioTrackTemplateSet,omitempty" name:"AudioTrackTemplateSet" list`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
-}
-
-func (r *DescribeAudioTrackTemplatesResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-func (r *DescribeAudioTrackTemplatesResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
-}
-
 type DescribeCDNUsageDataRequest struct {
 	*tchttp.BaseRequest
 
@@ -5234,60 +5104,6 @@ func (r *DescribeTranscodeTemplatesResponse) ToJsonString() string {
 }
 
 func (r *DescribeTranscodeTemplatesResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
-}
-
-type DescribeVideoTrackTemplatesRequest struct {
-	*tchttp.BaseRequest
-
-	// 模板唯一标识过滤条件，数组长度限制：100。
-	Definitions []*uint64 `json:"Definitions,omitempty" name:"Definitions" list`
-
-	// 分页偏移量，默认值：0。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
-
-	// 返回记录条数，默认值：10，最大值：100。
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
-
-	// 模板类型过滤条件，可选值：
-	// <li>Preset：系统预置模板；</li>
-	// <li>Custom：用户自定义模板。</li>
-	Type *string `json:"Type,omitempty" name:"Type"`
-
-	// 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
-	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
-}
-
-func (r *DescribeVideoTrackTemplatesRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-func (r *DescribeVideoTrackTemplatesRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
-}
-
-type DescribeVideoTrackTemplatesResponse struct {
-	*tchttp.BaseResponse
-	Response *struct {
-
-		// 符合过滤条件的记录总数。
-		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
-
-		// 视频轨模板详情列表。
-		VideoTrackTemplateSet []*VideoTrackTemplateInfo `json:"VideoTrackTemplateSet,omitempty" name:"VideoTrackTemplateSet" list`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
-}
-
-func (r *DescribeVideoTrackTemplatesResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-func (r *DescribeVideoTrackTemplatesResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -9448,15 +9264,12 @@ type SnapshotByTimeOffset2017 struct {
 	// 错误码
 	// <li>0：成功；</li>
 	// <li>其他值：失败。</li>
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ErrCode *int64 `json:"ErrCode,omitempty" name:"ErrCode"`
 
 	// 截图的具体时间点，单位：毫秒。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TimeOffset *uint64 `json:"TimeOffset,omitempty" name:"TimeOffset"`
 
 	// 截图输出文件地址。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Url *string `json:"Url,omitempty" name:"Url"`
 }
 
@@ -10012,31 +9825,24 @@ type TranscodeTask2017 struct {
 	// 错误码
 	// <li>0：成功；</li>
 	// <li>其他值：失败。</li>
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ErrCode *int64 `json:"ErrCode,omitempty" name:"ErrCode"`
 
 	// 错误信息。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Message *string `json:"Message,omitempty" name:"Message"`
 
 	// 被转码文件 ID。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FileId *string `json:"FileId,omitempty" name:"FileId"`
 
 	// 被转码文件名称。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FileName *string `json:"FileName,omitempty" name:"FileName"`
 
 	// 视频时长，单位：秒。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Duration *uint64 `json:"Duration,omitempty" name:"Duration"`
 
 	// 封面地址。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CoverUrl *string `json:"CoverUrl,omitempty" name:"CoverUrl"`
 
 	// 视频转码后生成的播放信息。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PlayInfoSet []*TranscodePlayInfo2017 `json:"PlayInfoSet,omitempty" name:"PlayInfoSet" list`
 }
 
@@ -10426,71 +10232,6 @@ type VideoTrackItem struct {
 
 	// 对音频进行操作，如静音等。
 	AudioOperations []*AudioTransform `json:"AudioOperations,omitempty" name:"AudioOperations" list`
-}
-
-type VideoTrackTemplateInfo struct {
-
-	// 视频轨模板唯一标识。
-	Definition *int64 `json:"Definition,omitempty" name:"Definition"`
-
-	// 编码格式，可选值：
-	// <li>libx264：H.264 编码</li>
-	// <li>libx265：H.265 编码</li>
-	// 目前 H.265 编码必须指定分辨率，并且需要在 640*480 以内。
-	Codec *string `json:"Codec,omitempty" name:"Codec"`
-
-	// 视频帧率，取值范围：[0, 60]，单位：Hz。
-	// 当取值为 0，表示帧率和原始视频保持一致。
-	Fps *uint64 `json:"Fps,omitempty" name:"Fps"`
-
-	// 视频流的码率，取值范围：0 和 [128, 35000]，单位：kbps。
-	// 当取值为 0，表示视频码率和原始视频保持一致。
-	Bitrate *uint64 `json:"Bitrate,omitempty" name:"Bitrate"`
-
-	// 模板名称，长度限制：64 个字符。
-	Name *string `json:"Name,omitempty" name:"Name"`
-
-	// 模板描述信息，长度限制：256 个字符。
-	Comment *string `json:"Comment,omitempty" name:"Comment"`
-
-	// 模板类型，可选值：
-	// <li>Preset：系统预置模板；</li>
-	// <li>Custom：用户自定义模板。</li>
-	Type *string `json:"Type,omitempty" name:"Type"`
-
-	// 分辨率自适应，可选值：
-	// <li>open：开启，此时，Width 代表视频的长边，Height 表示视频的短边；</li>
-	// <li>close：关闭，此时，Width 代表视频的宽度，Height 表示视频的高度。</li>
-	// 默认值：open。
-	ResolutionAdaptive *string `json:"ResolutionAdaptive,omitempty" name:"ResolutionAdaptive"`
-
-	// 视频流宽度（或长边）的最大值，取值范围：0 和 [128, 4096]，单位：px。
-	// <li>当 Width、Height 均为 0，则分辨率同源；</li>
-	// <li>当 Width 为 0，Height 非 0，则 Width 按比例缩放；</li>
-	// <li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li>
-	// <li>当 Width、Height 均非 0，则分辨率按用户指定。</li>
-	// 默认值：0。
-	Width *uint64 `json:"Width,omitempty" name:"Width"`
-
-	// 视频流高度（或短边）的最大值，取值范围：0 和 [128, 4096]，单位：px。
-	// <li>当 Width、Height 均为 0，则分辨率同源；</li>
-	// <li>当 Width 为 0，Height 非 0，则 Width 按比例缩放；</li>
-	// <li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li>
-	// <li>当 Width、Height 均非 0，则分辨率按用户指定。</li>
-	// 默认值：0。
-	Height *uint64 `json:"Height,omitempty" name:"Height"`
-
-	// 填充方式，当视频流配置宽高参数与原始视频的宽高比不一致时，对转码的处理方式，即为“填充”。可选填充方式：
-	// <li> stretch：拉伸，对每一帧进行拉伸，填满整个画面，可能导致转码后的视频被“压扁“或者“拉长“；</li>
-	// <li>black：留黑，保持视频宽高比不变，边缘剩余部分使用黑色填充。</li>
-	// 默认值：black 。
-	FillType *string `json:"FillType,omitempty" name:"FillType"`
-
-	// 模板创建时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
-	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
-
-	// 模板最后修改时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
-	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
 }
 
 type WatermarkCycleConfigForUpdate struct {

@@ -10030,7 +10030,7 @@ type SecurityGroupAssociationStatistics struct {
 	// 全量实例的绑定统计。
 	InstanceStatistics []*InstanceStatistic `json:"InstanceStatistics,omitempty" name:"InstanceStatistics" list`
 
-	// 所有资源的总计数。
+	// 所有资源的总计数（不包含被安全组引用数）。
 	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 }
 

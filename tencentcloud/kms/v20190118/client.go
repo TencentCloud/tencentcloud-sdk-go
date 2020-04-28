@@ -608,7 +608,7 @@ func NewEnableWhiteBoxKeyResponse() (response *EnableWhiteBoxKeyResponse) {
     return
 }
 
-// 批量启用白盒密钥
+// 启用白盒密钥
 func (c *Client) EnableWhiteBoxKey(request *EnableWhiteBoxKeyRequest) (response *EnableWhiteBoxKeyResponse, err error) {
     if request == nil {
         request = NewEnableWhiteBoxKeyRequest()

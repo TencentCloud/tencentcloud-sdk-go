@@ -909,6 +909,9 @@ type CreateConfigRequest struct {
 
 	// 配置项值类型
 	ConfigType *string `json:"ConfigType,omitempty" name:"ConfigType"`
+
+	// Base64编码的配置项
+	EncodeWithBase64 *bool `json:"EncodeWithBase64,omitempty" name:"EncodeWithBase64"`
 }
 
 func (r *CreateConfigRequest) ToJsonString() string {
@@ -925,6 +928,7 @@ type CreateConfigResponse struct {
 	Response *struct {
 
 		// true：创建成功；false：创建失败
+	// 注意：此字段可能返回 null，表示取不到有效值。
 		Result *bool `json:"Result,omitempty" name:"Result"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -1215,6 +1219,9 @@ type CreatePublicConfigRequest struct {
 
 	// 配置项类型
 	ConfigType *string `json:"ConfigType,omitempty" name:"ConfigType"`
+
+	// Base64编码的配置项
+	EncodeWithBase64 *bool `json:"EncodeWithBase64,omitempty" name:"EncodeWithBase64"`
 }
 
 func (r *CreatePublicConfigRequest) ToJsonString() string {

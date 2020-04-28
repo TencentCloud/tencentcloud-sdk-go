@@ -3276,7 +3276,7 @@ type DescribeLiveTranscodeDetailInfoRequest struct {
 
 	// 查询时间，北京时间，
 	// 格式：yyyymmdd。
-	// 注意：支持查询近3个月内某天的详细数据。
+	// 注意：支持查询近1个月内某天的详细数据。
 	DayTime *string `json:"DayTime,omitempty" name:"DayTime"`
 
 	// 页数，默认1，
@@ -3289,12 +3289,12 @@ type DescribeLiveTranscodeDetailInfoRequest struct {
 
 	// 起始天时间，北京时间，
 	// 格式：yyyymmdd。
-	// 注意：支持查询近3个月内的详细数据。
+	// 注意：支持查询近1个月内的详细数据。
 	StartDayTime *string `json:"StartDayTime,omitempty" name:"StartDayTime"`
 
 	// 结束天时间，北京时间，
 	// 格式：yyyymmdd。
-	// 注意：支持查询近3个月内的详细数据，注意DayTime 与（StartDayTime，EndDayTime）必须要传一个，如果都传，会以DayTime为准 。
+	// 注意：支持查询近1个月内的详细数据，注意DayTime 与（StartDayTime，EndDayTime）必须要传一个，如果都传，会以DayTime为准 。
 	EndDayTime *string `json:"EndDayTime,omitempty" name:"EndDayTime"`
 }
 

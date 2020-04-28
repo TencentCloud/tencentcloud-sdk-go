@@ -1,52 +1,52 @@
 # 本版本更新包含以下内容：
 
-## 访问管理(cam) 版本：2019-01-16
+## 流量反欺诈(taf) 版本：2020-02-10
 
-### 第 20 次发布
+### 第 3 次发布
 
-发布时间：2020-04-27 08:04:39
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [CreatePolicyVersion](https://cloud.tencent.com/document/api/598/43842)
-* [DeletePolicyVersion](https://cloud.tencent.com/document/api/598/43841)
-* [GetPolicyVersion](https://cloud.tencent.com/document/api/598/43840)
-* [ListPolicyVersions](https://cloud.tencent.com/document/api/598/43839)
-* [SetDefaultPolicyVersion](https://cloud.tencent.com/document/api/598/43838)
-
-新增数据结构：
-
-* [PolicyVersionDetail](https://cloud.tencent.com/document/api/598/33167#PolicyVersionDetail)
-* [PolicyVersionItem](https://cloud.tencent.com/document/api/598/33167#PolicyVersionItem)
-
-
-
-## 内容分发网络(cdn) 版本：2018-06-06
-
-### 第 18 次发布
-
-发布时间：2020-04-27 08:05:45
+发布时间：2020-04-28 08:00:11
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-新增接口：
+修改数据结构：
 
-* [DescribeImageConfig](https://cloud.tencent.com/document/api/228/43844)
-* [UpdateImageConfig](https://cloud.tencent.com/document/api/228/43843)
+* [OutputDetectAccountActivityValue](https://cloud.tencent.com/document/api/1031/43310#OutputDetectAccountActivityValue)
+
+	* 新增成员：Type
 
 
 
-## 企业收付平台(cpdp) 版本：2019-08-20
 
-### 第 9 次发布
+## 腾讯分布式服务框架(tsf) 版本：2018-03-26
 
-发布时间：2020-04-27 08:19:44
+### 第 19 次发布
+
+发布时间：2020-04-28 08:17:18
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateConfig](https://cloud.tencent.com/document/api/649/38348)
+
+	* 新增入参：EncodeWithBase64
+
+* [CreatePublicConfig](https://cloud.tencent.com/document/api/649/38347)
+
+	* 新增入参：EncodeWithBase64
+
+
+
+
+## 点播(vod) 版本：2018-07-17
+
+### 第 46 次发布
+
+发布时间：2020-04-28 08:18:40
 
 本次发布包含了以下内容：
 
@@ -54,257 +54,13 @@
 
 <font color="#dd0000">**删除接口**：</font>
 
-* QueryInvoiceForManagement
-* QueryMerchantInfoForManagement
+* DescribeAudioTrackTemplates
+* DescribeVideoTrackTemplates
 
 <font color="#dd0000">**删除数据结构**：</font>
 
-* InvoiceManagementList
-* InvoiceManangementResult
-* MerchantManagementList
-* MerchantManagementResult
-
-
-
-## 大禹网络安全(dayu) 版本：2018-07-09
-
-### 第 14 次发布
-
-发布时间：2020-04-27 08:07:22
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [CreateNewL4Rules](https://cloud.tencent.com/document/api/1021/39496)
-* [CreateNewL7Rules](https://cloud.tencent.com/document/api/1021/43847)
-* [DeleteNewL4Rules](https://cloud.tencent.com/document/api/1021/39491)
-* [DeleteNewL7Rules](https://cloud.tencent.com/document/api/1021/39490)
-* [DescribeNewL4Rules](https://cloud.tencent.com/document/api/1021/39484)
-* [DescribeNewL4RulesErrHealth](https://cloud.tencent.com/document/api/1021/39488)
-* [DescribeNewL7RulesErrHealth](https://cloud.tencent.com/document/api/1021/43846)
-* [DescribleNewL7Rules](https://cloud.tencent.com/document/api/1021/43845)
-
-新增数据结构：
-
-* [L4DelRule](https://cloud.tencent.com/document/api/1021/39225#L4DelRule)
-* [NewL4RuleEntry](https://cloud.tencent.com/document/api/1021/39225#NewL4RuleEntry)
-* [NewL7RuleEntry](https://cloud.tencent.com/document/api/1021/39225#NewL7RuleEntry)
-
-
-
-## 云游戏解决方案(gs) 版本：2019-11-18
-
-### 第 6 次发布
-
-发布时间：2020-04-27 08:02:18
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [EnterQueue](https://cloud.tencent.com/document/api/1162/43837)
-* [QuitQueue](https://cloud.tencent.com/document/api/1162/43836)
-
-
-
-## 密钥管理系统(kms) 版本：2019-01-18
-
-### 第 7 次发布
-
-发布时间：2020-04-27 08:11:13
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [KeyMetadata](https://cloud.tencent.com/document/api/573/34431#KeyMetadata)
-
-	* 新增成员：ResourceId
-
-* [WhiteboxKeyInfo](https://cloud.tencent.com/document/api/573/34431#WhiteboxKeyInfo)
-
-	* 新增成员：ResourceId
-
-
-
-
-## 直播(live) 版本：2018-08-01
-
-### 第 42 次发布
-
-发布时间：2020-04-27 08:11:28
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [CreateLiveSnapshotTemplate](https://cloud.tencent.com/document/api/267/32624)
-
-	* 新增入参：CosPrefix, CosFileName
-
-* [ModifyLiveSnapshotTemplate](https://cloud.tencent.com/document/api/267/32618)
-
-	* 新增入参：CosPrefix, CosFileName
-
-
-修改数据结构：
-
-* [SnapshotTemplateInfo](https://cloud.tencent.com/document/api/267/20474#SnapshotTemplateInfo)
-
-	* 新增成员：CosPrefix, CosFileName
-
-
-
-
-## 视频处理(mps) 版本：2019-06-12
-
-### 第 18 次发布
-
-发布时间：2020-04-27 08:12:37
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [CreateImageSpriteTemplate](https://cloud.tencent.com/document/api/862/37608)
-
-	* 新增入参：Comment
-
-* [ModifyImageSpriteTemplate](https://cloud.tencent.com/document/api/862/37590)
-
-	* 新增入参：Comment
-
-
-
-
-## 云开发(tcb) 版本：2018-06-08
-
-### 第 7 次发布
-
-发布时间：2020-04-27 08:15:37
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [DescribeEnvFreeQuota](https://cloud.tencent.com/document/api/876/43848)
-
-新增数据结构：
-
-* [PostpayEnvQuota](https://cloud.tencent.com/document/api/876/34822#PostpayEnvQuota)
-
-
-
-## 腾讯分布式服务框架(tsf) 版本：2018-03-26
-
-### 第 18 次发布
-
-发布时间：2020-04-27 08:16:48
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [ContainerGroupDetail](https://cloud.tencent.com/document/api/649/36099#ContainerGroupDetail)
-
-	* 新增成员：UpdatedTime
-
-* [ServerlessGroup](https://cloud.tencent.com/document/api/649/36099#ServerlessGroup)
-
-	* 新增成员：ApplicationName
-
-* [VmGroup](https://cloud.tencent.com/document/api/649/36099#VmGroup)
-
-	* 新增成员：UpdatedTime
-
-
-
-
-## 点播(vod) 版本：2018-07-17
-
-### 第 45 次发布
-
-发布时间：2020-04-27 08:18:15
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [CreateImageSpriteTemplate](https://cloud.tencent.com/document/api/266/37788)
-
-	* 新增入参：Comment
-
-* [CreateProcedureTemplate](https://cloud.tencent.com/document/api/266/33897)
-
-	* 新增入参：Comment
-
-* [CreateSuperPlayerConfig](https://cloud.tencent.com/document/api/266/43067)
-
-	* 新增入参：Comment
-
-* [ModifyImageSpriteTemplate](https://cloud.tencent.com/document/api/266/37776)
-
-	* 新增入参：Comment
-
-* [ModifySuperPlayerConfig](https://cloud.tencent.com/document/api/266/43062)
-
-	* 新增入参：Comment
-
-* [ResetProcedureTemplate](https://cloud.tencent.com/document/api/266/33894)
-
-	* 新增入参：Comment
-
-
-修改数据结构：
-
-* [MediaBasicInfo](https://cloud.tencent.com/document/api/266/31773#MediaBasicInfo)
-
-	* 新增成员：Category
-
-
-
-
-## 私有网络(vpc) 版本：2017-03-12
-
-### 第 49 次发布
-
-发布时间：2020-04-27 08:17:18
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [ModifyAddressInternetChargeType](https://cloud.tencent.com/document/api/215/43849)
-
-新增数据结构：
-
-* [AddressChargePrepaid](https://cloud.tencent.com/document/api/215/15824#AddressChargePrepaid)
-
-修改数据结构：
-
-* [SecurityGroupAssociationStatistics](https://cloud.tencent.com/document/api/215/15824#SecurityGroupAssociationStatistics)
-
-	* 新增成员：TotalCount
-
+* AudioTrackTemplateInfo
+* VideoTrackTemplateInfo
 
 
 
@@ -3309,16 +3065,16 @@
 
 新增接口：
 
-* [[CreatePolicyVersion](https://cloud.tencent.com/document/api/598/43842)](https://cloud.tencent.com/document/api/#/#)
-* [[DeletePolicyVersion](https://cloud.tencent.com/document/api/598/43841)](https://cloud.tencent.com/document/api/#/#)
-* [[GetPolicyVersion](https://cloud.tencent.com/document/api/598/43840)](https://cloud.tencent.com/document/api/#/#)
-* [[ListPolicyVersions](https://cloud.tencent.com/document/api/598/43839)](https://cloud.tencent.com/document/api/#/#)
-* [[SetDefaultPolicyVersion](https://cloud.tencent.com/document/api/598/43838)](https://cloud.tencent.com/document/api/#/#)
+* [CreatePolicyVersion](https://cloud.tencent.com/document/api/598/43842)
+* [DeletePolicyVersion](https://cloud.tencent.com/document/api/598/43841)
+* [GetPolicyVersion](https://cloud.tencent.com/document/api/598/43840)
+* [ListPolicyVersions](https://cloud.tencent.com/document/api/598/43839)
+* [SetDefaultPolicyVersion](https://cloud.tencent.com/document/api/598/43838)
 
 新增数据结构：
 
-* [[PolicyVersionDetail](https://cloud.tencent.com/document/api/598/33167#PolicyVersionDetail)](https://cloud.tencent.com/document/api/598/33167#[PolicyVersionDetail](https://cloud.tencent.com/document/api/598/33167#PolicyVersionDetail))
-* [[PolicyVersionItem](https://cloud.tencent.com/document/api/598/33167#PolicyVersionItem)](https://cloud.tencent.com/document/api/598/33167#[PolicyVersionItem](https://cloud.tencent.com/document/api/598/33167#PolicyVersionItem))
+* [PolicyVersionDetail](https://cloud.tencent.com/document/api/598/33167#PolicyVersionDetail)
+* [PolicyVersionItem](https://cloud.tencent.com/document/api/598/33167#PolicyVersionItem)
 
 ### 第 19 次发布
 
@@ -5213,8 +4969,8 @@
 
 新增接口：
 
-* [[DescribeImageConfig](https://cloud.tencent.com/document/api/228/43844)](https://cloud.tencent.com/document/api/#/#)
-* [[UpdateImageConfig](https://cloud.tencent.com/document/api/228/43843)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeImageConfig](https://cloud.tencent.com/document/api/228/43844)
+* [UpdateImageConfig](https://cloud.tencent.com/document/api/228/43843)
 
 ### 第 17 次发布
 
@@ -8684,20 +8440,20 @@
 
 新增接口：
 
-* [[CreateNewL4Rules](https://cloud.tencent.com/document/api/1021/39496)](https://cloud.tencent.com/document/api/#/#)
-* [[CreateNewL7Rules](https://cloud.tencent.com/document/api/1021/43847)](https://cloud.tencent.com/document/api/#/#)
-* [[DeleteNewL4Rules](https://cloud.tencent.com/document/api/1021/39491)](https://cloud.tencent.com/document/api/#/#)
-* [[DeleteNewL7Rules](https://cloud.tencent.com/document/api/1021/39490)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeNewL4Rules](https://cloud.tencent.com/document/api/1021/39484)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeNewL4RulesErrHealth](https://cloud.tencent.com/document/api/1021/39488)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeNewL7RulesErrHealth](https://cloud.tencent.com/document/api/1021/43846)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribleNewL7Rules](https://cloud.tencent.com/document/api/1021/43845)](https://cloud.tencent.com/document/api/#/#)
+* [CreateNewL4Rules](https://cloud.tencent.com/document/api/1021/39496)
+* [CreateNewL7Rules](https://cloud.tencent.com/document/api/1021/43847)
+* [DeleteNewL4Rules](https://cloud.tencent.com/document/api/1021/39491)
+* [DeleteNewL7Rules](https://cloud.tencent.com/document/api/1021/39490)
+* [DescribeNewL4Rules](https://cloud.tencent.com/document/api/1021/39484)
+* [DescribeNewL4RulesErrHealth](https://cloud.tencent.com/document/api/1021/39488)
+* [DescribeNewL7RulesErrHealth](https://cloud.tencent.com/document/api/1021/43846)
+* [DescribleNewL7Rules](https://cloud.tencent.com/document/api/1021/43845)
 
 新增数据结构：
 
-* [[L4DelRule](https://cloud.tencent.com/document/api/1021/39225#L4DelRule)](https://cloud.tencent.com/document/api/1021/39225#[L4DelRule](https://cloud.tencent.com/document/api/1021/39225#L4DelRule))
-* [[NewL4RuleEntry](https://cloud.tencent.com/document/api/1021/39225#NewL4RuleEntry)](https://cloud.tencent.com/document/api/1021/39225#[NewL4RuleEntry](https://cloud.tencent.com/document/api/1021/39225#NewL4RuleEntry))
-* [[NewL7RuleEntry](https://cloud.tencent.com/document/api/1021/39225#NewL7RuleEntry)](https://cloud.tencent.com/document/api/1021/39225#[NewL7RuleEntry](https://cloud.tencent.com/document/api/1021/39225#NewL7RuleEntry))
+* [L4DelRule](https://cloud.tencent.com/document/api/1021/39225#L4DelRule)
+* [NewL4RuleEntry](https://cloud.tencent.com/document/api/1021/39225#NewL4RuleEntry)
+* [NewL7RuleEntry](https://cloud.tencent.com/document/api/1021/39225#NewL7RuleEntry)
 
 ### 第 13 次发布
 
@@ -11662,8 +11418,8 @@
 
 新增接口：
 
-* [[EnterQueue](https://cloud.tencent.com/document/api/1162/43837)](https://cloud.tencent.com/document/api/#/#)
-* [[QuitQueue](https://cloud.tencent.com/document/api/1162/43836)](https://cloud.tencent.com/document/api/#/#)
+* [EnterQueue](https://cloud.tencent.com/document/api/1162/43837)
+* [QuitQueue](https://cloud.tencent.com/document/api/1162/43836)
 
 ### 第 5 次发布
 
@@ -19284,6 +19040,21 @@
 
 ## 流量反欺诈(taf) 版本：2020-02-10
 
+### 第 3 次发布
+
+发布时间：2020-04-28 08:00:11
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [OutputDetectAccountActivityValue](https://cloud.tencent.com/document/api/1031/43310#OutputDetectAccountActivityValue)
+
+	* 新增成员：Type
+
+
 ### 第 2 次发布
 
 发布时间：2020-04-22 08:00:09
@@ -20121,11 +19892,11 @@
 
 新增接口：
 
-* [[DescribeEnvFreeQuota](https://cloud.tencent.com/document/api/876/43848)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeEnvFreeQuota](https://cloud.tencent.com/document/api/876/43848)
 
 新增数据结构：
 
-* [[PostpayEnvQuota](https://cloud.tencent.com/document/api/876/34822#PostpayEnvQuota)](https://cloud.tencent.com/document/api/876/34822#[PostpayEnvQuota](https://cloud.tencent.com/document/api/876/34822#PostpayEnvQuota))
+* [PostpayEnvQuota](https://cloud.tencent.com/document/api/876/34822#PostpayEnvQuota)
 
 ### 第 6 次发布
 
@@ -22336,6 +22107,25 @@
 
 ## 腾讯分布式服务框架(tsf) 版本：2018-03-26
 
+### 第 19 次发布
+
+发布时间：2020-04-28 08:17:18
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateConfig](https://cloud.tencent.com/document/api/649/38348)
+
+	* 新增入参：EncodeWithBase64
+
+* [CreatePublicConfig](https://cloud.tencent.com/document/api/649/38347)
+
+	* 新增入参：EncodeWithBase64
+
+
 ### 第 18 次发布
 
 发布时间：2020-04-27 08:16:48
@@ -22908,6 +22698,24 @@
 
 
 ## 点播(vod) 版本：2018-07-17
+
+### 第 46 次发布
+
+发布时间：2020-04-28 08:18:40
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+<font color="#dd0000">**删除接口**：</font>
+
+* DescribeAudioTrackTemplates
+* DescribeVideoTrackTemplates
+
+<font color="#dd0000">**删除数据结构**：</font>
+
+* AudioTrackTemplateInfo
+* VideoTrackTemplateInfo
 
 ### 第 45 次发布
 
@@ -24496,11 +24304,11 @@
 
 新增接口：
 
-* [[ModifyAddressInternetChargeType](https://cloud.tencent.com/document/api/215/43849)](https://cloud.tencent.com/document/api/#/#)
+* [ModifyAddressInternetChargeType](https://cloud.tencent.com/document/api/215/43849)
 
 新增数据结构：
 
-* [[AddressChargePrepaid](https://cloud.tencent.com/document/api/215/15824#AddressChargePrepaid)](https://cloud.tencent.com/document/api/215/15824#[AddressChargePrepaid](https://cloud.tencent.com/document/api/215/15824#AddressChargePrepaid))
+* [AddressChargePrepaid](https://cloud.tencent.com/document/api/215/15824#AddressChargePrepaid)
 
 修改数据结构：
 
