@@ -149,6 +149,31 @@ func (c *Client) CreateTrigger(request *CreateTriggerRequest) (response *CreateT
     return
 }
 
+func NewDeleteAliasRequest() (request *DeleteAliasRequest) {
+    request = &DeleteAliasRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("scf", APIVersion, "DeleteAlias")
+    return
+}
+
+func NewDeleteAliasResponse() (response *DeleteAliasResponse) {
+    response = &DeleteAliasResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 删除一个函数版本的别名
+func (c *Client) DeleteAlias(request *DeleteAliasRequest) (response *DeleteAliasResponse, err error) {
+    if request == nil {
+        request = NewDeleteAliasRequest()
+    }
+    response = NewDeleteAliasResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteFunctionRequest() (request *DeleteFunctionRequest) {
     request = &DeleteFunctionRequest{
         BaseRequest: &tchttp.BaseRequest{},

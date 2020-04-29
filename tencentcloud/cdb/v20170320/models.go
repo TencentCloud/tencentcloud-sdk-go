@@ -2706,6 +2706,56 @@ func (r *DescribeRollbackRangeTimeResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeRollbackTaskDetailRequest struct {
+	*tchttp.BaseRequest
+
+	// 实例 ID。与云数据库控制台页面中显示的实例 ID 相同，可使用 [查询实例列表] (https://cloud.tencent.com/document/api/236/15872)。
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 异步任务 ID。
+	AsyncRequestId *string `json:"AsyncRequestId,omitempty" name:"AsyncRequestId"`
+
+	// 分页参数，每次请求返回的记录数。默认值为 20，最大值为 100。
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 分页偏移量。默认为 0。
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+}
+
+func (r *DescribeRollbackTaskDetailRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeRollbackTaskDetailRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeRollbackTaskDetailResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 符合条件的记录总数。
+		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 回档任务详情。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Items []*RollbackTask `json:"Items,omitempty" name:"Items" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeRollbackTaskDetailResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeRollbackTaskDetailResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeSlowLogDataRequest struct {
 	*tchttp.BaseRequest
 
@@ -4913,6 +4963,28 @@ type RollbackTables struct {
 	// 数据库表详情
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Table []*RollbackTableName `json:"Table,omitempty" name:"Table" list`
+}
+
+type RollbackTask struct {
+
+	// 任务执行信息描述。
+	Info *string `json:"Info,omitempty" name:"Info"`
+
+	// 任务执行结果。可能的取值：INITIAL - 初始化，RUNNING - 运行中，SUCCESS - 执行成功，FAILED - 执行失败，KILLED - 已终止，REMOVED - 已删除，PAUSED - 终止中。
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 任务执行进度。取值范围为[0, 100]。
+	Progress *int64 `json:"Progress,omitempty" name:"Progress"`
+
+	// 任务开始时间。
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 任务结束时间。
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 回档任务详情。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Detail []*RollbackInstancesInfo `json:"Detail,omitempty" name:"Detail" list`
 }
 
 type RollbackTimeRange struct {

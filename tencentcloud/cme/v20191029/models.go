@@ -82,6 +82,10 @@ type AudioMaterial struct {
 
 	// 素材媒体文件的封面图片地址。
 	CoverUrl *string `json:"CoverUrl,omitempty" name:"CoverUrl"`
+
+	// 素材状态。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MaterialStatus *MaterialStatus `json:"MaterialStatus,omitempty" name:"MaterialStatus"`
 }
 
 type AudioStreamInfo struct {
@@ -1597,36 +1601,6 @@ type LoginStatusInfo struct {
 	Status *string `json:"Status,omitempty" name:"Status"`
 }
 
-type MaterialBaseInfo struct {
-
-	// 素材名称。
-	Name *string `json:"Name,omitempty" name:"Name"`
-
-	// 描述信息。
-	Description *string `json:"Description,omitempty" name:"Description"`
-
-	// 分类路径。
-	ClassPath *string `json:"ClassPath,omitempty" name:"ClassPath"`
-
-	// 标签集合。
-	TagSet []*string `json:"TagSet,omitempty" name:"TagSet" list`
-
-	// 归属者。
-	Owner *Entity `json:"Owner,omitempty" name:"Owner"`
-
-	// 素材类型。
-	MaterialType *string `json:"MaterialType,omitempty" name:"MaterialType"`
-
-	// 素材 URL。
-	MaterialUrl *string `json:"MaterialUrl,omitempty" name:"MaterialUrl"`
-
-	// 云点播媒资 FileId。
-	VodFileId *string `json:"VodFileId,omitempty" name:"VodFileId"`
-
-	// 创建时间，格式按照 ISO 8601 标准表示。
-	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
-}
-
 type MaterialBasicInfo struct {
 
 	// 素材 Id。
@@ -1679,6 +1653,15 @@ type MaterialInfo struct {
 	// 链接素材信息。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	LinkMaterial *LinkMaterial `json:"LinkMaterial,omitempty" name:"LinkMaterial"`
+}
+
+type MaterialStatus struct {
+
+	// 素材编辑可用状态，取值有：
+	// <li>NORMAL：正常，可直接用于编辑；</li>
+	// <li>ABNORMAL : 异常，不可用于编辑；</li>
+	// <li>PROCESSING：处理中，暂不可用于编辑。</li>
+	EditorUsableStatus *string `json:"EditorUsableStatus,omitempty" name:"EditorUsableStatus"`
 }
 
 type MediaImageSpriteInfo struct {
@@ -2245,10 +2228,6 @@ type VideoEditProjectOutput struct {
 
 	// 元信息。
 	MetaData *MediaMetaData `json:"MetaData,omitempty" name:"MetaData"`
-
-	// 素材基础信息。
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	MaterialBaseInfo *MaterialBaseInfo `json:"MaterialBaseInfo,omitempty" name:"MaterialBaseInfo"`
 }
 
 type VideoMaterial struct {
@@ -2267,6 +2246,10 @@ type VideoMaterial struct {
 
 	// 媒体文件分辨率。取值为：LD/SD/HD/FHD/2K/4K。
 	Resolution *string `json:"Resolution,omitempty" name:"Resolution"`
+
+	// 素材状态。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MaterialStatus *MaterialStatus `json:"MaterialStatus,omitempty" name:"MaterialStatus"`
 }
 
 type VideoStreamInfo struct {

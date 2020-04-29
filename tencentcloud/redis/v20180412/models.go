@@ -356,6 +356,9 @@ type DelayDistribution struct {
 
 	// 大小
 	Size *int64 `json:"Size,omitempty" name:"Size"`
+
+	// 修改时间
+	Updatetime *int64 `json:"Updatetime,omitempty" name:"Updatetime"`
 }
 
 type DeleteInstanceAccountRequest struct {

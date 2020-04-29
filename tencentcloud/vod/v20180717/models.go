@@ -115,7 +115,7 @@ type AdaptiveDynamicStreamingInfoItem struct {
 	// 转自适应码流规格。
 	Definition *int64 `json:"Definition,omitempty" name:"Definition"`
 
-	// 打包格式，可能为 hls 和 dash 两种。
+	// 打包格式，只能为 HLS。
 	Package *string `json:"Package,omitempty" name:"Package"`
 
 	// 加密类型。

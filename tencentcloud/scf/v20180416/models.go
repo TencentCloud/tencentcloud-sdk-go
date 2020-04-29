@@ -320,6 +320,46 @@ type DeadLetterConfig struct {
 	FilterType *string `json:"FilterType,omitempty" name:"FilterType"`
 }
 
+type DeleteAliasRequest struct {
+	*tchttp.BaseRequest
+
+	// 函数名称
+	FunctionName *string `json:"FunctionName,omitempty" name:"FunctionName"`
+
+	// 别名的名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 函数所在的命名空间
+	Namespace *string `json:"Namespace,omitempty" name:"Namespace"`
+}
+
+func (r *DeleteAliasRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteAliasRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteAliasResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DeleteAliasResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteAliasResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DeleteFunctionRequest struct {
 	*tchttp.BaseRequest
 
@@ -1634,17 +1674,11 @@ type UpdateFunctionConfigurationRequest struct {
 	// 在更新时是否同步发布新版本，默认为：FALSE，不发布
 	Publish *string `json:"Publish,omitempty" name:"Publish"`
 
-	// 是否开启L5访问能力，TRUE 为开启，FALSE为关闭
-	L5Enable *string `json:"L5Enable,omitempty" name:"L5Enable"`
-
 	// 函数要关联的层版本列表，层的版本会按照在列表中顺序依次覆盖。
 	Layers []*LayerVersionSimple `json:"Layers,omitempty" name:"Layers" list`
 
 	// 函数关联的死信队列信息
 	DeadLetterConfig *DeadLetterConfig `json:"DeadLetterConfig,omitempty" name:"DeadLetterConfig"`
-
-	// 是否开启Ons访问能力，TRUE 为开启，FALSE为关闭
-	OnsEnable *string `json:"OnsEnable,omitempty" name:"OnsEnable"`
 }
 
 func (r *UpdateFunctionConfigurationRequest) ToJsonString() string {

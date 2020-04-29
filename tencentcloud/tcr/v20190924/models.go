@@ -2433,6 +2433,9 @@ type Registry struct {
 
 	// Token有效时间
 	TokenValidTime *uint64 `json:"TokenValidTime,omitempty" name:"TokenValidTime"`
+
+	// 实例内部访问地址
+	InternalEndpoint *string `json:"InternalEndpoint,omitempty" name:"InternalEndpoint"`
 }
 
 type RegistryCondition struct {

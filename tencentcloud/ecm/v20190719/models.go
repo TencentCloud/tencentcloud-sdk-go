@@ -1849,7 +1849,7 @@ type Instance struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DataDiskSize *int64 `json:"DataDiskSize,omitempty" name:"DataDiskSize"`
 
-	// UUID
+	// 实例UUID
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UUID *string `json:"UUID,omitempty" name:"UUID"`
 
@@ -1887,6 +1887,10 @@ type Instance struct {
 	// 数据盘信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DataDisks []*DiskInfo `json:"DataDisks,omitempty" name:"DataDisks" list`
+
+	// 新实例标志
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NewFlag *int64 `json:"NewFlag,omitempty" name:"NewFlag"`
 }
 
 type InstanceFamilyConfig struct {

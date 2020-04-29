@@ -43,6 +43,131 @@ func NewClient(credential *common.Credential, region string, clientProfile *prof
 }
 
 
+func NewDescribeCallDetailRequest() (request *DescribeCallDetailRequest) {
+    request = &DescribeCallDetailRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("trtc", APIVersion, "DescribeCallDetail")
+    return
+}
+
+func NewDescribeCallDetailResponse() (response *DescribeCallDetailResponse) {
+    response = &DescribeCallDetailResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询指定时间内的用户列表及用户通话质量数据。
+func (c *Client) DescribeCallDetail(request *DescribeCallDetailRequest) (response *DescribeCallDetailResponse, err error) {
+    if request == nil {
+        request = NewDescribeCallDetailRequest()
+    }
+    response = NewDescribeCallDetailResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeRealtimeNetworkRequest() (request *DescribeRealtimeNetworkRequest) {
+    request = &DescribeRealtimeNetworkRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("trtc", APIVersion, "DescribeRealtimeNetwork")
+    return
+}
+
+func NewDescribeRealtimeNetworkResponse() (response *DescribeRealtimeNetworkResponse) {
+    response = &DescribeRealtimeNetworkResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询sdkappid维度下实时网络状态，包括上行丢包与下行丢包。可查询24小时内数据，查询起止时间不超过1个小时。
+func (c *Client) DescribeRealtimeNetwork(request *DescribeRealtimeNetworkRequest) (response *DescribeRealtimeNetworkResponse, err error) {
+    if request == nil {
+        request = NewDescribeRealtimeNetworkRequest()
+    }
+    response = NewDescribeRealtimeNetworkResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeRealtimeQualityRequest() (request *DescribeRealtimeQualityRequest) {
+    request = &DescribeRealtimeQualityRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("trtc", APIVersion, "DescribeRealtimeQuality")
+    return
+}
+
+func NewDescribeRealtimeQualityResponse() (response *DescribeRealtimeQualityResponse) {
+    response = &DescribeRealtimeQualityResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询sdkappid维度下实时质量数据，包括：进房成功率，首帧秒开率，音频卡顿率，视频卡顿率。可查询24小时内数据，查询起止时间不超过1个小时。
+func (c *Client) DescribeRealtimeQuality(request *DescribeRealtimeQualityRequest) (response *DescribeRealtimeQualityResponse, err error) {
+    if request == nil {
+        request = NewDescribeRealtimeQualityRequest()
+    }
+    response = NewDescribeRealtimeQualityResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeRealtimeScaleRequest() (request *DescribeRealtimeScaleRequest) {
+    request = &DescribeRealtimeScaleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("trtc", APIVersion, "DescribeRealtimeScale")
+    return
+}
+
+func NewDescribeRealtimeScaleResponse() (response *DescribeRealtimeScaleResponse) {
+    response = &DescribeRealtimeScaleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询sdkappid维度下实时规模，可查询24小时内数据，查询起止时间不超过1个小时。
+func (c *Client) DescribeRealtimeScale(request *DescribeRealtimeScaleRequest) (response *DescribeRealtimeScaleResponse, err error) {
+    if request == nil {
+        request = NewDescribeRealtimeScaleRequest()
+    }
+    response = NewDescribeRealtimeScaleResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeRoomInformationRequest() (request *DescribeRoomInformationRequest) {
+    request = &DescribeRoomInformationRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("trtc", APIVersion, "DescribeRoomInformation")
+    return
+}
+
+func NewDescribeRoomInformationResponse() (response *DescribeRoomInformationResponse) {
+    response = &DescribeRoomInformationResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询sdkappid下的房间列表。默认返回10条通话，一次最多返回100条通话。可查询最近5天的数据。
+func (c *Client) DescribeRoomInformation(request *DescribeRoomInformationRequest) (response *DescribeRoomInformationResponse, err error) {
+    if request == nil {
+        request = NewDescribeRoomInformationRequest()
+    }
+    response = NewDescribeRoomInformationResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDismissRoomRequest() (request *DismissRoomRequest) {
     request = &DismissRoomRequest{
         BaseRequest: &tchttp.BaseRequest{},

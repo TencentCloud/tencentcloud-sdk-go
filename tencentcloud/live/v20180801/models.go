@@ -1692,19 +1692,15 @@ type DeleteLiveTranscodeRuleRequest struct {
 	*tchttp.BaseRequest
 
 	// 播放域名。
-	// 域名维度转码，域名+AppName+StreamName唯一标识单个转码规则，如需删除需要强匹配，例如AppName为空也需要传空字符串进行强匹配。
 	DomainName *string `json:"DomainName,omitempty" name:"DomainName"`
 
 	// 推流路径，与推流和播放地址中的AppName保持一致，默认为 live。
-	// 域名+AppName+StreamName+TemplateId唯一标识单个转码规则，如需删除需要强匹配，例如AppName为空也需要传空字符串进行强匹配。
 	AppName *string `json:"AppName,omitempty" name:"AppName"`
 
 	// 流名称。
-	// 域名+AppName+StreamName+TemplateId唯一标识单个转码规则，如需删除需要强匹配，例如AppName为空也需要传空字符串进行强匹配。
 	StreamName *string `json:"StreamName,omitempty" name:"StreamName"`
 
 	// 模板ID。
-	// 域名+AppName+StreamName+TemplateId唯一标识单个转码规则，如需删除需要强匹配，例如AppName为空也需要传空字符串进行强匹配。
 	TemplateId *int64 `json:"TemplateId,omitempty" name:"TemplateId"`
 }
 
@@ -1738,7 +1734,9 @@ func (r *DeleteLiveTranscodeRuleResponse) FromJsonString(s string) error {
 type DeleteLiveTranscodeTemplateRequest struct {
 	*tchttp.BaseRequest
 
-	// 模板Id。
+	// 模板 ID。
+	// 1. 在创建转码模板接口 [CreateLiveTranscodeTemplate](/document/product/267/32646) 调用的返回值中获取模板 ID。
+	// 2. 可以从接口 [DescribeLiveTranscodeTemplates](/document/product/267/32641) 查询已经创建的过的模板列表。
 	TemplateId *int64 `json:"TemplateId,omitempty" name:"TemplateId"`
 }
 
@@ -3377,7 +3375,8 @@ func (r *DescribeLiveTranscodeRulesResponse) FromJsonString(s string) error {
 type DescribeLiveTranscodeTemplateRequest struct {
 	*tchttp.BaseRequest
 
-	// 模板Id。
+	// 模板 ID。
+	// 注意：在创建转码模板接口 [CreateLiveTranscodeTemplate](/document/product/267/32646) 调用的返回值中获取模板 ID。
 	TemplateId *int64 `json:"TemplateId,omitempty" name:"TemplateId"`
 }
 
@@ -5135,8 +5134,8 @@ type ModifyLiveTranscodeTemplateRequest struct {
 	// 模板描述。
 	Description *string `json:"Description,omitempty" name:"Description"`
 
-	// 视频码率。
-	// 范围：100-8000。
+	// 视频码率。范围：100kbps - 8000kbps。
+	// 注意：码率必须是100的倍数。
 	VideoBitrate *int64 `json:"VideoBitrate,omitempty" name:"VideoBitrate"`
 
 	// 宽。0-3000。

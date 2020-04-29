@@ -831,6 +831,9 @@ type DeleteClusterRequest struct {
 
 	// 集群实例删除时的策略：terminate（销毁实例，仅支持按量计费云主机实例） retain （仅移除，保留实例）
 	InstanceDeleteMode *string `json:"InstanceDeleteMode,omitempty" name:"InstanceDeleteMode"`
+
+	// 集群删除时资源的删除策略，目前支持CBS（默认保留CBS）
+	ResourceDeleteOptions []*ResourceDeleteOption `json:"ResourceDeleteOptions,omitempty" name:"ResourceDeleteOptions" list`
 }
 
 func (r *DeleteClusterRequest) ToJsonString() string {
@@ -1272,6 +1275,10 @@ type DescribeClusterSecurityResponse struct {
 
 		// 集群访问策略组
 		SecurityPolicy []*string `json:"SecurityPolicy,omitempty" name:"SecurityPolicy" list`
+
+		// 集群Kubeconfig文件
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Kubeconfig *string `json:"Kubeconfig,omitempty" name:"Kubeconfig"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1897,6 +1904,15 @@ type RegionInstance struct {
 	// 地域白名单
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Remark *string `json:"Remark,omitempty" name:"Remark"`
+}
+
+type ResourceDeleteOption struct {
+
+	// 资源类型，例如CBS
+	ResourceType *string `json:"ResourceType,omitempty" name:"ResourceType"`
+
+	// 集群删除时资源的删除模式：terminate（销毁），retain （保留）
+	DeleteMode *string `json:"DeleteMode,omitempty" name:"DeleteMode"`
 }
 
 type RouteInfo struct {

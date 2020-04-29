@@ -913,6 +913,12 @@ type DstInfo struct {
 
 	// 目前只对MySQL有效。当为整实例迁移时，1-只读，0-可读写。
 	ReadOnly *int64 `json:"ReadOnly,omitempty" name:"ReadOnly"`
+
+	// 目标数据库账号
+	User *string `json:"User,omitempty" name:"User"`
+
+	// 目标数据库密码
+	Password *string `json:"Password,omitempty" name:"Password"`
 }
 
 type ErrorInfo struct {

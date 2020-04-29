@@ -1218,6 +1218,32 @@ func (c *Client) UpdateGroup(request *UpdateGroupRequest) (response *UpdateGroup
     return
 }
 
+func NewUpdatePolicyRequest() (request *UpdatePolicyRequest) {
+    request = &UpdatePolicyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cam", APIVersion, "UpdatePolicy")
+    return
+}
+
+func NewUpdatePolicyResponse() (response *UpdatePolicyResponse) {
+    response = &UpdatePolicyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（UpdatePolicy ）可用于更新策略。
+// 如果已存在策略版本，本接口会直接更新策略的默认版本，不会创建新版本，如果不存在任何策略版本，则直接创建一个默认版本。
+func (c *Client) UpdatePolicy(request *UpdatePolicyRequest) (response *UpdatePolicyResponse, err error) {
+    if request == nil {
+        request = NewUpdatePolicyRequest()
+    }
+    response = NewUpdatePolicyResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewUpdateRoleConsoleLoginRequest() (request *UpdateRoleConsoleLoginRequest) {
     request = &UpdateRoleConsoleLoginRequest{
         BaseRequest: &tchttp.BaseRequest{},

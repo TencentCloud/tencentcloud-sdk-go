@@ -1317,6 +1317,31 @@ func (c *Client) DescribeRollbackRangeTime(request *DescribeRollbackRangeTimeReq
     return
 }
 
+func NewDescribeRollbackTaskDetailRequest() (request *DescribeRollbackTaskDetailRequest) {
+    request = &DescribeRollbackTaskDetailRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cdb", APIVersion, "DescribeRollbackTaskDetail")
+    return
+}
+
+func NewDescribeRollbackTaskDetailResponse() (response *DescribeRollbackTaskDetailResponse) {
+    response = &DescribeRollbackTaskDetailResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口(DescribeRollbackTaskDetail)用于查询云数据库实例回档任务详情。
+func (c *Client) DescribeRollbackTaskDetail(request *DescribeRollbackTaskDetailRequest) (response *DescribeRollbackTaskDetailResponse, err error) {
+    if request == nil {
+        request = NewDescribeRollbackTaskDetailRequest()
+    }
+    response = NewDescribeRollbackTaskDetailResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeSlowLogDataRequest() (request *DescribeSlowLogDataRequest) {
     request = &DescribeSlowLogDataRequest{
         BaseRequest: &tchttp.BaseRequest{},

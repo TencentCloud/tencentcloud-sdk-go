@@ -764,7 +764,8 @@ func NewDeleteLiveTranscodeRuleResponse() (response *DeleteLiveTranscodeRuleResp
     return
 }
 
-// 删除转码规则
+// 删除转码规则。
+// DomainName+AppName+StreamName+TemplateId唯一标识单个转码规则，如需删除需要强匹配。其中TemplateId必填，其余参数为空时也需要传空字符串进行强匹配。
 func (c *Client) DeleteLiveTranscodeRule(request *DeleteLiveTranscodeRuleRequest) (response *DeleteLiveTranscodeRuleResponse, err error) {
     if request == nil {
         request = NewDeleteLiveTranscodeRuleRequest()
@@ -789,7 +790,7 @@ func NewDeleteLiveTranscodeTemplateResponse() (response *DeleteLiveTranscodeTemp
     return
 }
 
-// 删除转码模板
+// 删除转码模板。
 func (c *Client) DeleteLiveTranscodeTemplate(request *DeleteLiveTranscodeTemplateRequest) (response *DeleteLiveTranscodeTemplateResponse, err error) {
     if request == nil {
         request = NewDeleteLiveTranscodeTemplateRequest()
@@ -1693,7 +1694,7 @@ func NewDescribeLiveTranscodeTemplateResponse() (response *DescribeLiveTranscode
     return
 }
 
-// 获取单个转码模板
+// 获取单个转码模板。
 func (c *Client) DescribeLiveTranscodeTemplate(request *DescribeLiveTranscodeTemplateRequest) (response *DescribeLiveTranscodeTemplateResponse, err error) {
     if request == nil {
         request = NewDescribeLiveTranscodeTemplateRequest()
@@ -1718,7 +1719,7 @@ func NewDescribeLiveTranscodeTemplatesResponse() (response *DescribeLiveTranscod
     return
 }
 
-// 获取转码模板列表
+// 获取转码模板列表。
 func (c *Client) DescribeLiveTranscodeTemplates(request *DescribeLiveTranscodeTemplatesRequest) (response *DescribeLiveTranscodeTemplatesResponse, err error) {
     if request == nil {
         request = NewDescribeLiveTranscodeTemplatesRequest()
