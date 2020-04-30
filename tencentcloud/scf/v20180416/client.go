@@ -74,6 +74,32 @@ func (c *Client) CopyFunction(request *CopyFunctionRequest) (response *CopyFunct
     return
 }
 
+func NewCreateAliasRequest() (request *CreateAliasRequest) {
+    request = &CreateAliasRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("scf", APIVersion, "CreateAlias")
+    return
+}
+
+func NewCreateAliasResponse() (response *CreateAliasResponse) {
+    response = &CreateAliasResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 为某个函数版本创建一个别名，您可以使用别名来标记特定的函数版本，如DEV/RELEASE版本，也可以随时修改别名指向的版本。
+// 一个别名必须指向一个主版本，此外还可以同时指向一个附加版本。调用函数时指定特定的别名，则请求会被发送到别名指向的版本上，您可以配置请求发送到主版本和附加版本的比例。
+func (c *Client) CreateAlias(request *CreateAliasRequest) (response *CreateAliasResponse, err error) {
+    if request == nil {
+        request = NewCreateAliasRequest()
+    }
+    response = NewCreateAliasResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateFunctionRequest() (request *CreateFunctionRequest) {
     request = &CreateFunctionRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -274,6 +300,31 @@ func (c *Client) DeleteTrigger(request *DeleteTriggerRequest) (response *DeleteT
     return
 }
 
+func NewGetAliasRequest() (request *GetAliasRequest) {
+    request = &GetAliasRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("scf", APIVersion, "GetAlias")
+    return
+}
+
+func NewGetAliasResponse() (response *GetAliasResponse) {
+    response = &GetAliasResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 获取别名的详细信息，包括名称、描述、版本、路由信息等。
+func (c *Client) GetAlias(request *GetAliasRequest) (response *GetAliasResponse, err error) {
+    if request == nil {
+        request = NewGetAliasRequest()
+    }
+    response = NewGetAliasResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewGetFunctionRequest() (request *GetFunctionRequest) {
     request = &GetFunctionRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -395,6 +446,31 @@ func (c *Client) Invoke(request *InvokeRequest) (response *InvokeResponse, err e
         request = NewInvokeRequest()
     }
     response = NewInvokeResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewListAliasesRequest() (request *ListAliasesRequest) {
+    request = &ListAliasesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("scf", APIVersion, "ListAliases")
+    return
+}
+
+func NewListAliasesResponse() (response *ListAliasesResponse) {
+    response = &ListAliasesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 返回一个函数下的全部别名，可以根据特定函数版本过滤。
+func (c *Client) ListAliases(request *ListAliasesRequest) (response *ListAliasesResponse, err error) {
+    if request == nil {
+        request = NewListAliasesRequest()
+    }
+    response = NewListAliasesResponse()
     err = c.Send(request, response)
     return
 }
@@ -570,6 +646,31 @@ func (c *Client) PublishVersion(request *PublishVersionRequest) (response *Publi
         request = NewPublishVersionRequest()
     }
     response = NewPublishVersionResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewUpdateAliasRequest() (request *UpdateAliasRequest) {
+    request = &UpdateAliasRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("scf", APIVersion, "UpdateAlias")
+    return
+}
+
+func NewUpdateAliasResponse() (response *UpdateAliasResponse) {
+    response = &UpdateAliasResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 更新别名的配置
+func (c *Client) UpdateAlias(request *UpdateAliasRequest) (response *UpdateAliasResponse, err error) {
+    if request == nil {
+        request = NewUpdateAliasRequest()
+    }
+    response = NewUpdateAliasResponse()
     err = c.Send(request, response)
     return
 }

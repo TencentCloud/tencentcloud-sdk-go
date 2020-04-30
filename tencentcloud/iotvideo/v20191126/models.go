@@ -100,7 +100,7 @@ type CreateBindingRequest struct {
 	// 用户角色，owner：主人，guest：访客
 	Role *string `json:"Role,omitempty" name:"Role"`
 
-	// 是否踢掉之前的主人，true：踢掉；false：不踢掉。当role为owner时，可以不填
+	// 是否踢掉之前的主人，true：踢掉；false：不踢掉。当role为guest时，可以不填
 	ForceBind *bool `json:"ForceBind,omitempty" name:"ForceBind"`
 }
 

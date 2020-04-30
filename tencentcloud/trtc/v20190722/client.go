@@ -68,6 +68,31 @@ func (c *Client) DescribeCallDetail(request *DescribeCallDetailRequest) (respons
     return
 }
 
+func NewDescribeHistoryScaleRequest() (request *DescribeHistoryScaleRequest) {
+    request = &DescribeHistoryScaleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("trtc", APIVersion, "DescribeHistoryScale")
+    return
+}
+
+func NewDescribeHistoryScaleResponse() (response *DescribeHistoryScaleResponse) {
+    response = &DescribeHistoryScaleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询历史房间和用户数，每分钟1次，可查询最近5天的数据
+func (c *Client) DescribeHistoryScale(request *DescribeHistoryScaleRequest) (response *DescribeHistoryScaleResponse, err error) {
+    if request == nil {
+        request = NewDescribeHistoryScaleRequest()
+    }
+    response = NewDescribeHistoryScaleResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeRealtimeNetworkRequest() (request *DescribeRealtimeNetworkRequest) {
     request = &DescribeRealtimeNetworkRequest{
         BaseRequest: &tchttp.BaseRequest{},

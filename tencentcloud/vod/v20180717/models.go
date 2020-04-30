@@ -1585,6 +1585,9 @@ type ApplyUploadRequest struct {
 	// 会话上下文，用于透传用户请求信息，当指定 Procedure 参数后，[任务流状态变更回调](/document/product/266/9636) 将返回该字段值，最长 1000 个字符。
 	SessionContext *string `json:"SessionContext,omitempty" name:"SessionContext"`
 
+	// 保留字段，特殊用途时使用。
+	ExtInfo *string `json:"ExtInfo,omitempty" name:"ExtInfo"`
+
 	// 点播 [子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
 	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
 }
@@ -1612,11 +1615,9 @@ type ApplyUploadResponse struct {
 		VodSessionKey *string `json:"VodSessionKey,omitempty" name:"VodSessionKey"`
 
 		// 媒体存储路径，用于上传接口存储媒体的对象键（Key）。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 		MediaStoragePath *string `json:"MediaStoragePath,omitempty" name:"MediaStoragePath"`
 
 		// 封面存储路径，用于上传接口存储封面的对象键（Key）。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 		CoverStoragePath *string `json:"CoverStoragePath,omitempty" name:"CoverStoragePath"`
 
 		// 临时凭证，用于上传接口的权限验证。

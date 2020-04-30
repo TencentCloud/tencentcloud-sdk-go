@@ -601,6 +601,31 @@ func (c *Client) DescribeTeams(request *DescribeTeamsRequest) (response *Describ
     return
 }
 
+func NewExportVideoByEditorTrackDataRequest() (request *ExportVideoByEditorTrackDataRequest) {
+    request = &ExportVideoByEditorTrackDataRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cme", APIVersion, "ExportVideoByEditorTrackData")
+    return
+}
+
+func NewExportVideoByEditorTrackDataResponse() (response *ExportVideoByEditorTrackDataResponse) {
+    response = &ExportVideoByEditorTrackDataResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 使用在线编辑轨道数据直接导出视频。
+func (c *Client) ExportVideoByEditorTrackData(request *ExportVideoByEditorTrackDataRequest) (response *ExportVideoByEditorTrackDataResponse, err error) {
+    if request == nil {
+        request = NewExportVideoByEditorTrackDataRequest()
+    }
+    response = NewExportVideoByEditorTrackDataResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewExportVideoEditProjectRequest() (request *ExportVideoEditProjectRequest) {
     request = &ExportVideoEditProjectRequest{
         BaseRequest: &tchttp.BaseRequest{},

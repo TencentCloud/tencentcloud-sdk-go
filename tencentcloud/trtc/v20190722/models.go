@@ -93,6 +93,53 @@ func (r *DescribeCallDetailResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeHistoryScaleRequest struct {
+	*tchttp.BaseRequest
+
+	// 用户sdkappid
+	SdkAppId *string `json:"SdkAppId,omitempty" name:"SdkAppId"`
+
+	// 查询开始时间
+	StartTime *uint64 `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 查询结束时间
+	EndTime *uint64 `json:"EndTime,omitempty" name:"EndTime"`
+}
+
+func (r *DescribeHistoryScaleRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeHistoryScaleRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeHistoryScaleResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 返回的数据条数
+		Total *uint64 `json:"Total,omitempty" name:"Total"`
+
+		// 返回的数据
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		ScaleList []*ScaleInfomation `json:"ScaleList,omitempty" name:"ScaleList" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeHistoryScaleResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeHistoryScaleResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeRealtimeNetworkRequest struct {
 	*tchttp.BaseRequest
 
@@ -418,6 +465,24 @@ type RoomState struct {
 	UserId *string `json:"UserId,omitempty" name:"UserId"`
 }
 
+type ScaleInfomation struct {
+
+	// 每天开始的时间
+	Time *uint64 `json:"Time,omitempty" name:"Time"`
+
+	// 房间人数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UserNumber *uint64 `json:"UserNumber,omitempty" name:"UserNumber"`
+
+	// 房间人次
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UserCount *uint64 `json:"UserCount,omitempty" name:"UserCount"`
+
+	// 房间数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RoomNumbers *uint64 `json:"RoomNumbers,omitempty" name:"RoomNumbers"`
+}
+
 type TimeValue struct {
 
 	// 时间
@@ -435,7 +500,7 @@ type UserInformation struct {
 	// 用户Id
 	UserId *string `json:"UserId,omitempty" name:"UserId"`
 
-	// 用户进房事件
+	// 用户进房时间
 	JoinTs *uint64 `json:"JoinTs,omitempty" name:"JoinTs"`
 
 	// 用户退房时间

@@ -524,6 +524,31 @@ func (c *Client) DescribeInstanceTypeConfig(request *DescribeInstanceTypeConfigR
     return
 }
 
+func NewDescribeInstanceVncUrlRequest() (request *DescribeInstanceVncUrlRequest) {
+    request = &DescribeInstanceVncUrlRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ecm", APIVersion, "DescribeInstanceVncUrl")
+    return
+}
+
+func NewDescribeInstanceVncUrlResponse() (response *DescribeInstanceVncUrlResponse) {
+    response = &DescribeInstanceVncUrlResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询实例管理终端地址
+func (c *Client) DescribeInstanceVncUrl(request *DescribeInstanceVncUrlRequest) (response *DescribeInstanceVncUrlResponse, err error) {
+    if request == nil {
+        request = NewDescribeInstanceVncUrlRequest()
+    }
+    response = NewDescribeInstanceVncUrlResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeInstancesRequest() (request *DescribeInstancesRequest) {
     request = &DescribeInstancesRequest{
         BaseRequest: &tchttp.BaseRequest{},

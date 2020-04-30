@@ -840,6 +840,31 @@ func (c *Client) DescribeDBInstanceGTID(request *DescribeDBInstanceGTIDRequest) 
     return
 }
 
+func NewDescribeDBInstanceInfoRequest() (request *DescribeDBInstanceInfoRequest) {
+    request = &DescribeDBInstanceInfoRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cdb", APIVersion, "DescribeDBInstanceInfo")
+    return
+}
+
+func NewDescribeDBInstanceInfoResponse() (response *DescribeDBInstanceInfoResponse) {
+    response = &DescribeDBInstanceInfoResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询实例基本信息（实例 ID ，实例名称，是否开通加密 ）
+func (c *Client) DescribeDBInstanceInfo(request *DescribeDBInstanceInfoRequest) (response *DescribeDBInstanceInfoResponse, err error) {
+    if request == nil {
+        request = NewDescribeDBInstanceInfoRequest()
+    }
+    response = NewDescribeDBInstanceInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeDBInstanceRebootTimeRequest() (request *DescribeDBInstanceRebootTimeRequest) {
     request = &DescribeDBInstanceRebootTimeRequest{
         BaseRequest: &tchttp.BaseRequest{},

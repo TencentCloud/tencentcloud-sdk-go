@@ -2347,6 +2347,10 @@ type LoadBalancer struct {
 	// 封堵或解封时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsBlockTime *string `json:"IsBlockTime,omitempty" name:"IsBlockTime"`
+
+	// IP类型是否是本地BGP
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LocalBgp *bool `json:"LocalBgp,omitempty" name:"LocalBgp"`
 }
 
 type LoadBalancerHealth struct {

@@ -222,6 +222,9 @@ type LipColorInfo struct {
 	// 人脸框位置。若不输入则选择 Image 或 Url 中面积最大的人脸。  
 	// 您可以通过 [人脸检测与分析](https://cloud.tencent.com/document/api/867/32800)  接口获取人脸框位置信息。
 	FaceRect *FaceRect `json:"FaceRect,omitempty" name:"FaceRect"`
+
+	// 涂妆浓淡[0,100]。建议取值50。本参数仅控制ModelId对应的涂妆浓淡。
+	ModelAlpha *int64 `json:"ModelAlpha,omitempty" name:"ModelAlpha"`
 }
 
 type ModelInfo struct {

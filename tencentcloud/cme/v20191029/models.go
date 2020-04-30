@@ -1170,6 +1170,66 @@ type Entity struct {
 	Id *string `json:"Id,omitempty" name:"Id"`
 }
 
+type ExportVideoByEditorTrackDataRequest struct {
+	*tchttp.BaseRequest
+
+	// 平台名称，指定访问的平台。
+	Platform *string `json:"Platform,omitempty" name:"Platform"`
+
+	// 导出模板 Id，目前不支持自定义创建，只支持下面的预置模板 Id。
+	// <li>10：分辨率为 480P，输出视频格式为 MP4；</li>
+	// <li>11：分辨率为 720P，输出视频格式为 MP4；</li>
+	// <li>12：分辨率为 1080P，输出视频格式为 MP4。</li>
+	Definition *uint64 `json:"Definition,omitempty" name:"Definition"`
+
+	// 导出目标。
+	// <li>CME：云剪，即导出为云剪素材；</li>
+	// <li>VOD：云点播，即导出为云点播媒资。</li>
+	ExportDestination *string `json:"ExportDestination,omitempty" name:"ExportDestination"`
+
+	// 在线编辑轨道数据。
+	TrackData *string `json:"TrackData,omitempty" name:"TrackData"`
+
+	// 导出的云剪素材信息。指定 ExportDestination = CME 时有效。
+	CMEExportInfo *CMEExportInfo `json:"CMEExportInfo,omitempty" name:"CMEExportInfo"`
+
+	// 导出的云点播媒资信息。指定 ExportDestination = VOD 时有效。
+	VODExportInfo *VODExportInfo `json:"VODExportInfo,omitempty" name:"VODExportInfo"`
+
+	// 操作者。填写用户的 Id，用于标识调用者及校验操作权限。
+	Operator *string `json:"Operator,omitempty" name:"Operator"`
+}
+
+func (r *ExportVideoByEditorTrackDataRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ExportVideoByEditorTrackDataRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ExportVideoByEditorTrackDataResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 任务 Id。
+		TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ExportVideoByEditorTrackDataResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ExportVideoByEditorTrackDataResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type ExportVideoEditProjectRequest struct {
 	*tchttp.BaseRequest
 
@@ -2227,6 +2287,7 @@ type VideoEditProjectOutput struct {
 	URL *string `json:"URL,omitempty" name:"URL"`
 
 	// 元信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	MetaData *MediaMetaData `json:"MetaData,omitempty" name:"MetaData"`
 }
 

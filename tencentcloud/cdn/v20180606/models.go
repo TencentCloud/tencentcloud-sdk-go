@@ -436,6 +436,10 @@ type CacheKey struct {
 	// on：开启全路径缓存（即关闭参数过滤）
 	// off：关闭全路径缓存（即开启参数过滤）
 	FullUrlCache *string `json:"FullUrlCache,omitempty" name:"FullUrlCache"`
+
+	// 缓存是否忽略大小写
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CaseSensitive *string `json:"CaseSensitive,omitempty" name:"CaseSensitive"`
 }
 
 type CacheOptResult struct {
@@ -2089,6 +2093,10 @@ type DetailDomain struct {
 	// ImageOptimization配置
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ImageOptimization *ImageOptimization `json:"ImageOptimization,omitempty" name:"ImageOptimization"`
+
+	// UA黑白名单配置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UserAgentFilter *UserAgentFilter `json:"UserAgentFilter,omitempty" name:"UserAgentFilter"`
 }
 
 type DisableCachesRequest struct {
@@ -2435,6 +2443,20 @@ type GuetzliAdapter struct {
 	Switch *string `json:"Switch,omitempty" name:"Switch"`
 }
 
+type Hsts struct {
+
+	// 是否开启，on或off。
+	Switch *string `json:"Switch,omitempty" name:"Switch"`
+
+	// MaxAge数值。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MaxAge *int64 `json:"MaxAge,omitempty" name:"MaxAge"`
+
+	// 是否包含子域名，on或off。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IncludeSubDomains *string `json:"IncludeSubDomains,omitempty" name:"IncludeSubDomains"`
+}
+
 type HttpHeaderPathRule struct {
 
 	// http 头部设置方式
@@ -2522,6 +2544,15 @@ type Https struct {
 	// failed：部署失败
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SslStatus *string `json:"SslStatus,omitempty" name:"SslStatus"`
+
+	// TLS版本列表，支持填写以下值：
+	// TLSv1.0, TLSv1.1, TLSv1.2
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TlsVersion []*string `json:"TlsVersion,omitempty" name:"TlsVersion" list`
+
+	// Hsts配置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Hsts *Hsts `json:"Hsts,omitempty" name:"Hsts"`
 }
 
 type ImageOptimization struct {
@@ -4160,6 +4191,40 @@ type UrlRecord struct {
 	// 更新时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
+}
+
+type UserAgentFilter struct {
+
+	// 开关，on或off
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Switch *string `json:"Switch,omitempty" name:"Switch"`
+
+	// UA黑白名单生效规则列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FilterRules []*UserAgentFilterRule `json:"FilterRules,omitempty" name:"FilterRules" list`
+}
+
+type UserAgentFilterRule struct {
+
+	// 访问路径生效类型
+	// all: 所有访问路径生效
+	// file: 根据文件后缀类型生效
+	// directory: 根据目录生效
+	// path: 根据完整访问路径生效
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RuleType *string `json:"RuleType,omitempty" name:"RuleType"`
+
+	// 访问路径生效内容
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RulePaths []*string `json:"RulePaths,omitempty" name:"RulePaths" list`
+
+	// UserAgent列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UserAgents []*string `json:"UserAgents,omitempty" name:"UserAgents" list`
+
+	// 黑名单或白名单，blacklist或whitelist
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FilterType *string `json:"FilterType,omitempty" name:"FilterType"`
 }
 
 type VideoSeek struct {

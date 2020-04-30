@@ -5633,6 +5633,9 @@ type RecordParam struct {
 
 	// 点播子应用 ID。
 	VodSubAppId *int64 `json:"VodSubAppId,omitempty" name:"VodSubAppId"`
+
+	// 录制文件名。
+	VodFileName *string `json:"VodFileName,omitempty" name:"VodFileName"`
 }
 
 type RecordTemplateInfo struct {

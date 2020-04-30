@@ -1469,6 +1469,9 @@ type CreateInvoiceRequest struct {
 
 	// 接入环境。沙箱环境填sandbox。
 	Profile *string `json:"Profile,omitempty" name:"Profile"`
+
+	// 撤销部分商品。0-不撤销，1-撤销
+	UndoPart *int64 `json:"UndoPart,omitempty" name:"UndoPart"`
 }
 
 func (r *CreateInvoiceRequest) ToJsonString() string {

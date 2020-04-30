@@ -1788,6 +1788,57 @@ func (r *DescribeDBInstanceGTIDResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeDBInstanceInfoRequest struct {
+	*tchttp.BaseRequest
+
+	// 实例 ID 。
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+}
+
+func (r *DescribeDBInstanceInfoRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeDBInstanceInfoRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeDBInstanceInfoResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 实例 ID 。
+		InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+		// 实例名称。
+		InstanceName *string `json:"InstanceName,omitempty" name:"InstanceName"`
+
+		// 是否开通加密，YES 已开通，NO 未开通。
+		Encryption *string `json:"Encryption,omitempty" name:"Encryption"`
+
+		// 加密使用的密钥 ID 。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		KeyId *string `json:"KeyId,omitempty" name:"KeyId"`
+
+		// 密钥所在地域。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		KeyRegion *string `json:"KeyRegion,omitempty" name:"KeyRegion"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeDBInstanceInfoResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeDBInstanceInfoResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeDBInstanceRebootTimeRequest struct {
 	*tchttp.BaseRequest
 
@@ -2709,7 +2760,7 @@ func (r *DescribeRollbackRangeTimeResponse) FromJsonString(s string) error {
 type DescribeRollbackTaskDetailRequest struct {
 	*tchttp.BaseRequest
 
-	// 实例 ID。与云数据库控制台页面中显示的实例 ID 相同，可使用 [查询实例列表] (https://cloud.tencent.com/document/api/236/15872)。
+	// 实例 ID。与云数据库控制台页面中显示的实例 ID 相同，可使用 [查询实例列表](https://cloud.tencent.com/document/api/236/15872)。
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
 	// 异步任务 ID。

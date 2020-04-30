@@ -29,6 +29,31 @@ type AccessInfo struct {
 	Vip *string `json:"Vip,omitempty" name:"Vip"`
 }
 
+type Alias struct {
+
+	// 别名指向的主版本
+	FunctionVersion *string `json:"FunctionVersion,omitempty" name:"FunctionVersion"`
+
+	// 别名的名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 别名的路由信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RoutingConfig *RoutingConfig `json:"RoutingConfig,omitempty" name:"RoutingConfig"`
+
+	// 描述信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Description *string `json:"Description,omitempty" name:"Description"`
+
+	// 创建时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AddTime *string `json:"AddTime,omitempty" name:"AddTime"`
+
+	// 更新时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ModTime *string `json:"ModTime,omitempty" name:"ModTime"`
+}
+
 type Code struct {
 
 	// 对象存储桶名称
@@ -131,6 +156,55 @@ func (r *CopyFunctionResponse) ToJsonString() string {
 }
 
 func (r *CopyFunctionResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateAliasRequest struct {
+	*tchttp.BaseRequest
+
+	// 别名的名称，在函数级别中唯一，只能包含字母、数字、'_'和‘-’，且必须以字母开头，长度限制为1-64
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 函数名称
+	FunctionName *string `json:"FunctionName,omitempty" name:"FunctionName"`
+
+	// 别名指向的主版本
+	FunctionVersion *string `json:"FunctionVersion,omitempty" name:"FunctionVersion"`
+
+	// 函数所在的命名空间
+	Namespace *string `json:"Namespace,omitempty" name:"Namespace"`
+
+	// 别名的请求路由配置
+	RoutingConfig *RoutingConfig `json:"RoutingConfig,omitempty" name:"RoutingConfig"`
+
+	// 别名的描述信息
+	Description *string `json:"Description,omitempty" name:"Description"`
+}
+
+func (r *CreateAliasRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateAliasRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateAliasResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateAliasResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateAliasResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -644,6 +718,67 @@ type FunctionVersion struct {
 	ModTime *string `json:"ModTime,omitempty" name:"ModTime"`
 }
 
+type GetAliasRequest struct {
+	*tchttp.BaseRequest
+
+	// 函数名称
+	FunctionName *string `json:"FunctionName,omitempty" name:"FunctionName"`
+
+	// 别名的名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 函数所在的命名空间
+	Namespace *string `json:"Namespace,omitempty" name:"Namespace"`
+}
+
+func (r *GetAliasRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *GetAliasRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type GetAliasResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 别名指向的主版本
+		FunctionVersion *string `json:"FunctionVersion,omitempty" name:"FunctionVersion"`
+
+		// 别名的名称
+		Name *string `json:"Name,omitempty" name:"Name"`
+
+		// 别名的路由信息
+		RoutingConfig *RoutingConfig `json:"RoutingConfig,omitempty" name:"RoutingConfig"`
+
+		// 别名的描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Description *string `json:"Description,omitempty" name:"Description"`
+
+		// 创建时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		AddTime *string `json:"AddTime,omitempty" name:"AddTime"`
+
+		// 更新时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		ModTime *string `json:"ModTime,omitempty" name:"ModTime"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *GetAliasResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *GetAliasResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type GetFunctionAddressRequest struct {
 	*tchttp.BaseRequest
 
@@ -1077,6 +1212,59 @@ type LayerVersionSimple struct {
 
 	// 版本号
 	LayerVersion *int64 `json:"LayerVersion,omitempty" name:"LayerVersion"`
+}
+
+type ListAliasesRequest struct {
+	*tchttp.BaseRequest
+
+	// 函数名称
+	FunctionName *string `json:"FunctionName,omitempty" name:"FunctionName"`
+
+	// 函数所在的命名空间
+	Namespace *string `json:"Namespace,omitempty" name:"Namespace"`
+
+	// 如果提供此参数，则只返回与该函数版本有关联的别名
+	FunctionVersion *string `json:"FunctionVersion,omitempty" name:"FunctionVersion"`
+
+	// 数据偏移量，默认值为 0
+	Offset *string `json:"Offset,omitempty" name:"Offset"`
+
+	// 返回数据长度，默认值为 20
+	Limit *string `json:"Limit,omitempty" name:"Limit"`
+}
+
+func (r *ListAliasesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ListAliasesRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ListAliasesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 别名列表
+		Aliases []*Alias `json:"Aliases,omitempty" name:"Aliases" list`
+
+		// 别名总数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ListAliasesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ListAliasesResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
 }
 
 type ListFunctionsRequest struct {
@@ -1535,6 +1723,15 @@ type Result struct {
 	InvokeResult *int64 `json:"InvokeResult,omitempty" name:"InvokeResult"`
 }
 
+type RoutingConfig struct {
+
+	// 随机权重路由附加版本
+	AdditionalVersionWeights []*VersionWeight `json:"AdditionalVersionWeights,omitempty" name:"AdditionalVersionWeights" list`
+
+	// 规则路由附加版本
+	AddtionVersionMatchs []*VersionMatch `json:"AddtionVersionMatchs,omitempty" name:"AddtionVersionMatchs" list`
+}
+
 type Tag struct {
 
 	// 标签的key
@@ -1569,6 +1766,55 @@ type Trigger struct {
 
 	// 触发器状态
 	AvailableStatus *string `json:"AvailableStatus,omitempty" name:"AvailableStatus"`
+}
+
+type UpdateAliasRequest struct {
+	*tchttp.BaseRequest
+
+	// 函数名称
+	FunctionName *string `json:"FunctionName,omitempty" name:"FunctionName"`
+
+	// 别名的名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 别名指向的主版本
+	FunctionVersion *string `json:"FunctionVersion,omitempty" name:"FunctionVersion"`
+
+	// 函数所在的命名空间
+	Namespace *string `json:"Namespace,omitempty" name:"Namespace"`
+
+	// 别名的路由信息，需要为别名指定附加版本时，必须提供此参数
+	RoutingConfig *RoutingConfig `json:"RoutingConfig,omitempty" name:"RoutingConfig"`
+
+	// 别名的描述
+	Description *string `json:"Description,omitempty" name:"Description"`
+}
+
+func (r *UpdateAliasRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *UpdateAliasRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type UpdateAliasResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *UpdateAliasResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *UpdateAliasResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
 }
 
 type UpdateFunctionCodeRequest struct {
@@ -1674,6 +1920,9 @@ type UpdateFunctionConfigurationRequest struct {
 	// 在更新时是否同步发布新版本，默认为：FALSE，不发布
 	Publish *string `json:"Publish,omitempty" name:"Publish"`
 
+	// 是否开启L5访问能力，TRUE 为开启，FALSE为关闭
+	L5Enable *string `json:"L5Enable,omitempty" name:"L5Enable"`
+
 	// 函数要关联的层版本列表，层的版本会按照在列表中顺序依次覆盖。
 	Layers []*LayerVersionSimple `json:"Layers,omitempty" name:"Layers" list`
 
@@ -1752,6 +2001,37 @@ type Variable struct {
 
 	// 变量的值
 	Value *string `json:"Value,omitempty" name:"Value"`
+}
+
+type VersionMatch struct {
+
+	// 函数版本名称
+	Version *string `json:"Version,omitempty" name:"Version"`
+
+	// 匹配规则的key，调用时通过传key来匹配规则路由到指定版本
+	// header方式：
+	// key填写"invoke.headers.User"，并在 invoke 调用函数时传参 RoutingKey：{"User":"value"}规则匹配调用
+	Key *string `json:"Key,omitempty" name:"Key"`
+
+	// 匹配方式。取值范围：
+	// range：范围匹配
+	// exact：字符串精确匹配
+	Method *string `json:"Method,omitempty" name:"Method"`
+
+	// range 匹配规则要求：
+	// 需要为开区间或闭区间描述 (a,b) [a,b]，其中 a、b 均为整数
+	// exact 匹配规则要求：
+	// 字符串精确匹配
+	Expression *string `json:"Expression,omitempty" name:"Expression"`
+}
+
+type VersionWeight struct {
+
+	// 函数版本名称
+	Version *string `json:"Version,omitempty" name:"Version"`
+
+	// 该版本的权重
+	Weight *float64 `json:"Weight,omitempty" name:"Weight"`
 }
 
 type VpcConfig struct {
