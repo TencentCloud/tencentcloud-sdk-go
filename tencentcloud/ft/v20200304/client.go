@@ -58,7 +58,7 @@ func NewChangeAgePicResponse() (response *ChangeAgePicResponse) {
     return
 }
 
-// 用户上传一张人脸图片，基于人脸编辑与生成算法，输出一张人脸变老或变年轻的图片，支持实现人脸不同年龄的变化。（目前暂只支持10岁，后续放开再通知） 
+// 用户上传一张人脸图片，基于人脸编辑与生成算法，输出一张人脸变老或变年轻的图片，支持实现人脸不同年龄的变化。
 func (c *Client) ChangeAgePic(request *ChangeAgePicRequest) (response *ChangeAgePicResponse, err error) {
     if request == nil {
         request = NewChangeAgePicRequest()

@@ -857,6 +857,9 @@ type UpdateInstanceRequest struct {
 
 	// ES 6.8及以上版本基础版开启或关闭用户认证
 	BasicSecurityType *int64 `json:"BasicSecurityType,omitempty" name:"BasicSecurityType"`
+
+	// Kibana内网端口
+	KibanaPrivatePort *uint64 `json:"KibanaPrivatePort,omitempty" name:"KibanaPrivatePort"`
 }
 
 func (r *UpdateInstanceRequest) ToJsonString() string {

@@ -514,6 +514,9 @@ type DescribeBasicAlarmListRequest struct {
 
 	// 根据实例组ID过滤
 	InstanceGroupIds []*int64 `json:"InstanceGroupIds,omitempty" name:"InstanceGroupIds" list`
+
+	// 根据指标名过滤
+	MetricNames []*string `json:"MetricNames,omitempty" name:"MetricNames" list`
 }
 
 func (r *DescribeBasicAlarmListRequest) ToJsonString() string {
@@ -1782,9 +1785,9 @@ type ReceiverInfo struct {
 	NotifyWay []*string `json:"NotifyWay,omitempty" name:"NotifyWay" list`
 
 	// 接收人类型。“group” 或 “user”
-	ReceiverType []*string `json:"ReceiverType,omitempty" name:"ReceiverType" list`
+	ReceiverType *string `json:"ReceiverType,omitempty" name:"ReceiverType"`
 
-	// Id
+	// ReceiverId
 	Id *int64 `json:"Id,omitempty" name:"Id"`
 
 	// 电话告警通知时机。可选"OCCUR"(告警时通知),"RECOVER"(恢复时通知)

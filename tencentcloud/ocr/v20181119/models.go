@@ -150,7 +150,7 @@ type BizLicenseOCRResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 注册号
+		// 统一社会信用代码（三合一之前为注册号）
 		RegNum *string `json:"RegNum,omitempty" name:"RegNum"`
 
 		// 公司名称

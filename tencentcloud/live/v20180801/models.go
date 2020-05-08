@@ -396,16 +396,16 @@ type CommonMixControlParams struct {
 
 type CommonMixCropParams struct {
 
-	// 裁剪的宽度。取值范围[0，3000]。
+	// 裁剪的宽度。取值范围[0，2000]。
 	CropWidth *float64 `json:"CropWidth,omitempty" name:"CropWidth"`
 
-	// 裁剪的高度。取值范围[0，3000]。
+	// 裁剪的高度。取值范围[0，2000]。
 	CropHeight *float64 `json:"CropHeight,omitempty" name:"CropHeight"`
 
-	// 裁剪的起始X坐标。取值范围[0，3000]。
+	// 裁剪的起始X坐标。取值范围[0，2000]。
 	CropStartLocationX *float64 `json:"CropStartLocationX,omitempty" name:"CropStartLocationX"`
 
-	// 裁剪的起始Y坐标。取值范围[0，3000]。
+	// 裁剪的起始Y坐标。取值范围[0，2000]。
 	CropStartLocationY *float64 `json:"CropStartLocationY,omitempty" name:"CropStartLocationY"`
 }
 
@@ -438,21 +438,21 @@ type CommonMixLayoutParams struct {
 	InputType *int64 `json:"InputType,omitempty" name:"InputType"`
 
 	// 输入画面在输出时的宽度。取值范围：
-	// 像素：[0，3000]
+	// 像素：[0，2000]
 	// 百分比：[0.01，0.99]
 	// 不填默认为输入流的宽度。
 	// 使用百分比时，期望输出为（百分比 * 背景宽）。
 	ImageWidth *float64 `json:"ImageWidth,omitempty" name:"ImageWidth"`
 
 	// 输入画面在输出时的高度。取值范围：
-	// 像素：[0，3000]
+	// 像素：[0，2000]
 	// 百分比：[0.01，0.99]
 	// 不填默认为输入流的高度。
 	// 使用百分比时，期望输出为（百分比 * 背景高）。
 	ImageHeight *float64 `json:"ImageHeight,omitempty" name:"ImageHeight"`
 
 	// 输入在输出画面的X偏移。取值范围：
-	// 像素：[0，3000]
+	// 像素：[0，2000]
 	// 百分比：[0.01，0.99]
 	// 不填默认为0。
 	// 相对于大主播背景画面左上角的横向偏移。 
@@ -460,7 +460,7 @@ type CommonMixLayoutParams struct {
 	LocationX *float64 `json:"LocationX,omitempty" name:"LocationX"`
 
 	// 输入在输出画面的Y偏移。取值范围：
-	// 像素：[0，3000]
+	// 像素：[0，2000]
 	// 百分比：[0.01，0.99]
 	// 不填默认为0。
 	// 相对于大主播背景画面左上角的纵向偏移。 

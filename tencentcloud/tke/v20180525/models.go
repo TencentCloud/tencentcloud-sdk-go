@@ -172,6 +172,9 @@ type ClusterAdvancedSettings struct {
 
 	// 集群VPC-CNI模式是否为非固定IP，默认: FALSE 固定IP。
 	IsNonStaticIpMode *bool `json:"IsNonStaticIpMode,omitempty" name:"IsNonStaticIpMode"`
+
+	// 是否启用集群删除保护
+	DeletionProtection *bool `json:"DeletionProtection,omitempty" name:"DeletionProtection"`
 }
 
 type ClusterAsGroup struct {

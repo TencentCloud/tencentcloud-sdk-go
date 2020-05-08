@@ -400,6 +400,31 @@ func (c *Client) CreateAcct(request *CreateAcctRequest) (response *CreateAcctRes
     return
 }
 
+func NewCreateAgentTaxPaymentInfosRequest() (request *CreateAgentTaxPaymentInfosRequest) {
+    request = &CreateAgentTaxPaymentInfosRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cpdp", APIVersion, "CreateAgentTaxPaymentInfos")
+    return
+}
+
+func NewCreateAgentTaxPaymentInfosResponse() (response *CreateAgentTaxPaymentInfosResponse) {
+    response = &CreateAgentTaxPaymentInfosResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 直播平台-代理商完税信息录入
+func (c *Client) CreateAgentTaxPaymentInfos(request *CreateAgentTaxPaymentInfosRequest) (response *CreateAgentTaxPaymentInfosResponse, err error) {
+    if request == nil {
+        request = NewCreateAgentTaxPaymentInfosRequest()
+    }
+    response = NewCreateAgentTaxPaymentInfosResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateCustAcctIdRequest() (request *CreateCustAcctIdRequest) {
     request = &CreateCustAcctIdRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -501,6 +526,56 @@ func (c *Client) CreateRedInvoice(request *CreateRedInvoiceRequest) (response *C
     return
 }
 
+func NewDeleteAgentTaxPaymentInfoRequest() (request *DeleteAgentTaxPaymentInfoRequest) {
+    request = &DeleteAgentTaxPaymentInfoRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cpdp", APIVersion, "DeleteAgentTaxPaymentInfo")
+    return
+}
+
+func NewDeleteAgentTaxPaymentInfoResponse() (response *DeleteAgentTaxPaymentInfoResponse) {
+    response = &DeleteAgentTaxPaymentInfoResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 直播平台-删除代理商完税信息
+func (c *Client) DeleteAgentTaxPaymentInfo(request *DeleteAgentTaxPaymentInfoRequest) (response *DeleteAgentTaxPaymentInfoResponse, err error) {
+    if request == nil {
+        request = NewDeleteAgentTaxPaymentInfoRequest()
+    }
+    response = NewDeleteAgentTaxPaymentInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteAgentTaxPaymentInfosRequest() (request *DeleteAgentTaxPaymentInfosRequest) {
+    request = &DeleteAgentTaxPaymentInfosRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cpdp", APIVersion, "DeleteAgentTaxPaymentInfos")
+    return
+}
+
+func NewDeleteAgentTaxPaymentInfosResponse() (response *DeleteAgentTaxPaymentInfosResponse) {
+    response = &DeleteAgentTaxPaymentInfosResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 直播平台-删除代理商完税信息
+func (c *Client) DeleteAgentTaxPaymentInfos(request *DeleteAgentTaxPaymentInfosRequest) (response *DeleteAgentTaxPaymentInfosResponse, err error) {
+    if request == nil {
+        request = NewDeleteAgentTaxPaymentInfosRequest()
+    }
+    response = NewDeleteAgentTaxPaymentInfosResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDownloadBillRequest() (request *DownloadBillRequest) {
     request = &DownloadBillRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -522,6 +597,31 @@ func (c *Client) DownloadBill(request *DownloadBillRequest) (response *DownloadB
         request = NewDownloadBillRequest()
     }
     response = NewDownloadBillResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyAgentTaxPaymentInfoRequest() (request *ModifyAgentTaxPaymentInfoRequest) {
+    request = &ModifyAgentTaxPaymentInfoRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cpdp", APIVersion, "ModifyAgentTaxPaymentInfo")
+    return
+}
+
+func NewModifyAgentTaxPaymentInfoResponse() (response *ModifyAgentTaxPaymentInfoResponse) {
+    response = &ModifyAgentTaxPaymentInfoResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 直播平台-修改代理商完税信息
+func (c *Client) ModifyAgentTaxPaymentInfo(request *ModifyAgentTaxPaymentInfoRequest) (response *ModifyAgentTaxPaymentInfoResponse, err error) {
+    if request == nil {
+        request = NewModifyAgentTaxPaymentInfoRequest()
+    }
+    response = NewModifyAgentTaxPaymentInfoResponse()
     err = c.Send(request, response)
     return
 }
@@ -622,6 +722,31 @@ func (c *Client) QueryAcctInfoList(request *QueryAcctInfoListRequest) (response 
         request = NewQueryAcctInfoListRequest()
     }
     response = NewQueryAcctInfoListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewQueryAgentTaxPaymentBatchRequest() (request *QueryAgentTaxPaymentBatchRequest) {
+    request = &QueryAgentTaxPaymentBatchRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cpdp", APIVersion, "QueryAgentTaxPaymentBatch")
+    return
+}
+
+func NewQueryAgentTaxPaymentBatchResponse() (response *QueryAgentTaxPaymentBatchResponse) {
+    response = &QueryAgentTaxPaymentBatchResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 直播平台-查询批次信息
+func (c *Client) QueryAgentTaxPaymentBatch(request *QueryAgentTaxPaymentBatchRequest) (response *QueryAgentTaxPaymentBatchResponse, err error) {
+    if request == nil {
+        request = NewQueryAgentTaxPaymentBatchRequest()
+    }
+    response = NewQueryAgentTaxPaymentBatchResponse()
     err = c.Send(request, response)
     return
 }

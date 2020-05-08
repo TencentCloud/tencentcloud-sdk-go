@@ -1469,6 +1469,65 @@ func (r *ListNamespacesResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type ListTriggersRequest struct {
+	*tchttp.BaseRequest
+
+	// 函数名称
+	FunctionName *string `json:"FunctionName,omitempty" name:"FunctionName"`
+
+	// 命名空间，默认是default
+	Namespace *string `json:"Namespace,omitempty" name:"Namespace"`
+
+	// 数据偏移量，默认值为 0
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 返回数据长度，默认值为 20
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 根据哪个字段进行返回结果排序,支持以下字段：AddTime, ModTime，默认ModTime
+	OrderBy *string `json:"OrderBy,omitempty" name:"OrderBy"`
+
+	// 以升序还是降序的方式返回结果，可选值 ASC 和 DESC，默认DESC
+	Order *string `json:"Order,omitempty" name:"Order"`
+
+	// * Qualifier:
+	// 函数版本，别名
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+}
+
+func (r *ListTriggersRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ListTriggersRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ListTriggersResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 触发器总数
+		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 触发器列表
+		Triggers []*TriggerInfo `json:"Triggers,omitempty" name:"Triggers" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ListTriggersResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ListTriggersResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type ListVersionByFunctionRequest struct {
 	*tchttp.BaseRequest
 
@@ -1766,6 +1825,37 @@ type Trigger struct {
 
 	// 触发器状态
 	AvailableStatus *string `json:"AvailableStatus,omitempty" name:"AvailableStatus"`
+}
+
+type TriggerInfo struct {
+
+	// 使能开关
+	Enable *uint64 `json:"Enable,omitempty" name:"Enable"`
+
+	// 函数版本或别名
+	Qualifier *string `json:"Qualifier,omitempty" name:"Qualifier"`
+
+	// 触发器名称
+	TriggerName *string `json:"TriggerName,omitempty" name:"TriggerName"`
+
+	// 触发器类型
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 触发器详细配置
+	TriggerDesc *string `json:"TriggerDesc,omitempty" name:"TriggerDesc"`
+
+	// 触发器是否可用
+	AvailableStatus *string `json:"AvailableStatus,omitempty" name:"AvailableStatus"`
+
+	// 客户自定义参数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CustomArgument *string `json:"CustomArgument,omitempty" name:"CustomArgument"`
+
+	// 触发器创建时间
+	AddTime *string `json:"AddTime,omitempty" name:"AddTime"`
+
+	// 触发器最后修改时间
+	ModTime *string `json:"ModTime,omitempty" name:"ModTime"`
 }
 
 type UpdateAliasRequest struct {

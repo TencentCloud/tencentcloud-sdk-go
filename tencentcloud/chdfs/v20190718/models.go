@@ -470,8 +470,13 @@ type DescribeFileSystemResponse struct {
 		// 文件系统
 		FileSystem *FileSystem `json:"FileSystem,omitempty" name:"FileSystem"`
 
-		// 文件系统已使用大小（byte）
+		// 文件系统已使用容量（byte）
+	// 注意：此字段可能返回 null，表示取不到有效值。
 		FileSystemCapacityUsed *uint64 `json:"FileSystemCapacityUsed,omitempty" name:"FileSystemCapacityUsed"`
+
+		// 已使用容量（byte）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		CapacityUsed *uint64 `json:"CapacityUsed,omitempty" name:"CapacityUsed"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`

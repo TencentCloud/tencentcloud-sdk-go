@@ -51,6 +51,60 @@ type Acct struct {
 	MaintenanceDate *string `json:"MaintenanceDate,omitempty" name:"MaintenanceDate"`
 }
 
+type AgentTaxPayment struct {
+
+	// 主播银行账号
+	AnchorId *string `json:"AnchorId,omitempty" name:"AnchorId"`
+
+	// 主播姓名
+	AnchorName *string `json:"AnchorName,omitempty" name:"AnchorName"`
+
+	// 主播身份证
+	AnchorIDCard *string `json:"AnchorIDCard,omitempty" name:"AnchorIDCard"`
+
+	// 纳税的开始时间，格式yyyy-MM-dd
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 纳税的结束时间，格式yyyy-MM-dd
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 流水金额。以“分”为单位
+	Amount *int64 `json:"Amount,omitempty" name:"Amount"`
+
+	// 应缴税款。以“分”为单位
+	Tax *int64 `json:"Tax,omitempty" name:"Tax"`
+}
+
+type AgentTaxPaymentBatch struct {
+
+	// 状态消息
+	StatusMsg *string `json:"StatusMsg,omitempty" name:"StatusMsg"`
+
+	// 批次号
+	BatchNum *int64 `json:"BatchNum,omitempty" name:"BatchNum"`
+
+	// 录入记录的条数
+	InfoNum *int64 `json:"InfoNum,omitempty" name:"InfoNum"`
+
+	// 源电子凭证下载地址
+	RawElectronicCertUrl *string `json:"RawElectronicCertUrl,omitempty" name:"RawElectronicCertUrl"`
+
+	// 代理商账号
+	AgentId *string `json:"AgentId,omitempty" name:"AgentId"`
+
+	// 文件名
+	FileName *string `json:"FileName,omitempty" name:"FileName"`
+
+	// 状态码。0表示下载成功
+	StatusCode *int64 `json:"StatusCode,omitempty" name:"StatusCode"`
+
+	// 渠道号
+	Channel *int64 `json:"Channel,omitempty" name:"Channel"`
+
+	// 0-视同，1-个体工商户
+	Type *int64 `json:"Type,omitempty" name:"Type"`
+}
+
 type ApplyApplicationMaterialRequest struct {
 	*tchttp.BaseRequest
 
@@ -1228,6 +1282,58 @@ func (r *CreateAcctResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type CreateAgentTaxPaymentInfosRequest struct {
+	*tchttp.BaseRequest
+
+	// 代理商ID
+	AgentId *string `json:"AgentId,omitempty" name:"AgentId"`
+
+	// 平台渠道
+	Channel *int64 `json:"Channel,omitempty" name:"Channel"`
+
+	// 类型。0-视同，1-个体工商户
+	Type *int64 `json:"Type,omitempty" name:"Type"`
+
+	// 源电子凭证下载地址
+	RawElectronicCertUrl *string `json:"RawElectronicCertUrl,omitempty" name:"RawElectronicCertUrl"`
+
+	// 文件名
+	FileName *string `json:"FileName,omitempty" name:"FileName"`
+
+	// 完税信息
+	AgentTaxPaymentInfos []*AgentTaxPayment `json:"AgentTaxPaymentInfos,omitempty" name:"AgentTaxPaymentInfos" list`
+}
+
+func (r *CreateAgentTaxPaymentInfosRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateAgentTaxPaymentInfosRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateAgentTaxPaymentInfosResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 代理商完税证明批次信息
+		AgentTaxPaymentBatch *AgentTaxPaymentBatch `json:"AgentTaxPaymentBatch,omitempty" name:"AgentTaxPaymentBatch"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateAgentTaxPaymentInfosResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateAgentTaxPaymentInfosResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type CreateCustAcctIdRequest struct {
 	*tchttp.BaseRequest
 
@@ -1741,6 +1847,74 @@ type CreateRedInvoiceResultData struct {
 	OrderSn *string `json:"OrderSn,omitempty" name:"OrderSn"`
 }
 
+type DeleteAgentTaxPaymentInfoRequest struct {
+	*tchttp.BaseRequest
+
+	// 批次号
+	BatchNum *int64 `json:"BatchNum,omitempty" name:"BatchNum"`
+}
+
+func (r *DeleteAgentTaxPaymentInfoRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteAgentTaxPaymentInfoRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteAgentTaxPaymentInfoResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DeleteAgentTaxPaymentInfoResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteAgentTaxPaymentInfoResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteAgentTaxPaymentInfosRequest struct {
+	*tchttp.BaseRequest
+
+	// 批次号
+	BatchNum *int64 `json:"BatchNum,omitempty" name:"BatchNum"`
+}
+
+func (r *DeleteAgentTaxPaymentInfosRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteAgentTaxPaymentInfosRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteAgentTaxPaymentInfosResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DeleteAgentTaxPaymentInfosResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteAgentTaxPaymentInfosResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DownloadBillRequest struct {
 	*tchttp.BaseRequest
 
@@ -1810,6 +1984,49 @@ type FileItem struct {
 	// STRING(64)，提取码
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DrawCode *string `json:"DrawCode,omitempty" name:"DrawCode"`
+}
+
+type ModifyAgentTaxPaymentInfoRequest struct {
+	*tchttp.BaseRequest
+
+	// 批次号
+	BatchNum *int64 `json:"BatchNum,omitempty" name:"BatchNum"`
+
+	// 新源电子凭证地址
+	RawElectronicCertUrl *string `json:"RawElectronicCertUrl,omitempty" name:"RawElectronicCertUrl"`
+
+	// 新的文件名
+	FileName *string `json:"FileName,omitempty" name:"FileName"`
+}
+
+func (r *ModifyAgentTaxPaymentInfoRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyAgentTaxPaymentInfoRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyAgentTaxPaymentInfoResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 代理商完税证明批次信息
+		AgentTaxPaymentBatch *AgentTaxPaymentBatch `json:"AgentTaxPaymentBatch,omitempty" name:"AgentTaxPaymentBatch"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifyAgentTaxPaymentInfoResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyAgentTaxPaymentInfoResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
 }
 
 type ModifyMntMbrBindRelateAcctBankCodeRequest struct {
@@ -2114,6 +2331,43 @@ type QueryAcctItem struct {
 	// 缺省： general
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SubMerchantMemberType *string `json:"SubMerchantMemberType,omitempty" name:"SubMerchantMemberType"`
+}
+
+type QueryAgentTaxPaymentBatchRequest struct {
+	*tchttp.BaseRequest
+
+	// 批次号
+	BatchNum *int64 `json:"BatchNum,omitempty" name:"BatchNum"`
+}
+
+func (r *QueryAgentTaxPaymentBatchRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *QueryAgentTaxPaymentBatchRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type QueryAgentTaxPaymentBatchResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 代理商完税证明批次信息
+		AgentTaxPaymentBatch *AgentTaxPaymentBatch `json:"AgentTaxPaymentBatch,omitempty" name:"AgentTaxPaymentBatch"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *QueryAgentTaxPaymentBatchResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *QueryAgentTaxPaymentBatchResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
 }
 
 type QueryApplicationMaterialRequest struct {

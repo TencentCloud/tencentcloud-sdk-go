@@ -23,7 +23,7 @@ import (
 type DescribeCallDetailRequest struct {
 	*tchttp.BaseRequest
 
-	// 通话ID
+	// 通话ID（唯一标识一次通话）= sdkappid+roomgString（房间号）+房间创建时间（unix时间戳，s）。通过 DescribeRoomInformation（查询房间列表）接口获取。
 	CommId *string `json:"CommId,omitempty" name:"CommId"`
 
 	// 查询开始时间
@@ -35,7 +35,7 @@ type DescribeCallDetailRequest struct {
 	// 用户sdkappid
 	SdkAppId *string `json:"SdkAppId,omitempty" name:"SdkAppId"`
 
-	// 需查询的用户数组，不填默认返回6个用户
+	// 需查询的用户数组，不填默认返回6个用户,最多可填6个用户
 	UserIds []*string `json:"UserIds,omitempty" name:"UserIds" list`
 
 	// 需查询的指标，不填则只返回用户列表，填all则返回所有指标。
@@ -378,6 +378,63 @@ func (r *DismissRoomResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type EncodeParams struct {
+
+	// 混流-输出流音频采样率
+	AudioSampleRate *uint64 `json:"AudioSampleRate,omitempty" name:"AudioSampleRate"`
+
+	// 混流-输出流音频码率，单位Kbps
+	AudioBitrate *uint64 `json:"AudioBitrate,omitempty" name:"AudioBitrate"`
+
+	// 混流-输出流音频声道数
+	AudioChannels *uint64 `json:"AudioChannels,omitempty" name:"AudioChannels"`
+
+	// 混流-输出流宽，音视频输出时必填
+	VideoWidth *uint64 `json:"VideoWidth,omitempty" name:"VideoWidth"`
+
+	// 混流-输出流高，音视频输出时必填
+	VideoHeight *uint64 `json:"VideoHeight,omitempty" name:"VideoHeight"`
+
+	// 混流-输出流码率，单位Kbps，音视频输出时必填
+	VideoBitrate *uint64 `json:"VideoBitrate,omitempty" name:"VideoBitrate"`
+
+	// 混流-输出流帧率，音视频输出时必填
+	VideoFramerate *uint64 `json:"VideoFramerate,omitempty" name:"VideoFramerate"`
+
+	// 混流-输出流gop，音视频输出时必填
+	VideoGop *uint64 `json:"VideoGop,omitempty" name:"VideoGop"`
+
+	// 混流-输出流背景色
+	BackgroundColor *uint64 `json:"BackgroundColor,omitempty" name:"BackgroundColor"`
+}
+
+type LayoutParams struct {
+
+	// 混流布局模板ID，0为悬浮模板(默认);1为九宫格模板;2为屏幕分享模板
+	Template *uint64 `json:"Template,omitempty" name:"Template"`
+
+	// 屏幕分享模板中有效，代表左侧大画面对应的用户ID
+	MainVideoUserId *string `json:"MainVideoUserId,omitempty" name:"MainVideoUserId"`
+
+	// 屏幕分享模板中有效，代表左侧大画面对应的流类型，0为摄像头，1为屏幕分享
+	MainVideoStreamType *uint64 `json:"MainVideoStreamType,omitempty" name:"MainVideoStreamType"`
+}
+
+type OutputParams struct {
+
+	// 直播流ID
+	StreamId *string `json:"StreamId,omitempty" name:"StreamId"`
+
+	// 填0：直播流为音视频(默认); 填1：直播流为纯音频
+	PureAudioStream *uint64 `json:"PureAudioStream,omitempty" name:"PureAudioStream"`
+
+	// 自定义录制文件名
+	RecordId *string `json:"RecordId,omitempty" name:"RecordId"`
+
+	// 填1：纯音频录制为mp3
+	RecordAudioOnly *uint64 `json:"RecordAudioOnly,omitempty" name:"RecordAudioOnly"`
+}
+
 type QualityData struct {
 
 	// 数据内容
@@ -481,6 +538,89 @@ type ScaleInfomation struct {
 	// 房间数
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RoomNumbers *uint64 `json:"RoomNumbers,omitempty" name:"RoomNumbers"`
+}
+
+type StartMCUMixTranscodeRequest struct {
+	*tchttp.BaseRequest
+
+	// TRTC的SDKAppId。
+	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+
+	// 房间号。
+	RoomId *uint64 `json:"RoomId,omitempty" name:"RoomId"`
+
+	// 混流输出控制参数。
+	OutputParams *OutputParams `json:"OutputParams,omitempty" name:"OutputParams"`
+
+	// 混流输出编码参数。
+	EncodeParams *EncodeParams `json:"EncodeParams,omitempty" name:"EncodeParams"`
+
+	// 混流输出布局参数。
+	LayoutParams *LayoutParams `json:"LayoutParams,omitempty" name:"LayoutParams"`
+}
+
+func (r *StartMCUMixTranscodeRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *StartMCUMixTranscodeRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type StartMCUMixTranscodeResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *StartMCUMixTranscodeResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *StartMCUMixTranscodeResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type StopMCUMixTranscodeRequest struct {
+	*tchttp.BaseRequest
+
+	// TRTC的SDKAppId。
+	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+
+	// 房间号。
+	RoomId *uint64 `json:"RoomId,omitempty" name:"RoomId"`
+}
+
+func (r *StopMCUMixTranscodeRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *StopMCUMixTranscodeRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type StopMCUMixTranscodeResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *StopMCUMixTranscodeResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *StopMCUMixTranscodeResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
 }
 
 type TimeValue struct {

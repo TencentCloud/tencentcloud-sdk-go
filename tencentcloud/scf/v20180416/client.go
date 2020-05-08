@@ -575,6 +575,31 @@ func (c *Client) ListNamespaces(request *ListNamespacesRequest) (response *ListN
     return
 }
 
+func NewListTriggersRequest() (request *ListTriggersRequest) {
+    request = &ListTriggersRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("scf", APIVersion, "ListTriggers")
+    return
+}
+
+func NewListTriggersResponse() (response *ListTriggersResponse) {
+    response = &ListTriggersResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 获取函数触发器列表
+func (c *Client) ListTriggers(request *ListTriggersRequest) (response *ListTriggersResponse, err error) {
+    if request == nil {
+        request = NewListTriggersRequest()
+    }
+    response = NewListTriggersResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewListVersionByFunctionRequest() (request *ListVersionByFunctionRequest) {
     request = &ListVersionByFunctionRequest{
         BaseRequest: &tchttp.BaseRequest{},

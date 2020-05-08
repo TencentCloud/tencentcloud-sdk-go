@@ -9294,7 +9294,12 @@ type SnapshotByTimeOffsetTaskInput struct {
 	// 指定时间点截图模板 ID。
 	Definition *uint64 `json:"Definition,omitempty" name:"Definition"`
 
-	// 截图时间点列表，单位为<font color=red>毫秒</font>。
+	// 截图时间点列表，时间点支持 s、% 两种格式：
+	// <li>当字符串以 s 结尾，表示时间点单位为秒，如 3.5s 表示时间点为第3.5秒；</li>
+	// <li>当字符串以 % 结尾，表示时间点为视频时长的百分比大小，如10%表示时间点为视频前第10%的时间。</li>
+	ExtTimeOffsetSet []*string `json:"ExtTimeOffsetSet,omitempty" name:"ExtTimeOffsetSet" list`
+
+	// 截图时间点列表，单位为<font color=red>毫秒</font>。此参数已不再建议使用，建议您使用 ExtTimeOffsetSet 参数。
 	TimeOffsetSet []*float64 `json:"TimeOffsetSet,omitempty" name:"TimeOffsetSet" list`
 
 	// 水印列表，支持多张图片或文字水印，最大可支持 10 张。

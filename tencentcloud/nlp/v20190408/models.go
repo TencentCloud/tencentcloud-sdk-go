@@ -564,12 +564,17 @@ type SentimentAnalysisRequest struct {
 	// 待分析的文本（仅支持UTF-8格式，不超过200字）
 	Text *string `json:"Text,omitempty" name:"Text"`
 
-	// 文本所属类型（默认取4值）：
+	// 待分析文本所属的类型，仅当输入参数Mode取值为2class时有效（默认取4值）：
 	// 1、商品评论类
 	// 2、社交类
 	// 3、美食酒店类
 	// 4、通用领域类
 	Flag *uint64 `json:"Flag,omitempty" name:"Flag"`
+
+	// 情感分类模式选项，可取2class或3class（默认值为2class）
+	// 1、2class：返回正负面二分类情感结果
+	// 2、3class：返回正负面及中性三分类情感结果
+	Mode *string `json:"Mode,omitempty" name:"Mode"`
 }
 
 func (r *SentimentAnalysisRequest) ToJsonString() string {
@@ -587,6 +592,9 @@ type SentimentAnalysisResponse struct {
 
 		// 负面情感概率
 		Negative *float64 `json:"Negative,omitempty" name:"Negative"`
+
+		// 中性情感概率，当输入参数Mode取值为3class时有效，否则值为空
+		Neutral *float64 `json:"Neutral,omitempty" name:"Neutral"`
 
 		// 正面情感概率
 		Positive *float64 `json:"Positive,omitempty" name:"Positive"`

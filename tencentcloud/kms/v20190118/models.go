@@ -1062,10 +1062,10 @@ type GenerateDataKeyResponse struct {
 		// CMK的全局唯一标识
 		KeyId *string `json:"KeyId,omitempty" name:"KeyId"`
 
-		// 生成的DataKey的明文，该明文使用base64编码，用户需要使用base64解码得到明文
+		// 生成的数据密钥DataKey的明文，该明文使用base64进行了编码，需base64解码后作为数据密钥本地使用
 		Plaintext *string `json:"Plaintext,omitempty" name:"Plaintext"`
 
-		// DataKey加密后经过base64编码的密文，用户需要自行保存密文
+		// 数据密钥DataKey加密后的密文，用户需要自行保存该密文，KMS不托管用户的数据密钥。可以通过Decrypt接口从CiphertextBlob中获取数据密钥DataKey明文
 		CiphertextBlob *string `json:"CiphertextBlob,omitempty" name:"CiphertextBlob"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。

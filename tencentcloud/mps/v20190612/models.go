@@ -5472,6 +5472,50 @@ func (r *ModifyWordSampleResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type MosaicInput struct {
+
+	// 原点位置，目前仅支持：
+	// <li>TopLeft：表示坐标原点位于视频图像左上角，马赛克原点为图片或文字的左上角。</li>
+	// 默认值：TopLeft。
+	CoordinateOrigin *string `json:"CoordinateOrigin,omitempty" name:"CoordinateOrigin"`
+
+	// 马赛克原点距离视频图像坐标原点的水平位置。支持 %、px 两种格式：
+	// <li>当字符串以 % 结尾，表示马赛克 XPos 为视频宽度指定百分比，如 10% 表示 XPos 为视频宽度的 10%；</li>
+	// <li>当字符串以 px 结尾，表示马赛克 XPos 为指定像素，如 100px 表示 XPos 为 100 像素。</li>
+	// 默认值：0px。
+	XPos *string `json:"XPos,omitempty" name:"XPos"`
+
+	// 马赛克原点距离视频图像坐标原点的垂直位置。支持 %、px 两种格式：
+	// <li>当字符串以 % 结尾，表示马赛克 YPos 为视频高度指定百分比，如 10% 表示 YPos 为视频高度的 10%；</li>
+	// <li>当字符串以 px 结尾，表示马赛克 YPos 为指定像素，如 100px 表示 YPos 为 100 像素。</li>
+	// 默认值：0px。
+	YPos *string `json:"YPos,omitempty" name:"YPos"`
+
+	// 马赛克的宽度。支持 %、px 两种格式：
+	// <li>当字符串以 % 结尾，表示马赛克 Width 为视频宽度的百分比大小，如 10% 表示 Width 为视频宽度的 10%；</li>
+	// <li>当字符串以 px 结尾，表示马赛克 Width 单位为像素，如 100px 表示 Width 为 100 像素。</li>
+	// 默认值：10%。
+	Width *string `json:"Width,omitempty" name:"Width"`
+
+	// 马赛克的高度。支持 %、px 两种格式：
+	// <li>当字符串以 % 结尾，表示马赛克 Height 为视频高度的百分比大小，如 10% 表示 Height 为视频高度的 10%；</li>
+	// <li>当字符串以 px 结尾，表示马赛克 Height 单位为像素，如 100px 表示 Height 为 100 像素。</li>
+	// 默认值：10%。
+	Height *string `json:"Height,omitempty" name:"Height"`
+
+	// 马赛克的起始时间偏移，单位：秒。不填或填0，表示马赛克从画面出现时开始显现。
+	// <li>不填或填0，表示马赛克从画面开始就出现；</li>
+	// <li>当数值大于0时（假设为 n），表示马赛克从画面开始的第 n 秒出现；</li>
+	// <li>当数值小于0时（假设为 -n），表示马赛克从离画面结束 n 秒前开始出现。</li>
+	StartTimeOffset *float64 `json:"StartTimeOffset,omitempty" name:"StartTimeOffset"`
+
+	// 马赛克的结束时间偏移，单位：秒。
+	// <li>不填或填0，表示马赛克持续到画面结束；</li>
+	// <li>当数值大于0时（假设为 n），表示马赛克持续到第 n 秒时消失；</li>
+	// <li>当数值小于0时（假设为 -n），表示马赛克持续到离画面结束 n 秒前消失。</li>
+	EndTimeOffset *float64 `json:"EndTimeOffset,omitempty" name:"EndTimeOffset"`
+}
+
 type NumberFormat struct {
 
 	// `{number}`变量的起始值，默认为0。
@@ -6309,7 +6353,12 @@ type SnapshotByTimeOffsetTaskInput struct {
 	// 指定时间点截图模板 ID。
 	Definition *uint64 `json:"Definition,omitempty" name:"Definition"`
 
-	// 截图时间点列表，单位为<font color=red>秒</font>。
+	// 截图时间点列表，时间点支持 s、% 两种格式：
+	// <li>当字符串以 s 结尾，表示时间点单位为秒，如 3.5s 表示时间点为第3.5秒；</li>
+	// <li>当字符串以 % 结尾，表示时间点为视频时长的百分比大小，如10%表示时间点为视频前第10%的时间。</li>
+	ExtTimeOffsetSet []*string `json:"ExtTimeOffsetSet,omitempty" name:"ExtTimeOffsetSet" list`
+
+	// 截图时间点列表，单位为<font color=red>秒</font>。此参数已不再建议使用，建议您使用 ExtTimeOffsetSet 参数。
 	TimeOffsetSet []*float64 `json:"TimeOffsetSet,omitempty" name:"TimeOffsetSet" list`
 
 	// 水印列表，支持多张图片或文字水印，最大可支持 10 张。
@@ -6669,6 +6718,9 @@ type TranscodeTaskInput struct {
 	// 水印列表，支持多张图片或文字水印，最大可支持 10 张。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	WatermarkSet []*WatermarkInput `json:"WatermarkSet,omitempty" name:"WatermarkSet" list`
+
+	// 马赛克列表，最大可支持 10 张。
+	MosaicSet []*MosaicInput `json:"MosaicSet,omitempty" name:"MosaicSet" list`
 
 	// 转码后文件的目标存储，不填则继承上层的 OutputStorage 值。
 	// 注意：此字段可能返回 null，表示取不到有效值。
