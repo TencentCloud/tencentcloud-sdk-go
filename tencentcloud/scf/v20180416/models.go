@@ -261,6 +261,9 @@ type CreateFunctionRequest struct {
 
 	// 死信队列参数
 	DeadLetterConfig *DeadLetterConfig `json:"DeadLetterConfig,omitempty" name:"DeadLetterConfig"`
+
+	// 公网访问配置
+	PublicNetConfig *PublicNetConfigIn `json:"PublicNetConfig,omitempty" name:"PublicNetConfig"`
 }
 
 func (r *CreateFunctionRequest) ToJsonString() string {
@@ -589,6 +592,12 @@ func (r *DeleteTriggerResponse) ToJsonString() string {
 
 func (r *DeleteTriggerResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
+}
+
+type EipConfigIn struct {
+
+	// Eip开启状态，取值['ENABLE','DISABLE']
+	EipStatus *string `json:"EipStatus,omitempty" name:"EipStatus"`
 }
 
 type EipConfigOut struct {
@@ -1633,6 +1642,15 @@ type Namespace struct {
 	Type *string `json:"Type,omitempty" name:"Type"`
 }
 
+type PublicNetConfigIn struct {
+
+	// 是否开启公网访问能力取值['DISABLE','ENABLE']
+	PublicNetStatus *string `json:"PublicNetStatus,omitempty" name:"PublicNetStatus"`
+
+	// Eip配置
+	EipConfig *EipConfigIn `json:"EipConfig,omitempty" name:"EipConfig"`
+}
+
 type PublicNetConfigOut struct {
 
 	// 是否开启公网访问能力取值['DISABLE','ENABLE']
@@ -2018,6 +2036,9 @@ type UpdateFunctionConfigurationRequest struct {
 
 	// 函数关联的死信队列信息
 	DeadLetterConfig *DeadLetterConfig `json:"DeadLetterConfig,omitempty" name:"DeadLetterConfig"`
+
+	// 公网访问配置
+	PublicNetConfig *PublicNetConfigIn `json:"PublicNetConfig,omitempty" name:"PublicNetConfig"`
 }
 
 func (r *UpdateFunctionConfigurationRequest) ToJsonString() string {

@@ -452,6 +452,9 @@ type ImageData struct {
 	// 图片OCR详情
 	OCRDetect *OCRDetect `json:"OCRDetect,omitempty" name:"OCRDetect"`
 
+	// 手机检测详情
+	PhoneDetect *PhoneDetect `json:"PhoneDetect,omitempty" name:"PhoneDetect"`
+
 	// 图片涉政详情
 	PolityDetect *ImagePolityDetect `json:"PolityDetect,omitempty" name:"PolityDetect"`
 
@@ -639,6 +642,23 @@ type OCRDetect struct {
 
 	// 识别到的文本信息
 	TextInfo *string `json:"TextInfo,omitempty" name:"TextInfo"`
+}
+
+type PhoneDetect struct {
+
+	// 恶意类型
+	// 100：正常
+	// 21000：综合
+	EvilType *int64 `json:"EvilType,omitempty" name:"EvilType"`
+
+	// 处置判定 0：正常 1：可疑
+	HitFlag *int64 `json:"HitFlag,omitempty" name:"HitFlag"`
+
+	// 特征中文描述
+	Labels []*string `json:"Labels,omitempty" name:"Labels" list`
+
+	// 分值范围 0-100，分数越高倾向越明显
+	Score *int64 `json:"Score,omitempty" name:"Score"`
 }
 
 type RrectF struct {

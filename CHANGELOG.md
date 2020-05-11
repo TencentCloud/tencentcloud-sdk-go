@@ -1,54 +1,33 @@
 # 本版本更新包含以下内容：
 
-## 云 HDFS(chdfs) 版本：2019-07-18
+## 内容安全(cms) 版本：2019-03-21
 
-### 第 3 次发布
+### 第 8 次发布
 
-发布时间：2020-05-08 08:07:19
+发布时间：2020-05-11 10:03:36
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-修改接口：
+新增数据结构：
 
-* [DescribeFileSystem](https://cloud.tencent.com/document/api/1105/37368)
+* [PhoneDetect](https://cloud.tencent.com/document/api/669/34506#PhoneDetect)
 
-	* 新增出参：CapacityUsed
+修改数据结构：
+
+* [ImageData](https://cloud.tencent.com/document/api/669/34506#ImageData)
+
+	* 新增成员：PhoneDetect
 
 
 
 
 ## 企业收付平台(cpdp) 版本：2019-08-20
 
-### 第 11 次发布
+### 第 12 次发布
 
-发布时间：2020-05-08 08:20:37
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [CreateAgentTaxPaymentInfos](https://cloud.tencent.com/document/api/1122/44272)
-* [DeleteAgentTaxPaymentInfo](https://cloud.tencent.com/document/api/1122/44276)
-* [DeleteAgentTaxPaymentInfos](https://cloud.tencent.com/document/api/1122/44276)
-* [ModifyAgentTaxPaymentInfo](https://cloud.tencent.com/document/api/1122/44275)
-* [QueryAgentTaxPaymentBatch](https://cloud.tencent.com/document/api/1122/44274)
-
-新增数据结构：
-
-* [AgentTaxPayment](https://cloud.tencent.com/document/api/1122/40683#AgentTaxPayment)
-* [AgentTaxPaymentBatch](https://cloud.tencent.com/document/api/1122/40683#AgentTaxPaymentBatch)
-
-
-
-## Elasticsearch服务(es) 版本：2018-04-16
-
-### 第 9 次发布
-
-发布时间：2020-05-08 08:10:10
+发布时间：2020-05-11 10:20:46
 
 本次发布包含了以下内容：
 
@@ -56,18 +35,50 @@
 
 修改接口：
 
-* [UpdateInstance](https://cloud.tencent.com/document/api/845/30629)
+* [CreateAgentTaxPaymentInfos](https://cloud.tencent.com/document/api/1122/44272)
 
-	* 新增入参：KibanaPrivatePort
+	* 新增入参：Profile
+
+* [DeleteAgentTaxPaymentInfo](https://cloud.tencent.com/document/api/1122/44276)
+
+	* 新增入参：Profile
+
+* [ModifyAgentTaxPaymentInfo](https://cloud.tencent.com/document/api/1122/44275)
+
+	* 新增入参：Profile
+
+* [QueryAgentTaxPaymentBatch](https://cloud.tencent.com/document/api/1122/44274)
+
+	* 新增入参：Profile
 
 
 
 
 ## 云监控(monitor) 版本：2018-07-24
 
-### 第 10 次发布
+### 第 11 次发布
 
-发布时间：2020-05-08 08:13:19
+发布时间：2020-05-11 10:11:18
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeProductList](https://cloud.tencent.com/document/api/248/44374)
+
+新增数据结构：
+
+* [ProductSimple](https://cloud.tencent.com/document/api/248/30354#ProductSimple)
+
+
+
+## 文字识别(ocr) 版本：2018-11-19
+
+### 第 22 次发布
+
+发布时间：2020-05-11 10:12:35
 
 本次发布包含了以下内容：
 
@@ -75,100 +86,68 @@
 
 修改接口：
 
-* [DescribeBasicAlarmList](https://cloud.tencent.com/document/api/248/41199)
+* [VatInvoiceOCR](https://cloud.tencent.com/document/api/866/36210)
 
-	* 新增入参：MetricNames
-
-
-修改数据结构：
-
-* [ReceiverInfo](https://cloud.tencent.com/document/api/248/30354#ReceiverInfo)
-
-	* <font color="#dd0000">**修改成员**：</font>ReceiverType
+	* 新增出参：Items
 
 
+新增数据结构：
 
-
-## 腾讯知文自然语言处理(nlp) 版本：2019-04-08
-
-### 第 6 次发布
-
-发布时间：2020-05-08 08:14:08
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [SentimentAnalysis](https://cloud.tencent.com/document/api/271/35497)
-
-	* 新增入参：Mode
-
-	* 新增出参：Neutral
-
+* [VatInvoiceItem](https://cloud.tencent.com/document/api/866/33527#VatInvoiceItem)
 
 
 
 ## 云函数(scf) 版本：2018-04-16
 
-### 第 13 次发布
+### 第 14 次发布
 
-发布时间：2020-05-08 08:15:22
+发布时间：2020-05-11 10:13:56
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-新增接口：
+修改接口：
 
-* [ListTriggers](https://cloud.tencent.com/document/api/583/44268)
+* [CreateFunction](https://cloud.tencent.com/document/api/583/18586)
+
+	* 新增入参：PublicNetConfig
+
+* [UpdateFunctionConfiguration](https://cloud.tencent.com/document/api/583/18580)
+
+	* 新增入参：PublicNetConfig
+
 
 新增数据结构：
 
-* [TriggerInfo](https://cloud.tencent.com/document/api/583/17244#TriggerInfo)
+* [EipConfigIn](https://cloud.tencent.com/document/api/583/17244#EipConfigIn)
+* [PublicNetConfigIn](https://cloud.tencent.com/document/api/583/17244#PublicNetConfigIn)
 
 
 
-## 容器服务(tke) 版本：2018-05-25
+## 私有网络(vpc) 版本：2017-03-12
 
-### 第 19 次发布
+### 第 50 次发布
 
-发布时间：2020-05-08 08:17:32
+发布时间：2020-05-11 10:17:57
 
 本次发布包含了以下内容：
 
 改善已有的文档。
+
+修改接口：
+
+* [ModifyGatewayFlowQos](https://cloud.tencent.com/document/api/215/43268)
+
+	* <font color="#dd0000">**修改入参**：</font>Bandwidth
+
 
 修改数据结构：
 
-* [ClusterAdvancedSettings](https://cloud.tencent.com/document/api/457/31866#ClusterAdvancedSettings)
+* [GatewayQos](https://cloud.tencent.com/document/api/215/15824#GatewayQos)
 
-	* 新增成员：DeletionProtection
+	* <font color="#dd0000">**修改成员**：</font>Bandwidth
 
-
-
-
-## 实时音视频(trtc) 版本：2019-07-22
-
-### 第 7 次发布
-
-发布时间：2020-05-08 08:20:12
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [StartMCUMixTranscode](https://cloud.tencent.com/document/api/647/44270)
-* [StopMCUMixTranscode](https://cloud.tencent.com/document/api/647/44269)
-
-新增数据结构：
-
-* [EncodeParams](https://cloud.tencent.com/document/api/647/44055#EncodeParams)
-* [LayoutParams](https://cloud.tencent.com/document/api/647/44055#LayoutParams)
-* [OutputParams](https://cloud.tencent.com/document/api/647/44055#OutputParams)
 
 
 
@@ -7126,6 +7105,25 @@
 
 ## 内容安全(cms) 版本：2019-03-21
 
+### 第 8 次发布
+
+发布时间：2020-05-11 10:03:36
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增数据结构：
+
+* [[PhoneDetect](https://cloud.tencent.com/document/api/669/34506#PhoneDetect)](https://cloud.tencent.com/document/api/669/34506#[PhoneDetect](https://cloud.tencent.com/document/api/669/34506#PhoneDetect))
+
+修改数据结构：
+
+* [ImageData](https://cloud.tencent.com/document/api/669/34506#ImageData)
+
+	* 新增成员：PhoneDetect
+
+
 ### 第 7 次发布
 
 发布时间：2020-03-12 22:16:03
@@ -7318,6 +7316,33 @@
 
 ## 企业收付平台(cpdp) 版本：2019-08-20
 
+### 第 12 次发布
+
+发布时间：2020-05-11 10:20:46
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateAgentTaxPaymentInfos](https://cloud.tencent.com/document/api/1122/44272)
+
+	* 新增入参：Profile
+
+* [DeleteAgentTaxPaymentInfo](https://cloud.tencent.com/document/api/1122/44276)
+
+	* 新增入参：Profile
+
+* [ModifyAgentTaxPaymentInfo](https://cloud.tencent.com/document/api/1122/44275)
+
+	* 新增入参：Profile
+
+* [QueryAgentTaxPaymentBatch](https://cloud.tencent.com/document/api/1122/44274)
+
+	* 新增入参：Profile
+
+
 ### 第 11 次发布
 
 发布时间：2020-05-08 08:20:37
@@ -7328,16 +7353,16 @@
 
 新增接口：
 
-* [[CreateAgentTaxPaymentInfos](https://cloud.tencent.com/document/api/1122/44272)](https://cloud.tencent.com/document/api/#/#)
-* [[DeleteAgentTaxPaymentInfo](https://cloud.tencent.com/document/api/1122/44276)](https://cloud.tencent.com/document/api/#/#)
-* [[DeleteAgentTaxPaymentInfos](https://cloud.tencent.com/document/api/1122/44276)](https://cloud.tencent.com/document/api/#/#)
-* [[ModifyAgentTaxPaymentInfo](https://cloud.tencent.com/document/api/1122/44275)](https://cloud.tencent.com/document/api/#/#)
-* [[QueryAgentTaxPaymentBatch](https://cloud.tencent.com/document/api/1122/44274)](https://cloud.tencent.com/document/api/#/#)
+* [CreateAgentTaxPaymentInfos](https://cloud.tencent.com/document/api/1122/44272)
+* [DeleteAgentTaxPaymentInfo](https://cloud.tencent.com/document/api/1122/44276)
+* [DeleteAgentTaxPaymentInfos](https://cloud.tencent.com/document/api/1122/44276)
+* [ModifyAgentTaxPaymentInfo](https://cloud.tencent.com/document/api/1122/44275)
+* [QueryAgentTaxPaymentBatch](https://cloud.tencent.com/document/api/1122/44274)
 
 新增数据结构：
 
-* [[AgentTaxPayment](https://cloud.tencent.com/document/api/1122/40683#AgentTaxPayment)](https://cloud.tencent.com/document/api/1122/40683#[AgentTaxPayment](https://cloud.tencent.com/document/api/1122/40683#AgentTaxPayment))
-* [[AgentTaxPaymentBatch](https://cloud.tencent.com/document/api/1122/40683#AgentTaxPaymentBatch)](https://cloud.tencent.com/document/api/1122/40683#[AgentTaxPaymentBatch](https://cloud.tencent.com/document/api/1122/40683#AgentTaxPaymentBatch))
+* [AgentTaxPayment](https://cloud.tencent.com/document/api/1122/40683#AgentTaxPayment)
+* [AgentTaxPaymentBatch](https://cloud.tencent.com/document/api/1122/40683#AgentTaxPaymentBatch)
 
 ### 第 10 次发布
 
@@ -15633,6 +15658,22 @@
 
 ## 云监控(monitor) 版本：2018-07-24
 
+### 第 11 次发布
+
+发布时间：2020-05-11 10:11:18
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeProductList](https://cloud.tencent.com/document/api/248/44374)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[ProductSimple](https://cloud.tencent.com/document/api/248/30354#ProductSimple)](https://cloud.tencent.com/document/api/248/30354#[ProductSimple](https://cloud.tencent.com/document/api/248/30354#ProductSimple))
+
 ### 第 10 次发布
 
 发布时间：2020-05-08 08:13:19
@@ -17109,6 +17150,25 @@
 
 ## 文字识别(ocr) 版本：2018-11-19
 
+### 第 22 次发布
+
+发布时间：2020-05-11 10:12:35
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [VatInvoiceOCR](https://cloud.tencent.com/document/api/866/36210)
+
+	* 新增出参：Items
+
+
+新增数据结构：
+
+* [[VatInvoiceItem](https://cloud.tencent.com/document/api/866/33527#VatInvoiceItem)](https://cloud.tencent.com/document/api/866/33527#[VatInvoiceItem](https://cloud.tencent.com/document/api/866/33527#VatInvoiceItem))
+
 ### 第 21 次发布
 
 发布时间：2020-04-17 08:12:36
@@ -18496,6 +18556,30 @@
 
 ## 云函数(scf) 版本：2018-04-16
 
+### 第 14 次发布
+
+发布时间：2020-05-11 10:13:56
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateFunction](https://cloud.tencent.com/document/api/583/18586)
+
+	* 新增入参：PublicNetConfig
+
+* [UpdateFunctionConfiguration](https://cloud.tencent.com/document/api/583/18580)
+
+	* 新增入参：PublicNetConfig
+
+
+新增数据结构：
+
+* [[EipConfigIn](https://cloud.tencent.com/document/api/583/17244#EipConfigIn)](https://cloud.tencent.com/document/api/583/17244#[EipConfigIn](https://cloud.tencent.com/document/api/583/17244#EipConfigIn))
+* [[PublicNetConfigIn](https://cloud.tencent.com/document/api/583/17244#PublicNetConfigIn)](https://cloud.tencent.com/document/api/583/17244#[PublicNetConfigIn](https://cloud.tencent.com/document/api/583/17244#PublicNetConfigIn))
+
 ### 第 13 次发布
 
 发布时间：2020-05-08 08:15:22
@@ -18506,11 +18590,11 @@
 
 新增接口：
 
-* [[ListTriggers](https://cloud.tencent.com/document/api/583/44268)](https://cloud.tencent.com/document/api/#/#)
+* [ListTriggers](https://cloud.tencent.com/document/api/583/44268)
 
 新增数据结构：
 
-* [[TriggerInfo](https://cloud.tencent.com/document/api/583/17244#TriggerInfo)](https://cloud.tencent.com/document/api/583/17244#[TriggerInfo](https://cloud.tencent.com/document/api/583/17244#TriggerInfo))
+* [TriggerInfo](https://cloud.tencent.com/document/api/583/17244#TriggerInfo)
 
 ### 第 12 次发布
 
@@ -22811,14 +22895,14 @@
 
 新增接口：
 
-* [[StartMCUMixTranscode](https://cloud.tencent.com/document/api/647/44270)](https://cloud.tencent.com/document/api/#/#)
-* [[StopMCUMixTranscode](https://cloud.tencent.com/document/api/647/44269)](https://cloud.tencent.com/document/api/#/#)
+* [StartMCUMixTranscode](https://cloud.tencent.com/document/api/647/44270)
+* [StopMCUMixTranscode](https://cloud.tencent.com/document/api/647/44269)
 
 新增数据结构：
 
-* [[EncodeParams](https://cloud.tencent.com/document/api/647/44055#EncodeParams)](https://cloud.tencent.com/document/api/647/44055#[EncodeParams](https://cloud.tencent.com/document/api/647/44055#EncodeParams))
-* [[LayoutParams](https://cloud.tencent.com/document/api/647/44055#LayoutParams)](https://cloud.tencent.com/document/api/647/44055#[LayoutParams](https://cloud.tencent.com/document/api/647/44055#LayoutParams))
-* [[OutputParams](https://cloud.tencent.com/document/api/647/44055#OutputParams)](https://cloud.tencent.com/document/api/647/44055#[OutputParams](https://cloud.tencent.com/document/api/647/44055#OutputParams))
+* [EncodeParams](https://cloud.tencent.com/document/api/647/44055#EncodeParams)
+* [LayoutParams](https://cloud.tencent.com/document/api/647/44055#LayoutParams)
+* [OutputParams](https://cloud.tencent.com/document/api/647/44055#OutputParams)
 
 ### 第 6 次发布
 
@@ -25133,6 +25217,28 @@
 
 
 ## 私有网络(vpc) 版本：2017-03-12
+
+### 第 50 次发布
+
+发布时间：2020-05-11 10:17:57
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [ModifyGatewayFlowQos](https://cloud.tencent.com/document/api/215/43268)
+
+	* <font color="#dd0000">**修改入参**：</font>Bandwidth
+
+
+修改数据结构：
+
+* [GatewayQos](https://cloud.tencent.com/document/api/215/15824#GatewayQos)
+
+	* <font color="#dd0000">**修改成员**：</font>Bandwidth
+
 
 ### 第 49 次发布
 

@@ -431,7 +431,7 @@ type DescribeSmsTemplateListResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 获取短信签名信息响应
+		// 获取短信模板信息响应
 		DescribeTemplateStatusSet []*DescribeTemplateListStatus `json:"DescribeTemplateStatusSet,omitempty" name:"DescribeTemplateStatusSet" list`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。

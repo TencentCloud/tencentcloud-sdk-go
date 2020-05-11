@@ -1302,6 +1302,9 @@ type CreateAgentTaxPaymentInfosRequest struct {
 
 	// 完税信息
 	AgentTaxPaymentInfos []*AgentTaxPayment `json:"AgentTaxPaymentInfos,omitempty" name:"AgentTaxPaymentInfos" list`
+
+	// 接入环境。沙箱环境填sandbox
+	Profile *string `json:"Profile,omitempty" name:"Profile"`
 }
 
 func (r *CreateAgentTaxPaymentInfosRequest) ToJsonString() string {
@@ -1852,6 +1855,9 @@ type DeleteAgentTaxPaymentInfoRequest struct {
 
 	// 批次号
 	BatchNum *int64 `json:"BatchNum,omitempty" name:"BatchNum"`
+
+	// 接入环境。沙箱环境填sandbox
+	Profile *string `json:"Profile,omitempty" name:"Profile"`
 }
 
 func (r *DeleteAgentTaxPaymentInfoRequest) ToJsonString() string {
@@ -1997,6 +2003,9 @@ type ModifyAgentTaxPaymentInfoRequest struct {
 
 	// 新的文件名
 	FileName *string `json:"FileName,omitempty" name:"FileName"`
+
+	// 接入环境。沙箱环境填sandbox
+	Profile *string `json:"Profile,omitempty" name:"Profile"`
 }
 
 func (r *ModifyAgentTaxPaymentInfoRequest) ToJsonString() string {
@@ -2338,6 +2347,9 @@ type QueryAgentTaxPaymentBatchRequest struct {
 
 	// 批次号
 	BatchNum *int64 `json:"BatchNum,omitempty" name:"BatchNum"`
+
+	// 接入环境。沙箱环境填sandbox
+	Profile *string `json:"Profile,omitempty" name:"Profile"`
 }
 
 func (r *QueryAgentTaxPaymentBatchRequest) ToJsonString() string {

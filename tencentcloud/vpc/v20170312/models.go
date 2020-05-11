@@ -6886,7 +6886,7 @@ type GatewayQos struct {
 	IpAddress *string `json:"IpAddress,omitempty" name:"IpAddress"`
 
 	// 流控带宽值。
-	Bandwidth *uint64 `json:"Bandwidth,omitempty" name:"Bandwidth"`
+	Bandwidth *int64 `json:"Bandwidth,omitempty" name:"Bandwidth"`
 
 	// 创建时间。
 	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
@@ -7899,8 +7899,8 @@ type ModifyGatewayFlowQosRequest struct {
 	// VPN网关实例ID，形如，`vpn-ltjahce6`。
 	GatewayId *string `json:"GatewayId,omitempty" name:"GatewayId"`
 
-	// 流控带宽值。
-	Bandwidth *uint64 `json:"Bandwidth,omitempty" name:"Bandwidth"`
+	// 流控带宽值。取值大于0，表示限流到指定的Mbps；取值等于0，表示完全限流；取值为-1，不限流。
+	Bandwidth *int64 `json:"Bandwidth,omitempty" name:"Bandwidth"`
 
 	// 限流的云服务器内网IP。
 	IpAddresses []*string `json:"IpAddresses,omitempty" name:"IpAddresses" list`

@@ -318,6 +318,31 @@ func (c *Client) DescribeProductEventList(request *DescribeProductEventListReque
     return
 }
 
+func NewDescribeProductListRequest() (request *DescribeProductListRequest) {
+    request = &DescribeProductListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("monitor", APIVersion, "DescribeProductList")
+    return
+}
+
+func NewDescribeProductListResponse() (response *DescribeProductListResponse) {
+    response = &DescribeProductListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询云监控产品列表
+func (c *Client) DescribeProductList(request *DescribeProductListRequest) (response *DescribeProductListResponse, err error) {
+    if request == nil {
+        request = NewDescribeProductListRequest()
+    }
+    response = NewDescribeProductListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewGetMonitorDataRequest() (request *GetMonitorDataRequest) {
     request = &GetMonitorDataRequest{
         BaseRequest: &tchttp.BaseRequest{},

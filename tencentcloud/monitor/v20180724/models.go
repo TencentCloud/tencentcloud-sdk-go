@@ -1540,6 +1540,57 @@ func (r *DescribeProductEventListResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeProductListRequest struct {
+	*tchttp.BaseRequest
+
+	// 固定传值monitor
+	Module *string `json:"Module,omitempty" name:"Module"`
+
+	// 排序方式：DESC/ASC（区分大小写），默认值DESC
+	Order *string `json:"Order,omitempty" name:"Order"`
+
+	// 分页查询的偏移量，默认值0
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 分页查询的每页数据量，默认值20
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+func (r *DescribeProductListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeProductListRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeProductListResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 产品信息列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		ProductList []*ProductSimple `json:"ProductList,omitempty" name:"ProductList" list`
+
+		// 产品总数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeProductListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeProductListResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type Dimension struct {
 
 	// 实例维度名称
@@ -1728,6 +1779,15 @@ type PeriodsSt struct {
 
 	// 统计方式
 	StatType []*string `json:"StatType,omitempty" name:"StatType" list`
+}
+
+type ProductSimple struct {
+
+	// 命名空间
+	Namespace *string `json:"Namespace,omitempty" name:"Namespace"`
+
+	// 产品名称
+	ProductName *string `json:"ProductName,omitempty" name:"ProductName"`
 }
 
 type PutMonitorDataRequest struct {

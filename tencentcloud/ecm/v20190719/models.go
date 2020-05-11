@@ -561,7 +561,7 @@ func (r *DeleteImageResponse) FromJsonString(s string) error {
 type DeleteModuleRequest struct {
 	*tchttp.BaseRequest
 
-	// 模块ID。如：es-qn46snq8
+	// 模块ID。如：em-qn46snq8
 	ModuleId *string `json:"ModuleId,omitempty" name:"ModuleId"`
 }
 

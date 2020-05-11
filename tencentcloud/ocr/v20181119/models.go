@@ -3324,6 +3324,36 @@ func (r *TrainTicketOCRResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type VatInvoiceItem struct {
+
+	// 行号
+	LineNo *string `json:"LineNo,omitempty" name:"LineNo"`
+
+	// 名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 规格
+	Spec *string `json:"Spec,omitempty" name:"Spec"`
+
+	// 单位
+	Unit *string `json:"Unit,omitempty" name:"Unit"`
+
+	// 数量
+	Quantity *string `json:"Quantity,omitempty" name:"Quantity"`
+
+	// 单价
+	UnitPrice *string `json:"UnitPrice,omitempty" name:"UnitPrice"`
+
+	// 不含税金额
+	AmountWithoutTax *string `json:"AmountWithoutTax,omitempty" name:"AmountWithoutTax"`
+
+	// 税率
+	TaxRate *string `json:"TaxRate,omitempty" name:"TaxRate"`
+
+	// 税额
+	TaxAmount *string `json:"TaxAmount,omitempty" name:"TaxAmount"`
+}
+
 type VatInvoiceOCRRequest struct {
 	*tchttp.BaseRequest
 
@@ -3356,6 +3386,9 @@ type VatInvoiceOCRResponse struct {
 
 		// 检测到的文本信息，具体内容请点击左侧链接。
 		VatInvoiceInfos []*TextVatInvoice `json:"VatInvoiceInfos,omitempty" name:"VatInvoiceInfos" list`
+
+		// 明细条目。VatInvoiceInfos中关于明细项的具体条目。
+		Items []*VatInvoiceItem `json:"Items,omitempty" name:"Items" list`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
