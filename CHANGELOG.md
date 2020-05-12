@@ -1,64 +1,10 @@
 # 本版本更新包含以下内容：
 
-## 内容安全(cms) 版本：2019-03-21
-
-### 第 8 次发布
-
-发布时间：2020-05-11 10:03:36
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增数据结构：
-
-* [PhoneDetect](https://cloud.tencent.com/document/api/669/34506#PhoneDetect)
-
-修改数据结构：
-
-* [ImageData](https://cloud.tencent.com/document/api/669/34506#ImageData)
-
-	* 新增成员：PhoneDetect
-
-
-
-
 ## 企业收付平台(cpdp) 版本：2019-08-20
 
-### 第 12 次发布
+### 第 13 次发布
 
-发布时间：2020-05-11 10:20:46
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [CreateAgentTaxPaymentInfos](https://cloud.tencent.com/document/api/1122/44272)
-
-	* 新增入参：Profile
-
-* [DeleteAgentTaxPaymentInfo](https://cloud.tencent.com/document/api/1122/44276)
-
-	* 新增入参：Profile
-
-* [ModifyAgentTaxPaymentInfo](https://cloud.tencent.com/document/api/1122/44275)
-
-	* 新增入参：Profile
-
-* [QueryAgentTaxPaymentBatch](https://cloud.tencent.com/document/api/1122/44274)
-
-	* 新增入参：Profile
-
-
-
-
-## 云监控(monitor) 版本：2018-07-24
-
-### 第 11 次发布
-
-发布时间：2020-05-11 10:11:18
+发布时间：2020-05-12 08:19:41
 
 本次发布包含了以下内容：
 
@@ -66,87 +12,76 @@
 
 新增接口：
 
-* [DescribeProductList](https://cloud.tencent.com/document/api/248/44374)
-
-新增数据结构：
-
-* [ProductSimple](https://cloud.tencent.com/document/api/248/30354#ProductSimple)
+* [RegisterBill](https://cloud.tencent.com/document/api/1122/44397)
 
 
 
-## 文字识别(ocr) 版本：2018-11-19
+## 云监控(monitor) 版本：2018-07-24
 
-### 第 22 次发布
+### 第 12 次发布
 
-发布时间：2020-05-11 10:12:35
+发布时间：2020-05-12 08:12:35
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-修改接口：
+新增接口：
 
-* [VatInvoiceOCR](https://cloud.tencent.com/document/api/866/36210)
-
-	* 新增出参：Items
-
+* [ModifyPolicyGroup](https://cloud.tencent.com/document/api/248/44396)
 
 新增数据结构：
 
-* [VatInvoiceItem](https://cloud.tencent.com/document/api/866/33527#VatInvoiceItem)
-
-
-
-## 云函数(scf) 版本：2018-04-16
-
-### 第 14 次发布
-
-发布时间：2020-05-11 10:13:56
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [CreateFunction](https://cloud.tencent.com/document/api/583/18586)
-
-	* 新增入参：PublicNetConfig
-
-* [UpdateFunctionConfiguration](https://cloud.tencent.com/document/api/583/18580)
-
-	* 新增入参：PublicNetConfig
-
-
-新增数据结构：
-
-* [EipConfigIn](https://cloud.tencent.com/document/api/583/17244#EipConfigIn)
-* [PublicNetConfigIn](https://cloud.tencent.com/document/api/583/17244#PublicNetConfigIn)
-
-
-
-## 私有网络(vpc) 版本：2017-03-12
-
-### 第 50 次发布
-
-发布时间：2020-05-11 10:17:57
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [ModifyGatewayFlowQos](https://cloud.tencent.com/document/api/215/43268)
-
-	* <font color="#dd0000">**修改入参**：</font>Bandwidth
-
+* [ModifyPolicyGroupCondition](https://cloud.tencent.com/document/api/248/30354#ModifyPolicyGroupCondition)
+* [ModifyPolicyGroupEventCondition](https://cloud.tencent.com/document/api/248/30354#ModifyPolicyGroupEventCondition)
 
 修改数据结构：
 
-* [GatewayQos](https://cloud.tencent.com/document/api/215/15824#GatewayQos)
+* [ProductSimple](https://cloud.tencent.com/document/api/248/30354#ProductSimple)
 
-	* <font color="#dd0000">**修改成员**：</font>Bandwidth
+	* 新增成员：ProductEnName
+
+
+
+
+## 容器镜像服务(tcr) 版本：2019-09-24
+
+### 第 11 次发布
+
+发布时间：2020-05-12 08:20:13
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [WebhookTrigger](https://cloud.tencent.com/document/api/1141/41603#WebhookTrigger)
+
+	* 新增成员：NamespaceId
+
+
+
+
+## 互动白板(tiw) 版本：2019-09-19
+
+### 第 3 次发布
+
+发布时间：2020-05-12 08:19:24
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeOnlineRecordCallback](https://cloud.tencent.com/document/api/1137/40624)
+
+	* 新增出参：CallbackKey
+
+* [DescribeTranscodeCallback](https://cloud.tencent.com/document/api/1137/40623)
+
+	* 新增出参：CallbackKey
 
 
 
@@ -7115,7 +7050,7 @@
 
 新增数据结构：
 
-* [[PhoneDetect](https://cloud.tencent.com/document/api/669/34506#PhoneDetect)](https://cloud.tencent.com/document/api/669/34506#[PhoneDetect](https://cloud.tencent.com/document/api/669/34506#PhoneDetect))
+* [PhoneDetect](https://cloud.tencent.com/document/api/669/34506#PhoneDetect)
 
 修改数据结构：
 
@@ -7315,6 +7250,18 @@
 
 
 ## 企业收付平台(cpdp) 版本：2019-08-20
+
+### 第 13 次发布
+
+发布时间：2020-05-12 08:19:41
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[RegisterBill](https://cloud.tencent.com/document/api/1122/44397)](https://cloud.tencent.com/document/api/#/#)
 
 ### 第 12 次发布
 
@@ -15658,6 +15605,30 @@
 
 ## 云监控(monitor) 版本：2018-07-24
 
+### 第 12 次发布
+
+发布时间：2020-05-12 08:12:35
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[ModifyPolicyGroup](https://cloud.tencent.com/document/api/248/44396)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[ModifyPolicyGroupCondition](https://cloud.tencent.com/document/api/248/30354#ModifyPolicyGroupCondition)](https://cloud.tencent.com/document/api/248/30354#[ModifyPolicyGroupCondition](https://cloud.tencent.com/document/api/248/30354#ModifyPolicyGroupCondition))
+* [[ModifyPolicyGroupEventCondition](https://cloud.tencent.com/document/api/248/30354#ModifyPolicyGroupEventCondition)](https://cloud.tencent.com/document/api/248/30354#[ModifyPolicyGroupEventCondition](https://cloud.tencent.com/document/api/248/30354#ModifyPolicyGroupEventCondition))
+
+修改数据结构：
+
+* [ProductSimple](https://cloud.tencent.com/document/api/248/30354#ProductSimple)
+
+	* 新增成员：ProductEnName
+
+
 ### 第 11 次发布
 
 发布时间：2020-05-11 10:11:18
@@ -15668,11 +15639,11 @@
 
 新增接口：
 
-* [[DescribeProductList](https://cloud.tencent.com/document/api/248/44374)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeProductList](https://cloud.tencent.com/document/api/248/44374)
 
 新增数据结构：
 
-* [[ProductSimple](https://cloud.tencent.com/document/api/248/30354#ProductSimple)](https://cloud.tencent.com/document/api/248/30354#[ProductSimple](https://cloud.tencent.com/document/api/248/30354#ProductSimple))
+* [ProductSimple](https://cloud.tencent.com/document/api/248/30354#ProductSimple)
 
 ### 第 10 次发布
 
@@ -17167,7 +17138,7 @@
 
 新增数据结构：
 
-* [[VatInvoiceItem](https://cloud.tencent.com/document/api/866/33527#VatInvoiceItem)](https://cloud.tencent.com/document/api/866/33527#[VatInvoiceItem](https://cloud.tencent.com/document/api/866/33527#VatInvoiceItem))
+* [VatInvoiceItem](https://cloud.tencent.com/document/api/866/33527#VatInvoiceItem)
 
 ### 第 21 次发布
 
@@ -18577,8 +18548,8 @@
 
 新增数据结构：
 
-* [[EipConfigIn](https://cloud.tencent.com/document/api/583/17244#EipConfigIn)](https://cloud.tencent.com/document/api/583/17244#[EipConfigIn](https://cloud.tencent.com/document/api/583/17244#EipConfigIn))
-* [[PublicNetConfigIn](https://cloud.tencent.com/document/api/583/17244#PublicNetConfigIn)](https://cloud.tencent.com/document/api/583/17244#[PublicNetConfigIn](https://cloud.tencent.com/document/api/583/17244#PublicNetConfigIn))
+* [EipConfigIn](https://cloud.tencent.com/document/api/583/17244#EipConfigIn)
+* [PublicNetConfigIn](https://cloud.tencent.com/document/api/583/17244#PublicNetConfigIn)
 
 ### 第 13 次发布
 
@@ -21147,6 +21118,21 @@
 
 ## 容器镜像服务(tcr) 版本：2019-09-24
 
+### 第 11 次发布
+
+发布时间：2020-05-12 08:20:13
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [WebhookTrigger](https://cloud.tencent.com/document/api/1141/41603#WebhookTrigger)
+
+	* 新增成员：NamespaceId
+
+
 ### 第 10 次发布
 
 发布时间：2020-04-29 08:21:18
@@ -22208,6 +22194,25 @@
 
 
 ## 互动白板(tiw) 版本：2019-09-19
+
+### 第 3 次发布
+
+发布时间：2020-05-12 08:19:24
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeOnlineRecordCallback](https://cloud.tencent.com/document/api/1137/40624)
+
+	* 新增出参：CallbackKey
+
+* [DescribeTranscodeCallback](https://cloud.tencent.com/document/api/1137/40623)
+
+	* 新增出参：CallbackKey
+
 
 ### 第 2 次发布
 

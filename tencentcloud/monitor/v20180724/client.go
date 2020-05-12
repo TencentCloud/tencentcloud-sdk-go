@@ -395,6 +395,31 @@ func (c *Client) ModifyAlarmReceivers(request *ModifyAlarmReceiversRequest) (res
     return
 }
 
+func NewModifyPolicyGroupRequest() (request *ModifyPolicyGroupRequest) {
+    request = &ModifyPolicyGroupRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("monitor", APIVersion, "ModifyPolicyGroup")
+    return
+}
+
+func NewModifyPolicyGroupResponse() (response *ModifyPolicyGroupResponse) {
+    response = &ModifyPolicyGroupResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 更新策略组
+func (c *Client) ModifyPolicyGroup(request *ModifyPolicyGroupRequest) (response *ModifyPolicyGroupResponse, err error) {
+    if request == nil {
+        request = NewModifyPolicyGroupRequest()
+    }
+    response = NewModifyPolicyGroupResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewPutMonitorDataRequest() (request *PutMonitorDataRequest) {
     request = &PutMonitorDataRequest{
         BaseRequest: &tchttp.BaseRequest{},

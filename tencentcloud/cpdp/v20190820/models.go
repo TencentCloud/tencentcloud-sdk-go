@@ -4335,6 +4335,100 @@ func (r *RefundResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type RegisterBillRequest struct {
+	*tchttp.BaseRequest
+
+	// 请求类型此接口固定填：RegBillSupportWithdrawReq
+	RequestType *string `json:"RequestType,omitempty" name:"RequestType"`
+
+	// 商户号
+	MerchantCode *string `json:"MerchantCode,omitempty" name:"MerchantCode"`
+
+	// 支付渠道
+	PayChannel *string `json:"PayChannel,omitempty" name:"PayChannel"`
+
+	// 子渠道
+	PayChannelSubId *int64 `json:"PayChannelSubId,omitempty" name:"PayChannelSubId"`
+
+	// 交易订单号
+	OrderId *string `json:"OrderId,omitempty" name:"OrderId"`
+
+	// 父账户账号，资金汇总账号
+	BankAccountNo *string `json:"BankAccountNo,omitempty" name:"BankAccountNo"`
+
+	// 平台短号(银行分配)
+	PlatformShortNo *string `json:"PlatformShortNo,omitempty" name:"PlatformShortNo"`
+
+	// 聚鑫分配的安全ID
+	MidasSecretId *string `json:"MidasSecretId,omitempty" name:"MidasSecretId"`
+
+	// 聚鑫分配的支付主MidasAppId
+	MidasAppId *string `json:"MidasAppId,omitempty" name:"MidasAppId"`
+
+	// 计费签名
+	MidasSignature *string `json:"MidasSignature,omitempty" name:"MidasSignature"`
+
+	// 交易流水号
+	TransSeqNo *string `json:"TransSeqNo,omitempty" name:"TransSeqNo"`
+
+	// 暂未使用，默认传0.0
+	TranFee *string `json:"TranFee,omitempty" name:"TranFee"`
+
+	// 挂账金额
+	OrderAmt *string `json:"OrderAmt,omitempty" name:"OrderAmt"`
+
+	// 子账户账号
+	BankSubAccountNo *string `json:"BankSubAccountNo,omitempty" name:"BankSubAccountNo"`
+
+	// 交易网会员代码
+	TranNetMemberCode *string `json:"TranNetMemberCode,omitempty" name:"TranNetMemberCode"`
+
+	// 0,登记挂账，1，撤销挂账
+	TranType *string `json:"TranType,omitempty" name:"TranType"`
+
+	// 保留域
+	ReservedMessage *string `json:"ReservedMessage,omitempty" name:"ReservedMessage"`
+
+	// 备注
+	Remark *string `json:"Remark,omitempty" name:"Remark"`
+}
+
+func (r *RegisterBillRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *RegisterBillRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type RegisterBillResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 银行流水号
+		FrontSeqNo *string `json:"FrontSeqNo,omitempty" name:"FrontSeqNo"`
+
+		// 保留字段
+		ReservedMessage *string `json:"ReservedMessage,omitempty" name:"ReservedMessage"`
+
+		// 请求类型
+		RequestType *string `json:"RequestType,omitempty" name:"RequestType"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *RegisterBillResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *RegisterBillResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type RegisterBillSupportWithdrawRequest struct {
 	*tchttp.BaseRequest
 

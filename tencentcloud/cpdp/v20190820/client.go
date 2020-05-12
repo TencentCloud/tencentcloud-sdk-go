@@ -1302,6 +1302,31 @@ func (c *Client) Refund(request *RefundRequest) (response *RefundResponse, err e
     return
 }
 
+func NewRegisterBillRequest() (request *RegisterBillRequest) {
+    request = &RegisterBillRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cpdp", APIVersion, "RegisterBill")
+    return
+}
+
+func NewRegisterBillResponse() (response *RegisterBillResponse) {
+    response = &RegisterBillResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 登记挂账(支持撤销)
+func (c *Client) RegisterBill(request *RegisterBillRequest) (response *RegisterBillResponse, err error) {
+    if request == nil {
+        request = NewRegisterBillRequest()
+    }
+    response = NewRegisterBillResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewRegisterBillSupportWithdrawRequest() (request *RegisterBillSupportWithdrawRequest) {
     request = &RegisterBillSupportWithdrawRequest{
         BaseRequest: &tchttp.BaseRequest{},

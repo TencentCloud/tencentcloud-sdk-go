@@ -2941,6 +2941,9 @@ type WebhookTrigger struct {
 
 	// 触发器描述
 	Description *string `json:"Description,omitempty" name:"Description"`
+
+	// 触发器所属命名空间 Id
+	NamespaceId *int64 `json:"NamespaceId,omitempty" name:"NamespaceId"`
 }
 
 type WebhookTriggerLog struct {

@@ -131,6 +131,9 @@ type DescribeOnlineRecordCallbackResponse struct {
 		// 实时录制事件回调地址，如果未设置回调地址，该字段为空字符串
 		Callback *string `json:"Callback,omitempty" name:"Callback"`
 
+		// 实时录制回调鉴权密钥
+		CallbackKey *string `json:"CallbackKey,omitempty" name:"CallbackKey"`
+
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
@@ -248,6 +251,9 @@ type DescribeTranscodeCallbackResponse struct {
 
 		// 文档转码回调地址
 		Callback *string `json:"Callback,omitempty" name:"Callback"`
+
+		// 文档转码回调鉴权密钥
+		CallbackKey *string `json:"CallbackKey,omitempty" name:"CallbackKey"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`

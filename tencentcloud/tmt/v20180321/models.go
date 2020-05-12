@@ -170,7 +170,7 @@ type SpeechTranslateRequest struct {
 	// 是否最后一片语音分片，0-否，1-是
 	IsEnd *int64 `json:"IsEnd,omitempty" name:"IsEnd"`
 
-	// 语音分片内容的base64字符串，音频内容应含有效并可识别的文本
+	// 语音分片内容进行 Base64 编码后的字符串。音频内容需包含有效并可识别的文本信息。
 	Data *string `json:"Data,omitempty" name:"Data"`
 
 	// 项目ID，可以根据控制台-账号中心-项目管理中的配置填写，如无配置请填写默认项目ID:0
