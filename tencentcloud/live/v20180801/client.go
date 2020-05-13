@@ -1191,7 +1191,7 @@ func NewDescribeLiveDomainCertResponse() (response *DescribeLiveDomainCertRespon
     return
 }
 
-// 获取域名证书信息
+// 获取域名证书信息。
 func (c *Client) DescribeLiveDomainCert(request *DescribeLiveDomainCertRequest) (response *DescribeLiveDomainCertResponse, err error) {
     if request == nil {
         request = NewDescribeLiveDomainCertRequest()

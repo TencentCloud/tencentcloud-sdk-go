@@ -4337,7 +4337,7 @@ type DomainCertInfo struct {
 	// 使用此证书的域名名称。
 	DomainName *string `json:"DomainName,omitempty" name:"DomainName"`
 
-	// 证书状态
+	// 证书状态。
 	Status *int64 `json:"Status,omitempty" name:"Status"`
 }
 

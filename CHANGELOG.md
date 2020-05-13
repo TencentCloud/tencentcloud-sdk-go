@@ -1,73 +1,10 @@
 # 本版本更新包含以下内容：
 
-## 企业收付平台(cpdp) 版本：2019-08-20
-
-### 第 13 次发布
-
-发布时间：2020-05-12 08:19:41
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [RegisterBill](https://cloud.tencent.com/document/api/1122/44397)
-
-
-
-## 云监控(monitor) 版本：2018-07-24
+## 容器镜像服务(tcr) 版本：2019-09-24
 
 ### 第 12 次发布
 
-发布时间：2020-05-12 08:12:35
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [ModifyPolicyGroup](https://cloud.tencent.com/document/api/248/44396)
-
-新增数据结构：
-
-* [ModifyPolicyGroupCondition](https://cloud.tencent.com/document/api/248/30354#ModifyPolicyGroupCondition)
-* [ModifyPolicyGroupEventCondition](https://cloud.tencent.com/document/api/248/30354#ModifyPolicyGroupEventCondition)
-
-修改数据结构：
-
-* [ProductSimple](https://cloud.tencent.com/document/api/248/30354#ProductSimple)
-
-	* 新增成员：ProductEnName
-
-
-
-
-## 容器镜像服务(tcr) 版本：2019-09-24
-
-### 第 11 次发布
-
-发布时间：2020-05-12 08:20:13
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [WebhookTrigger](https://cloud.tencent.com/document/api/1141/41603#WebhookTrigger)
-
-	* 新增成员：NamespaceId
-
-
-
-
-## 互动白板(tiw) 版本：2019-09-19
-
-### 第 3 次发布
-
-发布时间：2020-05-12 08:19:24
+发布时间：2020-05-13 08:20:16
 
 本次发布包含了以下内容：
 
@@ -75,13 +12,57 @@
 
 修改接口：
 
-* [DescribeOnlineRecordCallback](https://cloud.tencent.com/document/api/1137/40624)
+* [CreateWebhookTrigger](https://cloud.tencent.com/document/api/1141/43531)
 
-	* 新增出参：CallbackKey
+	* 新增出参：Trigger
 
-* [DescribeTranscodeCallback](https://cloud.tencent.com/document/api/1137/40623)
 
-	* 新增出参：CallbackKey
+
+
+## 容器服务(tke) 版本：2018-05-25
+
+### 第 20 次发布
+
+发布时间：2020-05-13 08:16:48
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DeleteClusterInstances](https://cloud.tencent.com/document/api/457/31864)
+
+	* 新增出参：SuccInstanceIds, FailedInstanceIds, NotFoundInstanceIds
+
+* [DescribeClusterAsGroups](https://cloud.tencent.com/document/api/457/40471)
+
+	* <font color="#dd0000">**修改出参**：</font>ClusterAsGroupSet
+
+* [DescribeClusterSecurity](https://cloud.tencent.com/document/api/457/36703)
+
+	* 新增出参：JnsGwEndpoint
+
+
+修改数据结构：
+
+* [ClusterAsGroup](https://cloud.tencent.com/document/api/457/31866#ClusterAsGroup)
+
+	* 新增成员：CreatedTime
+
+* [ClusterAsGroupOption](https://cloud.tencent.com/document/api/457/31866#ClusterAsGroupOption)
+
+	* 新增成员：OkTotalUnreadyCount, MaxTotalUnreadyPercentage, ScaleDownUnreadyTime, UnregisteredNodeRemovalTime
+
+* [ExistedInstance](https://cloud.tencent.com/document/api/457/31866#ExistedInstance)
+
+	* 新增成员：AutoscalingGroupId
+
+	* <font color="#dd0000">**修改成员**：</font>CreatedTime
+
+* [Instance](https://cloud.tencent.com/document/api/457/31866#Instance)
+
+	* 新增成员：NodePoolId, AutoscalingGroupId
 
 
 
@@ -7261,7 +7242,7 @@
 
 新增接口：
 
-* [[RegisterBill](https://cloud.tencent.com/document/api/1122/44397)](https://cloud.tencent.com/document/api/#/#)
+* [RegisterBill](https://cloud.tencent.com/document/api/1122/44397)
 
 ### 第 12 次发布
 
@@ -12054,7 +12035,7 @@
 
 
 
-## 样本智能分析平台(habo) 版本：2018-12-03
+## (habo) 版本：2018-12-03
 
 ### 第 1 次发布
 
@@ -15615,12 +15596,12 @@
 
 新增接口：
 
-* [[ModifyPolicyGroup](https://cloud.tencent.com/document/api/248/44396)](https://cloud.tencent.com/document/api/#/#)
+* [ModifyPolicyGroup](https://cloud.tencent.com/document/api/248/44396)
 
 新增数据结构：
 
-* [[ModifyPolicyGroupCondition](https://cloud.tencent.com/document/api/248/30354#ModifyPolicyGroupCondition)](https://cloud.tencent.com/document/api/248/30354#[ModifyPolicyGroupCondition](https://cloud.tencent.com/document/api/248/30354#ModifyPolicyGroupCondition))
-* [[ModifyPolicyGroupEventCondition](https://cloud.tencent.com/document/api/248/30354#ModifyPolicyGroupEventCondition)](https://cloud.tencent.com/document/api/248/30354#[ModifyPolicyGroupEventCondition](https://cloud.tencent.com/document/api/248/30354#ModifyPolicyGroupEventCondition))
+* [ModifyPolicyGroupCondition](https://cloud.tencent.com/document/api/248/30354#ModifyPolicyGroupCondition)
+* [ModifyPolicyGroupEventCondition](https://cloud.tencent.com/document/api/248/30354#ModifyPolicyGroupEventCondition)
 
 修改数据结构：
 
@@ -21118,6 +21099,21 @@
 
 ## 容器镜像服务(tcr) 版本：2019-09-24
 
+### 第 12 次发布
+
+发布时间：2020-05-13 08:20:16
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateWebhookTrigger](https://cloud.tencent.com/document/api/1141/43531)
+
+	* 新增出参：Trigger
+
+
 ### 第 11 次发布
 
 发布时间：2020-05-12 08:20:13
@@ -22270,6 +22266,50 @@
 
 
 ## 容器服务(tke) 版本：2018-05-25
+
+### 第 20 次发布
+
+发布时间：2020-05-13 08:16:48
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DeleteClusterInstances](https://cloud.tencent.com/document/api/457/31864)
+
+	* 新增出参：SuccInstanceIds, FailedInstanceIds, NotFoundInstanceIds
+
+* [DescribeClusterAsGroups](https://cloud.tencent.com/document/api/457/40471)
+
+	* <font color="#dd0000">**修改出参**：</font>ClusterAsGroupSet
+
+* [DescribeClusterSecurity](https://cloud.tencent.com/document/api/457/36703)
+
+	* 新增出参：JnsGwEndpoint
+
+
+修改数据结构：
+
+* [ClusterAsGroup](https://cloud.tencent.com/document/api/457/31866#ClusterAsGroup)
+
+	* 新增成员：CreatedTime
+
+* [ClusterAsGroupOption](https://cloud.tencent.com/document/api/457/31866#ClusterAsGroupOption)
+
+	* 新增成员：OkTotalUnreadyCount, MaxTotalUnreadyPercentage, ScaleDownUnreadyTime, UnregisteredNodeRemovalTime
+
+* [ExistedInstance](https://cloud.tencent.com/document/api/457/31866#ExistedInstance)
+
+	* 新增成员：AutoscalingGroupId
+
+	* <font color="#dd0000">**修改成员**：</font>CreatedTime
+
+* [Instance](https://cloud.tencent.com/document/api/457/31866#Instance)
+
+	* 新增成员：NodePoolId, AutoscalingGroupId
+
 
 ### 第 19 次发布
 
