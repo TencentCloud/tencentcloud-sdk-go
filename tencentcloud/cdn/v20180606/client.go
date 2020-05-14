@@ -631,7 +631,7 @@ func NewDescribeTrafficPackagesResponse() (response *DescribeTrafficPackagesResp
     return
 }
 
-// DescribeTrafficPackages 用于查询境内 CDN 流量包详情。
+// DescribeTrafficPackages 用于查询中国境内 CDN 流量包详情。
 func (c *Client) DescribeTrafficPackages(request *DescribeTrafficPackagesRequest) (response *DescribeTrafficPackagesResponse, err error) {
     if request == nil {
         request = NewDescribeTrafficPackagesRequest()

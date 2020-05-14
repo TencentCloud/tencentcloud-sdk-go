@@ -1104,6 +1104,100 @@ func (r *CreateGroupResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type CreateLaneRequest struct {
+	*tchttp.BaseRequest
+
+	// 泳道名称
+	LaneName *string `json:"LaneName,omitempty" name:"LaneName"`
+
+	// 泳道备注
+	Remark *string `json:"Remark,omitempty" name:"Remark"`
+
+	// 泳道部署组信息
+	LaneGroupList []*LaneGroup `json:"LaneGroupList,omitempty" name:"LaneGroupList" list`
+}
+
+func (r *CreateLaneRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateLaneRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateLaneResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 泳道ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Result *string `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateLaneResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateLaneResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateLaneRuleRequest struct {
+	*tchttp.BaseRequest
+
+	// 泳道规则名称
+	RuleName *string `json:"RuleName,omitempty" name:"RuleName"`
+
+	// 泳道规则备注
+	Remark *string `json:"Remark,omitempty" name:"Remark"`
+
+	// 泳道规则标签列表
+	RuleTagList []*LaneRuleTag `json:"RuleTagList,omitempty" name:"RuleTagList" list`
+
+	// 泳道规则标签关系
+	RuleTagRelationship *string `json:"RuleTagRelationship,omitempty" name:"RuleTagRelationship"`
+
+	// 泳道Id
+	LaneId *string `json:"LaneId,omitempty" name:"LaneId"`
+}
+
+func (r *CreateLaneRuleRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateLaneRuleRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateLaneRuleResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 泳道规则Id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Result *string `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateLaneRuleResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateLaneRuleResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type CreateMicroserviceRequest struct {
 	*tchttp.BaseRequest
 
@@ -1503,6 +1597,43 @@ func (r *DeleteImageTagsResponse) ToJsonString() string {
 }
 
 func (r *DeleteImageTagsResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteLaneRequest struct {
+	*tchttp.BaseRequest
+
+	// 泳道Idl
+	LaneId *string `json:"LaneId,omitempty" name:"LaneId"`
+}
+
+func (r *DeleteLaneRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteLaneRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteLaneResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// true / false
+		Result *bool `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DeleteLaneResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteLaneResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -2670,6 +2801,97 @@ func (r *DescribeImageTagsResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeLaneRulesRequest struct {
+	*tchttp.BaseRequest
+
+	// 每页展示的条数
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 翻页偏移量
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 搜索关键词
+	SearchWord *string `json:"SearchWord,omitempty" name:"SearchWord"`
+
+	// 泳道规则ID（用于精确搜索）
+	RuleId *string `json:"RuleId,omitempty" name:"RuleId"`
+}
+
+func (r *DescribeLaneRulesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeLaneRulesRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeLaneRulesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 泳道规则列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Result *LaneRules `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeLaneRulesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeLaneRulesResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeLanesRequest struct {
+	*tchttp.BaseRequest
+
+	// 每页展示的条数
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 翻页偏移量
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 搜索关键字
+	SearchWord *string `json:"SearchWord,omitempty" name:"SearchWord"`
+}
+
+func (r *DescribeLanesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeLanesRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeLanesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 泳道列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Result *LaneInfos `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeLanesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeLanesResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeMicroserviceRequest struct {
 	*tchttp.BaseRequest
 
@@ -3829,6 +4051,186 @@ type Instance struct {
 	NamespaceName *string `json:"NamespaceName,omitempty" name:"NamespaceName"`
 }
 
+type LaneGroup struct {
+
+	// 泳道ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LaneId *string `json:"LaneId,omitempty" name:"LaneId"`
+
+	// 部署组ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
+
+	// 是否入口应用
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Entrance *bool `json:"Entrance,omitempty" name:"Entrance"`
+
+	// 泳道部署组ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LaneGroupId *string `json:"LaneGroupId,omitempty" name:"LaneGroupId"`
+
+	// 部署组名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GroupName *string `json:"GroupName,omitempty" name:"GroupName"`
+
+	// 应用ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ApplicationId *string `json:"ApplicationId,omitempty" name:"ApplicationId"`
+
+	// 应用名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ApplicationName *string `json:"ApplicationName,omitempty" name:"ApplicationName"`
+
+	// 命名空间ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NamespaceId *string `json:"NamespaceId,omitempty" name:"NamespaceId"`
+
+	// 命名空间名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NamespaceName *string `json:"NamespaceName,omitempty" name:"NamespaceName"`
+
+	// 创建时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateTime *int64 `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 更新时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UpdateTime *int64 `json:"UpdateTime,omitempty" name:"UpdateTime"`
+
+	// 集群类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClusterType *string `json:"ClusterType,omitempty" name:"ClusterType"`
+}
+
+type LaneInfo struct {
+
+	// 泳道ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LaneId *string `json:"LaneId,omitempty" name:"LaneId"`
+
+	// 泳道名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LaneName *string `json:"LaneName,omitempty" name:"LaneName"`
+
+	// 泳道备注
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Remark *string `json:"Remark,omitempty" name:"Remark"`
+
+	// 创建时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateTime *int64 `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 更新时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UpdateTime *int64 `json:"UpdateTime,omitempty" name:"UpdateTime"`
+
+	// 泳道部署组
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LaneGroupList []*LaneGroup `json:"LaneGroupList,omitempty" name:"LaneGroupList" list`
+
+	// 是否入口应用
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Entrance *bool `json:"Entrance,omitempty" name:"Entrance"`
+
+	// 泳道已经关联部署组的命名空间列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NamespaceIdList []*string `json:"NamespaceIdList,omitempty" name:"NamespaceIdList" list`
+}
+
+type LaneInfos struct {
+
+	// 总数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 泳道信息列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Content []*LaneInfo `json:"Content,omitempty" name:"Content" list`
+}
+
+type LaneRule struct {
+
+	// 泳道规则ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RuleId *string `json:"RuleId,omitempty" name:"RuleId"`
+
+	// 泳道规则名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RuleName *string `json:"RuleName,omitempty" name:"RuleName"`
+
+	// 优先级
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Priority *int64 `json:"Priority,omitempty" name:"Priority"`
+
+	// 备注
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Remark *string `json:"Remark,omitempty" name:"Remark"`
+
+	// 泳道规则标签列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RuleTagList []*LaneRuleTag `json:"RuleTagList,omitempty" name:"RuleTagList" list`
+
+	// 泳道规则标签关系
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RuleTagRelationship *string `json:"RuleTagRelationship,omitempty" name:"RuleTagRelationship"`
+
+	// 泳道ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LaneId *string `json:"LaneId,omitempty" name:"LaneId"`
+
+	// 开启状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Enable *bool `json:"Enable,omitempty" name:"Enable"`
+
+	// 创建时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateTime *int64 `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 更新时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UpdateTime *int64 `json:"UpdateTime,omitempty" name:"UpdateTime"`
+}
+
+type LaneRuleTag struct {
+
+	// 标签ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TagId *string `json:"TagId,omitempty" name:"TagId"`
+
+	// 标签名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TagName *string `json:"TagName,omitempty" name:"TagName"`
+
+	// 标签操作符
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TagOperator *string `json:"TagOperator,omitempty" name:"TagOperator"`
+
+	// 标签值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TagValue *string `json:"TagValue,omitempty" name:"TagValue"`
+
+	// 泳道规则ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LaneRuleId *string `json:"LaneRuleId,omitempty" name:"LaneRuleId"`
+
+	// 创建时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateTime *int64 `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 更新时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UpdateTime *int64 `json:"UpdateTime,omitempty" name:"UpdateTime"`
+}
+
+type LaneRules struct {
+
+	// 总数
+	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 泳道规则列表
+	Content []*LaneRule `json:"Content,omitempty" name:"Content" list`
+}
+
 type Microservice struct {
 
 	// 微服务ID
@@ -3949,6 +4351,105 @@ func (r *ModifyContainerReplicasResponse) ToJsonString() string {
 }
 
 func (r *ModifyContainerReplicasResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyLaneRequest struct {
+	*tchttp.BaseRequest
+
+	// 泳道ID
+	LaneId *string `json:"LaneId,omitempty" name:"LaneId"`
+
+	// 泳道名称
+	LaneName *string `json:"LaneName,omitempty" name:"LaneName"`
+
+	// 备注
+	Remark *string `json:"Remark,omitempty" name:"Remark"`
+}
+
+func (r *ModifyLaneRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyLaneRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyLaneResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 操作状态
+		Result *bool `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifyLaneResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyLaneResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyLaneRuleRequest struct {
+	*tchttp.BaseRequest
+
+	// 泳道规则ID
+	RuleId *string `json:"RuleId,omitempty" name:"RuleId"`
+
+	// 泳道规则名称
+	RuleName *string `json:"RuleName,omitempty" name:"RuleName"`
+
+	// 泳道规则备注
+	Remark *string `json:"Remark,omitempty" name:"Remark"`
+
+	// 泳道规则标签列表
+	RuleTagList []*LaneRuleTag `json:"RuleTagList,omitempty" name:"RuleTagList" list`
+
+	// 泳道规则标签关系
+	RuleTagRelationship *string `json:"RuleTagRelationship,omitempty" name:"RuleTagRelationship"`
+
+	// 泳道ID
+	LaneId *string `json:"LaneId,omitempty" name:"LaneId"`
+
+	// 开启状态
+	Enable *bool `json:"Enable,omitempty" name:"Enable"`
+}
+
+func (r *ModifyLaneRuleRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyLaneRuleRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyLaneRuleResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 操作状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Result *bool `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifyLaneRuleResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyLaneRuleResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 

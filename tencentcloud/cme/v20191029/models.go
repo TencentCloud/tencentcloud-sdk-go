@@ -1428,9 +1428,6 @@ type ImportMaterialRequest struct {
 	// 素材分类路径，形如："/a/b"，层级数不能超过10，每个层级长度不能超过15字符。若不填则默认为根路径。
 	ClassPath *string `json:"ClassPath,omitempty" name:"ClassPath"`
 
-	// 素材标签，单个标签长度不能超过10，数组长度不能超过10。
-	Tags []*string `json:"Tags,omitempty" name:"Tags" list`
-
 	// 素材预处理任务模板 ID。取值：
 	// <li>10：进行编辑预处理。</li>
 	PreProcessDefinition *int64 `json:"PreProcessDefinition,omitempty" name:"PreProcessDefinition"`
@@ -1684,10 +1681,6 @@ type MaterialBasicInfo struct {
 	// 素材的分类目录路径。
 	ClassPath *string `json:"ClassPath,omitempty" name:"ClassPath"`
 
-	// 素材标签信息。
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	TagSet []*string `json:"TagSet,omitempty" name:"TagSet" list`
-
 	// 素材媒体文件的预览图。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PreviewUrl *string `json:"PreviewUrl,omitempty" name:"PreviewUrl"`
@@ -1786,9 +1779,6 @@ type ModifyMaterialRequest struct {
 
 	// 素材名称，不能超过30个字符。
 	Name *string `json:"Name,omitempty" name:"Name"`
-
-	// 素材标签，单个标签长度不能超过10个字符，数组长度不能超过10。
-	Tags []*string `json:"Tags,omitempty" name:"Tags" list`
 
 	// 素材分类路径，例如填写"/a/b"，则代表该素材存储的路径为"/a/b"。
 	ClassPath *string `json:"ClassPath,omitempty" name:"ClassPath"`

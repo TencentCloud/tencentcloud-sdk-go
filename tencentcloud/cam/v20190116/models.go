@@ -2050,6 +2050,18 @@ func (r *ListUsersResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type LoginActionMfaFlag struct {
+
+	// 手机
+	Phone *uint64 `json:"Phone,omitempty" name:"Phone"`
+
+	// 软token
+	Stoken *uint64 `json:"Stoken,omitempty" name:"Stoken"`
+
+	// 微信
+	Wechat *uint64 `json:"Wechat,omitempty" name:"Wechat"`
+}
+
 type PolicyVersionDetail struct {
 
 	// 策略版本号
@@ -2203,6 +2215,46 @@ func (r *SetDefaultPolicyVersionResponse) ToJsonString() string {
 }
 
 func (r *SetDefaultPolicyVersionResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type SetMfaFlagRequest struct {
+	*tchttp.BaseRequest
+
+	// 设置用户的uin
+	OpUin *uint64 `json:"OpUin,omitempty" name:"OpUin"`
+
+	// 登录保护设置
+	LoginFlag *LoginActionMfaFlag `json:"LoginFlag,omitempty" name:"LoginFlag"`
+
+	// 操作保护设置
+	ActionFlag *LoginActionMfaFlag `json:"ActionFlag,omitempty" name:"ActionFlag"`
+}
+
+func (r *SetMfaFlagRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *SetMfaFlagRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type SetMfaFlagResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *SetMfaFlagResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *SetMfaFlagResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 

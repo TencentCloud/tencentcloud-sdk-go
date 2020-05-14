@@ -59,12 +59,15 @@ type AddExistedInstancesResponse struct {
 	Response *struct {
 
 		// 失败的节点ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
 		FailedInstanceIds []*string `json:"FailedInstanceIds,omitempty" name:"FailedInstanceIds" list`
 
 		// 成功的节点ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
 		SuccInstanceIds []*string `json:"SuccInstanceIds,omitempty" name:"SuccInstanceIds" list`
 
 		// 超时未返回出来节点的ID(可能失败，也可能成功)
+	// 注意：此字段可能返回 null，表示取不到有效值。
 		TimeoutInstanceIds []*string `json:"TimeoutInstanceIds,omitempty" name:"TimeoutInstanceIds" list`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。

@@ -1168,6 +1168,31 @@ func (c *Client) SetDefaultPolicyVersion(request *SetDefaultPolicyVersionRequest
     return
 }
 
+func NewSetMfaFlagRequest() (request *SetMfaFlagRequest) {
+    request = &SetMfaFlagRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cam", APIVersion, "SetMfaFlag")
+    return
+}
+
+func NewSetMfaFlagResponse() (response *SetMfaFlagResponse) {
+    response = &SetMfaFlagResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 设置用户的登录保护和敏感操作校验方式
+func (c *Client) SetMfaFlag(request *SetMfaFlagRequest) (response *SetMfaFlagResponse, err error) {
+    if request == nil {
+        request = NewSetMfaFlagRequest()
+    }
+    response = NewSetMfaFlagResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewUpdateAssumeRolePolicyRequest() (request *UpdateAssumeRolePolicyRequest) {
     request = &UpdateAssumeRolePolicyRequest{
         BaseRequest: &tchttp.BaseRequest{},

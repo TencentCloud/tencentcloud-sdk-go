@@ -967,7 +967,7 @@ type DescribeCdnDomainLogsRequest struct {
 	// 结束时间，如 2019-09-04 12:00:00
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 
-	// 分页查询偏移量，默认为 0 （第一页）
+	// 分页查询偏移量，默认为 0
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
 
 	// 分页查询限制数目，默认为 100，最大为 1000
@@ -979,6 +979,10 @@ type DescribeCdnDomainLogsRequest struct {
 	// global：同时获取境内、境外加速日志包下载链接（分开打包）
 	// 不指定时默认为 mainland
 	Area *string `json:"Area,omitempty" name:"Area"`
+
+	// 指定下载日志的类型。
+	// access：获取访问日志
+	LogType *string `json:"LogType,omitempty" name:"LogType"`
 }
 
 func (r *DescribeCdnDomainLogsRequest) ToJsonString() string {
@@ -1146,7 +1150,7 @@ func (r *DescribeDomainsConfigResponse) FromJsonString(s string) error {
 type DescribeDomainsRequest struct {
 	*tchttp.BaseRequest
 
-	// 分页查询偏移量，默认为 0 （第一页）
+	// 分页查询偏移量，默认为 0
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
 
 	// 分页查询限制数目，默认为 100，最大可设置为 1000
@@ -1591,7 +1595,7 @@ type DescribePurgeTasksRequest struct {
 	// 查询时任务 ID 与起始时间必须填充一项
 	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
 
-	// 分页查询偏移量，默认为 0 （第一页）
+	// 分页查询偏移量，默认为 0
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
 
 	// 分页查询限制数目，默认为 20
@@ -1698,7 +1702,7 @@ type DescribePushTasksRequest struct {
 	// 查询关键字，请输入域名或 http(s):// 开头完整 URL
 	Keyword *string `json:"Keyword,omitempty" name:"Keyword"`
 
-	// 分页查询偏移量，默认为 0 （第一页）
+	// 分页查询偏移量，默认为 0
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
 
 	// 分页查询限制数目，默认为 20
@@ -1818,7 +1822,7 @@ func (r *DescribeReportDataResponse) FromJsonString(s string) error {
 type DescribeTrafficPackagesRequest struct {
 	*tchttp.BaseRequest
 
-	// 分页查询起始地址，默认 0（第一页）
+	// 分页查询起始地址，默认 0
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
 
 	// 分页查询记录个数，默认100，最大1000
@@ -1867,7 +1871,7 @@ func (r *DescribeTrafficPackagesResponse) FromJsonString(s string) error {
 type DescribeUrlViolationsRequest struct {
 	*tchttp.BaseRequest
 
-	// 分页查询偏移量，默认为 0 （第一页）
+	// 分页查询偏移量，默认为 0
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
 
 	// 分页查询限制数目，默认为 100
@@ -2394,7 +2398,7 @@ type GetDisableRecordsRequest struct {
 	// enable：当前为可用状态，已解禁，可正常访问
 	Status *string `json:"Status,omitempty" name:"Status"`
 
-	// 分页查询偏移量，默认为 0 （第一页）。
+	// 分页查询偏移量，默认为 0
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
 
 	// 分页查询限制数目，默认为20。

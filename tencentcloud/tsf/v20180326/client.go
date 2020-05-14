@@ -218,6 +218,56 @@ func (c *Client) CreateGroup(request *CreateGroupRequest) (response *CreateGroup
     return
 }
 
+func NewCreateLaneRequest() (request *CreateLaneRequest) {
+    request = &CreateLaneRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tsf", APIVersion, "CreateLane")
+    return
+}
+
+func NewCreateLaneResponse() (response *CreateLaneResponse) {
+    response = &CreateLaneResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 创建泳道
+func (c *Client) CreateLane(request *CreateLaneRequest) (response *CreateLaneResponse, err error) {
+    if request == nil {
+        request = NewCreateLaneRequest()
+    }
+    response = NewCreateLaneResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateLaneRuleRequest() (request *CreateLaneRuleRequest) {
+    request = &CreateLaneRuleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tsf", APIVersion, "CreateLaneRule")
+    return
+}
+
+func NewCreateLaneRuleResponse() (response *CreateLaneRuleResponse) {
+    response = &CreateLaneRuleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 创建泳道规则
+func (c *Client) CreateLaneRule(request *CreateLaneRuleRequest) (response *CreateLaneRuleResponse, err error) {
+    if request == nil {
+        request = NewCreateLaneRuleRequest()
+    }
+    response = NewCreateLaneRuleResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateMicroserviceRequest() (request *CreateMicroserviceRequest) {
     request = &CreateMicroserviceRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -439,6 +489,31 @@ func (c *Client) DeleteImageTags(request *DeleteImageTagsRequest) (response *Del
         request = NewDeleteImageTagsRequest()
     }
     response = NewDeleteImageTagsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteLaneRequest() (request *DeleteLaneRequest) {
+    request = &DeleteLaneRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tsf", APIVersion, "DeleteLane")
+    return
+}
+
+func NewDeleteLaneResponse() (response *DeleteLaneResponse) {
+    response = &DeleteLaneResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 删除泳道
+func (c *Client) DeleteLane(request *DeleteLaneRequest) (response *DeleteLaneResponse, err error) {
+    if request == nil {
+        request = NewDeleteLaneRequest()
+    }
+    response = NewDeleteLaneResponse()
     err = c.Send(request, response)
     return
 }
@@ -1045,6 +1120,56 @@ func (c *Client) DescribeImageTags(request *DescribeImageTagsRequest) (response 
     return
 }
 
+func NewDescribeLaneRulesRequest() (request *DescribeLaneRulesRequest) {
+    request = &DescribeLaneRulesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tsf", APIVersion, "DescribeLaneRules")
+    return
+}
+
+func NewDescribeLaneRulesResponse() (response *DescribeLaneRulesResponse) {
+    response = &DescribeLaneRulesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询泳道规则列表
+func (c *Client) DescribeLaneRules(request *DescribeLaneRulesRequest) (response *DescribeLaneRulesResponse, err error) {
+    if request == nil {
+        request = NewDescribeLaneRulesRequest()
+    }
+    response = NewDescribeLaneRulesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeLanesRequest() (request *DescribeLanesRequest) {
+    request = &DescribeLanesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tsf", APIVersion, "DescribeLanes")
+    return
+}
+
+func NewDescribeLanesResponse() (response *DescribeLanesResponse) {
+    response = &DescribeLanesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询泳道列表
+func (c *Client) DescribeLanes(request *DescribeLanesRequest) (response *DescribeLanesResponse, err error) {
+    if request == nil {
+        request = NewDescribeLanesRequest()
+    }
+    response = NewDescribeLanesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeMicroserviceRequest() (request *DescribeMicroserviceRequest) {
     request = &DescribeMicroserviceRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1542,6 +1667,56 @@ func (c *Client) ModifyContainerReplicas(request *ModifyContainerReplicasRequest
         request = NewModifyContainerReplicasRequest()
     }
     response = NewModifyContainerReplicasResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyLaneRequest() (request *ModifyLaneRequest) {
+    request = &ModifyLaneRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tsf", APIVersion, "ModifyLane")
+    return
+}
+
+func NewModifyLaneResponse() (response *ModifyLaneResponse) {
+    response = &ModifyLaneResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 更新泳道信息
+func (c *Client) ModifyLane(request *ModifyLaneRequest) (response *ModifyLaneResponse, err error) {
+    if request == nil {
+        request = NewModifyLaneRequest()
+    }
+    response = NewModifyLaneResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyLaneRuleRequest() (request *ModifyLaneRuleRequest) {
+    request = &ModifyLaneRuleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tsf", APIVersion, "ModifyLaneRule")
+    return
+}
+
+func NewModifyLaneRuleResponse() (response *ModifyLaneRuleResponse) {
+    response = &ModifyLaneRuleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 更新泳道规则
+func (c *Client) ModifyLaneRule(request *ModifyLaneRuleRequest) (response *ModifyLaneRuleResponse, err error) {
+    if request == nil {
+        request = NewModifyLaneRuleRequest()
+    }
+    response = NewModifyLaneRuleResponse()
     err = c.Send(request, response)
     return
 }
