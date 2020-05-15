@@ -146,6 +146,9 @@ type CreateNotebookInstanceRequest struct {
 	// 其他存储库列表
 	// 每个元素可以是已创建的存储库名称或者已https://开头的公共git库
 	AdditionalCodeRepositories []*string `json:"AdditionalCodeRepositories,omitempty" name:"AdditionalCodeRepositories" list`
+
+	// 是否开启CLS日志服务，可取值Enabled/Disabled，默认为Disabled
+	ClsAccess *string `json:"ClsAccess,omitempty" name:"ClsAccess"`
 }
 
 func (r *CreateNotebookInstanceRequest) ToJsonString() string {
@@ -631,6 +634,10 @@ type DescribeNotebookInstanceResponse struct {
 	// 每个元素可以是已创建的存储库名称或者已https://开头的公共git库
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		AdditionalCodeRepositories []*string `json:"AdditionalCodeRepositories,omitempty" name:"AdditionalCodeRepositories" list`
+
+		// 是否开启CLS日志服务
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		ClsAccess *string `json:"ClsAccess,omitempty" name:"ClsAccess"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1262,6 +1269,9 @@ type UpdateNotebookInstanceRequest struct {
 	// 是否取消关联其他存储库，默认false
 	// 该值为true时，AdditionalCodeRepositories将被忽略
 	DisassociateAdditionalCodeRepositories *bool `json:"DisassociateAdditionalCodeRepositories,omitempty" name:"DisassociateAdditionalCodeRepositories"`
+
+	// 是否开启CLS日志服务，可取值Enabled/Disabled
+	ClsAccess *string `json:"ClsAccess,omitempty" name:"ClsAccess"`
 }
 
 func (r *UpdateNotebookInstanceRequest) ToJsonString() string {

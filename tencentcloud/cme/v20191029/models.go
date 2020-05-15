@@ -222,9 +222,6 @@ type CreateLinkRequest struct {
 	// 链接的分类路径，如填"/a/b"则代表链接属于该分类路径，不填则默认为根路径。
 	ClassPath *string `json:"ClassPath,omitempty" name:"ClassPath"`
 
-	// 链接标签，单个标签长度不能超过10，数组长度不能超过10。
-	Tags []*string `json:"Tags,omitempty" name:"Tags" list`
-
 	// 操作者。填写用户的 Id，用于标识调用者及校验操作权限。
 	Operator *string `json:"Operator,omitempty" name:"Operator"`
 }
@@ -2108,7 +2105,7 @@ type SearchMaterialRequest struct {
 	// <li>IMAGE：图片。</li>
 	MaterialTypes []*string `json:"MaterialTypes,omitempty" name:"MaterialTypes" list`
 
-	// 搜索文本，模糊匹配素材名称或描述信息，匹配项越多，匹配度越高，排序越优先。长度限制：64 个字符。
+	// 搜索文本，模糊匹配素材名称或描述信息，匹配项越多，匹配度越高，排序越优先。长度限制：15个字符。
 	Text *string `json:"Text,omitempty" name:"Text"`
 
 	// 按画质检索，取值为：LD/SD/HD/FHD/2K/4K。
@@ -2119,9 +2116,6 @@ type SearchMaterialRequest struct {
 
 	// 按照素材创建时间检索。
 	CreateTimeRange *TimeRange `json:"CreateTimeRange,omitempty" name:"CreateTimeRange"`
-
-	// 标签集合，匹配集合中任意元素。单个标签长度限制：10 个字符。数组长度限制：10。
-	Tags []*string `json:"Tags,omitempty" name:"Tags" list`
 
 	// 排序方式。Sort.Field 可选值：CreateTime。指定 Text 搜索时，将根据匹配度排序，该字段无效。
 	Sort *SortBy `json:"Sort,omitempty" name:"Sort"`

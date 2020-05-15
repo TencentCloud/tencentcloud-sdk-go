@@ -1183,7 +1183,7 @@ func NewSetMfaFlagResponse() (response *SetMfaFlagResponse) {
     return
 }
 
-// 设置用户的登录保护和敏感操作校验方式
+// 设置子用户的登录保护和敏感操作校验方式
 func (c *Client) SetMfaFlag(request *SetMfaFlagRequest) (response *SetMfaFlagResponse, err error) {
     if request == nil {
         request = NewSetMfaFlagRequest()

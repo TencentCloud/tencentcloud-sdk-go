@@ -2307,11 +2307,11 @@ type TaskInstanceLog struct {
 	// 任务实例
 	TaskInstanceIndex *uint64 `json:"TaskInstanceIndex,omitempty" name:"TaskInstanceIndex"`
 
-	// 标准输出日志（Base64编码）
+	// 标准输出日志（Base64编码，解码后最大日志长度2048字节）
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	StdoutLog *string `json:"StdoutLog,omitempty" name:"StdoutLog"`
 
-	// 标准错误日志（Base64编码）
+	// 标准错误日志（Base64编码，解码后最大日志长度2048字节）
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	StderrLog *string `json:"StderrLog,omitempty" name:"StderrLog"`
 

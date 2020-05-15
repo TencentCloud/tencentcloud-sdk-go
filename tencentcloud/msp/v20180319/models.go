@@ -290,12 +290,6 @@ type RegisterMigrationTaskRequest struct {
 	// 服务提供商名称
 	ServiceSupplier *string `json:"ServiceSupplier,omitempty" name:"ServiceSupplier"`
 
-	// 迁移任务源信息
-	SrcInfo *SrcInfo `json:"SrcInfo,omitempty" name:"SrcInfo"`
-
-	// 迁移任务目的信息
-	DstInfo *DstInfo `json:"DstInfo,omitempty" name:"DstInfo"`
-
 	// 迁移任务创建时间
 	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
 
@@ -304,6 +298,12 @@ type RegisterMigrationTaskRequest struct {
 
 	// 迁移类别，如数据库迁移中mysql:mysql代表从mysql迁移到mysql，文件迁移中oss:cos代表从阿里云oss迁移到腾讯云cos
 	MigrateClass *string `json:"MigrateClass,omitempty" name:"MigrateClass"`
+
+	// 迁移任务源信息
+	SrcInfo *SrcInfo `json:"SrcInfo,omitempty" name:"SrcInfo"`
+
+	// 迁移任务目的信息
+	DstInfo *DstInfo `json:"DstInfo,omitempty" name:"DstInfo"`
 
 	// 源实例接入类型，数据库迁移时填写值为：extranet(外网),cvm(cvm自建实例),dcg(专线接入的实例),vpncloud(云vpn接入的实例),vpnselfbuild(自建vpn接入的实例)，cdb(云上cdb实例)
 	SrcAccessType *string `json:"SrcAccessType,omitempty" name:"SrcAccessType"`

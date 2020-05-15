@@ -1786,6 +1786,7 @@ type MLIDCardOCRResponse struct {
 		// 告警码
 	// -9103	证照翻拍告警
 	// -9102	证照复印件告警
+	// -9106       证件遮挡告警
 		Warn []*int64 `json:"Warn,omitempty" name:"Warn" list`
 
 		// 证件图片
@@ -1801,6 +1802,15 @@ type MLIDCardOCRResponse struct {
 	//     }
 	// }
 		AdvancedInfo *string `json:"AdvancedInfo,omitempty" name:"AdvancedInfo"`
+
+		// 证件类型
+	// MyKad  身份证
+	// MyPR    永居证
+	// MyTentera   军官证
+	// MyKAS    临时身份证
+	// POLIS  警察
+	// IKAD   劳工证
+		Type *string `json:"Type,omitempty" name:"Type"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`

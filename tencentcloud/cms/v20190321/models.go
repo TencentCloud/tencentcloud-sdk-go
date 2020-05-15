@@ -53,6 +53,21 @@ type CodePosition struct {
 	FloatY *float64 `json:"FloatY,omitempty" name:"FloatY"`
 }
 
+type Coordinate struct {
+
+	// 左上角横坐标
+	Cx *int64 `json:"Cx,omitempty" name:"Cx"`
+
+	// 左上角纵坐标
+	Cy *int64 `json:"Cy,omitempty" name:"Cy"`
+
+	// 高度
+	Height *int64 `json:"Height,omitempty" name:"Height"`
+
+	// 宽度
+	Width *int64 `json:"Width,omitempty" name:"Width"`
+}
+
 type CreateFileSampleRequest struct {
 	*tchttp.BaseRequest
 
@@ -168,6 +183,18 @@ func (r *CreateTextSampleResponse) ToJsonString() string {
 
 func (r *CreateTextSampleResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
+}
+
+type CustomResult struct {
+
+	// 命中的自定义关键词
+	Keywords []*string `json:"Keywords,omitempty" name:"Keywords" list`
+
+	// 自定义库id
+	LibId *string `json:"LibId,omitempty" name:"LibId"`
+
+	// 自定义词库名称
+	LibName *string `json:"LibName,omitempty" name:"LibName"`
 }
 
 type DeleteFileSampleRequest struct {
@@ -350,6 +377,28 @@ func (r *DescribeTextSampleResponse) ToJsonString() string {
 
 func (r *DescribeTextSampleResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
+}
+
+type DetailResult struct {
+
+	// 恶意标签，Normal：正常，Polity：涉政，Porn：色情，Illegal：违法，Abuse：谩骂，Terror：暴恐，Ad：广告，Custom：自定义关键词
+	EvilLabel *string `json:"EvilLabel,omitempty" name:"EvilLabel"`
+
+	// 恶意类型
+	// 100：正常
+	// 20001：政治
+	// 20002：色情 
+	// 20006：涉毒违法
+	// 20007：谩骂
+	// 20105：广告引流 
+	// 24001：暴恐
+	EvilType *uint64 `json:"EvilType,omitempty" name:"EvilType"`
+
+	// 该标签下命中的关键词
+	Keywords []*string `json:"Keywords,omitempty" name:"Keywords" list`
+
+	// 该标签模型命中的分值
+	Score *uint64 `json:"Score,omitempty" name:"Score"`
 }
 
 type FileSample struct {
@@ -640,8 +689,32 @@ type LogoDetail struct {
 
 type OCRDetect struct {
 
+	// 识别到的详细信息
+	Item []*OCRItem `json:"Item,omitempty" name:"Item" list`
+
 	// 识别到的文本信息
 	TextInfo *string `json:"TextInfo,omitempty" name:"TextInfo"`
+}
+
+type OCRItem struct {
+
+	// 检测到的文本坐标信息
+	TextPosition *Coordinate `json:"TextPosition,omitempty" name:"TextPosition"`
+
+	// 文本命中具体标签
+	EvilLabel *string `json:"EvilLabel,omitempty" name:"EvilLabel"`
+
+	// 文本命中恶意违规类型
+	EvilType *int64 `json:"EvilType,omitempty" name:"EvilType"`
+
+	// 文本命中违规的关键词
+	Keywords []*string `json:"Keywords,omitempty" name:"Keywords" list`
+
+	// 文本涉嫌违规分值
+	Rate *int64 `json:"Rate,omitempty" name:"Rate"`
+
+	// 检测到的文本信息
+	TextContent *string `json:"TextContent,omitempty" name:"TextContent"`
 }
 
 type PhoneDetect struct {
@@ -715,14 +788,32 @@ type TextData struct {
 	// 消息类公共相关参数
 	Common *TextOutputComm `json:"Common,omitempty" name:"Common"`
 
+	// 返回的自定义词库结果
+	CustomResult []*CustomResult `json:"CustomResult,omitempty" name:"CustomResult" list`
+
+	// 返回的详细结果
+	DetailResult []*DetailResult `json:"DetailResult,omitempty" name:"DetailResult" list`
+
 	// 消息类ID信息
 	ID *TextOutputID `json:"ID,omitempty" name:"ID"`
 
 	// 消息类输出结果
 	Res *TextOutputRes `json:"Res,omitempty" name:"Res"`
 
+	// 最终使用的BizType
+	BizType *uint64 `json:"BizType,omitempty" name:"BizType"`
+
+	// 恶意标签，Normal：正常，Polity：涉政，Porn：色情，Illegal：违法，Abuse：谩骂，Terror：暴恐，Ad：广告，Custom：自定义关键词
+	EvilLabel *string `json:"EvilLabel,omitempty" name:"EvilLabel"`
+
 	// 命中的关键词
 	Keywords []*string `json:"Keywords,omitempty" name:"Keywords" list`
+
+	// 命中的模型分值
+	Score *uint64 `json:"Score,omitempty" name:"Score"`
+
+	// 建议值,Block：打击,Review：待复审,Normal：正常
+	Suggestion *string `json:"Suggestion,omitempty" name:"Suggestion"`
 }
 
 type TextModerationRequest struct {
@@ -730,6 +821,15 @@ type TextModerationRequest struct {
 
 	// 文本内容Base64编码。原文长度需小于15000字节，即5000个汉字以内。
 	Content *string `json:"Content,omitempty" name:"Content"`
+
+	// 该字段用于标识业务场景。您可以在内容安全控制台创建对应的ID，配置不同的内容审核策略，通过接口调用，默认不填为0，后端使用默认策略
+	BizType *uint64 `json:"BizType,omitempty" name:"BizType"`
+
+	// 数据ID，英文字母、下划线、-组成，不超过64个字符
+	DataId *string `json:"DataId,omitempty" name:"DataId"`
+
+	// 业务应用ID
+	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
 }
 
 func (r *TextModerationRequest) ToJsonString() string {

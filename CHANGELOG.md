@@ -1,30 +1,10 @@
 # 本版本更新包含以下内容：
 
-## 访问管理(cam) 版本：2019-01-16
-
-### 第 22 次发布
-
-发布时间：2020-05-14 08:06:40
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [SetMfaFlag](https://cloud.tencent.com/document/api/598/36227)
-
-新增数据结构：
-
-* [LoginActionMfaFlag](https://cloud.tencent.com/document/api/598/33167#LoginActionMfaFlag)
-
-
-
 ## 内容分发网络(cdn) 版本：2018-06-06
 
-### 第 20 次发布
+### 第 21 次发布
 
-发布时间：2020-05-14 08:07:44
+发布时间：2020-05-15 08:06:22
 
 本次发布包含了以下内容：
 
@@ -32,18 +12,18 @@
 
 修改接口：
 
-* [DescribeCdnDomainLogs](https://cloud.tencent.com/document/api/228/39232)
+* [CreateClsLogTopic](https://cloud.tencent.com/document/api/228/42198)
 
-	* 新增入参：LogType
+	* 新增出参：TopicId
 
 
 
 
 ## 腾讯云剪(cme) 版本：2019-10-29
 
-### 第 9 次发布
+### 第 10 次发布
 
-发布时间：2020-05-14 08:04:13
+发布时间：2020-05-15 08:03:10
 
 本次发布包含了以下内容：
 
@@ -51,52 +31,116 @@
 
 修改接口：
 
-* [ImportMaterial](https://cloud.tencent.com/document/api/1156/43243)
+* [CreateLink](https://cloud.tencent.com/document/api/1156/43366)
 
 	* <font color="#dd0000">**删除入参**：</font>Tags
 
-* [ModifyMaterial](https://cloud.tencent.com/document/api/1156/43241)
+* [SearchMaterial](https://cloud.tencent.com/document/api/1156/43240)
 
 	* <font color="#dd0000">**删除入参**：</font>Tags
 
 
-修改数据结构：
-
-* [MaterialBasicInfo](https://cloud.tencent.com/document/api/1156/40360#MaterialBasicInfo)
-
-	* <font color="#dd0000">**删除成员**：</font>TagSet
 
 
+## 内容安全(cms) 版本：2019-03-21
 
+### 第 9 次发布
 
-## 腾讯分布式服务框架(tsf) 版本：2018-03-26
-
-### 第 20 次发布
-
-发布时间：2020-05-14 08:18:42
+发布时间：2020-05-15 08:07:21
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-新增接口：
+修改接口：
 
-* [CreateLane](https://cloud.tencent.com/document/api/649/44508)
-* [CreateLaneRule](https://cloud.tencent.com/document/api/649/44507)
-* [DeleteLane](https://cloud.tencent.com/document/api/649/44506)
-* [DescribeLaneRules](https://cloud.tencent.com/document/api/649/44505)
-* [DescribeLanes](https://cloud.tencent.com/document/api/649/44504)
-* [ModifyLane](https://cloud.tencent.com/document/api/649/44503)
-* [ModifyLaneRule](https://cloud.tencent.com/document/api/649/44502)
+* [TextModeration](https://cloud.tencent.com/document/api/669/34502)
+
+	* 新增入参：BizType, DataId, SdkAppId
+
 
 新增数据结构：
 
-* [LaneGroup](https://cloud.tencent.com/document/api/649/36099#LaneGroup)
-* [LaneInfo](https://cloud.tencent.com/document/api/649/36099#LaneInfo)
-* [LaneInfos](https://cloud.tencent.com/document/api/649/36099#LaneInfos)
-* [LaneRule](https://cloud.tencent.com/document/api/649/36099#LaneRule)
-* [LaneRuleTag](https://cloud.tencent.com/document/api/649/36099#LaneRuleTag)
-* [LaneRules](https://cloud.tencent.com/document/api/649/36099#LaneRules)
+* [Coordinate](https://cloud.tencent.com/document/api/669/34506#Coordinate)
+* [CustomResult](https://cloud.tencent.com/document/api/669/34506#CustomResult)
+* [DetailResult](https://cloud.tencent.com/document/api/669/34506#DetailResult)
+* [OCRItem](https://cloud.tencent.com/document/api/669/34506#OCRItem)
+
+修改数据结构：
+
+* [OCRDetect](https://cloud.tencent.com/document/api/669/34506#OCRDetect)
+
+	* 新增成员：Item
+
+* [TextData](https://cloud.tencent.com/document/api/669/34506#TextData)
+
+	* 新增成员：CustomResult, DetailResult, BizType, EvilLabel, Score, Suggestion
+
+
+
+
+## 迁移服务平台(msp) 版本：2018-03-19
+
+### 第 2 次发布
+
+发布时间：2020-05-15 08:13:29
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [RegisterMigrationTask](https://cloud.tencent.com/document/api/659/18599)
+
+	* <font color="#dd0000">**修改入参**：</font>SrcInfo, DstInfo
+
+
+
+
+## 文字识别(ocr) 版本：2018-11-19
+
+### 第 23 次发布
+
+发布时间：2020-05-15 08:13:44
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [MLIDCardOCR](https://cloud.tencent.com/document/api/866/37656)
+
+	* 新增出参：Type
+
+
+
+
+## 智能钛机器学习平台(tione) 版本：2019-10-22
+
+### 第 5 次发布
+
+发布时间：2020-05-15 08:01:29
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateNotebookInstance](https://cloud.tencent.com/document/api/851/42527)
+
+	* 新增入参：ClsAccess
+
+* [DescribeNotebookInstance](https://cloud.tencent.com/document/api/851/42524)
+
+	* 新增出参：ClsAccess
+
+* [UpdateNotebookInstance](https://cloud.tencent.com/document/api/851/42520)
+
+	* 新增入参：ClsAccess
+
 
 
 
@@ -3194,11 +3238,11 @@
 
 新增接口：
 
-* [[SetMfaFlag](https://cloud.tencent.com/document/api/598/36227)](https://cloud.tencent.com/document/api/#/#)
+* [SetMfaFlag](https://cloud.tencent.com/document/api/598/36227)
 
 新增数据结构：
 
-* [[LoginActionMfaFlag](https://cloud.tencent.com/document/api/598/33167#LoginActionMfaFlag)](https://cloud.tencent.com/document/api/598/33167#[LoginActionMfaFlag](https://cloud.tencent.com/document/api/598/33167#LoginActionMfaFlag))
+* [LoginActionMfaFlag](https://cloud.tencent.com/document/api/598/33167#LoginActionMfaFlag)
 
 ### 第 21 次发布
 
@@ -5144,6 +5188,21 @@
 
 ## 内容分发网络(cdn) 版本：2018-06-06
 
+### 第 21 次发布
+
+发布时间：2020-05-15 08:06:22
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateClsLogTopic](https://cloud.tencent.com/document/api/228/42198)
+
+	* 新增出参：TopicId
+
+
 ### 第 20 次发布
 
 发布时间：2020-05-14 08:07:44
@@ -6836,6 +6895,25 @@
 
 ## 腾讯云剪(cme) 版本：2019-10-29
 
+### 第 10 次发布
+
+发布时间：2020-05-15 08:03:10
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateLink](https://cloud.tencent.com/document/api/1156/43366)
+
+	* <font color="#dd0000">**删除入参**：</font>Tags
+
+* [SearchMaterial](https://cloud.tencent.com/document/api/1156/43240)
+
+	* <font color="#dd0000">**删除入参**：</font>Tags
+
+
 ### 第 9 次发布
 
 发布时间：2020-05-14 08:04:13
@@ -7110,6 +7188,39 @@
 
 
 ## 内容安全(cms) 版本：2019-03-21
+
+### 第 9 次发布
+
+发布时间：2020-05-15 08:07:21
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [TextModeration](https://cloud.tencent.com/document/api/669/34502)
+
+	* 新增入参：BizType, DataId, SdkAppId
+
+
+新增数据结构：
+
+* [[Coordinate](https://cloud.tencent.com/document/api/669/34506#Coordinate)](https://cloud.tencent.com/document/api/669/34506#[Coordinate](https://cloud.tencent.com/document/api/669/34506#Coordinate))
+* [[CustomResult](https://cloud.tencent.com/document/api/669/34506#CustomResult)](https://cloud.tencent.com/document/api/669/34506#[CustomResult](https://cloud.tencent.com/document/api/669/34506#CustomResult))
+* [[DetailResult](https://cloud.tencent.com/document/api/669/34506#DetailResult)](https://cloud.tencent.com/document/api/669/34506#[DetailResult](https://cloud.tencent.com/document/api/669/34506#DetailResult))
+* [[OCRItem](https://cloud.tencent.com/document/api/669/34506#OCRItem)](https://cloud.tencent.com/document/api/669/34506#[OCRItem](https://cloud.tencent.com/document/api/669/34506#OCRItem))
+
+修改数据结构：
+
+* [OCRDetect](https://cloud.tencent.com/document/api/669/34506#OCRDetect)
+
+	* 新增成员：Item
+
+* [TextData](https://cloud.tencent.com/document/api/669/34506#TextData)
+
+	* 新增成员：CustomResult, DetailResult, BizType, EvilLabel, Score, Suggestion
+
 
 ### 第 8 次发布
 
@@ -16977,6 +17088,21 @@
 
 ## 迁移服务平台(msp) 版本：2018-03-19
 
+### 第 2 次发布
+
+发布时间：2020-05-15 08:13:29
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [RegisterMigrationTask](https://cloud.tencent.com/document/api/659/18599)
+
+	* <font color="#dd0000">**修改入参**：</font>SrcInfo, DstInfo
+
+
 ### 第 1 次发布
 
 发布时间：2018-07-26 16:34:23
@@ -17191,6 +17317,21 @@
 
 
 ## 文字识别(ocr) 版本：2018-11-19
+
+### 第 23 次发布
+
+发布时间：2020-05-15 08:13:44
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [MLIDCardOCR](https://cloud.tencent.com/document/api/866/37656)
+
+	* 新增出参：Type
+
 
 ### 第 22 次发布
 
@@ -22142,6 +22283,29 @@
 
 ## 智能钛机器学习平台(tione) 版本：2019-10-22
 
+### 第 5 次发布
+
+发布时间：2020-05-15 08:01:29
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateNotebookInstance](https://cloud.tencent.com/document/api/851/42527)
+
+	* 新增入参：ClsAccess
+
+* [DescribeNotebookInstance](https://cloud.tencent.com/document/api/851/42524)
+
+	* 新增出参：ClsAccess
+
+* [UpdateNotebookInstance](https://cloud.tencent.com/document/api/851/42520)
+
+	* 新增入参：ClsAccess
+
+
 ### 第 4 次发布
 
 发布时间：2020-04-02 08:00:31
@@ -23144,22 +23308,22 @@
 
 新增接口：
 
-* [[CreateLane](https://cloud.tencent.com/document/api/649/44508)](https://cloud.tencent.com/document/api/#/#)
-* [[CreateLaneRule](https://cloud.tencent.com/document/api/649/44507)](https://cloud.tencent.com/document/api/#/#)
-* [[DeleteLane](https://cloud.tencent.com/document/api/649/44506)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeLaneRules](https://cloud.tencent.com/document/api/649/44505)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeLanes](https://cloud.tencent.com/document/api/649/44504)](https://cloud.tencent.com/document/api/#/#)
-* [[ModifyLane](https://cloud.tencent.com/document/api/649/44503)](https://cloud.tencent.com/document/api/#/#)
-* [[ModifyLaneRule](https://cloud.tencent.com/document/api/649/44502)](https://cloud.tencent.com/document/api/#/#)
+* [CreateLane](https://cloud.tencent.com/document/api/649/44508)
+* [CreateLaneRule](https://cloud.tencent.com/document/api/649/44507)
+* [DeleteLane](https://cloud.tencent.com/document/api/649/44506)
+* [DescribeLaneRules](https://cloud.tencent.com/document/api/649/44505)
+* [DescribeLanes](https://cloud.tencent.com/document/api/649/44504)
+* [ModifyLane](https://cloud.tencent.com/document/api/649/44503)
+* [ModifyLaneRule](https://cloud.tencent.com/document/api/649/44502)
 
 新增数据结构：
 
-* [[LaneGroup](https://cloud.tencent.com/document/api/649/36099#LaneGroup)](https://cloud.tencent.com/document/api/649/36099#[LaneGroup](https://cloud.tencent.com/document/api/649/36099#LaneGroup))
-* [[LaneInfo](https://cloud.tencent.com/document/api/649/36099#LaneInfo)](https://cloud.tencent.com/document/api/649/36099#[LaneInfo](https://cloud.tencent.com/document/api/649/36099#LaneInfo))
-* [[LaneInfos](https://cloud.tencent.com/document/api/649/36099#LaneInfos)](https://cloud.tencent.com/document/api/649/36099#[LaneInfos](https://cloud.tencent.com/document/api/649/36099#LaneInfos))
-* [[LaneRule](https://cloud.tencent.com/document/api/649/36099#LaneRule)](https://cloud.tencent.com/document/api/649/36099#[LaneRule](https://cloud.tencent.com/document/api/649/36099#LaneRule))
-* [[LaneRuleTag](https://cloud.tencent.com/document/api/649/36099#LaneRuleTag)](https://cloud.tencent.com/document/api/649/36099#[LaneRuleTag](https://cloud.tencent.com/document/api/649/36099#LaneRuleTag))
-* [[LaneRules](https://cloud.tencent.com/document/api/649/36099#LaneRules)](https://cloud.tencent.com/document/api/649/36099#[LaneRules](https://cloud.tencent.com/document/api/649/36099#LaneRules))
+* [LaneGroup](https://cloud.tencent.com/document/api/649/36099#LaneGroup)
+* [LaneInfo](https://cloud.tencent.com/document/api/649/36099#LaneInfo)
+* [LaneInfos](https://cloud.tencent.com/document/api/649/36099#LaneInfos)
+* [LaneRule](https://cloud.tencent.com/document/api/649/36099#LaneRule)
+* [LaneRuleTag](https://cloud.tencent.com/document/api/649/36099#LaneRuleTag)
+* [LaneRules](https://cloud.tencent.com/document/api/649/36099#LaneRules)
 
 ### 第 19 次发布
 

@@ -26,10 +26,10 @@ type DescribeCallDetailRequest struct {
 	// 通话ID（唯一标识一次通话）= sdkappid+roomgString（房间号）+房间创建时间（unix时间戳，s）。通过 DescribeRoomInformation（查询房间列表）接口获取。
 	CommId *string `json:"CommId,omitempty" name:"CommId"`
 
-	// 查询开始时间
+	// 查询开始时间，5天内。本地unix时间戳（1588031999s）
 	StartTime *uint64 `json:"StartTime,omitempty" name:"StartTime"`
 
-	// 查询结束时间
+	// 查询结束时间，本地unix时间戳（1588031999s）
 	EndTime *uint64 `json:"EndTime,omitempty" name:"EndTime"`
 
 	// 用户sdkappid
@@ -99,10 +99,10 @@ type DescribeHistoryScaleRequest struct {
 	// 用户sdkappid
 	SdkAppId *string `json:"SdkAppId,omitempty" name:"SdkAppId"`
 
-	// 查询开始时间
+	// 查询开始时间，5天内。本地unix时间戳（1588031999s）
 	StartTime *uint64 `json:"StartTime,omitempty" name:"StartTime"`
 
-	// 查询结束时间
+	// 查询结束时间，本地unix时间戳（1588031999s）
 	EndTime *uint64 `json:"EndTime,omitempty" name:"EndTime"`
 }
 
@@ -143,10 +143,10 @@ func (r *DescribeHistoryScaleResponse) FromJsonString(s string) error {
 type DescribeRealtimeNetworkRequest struct {
 	*tchttp.BaseRequest
 
-	// 查询开始时间
+	// 查询开始时间，24小时内，，本地unix时间戳（1588031999s）
 	StartTime *uint64 `json:"StartTime,omitempty" name:"StartTime"`
 
-	// 查询结束时间
+	// 查询结束时间，本地unix时间戳（1588031999s）
 	EndTime *uint64 `json:"EndTime,omitempty" name:"EndTime"`
 
 	// 用户sdkappid
@@ -191,10 +191,10 @@ func (r *DescribeRealtimeNetworkResponse) FromJsonString(s string) error {
 type DescribeRealtimeQualityRequest struct {
 	*tchttp.BaseRequest
 
-	// 查询开始时间
+	// 查询开始时间，24小时内。本地unix时间戳（1588031999s）
 	StartTime *uint64 `json:"StartTime,omitempty" name:"StartTime"`
 
-	// 查询结束时间
+	// 查询结束时间，本地unix时间戳（1588031999s）
 	EndTime *uint64 `json:"EndTime,omitempty" name:"EndTime"`
 
 	// 用户sdkappid
@@ -241,10 +241,10 @@ func (r *DescribeRealtimeQualityResponse) FromJsonString(s string) error {
 type DescribeRealtimeScaleRequest struct {
 	*tchttp.BaseRequest
 
-	// 查询开始时间
+	// 查询开始时间，24小时内。本地unix时间戳（1588031999s）
 	StartTime *uint64 `json:"StartTime,omitempty" name:"StartTime"`
 
-	// 查询结束时间
+	// 查询结束时间，本地unix时间戳（1588031999s）
 	EndTime *uint64 `json:"EndTime,omitempty" name:"EndTime"`
 
 	// 用户sdkappid
@@ -292,10 +292,10 @@ type DescribeRoomInformationRequest struct {
 	// 用户sdkappid
 	SdkAppId *string `json:"SdkAppId,omitempty" name:"SdkAppId"`
 
-	// 查询开始时间
+	// 查询开始时间，5天内。本地unix时间戳（1588031999s）
 	StartTime *uint64 `json:"StartTime,omitempty" name:"StartTime"`
 
-	// 查询结束时间
+	// 查询结束时间，本地unix时间戳（1588031999s）
 	EndTime *uint64 `json:"EndTime,omitempty" name:"EndTime"`
 
 	// 数字房间号
