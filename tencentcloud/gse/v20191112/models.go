@@ -91,6 +91,43 @@ type Credentials struct {
 	UserName *string `json:"UserName,omitempty" name:"UserName"`
 }
 
+type DeleteScalingPolicyRequest struct {
+	*tchttp.BaseRequest
+
+	// 服务部署ID
+	FleetId *string `json:"FleetId,omitempty" name:"FleetId"`
+
+	// 名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+}
+
+func (r *DeleteScalingPolicyRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteScalingPolicyRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteScalingPolicyResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DeleteScalingPolicyResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteScalingPolicyResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeGameServerSessionDetailsRequest struct {
 	*tchttp.BaseRequest
 
@@ -185,6 +222,53 @@ func (r *DescribeGameServerSessionPlacementResponse) FromJsonString(s string) er
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeGameServerSessionQueuesRequest struct {
+	*tchttp.BaseRequest
+
+	// 游戏服务器会话队列数组
+	Names []*string `json:"Names,omitempty" name:"Names" list`
+
+	// 要返回的最大结果数
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 偏移
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+}
+
+func (r *DescribeGameServerSessionQueuesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeGameServerSessionQueuesRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeGameServerSessionQueuesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 游戏服务器会话队列数组
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		GameServerSessionQueues []*GameServerSessionQueue `json:"GameServerSessionQueues,omitempty" name:"GameServerSessionQueues" list`
+
+		// 总数
+		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeGameServerSessionQueuesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeGameServerSessionQueuesResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeGameServerSessionsRequest struct {
 	*tchttp.BaseRequest
 
@@ -203,7 +287,7 @@ type DescribeGameServerSessionsRequest struct {
 	// 页偏移，用于查询下一页
 	NextToken *string `json:"NextToken,omitempty" name:"NextToken"`
 
-	// 游戏服务器会话状态
+	// 游戏服务器会话状态(ACTIVE,ACTIVATING,TERMINATED,TERMINATING,ERROR)
 	StatusFilter *string `json:"StatusFilter,omitempty" name:"StatusFilter"`
 }
 
@@ -347,6 +431,57 @@ func (r *DescribePlayerSessionsResponse) ToJsonString() string {
 }
 
 func (r *DescribePlayerSessionsResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeScalingPoliciesRequest struct {
+	*tchttp.BaseRequest
+
+	// 服务部署ID
+	FleetId *string `json:"FleetId,omitempty" name:"FleetId"`
+
+	// 状态过滤条件
+	StatusFilter *string `json:"StatusFilter,omitempty" name:"StatusFilter"`
+
+	// 结果返回最大数量
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 返回结果偏移
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+func (r *DescribeScalingPoliciesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeScalingPoliciesRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeScalingPoliciesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 动态扩缩容配置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		ScalingPolicies []*ScalingPolicy `json:"ScalingPolicies,omitempty" name:"ScalingPolicies" list`
+
+		// 返回总数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeScalingPoliciesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeScalingPoliciesResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -525,6 +660,33 @@ type GameServerSessionPlacement struct {
 	// 结束时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+}
+
+type GameServerSessionQueue struct {
+
+	// 服务部署组名字
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 服务部署组资源
+	GameServerSessionQueueArn *string `json:"GameServerSessionQueueArn,omitempty" name:"GameServerSessionQueueArn"`
+
+	// 目的fleet（可为别名）列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Destinations []*GameServerSessionQueueDestination `json:"Destinations,omitempty" name:"Destinations" list`
+
+	// 延迟策略集合
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PlayerLatencyPolicies []*PlayerLatencyPolicy `json:"PlayerLatencyPolicies,omitempty" name:"PlayerLatencyPolicies" list`
+
+	// 超时时间
+	TimeoutInSeconds *uint64 `json:"TimeoutInSeconds,omitempty" name:"TimeoutInSeconds"`
+}
+
+type GameServerSessionQueueDestination struct {
+
+	// 服务部署组目的的资源描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DestinationArn *string `json:"DestinationArn,omitempty" name:"DestinationArn"`
 }
 
 type GetGameServerSessionLogUrlRequest struct {
@@ -725,6 +887,17 @@ type PlayerLatency struct {
 	LatencyInMilliseconds *uint64 `json:"LatencyInMilliseconds,omitempty" name:"LatencyInMilliseconds"`
 }
 
+type PlayerLatencyPolicy struct {
+
+	// 任意player允许的最大延迟，单位：毫秒
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MaximumIndividualPlayerLatencyMilliseconds *uint64 `json:"MaximumIndividualPlayerLatencyMilliseconds,omitempty" name:"MaximumIndividualPlayerLatencyMilliseconds"`
+
+	// 放置新GameServerSession时强制实施策略的时间长度，单位：秒
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PolicyDurationSeconds *uint64 `json:"PolicyDurationSeconds,omitempty" name:"PolicyDurationSeconds"`
+}
+
 type PlayerSession struct {
 
 	// 玩家会话创建时间
@@ -763,6 +936,118 @@ type PlayerSession struct {
 	// 玩家会话终止时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TerminationTime *string `json:"TerminationTime,omitempty" name:"TerminationTime"`
+}
+
+type PutScalingPolicyRequest struct {
+	*tchttp.BaseRequest
+
+	// 基于规则的扩缩容配置
+	FleetId *string `json:"FleetId,omitempty" name:"FleetId"`
+
+	// 名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 调整值
+	ScalingAdjustment *int64 `json:"ScalingAdjustment,omitempty" name:"ScalingAdjustment"`
+
+	// 调整类型
+	ScalingAdjustmentType *string `json:"ScalingAdjustmentType,omitempty" name:"ScalingAdjustmentType"`
+
+	// 指标阈值
+	Threshold *float64 `json:"Threshold,omitempty" name:"Threshold"`
+
+	// 比较符
+	ComparisonOperator *string `json:"ComparisonOperator,omitempty" name:"ComparisonOperator"`
+
+	// 时间长度（分钟）
+	EvaluationPeriods *int64 `json:"EvaluationPeriods,omitempty" name:"EvaluationPeriods"`
+
+	// 指标名称
+	MetricName *string `json:"MetricName,omitempty" name:"MetricName"`
+
+	// 策略类型
+	PolicyType *string `json:"PolicyType,omitempty" name:"PolicyType"`
+
+	// 扩缩容配置类型
+	TargetConfiguration *TargetConfiguration `json:"TargetConfiguration,omitempty" name:"TargetConfiguration"`
+}
+
+func (r *PutScalingPolicyRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *PutScalingPolicyRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type PutScalingPolicyResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 规则名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Name *string `json:"Name,omitempty" name:"Name"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *PutScalingPolicyResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *PutScalingPolicyResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ScalingPolicy struct {
+
+	// 服务部署ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FleetId *string `json:"FleetId,omitempty" name:"FleetId"`
+
+	// 名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 保留参数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ScalingAdjustment *string `json:"ScalingAdjustment,omitempty" name:"ScalingAdjustment"`
+
+	// 保留参数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ScalingAdjustmentType *string `json:"ScalingAdjustmentType,omitempty" name:"ScalingAdjustmentType"`
+
+	// 保留参数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ComparisonOperator *string `json:"ComparisonOperator,omitempty" name:"ComparisonOperator"`
+
+	// 保留参数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Threshold *string `json:"Threshold,omitempty" name:"Threshold"`
+
+	// 保留参数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EvaluationPeriods *string `json:"EvaluationPeriods,omitempty" name:"EvaluationPeriods"`
+
+	// 保留参数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MetricName *string `json:"MetricName,omitempty" name:"MetricName"`
+
+	// 策略类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PolicyType *string `json:"PolicyType,omitempty" name:"PolicyType"`
+
+	// 基于规则的配置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TargetConfiguration *TargetConfiguration `json:"TargetConfiguration,omitempty" name:"TargetConfiguration"`
 }
 
 type SearchGameServerSessionsRequest struct {
@@ -835,6 +1120,46 @@ func (r *SearchGameServerSessionsResponse) ToJsonString() string {
 }
 
 func (r *SearchGameServerSessionsResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type SetServerWeightRequest struct {
+	*tchttp.BaseRequest
+
+	// 服务舰队ID
+	FleetId *string `json:"FleetId,omitempty" name:"FleetId"`
+
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 权重
+	Weight *int64 `json:"Weight,omitempty" name:"Weight"`
+}
+
+func (r *SetServerWeightRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *SetServerWeightRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type SetServerWeightResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *SetServerWeightResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *SetServerWeightResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -931,6 +1256,13 @@ func (r *StopGameServerSessionPlacementResponse) ToJsonString() string {
 
 func (r *StopGameServerSessionPlacementResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
+}
+
+type TargetConfiguration struct {
+
+	// 预留存率
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TargetValue *uint64 `json:"TargetValue,omitempty" name:"TargetValue"`
 }
 
 type UpdateGameServerSessionRequest struct {

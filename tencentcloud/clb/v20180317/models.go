@@ -90,13 +90,13 @@ type AssociationItem struct {
 type AutoRewriteRequest struct {
 	*tchttp.BaseRequest
 
-	// 负载均衡实例ID
+	// 负载均衡实例ID。
 	LoadBalancerId *string `json:"LoadBalancerId,omitempty" name:"LoadBalancerId"`
 
-	// HTTPS:443监听器的ID
+	// HTTPS:443监听器的ID。
 	ListenerId *string `json:"ListenerId,omitempty" name:"ListenerId"`
 
-	// HTTPS:443监听器下需要重定向的域名
+	// HTTPS:443监听器下需要重定向的域名，若不填，对HTTPS:443监听器下的所有域名都设置重定向。
 	Domains []*string `json:"Domains,omitempty" name:"Domains" list`
 }
 
@@ -978,6 +978,9 @@ type DeleteRuleRequest struct {
 
 	// 要删除的转发规则的转发路径，已提供LocationIds参数时本参数不生效
 	Url *string `json:"Url,omitempty" name:"Url"`
+
+	// 监听器下必须配置一个默认域名，当需要删除默认域名时，可以指定另一个域名作为新的默认域名。
+	NewDefaultServerDomain *string `json:"NewDefaultServerDomain,omitempty" name:"NewDefaultServerDomain"`
 }
 
 func (r *DeleteRuleRequest) ToJsonString() string {
@@ -2491,6 +2494,9 @@ type ModifyDomainAttributesRequest struct {
 
 	// 是否设为默认域名，注意，一个监听器下只能设置一个默认域名。
 	DefaultServer *bool `json:"DefaultServer,omitempty" name:"DefaultServer"`
+
+	// 监听器下必须配置一个默认域名，若要关闭原默认域名，必须同时指定另一个域名作为新的默认域名。
+	NewDefaultServerDomain *string `json:"NewDefaultServerDomain,omitempty" name:"NewDefaultServerDomain"`
 }
 
 func (r *ModifyDomainAttributesRequest) ToJsonString() string {

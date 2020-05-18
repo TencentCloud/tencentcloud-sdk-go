@@ -1,29 +1,10 @@
 # 本版本更新包含以下内容：
 
-## 内容分发网络(cdn) 版本：2018-06-06
+## 负载均衡(clb) 版本：2018-03-17
 
-### 第 21 次发布
+### 第 24 次发布
 
-发布时间：2020-05-15 08:06:22
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [CreateClsLogTopic](https://cloud.tencent.com/document/api/228/42198)
-
-	* 新增出参：TopicId
-
-
-
-
-## 腾讯云剪(cme) 版本：2019-10-29
-
-### 第 10 次发布
-
-发布时间：2020-05-15 08:03:10
+发布时间：2020-05-18 08:07:07
 
 本次发布包含了以下内容：
 
@@ -31,116 +12,46 @@
 
 修改接口：
 
-* [CreateLink](https://cloud.tencent.com/document/api/1156/43366)
+* [AutoRewrite](https://cloud.tencent.com/document/api/214/34901)
 
-	* <font color="#dd0000">**删除入参**：</font>Tags
+	* <font color="#dd0000">**修改入参**：</font>Domains
 
-* [SearchMaterial](https://cloud.tencent.com/document/api/1156/43240)
+* [DeleteRule](https://cloud.tencent.com/document/api/214/30688)
 
-	* <font color="#dd0000">**删除入参**：</font>Tags
+	* 新增入参：NewDefaultServerDomain
 
+* [ModifyDomainAttributes](https://cloud.tencent.com/document/api/214/38092)
 
-
-
-## 内容安全(cms) 版本：2019-03-21
-
-### 第 9 次发布
-
-发布时间：2020-05-15 08:07:21
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [TextModeration](https://cloud.tencent.com/document/api/669/34502)
-
-	* 新增入参：BizType, DataId, SdkAppId
-
-
-新增数据结构：
-
-* [Coordinate](https://cloud.tencent.com/document/api/669/34506#Coordinate)
-* [CustomResult](https://cloud.tencent.com/document/api/669/34506#CustomResult)
-* [DetailResult](https://cloud.tencent.com/document/api/669/34506#DetailResult)
-* [OCRItem](https://cloud.tencent.com/document/api/669/34506#OCRItem)
-
-修改数据结构：
-
-* [OCRDetect](https://cloud.tencent.com/document/api/669/34506#OCRDetect)
-
-	* 新增成员：Item
-
-* [TextData](https://cloud.tencent.com/document/api/669/34506#TextData)
-
-	* 新增成员：CustomResult, DetailResult, BizType, EvilLabel, Score, Suggestion
+	* 新增入参：NewDefaultServerDomain
 
 
 
 
-## 迁移服务平台(msp) 版本：2018-03-19
-
-### 第 2 次发布
-
-发布时间：2020-05-15 08:13:29
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [RegisterMigrationTask](https://cloud.tencent.com/document/api/659/18599)
-
-	* <font color="#dd0000">**修改入参**：</font>SrcInfo, DstInfo
-
-
-
-
-## 文字识别(ocr) 版本：2018-11-19
-
-### 第 23 次发布
-
-发布时间：2020-05-15 08:13:44
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [MLIDCardOCR](https://cloud.tencent.com/document/api/866/37656)
-
-	* 新增出参：Type
-
-
-
-
-## 智能钛机器学习平台(tione) 版本：2019-10-22
+## 游戏服务器引擎(gse) 版本：2019-11-12
 
 ### 第 5 次发布
 
-发布时间：2020-05-15 08:01:29
+发布时间：2020-05-18 08:02:15
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-修改接口：
+新增接口：
 
-* [CreateNotebookInstance](https://cloud.tencent.com/document/api/851/42527)
+* [DeleteScalingPolicy](https://cloud.tencent.com/document/api/1165/42073)
+* [DescribeGameServerSessionQueues](https://cloud.tencent.com/document/api/1165/44552)
+* [DescribeScalingPolicies](https://cloud.tencent.com/document/api/1165/42071)
+* [PutScalingPolicy](https://cloud.tencent.com/document/api/1165/42070)
+* [SetServerWeight](https://cloud.tencent.com/document/api/1165/44551)
 
-	* 新增入参：ClsAccess
+新增数据结构：
 
-* [DescribeNotebookInstance](https://cloud.tencent.com/document/api/851/42524)
-
-	* 新增出参：ClsAccess
-
-* [UpdateNotebookInstance](https://cloud.tencent.com/document/api/851/42520)
-
-	* 新增入参：ClsAccess
-
+* [GameServerSessionQueue](https://cloud.tencent.com/document/api/1165/42074#GameServerSessionQueue)
+* [GameServerSessionQueueDestination](https://cloud.tencent.com/document/api/1165/42074#GameServerSessionQueueDestination)
+* [PlayerLatencyPolicy](https://cloud.tencent.com/document/api/1165/42074#PlayerLatencyPolicy)
+* [ScalingPolicy](https://cloud.tencent.com/document/api/1165/42074#ScalingPolicy)
+* [TargetConfiguration](https://cloud.tencent.com/document/api/1165/42074#TargetConfiguration)
 
 
 
@@ -6101,6 +6012,29 @@
 
 ## 负载均衡(clb) 版本：2018-03-17
 
+### 第 24 次发布
+
+发布时间：2020-05-18 08:07:07
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [AutoRewrite](https://cloud.tencent.com/document/api/214/34901)
+
+	* <font color="#dd0000">**修改入参**：</font>Domains
+
+* [DeleteRule](https://cloud.tencent.com/document/api/214/30688)
+
+	* 新增入参：NewDefaultServerDomain
+
+* [ModifyDomainAttributes](https://cloud.tencent.com/document/api/214/38092)
+
+	* 新增入参：NewDefaultServerDomain
+
+
 ### 第 23 次发布
 
 发布时间：2020-04-30 08:07:08
@@ -7206,10 +7140,10 @@
 
 新增数据结构：
 
-* [[Coordinate](https://cloud.tencent.com/document/api/669/34506#Coordinate)](https://cloud.tencent.com/document/api/669/34506#[Coordinate](https://cloud.tencent.com/document/api/669/34506#Coordinate))
-* [[CustomResult](https://cloud.tencent.com/document/api/669/34506#CustomResult)](https://cloud.tencent.com/document/api/669/34506#[CustomResult](https://cloud.tencent.com/document/api/669/34506#CustomResult))
-* [[DetailResult](https://cloud.tencent.com/document/api/669/34506#DetailResult)](https://cloud.tencent.com/document/api/669/34506#[DetailResult](https://cloud.tencent.com/document/api/669/34506#DetailResult))
-* [[OCRItem](https://cloud.tencent.com/document/api/669/34506#OCRItem)](https://cloud.tencent.com/document/api/669/34506#[OCRItem](https://cloud.tencent.com/document/api/669/34506#OCRItem))
+* [Coordinate](https://cloud.tencent.com/document/api/669/34506#Coordinate)
+* [CustomResult](https://cloud.tencent.com/document/api/669/34506#CustomResult)
+* [DetailResult](https://cloud.tencent.com/document/api/669/34506#DetailResult)
+* [OCRItem](https://cloud.tencent.com/document/api/669/34506#OCRItem)
 
 修改数据结构：
 
@@ -12130,6 +12064,30 @@
 
 
 ## 游戏服务器引擎(gse) 版本：2019-11-12
+
+### 第 5 次发布
+
+发布时间：2020-05-18 08:02:15
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DeleteScalingPolicy](https://cloud.tencent.com/document/api/1165/42073)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeGameServerSessionQueues](https://cloud.tencent.com/document/api/1165/44552)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeScalingPolicies](https://cloud.tencent.com/document/api/1165/42071)](https://cloud.tencent.com/document/api/#/#)
+* [[PutScalingPolicy](https://cloud.tencent.com/document/api/1165/42070)](https://cloud.tencent.com/document/api/#/#)
+* [[SetServerWeight](https://cloud.tencent.com/document/api/1165/44551)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[GameServerSessionQueue](https://cloud.tencent.com/document/api/1165/42074#GameServerSessionQueue)](https://cloud.tencent.com/document/api/1165/42074#[GameServerSessionQueue](https://cloud.tencent.com/document/api/1165/42074#GameServerSessionQueue))
+* [[GameServerSessionQueueDestination](https://cloud.tencent.com/document/api/1165/42074#GameServerSessionQueueDestination)](https://cloud.tencent.com/document/api/1165/42074#[GameServerSessionQueueDestination](https://cloud.tencent.com/document/api/1165/42074#GameServerSessionQueueDestination))
+* [[PlayerLatencyPolicy](https://cloud.tencent.com/document/api/1165/42074#PlayerLatencyPolicy)](https://cloud.tencent.com/document/api/1165/42074#[PlayerLatencyPolicy](https://cloud.tencent.com/document/api/1165/42074#PlayerLatencyPolicy))
+* [[ScalingPolicy](https://cloud.tencent.com/document/api/1165/42074#ScalingPolicy)](https://cloud.tencent.com/document/api/1165/42074#[ScalingPolicy](https://cloud.tencent.com/document/api/1165/42074#ScalingPolicy))
+* [[TargetConfiguration](https://cloud.tencent.com/document/api/1165/42074#TargetConfiguration)](https://cloud.tencent.com/document/api/1165/42074#[TargetConfiguration](https://cloud.tencent.com/document/api/1165/42074#TargetConfiguration))
 
 ### 第 4 次发布
 

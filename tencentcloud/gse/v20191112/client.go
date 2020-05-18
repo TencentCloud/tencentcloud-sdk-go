@@ -68,6 +68,31 @@ func (c *Client) CreateGameServerSession(request *CreateGameServerSessionRequest
     return
 }
 
+func NewDeleteScalingPolicyRequest() (request *DeleteScalingPolicyRequest) {
+    request = &DeleteScalingPolicyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("gse", APIVersion, "DeleteScalingPolicy")
+    return
+}
+
+func NewDeleteScalingPolicyResponse() (response *DeleteScalingPolicyResponse) {
+    response = &DeleteScalingPolicyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 用于删除扩缩容配置
+func (c *Client) DeleteScalingPolicy(request *DeleteScalingPolicyRequest) (response *DeleteScalingPolicyResponse, err error) {
+    if request == nil {
+        request = NewDeleteScalingPolicyRequest()
+    }
+    response = NewDeleteScalingPolicyResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeGameServerSessionDetailsRequest() (request *DescribeGameServerSessionDetailsRequest) {
     request = &DescribeGameServerSessionDetailsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -114,6 +139,31 @@ func (c *Client) DescribeGameServerSessionPlacement(request *DescribeGameServerS
         request = NewDescribeGameServerSessionPlacementRequest()
     }
     response = NewDescribeGameServerSessionPlacementResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeGameServerSessionQueuesRequest() (request *DescribeGameServerSessionQueuesRequest) {
+    request = &DescribeGameServerSessionQueuesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("gse", APIVersion, "DescribeGameServerSessionQueues")
+    return
+}
+
+func NewDescribeGameServerSessionQueuesResponse() (response *DescribeGameServerSessionQueuesResponse) {
+    response = &DescribeGameServerSessionQueuesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（DescribeGameServerSessionQueues）用于查询游戏服务器会话队列
+func (c *Client) DescribeGameServerSessionQueues(request *DescribeGameServerSessionQueuesRequest) (response *DescribeGameServerSessionQueuesResponse, err error) {
+    if request == nil {
+        request = NewDescribeGameServerSessionQueuesRequest()
+    }
+    response = NewDescribeGameServerSessionQueuesResponse()
     err = c.Send(request, response)
     return
 }
@@ -193,6 +243,31 @@ func (c *Client) DescribePlayerSessions(request *DescribePlayerSessionsRequest) 
     return
 }
 
+func NewDescribeScalingPoliciesRequest() (request *DescribeScalingPoliciesRequest) {
+    request = &DescribeScalingPoliciesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("gse", APIVersion, "DescribeScalingPolicies")
+    return
+}
+
+func NewDescribeScalingPoliciesResponse() (response *DescribeScalingPoliciesResponse) {
+    response = &DescribeScalingPoliciesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 用于查询服务部署的动态扩缩容配置
+func (c *Client) DescribeScalingPolicies(request *DescribeScalingPoliciesRequest) (response *DescribeScalingPoliciesResponse, err error) {
+    if request == nil {
+        request = NewDescribeScalingPoliciesRequest()
+    }
+    response = NewDescribeScalingPoliciesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewGetGameServerSessionLogUrlRequest() (request *GetGameServerSessionLogUrlRequest) {
     request = &GetGameServerSessionLogUrlRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -268,6 +343,31 @@ func (c *Client) JoinGameServerSession(request *JoinGameServerSessionRequest) (r
     return
 }
 
+func NewPutScalingPolicyRequest() (request *PutScalingPolicyRequest) {
+    request = &PutScalingPolicyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("gse", APIVersion, "PutScalingPolicy")
+    return
+}
+
+func NewPutScalingPolicyResponse() (response *PutScalingPolicyResponse) {
+    response = &PutScalingPolicyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 用于设置动态扩缩容配置
+func (c *Client) PutScalingPolicy(request *PutScalingPolicyRequest) (response *PutScalingPolicyResponse, err error) {
+    if request == nil {
+        request = NewPutScalingPolicyRequest()
+    }
+    response = NewPutScalingPolicyResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewSearchGameServerSessionsRequest() (request *SearchGameServerSessionsRequest) {
     request = &SearchGameServerSessionsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -289,6 +389,31 @@ func (c *Client) SearchGameServerSessions(request *SearchGameServerSessionsReque
         request = NewSearchGameServerSessionsRequest()
     }
     response = NewSearchGameServerSessionsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewSetServerWeightRequest() (request *SetServerWeightRequest) {
+    request = &SetServerWeightRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("gse", APIVersion, "SetServerWeight")
+    return
+}
+
+func NewSetServerWeightResponse() (response *SetServerWeightResponse) {
+    response = &SetServerWeightResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 设置服务器权重
+func (c *Client) SetServerWeight(request *SetServerWeightRequest) (response *SetServerWeightResponse, err error) {
+    if request == nil {
+        request = NewSetServerWeightRequest()
+    }
+    response = NewSetServerWeightResponse()
     err = c.Send(request, response)
     return
 }

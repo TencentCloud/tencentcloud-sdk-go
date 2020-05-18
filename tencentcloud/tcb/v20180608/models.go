@@ -581,9 +581,11 @@ type DescribeQuotaDataRequest struct {
 	// <li> StaticFsFluxPkgDay: 当日静态托管流量 </li>
 	// <li> StaticFsFluxPkg: 当月静态托管流量</li>
 	// <li> StaticFsSizePkg: 当月静态托管容量 </li>
+	// <li> TkeCpuUsedPkg: 当月容器托管CPU使用量，单位核 </li>
+	// <li> TkeMemUsedPkg: 当月容器托管内存使用量，单位MB </li>
 	MetricName *string `json:"MetricName,omitempty" name:"MetricName"`
 
-	// 资源ID, 目前仅对云函数相关的指标(FunctionInvocationpkg, FunctionGBspkg, FunctionFluxpkg)有意义, 如果想查询某个云函数的指标则在ResourceId中传入函数名; 如果只想查询整个namespace的指标, 则留空或不传.
+	// 资源ID, 目前仅对云函数、容器托管相关的指标有意义。云函数(FunctionInvocationpkg, FunctionGBspkg, FunctionFluxpkg)、容器托管（服务名称）。如果想查询某个云函数的指标则在ResourceId中传入函数名; 如果只想查询整个namespace的指标, 则留空或不传。
 	ResourceID *string `json:"ResourceID,omitempty" name:"ResourceID"`
 }
 
