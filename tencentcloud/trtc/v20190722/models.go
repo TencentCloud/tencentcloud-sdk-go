@@ -20,6 +20,61 @@ import (
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
+type CreateTroubleInfoRequest struct {
+	*tchttp.BaseRequest
+
+	// 应用的ID
+	SdkAppId *string `json:"SdkAppId,omitempty" name:"SdkAppId"`
+
+	// 房间ID
+	RoomId *string `json:"RoomId,omitempty" name:"RoomId"`
+
+	// 老师用户ID
+	TeacherUserId *string `json:"TeacherUserId,omitempty" name:"TeacherUserId"`
+
+	// 学生用户ID
+	StudentUserId *string `json:"StudentUserId,omitempty" name:"StudentUserId"`
+
+	// 体验异常端（老师或学生）的用户 ID。
+	TroubleUserId *string `json:"TroubleUserId,omitempty" name:"TroubleUserId"`
+
+	// 异常类型
+	TroubleType *uint64 `json:"TroubleType,omitempty" name:"TroubleType"`
+
+	// 异常发生的UNIX 时间戳，单位为秒。
+	TroubleTime *uint64 `json:"TroubleTime,omitempty" name:"TroubleTime"`
+
+	// 异常详情
+	TroubleMsg *string `json:"TroubleMsg,omitempty" name:"TroubleMsg"`
+}
+
+func (r *CreateTroubleInfoRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateTroubleInfoRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateTroubleInfoResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateTroubleInfoResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateTroubleInfoResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeCallDetailRequest struct {
 	*tchttp.BaseRequest
 

@@ -1,10 +1,10 @@
 # 本版本更新包含以下内容：
 
-## 负载均衡(clb) 版本：2018-03-17
+## 企业收付平台(cpdp) 版本：2019-08-20
 
-### 第 24 次发布
+### 第 14 次发布
 
-发布时间：2020-05-18 08:07:07
+发布时间：2020-05-19 08:19:57
 
 本次发布包含了以下内容：
 
@@ -12,26 +12,68 @@
 
 修改接口：
 
-* [AutoRewrite](https://cloud.tencent.com/document/api/214/34901)
+* [BindAcct](https://cloud.tencent.com/document/api/1122/40681)
 
-	* <font color="#dd0000">**修改入参**：</font>Domains
+	* 新增入参：EncryptType
 
-* [DeleteRule](https://cloud.tencent.com/document/api/214/30688)
+* [CreateAcct](https://cloud.tencent.com/document/api/1122/40674)
 
-	* 新增入参：NewDefaultServerDomain
-
-* [ModifyDomainAttributes](https://cloud.tencent.com/document/api/214/38092)
-
-	* 新增入参：NewDefaultServerDomain
+	* 新增入参：SubMerchantKey, SubMerchantPrivateKey, EncryptType, SubAcctNo
 
 
 
 
-## 游戏服务器引擎(gse) 版本：2019-11-12
+## 云服务器(cvm) 版本：2017-03-12
 
-### 第 5 次发布
+### 第 41 次发布
 
-发布时间：2020-05-18 08:02:15
+发布时间：2020-05-19 08:07:40
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [InquiryPriceResizeInstanceDisks](https://cloud.tencent.com/document/api/213/15751)
+
+	* 新增入参：SystemDisk
+
+	* <font color="#dd0000">**修改入参**：</font>DataDisks
+
+* [ResizeInstanceDisks](https://cloud.tencent.com/document/api/213/15731)
+
+	* 新增入参：SystemDisk
+
+	* <font color="#dd0000">**修改入参**：</font>DataDisks
+
+
+
+
+## 边缘计算模块(ecm) 版本：2019-07-19
+
+### 第 10 次发布
+
+发布时间：2020-05-19 08:01:15
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [ResetInstances](https://cloud.tencent.com/document/api/1108/42561)
+
+	* 新增入参：KeepData
+
+
+
+
+## 腾讯知文自然语言处理(nlp) 版本：2019-04-08
+
+### 第 7 次发布
+
+发布时间：2020-05-19 08:13:38
 
 本次发布包含了以下内容：
 
@@ -39,19 +81,27 @@
 
 新增接口：
 
-* [DeleteScalingPolicy](https://cloud.tencent.com/document/api/1165/42073)
-* [DescribeGameServerSessionQueues](https://cloud.tencent.com/document/api/1165/44552)
-* [DescribeScalingPolicies](https://cloud.tencent.com/document/api/1165/42071)
-* [PutScalingPolicy](https://cloud.tencent.com/document/api/1165/42070)
-* [SetServerWeight](https://cloud.tencent.com/document/api/1165/44551)
+* [TextSimilarity](https://cloud.tencent.com/document/api/271/44681)
 
 新增数据结构：
 
-* [GameServerSessionQueue](https://cloud.tencent.com/document/api/1165/42074#GameServerSessionQueue)
-* [GameServerSessionQueueDestination](https://cloud.tencent.com/document/api/1165/42074#GameServerSessionQueueDestination)
-* [PlayerLatencyPolicy](https://cloud.tencent.com/document/api/1165/42074#PlayerLatencyPolicy)
-* [ScalingPolicy](https://cloud.tencent.com/document/api/1165/42074#ScalingPolicy)
-* [TargetConfiguration](https://cloud.tencent.com/document/api/1165/42074#TargetConfiguration)
+* [Similarity](https://cloud.tencent.com/document/api/271/35511#Similarity)
+
+
+
+## 实时音视频(trtc) 版本：2019-07-22
+
+### 第 8 次发布
+
+发布时间：2020-05-19 08:19:33
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CreateTroubleInfo](https://cloud.tencent.com/document/api/647/44683)
 
 
 
@@ -7367,6 +7417,25 @@
 
 ## 企业收付平台(cpdp) 版本：2019-08-20
 
+### 第 14 次发布
+
+发布时间：2020-05-19 08:19:57
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [BindAcct](https://cloud.tencent.com/document/api/1122/40681)
+
+	* 新增入参：EncryptType
+
+* [CreateAcct](https://cloud.tencent.com/document/api/1122/40674)
+
+	* 新增入参：SubMerchantKey, SubMerchantPrivateKey, EncryptType, SubAcctNo
+
+
 ### 第 13 次发布
 
 发布时间：2020-05-12 08:19:41
@@ -7393,7 +7462,7 @@
 
 	* 新增入参：Profile
 
-* [DeleteAgentTaxPaymentInfo](https://cloud.tencent.com/document/api/1122/44276)
+* [DeleteAgentTaxPaymentInfo](https://cloud.tencent.com/document/api/1122/44684)
 
 	* 新增入参：Profile
 
@@ -7417,7 +7486,7 @@
 新增接口：
 
 * [CreateAgentTaxPaymentInfos](https://cloud.tencent.com/document/api/1122/44272)
-* [DeleteAgentTaxPaymentInfo](https://cloud.tencent.com/document/api/1122/44276)
+* [DeleteAgentTaxPaymentInfo](https://cloud.tencent.com/document/api/1122/44684)
 * [DeleteAgentTaxPaymentInfos](https://cloud.tencent.com/document/api/1122/44276)
 * [ModifyAgentTaxPaymentInfo](https://cloud.tencent.com/document/api/1122/44275)
 * [QueryAgentTaxPaymentBatch](https://cloud.tencent.com/document/api/1122/44274)
@@ -7881,6 +7950,29 @@
 
 
 ## 云服务器(cvm) 版本：2017-03-12
+
+### 第 41 次发布
+
+发布时间：2020-05-19 08:07:40
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [InquiryPriceResizeInstanceDisks](https://cloud.tencent.com/document/api/213/15751)
+
+	* 新增入参：SystemDisk
+
+	* <font color="#dd0000">**修改入参**：</font>DataDisks
+
+* [ResizeInstanceDisks](https://cloud.tencent.com/document/api/213/15731)
+
+	* 新增入参：SystemDisk
+
+	* <font color="#dd0000">**修改入参**：</font>DataDisks
+
 
 ### 第 40 次发布
 
@@ -10326,6 +10418,21 @@
 
 ## 边缘计算模块(ecm) 版本：2019-07-19
 
+### 第 10 次发布
+
+发布时间：2020-05-19 08:01:15
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [ResetInstances](https://cloud.tencent.com/document/api/1108/42561)
+
+	* 新增入参：KeepData
+
+
 ### 第 9 次发布
 
 发布时间：2020-04-30 08:01:11
@@ -12075,19 +12182,19 @@
 
 新增接口：
 
-* [[DeleteScalingPolicy](https://cloud.tencent.com/document/api/1165/42073)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeGameServerSessionQueues](https://cloud.tencent.com/document/api/1165/44552)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeScalingPolicies](https://cloud.tencent.com/document/api/1165/42071)](https://cloud.tencent.com/document/api/#/#)
-* [[PutScalingPolicy](https://cloud.tencent.com/document/api/1165/42070)](https://cloud.tencent.com/document/api/#/#)
-* [[SetServerWeight](https://cloud.tencent.com/document/api/1165/44551)](https://cloud.tencent.com/document/api/#/#)
+* [DeleteScalingPolicy](https://cloud.tencent.com/document/api/1165/42073)
+* [DescribeGameServerSessionQueues](https://cloud.tencent.com/document/api/1165/44552)
+* [DescribeScalingPolicies](https://cloud.tencent.com/document/api/1165/42071)
+* [PutScalingPolicy](https://cloud.tencent.com/document/api/1165/42070)
+* [SetServerWeight](https://cloud.tencent.com/document/api/1165/44551)
 
 新增数据结构：
 
-* [[GameServerSessionQueue](https://cloud.tencent.com/document/api/1165/42074#GameServerSessionQueue)](https://cloud.tencent.com/document/api/1165/42074#[GameServerSessionQueue](https://cloud.tencent.com/document/api/1165/42074#GameServerSessionQueue))
-* [[GameServerSessionQueueDestination](https://cloud.tencent.com/document/api/1165/42074#GameServerSessionQueueDestination)](https://cloud.tencent.com/document/api/1165/42074#[GameServerSessionQueueDestination](https://cloud.tencent.com/document/api/1165/42074#GameServerSessionQueueDestination))
-* [[PlayerLatencyPolicy](https://cloud.tencent.com/document/api/1165/42074#PlayerLatencyPolicy)](https://cloud.tencent.com/document/api/1165/42074#[PlayerLatencyPolicy](https://cloud.tencent.com/document/api/1165/42074#PlayerLatencyPolicy))
-* [[ScalingPolicy](https://cloud.tencent.com/document/api/1165/42074#ScalingPolicy)](https://cloud.tencent.com/document/api/1165/42074#[ScalingPolicy](https://cloud.tencent.com/document/api/1165/42074#ScalingPolicy))
-* [[TargetConfiguration](https://cloud.tencent.com/document/api/1165/42074#TargetConfiguration)](https://cloud.tencent.com/document/api/1165/42074#[TargetConfiguration](https://cloud.tencent.com/document/api/1165/42074#TargetConfiguration))
+* [GameServerSessionQueue](https://cloud.tencent.com/document/api/1165/42074#GameServerSessionQueue)
+* [GameServerSessionQueueDestination](https://cloud.tencent.com/document/api/1165/42074#GameServerSessionQueueDestination)
+* [PlayerLatencyPolicy](https://cloud.tencent.com/document/api/1165/42074#PlayerLatencyPolicy)
+* [ScalingPolicy](https://cloud.tencent.com/document/api/1165/42074#ScalingPolicy)
+* [TargetConfiguration](https://cloud.tencent.com/document/api/1165/42074#TargetConfiguration)
 
 ### 第 4 次发布
 
@@ -17113,6 +17220,22 @@
 
 
 ## 腾讯知文自然语言处理(nlp) 版本：2019-04-08
+
+### 第 7 次发布
+
+发布时间：2020-05-19 08:13:38
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[TextSimilarity](https://cloud.tencent.com/document/api/271/44681)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[Similarity](https://cloud.tencent.com/document/api/271/35511#Similarity)](https://cloud.tencent.com/document/api/271/35511#[Similarity](https://cloud.tencent.com/document/api/271/35511#Similarity))
 
 ### 第 6 次发布
 
@@ -23141,6 +23264,18 @@
 
 
 ## 实时音视频(trtc) 版本：2019-07-22
+
+### 第 8 次发布
+
+发布时间：2020-05-19 08:19:33
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[CreateTroubleInfo](https://cloud.tencent.com/document/api/647/44683)](https://cloud.tencent.com/document/api/#/#)
 
 ### 第 7 次发布
 

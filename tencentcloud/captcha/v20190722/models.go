@@ -362,13 +362,13 @@ type DescribeCaptchaResultRequest struct {
 	// 固定填值：9。可在控制台配置不同验证码类型。
 	CaptchaType *uint64 `json:"CaptchaType,omitempty" name:"CaptchaType"`
 
-	// 验证码返回给用户的票据
+	// 前端回调函数返回的用户验证票据
 	Ticket *string `json:"Ticket,omitempty" name:"Ticket"`
 
 	// 用户操作来源的外网 IP
 	UserIp *string `json:"UserIp,omitempty" name:"UserIp"`
 
-	// 验证票据需要的随机字符串
+	// 前端回调函数返回的随机字符串
 	Randstr *string `json:"Randstr,omitempty" name:"Randstr"`
 
 	// 验证码应用ID

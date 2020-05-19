@@ -3024,6 +3024,9 @@ type ResetInstancesRequest struct {
 
 	// 是否开启云监控和云镜服务，未指定时默认开启。
 	EnhancedService *EnhancedService `json:"EnhancedService,omitempty" name:"EnhancedService"`
+
+	// 是否保留数据盘数据，取值"true"/"false"。默认为"true"
+	KeepData *string `json:"KeepData,omitempty" name:"KeepData"`
 }
 
 func (r *ResetInstancesRequest) ToJsonString() string {

@@ -659,6 +659,15 @@ func (r *SimilarWordsResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type Similarity struct {
+
+	// 相似度分数
+	Score *float64 `json:"Score,omitempty" name:"Score"`
+
+	// 目标文本句子
+	Text *string `json:"Text,omitempty" name:"Text"`
+}
+
 type TextClassificationRequest struct {
 	*tchttp.BaseRequest
 
@@ -738,6 +747,47 @@ func (r *TextCorrectionResponse) ToJsonString() string {
 }
 
 func (r *TextCorrectionResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type TextSimilarityRequest struct {
+	*tchttp.BaseRequest
+
+	// 需要与目标句子计算相似度的源句子（仅支持UTF-8格式，不超过500字）
+	SrcText *string `json:"SrcText,omitempty" name:"SrcText"`
+
+	// 需要与源句子计算相似度的一个或多个目标句子（仅支持UTF-8格式，目标句子的数量不超过100个，每个句子不超过500字）
+	// 注意：每成功计算1个目标句子与源句子的相似度算1次调用
+	TargetText []*string `json:"TargetText,omitempty" name:"TargetText" list`
+}
+
+func (r *TextSimilarityRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *TextSimilarityRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type TextSimilarityResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 每个目标句子与源句子的相似度分值，按照分值降序排列
+		Similarity []*Similarity `json:"Similarity,omitempty" name:"Similarity" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *TextSimilarityResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *TextSimilarityResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 

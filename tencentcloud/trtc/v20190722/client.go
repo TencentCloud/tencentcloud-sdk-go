@@ -43,6 +43,31 @@ func NewClient(credential *common.Credential, region string, clientProfile *prof
 }
 
 
+func NewCreateTroubleInfoRequest() (request *CreateTroubleInfoRequest) {
+    request = &CreateTroubleInfoRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("trtc", APIVersion, "CreateTroubleInfo")
+    return
+}
+
+func NewCreateTroubleInfoResponse() (response *CreateTroubleInfoResponse) {
+    response = &CreateTroubleInfoResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 创建异常信息
+func (c *Client) CreateTroubleInfo(request *CreateTroubleInfoRequest) (response *CreateTroubleInfoResponse, err error) {
+    if request == nil {
+        request = NewCreateTroubleInfoRequest()
+    }
+    response = NewCreateTroubleInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeCallDetailRequest() (request *DescribeCallDetailRequest) {
     request = &DescribeCallDetailRequest{
         BaseRequest: &tchttp.BaseRequest{},

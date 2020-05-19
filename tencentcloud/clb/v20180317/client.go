@@ -290,7 +290,7 @@ func NewCreateTargetGroupResponse() (response *CreateTargetGroupResponse) {
     return
 }
 
-// 创建目标组。（目标组功能正在灰度中，需要开通白名单支持）
+// 创建目标组。该功能正在内测中，如需使用，请通过[工单申请](https://console.cloud.tencent.com/workorder/category?level1_id=6&level2_id=163&source=0&data_title=%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%20LB&step=1)。
 func (c *Client) CreateTargetGroup(request *CreateTargetGroupRequest) (response *CreateTargetGroupResponse, err error) {
     if request == nil {
         request = NewCreateTargetGroupRequest()

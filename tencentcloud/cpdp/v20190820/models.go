@@ -690,6 +690,8 @@ type BindAcctRequest struct {
 
 	// 1 – 小额转账验证
 	// 2 – 短信验证
+	// 3 - 一分钱转账验证，无需再调CheckAcct验证绑卡
+	// 4 - 银行四要素验证，无需再调CheckAcct验证绑卡
 	// 每个结算账户每天只能使用一次小额转账验证
 	BindType *int64 `json:"BindType,omitempty" name:"BindType"`
 
@@ -733,6 +735,12 @@ type BindAcctRequest struct {
 	// 超级网银行号，超级网银行号和大小额行号
 	// 二选一
 	EiconBankBranchId *string `json:"EiconBankBranchId,omitempty" name:"EiconBankBranchId"`
+
+	// 敏感信息加密类型:
+	// RSA, rsa非对称加密，使用RSA-PKCS1-v1_5
+	// AES,  aes对称加密，使用AES256-CBC-PCKS7padding
+	// 默认RSA
+	EncryptType *string `json:"EncryptType,omitempty" name:"EncryptType"`
 }
 
 func (r *BindAcctRequest) ToJsonString() string {
@@ -1243,10 +1251,27 @@ type CreateAcctRequest struct {
 	ShortName *string `json:"ShortName,omitempty" name:"ShortName"`
 
 	// 子商户会员类型：
-	// general:普通子账户
-	// merchant:商户子账户
-	// 缺省： general
+	// general: 普通子账户
+	// merchant: 商户子账户
+	// 缺省: general
 	SubMerchantMemberType *string `json:"SubMerchantMemberType,omitempty" name:"SubMerchantMemberType"`
+
+	// 子商户密钥
+	// <敏感信息>加密详见《商户端接口敏感信息加密说明》
+	SubMerchantKey *string `json:"SubMerchantKey,omitempty" name:"SubMerchantKey"`
+
+	// 子商户私钥
+	// <敏感信息>加密详见《商户端接口敏感信息加密说明》
+	SubMerchantPrivateKey *string `json:"SubMerchantPrivateKey,omitempty" name:"SubMerchantPrivateKey"`
+
+	// 敏感信息加密类型:
+	// RSA, rsa非对称加密，使用RSA-PKCS1-v1_5
+	// AES,  aes对称加密，使用AES256-CBC-PCKS7padding
+	// 默认RSA
+	EncryptType *string `json:"EncryptType,omitempty" name:"EncryptType"`
+
+	// 银行生成的子商户账户，已开户的场景需要录入
+	SubAcctNo *string `json:"SubAcctNo,omitempty" name:"SubAcctNo"`
 }
 
 func (r *CreateAcctRequest) ToJsonString() string {
@@ -1265,7 +1290,7 @@ type CreateAcctResponse struct {
 		// 聚鑫计费SubAppId，代表子商户
 		SubAppId *string `json:"SubAppId,omitempty" name:"SubAppId"`
 
-		// 平安银行生成的子商户账户
+		// 银行生成的子商户账户
 		SubAcctNo *string `json:"SubAcctNo,omitempty" name:"SubAcctNo"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
