@@ -2,32 +2,30 @@
 
 ## 企业收付平台(cpdp) 版本：2019-08-20
 
-### 第 14 次发布
+### 第 15 次发布
 
-发布时间：2020-05-19 08:19:57
+发布时间：2020-05-20 08:20:55
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-修改接口：
+新增接口：
 
-* [BindAcct](https://cloud.tencent.com/document/api/1122/40681)
+* [QueryMerchantInfoForManagement](https://cloud.tencent.com/document/api/1122/43185)
 
-	* 新增入参：EncryptType
+新增数据结构：
 
-* [CreateAcct](https://cloud.tencent.com/document/api/1122/40674)
-
-	* 新增入参：SubMerchantKey, SubMerchantPrivateKey, EncryptType, SubAcctNo
-
+* [MerchantManagementList](https://cloud.tencent.com/document/api/1122/40683#MerchantManagementList)
+* [MerchantManagementResult](https://cloud.tencent.com/document/api/1122/40683#MerchantManagementResult)
 
 
 
 ## 云服务器(cvm) 版本：2017-03-12
 
-### 第 41 次发布
+### 第 42 次发布
 
-发布时间：2020-05-19 08:07:40
+发布时间：2020-05-20 08:08:24
 
 本次发布包含了以下内容：
 
@@ -37,43 +35,20 @@
 
 * [InquiryPriceResizeInstanceDisks](https://cloud.tencent.com/document/api/213/15751)
 
-	* 新增入参：SystemDisk
-
-	* <font color="#dd0000">**修改入参**：</font>DataDisks
+	* <font color="#dd0000">**删除入参**：</font>SystemDisk
 
 * [ResizeInstanceDisks](https://cloud.tencent.com/document/api/213/15731)
 
-	* 新增入参：SystemDisk
-
-	* <font color="#dd0000">**修改入参**：</font>DataDisks
+	* <font color="#dd0000">**删除入参**：</font>SystemDisk
 
 
 
 
-## 边缘计算模块(ecm) 版本：2019-07-19
+## 人脸融合(facefusion) 版本：2018-12-01
 
-### 第 10 次发布
+### 第 4 次发布
 
-发布时间：2020-05-19 08:01:15
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [ResetInstances](https://cloud.tencent.com/document/api/1108/42561)
-
-	* 新增入参：KeepData
-
-
-
-
-## 腾讯知文自然语言处理(nlp) 版本：2019-04-08
-
-### 第 7 次发布
-
-发布时间：2020-05-19 08:13:38
+发布时间：2020-05-20 08:10:36
 
 本次发布包含了以下内容：
 
@@ -81,19 +56,21 @@
 
 新增接口：
 
-* [TextSimilarity](https://cloud.tencent.com/document/api/271/44681)
+* [DescribeMaterialList](https://cloud.tencent.com/document/api/670/44746)
 
 新增数据结构：
 
-* [Similarity](https://cloud.tencent.com/document/api/271/35511#Similarity)
+* [FaceInfo](https://cloud.tencent.com/document/api/670/31062#FaceInfo)
+* [MaterialFaceList](https://cloud.tencent.com/document/api/670/31062#MaterialFaceList)
+* [PublicMaterialInfos](https://cloud.tencent.com/document/api/670/31062#PublicMaterialInfos)
 
 
 
-## 实时音视频(trtc) 版本：2019-07-22
+## 云开发(tcb) 版本：2018-06-08
 
 ### 第 8 次发布
 
-发布时间：2020-05-19 08:19:33
+发布时间：2020-05-20 08:16:58
 
 本次发布包含了以下内容：
 
@@ -101,7 +78,16 @@
 
 新增接口：
 
-* [CreateTroubleInfo](https://cloud.tencent.com/document/api/647/44683)
+* [DescribeEndUserLoginStatistic](https://cloud.tencent.com/document/api/876/44749)
+* [DescribeEndUserStatistic](https://cloud.tencent.com/document/api/876/44748)
+* [DescribeExtraPkgBillingInfo](https://cloud.tencent.com/document/api/876/44747)
+
+新增数据结构：
+
+* [EnvBillingInfoItem](https://cloud.tencent.com/document/api/876/34822#EnvBillingInfoItem)
+* [LoginStatistic](https://cloud.tencent.com/document/api/876/34822#LoginStatistic)
+* [OrderInfo](https://cloud.tencent.com/document/api/876/34822#OrderInfo)
+* [PlatformStatistic](https://cloud.tencent.com/document/api/876/34822#PlatformStatistic)
 
 
 
@@ -7417,6 +7403,23 @@
 
 ## 企业收付平台(cpdp) 版本：2019-08-20
 
+### 第 15 次发布
+
+发布时间：2020-05-20 08:20:55
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[QueryMerchantInfoForManagement](https://cloud.tencent.com/document/api/1122/43185)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[MerchantManagementList](https://cloud.tencent.com/document/api/1122/40683#MerchantManagementList)](https://cloud.tencent.com/document/api/1122/40683#[MerchantManagementList](https://cloud.tencent.com/document/api/1122/40683#MerchantManagementList))
+* [[MerchantManagementResult](https://cloud.tencent.com/document/api/1122/40683#MerchantManagementResult)](https://cloud.tencent.com/document/api/1122/40683#[MerchantManagementResult](https://cloud.tencent.com/document/api/1122/40683#MerchantManagementResult))
+
 ### 第 14 次发布
 
 发布时间：2020-05-19 08:19:57
@@ -7950,6 +7953,25 @@
 
 
 ## 云服务器(cvm) 版本：2017-03-12
+
+### 第 42 次发布
+
+发布时间：2020-05-20 08:08:24
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [InquiryPriceResizeInstanceDisks](https://cloud.tencent.com/document/api/213/15751)
+
+	* <font color="#dd0000">**删除入参**：</font>SystemDisk
+
+* [ResizeInstanceDisks](https://cloud.tencent.com/document/api/213/15731)
+
+	* <font color="#dd0000">**删除入参**：</font>SystemDisk
+
 
 ### 第 41 次发布
 
@@ -11278,6 +11300,24 @@
 
 
 ## 人脸融合(facefusion) 版本：2018-12-01
+
+### 第 4 次发布
+
+发布时间：2020-05-20 08:10:36
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeMaterialList](https://cloud.tencent.com/document/api/670/44746)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[FaceInfo](https://cloud.tencent.com/document/api/670/31062#FaceInfo)](https://cloud.tencent.com/document/api/670/31062#[FaceInfo](https://cloud.tencent.com/document/api/670/31062#FaceInfo))
+* [[MaterialFaceList](https://cloud.tencent.com/document/api/670/31062#MaterialFaceList)](https://cloud.tencent.com/document/api/670/31062#[MaterialFaceList](https://cloud.tencent.com/document/api/670/31062#MaterialFaceList))
+* [[PublicMaterialInfos](https://cloud.tencent.com/document/api/670/31062#PublicMaterialInfos)](https://cloud.tencent.com/document/api/670/31062#[PublicMaterialInfos](https://cloud.tencent.com/document/api/670/31062#PublicMaterialInfos))
 
 ### 第 3 次发布
 
@@ -17231,11 +17271,11 @@
 
 新增接口：
 
-* [[TextSimilarity](https://cloud.tencent.com/document/api/271/44681)](https://cloud.tencent.com/document/api/#/#)
+* [TextSimilarity](https://cloud.tencent.com/document/api/271/44681)
 
 新增数据结构：
 
-* [[Similarity](https://cloud.tencent.com/document/api/271/35511#Similarity)](https://cloud.tencent.com/document/api/271/35511#[Similarity](https://cloud.tencent.com/document/api/271/35511#Similarity))
+* [Similarity](https://cloud.tencent.com/document/api/271/35511#Similarity)
 
 ### 第 6 次发布
 
@@ -20926,6 +20966,27 @@
 
 ## 云开发(tcb) 版本：2018-06-08
 
+### 第 8 次发布
+
+发布时间：2020-05-20 08:16:58
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeEndUserLoginStatistic](https://cloud.tencent.com/document/api/876/44749)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeEndUserStatistic](https://cloud.tencent.com/document/api/876/44748)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeExtraPkgBillingInfo](https://cloud.tencent.com/document/api/876/44747)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[EnvBillingInfoItem](https://cloud.tencent.com/document/api/876/34822#EnvBillingInfoItem)](https://cloud.tencent.com/document/api/876/34822#[EnvBillingInfoItem](https://cloud.tencent.com/document/api/876/34822#EnvBillingInfoItem))
+* [[LoginStatistic](https://cloud.tencent.com/document/api/876/34822#LoginStatistic)](https://cloud.tencent.com/document/api/876/34822#[LoginStatistic](https://cloud.tencent.com/document/api/876/34822#LoginStatistic))
+* [[OrderInfo](https://cloud.tencent.com/document/api/876/34822#OrderInfo)](https://cloud.tencent.com/document/api/876/34822#[OrderInfo](https://cloud.tencent.com/document/api/876/34822#OrderInfo))
+* [[PlatformStatistic](https://cloud.tencent.com/document/api/876/34822#PlatformStatistic)](https://cloud.tencent.com/document/api/876/34822#[PlatformStatistic](https://cloud.tencent.com/document/api/876/34822#PlatformStatistic))
+
 ### 第 7 次发布
 
 发布时间：2020-04-27 08:15:37
@@ -23275,7 +23336,7 @@
 
 新增接口：
 
-* [[CreateTroubleInfo](https://cloud.tencent.com/document/api/647/44683)](https://cloud.tencent.com/document/api/#/#)
+* [CreateTroubleInfo](https://cloud.tencent.com/document/api/647/44683)
 
 ### 第 7 次发布
 

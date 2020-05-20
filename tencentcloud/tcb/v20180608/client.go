@@ -243,6 +243,56 @@ func (c *Client) DescribeDatabaseACL(request *DescribeDatabaseACLRequest) (respo
     return
 }
 
+func NewDescribeEndUserLoginStatisticRequest() (request *DescribeEndUserLoginStatisticRequest) {
+    request = &DescribeEndUserLoginStatisticRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tcb", APIVersion, "DescribeEndUserLoginStatistic")
+    return
+}
+
+func NewDescribeEndUserLoginStatisticResponse() (response *DescribeEndUserLoginStatisticResponse) {
+    response = &DescribeEndUserLoginStatisticResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 获取环境终端用户新增与登录信息
+func (c *Client) DescribeEndUserLoginStatistic(request *DescribeEndUserLoginStatisticRequest) (response *DescribeEndUserLoginStatisticResponse, err error) {
+    if request == nil {
+        request = NewDescribeEndUserLoginStatisticRequest()
+    }
+    response = NewDescribeEndUserLoginStatisticResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeEndUserStatisticRequest() (request *DescribeEndUserStatisticRequest) {
+    request = &DescribeEndUserStatisticRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tcb", APIVersion, "DescribeEndUserStatistic")
+    return
+}
+
+func NewDescribeEndUserStatisticResponse() (response *DescribeEndUserStatisticResponse) {
+    response = &DescribeEndUserStatisticResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 获取终端用户总量与平台分布情况
+func (c *Client) DescribeEndUserStatistic(request *DescribeEndUserStatisticRequest) (response *DescribeEndUserStatisticResponse, err error) {
+    if request == nil {
+        request = NewDescribeEndUserStatisticRequest()
+    }
+    response = NewDescribeEndUserStatisticResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeEndUsersRequest() (request *DescribeEndUsersRequest) {
     request = &DescribeEndUsersRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -339,6 +389,31 @@ func (c *Client) DescribeEnvs(request *DescribeEnvsRequest) (response *DescribeE
         request = NewDescribeEnvsRequest()
     }
     response = NewDescribeEnvsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeExtraPkgBillingInfoRequest() (request *DescribeExtraPkgBillingInfoRequest) {
+    request = &DescribeExtraPkgBillingInfoRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tcb", APIVersion, "DescribeExtraPkgBillingInfo")
+    return
+}
+
+func NewDescribeExtraPkgBillingInfoResponse() (response *DescribeExtraPkgBillingInfoResponse) {
+    response = &DescribeExtraPkgBillingInfoResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 获取增值包计费相关信息
+func (c *Client) DescribeExtraPkgBillingInfo(request *DescribeExtraPkgBillingInfoRequest) (response *DescribeExtraPkgBillingInfoResponse, err error) {
+    if request == nil {
+        request = NewDescribeExtraPkgBillingInfoRequest()
+    }
+    response = NewDescribeExtraPkgBillingInfoResponse()
     err = c.Send(request, response)
     return
 }

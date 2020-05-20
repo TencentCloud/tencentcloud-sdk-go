@@ -2017,6 +2017,30 @@ type FileItem struct {
 	DrawCode *string `json:"DrawCode,omitempty" name:"DrawCode"`
 }
 
+type MerchantManagementList struct {
+
+	// 企业名称。
+	TaxpayerName *string `json:"TaxpayerName,omitempty" name:"TaxpayerName"`
+
+	// 纳税人识别号(税号)	。
+	TaxpayerNum *string `json:"TaxpayerNum,omitempty" name:"TaxpayerNum"`
+
+	// 请求流水号。
+	SerialNo *string `json:"SerialNo,omitempty" name:"SerialNo"`
+
+	// 开票系统ID
+	InvoicePlatformId *int64 `json:"InvoicePlatformId,omitempty" name:"InvoicePlatformId"`
+}
+
+type MerchantManagementResult struct {
+
+	// 总数。
+	Total *int64 `json:"Total,omitempty" name:"Total"`
+
+	// 商户列表。
+	List []*MerchantManagementList `json:"List,omitempty" name:"List" list`
+}
+
 type ModifyAgentTaxPaymentInfoRequest struct {
 	*tchttp.BaseRequest
 
@@ -3422,6 +3446,53 @@ type QueryMerchantBalanceResult struct {
 
 	// 对接账户余额查询数据
 	Data *QueryMerchantBalanceData `json:"Data,omitempty" name:"Data"`
+}
+
+type QueryMerchantInfoForManagementRequest struct {
+	*tchttp.BaseRequest
+
+	// 开票平台ID
+	InvoicePlatformId *int64 `json:"InvoicePlatformId,omitempty" name:"InvoicePlatformId"`
+
+	// 页码
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 页大小
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 接入环境。沙箱环境填sandbox。
+	Profile *string `json:"Profile,omitempty" name:"Profile"`
+}
+
+func (r *QueryMerchantInfoForManagementRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *QueryMerchantInfoForManagementRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type QueryMerchantInfoForManagementResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 商户结果
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Result *MerchantManagementResult `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *QueryMerchantInfoForManagementResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *QueryMerchantInfoForManagementResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
 }
 
 type QueryOrderOutOrderList struct {

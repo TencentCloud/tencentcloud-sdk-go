@@ -20,6 +20,55 @@ import (
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
+type DescribeMaterialListRequest struct {
+	*tchttp.BaseRequest
+
+	// 活动Id
+	ActivityId *int64 `json:"ActivityId,omitempty" name:"ActivityId"`
+
+	// 素材Id
+	MaterialId *string `json:"MaterialId,omitempty" name:"MaterialId"`
+
+	// 每次拉取条数
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 偏移量
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+}
+
+func (r *DescribeMaterialListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeMaterialListRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeMaterialListResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 素材列表数据
+		MaterialInfos []*PublicMaterialInfos `json:"MaterialInfos,omitempty" name:"MaterialInfos" list`
+
+		// 素材条数
+		Count *int64 `json:"Count,omitempty" name:"Count"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeMaterialListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeMaterialListResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type FaceFusionRequest struct {
 	*tchttp.BaseRequest
 
@@ -74,6 +123,21 @@ func (r *FaceFusionResponse) ToJsonString() string {
 
 func (r *FaceFusionResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
+}
+
+type FaceInfo struct {
+
+	// 人脸框的横坐标
+	X *int64 `json:"X,omitempty" name:"X"`
+
+	// 人脸框的纵坐标
+	Y *int64 `json:"Y,omitempty" name:"Y"`
+
+	// 人脸框的宽度
+	Width *int64 `json:"Width,omitempty" name:"Width"`
+
+	// 人脸框的高度
+	Height *int64 `json:"Height,omitempty" name:"Height"`
 }
 
 type FaceRect struct {
@@ -195,6 +259,15 @@ type FuseFaceReviewResult struct {
 	DetailSet []*FuseFaceReviewDetail `json:"DetailSet,omitempty" name:"DetailSet" list`
 }
 
+type MaterialFaceList struct {
+
+	// 人脸序号
+	FaceId *string `json:"FaceId,omitempty" name:"FaceId"`
+
+	// 人脸框信息
+	FaceInfo *FaceInfo `json:"FaceInfo,omitempty" name:"FaceInfo"`
+}
+
 type MergeInfo struct {
 
 	// 输入图片base64
@@ -208,4 +281,37 @@ type MergeInfo struct {
 
 	// 控制台上传的素材人脸ID
 	TemplateFaceID *string `json:"TemplateFaceID,omitempty" name:"TemplateFaceID"`
+}
+
+type PublicMaterialInfos struct {
+
+	// 素材Id
+	MaterialId *string `json:"MaterialId,omitempty" name:"MaterialId"`
+
+	// 素材状态
+	MaterialStatus *int64 `json:"MaterialStatus,omitempty" name:"MaterialStatus"`
+
+	// 脸型参数P图
+	BlendParamPtu *int64 `json:"BlendParamPtu,omitempty" name:"BlendParamPtu"`
+
+	// 五官参数P图
+	PositionParamPtu *int64 `json:"PositionParamPtu,omitempty" name:"PositionParamPtu"`
+
+	// 脸型参数优图
+	BlendParamYoutu *int64 `json:"BlendParamYoutu,omitempty" name:"BlendParamYoutu"`
+
+	// 五官参数优图
+	PositionParamYoutu *int64 `json:"PositionParamYoutu,omitempty" name:"PositionParamYoutu"`
+
+	// 素材COS地址
+	Url *string `json:"Url,omitempty" name:"Url"`
+
+	// 创建时间
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 修改时间
+	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
+
+	// 人脸信息
+	MaterialFaceList []*MaterialFaceList `json:"MaterialFaceList,omitempty" name:"MaterialFaceList" list`
 }

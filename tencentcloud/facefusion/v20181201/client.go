@@ -43,6 +43,31 @@ func NewClient(credential *common.Credential, region string, clientProfile *prof
 }
 
 
+func NewDescribeMaterialListRequest() (request *DescribeMaterialListRequest) {
+    request = &DescribeMaterialListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("facefusion", APIVersion, "DescribeMaterialList")
+    return
+}
+
+func NewDescribeMaterialListResponse() (response *DescribeMaterialListResponse) {
+    response = &DescribeMaterialListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 通常通过腾讯云人脸融合的控制台可以查看到素材相关的参数数据，可以满足使用。本接口返回活动的素材数据，包括素材状态等。用于用户通过Api查看素材相关数据，方便使用。
+func (c *Client) DescribeMaterialList(request *DescribeMaterialListRequest) (response *DescribeMaterialListResponse, err error) {
+    if request == nil {
+        request = NewDescribeMaterialListRequest()
+    }
+    response = NewDescribeMaterialListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewFaceFusionRequest() (request *FaceFusionRequest) {
     request = &FaceFusionRequest{
         BaseRequest: &tchttp.BaseRequest{},

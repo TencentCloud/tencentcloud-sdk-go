@@ -369,6 +369,90 @@ func (r *DescribeDatabaseACLResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeEndUserLoginStatisticRequest struct {
+	*tchttp.BaseRequest
+
+	// 环境id
+	EnvId *string `json:"EnvId,omitempty" name:"EnvId"`
+
+	// 终端用户来源
+	// <li> qcloud </li>
+	// <li>miniapp</li>
+	Source *string `json:"Source,omitempty" name:"Source"`
+}
+
+func (r *DescribeEndUserLoginStatisticRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeEndUserLoginStatisticRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeEndUserLoginStatisticResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 环境终端用户新增与登录统计
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		LoginStatistics []*LoginStatistic `json:"LoginStatistics,omitempty" name:"LoginStatistics" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeEndUserLoginStatisticResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeEndUserLoginStatisticResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeEndUserStatisticRequest struct {
+	*tchttp.BaseRequest
+
+	// 环境id
+	EnvId *string `json:"EnvId,omitempty" name:"EnvId"`
+}
+
+func (r *DescribeEndUserStatisticRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeEndUserStatisticRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeEndUserStatisticResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 终端用户各平台统计
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		PlatformStatistics []*PlatformStatistic `json:"PlatformStatistics,omitempty" name:"PlatformStatistics" list`
+
+		// 终端用户总数
+		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeEndUserStatisticResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeEndUserStatisticResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeEndUsersRequest struct {
 	*tchttp.BaseRequest
 
@@ -550,6 +634,46 @@ func (r *DescribeEnvsResponse) ToJsonString() string {
 }
 
 func (r *DescribeEnvsResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeExtraPkgBillingInfoRequest struct {
+	*tchttp.BaseRequest
+
+	// 已购买增值包的环境ID
+	EnvId *string `json:"EnvId,omitempty" name:"EnvId"`
+}
+
+func (r *DescribeExtraPkgBillingInfoRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeExtraPkgBillingInfoRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeExtraPkgBillingInfoResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 增值包计费信息列表
+		EnvInfoList []*EnvBillingInfoItem `json:"EnvInfoList,omitempty" name:"EnvInfoList" list`
+
+		// 增值包数目
+		Total *uint64 `json:"Total,omitempty" name:"Total"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeExtraPkgBillingInfoResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeExtraPkgBillingInfoResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -738,6 +862,57 @@ type EndUserInfo struct {
 	IsDisabled *bool `json:"IsDisabled,omitempty" name:"IsDisabled"`
 }
 
+type EnvBillingInfoItem struct {
+
+	// 环境ID
+	EnvId *string `json:"EnvId,omitempty" name:"EnvId"`
+
+	// tcb产品套餐ID，参考DescribePackages接口的返回值。
+	PackageId *string `json:"PackageId,omitempty" name:"PackageId"`
+
+	// 自动续费标记
+	IsAutoRenew *bool `json:"IsAutoRenew,omitempty" name:"IsAutoRenew"`
+
+	// 状态。包含以下取值：
+	// <li> NORMAL：正常</li>
+	// <li> ISOLATE：隔离</li>
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 支付方式。包含以下取值：
+	// <li> PREPAYMENT：预付费</li>
+	// <li> POSTPAID：后付费</li>
+	PayMode *string `json:"PayMode,omitempty" name:"PayMode"`
+
+	// 隔离时间，最近一次隔离的时间
+	IsolatedTime *string `json:"IsolatedTime,omitempty" name:"IsolatedTime"`
+
+	// 过期时间，套餐即将到期的时间
+	ExpireTime *string `json:"ExpireTime,omitempty" name:"ExpireTime"`
+
+	// 创建时间，第一次接入计费方案的时间。
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 更新时间，计费信息最近一次更新的时间。
+	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
+
+	// true表示从未升级过付费版。
+	IsAlwaysFree *bool `json:"IsAlwaysFree,omitempty" name:"IsAlwaysFree"`
+
+	// 付费渠道。
+	// <li> miniapp：小程序</li>
+	// <li> qcloud：腾讯云</li>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PaymentChannel *string `json:"PaymentChannel,omitempty" name:"PaymentChannel"`
+
+	// 最新的订单信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OrderInfo *OrderInfo `json:"OrderInfo,omitempty" name:"OrderInfo"`
+
+	// 免费配额信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FreeQuota *string `json:"FreeQuota,omitempty" name:"FreeQuota"`
+}
+
 type EnvInfo struct {
 
 	// 账户下该环境唯一标识
@@ -820,6 +995,25 @@ type LogServiceInfo struct {
 	Region *string `json:"Region,omitempty" name:"Region"`
 }
 
+type LoginStatistic struct {
+
+	// 统计类型 新增NEWUSER 和登录 LOGIN
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StatisticalType *string `json:"StatisticalType,omitempty" name:"StatisticalType"`
+
+	// 统计周期：日DAY，周WEEK，月MONTH
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StatisticalCycle *string `json:"StatisticalCycle,omitempty" name:"StatisticalCycle"`
+
+	// 统计总量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Count *uint64 `json:"Count,omitempty" name:"Count"`
+
+	// 更新时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
+}
+
 type ModifyDatabaseACLRequest struct {
 	*tchttp.BaseRequest
 
@@ -899,6 +1093,58 @@ func (r *ModifyEnvResponse) ToJsonString() string {
 
 func (r *ModifyEnvResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
+}
+
+type OrderInfo struct {
+
+	// 订单号
+	TranId *string `json:"TranId,omitempty" name:"TranId"`
+
+	// 订单要切换的套餐ID
+	PackageId *string `json:"PackageId,omitempty" name:"PackageId"`
+
+	// 订单类型
+	// <li>1 购买</li>
+	// <li>2 续费</li>
+	// <li>3 变配</li>
+	TranType *string `json:"TranType,omitempty" name:"TranType"`
+
+	// 订单状态。
+	// <li>1未支付</li>
+	// <li>2 支付中</li>
+	// <li>3 发货中</li>
+	// <li>4 发货成功</li>
+	// <li>5 发货失败</li>
+	// <li>6 已退款</li>
+	// <li>7 已取消</li>
+	// <li>100 已删除</li>
+	TranStatus *string `json:"TranStatus,omitempty" name:"TranStatus"`
+
+	// 订单更新时间
+	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
+
+	// 订单创建时间
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 付费模式.
+	// <li>prepayment 预付费</li>
+	// <li>postpaid 后付费</li>
+	PayMode *string `json:"PayMode,omitempty" name:"PayMode"`
+}
+
+type PlatformStatistic struct {
+
+	// 终端用户从属平台
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Platform *string `json:"Platform,omitempty" name:"Platform"`
+
+	// 平台终端用户数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Count *uint64 `json:"Count,omitempty" name:"Count"`
+
+	// 更新时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
 }
 
 type PostpayEnvQuota struct {

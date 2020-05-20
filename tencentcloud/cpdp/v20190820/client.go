@@ -1052,6 +1052,31 @@ func (c *Client) QueryMerchantBalance(request *QueryMerchantBalanceRequest) (res
     return
 }
 
+func NewQueryMerchantInfoForManagementRequest() (request *QueryMerchantInfoForManagementRequest) {
+    request = &QueryMerchantInfoForManagementRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cpdp", APIVersion, "QueryMerchantInfoForManagement")
+    return
+}
+
+func NewQueryMerchantInfoForManagementResponse() (response *QueryMerchantInfoForManagementResponse) {
+    response = &QueryMerchantInfoForManagementResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 智慧零售-查询管理端商户
+func (c *Client) QueryMerchantInfoForManagement(request *QueryMerchantInfoForManagementRequest) (response *QueryMerchantInfoForManagementResponse, err error) {
+    if request == nil {
+        request = NewQueryMerchantInfoForManagementRequest()
+    }
+    response = NewQueryMerchantInfoForManagementResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewQueryOrderRequest() (request *QueryOrderRequest) {
     request = &QueryOrderRequest{
         BaseRequest: &tchttp.BaseRequest{},

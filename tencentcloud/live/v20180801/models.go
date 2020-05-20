@@ -4428,7 +4428,7 @@ type DropLiveStreamRequest struct {
 	// 流名称。
 	StreamName *string `json:"StreamName,omitempty" name:"StreamName"`
 
-	// 您的加速域名。
+	// 您的推流域名。
 	DomainName *string `json:"DomainName,omitempty" name:"DomainName"`
 
 	// 推流路径，与推流和播放地址中的AppName保持一致，默认为 live。
