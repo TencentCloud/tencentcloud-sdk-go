@@ -1,31 +1,29 @@
 # 本版本更新包含以下内容：
 
-## 企业收付平台(cpdp) 版本：2019-08-20
+## 内容分发网络(cdn) 版本：2018-06-06
 
-### 第 15 次发布
+### 第 22 次发布
 
-发布时间：2020-05-20 08:20:55
+发布时间：2020-05-21 08:06:19
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-新增接口：
+修改数据结构：
 
-* [QueryMerchantInfoForManagement](https://cloud.tencent.com/document/api/1122/43185)
+* [Sort](https://cloud.tencent.com/document/api/228/30987#Sort)
 
-新增数据结构：
-
-* [MerchantManagementList](https://cloud.tencent.com/document/api/1122/40683#MerchantManagementList)
-* [MerchantManagementResult](https://cloud.tencent.com/document/api/1122/40683#MerchantManagementResult)
+	* <font color="#dd0000">**修改成员**：</font>Key
 
 
 
-## 云服务器(cvm) 版本：2017-03-12
 
-### 第 42 次发布
+## 大禹网络安全(dayu) 版本：2018-07-09
 
-发布时间：2020-05-20 08:08:24
+### 第 15 次发布
+
+发布时间：2020-05-21 08:07:56
 
 本次发布包含了以下内容：
 
@@ -33,61 +31,29 @@
 
 修改接口：
 
-* [InquiryPriceResizeInstanceDisks](https://cloud.tencent.com/document/api/213/15751)
+* [ModifyCCThreshold](https://cloud.tencent.com/document/api/1021/39518)
 
-	* <font color="#dd0000">**删除入参**：</font>SystemDisk
-
-* [ResizeInstanceDisks](https://cloud.tencent.com/document/api/213/15731)
-
-	* <font color="#dd0000">**删除入参**：</font>SystemDisk
+	* 新增入参：Domain
 
 
 
 
-## 人脸融合(facefusion) 版本：2018-12-01
+## 物联卡(ic) 版本：2019-03-07
 
-### 第 4 次发布
+### 第 2 次发布
 
-发布时间：2020-05-20 08:10:36
+发布时间：2020-05-21 08:10:52
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-新增接口：
+修改数据结构：
 
-* [DescribeMaterialList](https://cloud.tencent.com/document/api/670/44746)
+* [CardInfo](https://cloud.tencent.com/document/api/636/33881#CardInfo)
 
-新增数据结构：
+	* 新增成员：CertificationState
 
-* [FaceInfo](https://cloud.tencent.com/document/api/670/31062#FaceInfo)
-* [MaterialFaceList](https://cloud.tencent.com/document/api/670/31062#MaterialFaceList)
-* [PublicMaterialInfos](https://cloud.tencent.com/document/api/670/31062#PublicMaterialInfos)
-
-
-
-## 云开发(tcb) 版本：2018-06-08
-
-### 第 8 次发布
-
-发布时间：2020-05-20 08:16:58
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [DescribeEndUserLoginStatistic](https://cloud.tencent.com/document/api/876/44749)
-* [DescribeEndUserStatistic](https://cloud.tencent.com/document/api/876/44748)
-* [DescribeExtraPkgBillingInfo](https://cloud.tencent.com/document/api/876/44747)
-
-新增数据结构：
-
-* [EnvBillingInfoItem](https://cloud.tencent.com/document/api/876/34822#EnvBillingInfoItem)
-* [LoginStatistic](https://cloud.tencent.com/document/api/876/34822#LoginStatistic)
-* [OrderInfo](https://cloud.tencent.com/document/api/876/34822#OrderInfo)
-* [PlatformStatistic](https://cloud.tencent.com/document/api/876/34822#PlatformStatistic)
 
 
 
@@ -5135,6 +5101,21 @@
 
 ## 内容分发网络(cdn) 版本：2018-06-06
 
+### 第 22 次发布
+
+发布时间：2020-05-21 08:06:19
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [Sort](https://cloud.tencent.com/document/api/228/30987#Sort)
+
+	* <font color="#dd0000">**修改成员**：</font>Key
+
+
 ### 第 21 次发布
 
 发布时间：2020-05-15 08:06:22
@@ -7413,12 +7394,12 @@
 
 新增接口：
 
-* [[QueryMerchantInfoForManagement](https://cloud.tencent.com/document/api/1122/43185)](https://cloud.tencent.com/document/api/#/#)
+* [QueryMerchantInfoForManagement](https://cloud.tencent.com/document/api/1122/43185)
 
 新增数据结构：
 
-* [[MerchantManagementList](https://cloud.tencent.com/document/api/1122/40683#MerchantManagementList)](https://cloud.tencent.com/document/api/1122/40683#[MerchantManagementList](https://cloud.tencent.com/document/api/1122/40683#MerchantManagementList))
-* [[MerchantManagementResult](https://cloud.tencent.com/document/api/1122/40683#MerchantManagementResult)](https://cloud.tencent.com/document/api/1122/40683#[MerchantManagementResult](https://cloud.tencent.com/document/api/1122/40683#MerchantManagementResult))
+* [MerchantManagementList](https://cloud.tencent.com/document/api/1122/40683#MerchantManagementList)
+* [MerchantManagementResult](https://cloud.tencent.com/document/api/1122/40683#MerchantManagementResult)
 
 ### 第 14 次发布
 
@@ -9025,6 +9006,21 @@
 
 
 ## 大禹网络安全(dayu) 版本：2018-07-09
+
+### 第 15 次发布
+
+发布时间：2020-05-21 08:07:56
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [ModifyCCThreshold](https://cloud.tencent.com/document/api/1021/39518)
+
+	* 新增入参：Domain
+
 
 ### 第 14 次发布
 
@@ -11311,13 +11307,13 @@
 
 新增接口：
 
-* [[DescribeMaterialList](https://cloud.tencent.com/document/api/670/44746)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeMaterialList](https://cloud.tencent.com/document/api/670/44746)
 
 新增数据结构：
 
-* [[FaceInfo](https://cloud.tencent.com/document/api/670/31062#FaceInfo)](https://cloud.tencent.com/document/api/670/31062#[FaceInfo](https://cloud.tencent.com/document/api/670/31062#FaceInfo))
-* [[MaterialFaceList](https://cloud.tencent.com/document/api/670/31062#MaterialFaceList)](https://cloud.tencent.com/document/api/670/31062#[MaterialFaceList](https://cloud.tencent.com/document/api/670/31062#MaterialFaceList))
-* [[PublicMaterialInfos](https://cloud.tencent.com/document/api/670/31062#PublicMaterialInfos)](https://cloud.tencent.com/document/api/670/31062#[PublicMaterialInfos](https://cloud.tencent.com/document/api/670/31062#PublicMaterialInfos))
+* [FaceInfo](https://cloud.tencent.com/document/api/670/31062#FaceInfo)
+* [MaterialFaceList](https://cloud.tencent.com/document/api/670/31062#MaterialFaceList)
+* [PublicMaterialInfos](https://cloud.tencent.com/document/api/670/31062#PublicMaterialInfos)
 
 ### 第 3 次发布
 
@@ -12853,6 +12849,21 @@
 
 
 ## 物联卡(ic) 版本：2019-03-07
+
+### 第 2 次发布
+
+发布时间：2020-05-21 08:10:52
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [CardInfo](https://cloud.tencent.com/document/api/636/33881#CardInfo)
+
+	* 新增成员：CertificationState
+
 
 ### 第 1 次发布
 
@@ -20976,16 +20987,16 @@
 
 新增接口：
 
-* [[DescribeEndUserLoginStatistic](https://cloud.tencent.com/document/api/876/44749)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeEndUserStatistic](https://cloud.tencent.com/document/api/876/44748)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeExtraPkgBillingInfo](https://cloud.tencent.com/document/api/876/44747)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeEndUserLoginStatistic](https://cloud.tencent.com/document/api/876/44749)
+* [DescribeEndUserStatistic](https://cloud.tencent.com/document/api/876/44748)
+* [DescribeExtraPkgBillingInfo](https://cloud.tencent.com/document/api/876/44747)
 
 新增数据结构：
 
-* [[EnvBillingInfoItem](https://cloud.tencent.com/document/api/876/34822#EnvBillingInfoItem)](https://cloud.tencent.com/document/api/876/34822#[EnvBillingInfoItem](https://cloud.tencent.com/document/api/876/34822#EnvBillingInfoItem))
-* [[LoginStatistic](https://cloud.tencent.com/document/api/876/34822#LoginStatistic)](https://cloud.tencent.com/document/api/876/34822#[LoginStatistic](https://cloud.tencent.com/document/api/876/34822#LoginStatistic))
-* [[OrderInfo](https://cloud.tencent.com/document/api/876/34822#OrderInfo)](https://cloud.tencent.com/document/api/876/34822#[OrderInfo](https://cloud.tencent.com/document/api/876/34822#OrderInfo))
-* [[PlatformStatistic](https://cloud.tencent.com/document/api/876/34822#PlatformStatistic)](https://cloud.tencent.com/document/api/876/34822#[PlatformStatistic](https://cloud.tencent.com/document/api/876/34822#PlatformStatistic))
+* [EnvBillingInfoItem](https://cloud.tencent.com/document/api/876/34822#EnvBillingInfoItem)
+* [LoginStatistic](https://cloud.tencent.com/document/api/876/34822#LoginStatistic)
+* [OrderInfo](https://cloud.tencent.com/document/api/876/34822#OrderInfo)
+* [PlatformStatistic](https://cloud.tencent.com/document/api/876/34822#PlatformStatistic)
 
 ### 第 7 次发布
 

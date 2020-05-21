@@ -683,7 +683,7 @@ type TimeValue struct {
 	// 时间
 	Time *uint64 `json:"Time,omitempty" name:"Time"`
 
-	// 当前时间取值
+	// 当前时间取值，unix时间戳
 	Value *float64 `json:"Value,omitempty" name:"Value"`
 }
 

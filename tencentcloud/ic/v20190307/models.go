@@ -144,6 +144,10 @@ type CardInfo struct {
 
 	// 服务
 	Provider *int64 `json:"Provider,omitempty" name:"Provider"`
+
+	// 实名验证(浙江联通)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CertificationState *int64 `json:"CertificationState,omitempty" name:"CertificationState"`
 }
 
 type CardList struct {
