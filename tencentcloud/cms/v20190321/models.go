@@ -20,6 +20,21 @@ import (
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
+type CallBackAck struct {
+
+	// 异步ACK-CODE
+	StdRetCode *int64 `json:"StdRetCode,omitempty" name:"StdRetCode"`
+
+	// 异步ACK
+	StdRetMsg *string `json:"StdRetMsg,omitempty" name:"StdRetMsg"`
+}
+
+type CallBackData struct {
+
+	// 异步请求ACK内容
+	Res *CallBackAck `json:"Res,omitempty" name:"Res"`
+}
+
 type CodeDetail struct {
 
 	// 二维码在图片中的位置，由边界点的坐标表示
@@ -51,6 +66,64 @@ type CodePosition struct {
 
 	// 二维码边界点Y轴坐标
 	FloatY *float64 `json:"FloatY,omitempty" name:"FloatY"`
+}
+
+type CommonMediaRecognitionRequest struct {
+	*tchttp.BaseRequest
+
+	// 公共参数Common类
+	MessageCommon *MessageCommonGjh `json:"MessageCommon,omitempty" name:"MessageCommon"`
+
+	// 内容相关参数
+	MessageContent *MessageContentGjh `json:"MessageContent,omitempty" name:"MessageContent"`
+
+	// 内容ID参数
+	MessageId *MessageIdGjh `json:"MessageId,omitempty" name:"MessageId"`
+}
+
+func (r *CommonMediaRecognitionRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CommonMediaRecognitionRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CommonMediaRecognitionResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 返回数据
+		Data *CallBackData `json:"Data,omitempty" name:"Data"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CommonMediaRecognitionResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CommonMediaRecognitionResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ContentMsgGjh struct {
+
+	// 发表消息设备IP类型，0x0代表IP地址是ipv4，0x1代表是IPv6，默认为0，即IPv4。
+	CIPType *string `json:"CIPType,omitempty" name:"CIPType"`
+
+	// 发表消息设备IPv4地址，没有可以为空字符串；
+	StrMsgIP *string `json:"StrMsgIP,omitempty" name:"StrMsgIP"`
+
+	// 发表消息设备IPv6地址，没有可以为空字符串。
+	StrMsgIPv6 *string `json:"StrMsgIPv6,omitempty" name:"StrMsgIPv6"`
+
+	// 消息发表时间戳。
+	UiPostTime *int64 `json:"UiPostTime,omitempty" name:"UiPostTime"`
 }
 
 type Coordinate struct {
@@ -687,6 +760,78 @@ type LogoDetail struct {
 	AppLogoDetail []*Logo `json:"AppLogoDetail,omitempty" name:"AppLogoDetail" list`
 }
 
+type MediaGjh struct {
+
+	// 数组类图片信息
+	Pic []*MediaInfoTypeGjh `json:"Pic,omitempty" name:"Pic" list`
+
+	// 数组类文本信息
+	Text []*MediaInfoTypeGjh `json:"Text,omitempty" name:"Text" list`
+
+	// 数组类视频信息
+	Video []*MediaInfoTypeGjh `json:"Video,omitempty" name:"Video" list`
+}
+
+type MediaInfoTypeGjh struct {
+
+	// 动作
+	StrAction *string `json:"StrAction,omitempty" name:"StrAction"`
+
+	// 内容
+	StrContent *string `json:"StrContent,omitempty" name:"StrContent"`
+
+	// 文件ID
+	StrFileID *string `json:"StrFileID,omitempty" name:"StrFileID"`
+
+	// md5，填了可提高识别率
+	StrMD5 *string `json:"StrMD5,omitempty" name:"StrMD5"`
+
+	// Sha
+	StrSha *string `json:"StrSha,omitempty" name:"StrSha"`
+
+	// 标题
+	StrTitle *string `json:"StrTitle,omitempty" name:"StrTitle"`
+
+	// url
+	StrUrl *string `json:"StrUrl,omitempty" name:"StrUrl"`
+
+	// 大小
+	UiSize *int64 `json:"UiSize,omitempty" name:"UiSize"`
+}
+
+type MessageCommonGjh struct {
+
+	// 密码（由腾讯提供）
+	StrPassword *string `json:"StrPassword,omitempty" name:"StrPassword"`
+
+	// 账号（由腾讯提供）
+	UiAppID *int64 `json:"UiAppID,omitempty" name:"UiAppID"`
+
+	// 业务场景ID: 1：媒体类；2：流媒体类；3：即时通讯类；4：社交日志；5：评论类；6：资料类；7：文件类；8：互动类；9：论坛类
+	UiAppSceneID *int64 `json:"UiAppSceneID,omitempty" name:"UiAppSceneID"`
+
+	// 请求序列号，会原样回到给业务侧请求序列号，会原样回到给业务侧，用于上游异步处理
+	UiSeq *int64 `json:"UiSeq,omitempty" name:"UiSeq"`
+}
+
+type MessageContentGjh struct {
+
+	// 具体消息内容
+	Media *MediaGjh `json:"Media,omitempty" name:"Media"`
+
+	// 发表该信息的用户的信息
+	User *UserInfoGjh `json:"User,omitempty" name:"User"`
+
+	// 发表该消息的设备的消息
+	Msg *ContentMsgGjh `json:"Msg,omitempty" name:"Msg"`
+}
+
+type MessageIdGjh struct {
+
+	// 消息Id，异步是回传改值
+	StrMsgID *string `json:"StrMsgID,omitempty" name:"StrMsgID"`
+}
+
 type OCRDetect struct {
 
 	// 识别到的详细信息
@@ -938,4 +1083,22 @@ type TextSample struct {
 	// 1：已完成
 	// 2：处理中
 	Status *uint64 `json:"Status,omitempty" name:"Status"`
+}
+
+type UserInfoGjh struct {
+
+	// 消息发表人简介，非必填，如填写，会结合简介内容判定该条是否有害。评论消息如展示简介则建议填写。
+	StrDesc *string `json:"StrDesc,omitempty" name:"StrDesc"`
+
+	// 消息发表人头像url，非必填，如填写，头像有害，该条消息会被判断为有害。评论消息如展示头像则建议填写。
+	StrHeadUrl *string `json:"StrHeadUrl,omitempty" name:"StrHeadUrl"`
+
+	// 消息发表人昵称，非必填，如填写，会结合昵称信息判断该条内容是否有害。评论消息如展示昵称则建议填写。
+	StrNick *string `json:"StrNick,omitempty" name:"StrNick"`
+
+	// 发表评论账号ID，如填写，会根据账号历史恶意情况，判定消息有害结果.
+	StrUin *string `json:"StrUin,omitempty" name:"StrUin"`
+
+	// 1-微信uin 2-QQ号 3-微信群uin 4-qq群号 5-微信openid 6-QQopenid 7-其它string
+	UiAcntType *int64 `json:"UiAcntType,omitempty" name:"UiAcntType"`
 }

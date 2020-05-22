@@ -1,29 +1,38 @@
 # 本版本更新包含以下内容：
 
-## 内容分发网络(cdn) 版本：2018-06-06
+## 内容安全(cms) 版本：2019-03-21
 
-### 第 22 次发布
+### 第 10 次发布
 
-发布时间：2020-05-21 08:06:19
+发布时间：2020-05-22 20:13:51
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-修改数据结构：
+新增接口：
 
-* [Sort](https://cloud.tencent.com/document/api/228/30987#Sort)
+* [CommonMediaRecognition](https://cloud.tencent.com/document/api/669/44845)
 
-	* <font color="#dd0000">**修改成员**：</font>Key
+新增数据结构：
+
+* [CallBackAck](https://cloud.tencent.com/document/api/669/34506#CallBackAck)
+* [CallBackData](https://cloud.tencent.com/document/api/669/34506#CallBackData)
+* [ContentMsgGjh](https://cloud.tencent.com/document/api/669/34506#ContentMsgGjh)
+* [MediaGjh](https://cloud.tencent.com/document/api/669/34506#MediaGjh)
+* [MediaInfoTypeGjh](https://cloud.tencent.com/document/api/669/34506#MediaInfoTypeGjh)
+* [MessageCommonGjh](https://cloud.tencent.com/document/api/669/34506#MessageCommonGjh)
+* [MessageContentGjh](https://cloud.tencent.com/document/api/669/34506#MessageContentGjh)
+* [MessageIdGjh](https://cloud.tencent.com/document/api/669/34506#MessageIdGjh)
+* [UserInfoGjh](https://cloud.tencent.com/document/api/669/34506#UserInfoGjh)
 
 
 
+## 边缘计算模块(ecm) 版本：2019-07-19
 
-## 大禹网络安全(dayu) 版本：2018-07-09
+### 第 11 次发布
 
-### 第 15 次发布
-
-发布时间：2020-05-21 08:07:56
+发布时间：2020-05-22 19:56:07
 
 本次发布包含了以下内容：
 
@@ -31,28 +40,13 @@
 
 修改接口：
 
-* [ModifyCCThreshold](https://cloud.tencent.com/document/api/1021/39518)
+* [DescribeInstances](https://cloud.tencent.com/document/api/1108/42565)
 
-	* 新增入参：Domain
+	* 新增入参：OrderByField, OrderDirection
 
+* [DescribeModule](https://cloud.tencent.com/document/api/1108/42555)
 
-
-
-## 物联卡(ic) 版本：2019-03-07
-
-### 第 2 次发布
-
-发布时间：2020-05-21 08:10:52
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [CardInfo](https://cloud.tencent.com/document/api/636/33881#CardInfo)
-
-	* 新增成员：CertificationState
+	* 新增入参：OrderByField, OrderDirection
 
 
 
@@ -7140,6 +7134,30 @@
 
 ## 内容安全(cms) 版本：2019-03-21
 
+### 第 10 次发布
+
+发布时间：2020-05-22 20:13:51
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[CommonMediaRecognition](https://cloud.tencent.com/document/api/669/44845)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[CallBackAck](https://cloud.tencent.com/document/api/669/34506#CallBackAck)](https://cloud.tencent.com/document/api/669/34506#[CallBackAck](https://cloud.tencent.com/document/api/669/34506#CallBackAck))
+* [[CallBackData](https://cloud.tencent.com/document/api/669/34506#CallBackData)](https://cloud.tencent.com/document/api/669/34506#[CallBackData](https://cloud.tencent.com/document/api/669/34506#CallBackData))
+* [[ContentMsgGjh](https://cloud.tencent.com/document/api/669/34506#ContentMsgGjh)](https://cloud.tencent.com/document/api/669/34506#[ContentMsgGjh](https://cloud.tencent.com/document/api/669/34506#ContentMsgGjh))
+* [[MediaGjh](https://cloud.tencent.com/document/api/669/34506#MediaGjh)](https://cloud.tencent.com/document/api/669/34506#[MediaGjh](https://cloud.tencent.com/document/api/669/34506#MediaGjh))
+* [[MediaInfoTypeGjh](https://cloud.tencent.com/document/api/669/34506#MediaInfoTypeGjh)](https://cloud.tencent.com/document/api/669/34506#[MediaInfoTypeGjh](https://cloud.tencent.com/document/api/669/34506#MediaInfoTypeGjh))
+* [[MessageCommonGjh](https://cloud.tencent.com/document/api/669/34506#MessageCommonGjh)](https://cloud.tencent.com/document/api/669/34506#[MessageCommonGjh](https://cloud.tencent.com/document/api/669/34506#MessageCommonGjh))
+* [[MessageContentGjh](https://cloud.tencent.com/document/api/669/34506#MessageContentGjh)](https://cloud.tencent.com/document/api/669/34506#[MessageContentGjh](https://cloud.tencent.com/document/api/669/34506#MessageContentGjh))
+* [[MessageIdGjh](https://cloud.tencent.com/document/api/669/34506#MessageIdGjh)](https://cloud.tencent.com/document/api/669/34506#[MessageIdGjh](https://cloud.tencent.com/document/api/669/34506#MessageIdGjh))
+* [[UserInfoGjh](https://cloud.tencent.com/document/api/669/34506#UserInfoGjh)](https://cloud.tencent.com/document/api/669/34506#[UserInfoGjh](https://cloud.tencent.com/document/api/669/34506#UserInfoGjh))
+
 ### 第 9 次发布
 
 发布时间：2020-05-15 08:07:21
@@ -10435,6 +10453,25 @@
 
 
 ## 边缘计算模块(ecm) 版本：2019-07-19
+
+### 第 11 次发布
+
+发布时间：2020-05-22 19:56:07
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeInstances](https://cloud.tencent.com/document/api/1108/42565)
+
+	* 新增入参：OrderByField, OrderDirection
+
+* [DescribeModule](https://cloud.tencent.com/document/api/1108/42555)
+
+	* 新增入参：OrderByField, OrderDirection
+
 
 ### 第 10 次发布
 
