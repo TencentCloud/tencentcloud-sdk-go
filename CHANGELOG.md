@@ -1,38 +1,10 @@
 # 本版本更新包含以下内容：
 
-## 内容安全(cms) 版本：2019-03-21
-
-### 第 10 次发布
-
-发布时间：2020-05-22 20:13:51
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [CommonMediaRecognition](https://cloud.tencent.com/document/api/669/44845)
-
-新增数据结构：
-
-* [CallBackAck](https://cloud.tencent.com/document/api/669/34506#CallBackAck)
-* [CallBackData](https://cloud.tencent.com/document/api/669/34506#CallBackData)
-* [ContentMsgGjh](https://cloud.tencent.com/document/api/669/34506#ContentMsgGjh)
-* [MediaGjh](https://cloud.tencent.com/document/api/669/34506#MediaGjh)
-* [MediaInfoTypeGjh](https://cloud.tencent.com/document/api/669/34506#MediaInfoTypeGjh)
-* [MessageCommonGjh](https://cloud.tencent.com/document/api/669/34506#MessageCommonGjh)
-* [MessageContentGjh](https://cloud.tencent.com/document/api/669/34506#MessageContentGjh)
-* [MessageIdGjh](https://cloud.tencent.com/document/api/669/34506#MessageIdGjh)
-* [UserInfoGjh](https://cloud.tencent.com/document/api/669/34506#UserInfoGjh)
-
-
-
-## 边缘计算模块(ecm) 版本：2019-07-19
+## 腾讯云剪(cme) 版本：2019-10-29
 
 ### 第 11 次发布
 
-发布时间：2020-05-22 19:56:07
+发布时间：2020-05-26 08:03:13
 
 本次发布包含了以下内容：
 
@@ -40,13 +12,70 @@
 
 修改接口：
 
-* [DescribeInstances](https://cloud.tencent.com/document/api/1108/42565)
+* [SearchMaterial](https://cloud.tencent.com/document/api/1156/43240)
 
-	* 新增入参：OrderByField, OrderDirection
+	* 新增入参：Tags
 
-* [DescribeModule](https://cloud.tencent.com/document/api/1108/42555)
 
-	* 新增入参：OrderByField, OrderDirection
+新增数据结构：
+
+* [MaterialTagInfo](https://cloud.tencent.com/document/api/1156/40360#MaterialTagInfo)
+
+修改数据结构：
+
+* [MaterialBasicInfo](https://cloud.tencent.com/document/api/1156/40360#MaterialBasicInfo)
+
+	* 新增成员：TagInfoSet
+
+
+
+
+## 流量反欺诈(taf) 版本：2020-02-10
+
+### 第 5 次发布
+
+发布时间：2020-05-26 08:00:44
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+<font color="#dd0000">**删除接口**：</font>
+
+* DetectAccountActivity
+
+<font color="#dd0000">**删除数据结构**：</font>
+
+* InputDetectAccountActivity
+* OutputDetectAccountActivity
+* OutputDetectAccountActivityValue
+
+
+
+## 实时音视频(trtc) 版本：2019-07-22
+
+### 第 9 次发布
+
+发布时间：2020-05-26 08:20:19
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeDetailEvent](https://cloud.tencent.com/document/api/647/44864)
+
+新增数据结构：
+
+* [EventList](https://cloud.tencent.com/document/api/647/44055#EventList)
+* [EventMessage](https://cloud.tencent.com/document/api/647/44055#EventMessage)
+
+修改数据结构：
+
+* [UserInformation](https://cloud.tencent.com/document/api/647/44055#UserInformation)
+
+	* 新增成员：Finished
 
 
 
@@ -6840,6 +6869,32 @@
 
 ## 腾讯云剪(cme) 版本：2019-10-29
 
+### 第 11 次发布
+
+发布时间：2020-05-26 08:03:13
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [SearchMaterial](https://cloud.tencent.com/document/api/1156/43240)
+
+	* 新增入参：Tags
+
+
+新增数据结构：
+
+* [[MaterialTagInfo](https://cloud.tencent.com/document/api/1156/40360#MaterialTagInfo)](https://cloud.tencent.com/document/api/1156/40360#[MaterialTagInfo](https://cloud.tencent.com/document/api/1156/40360#MaterialTagInfo))
+
+修改数据结构：
+
+* [MaterialBasicInfo](https://cloud.tencent.com/document/api/1156/40360#MaterialBasicInfo)
+
+	* 新增成员：TagInfoSet
+
+
 ### 第 10 次发布
 
 发布时间：2020-05-15 08:03:10
@@ -7144,19 +7199,19 @@
 
 新增接口：
 
-* [[CommonMediaRecognition](https://cloud.tencent.com/document/api/669/44845)](https://cloud.tencent.com/document/api/#/#)
+* [CommonMediaRecognition](https://cloud.tencent.com/document/api/669/44845)
 
 新增数据结构：
 
-* [[CallBackAck](https://cloud.tencent.com/document/api/669/34506#CallBackAck)](https://cloud.tencent.com/document/api/669/34506#[CallBackAck](https://cloud.tencent.com/document/api/669/34506#CallBackAck))
-* [[CallBackData](https://cloud.tencent.com/document/api/669/34506#CallBackData)](https://cloud.tencent.com/document/api/669/34506#[CallBackData](https://cloud.tencent.com/document/api/669/34506#CallBackData))
-* [[ContentMsgGjh](https://cloud.tencent.com/document/api/669/34506#ContentMsgGjh)](https://cloud.tencent.com/document/api/669/34506#[ContentMsgGjh](https://cloud.tencent.com/document/api/669/34506#ContentMsgGjh))
-* [[MediaGjh](https://cloud.tencent.com/document/api/669/34506#MediaGjh)](https://cloud.tencent.com/document/api/669/34506#[MediaGjh](https://cloud.tencent.com/document/api/669/34506#MediaGjh))
-* [[MediaInfoTypeGjh](https://cloud.tencent.com/document/api/669/34506#MediaInfoTypeGjh)](https://cloud.tencent.com/document/api/669/34506#[MediaInfoTypeGjh](https://cloud.tencent.com/document/api/669/34506#MediaInfoTypeGjh))
-* [[MessageCommonGjh](https://cloud.tencent.com/document/api/669/34506#MessageCommonGjh)](https://cloud.tencent.com/document/api/669/34506#[MessageCommonGjh](https://cloud.tencent.com/document/api/669/34506#MessageCommonGjh))
-* [[MessageContentGjh](https://cloud.tencent.com/document/api/669/34506#MessageContentGjh)](https://cloud.tencent.com/document/api/669/34506#[MessageContentGjh](https://cloud.tencent.com/document/api/669/34506#MessageContentGjh))
-* [[MessageIdGjh](https://cloud.tencent.com/document/api/669/34506#MessageIdGjh)](https://cloud.tencent.com/document/api/669/34506#[MessageIdGjh](https://cloud.tencent.com/document/api/669/34506#MessageIdGjh))
-* [[UserInfoGjh](https://cloud.tencent.com/document/api/669/34506#UserInfoGjh)](https://cloud.tencent.com/document/api/669/34506#[UserInfoGjh](https://cloud.tencent.com/document/api/669/34506#UserInfoGjh))
+* [CallBackAck](https://cloud.tencent.com/document/api/669/34506#CallBackAck)
+* [CallBackData](https://cloud.tencent.com/document/api/669/34506#CallBackData)
+* [ContentMsgGjh](https://cloud.tencent.com/document/api/669/34506#ContentMsgGjh)
+* [MediaGjh](https://cloud.tencent.com/document/api/669/34506#MediaGjh)
+* [MediaInfoTypeGjh](https://cloud.tencent.com/document/api/669/34506#MediaInfoTypeGjh)
+* [MessageCommonGjh](https://cloud.tencent.com/document/api/669/34506#MessageCommonGjh)
+* [MessageContentGjh](https://cloud.tencent.com/document/api/669/34506#MessageContentGjh)
+* [MessageIdGjh](https://cloud.tencent.com/document/api/669/34506#MessageIdGjh)
+* [UserInfoGjh](https://cloud.tencent.com/document/api/669/34506#UserInfoGjh)
 
 ### 第 9 次发布
 
@@ -20157,6 +20212,24 @@
 
 ## 流量反欺诈(taf) 版本：2020-02-10
 
+### 第 5 次发布
+
+发布时间：2020-05-26 08:00:44
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+<font color="#dd0000">**删除接口**：</font>
+
+* DetectAccountActivity
+
+<font color="#dd0000">**删除数据结构**：</font>
+
+* InputDetectAccountActivity
+* OutputDetectAccountActivity
+* OutputDetectAccountActivityValue
+
 ### 第 4 次发布
 
 发布时间：2020-04-29 08:00:55
@@ -23373,6 +23446,30 @@
 
 
 ## 实时音视频(trtc) 版本：2019-07-22
+
+### 第 9 次发布
+
+发布时间：2020-05-26 08:20:19
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeDetailEvent](https://cloud.tencent.com/document/api/647/44864)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[EventList](https://cloud.tencent.com/document/api/647/44055#EventList)](https://cloud.tencent.com/document/api/647/44055#[EventList](https://cloud.tencent.com/document/api/647/44055#EventList))
+* [[EventMessage](https://cloud.tencent.com/document/api/647/44055#EventMessage)](https://cloud.tencent.com/document/api/647/44055#[EventMessage](https://cloud.tencent.com/document/api/647/44055#EventMessage))
+
+修改数据结构：
+
+* [UserInformation](https://cloud.tencent.com/document/api/647/44055#UserInformation)
+
+	* 新增成员：Finished
+
 
 ### 第 8 次发布
 

@@ -1543,7 +1543,7 @@ func NewDescribeLiveStreamOnlineListResponse() (response *DescribeLiveStreamOnli
     return
 }
 
-// 返回正在直播中的流列表。
+// 返回正在直播中的流列表。适用于推流成功后查询在线流信息。
 func (c *Client) DescribeLiveStreamOnlineList(request *DescribeLiveStreamOnlineListRequest) (response *DescribeLiveStreamOnlineListResponse, err error) {
     if request == nil {
         request = NewDescribeLiveStreamOnlineListRequest()

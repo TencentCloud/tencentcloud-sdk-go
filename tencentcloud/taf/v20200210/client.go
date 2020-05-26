@@ -43,31 +43,6 @@ func NewClient(credential *common.Credential, region string, clientProfile *prof
 }
 
 
-func NewDetectAccountActivityRequest() (request *DetectAccountActivityRequest) {
-    request = &DetectAccountActivityRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    request.Init().WithApiInfo("taf", APIVersion, "DetectAccountActivity")
-    return
-}
-
-func NewDetectAccountActivityResponse() (response *DetectAccountActivityResponse) {
-    response = &DetectAccountActivityResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    }
-    return
-}
-
-// DetectAccountActivity
-func (c *Client) DetectAccountActivity(request *DetectAccountActivityRequest) (response *DetectAccountActivityResponse, err error) {
-    if request == nil {
-        request = NewDetectAccountActivityRequest()
-    }
-    response = NewDetectAccountActivityResponse()
-    err = c.Send(request, response)
-    return
-}
-
 func NewDetectFraudKOLRequest() (request *DetectFraudKOLRequest) {
     request = &DetectFraudKOLRequest{
         BaseRequest: &tchttp.BaseRequest{},

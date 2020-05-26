@@ -470,7 +470,7 @@ func NewWordEmbeddingResponse() (response *WordEmbeddingResponse) {
 // 
 // https://ai.tencent.com/ailab/zh/news/detial?id=22
 // 
-// https://ai.tencent.com/ailab/nlp/embedding.html 
+// https://ai.tencent.com/ailab/nlp/zh/embedding.html
 func (c *Client) WordEmbedding(request *WordEmbeddingRequest) (response *WordEmbeddingResponse, err error) {
     if request == nil {
         request = NewWordEmbeddingRequest()

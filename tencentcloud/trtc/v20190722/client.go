@@ -93,6 +93,31 @@ func (c *Client) DescribeCallDetail(request *DescribeCallDetailRequest) (respons
     return
 }
 
+func NewDescribeDetailEventRequest() (request *DescribeDetailEventRequest) {
+    request = &DescribeDetailEventRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("trtc", APIVersion, "DescribeDetailEvent")
+    return
+}
+
+func NewDescribeDetailEventResponse() (response *DescribeDetailEventResponse) {
+    response = &DescribeDetailEventResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询用户某次通话内的进退房，视频开关等详细事件。可查询5天内数据。
+func (c *Client) DescribeDetailEvent(request *DescribeDetailEventRequest) (response *DescribeDetailEventResponse, err error) {
+    if request == nil {
+        request = NewDescribeDetailEventRequest()
+    }
+    response = NewDescribeDetailEventResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeHistoryScaleRequest() (request *DescribeHistoryScaleRequest) {
     request = &DescribeHistoryScaleRequest{
         BaseRequest: &tchttp.BaseRequest{},

@@ -1678,6 +1678,9 @@ type MaterialBasicInfo struct {
 	// 素材的分类目录路径。
 	ClassPath *string `json:"ClassPath,omitempty" name:"ClassPath"`
 
+	// 素材绑定的标签信息列表。
+	TagInfoSet []*MaterialTagInfo `json:"TagInfoSet,omitempty" name:"TagInfoSet" list`
+
 	// 素材媒体文件的预览图。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PreviewUrl *string `json:"PreviewUrl,omitempty" name:"PreviewUrl"`
@@ -1712,6 +1715,19 @@ type MaterialStatus struct {
 	// <li>ABNORMAL : 异常，不可用于编辑；</li>
 	// <li>PROCESSING：处理中，暂不可用于编辑。</li>
 	EditorUsableStatus *string `json:"EditorUsableStatus,omitempty" name:"EditorUsableStatus"`
+}
+
+type MaterialTagInfo struct {
+
+	// 标签类型，取值为：
+	// <li>PRESET：预置标签；</li>
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 标签 Id 。当标签类型为 PRESET 时，标签 Id 为预置标签 Id 。
+	Id *string `json:"Id,omitempty" name:"Id"`
+
+	// 标签名称。
+	Name *string `json:"Name,omitempty" name:"Name"`
 }
 
 type MediaImageSpriteInfo struct {
@@ -2116,6 +2132,9 @@ type SearchMaterialRequest struct {
 
 	// 按照素材创建时间检索。
 	CreateTimeRange *TimeRange `json:"CreateTimeRange,omitempty" name:"CreateTimeRange"`
+
+	// 按标签检索，填入检索的标签名。
+	Tags []*string `json:"Tags,omitempty" name:"Tags" list`
 
 	// 排序方式。Sort.Field 可选值：CreateTime。指定 Text 搜索时，将根据匹配度排序，该字段无效。
 	Sort *SortBy `json:"Sort,omitempty" name:"Sort"`

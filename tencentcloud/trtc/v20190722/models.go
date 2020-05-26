@@ -38,7 +38,15 @@ type CreateTroubleInfoRequest struct {
 	// 体验异常端（老师或学生）的用户 ID。
 	TroubleUserId *string `json:"TroubleUserId,omitempty" name:"TroubleUserId"`
 
-	// 异常类型
+	// 异常类型。
+	// 1. 仅视频异常
+	// 2. 仅声音异常
+	// 3. 音视频都异常
+	// 5. 进房异常
+	// 4. 切课
+	// 6. 求助
+	// 7. 问题反馈
+	// 8. 投诉
 	TroubleType *uint64 `json:"TroubleType,omitempty" name:"TroubleType"`
 
 	// 异常发生的UNIX 时间戳，单位为秒。
@@ -78,7 +86,7 @@ func (r *CreateTroubleInfoResponse) FromJsonString(s string) error {
 type DescribeCallDetailRequest struct {
 	*tchttp.BaseRequest
 
-	// 通话ID（唯一标识一次通话）= sdkappid+roomgString（房间号）+房间创建时间（unix时间戳，s）。通过 DescribeRoomInformation（查询房间列表）接口获取。
+	// 通话 ID（唯一标识一次通话）： sdkappid_roomgString（房间号_createTime（房间创建时间，unix时间戳，单位为s）。通过 DescribeRoomInformation（查询房间列表）接口获取。
 	CommId *string `json:"CommId,omitempty" name:"CommId"`
 
 	// 查询开始时间，5天内。本地unix时间戳（1588031999s）
@@ -145,6 +153,55 @@ func (r *DescribeCallDetailResponse) ToJsonString() string {
 }
 
 func (r *DescribeCallDetailResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeDetailEventRequest struct {
+	*tchttp.BaseRequest
+
+	// 通话 ID（唯一标识一次通话）： sdkappid_roomgString（房间号_createTime（房间创建时间，unix时间戳，单位s）。通过 DescribeRoomInformation（查询房间列表）接口获取。
+	CommId *string `json:"CommId,omitempty" name:"CommId"`
+
+	// 查询开始时间，5天内。本地unix时间戳（1588031999s）
+	StartTime *uint64 `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 查询结束时间，本地unix时间戳（1588031999s）
+	EndTime *uint64 `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 用户id
+	UserId *string `json:"UserId,omitempty" name:"UserId"`
+
+	// 房间号
+	RoomId *string `json:"RoomId,omitempty" name:"RoomId"`
+}
+
+func (r *DescribeDetailEventRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeDetailEventRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeDetailEventResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 返回的事件列表
+		Data []*EventList `json:"Data,omitempty" name:"Data" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeDetailEventResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeDetailEventResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -463,6 +520,37 @@ type EncodeParams struct {
 	BackgroundColor *uint64 `json:"BackgroundColor,omitempty" name:"BackgroundColor"`
 }
 
+type EventList struct {
+
+	// 数据内容
+	Content []*EventMessage `json:"Content,omitempty" name:"Content" list`
+
+	// 发送端的userId
+	PeerId *string `json:"PeerId,omitempty" name:"PeerId"`
+}
+
+type EventMessage struct {
+
+	// 视频流类型：
+	// 0：与视频无关的事件；
+	// 2：视频为大画面；
+	// 3：视频为小画面；
+	// 7：视频为旁路画面；
+	Type *uint64 `json:"Type,omitempty" name:"Type"`
+
+	// 事件上报的时间戳，unix时间（1589891188801ms)
+	Time *uint64 `json:"Time,omitempty" name:"Time"`
+
+	// 事件Id：分为sdk的事件和webrtc的事件，具体映射，查看：事件ID映射表
+	EventId *uint64 `json:"EventId,omitempty" name:"EventId"`
+
+	// 事件的第一个参数，如视频分辨率宽
+	ParamOne *int64 `json:"ParamOne,omitempty" name:"ParamOne"`
+
+	// 事件的第二个参数，如视频分辨率高
+	ParamTwo *int64 `json:"ParamTwo,omitempty" name:"ParamTwo"`
+}
+
 type LayoutParams struct {
 
 	// 混流布局模板ID，0为悬浮模板(默认);1为九宫格模板;2为屏幕分享模板
@@ -709,4 +797,7 @@ type UserInformation struct {
 
 	// 客户端IP地址
 	ClientIp *string `json:"ClientIp,omitempty" name:"ClientIp"`
+
+	// 判断用户是否已经离开房间
+	Finished *bool `json:"Finished,omitempty" name:"Finished"`
 }
