@@ -43,31 +43,6 @@ func NewClient(credential *common.Credential, region string, clientProfile *prof
 }
 
 
-func NewCommonMediaRecognitionRequest() (request *CommonMediaRecognitionRequest) {
-    request = &CommonMediaRecognitionRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    request.Init().WithApiInfo("cms", APIVersion, "CommonMediaRecognition")
-    return
-}
-
-func NewCommonMediaRecognitionResponse() (response *CommonMediaRecognitionResponse) {
-    response = &CommonMediaRecognitionResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    }
-    return
-}
-
-// 广交会商品企业信息发布内容审核
-func (c *Client) CommonMediaRecognition(request *CommonMediaRecognitionRequest) (response *CommonMediaRecognitionResponse, err error) {
-    if request == nil {
-        request = NewCommonMediaRecognitionRequest()
-    }
-    response = NewCommonMediaRecognitionResponse()
-    err = c.Send(request, response)
-    return
-}
-
 func NewCreateFileSampleRequest() (request *CreateFileSampleRequest) {
     request = &CreateFileSampleRequest{
         BaseRequest: &tchttp.BaseRequest{},

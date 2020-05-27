@@ -1,40 +1,10 @@
 # 本版本更新包含以下内容：
 
-## 腾讯云剪(cme) 版本：2019-10-29
+## 内容安全(cms) 版本：2019-03-21
 
 ### 第 11 次发布
 
-发布时间：2020-05-26 08:03:13
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [SearchMaterial](https://cloud.tencent.com/document/api/1156/43240)
-
-	* 新增入参：Tags
-
-
-新增数据结构：
-
-* [MaterialTagInfo](https://cloud.tencent.com/document/api/1156/40360#MaterialTagInfo)
-
-修改数据结构：
-
-* [MaterialBasicInfo](https://cloud.tencent.com/document/api/1156/40360#MaterialBasicInfo)
-
-	* 新增成员：TagInfoSet
-
-
-
-
-## 流量反欺诈(taf) 版本：2020-02-10
-
-### 第 5 次发布
-
-发布时间：2020-05-26 08:00:44
+发布时间：2020-05-27 08:08:35
 
 本次发布包含了以下内容：
 
@@ -42,41 +12,19 @@
 
 <font color="#dd0000">**删除接口**：</font>
 
-* DetectAccountActivity
+* CommonMediaRecognition
 
 <font color="#dd0000">**删除数据结构**：</font>
 
-* InputDetectAccountActivity
-* OutputDetectAccountActivity
-* OutputDetectAccountActivityValue
-
-
-
-## 实时音视频(trtc) 版本：2019-07-22
-
-### 第 9 次发布
-
-发布时间：2020-05-26 08:20:19
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [DescribeDetailEvent](https://cloud.tencent.com/document/api/647/44864)
-
-新增数据结构：
-
-* [EventList](https://cloud.tencent.com/document/api/647/44055#EventList)
-* [EventMessage](https://cloud.tencent.com/document/api/647/44055#EventMessage)
-
-修改数据结构：
-
-* [UserInformation](https://cloud.tencent.com/document/api/647/44055#UserInformation)
-
-	* 新增成员：Finished
-
+* CallBackAck
+* CallBackData
+* ContentMsgGjh
+* MediaGjh
+* MediaInfoTypeGjh
+* MessageCommonGjh
+* MessageContentGjh
+* MessageIdGjh
+* UserInfoGjh
 
 
 
@@ -6886,7 +6834,7 @@
 
 新增数据结构：
 
-* [[MaterialTagInfo](https://cloud.tencent.com/document/api/1156/40360#MaterialTagInfo)](https://cloud.tencent.com/document/api/1156/40360#[MaterialTagInfo](https://cloud.tencent.com/document/api/1156/40360#MaterialTagInfo))
+* [MaterialTagInfo](https://cloud.tencent.com/document/api/1156/40360#MaterialTagInfo)
 
 修改数据结构：
 
@@ -7188,6 +7136,30 @@
 
 
 ## 内容安全(cms) 版本：2019-03-21
+
+### 第 11 次发布
+
+发布时间：2020-05-27 08:08:35
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+<font color="#dd0000">**删除接口**：</font>
+
+* CommonMediaRecognition
+
+<font color="#dd0000">**删除数据结构**：</font>
+
+* CallBackAck
+* CallBackData
+* ContentMsgGjh
+* MediaGjh
+* MediaInfoTypeGjh
+* MessageCommonGjh
+* MessageContentGjh
+* MessageIdGjh
+* UserInfoGjh
 
 ### 第 10 次发布
 
@@ -23457,12 +23429,12 @@
 
 新增接口：
 
-* [[DescribeDetailEvent](https://cloud.tencent.com/document/api/647/44864)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeDetailEvent](https://cloud.tencent.com/document/api/647/44864)
 
 新增数据结构：
 
-* [[EventList](https://cloud.tencent.com/document/api/647/44055#EventList)](https://cloud.tencent.com/document/api/647/44055#[EventList](https://cloud.tencent.com/document/api/647/44055#EventList))
-* [[EventMessage](https://cloud.tencent.com/document/api/647/44055#EventMessage)](https://cloud.tencent.com/document/api/647/44055#[EventMessage](https://cloud.tencent.com/document/api/647/44055#EventMessage))
+* [EventList](https://cloud.tencent.com/document/api/647/44055#EventList)
+* [EventMessage](https://cloud.tencent.com/document/api/647/44055#EventMessage)
 
 修改数据结构：
 
