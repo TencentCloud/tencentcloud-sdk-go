@@ -726,6 +726,31 @@ func (c *Client) QueryAcctInfoList(request *QueryAcctInfoListRequest) (response 
     return
 }
 
+func NewQueryAgentStatementsRequest() (request *QueryAgentStatementsRequest) {
+    request = &QueryAgentStatementsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cpdp", APIVersion, "QueryAgentStatements")
+    return
+}
+
+func NewQueryAgentStatementsResponse() (response *QueryAgentStatementsResponse) {
+    response = &QueryAgentStatementsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 直播平台-查询代理商结算单链接
+func (c *Client) QueryAgentStatements(request *QueryAgentStatementsRequest) (response *QueryAgentStatementsResponse, err error) {
+    if request == nil {
+        request = NewQueryAgentStatementsRequest()
+    }
+    response = NewQueryAgentStatementsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewQueryAgentTaxPaymentBatchRequest() (request *QueryAgentTaxPaymentBatchRequest) {
     request = &QueryAgentTaxPaymentBatchRequest{
         BaseRequest: &tchttp.BaseRequest{},

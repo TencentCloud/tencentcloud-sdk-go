@@ -605,6 +605,19 @@ type ApplyWithdrawalRequest struct {
 
 	// 按照聚鑫安全密钥计算的签名
 	MidasSignature *string `json:"MidasSignature,omitempty" name:"MidasSignature"`
+
+	// 敏感信息加密类型:
+	// RSA: rsa非对称加密，使用RSA-PKCS1-v1_5
+	// AES: aes对称加密，使用AES256-CBC-PCKS7padding
+	// 缺省: RSA
+	EncryptType *string `json:"EncryptType,omitempty" name:"EncryptType"`
+
+	// 环境名:
+	// release: 现网环境
+	// sandbox: 沙箱环境
+	// development: 开发环境
+	// 缺省: release
+	MidasEnvironment *string `json:"MidasEnvironment,omitempty" name:"MidasEnvironment"`
 }
 
 func (r *ApplyWithdrawalRequest) ToJsonString() string {
@@ -737,10 +750,17 @@ type BindAcctRequest struct {
 	EiconBankBranchId *string `json:"EiconBankBranchId,omitempty" name:"EiconBankBranchId"`
 
 	// 敏感信息加密类型:
-	// RSA, rsa非对称加密，使用RSA-PKCS1-v1_5
-	// AES,  aes对称加密，使用AES256-CBC-PCKS7padding
-	// 默认RSA
+	// RSA: rsa非对称加密，使用RSA-PKCS1-v1_5
+	// AES: aes对称加密，使用AES256-CBC-PCKS7padding
+	// 缺省: RSA
 	EncryptType *string `json:"EncryptType,omitempty" name:"EncryptType"`
+
+	// 环境名:
+	// release: 现网环境
+	// sandbox: 沙箱环境
+	// development: 开发环境
+	// 缺省: release
+	MidasEnvironment *string `json:"MidasEnvironment,omitempty" name:"MidasEnvironment"`
 }
 
 func (r *BindAcctRequest) ToJsonString() string {
@@ -1002,8 +1022,9 @@ type CheckAcctRequest struct {
 	// 聚鑫计费SubAppId，代表子商户
 	SubAppId *string `json:"SubAppId,omitempty" name:"SubAppId"`
 
-	// 1：小额鉴权
-	// 2：短信校验鉴权
+	// 1 – 小额转账验证
+	// 2 – 短信验证
+	// 每个结算账户每天只能使用一次小额转账验证
 	BindType *int64 `json:"BindType,omitempty" name:"BindType"`
 
 	// 结算账户账号
@@ -1032,6 +1053,19 @@ type CheckAcctRequest struct {
 	// 金额
 	// BindType==1必填
 	CurrencyAmt *string `json:"CurrencyAmt,omitempty" name:"CurrencyAmt"`
+
+	// 敏感信息加密类型:
+	// RSA: rsa非对称加密，使用RSA-PKCS1-v1_5
+	// AES: aes对称加密，使用AES256-CBC-PCKS7padding
+	// 缺省: RSA
+	EncryptType *string `json:"EncryptType,omitempty" name:"EncryptType"`
+
+	// 环境名:
+	// release: 现网环境
+	// sandbox: 沙箱环境
+	// development: 开发环境
+	// 缺省: release
+	MidasEnvironment *string `json:"MidasEnvironment,omitempty" name:"MidasEnvironment"`
 }
 
 func (r *CheckAcctRequest) ToJsonString() string {
@@ -1243,8 +1277,8 @@ type CreateAcctRequest struct {
 
 	// 子商户类型：
 	// 个人: personal
-	// 企业：enterprise
-	// 缺省： enterprise
+	// 企业: enterprise
+	// 缺省: enterprise
 	SubMchType *string `json:"SubMchType,omitempty" name:"SubMchType"`
 
 	// 不填则默认子商户名称
@@ -1265,13 +1299,20 @@ type CreateAcctRequest struct {
 	SubMerchantPrivateKey *string `json:"SubMerchantPrivateKey,omitempty" name:"SubMerchantPrivateKey"`
 
 	// 敏感信息加密类型:
-	// RSA, rsa非对称加密，使用RSA-PKCS1-v1_5
-	// AES,  aes对称加密，使用AES256-CBC-PCKS7padding
-	// 默认RSA
+	// RSA: rsa非对称加密，使用RSA-PKCS1-v1_5
+	// AES: aes对称加密，使用AES256-CBC-PCKS7padding
+	// 缺省: RSA
 	EncryptType *string `json:"EncryptType,omitempty" name:"EncryptType"`
 
 	// 银行生成的子商户账户，已开户的场景需要录入
 	SubAcctNo *string `json:"SubAcctNo,omitempty" name:"SubAcctNo"`
+
+	// 环境名:
+	// release: 现网环境
+	// sandbox: 沙箱环境
+	// development: 开发环境
+	// 缺省: release
+	MidasEnvironment *string `json:"MidasEnvironment,omitempty" name:"MidasEnvironment"`
 }
 
 func (r *CreateAcctRequest) ToJsonString() string {
@@ -2166,6 +2207,19 @@ type QueryAcctBindingRequest struct {
 
 	// 计费签名
 	MidasSignature *string `json:"MidasSignature,omitempty" name:"MidasSignature"`
+
+	// 敏感信息加密类型:
+	// RSA: rsa非对称加密，使用RSA-PKCS1-v1_5
+	// AES: aes对称加密，使用AES256-CBC-PCKS7padding
+	// 缺省: RSA
+	EncryptType *string `json:"EncryptType,omitempty" name:"EncryptType"`
+
+	// 环境名:
+	// release: 现网环境
+	// sandbox: 沙箱环境
+	// development: 开发环境
+	// 缺省: release
+	MidasEnvironment *string `json:"MidasEnvironment,omitempty" name:"MidasEnvironment"`
 }
 
 func (r *QueryAcctBindingRequest) ToJsonString() string {
@@ -2221,6 +2275,19 @@ type QueryAcctInfoListRequest struct {
 
 	// 计费签名
 	MidasSignature *string `json:"MidasSignature,omitempty" name:"MidasSignature"`
+
+	// 敏感信息加密类型:
+	// RSA: rsa非对称加密，使用RSA-PKCS1-v1_5
+	// AES: aes对称加密，使用AES256-CBC-PCKS7padding
+	// 缺省: RSA
+	EncryptType *string `json:"EncryptType,omitempty" name:"EncryptType"`
+
+	// 环境名:
+	// release: 现网环境
+	// sandbox: 沙箱环境
+	// development: 开发环境
+	// 缺省: release
+	MidasEnvironment *string `json:"MidasEnvironment,omitempty" name:"MidasEnvironment"`
 }
 
 func (r *QueryAcctInfoListRequest) ToJsonString() string {
@@ -2273,6 +2340,19 @@ type QueryAcctInfoRequest struct {
 
 	// 计费签名
 	MidasSignature *string `json:"MidasSignature,omitempty" name:"MidasSignature"`
+
+	// 敏感信息加密类型:
+	// RSA: rsa非对称加密，使用RSA-PKCS1-v1_5
+	// AES: aes对称加密，使用AES256-CBC-PCKS7padding
+	// 缺省: RSA
+	EncryptType *string `json:"EncryptType,omitempty" name:"EncryptType"`
+
+	// 环境名:
+	// release: 现网环境
+	// sandbox: 沙箱环境
+	// development: 开发环境
+	// 缺省: release
+	MidasEnvironment *string `json:"MidasEnvironment,omitempty" name:"MidasEnvironment"`
 }
 
 func (r *QueryAcctInfoRequest) ToJsonString() string {
@@ -2391,6 +2471,48 @@ type QueryAcctItem struct {
 	SubMerchantMemberType *string `json:"SubMerchantMemberType,omitempty" name:"SubMerchantMemberType"`
 }
 
+type QueryAgentStatementsRequest struct {
+	*tchttp.BaseRequest
+
+	// 结算单日期，月结算单填每月1日
+	Date *string `json:"Date,omitempty" name:"Date"`
+
+	// 日结算单:daily
+	// 月结算单:monthly
+	Type *string `json:"Type,omitempty" name:"Type"`
+}
+
+func (r *QueryAgentStatementsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *QueryAgentStatementsRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type QueryAgentStatementsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 文件下载链接
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		FileUrl *string `json:"FileUrl,omitempty" name:"FileUrl"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *QueryAgentStatementsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *QueryAgentStatementsResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type QueryAgentTaxPaymentBatchRequest struct {
 	*tchttp.BaseRequest
 
@@ -2492,6 +2614,13 @@ type QueryBalanceRequest struct {
 
 	// 按照聚鑫安全密钥计算的签名
 	MidasSignature *string `json:"MidasSignature,omitempty" name:"MidasSignature"`
+
+	// 环境名:
+	// release: 现网环境
+	// sandbox: 沙箱环境
+	// development: 开发环境
+	// 缺省: release
+	MidasEnvironment *string `json:"MidasEnvironment,omitempty" name:"MidasEnvironment"`
 }
 
 func (r *QueryBalanceRequest) ToJsonString() string {
@@ -5051,6 +5180,19 @@ type UnBindAcctRequest struct {
 
 	// 按照聚鑫安全密钥计算的签名
 	MidasSignature *string `json:"MidasSignature,omitempty" name:"MidasSignature"`
+
+	// 敏感信息加密类型:
+	// RSA: rsa非对称加密，使用RSA-PKCS1-v1_5
+	// AES: aes对称加密，使用AES256-CBC-PCKS7padding
+	// 缺省: RSA
+	EncryptType *string `json:"EncryptType,omitempty" name:"EncryptType"`
+
+	// 环境名:
+	// release: 现网环境
+	// sandbox: 沙箱环境
+	// development: 开发环境
+	// 缺省: release
+	MidasEnvironment *string `json:"MidasEnvironment,omitempty" name:"MidasEnvironment"`
 }
 
 func (r *UnBindAcctRequest) ToJsonString() string {

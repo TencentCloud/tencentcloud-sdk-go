@@ -1,30 +1,57 @@
 # 本版本更新包含以下内容：
 
-## 内容安全(cms) 版本：2019-03-21
+## 企业收付平台(cpdp) 版本：2019-08-20
 
-### 第 11 次发布
+### 第 16 次发布
 
-发布时间：2020-05-27 08:08:35
+发布时间：2020-05-29 08:19:58
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-<font color="#dd0000">**删除接口**：</font>
+新增接口：
 
-* CommonMediaRecognition
+* [QueryAgentStatements](https://cloud.tencent.com/document/api/1122/44968)
 
-<font color="#dd0000">**删除数据结构**：</font>
+修改接口：
 
-* CallBackAck
-* CallBackData
-* ContentMsgGjh
-* MediaGjh
-* MediaInfoTypeGjh
-* MessageCommonGjh
-* MessageContentGjh
-* MessageIdGjh
-* UserInfoGjh
+* [ApplyWithdrawal](https://cloud.tencent.com/document/api/1122/40682)
+
+	* 新增入参：EncryptType, MidasEnvironment
+
+* [BindAcct](https://cloud.tencent.com/document/api/1122/40681)
+
+	* 新增入参：MidasEnvironment
+
+* [CheckAcct](https://cloud.tencent.com/document/api/1122/40677)
+
+	* 新增入参：EncryptType, MidasEnvironment
+
+* [CreateAcct](https://cloud.tencent.com/document/api/1122/40674)
+
+	* 新增入参：MidasEnvironment
+
+* [QueryAcctBinding](https://cloud.tencent.com/document/api/1122/42434)
+
+	* 新增入参：EncryptType, MidasEnvironment
+
+* [QueryAcctInfo](https://cloud.tencent.com/document/api/1122/43407)
+
+	* 新增入参：EncryptType, MidasEnvironment
+
+* [QueryAcctInfoList](https://cloud.tencent.com/document/api/1122/43406)
+
+	* 新增入参：EncryptType, MidasEnvironment
+
+* [QueryBalance](https://cloud.tencent.com/document/api/1122/40670)
+
+	* 新增入参：MidasEnvironment
+
+* [UnBindAcct](https://cloud.tencent.com/document/api/1122/40651)
+
+	* 新增入参：EncryptType, MidasEnvironment
+
 
 
 
@@ -7428,6 +7455,57 @@
 
 
 ## 企业收付平台(cpdp) 版本：2019-08-20
+
+### 第 16 次发布
+
+发布时间：2020-05-29 08:19:58
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[QueryAgentStatements](https://cloud.tencent.com/document/api/1122/44968)](https://cloud.tencent.com/document/api/#/#)
+
+修改接口：
+
+* [ApplyWithdrawal](https://cloud.tencent.com/document/api/1122/40682)
+
+	* 新增入参：EncryptType, MidasEnvironment
+
+* [BindAcct](https://cloud.tencent.com/document/api/1122/40681)
+
+	* 新增入参：MidasEnvironment
+
+* [CheckAcct](https://cloud.tencent.com/document/api/1122/40677)
+
+	* 新增入参：EncryptType, MidasEnvironment
+
+* [CreateAcct](https://cloud.tencent.com/document/api/1122/40674)
+
+	* 新增入参：MidasEnvironment
+
+* [QueryAcctBinding](https://cloud.tencent.com/document/api/1122/42434)
+
+	* 新增入参：EncryptType, MidasEnvironment
+
+* [QueryAcctInfo](https://cloud.tencent.com/document/api/1122/43407)
+
+	* 新增入参：EncryptType, MidasEnvironment
+
+* [QueryAcctInfoList](https://cloud.tencent.com/document/api/1122/43406)
+
+	* 新增入参：EncryptType, MidasEnvironment
+
+* [QueryBalance](https://cloud.tencent.com/document/api/1122/40670)
+
+	* 新增入参：MidasEnvironment
+
+* [UnBindAcct](https://cloud.tencent.com/document/api/1122/40651)
+
+	* 新增入参：EncryptType, MidasEnvironment
+
 
 ### 第 15 次发布
 

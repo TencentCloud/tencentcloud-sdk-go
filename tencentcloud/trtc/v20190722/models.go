@@ -541,7 +541,7 @@ type EventMessage struct {
 	// 事件上报的时间戳，unix时间（1589891188801ms)
 	Time *uint64 `json:"Time,omitempty" name:"Time"`
 
-	// 事件Id：分为sdk的事件和webrtc的事件，具体映射，查看：事件ID映射表
+	// 事件Id：分为sdk的事件和webrtc的事件，详情见：附录/事件 ID 映射表：https://cloud.tencent.com/document/product/647/44916
 	EventId *uint64 `json:"EventId,omitempty" name:"EventId"`
 
 	// 事件的第一个参数，如视频分辨率宽

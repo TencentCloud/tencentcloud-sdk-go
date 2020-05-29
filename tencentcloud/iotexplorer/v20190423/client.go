@@ -58,7 +58,7 @@ func NewCallDeviceActionAsyncResponse() (response *CallDeviceActionAsyncResponse
     return
 }
 
-// 提供给用户异步调用设备动作的能力
+// 提供给用户异步调用设备行为的能力
 func (c *Client) CallDeviceActionAsync(request *CallDeviceActionAsyncRequest) (response *CallDeviceActionAsyncResponse, err error) {
     if request == nil {
         request = NewCallDeviceActionAsyncRequest()
@@ -83,7 +83,7 @@ func NewCallDeviceActionSyncResponse() (response *CallDeviceActionSyncResponse) 
     return
 }
 
-// 为用户提供同步调用设备动作的能力。
+// 为用户提供同步调用设备行为的能力。
 func (c *Client) CallDeviceActionSync(request *CallDeviceActionSyncRequest) (response *CallDeviceActionSyncResponse, err error) {
     if request == nil {
         request = NewCallDeviceActionSyncRequest()

@@ -29,7 +29,7 @@ type CallDeviceActionAsyncRequest struct {
 	// 设备名称
 	DeviceName *string `json:"DeviceName,omitempty" name:"DeviceName"`
 
-	// 动作Id
+	// 产品数据模板中行为功能的标识符，由开发者自行根据设备的应用场景定义
 	ActionId *string `json:"ActionId,omitempty" name:"ActionId"`
 
 	// 输入参数
@@ -78,7 +78,7 @@ type CallDeviceActionSyncRequest struct {
 	// 设备名称
 	DeviceName *string `json:"DeviceName,omitempty" name:"DeviceName"`
 
-	// 动作Id
+	// 产品数据模板中行为功能的标识符，由开发者自行根据设备的应用场景定义
 	ActionId *string `json:"ActionId,omitempty" name:"ActionId"`
 
 	// 输入参数
