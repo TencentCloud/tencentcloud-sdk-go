@@ -214,7 +214,7 @@ func NewCreateSubnetResponse() (response *CreateSubnetResponse) {
     return
 }
 
-// 创建子网
+// 创建子网，若创建成功，则此子网会成为此可用区的默认子网。
 func (c *Client) CreateSubnet(request *CreateSubnetRequest) (response *CreateSubnetResponse, err error) {
     if request == nil {
         request = NewCreateSubnetRequest()
@@ -339,7 +339,7 @@ func NewDeleteSubnetResponse() (response *DeleteSubnetResponse) {
     return
 }
 
-// 删除子网
+// 删除子网，若子网为可用区下的默认子网，则默认子网会回退到系统自动创建的默认子网，非用户最新创建的子网。若默认子网不满足需求，可调用设置默认子网接口设置。
 func (c *Client) DeleteSubnet(request *DeleteSubnetRequest) (response *DeleteSubnetResponse, err error) {
     if request == nil {
         request = NewDeleteSubnetRequest()
@@ -470,6 +470,31 @@ func (c *Client) DescribeConfig(request *DescribeConfigRequest) (response *Descr
         request = NewDescribeConfigRequest()
     }
     response = NewDescribeConfigResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeDefaultSubnetRequest() (request *DescribeDefaultSubnetRequest) {
+    request = &DescribeDefaultSubnetRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ecm", APIVersion, "DescribeDefaultSubnet")
+    return
+}
+
+func NewDescribeDefaultSubnetResponse() (response *DescribeDefaultSubnetResponse) {
+    response = &DescribeDefaultSubnetResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询可用区的默认子网
+func (c *Client) DescribeDefaultSubnet(request *DescribeDefaultSubnetRequest) (response *DescribeDefaultSubnetResponse, err error) {
+    if request == nil {
+        request = NewDescribeDefaultSubnetRequest()
+    }
+    response = NewDescribeDefaultSubnetResponse()
     err = c.Send(request, response)
     return
 }
@@ -999,6 +1024,31 @@ func (c *Client) ModifyAddressesBandwidth(request *ModifyAddressesBandwidthReque
         request = NewModifyAddressesBandwidthRequest()
     }
     response = NewModifyAddressesBandwidthResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyDefaultSubnetRequest() (request *ModifyDefaultSubnetRequest) {
+    request = &ModifyDefaultSubnetRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ecm", APIVersion, "ModifyDefaultSubnet")
+    return
+}
+
+func NewModifyDefaultSubnetResponse() (response *ModifyDefaultSubnetResponse) {
+    response = &ModifyDefaultSubnetResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 修改在一个可用区下创建实例时使用的默认子网（创建实例时，未填写VPC参数时使用的sunbetId）
+func (c *Client) ModifyDefaultSubnet(request *ModifyDefaultSubnetRequest) (response *ModifyDefaultSubnetResponse, err error) {
+    if request == nil {
+        request = NewModifyDefaultSubnetRequest()
+    }
+    response = NewModifyDefaultSubnetResponse()
     err = c.Send(request, response)
     return
 }

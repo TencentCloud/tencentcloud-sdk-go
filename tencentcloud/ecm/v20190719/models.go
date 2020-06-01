@@ -902,6 +902,46 @@ func (r *DescribeConfigResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeDefaultSubnetRequest struct {
+	*tchttp.BaseRequest
+
+	// ECM地域
+	EcmRegion *string `json:"EcmRegion,omitempty" name:"EcmRegion"`
+
+	// ECM可用区
+	Zone *string `json:"Zone,omitempty" name:"Zone"`
+}
+
+func (r *DescribeDefaultSubnetRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeDefaultSubnetRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeDefaultSubnetResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 默认子网信息，若无子网，则为空数据。
+		Subnet *Subnet `json:"Subnet,omitempty" name:"Subnet"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeDefaultSubnetResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeDefaultSubnetResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeImageRequest struct {
 	*tchttp.BaseRequest
 
@@ -2218,6 +2258,49 @@ func (r *ModifyAddressesBandwidthResponse) ToJsonString() string {
 }
 
 func (r *ModifyAddressesBandwidthResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyDefaultSubnetRequest struct {
+	*tchttp.BaseRequest
+
+	// ECM地域
+	EcmRegion *string `json:"EcmRegion,omitempty" name:"EcmRegion"`
+
+	// ECM可用区
+	Zone *string `json:"Zone,omitempty" name:"Zone"`
+
+	// 私有网络ID
+	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
+
+	// 子网ID
+	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
+}
+
+func (r *ModifyDefaultSubnetRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyDefaultSubnetRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyDefaultSubnetResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifyDefaultSubnetResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyDefaultSubnetResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 

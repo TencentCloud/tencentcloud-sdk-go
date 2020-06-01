@@ -243,6 +243,31 @@ func (c *Client) SetOnlineRecordCallback(request *SetOnlineRecordCallbackRequest
     return
 }
 
+func NewSetOnlineRecordCallbackKeyRequest() (request *SetOnlineRecordCallbackKeyRequest) {
+    request = &SetOnlineRecordCallbackKeyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tiw", APIVersion, "SetOnlineRecordCallbackKey")
+    return
+}
+
+func NewSetOnlineRecordCallbackKeyResponse() (response *SetOnlineRecordCallbackKeyResponse) {
+    response = &SetOnlineRecordCallbackKeyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 设置实时录制回调鉴权密钥
+func (c *Client) SetOnlineRecordCallbackKey(request *SetOnlineRecordCallbackKeyRequest) (response *SetOnlineRecordCallbackKeyResponse, err error) {
+    if request == nil {
+        request = NewSetOnlineRecordCallbackKeyRequest()
+    }
+    response = NewSetOnlineRecordCallbackKeyResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewSetTranscodeCallbackRequest() (request *SetTranscodeCallbackRequest) {
     request = &SetTranscodeCallbackRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -264,6 +289,31 @@ func (c *Client) SetTranscodeCallback(request *SetTranscodeCallbackRequest) (res
         request = NewSetTranscodeCallbackRequest()
     }
     response = NewSetTranscodeCallbackResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewSetTranscodeCallbackKeyRequest() (request *SetTranscodeCallbackKeyRequest) {
+    request = &SetTranscodeCallbackKeyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tiw", APIVersion, "SetTranscodeCallbackKey")
+    return
+}
+
+func NewSetTranscodeCallbackKeyResponse() (response *SetTranscodeCallbackKeyResponse) {
+    response = &SetTranscodeCallbackKeyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 设置文档转码回调鉴权密钥
+func (c *Client) SetTranscodeCallbackKey(request *SetTranscodeCallbackKeyRequest) (response *SetTranscodeCallbackKeyResponse, err error) {
+    if request == nil {
+        request = NewSetTranscodeCallbackKeyRequest()
+    }
+    response = NewSetTranscodeCallbackKeyResponse()
     err = c.Send(request, response)
     return
 }

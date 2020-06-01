@@ -677,6 +677,47 @@ func (r *DescribeExtraPkgBillingInfoResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribePostpayPackageFreeQuotasRequest struct {
+	*tchttp.BaseRequest
+
+	// 环境ID
+	EnvId *string `json:"EnvId,omitempty" name:"EnvId"`
+
+	// 免费额度类型标识
+	FreeQuotaType *string `json:"FreeQuotaType,omitempty" name:"FreeQuotaType"`
+}
+
+func (r *DescribePostpayPackageFreeQuotasRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribePostpayPackageFreeQuotasRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribePostpayPackageFreeQuotasResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 免费量资源信息列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		PackageFreeQuotaInfos []*PackageFreeQuotaInfo `json:"PackageFreeQuotaInfos,omitempty" name:"PackageFreeQuotaInfos" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribePostpayPackageFreeQuotasResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribePostpayPackageFreeQuotasResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeQuotaDataRequest struct {
 	*tchttp.BaseRequest
 
@@ -965,6 +1006,10 @@ type EnvInfo struct {
 	// 是否到期自动降为免费版
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsAutoDegrade *bool `json:"IsAutoDegrade,omitempty" name:"IsAutoDegrade"`
+
+	// 环境渠道
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EnvChannel *string `json:"EnvChannel,omitempty" name:"EnvChannel"`
 }
 
 type FunctionInfo struct {
@@ -1130,6 +1175,41 @@ type OrderInfo struct {
 	// <li>prepayment 预付费</li>
 	// <li>postpaid 后付费</li>
 	PayMode *string `json:"PayMode,omitempty" name:"PayMode"`
+}
+
+type PackageFreeQuotaInfo struct {
+
+	// 资源类型
+	// <li>COS</li>
+	// <li>CDN</li>
+	// <li>FLEXDB</li>
+	// <li>SCF</li>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResourceType *string `json:"ResourceType,omitempty" name:"ResourceType"`
+
+	// 资源指标名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResourceMetric *string `json:"ResourceMetric,omitempty" name:"ResourceMetric"`
+
+	// 资源指标免费量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FreeQuota *int64 `json:"FreeQuota,omitempty" name:"FreeQuota"`
+
+	// 指标单位
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MetricUnit *string `json:"MetricUnit,omitempty" name:"MetricUnit"`
+
+	// 免费量抵扣周期
+	// <li>sum-month:以月为单位抵扣</li>
+	// <li>sum-day:以天为单位抵扣</li>
+	// <li>totalize:总容量抵扣</li>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DeductType *string `json:"DeductType,omitempty" name:"DeductType"`
+
+	// 免费量类型
+	// <li>basic:通用量抵扣</li>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FreeQuotaType *string `json:"FreeQuotaType,omitempty" name:"FreeQuotaType"`
 }
 
 type PlatformStatistic struct {

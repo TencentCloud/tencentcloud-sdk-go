@@ -472,6 +472,43 @@ func (r *ResumeOnlineRecordResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type SetOnlineRecordCallbackKeyRequest struct {
+	*tchttp.BaseRequest
+
+	// 应用的SdkAppId
+	SdkAppId *int64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+
+	// 设置实时录制回调鉴权密钥，最长64字符，如果传入空字符串，那么删除现有的鉴权回调密钥
+	CallbackKey *string `json:"CallbackKey,omitempty" name:"CallbackKey"`
+}
+
+func (r *SetOnlineRecordCallbackKeyRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *SetOnlineRecordCallbackKeyRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type SetOnlineRecordCallbackKeyResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *SetOnlineRecordCallbackKeyResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *SetOnlineRecordCallbackKeyResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type SetOnlineRecordCallbackRequest struct {
 	*tchttp.BaseRequest
 
@@ -506,6 +543,43 @@ func (r *SetOnlineRecordCallbackResponse) ToJsonString() string {
 }
 
 func (r *SetOnlineRecordCallbackResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type SetTranscodeCallbackKeyRequest struct {
+	*tchttp.BaseRequest
+
+	// 应用的SdkAppId
+	SdkAppId *int64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+
+	// 设置文档转码回调鉴权密钥，最长64字符，如果传入空字符串，那么删除现有的鉴权回调密钥
+	CallbackKey *string `json:"CallbackKey,omitempty" name:"CallbackKey"`
+}
+
+func (r *SetTranscodeCallbackKeyRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *SetTranscodeCallbackKeyRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type SetTranscodeCallbackKeyResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *SetTranscodeCallbackKeyResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *SetTranscodeCallbackKeyResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 

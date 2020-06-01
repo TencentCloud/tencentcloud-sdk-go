@@ -739,6 +739,9 @@ type Deal struct {
 
 	// 子产品编码
 	SubProductCode *string `json:"SubProductCode,omitempty" name:"SubProductCode"`
+
+	// 大订单号
+	BigDealId *string `json:"BigDealId,omitempty" name:"BigDealId"`
 }
 
 type DescribeAccountBalanceRequest struct {
@@ -1578,6 +1581,9 @@ type DescribeDealsByCondRequest struct {
 
 	// 订单号
 	OrderId *string `json:"OrderId,omitempty" name:"OrderId"`
+
+	// 大订单号
+	BigDealId *string `json:"BigDealId,omitempty" name:"BigDealId"`
 }
 
 func (r *DescribeDealsByCondRequest) ToJsonString() string {
@@ -1721,7 +1727,7 @@ type DetailSet struct {
 type PayDealsRequest struct {
 	*tchttp.BaseRequest
 
-	// 需要支付的一个或者多个订单号
+	// 需要支付的一个或者多个子订单号，与BigDealIds字段两者必须且仅传一个参数
 	OrderIds []*string `json:"OrderIds,omitempty" name:"OrderIds" list`
 
 	// 是否自动使用代金券,1:是,0否,默认0
@@ -1729,6 +1735,9 @@ type PayDealsRequest struct {
 
 	// 代金券ID列表,目前仅支持指定一张代金券
 	VoucherIds []*string `json:"VoucherIds,omitempty" name:"VoucherIds" list`
+
+	// 需要支付的一个或者多个大订单号，与OrderIds字段两者必须且仅传一个参数
+	BigDealIds []*string `json:"BigDealIds,omitempty" name:"BigDealIds" list`
 }
 
 func (r *PayDealsRequest) ToJsonString() string {
@@ -1744,11 +1753,14 @@ type PayDealsResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 此次操作支付成功的订单号数组
+		// 此次操作支付成功的子订单号数组
 		OrderIds []*string `json:"OrderIds,omitempty" name:"OrderIds" list`
 
 		// 此次操作支付成功的资源Id数组
 		ResourceIds []*string `json:"ResourceIds,omitempty" name:"ResourceIds" list`
+
+		// 此次操作支付成功的大订单号数组
+		BigDealIds []*string `json:"BigDealIds,omitempty" name:"BigDealIds" list`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`

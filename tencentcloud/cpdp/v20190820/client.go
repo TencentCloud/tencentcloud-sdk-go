@@ -58,7 +58,7 @@ func NewApplyApplicationMaterialResponse() (response *ApplyApplicationMaterialRe
     return
 }
 
-// 跨境-提交申报材料
+// 跨境-提交申报材料。申报材料的主体是付款人，需要提前调用【跨境-付款人申请】接口提交付款人信息且审核通过后调用。
 func (c *Client) ApplyApplicationMaterial(request *ApplyApplicationMaterialRequest) (response *ApplyApplicationMaterialResponse, err error) {
     if request == nil {
         request = NewApplyApplicationMaterialRequest()
@@ -83,7 +83,7 @@ func NewApplyOutwardOrderResponse() (response *ApplyOutwardOrderResponse) {
     return
 }
 
-// 跨境-汇出指令申请
+// 跨境-汇出指令申请。通过该接口可将对接方账户中的人民币余额汇兑成外币，再汇出至指定银行账户。
 func (c *Client) ApplyOutwardOrder(request *ApplyOutwardOrderRequest) (response *ApplyOutwardOrderResponse, err error) {
     if request == nil {
         request = NewApplyOutwardOrderRequest()
@@ -108,7 +108,7 @@ func NewApplyPayerInfoResponse() (response *ApplyPayerInfoResponse) {
     return
 }
 
-// 跨境-付款人申请
+// 跨境-付款人申请。通过该接口提交付款人信息并进行 kyc 审核。
 func (c *Client) ApplyPayerInfo(request *ApplyPayerInfoRequest) (response *ApplyPayerInfoResponse, err error) {
     if request == nil {
         request = NewApplyPayerInfoRequest()
@@ -158,7 +158,7 @@ func NewApplyTradeResponse() (response *ApplyTradeResponse) {
     return
 }
 
-// 跨境-提交贸易材料
+// 跨境-提交贸易材料。通过提交贸易材料接口可为对接方累计贸易额度，在额度范围内可发起汇兑汇出交易。
 func (c *Client) ApplyTrade(request *ApplyTradeRequest) (response *ApplyTradeResponse, err error) {
     if request == nil {
         request = NewApplyTradeRequest()
@@ -791,7 +791,7 @@ func NewQueryApplicationMaterialResponse() (response *QueryApplicationMaterialRe
     return
 }
 
-// 跨境-成功申报材料查询
+// 跨境-成功申报材料查询。查询成功入库的申报材料。
 func (c *Client) QueryApplicationMaterial(request *QueryApplicationMaterialRequest) (response *QueryApplicationMaterialResponse, err error) {
     if request == nil {
         request = NewQueryApplicationMaterialRequest()
@@ -1292,7 +1292,7 @@ func NewQueryTradeResponse() (response *QueryTradeResponse) {
     return
 }
 
-// 跨境-贸易材料明细查询
+// 跨境-贸易材料明细查询。
 func (c *Client) QueryTrade(request *QueryTradeRequest) (response *QueryTradeResponse, err error) {
     if request == nil {
         request = NewQueryTradeRequest()

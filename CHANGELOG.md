@@ -1,10 +1,44 @@
 # 本版本更新包含以下内容：
 
-## 企业收付平台(cpdp) 版本：2019-08-20
+## 计费相关(billing) 版本：2018-07-09
 
-### 第 16 次发布
+### 第 18 次发布
 
-发布时间：2020-05-29 08:19:58
+发布时间：2020-06-01 08:05:12
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeDealsByCond](https://cloud.tencent.com/document/api/555/19179)
+
+	* 新增入参：BigDealId
+
+* [PayDeals](https://cloud.tencent.com/document/api/555/19178)
+
+	* 新增入参：BigDealIds
+
+	* <font color="#dd0000">**修改入参**：</font>OrderIds
+
+	* 新增出参：BigDealIds
+
+
+修改数据结构：
+
+* [Deal](https://cloud.tencent.com/document/api/555/19183#Deal)
+
+	* 新增成员：BigDealId
+
+
+
+
+## 边缘计算模块(ecm) 版本：2019-07-19
+
+### 第 12 次发布
+
+发布时间：2020-06-01 08:02:08
 
 本次发布包含了以下内容：
 
@@ -12,46 +46,142 @@
 
 新增接口：
 
-* [QueryAgentStatements](https://cloud.tencent.com/document/api/1122/44968)
+* [DescribeDefaultSubnet](https://cloud.tencent.com/document/api/1108/45039)
+* [ModifyDefaultSubnet](https://cloud.tencent.com/document/api/1108/45038)
+
+
+
+## 人脸识别(iai) 版本：2020-03-03
+
+### 第 1 次发布
+
+发布时间：2020-05-29 14:24:56
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [AnalyzeFace](https://cloud.tencent.com/document/api/867/45019)
+* [CheckSimilarPerson](https://cloud.tencent.com/document/api/867/44999)
+* [CompareFace](https://cloud.tencent.com/document/api/867/44987)
+* [CopyPerson](https://cloud.tencent.com/document/api/867/45017)
+* [CreateFace](https://cloud.tencent.com/document/api/867/45016)
+* [CreateGroup](https://cloud.tencent.com/document/api/867/45015)
+* [CreatePerson](https://cloud.tencent.com/document/api/867/45014)
+* [DeleteFace](https://cloud.tencent.com/document/api/867/45013)
+* [DeleteGroup](https://cloud.tencent.com/document/api/867/45012)
+* [DeletePerson](https://cloud.tencent.com/document/api/867/45011)
+* [DeletePersonFromGroup](https://cloud.tencent.com/document/api/867/45010)
+* [DetectFace](https://cloud.tencent.com/document/api/867/44989)
+* [DetectLiveFace](https://cloud.tencent.com/document/api/867/44985)
+* [EstimateCheckSimilarPersonCostTime](https://cloud.tencent.com/document/api/867/44998)
+* [GetCheckSimilarPersonJobIdList](https://cloud.tencent.com/document/api/867/44997)
+* [GetGroupInfo](https://cloud.tencent.com/document/api/867/45009)
+* [GetGroupList](https://cloud.tencent.com/document/api/867/45008)
+* [GetPersonBaseInfo](https://cloud.tencent.com/document/api/867/45007)
+* [GetPersonGroupInfo](https://cloud.tencent.com/document/api/867/45006)
+* [GetPersonList](https://cloud.tencent.com/document/api/867/45005)
+* [GetPersonListNum](https://cloud.tencent.com/document/api/867/45004)
+* [GetSimilarPersonResult](https://cloud.tencent.com/document/api/867/44996)
+* [ModifyGroup](https://cloud.tencent.com/document/api/867/45003)
+* [ModifyPersonBaseInfo](https://cloud.tencent.com/document/api/867/45002)
+* [ModifyPersonGroupInfo](https://cloud.tencent.com/document/api/867/45001)
+* [SearchFaces](https://cloud.tencent.com/document/api/867/44994)
+* [SearchFacesReturnsByGroup](https://cloud.tencent.com/document/api/867/44993)
+* [SearchPersons](https://cloud.tencent.com/document/api/867/44992)
+* [SearchPersonsReturnsByGroup](https://cloud.tencent.com/document/api/867/44991)
+* [VerifyFace](https://cloud.tencent.com/document/api/867/44983)
+* [VerifyPerson](https://cloud.tencent.com/document/api/867/44982)
+
+新增数据结构：
+
+* [Candidate](https://cloud.tencent.com/document/api/867/45020#Candidate)
+* [FaceAttributesInfo](https://cloud.tencent.com/document/api/867/45020#FaceAttributesInfo)
+* [FaceHairAttributesInfo](https://cloud.tencent.com/document/api/867/45020#FaceHairAttributesInfo)
+* [FaceInfo](https://cloud.tencent.com/document/api/867/45020#FaceInfo)
+* [FaceQualityCompleteness](https://cloud.tencent.com/document/api/867/45020#FaceQualityCompleteness)
+* [FaceQualityInfo](https://cloud.tencent.com/document/api/867/45020#FaceQualityInfo)
+* [FaceRect](https://cloud.tencent.com/document/api/867/45020#FaceRect)
+* [FaceShape](https://cloud.tencent.com/document/api/867/45020#FaceShape)
+* [GroupCandidate](https://cloud.tencent.com/document/api/867/45020#GroupCandidate)
+* [GroupExDescriptionInfo](https://cloud.tencent.com/document/api/867/45020#GroupExDescriptionInfo)
+* [GroupInfo](https://cloud.tencent.com/document/api/867/45020#GroupInfo)
+* [JobIdInfo](https://cloud.tencent.com/document/api/867/45020#JobIdInfo)
+* [PersonExDescriptionInfo](https://cloud.tencent.com/document/api/867/45020#PersonExDescriptionInfo)
+* [PersonGroupInfo](https://cloud.tencent.com/document/api/867/45020#PersonGroupInfo)
+* [PersonInfo](https://cloud.tencent.com/document/api/867/45020#PersonInfo)
+* [Point](https://cloud.tencent.com/document/api/867/45020#Point)
+* [Result](https://cloud.tencent.com/document/api/867/45020#Result)
+* [ResultsReturnsByGroup](https://cloud.tencent.com/document/api/867/45020#ResultsReturnsByGroup)
+
+
+
+## 人脸识别(iai) 版本：2018-03-01
+
+
+
+## 云开发(tcb) 版本：2018-06-08
+
+### 第 9 次发布
+
+发布时间：2020-06-01 08:17:35
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribePostpayPackageFreeQuotas](https://cloud.tencent.com/document/api/876/45040)
+
+新增数据结构：
+
+* [PackageFreeQuotaInfo](https://cloud.tencent.com/document/api/876/34822#PackageFreeQuotaInfo)
+
+修改数据结构：
+
+* [EnvInfo](https://cloud.tencent.com/document/api/876/34822#EnvInfo)
+
+	* 新增成员：EnvChannel
+
+
+
+
+## 图像分析(tiia) 版本：2019-05-29
+
+### 第 12 次发布
+
+发布时间：2020-06-01 08:17:59
+
+本次发布包含了以下内容：
+
+改善已有的文档。
 
 修改接口：
 
-* [ApplyWithdrawal](https://cloud.tencent.com/document/api/1122/40682)
+* [DetectLabel](https://cloud.tencent.com/document/api/865/35471)
 
-	* 新增入参：EncryptType, MidasEnvironment
+	* 新增出参：NewsLabels
 
-* [BindAcct](https://cloud.tencent.com/document/api/1122/40681)
 
-	* 新增入参：MidasEnvironment
 
-* [CheckAcct](https://cloud.tencent.com/document/api/1122/40677)
 
-	* 新增入参：EncryptType, MidasEnvironment
+## 互动白板(tiw) 版本：2019-09-19
 
-* [CreateAcct](https://cloud.tencent.com/document/api/1122/40674)
+### 第 4 次发布
 
-	* 新增入参：MidasEnvironment
+发布时间：2020-06-01 08:21:16
 
-* [QueryAcctBinding](https://cloud.tencent.com/document/api/1122/42434)
+本次发布包含了以下内容：
 
-	* 新增入参：EncryptType, MidasEnvironment
+改善已有的文档。
 
-* [QueryAcctInfo](https://cloud.tencent.com/document/api/1122/43407)
+新增接口：
 
-	* 新增入参：EncryptType, MidasEnvironment
-
-* [QueryAcctInfoList](https://cloud.tencent.com/document/api/1122/43406)
-
-	* 新增入参：EncryptType, MidasEnvironment
-
-* [QueryBalance](https://cloud.tencent.com/document/api/1122/40670)
-
-	* 新增入参：MidasEnvironment
-
-* [UnBindAcct](https://cloud.tencent.com/document/api/1122/40651)
-
-	* 新增入参：EncryptType, MidasEnvironment
-
+* [SetOnlineRecordCallbackKey](https://cloud.tencent.com/document/api/1137/45042)
+* [SetTranscodeCallbackKey](https://cloud.tencent.com/document/api/1137/45041)
 
 
 
@@ -1840,6 +1970,36 @@
 
 
 ## 计费相关(billing) 版本：2018-07-09
+
+### 第 18 次发布
+
+发布时间：2020-06-01 08:05:12
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeDealsByCond](https://cloud.tencent.com/document/api/555/19179)
+
+	* 新增入参：BigDealId
+
+* [PayDeals](https://cloud.tencent.com/document/api/555/19178)
+
+	* 新增入参：BigDealIds
+
+	* <font color="#dd0000">**修改入参**：</font>OrderIds
+
+	* 新增出参：BigDealIds
+
+
+修改数据结构：
+
+* [Deal](https://cloud.tencent.com/document/api/555/19183#Deal)
+
+	* 新增成员：BigDealId
+
 
 ### 第 17 次发布
 
@@ -7466,7 +7626,7 @@
 
 新增接口：
 
-* [[QueryAgentStatements](https://cloud.tencent.com/document/api/1122/44968)](https://cloud.tencent.com/document/api/#/#)
+* [QueryAgentStatements](https://cloud.tencent.com/document/api/1122/44968)
 
 修改接口：
 
@@ -10559,6 +10719,19 @@
 
 ## 边缘计算模块(ecm) 版本：2019-07-19
 
+### 第 12 次发布
+
+发布时间：2020-06-01 08:02:08
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeDefaultSubnet](https://cloud.tencent.com/document/api/1108/45039)](https://cloud.tencent.com/document/api/#/#)
+* [[ModifyDefaultSubnet](https://cloud.tencent.com/document/api/1108/45038)](https://cloud.tencent.com/document/api/#/#)
+
 ### 第 11 次发布
 
 发布时间：2020-05-22 19:56:07
@@ -12986,6 +13159,73 @@
 * [PersonInfo](https://cloud.tencent.com/document/api/867/32807#PersonInfo)
 * [Point](https://cloud.tencent.com/document/api/867/32807#Point)
 * [Result](https://cloud.tencent.com/document/api/867/32807#Result)
+
+
+
+## 人脸识别(iai) 版本：2020-03-03
+
+### 第 1 次发布
+
+发布时间：2020-05-29 14:24:56
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[AnalyzeFace](https://cloud.tencent.com/document/api/867/45019)](https://cloud.tencent.com/document/api/#/#)
+* [[CheckSimilarPerson](https://cloud.tencent.com/document/api/867/44999)](https://cloud.tencent.com/document/api/#/#)
+* [[CompareFace](https://cloud.tencent.com/document/api/867/44987)](https://cloud.tencent.com/document/api/#/#)
+* [[CopyPerson](https://cloud.tencent.com/document/api/867/45017)](https://cloud.tencent.com/document/api/#/#)
+* [[CreateFace](https://cloud.tencent.com/document/api/867/45016)](https://cloud.tencent.com/document/api/#/#)
+* [[CreateGroup](https://cloud.tencent.com/document/api/867/45015)](https://cloud.tencent.com/document/api/#/#)
+* [[CreatePerson](https://cloud.tencent.com/document/api/867/45014)](https://cloud.tencent.com/document/api/#/#)
+* [[DeleteFace](https://cloud.tencent.com/document/api/867/45013)](https://cloud.tencent.com/document/api/#/#)
+* [[DeleteGroup](https://cloud.tencent.com/document/api/867/45012)](https://cloud.tencent.com/document/api/#/#)
+* [[DeletePerson](https://cloud.tencent.com/document/api/867/45011)](https://cloud.tencent.com/document/api/#/#)
+* [[DeletePersonFromGroup](https://cloud.tencent.com/document/api/867/45010)](https://cloud.tencent.com/document/api/#/#)
+* [[DetectFace](https://cloud.tencent.com/document/api/867/44989)](https://cloud.tencent.com/document/api/#/#)
+* [[DetectLiveFace](https://cloud.tencent.com/document/api/867/44985)](https://cloud.tencent.com/document/api/#/#)
+* [[EstimateCheckSimilarPersonCostTime](https://cloud.tencent.com/document/api/867/44998)](https://cloud.tencent.com/document/api/#/#)
+* [[GetCheckSimilarPersonJobIdList](https://cloud.tencent.com/document/api/867/44997)](https://cloud.tencent.com/document/api/#/#)
+* [[GetGroupInfo](https://cloud.tencent.com/document/api/867/45009)](https://cloud.tencent.com/document/api/#/#)
+* [[GetGroupList](https://cloud.tencent.com/document/api/867/45008)](https://cloud.tencent.com/document/api/#/#)
+* [[GetPersonBaseInfo](https://cloud.tencent.com/document/api/867/45007)](https://cloud.tencent.com/document/api/#/#)
+* [[GetPersonGroupInfo](https://cloud.tencent.com/document/api/867/45006)](https://cloud.tencent.com/document/api/#/#)
+* [[GetPersonList](https://cloud.tencent.com/document/api/867/45005)](https://cloud.tencent.com/document/api/#/#)
+* [[GetPersonListNum](https://cloud.tencent.com/document/api/867/45004)](https://cloud.tencent.com/document/api/#/#)
+* [[GetSimilarPersonResult](https://cloud.tencent.com/document/api/867/44996)](https://cloud.tencent.com/document/api/#/#)
+* [[ModifyGroup](https://cloud.tencent.com/document/api/867/45003)](https://cloud.tencent.com/document/api/#/#)
+* [[ModifyPersonBaseInfo](https://cloud.tencent.com/document/api/867/45002)](https://cloud.tencent.com/document/api/#/#)
+* [[ModifyPersonGroupInfo](https://cloud.tencent.com/document/api/867/45001)](https://cloud.tencent.com/document/api/#/#)
+* [[SearchFaces](https://cloud.tencent.com/document/api/867/44994)](https://cloud.tencent.com/document/api/#/#)
+* [[SearchFacesReturnsByGroup](https://cloud.tencent.com/document/api/867/44993)](https://cloud.tencent.com/document/api/#/#)
+* [[SearchPersons](https://cloud.tencent.com/document/api/867/44992)](https://cloud.tencent.com/document/api/#/#)
+* [[SearchPersonsReturnsByGroup](https://cloud.tencent.com/document/api/867/44991)](https://cloud.tencent.com/document/api/#/#)
+* [[VerifyFace](https://cloud.tencent.com/document/api/867/44983)](https://cloud.tencent.com/document/api/#/#)
+* [[VerifyPerson](https://cloud.tencent.com/document/api/867/44982)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[Candidate](https://cloud.tencent.com/document/api/867/45020#Candidate)](https://cloud.tencent.com/document/api/867/45020#[Candidate](https://cloud.tencent.com/document/api/867/45020#Candidate))
+* [[FaceAttributesInfo](https://cloud.tencent.com/document/api/867/45020#FaceAttributesInfo)](https://cloud.tencent.com/document/api/867/45020#[FaceAttributesInfo](https://cloud.tencent.com/document/api/867/45020#FaceAttributesInfo))
+* [[FaceHairAttributesInfo](https://cloud.tencent.com/document/api/867/45020#FaceHairAttributesInfo)](https://cloud.tencent.com/document/api/867/45020#[FaceHairAttributesInfo](https://cloud.tencent.com/document/api/867/45020#FaceHairAttributesInfo))
+* [[FaceInfo](https://cloud.tencent.com/document/api/867/45020#FaceInfo)](https://cloud.tencent.com/document/api/867/45020#[FaceInfo](https://cloud.tencent.com/document/api/867/45020#FaceInfo))
+* [[FaceQualityCompleteness](https://cloud.tencent.com/document/api/867/45020#FaceQualityCompleteness)](https://cloud.tencent.com/document/api/867/45020#[FaceQualityCompleteness](https://cloud.tencent.com/document/api/867/45020#FaceQualityCompleteness))
+* [[FaceQualityInfo](https://cloud.tencent.com/document/api/867/45020#FaceQualityInfo)](https://cloud.tencent.com/document/api/867/45020#[FaceQualityInfo](https://cloud.tencent.com/document/api/867/45020#FaceQualityInfo))
+* [[FaceRect](https://cloud.tencent.com/document/api/867/45020#FaceRect)](https://cloud.tencent.com/document/api/867/45020#[FaceRect](https://cloud.tencent.com/document/api/867/45020#FaceRect))
+* [[FaceShape](https://cloud.tencent.com/document/api/867/45020#FaceShape)](https://cloud.tencent.com/document/api/867/45020#[FaceShape](https://cloud.tencent.com/document/api/867/45020#FaceShape))
+* [[GroupCandidate](https://cloud.tencent.com/document/api/867/45020#GroupCandidate)](https://cloud.tencent.com/document/api/867/45020#[GroupCandidate](https://cloud.tencent.com/document/api/867/45020#GroupCandidate))
+* [[GroupExDescriptionInfo](https://cloud.tencent.com/document/api/867/45020#GroupExDescriptionInfo)](https://cloud.tencent.com/document/api/867/45020#[GroupExDescriptionInfo](https://cloud.tencent.com/document/api/867/45020#GroupExDescriptionInfo))
+* [[GroupInfo](https://cloud.tencent.com/document/api/867/45020#GroupInfo)](https://cloud.tencent.com/document/api/867/45020#[GroupInfo](https://cloud.tencent.com/document/api/867/45020#GroupInfo))
+* [[JobIdInfo](https://cloud.tencent.com/document/api/867/45020#JobIdInfo)](https://cloud.tencent.com/document/api/867/45020#[JobIdInfo](https://cloud.tencent.com/document/api/867/45020#JobIdInfo))
+* [[PersonExDescriptionInfo](https://cloud.tencent.com/document/api/867/45020#PersonExDescriptionInfo)](https://cloud.tencent.com/document/api/867/45020#[PersonExDescriptionInfo](https://cloud.tencent.com/document/api/867/45020#PersonExDescriptionInfo))
+* [[PersonGroupInfo](https://cloud.tencent.com/document/api/867/45020#PersonGroupInfo)](https://cloud.tencent.com/document/api/867/45020#[PersonGroupInfo](https://cloud.tencent.com/document/api/867/45020#PersonGroupInfo))
+* [[PersonInfo](https://cloud.tencent.com/document/api/867/45020#PersonInfo)](https://cloud.tencent.com/document/api/867/45020#[PersonInfo](https://cloud.tencent.com/document/api/867/45020#PersonInfo))
+* [[Point](https://cloud.tencent.com/document/api/867/45020#Point)](https://cloud.tencent.com/document/api/867/45020#[Point](https://cloud.tencent.com/document/api/867/45020#Point))
+* [[Result](https://cloud.tencent.com/document/api/867/45020#Result)](https://cloud.tencent.com/document/api/867/45020#[Result](https://cloud.tencent.com/document/api/867/45020#Result))
+* [[ResultsReturnsByGroup](https://cloud.tencent.com/document/api/867/45020#ResultsReturnsByGroup)](https://cloud.tencent.com/document/api/867/45020#[ResultsReturnsByGroup](https://cloud.tencent.com/document/api/867/45020#ResultsReturnsByGroup))
 
 
 
@@ -21137,6 +21377,29 @@
 
 ## 云开发(tcb) 版本：2018-06-08
 
+### 第 9 次发布
+
+发布时间：2020-06-01 08:17:35
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribePostpayPackageFreeQuotas](https://cloud.tencent.com/document/api/876/45040)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[PackageFreeQuotaInfo](https://cloud.tencent.com/document/api/876/34822#PackageFreeQuotaInfo)](https://cloud.tencent.com/document/api/876/34822#[PackageFreeQuotaInfo](https://cloud.tencent.com/document/api/876/34822#PackageFreeQuotaInfo))
+
+修改数据结构：
+
+* [EnvInfo](https://cloud.tencent.com/document/api/876/34822#EnvInfo)
+
+	* 新增成员：EnvChannel
+
+
 ### 第 8 次发布
 
 发布时间：2020-05-20 08:16:58
@@ -22382,6 +22645,21 @@
 
 ## 图像分析(tiia) 版本：2019-05-29
 
+### 第 12 次发布
+
+发布时间：2020-06-01 08:17:59
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DetectLabel](https://cloud.tencent.com/document/api/865/35471)
+
+	* 新增出参：NewsLabels
+
+
 ### 第 11 次发布
 
 发布时间：2020-04-23 08:16:03
@@ -22757,6 +23035,19 @@
 
 
 ## 互动白板(tiw) 版本：2019-09-19
+
+### 第 4 次发布
+
+发布时间：2020-06-01 08:21:16
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[SetOnlineRecordCallbackKey](https://cloud.tencent.com/document/api/1137/45042)](https://cloud.tencent.com/document/api/#/#)
+* [[SetTranscodeCallbackKey](https://cloud.tencent.com/document/api/1137/45041)](https://cloud.tencent.com/document/api/#/#)
 
 ### 第 3 次发布
 

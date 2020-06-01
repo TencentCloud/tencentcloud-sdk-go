@@ -227,7 +227,7 @@ type ApplyOutwardOrderRequest struct {
 	// 目的币种
 	TargetCurrency *string `json:"TargetCurrency,omitempty" name:"TargetCurrency"`
 
-	// 收款人类型
+	// 收款人类型（银行卡填"BANK_ACCOUNT"）
 	PayeeType *string `json:"PayeeType,omitempty" name:"PayeeType"`
 
 	// 收款人账号
@@ -239,28 +239,30 @@ type ApplyOutwardOrderRequest struct {
 	// 目的金额
 	TargetAmount *float64 `json:"TargetAmount,omitempty" name:"TargetAmount"`
 
-	// 收款人姓名
+	// 收款人姓名（PayeeType为"BANK_COUNT"时必填）
 	PayeeName *string `json:"PayeeName,omitempty" name:"PayeeName"`
 
-	// 收款人地址
+	// 收款人地址（PayeeType为"BANK_COUNT"时必填）
 	PayeeAddress *string `json:"PayeeAddress,omitempty" name:"PayeeAddress"`
 
-	// 收款人银行账号类型
+	// 收款人银行账号类型（PayeeType为"BANK_COUNT"时必填）
+	// 个人填"INDIVIDUAL"
+	// 企业填"CORPORATE"
 	PayeeBankAccountType *string `json:"PayeeBankAccountType,omitempty" name:"PayeeBankAccountType"`
 
-	// 收款人国家或地区编码
+	// 收款人国家或地区编码（PayeeType为"BANK_COUNT"时必填）
 	PayeeCountryCode *string `json:"PayeeCountryCode,omitempty" name:"PayeeCountryCode"`
 
-	// 收款人开户银行名称
+	// 收款人开户银行名称（PayeeType为"BANK_COUNT"时必填）
 	PayeeBankName *string `json:"PayeeBankName,omitempty" name:"PayeeBankName"`
 
-	// 收款人开户银行地址
+	// 收款人开户银行地址（PayeeType为"BANK_COUNT"时必填）
 	PayeeBankAddress *string `json:"PayeeBankAddress,omitempty" name:"PayeeBankAddress"`
 
-	// 收款人开户银行所在国家或地区编码
+	// 收款人开户银行所在国家或地区编码（PayeeType为"BANK_COUNT"时必填）
 	PayeeBankDistrict *string `json:"PayeeBankDistrict,omitempty" name:"PayeeBankDistrict"`
 
-	// 收款银行SwiftCode
+	// 收款银行SwiftCode（PayeeType为"BANK_COUNT"时必填）
 	PayeeBankSwiftCode *string `json:"PayeeBankSwiftCode,omitempty" name:"PayeeBankSwiftCode"`
 
 	// 收款银行国际编码类型
@@ -339,7 +341,7 @@ type ApplyPayerInfoRequest struct {
 	// 付款人联系人名称
 	PayerContactName *string `json:"PayerContactName,omitempty" name:"PayerContactName"`
 
-	// 付款人联系电话 (PayerType=CORPORATE 必填)
+	// 付款人联系电话
 	PayerContactNumber *string `json:"PayerContactNumber,omitempty" name:"PayerContactNumber"`
 
 	// 付款人联系邮箱
@@ -486,7 +488,7 @@ type ApplyTradeRequest struct {
 	// 付款人ID
 	PayerId *string `json:"PayerId,omitempty" name:"PayerId"`
 
-	// 付款人姓名
+	// 收款人姓名
 	PayeeName *string `json:"PayeeName,omitempty" name:"PayeeName"`
 
 	// 收款人常驻国家或地区编码 (见常见问题)
