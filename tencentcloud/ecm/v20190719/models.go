@@ -3172,17 +3172,17 @@ type RunInstancesRequest struct {
 	// 需要创建实例的可用区及创建数目及运营商的列表。在单次请求的过程中，单个region下的请求创建实例数上限为100
 	ZoneInstanceCountISPSet []*ZoneInstanceCountISP `json:"ZoneInstanceCountISPSet,omitempty" name:"ZoneInstanceCountISPSet" list`
 
-	// 模块ID
-	ModuleId *string `json:"ModuleId,omitempty" name:"ModuleId"`
-
 	// 实例登录密码。不同操作系统类型密码复杂度限制不一样，具体如下：
 	// Linux实例密码必须8到30位，至少包括两项[a-z]，[A-Z]、[0-9] 和 [( ) ` ~ ! @ # $ % ^ & - + = | { } [ ] : ; ' , . ? / ]中的特殊符。Windows实例密码必须12到30位，至少包括三项[a-z]，[A-Z]，[0-9] 和 [( ) ` ~ ! @ # $ % ^ & - + = | { } [ ] : ; ' , . ? /]中的特殊符号。
 	Password *string `json:"Password,omitempty" name:"Password"`
 
-	// 公网出带宽上限，单位：Mbps
+	// 公网出带宽上限，单位：Mbps。如果未传该参数或者传的值为0，则使用模块下的默认值
 	InternetMaxBandwidthOut *int64 `json:"InternetMaxBandwidthOut,omitempty" name:"InternetMaxBandwidthOut"`
 
-	// 镜像ID，不传则使用模块下的默认值
+	// 模块ID。如果未传该参数，则必须传ImageId，InstanceType，DataDiskSize，InternetMaxBandwidthOut参数
+	ModuleId *string `json:"ModuleId,omitempty" name:"ModuleId"`
+
+	// 镜像ID。如果未传该参数或者传的值为空，则使用模块下的默认值
 	ImageId *string `json:"ImageId,omitempty" name:"ImageId"`
 
 	// 实例显示名称。
@@ -3211,6 +3211,12 @@ type RunInstancesRequest struct {
 
 	// 提供给实例使用的用户数据，需要以 base64 方式编码，支持的最大数据大小为 16KB
 	UserData *string `json:"UserData,omitempty" name:"UserData"`
+
+	// 机型。如果未传该参数或者传的值为空，则使用模块下的默认值
+	InstanceType *string `json:"InstanceType,omitempty" name:"InstanceType"`
+
+	// 数据盘大小，单位是G。如果未传该参数或者传的值为0，则使用模块下的默认值
+	DataDiskSize *int64 `json:"DataDiskSize,omitempty" name:"DataDiskSize"`
 }
 
 func (r *RunInstancesRequest) ToJsonString() string {

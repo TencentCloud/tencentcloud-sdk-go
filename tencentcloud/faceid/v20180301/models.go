@@ -468,6 +468,9 @@ type DetectInfoVideoData struct {
 
 type GetActionSequenceRequest struct {
 	*tchttp.BaseRequest
+
+	// 取值FourAction时 返回四种动作的动作序列
+	ActionType *string `json:"ActionType,omitempty" name:"ActionType"`
 }
 
 func (r *GetActionSequenceRequest) ToJsonString() string {
@@ -904,6 +907,9 @@ type LivenessCompareRequest struct {
 	ValidateData *string `json:"ValidateData,omitempty" name:"ValidateData"`
 
 	// 额外配置，传入JSON字符串。
+	// {
+	// "BestFrameNum": 2  //需要返回多张最佳截图，取值范围1-10
+	// }
 	Optional *string `json:"Optional,omitempty" name:"Optional"`
 }
 
@@ -921,6 +927,7 @@ type LivenessCompareResponse struct {
 	Response *struct {
 
 		// 验证通过后的视频最佳截图照片，照片为BASE64编码后的值，jpg格式。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 		BestFrameBase64 *string `json:"BestFrameBase64,omitempty" name:"BestFrameBase64"`
 
 		// 相似度，取值范围 [0.00, 100.00]。推荐相似度大于等于70时可判断为同一人，可根据具体场景自行调整阈值（阈值70的误通过率为千分之一，阈值80的误通过率是万分之一）。
@@ -931,6 +938,10 @@ type LivenessCompareResponse struct {
 
 		// 业务结果描述。
 		Description *string `json:"Description,omitempty" name:"Description"`
+
+		// 最佳截图列表，仅在配置了返回多张最佳截图时返回。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		BestFrameList []*string `json:"BestFrameList,omitempty" name:"BestFrameList" list`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -969,6 +980,9 @@ type LivenessRecognitionRequest struct {
 	ValidateData *string `json:"ValidateData,omitempty" name:"ValidateData"`
 
 	// 额外配置，传入JSON字符串。
+	// {
+	// "BestFrameNum": 2  //需要返回多张最佳截图，取值范围1-10
+	// }
 	Optional *string `json:"Optional,omitempty" name:"Optional"`
 }
 
@@ -986,6 +1000,7 @@ type LivenessRecognitionResponse struct {
 	Response *struct {
 
 		// 验证通过后的视频最佳截图照片，照片为BASE64编码后的值，jpg格式。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 		BestFrameBase64 *string `json:"BestFrameBase64,omitempty" name:"BestFrameBase64"`
 
 		// 相似度，取值范围 [0.00, 100.00]。推荐相似度大于等于70时可判断为同一人，可根据具体场景自行调整阈值（阈值70的误通过率为千分之一，阈值80的误通过率是万分之一）
@@ -996,6 +1011,10 @@ type LivenessRecognitionResponse struct {
 
 		// 业务结果描述。
 		Description *string `json:"Description,omitempty" name:"Description"`
+
+		// 最佳截图列表，仅在配置了返回多张最佳截图时返回。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		BestFrameList []*string `json:"BestFrameList,omitempty" name:"BestFrameList" list`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1015,7 +1034,7 @@ type LivenessRequest struct {
 	*tchttp.BaseRequest
 
 	// 用于活体检测的视频，视频的BASE64值；
-	// BASE64编码后的大小不超过5M，支持mp4、avi、flv格式。
+	// BASE64编码后的大小不超过8M，支持mp4、avi、flv格式。
 	VideoBase64 *string `json:"VideoBase64,omitempty" name:"VideoBase64"`
 
 	// 活体检测类型，取值：LIP/ACTION/SILENT。
@@ -1027,7 +1046,10 @@ type LivenessRequest struct {
 	// 静默模式传参：不需要传递此参数。
 	ValidateData *string `json:"ValidateData,omitempty" name:"ValidateData"`
 
-	// 本接口不需要传递此参数。
+	// 额外配置，传入JSON字符串。
+	// {
+	// "BestFrameNum": 2  //需要返回多张最佳截图，取值范围1-10
+	// }
 	Optional *string `json:"Optional,omitempty" name:"Optional"`
 }
 
@@ -1045,6 +1067,7 @@ type LivenessResponse struct {
 	Response *struct {
 
 		// 验证通过后的视频最佳截图照片，照片为BASE64编码后的值，jpg格式。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 		BestFrameBase64 *string `json:"BestFrameBase64,omitempty" name:"BestFrameBase64"`
 
 		// 业务错误码，成功情况返回Success, 错误情况请参考下方错误码 列表中FailedOperation部分
@@ -1052,6 +1075,10 @@ type LivenessResponse struct {
 
 		// 业务结果描述。
 		Description *string `json:"Description,omitempty" name:"Description"`
+
+		// 最佳最佳截图列表，仅在配置了返回多张最佳截图时有效。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		BestFrameList []*string `json:"BestFrameList,omitempty" name:"BestFrameList" list`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`

@@ -318,6 +318,31 @@ func (c *Client) DescribeSpecInfo(request *DescribeSpecInfoRequest) (response *D
     return
 }
 
+func NewFlushInstanceRouterConfigRequest() (request *FlushInstanceRouterConfigRequest) {
+    request = &FlushInstanceRouterConfigRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("mongodb", APIVersion, "FlushInstanceRouterConfig")
+    return
+}
+
+func NewFlushInstanceRouterConfigResponse() (response *FlushInstanceRouterConfigResponse) {
+    response = &FlushInstanceRouterConfigResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 在所有mongos上执行FlushRouterConfig命令
+func (c *Client) FlushInstanceRouterConfig(request *FlushInstanceRouterConfigRequest) (response *FlushInstanceRouterConfigResponse, err error) {
+    if request == nil {
+        request = NewFlushInstanceRouterConfigRequest()
+    }
+    response = NewFlushInstanceRouterConfigResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewInquirePriceCreateDBInstancesRequest() (request *InquirePriceCreateDBInstancesRequest) {
     request = &InquirePriceCreateDBInstancesRequest{
         BaseRequest: &tchttp.BaseRequest{},

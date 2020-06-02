@@ -466,7 +466,67 @@ func NewGeneralAccurateOCRResponse() (response *GeneralAccurateOCRResponse) {
     return
 }
 
-// 本接口支持图像整体文字的检测和识别，返回文字框位置与文字内容。相比通用印刷体识别接口，高精度版在英文、数字、小字、模糊字、倾斜文本行等困难场景下，准确率和召回率更高。
+// 本接口支持图像整体文字的检测和识别。支持中文、英文、中英文、数字和特殊字符号的识别，并返回文字框位置和文字内容。
+// 
+// 适用于文字较多、版式复杂、对识别准召率要求较高的场景，如试卷试题、网络图片、街景店招牌、法律卷宗等场景。
+// 
+// 产品优势：与通用印刷体识别的基础上，提供更高精度的文字识别服务，在文字较多、长串数字、小字、模糊字、倾斜文本等困难场景下，高精度版的准确率和召回率更高。
+// 
+// 通用印刷体识别不同版本的差异如下：
+// <table style="width:715px">
+//       <thead>
+//         <tr>
+//           <th style="width:150px"></th>
+//           <th >【荐】通用印刷体识别（高精度版）</th>
+//           <th style="width:200px"><a href="https://cloud.tencent.com/document/product/866/33526">【荐】通用印刷体识别</a></th>
+//           <th><a href="https://cloud.tencent.com/document/product/866/37831">通用印刷体识别（精简版）</a></th>
+//         </tr>
+//       </thead>
+//       <tbody>
+//         <tr>
+//           <td> 适用场景</td>
+//           <td>适用于文字较多、长串数字、小字、模糊字、倾斜文本等困难场景</td>
+//           <td>适用于所有通用场景的印刷体识别</td>
+//           <td>适用于快速文本识别场景，准召率有一定损失，价格更优惠</td>
+//         </tr>
+//         <tr>
+//           <td>识别准确率</td>
+//           <td>99%</td>
+//           <td>96%</td>
+//           <td>91%</td>
+//         </tr>
+//         <tr>
+//           <td>价格</td>
+//           <td>高</td>
+//           <td>中</td>
+//           <td>低</td>
+//         </tr>
+//         <tr>
+//           <td>支持的语言</td>
+//           <td>中文、英文、中英文</td>
+//           <td>中文、英文、中英文、日语、韩语、西班牙语、法语、德语、葡萄牙语、越南语、马来语、俄语、意大利语、荷兰语、瑞典语、芬兰语、丹麦语、挪威语、匈牙利语、泰语</td>  
+//           <td>中文、英文、中英文</td>
+//         </tr>
+//         <tr>
+//           <td>自动语言检测</td>
+//           <td>支持</td>
+//           <td>支持</td>  
+//           <td>支持</td>
+//         </tr>
+//         <tr>
+//           <td>返回文本行坐标</td>
+//           <td>支持</td>
+//           <td>支持</td>
+//           <td>支持</td>
+//         </tr>
+//         <tr>
+//           <td>自动旋转纠正</td>
+//           <td>支持旋转识别，不支持角度返回</td>
+//           <td>支持旋转识别，返回角度信息</td>
+//           <td>支持旋转识别，返回角度信息</td>
+//         </tr>
+//       </tbody>
+//     </table>
 func (c *Client) GeneralAccurateOCR(request *GeneralAccurateOCRRequest) (response *GeneralAccurateOCRResponse, err error) {
     if request == nil {
         request = NewGeneralAccurateOCRRequest()
@@ -491,7 +551,67 @@ func NewGeneralBasicOCRResponse() (response *GeneralBasicOCRResponse) {
     return
 }
 
-// 本接口支持多场景、任意版面下整图文字的识别。支持自动识别语言类型，同时支持自选语言种类（推荐），除中英文外，支持日语、韩语、西班牙语、法语、德语、葡萄牙语、越南语、马来语、俄语、意大利语、荷兰语、瑞典语、芬兰语、丹麦语、挪威语、匈牙利语、泰语等多种语言。应用场景包括：印刷文档识别、网络图片识别、广告图文字识别、街景店招识别、菜单识别、视频标题识别、头像文字识别等。
+// 本接口支持图像整体文字的检测和识别。可以识别中文、英文、中英文、日语、韩语、西班牙语、法语、德语、葡萄牙语、越南语、马来语、俄语、意大利语、荷兰语、瑞典语、芬兰语、丹麦语、挪威语、匈牙利语、泰语19种语言，且各种语言均支持与英文混合的文字识别。
+// 
+// 适用于印刷文档识别、网络图片识别、广告图文字识别、街景店招牌识别、菜单识别、视频标题识别、头像文字识别等场景。
+// 
+// 产品优势：支持自动识别语言类型，可返回文本框坐标信息，对于倾斜文本支持自动旋转纠正。
+// 
+// 通用印刷体识别不同版本的差异如下：
+// <table style="width:715px">
+//       <thead>
+//         <tr>
+//           <th style="width:150px"></th>
+//           <th style="width:200px">【荐】通用印刷体识别</th>
+//           <th ><a href="https://cloud.tencent.com/document/product/866/34937">【荐】通用印刷体识别（高精度版）</a></th>
+//           <th><a href="https://cloud.tencent.com/document/product/866/37831">通用印刷体识别（精简版）</a></th>
+//         </tr>
+//       </thead>
+//       <tbody>
+//         <tr>
+//           <td> 适用场景</td>
+//           <td>适用于所有通用场景的印刷体识别</td>
+//           <td>适用于文字较多、长串数字、小字、模糊字、倾斜文本等困难场景</td>
+//           <td>适用于快速文本识别场景，准召率有一定损失，价格更优惠</td>
+//         </tr>
+//         <tr>
+//           <td>识别准确率</td>
+//           <td>96%</td>
+//           <td>99%</td>
+//           <td>91%</td>
+//         </tr>
+//         <tr>
+//           <td>价格</td>
+//           <td>中</td>
+//           <td>高</td>
+//           <td>低</td>
+//         </tr>
+//         <tr>
+//           <td>支持的语言</td>
+//           <td>中文、英文、中英文、日语、韩语、西班牙语、法语、德语、葡萄牙语、越南语、马来语、俄语、意大利语、荷兰语、瑞典语、芬兰语、丹麦语、挪威语、匈牙利语、泰语</td>
+//           <td>中文、英文、中英文</td>
+//           <td>中文、英文、中英文</td>
+//         </tr>
+//         <tr>
+//           <td>自动语言检测</td>
+//           <td>支持</td>
+//           <td>支持</td>
+//           <td>支持</td>
+//         </tr>
+//         <tr>
+//           <td>返回文本行坐标</td>
+//           <td>支持</td>
+//           <td>支持</td>
+//           <td>支持</td>
+//         </tr>
+//         <tr>
+//           <td>自动旋转纠正</td>
+//           <td>支持旋转识别，返回角度信息</td>
+//           <td>支持旋转识别，不支持角度返回</td>
+//           <td>支持旋转识别，返回角度信息</td>
+//         </tr>
+//       </tbody>
+//     </table>
 func (c *Client) GeneralBasicOCR(request *GeneralBasicOCRRequest) (response *GeneralBasicOCRResponse, err error) {
     if request == nil {
         request = NewGeneralBasicOCRRequest()
@@ -516,7 +636,81 @@ func NewGeneralEfficientOCRResponse() (response *GeneralEfficientOCRResponse) {
     return
 }
 
-// 本接口支持多场景、任意版面下整图文字的识别。相较于“通用印刷体识别”接口，精简版接口在准召率有一定损失的情况下，耗时更短。适用于对接口耗时较为敏感的客户。
+// 本接口支持图像整体文字的检测和识别。支持中文、英文、中英文、数字和特殊字符号的识别，并返回文字框位置和文字内容。
+// 
+// 适用于快速文本识别场景。
+// 
+// 产品优势：与通用印刷体识别接口相比，精简版虽然在准确率和召回率上有一定损失，但价格更加优惠。
+// 
+// 通用印刷体识别不同版本的差异如下：
+// <table style="width:715px">
+//       <thead>
+//         <tr>
+//           <th style="width:150px"></th>
+//           <th >通用印刷体识别（精简版）</th>
+//           <th style="width:200px"><a href="https://cloud.tencent.com/document/product/866/33526">【荐】通用印刷体识别</a></th>
+//           <th><a href="https://cloud.tencent.com/document/product/866/34937">【荐】通用印刷体识别（高精度版）</a></th>
+//         </tr>
+//       </thead>
+//       <tbody>
+//         <tr>
+//           <td> 适用场景</td>
+//           <td>适用于快速文本识别场景，准召率有一定损失，价格更优惠</td>
+//           <td>适用于所有通用场景的印刷体识别</td>
+//           <td>适用于文字较多、长串数字、小字、模糊字、倾斜文本等困难场景</td>
+//           
+//           
+//         </tr>
+//         <tr>
+//           <td>识别准确率</td>
+//           <td>91%</td>
+//           <td>96%</td>
+//           <td>99%</td>
+//           
+//           
+//         </tr>
+//         <tr>
+//           <td>价格</td>
+//           <td>低</td>
+//           <td>中</td>
+//           <td>高</td>
+//           
+//           
+//         </tr>
+//         <tr>
+//           <td>支持的语言</td>
+//           <td>中文、英文、中英文</td>
+//           <td>中文、英文、中英文、日语、韩语、西班牙语、法语、德语、葡萄牙语、越南语、马来语、俄语、意大利语、荷兰语、瑞典语、芬兰语、丹麦语、挪威语、匈牙利语、泰语</td>  
+//           <td>中文、英文、中英文</td>
+//           
+//           
+//         </tr>
+//         <tr>
+//           <td>自动语言检测</td>
+//           <td>支持</td>
+//           <td>支持</td>  
+//           <td>支持</td>
+//           
+//           
+//         </tr>
+//         <tr>
+//           <td>返回文本行坐标</td>
+//           <td>支持</td>
+//           <td>支持</td>
+//           <td>支持</td>
+//           
+//           
+//         </tr>
+//         <tr>
+//           <td>自动旋转纠正</td>
+//           <td>支持旋转识别，返回角度信息</td>
+//           <td>支持旋转识别，返回角度信息</td>
+//           <td>支持旋转识别，不支持角度返回</td>
+//           
+//          
+//         </tr>
+//       </tbody>
+//     </table>
 func (c *Client) GeneralEfficientOCR(request *GeneralEfficientOCRRequest) (response *GeneralEfficientOCRResponse, err error) {
     if request == nil {
         request = NewGeneralEfficientOCRRequest()

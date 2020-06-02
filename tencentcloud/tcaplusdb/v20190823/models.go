@@ -221,6 +221,9 @@ type CreateClusterRequest struct {
 
 	// 集群访问密码，必须是a-zA-Z0-9的字符,且必须包含数字和大小写字母
 	Password *string `json:"Password,omitempty" name:"Password"`
+
+	// 集群标签列表
+	ResourceTags []*TagInfoUnit `json:"ResourceTags,omitempty" name:"ResourceTags" list`
 }
 
 func (r *CreateClusterRequest) ToJsonString() string {
@@ -264,6 +267,9 @@ type CreateTableGroupRequest struct {
 
 	// 表格组ID，可以由用户指定，但在同一个集群内不能重复，如果不指定则采用自增的模式
 	TableGroupId *string `json:"TableGroupId,omitempty" name:"TableGroupId"`
+
+	// 表格组标签列表
+	ResourceTags []*TagInfoUnit `json:"ResourceTags,omitempty" name:"ResourceTags" list`
 }
 
 func (r *CreateTableGroupRequest) ToJsonString() string {
@@ -307,6 +313,9 @@ type CreateTablesRequest struct {
 
 	// 待创建表格信息列表
 	SelectedTables []*SelectedTableInfoNew `json:"SelectedTables,omitempty" name:"SelectedTables" list`
+
+	// 表格标签列表
+	ResourceTags []*TagInfoUnit `json:"ResourceTags,omitempty" name:"ResourceTags" list`
 }
 
 func (r *CreateTablesRequest) ToJsonString() string {
@@ -505,6 +514,48 @@ func (r *DeleteTablesResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeClusterTagsRequest struct {
+	*tchttp.BaseRequest
+
+	// 集群ID列表
+	ClusterIds []*string `json:"ClusterIds,omitempty" name:"ClusterIds" list`
+}
+
+func (r *DescribeClusterTagsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeClusterTagsRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeClusterTagsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 集群标签信息列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Rows []*TagsInfoOfCluster `json:"Rows,omitempty" name:"Rows" list`
+
+		// 返回结果个数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeClusterTagsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeClusterTagsResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeClustersRequest struct {
 	*tchttp.BaseRequest
 
@@ -643,6 +694,51 @@ func (r *DescribeRegionsResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeTableGroupTagsRequest struct {
+	*tchttp.BaseRequest
+
+	// 待查询标签表格组所属集群ID
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 待查询标签表格组ID列表
+	TableGroupIds []*string `json:"TableGroupIds,omitempty" name:"TableGroupIds" list`
+}
+
+func (r *DescribeTableGroupTagsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeTableGroupTagsRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeTableGroupTagsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 表格组标签信息列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Rows []*TagsInfoOfTableGroup `json:"Rows,omitempty" name:"Rows" list`
+
+		// 返回结果个数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeTableGroupTagsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeTableGroupTagsResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeTableGroupsRequest struct {
 	*tchttp.BaseRequest
 
@@ -692,6 +788,49 @@ func (r *DescribeTableGroupsResponse) ToJsonString() string {
 }
 
 func (r *DescribeTableGroupsResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeTableTagsRequest struct {
+	*tchttp.BaseRequest
+
+	// 表格所属集群ID
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 表格列表
+	SelectedTables []*SelectedTableInfoNew `json:"SelectedTables,omitempty" name:"SelectedTables" list`
+}
+
+func (r *DescribeTableTagsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeTableTagsRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeTableTagsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 返回结果总数
+		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 表格标签信息列表
+		Rows []*TagsInfoOfTable `json:"Rows,omitempty" name:"Rows" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeTableTagsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeTableTagsResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -1039,6 +1178,50 @@ func (r *ModifyClusterPasswordResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type ModifyClusterTagsRequest struct {
+	*tchttp.BaseRequest
+
+	// 待修改标签的集群ID
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 待增加或修改的标签列表
+	ReplaceTags []*TagInfoUnit `json:"ReplaceTags,omitempty" name:"ReplaceTags" list`
+
+	// 待删除的标签
+	DeleteTags []*TagInfoUnit `json:"DeleteTags,omitempty" name:"DeleteTags" list`
+}
+
+func (r *ModifyClusterTagsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyClusterTagsRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyClusterTagsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 任务ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifyClusterTagsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyClusterTagsResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type ModifyTableGroupNameRequest struct {
 	*tchttp.BaseRequest
 
@@ -1076,6 +1259,53 @@ func (r *ModifyTableGroupNameResponse) ToJsonString() string {
 }
 
 func (r *ModifyTableGroupNameResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyTableGroupTagsRequest struct {
+	*tchttp.BaseRequest
+
+	// 待修改标签表格组所属集群ID
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 待修改标签表格组ID
+	TableGroupId *string `json:"TableGroupId,omitempty" name:"TableGroupId"`
+
+	// 待增加或修改的标签列表
+	ReplaceTags []*TagInfoUnit `json:"ReplaceTags,omitempty" name:"ReplaceTags" list`
+
+	// 待删除的标签
+	DeleteTags []*TagInfoUnit `json:"DeleteTags,omitempty" name:"DeleteTags" list`
+}
+
+func (r *ModifyTableGroupTagsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyTableGroupTagsRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyTableGroupTagsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 任务ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifyTableGroupTagsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyTableGroupTagsResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -1162,6 +1392,55 @@ func (r *ModifyTableQuotasResponse) ToJsonString() string {
 }
 
 func (r *ModifyTableQuotasResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyTableTagsRequest struct {
+	*tchttp.BaseRequest
+
+	// 待修改标签表格所属集群ID
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 待修改标签表格列表
+	SelectedTables []*SelectedTableInfoNew `json:"SelectedTables,omitempty" name:"SelectedTables" list`
+
+	// 待增加或修改的标签列表
+	ReplaceTags []*TagInfoUnit `json:"ReplaceTags,omitempty" name:"ReplaceTags" list`
+
+	// 待删除的标签列表
+	DeleteTags []*TagInfoUnit `json:"DeleteTags,omitempty" name:"DeleteTags" list`
+}
+
+func (r *ModifyTableTagsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyTableTagsRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyTableTagsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 返回结果总数
+		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 返回结果
+		TableResults []*TableResultNew `json:"TableResults,omitempty" name:"TableResults" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifyTableTagsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyTableTagsResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -1644,6 +1923,73 @@ type TableRollbackResultNew struct {
 	// Key文件中包含总的Key数量
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalKeyNum *uint64 `json:"TotalKeyNum,omitempty" name:"TotalKeyNum"`
+}
+
+type TagInfoUnit struct {
+
+	// 标签键
+	TagKey *string `json:"TagKey,omitempty" name:"TagKey"`
+
+	// 标签值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TagValue *string `json:"TagValue,omitempty" name:"TagValue"`
+}
+
+type TagsInfoOfCluster struct {
+
+	// 集群ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 标签信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Tags []*TagInfoUnit `json:"Tags,omitempty" name:"Tags" list`
+
+	// 错误信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Error *ErrorInfo `json:"Error,omitempty" name:"Error"`
+}
+
+type TagsInfoOfTable struct {
+
+	// 表格实例ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TableInstanceId *string `json:"TableInstanceId,omitempty" name:"TableInstanceId"`
+
+	// 表格名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TableName *string `json:"TableName,omitempty" name:"TableName"`
+
+	// 表格组ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TableGroupId *string `json:"TableGroupId,omitempty" name:"TableGroupId"`
+
+	// 标签信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Tags []*TagInfoUnit `json:"Tags,omitempty" name:"Tags" list`
+
+	// 错误信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Error *ErrorInfo `json:"Error,omitempty" name:"Error"`
+}
+
+type TagsInfoOfTableGroup struct {
+
+	// 集群ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 表格组ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TableGroupId *string `json:"TableGroupId,omitempty" name:"TableGroupId"`
+
+	// 标签信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Tags []*TagInfoUnit `json:"Tags,omitempty" name:"Tags" list`
+
+	// 错误信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Error *ErrorInfo `json:"Error,omitempty" name:"Error"`
 }
 
 type TaskInfoNew struct {

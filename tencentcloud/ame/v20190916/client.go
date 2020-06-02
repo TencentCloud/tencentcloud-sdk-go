@@ -43,6 +43,31 @@ func NewClient(credential *common.Credential, region string, clientProfile *prof
 }
 
 
+func NewDescribeItemByIdRequest() (request *DescribeItemByIdRequest) {
+    request = &DescribeItemByIdRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ame", APIVersion, "DescribeItemById")
+    return
+}
+
+func NewDescribeItemByIdResponse() (response *DescribeItemByIdResponse) {
+    response = &DescribeItemByIdResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 根据歌曲ID查询歌曲信息
+func (c *Client) DescribeItemById(request *DescribeItemByIdRequest) (response *DescribeItemByIdResponse, err error) {
+    if request == nil {
+        request = NewDescribeItemByIdRequest()
+    }
+    response = NewDescribeItemByIdResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeItemsRequest() (request *DescribeItemsRequest) {
     request = &DescribeItemsRequest{
         BaseRequest: &tchttp.BaseRequest{},

@@ -293,6 +293,31 @@ func (c *Client) DeleteTables(request *DeleteTablesRequest) (response *DeleteTab
     return
 }
 
+func NewDescribeClusterTagsRequest() (request *DescribeClusterTagsRequest) {
+    request = &DescribeClusterTagsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tcaplusdb", APIVersion, "DescribeClusterTags")
+    return
+}
+
+func NewDescribeClusterTagsResponse() (response *DescribeClusterTagsResponse) {
+    response = &DescribeClusterTagsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 获取集群关联的标签列表
+func (c *Client) DescribeClusterTags(request *DescribeClusterTagsRequest) (response *DescribeClusterTagsResponse, err error) {
+    if request == nil {
+        request = NewDescribeClusterTagsRequest()
+    }
+    response = NewDescribeClusterTagsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeClustersRequest() (request *DescribeClustersRequest) {
     request = &DescribeClustersRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -368,6 +393,31 @@ func (c *Client) DescribeRegions(request *DescribeRegionsRequest) (response *Des
     return
 }
 
+func NewDescribeTableGroupTagsRequest() (request *DescribeTableGroupTagsRequest) {
+    request = &DescribeTableGroupTagsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tcaplusdb", APIVersion, "DescribeTableGroupTags")
+    return
+}
+
+func NewDescribeTableGroupTagsResponse() (response *DescribeTableGroupTagsResponse) {
+    response = &DescribeTableGroupTagsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 获取表格组关联的标签列表
+func (c *Client) DescribeTableGroupTags(request *DescribeTableGroupTagsRequest) (response *DescribeTableGroupTagsResponse, err error) {
+    if request == nil {
+        request = NewDescribeTableGroupTagsRequest()
+    }
+    response = NewDescribeTableGroupTagsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeTableGroupsRequest() (request *DescribeTableGroupsRequest) {
     request = &DescribeTableGroupsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -389,6 +439,31 @@ func (c *Client) DescribeTableGroups(request *DescribeTableGroupsRequest) (respo
         request = NewDescribeTableGroupsRequest()
     }
     response = NewDescribeTableGroupsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeTableTagsRequest() (request *DescribeTableTagsRequest) {
+    request = &DescribeTableTagsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tcaplusdb", APIVersion, "DescribeTableTags")
+    return
+}
+
+func NewDescribeTableTagsResponse() (response *DescribeTableTagsResponse) {
+    response = &DescribeTableTagsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 获取表格标签
+func (c *Client) DescribeTableTags(request *DescribeTableTagsRequest) (response *DescribeTableTagsResponse, err error) {
+    if request == nil {
+        request = NewDescribeTableTagsRequest()
+    }
+    response = NewDescribeTableTagsResponse()
     err = c.Send(request, response)
     return
 }
@@ -543,6 +618,31 @@ func (c *Client) ModifyClusterPassword(request *ModifyClusterPasswordRequest) (r
     return
 }
 
+func NewModifyClusterTagsRequest() (request *ModifyClusterTagsRequest) {
+    request = &ModifyClusterTagsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tcaplusdb", APIVersion, "ModifyClusterTags")
+    return
+}
+
+func NewModifyClusterTagsResponse() (response *ModifyClusterTagsResponse) {
+    response = &ModifyClusterTagsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 修改集群标签
+func (c *Client) ModifyClusterTags(request *ModifyClusterTagsRequest) (response *ModifyClusterTagsResponse, err error) {
+    if request == nil {
+        request = NewModifyClusterTagsRequest()
+    }
+    response = NewModifyClusterTagsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyTableGroupNameRequest() (request *ModifyTableGroupNameRequest) {
     request = &ModifyTableGroupNameRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -564,6 +664,31 @@ func (c *Client) ModifyTableGroupName(request *ModifyTableGroupNameRequest) (res
         request = NewModifyTableGroupNameRequest()
     }
     response = NewModifyTableGroupNameResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyTableGroupTagsRequest() (request *ModifyTableGroupTagsRequest) {
+    request = &ModifyTableGroupTagsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tcaplusdb", APIVersion, "ModifyTableGroupTags")
+    return
+}
+
+func NewModifyTableGroupTagsResponse() (response *ModifyTableGroupTagsResponse) {
+    response = &ModifyTableGroupTagsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 修改表格组标签
+func (c *Client) ModifyTableGroupTags(request *ModifyTableGroupTagsRequest) (response *ModifyTableGroupTagsResponse, err error) {
+    if request == nil {
+        request = NewModifyTableGroupTagsRequest()
+    }
+    response = NewModifyTableGroupTagsResponse()
     err = c.Send(request, response)
     return
 }
@@ -614,6 +739,31 @@ func (c *Client) ModifyTableQuotas(request *ModifyTableQuotasRequest) (response 
         request = NewModifyTableQuotasRequest()
     }
     response = NewModifyTableQuotasResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyTableTagsRequest() (request *ModifyTableTagsRequest) {
+    request = &ModifyTableTagsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tcaplusdb", APIVersion, "ModifyTableTags")
+    return
+}
+
+func NewModifyTableTagsResponse() (response *ModifyTableTagsResponse) {
+    response = &ModifyTableTagsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 修改表格标签
+func (c *Client) ModifyTableTags(request *ModifyTableTagsRequest) (response *ModifyTableTagsResponse, err error) {
+    if request == nil {
+        request = NewModifyTableTagsRequest()
+    }
+    response = NewModifyTableTagsResponse()
     err = c.Send(request, response)
     return
 }

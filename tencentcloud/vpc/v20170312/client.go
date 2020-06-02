@@ -316,6 +316,32 @@ func (c *Client) AssociateAddress(request *AssociateAddressRequest) (response *A
     return
 }
 
+func NewAssociateDhcpIpWithAddressIpRequest() (request *AssociateDhcpIpWithAddressIpRequest) {
+    request = &AssociateDhcpIpWithAddressIpRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "AssociateDhcpIpWithAddressIp")
+    return
+}
+
+func NewAssociateDhcpIpWithAddressIpResponse() (response *AssociateDhcpIpWithAddressIpResponse) {
+    response = &AssociateDhcpIpWithAddressIpResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（AssociateDhcpIpWithAddressIp）用于DhcpIp绑定弹性公网IP（EIP）<br />
+// 本接口是异步完成，如需查询异步任务执行结果，请使用本接口返回的`RequestId`轮询`DescribeVpcTaskResult`接口
+func (c *Client) AssociateDhcpIpWithAddressIp(request *AssociateDhcpIpWithAddressIpRequest) (response *AssociateDhcpIpWithAddressIpResponse, err error) {
+    if request == nil {
+        request = NewAssociateDhcpIpWithAddressIpRequest()
+    }
+    response = NewAssociateDhcpIpWithAddressIpResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewAssociateNatGatewayAddressRequest() (request *AssociateNatGatewayAddressRequest) {
     request = &AssociateNatGatewayAddressRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -790,6 +816,31 @@ func (c *Client) CreateDefaultVpc(request *CreateDefaultVpcRequest) (response *C
         request = NewCreateDefaultVpcRequest()
     }
     response = NewCreateDefaultVpcResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateDhcpIpRequest() (request *CreateDhcpIpRequest) {
+    request = &CreateDhcpIpRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "CreateDhcpIp")
+    return
+}
+
+func NewCreateDhcpIpResponse() (response *CreateDhcpIpResponse) {
+    response = &CreateDhcpIpResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（CreateDhcpIp）用于创建DhcpIp
+func (c *Client) CreateDhcpIp(request *CreateDhcpIpRequest) (response *CreateDhcpIpResponse, err error) {
+    if request == nil {
+        request = NewCreateDhcpIpRequest()
+    }
+    response = NewCreateDhcpIpResponse()
     err = c.Send(request, response)
     return
 }
@@ -1547,6 +1598,31 @@ func (c *Client) DeleteCustomerGateway(request *DeleteCustomerGatewayRequest) (r
         request = NewDeleteCustomerGatewayRequest()
     }
     response = NewDeleteCustomerGatewayResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteDhcpIpRequest() (request *DeleteDhcpIpRequest) {
+    request = &DeleteDhcpIpRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "DeleteDhcpIp")
+    return
+}
+
+func NewDeleteDhcpIpResponse() (response *DeleteDhcpIpResponse) {
+    response = &DeleteDhcpIpResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（DeleteDhcpIp）用于删除DhcpIp
+func (c *Client) DeleteDhcpIp(request *DeleteDhcpIpRequest) (response *DeleteDhcpIpResponse, err error) {
+    if request == nil {
+        request = NewDeleteDhcpIpRequest()
+    }
+    response = NewDeleteDhcpIpResponse()
     err = c.Send(request, response)
     return
 }
@@ -2438,6 +2514,31 @@ func (c *Client) DescribeCustomerGateways(request *DescribeCustomerGatewaysReque
         request = NewDescribeCustomerGatewaysRequest()
     }
     response = NewDescribeCustomerGatewaysResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeDhcpIpsRequest() (request *DescribeDhcpIpsRequest) {
+    request = &DescribeDhcpIpsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "DescribeDhcpIps")
+    return
+}
+
+func NewDescribeDhcpIpsResponse() (response *DescribeDhcpIpsResponse) {
+    response = &DescribeDhcpIpsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（DescribeDhcpIps）用于查询DhcpIp列表
+func (c *Client) DescribeDhcpIps(request *DescribeDhcpIpsRequest) (response *DescribeDhcpIpsResponse, err error) {
+    if request == nil {
+        request = NewDescribeDhcpIpsRequest()
+    }
+    response = NewDescribeDhcpIpsResponse()
     err = c.Send(request, response)
     return
 }
@@ -3606,6 +3707,32 @@ func (c *Client) DisassociateAddress(request *DisassociateAddressRequest) (respo
     return
 }
 
+func NewDisassociateDhcpIpWithAddressIpRequest() (request *DisassociateDhcpIpWithAddressIpRequest) {
+    request = &DisassociateDhcpIpWithAddressIpRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "DisassociateDhcpIpWithAddressIp")
+    return
+}
+
+func NewDisassociateDhcpIpWithAddressIpResponse() (response *DisassociateDhcpIpWithAddressIpResponse) {
+    response = &DisassociateDhcpIpWithAddressIpResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（DisassociateDhcpIpWithAddressIp）用于将DhcpIp已绑定的弹性公网IP（EIP）解除绑定<br />
+// 本接口是异步完成，如需查询异步任务执行结果，请使用本接口返回的`RequestId`轮询`DescribeVpcTaskResult`接口
+func (c *Client) DisassociateDhcpIpWithAddressIp(request *DisassociateDhcpIpWithAddressIpRequest) (response *DisassociateDhcpIpWithAddressIpResponse, err error) {
+    if request == nil {
+        request = NewDisassociateDhcpIpWithAddressIpRequest()
+    }
+    response = NewDisassociateDhcpIpWithAddressIpResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDisassociateNatGatewayAddressRequest() (request *DisassociateNatGatewayAddressRequest) {
     request = &DisassociateNatGatewayAddressRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -4211,6 +4338,31 @@ func (c *Client) ModifyCustomerGatewayAttribute(request *ModifyCustomerGatewayAt
         request = NewModifyCustomerGatewayAttributeRequest()
     }
     response = NewModifyCustomerGatewayAttributeResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyDhcpIpAttributeRequest() (request *ModifyDhcpIpAttributeRequest) {
+    request = &ModifyDhcpIpAttributeRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "ModifyDhcpIpAttribute")
+    return
+}
+
+func NewModifyDhcpIpAttributeResponse() (response *ModifyDhcpIpAttributeResponse) {
+    response = &ModifyDhcpIpAttributeResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（ModifyDhcpIpAttribute）用于修改DhcpIp属性
+func (c *Client) ModifyDhcpIpAttribute(request *ModifyDhcpIpAttributeRequest) (response *ModifyDhcpIpAttributeResponse, err error) {
+    if request == nil {
+        request = NewModifyDhcpIpAttributeRequest()
+    }
+    response = NewModifyDhcpIpAttributeResponse()
     err = c.Send(request, response)
     return
 }

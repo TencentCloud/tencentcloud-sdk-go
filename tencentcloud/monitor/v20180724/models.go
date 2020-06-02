@@ -952,6 +952,10 @@ type DescribePolicyGroupInfoCondition struct {
 	// 持续多长时间触发规则会告警(单位秒)
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ContinueTime *int64 `json:"ContinueTime,omitempty" name:"ContinueTime"`
+
+	// 告警指标名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MetricName *string `json:"MetricName,omitempty" name:"MetricName"`
 }
 
 type DescribePolicyGroupInfoConditionTpl struct {

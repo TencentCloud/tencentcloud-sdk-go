@@ -623,6 +623,43 @@ func (r *AssociateAddressResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type AssociateDhcpIpWithAddressIpRequest struct {
+	*tchttp.BaseRequest
+
+	// `DhcpIp`唯一`ID`，形如：`dhcpip-9o233uri`。必须是没有绑定`EIP`的`DhcpIp`
+	DhcpIpId *string `json:"DhcpIpId,omitempty" name:"DhcpIpId"`
+
+	// 弹性公网`IP`。必须是没有绑定`DhcpIp`的`EIP`
+	AddressIp *string `json:"AddressIp,omitempty" name:"AddressIp"`
+}
+
+func (r *AssociateDhcpIpWithAddressIpRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *AssociateDhcpIpWithAddressIpRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type AssociateDhcpIpWithAddressIpResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *AssociateDhcpIpWithAddressIpResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *AssociateDhcpIpWithAddressIpResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type AssociateNatGatewayAddressRequest struct {
 	*tchttp.BaseRequest
 
@@ -1607,6 +1644,52 @@ func (r *CreateDefaultVpcResponse) ToJsonString() string {
 }
 
 func (r *CreateDefaultVpcResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateDhcpIpRequest struct {
+	*tchttp.BaseRequest
+
+	// 私有网络`ID`。
+	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
+
+	// 子网`ID`。
+	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
+
+	// `DhcpIp`名称。
+	DhcpIpName *string `json:"DhcpIpName,omitempty" name:"DhcpIpName"`
+
+	// 新申请的内网IP地址个数。总数不能超过64个。
+	SecondaryPrivateIpAddressCount *uint64 `json:"SecondaryPrivateIpAddressCount,omitempty" name:"SecondaryPrivateIpAddressCount"`
+}
+
+func (r *CreateDhcpIpRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateDhcpIpRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateDhcpIpResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 新创建的`DhcpIp`信息
+		DhcpIpSet []*DhcpIp `json:"DhcpIpSet,omitempty" name:"DhcpIpSet" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateDhcpIpResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateDhcpIpResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -2934,6 +3017,40 @@ func (r *DeleteCustomerGatewayResponse) ToJsonString() string {
 }
 
 func (r *DeleteCustomerGatewayResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteDhcpIpRequest struct {
+	*tchttp.BaseRequest
+
+	// `DhcpIp`的`ID`，是`DhcpIp`的唯一标识。
+	DhcpIpId *string `json:"DhcpIpId,omitempty" name:"DhcpIpId"`
+}
+
+func (r *DeleteDhcpIpRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteDhcpIpRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteDhcpIpResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DeleteDhcpIpResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteDhcpIpResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -4342,6 +4459,60 @@ func (r *DescribeCustomerGatewaysResponse) ToJsonString() string {
 }
 
 func (r *DescribeCustomerGatewaysResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeDhcpIpsRequest struct {
+	*tchttp.BaseRequest
+
+	// DhcpIp实例ID。形如：dhcpip-pxir56ns。每次请求的实例的上限为100。参数不支持同时指定DhcpIpIds和Filters。
+	DhcpIpIds []*string `json:"DhcpIpIds,omitempty" name:"DhcpIpIds" list`
+
+	// 过滤条件，参数不支持同时指定DhcpIpIds和Filters。
+	// <li>vpc-id - String - （过滤条件）VPC实例ID，形如：vpc-f49l6u0z。</li>
+	// <li>subnet-id - String - （过滤条件）所属子网实例ID，形如：subnet-f49l6u0z。</li>
+	// <li>dhcpip-id - String - （过滤条件）DhcpIp实例ID，形如：dhcpip-pxir56ns。</li>
+	// <li>dhcpip-name - String - （过滤条件）DhcpIp实例名称。</li>
+	// <li>address-ip - String - （过滤条件）DhcpIp实例的IP，根据IP精确查找。</li>
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+
+	// 偏移量，默认为0。
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 返回数量，默认为20，最大值为100。
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+func (r *DescribeDhcpIpsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeDhcpIpsRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeDhcpIpsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 实例详细信息列表。
+		DhcpIpSet []*DhcpIp `json:"DhcpIpSet,omitempty" name:"DhcpIpSet" list`
+
+		// 符合条件的实例数量。
+		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeDhcpIpsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeDhcpIpsResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -6330,6 +6501,41 @@ func (r *DetachNetworkInterfaceResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DhcpIp struct {
+
+	// `DhcpIp`的`ID`，是`DhcpIp`的唯一标识。
+	DhcpIpId *string `json:"DhcpIpId,omitempty" name:"DhcpIpId"`
+
+	// `DhcpIp`所在私有网络`ID`。
+	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
+
+	// `DhcpIp`所在子网`ID`。
+	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
+
+	// `DhcpIp`的名称。
+	DhcpIpName *string `json:"DhcpIpName,omitempty" name:"DhcpIpName"`
+
+	// IP地址。
+	PrivateIpAddress *string `json:"PrivateIpAddress,omitempty" name:"PrivateIpAddress"`
+
+	// 绑定`EIP`。
+	AddressIp *string `json:"AddressIp,omitempty" name:"AddressIp"`
+
+	// `DhcpIp`关联弹性网卡`ID`。
+	NetworkInterfaceId *string `json:"NetworkInterfaceId,omitempty" name:"NetworkInterfaceId"`
+
+	// 被绑定的实例`ID`。
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 状态：
+	// <li>`AVAILABLE`：运行中</li>
+	// <li>`UNBIND`：未绑定</li>
+	State *string `json:"State,omitempty" name:"State"`
+
+	// 创建时间。
+	CreatedTime *string `json:"CreatedTime,omitempty" name:"CreatedTime"`
+}
+
 type DirectConnectGateway struct {
 
 	// 专线网关`ID`。
@@ -6538,6 +6744,40 @@ func (r *DisassociateAddressResponse) ToJsonString() string {
 }
 
 func (r *DisassociateAddressResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DisassociateDhcpIpWithAddressIpRequest struct {
+	*tchttp.BaseRequest
+
+	// `DhcpIp`唯一`ID`，形如：`dhcpip-9o233uri`。必须是已绑定`EIP`的`DhcpIp`。
+	DhcpIpId *string `json:"DhcpIpId,omitempty" name:"DhcpIpId"`
+}
+
+func (r *DisassociateDhcpIpWithAddressIpRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DisassociateDhcpIpWithAddressIpRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DisassociateDhcpIpWithAddressIpResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DisassociateDhcpIpWithAddressIpResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DisassociateDhcpIpWithAddressIpResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -7805,6 +8045,43 @@ func (r *ModifyCustomerGatewayAttributeResponse) ToJsonString() string {
 }
 
 func (r *ModifyCustomerGatewayAttributeResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyDhcpIpAttributeRequest struct {
+	*tchttp.BaseRequest
+
+	// `DhcpIp`唯一`ID`，形如：`dhcpip-9o233uri`。
+	DhcpIpId *string `json:"DhcpIpId,omitempty" name:"DhcpIpId"`
+
+	// `DhcpIp`名称，可任意命名，但不得超过60个字符。
+	DhcpIpName *string `json:"DhcpIpName,omitempty" name:"DhcpIpName"`
+}
+
+func (r *ModifyDhcpIpAttributeRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyDhcpIpAttributeRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyDhcpIpAttributeResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifyDhcpIpAttributeResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyDhcpIpAttributeResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 

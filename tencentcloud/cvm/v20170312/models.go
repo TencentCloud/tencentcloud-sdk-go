@@ -2369,6 +2369,18 @@ type InstanceTypeQuotaItem struct {
 	// 售罄原因。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SoldOutReason *string `json:"SoldOutReason,omitempty" name:"SoldOutReason"`
+
+	// 内网带宽，单位Gbps。
+	InstanceBandwidth *float64 `json:"InstanceBandwidth,omitempty" name:"InstanceBandwidth"`
+
+	// 网络收发包能力，单位万PPS。
+	InstancePps *int64 `json:"InstancePps,omitempty" name:"InstancePps"`
+
+	// 本地存储块数量。
+	StorageBlockAmount *int64 `json:"StorageBlockAmount,omitempty" name:"StorageBlockAmount"`
+
+	// 处理器型号。
+	CpuType *string `json:"CpuType,omitempty" name:"CpuType"`
 }
 
 type InternetAccessible struct {

@@ -54,6 +54,44 @@ type DataInfo struct {
 	AuditionEnd *uint64 `json:"AuditionEnd,omitempty" name:"AuditionEnd"`
 }
 
+type DescribeItemByIdRequest struct {
+	*tchttp.BaseRequest
+
+	// 歌曲ID，目前暂不支持批量查询
+	ItemIDs *string `json:"ItemIDs,omitempty" name:"ItemIDs"`
+}
+
+func (r *DescribeItemByIdRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeItemByIdRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeItemByIdResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 歌曲信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Items []*Item `json:"Items,omitempty" name:"Items" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeItemByIdResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeItemByIdResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeItemsRequest struct {
 	*tchttp.BaseRequest
 
