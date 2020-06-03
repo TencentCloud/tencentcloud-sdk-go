@@ -279,34 +279,34 @@ func (r *CreateTopicResponse) FromJsonString(s string) error {
 
 type DeadLetterPolicy struct {
 
-	// DeadLetterQueueName
+	// 死信队列名字。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DeadLetterQueueName *string `json:"DeadLetterQueueName,omitempty" name:"DeadLetterQueueName"`
 
-	// DeadLetterQueue
+	// 死信队列。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DeadLetterQueue *string `json:"DeadLetterQueue,omitempty" name:"DeadLetterQueue"`
 
-	// Policy
+	// 死信队列策略。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Policy *uint64 `json:"Policy,omitempty" name:"Policy"`
 
-	// MaxTimeToLive
+	// 最大未消费过期时间。Policy为1时必选。范围300-43200，单位秒，需要小于消息最大保留时间MsgRetentionSeconds。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MaxTimeToLive *uint64 `json:"MaxTimeToLive,omitempty" name:"MaxTimeToLive"`
 
-	// MaxReceiveCount
+	// 最大接收次数。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MaxReceiveCount *uint64 `json:"MaxReceiveCount,omitempty" name:"MaxReceiveCount"`
 }
 
 type DeadLetterSource struct {
 
-	// QueueId
+	// 消息队列ID。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	QueueId *string `json:"QueueId,omitempty" name:"QueueId"`
 
-	// QueueName
+	// 消息队列名字。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	QueueName *string `json:"QueueName,omitempty" name:"QueueName"`
 }
@@ -497,10 +497,10 @@ type DescribeQueueDetailResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// queue总数量
+		// 总队列数。
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
-		// queue列表
+		// 队列详情列表。
 		QueueSet []*QueueSet `json:"QueueSet,omitempty" name:"QueueSet" list`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -576,13 +576,13 @@ type DescribeTopicDetailRequest struct {
 	// 分页时本页获取队列的个数，如果不传递该参数，则该参数默认为20，最大值为50。
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 
-	// 目前只支持过滤TopicName ， 且只能填一个过滤值
+	// 目前只支持过滤TopicName ， 且只能填一个过滤值。
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
 
-	// 标签匹配
+	// 标签匹配。
 	TagKey *string `json:"TagKey,omitempty" name:"TagKey"`
 
-	// 精确匹配TopicName
+	// 精确匹配TopicName。
 	TopicName *string `json:"TopicName,omitempty" name:"TopicName"`
 }
 
@@ -599,10 +599,10 @@ type DescribeTopicDetailResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// TotalCount
+		// 主题列表总数。
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
-		// TopicSet
+		// 主题详情列表。
 		TopicSet []*TopicSet `json:"TopicSet,omitempty" name:"TopicSet" list`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -797,101 +797,101 @@ func (r *ModifyTopicAttributeResponse) FromJsonString(s string) error {
 
 type QueueSet struct {
 
-	// QueueId
+	// 消息队列ID。
 	QueueId *string `json:"QueueId,omitempty" name:"QueueId"`
 
-	// QueueName
+	// 消息队列名字。
 	QueueName *string `json:"QueueName,omitempty" name:"QueueName"`
 
-	// Qps
+	// 每秒钟生产消息条数的限制，消费消息的大小是该值的1.1倍。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Qps *uint64 `json:"Qps,omitempty" name:"Qps"`
 
-	// Bps
+	// 带宽限制。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Bps *uint64 `json:"Bps,omitempty" name:"Bps"`
 
-	// MaxDelaySeconds
+	// 飞行消息最大保留时间。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MaxDelaySeconds *uint64 `json:"MaxDelaySeconds,omitempty" name:"MaxDelaySeconds"`
 
-	// MaxMsgHeapNum
+	// 最大堆积消息数。取值范围在公测期间为 1,000,000 - 10,000,000，正式上线后范围可达到 1000,000-1000,000,000。默认取值在公测期间为 10,000,000，正式上线后为 100,000,000。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MaxMsgHeapNum *uint64 `json:"MaxMsgHeapNum,omitempty" name:"MaxMsgHeapNum"`
 
-	// PollingWaitSeconds
+	// 消息接收长轮询等待时间。取值范围0 - 30秒，默认值0。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PollingWaitSeconds *uint64 `json:"PollingWaitSeconds,omitempty" name:"PollingWaitSeconds"`
 
-	// MsgRetentionSeconds
+	// 消息保留周期。取值范围60-1296000秒（1min-15天），默认值345600秒（4 天）。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MsgRetentionSeconds *uint64 `json:"MsgRetentionSeconds,omitempty" name:"MsgRetentionSeconds"`
 
-	// VisibilityTimeout
+	// 消息可见性超时。取值范围1 - 43200秒（即12小时内），默认值30。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	VisibilityTimeout *uint64 `json:"VisibilityTimeout,omitempty" name:"VisibilityTimeout"`
 
-	// MaxMsgSize
+	// 消息最大长度。取值范围1024 - 1048576 Byte（即1K - 1024K），默认值65536。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MaxMsgSize *uint64 `json:"MaxMsgSize,omitempty" name:"MaxMsgSize"`
 
-	// RewindSeconds
+	// 回溯队列的消息回溯时间最大值，取值范围0 - 43200秒，0表示不开启消息回溯。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RewindSeconds *uint64 `json:"RewindSeconds,omitempty" name:"RewindSeconds"`
 
-	// CreateTime
+	// 队列的创建时间。返回 Unix 时间戳，精确到秒。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreateTime *uint64 `json:"CreateTime,omitempty" name:"CreateTime"`
 
-	// LastModifyTime
+	// 最后一次修改队列属性的时间。返回 Unix 时间戳，精确到秒。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	LastModifyTime *uint64 `json:"LastModifyTime,omitempty" name:"LastModifyTime"`
 
-	// ActiveMsgNum
+	// 在队列中处于 Active 状态（不处于被消费状态）的消息总数，为近似值。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ActiveMsgNum *uint64 `json:"ActiveMsgNum,omitempty" name:"ActiveMsgNum"`
 
-	// InactiveMsgNum
+	// 在队列中处于 Inactive 状态（正处于被消费状态）的消息总数，为近似值。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	InactiveMsgNum *uint64 `json:"InactiveMsgNum,omitempty" name:"InactiveMsgNum"`
 
-	// DelayMsgNum
+	// 延迟消息数。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DelayMsgNum *uint64 `json:"DelayMsgNum,omitempty" name:"DelayMsgNum"`
 
-	// RewindMsgNum
+	// 已调用 DelMsg 接口删除，但还在回溯保留时间内的消息数量。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RewindMsgNum *uint64 `json:"RewindMsgNum,omitempty" name:"RewindMsgNum"`
 
-	// MinMsgTime
+	// 消息最小未消费时间，单位为秒。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MinMsgTime *uint64 `json:"MinMsgTime,omitempty" name:"MinMsgTime"`
 
-	// Transaction
+	// 事务消息队列。true表示是事务消息，false表示不是事务消息。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Transaction *bool `json:"Transaction,omitempty" name:"Transaction"`
 
-	// DeadLetterSource
+	// 死信队列。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DeadLetterSource []*DeadLetterSource `json:"DeadLetterSource,omitempty" name:"DeadLetterSource" list`
 
-	// DeadLetterPolicy
+	// 死信队列策略。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DeadLetterPolicy *DeadLetterPolicy `json:"DeadLetterPolicy,omitempty" name:"DeadLetterPolicy"`
 
-	// TransactionPolicy
+	// 事务消息策略。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TransactionPolicy *TransactionPolicy `json:"TransactionPolicy,omitempty" name:"TransactionPolicy"`
 
-	// 创建者uin
+	// 创建者Uin。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreateUin *uint64 `json:"CreateUin,omitempty" name:"CreateUin"`
 
-	// 标签
+	// 关联的标签。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Tags []*Tag `json:"Tags,omitempty" name:"Tags" list`
 
-	// 消息轨迹表示，true表示开启，false表示不开启
+	// 消息轨迹。true表示开启，false表示不开启。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Trace *bool `json:"Trace,omitempty" name:"Trace"`
 }
@@ -997,62 +997,64 @@ type Tag struct {
 
 type TopicSet struct {
 
-	// TopicId
+	// 主题的 ID。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TopicId *string `json:"TopicId,omitempty" name:"TopicId"`
 
-	// TopicName
+	// 主题名称。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TopicName *string `json:"TopicName,omitempty" name:"TopicName"`
 
-	// MsgRetentionSeconds
+	// 消息在主题中最长存活时间，从发送到该主题开始经过此参数指定的时间后，不论消息是否被成功推送给用户都将被删除，单位为秒。固定为一天（86400秒），该属性不能修改。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MsgRetentionSeconds *uint64 `json:"MsgRetentionSeconds,omitempty" name:"MsgRetentionSeconds"`
 
-	// MaxMsgSize
+	// 消息最大长度。取值范围1024 - 1048576Byte（即1 - 1024K），默认值为65536。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MaxMsgSize *uint64 `json:"MaxMsgSize,omitempty" name:"MaxMsgSize"`
 
-	// Qps
+	// 每秒钟发布消息的条数。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Qps *uint64 `json:"Qps,omitempty" name:"Qps"`
 
-	// FilterType
+	// 描述用户创建订阅时选择的过滤策略：
+	// FilterType = 1表示用户使用 FilterTag 标签过滤;
+	// FilterType = 2表示用户使用 BindingKey 过滤。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FilterType *uint64 `json:"FilterType,omitempty" name:"FilterType"`
 
-	// CreateTime
+	// 主题的创建时间。返回 Unix 时间戳，精确到秒。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreateTime *uint64 `json:"CreateTime,omitempty" name:"CreateTime"`
 
-	// LastModifyTime
+	// 最后一次修改主题属性的时间。返回 Unix 时间戳，精确到秒。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	LastModifyTime *uint64 `json:"LastModifyTime,omitempty" name:"LastModifyTime"`
 
-	// MsgCount
+	// 当前该主题中消息数目（消息堆积数）。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MsgCount *uint64 `json:"MsgCount,omitempty" name:"MsgCount"`
 
-	// CreateUin
+	// 创建者 Uin，CAM 鉴权 resource 由该字段组合而成。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreateUin *uint64 `json:"CreateUin,omitempty" name:"CreateUin"`
 
-	// Tags
+	// 关联的标签。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Tags []*Tag `json:"Tags,omitempty" name:"Tags" list`
 
-	// 主题是否开启消息轨迹，true表示开启，false表示不开启
+	// 主题是否开启消息轨迹。true表示开启，false表示不开启
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Trace *bool `json:"Trace,omitempty" name:"Trace"`
 }
 
 type TransactionPolicy struct {
 
-	// FirstQueryInterval
+	// 第一次回查时间。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FirstQueryInterval *uint64 `json:"FirstQueryInterval,omitempty" name:"FirstQueryInterval"`
 
-	// MaxQueryCount
+	// 最大查询次数。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MaxQueryCount *uint64 `json:"MaxQueryCount,omitempty" name:"MaxQueryCount"`
 }

@@ -1083,7 +1083,7 @@ type DescribeCertDomainsResponse struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		Domains []*string `json:"Domains,omitempty" name:"Domains" list`
 
-		// CDN已配置证书的域名列表
+		// 已配置证书的CDN域名列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		CertifiedDomains []*string `json:"CertifiedDomains,omitempty" name:"CertifiedDomains" list`
 

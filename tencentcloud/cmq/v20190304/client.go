@@ -333,7 +333,7 @@ func NewDescribeTopicDetailResponse() (response *DescribeTopicDetailResponse) {
     return
 }
 
-// 查询主题详情
+// 查询主题详情 
 func (c *Client) DescribeTopicDetail(request *DescribeTopicDetailRequest) (response *DescribeTopicDetailResponse, err error) {
     if request == nil {
         request = NewDescribeTopicDetailRequest()

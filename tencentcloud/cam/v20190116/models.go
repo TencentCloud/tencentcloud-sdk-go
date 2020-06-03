@@ -20,6 +20,18 @@ import (
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
+type AccessKey struct {
+
+	// 访问密钥标识
+	AccessKeyId *string `json:"AccessKeyId,omitempty" name:"AccessKeyId"`
+
+	// 密钥状态，激活（Active）或未激活（Inactive）
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 创建时间
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+}
+
 type AddUserRequest struct {
 	*tchttp.BaseRequest
 
@@ -1498,6 +1510,44 @@ type GroupMemberInfo struct {
 
 	// 是否为主消息接收人。
 	IsReceiverOwner *uint64 `json:"IsReceiverOwner,omitempty" name:"IsReceiverOwner"`
+}
+
+type ListAccessKeysRequest struct {
+	*tchttp.BaseRequest
+
+	// 指定用户Uin，不填默认列出当前用户访问密钥
+	TargetUin *uint64 `json:"TargetUin,omitempty" name:"TargetUin"`
+}
+
+func (r *ListAccessKeysRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ListAccessKeysRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ListAccessKeysResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 访问密钥列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		AccessKeys []*AccessKey `json:"AccessKeys,omitempty" name:"AccessKeys" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ListAccessKeysResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ListAccessKeysResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
 }
 
 type ListAttachedGroupPoliciesRequest struct {

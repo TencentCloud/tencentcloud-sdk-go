@@ -1,116 +1,10 @@
 # 本版本更新包含以下内容：
 
-## 正版曲库直通车(ame) 版本：2019-09-16
+## 访问管理(cam) 版本：2019-01-16
 
-### 第 4 次发布
+### 第 23 次发布
 
-发布时间：2020-06-02 08:21:12
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [DescribeItemById](https://cloud.tencent.com/document/api/1155/45094)
-
-
-
-## 批量计算(batch) 版本：2017-03-12
-
-### 第 29 次发布
-
-发布时间：2020-06-02 08:04:00
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [InstanceTypeQuotaItem](https://cloud.tencent.com/document/api/599/15912#InstanceTypeQuotaItem)
-
-	* 新增成员：InstanceBandwidth, InstancePps, StorageBlockAmount, CpuType
-
-
-
-
-## 云服务器(cvm) 版本：2017-03-12
-
-### 第 43 次发布
-
-发布时间：2020-06-02 08:07:41
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [InstanceTypeQuotaItem](https://cloud.tencent.com/document/api/213/15753#InstanceTypeQuotaItem)
-
-	* 新增成员：InstanceBandwidth, InstancePps, StorageBlockAmount, CpuType
-
-
-
-
-## 边缘计算模块(ecm) 版本：2019-07-19
-
-### 第 13 次发布
-
-发布时间：2020-06-02 08:01:13
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [RunInstances](https://cloud.tencent.com/document/api/1108/43513)
-
-	* 新增入参：InstanceType, DataDiskSize
-
-	* <font color="#dd0000">**修改入参**：</font>ModuleId
-
-
-
-
-## 人脸核身（云智慧眼）(faceid) 版本：2018-03-01
-
-### 第 12 次发布
-
-发布时间：2020-06-02 08:10:02
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [GetActionSequence](https://cloud.tencent.com/document/api/1007/31822)
-
-	* 新增入参：ActionType
-
-* [Liveness](https://cloud.tencent.com/document/api/1007/35330)
-
-	* 新增出参：BestFrameList
-
-* [LivenessCompare](https://cloud.tencent.com/document/api/1007/31819)
-
-	* 新增出参：BestFrameList
-
-* [LivenessRecognition](https://cloud.tencent.com/document/api/1007/31818)
-
-	* 新增出参：BestFrameList
-
-
-
-
-## 云数据库 MongoDB(mongodb) 版本：2019-07-25
-
-### 第 4 次发布
-
-发布时间：2020-06-02 08:13:21
+发布时间：2020-06-03 08:05:26
 
 本次发布包含了以下内容：
 
@@ -118,98 +12,65 @@
 
 新增接口：
 
-* [FlushInstanceRouterConfig](https://cloud.tencent.com/document/api/240/45080)
+* [ListAccessKeys](https://cloud.tencent.com/document/api/598/45156)
+
+新增数据结构：
+
+* [AccessKey](https://cloud.tencent.com/document/api/598/33167#AccessKey)
 
 
 
-## 云数据库 MongoDB(mongodb) 版本：2018-04-08
+## 密钥管理系统(kms) 版本：2019-01-18
 
+### 第 8 次发布
 
-
-## 云监控(monitor) 版本：2018-07-24
-
-### 第 13 次发布
-
-发布时间：2020-06-02 08:13:34
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [DescribePolicyGroupInfoCondition](https://cloud.tencent.com/document/api/248/30354#DescribePolicyGroupInfoCondition)
-
-	* 新增成员：MetricName
-
-
-
-
-## 游戏数据库 TcaplusDB(tcaplusdb) 版本：2019-08-23
-
-### 第 6 次发布
-
-发布时间：2020-06-02 08:16:48
+发布时间：2020-06-03 08:12:31
 
 本次发布包含了以下内容：
 
 改善已有的文档。
-
-新增接口：
-
-* [DescribeClusterTags](https://cloud.tencent.com/document/api/596/45082)
-* [DescribeTableGroupTags](https://cloud.tencent.com/document/api/596/45084)
-* [DescribeTableTags](https://cloud.tencent.com/document/api/596/45086)
-* [ModifyClusterTags](https://cloud.tencent.com/document/api/596/45081)
-* [ModifyTableGroupTags](https://cloud.tencent.com/document/api/596/45083)
-* [ModifyTableTags](https://cloud.tencent.com/document/api/596/45085)
 
 修改接口：
 
-* [CreateCluster](https://cloud.tencent.com/document/api/596/41491)
+* [CreateKey](https://cloud.tencent.com/document/api/573/34430)
 
-	* 新增入参：ResourceTags
+	* 新增入参：Tags
 
-* [CreateTableGroup](https://cloud.tencent.com/document/api/596/41495)
+	* 新增出参：TagCode, TagMsg
 
-	* 新增入参：ResourceTags
+* [CreateWhiteBoxKey](https://cloud.tencent.com/document/api/573/43443)
 
-* [CreateTables](https://cloud.tencent.com/document/api/596/39667)
+	* 新增入参：Tags
 
-	* 新增入参：ResourceTags
+	* 新增出参：TagCode, TagMsg
 
 
 新增数据结构：
 
-* [TagInfoUnit](https://cloud.tencent.com/document/api/596/39686#TagInfoUnit)
-* [TagsInfoOfCluster](https://cloud.tencent.com/document/api/596/39686#TagsInfoOfCluster)
-* [TagsInfoOfTable](https://cloud.tencent.com/document/api/596/39686#TagsInfoOfTable)
-* [TagsInfoOfTableGroup](https://cloud.tencent.com/document/api/596/39686#TagsInfoOfTableGroup)
+* [Tag](https://cloud.tencent.com/document/api/573/34431#Tag)
 
 
 
-## 私有网络(vpc) 版本：2017-03-12
+## 短信(sms) 版本：2019-07-11
 
-### 第 51 次发布
+### 第 8 次发布
 
-发布时间：2020-06-02 08:18:49
+发布时间：2020-06-03 08:15:51
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-新增接口：
+修改接口：
 
-* [AssociateDhcpIpWithAddressIp](https://cloud.tencent.com/document/api/215/45093)
-* [CreateDhcpIp](https://cloud.tencent.com/document/api/215/45092)
-* [DeleteDhcpIp](https://cloud.tencent.com/document/api/215/45091)
-* [DescribeDhcpIps](https://cloud.tencent.com/document/api/215/45090)
-* [DisassociateDhcpIpWithAddressIp](https://cloud.tencent.com/document/api/215/45089)
-* [ModifyDhcpIpAttribute](https://cloud.tencent.com/document/api/215/45088)
+* [PullSmsReplyStatusByPhoneNumber](https://cloud.tencent.com/document/api/382/38775)
 
-新增数据结构：
+	* 新增入参：EndDateTime
 
-* [DhcpIp](https://cloud.tencent.com/document/api/215/15824#DhcpIp)
+* [PullSmsSendStatusByPhoneNumber](https://cloud.tencent.com/document/api/382/38773)
+
+	* 新增入参：EndDateTime
+
 
 
 
@@ -390,7 +251,7 @@
 
 新增接口：
 
-* [[DescribeItemById](https://cloud.tencent.com/document/api/1155/45094)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeItemById](https://cloud.tencent.com/document/api/1155/45094)
 
 ### 第 3 次发布
 
@@ -3353,6 +3214,22 @@
 
 
 ## 访问管理(cam) 版本：2019-01-16
+
+### 第 23 次发布
+
+发布时间：2020-06-03 08:05:26
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[ListAccessKeys](https://cloud.tencent.com/document/api/598/45156)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[AccessKey](https://cloud.tencent.com/document/api/598/33167#AccessKey)](https://cloud.tencent.com/document/api/598/33167#[AccessKey](https://cloud.tencent.com/document/api/598/33167#AccessKey))
 
 ### 第 22 次发布
 
@@ -14611,6 +14488,33 @@
 
 ## 密钥管理系统(kms) 版本：2019-01-18
 
+### 第 8 次发布
+
+发布时间：2020-06-03 08:12:31
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateKey](https://cloud.tencent.com/document/api/573/34430)
+
+	* 新增入参：Tags
+
+	* 新增出参：TagCode, TagMsg
+
+* [CreateWhiteBoxKey](https://cloud.tencent.com/document/api/573/43443)
+
+	* 新增入参：Tags
+
+	* 新增出参：TagCode, TagMsg
+
+
+新增数据结构：
+
+* [[Tag](https://cloud.tencent.com/document/api/573/34431#Tag)](https://cloud.tencent.com/document/api/573/34431#[Tag](https://cloud.tencent.com/document/api/573/34431#Tag))
+
 ### 第 7 次发布
 
 发布时间：2020-04-27 08:11:13
@@ -16322,7 +16226,7 @@
 
 新增接口：
 
-* [[FlushInstanceRouterConfig](https://cloud.tencent.com/document/api/240/45080)](https://cloud.tencent.com/document/api/#/#)
+* [FlushInstanceRouterConfig](https://cloud.tencent.com/document/api/240/45080)
 
 ### 第 3 次发布
 
@@ -19858,6 +19762,25 @@
 
 ## 短信(sms) 版本：2019-07-11
 
+### 第 8 次发布
+
+发布时间：2020-06-03 08:15:51
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [PullSmsReplyStatusByPhoneNumber](https://cloud.tencent.com/document/api/382/38775)
+
+	* 新增入参：EndDateTime
+
+* [PullSmsSendStatusByPhoneNumber](https://cloud.tencent.com/document/api/382/38773)
+
+	* 新增入参：EndDateTime
+
+
 ### 第 7 次发布
 
 发布时间：2020-02-21 12:53:39
@@ -21239,12 +21162,12 @@
 
 新增接口：
 
-* [[DescribeClusterTags](https://cloud.tencent.com/document/api/596/45082)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeTableGroupTags](https://cloud.tencent.com/document/api/596/45084)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeTableTags](https://cloud.tencent.com/document/api/596/45086)](https://cloud.tencent.com/document/api/#/#)
-* [[ModifyClusterTags](https://cloud.tencent.com/document/api/596/45081)](https://cloud.tencent.com/document/api/#/#)
-* [[ModifyTableGroupTags](https://cloud.tencent.com/document/api/596/45083)](https://cloud.tencent.com/document/api/#/#)
-* [[ModifyTableTags](https://cloud.tencent.com/document/api/596/45085)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeClusterTags](https://cloud.tencent.com/document/api/596/45082)
+* [DescribeTableGroupTags](https://cloud.tencent.com/document/api/596/45084)
+* [DescribeTableTags](https://cloud.tencent.com/document/api/596/45086)
+* [ModifyClusterTags](https://cloud.tencent.com/document/api/596/45081)
+* [ModifyTableGroupTags](https://cloud.tencent.com/document/api/596/45083)
+* [ModifyTableTags](https://cloud.tencent.com/document/api/596/45085)
 
 修改接口：
 
@@ -21263,10 +21186,10 @@
 
 新增数据结构：
 
-* [[TagInfoUnit](https://cloud.tencent.com/document/api/596/39686#TagInfoUnit)](https://cloud.tencent.com/document/api/596/39686#[TagInfoUnit](https://cloud.tencent.com/document/api/596/39686#TagInfoUnit))
-* [[TagsInfoOfCluster](https://cloud.tencent.com/document/api/596/39686#TagsInfoOfCluster)](https://cloud.tencent.com/document/api/596/39686#[TagsInfoOfCluster](https://cloud.tencent.com/document/api/596/39686#TagsInfoOfCluster))
-* [[TagsInfoOfTable](https://cloud.tencent.com/document/api/596/39686#TagsInfoOfTable)](https://cloud.tencent.com/document/api/596/39686#[TagsInfoOfTable](https://cloud.tencent.com/document/api/596/39686#TagsInfoOfTable))
-* [[TagsInfoOfTableGroup](https://cloud.tencent.com/document/api/596/39686#TagsInfoOfTableGroup)](https://cloud.tencent.com/document/api/596/39686#[TagsInfoOfTableGroup](https://cloud.tencent.com/document/api/596/39686#TagsInfoOfTableGroup))
+* [TagInfoUnit](https://cloud.tencent.com/document/api/596/39686#TagInfoUnit)
+* [TagsInfoOfCluster](https://cloud.tencent.com/document/api/596/39686#TagsInfoOfCluster)
+* [TagsInfoOfTable](https://cloud.tencent.com/document/api/596/39686#TagsInfoOfTable)
+* [TagsInfoOfTableGroup](https://cloud.tencent.com/document/api/596/39686#TagsInfoOfTableGroup)
 
 ### 第 5 次发布
 
@@ -26374,16 +26297,16 @@
 
 新增接口：
 
-* [[AssociateDhcpIpWithAddressIp](https://cloud.tencent.com/document/api/215/45093)](https://cloud.tencent.com/document/api/#/#)
-* [[CreateDhcpIp](https://cloud.tencent.com/document/api/215/45092)](https://cloud.tencent.com/document/api/#/#)
-* [[DeleteDhcpIp](https://cloud.tencent.com/document/api/215/45091)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeDhcpIps](https://cloud.tencent.com/document/api/215/45090)](https://cloud.tencent.com/document/api/#/#)
-* [[DisassociateDhcpIpWithAddressIp](https://cloud.tencent.com/document/api/215/45089)](https://cloud.tencent.com/document/api/#/#)
-* [[ModifyDhcpIpAttribute](https://cloud.tencent.com/document/api/215/45088)](https://cloud.tencent.com/document/api/#/#)
+* [AssociateDhcpIpWithAddressIp](https://cloud.tencent.com/document/api/215/45093)
+* [CreateDhcpIp](https://cloud.tencent.com/document/api/215/45092)
+* [DeleteDhcpIp](https://cloud.tencent.com/document/api/215/45091)
+* [DescribeDhcpIps](https://cloud.tencent.com/document/api/215/45090)
+* [DisassociateDhcpIpWithAddressIp](https://cloud.tencent.com/document/api/215/45089)
+* [ModifyDhcpIpAttribute](https://cloud.tencent.com/document/api/215/45088)
 
 新增数据结构：
 
-* [[DhcpIp](https://cloud.tencent.com/document/api/215/15824#DhcpIp)](https://cloud.tencent.com/document/api/215/15824#[DhcpIp](https://cloud.tencent.com/document/api/215/15824#DhcpIp))
+* [DhcpIp](https://cloud.tencent.com/document/api/215/15824#DhcpIp)
 
 ### 第 50 次发布
 

@@ -818,6 +818,31 @@ func (c *Client) GetUser(request *GetUserRequest) (response *GetUserResponse, er
     return
 }
 
+func NewListAccessKeysRequest() (request *ListAccessKeysRequest) {
+    request = &ListAccessKeysRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cam", APIVersion, "ListAccessKeys")
+    return
+}
+
+func NewListAccessKeysResponse() (response *ListAccessKeysResponse) {
+    response = &ListAccessKeysResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 列出指定CAM用户的访问密钥
+func (c *Client) ListAccessKeys(request *ListAccessKeysRequest) (response *ListAccessKeysResponse, err error) {
+    if request == nil {
+        request = NewListAccessKeysRequest()
+    }
+    response = NewListAccessKeysResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewListAttachedGroupPoliciesRequest() (request *ListAttachedGroupPoliciesRequest) {
     request = &ListAttachedGroupPoliciesRequest{
         BaseRequest: &tchttp.BaseRequest{},

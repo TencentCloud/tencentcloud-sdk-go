@@ -351,6 +351,7 @@ type DescribeSignListStatus struct {
 
 	// 申请签名状态。其中：
 	// 0：表示审核通过。
+	// 1：表示审核中。
 	// -1：表示审核未通过或审核失败。
 	StatusCode *int64 `json:"StatusCode,omitempty" name:"StatusCode"`
 
@@ -460,6 +461,7 @@ type DescribeTemplateListStatus struct {
 
 	// 申请签名状态。其中：
 	// 0：表示审核通过。
+	// 1：表示审核中。
 	// -1：表示审核未通过或审核失败。
 	StatusCode *int64 `json:"StatusCode,omitempty" name:"StatusCode"`
 
@@ -652,6 +654,7 @@ type PullSmsReplyStatusByPhoneNumberRequest struct {
 	*tchttp.BaseRequest
 
 	// 拉取起始时间，UNIX 时间戳（时间：秒）。
+	// 注：最大可拉取当前时期7天前的数据。
 	SendDateTime *uint64 `json:"SendDateTime,omitempty" name:"SendDateTime"`
 
 	// 偏移量。
@@ -666,6 +669,9 @@ type PullSmsReplyStatusByPhoneNumberRequest struct {
 
 	// 短信SdkAppid在 [短信控制台](https://console.cloud.tencent.com/smsv2) 添加应用后生成的实际SdkAppid，例如1400006666。
 	SmsSdkAppid *string `json:"SmsSdkAppid,omitempty" name:"SmsSdkAppid"`
+
+	// 拉取截止时间，UNIX 时间戳（时间：秒）。
+	EndDateTime *uint64 `json:"EndDateTime,omitempty" name:"EndDateTime"`
 }
 
 func (r *PullSmsReplyStatusByPhoneNumberRequest) ToJsonString() string {
@@ -769,6 +775,7 @@ type PullSmsSendStatusByPhoneNumberRequest struct {
 	*tchttp.BaseRequest
 
 	// 拉取起始时间，UNIX 时间戳（时间：秒）。
+	// 注：最大可拉取当前时期7天前的数据。
 	SendDateTime *uint64 `json:"SendDateTime,omitempty" name:"SendDateTime"`
 
 	// 偏移量。
@@ -783,6 +790,9 @@ type PullSmsSendStatusByPhoneNumberRequest struct {
 
 	// 短信SdkAppid在 [短信控制台](https://console.cloud.tencent.com/smsv2) 添加应用后生成的实际SdkAppid，例如1400006666。
 	SmsSdkAppid *string `json:"SmsSdkAppid,omitempty" name:"SmsSdkAppid"`
+
+	// 拉取截止时间，UNIX 时间戳（时间：秒）。
+	EndDateTime *uint64 `json:"EndDateTime,omitempty" name:"EndDateTime"`
 }
 
 func (r *PullSmsSendStatusByPhoneNumberRequest) ToJsonString() string {

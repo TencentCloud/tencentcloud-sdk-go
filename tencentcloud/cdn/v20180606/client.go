@@ -267,7 +267,7 @@ func NewDescribeCertDomainsResponse() (response *DescribeCertDomainsResponse) {
     return
 }
 
-// 校验证书并提取SSL证书中包含的域名，返回CDN已接入的域名列表，及已配置证书的域名列表
+// DescribeCertDomains 用于校验SSL证书并提取证书中包含的域名。
 func (c *Client) DescribeCertDomains(request *DescribeCertDomainsRequest) (response *DescribeCertDomainsResponse, err error) {
     if request == nil {
         request = NewDescribeCertDomainsRequest()
@@ -342,7 +342,7 @@ func NewDescribeImageConfigResponse() (response *DescribeImageConfigResponse) {
     return
 }
 
-// 获取域名图片优化的当前配置，支持Webp、TPG、Guetzli 
+// DescribeImageConfig 用于获取域名图片优化的当前配置，支持Webp、TPG 和 Guetzli。 
 func (c *Client) DescribeImageConfig(request *DescribeImageConfigRequest) (response *DescribeImageConfigResponse, err error) {
     if request == nil {
         request = NewDescribeImageConfigRequest()
@@ -1096,7 +1096,7 @@ func NewUpdateImageConfigResponse() (response *UpdateImageConfigResponse) {
     return
 }
 
-// 更新控制台图片优化的相关配置，支持Webp、TPG、Guetzli 
+// UpdateImageConfig 用于更新控制台图片优化的相关配置，支持Webp、TPG 和 Guetzli。 
 func (c *Client) UpdateImageConfig(request *UpdateImageConfigRequest) (response *UpdateImageConfigResponse, err error) {
     if request == nil {
         request = NewUpdateImageConfigRequest()

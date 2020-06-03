@@ -169,6 +169,9 @@ type CreateKeyRequest struct {
 
 	// 指定key类型，默认为1，1表示默认类型，由KMS创建CMK密钥，2 表示EXTERNAL 类型，该类型需要用户导入密钥材料，参考 GetParametersForImport 和 ImportKeyMaterial 接口
 	Type *uint64 `json:"Type,omitempty" name:"Type"`
+
+	// 标签列表
+	Tags []*Tag `json:"Tags,omitempty" name:"Tags" list`
 }
 
 func (r *CreateKeyRequest) ToJsonString() string {
@@ -203,6 +206,14 @@ type CreateKeyResponse struct {
 		// CMK的用途
 		KeyUsage *string `json:"KeyUsage,omitempty" name:"KeyUsage"`
 
+		// 标签操作的返回码. 0: 成功；1: 内部错误；2: 业务处理错误
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		TagCode *uint64 `json:"TagCode,omitempty" name:"TagCode"`
+
+		// 标签操作的返回信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		TagMsg *string `json:"TagMsg,omitempty" name:"TagMsg"`
+
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
@@ -228,6 +239,9 @@ type CreateWhiteBoxKeyRequest struct {
 
 	// 密钥的描述，最大1024字节
 	Description *string `json:"Description,omitempty" name:"Description"`
+
+	// 标签列表
+	Tags []*Tag `json:"Tags,omitempty" name:"Tags" list`
 }
 
 func (r *CreateWhiteBoxKeyRequest) ToJsonString() string {
@@ -251,6 +265,14 @@ type CreateWhiteBoxKeyResponse struct {
 
 		// 白盒密钥的全局唯一标识符
 		KeyId *string `json:"KeyId,omitempty" name:"KeyId"`
+
+		// 标签操作的返回码. 0: 成功；1: 内部错误；2: 业务处理错误
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		TagCode *uint64 `json:"TagCode,omitempty" name:"TagCode"`
+
+		// 标签操作的返回信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		TagMsg *string `json:"TagMsg,omitempty" name:"TagMsg"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1631,6 +1653,15 @@ func (r *ScheduleKeyDeletionResponse) ToJsonString() string {
 
 func (r *ScheduleKeyDeletionResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
+}
+
+type Tag struct {
+
+	// 标签键
+	TagKey *string `json:"TagKey,omitempty" name:"TagKey"`
+
+	// 标签值
+	TagValue *string `json:"TagValue,omitempty" name:"TagValue"`
 }
 
 type UpdateAliasRequest struct {

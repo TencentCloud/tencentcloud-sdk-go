@@ -158,7 +158,7 @@ type SpeechTranslateRequest struct {
 	// 音频中的语言类型，支持语言列表<li> zh : 中文 </li> <li> en : 英文 </li>
 	Source *string `json:"Source,omitempty" name:"Source"`
 
-	// 翻译目标语⾔言类型 ，支持的语言列表<li> zh : 中文 </li> <li> en : 英文 </li>
+	// 翻译目标语言类型，支持的语言列表<li> zh : 中文 </li> <li> en : 英文 </li>
 	Target *string `json:"Target,omitempty" name:"Target"`
 
 	// pcm : 146   speex : 16779154   mp3 : 83886080

@@ -469,7 +469,7 @@ type DetectInfoVideoData struct {
 type GetActionSequenceRequest struct {
 	*tchttp.BaseRequest
 
-	// 取值FourAction时 返回四种动作的动作序列
+	// 默认不需要使用
 	ActionType *string `json:"ActionType,omitempty" name:"ActionType"`
 }
 
