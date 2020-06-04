@@ -143,6 +143,31 @@ func (c *Client) CreateHostingDomain(request *CreateHostingDomainRequest) (respo
     return
 }
 
+func NewCreatePostpayPackageRequest() (request *CreatePostpayPackageRequest) {
+    request = &CreatePostpayPackageRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tcb", APIVersion, "CreatePostpayPackage")
+    return
+}
+
+func NewCreatePostpayPackageResponse() (response *CreatePostpayPackageResponse) {
+    response = &CreatePostpayPackageResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 开通后付费资源
+func (c *Client) CreatePostpayPackage(request *CreatePostpayPackageRequest) (response *CreatePostpayPackageResponse, err error) {
+    if request == nil {
+        request = NewCreatePostpayPackageRequest()
+    }
+    response = NewCreatePostpayPackageResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateStaticStoreRequest() (request *CreateStaticStoreRequest) {
     request = &CreateStaticStoreRequest{
         BaseRequest: &tchttp.BaseRequest{},

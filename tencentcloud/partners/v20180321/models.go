@@ -567,6 +567,49 @@ func (r *DescribeAgentBillsResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeAgentClientGradeRequest struct {
+	*tchttp.BaseRequest
+
+	// 代客uin
+	ClientUin *string `json:"ClientUin,omitempty" name:"ClientUin"`
+}
+
+func (r *DescribeAgentClientGradeRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeAgentClientGradeRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeAgentClientGradeResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 审核状态：0待审核，1，已审核
+		AuditStatus *uint64 `json:"AuditStatus,omitempty" name:"AuditStatus"`
+
+		// 实名认证状态：0，未实名认证，1实名认证
+		AuthState *uint64 `json:"AuthState,omitempty" name:"AuthState"`
+
+		// 客户级别
+		ClientGrade *string `json:"ClientGrade,omitempty" name:"ClientGrade"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeAgentClientGradeResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeAgentClientGradeResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeAgentClientsRequest struct {
 	*tchttp.BaseRequest
 

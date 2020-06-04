@@ -193,6 +193,31 @@ func (c *Client) DescribeAgentBills(request *DescribeAgentBillsRequest) (respons
     return
 }
 
+func NewDescribeAgentClientGradeRequest() (request *DescribeAgentClientGradeRequest) {
+    request = &DescribeAgentClientGradeRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("partners", APIVersion, "DescribeAgentClientGrade")
+    return
+}
+
+func NewDescribeAgentClientGradeResponse() (response *DescribeAgentClientGradeResponse) {
+    response = &DescribeAgentClientGradeResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 传入代客uin，查客户级别，客户审核状态，客户实名认证状态
+func (c *Client) DescribeAgentClientGrade(request *DescribeAgentClientGradeRequest) (response *DescribeAgentClientGradeResponse, err error) {
+    if request == nil {
+        request = NewDescribeAgentClientGradeRequest()
+    }
+    response = NewDescribeAgentClientGradeResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeAgentClientsRequest() (request *DescribeAgentClientsRequest) {
     request = &DescribeAgentClientsRequest{
         BaseRequest: &tchttp.BaseRequest{},

@@ -160,7 +160,7 @@ type CreateDBInstancesRequest struct {
 	// 活动ID
 	ActivityId *int64 `json:"ActivityId,omitempty" name:"ActivityId"`
 
-	// 实例名
+	// 实例名(后续支持)
 	Name *string `json:"Name,omitempty" name:"Name"`
 }
 
@@ -203,16 +203,16 @@ func (r *CreateDBInstancesResponse) FromJsonString(s string) error {
 type CreateServerlessDBInstanceRequest struct {
 	*tchttp.BaseRequest
 
-	// 可用区ID。该参数可以通过调用 DescribeZones 接口的返回值中的Zone字段来获取。
+	// 可用区ID。公测阶段仅支持ap-shanghai-2、ap-beijing-1,ap-guangzhou-2.
 	Zone *string `json:"Zone,omitempty" name:"Zone"`
 
 	// DB实例名称，同一个账号下该值必须唯一。
 	DBInstanceName *string `json:"DBInstanceName,omitempty" name:"DBInstanceName"`
 
-	// PostgreSQL内核版本，目前只支持：9.3.5、9.5.4、10.4三种版本。
+	// PostgreSQL内核版本，目前只支持：10.4。
 	DBVersion *string `json:"DBVersion,omitempty" name:"DBVersion"`
 
-	// PostgreSQL数据库字符集，目前支持UTF8、LATIN1两种。
+	// PostgreSQL数据库字符集，目前支持UTF8。
 	DBCharset *string `json:"DBCharset,omitempty" name:"DBCharset"`
 
 	// 项目ID。
@@ -494,7 +494,7 @@ type DescribeDBBackupsRequest struct {
 	// 查询结束时间，形如2018-06-10 17:06:38
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 
-	// 备份列表分页返回，每页返回数量，默认为 20，最小为1，最大值为 100。
+	// 备份列表分页返回，每页返回数量，默认为 20，最小为1，最大值为 100。（当该参数不传或者传0时按默认值处理）
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 
 	// 返回结果中的第几页，从第0页开始。默认为0。

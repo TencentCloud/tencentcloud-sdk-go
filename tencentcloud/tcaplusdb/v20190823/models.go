@@ -74,7 +74,7 @@ type ClusterInfo struct {
 	// 集群所在地域
 	Region *string `json:"Region,omitempty" name:"Region"`
 
-	// 集群数据描述语言类型，如：`PROTO`,`TDR`或`MIX`
+	// 集群数据描述语言类型，如：`PROTO`,`TDR`
 	IdlType *string `json:"IdlType,omitempty" name:"IdlType"`
 
 	// 网络类型
@@ -1692,10 +1692,10 @@ type SelectedTableInfoNew struct {
 	// 表格预留容量（GB）
 	ReservedVolume *int64 `json:"ReservedVolume,omitempty" name:"ReservedVolume"`
 
-	// 表格预留读QPS
+	// 表格预留读CU
 	ReservedReadQps *int64 `json:"ReservedReadQps,omitempty" name:"ReservedReadQps"`
 
-	// 表格预留写QPS
+	// 表格预留写CU
 	ReservedWriteQps *int64 `json:"ReservedWriteQps,omitempty" name:"ReservedWriteQps"`
 
 	// 表格备注信息
@@ -1794,11 +1794,11 @@ type TableInfoNew struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ReservedVolume *int64 `json:"ReservedVolume,omitempty" name:"ReservedVolume"`
 
-	// 表格预留读QPS
+	// 表格预留读CU
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ReservedReadQps *int64 `json:"ReservedReadQps,omitempty" name:"ReservedReadQps"`
 
-	// 表格预留写QPS
+	// 表格预留写CU
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ReservedWriteQps *int64 `json:"ReservedWriteQps,omitempty" name:"ReservedWriteQps"`
 

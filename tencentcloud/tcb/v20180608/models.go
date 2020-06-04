@@ -196,6 +196,71 @@ func (r *CreateHostingDomainResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type CreatePostpayPackageRequest struct {
+	*tchttp.BaseRequest
+
+	// 环境ID
+	EnvId *string `json:"EnvId,omitempty" name:"EnvId"`
+
+	// 微信 AppId，微信必传
+	WxAppId *string `json:"WxAppId,omitempty" name:"WxAppId"`
+
+	// 付费来源
+	// <li>miniapp</li>
+	// <li>qcloud</li>
+	Source *string `json:"Source,omitempty" name:"Source"`
+
+	// 用户享有的免费额度级别，目前只能为“basic”，不传该字段或该字段为空，标识不享受免费额度。
+	FreeQuota *string `json:"FreeQuota,omitempty" name:"FreeQuota"`
+
+	// 环境别名，要以a-z开头，不能包含 a-zA-z0-9- 以外的字符
+	Alias *string `json:"Alias,omitempty" name:"Alias"`
+
+	// 环境创建来源，取值：
+	// <li>miniapp</li>
+	// <li>qcloud</li>
+	// 用法同CreateEnv接口的Source参数
+	EnvSource *string `json:"EnvSource,omitempty" name:"EnvSource"`
+
+	// 如果envsource为miniapp, channel可以为ide或api;
+	// 如果envsource为qcloud, channel可以为qc_console,cocos, qq, cloudgame,dcloud
+	Channel *string `json:"Channel,omitempty" name:"Channel"`
+}
+
+func (r *CreatePostpayPackageRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreatePostpayPackageRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreatePostpayPackageResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 后付费订单号
+		TranId *string `json:"TranId,omitempty" name:"TranId"`
+
+		// 环境ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		EnvId *string `json:"EnvId,omitempty" name:"EnvId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreatePostpayPackageResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreatePostpayPackageResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type CreateStaticStoreRequest struct {
 	*tchttp.BaseRequest
 
