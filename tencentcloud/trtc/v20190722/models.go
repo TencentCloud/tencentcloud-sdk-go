@@ -670,15 +670,15 @@ type ScaleInfomation struct {
 	// 每天开始的时间
 	Time *uint64 `json:"Time,omitempty" name:"Time"`
 
-	// 房间人数
+	// 房间人数，用户重复进入同一个房间为1次
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UserNumber *uint64 `json:"UserNumber,omitempty" name:"UserNumber"`
 
-	// 房间人次
+	// 房间人次，用户每次进入房间为一次
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UserCount *uint64 `json:"UserCount,omitempty" name:"UserCount"`
 
-	// 房间数
+	// sdkappid下一天内的房间数
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RoomNumbers *uint64 `json:"RoomNumbers,omitempty" name:"RoomNumbers"`
 }

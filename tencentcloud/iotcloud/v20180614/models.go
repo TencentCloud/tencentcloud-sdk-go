@@ -322,6 +322,58 @@ func (r *CreateMultiDeviceResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type CreateMultiDevicesTaskRequest struct {
+	*tchttp.BaseRequest
+
+	// 产品ID
+	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
+
+	// 参数类型 cosfile-文件上传 random-随机创建
+	ParametersType *string `json:"ParametersType,omitempty" name:"ParametersType"`
+
+	// 文件上传类型时文件名
+	FileName *string `json:"FileName,omitempty" name:"FileName"`
+
+	// 文件上传类型时文件大小
+	FileSize *uint64 `json:"FileSize,omitempty" name:"FileSize"`
+
+	// 随机创建时设备创建个数
+	BatchCount *uint64 `json:"BatchCount,omitempty" name:"BatchCount"`
+
+	// 文件上传类型时文件md5值
+	Hash *string `json:"Hash,omitempty" name:"Hash"`
+}
+
+func (r *CreateMultiDevicesTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateMultiDevicesTaskRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateMultiDevicesTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 任务ID
+		Id *uint64 `json:"Id,omitempty" name:"Id"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateMultiDevicesTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateMultiDevicesTaskResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type CreateProductRequest struct {
 	*tchttp.BaseRequest
 
@@ -368,6 +420,46 @@ func (r *CreateProductResponse) ToJsonString() string {
 }
 
 func (r *CreateProductResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateTaskFileUrlRequest struct {
+	*tchttp.BaseRequest
+
+	// 产品ID
+	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
+}
+
+func (r *CreateTaskFileUrlRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateTaskFileUrlRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateTaskFileUrlResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 任务文件上传链接
+		Url *string `json:"Url,omitempty" name:"Url"`
+
+		// 任务文件名
+		FileName *string `json:"FileName,omitempty" name:"FileName"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateTaskFileUrlResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateTaskFileUrlResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -741,7 +833,7 @@ type DescribeDeviceResponse struct {
 		// 设备类型
 		DeviceType *uint64 `json:"DeviceType,omitempty" name:"DeviceType"`
 
-		// IMEI
+		// 国际移动设备识别码 IMEI
 		Imei *string `json:"Imei,omitempty" name:"Imei"`
 
 		// 运营商类型
@@ -786,6 +878,10 @@ type DescribeDeviceResponse struct {
 		// 设备标签
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		Labels []*DeviceLabel `json:"Labels,omitempty" name:"Labels" list`
+
+		// MQTT客户端IP地址
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		ClientIP *string `json:"ClientIP,omitempty" name:"ClientIP"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1037,6 +1133,92 @@ func (r *DescribeMultiDevicesResponse) ToJsonString() string {
 }
 
 func (r *DescribeMultiDevicesResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeProductTaskRequest struct {
+	*tchttp.BaseRequest
+
+	// 产品ID
+	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
+
+	// 任务ID
+	TaskId *uint64 `json:"TaskId,omitempty" name:"TaskId"`
+}
+
+func (r *DescribeProductTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeProductTaskRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeProductTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 产品任务详细信息
+		TaskInfo *ProductTaskInfo `json:"TaskInfo,omitempty" name:"TaskInfo"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeProductTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeProductTaskResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeProductTasksRequest struct {
+	*tchttp.BaseRequest
+
+	// 产品ID
+	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
+
+	// 产品级别任务列表偏移量
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 产品级别任务列表拉取个数
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+func (r *DescribeProductTasksRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeProductTasksRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeProductTasksResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 符合条件的任务总个数
+		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 任务详细信息列表
+		TaskInfos []*ProductTaskInfo `json:"TaskInfos,omitempty" name:"TaskInfos" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeProductTasksResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeProductTasksResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -1294,6 +1476,10 @@ type DeviceTag struct {
 
 	// 属性的值
 	Value *string `json:"Value,omitempty" name:"Value"`
+
+	// 属性描述名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Name *string `json:"Name,omitempty" name:"Name"`
 }
 
 type DisableTopicRuleRequest struct {
@@ -1447,6 +1633,50 @@ type ProductProperties struct {
 
 	// RegisterType为2时，设备动态创建的限制数量
 	RegisterLimit *uint64 `json:"RegisterLimit,omitempty" name:"RegisterLimit"`
+}
+
+type ProductTaskInfo struct {
+
+	// 任务ID
+	Id *uint64 `json:"Id,omitempty" name:"Id"`
+
+	// 任务类型 0-批量创建设备类型
+	Type *uint64 `json:"Type,omitempty" name:"Type"`
+
+	// 任务状态 0-创建中 1-待执行 2-执行中 3-执行失败 4-子任务部分失败 5-执行成功
+	State *uint64 `json:"State,omitempty" name:"State"`
+
+	// 任务参数类型 cosfile-文件输入 random-随机生成
+	ParametersType *string `json:"ParametersType,omitempty" name:"ParametersType"`
+
+	// 任务参数
+	Parameters *string `json:"Parameters,omitempty" name:"Parameters"`
+
+	// 任务执行结果类型 cosfile-文件输出 errmsg-错误信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResultType *string `json:"ResultType,omitempty" name:"ResultType"`
+
+	// 任务执行结果
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Result *string `json:"Result,omitempty" name:"Result"`
+
+	// 子任务总个数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BatchCount *uint64 `json:"BatchCount,omitempty" name:"BatchCount"`
+
+	// 子任务已执行个数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BatchOffset *uint64 `json:"BatchOffset,omitempty" name:"BatchOffset"`
+
+	// 任务创建时间
+	CreateTime *uint64 `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 任务更新时间
+	UpdateTime *uint64 `json:"UpdateTime,omitempty" name:"UpdateTime"`
+
+	// 任务完成时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CompleteTime *uint64 `json:"CompleteTime,omitempty" name:"CompleteTime"`
 }
 
 type PublishAsDeviceRequest struct {
@@ -1624,6 +1854,19 @@ func (r *ReplaceTopicRuleResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type ResetDeviceResult struct {
+
+	// 设备名
+	DeviceName *string `json:"DeviceName,omitempty" name:"DeviceName"`
+
+	// 是否成功
+	Success *bool `json:"Success,omitempty" name:"Success"`
+
+	// 失败原因
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Reason *string `json:"Reason,omitempty" name:"Reason"`
+}
+
 type ResetDeviceStateRequest struct {
 	*tchttp.BaseRequest
 
@@ -1646,6 +1889,12 @@ func (r *ResetDeviceStateRequest) FromJsonString(s string) error {
 type ResetDeviceStateResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
+
+		// 批量重置设备成功数
+		SuccessCount *uint64 `json:"SuccessCount,omitempty" name:"SuccessCount"`
+
+		// 批量重置设备结果
+		ResetDeviceResults []*ResetDeviceResult `json:"ResetDeviceResults,omitempty" name:"ResetDeviceResults" list`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`

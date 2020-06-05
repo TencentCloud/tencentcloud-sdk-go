@@ -168,6 +168,31 @@ func (c *Client) CreateMultiDevice(request *CreateMultiDeviceRequest) (response 
     return
 }
 
+func NewCreateMultiDevicesTaskRequest() (request *CreateMultiDevicesTaskRequest) {
+    request = &CreateMultiDevicesTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iotcloud", APIVersion, "CreateMultiDevicesTask")
+    return
+}
+
+func NewCreateMultiDevicesTaskResponse() (response *CreateMultiDevicesTaskResponse) {
+    response = &CreateMultiDevicesTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（CreateMultiDevicesTask）用于创建产品级别的批量创建设备任务
+func (c *Client) CreateMultiDevicesTask(request *CreateMultiDevicesTaskRequest) (response *CreateMultiDevicesTaskResponse, err error) {
+    if request == nil {
+        request = NewCreateMultiDevicesTaskRequest()
+    }
+    response = NewCreateMultiDevicesTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateProductRequest() (request *CreateProductRequest) {
     request = &CreateProductRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -214,6 +239,31 @@ func (c *Client) CreateTask(request *CreateTaskRequest) (response *CreateTaskRes
         request = NewCreateTaskRequest()
     }
     response = NewCreateTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateTaskFileUrlRequest() (request *CreateTaskFileUrlRequest) {
+    request = &CreateTaskFileUrlRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iotcloud", APIVersion, "CreateTaskFileUrl")
+    return
+}
+
+func NewCreateTaskFileUrlResponse() (response *CreateTaskFileUrlResponse) {
+    response = &CreateTaskFileUrlResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（CreateTaskFileUrl）用于获取产品级任务文件上传链接
+func (c *Client) CreateTaskFileUrl(request *CreateTaskFileUrlRequest) (response *CreateTaskFileUrlResponse, err error) {
+    if request == nil {
+        request = NewCreateTaskFileUrlRequest()
+    }
+    response = NewCreateTaskFileUrlResponse()
     err = c.Send(request, response)
     return
 }
@@ -383,7 +433,7 @@ func NewDescribeDeviceResponse() (response *DescribeDeviceResponse) {
     return
 }
 
-// 本接口（DescribeDevice）用于查看设备信息 
+// 本接口（DescribeDevice）用于查看设备信息
 func (c *Client) DescribeDevice(request *DescribeDeviceRequest) (response *DescribeDeviceResponse, err error) {
     if request == nil {
         request = NewDescribeDeviceRequest()
@@ -539,6 +589,56 @@ func (c *Client) DescribeMultiDevices(request *DescribeMultiDevicesRequest) (res
         request = NewDescribeMultiDevicesRequest()
     }
     response = NewDescribeMultiDevicesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeProductTaskRequest() (request *DescribeProductTaskRequest) {
+    request = &DescribeProductTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iotcloud", APIVersion, "DescribeProductTask")
+    return
+}
+
+func NewDescribeProductTaskResponse() (response *DescribeProductTaskResponse) {
+    response = &DescribeProductTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（DescribeProductTask）用于查看产品级别的任务信息
+func (c *Client) DescribeProductTask(request *DescribeProductTaskRequest) (response *DescribeProductTaskResponse, err error) {
+    if request == nil {
+        request = NewDescribeProductTaskRequest()
+    }
+    response = NewDescribeProductTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeProductTasksRequest() (request *DescribeProductTasksRequest) {
+    request = &DescribeProductTasksRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iotcloud", APIVersion, "DescribeProductTasks")
+    return
+}
+
+func NewDescribeProductTasksResponse() (response *DescribeProductTasksResponse) {
+    response = &DescribeProductTasksResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（DescribeProductTasks）用于查看产品级别的任务列表
+func (c *Client) DescribeProductTasks(request *DescribeProductTasksRequest) (response *DescribeProductTasksResponse, err error) {
+    if request == nil {
+        request = NewDescribeProductTasksRequest()
+    }
+    response = NewDescribeProductTasksResponse()
     err = c.Send(request, response)
     return
 }

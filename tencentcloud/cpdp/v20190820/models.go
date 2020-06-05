@@ -423,6 +423,13 @@ type ApplyReWithdrawalRequest struct {
 
 	// 聚鑫业务ID
 	MidasAppId *string `json:"MidasAppId,omitempty" name:"MidasAppId"`
+
+	// 环境名:
+	// release: 现网环境
+	// sandbox: 沙箱环境
+	// development: 开发环境
+	// 缺省: release
+	MidasEnvironment *string `json:"MidasEnvironment,omitempty" name:"MidasEnvironment"`
 }
 
 func (r *ApplyReWithdrawalRequest) ToJsonString() string {

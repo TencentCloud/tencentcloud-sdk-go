@@ -9156,6 +9156,12 @@ type SearchMediaRequest struct {
 	// <li>取值范围：Offset + Limit 不超过5000。（参见：<a href="#maxResultsDesc">接口返回结果数限制</a>）</li></div>
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 
+	// 文件类型：
+	// <li>Video: 视频文件</li>
+	// <li>Audio: 音频文件</li>
+	// <li>Image: 图片文件</li>
+	Categories []*string `json:"Categories,omitempty" name:"Categories" list`
+
 	// 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
 	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
 }

@@ -352,10 +352,10 @@ func (r *DescribeAccidentEventListResponse) FromJsonString(s string) error {
 type DescribeBaseMetricsRequest struct {
 	*tchttp.BaseRequest
 
-	// 业务命名空间，各个云产品的业务命名空间不同。如需获取业务命名空间，请前往各产品监控接口文档，例如云服务器的命名空间，可参见 [云服务器监控接口](https://cloud.tencent.com/document/api/248/30385)
+	// 业务命名空间，各个云产品的业务命名空间不同。如需获取业务命名空间，请前往各产品监控指标文档，例如云服务器的命名空间，可参见 [云服务器监控指标](https://cloud.tencent.com/document/product/248/6843)
 	Namespace *string `json:"Namespace,omitempty" name:"Namespace"`
 
-	// 指标名，各个云产品的指标名不同。如需获取指标名，请前往各产品监控接口文档，例如云服务器的指标名，可参见 [云服务器监控接口](https://cloud.tencent.com/document/api/248/30385)
+	// 指标名，各个云产品的指标名不同。如需获取指标名，请前往各产品监控指标文档，例如云服务器的指标名，可参见 [云服务器监控指标](https://cloud.tencent.com/document/product/248/6843)
 	MetricName *string `json:"MetricName,omitempty" name:"MetricName"`
 }
 
@@ -1616,7 +1616,7 @@ type GetMonitorDataRequest struct {
 	// 命名空间，每个云产品会有一个命名空间
 	Namespace *string `json:"Namespace,omitempty" name:"Namespace"`
 
-	// 指标名称，各个云产品的详细指标说明请参阅各个产品[监控接口](https://cloud.tencent.com/document/product/248/30384)文档
+	// 指标名称，各个云产品的详细指标说明请参阅各个产品[监控指标](https://cloud.tencent.com/document/product/248/6140)文档
 	MetricName *string `json:"MetricName,omitempty" name:"MetricName"`
 
 	// 实例对象的维度组合
