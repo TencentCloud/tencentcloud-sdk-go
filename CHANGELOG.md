@@ -1,81 +1,47 @@
 # 本版本更新包含以下内容：
 
-## 企业收付平台(cpdp) 版本：2019-08-20
+## 内容分发网络(cdn) 版本：2018-06-06
 
-### 第 17 次发布
+### 第 23 次发布
 
-发布时间：2020-06-05 08:20:43
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [ApplyReWithdrawal](https://cloud.tencent.com/document/api/1122/43408)
-
-	* 新增入参：MidasEnvironment
-
-
-
-
-## 物联网通信(iotcloud) 版本：2018-06-14
-
-### 第 13 次发布
-
-发布时间：2020-06-05 08:11:21
+发布时间：2020-06-08 08:06:18
 
 本次发布包含了以下内容：
 
 改善已有的文档。
-
-新增接口：
-
-* [CreateMultiDevicesTask](https://cloud.tencent.com/document/api/634/45351)
-* [CreateTaskFileUrl](https://cloud.tencent.com/document/api/634/45350)
-* [DescribeProductTask](https://cloud.tencent.com/document/api/634/45349)
-* [DescribeProductTasks](https://cloud.tencent.com/document/api/634/45348)
-
-修改接口：
-
-* [DescribeDevice](https://cloud.tencent.com/document/api/634/31583)
-
-	* 新增出参：ClientIP
-
-* [ResetDeviceState](https://cloud.tencent.com/document/api/634/35197)
-
-	* 新增出参：SuccessCount, ResetDeviceResults
-
 
 新增数据结构：
 
-* [ProductTaskInfo](https://cloud.tencent.com/document/api/634/19497#ProductTaskInfo)
-* [ResetDeviceResult](https://cloud.tencent.com/document/api/634/19497#ResetDeviceResult)
+* [CacheTagKey](https://cloud.tencent.com/document/api/228/30987#CacheTagKey)
+* [CookieKey](https://cloud.tencent.com/document/api/228/30987#CookieKey)
+* [HeaderKey](https://cloud.tencent.com/document/api/228/30987#HeaderKey)
+* [QueryStringKey](https://cloud.tencent.com/document/api/228/30987#QueryStringKey)
+* [SchemeKey](https://cloud.tencent.com/document/api/228/30987#SchemeKey)
 
 修改数据结构：
 
-* [DeviceTag](https://cloud.tencent.com/document/api/634/19497#DeviceTag)
+* [CacheKey](https://cloud.tencent.com/document/api/228/30987#CacheKey)
 
-	* 新增成员：Name
-
-
+	* 新增成员：QueryString, Header, Cookie, Scheme, CacheTag
 
 
-## 云点播(vod) 版本：2018-07-17
 
-### 第 49 次发布
 
-发布时间：2020-06-05 08:19:14
+## 容器服务(tke) 版本：2018-05-25
+
+### 第 21 次发布
+
+发布时间：2020-06-08 08:17:06
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-修改接口：
+修改数据结构：
 
-* [SearchMedia](https://cloud.tencent.com/document/api/266/31813)
+* [Cluster](https://cloud.tencent.com/document/api/457/31866#Cluster)
 
-	* 新增入参：Categories
+	* 新增成员：DeletionProtection
 
 
 
@@ -5331,6 +5297,29 @@
 
 
 ## 内容分发网络(cdn) 版本：2018-06-06
+
+### 第 23 次发布
+
+发布时间：2020-06-08 08:06:18
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增数据结构：
+
+* [[CacheTagKey](https://cloud.tencent.com/document/api/228/30987#CacheTagKey)](https://cloud.tencent.com/document/api/228/30987#[CacheTagKey](https://cloud.tencent.com/document/api/228/30987#CacheTagKey))
+* [[CookieKey](https://cloud.tencent.com/document/api/228/30987#CookieKey)](https://cloud.tencent.com/document/api/228/30987#[CookieKey](https://cloud.tencent.com/document/api/228/30987#CookieKey))
+* [[HeaderKey](https://cloud.tencent.com/document/api/228/30987#HeaderKey)](https://cloud.tencent.com/document/api/228/30987#[HeaderKey](https://cloud.tencent.com/document/api/228/30987#HeaderKey))
+* [[QueryStringKey](https://cloud.tencent.com/document/api/228/30987#QueryStringKey)](https://cloud.tencent.com/document/api/228/30987#[QueryStringKey](https://cloud.tencent.com/document/api/228/30987#QueryStringKey))
+* [[SchemeKey](https://cloud.tencent.com/document/api/228/30987#SchemeKey)](https://cloud.tencent.com/document/api/228/30987#[SchemeKey](https://cloud.tencent.com/document/api/228/30987#SchemeKey))
+
+修改数据结构：
+
+* [CacheKey](https://cloud.tencent.com/document/api/228/30987#CacheKey)
+
+	* 新增成员：QueryString, Header, Cookie, Scheme, CacheTag
+
 
 ### 第 22 次发布
 
@@ -13831,10 +13820,10 @@
 
 新增接口：
 
-* [[CreateMultiDevicesTask](https://cloud.tencent.com/document/api/634/45351)](https://cloud.tencent.com/document/api/#/#)
-* [[CreateTaskFileUrl](https://cloud.tencent.com/document/api/634/45350)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeProductTask](https://cloud.tencent.com/document/api/634/45349)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeProductTasks](https://cloud.tencent.com/document/api/634/45348)](https://cloud.tencent.com/document/api/#/#)
+* [CreateMultiDevicesTask](https://cloud.tencent.com/document/api/634/45351)
+* [CreateTaskFileUrl](https://cloud.tencent.com/document/api/634/45350)
+* [DescribeProductTask](https://cloud.tencent.com/document/api/634/45349)
+* [DescribeProductTasks](https://cloud.tencent.com/document/api/634/45348)
 
 修改接口：
 
@@ -13849,8 +13838,8 @@
 
 新增数据结构：
 
-* [[ProductTaskInfo](https://cloud.tencent.com/document/api/634/19497#ProductTaskInfo)](https://cloud.tencent.com/document/api/634/19497#[ProductTaskInfo](https://cloud.tencent.com/document/api/634/19497#ProductTaskInfo))
-* [[ResetDeviceResult](https://cloud.tencent.com/document/api/634/19497#ResetDeviceResult)](https://cloud.tencent.com/document/api/634/19497#[ResetDeviceResult](https://cloud.tencent.com/document/api/634/19497#ResetDeviceResult))
+* [ProductTaskInfo](https://cloud.tencent.com/document/api/634/19497#ProductTaskInfo)
+* [ResetDeviceResult](https://cloud.tencent.com/document/api/634/19497#ResetDeviceResult)
 
 修改数据结构：
 
@@ -23445,6 +23434,21 @@
 
 
 ## 容器服务(tke) 版本：2018-05-25
+
+### 第 21 次发布
+
+发布时间：2020-06-08 08:17:06
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [Cluster](https://cloud.tencent.com/document/api/457/31866#Cluster)
+
+	* 新增成员：DeletionProtection
+
 
 ### 第 20 次发布
 

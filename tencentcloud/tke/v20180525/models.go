@@ -140,7 +140,7 @@ type Cluster struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ImageId *string `json:"ImageId,omitempty" name:"ImageId"`
 
-	// OsCustomizeType
+	// OsCustomizeType 系统定制类型
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	OsCustomizeType *string `json:"OsCustomizeType,omitempty" name:"OsCustomizeType"`
 
@@ -151,6 +151,10 @@ type Cluster struct {
 	// 创建时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreatedTime *string `json:"CreatedTime,omitempty" name:"CreatedTime"`
+
+	// 删除保护开关
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DeletionProtection *bool `json:"DeletionProtection,omitempty" name:"DeletionProtection"`
 }
 
 type ClusterAdvancedSettings struct {
