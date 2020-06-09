@@ -1103,10 +1103,10 @@ type SubmitCertificateInformationRequest struct {
 	// 证书验证方式。
 	VerifyType *string `json:"VerifyType,omitempty" name:"VerifyType"`
 
-	// 管理人姓。
+	// 管理人名。
 	AdminFirstName *string `json:"AdminFirstName,omitempty" name:"AdminFirstName"`
 
-	// 管理人名。
+	// 管理人姓。
 	AdminLastName *string `json:"AdminLastName,omitempty" name:"AdminLastName"`
 
 	// 管理人手机号码。
@@ -1118,10 +1118,10 @@ type SubmitCertificateInformationRequest struct {
 	// 管理人职位。
 	AdminPosition *string `json:"AdminPosition,omitempty" name:"AdminPosition"`
 
-	// 联系人姓。
+	// 联系人名。
 	ContactFirstName *string `json:"ContactFirstName,omitempty" name:"ContactFirstName"`
 
-	// 联系人名。
+	// 联系人姓。
 	ContactLastName *string `json:"ContactLastName,omitempty" name:"ContactLastName"`
 
 	// 联系人邮箱地址。

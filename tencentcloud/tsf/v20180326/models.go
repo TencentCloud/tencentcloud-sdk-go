@@ -4053,10 +4053,6 @@ type Instance struct {
 
 type LaneGroup struct {
 
-	// 泳道ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	LaneId *string `json:"LaneId,omitempty" name:"LaneId"`
-
 	// 部署组ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
@@ -4068,6 +4064,10 @@ type LaneGroup struct {
 	// 泳道部署组ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	LaneGroupId *string `json:"LaneGroupId,omitempty" name:"LaneGroupId"`
+
+	// 泳道ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LaneId *string `json:"LaneId,omitempty" name:"LaneId"`
 
 	// 部署组名
 	// 注意：此字段可能返回 null，表示取不到有效值。

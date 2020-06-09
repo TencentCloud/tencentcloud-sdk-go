@@ -441,7 +441,6 @@ func NewDemoteServiceUsagePlanResponse() (response *DemoteServiceUsagePlanRespon
 }
 
 // 本接口（DemoteServiceUsagePlan）用于将某个服务在某个环境的使用计划，降级到API上。
-// 服务若需要鉴权限流生效，则需要绑定使用计划到此服务中，本接口用于查询绑定到一个服务的所有使用计划。
 // 如果服务内没有API不允许进行此操作。
 // 如果当前环境没有发布，不允许进行此操作。
 func (c *Client) DemoteServiceUsagePlan(request *DemoteServiceUsagePlanRequest) (response *DemoteServiceUsagePlanResponse, err error) {

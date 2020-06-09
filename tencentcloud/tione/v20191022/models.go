@@ -882,7 +882,16 @@ type DescribeTrainingJobResponse struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		ModelArtifacts *ModelArtifacts `json:"ModelArtifacts,omitempty" name:"ModelArtifacts"`
 
-		// 详细状态
+		// 详细状态，取值范围
+	// Starting：启动中
+	// Downloading: 准备训练数据
+	// Training: 正在训练
+	// Uploading: 上传训练结果
+	// Completed：已完成
+	// Failed: 失败
+	// MaxRuntimeExceeded: 任务超过最大运行时间
+	// Stopping: 停止中
+	// Stopped：已停止
 		SecondaryStatus *string `json:"SecondaryStatus,omitempty" name:"SecondaryStatus"`
 
 		// 详细状态事件记录
@@ -893,7 +902,12 @@ type DescribeTrainingJobResponse struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		RoleName *string `json:"RoleName,omitempty" name:"RoleName"`
 
-		// 任务状态
+		// 训练任务状态，取值范围
+	// InProgress：运行中
+	// Completed: 已完成
+	// Failed: 失败
+	// Stopping: 停止中
+	// Stopped：已停止
 		TrainingJobStatus *string `json:"TrainingJobStatus,omitempty" name:"TrainingJobStatus"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。

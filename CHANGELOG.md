@@ -1,37 +1,29 @@
 # 本版本更新包含以下内容：
 
-## 内容分发网络(cdn) 版本：2018-06-06
+## 弹性伸缩(as) 版本：2018-04-19
 
-### 第 23 次发布
+### 第 28 次发布
 
-发布时间：2020-06-08 08:06:18
+发布时间：2020-06-09 08:04:26
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-新增数据结构：
-
-* [CacheTagKey](https://cloud.tencent.com/document/api/228/30987#CacheTagKey)
-* [CookieKey](https://cloud.tencent.com/document/api/228/30987#CookieKey)
-* [HeaderKey](https://cloud.tencent.com/document/api/228/30987#HeaderKey)
-* [QueryStringKey](https://cloud.tencent.com/document/api/228/30987#QueryStringKey)
-* [SchemeKey](https://cloud.tencent.com/document/api/228/30987#SchemeKey)
-
 修改数据结构：
 
-* [CacheKey](https://cloud.tencent.com/document/api/228/30987#CacheKey)
+* [InternetAccessible](https://cloud.tencent.com/document/api/377/20453#InternetAccessible)
 
-	* 新增成员：QueryString, Header, Cookie, Scheme, CacheTag
-
-
+	* 新增成员：BandwidthPackageId
 
 
-## 容器服务(tke) 版本：2018-05-25
+
+
+## 腾讯微服务平台 TSF(tsf) 版本：2018-03-26
 
 ### 第 21 次发布
 
-发布时间：2020-06-08 08:17:06
+发布时间：2020-06-09 08:18:22
 
 本次发布包含了以下内容：
 
@@ -39,9 +31,9 @@
 
 修改数据结构：
 
-* [Cluster](https://cloud.tencent.com/document/api/457/31866#Cluster)
+* [LaneGroup](https://cloud.tencent.com/document/api/649/36099#LaneGroup)
 
-	* 新增成员：DeletionProtection
+	* <font color="#dd0000">**修改成员**：</font>LaneId
 
 
 
@@ -417,6 +409,21 @@
 
 
 ## 弹性伸缩(as) 版本：2018-04-19
+
+### 第 28 次发布
+
+发布时间：2020-06-09 08:04:26
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [InternetAccessible](https://cloud.tencent.com/document/api/377/20453#InternetAccessible)
+
+	* 新增成员：BandwidthPackageId
+
 
 ### 第 27 次发布
 
@@ -5308,11 +5315,11 @@
 
 新增数据结构：
 
-* [[CacheTagKey](https://cloud.tencent.com/document/api/228/30987#CacheTagKey)](https://cloud.tencent.com/document/api/228/30987#[CacheTagKey](https://cloud.tencent.com/document/api/228/30987#CacheTagKey))
-* [[CookieKey](https://cloud.tencent.com/document/api/228/30987#CookieKey)](https://cloud.tencent.com/document/api/228/30987#[CookieKey](https://cloud.tencent.com/document/api/228/30987#CookieKey))
-* [[HeaderKey](https://cloud.tencent.com/document/api/228/30987#HeaderKey)](https://cloud.tencent.com/document/api/228/30987#[HeaderKey](https://cloud.tencent.com/document/api/228/30987#HeaderKey))
-* [[QueryStringKey](https://cloud.tencent.com/document/api/228/30987#QueryStringKey)](https://cloud.tencent.com/document/api/228/30987#[QueryStringKey](https://cloud.tencent.com/document/api/228/30987#QueryStringKey))
-* [[SchemeKey](https://cloud.tencent.com/document/api/228/30987#SchemeKey)](https://cloud.tencent.com/document/api/228/30987#[SchemeKey](https://cloud.tencent.com/document/api/228/30987#SchemeKey))
+* [CacheTagKey](https://cloud.tencent.com/document/api/228/30987#CacheTagKey)
+* [CookieKey](https://cloud.tencent.com/document/api/228/30987#CookieKey)
+* [HeaderKey](https://cloud.tencent.com/document/api/228/30987#HeaderKey)
+* [QueryStringKey](https://cloud.tencent.com/document/api/228/30987#QueryStringKey)
+* [SchemeKey](https://cloud.tencent.com/document/api/228/30987#SchemeKey)
 
 修改数据结构：
 
@@ -24262,6 +24269,21 @@
 
 
 ## 腾讯微服务平台 TSF(tsf) 版本：2018-03-26
+
+### 第 21 次发布
+
+发布时间：2020-06-09 08:18:22
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [LaneGroup](https://cloud.tencent.com/document/api/649/36099#LaneGroup)
+
+	* <font color="#dd0000">**修改成员**：</font>LaneId
+
 
 ### 第 20 次发布
 

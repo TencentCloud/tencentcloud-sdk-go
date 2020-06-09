@@ -2588,7 +2588,7 @@ type DomainSetList struct {
 	// 域名名称。
 	DomainName *string `json:"DomainName,omitempty" name:"DomainName"`
 
-	// 域名解析状态。True 表示正常解析，Flase 表示解析失败。
+	// 域名解析状态。True 表示正常解析，False 表示解析失败。
 	Status *int64 `json:"Status,omitempty" name:"Status"`
 
 	// 证书ID。
@@ -3455,7 +3455,7 @@ type ReqParameter struct {
 	// API 的前端参数名称。
 	Name *string `json:"Name,omitempty" name:"Name"`
 
-	// API 的前端参数位置，如 head。目前支持 head、qurey、path。
+	// API 的前端参数位置，如 head。目前支持 head、query、path。
 	Position *string `json:"Position,omitempty" name:"Position"`
 
 	// API 的前端参数类型，如 String、int。
