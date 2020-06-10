@@ -2,9 +2,197 @@
 
 ## 弹性伸缩(as) 版本：2018-04-19
 
-### 第 28 次发布
+### 第 29 次发布
 
-发布时间：2020-06-09 08:04:26
+发布时间：2020-06-10 08:03:37
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [ExecuteScalingPolicy](https://cloud.tencent.com/document/api/377/35477)
+
+	* 新增入参：TriggerSource
+
+
+
+
+## 云数据库 MySQL(cdb) 版本：2017-03-20
+
+### 第 41 次发布
+
+发布时间：2020-06-10 08:06:06
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CreateAuditLogFile](https://cloud.tencent.com/document/api/236/45461)
+* [CreateAuditPolicy](https://cloud.tencent.com/document/api/236/45460)
+* [CreateAuditRule](https://cloud.tencent.com/document/api/236/45459)
+* [DeleteAuditLogFile](https://cloud.tencent.com/document/api/236/45458)
+* [DeleteAuditPolicy](https://cloud.tencent.com/document/api/236/45457)
+* [DeleteAuditRule](https://cloud.tencent.com/document/api/236/45456)
+* [DescribeAuditConfig](https://cloud.tencent.com/document/api/236/45455)
+* [DescribeAuditLogFiles](https://cloud.tencent.com/document/api/236/45454)
+* [DescribeAuditPolicies](https://cloud.tencent.com/document/api/236/45453)
+* [DescribeAuditRules](https://cloud.tencent.com/document/api/236/45452)
+* [ModifyAuditConfig](https://cloud.tencent.com/document/api/236/45451)
+* [ModifyAuditRule](https://cloud.tencent.com/document/api/236/45450)
+
+新增数据结构：
+
+* [AuditFilter](https://cloud.tencent.com/document/api/236/15878#AuditFilter)
+* [AuditLogFile](https://cloud.tencent.com/document/api/236/15878#AuditLogFile)
+* [AuditLogFilter](https://cloud.tencent.com/document/api/236/15878#AuditLogFilter)
+* [AuditPolicy](https://cloud.tencent.com/document/api/236/15878#AuditPolicy)
+* [AuditRule](https://cloud.tencent.com/document/api/236/15878#AuditRule)
+
+
+
+## 内容分发网络(cdn) 版本：2018-06-06
+
+### 第 24 次发布
+
+发布时间：2020-06-10 08:06:47
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+<font color="#dd0000">**删除数据结构**：</font>
+
+* Hsts
+
+修改数据结构：
+
+* [CacheKey](https://cloud.tencent.com/document/api/228/30987#CacheKey)
+
+	* <font color="#dd0000">**删除成员**：</font>CaseSensitive
+
+* [Https](https://cloud.tencent.com/document/api/228/30987#Https)
+
+	* <font color="#dd0000">**删除成员**：</font>TlsVersion, Hsts
+
+
+
+
+## 企业收付平台(cpdp) 版本：2019-08-20
+
+### 第 18 次发布
+
+发布时间：2020-06-10 08:21:03
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [BindRelateAccReUnionPay](https://cloud.tencent.com/document/api/1122/40680)
+
+	* 新增入参：Profile
+
+* [BindRelateAcctSmallAmount](https://cloud.tencent.com/document/api/1122/40679)
+
+	* 新增入参：Profile
+
+* [BindRelateAcctUnionPay](https://cloud.tencent.com/document/api/1122/40678)
+
+	* 新增入参：Profile
+
+* [CheckAmount](https://cloud.tencent.com/document/api/1122/40676)
+
+	* 新增入参：Profile
+
+* [CreateCustAcctId](https://cloud.tencent.com/document/api/1122/40673)
+
+	* 新增入参：Profile
+
+* [ModifyMntMbrBindRelateAcctBankCode](https://cloud.tencent.com/document/api/1122/40671)
+
+	* 新增入参：Profile
+
+* [QueryBankClear](https://cloud.tencent.com/document/api/1122/40669)
+
+	* 新增入参：Profile
+
+* [QueryBankTransactionDetails](https://cloud.tencent.com/document/api/1122/40668)
+
+	* 新增入参：Profile
+
+* [QueryBankWithdrawCashDetails](https://cloud.tencent.com/document/api/1122/40667)
+
+	* 新增入参：Profile
+
+* [QueryCommonTransferRecharge](https://cloud.tencent.com/document/api/1122/40666)
+
+	* 新增入参：Profile
+
+* [QueryCustAcctIdBalance](https://cloud.tencent.com/document/api/1122/40665)
+
+	* 新增入参：Profile
+
+* [QueryMemberBind](https://cloud.tencent.com/document/api/1122/40664)
+
+	* 新增入参：Profile
+
+* [QueryMemberTransaction](https://cloud.tencent.com/document/api/1122/40663)
+
+	* 新增入参：Profile
+
+* [QueryReconciliationDocument](https://cloud.tencent.com/document/api/1122/40661)
+
+	* 新增入参：Profile
+
+* [QuerySingleTransactionStatus](https://cloud.tencent.com/document/api/1122/40659)
+
+	* 新增入参：Profile
+
+* [QuerySmallAmountTransfer](https://cloud.tencent.com/document/api/1122/40658)
+
+	* 新增入参：Profile
+
+* [RechargeMemberThirdPay](https://cloud.tencent.com/document/api/1122/40657)
+
+	* 新增入参：Profile
+
+* [RegisterBillSupportWithdraw](https://cloud.tencent.com/document/api/1122/40655)
+
+	* 新增入参：Profile
+
+* [RevResigterBillSupportWithdraw](https://cloud.tencent.com/document/api/1122/40654)
+
+	* 新增入参：Profile
+
+* [ReviseMbrProperty](https://cloud.tencent.com/document/api/1122/40653)
+
+	* 新增入参：Profile
+
+* [RevokeMemberRechargeThirdPay](https://cloud.tencent.com/document/api/1122/40652)
+
+	* 新增入参：Profile
+
+* [UnbindRelateAcct](https://cloud.tencent.com/document/api/1122/40650)
+
+	* 新增入参：Profile
+
+* [WithdrawCashMembership](https://cloud.tencent.com/document/api/1122/40648)
+
+	* 新增入参：Profile
+
+
+
+
+## 专线接入(dc) 版本：2018-04-10
+
+### 第 9 次发布
+
+发布时间：2020-06-10 08:08:58
 
 本次发布包含了以下内容：
 
@@ -12,18 +200,18 @@
 
 修改数据结构：
 
-* [InternetAccessible](https://cloud.tencent.com/document/api/377/20453#InternetAccessible)
+* [DirectConnect](https://cloud.tencent.com/document/api/216/18418#DirectConnect)
 
-	* 新增成员：BandwidthPackageId
-
-
+	* 新增成员：StartTime
 
 
-## 腾讯微服务平台 TSF(tsf) 版本：2018-03-26
 
-### 第 21 次发布
 
-发布时间：2020-06-09 08:18:22
+## 云函数(scf) 版本：2018-04-16
+
+### 第 15 次发布
+
+发布时间：2020-06-10 08:15:37
 
 本次发布包含了以下内容：
 
@@ -31,9 +219,9 @@
 
 修改数据结构：
 
-* [LaneGroup](https://cloud.tencent.com/document/api/649/36099#LaneGroup)
+* [FunctionLog](https://cloud.tencent.com/document/api/583/17244#FunctionLog)
 
-	* <font color="#dd0000">**修改成员**：</font>LaneId
+	* 新增成员：RetryNum
 
 
 
@@ -409,6 +597,21 @@
 
 
 ## 弹性伸缩(as) 版本：2018-04-19
+
+### 第 29 次发布
+
+发布时间：2020-06-10 08:03:37
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [ExecuteScalingPolicy](https://cloud.tencent.com/document/api/377/35477)
+
+	* 新增入参：TriggerSource
+
 
 ### 第 28 次发布
 
@@ -4423,6 +4626,37 @@
 
 ## 云数据库 MySQL(cdb) 版本：2017-03-20
 
+### 第 41 次发布
+
+发布时间：2020-06-10 08:06:06
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[CreateAuditLogFile](https://cloud.tencent.com/document/api/236/45461)](https://cloud.tencent.com/document/api/#/#)
+* [[CreateAuditPolicy](https://cloud.tencent.com/document/api/236/45460)](https://cloud.tencent.com/document/api/#/#)
+* [[CreateAuditRule](https://cloud.tencent.com/document/api/236/45459)](https://cloud.tencent.com/document/api/#/#)
+* [[DeleteAuditLogFile](https://cloud.tencent.com/document/api/236/45458)](https://cloud.tencent.com/document/api/#/#)
+* [[DeleteAuditPolicy](https://cloud.tencent.com/document/api/236/45457)](https://cloud.tencent.com/document/api/#/#)
+* [[DeleteAuditRule](https://cloud.tencent.com/document/api/236/45456)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeAuditConfig](https://cloud.tencent.com/document/api/236/45455)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeAuditLogFiles](https://cloud.tencent.com/document/api/236/45454)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeAuditPolicies](https://cloud.tencent.com/document/api/236/45453)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeAuditRules](https://cloud.tencent.com/document/api/236/45452)](https://cloud.tencent.com/document/api/#/#)
+* [[ModifyAuditConfig](https://cloud.tencent.com/document/api/236/45451)](https://cloud.tencent.com/document/api/#/#)
+* [[ModifyAuditRule](https://cloud.tencent.com/document/api/236/45450)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[AuditFilter](https://cloud.tencent.com/document/api/236/15878#AuditFilter)](https://cloud.tencent.com/document/api/236/15878#[AuditFilter](https://cloud.tencent.com/document/api/236/15878#AuditFilter))
+* [[AuditLogFile](https://cloud.tencent.com/document/api/236/15878#AuditLogFile)](https://cloud.tencent.com/document/api/236/15878#[AuditLogFile](https://cloud.tencent.com/document/api/236/15878#AuditLogFile))
+* [[AuditLogFilter](https://cloud.tencent.com/document/api/236/15878#AuditLogFilter)](https://cloud.tencent.com/document/api/236/15878#[AuditLogFilter](https://cloud.tencent.com/document/api/236/15878#AuditLogFilter))
+* [[AuditPolicy](https://cloud.tencent.com/document/api/236/15878#AuditPolicy)](https://cloud.tencent.com/document/api/236/15878#[AuditPolicy](https://cloud.tencent.com/document/api/236/15878#AuditPolicy))
+* [[AuditRule](https://cloud.tencent.com/document/api/236/15878#AuditRule)](https://cloud.tencent.com/document/api/236/15878#[AuditRule](https://cloud.tencent.com/document/api/236/15878#AuditRule))
+
 ### 第 40 次发布
 
 发布时间：2020-04-30 08:05:56
@@ -5304,6 +5538,29 @@
 
 
 ## 内容分发网络(cdn) 版本：2018-06-06
+
+### 第 24 次发布
+
+发布时间：2020-06-10 08:06:47
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+<font color="#dd0000">**删除数据结构**：</font>
+
+* Hsts
+
+修改数据结构：
+
+* [CacheKey](https://cloud.tencent.com/document/api/228/30987#CacheKey)
+
+	* <font color="#dd0000">**删除成员**：</font>CaseSensitive
+
+* [Https](https://cloud.tencent.com/document/api/228/30987#Https)
+
+	* <font color="#dd0000">**删除成员**：</font>TlsVersion, Hsts
+
 
 ### 第 23 次发布
 
@@ -7685,6 +7942,109 @@
 
 ## 企业收付平台(cpdp) 版本：2019-08-20
 
+### 第 18 次发布
+
+发布时间：2020-06-10 08:21:03
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [BindRelateAccReUnionPay](https://cloud.tencent.com/document/api/1122/40680)
+
+	* 新增入参：Profile
+
+* [BindRelateAcctSmallAmount](https://cloud.tencent.com/document/api/1122/40679)
+
+	* 新增入参：Profile
+
+* [BindRelateAcctUnionPay](https://cloud.tencent.com/document/api/1122/40678)
+
+	* 新增入参：Profile
+
+* [CheckAmount](https://cloud.tencent.com/document/api/1122/40676)
+
+	* 新增入参：Profile
+
+* [CreateCustAcctId](https://cloud.tencent.com/document/api/1122/40673)
+
+	* 新增入参：Profile
+
+* [ModifyMntMbrBindRelateAcctBankCode](https://cloud.tencent.com/document/api/1122/40671)
+
+	* 新增入参：Profile
+
+* [QueryBankClear](https://cloud.tencent.com/document/api/1122/40669)
+
+	* 新增入参：Profile
+
+* [QueryBankTransactionDetails](https://cloud.tencent.com/document/api/1122/40668)
+
+	* 新增入参：Profile
+
+* [QueryBankWithdrawCashDetails](https://cloud.tencent.com/document/api/1122/40667)
+
+	* 新增入参：Profile
+
+* [QueryCommonTransferRecharge](https://cloud.tencent.com/document/api/1122/40666)
+
+	* 新增入参：Profile
+
+* [QueryCustAcctIdBalance](https://cloud.tencent.com/document/api/1122/40665)
+
+	* 新增入参：Profile
+
+* [QueryMemberBind](https://cloud.tencent.com/document/api/1122/40664)
+
+	* 新增入参：Profile
+
+* [QueryMemberTransaction](https://cloud.tencent.com/document/api/1122/40663)
+
+	* 新增入参：Profile
+
+* [QueryReconciliationDocument](https://cloud.tencent.com/document/api/1122/40661)
+
+	* 新增入参：Profile
+
+* [QuerySingleTransactionStatus](https://cloud.tencent.com/document/api/1122/40659)
+
+	* 新增入参：Profile
+
+* [QuerySmallAmountTransfer](https://cloud.tencent.com/document/api/1122/40658)
+
+	* 新增入参：Profile
+
+* [RechargeMemberThirdPay](https://cloud.tencent.com/document/api/1122/40657)
+
+	* 新增入参：Profile
+
+* [RegisterBillSupportWithdraw](https://cloud.tencent.com/document/api/1122/40655)
+
+	* 新增入参：Profile
+
+* [RevResigterBillSupportWithdraw](https://cloud.tencent.com/document/api/1122/40654)
+
+	* 新增入参：Profile
+
+* [ReviseMbrProperty](https://cloud.tencent.com/document/api/1122/40653)
+
+	* 新增入参：Profile
+
+* [RevokeMemberRechargeThirdPay](https://cloud.tencent.com/document/api/1122/40652)
+
+	* 新增入参：Profile
+
+* [UnbindRelateAcct](https://cloud.tencent.com/document/api/1122/40650)
+
+	* 新增入参：Profile
+
+* [WithdrawCashMembership](https://cloud.tencent.com/document/api/1122/40648)
+
+	* 新增入参：Profile
+
+
 ### 第 17 次发布
 
 发布时间：2020-06-05 08:20:43
@@ -9798,6 +10158,21 @@
 
 
 ## 专线接入(dc) 版本：2018-04-10
+
+### 第 9 次发布
+
+发布时间：2020-06-10 08:08:58
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [DirectConnect](https://cloud.tencent.com/document/api/216/18418#DirectConnect)
+
+	* 新增成员：StartTime
+
 
 ### 第 8 次发布
 
@@ -19499,6 +19874,21 @@
 
 
 ## 云函数(scf) 版本：2018-04-16
+
+### 第 15 次发布
+
+发布时间：2020-06-10 08:15:37
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [FunctionLog](https://cloud.tencent.com/document/api/583/17244#FunctionLog)
+
+	* 新增成员：RetryNum
+
 
 ### 第 14 次发布
 

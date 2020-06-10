@@ -816,6 +816,9 @@ type BindRelateAccReUnionPayRequest struct {
 
 	// STRING(1027)，保留域
 	ReservedMsg *string `json:"ReservedMsg,omitempty" name:"ReservedMsg"`
+
+	// STRING(12)，接入环境，默认接入沙箱环境。接入正式环境填"prod"
+	Profile *string `json:"Profile,omitempty" name:"Profile"`
 }
 
 func (r *BindRelateAccReUnionPayRequest) ToJsonString() string {
@@ -900,6 +903,9 @@ type BindRelateAcctSmallAmountRequest struct {
 
 	// STRING(1027)，转账方式（1: 往账鉴权(默认值); 2: 来账鉴权）
 	ReservedMsg *string `json:"ReservedMsg,omitempty" name:"ReservedMsg"`
+
+	// STRING(12)，接入环境，默认接入沙箱环境。接入正式环境填"prod"
+	Profile *string `json:"Profile,omitempty" name:"Profile"`
 }
 
 func (r *BindRelateAcctSmallAmountRequest) ToJsonString() string {
@@ -980,6 +986,9 @@ type BindRelateAcctUnionPayRequest struct {
 
 	// STRING(1027)，保留域
 	ReservedMsg *string `json:"ReservedMsg,omitempty" name:"ReservedMsg"`
+
+	// STRING(12)，接入环境，默认接入沙箱环境。接入正式环境填"prod"
+	Profile *string `json:"Profile,omitempty" name:"Profile"`
 }
 
 func (r *BindRelateAcctUnionPayRequest) ToJsonString() string {
@@ -1127,6 +1136,9 @@ type CheckAmountRequest struct {
 
 	// STRING(1027)，原小额转账方式（1: 往账鉴权，此为默认值; 2: 来账鉴权）
 	ReservedMsg *string `json:"ReservedMsg,omitempty" name:"ReservedMsg"`
+
+	// STRING(12)，接入环境，默认接入沙箱环境。接入正式环境填"prod"
+	Profile *string `json:"Profile,omitempty" name:"Profile"`
 }
 
 func (r *CheckAmountRequest) ToJsonString() string {
@@ -1456,6 +1468,9 @@ type CreateCustAcctIdRequest struct {
 
 	// STRING(1027)，保留域
 	ReservedMsg *string `json:"ReservedMsg,omitempty" name:"ReservedMsg"`
+
+	// STRING(12)，接入环境，默认接入沙箱环境。接入正式环境填"prod"
+	Profile *string `json:"Profile,omitempty" name:"Profile"`
 }
 
 func (r *CreateCustAcctIdRequest) ToJsonString() string {
@@ -2160,6 +2175,9 @@ type ModifyMntMbrBindRelateAcctBankCodeRequest struct {
 
 	// STRING(1027)，保留域
 	ReservedMsg *string `json:"ReservedMsg,omitempty" name:"ReservedMsg"`
+
+	// STRING(12)，接入环境，默认接入沙箱环境。接入正式环境填"prod"
+	Profile *string `json:"Profile,omitempty" name:"Profile"`
 }
 
 func (r *ModifyMntMbrBindRelateAcctBankCodeRequest) ToJsonString() string {
@@ -2694,6 +2712,9 @@ type QueryBankClearRequest struct {
 
 	// STRING(1027)，保留域
 	ReservedMsg *string `json:"ReservedMsg,omitempty" name:"ReservedMsg"`
+
+	// STRING(12)，接入环境，默认接入沙箱环境。接入正式环境填"prod"
+	Profile *string `json:"Profile,omitempty" name:"Profile"`
 }
 
 func (r *QueryBankClearRequest) ToJsonString() string {
@@ -2782,6 +2803,9 @@ type QueryBankTransactionDetailsRequest struct {
 
 	// STRING(1027)，保留域
 	ReservedMsg *string `json:"ReservedMsg,omitempty" name:"ReservedMsg"`
+
+	// STRING(12)，接入环境，默认接入沙箱环境。接入正式环境填"prod"
+	Profile *string `json:"Profile,omitempty" name:"Profile"`
 }
 
 func (r *QueryBankTransactionDetailsRequest) ToJsonString() string {
@@ -2870,6 +2894,9 @@ type QueryBankWithdrawCashDetailsRequest struct {
 
 	// STRING(1027)，保留域
 	ReservedMsg *string `json:"ReservedMsg,omitempty" name:"ReservedMsg"`
+
+	// STRING(12)，接入环境，默认接入沙箱环境。接入正式环境填"prod"
+	Profile *string `json:"Profile,omitempty" name:"Profile"`
 }
 
 func (r *QueryBankWithdrawCashDetailsRequest) ToJsonString() string {
@@ -2952,6 +2979,9 @@ type QueryCommonTransferRechargeRequest struct {
 
 	// STRING(1027)，保留域
 	ReservedMsg *string `json:"ReservedMsg,omitempty" name:"ReservedMsg"`
+
+	// STRING(12)，接入环境，默认接入沙箱环境。接入正式环境填"prod"
+	Profile *string `json:"Profile,omitempty" name:"Profile"`
 }
 
 func (r *QueryCommonTransferRechargeRequest) ToJsonString() string {
@@ -3031,6 +3061,9 @@ type QueryCustAcctIdBalanceRequest struct {
 
 	// STRING(1027)，保留域
 	ReservedMsg *string `json:"ReservedMsg,omitempty" name:"ReservedMsg"`
+
+	// STRING(12)，接入环境，默认接入沙箱环境。接入正式环境填"prod"
+	Profile *string `json:"Profile,omitempty" name:"Profile"`
 }
 
 func (r *QueryCustAcctIdBalanceRequest) ToJsonString() string {
@@ -3364,6 +3397,9 @@ type QueryMemberBindRequest struct {
 
 	// STRING(1027)，保留域
 	ReservedMsg *string `json:"ReservedMsg,omitempty" name:"ReservedMsg"`
+
+	// STRING(12)，接入环境，默认接入沙箱环境。接入正式环境填"prod"
+	Profile *string `json:"Profile,omitempty" name:"Profile"`
 }
 
 func (r *QueryMemberBindRequest) ToJsonString() string {
@@ -3479,6 +3515,9 @@ type QueryMemberTransactionRequest struct {
 
 	// STRING(300)，网银签名（若需短信验证码则此项必输）
 	WebSign *string `json:"WebSign,omitempty" name:"WebSign"`
+
+	// STRING(12)，接入环境，默认接入沙箱环境。接入正式环境填"prod"
+	Profile *string `json:"Profile,omitempty" name:"Profile"`
 }
 
 func (r *QueryMemberTransactionRequest) ToJsonString() string {
@@ -4022,6 +4061,9 @@ type QueryReconciliationDocumentRequest struct {
 
 	// STRING(1027)，保留域
 	ReservedMsg *string `json:"ReservedMsg,omitempty" name:"ReservedMsg"`
+
+	// STRING(12)，接入环境，默认接入沙箱环境。接入正式环境填"prod"
+	Profile *string `json:"Profile,omitempty" name:"Profile"`
 }
 
 func (r *QueryReconciliationDocumentRequest) ToJsonString() string {
@@ -4141,6 +4183,9 @@ type QuerySingleTransactionStatusRequest struct {
 
 	// STRING(1027)，保留域
 	ReservedMsg *string `json:"ReservedMsg,omitempty" name:"ReservedMsg"`
+
+	// STRING(12)，接入环境，默认接入沙箱环境。接入正式环境填"prod"
+	Profile *string `json:"Profile,omitempty" name:"Profile"`
 }
 
 func (r *QuerySingleTransactionStatusRequest) ToJsonString() string {
@@ -4229,6 +4274,9 @@ type QuerySmallAmountTransferRequest struct {
 
 	// STRING(1027)，保留域
 	ReservedMsg *string `json:"ReservedMsg,omitempty" name:"ReservedMsg"`
+
+	// STRING(12)，接入环境，默认接入沙箱环境。接入正式环境填"prod"
+	Profile *string `json:"Profile,omitempty" name:"Profile"`
 }
 
 func (r *QuerySmallAmountTransferRequest) ToJsonString() string {
@@ -4433,6 +4481,9 @@ type RechargeMemberThirdPayRequest struct {
 
 	// STRING(300)，保留域3
 	ReservedMsgThree *string `json:"ReservedMsgThree,omitempty" name:"ReservedMsgThree"`
+
+	// STRING(12)，接入环境，默认接入沙箱环境。接入正式环境填"prod"
+	Profile *string `json:"Profile,omitempty" name:"Profile"`
 }
 
 func (r *RechargeMemberThirdPayRequest) ToJsonString() string {
@@ -4692,6 +4743,9 @@ type RegisterBillSupportWithdrawRequest struct {
 
 	// STRING(300)，保留域3
 	ReservedMsgThree *string `json:"ReservedMsgThree,omitempty" name:"ReservedMsgThree"`
+
+	// STRING(12)，接入环境，默认接入沙箱环境。接入正式环境填"prod"
+	Profile *string `json:"Profile,omitempty" name:"Profile"`
 }
 
 func (r *RegisterBillSupportWithdrawRequest) ToJsonString() string {
@@ -4843,6 +4897,9 @@ type RevResigterBillSupportWithdrawRequest struct {
 
 	// STRING(300)，保留域3
 	ReservedMsgThree *string `json:"ReservedMsgThree,omitempty" name:"ReservedMsgThree"`
+
+	// STRING(12)，接入环境，默认接入沙箱环境。接入正式环境填"prod"
+	Profile *string `json:"Profile,omitempty" name:"Profile"`
 }
 
 func (r *RevResigterBillSupportWithdrawRequest) ToJsonString() string {
@@ -4903,6 +4960,9 @@ type ReviseMbrPropertyRequest struct {
 
 	// STRING(1027)，保留域
 	ReservedMsg *string `json:"ReservedMsg,omitempty" name:"ReservedMsg"`
+
+	// STRING(12)，接入环境，默认接入沙箱环境。接入正式环境填"prod"
+	Profile *string `json:"Profile,omitempty" name:"Profile"`
 }
 
 func (r *ReviseMbrPropertyRequest) ToJsonString() string {
@@ -4980,6 +5040,9 @@ type RevokeMemberRechargeThirdPayRequest struct {
 
 	// STRING(300)，保留域3
 	ReservedMsgThree *string `json:"ReservedMsgThree,omitempty" name:"ReservedMsgThree"`
+
+	// STRING(12)，接入环境，默认接入沙箱环境。接入正式环境填"prod"
+	Profile *string `json:"Profile,omitempty" name:"Profile"`
 }
 
 func (r *RevokeMemberRechargeThirdPayRequest) ToJsonString() string {
@@ -5248,6 +5311,9 @@ type UnbindRelateAcctRequest struct {
 
 	// STRING(1027)，保留域
 	ReservedMsg *string `json:"ReservedMsg,omitempty" name:"ReservedMsg"`
+
+	// STRING(12)，接入环境，默认接入沙箱环境。接入正式环境填"prod"
+	Profile *string `json:"Profile,omitempty" name:"Profile"`
 }
 
 func (r *UnbindRelateAcctRequest) ToJsonString() string {
@@ -5503,6 +5569,9 @@ type WithdrawCashMembershipRequest struct {
 
 	// STRING(300)，网银签名
 	WebSign *string `json:"WebSign,omitempty" name:"WebSign"`
+
+	// STRING(12)，接入环境，默认接入沙箱环境。接入正式环境填"prod"
+	Profile *string `json:"Profile,omitempty" name:"Profile"`
 }
 
 func (r *WithdrawCashMembershipRequest) ToJsonString() string {

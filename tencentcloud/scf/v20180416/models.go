@@ -707,6 +707,9 @@ type FunctionLog struct {
 
 	// 日志来源
 	Source *string `json:"Source,omitempty" name:"Source"`
+
+	// 重试次数
+	RetryNum *uint64 `json:"RetryNum,omitempty" name:"RetryNum"`
 }
 
 type FunctionVersion struct {

@@ -187,10 +187,12 @@ type CreateNotebookLifecycleScriptRequest struct {
 	// Notebook生命周期脚本名称
 	NotebookLifecycleScriptsName *string `json:"NotebookLifecycleScriptsName,omitempty" name:"NotebookLifecycleScriptsName"`
 
-	// 创建脚本，base64编码格式
+	// 创建脚本，base64编码
+	// base64后的脚本长度不能超过16384个字符
 	CreateScript *string `json:"CreateScript,omitempty" name:"CreateScript"`
 
-	// 启动脚本，base64编码格式
+	// 启动脚本，base64编码
+	// base64后的脚本长度不能超过16384个字符
 	StartScript *string `json:"StartScript,omitempty" name:"StartScript"`
 }
 
@@ -228,9 +230,10 @@ type CreatePresignedNotebookInstanceUrlRequest struct {
 	*tchttp.BaseRequest
 
 	// Notebook实例名称
+	// 规则：^[a-zA-Z0-9](-*[a-zA-Z0-9])*$
 	NotebookInstanceName *string `json:"NotebookInstanceName,omitempty" name:"NotebookInstanceName"`
 
-	// session有效时间，秒
+	// session有效时间，秒，取值范围[1800, 43200]
 	SessionExpirationDurationInSeconds *int64 `json:"SessionExpirationDurationInSeconds,omitempty" name:"SessionExpirationDurationInSeconds"`
 }
 
@@ -1321,10 +1324,12 @@ type UpdateNotebookLifecycleScriptRequest struct {
 	// notebook生命周期脚本名称
 	NotebookLifecycleScriptsName *string `json:"NotebookLifecycleScriptsName,omitempty" name:"NotebookLifecycleScriptsName"`
 
-	// 创建脚本
+	// 创建脚本，base64编码
+	// base64后的脚本长度不能超过16384个字符
 	CreateScript *string `json:"CreateScript,omitempty" name:"CreateScript"`
 
-	// 启动脚本
+	// 启动脚本，base64编码
+	// base64后的脚本长度不能超过16384个字符
 	StartScript *string `json:"StartScript,omitempty" name:"StartScript"`
 }
 

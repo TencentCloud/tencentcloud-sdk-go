@@ -10495,7 +10495,7 @@ type Subnet struct {
 	// 创建时间。
 	CreatedTime *string `json:"CreatedTime,omitempty" name:"CreatedTime"`
 
-	// 可用`IP`数。
+	// 可用`IPv4`数。
 	AvailableIpAddressCount *uint64 `json:"AvailableIpAddressCount,omitempty" name:"AvailableIpAddressCount"`
 
 	// 子网的 `IPv6` `CIDR`。
@@ -10507,7 +10507,7 @@ type Subnet struct {
 	// 是否为 `SNAT` 地址池子网。
 	IsRemoteVpcSnat *bool `json:"IsRemoteVpcSnat,omitempty" name:"IsRemoteVpcSnat"`
 
-	// 子网`IP`总数。
+	// 子网`IPv4`总数。
 	TotalIpAddressCount *uint64 `json:"TotalIpAddressCount,omitempty" name:"TotalIpAddressCount"`
 
 	// 标签键值对。

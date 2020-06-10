@@ -758,7 +758,7 @@ func NewEnableTopicRuleResponse() (response *EnableTopicRuleResponse) {
     return
 }
 
-// 本接口（EnableTopicRule）用于启用规则
+// 本接口（EnableTopicRule）用于启用规则 
 func (c *Client) EnableTopicRule(request *EnableTopicRuleRequest) (response *EnableTopicRuleResponse, err error) {
     if request == nil {
         request = NewEnableTopicRuleRequest()

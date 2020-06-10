@@ -1735,6 +1735,9 @@ type ExecuteScalingPolicyRequest struct {
 
 	// 是否检查伸缩组活动处于冷却时间内，默认值为false
 	HonorCooldown *bool `json:"HonorCooldown,omitempty" name:"HonorCooldown"`
+
+	// 执行伸缩策略的触发来源，取值包括 API 和 CLOUD_MONITOR，默认值为 API。CLOUD_MONITOR 专门供云监控触发调用。
+	TriggerSource *string `json:"TriggerSource,omitempty" name:"TriggerSource"`
 }
 
 func (r *ExecuteScalingPolicyRequest) ToJsonString() string {

@@ -2952,7 +2952,7 @@ type DescribeLiveStreamEventListRequest struct {
 
 	// 分页大小。
 	// 最大值：100。
-	// 取值范围：1~100 之前的任意整数。
+	// 取值范围：1~100 之间的任意整数。
 	// 默认值：10。
 	// 注： 目前只支持10000条内的查询。
 	PageSize *uint64 `json:"PageSize,omitempty" name:"PageSize"`

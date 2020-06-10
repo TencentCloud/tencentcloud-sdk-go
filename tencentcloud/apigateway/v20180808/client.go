@@ -58,8 +58,8 @@ func NewBindEnvironmentResponse() (response *BindEnvironmentResponse) {
     return
 }
 
-// 本接口（BindEnvironment）用于绑定使用计划到服务环境。
-// 用户在发布服务到某个环境中后，如此 API 需要鉴权，还需要绑定使用计划才能进行调用，此接口用户将使用计划绑定到特定环境。
+// 本接口（BindEnvironment）用于绑定使用计划到服务或API。
+// 用户在发布服务到某个环境中后，如果 API 需要鉴权，还需要绑定使用计划才能进行调用，此接口用户将使用计划绑定到特定环境。
 // 目前支持绑定使用计划到API，但是同一个服务不能同时存在绑定到服务的使用计划和绑定到API的使用计划，所以对已经绑定过服务级别使用计划的环境，请先使用 服务级别使用计划降级 接口进行降级操作。
 func (c *Client) BindEnvironment(request *BindEnvironmentRequest) (response *BindEnvironmentResponse, err error) {
     if request == nil {

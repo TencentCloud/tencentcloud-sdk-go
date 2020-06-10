@@ -142,6 +142,141 @@ func (r *AssociateSecurityGroupsResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type AuditFilter struct {
+
+	// 过滤条件参数名称。目前支持：
+	// SrcIp – 客户端 IP；
+	// User – 数据库账户；
+	// DB – 数据库名称；
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 过滤条件匹配类型。目前支持：
+	// INC – 包含；
+	// EXC – 不包含；
+	// EQ – 等于；
+	// NEQ – 不等于；
+	Compare *string `json:"Compare,omitempty" name:"Compare"`
+
+	// 过滤条件匹配值。
+	Value *string `json:"Value,omitempty" name:"Value"`
+}
+
+type AuditLogFile struct {
+
+	// 审计日志文件名称
+	FileName *string `json:"FileName,omitempty" name:"FileName"`
+
+	// 审计日志文件创建时间。格式为 : "2019-03-20 17:09:13"。
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 文件状态值。可能返回的值为：
+	// "creating" - 生成中;
+	// "failed" - 创建失败;
+	// "success" - 已生成;
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 文件大小，单位为 KB。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FileSize *int64 `json:"FileSize,omitempty" name:"FileSize"`
+
+	// 审计日志下载地址。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DownloadUrl *string `json:"DownloadUrl,omitempty" name:"DownloadUrl"`
+
+	// 错误信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ErrMsg *string `json:"ErrMsg,omitempty" name:"ErrMsg"`
+}
+
+type AuditLogFilter struct {
+
+	// 客户端地址。
+	Host []*string `json:"Host,omitempty" name:"Host" list`
+
+	// 用户名。
+	User []*string `json:"User,omitempty" name:"User" list`
+
+	// 数据库名称。
+	DBName []*string `json:"DBName,omitempty" name:"DBName" list`
+
+	// 表名称。
+	TableName []*string `json:"TableName,omitempty" name:"TableName" list`
+
+	// 审计策略名称。
+	PolicyName []*string `json:"PolicyName,omitempty" name:"PolicyName" list`
+
+	// SQL 语句。支持模糊匹配。
+	Sql *string `json:"Sql,omitempty" name:"Sql"`
+
+	// SQL 类型。目前支持："SELECT", "INSERT", "UPDATE", "DELETE", "CREATE", "DROP", "ALTER", "SET", "REPLACE", "EXECUTE"。
+	SqlType *string `json:"SqlType,omitempty" name:"SqlType"`
+
+	// 执行时间。单位为：ms。表示筛选执行时间大于该值的审计日志。
+	ExecTime *int64 `json:"ExecTime,omitempty" name:"ExecTime"`
+
+	// 影响行数。表示筛选影响行数大于该值的审计日志。
+	AffectRows *int64 `json:"AffectRows,omitempty" name:"AffectRows"`
+}
+
+type AuditPolicy struct {
+
+	// 审计策略 ID。
+	PolicyId *string `json:"PolicyId,omitempty" name:"PolicyId"`
+
+	// 审计策略的状态。可能返回的值为：
+	// "creating" - 创建中;
+	// "running" - 运行中;
+	// "paused" - 暂停中;
+	// "failed" - 创建失败。
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 数据库实例 ID。
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 审计策略创建时间。格式为 : "2019-03-20 17:09:13"。
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 审计策略最后修改时间。格式为 : "2019-03-20 17:09:13"。
+	ModifyTime *string `json:"ModifyTime,omitempty" name:"ModifyTime"`
+
+	// 审计策略名称。
+	PolicyName *string `json:"PolicyName,omitempty" name:"PolicyName"`
+
+	// 审计规则 ID。
+	RuleId *string `json:"RuleId,omitempty" name:"RuleId"`
+
+	// 审计规则名称。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RuleName *string `json:"RuleName,omitempty" name:"RuleName"`
+}
+
+type AuditRule struct {
+
+	// 审计规则 Id。
+	RuleId *string `json:"RuleId,omitempty" name:"RuleId"`
+
+	// 审计规则创建时间。格式为 : "2019-03-20 17:09:13"。
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 审计规则最后修改时间。格式为 : "2019-03-20 17:09:13"。
+	ModifyTime *string `json:"ModifyTime,omitempty" name:"ModifyTime"`
+
+	// 审计规则名称。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RuleName *string `json:"RuleName,omitempty" name:"RuleName"`
+
+	// 审计规则描述。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Description *string `json:"Description,omitempty" name:"Description"`
+
+	// 审计规则过滤条件。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RuleFilters []*AuditFilter `json:"RuleFilters,omitempty" name:"RuleFilters" list`
+
+	// 是否开启全审计。
+	AuditAll *bool `json:"AuditAll,omitempty" name:"AuditAll"`
+}
+
 type BackupConfig struct {
 
 	// 第二个从库复制方式，可能的返回值：async-异步，semisync-半同步
@@ -421,6 +556,159 @@ func (r *CreateAccountsResponse) ToJsonString() string {
 }
 
 func (r *CreateAccountsResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateAuditLogFileRequest struct {
+	*tchttp.BaseRequest
+
+	// 实例 ID，格式如：cdb-c1nl9rpv 或者 cdbro-c1nl9rpv，与云数据库控制台页面中显示的实例 ID 相同。
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 开始时间，格式为："2017-07-12 10:29:20"。
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 结束时间，格式为："2017-07-12 10:29:20"。
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 排序方式。支持值包括："ASC" - 升序，"DESC" - 降序。
+	Order *string `json:"Order,omitempty" name:"Order"`
+
+	// 排序字段。支持值包括：
+	// "timestamp" - 时间戳；
+	// "affectRows" - 影响行数；
+	// "execTime" - 执行时间。
+	OrderBy *string `json:"OrderBy,omitempty" name:"OrderBy"`
+
+	// 过滤条件。可按设置的过滤条件过滤日志。
+	Filter *AuditLogFilter `json:"Filter,omitempty" name:"Filter"`
+}
+
+func (r *CreateAuditLogFileRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateAuditLogFileRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateAuditLogFileResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 审计日志文件名称。
+		FileName *string `json:"FileName,omitempty" name:"FileName"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateAuditLogFileResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateAuditLogFileResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateAuditPolicyRequest struct {
+	*tchttp.BaseRequest
+
+	// 审计策略名称。
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 审计规则 ID。
+	RuleId *string `json:"RuleId,omitempty" name:"RuleId"`
+
+	// 实例 ID，格式如：cdb-c1nl9rpv 或者 cdbro-c1nl9rpv，与云数据库控制台页面中显示的实例 ID 相同。
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 审计日志保存时长。支持值包括：
+	// 30 - 一个月；
+	// 180 - 六个月；
+	// 365 - 一年；
+	// 1095 - 三年；
+	// 1825 - 五年；
+	// 实例首次开通审计策略时，可传该值，用于设置存储日志保存天数，默认为 30 天。若实例已存在审计策略，则此参数无效，可使用 更改审计服务配置 接口修改日志存储时长。
+	LogExpireDay *int64 `json:"LogExpireDay,omitempty" name:"LogExpireDay"`
+}
+
+func (r *CreateAuditPolicyRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateAuditPolicyRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateAuditPolicyResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 审计策略 ID。
+		PolicyId *string `json:"PolicyId,omitempty" name:"PolicyId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateAuditPolicyResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateAuditPolicyResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateAuditRuleRequest struct {
+	*tchttp.BaseRequest
+
+	// 审计规则名称。
+	RuleName *string `json:"RuleName,omitempty" name:"RuleName"`
+
+	// 审计规则描述。
+	Description *string `json:"Description,omitempty" name:"Description"`
+
+	// 审计规则过滤条件。若设置了过滤条件，则不会开启全审计。
+	RuleFilters []*AuditFilter `json:"RuleFilters,omitempty" name:"RuleFilters" list`
+
+	// 是否开启全审计。支持值包括：false – 不开启全审计，true – 开启全审计。用户未设置审计规则过滤条件时，默认开启全审计。
+	AuditAll *bool `json:"AuditAll,omitempty" name:"AuditAll"`
+}
+
+func (r *CreateAuditRuleRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateAuditRuleRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateAuditRuleResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 审计规则 ID。
+		RuleId *string `json:"RuleId,omitempty" name:"RuleId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateAuditRuleResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateAuditRuleResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -912,6 +1200,111 @@ func (r *DeleteAccountsResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DeleteAuditLogFileRequest struct {
+	*tchttp.BaseRequest
+
+	// 审计日志文件名称。
+	FileName *string `json:"FileName,omitempty" name:"FileName"`
+
+	// 实例 ID。
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+}
+
+func (r *DeleteAuditLogFileRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteAuditLogFileRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteAuditLogFileResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DeleteAuditLogFileResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteAuditLogFileResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteAuditPolicyRequest struct {
+	*tchttp.BaseRequest
+
+	// 审计策略 ID。
+	PolicyId *string `json:"PolicyId,omitempty" name:"PolicyId"`
+}
+
+func (r *DeleteAuditPolicyRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteAuditPolicyRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteAuditPolicyResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DeleteAuditPolicyResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteAuditPolicyResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteAuditRuleRequest struct {
+	*tchttp.BaseRequest
+
+	// 审计规则 ID。
+	RuleId *string `json:"RuleId,omitempty" name:"RuleId"`
+}
+
+func (r *DeleteAuditRuleRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteAuditRuleRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteAuditRuleResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DeleteAuditRuleResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteAuditRuleResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DeleteBackupRequest struct {
 	*tchttp.BaseRequest
 
@@ -1221,6 +1614,203 @@ func (r *DescribeAsyncRequestInfoResponse) ToJsonString() string {
 }
 
 func (r *DescribeAsyncRequestInfoResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeAuditConfigRequest struct {
+	*tchttp.BaseRequest
+
+	// 实例 ID，格式如：cdb-c1nl9rpv 或者 cdbro-c1nl9rpv，与云数据库控制台页面中显示的实例 ID 相同。
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+}
+
+func (r *DescribeAuditConfigRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeAuditConfigRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeAuditConfigResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 审计日志保存时长。目前支持的值包括：[0，30，180，365，1095，1825]。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		LogExpireDay *int64 `json:"LogExpireDay,omitempty" name:"LogExpireDay"`
+
+		// 审计日志存储类型。目前支持的值包括："storage" - 存储型。
+		LogType *string `json:"LogType,omitempty" name:"LogType"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeAuditConfigResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeAuditConfigResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeAuditLogFilesRequest struct {
+	*tchttp.BaseRequest
+
+	// 实例 ID，格式如：cdb-c1nl9rpv 或者 cdbro-c1nl9rpv，与云数据库控制台页面中显示的实例 ID 相同。
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 分页大小参数。默认值为 20，最小值为 1，最大值为 100。
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 分页偏移量。
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 审计日志文件名。
+	FileName *string `json:"FileName,omitempty" name:"FileName"`
+}
+
+func (r *DescribeAuditLogFilesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeAuditLogFilesRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeAuditLogFilesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 符合条件的审计日志文件个数。
+		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 审计日志文件详情。
+		Items []*AuditLogFile `json:"Items,omitempty" name:"Items" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeAuditLogFilesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeAuditLogFilesResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeAuditPoliciesRequest struct {
+	*tchttp.BaseRequest
+
+	// 实例 ID，格式如：cdb-c1nl9rpv 或者 cdbro-c1nl9rpv，与云数据库控制台页面中显示的实例 ID 相同。
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 审计策略 ID。
+	PolicyId *string `json:"PolicyId,omitempty" name:"PolicyId"`
+
+	// 审计策略名称。支持按审计策略名称进行模糊匹配查询。
+	PolicyName *string `json:"PolicyName,omitempty" name:"PolicyName"`
+
+	// 分页大小参数。默认值为 20，最小值为 1，最大值为 100。
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 分页偏移量。
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 审计规则 ID。可使用该审计规则 ID 查询到其关联的审计策略。
+	// 注意，参数 RuleId，InstanceId，PolicyId，PolicyName 必须至少传一个。
+	RuleId *string `json:"RuleId,omitempty" name:"RuleId"`
+}
+
+func (r *DescribeAuditPoliciesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeAuditPoliciesRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeAuditPoliciesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 符合条件的审计策略个数。
+		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 审计策略详情。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Items []*AuditPolicy `json:"Items,omitempty" name:"Items" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeAuditPoliciesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeAuditPoliciesResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeAuditRulesRequest struct {
+	*tchttp.BaseRequest
+
+	// 审计规则 ID。
+	RuleId *string `json:"RuleId,omitempty" name:"RuleId"`
+
+	// 审计规则名称。支持按审计规则名称进行模糊匹配查询。
+	RuleName *string `json:"RuleName,omitempty" name:"RuleName"`
+
+	// 分页大小参数。默认值为 20，最小值为 1，最大值为 100。
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 分页偏移量。
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+}
+
+func (r *DescribeAuditRulesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeAuditRulesRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeAuditRulesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 符合条件的审计规则个数。
+		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 审计规则详情。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Items []*AuditRule `json:"Items,omitempty" name:"Items" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeAuditRulesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeAuditRulesResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -3937,6 +4527,98 @@ func (r *ModifyAccountPrivilegesResponse) ToJsonString() string {
 }
 
 func (r *ModifyAccountPrivilegesResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyAuditConfigRequest struct {
+	*tchttp.BaseRequest
+
+	// 实例 ID。
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 审计日志保存时长。支持值包括：
+	// 30 - 一个月；
+	// 180 - 六个月；
+	// 365 - 一年；
+	// 1095 - 三年；
+	// 1825 - 五年；
+	LogExpireDay *int64 `json:"LogExpireDay,omitempty" name:"LogExpireDay"`
+
+	// 是否关闭审计服务。可选值：true - 关闭审计服务；false - 不关闭审计服务。默认值为 false。
+	// 当关闭审计服务时，会删除用户的审计日志和文件，并删除该实例的所有审计策略。
+	CloseAudit *bool `json:"CloseAudit,omitempty" name:"CloseAudit"`
+}
+
+func (r *ModifyAuditConfigRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyAuditConfigRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyAuditConfigResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifyAuditConfigResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyAuditConfigResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyAuditRuleRequest struct {
+	*tchttp.BaseRequest
+
+	// 审计规则 ID。
+	RuleId *string `json:"RuleId,omitempty" name:"RuleId"`
+
+	// 审计规则名称。
+	RuleName *string `json:"RuleName,omitempty" name:"RuleName"`
+
+	// 审计规则描述。
+	Description *string `json:"Description,omitempty" name:"Description"`
+
+	// 审计规则过滤条件。若设置了过滤条件，则不会开启全审计。
+	RuleFilters []*AuditFilter `json:"RuleFilters,omitempty" name:"RuleFilters" list`
+
+	// 是否开启全审计。支持值包括：false – 不开启全审计，true – 开启全审计。用户未设置审计规则过滤条件时，默认开启全审计。
+	AuditAll *bool `json:"AuditAll,omitempty" name:"AuditAll"`
+}
+
+func (r *ModifyAuditRuleRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyAuditRuleRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyAuditRuleResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifyAuditRuleResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyAuditRuleResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
