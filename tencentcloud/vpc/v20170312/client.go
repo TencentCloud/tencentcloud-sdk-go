@@ -3908,6 +3908,31 @@ func (c *Client) EnableRoutes(request *EnableRoutesRequest) (response *EnableRou
     return
 }
 
+func NewGetCcnRegionBandwidthLimitsRequest() (request *GetCcnRegionBandwidthLimitsRequest) {
+    request = &GetCcnRegionBandwidthLimitsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "GetCcnRegionBandwidthLimits")
+    return
+}
+
+func NewGetCcnRegionBandwidthLimitsResponse() (response *GetCcnRegionBandwidthLimitsResponse) {
+    response = &GetCcnRegionBandwidthLimitsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（GetCcnRegionBandwidthLimits）用于查询云联网相关地域带宽信息，其中预付费模式的云联网仅支持地域间限速，后付费模式的云联网支持地域间限速和地域出口限速。
+func (c *Client) GetCcnRegionBandwidthLimits(request *GetCcnRegionBandwidthLimitsRequest) (response *GetCcnRegionBandwidthLimitsResponse, err error) {
+    if request == nil {
+        request = NewGetCcnRegionBandwidthLimitsRequest()
+    }
+    response = NewGetCcnRegionBandwidthLimitsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewHaVipAssociateAddressIpRequest() (request *HaVipAssociateAddressIpRequest) {
     request = &HaVipAssociateAddressIpRequest{
         BaseRequest: &tchttp.BaseRequest{},

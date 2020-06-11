@@ -4089,7 +4089,7 @@ type DescribeStreamPlayInfoListResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 统计信息列表。
+		// 统计信息列表，时间粒度是1分钟。
 		DataInfoList []*DayStreamPlayInfo `json:"DataInfoList,omitempty" name:"DataInfoList" list`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。

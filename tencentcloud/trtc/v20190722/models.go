@@ -559,13 +559,13 @@ type LayoutParams struct {
 	// 屏幕分享模板中有效，代表左侧大画面对应的用户ID
 	MainVideoUserId *string `json:"MainVideoUserId,omitempty" name:"MainVideoUserId"`
 
-	// 屏幕分享模板中有效，代表左侧大画面对应的流类型，0为摄像头，1为屏幕分享
+	// 屏幕分享模板中有效，代表左侧大画面对应的流类型，0为摄像头，1为屏幕分享。左侧大画面为web用户时此值填0
 	MainVideoStreamType *uint64 `json:"MainVideoStreamType,omitempty" name:"MainVideoStreamType"`
 }
 
 type OutputParams struct {
 
-	// 直播流ID
+	// 直播流ID，该流ID不能与用户旁路的流ID相同。
 	StreamId *string `json:"StreamId,omitempty" name:"StreamId"`
 
 	// 填0：直播流为音视频(默认); 填1：直播流为纯音频

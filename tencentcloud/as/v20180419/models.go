@@ -384,7 +384,7 @@ type CreateAutoScalingGroupRequest struct {
 	// 如果 Zones/SubnetIds 中可用区或者子网不存在，则无论 ZonesCheckPolicy 采用何种取值，都会校验报错。
 	ZonesCheckPolicy *string `json:"ZonesCheckPolicy,omitempty" name:"ZonesCheckPolicy"`
 
-	// 标签描述列表。通过指定该参数可以支持绑定标签到伸缩组。同时绑定标签到相应的资源实例，
+	// 标签描述列表。通过指定该参数可以支持绑定标签到伸缩组。同时绑定标签到相应的资源实例。每个伸缩组最多支持30个标签。
 	Tags []*Tag `json:"Tags,omitempty" name:"Tags" list`
 
 	// 服务设置，包括云监控不健康替换等服务设置。

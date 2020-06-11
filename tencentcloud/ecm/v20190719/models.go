@@ -417,6 +417,49 @@ func (r *CreateNetworkInterfaceResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type CreateSecurityGroupRequest struct {
+	*tchttp.BaseRequest
+
+	// 安全组名称，可任意命名，但不得超过60个字符。
+	GroupName *string `json:"GroupName,omitempty" name:"GroupName"`
+
+	// 安全组备注，最多100个字符。
+	GroupDescription *string `json:"GroupDescription,omitempty" name:"GroupDescription"`
+
+	// 指定绑定的标签列表，例如：[{"Key": "city", "Value": "shanghai"}]
+	Tags []*Tag `json:"Tags,omitempty" name:"Tags" list`
+}
+
+func (r *CreateSecurityGroupRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateSecurityGroupRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateSecurityGroupResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 安全组对象。
+		SecurityGroup *SecurityGroup `json:"SecurityGroup,omitempty" name:"SecurityGroup"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateSecurityGroupResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateSecurityGroupResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type CreateSubnetRequest struct {
 	*tchttp.BaseRequest
 
@@ -1995,6 +2038,10 @@ type Instance struct {
 	// 新实例标志
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	NewFlag *int64 `json:"NewFlag,omitempty" name:"NewFlag"`
+
+	// 实例所属安全组。该参数可以通过调用 DescribeSecurityGroups 的返回值中的sgId字段来获取。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SecurityGroupIds []*string `json:"SecurityGroupIds,omitempty" name:"SecurityGroupIds" list`
 }
 
 type InstanceFamilyConfig struct {
@@ -3263,6 +3310,27 @@ type RunSecurityServiceEnabled struct {
 
 	// 云镜版本：0 基础版，1 专业版。目前仅支持基础版
 	Version *int64 `json:"Version,omitempty" name:"Version"`
+}
+
+type SecurityGroup struct {
+
+	// 安全组实例ID，例如：esg-ohuuioma。
+	SecurityGroupId *string `json:"SecurityGroupId,omitempty" name:"SecurityGroupId"`
+
+	// 安全组名称，可任意命名，但不得超过60个字符。
+	SecurityGroupName *string `json:"SecurityGroupName,omitempty" name:"SecurityGroupName"`
+
+	// 安全组备注，最多100个字符。
+	SecurityGroupDesc *string `json:"SecurityGroupDesc,omitempty" name:"SecurityGroupDesc"`
+
+	// 是否是默认安全组，默认安全组不支持删除。
+	IsDefault *bool `json:"IsDefault,omitempty" name:"IsDefault"`
+
+	// 安全组创建时间。
+	CreatedTime *string `json:"CreatedTime,omitempty" name:"CreatedTime"`
+
+	// 标签键值对。
+	TagSet []*Tag `json:"TagSet,omitempty" name:"TagSet" list`
 }
 
 type SimpleModule struct {

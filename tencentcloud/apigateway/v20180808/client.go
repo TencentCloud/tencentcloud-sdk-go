@@ -695,7 +695,7 @@ func NewDescribeLogSearchResponse() (response *DescribeLogSearchResponse) {
     return
 }
 
-// 用于搜索日志
+// 本接口DescribeLogSearch用于搜索日志
 func (c *Client) DescribeLogSearch(request *DescribeLogSearchRequest) (response *DescribeLogSearchResponse, err error) {
     if request == nil {
         request = NewDescribeLogSearchRequest()

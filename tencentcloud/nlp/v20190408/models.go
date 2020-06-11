@@ -406,6 +406,9 @@ type LexicalAnalysisRequest struct {
 	// 待分析的文本（仅支持UTF-8格式，不超过500字）
 	Text *string `json:"Text,omitempty" name:"Text"`
 
+	// 指定要加载的自定义词库ID。
+	DictId *string `json:"DictId,omitempty" name:"DictId"`
+
 	// 词法分析模式（默认取2值）：
 	// 1、高精度（混合粒度分词能力）；
 	// 2、高性能（单粒度分词能力）；

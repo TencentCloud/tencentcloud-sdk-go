@@ -1,10 +1,10 @@
 # 本版本更新包含以下内容：
 
-## 弹性伸缩(as) 版本：2018-04-19
+## API网关(apigateway) 版本：2018-08-08
 
-### 第 29 次发布
+### 第 2 次发布
 
-发布时间：2020-06-10 08:03:37
+发布时间：2020-06-11 08:22:10
 
 本次发布包含了以下内容：
 
@@ -12,18 +12,22 @@
 
 修改接口：
 
-* [ExecuteScalingPolicy](https://cloud.tencent.com/document/api/377/35477)
+* [DescribeLogSearch](https://cloud.tencent.com/document/api/628/45203)
 
-	* 新增入参：TriggerSource
-
-
+	* 新增入参：LogQuerys
 
 
-## 云数据库 MySQL(cdb) 版本：2017-03-20
+新增数据结构：
 
-### 第 41 次发布
+* [LogQuery](https://cloud.tencent.com/document/api/628/45244#LogQuery)
 
-发布时间：2020-06-10 08:06:06
+
+
+## 消息队列 Ckafka(ckafka) 版本：2019-08-19
+
+### 第 3 次发布
+
+发布时间：2020-06-11 08:21:21
 
 本次发布包含了以下内容：
 
@@ -31,61 +35,132 @@
 
 新增接口：
 
-* [CreateAuditLogFile](https://cloud.tencent.com/document/api/236/45461)
-* [CreateAuditPolicy](https://cloud.tencent.com/document/api/236/45460)
-* [CreateAuditRule](https://cloud.tencent.com/document/api/236/45459)
-* [DeleteAuditLogFile](https://cloud.tencent.com/document/api/236/45458)
-* [DeleteAuditPolicy](https://cloud.tencent.com/document/api/236/45457)
-* [DeleteAuditRule](https://cloud.tencent.com/document/api/236/45456)
-* [DescribeAuditConfig](https://cloud.tencent.com/document/api/236/45455)
-* [DescribeAuditLogFiles](https://cloud.tencent.com/document/api/236/45454)
-* [DescribeAuditPolicies](https://cloud.tencent.com/document/api/236/45453)
-* [DescribeAuditRules](https://cloud.tencent.com/document/api/236/45452)
-* [ModifyAuditConfig](https://cloud.tencent.com/document/api/236/45451)
-* [ModifyAuditRule](https://cloud.tencent.com/document/api/236/45450)
+* [DescribeRoute](https://cloud.tencent.com/document/api/597/45484)
 
 新增数据结构：
 
-* [AuditFilter](https://cloud.tencent.com/document/api/236/15878#AuditFilter)
-* [AuditLogFile](https://cloud.tencent.com/document/api/236/15878#AuditLogFile)
-* [AuditLogFilter](https://cloud.tencent.com/document/api/236/15878#AuditLogFilter)
-* [AuditPolicy](https://cloud.tencent.com/document/api/236/15878#AuditPolicy)
-* [AuditRule](https://cloud.tencent.com/document/api/236/15878#AuditRule)
+* [Route](https://cloud.tencent.com/document/api/597/40861#Route)
+* [RouteResponse](https://cloud.tencent.com/document/api/597/40861#RouteResponse)
 
 
 
-## 内容分发网络(cdn) 版本：2018-06-06
+## 边缘计算机器(ecm) 版本：2019-07-19
 
-### 第 24 次发布
+### 第 14 次发布
 
-发布时间：2020-06-10 08:06:47
+发布时间：2020-06-11 08:01:11
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-<font color="#dd0000">**删除数据结构**：</font>
+新增接口：
 
-* Hsts
+* [CreateSecurityGroup](https://cloud.tencent.com/document/api/1108/45479)
+
+新增数据结构：
+
+* [SecurityGroup](https://cloud.tencent.com/document/api/1108/42574#SecurityGroup)
 
 修改数据结构：
 
-* [CacheKey](https://cloud.tencent.com/document/api/228/30987#CacheKey)
+* [Instance](https://cloud.tencent.com/document/api/1108/42574#Instance)
 
-	* <font color="#dd0000">**删除成员**：</font>CaseSensitive
-
-* [Https](https://cloud.tencent.com/document/api/228/30987#Https)
-
-	* <font color="#dd0000">**删除成员**：</font>TlsVersion, Hsts
+	* 新增成员：SecurityGroupIds
 
 
 
 
-## 企业收付平台(cpdp) 版本：2019-08-20
+## 全球应用加速(gaap) 版本：2018-05-29
 
-### 第 18 次发布
+### 第 12 次发布
 
-发布时间：2020-06-10 08:21:03
+发布时间：2020-06-11 08:10:11
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CloseProxyGroup](https://cloud.tencent.com/document/api/608/45481)
+* [OpenProxyGroup](https://cloud.tencent.com/document/api/608/45480)
+
+修改接口：
+
+* [CheckProxyCreate](https://cloud.tencent.com/document/api/608/36974)
+
+	* 新增入参：GroupId
+
+* [CloseSecurityPolicy](https://cloud.tencent.com/document/api/608/36972)
+
+	* 新增入参：PolicyId
+
+	* <font color="#dd0000">**修改入参**：</font>ProxyId
+
+* [CreateHTTPListener](https://cloud.tencent.com/document/api/608/37007)
+
+	* 新增入参：GroupId
+
+* [CreateHTTPSListener](https://cloud.tencent.com/document/api/608/37006)
+
+	* 新增入参：GroupId
+
+* [CreateProxyGroup](https://cloud.tencent.com/document/api/608/36949)
+
+	* 新增入参：AccessRegionSet
+
+* [CreateSecurityPolicy](https://cloud.tencent.com/document/api/608/36970)
+
+	* 新增入参：GroupId
+
+	* <font color="#dd0000">**修改入参**：</font>ProxyId
+
+* [DeleteProxyGroup](https://cloud.tencent.com/document/api/608/36947)
+
+	* 新增入参：Force
+
+* [DescribeHTTPListeners](https://cloud.tencent.com/document/api/608/37002)
+
+	* 新增入参：GroupId
+
+* [DescribeHTTPSListeners](https://cloud.tencent.com/document/api/608/37001)
+
+	* 新增入参：GroupId
+
+* [ModifyProxyGroupAttribute](https://cloud.tencent.com/document/api/608/36941)
+
+	* 新增入参：ProjectId
+
+* [OpenSecurityPolicy](https://cloud.tencent.com/document/api/608/36951)
+
+	* 新增入参：PolicyId
+
+	* <font color="#dd0000">**修改入参**：</font>ProxyId
+
+
+新增数据结构：
+
+* [AccessConfiguration](https://cloud.tencent.com/document/api/608/37023#AccessConfiguration)
+
+修改数据结构：
+
+* [ProxyGroupInfo](https://cloud.tencent.com/document/api/608/37023#ProxyGroupInfo)
+
+	* 新增成员：Version, CreateTime
+
+* [ProxyInfo](https://cloud.tencent.com/document/api/608/37023#ProxyInfo)
+
+	* 新增成员：RelatedGlobalDomains, ModifyConfigTime
+
+
+
+
+## 自然语言处理(nlp) 版本：2019-04-08
+
+### 第 8 次发布
+
+发布时间：2020-06-11 08:14:21
 
 本次发布包含了以下内容：
 
@@ -93,136 +168,30 @@
 
 修改接口：
 
-* [BindRelateAccReUnionPay](https://cloud.tencent.com/document/api/1122/40680)
+* [LexicalAnalysis](https://cloud.tencent.com/document/api/271/35494)
 
-	* 新增入参：Profile
-
-* [BindRelateAcctSmallAmount](https://cloud.tencent.com/document/api/1122/40679)
-
-	* 新增入参：Profile
-
-* [BindRelateAcctUnionPay](https://cloud.tencent.com/document/api/1122/40678)
-
-	* 新增入参：Profile
-
-* [CheckAmount](https://cloud.tencent.com/document/api/1122/40676)
-
-	* 新增入参：Profile
-
-* [CreateCustAcctId](https://cloud.tencent.com/document/api/1122/40673)
-
-	* 新增入参：Profile
-
-* [ModifyMntMbrBindRelateAcctBankCode](https://cloud.tencent.com/document/api/1122/40671)
-
-	* 新增入参：Profile
-
-* [QueryBankClear](https://cloud.tencent.com/document/api/1122/40669)
-
-	* 新增入参：Profile
-
-* [QueryBankTransactionDetails](https://cloud.tencent.com/document/api/1122/40668)
-
-	* 新增入参：Profile
-
-* [QueryBankWithdrawCashDetails](https://cloud.tencent.com/document/api/1122/40667)
-
-	* 新增入参：Profile
-
-* [QueryCommonTransferRecharge](https://cloud.tencent.com/document/api/1122/40666)
-
-	* 新增入参：Profile
-
-* [QueryCustAcctIdBalance](https://cloud.tencent.com/document/api/1122/40665)
-
-	* 新增入参：Profile
-
-* [QueryMemberBind](https://cloud.tencent.com/document/api/1122/40664)
-
-	* 新增入参：Profile
-
-* [QueryMemberTransaction](https://cloud.tencent.com/document/api/1122/40663)
-
-	* 新增入参：Profile
-
-* [QueryReconciliationDocument](https://cloud.tencent.com/document/api/1122/40661)
-
-	* 新增入参：Profile
-
-* [QuerySingleTransactionStatus](https://cloud.tencent.com/document/api/1122/40659)
-
-	* 新增入参：Profile
-
-* [QuerySmallAmountTransfer](https://cloud.tencent.com/document/api/1122/40658)
-
-	* 新增入参：Profile
-
-* [RechargeMemberThirdPay](https://cloud.tencent.com/document/api/1122/40657)
-
-	* 新增入参：Profile
-
-* [RegisterBillSupportWithdraw](https://cloud.tencent.com/document/api/1122/40655)
-
-	* 新增入参：Profile
-
-* [RevResigterBillSupportWithdraw](https://cloud.tencent.com/document/api/1122/40654)
-
-	* 新增入参：Profile
-
-* [ReviseMbrProperty](https://cloud.tencent.com/document/api/1122/40653)
-
-	* 新增入参：Profile
-
-* [RevokeMemberRechargeThirdPay](https://cloud.tencent.com/document/api/1122/40652)
-
-	* 新增入参：Profile
-
-* [UnbindRelateAcct](https://cloud.tencent.com/document/api/1122/40650)
-
-	* 新增入参：Profile
-
-* [WithdrawCashMembership](https://cloud.tencent.com/document/api/1122/40648)
-
-	* 新增入参：Profile
+	* 新增入参：DictId
 
 
 
 
-## 专线接入(dc) 版本：2018-04-10
+## 私有网络(vpc) 版本：2017-03-12
 
-### 第 9 次发布
+### 第 52 次发布
 
-发布时间：2020-06-10 08:08:58
+发布时间：2020-06-11 08:18:40
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-修改数据结构：
+新增接口：
 
-* [DirectConnect](https://cloud.tencent.com/document/api/216/18418#DirectConnect)
+* [GetCcnRegionBandwidthLimits](https://cloud.tencent.com/document/api/215/45482)
 
-	* 新增成员：StartTime
+新增数据结构：
 
-
-
-
-## 云函数(scf) 版本：2018-04-16
-
-### 第 15 次发布
-
-发布时间：2020-06-10 08:15:37
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [FunctionLog](https://cloud.tencent.com/document/api/583/17244#FunctionLog)
-
-	* 新增成员：RetryNum
-
+* [CcnBandwidthInfo](https://cloud.tencent.com/document/api/215/15824#CcnBandwidthInfo)
 
 
 
@@ -462,6 +431,25 @@
 
 
 ## API网关(apigateway) 版本：2018-08-08
+
+### 第 2 次发布
+
+发布时间：2020-06-11 08:22:10
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeLogSearch](https://cloud.tencent.com/document/api/628/45203)
+
+	* 新增入参：LogQuerys
+
+
+新增数据结构：
+
+* [[LogQuery](https://cloud.tencent.com/document/api/628/45244#LogQuery)](https://cloud.tencent.com/document/api/628/45244#[LogQuery](https://cloud.tencent.com/document/api/628/45244#LogQuery))
 
 ### 第 1 次发布
 
@@ -4636,26 +4624,26 @@
 
 新增接口：
 
-* [[CreateAuditLogFile](https://cloud.tencent.com/document/api/236/45461)](https://cloud.tencent.com/document/api/#/#)
-* [[CreateAuditPolicy](https://cloud.tencent.com/document/api/236/45460)](https://cloud.tencent.com/document/api/#/#)
-* [[CreateAuditRule](https://cloud.tencent.com/document/api/236/45459)](https://cloud.tencent.com/document/api/#/#)
-* [[DeleteAuditLogFile](https://cloud.tencent.com/document/api/236/45458)](https://cloud.tencent.com/document/api/#/#)
-* [[DeleteAuditPolicy](https://cloud.tencent.com/document/api/236/45457)](https://cloud.tencent.com/document/api/#/#)
-* [[DeleteAuditRule](https://cloud.tencent.com/document/api/236/45456)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeAuditConfig](https://cloud.tencent.com/document/api/236/45455)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeAuditLogFiles](https://cloud.tencent.com/document/api/236/45454)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeAuditPolicies](https://cloud.tencent.com/document/api/236/45453)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeAuditRules](https://cloud.tencent.com/document/api/236/45452)](https://cloud.tencent.com/document/api/#/#)
-* [[ModifyAuditConfig](https://cloud.tencent.com/document/api/236/45451)](https://cloud.tencent.com/document/api/#/#)
-* [[ModifyAuditRule](https://cloud.tencent.com/document/api/236/45450)](https://cloud.tencent.com/document/api/#/#)
+* [CreateAuditLogFile](https://cloud.tencent.com/document/api/236/45461)
+* [CreateAuditPolicy](https://cloud.tencent.com/document/api/236/45460)
+* [CreateAuditRule](https://cloud.tencent.com/document/api/236/45459)
+* [DeleteAuditLogFile](https://cloud.tencent.com/document/api/236/45458)
+* [DeleteAuditPolicy](https://cloud.tencent.com/document/api/236/45457)
+* [DeleteAuditRule](https://cloud.tencent.com/document/api/236/45456)
+* [DescribeAuditConfig](https://cloud.tencent.com/document/api/236/45455)
+* [DescribeAuditLogFiles](https://cloud.tencent.com/document/api/236/45454)
+* [DescribeAuditPolicies](https://cloud.tencent.com/document/api/236/45453)
+* [DescribeAuditRules](https://cloud.tencent.com/document/api/236/45452)
+* [ModifyAuditConfig](https://cloud.tencent.com/document/api/236/45451)
+* [ModifyAuditRule](https://cloud.tencent.com/document/api/236/45450)
 
 新增数据结构：
 
-* [[AuditFilter](https://cloud.tencent.com/document/api/236/15878#AuditFilter)](https://cloud.tencent.com/document/api/236/15878#[AuditFilter](https://cloud.tencent.com/document/api/236/15878#AuditFilter))
-* [[AuditLogFile](https://cloud.tencent.com/document/api/236/15878#AuditLogFile)](https://cloud.tencent.com/document/api/236/15878#[AuditLogFile](https://cloud.tencent.com/document/api/236/15878#AuditLogFile))
-* [[AuditLogFilter](https://cloud.tencent.com/document/api/236/15878#AuditLogFilter)](https://cloud.tencent.com/document/api/236/15878#[AuditLogFilter](https://cloud.tencent.com/document/api/236/15878#AuditLogFilter))
-* [[AuditPolicy](https://cloud.tencent.com/document/api/236/15878#AuditPolicy)](https://cloud.tencent.com/document/api/236/15878#[AuditPolicy](https://cloud.tencent.com/document/api/236/15878#AuditPolicy))
-* [[AuditRule](https://cloud.tencent.com/document/api/236/15878#AuditRule)](https://cloud.tencent.com/document/api/236/15878#[AuditRule](https://cloud.tencent.com/document/api/236/15878#AuditRule))
+* [AuditFilter](https://cloud.tencent.com/document/api/236/15878#AuditFilter)
+* [AuditLogFile](https://cloud.tencent.com/document/api/236/15878#AuditLogFile)
+* [AuditLogFilter](https://cloud.tencent.com/document/api/236/15878#AuditLogFilter)
+* [AuditPolicy](https://cloud.tencent.com/document/api/236/15878#AuditPolicy)
+* [AuditRule](https://cloud.tencent.com/document/api/236/15878#AuditRule)
 
 ### 第 40 次发布
 
@@ -6387,6 +6375,23 @@
 
 
 ## 消息队列 Ckafka(ckafka) 版本：2019-08-19
+
+### 第 3 次发布
+
+发布时间：2020-06-11 08:21:21
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeRoute](https://cloud.tencent.com/document/api/597/45484)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[Route](https://cloud.tencent.com/document/api/597/40861#Route)](https://cloud.tencent.com/document/api/597/40861#[Route](https://cloud.tencent.com/document/api/597/40861#Route))
+* [[RouteResponse](https://cloud.tencent.com/document/api/597/40861#RouteResponse)](https://cloud.tencent.com/document/api/597/40861#[RouteResponse](https://cloud.tencent.com/document/api/597/40861#RouteResponse))
 
 ### 第 2 次发布
 
@@ -11193,6 +11198,29 @@
 
 ## 边缘计算机器(ecm) 版本：2019-07-19
 
+### 第 14 次发布
+
+发布时间：2020-06-11 08:01:11
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[CreateSecurityGroup](https://cloud.tencent.com/document/api/1108/45479)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[SecurityGroup](https://cloud.tencent.com/document/api/1108/42574#SecurityGroup)](https://cloud.tencent.com/document/api/1108/42574#[SecurityGroup](https://cloud.tencent.com/document/api/1108/42574#SecurityGroup))
+
+修改数据结构：
+
+* [Instance](https://cloud.tencent.com/document/api/1108/42574#Instance)
+
+	* 新增成员：SecurityGroupIds
+
+
 ### 第 13 次发布
 
 发布时间：2020-06-02 08:01:13
@@ -12452,6 +12480,87 @@
 
 
 ## 全球应用加速(gaap) 版本：2018-05-29
+
+### 第 12 次发布
+
+发布时间：2020-06-11 08:10:11
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[CloseProxyGroup](https://cloud.tencent.com/document/api/608/45481)](https://cloud.tencent.com/document/api/#/#)
+* [[OpenProxyGroup](https://cloud.tencent.com/document/api/608/45480)](https://cloud.tencent.com/document/api/#/#)
+
+修改接口：
+
+* [CheckProxyCreate](https://cloud.tencent.com/document/api/608/36974)
+
+	* 新增入参：GroupId
+
+* [CloseSecurityPolicy](https://cloud.tencent.com/document/api/608/36972)
+
+	* 新增入参：PolicyId
+
+	* <font color="#dd0000">**修改入参**：</font>ProxyId
+
+* [CreateHTTPListener](https://cloud.tencent.com/document/api/608/37007)
+
+	* 新增入参：GroupId
+
+* [CreateHTTPSListener](https://cloud.tencent.com/document/api/608/37006)
+
+	* 新增入参：GroupId
+
+* [CreateProxyGroup](https://cloud.tencent.com/document/api/608/36949)
+
+	* 新增入参：AccessRegionSet
+
+* [CreateSecurityPolicy](https://cloud.tencent.com/document/api/608/36970)
+
+	* 新增入参：GroupId
+
+	* <font color="#dd0000">**修改入参**：</font>ProxyId
+
+* [DeleteProxyGroup](https://cloud.tencent.com/document/api/608/36947)
+
+	* 新增入参：Force
+
+* [DescribeHTTPListeners](https://cloud.tencent.com/document/api/608/37002)
+
+	* 新增入参：GroupId
+
+* [DescribeHTTPSListeners](https://cloud.tencent.com/document/api/608/37001)
+
+	* 新增入参：GroupId
+
+* [ModifyProxyGroupAttribute](https://cloud.tencent.com/document/api/608/36941)
+
+	* 新增入参：ProjectId
+
+* [OpenSecurityPolicy](https://cloud.tencent.com/document/api/608/36951)
+
+	* 新增入参：PolicyId
+
+	* <font color="#dd0000">**修改入参**：</font>ProxyId
+
+
+新增数据结构：
+
+* [[AccessConfiguration](https://cloud.tencent.com/document/api/608/37023#AccessConfiguration)](https://cloud.tencent.com/document/api/608/37023#[AccessConfiguration](https://cloud.tencent.com/document/api/608/37023#AccessConfiguration))
+
+修改数据结构：
+
+* [ProxyGroupInfo](https://cloud.tencent.com/document/api/608/37023#ProxyGroupInfo)
+
+	* 新增成员：Version, CreateTime
+
+* [ProxyInfo](https://cloud.tencent.com/document/api/608/37023#ProxyInfo)
+
+	* 新增成员：RelatedGlobalDomains, ModifyConfigTime
+
 
 ### 第 11 次发布
 
@@ -18263,6 +18372,21 @@
 
 
 ## 自然语言处理(nlp) 版本：2019-04-08
+
+### 第 8 次发布
+
+发布时间：2020-06-11 08:14:21
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [LexicalAnalysis](https://cloud.tencent.com/document/api/271/35494)
+
+	* 新增入参：DictId
+
 
 ### 第 7 次发布
 
@@ -26935,6 +27059,22 @@
 
 
 ## 私有网络(vpc) 版本：2017-03-12
+
+### 第 52 次发布
+
+发布时间：2020-06-11 08:18:40
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[GetCcnRegionBandwidthLimits](https://cloud.tencent.com/document/api/215/45482)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[CcnBandwidthInfo](https://cloud.tencent.com/document/api/215/15824#CcnBandwidthInfo)](https://cloud.tencent.com/document/api/215/15824#[CcnBandwidthInfo](https://cloud.tencent.com/document/api/215/15824#CcnBandwidthInfo))
 
 ### 第 51 次发布
 

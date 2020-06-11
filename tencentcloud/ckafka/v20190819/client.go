@@ -493,6 +493,31 @@ func (c *Client) DescribeInstancesDetail(request *DescribeInstancesDetailRequest
     return
 }
 
+func NewDescribeRouteRequest() (request *DescribeRouteRequest) {
+    request = &DescribeRouteRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ckafka", APIVersion, "DescribeRoute")
+    return
+}
+
+func NewDescribeRouteResponse() (response *DescribeRouteResponse) {
+    response = &DescribeRouteResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查看路由信息
+func (c *Client) DescribeRoute(request *DescribeRouteRequest) (response *DescribeRouteResponse, err error) {
+    if request == nil {
+        request = NewDescribeRouteRequest()
+    }
+    response = NewDescribeRouteResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeTopicRequest() (request *DescribeTopicRequest) {
     request = &DescribeTopicRequest{
         BaseRequest: &tchttp.BaseRequest{},

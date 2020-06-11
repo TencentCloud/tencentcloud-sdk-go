@@ -1834,7 +1834,7 @@ type DescribeLogSearchRequest struct {
 	// 服务id
 	ServiceId *string `json:"ServiceId,omitempty" name:"ServiceId"`
 
-	// 精确查询，支持apiid/reqid搜索
+	// 保留字段
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
 
 	// 单次要返回的日志条数，单次返回的最大条数为100
@@ -1846,8 +1846,21 @@ type DescribeLogSearchRequest struct {
 	// 按时间排序 asc（升序）或者 desc（降序），默认为 desc
 	Sort *string `json:"Sort,omitempty" name:"Sort"`
 
-	// 模糊查询，根据关键字检索日志
+	// 保留字段
 	Query *string `json:"Query,omitempty" name:"Query"`
+
+	// 检索条件,支持的检索条件如下：
+	// req_id：“=”
+	// api_id：“=”
+	// cip：“=”
+	// uip：“:”
+	// err_msg：“:”
+	// rsp_st：“=” 、“!=” 、 “:” 、 “>” 、 “<”
+	// req_t：”>=“ 、 ”<=“
+	// 
+	// 说明：
+	// “:”表示包含，“!=”表示不等于，字段含义见输出参数的LogSet说明
+	LogQuerys []*LogQuery `json:"LogQuerys,omitempty" name:"LogQuerys" list`
 }
 
 func (r *DescribeLogSearchRequest) ToJsonString() string {
@@ -2848,6 +2861,18 @@ type IPStrategysStatus struct {
 	// 策略列表。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	StrategySet []*IPStrategy `json:"StrategySet,omitempty" name:"StrategySet" list`
+}
+
+type LogQuery struct {
+
+	// 检索字段
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 操作符
+	Operator *string `json:"Operator,omitempty" name:"Operator"`
+
+	// 检索值
+	Value *string `json:"Value,omitempty" name:"Value"`
 }
 
 type MicroService struct {

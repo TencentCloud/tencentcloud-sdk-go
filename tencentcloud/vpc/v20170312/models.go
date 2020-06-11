@@ -998,6 +998,33 @@ type CcnAttachedInstance struct {
 	CcnUin *string `json:"CcnUin,omitempty" name:"CcnUin"`
 }
 
+type CcnBandwidthInfo struct {
+
+	// 带宽所属的云联网ID。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CcnId *string `json:"CcnId,omitempty" name:"CcnId"`
+
+	// 实例的创建时间。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreatedTime *string `json:"CreatedTime,omitempty" name:"CreatedTime"`
+
+	// 实例的过期时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExpiredTime *string `json:"ExpiredTime,omitempty" name:"ExpiredTime"`
+
+	// 带宽实例的唯一ID。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RegionFlowControlId *string `json:"RegionFlowControlId,omitempty" name:"RegionFlowControlId"`
+
+	// 带宽是否自动续费的标记。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RenewFlag *string `json:"RenewFlag,omitempty" name:"RenewFlag"`
+
+	// 描述带宽的地域和限速上限信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CcnRegionBandwidthLimit *CcnRegionBandwidthLimit `json:"CcnRegionBandwidthLimit,omitempty" name:"CcnRegionBandwidthLimit"`
+}
+
 type CcnInstance struct {
 
 	// 关联实例ID。
@@ -7131,6 +7158,65 @@ type GatewayQos struct {
 
 	// 创建时间。
 	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+}
+
+type GetCcnRegionBandwidthLimitsRequest struct {
+	*tchttp.BaseRequest
+
+	// CCN实例ID。形如：ccn-f49l6u0z。
+	CcnId *string `json:"CcnId,omitempty" name:"CcnId"`
+
+	// 过滤条件。
+	// <li>sregion - String - （过滤条件）源地域，形如：ap-guangzhou。</li>
+	// <li>dregion - String - （过滤条件）目的地域，形如：ap-shanghai-bm</li>
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+
+	// 排序条件，目前支持带宽（BandwidthLimit）和过期时间（ExpireTime）
+	SortedBy *string `json:"SortedBy,omitempty" name:"SortedBy"`
+
+	// 偏移量
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 返回数量
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 排序方式，'ASC':升序,'DESC':降序。
+	OrderBy *string `json:"OrderBy,omitempty" name:"OrderBy"`
+}
+
+func (r *GetCcnRegionBandwidthLimitsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *GetCcnRegionBandwidthLimitsRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type GetCcnRegionBandwidthLimitsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 云联网（CCN）各地域出带宽带宽详情。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		CcnBandwidthSet []*CcnBandwidthInfo `json:"CcnBandwidthSet,omitempty" name:"CcnBandwidthSet" list`
+
+		// 符合条件的对象数。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *GetCcnRegionBandwidthLimitsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *GetCcnRegionBandwidthLimitsResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
 }
 
 type HaVip struct {

@@ -199,6 +199,31 @@ func (c *Client) CreateNetworkInterface(request *CreateNetworkInterfaceRequest) 
     return
 }
 
+func NewCreateSecurityGroupRequest() (request *CreateSecurityGroupRequest) {
+    request = &CreateSecurityGroupRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ecm", APIVersion, "CreateSecurityGroup")
+    return
+}
+
+func NewCreateSecurityGroupResponse() (response *CreateSecurityGroupResponse) {
+    response = &CreateSecurityGroupResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 创建安全组
+func (c *Client) CreateSecurityGroup(request *CreateSecurityGroupRequest) (response *CreateSecurityGroupResponse, err error) {
+    if request == nil {
+        request = NewCreateSecurityGroupRequest()
+    }
+    response = NewCreateSecurityGroupResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateSubnetRequest() (request *CreateSubnetRequest) {
     request = &CreateSubnetRequest{
         BaseRequest: &tchttp.BaseRequest{},

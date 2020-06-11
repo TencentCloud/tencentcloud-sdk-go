@@ -1028,6 +1028,43 @@ func (r *DescribeInstancesResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeRouteRequest struct {
+	*tchttp.BaseRequest
+
+	// 实例唯一id
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+}
+
+func (r *DescribeRouteRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeRouteRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeRouteResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 返回的路由信息结果集
+		Result *RouteResponse `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeRouteResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeRouteResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeTopicAttributesRequest struct {
 	*tchttp.BaseRequest
 
@@ -1791,6 +1828,40 @@ type PartitionOffset struct {
 	// Offset,例如100
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+}
+
+type Route struct {
+
+	// 实例接入方式
+	// 0：PLAINTEXT (明文方式，没有带用户信息老版本及社区版本都支持)
+	// 1：SASL_PLAINTEXT（明文方式，不过在数据开始时，会通过SASL方式登录鉴权，仅社区版本支持）
+	// 2：SSL（SSL加密通信，没有带用户信息，老版本及社区版本都支持）
+	// 3：SASL_SSL（SSL加密通信，在数据开始时，会通过SASL方式登录鉴权，仅社区版本支持）
+	AccessType *int64 `json:"AccessType,omitempty" name:"AccessType"`
+
+	// 路由ID
+	RouteId *int64 `json:"RouteId,omitempty" name:"RouteId"`
+
+	// vip网络类型（1:外网TGW  2:基础网络 3:VPC网络 4:腾讯云支持环境(一般用于内部实例) 5:SSL外网访问方式访问 6:黑石环境vpc）
+	VipType *int64 `json:"VipType,omitempty" name:"VipType"`
+
+	// 虚拟IP列表
+	VipList []*VipEntity `json:"VipList,omitempty" name:"VipList" list`
+
+	// 域名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Domain *string `json:"Domain,omitempty" name:"Domain"`
+
+	// 域名port
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DomainPort *int64 `json:"DomainPort,omitempty" name:"DomainPort"`
+}
+
+type RouteResponse struct {
+
+	// 路由信息列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Routers []*Route `json:"Routers,omitempty" name:"Routers" list`
 }
 
 type SubscribedInfo struct {
