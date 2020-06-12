@@ -1,10 +1,10 @@
 # 本版本更新包含以下内容：
 
-## API网关(apigateway) 版本：2018-08-08
+## 云数据库 MySQL(cdb) 版本：2017-03-20
 
-### 第 2 次发布
+### 第 42 次发布
 
-发布时间：2020-06-11 08:22:10
+发布时间：2020-06-12 08:07:33
 
 本次发布包含了以下内容：
 
@@ -12,155 +12,64 @@
 
 修改接口：
 
-* [DescribeLogSearch](https://cloud.tencent.com/document/api/628/45203)
+* [UpgradeDBInstanceEngineVersion](https://cloud.tencent.com/document/api/236/15870)
 
-	* 新增入参：LogQuerys
-
-
-新增数据结构：
-
-* [LogQuery](https://cloud.tencent.com/document/api/628/45244#LogQuery)
+	* 新增入参：UpgradeSubversion
 
 
 
-## 消息队列 Ckafka(ckafka) 版本：2019-08-19
 
-### 第 3 次发布
+## 企业收付平台(cpdp) 版本：2019-08-20
 
-发布时间：2020-06-11 08:21:21
+### 第 19 次发布
+
+发布时间：2020-06-12 08:24:11
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-新增接口：
+修改接口：
 
-* [DescribeRoute](https://cloud.tencent.com/document/api/597/45484)
+* [CloseOrder](https://cloud.tencent.com/document/api/1122/40675)
 
-新增数据结构：
+	* 新增入参：MidasEnvironment
 
-* [Route](https://cloud.tencent.com/document/api/597/40861#Route)
-* [RouteResponse](https://cloud.tencent.com/document/api/597/40861#RouteResponse)
+* [CreateInvoice](https://cloud.tencent.com/document/api/1122/43190)
+
+	* 新增入参：OrderDate, Discount, StoreNo
+
+* [QueryOrder](https://cloud.tencent.com/document/api/1122/40662)
+
+	* 新增入参：MidasEnvironment
+
+* [QueryRefund](https://cloud.tencent.com/document/api/1122/40660)
+
+	* 新增入参：MidasEnvironment
+
+* [Refund](https://cloud.tencent.com/document/api/1122/40656)
+
+	* 新增入参：MidasEnvironment
+
+* [UnifiedOrder](https://cloud.tencent.com/document/api/1122/40649)
+
+	* 新增入参：MidasEnvironment
+
+
+修改数据结构：
+
+* [CreateRedInvoiceItem](https://cloud.tencent.com/document/api/1122/40683#CreateRedInvoiceItem)
+
+	* 新增成员：StoreNo
+
 
 
 
 ## 边缘计算机器(ecm) 版本：2019-07-19
 
-### 第 14 次发布
+### 第 15 次发布
 
-发布时间：2020-06-11 08:01:11
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [CreateSecurityGroup](https://cloud.tencent.com/document/api/1108/45479)
-
-新增数据结构：
-
-* [SecurityGroup](https://cloud.tencent.com/document/api/1108/42574#SecurityGroup)
-
-修改数据结构：
-
-* [Instance](https://cloud.tencent.com/document/api/1108/42574#Instance)
-
-	* 新增成员：SecurityGroupIds
-
-
-
-
-## 全球应用加速(gaap) 版本：2018-05-29
-
-### 第 12 次发布
-
-发布时间：2020-06-11 08:10:11
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [CloseProxyGroup](https://cloud.tencent.com/document/api/608/45481)
-* [OpenProxyGroup](https://cloud.tencent.com/document/api/608/45480)
-
-修改接口：
-
-* [CheckProxyCreate](https://cloud.tencent.com/document/api/608/36974)
-
-	* 新增入参：GroupId
-
-* [CloseSecurityPolicy](https://cloud.tencent.com/document/api/608/36972)
-
-	* 新增入参：PolicyId
-
-	* <font color="#dd0000">**修改入参**：</font>ProxyId
-
-* [CreateHTTPListener](https://cloud.tencent.com/document/api/608/37007)
-
-	* 新增入参：GroupId
-
-* [CreateHTTPSListener](https://cloud.tencent.com/document/api/608/37006)
-
-	* 新增入参：GroupId
-
-* [CreateProxyGroup](https://cloud.tencent.com/document/api/608/36949)
-
-	* 新增入参：AccessRegionSet
-
-* [CreateSecurityPolicy](https://cloud.tencent.com/document/api/608/36970)
-
-	* 新增入参：GroupId
-
-	* <font color="#dd0000">**修改入参**：</font>ProxyId
-
-* [DeleteProxyGroup](https://cloud.tencent.com/document/api/608/36947)
-
-	* 新增入参：Force
-
-* [DescribeHTTPListeners](https://cloud.tencent.com/document/api/608/37002)
-
-	* 新增入参：GroupId
-
-* [DescribeHTTPSListeners](https://cloud.tencent.com/document/api/608/37001)
-
-	* 新增入参：GroupId
-
-* [ModifyProxyGroupAttribute](https://cloud.tencent.com/document/api/608/36941)
-
-	* 新增入参：ProjectId
-
-* [OpenSecurityPolicy](https://cloud.tencent.com/document/api/608/36951)
-
-	* 新增入参：PolicyId
-
-	* <font color="#dd0000">**修改入参**：</font>ProxyId
-
-
-新增数据结构：
-
-* [AccessConfiguration](https://cloud.tencent.com/document/api/608/37023#AccessConfiguration)
-
-修改数据结构：
-
-* [ProxyGroupInfo](https://cloud.tencent.com/document/api/608/37023#ProxyGroupInfo)
-
-	* 新增成员：Version, CreateTime
-
-* [ProxyInfo](https://cloud.tencent.com/document/api/608/37023#ProxyInfo)
-
-	* 新增成员：RelatedGlobalDomains, ModifyConfigTime
-
-
-
-
-## 自然语言处理(nlp) 版本：2019-04-08
-
-### 第 8 次发布
-
-发布时间：2020-06-11 08:14:21
+发布时间：2020-06-12 08:01:55
 
 本次发布包含了以下内容：
 
@@ -168,18 +77,29 @@
 
 修改接口：
 
-* [LexicalAnalysis](https://cloud.tencent.com/document/api/271/35494)
+* [RunInstances](https://cloud.tencent.com/document/api/1108/43513)
 
-	* 新增入参：DictId
-
-
+	* 新增入参：SecurityGroupIds
 
 
-## 私有网络(vpc) 版本：2017-03-12
+修改数据结构：
 
-### 第 52 次发布
+* [Subnet](https://cloud.tencent.com/document/api/1108/42574#Subnet)
 
-发布时间：2020-06-11 08:18:40
+	* 新增成员：Zone
+
+* [ZoneInstanceCountISP](https://cloud.tencent.com/document/api/1108/42574#ZoneInstanceCountISP)
+
+	* 新增成员：VpcId, SubnetId, PrivateIpAddresses
+
+
+
+
+## 文字识别(ocr) 版本：2018-11-19
+
+### 第 24 次发布
+
+发布时间：2020-06-12 08:16:23
 
 本次发布包含了以下内容：
 
@@ -187,11 +107,11 @@
 
 新增接口：
 
-* [GetCcnRegionBandwidthLimits](https://cloud.tencent.com/document/api/215/45482)
+* [QueryBarCode](https://cloud.tencent.com/document/api/866/45513)
 
 新增数据结构：
 
-* [CcnBandwidthInfo](https://cloud.tencent.com/document/api/215/15824#CcnBandwidthInfo)
+* [ProductDataRecord](https://cloud.tencent.com/document/api/866/33527#ProductDataRecord)
 
 
 
@@ -449,7 +369,7 @@
 
 新增数据结构：
 
-* [[LogQuery](https://cloud.tencent.com/document/api/628/45244#LogQuery)](https://cloud.tencent.com/document/api/628/45244#[LogQuery](https://cloud.tencent.com/document/api/628/45244#LogQuery))
+* [LogQuery](https://cloud.tencent.com/document/api/628/45244#LogQuery)
 
 ### 第 1 次发布
 
@@ -4614,6 +4534,21 @@
 
 ## 云数据库 MySQL(cdb) 版本：2017-03-20
 
+### 第 42 次发布
+
+发布时间：2020-06-12 08:07:33
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [UpgradeDBInstanceEngineVersion](https://cloud.tencent.com/document/api/236/15870)
+
+	* 新增入参：UpgradeSubversion
+
+
 ### 第 41 次发布
 
 发布时间：2020-06-10 08:06:06
@@ -6386,12 +6321,12 @@
 
 新增接口：
 
-* [[DescribeRoute](https://cloud.tencent.com/document/api/597/45484)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeRoute](https://cloud.tencent.com/document/api/597/45484)
 
 新增数据结构：
 
-* [[Route](https://cloud.tencent.com/document/api/597/40861#Route)](https://cloud.tencent.com/document/api/597/40861#[Route](https://cloud.tencent.com/document/api/597/40861#Route))
-* [[RouteResponse](https://cloud.tencent.com/document/api/597/40861#RouteResponse)](https://cloud.tencent.com/document/api/597/40861#[RouteResponse](https://cloud.tencent.com/document/api/597/40861#RouteResponse))
+* [Route](https://cloud.tencent.com/document/api/597/40861#Route)
+* [RouteResponse](https://cloud.tencent.com/document/api/597/40861#RouteResponse)
 
 ### 第 2 次发布
 
@@ -7946,6 +7881,48 @@
 
 
 ## 企业收付平台(cpdp) 版本：2019-08-20
+
+### 第 19 次发布
+
+发布时间：2020-06-12 08:24:11
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CloseOrder](https://cloud.tencent.com/document/api/1122/40675)
+
+	* 新增入参：MidasEnvironment
+
+* [CreateInvoice](https://cloud.tencent.com/document/api/1122/43190)
+
+	* 新增入参：OrderDate, Discount, StoreNo
+
+* [QueryOrder](https://cloud.tencent.com/document/api/1122/40662)
+
+	* 新增入参：MidasEnvironment
+
+* [QueryRefund](https://cloud.tencent.com/document/api/1122/40660)
+
+	* 新增入参：MidasEnvironment
+
+* [Refund](https://cloud.tencent.com/document/api/1122/40656)
+
+	* 新增入参：MidasEnvironment
+
+* [UnifiedOrder](https://cloud.tencent.com/document/api/1122/40649)
+
+	* 新增入参：MidasEnvironment
+
+
+修改数据结构：
+
+* [CreateRedInvoiceItem](https://cloud.tencent.com/document/api/1122/40683#CreateRedInvoiceItem)
+
+	* 新增成员：StoreNo
+
 
 ### 第 18 次发布
 
@@ -11198,6 +11175,32 @@
 
 ## 边缘计算机器(ecm) 版本：2019-07-19
 
+### 第 15 次发布
+
+发布时间：2020-06-12 08:01:55
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [RunInstances](https://cloud.tencent.com/document/api/1108/43513)
+
+	* 新增入参：SecurityGroupIds
+
+
+修改数据结构：
+
+* [Subnet](https://cloud.tencent.com/document/api/1108/42574#Subnet)
+
+	* 新增成员：Zone
+
+* [ZoneInstanceCountISP](https://cloud.tencent.com/document/api/1108/42574#ZoneInstanceCountISP)
+
+	* 新增成员：VpcId, SubnetId, PrivateIpAddresses
+
+
 ### 第 14 次发布
 
 发布时间：2020-06-11 08:01:11
@@ -11208,11 +11211,11 @@
 
 新增接口：
 
-* [[CreateSecurityGroup](https://cloud.tencent.com/document/api/1108/45479)](https://cloud.tencent.com/document/api/#/#)
+* [CreateSecurityGroup](https://cloud.tencent.com/document/api/1108/45479)
 
 新增数据结构：
 
-* [[SecurityGroup](https://cloud.tencent.com/document/api/1108/42574#SecurityGroup)](https://cloud.tencent.com/document/api/1108/42574#[SecurityGroup](https://cloud.tencent.com/document/api/1108/42574#SecurityGroup))
+* [SecurityGroup](https://cloud.tencent.com/document/api/1108/42574#SecurityGroup)
 
 修改数据结构：
 
@@ -12491,8 +12494,8 @@
 
 新增接口：
 
-* [[CloseProxyGroup](https://cloud.tencent.com/document/api/608/45481)](https://cloud.tencent.com/document/api/#/#)
-* [[OpenProxyGroup](https://cloud.tencent.com/document/api/608/45480)](https://cloud.tencent.com/document/api/#/#)
+* [CloseProxyGroup](https://cloud.tencent.com/document/api/608/45481)
+* [OpenProxyGroup](https://cloud.tencent.com/document/api/608/45480)
 
 修改接口：
 
@@ -12549,7 +12552,7 @@
 
 新增数据结构：
 
-* [[AccessConfiguration](https://cloud.tencent.com/document/api/608/37023#AccessConfiguration)](https://cloud.tencent.com/document/api/608/37023#[AccessConfiguration](https://cloud.tencent.com/document/api/608/37023#AccessConfiguration))
+* [AccessConfiguration](https://cloud.tencent.com/document/api/608/37023#AccessConfiguration)
 
 修改数据结构：
 
@@ -18565,6 +18568,22 @@
 
 
 ## 文字识别(ocr) 版本：2018-11-19
+
+### 第 24 次发布
+
+发布时间：2020-06-12 08:16:23
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[QueryBarCode](https://cloud.tencent.com/document/api/866/45513)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[ProductDataRecord](https://cloud.tencent.com/document/api/866/33527#ProductDataRecord)](https://cloud.tencent.com/document/api/866/33527#[ProductDataRecord](https://cloud.tencent.com/document/api/866/33527#ProductDataRecord))
 
 ### 第 23 次发布
 
@@ -27070,11 +27089,11 @@
 
 新增接口：
 
-* [[GetCcnRegionBandwidthLimits](https://cloud.tencent.com/document/api/215/45482)](https://cloud.tencent.com/document/api/#/#)
+* [GetCcnRegionBandwidthLimits](https://cloud.tencent.com/document/api/215/45482)
 
 新增数据结构：
 
-* [[CcnBandwidthInfo](https://cloud.tencent.com/document/api/215/15824#CcnBandwidthInfo)](https://cloud.tencent.com/document/api/215/15824#[CcnBandwidthInfo](https://cloud.tencent.com/document/api/215/15824#CcnBandwidthInfo))
+* [CcnBandwidthInfo](https://cloud.tencent.com/document/api/215/15824#CcnBandwidthInfo)
 
 ### 第 51 次发布
 

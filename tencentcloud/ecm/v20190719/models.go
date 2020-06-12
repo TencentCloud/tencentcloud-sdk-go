@@ -3264,6 +3264,9 @@ type RunInstancesRequest struct {
 
 	// 数据盘大小，单位是G。如果未传该参数或者传的值为0，则使用模块下的默认值
 	DataDiskSize *int64 `json:"DataDiskSize,omitempty" name:"DataDiskSize"`
+
+	// 实例所属安全组。该参数可以通过调用 DescribeSecurityGroups 的返回值中的sgId字段来获取。若不指定该参数，则绑定默认安全组。
+	SecurityGroupIds []*string `json:"SecurityGroupIds,omitempty" name:"SecurityGroupIds" list`
 }
 
 func (r *RunInstancesRequest) ToJsonString() string {
@@ -3485,6 +3488,9 @@ type Subnet struct {
 	// 标签键值对。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TagSet []*Tag `json:"TagSet,omitempty" name:"TagSet" list`
+
+	// 所在区域
+	Zone *string `json:"Zone,omitempty" name:"Zone"`
 }
 
 type Tag struct {
@@ -3613,8 +3619,17 @@ type ZoneInstanceCountISP struct {
 	// 在当前可用区欲创建的实例数目。
 	InstanceCount *int64 `json:"InstanceCount,omitempty" name:"InstanceCount"`
 
-	// 运营商。
+	// 运营商，CTCC电信，CUCC联通，CMCC移动，多个运营商用英文分号连接";"。
 	ISP *string `json:"ISP,omitempty" name:"ISP"`
+
+	// 指定私有网络编号，SubnetId与VpcId必须同时指定或不指定
+	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
+
+	// 指定子网编号，SubnetId与VpcId必须同时指定或不指定
+	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
+
+	// 指定主网卡内网IP。条件：SubnetId与VpcId必须同时指定，并且IP数量与InstanceCount相同，多IP主机副网卡内网IP在相同子网内通过DHCP获取。
+	PrivateIpAddresses []*string `json:"PrivateIpAddresses,omitempty" name:"PrivateIpAddresses" list`
 }
 
 type ZoneInstanceInfo struct {

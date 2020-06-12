@@ -1234,6 +1234,13 @@ type CloseOrderRequest struct {
 
 	// 聚鑫订单号，OutTradeNo ， TransactionId二选一，不能都为空,优先使用 OutTradeNo
 	TransactionId *string `json:"TransactionId,omitempty" name:"TransactionId"`
+
+	// 环境名:
+	// release: 现网环境
+	// sandbox: 沙箱环境
+	// development: 开发环境
+	// 缺省: release
+	MidasEnvironment *string `json:"MidasEnvironment,omitempty" name:"MidasEnvironment"`
 }
 
 func (r *CloseOrderRequest) ToJsonString() string {
@@ -1671,6 +1678,15 @@ type CreateInvoiceRequest struct {
 
 	// 撤销部分商品。0-不撤销，1-撤销
 	UndoPart *int64 `json:"UndoPart,omitempty" name:"UndoPart"`
+
+	// 订单下单时间（格式 YYYMMDD）
+	OrderDate *string `json:"OrderDate,omitempty" name:"OrderDate"`
+
+	// 订单级别（单位为分）
+	Discount *int64 `json:"Discount,omitempty" name:"Discount"`
+
+	// 门店编码
+	StoreNo *string `json:"StoreNo,omitempty" name:"StoreNo"`
 }
 
 func (r *CreateInvoiceRequest) ToJsonString() string {
@@ -1867,6 +1883,9 @@ type CreateRedInvoiceItem struct {
 
 	// 红字信息表编码
 	RedSerialNo *string `json:"RedSerialNo,omitempty" name:"RedSerialNo"`
+
+	// 门店编号
+	StoreNo *string `json:"StoreNo,omitempty" name:"StoreNo"`
 }
 
 type CreateRedInvoiceRequest struct {
@@ -3819,6 +3838,13 @@ type QueryOrderRequest struct {
 
 	// 聚鑫订单号，OutTradeNo与 TransactionId不能同时为 空，都传优先使用 OutTradeNo
 	TransactionId *string `json:"TransactionId,omitempty" name:"TransactionId"`
+
+	// 环境名:
+	// release: 现网环境
+	// sandbox: 沙箱环境
+	// development: 开发环境
+	// 缺省: release
+	MidasEnvironment *string `json:"MidasEnvironment,omitempty" name:"MidasEnvironment"`
 }
 
 func (r *QueryOrderRequest) ToJsonString() string {
@@ -4131,6 +4157,13 @@ type QueryRefundRequest struct {
 
 	// 按照聚鑫安全密钥计算的签名
 	MidasSignature *string `json:"MidasSignature,omitempty" name:"MidasSignature"`
+
+	// 环境名:
+	// release: 现网环境
+	// sandbox: 沙箱环境
+	// development: 开发环境
+	// 缺省: release
+	MidasEnvironment *string `json:"MidasEnvironment,omitempty" name:"MidasEnvironment"`
 }
 
 func (r *QueryRefundRequest) ToJsonString() string {
@@ -4591,6 +4624,13 @@ type RefundRequest struct {
 
 	// 支持多个子订单批量退款单 个子订单退款支持传 SubOutTradeNo ，也支持传 SubOutTradeNoList ，都传的时候以 SubOutTradeNoList 为准。  如果传了子单退款细节，外 部不需要再传退款金额，平 台应退，商户应退金额，我 们可以直接根据子单退款算出来总和。
 	SubOrderRefundList []*RefundOutSubOrderRefundList `json:"SubOrderRefundList,omitempty" name:"SubOrderRefundList" list`
+
+	// 环境名:
+	// release: 现网环境
+	// sandbox: 沙箱环境
+	// development: 开发环境
+	// 缺省: release
+	MidasEnvironment *string `json:"MidasEnvironment,omitempty" name:"MidasEnvironment"`
 }
 
 func (r *RefundRequest) ToJsonString() string {
@@ -5460,6 +5500,13 @@ type UnifiedOrderRequest struct {
 
 	// 在服务商模式下，微信公众号/小程序支付时wx_sub_openid和wx_openid二选一
 	WxSubOpenId *string `json:"WxSubOpenId,omitempty" name:"WxSubOpenId"`
+
+	// 环境名:
+	// release: 现网环境
+	// sandbox: 沙箱环境
+	// development: 开发环境
+	// 缺省: release
+	MidasEnvironment *string `json:"MidasEnvironment,omitempty" name:"MidasEnvironment"`
 }
 
 func (r *UnifiedOrderRequest) ToJsonString() string {

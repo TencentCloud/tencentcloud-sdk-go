@@ -645,7 +645,7 @@ func NewDescribeIPStrategyApisStatusResponse() (response *DescribeIPStrategyApis
     return
 }
 
-// 本接口（DescribeIPStrategyApisStatus）用于查询IP策略绑定的API列表
+// 本接口（DescribeIPStrategyApisStatus）用于查询IP策略可以绑定的API列表。即服务下所有API和该策略已绑定API的差集。
 func (c *Client) DescribeIPStrategyApisStatus(request *DescribeIPStrategyApisStatusRequest) (response *DescribeIPStrategyApisStatusResponse, err error) {
     if request == nil {
         request = NewDescribeIPStrategyApisStatusRequest()

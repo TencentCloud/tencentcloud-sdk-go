@@ -649,7 +649,7 @@ type CreateApiKeyRequest struct {
 	// 用户自定义密钥名称。
 	SecretName *string `json:"SecretName,omitempty" name:"SecretName"`
 
-	// 密钥类型，支持 auto 和 manunal（自定义密钥），默认为 auto。
+	// 密钥类型，支持 auto 和 manual（自定义密钥），默认为 auto。
 	AccessKeyType *string `json:"AccessKeyType,omitempty" name:"AccessKeyType"`
 
 	// 用户自定义密钥 ID，AccessKeyType 为 manual 时必传。长度为5 - 50字符，由字母、数字、英文下划线组成。
