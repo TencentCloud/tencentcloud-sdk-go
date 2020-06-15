@@ -1,105 +1,10 @@
 # 本版本更新包含以下内容：
 
-## 云数据库 MySQL(cdb) 版本：2017-03-20
+## 智能钛机器学习平台(tione) 版本：2019-10-22
 
-### 第 42 次发布
+### 第 6 次发布
 
-发布时间：2020-06-12 08:07:33
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [UpgradeDBInstanceEngineVersion](https://cloud.tencent.com/document/api/236/15870)
-
-	* 新增入参：UpgradeSubversion
-
-
-
-
-## 企业收付平台(cpdp) 版本：2019-08-20
-
-### 第 19 次发布
-
-发布时间：2020-06-12 08:24:11
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [CloseOrder](https://cloud.tencent.com/document/api/1122/40675)
-
-	* 新增入参：MidasEnvironment
-
-* [CreateInvoice](https://cloud.tencent.com/document/api/1122/43190)
-
-	* 新增入参：OrderDate, Discount, StoreNo
-
-* [QueryOrder](https://cloud.tencent.com/document/api/1122/40662)
-
-	* 新增入参：MidasEnvironment
-
-* [QueryRefund](https://cloud.tencent.com/document/api/1122/40660)
-
-	* 新增入参：MidasEnvironment
-
-* [Refund](https://cloud.tencent.com/document/api/1122/40656)
-
-	* 新增入参：MidasEnvironment
-
-* [UnifiedOrder](https://cloud.tencent.com/document/api/1122/40649)
-
-	* 新增入参：MidasEnvironment
-
-
-修改数据结构：
-
-* [CreateRedInvoiceItem](https://cloud.tencent.com/document/api/1122/40683#CreateRedInvoiceItem)
-
-	* 新增成员：StoreNo
-
-
-
-
-## 边缘计算机器(ecm) 版本：2019-07-19
-
-### 第 15 次发布
-
-发布时间：2020-06-12 08:01:55
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [RunInstances](https://cloud.tencent.com/document/api/1108/43513)
-
-	* 新增入参：SecurityGroupIds
-
-
-修改数据结构：
-
-* [Subnet](https://cloud.tencent.com/document/api/1108/42574#Subnet)
-
-	* 新增成员：Zone
-
-* [ZoneInstanceCountISP](https://cloud.tencent.com/document/api/1108/42574#ZoneInstanceCountISP)
-
-	* 新增成员：VpcId, SubnetId, PrivateIpAddresses
-
-
-
-
-## 文字识别(ocr) 版本：2018-11-19
-
-### 第 24 次发布
-
-发布时间：2020-06-12 08:16:23
+发布时间：2020-06-15 08:01:29
 
 本次发布包含了以下内容：
 
@@ -107,11 +12,66 @@
 
 新增接口：
 
-* [QueryBarCode](https://cloud.tencent.com/document/api/866/45513)
+* [DescribeNotebookSummary](https://cloud.tencent.com/document/api/851/45535)
+
+修改接口：
+
+* [CreateNotebookInstance](https://cloud.tencent.com/document/api/851/42527)
+
+	* 新增入参：StoppingCondition, AutoStopping
+
+* [DescribeNotebookInstance](https://cloud.tencent.com/document/api/851/42524)
+
+	* 新增出参：Prepay, Deadline, StoppingCondition
+
+* [StartNotebookInstance](https://cloud.tencent.com/document/api/851/42522)
+
+	* 新增入参：AutoStopping, StoppingCondition
+
+* [UpdateNotebookInstance](https://cloud.tencent.com/document/api/851/42520)
+
+	* 新增入参：AutoStopping, StoppingCondition
+
 
 新增数据结构：
 
-* [ProductDataRecord](https://cloud.tencent.com/document/api/866/33527#ProductDataRecord)
+* [BillingLabel](https://cloud.tencent.com/document/api/851/42528#BillingLabel)
+
+修改数据结构：
+
+* [NotebookInstanceSummary](https://cloud.tencent.com/document/api/851/42528#NotebookInstanceSummary)
+
+	* 新增成员：StartupTime, Deadline, StoppingCondition, Prepay, BillingLabel
+
+
+
+
+## 腾讯微服务平台 TSF(tsf) 版本：2018-03-26
+
+### 第 22 次发布
+
+发布时间：2020-06-15 08:17:58
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeApiDetail](https://cloud.tencent.com/document/api/649/45538)
+* [DescribeApiVersions](https://cloud.tencent.com/document/api/649/45537)
+* [DescribeMsApiList](https://cloud.tencent.com/document/api/649/45536)
+
+新增数据结构：
+
+* [ApiDefinitionDescr](https://cloud.tencent.com/document/api/649/36099#ApiDefinitionDescr)
+* [ApiDetailResponse](https://cloud.tencent.com/document/api/649/36099#ApiDetailResponse)
+* [ApiRequestDescr](https://cloud.tencent.com/document/api/649/36099#ApiRequestDescr)
+* [ApiResponseDescr](https://cloud.tencent.com/document/api/649/36099#ApiResponseDescr)
+* [ApiVersionArray](https://cloud.tencent.com/document/api/649/36099#ApiVersionArray)
+* [MsApiArray](https://cloud.tencent.com/document/api/649/36099#MsApiArray)
+* [PropertyField](https://cloud.tencent.com/document/api/649/36099#PropertyField)
+* [TsfApiListResponse](https://cloud.tencent.com/document/api/649/36099#TsfApiListResponse)
 
 
 
@@ -18579,11 +18539,11 @@
 
 新增接口：
 
-* [[QueryBarCode](https://cloud.tencent.com/document/api/866/45513)](https://cloud.tencent.com/document/api/#/#)
+* [QueryBarCode](https://cloud.tencent.com/document/api/866/45513)
 
 新增数据结构：
 
-* [[ProductDataRecord](https://cloud.tencent.com/document/api/866/33527#ProductDataRecord)](https://cloud.tencent.com/document/api/866/33527#[ProductDataRecord](https://cloud.tencent.com/document/api/866/33527#ProductDataRecord))
+* [ProductDataRecord](https://cloud.tencent.com/document/api/866/33527#ProductDataRecord)
 
 ### 第 23 次发布
 
@@ -23724,6 +23684,48 @@
 
 ## 智能钛机器学习平台(tione) 版本：2019-10-22
 
+### 第 6 次发布
+
+发布时间：2020-06-15 08:01:29
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeNotebookSummary](https://cloud.tencent.com/document/api/851/45535)](https://cloud.tencent.com/document/api/#/#)
+
+修改接口：
+
+* [CreateNotebookInstance](https://cloud.tencent.com/document/api/851/42527)
+
+	* 新增入参：StoppingCondition, AutoStopping
+
+* [DescribeNotebookInstance](https://cloud.tencent.com/document/api/851/42524)
+
+	* 新增出参：Prepay, Deadline, StoppingCondition
+
+* [StartNotebookInstance](https://cloud.tencent.com/document/api/851/42522)
+
+	* 新增入参：AutoStopping, StoppingCondition
+
+* [UpdateNotebookInstance](https://cloud.tencent.com/document/api/851/42520)
+
+	* 新增入参：AutoStopping, StoppingCondition
+
+
+新增数据结构：
+
+* [[BillingLabel](https://cloud.tencent.com/document/api/851/42528#BillingLabel)](https://cloud.tencent.com/document/api/851/42528#[BillingLabel](https://cloud.tencent.com/document/api/851/42528#BillingLabel))
+
+修改数据结构：
+
+* [NotebookInstanceSummary](https://cloud.tencent.com/document/api/851/42528#NotebookInstanceSummary)
+
+	* 新增成员：StartupTime, Deadline, StoppingCondition, Prepay, BillingLabel
+
+
 ### 第 5 次发布
 
 发布时间：2020-05-15 08:01:29
@@ -24802,6 +24804,31 @@
 
 
 ## 腾讯微服务平台 TSF(tsf) 版本：2018-03-26
+
+### 第 22 次发布
+
+发布时间：2020-06-15 08:17:58
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeApiDetail](https://cloud.tencent.com/document/api/649/45538)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeApiVersions](https://cloud.tencent.com/document/api/649/45537)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeMsApiList](https://cloud.tencent.com/document/api/649/45536)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[ApiDefinitionDescr](https://cloud.tencent.com/document/api/649/36099#ApiDefinitionDescr)](https://cloud.tencent.com/document/api/649/36099#[ApiDefinitionDescr](https://cloud.tencent.com/document/api/649/36099#ApiDefinitionDescr))
+* [[ApiDetailResponse](https://cloud.tencent.com/document/api/649/36099#ApiDetailResponse)](https://cloud.tencent.com/document/api/649/36099#[ApiDetailResponse](https://cloud.tencent.com/document/api/649/36099#ApiDetailResponse))
+* [[ApiRequestDescr](https://cloud.tencent.com/document/api/649/36099#ApiRequestDescr)](https://cloud.tencent.com/document/api/649/36099#[ApiRequestDescr](https://cloud.tencent.com/document/api/649/36099#ApiRequestDescr))
+* [[ApiResponseDescr](https://cloud.tencent.com/document/api/649/36099#ApiResponseDescr)](https://cloud.tencent.com/document/api/649/36099#[ApiResponseDescr](https://cloud.tencent.com/document/api/649/36099#ApiResponseDescr))
+* [[ApiVersionArray](https://cloud.tencent.com/document/api/649/36099#ApiVersionArray)](https://cloud.tencent.com/document/api/649/36099#[ApiVersionArray](https://cloud.tencent.com/document/api/649/36099#ApiVersionArray))
+* [[MsApiArray](https://cloud.tencent.com/document/api/649/36099#MsApiArray)](https://cloud.tencent.com/document/api/649/36099#[MsApiArray](https://cloud.tencent.com/document/api/649/36099#MsApiArray))
+* [[PropertyField](https://cloud.tencent.com/document/api/649/36099#PropertyField)](https://cloud.tencent.com/document/api/649/36099#[PropertyField](https://cloud.tencent.com/document/api/649/36099#PropertyField))
+* [[TsfApiListResponse](https://cloud.tencent.com/document/api/649/36099#TsfApiListResponse)](https://cloud.tencent.com/document/api/649/36099#[TsfApiListResponse](https://cloud.tencent.com/document/api/649/36099#TsfApiListResponse))
 
 ### 第 21 次发布
 

@@ -719,6 +719,56 @@ func (c *Client) DeployServerlessGroup(request *DeployServerlessGroupRequest) (r
     return
 }
 
+func NewDescribeApiDetailRequest() (request *DescribeApiDetailRequest) {
+    request = &DescribeApiDetailRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tsf", APIVersion, "DescribeApiDetail")
+    return
+}
+
+func NewDescribeApiDetailResponse() (response *DescribeApiDetailResponse) {
+    response = &DescribeApiDetailResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询API详情
+func (c *Client) DescribeApiDetail(request *DescribeApiDetailRequest) (response *DescribeApiDetailResponse, err error) {
+    if request == nil {
+        request = NewDescribeApiDetailRequest()
+    }
+    response = NewDescribeApiDetailResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeApiVersionsRequest() (request *DescribeApiVersionsRequest) {
+    request = &DescribeApiVersionsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tsf", APIVersion, "DescribeApiVersions")
+    return
+}
+
+func NewDescribeApiVersionsResponse() (response *DescribeApiVersionsResponse) {
+    response = &DescribeApiVersionsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询API 版本
+func (c *Client) DescribeApiVersions(request *DescribeApiVersionsRequest) (response *DescribeApiVersionsResponse, err error) {
+    if request == nil {
+        request = NewDescribeApiVersionsRequest()
+    }
+    response = NewDescribeApiVersionsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeApplicationRequest() (request *DescribeApplicationRequest) {
     request = &DescribeApplicationRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1216,6 +1266,31 @@ func (c *Client) DescribeMicroservices(request *DescribeMicroservicesRequest) (r
         request = NewDescribeMicroservicesRequest()
     }
     response = NewDescribeMicroservicesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeMsApiListRequest() (request *DescribeMsApiListRequest) {
+    request = &DescribeMsApiListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tsf", APIVersion, "DescribeMsApiList")
+    return
+}
+
+func NewDescribeMsApiListResponse() (response *DescribeMsApiListResponse) {
+    response = &DescribeMsApiListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询服务API列表
+func (c *Client) DescribeMsApiList(request *DescribeMsApiListRequest) (response *DescribeMsApiListResponse, err error) {
+    if request == nil {
+        request = NewDescribeMsApiListRequest()
+    }
+    response = NewDescribeMsApiListResponse()
     err = c.Send(request, response)
     return
 }

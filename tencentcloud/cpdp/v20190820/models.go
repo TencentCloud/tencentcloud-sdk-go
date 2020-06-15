@@ -1679,10 +1679,10 @@ type CreateInvoiceRequest struct {
 	// 撤销部分商品。0-不撤销，1-撤销
 	UndoPart *int64 `json:"UndoPart,omitempty" name:"UndoPart"`
 
-	// 订单下单时间（格式 YYYMMDD）
+	// 订单下单时间（格式 YYYYMMDD）
 	OrderDate *string `json:"OrderDate,omitempty" name:"OrderDate"`
 
-	// 订单级别（单位为分）
+	// 订单级别折扣（单位为分）
 	Discount *int64 `json:"Discount,omitempty" name:"Discount"`
 
 	// 门店编码

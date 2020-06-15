@@ -3819,7 +3819,7 @@ type DescribeProIspPlaySumInfoListResponse struct {
 		// 省份，运营商，国家或地区汇总数据列表。
 		DataInfoList []*ProIspPlaySumInfo `json:"DataInfoList,omitempty" name:"DataInfoList" list`
 
-		// 平均带宽。
+		// 下载速度，单位：MB/s，计算方式：总流量/总时长。
 		AvgFluxPerSecond *float64 `json:"AvgFluxPerSecond,omitempty" name:"AvgFluxPerSecond"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。

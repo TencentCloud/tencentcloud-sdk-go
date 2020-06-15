@@ -35,6 +35,22 @@ type AlgorithmSpecification struct {
 	AlgorithmName *string `json:"AlgorithmName,omitempty" name:"AlgorithmName"`
 }
 
+type BillingLabel struct {
+
+	// 计费项标识
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Label *string `json:"Label,omitempty" name:"Label"`
+
+	// 存储大小
+	VolumeSize *int64 `json:"VolumeSize,omitempty" name:"VolumeSize"`
+
+	// 计费状态
+	// None: 不计费
+	// StorageOnly: 仅存储计费
+	// Computing: 计算和存储都计费
+	Status *string `json:"Status,omitempty" name:"Status"`
+}
+
 type CodeRepoSummary struct {
 
 	// 创建时间
@@ -118,37 +134,56 @@ func (r *CreateCodeRepositoryResponse) FromJsonString(s string) error {
 type CreateNotebookInstanceRequest struct {
 	*tchttp.BaseRequest
 
-	// Notebook实例名称
+	// Notebook实例名称，不能超过63个字符
+	// 规则：^[a-zA-Z0-9](-*[a-zA-Z0-9])*$
 	NotebookInstanceName *string `json:"NotebookInstanceName,omitempty" name:"NotebookInstanceName"`
 
 	// Notebook算力类型
+	// 参考https://cloud.tencent.com/document/product/851/41239
 	InstanceType *string `json:"InstanceType,omitempty" name:"InstanceType"`
 
 	// 数据卷大小(GB)
+	// 用户持久化Notebook实例的数据
 	VolumeSizeInGB *uint64 `json:"VolumeSizeInGB,omitempty" name:"VolumeSizeInGB"`
 
 	// 外网访问权限，可取值Enabled/Disabled
+	// 开启后，Notebook实例可以具有访问外网80，443端口的权限
 	DirectInternetAccess *string `json:"DirectInternetAccess,omitempty" name:"DirectInternetAccess"`
 
 	// Root用户权限，可取值Enabled/Disabled
+	// 开启后，Notebook实例可以切换至root用户执行命令
 	RootAccess *string `json:"RootAccess,omitempty" name:"RootAccess"`
 
 	// 子网ID
+	// 如果需要Notebook实例访问VPC内的资源，则需要选择对应的子网
 	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
 
 	// 生命周期脚本名称
+	// 必须是已存在的生命周期脚本，具体参考https://cloud.tencent.com/document/product/851/43140
 	LifecycleScriptsName *string `json:"LifecycleScriptsName,omitempty" name:"LifecycleScriptsName"`
 
 	// 默认存储库名称
 	// 可以是已创建的存储库名称或者已https://开头的公共git库
+	// 参考https://cloud.tencent.com/document/product/851/43139
 	DefaultCodeRepository *string `json:"DefaultCodeRepository,omitempty" name:"DefaultCodeRepository"`
 
 	// 其他存储库列表
 	// 每个元素可以是已创建的存储库名称或者已https://开头的公共git库
+	// 参考https://cloud.tencent.com/document/product/851/43139
 	AdditionalCodeRepositories []*string `json:"AdditionalCodeRepositories,omitempty" name:"AdditionalCodeRepositories" list`
 
 	// 是否开启CLS日志服务，可取值Enabled/Disabled，默认为Disabled
+	// 开启后，Notebook运行的日志会收集到CLS中，CLS会产生费用，请根据需要选择
 	ClsAccess *string `json:"ClsAccess,omitempty" name:"ClsAccess"`
+
+	// 自动停止配置
+	// 选择定时停止Notebook实例
+	StoppingCondition *StoppingCondition `json:"StoppingCondition,omitempty" name:"StoppingCondition"`
+
+	// 自动停止，可取值Enabled/Disabled
+	// 取值为Disabled的时候StoppingCondition将被忽略
+	// 取值为Enabled的时候读取StoppingCondition作为自动停止的配置
+	AutoStopping *string `json:"AutoStopping,omitempty" name:"AutoStopping"`
 }
 
 func (r *CreateNotebookInstanceRequest) ToJsonString() string {
@@ -557,6 +592,7 @@ type DescribeNotebookInstanceRequest struct {
 	*tchttp.BaseRequest
 
 	// Notebook实例名称
+	// 规则：^[a-zA-Z0-9](-*[a-zA-Z0-9])*$
 	NotebookInstanceName *string `json:"NotebookInstanceName,omitempty" name:"NotebookInstanceName"`
 }
 
@@ -617,6 +653,12 @@ type DescribeNotebookInstanceResponse struct {
 		LogUrl *string `json:"LogUrl,omitempty" name:"LogUrl"`
 
 		// Notebook实例状态
+	// 
+	// Pending: 创建中
+	// Inservice: 运行中
+	// Stopping: 停止中
+	// Stopped: 已停止
+	// Failed: 失败
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		NotebookInstanceStatus *string `json:"NotebookInstanceStatus,omitempty" name:"NotebookInstanceStatus"`
 
@@ -641,6 +683,18 @@ type DescribeNotebookInstanceResponse struct {
 		// 是否开启CLS日志服务
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		ClsAccess *string `json:"ClsAccess,omitempty" name:"ClsAccess"`
+
+		// 是否预付费实例
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Prepay *bool `json:"Prepay,omitempty" name:"Prepay"`
+
+		// 实例运行截止时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Deadline *string `json:"Deadline,omitempty" name:"Deadline"`
+
+		// 自动停止配置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		StoppingCondition *StoppingCondition `json:"StoppingCondition,omitempty" name:"StoppingCondition"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -676,6 +730,9 @@ type DescribeNotebookInstancesRequest struct {
 	// lifecycle-name - String - 是否必填：否 -（过滤条件）按照生命周期脚本名称过滤。
 	// default-code-repo-name - String - 是否必填：否 -（过滤条件）按照默认存储库名称过滤。
 	// additional-code-repo-name - String - 是否必填：否 -（过滤条件）按照其他存储库名称过滤。
+	// billing-status - String - 是否必填：否 - （过滤条件）按照计费状态过滤，可取以下值
+	//    StorageOnly：仅存储计费的实例
+	//    Computing：计算和存储都计费的实例
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
 
 	// 【废弃字段】排序字段
@@ -816,6 +873,49 @@ func (r *DescribeNotebookLifecycleScriptsResponse) ToJsonString() string {
 }
 
 func (r *DescribeNotebookLifecycleScriptsResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeNotebookSummaryRequest struct {
+	*tchttp.BaseRequest
+}
+
+func (r *DescribeNotebookSummaryRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeNotebookSummaryRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeNotebookSummaryResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 实例总数
+		AllInstanceCnt *int64 `json:"AllInstanceCnt,omitempty" name:"AllInstanceCnt"`
+
+		// 计费实例总数
+		BillingInstanceCnt *int64 `json:"BillingInstanceCnt,omitempty" name:"BillingInstanceCnt"`
+
+		// 仅存储计费的实例总数
+		StorageOnlyBillingInstanceCnt *int64 `json:"StorageOnlyBillingInstanceCnt,omitempty" name:"StorageOnlyBillingInstanceCnt"`
+
+		// 计算和存储都计费的实例总数
+		ComputingBillingInstanceCnt *int64 `json:"ComputingBillingInstanceCnt,omitempty" name:"ComputingBillingInstanceCnt"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeNotebookSummaryResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeNotebookSummaryResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -1025,7 +1125,12 @@ type NotebookInstanceSummary struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	NotebookInstanceName *string `json:"NotebookInstanceName,omitempty" name:"NotebookInstanceName"`
 
-	// notebook实例状态
+	// notebook实例状态，取值范围：
+	// Pending: 创建中
+	// Inservice: 运行中
+	// Stopping: 停止中
+	// Stopped: 已停止
+	// Failed: 失败
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	NotebookInstanceStatus *string `json:"NotebookInstanceStatus,omitempty" name:"NotebookInstanceStatus"`
 
@@ -1033,9 +1138,29 @@ type NotebookInstanceSummary struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceType *string `json:"InstanceType,omitempty" name:"InstanceType"`
 
-	// 算力Id
+	// 实例ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 启动时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StartupTime *string `json:"StartupTime,omitempty" name:"StartupTime"`
+
+	// 运行截止时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Deadline *string `json:"Deadline,omitempty" name:"Deadline"`
+
+	// 自动停止配置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StoppingCondition *StoppingCondition `json:"StoppingCondition,omitempty" name:"StoppingCondition"`
+
+	// 是否是预付费实例
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Prepay *bool `json:"Prepay,omitempty" name:"Prepay"`
+
+	// 计费标识
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BillingLabel *BillingLabel `json:"BillingLabel,omitempty" name:"BillingLabel"`
 }
 
 type NotebookLifecycleScriptsSummary struct {
@@ -1099,7 +1224,16 @@ type StartNotebookInstanceRequest struct {
 	*tchttp.BaseRequest
 
 	// Notebook实例名称
+	// 规则：^[a-zA-Z0-9](-*[a-zA-Z0-9])*$
 	NotebookInstanceName *string `json:"NotebookInstanceName,omitempty" name:"NotebookInstanceName"`
+
+	// 自动停止，可取值Enabled/Disabled
+	// 取值为Disabled的时候StoppingCondition将被忽略
+	// 取值为Enabled的时候读取StoppingCondition作为自动停止的配置
+	AutoStopping *string `json:"AutoStopping,omitempty" name:"AutoStopping"`
+
+	// 自动停止配置，只在AutoStopping为Enabled的时候生效
+	StoppingCondition *StoppingCondition `json:"StoppingCondition,omitempty" name:"StoppingCondition"`
 }
 
 func (r *StartNotebookInstanceRequest) ToJsonString() string {
@@ -1248,6 +1382,7 @@ type UpdateNotebookInstanceRequest struct {
 	*tchttp.BaseRequest
 
 	// Notebook实例名称
+	// 规则：^[a-zA-Z0-9](-*[a-zA-Z0-9])*$
 	NotebookInstanceName *string `json:"NotebookInstanceName,omitempty" name:"NotebookInstanceName"`
 
 	// 角色的资源描述
@@ -1266,9 +1401,7 @@ type UpdateNotebookInstanceRequest struct {
 	LifecycleScriptsName *string `json:"LifecycleScriptsName,omitempty" name:"LifecycleScriptsName"`
 
 	// 是否解绑生命周期脚本，默认 false。
-	// 如果本来就没有绑定脚本，则忽略此参数；
-	// 如果本来有绑定脚本，此参数为 true 则解绑；
-	// 如果本来有绑定脚本，此参数为 false，则需要额外填入 LifecycleScriptsName
+	// 该值为true时，LifecycleScriptsName将被忽略
 	DisassociateLifecycleScript *bool `json:"DisassociateLifecycleScript,omitempty" name:"DisassociateLifecycleScript"`
 
 	// 默认存储库名称
@@ -1289,6 +1422,14 @@ type UpdateNotebookInstanceRequest struct {
 
 	// 是否开启CLS日志服务，可取值Enabled/Disabled
 	ClsAccess *string `json:"ClsAccess,omitempty" name:"ClsAccess"`
+
+	// 自动停止，可取值Enabled/Disabled
+	// 取值为Disabled的时候StoppingCondition将被忽略
+	// 取值为Enabled的时候读取StoppingCondition作为自动停止的配置
+	AutoStopping *string `json:"AutoStopping,omitempty" name:"AutoStopping"`
+
+	// 自动停止配置，只在AutoStopping为Enabled的时候生效
+	StoppingCondition *StoppingCondition `json:"StoppingCondition,omitempty" name:"StoppingCondition"`
 }
 
 func (r *UpdateNotebookInstanceRequest) ToJsonString() string {

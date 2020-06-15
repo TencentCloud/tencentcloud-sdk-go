@@ -153,6 +153,89 @@ func (r *AddInstancesResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type ApiDefinitionDescr struct {
+
+	// 对象名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 对象属性列表
+	Properties []*PropertyField `json:"Properties,omitempty" name:"Properties" list`
+}
+
+type ApiDetailResponse struct {
+
+	// API 请求参数
+	Request []*ApiRequestDescr `json:"Request,omitempty" name:"Request" list`
+
+	// API 响应参数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Response []*ApiResponseDescr `json:"Response,omitempty" name:"Response" list`
+
+	// API 复杂结构定义
+	Definitions []*ApiDefinitionDescr `json:"Definitions,omitempty" name:"Definitions" list`
+
+	// API 的 content type
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RequestContentType *string `json:"RequestContentType,omitempty" name:"RequestContentType"`
+
+	// API  能否调试
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CanRun *bool `json:"CanRun,omitempty" name:"CanRun"`
+
+	// API 状态 0:离线 1:在线，默认0
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *int64 `json:"Status,omitempty" name:"Status"`
+}
+
+type ApiRequestDescr struct {
+
+	// 参数名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 参数类型
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 参数位置
+	In *string `json:"In,omitempty" name:"In"`
+
+	// 参数描述
+	Description *string `json:"Description,omitempty" name:"Description"`
+
+	// 参数是否必须
+	Required *bool `json:"Required,omitempty" name:"Required"`
+
+	// 参数的默认值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DefaultValue *string `json:"DefaultValue,omitempty" name:"DefaultValue"`
+}
+
+type ApiResponseDescr struct {
+
+	// 参数描述
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 参数类型
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 参数描述
+	Description *string `json:"Description,omitempty" name:"Description"`
+}
+
+type ApiVersionArray struct {
+
+	// App ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ApplicationId *string `json:"ApplicationId,omitempty" name:"ApplicationId"`
+
+	// App 名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ApplicationName *string `json:"ApplicationName,omitempty" name:"ApplicationName"`
+
+	// App 包版本
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PkgVersion *string `json:"PkgVersion,omitempty" name:"PkgVersion"`
+}
+
 type ApplicationAttribute struct {
 
 	// 总实例个数
@@ -2025,6 +2108,98 @@ func (r *DeployServerlessGroupResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeApiDetailRequest struct {
+	*tchttp.BaseRequest
+
+	// 微服务id
+	MicroserviceId *string `json:"MicroserviceId,omitempty" name:"MicroserviceId"`
+
+	// 请求路径
+	Path *string `json:"Path,omitempty" name:"Path"`
+
+	// 请求方法
+	Method *string `json:"Method,omitempty" name:"Method"`
+
+	// 包版本
+	PkgVersion *string `json:"PkgVersion,omitempty" name:"PkgVersion"`
+
+	// 应用ID
+	ApplicationId *string `json:"ApplicationId,omitempty" name:"ApplicationId"`
+}
+
+func (r *DescribeApiDetailRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeApiDetailRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeApiDetailResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// API 详情
+		Result *ApiDetailResponse `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeApiDetailResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeApiDetailResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeApiVersionsRequest struct {
+	*tchttp.BaseRequest
+
+	// 微服务ID
+	MicroserviceId *string `json:"MicroserviceId,omitempty" name:"MicroserviceId"`
+
+	// API 请求路径
+	Path *string `json:"Path,omitempty" name:"Path"`
+
+	// 请求方法
+	Method *string `json:"Method,omitempty" name:"Method"`
+}
+
+func (r *DescribeApiVersionsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeApiVersionsRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeApiVersionsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// API版本列表
+		Result []*ApiVersionArray `json:"Result,omitempty" name:"Result" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeApiVersionsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeApiVersionsResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeApplicationAttributeRequest struct {
 	*tchttp.BaseRequest
 
@@ -2986,6 +3161,52 @@ func (r *DescribeMicroservicesResponse) ToJsonString() string {
 }
 
 func (r *DescribeMicroservicesResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeMsApiListRequest struct {
+	*tchttp.BaseRequest
+
+	// 微服务ID
+	MicroserviceId *string `json:"MicroserviceId,omitempty" name:"MicroserviceId"`
+
+	// 搜索关键字
+	SearchWord *string `json:"SearchWord,omitempty" name:"SearchWord"`
+
+	// 每页的数量
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 翻页偏移量
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+}
+
+func (r *DescribeMsApiListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeMsApiListRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeMsApiListResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 相应结果
+		Result *TsfApiListResponse `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeMsApiListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeMsApiListResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -4541,6 +4762,23 @@ func (r *ModifyUploadInfoResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type MsApiArray struct {
+
+	// API 请求路径
+	Path *string `json:"Path,omitempty" name:"Path"`
+
+	// 请求方法
+	Method *string `json:"Method,omitempty" name:"Method"`
+
+	// 方法描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Description *string `json:"Description,omitempty" name:"Description"`
+
+	// API状态 0:离线 1:在线
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *int64 `json:"Status,omitempty" name:"Status"`
+}
+
 type MsInstance struct {
 
 	// 机器实例ID信息
@@ -4752,6 +4990,19 @@ type PkgList struct {
 	// 程序包信息列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Content []*PkgInfo `json:"Content,omitempty" name:"Content" list`
+}
+
+type PropertyField struct {
+
+	// 属性名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 属性类型
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 属性描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Description *string `json:"Description,omitempty" name:"Description"`
 }
 
 type ProtocolPort struct {
@@ -5442,6 +5693,17 @@ type TaskId struct {
 	// 任务ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+}
+
+type TsfApiListResponse struct {
+
+	// 数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// API 列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Content []*MsApiArray `json:"Content,omitempty" name:"Content" list`
 }
 
 type TsfPageApplication struct {

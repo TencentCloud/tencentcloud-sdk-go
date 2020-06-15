@@ -393,6 +393,31 @@ func (c *Client) DescribeNotebookLifecycleScripts(request *DescribeNotebookLifec
     return
 }
 
+func NewDescribeNotebookSummaryRequest() (request *DescribeNotebookSummaryRequest) {
+    request = &DescribeNotebookSummaryRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tione", APIVersion, "DescribeNotebookSummary")
+    return
+}
+
+func NewDescribeNotebookSummaryResponse() (response *DescribeNotebookSummaryResponse) {
+    response = &DescribeNotebookSummaryResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询Notebook概览数据
+func (c *Client) DescribeNotebookSummary(request *DescribeNotebookSummaryRequest) (response *DescribeNotebookSummaryResponse, err error) {
+    if request == nil {
+        request = NewDescribeNotebookSummaryRequest()
+    }
+    response = NewDescribeNotebookSummaryResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeTrainingJobRequest() (request *DescribeTrainingJobRequest) {
     request = &DescribeTrainingJobRequest{
         BaseRequest: &tchttp.BaseRequest{},
