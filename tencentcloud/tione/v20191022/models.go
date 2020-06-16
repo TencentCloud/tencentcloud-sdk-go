@@ -1161,6 +1161,14 @@ type NotebookInstanceSummary struct {
 	// 计费标识
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	BillingLabel *BillingLabel `json:"BillingLabel,omitempty" name:"BillingLabel"`
+
+	// 运行时长，秒
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RuntimeInSeconds *int64 `json:"RuntimeInSeconds,omitempty" name:"RuntimeInSeconds"`
+
+	// 剩余时长，秒
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RemainTimeInSeconds *int64 `json:"RemainTimeInSeconds,omitempty" name:"RemainTimeInSeconds"`
 }
 
 type NotebookLifecycleScriptsSummary struct {

@@ -2,76 +2,20 @@
 
 ## 智能钛机器学习平台(tione) 版本：2019-10-22
 
-### 第 6 次发布
+### 第 7 次发布
 
-发布时间：2020-06-15 08:01:29
+发布时间：2020-06-16 08:02:57
 
 本次发布包含了以下内容：
 
 改善已有的文档。
-
-新增接口：
-
-* [DescribeNotebookSummary](https://cloud.tencent.com/document/api/851/45535)
-
-修改接口：
-
-* [CreateNotebookInstance](https://cloud.tencent.com/document/api/851/42527)
-
-	* 新增入参：StoppingCondition, AutoStopping
-
-* [DescribeNotebookInstance](https://cloud.tencent.com/document/api/851/42524)
-
-	* 新增出参：Prepay, Deadline, StoppingCondition
-
-* [StartNotebookInstance](https://cloud.tencent.com/document/api/851/42522)
-
-	* 新增入参：AutoStopping, StoppingCondition
-
-* [UpdateNotebookInstance](https://cloud.tencent.com/document/api/851/42520)
-
-	* 新增入参：AutoStopping, StoppingCondition
-
-
-新增数据结构：
-
-* [BillingLabel](https://cloud.tencent.com/document/api/851/42528#BillingLabel)
 
 修改数据结构：
 
 * [NotebookInstanceSummary](https://cloud.tencent.com/document/api/851/42528#NotebookInstanceSummary)
 
-	* 新增成员：StartupTime, Deadline, StoppingCondition, Prepay, BillingLabel
+	* 新增成员：RuntimeInSeconds, RemainTimeInSeconds
 
-
-
-
-## 腾讯微服务平台 TSF(tsf) 版本：2018-03-26
-
-### 第 22 次发布
-
-发布时间：2020-06-15 08:17:58
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [DescribeApiDetail](https://cloud.tencent.com/document/api/649/45538)
-* [DescribeApiVersions](https://cloud.tencent.com/document/api/649/45537)
-* [DescribeMsApiList](https://cloud.tencent.com/document/api/649/45536)
-
-新增数据结构：
-
-* [ApiDefinitionDescr](https://cloud.tencent.com/document/api/649/36099#ApiDefinitionDescr)
-* [ApiDetailResponse](https://cloud.tencent.com/document/api/649/36099#ApiDetailResponse)
-* [ApiRequestDescr](https://cloud.tencent.com/document/api/649/36099#ApiRequestDescr)
-* [ApiResponseDescr](https://cloud.tencent.com/document/api/649/36099#ApiResponseDescr)
-* [ApiVersionArray](https://cloud.tencent.com/document/api/649/36099#ApiVersionArray)
-* [MsApiArray](https://cloud.tencent.com/document/api/649/36099#MsApiArray)
-* [PropertyField](https://cloud.tencent.com/document/api/649/36099#PropertyField)
-* [TsfApiListResponse](https://cloud.tencent.com/document/api/649/36099#TsfApiListResponse)
 
 
 
@@ -23684,6 +23628,21 @@
 
 ## 智能钛机器学习平台(tione) 版本：2019-10-22
 
+### 第 7 次发布
+
+发布时间：2020-06-16 08:02:57
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [NotebookInstanceSummary](https://cloud.tencent.com/document/api/851/42528#NotebookInstanceSummary)
+
+	* 新增成员：RuntimeInSeconds, RemainTimeInSeconds
+
+
 ### 第 6 次发布
 
 发布时间：2020-06-15 08:01:29
@@ -23694,7 +23653,7 @@
 
 新增接口：
 
-* [[DescribeNotebookSummary](https://cloud.tencent.com/document/api/851/45535)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeNotebookSummary](https://cloud.tencent.com/document/api/851/45535)
 
 修改接口：
 
@@ -23717,7 +23676,7 @@
 
 新增数据结构：
 
-* [[BillingLabel](https://cloud.tencent.com/document/api/851/42528#BillingLabel)](https://cloud.tencent.com/document/api/851/42528#[BillingLabel](https://cloud.tencent.com/document/api/851/42528#BillingLabel))
+* [BillingLabel](https://cloud.tencent.com/document/api/851/42528#BillingLabel)
 
 修改数据结构：
 
@@ -24815,20 +24774,20 @@
 
 新增接口：
 
-* [[DescribeApiDetail](https://cloud.tencent.com/document/api/649/45538)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeApiVersions](https://cloud.tencent.com/document/api/649/45537)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeMsApiList](https://cloud.tencent.com/document/api/649/45536)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeApiDetail](https://cloud.tencent.com/document/api/649/45538)
+* [DescribeApiVersions](https://cloud.tencent.com/document/api/649/45537)
+* [DescribeMsApiList](https://cloud.tencent.com/document/api/649/45536)
 
 新增数据结构：
 
-* [[ApiDefinitionDescr](https://cloud.tencent.com/document/api/649/36099#ApiDefinitionDescr)](https://cloud.tencent.com/document/api/649/36099#[ApiDefinitionDescr](https://cloud.tencent.com/document/api/649/36099#ApiDefinitionDescr))
-* [[ApiDetailResponse](https://cloud.tencent.com/document/api/649/36099#ApiDetailResponse)](https://cloud.tencent.com/document/api/649/36099#[ApiDetailResponse](https://cloud.tencent.com/document/api/649/36099#ApiDetailResponse))
-* [[ApiRequestDescr](https://cloud.tencent.com/document/api/649/36099#ApiRequestDescr)](https://cloud.tencent.com/document/api/649/36099#[ApiRequestDescr](https://cloud.tencent.com/document/api/649/36099#ApiRequestDescr))
-* [[ApiResponseDescr](https://cloud.tencent.com/document/api/649/36099#ApiResponseDescr)](https://cloud.tencent.com/document/api/649/36099#[ApiResponseDescr](https://cloud.tencent.com/document/api/649/36099#ApiResponseDescr))
-* [[ApiVersionArray](https://cloud.tencent.com/document/api/649/36099#ApiVersionArray)](https://cloud.tencent.com/document/api/649/36099#[ApiVersionArray](https://cloud.tencent.com/document/api/649/36099#ApiVersionArray))
-* [[MsApiArray](https://cloud.tencent.com/document/api/649/36099#MsApiArray)](https://cloud.tencent.com/document/api/649/36099#[MsApiArray](https://cloud.tencent.com/document/api/649/36099#MsApiArray))
-* [[PropertyField](https://cloud.tencent.com/document/api/649/36099#PropertyField)](https://cloud.tencent.com/document/api/649/36099#[PropertyField](https://cloud.tencent.com/document/api/649/36099#PropertyField))
-* [[TsfApiListResponse](https://cloud.tencent.com/document/api/649/36099#TsfApiListResponse)](https://cloud.tencent.com/document/api/649/36099#[TsfApiListResponse](https://cloud.tencent.com/document/api/649/36099#TsfApiListResponse))
+* [ApiDefinitionDescr](https://cloud.tencent.com/document/api/649/36099#ApiDefinitionDescr)
+* [ApiDetailResponse](https://cloud.tencent.com/document/api/649/36099#ApiDetailResponse)
+* [ApiRequestDescr](https://cloud.tencent.com/document/api/649/36099#ApiRequestDescr)
+* [ApiResponseDescr](https://cloud.tencent.com/document/api/649/36099#ApiResponseDescr)
+* [ApiVersionArray](https://cloud.tencent.com/document/api/649/36099#ApiVersionArray)
+* [MsApiArray](https://cloud.tencent.com/document/api/649/36099#MsApiArray)
+* [PropertyField](https://cloud.tencent.com/document/api/649/36099#PropertyField)
+* [TsfApiListResponse](https://cloud.tencent.com/document/api/649/36099#TsfApiListResponse)
 
 ### 第 21 次发布
 
