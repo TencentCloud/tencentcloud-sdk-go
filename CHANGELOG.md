@@ -1,10 +1,42 @@
 # 本版本更新包含以下内容：
 
-## 智能钛机器学习平台(tione) 版本：2019-10-22
+## 边缘计算机器(ecm) 版本：2019-07-19
 
-### 第 7 次发布
+### 第 16 次发布
 
-发布时间：2020-06-16 08:02:57
+发布时间：2020-06-17 08:01:13
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeCustomImageTask](https://cloud.tencent.com/document/api/1108/45615)
+* [DescribeImportImageOs](https://cloud.tencent.com/document/api/1108/45614)
+* [ImportCustomImage](https://cloud.tencent.com/document/api/1108/45613)
+
+修改接口：
+
+* [DescribeVpcs](https://cloud.tencent.com/document/api/1108/43663)
+
+	* <font color="#dd0000">**修改入参**：</font>EcmRegion
+
+
+新增数据结构：
+
+* [ImageOsList](https://cloud.tencent.com/document/api/1108/42574#ImageOsList)
+* [ImageTask](https://cloud.tencent.com/document/api/1108/42574#ImageTask)
+* [ImageUrl](https://cloud.tencent.com/document/api/1108/42574#ImageUrl)
+* [OsVersion](https://cloud.tencent.com/document/api/1108/42574#OsVersion)
+
+
+
+## 容器服务(tke) 版本：2018-05-25
+
+### 第 22 次发布
+
+发布时间：2020-06-17 08:17:52
 
 本次发布包含了以下内容：
 
@@ -12,9 +44,9 @@
 
 修改数据结构：
 
-* [NotebookInstanceSummary](https://cloud.tencent.com/document/api/851/42528#NotebookInstanceSummary)
+* [ClusterAdvancedSettings](https://cloud.tencent.com/document/api/457/31866#ClusterAdvancedSettings)
 
-	* 新增成员：RuntimeInSeconds, RemainTimeInSeconds
+	* 新增成员：KubeProxyMode
 
 
 
@@ -11078,6 +11110,34 @@
 
 
 ## 边缘计算机器(ecm) 版本：2019-07-19
+
+### 第 16 次发布
+
+发布时间：2020-06-17 08:01:13
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeCustomImageTask](https://cloud.tencent.com/document/api/1108/45615)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeImportImageOs](https://cloud.tencent.com/document/api/1108/45614)](https://cloud.tencent.com/document/api/#/#)
+* [[ImportCustomImage](https://cloud.tencent.com/document/api/1108/45613)](https://cloud.tencent.com/document/api/#/#)
+
+修改接口：
+
+* [DescribeVpcs](https://cloud.tencent.com/document/api/1108/43663)
+
+	* <font color="#dd0000">**修改入参**：</font>EcmRegion
+
+
+新增数据结构：
+
+* [[ImageOsList](https://cloud.tencent.com/document/api/1108/42574#ImageOsList)](https://cloud.tencent.com/document/api/1108/42574#[ImageOsList](https://cloud.tencent.com/document/api/1108/42574#ImageOsList))
+* [[ImageTask](https://cloud.tencent.com/document/api/1108/42574#ImageTask)](https://cloud.tencent.com/document/api/1108/42574#[ImageTask](https://cloud.tencent.com/document/api/1108/42574#ImageTask))
+* [[ImageUrl](https://cloud.tencent.com/document/api/1108/42574#ImageUrl)](https://cloud.tencent.com/document/api/1108/42574#[ImageUrl](https://cloud.tencent.com/document/api/1108/42574#ImageUrl))
+* [[OsVersion](https://cloud.tencent.com/document/api/1108/42574#OsVersion)](https://cloud.tencent.com/document/api/1108/42574#[OsVersion](https://cloud.tencent.com/document/api/1108/42574#OsVersion))
 
 ### 第 15 次发布
 
@@ -23935,6 +23995,21 @@
 
 
 ## 容器服务(tke) 版本：2018-05-25
+
+### 第 22 次发布
+
+发布时间：2020-06-17 08:17:52
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [ClusterAdvancedSettings](https://cloud.tencent.com/document/api/457/31866#ClusterAdvancedSettings)
+
+	* 新增成员：KubeProxyMode
+
 
 ### 第 21 次发布
 

@@ -4345,11 +4345,9 @@ type DescribeMediaInfosResponse struct {
 	Response *struct {
 
 		// 媒体文件信息列表。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 		MediaInfoSet []*MediaInfo `json:"MediaInfoSet,omitempty" name:"MediaInfoSet" list`
 
 		// 不存在的文件 ID 列表。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 		NotExistFileIdSet []*string `json:"NotExistFileIdSet,omitempty" name:"NotExistFileIdSet" list`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -7382,7 +7380,6 @@ type ModifyMediaInfoResponse struct {
 
 		// 新的视频封面 URL。
 	// * 注意：仅当请求携带 CoverData 时此返回值有效。 *
-	// 注意：此字段可能返回 null，表示取不到有效值。
 		CoverUrl *string `json:"CoverUrl,omitempty" name:"CoverUrl"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。

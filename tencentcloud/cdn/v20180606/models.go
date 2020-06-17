@@ -1461,7 +1461,8 @@ type DescribeOriginDataRequest struct {
 	Domains []*string `json:"Domains,omitempty" name:"Domains" list`
 
 	// 指定要查询的项目 ID，[前往查看项目 ID](https://console.cloud.tencent.com/project)
-	// 未填充域名情况下，指定项目查询，若填充了具体域名信息，以域名为主
+	// 未填充域名情况下，指定项目查询，最多可一次性查询 30 个加速域名明细
+	// 若填充了具体域名信息，以域名为主
 	Project *int64 `json:"Project,omitempty" name:"Project"`
 
 	// 时间粒度，支持以下几种模式：

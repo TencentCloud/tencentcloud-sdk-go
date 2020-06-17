@@ -945,6 +945,50 @@ func (r *DescribeConfigResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeCustomImageTaskRequest struct {
+	*tchttp.BaseRequest
+
+	// 支持key,value查询
+	// task-id: 异步任务ID
+	// image-id: 镜像ID
+	// image-name: 镜像名称
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+}
+
+func (r *DescribeCustomImageTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeCustomImageTaskRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeCustomImageTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 导入任务详情
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		ImageTaskSet []*ImageTask `json:"ImageTaskSet,omitempty" name:"ImageTaskSet" list`
+
+		// 总数
+		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeCustomImageTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeCustomImageTaskResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeDefaultSubnetRequest struct {
 	*tchttp.BaseRequest
 
@@ -1016,7 +1060,6 @@ type DescribeImageResponse struct {
 	Response *struct {
 
 		// 镜像总数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 镜像数组
@@ -1034,6 +1077,43 @@ func (r *DescribeImageResponse) ToJsonString() string {
 }
 
 func (r *DescribeImageResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeImportImageOsRequest struct {
+	*tchttp.BaseRequest
+}
+
+func (r *DescribeImportImageOsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeImportImageOsRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeImportImageOsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 支持的导入镜像的操作系统类型
+		ImportImageOsListSupported *ImageOsList `json:"ImportImageOsListSupported,omitempty" name:"ImportImageOsListSupported"`
+
+		// 支持的导入镜像的操作系统版本
+		ImportImageOsVersionSet []*OsVersion `json:"ImportImageOsVersionSet,omitempty" name:"ImportImageOsVersionSet" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeImportImageOsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeImportImageOsResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -1624,6 +1704,9 @@ func (r *DescribeTaskResultResponse) FromJsonString(s string) error {
 type DescribeVpcsRequest struct {
 	*tchttp.BaseRequest
 
+	// 地域
+	EcmRegion *string `json:"EcmRegion,omitempty" name:"EcmRegion"`
+
 	// VPC实例ID。形如：vpc-f49l6u0z。每次请求的实例的上限为100。参数不支持同时指定VpcIds和Filters。
 	VpcIds []*string `json:"VpcIds,omitempty" name:"VpcIds" list`
 
@@ -1641,9 +1724,6 @@ type DescribeVpcsRequest struct {
 
 	// 返回数量
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
-
-	// 地域
-	EcmRegion *string `json:"EcmRegion,omitempty" name:"EcmRegion"`
 }
 
 func (r *DescribeVpcsRequest) ToJsonString() string {
@@ -1882,6 +1962,97 @@ type Image struct {
 
 	// 镜像来源信息
 	SrcImage *SrcImage `json:"SrcImage,omitempty" name:"SrcImage"`
+}
+
+type ImageOsList struct {
+
+	// 支持的windows操作系统
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Windows []*string `json:"Windows,omitempty" name:"Windows" list`
+
+	// 支持的linux操作系统
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Linux []*string `json:"Linux,omitempty" name:"Linux" list`
+}
+
+type ImageTask struct {
+
+	// 镜像导入状态， PENDING, PROCESSING, SUCCESS, FAILED
+	State *string `json:"State,omitempty" name:"State"`
+
+	// 导入失败(FAILED)时， 说明失败原因
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Message *string `json:"Message,omitempty" name:"Message"`
+
+	// 镜像名称
+	ImageName *string `json:"ImageName,omitempty" name:"ImageName"`
+
+	// 创建时间
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+}
+
+type ImageUrl struct {
+
+	// 镜像文件COS链接，如设置私有读写，需授权腾讯云ECM运营账号访问权限。
+	ImageFile *string `json:"ImageFile,omitempty" name:"ImageFile"`
+}
+
+type ImportCustomImageRequest struct {
+	*tchttp.BaseRequest
+
+	// 镜像名称
+	ImageName *string `json:"ImageName,omitempty" name:"ImageName"`
+
+	// 导入镜像的操作系统架构，x86_64 或 i386
+	Architecture *string `json:"Architecture,omitempty" name:"Architecture"`
+
+	// 导入镜像的操作系统类型，通过DescribeImportImageOs获取
+	OsType *string `json:"OsType,omitempty" name:"OsType"`
+
+	// 导入镜像的操作系统版本，通过DescribeImportImageOs获取
+	OsVersion *string `json:"OsVersion,omitempty" name:"OsVersion"`
+
+	// 镜像描述
+	ImageDescription *string `json:"ImageDescription,omitempty" name:"ImageDescription"`
+
+	// 镜像启动方式，cloudinit或nbd， 默认cloudinit
+	InitFlag *string `json:"InitFlag,omitempty" name:"InitFlag"`
+
+	// 镜像描述，多层镜像按顺序传入
+	ImageUrls []*ImageUrl `json:"ImageUrls,omitempty" name:"ImageUrls" list`
+}
+
+func (r *ImportCustomImageRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ImportCustomImageRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ImportCustomImageResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 镜像ID
+		ImageId *string `json:"ImageId,omitempty" name:"ImageId"`
+
+		// 异步任务ID，可根据DescribeCustomImageTask查询任务信息
+		TaskId *uint64 `json:"TaskId,omitempty" name:"TaskId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ImportCustomImageResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ImportCustomImageResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
 }
 
 type ImportImageRequest struct {
@@ -2815,6 +2986,20 @@ type OperatorAction struct {
 	// 具体信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Message *string `json:"Message,omitempty" name:"Message"`
+}
+
+type OsVersion struct {
+
+	// 操作系统类型
+	OsName *string `json:"OsName,omitempty" name:"OsName"`
+
+	// 支持的操作系统版本
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OsVersions []*string `json:"OsVersions,omitempty" name:"OsVersions" list`
+
+	// 支持的操作系统架构
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Architecture []*string `json:"Architecture,omitempty" name:"Architecture" list`
 }
 
 type PeakBase struct {

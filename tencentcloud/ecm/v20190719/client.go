@@ -499,6 +499,31 @@ func (c *Client) DescribeConfig(request *DescribeConfigRequest) (response *Descr
     return
 }
 
+func NewDescribeCustomImageTaskRequest() (request *DescribeCustomImageTaskRequest) {
+    request = &DescribeCustomImageTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ecm", APIVersion, "DescribeCustomImageTask")
+    return
+}
+
+func NewDescribeCustomImageTaskResponse() (response *DescribeCustomImageTaskResponse) {
+    response = &DescribeCustomImageTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询导入镜像任务
+func (c *Client) DescribeCustomImageTask(request *DescribeCustomImageTaskRequest) (response *DescribeCustomImageTaskResponse, err error) {
+    if request == nil {
+        request = NewDescribeCustomImageTaskRequest()
+    }
+    response = NewDescribeCustomImageTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeDefaultSubnetRequest() (request *DescribeDefaultSubnetRequest) {
     request = &DescribeDefaultSubnetRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -545,6 +570,31 @@ func (c *Client) DescribeImage(request *DescribeImageRequest) (response *Describ
         request = NewDescribeImageRequest()
     }
     response = NewDescribeImageResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeImportImageOsRequest() (request *DescribeImportImageOsRequest) {
+    request = &DescribeImportImageOsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ecm", APIVersion, "DescribeImportImageOs")
+    return
+}
+
+func NewDescribeImportImageOsResponse() (response *DescribeImportImageOsResponse) {
+    response = &DescribeImportImageOsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询外部导入镜像支持的OS列表
+func (c *Client) DescribeImportImageOs(request *DescribeImportImageOsRequest) (response *DescribeImportImageOsResponse, err error) {
+    if request == nil {
+        request = NewDescribeImportImageOsRequest()
+    }
+    response = NewDescribeImportImageOsResponse()
     err = c.Send(request, response)
     return
 }
@@ -922,6 +972,31 @@ func (c *Client) DisassociateAddress(request *DisassociateAddressRequest) (respo
         request = NewDisassociateAddressRequest()
     }
     response = NewDisassociateAddressResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewImportCustomImageRequest() (request *ImportCustomImageRequest) {
+    request = &ImportCustomImageRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ecm", APIVersion, "ImportCustomImage")
+    return
+}
+
+func NewImportCustomImageResponse() (response *ImportCustomImageResponse) {
+    response = &ImportCustomImageResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 从腾讯云COS导入自定义镜像
+func (c *Client) ImportCustomImage(request *ImportCustomImageRequest) (response *ImportCustomImageResponse, err error) {
+    if request == nil {
+        request = NewImportCustomImageRequest()
+    }
+    response = NewImportCustomImageResponse()
     err = c.Send(request, response)
     return
 }

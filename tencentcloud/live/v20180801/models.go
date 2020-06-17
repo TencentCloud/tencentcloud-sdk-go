@@ -134,12 +134,13 @@ type AddLiveWatermarkRequest struct {
 	PictureUrl *string `json:"PictureUrl,omitempty" name:"PictureUrl"`
 
 	// 水印名称。
+	// 最长16字节。
 	WatermarkName *string `json:"WatermarkName,omitempty" name:"WatermarkName"`
 
-	// 显示位置，X轴偏移，默认 0。
+	// 显示位置，X轴偏移，单位是百分比，默认 0。
 	XPosition *int64 `json:"XPosition,omitempty" name:"XPosition"`
 
-	// 显示位置，Y轴偏移，默认 0。
+	// 显示位置，Y轴偏移，单位是百分比，默认 0。
 	YPosition *int64 `json:"YPosition,omitempty" name:"YPosition"`
 
 	// 水印宽度，占直播原始画面宽度百分比，建议高宽只设置一项，另外一项会自适应缩放，避免变形。默认原始宽度。
@@ -203,7 +204,7 @@ type BindLiveDomainCertRequest struct {
 	// 播放域名。
 	DomainName *string `json:"DomainName,omitempty" name:"DomainName"`
 
-	// 状态，0： 关闭  1：打开。
+	// HTTPS开启状态，0： 关闭  1：打开。
 	Status *int64 `json:"Status,omitempty" name:"Status"`
 }
 
@@ -289,6 +290,7 @@ type CancelCommonMixStreamRequest struct {
 	*tchttp.BaseRequest
 
 	// 混流会话（申请混流开始到取消混流结束）标识 ID。
+	// 该值与CreateCommonMixStream中的MixStreamSessionId保持一致。
 	MixStreamSessionId *string `json:"MixStreamSessionId,omitempty" name:"MixStreamSessionId"`
 }
 
@@ -1429,7 +1431,7 @@ func (r *DeleteLiveCallbackTemplateResponse) FromJsonString(s string) error {
 type DeleteLiveCertRequest struct {
 	*tchttp.BaseRequest
 
-	// 证书Id。
+	// DescribeLiveCerts接口获取到的证书Id。
 	CertId *int64 `json:"CertId,omitempty" name:"CertId"`
 }
 
@@ -1581,7 +1583,7 @@ func (r *DeleteLiveRecordRuleResponse) FromJsonString(s string) error {
 type DeleteLiveRecordTemplateRequest struct {
 	*tchttp.BaseRequest
 
-	// 模板 ID。
+	// DescribeRecordTemplates接口获取到的模板 ID。
 	TemplateId *int64 `json:"TemplateId,omitempty" name:"TemplateId"`
 }
 
@@ -1772,6 +1774,7 @@ type DeleteLiveWatermarkRequest struct {
 
 	// 水印 ID。
 	// 在添加水印接口 [AddLiveWatermark](/document/product/267/30154) 调用返回值中获取水印 ID。
+	// 或DescribeLiveWatermarks接口返回的水印ID。
 	WatermarkId *int64 `json:"WatermarkId,omitempty" name:"WatermarkId"`
 }
 
@@ -2255,7 +2258,7 @@ func (r *DescribeLiveCallbackTemplatesResponse) FromJsonString(s string) error {
 type DescribeLiveCertRequest struct {
 	*tchttp.BaseRequest
 
-	// 证书Id。
+	// DescribeLiveCerts接口获取到的证书Id。
 	CertId *int64 `json:"CertId,omitempty" name:"CertId"`
 }
 
@@ -2743,7 +2746,7 @@ func (r *DescribeLiveRecordRulesResponse) FromJsonString(s string) error {
 type DescribeLiveRecordTemplateRequest struct {
 	*tchttp.BaseRequest
 
-	// 模板 ID。
+	// DescribeRecordTemplates接口获取到的模板 ID。
 	TemplateId *int64 `json:"TemplateId,omitempty" name:"TemplateId"`
 }
 
@@ -3447,7 +3450,7 @@ func (r *DescribeLiveTranscodeTemplatesResponse) FromJsonString(s string) error 
 type DescribeLiveWatermarkRequest struct {
 	*tchttp.BaseRequest
 
-	// 水印 ID。
+	// DescribeLiveWatermarks接口返回的水印 ID。
 	WatermarkId *uint64 `json:"WatermarkId,omitempty" name:"WatermarkId"`
 }
 
@@ -4857,19 +4860,23 @@ func (r *ModifyLiveDomainCertResponse) FromJsonString(s string) error {
 type ModifyLivePlayAuthKeyRequest struct {
 	*tchttp.BaseRequest
 
-	// 域名。
+	// 播放域名。
 	DomainName *string `json:"DomainName,omitempty" name:"DomainName"`
 
 	// 是否启用，0：关闭，1：启用。
+	// 不传表示不修改当前值。
 	Enable *int64 `json:"Enable,omitempty" name:"Enable"`
 
 	// 鉴权key。
+	// 不传表示不修改当前值。
 	AuthKey *string `json:"AuthKey,omitempty" name:"AuthKey"`
 
 	// 有效时间，单位：秒。
+	// 不传表示不修改当前值。
 	AuthDelta *uint64 `json:"AuthDelta,omitempty" name:"AuthDelta"`
 
-	// 鉴权backkey。
+	// 鉴权备用key。
+	// 不传表示不修改当前值。
 	AuthBackKey *string `json:"AuthBackKey,omitempty" name:"AuthBackKey"`
 }
 
@@ -4944,12 +4951,15 @@ type ModifyLivePushAuthKeyRequest struct {
 	DomainName *string `json:"DomainName,omitempty" name:"DomainName"`
 
 	// 是否启用，0：关闭，1：启用。
+	// 不传表示不修改当前值。
 	Enable *int64 `json:"Enable,omitempty" name:"Enable"`
 
 	// 主鉴权key。
+	// 不传表示不修改当前值。
 	MasterAuthKey *string `json:"MasterAuthKey,omitempty" name:"MasterAuthKey"`
 
 	// 备鉴权key。
+	// 不传表示不修改当前值。
 	BackupAuthKey *string `json:"BackupAuthKey,omitempty" name:"BackupAuthKey"`
 
 	// 有效时间，单位：秒。
@@ -4986,7 +4996,7 @@ func (r *ModifyLivePushAuthKeyResponse) FromJsonString(s string) error {
 type ModifyLiveRecordTemplateRequest struct {
 	*tchttp.BaseRequest
 
-	// 模板 ID。
+	// DescribeRecordTemplates接口获取到的模板 ID。
 	TemplateId *int64 `json:"TemplateId,omitempty" name:"TemplateId"`
 
 	// 模板名称。
@@ -6086,13 +6096,14 @@ type UpdateLiveWatermarkRequest struct {
 	// 水印图片 URL。
 	PictureUrl *string `json:"PictureUrl,omitempty" name:"PictureUrl"`
 
-	// 显示位置，X轴偏移，默认 0。
+	// 显示位置，X轴偏移，单位是百分比，默认 0。
 	XPosition *int64 `json:"XPosition,omitempty" name:"XPosition"`
 
-	// 显示位置，Y轴偏移，默认 0。
+	// 显示位置，Y轴偏移，单位是百分比，默认 0。
 	YPosition *int64 `json:"YPosition,omitempty" name:"YPosition"`
 
 	// 水印名称。
+	// 最长16字节。
 	WatermarkName *string `json:"WatermarkName,omitempty" name:"WatermarkName"`
 
 	// 水印宽度，占直播原始画面宽度百分比，建议高宽只设置一项，另外一项会自适应缩放，避免变形。默认原始宽度。

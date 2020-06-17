@@ -221,7 +221,7 @@ type CreateInstanceAccountRequest struct {
 	// 路由策略：填写master或者replication，表示主节点或者从节点
 	ReadonlyPolicy []*string `json:"ReadonlyPolicy,omitempty" name:"ReadonlyPolicy" list`
 
-	// 读写策略：填写r、w、rw，表示只读、只写、读写
+	// 读写策略：填写r、rw，表示只读、读写
 	Privilege *string `json:"Privilege,omitempty" name:"Privilege"`
 
 	// 子账号描述信息

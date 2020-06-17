@@ -2464,10 +2464,10 @@ func (r *UpdateGroupResponse) FromJsonString(s string) error {
 type UpdatePolicyRequest struct {
 	*tchttp.BaseRequest
 
-	// 策略ID
+	// 策略ID，与PolicyName二选一必填
 	PolicyId *uint64 `json:"PolicyId,omitempty" name:"PolicyId"`
 
-	// 策略名
+	// 策略名，与PolicyId二选一必填
 	PolicyName *string `json:"PolicyName,omitempty" name:"PolicyName"`
 
 	// 策略描述
@@ -2493,7 +2493,7 @@ type UpdatePolicyResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 策略id
+		// 策略id，入参是PolicyName时，才会返回
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		PolicyId *uint64 `json:"PolicyId,omitempty" name:"PolicyId"`
 

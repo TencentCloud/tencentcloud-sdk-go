@@ -182,6 +182,9 @@ type ClusterAdvancedSettings struct {
 
 	// 是否启用集群删除保护
 	DeletionProtection *bool `json:"DeletionProtection,omitempty" name:"DeletionProtection"`
+
+	// 集群的网络代理模型
+	KubeProxyMode *string `json:"KubeProxyMode,omitempty" name:"KubeProxyMode"`
 }
 
 type ClusterAsGroup struct {
