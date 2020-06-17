@@ -327,6 +327,12 @@ func (r *BusinessCardOCRResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type CandWord struct {
+
+	// 候选字符集的单词信息（包括单词Character和单词置信度confidence）
+	CandWords []*Words `json:"CandWords,omitempty" name:"CandWords" list`
+}
+
 type CarInvoiceInfo struct {
 
 	// 识别出的字段名称（关键字）。
@@ -626,6 +632,14 @@ type EnglishOCRRequest struct {
 	// 图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。
 	// 非腾讯云存储的 Url 速度和稳定性可能受一定影响。
 	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
+
+	// 单词四点坐标开关，开启可返回图片中单词的四点坐标。
+	// 该参数默认值为false。
+	EnableCoordPoint *bool `json:"EnableCoordPoint,omitempty" name:"EnableCoordPoint"`
+
+	// 候选字开关，开启可返回识别时多个可能的候选字（每个候选字对应其置信度）。
+	// 该参数默认值为false。
+	EnableCandWord *bool `json:"EnableCandWord,omitempty" name:"EnableCandWord"`
 }
 
 func (r *EnglishOCRRequest) ToJsonString() string {
@@ -3084,18 +3098,27 @@ type TextDetection struct {
 
 type TextDetectionEn struct {
 
-	// 识别出的文本行内容
+	// 识别出的文本行内容。
 	DetectedText *string `json:"DetectedText,omitempty" name:"DetectedText"`
 
-	// 置信度 0 ~100
+	// 置信度 0 ~100。
 	Confidence *int64 `json:"Confidence,omitempty" name:"Confidence"`
 
-	// 文本行坐标，以四个顶点坐标表示
+	// 文本行坐标，以四个顶点坐标表示。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Polygon []*Coord `json:"Polygon,omitempty" name:"Polygon" list`
 
 	// 此字段为扩展字段。目前EnglishOCR接口返回内容为空。
 	AdvancedInfo *string `json:"AdvancedInfo,omitempty" name:"AdvancedInfo"`
+
+	// 单词在原图中的四点坐标。
+	WordCoordPoint []*WordCoordPoint `json:"WordCoordPoint,omitempty" name:"WordCoordPoint" list`
+
+	// 候选字符集(包含候选字Character以及置信度Confidence)。
+	CandWord []*CandWord `json:"CandWord,omitempty" name:"CandWord" list`
+
+	// 识别出来的单词信息（包括单词Character和单词置信度confidence）
+	Words []*Words `json:"Words,omitempty" name:"Words" list`
 }
 
 type TextEduPaper struct {
@@ -3789,4 +3812,19 @@ type WaybillObj struct {
 
 	// 识别出的文本行内容
 	Text *string `json:"Text,omitempty" name:"Text"`
+}
+
+type WordCoordPoint struct {
+
+	// 英文OCR识别出的每个单词在原图中的四点坐标。
+	WordCoordinate []*Coord `json:"WordCoordinate,omitempty" name:"WordCoordinate" list`
+}
+
+type Words struct {
+
+	// 置信度 0 ~100
+	Confidence *int64 `json:"Confidence,omitempty" name:"Confidence"`
+
+	// 候选字Character
+	Character *string `json:"Character,omitempty" name:"Character"`
 }
