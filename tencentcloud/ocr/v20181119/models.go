@@ -1927,7 +1927,7 @@ type MainlandPermitOCRRequest struct {
 	// 非腾讯云存储的 Url 速度和稳定性可能受一定影响。
 	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
 
-	// 是非返回头像。默认不返回。
+	// 是否返回头像。默认不返回。
 	RetProfile *bool `json:"RetProfile,omitempty" name:"RetProfile"`
 }
 

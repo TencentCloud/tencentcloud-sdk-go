@@ -1505,8 +1505,7 @@ type DeleteLiveRecordRequest struct {
 	// 流名称。
 	StreamName *string `json:"StreamName,omitempty" name:"StreamName"`
 
-	// 任务ID，全局唯一标识录制任务。
-	// 从接口 [CreateLiveRecord](/document/product/267/30148) 的返回值中获取TaskId。
+	// 任务ID，由CreateLiveRecord接口返回。
 	TaskId *int64 `json:"TaskId,omitempty" name:"TaskId"`
 }
 
@@ -5832,7 +5831,7 @@ type StopLiveRecordRequest struct {
 	// 流名称。
 	StreamName *string `json:"StreamName,omitempty" name:"StreamName"`
 
-	// 任务ID，全局唯一标识录制任务。
+	// 任务ID，由CreateLiveRecord接口返回。
 	TaskId *int64 `json:"TaskId,omitempty" name:"TaskId"`
 }
 

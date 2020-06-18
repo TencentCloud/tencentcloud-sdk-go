@@ -1,10 +1,42 @@
 # 本版本更新包含以下内容：
 
-## 边缘计算机器(ecm) 版本：2019-07-19
+## 文字识别(ocr) 版本：2018-11-19
 
-### 第 16 次发布
+### 第 25 次发布
 
-发布时间：2020-06-17 08:01:13
+发布时间：2020-06-17 11:52:47
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [EnglishOCR](https://cloud.tencent.com/document/api/866/34938)
+
+	* 新增入参：EnableCoordPoint, EnableCandWord
+
+
+新增数据结构：
+
+* [CandWord](https://cloud.tencent.com/document/api/866/33527#CandWord)
+* [WordCoordPoint](https://cloud.tencent.com/document/api/866/33527#WordCoordPoint)
+* [Words](https://cloud.tencent.com/document/api/866/33527#Words)
+
+修改数据结构：
+
+* [TextDetectionEn](https://cloud.tencent.com/document/api/866/33527#TextDetectionEn)
+
+	* 新增成员：WordCoordPoint, CandWord, Words
+
+
+
+
+## 云开发 CloudBase(tcb) 版本：2018-06-08
+
+### 第 11 次发布
+
+发布时间：2020-06-18 08:16:38
 
 本次发布包含了以下内容：
 
@@ -12,42 +44,7 @@
 
 新增接口：
 
-* [DescribeCustomImageTask](https://cloud.tencent.com/document/api/1108/45615)
-* [DescribeImportImageOs](https://cloud.tencent.com/document/api/1108/45614)
-* [ImportCustomImage](https://cloud.tencent.com/document/api/1108/45613)
-
-修改接口：
-
-* [DescribeVpcs](https://cloud.tencent.com/document/api/1108/43663)
-
-	* <font color="#dd0000">**修改入参**：</font>EcmRegion
-
-
-新增数据结构：
-
-* [ImageOsList](https://cloud.tencent.com/document/api/1108/42574#ImageOsList)
-* [ImageTask](https://cloud.tencent.com/document/api/1108/42574#ImageTask)
-* [ImageUrl](https://cloud.tencent.com/document/api/1108/42574#ImageUrl)
-* [OsVersion](https://cloud.tencent.com/document/api/1108/42574#OsVersion)
-
-
-
-## 容器服务(tke) 版本：2018-05-25
-
-### 第 22 次发布
-
-发布时间：2020-06-17 08:17:52
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [ClusterAdvancedSettings](https://cloud.tencent.com/document/api/457/31866#ClusterAdvancedSettings)
-
-	* 新增成员：KubeProxyMode
-
+* [ModifyEndUser](https://cloud.tencent.com/document/api/876/45625)
 
 
 
@@ -11121,9 +11118,9 @@
 
 新增接口：
 
-* [[DescribeCustomImageTask](https://cloud.tencent.com/document/api/1108/45615)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeImportImageOs](https://cloud.tencent.com/document/api/1108/45614)](https://cloud.tencent.com/document/api/#/#)
-* [[ImportCustomImage](https://cloud.tencent.com/document/api/1108/45613)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeCustomImageTask](https://cloud.tencent.com/document/api/1108/45615)
+* [DescribeImportImageOs](https://cloud.tencent.com/document/api/1108/45614)
+* [ImportCustomImage](https://cloud.tencent.com/document/api/1108/45613)
 
 修改接口：
 
@@ -11134,10 +11131,10 @@
 
 新增数据结构：
 
-* [[ImageOsList](https://cloud.tencent.com/document/api/1108/42574#ImageOsList)](https://cloud.tencent.com/document/api/1108/42574#[ImageOsList](https://cloud.tencent.com/document/api/1108/42574#ImageOsList))
-* [[ImageTask](https://cloud.tencent.com/document/api/1108/42574#ImageTask)](https://cloud.tencent.com/document/api/1108/42574#[ImageTask](https://cloud.tencent.com/document/api/1108/42574#ImageTask))
-* [[ImageUrl](https://cloud.tencent.com/document/api/1108/42574#ImageUrl)](https://cloud.tencent.com/document/api/1108/42574#[ImageUrl](https://cloud.tencent.com/document/api/1108/42574#ImageUrl))
-* [[OsVersion](https://cloud.tencent.com/document/api/1108/42574#OsVersion)](https://cloud.tencent.com/document/api/1108/42574#[OsVersion](https://cloud.tencent.com/document/api/1108/42574#OsVersion))
+* [ImageOsList](https://cloud.tencent.com/document/api/1108/42574#ImageOsList)
+* [ImageTask](https://cloud.tencent.com/document/api/1108/42574#ImageTask)
+* [ImageUrl](https://cloud.tencent.com/document/api/1108/42574#ImageUrl)
+* [OsVersion](https://cloud.tencent.com/document/api/1108/42574#OsVersion)
 
 ### 第 15 次发布
 
@@ -18533,6 +18530,34 @@
 
 ## 文字识别(ocr) 版本：2018-11-19
 
+### 第 25 次发布
+
+发布时间：2020-06-17 11:52:47
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [EnglishOCR](https://cloud.tencent.com/document/api/866/34938)
+
+	* 新增入参：EnableCoordPoint, EnableCandWord
+
+
+新增数据结构：
+
+* [[CandWord](https://cloud.tencent.com/document/api/866/33527#CandWord)](https://cloud.tencent.com/document/api/866/33527#[CandWord](https://cloud.tencent.com/document/api/866/33527#CandWord))
+* [[WordCoordPoint](https://cloud.tencent.com/document/api/866/33527#WordCoordPoint)](https://cloud.tencent.com/document/api/866/33527#[WordCoordPoint](https://cloud.tencent.com/document/api/866/33527#WordCoordPoint))
+* [[Words](https://cloud.tencent.com/document/api/866/33527#Words)](https://cloud.tencent.com/document/api/866/33527#[Words](https://cloud.tencent.com/document/api/866/33527#Words))
+
+修改数据结构：
+
+* [TextDetectionEn](https://cloud.tencent.com/document/api/866/33527#TextDetectionEn)
+
+	* 新增成员：WordCoordPoint, CandWord, Words
+
+
 ### 第 24 次发布
 
 发布时间：2020-06-12 08:16:23
@@ -22178,6 +22203,18 @@
 
 
 ## 云开发 CloudBase(tcb) 版本：2018-06-08
+
+### 第 11 次发布
+
+发布时间：2020-06-18 08:16:38
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[ModifyEndUser](https://cloud.tencent.com/document/api/876/45625)](https://cloud.tencent.com/document/api/#/#)
 
 ### 第 10 次发布
 

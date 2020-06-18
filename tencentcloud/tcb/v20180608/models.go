@@ -1170,6 +1170,46 @@ func (r *ModifyDatabaseACLResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type ModifyEndUserRequest struct {
+	*tchttp.BaseRequest
+
+	// 环境ID
+	EnvId *string `json:"EnvId,omitempty" name:"EnvId"`
+
+	// C端用户端的唯一ID
+	UUId *string `json:"UUId,omitempty" name:"UUId"`
+
+	// 帐号的状态
+	Status *string `json:"Status,omitempty" name:"Status"`
+}
+
+func (r *ModifyEndUserRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyEndUserRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyEndUserResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifyEndUserResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyEndUserResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type ModifyEnvRequest struct {
 	*tchttp.BaseRequest
 

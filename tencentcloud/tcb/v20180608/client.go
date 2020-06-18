@@ -568,6 +568,31 @@ func (c *Client) ModifyDatabaseACL(request *ModifyDatabaseACLRequest) (response 
     return
 }
 
+func NewModifyEndUserRequest() (request *ModifyEndUserRequest) {
+    request = &ModifyEndUserRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tcb", APIVersion, "ModifyEndUser")
+    return
+}
+
+func NewModifyEndUserResponse() (response *ModifyEndUserResponse) {
+    response = &ModifyEndUserResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 管理终端用户
+func (c *Client) ModifyEndUser(request *ModifyEndUserRequest) (response *ModifyEndUserResponse, err error) {
+    if request == nil {
+        request = NewModifyEndUserRequest()
+    }
+    response = NewModifyEndUserResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyEnvRequest() (request *ModifyEnvRequest) {
     request = &ModifyEnvRequest{
         BaseRequest: &tchttp.BaseRequest{},
