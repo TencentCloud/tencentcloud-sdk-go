@@ -105,13 +105,13 @@ type CreateRecTaskRequest struct {
 	// 热词id。用于调用对应的热词表，如果在调用语音识别服务时，不进行单独的热词id设置，自动生效默认热词；如果进行了单独的热词id设置，那么将生效单独设置的热词id。
 	HotwordId *string `json:"HotwordId,omitempty" name:"HotwordId"`
 
-	// 是否过滤脏词（目前支持中文普通话引擎）。0：不过滤脏词；1：过滤脏词；2：将脏词替换为 * 。
+	// 是否过滤脏词（目前支持中文普通话引擎）。0：不过滤脏词；1：过滤脏词；2：将脏词替换为 * 。默认值为 0。
 	FilterDirty *int64 `json:"FilterDirty,omitempty" name:"FilterDirty"`
 
-	// 是否过语气词（目前支持中文普通话引擎）。0：不过滤语气词；1：部分过滤；2：严格过滤 。
+	// 是否过语气词（目前支持中文普通话引擎）。0：不过滤语气词；1：部分过滤；2：严格过滤 。默认值为 0。
 	FilterModal *int64 `json:"FilterModal,omitempty" name:"FilterModal"`
 
-	// 是否进行阿拉伯数字智能转换。0：不转换，直接输出中文数字，1：根据场景智能转换为阿拉伯数字。默认值为1
+	// 是否进行阿拉伯数字智能转换（目前支持中文普通话引擎）。0：不转换，直接输出中文数字，1：根据场景智能转换为阿拉伯数字。默认值为 1。
 	ConvertNumMode *int64 `json:"ConvertNumMode,omitempty" name:"ConvertNumMode"`
 }
 

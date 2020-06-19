@@ -4500,6 +4500,9 @@ type ModifyContainerGroupRequest struct {
 
 	// 更新间隔,单位秒
 	UpdateIvl *int64 `json:"UpdateIvl,omitempty" name:"UpdateIvl"`
+
+	// 子网ID
+	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
 }
 
 func (r *ModifyContainerGroupRequest) ToJsonString() string {

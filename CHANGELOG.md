@@ -1,10 +1,10 @@
 # 本版本更新包含以下内容：
 
-## 文字识别(ocr) 版本：2018-11-19
+## 人体分析(bda) 版本：2020-03-24
 
-### 第 25 次发布
+### 第 2 次发布
 
-发布时间：2020-06-17 11:52:47
+发布时间：2020-06-19 08:01:05
 
 本次发布包含了以下内容：
 
@@ -12,39 +12,72 @@
 
 修改接口：
 
-* [EnglishOCR](https://cloud.tencent.com/document/api/866/34938)
+* [DetectBody](https://cloud.tencent.com/document/api/1208/42972)
 
-	* 新增入参：EnableCoordPoint, EnableCandWord
+	* 新增入参：AttributesOptions
 
 
 新增数据结构：
 
-* [CandWord](https://cloud.tencent.com/document/api/866/33527#CandWord)
-* [WordCoordPoint](https://cloud.tencent.com/document/api/866/33527#WordCoordPoint)
-* [Words](https://cloud.tencent.com/document/api/866/33527#Words)
+* [Age](https://cloud.tencent.com/document/api/1208/42985#Age)
+* [AttributesOptions](https://cloud.tencent.com/document/api/1208/42985#AttributesOptions)
+* [Bag](https://cloud.tencent.com/document/api/1208/42985#Bag)
+* [BodyAttributeInfo](https://cloud.tencent.com/document/api/1208/42985#BodyAttributeInfo)
+* [Gender](https://cloud.tencent.com/document/api/1208/42985#Gender)
+* [LowerBodyCloth](https://cloud.tencent.com/document/api/1208/42985#LowerBodyCloth)
+* [LowerBodyClothColor](https://cloud.tencent.com/document/api/1208/42985#LowerBodyClothColor)
+* [LowerBodyClothLength](https://cloud.tencent.com/document/api/1208/42985#LowerBodyClothLength)
+* [LowerBodyClothType](https://cloud.tencent.com/document/api/1208/42985#LowerBodyClothType)
+* [Orientation](https://cloud.tencent.com/document/api/1208/42985#Orientation)
+* [UpperBodyCloth](https://cloud.tencent.com/document/api/1208/42985#UpperBodyCloth)
+* [UpperBodyClothColor](https://cloud.tencent.com/document/api/1208/42985#UpperBodyClothColor)
+* [UpperBodyClothSleeve](https://cloud.tencent.com/document/api/1208/42985#UpperBodyClothSleeve)
+* [UpperBodyClothTexture](https://cloud.tencent.com/document/api/1208/42985#UpperBodyClothTexture)
 
 修改数据结构：
 
-* [TextDetectionEn](https://cloud.tencent.com/document/api/866/33527#TextDetectionEn)
+* [BodyDetectResult](https://cloud.tencent.com/document/api/1208/42985#BodyDetectResult)
 
-	* 新增成员：WordCoordPoint, CandWord, Words
-
-
+	* 新增成员：BodyAttributeInfo
 
 
-## 云开发 CloudBase(tcb) 版本：2018-06-08
 
-### 第 11 次发布
 
-发布时间：2020-06-18 08:16:38
+## 负载均衡(clb) 版本：2018-03-17
+
+### 第 25 次发布
+
+发布时间：2020-06-19 08:07:20
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-新增接口：
+修改接口：
 
-* [ModifyEndUser](https://cloud.tencent.com/document/api/876/45625)
+* [CreateListener](https://cloud.tencent.com/document/api/214/30693)
+
+	* 新增入参：TargetType
+
+
+
+
+## 腾讯微服务平台 TSF(tsf) 版本：2018-03-26
+
+### 第 23 次发布
+
+发布时间：2020-06-19 08:17:57
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [ModifyContainerGroup](https://cloud.tencent.com/document/api/649/36062)
+
+	* 新增入参：SubnetId
+
 
 
 
@@ -2006,6 +2039,45 @@
 
 
 ## 人体分析(bda) 版本：2020-03-24
+
+### 第 2 次发布
+
+发布时间：2020-06-19 08:01:05
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DetectBody](https://cloud.tencent.com/document/api/1208/42972)
+
+	* 新增入参：AttributesOptions
+
+
+新增数据结构：
+
+* [[Age](https://cloud.tencent.com/document/api/1208/42985#Age)](https://cloud.tencent.com/document/api/1208/42985#[Age](https://cloud.tencent.com/document/api/1208/42985#Age))
+* [[AttributesOptions](https://cloud.tencent.com/document/api/1208/42985#AttributesOptions)](https://cloud.tencent.com/document/api/1208/42985#[AttributesOptions](https://cloud.tencent.com/document/api/1208/42985#AttributesOptions))
+* [[Bag](https://cloud.tencent.com/document/api/1208/42985#Bag)](https://cloud.tencent.com/document/api/1208/42985#[Bag](https://cloud.tencent.com/document/api/1208/42985#Bag))
+* [[BodyAttributeInfo](https://cloud.tencent.com/document/api/1208/42985#BodyAttributeInfo)](https://cloud.tencent.com/document/api/1208/42985#[BodyAttributeInfo](https://cloud.tencent.com/document/api/1208/42985#BodyAttributeInfo))
+* [[Gender](https://cloud.tencent.com/document/api/1208/42985#Gender)](https://cloud.tencent.com/document/api/1208/42985#[Gender](https://cloud.tencent.com/document/api/1208/42985#Gender))
+* [[LowerBodyCloth](https://cloud.tencent.com/document/api/1208/42985#LowerBodyCloth)](https://cloud.tencent.com/document/api/1208/42985#[LowerBodyCloth](https://cloud.tencent.com/document/api/1208/42985#LowerBodyCloth))
+* [[LowerBodyClothColor](https://cloud.tencent.com/document/api/1208/42985#LowerBodyClothColor)](https://cloud.tencent.com/document/api/1208/42985#[LowerBodyClothColor](https://cloud.tencent.com/document/api/1208/42985#LowerBodyClothColor))
+* [[LowerBodyClothLength](https://cloud.tencent.com/document/api/1208/42985#LowerBodyClothLength)](https://cloud.tencent.com/document/api/1208/42985#[LowerBodyClothLength](https://cloud.tencent.com/document/api/1208/42985#LowerBodyClothLength))
+* [[LowerBodyClothType](https://cloud.tencent.com/document/api/1208/42985#LowerBodyClothType)](https://cloud.tencent.com/document/api/1208/42985#[LowerBodyClothType](https://cloud.tencent.com/document/api/1208/42985#LowerBodyClothType))
+* [[Orientation](https://cloud.tencent.com/document/api/1208/42985#Orientation)](https://cloud.tencent.com/document/api/1208/42985#[Orientation](https://cloud.tencent.com/document/api/1208/42985#Orientation))
+* [[UpperBodyCloth](https://cloud.tencent.com/document/api/1208/42985#UpperBodyCloth)](https://cloud.tencent.com/document/api/1208/42985#[UpperBodyCloth](https://cloud.tencent.com/document/api/1208/42985#UpperBodyCloth))
+* [[UpperBodyClothColor](https://cloud.tencent.com/document/api/1208/42985#UpperBodyClothColor)](https://cloud.tencent.com/document/api/1208/42985#[UpperBodyClothColor](https://cloud.tencent.com/document/api/1208/42985#UpperBodyClothColor))
+* [[UpperBodyClothSleeve](https://cloud.tencent.com/document/api/1208/42985#UpperBodyClothSleeve)](https://cloud.tencent.com/document/api/1208/42985#[UpperBodyClothSleeve](https://cloud.tencent.com/document/api/1208/42985#UpperBodyClothSleeve))
+* [[UpperBodyClothTexture](https://cloud.tencent.com/document/api/1208/42985#UpperBodyClothTexture)](https://cloud.tencent.com/document/api/1208/42985#[UpperBodyClothTexture](https://cloud.tencent.com/document/api/1208/42985#UpperBodyClothTexture))
+
+修改数据结构：
+
+* [BodyDetectResult](https://cloud.tencent.com/document/api/1208/42985#BodyDetectResult)
+
+	* 新增成员：BodyAttributeInfo
+
 
 ### 第 1 次发布
 
@@ -6385,6 +6457,21 @@
 
 
 ## 负载均衡(clb) 版本：2018-03-17
+
+### 第 25 次发布
+
+发布时间：2020-06-19 08:07:20
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateListener](https://cloud.tencent.com/document/api/214/30693)
+
+	* 新增入参：TargetType
+
 
 ### 第 24 次发布
 
@@ -18547,9 +18634,9 @@
 
 新增数据结构：
 
-* [[CandWord](https://cloud.tencent.com/document/api/866/33527#CandWord)](https://cloud.tencent.com/document/api/866/33527#[CandWord](https://cloud.tencent.com/document/api/866/33527#CandWord))
-* [[WordCoordPoint](https://cloud.tencent.com/document/api/866/33527#WordCoordPoint)](https://cloud.tencent.com/document/api/866/33527#[WordCoordPoint](https://cloud.tencent.com/document/api/866/33527#WordCoordPoint))
-* [[Words](https://cloud.tencent.com/document/api/866/33527#Words)](https://cloud.tencent.com/document/api/866/33527#[Words](https://cloud.tencent.com/document/api/866/33527#Words))
+* [CandWord](https://cloud.tencent.com/document/api/866/33527#CandWord)
+* [WordCoordPoint](https://cloud.tencent.com/document/api/866/33527#WordCoordPoint)
+* [Words](https://cloud.tencent.com/document/api/866/33527#Words)
 
 修改数据结构：
 
@@ -22214,7 +22301,7 @@
 
 新增接口：
 
-* [[ModifyEndUser](https://cloud.tencent.com/document/api/876/45625)](https://cloud.tencent.com/document/api/#/#)
+* [ModifyEndUser](https://cloud.tencent.com/document/api/876/45625)
 
 ### 第 10 次发布
 
@@ -24875,6 +24962,21 @@
 
 
 ## 腾讯微服务平台 TSF(tsf) 版本：2018-03-26
+
+### 第 23 次发布
+
+发布时间：2020-06-19 08:17:57
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [ModifyContainerGroup](https://cloud.tencent.com/document/api/649/36062)
+
+	* 新增入参：SubnetId
+
 
 ### 第 22 次发布
 

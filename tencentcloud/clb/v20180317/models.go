@@ -539,6 +539,9 @@ type CreateListenerRequest struct {
 
 	// 是否开启SNI特性，此参数仅适用于HTTPS监听器。
 	SniSwitch *int64 `json:"SniSwitch,omitempty" name:"SniSwitch"`
+
+	// 后端目标类型，NODE表示绑定普通节点，TARGETGROUP表示绑定目标组。
+	TargetType *string `json:"TargetType,omitempty" name:"TargetType"`
 }
 
 func (r *CreateListenerRequest) ToJsonString() string {

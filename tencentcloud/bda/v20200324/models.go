@@ -20,6 +20,78 @@ import (
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
+type Age struct {
+
+	// 人体年龄信息，返回值为以下集合中的一个{小孩,青年,中年,老年}。
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// Type识别概率值，[0.0,1.0],代表判断正确的概率。如0.8则代表有Type值有80%概率正确。
+	Probability *float64 `json:"Probability,omitempty" name:"Probability"`
+}
+
+type AttributesOptions struct {
+
+	// 返回年龄信息
+	Age *bool `json:"Age,omitempty" name:"Age"`
+
+	// 返回随身挎包信息
+	Bag *bool `json:"Bag,omitempty" name:"Bag"`
+
+	// 返回性别信息
+	Gender *bool `json:"Gender,omitempty" name:"Gender"`
+
+	// 返回朝向信息
+	Orientation *bool `json:"Orientation,omitempty" name:"Orientation"`
+
+	// 返回上装信息
+	UpperBodyCloth *bool `json:"UpperBodyCloth,omitempty" name:"UpperBodyCloth"`
+
+	// 返回下装信息
+	LowerBodyCloth *bool `json:"LowerBodyCloth,omitempty" name:"LowerBodyCloth"`
+}
+
+type Bag struct {
+
+	// 挎包信息，返回值为以下集合中的一个{双肩包, 斜挎包, 手拎包, 无包}。
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// Type识别概率值，[0.0,1.0],代表判断正确的概率。如0.8则代表有Type值有80%概率正确。
+	Probability *float64 `json:"Probability,omitempty" name:"Probability"`
+}
+
+type BodyAttributeInfo struct {
+
+	// 人体年龄信息。 
+	// AttributesType 不含 Age 或检测超过 5 个人体时，此参数仍返回，但不具备参考意义。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Age *Age `json:"Age,omitempty" name:"Age"`
+
+	// 人体是否挎包。 
+	// AttributesType 不含 Bag 或检测超过 5 个人体时，此参数仍返回，但不具备参考意义。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Bag *Bag `json:"Bag,omitempty" name:"Bag"`
+
+	// 人体性别信息。 
+	// AttributesType 不含 Gender 或检测超过 5 个人体时，此参数仍返回，但不具备参考意义。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Gender *Gender `json:"Gender,omitempty" name:"Gender"`
+
+	// 人体朝向信息。   
+	// AttributesType 不含 UpperBodyCloth 或检测超过 5 个人体时，此参数仍返回，但不具备参考意义。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Orientation *Orientation `json:"Orientation,omitempty" name:"Orientation"`
+
+	// 人体上衣属性信息。
+	// AttributesType 不含 Orientation 或检测超过 5 个人体时，此参数仍返回，但不具备参考意义。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UpperBodyCloth *UpperBodyCloth `json:"UpperBodyCloth,omitempty" name:"UpperBodyCloth"`
+
+	// 人体下衣属性信息。  
+	// AttributesType 不含 LowerBodyCloth 或检测超过 5 个人体时，此参数仍返回，但不具备参考意义。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LowerBodyCloth *LowerBodyCloth `json:"LowerBodyCloth,omitempty" name:"LowerBodyCloth"`
+}
+
 type BodyDetectResult struct {
 
 	// 检测出的人体置信度。 
@@ -29,6 +101,9 @@ type BodyDetectResult struct {
 
 	// 图中检测出来的人体框
 	BodyRect *BodyRect `json:"BodyRect,omitempty" name:"BodyRect"`
+
+	// 图中检测出的人体属性信息。
+	BodyAttributeInfo *BodyAttributeInfo `json:"BodyAttributeInfo,omitempty" name:"BodyAttributeInfo"`
 }
 
 type BodyRect struct {
@@ -308,6 +383,14 @@ type DetectBodyRequest struct {
 
 	// 最多检测的人体数目，默认值为1（仅检测图片中面积最大的那个人体）； 最大值10 ，检测图片中面积最大的10个人体。
 	MaxBodyNum *uint64 `json:"MaxBodyNum,omitempty" name:"MaxBodyNum"`
+
+	// 是否返回年龄、性别、朝向等属性。 
+	// 可选项有 Age、Bag、Gender、UpperBodyCloth、LowerBodyCloth、Orientation。  
+	// 如果此参数为空则为不需要返回。 
+	// 需要将属性组成一个用逗号分隔的字符串，属性之间的顺序没有要求。 
+	// 关于各属性的详细描述，参见下文出参。 
+	// 最多返回面积最大的 5 个人体属性信息，超过 5 个人体（第 6 个及以后的人体）的 BodyAttributesInfo 不具备参考意义。
+	AttributesOptions *AttributesOptions `json:"AttributesOptions,omitempty" name:"AttributesOptions"`
 }
 
 func (r *DetectBodyRequest) ToJsonString() string {
@@ -341,6 +424,15 @@ func (r *DetectBodyResponse) ToJsonString() string {
 
 func (r *DetectBodyResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
+}
+
+type Gender struct {
+
+	// 性别信息，返回值为以下集合中的一个 {男性, 女性}
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// Type识别概率值，[0.0,1.0],代表判断正确的概率。如0.8则代表有Type值有80%概率正确。
+	Probability *float64 `json:"Probability,omitempty" name:"Probability"`
 }
 
 type GetGroupListRequest struct {
@@ -454,6 +546,45 @@ type GroupInfo struct {
 	CreationTimestamp *uint64 `json:"CreationTimestamp,omitempty" name:"CreationTimestamp"`
 }
 
+type LowerBodyCloth struct {
+
+	// 下衣颜色信息。
+	Color *LowerBodyClothColor `json:"Color,omitempty" name:"Color"`
+
+	// 下衣长度信息 。
+	Length *LowerBodyClothLength `json:"Length,omitempty" name:"Length"`
+
+	// 下衣类型信息。
+	Type *LowerBodyClothType `json:"Type,omitempty" name:"Type"`
+}
+
+type LowerBodyClothColor struct {
+
+	// 下衣颜色信息，返回值为以下集合中的一个{ 黑色系, 灰白色系, 彩色} 。
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// Type识别概率值，[0.0,1.0],代表判断正确的概率。如0.8则代表有Type值有80%概率正确。
+	Probability *float64 `json:"Probability,omitempty" name:"Probability"`
+}
+
+type LowerBodyClothLength struct {
+
+	// 下衣长度信息，返回值为以下集合中的一个，{长, 短} 。
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// Type识别概率值，[0.0,1.0],代表判断正确的概率。如0.8则代表有Type值有80%概率正确。
+	Probability *float64 `json:"Probability,omitempty" name:"Probability"`
+}
+
+type LowerBodyClothType struct {
+
+	// 下衣类型，返回值为以下集合中的一个 {裤子,裙子} 。
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// Type识别概率值，[0.0,1.0],代表判断正确的概率。如0.8则代表有Type值有80%概率正确。
+	Probability *float64 `json:"Probability,omitempty" name:"Probability"`
+}
+
 type ModifyGroupRequest struct {
 	*tchttp.BaseRequest
 
@@ -529,6 +660,15 @@ func (r *ModifyPersonInfoResponse) ToJsonString() string {
 
 func (r *ModifyPersonInfoResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
+}
+
+type Orientation struct {
+
+	// 人体朝向信息，返回值为以下集合中的一个 {正向, 背向, 左, 右}。
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// Type识别概率值，[0.0,1.0],代表判断正确的概率。如0.8则代表有Type值有80%概率正确。
+	Probability *float64 `json:"Probability,omitempty" name:"Probability"`
 }
 
 type PersonInfo struct {
@@ -685,4 +825,43 @@ type TraceInfo struct {
 
 	// 包含的人体轨迹图片Id列表。
 	BodyIds []*string `json:"BodyIds,omitempty" name:"BodyIds" list`
+}
+
+type UpperBodyCloth struct {
+
+	// 上衣纹理信息。
+	Texture *UpperBodyClothTexture `json:"Texture,omitempty" name:"Texture"`
+
+	// 上衣颜色信息。
+	Color *UpperBodyClothColor `json:"Color,omitempty" name:"Color"`
+
+	// 上衣衣袖信息。
+	Sleeve *UpperBodyClothSleeve `json:"Sleeve,omitempty" name:"Sleeve"`
+}
+
+type UpperBodyClothColor struct {
+
+	// 上衣颜色信息，返回值为以下集合中的一个 {红色系, 黄色系, 绿色系, 蓝色系, 黑色系, 灰白色系。
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// Type识别概率值，[0.0,1.0],代表判断正确的概率。如0.8则代表有Type值有80%概率正确。
+	Probability *float64 `json:"Probability,omitempty" name:"Probability"`
+}
+
+type UpperBodyClothSleeve struct {
+
+	// 上衣衣袖信息, 返回值为以下集合中的一个 {长袖, 短袖}。
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// Type识别概率值，[0.0,1.0],代表判断正确的概率。如0.8则代表有Type值有80%概率正确。
+	Probability *float64 `json:"Probability,omitempty" name:"Probability"`
+}
+
+type UpperBodyClothTexture struct {
+
+	// 上衣纹理信息，返回值为以下集合中的一个, {纯色, 格子, 大色块}。
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// Type识别概率值，[0.0,1.0], 代表判断正确的概率。如0.8则代表有Type值有80%概率正确。
+	Probability *float64 `json:"Probability,omitempty" name:"Probability"`
 }

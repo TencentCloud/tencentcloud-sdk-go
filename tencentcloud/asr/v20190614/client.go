@@ -88,12 +88,13 @@ func NewCreateRecTaskResponse() (response *CreateRecTaskResponse) {
     return
 }
 
-// 本接口服务对录音时长1小时以内的录音文件进行识别，异步返回识别全部结果， HTTP RESTful 形式。
+// 本接口服务对时长5小时以内的录音文件进行识别，异步返回识别全部结果， HTTP RESTful 形式。
 // <br>• 支持中文普通话、英语和粤语
-// <br>• 支持通用和音视频领域
-// <br>• 支持wav、mp3、silk、amr、m4a等主流音频格式
+// <br>• 支持通用、音视频领域
+// <br>• 支持wav、mp3、m4a的音频格式
 // <br>• 支持语音 URL 和本地语音文件两种请求方式
-// <br>• 本地语音文件上传的文件不能大于5MB，语音 URL的音频时长不能长于1小时
+// <br>• 语音 URL 的音频时长不能长于5小时，文件大小不超过512MB
+// <br>• 本地语音文件上传的文件不能大于5MB
 // <br>• 支持回调或轮询的方式获取结果，结果获取请参考[ 录音文件识别结果查询](https://cloud.tencent.com/document/product/1093/37822)。
 func (c *Client) CreateRecTask(request *CreateRecTaskRequest) (response *CreateRecTaskResponse, err error) {
     if request == nil {

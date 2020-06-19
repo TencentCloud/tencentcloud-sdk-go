@@ -83,7 +83,7 @@ func NewDescribeCallDetailResponse() (response *DescribeCallDetailResponse) {
     return
 }
 
-// 查询指定时间内的用户列表及用户通话质量数据。可查询5天内数据，查询起止时间不超过1个小时，查询用户不超过6个
+// 查询指定时间内的用户列表及用户通话质量数据。可查询5天内数据，查询起止时间不超过1个小时，查询用户不超过6个，不支持跨天查询。
 func (c *Client) DescribeCallDetail(request *DescribeCallDetailRequest) (response *DescribeCallDetailResponse, err error) {
     if request == nil {
         request = NewDescribeCallDetailRequest()
