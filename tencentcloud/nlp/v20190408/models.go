@@ -134,6 +134,154 @@ type ClassificationResult struct {
 	SecondClassProbability *float64 `json:"SecondClassProbability,omitempty" name:"SecondClassProbability"`
 }
 
+type CreateDictRequest struct {
+	*tchttp.BaseRequest
+
+	// 自定义词库名称，不超过20字。
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 自定义词库描述，不超过100字。
+	Description *string `json:"Description,omitempty" name:"Description"`
+}
+
+func (r *CreateDictRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateDictRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateDictResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 创建的自定义词库ID。
+		DictId *string `json:"DictId,omitempty" name:"DictId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateDictResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateDictResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateWordItemsRequest struct {
+	*tchttp.BaseRequest
+
+	// 待添加的词条集合。
+	WordItems []*WordItem `json:"WordItems,omitempty" name:"WordItems" list`
+
+	// 自定义词库ID。
+	DictId *string `json:"DictId,omitempty" name:"DictId"`
+}
+
+func (r *CreateWordItemsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateWordItemsRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateWordItemsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateWordItemsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateWordItemsResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteDictRequest struct {
+	*tchttp.BaseRequest
+
+	// 要删除的自定义词库ID。
+	DictId *string `json:"DictId,omitempty" name:"DictId"`
+}
+
+func (r *DeleteDictRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteDictRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteDictResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DeleteDictResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteDictResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteWordItemsRequest struct {
+	*tchttp.BaseRequest
+
+	// 待删除的词条集合。
+	WordItems []*WordItem `json:"WordItems,omitempty" name:"WordItems" list`
+
+	// 自定义词库ID。
+	DictId *string `json:"DictId,omitempty" name:"DictId"`
+}
+
+func (r *DeleteWordItemsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteWordItemsRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteWordItemsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DeleteWordItemsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteWordItemsResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DependencyParsingRequest struct {
 	*tchttp.BaseRequest
 
@@ -183,6 +331,89 @@ func (r *DependencyParsingResponse) ToJsonString() string {
 }
 
 func (r *DependencyParsingResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeDictRequest struct {
+	*tchttp.BaseRequest
+
+	// 自定义词库ID。
+	DictId *string `json:"DictId,omitempty" name:"DictId"`
+
+	// 自定义词库名称，模糊搜索。
+	Name *string `json:"Name,omitempty" name:"Name"`
+}
+
+func (r *DescribeDictRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeDictRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeDictResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 查询到的词库信息列表。
+		Dicts []*DictInfo `json:"Dicts,omitempty" name:"Dicts" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeDictResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeDictResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeDictsRequest struct {
+	*tchttp.BaseRequest
+
+	// 每页数据量，范围为1~100，默认为10。
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 分页偏移量，从0开始，默认为0。
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+}
+
+func (r *DescribeDictsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeDictsRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeDictsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 自定义词库信息列表。
+		Dicts []*DictInfo `json:"Dicts,omitempty" name:"Dicts" list`
+
+		// 记录总条数。
+		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeDictsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeDictsResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -298,6 +529,73 @@ func (r *DescribeTripleResponse) ToJsonString() string {
 
 func (r *DescribeTripleResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeWordItemsRequest struct {
+	*tchttp.BaseRequest
+
+	// 自定义词库ID。
+	DictId *string `json:"DictId,omitempty" name:"DictId"`
+
+	// 每页数据量，范围为1~100，默认为10。
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 分页偏移量，从0开始，默认为0。
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 待检索的词条文本，支持模糊匹配。
+	Text *string `json:"Text,omitempty" name:"Text"`
+}
+
+func (r *DescribeWordItemsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeWordItemsRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeWordItemsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 词条信息列表。
+		WordItems []*WordItem `json:"WordItems,omitempty" name:"WordItems" list`
+
+		// 词条记录总条数。
+		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeWordItemsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeWordItemsResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DictInfo struct {
+
+	// 自定义词库ID。
+	Id *string `json:"Id,omitempty" name:"Id"`
+
+	// 自定义词库名称。
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 自定义词库创建时间，形式为:yyyy-mm-dd hh:mm:ss。
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 自定义词库描述信息。
+	Description *string `json:"Description,omitempty" name:"Description"`
+
+	// 自定义词库修改时间，形式为:yyyy-mm-dd hh:mm:ss。
+	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
 }
 
 type DpToken struct {
@@ -429,9 +727,10 @@ type LexicalAnalysisResponse struct {
 	Response *struct {
 
 		// 命名实体识别结果。取值范围：
-	// <li>PER：表示人名</li>
-	// <li>LOC：表示地名</li>
-	// <li>ORG：表示机构团体名</li>
+	// <li>PER：表示人名，如刘德华、贝克汉姆</li>
+	// <li>LOC：表示地名，如北京、华山</li>
+	// <li>ORG：表示机构团体名，如腾讯、最高人民法院、人大附中</li>
+	// <li>PRODUCTION：表示产品名，如QQ、微信、iPhone</li>
 		NerTokens []*NerToken `json:"NerTokens,omitempty" name:"NerTokens" list`
 
 		// 分词&词性标注结果（词性表请参见附录）
@@ -479,6 +778,61 @@ type PosToken struct {
 
 	// 基础词
 	Word *string `json:"Word,omitempty" name:"Word"`
+}
+
+type SearchResult struct {
+
+	// 0表示词条不存在，1表示存在。
+	IsExist *uint64 `json:"IsExist,omitempty" name:"IsExist"`
+
+	// 匹配到的词条文本。
+	MatchText *string `json:"MatchText,omitempty" name:"MatchText"`
+
+	// 被搜索的词条文本。
+	Text *string `json:"Text,omitempty" name:"Text"`
+
+	// 词条的词性。
+	Pos *string `json:"Pos,omitempty" name:"Pos"`
+}
+
+type SearchWordItemsRequest struct {
+	*tchttp.BaseRequest
+
+	// 待检索的词条集合。
+	WordItems []*WordItem `json:"WordItems,omitempty" name:"WordItems" list`
+
+	// 自定义词库ID。
+	DictId *string `json:"DictId,omitempty" name:"DictId"`
+}
+
+func (r *SearchWordItemsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *SearchWordItemsRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type SearchWordItemsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 词条检索结果集合。
+		Results []*SearchResult `json:"Results,omitempty" name:"Results" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *SearchWordItemsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *SearchWordItemsResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
 }
 
 type SentenceEmbeddingRequest struct {
@@ -809,6 +1163,46 @@ type TripleContent struct {
 	Popular *int64 `json:"Popular,omitempty" name:"Popular"`
 }
 
+type UpdateDictRequest struct {
+	*tchttp.BaseRequest
+
+	// 自定义词库ID。
+	DictId *string `json:"DictId,omitempty" name:"DictId"`
+
+	// 词库描述，不超过100字。
+	Description *string `json:"Description,omitempty" name:"Description"`
+
+	// 词库名称，不超过20字。
+	Name *string `json:"Name,omitempty" name:"Name"`
+}
+
+func (r *UpdateDictRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *UpdateDictRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type UpdateDictResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *UpdateDictResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *UpdateDictResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type WordEmbeddingRequest struct {
 	*tchttp.BaseRequest
 
@@ -847,6 +1241,18 @@ func (r *WordEmbeddingResponse) ToJsonString() string {
 
 func (r *WordEmbeddingResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
+}
+
+type WordItem struct {
+
+	// 词条创建时间。
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 词条文本内容。
+	Text *string `json:"Text,omitempty" name:"Text"`
+
+	// 词条的词性。
+	Pos *string `json:"Pos,omitempty" name:"Pos"`
 }
 
 type WordSimilarityRequest struct {

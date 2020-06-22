@@ -94,6 +94,106 @@ func (c *Client) ChatBot(request *ChatBotRequest) (response *ChatBotResponse, er
     return
 }
 
+func NewCreateDictRequest() (request *CreateDictRequest) {
+    request = &CreateDictRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("nlp", APIVersion, "CreateDict")
+    return
+}
+
+func NewCreateDictResponse() (response *CreateDictResponse) {
+    response = &CreateDictResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 根据指定的名称、描述创建自定义词库。
+func (c *Client) CreateDict(request *CreateDictRequest) (response *CreateDictResponse, err error) {
+    if request == nil {
+        request = NewCreateDictRequest()
+    }
+    response = NewCreateDictResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateWordItemsRequest() (request *CreateWordItemsRequest) {
+    request = &CreateWordItemsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("nlp", APIVersion, "CreateWordItems")
+    return
+}
+
+func NewCreateWordItemsResponse() (response *CreateWordItemsResponse) {
+    response = &CreateWordItemsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 向指定的词库中添加词条。
+func (c *Client) CreateWordItems(request *CreateWordItemsRequest) (response *CreateWordItemsResponse, err error) {
+    if request == nil {
+        request = NewCreateWordItemsRequest()
+    }
+    response = NewCreateWordItemsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteDictRequest() (request *DeleteDictRequest) {
+    request = &DeleteDictRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("nlp", APIVersion, "DeleteDict")
+    return
+}
+
+func NewDeleteDictResponse() (response *DeleteDictResponse) {
+    response = &DeleteDictResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 删除自定义词库，会附带相应删除词库包含的所有词条。
+func (c *Client) DeleteDict(request *DeleteDictRequest) (response *DeleteDictResponse, err error) {
+    if request == nil {
+        request = NewDeleteDictRequest()
+    }
+    response = NewDeleteDictResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteWordItemsRequest() (request *DeleteWordItemsRequest) {
+    request = &DeleteWordItemsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("nlp", APIVersion, "DeleteWordItems")
+    return
+}
+
+func NewDeleteWordItemsResponse() (response *DeleteWordItemsResponse) {
+    response = &DeleteWordItemsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 用于删除自定义词库中的词条。
+func (c *Client) DeleteWordItems(request *DeleteWordItemsRequest) (response *DeleteWordItemsResponse, err error) {
+    if request == nil {
+        request = NewDeleteWordItemsRequest()
+    }
+    response = NewDeleteWordItemsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDependencyParsingRequest() (request *DependencyParsingRequest) {
     request = &DependencyParsingRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -115,6 +215,56 @@ func (c *Client) DependencyParsing(request *DependencyParsingRequest) (response 
         request = NewDependencyParsingRequest()
     }
     response = NewDependencyParsingResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeDictRequest() (request *DescribeDictRequest) {
+    request = &DescribeDictRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("nlp", APIVersion, "DescribeDict")
+    return
+}
+
+func NewDescribeDictResponse() (response *DescribeDictResponse) {
+    response = &DescribeDictResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 根据id或名称查询自定义词库信息。
+func (c *Client) DescribeDict(request *DescribeDictRequest) (response *DescribeDictResponse, err error) {
+    if request == nil {
+        request = NewDescribeDictRequest()
+    }
+    response = NewDescribeDictResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeDictsRequest() (request *DescribeDictsRequest) {
+    request = &DescribeDictsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("nlp", APIVersion, "DescribeDicts")
+    return
+}
+
+func NewDescribeDictsResponse() (response *DescribeDictsResponse) {
+    response = &DescribeDictsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 返回属于当前用户的所有自定义词库列表。
+func (c *Client) DescribeDicts(request *DescribeDictsRequest) (response *DescribeDictsResponse, err error) {
+    if request == nil {
+        request = NewDescribeDictsRequest()
+    }
+    response = NewDescribeDictsResponse()
     err = c.Send(request, response)
     return
 }
@@ -194,6 +344,31 @@ func (c *Client) DescribeTriple(request *DescribeTripleRequest) (response *Descr
     return
 }
 
+func NewDescribeWordItemsRequest() (request *DescribeWordItemsRequest) {
+    request = &DescribeWordItemsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("nlp", APIVersion, "DescribeWordItems")
+    return
+}
+
+func NewDescribeWordItemsResponse() (response *DescribeWordItemsResponse) {
+    response = &DescribeWordItemsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 依据自定义词库的ID，查询对应的词条信息。
+func (c *Client) DescribeWordItems(request *DescribeWordItemsRequest) (response *DescribeWordItemsResponse, err error) {
+    if request == nil {
+        request = NewDescribeWordItemsRequest()
+    }
+    response = NewDescribeWordItemsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewKeywordsExtractionRequest() (request *KeywordsExtractionRequest) {
     request = &KeywordsExtractionRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -248,6 +423,31 @@ func (c *Client) LexicalAnalysis(request *LexicalAnalysisRequest) (response *Lex
         request = NewLexicalAnalysisRequest()
     }
     response = NewLexicalAnalysisResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewSearchWordItemsRequest() (request *SearchWordItemsRequest) {
+    request = &SearchWordItemsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("nlp", APIVersion, "SearchWordItems")
+    return
+}
+
+func NewSearchWordItemsResponse() (response *SearchWordItemsResponse) {
+    response = &SearchWordItemsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询指定自定义词库中的词条是否存在。
+func (c *Client) SearchWordItems(request *SearchWordItemsRequest) (response *SearchWordItemsResponse, err error) {
+    if request == nil {
+        request = NewSearchWordItemsRequest()
+    }
+    response = NewSearchWordItemsResponse()
     err = c.Send(request, response)
     return
 }
@@ -443,6 +643,31 @@ func (c *Client) TextSimilarity(request *TextSimilarityRequest) (response *TextS
         request = NewTextSimilarityRequest()
     }
     response = NewTextSimilarityResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewUpdateDictRequest() (request *UpdateDictRequest) {
+    request = &UpdateDictRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("nlp", APIVersion, "UpdateDict")
+    return
+}
+
+func NewUpdateDictResponse() (response *UpdateDictResponse) {
+    response = &UpdateDictResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 修改自定义词库元数据信息，包括名称、描述。
+func (c *Client) UpdateDict(request *UpdateDictRequest) (response *UpdateDictResponse, err error) {
+    if request == nil {
+        request = NewUpdateDictRequest()
+    }
+    response = NewUpdateDictResponse()
     err = c.Send(request, response)
     return
 }

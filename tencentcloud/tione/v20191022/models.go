@@ -135,7 +135,7 @@ type CreateNotebookInstanceRequest struct {
 	*tchttp.BaseRequest
 
 	// Notebook实例名称，不能超过63个字符
-	// 规则：^[a-zA-Z0-9](-*[a-zA-Z0-9])*$
+	// 规则：“^\[a-zA-Z0-9\](-\*\[a-zA-Z0-9\])\*$”
 	NotebookInstanceName *string `json:"NotebookInstanceName,omitempty" name:"NotebookInstanceName"`
 
 	// Notebook算力类型
@@ -265,7 +265,7 @@ type CreatePresignedNotebookInstanceUrlRequest struct {
 	*tchttp.BaseRequest
 
 	// Notebook实例名称
-	// 规则：^[a-zA-Z0-9](-*[a-zA-Z0-9])*$
+	// 规则：“^\[a-zA-Z0-9\](-\*\[a-zA-Z0-9\])\*$”
 	NotebookInstanceName *string `json:"NotebookInstanceName,omitempty" name:"NotebookInstanceName"`
 
 	// session有效时间，秒，取值范围[1800, 43200]
@@ -592,7 +592,7 @@ type DescribeNotebookInstanceRequest struct {
 	*tchttp.BaseRequest
 
 	// Notebook实例名称
-	// 规则：^[a-zA-Z0-9](-*[a-zA-Z0-9])*$
+	// 规则：“^\[a-zA-Z0-9\](-\*\[a-zA-Z0-9\])\*$”
 	NotebookInstanceName *string `json:"NotebookInstanceName,omitempty" name:"NotebookInstanceName"`
 }
 
@@ -1390,7 +1390,7 @@ type UpdateNotebookInstanceRequest struct {
 	*tchttp.BaseRequest
 
 	// Notebook实例名称
-	// 规则：^[a-zA-Z0-9](-*[a-zA-Z0-9])*$
+	// 规则：“^\[a-zA-Z0-9\](-\*\[a-zA-Z0-9\])\*$”
 	NotebookInstanceName *string `json:"NotebookInstanceName,omitempty" name:"NotebookInstanceName"`
 
 	// 角色的资源描述

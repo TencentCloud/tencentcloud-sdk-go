@@ -795,7 +795,7 @@ type CreateL7RuleCertRequest struct {
 	// 大禹子产品代号（bgpip表示高防IP；net表示高防IP专业版）
 	Business *string `json:"Business,omitempty" name:"Business"`
 
-	// 资源实例ID，比如高防IP实例的ID，高防IP专业版实例的ID
+	// 资源实例ID，例如高防IP实例的ID，高防IP专业版实例的ID
 	Id *string `json:"Id,omitempty" name:"Id"`
 
 	// 规则ID

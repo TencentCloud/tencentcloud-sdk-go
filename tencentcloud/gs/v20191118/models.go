@@ -190,6 +190,9 @@ type EnterQueueRequest struct {
 
 	// 资源池编号
 	SetNumber *uint64 `json:"SetNumber,omitempty" name:"SetNumber"`
+
+	// 游戏用户IP，用于就近调度，例如125.127.178.228
+	UserIp *string `json:"UserIp,omitempty" name:"UserIp"`
 }
 
 func (r *EnterQueueRequest) ToJsonString() string {

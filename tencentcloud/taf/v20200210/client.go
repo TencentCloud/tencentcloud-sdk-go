@@ -83,7 +83,7 @@ func NewEnhanceTaDegreeResponse() (response *EnhanceTaDegreeResponse) {
     return
 }
 
-// EnhanceTaDegree
+// 流量反欺诈-虚假TA识别
 func (c *Client) EnhanceTaDegree(request *EnhanceTaDegreeRequest) (response *EnhanceTaDegreeResponse, err error) {
     if request == nil {
         request = NewEnhanceTaDegreeRequest()
@@ -133,7 +133,7 @@ func NewRecognizePreciseTargetAudienceResponse() (response *RecognizePreciseTarg
     return
 }
 
-// RecognizePreciseTargetAudience
+// 流量反欺诈-流量验准高级版
 func (c *Client) RecognizePreciseTargetAudience(request *RecognizePreciseTargetAudienceRequest) (response *RecognizePreciseTargetAudienceResponse, err error) {
     if request == nil {
         request = NewRecognizePreciseTargetAudienceRequest()

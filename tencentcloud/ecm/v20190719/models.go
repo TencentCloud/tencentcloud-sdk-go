@@ -1474,6 +1474,9 @@ func (r *DescribeNetworkInterfacesResponse) FromJsonString(s string) error {
 
 type DescribeNodeRequest struct {
 	*tchttp.BaseRequest
+
+	// 过滤条件，name取值为： InstanceFamily-实例系列
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
 }
 
 func (r *DescribeNodeRequest) ToJsonString() string {
