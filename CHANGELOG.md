@@ -1,48 +1,29 @@
 # 本版本更新包含以下内容：
 
-## 边缘计算机器(ecm) 版本：2019-07-19
+## 云开发 CloudBase(tcb) 版本：2018-06-08
 
-### 第 17 次发布
+### 第 12 次发布
 
-发布时间：2020-06-22 08:01:42
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [DescribeNode](https://cloud.tencent.com/document/api/1108/42567)
-
-	* 新增入参：Filters
-
-
-
-
-## 云游戏解决方案(gs) 版本：2019-11-18
-
-### 第 7 次发布
-
-发布时间：2020-06-22 08:03:54
+发布时间：2020-06-23 08:17:01
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-修改接口：
+修改数据结构：
 
-* [EnterQueue](https://cloud.tencent.com/document/api/1162/43837)
+* [EndUserInfo](https://cloud.tencent.com/document/api/876/34822#EndUserInfo)
 
-	* 新增入参：UserIp
-
-
+	* 新增成员：HasPassword
 
 
-## 自然语言处理(nlp) 版本：2019-04-08
 
-### 第 9 次发布
 
-发布时间：2020-06-22 08:15:14
+## 实时音视频(trtc) 版本：2019-07-22
+
+### 第 10 次发布
+
+发布时间：2020-06-23 08:20:35
 
 本次发布包含了以下内容：
 
@@ -50,21 +31,12 @@
 
 新增接口：
 
-* [CreateDict](https://cloud.tencent.com/document/api/271/45678)
-* [CreateWordItems](https://cloud.tencent.com/document/api/271/45677)
-* [DeleteDict](https://cloud.tencent.com/document/api/271/45676)
-* [DeleteWordItems](https://cloud.tencent.com/document/api/271/45675)
-* [DescribeDict](https://cloud.tencent.com/document/api/271/45674)
-* [DescribeDicts](https://cloud.tencent.com/document/api/271/45673)
-* [DescribeWordItems](https://cloud.tencent.com/document/api/271/45672)
-* [SearchWordItems](https://cloud.tencent.com/document/api/271/45671)
-* [UpdateDict](https://cloud.tencent.com/document/api/271/45670)
+* [DescribeAbnormalEvent](https://cloud.tencent.com/document/api/647/45712)
 
 新增数据结构：
 
-* [DictInfo](https://cloud.tencent.com/document/api/271/35511#DictInfo)
-* [SearchResult](https://cloud.tencent.com/document/api/271/35511#SearchResult)
-* [WordItem](https://cloud.tencent.com/document/api/271/35511#WordItem)
+* [AbnormalEvent](https://cloud.tencent.com/document/api/647/44055#AbnormalEvent)
+* [AbnormalExperience](https://cloud.tencent.com/document/api/647/44055#AbnormalExperience)
 
 
 
@@ -18451,21 +18423,21 @@
 
 新增接口：
 
-* [[CreateDict](https://cloud.tencent.com/document/api/271/45678)](https://cloud.tencent.com/document/api/#/#)
-* [[CreateWordItems](https://cloud.tencent.com/document/api/271/45677)](https://cloud.tencent.com/document/api/#/#)
-* [[DeleteDict](https://cloud.tencent.com/document/api/271/45676)](https://cloud.tencent.com/document/api/#/#)
-* [[DeleteWordItems](https://cloud.tencent.com/document/api/271/45675)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeDict](https://cloud.tencent.com/document/api/271/45674)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeDicts](https://cloud.tencent.com/document/api/271/45673)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeWordItems](https://cloud.tencent.com/document/api/271/45672)](https://cloud.tencent.com/document/api/#/#)
-* [[SearchWordItems](https://cloud.tencent.com/document/api/271/45671)](https://cloud.tencent.com/document/api/#/#)
-* [[UpdateDict](https://cloud.tencent.com/document/api/271/45670)](https://cloud.tencent.com/document/api/#/#)
+* [CreateDict](https://cloud.tencent.com/document/api/271/45678)
+* [CreateWordItems](https://cloud.tencent.com/document/api/271/45677)
+* [DeleteDict](https://cloud.tencent.com/document/api/271/45676)
+* [DeleteWordItems](https://cloud.tencent.com/document/api/271/45675)
+* [DescribeDict](https://cloud.tencent.com/document/api/271/45674)
+* [DescribeDicts](https://cloud.tencent.com/document/api/271/45673)
+* [DescribeWordItems](https://cloud.tencent.com/document/api/271/45672)
+* [SearchWordItems](https://cloud.tencent.com/document/api/271/45671)
+* [UpdateDict](https://cloud.tencent.com/document/api/271/45670)
 
 新增数据结构：
 
-* [[DictInfo](https://cloud.tencent.com/document/api/271/35511#DictInfo)](https://cloud.tencent.com/document/api/271/35511#[DictInfo](https://cloud.tencent.com/document/api/271/35511#DictInfo))
-* [[SearchResult](https://cloud.tencent.com/document/api/271/35511#SearchResult)](https://cloud.tencent.com/document/api/271/35511#[SearchResult](https://cloud.tencent.com/document/api/271/35511#SearchResult))
-* [[WordItem](https://cloud.tencent.com/document/api/271/35511#WordItem)](https://cloud.tencent.com/document/api/271/35511#[WordItem](https://cloud.tencent.com/document/api/271/35511#WordItem))
+* [DictInfo](https://cloud.tencent.com/document/api/271/35511#DictInfo)
+* [SearchResult](https://cloud.tencent.com/document/api/271/35511#SearchResult)
+* [WordItem](https://cloud.tencent.com/document/api/271/35511#WordItem)
 
 ### 第 8 次发布
 
@@ -22334,6 +22306,21 @@
 
 ## 云开发 CloudBase(tcb) 版本：2018-06-08
 
+### 第 12 次发布
+
+发布时间：2020-06-23 08:17:01
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [EndUserInfo](https://cloud.tencent.com/document/api/876/34822#EndUserInfo)
+
+	* 新增成员：HasPassword
+
+
 ### 第 11 次发布
 
 发布时间：2020-06-18 08:16:38
@@ -24855,6 +24842,23 @@
 
 
 ## 实时音视频(trtc) 版本：2019-07-22
+
+### 第 10 次发布
+
+发布时间：2020-06-23 08:20:35
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeAbnormalEvent](https://cloud.tencent.com/document/api/647/45712)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[AbnormalEvent](https://cloud.tencent.com/document/api/647/44055#AbnormalEvent)](https://cloud.tencent.com/document/api/647/44055#[AbnormalEvent](https://cloud.tencent.com/document/api/647/44055#AbnormalEvent))
+* [[AbnormalExperience](https://cloud.tencent.com/document/api/647/44055#AbnormalExperience)](https://cloud.tencent.com/document/api/647/44055#[AbnormalExperience](https://cloud.tencent.com/document/api/647/44055#AbnormalExperience))
 
 ### 第 9 次发布
 

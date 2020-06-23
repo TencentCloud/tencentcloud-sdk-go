@@ -968,6 +968,9 @@ type EndUserInfo struct {
 
 	// 是否禁用账户
 	IsDisabled *bool `json:"IsDisabled,omitempty" name:"IsDisabled"`
+
+	// 是否设置过密码
+	HasPassword *bool `json:"HasPassword,omitempty" name:"HasPassword"`
 }
 
 type EnvBillingInfoItem struct {

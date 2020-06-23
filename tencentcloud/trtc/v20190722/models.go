@@ -20,6 +20,34 @@ import (
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
+type AbnormalEvent struct {
+
+	// 异常事件ID，具体值查看附录：异常体验ID映射表：https://cloud.tencent.com/document/product/647/44916
+	AbnormalEventId *uint64 `json:"AbnormalEventId,omitempty" name:"AbnormalEventId"`
+
+	// 远端用户ID,""：表示异常事件不是由远端用户产生
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PeerId *string `json:"PeerId,omitempty" name:"PeerId"`
+}
+
+type AbnormalExperience struct {
+
+	// 用户ID
+	UserId *string `json:"UserId,omitempty" name:"UserId"`
+
+	// 异常体验ID
+	ExperienceId *uint64 `json:"ExperienceId,omitempty" name:"ExperienceId"`
+
+	// 字符串房间号
+	RoomId *string `json:"RoomId,omitempty" name:"RoomId"`
+
+	// 异常事件数组
+	AbnormalEventList []*AbnormalEvent `json:"AbnormalEventList,omitempty" name:"AbnormalEventList" list`
+
+	// 异常事件的上报时间
+	EventTime *uint64 `json:"EventTime,omitempty" name:"EventTime"`
+}
+
 type CreateTroubleInfoRequest struct {
 	*tchttp.BaseRequest
 
@@ -80,6 +108,55 @@ func (r *CreateTroubleInfoResponse) ToJsonString() string {
 }
 
 func (r *CreateTroubleInfoResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeAbnormalEventRequest struct {
+	*tchttp.BaseRequest
+
+	// 用户SDKAppID，查询SDKAppID下任意20条异常体验事件（可能不同房间）
+	SdkAppId *string `json:"SdkAppId,omitempty" name:"SdkAppId"`
+
+	// 查询开始时间
+	StartTime *uint64 `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 查询结束时间
+	EndTime *uint64 `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 房间号，查询房间内任意20条以内异常体验事件
+	RoomId *string `json:"RoomId,omitempty" name:"RoomId"`
+}
+
+func (r *DescribeAbnormalEventRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeAbnormalEventRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeAbnormalEventResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 返回的数据总条数
+		Total *uint64 `json:"Total,omitempty" name:"Total"`
+
+		// 异常体验列表
+		AbnormalExperienceList []*AbnormalExperience `json:"AbnormalExperienceList,omitempty" name:"AbnormalExperienceList" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeAbnormalEventResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeAbnormalEventResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
