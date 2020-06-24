@@ -93,6 +93,31 @@ func (c *Client) CreateAIRecognitionTemplate(request *CreateAIRecognitionTemplat
     return
 }
 
+func NewCreateAdaptiveDynamicStreamingTemplateRequest() (request *CreateAdaptiveDynamicStreamingTemplateRequest) {
+    request = &CreateAdaptiveDynamicStreamingTemplateRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("mps", APIVersion, "CreateAdaptiveDynamicStreamingTemplate")
+    return
+}
+
+func NewCreateAdaptiveDynamicStreamingTemplateResponse() (response *CreateAdaptiveDynamicStreamingTemplateResponse) {
+    response = &CreateAdaptiveDynamicStreamingTemplateResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 创建转自适应码流模板，数量上限：100。
+func (c *Client) CreateAdaptiveDynamicStreamingTemplate(request *CreateAdaptiveDynamicStreamingTemplateRequest) (response *CreateAdaptiveDynamicStreamingTemplateResponse, err error) {
+    if request == nil {
+        request = NewCreateAdaptiveDynamicStreamingTemplateRequest()
+    }
+    response = NewCreateAdaptiveDynamicStreamingTemplateResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateAnimatedGraphicsTemplateRequest() (request *CreateAnimatedGraphicsTemplateRequest) {
     request = &CreateAnimatedGraphicsTemplateRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -406,6 +431,31 @@ func (c *Client) DeleteAIRecognitionTemplate(request *DeleteAIRecognitionTemplat
     return
 }
 
+func NewDeleteAdaptiveDynamicStreamingTemplateRequest() (request *DeleteAdaptiveDynamicStreamingTemplateRequest) {
+    request = &DeleteAdaptiveDynamicStreamingTemplateRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("mps", APIVersion, "DeleteAdaptiveDynamicStreamingTemplate")
+    return
+}
+
+func NewDeleteAdaptiveDynamicStreamingTemplateResponse() (response *DeleteAdaptiveDynamicStreamingTemplateResponse) {
+    response = &DeleteAdaptiveDynamicStreamingTemplateResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 删除转自适应码流模板
+func (c *Client) DeleteAdaptiveDynamicStreamingTemplate(request *DeleteAdaptiveDynamicStreamingTemplateRequest) (response *DeleteAdaptiveDynamicStreamingTemplateResponse, err error) {
+    if request == nil {
+        request = NewDeleteAdaptiveDynamicStreamingTemplateRequest()
+    }
+    response = NewDeleteAdaptiveDynamicStreamingTemplateResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteAnimatedGraphicsTemplateRequest() (request *DeleteAnimatedGraphicsTemplateRequest) {
     request = &DeleteAnimatedGraphicsTemplateRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -702,6 +752,31 @@ func (c *Client) DescribeAIRecognitionTemplates(request *DescribeAIRecognitionTe
         request = NewDescribeAIRecognitionTemplatesRequest()
     }
     response = NewDescribeAIRecognitionTemplatesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeAdaptiveDynamicStreamingTemplatesRequest() (request *DescribeAdaptiveDynamicStreamingTemplatesRequest) {
+    request = &DescribeAdaptiveDynamicStreamingTemplatesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("mps", APIVersion, "DescribeAdaptiveDynamicStreamingTemplates")
+    return
+}
+
+func NewDescribeAdaptiveDynamicStreamingTemplatesResponse() (response *DescribeAdaptiveDynamicStreamingTemplatesResponse) {
+    response = &DescribeAdaptiveDynamicStreamingTemplatesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询转自适应码流模板，支持根据条件，分页查询。
+func (c *Client) DescribeAdaptiveDynamicStreamingTemplates(request *DescribeAdaptiveDynamicStreamingTemplatesRequest) (response *DescribeAdaptiveDynamicStreamingTemplatesResponse, err error) {
+    if request == nil {
+        request = NewDescribeAdaptiveDynamicStreamingTemplatesRequest()
+    }
+    response = NewDescribeAdaptiveDynamicStreamingTemplatesResponse()
     err = c.Send(request, response)
     return
 }
@@ -1186,6 +1261,31 @@ func (c *Client) ModifyAIRecognitionTemplate(request *ModifyAIRecognitionTemplat
         request = NewModifyAIRecognitionTemplateRequest()
     }
     response = NewModifyAIRecognitionTemplateResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyAdaptiveDynamicStreamingTemplateRequest() (request *ModifyAdaptiveDynamicStreamingTemplateRequest) {
+    request = &ModifyAdaptiveDynamicStreamingTemplateRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("mps", APIVersion, "ModifyAdaptiveDynamicStreamingTemplate")
+    return
+}
+
+func NewModifyAdaptiveDynamicStreamingTemplateResponse() (response *ModifyAdaptiveDynamicStreamingTemplateResponse) {
+    response = &ModifyAdaptiveDynamicStreamingTemplateResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 修改转自适应码流模板
+func (c *Client) ModifyAdaptiveDynamicStreamingTemplate(request *ModifyAdaptiveDynamicStreamingTemplateRequest) (response *ModifyAdaptiveDynamicStreamingTemplateResponse, err error) {
+    if request == nil {
+        request = NewModifyAdaptiveDynamicStreamingTemplateRequest()
+    }
+    response = NewModifyAdaptiveDynamicStreamingTemplateResponse()
     err = c.Send(request, response)
     return
 }

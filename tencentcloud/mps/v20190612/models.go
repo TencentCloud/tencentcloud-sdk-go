@@ -87,6 +87,103 @@ type AIRecognitionTemplateItem struct {
 	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
 }
 
+type AdaptiveDynamicStreamingInfoItem struct {
+
+	// 转自适应码流规格。
+	Definition *int64 `json:"Definition,omitempty" name:"Definition"`
+
+	// 打包格式，可能为 HLS和 MPEG-DASH 两种。
+	Package *string `json:"Package,omitempty" name:"Package"`
+
+	// 播放路径。
+	Path *string `json:"Path,omitempty" name:"Path"`
+
+	// 自适应码流文件的存储位置。
+	Storage *TaskOutputStorage `json:"Storage,omitempty" name:"Storage"`
+}
+
+type AdaptiveDynamicStreamingTaskInput struct {
+
+	// 转自适应码流模板 ID。
+	Definition *uint64 `json:"Definition,omitempty" name:"Definition"`
+
+	// 水印列表，支持多张图片或文字水印，最大可支持 10 张。
+	WatermarkSet []*WatermarkInput `json:"WatermarkSet,omitempty" name:"WatermarkSet" list`
+
+	// 转自适应码流后文件的目标存储，不填则继承上层的 OutputStorage 值。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OutputStorage *TaskOutputStorage `json:"OutputStorage,omitempty" name:"OutputStorage"`
+
+	// 转自适应码流后，manifest 文件的输出路径，可以为相对路径或者绝对路径。如果不填，则默认为相对路径：`{inputName}_adaptiveDynamicStreaming_{definition}.{format}`。
+	OutputObjectPath *string `json:"OutputObjectPath,omitempty" name:"OutputObjectPath"`
+
+	// 转自适应码流后，子流文件的输出路径，只能为相对路径。如果不填，则默认为相对路径：`{inputName}_adaptiveDynamicStreaming_{definition}_{subStreamNumber}.{format}`。
+	SubStreamObjectName *string `json:"SubStreamObjectName,omitempty" name:"SubStreamObjectName"`
+
+	// 转自适应码流（仅 HLS）后，分片文件的输出路径，只能为相对路径。如果不填，则默认为相对路径：`{inputName}_adaptiveDynamicStreaming_{definition}_{subStreamNumber}_{segmentNumber}.{format}`。
+	SegmentObjectName *string `json:"SegmentObjectName,omitempty" name:"SegmentObjectName"`
+}
+
+type AdaptiveDynamicStreamingTemplate struct {
+
+	// 转自适应码流模板唯一标识。
+	Definition *uint64 `json:"Definition,omitempty" name:"Definition"`
+
+	// 模板类型，取值范围：
+	// <li>Preset：系统预置模板；</li>
+	// <li>Custom：用户自定义模板。</li>
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 转自适应码流模板名称。
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 转自适应码流模板描述信息。
+	Comment *string `json:"Comment,omitempty" name:"Comment"`
+
+	// 转自适应码流格式，取值范围：
+	// <li>HLS，</li>
+	// <li>MPEG-DASH。</li>
+	Format *string `json:"Format,omitempty" name:"Format"`
+
+	// 转自适应码流输入流参数信息，最多输入10路流。
+	StreamInfos []*AdaptiveStreamTemplate `json:"StreamInfos,omitempty" name:"StreamInfos" list`
+
+	// 是否禁止视频低码率转高码率，取值范围：
+	// <li>0：否，</li>
+	// <li>1：是。</li>
+	DisableHigherVideoBitrate *uint64 `json:"DisableHigherVideoBitrate,omitempty" name:"DisableHigherVideoBitrate"`
+
+	// 是否禁止视频分辨率转高分辨率，取值范围：
+	// <li>0：否，</li>
+	// <li>1：是。</li>
+	DisableHigherVideoResolution *uint64 `json:"DisableHigherVideoResolution,omitempty" name:"DisableHigherVideoResolution"`
+
+	// 模板创建时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 模板最后修改时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
+	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
+}
+
+type AdaptiveStreamTemplate struct {
+
+	// 视频参数信息。
+	Video *VideoTemplateInfo `json:"Video,omitempty" name:"Video"`
+
+	// 音频参数信息。
+	Audio *AudioTemplateInfo `json:"Audio,omitempty" name:"Audio"`
+
+	// 是否移除音频流，取值范围：
+	// <li>0：否，</li>
+	// <li>1：是。</li>
+	RemoveAudio *uint64 `json:"RemoveAudio,omitempty" name:"RemoveAudio"`
+
+	// 是否移除视频流，取值范围：
+	// <li>0：否，</li>
+	// <li>1：是。</li>
+	RemoveVideo *uint64 `json:"RemoveVideo,omitempty" name:"RemoveVideo"`
+}
+
 type AiAnalysisResult struct {
 
 	// 任务的类型，可以取的值有：
@@ -1303,8 +1400,7 @@ type AudioTemplateInfo struct {
 	// <li>ac3。</li>
 	// 当外层参数 Container 为 mp4 或 flv 时，可选值为：
 	// <li>libfdk_aac：更适合 mp4；</li>
-	// <li>libmp3lame：更适合 flv；</li>
-	// <li>mp2。</li>
+	// <li>libmp3lame：更适合 flv。</li>
 	// 当外层参数 Container 为 hls 时，可选值为：
 	// <li>libfdk_aac；</li>
 	// <li>libmp3lame。</li>
@@ -1579,6 +1675,67 @@ func (r *CreateAIRecognitionTemplateResponse) ToJsonString() string {
 }
 
 func (r *CreateAIRecognitionTemplateResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateAdaptiveDynamicStreamingTemplateRequest struct {
+	*tchttp.BaseRequest
+
+	// 自适应转码格式，取值范围：
+	// <li>HLS，</li>
+	// <li>MPEG-DASH。</li>
+	Format *string `json:"Format,omitempty" name:"Format"`
+
+	// 转自适应码流输出子流参数信息，最多输出10路子流。
+	// 注意：各个子流的帧率必须保持一致；如果不一致，采用第一个子流的帧率作为输出帧率。
+	StreamInfos []*AdaptiveStreamTemplate `json:"StreamInfos,omitempty" name:"StreamInfos" list`
+
+	// 模板名称，长度限制：64 个字符。
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 是否禁止视频低码率转高码率，取值范围：
+	// <li>0：否，</li>
+	// <li>1：是。</li>
+	// 默认为否。
+	DisableHigherVideoBitrate *uint64 `json:"DisableHigherVideoBitrate,omitempty" name:"DisableHigherVideoBitrate"`
+
+	// 是否禁止视频分辨率转高分辨率，取值范围：
+	// <li>0：否，</li>
+	// <li>1：是。</li>
+	// 默认为否。
+	DisableHigherVideoResolution *uint64 `json:"DisableHigherVideoResolution,omitempty" name:"DisableHigherVideoResolution"`
+
+	// 模板描述信息，长度限制：256 个字符。
+	Comment *string `json:"Comment,omitempty" name:"Comment"`
+}
+
+func (r *CreateAdaptiveDynamicStreamingTemplateRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateAdaptiveDynamicStreamingTemplateRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateAdaptiveDynamicStreamingTemplateResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 自适应转码模板唯一标识。
+		Definition *uint64 `json:"Definition,omitempty" name:"Definition"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateAdaptiveDynamicStreamingTemplateResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateAdaptiveDynamicStreamingTemplateResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -2328,6 +2485,40 @@ func (r *DeleteAIRecognitionTemplateResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DeleteAdaptiveDynamicStreamingTemplateRequest struct {
+	*tchttp.BaseRequest
+
+	// 自适应转码模板唯一标识。
+	Definition *uint64 `json:"Definition,omitempty" name:"Definition"`
+}
+
+func (r *DeleteAdaptiveDynamicStreamingTemplateRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteAdaptiveDynamicStreamingTemplateRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteAdaptiveDynamicStreamingTemplateResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DeleteAdaptiveDynamicStreamingTemplateResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteAdaptiveDynamicStreamingTemplateResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DeleteAnimatedGraphicsTemplateRequest struct {
 	*tchttp.BaseRequest
 
@@ -2757,6 +2948,57 @@ func (r *DescribeAIRecognitionTemplatesResponse) ToJsonString() string {
 }
 
 func (r *DescribeAIRecognitionTemplatesResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeAdaptiveDynamicStreamingTemplatesRequest struct {
+	*tchttp.BaseRequest
+
+	// 转自适应码流模板唯一标识过滤条件，数组长度限制：100。
+	Definitions []*uint64 `json:"Definitions,omitempty" name:"Definitions" list`
+
+	// 分页偏移量，默认值：0。
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 返回记录条数，默认值：10，最大值：100。
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 模板类型过滤条件，可选值：
+	// <li>Preset：系统预置模板；</li>
+	// <li>Custom：用户自定义模板。</li>
+	Type *string `json:"Type,omitempty" name:"Type"`
+}
+
+func (r *DescribeAdaptiveDynamicStreamingTemplatesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeAdaptiveDynamicStreamingTemplatesRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeAdaptiveDynamicStreamingTemplatesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 符合过滤条件的记录总数。
+		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 转自适应码流模板详情列表。
+		AdaptiveDynamicStreamingTemplateSet []*AdaptiveDynamicStreamingTemplate `json:"AdaptiveDynamicStreamingTemplateSet,omitempty" name:"AdaptiveDynamicStreamingTemplateSet" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeAdaptiveDynamicStreamingTemplatesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeAdaptiveDynamicStreamingTemplatesResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -4488,6 +4730,25 @@ type MediaMetaData struct {
 	AudioDuration *float64 `json:"AudioDuration,omitempty" name:"AudioDuration"`
 }
 
+type MediaProcessTaskAdaptiveDynamicStreamingResult struct {
+
+	// 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 错误码，0：成功，其他值：失败。
+	ErrCode *int64 `json:"ErrCode,omitempty" name:"ErrCode"`
+
+	// 错误信息。
+	Message *string `json:"Message,omitempty" name:"Message"`
+
+	// 对视频转自适应码流任务的输入。
+	Input *AdaptiveDynamicStreamingTaskInput `json:"Input,omitempty" name:"Input"`
+
+	// 对视频转自适应码流任务的输出。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Output *AdaptiveDynamicStreamingInfoItem `json:"Output,omitempty" name:"Output"`
+}
+
 type MediaProcessTaskAnimatedGraphicResult struct {
 
 	// 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
@@ -4548,6 +4809,9 @@ type MediaProcessTaskInput struct {
 
 	// 对视频截雪碧图任务列表。
 	ImageSpriteTaskSet []*ImageSpriteTaskInput `json:"ImageSpriteTaskSet,omitempty" name:"ImageSpriteTaskSet" list`
+
+	// 转自适应码流任务列表。
+	AdaptiveDynamicStreamingTaskSet []*AdaptiveDynamicStreamingTaskInput `json:"AdaptiveDynamicStreamingTaskSet,omitempty" name:"AdaptiveDynamicStreamingTaskSet" list`
 }
 
 type MediaProcessTaskResult struct {
@@ -4581,6 +4845,10 @@ type MediaProcessTaskResult struct {
 	// 对视频截雪碧图任务的查询结果，当任务类型为 ImageSprite 时有效。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ImageSpriteTask *MediaProcessTaskImageSpriteResult `json:"ImageSpriteTask,omitempty" name:"ImageSpriteTask"`
+
+	// 转自适应码流任务查询结果，当任务类型为 AdaptiveDynamicStreaming 时有效。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AdaptiveDynamicStreamingTask *MediaProcessTaskAdaptiveDynamicStreamingResult `json:"AdaptiveDynamicStreamingTask,omitempty" name:"AdaptiveDynamicStreamingTask"`
 }
 
 type MediaProcessTaskSampleSnapshotResult struct {
@@ -4859,6 +5127,65 @@ func (r *ModifyAIRecognitionTemplateResponse) ToJsonString() string {
 }
 
 func (r *ModifyAIRecognitionTemplateResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyAdaptiveDynamicStreamingTemplateRequest struct {
+	*tchttp.BaseRequest
+
+	// 转自适应码流模板唯一标识。
+	Definition *uint64 `json:"Definition,omitempty" name:"Definition"`
+
+	// 模板名称，长度限制：64 个字符。
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 转自适应码流格式，取值范围：
+	// <li>HLS，</li>
+	// <li>MPEG-DASH。</li>
+	Format *string `json:"Format,omitempty" name:"Format"`
+
+	// 是否禁止视频低码率转高码率，取值范围：
+	// <li>0：否，</li>
+	// <li>1：是。</li>
+	DisableHigherVideoBitrate *uint64 `json:"DisableHigherVideoBitrate,omitempty" name:"DisableHigherVideoBitrate"`
+
+	// 是否禁止视频分辨率转高分辨率，取值范围：
+	// <li>0：否，</li>
+	// <li>1：是。</li>
+	DisableHigherVideoResolution *uint64 `json:"DisableHigherVideoResolution,omitempty" name:"DisableHigherVideoResolution"`
+
+	// 转自适应码流输入流参数信息，最多输入10路流。
+	// 注意：各个流的帧率必须保持一致；如果不一致，采用第一个流的帧率作为输出帧率。
+	StreamInfos []*AdaptiveStreamTemplate `json:"StreamInfos,omitempty" name:"StreamInfos" list`
+
+	// 模板描述信息，长度限制：256 个字符。
+	Comment *string `json:"Comment,omitempty" name:"Comment"`
+}
+
+func (r *ModifyAdaptiveDynamicStreamingTemplateRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyAdaptiveDynamicStreamingTemplateRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyAdaptiveDynamicStreamingTemplateResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifyAdaptiveDynamicStreamingTemplateResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyAdaptiveDynamicStreamingTemplateResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 

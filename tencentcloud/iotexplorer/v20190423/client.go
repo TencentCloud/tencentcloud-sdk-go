@@ -143,6 +143,31 @@ func (c *Client) CreateDevice(request *CreateDeviceRequest) (response *CreateDev
     return
 }
 
+func NewCreateLoRaGatewayRequest() (request *CreateLoRaGatewayRequest) {
+    request = &CreateLoRaGatewayRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "CreateLoRaGateway")
+    return
+}
+
+func NewCreateLoRaGatewayResponse() (response *CreateLoRaGatewayResponse) {
+    response = &CreateLoRaGatewayResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 创建新 LoRa 网关设备接口
+func (c *Client) CreateLoRaGateway(request *CreateLoRaGatewayRequest) (response *CreateLoRaGatewayResponse, err error) {
+    if request == nil {
+        request = NewCreateLoRaGatewayRequest()
+    }
+    response = NewCreateLoRaGatewayResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateProjectRequest() (request *CreateProjectRequest) {
     request = &CreateProjectRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -439,6 +464,31 @@ func (c *Client) GetDeviceList(request *GetDeviceListRequest) (response *GetDevi
         request = NewGetDeviceListRequest()
     }
     response = NewGetDeviceListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewGetLoRaGatewayListRequest() (request *GetLoRaGatewayListRequest) {
+    request = &GetLoRaGatewayListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "GetLoRaGatewayList")
+    return
+}
+
+func NewGetLoRaGatewayListResponse() (response *GetLoRaGatewayListResponse) {
+    response = &GetLoRaGatewayListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 获取 LoRa 网关列表接口
+func (c *Client) GetLoRaGatewayList(request *GetLoRaGatewayListRequest) (response *GetLoRaGatewayListResponse, err error) {
+    if request == nil {
+        request = NewGetLoRaGatewayListRequest()
+    }
+    response = NewGetLoRaGatewayListResponse()
     err = c.Send(request, response)
     return
 }

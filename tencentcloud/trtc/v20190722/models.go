@@ -183,15 +183,15 @@ type DescribeCallDetailRequest struct {
 	// sysCpu：系统 CPU使用率；
 	// aBit：上/下行音频码率；
 	// aBlock：音频卡顿时长；
-	// vBit：上/下行视频码率；
-	// vCapFps：视频采集帧率；
-	// vEncFps：视频发送帧率；
-	// vDecFps：渲染帧率；
-	// vBlock：视频卡顿时长；
+	// bigvBit：上/下行视频码率；
+	// bigvCapFps：视频采集帧率；
+	// bigvEncFps：视频发送帧率；
+	// bigvDecFps：渲染帧率；
+	// bigvBlock：视频卡顿时长；
 	// aLoss：上/下行音频丢包；
-	// vLoss：上/下行视频丢包；
-	// vWidth：上/下行分辨率宽；
-	// vHeight：上/下行分辨率高
+	// bigvLoss：上/下行视频丢包；
+	// bigvWidth：上/下行分辨率宽；
+	// bigvHeight：上/下行分辨率高
 	DataType []*string `json:"DataType,omitempty" name:"DataType" list`
 }
 

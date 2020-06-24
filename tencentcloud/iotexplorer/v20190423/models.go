@@ -234,6 +234,61 @@ func (r *CreateDeviceResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type CreateLoRaGatewayRequest struct {
+	*tchttp.BaseRequest
+
+	// LoRa 网关Id
+	GatewayId *string `json:"GatewayId,omitempty" name:"GatewayId"`
+
+	// 网关名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 详情描述
+	Description *string `json:"Description,omitempty" name:"Description"`
+
+	// 位置坐标
+	Location *LoRaGatewayLocation `json:"Location,omitempty" name:"Location"`
+
+	// 位置信息
+	Position *string `json:"Position,omitempty" name:"Position"`
+
+	// 位置详情
+	PositionDetails *string `json:"PositionDetails,omitempty" name:"PositionDetails"`
+
+	// 是否公开
+	IsPublic *bool `json:"IsPublic,omitempty" name:"IsPublic"`
+}
+
+func (r *CreateLoRaGatewayRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateLoRaGatewayRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateLoRaGatewayResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// LoRa 网关信息
+		Gateway *LoRaGatewayItem `json:"Gateway,omitempty" name:"Gateway"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateLoRaGatewayResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateLoRaGatewayResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type CreateProjectRequest struct {
 	*tchttp.BaseRequest
 
@@ -862,6 +917,53 @@ func (r *GetDeviceListResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type GetLoRaGatewayListRequest struct {
+	*tchttp.BaseRequest
+
+	// 是否是社区网关
+	IsCommunity *bool `json:"IsCommunity,omitempty" name:"IsCommunity"`
+
+	// 偏移量
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 限制个数
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+func (r *GetLoRaGatewayListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *GetLoRaGatewayListRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type GetLoRaGatewayListResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 返回总数
+		Total *uint64 `json:"Total,omitempty" name:"Total"`
+
+		// 返回详情项
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Gateways []*LoRaGatewayItem `json:"Gateways,omitempty" name:"Gateways" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *GetLoRaGatewayListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *GetLoRaGatewayListResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type GetProjectListRequest struct {
 	*tchttp.BaseRequest
 
@@ -1022,6 +1124,54 @@ func (r *ListEventHistoryResponse) ToJsonString() string {
 
 func (r *ListEventHistoryResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
+}
+
+type LoRaGatewayItem struct {
+
+	// LoRa 网关Id
+	GatewayId *string `json:"GatewayId,omitempty" name:"GatewayId"`
+
+	// 是否是公开网关
+	IsPublic *bool `json:"IsPublic,omitempty" name:"IsPublic"`
+
+	// 网关描述
+	Description *string `json:"Description,omitempty" name:"Description"`
+
+	// 网关名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 网关位置信息
+	Position *string `json:"Position,omitempty" name:"Position"`
+
+	// 网关位置详情
+	PositionDetails *string `json:"PositionDetails,omitempty" name:"PositionDetails"`
+
+	// LoRa 网关位置坐标
+	Location *LoRaGatewayLocation `json:"Location,omitempty" name:"Location"`
+
+	// 最后更新时间
+	UpdatedAt *string `json:"UpdatedAt,omitempty" name:"UpdatedAt"`
+
+	// 创建时间
+	CreatedAt *string `json:"CreatedAt,omitempty" name:"CreatedAt"`
+
+	// 最后上报时间
+	LastSeenAt *string `json:"LastSeenAt,omitempty" name:"LastSeenAt"`
+}
+
+type LoRaGatewayLocation struct {
+
+	// 准确度
+	Accuracy *float64 `json:"Accuracy,omitempty" name:"Accuracy"`
+
+	// 海拔
+	Altitude *float64 `json:"Altitude,omitempty" name:"Altitude"`
+
+	// 纬度
+	Latitude *float64 `json:"Latitude,omitempty" name:"Latitude"`
+
+	// 精度
+	Longitude *float64 `json:"Longitude,omitempty" name:"Longitude"`
 }
 
 type ModifyModelDefinitionRequest struct {

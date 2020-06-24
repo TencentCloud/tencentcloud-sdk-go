@@ -1,29 +1,10 @@
 # 本版本更新包含以下内容：
 
-## 云开发 CloudBase(tcb) 版本：2018-06-08
+## 物联网开发平台(iotexplorer) 版本：2019-04-23
 
-### 第 12 次发布
+### 第 9 次发布
 
-发布时间：2020-06-23 08:17:01
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [EndUserInfo](https://cloud.tencent.com/document/api/876/34822#EndUserInfo)
-
-	* 新增成员：HasPassword
-
-
-
-
-## 实时音视频(trtc) 版本：2019-07-22
-
-### 第 10 次发布
-
-发布时间：2020-06-23 08:20:35
+发布时间：2020-06-24 08:12:41
 
 本次发布包含了以下内容：
 
@@ -31,12 +12,51 @@
 
 新增接口：
 
-* [DescribeAbnormalEvent](https://cloud.tencent.com/document/api/647/45712)
+* [CreateLoRaGateway](https://cloud.tencent.com/document/api/1081/45745)
+* [GetLoRaGatewayList](https://cloud.tencent.com/document/api/1081/45744)
 
 新增数据结构：
 
-* [AbnormalEvent](https://cloud.tencent.com/document/api/647/44055#AbnormalEvent)
-* [AbnormalExperience](https://cloud.tencent.com/document/api/647/44055#AbnormalExperience)
+* [LoRaGatewayItem](https://cloud.tencent.com/document/api/1081/34988#LoRaGatewayItem)
+* [LoRaGatewayLocation](https://cloud.tencent.com/document/api/1081/34988#LoRaGatewayLocation)
+
+
+
+## 视频处理(mps) 版本：2019-06-12
+
+### 第 20 次发布
+
+发布时间：2020-06-24 08:14:30
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CreateAdaptiveDynamicStreamingTemplate](https://cloud.tencent.com/document/api/862/45749)
+* [DeleteAdaptiveDynamicStreamingTemplate](https://cloud.tencent.com/document/api/862/45748)
+* [DescribeAdaptiveDynamicStreamingTemplates](https://cloud.tencent.com/document/api/862/45747)
+* [ModifyAdaptiveDynamicStreamingTemplate](https://cloud.tencent.com/document/api/862/45746)
+
+新增数据结构：
+
+* [AdaptiveDynamicStreamingInfoItem](https://cloud.tencent.com/document/api/862/37615#AdaptiveDynamicStreamingInfoItem)
+* [AdaptiveDynamicStreamingTaskInput](https://cloud.tencent.com/document/api/862/37615#AdaptiveDynamicStreamingTaskInput)
+* [AdaptiveDynamicStreamingTemplate](https://cloud.tencent.com/document/api/862/37615#AdaptiveDynamicStreamingTemplate)
+* [AdaptiveStreamTemplate](https://cloud.tencent.com/document/api/862/37615#AdaptiveStreamTemplate)
+* [MediaProcessTaskAdaptiveDynamicStreamingResult](https://cloud.tencent.com/document/api/862/37615#MediaProcessTaskAdaptiveDynamicStreamingResult)
+
+修改数据结构：
+
+* [MediaProcessTaskInput](https://cloud.tencent.com/document/api/862/37615#MediaProcessTaskInput)
+
+	* 新增成员：AdaptiveDynamicStreamingTaskSet
+
+* [MediaProcessTaskResult](https://cloud.tencent.com/document/api/862/37615#MediaProcessTaskResult)
+
+	* 新增成员：AdaptiveDynamicStreamingTask
+
 
 
 
@@ -14716,6 +14736,24 @@
 
 ## 物联网开发平台(iotexplorer) 版本：2019-04-23
 
+### 第 9 次发布
+
+发布时间：2020-06-24 08:12:41
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[CreateLoRaGateway](https://cloud.tencent.com/document/api/1081/45745)](https://cloud.tencent.com/document/api/#/#)
+* [[GetLoRaGatewayList](https://cloud.tencent.com/document/api/1081/45744)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[LoRaGatewayItem](https://cloud.tencent.com/document/api/1081/34988#LoRaGatewayItem)](https://cloud.tencent.com/document/api/1081/34988#[LoRaGatewayItem](https://cloud.tencent.com/document/api/1081/34988#LoRaGatewayItem))
+* [[LoRaGatewayLocation](https://cloud.tencent.com/document/api/1081/34988#LoRaGatewayLocation)](https://cloud.tencent.com/document/api/1081/34988#[LoRaGatewayLocation](https://cloud.tencent.com/document/api/1081/34988#LoRaGatewayLocation))
+
 ### 第 8 次发布
 
 发布时间：2020-03-19 08:09:46
@@ -17328,6 +17366,40 @@
 
 
 ## 视频处理(mps) 版本：2019-06-12
+
+### 第 20 次发布
+
+发布时间：2020-06-24 08:14:30
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[CreateAdaptiveDynamicStreamingTemplate](https://cloud.tencent.com/document/api/862/45749)](https://cloud.tencent.com/document/api/#/#)
+* [[DeleteAdaptiveDynamicStreamingTemplate](https://cloud.tencent.com/document/api/862/45748)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeAdaptiveDynamicStreamingTemplates](https://cloud.tencent.com/document/api/862/45747)](https://cloud.tencent.com/document/api/#/#)
+* [[ModifyAdaptiveDynamicStreamingTemplate](https://cloud.tencent.com/document/api/862/45746)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[AdaptiveDynamicStreamingInfoItem](https://cloud.tencent.com/document/api/862/37615#AdaptiveDynamicStreamingInfoItem)](https://cloud.tencent.com/document/api/862/37615#[AdaptiveDynamicStreamingInfoItem](https://cloud.tencent.com/document/api/862/37615#AdaptiveDynamicStreamingInfoItem))
+* [[AdaptiveDynamicStreamingTaskInput](https://cloud.tencent.com/document/api/862/37615#AdaptiveDynamicStreamingTaskInput)](https://cloud.tencent.com/document/api/862/37615#[AdaptiveDynamicStreamingTaskInput](https://cloud.tencent.com/document/api/862/37615#AdaptiveDynamicStreamingTaskInput))
+* [[AdaptiveDynamicStreamingTemplate](https://cloud.tencent.com/document/api/862/37615#AdaptiveDynamicStreamingTemplate)](https://cloud.tencent.com/document/api/862/37615#[AdaptiveDynamicStreamingTemplate](https://cloud.tencent.com/document/api/862/37615#AdaptiveDynamicStreamingTemplate))
+* [[AdaptiveStreamTemplate](https://cloud.tencent.com/document/api/862/37615#AdaptiveStreamTemplate)](https://cloud.tencent.com/document/api/862/37615#[AdaptiveStreamTemplate](https://cloud.tencent.com/document/api/862/37615#AdaptiveStreamTemplate))
+* [[MediaProcessTaskAdaptiveDynamicStreamingResult](https://cloud.tencent.com/document/api/862/37615#MediaProcessTaskAdaptiveDynamicStreamingResult)](https://cloud.tencent.com/document/api/862/37615#[MediaProcessTaskAdaptiveDynamicStreamingResult](https://cloud.tencent.com/document/api/862/37615#MediaProcessTaskAdaptiveDynamicStreamingResult))
+
+修改数据结构：
+
+* [MediaProcessTaskInput](https://cloud.tencent.com/document/api/862/37615#MediaProcessTaskInput)
+
+	* 新增成员：AdaptiveDynamicStreamingTaskSet
+
+* [MediaProcessTaskResult](https://cloud.tencent.com/document/api/862/37615#MediaProcessTaskResult)
+
+	* 新增成员：AdaptiveDynamicStreamingTask
+
 
 ### 第 19 次发布
 
@@ -24853,12 +24925,12 @@
 
 新增接口：
 
-* [[DescribeAbnormalEvent](https://cloud.tencent.com/document/api/647/45712)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeAbnormalEvent](https://cloud.tencent.com/document/api/647/45712)
 
 新增数据结构：
 
-* [[AbnormalEvent](https://cloud.tencent.com/document/api/647/44055#AbnormalEvent)](https://cloud.tencent.com/document/api/647/44055#[AbnormalEvent](https://cloud.tencent.com/document/api/647/44055#AbnormalEvent))
-* [[AbnormalExperience](https://cloud.tencent.com/document/api/647/44055#AbnormalExperience)](https://cloud.tencent.com/document/api/647/44055#[AbnormalExperience](https://cloud.tencent.com/document/api/647/44055#AbnormalExperience))
+* [AbnormalEvent](https://cloud.tencent.com/document/api/647/44055#AbnormalEvent)
+* [AbnormalExperience](https://cloud.tencent.com/document/api/647/44055#AbnormalExperience)
 
 ### 第 9 次发布
 
