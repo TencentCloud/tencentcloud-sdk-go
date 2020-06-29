@@ -512,6 +512,43 @@ func (r *DescribeWhiteBoxDecryptKeyResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeWhiteBoxDeviceFingerprintsRequest struct {
+	*tchttp.BaseRequest
+
+	// 白盒密钥ID
+	KeyId *string `json:"KeyId,omitempty" name:"KeyId"`
+}
+
+func (r *DescribeWhiteBoxDeviceFingerprintsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeWhiteBoxDeviceFingerprintsRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeWhiteBoxDeviceFingerprintsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 设备指纹列表
+		DeviceFingerprints []*DeviceFingerprint `json:"DeviceFingerprints,omitempty" name:"DeviceFingerprints" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeWhiteBoxDeviceFingerprintsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeWhiteBoxDeviceFingerprintsResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeWhiteBoxKeyDetailsRequest struct {
 	*tchttp.BaseRequest
 
@@ -618,6 +655,16 @@ func (r *DescribeWhiteBoxServiceStatusResponse) ToJsonString() string {
 
 func (r *DescribeWhiteBoxServiceStatusResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
+}
+
+type DeviceFingerprint struct {
+
+	// 指纹信息，由设备指纹采集工具采集获得，格式满足正则表达式：^[0-9a-f]{8}[\-][0-9a-f]{14}[\-][0-9a-f]{14}[\-][0-9a-f]{14}[\-][0-9a-f]{16}$
+	Identity *string `json:"Identity,omitempty" name:"Identity"`
+
+	// 描述信息，如：IP，设备名称等，最大1024字节
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Description *string `json:"Description,omitempty" name:"Description"`
 }
 
 type DisableKeyRequest struct {
@@ -1554,6 +1601,43 @@ func (r *ListKeysResponse) ToJsonString() string {
 }
 
 func (r *ListKeysResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type OverwriteWhiteBoxDeviceFingerprintsRequest struct {
+	*tchttp.BaseRequest
+
+	// 白盒密钥ID
+	KeyId *string `json:"KeyId,omitempty" name:"KeyId"`
+
+	// 设备指纹列表，如果列表为空，则表示删除该密钥对应的所有指纹信息。列表最大长度不超过200。
+	DeviceFingerprints []*DeviceFingerprint `json:"DeviceFingerprints,omitempty" name:"DeviceFingerprints" list`
+}
+
+func (r *OverwriteWhiteBoxDeviceFingerprintsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *OverwriteWhiteBoxDeviceFingerprintsRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type OverwriteWhiteBoxDeviceFingerprintsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *OverwriteWhiteBoxDeviceFingerprintsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *OverwriteWhiteBoxDeviceFingerprintsResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 

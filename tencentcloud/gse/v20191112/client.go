@@ -443,6 +443,31 @@ func (c *Client) StartGameServerSessionPlacement(request *StartGameServerSession
     return
 }
 
+func NewStartMatchPlacementRequest() (request *StartMatchPlacementRequest) {
+    request = &StartMatchPlacementRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("gse", APIVersion, "StartMatchPlacement")
+    return
+}
+
+func NewStartMatchPlacementResponse() (response *StartMatchPlacementResponse) {
+    response = &StartMatchPlacementResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（StartMatchPlacement）用于开始匹配放置游戏服务器会话
+func (c *Client) StartMatchPlacement(request *StartMatchPlacementRequest) (response *StartMatchPlacementResponse, err error) {
+    if request == nil {
+        request = NewStartMatchPlacementRequest()
+    }
+    response = NewStartMatchPlacementResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewStopGameServerSessionPlacementRequest() (request *StopGameServerSessionPlacementRequest) {
     request = &StopGameServerSessionPlacementRequest{
         BaseRequest: &tchttp.BaseRequest{},

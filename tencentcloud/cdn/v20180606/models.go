@@ -945,6 +945,7 @@ type DescribeCdnDataRequest struct {
 	// ipv4：指定查询 ipv4 对应指标
 	// ipv6：指定查询 ipv6 对应指标
 	// 指定IP协议查询时，不可同时指定省份、运营商查询
+	// 注意：非IPv6白名单用户不可指定ipv4、ipv6进行查询
 	IpProtocol *string `json:"IpProtocol,omitempty" name:"IpProtocol"`
 
 	// 指定服务地域查询，不填充表示查询中国境内CDN数据
@@ -1800,16 +1801,16 @@ func (r *DescribePushTasksResponse) FromJsonString(s string) error {
 type DescribeReportDataRequest struct {
 	*tchttp.BaseRequest
 
-	// 查询起始时间
+	// 查询起始时间：yyyy-MM-dd
 	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
 
-	// 查询结束时间
+	// 查询结束时间：yyyy-MM-dd
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 
 	// 报表类型
 	// daily：日报表
-	// weekly：周报表
-	// monthly：月报表
+	// weekly：周报表（周一至周日）
+	// monthly：月报表（自然月）
 	ReportType *string `json:"ReportType,omitempty" name:"ReportType"`
 
 	// 域名加速区域
@@ -2769,13 +2770,13 @@ func (r *ListClsTopicDomainsResponse) FromJsonString(s string) error {
 type ListTopDataRequest struct {
 	*tchttp.BaseRequest
 
-	// 查询起始日期，如：2018-09-09
+	// 查询起始日期：yyyy-MM-dd HH:mm:ss
 	// 仅支持按天粒度的数据查询，取入参中的天信息作为起始日期
 	// 返回大于等于起始日期当天 00:00:00 点产生的数据
 	// 仅支持 90 天内数据查询
 	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
 
-	// 查询结束日期，如：2018-09-10
+	// 查询结束日期：yyyy-MM-dd HH:mm:ss
 	// 仅支持按天粒度的数据查询，取入参中的天信息作为结束日期
 	// 返回小于等于结束日期当天 23:59:59 产生的数据
 	// EndTime 需要大于等于 StartTime

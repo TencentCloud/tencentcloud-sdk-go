@@ -1,10 +1,26 @@
 # 本版本更新包含以下内容：
 
-## 物联网开发平台(iotexplorer) 版本：2019-04-23
+## 游戏服务器引擎(gse) 版本：2019-11-12
+
+### 第 6 次发布
+
+发布时间：2020-06-29 08:02:16
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [StartMatchPlacement](https://cloud.tencent.com/document/api/1165/45804)
+
+
+
+## 密钥管理系统(kms) 版本：2019-01-18
 
 ### 第 9 次发布
 
-发布时间：2020-06-24 08:12:41
+发布时间：2020-06-29 08:12:11
 
 本次发布包含了以下内容：
 
@@ -12,21 +28,20 @@
 
 新增接口：
 
-* [CreateLoRaGateway](https://cloud.tencent.com/document/api/1081/45745)
-* [GetLoRaGatewayList](https://cloud.tencent.com/document/api/1081/45744)
+* [DescribeWhiteBoxDeviceFingerprints](https://cloud.tencent.com/document/api/573/45806)
+* [OverwriteWhiteBoxDeviceFingerprints](https://cloud.tencent.com/document/api/573/45805)
 
 新增数据结构：
 
-* [LoRaGatewayItem](https://cloud.tencent.com/document/api/1081/34988#LoRaGatewayItem)
-* [LoRaGatewayLocation](https://cloud.tencent.com/document/api/1081/34988#LoRaGatewayLocation)
+* [DeviceFingerprint](https://cloud.tencent.com/document/api/573/34431#DeviceFingerprint)
 
 
 
-## 视频处理(mps) 版本：2019-06-12
+## 文字识别(ocr) 版本：2018-11-19
 
-### 第 20 次发布
+### 第 26 次发布
 
-发布时间：2020-06-24 08:14:30
+发布时间：2020-06-29 08:14:24
 
 本次发布包含了以下内容：
 
@@ -34,29 +49,29 @@
 
 新增接口：
 
-* [CreateAdaptiveDynamicStreamingTemplate](https://cloud.tencent.com/document/api/862/45749)
-* [DeleteAdaptiveDynamicStreamingTemplate](https://cloud.tencent.com/document/api/862/45748)
-* [DescribeAdaptiveDynamicStreamingTemplates](https://cloud.tencent.com/document/api/862/45747)
-* [ModifyAdaptiveDynamicStreamingTemplate](https://cloud.tencent.com/document/api/862/45746)
+* [SealOCR](https://cloud.tencent.com/document/api/866/45807)
+
+
+
+## 游戏数据库 TcaplusDB(tcaplusdb) 版本：2019-08-23
+
+### 第 7 次发布
+
+发布时间：2020-06-29 08:16:45
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DeleteTableIndex](https://cloud.tencent.com/document/api/596/45809)
+* [SetTableIndex](https://cloud.tencent.com/document/api/596/45808)
 
 新增数据结构：
 
-* [AdaptiveDynamicStreamingInfoItem](https://cloud.tencent.com/document/api/862/37615#AdaptiveDynamicStreamingInfoItem)
-* [AdaptiveDynamicStreamingTaskInput](https://cloud.tencent.com/document/api/862/37615#AdaptiveDynamicStreamingTaskInput)
-* [AdaptiveDynamicStreamingTemplate](https://cloud.tencent.com/document/api/862/37615#AdaptiveDynamicStreamingTemplate)
-* [AdaptiveStreamTemplate](https://cloud.tencent.com/document/api/862/37615#AdaptiveStreamTemplate)
-* [MediaProcessTaskAdaptiveDynamicStreamingResult](https://cloud.tencent.com/document/api/862/37615#MediaProcessTaskAdaptiveDynamicStreamingResult)
-
-修改数据结构：
-
-* [MediaProcessTaskInput](https://cloud.tencent.com/document/api/862/37615#MediaProcessTaskInput)
-
-	* 新增成员：AdaptiveDynamicStreamingTaskSet
-
-* [MediaProcessTaskResult](https://cloud.tencent.com/document/api/862/37615#MediaProcessTaskResult)
-
-	* 新增成员：AdaptiveDynamicStreamingTask
-
+* [FieldInfo](https://cloud.tencent.com/document/api/596/39686#FieldInfo)
+* [SelectedTableWithField](https://cloud.tencent.com/document/api/596/39686#SelectedTableWithField)
 
 
 
@@ -13210,6 +13225,18 @@
 
 ## 游戏服务器引擎(gse) 版本：2019-11-12
 
+### 第 6 次发布
+
+发布时间：2020-06-29 08:02:16
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[StartMatchPlacement](https://cloud.tencent.com/document/api/1165/45804)](https://cloud.tencent.com/document/api/#/#)
+
 ### 第 5 次发布
 
 发布时间：2020-05-18 08:02:15
@@ -14746,13 +14773,13 @@
 
 新增接口：
 
-* [[CreateLoRaGateway](https://cloud.tencent.com/document/api/1081/45745)](https://cloud.tencent.com/document/api/#/#)
-* [[GetLoRaGatewayList](https://cloud.tencent.com/document/api/1081/45744)](https://cloud.tencent.com/document/api/#/#)
+* [CreateLoRaGateway](https://cloud.tencent.com/document/api/1081/45745)
+* [GetLoRaGatewayList](https://cloud.tencent.com/document/api/1081/45744)
 
 新增数据结构：
 
-* [[LoRaGatewayItem](https://cloud.tencent.com/document/api/1081/34988#LoRaGatewayItem)](https://cloud.tencent.com/document/api/1081/34988#[LoRaGatewayItem](https://cloud.tencent.com/document/api/1081/34988#LoRaGatewayItem))
-* [[LoRaGatewayLocation](https://cloud.tencent.com/document/api/1081/34988#LoRaGatewayLocation)](https://cloud.tencent.com/document/api/1081/34988#[LoRaGatewayLocation](https://cloud.tencent.com/document/api/1081/34988#LoRaGatewayLocation))
+* [LoRaGatewayItem](https://cloud.tencent.com/document/api/1081/34988#LoRaGatewayItem)
+* [LoRaGatewayLocation](https://cloud.tencent.com/document/api/1081/34988#LoRaGatewayLocation)
 
 ### 第 8 次发布
 
@@ -15239,6 +15266,23 @@
 
 
 ## 密钥管理系统(kms) 版本：2019-01-18
+
+### 第 9 次发布
+
+发布时间：2020-06-29 08:12:11
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeWhiteBoxDeviceFingerprints](https://cloud.tencent.com/document/api/573/45806)](https://cloud.tencent.com/document/api/#/#)
+* [[OverwriteWhiteBoxDeviceFingerprints](https://cloud.tencent.com/document/api/573/45805)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[DeviceFingerprint](https://cloud.tencent.com/document/api/573/34431#DeviceFingerprint)](https://cloud.tencent.com/document/api/573/34431#[DeviceFingerprint](https://cloud.tencent.com/document/api/573/34431#DeviceFingerprint))
 
 ### 第 8 次发布
 
@@ -17377,18 +17421,18 @@
 
 新增接口：
 
-* [[CreateAdaptiveDynamicStreamingTemplate](https://cloud.tencent.com/document/api/862/45749)](https://cloud.tencent.com/document/api/#/#)
-* [[DeleteAdaptiveDynamicStreamingTemplate](https://cloud.tencent.com/document/api/862/45748)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeAdaptiveDynamicStreamingTemplates](https://cloud.tencent.com/document/api/862/45747)](https://cloud.tencent.com/document/api/#/#)
-* [[ModifyAdaptiveDynamicStreamingTemplate](https://cloud.tencent.com/document/api/862/45746)](https://cloud.tencent.com/document/api/#/#)
+* [CreateAdaptiveDynamicStreamingTemplate](https://cloud.tencent.com/document/api/862/45749)
+* [DeleteAdaptiveDynamicStreamingTemplate](https://cloud.tencent.com/document/api/862/45748)
+* [DescribeAdaptiveDynamicStreamingTemplates](https://cloud.tencent.com/document/api/862/45747)
+* [ModifyAdaptiveDynamicStreamingTemplate](https://cloud.tencent.com/document/api/862/45746)
 
 新增数据结构：
 
-* [[AdaptiveDynamicStreamingInfoItem](https://cloud.tencent.com/document/api/862/37615#AdaptiveDynamicStreamingInfoItem)](https://cloud.tencent.com/document/api/862/37615#[AdaptiveDynamicStreamingInfoItem](https://cloud.tencent.com/document/api/862/37615#AdaptiveDynamicStreamingInfoItem))
-* [[AdaptiveDynamicStreamingTaskInput](https://cloud.tencent.com/document/api/862/37615#AdaptiveDynamicStreamingTaskInput)](https://cloud.tencent.com/document/api/862/37615#[AdaptiveDynamicStreamingTaskInput](https://cloud.tencent.com/document/api/862/37615#AdaptiveDynamicStreamingTaskInput))
-* [[AdaptiveDynamicStreamingTemplate](https://cloud.tencent.com/document/api/862/37615#AdaptiveDynamicStreamingTemplate)](https://cloud.tencent.com/document/api/862/37615#[AdaptiveDynamicStreamingTemplate](https://cloud.tencent.com/document/api/862/37615#AdaptiveDynamicStreamingTemplate))
-* [[AdaptiveStreamTemplate](https://cloud.tencent.com/document/api/862/37615#AdaptiveStreamTemplate)](https://cloud.tencent.com/document/api/862/37615#[AdaptiveStreamTemplate](https://cloud.tencent.com/document/api/862/37615#AdaptiveStreamTemplate))
-* [[MediaProcessTaskAdaptiveDynamicStreamingResult](https://cloud.tencent.com/document/api/862/37615#MediaProcessTaskAdaptiveDynamicStreamingResult)](https://cloud.tencent.com/document/api/862/37615#[MediaProcessTaskAdaptiveDynamicStreamingResult](https://cloud.tencent.com/document/api/862/37615#MediaProcessTaskAdaptiveDynamicStreamingResult))
+* [AdaptiveDynamicStreamingInfoItem](https://cloud.tencent.com/document/api/862/37615#AdaptiveDynamicStreamingInfoItem)
+* [AdaptiveDynamicStreamingTaskInput](https://cloud.tencent.com/document/api/862/37615#AdaptiveDynamicStreamingTaskInput)
+* [AdaptiveDynamicStreamingTemplate](https://cloud.tencent.com/document/api/862/37615#AdaptiveDynamicStreamingTemplate)
+* [AdaptiveStreamTemplate](https://cloud.tencent.com/document/api/862/37615#AdaptiveStreamTemplate)
+* [MediaProcessTaskAdaptiveDynamicStreamingResult](https://cloud.tencent.com/document/api/862/37615#MediaProcessTaskAdaptiveDynamicStreamingResult)
 
 修改数据结构：
 
@@ -18703,6 +18747,18 @@
 
 
 ## 文字识别(ocr) 版本：2018-11-19
+
+### 第 26 次发布
+
+发布时间：2020-06-29 08:14:24
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[SealOCR](https://cloud.tencent.com/document/api/866/45807)](https://cloud.tencent.com/document/api/#/#)
 
 ### 第 25 次发布
 
@@ -22049,6 +22105,24 @@
 
 
 ## 游戏数据库 TcaplusDB(tcaplusdb) 版本：2019-08-23
+
+### 第 7 次发布
+
+发布时间：2020-06-29 08:16:45
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DeleteTableIndex](https://cloud.tencent.com/document/api/596/45809)](https://cloud.tencent.com/document/api/#/#)
+* [[SetTableIndex](https://cloud.tencent.com/document/api/596/45808)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[FieldInfo](https://cloud.tencent.com/document/api/596/39686#FieldInfo)](https://cloud.tencent.com/document/api/596/39686#[FieldInfo](https://cloud.tencent.com/document/api/596/39686#FieldInfo))
+* [[SelectedTableWithField](https://cloud.tencent.com/document/api/596/39686#SelectedTableWithField)](https://cloud.tencent.com/document/api/596/39686#[SelectedTableWithField](https://cloud.tencent.com/document/api/596/39686#SelectedTableWithField))
 
 ### 第 6 次发布
 

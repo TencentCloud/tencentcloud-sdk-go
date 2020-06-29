@@ -1221,6 +1221,67 @@ func (r *StartGameServerSessionPlacementResponse) FromJsonString(s string) error
     return json.Unmarshal([]byte(s), &r)
 }
 
+type StartMatchPlacementRequest struct {
+	*tchttp.BaseRequest
+
+	// 开始部署游戏服务器会话的唯一标识符
+	PlacementId *string `json:"PlacementId,omitempty" name:"PlacementId"`
+
+	// 游戏服务器会话队列名称
+	GameServerSessionQueueName *string `json:"GameServerSessionQueueName,omitempty" name:"GameServerSessionQueueName"`
+
+	// 游戏服务器允许同时连接到游戏会话的最大玩家数量
+	MaximumPlayerSessionCount *uint64 `json:"MaximumPlayerSessionCount,omitempty" name:"MaximumPlayerSessionCount"`
+
+	// 玩家游戏会话信息
+	DesiredPlayerSessions []*DesiredPlayerSession `json:"DesiredPlayerSessions,omitempty" name:"DesiredPlayerSessions" list`
+
+	// 玩家游戏会话属性
+	GameProperties []*GameProperty `json:"GameProperties,omitempty" name:"GameProperties" list`
+
+	// 游戏服务器会话数据
+	GameServerSessionData *string `json:"GameServerSessionData,omitempty" name:"GameServerSessionData"`
+
+	// 游戏服务器会话名称
+	GameServerSessionName *string `json:"GameServerSessionName,omitempty" name:"GameServerSessionName"`
+
+	// 玩家延迟
+	PlayerLatencies []*PlayerLatency `json:"PlayerLatencies,omitempty" name:"PlayerLatencies" list`
+
+	// 游戏匹配数据
+	MatchmakerData *string `json:"MatchmakerData,omitempty" name:"MatchmakerData"`
+}
+
+func (r *StartMatchPlacementRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *StartMatchPlacementRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type StartMatchPlacementResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 游戏服务器会话放置
+		GameServerSessionPlacement *GameServerSessionPlacement `json:"GameServerSessionPlacement,omitempty" name:"GameServerSessionPlacement"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *StartMatchPlacementResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *StartMatchPlacementResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type StopGameServerSessionPlacementRequest struct {
 	*tchttp.BaseRequest
 

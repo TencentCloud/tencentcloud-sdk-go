@@ -1296,6 +1296,31 @@ func (c *Client) ResidenceBookletOCR(request *ResidenceBookletOCRRequest) (respo
     return
 }
 
+func NewSealOCRRequest() (request *SealOCRRequest) {
+    request = &SealOCRRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ocr", APIVersion, "SealOCR")
+    return
+}
+
+func NewSealOCRResponse() (response *SealOCRResponse) {
+    response = &SealOCRResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 印章识别已支持各类印章，包括发票章，财务章等，适用于公文，票据等场景。
+func (c *Client) SealOCR(request *SealOCRRequest) (response *SealOCRResponse, err error) {
+    if request == nil {
+        request = NewSealOCRRequest()
+    }
+    response = NewSealOCRResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewShipInvoiceOCRRequest() (request *ShipInvoiceOCRRequest) {
     request = &ShipInvoiceOCRRequest{
         BaseRequest: &tchttp.BaseRequest{},

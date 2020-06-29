@@ -569,31 +569,31 @@ func (r *DismissRoomResponse) FromJsonString(s string) error {
 
 type EncodeParams struct {
 
-	// 混流-输出流音频采样率
+	// 混流-输出流音频采样率。取值为[96000, 88200, 64000, 48000, 44100, 32000,24000, 22050, 16000, 12000, 11025, 8000]。
 	AudioSampleRate *uint64 `json:"AudioSampleRate,omitempty" name:"AudioSampleRate"`
 
-	// 混流-输出流音频码率，单位Kbps
+	// 混流-输出流音频码率。取值范围[8,500]，单位为Kbps。
 	AudioBitrate *uint64 `json:"AudioBitrate,omitempty" name:"AudioBitrate"`
 
-	// 混流-输出流音频声道数
+	// 混流-输出流音频声道数，取值范围[1,2]。
 	AudioChannels *uint64 `json:"AudioChannels,omitempty" name:"AudioChannels"`
 
-	// 混流-输出流宽，音视频输出时必填
+	// 混流-输出流宽，音视频输出时必填。取值范围[0,1920]，单位为像素值。
 	VideoWidth *uint64 `json:"VideoWidth,omitempty" name:"VideoWidth"`
 
-	// 混流-输出流高，音视频输出时必填
+	// 混流-输出流高，音视频输出时必填。取值范围[0,1080]，单位为像素值。
 	VideoHeight *uint64 `json:"VideoHeight,omitempty" name:"VideoHeight"`
 
-	// 混流-输出流码率，单位Kbps，音视频输出时必填
+	// 混流-输出流码率，音视频输出时必填。取值范围[1,10000]，单位为Kbps。
 	VideoBitrate *uint64 `json:"VideoBitrate,omitempty" name:"VideoBitrate"`
 
-	// 混流-输出流帧率，音视频输出时必填
+	// 混流-输出流帧率，音视频输出时必填。取值为[6,12,15,24,30,48,60]，不在上述帧率值内系统会自动调整。
 	VideoFramerate *uint64 `json:"VideoFramerate,omitempty" name:"VideoFramerate"`
 
-	// 混流-输出流gop，音视频输出时必填
+	// 混流-输出流gop，音视频输出时必填。取值范围[1,5]，单位为秒。
 	VideoGop *uint64 `json:"VideoGop,omitempty" name:"VideoGop"`
 
-	// 混流-输出流背景色
+	// 混流-输出流背景色。
 	BackgroundColor *uint64 `json:"BackgroundColor,omitempty" name:"BackgroundColor"`
 }
 
@@ -645,13 +645,13 @@ type OutputParams struct {
 	// 直播流ID，该流ID不能与用户旁路的流ID相同。
 	StreamId *string `json:"StreamId,omitempty" name:"StreamId"`
 
-	// 填0：直播流为音视频(默认); 填1：直播流为纯音频
+	// 取值范围[0,1]， 填0：直播流为音视频(默认); 填1：直播流为纯音频
 	PureAudioStream *uint64 `json:"PureAudioStream,omitempty" name:"PureAudioStream"`
 
 	// 自定义录制文件名
 	RecordId *string `json:"RecordId,omitempty" name:"RecordId"`
 
-	// 填1：纯音频录制为mp3
+	// 取值范围[0,1]，填1：指定录制文件格式为mp3
 	RecordAudioOnly *uint64 `json:"RecordAudioOnly,omitempty" name:"RecordAudioOnly"`
 }
 

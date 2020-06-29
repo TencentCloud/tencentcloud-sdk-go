@@ -2790,6 +2790,54 @@ func (r *ResidenceBookletOCRResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type SealOCRRequest struct {
+	*tchttp.BaseRequest
+
+	// 图片的 Base64 值。要求图片经Base64编码后不超过 7M，分辨率建议500*800以上，支持PNG、JPG、JPEG、BMP格式。建议卡片部分占据图片2/3以上。
+	// 图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+	ImageBase64 *string `json:"ImageBase64,omitempty" name:"ImageBase64"`
+
+	// 图片的 Url 地址。要求图片经Base64编码后不超过 7M，分辨率建议500*800以上，支持PNG、JPG、JPEG、BMP格式。建议卡片部分占据图片2/3以上。图片下载时间不超过 3 秒。
+	// 建议图片存储于腾讯云，可保障更高的下载速度和稳定性。
+	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
+}
+
+func (r *SealOCRRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *SealOCRRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type SealOCRResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 印章内容
+		SealBody *string `json:"SealBody,omitempty" name:"SealBody"`
+
+		// 印章坐标
+		Location *Rect `json:"Location,omitempty" name:"Location"`
+
+		// 其它文本内容
+		OtherTexts []*string `json:"OtherTexts,omitempty" name:"OtherTexts" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *SealOCRResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *SealOCRResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type ShipInvoiceInfo struct {
 
 	// 识别出的字段名称（关键字）。

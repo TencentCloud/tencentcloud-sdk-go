@@ -1232,7 +1232,6 @@ type StartNotebookInstanceRequest struct {
 	*tchttp.BaseRequest
 
 	// Notebook实例名称
-	// 规则：^[a-zA-Z0-9](-*[a-zA-Z0-9])*$
 	NotebookInstanceName *string `json:"NotebookInstanceName,omitempty" name:"NotebookInstanceName"`
 
 	// 自动停止，可取值Enabled/Disabled

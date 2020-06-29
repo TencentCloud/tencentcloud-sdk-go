@@ -268,6 +268,31 @@ func (c *Client) DeleteTableGroup(request *DeleteTableGroupRequest) (response *D
     return
 }
 
+func NewDeleteTableIndexRequest() (request *DeleteTableIndexRequest) {
+    request = &DeleteTableIndexRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tcaplusdb", APIVersion, "DeleteTableIndex")
+    return
+}
+
+func NewDeleteTableIndexResponse() (response *DeleteTableIndexResponse) {
+    response = &DeleteTableIndexResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 删除表格的分布式索引
+func (c *Client) DeleteTableIndex(request *DeleteTableIndexRequest) (response *DeleteTableIndexResponse, err error) {
+    if request == nil {
+        request = NewDeleteTableIndexRequest()
+    }
+    response = NewDeleteTableIndexResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteTablesRequest() (request *DeleteTablesRequest) {
     request = &DeleteTablesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -839,6 +864,31 @@ func (c *Client) RollbackTables(request *RollbackTablesRequest) (response *Rollb
         request = NewRollbackTablesRequest()
     }
     response = NewRollbackTablesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewSetTableIndexRequest() (request *SetTableIndexRequest) {
+    request = &SetTableIndexRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tcaplusdb", APIVersion, "SetTableIndex")
+    return
+}
+
+func NewSetTableIndexResponse() (response *SetTableIndexResponse) {
+    response = &SetTableIndexResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 设置表格分布式索引
+func (c *Client) SetTableIndex(request *SetTableIndexRequest) (response *SetTableIndexResponse, err error) {
+    if request == nil {
+        request = NewSetTableIndexRequest()
+    }
+    response = NewSetTableIndexResponse()
     err = c.Send(request, response)
     return
 }

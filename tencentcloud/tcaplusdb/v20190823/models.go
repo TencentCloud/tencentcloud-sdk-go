@@ -471,6 +471,49 @@ func (r *DeleteTableGroupResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DeleteTableIndexRequest struct {
+	*tchttp.BaseRequest
+
+	// 表格所属集群实例ID
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 待删除分布式索引的表格列表
+	SelectedTables []*SelectedTableInfoNew `json:"SelectedTables,omitempty" name:"SelectedTables" list`
+}
+
+func (r *DeleteTableIndexRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteTableIndexRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteTableIndexResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 删除表格分布式索引结果数量
+		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 删除表格分布式索引结果列表
+		TableResults []*TableResultNew `json:"TableResults,omitempty" name:"TableResults" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DeleteTableIndexResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteTableIndexResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DeleteTablesRequest struct {
 	*tchttp.BaseRequest
 
@@ -1034,6 +1077,21 @@ type ErrorInfo struct {
 
 	// 错误信息
 	Message *string `json:"Message,omitempty" name:"Message"`
+}
+
+type FieldInfo struct {
+
+	// 表格字段名称
+	FieldName *string `json:"FieldName,omitempty" name:"FieldName"`
+
+	// 字段是否是主键字段
+	IsPrimaryKey *string `json:"IsPrimaryKey,omitempty" name:"IsPrimaryKey"`
+
+	// 字段类型
+	FieldType *string `json:"FieldType,omitempty" name:"FieldType"`
+
+	// 字段长度
+	FieldSize *int64 `json:"FieldSize,omitempty" name:"FieldSize"`
 }
 
 type Filter struct {
@@ -1712,6 +1770,73 @@ type SelectedTableInfoNew struct {
 
 	// Key回档文件内容，回档专用
 	FileContent *string `json:"FileContent,omitempty" name:"FileContent"`
+}
+
+type SelectedTableWithField struct {
+
+	// 表所属表格组ID
+	TableGroupId *string `json:"TableGroupId,omitempty" name:"TableGroupId"`
+
+	// 表格名称
+	TableName *string `json:"TableName,omitempty" name:"TableName"`
+
+	// 表实例ID
+	TableInstanceId *string `json:"TableInstanceId,omitempty" name:"TableInstanceId"`
+
+	// 表格描述语言类型：`PROTO`或`TDR`
+	TableIdlType *string `json:"TableIdlType,omitempty" name:"TableIdlType"`
+
+	// 表格数据结构类型：`GENERIC`或`LIST`
+	TableType *string `json:"TableType,omitempty" name:"TableType"`
+
+	// 待创建索引的字段列表
+	SelectedFields []*FieldInfo `json:"SelectedFields,omitempty" name:"SelectedFields" list`
+
+	// 索引分片数
+	ShardNum *uint64 `json:"ShardNum,omitempty" name:"ShardNum"`
+}
+
+type SetTableIndexRequest struct {
+	*tchttp.BaseRequest
+
+	// 表所属集群实例ID
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 待创建分布式索引表格列表
+	SelectedTables []*SelectedTableWithField `json:"SelectedTables,omitempty" name:"SelectedTables" list`
+}
+
+func (r *SetTableIndexRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *SetTableIndexRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type SetTableIndexResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 表格分布式索引创建结果数量
+		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 表格分布式索引创建结果列表
+		TableResults []*TableResultNew `json:"TableResults,omitempty" name:"TableResults" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *SetTableIndexResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *SetTableIndexResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
 }
 
 type TableGroupInfo struct {

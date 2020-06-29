@@ -318,6 +318,31 @@ func (c *Client) DescribeWhiteBoxDecryptKey(request *DescribeWhiteBoxDecryptKeyR
     return
 }
 
+func NewDescribeWhiteBoxDeviceFingerprintsRequest() (request *DescribeWhiteBoxDeviceFingerprintsRequest) {
+    request = &DescribeWhiteBoxDeviceFingerprintsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("kms", APIVersion, "DescribeWhiteBoxDeviceFingerprints")
+    return
+}
+
+func NewDescribeWhiteBoxDeviceFingerprintsResponse() (response *DescribeWhiteBoxDeviceFingerprintsResponse) {
+    response = &DescribeWhiteBoxDeviceFingerprintsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 获取指定密钥的设备指纹列表
+func (c *Client) DescribeWhiteBoxDeviceFingerprints(request *DescribeWhiteBoxDeviceFingerprintsRequest) (response *DescribeWhiteBoxDeviceFingerprintsResponse, err error) {
+    if request == nil {
+        request = NewDescribeWhiteBoxDeviceFingerprintsRequest()
+    }
+    response = NewDescribeWhiteBoxDeviceFingerprintsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeWhiteBoxKeyRequest() (request *DescribeWhiteBoxKeyRequest) {
     request = &DescribeWhiteBoxKeyRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -940,6 +965,31 @@ func (c *Client) ListKeys(request *ListKeysRequest) (response *ListKeysResponse,
         request = NewListKeysRequest()
     }
     response = NewListKeysResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewOverwriteWhiteBoxDeviceFingerprintsRequest() (request *OverwriteWhiteBoxDeviceFingerprintsRequest) {
+    request = &OverwriteWhiteBoxDeviceFingerprintsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("kms", APIVersion, "OverwriteWhiteBoxDeviceFingerprints")
+    return
+}
+
+func NewOverwriteWhiteBoxDeviceFingerprintsResponse() (response *OverwriteWhiteBoxDeviceFingerprintsResponse) {
+    response = &OverwriteWhiteBoxDeviceFingerprintsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 覆盖指定密钥的设备指纹信息
+func (c *Client) OverwriteWhiteBoxDeviceFingerprints(request *OverwriteWhiteBoxDeviceFingerprintsRequest) (response *OverwriteWhiteBoxDeviceFingerprintsResponse, err error) {
+    if request == nil {
+        request = NewOverwriteWhiteBoxDeviceFingerprintsRequest()
+    }
+    response = NewOverwriteWhiteBoxDeviceFingerprintsResponse()
     err = c.Send(request, response)
     return
 }
