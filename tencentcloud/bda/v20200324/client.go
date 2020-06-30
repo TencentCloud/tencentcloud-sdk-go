@@ -213,6 +213,31 @@ func (c *Client) DetectBody(request *DetectBodyRequest) (response *DetectBodyRes
     return
 }
 
+func NewDetectBodyJointsRequest() (request *DetectBodyJointsRequest) {
+    request = &DetectBodyJointsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("bda", APIVersion, "DetectBodyJoints")
+    return
+}
+
+func NewDetectBodyJointsResponse() (response *DetectBodyJointsResponse) {
+    response = &DetectBodyJointsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 检测图片中人体的14个关键点。建议用于人体图像清晰、无遮挡的场景。支持一张图片中存在多个人体的识别。
+func (c *Client) DetectBodyJoints(request *DetectBodyJointsRequest) (response *DetectBodyJointsResponse, err error) {
+    if request == nil {
+        request = NewDetectBodyJointsRequest()
+    }
+    response = NewDetectBodyJointsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewGetGroupListRequest() (request *GetGroupListRequest) {
     request = &GetGroupListRequest{
         BaseRequest: &tchttp.BaseRequest{},

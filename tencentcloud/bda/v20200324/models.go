@@ -106,6 +106,18 @@ type BodyDetectResult struct {
 	BodyAttributeInfo *BodyAttributeInfo `json:"BodyAttributeInfo,omitempty" name:"BodyAttributeInfo"`
 }
 
+type BodyJointsResult struct {
+
+	// 图中检测出来的人体框。
+	BoundBox *BoundRect `json:"BoundBox,omitempty" name:"BoundBox"`
+
+	// 14个人体关键点的坐标，人体关键点详见KeyPointInfo。
+	BodyJoints []*KeyPointInfo `json:"BodyJoints,omitempty" name:"BodyJoints" list`
+
+	// 检测出的人体置信度，0-1之间，数值越高越准确。
+	Confidence *float64 `json:"Confidence,omitempty" name:"Confidence"`
+}
+
 type BodyRect struct {
 
 	// 人体框左上角横坐标。
@@ -119,6 +131,21 @@ type BodyRect struct {
 
 	// 人体高度。
 	Height *uint64 `json:"Height,omitempty" name:"Height"`
+}
+
+type BoundRect struct {
+
+	// 人体框左上角横坐标。
+	X *int64 `json:"X,omitempty" name:"X"`
+
+	// 人体框左上角纵坐标。
+	Y *int64 `json:"Y,omitempty" name:"Y"`
+
+	// 人体宽度。
+	Width *int64 `json:"Width,omitempty" name:"Width"`
+
+	// 人体高度。
+	Height *int64 `json:"Height,omitempty" name:"Height"`
 }
 
 type Candidate struct {
@@ -363,6 +390,51 @@ func (r *DeletePersonResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DetectBodyJointsRequest struct {
+	*tchttp.BaseRequest
+
+	// 图片 base64 数据，base64 编码后大小不可超过5M。  
+	// 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
+	Image *string `json:"Image,omitempty" name:"Image"`
+
+	// 图片的 Url 。对应图片 base64 编码后大小不可超过5M。 
+	// Url、Image必须提供一个，如果都提供，只使用 Url。  
+	// 图片存储于腾讯云的Url可保障更高下载速度和稳定性，建议图片存储于腾讯云。 
+	// 非腾讯云存储的Url速度和稳定性可能受一定影响。  
+	// 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
+	Url *string `json:"Url,omitempty" name:"Url"`
+}
+
+func (r *DetectBodyJointsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DetectBodyJointsRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DetectBodyJointsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 图中检测出的人体框和人体关键点， 包含14个人体关键点的坐标，建议根据人体框置信度筛选出合格的人体；
+		BodyJointsResults []*BodyJointsResult `json:"BodyJointsResults,omitempty" name:"BodyJointsResults" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DetectBodyJointsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DetectBodyJointsResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DetectBodyRequest struct {
 	*tchttp.BaseRequest
 
@@ -544,6 +616,18 @@ type GroupInfo struct {
 	// Group的创建时间和日期 CreationTimestamp。CreationTimestamp 的值是自 Unix 纪元时间到Group创建时间的毫秒数。  
 	// Unix 纪元时间是 1970 年 1 月 1 日星期四，协调世界时 (UTC) 。
 	CreationTimestamp *uint64 `json:"CreationTimestamp,omitempty" name:"CreationTimestamp"`
+}
+
+type KeyPointInfo struct {
+
+	// 代表不同位置的人体关键点信息，返回值为以下集合中的一个 [头部,颈部,右肩,右肘,右腕,左肩,左肘,左腕,右髋,右膝,右踝,左髋,左膝,左踝]
+	KeyPointType *string `json:"KeyPointType,omitempty" name:"KeyPointType"`
+
+	// 人体关键点横坐标
+	X *float64 `json:"X,omitempty" name:"X"`
+
+	// 人体关键点纵坐标
+	Y *float64 `json:"Y,omitempty" name:"Y"`
 }
 
 type LowerBodyCloth struct {

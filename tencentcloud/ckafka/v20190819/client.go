@@ -68,6 +68,31 @@ func (c *Client) CreateAcl(request *CreateAclRequest) (response *CreateAclRespon
     return
 }
 
+func NewCreateInstancePreRequest() (request *CreateInstancePreRequest) {
+    request = &CreateInstancePreRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ckafka", APIVersion, "CreateInstancePre")
+    return
+}
+
+func NewCreateInstancePreResponse() (response *CreateInstancePreResponse) {
+    response = &CreateInstancePreResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 创建实例(预付费包年包月)
+func (c *Client) CreateInstancePre(request *CreateInstancePreRequest) (response *CreateInstancePreResponse, err error) {
+    if request == nil {
+        request = NewCreateInstancePreRequest()
+    }
+    response = NewCreateInstancePreResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreatePartitionRequest() (request *CreatePartitionRequest) {
     request = &CreatePartitionRequest{
         BaseRequest: &tchttp.BaseRequest{},

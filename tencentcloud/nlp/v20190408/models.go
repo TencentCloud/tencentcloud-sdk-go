@@ -878,10 +878,10 @@ func (r *SentenceEmbeddingResponse) FromJsonString(s string) error {
 type SentenceSimilarityRequest struct {
 	*tchttp.BaseRequest
 
-	// 计算相似度的源句子（仅支持UTF-8格式，不超过500字）
+	// 计算相似度的源句子（仅支持UTF-8格式，不超过500字符）
 	SrcText *string `json:"SrcText,omitempty" name:"SrcText"`
 
-	// 计算相似度的目标句子（仅支持UTF-8格式，不超过500字）
+	// 计算相似度的目标句子（仅支持UTF-8格式，不超过500字符）
 	TargetText *string `json:"TargetText,omitempty" name:"TargetText"`
 }
 
@@ -1110,10 +1110,10 @@ func (r *TextCorrectionResponse) FromJsonString(s string) error {
 type TextSimilarityRequest struct {
 	*tchttp.BaseRequest
 
-	// 需要与目标句子计算相似度的源句子（仅支持UTF-8格式，不超过500字）
+	// 需要与目标句子计算相似度的源句子（仅支持UTF-8格式，不超过500字符）
 	SrcText *string `json:"SrcText,omitempty" name:"SrcText"`
 
-	// 需要与源句子计算相似度的一个或多个目标句子（仅支持UTF-8格式，目标句子的数量不超过100个，每个句子不超过500字）
+	// 需要与源句子计算相似度的一个或多个目标句子（仅支持UTF-8格式，目标句子的数量不超过100个，每个句子不超过500字符）
 	// 注意：每成功计算1个目标句子与源句子的相似度算1次调用
 	TargetText []*string `json:"TargetText,omitempty" name:"TargetText" list`
 }

@@ -743,6 +743,20 @@ type ForceRedirect struct {
 	RedirectStatusCode *int64 `json:"RedirectStatusCode,omitempty" name:"RedirectStatusCode"`
 }
 
+type Hsts struct {
+
+	// 是否开启，on或off。
+	Switch *string `json:"Switch,omitempty" name:"Switch"`
+
+	// MaxAge数值。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MaxAge *int64 `json:"MaxAge,omitempty" name:"MaxAge"`
+
+	// 是否包含子域名，on或off。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IncludeSubDomains *string `json:"IncludeSubDomains,omitempty" name:"IncludeSubDomains"`
+}
+
 type HttpHeaderPathRule struct {
 
 	// http头部设置方式，支持add，set或del，分别表示新增，设置或删除头部。
@@ -800,6 +814,10 @@ type Https struct {
 	// https证书部署状态，closed，deploying，deployed，failed分别表示已关闭，部署中，部署成功，部署失败。不可作为入参使用。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SslStatus *string `json:"SslStatus,omitempty" name:"SslStatus"`
+
+	// Hsts配置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Hsts *Hsts `json:"Hsts,omitempty" name:"Hsts"`
 }
 
 type IpFilter struct {

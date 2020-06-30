@@ -212,6 +212,82 @@ func (r *CreateAclResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type CreateInstancePreData struct {
+
+	// CreateInstancePre返回固定为0，不能作为CheckTaskStatus的查询条件。只是为了保证和后台数据结构对齐。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FlowId *int64 `json:"FlowId,omitempty" name:"FlowId"`
+
+	// 订单号列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DealNames []*string `json:"DealNames,omitempty" name:"DealNames" list`
+}
+
+type CreateInstancePreRequest struct {
+	*tchttp.BaseRequest
+
+	// 实例名称，是一个不超过 64 个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线(-)
+	InstanceName *string `json:"InstanceName,omitempty" name:"InstanceName"`
+
+	// 可用区
+	ZoneId *int64 `json:"ZoneId,omitempty" name:"ZoneId"`
+
+	// 预付费购买时长，例如 "1m",就是一个月
+	Period *string `json:"Period,omitempty" name:"Period"`
+
+	// 实例规格，1：入门型 ，2： 标准型，3 ：进阶型，4 ：容量型，5： 高阶型1，6：高阶性2, 7： 高阶型3,8： 高阶型4， 9 ：独占型。
+	InstanceType *int64 `json:"InstanceType,omitempty" name:"InstanceType"`
+
+	// vpcId，不填默认基础网络
+	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
+
+	// 子网id，vpc网络需要传该参数，基础网络可以不传
+	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
+
+	// 可选。实例日志的最长保留时间，单位分钟，默认为10080（7天），最大30天，不填默认0，代表不开启日志保留时间回收策略
+	MsgRetentionTime *int64 `json:"MsgRetentionTime,omitempty" name:"MsgRetentionTime"`
+
+	// 创建实例时可以选择集群Id, 该入参表示集群Id
+	ClusterId *int64 `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 预付费自动续费标记，0表示默认状态(用户未设置，即初始状态)， 1表示自动续费，2表示明确不自动续费(用户设置)
+	RenewFlag *int64 `json:"RenewFlag,omitempty" name:"RenewFlag"`
+}
+
+func (r *CreateInstancePreRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateInstancePreRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateInstancePreResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 返回的code，0为正常，非0为错误
+		ReturnCode *string `json:"ReturnCode,omitempty" name:"ReturnCode"`
+
+		// 成功消息
+		ReturnMessage *string `json:"ReturnMessage,omitempty" name:"ReturnMessage"`
+
+		// 操作型返回的Data数据
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Data *CreateInstancePreData `json:"Data,omitempty" name:"Data"`
+	} `json:"Response"`
+}
+
+func (r *CreateInstancePreResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateInstancePreResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type CreatePartitionRequest struct {
 	*tchttp.BaseRequest
 

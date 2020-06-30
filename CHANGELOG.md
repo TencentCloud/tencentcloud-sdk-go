@@ -1,26 +1,10 @@
 # 本版本更新包含以下内容：
 
-## 游戏服务器引擎(gse) 版本：2019-11-12
+## 人体分析(bda) 版本：2020-03-24
 
-### 第 6 次发布
+### 第 3 次发布
 
-发布时间：2020-06-29 08:02:16
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [StartMatchPlacement](https://cloud.tencent.com/document/api/1165/45804)
-
-
-
-## 密钥管理系统(kms) 版本：2019-01-18
-
-### 第 9 次发布
-
-发布时间：2020-06-29 08:12:11
+发布时间：2020-06-30 08:01:29
 
 本次发布包含了以下内容：
 
@@ -28,50 +12,149 @@
 
 新增接口：
 
-* [DescribeWhiteBoxDeviceFingerprints](https://cloud.tencent.com/document/api/573/45806)
-* [OverwriteWhiteBoxDeviceFingerprints](https://cloud.tencent.com/document/api/573/45805)
+* [DetectBodyJoints](https://cloud.tencent.com/document/api/1208/45846)
 
 新增数据结构：
 
-* [DeviceFingerprint](https://cloud.tencent.com/document/api/573/34431#DeviceFingerprint)
+* [BodyJointsResult](https://cloud.tencent.com/document/api/1208/42985#BodyJointsResult)
+* [BoundRect](https://cloud.tencent.com/document/api/1208/42985#BoundRect)
+* [KeyPointInfo](https://cloud.tencent.com/document/api/1208/42985#KeyPointInfo)
 
 
 
-## 文字识别(ocr) 版本：2018-11-19
+## 内容分发网络(cdn) 版本：2018-06-06
 
-### 第 26 次发布
+### 第 25 次发布
 
-发布时间：2020-06-29 08:14:24
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [SealOCR](https://cloud.tencent.com/document/api/866/45807)
-
-
-
-## 游戏数据库 TcaplusDB(tcaplusdb) 版本：2019-08-23
-
-### 第 7 次发布
-
-发布时间：2020-06-29 08:16:45
+发布时间：2020-06-30 08:07:58
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-新增接口：
+修改接口：
 
-* [DeleteTableIndex](https://cloud.tencent.com/document/api/596/45809)
-* [SetTableIndex](https://cloud.tencent.com/document/api/596/45808)
+* [UpdateDomainConfig](https://cloud.tencent.com/document/api/228/41116)
+
+	* 新增入参：UserAgentFilter
+
 
 新增数据结构：
 
-* [FieldInfo](https://cloud.tencent.com/document/api/596/39686#FieldInfo)
-* [SelectedTableWithField](https://cloud.tencent.com/document/api/596/39686#SelectedTableWithField)
+* [Hsts](https://cloud.tencent.com/document/api/228/30987#Hsts)
+
+<font color="#dd0000">**删除数据结构**：</font>
+
+* CacheTagKey
+* CookieKey
+* HeaderKey
+* QueryStringKey
+* SchemeKey
+
+修改数据结构：
+
+* [CacheKey](https://cloud.tencent.com/document/api/228/30987#CacheKey)
+
+	* 新增成员：IgnoreCase
+
+	* <font color="#dd0000">**删除成员**：</font>QueryString, Header, Cookie, Scheme, CacheTag
+
+* [Https](https://cloud.tencent.com/document/api/228/30987#Https)
+
+	* 新增成员：Hsts
+
+
+
+
+## 消息队列 Ckafka(ckafka) 版本：2019-08-19
+
+### 第 4 次发布
+
+发布时间：2020-06-30 08:24:15
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CreateInstancePre](https://cloud.tencent.com/document/api/597/45847)
+
+新增数据结构：
+
+* [CreateInstancePreData](https://cloud.tencent.com/document/api/597/40861#CreateInstancePreData)
+
+
+
+## 全站加速网络(ecdn) 版本：2019-10-12
+
+### 第 3 次发布
+
+发布时间：2020-06-30 08:02:35
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增数据结构：
+
+* [Hsts](https://cloud.tencent.com/document/api/570/42478#Hsts)
+
+修改数据结构：
+
+* [Https](https://cloud.tencent.com/document/api/570/42478#Https)
+
+	* 新增成员：Hsts
+
+
+
+
+## 物联网通信(iotcloud) 版本：2018-06-14
+
+### 第 14 次发布
+
+发布时间：2020-06-30 08:13:45
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeDevice](https://cloud.tencent.com/document/api/634/31583)
+
+	* 新增出参：FirmwareUpdateTime
+
+* [DescribeDevices](https://cloud.tencent.com/document/api/634/19493)
+
+	* 新增入参：DeviceName
+
+
+修改数据结构：
+
+* [DeviceInfo](https://cloud.tencent.com/document/api/634/19497#DeviceInfo)
+
+	* 新增成员：ClientIP, FirmwareUpdateTime
+
+
+
+
+## 云点播(vod) 版本：2018-07-17
+
+### 第 50 次发布
+
+发布时间：2020-06-30 08:22:37
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [MediaBasicInfo](https://cloud.tencent.com/document/api/266/31773#MediaBasicInfo)
+
+	* 新增成员：Status
+
 
 
 
@@ -2033,6 +2116,24 @@
 
 
 ## 人体分析(bda) 版本：2020-03-24
+
+### 第 3 次发布
+
+发布时间：2020-06-30 08:01:29
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DetectBodyJoints](https://cloud.tencent.com/document/api/1208/45846)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[BodyJointsResult](https://cloud.tencent.com/document/api/1208/42985#BodyJointsResult)](https://cloud.tencent.com/document/api/1208/42985#[BodyJointsResult](https://cloud.tencent.com/document/api/1208/42985#BodyJointsResult))
+* [[BoundRect](https://cloud.tencent.com/document/api/1208/42985#BoundRect)](https://cloud.tencent.com/document/api/1208/42985#[BoundRect](https://cloud.tencent.com/document/api/1208/42985#BoundRect))
+* [[KeyPointInfo](https://cloud.tencent.com/document/api/1208/42985#KeyPointInfo)](https://cloud.tencent.com/document/api/1208/42985#[KeyPointInfo](https://cloud.tencent.com/document/api/1208/42985#KeyPointInfo))
 
 ### 第 2 次发布
 
@@ -5461,6 +5562,46 @@
 
 ## 内容分发网络(cdn) 版本：2018-06-06
 
+### 第 25 次发布
+
+发布时间：2020-06-30 08:07:58
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [UpdateDomainConfig](https://cloud.tencent.com/document/api/228/41116)
+
+	* 新增入参：UserAgentFilter
+
+
+新增数据结构：
+
+* [[Hsts](https://cloud.tencent.com/document/api/228/30987#Hsts)](https://cloud.tencent.com/document/api/228/30987#[Hsts](https://cloud.tencent.com/document/api/228/30987#Hsts))
+
+<font color="#dd0000">**删除数据结构**：</font>
+
+* CacheTagKey
+* CookieKey
+* HeaderKey
+* QueryStringKey
+* SchemeKey
+
+修改数据结构：
+
+* [CacheKey](https://cloud.tencent.com/document/api/228/30987#CacheKey)
+
+	* 新增成员：IgnoreCase
+
+	* <font color="#dd0000">**删除成员**：</font>QueryString, Header, Cookie, Scheme, CacheTag
+
+* [Https](https://cloud.tencent.com/document/api/228/30987#Https)
+
+	* 新增成员：Hsts
+
+
 ### 第 24 次发布
 
 发布时间：2020-06-10 08:06:47
@@ -6309,6 +6450,22 @@
 
 
 ## 消息队列 Ckafka(ckafka) 版本：2019-08-19
+
+### 第 4 次发布
+
+发布时间：2020-06-30 08:24:15
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[CreateInstancePre](https://cloud.tencent.com/document/api/597/45847)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[CreateInstancePreData](https://cloud.tencent.com/document/api/597/40861#CreateInstancePreData)](https://cloud.tencent.com/document/api/597/40861#[CreateInstancePreData](https://cloud.tencent.com/document/api/597/40861#CreateInstancePreData))
 
 ### 第 3 次发布
 
@@ -11117,6 +11274,25 @@
 
 ## 全站加速网络(ecdn) 版本：2019-10-12
 
+### 第 3 次发布
+
+发布时间：2020-06-30 08:02:35
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增数据结构：
+
+* [[Hsts](https://cloud.tencent.com/document/api/570/42478#Hsts)](https://cloud.tencent.com/document/api/570/42478#[Hsts](https://cloud.tencent.com/document/api/570/42478#Hsts))
+
+修改数据结构：
+
+* [Https](https://cloud.tencent.com/document/api/570/42478#Https)
+
+	* 新增成员：Hsts
+
+
 ### 第 2 次发布
 
 发布时间：2020-04-16 08:01:06
@@ -13235,7 +13411,7 @@
 
 新增接口：
 
-* [[StartMatchPlacement](https://cloud.tencent.com/document/api/1165/45804)](https://cloud.tencent.com/document/api/#/#)
+* [StartMatchPlacement](https://cloud.tencent.com/document/api/1165/45804)
 
 ### 第 5 次发布
 
@@ -14388,6 +14564,32 @@
 
 ## 物联网通信(iotcloud) 版本：2018-06-14
 
+### 第 14 次发布
+
+发布时间：2020-06-30 08:13:45
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeDevice](https://cloud.tencent.com/document/api/634/31583)
+
+	* 新增出参：FirmwareUpdateTime
+
+* [DescribeDevices](https://cloud.tencent.com/document/api/634/19493)
+
+	* 新增入参：DeviceName
+
+
+修改数据结构：
+
+* [DeviceInfo](https://cloud.tencent.com/document/api/634/19497#DeviceInfo)
+
+	* 新增成员：ClientIP, FirmwareUpdateTime
+
+
 ### 第 13 次发布
 
 发布时间：2020-06-05 08:11:21
@@ -15277,12 +15479,12 @@
 
 新增接口：
 
-* [[DescribeWhiteBoxDeviceFingerprints](https://cloud.tencent.com/document/api/573/45806)](https://cloud.tencent.com/document/api/#/#)
-* [[OverwriteWhiteBoxDeviceFingerprints](https://cloud.tencent.com/document/api/573/45805)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeWhiteBoxDeviceFingerprints](https://cloud.tencent.com/document/api/573/45806)
+* [OverwriteWhiteBoxDeviceFingerprints](https://cloud.tencent.com/document/api/573/45805)
 
 新增数据结构：
 
-* [[DeviceFingerprint](https://cloud.tencent.com/document/api/573/34431#DeviceFingerprint)](https://cloud.tencent.com/document/api/573/34431#[DeviceFingerprint](https://cloud.tencent.com/document/api/573/34431#DeviceFingerprint))
+* [DeviceFingerprint](https://cloud.tencent.com/document/api/573/34431#DeviceFingerprint)
 
 ### 第 8 次发布
 
@@ -18758,7 +18960,7 @@
 
 新增接口：
 
-* [[SealOCR](https://cloud.tencent.com/document/api/866/45807)](https://cloud.tencent.com/document/api/#/#)
+* [SealOCR](https://cloud.tencent.com/document/api/866/45807)
 
 ### 第 25 次发布
 
@@ -22116,13 +22318,13 @@
 
 新增接口：
 
-* [[DeleteTableIndex](https://cloud.tencent.com/document/api/596/45809)](https://cloud.tencent.com/document/api/#/#)
-* [[SetTableIndex](https://cloud.tencent.com/document/api/596/45808)](https://cloud.tencent.com/document/api/#/#)
+* [DeleteTableIndex](https://cloud.tencent.com/document/api/596/45809)
+* [SetTableIndex](https://cloud.tencent.com/document/api/596/45808)
 
 新增数据结构：
 
-* [[FieldInfo](https://cloud.tencent.com/document/api/596/39686#FieldInfo)](https://cloud.tencent.com/document/api/596/39686#[FieldInfo](https://cloud.tencent.com/document/api/596/39686#FieldInfo))
-* [[SelectedTableWithField](https://cloud.tencent.com/document/api/596/39686#SelectedTableWithField)](https://cloud.tencent.com/document/api/596/39686#[SelectedTableWithField](https://cloud.tencent.com/document/api/596/39686#SelectedTableWithField))
+* [FieldInfo](https://cloud.tencent.com/document/api/596/39686#FieldInfo)
+* [SelectedTableWithField](https://cloud.tencent.com/document/api/596/39686#SelectedTableWithField)
 
 ### 第 6 次发布
 
@@ -25829,6 +26031,21 @@
 
 
 ## 云点播(vod) 版本：2018-07-17
+
+### 第 50 次发布
+
+发布时间：2020-06-30 08:22:37
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [MediaBasicInfo](https://cloud.tencent.com/document/api/266/31773#MediaBasicInfo)
+
+	* 新增成员：Status
+
 
 ### 第 49 次发布
 

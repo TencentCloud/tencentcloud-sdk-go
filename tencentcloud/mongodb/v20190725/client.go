@@ -483,7 +483,7 @@ func NewOfflineIsolatedDBInstanceResponse() (response *OfflineIsolatedDBInstance
     return
 }
 
-// 本接口(OfflineIsolatedInstances)用于立即下线隔离状态的云数据库实例。进行操作的实例状态必须为隔离状态。
+// 本接口(OfflineIsolatedDBInstance)用于立即下线隔离状态的云数据库实例。进行操作的实例状态必须为隔离状态。
 func (c *Client) OfflineIsolatedDBInstance(request *OfflineIsolatedDBInstanceRequest) (response *OfflineIsolatedDBInstanceResponse, err error) {
     if request == nil {
         request = NewOfflineIsolatedDBInstanceRequest()

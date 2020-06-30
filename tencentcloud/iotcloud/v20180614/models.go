@@ -883,6 +883,10 @@ type DescribeDeviceResponse struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		ClientIP *string `json:"ClientIP,omitempty" name:"ClientIP"`
 
+		// 设备固件更新时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		FirmwareUpdateTime *uint64 `json:"FirmwareUpdateTime,omitempty" name:"FirmwareUpdateTime"`
+
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
@@ -949,8 +953,11 @@ type DescribeDevicesRequest struct {
 	// 分页的大小，数值范围 10-250
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 
-	// 设备固件版本号，若不带此参数会返回所有固件版本的设备
+	// 设备固件版本号，若不带此参数会返回所有固件版本的设备。传"None-FirmwareVersion"查询无版本号的设备
 	FirmwareVersion *string `json:"FirmwareVersion,omitempty" name:"FirmwareVersion"`
+
+	// 需要过滤的设备名称
+	DeviceName *string `json:"DeviceName,omitempty" name:"DeviceName"`
 }
 
 func (r *DescribeDevicesRequest) ToJsonString() string {
@@ -1407,7 +1414,7 @@ type DeviceInfo struct {
 	// 设备类型
 	DeviceType *uint64 `json:"DeviceType,omitempty" name:"DeviceType"`
 
-	// IMEI
+	// 国际移动设备识别码 IMEI
 	Imei *string `json:"Imei,omitempty" name:"Imei"`
 
 	// 运营商类型
@@ -1455,6 +1462,14 @@ type DeviceInfo struct {
 	// 设备标签
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Labels []*DeviceLabel `json:"Labels,omitempty" name:"Labels" list`
+
+	// MQTT客户端IP地址
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClientIP *string `json:"ClientIP,omitempty" name:"ClientIP"`
+
+	// ota最后更新时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FirmwareUpdateTime *uint64 `json:"FirmwareUpdateTime,omitempty" name:"FirmwareUpdateTime"`
 }
 
 type DeviceLabel struct {

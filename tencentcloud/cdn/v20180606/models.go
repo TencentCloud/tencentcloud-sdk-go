@@ -437,25 +437,9 @@ type CacheKey struct {
 	// off：关闭全路径缓存（即开启参数过滤）
 	FullUrlCache *string `json:"FullUrlCache,omitempty" name:"FullUrlCache"`
 
-	// 是否使用请求参数作为CacheKey的一部分
+	// 是否忽略大小写缓存
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	QueryString *QueryStringKey `json:"QueryString,omitempty" name:"QueryString"`
-
-	// 是否使用请求头部作为CacheKey的一部分
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	Header *HeaderKey `json:"Header,omitempty" name:"Header"`
-
-	// 是否使用Cookie作为CacheKey的一部分
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	Cookie *CookieKey `json:"Cookie,omitempty" name:"Cookie"`
-
-	// 是否使用请求协议作为CacheKey的一部分
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	Scheme *SchemeKey `json:"Scheme,omitempty" name:"Scheme"`
-
-	// 是否使用自定义字符串作为CacheKey的一部分
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	CacheTag *CacheTagKey `json:"CacheTag,omitempty" name:"CacheTag"`
+	IgnoreCase *string `json:"IgnoreCase,omitempty" name:"IgnoreCase"`
 }
 
 type CacheOptResult struct {
@@ -467,16 +451,6 @@ type CacheOptResult struct {
 	// 失败的url列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FailUrls []*string `json:"FailUrls,omitempty" name:"FailUrls" list`
-}
-
-type CacheTagKey struct {
-
-	// 是否使用CacheTag作为CacheKey的一部分
-	Switch *string `json:"Switch,omitempty" name:"Switch"`
-
-	// 自定义CacheTag的值
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	Value *string `json:"Value,omitempty" name:"Value"`
 }
 
 type CappingRule struct {
@@ -657,16 +631,6 @@ type CompressionRule struct {
 	// brotli：需要同时指定 GZIP 压缩才可启用
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Algorithms []*string `json:"Algorithms,omitempty" name:"Algorithms" list`
-}
-
-type CookieKey struct {
-
-	// on | off 是否使用Cookie作为Cache的一部分
-	Switch *string `json:"Switch,omitempty" name:"Switch"`
-
-	// 使用的cookie 逗号分割
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	Value *string `json:"Value,omitempty" name:"Value"`
 }
 
 type CreateClsLogTopicRequest struct {
@@ -2489,15 +2453,18 @@ type GuetzliAdapter struct {
 	Switch *string `json:"Switch,omitempty" name:"Switch"`
 }
 
-type HeaderKey struct {
+type Hsts struct {
 
-	// 是否组成Cachekey
-	// 注意：此字段可能返回 null，表示取不到有效值。
+	// 是否开启，on或off。
 	Switch *string `json:"Switch,omitempty" name:"Switch"`
 
-	// 组成CacheKey的header 逗号分隔
+	// MaxAge数值。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Value *string `json:"Value,omitempty" name:"Value"`
+	MaxAge *int64 `json:"MaxAge,omitempty" name:"MaxAge"`
+
+	// 是否包含子域名，on或off。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IncludeSubDomains *string `json:"IncludeSubDomains,omitempty" name:"IncludeSubDomains"`
 }
 
 type HttpHeaderPathRule struct {
@@ -2587,6 +2554,10 @@ type Https struct {
 	// failed：部署失败
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SslStatus *string `json:"SslStatus,omitempty" name:"SslStatus"`
+
+	// Hsts配置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Hsts *Hsts `json:"Hsts,omitempty" name:"Hsts"`
 }
 
 type ImageOptimization struct {
@@ -3441,25 +3412,6 @@ func (r *PushUrlsCacheResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
-type QueryStringKey struct {
-
-	// on | off CacheKey是否由QueryString组成
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	Switch *string `json:"Switch,omitempty" name:"Switch"`
-
-	// 是否重新排序
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	Reorder *string `json:"Reorder,omitempty" name:"Reorder"`
-
-	// includeAll | excludeAll | includeCustom | excludeAll 使用/排除部分url参数
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	Action *string `json:"Action,omitempty" name:"Action"`
-
-	// 使用/排除的url参数名
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	Value *string `json:"Value,omitempty" name:"Value"`
-}
-
 type Quota struct {
 
 	// 单次批量提交配额上限。
@@ -3626,12 +3578,6 @@ type ResponseHeaderCache struct {
 	Switch *string `json:"Switch,omitempty" name:"Switch"`
 }
 
-type SchemeKey struct {
-
-	// on | off 是否使用scheme作为cache key的一部分
-	Switch *string `json:"Switch,omitempty" name:"Switch"`
-}
-
 type SearchClsLogRequest struct {
 	*tchttp.BaseRequest
 
@@ -3794,7 +3740,7 @@ type SimpleCacheRule struct {
 	// CacheType 对应类型下的匹配内容：
 	// all 时填充 *
 	// file 时填充后缀名，如 jpg、txt
-	// directory 时填充路径，如 /xxx/test/
+	// directory 时填充路径，如 /xxx/test
 	// path 时填充绝对路径，如 /xxx/test.html
 	// index 时填充 /
 	CacheContents []*string `json:"CacheContents,omitempty" name:"CacheContents" list`
@@ -4032,7 +3978,7 @@ type UpdateDomainConfigRequest struct {
 	// 域名
 	Domain *string `json:"Domain,omitempty" name:"Domain"`
 
-	// 项目 ID
+	// 项目 ID
 	ProjectId *int64 `json:"ProjectId,omitempty" name:"ProjectId"`
 
 	// 源站配置
@@ -4125,6 +4071,9 @@ type UpdateDomainConfigRequest struct {
 
 	// 回源S3私有鉴权
 	AwsPrivateAccess *AwsPrivateAccess `json:"AwsPrivateAccess,omitempty" name:"AwsPrivateAccess"`
+
+	// UA黑白名单配置
+	UserAgentFilter *UserAgentFilter `json:"UserAgentFilter,omitempty" name:"UserAgentFilter"`
 }
 
 func (r *UpdateDomainConfigRequest) ToJsonString() string {
