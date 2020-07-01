@@ -651,7 +651,7 @@ type OutputParams struct {
 	// 自定义录制文件名
 	RecordId *string `json:"RecordId,omitempty" name:"RecordId"`
 
-	// 取值范围[0,1]，填1：指定录制文件格式为mp3
+	// 取值范围[0,1]，填0无实际含义; 填1：指定录制文件格式为mp3
 	RecordAudioOnly *uint64 `json:"RecordAudioOnly,omitempty" name:"RecordAudioOnly"`
 }
 

@@ -1,76 +1,10 @@
 # 本版本更新包含以下内容：
 
-## 人体分析(bda) 版本：2020-03-24
+## 活动防刷(aa) 版本：2020-02-24
 
-### 第 3 次发布
+### 第 2 次发布
 
-发布时间：2020-06-30 08:01:29
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [DetectBodyJoints](https://cloud.tencent.com/document/api/1208/45846)
-
-新增数据结构：
-
-* [BodyJointsResult](https://cloud.tencent.com/document/api/1208/42985#BodyJointsResult)
-* [BoundRect](https://cloud.tencent.com/document/api/1208/42985#BoundRect)
-* [KeyPointInfo](https://cloud.tencent.com/document/api/1208/42985#KeyPointInfo)
-
-
-
-## 内容分发网络(cdn) 版本：2018-06-06
-
-### 第 25 次发布
-
-发布时间：2020-06-30 08:07:58
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [UpdateDomainConfig](https://cloud.tencent.com/document/api/228/41116)
-
-	* 新增入参：UserAgentFilter
-
-
-新增数据结构：
-
-* [Hsts](https://cloud.tencent.com/document/api/228/30987#Hsts)
-
-<font color="#dd0000">**删除数据结构**：</font>
-
-* CacheTagKey
-* CookieKey
-* HeaderKey
-* QueryStringKey
-* SchemeKey
-
-修改数据结构：
-
-* [CacheKey](https://cloud.tencent.com/document/api/228/30987#CacheKey)
-
-	* 新增成员：IgnoreCase
-
-	* <font color="#dd0000">**删除成员**：</font>QueryString, Header, Cookie, Scheme, CacheTag
-
-* [Https](https://cloud.tencent.com/document/api/228/30987#Https)
-
-	* 新增成员：Hsts
-
-
-
-
-## 消息队列 Ckafka(ckafka) 版本：2019-08-19
-
-### 第 4 次发布
-
-发布时间：2020-06-30 08:24:15
+发布时间：2020-07-01 08:00:35
 
 本次发布包含了以下内容：
 
@@ -78,42 +12,55 @@
 
 新增接口：
 
-* [CreateInstancePre](https://cloud.tencent.com/document/api/597/45847)
+* [QueryActivityAntiRushAdvanced](https://cloud.tencent.com/document/api/1189/45887)
 
 新增数据结构：
 
-* [CreateInstancePreData](https://cloud.tencent.com/document/api/597/40861#CreateInstancePreData)
+* [AccountInfo](https://cloud.tencent.com/document/api/1189/45888#AccountInfo)
+* [InputActivityAntiRushAdvanced](https://cloud.tencent.com/document/api/1189/45888#InputActivityAntiRushAdvanced)
+* [OnlineScamInfo](https://cloud.tencent.com/document/api/1189/45888#OnlineScamInfo)
+* [OtherAccountInfo](https://cloud.tencent.com/document/api/1189/45888#OtherAccountInfo)
+* [OutputActivityAntiRushAdvanced](https://cloud.tencent.com/document/api/1189/45888#OutputActivityAntiRushAdvanced)
+* [OutputActivityAntiRushAdvancedValue](https://cloud.tencent.com/document/api/1189/45888#OutputActivityAntiRushAdvancedValue)
+* [QQAccountInfo](https://cloud.tencent.com/document/api/1189/45888#QQAccountInfo)
+* [SponsorInfo](https://cloud.tencent.com/document/api/1189/45888#SponsorInfo)
+* [WeChatAccountInfo](https://cloud.tencent.com/document/api/1189/45888#WeChatAccountInfo)
 
 
 
-## 全站加速网络(ecdn) 版本：2019-10-12
+## DDoS 高防包(dayu) 版本：2018-07-09
 
-### 第 3 次发布
+### 第 16 次发布
 
-发布时间：2020-06-30 08:02:35
+发布时间：2020-07-01 08:08:22
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-新增数据结构：
+新增接口：
 
-* [Hsts](https://cloud.tencent.com/document/api/570/42478#Hsts)
+* [ModifyNewDomainRules](https://cloud.tencent.com/document/api/1021/45890)
+* [ModifyNewL4Rule](https://cloud.tencent.com/document/api/1021/45889)
 
 修改数据结构：
 
-* [Https](https://cloud.tencent.com/document/api/570/42478#Https)
+* [L7RuleEntry](https://cloud.tencent.com/document/api/1021/39225#L7RuleEntry)
 
-	* 新增成员：Hsts
+	* 新增成员：VirtualPort
+
+* [NewL7RuleEntry](https://cloud.tencent.com/document/api/1021/39225#NewL7RuleEntry)
+
+	* 新增成员：VirtualPort
 
 
 
 
-## 物联网通信(iotcloud) 版本：2018-06-14
+## 云数据库 PostgreSQL(postgres) 版本：2017-03-12
 
-### 第 14 次发布
+### 第 8 次发布
 
-发布时间：2020-06-30 08:13:45
+发布时间：2020-07-01 08:15:12
 
 本次发布包含了以下内容：
 
@@ -121,39 +68,24 @@
 
 修改接口：
 
-* [DescribeDevice](https://cloud.tencent.com/document/api/634/31583)
+* [CloseDBExtranetAccess](https://cloud.tencent.com/document/api/409/18105)
 
-	* 新增出参：FirmwareUpdateTime
+	* 新增入参：IsIpv6
 
-* [DescribeDevices](https://cloud.tencent.com/document/api/634/19493)
+* [CreateDBInstances](https://cloud.tencent.com/document/api/409/16771)
 
-	* 新增入参：DeviceName
+	* 新增入参：NeedSupportIpv6
+
+* [OpenDBExtranetAccess](https://cloud.tencent.com/document/api/409/18099)
+
+	* 新增入参：IsIpv6
 
 
 修改数据结构：
 
-* [DeviceInfo](https://cloud.tencent.com/document/api/634/19497#DeviceInfo)
+* [DBInstance](https://cloud.tencent.com/document/api/409/16778#DBInstance)
 
-	* 新增成员：ClientIP, FirmwareUpdateTime
-
-
-
-
-## 云点播(vod) 版本：2018-07-17
-
-### 第 50 次发布
-
-发布时间：2020-06-30 08:22:37
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [MediaBasicInfo](https://cloud.tencent.com/document/api/266/31773#MediaBasicInfo)
-
-	* 新增成员：Status
+	* 新增成员：SupportIpv6
 
 
 
@@ -161,6 +93,30 @@
 # 历次版本更新如下：
 
 ## 活动防刷(aa) 版本：2020-02-24
+
+### 第 2 次发布
+
+发布时间：2020-07-01 08:00:35
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[QueryActivityAntiRushAdvanced](https://cloud.tencent.com/document/api/1189/45887)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[AccountInfo](https://cloud.tencent.com/document/api/1189/45888#AccountInfo)](https://cloud.tencent.com/document/api/1189/45888#[AccountInfo](https://cloud.tencent.com/document/api/1189/45888#AccountInfo))
+* [[InputActivityAntiRushAdvanced](https://cloud.tencent.com/document/api/1189/45888#InputActivityAntiRushAdvanced)](https://cloud.tencent.com/document/api/1189/45888#[InputActivityAntiRushAdvanced](https://cloud.tencent.com/document/api/1189/45888#InputActivityAntiRushAdvanced))
+* [[OnlineScamInfo](https://cloud.tencent.com/document/api/1189/45888#OnlineScamInfo)](https://cloud.tencent.com/document/api/1189/45888#[OnlineScamInfo](https://cloud.tencent.com/document/api/1189/45888#OnlineScamInfo))
+* [[OtherAccountInfo](https://cloud.tencent.com/document/api/1189/45888#OtherAccountInfo)](https://cloud.tencent.com/document/api/1189/45888#[OtherAccountInfo](https://cloud.tencent.com/document/api/1189/45888#OtherAccountInfo))
+* [[OutputActivityAntiRushAdvanced](https://cloud.tencent.com/document/api/1189/45888#OutputActivityAntiRushAdvanced)](https://cloud.tencent.com/document/api/1189/45888#[OutputActivityAntiRushAdvanced](https://cloud.tencent.com/document/api/1189/45888#OutputActivityAntiRushAdvanced))
+* [[OutputActivityAntiRushAdvancedValue](https://cloud.tencent.com/document/api/1189/45888#OutputActivityAntiRushAdvancedValue)](https://cloud.tencent.com/document/api/1189/45888#[OutputActivityAntiRushAdvancedValue](https://cloud.tencent.com/document/api/1189/45888#OutputActivityAntiRushAdvancedValue))
+* [[QQAccountInfo](https://cloud.tencent.com/document/api/1189/45888#QQAccountInfo)](https://cloud.tencent.com/document/api/1189/45888#[QQAccountInfo](https://cloud.tencent.com/document/api/1189/45888#QQAccountInfo))
+* [[SponsorInfo](https://cloud.tencent.com/document/api/1189/45888#SponsorInfo)](https://cloud.tencent.com/document/api/1189/45888#[SponsorInfo](https://cloud.tencent.com/document/api/1189/45888#SponsorInfo))
+* [[WeChatAccountInfo](https://cloud.tencent.com/document/api/1189/45888#WeChatAccountInfo)](https://cloud.tencent.com/document/api/1189/45888#[WeChatAccountInfo](https://cloud.tencent.com/document/api/1189/45888#WeChatAccountInfo))
 
 ### 第 1 次发布
 
@@ -2127,13 +2083,13 @@
 
 新增接口：
 
-* [[DetectBodyJoints](https://cloud.tencent.com/document/api/1208/45846)](https://cloud.tencent.com/document/api/#/#)
+* [DetectBodyJoints](https://cloud.tencent.com/document/api/1208/45846)
 
 新增数据结构：
 
-* [[BodyJointsResult](https://cloud.tencent.com/document/api/1208/42985#BodyJointsResult)](https://cloud.tencent.com/document/api/1208/42985#[BodyJointsResult](https://cloud.tencent.com/document/api/1208/42985#BodyJointsResult))
-* [[BoundRect](https://cloud.tencent.com/document/api/1208/42985#BoundRect)](https://cloud.tencent.com/document/api/1208/42985#[BoundRect](https://cloud.tencent.com/document/api/1208/42985#BoundRect))
-* [[KeyPointInfo](https://cloud.tencent.com/document/api/1208/42985#KeyPointInfo)](https://cloud.tencent.com/document/api/1208/42985#[KeyPointInfo](https://cloud.tencent.com/document/api/1208/42985#KeyPointInfo))
+* [BodyJointsResult](https://cloud.tencent.com/document/api/1208/42985#BodyJointsResult)
+* [BoundRect](https://cloud.tencent.com/document/api/1208/42985#BoundRect)
+* [KeyPointInfo](https://cloud.tencent.com/document/api/1208/42985#KeyPointInfo)
 
 ### 第 2 次发布
 
@@ -5579,7 +5535,7 @@
 
 新增数据结构：
 
-* [[Hsts](https://cloud.tencent.com/document/api/228/30987#Hsts)](https://cloud.tencent.com/document/api/228/30987#[Hsts](https://cloud.tencent.com/document/api/228/30987#Hsts))
+* [Hsts](https://cloud.tencent.com/document/api/228/30987#Hsts)
 
 <font color="#dd0000">**删除数据结构**：</font>
 
@@ -6461,11 +6417,11 @@
 
 新增接口：
 
-* [[CreateInstancePre](https://cloud.tencent.com/document/api/597/45847)](https://cloud.tencent.com/document/api/#/#)
+* [CreateInstancePre](https://cloud.tencent.com/document/api/597/45847)
 
 新增数据结构：
 
-* [[CreateInstancePreData](https://cloud.tencent.com/document/api/597/40861#CreateInstancePreData)](https://cloud.tencent.com/document/api/597/40861#[CreateInstancePreData](https://cloud.tencent.com/document/api/597/40861#CreateInstancePreData))
+* [CreateInstancePreData](https://cloud.tencent.com/document/api/597/40861#CreateInstancePreData)
 
 ### 第 3 次发布
 
@@ -9902,6 +9858,30 @@
 
 ## DDoS 高防包(dayu) 版本：2018-07-09
 
+### 第 16 次发布
+
+发布时间：2020-07-01 08:08:22
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[ModifyNewDomainRules](https://cloud.tencent.com/document/api/1021/45890)](https://cloud.tencent.com/document/api/#/#)
+* [[ModifyNewL4Rule](https://cloud.tencent.com/document/api/1021/45889)](https://cloud.tencent.com/document/api/#/#)
+
+修改数据结构：
+
+* [L7RuleEntry](https://cloud.tencent.com/document/api/1021/39225#L7RuleEntry)
+
+	* 新增成员：VirtualPort
+
+* [NewL7RuleEntry](https://cloud.tencent.com/document/api/1021/39225#NewL7RuleEntry)
+
+	* 新增成员：VirtualPort
+
+
 ### 第 15 次发布
 
 发布时间：2020-05-21 08:07:56
@@ -11284,7 +11264,7 @@
 
 新增数据结构：
 
-* [[Hsts](https://cloud.tencent.com/document/api/570/42478#Hsts)](https://cloud.tencent.com/document/api/570/42478#[Hsts](https://cloud.tencent.com/document/api/570/42478#Hsts))
+* [Hsts](https://cloud.tencent.com/document/api/570/42478#Hsts)
 
 修改数据结构：
 
@@ -19796,6 +19776,36 @@
 
 
 ## 云数据库 PostgreSQL(postgres) 版本：2017-03-12
+
+### 第 8 次发布
+
+发布时间：2020-07-01 08:15:12
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CloseDBExtranetAccess](https://cloud.tencent.com/document/api/409/18105)
+
+	* 新增入参：IsIpv6
+
+* [CreateDBInstances](https://cloud.tencent.com/document/api/409/16771)
+
+	* 新增入参：NeedSupportIpv6
+
+* [OpenDBExtranetAccess](https://cloud.tencent.com/document/api/409/18099)
+
+	* 新增入参：IsIpv6
+
+
+修改数据结构：
+
+* [DBInstance](https://cloud.tencent.com/document/api/409/16778#DBInstance)
+
+	* 新增成员：SupportIpv6
+
 
 ### 第 7 次发布
 

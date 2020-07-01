@@ -67,3 +67,28 @@ func (c *Client) QueryActivityAntiRush(request *QueryActivityAntiRushRequest) (r
     err = c.Send(request, response)
     return
 }
+
+func NewQueryActivityAntiRushAdvancedRequest() (request *QueryActivityAntiRushAdvancedRequest) {
+    request = &QueryActivityAntiRushAdvancedRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("aa", APIVersion, "QueryActivityAntiRushAdvanced")
+    return
+}
+
+func NewQueryActivityAntiRushAdvancedResponse() (response *QueryActivityAntiRushAdvancedResponse) {
+    response = &QueryActivityAntiRushAdvancedResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 活动防刷高级版，支持对网赚众包、网赚防刷、引流反诈骗场景的检测识别
+func (c *Client) QueryActivityAntiRushAdvanced(request *QueryActivityAntiRushAdvancedRequest) (response *QueryActivityAntiRushAdvancedResponse, err error) {
+    if request == nil {
+        request = NewQueryActivityAntiRushAdvancedRequest()
+    }
+    response = NewQueryActivityAntiRushAdvancedResponse()
+    err = c.Send(request, response)
+    return
+}

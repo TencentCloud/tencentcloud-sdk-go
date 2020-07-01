@@ -4960,6 +4960,10 @@ type L7RuleEntry struct {
 	// 是否开启Https协议使用Http回源，取值[0(关闭), 1(开启)]，不填写默认是关闭
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	HttpsToHttpEnable *uint64 `json:"HttpsToHttpEnable,omitempty" name:"HttpsToHttpEnable"`
+
+	// 接入端口值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VirtualPort *uint64 `json:"VirtualPort,omitempty" name:"VirtualPort"`
 }
 
 type L7RuleHealth struct {
@@ -6404,6 +6408,92 @@ func (r *ModifyNetReturnSwitchResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type ModifyNewDomainRulesRequest struct {
+	*tchttp.BaseRequest
+
+	// 大禹子产品代号（bgpip表示高防IP）
+	Business *string `json:"Business,omitempty" name:"Business"`
+
+	// 资源ID
+	Id *string `json:"Id,omitempty" name:"Id"`
+
+	// 域名转发规则
+	Rule *NewL7RuleEntry `json:"Rule,omitempty" name:"Rule"`
+}
+
+func (r *ModifyNewDomainRulesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyNewDomainRulesRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyNewDomainRulesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 成功码
+		Success *SuccessCode `json:"Success,omitempty" name:"Success"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifyNewDomainRulesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyNewDomainRulesResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyNewL4RuleRequest struct {
+	*tchttp.BaseRequest
+
+	// 大禹子产品代号（bgpip表示高防IP）
+	Business *string `json:"Business,omitempty" name:"Business"`
+
+	// 资源ID
+	Id *string `json:"Id,omitempty" name:"Id"`
+
+	// 转发规则
+	Rule *L4RuleEntry `json:"Rule,omitempty" name:"Rule"`
+}
+
+func (r *ModifyNewL4RuleRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyNewL4RuleRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyNewL4RuleResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 成功码
+		Success *SuccessCode `json:"Success,omitempty" name:"Success"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifyNewL4RuleResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyNewL4RuleResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type ModifyResBindDDoSPolicyRequest struct {
 	*tchttp.BaseRequest
 
@@ -6611,6 +6701,10 @@ type NewL7RuleEntry struct {
 
 	// 是否开启Https协议使用Http回源，取值[0(关闭), 1(开启)]，不填写默认是关闭
 	HttpsToHttpEnable *uint64 `json:"HttpsToHttpEnable,omitempty" name:"HttpsToHttpEnable"`
+
+	// 接入端口值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VirtualPort *uint64 `json:"VirtualPort,omitempty" name:"VirtualPort"`
 }
 
 type OrderBy struct {

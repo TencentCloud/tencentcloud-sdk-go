@@ -46,6 +46,9 @@ type CloseDBExtranetAccessRequest struct {
 
 	// 实例ID，形如postgres-6r233v55
 	DBInstanceId *string `json:"DBInstanceId,omitempty" name:"DBInstanceId"`
+
+	// 是否关闭Ipv6外网，1：是，0：否
+	IsIpv6 *int64 `json:"IsIpv6,omitempty" name:"IsIpv6"`
 }
 
 func (r *CloseDBExtranetAccessRequest) ToJsonString() string {
@@ -162,6 +165,9 @@ type CreateDBInstancesRequest struct {
 
 	// 实例名(后续支持)
 	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 是否需要支持Ipv6，1：是，0：否
+	NeedSupportIpv6 *uint64 `json:"NeedSupportIpv6,omitempty" name:"NeedSupportIpv6"`
 }
 
 func (r *CreateDBInstancesRequest) ToJsonString() string {
@@ -305,7 +311,7 @@ type DBInstance struct {
 	// 私有网络ID
 	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
 
-	// SubnetId
+	// 子网ID
 	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
 
 	// 实例ID
@@ -314,7 +320,7 @@ type DBInstance struct {
 	// 实例名称
 	DBInstanceName *string `json:"DBInstanceName,omitempty" name:"DBInstanceName"`
 
-	// 实例状态
+	// 实例状态，分别为：applying（申请中）、init(待初始化)、initing(初始化中)、running(运行中)、limited run（受限运行）、isolated（已隔离）、recycling（回收中）、recycled（已回收）、job running（任务执行中）、offline（下线）、migrating（迁移中）、expanding（扩容中）、readonly（只读）、restarting（重启中）
 	DBInstanceStatus *string `json:"DBInstanceStatus,omitempty" name:"DBInstanceStatus"`
 
 	// 实例分配的内存大小，单位：GB
@@ -370,6 +376,9 @@ type DBInstance struct {
 
 	// 实例的Uid
 	Uid *uint64 `json:"Uid,omitempty" name:"Uid"`
+
+	// 实例是否支持Ipv6，1：支持，0：不支持
+	SupportIpv6 *uint64 `json:"SupportIpv6,omitempty" name:"SupportIpv6"`
 }
 
 type DBInstanceNetInfo struct {
@@ -377,13 +386,13 @@ type DBInstanceNetInfo struct {
 	// DNS域名
 	Address *string `json:"Address,omitempty" name:"Address"`
 
-	// Ip
+	// IP地址
 	Ip *string `json:"Ip,omitempty" name:"Ip"`
 
 	// 连接Port地址
 	Port *uint64 `json:"Port,omitempty" name:"Port"`
 
-	// 网络类型，1、inner（内网地址）；2、public（外网地址）
+	// 网络类型，1、inner（基础网络内网地址）；2、private（私有网络内网地址）；3、public（基础网络或私有网络的外网地址）；
 	NetType *string `json:"NetType,omitempty" name:"NetType"`
 
 	// 网络连接状态
@@ -1453,6 +1462,9 @@ type OpenDBExtranetAccessRequest struct {
 
 	// 实例ID，形如postgres-hez4fh0v
 	DBInstanceId *string `json:"DBInstanceId,omitempty" name:"DBInstanceId"`
+
+	// 是否开通Ipv6外网，1：是，0：否
+	IsIpv6 *int64 `json:"IsIpv6,omitempty" name:"IsIpv6"`
 }
 
 func (r *OpenDBExtranetAccessRequest) ToJsonString() string {

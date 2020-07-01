@@ -2569,7 +2569,6 @@ type CreateContentReviewTemplateRequest struct {
 	// 违禁控制参数。违禁内容包括：
 	// <li>谩骂；</li>
 	// <li>涉毒违法。</li>
-	// 注意：此参数尚未支持。
 	ProhibitedConfigure *ProhibitedConfigureInfo `json:"ProhibitedConfigure,omitempty" name:"ProhibitedConfigure"`
 
 	// 用户自定义内容审核控制参数。
@@ -6126,6 +6125,8 @@ type MediaBasicInfo struct {
 	Category *string `json:"Category,omitempty" name:"Category"`
 
 	// 文件状态：Normal：正常，Forbidden：封禁。
+	// 
+	// *注意：此字段暂不支持。
 	Status *string `json:"Status,omitempty" name:"Status"`
 }
 
@@ -7223,7 +7224,6 @@ type ModifyContentReviewTemplateRequest struct {
 	// 违禁控制参数。违禁内容包括：
 	// <li>谩骂；</li>
 	// <li>涉毒违法。</li>
-	// 注意：此参数尚未支持。
 	ProhibitedConfigure *ProhibitedConfigureInfoForUpdate `json:"ProhibitedConfigure,omitempty" name:"ProhibitedConfigure"`
 
 	// 用户自定义内容审核控制参数。
