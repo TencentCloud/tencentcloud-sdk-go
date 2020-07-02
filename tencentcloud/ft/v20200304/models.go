@@ -47,6 +47,9 @@ type ChangeAgePicRequest struct {
 	// 非腾讯云存储的Url速度和稳定性可能受一定影响。 
 	// 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
 	Url *string `json:"Url,omitempty" name:"Url"`
+
+	// 返回图像方式（base64 或 url ) ，二选一。url有效期为1天。
+	RspImgType *string `json:"RspImgType,omitempty" name:"RspImgType"`
 }
 
 func (r *ChangeAgePicRequest) ToJsonString() string {
@@ -62,8 +65,11 @@ type ChangeAgePicResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// base64编码图片
+		// RspImgType 为 base64 时，返回处理后的图片 base64 数据。默认返回base64
 		ResultImage *string `json:"ResultImage,omitempty" name:"ResultImage"`
+
+		// RspImgType 为 url 时，返回处理后的图片 url 数据。
+		ResultUrl *string `json:"ResultUrl,omitempty" name:"ResultUrl"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -121,6 +127,9 @@ type SwapGenderPicRequest struct {
 	// 非腾讯云存储的Url速度和稳定性可能受一定影响。 
 	// 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
 	Url *string `json:"Url,omitempty" name:"Url"`
+
+	// 返回图像方式（base64 或 url ) ，二选一。url有效期为1天。
+	RspImgType *string `json:"RspImgType,omitempty" name:"RspImgType"`
 }
 
 func (r *SwapGenderPicRequest) ToJsonString() string {
@@ -136,8 +145,11 @@ type SwapGenderPicResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 结果图片Base64信息。
+		// RspImgType 为 base64 时，返回处理后的图片 base64 数据。默认返回base64
 		ResultImage *string `json:"ResultImage,omitempty" name:"ResultImage"`
+
+		// RspImgType 为 url 时，返回处理后的图片 url 数据。
+		ResultUrl *string `json:"ResultUrl,omitempty" name:"ResultUrl"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`

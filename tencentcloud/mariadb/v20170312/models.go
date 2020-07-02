@@ -77,6 +77,9 @@ type CloseDBExtranetAccessRequest struct {
 
 	// 待关闭外网访问的实例ID。形如：tdsql-ow728lmc，可以通过 DescribeDBInstances 查询实例详情获得。
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 是否IPv6，默认0
+	Ipv6Flag *int64 `json:"Ipv6Flag,omitempty" name:"Ipv6Flag"`
 }
 
 func (r *CloseDBExtranetAccessRequest) ToJsonString() string {
@@ -284,6 +287,9 @@ type CreateDBInstanceRequest struct {
 
 	// 自动续费标志，1:自动续费，2:不自动续费
 	AutoRenewFlag *int64 `json:"AutoRenewFlag,omitempty" name:"AutoRenewFlag"`
+
+	// 是否支持IPv6
+	Ipv6Flag *int64 `json:"Ipv6Flag,omitempty" name:"Ipv6Flag"`
 }
 
 func (r *CreateDBInstanceRequest) ToJsonString() string {
@@ -2053,6 +2059,9 @@ type OpenDBExtranetAccessRequest struct {
 
 	// 待开放外网访问的实例ID。形如：tdsql-ow728lmc，可以通过 DescribeDBInstances 查询实例详情获得。
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 是否IPv6，默认0
+	Ipv6Flag *int64 `json:"Ipv6Flag,omitempty" name:"Ipv6Flag"`
 }
 
 func (r *OpenDBExtranetAccessRequest) ToJsonString() string {

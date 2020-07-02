@@ -443,6 +443,31 @@ func (c *Client) DescribeTrainingJob(request *DescribeTrainingJobRequest) (respo
     return
 }
 
+func NewDescribeTrainingJobsRequest() (request *DescribeTrainingJobsRequest) {
+    request = &DescribeTrainingJobsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tione", APIVersion, "DescribeTrainingJobs")
+    return
+}
+
+func NewDescribeTrainingJobsResponse() (response *DescribeTrainingJobsResponse) {
+    response = &DescribeTrainingJobsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询训练任务列表
+func (c *Client) DescribeTrainingJobs(request *DescribeTrainingJobsRequest) (response *DescribeTrainingJobsResponse, err error) {
+    if request == nil {
+        request = NewDescribeTrainingJobsRequest()
+    }
+    response = NewDescribeTrainingJobsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewStartNotebookInstanceRequest() (request *StartNotebookInstanceRequest) {
     request = &StartNotebookInstanceRequest{
         BaseRequest: &tchttp.BaseRequest{},

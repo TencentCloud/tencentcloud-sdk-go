@@ -596,6 +596,9 @@ type DescribeAgentClientGradeResponse struct {
 		// 客户级别
 		ClientGrade *string `json:"ClientGrade,omitempty" name:"ClientGrade"`
 
+		// 客户类型：1，个人；2，企业；3，其他
+		ClientType *uint64 `json:"ClientType,omitempty" name:"ClientType"`
+
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`

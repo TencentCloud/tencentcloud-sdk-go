@@ -118,6 +118,35 @@ func (c *Client) DescribeCards(request *DescribeCardsRequest) (response *Describ
     return
 }
 
+func NewRenewCardsRequest() (request *RenewCardsRequest) {
+    request = &RenewCardsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ic", APIVersion, "RenewCards")
+    return
+}
+
+func NewRenewCardsResponse() (response *RenewCardsResponse) {
+    response = &RenewCardsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 批量为卡片续费，此接口建议调用至少间隔10s,如果出现返回deal lock failed相关的错误，请过10s再重试。
+// 续费的必要条件：
+// 1、单次续费的卡片不可以超过 100张。
+// 2、只对单卡续费，不支持池卡
+// 3、销户和未激活的卡片不支持续费。
+func (c *Client) RenewCards(request *RenewCardsRequest) (response *RenewCardsResponse, err error) {
+    if request == nil {
+        request = NewRenewCardsRequest()
+    }
+    response = NewRenewCardsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewSendMultiSmsRequest() (request *SendMultiSmsRequest) {
     request = &SendMultiSmsRequest{
         BaseRequest: &tchttp.BaseRequest{},

@@ -576,6 +576,31 @@ func (c *Client) DeleteAgentTaxPaymentInfos(request *DeleteAgentTaxPaymentInfosR
     return
 }
 
+func NewDescribeChargeDetailRequest() (request *DescribeChargeDetailRequest) {
+    request = &DescribeChargeDetailRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cpdp", APIVersion, "DescribeChargeDetail")
+    return
+}
+
+func NewDescribeChargeDetailResponse() (response *DescribeChargeDetailResponse) {
+    response = &DescribeChargeDetailResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询充值明细接口
+func (c *Client) DescribeChargeDetail(request *DescribeChargeDetailRequest) (response *DescribeChargeDetailResponse, err error) {
+    if request == nil {
+        request = NewDescribeChargeDetailRequest()
+    }
+    response = NewDescribeChargeDetailResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDownloadBillRequest() (request *DownloadBillRequest) {
     request = &DownloadBillRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -597,6 +622,31 @@ func (c *Client) DownloadBill(request *DownloadBillRequest) (response *DownloadB
         request = NewDownloadBillRequest()
     }
     response = NewDownloadBillResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewExecuteMemberTransactionRequest() (request *ExecuteMemberTransactionRequest) {
+    request = &ExecuteMemberTransactionRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cpdp", APIVersion, "ExecuteMemberTransaction")
+    return
+}
+
+func NewExecuteMemberTransactionResponse() (response *ExecuteMemberTransactionResponse) {
+    response = &ExecuteMemberTransactionResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 会员间交易接口
+func (c *Client) ExecuteMemberTransaction(request *ExecuteMemberTransactionRequest) (response *ExecuteMemberTransactionResponse, err error) {
+    if request == nil {
+        request = NewExecuteMemberTransactionRequest()
+    }
+    response = NewExecuteMemberTransactionResponse()
     err = c.Send(request, response)
     return
 }
@@ -772,6 +822,31 @@ func (c *Client) QueryAgentTaxPaymentBatch(request *QueryAgentTaxPaymentBatchReq
         request = NewQueryAgentTaxPaymentBatchRequest()
     }
     response = NewQueryAgentTaxPaymentBatchResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewQueryAnchorContractInfoRequest() (request *QueryAnchorContractInfoRequest) {
+    request = &QueryAnchorContractInfoRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cpdp", APIVersion, "QueryAnchorContractInfo")
+    return
+}
+
+func NewQueryAnchorContractInfoResponse() (response *QueryAnchorContractInfoResponse) {
+    response = &QueryAnchorContractInfoResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 直播平台-查询主播签约信息
+func (c *Client) QueryAnchorContractInfo(request *QueryAnchorContractInfoRequest) (response *QueryAnchorContractInfoResponse, err error) {
+    if request == nil {
+        request = NewQueryAnchorContractInfoRequest()
+    }
+    response = NewQueryAnchorContractInfoResponse()
     err = c.Send(request, response)
     return
 }
@@ -1302,6 +1377,31 @@ func (c *Client) QueryTrade(request *QueryTradeRequest) (response *QueryTradeRes
     return
 }
 
+func NewRechargeByThirdPayRequest() (request *RechargeByThirdPayRequest) {
+    request = &RechargeByThirdPayRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cpdp", APIVersion, "RechargeByThirdPay")
+    return
+}
+
+func NewRechargeByThirdPayResponse() (response *RechargeByThirdPayResponse) {
+    response = &RechargeByThirdPayResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 会员在途充值(经第三方支付渠道)接口
+func (c *Client) RechargeByThirdPay(request *RechargeByThirdPayRequest) (response *RechargeByThirdPayResponse, err error) {
+    if request == nil {
+        request = NewRechargeByThirdPayRequest()
+    }
+    response = NewRechargeByThirdPayResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewRechargeMemberThirdPayRequest() (request *RechargeMemberThirdPayRequest) {
     request = &RechargeMemberThirdPayRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1352,6 +1452,31 @@ func (c *Client) Refund(request *RefundRequest) (response *RefundResponse, err e
     return
 }
 
+func NewRefundMemberTransactionRequest() (request *RefundMemberTransactionRequest) {
+    request = &RefundMemberTransactionRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cpdp", APIVersion, "RefundMemberTransaction")
+    return
+}
+
+func NewRefundMemberTransactionResponse() (response *RefundMemberTransactionResponse) {
+    response = &RefundMemberTransactionResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 会员间交易退款
+func (c *Client) RefundMemberTransaction(request *RefundMemberTransactionRequest) (response *RefundMemberTransactionResponse, err error) {
+    if request == nil {
+        request = NewRefundMemberTransactionRequest()
+    }
+    response = NewRefundMemberTransactionResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewRegisterBillRequest() (request *RegisterBillRequest) {
     request = &RegisterBillRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1398,31 +1523,6 @@ func (c *Client) RegisterBillSupportWithdraw(request *RegisterBillSupportWithdra
         request = NewRegisterBillSupportWithdrawRequest()
     }
     response = NewRegisterBillSupportWithdrawResponse()
-    err = c.Send(request, response)
-    return
-}
-
-func NewRevRegisterBillSupportWithdrawRequest() (request *RevRegisterBillSupportWithdrawRequest) {
-    request = &RevRegisterBillSupportWithdrawRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    request.Init().WithApiInfo("cpdp", APIVersion, "RevRegisterBillSupportWithdraw")
-    return
-}
-
-func NewRevRegisterBillSupportWithdrawResponse() (response *RevRegisterBillSupportWithdrawResponse) {
-    response = &RevRegisterBillSupportWithdrawResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    }
-    return
-}
-
-// 登记挂账撤销。此接口可以实现把RegisterBillSupportWithdraw接口完成的登记挂账进行撤销，即调减普通会员子账户的可提现和可用余额，调增挂账子账户的可用余额。
-func (c *Client) RevRegisterBillSupportWithdraw(request *RevRegisterBillSupportWithdrawRequest) (response *RevRegisterBillSupportWithdrawResponse, err error) {
-    if request == nil {
-        request = NewRevRegisterBillSupportWithdrawRequest()
-    }
-    response = NewRevRegisterBillSupportWithdrawResponse()
     err = c.Send(request, response)
     return
 }
@@ -1498,6 +1598,31 @@ func (c *Client) RevokeMemberRechargeThirdPay(request *RevokeMemberRechargeThird
         request = NewRevokeMemberRechargeThirdPayRequest()
     }
     response = NewRevokeMemberRechargeThirdPayResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewRevokeRechargeByThirdPayRequest() (request *RevokeRechargeByThirdPayRequest) {
+    request = &RevokeRechargeByThirdPayRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cpdp", APIVersion, "RevokeRechargeByThirdPay")
+    return
+}
+
+func NewRevokeRechargeByThirdPayResponse() (response *RevokeRechargeByThirdPayResponse) {
+    response = &RevokeRechargeByThirdPayResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 撤销会员在途充值(经第三方支付渠道)接口
+func (c *Client) RevokeRechargeByThirdPay(request *RevokeRechargeByThirdPayRequest) (response *RevokeRechargeByThirdPayResponse, err error) {
+    if request == nil {
+        request = NewRevokeRechargeByThirdPayRequest()
+    }
+    response = NewRevokeRechargeByThirdPayResponse()
     err = c.Send(request, response)
     return
 }

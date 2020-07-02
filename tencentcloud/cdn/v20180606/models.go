@@ -3100,6 +3100,10 @@ type Origin struct {
 	// 回备源站时 Host 头部，不填充则默认为主源站的 ServerName
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	BackupServerName *string `json:"BackupServerName,omitempty" name:"BackupServerName"`
+
+	// 回源路径
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BasePath *string `json:"BasePath,omitempty" name:"BasePath"`
 }
 
 type OriginPullOptimization struct {

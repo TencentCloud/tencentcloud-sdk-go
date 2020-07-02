@@ -89,6 +89,9 @@ type CloseDBExtranetAccessRequest struct {
 
 	// 待关闭外网访问的实例ID。形如：dcdbt-ow728lmc，可以通过 DescribeDCDBInstances 查询实例详情获得。
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 是否IPv6，默认0
+	Ipv6Flag *int64 `json:"Ipv6Flag,omitempty" name:"Ipv6Flag"`
 }
 
 func (r *CloseDBExtranetAccessRequest) ToJsonString() string {
@@ -302,6 +305,9 @@ type CreateDCDBInstanceRequest struct {
 
 	// 实例名称， 可以通过该字段自主的设置实例的名字
 	InstanceName *string `json:"InstanceName,omitempty" name:"InstanceName"`
+
+	// 是否支持IPv6
+	Ipv6Flag *int64 `json:"Ipv6Flag,omitempty" name:"Ipv6Flag"`
 }
 
 func (r *CreateDCDBInstanceRequest) ToJsonString() string {
@@ -1850,6 +1856,9 @@ type OpenDBExtranetAccessRequest struct {
 
 	// 待开放外网访问的实例ID。形如：dcdbt-ow728lmc。
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 是否IPv6，默认0
+	Ipv6Flag *int64 `json:"Ipv6Flag,omitempty" name:"Ipv6Flag"`
 }
 
 func (r *OpenDBExtranetAccessRequest) ToJsonString() string {

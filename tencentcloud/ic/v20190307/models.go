@@ -282,6 +282,57 @@ func (r *DescribeCardsResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type RenewCardsRequest struct {
+	*tchttp.BaseRequest
+
+	// 应用ID
+	Sdkappid *uint64 `json:"Sdkappid,omitempty" name:"Sdkappid"`
+
+	// 续费的iccid
+	Iccids []*string `json:"Iccids,omitempty" name:"Iccids" list`
+
+	// 续费的周期
+	RenewNum *uint64 `json:"RenewNum,omitempty" name:"RenewNum"`
+}
+
+func (r *RenewCardsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *RenewCardsRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type RenewCardsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 续费成功的订单id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Data *ResRenew `json:"Data,omitempty" name:"Data"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *RenewCardsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *RenewCardsResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ResRenew struct {
+
+	// 每一张续费卡片的订单ID数组
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OrderIds []*string `json:"OrderIds,omitempty" name:"OrderIds" list`
+}
+
 type SendMultiSmsRequest struct {
 	*tchttp.BaseRequest
 

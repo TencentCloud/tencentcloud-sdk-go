@@ -595,6 +595,9 @@ type EncodeParams struct {
 
 	// 混流-输出流背景色。
 	BackgroundColor *uint64 `json:"BackgroundColor,omitempty" name:"BackgroundColor"`
+
+	// 混流-输出流背景图片，取值为实时音视频控制台上传的图片ID。
+	BackgroundImageId *uint64 `json:"BackgroundImageId,omitempty" name:"BackgroundImageId"`
 }
 
 type EventList struct {
@@ -642,7 +645,7 @@ type LayoutParams struct {
 
 type OutputParams struct {
 
-	// 直播流ID，该流ID不能与用户旁路的流ID相同。
+	// 直播流 ID，由用户自定义设置，该流 ID 不能与用户旁路的流 ID 相同。
 	StreamId *string `json:"StreamId,omitempty" name:"StreamId"`
 
 	// 取值范围[0,1]， 填0：直播流为音视频(默认); 填1：直播流为纯音频

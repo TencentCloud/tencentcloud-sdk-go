@@ -1013,6 +1013,13 @@ type DescribeTrainingJobResponse struct {
 	// Stopped：已停止
 		TrainingJobStatus *string `json:"TrainingJobStatus,omitempty" name:"TrainingJobStatus"`
 
+		// 训练任务日志链接
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		LogUrl *string `json:"LogUrl,omitempty" name:"LogUrl"`
+
+		// 训练任务实例ID
+		InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
@@ -1024,6 +1031,66 @@ func (r *DescribeTrainingJobResponse) ToJsonString() string {
 }
 
 func (r *DescribeTrainingJobResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeTrainingJobsRequest struct {
+	*tchttp.BaseRequest
+
+	// 偏移量
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 限制数目
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 创建时间晚于
+	CreationTimeAfter *string `json:"CreationTimeAfter,omitempty" name:"CreationTimeAfter"`
+
+	// 创建时间早于
+	CreationTimeBefore *string `json:"CreationTimeBefore,omitempty" name:"CreationTimeBefore"`
+
+	// 根据名称过滤
+	NameContains *string `json:"NameContains,omitempty" name:"NameContains"`
+
+	// 根据状态过滤
+	StatusEquals *string `json:"StatusEquals,omitempty" name:"StatusEquals"`
+
+	// 过滤条件。
+	// instance-name - String - 是否必填：否 -（过滤条件）按照名称过滤。
+	// search-by-name - String - 是否必填：否 -（过滤条件）按照名称检索，模糊匹配。
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+}
+
+func (r *DescribeTrainingJobsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeTrainingJobsRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeTrainingJobsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 训练任务列表
+		TrainingJobSet []*TrainingJobSummary `json:"TrainingJobSet,omitempty" name:"TrainingJobSet" list`
+
+		// 训练任务总数目
+		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeTrainingJobsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeTrainingJobsResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -1343,6 +1410,42 @@ type StoppingCondition struct {
 	// 最长运行运行时间（秒）
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MaxRuntimeInSeconds *uint64 `json:"MaxRuntimeInSeconds,omitempty" name:"MaxRuntimeInSeconds"`
+}
+
+type TrainingJobSummary struct {
+
+	// 任务创建时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreationTime *string `json:"CreationTime,omitempty" name:"CreationTime"`
+
+	// 最近修改时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LastModifiedTime *string `json:"LastModifiedTime,omitempty" name:"LastModifiedTime"`
+
+	// 训练任务名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TrainingJobName *string `json:"TrainingJobName,omitempty" name:"TrainingJobName"`
+
+	// 训练任务状态，取值范围
+	// InProgress：运行中
+	// Completed: 已完成
+	// Failed: 失败
+	// Stopping: 停止中
+	// Stopped：已停止
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TrainingJobStatus *string `json:"TrainingJobStatus,omitempty" name:"TrainingJobStatus"`
+
+	// 完成时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TrainingEndTime *string `json:"TrainingEndTime,omitempty" name:"TrainingEndTime"`
+
+	// 算了实例Id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 资源配置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResourceConfig *ResourceConfig `json:"ResourceConfig,omitempty" name:"ResourceConfig"`
 }
 
 type UpdateCodeRepositoryRequest struct {

@@ -526,6 +526,12 @@ type DescribeEndUsersRequest struct {
 	// 开发者的环境ID
 	EnvId *string `json:"EnvId,omitempty" name:"EnvId"`
 
+	// 可选参数，偏移量，默认 0
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 可选参数，拉取数量，默认 20
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
 	// 按照 uuid 列表过滤，最大个数为100
 	UUIds []*string `json:"UUIds,omitempty" name:"UUIds" list`
 }
@@ -971,6 +977,9 @@ type EndUserInfo struct {
 
 	// 是否设置过密码
 	HasPassword *bool `json:"HasPassword,omitempty" name:"HasPassword"`
+
+	// 用户名
+	UserName *string `json:"UserName,omitempty" name:"UserName"`
 }
 
 type EnvBillingInfoItem struct {

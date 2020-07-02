@@ -788,6 +788,14 @@ type ContainerGroupDetail struct {
 	// 部署组更新时间戳
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpdatedTime *int64 `json:"UpdatedTime,omitempty" name:"UpdatedTime"`
+
+	// kubernetes滚动更新策略的MaxSurge参数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MaxSurge *string `json:"MaxSurge,omitempty" name:"MaxSurge"`
+
+	// kubernetes滚动更新策略的MaxUnavailable参数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MaxUnavailable *string `json:"MaxUnavailable,omitempty" name:"MaxUnavailable"`
 }
 
 type CosCredentials struct {
@@ -940,6 +948,9 @@ type CreateClusterRequest struct {
 
 	// 私有网络子网ID
 	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
+
+	// 集群版本
+	ClusterVersion *string `json:"ClusterVersion,omitempty" name:"ClusterVersion"`
 }
 
 func (r *CreateClusterRequest) ToJsonString() string {
@@ -1432,6 +1443,59 @@ func (r *CreatePublicConfigResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type CreateRepositoryRequest struct {
+	*tchttp.BaseRequest
+
+	// 仓库名称
+	RepositoryName *string `json:"RepositoryName,omitempty" name:"RepositoryName"`
+
+	// 仓库类型
+	RepositoryType *string `json:"RepositoryType,omitempty" name:"RepositoryType"`
+
+	// 仓库所在桶名称
+	BucketName *string `json:"BucketName,omitempty" name:"BucketName"`
+
+	// 仓库所在桶地域
+	BucketRegion *string `json:"BucketRegion,omitempty" name:"BucketRegion"`
+
+	// 目录
+	Directory *string `json:"Directory,omitempty" name:"Directory"`
+
+	// 仓库描述
+	RepositoryDesc *string `json:"RepositoryDesc,omitempty" name:"RepositoryDesc"`
+}
+
+func (r *CreateRepositoryRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateRepositoryRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateRepositoryResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 创建仓库是否成功
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Result *bool `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateRepositoryResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateRepositoryResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type CreateServerlessGroupRequest struct {
 	*tchttp.BaseRequest
 
@@ -1809,6 +1873,12 @@ type DeletePkgsRequest struct {
 
 	// 需要删除的程序包ID列表
 	PkgIds []*string `json:"PkgIds,omitempty" name:"PkgIds" list`
+
+	// 程序包仓库类型
+	RepositoryType *string `json:"RepositoryType,omitempty" name:"RepositoryType"`
+
+	// 程序包仓库id
+	RepositoryId *string `json:"RepositoryId,omitempty" name:"RepositoryId"`
 }
 
 func (r *DeletePkgsRequest) ToJsonString() string {
@@ -1873,6 +1943,44 @@ func (r *DeletePublicConfigResponse) ToJsonString() string {
 }
 
 func (r *DeletePublicConfigResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteRepositoryRequest struct {
+	*tchttp.BaseRequest
+
+	// 仓库ID
+	RepositoryId *string `json:"RepositoryId,omitempty" name:"RepositoryId"`
+}
+
+func (r *DeleteRepositoryRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteRepositoryRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteRepositoryResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 删除仓库是否成功
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Result *bool `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DeleteRepositoryResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteRepositoryResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -1981,6 +2089,12 @@ type DeployContainerGroupRequest struct {
 
 	// istioproxy 容器最大的内存 MiB 数，对应 K8S 的 limit
 	IstioMemLimit *string `json:"IstioMemLimit,omitempty" name:"IstioMemLimit"`
+
+	// kubernetes滚动更新策略的MaxSurge参数
+	MaxSurge *string `json:"MaxSurge,omitempty" name:"MaxSurge"`
+
+	// kubernetes滚动更新策略的MaxUnavailable参数
+	MaxUnavailable *string `json:"MaxUnavailable,omitempty" name:"MaxUnavailable"`
 }
 
 func (r *DeployContainerGroupRequest) ToJsonString() string {
@@ -2742,6 +2856,12 @@ type DescribeDownloadInfoRequest struct {
 
 	// 程序包ID
 	PkgId *string `json:"PkgId,omitempty" name:"PkgId"`
+
+	// 程序包仓库ID
+	RepositoryId *string `json:"RepositoryId,omitempty" name:"RepositoryId"`
+
+	// 程序包仓库类型
+	RepositoryType *string `json:"RepositoryType,omitempty" name:"RepositoryType"`
 }
 
 func (r *DescribeDownloadInfoRequest) ToJsonString() string {
@@ -3230,6 +3350,12 @@ type DescribePkgsRequest struct {
 
 	// 返回数量限制
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 程序包仓库类型
+	RepositoryType *string `json:"RepositoryType,omitempty" name:"RepositoryType"`
+
+	// 程序包仓库id
+	RepositoryId *string `json:"RepositoryId,omitempty" name:"RepositoryId"`
 }
 
 func (r *DescribePkgsRequest) ToJsonString() string {
@@ -3569,6 +3695,90 @@ func (r *DescribeReleasedConfigResponse) ToJsonString() string {
 }
 
 func (r *DescribeReleasedConfigResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeRepositoriesRequest struct {
+	*tchttp.BaseRequest
+
+	// 查询关键字（按照仓库名称搜索）
+	SearchWord *string `json:"SearchWord,omitempty" name:"SearchWord"`
+
+	// 查询起始偏移
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 返回数量限制
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 仓库类型（默认仓库：default，私有仓库：private）
+	RepositoryType *string `json:"RepositoryType,omitempty" name:"RepositoryType"`
+}
+
+func (r *DescribeRepositoriesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeRepositoriesRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeRepositoriesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 符合查询仓库信息列表
+		Result *RepositoryList `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeRepositoriesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeRepositoriesResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeRepositoryRequest struct {
+	*tchttp.BaseRequest
+
+	// 仓库ID
+	RepositoryId *string `json:"RepositoryId,omitempty" name:"RepositoryId"`
+}
+
+func (r *DescribeRepositoryRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeRepositoryRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeRepositoryResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 查询的仓库信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Result *RepositoryInfo `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeRepositoryResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeRepositoryResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -3919,6 +4129,12 @@ type DescribeUploadInfoRequest struct {
 
 	// 程序包介绍
 	PkgDesc *string `json:"PkgDesc,omitempty" name:"PkgDesc"`
+
+	// 程序包仓库类型
+	RepositoryType *string `json:"RepositoryType,omitempty" name:"RepositoryType"`
+
+	// 程序包仓库id
+	RepositoryId *string `json:"RepositoryId,omitempty" name:"RepositoryId"`
 }
 
 func (r *DescribeUploadInfoRequest) ToJsonString() string {
@@ -4054,6 +4270,10 @@ type GroupPod struct {
 	// 机器实例状态
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceStatus *string `json:"InstanceStatus,omitempty" name:"InstanceStatus"`
+
+	// 节点实例id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NodeInstanceId *string `json:"NodeInstanceId,omitempty" name:"NodeInstanceId"`
 }
 
 type GroupPodResult struct {
@@ -4736,6 +4956,12 @@ type ModifyUploadInfoRequest struct {
 
 	// 程序包大小（单位字节）
 	Size *uint64 `json:"Size,omitempty" name:"Size"`
+
+	// 程序包仓库类型
+	RepositoryType *string `json:"RepositoryType,omitempty" name:"RepositoryType"`
+
+	// 程序包仓库id
+	RepositoryId *string `json:"RepositoryId,omitempty" name:"RepositoryId"`
 }
 
 func (r *ModifyUploadInfoRequest) ToJsonString() string {
@@ -4950,6 +5176,17 @@ type OperationInfoDetail struct {
 	Supported *bool `json:"Supported,omitempty" name:"Supported"`
 }
 
+type PkgBind struct {
+
+	// 应用id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ApplicationId *string `json:"ApplicationId,omitempty" name:"ApplicationId"`
+
+	// 部署组id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
+}
+
 type PkgInfo struct {
 
 	// 程序包ID
@@ -4983,6 +5220,10 @@ type PkgInfo struct {
 	// 程序包状态
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PkgPubStatus *int64 `json:"PkgPubStatus,omitempty" name:"PkgPubStatus"`
+
+	// 程序包关联关系
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PkgBindInfo []*PkgBind `json:"PkgBindInfo,omitempty" name:"PkgBindInfo" list`
 }
 
 type PkgList struct {
@@ -4993,6 +5234,18 @@ type PkgList struct {
 	// 程序包信息列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Content []*PkgInfo `json:"Content,omitempty" name:"Content" list`
+
+	// 程序包仓库id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RepositoryId *string `json:"RepositoryId,omitempty" name:"RepositoryId"`
+
+	// 程序包仓库类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RepositoryType *string `json:"RepositoryType,omitempty" name:"RepositoryType"`
+
+	// 程序包仓库名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RepositoryName *string `json:"RepositoryName,omitempty" name:"RepositoryName"`
 }
 
 type PropertyField struct {
@@ -5150,6 +5403,54 @@ func (r *RemoveInstancesResponse) ToJsonString() string {
 
 func (r *RemoveInstancesResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
+}
+
+type RepositoryInfo struct {
+
+	// 仓库ID
+	RepositoryId *string `json:"RepositoryId,omitempty" name:"RepositoryId"`
+
+	// 仓库名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RepositoryName *string `json:"RepositoryName,omitempty" name:"RepositoryName"`
+
+	// 仓库类型（默认仓库：default，私有仓库：private）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RepositoryType *string `json:"RepositoryType,omitempty" name:"RepositoryType"`
+
+	// 仓库描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RepositoryDesc *string `json:"RepositoryDesc,omitempty" name:"RepositoryDesc"`
+
+	// 仓库是否正在被使用
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsUsed *bool `json:"IsUsed,omitempty" name:"IsUsed"`
+
+	// 仓库创建时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 仓库桶名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BucketName *string `json:"BucketName,omitempty" name:"BucketName"`
+
+	// 仓库桶所在地域
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BucketRegion *string `json:"BucketRegion,omitempty" name:"BucketRegion"`
+
+	// 仓库目录
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Directory *string `json:"Directory,omitempty" name:"Directory"`
+}
+
+type RepositoryList struct {
+
+	// 仓库总量
+	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 仓库信息列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Content []*RepositoryInfo `json:"Content,omitempty" name:"Content" list`
 }
 
 type RevocationConfigRequest struct {
@@ -5837,6 +6138,47 @@ type TsfPageVmGroup struct {
 	// 虚拟机部署组列表信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Content []*VmGroupSimple `json:"Content,omitempty" name:"Content" list`
+}
+
+type UpdateRepositoryRequest struct {
+	*tchttp.BaseRequest
+
+	// 仓库ID
+	RepositoryId *string `json:"RepositoryId,omitempty" name:"RepositoryId"`
+
+	// 仓库描述
+	RepositoryDesc *string `json:"RepositoryDesc,omitempty" name:"RepositoryDesc"`
+}
+
+func (r *UpdateRepositoryRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *UpdateRepositoryRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type UpdateRepositoryResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 更新仓库是否成功
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Result *bool `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *UpdateRepositoryResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *UpdateRepositoryResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
 }
 
 type VmGroup struct {

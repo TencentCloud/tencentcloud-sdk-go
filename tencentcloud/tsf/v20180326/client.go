@@ -343,6 +343,31 @@ func (c *Client) CreatePublicConfig(request *CreatePublicConfigRequest) (respons
     return
 }
 
+func NewCreateRepositoryRequest() (request *CreateRepositoryRequest) {
+    request = &CreateRepositoryRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tsf", APIVersion, "CreateRepository")
+    return
+}
+
+func NewCreateRepositoryResponse() (response *CreateRepositoryResponse) {
+    response = &CreateRepositoryResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 创建仓库
+func (c *Client) CreateRepository(request *CreateRepositoryRequest) (response *CreateRepositoryResponse, err error) {
+    if request == nil {
+        request = NewCreateRepositoryRequest()
+    }
+    response = NewCreateRepositoryResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateServerlessGroupRequest() (request *CreateServerlessGroupRequest) {
     request = &CreateServerlessGroupRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -615,6 +640,31 @@ func (c *Client) DeletePublicConfig(request *DeletePublicConfigRequest) (respons
         request = NewDeletePublicConfigRequest()
     }
     response = NewDeletePublicConfigResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteRepositoryRequest() (request *DeleteRepositoryRequest) {
+    request = &DeleteRepositoryRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tsf", APIVersion, "DeleteRepository")
+    return
+}
+
+func NewDeleteRepositoryResponse() (response *DeleteRepositoryResponse) {
+    response = &DeleteRepositoryResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 删除仓库
+func (c *Client) DeleteRepository(request *DeleteRepositoryRequest) (response *DeleteRepositoryResponse, err error) {
+    if request == nil {
+        request = NewDeleteRepositoryRequest()
+    }
+    response = NewDeleteRepositoryResponse()
     err = c.Send(request, response)
     return
 }
@@ -1495,6 +1545,56 @@ func (c *Client) DescribeReleasedConfig(request *DescribeReleasedConfigRequest) 
     return
 }
 
+func NewDescribeRepositoriesRequest() (request *DescribeRepositoriesRequest) {
+    request = &DescribeRepositoriesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tsf", APIVersion, "DescribeRepositories")
+    return
+}
+
+func NewDescribeRepositoriesResponse() (response *DescribeRepositoriesResponse) {
+    response = &DescribeRepositoriesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询仓库列表
+func (c *Client) DescribeRepositories(request *DescribeRepositoriesRequest) (response *DescribeRepositoriesResponse, err error) {
+    if request == nil {
+        request = NewDescribeRepositoriesRequest()
+    }
+    response = NewDescribeRepositoriesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeRepositoryRequest() (request *DescribeRepositoryRequest) {
+    request = &DescribeRepositoryRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tsf", APIVersion, "DescribeRepository")
+    return
+}
+
+func NewDescribeRepositoryResponse() (response *DescribeRepositoryResponse) {
+    response = &DescribeRepositoryResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询仓库信息
+func (c *Client) DescribeRepository(request *DescribeRepositoryRequest) (response *DescribeRepositoryResponse, err error) {
+    if request == nil {
+        request = NewDescribeRepositoryRequest()
+    }
+    response = NewDescribeRepositoryResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeServerlessGroupRequest() (request *DescribeServerlessGroupRequest) {
     request = &DescribeServerlessGroupRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2143,6 +2243,31 @@ func (c *Client) StopGroup(request *StopGroupRequest) (response *StopGroupRespon
         request = NewStopGroupRequest()
     }
     response = NewStopGroupResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewUpdateRepositoryRequest() (request *UpdateRepositoryRequest) {
+    request = &UpdateRepositoryRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tsf", APIVersion, "UpdateRepository")
+    return
+}
+
+func NewUpdateRepositoryResponse() (response *UpdateRepositoryResponse) {
+    response = &UpdateRepositoryResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 更新仓库信息
+func (c *Client) UpdateRepository(request *UpdateRepositoryRequest) (response *UpdateRepositoryResponse, err error) {
+    if request == nil {
+        request = NewUpdateRepositoryRequest()
+    }
+    response = NewUpdateRepositoryResponse()
     err = c.Send(request, response)
     return
 }

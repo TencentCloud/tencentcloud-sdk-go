@@ -105,6 +105,24 @@ type AgentTaxPaymentBatch struct {
 	Type *int64 `json:"Type,omitempty" name:"Type"`
 }
 
+type AnchorContractInfo struct {
+
+	// 主播ID
+	AnchorId *string `json:"AnchorId,omitempty" name:"AnchorId"`
+
+	// 主播名称
+	AnchorName *string `json:"AnchorName,omitempty" name:"AnchorName"`
+
+	// 代理商ID
+	AgentId *string `json:"AgentId,omitempty" name:"AgentId"`
+
+	// 代理商名称
+	AgentName *string `json:"AgentName,omitempty" name:"AgentName"`
+
+	// 主播身份证号
+	IdNo *string `json:"IdNo,omitempty" name:"IdNo"`
+}
+
 type ApplyApplicationMaterialRequest struct {
 	*tchttp.BaseRequest
 
@@ -627,6 +645,9 @@ type ApplyWithdrawalRequest struct {
 	// development: 开发环境
 	// 缺省: release
 	MidasEnvironment *string `json:"MidasEnvironment,omitempty" name:"MidasEnvironment"`
+
+	// 手续费金额
+	CommissionAmount *string `json:"CommissionAmount,omitempty" name:"CommissionAmount"`
 }
 
 func (r *ApplyWithdrawalRequest) ToJsonString() string {
@@ -1687,6 +1708,9 @@ type CreateInvoiceRequest struct {
 
 	// 门店编码
 	StoreNo *string `json:"StoreNo,omitempty" name:"StoreNo"`
+
+	// 开票渠道。0：线上渠道，1：线下渠道。不填默认为线上渠道
+	InvoiceChannel *int64 `json:"InvoiceChannel,omitempty" name:"InvoiceChannel"`
 }
 
 func (r *CreateInvoiceRequest) ToJsonString() string {
@@ -1899,6 +1923,9 @@ type CreateRedInvoiceRequest struct {
 
 	// 接入环境。沙箱环境填 sandbox。
 	Profile *string `json:"Profile,omitempty" name:"Profile"`
+
+	// 开票渠道。0：线上渠道，1：线下渠道。不填默认为线上渠道
+	InvoiceChannel *int64 `json:"InvoiceChannel,omitempty" name:"InvoiceChannel"`
 }
 
 func (r *CreateRedInvoiceRequest) ToJsonString() string {
@@ -2030,6 +2057,118 @@ func (r *DeleteAgentTaxPaymentInfosResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeChargeDetailRequest struct {
+	*tchttp.BaseRequest
+
+	// 请求类型
+	RequestType *string `json:"RequestType,omitempty" name:"RequestType"`
+
+	// 商户号
+	MerchantCode *string `json:"MerchantCode,omitempty" name:"MerchantCode"`
+
+	// 支付渠道
+	PayChannel *string `json:"PayChannel,omitempty" name:"PayChannel"`
+
+	// 子渠道
+	PayChannelSubId *int64 `json:"PayChannelSubId,omitempty" name:"PayChannelSubId"`
+
+	// 原始交易订单号或者流水号
+	OrderId *string `json:"OrderId,omitempty" name:"OrderId"`
+
+	// 父账户账号，资金汇总账号
+	BankAccountNumber *string `json:"BankAccountNumber,omitempty" name:"BankAccountNumber"`
+
+	// 收单渠道类型
+	AcquiringChannelType *string `json:"AcquiringChannelType,omitempty" name:"AcquiringChannelType"`
+
+	// 平台短号(银行分配)
+	PlatformShortNumber *string `json:"PlatformShortNumber,omitempty" name:"PlatformShortNumber"`
+
+	// 聚鑫分配的安全ID
+	MidasSecretId *string `json:"MidasSecretId,omitempty" name:"MidasSecretId"`
+
+	// 聚鑫分配的支付主MidasAppId
+	MidasAppId *string `json:"MidasAppId,omitempty" name:"MidasAppId"`
+
+	// 计费签名
+	MidasSignature *string `json:"MidasSignature,omitempty" name:"MidasSignature"`
+
+	// 交易流水号
+	TransSequenceNumber *string `json:"TransSequenceNumber,omitempty" name:"TransSequenceNumber"`
+
+	// Midas环境参数
+	MidasEnvironment *string `json:"MidasEnvironment,omitempty" name:"MidasEnvironment"`
+
+	// 保留域
+	ReservedMessage *string `json:"ReservedMessage,omitempty" name:"ReservedMessage"`
+}
+
+func (r *DescribeChargeDetailRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeChargeDetailRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeChargeDetailResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 交易状态 （0：成功，1：失败，2：异常,3:冲正，5：待处理）
+		OrderStatus *string `json:"OrderStatus,omitempty" name:"OrderStatus"`
+
+		// 交易金额
+		OrderAmount *string `json:"OrderAmount,omitempty" name:"OrderAmount"`
+
+		// 佣金费
+		CommissionAmount *string `json:"CommissionAmount,omitempty" name:"CommissionAmount"`
+
+		// 支付方式  0-冻结支付 1-普通支付
+		PayMode *string `json:"PayMode,omitempty" name:"PayMode"`
+
+		// 交易日期
+		OrderDate *string `json:"OrderDate,omitempty" name:"OrderDate"`
+
+		// 交易时间
+		OrderTime *string `json:"OrderTime,omitempty" name:"OrderTime"`
+
+		// 订单实际转入见证子账户的名称
+		OrderActualInSubAccountName *string `json:"OrderActualInSubAccountName,omitempty" name:"OrderActualInSubAccountName"`
+
+		// 订单实际转入见证子账户的帐号
+		OrderActualInSubAccountNumber *string `json:"OrderActualInSubAccountNumber,omitempty" name:"OrderActualInSubAccountNumber"`
+
+		// 订单实际转入见证子账户的帐号
+		OrderInSubAccountName *string `json:"OrderInSubAccountName,omitempty" name:"OrderInSubAccountName"`
+
+		// 订单转入见证子账户的帐号
+		OrderInSubAccountNumber *string `json:"OrderInSubAccountNumber,omitempty" name:"OrderInSubAccountNumber"`
+
+		// 银行流水号
+		FrontSequenceNumber *string `json:"FrontSequenceNumber,omitempty" name:"FrontSequenceNumber"`
+
+		// 当充值失败时，返回交易失败原因
+		FailMessage *string `json:"FailMessage,omitempty" name:"FailMessage"`
+
+		// 请求类型
+		RequestType *string `json:"RequestType,omitempty" name:"RequestType"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeChargeDetailResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeChargeDetailResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DownloadBillRequest struct {
 	*tchttp.BaseRequest
 
@@ -2079,6 +2218,120 @@ func (r *DownloadBillResponse) ToJsonString() string {
 }
 
 func (r *DownloadBillResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ExecuteMemberTransactionRequest struct {
+	*tchttp.BaseRequest
+
+	// 请求类型此接口固定填：MemberTransactionReq
+	RequestType *string `json:"RequestType,omitempty" name:"RequestType"`
+
+	// 银行注册商户号
+	MerchantCode *string `json:"MerchantCode,omitempty" name:"MerchantCode"`
+
+	// 支付渠道
+	PayChannel *string `json:"PayChannel,omitempty" name:"PayChannel"`
+
+	// 子渠道
+	PayChannelSubId *int64 `json:"PayChannelSubId,omitempty" name:"PayChannelSubId"`
+
+	// 转出交易网会员代码
+	OutTransNetMemberCode *string `json:"OutTransNetMemberCode,omitempty" name:"OutTransNetMemberCode"`
+
+	// 转出见证子账户的户名
+	OutSubAccountName *string `json:"OutSubAccountName,omitempty" name:"OutSubAccountName"`
+
+	// 转入见证子账户的户名
+	InSubAccountName *string `json:"InSubAccountName,omitempty" name:"InSubAccountName"`
+
+	// 转出子账户账号
+	OutSubAccountNumber *string `json:"OutSubAccountNumber,omitempty" name:"OutSubAccountNumber"`
+
+	// 转入子账户账号
+	InSubAccountNumber *string `json:"InSubAccountNumber,omitempty" name:"InSubAccountNumber"`
+
+	// 父账户账号，资金汇总账号
+	BankAccountNumber *string `json:"BankAccountNumber,omitempty" name:"BankAccountNumber"`
+
+	// 货币单位 单位，1：元，2：角，3：分
+	CurrencyUnit *string `json:"CurrencyUnit,omitempty" name:"CurrencyUnit"`
+
+	// 币种
+	CurrencyType *string `json:"CurrencyType,omitempty" name:"CurrencyType"`
+
+	// 交易金额
+	CurrencyAmount *string `json:"CurrencyAmount,omitempty" name:"CurrencyAmount"`
+
+	// 订单号
+	OrderId *string `json:"OrderId,omitempty" name:"OrderId"`
+
+	// 聚鑫分配的支付主MidasAppId
+	MidasAppId *string `json:"MidasAppId,omitempty" name:"MidasAppId"`
+
+	// 聚鑫分配的安全ID
+	MidasSecretId *string `json:"MidasSecretId,omitempty" name:"MidasSecretId"`
+
+	// 计费签名
+	MidasSignature *string `json:"MidasSignature,omitempty" name:"MidasSignature"`
+
+	// 交易流水号
+	TransSequenceNumber *string `json:"TransSequenceNumber,omitempty" name:"TransSequenceNumber"`
+
+	// 转入交易网会员代码
+	InTransNetMemberCode *string `json:"InTransNetMemberCode,omitempty" name:"InTransNetMemberCode"`
+
+	// Midas环境标识 release 现网环境 sandbox 沙箱环境
+	// development 开发环境
+	MidasEnvironment *string `json:"MidasEnvironment,omitempty" name:"MidasEnvironment"`
+
+	// 平台短号(银行分配)
+	PlatformShortNumber *string `json:"PlatformShortNumber,omitempty" name:"PlatformShortNumber"`
+
+	// 0,登记挂账，1，撤销挂账
+	TransType *string `json:"TransType,omitempty" name:"TransType"`
+
+	// 交易手续费
+	TransFee *string `json:"TransFee,omitempty" name:"TransFee"`
+
+	// 保留域
+	ReservedMessage *string `json:"ReservedMessage,omitempty" name:"ReservedMessage"`
+}
+
+func (r *ExecuteMemberTransactionRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ExecuteMemberTransactionRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ExecuteMemberTransactionResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 请求类型
+		RequestType *string `json:"RequestType,omitempty" name:"RequestType"`
+
+		// 银行流水号
+		FrontSequenceNumber *string `json:"FrontSequenceNumber,omitempty" name:"FrontSequenceNumber"`
+
+		// 保留域
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		ReservedMessage *string `json:"ReservedMessage,omitempty" name:"ReservedMessage"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ExecuteMemberTransactionResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ExecuteMemberTransactionResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -2596,6 +2849,46 @@ func (r *QueryAgentTaxPaymentBatchResponse) ToJsonString() string {
 }
 
 func (r *QueryAgentTaxPaymentBatchResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type QueryAnchorContractInfoRequest struct {
+	*tchttp.BaseRequest
+
+	// 起始时间，格式为yyyy-MM-dd
+	BeginTime *string `json:"BeginTime,omitempty" name:"BeginTime"`
+
+	// 起始时间，格式为yyyy-MM-dd
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+}
+
+func (r *QueryAnchorContractInfoRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *QueryAnchorContractInfoRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type QueryAnchorContractInfoResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 签约主播数据
+		AnchorContractInfoList []*AnchorContractInfo `json:"AnchorContractInfoList,omitempty" name:"AnchorContractInfoList" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *QueryAnchorContractInfoResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *QueryAnchorContractInfoResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -3283,6 +3576,12 @@ type QueryInvoiceRequest struct {
 
 	// 接入环境。沙箱环境填sandbox。
 	Profile *string `json:"Profile,omitempty" name:"Profile"`
+
+	// 开票渠道。0：线上渠道，1：线下渠道。不填默认为线上渠道
+	InvoiceChannel *int64 `json:"InvoiceChannel,omitempty" name:"InvoiceChannel"`
+
+	// 当渠道为线下渠道时，必填
+	SellerTaxpayerNum *string `json:"SellerTaxpayerNum,omitempty" name:"SellerTaxpayerNum"`
 }
 
 func (r *QueryInvoiceRequest) ToJsonString() string {
@@ -4467,6 +4766,117 @@ type QueryTradeResult struct {
 	Code *string `json:"Code,omitempty" name:"Code"`
 }
 
+type RechargeByThirdPayRequest struct {
+	*tchttp.BaseRequest
+
+	// 请求类型
+	RequestType *string `json:"RequestType,omitempty" name:"RequestType"`
+
+	// 商户号
+	MerchantCode *string `json:"MerchantCode,omitempty" name:"MerchantCode"`
+
+	// 支付渠道
+	PayChannel *string `json:"PayChannel,omitempty" name:"PayChannel"`
+
+	// 子渠道
+	PayChannelSubId *int64 `json:"PayChannelSubId,omitempty" name:"PayChannelSubId"`
+
+	// 交易订单号
+	OrderId *string `json:"OrderId,omitempty" name:"OrderId"`
+
+	// 父账户账号，资金汇总账号
+	BankAccountNumber *string `json:"BankAccountNumber,omitempty" name:"BankAccountNumber"`
+
+	// 平台短号(银行分配)
+	PlatformShortNumber *string `json:"PlatformShortNumber,omitempty" name:"PlatformShortNumber"`
+
+	// 聚鑫分配的安全ID
+	MidasSecretId *string `json:"MidasSecretId,omitempty" name:"MidasSecretId"`
+
+	// 聚鑫分配的支付主MidasAppId
+	MidasAppId *string `json:"MidasAppId,omitempty" name:"MidasAppId"`
+
+	// 计费签名
+	MidasSignature *string `json:"MidasSignature,omitempty" name:"MidasSignature"`
+
+	// 交易流水号
+	TransSequenceNumber *string `json:"TransSequenceNumber,omitempty" name:"TransSequenceNumber"`
+
+	// 子账户账号
+	BankSubAccountNumber *string `json:"BankSubAccountNumber,omitempty" name:"BankSubAccountNumber"`
+
+	// 交易手续费
+	TransFee *string `json:"TransFee,omitempty" name:"TransFee"`
+
+	// 第三方支付渠道类型 0001-微信 0002-支付宝 0003-京东支付
+	ThirdPayChannel *string `json:"ThirdPayChannel,omitempty" name:"ThirdPayChannel"`
+
+	// 第三方渠道商户号
+	ThirdPayChannelMerchantCode *string `json:"ThirdPayChannelMerchantCode,omitempty" name:"ThirdPayChannelMerchantCode"`
+
+	// 第三方渠道订单号或流水号
+	ThirdPayChannelOrderId *string `json:"ThirdPayChannelOrderId,omitempty" name:"ThirdPayChannelOrderId"`
+
+	// 交易金额
+	CurrencyAmount *string `json:"CurrencyAmount,omitempty" name:"CurrencyAmount"`
+
+	// 单位，1：元，2：角，3：分
+	CurrencyUnit *string `json:"CurrencyUnit,omitempty" name:"CurrencyUnit"`
+
+	// 币种
+	CurrencyType *string `json:"CurrencyType,omitempty" name:"CurrencyType"`
+
+	// 交易网会员代码
+	TransNetMemberCode *string `json:"TransNetMemberCode,omitempty" name:"TransNetMemberCode"`
+
+	// midas环境参数
+	MidasEnvironment *string `json:"MidasEnvironment,omitempty" name:"MidasEnvironment"`
+
+	// 保留域
+	ReservedMessage *string `json:"ReservedMessage,omitempty" name:"ReservedMessage"`
+
+	// 备注
+	Remark *string `json:"Remark,omitempty" name:"Remark"`
+}
+
+func (r *RechargeByThirdPayRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *RechargeByThirdPayRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type RechargeByThirdPayResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 保留字段
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		ReservedMessage *string `json:"ReservedMessage,omitempty" name:"ReservedMessage"`
+
+		// 银行流水号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		FrontSequenceNumber *string `json:"FrontSequenceNumber,omitempty" name:"FrontSequenceNumber"`
+
+		// 请求类型
+		RequestType *string `json:"RequestType,omitempty" name:"RequestType"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *RechargeByThirdPayResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *RechargeByThirdPayResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type RechargeMemberThirdPayRequest struct {
 	*tchttp.BaseRequest
 
@@ -4568,6 +4978,119 @@ func (r *RechargeMemberThirdPayResponse) ToJsonString() string {
 }
 
 func (r *RechargeMemberThirdPayResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type RefundMemberTransactionRequest struct {
+	*tchttp.BaseRequest
+
+	// 转出见证子账户的户名
+	OutSubAccountName *string `json:"OutSubAccountName,omitempty" name:"OutSubAccountName"`
+
+	// 转入见证子账户的户名
+	InSubAccountName *string `json:"InSubAccountName,omitempty" name:"InSubAccountName"`
+
+	// 子渠道
+	PayChannelSubId *int64 `json:"PayChannelSubId,omitempty" name:"PayChannelSubId"`
+
+	// 转出见证子账户账号
+	OutSubAccountNumber *string `json:"OutSubAccountNumber,omitempty" name:"OutSubAccountNumber"`
+
+	// 计费签名
+	MidasSignature *string `json:"MidasSignature,omitempty" name:"MidasSignature"`
+
+	// 转入见证子账户账号
+	InSubAccountNumber *string `json:"InSubAccountNumber,omitempty" name:"InSubAccountNumber"`
+
+	// 计费秘钥
+	MidasSecretId *string `json:"MidasSecretId,omitempty" name:"MidasSecretId"`
+
+	// 父账户账号，资金汇总账号
+	BankAccountNumber *string `json:"BankAccountNumber,omitempty" name:"BankAccountNumber"`
+
+	// 原老订单流水号
+	OldTransSequenceNumber *string `json:"OldTransSequenceNumber,omitempty" name:"OldTransSequenceNumber"`
+
+	// 银行注册商户号
+	MerchantCode *string `json:"MerchantCode,omitempty" name:"MerchantCode"`
+
+	// 请求类型，固定为MemberTransactionRefundReq
+	RequestType *string `json:"RequestType,omitempty" name:"RequestType"`
+
+	// 交易金额
+	CurrencyAmount *string `json:"CurrencyAmount,omitempty" name:"CurrencyAmount"`
+
+	// 交易流水号
+	TransSequenceNumber *string `json:"TransSequenceNumber,omitempty" name:"TransSequenceNumber"`
+
+	// 渠道
+	PayChannel *string `json:"PayChannel,omitempty" name:"PayChannel"`
+
+	// 原订单号
+	OldOrderId *string `json:"OldOrderId,omitempty" name:"OldOrderId"`
+
+	// 聚鑫分配的支付主MidasAppId
+	MidasAppId *string `json:"MidasAppId,omitempty" name:"MidasAppId"`
+
+	// 订单号
+	OrderId *string `json:"OrderId,omitempty" name:"OrderId"`
+
+	// Midas环境标识 release 现网环境 sandbox 沙箱环境
+	// development 开发环境
+	MidasEnvironment *string `json:"MidasEnvironment,omitempty" name:"MidasEnvironment"`
+
+	// 转出子账户交易网会员代码
+	OutTransNetMemberCode *string `json:"OutTransNetMemberCode,omitempty" name:"OutTransNetMemberCode"`
+
+	// 转入子账户交易网会员代码
+	InTransNetMemberCode *string `json:"InTransNetMemberCode,omitempty" name:"InTransNetMemberCode"`
+
+	// 保留域
+	ReservedMessage *string `json:"ReservedMessage,omitempty" name:"ReservedMessage"`
+
+	// 平台短号(银行分配)
+	PlatformShortNumber *string `json:"PlatformShortNumber,omitempty" name:"PlatformShortNumber"`
+
+	// 0-登记挂账，1-撤销挂账
+	TransType *string `json:"TransType,omitempty" name:"TransType"`
+
+	// 交易手续费
+	TransFee *string `json:"TransFee,omitempty" name:"TransFee"`
+}
+
+func (r *RefundMemberTransactionRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *RefundMemberTransactionRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type RefundMemberTransactionResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 请求类型
+		RequestType *string `json:"RequestType,omitempty" name:"RequestType"`
+
+		// 银行流水号
+		FrontSequenceNumber *string `json:"FrontSequenceNumber,omitempty" name:"FrontSequenceNumber"`
+
+		// 保留域
+		ReservedMessage *string `json:"ReservedMessage,omitempty" name:"ReservedMessage"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *RefundMemberTransactionResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *RefundMemberTransactionResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -4716,6 +5239,9 @@ type RegisterBillRequest struct {
 
 	// 备注
 	Remark *string `json:"Remark,omitempty" name:"Remark"`
+
+	// Midas环境参数
+	MidasEnvironment *string `json:"MidasEnvironment,omitempty" name:"MidasEnvironment"`
 }
 
 func (r *RegisterBillRequest) ToJsonString() string {
@@ -4830,81 +5356,6 @@ func (r *RegisterBillSupportWithdrawResponse) ToJsonString() string {
 }
 
 func (r *RegisterBillSupportWithdrawResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
-}
-
-type RevRegisterBillSupportWithdrawRequest struct {
-	*tchttp.BaseRequest
-
-	// String(22)，商户号（签约客户号）
-	MrchCode *string `json:"MrchCode,omitempty" name:"MrchCode"`
-
-	// STRING(32)，交易网会员代码
-	TranNetMemberCode *string `json:"TranNetMemberCode,omitempty" name:"TranNetMemberCode"`
-
-	// STRING(30)，原订单号（RegisterBillSupportWithdraw接口中的订单号）
-	OldOrderNo *string `json:"OldOrderNo,omitempty" name:"OldOrderNo"`
-
-	// STRING(20)，撤销金额（支持部分撤销，不能大于原订单可用金额，包含交易费用）
-	CancelAmt *string `json:"CancelAmt,omitempty" name:"CancelAmt"`
-
-	// STRING(20)，交易费用（暂未使用，默认传0.0）
-	TranFee *string `json:"TranFee,omitempty" name:"TranFee"`
-
-	// STRING(300)，备注
-	Remark *string `json:"Remark,omitempty" name:"Remark"`
-
-	// STRING(300)，保留域1
-	ReservedMsgOne *string `json:"ReservedMsgOne,omitempty" name:"ReservedMsgOne"`
-
-	// STRING(300)，保留域2
-	ReservedMsgTwo *string `json:"ReservedMsgTwo,omitempty" name:"ReservedMsgTwo"`
-
-	// STRING(300)，保留域3
-	ReservedMsgThree *string `json:"ReservedMsgThree,omitempty" name:"ReservedMsgThree"`
-}
-
-func (r *RevRegisterBillSupportWithdrawRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-func (r *RevRegisterBillSupportWithdrawRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
-}
-
-type RevRegisterBillSupportWithdrawResponse struct {
-	*tchttp.BaseResponse
-	Response *struct {
-
-		// String(20)，返回码
-		TxnReturnCode *string `json:"TxnReturnCode,omitempty" name:"TxnReturnCode"`
-
-		// String(100)，返回信息
-		TxnReturnMsg *string `json:"TxnReturnMsg,omitempty" name:"TxnReturnMsg"`
-
-		// String(22)，交易流水号
-		CnsmrSeqNo *string `json:"CnsmrSeqNo,omitempty" name:"CnsmrSeqNo"`
-
-		// STRING(52)，见证系统流水号
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		FrontSeqNo *string `json:"FrontSeqNo,omitempty" name:"FrontSeqNo"`
-
-		// STRING(1027)，保留域
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		ReservedMsg *string `json:"ReservedMsg,omitempty" name:"ReservedMsg"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
-}
-
-func (r *RevRegisterBillSupportWithdrawResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-func (r *RevRegisterBillSupportWithdrawResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -5130,6 +5581,110 @@ func (r *RevokeMemberRechargeThirdPayResponse) ToJsonString() string {
 }
 
 func (r *RevokeMemberRechargeThirdPayResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type RevokeRechargeByThirdPayRequest struct {
+	*tchttp.BaseRequest
+
+	// 请求类型此接口固定填：RevokeMemberRechargeThirdPayReq
+	RequestType *string `json:"RequestType,omitempty" name:"RequestType"`
+
+	// 商户号
+	MerchantCode *string `json:"MerchantCode,omitempty" name:"MerchantCode"`
+
+	// 支付渠道
+	PayChannel *string `json:"PayChannel,omitempty" name:"PayChannel"`
+
+	// 子渠道
+	PayChannelSubId *int64 `json:"PayChannelSubId,omitempty" name:"PayChannelSubId"`
+
+	// 原始充值交易订单号
+	OrderId *string `json:"OrderId,omitempty" name:"OrderId"`
+
+	// 父账户账号，资金汇总账号
+	BankAccountNumber *string `json:"BankAccountNumber,omitempty" name:"BankAccountNumber"`
+
+	// 平台短号(银行分配)
+	PlatformShortNumber *string `json:"PlatformShortNumber,omitempty" name:"PlatformShortNumber"`
+
+	// 聚鑫分配的安全ID
+	MidasSecretId *string `json:"MidasSecretId,omitempty" name:"MidasSecretId"`
+
+	// 聚鑫分配的支付主MidasAppId
+	MidasAppId *string `json:"MidasAppId,omitempty" name:"MidasAppId"`
+
+	// 计费签名
+	MidasSignature *string `json:"MidasSignature,omitempty" name:"MidasSignature"`
+
+	// 交易流水号
+	TransSequenceNumber *string `json:"TransSequenceNumber,omitempty" name:"TransSequenceNumber"`
+
+	// 申请撤销的手续费金额
+	TransFee *string `json:"TransFee,omitempty" name:"TransFee"`
+
+	// 第三方支付渠道类型 0001-微信 0002-支付宝 0003-京东支付
+	ThirdPayChannel *string `json:"ThirdPayChannel,omitempty" name:"ThirdPayChannel"`
+
+	// 第三方渠道订单号或流水号
+	ThirdPayChannelOrderId *string `json:"ThirdPayChannelOrderId,omitempty" name:"ThirdPayChannelOrderId"`
+
+	// 充值接口银行返回的流水号(FrontSeqNo)
+	OldFrontSequenceNumber *string `json:"OldFrontSequenceNumber,omitempty" name:"OldFrontSequenceNumber"`
+
+	// 申请撤销的金额
+	CurrencyAmount *string `json:"CurrencyAmount,omitempty" name:"CurrencyAmount"`
+
+	// 单位，1：元，2：角，3：分 目前固定填1
+	CurrencyUnit *string `json:"CurrencyUnit,omitempty" name:"CurrencyUnit"`
+
+	// 币种 目前固定填RMB
+	CurrencyType *string `json:"CurrencyType,omitempty" name:"CurrencyType"`
+
+	// Midas环境标识
+	MidasEnvironment *string `json:"MidasEnvironment,omitempty" name:"MidasEnvironment"`
+
+	// 保留域
+	ReservedMessage *string `json:"ReservedMessage,omitempty" name:"ReservedMessage"`
+
+	// 备注
+	Remark *string `json:"Remark,omitempty" name:"Remark"`
+}
+
+func (r *RevokeRechargeByThirdPayRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *RevokeRechargeByThirdPayRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type RevokeRechargeByThirdPayResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 请求类型
+		RequestType *string `json:"RequestType,omitempty" name:"RequestType"`
+
+		// 保留域
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		ReservedMessage *string `json:"ReservedMessage,omitempty" name:"ReservedMessage"`
+
+		// 银行流水号
+		FrontSequenceNumber *string `json:"FrontSequenceNumber,omitempty" name:"FrontSequenceNumber"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *RevokeRechargeByThirdPayResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *RevokeRechargeByThirdPayResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 

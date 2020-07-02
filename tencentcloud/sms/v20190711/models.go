@@ -943,6 +943,9 @@ type SendStatus struct {
 
 	// 短信请求错误码描述。
 	Message *string `json:"Message,omitempty" name:"Message"`
+
+	// 国家码或地区码，例如CN,US等，对于未识别出国家码或者地区码，默认返回DEF,具体支持列表请参考国际/港澳台计费总览。
+	IsoCode *string `json:"IsoCode,omitempty" name:"IsoCode"`
 }
 
 type SendStatusStatistics struct {

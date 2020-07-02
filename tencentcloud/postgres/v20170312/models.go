@@ -1976,4 +1976,7 @@ type ZoneInfo struct {
 
 	// 可用状态，UNAVAILABLE表示不可用，AVAILABLE表示可用
 	ZoneState *string `json:"ZoneState,omitempty" name:"ZoneState"`
+
+	// 该可用区是否支持Ipv6
+	ZoneSupportIpv6 *uint64 `json:"ZoneSupportIpv6,omitempty" name:"ZoneSupportIpv6"`
 }
