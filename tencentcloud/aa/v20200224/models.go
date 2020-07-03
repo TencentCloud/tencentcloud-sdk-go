@@ -41,6 +41,24 @@ type AccountInfo struct {
 	OtherAccount *OtherAccountInfo `json:"OtherAccount,omitempty" name:"OtherAccount"`
 }
 
+type CrowdAntiRushInfo struct {
+
+	// 助力场景建议填写：活动发起人微信OpenID。
+	SponsorOpenId *string `json:"SponsorOpenId,omitempty" name:"SponsorOpenId"`
+
+	// 助力场景建议填写：发起人设备号。
+	SponsorDeviceNumber *string `json:"SponsorDeviceNumber,omitempty" name:"SponsorDeviceNumber"`
+
+	// 助力场景建议填写：发起人手机号。
+	SponsorPhone *string `json:"SponsorPhone,omitempty" name:"SponsorPhone"`
+
+	// 助力场景建议填写：发起人IP。
+	SponsorIp *string `json:"SponsorIp,omitempty" name:"SponsorIp"`
+
+	// 助力场景建议填写：活动链接。
+	CampaignUrl *string `json:"CampaignUrl,omitempty" name:"CampaignUrl"`
+}
+
 type InputActivityAntiRushAdvanced struct {
 
 	// 账号信息。
@@ -89,6 +107,107 @@ type InputActivityAntiRushAdvanced struct {
 
 	// 手机制造商ID，如果手机注册，请带上此信息。
 	VendorId *string `json:"VendorId,omitempty" name:"VendorId"`
+}
+
+type InputManageMarketingRisk struct {
+
+	// 账号信息。
+	Account *AccountInfo `json:"Account,omitempty" name:"Account"`
+
+	// 场景类型。
+	// 1：活动防刷
+	// 2：登录保护
+	// 3：注册保护
+	// 4：活动防刷高级版（网赚）
+	SceneType *int64 `json:"SceneType,omitempty" name:"SceneType"`
+
+	// 登录来源的外网IP
+	UserIp *string `json:"UserIp,omitempty" name:"UserIp"`
+
+	// 用户操作时间戳，单位秒（格林威治时间精确到秒，如1501590972）。
+	PostTime *uint64 `json:"PostTime,omitempty" name:"PostTime"`
+
+	// 用户唯一标识。
+	UserId *string `json:"UserId,omitempty" name:"UserId"`
+
+	// 设备指纹token。
+	DeviceToken *string `json:"DeviceToken,omitempty" name:"DeviceToken"`
+
+	// 设备指纹BusinessId
+	DeviceBusinessId *int64 `json:"DeviceBusinessId,omitempty" name:"DeviceBusinessId"`
+
+	// 业务ID。网站或应用在多个业务中使用此服务，通过此ID区分统计数据。
+	BusinessId *uint64 `json:"BusinessId,omitempty" name:"BusinessId"`
+
+	// 昵称，UTF-8 编码。
+	Nickname *string `json:"Nickname,omitempty" name:"Nickname"`
+
+	// 用户邮箱地址（非系统自动生成）。
+	EmailAddress *string `json:"EmailAddress,omitempty" name:"EmailAddress"`
+
+	// 是否识别设备异常：
+	// 0：不识别。
+	// 1：识别。
+	CheckDevice *int64 `json:"CheckDevice,omitempty" name:"CheckDevice"`
+
+	// 用户HTTP请求中的Cookie进行2次hash的值，只要保证相同Cookie的hash值一致即可。
+	CookieHash *string `json:"CookieHash,omitempty" name:"CookieHash"`
+
+	// 用户HTTP请求的Referer值。
+	Referer *string `json:"Referer,omitempty" name:"Referer"`
+
+	// 用户HTTP请求的User-Agent值。
+	UserAgent *string `json:"UserAgent,omitempty" name:"UserAgent"`
+
+	// 用户HTTP请求的X-Forwarded-For值。
+	XForwardedFor *string `json:"XForwardedFor,omitempty" name:"XForwardedFor"`
+
+	// MAC地址或设备唯一标识。
+	MacAddress *string `json:"MacAddress,omitempty" name:"MacAddress"`
+
+	// 手机制造商ID，如果手机注册，请带上此信息。
+	VendorId *string `json:"VendorId,omitempty" name:"VendorId"`
+
+	// 网赚防刷相关信息。SceneType为4时填写。
+	CrowdAntiRush *CrowdAntiRushInfo `json:"CrowdAntiRush,omitempty" name:"CrowdAntiRush"`
+}
+
+type ManageMarketingRiskRequest struct {
+	*tchttp.BaseRequest
+
+	// 业务入参
+	BusinessSecurityData *InputManageMarketingRisk `json:"BusinessSecurityData,omitempty" name:"BusinessSecurityData"`
+}
+
+func (r *ManageMarketingRiskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ManageMarketingRiskRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ManageMarketingRiskResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 业务出参
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Data *OutputManageMarketingRisk `json:"Data,omitempty" name:"Data"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ManageMarketingRiskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ManageMarketingRiskResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
 }
 
 type OnlineScamInfo struct {
@@ -171,6 +290,57 @@ type OutputActivityAntiRushAdvancedValue struct {
 	Level *int64 `json:"Level,omitempty" name:"Level"`
 
 	// 风险类型，详情请参见下文RiskType详细说明。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RiskType []*int64 `json:"RiskType,omitempty" name:"RiskType" list`
+}
+
+type OutputManageMarketingRisk struct {
+
+	// 返回码。0表示成功，非0标识失败错误码。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Code *int64 `json:"Code,omitempty" name:"Code"`
+
+	// UTF-8编码，出错消息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Message *string `json:"Message,omitempty" name:"Message"`
+
+	// 业务详情。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Value *OutputManageMarketingRiskValue `json:"Value,omitempty" name:"Value"`
+}
+
+type OutputManageMarketingRiskValue struct {
+
+	// 账号ID。对应输入参数：
+	// AccountType是1时，对应QQ的OpenID。
+	// AccountType是2时，对应微信的OpenID/UnionID。
+	// AccountType是4时，对应手机号。
+	// AccountType是8时，对应imei、idfa、imeiMD5或者idfaMD5。
+	// AccountType是0时，对应账号信息。
+	// AccountType是10004时，对应手机号的MD5。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UserId *string `json:"UserId,omitempty" name:"UserId"`
+
+	// 操作时间戳，单位秒（对应输入参数）。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PostTime *uint64 `json:"PostTime,omitempty" name:"PostTime"`
+
+	// 对应输入参数，AccountType 是 QQ 或微信开放账号时，用于标识 QQ 或微信用户登录后关联业务自身的账号ID。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AssociateAccount *string `json:"AssociateAccount,omitempty" name:"AssociateAccount"`
+
+	// 操作来源的外网IP（对应输入参数）。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UserIp *string `json:"UserIp,omitempty" name:"UserIp"`
+
+	// 风险值
+	// pass : 无恶意
+	// review：需要人工审核
+	// reject：拒绝，高风险恶意
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RiskLevel *string `json:"RiskLevel,omitempty" name:"RiskLevel"`
+
+	// 风险类型，请参考官网风险类型
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RiskType []*int64 `json:"RiskType,omitempty" name:"RiskType" list`
 }

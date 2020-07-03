@@ -6703,8 +6703,11 @@ type DisableRoutesRequest struct {
 	// 路由表唯一ID。
 	RouteTableId *string `json:"RouteTableId,omitempty" name:"RouteTableId"`
 
-	// 路由策略唯一ID。
+	// 路由策略ID。不能和RouteItemIds同时使用。
 	RouteIds []*uint64 `json:"RouteIds,omitempty" name:"RouteIds" list`
+
+	// 路由策略唯一ID。不能和RouteIds同时使用。
+	RouteItemIds []*string `json:"RouteItemIds,omitempty" name:"RouteItemIds" list`
 }
 
 func (r *DisableRoutesRequest) ToJsonString() string {
@@ -7045,8 +7048,11 @@ type EnableRoutesRequest struct {
 	// 路由表唯一ID。
 	RouteTableId *string `json:"RouteTableId,omitempty" name:"RouteTableId"`
 
-	// 路由策略唯一ID。
+	// 路由策略ID。不能和RouteItemIds同时使用。
 	RouteIds []*uint64 `json:"RouteIds,omitempty" name:"RouteIds" list`
+
+	// 路由策略唯一ID。不能和RouteIds同时使用。
+	RouteItemIds []*string `json:"RouteItemIds,omitempty" name:"RouteItemIds" list`
 }
 
 func (r *EnableRoutesRequest) ToJsonString() string {
@@ -10297,6 +10303,12 @@ type Route struct {
 
 	// 路由表实例ID，例如：rtb-azd4dt1c。
 	RouteTableId *string `json:"RouteTableId,omitempty" name:"RouteTableId"`
+
+	// 目的IPv6网段，取值不能在私有网络网段内，例如：2402:4e00:1000:810b::/64。
+	DestinationIpv6CidrBlock *string `json:"DestinationIpv6CidrBlock,omitempty" name:"DestinationIpv6CidrBlock"`
+
+	// 路由唯一策略ID。
+	RouteItemId *string `json:"RouteItemId,omitempty" name:"RouteItemId"`
 }
 
 type RouteConflict struct {

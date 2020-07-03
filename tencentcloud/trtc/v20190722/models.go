@@ -163,7 +163,7 @@ func (r *DescribeAbnormalEventResponse) FromJsonString(s string) error {
 type DescribeCallDetailRequest struct {
 	*tchttp.BaseRequest
 
-	// 通话 ID（唯一标识一次通话）： sdkappid_roomgString（房间号_createTime（房间创建时间，unix时间戳，单位为s）。通过 DescribeRoomInformation（查询房间列表）接口获取。
+	// 通话 ID（唯一标识一次通话）： sdkappid_roomgString（房间号_createTime（房间创建时间，unix时间戳，单位为s）例：1400353843_218695_1590065777。通过 DescribeRoomInformation（查询房间列表）接口获取（链接：https://cloud.tencent.com/document/product/647/44050）
 	CommId *string `json:"CommId,omitempty" name:"CommId"`
 
 	// 查询开始时间，5天内。本地unix时间戳（1588031999s）
@@ -172,7 +172,7 @@ type DescribeCallDetailRequest struct {
 	// 查询结束时间，本地unix时间戳（1588031999s）
 	EndTime *uint64 `json:"EndTime,omitempty" name:"EndTime"`
 
-	// 用户sdkappid
+	// 用户sdkappid（1400188366）
 	SdkAppId *string `json:"SdkAppId,omitempty" name:"SdkAppId"`
 
 	// 需查询的用户数组，不填默认返回6个用户,最多可填6个用户
@@ -236,7 +236,7 @@ func (r *DescribeCallDetailResponse) FromJsonString(s string) error {
 type DescribeDetailEventRequest struct {
 	*tchttp.BaseRequest
 
-	// 通话 ID（唯一标识一次通话）： sdkappid_roomgString（房间号_createTime（房间创建时间，unix时间戳，单位s）。通过 DescribeRoomInformation（查询房间列表）接口获取。
+	// 通话 ID（唯一标识一次通话）： sdkappid_roomgString（房间号_createTime（房间创建时间，unix时间戳，单位s）。通过 DescribeRoomInformation（查询房间列表）接口获取。（链接：https://cloud.tencent.com/document/product/647/44050）
 	CommId *string `json:"CommId,omitempty" name:"CommId"`
 
 	// 查询开始时间，5天内。本地unix时间戳（1588031999s）
@@ -332,7 +332,7 @@ func (r *DescribeHistoryScaleResponse) FromJsonString(s string) error {
 type DescribeRealtimeNetworkRequest struct {
 	*tchttp.BaseRequest
 
-	// 查询开始时间，24小时内，，本地unix时间戳（1588031999s）
+	// 查询开始时间，24小时内，本地unix时间戳（1588031999s）
 	StartTime *uint64 `json:"StartTime,omitempty" name:"StartTime"`
 
 	// 查询结束时间，本地unix时间戳（1588031999s）
@@ -342,7 +342,7 @@ type DescribeRealtimeNetworkRequest struct {
 	SdkAppId *string `json:"SdkAppId,omitempty" name:"SdkAppId"`
 
 	// 需查询的数据类型
-	// sendLossRateRaw：上行丢包率；
+	// sendLossRateRaw：上行丢包率
 	// recvLossRateRaw：下行丢包率
 	DataType []*string `json:"DataType,omitempty" name:"DataType" list`
 }

@@ -43,6 +43,31 @@ func NewClient(credential *common.Credential, region string, clientProfile *prof
 }
 
 
+func NewManageMarketingRiskRequest() (request *ManageMarketingRiskRequest) {
+    request = &ManageMarketingRiskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("aa", APIVersion, "ManageMarketingRisk")
+    return
+}
+
+func NewManageMarketingRiskResponse() (response *ManageMarketingRiskResponse) {
+    response = &ManageMarketingRiskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 活动防刷、注册保护、登录保护等营销产品的高级版本
+func (c *Client) ManageMarketingRisk(request *ManageMarketingRiskRequest) (response *ManageMarketingRiskResponse, err error) {
+    if request == nil {
+        request = NewManageMarketingRiskRequest()
+    }
+    response = NewManageMarketingRiskResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewQueryActivityAntiRushRequest() (request *QueryActivityAntiRushRequest) {
     request = &QueryActivityAntiRushRequest{
         BaseRequest: &tchttp.BaseRequest{},

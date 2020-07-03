@@ -1306,6 +1306,66 @@ func (r *CreatePullStreamConfigResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type CreateRecordTaskRequest struct {
+	*tchttp.BaseRequest
+
+	// 流名称。
+	StreamName *string `json:"StreamName,omitempty" name:"StreamName"`
+
+	// 推流域名。
+	DomainName *string `json:"DomainName,omitempty" name:"DomainName"`
+
+	// 推流路径。
+	AppName *string `json:"AppName,omitempty" name:"AppName"`
+
+	// 录制任务结束时间，Unix时间戳。设置时间必须大于StartTime，且不能超过从当前时刻开始24小时之内的时间。
+	EndTime *uint64 `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 录制任务开始时间，Unix时间戳。如果不填表示立即启动录制。不超过从当前时间开始24小时之内的时间。
+	StartTime *uint64 `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 推流类型，默认0。取值：
+	// 0-直播推流。
+	// 1-合成流，即 A+B=C 类型混流。
+	StreamType *uint64 `json:"StreamType,omitempty" name:"StreamType"`
+
+	// 录制模板ID，CreateLiveRecordTemplate 返回值。如果不填或者传入错误ID，则默认录制HLS格式、永久存储。
+	TemplateId *uint64 `json:"TemplateId,omitempty" name:"TemplateId"`
+
+	// 扩展字段，默认空。
+	Extension *string `json:"Extension,omitempty" name:"Extension"`
+}
+
+func (r *CreateRecordTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateRecordTaskRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateRecordTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 任务ID，全局唯一标识录制任务。
+		TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateRecordTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateRecordTaskResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DayStreamPlayInfo struct {
 
 	// 数据时间点，格式：yyyy-mm-dd HH:MM:SS。
@@ -1877,6 +1937,40 @@ func (r *DeletePullStreamConfigResponse) ToJsonString() string {
 }
 
 func (r *DeletePullStreamConfigResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteRecordTaskRequest struct {
+	*tchttp.BaseRequest
+
+	// 任务ID，CreateRecordTask返回。删除TaskId指定的录制任务。
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+}
+
+func (r *DeleteRecordTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteRecordTaskRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteRecordTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DeleteRecordTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteRecordTaskResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -5877,6 +5971,40 @@ func (r *StopLiveRecordResponse) ToJsonString() string {
 }
 
 func (r *StopLiveRecordResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type StopRecordTaskRequest struct {
+	*tchttp.BaseRequest
+
+	// 录制任务ID。
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+}
+
+func (r *StopRecordTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *StopRecordTaskRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type StopRecordTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *StopRecordTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *StopRecordTaskResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 

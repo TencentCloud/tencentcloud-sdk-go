@@ -803,7 +803,7 @@ type DescribeBillDetailRequest struct {
 	// 1-表示需要， 0-表示不需要
 	NeedRecordNum *int64 `json:"NeedRecordNum,omitempty" name:"NeedRecordNum"`
 
-	// 查询指定产品信息
+	// 查询指定产品信息（暂时未开放获取）
 	ProductCode *string `json:"ProductCode,omitempty" name:"ProductCode"`
 
 	// 付费模式 prePay/postPay

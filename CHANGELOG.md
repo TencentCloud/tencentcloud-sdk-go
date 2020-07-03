@@ -1,10 +1,33 @@
 # 本版本更新包含以下内容：
 
-## 内容分发网络(cdn) 版本：2018-06-06
+## 活动防刷(aa) 版本：2020-02-24
 
-### 第 26 次发布
+### 第 3 次发布
 
-发布时间：2020-07-02 08:06:45
+发布时间：2020-07-03 08:00:32
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [ManageMarketingRisk](https://cloud.tencent.com/document/api/1189/45962)
+
+新增数据结构：
+
+* [CrowdAntiRushInfo](https://cloud.tencent.com/document/api/1189/45888#CrowdAntiRushInfo)
+* [InputManageMarketingRisk](https://cloud.tencent.com/document/api/1189/45888#InputManageMarketingRisk)
+* [OutputManageMarketingRisk](https://cloud.tencent.com/document/api/1189/45888#OutputManageMarketingRisk)
+* [OutputManageMarketingRiskValue](https://cloud.tencent.com/document/api/1189/45888#OutputManageMarketingRiskValue)
+
+
+
+## 批量计算(batch) 版本：2017-03-12
+
+### 第 30 次发布
+
+发布时间：2020-07-03 08:04:08
 
 本次发布包含了以下内容：
 
@@ -12,33 +35,37 @@
 
 修改数据结构：
 
-* [Origin](https://cloud.tencent.com/document/api/228/30987#Origin)
+* [DataDisk](https://cloud.tencent.com/document/api/599/15912#DataDisk)
 
-	* 新增成员：BasePath
+	* 新增成员：KmsKeyId
+
+
+
+
+## 业务风险情报(bri) 版本：2019-03-28
+
+### 第 2 次发布
+
+发布时间：2020-07-03 08:05:30
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [BRIRequest](https://cloud.tencent.com/document/api/1064/35632#BRIRequest)
+
+	* 新增成员：QQ, QQTag, Scene, Wechat, WechatTag
 
 
 
 
 ## 企业收付平台(cpdp) 版本：2019-08-20
 
-### 第 21 次发布
+### 第 22 次发布
 
-发布时间：2020-07-02 08:22:32
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [QueryInvoice](https://cloud.tencent.com/document/api/1122/43187)
-
-	* 新增入参：SellerTaxpayerNum
-
-
-### 第 20 次发布
-
-发布时间：2020-07-01 20:10:26
+发布时间：2020-07-03 08:22:22
 
 本次发布包含了以下内容：
 
@@ -46,132 +73,34 @@
 
 新增接口：
 
-* [DescribeChargeDetail](https://cloud.tencent.com/document/api/1122/45630)
-* [ExecuteMemberTransaction](https://cloud.tencent.com/document/api/1122/45629)
-* [QueryAnchorContractInfo](https://cloud.tencent.com/document/api/1122/45810)
-* [RechargeByThirdPay](https://cloud.tencent.com/document/api/1122/45628)
-* [RefundMemberTransaction](https://cloud.tencent.com/document/api/1122/45627)
-* [RevokeRechargeByThirdPay](https://cloud.tencent.com/document/api/1122/45626)
-
-<font color="#dd0000">**删除接口**：</font>
-
-* RevRegisterBillSupportWithdraw
-
-修改接口：
-
-* [ApplyWithdrawal](https://cloud.tencent.com/document/api/1122/40682)
-
-	* 新增入参：CommissionAmount
-
-* [CreateInvoice](https://cloud.tencent.com/document/api/1122/43190)
-
-	* 新增入参：InvoiceChannel
-
-* [CreateRedInvoice](https://cloud.tencent.com/document/api/1122/43188)
-
-	* 新增入参：InvoiceChannel
-
-* [QueryInvoice](https://cloud.tencent.com/document/api/1122/43187)
-
-	* 新增入参：InvoiceChannel
-
-* [RegisterBill](https://cloud.tencent.com/document/api/1122/44397)
-
-	* 新增入参：MidasEnvironment
-
-
-新增数据结构：
-
-* [AnchorContractInfo](https://cloud.tencent.com/document/api/1122/40683#AnchorContractInfo)
+* [DescribeOrderStatus](https://cloud.tencent.com/document/api/1122/45963)
 
 
 
-## 分布式数据库 TDSQL(dcdb) 版本：2018-04-11
+## 云服务器(cvm) 版本：2017-03-12
 
-### 第 11 次发布
+### 第 44 次发布
 
-发布时间：2020-07-02 08:09:04
+发布时间：2020-07-03 08:07:59
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-修改接口：
+修改数据结构：
 
-* [CloseDBExtranetAccess](https://cloud.tencent.com/document/api/557/19998)
+* [DataDisk](https://cloud.tencent.com/document/api/213/15753#DataDisk)
 
-	* 新增入参：Ipv6Flag
-
-* [CreateDCDBInstance](https://cloud.tencent.com/document/api/557/16135)
-
-	* 新增入参：Ipv6Flag
-
-* [OpenDBExtranetAccess](https://cloud.tencent.com/document/api/557/19980)
-
-	* 新增入参：Ipv6Flag
+	* 新增成员：KmsKeyId
 
 
 
 
-## 人脸试妆(fmu) 版本：2019-12-13
+## 云直播(live) 版本：2018-08-01
 
-### 第 4 次发布
+### 第 44 次发布
 
-发布时间：2020-07-02 08:02:39
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [BeautifyPic](https://cloud.tencent.com/document/api/1172/40715)
-
-	* 新增入参：RspImgType
-
-	* 新增出参：ResultUrl
-
-* [TryLipstickPic](https://cloud.tencent.com/document/api/1172/40706)
-
-	* 新增入参：RspImgType
-
-	* 新增出参：ResultUrl
-
-
-
-
-## 人像变换(ft) 版本：2020-03-04
-
-### 第 2 次发布
-
-发布时间：2020-07-02 08:02:30
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [ChangeAgePic](https://cloud.tencent.com/document/api/1202/41968)
-
-	* 新增入参：RspImgType
-
-	* 新增出参：ResultUrl
-
-* [SwapGenderPic](https://cloud.tencent.com/document/api/1202/41967)
-
-	* 新增入参：RspImgType
-
-	* 新增出参：ResultUrl
-
-
-
-
-## 物联卡(ic) 版本：2019-03-07
-
-### 第 3 次发布
-
-发布时间：2020-07-02 08:11:27
+发布时间：2020-07-03 08:12:43
 
 本次发布包含了以下内容：
 
@@ -179,158 +108,17 @@
 
 新增接口：
 
-* [RenewCards](https://cloud.tencent.com/document/api/636/45922)
-
-新增数据结构：
-
-* [ResRenew](https://cloud.tencent.com/document/api/636/33881#ResRenew)
-
-
-
-## 云数据库 MariaDB(mariadb) 版本：2017-03-12
-
-### 第 10 次发布
-
-发布时间：2020-07-02 08:13:09
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [CloseDBExtranetAccess](https://cloud.tencent.com/document/api/237/16179)
-
-	* 新增入参：Ipv6Flag
-
-* [CreateDBInstance](https://cloud.tencent.com/document/api/237/16180)
-
-	* 新增入参：Ipv6Flag
-
-* [OpenDBExtranetAccess](https://cloud.tencent.com/document/api/237/16174)
-
-	* 新增入参：Ipv6Flag
-
-
-
-
-## 渠道合作伙伴(partners) 版本：2018-03-21
-
-### 第 14 次发布
-
-发布时间：2020-07-02 08:15:06
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [DescribeAgentClientGrade](https://cloud.tencent.com/document/api/563/45286)
-
-	* 新增出参：ClientType
-
-
-
-
-## 云数据库 PostgreSQL(postgres) 版本：2017-03-12
-
-### 第 9 次发布
-
-发布时间：2020-07-02 08:15:16
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [ZoneInfo](https://cloud.tencent.com/document/api/409/16778#ZoneInfo)
-
-	* 新增成员：ZoneSupportIpv6
-
-
-
-
-## 短信(sms) 版本：2019-07-11
-
-### 第 9 次发布
-
-发布时间：2020-07-02 08:15:59
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [SendStatus](https://cloud.tencent.com/document/api/382/38779#SendStatus)
-
-	* 新增成员：IsoCode
-
-
-
-
-## 云开发 CloudBase(tcb) 版本：2018-06-08
-
-### 第 13 次发布
-
-发布时间：2020-07-02 08:17:10
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [DescribeEndUsers](https://cloud.tencent.com/document/api/876/42150)
-
-	* 新增入参：Offset, Limit
-
-	* <font color="#dd0000">**修改入参**：</font>UUIds
-
-
-修改数据结构：
-
-* [EndUserInfo](https://cloud.tencent.com/document/api/876/34822#EndUserInfo)
-
-	* 新增成员：UserName
-
+* [CreateRecordTask](https://cloud.tencent.com/document/api/267/30148)
+* [DeleteRecordTask](https://cloud.tencent.com/document/api/267/30147)
+* [StopRecordTask](https://cloud.tencent.com/document/api/267/30146)
 
 
 
 ## 智能钛机器学习平台(tione) 版本：2019-10-22
 
-### 第 8 次发布
+### 第 9 次发布
 
-发布时间：2020-07-02 08:01:32
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [DescribeTrainingJobs](https://cloud.tencent.com/document/api/851/45920)
-
-修改接口：
-
-* [DescribeTrainingJob](https://cloud.tencent.com/document/api/851/42517)
-
-	* 新增出参：LogUrl, InstanceId
-
-
-新增数据结构：
-
-* [TrainingJobSummary](https://cloud.tencent.com/document/api/851/42528#TrainingJobSummary)
-
-
-
-## 实时音视频(trtc) 版本：2019-07-22
-
-### 第 11 次发布
-
-发布时间：2020-07-02 08:21:01
+发布时间：2020-07-03 08:01:35
 
 本次发布包含了以下内容：
 
@@ -338,85 +126,43 @@
 
 修改数据结构：
 
-* [EncodeParams](https://cloud.tencent.com/document/api/647/44055#EncodeParams)
+* [OutputDataConfig](https://cloud.tencent.com/document/api/851/42528#OutputDataConfig)
 
-	* 新增成员：BackgroundImageId
-
-
+	* 新增成员：FileSystemDataSource
 
 
-## 腾讯微服务平台 TSF(tsf) 版本：2018-03-26
 
-### 第 24 次发布
 
-发布时间：2020-07-02 08:18:27
+## 私有网络(vpc) 版本：2017-03-12
+
+### 第 53 次发布
+
+发布时间：2020-07-03 08:18:56
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-新增接口：
-
-* [CreateRepository](https://cloud.tencent.com/document/api/649/45927)
-* [DeleteRepository](https://cloud.tencent.com/document/api/649/45926)
-* [DescribeRepositories](https://cloud.tencent.com/document/api/649/45925)
-* [DescribeRepository](https://cloud.tencent.com/document/api/649/45924)
-* [UpdateRepository](https://cloud.tencent.com/document/api/649/45923)
-
 修改接口：
 
-* [CreateCluster](https://cloud.tencent.com/document/api/649/36049)
+* [DisableRoutes](https://cloud.tencent.com/document/api/215/19216)
 
-	* 新增入参：ClusterVersion
+	* 新增入参：RouteItemIds
 
-* [DeletePkgs](https://cloud.tencent.com/document/api/649/36081)
+	* <font color="#dd0000">**修改入参**：</font>RouteIds
 
-	* 新增入参：RepositoryType, RepositoryId
+* [EnableRoutes](https://cloud.tencent.com/document/api/215/19215)
 
-* [DeployContainerGroup](https://cloud.tencent.com/document/api/649/36071)
+	* 新增入参：RouteItemIds
 
-	* 新增入参：MaxSurge, MaxUnavailable
+	* <font color="#dd0000">**修改入参**：</font>RouteIds
 
-* [DescribeDownloadInfo](https://cloud.tencent.com/document/api/649/36080)
-
-	* 新增入参：RepositoryId, RepositoryType
-
-* [DescribePkgs](https://cloud.tencent.com/document/api/649/36079)
-
-	* 新增入参：RepositoryType, RepositoryId
-
-* [DescribeUploadInfo](https://cloud.tencent.com/document/api/649/36078)
-
-	* 新增入参：RepositoryType, RepositoryId
-
-* [ModifyUploadInfo](https://cloud.tencent.com/document/api/649/36077)
-
-	* 新增入参：RepositoryType, RepositoryId
-
-
-新增数据结构：
-
-* [PkgBind](https://cloud.tencent.com/document/api/649/36099#PkgBind)
-* [RepositoryInfo](https://cloud.tencent.com/document/api/649/36099#RepositoryInfo)
-* [RepositoryList](https://cloud.tencent.com/document/api/649/36099#RepositoryList)
 
 修改数据结构：
 
-* [ContainerGroupDetail](https://cloud.tencent.com/document/api/649/36099#ContainerGroupDetail)
+* [Route](https://cloud.tencent.com/document/api/215/15824#Route)
 
-	* 新增成员：MaxSurge, MaxUnavailable
-
-* [GroupPod](https://cloud.tencent.com/document/api/649/36099#GroupPod)
-
-	* 新增成员：NodeInstanceId
-
-* [PkgInfo](https://cloud.tencent.com/document/api/649/36099#PkgInfo)
-
-	* 新增成员：PkgBindInfo
-
-* [PkgList](https://cloud.tencent.com/document/api/649/36099#PkgList)
-
-	* 新增成员：RepositoryId, RepositoryType, RepositoryName
+	* 新增成员：DestinationIpv6CidrBlock, RouteItemId
 
 
 
@@ -424,6 +170,25 @@
 # 历次版本更新如下：
 
 ## 活动防刷(aa) 版本：2020-02-24
+
+### 第 3 次发布
+
+发布时间：2020-07-03 08:00:32
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[ManageMarketingRisk](https://cloud.tencent.com/document/api/1189/45962)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[CrowdAntiRushInfo](https://cloud.tencent.com/document/api/1189/45888#CrowdAntiRushInfo)](https://cloud.tencent.com/document/api/1189/45888#[CrowdAntiRushInfo](https://cloud.tencent.com/document/api/1189/45888#CrowdAntiRushInfo))
+* [[InputManageMarketingRisk](https://cloud.tencent.com/document/api/1189/45888#InputManageMarketingRisk)](https://cloud.tencent.com/document/api/1189/45888#[InputManageMarketingRisk](https://cloud.tencent.com/document/api/1189/45888#InputManageMarketingRisk))
+* [[OutputManageMarketingRisk](https://cloud.tencent.com/document/api/1189/45888#OutputManageMarketingRisk)](https://cloud.tencent.com/document/api/1189/45888#[OutputManageMarketingRisk](https://cloud.tencent.com/document/api/1189/45888#OutputManageMarketingRisk))
+* [[OutputManageMarketingRiskValue](https://cloud.tencent.com/document/api/1189/45888#OutputManageMarketingRiskValue)](https://cloud.tencent.com/document/api/1189/45888#[OutputManageMarketingRiskValue](https://cloud.tencent.com/document/api/1189/45888#OutputManageMarketingRiskValue))
 
 ### 第 2 次发布
 
@@ -1733,6 +1498,21 @@
 
 
 ## 批量计算(batch) 版本：2017-03-12
+
+### 第 30 次发布
+
+发布时间：2020-07-03 08:04:08
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [DataDisk](https://cloud.tencent.com/document/api/599/15912#DataDisk)
+
+	* 新增成员：KmsKeyId
+
 
 ### 第 29 次发布
 
@@ -3804,6 +3584,21 @@
 
 
 ## 业务风险情报(bri) 版本：2019-03-28
+
+### 第 2 次发布
+
+发布时间：2020-07-03 08:05:30
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [BRIRequest](https://cloud.tencent.com/document/api/1064/35632#BRIRequest)
+
+	* 新增成员：QQ, QQTag, Scene, Wechat, WechatTag
+
 
 ### 第 1 次发布
 
@@ -8355,6 +8150,18 @@
 
 ## 企业收付平台(cpdp) 版本：2019-08-20
 
+### 第 22 次发布
+
+发布时间：2020-07-03 08:22:22
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeOrderStatus](https://cloud.tencent.com/document/api/1122/45963)](https://cloud.tencent.com/document/api/#/#)
+
 ### 第 21 次发布
 
 发布时间：2020-07-02 08:22:32
@@ -8380,12 +8187,12 @@
 
 新增接口：
 
-* [[DescribeChargeDetail](https://cloud.tencent.com/document/api/1122/45630)](https://cloud.tencent.com/document/api/#/#)
-* [[ExecuteMemberTransaction](https://cloud.tencent.com/document/api/1122/45629)](https://cloud.tencent.com/document/api/#/#)
-* [[QueryAnchorContractInfo](https://cloud.tencent.com/document/api/1122/45810)](https://cloud.tencent.com/document/api/#/#)
-* [[RechargeByThirdPay](https://cloud.tencent.com/document/api/1122/45628)](https://cloud.tencent.com/document/api/#/#)
-* [[RefundMemberTransaction](https://cloud.tencent.com/document/api/1122/45627)](https://cloud.tencent.com/document/api/#/#)
-* [[RevokeRechargeByThirdPay](https://cloud.tencent.com/document/api/1122/45626)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeChargeDetail](https://cloud.tencent.com/document/api/1122/45630)
+* [ExecuteMemberTransaction](https://cloud.tencent.com/document/api/1122/45629)
+* [QueryAnchorContractInfo](https://cloud.tencent.com/document/api/1122/45810)
+* [RechargeByThirdPay](https://cloud.tencent.com/document/api/1122/45628)
+* [RefundMemberTransaction](https://cloud.tencent.com/document/api/1122/45627)
+* [RevokeRechargeByThirdPay](https://cloud.tencent.com/document/api/1122/45626)
 
 <font color="#dd0000">**删除接口**：</font>
 
@@ -8416,7 +8223,7 @@
 
 新增数据结构：
 
-* [[AnchorContractInfo](https://cloud.tencent.com/document/api/1122/40683#AnchorContractInfo)](https://cloud.tencent.com/document/api/1122/40683#[AnchorContractInfo](https://cloud.tencent.com/document/api/1122/40683#AnchorContractInfo))
+* [AnchorContractInfo](https://cloud.tencent.com/document/api/1122/40683#AnchorContractInfo)
 
 ### 第 19 次发布
 
@@ -9179,6 +8986,21 @@
 
 
 ## 云服务器(cvm) 版本：2017-03-12
+
+### 第 44 次发布
+
+发布时间：2020-07-03 08:07:59
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [DataDisk](https://cloud.tencent.com/document/api/213/15753#DataDisk)
+
+	* 新增成员：KmsKeyId
+
 
 ### 第 43 次发布
 
@@ -14590,11 +14412,11 @@
 
 新增接口：
 
-* [[RenewCards](https://cloud.tencent.com/document/api/636/45922)](https://cloud.tencent.com/document/api/#/#)
+* [RenewCards](https://cloud.tencent.com/document/api/636/45922)
 
 新增数据结构：
 
-* [[ResRenew](https://cloud.tencent.com/document/api/636/33881#ResRenew)](https://cloud.tencent.com/document/api/636/33881#[ResRenew](https://cloud.tencent.com/document/api/636/33881#ResRenew))
+* [ResRenew](https://cloud.tencent.com/document/api/636/33881#ResRenew)
 
 ### 第 2 次发布
 
@@ -16164,6 +15986,20 @@
 
 
 ## 云直播(live) 版本：2018-08-01
+
+### 第 44 次发布
+
+发布时间：2020-07-03 08:12:43
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[CreateRecordTask](https://cloud.tencent.com/document/api/267/30148)](https://cloud.tencent.com/document/api/#/#)
+* [[DeleteRecordTask](https://cloud.tencent.com/document/api/267/30147)](https://cloud.tencent.com/document/api/#/#)
+* [[StopRecordTask](https://cloud.tencent.com/document/api/267/30146)](https://cloud.tencent.com/document/api/#/#)
 
 ### 第 43 次发布
 
@@ -24786,6 +24622,21 @@
 
 ## 智能钛机器学习平台(tione) 版本：2019-10-22
 
+### 第 9 次发布
+
+发布时间：2020-07-03 08:01:35
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [OutputDataConfig](https://cloud.tencent.com/document/api/851/42528#OutputDataConfig)
+
+	* 新增成员：FileSystemDataSource
+
+
 ### 第 8 次发布
 
 发布时间：2020-07-02 08:01:32
@@ -24796,7 +24647,7 @@
 
 新增接口：
 
-* [[DescribeTrainingJobs](https://cloud.tencent.com/document/api/851/45920)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeTrainingJobs](https://cloud.tencent.com/document/api/851/45920)
 
 修改接口：
 
@@ -24807,7 +24658,7 @@
 
 新增数据结构：
 
-* [[TrainingJobSummary](https://cloud.tencent.com/document/api/851/42528#TrainingJobSummary)](https://cloud.tencent.com/document/api/851/42528#[TrainingJobSummary](https://cloud.tencent.com/document/api/851/42528#TrainingJobSummary))
+* [TrainingJobSummary](https://cloud.tencent.com/document/api/851/42528#TrainingJobSummary)
 
 ### 第 7 次发布
 
@@ -26002,11 +25853,11 @@
 
 新增接口：
 
-* [[CreateRepository](https://cloud.tencent.com/document/api/649/45927)](https://cloud.tencent.com/document/api/#/#)
-* [[DeleteRepository](https://cloud.tencent.com/document/api/649/45926)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeRepositories](https://cloud.tencent.com/document/api/649/45925)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeRepository](https://cloud.tencent.com/document/api/649/45924)](https://cloud.tencent.com/document/api/#/#)
-* [[UpdateRepository](https://cloud.tencent.com/document/api/649/45923)](https://cloud.tencent.com/document/api/#/#)
+* [CreateRepository](https://cloud.tencent.com/document/api/649/45927)
+* [DeleteRepository](https://cloud.tencent.com/document/api/649/45926)
+* [DescribeRepositories](https://cloud.tencent.com/document/api/649/45925)
+* [DescribeRepository](https://cloud.tencent.com/document/api/649/45924)
+* [UpdateRepository](https://cloud.tencent.com/document/api/649/45923)
 
 修改接口：
 
@@ -26041,9 +25892,9 @@
 
 新增数据结构：
 
-* [[PkgBind](https://cloud.tencent.com/document/api/649/36099#PkgBind)](https://cloud.tencent.com/document/api/649/36099#[PkgBind](https://cloud.tencent.com/document/api/649/36099#PkgBind))
-* [[RepositoryInfo](https://cloud.tencent.com/document/api/649/36099#RepositoryInfo)](https://cloud.tencent.com/document/api/649/36099#[RepositoryInfo](https://cloud.tencent.com/document/api/649/36099#RepositoryInfo))
-* [[RepositoryList](https://cloud.tencent.com/document/api/649/36099#RepositoryList)](https://cloud.tencent.com/document/api/649/36099#[RepositoryList](https://cloud.tencent.com/document/api/649/36099#RepositoryList))
+* [PkgBind](https://cloud.tencent.com/document/api/649/36099#PkgBind)
+* [RepositoryInfo](https://cloud.tencent.com/document/api/649/36099#RepositoryInfo)
+* [RepositoryList](https://cloud.tencent.com/document/api/649/36099#RepositoryList)
 
 修改数据结构：
 
@@ -28394,6 +28245,36 @@
 
 
 ## 私有网络(vpc) 版本：2017-03-12
+
+### 第 53 次发布
+
+发布时间：2020-07-03 08:18:56
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DisableRoutes](https://cloud.tencent.com/document/api/215/19216)
+
+	* 新增入参：RouteItemIds
+
+	* <font color="#dd0000">**修改入参**：</font>RouteIds
+
+* [EnableRoutes](https://cloud.tencent.com/document/api/215/19215)
+
+	* 新增入参：RouteItemIds
+
+	* <font color="#dd0000">**修改入参**：</font>RouteIds
+
+
+修改数据结构：
+
+* [Route](https://cloud.tencent.com/document/api/215/15824#Route)
+
+	* 新增成员：DestinationIpv6CidrBlock, RouteItemId
+
 
 ### 第 52 次发布
 

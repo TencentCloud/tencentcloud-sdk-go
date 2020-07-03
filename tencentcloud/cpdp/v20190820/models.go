@@ -2169,6 +2169,112 @@ func (r *DescribeChargeDetailResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeOrderStatusRequest struct {
+	*tchttp.BaseRequest
+
+	// 请求类型，此接口固定填：QueryOrderStatusReq
+	RequestType *string `json:"RequestType,omitempty" name:"RequestType"`
+
+	// 商户号
+	MerchantCode *string `json:"MerchantCode,omitempty" name:"MerchantCode"`
+
+	// 支付渠道
+	PayChannel *string `json:"PayChannel,omitempty" name:"PayChannel"`
+
+	// 子渠道
+	PayChannelSubId *int64 `json:"PayChannelSubId,omitempty" name:"PayChannelSubId"`
+
+	// 交易订单号或流水号，提现，充值或会员交易请求时的CnsmrSeqNo值
+	OrderId *string `json:"OrderId,omitempty" name:"OrderId"`
+
+	// 父账户账号，资金汇总账号
+	BankAccountNumber *string `json:"BankAccountNumber,omitempty" name:"BankAccountNumber"`
+
+	// 平台短号(银行分配)
+	PlatformShortNumber *string `json:"PlatformShortNumber,omitempty" name:"PlatformShortNumber"`
+
+	// 功能标志 0：会员间交易 1：提现 2：充值
+	QueryType *string `json:"QueryType,omitempty" name:"QueryType"`
+
+	// 银行流水号
+	TransSequenceNumber *string `json:"TransSequenceNumber,omitempty" name:"TransSequenceNumber"`
+
+	// 计费签名
+	MidasSignature *string `json:"MidasSignature,omitempty" name:"MidasSignature"`
+
+	// 聚鑫分配的支付主MidasAppId
+	MidasAppId *string `json:"MidasAppId,omitempty" name:"MidasAppId"`
+
+	// 聚鑫分配的安全ID
+	MidasSecretId *string `json:"MidasSecretId,omitempty" name:"MidasSecretId"`
+
+	// Midas环境参数
+	MidasEnvironment *string `json:"MidasEnvironment,omitempty" name:"MidasEnvironment"`
+
+	// 保留字段
+	ReservedMessage *string `json:"ReservedMessage,omitempty" name:"ReservedMessage"`
+
+	// 子账户账号 暂未使用
+	BankSubAccountNumber *string `json:"BankSubAccountNumber,omitempty" name:"BankSubAccountNumber"`
+
+	// 交易日期 暂未使用
+	TransDate *string `json:"TransDate,omitempty" name:"TransDate"`
+}
+
+func (r *DescribeOrderStatusRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeOrderStatusRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeOrderStatusResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 交易状态 （（0：成功，1：失败，2：待确认, 5：待处理，6：处理中）
+		OrderStatus *string `json:"OrderStatus,omitempty" name:"OrderStatus"`
+
+		// 交易金额
+		OrderAmount *string `json:"OrderAmount,omitempty" name:"OrderAmount"`
+
+		// 交易日期
+		OrderDate *string `json:"OrderDate,omitempty" name:"OrderDate"`
+
+		// 交易时间
+		OrderTime *string `json:"OrderTime,omitempty" name:"OrderTime"`
+
+		// 转出子账户账号
+		OutSubAccountNumber *string `json:"OutSubAccountNumber,omitempty" name:"OutSubAccountNumber"`
+
+		// 转入子账户账号
+		InSubAccountNumber *string `json:"InSubAccountNumber,omitempty" name:"InSubAccountNumber"`
+
+		// 记账标志（1：登记挂账 2：支付 3：提现 4：清分5:下单预支付 6：确认并付款 7：退款 8：支付到平台 N:其他）
+		BookingFlag *string `json:"BookingFlag,omitempty" name:"BookingFlag"`
+
+		// 当交易失败时，返回交易失败原因
+		FailMessage *string `json:"FailMessage,omitempty" name:"FailMessage"`
+
+		// 请求类型
+		RequestType *string `json:"RequestType,omitempty" name:"RequestType"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeOrderStatusResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeOrderStatusResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DownloadBillRequest struct {
 	*tchttp.BaseRequest
 
@@ -4769,7 +4875,7 @@ type QueryTradeResult struct {
 type RechargeByThirdPayRequest struct {
 	*tchttp.BaseRequest
 
-	// 请求类型
+	// 请求类型 此接口固定填：MemberRechargeThirdPayReq
 	RequestType *string `json:"RequestType,omitempty" name:"RequestType"`
 
 	// 商户号

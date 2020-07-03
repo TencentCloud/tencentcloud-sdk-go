@@ -601,6 +601,31 @@ func (c *Client) DescribeChargeDetail(request *DescribeChargeDetailRequest) (res
     return
 }
 
+func NewDescribeOrderStatusRequest() (request *DescribeOrderStatusRequest) {
+    request = &DescribeOrderStatusRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cpdp", APIVersion, "DescribeOrderStatus")
+    return
+}
+
+func NewDescribeOrderStatusResponse() (response *DescribeOrderStatusResponse) {
+    response = &DescribeOrderStatusResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询单笔订单交易状态
+func (c *Client) DescribeOrderStatus(request *DescribeOrderStatusRequest) (response *DescribeOrderStatusResponse, err error) {
+    if request == nil {
+        request = NewDescribeOrderStatusRequest()
+    }
+    response = NewDescribeOrderStatusResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDownloadBillRequest() (request *DownloadBillRequest) {
     request = &DownloadBillRequest{
         BaseRequest: &tchttp.BaseRequest{},

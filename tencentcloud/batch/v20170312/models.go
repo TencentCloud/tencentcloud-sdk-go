@@ -456,6 +456,12 @@ type DataDisk struct {
 	// 该参数目前仅用于 `RunInstances` 接口。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Encrypt *bool `json:"Encrypt,omitempty" name:"Encrypt"`
+
+	// 自定义CMK对应的ID，取值为UUID或者类似kms-abcd1234。用于加密云盘。
+	// 
+	// 该参数目前仅用于 `RunInstances` 接口。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	KmsKeyId *string `json:"KmsKeyId,omitempty" name:"KmsKeyId"`
 }
 
 type DeleteComputeEnvRequest struct {

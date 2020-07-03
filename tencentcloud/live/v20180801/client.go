@@ -61,6 +61,7 @@ func NewAddDelayLiveStreamResponse() (response *AddDelayLiveStreamResponse) {
 // 对流设置延播时间
 // 注意：如果在推流前设置延播，需要提前5分钟设置。
 // 目前该接口只支持流粒度的，域名及应用粒度功能支持当前开发中。
+// 使用场景：对重要直播，避免出现突发状况，可通过设置延迟播放，提前做好把控。
 func (c *Client) AddDelayLiveStream(request *AddDelayLiveStreamRequest) (response *AddDelayLiveStreamResponse, err error) {
     if request == nil {
         request = NewAddDelayLiveStreamRequest()
@@ -525,6 +526,39 @@ func (c *Client) CreatePullStreamConfig(request *CreatePullStreamConfigRequest) 
     return
 }
 
+func NewCreateRecordTaskRequest() (request *CreateRecordTaskRequest) {
+    request = &CreateRecordTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("live", APIVersion, "CreateRecordTask")
+    return
+}
+
+func NewCreateRecordTaskResponse() (response *CreateRecordTaskResponse) {
+    response = &CreateRecordTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 创建一个在指定时间启动、结束的录制任务，并使用指定录制模板ID对应的配置进行录制。
+// - 使用前提
+// 1. 录制文件存放于点播平台，所以用户如需使用录制功能，需首先自行开通点播服务。
+// 2. 录制文件存放后相关费用（含存储以及下行播放流量）按照点播平台计费方式收取，具体请参考 对应文档。
+// - 注意事项
+// 1. 断流会结束当前录制并生成录制文件。在结束时间到达之前任务仍然有效，期间只要正常推流都会正常录制，与是否多次推、断流无关。
+// 2. 使用上避免创建时间段相互重叠的录制任务。若同一条流当前存在多个时段重叠的任务，为避免重复录制系统将启动最多3个录制任务。
+// 3. 创建的录制任务记录在平台侧只保留3个月。
+// 4. 当前录制任务管理API（CreateRecordTask/StopRecordTask/DeleteRecordTask）与旧API（CreateLiveRecord/StopLiveRecord/DeleteLiveRecord）不兼容，两套接口不能混用。
+func (c *Client) CreateRecordTask(request *CreateRecordTaskRequest) (response *CreateRecordTaskResponse, err error) {
+    if request == nil {
+        request = NewCreateRecordTaskRequest()
+    }
+    response = NewCreateRecordTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteLiveCallbackRuleRequest() (request *DeleteLiveCallbackRuleRequest) {
     request = &DeleteLiveCallbackRuleRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -872,6 +906,31 @@ func (c *Client) DeletePullStreamConfig(request *DeletePullStreamConfigRequest) 
         request = NewDeletePullStreamConfigRequest()
     }
     response = NewDeletePullStreamConfigResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteRecordTaskRequest() (request *DeleteRecordTaskRequest) {
+    request = &DeleteRecordTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("live", APIVersion, "DeleteRecordTask")
+    return
+}
+
+func NewDeleteRecordTaskResponse() (response *DeleteRecordTaskResponse) {
+    response = &DeleteRecordTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 删除录制任务配置。删除操作不影响正在运行当中的任务，仅对删除之后新的推流有效。
+func (c *Client) DeleteRecordTask(request *DeleteRecordTaskRequest) (response *DeleteRecordTaskResponse, err error) {
+    if request == nil {
+        request = NewDeleteRecordTaskRequest()
+    }
+    response = NewDeleteRecordTaskResponse()
     err = c.Send(request, response)
     return
 }
@@ -2553,6 +2612,31 @@ func (c *Client) StopLiveRecord(request *StopLiveRecordRequest) (response *StopL
         request = NewStopLiveRecordRequest()
     }
     response = NewStopLiveRecordResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewStopRecordTaskRequest() (request *StopRecordTaskRequest) {
+    request = &StopRecordTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("live", APIVersion, "StopRecordTask")
+    return
+}
+
+func NewStopRecordTaskResponse() (response *StopRecordTaskResponse) {
+    response = &StopRecordTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 提前结束录制，并中止运行中的录制任务。任务被成功中止后将不再启动。
+func (c *Client) StopRecordTask(request *StopRecordTaskRequest) (response *StopRecordTaskResponse, err error) {
+    if request == nil {
+        request = NewStopRecordTaskRequest()
+    }
+    response = NewStopRecordTaskResponse()
     err = c.Send(request, response)
     return
 }

@@ -920,12 +920,12 @@ type FaceInfo struct {
 
 	// 人脸框左上角横坐标。
 	// 人脸框包含人脸五官位置并在此基础上进行一定的扩展，若人脸框超出图片范围，会导致坐标负值。 
-	// 若需截取完整人脸，可以在完整分completess满足需求的情况下，将负值坐标取0。
+	// 若需截取完整人脸，可以在完整分completeness满足需求的情况下，将负值坐标取0。
 	X *int64 `json:"X,omitempty" name:"X"`
 
 	// 人脸框左上角纵坐标。 
 	// 人脸框包含人脸五官位置并在此基础上进行一定的扩展，若人脸框超出图片范围，会导致坐标负值。 
-	// 若需截取完整人脸，可以在完整分completess满足需求的情况下，将负值坐标取0。
+	// 若需截取完整人脸，可以在完整分completeness满足需求的情况下，将负值坐标取0。
 	Y *int64 `json:"Y,omitempty" name:"Y"`
 
 	// 人脸框宽度。
@@ -2081,7 +2081,7 @@ type VerifyFaceResponse struct {
 		// 是否为同一人的判断。
 		IsMatch *bool `json:"IsMatch,omitempty" name:"IsMatch"`
 
-		// 人脸识别所用的算法模型版本。
+		// 人脸识别所用的算法模型版本，是该 Person 所在的人员库的算法模型版本。在创建人员库时设置，详情可参考[算法模型版本](https://cloud.tencent.com/document/product/867/40042)
 		FaceModelVersion *string `json:"FaceModelVersion,omitempty" name:"FaceModelVersion"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -2149,7 +2149,7 @@ type VerifyPersonResponse struct {
 		// 是否为同一人的判断。
 		IsMatch *bool `json:"IsMatch,omitempty" name:"IsMatch"`
 
-		// 人脸识别所用的算法模型版本。
+		// 人脸识别所用的算法模型版本，是该 Person 所在的人员库的算法模型版本。在创建人员库时设置，详情可参考[算法模型版本](https://cloud.tencent.com/document/product/867/40042)
 		FaceModelVersion *string `json:"FaceModelVersion,omitempty" name:"FaceModelVersion"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。

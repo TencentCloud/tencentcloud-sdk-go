@@ -1252,13 +1252,17 @@ type NotebookLifecycleScriptsSummary struct {
 
 type OutputDataConfig struct {
 
-	// cos桶
+	// cos输出桶
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CosOutputBucket *string `json:"CosOutputBucket,omitempty" name:"CosOutputBucket"`
 
-	// cos文件key
+	// cos输出key前缀
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CosOutputKeyPrefix *string `json:"CosOutputKeyPrefix,omitempty" name:"CosOutputKeyPrefix"`
+
+	// 文件系统输出，如果指定了文件系统，那么Cos输出会被忽略
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FileSystemDataSource *FileSystemDataSource `json:"FileSystemDataSource,omitempty" name:"FileSystemDataSource"`
 }
 
 type ResourceConfig struct {
