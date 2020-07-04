@@ -20,6 +20,7 @@ const (
 
 	RootDomain = "tencentcloudapi.com"
 	Path       = "/"
+	envTest = "test"
 )
 
 type Request interface {
@@ -53,6 +54,7 @@ type BaseRequest struct {
 	service string
 	version string
 	action  string
+	envType string
 }
 
 func (r *BaseRequest) GetAction() string {
@@ -87,6 +89,9 @@ func (r *BaseRequest) GetServiceDomain(service string) (domain string) {
 	rootDomain := r.rootDomain
 	if rootDomain == "" {
 		rootDomain = RootDomain
+	}
+	if r.envType == envTest {
+		domain = service + ".test." + rootDomain
 	}
 	domain = service + "." + rootDomain
 	return
