@@ -203,7 +203,7 @@ func NewDetectBodyResponse() (response *DetectBodyResponse) {
     return
 }
 
-// 检测给定图片中的人体（Body）的位置信息（属性信息将在后续开放）。
+// 检测给定图片中的人体（Body）的位置信息及属性信息。
 func (c *Client) DetectBody(request *DetectBodyRequest) (response *DetectBodyResponse, err error) {
     if request == nil {
         request = NewDetectBodyRequest()

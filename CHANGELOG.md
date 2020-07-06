@@ -1,5 +1,102 @@
 # 本版本更新包含以下内容：
 
+## 内容分发网络(cdn) 版本：2018-06-06
+
+### 第 27 次发布
+
+发布时间：2020-07-06 08:06:38
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增数据结构：
+
+* [AccessControl](https://cloud.tencent.com/document/api/228/30987#AccessControl)
+* [AccessControlRule](https://cloud.tencent.com/document/api/228/30987#AccessControlRule)
+* [CacheTagKey](https://cloud.tencent.com/document/api/228/30987#CacheTagKey)
+* [CookieKey](https://cloud.tencent.com/document/api/228/30987#CookieKey)
+* [HeaderKey](https://cloud.tencent.com/document/api/228/30987#HeaderKey)
+* [QueryStringKey](https://cloud.tencent.com/document/api/228/30987#QueryStringKey)
+* [Revalidate](https://cloud.tencent.com/document/api/228/30987#Revalidate)
+* [SchemeKey](https://cloud.tencent.com/document/api/228/30987#SchemeKey)
+
+修改数据结构：
+
+* [CacheKey](https://cloud.tencent.com/document/api/228/30987#CacheKey)
+
+	* 新增成员：QueryString, Cookie, Header, CacheTag, Scheme
+
+* [DetailDomain](https://cloud.tencent.com/document/api/228/30987#DetailDomain)
+
+	* 新增成员：AccessControl
+
+* [SimpleCache](https://cloud.tencent.com/document/api/228/30987#SimpleCache)
+
+	* 新增成员：Revalidate
+
+
+
+
+## 企业收付平台(cpdp) 版本：2019-08-20
+
+### 第 23 次发布
+
+发布时间：2020-07-06 08:22:03
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [ApplyWithdrawal](https://cloud.tencent.com/document/api/1122/40682)
+
+	* 新增入参：WithdrawOrderId
+
+
+
+
+## 数学作业批改(hcm) 版本：2018-11-06
+
+### 第 6 次发布
+
+发布时间：2020-07-06 08:10:58
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [Evaluation](https://cloud.tencent.com/document/api/1004/30616)
+
+	* 新增入参：EnableDispRelatedVertical, EnableDispMidresult, EnablePdfRecognize, PdfPageIndex
+
+
+
+
+## 云点播(vod) 版本：2018-07-17
+
+### 第 51 次发布
+
+发布时间：2020-07-06 08:19:28
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [PullUpload](https://cloud.tencent.com/document/api/266/35575)
+
+	* 新增入参：SourceContext
+
+
+
+
+# 历次版本更新如下：
+
 ## 活动防刷(aa) 版本：2020-02-24
 
 ### 第 3 次发布
@@ -20,175 +117,6 @@
 * [InputManageMarketingRisk](https://cloud.tencent.com/document/api/1189/45888#InputManageMarketingRisk)
 * [OutputManageMarketingRisk](https://cloud.tencent.com/document/api/1189/45888#OutputManageMarketingRisk)
 * [OutputManageMarketingRiskValue](https://cloud.tencent.com/document/api/1189/45888#OutputManageMarketingRiskValue)
-
-
-
-## 批量计算(batch) 版本：2017-03-12
-
-### 第 30 次发布
-
-发布时间：2020-07-03 08:04:08
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [DataDisk](https://cloud.tencent.com/document/api/599/15912#DataDisk)
-
-	* 新增成员：KmsKeyId
-
-
-
-
-## 业务风险情报(bri) 版本：2019-03-28
-
-### 第 2 次发布
-
-发布时间：2020-07-03 08:05:30
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [BRIRequest](https://cloud.tencent.com/document/api/1064/35632#BRIRequest)
-
-	* 新增成员：QQ, QQTag, Scene, Wechat, WechatTag
-
-
-
-
-## 企业收付平台(cpdp) 版本：2019-08-20
-
-### 第 22 次发布
-
-发布时间：2020-07-03 08:22:22
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [DescribeOrderStatus](https://cloud.tencent.com/document/api/1122/45963)
-
-
-
-## 云服务器(cvm) 版本：2017-03-12
-
-### 第 44 次发布
-
-发布时间：2020-07-03 08:07:59
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [DataDisk](https://cloud.tencent.com/document/api/213/15753#DataDisk)
-
-	* 新增成员：KmsKeyId
-
-
-
-
-## 云直播(live) 版本：2018-08-01
-
-### 第 44 次发布
-
-发布时间：2020-07-03 08:12:43
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [CreateRecordTask](https://cloud.tencent.com/document/api/267/30148)
-* [DeleteRecordTask](https://cloud.tencent.com/document/api/267/30147)
-* [StopRecordTask](https://cloud.tencent.com/document/api/267/30146)
-
-
-
-## 智能钛机器学习平台(tione) 版本：2019-10-22
-
-### 第 9 次发布
-
-发布时间：2020-07-03 08:01:35
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [OutputDataConfig](https://cloud.tencent.com/document/api/851/42528#OutputDataConfig)
-
-	* 新增成员：FileSystemDataSource
-
-
-
-
-## 私有网络(vpc) 版本：2017-03-12
-
-### 第 53 次发布
-
-发布时间：2020-07-03 08:18:56
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [DisableRoutes](https://cloud.tencent.com/document/api/215/19216)
-
-	* 新增入参：RouteItemIds
-
-	* <font color="#dd0000">**修改入参**：</font>RouteIds
-
-* [EnableRoutes](https://cloud.tencent.com/document/api/215/19215)
-
-	* 新增入参：RouteItemIds
-
-	* <font color="#dd0000">**修改入参**：</font>RouteIds
-
-
-修改数据结构：
-
-* [Route](https://cloud.tencent.com/document/api/215/15824#Route)
-
-	* 新增成员：DestinationIpv6CidrBlock, RouteItemId
-
-
-
-
-# 历次版本更新如下：
-
-## 活动防刷(aa) 版本：2020-02-24
-
-### 第 3 次发布
-
-发布时间：2020-07-03 08:00:32
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [[ManageMarketingRisk](https://cloud.tencent.com/document/api/1189/45962)](https://cloud.tencent.com/document/api/#/#)
-
-新增数据结构：
-
-* [[CrowdAntiRushInfo](https://cloud.tencent.com/document/api/1189/45888#CrowdAntiRushInfo)](https://cloud.tencent.com/document/api/1189/45888#[CrowdAntiRushInfo](https://cloud.tencent.com/document/api/1189/45888#CrowdAntiRushInfo))
-* [[InputManageMarketingRisk](https://cloud.tencent.com/document/api/1189/45888#InputManageMarketingRisk)](https://cloud.tencent.com/document/api/1189/45888#[InputManageMarketingRisk](https://cloud.tencent.com/document/api/1189/45888#InputManageMarketingRisk))
-* [[OutputManageMarketingRisk](https://cloud.tencent.com/document/api/1189/45888#OutputManageMarketingRisk)](https://cloud.tencent.com/document/api/1189/45888#[OutputManageMarketingRisk](https://cloud.tencent.com/document/api/1189/45888#OutputManageMarketingRisk))
-* [[OutputManageMarketingRiskValue](https://cloud.tencent.com/document/api/1189/45888#OutputManageMarketingRiskValue)](https://cloud.tencent.com/document/api/1189/45888#[OutputManageMarketingRiskValue](https://cloud.tencent.com/document/api/1189/45888#OutputManageMarketingRiskValue))
 
 ### 第 2 次发布
 
@@ -5644,6 +5572,40 @@
 
 ## 内容分发网络(cdn) 版本：2018-06-06
 
+### 第 27 次发布
+
+发布时间：2020-07-06 08:06:38
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增数据结构：
+
+* [[AccessControl](https://cloud.tencent.com/document/api/228/30987#AccessControl)](https://cloud.tencent.com/document/api/228/30987#[AccessControl](https://cloud.tencent.com/document/api/228/30987#AccessControl))
+* [[AccessControlRule](https://cloud.tencent.com/document/api/228/30987#AccessControlRule)](https://cloud.tencent.com/document/api/228/30987#[AccessControlRule](https://cloud.tencent.com/document/api/228/30987#AccessControlRule))
+* [[CacheTagKey](https://cloud.tencent.com/document/api/228/30987#CacheTagKey)](https://cloud.tencent.com/document/api/228/30987#[CacheTagKey](https://cloud.tencent.com/document/api/228/30987#CacheTagKey))
+* [[CookieKey](https://cloud.tencent.com/document/api/228/30987#CookieKey)](https://cloud.tencent.com/document/api/228/30987#[CookieKey](https://cloud.tencent.com/document/api/228/30987#CookieKey))
+* [[HeaderKey](https://cloud.tencent.com/document/api/228/30987#HeaderKey)](https://cloud.tencent.com/document/api/228/30987#[HeaderKey](https://cloud.tencent.com/document/api/228/30987#HeaderKey))
+* [[QueryStringKey](https://cloud.tencent.com/document/api/228/30987#QueryStringKey)](https://cloud.tencent.com/document/api/228/30987#[QueryStringKey](https://cloud.tencent.com/document/api/228/30987#QueryStringKey))
+* [[Revalidate](https://cloud.tencent.com/document/api/228/30987#Revalidate)](https://cloud.tencent.com/document/api/228/30987#[Revalidate](https://cloud.tencent.com/document/api/228/30987#Revalidate))
+* [[SchemeKey](https://cloud.tencent.com/document/api/228/30987#SchemeKey)](https://cloud.tencent.com/document/api/228/30987#[SchemeKey](https://cloud.tencent.com/document/api/228/30987#SchemeKey))
+
+修改数据结构：
+
+* [CacheKey](https://cloud.tencent.com/document/api/228/30987#CacheKey)
+
+	* 新增成员：QueryString, Cookie, Header, CacheTag, Scheme
+
+* [DetailDomain](https://cloud.tencent.com/document/api/228/30987#DetailDomain)
+
+	* 新增成员：AccessControl
+
+* [SimpleCache](https://cloud.tencent.com/document/api/228/30987#SimpleCache)
+
+	* 新增成员：Revalidate
+
+
 ### 第 26 次发布
 
 发布时间：2020-07-02 08:06:45
@@ -8150,6 +8112,21 @@
 
 ## 企业收付平台(cpdp) 版本：2019-08-20
 
+### 第 23 次发布
+
+发布时间：2020-07-06 08:22:03
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [ApplyWithdrawal](https://cloud.tencent.com/document/api/1122/40682)
+
+	* 新增入参：WithdrawOrderId
+
+
 ### 第 22 次发布
 
 发布时间：2020-07-03 08:22:22
@@ -8160,7 +8137,7 @@
 
 新增接口：
 
-* [[DescribeOrderStatus](https://cloud.tencent.com/document/api/1122/45963)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeOrderStatus](https://cloud.tencent.com/document/api/1122/45963)
 
 ### 第 21 次发布
 
@@ -13842,6 +13819,21 @@
 
 ## 数学作业批改(hcm) 版本：2018-11-06
 
+### 第 6 次发布
+
+发布时间：2020-07-06 08:10:58
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [Evaluation](https://cloud.tencent.com/document/api/1004/30616)
+
+	* 新增入参：EnableDispRelatedVertical, EnableDispMidresult, EnablePdfRecognize, PdfPageIndex
+
+
 ### 第 5 次发布
 
 发布时间：2020-03-16 08:11:31
@@ -15997,9 +15989,9 @@
 
 新增接口：
 
-* [[CreateRecordTask](https://cloud.tencent.com/document/api/267/30148)](https://cloud.tencent.com/document/api/#/#)
-* [[DeleteRecordTask](https://cloud.tencent.com/document/api/267/30147)](https://cloud.tencent.com/document/api/#/#)
-* [[StopRecordTask](https://cloud.tencent.com/document/api/267/30146)](https://cloud.tencent.com/document/api/#/#)
+* [CreateRecordTask](https://cloud.tencent.com/document/api/267/45983)
+* [DeleteRecordTask](https://cloud.tencent.com/document/api/267/45982)
+* [StopRecordTask](https://cloud.tencent.com/document/api/267/45981)
 
 ### 第 43 次发布
 
@@ -26588,6 +26580,21 @@
 
 
 ## 云点播(vod) 版本：2018-07-17
+
+### 第 51 次发布
+
+发布时间：2020-07-06 08:19:28
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [PullUpload](https://cloud.tencent.com/document/api/266/35575)
+
+	* 新增入参：SourceContext
+
 
 ### 第 50 次发布
 

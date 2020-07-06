@@ -20,6 +20,41 @@ import (
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
+type AccessControl struct {
+
+	// on | off 是否启用请求头部及请求url访问控制
+	Switch *string `json:"Switch,omitempty" name:"Switch"`
+
+	// 请求头部及请求url访问规则
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AccessControlRules []*AccessControlRule `json:"AccessControlRules,omitempty" name:"AccessControlRules" list`
+
+	// 返回状态码
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ReturnCode *int64 `json:"ReturnCode,omitempty" name:"ReturnCode"`
+}
+
+type AccessControlRule struct {
+
+	// requestHeader ：对请求头部进行访问控制
+	// url ： 对访问url进行访问控制
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RuleType *string `json:"RuleType,omitempty" name:"RuleType"`
+
+	// 封禁内容
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RuleContent *string `json:"RuleContent,omitempty" name:"RuleContent"`
+
+	// on ：正则匹配
+	// off ：字面匹配
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Regex *string `json:"Regex,omitempty" name:"Regex"`
+
+	// RuleType为requestHeader时必填，否则不需要填
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RuleHeader *string `json:"RuleHeader,omitempty" name:"RuleHeader"`
+}
+
 type AddCdnDomainRequest struct {
 	*tchttp.BaseRequest
 
@@ -440,6 +475,26 @@ type CacheKey struct {
 	// 是否忽略大小写缓存
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IgnoreCase *string `json:"IgnoreCase,omitempty" name:"IgnoreCase"`
+
+	// CacheKey中包含请求参数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	QueryString *QueryStringKey `json:"QueryString,omitempty" name:"QueryString"`
+
+	// CacheKey中包含Cookie
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Cookie *CookieKey `json:"Cookie,omitempty" name:"Cookie"`
+
+	// CacheKey中包含请求头部
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Header *HeaderKey `json:"Header,omitempty" name:"Header"`
+
+	// CacheKey中包含自定义字符串
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CacheTag *CacheTagKey `json:"CacheTag,omitempty" name:"CacheTag"`
+
+	// CacheKey中包含请求协议
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Scheme *SchemeKey `json:"Scheme,omitempty" name:"Scheme"`
 }
 
 type CacheOptResult struct {
@@ -451,6 +506,17 @@ type CacheOptResult struct {
 	// 失败的url列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FailUrls []*string `json:"FailUrls,omitempty" name:"FailUrls" list`
+}
+
+type CacheTagKey struct {
+
+	// 是否使用CacheTag作为CacheKey的一部分
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Switch *string `json:"Switch,omitempty" name:"Switch"`
+
+	// 自定义CacheTag的值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Value *string `json:"Value,omitempty" name:"Value"`
 }
 
 type CappingRule struct {
@@ -631,6 +697,17 @@ type CompressionRule struct {
 	// brotli：需要同时指定 GZIP 压缩才可启用
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Algorithms []*string `json:"Algorithms,omitempty" name:"Algorithms" list`
+}
+
+type CookieKey struct {
+
+	// on | off 是否使用Cookie作为Cache的一部分
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Switch *string `json:"Switch,omitempty" name:"Switch"`
+
+	// 使用的cookie，';' 分割
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Value *string `json:"Value,omitempty" name:"Value"`
 }
 
 type CreateClsLogTopicRequest struct {
@@ -2107,6 +2184,10 @@ type DetailDomain struct {
 	// UA黑白名单配置
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UserAgentFilter *UserAgentFilter `json:"UserAgentFilter,omitempty" name:"UserAgentFilter"`
+
+	// 访问控制
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AccessControl *AccessControl `json:"AccessControl,omitempty" name:"AccessControl"`
 }
 
 type DisableCachesRequest struct {
@@ -2451,6 +2532,17 @@ type GuetzliAdapter struct {
 	// 开关，"on/off"
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Switch *string `json:"Switch,omitempty" name:"Switch"`
+}
+
+type HeaderKey struct {
+
+	// 是否组成Cachekey
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Switch *string `json:"Switch,omitempty" name:"Switch"`
+
+	// 组成CacheKey的header数组，';' 分割
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Value *string `json:"Value,omitempty" name:"Value"`
 }
 
 type Hsts struct {
@@ -3416,6 +3508,25 @@ func (r *PushUrlsCacheResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type QueryStringKey struct {
+
+	// on | off CacheKey是否由QueryString组成
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Switch *string `json:"Switch,omitempty" name:"Switch"`
+
+	// 是否重新排序
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Reorder *string `json:"Reorder,omitempty" name:"Reorder"`
+
+	// includeAll | excludeAll | includeCustom | excludeAll 使用/排除部分url参数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Action *string `json:"Action,omitempty" name:"Action"`
+
+	// 使用/排除的url参数数组，';' 分割
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Value *string `json:"Value,omitempty" name:"Value"`
+}
+
 type Quota struct {
 
 	// 单次批量提交配额上限。
@@ -3582,6 +3693,24 @@ type ResponseHeaderCache struct {
 	Switch *string `json:"Switch,omitempty" name:"Switch"`
 }
 
+type Revalidate struct {
+
+	// on | off 是否总是回源校验
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Switch *string `json:"Switch,omitempty" name:"Switch"`
+
+	// 只在特定请求路径回源站校验
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Path *string `json:"Path,omitempty" name:"Path"`
+}
+
+type SchemeKey struct {
+
+	// on | off 是否使用scheme作为cache key的一部分
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Switch *string `json:"Switch,omitempty" name:"Switch"`
+}
+
 type SearchClsLogRequest struct {
 	*tchttp.BaseRequest
 
@@ -3729,6 +3858,10 @@ type SimpleCache struct {
 	// 默认为关闭状态
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CompareMaxAge *string `json:"CompareMaxAge,omitempty" name:"CompareMaxAge"`
+
+	// 总是回源站校验
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Revalidate *Revalidate `json:"Revalidate,omitempty" name:"Revalidate"`
 }
 
 type SimpleCacheRule struct {

@@ -648,6 +648,9 @@ type ApplyWithdrawalRequest struct {
 
 	// 手续费金额
 	CommissionAmount *string `json:"CommissionAmount,omitempty" name:"CommissionAmount"`
+
+	// 提现单号，长度32字节
+	WithdrawOrderId *string `json:"WithdrawOrderId,omitempty" name:"WithdrawOrderId"`
 }
 
 func (r *ApplyWithdrawalRequest) ToJsonString() string {

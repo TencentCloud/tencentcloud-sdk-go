@@ -233,7 +233,7 @@ func NewSetOnlineRecordCallbackResponse() (response *SetOnlineRecordCallbackResp
     return
 }
 
-// 设置实时录制回调地址
+// 设置实时录制回调地址，回调数据格式请参考文档：https://cloud.tencent.com/document/product/1137/40258
 func (c *Client) SetOnlineRecordCallback(request *SetOnlineRecordCallbackRequest) (response *SetOnlineRecordCallbackResponse, err error) {
     if request == nil {
         request = NewSetOnlineRecordCallbackRequest()
@@ -258,7 +258,7 @@ func NewSetOnlineRecordCallbackKeyResponse() (response *SetOnlineRecordCallbackK
     return
 }
 
-// 设置实时录制回调鉴权密钥
+// 设置实时录制回调鉴权密钥，回调鉴权方式请参考文档：https://cloud.tencent.com/document/product/1137/40257
 func (c *Client) SetOnlineRecordCallbackKey(request *SetOnlineRecordCallbackKeyRequest) (response *SetOnlineRecordCallbackKeyResponse, err error) {
     if request == nil {
         request = NewSetOnlineRecordCallbackKeyRequest()
@@ -283,7 +283,7 @@ func NewSetTranscodeCallbackResponse() (response *SetTranscodeCallbackResponse) 
     return
 }
 
-// 设置文档转码回调地址
+// 设置文档转码回调地址，回调数据格式请参考文档：https://cloud.tencent.com/document/product/1137/40260
 func (c *Client) SetTranscodeCallback(request *SetTranscodeCallbackRequest) (response *SetTranscodeCallbackResponse, err error) {
     if request == nil {
         request = NewSetTranscodeCallbackRequest()
@@ -308,7 +308,7 @@ func NewSetTranscodeCallbackKeyResponse() (response *SetTranscodeCallbackKeyResp
     return
 }
 
-// 设置文档转码回调鉴权密钥
+// 设置文档转码回调鉴权密钥，回调鉴权方式请参考文档：https://cloud.tencent.com/document/product/1137/40257
 func (c *Client) SetTranscodeCallbackKey(request *SetTranscodeCallbackKeyRequest) (response *SetTranscodeCallbackKeyResponse, err error) {
     if request == nil {
         request = NewSetTranscodeCallbackKeyRequest()

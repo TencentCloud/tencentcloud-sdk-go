@@ -43,6 +43,18 @@ type EvaluationRequest struct {
 
 	// 异步模式标识，0：同步模式，1：异步模式。默认为同步模式
 	IsAsync *int64 `json:"IsAsync,omitempty" name:"IsAsync"`
+
+	// 是否展开耦合算式中的竖式计算
+	EnableDispRelatedVertical *bool `json:"EnableDispRelatedVertical,omitempty" name:"EnableDispRelatedVertical"`
+
+	// 是否展示竖式算式的中间结果和格式控制字符
+	EnableDispMidresult *bool `json:"EnableDispMidresult,omitempty" name:"EnableDispMidresult"`
+
+	// 是否开启pdf识别，默认开启
+	EnablePdfRecognize *bool `json:"EnablePdfRecognize,omitempty" name:"EnablePdfRecognize"`
+
+	// pdf页码，从0开始，默认为0
+	PdfPageIndex *int64 `json:"PdfPageIndex,omitempty" name:"PdfPageIndex"`
 }
 
 func (r *EvaluationRequest) ToJsonString() string {
