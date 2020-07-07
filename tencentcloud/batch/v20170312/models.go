@@ -1720,6 +1720,15 @@ type InstanceTypeQuotaItem struct {
 
 	// 处理器型号。
 	CpuType *string `json:"CpuType,omitempty" name:"CpuType"`
+
+	// 实例的GPU数量。
+	Gpu *int64 `json:"Gpu,omitempty" name:"Gpu"`
+
+	// 实例的FPGA数量。
+	Fpga *int64 `json:"Fpga,omitempty" name:"Fpga"`
+
+	// 实例备注信息。
+	Remark *string `json:"Remark,omitempty" name:"Remark"`
 }
 
 type InternetAccessible struct {

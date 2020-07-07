@@ -1,48 +1,81 @@
 # 本版本更新包含以下内容：
 
-## 内容分发网络(cdn) 版本：2018-06-06
+## 批量计算(batch) 版本：2017-03-12
 
-### 第 27 次发布
+### 第 31 次发布
 
-发布时间：2020-07-06 08:06:38
+发布时间：2020-07-07 08:04:05
 
 本次发布包含了以下内容：
 
 改善已有的文档。
-
-新增数据结构：
-
-* [AccessControl](https://cloud.tencent.com/document/api/228/30987#AccessControl)
-* [AccessControlRule](https://cloud.tencent.com/document/api/228/30987#AccessControlRule)
-* [CacheTagKey](https://cloud.tencent.com/document/api/228/30987#CacheTagKey)
-* [CookieKey](https://cloud.tencent.com/document/api/228/30987#CookieKey)
-* [HeaderKey](https://cloud.tencent.com/document/api/228/30987#HeaderKey)
-* [QueryStringKey](https://cloud.tencent.com/document/api/228/30987#QueryStringKey)
-* [Revalidate](https://cloud.tencent.com/document/api/228/30987#Revalidate)
-* [SchemeKey](https://cloud.tencent.com/document/api/228/30987#SchemeKey)
 
 修改数据结构：
 
-* [CacheKey](https://cloud.tencent.com/document/api/228/30987#CacheKey)
+* [InstanceTypeQuotaItem](https://cloud.tencent.com/document/api/599/15912#InstanceTypeQuotaItem)
 
-	* 新增成员：QueryString, Cookie, Header, CacheTag, Scheme
-
-* [DetailDomain](https://cloud.tencent.com/document/api/228/30987#DetailDomain)
-
-	* 新增成员：AccessControl
-
-* [SimpleCache](https://cloud.tencent.com/document/api/228/30987#SimpleCache)
-
-	* 新增成员：Revalidate
+	* 新增成员：Gpu, Fpga, Remark
 
 
 
 
-## 企业收付平台(cpdp) 版本：2019-08-20
+## 云数据库 MySQL(cdb) 版本：2017-03-20
 
-### 第 23 次发布
+### 第 43 次发布
 
-发布时间：2020-07-06 08:22:03
+发布时间：2020-07-07 08:06:09
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeRoMinScale](https://cloud.tencent.com/document/api/236/46009)
+
+
+
+## 云服务器(cvm) 版本：2017-03-12
+
+### 第 45 次发布
+
+发布时间：2020-07-07 08:07:56
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [InstanceTypeQuotaItem](https://cloud.tencent.com/document/api/213/15753#InstanceTypeQuotaItem)
+
+	* 新增成员：Gpu, Fpga, Remark
+
+
+
+
+## 物联网开发平台(iotexplorer) 版本：2019-04-23
+
+### 第 10 次发布
+
+发布时间：2020-07-07 08:12:01
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DeleteLoRaGateway](https://cloud.tencent.com/document/api/1081/46011)
+* [ModifyLoRaGateway](https://cloud.tencent.com/document/api/1081/46010)
+
+
+
+## 游戏数据库 TcaplusDB(tcaplusdb) 版本：2019-08-23
+
+### 第 8 次发布
+
+发布时间：2020-07-07 08:16:55
 
 本次发布包含了以下内容：
 
@@ -50,47 +83,24 @@
 
 修改接口：
 
-* [ApplyWithdrawal](https://cloud.tencent.com/document/api/1122/40682)
+* [CreateCluster](https://cloud.tencent.com/document/api/596/41491)
 
-	* 新增入参：WithdrawOrderId
+	* 新增入参：Ipv6Enable
 
+* [DescribeClusters](https://cloud.tencent.com/document/api/596/41489)
 
-
-
-## 数学作业批改(hcm) 版本：2018-11-06
-
-### 第 6 次发布
-
-发布时间：2020-07-06 08:10:58
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [Evaluation](https://cloud.tencent.com/document/api/1004/30616)
-
-	* 新增入参：EnableDispRelatedVertical, EnableDispMidresult, EnablePdfRecognize, PdfPageIndex
+	* 新增入参：Ipv6Enable
 
 
+修改数据结构：
 
+* [ClusterInfo](https://cloud.tencent.com/document/api/596/39686#ClusterInfo)
 
-## 云点播(vod) 版本：2018-07-17
+	* 新增成员：ApiAccessIpv6
 
-### 第 51 次发布
+* [RegionInfo](https://cloud.tencent.com/document/api/596/39686#RegionInfo)
 
-发布时间：2020-07-06 08:19:28
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [PullUpload](https://cloud.tencent.com/document/api/266/35575)
-
-	* 新增入参：SourceContext
+	* 新增成员：Ipv6Enable
 
 
 
@@ -1426,6 +1436,21 @@
 
 
 ## 批量计算(batch) 版本：2017-03-12
+
+### 第 31 次发布
+
+发布时间：2020-07-07 08:04:05
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [InstanceTypeQuotaItem](https://cloud.tencent.com/document/api/599/15912#InstanceTypeQuotaItem)
+
+	* 新增成员：Gpu, Fpga, Remark
+
 
 ### 第 30 次发布
 
@@ -4644,6 +4669,18 @@
 
 ## 云数据库 MySQL(cdb) 版本：2017-03-20
 
+### 第 43 次发布
+
+发布时间：2020-07-07 08:06:09
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeRoMinScale](https://cloud.tencent.com/document/api/236/46009)](https://cloud.tencent.com/document/api/#/#)
+
 ### 第 42 次发布
 
 发布时间：2020-06-12 08:07:33
@@ -5582,14 +5619,14 @@
 
 新增数据结构：
 
-* [[AccessControl](https://cloud.tencent.com/document/api/228/30987#AccessControl)](https://cloud.tencent.com/document/api/228/30987#[AccessControl](https://cloud.tencent.com/document/api/228/30987#AccessControl))
-* [[AccessControlRule](https://cloud.tencent.com/document/api/228/30987#AccessControlRule)](https://cloud.tencent.com/document/api/228/30987#[AccessControlRule](https://cloud.tencent.com/document/api/228/30987#AccessControlRule))
-* [[CacheTagKey](https://cloud.tencent.com/document/api/228/30987#CacheTagKey)](https://cloud.tencent.com/document/api/228/30987#[CacheTagKey](https://cloud.tencent.com/document/api/228/30987#CacheTagKey))
-* [[CookieKey](https://cloud.tencent.com/document/api/228/30987#CookieKey)](https://cloud.tencent.com/document/api/228/30987#[CookieKey](https://cloud.tencent.com/document/api/228/30987#CookieKey))
-* [[HeaderKey](https://cloud.tencent.com/document/api/228/30987#HeaderKey)](https://cloud.tencent.com/document/api/228/30987#[HeaderKey](https://cloud.tencent.com/document/api/228/30987#HeaderKey))
-* [[QueryStringKey](https://cloud.tencent.com/document/api/228/30987#QueryStringKey)](https://cloud.tencent.com/document/api/228/30987#[QueryStringKey](https://cloud.tencent.com/document/api/228/30987#QueryStringKey))
-* [[Revalidate](https://cloud.tencent.com/document/api/228/30987#Revalidate)](https://cloud.tencent.com/document/api/228/30987#[Revalidate](https://cloud.tencent.com/document/api/228/30987#Revalidate))
-* [[SchemeKey](https://cloud.tencent.com/document/api/228/30987#SchemeKey)](https://cloud.tencent.com/document/api/228/30987#[SchemeKey](https://cloud.tencent.com/document/api/228/30987#SchemeKey))
+* [AccessControl](https://cloud.tencent.com/document/api/228/30987#AccessControl)
+* [AccessControlRule](https://cloud.tencent.com/document/api/228/30987#AccessControlRule)
+* [CacheTagKey](https://cloud.tencent.com/document/api/228/30987#CacheTagKey)
+* [CookieKey](https://cloud.tencent.com/document/api/228/30987#CookieKey)
+* [HeaderKey](https://cloud.tencent.com/document/api/228/30987#HeaderKey)
+* [QueryStringKey](https://cloud.tencent.com/document/api/228/30987#QueryStringKey)
+* [Revalidate](https://cloud.tencent.com/document/api/228/30987#Revalidate)
+* [SchemeKey](https://cloud.tencent.com/document/api/228/30987#SchemeKey)
 
 修改数据结构：
 
@@ -8963,6 +9000,21 @@
 
 
 ## 云服务器(cvm) 版本：2017-03-12
+
+### 第 45 次发布
+
+发布时间：2020-07-07 08:07:56
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [InstanceTypeQuotaItem](https://cloud.tencent.com/document/api/213/15753#InstanceTypeQuotaItem)
+
+	* 新增成员：Gpu, Fpga, Remark
+
 
 ### 第 44 次发布
 
@@ -15252,6 +15304,19 @@
 
 
 ## 物联网开发平台(iotexplorer) 版本：2019-04-23
+
+### 第 10 次发布
+
+发布时间：2020-07-07 08:12:01
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DeleteLoRaGateway](https://cloud.tencent.com/document/api/1081/46011)](https://cloud.tencent.com/document/api/#/#)
+* [[ModifyLoRaGateway](https://cloud.tencent.com/document/api/1081/46010)](https://cloud.tencent.com/document/api/#/#)
 
 ### 第 9 次发布
 
@@ -22707,6 +22772,36 @@
 
 
 ## 游戏数据库 TcaplusDB(tcaplusdb) 版本：2019-08-23
+
+### 第 8 次发布
+
+发布时间：2020-07-07 08:16:55
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateCluster](https://cloud.tencent.com/document/api/596/41491)
+
+	* 新增入参：Ipv6Enable
+
+* [DescribeClusters](https://cloud.tencent.com/document/api/596/41489)
+
+	* 新增入参：Ipv6Enable
+
+
+修改数据结构：
+
+* [ClusterInfo](https://cloud.tencent.com/document/api/596/39686#ClusterInfo)
+
+	* 新增成员：ApiAccessIpv6
+
+* [RegionInfo](https://cloud.tencent.com/document/api/596/39686#RegionInfo)
+
+	* 新增成员：Ipv6Enable
+
 
 ### 第 7 次发布
 

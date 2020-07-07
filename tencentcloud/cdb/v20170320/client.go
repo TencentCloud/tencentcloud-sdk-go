@@ -1567,6 +1567,31 @@ func (c *Client) DescribeRoGroups(request *DescribeRoGroupsRequest) (response *D
     return
 }
 
+func NewDescribeRoMinScaleRequest() (request *DescribeRoMinScaleRequest) {
+    request = &DescribeRoMinScaleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cdb", APIVersion, "DescribeRoMinScale")
+    return
+}
+
+func NewDescribeRoMinScaleResponse() (response *DescribeRoMinScaleResponse) {
+    response = &DescribeRoMinScaleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口(DescribeRoMinScale)用于获取只读实例购买、升级时的最小规格。
+func (c *Client) DescribeRoMinScale(request *DescribeRoMinScaleRequest) (response *DescribeRoMinScaleResponse, err error) {
+    if request == nil {
+        request = NewDescribeRoMinScaleRequest()
+    }
+    response = NewDescribeRoMinScaleResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeRollbackRangeTimeRequest() (request *DescribeRollbackRangeTimeRequest) {
     request = &DescribeRollbackRangeTimeRequest{
         BaseRequest: &tchttp.BaseRequest{},

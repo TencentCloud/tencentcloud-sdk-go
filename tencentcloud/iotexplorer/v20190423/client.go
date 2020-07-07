@@ -243,6 +243,31 @@ func (c *Client) DeleteDevice(request *DeleteDeviceRequest) (response *DeleteDev
     return
 }
 
+func NewDeleteLoRaGatewayRequest() (request *DeleteLoRaGatewayRequest) {
+    request = &DeleteLoRaGatewayRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "DeleteLoRaGateway")
+    return
+}
+
+func NewDeleteLoRaGatewayResponse() (response *DeleteLoRaGatewayResponse) {
+    response = &DeleteLoRaGatewayResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 删除  LoRa 网关的接口
+func (c *Client) DeleteLoRaGateway(request *DeleteLoRaGatewayRequest) (response *DeleteLoRaGatewayResponse, err error) {
+    if request == nil {
+        request = NewDeleteLoRaGatewayRequest()
+    }
+    response = NewDeleteLoRaGatewayResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteProjectRequest() (request *DeleteProjectRequest) {
     request = &DeleteProjectRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -564,6 +589,31 @@ func (c *Client) ListEventHistory(request *ListEventHistoryRequest) (response *L
         request = NewListEventHistoryRequest()
     }
     response = NewListEventHistoryResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyLoRaGatewayRequest() (request *ModifyLoRaGatewayRequest) {
+    request = &ModifyLoRaGatewayRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "ModifyLoRaGateway")
+    return
+}
+
+func NewModifyLoRaGatewayResponse() (response *ModifyLoRaGatewayResponse) {
+    response = &ModifyLoRaGatewayResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 修改 LoRa 网关信息
+func (c *Client) ModifyLoRaGateway(request *ModifyLoRaGatewayRequest) (response *ModifyLoRaGatewayResponse, err error) {
+    if request == nil {
+        request = NewModifyLoRaGatewayRequest()
+    }
+    response = NewModifyLoRaGatewayResponse()
     err = c.Send(request, response)
     return
 }

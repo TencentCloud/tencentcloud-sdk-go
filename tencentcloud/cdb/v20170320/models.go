@@ -3307,6 +3307,49 @@ func (r *DescribeRoGroupsResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeRoMinScaleRequest struct {
+	*tchttp.BaseRequest
+
+	// 只读实例ID，格式如：cdbro-c1nl9rpv，与云数据库控制台页面中显示的实例ID相同，该参数与MasterInstanceId参数不能同时为空。
+	RoInstanceId *string `json:"RoInstanceId,omitempty" name:"RoInstanceId"`
+
+	// 主实例ID，格式如：cdb-c1nl9rpv，与云数据库控制台页面中显示的实例ID相同，该参数与RoInstanceId参数不能同时为空。注意，当传入参数包含RoInstanceId时，返回值为只读实例升级时的最小规格；当传入参数只包含MasterInstanceId时，返回值为只读实例购买时的最小规格。
+	MasterInstanceId *string `json:"MasterInstanceId,omitempty" name:"MasterInstanceId"`
+}
+
+func (r *DescribeRoMinScaleRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeRoMinScaleRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeRoMinScaleResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 内存规格大小, 单位为：MB。
+		Memory *int64 `json:"Memory,omitempty" name:"Memory"`
+
+		// 磁盘规格大小, 单位为：GB。
+		Volume *int64 `json:"Volume,omitempty" name:"Volume"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeRoMinScaleResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeRoMinScaleResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeRollbackRangeTimeRequest struct {
 	*tchttp.BaseRequest
 

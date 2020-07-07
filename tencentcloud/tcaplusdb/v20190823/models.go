@@ -107,6 +107,10 @@ type ClusterInfo struct {
 	// 如果PasswordStatus是unmodifiable说明有旧密码还未过期，此字段将显示旧密码过期的时间，否则为空
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	OldPasswordExpireTime *string `json:"OldPasswordExpireTime,omitempty" name:"OldPasswordExpireTime"`
+
+	// TcaplusDB SDK连接参数，接入ipv6地址
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ApiAccessIpv6 *string `json:"ApiAccessIpv6,omitempty" name:"ApiAccessIpv6"`
 }
 
 type CompareIdlFilesRequest struct {
@@ -224,6 +228,9 @@ type CreateClusterRequest struct {
 
 	// 集群标签列表
 	ResourceTags []*TagInfoUnit `json:"ResourceTags,omitempty" name:"ResourceTags" list`
+
+	// 集群是否开启IPv6功能
+	Ipv6Enable *int64 `json:"Ipv6Enable,omitempty" name:"Ipv6Enable"`
 }
 
 func (r *CreateClusterRequest) ToJsonString() string {
@@ -613,6 +620,9 @@ type DescribeClustersRequest struct {
 
 	// 查询列表返回记录数，默认值20
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 是否启用Ipv6
+	Ipv6Enable *int64 `json:"Ipv6Enable,omitempty" name:"Ipv6Enable"`
 }
 
 func (r *DescribeClustersRequest) ToJsonString() string {
@@ -1676,6 +1686,9 @@ type RegionInfo struct {
 
 	// 地域ID
 	RegionId *uint64 `json:"RegionId,omitempty" name:"RegionId"`
+
+	// 是否支持ipv6，0:不支持，1:支持
+	Ipv6Enable *uint64 `json:"Ipv6Enable,omitempty" name:"Ipv6Enable"`
 }
 
 type RollbackTablesRequest struct {

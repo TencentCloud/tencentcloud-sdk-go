@@ -424,6 +424,40 @@ func (r *DeleteDeviceResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DeleteLoRaGatewayRequest struct {
+	*tchttp.BaseRequest
+
+	// LoRa 网关 Id
+	GatewayId *string `json:"GatewayId,omitempty" name:"GatewayId"`
+}
+
+func (r *DeleteLoRaGatewayRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteLoRaGatewayRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteLoRaGatewayResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DeleteLoRaGatewayResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteLoRaGatewayResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DeleteProjectRequest struct {
 	*tchttp.BaseRequest
 
@@ -1172,6 +1206,61 @@ type LoRaGatewayLocation struct {
 
 	// 精度
 	Longitude *float64 `json:"Longitude,omitempty" name:"Longitude"`
+}
+
+type ModifyLoRaGatewayRequest struct {
+	*tchttp.BaseRequest
+
+	// 描述信息
+	Description *string `json:"Description,omitempty" name:"Description"`
+
+	// LoRa网关Id
+	GatewayId *string `json:"GatewayId,omitempty" name:"GatewayId"`
+
+	// LoRa网关位置坐标
+	Location *LoRaGatewayLocation `json:"Location,omitempty" name:"Location"`
+
+	// LoRa网关名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 是否公开可见
+	IsPublic *bool `json:"IsPublic,omitempty" name:"IsPublic"`
+
+	// 位置信息
+	Position *string `json:"Position,omitempty" name:"Position"`
+
+	// 位置详情
+	PositionDetails *string `json:"PositionDetails,omitempty" name:"PositionDetails"`
+}
+
+func (r *ModifyLoRaGatewayRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyLoRaGatewayRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyLoRaGatewayResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 返回网关数据
+		Gateway *LoRaGatewayItem `json:"Gateway,omitempty" name:"Gateway"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifyLoRaGatewayResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyLoRaGatewayResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
 }
 
 type ModifyModelDefinitionRequest struct {
