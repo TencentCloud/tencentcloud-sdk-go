@@ -848,10 +848,10 @@ func (r *StopMCUMixTranscodeResponse) FromJsonString(s string) error {
 
 type TimeValue struct {
 
-	// 时间
+	// 时间，unix时间戳（1590065877s)
 	Time *uint64 `json:"Time,omitempty" name:"Time"`
 
-	// 当前时间取值，unix时间戳
+	// 当前时间返回参数取值，如（bigvCapFps在1590065877取值为0，则Value：0 ）
 	Value *float64 `json:"Value,omitempty" name:"Value"`
 }
 

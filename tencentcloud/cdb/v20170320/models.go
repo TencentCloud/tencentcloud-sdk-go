@@ -2499,7 +2499,7 @@ type DescribeDBInstancesRequest struct {
 	// 实例名称。
 	InstanceNames []*string `json:"InstanceNames,omitempty" name:"InstanceNames" list`
 
-	// 实例任务状态，可能取值：<br>0 - 没有任务<br>1 - 升级中<br>2 - 数据导入中<br>3 - 开放Slave中<br>4 - 外网访问开通中<br>5 - 批量操作执行中<br>6 - 回档中<br>7 - 外网访问关闭中<br>8 - 密码修改中<br>9 - 实例名修改中<br>10 - 重启中<br>12 - 自建迁移中<br>13 - 删除库表中<br>14 - 灾备实例创建同步中<br>15 - 升级待切换<br>16 - 升级切换中<br>17 - 升级切换完成
+	// 实例任务状态，可能取值：<br>0 - 没有任务<br>1 - 升级中<br>2 - 数据导入中<br>3 - 开放Slave中<br>4 - 外网访问开通中<br>5 - 批量操作执行中<br>6 - 回档中<br>7 - 外网访问关闭中<br>8 - 密码修改中<br>9 - 实例名修改中<br>10 - 重启中<br>12 - 自建迁移中<br>13 - 删除库表中<br>14 - 灾备实例创建同步中<br>15 - 升级待切换<br>16 - 升级切换中<br>17 - 升级切换完成<br>19 - 参数设置待执行
 	TaskStatus []*uint64 `json:"TaskStatus,omitempty" name:"TaskStatus" list`
 
 	// 实例数据库引擎版本，可能取值：5.1、5.5、5.6 和 5.7。
@@ -4923,6 +4923,12 @@ type ModifyInstanceParamRequest struct {
 
 	// 要修改的参数列表。每一个元素是 Name 和 CurrentValue 的组合。Name 是参数名，CurrentValue 是要修改成的值。
 	ParamList []*Parameter `json:"ParamList,omitempty" name:"ParamList" list`
+
+	// 模板id，ParamList和TemplateId必须至少传其中之一
+	TemplateId *int64 `json:"TemplateId,omitempty" name:"TemplateId"`
+
+	// 执行参数调整任务的方式，默认为 0。支持值包括：0 - 立刻执行，1 - 时间窗执行；当该值为 1 时，每次只能传一个实例（InstanceIds数量为1）
+	WaitSwitch *int64 `json:"WaitSwitch,omitempty" name:"WaitSwitch"`
 }
 
 func (r *ModifyInstanceParamRequest) ToJsonString() string {

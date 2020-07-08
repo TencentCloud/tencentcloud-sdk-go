@@ -1067,7 +1067,7 @@ type DescribeInstancesRequest struct {
 	// 偏移量，不填默认为0
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
 
-	// 返回数量，不填则默认10，最大值20
+	// 返回数量，不填则默认10，最大值100
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 
 	// 匹配标签key值。

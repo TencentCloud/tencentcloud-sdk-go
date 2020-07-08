@@ -93,6 +93,31 @@ func (c *Client) DescribeDBDiagHistory(request *DescribeDBDiagHistoryRequest) (r
     return
 }
 
+func NewDescribeDBSpaceStatusRequest() (request *DescribeDBSpaceStatusRequest) {
+    request = &DescribeDBSpaceStatusRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("dbbrain", APIVersion, "DescribeDBSpaceStatus")
+    return
+}
+
+func NewDescribeDBSpaceStatusResponse() (response *DescribeDBSpaceStatusResponse) {
+    response = &DescribeDBSpaceStatusResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 获取指定时间段内的实例空间使用概览，包括磁盘增长量(MB)、磁盘剩余(MB)、磁盘总量(MB)及预计可用天数。
+func (c *Client) DescribeDBSpaceStatus(request *DescribeDBSpaceStatusRequest) (response *DescribeDBSpaceStatusResponse, err error) {
+    if request == nil {
+        request = NewDescribeDBSpaceStatusRequest()
+    }
+    response = NewDescribeDBSpaceStatusResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeSlowLogTimeSeriesStatsRequest() (request *DescribeSlowLogTimeSeriesStatsRequest) {
     request = &DescribeSlowLogTimeSeriesStatsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -139,6 +164,31 @@ func (c *Client) DescribeSlowLogTopSqls(request *DescribeSlowLogTopSqlsRequest) 
         request = NewDescribeSlowLogTopSqlsRequest()
     }
     response = NewDescribeSlowLogTopSqlsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeTopSpaceTablesRequest() (request *DescribeTopSpaceTablesRequest) {
+    request = &DescribeTopSpaceTablesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("dbbrain", APIVersion, "DescribeTopSpaceTables")
+    return
+}
+
+func NewDescribeTopSpaceTablesResponse() (response *DescribeTopSpaceTablesResponse) {
+    response = &DescribeTopSpaceTablesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 获取实例Top表的实时空间统计信息，默认返回按大小排序。
+func (c *Client) DescribeTopSpaceTables(request *DescribeTopSpaceTablesRequest) (response *DescribeTopSpaceTablesResponse, err error) {
+    if request == nil {
+        request = NewDescribeTopSpaceTablesRequest()
+    }
+    response = NewDescribeTopSpaceTablesResponse()
     err = c.Send(request, response)
     return
 }

@@ -225,6 +225,31 @@ func (c *Client) UpdateInstance(request *UpdateInstanceRequest) (response *Updat
     return
 }
 
+func NewUpdatePluginsRequest() (request *UpdatePluginsRequest) {
+    request = &UpdatePluginsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("es", APIVersion, "UpdatePlugins")
+    return
+}
+
+func NewUpdatePluginsResponse() (response *UpdatePluginsResponse) {
+    response = &UpdatePluginsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 变更插件列表
+func (c *Client) UpdatePlugins(request *UpdatePluginsRequest) (response *UpdatePluginsResponse, err error) {
+    if request == nil {
+        request = NewUpdatePluginsRequest()
+    }
+    response = NewUpdatePluginsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewUpgradeInstanceRequest() (request *UpgradeInstanceRequest) {
     request = &UpgradeInstanceRequest{
         BaseRequest: &tchttp.BaseRequest{},

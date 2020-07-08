@@ -397,6 +397,15 @@ type EsDictionaryInfo struct {
 
 	// 停用词词典列表
 	Stopwords []*DictInfo `json:"Stopwords,omitempty" name:"Stopwords" list`
+
+	// QQ分词词典列表
+	QQDict []*DictInfo `json:"QQDict,omitempty" name:"QQDict" list`
+
+	// 同义词词典列表
+	Synonym []*DictInfo `json:"Synonym,omitempty" name:"Synonym" list`
+
+	// 更新词典类型
+	UpdateType *string `json:"UpdateType,omitempty" name:"UpdateType"`
 }
 
 type EsPublicAcl struct {
@@ -669,6 +678,9 @@ type NodeInfo struct {
 
 	// 节点磁盘块数
 	DiskCount *uint64 `json:"DiskCount,omitempty" name:"DiskCount"`
+
+	// 节点磁盘是否加密 0: 不加密，1: 加密；默认不加密
+	DiskEncrypt *uint64 `json:"DiskEncrypt,omitempty" name:"DiskEncrypt"`
 }
 
 type Operation struct {
@@ -860,6 +872,9 @@ type UpdateInstanceRequest struct {
 
 	// Kibana内网端口
 	KibanaPrivatePort *uint64 `json:"KibanaPrivatePort,omitempty" name:"KibanaPrivatePort"`
+
+	// 0: 蓝绿变更方式扩容，集群不重启 （默认） 1: 磁盘解挂载扩容，集群滚动重启
+	ScaleType *int64 `json:"ScaleType,omitempty" name:"ScaleType"`
 }
 
 func (r *UpdateInstanceRequest) ToJsonString() string {
@@ -886,6 +901,49 @@ func (r *UpdateInstanceResponse) ToJsonString() string {
 }
 
 func (r *UpdateInstanceResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type UpdatePluginsRequest struct {
+	*tchttp.BaseRequest
+
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 需要安装的插件名列表
+	InstallPluginList []*string `json:"InstallPluginList,omitempty" name:"InstallPluginList" list`
+
+	// 需要卸载的插件名列表
+	RemovePluginList []*string `json:"RemovePluginList,omitempty" name:"RemovePluginList" list`
+
+	// 是否强制重启
+	ForceRestart *bool `json:"ForceRestart,omitempty" name:"ForceRestart"`
+}
+
+func (r *UpdatePluginsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *UpdatePluginsRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type UpdatePluginsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *UpdatePluginsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *UpdatePluginsResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 

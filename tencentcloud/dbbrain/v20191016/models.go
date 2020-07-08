@@ -134,6 +134,55 @@ func (r *DescribeDBDiagHistoryResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeDBSpaceStatusRequest struct {
+	*tchttp.BaseRequest
+
+	// 实例 ID 。
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 时间段天数，截止日期为当日，默认为7天。
+	RangeDays *int64 `json:"RangeDays,omitempty" name:"RangeDays"`
+}
+
+func (r *DescribeDBSpaceStatusRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeDBSpaceStatusRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeDBSpaceStatusResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 磁盘增长量(MB)。
+		Growth *int64 `json:"Growth,omitempty" name:"Growth"`
+
+		// 磁盘剩余(MB)。
+		Remain *int64 `json:"Remain,omitempty" name:"Remain"`
+
+		// 磁盘总量(MB)。
+		Total *int64 `json:"Total,omitempty" name:"Total"`
+
+		// 预计可用天数。
+		AvailableDays *int64 `json:"AvailableDays,omitempty" name:"AvailableDays"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeDBSpaceStatusResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeDBSpaceStatusResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeSlowLogTimeSeriesStatsRequest struct {
 	*tchttp.BaseRequest
 
@@ -238,6 +287,49 @@ func (r *DescribeSlowLogTopSqlsResponse) ToJsonString() string {
 }
 
 func (r *DescribeSlowLogTopSqlsResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeTopSpaceTablesRequest struct {
+	*tchttp.BaseRequest
+
+	// 实例 ID 。
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 返回的Top表数量，最大值为20，默认为最大值。
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 筛选Top表所用的排序字段，可选字段包含DataLength、IndexLength、TotalLength、DataFree、FragRatio、TableRows、PhysicalFileSize，默认为 PhysicalFileSize。
+	SortBy *string `json:"SortBy,omitempty" name:"SortBy"`
+}
+
+func (r *DescribeTopSpaceTablesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeTopSpaceTablesRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeTopSpaceTablesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 返回的Top表空间统计信息列表。
+		TopSpaceTables []*TableSpaceData `json:"TopSpaceTables,omitempty" name:"TopSpaceTables" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeTopSpaceTablesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeTopSpaceTablesResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -360,6 +452,39 @@ type SlowLogTopSqlItem struct {
 
 	// 总返回行数占比
 	RowsSentRatio *float64 `json:"RowsSentRatio,omitempty" name:"RowsSentRatio"`
+}
+
+type TableSpaceData struct {
+
+	// 表名。
+	TableName *string `json:"TableName,omitempty" name:"TableName"`
+
+	// 库名。
+	TableSchema *string `json:"TableSchema,omitempty" name:"TableSchema"`
+
+	// 库表的存储引擎。
+	Engine *string `json:"Engine,omitempty" name:"Engine"`
+
+	// 数据空间（MB）。
+	DataLength *float64 `json:"DataLength,omitempty" name:"DataLength"`
+
+	// 索引空间（MB）。
+	IndexLength *float64 `json:"IndexLength,omitempty" name:"IndexLength"`
+
+	// 碎片空间（MB）。
+	DataFree *float64 `json:"DataFree,omitempty" name:"DataFree"`
+
+	// 总使用空间（MB）。
+	TotalLength *float64 `json:"TotalLength,omitempty" name:"TotalLength"`
+
+	// 碎片率（%）。
+	FragRatio *float64 `json:"FragRatio,omitempty" name:"FragRatio"`
+
+	// 行数。
+	TableRows *int64 `json:"TableRows,omitempty" name:"TableRows"`
+
+	// 表对应的独立物理文件大小（MB）。
+	PhysicalFileSize *float64 `json:"PhysicalFileSize,omitempty" name:"PhysicalFileSize"`
 }
 
 type TimeSlice struct {

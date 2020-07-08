@@ -1,81 +1,10 @@
 # 本版本更新包含以下内容：
 
-## 批量计算(batch) 版本：2017-03-12
-
-### 第 31 次发布
-
-发布时间：2020-07-07 08:04:05
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [InstanceTypeQuotaItem](https://cloud.tencent.com/document/api/599/15912#InstanceTypeQuotaItem)
-
-	* 新增成员：Gpu, Fpga, Remark
-
-
-
-
 ## 云数据库 MySQL(cdb) 版本：2017-03-20
 
-### 第 43 次发布
+### 第 44 次发布
 
-发布时间：2020-07-07 08:06:09
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [DescribeRoMinScale](https://cloud.tencent.com/document/api/236/46009)
-
-
-
-## 云服务器(cvm) 版本：2017-03-12
-
-### 第 45 次发布
-
-发布时间：2020-07-07 08:07:56
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [InstanceTypeQuotaItem](https://cloud.tencent.com/document/api/213/15753#InstanceTypeQuotaItem)
-
-	* 新增成员：Gpu, Fpga, Remark
-
-
-
-
-## 物联网开发平台(iotexplorer) 版本：2019-04-23
-
-### 第 10 次发布
-
-发布时间：2020-07-07 08:12:01
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [DeleteLoRaGateway](https://cloud.tencent.com/document/api/1081/46011)
-* [ModifyLoRaGateway](https://cloud.tencent.com/document/api/1081/46010)
-
-
-
-## 游戏数据库 TcaplusDB(tcaplusdb) 版本：2019-08-23
-
-### 第 8 次发布
-
-发布时间：2020-07-07 08:16:55
+发布时间：2020-07-08 08:06:07
 
 本次发布包含了以下内容：
 
@@ -83,24 +12,66 @@
 
 修改接口：
 
-* [CreateCluster](https://cloud.tencent.com/document/api/596/41491)
+* [ModifyInstanceParam](https://cloud.tencent.com/document/api/236/15860)
 
-	* 新增入参：Ipv6Enable
+	* 新增入参：TemplateId, WaitSwitch
 
-* [DescribeClusters](https://cloud.tencent.com/document/api/596/41489)
+	* <font color="#dd0000">**修改入参**：</font>ParamList
 
-	* 新增入参：Ipv6Enable
+
+
+
+## 数据库智能管家 DBbrain(dbbrain) 版本：2019-10-16
+
+### 第 2 次发布
+
+发布时间：2020-07-08 08:09:29
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeDBSpaceStatus](https://cloud.tencent.com/document/api/1130/46047)
+* [DescribeTopSpaceTables](https://cloud.tencent.com/document/api/1130/46046)
+
+新增数据结构：
+
+* [TableSpaceData](https://cloud.tencent.com/document/api/1130/39561#TableSpaceData)
+
+
+
+## Elasticsearch Service(es) 版本：2018-04-16
+
+### 第 10 次发布
+
+发布时间：2020-07-08 08:10:51
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [UpdatePlugins](https://cloud.tencent.com/document/api/845/46048)
+
+修改接口：
+
+* [UpdateInstance](https://cloud.tencent.com/document/api/845/30629)
+
+	* 新增入参：ScaleType
 
 
 修改数据结构：
 
-* [ClusterInfo](https://cloud.tencent.com/document/api/596/39686#ClusterInfo)
+* [EsDictionaryInfo](https://cloud.tencent.com/document/api/845/30634#EsDictionaryInfo)
 
-	* 新增成员：ApiAccessIpv6
+	* 新增成员：QQDict, Synonym, UpdateType
 
-* [RegionInfo](https://cloud.tencent.com/document/api/596/39686#RegionInfo)
+* [NodeInfo](https://cloud.tencent.com/document/api/845/30634#NodeInfo)
 
-	* 新增成员：Ipv6Enable
+	* 新增成员：DiskEncrypt
 
 
 
@@ -4669,6 +4640,23 @@
 
 ## 云数据库 MySQL(cdb) 版本：2017-03-20
 
+### 第 44 次发布
+
+发布时间：2020-07-08 08:06:07
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [ModifyInstanceParam](https://cloud.tencent.com/document/api/236/15860)
+
+	* 新增入参：TemplateId, WaitSwitch
+
+	* <font color="#dd0000">**修改入参**：</font>ParamList
+
+
 ### 第 43 次发布
 
 发布时间：2020-07-07 08:06:09
@@ -4679,7 +4667,7 @@
 
 新增接口：
 
-* [[DescribeRoMinScale](https://cloud.tencent.com/document/api/236/46009)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeRoMinScale](https://cloud.tencent.com/document/api/236/46009)
 
 ### 第 42 次发布
 
@@ -10524,6 +10512,23 @@
 
 ## 数据库智能管家 DBbrain(dbbrain) 版本：2019-10-16
 
+### 第 2 次发布
+
+发布时间：2020-07-08 08:09:29
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeDBSpaceStatus](https://cloud.tencent.com/document/api/1130/46047)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeTopSpaceTables](https://cloud.tencent.com/document/api/1130/46046)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[TableSpaceData](https://cloud.tencent.com/document/api/1130/39561#TableSpaceData)](https://cloud.tencent.com/document/api/1130/39561#[TableSpaceData](https://cloud.tencent.com/document/api/1130/39561#TableSpaceData))
+
 ### 第 1 次发布
 
 发布时间：2019-11-22 19:34:18
@@ -12376,6 +12381,36 @@
 
 
 ## Elasticsearch Service(es) 版本：2018-04-16
+
+### 第 10 次发布
+
+发布时间：2020-07-08 08:10:51
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[UpdatePlugins](https://cloud.tencent.com/document/api/845/46048)](https://cloud.tencent.com/document/api/#/#)
+
+修改接口：
+
+* [UpdateInstance](https://cloud.tencent.com/document/api/845/30629)
+
+	* 新增入参：ScaleType
+
+
+修改数据结构：
+
+* [EsDictionaryInfo](https://cloud.tencent.com/document/api/845/30634#EsDictionaryInfo)
+
+	* 新增成员：QQDict, Synonym, UpdateType
+
+* [NodeInfo](https://cloud.tencent.com/document/api/845/30634#NodeInfo)
+
+	* 新增成员：DiskEncrypt
+
 
 ### 第 9 次发布
 
@@ -15315,8 +15350,8 @@
 
 新增接口：
 
-* [[DeleteLoRaGateway](https://cloud.tencent.com/document/api/1081/46011)](https://cloud.tencent.com/document/api/#/#)
-* [[ModifyLoRaGateway](https://cloud.tencent.com/document/api/1081/46010)](https://cloud.tencent.com/document/api/#/#)
+* [DeleteLoRaGateway](https://cloud.tencent.com/document/api/1081/46011)
+* [ModifyLoRaGateway](https://cloud.tencent.com/document/api/1081/46010)
 
 ### 第 9 次发布
 
