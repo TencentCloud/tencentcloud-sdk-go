@@ -1,10 +1,10 @@
 # 本版本更新包含以下内容：
 
-## 云数据库 MySQL(cdb) 版本：2017-03-20
+## 内容安全(cms) 版本：2019-03-21
 
-### 第 44 次发布
+### 第 12 次发布
 
-发布时间：2020-07-08 08:06:07
+发布时间：2020-07-09 08:07:45
 
 本次发布包含了以下内容：
 
@@ -12,41 +12,46 @@
 
 修改接口：
 
-* [ModifyInstanceParam](https://cloud.tencent.com/document/api/236/15860)
+* [TextModeration](https://cloud.tencent.com/document/api/669/34502)
 
-	* 新增入参：TemplateId, WaitSwitch
+	* 新增入参：Device, User
 
-	* <font color="#dd0000">**修改入参**：</font>ParamList
-
-
-
-
-## 数据库智能管家 DBbrain(dbbrain) 版本：2019-10-16
-
-### 第 2 次发布
-
-发布时间：2020-07-08 08:09:29
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [DescribeDBSpaceStatus](https://cloud.tencent.com/document/api/1130/46047)
-* [DescribeTopSpaceTables](https://cloud.tencent.com/document/api/1130/46046)
 
 新增数据结构：
 
-* [TableSpaceData](https://cloud.tencent.com/document/api/1130/39561#TableSpaceData)
+* [Device](https://cloud.tencent.com/document/api/669/34506#Device)
+* [User](https://cloud.tencent.com/document/api/669/34506#User)
+
+修改数据结构：
+
+* [CustomResult](https://cloud.tencent.com/document/api/669/34506#CustomResult)
+
+	* 新增成员：Type
 
 
 
-## Elasticsearch Service(es) 版本：2018-04-16
+
+## 自然语言处理(nlp) 版本：2019-04-08
 
 ### 第 10 次发布
 
-发布时间：2020-07-08 08:10:51
+发布时间：2020-07-09 08:14:16
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+<font color="#dd0000">**删除接口**：</font>
+
+* SentenceSimilarity
+
+
+
+## 分布式消息队列(tdmq) 版本：2020-02-17
+
+### 第 1 次发布
+
+发布时间：2020-07-08 10:59:58
 
 本次发布包含了以下内容：
 
@@ -54,25 +59,34 @@
 
 新增接口：
 
-* [UpdatePlugins](https://cloud.tencent.com/document/api/845/46048)
+* [CreateEnvironment](https://cloud.tencent.com/document/api/1179/46081)
+* [CreateSubscription](https://cloud.tencent.com/document/api/1179/46075)
+* [CreateTopic](https://cloud.tencent.com/document/api/1179/46088)
+* [DeleteEnvironments](https://cloud.tencent.com/document/api/1179/46080)
+* [DeleteSubscriptions](https://cloud.tencent.com/document/api/1179/46074)
+* [DeleteTopics](https://cloud.tencent.com/document/api/1179/46087)
+* [DescribeEnvironmentAttributes](https://cloud.tencent.com/document/api/1179/46079)
+* [DescribeEnvironments](https://cloud.tencent.com/document/api/1179/46078)
+* [DescribeProducers](https://cloud.tencent.com/document/api/1179/46073)
+* [DescribeSubscriptions](https://cloud.tencent.com/document/api/1179/46072)
+* [DescribeTopics](https://cloud.tencent.com/document/api/1179/46086)
+* [ModifyEnvironmentAttributes](https://cloud.tencent.com/document/api/1179/46077)
+* [ModifyTopic](https://cloud.tencent.com/document/api/1179/46085)
+* [ResetMsgSubOffsetByTimestamp](https://cloud.tencent.com/document/api/1179/46083)
 
-修改接口：
+新增数据结构：
 
-* [UpdateInstance](https://cloud.tencent.com/document/api/845/30629)
-
-	* 新增入参：ScaleType
-
-
-修改数据结构：
-
-* [EsDictionaryInfo](https://cloud.tencent.com/document/api/845/30634#EsDictionaryInfo)
-
-	* 新增成员：QQDict, Synonym, UpdateType
-
-* [NodeInfo](https://cloud.tencent.com/document/api/845/30634#NodeInfo)
-
-	* 新增成员：DiskEncrypt
-
+* [Connection](https://cloud.tencent.com/document/api/1179/46089#Connection)
+* [Consumer](https://cloud.tencent.com/document/api/1179/46089#Consumer)
+* [ConsumersSchedule](https://cloud.tencent.com/document/api/1179/46089#ConsumersSchedule)
+* [Environment](https://cloud.tencent.com/document/api/1179/46089#Environment)
+* [FilterSubscription](https://cloud.tencent.com/document/api/1179/46089#FilterSubscription)
+* [PartitionsTopic](https://cloud.tencent.com/document/api/1179/46089#PartitionsTopic)
+* [Producer](https://cloud.tencent.com/document/api/1179/46089#Producer)
+* [Subscription](https://cloud.tencent.com/document/api/1179/46089#Subscription)
+* [SubscriptionTopic](https://cloud.tencent.com/document/api/1179/46089#SubscriptionTopic)
+* [Topic](https://cloud.tencent.com/document/api/1179/46089#Topic)
+* [TopicRecord](https://cloud.tencent.com/document/api/1179/46089#TopicRecord)
 
 
 
@@ -7845,6 +7859,33 @@
 
 ## 内容安全(cms) 版本：2019-03-21
 
+### 第 12 次发布
+
+发布时间：2020-07-09 08:07:45
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [TextModeration](https://cloud.tencent.com/document/api/669/34502)
+
+	* 新增入参：Device, User
+
+
+新增数据结构：
+
+* [[Device](https://cloud.tencent.com/document/api/669/34506#Device)](https://cloud.tencent.com/document/api/669/34506#[Device](https://cloud.tencent.com/document/api/669/34506#Device))
+* [[User](https://cloud.tencent.com/document/api/669/34506#User)](https://cloud.tencent.com/document/api/669/34506#[User](https://cloud.tencent.com/document/api/669/34506#User))
+
+修改数据结构：
+
+* [CustomResult](https://cloud.tencent.com/document/api/669/34506#CustomResult)
+
+	* 新增成员：Type
+
+
 ### 第 11 次发布
 
 发布时间：2020-05-27 08:08:35
@@ -10522,12 +10563,12 @@
 
 新增接口：
 
-* [[DescribeDBSpaceStatus](https://cloud.tencent.com/document/api/1130/46047)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeTopSpaceTables](https://cloud.tencent.com/document/api/1130/46046)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeDBSpaceStatus](https://cloud.tencent.com/document/api/1130/46047)
+* [DescribeTopSpaceTables](https://cloud.tencent.com/document/api/1130/46046)
 
 新增数据结构：
 
-* [[TableSpaceData](https://cloud.tencent.com/document/api/1130/39561#TableSpaceData)](https://cloud.tencent.com/document/api/1130/39561#[TableSpaceData](https://cloud.tencent.com/document/api/1130/39561#TableSpaceData))
+* [TableSpaceData](https://cloud.tencent.com/document/api/1130/39561#TableSpaceData)
 
 ### 第 1 次发布
 
@@ -12392,7 +12433,7 @@
 
 新增接口：
 
-* [[UpdatePlugins](https://cloud.tencent.com/document/api/845/46048)](https://cloud.tencent.com/document/api/#/#)
+* [UpdatePlugins](https://cloud.tencent.com/document/api/845/46048)
 
 修改接口：
 
@@ -19156,6 +19197,18 @@
 
 ## 自然语言处理(nlp) 版本：2019-04-08
 
+### 第 10 次发布
+
+发布时间：2020-07-09 08:14:16
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+<font color="#dd0000">**删除接口**：</font>
+
+* SentenceSimilarity
+
 ### 第 9 次发布
 
 发布时间：2020-06-22 08:15:14
@@ -24045,6 +24098,50 @@
 * [TriggerInvokeResult](https://cloud.tencent.com/document/api/1141/41603#TriggerInvokeResult)
 * [TriggerLogResp](https://cloud.tencent.com/document/api/1141/41603#TriggerLogResp)
 * [TriggerResp](https://cloud.tencent.com/document/api/1141/41603#TriggerResp)
+
+
+
+
+## 分布式消息队列(tdmq) 版本：2020-02-17
+
+### 第 1 次发布
+
+发布时间：2020-07-08 10:59:58
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[CreateEnvironment](https://cloud.tencent.com/document/api/1179/46081)](https://cloud.tencent.com/document/api/#/#)
+* [[CreateSubscription](https://cloud.tencent.com/document/api/1179/46075)](https://cloud.tencent.com/document/api/#/#)
+* [[CreateTopic](https://cloud.tencent.com/document/api/1179/46088)](https://cloud.tencent.com/document/api/#/#)
+* [[DeleteEnvironments](https://cloud.tencent.com/document/api/1179/46080)](https://cloud.tencent.com/document/api/#/#)
+* [[DeleteSubscriptions](https://cloud.tencent.com/document/api/1179/46074)](https://cloud.tencent.com/document/api/#/#)
+* [[DeleteTopics](https://cloud.tencent.com/document/api/1179/46087)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeEnvironmentAttributes](https://cloud.tencent.com/document/api/1179/46079)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeEnvironments](https://cloud.tencent.com/document/api/1179/46078)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeProducers](https://cloud.tencent.com/document/api/1179/46073)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeSubscriptions](https://cloud.tencent.com/document/api/1179/46072)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeTopics](https://cloud.tencent.com/document/api/1179/46086)](https://cloud.tencent.com/document/api/#/#)
+* [[ModifyEnvironmentAttributes](https://cloud.tencent.com/document/api/1179/46077)](https://cloud.tencent.com/document/api/#/#)
+* [[ModifyTopic](https://cloud.tencent.com/document/api/1179/46085)](https://cloud.tencent.com/document/api/#/#)
+* [[ResetMsgSubOffsetByTimestamp](https://cloud.tencent.com/document/api/1179/46083)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[Connection](https://cloud.tencent.com/document/api/1179/46089#Connection)](https://cloud.tencent.com/document/api/1179/46089#[Connection](https://cloud.tencent.com/document/api/1179/46089#Connection))
+* [[Consumer](https://cloud.tencent.com/document/api/1179/46089#Consumer)](https://cloud.tencent.com/document/api/1179/46089#[Consumer](https://cloud.tencent.com/document/api/1179/46089#Consumer))
+* [[ConsumersSchedule](https://cloud.tencent.com/document/api/1179/46089#ConsumersSchedule)](https://cloud.tencent.com/document/api/1179/46089#[ConsumersSchedule](https://cloud.tencent.com/document/api/1179/46089#ConsumersSchedule))
+* [[Environment](https://cloud.tencent.com/document/api/1179/46089#Environment)](https://cloud.tencent.com/document/api/1179/46089#[Environment](https://cloud.tencent.com/document/api/1179/46089#Environment))
+* [[FilterSubscription](https://cloud.tencent.com/document/api/1179/46089#FilterSubscription)](https://cloud.tencent.com/document/api/1179/46089#[FilterSubscription](https://cloud.tencent.com/document/api/1179/46089#FilterSubscription))
+* [[PartitionsTopic](https://cloud.tencent.com/document/api/1179/46089#PartitionsTopic)](https://cloud.tencent.com/document/api/1179/46089#[PartitionsTopic](https://cloud.tencent.com/document/api/1179/46089#PartitionsTopic))
+* [[Producer](https://cloud.tencent.com/document/api/1179/46089#Producer)](https://cloud.tencent.com/document/api/1179/46089#[Producer](https://cloud.tencent.com/document/api/1179/46089#Producer))
+* [[Subscription](https://cloud.tencent.com/document/api/1179/46089#Subscription)](https://cloud.tencent.com/document/api/1179/46089#[Subscription](https://cloud.tencent.com/document/api/1179/46089#Subscription))
+* [[SubscriptionTopic](https://cloud.tencent.com/document/api/1179/46089#SubscriptionTopic)](https://cloud.tencent.com/document/api/1179/46089#[SubscriptionTopic](https://cloud.tencent.com/document/api/1179/46089#SubscriptionTopic))
+* [[Topic](https://cloud.tencent.com/document/api/1179/46089#Topic)](https://cloud.tencent.com/document/api/1179/46089#[Topic](https://cloud.tencent.com/document/api/1179/46089#Topic))
+* [[TopicRecord](https://cloud.tencent.com/document/api/1179/46089#TopicRecord)](https://cloud.tencent.com/document/api/1179/46089#[TopicRecord](https://cloud.tencent.com/document/api/1179/46089#TopicRecord))
 
 
 

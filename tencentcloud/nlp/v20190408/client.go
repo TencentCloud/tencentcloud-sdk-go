@@ -479,33 +479,6 @@ func (c *Client) SentenceEmbedding(request *SentenceEmbeddingRequest) (response 
     return
 }
 
-func NewSentenceSimilarityRequest() (request *SentenceSimilarityRequest) {
-    request = &SentenceSimilarityRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    request.Init().WithApiInfo("nlp", APIVersion, "SentenceSimilarity")
-    return
-}
-
-func NewSentenceSimilarityResponse() (response *SentenceSimilarityResponse) {
-    response = &SentenceSimilarityResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    }
-    return
-}
-
-// 文本相似度接口能够基于深度学习技术来计算两个输入文本的相似度，相似度数值越大的两个文本在语义上越相似。目前仅支持短文本（不超过500字符）的相似度计算，长文本的相似度计算也即将推出。
-// 
-// 鉴于文本相似度是一个应用非常广泛的功能，腾讯知文自然语言处理团队在深度神经网络模型的基础上，专门针对文本相似任务进行了优化，并持续迭代更新。基于文本相似度，可以轻松实现诸如文本去重、相似推荐等功能。
-func (c *Client) SentenceSimilarity(request *SentenceSimilarityRequest) (response *SentenceSimilarityResponse, err error) {
-    if request == nil {
-        request = NewSentenceSimilarityRequest()
-    }
-    response = NewSentenceSimilarityResponse()
-    err = c.Send(request, response)
-    return
-}
-
 func NewSentimentAnalysisRequest() (request *SentimentAnalysisRequest) {
     request = &SentimentAnalysisRequest{
         BaseRequest: &tchttp.BaseRequest{},

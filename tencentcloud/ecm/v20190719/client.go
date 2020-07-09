@@ -991,7 +991,7 @@ func NewImportCustomImageResponse() (response *ImportCustomImageResponse) {
     return
 }
 
-// 从腾讯云COS导入自定义镜像
+// 导入自定义镜像，支持 RAW、VHD、QCOW2、VMDK 镜像格式
 func (c *Client) ImportCustomImage(request *ImportCustomImageRequest) (response *ImportCustomImageResponse, err error) {
     if request == nil {
         request = NewImportCustomImageRequest()

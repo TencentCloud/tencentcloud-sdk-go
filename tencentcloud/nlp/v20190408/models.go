@@ -875,46 +875,6 @@ func (r *SentenceEmbeddingResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
-type SentenceSimilarityRequest struct {
-	*tchttp.BaseRequest
-
-	// 计算相似度的源句子（仅支持UTF-8格式，不超过500字符）
-	SrcText *string `json:"SrcText,omitempty" name:"SrcText"`
-
-	// 计算相似度的目标句子（仅支持UTF-8格式，不超过500字符）
-	TargetText *string `json:"TargetText,omitempty" name:"TargetText"`
-}
-
-func (r *SentenceSimilarityRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-func (r *SentenceSimilarityRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
-}
-
-type SentenceSimilarityResponse struct {
-	*tchttp.BaseResponse
-	Response *struct {
-
-		// 两个文本的相似度
-		Similarity *float64 `json:"Similarity,omitempty" name:"Similarity"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
-}
-
-func (r *SentenceSimilarityResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-func (r *SentenceSimilarityResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
-}
-
 type SentimentAnalysisRequest struct {
 	*tchttp.BaseRequest
 

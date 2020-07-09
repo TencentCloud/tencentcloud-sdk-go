@@ -605,7 +605,7 @@ type DescribeCertificateResponse struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		PackageType *string `json:"PackageType,omitempty" name:"PackageType"`
 
-		// 证书办法者名称。
+		// 证书颁发者名称。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		ProductZhName *string `json:"ProductZhName,omitempty" name:"ProductZhName"`
 

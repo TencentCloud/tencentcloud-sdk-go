@@ -3807,7 +3807,7 @@ type ZoneInstanceCountISP struct {
 	// 在当前可用区欲创建的实例数目。
 	InstanceCount *int64 `json:"InstanceCount,omitempty" name:"InstanceCount"`
 
-	// 运营商，CTCC电信，CUCC联通，CMCC移动，多个运营商用英文分号连接";"。
+	// 运营商，CTCC电信，CUCC联通，CMCC移动，多个运营商用英文分号连接";"。多运营商需要开通白名单，请直接联系腾讯云客服。
 	ISP *string `json:"ISP,omitempty" name:"ISP"`
 
 	// 指定私有网络编号，SubnetId与VpcId必须同时指定或不指定

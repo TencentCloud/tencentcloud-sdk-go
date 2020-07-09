@@ -195,6 +195,9 @@ type CustomResult struct {
 
 	// 自定义词库名称
 	LibName *string `json:"LibName,omitempty" name:"LibName"`
+
+	// 命中的自定义关键词的类型
+	Type *string `json:"Type,omitempty" name:"Type"`
 }
 
 type DeleteFileSampleRequest struct {
@@ -399,6 +402,30 @@ type DetailResult struct {
 
 	// 该标签模型命中的分值
 	Score *uint64 `json:"Score,omitempty" name:"Score"`
+}
+
+type Device struct {
+
+	// 设备指纹ID
+	DeviceId *string `json:"DeviceId,omitempty" name:"DeviceId"`
+
+	// IOS设备，Identifier For Advertising（广告标识符）
+	IDFA *string `json:"IDFA,omitempty" name:"IDFA"`
+
+	// IOS设备，IDFV - Identifier For Vendor（应用开发商标识符）
+	IDFV *string `json:"IDFV,omitempty" name:"IDFV"`
+
+	// 设备序列号
+	IMEI *string `json:"IMEI,omitempty" name:"IMEI"`
+
+	// 用户IP
+	IP *string `json:"IP,omitempty" name:"IP"`
+
+	// Mac地址
+	Mac *string `json:"Mac,omitempty" name:"Mac"`
+
+	// 设备指纹Token
+	TokenId *string `json:"TokenId,omitempty" name:"TokenId"`
 }
 
 type FileSample struct {
@@ -822,6 +849,12 @@ type TextModerationRequest struct {
 	// 文本内容Base64编码。原文长度需小于15000字节，即5000个汉字以内。
 	Content *string `json:"Content,omitempty" name:"Content"`
 
+	// 设备相关信息
+	Device *Device `json:"Device,omitempty" name:"Device"`
+
+	// 用户相关信息
+	User *User `json:"User,omitempty" name:"User"`
+
 	// 该字段用于标识业务场景。您可以在内容安全控制台创建对应的ID，配置不同的内容审核策略，通过接口调用，默认不填为0，后端使用默认策略
 	BizType *uint64 `json:"BizType,omitempty" name:"BizType"`
 
@@ -938,4 +971,28 @@ type TextSample struct {
 	// 1：已完成
 	// 2：处理中
 	Status *uint64 `json:"Status,omitempty" name:"Status"`
+}
+
+type User struct {
+
+	// 账号类别，"1-微信uin 2-QQ号 3-微信群uin 4-qq群号 5-微信openid 6-QQopenid 7-其它string"
+	AccountType *int64 `json:"AccountType,omitempty" name:"AccountType"`
+
+	// 年龄 默认0 未知
+	Age *int64 `json:"Age,omitempty" name:"Age"`
+
+	// 性别 默认0 未知 1 男性 2 女性
+	Gender *int64 `json:"Gender,omitempty" name:"Gender"`
+
+	// 用户等级，默认0 未知 1 低 2 中 3 高
+	Level *int64 `json:"Level,omitempty" name:"Level"`
+
+	// 用户昵称
+	Nickname *string `json:"Nickname,omitempty" name:"Nickname"`
+
+	// 手机号
+	Phone *string `json:"Phone,omitempty" name:"Phone"`
+
+	// 用户账号ID，如填写，会根据账号历史恶意情况，判定消息有害结果，特别是有利于可疑恶意情况下的辅助判断。账号可以填写微信uin、QQ号、微信openid、QQopenid、字符串等。该字段和账号类别确定唯一账号。
+	UserId *string `json:"UserId,omitempty" name:"UserId"`
 }

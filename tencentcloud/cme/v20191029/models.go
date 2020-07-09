@@ -1678,11 +1678,11 @@ type MaterialBasicInfo struct {
 	// 素材的分类目录路径。
 	ClassPath *string `json:"ClassPath,omitempty" name:"ClassPath"`
 
-	// 素材绑定的标签信息列表。
+	// 素材绑定的标签信息列表 。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	TagInfoSet []*MaterialTagInfo `json:"TagInfoSet,omitempty" name:"TagInfoSet" list`
 
 	// 素材媒体文件的预览图。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PreviewUrl *string `json:"PreviewUrl,omitempty" name:"PreviewUrl"`
 }
 

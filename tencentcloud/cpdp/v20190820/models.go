@@ -2237,7 +2237,7 @@ type DescribeOrderStatusResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 交易状态 （（0：成功，1：失败，2：待确认, 5：待处理，6：处理中）
+		// 交易状态 （0：成功，1：失败，2：待确认, 5：待处理，6：处理中）
 		OrderStatus *string `json:"OrderStatus,omitempty" name:"OrderStatus"`
 
 		// 交易金额
@@ -2384,7 +2384,9 @@ type ExecuteMemberTransactionRequest struct {
 	// 计费签名
 	MidasSignature *string `json:"MidasSignature,omitempty" name:"MidasSignature"`
 
-	// 交易流水号
+	// 交易流水号 
+	// 生成方式：用户短号+日期（6位）+ 随机编号（10位）例如：F088722005120904930798
+	// 短号：F08872  日期： 200512   随机编号：0904930798
 	TransSequenceNumber *string `json:"TransSequenceNumber,omitempty" name:"TransSequenceNumber"`
 
 	// 转入交易网会员代码
@@ -2397,7 +2399,11 @@ type ExecuteMemberTransactionRequest struct {
 	// 平台短号(银行分配)
 	PlatformShortNumber *string `json:"PlatformShortNumber,omitempty" name:"PlatformShortNumber"`
 
-	// 0,登记挂账，1，撤销挂账
+	// 1：下单预支付 
+	// 2：确认并付款
+	// 3：退款
+	// 6：直接支付T+1
+	// 9：直接支付T+0
 	TransType *string `json:"TransType,omitempty" name:"TransType"`
 
 	// 交易手续费
@@ -4914,7 +4920,7 @@ type RechargeByThirdPayRequest struct {
 	// 子账户账号
 	BankSubAccountNumber *string `json:"BankSubAccountNumber,omitempty" name:"BankSubAccountNumber"`
 
-	// 交易手续费
+	// 交易手续费，以元为单位
 	TransFee *string `json:"TransFee,omitempty" name:"TransFee"`
 
 	// 第三方支付渠道类型 0001-微信 0002-支付宝 0003-京东支付
@@ -5111,7 +5117,7 @@ type RefundMemberTransactionRequest struct {
 	// 转入见证子账户账号
 	InSubAccountNumber *string `json:"InSubAccountNumber,omitempty" name:"InSubAccountNumber"`
 
-	// 计费秘钥
+	// 聚鑫分配的安全ID
 	MidasSecretId *string `json:"MidasSecretId,omitempty" name:"MidasSecretId"`
 
 	// 父账户账号，资金汇总账号
@@ -5331,7 +5337,7 @@ type RegisterBillRequest struct {
 	// 暂未使用，默认传0.0
 	TranFee *string `json:"TranFee,omitempty" name:"TranFee"`
 
-	// 挂账金额
+	// 挂账金额，以元为单位
 	OrderAmt *string `json:"OrderAmt,omitempty" name:"OrderAmt"`
 
 	// 子账户账号
@@ -5729,7 +5735,7 @@ type RevokeRechargeByThirdPayRequest struct {
 	// 交易流水号
 	TransSequenceNumber *string `json:"TransSequenceNumber,omitempty" name:"TransSequenceNumber"`
 
-	// 申请撤销的手续费金额
+	// 申请撤销的手续费金额,以元为单位
 	TransFee *string `json:"TransFee,omitempty" name:"TransFee"`
 
 	// 第三方支付渠道类型 0001-微信 0002-支付宝 0003-京东支付

@@ -1760,7 +1760,7 @@ type MLIDCardOCRRequest struct {
 	// 非腾讯云存储的 Url 速度和稳定性可能受一定影响。
 	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
 
-	// 是否返回图片
+	// 是否返回图片，默认false
 	RetImage *bool `json:"RetImage,omitempty" name:"RetImage"`
 }
 
