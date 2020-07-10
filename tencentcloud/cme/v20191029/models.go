@@ -77,7 +77,7 @@ type AudioMaterial struct {
 	// 素材元信息。
 	MetaData *MediaMetaData `json:"MetaData,omitempty" name:"MetaData"`
 
-	// 素材媒体文件的 URL 地址。
+	// 素材媒体文件的播放 URL 地址。
 	MaterialUrl *string `json:"MaterialUrl,omitempty" name:"MaterialUrl"`
 
 	// 素材媒体文件的封面图片地址。
@@ -86,6 +86,12 @@ type AudioMaterial struct {
 	// 素材状态。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MaterialStatus *MaterialStatus `json:"MaterialStatus,omitempty" name:"MaterialStatus"`
+
+	// 素材媒体文件的原始 URL 地址。
+	OriginalUrl *string `json:"OriginalUrl,omitempty" name:"OriginalUrl"`
+
+	// 云点播媒资 FileId。
+	VodFileId *string `json:"VodFileId,omitempty" name:"VodFileId"`
 }
 
 type AudioStreamInfo struct {
@@ -1400,11 +1406,17 @@ type ImageMaterial struct {
 	// 图片宽度，单位：px。
 	Width *int64 `json:"Width,omitempty" name:"Width"`
 
-	// 素材媒体文件的 URL 地址。
+	// 素材媒体文件的展示 URL 地址。
 	MaterialUrl *string `json:"MaterialUrl,omitempty" name:"MaterialUrl"`
 
 	// 图片大小，单位：字节。
 	Size *int64 `json:"Size,omitempty" name:"Size"`
+
+	// 素材媒体文件的原始 URL 地址。
+	OriginalUrl *string `json:"OriginalUrl,omitempty" name:"OriginalUrl"`
+
+	// 云点播媒资 FileId。
+	VodFileId *string `json:"VodFileId,omitempty" name:"VodFileId"`
 }
 
 type ImportMaterialRequest struct {
@@ -2302,7 +2314,7 @@ type VideoMaterial struct {
 	// 雪碧图信息。
 	ImageSpriteInfo *MediaImageSpriteInfo `json:"ImageSpriteInfo,omitempty" name:"ImageSpriteInfo"`
 
-	// 素材媒体文件的 URL 地址
+	// 素材媒体文件的播放 URL 地址。
 	MaterialUrl *string `json:"MaterialUrl,omitempty" name:"MaterialUrl"`
 
 	// 素材媒体文件的封面图片地址。
@@ -2314,6 +2326,12 @@ type VideoMaterial struct {
 	// 素材状态。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MaterialStatus *MaterialStatus `json:"MaterialStatus,omitempty" name:"MaterialStatus"`
+
+	// 素材媒体文件的原始 URL 地址。
+	OriginalUrl *string `json:"OriginalUrl,omitempty" name:"OriginalUrl"`
+
+	// 云点播媒资 FileId。
+	VodFileId *string `json:"VodFileId,omitempty" name:"VodFileId"`
 }
 
 type VideoStreamInfo struct {

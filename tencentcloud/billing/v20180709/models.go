@@ -742,6 +742,14 @@ type Deal struct {
 
 	// 大订单号
 	BigDealId *string `json:"BigDealId,omitempty" name:"BigDealId"`
+
+	// 退费公式
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Formula *string `json:"Formula,omitempty" name:"Formula"`
+
+	// 退费涉及订单信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RefReturnDeals *string `json:"RefReturnDeals,omitempty" name:"RefReturnDeals"`
 }
 
 type DescribeAccountBalanceRequest struct {

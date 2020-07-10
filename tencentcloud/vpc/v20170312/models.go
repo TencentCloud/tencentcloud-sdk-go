@@ -10337,7 +10337,7 @@ type RouteTable struct {
 	// 路由表关联关系。
 	AssociationSet []*RouteTableAssociation `json:"AssociationSet,omitempty" name:"AssociationSet" list`
 
-	// 路由表策略集合。
+	// IPv4路由策略集合。
 	RouteSet []*Route `json:"RouteSet,omitempty" name:"RouteSet" list`
 
 	// 是否默认路由表。
