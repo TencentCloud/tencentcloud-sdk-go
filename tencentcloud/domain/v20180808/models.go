@@ -83,6 +83,9 @@ type CheckDomainResponse struct {
 		// 检测年限
 		Period *uint64 `json:"Period,omitempty" name:"Period"`
 
+		// 是否支持北京备案  true 支持  false 不支持
+		RecordSupport *bool `json:"RecordSupport,omitempty" name:"RecordSupport"`
+
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`

@@ -58,7 +58,7 @@ func NewCheckDomainResponse() (response *CheckDomainResponse) {
     return
 }
 
-// 检查域名是否可以注册
+// 检查域名是否可以注册。
 func (c *Client) CheckDomain(request *CheckDomainRequest) (response *CheckDomainResponse, err error) {
     if request == nil {
         request = NewCheckDomainRequest()

@@ -1,47 +1,39 @@
 # 本版本更新包含以下内容：
 
-## 计费相关(billing) 版本：2018-07-09
+## 域名注册(domain) 版本：2018-08-08
 
-### 第 19 次发布
+### 第 3 次发布
 
-发布时间：2020-07-10 08:04:29
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [Deal](https://cloud.tencent.com/document/api/555/19183#Deal)
-
-	* 新增成员：Formula, RefReturnDeals
-
-
-
-
-## 腾讯云剪(cme) 版本：2019-10-29
-
-### 第 12 次发布
-
-发布时间：2020-07-10 08:03:28
+发布时间：2020-07-13 08:25:10
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-修改数据结构：
+修改接口：
 
-* [AudioMaterial](https://cloud.tencent.com/document/api/1156/40360#AudioMaterial)
+* [CheckDomain](https://cloud.tencent.com/document/api/242/38894)
 
-	* 新增成员：OriginalUrl, VodFileId
+	* 新增出参：RecordSupport
 
-* [ImageMaterial](https://cloud.tencent.com/document/api/1156/40360#ImageMaterial)
 
-	* 新增成员：OriginalUrl, VodFileId
 
-* [VideoMaterial](https://cloud.tencent.com/document/api/1156/40360#VideoMaterial)
 
-	* 新增成员：OriginalUrl, VodFileId
+## 云游戏解决方案(gs) 版本：2019-11-18
+
+### 第 8 次发布
+
+发布时间：2020-07-13 08:06:32
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [TrylockWorker](https://cloud.tencent.com/document/api/1162/40738)
+
+	* 新增入参：GroupId
 
 
 
@@ -11049,6 +11041,21 @@
 
 ## 域名注册(domain) 版本：2018-08-08
 
+### 第 3 次发布
+
+发布时间：2020-07-13 08:25:10
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CheckDomain](https://cloud.tencent.com/document/api/242/38894)
+
+	* 新增出参：RecordSupport
+
+
 ### 第 2 次发布
 
 发布时间：2020-03-16 08:08:32
@@ -13661,6 +13668,21 @@
 
 
 ## 云游戏解决方案(gs) 版本：2019-11-18
+
+### 第 8 次发布
+
+发布时间：2020-07-13 08:06:32
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [TrylockWorker](https://cloud.tencent.com/document/api/1162/40738)
+
+	* 新增入参：GroupId
+
 
 ### 第 7 次发布
 
