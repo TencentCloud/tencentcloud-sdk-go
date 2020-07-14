@@ -168,6 +168,31 @@ func (c *Client) DescribeSlowLogTopSqls(request *DescribeSlowLogTopSqlsRequest) 
     return
 }
 
+func NewDescribeTopSpaceTableTimeSeriesRequest() (request *DescribeTopSpaceTableTimeSeriesRequest) {
+    request = &DescribeTopSpaceTableTimeSeriesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("dbbrain", APIVersion, "DescribeTopSpaceTableTimeSeries")
+    return
+}
+
+func NewDescribeTopSpaceTableTimeSeriesResponse() (response *DescribeTopSpaceTableTimeSeriesResponse) {
+    response = &DescribeTopSpaceTableTimeSeriesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 获取实例占用空间最大的前几张表在指定时间段内的每日由DBbrain定时采集的空间数据，默认返回按大小排序。
+func (c *Client) DescribeTopSpaceTableTimeSeries(request *DescribeTopSpaceTableTimeSeriesRequest) (response *DescribeTopSpaceTableTimeSeriesResponse, err error) {
+    if request == nil {
+        request = NewDescribeTopSpaceTableTimeSeriesRequest()
+    }
+    response = NewDescribeTopSpaceTableTimeSeriesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeTopSpaceTablesRequest() (request *DescribeTopSpaceTablesRequest) {
     request = &DescribeTopSpaceTablesRequest{
         BaseRequest: &tchttp.BaseRequest{},

@@ -290,6 +290,55 @@ func (r *DescribeSlowLogTopSqlsResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeTopSpaceTableTimeSeriesRequest struct {
+	*tchttp.BaseRequest
+
+	// 实例 ID 。
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 返回的Top表数量，最大值为20，默认为最大值。
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 筛选Top表所用的排序字段，可选字段包含DataLength、IndexLength、TotalLength、DataFree、FragRatio、TableRows、PhysicalFileSize，默认为 PhysicalFileSize。
+	SortBy *string `json:"SortBy,omitempty" name:"SortBy"`
+
+	// 开始日期，最早为当日的前第6天，默认为截止日期的前第6天。
+	StartDate *string `json:"StartDate,omitempty" name:"StartDate"`
+
+	// 截止日期，最早为当日的前第6天，默认为当日。
+	EndDate *string `json:"EndDate,omitempty" name:"EndDate"`
+}
+
+func (r *DescribeTopSpaceTableTimeSeriesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeTopSpaceTableTimeSeriesRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeTopSpaceTableTimeSeriesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 返回的Top表空间统计信息的时序数据列表。
+		TopSpaceTableTimeSeries []*TableSpaceTimeSeries `json:"TopSpaceTableTimeSeries,omitempty" name:"TopSpaceTableTimeSeries" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeTopSpaceTableTimeSeriesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeTopSpaceTableTimeSeriesResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeTopSpaceTablesRequest struct {
 	*tchttp.BaseRequest
 
@@ -367,6 +416,28 @@ type DiagHistoryEventItem struct {
 	// 地域
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Region *string `json:"Region,omitempty" name:"Region"`
+}
+
+type MonitorFloatMetric struct {
+
+	// 指标名称。
+	Metric *string `json:"Metric,omitempty" name:"Metric"`
+
+	// 指标单位。
+	Unit *string `json:"Unit,omitempty" name:"Unit"`
+
+	// 指标值。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Values []*float64 `json:"Values,omitempty" name:"Values" list`
+}
+
+type MonitorFloatMetricSeriesData struct {
+
+	// 监控指标。
+	Series []*MonitorFloatMetric `json:"Series,omitempty" name:"Series" list`
+
+	// 监控指标对应的时间戳。
+	Timestamp []*int64 `json:"Timestamp,omitempty" name:"Timestamp" list`
 }
 
 type MonitorMetric struct {
@@ -485,6 +556,21 @@ type TableSpaceData struct {
 
 	// 表对应的独立物理文件大小（MB）。
 	PhysicalFileSize *float64 `json:"PhysicalFileSize,omitempty" name:"PhysicalFileSize"`
+}
+
+type TableSpaceTimeSeries struct {
+
+	// 表名。
+	TableName *string `json:"TableName,omitempty" name:"TableName"`
+
+	// 库名。
+	TableSchema *string `json:"TableSchema,omitempty" name:"TableSchema"`
+
+	// 库表的存储引擎。
+	Engine *string `json:"Engine,omitempty" name:"Engine"`
+
+	// 单位时间间隔内的空间指标数据。
+	SeriesData *MonitorFloatMetricSeriesData `json:"SeriesData,omitempty" name:"SeriesData"`
 }
 
 type TimeSlice struct {

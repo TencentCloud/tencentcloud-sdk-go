@@ -2292,6 +2292,13 @@ type DownloadBillRequest struct {
 
 	// 使用聚鑫安全密钥计算的签名
 	MidasSignature *string `json:"MidasSignature,omitempty" name:"MidasSignature"`
+
+	// 环境名:
+	// release: 现网环境
+	// sandbox: 沙箱环境
+	// development: 开发环境
+	// 缺省: release
+	MidasEnvironment *string `json:"MidasEnvironment,omitempty" name:"MidasEnvironment"`
 }
 
 func (r *DownloadBillRequest) ToJsonString() string {

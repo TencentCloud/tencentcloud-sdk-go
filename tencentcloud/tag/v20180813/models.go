@@ -60,6 +60,55 @@ func (r *AddResourceTagResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type AttachResourcesTagRequest struct {
+	*tchttp.BaseRequest
+
+	// 资源所属业务名称
+	ServiceType *string `json:"ServiceType,omitempty" name:"ServiceType"`
+
+	// 资源ID数组，资源个数最多为50
+	ResourceIds []*string `json:"ResourceIds,omitempty" name:"ResourceIds" list`
+
+	// 标签键
+	TagKey *string `json:"TagKey,omitempty" name:"TagKey"`
+
+	// 标签值
+	TagValue *string `json:"TagValue,omitempty" name:"TagValue"`
+
+	// 资源所在地域，不区分地域的资源不需要传入该字段
+	ResourceRegion *string `json:"ResourceRegion,omitempty" name:"ResourceRegion"`
+
+	// 资源前缀，cos存储桶不需要传入该字段
+	ResourcePrefix *string `json:"ResourcePrefix,omitempty" name:"ResourcePrefix"`
+}
+
+func (r *AttachResourcesTagRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *AttachResourcesTagRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type AttachResourcesTagResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *AttachResourcesTagResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *AttachResourcesTagResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type CreateTagRequest struct {
 	*tchttp.BaseRequest
 
@@ -229,6 +278,67 @@ func (r *DescribeResourceTagsByResourceIdsResponse) ToJsonString() string {
 }
 
 func (r *DescribeResourceTagsByResourceIdsResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeResourceTagsByResourceIdsSeqRequest struct {
+	*tchttp.BaseRequest
+
+	// 业务类型
+	ServiceType *string `json:"ServiceType,omitempty" name:"ServiceType"`
+
+	// 资源前缀
+	ResourcePrefix *string `json:"ResourcePrefix,omitempty" name:"ResourcePrefix"`
+
+	// 资源唯一标记
+	ResourceIds []*string `json:"ResourceIds,omitempty" name:"ResourceIds" list`
+
+	// 资源所在地域
+	ResourceRegion *string `json:"ResourceRegion,omitempty" name:"ResourceRegion"`
+
+	// 数据偏移量，默认为 0, 必须为Limit参数的整数倍
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 每页大小，默认为 15
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+func (r *DescribeResourceTagsByResourceIdsSeqRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeResourceTagsByResourceIdsSeqRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeResourceTagsByResourceIdsSeqResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 结果总数
+		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 数据位移偏量
+		Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+		// 每页大小
+		Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+		// 标签列表
+		Tags []*TagResource `json:"Tags,omitempty" name:"Tags" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeResourceTagsByResourceIdsSeqResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeResourceTagsByResourceIdsSeqResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -542,6 +652,61 @@ func (r *DescribeTagValuesResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeTagValuesSeqRequest struct {
+	*tchttp.BaseRequest
+
+	// 标签键列表
+	TagKeys []*string `json:"TagKeys,omitempty" name:"TagKeys" list`
+
+	// 创建者用户 Uin，不传或为空只将 Uin 作为条件查询
+	CreateUin *uint64 `json:"CreateUin,omitempty" name:"CreateUin"`
+
+	// 数据偏移量，默认为 0, 必须为Limit参数的整数倍
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 每页大小，默认为 15
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+func (r *DescribeTagValuesSeqRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeTagValuesSeqRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeTagValuesSeqResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 结果总数
+		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 数据位移偏量
+		Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+		// 每页大小
+		Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+		// 标签列表
+		Tags []*Tag `json:"Tags,omitempty" name:"Tags" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeTagValuesSeqResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeTagValuesSeqResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeTagsRequest struct {
 	*tchttp.BaseRequest
 
@@ -606,6 +771,116 @@ func (r *DescribeTagsResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeTagsSeqRequest struct {
+	*tchttp.BaseRequest
+
+	// 标签键,与标签值同时存在或同时不存在，不存在时表示查询该用户所有标签
+	TagKey *string `json:"TagKey,omitempty" name:"TagKey"`
+
+	// 标签值,与标签键同时存在或同时不存在，不存在时表示查询该用户所有标签
+	TagValue *string `json:"TagValue,omitempty" name:"TagValue"`
+
+	// 数据偏移量，默认为 0, 必须为Limit参数的整数倍
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 每页大小，默认为 15
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 创建者用户 Uin，不传或为空只将 Uin 作为条件查询
+	CreateUin *uint64 `json:"CreateUin,omitempty" name:"CreateUin"`
+
+	// 标签键数组,与标签值同时存在或同时不存在，不存在时表示查询该用户所有标签,当与TagKey同时传递时只会本值
+	TagKeys []*string `json:"TagKeys,omitempty" name:"TagKeys" list`
+
+	// 是否展现项目标签
+	ShowProject *uint64 `json:"ShowProject,omitempty" name:"ShowProject"`
+}
+
+func (r *DescribeTagsSeqRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeTagsSeqRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeTagsSeqResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 结果总数
+		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 数据位移偏量
+		Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+		// 每页大小
+		Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+		// 标签列表
+		Tags []*TagWithDelete `json:"Tags,omitempty" name:"Tags" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeTagsSeqResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeTagsSeqResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DetachResourcesTagRequest struct {
+	*tchttp.BaseRequest
+
+	// 资源所属业务名称
+	ServiceType *string `json:"ServiceType,omitempty" name:"ServiceType"`
+
+	// 资源ID数组，资源个数最多为50
+	ResourceIds []*string `json:"ResourceIds,omitempty" name:"ResourceIds" list`
+
+	// 需要解绑的标签键
+	TagKey *string `json:"TagKey,omitempty" name:"TagKey"`
+
+	// 资源所在地域不区分地域的资源不需要传入该字段
+	ResourceRegion *string `json:"ResourceRegion,omitempty" name:"ResourceRegion"`
+
+	// 资源前缀，cos存储桶不需要传入该字段
+	ResourcePrefix *string `json:"ResourcePrefix,omitempty" name:"ResourcePrefix"`
+}
+
+func (r *DetachResourcesTagRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DetachResourcesTagRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DetachResourcesTagResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DetachResourcesTagResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DetachResourcesTagResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type ModifyResourceTagsRequest struct {
 	*tchttp.BaseRequest
 
@@ -643,6 +918,55 @@ func (r *ModifyResourceTagsResponse) ToJsonString() string {
 }
 
 func (r *ModifyResourceTagsResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyResourcesTagValueRequest struct {
+	*tchttp.BaseRequest
+
+	// 资源所属业务名称
+	ServiceType *string `json:"ServiceType,omitempty" name:"ServiceType"`
+
+	// 资源ID数组，资源个数最多为50
+	ResourceIds []*string `json:"ResourceIds,omitempty" name:"ResourceIds" list`
+
+	// 标签键
+	TagKey *string `json:"TagKey,omitempty" name:"TagKey"`
+
+	// 标签值
+	TagValue *string `json:"TagValue,omitempty" name:"TagValue"`
+
+	// 资源所在地域，不区分地域的资源不需要传入该字段
+	ResourceRegion *string `json:"ResourceRegion,omitempty" name:"ResourceRegion"`
+
+	// 资源前缀，cos存储桶不需要传入该字段
+	ResourcePrefix *string `json:"ResourcePrefix,omitempty" name:"ResourcePrefix"`
+}
+
+func (r *ModifyResourcesTagValueRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyResourcesTagValueRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyResourcesTagValueResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifyResourcesTagValueResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyResourcesTagValueResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 

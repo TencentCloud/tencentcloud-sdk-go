@@ -43,6 +43,31 @@ func NewClient(credential *common.Credential, region string, clientProfile *prof
 }
 
 
+func NewCompleteExpansionRequest() (request *CompleteExpansionRequest) {
+    request = &CompleteExpansionRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("sqlserver", APIVersion, "CompleteExpansion")
+    return
+}
+
+func NewCompleteExpansionResponse() (response *CompleteExpansionResponse) {
+    response = &CompleteExpansionResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（CompleteExpansion）在实例发起扩容后，实例状态处于“升级待切换”时，可立即完成实例升级切换操作，无需等待可维护时间窗。本接口需要在实例低峰时调用，在完全切换成功前，存在部分库不可访问的风险。
+func (c *Client) CompleteExpansion(request *CompleteExpansionRequest) (response *CompleteExpansionResponse, err error) {
+    if request == nil {
+        request = NewCompleteExpansionRequest()
+    }
+    response = NewCompleteExpansionResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateAccountRequest() (request *CreateAccountRequest) {
     request = &CreateAccountRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -168,6 +193,31 @@ func (c *Client) CreateMigration(request *CreateMigrationRequest) (response *Cre
     return
 }
 
+func NewCreatePublishSubscribeRequest() (request *CreatePublishSubscribeRequest) {
+    request = &CreatePublishSubscribeRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("sqlserver", APIVersion, "CreatePublishSubscribe")
+    return
+}
+
+func NewCreatePublishSubscribeResponse() (response *CreatePublishSubscribeResponse) {
+    response = &CreatePublishSubscribeResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（CreatePublishSubscribe）用于创建两个数据库之间的发布订阅关系。作为订阅者，不能再充当发布者，作为发布者可以有多个订阅者实例。
+func (c *Client) CreatePublishSubscribe(request *CreatePublishSubscribeRequest) (response *CreatePublishSubscribeResponse, err error) {
+    if request == nil {
+        request = NewCreatePublishSubscribeRequest()
+    }
+    response = NewCreatePublishSubscribeResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteAccountRequest() (request *DeleteAccountRequest) {
     request = &DeleteAccountRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -239,6 +289,31 @@ func (c *Client) DeleteMigration(request *DeleteMigrationRequest) (response *Del
         request = NewDeleteMigrationRequest()
     }
     response = NewDeleteMigrationResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeletePublishSubscribeRequest() (request *DeletePublishSubscribeRequest) {
+    request = &DeletePublishSubscribeRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("sqlserver", APIVersion, "DeletePublishSubscribe")
+    return
+}
+
+func NewDeletePublishSubscribeResponse() (response *DeletePublishSubscribeResponse) {
+    response = &DeletePublishSubscribeResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（DeletePublishSubscribe）用于删除两个数据库间的发布订阅关系。
+func (c *Client) DeletePublishSubscribe(request *DeletePublishSubscribeRequest) (response *DeletePublishSubscribeResponse, err error) {
+    if request == nil {
+        request = NewDeletePublishSubscribeRequest()
+    }
+    response = NewDeletePublishSubscribeResponse()
     err = c.Send(request, response)
     return
 }
@@ -368,6 +443,31 @@ func (c *Client) DescribeFlowStatus(request *DescribeFlowStatusRequest) (respons
     return
 }
 
+func NewDescribeMaintenanceSpanRequest() (request *DescribeMaintenanceSpanRequest) {
+    request = &DescribeMaintenanceSpanRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("sqlserver", APIVersion, "DescribeMaintenanceSpan")
+    return
+}
+
+func NewDescribeMaintenanceSpanResponse() (response *DescribeMaintenanceSpanResponse) {
+    response = &DescribeMaintenanceSpanResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（DescribeMaintenanceSpan）根据实例ID查询该实例的可维护时间窗。
+func (c *Client) DescribeMaintenanceSpan(request *DescribeMaintenanceSpanRequest) (response *DescribeMaintenanceSpanResponse, err error) {
+    if request == nil {
+        request = NewDescribeMaintenanceSpanRequest()
+    }
+    response = NewDescribeMaintenanceSpanResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeMigrationDetailRequest() (request *DescribeMigrationDetailRequest) {
     request = &DescribeMigrationDetailRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -464,6 +564,31 @@ func (c *Client) DescribeProductConfig(request *DescribeProductConfigRequest) (r
         request = NewDescribeProductConfigRequest()
     }
     response = NewDescribeProductConfigResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribePublishSubscribeRequest() (request *DescribePublishSubscribeRequest) {
+    request = &DescribePublishSubscribeRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("sqlserver", APIVersion, "DescribePublishSubscribe")
+    return
+}
+
+func NewDescribePublishSubscribeResponse() (response *DescribePublishSubscribeResponse) {
+    response = &DescribePublishSubscribeResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（DescribePublishSubscribe）用于查询发布订阅关系列表。
+func (c *Client) DescribePublishSubscribe(request *DescribePublishSubscribeRequest) (response *DescribePublishSubscribeResponse, err error) {
+    if request == nil {
+        request = NewDescribePublishSubscribeRequest()
+    }
+    response = NewDescribePublishSubscribeResponse()
     err = c.Send(request, response)
     return
 }
@@ -693,6 +818,31 @@ func (c *Client) ModifyAccountRemark(request *ModifyAccountRemarkRequest) (respo
     return
 }
 
+func NewModifyBackupStrategyRequest() (request *ModifyBackupStrategyRequest) {
+    request = &ModifyBackupStrategyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("sqlserver", APIVersion, "ModifyBackupStrategy")
+    return
+}
+
+func NewModifyBackupStrategyResponse() (response *ModifyBackupStrategyResponse) {
+    response = &ModifyBackupStrategyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（ModifyBackupStrategy）用于修改备份策略
+func (c *Client) ModifyBackupStrategy(request *ModifyBackupStrategyRequest) (response *ModifyBackupStrategyResponse, err error) {
+    if request == nil {
+        request = NewModifyBackupStrategyRequest()
+    }
+    response = NewModifyBackupStrategyResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyDBInstanceNameRequest() (request *ModifyDBInstanceNameRequest) {
     request = &ModifyDBInstanceNameRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -818,6 +968,31 @@ func (c *Client) ModifyDBRemark(request *ModifyDBRemarkRequest) (response *Modif
     return
 }
 
+func NewModifyMaintenanceSpanRequest() (request *ModifyMaintenanceSpanRequest) {
+    request = &ModifyMaintenanceSpanRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("sqlserver", APIVersion, "ModifyMaintenanceSpan")
+    return
+}
+
+func NewModifyMaintenanceSpanResponse() (response *ModifyMaintenanceSpanResponse) {
+    response = &ModifyMaintenanceSpanResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（ModifyMaintenanceSpan）用于修改实例的可维护时间窗
+func (c *Client) ModifyMaintenanceSpan(request *ModifyMaintenanceSpanRequest) (response *ModifyMaintenanceSpanResponse, err error) {
+    if request == nil {
+        request = NewModifyMaintenanceSpanRequest()
+    }
+    response = NewModifyMaintenanceSpanResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyMigrationRequest() (request *ModifyMigrationRequest) {
     request = &ModifyMigrationRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -839,6 +1014,56 @@ func (c *Client) ModifyMigration(request *ModifyMigrationRequest) (response *Mod
         request = NewModifyMigrationRequest()
     }
     response = NewModifyMigrationResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyPublishSubscribeNameRequest() (request *ModifyPublishSubscribeNameRequest) {
+    request = &ModifyPublishSubscribeNameRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("sqlserver", APIVersion, "ModifyPublishSubscribeName")
+    return
+}
+
+func NewModifyPublishSubscribeNameResponse() (response *ModifyPublishSubscribeNameResponse) {
+    response = &ModifyPublishSubscribeNameResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（ModifyPublishSubscribeName）修改发布订阅的名称。
+func (c *Client) ModifyPublishSubscribeName(request *ModifyPublishSubscribeNameRequest) (response *ModifyPublishSubscribeNameResponse, err error) {
+    if request == nil {
+        request = NewModifyPublishSubscribeNameRequest()
+    }
+    response = NewModifyPublishSubscribeNameResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewRemoveBackupsRequest() (request *RemoveBackupsRequest) {
+    request = &RemoveBackupsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("sqlserver", APIVersion, "RemoveBackups")
+    return
+}
+
+func NewRemoveBackupsResponse() (response *RemoveBackupsResponse) {
+    response = &RemoveBackupsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（RemoveBackups）可以删除用户手动创建的备份文件。待删除的备份策略可以是实例备份，也可以是多库备份。
+func (c *Client) RemoveBackups(request *RemoveBackupsRequest) (response *RemoveBackupsResponse, err error) {
+    if request == nil {
+        request = NewRemoveBackupsRequest()
+    }
+    response = NewRemoveBackupsResponse()
     err = c.Send(request, response)
     return
 }

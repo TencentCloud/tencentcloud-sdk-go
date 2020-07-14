@@ -1,40 +1,120 @@
 # 本版本更新包含以下内容：
 
-## 域名注册(domain) 版本：2018-08-08
+## 企业收付平台(cpdp) 版本：2019-08-20
+
+### 第 24 次发布
+
+发布时间：2020-07-14 08:23:00
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DownloadBill](https://cloud.tencent.com/document/api/1122/40672)
+
+	* 新增入参：MidasEnvironment
+
+
+
+
+## 数据库智能管家 DBbrain(dbbrain) 版本：2019-10-16
 
 ### 第 3 次发布
 
-发布时间：2020-07-13 08:25:10
+发布时间：2020-07-14 08:08:56
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
+新增接口：
+
+* [DescribeTopSpaceTableTimeSeries](https://cloud.tencent.com/document/api/1130/46279)
+
+新增数据结构：
+
+* [MonitorFloatMetric](https://cloud.tencent.com/document/api/1130/39561#MonitorFloatMetric)
+* [MonitorFloatMetricSeriesData](https://cloud.tencent.com/document/api/1130/39561#MonitorFloatMetricSeriesData)
+* [TableSpaceTimeSeries](https://cloud.tencent.com/document/api/1130/39561#TableSpaceTimeSeries)
+
+
+
+## 云数据库 SQL Server(sqlserver) 版本：2018-03-28
+
+### 第 6 次发布
+
+发布时间：2020-07-14 08:16:33
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CompleteExpansion](https://cloud.tencent.com/document/api/238/46286)
+* [CreatePublishSubscribe](https://cloud.tencent.com/document/api/238/46285)
+* [DeletePublishSubscribe](https://cloud.tencent.com/document/api/238/46284)
+* [DescribeMaintenanceSpan](https://cloud.tencent.com/document/api/238/46283)
+* [DescribePublishSubscribe](https://cloud.tencent.com/document/api/238/46282)
+* [ModifyBackupStrategy](https://cloud.tencent.com/document/api/238/46288)
+* [ModifyMaintenanceSpan](https://cloud.tencent.com/document/api/238/46281)
+* [ModifyPublishSubscribeName](https://cloud.tencent.com/document/api/238/46280)
+* [RemoveBackups](https://cloud.tencent.com/document/api/238/46287)
+
 修改接口：
 
-* [CheckDomain](https://cloud.tencent.com/document/api/242/38894)
+* [CreateDBInstances](https://cloud.tencent.com/document/api/238/19973)
 
-	* 新增出参：RecordSupport
+	* 新增入参：SecurityGroupList, Weekly, StartTime, Span, HAType, MultiZones
+
+* [InquiryPriceCreateDBInstances](https://cloud.tencent.com/document/api/238/19962)
+
+	* 新增入参：Cpu, InstanceType, MachineType
+
+* [InquiryPriceUpgradeDBInstance](https://cloud.tencent.com/document/api/238/19960)
+
+	* 新增入参：Cpu
+
+* [UpgradeDBInstance](https://cloud.tencent.com/document/api/238/19948)
+
+	* 新增入参：Cpu
+
+
+新增数据结构：
+
+* [DatabaseTuple](https://cloud.tencent.com/document/api/238/19976#DatabaseTuple)
+* [DatabaseTupleStatus](https://cloud.tencent.com/document/api/238/19976#DatabaseTupleStatus)
+* [PublishSubscribe](https://cloud.tencent.com/document/api/238/19976#PublishSubscribe)
+
+修改数据结构：
+
+* [DBInstance](https://cloud.tencent.com/document/api/238/19976#DBInstance)
+
+	* 新增成员：IsolateOperator, SubFlag, ROFlag, HAFlag
 
 
 
 
-## 云游戏解决方案(gs) 版本：2019-11-18
+## 标签(tag) 版本：2018-08-13
 
 ### 第 8 次发布
 
-发布时间：2020-07-13 08:06:32
+发布时间：2020-07-14 08:17:00
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-修改接口：
+新增接口：
 
-* [TrylockWorker](https://cloud.tencent.com/document/api/1162/40738)
-
-	* 新增入参：GroupId
-
+* [AttachResourcesTag](https://cloud.tencent.com/document/api/651/46294)
+* [DescribeResourceTagsByResourceIdsSeq](https://cloud.tencent.com/document/api/651/46291)
+* [DescribeTagValuesSeq](https://cloud.tencent.com/document/api/651/46290)
+* [DescribeTagsSeq](https://cloud.tencent.com/document/api/651/46289)
+* [DetachResourcesTag](https://cloud.tencent.com/document/api/651/46293)
+* [ModifyResourcesTagValue](https://cloud.tencent.com/document/api/651/46292)
 
 
 
@@ -8164,6 +8244,21 @@
 
 ## 企业收付平台(cpdp) 版本：2019-08-20
 
+### 第 24 次发布
+
+发布时间：2020-07-14 08:23:00
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DownloadBill](https://cloud.tencent.com/document/api/1122/40672)
+
+	* 新增入参：MidasEnvironment
+
+
 ### 第 23 次发布
 
 发布时间：2020-07-06 08:22:03
@@ -10538,6 +10633,24 @@
 
 
 ## 数据库智能管家 DBbrain(dbbrain) 版本：2019-10-16
+
+### 第 3 次发布
+
+发布时间：2020-07-14 08:08:56
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeTopSpaceTableTimeSeries](https://cloud.tencent.com/document/api/1130/46279)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[MonitorFloatMetric](https://cloud.tencent.com/document/api/1130/39561#MonitorFloatMetric)](https://cloud.tencent.com/document/api/1130/39561#[MonitorFloatMetric](https://cloud.tencent.com/document/api/1130/39561#MonitorFloatMetric))
+* [[MonitorFloatMetricSeriesData](https://cloud.tencent.com/document/api/1130/39561#MonitorFloatMetricSeriesData)](https://cloud.tencent.com/document/api/1130/39561#[MonitorFloatMetricSeriesData](https://cloud.tencent.com/document/api/1130/39561#MonitorFloatMetricSeriesData))
+* [[TableSpaceTimeSeries](https://cloud.tencent.com/document/api/1130/39561#TableSpaceTimeSeries)](https://cloud.tencent.com/document/api/1130/39561#[TableSpaceTimeSeries](https://cloud.tencent.com/document/api/1130/39561#TableSpaceTimeSeries))
 
 ### 第 2 次发布
 
@@ -21936,6 +22049,58 @@
 
 ## 云数据库 SQL Server(sqlserver) 版本：2018-03-28
 
+### 第 6 次发布
+
+发布时间：2020-07-14 08:16:33
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[CompleteExpansion](https://cloud.tencent.com/document/api/238/46286)](https://cloud.tencent.com/document/api/#/#)
+* [[CreatePublishSubscribe](https://cloud.tencent.com/document/api/238/46285)](https://cloud.tencent.com/document/api/#/#)
+* [[DeletePublishSubscribe](https://cloud.tencent.com/document/api/238/46284)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeMaintenanceSpan](https://cloud.tencent.com/document/api/238/46283)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribePublishSubscribe](https://cloud.tencent.com/document/api/238/46282)](https://cloud.tencent.com/document/api/#/#)
+* [[ModifyBackupStrategy](https://cloud.tencent.com/document/api/238/46288)](https://cloud.tencent.com/document/api/#/#)
+* [[ModifyMaintenanceSpan](https://cloud.tencent.com/document/api/238/46281)](https://cloud.tencent.com/document/api/#/#)
+* [[ModifyPublishSubscribeName](https://cloud.tencent.com/document/api/238/46280)](https://cloud.tencent.com/document/api/#/#)
+* [[RemoveBackups](https://cloud.tencent.com/document/api/238/46287)](https://cloud.tencent.com/document/api/#/#)
+
+修改接口：
+
+* [CreateDBInstances](https://cloud.tencent.com/document/api/238/19973)
+
+	* 新增入参：SecurityGroupList, Weekly, StartTime, Span, HAType, MultiZones
+
+* [InquiryPriceCreateDBInstances](https://cloud.tencent.com/document/api/238/19962)
+
+	* 新增入参：Cpu, InstanceType, MachineType
+
+* [InquiryPriceUpgradeDBInstance](https://cloud.tencent.com/document/api/238/19960)
+
+	* 新增入参：Cpu
+
+* [UpgradeDBInstance](https://cloud.tencent.com/document/api/238/19948)
+
+	* 新增入参：Cpu
+
+
+新增数据结构：
+
+* [[DatabaseTuple](https://cloud.tencent.com/document/api/238/19976#DatabaseTuple)](https://cloud.tencent.com/document/api/238/19976#[DatabaseTuple](https://cloud.tencent.com/document/api/238/19976#DatabaseTuple))
+* [[DatabaseTupleStatus](https://cloud.tencent.com/document/api/238/19976#DatabaseTupleStatus)](https://cloud.tencent.com/document/api/238/19976#[DatabaseTupleStatus](https://cloud.tencent.com/document/api/238/19976#DatabaseTupleStatus))
+* [[PublishSubscribe](https://cloud.tencent.com/document/api/238/19976#PublishSubscribe)](https://cloud.tencent.com/document/api/238/19976#[PublishSubscribe](https://cloud.tencent.com/document/api/238/19976#PublishSubscribe))
+
+修改数据结构：
+
+* [DBInstance](https://cloud.tencent.com/document/api/238/19976#DBInstance)
+
+	* 新增成员：IsolateOperator, SubFlag, ROFlag, HAFlag
+
+
 ### 第 5 次发布
 
 发布时间：2020-03-20 08:12:59
@@ -22393,6 +22558,23 @@
 
 
 ## 标签(tag) 版本：2018-08-13
+
+### 第 8 次发布
+
+发布时间：2020-07-14 08:17:00
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[AttachResourcesTag](https://cloud.tencent.com/document/api/651/46294)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeResourceTagsByResourceIdsSeq](https://cloud.tencent.com/document/api/651/46291)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeTagValuesSeq](https://cloud.tencent.com/document/api/651/46290)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeTagsSeq](https://cloud.tencent.com/document/api/651/46289)](https://cloud.tencent.com/document/api/#/#)
+* [[DetachResourcesTag](https://cloud.tencent.com/document/api/651/46293)](https://cloud.tencent.com/document/api/#/#)
+* [[ModifyResourcesTagValue](https://cloud.tencent.com/document/api/651/46292)](https://cloud.tencent.com/document/api/#/#)
 
 ### 第 7 次发布
 

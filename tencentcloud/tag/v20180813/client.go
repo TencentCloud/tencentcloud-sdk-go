@@ -68,6 +68,31 @@ func (c *Client) AddResourceTag(request *AddResourceTagRequest) (response *AddRe
     return
 }
 
+func NewAttachResourcesTagRequest() (request *AttachResourcesTagRequest) {
+    request = &AttachResourcesTagRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tag", APIVersion, "AttachResourcesTag")
+    return
+}
+
+func NewAttachResourcesTagResponse() (response *AttachResourcesTagResponse) {
+    response = &AttachResourcesTagResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 给多个资源关联某个标签
+func (c *Client) AttachResourcesTag(request *AttachResourcesTagRequest) (response *AttachResourcesTagResponse, err error) {
+    if request == nil {
+        request = NewAttachResourcesTagRequest()
+    }
+    response = NewAttachResourcesTagResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateTagRequest() (request *CreateTagRequest) {
     request = &CreateTagRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -193,6 +218,31 @@ func (c *Client) DescribeResourceTagsByResourceIds(request *DescribeResourceTags
     return
 }
 
+func NewDescribeResourceTagsByResourceIdsSeqRequest() (request *DescribeResourceTagsByResourceIdsSeqRequest) {
+    request = &DescribeResourceTagsByResourceIdsSeqRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tag", APIVersion, "DescribeResourceTagsByResourceIdsSeq")
+    return
+}
+
+func NewDescribeResourceTagsByResourceIdsSeqResponse() (response *DescribeResourceTagsByResourceIdsSeqResponse) {
+    response = &DescribeResourceTagsByResourceIdsSeqResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 按顺序查看资源关联的标签
+func (c *Client) DescribeResourceTagsByResourceIdsSeq(request *DescribeResourceTagsByResourceIdsSeqRequest) (response *DescribeResourceTagsByResourceIdsSeqResponse, err error) {
+    if request == nil {
+        request = NewDescribeResourceTagsByResourceIdsSeqRequest()
+    }
+    response = NewDescribeResourceTagsByResourceIdsSeqResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeResourceTagsByTagKeysRequest() (request *DescribeResourceTagsByTagKeysRequest) {
     request = &DescribeResourceTagsByTagKeysRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -293,6 +343,31 @@ func (c *Client) DescribeTagValues(request *DescribeTagValuesRequest) (response 
     return
 }
 
+func NewDescribeTagValuesSeqRequest() (request *DescribeTagValuesSeqRequest) {
+    request = &DescribeTagValuesSeqRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tag", APIVersion, "DescribeTagValuesSeq")
+    return
+}
+
+func NewDescribeTagValuesSeqResponse() (response *DescribeTagValuesSeqResponse) {
+    response = &DescribeTagValuesSeqResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 用于查询已建立的标签列表中的标签值。
+func (c *Client) DescribeTagValuesSeq(request *DescribeTagValuesSeqRequest) (response *DescribeTagValuesSeqResponse, err error) {
+    if request == nil {
+        request = NewDescribeTagValuesSeqRequest()
+    }
+    response = NewDescribeTagValuesSeqResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeTagsRequest() (request *DescribeTagsRequest) {
     request = &DescribeTagsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -318,6 +393,56 @@ func (c *Client) DescribeTags(request *DescribeTagsRequest) (response *DescribeT
     return
 }
 
+func NewDescribeTagsSeqRequest() (request *DescribeTagsSeqRequest) {
+    request = &DescribeTagsSeqRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tag", APIVersion, "DescribeTagsSeq")
+    return
+}
+
+func NewDescribeTagsSeqResponse() (response *DescribeTagsSeqResponse) {
+    response = &DescribeTagsSeqResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 用于查询已建立的标签列表。
+func (c *Client) DescribeTagsSeq(request *DescribeTagsSeqRequest) (response *DescribeTagsSeqResponse, err error) {
+    if request == nil {
+        request = NewDescribeTagsSeqRequest()
+    }
+    response = NewDescribeTagsSeqResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDetachResourcesTagRequest() (request *DetachResourcesTagRequest) {
+    request = &DetachResourcesTagRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tag", APIVersion, "DetachResourcesTag")
+    return
+}
+
+func NewDetachResourcesTagResponse() (response *DetachResourcesTagResponse) {
+    response = &DetachResourcesTagResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 解绑多个资源关联的某个标签
+func (c *Client) DetachResourcesTag(request *DetachResourcesTagRequest) (response *DetachResourcesTagResponse, err error) {
+    if request == nil {
+        request = NewDetachResourcesTagRequest()
+    }
+    response = NewDetachResourcesTagResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyResourceTagsRequest() (request *ModifyResourceTagsRequest) {
     request = &ModifyResourceTagsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -339,6 +464,31 @@ func (c *Client) ModifyResourceTags(request *ModifyResourceTagsRequest) (respons
         request = NewModifyResourceTagsRequest()
     }
     response = NewModifyResourceTagsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyResourcesTagValueRequest() (request *ModifyResourcesTagValueRequest) {
+    request = &ModifyResourcesTagValueRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tag", APIVersion, "ModifyResourcesTagValue")
+    return
+}
+
+func NewModifyResourcesTagValueResponse() (response *ModifyResourcesTagValueResponse) {
+    response = &ModifyResourcesTagValueResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 修改多个资源关联的某个标签键对应的标签值
+func (c *Client) ModifyResourcesTagValue(request *ModifyResourcesTagValueRequest) (response *ModifyResourcesTagValueResponse, err error) {
+    if request == nil {
+        request = NewModifyResourcesTagValueRequest()
+    }
+    response = NewModifyResourcesTagValueResponse()
     err = c.Send(request, response)
     return
 }
