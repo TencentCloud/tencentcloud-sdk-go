@@ -693,6 +693,31 @@ func (c *Client) DescribeInstances(request *DescribeInstancesRequest) (response 
     return
 }
 
+func NewDescribeMaintenanceWindowRequest() (request *DescribeMaintenanceWindowRequest) {
+    request = &DescribeMaintenanceWindowRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("redis", APIVersion, "DescribeMaintenanceWindow")
+    return
+}
+
+func NewDescribeMaintenanceWindowResponse() (response *DescribeMaintenanceWindowResponse) {
+    response = &DescribeMaintenanceWindowResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询实例维护时间窗，在实例需要进行版本升级或者架构升级的时候，会在维护时间窗时间内进行切换
+func (c *Client) DescribeMaintenanceWindow(request *DescribeMaintenanceWindowRequest) (response *DescribeMaintenanceWindowResponse, err error) {
+    if request == nil {
+        request = NewDescribeMaintenanceWindowRequest()
+    }
+    response = NewDescribeMaintenanceWindowResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeProductInfoRequest() (request *DescribeProductInfoRequest) {
     request = &DescribeProductInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1218,6 +1243,31 @@ func (c *Client) ModifyInstanceParams(request *ModifyInstanceParamsRequest) (res
     return
 }
 
+func NewModifyMaintenanceWindowRequest() (request *ModifyMaintenanceWindowRequest) {
+    request = &ModifyMaintenanceWindowRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("redis", APIVersion, "ModifyMaintenanceWindow")
+    return
+}
+
+func NewModifyMaintenanceWindowResponse() (response *ModifyMaintenanceWindowResponse) {
+    response = &ModifyMaintenanceWindowResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 修改实例维护时间窗时间，需要进行版本升级或者架构升级的实例，会在维护时间窗内进行时间切换。注意：已经发起版本升级或者架构升级的实例，无法修改维护时间窗。
+func (c *Client) ModifyMaintenanceWindow(request *ModifyMaintenanceWindowRequest) (response *ModifyMaintenanceWindowResponse, err error) {
+    if request == nil {
+        request = NewModifyMaintenanceWindowRequest()
+    }
+    response = NewModifyMaintenanceWindowResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyNetworkConfigRequest() (request *ModifyNetworkConfigRequest) {
     request = &ModifyNetworkConfigRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1389,6 +1439,31 @@ func (c *Client) UpgradeInstance(request *UpgradeInstanceRequest) (response *Upg
         request = NewUpgradeInstanceRequest()
     }
     response = NewUpgradeInstanceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewUpgradeInstanceVersionRequest() (request *UpgradeInstanceVersionRequest) {
+    request = &UpgradeInstanceVersionRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("redis", APIVersion, "UpgradeInstanceVersion")
+    return
+}
+
+func NewUpgradeInstanceVersionResponse() (response *UpgradeInstanceVersionResponse) {
+    response = &UpgradeInstanceVersionResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 将原本实例升级到高版本实例，或者将主从版实例升级到集群版实例
+func (c *Client) UpgradeInstanceVersion(request *UpgradeInstanceVersionRequest) (response *UpgradeInstanceVersionResponse, err error) {
+    if request == nil {
+        request = NewUpgradeInstanceVersionRequest()
+    }
+    response = NewUpgradeInstanceVersionResponse()
     err = c.Send(request, response)
     return
 }

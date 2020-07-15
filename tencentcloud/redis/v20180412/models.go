@@ -1366,6 +1366,46 @@ func (r *DescribeInstancesResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeMaintenanceWindowRequest struct {
+	*tchttp.BaseRequest
+
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+}
+
+func (r *DescribeMaintenanceWindowRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeMaintenanceWindowRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeMaintenanceWindowResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 维护时间窗起始时间，如：17:00
+		StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+		// 维护时间窗结束时间，如：19:00
+		EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeMaintenanceWindowResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeMaintenanceWindowResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeProductInfoRequest struct {
 	*tchttp.BaseRequest
 }
@@ -2765,6 +2805,49 @@ func (r *ModifyInstanceResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type ModifyMaintenanceWindowRequest struct {
+	*tchttp.BaseRequest
+
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 维护时间窗起始时间，如：17:00
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 维护时间窗结束时间，如：19:00
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+}
+
+func (r *ModifyMaintenanceWindowRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyMaintenanceWindowRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyMaintenanceWindowResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 修改状态：success 或者 failed
+		Status *string `json:"Status,omitempty" name:"Status"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifyMaintenanceWindowResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyMaintenanceWindowResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type ModifyNetworkConfigRequest struct {
 	*tchttp.BaseRequest
 
@@ -3348,6 +3431,49 @@ func (r *UpgradeInstanceResponse) ToJsonString() string {
 }
 
 func (r *UpgradeInstanceResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type UpgradeInstanceVersionRequest struct {
+	*tchttp.BaseRequest
+
+	// 目标实例类型，同CreateInstances接口的Type，即实例要变更的目标类型
+	TargetInstanceType *string `json:"TargetInstanceType,omitempty" name:"TargetInstanceType"`
+
+	// 切换模式：1-维护时间窗切换，2-立即切换
+	SwitchOption *int64 `json:"SwitchOption,omitempty" name:"SwitchOption"`
+
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+}
+
+func (r *UpgradeInstanceVersionRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *UpgradeInstanceVersionRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type UpgradeInstanceVersionResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 订单ID
+		DealId *string `json:"DealId,omitempty" name:"DealId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *UpgradeInstanceVersionResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *UpgradeInstanceVersionResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 

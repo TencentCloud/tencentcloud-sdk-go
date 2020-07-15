@@ -1,51 +1,35 @@
 # 本版本更新包含以下内容：
 
-## 企业收付平台(cpdp) 版本：2019-08-20
+## 云游戏解决方案(gs) 版本：2019-11-18
 
-### 第 24 次发布
+### 第 9 次发布
 
-发布时间：2020-07-14 08:23:00
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [DownloadBill](https://cloud.tencent.com/document/api/1122/40672)
-
-	* 新增入参：MidasEnvironment
-
-
-
-
-## 数据库智能管家 DBbrain(dbbrain) 版本：2019-10-16
-
-### 第 3 次发布
-
-发布时间：2020-07-14 08:08:56
+发布时间：2020-07-15 08:03:05
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-新增接口：
+<font color="#dd0000">**删除接口**：</font>
 
-* [DescribeTopSpaceTableTimeSeries](https://cloud.tencent.com/document/api/1130/46279)
+* DescribeWorkers
+* DescribeWorkersInfo
+* EnterQueue
+* ModifyWorkers
+* QuitQueue
 
-新增数据结构：
+<font color="#dd0000">**删除数据结构**：</font>
 
-* [MonitorFloatMetric](https://cloud.tencent.com/document/api/1130/39561#MonitorFloatMetric)
-* [MonitorFloatMetricSeriesData](https://cloud.tencent.com/document/api/1130/39561#MonitorFloatMetricSeriesData)
-* [TableSpaceTimeSeries](https://cloud.tencent.com/document/api/1130/39561#TableSpaceTimeSeries)
-
+* WorkerDetail
+* WorkerRegionInfo
 
 
-## 云数据库 SQL Server(sqlserver) 版本：2018-03-28
 
-### 第 6 次发布
+## 云数据库 Redis(redis) 版本：2018-04-12
 
-发布时间：2020-07-14 08:16:33
+### 第 18 次发布
+
+发布时间：2020-07-15 08:15:20
 
 本次发布包含了以下内容：
 
@@ -53,68 +37,39 @@
 
 新增接口：
 
-* [CompleteExpansion](https://cloud.tencent.com/document/api/238/46286)
-* [CreatePublishSubscribe](https://cloud.tencent.com/document/api/238/46285)
-* [DeletePublishSubscribe](https://cloud.tencent.com/document/api/238/46284)
-* [DescribeMaintenanceSpan](https://cloud.tencent.com/document/api/238/46283)
-* [DescribePublishSubscribe](https://cloud.tencent.com/document/api/238/46282)
-* [ModifyBackupStrategy](https://cloud.tencent.com/document/api/238/46288)
-* [ModifyMaintenanceSpan](https://cloud.tencent.com/document/api/238/46281)
-* [ModifyPublishSubscribeName](https://cloud.tencent.com/document/api/238/46280)
-* [RemoveBackups](https://cloud.tencent.com/document/api/238/46287)
+* [DescribeMaintenanceWindow](https://cloud.tencent.com/document/api/239/46336)
+* [ModifyMaintenanceWindow](https://cloud.tencent.com/document/api/239/46335)
+* [UpgradeInstanceVersion](https://cloud.tencent.com/document/api/239/46334)
+
+
+
+## 云点播(vod) 版本：2018-07-17
+
+### 第 52 次发布
+
+发布时间：2020-07-15 08:19:43
+
+本次发布包含了以下内容：
+
+改善已有的文档。
 
 修改接口：
 
-* [CreateDBInstances](https://cloud.tencent.com/document/api/238/19973)
+* [CreateSuperPlayerConfig](https://cloud.tencent.com/document/api/266/43067)
 
-	* 新增入参：SecurityGroupList, Weekly, StartTime, Span, HAType, MultiZones
+	* 新增入参：Domain, Scheme
 
-* [InquiryPriceCreateDBInstances](https://cloud.tencent.com/document/api/238/19962)
+* [ModifySuperPlayerConfig](https://cloud.tencent.com/document/api/266/43062)
 
-	* 新增入参：Cpu, InstanceType, MachineType
+	* 新增入参：Domain, Scheme
 
-* [InquiryPriceUpgradeDBInstance](https://cloud.tencent.com/document/api/238/19960)
-
-	* 新增入参：Cpu
-
-* [UpgradeDBInstance](https://cloud.tencent.com/document/api/238/19948)
-
-	* 新增入参：Cpu
-
-
-新增数据结构：
-
-* [DatabaseTuple](https://cloud.tencent.com/document/api/238/19976#DatabaseTuple)
-* [DatabaseTupleStatus](https://cloud.tencent.com/document/api/238/19976#DatabaseTupleStatus)
-* [PublishSubscribe](https://cloud.tencent.com/document/api/238/19976#PublishSubscribe)
 
 修改数据结构：
 
-* [DBInstance](https://cloud.tencent.com/document/api/238/19976#DBInstance)
+* [PlayerConfig](https://cloud.tencent.com/document/api/266/31773#PlayerConfig)
 
-	* 新增成员：IsolateOperator, SubFlag, ROFlag, HAFlag
+	* 新增成员：Domain, Scheme
 
-
-
-
-## 标签(tag) 版本：2018-08-13
-
-### 第 8 次发布
-
-发布时间：2020-07-14 08:17:00
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [AttachResourcesTag](https://cloud.tencent.com/document/api/651/46294)
-* [DescribeResourceTagsByResourceIdsSeq](https://cloud.tencent.com/document/api/651/46291)
-* [DescribeTagValuesSeq](https://cloud.tencent.com/document/api/651/46290)
-* [DescribeTagsSeq](https://cloud.tencent.com/document/api/651/46289)
-* [DetachResourcesTag](https://cloud.tencent.com/document/api/651/46293)
-* [ModifyResourcesTagValue](https://cloud.tencent.com/document/api/651/46292)
 
 
 
@@ -10644,13 +10599,13 @@
 
 新增接口：
 
-* [[DescribeTopSpaceTableTimeSeries](https://cloud.tencent.com/document/api/1130/46279)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeTopSpaceTableTimeSeries](https://cloud.tencent.com/document/api/1130/46279)
 
 新增数据结构：
 
-* [[MonitorFloatMetric](https://cloud.tencent.com/document/api/1130/39561#MonitorFloatMetric)](https://cloud.tencent.com/document/api/1130/39561#[MonitorFloatMetric](https://cloud.tencent.com/document/api/1130/39561#MonitorFloatMetric))
-* [[MonitorFloatMetricSeriesData](https://cloud.tencent.com/document/api/1130/39561#MonitorFloatMetricSeriesData)](https://cloud.tencent.com/document/api/1130/39561#[MonitorFloatMetricSeriesData](https://cloud.tencent.com/document/api/1130/39561#MonitorFloatMetricSeriesData))
-* [[TableSpaceTimeSeries](https://cloud.tencent.com/document/api/1130/39561#TableSpaceTimeSeries)](https://cloud.tencent.com/document/api/1130/39561#[TableSpaceTimeSeries](https://cloud.tencent.com/document/api/1130/39561#TableSpaceTimeSeries))
+* [MonitorFloatMetric](https://cloud.tencent.com/document/api/1130/39561#MonitorFloatMetric)
+* [MonitorFloatMetricSeriesData](https://cloud.tencent.com/document/api/1130/39561#MonitorFloatMetricSeriesData)
+* [TableSpaceTimeSeries](https://cloud.tencent.com/document/api/1130/39561#TableSpaceTimeSeries)
 
 ### 第 2 次发布
 
@@ -13781,6 +13736,27 @@
 
 
 ## 云游戏解决方案(gs) 版本：2019-11-18
+
+### 第 9 次发布
+
+发布时间：2020-07-15 08:03:05
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+<font color="#dd0000">**删除接口**：</font>
+
+* DescribeWorkers
+* DescribeWorkersInfo
+* EnterQueue
+* ModifyWorkers
+* QuitQueue
+
+<font color="#dd0000">**删除数据结构**：</font>
+
+* WorkerDetail
+* WorkerRegionInfo
 
 ### 第 8 次发布
 
@@ -20655,6 +20631,20 @@
 
 ## 云数据库 Redis(redis) 版本：2018-04-12
 
+### 第 18 次发布
+
+发布时间：2020-07-15 08:15:20
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeMaintenanceWindow](https://cloud.tencent.com/document/api/239/46336)](https://cloud.tencent.com/document/api/#/#)
+* [[ModifyMaintenanceWindow](https://cloud.tencent.com/document/api/239/46335)](https://cloud.tencent.com/document/api/#/#)
+* [[UpgradeInstanceVersion](https://cloud.tencent.com/document/api/239/46334)](https://cloud.tencent.com/document/api/#/#)
+
 ### 第 17 次发布
 
 发布时间：2020-04-29 08:15:02
@@ -22059,15 +22049,15 @@
 
 新增接口：
 
-* [[CompleteExpansion](https://cloud.tencent.com/document/api/238/46286)](https://cloud.tencent.com/document/api/#/#)
-* [[CreatePublishSubscribe](https://cloud.tencent.com/document/api/238/46285)](https://cloud.tencent.com/document/api/#/#)
-* [[DeletePublishSubscribe](https://cloud.tencent.com/document/api/238/46284)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeMaintenanceSpan](https://cloud.tencent.com/document/api/238/46283)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribePublishSubscribe](https://cloud.tencent.com/document/api/238/46282)](https://cloud.tencent.com/document/api/#/#)
-* [[ModifyBackupStrategy](https://cloud.tencent.com/document/api/238/46288)](https://cloud.tencent.com/document/api/#/#)
-* [[ModifyMaintenanceSpan](https://cloud.tencent.com/document/api/238/46281)](https://cloud.tencent.com/document/api/#/#)
-* [[ModifyPublishSubscribeName](https://cloud.tencent.com/document/api/238/46280)](https://cloud.tencent.com/document/api/#/#)
-* [[RemoveBackups](https://cloud.tencent.com/document/api/238/46287)](https://cloud.tencent.com/document/api/#/#)
+* [CompleteExpansion](https://cloud.tencent.com/document/api/238/46286)
+* [CreatePublishSubscribe](https://cloud.tencent.com/document/api/238/46285)
+* [DeletePublishSubscribe](https://cloud.tencent.com/document/api/238/46284)
+* [DescribeMaintenanceSpan](https://cloud.tencent.com/document/api/238/46283)
+* [DescribePublishSubscribe](https://cloud.tencent.com/document/api/238/46282)
+* [ModifyBackupStrategy](https://cloud.tencent.com/document/api/238/46288)
+* [ModifyMaintenanceSpan](https://cloud.tencent.com/document/api/238/46281)
+* [ModifyPublishSubscribeName](https://cloud.tencent.com/document/api/238/46280)
+* [RemoveBackups](https://cloud.tencent.com/document/api/238/46287)
 
 修改接口：
 
@@ -22090,9 +22080,9 @@
 
 新增数据结构：
 
-* [[DatabaseTuple](https://cloud.tencent.com/document/api/238/19976#DatabaseTuple)](https://cloud.tencent.com/document/api/238/19976#[DatabaseTuple](https://cloud.tencent.com/document/api/238/19976#DatabaseTuple))
-* [[DatabaseTupleStatus](https://cloud.tencent.com/document/api/238/19976#DatabaseTupleStatus)](https://cloud.tencent.com/document/api/238/19976#[DatabaseTupleStatus](https://cloud.tencent.com/document/api/238/19976#DatabaseTupleStatus))
-* [[PublishSubscribe](https://cloud.tencent.com/document/api/238/19976#PublishSubscribe)](https://cloud.tencent.com/document/api/238/19976#[PublishSubscribe](https://cloud.tencent.com/document/api/238/19976#PublishSubscribe))
+* [DatabaseTuple](https://cloud.tencent.com/document/api/238/19976#DatabaseTuple)
+* [DatabaseTupleStatus](https://cloud.tencent.com/document/api/238/19976#DatabaseTupleStatus)
+* [PublishSubscribe](https://cloud.tencent.com/document/api/238/19976#PublishSubscribe)
 
 修改数据结构：
 
@@ -22569,12 +22559,12 @@
 
 新增接口：
 
-* [[AttachResourcesTag](https://cloud.tencent.com/document/api/651/46294)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeResourceTagsByResourceIdsSeq](https://cloud.tencent.com/document/api/651/46291)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeTagValuesSeq](https://cloud.tencent.com/document/api/651/46290)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeTagsSeq](https://cloud.tencent.com/document/api/651/46289)](https://cloud.tencent.com/document/api/#/#)
-* [[DetachResourcesTag](https://cloud.tencent.com/document/api/651/46293)](https://cloud.tencent.com/document/api/#/#)
-* [[ModifyResourcesTagValue](https://cloud.tencent.com/document/api/651/46292)](https://cloud.tencent.com/document/api/#/#)
+* [AttachResourcesTag](https://cloud.tencent.com/document/api/651/46294)
+* [DescribeResourceTagsByResourceIdsSeq](https://cloud.tencent.com/document/api/651/46291)
+* [DescribeTagValuesSeq](https://cloud.tencent.com/document/api/651/46290)
+* [DescribeTagsSeq](https://cloud.tencent.com/document/api/651/46289)
+* [DetachResourcesTag](https://cloud.tencent.com/document/api/651/46293)
+* [ModifyResourcesTagValue](https://cloud.tencent.com/document/api/651/46292)
 
 ### 第 7 次发布
 
@@ -27005,6 +26995,32 @@
 
 
 ## 云点播(vod) 版本：2018-07-17
+
+### 第 52 次发布
+
+发布时间：2020-07-15 08:19:43
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateSuperPlayerConfig](https://cloud.tencent.com/document/api/266/43067)
+
+	* 新增入参：Domain, Scheme
+
+* [ModifySuperPlayerConfig](https://cloud.tencent.com/document/api/266/43062)
+
+	* 新增入参：Domain, Scheme
+
+
+修改数据结构：
+
+* [PlayerConfig](https://cloud.tencent.com/document/api/266/31773#PlayerConfig)
+
+	* 新增成员：Domain, Scheme
+
 
 ### 第 51 次发布
 

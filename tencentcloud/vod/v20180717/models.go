@@ -3048,9 +3048,6 @@ type CreateSuperPlayerConfigRequest struct {
 	// 播放器配置名称，长度限制：64 个字符。只允许出现 [0-9a-zA-Z] 及 _- 字符（如 test_ABC-123），同一个用户该名称唯一。
 	Name *string `json:"Name,omitempty" name:"Name"`
 
-	// 模板描述信息，长度限制：256 个字符。
-	Comment *string `json:"Comment,omitempty" name:"Comment"`
-
 	// 播放 DRM 保护的自适应码流开关：
 	// <li>ON：开启，表示仅播放 DRM  保护的自适应码流输出；</li>
 	// <li>OFF：关闭，表示播放未加密的自适应码流输出。</li>
@@ -3075,6 +3072,17 @@ type CreateSuperPlayerConfigRequest struct {
 	// <li>MinEdgeLength：2160，Name：4K；</li>
 	// <li>MinEdgeLength：4320，Name：8K。</li>
 	ResolutionNames []*ResolutionNameInfo `json:"ResolutionNames,omitempty" name:"ResolutionNames" list`
+
+	// 播放时使用的域名。不填或者填 Default，表示使用[默认分发配置](https://cloud.tencent.com/document/product/266/33373)中的域名。
+	Domain *string `json:"Domain,omitempty" name:"Domain"`
+
+	// 播放时使用的 Scheme。不填或者填 Default，表示使用[默认分发配置](https://cloud.tencent.com/document/product/266/33373)中的 Scheme。其他可选值：
+	// <li>HTTP；</li>
+	// <li>HTTPS。</li>
+	Scheme *string `json:"Scheme,omitempty" name:"Scheme"`
+
+	// 模板描述信息，长度限制：256 个字符。
+	Comment *string `json:"Comment,omitempty" name:"Comment"`
 
 	// 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
 	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
@@ -7747,6 +7755,15 @@ type ModifySuperPlayerConfigRequest struct {
 	// 播放器对不于不同分辨率的子流展示名字。
 	ResolutionNames []*ResolutionNameInfo `json:"ResolutionNames,omitempty" name:"ResolutionNames" list`
 
+	// 播放时使用的域名。填 Default 表示使用[默认分发配置](https://cloud.tencent.com/document/product/266/33373)中的域名。
+	Domain *string `json:"Domain,omitempty" name:"Domain"`
+
+	// 播放时使用的 Scheme。取值范围：
+	// <li>Default：使用[默认分发配置](https://cloud.tencent.com/document/product/266/33373)中的 Scheme；</li>
+	// <li>HTTP；</li>
+	// <li>HTTPS。</li>
+	Scheme *string `json:"Scheme,omitempty" name:"Scheme"`
+
 	// 模板描述信息，长度限制：256 个字符。
 	Comment *string `json:"Comment,omitempty" name:"Comment"`
 
@@ -8192,6 +8209,15 @@ type PlayerConfig struct {
 
 	// 播放器配置最后修改时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
 	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
+
+	// 播放时使用的域名。值为 Default，表示使用[默认分发配置](https://cloud.tencent.com/document/product/266/33373)中的域名。
+	Domain *string `json:"Domain,omitempty" name:"Domain"`
+
+	// 播放时使用的 Scheme。取值范围：
+	// <li>Default：使用[默认分发配置](https://cloud.tencent.com/document/product/266/33373)中的 Scheme；</li>
+	// <li>HTTP；</li>
+	// <li>HTTPS。</li>
+	Scheme *string `json:"Scheme,omitempty" name:"Scheme"`
 
 	// 模板描述信息。
 	Comment *string `json:"Comment,omitempty" name:"Comment"`
