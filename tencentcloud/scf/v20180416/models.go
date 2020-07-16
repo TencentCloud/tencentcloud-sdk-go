@@ -54,6 +54,45 @@ type Alias struct {
 	ModTime *string `json:"ModTime,omitempty" name:"ModTime"`
 }
 
+type CfsConfig struct {
+
+	// 文件系统信息列表
+	CfsInsList []*CfsInsInfo `json:"CfsInsList,omitempty" name:"CfsInsList" list`
+}
+
+type CfsInsInfo struct {
+
+	// 用户id
+	UserId *string `json:"UserId,omitempty" name:"UserId"`
+
+	// 用户组id
+	UserGroupId *string `json:"UserGroupId,omitempty" name:"UserGroupId"`
+
+	// 文件系统实例id
+	CfsId *string `json:"CfsId,omitempty" name:"CfsId"`
+
+	// 文件系统挂载点id
+	MountInsId *string `json:"MountInsId,omitempty" name:"MountInsId"`
+
+	// 本地挂载点
+	LocalMountDir *string `json:"LocalMountDir,omitempty" name:"LocalMountDir"`
+
+	// 远程挂载点
+	RemoteMountDir *string `json:"RemoteMountDir,omitempty" name:"RemoteMountDir"`
+
+	// 文件系统ip
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IpAddress *string `json:"IpAddress,omitempty" name:"IpAddress"`
+
+	// 文件系统所在的私有网络id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MountVpcId *string `json:"MountVpcId,omitempty" name:"MountVpcId"`
+
+	// 文件系统所在私有网络的子网id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MountSubnetId *string `json:"MountSubnetId,omitempty" name:"MountSubnetId"`
+}
+
 type Code struct {
 
 	// 对象存储桶名称
@@ -264,6 +303,9 @@ type CreateFunctionRequest struct {
 
 	// 公网访问配置
 	PublicNetConfig *PublicNetConfigIn `json:"PublicNetConfig,omitempty" name:"PublicNetConfig"`
+
+	// 文件系统配置参数，用于云函数挂载文件系统
+	CfsConfig *CfsConfig `json:"CfsConfig,omitempty" name:"CfsConfig"`
 }
 
 func (r *CreateFunctionRequest) ToJsonString() string {
@@ -1048,6 +1090,18 @@ type GetFunctionResponse struct {
 		// 是否启用Ons
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		OnsEnable *string `json:"OnsEnable,omitempty" name:"OnsEnable"`
+
+		// 文件系统配置参数，用于云函数挂载文件系统
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		CfsConfig *CfsConfig `json:"CfsConfig,omitempty" name:"CfsConfig"`
+
+		// 函数的计费状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		AvailableStatus *string `json:"AvailableStatus,omitempty" name:"AvailableStatus"`
+
+		// 函数版本
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Qualifier *string `json:"Qualifier,omitempty" name:"Qualifier"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -2042,6 +2096,9 @@ type UpdateFunctionConfigurationRequest struct {
 
 	// 公网访问配置
 	PublicNetConfig *PublicNetConfigIn `json:"PublicNetConfig,omitempty" name:"PublicNetConfig"`
+
+	// 文件系统配置入参，用于云函数绑定文件系统
+	CfsConfig *CfsConfig `json:"CfsConfig,omitempty" name:"CfsConfig"`
 }
 
 func (r *UpdateFunctionConfigurationRequest) ToJsonString() string {

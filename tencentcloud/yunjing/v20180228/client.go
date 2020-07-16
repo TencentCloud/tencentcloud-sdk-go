@@ -118,6 +118,31 @@ func (c *Client) CloseProVersion(request *CloseProVersionRequest) (response *Clo
     return
 }
 
+func NewCreateBaselineStrategyRequest() (request *CreateBaselineStrategyRequest) {
+    request = &CreateBaselineStrategyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("yunjing", APIVersion, "CreateBaselineStrategy")
+    return
+}
+
+func NewCreateBaselineStrategyResponse() (response *CreateBaselineStrategyResponse) {
+    response = &CreateBaselineStrategyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 根据策略信息创建基线策略
+func (c *Client) CreateBaselineStrategy(request *CreateBaselineStrategyRequest) (response *CreateBaselineStrategyResponse, err error) {
+    if request == nil {
+        request = NewCreateBaselineStrategyRequest()
+    }
+    response = NewCreateBaselineStrategyResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateOpenPortTaskRequest() (request *CreateOpenPortTaskRequest) {
     request = &CreateOpenPortTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},

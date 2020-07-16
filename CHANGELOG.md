@@ -1,53 +1,10 @@
 # 本版本更新包含以下内容：
 
-## 云游戏解决方案(gs) 版本：2019-11-18
+## 弹性 MapReduce(emr) 版本：2019-01-03
 
-### 第 9 次发布
+### 第 12 次发布
 
-发布时间：2020-07-15 08:03:05
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-<font color="#dd0000">**删除接口**：</font>
-
-* DescribeWorkers
-* DescribeWorkersInfo
-* EnterQueue
-* ModifyWorkers
-* QuitQueue
-
-<font color="#dd0000">**删除数据结构**：</font>
-
-* WorkerDetail
-* WorkerRegionInfo
-
-
-
-## 云数据库 Redis(redis) 版本：2018-04-12
-
-### 第 18 次发布
-
-发布时间：2020-07-15 08:15:20
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [DescribeMaintenanceWindow](https://cloud.tencent.com/document/api/239/46336)
-* [ModifyMaintenanceWindow](https://cloud.tencent.com/document/api/239/46335)
-* [UpgradeInstanceVersion](https://cloud.tencent.com/document/api/239/46334)
-
-
-
-## 云点播(vod) 版本：2018-07-17
-
-### 第 52 次发布
-
-发布时间：2020-07-15 08:19:43
+发布时间：2020-07-16 08:10:49
 
 本次发布包含了以下内容：
 
@@ -55,21 +12,76 @@
 
 修改接口：
 
-* [CreateSuperPlayerConfig](https://cloud.tencent.com/document/api/266/43067)
+* [DescribeClusterNodes](https://cloud.tencent.com/document/api/589/41707)
 
-	* 新增入参：Domain, Scheme
+	* 新增入参：HardwareResourceType, SearchFields
 
-* [ModifySuperPlayerConfig](https://cloud.tencent.com/document/api/266/43062)
+	* 新增出参：HardwareResourceTypeList
 
-	* 新增入参：Domain, Scheme
+* [ScaleOutInstance](https://cloud.tencent.com/document/api/589/34264)
 
+	* 新增入参：HardwareResourceType, PodSpec
+
+
+新增数据结构：
+
+* [PodSpec](https://cloud.tencent.com/document/api/589/33981#PodSpec)
+* [SearchItem](https://cloud.tencent.com/document/api/589/33981#SearchItem)
 
 修改数据结构：
 
-* [PlayerConfig](https://cloud.tencent.com/document/api/266/31773#PlayerConfig)
+* [NodeHardwareInfo](https://cloud.tencent.com/document/api/589/33981#NodeHardwareInfo)
 
-	* 新增成员：Domain, Scheme
+	* 新增成员：HardwareResourceType
 
+
+
+
+## 云函数(scf) 版本：2018-04-16
+
+### 第 16 次发布
+
+发布时间：2020-07-16 08:16:53
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateFunction](https://cloud.tencent.com/document/api/583/18586)
+
+	* 新增入参：CfsConfig
+
+* [GetFunction](https://cloud.tencent.com/document/api/583/18584)
+
+	* 新增出参：CfsConfig, AvailableStatus, Qualifier
+
+* [UpdateFunctionConfiguration](https://cloud.tencent.com/document/api/583/18580)
+
+	* 新增入参：CfsConfig
+
+
+新增数据结构：
+
+* [CfsConfig](https://cloud.tencent.com/document/api/583/17244#CfsConfig)
+* [CfsInsInfo](https://cloud.tencent.com/document/api/583/17244#CfsInsInfo)
+
+
+
+## 主机安全(yunjing) 版本：2018-02-28
+
+### 第 7 次发布
+
+发布时间：2020-07-16 08:21:39
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CreateBaselineStrategy](https://cloud.tencent.com/document/api/296/46372)
 
 
 
@@ -12123,6 +12135,39 @@
 
 ## 弹性 MapReduce(emr) 版本：2019-01-03
 
+### 第 12 次发布
+
+发布时间：2020-07-16 08:10:49
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeClusterNodes](https://cloud.tencent.com/document/api/589/41707)
+
+	* 新增入参：HardwareResourceType, SearchFields
+
+	* 新增出参：HardwareResourceTypeList
+
+* [ScaleOutInstance](https://cloud.tencent.com/document/api/589/34264)
+
+	* 新增入参：HardwareResourceType, PodSpec
+
+
+新增数据结构：
+
+* [[PodSpec](https://cloud.tencent.com/document/api/589/33981#PodSpec)](https://cloud.tencent.com/document/api/589/33981#[PodSpec](https://cloud.tencent.com/document/api/589/33981#PodSpec))
+* [[SearchItem](https://cloud.tencent.com/document/api/589/33981#SearchItem)](https://cloud.tencent.com/document/api/589/33981#[SearchItem](https://cloud.tencent.com/document/api/589/33981#SearchItem))
+
+修改数据结构：
+
+* [NodeHardwareInfo](https://cloud.tencent.com/document/api/589/33981#NodeHardwareInfo)
+
+	* 新增成员：HardwareResourceType
+
+
 ### 第 11 次发布
 
 发布时间：2020-04-23 08:09:03
@@ -20641,9 +20686,9 @@
 
 新增接口：
 
-* [[DescribeMaintenanceWindow](https://cloud.tencent.com/document/api/239/46336)](https://cloud.tencent.com/document/api/#/#)
-* [[ModifyMaintenanceWindow](https://cloud.tencent.com/document/api/239/46335)](https://cloud.tencent.com/document/api/#/#)
-* [[UpgradeInstanceVersion](https://cloud.tencent.com/document/api/239/46334)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeMaintenanceWindow](https://cloud.tencent.com/document/api/239/46336)
+* [ModifyMaintenanceWindow](https://cloud.tencent.com/document/api/239/46335)
+* [UpgradeInstanceVersion](https://cloud.tencent.com/document/api/239/46334)
 
 ### 第 17 次发布
 
@@ -21095,6 +21140,34 @@
 
 
 ## 云函数(scf) 版本：2018-04-16
+
+### 第 16 次发布
+
+发布时间：2020-07-16 08:16:53
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateFunction](https://cloud.tencent.com/document/api/583/18586)
+
+	* 新增入参：CfsConfig
+
+* [GetFunction](https://cloud.tencent.com/document/api/583/18584)
+
+	* 新增出参：CfsConfig, AvailableStatus, Qualifier
+
+* [UpdateFunctionConfiguration](https://cloud.tencent.com/document/api/583/18580)
+
+	* 新增入参：CfsConfig
+
+
+新增数据结构：
+
+* [[CfsConfig](https://cloud.tencent.com/document/api/583/17244#CfsConfig)](https://cloud.tencent.com/document/api/583/17244#[CfsConfig](https://cloud.tencent.com/document/api/583/17244#CfsConfig))
+* [[CfsInsInfo](https://cloud.tencent.com/document/api/583/17244#CfsInsInfo)](https://cloud.tencent.com/document/api/583/17244#[CfsInsInfo](https://cloud.tencent.com/document/api/583/17244#CfsInsInfo))
 
 ### 第 15 次发布
 
@@ -30488,6 +30561,18 @@
 
 
 ## 主机安全(yunjing) 版本：2018-02-28
+
+### 第 7 次发布
+
+发布时间：2020-07-16 08:21:39
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[CreateBaselineStrategy](https://cloud.tencent.com/document/api/296/46372)](https://cloud.tencent.com/document/api/#/#)
 
 ### 第 6 次发布
 

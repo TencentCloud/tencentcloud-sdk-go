@@ -401,6 +401,61 @@ type ComponentStatistics struct {
 	Description *string `json:"Description,omitempty" name:"Description"`
 }
 
+type CreateBaselineStrategyRequest struct {
+	*tchttp.BaseRequest
+
+	// 策略名称
+	StrategyName *string `json:"StrategyName,omitempty" name:"StrategyName"`
+
+	// 检测周期
+	ScanCycle *uint64 `json:"ScanCycle,omitempty" name:"ScanCycle"`
+
+	// 定期检测时间，该时间下发扫描
+	ScanAt *string `json:"ScanAt,omitempty" name:"ScanAt"`
+
+	// 该策略下选择的基线id数组
+	CategoryIds []*uint64 `json:"CategoryIds,omitempty" name:"CategoryIds" list`
+
+	// 扫描范围是否全部服务器, 1:是  0:否, 为1则为全部专业版主机
+	IsGlobal *uint64 `json:"IsGlobal,omitempty" name:"IsGlobal"`
+
+	// 云主机类型：cvm：虚拟主机，bms：裸金属，ecm：边缘计算主机
+	MachineType *string `json:"MachineType,omitempty" name:"MachineType"`
+
+	// 主机地域
+	RegionCode *string `json:"RegionCode,omitempty" name:"RegionCode"`
+
+	// 主机id数组
+	Quuids []*string `json:"Quuids,omitempty" name:"Quuids" list`
+}
+
+func (r *CreateBaselineStrategyRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateBaselineStrategyRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateBaselineStrategyResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateBaselineStrategyResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateBaselineStrategyResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type CreateOpenPortTaskRequest struct {
 	*tchttp.BaseRequest
 

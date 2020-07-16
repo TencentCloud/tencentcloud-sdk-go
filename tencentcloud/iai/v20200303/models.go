@@ -246,10 +246,10 @@ func (r *CompareFaceResponse) FromJsonString(s string) error {
 type CopyPersonRequest struct {
 	*tchttp.BaseRequest
 
-	// 人员ID
+	// 人员ID，取值为创建人员接口中的PersonId
 	PersonId *string `json:"PersonId,omitempty" name:"PersonId"`
 
-	// 待加入的人员库列表
+	// 待加入的人员库列表，数组元素取值为创建人员库接口中的GroupId
 	GroupIds []*string `json:"GroupIds,omitempty" name:"GroupIds" list`
 }
 
@@ -289,7 +289,7 @@ func (r *CopyPersonResponse) FromJsonString(s string) error {
 type CreateFaceRequest struct {
 	*tchttp.BaseRequest
 
-	// 人员ID。
+	// 人员ID，取值为创建人员接口中的PersonId
 	PersonId *string `json:"PersonId,omitempty" name:"PersonId"`
 
 	// 图片 base64 数据，base64 编码后大小不可超过5M。
@@ -434,7 +434,7 @@ func (r *CreateGroupResponse) FromJsonString(s string) error {
 type CreatePersonRequest struct {
 	*tchttp.BaseRequest
 
-	// 待加入的人员库ID。
+	// 待加入的人员库ID，取值为创建人员库接口中的GroupId
 	GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
 
 	// 人员名称。[1，60]个字符，可修改，可重复。
@@ -530,10 +530,10 @@ func (r *CreatePersonResponse) FromJsonString(s string) error {
 type DeleteFaceRequest struct {
 	*tchttp.BaseRequest
 
-	// 人员ID
+	// 人员ID，取值为创建人员接口中的PersonId
 	PersonId *string `json:"PersonId,omitempty" name:"PersonId"`
 
-	// 待删除的人脸ID列表
+	// 待删除的人脸ID列表，数组元素取值为增加人脸接口返回的FaceId
 	FaceIds []*string `json:"FaceIds,omitempty" name:"FaceIds" list`
 }
 
@@ -573,7 +573,7 @@ func (r *DeleteFaceResponse) FromJsonString(s string) error {
 type DeleteGroupRequest struct {
 	*tchttp.BaseRequest
 
-	// 人员库ID。
+	// 人员库ID，取值为创建人员库接口中的GroupId
 	GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
 }
 
@@ -607,10 +607,10 @@ func (r *DeleteGroupResponse) FromJsonString(s string) error {
 type DeletePersonFromGroupRequest struct {
 	*tchttp.BaseRequest
 
-	// 人员ID
+	// 人员ID，取值为创建人员接口中的PersonId
 	PersonId *string `json:"PersonId,omitempty" name:"PersonId"`
 
-	// 人员库ID
+	// 人员库ID，取值为创建人员库接口中的GroupId
 	GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
 }
 
@@ -644,7 +644,7 @@ func (r *DeletePersonFromGroupResponse) FromJsonString(s string) error {
 type DeletePersonRequest struct {
 	*tchttp.BaseRequest
 
-	// 人员ID
+	// 人员ID，取值为创建人员接口中的PersonId
 	PersonId *string `json:"PersonId,omitempty" name:"PersonId"`
 }
 
@@ -1097,7 +1097,7 @@ func (r *GetCheckSimilarPersonJobIdListResponse) FromJsonString(s string) error 
 type GetGroupInfoRequest struct {
 	*tchttp.BaseRequest
 
-	// 人员库 ID。
+	// 人员库 ID，取值为创建人员库接口中的GroupId
 	GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
 }
 
@@ -1193,7 +1193,7 @@ func (r *GetGroupListResponse) FromJsonString(s string) error {
 type GetPersonBaseInfoRequest struct {
 	*tchttp.BaseRequest
 
-	// 人员ID
+	// 人员ID，创建人员接口中的PersonId
 	PersonId *string `json:"PersonId,omitempty" name:"PersonId"`
 }
 
@@ -1213,7 +1213,7 @@ type GetPersonBaseInfoResponse struct {
 		// 人员名称
 		PersonName *string `json:"PersonName,omitempty" name:"PersonName"`
 
-		// 人员性别
+		// 人员性别，0代表未填写，1代表男性，2代表女性
 		Gender *int64 `json:"Gender,omitempty" name:"Gender"`
 
 		// 包含的人脸 ID 列表
@@ -1236,7 +1236,7 @@ func (r *GetPersonBaseInfoResponse) FromJsonString(s string) error {
 type GetPersonGroupInfoRequest struct {
 	*tchttp.BaseRequest
 
-	// 人员ID
+	// 人员ID，取值为创建人员接口中的PersonId
 	PersonId *string `json:"PersonId,omitempty" name:"PersonId"`
 
 	// 起始序号，默认值为0
@@ -1287,7 +1287,7 @@ func (r *GetPersonGroupInfoResponse) FromJsonString(s string) error {
 type GetPersonListNumRequest struct {
 	*tchttp.BaseRequest
 
-	// 人员库ID
+	// 人员库ID，取值为创建人员库接口中的GroupId
 	GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
 }
 
@@ -1483,7 +1483,7 @@ type JobIdInfo struct {
 type ModifyGroupRequest struct {
 	*tchttp.BaseRequest
 
-	// 人员库ID
+	// 人员库ID，取值为创建人员库接口中的GroupId
 	GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
 
 	// 人员库名称
@@ -1526,13 +1526,13 @@ func (r *ModifyGroupResponse) FromJsonString(s string) error {
 type ModifyPersonBaseInfoRequest struct {
 	*tchttp.BaseRequest
 
-	// 人员ID
+	// 人员ID，取值为创建人员接口中的PersonId
 	PersonId *string `json:"PersonId,omitempty" name:"PersonId"`
 
 	// 需要修改的人员名称
 	PersonName *string `json:"PersonName,omitempty" name:"PersonName"`
 
-	// 需要修改的人员性别
+	// 需要修改的人员性别，1代表男性，2代表女性
 	Gender *int64 `json:"Gender,omitempty" name:"Gender"`
 }
 
@@ -1566,10 +1566,10 @@ func (r *ModifyPersonBaseInfoResponse) FromJsonString(s string) error {
 type ModifyPersonGroupInfoRequest struct {
 	*tchttp.BaseRequest
 
-	// 人员库ID
+	// 人员库ID，取值为创建人员库接口中的GroupId
 	GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
 
-	// 人员ID
+	// 人员ID，取值为创建人员接口中的PersonId
 	PersonId *string `json:"PersonId,omitempty" name:"PersonId"`
 
 	// 需要修改的人员描述字段内容，key-value
@@ -1682,7 +1682,7 @@ type ResultsReturnsByGroup struct {
 type SearchFacesRequest struct {
 	*tchttp.BaseRequest
 
-	// 希望搜索的人员库列表，上限100个。
+	// 希望搜索的人员库列表，上限100个。数组元素取值为创建人员库接口中的GroupId
 	GroupIds []*string `json:"GroupIds,omitempty" name:"GroupIds" list`
 
 	// 图片 base64 数据，base64 编码后大小不可超过5M。
@@ -1768,7 +1768,7 @@ func (r *SearchFacesResponse) FromJsonString(s string) error {
 type SearchFacesReturnsByGroupRequest struct {
 	*tchttp.BaseRequest
 
-	// 希望搜索的人员库列表，上限60个。
+	// 希望搜索的人员库列表，上限60个。数组元素取值为创建人员库接口中的GroupId
 	GroupIds []*string `json:"GroupIds,omitempty" name:"GroupIds" list`
 
 	// 图片 base64 数据，base64 编码后大小不可超过5M。
@@ -1855,7 +1855,7 @@ func (r *SearchFacesReturnsByGroupResponse) FromJsonString(s string) error {
 type SearchPersonsRequest struct {
 	*tchttp.BaseRequest
 
-	// 希望搜索的人员库列表，上限100个。
+	// 希望搜索的人员库列表，上限100个。数组元素取值为创建人员库接口中的GroupId
 	GroupIds []*string `json:"GroupIds,omitempty" name:"GroupIds" list`
 
 	// 图片 base64 数据，base64 编码后大小不可超过5M。

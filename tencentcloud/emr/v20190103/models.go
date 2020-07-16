@@ -413,6 +413,12 @@ type DescribeClusterNodesRequest struct {
 
 	// 每页返回数量，默认值为100，最大值为100。
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 资源类型:支持all/host/pod，默认为all
+	HardwareResourceType *string `json:"HardwareResourceType,omitempty" name:"HardwareResourceType"`
+
+	// 支持搜索的字段
+	SearchFields []*SearchItem `json:"SearchFields,omitempty" name:"SearchFields" list`
 }
 
 func (r *DescribeClusterNodesRequest) ToJsonString() string {
@@ -438,6 +444,10 @@ type DescribeClusterNodesResponse struct {
 		// 用户所有的标签键列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		TagKeys []*string `json:"TagKeys,omitempty" name:"TagKeys" list`
+
+		// 资源类型列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		HardwareResourceTypeList []*string `json:"HardwareResourceTypeList,omitempty" name:"HardwareResourceTypeList" list`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1134,6 +1144,10 @@ type NodeHardwareInfo struct {
 	// 是否是自动扩缩容节点，0为普通节点，1为自动扩缩容节点。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AutoFlag *int64 `json:"AutoFlag,omitempty" name:"AutoFlag"`
+
+	// 资源类型, host/pod
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HardwareResourceType *string `json:"HardwareResourceType,omitempty" name:"HardwareResourceType"`
 }
 
 type OutterResource struct {
@@ -1182,6 +1196,27 @@ type Placement struct {
 
 	// 实例所属的可用区，例如ap-guangzhou-1。该参数也可以通过调用 DescribeZones 的返回值中的Zone字段来获取。
 	Zone *string `json:"Zone,omitempty" name:"Zone"`
+}
+
+type PodSpec struct {
+
+	// 外部资源提供者的标识符，例如"cls-a1cd23fa"。
+	ResourceProviderIdentifier *string `json:"ResourceProviderIdentifier,omitempty" name:"ResourceProviderIdentifier"`
+
+	// 外部资源提供者类型，例如"tke",当前仅支持"tke"。
+	ResourceProviderType *string `json:"ResourceProviderType,omitempty" name:"ResourceProviderType"`
+
+	// 资源的用途，即节点类型，当前仅支持"TASK"。
+	NodeType *string `json:"NodeType,omitempty" name:"NodeType"`
+
+	// CPU核数。
+	Cpu *uint64 `json:"Cpu,omitempty" name:"Cpu"`
+
+	// 内存大小，单位为GB。
+	Memory *uint64 `json:"Memory,omitempty" name:"Memory"`
+
+	// 资源对宿主机的挂载点，指定的挂载点对应了宿主机的路径，该挂载点在Pod中作为数据存储目录使用。
+	DataVolumes []*string `json:"DataVolumes,omitempty" name:"DataVolumes" list`
 }
 
 type PreExecuteFileSettings struct {
@@ -1381,6 +1416,12 @@ type ScaleOutInstanceRequest struct {
 
 	// 扩容节点绑定标签列表。
 	Tags []*Tag `json:"Tags,omitempty" name:"Tags" list`
+
+	// 扩容所选资源类型，可选范围为"host","pod"，host为普通的CVM资源，Pod为TKE集群提供的资源
+	HardwareResourceType *string `json:"HardwareResourceType,omitempty" name:"HardwareResourceType"`
+
+	// 使用Pod资源扩容时，指定的Pod规格以及来源等信息
+	PodSpec *PodSpec `json:"PodSpec,omitempty" name:"PodSpec"`
 }
 
 func (r *ScaleOutInstanceRequest) ToJsonString() string {
@@ -1427,6 +1468,15 @@ func (r *ScaleOutInstanceResponse) ToJsonString() string {
 
 func (r *ScaleOutInstanceResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
+}
+
+type SearchItem struct {
+
+	// 支持搜索的类型
+	SearchType *string `json:"SearchType,omitempty" name:"SearchType"`
+
+	// 支持搜索的值
+	SearchValue *string `json:"SearchValue,omitempty" name:"SearchValue"`
 }
 
 type Tag struct {

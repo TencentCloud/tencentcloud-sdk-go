@@ -29,7 +29,7 @@ type AddResourceTagRequest struct {
 	// 标签值
 	TagValue *string `json:"TagValue,omitempty" name:"TagValue"`
 
-	// 资源六段式描述
+	// [ 资源六段式描述 ](https://cloud.tencent.com/document/product/598/10606)
 	Resource *string `json:"Resource,omitempty" name:"Resource"`
 }
 
@@ -152,7 +152,7 @@ type DeleteResourceTagRequest struct {
 	// 标签键
 	TagKey *string `json:"TagKey,omitempty" name:"TagKey"`
 
-	// 资源六段式描述
+	// [ 资源六段式描述 ](https://cloud.tencent.com/document/product/598/10606)
 	Resource *string `json:"Resource,omitempty" name:"Resource"`
 }
 
@@ -884,7 +884,7 @@ func (r *DetachResourcesTagResponse) FromJsonString(s string) error {
 type ModifyResourceTagsRequest struct {
 	*tchttp.BaseRequest
 
-	// 资源的六段式描述
+	// [ 资源六段式描述 ](https://cloud.tencent.com/document/product/598/10606)
 	Resource *string `json:"Resource,omitempty" name:"Resource"`
 
 	// 需要增加或修改的标签集合。如果Resource描述的资源未关联输入的标签键，则增加关联；若已关联，则将该资源关联的键对应的标签值修改为输入值。本接口中ReplaceTags和DeleteTags二者必须存在其一，且二者不能包含相同的标签键
@@ -1071,7 +1071,7 @@ type UpdateResourceTagValueRequest struct {
 	// 修改后的标签值
 	TagValue *string `json:"TagValue,omitempty" name:"TagValue"`
 
-	// 资源的六段式描述
+	// [ 资源六段式描述 ](https://cloud.tencent.com/document/product/598/10606)
 	Resource *string `json:"Resource,omitempty" name:"Resource"`
 }
 

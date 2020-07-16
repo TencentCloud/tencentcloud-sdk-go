@@ -4805,7 +4805,7 @@ type LogInfo struct {
 type ModifyLiveCallbackTemplateRequest struct {
 	*tchttp.BaseRequest
 
-	// 模板 ID。
+	// DescribeLiveCallbackTemplates接口返回的模板 ID。
 	TemplateId *int64 `json:"TemplateId,omitempty" name:"TemplateId"`
 
 	// 模板名称。
