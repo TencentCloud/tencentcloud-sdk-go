@@ -761,6 +761,18 @@ type PhoneDetect struct {
 	Score *int64 `json:"Score,omitempty" name:"Score"`
 }
 
+type RiskDetails struct {
+
+	// 风险关键词
+	Keywords []*string `json:"Keywords,omitempty" name:"Keywords" list`
+
+	// 风险类别，RiskAccount，RiskIP, RiskIMEI
+	Lable *string `json:"Lable,omitempty" name:"Lable"`
+
+	// 风险等级，1:疑似，2：恶意
+	Level *int64 `json:"Level,omitempty" name:"Level"`
+}
+
 type RrectF struct {
 
 	// logo横坐标
@@ -826,6 +838,9 @@ type TextData struct {
 
 	// 消息类输出结果
 	Res *TextOutputRes `json:"Res,omitempty" name:"Res"`
+
+	// 账号风险检测结果
+	RiskDetails []*RiskDetails `json:"RiskDetails,omitempty" name:"RiskDetails" list`
 
 	// 最终使用的BizType
 	BizType *uint64 `json:"BizType,omitempty" name:"BizType"`

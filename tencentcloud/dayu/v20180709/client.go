@@ -468,6 +468,31 @@ func (c *Client) CreateNewL7Rules(request *CreateNewL7RulesRequest) (response *C
     return
 }
 
+func NewCreateNewL7RulesUploadRequest() (request *CreateNewL7RulesUploadRequest) {
+    request = &CreateNewL7RulesUploadRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("dayu", APIVersion, "CreateNewL7RulesUpload")
+    return
+}
+
+func NewCreateNewL7RulesUploadResponse() (response *CreateNewL7RulesUploadResponse) {
+    response = &CreateNewL7RulesUploadResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 批量上传7层转发规则
+func (c *Client) CreateNewL7RulesUpload(request *CreateNewL7RulesUploadRequest) (response *CreateNewL7RulesUploadResponse, err error) {
+    if request == nil {
+        request = NewCreateNewL7RulesUploadRequest()
+    }
+    response = NewCreateNewL7RulesUploadResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateUnblockIpRequest() (request *CreateUnblockIpRequest) {
     request = &CreateUnblockIpRequest{
         BaseRequest: &tchttp.BaseRequest{},

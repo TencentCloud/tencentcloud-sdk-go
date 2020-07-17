@@ -360,7 +360,7 @@ type QQAccountInfo struct {
 	MobilePhone *string `json:"MobilePhone,omitempty" name:"MobilePhone"`
 
 	// 用户设备号。
-	DeviceId *bool `json:"DeviceId,omitempty" name:"DeviceId"`
+	DeviceId *string `json:"DeviceId,omitempty" name:"DeviceId"`
 }
 
 type QueryActivityAntiRushAdvancedRequest struct {

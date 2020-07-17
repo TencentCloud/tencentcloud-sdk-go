@@ -4116,6 +4116,12 @@ type LoginWhiteLists struct {
 
 	// 机器IP
 	HostIp *string `json:"HostIp,omitempty" name:"HostIp"`
+
+	// 起始时间
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 结束时间
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 }
 
 type LoginWhiteListsRule struct {
@@ -4137,6 +4143,12 @@ type LoginWhiteListsRule struct {
 
 	// 规则ID，用于更新规则
 	Id *uint64 `json:"Id,omitempty" name:"Id"`
+
+	// 起始时间
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 结束时间
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 }
 
 type Machine struct {

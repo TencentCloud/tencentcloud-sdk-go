@@ -1,47 +1,29 @@
 # 本版本更新包含以下内容：
 
-## 弹性 MapReduce(emr) 版本：2019-01-03
+## 活动防刷(aa) 版本：2020-02-24
 
-### 第 12 次发布
+### 第 4 次发布
 
-发布时间：2020-07-16 08:10:49
+发布时间：2020-07-17 08:00:33
 
 本次发布包含了以下内容：
 
 改善已有的文档。
-
-修改接口：
-
-* [DescribeClusterNodes](https://cloud.tencent.com/document/api/589/41707)
-
-	* 新增入参：HardwareResourceType, SearchFields
-
-	* 新增出参：HardwareResourceTypeList
-
-* [ScaleOutInstance](https://cloud.tencent.com/document/api/589/34264)
-
-	* 新增入参：HardwareResourceType, PodSpec
-
-
-新增数据结构：
-
-* [PodSpec](https://cloud.tencent.com/document/api/589/33981#PodSpec)
-* [SearchItem](https://cloud.tencent.com/document/api/589/33981#SearchItem)
 
 修改数据结构：
 
-* [NodeHardwareInfo](https://cloud.tencent.com/document/api/589/33981#NodeHardwareInfo)
+* [QQAccountInfo](https://cloud.tencent.com/document/api/1189/45888#QQAccountInfo)
 
-	* 新增成员：HardwareResourceType
-
-
+	* <font color="#dd0000">**修改成员**：</font>DeviceId
 
 
-## 云函数(scf) 版本：2018-04-16
 
-### 第 16 次发布
 
-发布时间：2020-07-16 08:16:53
+## 内容分发网络(cdn) 版本：2018-06-06
+
+### 第 28 次发布
+
+发布时间：2020-07-17 08:06:38
 
 本次发布包含了以下内容：
 
@@ -49,31 +31,41 @@
 
 修改接口：
 
-* [CreateFunction](https://cloud.tencent.com/document/api/583/18586)
+* [PurgeUrlsCache](https://cloud.tencent.com/document/api/228/37870)
 
-	* 新增入参：CfsConfig
+	* 新增入参：Area
 
-* [GetFunction](https://cloud.tencent.com/document/api/583/18584)
 
-	* 新增出参：CfsConfig, AvailableStatus, Qualifier
 
-* [UpdateFunctionConfiguration](https://cloud.tencent.com/document/api/583/18580)
 
-	* 新增入参：CfsConfig
+## 内容安全(cms) 版本：2019-03-21
 
+### 第 13 次发布
+
+发布时间：2020-07-17 08:07:40
+
+本次发布包含了以下内容：
+
+改善已有的文档。
 
 新增数据结构：
 
-* [CfsConfig](https://cloud.tencent.com/document/api/583/17244#CfsConfig)
-* [CfsInsInfo](https://cloud.tencent.com/document/api/583/17244#CfsInsInfo)
+* [RiskDetails](https://cloud.tencent.com/document/api/669/34506#RiskDetails)
+
+修改数据结构：
+
+* [TextData](https://cloud.tencent.com/document/api/669/34506#TextData)
+
+	* 新增成员：RiskDetails
 
 
 
-## 主机安全(yunjing) 版本：2018-02-28
 
-### 第 7 次发布
+## DDoS 高防包(dayu) 版本：2018-07-09
 
-发布时间：2020-07-16 08:21:39
+### 第 17 次发布
+
+发布时间：2020-07-17 08:08:18
 
 本次发布包含了以下内容：
 
@@ -81,13 +73,51 @@
 
 新增接口：
 
-* [CreateBaselineStrategy](https://cloud.tencent.com/document/api/296/46372)
+* [CreateNewL7RulesUpload](https://cloud.tencent.com/document/api/1021/46423)
+
+
+
+## 主机安全(yunjing) 版本：2018-02-28
+
+### 第 8 次发布
+
+发布时间：2020-07-17 08:20:22
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [LoginWhiteLists](https://cloud.tencent.com/document/api/296/19867#LoginWhiteLists)
+
+	* 新增成员：StartTime, EndTime
+
+* [LoginWhiteListsRule](https://cloud.tencent.com/document/api/296/19867#LoginWhiteListsRule)
+
+	* 新增成员：StartTime, EndTime
+
 
 
 
 # 历次版本更新如下：
 
 ## 活动防刷(aa) 版本：2020-02-24
+
+### 第 4 次发布
+
+发布时间：2020-07-17 08:00:33
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [QQAccountInfo](https://cloud.tencent.com/document/api/1189/45888#QQAccountInfo)
+
+	* <font color="#dd0000">**修改成员**：</font>DeviceId
+
 
 ### 第 3 次发布
 
@@ -5621,6 +5651,21 @@
 
 ## 内容分发网络(cdn) 版本：2018-06-06
 
+### 第 28 次发布
+
+发布时间：2020-07-17 08:06:38
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [PurgeUrlsCache](https://cloud.tencent.com/document/api/228/37870)
+
+	* 新增入参：Area
+
+
 ### 第 27 次发布
 
 发布时间：2020-07-06 08:06:38
@@ -7891,6 +7936,25 @@
 
 
 ## 内容安全(cms) 版本：2019-03-21
+
+### 第 13 次发布
+
+发布时间：2020-07-17 08:07:40
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增数据结构：
+
+* [[RiskDetails](https://cloud.tencent.com/document/api/669/34506#RiskDetails)](https://cloud.tencent.com/document/api/669/34506#[RiskDetails](https://cloud.tencent.com/document/api/669/34506#RiskDetails))
+
+修改数据结构：
+
+* [TextData](https://cloud.tencent.com/document/api/669/34506#TextData)
+
+	* 新增成员：RiskDetails
+
 
 ### 第 12 次发布
 
@@ -10195,6 +10259,18 @@
 
 ## DDoS 高防包(dayu) 版本：2018-07-09
 
+### 第 17 次发布
+
+发布时间：2020-07-17 08:08:18
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[CreateNewL7RulesUpload](https://cloud.tencent.com/document/api/1021/46423)](https://cloud.tencent.com/document/api/#/#)
+
 ### 第 16 次发布
 
 发布时间：2020-07-01 08:08:22
@@ -12158,8 +12234,8 @@
 
 新增数据结构：
 
-* [[PodSpec](https://cloud.tencent.com/document/api/589/33981#PodSpec)](https://cloud.tencent.com/document/api/589/33981#[PodSpec](https://cloud.tencent.com/document/api/589/33981#PodSpec))
-* [[SearchItem](https://cloud.tencent.com/document/api/589/33981#SearchItem)](https://cloud.tencent.com/document/api/589/33981#[SearchItem](https://cloud.tencent.com/document/api/589/33981#SearchItem))
+* [PodSpec](https://cloud.tencent.com/document/api/589/33981#PodSpec)
+* [SearchItem](https://cloud.tencent.com/document/api/589/33981#SearchItem)
 
 修改数据结构：
 
@@ -21166,8 +21242,8 @@
 
 新增数据结构：
 
-* [[CfsConfig](https://cloud.tencent.com/document/api/583/17244#CfsConfig)](https://cloud.tencent.com/document/api/583/17244#[CfsConfig](https://cloud.tencent.com/document/api/583/17244#CfsConfig))
-* [[CfsInsInfo](https://cloud.tencent.com/document/api/583/17244#CfsInsInfo)](https://cloud.tencent.com/document/api/583/17244#[CfsInsInfo](https://cloud.tencent.com/document/api/583/17244#CfsInsInfo))
+* [CfsConfig](https://cloud.tencent.com/document/api/583/17244#CfsConfig)
+* [CfsInsInfo](https://cloud.tencent.com/document/api/583/17244#CfsInsInfo)
 
 ### 第 15 次发布
 
@@ -30562,6 +30638,25 @@
 
 ## 主机安全(yunjing) 版本：2018-02-28
 
+### 第 8 次发布
+
+发布时间：2020-07-17 08:20:22
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [LoginWhiteLists](https://cloud.tencent.com/document/api/296/19867#LoginWhiteLists)
+
+	* 新增成员：StartTime, EndTime
+
+* [LoginWhiteListsRule](https://cloud.tencent.com/document/api/296/19867#LoginWhiteListsRule)
+
+	* 新增成员：StartTime, EndTime
+
+
 ### 第 7 次发布
 
 发布时间：2020-07-16 08:21:39
@@ -30572,7 +30667,7 @@
 
 新增接口：
 
-* [[CreateBaselineStrategy](https://cloud.tencent.com/document/api/296/46372)](https://cloud.tencent.com/document/api/#/#)
+* [CreateBaselineStrategy](https://cloud.tencent.com/document/api/296/46372)
 
 ### 第 6 次发布
 

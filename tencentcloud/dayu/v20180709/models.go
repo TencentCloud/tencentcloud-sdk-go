@@ -1059,6 +1059,52 @@ func (r *CreateNewL7RulesResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type CreateNewL7RulesUploadRequest struct {
+	*tchttp.BaseRequest
+
+	// 大禹子产品代号（bgpip表示高防IP）
+	Business *string `json:"Business,omitempty" name:"Business"`
+
+	// 资源ID列表
+	IdList []*string `json:"IdList,omitempty" name:"IdList" list`
+
+	// 资源IP列表
+	VipList []*string `json:"VipList,omitempty" name:"VipList" list`
+
+	// 规则列表
+	Rules []*L7RuleEntry `json:"Rules,omitempty" name:"Rules" list`
+}
+
+func (r *CreateNewL7RulesUploadRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateNewL7RulesUploadRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateNewL7RulesUploadResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 成功码
+		Success *SuccessCode `json:"Success,omitempty" name:"Success"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateNewL7RulesUploadResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateNewL7RulesUploadResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type CreateUnblockIpRequest struct {
 	*tchttp.BaseRequest
 

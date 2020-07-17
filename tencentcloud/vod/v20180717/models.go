@@ -6237,7 +6237,8 @@ type MediaContentReviewPoliticalSegmentItem struct {
 	// <li>bureau_politician：厅局级领导人；</li>
 	// <li>county_politician：县处级领导人；</li>
 	// <li>rural_politician：乡科级领导人；</li>
-	// <li>sensitive_politician：敏感政治人物。</li>
+	// <li>sensitive_politician：敏感政治人物；</li>
+	// <li>foreign_politician：国外领导人。</li>
 	// entertainment：
 	// <li>sensitive_entertainment：敏感娱乐人物。</li>
 	// sport：
@@ -6247,7 +6248,8 @@ type MediaContentReviewPoliticalSegmentItem struct {
 	// scholar：
 	// <li>sensitive_scholar：敏感教育学者。</li>
 	// celebrity：
-	// <li>sensitive_celebrity：敏感知名人物。</li>
+	// <li>sensitive_celebrity：敏感知名人物；</li>
+	// <li>historical_celebrity：历史知名人物。</li>
 	// military：
 	// <li>sensitive_military：敏感军事人物。</li>
 	Label *string `json:"Label,omitempty" name:"Label"`
@@ -8909,7 +8911,9 @@ type PullUploadRequest struct {
 	// 媒体文件过期时间，格式按照 ISO 8601 标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#I)。
 	ExpireTime *string `json:"ExpireTime,omitempty" name:"ExpireTime"`
 
-	// 指定上传园区，仅适用于对上传地域有特殊需求的用户（目前仅支持北京、上海和重庆园区）。
+	// 指定上传园区，仅适用于对上传地域有特殊需求的用户：
+	// <li>不填默认上传至您的[默认地域](https://cloud.tencent.com/document/product/266/14059?from=11329#.E5.AD.98.E5.82.A8.E5.9C.B0.E5.9F.9F.E6.AD.A5.E9.AA.A4)。</li>
+	// <li>若指定上传园区，请先确认[上传存储设置](https://cloud.tencent.com/document/product/266/14059?from=11329#.E5.AD.98.E5.82.A8.E5.9C.B0.E5.9F.9F.E6.AD.A5.E9.AA.A4)已经开启相应的存储地域。</li>
 	StorageRegion *string `json:"StorageRegion,omitempty" name:"StorageRegion"`
 
 	// 分类ID，用于对媒体进行分类管理，可通过[创建分类](https://cloud.tencent.com/document/product/266/7812)接口，创建分类，获得分类 ID。

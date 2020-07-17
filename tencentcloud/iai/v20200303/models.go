@@ -120,6 +120,7 @@ type CheckSimilarPersonRequest struct {
 
 	// 待整理的人员库列表。 
 	// 人员库总人数不可超过200万，人员库个数不可超过10个。
+	// 数组元素取值为创建人员库接口中的GroupId
 	GroupIds []*string `json:"GroupIds,omitempty" name:"GroupIds" list`
 
 	// 人员查重整理力度的控制。
@@ -822,6 +823,7 @@ type EstimateCheckSimilarPersonCostTimeRequest struct {
 
 	// 待整理的人员库列表。 
 	// 人员库总人数不可超过200万，人员库个数不可超过10个。
+	// 数组元素取值为创建人员库接口中的GroupId
 	GroupIds []*string `json:"GroupIds,omitempty" name:"GroupIds" list`
 }
 
@@ -1327,7 +1329,7 @@ func (r *GetPersonListNumResponse) FromJsonString(s string) error {
 type GetPersonListRequest struct {
 	*tchttp.BaseRequest
 
-	// 人员库ID
+	// 人员库ID，取值为创建人员库接口中的GroupId
 	GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
 
 	// 起始序号，默认值为0
@@ -1382,7 +1384,7 @@ func (r *GetPersonListResponse) FromJsonString(s string) error {
 type GetSimilarPersonResultRequest struct {
 	*tchttp.BaseRequest
 
-	// 查重任务ID，用于查询、获取查重的进度和结果。
+	// 查重任务ID，用于查询、获取查重的进度和结果。取值为人员查重接口返回的JobId
 	JobId *string `json:"JobId,omitempty" name:"JobId"`
 }
 
@@ -1943,7 +1945,7 @@ func (r *SearchPersonsResponse) FromJsonString(s string) error {
 type SearchPersonsReturnsByGroupRequest struct {
 	*tchttp.BaseRequest
 
-	// 希望搜索的人员库列表，上限60个。
+	// 希望搜索的人员库列表，上限60个。数组元素取值为创建人员库接口中的GroupId
 	GroupIds []*string `json:"GroupIds,omitempty" name:"GroupIds" list`
 
 	// 图片 base64 数据，base64 编码后大小不可超过5M。

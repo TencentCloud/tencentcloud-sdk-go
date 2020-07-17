@@ -1118,6 +1118,7 @@ type CreateLiveTranscodeTemplateRequest struct {
 	Description *string `json:"Description,omitempty" name:"Description"`
 
 	// 宽，默认0。
+	// 范围[0-3000]
 	Width *int64 `json:"Width,omitempty" name:"Width"`
 
 	// 是否保留视频，0：否，1：是。默认1。
@@ -1127,6 +1128,7 @@ type CreateLiveTranscodeTemplateRequest struct {
 	NeedAudio *int64 `json:"NeedAudio,omitempty" name:"NeedAudio"`
 
 	// 高，默认0。
+	// 范围[0-3000]
 	Height *int64 `json:"Height,omitempty" name:"Height"`
 
 	// 帧率，默认0。
