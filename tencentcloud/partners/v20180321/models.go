@@ -247,6 +247,10 @@ type AgentDealElem struct {
 	// 活动ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ActivityId *string `json:"ActivityId,omitempty" name:"ActivityId"`
+
+	// 订单过期时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OverdueTime *string `json:"OverdueTime,omitempty" name:"OverdueTime"`
 }
 
 type AgentPayDealsRequest struct {

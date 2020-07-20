@@ -156,6 +156,15 @@ type CreateDBInstanceHourRequest struct {
 
 	// 实例标签信息
 	Tags []*TagInfo `json:"Tags,omitempty" name:"Tags" list`
+
+	// 1:正式实例,2:临时实例,3:只读实例，4：灾备实例
+	Clone *int64 `json:"Clone,omitempty" name:"Clone"`
+
+	// 父实例Id，当Clone为3或者4时，这个必须填
+	Father *string `json:"Father,omitempty" name:"Father"`
+
+	// 安全组
+	SecurityGroup []*string `json:"SecurityGroup,omitempty" name:"SecurityGroup" list`
 }
 
 func (r *CreateDBInstanceHourRequest) ToJsonString() string {
@@ -203,7 +212,7 @@ type CreateDBInstanceRequest struct {
 	// 实例硬盘大小，单位：GB
 	Volume *uint64 `json:"Volume,omitempty" name:"Volume"`
 
-	// 版本号，具体支持的售卖版本请参照查询云数据库的售卖规格（DescribeSpecInfo）返回结果。参数与版本对应关系是MONGO_3_WT：MongoDB 3.2 WiredTiger存储引擎版本，MONGO_3_ROCKS：MongoDB 3.2 RocksDB存储引擎版本，MONGO_36_WT：MongoDB 3.6 WiredTiger存储引擎版本
+	// 版本号，具体支持的售卖版本请参照查询云数据库的售卖规格（DescribeSpecInfo）返回结果。参数与版本对应关系是MONGO_3_WT：MongoDB 3.2 WiredTiger存储引擎版本，MONGO_3_ROCKS：MongoDB 3.2 RocksDB存储引擎版本，MONGO_36_WT：MongoDB 3.6 WiredTiger存储引擎版本，MONGO_40_WT：MongoDB 4.0 WiredTiger存储引擎版本
 	MongoVersion *string `json:"MongoVersion,omitempty" name:"MongoVersion"`
 
 	// 实例数量, 最小值1，最大值为10
@@ -215,13 +224,13 @@ type CreateDBInstanceRequest struct {
 	// 实例时长，单位：月，可选值包括 [1,2,3,4,5,6,7,8,9,10,11,12,24,36]
 	Period *uint64 `json:"Period,omitempty" name:"Period"`
 
-	// 机器类型，HIO：高IO型；HIO10G：高IO万兆型
+	// 机器类型，HIO：高IO型；HIO10G：高IO万兆型；STDS5：标准型
 	MachineCode *string `json:"MachineCode,omitempty" name:"MachineCode"`
 
-	// 实例类型，REPLSET-副本集，SHARD-分片集群
+	// 实例类型，REPLSET-副本集，SHARD-分片集群，STANDALONE-单节点
 	ClusterType *string `json:"ClusterType,omitempty" name:"ClusterType"`
 
-	// 副本集个数，创建副本集实例时，该参数必须设置为1；创建分片实例时，具体参照查询云数据库的售卖规格返回参数
+	// 副本集个数，创建副本集实例时，该参数必须设置为1；创建分片实例时，具体参照查询云数据库的售卖规格返回参数；若为单节点实例，该参数设置为0
 	ReplicateSetNum *uint64 `json:"ReplicateSetNum,omitempty" name:"ReplicateSetNum"`
 
 	// 项目ID，不设置为默认项目
@@ -241,6 +250,18 @@ type CreateDBInstanceRequest struct {
 
 	// 自动续费标记，可选值为：0 - 不自动续费；1 - 自动续费。默认为不自动续费
 	AutoRenewFlag *uint64 `json:"AutoRenewFlag,omitempty" name:"AutoRenewFlag"`
+
+	// 是否自动选择代金券，可选值为：1 - 是；0 - 否； 默认为0
+	AutoVoucher *uint64 `json:"AutoVoucher,omitempty" name:"AutoVoucher"`
+
+	// 1:正式实例,2:临时实例,3:只读实例，4：灾备实例
+	Clone *int64 `json:"Clone,omitempty" name:"Clone"`
+
+	// 若是只读，灾备实例，Father必须填写，即主实例ID
+	Father *string `json:"Father,omitempty" name:"Father"`
+
+	// 安全组
+	SecurityGroup []*string `json:"SecurityGroup,omitempty" name:"SecurityGroup" list`
 }
 
 func (r *CreateDBInstanceRequest) ToJsonString() string {

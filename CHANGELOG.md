@@ -1,29 +1,10 @@
 # 本版本更新包含以下内容：
 
-## 活动防刷(aa) 版本：2020-02-24
+## 云数据库 MongoDB(mongodb) 版本：2019-07-25
 
-### 第 4 次发布
+### 第 5 次发布
 
-发布时间：2020-07-17 08:00:33
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [QQAccountInfo](https://cloud.tencent.com/document/api/1189/45888#QQAccountInfo)
-
-	* <font color="#dd0000">**修改成员**：</font>DeviceId
-
-
-
-
-## 内容分发网络(cdn) 版本：2018-06-06
-
-### 第 28 次发布
-
-发布时间：2020-07-17 08:06:38
+发布时间：2020-07-20 08:13:13
 
 本次发布包含了以下内容：
 
@@ -31,71 +12,78 @@
 
 修改接口：
 
-* [PurgeUrlsCache](https://cloud.tencent.com/document/api/228/37870)
+* [CreateDBInstance](https://cloud.tencent.com/document/api/240/38571)
 
-	* 新增入参：Area
+	* 新增入参：AutoVoucher, Clone, Father, SecurityGroup
+
+* [CreateDBInstanceHour](https://cloud.tencent.com/document/api/240/38570)
+
+	* 新增入参：Clone, Father, SecurityGroup
 
 
 
 
-## 内容安全(cms) 版本：2019-03-21
+## 云数据库 MongoDB(mongodb) 版本：2018-04-08
 
-### 第 13 次发布
 
-发布时间：2020-07-17 08:07:40
+
+## 渠道合作伙伴(partners) 版本：2018-03-21
+
+### 第 15 次发布
+
+发布时间：2020-07-20 08:14:54
 
 本次发布包含了以下内容：
 
 改善已有的文档。
-
-新增数据结构：
-
-* [RiskDetails](https://cloud.tencent.com/document/api/669/34506#RiskDetails)
 
 修改数据结构：
 
-* [TextData](https://cloud.tencent.com/document/api/669/34506#TextData)
+* [AgentDealElem](https://cloud.tencent.com/document/api/563/16047#AgentDealElem)
 
-	* 新增成员：RiskDetails
+	* 新增成员：OverdueTime
 
-
-
-
-## DDoS 高防包(dayu) 版本：2018-07-09
-
-### 第 17 次发布
-
-发布时间：2020-07-17 08:08:18
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [CreateNewL7RulesUpload](https://cloud.tencent.com/document/api/1021/46423)
 
 
 
 ## 主机安全(yunjing) 版本：2018-02-28
 
-### 第 8 次发布
+### 第 9 次发布
 
-发布时间：2020-07-17 08:20:22
+发布时间：2020-07-20 08:20:03
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
+修改接口：
+
+* [DescribeAttackLogs](https://cloud.tencent.com/document/api/296/39573)
+
+	* 新增入参：Uuid, Quuid
+
+* [DescribeSecurityTrends](https://cloud.tencent.com/document/api/296/30329)
+
+	* 新增出参：MaliciousRequests, HighRiskBashs, ReverseShells, PrivilegeEscalations, CyberAttacks
+
+* [DescribeTags](https://cloud.tencent.com/document/api/296/39565)
+
+	* 新增入参：MachineType, MachineRegion
+
+
 修改数据结构：
 
-* [LoginWhiteLists](https://cloud.tencent.com/document/api/296/19867#LoginWhiteLists)
+* [Machine](https://cloud.tencent.com/document/api/296/19867#Machine)
 
-	* 新增成员：StartTime, EndTime
+	* 新增成员：BaselineNum, CyberAttackNum, SecurityStatus, InvasionNum
 
-* [LoginWhiteListsRule](https://cloud.tencent.com/document/api/296/19867#LoginWhiteListsRule)
+* [MachineTag](https://cloud.tencent.com/document/api/296/19867#MachineTag)
 
-	* 新增成员：StartTime, EndTime
+	* 新增成员：TagId
+
+* [SecurityDynamic](https://cloud.tencent.com/document/api/296/19867#SecurityDynamic)
+
+	* 新增成员：SecurityLevel
 
 
 
@@ -7947,7 +7935,7 @@
 
 新增数据结构：
 
-* [[RiskDetails](https://cloud.tencent.com/document/api/669/34506#RiskDetails)](https://cloud.tencent.com/document/api/669/34506#[RiskDetails](https://cloud.tencent.com/document/api/669/34506#RiskDetails))
+* [RiskDetails](https://cloud.tencent.com/document/api/669/34506#RiskDetails)
 
 修改数据结构：
 
@@ -10269,7 +10257,7 @@
 
 新增接口：
 
-* [[CreateNewL7RulesUpload](https://cloud.tencent.com/document/api/1021/46423)](https://cloud.tencent.com/document/api/#/#)
+* [CreateNewL7RulesUpload](https://cloud.tencent.com/document/api/1021/46423)
 
 ### 第 16 次发布
 
@@ -17906,6 +17894,25 @@
 
 ## 云数据库 MongoDB(mongodb) 版本：2019-07-25
 
+### 第 5 次发布
+
+发布时间：2020-07-20 08:13:13
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateDBInstance](https://cloud.tencent.com/document/api/240/38571)
+
+	* 新增入参：AutoVoucher, Clone, Father, SecurityGroup
+
+* [CreateDBInstanceHour](https://cloud.tencent.com/document/api/240/38570)
+
+	* 新增入参：Clone, Father, SecurityGroup
+
+
 ### 第 4 次发布
 
 发布时间：2020-06-02 08:13:21
@@ -20243,6 +20250,21 @@
 
 
 ## 渠道合作伙伴(partners) 版本：2018-03-21
+
+### 第 15 次发布
+
+发布时间：2020-07-20 08:14:54
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [AgentDealElem](https://cloud.tencent.com/document/api/563/16047#AgentDealElem)
+
+	* 新增成员：OverdueTime
+
 
 ### 第 14 次发布
 
@@ -30637,6 +30659,44 @@
 
 
 ## 主机安全(yunjing) 版本：2018-02-28
+
+### 第 9 次发布
+
+发布时间：2020-07-20 08:20:03
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeAttackLogs](https://cloud.tencent.com/document/api/296/39573)
+
+	* 新增入参：Uuid, Quuid
+
+* [DescribeSecurityTrends](https://cloud.tencent.com/document/api/296/30329)
+
+	* 新增出参：MaliciousRequests, HighRiskBashs, ReverseShells, PrivilegeEscalations, CyberAttacks
+
+* [DescribeTags](https://cloud.tencent.com/document/api/296/39565)
+
+	* 新增入参：MachineType, MachineRegion
+
+
+修改数据结构：
+
+* [Machine](https://cloud.tencent.com/document/api/296/19867#Machine)
+
+	* 新增成员：BaselineNum, CyberAttackNum, SecurityStatus, InvasionNum
+
+* [MachineTag](https://cloud.tencent.com/document/api/296/19867#MachineTag)
+
+	* 新增成员：TagId
+
+* [SecurityDynamic](https://cloud.tencent.com/document/api/296/19867#SecurityDynamic)
+
+	* 新增成员：SecurityLevel
+
 
 ### 第 8 次发布
 

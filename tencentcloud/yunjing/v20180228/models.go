@@ -1458,6 +1458,12 @@ type DescribeAttackLogsRequest struct {
 	// <li>MachineIp - String - 是否必填：否 - 主机内网IP</li>
 	// <li>DateRange - String - 是否必填：否 - 时间范围(存储最近3个月的数据)，如最近一个月["2019-11-17", "2019-12-17"]</li>
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+
+	// 主机安全客户端ID
+	Uuid *string `json:"Uuid,omitempty" name:"Uuid"`
+
+	// 云主机机器ID
+	Quuid *string `json:"Quuid,omitempty" name:"Quuid"`
 }
 
 func (r *DescribeAttackLogsRequest) ToJsonString() string {
@@ -2050,7 +2056,7 @@ type DescribeMachinesRequest struct {
 
 	// 过滤条件。
 	// <li>Keywords - String - 是否必填：否 - 查询关键字 </li>
-	// <li>Status - String - 是否必填：否 - 客户端在线状态（OFFLINE: 离线 | ONLINE: 在线）</li>
+	// <li>Status - String - 是否必填：否 - 客户端在线状态（OFFLINE: 离线 | ONLINE: 在线 | UNINSTALLED：未安装）</li>
 	// <li>Version - String  是否必填：否 - 当前防护版本（ PRO_VERSION：专业版 | BASIC_VERSION：基础版）</li>
 	// 每个过滤条件只支持一个值，暂不支持多个值“或”关系查询
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
@@ -2890,6 +2896,21 @@ type DescribeSecurityTrendsResponse struct {
 		// 基线统计数据数组。
 		BaseLines []*SecurityTrend `json:"BaseLines,omitempty" name:"BaseLines" list`
 
+		// 恶意请求统计数据数组。
+		MaliciousRequests []*SecurityTrend `json:"MaliciousRequests,omitempty" name:"MaliciousRequests" list`
+
+		// 高危命令统计数据数组。
+		HighRiskBashs []*SecurityTrend `json:"HighRiskBashs,omitempty" name:"HighRiskBashs" list`
+
+		// 反弹shell统计数据数组。
+		ReverseShells []*SecurityTrend `json:"ReverseShells,omitempty" name:"ReverseShells" list`
+
+		// 本地提权统计数据数组。
+		PrivilegeEscalations []*SecurityTrend `json:"PrivilegeEscalations,omitempty" name:"PrivilegeEscalations" list`
+
+		// 网络攻击统计数据数组。
+		CyberAttacks []*SecurityTrend `json:"CyberAttacks,omitempty" name:"CyberAttacks" list`
+
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
@@ -2943,6 +2964,14 @@ func (r *DescribeTagMachinesResponse) FromJsonString(s string) error {
 
 type DescribeTagsRequest struct {
 	*tchttp.BaseRequest
+
+	// 云主机类型。
+	// <li>CVM：表示虚拟主机</li>
+	// <li>BM:  表示黑石物理机</li>
+	MachineType *string `json:"MachineType,omitempty" name:"MachineType"`
+
+	// 机器所属地域。如：ap-guangzhou，ap-shanghai
+	MachineRegion *string `json:"MachineRegion,omitempty" name:"MachineRegion"`
 }
 
 func (r *DescribeTagsRequest) ToJsonString() string {
@@ -4195,6 +4224,21 @@ type Machine struct {
 
 	// 标签信息
 	Tag []*MachineTag `json:"Tag,omitempty" name:"Tag" list`
+
+	// 基线风险数。
+	BaselineNum *int64 `json:"BaselineNum,omitempty" name:"BaselineNum"`
+
+	// 网络风险数。
+	CyberAttackNum *int64 `json:"CyberAttackNum,omitempty" name:"CyberAttackNum"`
+
+	// 风险状态。
+	// <li>SAFE：安全</li>
+	// <li>RISK：风险</li>
+	// <li>UNKNOWN：未知</li>
+	SecurityStatus *string `json:"SecurityStatus,omitempty" name:"SecurityStatus"`
+
+	// 入侵事件数
+	InvasionNum *int64 `json:"InvasionNum,omitempty" name:"InvasionNum"`
 }
 
 type MachineTag struct {
@@ -4204,6 +4248,9 @@ type MachineTag struct {
 
 	// 标签名
 	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 标签ID
+	TagId *uint64 `json:"TagId,omitempty" name:"TagId"`
 }
 
 type MaliciousRequest struct {
@@ -5033,6 +5080,13 @@ type SecurityDynamic struct {
 
 	// 安全事件消息。
 	Message *string `json:"Message,omitempty" name:"Message"`
+
+	// 安全事件等级。
+	// <li>RISK: 严重</li>
+	// <li>HIGH: 高危</li>
+	// <li>NORMAL: 中危</li>
+	// <li>LOW: 低危</li>
+	SecurityLevel *string `json:"SecurityLevel,omitempty" name:"SecurityLevel"`
 }
 
 type SecurityTrend struct {

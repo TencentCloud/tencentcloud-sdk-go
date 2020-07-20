@@ -763,7 +763,7 @@ type PhoneDetect struct {
 
 type RiskDetails struct {
 
-	// 风险关键词
+	// 预留字段，暂时不使用
 	Keywords []*string `json:"Keywords,omitempty" name:"Keywords" list`
 
 	// 风险类别，RiskAccount，RiskIP, RiskIMEI
