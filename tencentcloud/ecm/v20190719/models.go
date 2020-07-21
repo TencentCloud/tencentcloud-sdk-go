@@ -67,6 +67,14 @@ type Address struct {
 	// 运营商，CTCC电信，CUCC联通，CMCC移动
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	InternetServiceProvider *string `json:"InternetServiceProvider,omitempty" name:"InternetServiceProvider"`
+
+	// 带宽上限
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Bandwidth *uint64 `json:"Bandwidth,omitempty" name:"Bandwidth"`
+
+	// 计费模式
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PayMode *string `json:"PayMode,omitempty" name:"PayMode"`
 }
 
 type AllocateAddressesRequest struct {
@@ -302,6 +310,55 @@ type Country struct {
 
 	// 国家名称
 	CountryName *string `json:"CountryName,omitempty" name:"CountryName"`
+}
+
+type CreateImageRequest struct {
+	*tchttp.BaseRequest
+
+	// 镜像名称
+	ImageName *string `json:"ImageName,omitempty" name:"ImageName"`
+
+	// 需要制作镜像的实例ID。
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 镜像描述
+	ImageDescription *string `json:"ImageDescription,omitempty" name:"ImageDescription"`
+
+	// 是否执行强制关机以制作镜像。取值范围：
+	// TRUE：表示自动关机后制作镜像
+	// FALSE：表示开机状态制作，目前不支持，需要先手动关机
+	// 默认取值：FALSE。
+	ForcePoweroff *string `json:"ForcePoweroff,omitempty" name:"ForcePoweroff"`
+}
+
+func (r *CreateImageRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateImageRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateImageResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 任务id
+		TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateImageResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateImageResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
 }
 
 type CreateModuleRequest struct {
@@ -1704,6 +1761,43 @@ func (r *DescribeTaskResultResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeTaskStatusRequest struct {
+	*tchttp.BaseRequest
+
+	// 任务描述
+	TaskSet []*TaskInput `json:"TaskSet,omitempty" name:"TaskSet" list`
+}
+
+func (r *DescribeTaskStatusRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeTaskStatusRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeTaskStatusResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 任务描述
+		TaskSet []*TaskOutput `json:"TaskSet,omitempty" name:"TaskSet" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeTaskStatusResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeTaskStatusResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeVpcsRequest struct {
 	*tchttp.BaseRequest
 
@@ -1965,6 +2059,9 @@ type Image struct {
 
 	// 镜像来源信息
 	SrcImage *SrcImage `json:"SrcImage,omitempty" name:"SrcImage"`
+
+	// 镜像来源类型
+	ImageSource *string `json:"ImageSource,omitempty" name:"ImageSource"`
 }
 
 type ImageOsList struct {
@@ -2522,6 +2619,49 @@ func (r *ModifyDefaultSubnetResponse) ToJsonString() string {
 }
 
 func (r *ModifyDefaultSubnetResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyImageAttributeRequest struct {
+	*tchttp.BaseRequest
+
+	// 镜像ID，形如img-gvbnzy6f
+	ImageId *string `json:"ImageId,omitempty" name:"ImageId"`
+
+	// 设置新的镜像名称；必须满足下列限制：
+	// 不得超过20个字符。
+	// - 镜像名称不能与已有镜像重复。
+	ImageName *string `json:"ImageName,omitempty" name:"ImageName"`
+
+	// 设置新的镜像描述；必须满足下列限制：
+	// - 不得超过60个字符。
+	ImageDescription *string `json:"ImageDescription,omitempty" name:"ImageDescription"`
+}
+
+func (r *ModifyImageAttributeRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyImageAttributeRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyImageAttributeResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifyImageAttributeResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyImageAttributeResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -3455,6 +3595,9 @@ type RunInstancesRequest struct {
 
 	// 实例所属安全组。该参数可以通过调用 DescribeSecurityGroups 的返回值中的sgId字段来获取。若不指定该参数，则绑定默认安全组。
 	SecurityGroupIds []*string `json:"SecurityGroupIds,omitempty" name:"SecurityGroupIds" list`
+
+	// 系统盘大小，单位是G。如果未传该参数或者传的值为0，则使用模块下的默认值
+	SystemDiskSize *uint64 `json:"SystemDiskSize,omitempty" name:"SystemDiskSize"`
 }
 
 func (r *RunInstancesRequest) ToJsonString() string {
@@ -3555,6 +3698,15 @@ type SrcImage struct {
 
 	// 区域名称
 	RegionName *string `json:"RegionName,omitempty" name:"RegionName"`
+
+	// 来源实例名称
+	InstanceName *string `json:"InstanceName,omitempty" name:"InstanceName"`
+
+	// 来源实例ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 来源镜像类型
+	ImageType *string `json:"ImageType,omitempty" name:"ImageType"`
 }
 
 type StartInstancesRequest struct {
@@ -3699,6 +3851,36 @@ type TagSpecification struct {
 
 	// 标签列表
 	Tags []*Tag `json:"Tags,omitempty" name:"Tags" list`
+}
+
+type TaskInput struct {
+
+	// 操作名，即API名称，比如：CreateImage
+	Operation *string `json:"Operation,omitempty" name:"Operation"`
+
+	// 任务id
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+}
+
+type TaskOutput struct {
+
+	// 任务id
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 状态描述
+	Message *string `json:"Message,omitempty" name:"Message"`
+
+	// 状态值，SUCCESS/FAILED/OPERATING
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 任务提交时间
+	AddTime *string `json:"AddTime,omitempty" name:"AddTime"`
+
+	// 任务结束时间
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 操作名
+	Operation *string `json:"Operation,omitempty" name:"Operation"`
 }
 
 type TerminateInstancesRequest struct {

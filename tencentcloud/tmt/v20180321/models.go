@@ -178,6 +178,9 @@ type SpeechTranslateRequest struct {
 
 	// 识别模式，该参数已废弃
 	Mode *string `json:"Mode,omitempty" name:"Mode"`
+
+	// 该参数已废弃
+	TransType *int64 `json:"TransType,omitempty" name:"TransType"`
 }
 
 func (r *SpeechTranslateRequest) ToJsonString() string {

@@ -149,6 +149,31 @@ func (c *Client) AttachNetworkInterface(request *AttachNetworkInterfaceRequest) 
     return
 }
 
+func NewCreateImageRequest() (request *CreateImageRequest) {
+    request = &CreateImageRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ecm", APIVersion, "CreateImage")
+    return
+}
+
+func NewCreateImageResponse() (response *CreateImageResponse) {
+    response = &CreateImageResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口(CreateImage)用于将实例的系统盘制作为新镜像，创建后的镜像可以用于创建实例。
+func (c *Client) CreateImage(request *CreateImageRequest) (response *CreateImageResponse, err error) {
+    if request == nil {
+        request = NewCreateImageRequest()
+    }
+    response = NewCreateImageResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateModuleRequest() (request *CreateModuleRequest) {
     request = &CreateModuleRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -899,6 +924,31 @@ func (c *Client) DescribeTaskResult(request *DescribeTaskResultRequest) (respons
     return
 }
 
+func NewDescribeTaskStatusRequest() (request *DescribeTaskStatusRequest) {
+    request = &DescribeTaskStatusRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ecm", APIVersion, "DescribeTaskStatus")
+    return
+}
+
+func NewDescribeTaskStatusResponse() (response *DescribeTaskStatusResponse) {
+    response = &DescribeTaskStatusResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口(DescribeTaskStatus)用于获取异步任务状态
+func (c *Client) DescribeTaskStatus(request *DescribeTaskStatusRequest) (response *DescribeTaskStatusResponse, err error) {
+    if request == nil {
+        request = NewDescribeTaskStatusRequest()
+    }
+    response = NewDescribeTaskStatusResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeVpcsRequest() (request *DescribeVpcsRequest) {
     request = &DescribeVpcsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1149,6 +1199,31 @@ func (c *Client) ModifyDefaultSubnet(request *ModifyDefaultSubnetRequest) (respo
         request = NewModifyDefaultSubnetRequest()
     }
     response = NewModifyDefaultSubnetResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyImageAttributeRequest() (request *ModifyImageAttributeRequest) {
+    request = &ModifyImageAttributeRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ecm", APIVersion, "ModifyImageAttribute")
+    return
+}
+
+func NewModifyImageAttributeResponse() (response *ModifyImageAttributeResponse) {
+    response = &ModifyImageAttributeResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（ModifyImageAttribute）用于修改镜像属性。
+func (c *Client) ModifyImageAttribute(request *ModifyImageAttributeRequest) (response *ModifyImageAttributeResponse, err error) {
+    if request == nil {
+        request = NewModifyImageAttributeRequest()
+    }
+    response = NewModifyImageAttributeResponse()
     err = c.Send(request, response)
     return
 }
