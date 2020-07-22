@@ -1136,6 +1136,58 @@ func (r *CreateParamTemplateResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type CreateRoInstanceIpRequest struct {
+	*tchttp.BaseRequest
+
+	// 只读实例ID，格式如：cdbro-3i70uj0k，与云数据库控制台页面中显示的只读实例ID相同。
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 子网描述符，例如：subnet-1typ0s7d。
+	UniqSubnetId *string `json:"UniqSubnetId,omitempty" name:"UniqSubnetId"`
+
+	// vpc描述符，例如：vpc-xxx,如果传了该字段则UniqSubnetId必传
+	UniqVpcId *string `json:"UniqVpcId,omitempty" name:"UniqVpcId"`
+}
+
+func (r *CreateRoInstanceIpRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateRoInstanceIpRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateRoInstanceIpResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 只读实例的私有网络的ID。
+		RoVpcId *int64 `json:"RoVpcId,omitempty" name:"RoVpcId"`
+
+		// 只读实例的子网ID。
+		RoSubnetId *int64 `json:"RoSubnetId,omitempty" name:"RoSubnetId"`
+
+		// 只读实例的内网IP地址。
+		RoVip *string `json:"RoVip,omitempty" name:"RoVip"`
+
+		// 只读实例的内网端口号。
+		RoVport *int64 `json:"RoVport,omitempty" name:"RoVport"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateRoInstanceIpResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateRoInstanceIpResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DBSwitchInfo struct {
 
 	// 切换时间，格式为：2017-09-03 01:34:31
@@ -1242,6 +1294,9 @@ type DeleteAuditPolicyRequest struct {
 
 	// 审计策略 ID。
 	PolicyId *string `json:"PolicyId,omitempty" name:"PolicyId"`
+
+	// 实例 ID。
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 }
 
 func (r *DeleteAuditPolicyRequest) ToJsonString() string {

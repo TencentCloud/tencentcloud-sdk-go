@@ -411,6 +411,31 @@ func (c *Client) CreateParamTemplate(request *CreateParamTemplateRequest) (respo
     return
 }
 
+func NewCreateRoInstanceIpRequest() (request *CreateRoInstanceIpRequest) {
+    request = &CreateRoInstanceIpRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cdb", APIVersion, "CreateRoInstanceIp")
+    return
+}
+
+func NewCreateRoInstanceIpResponse() (response *CreateRoInstanceIpResponse) {
+    response = &CreateRoInstanceIpResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口(CreateRoInstanceIp)用于创建云数据库只读实例的独立VIP。
+func (c *Client) CreateRoInstanceIp(request *CreateRoInstanceIpRequest) (response *CreateRoInstanceIpResponse, err error) {
+    if request == nil {
+        request = NewCreateRoInstanceIpRequest()
+    }
+    response = NewCreateRoInstanceIpResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteAccountsRequest() (request *DeleteAccountsRequest) {
     request = &DeleteAccountsRequest{
         BaseRequest: &tchttp.BaseRequest{},

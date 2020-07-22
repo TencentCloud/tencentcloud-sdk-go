@@ -112,6 +112,49 @@ type ClientConnection struct {
 	Count *uint64 `json:"Count,omitempty" name:"Count"`
 }
 
+type CreateBackupDBInstanceRequest struct {
+	*tchttp.BaseRequest
+
+	// 实例id
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 0-逻辑备份，1-物理备份
+	BackupMethod *int64 `json:"BackupMethod,omitempty" name:"BackupMethod"`
+
+	// 备份备注
+	BackupRemark *string `json:"BackupRemark,omitempty" name:"BackupRemark"`
+}
+
+func (r *CreateBackupDBInstanceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateBackupDBInstanceRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateBackupDBInstanceResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 查询备份流程的状态
+		AsyncRequestId *string `json:"AsyncRequestId,omitempty" name:"AsyncRequestId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateBackupDBInstanceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateBackupDBInstanceResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type CreateDBInstanceHourRequest struct {
 	*tchttp.BaseRequest
 
@@ -317,6 +360,43 @@ type DBInstancePrice struct {
 
 	// 折扣加
 	DiscountPrice *float64 `json:"DiscountPrice,omitempty" name:"DiscountPrice"`
+}
+
+type DescribeAsyncRequestInfoRequest struct {
+	*tchttp.BaseRequest
+
+	// 异步请求Id
+	AsyncRequestId *string `json:"AsyncRequestId,omitempty" name:"AsyncRequestId"`
+}
+
+func (r *DescribeAsyncRequestInfoRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeAsyncRequestInfoRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeAsyncRequestInfoResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 状态
+		Status *string `json:"Status,omitempty" name:"Status"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeAsyncRequestInfoResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeAsyncRequestInfoResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeBackupAccessRequest struct {
@@ -1224,6 +1304,49 @@ func (r *RenewDBInstancesResponse) ToJsonString() string {
 }
 
 func (r *RenewDBInstancesResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ResetDBInstancePasswordRequest struct {
+	*tchttp.BaseRequest
+
+	// 实例Id
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 实例账号名
+	UserName *string `json:"UserName,omitempty" name:"UserName"`
+
+	// 新密码
+	Password *string `json:"Password,omitempty" name:"Password"`
+}
+
+func (r *ResetDBInstancePasswordRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ResetDBInstancePasswordRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ResetDBInstancePasswordResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 异步请求Id，用户查询该流程的运行状态
+		AsyncRequestId *string `json:"AsyncRequestId,omitempty" name:"AsyncRequestId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ResetDBInstancePasswordResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ResetDBInstancePasswordResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 

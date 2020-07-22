@@ -755,6 +755,43 @@ func (r *DeletePolicyVersionResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DeleteRolePermissionsBoundaryRequest struct {
+	*tchttp.BaseRequest
+
+	// 角色ID（与角色名至少填一个）
+	RoleId *string `json:"RoleId,omitempty" name:"RoleId"`
+
+	// 角色名（与角色ID至少填一个）
+	RoleName *string `json:"RoleName,omitempty" name:"RoleName"`
+}
+
+func (r *DeleteRolePermissionsBoundaryRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteRolePermissionsBoundaryRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteRolePermissionsBoundaryResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DeleteRolePermissionsBoundaryResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteRolePermissionsBoundaryResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DeleteRoleRequest struct {
 	*tchttp.BaseRequest
 
@@ -860,6 +897,40 @@ func (r *DeleteServiceLinkedRoleResponse) ToJsonString() string {
 }
 
 func (r *DeleteServiceLinkedRoleResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteUserPermissionsBoundaryRequest struct {
+	*tchttp.BaseRequest
+
+	// 子账号Uin
+	TargetUin *int64 `json:"TargetUin,omitempty" name:"TargetUin"`
+}
+
+func (r *DeleteUserPermissionsBoundaryRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteUserPermissionsBoundaryRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteUserPermissionsBoundaryResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DeleteUserPermissionsBoundaryResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteUserPermissionsBoundaryResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -2144,6 +2215,83 @@ type PolicyVersionItem struct {
 	// 是否是正在生效的版本。0表示不是，1表示是
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsDefaultVersion *int64 `json:"IsDefaultVersion,omitempty" name:"IsDefaultVersion"`
+}
+
+type PutRolePermissionsBoundaryRequest struct {
+	*tchttp.BaseRequest
+
+	// 策略ID
+	PolicyId *int64 `json:"PolicyId,omitempty" name:"PolicyId"`
+
+	// 角色ID（与角色名至少填一个）
+	RoleId *string `json:"RoleId,omitempty" name:"RoleId"`
+
+	// 角色名（与角色ID至少填一个）
+	RoleName *string `json:"RoleName,omitempty" name:"RoleName"`
+}
+
+func (r *PutRolePermissionsBoundaryRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *PutRolePermissionsBoundaryRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type PutRolePermissionsBoundaryResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *PutRolePermissionsBoundaryResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *PutRolePermissionsBoundaryResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type PutUserPermissionsBoundaryRequest struct {
+	*tchttp.BaseRequest
+
+	// 子账号Uin
+	TargetUin *int64 `json:"TargetUin,omitempty" name:"TargetUin"`
+
+	// 策略ID
+	PolicyId *int64 `json:"PolicyId,omitempty" name:"PolicyId"`
+}
+
+func (r *PutUserPermissionsBoundaryRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *PutUserPermissionsBoundaryRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type PutUserPermissionsBoundaryResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *PutUserPermissionsBoundaryResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *PutUserPermissionsBoundaryResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
 }
 
 type RemoveUserFromGroupRequest struct {

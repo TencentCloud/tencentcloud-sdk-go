@@ -308,9 +308,6 @@ type CreateTrainingJobRequest struct {
 	// 算法镜像配置
 	AlgorithmSpecification *AlgorithmSpecification `json:"AlgorithmSpecification,omitempty" name:"AlgorithmSpecification"`
 
-	// 输入数据配置
-	InputDataConfig []*InputDataConfig `json:"InputDataConfig,omitempty" name:"InputDataConfig" list`
-
 	// 输出数据配置
 	OutputDataConfig *OutputDataConfig `json:"OutputDataConfig,omitempty" name:"OutputDataConfig"`
 
@@ -319,6 +316,9 @@ type CreateTrainingJobRequest struct {
 
 	// 训练任务名称
 	TrainingJobName *string `json:"TrainingJobName,omitempty" name:"TrainingJobName"`
+
+	// 输入数据配置
+	InputDataConfig []*InputDataConfig `json:"InputDataConfig,omitempty" name:"InputDataConfig" list`
 
 	// 中止条件
 	StoppingCondition *StoppingCondition `json:"StoppingCondition,omitempty" name:"StoppingCondition"`

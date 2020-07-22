@@ -443,6 +443,31 @@ func (c *Client) DeleteRole(request *DeleteRoleRequest) (response *DeleteRoleRes
     return
 }
 
+func NewDeleteRolePermissionsBoundaryRequest() (request *DeleteRolePermissionsBoundaryRequest) {
+    request = &DeleteRolePermissionsBoundaryRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cam", APIVersion, "DeleteRolePermissionsBoundary")
+    return
+}
+
+func NewDeleteRolePermissionsBoundaryResponse() (response *DeleteRolePermissionsBoundaryResponse) {
+    response = &DeleteRolePermissionsBoundaryResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 删除角色权限边界
+func (c *Client) DeleteRolePermissionsBoundary(request *DeleteRolePermissionsBoundaryRequest) (response *DeleteRolePermissionsBoundaryResponse, err error) {
+    if request == nil {
+        request = NewDeleteRolePermissionsBoundaryRequest()
+    }
+    response = NewDeleteRolePermissionsBoundaryResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteSAMLProviderRequest() (request *DeleteSAMLProviderRequest) {
     request = &DeleteSAMLProviderRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -514,6 +539,31 @@ func (c *Client) DeleteUser(request *DeleteUserRequest) (response *DeleteUserRes
         request = NewDeleteUserRequest()
     }
     response = NewDeleteUserResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteUserPermissionsBoundaryRequest() (request *DeleteUserPermissionsBoundaryRequest) {
+    request = &DeleteUserPermissionsBoundaryRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cam", APIVersion, "DeleteUserPermissionsBoundary")
+    return
+}
+
+func NewDeleteUserPermissionsBoundaryResponse() (response *DeleteUserPermissionsBoundaryResponse) {
+    response = &DeleteUserPermissionsBoundaryResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 删除用户权限边界
+func (c *Client) DeleteUserPermissionsBoundary(request *DeleteUserPermissionsBoundaryRequest) (response *DeleteUserPermissionsBoundaryResponse, err error) {
+    if request == nil {
+        request = NewDeleteUserPermissionsBoundaryRequest()
+    }
+    response = NewDeleteUserPermissionsBoundaryResponse()
     err = c.Send(request, response)
     return
 }
@@ -1139,6 +1189,56 @@ func (c *Client) ListUsersForGroup(request *ListUsersForGroupRequest) (response 
         request = NewListUsersForGroupRequest()
     }
     response = NewListUsersForGroupResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewPutRolePermissionsBoundaryRequest() (request *PutRolePermissionsBoundaryRequest) {
+    request = &PutRolePermissionsBoundaryRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cam", APIVersion, "PutRolePermissionsBoundary")
+    return
+}
+
+func NewPutRolePermissionsBoundaryResponse() (response *PutRolePermissionsBoundaryResponse) {
+    response = &PutRolePermissionsBoundaryResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 设置角色权限边界
+func (c *Client) PutRolePermissionsBoundary(request *PutRolePermissionsBoundaryRequest) (response *PutRolePermissionsBoundaryResponse, err error) {
+    if request == nil {
+        request = NewPutRolePermissionsBoundaryRequest()
+    }
+    response = NewPutRolePermissionsBoundaryResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewPutUserPermissionsBoundaryRequest() (request *PutUserPermissionsBoundaryRequest) {
+    request = &PutUserPermissionsBoundaryRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cam", APIVersion, "PutUserPermissionsBoundary")
+    return
+}
+
+func NewPutUserPermissionsBoundaryResponse() (response *PutUserPermissionsBoundaryResponse) {
+    response = &PutUserPermissionsBoundaryResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 设置用户权限边界
+func (c *Client) PutUserPermissionsBoundary(request *PutUserPermissionsBoundaryRequest) (response *PutUserPermissionsBoundaryResponse, err error) {
+    if request == nil {
+        request = NewPutUserPermissionsBoundaryRequest()
+    }
+    response = NewPutUserPermissionsBoundaryResponse()
     err = c.Send(request, response)
     return
 }

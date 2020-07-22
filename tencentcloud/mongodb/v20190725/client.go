@@ -68,6 +68,31 @@ func (c *Client) AssignProject(request *AssignProjectRequest) (response *AssignP
     return
 }
 
+func NewCreateBackupDBInstanceRequest() (request *CreateBackupDBInstanceRequest) {
+    request = &CreateBackupDBInstanceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("mongodb", APIVersion, "CreateBackupDBInstance")
+    return
+}
+
+func NewCreateBackupDBInstanceResponse() (response *CreateBackupDBInstanceResponse) {
+    response = &CreateBackupDBInstanceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 备份实例接口
+func (c *Client) CreateBackupDBInstance(request *CreateBackupDBInstanceRequest) (response *CreateBackupDBInstanceResponse, err error) {
+    if request == nil {
+        request = NewCreateBackupDBInstanceRequest()
+    }
+    response = NewCreateBackupDBInstanceResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateDBInstanceRequest() (request *CreateDBInstanceRequest) {
     request = &CreateDBInstanceRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -114,6 +139,31 @@ func (c *Client) CreateDBInstanceHour(request *CreateDBInstanceHourRequest) (res
         request = NewCreateDBInstanceHourRequest()
     }
     response = NewCreateDBInstanceHourResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeAsyncRequestInfoRequest() (request *DescribeAsyncRequestInfoRequest) {
+    request = &DescribeAsyncRequestInfoRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("mongodb", APIVersion, "DescribeAsyncRequestInfo")
+    return
+}
+
+func NewDescribeAsyncRequestInfoResponse() (response *DescribeAsyncRequestInfoResponse) {
+    response = &DescribeAsyncRequestInfoResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询异步任务状态接口
+func (c *Client) DescribeAsyncRequestInfo(request *DescribeAsyncRequestInfoRequest) (response *DescribeAsyncRequestInfoResponse, err error) {
+    if request == nil {
+        request = NewDescribeAsyncRequestInfoRequest()
+    }
+    response = NewDescribeAsyncRequestInfoResponse()
     err = c.Send(request, response)
     return
 }
@@ -539,6 +589,31 @@ func (c *Client) RenewDBInstances(request *RenewDBInstancesRequest) (response *R
         request = NewRenewDBInstancesRequest()
     }
     response = NewRenewDBInstancesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewResetDBInstancePasswordRequest() (request *ResetDBInstancePasswordRequest) {
+    request = &ResetDBInstancePasswordRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("mongodb", APIVersion, "ResetDBInstancePassword")
+    return
+}
+
+func NewResetDBInstancePasswordResponse() (response *ResetDBInstancePasswordResponse) {
+    response = &ResetDBInstancePasswordResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 修改实例用户的密码
+func (c *Client) ResetDBInstancePassword(request *ResetDBInstancePasswordRequest) (response *ResetDBInstancePasswordResponse, err error) {
+    if request == nil {
+        request = NewResetDBInstancePasswordRequest()
+    }
+    response = NewResetDBInstancePasswordResponse()
     err = c.Send(request, response)
     return
 }

@@ -633,14 +633,17 @@ type EventMessage struct {
 
 type LayoutParams struct {
 
-	// 混流布局模板ID，0为悬浮模板(默认);1为九宫格模板;2为屏幕分享模板
+	// 混流布局模板ID，0为悬浮模板(默认);1为九宫格模板;2为屏幕分享模板;3为画中画模板。
 	Template *uint64 `json:"Template,omitempty" name:"Template"`
 
-	// 屏幕分享模板中有效，代表左侧大画面对应的用户ID
+	// 屏幕分享模板、悬浮模板、画中画模板中有效，代表大画面对应的用户ID。
 	MainVideoUserId *string `json:"MainVideoUserId,omitempty" name:"MainVideoUserId"`
 
-	// 屏幕分享模板中有效，代表左侧大画面对应的流类型，0为摄像头，1为屏幕分享。左侧大画面为web用户时此值填0
+	// 屏幕分享模板、悬浮模板、画中画模板中有效，代表大画面对应的流类型，0为摄像头，1为屏幕分享。左侧大画面为web用户时此值填0。
 	MainVideoStreamType *uint64 `json:"MainVideoStreamType,omitempty" name:"MainVideoStreamType"`
+
+	// 画中画模板中有效，代表小画面的布局参数。
+	SmallVideoLayoutParams *SmallVideoLayoutParams `json:"SmallVideoLayoutParams,omitempty" name:"SmallVideoLayoutParams"`
 }
 
 type OutputParams struct {
@@ -761,6 +764,27 @@ type ScaleInfomation struct {
 	// sdkappid下一天内的房间数
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RoomNumbers *uint64 `json:"RoomNumbers,omitempty" name:"RoomNumbers"`
+}
+
+type SmallVideoLayoutParams struct {
+
+	// 代表小画面对应的用户ID。
+	UserId *string `json:"UserId,omitempty" name:"UserId"`
+
+	// 代表小画面对应的流类型，0为摄像头，1为屏幕分享。小画面为web用户时此值填0。
+	StreamType *uint64 `json:"StreamType,omitempty" name:"StreamType"`
+
+	// 小画面在输出时的宽度，单位为像素值，不填默认为0。
+	ImageWidth *uint64 `json:"ImageWidth,omitempty" name:"ImageWidth"`
+
+	// 小画面在输出时的高度，单位为像素值，不填默认为0。
+	ImageHeight *uint64 `json:"ImageHeight,omitempty" name:"ImageHeight"`
+
+	// 小画面在输出时的X偏移，单位为像素值，LocationX与ImageWidth之和不能超过混流输出的总宽度，不填默认为0。
+	LocationX *uint64 `json:"LocationX,omitempty" name:"LocationX"`
+
+	// 小画面在输出时的Y偏移，单位为像素值，LocationY与ImageHeight之和不能超过混流输出的总高度，不填默认为0。
+	LocationY *uint64 `json:"LocationY,omitempty" name:"LocationY"`
 }
 
 type StartMCUMixTranscodeRequest struct {
