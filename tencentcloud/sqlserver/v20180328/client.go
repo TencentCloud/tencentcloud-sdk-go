@@ -593,6 +593,81 @@ func (c *Client) DescribePublishSubscribe(request *DescribePublishSubscribeReque
     return
 }
 
+func NewDescribeReadOnlyGroupByReadOnlyInstanceRequest() (request *DescribeReadOnlyGroupByReadOnlyInstanceRequest) {
+    request = &DescribeReadOnlyGroupByReadOnlyInstanceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("sqlserver", APIVersion, "DescribeReadOnlyGroupByReadOnlyInstance")
+    return
+}
+
+func NewDescribeReadOnlyGroupByReadOnlyInstanceResponse() (response *DescribeReadOnlyGroupByReadOnlyInstanceResponse) {
+    response = &DescribeReadOnlyGroupByReadOnlyInstanceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（DescribeReadOnlyGroupByReadOnlyInstance）用于通过只读副本实例ID查询其所在的只读组。
+func (c *Client) DescribeReadOnlyGroupByReadOnlyInstance(request *DescribeReadOnlyGroupByReadOnlyInstanceRequest) (response *DescribeReadOnlyGroupByReadOnlyInstanceResponse, err error) {
+    if request == nil {
+        request = NewDescribeReadOnlyGroupByReadOnlyInstanceRequest()
+    }
+    response = NewDescribeReadOnlyGroupByReadOnlyInstanceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeReadOnlyGroupDetailsRequest() (request *DescribeReadOnlyGroupDetailsRequest) {
+    request = &DescribeReadOnlyGroupDetailsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("sqlserver", APIVersion, "DescribeReadOnlyGroupDetails")
+    return
+}
+
+func NewDescribeReadOnlyGroupDetailsResponse() (response *DescribeReadOnlyGroupDetailsResponse) {
+    response = &DescribeReadOnlyGroupDetailsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（DescribeReadOnlyGroupDetails）用于查询只读组详情。
+func (c *Client) DescribeReadOnlyGroupDetails(request *DescribeReadOnlyGroupDetailsRequest) (response *DescribeReadOnlyGroupDetailsResponse, err error) {
+    if request == nil {
+        request = NewDescribeReadOnlyGroupDetailsRequest()
+    }
+    response = NewDescribeReadOnlyGroupDetailsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeReadOnlyGroupListRequest() (request *DescribeReadOnlyGroupListRequest) {
+    request = &DescribeReadOnlyGroupListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("sqlserver", APIVersion, "DescribeReadOnlyGroupList")
+    return
+}
+
+func NewDescribeReadOnlyGroupListResponse() (response *DescribeReadOnlyGroupListResponse) {
+    response = &DescribeReadOnlyGroupListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（DescribeReadOnlyGroupList）用于查询只读组列表。
+func (c *Client) DescribeReadOnlyGroupList(request *DescribeReadOnlyGroupListRequest) (response *DescribeReadOnlyGroupListResponse, err error) {
+    if request == nil {
+        request = NewDescribeReadOnlyGroupListRequest()
+    }
+    response = NewDescribeReadOnlyGroupListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeRegionsRequest() (request *DescribeRegionsRequest) {
     request = &DescribeRegionsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1039,6 +1114,31 @@ func (c *Client) ModifyPublishSubscribeName(request *ModifyPublishSubscribeNameR
         request = NewModifyPublishSubscribeNameRequest()
     }
     response = NewModifyPublishSubscribeNameResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyReadOnlyGroupDetailsRequest() (request *ModifyReadOnlyGroupDetailsRequest) {
+    request = &ModifyReadOnlyGroupDetailsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("sqlserver", APIVersion, "ModifyReadOnlyGroupDetails")
+    return
+}
+
+func NewModifyReadOnlyGroupDetailsResponse() (response *ModifyReadOnlyGroupDetailsResponse) {
+    response = &ModifyReadOnlyGroupDetailsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（ModifyReadOnlyGroupDetails）用于修改只读组详情。
+func (c *Client) ModifyReadOnlyGroupDetails(request *ModifyReadOnlyGroupDetailsRequest) (response *ModifyReadOnlyGroupDetailsResponse, err error) {
+    if request == nil {
+        request = NewModifyReadOnlyGroupDetailsRequest()
+    }
+    response = NewModifyReadOnlyGroupDetailsResponse()
     err = c.Send(request, response)
     return
 }

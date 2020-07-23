@@ -193,6 +193,31 @@ func (c *Client) CarInvoiceOCR(request *CarInvoiceOCRRequest) (response *CarInvo
     return
 }
 
+func NewClassifyDetectOCRRequest() (request *ClassifyDetectOCRRequest) {
+    request = &ClassifyDetectOCRRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ocr", APIVersion, "ClassifyDetectOCR")
+    return
+}
+
+func NewClassifyDetectOCRResponse() (response *ClassifyDetectOCRResponse) {
+    response = &ClassifyDetectOCRResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 支持身份证、护照、名片、银行卡、行驶证、驾驶证、港澳台通行证、户口本、港澳台来往内地通行证、港澳台居住证、不动产证、营业执照的智能分类。
+func (c *Client) ClassifyDetectOCR(request *ClassifyDetectOCRRequest) (response *ClassifyDetectOCRResponse, err error) {
+    if request == nil {
+        request = NewClassifyDetectOCRRequest()
+    }
+    response = NewClassifyDetectOCRResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDriverLicenseOCRRequest() (request *DriverLicenseOCRRequest) {
     request = &DriverLicenseOCRRequest{
         BaseRequest: &tchttp.BaseRequest{},

@@ -1453,6 +1453,192 @@ func (r *DescribePublishSubscribeResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeReadOnlyGroupByReadOnlyInstanceRequest struct {
+	*tchttp.BaseRequest
+
+	// 实例ID，格式如：mssqlro-3l3fgqn7
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+}
+
+func (r *DescribeReadOnlyGroupByReadOnlyInstanceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeReadOnlyGroupByReadOnlyInstanceRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeReadOnlyGroupByReadOnlyInstanceResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 只读组ID
+		ReadOnlyGroupId *string `json:"ReadOnlyGroupId,omitempty" name:"ReadOnlyGroupId"`
+
+		// 只读组名称
+		ReadOnlyGroupName *string `json:"ReadOnlyGroupName,omitempty" name:"ReadOnlyGroupName"`
+
+		// 只读组的地域ID
+		RegionId *string `json:"RegionId,omitempty" name:"RegionId"`
+
+		// 只读组的可用区ID
+		ZoneId *string `json:"ZoneId,omitempty" name:"ZoneId"`
+
+		// 是否启动超时剔除功能 ,0-不开启剔除功能，1-开启剔除功能
+		IsOfflineDelay *int64 `json:"IsOfflineDelay,omitempty" name:"IsOfflineDelay"`
+
+		// 启动超时剔除功能后，使用的超时阈值，单位是秒
+		ReadOnlyMaxDelayTime *int64 `json:"ReadOnlyMaxDelayTime,omitempty" name:"ReadOnlyMaxDelayTime"`
+
+		// 启动超时剔除功能后，只读组至少保留的只读副本数
+		MinReadOnlyInGroup *int64 `json:"MinReadOnlyInGroup,omitempty" name:"MinReadOnlyInGroup"`
+
+		// 只读组vip
+		Vip *string `json:"Vip,omitempty" name:"Vip"`
+
+		// 只读组vport
+		Vport *int64 `json:"Vport,omitempty" name:"Vport"`
+
+		// 只读组在私有网络ID
+		VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
+
+		// 只读组在私有网络子网ID
+		SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
+
+		// 主实例ID，形如mssql-sgeshe3th
+		MasterInstanceId *string `json:"MasterInstanceId,omitempty" name:"MasterInstanceId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeReadOnlyGroupByReadOnlyInstanceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeReadOnlyGroupByReadOnlyInstanceResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeReadOnlyGroupDetailsRequest struct {
+	*tchttp.BaseRequest
+
+	// 主实例ID，格式如：mssql-3l3fgqn7
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 只读组ID，格式如：mssqlrg-3l3fgqn7
+	ReadOnlyGroupId *string `json:"ReadOnlyGroupId,omitempty" name:"ReadOnlyGroupId"`
+}
+
+func (r *DescribeReadOnlyGroupDetailsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeReadOnlyGroupDetailsRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeReadOnlyGroupDetailsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 只读组ID
+		ReadOnlyGroupId *string `json:"ReadOnlyGroupId,omitempty" name:"ReadOnlyGroupId"`
+
+		// 只读组名称
+		ReadOnlyGroupName *string `json:"ReadOnlyGroupName,omitempty" name:"ReadOnlyGroupName"`
+
+		// 只读组的地域ID，与主实例相同
+		RegionId *string `json:"RegionId,omitempty" name:"RegionId"`
+
+		// 只读组的可用区ID，与主实例相同
+		ZoneId *string `json:"ZoneId,omitempty" name:"ZoneId"`
+
+		// 是否启动超时剔除功能，0-不开启剔除功能，1-开启剔除功能
+		IsOfflineDelay *int64 `json:"IsOfflineDelay,omitempty" name:"IsOfflineDelay"`
+
+		// 启动超时剔除功能后，使用的超时阈值
+		ReadOnlyMaxDelayTime *int64 `json:"ReadOnlyMaxDelayTime,omitempty" name:"ReadOnlyMaxDelayTime"`
+
+		// 启动超时剔除功能后，至少只读组保留的只读副本数
+		MinReadOnlyInGroup *int64 `json:"MinReadOnlyInGroup,omitempty" name:"MinReadOnlyInGroup"`
+
+		// 只读组vip
+		Vip *string `json:"Vip,omitempty" name:"Vip"`
+
+		// 只读组vport
+		Vport *int64 `json:"Vport,omitempty" name:"Vport"`
+
+		// 只读组私有网络ID
+		VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
+
+		// 只读组私有网络子网ID
+		SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
+
+		// 只读实例副本集合
+		ReadOnlyInstanceSet []*ReadOnlyInstance `json:"ReadOnlyInstanceSet,omitempty" name:"ReadOnlyInstanceSet" list`
+
+		// 只读组状态: 1-申请成功运行中，5-申请中
+		Status *int64 `json:"Status,omitempty" name:"Status"`
+
+		// 主实例ID，形如mssql-sgeshe3th
+		MasterInstanceId *string `json:"MasterInstanceId,omitempty" name:"MasterInstanceId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeReadOnlyGroupDetailsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeReadOnlyGroupDetailsResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeReadOnlyGroupListRequest struct {
+	*tchttp.BaseRequest
+
+	// 主实例ID，格式如：mssql-3l3fgqn7
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+}
+
+func (r *DescribeReadOnlyGroupListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeReadOnlyGroupListRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeReadOnlyGroupListResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 只读组列表
+		ReadOnlyGroupSet []*ReadOnlyGroup `json:"ReadOnlyGroupSet,omitempty" name:"ReadOnlyGroupSet" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeReadOnlyGroupListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeReadOnlyGroupListResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeRegionsRequest struct {
 	*tchttp.BaseRequest
 }
@@ -2356,6 +2542,64 @@ func (r *ModifyPublishSubscribeNameResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type ModifyReadOnlyGroupDetailsRequest struct {
+	*tchttp.BaseRequest
+
+	// 主实例ID，格式如：mssql-3l3fgqn7
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 只读组ID
+	ReadOnlyGroupId *string `json:"ReadOnlyGroupId,omitempty" name:"ReadOnlyGroupId"`
+
+	// 只读组名称，不填此参数，则不修改
+	ReadOnlyGroupName *string `json:"ReadOnlyGroupName,omitempty" name:"ReadOnlyGroupName"`
+
+	// 是否启动超时剔除功能,0-不开启剔除功能，1-开启剔除功能，不填此参数，则不修改
+	IsOfflineDelay *int64 `json:"IsOfflineDelay,omitempty" name:"IsOfflineDelay"`
+
+	// 启动超时剔除功能后，使用的超时阈值，不填此参数，则不修改
+	ReadOnlyMaxDelayTime *int64 `json:"ReadOnlyMaxDelayTime,omitempty" name:"ReadOnlyMaxDelayTime"`
+
+	// 启动超时剔除功能后，只读组至少保留的只读副本数，不填此参数，则不修改
+	MinReadOnlyInGroup *int64 `json:"MinReadOnlyInGroup,omitempty" name:"MinReadOnlyInGroup"`
+
+	// 只读组实例权重修改集合，不填此参数，则不修改
+	WeightPairs []*ReadOnlyInstanceWeightPair `json:"WeightPairs,omitempty" name:"WeightPairs" list`
+
+	// 0-用户自定义权重（根据WeightPairs调整）,1-系统自动分配权重(WeightPairs无效)， 默认为0
+	AutoWeight *int64 `json:"AutoWeight,omitempty" name:"AutoWeight"`
+
+	// 0-不重新均衡负载，1-重新均衡负载，默认为0
+	BalanceWeight *int64 `json:"BalanceWeight,omitempty" name:"BalanceWeight"`
+}
+
+func (r *ModifyReadOnlyGroupDetailsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyReadOnlyGroupDetailsRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyReadOnlyGroupDetailsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifyReadOnlyGroupDetailsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyReadOnlyGroupDetailsResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type PublishSubscribe struct {
 
 	// 发布订阅ID
@@ -2384,6 +2628,143 @@ type PublishSubscribe struct {
 
 	// 数据库的订阅发布关系集合
 	DatabaseTupleSet []*DatabaseTupleStatus `json:"DatabaseTupleSet,omitempty" name:"DatabaseTupleSet" list`
+}
+
+type ReadOnlyGroup struct {
+
+	// 只读组ID
+	ReadOnlyGroupId *string `json:"ReadOnlyGroupId,omitempty" name:"ReadOnlyGroupId"`
+
+	// 只读组名称
+	ReadOnlyGroupName *string `json:"ReadOnlyGroupName,omitempty" name:"ReadOnlyGroupName"`
+
+	// 只读组的地域ID，与主实例相同
+	RegionId *string `json:"RegionId,omitempty" name:"RegionId"`
+
+	// 只读组的可用区ID，与主实例相同
+	ZoneId *string `json:"ZoneId,omitempty" name:"ZoneId"`
+
+	// 是否启动超时剔除功能，0-不开启剔除功能，1-开启剔除功能
+	IsOfflineDelay *int64 `json:"IsOfflineDelay,omitempty" name:"IsOfflineDelay"`
+
+	// 启动超时剔除功能后，使用的超时阈值
+	ReadOnlyMaxDelayTime *int64 `json:"ReadOnlyMaxDelayTime,omitempty" name:"ReadOnlyMaxDelayTime"`
+
+	// 启动超时剔除功能后，只读组至少保留的只读副本数
+	MinReadOnlyInGroup *int64 `json:"MinReadOnlyInGroup,omitempty" name:"MinReadOnlyInGroup"`
+
+	// 只读组vip
+	Vip *string `json:"Vip,omitempty" name:"Vip"`
+
+	// 只读组vport
+	Vport *int64 `json:"Vport,omitempty" name:"Vport"`
+
+	// 只读组私有网络ID
+	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
+
+	// 只读组私有网络子网ID
+	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
+
+	// 只读组状态: 1-申请成功运行中，5-申请中
+	Status *int64 `json:"Status,omitempty" name:"Status"`
+
+	// 主实例ID，形如mssql-sgeshe3th
+	MasterInstanceId *string `json:"MasterInstanceId,omitempty" name:"MasterInstanceId"`
+
+	// 只读实例副本集合
+	ReadOnlyInstanceSet []*ReadOnlyInstance `json:"ReadOnlyInstanceSet,omitempty" name:"ReadOnlyInstanceSet" list`
+}
+
+type ReadOnlyInstance struct {
+
+	// 只读副本ID，格式如：mssqlro-3l3fgqn7
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 只读副本名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 只读副本唯一UID
+	Uid *string `json:"Uid,omitempty" name:"Uid"`
+
+	// 只读副本所在项目ID
+	ProjectId *int64 `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 只读副本状态。1：申请中 2：运行中 3：被延迟剔除 4：已隔离 5：回收中 6：已回收 7：任务执行中 8：已下线 9：实例扩容中 10：实例迁移中  12：重启中
+	Status *int64 `json:"Status,omitempty" name:"Status"`
+
+	// 只读副本创建时间
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 只读副本更新时间
+	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
+
+	// 只读副本内存大小，单位G
+	Memory *int64 `json:"Memory,omitempty" name:"Memory"`
+
+	// 只读副本存储空间大小，单位G
+	Storage *int64 `json:"Storage,omitempty" name:"Storage"`
+
+	// 只读副本cpu核心数
+	Cpu *int64 `json:"Cpu,omitempty" name:"Cpu"`
+
+	// 只读副本版本代号
+	Version *string `json:"Version,omitempty" name:"Version"`
+
+	// 宿主机代号
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 只读副本模式，2-单机
+	Model *int64 `json:"Model,omitempty" name:"Model"`
+
+	// 只读副本计费模式，1-包年包月，0-按量计费
+	PayMode *int64 `json:"PayMode,omitempty" name:"PayMode"`
+
+	// 只读副本权重
+	Weight *int64 `json:"Weight,omitempty" name:"Weight"`
+
+	// 只读副本延迟时间，单位秒
+	DelayTime *string `json:"DelayTime,omitempty" name:"DelayTime"`
+
+	// 只读副本与主实例的同步状态。
+	// Init:初始化
+	// DeployReadOnlyInPorgress:部署副本进行中
+	// DeployReadOnlySuccess:部署副本成功
+	// DeployReadOnlyFail:部署副本失败
+	// DeployMasterDBInPorgress:主节点上加入副本数据库进行中
+	// DeployMasterDBSuccess:主节点上加入副本数据库成功
+	// DeployMasterDBFail:主节点上加入副本数据库进失败
+	// DeployReadOnlyDBInPorgress:副本还原加入数据库开始
+	// DeployReadOnlyDBSuccess:副本还原加入数据库成功
+	// DeployReadOnlyDBFail:副本还原加入数据库失败
+	// SyncDelay:同步延迟
+	// SyncFail:同步故障
+	// SyncExcluded:已剔除只读组
+	// SyncNormal:正常
+	SynStatus *string `json:"SynStatus,omitempty" name:"SynStatus"`
+
+	// 只读副本与主实例没有同步的库
+	DatabaseDifference *string `json:"DatabaseDifference,omitempty" name:"DatabaseDifference"`
+
+	// 只读副本与主实例没有同步的账户
+	AccountDifference *string `json:"AccountDifference,omitempty" name:"AccountDifference"`
+
+	// 只读副本计费开始时间
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 只读副本计费结束时间
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 只读副本隔离时间
+	IsolateTime *string `json:"IsolateTime,omitempty" name:"IsolateTime"`
+}
+
+type ReadOnlyInstanceWeightPair struct {
+
+	// 只读实例ID，格式如：mssqlro-3l3fgqn7
+	ReadOnlyInstanceId *string `json:"ReadOnlyInstanceId,omitempty" name:"ReadOnlyInstanceId"`
+
+	// 只读实例权重 ，范围是0-100
+	ReadOnlyWeight *int64 `json:"ReadOnlyWeight,omitempty" name:"ReadOnlyWeight"`
 }
 
 type RegionInfo struct {

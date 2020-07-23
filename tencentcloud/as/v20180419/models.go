@@ -283,10 +283,10 @@ type CreateAutoScalingGroupFromInstanceRequest struct {
 	// 实例ID
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
-	// 最大实例数，取值范围为0-2000。
+	// 最小实例数，取值范围为0-2000。
 	MinSize *int64 `json:"MinSize,omitempty" name:"MinSize"`
 
-	// 最小实例数，取值范围为0-2000。
+	// 最大实例数，取值范围为0-2000。
 	MaxSize *int64 `json:"MaxSize,omitempty" name:"MaxSize"`
 
 	// 期望实例数，大小介于最小实例数和最大实例数之间。

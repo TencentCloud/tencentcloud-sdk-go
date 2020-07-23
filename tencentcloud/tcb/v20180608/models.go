@@ -227,6 +227,9 @@ type CreatePostpayPackageRequest struct {
 	// 如果envsource为qcloud, channel可以为qc_console,cocos, qq, cloudgame,dcloud
 	// 和 EnvSource 参数同时传，或者同时不传；EnvId 为空时必传。
 	Channel *string `json:"Channel,omitempty" name:"Channel"`
+
+	// 扩展ID
+	ExtensionId *string `json:"ExtensionId,omitempty" name:"ExtensionId"`
 }
 
 func (r *CreatePostpayPackageRequest) ToJsonString() string {

@@ -1011,6 +1011,31 @@ func (c *Client) DescribeConcurrentRecordStreamNum(request *DescribeConcurrentRe
     return
 }
 
+func NewDescribeDeliverBandwidthListRequest() (request *DescribeDeliverBandwidthListRequest) {
+    request = &DescribeDeliverBandwidthListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("live", APIVersion, "DescribeDeliverBandwidthList")
+    return
+}
+
+func NewDescribeDeliverBandwidthListResponse() (response *DescribeDeliverBandwidthListResponse) {
+    response = &DescribeDeliverBandwidthListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询直播转推计费带宽，查询时间范围最大支持3个月内的数据，时间跨度最长31天。
+func (c *Client) DescribeDeliverBandwidthList(request *DescribeDeliverBandwidthListRequest) (response *DescribeDeliverBandwidthListResponse, err error) {
+    if request == nil {
+        request = NewDescribeDeliverBandwidthListRequest()
+    }
+    response = NewDescribeDeliverBandwidthListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeGroupProIspPlayInfoListRequest() (request *DescribeGroupProIspPlayInfoListRequest) {
     request = &DescribeGroupProIspPlayInfoListRequest{
         BaseRequest: &tchttp.BaseRequest{},

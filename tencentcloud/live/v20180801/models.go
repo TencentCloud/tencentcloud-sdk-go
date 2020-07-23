@@ -180,6 +180,17 @@ func (r *AddLiveWatermarkResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type BandwidthInfo struct {
+
+	// 返回格式：
+	// yyyy-mm-dd HH:MM:SS
+	// 根据粒度会有不同程度的缩减。
+	Time *string `json:"Time,omitempty" name:"Time"`
+
+	// 带宽。
+	Bandwidth *float64 `json:"Bandwidth,omitempty" name:"Bandwidth"`
+}
+
 type BillDataInfo struct {
 
 	// 时间点，格式: yyyy-mm-dd HH:MM:SS。
@@ -2140,6 +2151,46 @@ func (r *DescribeConcurrentRecordStreamNumResponse) ToJsonString() string {
 }
 
 func (r *DescribeConcurrentRecordStreamNumResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeDeliverBandwidthListRequest struct {
+	*tchttp.BaseRequest
+
+	// 起始时间，格式为%Y-%m-%d %H:%M:%S。
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 结束时间，格式为%Y-%m-%d %H:%M:%S，支持最近三个月的数据查询，时间跨度最大是1个月。
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+}
+
+func (r *DescribeDeliverBandwidthListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeDeliverBandwidthListRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeDeliverBandwidthListResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 转推计费带宽数据
+		DataInfoList []*BandwidthInfo `json:"DataInfoList,omitempty" name:"DataInfoList" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeDeliverBandwidthListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeDeliverBandwidthListResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 

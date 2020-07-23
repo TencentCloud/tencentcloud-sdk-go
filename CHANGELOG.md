@@ -1,93 +1,10 @@
 # 本版本更新包含以下内容：
 
-## 访问管理(cam) 版本：2019-01-16
+## 企业收付平台(cpdp) 版本：2019-08-20
 
-### 第 24 次发布
+### 第 25 次发布
 
-发布时间：2020-07-22 08:05:59
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [DeleteRolePermissionsBoundary](https://cloud.tencent.com/document/api/598/46593)
-* [DeleteUserPermissionsBoundary](https://cloud.tencent.com/document/api/598/46595)
-* [PutRolePermissionsBoundary](https://cloud.tencent.com/document/api/598/46592)
-* [PutUserPermissionsBoundary](https://cloud.tencent.com/document/api/598/46594)
-
-
-
-## 云数据库 MySQL(cdb) 版本：2017-03-20
-
-### 第 45 次发布
-
-发布时间：2020-07-22 08:06:46
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [CreateRoInstanceIp](https://cloud.tencent.com/document/api/236/46596)
-
-修改接口：
-
-* [DeleteAuditPolicy](https://cloud.tencent.com/document/api/236/45457)
-
-	* 新增入参：InstanceId
-
-
-
-
-## 云数据库 MongoDB(mongodb) 版本：2019-07-25
-
-### 第 6 次发布
-
-发布时间：2020-07-22 08:14:25
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [CreateBackupDBInstance](https://cloud.tencent.com/document/api/240/46599)
-* [DescribeAsyncRequestInfo](https://cloud.tencent.com/document/api/240/46601)
-* [ResetDBInstancePassword](https://cloud.tencent.com/document/api/240/46598)
-
-
-
-## 云数据库 MongoDB(mongodb) 版本：2018-04-08
-
-
-
-## 智能钛机器学习平台(tione) 版本：2019-10-22
-
-### 第 10 次发布
-
-发布时间：2020-07-22 08:01:55
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [CreateTrainingJob](https://cloud.tencent.com/document/api/851/42518)
-
-	* <font color="#dd0000">**修改入参**：</font>InputDataConfig
-
-
-
-
-## 实时音视频(trtc) 版本：2019-07-22
-
-### 第 12 次发布
-
-发布时间：2020-07-22 08:22:24
+发布时间：2020-07-23 08:22:41
 
 本次发布包含了以下内容：
 
@@ -95,13 +12,98 @@
 
 新增数据结构：
 
-* [SmallVideoLayoutParams](https://cloud.tencent.com/document/api/647/44055#SmallVideoLayoutParams)
+* [Order](https://cloud.tencent.com/document/api/1122/40683#Order)
+* [OrderItem](https://cloud.tencent.com/document/api/1122/40683#OrderItem)
 
 修改数据结构：
 
-* [LayoutParams](https://cloud.tencent.com/document/api/647/44055#LayoutParams)
+* [QueryInvoiceResult](https://cloud.tencent.com/document/api/1122/40683#QueryInvoiceResult)
 
-	* 新增成员：SmallVideoLayoutParams
+	* 新增成员：Order
+
+
+
+
+## 云直播(live) 版本：2018-08-01
+
+### 第 45 次发布
+
+发布时间：2020-07-23 08:12:45
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeDeliverBandwidthList](https://cloud.tencent.com/document/api/267/46769)
+
+新增数据结构：
+
+* [BandwidthInfo](https://cloud.tencent.com/document/api/267/20474#BandwidthInfo)
+
+
+
+## 文字识别(ocr) 版本：2018-11-19
+
+### 第 27 次发布
+
+发布时间：2020-07-23 08:14:48
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [ClassifyDetectOCR](https://cloud.tencent.com/document/api/866/46770)
+
+新增数据结构：
+
+* [ClassifyDetectInfo](https://cloud.tencent.com/document/api/866/33527#ClassifyDetectInfo)
+
+
+
+## 云数据库 SQL Server(sqlserver) 版本：2018-03-28
+
+### 第 7 次发布
+
+发布时间：2020-07-23 08:16:29
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeReadOnlyGroupByReadOnlyInstance](https://cloud.tencent.com/document/api/238/46773)
+* [DescribeReadOnlyGroupDetails](https://cloud.tencent.com/document/api/238/46772)
+* [DescribeReadOnlyGroupList](https://cloud.tencent.com/document/api/238/46771)
+* [ModifyReadOnlyGroupDetails](https://cloud.tencent.com/document/api/238/46774)
+
+新增数据结构：
+
+* [ReadOnlyGroup](https://cloud.tencent.com/document/api/238/19976#ReadOnlyGroup)
+* [ReadOnlyInstance](https://cloud.tencent.com/document/api/238/19976#ReadOnlyInstance)
+* [ReadOnlyInstanceWeightPair](https://cloud.tencent.com/document/api/238/19976#ReadOnlyInstanceWeightPair)
+
+
+
+## 云开发 CloudBase(tcb) 版本：2018-06-08
+
+### 第 14 次发布
+
+发布时间：2020-07-23 08:17:31
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreatePostpayPackage](https://cloud.tencent.com/document/api/876/45287)
+
+	* 新增入参：ExtensionId
 
 
 
@@ -3654,10 +3656,10 @@
 
 新增接口：
 
-* [[DeleteRolePermissionsBoundary](https://cloud.tencent.com/document/api/598/46593)](https://cloud.tencent.com/document/api/#/#)
-* [[DeleteUserPermissionsBoundary](https://cloud.tencent.com/document/api/598/46595)](https://cloud.tencent.com/document/api/#/#)
-* [[PutRolePermissionsBoundary](https://cloud.tencent.com/document/api/598/46592)](https://cloud.tencent.com/document/api/#/#)
-* [[PutUserPermissionsBoundary](https://cloud.tencent.com/document/api/598/46594)](https://cloud.tencent.com/document/api/#/#)
+* [DeleteRolePermissionsBoundary](https://cloud.tencent.com/document/api/598/46593)
+* [DeleteUserPermissionsBoundary](https://cloud.tencent.com/document/api/598/46595)
+* [PutRolePermissionsBoundary](https://cloud.tencent.com/document/api/598/46592)
+* [PutUserPermissionsBoundary](https://cloud.tencent.com/document/api/598/46594)
 
 ### 第 23 次发布
 
@@ -4763,7 +4765,7 @@
 
 新增接口：
 
-* [[CreateRoInstanceIp](https://cloud.tencent.com/document/api/236/46596)](https://cloud.tencent.com/document/api/#/#)
+* [CreateRoInstanceIp](https://cloud.tencent.com/document/api/236/46596)
 
 修改接口：
 
@@ -8352,6 +8354,26 @@
 
 
 ## 企业收付平台(cpdp) 版本：2019-08-20
+
+### 第 25 次发布
+
+发布时间：2020-07-23 08:22:41
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增数据结构：
+
+* [[Order](https://cloud.tencent.com/document/api/1122/40683#Order)](https://cloud.tencent.com/document/api/1122/40683#[Order](https://cloud.tencent.com/document/api/1122/40683#Order))
+* [[OrderItem](https://cloud.tencent.com/document/api/1122/40683#OrderItem)](https://cloud.tencent.com/document/api/1122/40683#[OrderItem](https://cloud.tencent.com/document/api/1122/40683#OrderItem))
+
+修改数据结构：
+
+* [QueryInvoiceResult](https://cloud.tencent.com/document/api/1122/40683#QueryInvoiceResult)
+
+	* 新增成员：Order
+
 
 ### 第 24 次发布
 
@@ -16465,6 +16487,22 @@
 
 ## 云直播(live) 版本：2018-08-01
 
+### 第 45 次发布
+
+发布时间：2020-07-23 08:12:45
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeDeliverBandwidthList](https://cloud.tencent.com/document/api/267/46769)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[BandwidthInfo](https://cloud.tencent.com/document/api/267/20474#BandwidthInfo)](https://cloud.tencent.com/document/api/267/20474#[BandwidthInfo](https://cloud.tencent.com/document/api/267/20474#BandwidthInfo))
+
 ### 第 44 次发布
 
 发布时间：2020-07-03 08:12:43
@@ -18035,9 +18073,9 @@
 
 新增接口：
 
-* [[CreateBackupDBInstance](https://cloud.tencent.com/document/api/240/46599)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeAsyncRequestInfo](https://cloud.tencent.com/document/api/240/46601)](https://cloud.tencent.com/document/api/#/#)
-* [[ResetDBInstancePassword](https://cloud.tencent.com/document/api/240/46598)](https://cloud.tencent.com/document/api/#/#)
+* [CreateBackupDBInstance](https://cloud.tencent.com/document/api/240/46599)
+* [DescribeAsyncRequestInfo](https://cloud.tencent.com/document/api/240/46601)
+* [ResetDBInstancePassword](https://cloud.tencent.com/document/api/240/46598)
 
 ### 第 5 次发布
 
@@ -19805,6 +19843,22 @@
 
 
 ## 文字识别(ocr) 版本：2018-11-19
+
+### 第 27 次发布
+
+发布时间：2020-07-23 08:14:48
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[ClassifyDetectOCR](https://cloud.tencent.com/document/api/866/46770)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[ClassifyDetectInfo](https://cloud.tencent.com/document/api/866/33527#ClassifyDetectInfo)](https://cloud.tencent.com/document/api/866/33527#[ClassifyDetectInfo](https://cloud.tencent.com/document/api/866/33527#ClassifyDetectInfo))
 
 ### 第 26 次发布
 
@@ -22355,6 +22409,27 @@
 
 ## 云数据库 SQL Server(sqlserver) 版本：2018-03-28
 
+### 第 7 次发布
+
+发布时间：2020-07-23 08:16:29
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeReadOnlyGroupByReadOnlyInstance](https://cloud.tencent.com/document/api/238/46773)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeReadOnlyGroupDetails](https://cloud.tencent.com/document/api/238/46772)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeReadOnlyGroupList](https://cloud.tencent.com/document/api/238/46771)](https://cloud.tencent.com/document/api/#/#)
+* [[ModifyReadOnlyGroupDetails](https://cloud.tencent.com/document/api/238/46774)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[ReadOnlyGroup](https://cloud.tencent.com/document/api/238/19976#ReadOnlyGroup)](https://cloud.tencent.com/document/api/238/19976#[ReadOnlyGroup](https://cloud.tencent.com/document/api/238/19976#ReadOnlyGroup))
+* [[ReadOnlyInstance](https://cloud.tencent.com/document/api/238/19976#ReadOnlyInstance)](https://cloud.tencent.com/document/api/238/19976#[ReadOnlyInstance](https://cloud.tencent.com/document/api/238/19976#ReadOnlyInstance))
+* [[ReadOnlyInstanceWeightPair](https://cloud.tencent.com/document/api/238/19976#ReadOnlyInstanceWeightPair)](https://cloud.tencent.com/document/api/238/19976#[ReadOnlyInstanceWeightPair](https://cloud.tencent.com/document/api/238/19976#ReadOnlyInstanceWeightPair))
+
 ### 第 6 次发布
 
 发布时间：2020-07-14 08:16:33
@@ -23740,6 +23815,21 @@
 
 
 ## 云开发 CloudBase(tcb) 版本：2018-06-08
+
+### 第 14 次发布
+
+发布时间：2020-07-23 08:17:31
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreatePostpayPackage](https://cloud.tencent.com/document/api/876/45287)
+
+	* 新增入参：ExtensionId
+
 
 ### 第 13 次发布
 
@@ -26424,7 +26514,7 @@
 
 新增数据结构：
 
-* [[SmallVideoLayoutParams](https://cloud.tencent.com/document/api/647/44055#SmallVideoLayoutParams)](https://cloud.tencent.com/document/api/647/44055#[SmallVideoLayoutParams](https://cloud.tencent.com/document/api/647/44055#SmallVideoLayoutParams))
+* [SmallVideoLayoutParams](https://cloud.tencent.com/document/api/647/44055#SmallVideoLayoutParams)
 
 修改数据结构：
 

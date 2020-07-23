@@ -1556,7 +1556,7 @@ type CreateInvoiceItem struct {
 	// 税收商品编码
 	TaxCode *string `json:"TaxCode,omitempty" name:"TaxCode"`
 
-	// 不含税商品总价（商品含税价总额/（1+税率））。单位为分
+	// 不含税商品总价（商品含税价总额/（1+税率））。InvoicePlatformId 为1时，该金额为含税总金额。单位为分。
 	TotalPrice *int64 `json:"TotalPrice,omitempty" name:"TotalPrice"`
 
 	// 商品税率
@@ -1577,7 +1577,7 @@ type CreateInvoiceItem struct {
 	// 商品数量
 	Total *string `json:"Total,omitempty" name:"Total"`
 
-	// 不含税商品单价
+	// 不含税商品单价。InvoicePlatformId 为1时，该金额为含税单价。
 	Price *string `json:"Price,omitempty" name:"Price"`
 
 	// 含税折扣总额。单位为分
@@ -1601,7 +1601,7 @@ type CreateInvoiceItem struct {
 type CreateInvoiceRequest struct {
 	*tchttp.BaseRequest
 
-	// 开票平台ID。0：高灯
+	// 开票平台ID。0：高灯，1：票易通
 	InvoicePlatformId *int64 `json:"InvoicePlatformId,omitempty" name:"InvoicePlatformId"`
 
 	// 抬头类型：1：个人/政府事业单位；2：企业
@@ -1619,7 +1619,7 @@ type CreateInvoiceRequest struct {
 	// 总税额（单位为分）
 	TaxAmount *int64 `json:"TaxAmount,omitempty" name:"TaxAmount"`
 
-	// 不含税总金额（单位为分）
+	// 不含税总金额（单位为分）。InvoicePlatformId 为1时，传默认值-1
 	AmountWithoutTax *int64 `json:"AmountWithoutTax,omitempty" name:"AmountWithoutTax"`
 
 	// 销方纳税人识别号
@@ -2612,6 +2612,88 @@ func (r *ModifyMntMbrBindRelateAcctBankCodeResponse) ToJsonString() string {
 
 func (r *ModifyMntMbrBindRelateAcctBankCodeResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
+}
+
+type Order struct {
+
+	// 含税金额
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AmountHasTax *float64 `json:"AmountHasTax,omitempty" name:"AmountHasTax"`
+
+	// 优惠金额
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Discount *float64 `json:"Discount,omitempty" name:"Discount"`
+
+	// 销方名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SellerName *string `json:"SellerName,omitempty" name:"SellerName"`
+
+	// 发票类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InvoiceType *int64 `json:"InvoiceType,omitempty" name:"InvoiceType"`
+
+	// 默认“”
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 支付金额
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Amount *float64 `json:"Amount,omitempty" name:"Amount"`
+
+	// 下单日期
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OrderDate *string `json:"OrderDate,omitempty" name:"OrderDate"`
+
+	// 订单号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OrderId *string `json:"OrderId,omitempty" name:"OrderId"`
+
+	// 门店号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StoreNo *string `json:"StoreNo,omitempty" name:"StoreNo"`
+
+	// 明细
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Items []*OrderItem `json:"Items,omitempty" name:"Items" list`
+}
+
+type OrderItem struct {
+
+	// 明细金额
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AmountHasTax *float64 `json:"AmountHasTax,omitempty" name:"AmountHasTax"`
+
+	// 优惠金额
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Discount *float64 `json:"Discount,omitempty" name:"Discount"`
+
+	// 商品名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 型号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Models *string `json:"Models,omitempty" name:"Models"`
+
+	// 数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Total *int64 `json:"Total,omitempty" name:"Total"`
+
+	// 数量单位
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Unit *string `json:"Unit,omitempty" name:"Unit"`
+
+	// 默认“0”
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 单价
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Price *float64 `json:"Price,omitempty" name:"Price"`
+
+	// 商品编码
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaxCode *string `json:"TaxCode,omitempty" name:"TaxCode"`
 }
 
 type QueryAcctBindingRequest struct {
@@ -3747,6 +3829,10 @@ type QueryInvoiceResult struct {
 	// 查询发票数据
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Data *QueryInvoiceResultData `json:"Data,omitempty" name:"Data"`
+
+	// 订单数据
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Order *Order `json:"Order,omitempty" name:"Order"`
 }
 
 type QueryInvoiceResultData struct {

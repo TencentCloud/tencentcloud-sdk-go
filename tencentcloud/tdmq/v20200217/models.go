@@ -667,7 +667,7 @@ type Environment struct {
 
 type FilterSubscription struct {
 
-	// 是否仅展示包含真实消费者的订。
+	// 是否仅展示包含真实消费者的订阅。
 	ConsumerHasCount *bool `json:"ConsumerHasCount,omitempty" name:"ConsumerHasCount"`
 
 	// 是否仅展示消息堆积的订阅。
@@ -736,7 +736,7 @@ type ModifyTopicRequest struct {
 	// 主题名。
 	TopicName *string `json:"TopicName,omitempty" name:"TopicName"`
 
-	// 分区数，必须>=原分区数大，不填则不修改分区数，修改分区数仅对非全局顺序消息起效果，不允许超过128个分区。
+	// 分区数，必须大于或者等于原分区数，若想维持原分区数请输入原数目，修改分区数仅对非全局顺序消息起效果，不允许超过128个分区。
 	Partitions *uint64 `json:"Partitions,omitempty" name:"Partitions"`
 
 	// 备注，128字符以内。
@@ -756,7 +756,7 @@ type ModifyTopicResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 分区数，必须比原分区数大，不填则不修复分区数，修改分区数仅对非全局顺序消息起效果。
+		// 分区数
 		Partitions *uint64 `json:"Partitions,omitempty" name:"Partitions"`
 
 		// 备注，128字符以内。
