@@ -1284,6 +1284,9 @@ type DescribePolicyGroupListRequest struct {
 
 	// 过滤条件, 接收人或者接收组, user表示接收人, group表示接收组
 	ReceiverType *string `json:"ReceiverType,omitempty" name:"ReceiverType"`
+
+	// 过滤条件，告警策略是否已启动或停止
+	IsOpen *bool `json:"IsOpen,omitempty" name:"IsOpen"`
 }
 
 func (r *DescribePolicyGroupListRequest) ToJsonString() string {

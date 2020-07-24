@@ -1694,7 +1694,7 @@ type InvoiceDetectInfo struct {
 	// 14：购物小票
 	Type *int64 `json:"Type,omitempty" name:"Type"`
 
-	// 识别出的图片在混贴票据图片中的位置信息。与Angel结合可以得出原图位置，组成RotatedRect((X,Y), (Width, Height), Angle)，详情可参考OpenCV文档。
+	// 识别出的图片在混贴票据图片中的位置信息。与Angel结合可以得出原图位置，组成RotatedRect((X+0.5*Width,Y+0.5*Height), (Width, Height), Angle)，详情可参考OpenCV文档。
 	Rect *Rect `json:"Rect,omitempty" name:"Rect"`
 
 	// 入参 ReturnImage 为 True 时返回 Base64 编码后的图片。
@@ -2148,7 +2148,7 @@ type MixedInvoiceItem struct {
 	// 13：过路过桥费发票
 	Type *int64 `json:"Type,omitempty" name:"Type"`
 
-	// 识别出的图片在混贴票据图片中的位置信息。与Angel结合可以得出原图位置，组成RotatedRect((X,Y), (Width, Height), Angle)，详情可参考OpenCV文档。
+	// 识别出的图片在混贴票据图片中的位置信息。与Angel结合可以得出原图位置，组成RotatedRect((X+0.5*Width,Y+0.5*Height), (Width, Height), Angle)，详情可参考OpenCV文档。
 	Rect *Rect `json:"Rect,omitempty" name:"Rect"`
 
 	// 识别出的图片在混贴票据图片中的旋转角度。

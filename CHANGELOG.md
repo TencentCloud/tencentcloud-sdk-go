@@ -1,34 +1,10 @@
 # 本版本更新包含以下内容：
 
-## 企业收付平台(cpdp) 版本：2019-08-20
+## 负载均衡(clb) 版本：2018-03-17
 
-### 第 25 次发布
+### 第 26 次发布
 
-发布时间：2020-07-23 08:22:41
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增数据结构：
-
-* [Order](https://cloud.tencent.com/document/api/1122/40683#Order)
-* [OrderItem](https://cloud.tencent.com/document/api/1122/40683#OrderItem)
-
-修改数据结构：
-
-* [QueryInvoiceResult](https://cloud.tencent.com/document/api/1122/40683#QueryInvoiceResult)
-
-	* 新增成员：Order
-
-
-
-
-## 云直播(live) 版本：2018-08-01
-
-### 第 45 次发布
-
-发布时间：2020-07-23 08:12:45
+发布时间：2020-07-24 08:07:28
 
 本次发布包含了以下内容：
 
@@ -36,64 +12,68 @@
 
 新增接口：
 
-* [DescribeDeliverBandwidthList](https://cloud.tencent.com/document/api/267/46769)
-
-新增数据结构：
-
-* [BandwidthInfo](https://cloud.tencent.com/document/api/267/20474#BandwidthInfo)
+* [CreateClsLogSet](https://cloud.tencent.com/document/api/214/46803)
+* [CreateTopic](https://cloud.tencent.com/document/api/214/46802)
+* [DescribeClsLogSet](https://cloud.tencent.com/document/api/214/46801)
 
 
 
-## 文字识别(ocr) 版本：2018-11-19
-
-### 第 27 次发布
-
-发布时间：2020-07-23 08:14:48
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [ClassifyDetectOCR](https://cloud.tencent.com/document/api/866/46770)
-
-新增数据结构：
-
-* [ClassifyDetectInfo](https://cloud.tencent.com/document/api/866/33527#ClassifyDetectInfo)
-
-
-
-## 云数据库 SQL Server(sqlserver) 版本：2018-03-28
-
-### 第 7 次发布
-
-发布时间：2020-07-23 08:16:29
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [DescribeReadOnlyGroupByReadOnlyInstance](https://cloud.tencent.com/document/api/238/46773)
-* [DescribeReadOnlyGroupDetails](https://cloud.tencent.com/document/api/238/46772)
-* [DescribeReadOnlyGroupList](https://cloud.tencent.com/document/api/238/46771)
-* [ModifyReadOnlyGroupDetails](https://cloud.tencent.com/document/api/238/46774)
-
-新增数据结构：
-
-* [ReadOnlyGroup](https://cloud.tencent.com/document/api/238/19976#ReadOnlyGroup)
-* [ReadOnlyInstance](https://cloud.tencent.com/document/api/238/19976#ReadOnlyInstance)
-* [ReadOnlyInstanceWeightPair](https://cloud.tencent.com/document/api/238/19976#ReadOnlyInstanceWeightPair)
-
-
-
-## 云开发 CloudBase(tcb) 版本：2018-06-08
+## 内容安全(cms) 版本：2019-03-21
 
 ### 第 14 次发布
 
-发布时间：2020-07-23 08:17:31
+发布时间：2020-07-24 08:07:51
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [ManualReview](https://cloud.tencent.com/document/api/669/46804)
+
+新增数据结构：
+
+* [ManualReviewContent](https://cloud.tencent.com/document/api/669/34506#ManualReviewContent)
+* [ManualReviewData](https://cloud.tencent.com/document/api/669/34506#ManualReviewData)
+
+修改数据结构：
+
+* [RiskDetails](https://cloud.tencent.com/document/api/669/34506#RiskDetails)
+
+	* 新增成员：Label
+
+
+
+
+## 企业收付平台(cpdp) 版本：2019-08-20
+
+### 第 26 次发布
+
+发布时间：2020-07-24 08:22:55
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CreateSinglePay](https://cloud.tencent.com/document/api/1122/46816)
+* [QuerySinglePay](https://cloud.tencent.com/document/api/1122/46815)
+
+新增数据结构：
+
+* [CreateSinglePayResult](https://cloud.tencent.com/document/api/1122/40683#CreateSinglePayResult)
+* [QuerySinglePayItem](https://cloud.tencent.com/document/api/1122/40683#QuerySinglePayItem)
+* [QuerySinglePayResult](https://cloud.tencent.com/document/api/1122/40683#QuerySinglePayResult)
+
+
+
+## 云监控(monitor) 版本：2018-07-24
+
+### 第 14 次发布
+
+发布时间：2020-07-24 08:13:45
 
 本次发布包含了以下内容：
 
@@ -101,10 +81,39 @@
 
 修改接口：
 
-* [CreatePostpayPackage](https://cloud.tencent.com/document/api/876/45287)
+* [DescribePolicyGroupList](https://cloud.tencent.com/document/api/248/40945)
 
-	* 新增入参：ExtensionId
+	* 新增入参：IsOpen
 
+
+
+
+## 云数据库 SQL Server(sqlserver) 版本：2018-03-28
+
+### 第 8 次发布
+
+发布时间：2020-07-24 08:16:28
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [AssociateSecurityGroups](https://cloud.tencent.com/document/api/238/46813)
+* [CreateBasicDBInstances](https://cloud.tencent.com/document/api/238/46808)
+* [CreateReadOnlyDBInstances](https://cloud.tencent.com/document/api/238/46807)
+* [DeleteDBInstance](https://cloud.tencent.com/document/api/238/46806)
+* [DescribeDBSecurityGroups](https://cloud.tencent.com/document/api/238/46812)
+* [DescribeProjectSecurityGroups](https://cloud.tencent.com/document/api/238/46811)
+* [DisassociateSecurityGroups](https://cloud.tencent.com/document/api/238/46810)
+* [ModifyDBInstanceSecurityGroups](https://cloud.tencent.com/document/api/238/46809)
+* [RenewPostpaidDBInstance](https://cloud.tencent.com/document/api/238/46805)
+
+新增数据结构：
+
+* [SecurityGroup](https://cloud.tencent.com/document/api/238/19976#SecurityGroup)
+* [SecurityGroupPolicy](https://cloud.tencent.com/document/api/238/19976#SecurityGroupPolicy)
 
 
 
@@ -6842,6 +6851,20 @@
 
 ## 负载均衡(clb) 版本：2018-03-17
 
+### 第 26 次发布
+
+发布时间：2020-07-24 08:07:28
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[CreateClsLogSet](https://cloud.tencent.com/document/api/214/46803)](https://cloud.tencent.com/document/api/#/#)
+* [[CreateTopic](https://cloud.tencent.com/document/api/214/46802)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeClsLogSet](https://cloud.tencent.com/document/api/214/46801)](https://cloud.tencent.com/document/api/#/#)
+
 ### 第 25 次发布
 
 发布时间：2020-06-19 08:07:20
@@ -8017,6 +8040,30 @@
 
 ## 内容安全(cms) 版本：2019-03-21
 
+### 第 14 次发布
+
+发布时间：2020-07-24 08:07:51
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[ManualReview](https://cloud.tencent.com/document/api/669/46804)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[ManualReviewContent](https://cloud.tencent.com/document/api/669/34506#ManualReviewContent)](https://cloud.tencent.com/document/api/669/34506#[ManualReviewContent](https://cloud.tencent.com/document/api/669/34506#ManualReviewContent))
+* [[ManualReviewData](https://cloud.tencent.com/document/api/669/34506#ManualReviewData)](https://cloud.tencent.com/document/api/669/34506#[ManualReviewData](https://cloud.tencent.com/document/api/669/34506#ManualReviewData))
+
+修改数据结构：
+
+* [RiskDetails](https://cloud.tencent.com/document/api/669/34506#RiskDetails)
+
+	* 新增成员：Label
+
+
 ### 第 13 次发布
 
 发布时间：2020-07-17 08:07:40
@@ -8355,6 +8402,25 @@
 
 ## 企业收付平台(cpdp) 版本：2019-08-20
 
+### 第 26 次发布
+
+发布时间：2020-07-24 08:22:55
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[CreateSinglePay](https://cloud.tencent.com/document/api/1122/46816)](https://cloud.tencent.com/document/api/#/#)
+* [[QuerySinglePay](https://cloud.tencent.com/document/api/1122/46815)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[CreateSinglePayResult](https://cloud.tencent.com/document/api/1122/40683#CreateSinglePayResult)](https://cloud.tencent.com/document/api/1122/40683#[CreateSinglePayResult](https://cloud.tencent.com/document/api/1122/40683#CreateSinglePayResult))
+* [[QuerySinglePayItem](https://cloud.tencent.com/document/api/1122/40683#QuerySinglePayItem)](https://cloud.tencent.com/document/api/1122/40683#[QuerySinglePayItem](https://cloud.tencent.com/document/api/1122/40683#QuerySinglePayItem))
+* [[QuerySinglePayResult](https://cloud.tencent.com/document/api/1122/40683#QuerySinglePayResult)](https://cloud.tencent.com/document/api/1122/40683#[QuerySinglePayResult](https://cloud.tencent.com/document/api/1122/40683#QuerySinglePayResult))
+
 ### 第 25 次发布
 
 发布时间：2020-07-23 08:22:41
@@ -8365,8 +8431,8 @@
 
 新增数据结构：
 
-* [[Order](https://cloud.tencent.com/document/api/1122/40683#Order)](https://cloud.tencent.com/document/api/1122/40683#[Order](https://cloud.tencent.com/document/api/1122/40683#Order))
-* [[OrderItem](https://cloud.tencent.com/document/api/1122/40683#OrderItem)](https://cloud.tencent.com/document/api/1122/40683#[OrderItem](https://cloud.tencent.com/document/api/1122/40683#OrderItem))
+* [Order](https://cloud.tencent.com/document/api/1122/40683#Order)
+* [OrderItem](https://cloud.tencent.com/document/api/1122/40683#OrderItem)
 
 修改数据结构：
 
@@ -16497,11 +16563,11 @@
 
 新增接口：
 
-* [[DescribeDeliverBandwidthList](https://cloud.tencent.com/document/api/267/46769)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeDeliverBandwidthList](https://cloud.tencent.com/document/api/267/46769)
 
 新增数据结构：
 
-* [[BandwidthInfo](https://cloud.tencent.com/document/api/267/20474#BandwidthInfo)](https://cloud.tencent.com/document/api/267/20474#[BandwidthInfo](https://cloud.tencent.com/document/api/267/20474#BandwidthInfo))
+* [BandwidthInfo](https://cloud.tencent.com/document/api/267/20474#BandwidthInfo)
 
 ### 第 44 次发布
 
@@ -18195,6 +18261,21 @@
 
 ## 云监控(monitor) 版本：2018-07-24
 
+### 第 14 次发布
+
+发布时间：2020-07-24 08:13:45
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribePolicyGroupList](https://cloud.tencent.com/document/api/248/40945)
+
+	* 新增入参：IsOpen
+
+
 ### 第 13 次发布
 
 发布时间：2020-06-02 08:13:34
@@ -19854,11 +19935,11 @@
 
 新增接口：
 
-* [[ClassifyDetectOCR](https://cloud.tencent.com/document/api/866/46770)](https://cloud.tencent.com/document/api/#/#)
+* [ClassifyDetectOCR](https://cloud.tencent.com/document/api/866/46770)
 
 新增数据结构：
 
-* [[ClassifyDetectInfo](https://cloud.tencent.com/document/api/866/33527#ClassifyDetectInfo)](https://cloud.tencent.com/document/api/866/33527#[ClassifyDetectInfo](https://cloud.tencent.com/document/api/866/33527#ClassifyDetectInfo))
+* [ClassifyDetectInfo](https://cloud.tencent.com/document/api/866/33527#ClassifyDetectInfo)
 
 ### 第 26 次发布
 
@@ -22409,6 +22490,31 @@
 
 ## 云数据库 SQL Server(sqlserver) 版本：2018-03-28
 
+### 第 8 次发布
+
+发布时间：2020-07-24 08:16:28
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[AssociateSecurityGroups](https://cloud.tencent.com/document/api/238/46813)](https://cloud.tencent.com/document/api/#/#)
+* [[CreateBasicDBInstances](https://cloud.tencent.com/document/api/238/46808)](https://cloud.tencent.com/document/api/#/#)
+* [[CreateReadOnlyDBInstances](https://cloud.tencent.com/document/api/238/46807)](https://cloud.tencent.com/document/api/#/#)
+* [[DeleteDBInstance](https://cloud.tencent.com/document/api/238/46806)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeDBSecurityGroups](https://cloud.tencent.com/document/api/238/46812)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeProjectSecurityGroups](https://cloud.tencent.com/document/api/238/46811)](https://cloud.tencent.com/document/api/#/#)
+* [[DisassociateSecurityGroups](https://cloud.tencent.com/document/api/238/46810)](https://cloud.tencent.com/document/api/#/#)
+* [[ModifyDBInstanceSecurityGroups](https://cloud.tencent.com/document/api/238/46809)](https://cloud.tencent.com/document/api/#/#)
+* [[RenewPostpaidDBInstance](https://cloud.tencent.com/document/api/238/46805)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[SecurityGroup](https://cloud.tencent.com/document/api/238/19976#SecurityGroup)](https://cloud.tencent.com/document/api/238/19976#[SecurityGroup](https://cloud.tencent.com/document/api/238/19976#SecurityGroup))
+* [[SecurityGroupPolicy](https://cloud.tencent.com/document/api/238/19976#SecurityGroupPolicy)](https://cloud.tencent.com/document/api/238/19976#[SecurityGroupPolicy](https://cloud.tencent.com/document/api/238/19976#SecurityGroupPolicy))
+
 ### 第 7 次发布
 
 发布时间：2020-07-23 08:16:29
@@ -22419,16 +22525,16 @@
 
 新增接口：
 
-* [[DescribeReadOnlyGroupByReadOnlyInstance](https://cloud.tencent.com/document/api/238/46773)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeReadOnlyGroupDetails](https://cloud.tencent.com/document/api/238/46772)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeReadOnlyGroupList](https://cloud.tencent.com/document/api/238/46771)](https://cloud.tencent.com/document/api/#/#)
-* [[ModifyReadOnlyGroupDetails](https://cloud.tencent.com/document/api/238/46774)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeReadOnlyGroupByReadOnlyInstance](https://cloud.tencent.com/document/api/238/46773)
+* [DescribeReadOnlyGroupDetails](https://cloud.tencent.com/document/api/238/46772)
+* [DescribeReadOnlyGroupList](https://cloud.tencent.com/document/api/238/46771)
+* [ModifyReadOnlyGroupDetails](https://cloud.tencent.com/document/api/238/46774)
 
 新增数据结构：
 
-* [[ReadOnlyGroup](https://cloud.tencent.com/document/api/238/19976#ReadOnlyGroup)](https://cloud.tencent.com/document/api/238/19976#[ReadOnlyGroup](https://cloud.tencent.com/document/api/238/19976#ReadOnlyGroup))
-* [[ReadOnlyInstance](https://cloud.tencent.com/document/api/238/19976#ReadOnlyInstance)](https://cloud.tencent.com/document/api/238/19976#[ReadOnlyInstance](https://cloud.tencent.com/document/api/238/19976#ReadOnlyInstance))
-* [[ReadOnlyInstanceWeightPair](https://cloud.tencent.com/document/api/238/19976#ReadOnlyInstanceWeightPair)](https://cloud.tencent.com/document/api/238/19976#[ReadOnlyInstanceWeightPair](https://cloud.tencent.com/document/api/238/19976#ReadOnlyInstanceWeightPair))
+* [ReadOnlyGroup](https://cloud.tencent.com/document/api/238/19976#ReadOnlyGroup)
+* [ReadOnlyInstance](https://cloud.tencent.com/document/api/238/19976#ReadOnlyInstance)
+* [ReadOnlyInstanceWeightPair](https://cloud.tencent.com/document/api/238/19976#ReadOnlyInstanceWeightPair)
 
 ### 第 6 次发布
 

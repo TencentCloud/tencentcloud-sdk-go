@@ -490,10 +490,10 @@ type DescribeRoomInformationRequest struct {
 	// 数字房间号
 	RoomId *string `json:"RoomId,omitempty" name:"RoomId"`
 
-	// 分页index（不填默认只返回10个）
+	// 分页index，从0开始（PageNumber和PageSize 其中一个不填均默认返回10条数据）
 	PageNumber *string `json:"PageNumber,omitempty" name:"PageNumber"`
 
-	// 分页大小（不填默认返回10个,最多不超过100条）
+	// 分页大小（PageNumber和PageSize 其中一个不填均默认返回10条数据,最大不超过100）
 	PageSize *string `json:"PageSize,omitempty" name:"PageSize"`
 }
 
@@ -890,7 +890,7 @@ type UserInformation struct {
 	// 用户进房时间
 	JoinTs *uint64 `json:"JoinTs,omitempty" name:"JoinTs"`
 
-	// 用户退房时间
+	// 用户退房时间，用户没有退房则返回当前时间
 	LeaveTs *uint64 `json:"LeaveTs,omitempty" name:"LeaveTs"`
 
 	// 终端类型

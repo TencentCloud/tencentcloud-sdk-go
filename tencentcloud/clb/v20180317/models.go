@@ -509,6 +509,46 @@ type ClusterItem struct {
 	Zone *string `json:"Zone,omitempty" name:"Zone"`
 }
 
+type CreateClsLogSetRequest struct {
+	*tchttp.BaseRequest
+
+	// 日志集的保存周期，单位：天，最大 90。
+	Period *uint64 `json:"Period,omitempty" name:"Period"`
+
+	// 日志集的名字，不能和cls其他日志集重名。不填默认为clb_logset。
+	LogsetName *string `json:"LogsetName,omitempty" name:"LogsetName"`
+}
+
+func (r *CreateClsLogSetRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateClsLogSetRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateClsLogSetResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 日志集的 ID。
+		LogsetId *string `json:"LogsetId,omitempty" name:"LogsetId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateClsLogSetResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateClsLogSetResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type CreateListenerRequest struct {
 	*tchttp.BaseRequest
 
@@ -773,6 +813,46 @@ func (r *CreateTargetGroupResponse) ToJsonString() string {
 }
 
 func (r *CreateTargetGroupResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateTopicRequest struct {
+	*tchttp.BaseRequest
+
+	// 日志主题的名字
+	TopicName *string `json:"TopicName,omitempty" name:"TopicName"`
+
+	// 主题分区 partition个数，不传参默认创建1个，最大创建允许10个，分裂/合并操作会改变分区数量，整体上限50个。
+	PartitionCount *uint64 `json:"PartitionCount,omitempty" name:"PartitionCount"`
+}
+
+func (r *CreateTopicRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateTopicRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateTopicResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 日志主题的 ID
+		TopicId *string `json:"TopicId,omitempty" name:"TopicId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateTopicResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateTopicResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -1419,6 +1499,40 @@ func (r *DescribeClassicalLBTargetsResponse) ToJsonString() string {
 }
 
 func (r *DescribeClassicalLBTargetsResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeClsLogSetRequest struct {
+	*tchttp.BaseRequest
+}
+
+func (r *DescribeClsLogSetRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeClsLogSetRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeClsLogSetResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 日志集的 ID。
+		LogsetId *string `json:"LogsetId,omitempty" name:"LogsetId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeClsLogSetResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeClsLogSetResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 

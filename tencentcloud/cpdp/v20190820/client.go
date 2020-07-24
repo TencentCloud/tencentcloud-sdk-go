@@ -526,6 +526,31 @@ func (c *Client) CreateRedInvoice(request *CreateRedInvoiceRequest) (response *C
     return
 }
 
+func NewCreateSinglePayRequest() (request *CreateSinglePayRequest) {
+    request = &CreateSinglePayRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cpdp", APIVersion, "CreateSinglePay")
+    return
+}
+
+func NewCreateSinglePayResponse() (response *CreateSinglePayResponse) {
+    response = &CreateSinglePayResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 银企直连-单笔支付接口
+func (c *Client) CreateSinglePay(request *CreateSinglePayRequest) (response *CreateSinglePayResponse, err error) {
+    if request == nil {
+        request = NewCreateSinglePayRequest()
+    }
+    response = NewCreateSinglePayResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteAgentTaxPaymentInfoRequest() (request *DeleteAgentTaxPaymentInfoRequest) {
     request = &DeleteAgentTaxPaymentInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1323,6 +1348,31 @@ func (c *Client) QueryRefund(request *QueryRefundRequest) (response *QueryRefund
         request = NewQueryRefundRequest()
     }
     response = NewQueryRefundResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewQuerySinglePayRequest() (request *QuerySinglePayRequest) {
+    request = &QuerySinglePayRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cpdp", APIVersion, "QuerySinglePay")
+    return
+}
+
+func NewQuerySinglePayResponse() (response *QuerySinglePayResponse) {
+    response = &QuerySinglePayResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 银企直连-单笔支付状态查询接口
+func (c *Client) QuerySinglePay(request *QuerySinglePayRequest) (response *QuerySinglePayResponse, err error) {
+    if request == nil {
+        request = NewQuerySinglePayRequest()
+    }
+    response = NewQuerySinglePayResponse()
     err = c.Send(request, response)
     return
 }

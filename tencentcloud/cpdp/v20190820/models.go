@@ -1989,6 +1989,123 @@ type CreateRedInvoiceResultData struct {
 	OrderSn *string `json:"OrderSn,omitempty" name:"OrderSn"`
 }
 
+type CreateSinglePayRequest struct {
+	*tchttp.BaseRequest
+
+	// 业务流水号，历史唯一
+	SerialNumber *string `json:"SerialNumber,omitempty" name:"SerialNumber"`
+
+	// 付方账户号
+	PayAccountNumber *string `json:"PayAccountNumber,omitempty" name:"PayAccountNumber"`
+
+	// 付方账户名称
+	PayAccountName *string `json:"PayAccountName,omitempty" name:"PayAccountName"`
+
+	// 金额
+	Amount *int64 `json:"Amount,omitempty" name:"Amount"`
+
+	// 收方账户号
+	RecvAccountNumber *string `json:"RecvAccountNumber,omitempty" name:"RecvAccountNumber"`
+
+	// 收方账户名称
+	RecvAccountName *string `json:"RecvAccountName,omitempty" name:"RecvAccountName"`
+
+	// 付方账户CNAPS号
+	PayBankCnaps *string `json:"PayBankCnaps,omitempty" name:"PayBankCnaps"`
+
+	// 付方账户银行大类，PayBankCnaps为空时必传（见常见问题-银企直连银行类型）
+	PayBankType *string `json:"PayBankType,omitempty" name:"PayBankType"`
+
+	// 付方账户银行所在省，PayBankCnaps为空时必传（见常见问题-银企直连省份枚举信息）
+	PayBankProvince *string `json:"PayBankProvince,omitempty" name:"PayBankProvince"`
+
+	// 付方账户银行所在地区，PayBankCnaps为空时必传（见常见问题-银企直连城市枚举信息）
+	PayBankCity *string `json:"PayBankCity,omitempty" name:"PayBankCity"`
+
+	// 收方账户CNAPS号
+	RecvBankCnaps *string `json:"RecvBankCnaps,omitempty" name:"RecvBankCnaps"`
+
+	// 收方账户银行大类，RecvBankCnaps为空时必传（见常见问题-银企直连银行类型）
+	RecvBankType *string `json:"RecvBankType,omitempty" name:"RecvBankType"`
+
+	// 收方账户银行所在省，RecvBankCnaps为空时必传（见常见问题-银企直连省份枚举信息）
+	RecvBankProvince *string `json:"RecvBankProvince,omitempty" name:"RecvBankProvince"`
+
+	// 收方账户银行所在地区，RecvBankCnaps为空时必传（见常见问题-银企直连城市枚举信息）
+	RecvBankCity *string `json:"RecvBankCity,omitempty" name:"RecvBankCity"`
+
+	// 收款方证件类型（见常见问题-银企直连证件类型枚举信息）
+	RecvCertType *string `json:"RecvCertType,omitempty" name:"RecvCertType"`
+
+	// 收款方证件号码
+	RecvCertNo *string `json:"RecvCertNo,omitempty" name:"RecvCertNo"`
+
+	// 摘要信息
+	Summary *string `json:"Summary,omitempty" name:"Summary"`
+
+	// 接入环境。沙箱环境填sandbox
+	Profile *string `json:"Profile,omitempty" name:"Profile"`
+}
+
+func (r *CreateSinglePayRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateSinglePayRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateSinglePayResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 返回结果
+		Result *CreateSinglePayResult `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateSinglePayResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateSinglePayResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateSinglePayResult struct {
+
+	// 受理状态（S：处理成功；F：处理失败）
+	HandleStatus *string `json:"HandleStatus,omitempty" name:"HandleStatus"`
+
+	// 受理状态描述
+	HandleMsg *string `json:"HandleMsg,omitempty" name:"HandleMsg"`
+
+	// 业务流水号，历史唯一
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SerialNo *string `json:"SerialNo,omitempty" name:"SerialNo"`
+
+	// 银行指令流水
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BankSerialNo *string `json:"BankSerialNo,omitempty" name:"BankSerialNo"`
+
+	// 付款状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PayStatus *string `json:"PayStatus,omitempty" name:"PayStatus"`
+
+	// 银行原始返回码
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BankRetCode *string `json:"BankRetCode,omitempty" name:"BankRetCode"`
+
+	// 银行原始返回
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BankRetMsg *string `json:"BankRetMsg,omitempty" name:"BankRetMsg"`
+}
+
 type DeleteAgentTaxPaymentInfoRequest struct {
 	*tchttp.BaseRequest
 
@@ -4701,6 +4818,82 @@ func (r *QueryRefundResponse) ToJsonString() string {
 
 func (r *QueryRefundResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
+}
+
+type QuerySinglePayItem struct {
+
+	// 付款状态（S：支付成功；P：支付处理中；F：支付失败）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PayStatus *string `json:"PayStatus,omitempty" name:"PayStatus"`
+
+	// 平台信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PlatformMsg *string `json:"PlatformMsg,omitempty" name:"PlatformMsg"`
+
+	// 银行原始返回码
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BankRetCode *string `json:"BankRetCode,omitempty" name:"BankRetCode"`
+
+	// 银行原始返回
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BankRetMsg *string `json:"BankRetMsg,omitempty" name:"BankRetMsg"`
+}
+
+type QuerySinglePayRequest struct {
+	*tchttp.BaseRequest
+
+	// 业务流水号
+	SerialNumber *string `json:"SerialNumber,omitempty" name:"SerialNumber"`
+
+	// 接入环境。沙箱环境填sandbox
+	Profile *string `json:"Profile,omitempty" name:"Profile"`
+}
+
+func (r *QuerySinglePayRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *QuerySinglePayRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type QuerySinglePayResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 返回结果
+		Result *QuerySinglePayResult `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *QuerySinglePayResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *QuerySinglePayResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type QuerySinglePayResult struct {
+
+	// 受理状态（S：处理成功；F：处理失败）
+	HandleStatus *string `json:"HandleStatus,omitempty" name:"HandleStatus"`
+
+	// 受理状态描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HandleMsg *string `json:"HandleMsg,omitempty" name:"HandleMsg"`
+
+	// 业务流水号
+	SerialNo *string `json:"SerialNo,omitempty" name:"SerialNo"`
+
+	// 支付明细
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Items []*QuerySinglePayItem `json:"Items,omitempty" name:"Items" list`
 }
 
 type QuerySingleTransactionStatusRequest struct {

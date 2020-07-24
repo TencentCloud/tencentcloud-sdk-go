@@ -714,6 +714,96 @@ type LogoDetail struct {
 	AppLogoDetail []*Logo `json:"AppLogoDetail,omitempty" name:"AppLogoDetail" list`
 }
 
+type ManualReviewContent struct {
+
+	// 审核批次号
+	BatchId *string `json:"BatchId,omitempty" name:"BatchId"`
+
+	// 审核内容
+	Content *string `json:"Content,omitempty" name:"Content"`
+
+	// 消息Id
+	ContentId *string `json:"ContentId,omitempty" name:"ContentId"`
+
+	// 审核内容类型 1 图片 2 视频 3 文本 4 音频
+	ContentType *int64 `json:"ContentType,omitempty" name:"ContentType"`
+
+	// 用户信息
+	UserInfo *User `json:"UserInfo,omitempty" name:"UserInfo"`
+
+	// 机器审核类型，与腾讯机器审核定义一致
+	// 100 正常
+	// 20001 政治
+	// 20002 色情
+	// 20006 违法
+	// 20007 谩骂
+	// 24001 暴恐
+	// 20105 广告
+	// 20103 性感
+	AutoDetailCode *int64 `json:"AutoDetailCode,omitempty" name:"AutoDetailCode"`
+
+	// 机器审核结果 0 放过 1 拦截
+	AutoResult *int64 `json:"AutoResult,omitempty" name:"AutoResult"`
+
+	// 回调信息标识，回传数据时原样返回
+	CallBackInfo *string `json:"CallBackInfo,omitempty" name:"CallBackInfo"`
+
+	// 创建时间 格式“2020-01-01 00:00:12”
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 审核优先级，可选值 [1,2,3,4]，其中 1 最高，4 最低
+	Priority *int64 `json:"Priority,omitempty" name:"Priority"`
+
+	// 标题
+	Title *string `json:"Title,omitempty" name:"Title"`
+}
+
+type ManualReviewData struct {
+
+	// 人审内容批次号
+	BatchId *string `json:"BatchId,omitempty" name:"BatchId"`
+
+	// 人审内容ID
+	ContentId *string `json:"ContentId,omitempty" name:"ContentId"`
+}
+
+type ManualReviewRequest struct {
+	*tchttp.BaseRequest
+
+	// 人工审核信息
+	ReviewContent *ManualReviewContent `json:"ReviewContent,omitempty" name:"ReviewContent"`
+}
+
+func (r *ManualReviewRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ManualReviewRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ManualReviewResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 人审接口同步响应结果
+		Data *ManualReviewData `json:"Data,omitempty" name:"Data"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ManualReviewResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ManualReviewResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type OCRDetect struct {
 
 	// 识别到的详细信息
@@ -767,6 +857,9 @@ type RiskDetails struct {
 	Keywords []*string `json:"Keywords,omitempty" name:"Keywords" list`
 
 	// 风险类别，RiskAccount，RiskIP, RiskIMEI
+	Label *string `json:"Label,omitempty" name:"Label"`
+
+	// 预留字段，暂时不用
 	Lable *string `json:"Lable,omitempty" name:"Lable"`
 
 	// 风险等级，1:疑似，2：恶意

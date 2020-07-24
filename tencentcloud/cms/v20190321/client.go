@@ -230,6 +230,31 @@ func (c *Client) ImageModeration(request *ImageModerationRequest) (response *Ima
     return
 }
 
+func NewManualReviewRequest() (request *ManualReviewRequest) {
+    request = &ManualReviewRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cms", APIVersion, "ManualReview")
+    return
+}
+
+func NewManualReviewResponse() (response *ManualReviewResponse) {
+    response = &ManualReviewResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 人工审核对外接口
+func (c *Client) ManualReview(request *ManualReviewRequest) (response *ManualReviewResponse, err error) {
+    if request == nil {
+        request = NewManualReviewRequest()
+    }
+    response = NewManualReviewResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewTextModerationRequest() (request *TextModerationRequest) {
     request = &TextModerationRequest{
         BaseRequest: &tchttp.BaseRequest{},
