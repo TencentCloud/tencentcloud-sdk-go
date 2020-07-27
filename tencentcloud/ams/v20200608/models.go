@@ -91,6 +91,10 @@ type AudioResultDetailLanguageResult struct {
 	// 结束时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	EndTime *float64 `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 子标签码
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SubLabelCode *string `json:"SubLabelCode,omitempty" name:"SubLabelCode"`
 }
 
 type AudioResultDetailMoanResult struct {
@@ -107,6 +111,9 @@ type AudioResultDetailMoanResult struct {
 
 	// 结束时间
 	EndTime *float64 `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 子标签码
+	SubLabelCode *string `json:"SubLabelCode,omitempty" name:"SubLabelCode"`
 }
 
 type AudioResultDetailTextResult struct {
@@ -443,6 +450,10 @@ type ImageResultsResultDetail struct {
 	// 得分
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Score *int64 `json:"Score,omitempty" name:"Score"`
+
+	// 子标签码
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SubLabelCode *string `json:"SubLabelCode,omitempty" name:"SubLabelCode"`
 }
 
 type ImageResultsResultDetailLocation struct {

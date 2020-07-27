@@ -1,79 +1,37 @@
 # 本版本更新包含以下内容：
 
-## 负载均衡(clb) 版本：2018-03-17
+## 音频内容检测(ams) 版本：2020-06-08
 
-### 第 26 次发布
+### 第 2 次发布
 
-发布时间：2020-07-24 08:07:28
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [CreateClsLogSet](https://cloud.tencent.com/document/api/214/46803)
-* [CreateTopic](https://cloud.tencent.com/document/api/214/46802)
-* [DescribeClsLogSet](https://cloud.tencent.com/document/api/214/46801)
-
-
-
-## 内容安全(cms) 版本：2019-03-21
-
-### 第 14 次发布
-
-发布时间：2020-07-24 08:07:51
+发布时间：2020-07-27 08:00:20
 
 本次发布包含了以下内容：
 
 改善已有的文档。
-
-新增接口：
-
-* [ManualReview](https://cloud.tencent.com/document/api/669/46804)
-
-新增数据结构：
-
-* [ManualReviewContent](https://cloud.tencent.com/document/api/669/34506#ManualReviewContent)
-* [ManualReviewData](https://cloud.tencent.com/document/api/669/34506#ManualReviewData)
 
 修改数据结构：
 
-* [RiskDetails](https://cloud.tencent.com/document/api/669/34506#RiskDetails)
+* [AudioResultDetailLanguageResult](https://cloud.tencent.com/document/api/1219/46478#AudioResultDetailLanguageResult)
 
-	* 新增成员：Label
+	* 新增成员：SubLabelCode
 
+* [AudioResultDetailMoanResult](https://cloud.tencent.com/document/api/1219/46478#AudioResultDetailMoanResult)
 
+	* 新增成员：SubLabelCode
 
+* [ImageResultsResultDetail](https://cloud.tencent.com/document/api/1219/46478#ImageResultsResultDetail)
 
-## 企业收付平台(cpdp) 版本：2019-08-20
-
-### 第 26 次发布
-
-发布时间：2020-07-24 08:22:55
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [CreateSinglePay](https://cloud.tencent.com/document/api/1122/46816)
-* [QuerySinglePay](https://cloud.tencent.com/document/api/1122/46815)
-
-新增数据结构：
-
-* [CreateSinglePayResult](https://cloud.tencent.com/document/api/1122/40683#CreateSinglePayResult)
-* [QuerySinglePayItem](https://cloud.tencent.com/document/api/1122/40683#QuerySinglePayItem)
-* [QuerySinglePayResult](https://cloud.tencent.com/document/api/1122/40683#QuerySinglePayResult)
+	* 新增成员：SubLabelCode
 
 
 
-## 云监控(monitor) 版本：2018-07-24
 
-### 第 14 次发布
+## 语音识别(asr) 版本：2019-06-14
 
-发布时间：2020-07-24 08:13:45
+### 第 9 次发布
+
+发布时间：2020-07-27 08:00:08
 
 本次发布包含了以下内容：
 
@@ -81,39 +39,14 @@
 
 修改接口：
 
-* [DescribePolicyGroupList](https://cloud.tencent.com/document/api/248/40945)
+* [CreateRecTask](https://cloud.tencent.com/document/api/1093/37823)
 
-	* 新增入参：IsOpen
+	* 新增入参：Extra, SpeakerDiarization, SpeakerNumber
 
+* [SentenceRecognition](https://cloud.tencent.com/document/api/1093/35646)
 
+	* 新增出参：AudioDuration
 
-
-## 云数据库 SQL Server(sqlserver) 版本：2018-03-28
-
-### 第 8 次发布
-
-发布时间：2020-07-24 08:16:28
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [AssociateSecurityGroups](https://cloud.tencent.com/document/api/238/46813)
-* [CreateBasicDBInstances](https://cloud.tencent.com/document/api/238/46808)
-* [CreateReadOnlyDBInstances](https://cloud.tencent.com/document/api/238/46807)
-* [DeleteDBInstance](https://cloud.tencent.com/document/api/238/46806)
-* [DescribeDBSecurityGroups](https://cloud.tencent.com/document/api/238/46812)
-* [DescribeProjectSecurityGroups](https://cloud.tencent.com/document/api/238/46811)
-* [DisassociateSecurityGroups](https://cloud.tencent.com/document/api/238/46810)
-* [ModifyDBInstanceSecurityGroups](https://cloud.tencent.com/document/api/238/46809)
-* [RenewPostpaidDBInstance](https://cloud.tencent.com/document/api/238/46805)
-
-新增数据结构：
-
-* [SecurityGroup](https://cloud.tencent.com/document/api/238/19976#SecurityGroup)
-* [SecurityGroupPolicy](https://cloud.tencent.com/document/api/238/19976#SecurityGroupPolicy)
 
 
 
@@ -411,6 +344,29 @@
 
 
 ## 音频内容检测(ams) 版本：2020-06-08
+
+### 第 2 次发布
+
+发布时间：2020-07-27 08:00:20
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [AudioResultDetailLanguageResult](https://cloud.tencent.com/document/api/1219/46478#AudioResultDetailLanguageResult)
+
+	* 新增成员：SubLabelCode
+
+* [AudioResultDetailMoanResult](https://cloud.tencent.com/document/api/1219/46478#AudioResultDetailMoanResult)
+
+	* 新增成员：SubLabelCode
+
+* [ImageResultsResultDetail](https://cloud.tencent.com/document/api/1219/46478#ImageResultsResultDetail)
+
+	* 新增成员：SubLabelCode
+
 
 ### 第 1 次发布
 
@@ -1331,6 +1287,25 @@
 
 
 ## 语音识别(asr) 版本：2019-06-14
+
+### 第 9 次发布
+
+发布时间：2020-07-27 08:00:08
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateRecTask](https://cloud.tencent.com/document/api/1093/37823)
+
+	* 新增入参：Extra, SpeakerDiarization, SpeakerNumber
+
+* [SentenceRecognition](https://cloud.tencent.com/document/api/1093/35646)
+
+	* 新增出参：AudioDuration
+
 
 ### 第 8 次发布
 
@@ -6861,9 +6836,9 @@
 
 新增接口：
 
-* [[CreateClsLogSet](https://cloud.tencent.com/document/api/214/46803)](https://cloud.tencent.com/document/api/#/#)
-* [[CreateTopic](https://cloud.tencent.com/document/api/214/46802)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeClsLogSet](https://cloud.tencent.com/document/api/214/46801)](https://cloud.tencent.com/document/api/#/#)
+* [CreateClsLogSet](https://cloud.tencent.com/document/api/214/46803)
+* [CreateTopic](https://cloud.tencent.com/document/api/214/46802)
+* [DescribeClsLogSet](https://cloud.tencent.com/document/api/214/46801)
 
 ### 第 25 次发布
 
@@ -8050,12 +8025,12 @@
 
 新增接口：
 
-* [[ManualReview](https://cloud.tencent.com/document/api/669/46804)](https://cloud.tencent.com/document/api/#/#)
+* [ManualReview](https://cloud.tencent.com/document/api/669/46804)
 
 新增数据结构：
 
-* [[ManualReviewContent](https://cloud.tencent.com/document/api/669/34506#ManualReviewContent)](https://cloud.tencent.com/document/api/669/34506#[ManualReviewContent](https://cloud.tencent.com/document/api/669/34506#ManualReviewContent))
-* [[ManualReviewData](https://cloud.tencent.com/document/api/669/34506#ManualReviewData)](https://cloud.tencent.com/document/api/669/34506#[ManualReviewData](https://cloud.tencent.com/document/api/669/34506#ManualReviewData))
+* [ManualReviewContent](https://cloud.tencent.com/document/api/669/34506#ManualReviewContent)
+* [ManualReviewData](https://cloud.tencent.com/document/api/669/34506#ManualReviewData)
 
 修改数据结构：
 
@@ -8412,14 +8387,14 @@
 
 新增接口：
 
-* [[CreateSinglePay](https://cloud.tencent.com/document/api/1122/46816)](https://cloud.tencent.com/document/api/#/#)
-* [[QuerySinglePay](https://cloud.tencent.com/document/api/1122/46815)](https://cloud.tencent.com/document/api/#/#)
+* [CreateSinglePay](https://cloud.tencent.com/document/api/1122/46816)
+* [QuerySinglePay](https://cloud.tencent.com/document/api/1122/46815)
 
 新增数据结构：
 
-* [[CreateSinglePayResult](https://cloud.tencent.com/document/api/1122/40683#CreateSinglePayResult)](https://cloud.tencent.com/document/api/1122/40683#[CreateSinglePayResult](https://cloud.tencent.com/document/api/1122/40683#CreateSinglePayResult))
-* [[QuerySinglePayItem](https://cloud.tencent.com/document/api/1122/40683#QuerySinglePayItem)](https://cloud.tencent.com/document/api/1122/40683#[QuerySinglePayItem](https://cloud.tencent.com/document/api/1122/40683#QuerySinglePayItem))
-* [[QuerySinglePayResult](https://cloud.tencent.com/document/api/1122/40683#QuerySinglePayResult)](https://cloud.tencent.com/document/api/1122/40683#[QuerySinglePayResult](https://cloud.tencent.com/document/api/1122/40683#QuerySinglePayResult))
+* [CreateSinglePayResult](https://cloud.tencent.com/document/api/1122/40683#CreateSinglePayResult)
+* [QuerySinglePayItem](https://cloud.tencent.com/document/api/1122/40683#QuerySinglePayItem)
+* [QuerySinglePayResult](https://cloud.tencent.com/document/api/1122/40683#QuerySinglePayResult)
 
 ### 第 25 次发布
 
@@ -22500,20 +22475,20 @@
 
 新增接口：
 
-* [[AssociateSecurityGroups](https://cloud.tencent.com/document/api/238/46813)](https://cloud.tencent.com/document/api/#/#)
-* [[CreateBasicDBInstances](https://cloud.tencent.com/document/api/238/46808)](https://cloud.tencent.com/document/api/#/#)
-* [[CreateReadOnlyDBInstances](https://cloud.tencent.com/document/api/238/46807)](https://cloud.tencent.com/document/api/#/#)
-* [[DeleteDBInstance](https://cloud.tencent.com/document/api/238/46806)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeDBSecurityGroups](https://cloud.tencent.com/document/api/238/46812)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeProjectSecurityGroups](https://cloud.tencent.com/document/api/238/46811)](https://cloud.tencent.com/document/api/#/#)
-* [[DisassociateSecurityGroups](https://cloud.tencent.com/document/api/238/46810)](https://cloud.tencent.com/document/api/#/#)
-* [[ModifyDBInstanceSecurityGroups](https://cloud.tencent.com/document/api/238/46809)](https://cloud.tencent.com/document/api/#/#)
-* [[RenewPostpaidDBInstance](https://cloud.tencent.com/document/api/238/46805)](https://cloud.tencent.com/document/api/#/#)
+* [AssociateSecurityGroups](https://cloud.tencent.com/document/api/238/46813)
+* [CreateBasicDBInstances](https://cloud.tencent.com/document/api/238/46808)
+* [CreateReadOnlyDBInstances](https://cloud.tencent.com/document/api/238/46807)
+* [DeleteDBInstance](https://cloud.tencent.com/document/api/238/46806)
+* [DescribeDBSecurityGroups](https://cloud.tencent.com/document/api/238/46812)
+* [DescribeProjectSecurityGroups](https://cloud.tencent.com/document/api/238/46811)
+* [DisassociateSecurityGroups](https://cloud.tencent.com/document/api/238/46810)
+* [ModifyDBInstanceSecurityGroups](https://cloud.tencent.com/document/api/238/46809)
+* [RenewPostpaidDBInstance](https://cloud.tencent.com/document/api/238/46805)
 
 新增数据结构：
 
-* [[SecurityGroup](https://cloud.tencent.com/document/api/238/19976#SecurityGroup)](https://cloud.tencent.com/document/api/238/19976#[SecurityGroup](https://cloud.tencent.com/document/api/238/19976#SecurityGroup))
-* [[SecurityGroupPolicy](https://cloud.tencent.com/document/api/238/19976#SecurityGroupPolicy)](https://cloud.tencent.com/document/api/238/19976#[SecurityGroupPolicy](https://cloud.tencent.com/document/api/238/19976#SecurityGroupPolicy))
+* [SecurityGroup](https://cloud.tencent.com/document/api/238/19976#SecurityGroup)
+* [SecurityGroupPolicy](https://cloud.tencent.com/document/api/238/19976#SecurityGroupPolicy)
 
 ### 第 7 次发布
 

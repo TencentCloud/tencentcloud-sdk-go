@@ -94,7 +94,7 @@ func NewCreateRecTaskResponse() (response *CreateRecTaskResponse) {
 // <br>• 支持wav、mp3、m4a的音频格式
 // <br>• 支持语音 URL 和本地语音文件两种请求方式
 // <br>• 语音 URL 的音频时长不能长于5小时，文件大小不超过512MB
-// <br>• 本地语音文件上传的文件不能大于5MB
+// <br>• 本地语音文件不能大于5MB
 // <br>• 支持回调或轮询的方式获取结果，结果获取请参考[ 录音文件识别结果查询](https://cloud.tencent.com/document/product/1093/37822)。
 func (c *Client) CreateRecTask(request *CreateRecTaskRequest) (response *CreateRecTaskResponse, err error) {
     if request == nil {
