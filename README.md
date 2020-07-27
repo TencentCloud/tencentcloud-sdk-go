@@ -31,12 +31,47 @@
 
 下面以云服务器查询实例列表接口为例，介绍 SDK 的基础用法。出于演示的目的，有一些非必要的内容也加上去了，以尽量展示 SDK 常用的功能，但也显得臃肿。在实际编写代码使用 SDK 的时候，应尽量简化。
 
+## 简化版
+
+```go
+package main
+
+import (
+    "fmt"
+
+    "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
+    "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/errors"
+    "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/regions"
+    cvm "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cvm/v20170312"
+)
+
+func main() {
+    credential := common.NewCredential("secretId", "secretKey")
+    client, _ := cvm.NewClient(credential, regions.Guangzhou)
+
+    request := cvm.NewDescribeInstancesRequest()
+    response, err := client.DescribeInstances(request)
+
+    if _, ok := err.(*errors.TencentCloudSDKError); ok {
+        fmt.Printf("An API error has returned: %s", err)
+        return
+    }
+    if err != nil {
+        panic(err)
+    }
+    fmt.Printf("%s\n", response.ToJsonString())
+}
 ```
+
+
+
+
+
+```go
 package main
 
 import (
         "fmt"
-        "os"
 
         "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
         "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/errors"
@@ -48,13 +83,9 @@ import (
 func main() {
         // 必要步骤：
         // 实例化一个认证对象，入参需要传入腾讯云账户密钥对secretId，secretKey。
-        // 这里采用的是从环境变量读取的方式，需要在环境变量中先设置这两个值。
         // 你也可以直接在代码中写死密钥对，但是小心不要将代码复制、上传或者分享给他人，
         // 以免泄露密钥对危及你的财产安全。
-        credential := common.NewCredential(
-                os.Getenv("TENCENTCLOUD_SECRET_ID"),
-                os.Getenv("TENCENTCLOUD_SECRET_KEY"),
-        )
+        credential := common.NewCredential("secretId", "secretKey")
 
         // 非必要步骤
         // 实例化一个客户端配置对象，可以指定超时时间等配置
@@ -62,20 +93,23 @@ func main() {
         // SDK默认使用POST方法。
         // 如果你一定要使用GET方法，可以在这里设置。GET方法无法处理一些较大的请求。
         // 如非必要请不要修改默认设置。
-        //cpf.HttpProfile.ReqMethod = "GET"
+        cpf.HttpProfile.ReqMethod = "POST"
         // SDK有默认的超时时间，如非必要请不要修改默认设置。
         // 如有需要请在代码中查阅以获取最新的默认值。
-        //cpf.HttpProfile.ReqTimeout = 10
+        cpf.HttpProfile.ReqTimeout = 30
         // SDK会自动指定域名。通常是不需要特地指定域名的，但是如果你访问的是金融区的服务，
         // 则必须手动指定域名，例如云服务器的上海金融区域名： cvm.ap-shanghai-fsi.tencentcloudapi.com
-        //cpf.HttpProfile.Endpoint = "cvm.tencentcloudapi.com"
+        cpf.HttpProfile.Endpoint = "cvm.tencentcloudapi.com"
         // SDK默认用HmacSHA256进行签名，它更安全但是会轻微降低性能。
         // 如非必要请不要修改默认设置。
-        //cpf.SignMethod = "HmacSHA1"
+        cpf.SignMethod = "HmacSHA1"
         // SDK 默认用 zh-CN 调用返回中文。此外还可以设置 en-US 返回全英文。
         // 但大部分产品或接口并不支持全英文的返回。
         // 如非必要请不要修改默认设置。
-        //cpf.Language = "en-US"
+        cpf.Language = "en-US"
+        //打印日志，默认是false
+        // cpf.Debug = true
+
 
         // 实例化要请求产品(以cvm为例)的client对象
         // 第二个参数是地域信息，可以直接填写字符串ap-guangzhou，或者引用预设的常量
@@ -105,26 +139,19 @@ func main() {
             },
         }
 
-        // 使用json字符串设置一个request，注意这里实际是更新request，即Limit=1将会被保留，
-        // 而过滤条件的zone将会变为ap-guangzhou-2。
-        // 如果需要一个全新的request，则需要用cvm.NewDescribeInstancesRequest()创建。
-        err := request.FromJsonString(`{"Filters":[{"Name":"zone","Values":["ap-guangzhou-2"]}]}`)
-        if err != nil {
-                panic(err)
-        }
         // 通过client对象调用想要访问的接口，需要传入请求对象
         response, err := client.DescribeInstances(request)
         // 处理异常
         if _, ok := err.(*errors.TencentCloudSDKError); ok {
-                fmt.Printf("An API error has returned: %s", err)
-                return
+            fmt.Printf("An API error has returned: %s", err)
+            return
         }
         // 非SDK异常，直接失败。实际代码中可以加入其他的处理。
         if err != nil {
-                panic(err)
+            panic(err)
         }
         // 打印返回的json字符串
-        fmt.Printf("%s", response.ToJsonString())
+        fmt.Printf("%s\n", response.ToJsonString())
 }
 ```
 
