@@ -1298,6 +1298,14 @@ type OrderInfo struct {
 	// <li>prepayment 预付费</li>
 	// <li>postpaid 后付费</li>
 	PayMode *string `json:"PayMode,omitempty" name:"PayMode"`
+
+	// 订单绑定的扩展ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExtensionId *string `json:"ExtensionId,omitempty" name:"ExtensionId"`
+
+	// 资源初始化结果(仅当ExtensionId不为空时有效): successful(初始化成功), failed(初始化失败), doing(初始化进行中), init(准备初始化)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResourceReady *string `json:"ResourceReady,omitempty" name:"ResourceReady"`
 }
 
 type PackageFreeQuotaInfo struct {

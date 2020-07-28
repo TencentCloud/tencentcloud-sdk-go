@@ -91,6 +91,59 @@ func (c *Client) CreateAudioModerationTask(request *CreateAudioModerationTaskReq
     return
 }
 
+func NewCreateBizConfigRequest() (request *CreateBizConfigRequest) {
+    request = &CreateBizConfigRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ams", APIVersion, "CreateBizConfig")
+    return
+}
+
+func NewCreateBizConfigResponse() (response *CreateBizConfigResponse) {
+    response = &CreateBizConfigResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 创建业务配置，1个账号最多可以创建20个配置。在创建业务配置之前，你需要以下步骤：
+// 1. 开通COS存储捅功能，新建存储桶，cms_segments
+// 2. 授权天御对 cms_segments存储桶对读写权限。
+// 这个存储桶用来存储 视频转换过程中生成对音频和图片。
+func (c *Client) CreateBizConfig(request *CreateBizConfigRequest) (response *CreateBizConfigResponse, err error) {
+    if request == nil {
+        request = NewCreateBizConfigRequest()
+    }
+    response = NewCreateBizConfigResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeBizConfigRequest() (request *DescribeBizConfigRequest) {
+    request = &DescribeBizConfigRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ams", APIVersion, "DescribeBizConfig")
+    return
+}
+
+func NewDescribeBizConfigResponse() (response *DescribeBizConfigResponse) {
+    response = &DescribeBizConfigResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查看单个配置
+func (c *Client) DescribeBizConfig(request *DescribeBizConfigRequest) (response *DescribeBizConfigResponse, err error) {
+    if request == nil {
+        request = NewDescribeBizConfigRequest()
+    }
+    response = NewDescribeBizConfigResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeTaskDetailRequest() (request *DescribeTaskDetailRequest) {
     request = &DescribeTaskDetailRequest{
         BaseRequest: &tchttp.BaseRequest{},

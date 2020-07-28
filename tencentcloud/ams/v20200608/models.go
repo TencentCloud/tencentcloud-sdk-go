@@ -221,6 +221,103 @@ func (r *CreateAudioModerationTaskResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type CreateBizConfigRequest struct {
+	*tchttp.BaseRequest
+
+	// 业务ID
+	BizType *string `json:"BizType,omitempty" name:"BizType"`
+
+	// 审核分类信息
+	MediaModeration *MediaModerationConfig `json:"MediaModeration,omitempty" name:"MediaModeration"`
+
+	// 页面名称
+	BizName *string `json:"BizName,omitempty" name:"BizName"`
+
+	// 审核内容，可选：Polity (政治); Porn (色情); Illegal(违法);Abuse (谩骂); Terror (暴恐); Ad (广告);
+	ModerationCategories []*string `json:"ModerationCategories,omitempty" name:"ModerationCategories" list`
+}
+
+func (r *CreateBizConfigRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateBizConfigRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateBizConfigResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateBizConfigResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateBizConfigResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeBizConfigRequest struct {
+	*tchttp.BaseRequest
+
+	// 审核业务类类型
+	BizType *string `json:"BizType,omitempty" name:"BizType"`
+}
+
+func (r *DescribeBizConfigRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeBizConfigRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeBizConfigResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 业务类型
+		BizType *string `json:"BizType,omitempty" name:"BizType"`
+
+		// 业务名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		BizName *string `json:"BizName,omitempty" name:"BizName"`
+
+		// 审核范围
+		ModerationCategories []*string `json:"ModerationCategories,omitempty" name:"ModerationCategories" list`
+
+		// 多媒体审核配置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		MediaModeration *MediaModerationConfig `json:"MediaModeration,omitempty" name:"MediaModeration"`
+
+		// 创建时间
+		CreatedAt *string `json:"CreatedAt,omitempty" name:"CreatedAt"`
+
+		// 更新时间
+		UpdatedAt *string `json:"UpdatedAt,omitempty" name:"UpdatedAt"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeBizConfigResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeBizConfigResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeTaskDetailRequest struct {
 	*tchttp.BaseRequest
 
@@ -252,7 +349,8 @@ type DescribeTaskDetailResponse struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		DataId *string `json:"DataId,omitempty" name:"DataId"`
 
-		// 业务类型
+		// 业务类型，用于调用识别策略模板；
+	// （暂未发布功能，敬请期待）
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		BizType *string `json:"BizType,omitempty" name:"BizType"`
 
@@ -260,7 +358,7 @@ type DescribeTaskDetailResponse struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		Name *string `json:"Name,omitempty" name:"Name"`
 
-		// 状态，可选值：
+		// 查询内容审核任务的状态，可选值：
 	// FINISH 已完成
 	// PENDING 等待中
 	// RUNNING 进行中
@@ -269,47 +367,47 @@ type DescribeTaskDetailResponse struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		Status *string `json:"Status,omitempty" name:"Status"`
 
-		// 类型
+		// 任务类型：可选AUDIO（点播音频），LIVE_AUDIO（直播音频）
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		Type *string `json:"Type,omitempty" name:"Type"`
 
-		// 审核建议
-	// 可选：
-	// Pass 通过
-	// Reveiw 建议复审
-	// Block 确认违规
+		// 智能审核服务对于内容违规类型的等级，可选值：
+	// Pass 建议通过；
+	// Reveiw 建议复审；
+	// Block 建议屏蔽；
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		Suggestion *string `json:"Suggestion,omitempty" name:"Suggestion"`
 
-		// 审核结果
+		// 智能审核服务对于内容违规类型的判断，详见返回值列表
+	// 如：Label：Porn（色情）；
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		Labels []*TaskLabel `json:"Labels,omitempty" name:"Labels" list`
 
-		// 媒体解码信息
+		// 传入媒体的解码信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		MediaInfo *MediaInfo `json:"MediaInfo,omitempty" name:"MediaInfo"`
 
-		// 任务信息
+		// 审核任务的信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		InputInfo *InputInfo `json:"InputInfo,omitempty" name:"InputInfo"`
 
-		// 创建时间
+		// 审核任务的创建时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		CreatedAt *string `json:"CreatedAt,omitempty" name:"CreatedAt"`
 
-		// 更新时间
+		// 审核任务的更新时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		UpdatedAt *string `json:"UpdatedAt,omitempty" name:"UpdatedAt"`
 
-		// 在秒后重试
+		// 在N秒后重试
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		TryInSeconds *int64 `json:"TryInSeconds,omitempty" name:"TryInSeconds"`
 
-		// 音频结果
+		// 视频/音频审核中的音频结果
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		AudioSegments []*AudioSegments `json:"AudioSegments,omitempty" name:"AudioSegments" list`
 
-		// 图片结果
+		// 视频审核中的图片结果
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		ImageSegments []*ImageSegments `json:"ImageSegments,omitempty" name:"ImageSegments" list`
 
@@ -325,6 +423,18 @@ func (r *DescribeTaskDetailResponse) ToJsonString() string {
 
 func (r *DescribeTaskDetailResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
+}
+
+type FileOutput struct {
+
+	// 存储的Bucket
+	Bucket *string `json:"Bucket,omitempty" name:"Bucket"`
+
+	// Cos Region
+	Region *string `json:"Region,omitempty" name:"Region"`
+
+	// 对象前缀
+	ObjectPrefix *string `json:"ObjectPrefix,omitempty" name:"ObjectPrefix"`
 }
 
 type ImageResult struct {
@@ -519,6 +629,27 @@ type MediaInfo struct {
 
 	// 高，单位为像素
 	Height *int64 `json:"Height,omitempty" name:"Height"`
+}
+
+type MediaModerationConfig struct {
+
+	// 音频截帧频率。默认一分钟
+	AudioFrequency *int64 `json:"AudioFrequency,omitempty" name:"AudioFrequency"`
+
+	// 图片取帧频率, 单位（秒/帧），默认 5， 可选 1 ～ 300
+	ImageFrequency *int64 `json:"ImageFrequency,omitempty" name:"ImageFrequency"`
+
+	// 异步回调地址。
+	CallbackUrl *string `json:"CallbackUrl,omitempty" name:"CallbackUrl"`
+
+	// 临时文件存储位置
+	SegmentOutput *FileOutput `json:"SegmentOutput,omitempty" name:"SegmentOutput"`
+
+	// 是否使用OCR，默认为true
+	UseOCR *bool `json:"UseOCR,omitempty" name:"UseOCR"`
+
+	// 是否使用音频。（音频场景下，该值永远为true）
+	UseAudio *bool `json:"UseAudio,omitempty" name:"UseAudio"`
 }
 
 type StorageInfo struct {

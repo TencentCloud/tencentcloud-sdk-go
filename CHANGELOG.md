@@ -2,9 +2,84 @@
 
 ## 音频内容检测(ams) 版本：2020-06-08
 
-### 第 2 次发布
+### 第 3 次发布
 
-发布时间：2020-07-27 08:00:20
+发布时间：2020-07-27 11:46:05
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CreateBizConfig](https://cloud.tencent.com/document/api/1219/46889)
+* [DescribeBizConfig](https://cloud.tencent.com/document/api/1219/46888)
+
+新增数据结构：
+
+* [FileOutput](https://cloud.tencent.com/document/api/1219/46478#FileOutput)
+* [MediaModerationConfig](https://cloud.tencent.com/document/api/1219/46478#MediaModerationConfig)
+
+
+
+## 负载均衡(clb) 版本：2018-03-17
+
+### 第 27 次发布
+
+发布时间：2020-07-28 08:07:36
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeLoadBalancersDetail](https://cloud.tencent.com/document/api/214/46916)
+
+新增数据结构：
+
+* [LoadBalancerDetail](https://cloud.tencent.com/document/api/214/30694#LoadBalancerDetail)
+
+
+
+## 密钥管理系统(kms) 版本：2019-01-18
+
+### 第 10 次发布
+
+发布时间：2020-07-28 08:12:44
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [BindCloudResource](https://cloud.tencent.com/document/api/573/46918)
+* [UnbindCloudResource](https://cloud.tencent.com/document/api/573/46917)
+
+
+
+## 文字识别(ocr) 版本：2018-11-19
+
+### 第 28 次发布
+
+发布时间：2020-07-28 08:14:59
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [HKIDCardOCR](https://cloud.tencent.com/document/api/866/46919)
+
+
+
+## 云开发 CloudBase(tcb) 版本：2018-06-08
+
+### 第 15 次发布
+
+发布时间：2020-07-28 08:17:40
 
 本次发布包含了以下内容：
 
@@ -12,40 +87,9 @@
 
 修改数据结构：
 
-* [AudioResultDetailLanguageResult](https://cloud.tencent.com/document/api/1219/46478#AudioResultDetailLanguageResult)
+* [OrderInfo](https://cloud.tencent.com/document/api/876/34822#OrderInfo)
 
-	* 新增成员：SubLabelCode
-
-* [AudioResultDetailMoanResult](https://cloud.tencent.com/document/api/1219/46478#AudioResultDetailMoanResult)
-
-	* 新增成员：SubLabelCode
-
-* [ImageResultsResultDetail](https://cloud.tencent.com/document/api/1219/46478#ImageResultsResultDetail)
-
-	* 新增成员：SubLabelCode
-
-
-
-
-## 语音识别(asr) 版本：2019-06-14
-
-### 第 9 次发布
-
-发布时间：2020-07-27 08:00:08
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [CreateRecTask](https://cloud.tencent.com/document/api/1093/37823)
-
-	* 新增入参：Extra, SpeakerDiarization, SpeakerNumber
-
-* [SentenceRecognition](https://cloud.tencent.com/document/api/1093/35646)
-
-	* 新增出参：AudioDuration
+	* 新增成员：ExtensionId, ResourceReady
 
 
 
@@ -344,6 +388,24 @@
 
 
 ## 音频内容检测(ams) 版本：2020-06-08
+
+### 第 3 次发布
+
+发布时间：2020-07-27 11:46:05
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[CreateBizConfig](https://cloud.tencent.com/document/api/1219/46889)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeBizConfig](https://cloud.tencent.com/document/api/1219/46888)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[FileOutput](https://cloud.tencent.com/document/api/1219/46478#FileOutput)](https://cloud.tencent.com/document/api/1219/46478#[FileOutput](https://cloud.tencent.com/document/api/1219/46478#FileOutput))
+* [[MediaModerationConfig](https://cloud.tencent.com/document/api/1219/46478#MediaModerationConfig)](https://cloud.tencent.com/document/api/1219/46478#[MediaModerationConfig](https://cloud.tencent.com/document/api/1219/46478#MediaModerationConfig))
 
 ### 第 2 次发布
 
@@ -6826,6 +6888,22 @@
 
 ## 负载均衡(clb) 版本：2018-03-17
 
+### 第 27 次发布
+
+发布时间：2020-07-28 08:07:36
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeLoadBalancersDetail](https://cloud.tencent.com/document/api/214/46916)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[LoadBalancerDetail](https://cloud.tencent.com/document/api/214/30694#LoadBalancerDetail)](https://cloud.tencent.com/document/api/214/30694#[LoadBalancerDetail](https://cloud.tencent.com/document/api/214/30694#LoadBalancerDetail))
+
 ### 第 26 次发布
 
 发布时间：2020-07-24 08:07:28
@@ -10243,30 +10321,30 @@
 
 修改接口：
 
-* [CreateSites](https://cloud.tencent.com/document/api/692/16748)
+* [CreateSites](https://cloud.tencent.com/document/api/#/#)
 
 	* 新增出参：Sites
 
-* [DescribeConfig](https://cloud.tencent.com/document/api/692/16757)
+* [DescribeConfig](https://cloud.tencent.com/document/api/#/#)
 
 	* 新增出参：ContentLevel
 
 
 新增数据结构：
 
-* [MiniSite](https://cloud.tencent.com/document/api/692/16759#MiniSite)
+* [MiniSite](https://cloud.tencent.com/document/api/#/##MiniSite)
 
 修改数据结构：
 
-* [Monitor](https://cloud.tencent.com/document/api/692/16759#Monitor)
+* [Monitor](https://cloud.tencent.com/document/api/#/##Monitor)
 
 	* 新增成员：ContentScanStatus
 
-* [MonitorsDetail](https://cloud.tencent.com/document/api/692/16759#MonitorsDetail)
+* [MonitorsDetail](https://cloud.tencent.com/document/api/#/##MonitorsDetail)
 
 	* 新增成员：ContentNumber
 
-* [Site](https://cloud.tencent.com/document/api/692/16759#Site)
+* [Site](https://cloud.tencent.com/document/api/#/##Site)
 
 	* 新增成员：ContentStatus, LastScanContentNum
 
@@ -10281,13 +10359,13 @@
 
 新增接口：
 
-* [CreateVulsReport](https://cloud.tencent.com/document/api/692/18089)
-* [DescribeVulsNumber](https://cloud.tencent.com/document/api/692/18088)
-* [DescribeVulsNumberTimeline](https://cloud.tencent.com/document/api/692/18087)
+* [CreateVulsReport](https://cloud.tencent.com/document/api/#/#)
+* [DescribeVulsNumber](https://cloud.tencent.com/document/api/#/#)
+* [DescribeVulsNumberTimeline](https://cloud.tencent.com/document/api/#/#)
 
 新增数据结构：
 
-* [VulsTimeline](https://cloud.tencent.com/document/api/692/16759#VulsTimeline)
+* [VulsTimeline](https://cloud.tencent.com/document/api/#/##VulsTimeline)
 
 ### 第 3 次发布
 
@@ -10299,36 +10377,36 @@
 
 修改接口：
 
-* [CreateSites](https://cloud.tencent.com/document/api/692/16748)
+* [CreateSites](https://cloud.tencent.com/document/api/#/#)
 
 	* 新增入参：UserAgent
 
-* [DescribeConfig](https://cloud.tencent.com/document/api/692/16757)
+* [DescribeConfig](https://cloud.tencent.com/document/api/#/#)
 
 	* 新增出参：Appid
 
-* [DescribeSitesVerification](https://cloud.tencent.com/document/api/692/16753)
+* [DescribeSitesVerification](https://cloud.tencent.com/document/api/#/#)
 
 	* <font color="#dd0000">**修改出参**：</font>SitesVerification
 
-* [ModifySiteAttribute](https://cloud.tencent.com/document/api/692/16754)
+* [ModifySiteAttribute](https://cloud.tencent.com/document/api/#/#)
 
 	* 新增入参：NeedLogin, LoginCookie, LoginCheckUrl, LoginCheckKw, ScanDisallow
 
 
 修改数据结构：
 
-* [Site](https://cloud.tencent.com/document/api/692/16759#Site)
+* [Site](https://cloud.tencent.com/document/api/#/##Site)
 
 	* 新增成员：NeedLogin, LoginCookie, LoginCookieValid, LoginCheckUrl, LoginCheckKw, ScanDisallow, UserAgent
 
 	* <font color="#dd0000">**删除成员**：</font>LastScanExtsCount
 
-* [SitesVerification](https://cloud.tencent.com/document/api/692/16759#SitesVerification)
+* [SitesVerification](https://cloud.tencent.com/document/api/#/##SitesVerification)
 
 	* 新增成员：VerifyUrl, VerifyFileUrl
 
-* [Vul](https://cloud.tencent.com/document/api/692/16759#Vul)
+* [Vul](https://cloud.tencent.com/document/api/#/##Vul)
 
 	* 新增成员：Appid, Uin
 
@@ -10343,17 +10421,17 @@
 
 修改数据结构：
 
-* [Monitor](https://cloud.tencent.com/document/api/692/16759#Monitor)
+* [Monitor](https://cloud.tencent.com/document/api/#/##Monitor)
 
 	* 新增成员：Id, Appid
 
 	* <font color="#dd0000">**删除成员**：</font>ID
 
-* [Site](https://cloud.tencent.com/document/api/692/16759#Site)
+* [Site](https://cloud.tencent.com/document/api/#/##Site)
 
 	* 新增成员：LastScanExtsCount, Appid, Uin
 
-* [SitesVerification](https://cloud.tencent.com/document/api/692/16759#SitesVerification)
+* [SitesVerification](https://cloud.tencent.com/document/api/#/##SitesVerification)
 
 	* 新增成员：Id, Appid
 
@@ -10368,32 +10446,32 @@
 
 新增接口：
 
-* [CreateMonitors](https://cloud.tencent.com/document/api/692/16743)
-* [CreateSites](https://cloud.tencent.com/document/api/692/16748)
-* [CreateSitesScans](https://cloud.tencent.com/document/api/692/16749)
-* [CreateVulsMisinformation](https://cloud.tencent.com/document/api/692/16740)
-* [DeleteMonitors](https://cloud.tencent.com/document/api/692/16744)
-* [DeleteSites](https://cloud.tencent.com/document/api/692/16750)
-* [DescribeConfig](https://cloud.tencent.com/document/api/692/16757)
-* [DescribeMonitors](https://cloud.tencent.com/document/api/692/16745)
-* [DescribeSiteQuota](https://cloud.tencent.com/document/api/692/16751)
-* [DescribeSites](https://cloud.tencent.com/document/api/692/16752)
-* [DescribeSitesVerification](https://cloud.tencent.com/document/api/692/16753)
-* [DescribeVuls](https://cloud.tencent.com/document/api/692/16741)
-* [ModifyConfigAttribute](https://cloud.tencent.com/document/api/692/16758)
-* [ModifyMonitorAttribute](https://cloud.tencent.com/document/api/692/16746)
-* [ModifySiteAttribute](https://cloud.tencent.com/document/api/692/16754)
-* [VerifySites](https://cloud.tencent.com/document/api/692/16755)
+* [CreateMonitors](https://cloud.tencent.com/document/api/#/#)
+* [CreateSites](https://cloud.tencent.com/document/api/#/#)
+* [CreateSitesScans](https://cloud.tencent.com/document/api/#/#)
+* [CreateVulsMisinformation](https://cloud.tencent.com/document/api/#/#)
+* [DeleteMonitors](https://cloud.tencent.com/document/api/#/#)
+* [DeleteSites](https://cloud.tencent.com/document/api/#/#)
+* [DescribeConfig](https://cloud.tencent.com/document/api/#/#)
+* [DescribeMonitors](https://cloud.tencent.com/document/api/#/#)
+* [DescribeSiteQuota](https://cloud.tencent.com/document/api/#/#)
+* [DescribeSites](https://cloud.tencent.com/document/api/#/#)
+* [DescribeSitesVerification](https://cloud.tencent.com/document/api/#/#)
+* [DescribeVuls](https://cloud.tencent.com/document/api/#/#)
+* [ModifyConfigAttribute](https://cloud.tencent.com/document/api/#/#)
+* [ModifyMonitorAttribute](https://cloud.tencent.com/document/api/#/#)
+* [ModifySiteAttribute](https://cloud.tencent.com/document/api/#/#)
+* [VerifySites](https://cloud.tencent.com/document/api/#/#)
 
 新增数据结构：
 
-* [Filter](https://cloud.tencent.com/document/api/692/16759#Filter)
-* [Monitor](https://cloud.tencent.com/document/api/692/16759#Monitor)
-* [MonitorMiniSite](https://cloud.tencent.com/document/api/692/16759#MonitorMiniSite)
-* [MonitorsDetail](https://cloud.tencent.com/document/api/692/16759#MonitorsDetail)
-* [Site](https://cloud.tencent.com/document/api/692/16759#Site)
-* [SitesVerification](https://cloud.tencent.com/document/api/692/16759#SitesVerification)
-* [Vul](https://cloud.tencent.com/document/api/692/16759#Vul)
+* [Filter](https://cloud.tencent.com/document/api/#/##Filter)
+* [Monitor](https://cloud.tencent.com/document/api/#/##Monitor)
+* [MonitorMiniSite](https://cloud.tencent.com/document/api/#/##MonitorMiniSite)
+* [MonitorsDetail](https://cloud.tencent.com/document/api/#/##MonitorsDetail)
+* [Site](https://cloud.tencent.com/document/api/#/##Site)
+* [SitesVerification](https://cloud.tencent.com/document/api/#/##SitesVerification)
+* [Vul](https://cloud.tencent.com/document/api/#/##Vul)
 
 
 
@@ -16306,6 +16384,19 @@
 
 ## 密钥管理系统(kms) 版本：2019-01-18
 
+### 第 10 次发布
+
+发布时间：2020-07-28 08:12:44
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[BindCloudResource](https://cloud.tencent.com/document/api/573/46918)](https://cloud.tencent.com/document/api/#/#)
+* [[UnbindCloudResource](https://cloud.tencent.com/document/api/573/46917)](https://cloud.tencent.com/document/api/#/#)
+
 ### 第 9 次发布
 
 发布时间：2020-06-29 08:12:11
@@ -19899,6 +19990,18 @@
 
 
 ## 文字识别(ocr) 版本：2018-11-19
+
+### 第 28 次发布
+
+发布时间：2020-07-28 08:14:59
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[HKIDCardOCR](https://cloud.tencent.com/document/api/866/46919)](https://cloud.tencent.com/document/api/#/#)
 
 ### 第 27 次发布
 
@@ -23896,6 +23999,21 @@
 
 
 ## 云开发 CloudBase(tcb) 版本：2018-06-08
+
+### 第 15 次发布
+
+发布时间：2020-07-28 08:17:40
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [OrderInfo](https://cloud.tencent.com/document/api/876/34822#OrderInfo)
+
+	* 新增成员：ExtensionId, ResourceReady
+
 
 ### 第 14 次发布
 

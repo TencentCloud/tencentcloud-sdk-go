@@ -1378,6 +1378,106 @@ func (r *GeneralHandwritingOCRResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type HKIDCardOCRRequest struct {
+	*tchttp.BaseRequest
+
+	// 是否鉴伪。
+	DetectFake *bool `json:"DetectFake,omitempty" name:"DetectFake"`
+
+	// 是否返回人像照片。
+	ReturnHeadImage *bool `json:"ReturnHeadImage,omitempty" name:"ReturnHeadImage"`
+
+	// 图片的 Base64 值。
+	// 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
+	// 支持的图片大小：所下载图片经Base64编码后不超过 3M。图片下载时间不超过 3 秒。
+	ImageBase64 *string `json:"ImageBase64,omitempty" name:"ImageBase64"`
+
+	// 图片的 Url 地址。
+	// 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
+	// 支持的图片大小：所下载图片经 Base64 编码后不超过 3M。图片下载时间不超过 3 秒。
+	// 图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。
+	// 非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
+}
+
+func (r *HKIDCardOCRRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *HKIDCardOCRRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type HKIDCardOCRResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 中文姓名
+		CnName *string `json:"CnName,omitempty" name:"CnName"`
+
+		// 英文姓名
+		EnName *string `json:"EnName,omitempty" name:"EnName"`
+
+		// 中文姓名对应电码
+		TelexCode *string `json:"TelexCode,omitempty" name:"TelexCode"`
+
+		// 性别 ：“男M”或“女F”
+		Sex *string `json:"Sex,omitempty" name:"Sex"`
+
+		// 出生日期
+		Birthday *string `json:"Birthday,omitempty" name:"Birthday"`
+
+		// 永久性居民身份证。
+	// 0：非永久；
+	// 1：永久；
+	// -1：未知。
+		Permanent *int64 `json:"Permanent,omitempty" name:"Permanent"`
+
+		// 身份证号码
+		IdNum *string `json:"IdNum,omitempty" name:"IdNum"`
+
+		// 证件符号，出生日期下的符号，例如"***AZ"
+		Symbol *string `json:"Symbol,omitempty" name:"Symbol"`
+
+		// 首次签发日期
+		FirstIssueDate *string `json:"FirstIssueDate,omitempty" name:"FirstIssueDate"`
+
+		// 最近领用日期
+		CurrentIssueDate *string `json:"CurrentIssueDate,omitempty" name:"CurrentIssueDate"`
+
+		// 真假判断。
+	// 0：无法判断（图像模糊、不完整、反光、过暗等导致无法判断）；
+	// 1：假；
+	// 2：真。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		FakeDetectResult *int64 `json:"FakeDetectResult,omitempty" name:"FakeDetectResult"`
+
+		// 人像照片Base64后的结果
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		HeadImage *string `json:"HeadImage,omitempty" name:"HeadImage"`
+
+		// 多重告警码，当身份证是翻拍、复印、PS件时返回对应告警码。
+	// -9102：证照复印件告警
+	// -9103：证照翻拍告警
+	// -9104：证照PS告警
+	// -9105：证照防伪告警
+		WarningCode []*int64 `json:"WarningCode,omitempty" name:"WarningCode" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *HKIDCardOCRResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *HKIDCardOCRResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type HmtResidentPermitOCRRequest struct {
 	*tchttp.BaseRequest
 

@@ -858,6 +858,31 @@ func (c *Client) DescribeLoadBalancers(request *DescribeLoadBalancersRequest) (r
     return
 }
 
+func NewDescribeLoadBalancersDetailRequest() (request *DescribeLoadBalancersDetailRequest) {
+    request = &DescribeLoadBalancersDetailRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("clb", APIVersion, "DescribeLoadBalancersDetail")
+    return
+}
+
+func NewDescribeLoadBalancersDetailResponse() (response *DescribeLoadBalancersDetailResponse) {
+    response = &DescribeLoadBalancersDetailResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询负载均衡的详细信息，包括监听器，规则及后端目标。
+func (c *Client) DescribeLoadBalancersDetail(request *DescribeLoadBalancersDetailRequest) (response *DescribeLoadBalancersDetailResponse, err error) {
+    if request == nil {
+        request = NewDescribeLoadBalancersDetailRequest()
+    }
+    response = NewDescribeLoadBalancersDetailResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeRewriteRequest() (request *DescribeRewriteRequest) {
     request = &DescribeRewriteRequest{
         BaseRequest: &tchttp.BaseRequest{},

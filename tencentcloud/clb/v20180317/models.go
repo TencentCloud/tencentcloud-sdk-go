@@ -1623,6 +1623,69 @@ func (r *DescribeLoadBalancerListByCertIdResponse) FromJsonString(s string) erro
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeLoadBalancersDetailRequest struct {
+	*tchttp.BaseRequest
+
+	// 返回负载均衡列表数目，默认20，最大值1000。
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 返回负载均衡列表起始偏移量，默认0
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 选择返回的Fields列表，默认添加LoadBalancerId和LoadBalancerName。
+	Fields []*string `json:"Fields,omitempty" name:"Fields" list`
+
+	// 当Fields包含TargetId、TargetAddress、TargetPort、TargetWeight等Fields时，必选选择导出目标组的Target或者非目标组Target，值范围NODE、GROUP。
+	TargetType *string `json:"TargetType,omitempty" name:"TargetType"`
+
+	// 查询负载均衡详细信息列表条件，详细的过滤条件如下：
+	// <li> loadbalancer-id - String - 是否必填：否 - （过滤条件）按照 负载均衡ID 过滤，如："lb-12345678"。</li>
+	// <li> project-id - String - 是否必填：否 - （过滤条件）按照 项目ID 过滤，如："0","123"。</li>
+	// <li> network - String - 是否必填：否 - （过滤条件）按照 负载均衡网络类型 过滤，如："Public","Private"。</li>
+	// <li> vip - String - 是否必填：否 - （过滤条件）按照 负载均衡Vip 过滤，如："1.1.1.1","2204::22:3"。</li>
+	// <li> target-ip - String - 是否必填：否 - （过滤条件）按照 后端目标内网Ip 过滤，如："1.1.1.1","2203::214:4"。</li>
+	// <li> vpcid - String - 是否必填：否 - （过滤条件）按照 负载均衡所属vpcId 过滤，如："vpc-12345678"。</li>
+	// <li> zone - String - 是否必填：否 - （过滤条件）按照 负载均衡所属的可用区 过滤，如："ap-guangzhou-1"。</li>
+	// <li> tag-key - String - 是否必填：否 - （过滤条件）按照 负载均衡标签的标签键 过滤，如："name"。</li>
+	// <li> tag:* - String - 是否必填：否 - （过滤条件）按照 负载均衡的标签 过滤，':' 后面跟的是标签键。如：过滤标签键name，标签值zhangsan,lisi，{"Name": "tag:name","Values": ["zhangsan", "lisi"]}。</li>
+	// <li> fuzzy-search - String - 是否必填：否 - （过滤条件）按照 负载均衡Vip，负载均衡名称 模糊搜索，如："1.1"。</li>
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+}
+
+func (r *DescribeLoadBalancersDetailRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeLoadBalancersDetailRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeLoadBalancersDetailResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 负载均衡详情列表总数。
+		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 负载均衡详情列表。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		LoadBalancerDetailSet []*LoadBalancerDetail `json:"LoadBalancerDetailSet,omitempty" name:"LoadBalancerDetailSet" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeLoadBalancersDetailResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeLoadBalancersDetailResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeLoadBalancersRequest struct {
 	*tchttp.BaseRequest
 
@@ -2471,6 +2534,129 @@ type LoadBalancer struct {
 	// IP类型是否是本地BGP
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	LocalBgp *bool `json:"LocalBgp,omitempty" name:"LocalBgp"`
+}
+
+type LoadBalancerDetail struct {
+
+	// 负载均衡实例 ID。
+	LoadBalancerId *string `json:"LoadBalancerId,omitempty" name:"LoadBalancerId"`
+
+	// 负载均衡实例的名称。
+	LoadBalancerName *string `json:"LoadBalancerName,omitempty" name:"LoadBalancerName"`
+
+	// 负载均衡实例的网络类型：
+	// Public：公网属性， Private：内网属性。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LoadBalancerType *string `json:"LoadBalancerType,omitempty" name:"LoadBalancerType"`
+
+	// 负载均衡实例的状态，包括
+	// 0：创建中，1：正常运行。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *uint64 `json:"Status,omitempty" name:"Status"`
+
+	// 负载均衡实例的 VIP 。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Address *string `json:"Address,omitempty" name:"Address"`
+
+	// 负载均衡实例 VIP 的IPv6地址。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AddressIPv6 *string `json:"AddressIPv6,omitempty" name:"AddressIPv6"`
+
+	// 负载均衡实例IP版本，IPv4 | IPv6。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AddressIPVersion *string `json:"AddressIPVersion,omitempty" name:"AddressIPVersion"`
+
+	// 负载均衡实例IPv6地址类型，IPv6Nat64 | IPv6FullChain。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IPv6Mode *string `json:"IPv6Mode,omitempty" name:"IPv6Mode"`
+
+	// 负载均衡实例所在可用区。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Zone *string `json:"Zone,omitempty" name:"Zone"`
+
+	// 负载均衡实例IP地址所属的ISP。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AddressIsp *string `json:"AddressIsp,omitempty" name:"AddressIsp"`
+
+	// 负载均衡实例所属私有网络的 ID。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
+
+	// 负载均衡实例所属的项目 ID， 0 表示默认项目。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProjectId *uint64 `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 负载均衡实例的创建时间。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 负载均衡实例的计费类型。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ChargeType *string `json:"ChargeType,omitempty" name:"ChargeType"`
+
+	// 负载均衡实例的网络属性。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NetworkAttributes *InternetAccessible `json:"NetworkAttributes,omitempty" name:"NetworkAttributes"`
+
+	// 负载均衡实例的预付费相关属性。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PrepaidAttributes *LBChargePrepaid `json:"PrepaidAttributes,omitempty" name:"PrepaidAttributes"`
+
+	// 暂做保留，一般用户无需关注。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExtraInfo *ExtraInfo `json:"ExtraInfo,omitempty" name:"ExtraInfo"`
+
+	// 负载均衡维度的个性化配置ID。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ConfigId *string `json:"ConfigId,omitempty" name:"ConfigId"`
+
+	// 负载均衡实例的标签信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Tags []*TagInfo `json:"Tags,omitempty" name:"Tags" list`
+
+	// 负载均衡监听器 ID。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ListenerId *string `json:"ListenerId,omitempty" name:"ListenerId"`
+
+	// 监听器协议。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Protocol *string `json:"Protocol,omitempty" name:"Protocol"`
+
+	// 监听器端口。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Port *uint64 `json:"Port,omitempty" name:"Port"`
+
+	// 转发规则的 ID。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LocationId *string `json:"LocationId,omitempty" name:"LocationId"`
+
+	// 转发规则的域名。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Domain *string `json:"Domain,omitempty" name:"Domain"`
+
+	// 转发规则的路径。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Url *string `json:"Url,omitempty" name:"Url"`
+
+	// 后端目标ID。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TargetId *string `json:"TargetId,omitempty" name:"TargetId"`
+
+	// 后端目标的IP地址。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TargetAddress *string `json:"TargetAddress,omitempty" name:"TargetAddress"`
+
+	// 后端目标监听端口。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TargetPort *uint64 `json:"TargetPort,omitempty" name:"TargetPort"`
+
+	// 后端目标转发权重。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TargetWeight *uint64 `json:"TargetWeight,omitempty" name:"TargetWeight"`
+
+	// 0：表示未被隔离，1：表示被隔离。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Isolation *uint64 `json:"Isolation,omitempty" name:"Isolation"`
 }
 
 type LoadBalancerHealth struct {

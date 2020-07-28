@@ -93,6 +93,31 @@ func (c *Client) AsymmetricSm2Decrypt(request *AsymmetricSm2DecryptRequest) (res
     return
 }
 
+func NewBindCloudResourceRequest() (request *BindCloudResourceRequest) {
+    request = &BindCloudResourceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("kms", APIVersion, "BindCloudResource")
+    return
+}
+
+func NewBindCloudResourceResponse() (response *BindCloudResourceResponse) {
+    response = &BindCloudResourceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 记录当前key被哪个云产品的那个资源所使用。如果当前key设置了自动过期，则取消该设置，确保当前key不会自动失效。如果当前关联关系已经创建，也返回成功。
+func (c *Client) BindCloudResource(request *BindCloudResourceRequest) (response *BindCloudResourceResponse, err error) {
+    if request == nil {
+        request = NewBindCloudResourceRequest()
+    }
+    response = NewBindCloudResourceResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCancelKeyDeletionRequest() (request *CancelKeyDeletionRequest) {
     request = &CancelKeyDeletionRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1040,6 +1065,31 @@ func (c *Client) ScheduleKeyDeletion(request *ScheduleKeyDeletionRequest) (respo
         request = NewScheduleKeyDeletionRequest()
     }
     response = NewScheduleKeyDeletionResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewUnbindCloudResourceRequest() (request *UnbindCloudResourceRequest) {
+    request = &UnbindCloudResourceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("kms", APIVersion, "UnbindCloudResource")
+    return
+}
+
+func NewUnbindCloudResourceResponse() (response *UnbindCloudResourceResponse) {
+    response = &UnbindCloudResourceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 删除指定（key, 资源，云产品）的记录，以表明：指定的云产品的资源已不再使用当前的key。
+func (c *Client) UnbindCloudResource(request *UnbindCloudResourceRequest) (response *UnbindCloudResourceResponse, err error) {
+    if request == nil {
+        request = NewUnbindCloudResourceRequest()
+    }
+    response = NewUnbindCloudResourceResponse()
     err = c.Send(request, response)
     return
 }

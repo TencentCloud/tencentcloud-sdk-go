@@ -136,8 +136,9 @@ func NewRenewCardsResponse() (response *RenewCardsResponse) {
 // 批量为卡片续费，此接口建议调用至少间隔10s,如果出现返回deal lock failed相关的错误，请过10s再重试。
 // 续费的必要条件：
 // 1、单次续费的卡片不可以超过 100张。
-// 2、只对单卡续费，不支持池卡
+// 2、接口只支持在控制台购买的卡片进行续费
 // 3、销户和未激活的卡片不支持续费。
+// 4、每张物联网卡，续费总周期不能超过24个月
 func (c *Client) RenewCards(request *RenewCardsRequest) (response *RenewCardsResponse, err error) {
     if request == nil {
         request = NewRenewCardsRequest()

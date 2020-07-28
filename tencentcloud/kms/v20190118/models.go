@@ -118,6 +118,46 @@ func (r *AsymmetricSm2DecryptResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type BindCloudResourceRequest struct {
+	*tchttp.BaseRequest
+
+	// cmk的ID
+	KeyId *string `json:"KeyId,omitempty" name:"KeyId"`
+
+	// 云产品的唯一性标识符
+	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
+
+	// 资源/实例ID，由调用方根据自己的云产品特征来定义，以字符串形式做存储。
+	ResourceId *string `json:"ResourceId,omitempty" name:"ResourceId"`
+}
+
+func (r *BindCloudResourceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *BindCloudResourceRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type BindCloudResourceResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *BindCloudResourceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *BindCloudResourceResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type CancelKeyDeletionRequest struct {
 	*tchttp.BaseRequest
 
@@ -1746,6 +1786,46 @@ type Tag struct {
 
 	// 标签值
 	TagValue *string `json:"TagValue,omitempty" name:"TagValue"`
+}
+
+type UnbindCloudResourceRequest struct {
+	*tchttp.BaseRequest
+
+	// cmk的ID
+	KeyId *string `json:"KeyId,omitempty" name:"KeyId"`
+
+	// 云产品的唯一性标识符
+	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
+
+	// 资源/实例ID，由调用方根据自己的云产品特征来定义，以字符串形式做存储。
+	ResourceId *string `json:"ResourceId,omitempty" name:"ResourceId"`
+}
+
+func (r *UnbindCloudResourceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *UnbindCloudResourceRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type UnbindCloudResourceResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *UnbindCloudResourceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *UnbindCloudResourceResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
 }
 
 type UpdateAliasRequest struct {

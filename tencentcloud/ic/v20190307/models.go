@@ -142,10 +142,10 @@ type CardInfo struct {
 	// 是否开通短信0:未开短信 1:开通短信
 	NeedSms *int64 `json:"NeedSms,omitempty" name:"NeedSms"`
 
-	// 服务
+	// 供应商
 	Provider *int64 `json:"Provider,omitempty" name:"Provider"`
 
-	// 实名验证(浙江联通)
+	// 实名认证 0:无 1:未实名 2:已实名
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CertificationState *int64 `json:"CertificationState,omitempty" name:"CertificationState"`
 }
@@ -291,7 +291,7 @@ type RenewCardsRequest struct {
 	// 续费的iccid
 	Iccids []*string `json:"Iccids,omitempty" name:"Iccids" list`
 
-	// 续费的周期
+	// 续费的周期（单位：月）
 	RenewNum *uint64 `json:"RenewNum,omitempty" name:"RenewNum"`
 }
 
