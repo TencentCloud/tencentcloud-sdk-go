@@ -1013,7 +1013,7 @@ type CreateLiveSnapshotTemplateRequest struct {
 	Description *string `json:"Description,omitempty" name:"Description"`
 
 	// 截图间隔，单位s，默认10s。
-	// 范围： 5s ~ 600s。
+	// 范围： 5s ~ 300s。
 	SnapshotInterval *int64 `json:"SnapshotInterval,omitempty" name:"SnapshotInterval"`
 
 	// 截图宽度。默认：0（原始宽）。
@@ -5212,7 +5212,7 @@ type ModifyLiveSnapshotTemplateRequest struct {
 	Description *string `json:"Description,omitempty" name:"Description"`
 
 	// 截图间隔，单位s，默认10s。
-	// 范围： 5s ~ 600s。
+	// 范围： 5s ~ 300s。
 	SnapshotInterval *int64 `json:"SnapshotInterval,omitempty" name:"SnapshotInterval"`
 
 	// 截图宽度。默认：0（原始宽）。

@@ -1,95 +1,51 @@
 # 本版本更新包含以下内容：
 
-## 音频内容检测(ams) 版本：2020-06-08
+## 容器镜像服务(tcr) 版本：2019-09-24
 
-### 第 3 次发布
+### 第 13 次发布
 
-发布时间：2020-07-27 11:46:05
+发布时间：2020-07-29 08:21:59
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-新增接口：
+修改接口：
 
-* [CreateBizConfig](https://cloud.tencent.com/document/api/1219/46889)
-* [DescribeBizConfig](https://cloud.tencent.com/document/api/1219/46888)
+* [CreateInstance](https://cloud.tencent.com/document/api/1141/41572)
+
+	* 新增入参：TagSpecification
+
 
 新增数据结构：
 
-* [FileOutput](https://cloud.tencent.com/document/api/1219/46478#FileOutput)
-* [MediaModerationConfig](https://cloud.tencent.com/document/api/1219/46478#MediaModerationConfig)
-
-
-
-## 负载均衡(clb) 版本：2018-03-17
-
-### 第 27 次发布
-
-发布时间：2020-07-28 08:07:36
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [DescribeLoadBalancersDetail](https://cloud.tencent.com/document/api/214/46916)
-
-新增数据结构：
-
-* [LoadBalancerDetail](https://cloud.tencent.com/document/api/214/30694#LoadBalancerDetail)
-
-
-
-## 密钥管理系统(kms) 版本：2019-01-18
-
-### 第 10 次发布
-
-发布时间：2020-07-28 08:12:44
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [BindCloudResource](https://cloud.tencent.com/document/api/573/46918)
-* [UnbindCloudResource](https://cloud.tencent.com/document/api/573/46917)
-
-
-
-## 文字识别(ocr) 版本：2018-11-19
-
-### 第 28 次发布
-
-发布时间：2020-07-28 08:14:59
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [HKIDCardOCR](https://cloud.tencent.com/document/api/866/46919)
-
-
-
-## 云开发 CloudBase(tcb) 版本：2018-06-08
-
-### 第 15 次发布
-
-发布时间：2020-07-28 08:17:40
-
-本次发布包含了以下内容：
-
-改善已有的文档。
+* [Tag](https://cloud.tencent.com/document/api/1141/41603#Tag)
+* [TagSpecification](https://cloud.tencent.com/document/api/1141/41603#TagSpecification)
 
 修改数据结构：
 
-* [OrderInfo](https://cloud.tencent.com/document/api/876/34822#OrderInfo)
+* [Registry](https://cloud.tencent.com/document/api/1141/41603#Registry)
 
-	* 新增成员：ExtensionId, ResourceReady
+	* 新增成员：TagSpecification
+
+
+
+
+## 私有网络(vpc) 版本：2017-03-12
+
+### 第 54 次发布
+
+发布时间：2020-07-29 08:19:25
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateNetDetect](https://cloud.tencent.com/document/api/215/38699)
+
+	* <font color="#dd0000">**修改入参**：</font>NextHopType, NextHopDestination
 
 
 
@@ -399,13 +355,13 @@
 
 新增接口：
 
-* [[CreateBizConfig](https://cloud.tencent.com/document/api/1219/46889)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeBizConfig](https://cloud.tencent.com/document/api/1219/46888)](https://cloud.tencent.com/document/api/#/#)
+* [CreateBizConfig](https://cloud.tencent.com/document/api/1219/46889)
+* [DescribeBizConfig](https://cloud.tencent.com/document/api/1219/46888)
 
 新增数据结构：
 
-* [[FileOutput](https://cloud.tencent.com/document/api/1219/46478#FileOutput)](https://cloud.tencent.com/document/api/1219/46478#[FileOutput](https://cloud.tencent.com/document/api/1219/46478#FileOutput))
-* [[MediaModerationConfig](https://cloud.tencent.com/document/api/1219/46478#MediaModerationConfig)](https://cloud.tencent.com/document/api/1219/46478#[MediaModerationConfig](https://cloud.tencent.com/document/api/1219/46478#MediaModerationConfig))
+* [FileOutput](https://cloud.tencent.com/document/api/1219/46478#FileOutput)
+* [MediaModerationConfig](https://cloud.tencent.com/document/api/1219/46478#MediaModerationConfig)
 
 ### 第 2 次发布
 
@@ -6898,11 +6854,11 @@
 
 新增接口：
 
-* [[DescribeLoadBalancersDetail](https://cloud.tencent.com/document/api/214/46916)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeLoadBalancersDetail](https://cloud.tencent.com/document/api/214/46916)
 
 新增数据结构：
 
-* [[LoadBalancerDetail](https://cloud.tencent.com/document/api/214/30694#LoadBalancerDetail)](https://cloud.tencent.com/document/api/214/30694#[LoadBalancerDetail](https://cloud.tencent.com/document/api/214/30694#LoadBalancerDetail))
+* [LoadBalancerDetail](https://cloud.tencent.com/document/api/214/30694#LoadBalancerDetail)
 
 ### 第 26 次发布
 
@@ -16394,8 +16350,8 @@
 
 新增接口：
 
-* [[BindCloudResource](https://cloud.tencent.com/document/api/573/46918)](https://cloud.tencent.com/document/api/#/#)
-* [[UnbindCloudResource](https://cloud.tencent.com/document/api/573/46917)](https://cloud.tencent.com/document/api/#/#)
+* [BindCloudResource](https://cloud.tencent.com/document/api/573/46918)
+* [UnbindCloudResource](https://cloud.tencent.com/document/api/573/46917)
 
 ### 第 9 次发布
 
@@ -20001,7 +19957,7 @@
 
 新增接口：
 
-* [[HKIDCardOCR](https://cloud.tencent.com/document/api/866/46919)](https://cloud.tencent.com/document/api/#/#)
+* [HKIDCardOCR](https://cloud.tencent.com/document/api/866/46919)
 
 ### 第 27 次发布
 
@@ -24621,6 +24577,33 @@
 
 
 ## 容器镜像服务(tcr) 版本：2019-09-24
+
+### 第 13 次发布
+
+发布时间：2020-07-29 08:21:59
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateInstance](https://cloud.tencent.com/document/api/1141/41572)
+
+	* 新增入参：TagSpecification
+
+
+新增数据结构：
+
+* [[Tag](https://cloud.tencent.com/document/api/1141/41603#Tag)](https://cloud.tencent.com/document/api/1141/41603#[Tag](https://cloud.tencent.com/document/api/1141/41603#Tag))
+* [[TagSpecification](https://cloud.tencent.com/document/api/1141/41603#TagSpecification)](https://cloud.tencent.com/document/api/1141/41603#[TagSpecification](https://cloud.tencent.com/document/api/1141/41603#TagSpecification))
+
+修改数据结构：
+
+* [Registry](https://cloud.tencent.com/document/api/1141/41603#Registry)
+
+	* 新增成员：TagSpecification
+
 
 ### 第 12 次发布
 
@@ -29347,6 +29330,21 @@
 
 
 ## 私有网络(vpc) 版本：2017-03-12
+
+### 第 54 次发布
+
+发布时间：2020-07-29 08:19:25
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateNetDetect](https://cloud.tencent.com/document/api/215/38699)
+
+	* <font color="#dd0000">**修改入参**：</font>NextHopType, NextHopDestination
+
 
 ### 第 53 次发布
 

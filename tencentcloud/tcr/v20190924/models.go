@@ -231,6 +231,9 @@ type CreateInstanceRequest struct {
 
 	// 企业版实例类型
 	RegistryType *string `json:"RegistryType,omitempty" name:"RegistryType"`
+
+	// 云标签描述
+	TagSpecification *TagSpecification `json:"TagSpecification,omitempty" name:"TagSpecification"`
 }
 
 func (r *CreateInstanceRequest) ToJsonString() string {
@@ -2439,6 +2442,10 @@ type Registry struct {
 
 	// 实例内部访问地址
 	InternalEndpoint *string `json:"InternalEndpoint,omitempty" name:"InternalEndpoint"`
+
+	// 实例云标签
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TagSpecification *TagSpecification `json:"TagSpecification,omitempty" name:"TagSpecification"`
 }
 
 type RegistryCondition struct {
@@ -2583,6 +2590,15 @@ type SearchUserRepositoryResp struct {
 	PrivilegeFiltered *bool `json:"PrivilegeFiltered,omitempty" name:"PrivilegeFiltered"`
 }
 
+type Tag struct {
+
+	// 云标签的key
+	Key *string `json:"Key,omitempty" name:"Key"`
+
+	// 云标签的值
+	Value *string `json:"Value,omitempty" name:"Value"`
+}
+
 type TagInfo struct {
 
 	// Tag名称
@@ -2642,6 +2658,17 @@ type TagInfoResp struct {
 
 	// 仓库名称
 	RepoName *string `json:"RepoName,omitempty" name:"RepoName"`
+}
+
+type TagSpecification struct {
+
+	// 默认值为instance
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResourceType *string `json:"ResourceType,omitempty" name:"ResourceType"`
+
+	// 云标签数组
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Tags []*Tag `json:"Tags,omitempty" name:"Tags" list`
 }
 
 type TcrImageInfo struct {

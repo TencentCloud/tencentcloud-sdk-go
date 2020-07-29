@@ -1017,7 +1017,8 @@ type NodeHardwareInfo struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	WanIp *string `json:"WanIp,omitempty" name:"WanIp"`
 
-	// 节点类型
+	// 节点类型。0:common节点；1:master节点
+	// ；2:core节点；3:task节点
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Flag *int64 `json:"Flag,omitempty" name:"Flag"`
 

@@ -407,25 +407,25 @@ type CreateBaselineStrategyRequest struct {
 	// 策略名称
 	StrategyName *string `json:"StrategyName,omitempty" name:"StrategyName"`
 
-	// 检测周期
+	// 检测周期, 表示每隔多少天进行检测.示例: 2, 表示每2天进行检测一次.
 	ScanCycle *uint64 `json:"ScanCycle,omitempty" name:"ScanCycle"`
 
-	// 定期检测时间，该时间下发扫描
+	// 定期检测时间，该时间下发扫描. 示例:“22:00”, 表示在22:00下发检测
 	ScanAt *string `json:"ScanAt,omitempty" name:"ScanAt"`
 
-	// 该策略下选择的基线id数组
+	// 该策略下选择的基线id数组. 示例: [1,3,5,7]
 	CategoryIds []*uint64 `json:"CategoryIds,omitempty" name:"CategoryIds" list`
 
 	// 扫描范围是否全部服务器, 1:是  0:否, 为1则为全部专业版主机
 	IsGlobal *uint64 `json:"IsGlobal,omitempty" name:"IsGlobal"`
 
-	// 云主机类型：cvm：虚拟主机，bms：裸金属，ecm：边缘计算主机
+	// 云主机类型：“CVM”：虚拟主机，"BMS"：裸金属，"ECM"：边缘计算主机
 	MachineType *string `json:"MachineType,omitempty" name:"MachineType"`
 
-	// 主机地域
+	// 主机地域. 示例: "ap-bj"
 	RegionCode *string `json:"RegionCode,omitempty" name:"RegionCode"`
 
-	// 主机id数组
+	// 主机id数组. 示例: ["quuid1","quuid2"]
 	Quuids []*string `json:"Quuids,omitempty" name:"Quuids" list`
 }
 
