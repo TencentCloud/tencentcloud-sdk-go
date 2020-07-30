@@ -1449,7 +1449,7 @@ type CreateRepositoryRequest struct {
 	// 仓库名称
 	RepositoryName *string `json:"RepositoryName,omitempty" name:"RepositoryName"`
 
-	// 仓库类型
+	// 仓库类型（默认仓库：default，私有仓库：private）
 	RepositoryType *string `json:"RepositoryType,omitempty" name:"RepositoryType"`
 
 	// 仓库所在桶名称

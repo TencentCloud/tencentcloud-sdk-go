@@ -327,6 +327,12 @@ type BillTransactionInfo struct {
 
 	// 冻结余额，单位（分）
 	Freezing *int64 `json:"Freezing,omitempty" name:"Freezing"`
+
+	// 交易渠道
+	PayChannel *string `json:"PayChannel,omitempty" name:"PayChannel"`
+
+	// 扣费模式：trade 包年包月(预付费)，hourh  按量-小时结，hourd 按量-日结，hourm 按量-月结，month 按量-月结
+	DeductMode *string `json:"DeductMode,omitempty" name:"DeductMode"`
 }
 
 type BusinessSummaryOverviewItem struct {

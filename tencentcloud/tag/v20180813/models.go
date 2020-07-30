@@ -542,6 +542,73 @@ func (r *DescribeResourcesByTagsResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeResourcesByTagsUnionRequest struct {
+	*tchttp.BaseRequest
+
+	// 标签过滤数组
+	TagFilters []*TagFilter `json:"TagFilters,omitempty" name:"TagFilters" list`
+
+	// 创建标签者uin
+	CreateUin *uint64 `json:"CreateUin,omitempty" name:"CreateUin"`
+
+	// 数据偏移量，默认为 0, 必须为Limit参数的整数倍
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 每页大小，默认为 15
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 资源前缀
+	ResourcePrefix *string `json:"ResourcePrefix,omitempty" name:"ResourcePrefix"`
+
+	// 资源唯一标记
+	ResourceId *string `json:"ResourceId,omitempty" name:"ResourceId"`
+
+	// 资源所在地域
+	ResourceRegion *string `json:"ResourceRegion,omitempty" name:"ResourceRegion"`
+
+	// 业务类型
+	ServiceType *string `json:"ServiceType,omitempty" name:"ServiceType"`
+}
+
+func (r *DescribeResourcesByTagsUnionRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeResourcesByTagsUnionRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeResourcesByTagsUnionResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 结果总数
+		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 数据位移偏量
+		Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+		// 每页大小
+		Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+		// 资源标签
+		Rows []*ResourceTag `json:"Rows,omitempty" name:"Rows" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeResourcesByTagsUnionResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeResourcesByTagsUnionResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeTagKeysRequest struct {
 	*tchttp.BaseRequest
 
@@ -725,7 +792,7 @@ type DescribeTagsRequest struct {
 	// 创建者用户 Uin，不传或为空只将 Uin 作为条件查询
 	CreateUin *uint64 `json:"CreateUin,omitempty" name:"CreateUin"`
 
-	// 标签键数组,与标签值同时存在或同时不存在，不存在时表示查询该用户所有标签,当与TagKey同时传递时只会本值
+	// 标签键数组,与标签值同时存在或同时不存在，不存在时表示查询该用户所有标签,当与TagKey同时传递时只取本值
 	TagKeys []*string `json:"TagKeys,omitempty" name:"TagKeys" list`
 
 	// 是否展现项目标签
@@ -789,7 +856,7 @@ type DescribeTagsSeqRequest struct {
 	// 创建者用户 Uin，不传或为空只将 Uin 作为条件查询
 	CreateUin *uint64 `json:"CreateUin,omitempty" name:"CreateUin"`
 
-	// 标签键数组,与标签值同时存在或同时不存在，不存在时表示查询该用户所有标签,当与TagKey同时传递时只会本值
+	// 标签键数组,与标签值同时存在或同时不存在，不存在时表示查询该用户所有标签,当与TagKey同时传递时只取本值
 	TagKeys []*string `json:"TagKeys,omitempty" name:"TagKeys" list`
 
 	// 是否展现项目标签

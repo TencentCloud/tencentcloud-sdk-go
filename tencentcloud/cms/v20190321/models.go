@@ -938,8 +938,14 @@ type TextData struct {
 	// 最终使用的BizType
 	BizType *uint64 `json:"BizType,omitempty" name:"BizType"`
 
+	// 和请求中的DataId一致，原样返回
+	DataId *string `json:"DataId,omitempty" name:"DataId"`
+
 	// 恶意标签，Normal：正常，Polity：涉政，Porn：色情，Illegal：违法，Abuse：谩骂，Terror：暴恐，Ad：广告，Custom：自定义关键词
 	EvilLabel *string `json:"EvilLabel,omitempty" name:"EvilLabel"`
+
+	// 输出的其他信息，不同客户内容不同
+	Extra *string `json:"Extra,omitempty" name:"Extra"`
 
 	// 命中的关键词
 	Keywords []*string `json:"Keywords,omitempty" name:"Keywords" list`

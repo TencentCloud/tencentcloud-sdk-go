@@ -4059,6 +4059,7 @@ type DescribePullStreamConfigsRequest struct {
 	*tchttp.BaseRequest
 
 	// 配置 ID。
+	// 获取途径：从 CreatePullStreamConfig 接口返回值获取。
 	ConfigId *string `json:"ConfigId,omitempty" name:"ConfigId"`
 }
 
@@ -5363,24 +5364,39 @@ func (r *ModifyLiveTranscodeTemplateResponse) FromJsonString(s string) error {
 type ModifyPullStreamConfigRequest struct {
 	*tchttp.BaseRequest
 
-	// 配置id。
+	// 配置 ID。
+	// 获取来源：
+	// 1. 创建拉流配置接口CreatePullStreamConfig返回的配置 ID。
+	// 2. 通过查询接口DescribePullStreamConfigs获取配置 ID。
 	ConfigId *string `json:"ConfigId,omitempty" name:"ConfigId"`
 
-	// 源Url。
+	// 源 URL，用于拉流的地址。目前可支持直播流及点播文件。
+	// 注意：
+	// 1. 多个点播 URL 之间使用空格拼接。
+	// 2. 目前上限支持10个 URL。
+	// 3. 支持拉流文件格式：FLV，RTMP，HLS，MP4。
+	// 4. 使用标准三层样式，如：http://test.com/live/stream.flv。
 	FromUrl *string `json:"FromUrl,omitempty" name:"FromUrl"`
 
-	// 目的Url。
+	// 目的 URL，用于推流的地址，目前限制该目标地址为腾讯域名。
+	// 1. 仅支持 RTMP 协议。
+	// 2. 使用标准三层样式，如：http://test.com/live/stream.flv。
 	ToUrl *string `json:"ToUrl,omitempty" name:"ToUrl"`
 
-	// 区域id：
-	// 1-深圳，
-	// 2-上海，
-	// 3-天津，
+	// 区域 ID：
+	// 1-深圳。
+	// 2-上海。
+	// 3-天津。
 	// 4-中国香港。
 	// 如有改动，需同时传入IspId。
 	AreaId *int64 `json:"AreaId,omitempty" name:"AreaId"`
 
-	// 运营商id,1-电信,2-移动,3-联通,4-其他,AreaId为4的时候,IspId只能为其他。如有改动，需同时传入AreaId。
+	// 运营商 ID，
+	// 1：电信。
+	// 2：移动。
+	// 3：联通。
+	// 4：其他。
+	// AreaId为4的时候，IspId只能为其他。如有改动，需同时传入AreaId。
 	IspId *int64 `json:"IspId,omitempty" name:"IspId"`
 
 	// 开始时间。

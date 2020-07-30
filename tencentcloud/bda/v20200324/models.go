@@ -828,6 +828,59 @@ func (r *SearchTraceResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type SegmentCustomizedPortraitPicRequest struct {
+	*tchttp.BaseRequest
+
+	// 此参数为分割选项，请根据需要选择自己所想从图片中分割的部分。注意所有选项均为非必选，如未选择则值默认为false, 但是必须要保证多于一个选项的描述为true。
+	SegmentationOptions *SegmentationOptions `json:"SegmentationOptions,omitempty" name:"SegmentationOptions"`
+
+	// 图片 base64 数据，base64 编码后大小不可超过5M。
+	// 图片分辨率须小于2000*2000。 
+	// 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
+	Image *string `json:"Image,omitempty" name:"Image"`
+
+	// 图片的 Url 。
+	// Url、Image必须提供一个，如果都提供，只使用 Url。
+	// 图片分辨率须小于2000*2000 ，图片 base64 编码后大小不可超过5M。 
+	// 图片存储于腾讯云的Url可保障更高下载速度和稳定性，建议图片存储于腾讯云。  
+	// 非腾讯云存储的Url速度和稳定性可能受一定影响。 
+	// 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
+	Url *string `json:"Url,omitempty" name:"Url"`
+}
+
+func (r *SegmentCustomizedPortraitPicRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *SegmentCustomizedPortraitPicRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type SegmentCustomizedPortraitPicResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 根据指定标签分割输出的透明背景人像图片的 base64 数据。
+		PortraitImage *string `json:"PortraitImage,omitempty" name:"PortraitImage"`
+
+		// 指定标签处理后的Mask。一个通过 Base64 编码的文件，解码后文件由 Float 型浮点数组成。这些浮点数代表原图从左上角开始的每一行的每一个像素点，每一个浮点数的值是原图相应像素点位于人体轮廓内的置信度（0-1）转化的灰度值（0-255）
+		MaskImage *string `json:"MaskImage,omitempty" name:"MaskImage"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *SegmentCustomizedPortraitPicResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *SegmentCustomizedPortraitPicResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type SegmentPortraitPicRequest struct {
 	*tchttp.BaseRequest
 
@@ -876,6 +929,72 @@ func (r *SegmentPortraitPicResponse) ToJsonString() string {
 
 func (r *SegmentPortraitPicResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
+}
+
+type SegmentationOptions struct {
+
+	// 分割选项-背景
+	Background *bool `json:"Background,omitempty" name:"Background"`
+
+	// 分割选项-头发
+	Hair *bool `json:"Hair,omitempty" name:"Hair"`
+
+	// 分割选项-左眉
+	LeftEyebrow *bool `json:"LeftEyebrow,omitempty" name:"LeftEyebrow"`
+
+	// 分割选项-右眉
+	RightEyebrow *bool `json:"RightEyebrow,omitempty" name:"RightEyebrow"`
+
+	// 分割选项-左眼
+	LeftEye *bool `json:"LeftEye,omitempty" name:"LeftEye"`
+
+	// 分割选项-右眼
+	RightEye *bool `json:"RightEye,omitempty" name:"RightEye"`
+
+	// 分割选项-鼻子
+	Nose *bool `json:"Nose,omitempty" name:"Nose"`
+
+	// 分割选项-上唇
+	UpperLip *bool `json:"UpperLip,omitempty" name:"UpperLip"`
+
+	// 分割选项-下唇
+	LowerLip *bool `json:"LowerLip,omitempty" name:"LowerLip"`
+
+	// 分割选项-牙齿
+	Tooth *bool `json:"Tooth,omitempty" name:"Tooth"`
+
+	// 分割选项-口腔（不包含牙齿）
+	Mouth *bool `json:"Mouth,omitempty" name:"Mouth"`
+
+	// 分割选项-左耳
+	LeftEar *bool `json:"LeftEar,omitempty" name:"LeftEar"`
+
+	// 分割选项-右耳
+	RightEar *bool `json:"RightEar,omitempty" name:"RightEar"`
+
+	// 分割选项-面部(不包含眼、耳、口、鼻等五官及头发。)
+	Face *bool `json:"Face,omitempty" name:"Face"`
+
+	// 复合分割选项-头部(包含所有的头部元素，相关装饰除外)
+	Head *bool `json:"Head,omitempty" name:"Head"`
+
+	// 分割选项-身体（包含脖子）
+	Body *bool `json:"Body,omitempty" name:"Body"`
+
+	// 分割选项-帽子
+	Hat *bool `json:"Hat,omitempty" name:"Hat"`
+
+	// 分割选项-头饰
+	Headdress *bool `json:"Headdress,omitempty" name:"Headdress"`
+
+	// 分割选项-耳环
+	Earrings *bool `json:"Earrings,omitempty" name:"Earrings"`
+
+	// 分割选项-项链
+	Necklace *bool `json:"Necklace,omitempty" name:"Necklace"`
+
+	// 分割选项-随身物品（ 例如伞、包、手机等。 ）
+	Belongings *bool `json:"Belongings,omitempty" name:"Belongings"`
 }
 
 type Trace struct {

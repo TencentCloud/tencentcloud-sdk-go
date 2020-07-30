@@ -293,6 +293,31 @@ func (c *Client) DescribeResourcesByTags(request *DescribeResourcesByTagsRequest
     return
 }
 
+func NewDescribeResourcesByTagsUnionRequest() (request *DescribeResourcesByTagsUnionRequest) {
+    request = &DescribeResourcesByTagsUnionRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tag", APIVersion, "DescribeResourcesByTagsUnion")
+    return
+}
+
+func NewDescribeResourcesByTagsUnionResponse() (response *DescribeResourcesByTagsUnionResponse) {
+    response = &DescribeResourcesByTagsUnionResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 通过标签查询资源列表并集
+func (c *Client) DescribeResourcesByTagsUnion(request *DescribeResourcesByTagsUnionRequest) (response *DescribeResourcesByTagsUnionResponse, err error) {
+    if request == nil {
+        request = NewDescribeResourcesByTagsUnionRequest()
+    }
+    response = NewDescribeResourcesByTagsUnionResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeTagKeysRequest() (request *DescribeTagKeysRequest) {
     request = &DescribeTagKeysRequest{
         BaseRequest: &tchttp.BaseRequest{},

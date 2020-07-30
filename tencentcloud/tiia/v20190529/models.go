@@ -551,7 +551,7 @@ type EnhanceImageRequest struct {
 	// • 图片格式：PNG、JPG、JPEG。 
 	// • 图片大小：所下载图片经Base64编码后不超过4M。图片下载时间不超过3秒。 
 	// 建议：
-	// • 图片像素：大于50*50像素，否则影响识别效果； 
+	// • 图片像素：大于50*50像素，最大不超过250万像素，否则影响识别效果； 
 	// • 长宽比：长边：短边<5； 
 	// 接口响应时间会受到图片下载时间的影响，建议使用更可靠的存储服务，推荐将图片存储在腾讯云COS。
 	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
