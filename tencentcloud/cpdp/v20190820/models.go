@@ -2617,6 +2617,132 @@ type MerchantManagementResult struct {
 	List []*MerchantManagementList `json:"List,omitempty" name:"List" list`
 }
 
+type MigrateOrderRefundQueryRequest struct {
+	*tchttp.BaseRequest
+
+	// 商户号
+	MerchantId *string `json:"MerchantId,omitempty" name:"MerchantId"`
+
+	// 支付渠道，ALIPAY对应支付宝渠道；UNIONPAY对应银联渠道
+	PayChannel *string `json:"PayChannel,omitempty" name:"PayChannel"`
+
+	// 退款订单号，最长64位，仅支持数字、 字母
+	RefundOrderId *string `json:"RefundOrderId,omitempty" name:"RefundOrderId"`
+
+	// 退款流水号
+	TradeSerialNo *string `json:"TradeSerialNo,omitempty" name:"TradeSerialNo"`
+
+	// 接入环境。沙箱环境填 sandbox。
+	Profile *string `json:"Profile,omitempty" name:"Profile"`
+}
+
+func (r *MigrateOrderRefundQueryRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *MigrateOrderRefundQueryRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type MigrateOrderRefundQueryResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 请求成功状态
+		IsSuccess *bool `json:"IsSuccess,omitempty" name:"IsSuccess"`
+
+		// 交易流水号
+		TradeSerialNo *string `json:"TradeSerialNo,omitempty" name:"TradeSerialNo"`
+
+		// 交易备注
+		TradeMsg *string `json:"TradeMsg,omitempty" name:"TradeMsg"`
+
+		// 交易状态：0=交易待处理；1=交易处理中；2=交易处理成功；3=交易失败；4=状态未知
+		TradeStatus *int64 `json:"TradeStatus,omitempty" name:"TradeStatus"`
+
+		// 第三方支付机构支付交易号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		ThirdChannelOrderId *string `json:"ThirdChannelOrderId,omitempty" name:"ThirdChannelOrderId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *MigrateOrderRefundQueryResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *MigrateOrderRefundQueryResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type MigrateOrderRefundRequest struct {
+	*tchttp.BaseRequest
+
+	// 商户代码
+	MerchantId *string `json:"MerchantId,omitempty" name:"MerchantId"`
+
+	// 支付渠道，ALIPAY对应支付宝渠道；UNIONPAY对应银联渠道
+	PayChannel *string `json:"PayChannel,omitempty" name:"PayChannel"`
+
+	// 正向支付商户订单号
+	PayOrderId *string `json:"PayOrderId,omitempty" name:"PayOrderId"`
+
+	// 退款订单号，最长64位，仅支持数字、 字母
+	RefundOrderId *string `json:"RefundOrderId,omitempty" name:"RefundOrderId"`
+
+	// 退款金额，单位：分。备注：改字段必须大于0 和小于10000000000的整数。
+	RefundAmt *uint64 `json:"RefundAmt,omitempty" name:"RefundAmt"`
+
+	// 第三方支付机构支付交易号
+	ThirdChannelOrderId *string `json:"ThirdChannelOrderId,omitempty" name:"ThirdChannelOrderId"`
+
+	// 原始支付金额，单位：分。备注：当该字段为空或者为0 时，系统会默认使用订单当 实付金额作为退款金额
+	PayAmt *uint64 `json:"PayAmt,omitempty" name:"PayAmt"`
+
+	// 接入环境。沙箱环境填 sandbox。
+	Profile *string `json:"Profile,omitempty" name:"Profile"`
+}
+
+func (r *MigrateOrderRefundRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *MigrateOrderRefundRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type MigrateOrderRefundResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 请求成功状态
+		IsSuccess *bool `json:"IsSuccess,omitempty" name:"IsSuccess"`
+
+		// 退款流水号
+		TradeSerialNo *string `json:"TradeSerialNo,omitempty" name:"TradeSerialNo"`
+
+		// 交易备注
+		TradeMsg *string `json:"TradeMsg,omitempty" name:"TradeMsg"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *MigrateOrderRefundResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *MigrateOrderRefundResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type ModifyAgentTaxPaymentInfoRequest struct {
 	*tchttp.BaseRequest
 

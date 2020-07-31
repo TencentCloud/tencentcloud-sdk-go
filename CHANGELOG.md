@@ -1,68 +1,10 @@
 # 本版本更新包含以下内容：
 
-## 人体分析(bda) 版本：2020-03-24
+## 企业收付平台(cpdp) 版本：2019-08-20
 
-### 第 4 次发布
+### 第 27 次发布
 
-发布时间：2020-07-30 08:01:28
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [SegmentCustomizedPortraitPic](https://cloud.tencent.com/document/api/1208/47022)
-
-新增数据结构：
-
-* [SegmentationOptions](https://cloud.tencent.com/document/api/1208/42985#SegmentationOptions)
-
-
-
-## 计费相关(billing) 版本：2018-07-09
-
-### 第 20 次发布
-
-发布时间：2020-07-30 08:04:30
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [BillTransactionInfo](https://cloud.tencent.com/document/api/555/19183#BillTransactionInfo)
-
-	* 新增成员：PayChannel, DeductMode
-
-
-
-
-## 内容安全(cms) 版本：2019-03-21
-
-### 第 15 次发布
-
-发布时间：2020-07-30 08:07:34
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [TextData](https://cloud.tencent.com/document/api/669/34506#TextData)
-
-	* 新增成员：DataId, Extra
-
-
-
-
-## 标签(tag) 版本：2018-08-13
-
-### 第 9 次发布
-
-发布时间：2020-07-30 08:15:41
+发布时间：2020-07-31 08:30:31
 
 本次发布包含了以下内容：
 
@@ -70,30 +12,8 @@
 
 新增接口：
 
-* [DescribeResourcesByTagsUnion](https://cloud.tencent.com/document/api/651/47023)
-
-
-
-## 文本内容检测(tms) 版本：2020-07-13
-
-### 第 1 次发布
-
-发布时间：2020-07-29 11:02:07
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [TextModeration](https://cloud.tencent.com/document/api/1124/46976)
-
-新增数据结构：
-
-* [DetailResults](https://cloud.tencent.com/document/api/1124/46977#DetailResults)
-* [Device](https://cloud.tencent.com/document/api/1124/46977#Device)
-* [RiskDetails](https://cloud.tencent.com/document/api/1124/46977#RiskDetails)
-* [User](https://cloud.tencent.com/document/api/1124/46977#User)
+* [MigrateOrderRefund](https://cloud.tencent.com/document/api/1122/47061)
+* [MigrateOrderRefundQuery](https://cloud.tencent.com/document/api/1122/47060)
 
 
 
@@ -2252,11 +2172,11 @@
 
 新增接口：
 
-* [[SegmentCustomizedPortraitPic](https://cloud.tencent.com/document/api/1208/47022)](https://cloud.tencent.com/document/api/#/#)
+* [SegmentCustomizedPortraitPic](https://cloud.tencent.com/document/api/1208/47022)
 
 新增数据结构：
 
-* [[SegmentationOptions](https://cloud.tencent.com/document/api/1208/42985#SegmentationOptions)](https://cloud.tencent.com/document/api/1208/42985#[SegmentationOptions](https://cloud.tencent.com/document/api/1208/42985#SegmentationOptions))
+* [SegmentationOptions](https://cloud.tencent.com/document/api/1208/42985#SegmentationOptions)
 
 ### 第 3 次发布
 
@@ -8503,6 +8423,19 @@
 
 
 ## 企业收付平台(cpdp) 版本：2019-08-20
+
+### 第 27 次发布
+
+发布时间：2020-07-31 08:30:31
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[MigrateOrderRefund](https://cloud.tencent.com/document/api/1122/47061)](https://cloud.tencent.com/document/api/#/#)
+* [[MigrateOrderRefundQuery](https://cloud.tencent.com/document/api/1122/47060)](https://cloud.tencent.com/document/api/#/#)
 
 ### 第 26 次发布
 
@@ -23183,7 +23116,7 @@
 
 新增接口：
 
-* [[DescribeResourcesByTagsUnion](https://cloud.tencent.com/document/api/651/47023)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeResourcesByTagsUnion](https://cloud.tencent.com/document/api/651/47023)
 
 ### 第 8 次发布
 
@@ -26697,14 +26630,14 @@
 
 新增接口：
 
-* [[TextModeration](https://cloud.tencent.com/document/api/1124/46976)](https://cloud.tencent.com/document/api/#/#)
+* [TextModeration](https://cloud.tencent.com/document/api/1124/46976)
 
 新增数据结构：
 
-* [[DetailResults](https://cloud.tencent.com/document/api/1124/46977#DetailResults)](https://cloud.tencent.com/document/api/1124/46977#[DetailResults](https://cloud.tencent.com/document/api/1124/46977#DetailResults))
-* [[Device](https://cloud.tencent.com/document/api/1124/46977#Device)](https://cloud.tencent.com/document/api/1124/46977#[Device](https://cloud.tencent.com/document/api/1124/46977#Device))
-* [[RiskDetails](https://cloud.tencent.com/document/api/1124/46977#RiskDetails)](https://cloud.tencent.com/document/api/1124/46977#[RiskDetails](https://cloud.tencent.com/document/api/1124/46977#RiskDetails))
-* [[User](https://cloud.tencent.com/document/api/1124/46977#User)](https://cloud.tencent.com/document/api/1124/46977#[User](https://cloud.tencent.com/document/api/1124/46977#User))
+* [DetailResults](https://cloud.tencent.com/document/api/1124/46977#DetailResults)
+* [Device](https://cloud.tencent.com/document/api/1124/46977#Device)
+* [RiskDetails](https://cloud.tencent.com/document/api/1124/46977#RiskDetails)
+* [User](https://cloud.tencent.com/document/api/1124/46977#User)
 
 
 

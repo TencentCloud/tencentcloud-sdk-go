@@ -701,6 +701,56 @@ func (c *Client) ExecuteMemberTransaction(request *ExecuteMemberTransactionReque
     return
 }
 
+func NewMigrateOrderRefundRequest() (request *MigrateOrderRefundRequest) {
+    request = &MigrateOrderRefundRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cpdp", APIVersion, "MigrateOrderRefund")
+    return
+}
+
+func NewMigrateOrderRefundResponse() (response *MigrateOrderRefundResponse) {
+    response = &MigrateOrderRefundResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 山姆聚合支付项目-存量订单退款接口。可以通过本接口将支付款全部或部分退还给付款方，在收到用户退款请求并且验证成功之后，按照退款规则将支付款按原路退回到支付帐号。
+func (c *Client) MigrateOrderRefund(request *MigrateOrderRefundRequest) (response *MigrateOrderRefundResponse, err error) {
+    if request == nil {
+        request = NewMigrateOrderRefundRequest()
+    }
+    response = NewMigrateOrderRefundResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewMigrateOrderRefundQueryRequest() (request *MigrateOrderRefundQueryRequest) {
+    request = &MigrateOrderRefundQueryRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cpdp", APIVersion, "MigrateOrderRefundQuery")
+    return
+}
+
+func NewMigrateOrderRefundQueryResponse() (response *MigrateOrderRefundQueryResponse) {
+    response = &MigrateOrderRefundQueryResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 提交退款申请后，通过调用该接口查询退款状态。退款可能有一定延时。
+func (c *Client) MigrateOrderRefundQuery(request *MigrateOrderRefundQueryRequest) (response *MigrateOrderRefundQueryResponse, err error) {
+    if request == nil {
+        request = NewMigrateOrderRefundQueryRequest()
+    }
+    response = NewMigrateOrderRefundQueryResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyAgentTaxPaymentInfoRequest() (request *ModifyAgentTaxPaymentInfoRequest) {
     request = &ModifyAgentTaxPaymentInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},
