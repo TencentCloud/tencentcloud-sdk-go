@@ -793,6 +793,31 @@ func (c *Client) PublishAsDevice(request *PublishAsDeviceRequest) (response *Pub
     return
 }
 
+func NewPublishBroadcastMessageRequest() (request *PublishBroadcastMessageRequest) {
+    request = &PublishBroadcastMessageRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iotcloud", APIVersion, "PublishBroadcastMessage")
+    return
+}
+
+func NewPublishBroadcastMessageResponse() (response *PublishBroadcastMessageResponse) {
+    response = &PublishBroadcastMessageResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 发布广播消息
+func (c *Client) PublishBroadcastMessage(request *PublishBroadcastMessageRequest) (response *PublishBroadcastMessageResponse, err error) {
+    if request == nil {
+        request = NewPublishBroadcastMessageRequest()
+    }
+    response = NewPublishBroadcastMessageResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewPublishMessageRequest() (request *PublishMessageRequest) {
     request = &PublishMessageRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -814,6 +839,31 @@ func (c *Client) PublishMessage(request *PublishMessageRequest) (response *Publi
         request = NewPublishMessageRequest()
     }
     response = NewPublishMessageResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewPublishRRPCMessageRequest() (request *PublishRRPCMessageRequest) {
+    request = &PublishRRPCMessageRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iotcloud", APIVersion, "PublishRRPCMessage")
+    return
+}
+
+func NewPublishRRPCMessageResponse() (response *PublishRRPCMessageResponse) {
+    response = &PublishRRPCMessageResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 发布RRPC消息
+func (c *Client) PublishRRPCMessage(request *PublishRRPCMessageRequest) (response *PublishRRPCMessageResponse, err error) {
+    if request == nil {
+        request = NewPublishRRPCMessageRequest()
+    }
+    response = NewPublishRRPCMessageResponse()
     err = c.Send(request, response)
     return
 }

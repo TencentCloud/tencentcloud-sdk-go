@@ -315,13 +315,13 @@ type Country struct {
 type CreateImageRequest struct {
 	*tchttp.BaseRequest
 
-	// 镜像名称
+	// 镜像名称。
 	ImageName *string `json:"ImageName,omitempty" name:"ImageName"`
 
 	// 需要制作镜像的实例ID。
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
-	// 镜像描述
+	// 镜像描述。
 	ImageDescription *string `json:"ImageDescription,omitempty" name:"ImageDescription"`
 
 	// 是否执行强制关机以制作镜像。取值范围：

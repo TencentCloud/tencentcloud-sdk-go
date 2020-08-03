@@ -1167,7 +1167,10 @@ type CreateLiveTranscodeTemplateRequest struct {
 	// 是否是极速高清模板，0：否，1：是。默认0。
 	AiTransCode *int64 `json:"AiTransCode,omitempty" name:"AiTransCode"`
 
-	// 极速高清相比VideoBitrate少多少码率，0.1到0.5
+	// 极速高清视频码率压缩比。
+	// 极速高清目标码率=VideoBitrate * (1-AdaptBitratePercent)
+	// 
+	// 取值范围：0.0到0.5
 	AdaptBitratePercent *float64 `json:"AdaptBitratePercent,omitempty" name:"AdaptBitratePercent"`
 }
 
@@ -4758,6 +4761,7 @@ type GroupProIspDataInfo struct {
 type HlsSpecialParam struct {
 
 	// HLS续流超时时间。
+	// 取值范围[0，1800]。
 	FlowContinueDuration *uint64 `json:"FlowContinueDuration,omitempty" name:"FlowContinueDuration"`
 }
 
@@ -5330,7 +5334,10 @@ type ModifyLiveTranscodeTemplateRequest struct {
 	// 是否不超过原始帧率。0：否，1：是。默认0。
 	FpsToOrig *int64 `json:"FpsToOrig,omitempty" name:"FpsToOrig"`
 
-	// 极速高清相比 VideoBitrate 少多少码率，0.1到0.5。
+	// 极速高清视频码率压缩比。
+	// 极速高清目标码率=VideoBitrate * (1-AdaptBitratePercent)
+	// 
+	// 取值范围：0.0到0.5
 	AdaptBitratePercent *float64 `json:"AdaptBitratePercent,omitempty" name:"AdaptBitratePercent"`
 }
 

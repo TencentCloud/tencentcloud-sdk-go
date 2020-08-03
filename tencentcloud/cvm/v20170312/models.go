@@ -2136,6 +2136,9 @@ type InquiryPriceRunInstancesRequest struct {
 
 	// 实例的市场相关选项，如竞价实例相关参数
 	InstanceMarketOptions *InstanceMarketOptionsRequest `json:"InstanceMarketOptions,omitempty" name:"InstanceMarketOptions"`
+
+	// 高性能计算集群ID。
+	HpcClusterId *string `json:"HpcClusterId,omitempty" name:"HpcClusterId"`
 }
 
 func (r *InquiryPriceRunInstancesRequest) ToJsonString() string {
@@ -2271,6 +2274,14 @@ type Instance struct {
 	// CAM角色名。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CamRoleName *string `json:"CamRoleName,omitempty" name:"CamRoleName"`
+
+	// 高性能计算集群`ID`。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HpcClusterId *string `json:"HpcClusterId,omitempty" name:"HpcClusterId"`
+
+	// 高性能计算集群`IP`列表。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RdmaIpAddresses []*string `json:"RdmaIpAddresses,omitempty" name:"RdmaIpAddresses" list`
 }
 
 type InstanceChargePrepaid struct {
@@ -3536,6 +3547,9 @@ type RunInstancesRequest struct {
 	// 如果检查通过，则返回RequestId.
 	// false（默认）：发送正常请求，通过检查后直接创建实例
 	DryRun *bool `json:"DryRun,omitempty" name:"DryRun"`
+
+	// 高性能计算集群ID。若创建的实例为高性能计算实例，需指定实例放置的集群，否则不可指定。
+	HpcClusterId *string `json:"HpcClusterId,omitempty" name:"HpcClusterId"`
 }
 
 func (r *RunInstancesRequest) ToJsonString() string {

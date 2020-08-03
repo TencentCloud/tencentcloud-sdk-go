@@ -73,6 +73,10 @@ type AccessPoint struct {
 
 	// 接入点管理的大区ID。
 	RegionId *string `json:"RegionId,omitempty" name:"RegionId"`
+
+	// 接入点可用的端口类型列表。1000BASE-T代表千兆电口，1000BASE-LX代表千兆单模光口10km，1000BASE-ZX代表千兆单模光口80km,10GBASE-LR代表万兆单模光口10km,10GBASE-ZR代表万兆单模光口80km,10GBASE-LH代表万兆单模光口40km,100GBASE-LR4代表100G单模光口10km
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AvailablePortType []*string `json:"AvailablePortType,omitempty" name:"AvailablePortType" list`
 }
 
 type BgpPeer struct {
@@ -578,6 +582,10 @@ type DirectConnect struct {
 	// 物理专线开通时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 物理专线是否已签署用户协议
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SignLaw *bool `json:"SignLaw,omitempty" name:"SignLaw"`
 }
 
 type DirectConnectTunnel struct {
@@ -684,6 +692,10 @@ type DirectConnectTunnel struct {
 	// TencentBackupAddress，腾讯侧备用互联 IP
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TencentBackupAddress *string `json:"TencentBackupAddress,omitempty" name:"TencentBackupAddress"`
+
+	// 专用通道关联的物理专线是否签署了用户协议
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SignLaw *bool `json:"SignLaw,omitempty" name:"SignLaw"`
 }
 
 type Filter struct {

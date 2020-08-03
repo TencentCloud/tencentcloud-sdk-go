@@ -1,10 +1,86 @@
 # 本版本更新包含以下内容：
 
-## 企业收付平台(cpdp) 版本：2019-08-20
+## 云服务器(cvm) 版本：2017-03-12
 
-### 第 27 次发布
+### 第 46 次发布
 
-发布时间：2020-07-31 08:30:31
+发布时间：2020-08-03 08:09:26
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [InquiryPriceRunInstances](https://cloud.tencent.com/document/api/213/15726)
+
+	* 新增入参：HpcClusterId
+
+* [RunInstances](https://cloud.tencent.com/document/api/213/15730)
+
+	* 新增入参：HpcClusterId
+
+
+修改数据结构：
+
+* [Instance](https://cloud.tencent.com/document/api/213/15753#Instance)
+
+	* 新增成员：HpcClusterId, RdmaIpAddresses
+
+
+
+
+## 专线接入(dc) 版本：2018-04-10
+
+### 第 10 次发布
+
+发布时间：2020-08-03 08:10:29
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [AccessPoint](https://cloud.tencent.com/document/api/216/18418#AccessPoint)
+
+	* 新增成员：AvailablePortType
+
+* [DirectConnect](https://cloud.tencent.com/document/api/216/18418#DirectConnect)
+
+	* 新增成员：SignLaw
+
+* [DirectConnectTunnel](https://cloud.tencent.com/document/api/216/18418#DirectConnectTunnel)
+
+	* 新增成员：SignLaw
+
+
+
+
+## 边缘计算机器(ecm) 版本：2019-07-19
+
+### 第 19 次发布
+
+发布时间：2020-08-03 08:02:07
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateImage](https://cloud.tencent.com/document/api/1108/46515)
+
+	* <font color="#dd0000">**修改入参**：</font>InstanceId
+
+
+
+
+## 物联网通信(iotcloud) 版本：2018-06-14
+
+### 第 15 次发布
+
+发布时间：2020-08-03 08:13:35
 
 本次发布包含了以下内容：
 
@@ -12,8 +88,46 @@
 
 新增接口：
 
-* [MigrateOrderRefund](https://cloud.tencent.com/document/api/1122/47061)
-* [MigrateOrderRefundQuery](https://cloud.tencent.com/document/api/1122/47060)
+* [PublishBroadcastMessage](https://cloud.tencent.com/document/api/634/47079)
+* [PublishRRPCMessage](https://cloud.tencent.com/document/api/634/47078)
+
+
+
+## 视频处理(mps) 版本：2019-06-12
+
+### 第 21 次发布
+
+发布时间：2020-08-03 08:16:09
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeTaskDetail](https://cloud.tencent.com/document/api/862/37614)
+
+	* 新增出参：ExtInfo
+
+
+
+
+## 云数据库 SQL Server(sqlserver) 版本：2018-03-28
+
+### 第 9 次发布
+
+发布时间：2020-08-03 08:18:52
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [Backup](https://cloud.tencent.com/document/api/238/19976#Backup)
+
+	* 新增成员：BackupName
+
 
 
 
@@ -8434,8 +8548,8 @@
 
 新增接口：
 
-* [[MigrateOrderRefund](https://cloud.tencent.com/document/api/1122/47061)](https://cloud.tencent.com/document/api/#/#)
-* [[MigrateOrderRefundQuery](https://cloud.tencent.com/document/api/1122/47060)](https://cloud.tencent.com/document/api/#/#)
+* [MigrateOrderRefund](https://cloud.tencent.com/document/api/1122/47061)
+* [MigrateOrderRefundQuery](https://cloud.tencent.com/document/api/1122/47060)
 
 ### 第 26 次发布
 
@@ -9342,6 +9456,32 @@
 
 
 ## 云服务器(cvm) 版本：2017-03-12
+
+### 第 46 次发布
+
+发布时间：2020-08-03 08:09:26
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [InquiryPriceRunInstances](https://cloud.tencent.com/document/api/213/15726)
+
+	* 新增入参：HpcClusterId
+
+* [RunInstances](https://cloud.tencent.com/document/api/213/15730)
+
+	* 新增入参：HpcClusterId
+
+
+修改数据结构：
+
+* [Instance](https://cloud.tencent.com/document/api/213/15753#Instance)
+
+	* 新增成员：HpcClusterId, RdmaIpAddresses
+
 
 ### 第 45 次发布
 
@@ -10941,6 +11081,29 @@
 
 ## 专线接入(dc) 版本：2018-04-10
 
+### 第 10 次发布
+
+发布时间：2020-08-03 08:10:29
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [AccessPoint](https://cloud.tencent.com/document/api/216/18418#AccessPoint)
+
+	* 新增成员：AvailablePortType
+
+* [DirectConnect](https://cloud.tencent.com/document/api/216/18418#DirectConnect)
+
+	* 新增成员：SignLaw
+
+* [DirectConnectTunnel](https://cloud.tencent.com/document/api/216/18418#DirectConnectTunnel)
+
+	* 新增成员：SignLaw
+
+
 ### 第 9 次发布
 
 发布时间：2020-06-10 08:08:58
@@ -12031,6 +12194,21 @@
 
 
 ## 边缘计算机器(ecm) 版本：2019-07-19
+
+### 第 19 次发布
+
+发布时间：2020-08-03 08:02:07
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateImage](https://cloud.tencent.com/document/api/1108/46515)
+
+	* <font color="#dd0000">**修改入参**：</font>InstanceId
+
 
 ### 第 18 次发布
 
@@ -15448,6 +15626,19 @@
 
 ## 物联网通信(iotcloud) 版本：2018-06-14
 
+### 第 15 次发布
+
+发布时间：2020-08-03 08:13:35
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[PublishBroadcastMessage](https://cloud.tencent.com/document/api/634/47079)](https://cloud.tencent.com/document/api/#/#)
+* [[PublishRRPCMessage](https://cloud.tencent.com/document/api/634/47078)](https://cloud.tencent.com/document/api/#/#)
+
 ### 第 14 次发布
 
 发布时间：2020-06-30 08:13:45
@@ -18623,6 +18814,21 @@
 
 
 ## 视频处理(mps) 版本：2019-06-12
+
+### 第 21 次发布
+
+发布时间：2020-08-03 08:16:09
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeTaskDetail](https://cloud.tencent.com/document/api/862/37614)
+
+	* 新增出参：ExtInfo
+
 
 ### 第 20 次发布
 
@@ -22549,6 +22755,21 @@
 
 
 ## 云数据库 SQL Server(sqlserver) 版本：2018-03-28
+
+### 第 9 次发布
+
+发布时间：2020-08-03 08:18:52
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [Backup](https://cloud.tencent.com/document/api/238/19976#Backup)
+
+	* 新增成员：BackupName
+
 
 ### 第 8 次发布
 

@@ -172,6 +172,9 @@ type Backup struct {
 
 	// 备份方式，0-定时备份；1-手动临时备份
 	BackupWay *int64 `json:"BackupWay,omitempty" name:"BackupWay"`
+
+	// 备份名称，可自定义
+	BackupName *string `json:"BackupName,omitempty" name:"BackupName"`
 }
 
 type CompleteExpansionRequest struct {

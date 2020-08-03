@@ -1737,6 +1737,49 @@ func (r *PublishAsDeviceResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type PublishBroadcastMessageRequest struct {
+	*tchttp.BaseRequest
+
+	// 产品ID
+	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
+
+	// 消息内容
+	Payload *string `json:"Payload,omitempty" name:"Payload"`
+
+	// 消息质量等级
+	Qos *int64 `json:"Qos,omitempty" name:"Qos"`
+}
+
+func (r *PublishBroadcastMessageRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *PublishBroadcastMessageRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type PublishBroadcastMessageResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 广播消息任务ID
+		TaskId *int64 `json:"TaskId,omitempty" name:"TaskId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *PublishBroadcastMessageResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *PublishBroadcastMessageResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type PublishMessageRequest struct {
 	*tchttp.BaseRequest
 
@@ -1780,6 +1823,52 @@ func (r *PublishMessageResponse) ToJsonString() string {
 }
 
 func (r *PublishMessageResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type PublishRRPCMessageRequest struct {
+	*tchttp.BaseRequest
+
+	// 产品ID
+	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
+
+	// 设备名称
+	DeviceName *string `json:"DeviceName,omitempty" name:"DeviceName"`
+
+	// 消息内容，utf8编码
+	Payload *string `json:"Payload,omitempty" name:"Payload"`
+}
+
+func (r *PublishRRPCMessageRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *PublishRRPCMessageRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type PublishRRPCMessageResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// RRPC消息ID
+		MessageId *int64 `json:"MessageId,omitempty" name:"MessageId"`
+
+		// 设备回复的的消息内容，采用base64编码
+		PayloadBase64 *string `json:"PayloadBase64,omitempty" name:"PayloadBase64"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *PublishRRPCMessageResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *PublishRRPCMessageResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
