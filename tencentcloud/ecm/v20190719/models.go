@@ -1981,6 +1981,9 @@ type EnhancedService struct {
 
 	// 是否开启云监控服务。
 	MonitorService *RunMonitorServiceEnabled `json:"MonitorService,omitempty" name:"MonitorService"`
+
+	// 是否开通IP直通。若不指定该参数，则Linux镜像默认开通，windows镜像暂不支持IP直通。
+	EIPDirectService *RunEIPDirectServiceEnabled `json:"EIPDirectService,omitempty" name:"EIPDirectService"`
 }
 
 type Filter struct {
@@ -3539,6 +3542,16 @@ func (r *ResetInstancesResponse) ToJsonString() string {
 
 func (r *ResetInstancesResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
+}
+
+type RunEIPDirectServiceEnabled struct {
+
+	// 是否开通IP直通。取值范围：
+	// TRUE：表示开通IP直通
+	// FALSE：表示不开通IP直通
+	// 默认取值：TRUE。
+	// windows镜像目前不支持IP直通。
+	Enabled *bool `json:"Enabled,omitempty" name:"Enabled"`
 }
 
 type RunInstancesRequest struct {

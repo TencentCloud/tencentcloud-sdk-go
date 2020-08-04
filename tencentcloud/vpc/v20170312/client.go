@@ -341,6 +341,31 @@ func (c *Client) AssociateDhcpIpWithAddressIp(request *AssociateDhcpIpWithAddres
     return
 }
 
+func NewAssociateDirectConnectGatewayNatGatewayRequest() (request *AssociateDirectConnectGatewayNatGatewayRequest) {
+    request = &AssociateDirectConnectGatewayNatGatewayRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "AssociateDirectConnectGatewayNatGateway")
+    return
+}
+
+func NewAssociateDirectConnectGatewayNatGatewayResponse() (response *AssociateDirectConnectGatewayNatGatewayResponse) {
+    response = &AssociateDirectConnectGatewayNatGatewayResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 将专线网关与NAT网关绑定，专线网关默认路由指向NAT网关
+func (c *Client) AssociateDirectConnectGatewayNatGateway(request *AssociateDirectConnectGatewayNatGatewayRequest) (response *AssociateDirectConnectGatewayNatGatewayResponse, err error) {
+    if request == nil {
+        request = NewAssociateDirectConnectGatewayNatGatewayRequest()
+    }
+    response = NewAssociateDirectConnectGatewayNatGatewayResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewAssociateNatGatewayAddressRequest() (request *AssociateNatGatewayAddressRequest) {
     request = &AssociateNatGatewayAddressRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3727,6 +3752,31 @@ func (c *Client) DisassociateDhcpIpWithAddressIp(request *DisassociateDhcpIpWith
         request = NewDisassociateDhcpIpWithAddressIpRequest()
     }
     response = NewDisassociateDhcpIpWithAddressIpResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDisassociateDirectConnectGatewayNatGatewayRequest() (request *DisassociateDirectConnectGatewayNatGatewayRequest) {
+    request = &DisassociateDirectConnectGatewayNatGatewayRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "DisassociateDirectConnectGatewayNatGateway")
+    return
+}
+
+func NewDisassociateDirectConnectGatewayNatGatewayResponse() (response *DisassociateDirectConnectGatewayNatGatewayResponse) {
+    response = &DisassociateDirectConnectGatewayNatGatewayResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 将专线网关与NAT网关解绑，解绑之后，专线网关将不能通过NAT网关访问公网
+func (c *Client) DisassociateDirectConnectGatewayNatGateway(request *DisassociateDirectConnectGatewayNatGatewayRequest) (response *DisassociateDirectConnectGatewayNatGatewayResponse, err error) {
+    if request == nil {
+        request = NewDisassociateDirectConnectGatewayNatGatewayRequest()
+    }
+    response = NewDisassociateDirectConnectGatewayNatGatewayResponse()
     err = c.Send(request, response)
     return
 }

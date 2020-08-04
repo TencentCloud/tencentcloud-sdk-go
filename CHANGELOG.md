@@ -1,67 +1,29 @@
 # 本版本更新包含以下内容：
 
-## 云服务器(cvm) 版本：2017-03-12
+## API网关(apigateway) 版本：2018-08-08
 
-### 第 46 次发布
+### 第 3 次发布
 
-发布时间：2020-08-03 08:09:26
+发布时间：2020-08-04 08:25:53
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-修改接口：
-
-* [InquiryPriceRunInstances](https://cloud.tencent.com/document/api/213/15726)
-
-	* 新增入参：HpcClusterId
-
-* [RunInstances](https://cloud.tencent.com/document/api/213/15730)
-
-	* 新增入参：HpcClusterId
-
-
 修改数据结构：
 
-* [Instance](https://cloud.tencent.com/document/api/213/15753#Instance)
+* [Service](https://cloud.tencent.com/document/api/628/45244#Service)
 
-	* 新增成员：HpcClusterId, RdmaIpAddresses
+	* 新增成员：Tags
 
 
 
 
 ## 专线接入(dc) 版本：2018-04-10
 
-### 第 10 次发布
+### 第 11 次发布
 
-发布时间：2020-08-03 08:10:29
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [AccessPoint](https://cloud.tencent.com/document/api/216/18418#AccessPoint)
-
-	* 新增成员：AvailablePortType
-
-* [DirectConnect](https://cloud.tencent.com/document/api/216/18418#DirectConnect)
-
-	* 新增成员：SignLaw
-
-* [DirectConnectTunnel](https://cloud.tencent.com/document/api/216/18418#DirectConnectTunnel)
-
-	* 新增成员：SignLaw
-
-
-
-
-## 边缘计算机器(ecm) 版本：2019-07-19
-
-### 第 19 次发布
-
-发布时间：2020-08-03 08:02:07
+发布时间：2020-08-04 08:10:19
 
 本次发布包含了以下内容：
 
@@ -69,18 +31,51 @@
 
 修改接口：
 
-* [CreateImage](https://cloud.tencent.com/document/api/1108/46515)
+* [CreateDirectConnect](https://cloud.tencent.com/document/api/216/34829)
 
-	* <font color="#dd0000">**修改入参**：</font>InstanceId
+	* 新增入参：SignLaw
+
+	* <font color="#dd0000">**修改入参**：</font>Location
+
+* [DescribeDirectConnects](https://cloud.tencent.com/document/api/216/34826)
+
+	* 新增出参：AllSignLaw
+
+* [ModifyDirectConnectAttribute](https://cloud.tencent.com/document/api/216/34825)
+
+	* 新增入参：SignLaw
 
 
 
 
-## 物联网通信(iotcloud) 版本：2018-06-14
+## 边缘计算机器(ecm) 版本：2019-07-19
 
-### 第 15 次发布
+### 第 20 次发布
 
-发布时间：2020-08-03 08:13:35
+发布时间：2020-08-04 08:01:47
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增数据结构：
+
+* [RunEIPDirectServiceEnabled](https://cloud.tencent.com/document/api/1108/42574#RunEIPDirectServiceEnabled)
+
+修改数据结构：
+
+* [EnhancedService](https://cloud.tencent.com/document/api/1108/42574#EnhancedService)
+
+	* 新增成员：EIPDirectService
+
+
+
+
+## 私有网络(vpc) 版本：2017-03-12
+
+### 第 55 次发布
+
+发布时间：2020-08-04 08:21:55
 
 本次发布包含了以下内容：
 
@@ -88,45 +83,29 @@
 
 新增接口：
 
-* [PublishBroadcastMessage](https://cloud.tencent.com/document/api/634/47079)
-* [PublishRRPCMessage](https://cloud.tencent.com/document/api/634/47078)
-
-
-
-## 视频处理(mps) 版本：2019-06-12
-
-### 第 21 次发布
-
-发布时间：2020-08-03 08:16:09
-
-本次发布包含了以下内容：
-
-改善已有的文档。
+* [AssociateDirectConnectGatewayNatGateway](https://cloud.tencent.com/document/api/215/47109)
+* [DisassociateDirectConnectGatewayNatGateway](https://cloud.tencent.com/document/api/215/47108)
 
 修改接口：
 
-* [DescribeTaskDetail](https://cloud.tencent.com/document/api/862/37614)
+* [CreateNatGateway](https://cloud.tencent.com/document/api/215/36721)
 
-	* 新增出参：ExtInfo
+	* 新增入参：SubnetId
 
-
-
-
-## 云数据库 SQL Server(sqlserver) 版本：2018-03-28
-
-### 第 9 次发布
-
-发布时间：2020-08-03 08:18:52
-
-本次发布包含了以下内容：
-
-改善已有的文档。
 
 修改数据结构：
 
-* [Backup](https://cloud.tencent.com/document/api/238/19976#Backup)
+* [DirectConnectGateway](https://cloud.tencent.com/document/api/215/15824#DirectConnectGateway)
 
-	* 新增成员：BackupName
+	* 新增成员：NatGatewayId
+
+* [NatGateway](https://cloud.tencent.com/document/api/215/15824#NatGateway)
+
+	* 新增成员：DirectConnectGatewayIds, SubnetId
+
+* [Tag](https://cloud.tencent.com/document/api/215/15824#Tag)
+
+	* <font color="#dd0000">**修改成员**：</font>Value
 
 
 
@@ -504,6 +483,21 @@
 
 
 ## API网关(apigateway) 版本：2018-08-08
+
+### 第 3 次发布
+
+发布时间：2020-08-04 08:25:53
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [Service](https://cloud.tencent.com/document/api/628/45244#Service)
+
+	* 新增成员：Tags
+
 
 ### 第 2 次发布
 
@@ -11081,6 +11075,31 @@
 
 ## 专线接入(dc) 版本：2018-04-10
 
+### 第 11 次发布
+
+发布时间：2020-08-04 08:10:19
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateDirectConnect](https://cloud.tencent.com/document/api/216/34829)
+
+	* 新增入参：SignLaw
+
+	* <font color="#dd0000">**修改入参**：</font>Location
+
+* [DescribeDirectConnects](https://cloud.tencent.com/document/api/216/34826)
+
+	* 新增出参：AllSignLaw
+
+* [ModifyDirectConnectAttribute](https://cloud.tencent.com/document/api/216/34825)
+
+	* 新增入参：SignLaw
+
+
 ### 第 10 次发布
 
 发布时间：2020-08-03 08:10:29
@@ -12194,6 +12213,25 @@
 
 
 ## 边缘计算机器(ecm) 版本：2019-07-19
+
+### 第 20 次发布
+
+发布时间：2020-08-04 08:01:47
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增数据结构：
+
+* [[RunEIPDirectServiceEnabled](https://cloud.tencent.com/document/api/1108/42574#RunEIPDirectServiceEnabled)](https://cloud.tencent.com/document/api/1108/42574#[RunEIPDirectServiceEnabled](https://cloud.tencent.com/document/api/1108/42574#RunEIPDirectServiceEnabled))
+
+修改数据结构：
+
+* [EnhancedService](https://cloud.tencent.com/document/api/1108/42574#EnhancedService)
+
+	* 新增成员：EIPDirectService
+
 
 ### 第 19 次发布
 
@@ -15636,8 +15674,8 @@
 
 新增接口：
 
-* [[PublishBroadcastMessage](https://cloud.tencent.com/document/api/634/47079)](https://cloud.tencent.com/document/api/#/#)
-* [[PublishRRPCMessage](https://cloud.tencent.com/document/api/634/47078)](https://cloud.tencent.com/document/api/#/#)
+* [PublishBroadcastMessage](https://cloud.tencent.com/document/api/634/47079)
+* [PublishRRPCMessage](https://cloud.tencent.com/document/api/634/47078)
 
 ### 第 14 次发布
 
@@ -29613,6 +29651,41 @@
 
 
 ## 私有网络(vpc) 版本：2017-03-12
+
+### 第 55 次发布
+
+发布时间：2020-08-04 08:21:55
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[AssociateDirectConnectGatewayNatGateway](https://cloud.tencent.com/document/api/215/47109)](https://cloud.tencent.com/document/api/#/#)
+* [[DisassociateDirectConnectGatewayNatGateway](https://cloud.tencent.com/document/api/215/47108)](https://cloud.tencent.com/document/api/#/#)
+
+修改接口：
+
+* [CreateNatGateway](https://cloud.tencent.com/document/api/215/36721)
+
+	* 新增入参：SubnetId
+
+
+修改数据结构：
+
+* [DirectConnectGateway](https://cloud.tencent.com/document/api/215/15824#DirectConnectGateway)
+
+	* 新增成员：NatGatewayId
+
+* [NatGateway](https://cloud.tencent.com/document/api/215/15824#NatGateway)
+
+	* 新增成员：DirectConnectGatewayIds, SubnetId
+
+* [Tag](https://cloud.tencent.com/document/api/215/15824#Tag)
+
+	* <font color="#dd0000">**修改成员**：</font>Value
+
 
 ### 第 54 次发布
 

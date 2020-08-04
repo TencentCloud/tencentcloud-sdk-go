@@ -101,14 +101,14 @@ type CreateDirectConnectRequest struct {
 	// 提供接入物理专线的运营商。ChinaTelecom：中国电信， ChinaMobile：中国移动，ChinaUnicom：中国联通， In-houseWiring：楼内线，ChinaOther：中国其他， InternationalOperator：境外其他。
 	LineOperator *string `json:"LineOperator,omitempty" name:"LineOperator"`
 
-	// 本地数据中心的地理位置。
-	Location *string `json:"Location,omitempty" name:"Location"`
-
 	// 物理专线接入端口类型,取值：100Base-T：百兆电口,1000Base-T（默认值）：千兆电口,1000Base-LX：千兆单模光口（10千米）,10GBase-T：万兆电口10GBase-LR：万兆单模光口（10千米），默认值，千兆单模光口（10千米）。
 	PortType *string `json:"PortType,omitempty" name:"PortType"`
 
 	// 运营商或者服务商为物理专线提供的电路编码。
 	CircuitCode *string `json:"CircuitCode,omitempty" name:"CircuitCode"`
+
+	// 本地数据中心的地理位置。
+	Location *string `json:"Location,omitempty" name:"Location"`
 
 	// 物理专线接入接口带宽，单位为Mbps，默认值为1000，取值范围为 [2, 10240]。
 	Bandwidth *int64 `json:"Bandwidth,omitempty" name:"Bandwidth"`
@@ -139,6 +139,9 @@ type CreateDirectConnectRequest struct {
 
 	// 报障联系电话。
 	FaultReportContactNumber *string `json:"FaultReportContactNumber,omitempty" name:"FaultReportContactNumber"`
+
+	// 物理专线申请者是否签署了用户使用协议。默认已签署
+	SignLaw *bool `json:"SignLaw,omitempty" name:"SignLaw"`
 }
 
 func (r *CreateDirectConnectRequest) ToJsonString() string {
@@ -463,6 +466,10 @@ type DescribeDirectConnectsResponse struct {
 		// 符合物理专线列表数量。
 		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
+		// 用户名下物理专线是否都签署了用户协议
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		AllSignLaw *bool `json:"AllSignLaw,omitempty" name:"AllSignLaw"`
+
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
@@ -742,6 +749,9 @@ type ModifyDirectConnectAttributeRequest struct {
 
 	// 报障联系电话。
 	FaultReportContactNumber *string `json:"FaultReportContactNumber,omitempty" name:"FaultReportContactNumber"`
+
+	// 物理专线申请者补签用户使用协议
+	SignLaw *bool `json:"SignLaw,omitempty" name:"SignLaw"`
 }
 
 func (r *ModifyDirectConnectAttributeRequest) ToJsonString() string {

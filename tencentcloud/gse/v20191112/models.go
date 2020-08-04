@@ -26,13 +26,13 @@ type CreateGameServerSessionRequest struct {
 	// 最大玩家数量
 	MaximumPlayerSessionCount *uint64 `json:"MaximumPlayerSessionCount,omitempty" name:"MaximumPlayerSessionCount"`
 
-	// 别名ID
+	// 别名ID。每个请求需要指定别名ID 或者舰队 ID，如果两个同时指定时，优先选择舰队 ID
 	AliasId *string `json:"AliasId,omitempty" name:"AliasId"`
 
 	// 创建者ID
 	CreatorId *string `json:"CreatorId,omitempty" name:"CreatorId"`
 
-	// 舰队ID
+	// 舰队ID。每个请求需要指定别名ID 或者舰队 ID，如果两个同时指定时，优先选择舰队 ID
 	FleetId *string `json:"FleetId,omitempty" name:"FleetId"`
 
 	// 游戏属性
@@ -308,7 +308,7 @@ type DescribeGameServerSessionsResponse struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		GameServerSessions []*GameServerSession `json:"GameServerSessions,omitempty" name:"GameServerSessions" list`
 
-		// 页便宜，用于查询下一页
+		// 页偏移，用于查询下一页
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		NextToken *string `json:"NextToken,omitempty" name:"NextToken"`
 

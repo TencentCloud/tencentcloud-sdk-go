@@ -3605,6 +3605,10 @@ type Service struct {
 	// 服务的计费状态。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TradeIsolateStatus *int64 `json:"TradeIsolateStatus,omitempty" name:"TradeIsolateStatus"`
+
+	// 服务绑定的标签
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Tags []*Tag `json:"Tags,omitempty" name:"Tags" list`
 }
 
 type ServiceConfig struct {
