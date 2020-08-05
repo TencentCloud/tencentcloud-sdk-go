@@ -79,6 +79,7 @@ type CreateRecTaskRequest struct {
 	// • 16k_zh_video：16k 音视频领域；
 	// • 16k_en：16k 英语；
 	// • 16k_ca：16k 粤语；
+	// • 16k_jp：16k 日语；
 	EngineModelType *string `json:"EngineModelType,omitempty" name:"EngineModelType"`
 
 	// 语音声道数。1：单声道；2：双声道（仅支持 8k_zh 引擎模型）。
@@ -401,10 +402,13 @@ type SentenceRecognitionRequest struct {
 	SubServiceType *uint64 `json:"SubServiceType,omitempty" name:"SubServiceType"`
 
 	// 引擎模型类型。
-	// 8k_zh：电话 8k 中文普通话通用；
-	// 16k_zh：16k 中文普通话通用；
-	// 16k_en：16k 英语；
-	// 16k_ca：16k 粤语。
+	// 电话场景：
+	// • 8k_zh：电话 8k 中文普通话通用；
+	// 非电话场景：
+	// • 16k_zh：16k 中文普通话通用；
+	// • 16k_en：16k 英语；
+	// • 16k_ca：16k 粤语；
+	// • 16k_jp：16k 日语；
 	EngSerViceType *string `json:"EngSerViceType,omitempty" name:"EngSerViceType"`
 
 	// 语音数据来源。0：语音 URL；1：语音数据（post body）。

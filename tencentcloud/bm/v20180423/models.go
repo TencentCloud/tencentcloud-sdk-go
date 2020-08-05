@@ -1960,6 +1960,9 @@ type DeviceHardwareInfo struct {
 
 	// cpu的核心数。仅是物理服务器未开启超线程的核心数， 超线程的核心数为Cpu*2
 	Cpu *uint64 `json:"Cpu,omitempty" name:"Cpu"`
+
+	// 机型外部代号
+	DeviceClassCode *string `json:"DeviceClassCode,omitempty" name:"DeviceClassCode"`
 }
 
 type DeviceInfo struct {

@@ -2705,6 +2705,46 @@ func (r *ModifyInstancesAttributeResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type ModifyModuleConfigRequest struct {
+	*tchttp.BaseRequest
+
+	// 模块ID。
+	ModuleId *string `json:"ModuleId,omitempty" name:"ModuleId"`
+
+	// 机型ID。
+	InstanceType *string `json:"InstanceType,omitempty" name:"InstanceType"`
+
+	// 默认数据盘大小，单位：G。范围不得超过数据盘范围大小，详看DescribeConfig。
+	DefaultDataDiskSize *int64 `json:"DefaultDataDiskSize,omitempty" name:"DefaultDataDiskSize"`
+}
+
+func (r *ModifyModuleConfigRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyModuleConfigRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyModuleConfigResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifyModuleConfigResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyModuleConfigResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type ModifyModuleImageRequest struct {
 	*tchttp.BaseRequest
 

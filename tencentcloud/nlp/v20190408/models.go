@@ -1205,11 +1205,11 @@ func (r *WordEmbeddingResponse) FromJsonString(s string) error {
 
 type WordItem struct {
 
-	// 词条创建时间。
-	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
-
 	// 词条文本内容。
 	Text *string `json:"Text,omitempty" name:"Text"`
+
+	// 词条创建时间。
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
 
 	// 词条的词性。
 	Pos *string `json:"Pos,omitempty" name:"Pos"`

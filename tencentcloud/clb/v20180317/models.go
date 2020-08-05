@@ -1626,7 +1626,7 @@ func (r *DescribeLoadBalancerListByCertIdResponse) FromJsonString(s string) erro
 type DescribeLoadBalancersDetailRequest struct {
 	*tchttp.BaseRequest
 
-	// 返回负载均衡列表数目，默认20，最大值1000。
+	// 返回负载均衡列表数目，默认20，最大值100。
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 
 	// 返回负载均衡列表起始偏移量，默认0

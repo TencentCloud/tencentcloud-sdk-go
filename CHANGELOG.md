@@ -2,28 +2,9 @@
 
 ## API网关(apigateway) 版本：2018-08-08
 
-### 第 3 次发布
+### 第 4 次发布
 
-发布时间：2020-08-04 08:25:53
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [Service](https://cloud.tencent.com/document/api/628/45244#Service)
-
-	* 新增成员：Tags
-
-
-
-
-## 专线接入(dc) 版本：2018-04-10
-
-### 第 11 次发布
-
-发布时间：2020-08-04 08:10:19
+发布时间：2020-08-05 08:23:54
 
 本次发布包含了以下内容：
 
@@ -31,51 +12,37 @@
 
 修改接口：
 
-* [CreateDirectConnect](https://cloud.tencent.com/document/api/216/34829)
+* [DescribeService](https://cloud.tencent.com/document/api/628/45199)
 
-	* 新增入参：SignLaw
+	* 新增出参：Tags
 
-	* <font color="#dd0000">**修改入参**：</font>Location
 
-* [DescribeDirectConnects](https://cloud.tencent.com/document/api/216/34826)
 
-	* 新增出参：AllSignLaw
 
-* [ModifyDirectConnectAttribute](https://cloud.tencent.com/document/api/216/34825)
+## 黑石物理服务器1.0(bm) 版本：2018-04-23
 
-	* 新增入参：SignLaw
+### 第 15 次发布
+
+发布时间：2020-08-05 08:05:10
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [DeviceHardwareInfo](https://cloud.tencent.com/document/api/386/18649#DeviceHardwareInfo)
+
+	* 新增成员：DeviceClassCode
 
 
 
 
 ## 边缘计算机器(ecm) 版本：2019-07-19
 
-### 第 20 次发布
+### 第 21 次发布
 
-发布时间：2020-08-04 08:01:47
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增数据结构：
-
-* [RunEIPDirectServiceEnabled](https://cloud.tencent.com/document/api/1108/42574#RunEIPDirectServiceEnabled)
-
-修改数据结构：
-
-* [EnhancedService](https://cloud.tencent.com/document/api/1108/42574#EnhancedService)
-
-	* 新增成员：EIPDirectService
-
-
-
-
-## 私有网络(vpc) 版本：2017-03-12
-
-### 第 55 次发布
-
-发布时间：2020-08-04 08:21:55
+发布时间：2020-08-05 08:01:49
 
 本次发布包含了以下内容：
 
@@ -83,29 +50,51 @@
 
 新增接口：
 
-* [AssociateDirectConnectGatewayNatGateway](https://cloud.tencent.com/document/api/215/47109)
-* [DisassociateDirectConnectGatewayNatGateway](https://cloud.tencent.com/document/api/215/47108)
+* [ModifyModuleConfig](https://cloud.tencent.com/document/api/1108/47143)
 
-修改接口：
 
-* [CreateNatGateway](https://cloud.tencent.com/document/api/215/36721)
 
-	* 新增入参：SubnetId
+## 人脸识别(iai) 版本：2020-03-03
 
+### 第 2 次发布
+
+发布时间：2020-08-05 08:12:13
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [GetUpgradeGroupFaceModelVersionJobList](https://cloud.tencent.com/document/api/867/47146)
+* [GetUpgradeGroupFaceModelVersionResult](https://cloud.tencent.com/document/api/867/47145)
+* [UpgradeGroupFaceModelVersion](https://cloud.tencent.com/document/api/867/47144)
+
+新增数据结构：
+
+* [UpgradeJobInfo](https://cloud.tencent.com/document/api/867/45020#UpgradeJobInfo)
+
+
+
+## 人脸识别(iai) 版本：2018-03-01
+
+
+
+## 自然语言处理(nlp) 版本：2019-04-08
+
+### 第 11 次发布
+
+发布时间：2020-08-05 08:15:46
+
+本次发布包含了以下内容：
+
+改善已有的文档。
 
 修改数据结构：
 
-* [DirectConnectGateway](https://cloud.tencent.com/document/api/215/15824#DirectConnectGateway)
+* [WordItem](https://cloud.tencent.com/document/api/271/35511#WordItem)
 
-	* 新增成员：NatGatewayId
-
-* [NatGateway](https://cloud.tencent.com/document/api/215/15824#NatGateway)
-
-	* 新增成员：DirectConnectGatewayIds, SubnetId
-
-* [Tag](https://cloud.tencent.com/document/api/215/15824#Tag)
-
-	* <font color="#dd0000">**修改成员**：</font>Value
+	* <font color="#dd0000">**修改成员**：</font>CreateTime
 
 
 
@@ -483,6 +472,21 @@
 
 
 ## API网关(apigateway) 版本：2018-08-08
+
+### 第 4 次发布
+
+发布时间：2020-08-05 08:23:54
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeService](https://cloud.tencent.com/document/api/628/45199)
+
+	* 新增出参：Tags
+
 
 ### 第 3 次发布
 
@@ -2868,6 +2872,21 @@
 
 
 ## 黑石物理服务器1.0(bm) 版本：2018-04-23
+
+### 第 15 次发布
+
+发布时间：2020-08-05 08:05:10
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [DeviceHardwareInfo](https://cloud.tencent.com/document/api/386/18649#DeviceHardwareInfo)
+
+	* 新增成员：DeviceClassCode
+
 
 ### 第 14 次发布
 
@@ -12214,6 +12233,18 @@
 
 ## 边缘计算机器(ecm) 版本：2019-07-19
 
+### 第 21 次发布
+
+发布时间：2020-08-05 08:01:49
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[ModifyModuleConfig](https://cloud.tencent.com/document/api/1108/47143)](https://cloud.tencent.com/document/api/#/#)
+
 ### 第 20 次发布
 
 发布时间：2020-08-04 08:01:47
@@ -12224,7 +12255,7 @@
 
 新增数据结构：
 
-* [[RunEIPDirectServiceEnabled](https://cloud.tencent.com/document/api/1108/42574#RunEIPDirectServiceEnabled)](https://cloud.tencent.com/document/api/1108/42574#[RunEIPDirectServiceEnabled](https://cloud.tencent.com/document/api/1108/42574#RunEIPDirectServiceEnabled))
+* [RunEIPDirectServiceEnabled](https://cloud.tencent.com/document/api/1108/42574#RunEIPDirectServiceEnabled)
 
 修改数据结构：
 
@@ -15137,6 +15168,24 @@
 
 
 ## 人脸识别(iai) 版本：2020-03-03
+
+### 第 2 次发布
+
+发布时间：2020-08-05 08:12:13
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[GetUpgradeGroupFaceModelVersionJobList](https://cloud.tencent.com/document/api/867/47146)](https://cloud.tencent.com/document/api/#/#)
+* [[GetUpgradeGroupFaceModelVersionResult](https://cloud.tencent.com/document/api/867/47145)](https://cloud.tencent.com/document/api/#/#)
+* [[UpgradeGroupFaceModelVersion](https://cloud.tencent.com/document/api/867/47144)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[UpgradeJobInfo](https://cloud.tencent.com/document/api/867/45020#UpgradeJobInfo)](https://cloud.tencent.com/document/api/867/45020#[UpgradeJobInfo](https://cloud.tencent.com/document/api/867/45020#UpgradeJobInfo))
 
 ### 第 1 次发布
 
@@ -19985,6 +20034,21 @@
 
 
 ## 自然语言处理(nlp) 版本：2019-04-08
+
+### 第 11 次发布
+
+发布时间：2020-08-05 08:15:46
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [WordItem](https://cloud.tencent.com/document/api/271/35511#WordItem)
+
+	* <font color="#dd0000">**修改成员**：</font>CreateTime
+
 
 ### 第 10 次发布
 
@@ -29662,8 +29726,8 @@
 
 新增接口：
 
-* [[AssociateDirectConnectGatewayNatGateway](https://cloud.tencent.com/document/api/215/47109)](https://cloud.tencent.com/document/api/#/#)
-* [[DisassociateDirectConnectGatewayNatGateway](https://cloud.tencent.com/document/api/215/47108)](https://cloud.tencent.com/document/api/#/#)
+* [AssociateDirectConnectGatewayNatGateway](https://cloud.tencent.com/document/api/215/47109)
+* [DisassociateDirectConnectGatewayNatGateway](https://cloud.tencent.com/document/api/215/47108)
 
 修改接口：
 

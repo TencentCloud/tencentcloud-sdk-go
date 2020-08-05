@@ -1422,6 +1422,112 @@ func (r *GetSimilarPersonResultResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type GetUpgradeGroupFaceModelVersionJobListRequest struct {
+	*tchttp.BaseRequest
+
+	// 起始序号，默认值为0。
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 返回数量，默认值为10，最大值为1000。
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+func (r *GetUpgradeGroupFaceModelVersionJobListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *GetUpgradeGroupFaceModelVersionJobListRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type GetUpgradeGroupFaceModelVersionJobListResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 人员库升级任务信息列表。
+		JobInfos []*UpgradeJobInfo `json:"JobInfos,omitempty" name:"JobInfos" list`
+
+		// 升级任务总数量。
+		JobNum *uint64 `json:"JobNum,omitempty" name:"JobNum"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *GetUpgradeGroupFaceModelVersionJobListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *GetUpgradeGroupFaceModelVersionJobListResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type GetUpgradeGroupFaceModelVersionResultRequest struct {
+	*tchttp.BaseRequest
+
+	// 升级任务ID，用于查询、获取人员库升级的进度和结果。
+	JobId *string `json:"JobId,omitempty" name:"JobId"`
+}
+
+func (r *GetUpgradeGroupFaceModelVersionResultRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *GetUpgradeGroupFaceModelVersionResultRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type GetUpgradeGroupFaceModelVersionResultResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 人员升级任务预估结束时间。 StartTimestamp的值是自 Unix 纪元时间到人员查重任务预估结束的毫秒数。  
+	// Unix 纪元时间是 1970 年 1 月 1 日星期四，协调世界时 (UTC) 00:00:00。 
+	// 如果为0表示这个任务已经执行完毕。
+		EndTimestamp *uint64 `json:"EndTimestamp,omitempty" name:"EndTimestamp"`
+
+		// 升级任务完成进度。取值[0.0，100.0]。
+		Progress *float64 `json:"Progress,omitempty" name:"Progress"`
+
+		// 0表示升级中，1表示升级完毕，2表示回滚完毕。
+		Status *int64 `json:"Status,omitempty" name:"Status"`
+
+		// 升级起始时间。 
+	// StartTime的值是自 Unix 纪元时间到Group创建时间的毫秒数。 
+	// Unix 纪元时间是 1970 年 1 月 1 日星期四，协调世界时 (UTC) 00:00:00。 
+	// 有关更多信息，请参阅 Unix 时间。
+		StartTime *uint64 `json:"StartTime,omitempty" name:"StartTime"`
+
+		// 当前算法模型版本。
+		FromFaceModelVersion *string `json:"FromFaceModelVersion,omitempty" name:"FromFaceModelVersion"`
+
+		// 目标算法模型版本。
+		ToFaceModelVersion *string `json:"ToFaceModelVersion,omitempty" name:"ToFaceModelVersion"`
+
+		// 人员库ID。
+		GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
+
+		// 无法升级的人脸Id信息，文件格式
+		FailedFacesUrl *string `json:"FailedFacesUrl,omitempty" name:"FailedFacesUrl"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *GetUpgradeGroupFaceModelVersionResultResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *GetUpgradeGroupFaceModelVersionResultResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type GroupCandidate struct {
 
 	// 人员库ID 。
@@ -2025,6 +2131,70 @@ func (r *SearchPersonsReturnsByGroupResponse) ToJsonString() string {
 
 func (r *SearchPersonsReturnsByGroupResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
+}
+
+type UpgradeGroupFaceModelVersionRequest struct {
+	*tchttp.BaseRequest
+
+	// 需要升级的人员库ID。
+	GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
+
+	// 需要升级至的算法模型版本。默认为最新版本。
+	FaceModelVersion *string `json:"FaceModelVersion,omitempty" name:"FaceModelVersion"`
+}
+
+func (r *UpgradeGroupFaceModelVersionRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *UpgradeGroupFaceModelVersionRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type UpgradeGroupFaceModelVersionResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 升级任务ID，用于查询、获取升级的进度和结果。
+		JobId *string `json:"JobId,omitempty" name:"JobId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *UpgradeGroupFaceModelVersionResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *UpgradeGroupFaceModelVersionResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type UpgradeJobInfo struct {
+
+	// 人员库升级任务ID，用于查询、获取升级的进度和结果。
+	JobId *string `json:"JobId,omitempty" name:"JobId"`
+
+	// 人员库ID。
+	GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
+
+	// 当前算法模型版本。
+	FromFaceModelVersion *string `json:"FromFaceModelVersion,omitempty" name:"FromFaceModelVersion"`
+
+	// 目标算法模型版本。
+	ToFaceModelVersion *string `json:"ToFaceModelVersion,omitempty" name:"ToFaceModelVersion"`
+
+	// 升级起始时间。 
+	// StartTime的值是自 Unix 纪元时间到Group创建时间的毫秒数。 
+	// Unix 纪元时间是 1970 年 1 月 1 日星期四，协调世界时 (UTC) 00:00:00。 
+	// 有关更多信息，请参阅 Unix 时间。
+	StartTime *uint64 `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 0表示升级中，1表示升级完毕，2表示回滚完毕。
+	Status *uint64 `json:"Status,omitempty" name:"Status"`
 }
 
 type VerifyFaceRequest struct {

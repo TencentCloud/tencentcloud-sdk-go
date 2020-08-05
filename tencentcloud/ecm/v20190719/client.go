@@ -1253,6 +1253,31 @@ func (c *Client) ModifyInstancesAttribute(request *ModifyInstancesAttributeReque
     return
 }
 
+func NewModifyModuleConfigRequest() (request *ModifyModuleConfigRequest) {
+    request = &ModifyModuleConfigRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ecm", APIVersion, "ModifyModuleConfig")
+    return
+}
+
+func NewModifyModuleConfigResponse() (response *ModifyModuleConfigResponse) {
+    response = &ModifyModuleConfigResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 修改模块配置，已关联实例的模块不支持调整配置。
+func (c *Client) ModifyModuleConfig(request *ModifyModuleConfigRequest) (response *ModifyModuleConfigResponse, err error) {
+    if request == nil {
+        request = NewModifyModuleConfigRequest()
+    }
+    response = NewModifyModuleConfigResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyModuleImageRequest() (request *ModifyModuleImageRequest) {
     request = &ModifyModuleImageRequest{
         BaseRequest: &tchttp.BaseRequest{},

@@ -1855,7 +1855,7 @@ type PublishRRPCMessageResponse struct {
 		// RRPC消息ID
 		MessageId *int64 `json:"MessageId,omitempty" name:"MessageId"`
 
-		// 设备回复的的消息内容，采用base64编码
+		// 设备回复的消息内容，采用base64编码
 		PayloadBase64 *string `json:"PayloadBase64,omitempty" name:"PayloadBase64"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
