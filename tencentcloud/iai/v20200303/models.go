@@ -1787,6 +1787,40 @@ type ResultsReturnsByGroup struct {
 	RetCode *int64 `json:"RetCode,omitempty" name:"RetCode"`
 }
 
+type RevertGroupFaceModelVersionRequest struct {
+	*tchttp.BaseRequest
+
+	// 需要回滚的升级任务ID。
+	JobId *string `json:"JobId,omitempty" name:"JobId"`
+}
+
+func (r *RevertGroupFaceModelVersionRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *RevertGroupFaceModelVersionRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type RevertGroupFaceModelVersionResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *RevertGroupFaceModelVersionResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *RevertGroupFaceModelVersionResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type SearchFacesRequest struct {
 	*tchttp.BaseRequest
 

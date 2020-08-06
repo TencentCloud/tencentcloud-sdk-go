@@ -658,6 +658,9 @@ type CreateLoadBalancerRequest struct {
 
 	// 购买负载均衡同时，给负载均衡打上标签
 	Tags []*TagInfo `json:"Tags,omitempty" name:"Tags" list`
+
+	// 用于保证请求幂等性的字符串。该字符串由客户生成，需保证不同请求之间唯一，最大值不超过64个ASCII字符。若不指定该参数，则无法保证请求的幂等性。
+	ClientToken *string `json:"ClientToken,omitempty" name:"ClientToken"`
 }
 
 func (r *CreateLoadBalancerRequest) ToJsonString() string {

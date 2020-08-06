@@ -653,6 +653,56 @@ func (c *Client) GetSimilarPersonResult(request *GetSimilarPersonResultRequest) 
     return
 }
 
+func NewGetUpgradeGroupFaceModelVersionJobListRequest() (request *GetUpgradeGroupFaceModelVersionJobListRequest) {
+    request = &GetUpgradeGroupFaceModelVersionJobListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iai", APIVersion, "GetUpgradeGroupFaceModelVersionJobList")
+    return
+}
+
+func NewGetUpgradeGroupFaceModelVersionJobListResponse() (response *GetUpgradeGroupFaceModelVersionJobListResponse) {
+    response = &GetUpgradeGroupFaceModelVersionJobListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 获取人员库升级任务列表
+func (c *Client) GetUpgradeGroupFaceModelVersionJobList(request *GetUpgradeGroupFaceModelVersionJobListRequest) (response *GetUpgradeGroupFaceModelVersionJobListResponse, err error) {
+    if request == nil {
+        request = NewGetUpgradeGroupFaceModelVersionJobListRequest()
+    }
+    response = NewGetUpgradeGroupFaceModelVersionJobListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewGetUpgradeGroupFaceModelVersionResultRequest() (request *GetUpgradeGroupFaceModelVersionResultRequest) {
+    request = &GetUpgradeGroupFaceModelVersionResultRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iai", APIVersion, "GetUpgradeGroupFaceModelVersionResult")
+    return
+}
+
+func NewGetUpgradeGroupFaceModelVersionResultResponse() (response *GetUpgradeGroupFaceModelVersionResultResponse) {
+    response = &GetUpgradeGroupFaceModelVersionResultResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 人员库升级结果查询
+func (c *Client) GetUpgradeGroupFaceModelVersionResult(request *GetUpgradeGroupFaceModelVersionResultRequest) (response *GetUpgradeGroupFaceModelVersionResultResponse, err error) {
+    if request == nil {
+        request = NewGetUpgradeGroupFaceModelVersionResultRequest()
+    }
+    response = NewGetUpgradeGroupFaceModelVersionResultResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyGroupRequest() (request *ModifyGroupRequest) {
     request = &ModifyGroupRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -724,6 +774,35 @@ func (c *Client) ModifyPersonGroupInfo(request *ModifyPersonGroupInfoRequest) (r
         request = NewModifyPersonGroupInfoRequest()
     }
     response = NewModifyPersonGroupInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewRevertGroupFaceModelVersionRequest() (request *RevertGroupFaceModelVersionRequest) {
+    request = &RevertGroupFaceModelVersionRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iai", APIVersion, "RevertGroupFaceModelVersion")
+    return
+}
+
+func NewRevertGroupFaceModelVersionResponse() (response *RevertGroupFaceModelVersionResponse) {
+    response = &RevertGroupFaceModelVersionResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口用于回滚人员库的人脸识别算法模型版本。单个人员库有且仅有一次回滚机会。
+// 
+// 回滚操作会在10s内生效，回滚操作中，您对人员库的操作可能会失效。
+// 
+// 注：给客户我会写10s内生效，我们实际上越快越好。待讨论。
+func (c *Client) RevertGroupFaceModelVersion(request *RevertGroupFaceModelVersionRequest) (response *RevertGroupFaceModelVersionResponse, err error) {
+    if request == nil {
+        request = NewRevertGroupFaceModelVersionRequest()
+    }
+    response = NewRevertGroupFaceModelVersionResponse()
     err = c.Send(request, response)
     return
 }
@@ -867,6 +946,33 @@ func (c *Client) SearchPersonsReturnsByGroup(request *SearchPersonsReturnsByGrou
         request = NewSearchPersonsReturnsByGroupRequest()
     }
     response = NewSearchPersonsReturnsByGroupResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewUpgradeGroupFaceModelVersionRequest() (request *UpgradeGroupFaceModelVersionRequest) {
+    request = &UpgradeGroupFaceModelVersionRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iai", APIVersion, "UpgradeGroupFaceModelVersion")
+    return
+}
+
+func NewUpgradeGroupFaceModelVersionResponse() (response *UpgradeGroupFaceModelVersionResponse) {
+    response = &UpgradeGroupFaceModelVersionResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 升级人员库。升级过程中，人员库仍然为原算法版本，人员库相关操作仍然支持。升级完成后，人员库为新算法版本。
+// 单个人员库有且仅支持一次回滚操作。
+// 注：此处QPS限制为10。
+func (c *Client) UpgradeGroupFaceModelVersion(request *UpgradeGroupFaceModelVersionRequest) (response *UpgradeGroupFaceModelVersionResponse, err error) {
+    if request == nil {
+        request = NewUpgradeGroupFaceModelVersionRequest()
+    }
+    response = NewUpgradeGroupFaceModelVersionResponse()
     err = c.Send(request, response)
     return
 }

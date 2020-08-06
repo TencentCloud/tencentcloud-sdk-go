@@ -1249,6 +1249,9 @@ type DescribeClusterRoutesRequest struct {
 
 	// 路由表名称。
 	RouteTableName *string `json:"RouteTableName,omitempty" name:"RouteTableName"`
+
+	// 过滤条件,当前只支持按照单个条件GatewayIP进行过滤（可选）
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
 }
 
 func (r *DescribeClusterRoutesRequest) ToJsonString() string {

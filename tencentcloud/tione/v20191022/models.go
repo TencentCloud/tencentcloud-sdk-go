@@ -51,6 +51,18 @@ type BillingLabel struct {
 	Status *string `json:"Status,omitempty" name:"Status"`
 }
 
+type ClsConfig struct {
+
+	// 接入类型，可选项为free、customer
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 自定义CLS的日志集ID，只有当Type为customer时生效
+	LogSetId *string `json:"LogSetId,omitempty" name:"LogSetId"`
+
+	// 自定义CLS的日志主题ID，只有当Type为customer时生效
+	TopicId *string `json:"TopicId,omitempty" name:"TopicId"`
+}
+
 type CodeRepoSummary struct {
 
 	// 创建时间
@@ -184,6 +196,9 @@ type CreateNotebookInstanceRequest struct {
 	// 取值为Disabled的时候StoppingCondition将被忽略
 	// 取值为Enabled的时候读取StoppingCondition作为自动停止的配置
 	AutoStopping *string `json:"AutoStopping,omitempty" name:"AutoStopping"`
+
+	// 接入日志的配置
+	ClsConfig *ClsConfig `json:"ClsConfig,omitempty" name:"ClsConfig"`
 }
 
 func (r *CreateNotebookInstanceRequest) ToJsonString() string {
@@ -695,6 +710,10 @@ type DescribeNotebookInstanceResponse struct {
 		// 自动停止配置
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		StoppingCondition *StoppingCondition `json:"StoppingCondition,omitempty" name:"StoppingCondition"`
+
+		// Cls配置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		ClsConfig *ClsConfig `json:"ClsConfig,omitempty" name:"ClsConfig"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1544,6 +1563,9 @@ type UpdateNotebookInstanceRequest struct {
 
 	// 自动停止配置，只在AutoStopping为Enabled的时候生效
 	StoppingCondition *StoppingCondition `json:"StoppingCondition,omitempty" name:"StoppingCondition"`
+
+	// 接入日志的配置
+	ClsConfig *ClsConfig `json:"ClsConfig,omitempty" name:"ClsConfig"`
 }
 
 func (r *UpdateNotebookInstanceRequest) ToJsonString() string {

@@ -1,10 +1,10 @@
 # 本版本更新包含以下内容：
 
-## API网关(apigateway) 版本：2018-08-08
+## 负载均衡(clb) 版本：2018-03-17
 
-### 第 4 次发布
+### 第 28 次发布
 
-发布时间：2020-08-05 08:23:54
+发布时间：2020-08-06 08:07:59
 
 本次发布包含了以下内容：
 
@@ -12,53 +12,18 @@
 
 修改接口：
 
-* [DescribeService](https://cloud.tencent.com/document/api/628/45199)
+* [CreateLoadBalancer](https://cloud.tencent.com/document/api/214/30692)
 
-	* 新增出参：Tags
+	* 新增入参：ClientToken
 
-
-
-
-## 黑石物理服务器1.0(bm) 版本：2018-04-23
-
-### 第 15 次发布
-
-发布时间：2020-08-05 08:05:10
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [DeviceHardwareInfo](https://cloud.tencent.com/document/api/386/18649#DeviceHardwareInfo)
-
-	* 新增成员：DeviceClassCode
-
-
-
-
-## 边缘计算机器(ecm) 版本：2019-07-19
-
-### 第 21 次发布
-
-发布时间：2020-08-05 08:01:49
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [ModifyModuleConfig](https://cloud.tencent.com/document/api/1108/47143)
 
 
 
 ## 人脸识别(iai) 版本：2020-03-03
 
-### 第 2 次发布
+### 第 3 次发布
 
-发布时间：2020-08-05 08:12:13
+发布时间：2020-08-06 08:11:55
 
 本次发布包含了以下内容：
 
@@ -66,25 +31,38 @@
 
 新增接口：
 
-* [GetUpgradeGroupFaceModelVersionJobList](https://cloud.tencent.com/document/api/867/47146)
-* [GetUpgradeGroupFaceModelVersionResult](https://cloud.tencent.com/document/api/867/47145)
-* [UpgradeGroupFaceModelVersion](https://cloud.tencent.com/document/api/867/47144)
-
-新增数据结构：
-
-* [UpgradeJobInfo](https://cloud.tencent.com/document/api/867/45020#UpgradeJobInfo)
+* [RevertGroupFaceModelVersion](https://cloud.tencent.com/document/api/867/47164)
 
 
 
 ## 人脸识别(iai) 版本：2018-03-01
 
+### 第 16 次发布
+
+发布时间：2020-08-06 08:11:55
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [GetUpgradeGroupFaceModelVersionJobList](https://cloud.tencent.com/document/api/#/#)
+* [GetUpgradeGroupFaceModelVersionResult](https://cloud.tencent.com/document/api/#/#)
+* [RevertGroupFaceModelVersion](https://cloud.tencent.com/document/api/#/#)
+* [UpgradeGroupFaceModelVersion](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [UpgradeJobInfo](https://cloud.tencent.com/document/api/867/32807#UpgradeJobInfo)
 
 
-## 自然语言处理(nlp) 版本：2019-04-08
 
-### 第 11 次发布
+## 云直播(live) 版本：2018-08-01
 
-发布时间：2020-08-05 08:15:46
+### 第 46 次发布
+
+发布时间：2020-08-06 08:13:31
 
 本次发布包含了以下内容：
 
@@ -92,9 +70,102 @@
 
 修改数据结构：
 
-* [WordItem](https://cloud.tencent.com/document/api/271/35511#WordItem)
+* [CommonMixControlParams](https://cloud.tencent.com/document/api/267/20474#CommonMixControlParams)
 
-	* <font color="#dd0000">**修改成员**：</font>CreateTime
+	* 新增成员：AllowCopy
+
+
+
+
+## 文字识别(ocr) 版本：2018-11-19
+
+### 第 29 次发布
+
+发布时间：2020-08-06 08:15:23
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [RideHailingDriverLicenseOCR](https://cloud.tencent.com/document/api/866/47165)
+
+
+
+## 智能钛机器学习平台(tione) 版本：2019-10-22
+
+### 第 11 次发布
+
+发布时间：2020-08-06 08:02:02
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateNotebookInstance](https://cloud.tencent.com/document/api/851/42527)
+
+	* 新增入参：ClsConfig
+
+* [DescribeNotebookInstance](https://cloud.tencent.com/document/api/851/42524)
+
+	* 新增出参：ClsConfig
+
+* [UpdateNotebookInstance](https://cloud.tencent.com/document/api/851/42520)
+
+	* 新增入参：ClsConfig
+
+
+新增数据结构：
+
+* [ClsConfig](https://cloud.tencent.com/document/api/851/42528#ClsConfig)
+
+
+
+## 容器服务(tke) 版本：2018-05-25
+
+### 第 23 次发布
+
+发布时间：2020-08-06 08:19:06
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeClusterRoutes](https://cloud.tencent.com/document/api/457/37181)
+
+	* 新增入参：Filters
+
+
+
+
+## 私有网络(vpc) 版本：2017-03-12
+
+### 第 56 次发布
+
+发布时间：2020-08-06 08:20:02
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [CCN](https://cloud.tencent.com/document/api/215/15824#CCN)
+
+	* 新增成员：RoutePriorityFlag
+
+* [CcnAttachedInstance](https://cloud.tencent.com/document/api/215/15824#CcnAttachedInstance)
+
+	* 新增成员：InstanceArea
+
+* [CcnRoute](https://cloud.tencent.com/document/api/215/15824#CcnRoute)
+
+	* 新增成员：ExtraState, IsBgp, RoutePriority, InstanceExtraName
 
 
 
@@ -6969,6 +7040,21 @@
 
 ## 负载均衡(clb) 版本：2018-03-17
 
+### 第 28 次发布
+
+发布时间：2020-08-06 08:07:59
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateLoadBalancer](https://cloud.tencent.com/document/api/214/30692)
+
+	* 新增入参：ClientToken
+
+
 ### 第 27 次发布
 
 发布时间：2020-07-28 08:07:36
@@ -12243,7 +12329,7 @@
 
 新增接口：
 
-* [[ModifyModuleConfig](https://cloud.tencent.com/document/api/1108/47143)](https://cloud.tencent.com/document/api/#/#)
+* [ModifyModuleConfig](https://cloud.tencent.com/document/api/1108/47143)
 
 ### 第 20 次发布
 
@@ -14770,6 +14856,25 @@
 
 ## 人脸识别(iai) 版本：2018-03-01
 
+### 第 16 次发布
+
+发布时间：2020-08-06 08:11:55
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[GetUpgradeGroupFaceModelVersionJobList](https://cloud.tencent.com/document/api/#/#)](https://cloud.tencent.com/document/api/#/#)
+* [[GetUpgradeGroupFaceModelVersionResult](https://cloud.tencent.com/document/api/#/#)](https://cloud.tencent.com/document/api/#/#)
+* [[RevertGroupFaceModelVersion](https://cloud.tencent.com/document/api/#/#)](https://cloud.tencent.com/document/api/#/#)
+* [[UpgradeGroupFaceModelVersion](https://cloud.tencent.com/document/api/#/#)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[UpgradeJobInfo](https://cloud.tencent.com/document/api/867/32807#UpgradeJobInfo)](https://cloud.tencent.com/document/api/867/32807#[UpgradeJobInfo](https://cloud.tencent.com/document/api/867/32807#UpgradeJobInfo))
+
 ### 第 15 次发布
 
 发布时间：2020-04-21 08:10:37
@@ -15169,6 +15274,18 @@
 
 ## 人脸识别(iai) 版本：2020-03-03
 
+### 第 3 次发布
+
+发布时间：2020-08-06 08:11:55
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[RevertGroupFaceModelVersion](https://cloud.tencent.com/document/api/867/47164)](https://cloud.tencent.com/document/api/#/#)
+
 ### 第 2 次发布
 
 发布时间：2020-08-05 08:12:13
@@ -15179,13 +15296,13 @@
 
 新增接口：
 
-* [[GetUpgradeGroupFaceModelVersionJobList](https://cloud.tencent.com/document/api/867/47146)](https://cloud.tencent.com/document/api/#/#)
-* [[GetUpgradeGroupFaceModelVersionResult](https://cloud.tencent.com/document/api/867/47145)](https://cloud.tencent.com/document/api/#/#)
-* [[UpgradeGroupFaceModelVersion](https://cloud.tencent.com/document/api/867/47144)](https://cloud.tencent.com/document/api/#/#)
+* [GetUpgradeGroupFaceModelVersionJobList](https://cloud.tencent.com/document/api/867/47146)
+* [GetUpgradeGroupFaceModelVersionResult](https://cloud.tencent.com/document/api/867/47145)
+* [UpgradeGroupFaceModelVersion](https://cloud.tencent.com/document/api/867/47144)
 
 新增数据结构：
 
-* [[UpgradeJobInfo](https://cloud.tencent.com/document/api/867/45020#UpgradeJobInfo)](https://cloud.tencent.com/document/api/867/45020#[UpgradeJobInfo](https://cloud.tencent.com/document/api/867/45020#UpgradeJobInfo))
+* [UpgradeJobInfo](https://cloud.tencent.com/document/api/867/45020#UpgradeJobInfo)
 
 ### 第 1 次发布
 
@@ -16878,6 +16995,21 @@
 
 
 ## 云直播(live) 版本：2018-08-01
+
+### 第 46 次发布
+
+发布时间：2020-08-06 08:13:31
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [CommonMixControlParams](https://cloud.tencent.com/document/api/267/20474#CommonMixControlParams)
+
+	* 新增成员：AllowCopy
+
 
 ### 第 45 次发布
 
@@ -20280,6 +20412,18 @@
 
 
 ## 文字识别(ocr) 版本：2018-11-19
+
+### 第 29 次发布
+
+发布时间：2020-08-06 08:15:23
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[RideHailingDriverLicenseOCR](https://cloud.tencent.com/document/api/866/47165)](https://cloud.tencent.com/document/api/#/#)
 
 ### 第 28 次发布
 
@@ -25978,6 +26122,33 @@
 
 ## 智能钛机器学习平台(tione) 版本：2019-10-22
 
+### 第 11 次发布
+
+发布时间：2020-08-06 08:02:02
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateNotebookInstance](https://cloud.tencent.com/document/api/851/42527)
+
+	* 新增入参：ClsConfig
+
+* [DescribeNotebookInstance](https://cloud.tencent.com/document/api/851/42524)
+
+	* 新增出参：ClsConfig
+
+* [UpdateNotebookInstance](https://cloud.tencent.com/document/api/851/42520)
+
+	* 新增入参：ClsConfig
+
+
+新增数据结构：
+
+* [[ClsConfig](https://cloud.tencent.com/document/api/851/42528#ClsConfig)](https://cloud.tencent.com/document/api/851/42528#[ClsConfig](https://cloud.tencent.com/document/api/851/42528#ClsConfig))
+
 ### 第 10 次发布
 
 发布时间：2020-07-22 08:01:55
@@ -26338,6 +26509,21 @@
 
 
 ## 容器服务(tke) 版本：2018-05-25
+
+### 第 23 次发布
+
+发布时间：2020-08-06 08:19:06
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeClusterRoutes](https://cloud.tencent.com/document/api/457/37181)
+
+	* 新增入参：Filters
+
 
 ### 第 22 次发布
 
@@ -29715,6 +29901,29 @@
 
 
 ## 私有网络(vpc) 版本：2017-03-12
+
+### 第 56 次发布
+
+发布时间：2020-08-06 08:20:02
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [CCN](https://cloud.tencent.com/document/api/215/15824#CCN)
+
+	* 新增成员：RoutePriorityFlag
+
+* [CcnAttachedInstance](https://cloud.tencent.com/document/api/215/15824#CcnAttachedInstance)
+
+	* 新增成员：InstanceArea
+
+* [CcnRoute](https://cloud.tencent.com/document/api/215/15824#CcnRoute)
+
+	* 新增成员：ExtraState, IsBgp, RoutePriority, InstanceExtraName
+
 
 ### 第 55 次发布
 

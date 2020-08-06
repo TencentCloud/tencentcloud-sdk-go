@@ -991,6 +991,9 @@ type CCN struct {
 
 	// 标签键值对。
 	TagSet []*Tag `json:"TagSet,omitempty" name:"TagSet" list`
+
+	// 是否支持云联网路由优先级的功能。False：不支持，True：支持。
+	RoutePriorityFlag *bool `json:"RoutePriorityFlag,omitempty" name:"RoutePriorityFlag"`
 }
 
 type CcnAttachedInstance struct {
@@ -1036,6 +1039,9 @@ type CcnAttachedInstance struct {
 
 	// 云联网所属UIN（根账号）。
 	CcnUin *string `json:"CcnUin,omitempty" name:"CcnUin"`
+
+	// 关联实例所属的大地域，如: CHINA_MAINLAND
+	InstanceArea *string `json:"InstanceArea,omitempty" name:"InstanceArea"`
 }
 
 type CcnBandwidthInfo struct {
@@ -1128,6 +1134,18 @@ type CcnRoute struct {
 
 	// 关联实例所属UIN（根账号）
 	InstanceUin *string `json:"InstanceUin,omitempty" name:"InstanceUin"`
+
+	// 路由的扩展状态
+	ExtraState *string `json:"ExtraState,omitempty" name:"ExtraState"`
+
+	// 是否动态路由
+	IsBgp *bool `json:"IsBgp,omitempty" name:"IsBgp"`
+
+	// 路由优先级
+	RoutePriority *uint64 `json:"RoutePriority,omitempty" name:"RoutePriority"`
+
+	// 下一跳扩展名称（关联实例的扩展名称）
+	InstanceExtraName *string `json:"InstanceExtraName,omitempty" name:"InstanceExtraName"`
 }
 
 type CheckAssistantCidrRequest struct {
@@ -10528,10 +10546,10 @@ type SecurityGroupLimitSet struct {
 
 type SecurityGroupPolicy struct {
 
-	// 安全组规则索引号。
+	// 安全组规则索引号，值会随着安全组规则的变更动态变化。使用PolicyIndex时，请先调用`DescribeSecurityGroupPolicies`获取到规则的PolicyIndex，并且结合返回值中的Version一起使用处理规则。
 	PolicyIndex *int64 `json:"PolicyIndex,omitempty" name:"PolicyIndex"`
 
-	// 协议, 取值: TCP,UDP, ICMP。
+	// 协议, 取值: TCP,UDP,ICMP,ICMPv6,ALL。
 	Protocol *string `json:"Protocol,omitempty" name:"Protocol"`
 
 	// 端口(all, 离散port,  range)。

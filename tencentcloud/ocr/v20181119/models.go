@@ -2974,6 +2974,60 @@ func (r *ResidenceBookletOCRResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type RideHailingDriverLicenseOCRRequest struct {
+	*tchttp.BaseRequest
+
+	// 图片的 Base64 值。要求图片经Base64编码后不超过 7M，分辨率建议500*800以上，支持PNG、JPG、JPEG、BMP格式。建议卡片部分占据图片2/3以上。
+	// 图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+	ImageBase64 *string `json:"ImageBase64,omitempty" name:"ImageBase64"`
+
+	// 图片的 Url 地址。要求图片经Base64编码后不超过 7M，分辨率建议500*800以上，支持PNG、JPG、JPEG、BMP格式。建议卡片部分占据图片2/3以上。图片下载时间不超过 3 秒。
+	// 建议图片存储于腾讯云，可保障更高的下载速度和稳定性。
+	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
+}
+
+func (r *RideHailingDriverLicenseOCRRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *RideHailingDriverLicenseOCRRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type RideHailingDriverLicenseOCRResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 姓名
+		Name *string `json:"Name,omitempty" name:"Name"`
+
+		// 证号，对应网约车驾驶证字段：证号、从业资格证号、驾驶员证号、身份证号
+		LicenseNumber *string `json:"LicenseNumber,omitempty" name:"LicenseNumber"`
+
+		// 有效起始日期
+		StartDate *string `json:"StartDate,omitempty" name:"StartDate"`
+
+		// 有效期截止时间，对应网约车驾驶证字段：有效期至、营运期限止
+		EndDate *string `json:"EndDate,omitempty" name:"EndDate"`
+
+		// 初始发证日期，对应网约车驾驶证字段：初始领证日期、发证日期
+		ReleaseDate *string `json:"ReleaseDate,omitempty" name:"ReleaseDate"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *RideHailingDriverLicenseOCRResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *RideHailingDriverLicenseOCRResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type SealOCRRequest struct {
 	*tchttp.BaseRequest
 

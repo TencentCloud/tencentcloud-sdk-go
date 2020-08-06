@@ -405,6 +405,10 @@ type CommonMixControlParams struct {
 	// 取值范围[0,1]。
 	// 填1时，当参数中图层分辨率参数与视频实际分辨率不一致时，自动从视频中按图层设置的分辨率比例进行裁剪。
 	UseMixCropCenter *int64 `json:"UseMixCropCenter,omitempty" name:"UseMixCropCenter"`
+
+	// 取值范围[0,1]
+	// 填1时，当InputStreamList中个数为1时，且OutputParams.OutputStreamType为1时，不执行取消操作，执行拷贝流操作
+	AllowCopy *int64 `json:"AllowCopy,omitempty" name:"AllowCopy"`
 }
 
 type CommonMixCropParams struct {
