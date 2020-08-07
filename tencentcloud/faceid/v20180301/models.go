@@ -1280,6 +1280,12 @@ type PhoneVerificationRequest struct {
 
 	// 手机号
 	Phone *string `json:"Phone,omitempty" name:"Phone"`
+
+	// 有加密需求的用户，接入传入kms的CiphertextBlob
+	CiphertextBlob *string `json:"CiphertextBlob,omitempty" name:"CiphertextBlob"`
+
+	// 在使用加密服务时，填入要被加密的字段。本接口中可填入加密后的IdCard，Name，Phone中的一个或多个
+	EncryptList []*string `json:"EncryptList,omitempty" name:"EncryptList" list`
 }
 
 func (r *PhoneVerificationRequest) ToJsonString() string {
@@ -1296,12 +1302,14 @@ type PhoneVerificationResponse struct {
 	Response *struct {
 
 		// 认证结果码:
+	// 收费结果码
 	// 0: 认证通过
 	// -1: 手机号已实名，但是身份证和姓名均与实名信息不一致 
 	// -2: 手机号已实名，手机号和证件号一致，姓名不一致
 	// -3: 手机号已实名，手机号和姓名一致，身份证不一致
 	// -4: 信息不一致
 	// -5: 手机号未实名
+	// 不收费结果码
 	// -6: 手机号码不合法
 	// -7: 身份证号码有误
 	// -8: 姓名校验不通过

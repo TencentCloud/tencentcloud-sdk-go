@@ -265,6 +265,9 @@ type CreateBackupRequest struct {
 
 	// 实例ID，形如mssql-i1z41iwd
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 备份名称，若不填则自动生成“实例ID_备份开始时间戳”
+	BackupName *string `json:"BackupName,omitempty" name:"BackupName"`
 }
 
 func (r *CreateBackupRequest) ToJsonString() string {
@@ -1183,6 +1186,79 @@ func (r *DescribeAccountsResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeBackupByFlowIdRequest struct {
+	*tchttp.BaseRequest
+
+	// 实例ID，格式如：mssql-3l3fgqn7
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 创建备份流程ID
+	FlowId *string `json:"FlowId,omitempty" name:"FlowId"`
+}
+
+func (r *DescribeBackupByFlowIdRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeBackupByFlowIdRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeBackupByFlowIdResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 备份文件唯一标识，RestoreInstance接口会用到该字段
+		Id *uint64 `json:"Id,omitempty" name:"Id"`
+
+		// 存储文件名
+		FileName *string `json:"FileName,omitempty" name:"FileName"`
+
+		// 备份名称，可自定义
+		BackupName *string `json:"BackupName,omitempty" name:"BackupName"`
+
+		// 备份开始时间
+		StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+		// 备份结束时间
+		EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+		// 文件大小，单位 KB
+		Size *uint64 `json:"Size,omitempty" name:"Size"`
+
+		// 备份策略，0-实例备份；1-多库备份；实例状态是0-创建中时，该字段为默认值0，无实际意义
+		Strategy *int64 `json:"Strategy,omitempty" name:"Strategy"`
+
+		// 备份方式，0-定时备份；1-手动临时备份；实例状态是0-创建中时，该字段为默认值0，无实际意义
+		BackupWay *int64 `json:"BackupWay,omitempty" name:"BackupWay"`
+
+		// 备份文件状态，0-创建中；1-成功；2-失败
+		Status *int64 `json:"Status,omitempty" name:"Status"`
+
+		// 多库备份时的DB列表
+		DBs []*string `json:"DBs,omitempty" name:"DBs" list`
+
+		// 内网下载地址
+		InternalAddr *string `json:"InternalAddr,omitempty" name:"InternalAddr"`
+
+		// 外网下载地址
+		ExternalAddr *string `json:"ExternalAddr,omitempty" name:"ExternalAddr"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeBackupByFlowIdResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeBackupByFlowIdResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeBackupsRequest struct {
 	*tchttp.BaseRequest
 
@@ -1200,6 +1276,15 @@ type DescribeBackupsRequest struct {
 
 	// 分页返回，页编号，默认值为第0页
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 按照备份名称筛选，不填则不筛选此项
+	BackupName *string `json:"BackupName,omitempty" name:"BackupName"`
+
+	// 按照备份策略筛选，0-实例备份，1-多库备份，不填则不筛选此项
+	Strategy *int64 `json:"Strategy,omitempty" name:"Strategy"`
+
+	// 按照备份方式筛选，0-后台自动定时备份，1-用户手动临时备份，不填则不筛选此项
+	BackupWay *int64 `json:"BackupWay,omitempty" name:"BackupWay"`
 }
 
 func (r *DescribeBackupsRequest) ToJsonString() string {
@@ -1232,6 +1317,46 @@ func (r *DescribeBackupsResponse) ToJsonString() string {
 }
 
 func (r *DescribeBackupsResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeCrossRegionZoneRequest struct {
+	*tchttp.BaseRequest
+
+	// 实例ID，格式如：mssql-3l3fgqn7
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+}
+
+func (r *DescribeCrossRegionZoneRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeCrossRegionZoneRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeCrossRegionZoneResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 备机所在地域的字符串ID，形如：ap-guangzhou
+		Region *string `json:"Region,omitempty" name:"Region"`
+
+		// 备机所在可用区的字符串ID，形如：ap-guangzhou-1
+		Zone *string `json:"Zone,omitempty" name:"Zone"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeCrossRegionZoneResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeCrossRegionZoneResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -2528,6 +2653,46 @@ func (r *ModifyAccountRemarkResponse) ToJsonString() string {
 }
 
 func (r *ModifyAccountRemarkResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyBackupNameRequest struct {
+	*tchttp.BaseRequest
+
+	// 实例ID，格式如：mssql-3l3fgqn7
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 要修改名称的备份ID，可通过DescribeBackups 接口获取。
+	BackupId *uint64 `json:"BackupId,omitempty" name:"BackupId"`
+
+	// 修改的备份名称
+	BackupName *string `json:"BackupName,omitempty" name:"BackupName"`
+}
+
+func (r *ModifyBackupNameRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyBackupNameRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyBackupNameResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifyBackupNameResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyBackupNameResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 

@@ -411,6 +411,10 @@ type DescribeTaskDetailResponse struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		ImageSegments []*ImageSegments `json:"ImageSegments,omitempty" name:"ImageSegments" list`
 
+		// 音频识别总文本
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		AudioText *string `json:"AudioText,omitempty" name:"AudioText"`
+
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`

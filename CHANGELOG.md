@@ -1,10 +1,10 @@
 # 本版本更新包含以下内容：
 
-## 负载均衡(clb) 版本：2018-03-17
+## 音频内容检测(ams) 版本：2020-06-08
 
-### 第 28 次发布
+### 第 4 次发布
 
-发布时间：2020-08-06 08:07:59
+发布时间：2020-08-07 08:00:32
 
 本次发布包含了以下内容：
 
@@ -12,18 +12,37 @@
 
 修改接口：
 
-* [CreateLoadBalancer](https://cloud.tencent.com/document/api/214/30692)
+* [DescribeTaskDetail](https://cloud.tencent.com/document/api/1219/46476)
 
-	* 新增入参：ClientToken
-
-
+	* 新增出参：AudioText
 
 
-## 人脸识别(iai) 版本：2020-03-03
 
-### 第 3 次发布
 
-发布时间：2020-08-06 08:11:55
+## 人脸核身(faceid) 版本：2018-03-01
+
+### 第 13 次发布
+
+发布时间：2020-08-07 08:11:16
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [PhoneVerification](https://cloud.tencent.com/document/api/1007/39765)
+
+	* 新增入参：CiphertextBlob, EncryptList
+
+
+
+
+## 风险探针(rkp) 版本：2019-12-09
+
+### 第 1 次发布
+
+发布时间：2020-08-06 17:36:26
 
 本次发布包含了以下内容：
 
@@ -31,57 +50,23 @@
 
 新增接口：
 
-* [RevertGroupFaceModelVersion](https://cloud.tencent.com/document/api/867/47164)
-
-
-
-## 人脸识别(iai) 版本：2018-03-01
-
-### 第 16 次发布
-
-发布时间：2020-08-06 08:11:55
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [GetUpgradeGroupFaceModelVersionJobList](https://cloud.tencent.com/document/api/#/#)
-* [GetUpgradeGroupFaceModelVersionResult](https://cloud.tencent.com/document/api/#/#)
-* [RevertGroupFaceModelVersion](https://cloud.tencent.com/document/api/#/#)
-* [UpgradeGroupFaceModelVersion](https://cloud.tencent.com/document/api/#/#)
+* [GetOpenId](https://cloud.tencent.com/document/api/1169/47211)
+* [GetToken](https://cloud.tencent.com/document/api/1169/47213)
+* [QueryDevAndRisk](https://cloud.tencent.com/document/api/1169/47215)
 
 新增数据结构：
 
-* [UpgradeJobInfo](https://cloud.tencent.com/document/api/867/32807#UpgradeJobInfo)
+* [DevInfoQ](https://cloud.tencent.com/document/api/1169/47216#DevInfoQ)
+* [RiskDetail](https://cloud.tencent.com/document/api/1169/47216#RiskDetail)
+* [RiskInfo](https://cloud.tencent.com/document/api/1169/47216#RiskInfo)
 
 
 
-## 云直播(live) 版本：2018-08-01
+## 云数据库 SQL Server(sqlserver) 版本：2018-03-28
 
-### 第 46 次发布
+### 第 10 次发布
 
-发布时间：2020-08-06 08:13:31
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [CommonMixControlParams](https://cloud.tencent.com/document/api/267/20474#CommonMixControlParams)
-
-	* 新增成员：AllowCopy
-
-
-
-
-## 文字识别(ocr) 版本：2018-11-19
-
-### 第 29 次发布
-
-发布时间：2020-08-06 08:15:23
+发布时间：2020-08-07 08:17:08
 
 本次发布包含了以下内容：
 
@@ -89,83 +74,19 @@
 
 新增接口：
 
-* [RideHailingDriverLicenseOCR](https://cloud.tencent.com/document/api/866/47165)
-
-
-
-## 智能钛机器学习平台(tione) 版本：2019-10-22
-
-### 第 11 次发布
-
-发布时间：2020-08-06 08:02:02
-
-本次发布包含了以下内容：
-
-改善已有的文档。
+* [DescribeBackupByFlowId](https://cloud.tencent.com/document/api/238/47203)
+* [DescribeCrossRegionZone](https://cloud.tencent.com/document/api/238/47201)
+* [ModifyBackupName](https://cloud.tencent.com/document/api/238/47202)
 
 修改接口：
 
-* [CreateNotebookInstance](https://cloud.tencent.com/document/api/851/42527)
+* [CreateBackup](https://cloud.tencent.com/document/api/238/19946)
 
-	* 新增入参：ClsConfig
+	* 新增入参：BackupName
 
-* [DescribeNotebookInstance](https://cloud.tencent.com/document/api/851/42524)
+* [DescribeBackups](https://cloud.tencent.com/document/api/238/19943)
 
-	* 新增出参：ClsConfig
-
-* [UpdateNotebookInstance](https://cloud.tencent.com/document/api/851/42520)
-
-	* 新增入参：ClsConfig
-
-
-新增数据结构：
-
-* [ClsConfig](https://cloud.tencent.com/document/api/851/42528#ClsConfig)
-
-
-
-## 容器服务(tke) 版本：2018-05-25
-
-### 第 23 次发布
-
-发布时间：2020-08-06 08:19:06
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [DescribeClusterRoutes](https://cloud.tencent.com/document/api/457/37181)
-
-	* 新增入参：Filters
-
-
-
-
-## 私有网络(vpc) 版本：2017-03-12
-
-### 第 56 次发布
-
-发布时间：2020-08-06 08:20:02
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [CCN](https://cloud.tencent.com/document/api/215/15824#CCN)
-
-	* 新增成员：RoutePriorityFlag
-
-* [CcnAttachedInstance](https://cloud.tencent.com/document/api/215/15824#CcnAttachedInstance)
-
-	* 新增成员：InstanceArea
-
-* [CcnRoute](https://cloud.tencent.com/document/api/215/15824#CcnRoute)
-
-	* 新增成员：ExtraState, IsBgp, RoutePriority, InstanceExtraName
+	* 新增入参：BackupName, Strategy, BackupWay
 
 
 
@@ -464,6 +385,21 @@
 
 
 ## 音频内容检测(ams) 版本：2020-06-08
+
+### 第 4 次发布
+
+发布时间：2020-08-07 08:00:32
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeTaskDetail](https://cloud.tencent.com/document/api/1219/46476)
+
+	* 新增出参：AudioText
+
 
 ### 第 3 次发布
 
@@ -13545,6 +13481,21 @@
 
 ## 人脸核身(faceid) 版本：2018-03-01
 
+### 第 13 次发布
+
+发布时间：2020-08-07 08:11:16
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [PhoneVerification](https://cloud.tencent.com/document/api/1007/39765)
+
+	* 新增入参：CiphertextBlob, EncryptList
+
+
 ### 第 12 次发布
 
 发布时间：2020-06-02 08:10:02
@@ -14866,14 +14817,14 @@
 
 新增接口：
 
-* [[GetUpgradeGroupFaceModelVersionJobList](https://cloud.tencent.com/document/api/#/#)](https://cloud.tencent.com/document/api/#/#)
-* [[GetUpgradeGroupFaceModelVersionResult](https://cloud.tencent.com/document/api/#/#)](https://cloud.tencent.com/document/api/#/#)
-* [[RevertGroupFaceModelVersion](https://cloud.tencent.com/document/api/#/#)](https://cloud.tencent.com/document/api/#/#)
-* [[UpgradeGroupFaceModelVersion](https://cloud.tencent.com/document/api/#/#)](https://cloud.tencent.com/document/api/#/#)
+* [GetUpgradeGroupFaceModelVersionJobList](https://cloud.tencent.com/document/api/#/#)
+* [GetUpgradeGroupFaceModelVersionResult](https://cloud.tencent.com/document/api/#/#)
+* [RevertGroupFaceModelVersion](https://cloud.tencent.com/document/api/#/#)
+* [UpgradeGroupFaceModelVersion](https://cloud.tencent.com/document/api/#/#)
 
 新增数据结构：
 
-* [[UpgradeJobInfo](https://cloud.tencent.com/document/api/867/32807#UpgradeJobInfo)](https://cloud.tencent.com/document/api/867/32807#[UpgradeJobInfo](https://cloud.tencent.com/document/api/867/32807#UpgradeJobInfo))
+* [UpgradeJobInfo](https://cloud.tencent.com/document/api/867/32807#UpgradeJobInfo)
 
 ### 第 15 次发布
 
@@ -15284,7 +15235,7 @@
 
 新增接口：
 
-* [[RevertGroupFaceModelVersion](https://cloud.tencent.com/document/api/867/47164)](https://cloud.tencent.com/document/api/#/#)
+* [RevertGroupFaceModelVersion](https://cloud.tencent.com/document/api/867/47164)
 
 ### 第 2 次发布
 
@@ -20423,7 +20374,7 @@
 
 新增接口：
 
-* [[RideHailingDriverLicenseOCR](https://cloud.tencent.com/document/api/866/47165)](https://cloud.tencent.com/document/api/#/#)
+* [RideHailingDriverLicenseOCR](https://cloud.tencent.com/document/api/866/47165)
 
 ### 第 28 次发布
 
@@ -22012,6 +21963,31 @@
 
 
 
+## 风险探针(rkp) 版本：2019-12-09
+
+### 第 1 次发布
+
+发布时间：2020-08-06 17:36:26
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[GetOpenId](https://cloud.tencent.com/document/api/1169/47211)](https://cloud.tencent.com/document/api/#/#)
+* [[GetToken](https://cloud.tencent.com/document/api/1169/47213)](https://cloud.tencent.com/document/api/#/#)
+* [[QueryDevAndRisk](https://cloud.tencent.com/document/api/1169/47215)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[DevInfoQ](https://cloud.tencent.com/document/api/1169/47216#DevInfoQ)](https://cloud.tencent.com/document/api/1169/47216#[DevInfoQ](https://cloud.tencent.com/document/api/1169/47216#DevInfoQ))
+* [[RiskDetail](https://cloud.tencent.com/document/api/1169/47216#RiskDetail)](https://cloud.tencent.com/document/api/1169/47216#[RiskDetail](https://cloud.tencent.com/document/api/1169/47216#RiskDetail))
+* [[RiskInfo](https://cloud.tencent.com/document/api/1169/47216#RiskInfo)](https://cloud.tencent.com/document/api/1169/47216#[RiskInfo](https://cloud.tencent.com/document/api/1169/47216#RiskInfo))
+
+
+
+
 ## 注册保护(rp) 版本：2020-02-24
 
 ### 第 1 次发布
@@ -23001,6 +22977,31 @@
 
 
 ## 云数据库 SQL Server(sqlserver) 版本：2018-03-28
+
+### 第 10 次发布
+
+发布时间：2020-08-07 08:17:08
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeBackupByFlowId](https://cloud.tencent.com/document/api/238/47203)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeCrossRegionZone](https://cloud.tencent.com/document/api/238/47201)](https://cloud.tencent.com/document/api/#/#)
+* [[ModifyBackupName](https://cloud.tencent.com/document/api/238/47202)](https://cloud.tencent.com/document/api/#/#)
+
+修改接口：
+
+* [CreateBackup](https://cloud.tencent.com/document/api/238/19946)
+
+	* 新增入参：BackupName
+
+* [DescribeBackups](https://cloud.tencent.com/document/api/238/19943)
+
+	* 新增入参：BackupName, Strategy, BackupWay
+
 
 ### 第 9 次发布
 
@@ -26147,7 +26148,7 @@
 
 新增数据结构：
 
-* [[ClsConfig](https://cloud.tencent.com/document/api/851/42528#ClsConfig)](https://cloud.tencent.com/document/api/851/42528#[ClsConfig](https://cloud.tencent.com/document/api/851/42528#ClsConfig))
+* [ClsConfig](https://cloud.tencent.com/document/api/851/42528#ClsConfig)
 
 ### 第 10 次发布
 

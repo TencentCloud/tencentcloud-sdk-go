@@ -443,6 +443,31 @@ func (c *Client) DescribeAccounts(request *DescribeAccountsRequest) (response *D
     return
 }
 
+func NewDescribeBackupByFlowIdRequest() (request *DescribeBackupByFlowIdRequest) {
+    request = &DescribeBackupByFlowIdRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("sqlserver", APIVersion, "DescribeBackupByFlowId")
+    return
+}
+
+func NewDescribeBackupByFlowIdResponse() (response *DescribeBackupByFlowIdResponse) {
+    response = &DescribeBackupByFlowIdResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口(DescribeBackupByFlowId)用于通过备份创建流程的ID查询创建的备份详情，流程ID可从接口CreateBackup中获得。
+func (c *Client) DescribeBackupByFlowId(request *DescribeBackupByFlowIdRequest) (response *DescribeBackupByFlowIdResponse, err error) {
+    if request == nil {
+        request = NewDescribeBackupByFlowIdRequest()
+    }
+    response = NewDescribeBackupByFlowIdResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeBackupsRequest() (request *DescribeBackupsRequest) {
     request = &DescribeBackupsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -464,6 +489,31 @@ func (c *Client) DescribeBackups(request *DescribeBackupsRequest) (response *Des
         request = NewDescribeBackupsRequest()
     }
     response = NewDescribeBackupsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeCrossRegionZoneRequest() (request *DescribeCrossRegionZoneRequest) {
+    request = &DescribeCrossRegionZoneRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("sqlserver", APIVersion, "DescribeCrossRegionZone")
+    return
+}
+
+func NewDescribeCrossRegionZoneResponse() (response *DescribeCrossRegionZoneResponse) {
+    response = &DescribeCrossRegionZoneResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口(DescribeCrossRegionZone)根据主实例查询备机的容灾地域和可用区。
+func (c *Client) DescribeCrossRegionZone(request *DescribeCrossRegionZoneRequest) (response *DescribeCrossRegionZoneResponse, err error) {
+    if request == nil {
+        request = NewDescribeCrossRegionZoneRequest()
+    }
+    response = NewDescribeCrossRegionZoneResponse()
     err = c.Send(request, response)
     return
 }
@@ -1064,6 +1114,31 @@ func (c *Client) ModifyAccountRemark(request *ModifyAccountRemarkRequest) (respo
         request = NewModifyAccountRemarkRequest()
     }
     response = NewModifyAccountRemarkResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyBackupNameRequest() (request *ModifyBackupNameRequest) {
+    request = &ModifyBackupNameRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("sqlserver", APIVersion, "ModifyBackupName")
+    return
+}
+
+func NewModifyBackupNameResponse() (response *ModifyBackupNameResponse) {
+    response = &ModifyBackupNameResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口(ModifyBackupName)用于修改备份名称。
+func (c *Client) ModifyBackupName(request *ModifyBackupNameRequest) (response *ModifyBackupNameResponse, err error) {
+    if request == nil {
+        request = NewModifyBackupNameRequest()
+    }
+    response = NewModifyBackupNameResponse()
     err = c.Send(request, response)
     return
 }
