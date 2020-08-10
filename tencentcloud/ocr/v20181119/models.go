@@ -194,6 +194,23 @@ func (r *BizLicenseOCRResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type BizLicenseVerifyResult struct {
+
+	// “0“：一致
+	// “-1”：此号未查询到结果
+	RegNum *string `json:"RegNum,omitempty" name:"RegNum"`
+
+	// “0“：一致
+	// “-1”：不一致
+	// “”：不验真
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// “0“：一致
+	// “-1”：不一致
+	// “”：不验真
+	Address *string `json:"Address,omitempty" name:"Address"`
+}
+
 type BusInvoiceInfo struct {
 
 	// 识别出的字段名称（关键字）。
@@ -3002,16 +3019,16 @@ type RideHailingDriverLicenseOCRResponse struct {
 		// 姓名
 		Name *string `json:"Name,omitempty" name:"Name"`
 
-		// 证号，对应网约车驾驶证字段：证号、从业资格证号、驾驶员证号、身份证号
+		// 证号，对应网约车驾驶证字段：证号/从业资格证号/驾驶员证号/身份证号
 		LicenseNumber *string `json:"LicenseNumber,omitempty" name:"LicenseNumber"`
 
 		// 有效起始日期
 		StartDate *string `json:"StartDate,omitempty" name:"StartDate"`
 
-		// 有效期截止时间，对应网约车驾驶证字段：有效期至、营运期限止
+		// 有效期截止时间，对应网约车驾驶证字段：有效期至/营运期限止
 		EndDate *string `json:"EndDate,omitempty" name:"EndDate"`
 
-		// 初始发证日期，对应网约车驾驶证字段：初始领证日期、发证日期
+		// 初始发证日期，对应网约车驾驶证字段：初始领证日期/发证日期
 		ReleaseDate *string `json:"ReleaseDate,omitempty" name:"ReleaseDate"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -3997,6 +4014,284 @@ func (r *VehicleRegCertOCRResponse) ToJsonString() string {
 }
 
 func (r *VehicleRegCertOCRResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type VerifyBasicBizLicenseRequest struct {
+	*tchttp.BaseRequest
+
+	// 用于入参是营业执照图片的场景，ImageBase64和ImageUrl必选一个输入。
+	// 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
+	// 支持的图片大小：所下载图片经Base64编码后不超过 7M。图片下载时间不超过 3 秒。
+	// 图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+	ImageBase64 *string `json:"ImageBase64,omitempty" name:"ImageBase64"`
+
+	// 用于入参是营业执照图片的场景，ImageBase64和ImageUrl必选一个输入。
+	// 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
+	// 支持的图片大小：所下载图片经Base64编码后不超过 7M。图片下载时间不超过 3 秒。
+	// 图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
+
+	// 用于入参是营业执照图片的场景，表示需要校验的参数：RegNum（注册号或者统一社会信用代码），Name（企业名称），Address（经营地址）。选择后会返回相关参数校验结果。RegNum为必选，Name和Address可选。
+	// 格式为{RegNum: true, Name:true/false, Address:true/false}
+	// 
+	// 设置方式参考：
+	// Config = Json.stringify({"Name":true,"Address":true})
+	// API 3.0 Explorer 设置方式参考：
+	// Config = {"Name":true,"Address":true}
+	ImageConfig *string `json:"ImageConfig,omitempty" name:"ImageConfig"`
+
+	// 用于入参是文本的场景，RegNum表示注册号或者统一社会信用代码。RegNum为必选项。
+	RegNum *string `json:"RegNum,omitempty" name:"RegNum"`
+
+	// 用于入参是文本的场景，Name表示企业名称。Name为可选项，填写后会返回Name的校验结果。
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 用于入参是文本的场景，Address表示经营地址，填写后会返回Name的校验结果。
+	Address *string `json:"Address,omitempty" name:"Address"`
+
+	// 1表示输出注册资本字段（单位：万元），其他值表示不输出。默认不输出。
+	RegCapital *int64 `json:"RegCapital,omitempty" name:"RegCapital"`
+}
+
+func (r *VerifyBasicBizLicenseRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *VerifyBasicBizLicenseRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type VerifyBasicBizLicenseResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 状态码，成功时返回0
+		ErrorCode *int64 `json:"ErrorCode,omitempty" name:"ErrorCode"`
+
+		// 统一社会信用代码
+		CreditCode *string `json:"CreditCode,omitempty" name:"CreditCode"`
+
+		// 经营期限自（YYYY-MM-DD）
+		Opfrom *string `json:"Opfrom,omitempty" name:"Opfrom"`
+
+		// 经营期限至（YYYY-MM-DD）
+		Opto *string `json:"Opto,omitempty" name:"Opto"`
+
+		// 法人姓名
+		Frname *string `json:"Frname,omitempty" name:"Frname"`
+
+		// 经营状态（在营、注销、吊销、其他）
+		Entstatus *string `json:"Entstatus,omitempty" name:"Entstatus"`
+
+		// 经营业务范围
+		Zsopscope *string `json:"Zsopscope,omitempty" name:"Zsopscope"`
+
+		// 状态信息
+		Reason *string `json:"Reason,omitempty" name:"Reason"`
+
+		// 原注册号
+		Oriregno *string `json:"Oriregno,omitempty" name:"Oriregno"`
+
+		// 要核验的工商注册号
+		VerifyRegno *string `json:"VerifyRegno,omitempty" name:"VerifyRegno"`
+
+		// 工商注册号
+		Regno *string `json:"Regno,omitempty" name:"Regno"`
+
+		// 要核验的企业名称
+		VerifyEntname *string `json:"VerifyEntname,omitempty" name:"VerifyEntname"`
+
+		// 企业名称
+		Entname *string `json:"Entname,omitempty" name:"Entname"`
+
+		// 要核验的住址
+		VerifyDom *string `json:"VerifyDom,omitempty" name:"VerifyDom"`
+
+		// 住址
+		Dom *string `json:"Dom,omitempty" name:"Dom"`
+
+		// 验证结果
+		RegNumResult *BizLicenseVerifyResult `json:"RegNumResult,omitempty" name:"RegNumResult"`
+
+		// 注册资本（单位：万元）,只有输入参数regCapital为1的时候才输出
+		RegCapital *string `json:"RegCapital,omitempty" name:"RegCapital"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *VerifyBasicBizLicenseResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *VerifyBasicBizLicenseResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type VerifyBizLicenseRequest struct {
+	*tchttp.BaseRequest
+
+	// 用于入参是营业执照图片的场景，ImageBase64和ImageUrl必选一个输入。
+	// 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
+	// 支持的图片大小：所下载图片经Base64编码后不超过 7M。图片下载时间不超过 3 秒。
+	// 图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+	ImageBase64 *string `json:"ImageBase64,omitempty" name:"ImageBase64"`
+
+	// 用于入参是营业执照图片的场景，ImageBase64和ImageUrl必选一个输入。
+	// 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
+	// 支持的图片大小：所下载图片经Base64编码后不超过 7M。图片下载时间不超过 3 秒。
+	// 图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
+
+	// 用于入参是营业执照图片的场景，表示需要校验的参数：RegNum（注册号或者统一社会信用代码），Name（企业名称），Address（经营地址）。选择后会返回相关参数校验结果。RegNum为必选，Name和Address可选。
+	// 格式为{RegNum: true, Name:true/false, Address:true/false}
+	// 
+	// 设置方式参考：
+	// Config = Json.stringify({"Name":true,"Address":true})
+	// API 3.0 Explorer 设置方式参考：
+	// Config = {"Name":true,"Address":true}
+	ImageConfig *string `json:"ImageConfig,omitempty" name:"ImageConfig"`
+
+	// 用于入参是文本的场景，RegNum表示注册号或者统一社会信用代码。RegNum为必选项。
+	RegNum *string `json:"RegNum,omitempty" name:"RegNum"`
+
+	// 用于入参是文本的场景，Name表示企业名称。Name为可选项，填写后会返回Name的校验结果。
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 用于入参是文本的场景，Address表示经营地址，填写后会返回Name的校验结果。
+	Address *string `json:"Address,omitempty" name:"Address"`
+}
+
+func (r *VerifyBizLicenseRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *VerifyBizLicenseRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type VerifyBizLicenseResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 状态码
+		ErrorCode *int64 `json:"ErrorCode,omitempty" name:"ErrorCode"`
+
+		// 统一社会信用代码
+		CreditCode *string `json:"CreditCode,omitempty" name:"CreditCode"`
+
+		// 组织机构代码
+		OrgCode *string `json:"OrgCode,omitempty" name:"OrgCode"`
+
+		// 经营期限自（YYYY-MM-DD）
+		OpenFrom *string `json:"OpenFrom,omitempty" name:"OpenFrom"`
+
+		// 经营期限至（YYYY-MM-DD）
+		OpenTo *string `json:"OpenTo,omitempty" name:"OpenTo"`
+
+		// 法人姓名
+		FrName *string `json:"FrName,omitempty" name:"FrName"`
+
+		// 经营状态（在营、注销、吊销、其他）
+		EnterpriseStatus *string `json:"EnterpriseStatus,omitempty" name:"EnterpriseStatus"`
+
+		// 经营（业务）范围及方式
+		OperateScopeAndForm *string `json:"OperateScopeAndForm,omitempty" name:"OperateScopeAndForm"`
+
+		// 注册资金（单位:万元）
+		RegCap *string `json:"RegCap,omitempty" name:"RegCap"`
+
+		// 注册币种
+		RegCapCur *string `json:"RegCapCur,omitempty" name:"RegCapCur"`
+
+		// 登记机关
+		RegOrg *string `json:"RegOrg,omitempty" name:"RegOrg"`
+
+		// 开业日期（YYYY-MM-DD）
+		EsDate *string `json:"EsDate,omitempty" name:"EsDate"`
+
+		// 企业（机构）类型
+		EnterpriseType *string `json:"EnterpriseType,omitempty" name:"EnterpriseType"`
+
+		// 注销日期
+		CancelDate *string `json:"CancelDate,omitempty" name:"CancelDate"`
+
+		// 吊销日期
+		RevokeDate *string `json:"RevokeDate,omitempty" name:"RevokeDate"`
+
+		// 许可经营项目
+		AbuItem *string `json:"AbuItem,omitempty" name:"AbuItem"`
+
+		// 一般经营项目
+		CbuItem *string `json:"CbuItem,omitempty" name:"CbuItem"`
+
+		// 核准时间
+		ApprDate *string `json:"ApprDate,omitempty" name:"ApprDate"`
+
+		// 省
+		Province *string `json:"Province,omitempty" name:"Province"`
+
+		// 地级市
+		City *string `json:"City,omitempty" name:"City"`
+
+		// 区\县
+		County *string `json:"County,omitempty" name:"County"`
+
+		// 住所所在行政区划代码
+		AreaCode *string `json:"AreaCode,omitempty" name:"AreaCode"`
+
+		// 行业门类代码
+		IndustryPhyCode *string `json:"IndustryPhyCode,omitempty" name:"IndustryPhyCode"`
+
+		// 行业门类名称
+		IndustryPhyName *string `json:"IndustryPhyName,omitempty" name:"IndustryPhyName"`
+
+		// 国民经济行业代码
+		IndustryCode *string `json:"IndustryCode,omitempty" name:"IndustryCode"`
+
+		// 国民经济行业名称
+		IndustryName *string `json:"IndustryName,omitempty" name:"IndustryName"`
+
+		// 经营（业务）范围
+		OperateScope *string `json:"OperateScope,omitempty" name:"OperateScope"`
+
+		// 要核验的工商注册号
+		VerifyRegNo *string `json:"VerifyRegNo,omitempty" name:"VerifyRegNo"`
+
+		// 工商注册号
+		RegNo *string `json:"RegNo,omitempty" name:"RegNo"`
+
+		// 要核验的企业名称
+		VerifyEnterpriseName *string `json:"VerifyEnterpriseName,omitempty" name:"VerifyEnterpriseName"`
+
+		// 企业名称
+		EnterpriseName *string `json:"EnterpriseName,omitempty" name:"EnterpriseName"`
+
+		// 要核验的注册地址
+		VerifyAddress *string `json:"VerifyAddress,omitempty" name:"VerifyAddress"`
+
+		// 注册地址
+		Address *string `json:"Address,omitempty" name:"Address"`
+
+		// 验证结果
+		RegNumResult *BizLicenseVerifyResult `json:"RegNumResult,omitempty" name:"RegNumResult"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *VerifyBizLicenseResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *VerifyBizLicenseResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 

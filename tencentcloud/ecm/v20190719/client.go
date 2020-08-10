@@ -1293,12 +1293,37 @@ func NewModifyModuleImageResponse() (response *ModifyModuleImageResponse) {
     return
 }
 
-// ModifyModuleImage
+// 修改模块的默认镜像
 func (c *Client) ModifyModuleImage(request *ModifyModuleImageRequest) (response *ModifyModuleImageResponse, err error) {
     if request == nil {
         request = NewModifyModuleImageRequest()
     }
     response = NewModifyModuleImageResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyModuleIpDirectRequest() (request *ModifyModuleIpDirectRequest) {
+    request = &ModifyModuleIpDirectRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ecm", APIVersion, "ModifyModuleIpDirect")
+    return
+}
+
+func NewModifyModuleIpDirectResponse() (response *ModifyModuleIpDirectResponse) {
+    response = &ModifyModuleIpDirectResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 修改模块IP直通。
+func (c *Client) ModifyModuleIpDirect(request *ModifyModuleIpDirectRequest) (response *ModifyModuleIpDirectResponse, err error) {
+    if request == nil {
+        request = NewModifyModuleIpDirectRequest()
+    }
+    response = NewModifyModuleIpDirectResponse()
     err = c.Send(request, response)
     return
 }

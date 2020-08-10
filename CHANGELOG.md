@@ -1,48 +1,40 @@
 # 本版本更新包含以下内容：
 
-## 音频内容检测(ams) 版本：2020-06-08
+## 边缘计算机器(ecm) 版本：2019-07-19
 
-### 第 4 次发布
+### 第 22 次发布
 
-发布时间：2020-08-07 08:00:32
+发布时间：2020-08-10 08:01:54
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
+新增接口：
+
+* [ModifyModuleIpDirect](https://cloud.tencent.com/document/api/1108/47275)
+
 修改接口：
 
-* [DescribeTaskDetail](https://cloud.tencent.com/document/api/1219/46476)
+* [CreateModule](https://cloud.tencent.com/document/api/1108/42557)
 
-	* 新增出参：AudioText
+	* 新增入参：CloseIpDirect, TagSpecification
+
+
+修改数据结构：
+
+* [Module](https://cloud.tencent.com/document/api/1108/42574#Module)
+
+	* 新增成员：TagSet, CloseIpDirect
 
 
 
 
 ## 人脸核身(faceid) 版本：2018-03-01
 
-### 第 13 次发布
+### 第 14 次发布
 
-发布时间：2020-08-07 08:11:16
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [PhoneVerification](https://cloud.tencent.com/document/api/1007/39765)
-
-	* 新增入参：CiphertextBlob, EncryptList
-
-
-
-
-## 风险探针(rkp) 版本：2019-12-09
-
-### 第 1 次发布
-
-发布时间：2020-08-06 17:36:26
+发布时间：2020-08-10 08:11:30
 
 本次发布包含了以下内容：
 
@@ -50,43 +42,54 @@
 
 新增接口：
 
-* [GetOpenId](https://cloud.tencent.com/document/api/1169/47211)
-* [GetToken](https://cloud.tencent.com/document/api/1169/47213)
-* [QueryDevAndRisk](https://cloud.tencent.com/document/api/1169/47215)
+* [CheckIdCardInformation](https://cloud.tencent.com/document/api/1007/47276)
+
+
+
+## 文字识别(ocr) 版本：2018-11-19
+
+### 第 30 次发布
+
+发布时间：2020-08-10 08:15:56
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [VerifyBasicBizLicense](https://cloud.tencent.com/document/api/866/47279)
+* [VerifyBizLicense](https://cloud.tencent.com/document/api/866/47278)
 
 新增数据结构：
 
-* [DevInfoQ](https://cloud.tencent.com/document/api/1169/47216#DevInfoQ)
-* [RiskDetail](https://cloud.tencent.com/document/api/1169/47216#RiskDetail)
-* [RiskInfo](https://cloud.tencent.com/document/api/1169/47216#RiskInfo)
+* [BizLicenseVerifyResult](https://cloud.tencent.com/document/api/866/33527#BizLicenseVerifyResult)
 
 
 
-## 云数据库 SQL Server(sqlserver) 版本：2018-03-28
+## 云函数(scf) 版本：2018-04-16
 
-### 第 10 次发布
+### 第 17 次发布
 
-发布时间：2020-08-07 08:17:08
+发布时间：2020-08-10 08:17:16
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-新增接口：
-
-* [DescribeBackupByFlowId](https://cloud.tencent.com/document/api/238/47203)
-* [DescribeCrossRegionZone](https://cloud.tencent.com/document/api/238/47201)
-* [ModifyBackupName](https://cloud.tencent.com/document/api/238/47202)
-
 修改接口：
 
-* [CreateBackup](https://cloud.tencent.com/document/api/238/19946)
+* [CreateFunction](https://cloud.tencent.com/document/api/583/18586)
 
-	* 新增入参：BackupName
+	* 新增入参：InitTimeout
 
-* [DescribeBackups](https://cloud.tencent.com/document/api/238/19943)
+* [GetFunction](https://cloud.tencent.com/document/api/583/18584)
 
-	* 新增入参：BackupName, Strategy, BackupWay
+	* 新增出参：InitTimeout
+
+* [UpdateFunctionConfiguration](https://cloud.tencent.com/document/api/583/18580)
+
+	* 新增入参：InitTimeout
 
 
 
@@ -12255,6 +12258,32 @@
 
 ## 边缘计算机器(ecm) 版本：2019-07-19
 
+### 第 22 次发布
+
+发布时间：2020-08-10 08:01:54
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[ModifyModuleIpDirect](https://cloud.tencent.com/document/api/1108/47275)](https://cloud.tencent.com/document/api/#/#)
+
+修改接口：
+
+* [CreateModule](https://cloud.tencent.com/document/api/1108/42557)
+
+	* 新增入参：CloseIpDirect, TagSpecification
+
+
+修改数据结构：
+
+* [Module](https://cloud.tencent.com/document/api/1108/42574#Module)
+
+	* 新增成员：TagSet, CloseIpDirect
+
+
 ### 第 21 次发布
 
 发布时间：2020-08-05 08:01:49
@@ -13480,6 +13509,18 @@
 
 
 ## 人脸核身(faceid) 版本：2018-03-01
+
+### 第 14 次发布
+
+发布时间：2020-08-10 08:11:30
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[CheckIdCardInformation](https://cloud.tencent.com/document/api/1007/47276)](https://cloud.tencent.com/document/api/#/#)
 
 ### 第 13 次发布
 
@@ -20364,6 +20405,23 @@
 
 ## 文字识别(ocr) 版本：2018-11-19
 
+### 第 30 次发布
+
+发布时间：2020-08-10 08:15:56
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[VerifyBasicBizLicense](https://cloud.tencent.com/document/api/866/47279)](https://cloud.tencent.com/document/api/#/#)
+* [[VerifyBizLicense](https://cloud.tencent.com/document/api/866/47278)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[BizLicenseVerifyResult](https://cloud.tencent.com/document/api/866/33527#BizLicenseVerifyResult)](https://cloud.tencent.com/document/api/866/33527#[BizLicenseVerifyResult](https://cloud.tencent.com/document/api/866/33527#BizLicenseVerifyResult))
+
 ### 第 29 次发布
 
 发布时间：2020-08-06 08:15:23
@@ -21975,15 +22033,15 @@
 
 新增接口：
 
-* [[GetOpenId](https://cloud.tencent.com/document/api/1169/47211)](https://cloud.tencent.com/document/api/#/#)
-* [[GetToken](https://cloud.tencent.com/document/api/1169/47213)](https://cloud.tencent.com/document/api/#/#)
-* [[QueryDevAndRisk](https://cloud.tencent.com/document/api/1169/47215)](https://cloud.tencent.com/document/api/#/#)
+* [GetOpenId](https://cloud.tencent.com/document/api/1169/47211)
+* [GetToken](https://cloud.tencent.com/document/api/1169/47213)
+* [QueryDevAndRisk](https://cloud.tencent.com/document/api/1169/47215)
 
 新增数据结构：
 
-* [[DevInfoQ](https://cloud.tencent.com/document/api/1169/47216#DevInfoQ)](https://cloud.tencent.com/document/api/1169/47216#[DevInfoQ](https://cloud.tencent.com/document/api/1169/47216#DevInfoQ))
-* [[RiskDetail](https://cloud.tencent.com/document/api/1169/47216#RiskDetail)](https://cloud.tencent.com/document/api/1169/47216#[RiskDetail](https://cloud.tencent.com/document/api/1169/47216#RiskDetail))
-* [[RiskInfo](https://cloud.tencent.com/document/api/1169/47216#RiskInfo)](https://cloud.tencent.com/document/api/1169/47216#[RiskInfo](https://cloud.tencent.com/document/api/1169/47216#RiskInfo))
+* [DevInfoQ](https://cloud.tencent.com/document/api/1169/47216#DevInfoQ)
+* [RiskDetail](https://cloud.tencent.com/document/api/1169/47216#RiskDetail)
+* [RiskInfo](https://cloud.tencent.com/document/api/1169/47216#RiskInfo)
 
 
 
@@ -22006,6 +22064,29 @@
 
 
 ## 云函数(scf) 版本：2018-04-16
+
+### 第 17 次发布
+
+发布时间：2020-08-10 08:17:16
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateFunction](https://cloud.tencent.com/document/api/583/18586)
+
+	* 新增入参：InitTimeout
+
+* [GetFunction](https://cloud.tencent.com/document/api/583/18584)
+
+	* 新增出参：InitTimeout
+
+* [UpdateFunctionConfiguration](https://cloud.tencent.com/document/api/583/18580)
+
+	* 新增入参：InitTimeout
+
 
 ### 第 16 次发布
 
@@ -22988,9 +23069,9 @@
 
 新增接口：
 
-* [[DescribeBackupByFlowId](https://cloud.tencent.com/document/api/238/47203)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeCrossRegionZone](https://cloud.tencent.com/document/api/238/47201)](https://cloud.tencent.com/document/api/#/#)
-* [[ModifyBackupName](https://cloud.tencent.com/document/api/238/47202)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeBackupByFlowId](https://cloud.tencent.com/document/api/238/47203)
+* [DescribeCrossRegionZone](https://cloud.tencent.com/document/api/238/47201)
+* [ModifyBackupName](https://cloud.tencent.com/document/api/238/47202)
 
 修改接口：
 

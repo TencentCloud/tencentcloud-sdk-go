@@ -381,6 +381,14 @@ type CreateModuleRequest struct {
 
 	// 默认数据盘大小，单位：G。范围不得超过数据盘范围大小，详看DescribeConfig。
 	DefaultDataDiskSize *int64 `json:"DefaultDataDiskSize,omitempty" name:"DefaultDataDiskSize"`
+
+	// 是否关闭IP直通。取值范围：
+	// 1：表示关闭IP直通
+	// 0：表示开通IP直通
+	CloseIpDirect *bool `json:"CloseIpDirect,omitempty" name:"CloseIpDirect"`
+
+	// 标签列表。
+	TagSpecification []*TagSpecification `json:"TagSpecification,omitempty" name:"TagSpecification" list`
 }
 
 func (r *CreateModuleRequest) ToJsonString() string {
@@ -1409,7 +1417,7 @@ type DescribeModuleRequest struct {
 	// module-id - string - 是否必填：否 - （过滤条件）按照模块ID过滤。
 	// image-id      String      是否必填：否      （过滤条件）按照镜像ID过滤。
 	// instance-family      String      是否必填：否      （过滤条件）按照机型family过滤。
-	// 
+	// security-group-id - string 是否必填：否 - （过滤条件）按照模块绑定的安全组id过滤。
 	// 每次请求的Filters的上限为10，Filter.Values的上限为5。
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
 
@@ -2369,7 +2377,7 @@ type InstanceTypeConfig struct {
 	// 机型族类别配置信息
 	InstanceFamilyTypeConfig *InstanceFamilyTypeConfig `json:"InstanceFamilyTypeConfig,omitempty" name:"InstanceFamilyTypeConfig"`
 
-	// 机型额外信息
+	// 机型额外信息 是一个json字符串，如果存在则表示特殊机型，格式如下：{"dataDiskSize":3200,"systemDiskSize":60, "systemDiskSizeShow":"系统盘默认60G","dataDiskSizeShow":"本地NVMe SSD 硬盘3200 GB"}
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExtInfo *string `json:"ExtInfo,omitempty" name:"ExtInfo"`
 }
@@ -2782,6 +2790,45 @@ func (r *ModifyModuleImageResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type ModifyModuleIpDirectRequest struct {
+	*tchttp.BaseRequest
+
+	// 模块ID。
+	ModuleId *string `json:"ModuleId,omitempty" name:"ModuleId"`
+
+	// 是否关闭IP直通。取值范围：
+	// 1：表示关闭IP直通
+	// 0：表示开通IP直通
+	CloseIpDirect *bool `json:"CloseIpDirect,omitempty" name:"CloseIpDirect"`
+}
+
+func (r *ModifyModuleIpDirectRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyModuleIpDirectRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyModuleIpDirectResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifyModuleIpDirectResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyModuleIpDirectResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type ModifyModuleNameRequest struct {
 	*tchttp.BaseRequest
 
@@ -2970,6 +3017,13 @@ type Module struct {
 
 	// 默认带宽
 	DefaultBandwidth *int64 `json:"DefaultBandwidth,omitempty" name:"DefaultBandwidth"`
+
+	// 标签集合
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TagSet []*Tag `json:"TagSet,omitempty" name:"TagSet" list`
+
+	// 是否关闭IP直通
+	CloseIpDirect *int64 `json:"CloseIpDirect,omitempty" name:"CloseIpDirect"`
 }
 
 type ModuleCounter struct {
@@ -3899,7 +3953,7 @@ type Tag struct {
 
 type TagSpecification struct {
 
-	// 资源类型，目前仅支持"instance"
+	// 资源类型，目前仅支持"instance"、"module"
 	ResourceType *string `json:"ResourceType,omitempty" name:"ResourceType"`
 
 	// 标签列表

@@ -1362,9 +1362,7 @@ func NewRideHailingDriverLicenseOCRResponse() (response *RideHailingDriverLicens
     return
 }
 
-// 本接口支持网约车驾驶证重要字段的自动定位与识别，重点字段的识别准确度达到99%以上。
-// 
-// 网约车驾驶证：包括姓名、证号、起始日期、截止日期、发证日期。
+// 本接口支持网约车驾驶证关键字段的识别，包括姓名、证号、起始日期、截止日期、发证日期。
 func (c *Client) RideHailingDriverLicenseOCR(request *RideHailingDriverLicenseOCRRequest) (response *RideHailingDriverLicenseOCRResponse, err error) {
     if request == nil {
         request = NewRideHailingDriverLicenseOCRRequest()
@@ -1651,6 +1649,57 @@ func (c *Client) VehicleRegCertOCR(request *VehicleRegCertOCRRequest) (response 
         request = NewVehicleRegCertOCRRequest()
     }
     response = NewVehicleRegCertOCRResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewVerifyBasicBizLicenseRequest() (request *VerifyBasicBizLicenseRequest) {
+    request = &VerifyBasicBizLicenseRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ocr", APIVersion, "VerifyBasicBizLicense")
+    return
+}
+
+func NewVerifyBasicBizLicenseResponse() (response *VerifyBasicBizLicenseResponse) {
+    response = &VerifyBasicBizLicenseResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口支持营业执照信息的识别与准确性核验。您可以通过输入营业执照关键字段或传入营业执照图片提供所需的验证信息，接口返回真实的企业工商照面信息及核验结果，包括统一社会信用代码、经营期限、法人姓名、经营状态、经营业务范围、状态信息、原注册号、要核验的工商注册号、工商注册号、要核验的企业名称、企业名称、要核验的注册住址、注册住址、核验结果、注册资本共16个基础字段。
+func (c *Client) VerifyBasicBizLicense(request *VerifyBasicBizLicenseRequest) (response *VerifyBasicBizLicenseResponse, err error) {
+    if request == nil {
+        request = NewVerifyBasicBizLicenseRequest()
+    }
+    response = NewVerifyBasicBizLicenseResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewVerifyBizLicenseRequest() (request *VerifyBizLicenseRequest) {
+    request = &VerifyBizLicenseRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ocr", APIVersion, "VerifyBizLicense")
+    return
+}
+
+func NewVerifyBizLicenseResponse() (response *VerifyBizLicenseResponse) {
+    response = &VerifyBizLicenseResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口支持营业执照信息的识别与准确性核验，返回的营业执照信息比营业执照识别及核验（基础版）接口更详细。
+// 您可以通过输入营业执照关键字段或传入营业执照图片提供所需的验证信息，接口返回真实的企业工商照面信息及核验结果，包括统一社会信用代码、组织机构代码、经营期限、法人姓名、经营状态、经营业务范围及方式、注册资金、注册币种、登记机关、开业日期、企业（机构）类型、注销日期、吊销日期、许可经营项目、一般经营项目、核准时间、省、地级市、区/县、住所所在行政区划代码、行业门类代码、行业门类名称、国民经济行业代码、国民经济行业名称、经营（业务）范围、要核验的工商注册号、工商注册号、要核验的企业名称、企业名称、要核验的注册住址、注册住址、核验结果共33个详细字段。
+func (c *Client) VerifyBizLicense(request *VerifyBizLicenseRequest) (response *VerifyBizLicenseResponse, err error) {
+    if request == nil {
+        request = NewVerifyBizLicenseRequest()
+    }
+    response = NewVerifyBizLicenseResponse()
     err = c.Send(request, response)
     return
 }

@@ -184,6 +184,7 @@ type CreateNotebookInstanceRequest struct {
 	// 参考https://cloud.tencent.com/document/product/851/43139
 	AdditionalCodeRepositories []*string `json:"AdditionalCodeRepositories,omitempty" name:"AdditionalCodeRepositories" list`
 
+	// 已弃用，请使用ClsConfig配置。
 	// 是否开启CLS日志服务，可取值Enabled/Disabled，默认为Disabled
 	// 开启后，Notebook运行的日志会收集到CLS中，CLS会产生费用，请根据需要选择
 	ClsAccess *string `json:"ClsAccess,omitempty" name:"ClsAccess"`
@@ -197,7 +198,7 @@ type CreateNotebookInstanceRequest struct {
 	// 取值为Enabled的时候读取StoppingCondition作为自动停止的配置
 	AutoStopping *string `json:"AutoStopping,omitempty" name:"AutoStopping"`
 
-	// 接入日志的配置
+	// 接入日志的配置，默认接入免费日志
 	ClsConfig *ClsConfig `json:"ClsConfig,omitempty" name:"ClsConfig"`
 }
 
@@ -1553,7 +1554,7 @@ type UpdateNotebookInstanceRequest struct {
 	// 该值为true时，AdditionalCodeRepositories将被忽略
 	DisassociateAdditionalCodeRepositories *bool `json:"DisassociateAdditionalCodeRepositories,omitempty" name:"DisassociateAdditionalCodeRepositories"`
 
-	// 是否开启CLS日志服务，可取值Enabled/Disabled
+	// 已弃用，请使用ClsConfig配置。是否开启CLS日志服务，可取值Enabled/Disabled
 	ClsAccess *string `json:"ClsAccess,omitempty" name:"ClsAccess"`
 
 	// 自动停止，可取值Enabled/Disabled
@@ -1564,7 +1565,7 @@ type UpdateNotebookInstanceRequest struct {
 	// 自动停止配置，只在AutoStopping为Enabled的时候生效
 	StoppingCondition *StoppingCondition `json:"StoppingCondition,omitempty" name:"StoppingCondition"`
 
-	// 接入日志的配置
+	// 接入日志的配置，默认使用免费日志服务。
 	ClsConfig *ClsConfig `json:"ClsConfig,omitempty" name:"ClsConfig"`
 }
 

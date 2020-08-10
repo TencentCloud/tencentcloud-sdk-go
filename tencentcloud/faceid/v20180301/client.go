@@ -118,6 +118,31 @@ func (c *Client) BankCardVerification(request *BankCardVerificationRequest) (res
     return
 }
 
+func NewCheckIdCardInformationRequest() (request *CheckIdCardInformationRequest) {
+    request = &CheckIdCardInformationRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("faceid", APIVersion, "CheckIdCardInformation")
+    return
+}
+
+func NewCheckIdCardInformationResponse() (response *CheckIdCardInformationResponse) {
+    response = &CheckIdCardInformationResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 传入身份证人像面照片，识别身份证照片上的信息，并将姓名、身份证号、身份证人像照片与公安权威库的证件照进行比对，是否属于同一个人，从而验证身份证信息的真实性。
+func (c *Client) CheckIdCardInformation(request *CheckIdCardInformationRequest) (response *CheckIdCardInformationResponse, err error) {
+    if request == nil {
+        request = NewCheckIdCardInformationRequest()
+    }
+    response = NewCheckIdCardInformationResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDetectAuthRequest() (request *DetectAuthRequest) {
     request = &DetectAuthRequest{
         BaseRequest: &tchttp.BaseRequest{},

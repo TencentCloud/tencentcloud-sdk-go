@@ -27,10 +27,12 @@ type AnalyzeFaceRequest struct {
 	Mode *uint64 `json:"Mode,omitempty" name:"Mode"`
 
 	// 图片 base64 数据，base64 编码后大小不可超过5M。
+	// jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。
 	// 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
 	Image *string `json:"Image,omitempty" name:"Image"`
 
 	// 图片的 Url 。对应图片 base64 编码后大小不可超过5M。
+	// jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。
 	// Url、Image必须提供一个，如果都提供，只使用 Url。  
 	// 图片存储于腾讯云的Url可保障更高下载速度和稳定性，建议图片存储于腾讯云。 
 	// 非腾讯云存储的Url速度和稳定性可能受一定影响。
@@ -163,16 +165,19 @@ type CompareFaceRequest struct {
 	*tchttp.BaseRequest
 
 	// A 图片 base64 数据，base64 编码后大小不可超过5M。
+	// jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。
 	// 若图片中包含多张人脸，只选取其中人脸面积最大的人脸。
 	// 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
 	ImageA *string `json:"ImageA,omitempty" name:"ImageA"`
 
 	// B 图片 base64 数据，base64 编码后大小不可超过5M。
+	// jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。
 	// 若图片中包含多张人脸，只选取其中人脸面积最大的人脸。
 	// 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
 	ImageB *string `json:"ImageB,omitempty" name:"ImageB"`
 
 	// A 图片的 Url ，对应图片 base64 编码后大小不可超过5M。
+	// jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。
 	// A 图片的 Url、Image必须提供一个，如果都提供，只使用 Url。 
 	// 图片存储于腾讯云的Url可保障更高下载速度和稳定性，建议图片存储于腾讯云。 
 	// 非腾讯云存储的Url速度和稳定性可能受一定影响。
@@ -181,6 +186,7 @@ type CompareFaceRequest struct {
 	UrlA *string `json:"UrlA,omitempty" name:"UrlA"`
 
 	// B 图片的 Url ，对应图片 base64 编码后大小不可超过5M。
+	// jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。
 	// B 图片的 Url、Image必须提供一个，如果都提供，只使用 Url。 
 	// 图片存储于腾讯云的Url可保障更高下载速度和稳定性，建议图片存储于腾讯云。 
 	// 非腾讯云存储的Url速度和稳定性可能受一定影响。
@@ -294,12 +300,14 @@ type CreateFaceRequest struct {
 	PersonId *string `json:"PersonId,omitempty" name:"PersonId"`
 
 	// 图片 base64 数据，base64 编码后大小不可超过5M。
+	// jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。
 	// 人员人脸总数量不可超过5张。
 	// 若图片中包含多张人脸，只选取其中人脸面积最大的人脸。
 	// 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
 	Images []*string `json:"Images,omitempty" name:"Images" list`
 
 	// 图片的 Url 。对应图片 base64 编码后大小不可超过5M。
+	// jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。
 	// Url、Image必须提供一个，如果都提供，只使用 Url。  
 	// 图片存储于腾讯云的Url可保障更高下载速度和稳定性，建议图片存储于腾讯云。 
 	// 非腾讯云存储的Url速度和稳定性可能受一定影响。
@@ -451,10 +459,12 @@ type CreatePersonRequest struct {
 	PersonExDescriptionInfos []*PersonExDescriptionInfo `json:"PersonExDescriptionInfos,omitempty" name:"PersonExDescriptionInfos" list`
 
 	// 图片 base64 数据，base64 编码后大小不可超过5M。
+	// jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。
 	// 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
 	Image *string `json:"Image,omitempty" name:"Image"`
 
 	// 图片的 Url 。对应图片 base64 编码后大小不可超过5M。
+	// jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。
 	// Url、Image必须提供一个，如果都提供，只使用 Url。  
 	// 图片存储于腾讯云的Url可保障更高下载速度和稳定性，建议图片存储于腾讯云。 
 	// 非腾讯云存储的Url速度和稳定性可能受一定影响。
@@ -689,10 +699,12 @@ type DetectFaceRequest struct {
 	MinFaceSize *uint64 `json:"MinFaceSize,omitempty" name:"MinFaceSize"`
 
 	// 图片 base64 数据，base64 编码后大小不可超过5M。
+	// jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。
 	// 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
 	Image *string `json:"Image,omitempty" name:"Image"`
 
 	// 图片的 Url 。对应图片 base64 编码后大小不可超过5M。
+	// jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。
 	// Url、Image必须提供一个，如果都提供，只使用 Url。  
 	// 图片存储于腾讯云的Url可保障更高下载速度和稳定性，建议图片存储于腾讯云。 
 	// 非腾讯云存储的Url速度和稳定性可能受一定影响。
@@ -762,11 +774,13 @@ func (r *DetectFaceResponse) FromJsonString(s string) error {
 type DetectLiveFaceRequest struct {
 	*tchttp.BaseRequest
 
-	// 图片 base64 数据，base64 编码后大小不可超过5M（图片的宽高比请接近3:4，不符合宽高比的图片返回的分值不具备参考意义）。
+	// 图片 base64 数据，base64 编码后大小不可超过5M。
+	// jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。（图片的宽高比请接近3:4，不符合宽高比的图片返回的分值不具备参考意义）。
 	// 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
 	Image *string `json:"Image,omitempty" name:"Image"`
 
 	// 图片的 Url 。对应图片 base64 编码后大小不可超过5M。
+	// jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。
 	// Url、Image必须提供一个，如果都提供，只使用 Url。 
 	// （图片的宽高比请接近 3:4，不符合宽高比的图片返回的分值不具备参考意义） 
 	// 图片存储于腾讯云的Url可保障更高下载速度和稳定性，建议图片存储于腾讯云。 
@@ -1828,10 +1842,12 @@ type SearchFacesRequest struct {
 	GroupIds []*string `json:"GroupIds,omitempty" name:"GroupIds" list`
 
 	// 图片 base64 数据，base64 编码后大小不可超过5M。
+	// jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。
 	// 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
 	Image *string `json:"Image,omitempty" name:"Image"`
 
 	// 图片的 Url 。对应图片 base64 编码后大小不可超过5M。
+	// jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。
 	// Url、Image必须提供一个，如果都提供，只使用 Url。  
 	// 图片存储于腾讯云的Url可保障更高下载速度和稳定性，建议图片存储于腾讯云。 
 	// 非腾讯云存储的Url速度和稳定性可能受一定影响。
@@ -1914,10 +1930,12 @@ type SearchFacesReturnsByGroupRequest struct {
 	GroupIds []*string `json:"GroupIds,omitempty" name:"GroupIds" list`
 
 	// 图片 base64 数据，base64 编码后大小不可超过5M。
+	// jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。
 	// 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
 	Image *string `json:"Image,omitempty" name:"Image"`
 
 	// 图片的 Url 。对应图片 base64 编码后大小不可超过5M。
+	// jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。
 	// Url、Image必须提供一个，如果都提供，只使用 Url。
 	// 图片存储于腾讯云的Url可保障更高下载速度和稳定性，建议图片存储于腾讯云。
 	// 非腾讯云存储的Url速度和稳定性可能受一定影响。
@@ -2001,11 +2019,13 @@ type SearchPersonsRequest struct {
 	GroupIds []*string `json:"GroupIds,omitempty" name:"GroupIds" list`
 
 	// 图片 base64 数据，base64 编码后大小不可超过5M。
+	// jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。
 	// 若图片中包含多张人脸，只选取其中人脸面积最大的人脸。
 	// 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
 	Image *string `json:"Image,omitempty" name:"Image"`
 
 	// 图片的 Url 。对应图片 base64 编码后大小不可超过5M。
+	// jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。
 	// Url、Image必须提供一个，如果都提供，只使用 Url。
 	// 图片存储于腾讯云的Url可保障更高下载速度和稳定性，建议图片存储于腾讯云。
 	// 非腾讯云存储的Url速度和稳定性可能受一定影响。
@@ -2089,10 +2109,12 @@ type SearchPersonsReturnsByGroupRequest struct {
 	GroupIds []*string `json:"GroupIds,omitempty" name:"GroupIds" list`
 
 	// 图片 base64 数据，base64 编码后大小不可超过5M。
+	// jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。
 	// 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
 	Image *string `json:"Image,omitempty" name:"Image"`
 
 	// 图片的 Url 。对应图片 base64 编码后大小不可超过5M。
+	// jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。
 	// Url、Image必须提供一个，如果都提供，只使用 Url。
 	// 图片存储于腾讯云的Url可保障更高下载速度和稳定性，建议图片存储于腾讯云。
 	// 非腾讯云存储的Url速度和稳定性可能受一定影响。
@@ -2238,11 +2260,13 @@ type VerifyFaceRequest struct {
 	PersonId *string `json:"PersonId,omitempty" name:"PersonId"`
 
 	// 图片 base64 数据，base64 编码后大小不可超过5M。
+	// jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。
 	// 若图片中包含多张人脸，只选取其中人脸面积最大的人脸。
 	// 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
 	Image *string `json:"Image,omitempty" name:"Image"`
 
 	// 图片的 Url 。对应图片 base64 编码后大小不可超过5M。
+	// jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。
 	// Url、Image必须提供一个，如果都提供，只使用 Url。  
 	// 图片存储于腾讯云的Url可保障更高下载速度和稳定性，建议图片存储于腾讯云。 
 	// 非腾讯云存储的Url速度和稳定性可能受一定影响。
@@ -2308,11 +2332,14 @@ type VerifyPersonRequest struct {
 	*tchttp.BaseRequest
 
 	// 图片 base64 数据。
+	// jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。
 	// 若图片中包含多张人脸，只选取其中人脸面积最大的人脸。
 	// 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
 	Image *string `json:"Image,omitempty" name:"Image"`
 
-	// 图片的 Url 。 图片的 Url、Image必须提供一个，如果都提供，只使用 Url。 
+	// 图片的 Url 
+	// jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。。
+	//  图片的 Url、Image必须提供一个，如果都提供，只使用 Url。 
 	// 图片存储于腾讯云的Url可保障更高下载速度和稳定性，建议图片存储于腾讯云。 
 	// 非腾讯云存储的Url速度和稳定性可能受一定影响。
 	// 若图片中包含多张人脸，只选取其中人脸面积最大的人脸。

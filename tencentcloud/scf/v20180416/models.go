@@ -306,6 +306,9 @@ type CreateFunctionRequest struct {
 
 	// 文件系统配置参数，用于云函数挂载文件系统
 	CfsConfig *CfsConfig `json:"CfsConfig,omitempty" name:"CfsConfig"`
+
+	// 函数初始化超时时间
+	InitTimeout *int64 `json:"InitTimeout,omitempty" name:"InitTimeout"`
 }
 
 func (r *CreateFunctionRequest) ToJsonString() string {
@@ -1044,7 +1047,7 @@ type GetFunctionResponse struct {
 		// 是否自动安装依赖
 		InstallDependency *string `json:"InstallDependency,omitempty" name:"InstallDependency"`
 
-		// 函数状态
+		// 函数状态，状态值及流转[参考说明](https://cloud.tencent.com/document/product/583/47175)
 		Status *string `json:"Status,omitempty" name:"Status"`
 
 		// 状态描述
@@ -1095,13 +1098,16 @@ type GetFunctionResponse struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		CfsConfig *CfsConfig `json:"CfsConfig,omitempty" name:"CfsConfig"`
 
-		// 函数的计费状态
+		// 函数的计费状态，状态值[参考此处](https://cloud.tencent.com/document/product/583/47175#.E5.87.BD.E6.95.B0.E8.AE.A1.E8.B4.B9.E7.8A.B6.E6.80.81)
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		AvailableStatus *string `json:"AvailableStatus,omitempty" name:"AvailableStatus"`
 
 		// 函数版本
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		Qualifier *string `json:"Qualifier,omitempty" name:"Qualifier"`
+
+		// 函数初始化超时时间
+		InitTimeout *int64 `json:"InitTimeout,omitempty" name:"InitTimeout"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1263,11 +1269,7 @@ type LayerVersionInfo struct {
 	// 层名称
 	LayerName *string `json:"LayerName,omitempty" name:"LayerName"`
 
-	// 层的具体版本当前状态，可能取值：
-	// Active 正常
-	// Publishing  发布中
-	// PublishFailed  发布失败
-	// Deleted 已删除
+	// 层的具体版本当前状态，状态值[参考此处](https://cloud.tencent.com/document/product/583/47175#.E5.B1.82.EF.BC.88layer.EF.BC.89.E7.8A.B6.E6.80.81)
 	Status *string `json:"Status,omitempty" name:"Status"`
 }
 
@@ -2099,6 +2101,9 @@ type UpdateFunctionConfigurationRequest struct {
 
 	// 文件系统配置入参，用于云函数绑定文件系统
 	CfsConfig *CfsConfig `json:"CfsConfig,omitempty" name:"CfsConfig"`
+
+	// 函数初始化执行超时时间，默认15秒
+	InitTimeout *int64 `json:"InitTimeout,omitempty" name:"InitTimeout"`
 }
 
 func (r *UpdateFunctionConfigurationRequest) ToJsonString() string {
