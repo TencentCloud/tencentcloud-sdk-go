@@ -1006,6 +1006,7 @@ type CreateLiveSnapshotTemplateRequest struct {
 	CosAppId *int64 `json:"CosAppId,omitempty" name:"CosAppId"`
 
 	// Cos Bucket名称。
+	// 注：CosBucket参数值不能包含-[appid] 部分。
 	CosBucket *string `json:"CosBucket,omitempty" name:"CosBucket"`
 
 	// Cos地区。
@@ -5238,6 +5239,7 @@ type ModifyLiveSnapshotTemplateRequest struct {
 	CosAppId *int64 `json:"CosAppId,omitempty" name:"CosAppId"`
 
 	// Cos Bucket名称。
+	// 注：CosBucket参数值不能包含-[appid] 部分。
 	CosBucket *string `json:"CosBucket,omitempty" name:"CosBucket"`
 
 	// Cos 地域。

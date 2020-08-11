@@ -214,6 +214,43 @@ func (r *CompleteExpansionResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type CompleteMigrationRequest struct {
+	*tchttp.BaseRequest
+
+	// 迁移任务ID
+	MigrateId *int64 `json:"MigrateId,omitempty" name:"MigrateId"`
+}
+
+func (r *CompleteMigrationRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CompleteMigrationRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CompleteMigrationResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 完成迁移流程发起后，返回的流程id
+		FlowId *int64 `json:"FlowId,omitempty" name:"FlowId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CompleteMigrationResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CompleteMigrationResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type CreateAccountRequest struct {
 	*tchttp.BaseRequest
 
@@ -1593,6 +1630,52 @@ func (r *DescribeMaintenanceSpanResponse) ToJsonString() string {
 }
 
 func (r *DescribeMaintenanceSpanResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeMigrationDatabasesRequest struct {
+	*tchttp.BaseRequest
+
+	// 迁移源实例的ID，格式如：mssql-si2823jyl
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 迁移源实例用户名
+	UserName *string `json:"UserName,omitempty" name:"UserName"`
+
+	// 迁移源实例密码
+	Password *string `json:"Password,omitempty" name:"Password"`
+}
+
+func (r *DescribeMigrationDatabasesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeMigrationDatabasesRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeMigrationDatabasesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 数据库数量
+		Amount *int64 `json:"Amount,omitempty" name:"Amount"`
+
+		// 数据库名称数组
+		MigrateDBSet []*string `json:"MigrateDBSet,omitempty" name:"MigrateDBSet" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeMigrationDatabasesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeMigrationDatabasesResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -3199,6 +3282,49 @@ type PublishSubscribe struct {
 	DatabaseTupleSet []*DatabaseTupleStatus `json:"DatabaseTupleSet,omitempty" name:"DatabaseTupleSet" list`
 }
 
+type QueryMigrationCheckProcessRequest struct {
+	*tchttp.BaseRequest
+
+	// 迁移任务ID
+	MigrateId *int64 `json:"MigrateId,omitempty" name:"MigrateId"`
+}
+
+func (r *QueryMigrationCheckProcessRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *QueryMigrationCheckProcessRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type QueryMigrationCheckProcessResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 总步骤数量
+		TotalStep *int64 `json:"TotalStep,omitempty" name:"TotalStep"`
+
+		// 当前步骤编号，从1开始
+		CurrentStep *int64 `json:"CurrentStep,omitempty" name:"CurrentStep"`
+
+		// 所有步骤详情
+		StepDetails []*StepDetail `json:"StepDetails,omitempty" name:"StepDetails" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *QueryMigrationCheckProcessResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *QueryMigrationCheckProcessResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type ReadOnlyGroup struct {
 
 	// 只读组ID
@@ -3782,6 +3908,92 @@ type SpecInfo struct {
 
 	// 此规格下支持的付费模式，POST-仅支持按量计费 PRE-仅支持包年包月 ALL-支持所有
 	PayModeStatus *string `json:"PayModeStatus,omitempty" name:"PayModeStatus"`
+}
+
+type StartMigrationCheckRequest struct {
+	*tchttp.BaseRequest
+
+	// 迁移任务id
+	MigrateId *int64 `json:"MigrateId,omitempty" name:"MigrateId"`
+}
+
+func (r *StartMigrationCheckRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *StartMigrationCheckRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type StartMigrationCheckResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 迁移检查流程发起后，返回的流程id
+		FlowId *int64 `json:"FlowId,omitempty" name:"FlowId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *StartMigrationCheckResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *StartMigrationCheckResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type StepDetail struct {
+
+	// 具体步骤返回信息
+	Msg *string `json:"Msg,omitempty" name:"Msg"`
+
+	// 当前步骤状态，0成功，-2未开始
+	Status *int64 `json:"Status,omitempty" name:"Status"`
+
+	// 步骤名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+}
+
+type StopMigrationRequest struct {
+	*tchttp.BaseRequest
+
+	// 迁移任务ID
+	MigrateId *int64 `json:"MigrateId,omitempty" name:"MigrateId"`
+}
+
+func (r *StopMigrationRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *StopMigrationRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type StopMigrationResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 中止迁移流程发起后，返回的流程id
+		FlowId *int64 `json:"FlowId,omitempty" name:"FlowId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *StopMigrationResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *StopMigrationResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
 }
 
 type TerminateDBInstanceRequest struct {

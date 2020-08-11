@@ -243,6 +243,7 @@ func NewDescribeCdnIpResponse() (response *DescribeCdnIpResponse) {
 }
 
 // DescribeCdnIp 用于查询 CDN IP 归属。
+// （注意：此接口请求频率限制以 CDN 侧限制为准：200次/10分钟）
 func (c *Client) DescribeCdnIp(request *DescribeCdnIpRequest) (response *DescribeCdnIpResponse, err error) {
     if request == nil {
         request = NewDescribeCdnIpRequest()

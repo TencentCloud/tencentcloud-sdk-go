@@ -1,56 +1,67 @@
 # 本版本更新包含以下内容：
 
-## 边缘计算机器(ecm) 版本：2019-07-19
+## 语音识别(asr) 版本：2019-06-14
 
-### 第 22 次发布
+### 第 10 次发布
 
-发布时间：2020-08-10 08:01:54
+发布时间：2020-08-11 08:00:18
 
 本次发布包含了以下内容：
 
 改善已有的文档。
-
-新增接口：
-
-* [ModifyModuleIpDirect](https://cloud.tencent.com/document/api/1108/47275)
 
 修改接口：
 
-* [CreateModule](https://cloud.tencent.com/document/api/1108/42557)
+* [CreateRecTask](https://cloud.tencent.com/document/api/1093/37823)
 
-	* 新增入参：CloseIpDirect, TagSpecification
-
-
-修改数据结构：
-
-* [Module](https://cloud.tencent.com/document/api/1108/42574#Module)
-
-	* 新增成员：TagSet, CloseIpDirect
+	* 新增入参：FilterPunc
 
 
 
 
-## 人脸核身(faceid) 版本：2018-03-01
+## 内容分发网络(cdn) 版本：2018-06-06
 
-### 第 14 次发布
+### 第 29 次发布
 
-发布时间：2020-08-10 08:11:30
+发布时间：2020-08-11 08:08:54
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-新增接口：
+修改接口：
 
-* [CheckIdCardInformation](https://cloud.tencent.com/document/api/1007/47276)
+* [PushUrlsCache](https://cloud.tencent.com/document/api/228/37869)
+
+	* 新增入参：Layer
+
+
+
+
+## 物联网开发平台(iotexplorer) 版本：2019-04-23
+
+### 第 11 次发布
+
+发布时间：2020-08-11 08:15:57
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DeleteDevice](https://cloud.tencent.com/document/api/1081/37177)
+
+	* 新增出参：ResultCode, ResultMessage
+
 
 
 
 ## 文字识别(ocr) 版本：2018-11-19
 
-### 第 30 次发布
+### 第 31 次发布
 
-发布时间：2020-08-10 08:15:56
+发布时间：2020-08-11 08:18:56
 
 本次发布包含了以下内容：
 
@@ -58,20 +69,67 @@
 
 新增接口：
 
-* [VerifyBasicBizLicense](https://cloud.tencent.com/document/api/866/47279)
-* [VerifyBizLicense](https://cloud.tencent.com/document/api/866/47278)
+* [RideHailingTransportLicenseOCR](https://cloud.tencent.com/document/api/866/47325)
+* [VatInvoiceVerify](https://cloud.tencent.com/document/api/866/47324)
 
 新增数据结构：
 
-* [BizLicenseVerifyResult](https://cloud.tencent.com/document/api/866/33527#BizLicenseVerifyResult)
+* [VatInvoice](https://cloud.tencent.com/document/api/866/33527#VatInvoice)
+
+修改数据结构：
+
+* [CarInvoiceInfo](https://cloud.tencent.com/document/api/866/33527#CarInvoiceInfo)
+
+	* 新增成员：Rect
 
 
 
-## 云函数(scf) 版本：2018-04-16
 
-### 第 17 次发布
+## 云数据库 SQL Server(sqlserver) 版本：2018-03-28
 
-发布时间：2020-08-10 08:17:16
+### 第 11 次发布
+
+发布时间：2020-08-11 08:21:16
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CompleteMigration](https://cloud.tencent.com/document/api/238/47330)
+* [DescribeMigrationDatabases](https://cloud.tencent.com/document/api/238/47329)
+* [QueryMigrationCheckProcess](https://cloud.tencent.com/document/api/238/47328)
+* [StartMigrationCheck](https://cloud.tencent.com/document/api/238/47327)
+* [StopMigration](https://cloud.tencent.com/document/api/238/47326)
+
+新增数据结构：
+
+* [StepDetail](https://cloud.tencent.com/document/api/238/19976#StepDetail)
+
+
+
+## 容器镜像服务(tcr) 版本：2019-09-24
+
+### 第 14 次发布
+
+发布时间：2020-08-11 08:28:16
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DeleteImage](https://cloud.tencent.com/document/api/1141/47331)
+
+
+
+## 腾讯微服务平台 TSF(tsf) 版本：2018-03-26
+
+### 第 25 次发布
+
+发布时间：2020-08-11 08:24:17
 
 本次发布包含了以下内容：
 
@@ -79,17 +137,30 @@
 
 修改接口：
 
-* [CreateFunction](https://cloud.tencent.com/document/api/583/18586)
+* [DeployContainerGroup](https://cloud.tencent.com/document/api/649/36071)
 
-	* 新增入参：InitTimeout
+	* 新增入参：HealthCheckSettings, Envs, ServiceSetting
 
-* [GetFunction](https://cloud.tencent.com/document/api/583/18584)
+* [DeployGroup](https://cloud.tencent.com/document/api/649/36070)
 
-	* 新增出参：InitTimeout
+	* 新增入参：DeployDesc
 
-* [UpdateFunctionConfiguration](https://cloud.tencent.com/document/api/583/18580)
 
-	* 新增入参：InitTimeout
+新增数据结构：
+
+* [HealthCheckSetting](https://cloud.tencent.com/document/api/649/36099#HealthCheckSetting)
+* [HealthCheckSettings](https://cloud.tencent.com/document/api/649/36099#HealthCheckSettings)
+* [ServiceSetting](https://cloud.tencent.com/document/api/649/36099#ServiceSetting)
+
+修改数据结构：
+
+* [VmGroup](https://cloud.tencent.com/document/api/649/36099#VmGroup)
+
+	* 新增成员：DeployDesc
+
+* [VmGroupSimple](https://cloud.tencent.com/document/api/649/36099#VmGroupSimple)
+
+	* 新增成员：DeployDesc
 
 
 
@@ -1394,6 +1465,21 @@
 
 
 ## 语音识别(asr) 版本：2019-06-14
+
+### 第 10 次发布
+
+发布时间：2020-08-11 08:00:18
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateRecTask](https://cloud.tencent.com/document/api/1093/37823)
+
+	* 新增入参：FilterPunc
+
 
 ### 第 9 次发布
 
@@ -5867,6 +5953,21 @@
 
 
 ## 内容分发网络(cdn) 版本：2018-06-06
+
+### 第 29 次发布
+
+发布时间：2020-08-11 08:08:54
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [PushUrlsCache](https://cloud.tencent.com/document/api/228/37869)
+
+	* 新增入参：Layer
+
 
 ### 第 28 次发布
 
@@ -12268,7 +12369,7 @@
 
 新增接口：
 
-* [[ModifyModuleIpDirect](https://cloud.tencent.com/document/api/1108/47275)](https://cloud.tencent.com/document/api/#/#)
+* [ModifyModuleIpDirect](https://cloud.tencent.com/document/api/1108/47275)
 
 修改接口：
 
@@ -13520,7 +13621,7 @@
 
 新增接口：
 
-* [[CheckIdCardInformation](https://cloud.tencent.com/document/api/1007/47276)](https://cloud.tencent.com/document/api/#/#)
+* [CheckIdCardInformation](https://cloud.tencent.com/document/api/1007/47276)
 
 ### 第 13 次发布
 
@@ -16235,6 +16336,21 @@
 
 
 ## 物联网开发平台(iotexplorer) 版本：2019-04-23
+
+### 第 11 次发布
+
+发布时间：2020-08-11 08:15:57
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DeleteDevice](https://cloud.tencent.com/document/api/1081/37177)
+
+	* 新增出参：ResultCode, ResultMessage
+
 
 ### 第 10 次发布
 
@@ -20405,6 +20521,30 @@
 
 ## 文字识别(ocr) 版本：2018-11-19
 
+### 第 31 次发布
+
+发布时间：2020-08-11 08:18:56
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[RideHailingTransportLicenseOCR](https://cloud.tencent.com/document/api/866/47325)](https://cloud.tencent.com/document/api/#/#)
+* [[VatInvoiceVerify](https://cloud.tencent.com/document/api/866/47324)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[VatInvoice](https://cloud.tencent.com/document/api/866/33527#VatInvoice)](https://cloud.tencent.com/document/api/866/33527#[VatInvoice](https://cloud.tencent.com/document/api/866/33527#VatInvoice))
+
+修改数据结构：
+
+* [CarInvoiceInfo](https://cloud.tencent.com/document/api/866/33527#CarInvoiceInfo)
+
+	* 新增成员：Rect
+
+
 ### 第 30 次发布
 
 发布时间：2020-08-10 08:15:56
@@ -20415,12 +20555,12 @@
 
 新增接口：
 
-* [[VerifyBasicBizLicense](https://cloud.tencent.com/document/api/866/47279)](https://cloud.tencent.com/document/api/#/#)
-* [[VerifyBizLicense](https://cloud.tencent.com/document/api/866/47278)](https://cloud.tencent.com/document/api/#/#)
+* [VerifyBasicBizLicense](https://cloud.tencent.com/document/api/866/47279)
+* [VerifyBizLicense](https://cloud.tencent.com/document/api/866/47278)
 
 新增数据结构：
 
-* [[BizLicenseVerifyResult](https://cloud.tencent.com/document/api/866/33527#BizLicenseVerifyResult)](https://cloud.tencent.com/document/api/866/33527#[BizLicenseVerifyResult](https://cloud.tencent.com/document/api/866/33527#BizLicenseVerifyResult))
+* [BizLicenseVerifyResult](https://cloud.tencent.com/document/api/866/33527#BizLicenseVerifyResult)
 
 ### 第 29 次发布
 
@@ -23059,6 +23199,26 @@
 
 ## 云数据库 SQL Server(sqlserver) 版本：2018-03-28
 
+### 第 11 次发布
+
+发布时间：2020-08-11 08:21:16
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[CompleteMigration](https://cloud.tencent.com/document/api/238/47330)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeMigrationDatabases](https://cloud.tencent.com/document/api/238/47329)](https://cloud.tencent.com/document/api/#/#)
+* [[QueryMigrationCheckProcess](https://cloud.tencent.com/document/api/238/47328)](https://cloud.tencent.com/document/api/#/#)
+* [[StartMigrationCheck](https://cloud.tencent.com/document/api/238/47327)](https://cloud.tencent.com/document/api/#/#)
+* [[StopMigration](https://cloud.tencent.com/document/api/238/47326)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[StepDetail](https://cloud.tencent.com/document/api/238/19976#StepDetail)](https://cloud.tencent.com/document/api/238/19976#[StepDetail](https://cloud.tencent.com/document/api/238/19976#StepDetail))
+
 ### 第 10 次发布
 
 发布时间：2020-08-07 08:17:08
@@ -25164,6 +25324,18 @@
 
 
 ## 容器镜像服务(tcr) 版本：2019-09-24
+
+### 第 14 次发布
+
+发布时间：2020-08-11 08:28:16
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DeleteImage](https://cloud.tencent.com/document/api/1141/47331)](https://cloud.tencent.com/document/api/#/#)
 
 ### 第 13 次发布
 
@@ -27539,6 +27711,42 @@
 
 
 ## 腾讯微服务平台 TSF(tsf) 版本：2018-03-26
+
+### 第 25 次发布
+
+发布时间：2020-08-11 08:24:17
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DeployContainerGroup](https://cloud.tencent.com/document/api/649/36071)
+
+	* 新增入参：HealthCheckSettings, Envs, ServiceSetting
+
+* [DeployGroup](https://cloud.tencent.com/document/api/649/36070)
+
+	* 新增入参：DeployDesc
+
+
+新增数据结构：
+
+* [[HealthCheckSetting](https://cloud.tencent.com/document/api/649/36099#HealthCheckSetting)](https://cloud.tencent.com/document/api/649/36099#[HealthCheckSetting](https://cloud.tencent.com/document/api/649/36099#HealthCheckSetting))
+* [[HealthCheckSettings](https://cloud.tencent.com/document/api/649/36099#HealthCheckSettings)](https://cloud.tencent.com/document/api/649/36099#[HealthCheckSettings](https://cloud.tencent.com/document/api/649/36099#HealthCheckSettings))
+* [[ServiceSetting](https://cloud.tencent.com/document/api/649/36099#ServiceSetting)](https://cloud.tencent.com/document/api/649/36099#[ServiceSetting](https://cloud.tencent.com/document/api/649/36099#ServiceSetting))
+
+修改数据结构：
+
+* [VmGroup](https://cloud.tencent.com/document/api/649/36099#VmGroup)
+
+	* 新增成员：DeployDesc
+
+* [VmGroupSimple](https://cloud.tencent.com/document/api/649/36099#VmGroupSimple)
+
+	* 新增成员：DeployDesc
+
 
 ### 第 24 次发布
 

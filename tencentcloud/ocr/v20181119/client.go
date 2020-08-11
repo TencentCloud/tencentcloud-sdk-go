@@ -1372,6 +1372,32 @@ func (c *Client) RideHailingDriverLicenseOCR(request *RideHailingDriverLicenseOC
     return
 }
 
+func NewRideHailingTransportLicenseOCRRequest() (request *RideHailingTransportLicenseOCRRequest) {
+    request = &RideHailingTransportLicenseOCRRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ocr", APIVersion, "RideHailingTransportLicenseOCR")
+    return
+}
+
+func NewRideHailingTransportLicenseOCRResponse() (response *RideHailingTransportLicenseOCRResponse) {
+    response = &RideHailingTransportLicenseOCRResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口支持网约车运输证关键字段的识别，包括交运管许可字号、车辆所有人、车辆号牌、起始日期、截止日期、发证日期。
+//            
+func (c *Client) RideHailingTransportLicenseOCR(request *RideHailingTransportLicenseOCRRequest) (response *RideHailingTransportLicenseOCRResponse, err error) {
+    if request == nil {
+        request = NewRideHailingTransportLicenseOCRRequest()
+    }
+    response = NewRideHailingTransportLicenseOCRResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewSealOCRRequest() (request *SealOCRRequest) {
     request = &SealOCRRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1568,6 +1594,31 @@ func (c *Client) VatInvoiceOCR(request *VatInvoiceOCRRequest) (response *VatInvo
         request = NewVatInvoiceOCRRequest()
     }
     response = NewVatInvoiceOCRResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewVatInvoiceVerifyRequest() (request *VatInvoiceVerifyRequest) {
+    request = &VatInvoiceVerifyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ocr", APIVersion, "VatInvoiceVerify")
+    return
+}
+
+func NewVatInvoiceVerifyResponse() (response *VatInvoiceVerifyResponse) {
+    response = &VatInvoiceVerifyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口支持增值税发票的准确性核验，您可以通过输入增值税发票的关键字段提供所需的验证信息，接口返回真实的票面相关信息，包括发票代码、发票号码、开票日期、金额、消费类型、购方名称、购方税号、销方名称、销方税号等多个常用字段。支持多种发票类型核验，包括增值税专用发票、增值税普通发票（含电子普通发票、卷式发票、通行费发票）、机动车销售统一发票、货物运输业增值税专用发票、二手车销售统一发票。
+func (c *Client) VatInvoiceVerify(request *VatInvoiceVerifyRequest) (response *VatInvoiceVerifyResponse, err error) {
+    if request == nil {
+        request = NewVatInvoiceVerifyRequest()
+    }
+    response = NewVatInvoiceVerifyResponse()
     err = c.Send(request, response)
     return
 }

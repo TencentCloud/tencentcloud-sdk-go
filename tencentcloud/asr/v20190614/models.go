@@ -100,7 +100,7 @@ type CreateRecTaskRequest struct {
 	// 语音数据，当SourceType 值为1时必须填写，为0可不写。要base64编码(采用python语言时注意读取文件应该为string而不是byte，以byte格式读取后要decode()。编码后的数据不可带有回车换行符)。音频数据要小于5MB。
 	Data *string `json:"Data,omitempty" name:"Data"`
 
-	// 数据长度，当 SourceType 值为1时必须填写，为0可不写（此数据长度为数据未进行base64编码时的数据长度）。
+	// 数据长度，非必填（此数据长度为数据未进行base64编码时的数据长度）。
 	DataLen *uint64 `json:"DataLen,omitempty" name:"DataLen"`
 
 	// 热词id。用于调用对应的热词表，如果在调用语音识别服务时，不进行单独的热词id设置，自动生效默认热词；如果进行了单独的热词id设置，那么将生效单独设置的热词id。
@@ -124,6 +124,9 @@ type CreateRecTaskRequest struct {
 	// 话者分离人数（需配合开启话者分离使用），支持2-10（8k_zh仅支持2， 16k_zh支持2-10）
 	// 注：话者分离目前是beta版本，请根据您的需要谨慎使用
 	SpeakerNumber *int64 `json:"SpeakerNumber,omitempty" name:"SpeakerNumber"`
+
+	// 是否过滤标点符号（目前支持中文普通话引擎）。 0：不过滤，1：过滤句末标点，2：过滤所有标点。默认为0。
+	FilterPunc *int64 `json:"FilterPunc,omitempty" name:"FilterPunc"`
 }
 
 func (r *CreateRecTaskRequest) ToJsonString() string {

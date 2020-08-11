@@ -93,6 +93,31 @@ func (c *Client) CompleteExpansion(request *CompleteExpansionRequest) (response 
     return
 }
 
+func NewCompleteMigrationRequest() (request *CompleteMigrationRequest) {
+    request = &CompleteMigrationRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("sqlserver", APIVersion, "CompleteMigration")
+    return
+}
+
+func NewCompleteMigrationResponse() (response *CompleteMigrationResponse) {
+    response = &CompleteMigrationResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（CompleteMigration）作用是完成一个迁移任务
+func (c *Client) CompleteMigration(request *CompleteMigrationRequest) (response *CompleteMigrationResponse, err error) {
+    if request == nil {
+        request = NewCompleteMigrationRequest()
+    }
+    response = NewCompleteMigrationResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateAccountRequest() (request *CreateAccountRequest) {
     request = &CreateAccountRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -639,6 +664,31 @@ func (c *Client) DescribeMaintenanceSpan(request *DescribeMaintenanceSpanRequest
         request = NewDescribeMaintenanceSpanRequest()
     }
     response = NewDescribeMaintenanceSpanResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeMigrationDatabasesRequest() (request *DescribeMigrationDatabasesRequest) {
+    request = &DescribeMigrationDatabasesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("sqlserver", APIVersion, "DescribeMigrationDatabases")
+    return
+}
+
+func NewDescribeMigrationDatabasesResponse() (response *DescribeMigrationDatabasesResponse) {
+    response = &DescribeMigrationDatabasesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（DescribeMigrationDatabases）的作用是查询待迁移数据库列表
+func (c *Client) DescribeMigrationDatabases(request *DescribeMigrationDatabasesRequest) (response *DescribeMigrationDatabasesResponse, err error) {
+    if request == nil {
+        request = NewDescribeMigrationDatabasesRequest()
+    }
+    response = NewDescribeMigrationDatabasesResponse()
     err = c.Send(request, response)
     return
 }
@@ -1418,6 +1468,31 @@ func (c *Client) ModifyReadOnlyGroupDetails(request *ModifyReadOnlyGroupDetailsR
     return
 }
 
+func NewQueryMigrationCheckProcessRequest() (request *QueryMigrationCheckProcessRequest) {
+    request = &QueryMigrationCheckProcessRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("sqlserver", APIVersion, "QueryMigrationCheckProcess")
+    return
+}
+
+func NewQueryMigrationCheckProcessResponse() (response *QueryMigrationCheckProcessResponse) {
+    response = &QueryMigrationCheckProcessResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（QueryMigrationCheckProcess）的作用是查询迁移检查任务的进度，适用于迁移源的类型为TencentDB for SQLServer 的迁移方式
+func (c *Client) QueryMigrationCheckProcess(request *QueryMigrationCheckProcessRequest) (response *QueryMigrationCheckProcessResponse, err error) {
+    if request == nil {
+        request = NewQueryMigrationCheckProcessRequest()
+    }
+    response = NewQueryMigrationCheckProcessResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewRemoveBackupsRequest() (request *RemoveBackupsRequest) {
     request = &RemoveBackupsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1614,6 +1689,56 @@ func (c *Client) RunMigration(request *RunMigrationRequest) (response *RunMigrat
         request = NewRunMigrationRequest()
     }
     response = NewRunMigrationResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewStartMigrationCheckRequest() (request *StartMigrationCheckRequest) {
+    request = &StartMigrationCheckRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("sqlserver", APIVersion, "StartMigrationCheck")
+    return
+}
+
+func NewStartMigrationCheckResponse() (response *StartMigrationCheckResponse) {
+    response = &StartMigrationCheckResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（StartMigrationCheck）的作用是启动一个迁移前的校验任务，适用于迁移源的类型为TencentDB for SQLServer 的迁移方式
+func (c *Client) StartMigrationCheck(request *StartMigrationCheckRequest) (response *StartMigrationCheckResponse, err error) {
+    if request == nil {
+        request = NewStartMigrationCheckRequest()
+    }
+    response = NewStartMigrationCheckResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewStopMigrationRequest() (request *StopMigrationRequest) {
+    request = &StopMigrationRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("sqlserver", APIVersion, "StopMigration")
+    return
+}
+
+func NewStopMigrationResponse() (response *StopMigrationResponse) {
+    response = &StopMigrationResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（StopMigration）作用是中止一个迁移任务
+func (c *Client) StopMigration(request *StopMigrationRequest) (response *StopMigrationResponse, err error) {
+    if request == nil {
+        request = NewStopMigrationRequest()
+    }
+    response = NewStopMigrationResponse()
     err = c.Send(request, response)
     return
 }

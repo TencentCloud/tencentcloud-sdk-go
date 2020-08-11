@@ -2095,6 +2095,15 @@ type DeployContainerGroupRequest struct {
 
 	// kubernetes滚动更新策略的MaxUnavailable参数
 	MaxUnavailable *string `json:"MaxUnavailable,omitempty" name:"MaxUnavailable"`
+
+	// 健康检查配置信息，若不指定该参数，则默认不设置健康检查。
+	HealthCheckSettings *HealthCheckSettings `json:"HealthCheckSettings,omitempty" name:"HealthCheckSettings"`
+
+	// 部署组应用运行的环境变量。若不指定该参数，则默认不设置额外的环境变量。
+	Envs []*Env `json:"Envs,omitempty" name:"Envs" list`
+
+	// 容器部署组的网络设置。
+	ServiceSetting *ServiceSetting `json:"ServiceSetting,omitempty" name:"ServiceSetting"`
 }
 
 func (r *DeployContainerGroupRequest) ToJsonString() string {
@@ -2140,6 +2149,9 @@ type DeployGroupRequest struct {
 
 	// 部署组启动参数
 	StartupParameters *string `json:"StartupParameters,omitempty" name:"StartupParameters"`
+
+	// 部署应用描述信息
+	DeployDesc *string `json:"DeployDesc,omitempty" name:"DeployDesc"`
 }
 
 func (r *DeployGroupRequest) ToJsonString() string {
@@ -4287,6 +4299,60 @@ type GroupPodResult struct {
 	Content []*GroupPod `json:"Content,omitempty" name:"Content" list`
 }
 
+type HealthCheckSetting struct {
+
+	// 健康检查方法。HTTP：通过 HTTP 接口检查；CMD：通过执行命令检查；TCP：通过建立 TCP 连接检查。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ActionType *string `json:"ActionType,omitempty" name:"ActionType"`
+
+	// 容器延时启动健康检查的时间。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InitialDelaySeconds *uint64 `json:"InitialDelaySeconds,omitempty" name:"InitialDelaySeconds"`
+
+	// 每次健康检查响应的最大超时时间。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TimeoutSeconds *uint64 `json:"TimeoutSeconds,omitempty" name:"TimeoutSeconds"`
+
+	// 进行健康检查的时间间隔。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PeriodSeconds *uint64 `json:"PeriodSeconds,omitempty" name:"PeriodSeconds"`
+
+	// 表示后端容器从失败到成功的连续健康检查成功次数。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SuccessThreshold *uint64 `json:"SuccessThreshold,omitempty" name:"SuccessThreshold"`
+
+	// 表示后端容器从成功到失败的连续健康检查成功次数。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FailureThreshold *uint64 `json:"FailureThreshold,omitempty" name:"FailureThreshold"`
+
+	// HTTP 健康检查方法使用的检查协议。支持HTTP、HTTPS。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Scheme *string `json:"Scheme,omitempty" name:"Scheme"`
+
+	// 健康检查端口，范围 1~65535 。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Port *uint64 `json:"Port,omitempty" name:"Port"`
+
+	// HTTP 健康检查接口的请求路径。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Path *string `json:"Path,omitempty" name:"Path"`
+
+	// 执行命令检查方式，执行的命令。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Command []*string `json:"Command,omitempty" name:"Command" list`
+}
+
+type HealthCheckSettings struct {
+
+	// 存活健康检查
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LivenessProbe *HealthCheckSetting `json:"LivenessProbe,omitempty" name:"LivenessProbe"`
+
+	// 就绪健康检查
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ReadinessProbe *HealthCheckSetting `json:"ReadinessProbe,omitempty" name:"ReadinessProbe"`
+}
+
 type ImageTag struct {
 
 	// 仓库名
@@ -5658,6 +5724,21 @@ type ServerlessGroupPage struct {
 	Content []*ServerlessGroup `json:"Content,omitempty" name:"Content" list`
 }
 
+type ServiceSetting struct {
+
+	// 0:公网 1:集群内访问 2：NodePort
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AccessType *int64 `json:"AccessType,omitempty" name:"AccessType"`
+
+	// 容器端口映射
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProtocolPorts *ProtocolPort `json:"ProtocolPorts,omitempty" name:"ProtocolPorts"`
+
+	// 子网ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
+}
+
 type ShrinkGroupRequest struct {
 	*tchttp.BaseRequest
 
@@ -6274,6 +6355,10 @@ type VmGroup struct {
 	// 部署组更新时间戳
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpdatedTime *int64 `json:"UpdatedTime,omitempty" name:"UpdatedTime"`
+
+	// 部署应用描述信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DeployDesc *string `json:"DeployDesc,omitempty" name:"DeployDesc"`
 }
 
 type VmGroupSimple struct {
@@ -6341,4 +6426,8 @@ type VmGroupSimple struct {
 	// 部署组更新时间戳
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpdatedTime *int64 `json:"UpdatedTime,omitempty" name:"UpdatedTime"`
+
+	// 部署应用描述信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DeployDesc *string `json:"DeployDesc,omitempty" name:"DeployDesc"`
 }

@@ -368,6 +368,31 @@ func (c *Client) DeleteApplicationTriggerPersonal(request *DeleteApplicationTrig
     return
 }
 
+func NewDeleteImageRequest() (request *DeleteImageRequest) {
+    request = &DeleteImageRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tcr", APIVersion, "DeleteImage")
+    return
+}
+
+func NewDeleteImageResponse() (response *DeleteImageResponse) {
+    response = &DeleteImageResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 删除指定镜像
+func (c *Client) DeleteImage(request *DeleteImageRequest) (response *DeleteImageResponse, err error) {
+    if request == nil {
+        request = NewDeleteImageRequest()
+    }
+    response = NewDeleteImageResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteImageLifecycleGlobalPersonalRequest() (request *DeleteImageLifecycleGlobalPersonalRequest) {
     request = &DeleteImageLifecycleGlobalPersonalRequest{
         BaseRequest: &tchttp.BaseRequest{},

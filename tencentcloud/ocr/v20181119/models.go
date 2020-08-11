@@ -357,6 +357,9 @@ type CarInvoiceInfo struct {
 
 	// 识别出的字段名称对应的值，也就是字段name对应的字符串结果。
 	Value *string `json:"Value,omitempty" name:"Value"`
+
+	// 文本行在旋转纠正之后的图像中的像素坐标。
+	Rect *Rect `json:"Rect,omitempty" name:"Rect"`
 }
 
 type CarInvoiceOCRRequest struct {
@@ -3045,6 +3048,63 @@ func (r *RideHailingDriverLicenseOCRResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type RideHailingTransportLicenseOCRRequest struct {
+	*tchttp.BaseRequest
+
+	// 图片的 Base64 值。要求图片经Base64编码后不超过 7M，分辨率建议500*800以上，支持PNG、JPG、JPEG、BMP格式。建议卡片部分占据图片2/3以上。
+	// 图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+	ImageBase64 *string `json:"ImageBase64,omitempty" name:"ImageBase64"`
+
+	// 图片的 Url 地址。要求图片经Base64编码后不超过 7M，分辨率建议500*800以上，支持PNG、JPG、JPEG、BMP格式。建议卡片部分占据图片2/3以上。图片下载时间不超过 3 秒。
+	// 建议图片存储于腾讯云，可保障更高的下载速度和稳定性。
+	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
+}
+
+func (r *RideHailingTransportLicenseOCRRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *RideHailingTransportLicenseOCRRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type RideHailingTransportLicenseOCRResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 交运管许可字号。
+		OperationLicenseNumber *string `json:"OperationLicenseNumber,omitempty" name:"OperationLicenseNumber"`
+
+		// 车辆所有人，对应网约车运输证字段：车辆所有人/车主名称/业户名称。
+		VehicleOwner *string `json:"VehicleOwner,omitempty" name:"VehicleOwner"`
+
+		// 车牌号码，对应网约车运输证字段：车牌号码/车辆号牌。
+		VehicleNumber *string `json:"VehicleNumber,omitempty" name:"VehicleNumber"`
+
+		// 有效起始日期。
+		StartDate *string `json:"StartDate,omitempty" name:"StartDate"`
+
+		// 有效期截止时间，对应网约车运输证字段：有效期至/营运期限止。
+		EndDate *string `json:"EndDate,omitempty" name:"EndDate"`
+
+		// 初始发证日期，对应网约车运输证字段：初始领证日期/发证日期。
+		ReleaseDate *string `json:"ReleaseDate,omitempty" name:"ReleaseDate"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *RideHailingTransportLicenseOCRResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *RideHailingTransportLicenseOCRResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type SealOCRRequest struct {
 	*tchttp.BaseRequest
 
@@ -3754,6 +3814,89 @@ func (r *TrainTicketOCRResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type VatInvoice struct {
+
+	// 发票代码
+	Code *string `json:"Code,omitempty" name:"Code"`
+
+	// 发票号码
+	Number *string `json:"Number,omitempty" name:"Number"`
+
+	// 开票日期
+	Date *string `json:"Date,omitempty" name:"Date"`
+
+	// 购方抬头
+	BuyerName *string `json:"BuyerName,omitempty" name:"BuyerName"`
+
+	// 购方税号
+	BuyerTaxCode *string `json:"BuyerTaxCode,omitempty" name:"BuyerTaxCode"`
+
+	// 购方地址电话
+	BuyerAddressPhone *string `json:"BuyerAddressPhone,omitempty" name:"BuyerAddressPhone"`
+
+	// 购方银行账号
+	BuyerBankAccount *string `json:"BuyerBankAccount,omitempty" name:"BuyerBankAccount"`
+
+	// 销方名称
+	SellerName *string `json:"SellerName,omitempty" name:"SellerName"`
+
+	// 销方税号
+	SellerTaxCode *string `json:"SellerTaxCode,omitempty" name:"SellerTaxCode"`
+
+	// 销方地址电话
+	SellerAddressPhone *string `json:"SellerAddressPhone,omitempty" name:"SellerAddressPhone"`
+
+	// 销方银行账号
+	SellerBankAccount *string `json:"SellerBankAccount,omitempty" name:"SellerBankAccount"`
+
+	// 备注
+	Remark *string `json:"Remark,omitempty" name:"Remark"`
+
+	// 机器编码
+	MachineNo *string `json:"MachineNo,omitempty" name:"MachineNo"`
+
+	// 发票类型
+	// 01：专用发票 
+	// 02：货运发票
+	// 03：机动车发票 
+	// 04：普通发票 
+	// 10：电子发票 
+	// 11：卷式发票 
+	// 14：通行费发票 
+	// 15：二手车发票
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 检验码
+	CheckCode *string `json:"CheckCode,omitempty" name:"CheckCode"`
+
+	// 是否作废（红冲）是否作废（红冲）
+	// Y: 已作废 N：未作废 H：红冲
+	IsAbandoned *string `json:"IsAbandoned,omitempty" name:"IsAbandoned"`
+
+	// 是否有销货清单 
+	// Y: 有清单 N：无清单 
+	// 卷票无
+	HasSellerList *string `json:"HasSellerList,omitempty" name:"HasSellerList"`
+
+	// 销货清单标题
+	SellerListTitle *string `json:"SellerListTitle,omitempty" name:"SellerListTitle"`
+
+	// 销货清单税额
+	SellerListTax *string `json:"SellerListTax,omitempty" name:"SellerListTax"`
+
+	// 不含税金额
+	AmountWithoutTax *string `json:"AmountWithoutTax,omitempty" name:"AmountWithoutTax"`
+
+	// 税额
+	TaxAmount *string `json:"TaxAmount,omitempty" name:"TaxAmount"`
+
+	// 含税金额
+	AmountWithTax *string `json:"AmountWithTax,omitempty" name:"AmountWithTax"`
+
+	// 项目明细
+	Items []*VatInvoiceItem `json:"Items,omitempty" name:"Items" list`
+}
+
 type VatInvoiceItem struct {
 
 	// 行号
@@ -3831,6 +3974,57 @@ func (r *VatInvoiceOCRResponse) ToJsonString() string {
 }
 
 func (r *VatInvoiceOCRResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type VatInvoiceVerifyRequest struct {
+	*tchttp.BaseRequest
+
+	// 发票代码， 一张发票一天只能查询5次。
+	InvoiceCode *string `json:"InvoiceCode,omitempty" name:"InvoiceCode"`
+
+	// 发票号码（8位）。
+	InvoiceNo *string `json:"InvoiceNo,omitempty" name:"InvoiceNo"`
+
+	// 开票日期（不支持当天发票查询，只支持一年以内），如：2019-12-20。
+	InvoiceDate *string `json:"InvoiceDate,omitempty" name:"InvoiceDate"`
+
+	// 金额/发票校验码后6位（根据票种传递对应值，如果报参数错误，请仔细检查每个票种对应的值）
+	// 增值税专用发票：开具金额（不含税）
+	// 增值税普通发票、增值税电子普通发票（含通行费发票）、增值税普通发票（卷票）：校验码后6位
+	// 机动车销售统一发票：不含税价
+	// 货物运输业增值税专用发票：合计金额
+	// 二手车销售统一发票：车价合计
+	Additional *string `json:"Additional,omitempty" name:"Additional"`
+}
+
+func (r *VatInvoiceVerifyRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *VatInvoiceVerifyRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type VatInvoiceVerifyResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 增值税发票信息，详情请点击左侧链接。
+		Invoice *VatInvoice `json:"Invoice,omitempty" name:"Invoice"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *VatInvoiceVerifyResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *VatInvoiceVerifyResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
