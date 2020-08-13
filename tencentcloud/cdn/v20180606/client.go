@@ -278,6 +278,32 @@ func (c *Client) DescribeCertDomains(request *DescribeCertDomainsRequest) (respo
     return
 }
 
+func NewDescribeDistrictIspDataRequest() (request *DescribeDistrictIspDataRequest) {
+    request = &DescribeDistrictIspDataRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cdn", APIVersion, "DescribeDistrictIspData")
+    return
+}
+
+func NewDescribeDistrictIspDataResponse() (response *DescribeDistrictIspDataResponse) {
+    response = &DescribeDistrictIspDataResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询指定域名的区域、运营商明细数据
+// 注意事项：接口尚未全量开放，未在内测名单中的账号不支持调用
+func (c *Client) DescribeDistrictIspData(request *DescribeDistrictIspDataRequest) (response *DescribeDistrictIspDataResponse, err error) {
+    if request == nil {
+        request = NewDescribeDistrictIspDataRequest()
+    }
+    response = NewDescribeDistrictIspDataResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeDomainsRequest() (request *DescribeDomainsRequest) {
     request = &DescribeDomainsRequest{
         BaseRequest: &tchttp.BaseRequest{},

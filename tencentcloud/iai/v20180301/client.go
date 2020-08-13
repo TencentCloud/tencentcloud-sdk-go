@@ -43,6 +43,31 @@ func NewClient(credential *common.Credential, region string, clientProfile *prof
 }
 
 
+func NewAnalyzeDenseLandmarksRequest() (request *AnalyzeDenseLandmarksRequest) {
+    request = &AnalyzeDenseLandmarksRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iai", APIVersion, "AnalyzeDenseLandmarks")
+    return
+}
+
+func NewAnalyzeDenseLandmarksResponse() (response *AnalyzeDenseLandmarksResponse) {
+    response = &AnalyzeDenseLandmarksResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 对请求图片进行五官定位（也称人脸关键点定位），获得人脸的精准信息，返回多达888点关键信息，对五官和脸部轮廓进行精确定位。
+func (c *Client) AnalyzeDenseLandmarks(request *AnalyzeDenseLandmarksRequest) (response *AnalyzeDenseLandmarksResponse, err error) {
+    if request == nil {
+        request = NewAnalyzeDenseLandmarksRequest()
+    }
+    response = NewAnalyzeDenseLandmarksResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewAnalyzeFaceRequest() (request *AnalyzeFaceRequest) {
     request = &AnalyzeFaceRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -385,6 +410,53 @@ func (c *Client) DetectFace(request *DetectFaceRequest) (response *DetectFaceRes
         request = NewDetectFaceRequest()
     }
     response = NewDetectFaceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDetectFaceAttributesRequest() (request *DetectFaceAttributesRequest) {
+    request = &DetectFaceAttributesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iai", APIVersion, "DetectFaceAttributes")
+    return
+}
+
+func NewDetectFaceAttributesResponse() (response *DetectFaceAttributesResponse) {
+    response = &DetectFaceAttributesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 检测给定图片中的人脸（Face）的位置、相应的面部属性和人脸质量信息，位置包括 (x，y，w，h)，面部属性包括性别（gender）、年龄（age）、表情（expression）、魅力（beauty）、眼镜（glass）、发型（hair）、口罩（mask）和姿态 (pitch，roll，yaw)，人脸质量信息包括整体质量分（score）、模糊分（sharpness）、光照分（brightness）和五官遮挡分（completeness）。
+// 
+//  
+// 其中，人脸质量信息主要用于评价输入的人脸图片的质量。在使用人脸识别服务时，建议您对输入的人脸图片进行质量检测，提升后续业务处理的效果。该功能的应用场景包括：
+// 
+// 1） 人员库[创建人员](https://cloud.tencent.com/document/product/867/32793)/[增加人脸](https://cloud.tencent.com/document/product/867/32795)：保证人员人脸信息的质量，便于后续的业务处理。
+// 
+// 2） [人脸搜索](https://cloud.tencent.com/document/product/867/32798)：保证输入的图片质量，快速准确匹配到对应的人员。
+// 
+// 3） [人脸验证](https://cloud.tencent.com/document/product/867/32806)：保证人脸信息的质量，避免明明是本人却认证不通过的情况。
+// 
+// 4） [人脸融合](https://cloud.tencent.com/product/facefusion)：保证上传的人脸质量，人脸融合的效果更好。
+// 
+// >     
+// - 本接口是[人脸检测与分析](https://cloud.tencent.com/document/product/867/32800)的升级，具体在于：
+// 
+// 1.本接口可以指定需要计算返回的人脸属性，避免无效计算，降低耗时；
+// 
+// 2.本接口支持更多属性细项数，也会持续增加更多功能。
+// 
+// 请您使用本接口完成相应的人脸检测与属性分析需求。
+// 
+// - 公共参数中的签名方式请使用V3版本，即配置SignatureMethod参数为TC3-HMAC-SHA256。
+func (c *Client) DetectFaceAttributes(request *DetectFaceAttributesRequest) (response *DetectFaceAttributesResponse, err error) {
+    if request == nil {
+        request = NewDetectFaceAttributesRequest()
+    }
+    response = NewDetectFaceAttributesResponse()
     err = c.Send(request, response)
     return
 }

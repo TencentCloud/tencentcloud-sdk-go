@@ -241,6 +241,91 @@ func (r *DescribeMusicResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribePackageItemsRequest struct {
+	*tchttp.BaseRequest
+
+	// 订单id
+	OrderId *string `json:"OrderId,omitempty" name:"OrderId"`
+
+	// 默认0
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 默认20
+	Length *uint64 `json:"Length,omitempty" name:"Length"`
+}
+
+func (r *DescribePackageItemsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribePackageItemsRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribePackageItemsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 歌曲信息数组
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		PackageItems []*PackageItem `json:"PackageItems,omitempty" name:"PackageItems" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribePackageItemsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribePackageItemsResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribePackagesRequest struct {
+	*tchttp.BaseRequest
+
+	// 默认0
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 默认20
+	Length *uint64 `json:"Length,omitempty" name:"Length"`
+}
+
+func (r *DescribePackagesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribePackagesRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribePackagesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 已购曲库包数组
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Packages []*Package `json:"Packages,omitempty" name:"Packages" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribePackagesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribePackagesResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeStationsRequest struct {
 	*tchttp.BaseRequest
 
@@ -321,6 +406,10 @@ type Item struct {
 	// 多个歌手集合
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Artists []*Artist `json:"Artists,omitempty" name:"Artists" list`
+
+	// 歌曲状态，1:添加进购物车；2:核销进曲库包
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *int64 `json:"Status,omitempty" name:"Status"`
 }
 
 type Lyric struct {
@@ -357,6 +446,66 @@ type Music struct {
 	// 音乐播放链接全路径，前提是在正版曲库直通车控制台添加过域名，否则返回空字符。
 	// 如果添加过多个域名只返回第一个添加域名的播放全路径。
 	FullUrl *string `json:"FullUrl,omitempty" name:"FullUrl"`
+}
+
+type Package struct {
+
+	// 订单id
+	OrderId *string `json:"OrderId,omitempty" name:"OrderId"`
+
+	// 曲库包名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 授权地区-global: 全球  CN: 中国
+	AuthorizedArea *string `json:"AuthorizedArea,omitempty" name:"AuthorizedArea"`
+
+	// 授权次数
+	AuthorizedLimit *int64 `json:"AuthorizedLimit,omitempty" name:"AuthorizedLimit"`
+
+	// 套餐有效期，单位:天
+	TermOfValidity *int64 `json:"TermOfValidity,omitempty" name:"TermOfValidity"`
+
+	// 0:不可商业化；1:可商业化
+	Commercial *int64 `json:"Commercial,omitempty" name:"Commercial"`
+
+	// 套餐价格，单位：元
+	PackagePrice *float64 `json:"PackagePrice,omitempty" name:"PackagePrice"`
+
+	// 生效开始时间,格式yyyy-MM-dd HH:mm:ss
+	EffectTime *string `json:"EffectTime,omitempty" name:"EffectTime"`
+
+	// 生效结束时间,格式yyyy-MM-dd HH:mm:ss
+	ExpireTime *string `json:"ExpireTime,omitempty" name:"ExpireTime"`
+
+	// 剩余授权次数
+	UsedCount *int64 `json:"UsedCount,omitempty" name:"UsedCount"`
+
+	// 曲库包用途信息
+	UseRanges []*UseRange `json:"UseRanges,omitempty" name:"UseRanges" list`
+}
+
+type PackageItem struct {
+
+	// 订单id
+	OrderId *string `json:"OrderId,omitempty" name:"OrderId"`
+
+	// 歌曲名
+	TrackName *string `json:"TrackName,omitempty" name:"TrackName"`
+
+	// 歌曲ID
+	ItemID *string `json:"ItemID,omitempty" name:"ItemID"`
+
+	// 专辑图片
+	Img *string `json:"Img,omitempty" name:"Img"`
+
+	// 歌手名
+	ArtistName *string `json:"ArtistName,omitempty" name:"ArtistName"`
+
+	// 歌曲时长
+	Duration *string `json:"Duration,omitempty" name:"Duration"`
+
+	// 授权区域，global: 全球 CN: 中国
+	AuthorizedArea *string `json:"AuthorizedArea,omitempty" name:"AuthorizedArea"`
 }
 
 type ReportDataRequest struct {
@@ -425,4 +574,13 @@ type Station struct {
 	// station图片集合
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ImagePathMap []*ImagePath `json:"ImagePathMap,omitempty" name:"ImagePathMap" list`
+}
+
+type UseRange struct {
+
+	// 用途id
+	UseRangeId *int64 `json:"UseRangeId,omitempty" name:"UseRangeId"`
+
+	// 用途范围名称
+	Name *string `json:"Name,omitempty" name:"Name"`
 }

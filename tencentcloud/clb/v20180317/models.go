@@ -582,6 +582,9 @@ type CreateListenerRequest struct {
 
 	// 后端目标类型，NODE表示绑定普通节点，TARGETGROUP表示绑定目标组。
 	TargetType *string `json:"TargetType,omitempty" name:"TargetType"`
+
+	// 会话保持类型。不传或传NORMAL表示默认会话保持类型。QUIC_CID 表示根据Quic Connection ID做会话保持。QUIC_CID只支持UDP协议。
+	SessionType *string `json:"SessionType,omitempty" name:"SessionType"`
 }
 
 func (r *CreateListenerRequest) ToJsonString() string {
@@ -2313,6 +2316,14 @@ type Listener struct {
 	// 绑定的目标组基本信息；当监听器绑定目标组时，会返回该字段
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TargetGroup *BasicTargetGroupInfo `json:"TargetGroup,omitempty" name:"TargetGroup"`
+
+	// 会话保持类型。NORMAL表示默认会话保持类型。QUIC_CID 表示根据Quic Connection ID做会话保持。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SessionType *string `json:"SessionType,omitempty" name:"SessionType"`
+
+	// 是否开启长连接（本参数仅对于HTTP/HTTPS监听器有意义）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	KeepaliveEnable *int64 `json:"KeepaliveEnable,omitempty" name:"KeepaliveEnable"`
 }
 
 type ListenerBackend struct {

@@ -2040,10 +2040,9 @@ type MLIDPassportOCRRequest struct {
 	*tchttp.BaseRequest
 
 	// 图片的 Base64 值。要求图片经Base64编码后不超过 7M，分辨率建议500*800以上，支持PNG、JPG、JPEG、BMP格式。建议卡片部分占据图片2/3以上。
-	// 图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
 	ImageBase64 *string `json:"ImageBase64,omitempty" name:"ImageBase64"`
 
-	// 是否返回图片
+	// 是否返回图片，默认false
 	RetImage *bool `json:"RetImage,omitempty" name:"RetImage"`
 }
 

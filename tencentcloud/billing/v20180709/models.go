@@ -756,6 +756,9 @@ type Deal struct {
 	// 退费涉及订单信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RefReturnDeals *string `json:"RefReturnDeals,omitempty" name:"RefReturnDeals"`
+
+	// 付费模式：prePay 预付费 postPay后付费 riPay预留实例
+	PayMode *string `json:"PayMode,omitempty" name:"PayMode"`
 }
 
 type DescribeAccountBalanceRequest struct {

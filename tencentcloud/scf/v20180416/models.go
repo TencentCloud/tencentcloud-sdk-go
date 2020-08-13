@@ -271,7 +271,7 @@ type CreateFunctionRequest struct {
 	// 函数的环境变量
 	Environment *Environment `json:"Environment,omitempty" name:"Environment"`
 
-	// 函数运行环境，目前仅支持 Python2.7，Python3.6，Nodejs6.10，Nodejs8.9，Nodejs10.15，Nodejs12.16， PHP5， PHP7，Golang1 和 Java8，默认Python2.7
+	// 函数运行环境，目前仅支持 Python2.7，Python3.6，Nodejs6.10，Nodejs8.9，Nodejs10.15，Nodejs12.16， PHP5， PHP7，Golang1 ， Java8和CustomRuntime，默认Python2.7
 	Runtime *string `json:"Runtime,omitempty" name:"Runtime"`
 
 	// 函数的私有网络配置
@@ -2063,7 +2063,7 @@ type UpdateFunctionConfigurationRequest struct {
 	// 函数最长执行时间，单位为秒，可选值范 1-900 秒，默认为 3 秒
 	Timeout *int64 `json:"Timeout,omitempty" name:"Timeout"`
 
-	// 函数运行环境，目前仅支持 Python2.7，Python3.6，Nodejs6.10，Nodejs8.9，Nodejs10.15，Nodejs12.16，PHP5， PHP7，Golang1 和 Java8
+	// 函数运行环境，目前仅支持 Python2.7，Python3.6，Nodejs6.10，Nodejs8.9，Nodejs10.15，Nodejs12.16， PHP5， PHP7，Golang1 ， Java8和CustomRuntime
 	Runtime *string `json:"Runtime,omitempty" name:"Runtime"`
 
 	// 函数的环境变量

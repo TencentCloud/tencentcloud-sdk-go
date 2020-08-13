@@ -199,7 +199,7 @@ func (r *CreateHostingDomainResponse) FromJsonString(s string) error {
 type CreatePostpayPackageRequest struct {
 	*tchttp.BaseRequest
 
-	// 环境ID
+	// 环境ID，需要系统自动创建环境时，此字段不传
 	EnvId *string `json:"EnvId,omitempty" name:"EnvId"`
 
 	// 微信 AppId，微信必传
@@ -213,9 +213,6 @@ type CreatePostpayPackageRequest struct {
 	// 用户享有的免费额度级别，目前只能为“basic”，不传该字段或该字段为空，标识不享受免费额度。
 	FreeQuota *string `json:"FreeQuota,omitempty" name:"FreeQuota"`
 
-	// 环境别名，要以a-z开头，不能包含 a-zA-z0-9- 以外的字符
-	Alias *string `json:"Alias,omitempty" name:"Alias"`
-
 	// 环境创建来源，取值：
 	// <li>miniapp</li>
 	// <li>qcloud</li>
@@ -223,8 +220,11 @@ type CreatePostpayPackageRequest struct {
 	// 和 Channel 参数同时传，或者同时不传；EnvId 为空时必传。
 	EnvSource *string `json:"EnvSource,omitempty" name:"EnvSource"`
 
+	// 环境别名，要以a-z开头，不能包含 a-zA-z0-9- 以外的字符
+	Alias *string `json:"Alias,omitempty" name:"Alias"`
+
 	// 如果envsource为miniapp, channel可以为ide或api;
-	// 如果envsource为qcloud, channel可以为qc_console,cocos, qq, cloudgame,dcloud
+	// 如果envsource为qcloud, channel可以为qc_console,cocos, qq, cloudgame,dcloud,serverless_framework
 	// 和 EnvSource 参数同时传，或者同时不传；EnvId 为空时必传。
 	Channel *string `json:"Channel,omitempty" name:"Channel"`
 

@@ -143,6 +143,56 @@ func (c *Client) DescribeMusic(request *DescribeMusicRequest) (response *Describ
     return
 }
 
+func NewDescribePackageItemsRequest() (request *DescribePackageItemsRequest) {
+    request = &DescribePackageItemsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ame", APIVersion, "DescribePackageItems")
+    return
+}
+
+func NewDescribePackageItemsResponse() (response *DescribePackageItemsResponse) {
+    response = &DescribePackageItemsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询曲库包已核验歌曲列表接口
+func (c *Client) DescribePackageItems(request *DescribePackageItemsRequest) (response *DescribePackageItemsResponse, err error) {
+    if request == nil {
+        request = NewDescribePackageItemsRequest()
+    }
+    response = NewDescribePackageItemsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribePackagesRequest() (request *DescribePackagesRequest) {
+    request = &DescribePackagesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ame", APIVersion, "DescribePackages")
+    return
+}
+
+func NewDescribePackagesResponse() (response *DescribePackagesResponse) {
+    response = &DescribePackagesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询已购曲库包列表接口
+func (c *Client) DescribePackages(request *DescribePackagesRequest) (response *DescribePackagesResponse, err error) {
+    if request == nil {
+        request = NewDescribePackagesRequest()
+    }
+    response = NewDescribePackagesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeStationsRequest() (request *DescribeStationsRequest) {
     request = &DescribeStationsRequest{
         BaseRequest: &tchttp.BaseRequest{},
