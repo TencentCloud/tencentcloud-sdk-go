@@ -18,7 +18,7 @@
 
 推荐使用语言自带的工具安装 SDK ：
 
-    go get -u github.com/tencentcloud/tencentcloud-sdk-go
+    go get github.com/tencentcloud/tencentcloud-sdk-go@v1.0.0
 
 
 ## 通过源码安装
