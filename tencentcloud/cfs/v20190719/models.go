@@ -686,7 +686,7 @@ type FileSystemInfo struct {
 	// 文件系统存储类型
 	StorageType *string `json:"StorageType,omitempty" name:"StorageType"`
 
-	// 文件系统绑定的预付费存储包（暂未支持）
+	// 文件系统绑定的预付费存储包
 	StorageResourcePkg *string `json:"StorageResourcePkg,omitempty" name:"StorageResourcePkg"`
 
 	// 文件系统绑定的预付费带宽包（暂未支持）
@@ -706,6 +706,9 @@ type FileSystemInfo struct {
 
 	// 应用ID
 	AppId *int64 `json:"AppId,omitempty" name:"AppId"`
+
+	// 文件系统吞吐上限，吞吐上限是根据文件系统当前已使用存储量、绑定的存储资源包以及吞吐资源包一同确定
+	BandwidthLimit *float64 `json:"BandwidthLimit,omitempty" name:"BandwidthLimit"`
 }
 
 type MountInfo struct {

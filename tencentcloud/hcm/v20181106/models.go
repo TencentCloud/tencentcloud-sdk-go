@@ -55,6 +55,9 @@ type EvaluationRequest struct {
 
 	// pdf页码，从0开始，默认为0
 	PdfPageIndex *int64 `json:"PdfPageIndex,omitempty" name:"PdfPageIndex"`
+
+	// 是否返回LaTex，默认为0返回普通格式，设置成1返回LaTex格式
+	LaTex *int64 `json:"LaTex,omitempty" name:"LaTex"`
 }
 
 func (r *EvaluationRequest) ToJsonString() string {
@@ -111,6 +114,10 @@ type Item struct {
 	// 算式题型编号，如加减乘除四则题型，具体题型及编号如下：1 加减乘除四则 2 加减乘除已知结果求运算因子3 判断大小 4 约等于估算 5 带余数除法 6 分数四则运算 7 单位换算 8 竖式加减法 9 竖式乘除法 10 脱式计算 11 解方程
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExpressionType *string `json:"ExpressionType,omitempty" name:"ExpressionType"`
+
+	// 文本行置信度
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ItemConf *float64 `json:"ItemConf,omitempty" name:"ItemConf"`
 }
 
 type ItemCoord struct {

@@ -1254,7 +1254,7 @@ func (r *DescribeDistrictIspDataResponse) FromJsonString(s string) error {
 type DescribeDomainsConfigRequest struct {
 	*tchttp.BaseRequest
 
-	// 分页查询偏移量，默认为 0 （第一页）
+	// 分页查询偏移量，默认为 0
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
 
 	// 分页查询限制数目，默认为 100，最大可设置为 1000
@@ -2260,6 +2260,20 @@ type DetailDomain struct {
 	// 访问控制
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AccessControl *AccessControl `json:"AccessControl,omitempty" name:"AccessControl"`
+
+	// 是否支持高级配置项
+	// on：支持
+	// off：不支持
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Advance *string `json:"Advance,omitempty" name:"Advance"`
+
+	// URL重定向配置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UrlRedirect *UrlRedirect `json:"UrlRedirect,omitempty" name:"UrlRedirect"`
+
+	// 访问端口配置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AccessPort []*int64 `json:"AccessPort,omitempty" name:"AccessPort" list`
 }
 
 type DisableCachesRequest struct {
@@ -4332,6 +4346,15 @@ type UpdateDomainConfigRequest struct {
 
 	// UA黑白名单配置
 	UserAgentFilter *UserAgentFilter `json:"UserAgentFilter,omitempty" name:"UserAgentFilter"`
+
+	// 访问控制
+	AccessControl *AccessControl `json:"AccessControl,omitempty" name:"AccessControl"`
+
+	// URL重定向配置
+	UrlRedirect *UrlRedirect `json:"UrlRedirect,omitempty" name:"UrlRedirect"`
+
+	// 访问端口配置
+	AccessPort []*int64 `json:"AccessPort,omitempty" name:"AccessPort" list`
 }
 
 func (r *UpdateDomainConfigRequest) ToJsonString() string {
@@ -4458,6 +4481,30 @@ type UrlRecord struct {
 	// 更新时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
+}
+
+type UrlRedirect struct {
+
+	// URL重定向配置开关
+	// on：开启
+	// off：关闭
+	Switch *string `json:"Switch,omitempty" name:"Switch"`
+
+	// URL重定向规则，当Switch为on时必填，规则数量最大为10个。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PathRules []*UrlRedirectRule `json:"PathRules,omitempty" name:"PathRules" list`
+}
+
+type UrlRedirectRule struct {
+
+	// 重定向状态码，301 | 302
+	RedirectStatusCode *int64 `json:"RedirectStatusCode,omitempty" name:"RedirectStatusCode"`
+
+	// 待匹配的Url模式，支持完全路径匹配和正则匹配，最大长度1024字符。
+	Pattern *string `json:"Pattern,omitempty" name:"Pattern"`
+
+	// 目标URL，必须以“/”开头，最大长度1024字符。
+	RedirectUrl *string `json:"RedirectUrl,omitempty" name:"RedirectUrl"`
 }
 
 type UserAgentFilter struct {

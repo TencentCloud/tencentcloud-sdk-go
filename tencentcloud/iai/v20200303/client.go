@@ -443,14 +443,12 @@ func NewDetectFaceAttributesResponse() (response *DetectFaceAttributesResponse) 
 // 4） [人脸融合](https://cloud.tencent.com/product/facefusion)：保证上传的人脸质量，人脸融合的效果更好。
 // 
 // >     
-// - 本接口是[人脸检测与分析](https://cloud.tencent.com/document/product/867/32800)的升级，具体在于：
-// 
+// - 本接口是[人脸检测与分析](https://cloud.tencent.com/document/product/867/44989)的升级，具体在于：
 // 1.本接口可以指定需要计算返回的人脸属性，避免无效计算，降低耗时；
-// 
 // 2.本接口支持更多属性细项数，也会持续增加更多功能。
-// 
 // 请您使用本接口完成相应的人脸检测与属性分析需求。
 // 
+// >     
 // - 公共参数中的签名方式请使用V3版本，即配置SignatureMethod参数为TC3-HMAC-SHA256。
 func (c *Client) DetectFaceAttributes(request *DetectFaceAttributesRequest) (response *DetectFaceAttributesResponse, err error) {
     if request == nil {

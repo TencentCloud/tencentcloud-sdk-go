@@ -871,6 +871,9 @@ type DestroyEnvRequest struct {
 
 	// 针对预付费 删除隔离中的环境时要传true 正常环境直接跳过隔离期删除
 	IsForce *bool `json:"IsForce,omitempty" name:"IsForce"`
+
+	// 是否绕过资源检查，资源包等额外资源，默认为false，如果为true，则不检查资源是否有数据，直接删除。
+	BypassCheck *bool `json:"BypassCheck,omitempty" name:"BypassCheck"`
 }
 
 func (r *DestroyEnvRequest) ToJsonString() string {

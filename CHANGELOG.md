@@ -1,79 +1,10 @@
 # 本版本更新包含以下内容：
 
-## 正版曲库直通车(ame) 版本：2019-09-16
-
-### 第 5 次发布
-
-发布时间：2020-08-13 08:22:27
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [DescribePackageItems](https://cloud.tencent.com/document/api/1155/47400)
-* [DescribePackages](https://cloud.tencent.com/document/api/1155/47399)
-
-新增数据结构：
-
-* [Package](https://cloud.tencent.com/document/api/1155/40113#Package)
-* [PackageItem](https://cloud.tencent.com/document/api/1155/40113#PackageItem)
-* [UseRange](https://cloud.tencent.com/document/api/1155/40113#UseRange)
-
-修改数据结构：
-
-* [Item](https://cloud.tencent.com/document/api/1155/40113#Item)
-
-	* 新增成员：Status
-
-
-
-
-## 计费相关(billing) 版本：2018-07-09
-
-### 第 21 次发布
-
-发布时间：2020-08-13 08:04:50
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [Deal](https://cloud.tencent.com/document/api/555/19183#Deal)
-
-	* 新增成员：PayMode
-
-
-
-
 ## 内容分发网络(cdn) 版本：2018-06-06
 
-### 第 30 次发布
+### 第 31 次发布
 
-发布时间：2020-08-13 08:07:16
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [DescribeDistrictIspData](https://cloud.tencent.com/document/api/228/47395)
-
-新增数据结构：
-
-* [DistrictIspInfo](https://cloud.tencent.com/document/api/228/30987#DistrictIspInfo)
-
-
-
-## 负载均衡(clb) 版本：2018-03-17
-
-### 第 29 次发布
-
-发布时间：2020-08-13 08:08:05
+发布时间：2020-08-14 08:07:25
 
 本次发布包含了以下内容：
 
@@ -81,77 +12,154 @@
 
 修改接口：
 
-* [CreateListener](https://cloud.tencent.com/document/api/214/30693)
+* [UpdateDomainConfig](https://cloud.tencent.com/document/api/228/41116)
 
-	* 新增入参：SessionType
+	* 新增入参：AccessControl, UrlRedirect, AccessPort
+
+
+新增数据结构：
+
+* [UrlRedirect](https://cloud.tencent.com/document/api/228/30987#UrlRedirect)
+* [UrlRedirectRule](https://cloud.tencent.com/document/api/228/30987#UrlRedirectRule)
+
+修改数据结构：
+
+* [DetailDomain](https://cloud.tencent.com/document/api/228/30987#DetailDomain)
+
+	* 新增成员：Advance, UrlRedirect, AccessPort
+
+
+
+
+## 文件存储(cfs) 版本：2019-07-19
+
+### 第 4 次发布
+
+发布时间：2020-08-14 08:07:54
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [FileSystemInfo](https://cloud.tencent.com/document/api/582/38175#FileSystemInfo)
+
+	* 新增成员：BandwidthLimit
+
+
+
+
+## 企业收付平台(cpdp) 版本：2019-08-20
+
+### 第 28 次发布
+
+发布时间：2020-08-14 08:24:18
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CreateTransferBatch](https://cloud.tencent.com/document/api/1122/47420)
+* [QueryTransferBatch](https://cloud.tencent.com/document/api/1122/47419)
+* [QueryTransferDetail](https://cloud.tencent.com/document/api/1122/47418)
+
+新增数据结构：
+
+* [TransferDetailRequest](https://cloud.tencent.com/document/api/1122/40683#TransferDetailRequest)
+* [TransferDetailResponse](https://cloud.tencent.com/document/api/1122/40683#TransferDetailResponse)
+
+
+
+## 数学作业批改(hcm) 版本：2018-11-06
+
+### 第 7 次发布
+
+发布时间：2020-08-14 08:12:12
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [Evaluation](https://cloud.tencent.com/document/api/1004/30616)
+
+	* 新增入参：LaTex
 
 
 修改数据结构：
 
-* [Listener](https://cloud.tencent.com/document/api/214/30694#Listener)
+* [Item](https://cloud.tencent.com/document/api/1004/30617#Item)
 
-	* 新增成员：SessionType, KeepaliveEnable
-
-
-
-
-## 人脸识别(iai) 版本：2020-03-03
-
-### 第 4 次发布
-
-发布时间：2020-08-13 08:12:05
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [AnalyzeDenseLandmarks](https://cloud.tencent.com/document/api/867/47397)
-* [DetectFaceAttributes](https://cloud.tencent.com/document/api/867/47396)
-
-新增数据结构：
-
-* [AttributeItem](https://cloud.tencent.com/document/api/867/45020#AttributeItem)
-* [DenseFaceShape](https://cloud.tencent.com/document/api/867/45020#DenseFaceShape)
-* [Eye](https://cloud.tencent.com/document/api/867/45020#Eye)
-* [Eyebrow](https://cloud.tencent.com/document/api/867/45020#Eyebrow)
-* [FaceDetailAttributesInfo](https://cloud.tencent.com/document/api/867/45020#FaceDetailAttributesInfo)
-* [FaceDetailInfo](https://cloud.tencent.com/document/api/867/45020#FaceDetailInfo)
-* [Hair](https://cloud.tencent.com/document/api/867/45020#Hair)
-* [Hat](https://cloud.tencent.com/document/api/867/45020#Hat)
-* [HeadPose](https://cloud.tencent.com/document/api/867/45020#HeadPose)
-* [Mouth](https://cloud.tencent.com/document/api/867/45020#Mouth)
+	* 新增成员：ItemConf
 
 
 
-## 人脸识别(iai) 版本：2018-03-01
 
-### 第 17 次发布
+## 云开发 CloudBase(tcb) 版本：2018-06-08
 
-发布时间：2020-08-13 08:12:05
+### 第 16 次发布
+
+发布时间：2020-08-14 08:18:36
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-新增接口：
+修改接口：
 
-* [AnalyzeDenseLandmarks](https://cloud.tencent.com/document/api/#/#)
-* [DetectFaceAttributes](https://cloud.tencent.com/document/api/#/#)
+* [DestroyEnv](https://cloud.tencent.com/document/api/876/42149)
 
-新增数据结构：
+	* 新增入参：BypassCheck
 
-* [AttributeItem](https://cloud.tencent.com/document/api/867/32807#AttributeItem)
-* [DenseFaceShape](https://cloud.tencent.com/document/api/867/32807#DenseFaceShape)
-* [Eye](https://cloud.tencent.com/document/api/867/32807#Eye)
-* [Eyebrow](https://cloud.tencent.com/document/api/867/32807#Eyebrow)
-* [FaceDetailAttributesInfo](https://cloud.tencent.com/document/api/867/32807#FaceDetailAttributesInfo)
-* [FaceDetailInfo](https://cloud.tencent.com/document/api/867/32807#FaceDetailInfo)
-* [Hair](https://cloud.tencent.com/document/api/867/32807#Hair)
-* [Hat](https://cloud.tencent.com/document/api/867/32807#Hat)
-* [HeadPose](https://cloud.tencent.com/document/api/867/32807#HeadPose)
-* [Mouth](https://cloud.tencent.com/document/api/867/32807#Mouth)
+
+
+
+## 智能钛机器学习平台(tione) 版本：2019-10-22
+
+### 第 12 次发布
+
+发布时间：2020-08-14 08:02:11
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateTrainingJob](https://cloud.tencent.com/document/api/851/42518)
+
+	* 新增入参：RetryWhenResourceInsufficient
+
+
+修改数据结构：
+
+* [StoppingCondition](https://cloud.tencent.com/document/api/851/42528#StoppingCondition)
+
+	* 新增成员：MaxWaitTimeInSeconds
+
+
+
+
+## 私有网络(vpc) 版本：2017-03-12
+
+### 第 57 次发布
+
+发布时间：2020-08-14 08:20:29
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [NatGateway](https://cloud.tencent.com/document/api/215/15824#NatGateway)
+
+	* 新增成员：TagSet
+
 
 
 
@@ -390,14 +398,14 @@
 
 新增接口：
 
-* [[DescribePackageItems](https://cloud.tencent.com/document/api/1155/47400)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribePackages](https://cloud.tencent.com/document/api/1155/47399)](https://cloud.tencent.com/document/api/#/#)
+* [DescribePackageItems](https://cloud.tencent.com/document/api/1155/47400)
+* [DescribePackages](https://cloud.tencent.com/document/api/1155/47399)
 
 新增数据结构：
 
-* [[Package](https://cloud.tencent.com/document/api/1155/40113#Package)](https://cloud.tencent.com/document/api/1155/40113#[Package](https://cloud.tencent.com/document/api/1155/40113#Package))
-* [[PackageItem](https://cloud.tencent.com/document/api/1155/40113#PackageItem)](https://cloud.tencent.com/document/api/1155/40113#[PackageItem](https://cloud.tencent.com/document/api/1155/40113#PackageItem))
-* [[UseRange](https://cloud.tencent.com/document/api/1155/40113#UseRange)](https://cloud.tencent.com/document/api/1155/40113#[UseRange](https://cloud.tencent.com/document/api/1155/40113#UseRange))
+* [Package](https://cloud.tencent.com/document/api/1155/40113#Package)
+* [PackageItem](https://cloud.tencent.com/document/api/1155/40113#PackageItem)
+* [UseRange](https://cloud.tencent.com/document/api/1155/40113#UseRange)
 
 修改数据结构：
 
@@ -5985,6 +5993,33 @@
 
 ## 内容分发网络(cdn) 版本：2018-06-06
 
+### 第 31 次发布
+
+发布时间：2020-08-14 08:07:25
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [UpdateDomainConfig](https://cloud.tencent.com/document/api/228/41116)
+
+	* 新增入参：AccessControl, UrlRedirect, AccessPort
+
+
+新增数据结构：
+
+* [[UrlRedirect](https://cloud.tencent.com/document/api/228/30987#UrlRedirect)](https://cloud.tencent.com/document/api/228/30987#[UrlRedirect](https://cloud.tencent.com/document/api/228/30987#UrlRedirect))
+* [[UrlRedirectRule](https://cloud.tencent.com/document/api/228/30987#UrlRedirectRule)](https://cloud.tencent.com/document/api/228/30987#[UrlRedirectRule](https://cloud.tencent.com/document/api/228/30987#UrlRedirectRule))
+
+修改数据结构：
+
+* [DetailDomain](https://cloud.tencent.com/document/api/228/30987#DetailDomain)
+
+	* 新增成员：Advance, UrlRedirect, AccessPort
+
+
 ### 第 30 次发布
 
 发布时间：2020-08-13 08:07:16
@@ -5995,11 +6030,11 @@
 
 新增接口：
 
-* [[DescribeDistrictIspData](https://cloud.tencent.com/document/api/228/47395)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeDistrictIspData](https://cloud.tencent.com/document/api/228/47395)
 
 新增数据结构：
 
-* [[DistrictIspInfo](https://cloud.tencent.com/document/api/228/30987#DistrictIspInfo)](https://cloud.tencent.com/document/api/228/30987#[DistrictIspInfo](https://cloud.tencent.com/document/api/228/30987#DistrictIspInfo))
+* [DistrictIspInfo](https://cloud.tencent.com/document/api/228/30987#DistrictIspInfo)
 
 ### 第 29 次发布
 
@@ -6746,6 +6781,21 @@
 
 
 ## 文件存储(cfs) 版本：2019-07-19
+
+### 第 4 次发布
+
+发布时间：2020-08-14 08:07:54
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [FileSystemInfo](https://cloud.tencent.com/document/api/582/38175#FileSystemInfo)
+
+	* 新增成员：BandwidthLimit
+
 
 ### 第 3 次发布
 
@@ -8745,6 +8795,25 @@
 
 
 ## 企业收付平台(cpdp) 版本：2019-08-20
+
+### 第 28 次发布
+
+发布时间：2020-08-14 08:24:18
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[CreateTransferBatch](https://cloud.tencent.com/document/api/1122/47420)](https://cloud.tencent.com/document/api/#/#)
+* [[QueryTransferBatch](https://cloud.tencent.com/document/api/1122/47419)](https://cloud.tencent.com/document/api/#/#)
+* [[QueryTransferDetail](https://cloud.tencent.com/document/api/1122/47418)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[TransferDetailRequest](https://cloud.tencent.com/document/api/1122/40683#TransferDetailRequest)](https://cloud.tencent.com/document/api/1122/40683#[TransferDetailRequest](https://cloud.tencent.com/document/api/1122/40683#TransferDetailRequest))
+* [[TransferDetailResponse](https://cloud.tencent.com/document/api/1122/40683#TransferDetailResponse)](https://cloud.tencent.com/document/api/1122/40683#[TransferDetailResponse](https://cloud.tencent.com/document/api/1122/40683#TransferDetailResponse))
 
 ### 第 27 次发布
 
@@ -14910,6 +14979,28 @@
 
 ## 数学作业批改(hcm) 版本：2018-11-06
 
+### 第 7 次发布
+
+发布时间：2020-08-14 08:12:12
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [Evaluation](https://cloud.tencent.com/document/api/1004/30616)
+
+	* 新增入参：LaTex
+
+
+修改数据结构：
+
+* [Item](https://cloud.tencent.com/document/api/1004/30617#Item)
+
+	* 新增成员：ItemConf
+
+
 ### 第 6 次发布
 
 发布时间：2020-07-06 08:10:58
@@ -15028,21 +15119,21 @@
 
 新增接口：
 
-* [[AnalyzeDenseLandmarks](https://cloud.tencent.com/document/api/#/#)](https://cloud.tencent.com/document/api/#/#)
-* [[DetectFaceAttributes](https://cloud.tencent.com/document/api/#/#)](https://cloud.tencent.com/document/api/#/#)
+* [AnalyzeDenseLandmarks](https://cloud.tencent.com/document/api/#/#)
+* [DetectFaceAttributes](https://cloud.tencent.com/document/api/#/#)
 
 新增数据结构：
 
-* [[AttributeItem](https://cloud.tencent.com/document/api/867/32807#AttributeItem)](https://cloud.tencent.com/document/api/867/32807#[AttributeItem](https://cloud.tencent.com/document/api/867/32807#AttributeItem))
-* [[DenseFaceShape](https://cloud.tencent.com/document/api/867/32807#DenseFaceShape)](https://cloud.tencent.com/document/api/867/32807#[DenseFaceShape](https://cloud.tencent.com/document/api/867/32807#DenseFaceShape))
-* [[Eye](https://cloud.tencent.com/document/api/867/32807#Eye)](https://cloud.tencent.com/document/api/867/32807#[Eye](https://cloud.tencent.com/document/api/867/32807#Eye))
-* [[Eyebrow](https://cloud.tencent.com/document/api/867/32807#Eyebrow)](https://cloud.tencent.com/document/api/867/32807#[Eyebrow](https://cloud.tencent.com/document/api/867/32807#Eyebrow))
-* [[FaceDetailAttributesInfo](https://cloud.tencent.com/document/api/867/32807#FaceDetailAttributesInfo)](https://cloud.tencent.com/document/api/867/32807#[FaceDetailAttributesInfo](https://cloud.tencent.com/document/api/867/32807#FaceDetailAttributesInfo))
-* [[FaceDetailInfo](https://cloud.tencent.com/document/api/867/32807#FaceDetailInfo)](https://cloud.tencent.com/document/api/867/32807#[FaceDetailInfo](https://cloud.tencent.com/document/api/867/32807#FaceDetailInfo))
-* [[Hair](https://cloud.tencent.com/document/api/867/32807#Hair)](https://cloud.tencent.com/document/api/867/32807#[Hair](https://cloud.tencent.com/document/api/867/32807#Hair))
-* [[Hat](https://cloud.tencent.com/document/api/867/32807#Hat)](https://cloud.tencent.com/document/api/867/32807#[Hat](https://cloud.tencent.com/document/api/867/32807#Hat))
-* [[HeadPose](https://cloud.tencent.com/document/api/867/32807#HeadPose)](https://cloud.tencent.com/document/api/867/32807#[HeadPose](https://cloud.tencent.com/document/api/867/32807#HeadPose))
-* [[Mouth](https://cloud.tencent.com/document/api/867/32807#Mouth)](https://cloud.tencent.com/document/api/867/32807#[Mouth](https://cloud.tencent.com/document/api/867/32807#Mouth))
+* [AttributeItem](https://cloud.tencent.com/document/api/867/32807#AttributeItem)
+* [DenseFaceShape](https://cloud.tencent.com/document/api/867/32807#DenseFaceShape)
+* [Eye](https://cloud.tencent.com/document/api/867/32807#Eye)
+* [Eyebrow](https://cloud.tencent.com/document/api/867/32807#Eyebrow)
+* [FaceDetailAttributesInfo](https://cloud.tencent.com/document/api/867/32807#FaceDetailAttributesInfo)
+* [FaceDetailInfo](https://cloud.tencent.com/document/api/867/32807#FaceDetailInfo)
+* [Hair](https://cloud.tencent.com/document/api/867/32807#Hair)
+* [Hat](https://cloud.tencent.com/document/api/867/32807#Hat)
+* [HeadPose](https://cloud.tencent.com/document/api/867/32807#HeadPose)
+* [Mouth](https://cloud.tencent.com/document/api/867/32807#Mouth)
 
 ### 第 16 次发布
 
@@ -15472,21 +15563,21 @@
 
 新增接口：
 
-* [[AnalyzeDenseLandmarks](https://cloud.tencent.com/document/api/867/47397)](https://cloud.tencent.com/document/api/#/#)
-* [[DetectFaceAttributes](https://cloud.tencent.com/document/api/867/47396)](https://cloud.tencent.com/document/api/#/#)
+* [AnalyzeDenseLandmarks](https://cloud.tencent.com/document/api/867/47397)
+* [DetectFaceAttributes](https://cloud.tencent.com/document/api/867/47396)
 
 新增数据结构：
 
-* [[AttributeItem](https://cloud.tencent.com/document/api/867/45020#AttributeItem)](https://cloud.tencent.com/document/api/867/45020#[AttributeItem](https://cloud.tencent.com/document/api/867/45020#AttributeItem))
-* [[DenseFaceShape](https://cloud.tencent.com/document/api/867/45020#DenseFaceShape)](https://cloud.tencent.com/document/api/867/45020#[DenseFaceShape](https://cloud.tencent.com/document/api/867/45020#DenseFaceShape))
-* [[Eye](https://cloud.tencent.com/document/api/867/45020#Eye)](https://cloud.tencent.com/document/api/867/45020#[Eye](https://cloud.tencent.com/document/api/867/45020#Eye))
-* [[Eyebrow](https://cloud.tencent.com/document/api/867/45020#Eyebrow)](https://cloud.tencent.com/document/api/867/45020#[Eyebrow](https://cloud.tencent.com/document/api/867/45020#Eyebrow))
-* [[FaceDetailAttributesInfo](https://cloud.tencent.com/document/api/867/45020#FaceDetailAttributesInfo)](https://cloud.tencent.com/document/api/867/45020#[FaceDetailAttributesInfo](https://cloud.tencent.com/document/api/867/45020#FaceDetailAttributesInfo))
-* [[FaceDetailInfo](https://cloud.tencent.com/document/api/867/45020#FaceDetailInfo)](https://cloud.tencent.com/document/api/867/45020#[FaceDetailInfo](https://cloud.tencent.com/document/api/867/45020#FaceDetailInfo))
-* [[Hair](https://cloud.tencent.com/document/api/867/45020#Hair)](https://cloud.tencent.com/document/api/867/45020#[Hair](https://cloud.tencent.com/document/api/867/45020#Hair))
-* [[Hat](https://cloud.tencent.com/document/api/867/45020#Hat)](https://cloud.tencent.com/document/api/867/45020#[Hat](https://cloud.tencent.com/document/api/867/45020#Hat))
-* [[HeadPose](https://cloud.tencent.com/document/api/867/45020#HeadPose)](https://cloud.tencent.com/document/api/867/45020#[HeadPose](https://cloud.tencent.com/document/api/867/45020#HeadPose))
-* [[Mouth](https://cloud.tencent.com/document/api/867/45020#Mouth)](https://cloud.tencent.com/document/api/867/45020#[Mouth](https://cloud.tencent.com/document/api/867/45020#Mouth))
+* [AttributeItem](https://cloud.tencent.com/document/api/867/45020#AttributeItem)
+* [DenseFaceShape](https://cloud.tencent.com/document/api/867/45020#DenseFaceShape)
+* [Eye](https://cloud.tencent.com/document/api/867/45020#Eye)
+* [Eyebrow](https://cloud.tencent.com/document/api/867/45020#Eyebrow)
+* [FaceDetailAttributesInfo](https://cloud.tencent.com/document/api/867/45020#FaceDetailAttributesInfo)
+* [FaceDetailInfo](https://cloud.tencent.com/document/api/867/45020#FaceDetailInfo)
+* [Hair](https://cloud.tencent.com/document/api/867/45020#Hair)
+* [Hat](https://cloud.tencent.com/document/api/867/45020#Hat)
+* [HeadPose](https://cloud.tencent.com/document/api/867/45020#HeadPose)
+* [Mouth](https://cloud.tencent.com/document/api/867/45020#Mouth)
 
 ### 第 3 次发布
 
@@ -24824,6 +24915,21 @@
 
 ## 云开发 CloudBase(tcb) 版本：2018-06-08
 
+### 第 16 次发布
+
+发布时间：2020-08-14 08:18:36
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DestroyEnv](https://cloud.tencent.com/document/api/876/42149)
+
+	* 新增入参：BypassCheck
+
+
 ### 第 15 次发布
 
 发布时间：2020-07-28 08:17:40
@@ -26496,6 +26602,28 @@
 
 
 ## 智能钛机器学习平台(tione) 版本：2019-10-22
+
+### 第 12 次发布
+
+发布时间：2020-08-14 08:02:11
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateTrainingJob](https://cloud.tencent.com/document/api/851/42518)
+
+	* 新增入参：RetryWhenResourceInsufficient
+
+
+修改数据结构：
+
+* [StoppingCondition](https://cloud.tencent.com/document/api/851/42528#StoppingCondition)
+
+	* 新增成员：MaxWaitTimeInSeconds
+
 
 ### 第 11 次发布
 
@@ -30312,6 +30440,21 @@
 
 
 ## 私有网络(vpc) 版本：2017-03-12
+
+### 第 57 次发布
+
+发布时间：2020-08-14 08:20:29
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [NatGateway](https://cloud.tencent.com/document/api/215/15824#NatGateway)
+
+	* 新增成员：TagSet
+
 
 ### 第 56 次发布
 

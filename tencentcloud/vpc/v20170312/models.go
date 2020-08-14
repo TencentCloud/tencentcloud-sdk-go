@@ -9354,6 +9354,9 @@ type NatGateway struct {
 	// 所属子网ID。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
+
+	// 标签键值对。
+	TagSet []*Tag `json:"TagSet,omitempty" name:"TagSet" list`
 }
 
 type NatGatewayAddress struct {

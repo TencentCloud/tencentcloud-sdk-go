@@ -350,6 +350,10 @@ type CreateTrainingJobRequest struct {
 
 	// 角色名称
 	RoleName *string `json:"RoleName,omitempty" name:"RoleName"`
+
+	// 在资源不足（ResourceInsufficient）时后台不定时尝试重新创建训练任务。可取值Enabled/Disabled
+	// 默认值为Disabled即不重新尝试。设为Enabled时重新尝试有一定的时间期限，定义在 StoppingCondition 中 MaxWaitTimeInSecond中 ，默认值为1天，超过该期限创建失败。
+	RetryWhenResourceInsufficient *string `json:"RetryWhenResourceInsufficient,omitempty" name:"RetryWhenResourceInsufficient"`
 }
 
 func (r *CreateTrainingJobRequest) ToJsonString() string {
@@ -1434,6 +1438,10 @@ type StoppingCondition struct {
 	// 最长运行运行时间（秒）
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MaxRuntimeInSeconds *uint64 `json:"MaxRuntimeInSeconds,omitempty" name:"MaxRuntimeInSeconds"`
+
+	// 最长等待运行时间（秒）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MaxWaitTimeInSeconds *uint64 `json:"MaxWaitTimeInSeconds,omitempty" name:"MaxWaitTimeInSeconds"`
 }
 
 type TrainingJobSummary struct {

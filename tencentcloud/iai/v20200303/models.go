@@ -1838,7 +1838,7 @@ type GetUpgradeGroupFaceModelVersionResultResponse struct {
 		// 升级任务完成进度。取值[0.0，100.0]。
 		Progress *float64 `json:"Progress,omitempty" name:"Progress"`
 
-		// 0表示升级中，1表示升级完毕，2表示回滚完毕。
+		// 0表示升级中，1表示升级完毕，2表示回滚完毕，3表示升级失败。
 		Status *int64 `json:"Status,omitempty" name:"Status"`
 
 		// 升级起始时间。 
@@ -2625,7 +2625,7 @@ type UpgradeJobInfo struct {
 	// 有关更多信息，请参阅 Unix 时间。
 	StartTime *uint64 `json:"StartTime,omitempty" name:"StartTime"`
 
-	// 0表示升级中，1表示升级完毕，2表示回滚完毕。
+	// 0表示升级中，1表示升级完毕，2表示回滚完毕，3表示升级失败。
 	Status *uint64 `json:"Status,omitempty" name:"Status"`
 }
 

@@ -2106,6 +2106,96 @@ type CreateSinglePayResult struct {
 	BankRetMsg *string `json:"BankRetMsg,omitempty" name:"BankRetMsg"`
 }
 
+type CreateTransferBatchRequest struct {
+	*tchttp.BaseRequest
+
+	// 商户号。
+	// 示例值：129284394
+	MerchantId *string `json:"MerchantId,omitempty" name:"MerchantId"`
+
+	// 转账明细列表。
+	// 发起批量转账的明细列表，最多三千笔
+	TransferDetails []*TransferDetailRequest `json:"TransferDetails,omitempty" name:"TransferDetails" list`
+
+	// 直连商户appId。
+	// 即商户号绑定的appid。
+	// 示例值：wxf636efh567hg4356
+	MerchantAppId *string `json:"MerchantAppId,omitempty" name:"MerchantAppId"`
+
+	// 商家批次单号。
+	// 商户系统内部的商家批次单号，此参数只能由数字、字母组成，商户系统内部唯一，UTF8编码，最多32个字符。
+	// 示例值：plfk2020042013
+	MerchantBatchNo *string `json:"MerchantBatchNo,omitempty" name:"MerchantBatchNo"`
+
+	// 批次名称。
+	// 批量转账的名称。
+	// 示例值：2019年1月深圳分部报销单
+	BatchName *string `json:"BatchName,omitempty" name:"BatchName"`
+
+	// 转账说明。
+	// UTF8编码，最多32个字符。
+	// 示例值：2019年深圳分部报销单
+	BatchRemark *string `json:"BatchRemark,omitempty" name:"BatchRemark"`
+
+	// 转账总金额。
+	// 转账金额，单位为分。
+	// 示例值：4000000
+	TotalAmount *uint64 `json:"TotalAmount,omitempty" name:"TotalAmount"`
+
+	// 转账总笔数。
+	// 一个转账批次最多允许发起三千笔转账。
+	// 示例值：200
+	TotalNum *uint64 `json:"TotalNum,omitempty" name:"TotalNum"`
+
+	// 环境名。
+	// release: 现网环境
+	// sandbox: 沙箱环境
+	// development: 开发环境
+	// 缺省: release
+	Profile *string `json:"Profile,omitempty" name:"Profile"`
+}
+
+func (r *CreateTransferBatchRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateTransferBatchRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateTransferBatchResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 商家批次单号。
+	// 商户系统内部的商家批次单号，此参数只能由数字、字母组成，商户系统内部唯一，UTF8编码，最多32个字符。
+	// 示例值：plfk2020042013
+		MerchantBatchNo *string `json:"MerchantBatchNo,omitempty" name:"MerchantBatchNo"`
+
+		// 微信批次单号。
+	// 微信商家转账系统返回的唯一标识。
+	// 示例值：1030000071100999991182020050700019480001
+		BatchId *string `json:"BatchId,omitempty" name:"BatchId"`
+
+		// 批次受理成功时返回，遵循rfc3339标准格式。格式为YYYY-MM-DDTHH:mm:ss.sss+TIMEZONE，YYYY-MM-DD表示年月日，T出现在字符串中，表示time元素的开头，HH:mm:ss.sss表示时分秒毫秒，TIMEZONE表示时区（+08:00表示东八区时间，领先UTC 8小时，即北京时间）。例如：2015-05-20T13:29:35.120+08:00表示北京时间2015年05月20日13点29分35秒。
+	// 示例值：2015-05-20T13:29:35.120+08:00
+		CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateTransferBatchResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateTransferBatchResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DeleteAgentTaxPaymentInfoRequest struct {
 	*tchttp.BaseRequest
 
@@ -5293,6 +5383,327 @@ type QueryTradeResult struct {
 	Code *string `json:"Code,omitempty" name:"Code"`
 }
 
+type QueryTransferBatchRequest struct {
+	*tchttp.BaseRequest
+
+	// 商户号。
+	// 示例值：129284394
+	MerchantId *string `json:"MerchantId,omitempty" name:"MerchantId"`
+
+	// 微信明细单号。
+	// 微信区分明细单返回的唯一标识。
+	// 示例值：1030000071100999991182020050700019480101
+	NeedQueryDetail *bool `json:"NeedQueryDetail,omitempty" name:"NeedQueryDetail"`
+
+	// 商家批次单号。
+	// 商户系统内部的商家批次单号，此参数只能由数字、字母组成，商户系统内部唯一，UTF8编码，最多32个字符。
+	// 示例值：plfk2020042013
+	MerchantBatchNo *string `json:"MerchantBatchNo,omitempty" name:"MerchantBatchNo"`
+
+	// 是否查询账单明细。
+	// true-是；
+	// false-否，默认否。
+	// 商户可选择是否查询指定状态的转账明细单，当转账批次单状态为“FINISHED”（已完成）时，才会返回满足条件的转账明细单。
+	// 示例值：true
+	BatchId *string `json:"BatchId,omitempty" name:"BatchId"`
+
+	// 环境名:
+	// release: 现网环境
+	// sandbox: 沙箱环境
+	// development: 开发环境
+	// 缺省: release
+	Profile *string `json:"Profile,omitempty" name:"Profile"`
+
+	// 请求资源起始位置。
+	// 从0开始，默认值为0。
+	// 示例值：20
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 最大资源条数。
+	// 该次请求可返回的最大资源（转账明细单）条数，最小20条，最大100条，不传则默认20条。不足20条按实际条数返回
+	// 示例值：20
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 明细状态。
+	// ALL：全部，需要同时查询转账成功喝失败的明细单；
+	// SUCCESS：转账成功，只查询成功的明细单；
+	// FAIL：转账失败，只查询转账失败的明细单。
+	// 示例值：FAIL
+	DetailStatus *string `json:"DetailStatus,omitempty" name:"DetailStatus"`
+}
+
+func (r *QueryTransferBatchRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *QueryTransferBatchRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type QueryTransferBatchResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 商户号。
+	// 示例值：19300009329
+		MerchantId *string `json:"MerchantId,omitempty" name:"MerchantId"`
+
+		// 商家批次单号。
+	// 商户系统内部的商家批次单号，此参数只能由数字、字母组成，商户系统内部唯一，UTF8编码，最多32个字符。
+	// 示例值：plfk2020042013
+		MerchantBatchNo *string `json:"MerchantBatchNo,omitempty" name:"MerchantBatchNo"`
+
+		// 微信批次单号。
+	// 微信商家转账系统返回的唯一标识。
+	// 示例值：1030000071100999991182020050700019480001
+		BatchId *string `json:"BatchId,omitempty" name:"BatchId"`
+
+		// 直连商户appId。
+	// 商户号绑定的appid。
+	// 示例值：wxf636efh567hg4356
+		MerchantAppId *string `json:"MerchantAppId,omitempty" name:"MerchantAppId"`
+
+		// 批次状态。
+	// ACCEPTED:已受理，批次已受理成功，若发起批量转账的30分钟后，转账批次单仍处于该状态，可能原因是商户账户余额不足等。商户可查询账户资金流水，若该笔转账批次单的扣款已经发生，则表示批次已经进入转账中，请再次查单确认；
+	// PROCESSING:转账中，已开始处理批次内的转账明细单；
+	// FINISHED:已完成，批次内的所有转账明细单都已处理完成；
+	// CLOSED:已关闭，可查询具体的批次关闭原因确认；
+	// 示例值：ACCEPTED
+		BatchStatus *string `json:"BatchStatus,omitempty" name:"BatchStatus"`
+
+		// 批次关闭原因。
+	// 如果批次单状态为“CLOSED”（已关闭），则有关闭原因；
+	// MERCHANT_REVOCATION：商户主动撤销；
+	// OVERDUE_CLOSE：系统超时关闭。
+	// 示例值：OVERDUE_CLOSE
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		CloseReason *string `json:"CloseReason,omitempty" name:"CloseReason"`
+
+		// 转账总金额。
+	// 转账金额，单位为分。
+	// 示例值：4000000
+		TotalAmount *uint64 `json:"TotalAmount,omitempty" name:"TotalAmount"`
+
+		// 转账总笔数。
+	// 一个转账批次最多允许发起三千笔转账。
+	// 示例值：200
+		TotalNum *uint64 `json:"TotalNum,omitempty" name:"TotalNum"`
+
+		// 批次受理成功时返回，遵循rfc3339标准格式。格式为YYYY-MM-DDTHH:mm:ss.sss+TIMEZONE，YYYY-MM-DD表示年月日，T出现在字符串中，表示time元素的开头，HH:mm:ss.sss表示时分秒毫秒，TIMEZONE表示时区（+08:00表示东八区时间，领先UTC 8小时，即北京时间）。例如：2015-05-20T13:29:35.120+08:00表示北京时间2015年05月20日13点29分35秒。
+	// 示例值：2015-05-20T13:29:35.120+08:00
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+		// 批次最近一次更新时间，遵循rfc3339标准格式。格式为YYYY-MM-DDTHH:mm:ss.sss+TIMEZONE，YYYY-MM-DD表示年月日，T出现在字符串中，表示time元素的开头，HH:mm:ss.sss表示时分秒毫秒，TIMEZONE表示时区（+08:00表示东八区时间，领先UTC 8小时，即北京时间）。例如：2015-05-20T13:29:35.120+08:00表示北京时间2015年05月20日13点29分35秒。
+	// 示例值：2015-05-20T13:29:35.120+08:00
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
+
+		// 转账成功金额。
+	// 转账成功的金额，单位为分，可能随时变化。
+	// 示例值：4000000
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		SuccessAmount *uint64 `json:"SuccessAmount,omitempty" name:"SuccessAmount"`
+
+		// 转账成功的笔数。
+	// 可能随时变化。
+	// 示例值：200
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		SuccessNum *uint64 `json:"SuccessNum,omitempty" name:"SuccessNum"`
+
+		// 转账失败金额。
+	// 转账失败的金额，单位为分，可能随时变化。
+	// 示例值：4000000
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		FailAmount *uint64 `json:"FailAmount,omitempty" name:"FailAmount"`
+
+		// 转账失败笔数。
+	// 可能随时变化。
+	// 示例值：200
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		FailNum *uint64 `json:"FailNum,omitempty" name:"FailNum"`
+
+		// 转账明细列表。
+	// 返回明细详情
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		TransferDetails []*TransferDetailResponse `json:"TransferDetails,omitempty" name:"TransferDetails" list`
+
+		// 批次类型。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		BatchType *string `json:"BatchType,omitempty" name:"BatchType"`
+
+		// 批次名称。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		BatchName *string `json:"BatchName,omitempty" name:"BatchName"`
+
+		// 批次标注。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		BatchRemark *string `json:"BatchRemark,omitempty" name:"BatchRemark"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *QueryTransferBatchResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *QueryTransferBatchResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type QueryTransferDetailRequest struct {
+	*tchttp.BaseRequest
+
+	// 商户号。
+	// 示例值：129284394
+	MerchantId *string `json:"MerchantId,omitempty" name:"MerchantId"`
+
+	// 商家批次单号。
+	// 商户系统内部的商家批次单号，此参数只能由数字、字母组成，商户系统内部唯一，UTF8编码，最多32个字符。
+	// 示例值：plfk2020042013
+	MerchantBatchNo *string `json:"MerchantBatchNo,omitempty" name:"MerchantBatchNo"`
+
+	// 商家明细单号。
+	// 商户系统内部的商家明细单号
+	// 示例值：plfk2020042013
+	MerchantDetailNo *string `json:"MerchantDetailNo,omitempty" name:"MerchantDetailNo"`
+
+	// 微信批次单号。
+	// 微信商家转账系统返回的唯一标识。
+	// 商家单号（包含批次号和明细单号）和微信单号（包含批次号和明细单号）二者必填其一。
+	// 示例值：1030000071100999991182020050700019480001
+	BatchId *string `json:"BatchId,omitempty" name:"BatchId"`
+
+	// 微信明细单号。
+	// 微信区分明细单返回的唯一标识。
+	// 示例值：1030000071100999991182020050700019480001
+	DetailId *string `json:"DetailId,omitempty" name:"DetailId"`
+
+	// 环境名:
+	// release: 现网环境
+	// sandbox: 沙箱环境
+	// development: 开发环境
+	// 缺省: release
+	Profile *string `json:"Profile,omitempty" name:"Profile"`
+}
+
+func (r *QueryTransferDetailRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *QueryTransferDetailRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type QueryTransferDetailResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 商户号。
+	// 示例值：19300009329
+		MerchantId *string `json:"MerchantId,omitempty" name:"MerchantId"`
+
+		// 商家批次单号。
+	// 商户系统内部的商家批次单号，此参数只能由数字、字母组成，商户系统内部唯一，UTF8编码，最多32个字符。
+	// 示例值：plfk2020042013
+		MerchantBatchNo *string `json:"MerchantBatchNo,omitempty" name:"MerchantBatchNo"`
+
+		// 微信批次单号。
+	// 微信商家转账系统返回的唯一标识。
+	// 示例值：1030000071100999991182020050700019480001
+		BatchId *string `json:"BatchId,omitempty" name:"BatchId"`
+
+		// 商家明细单号。
+	// 商户系统内部的商家明细单号
+	// 示例值：plfk2020042013
+		MerchantDetailNo *string `json:"MerchantDetailNo,omitempty" name:"MerchantDetailNo"`
+
+		// 微信明细单号。
+	// 微信区分明细单返回的唯一标识。
+	// 示例值：1030000071100999991182020050700019480001
+		DetailId *string `json:"DetailId,omitempty" name:"DetailId"`
+
+		// 明细状态。
+	// PROCESSING：转账中，正在处理，结果未明；
+	// SUCCESS：转账成功；
+	// FAIL：转账失败，需要确认失败原因以后，再决定是否重新发起地该笔明细的转账。
+	// 示例值：SUCCESS
+		DetailStatus *string `json:"DetailStatus,omitempty" name:"DetailStatus"`
+
+		// 转账金额。
+	// 单位为分。
+	// 示例值：200
+		TransferAmount *uint64 `json:"TransferAmount,omitempty" name:"TransferAmount"`
+
+		// 失败原因。
+	// 如果转账失败则有失败原因
+	// ACCOUNT_FROZEN：账户冻结
+	// REAL_NAME_CHECK_FAIL：用户未实名
+	// NAME_NOT_CORRECT：用户姓名校验失败
+	// OPENID_INVALID：Openid校验失败
+	// TRANSFER_QUOTA_EXCEED：超过用户单笔收款额度
+	// DAY_RECEIVED_QUOTA_EXCEED：超过用户单日收款额度
+	// MONTH_RECEIVED_QUOTA_EXCEED：超过用户单月收款额度
+	// DAY_RECEIVED_COUNT_EXCEED：超过用户单日收款次数
+	// PRODUCT_AUTH_CHECK_FAIL：产品权限校验失败
+	// OVERDUE_CLOSE：转账关闭
+	// ID_CARD_NOT_CORRECT：用户身份证校验失败
+	// ACCOUNT_NOT_EXIST：用户账户不存在
+	// TRANSFER_RISK：转账存在风险
+	// 示例值：ACCOUNT_FROZEN
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		FailReason *string `json:"FailReason,omitempty" name:"FailReason"`
+
+		// 转账发起时间。
+	// 遵循rfc3339标准格式。格式为YYYY-MM-DDTHH:mm:ss.sss+TIMEZONE，YYYY-MM-DD表示年月日，T出现在字符串中，表示time元素的开头，HH:mm:ss.sss表示时分秒毫秒，TIMEZONE表示时区（+08:00表示东八区时间，领先UTC 8小时，即北京时间）。例如：2015-05-20T13:29:35.120+08:00表示北京时间2015年05月20日13点29分35秒。
+	// 示例值：2015-05-20T13:29:35.120+08:00
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		InitiateTime *string `json:"InitiateTime,omitempty" name:"InitiateTime"`
+
+		// 转账更新时间。
+	// 遵循rfc3339标准格式。格式为YYYY-MM-DDTHH:mm:ss.sss+TIMEZONE，YYYY-MM-DD表示年月日，T出现在字符串中，表示time元素的开头，HH:mm:ss.sss表示时分秒毫秒，TIMEZONE表示时区（+08:00表示东八区时间，领先UTC 8小时，即北京时间）。例如：2015-05-20T13:29:35.120+08:00表示北京时间2015年05月20日13点29分35秒。
+	// 示例值：2015-05-20T13:29:35.120+08:00
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
+
+		// 用户名。
+	// 示例值：张三
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		UserName *string `json:"UserName,omitempty" name:"UserName"`
+
+		// 转账备注。
+	// 单条转账备注（微信用户会收到该备注）。UTF8编码，最多32字符。
+	// 示例值：2020年4月报销
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		TransferRemark *string `json:"TransferRemark,omitempty" name:"TransferRemark"`
+
+		// 商家绑定公众号APPID。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		MerchantAppId *string `json:"MerchantAppId,omitempty" name:"MerchantAppId"`
+
+		// 用户openId。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		OpenId *string `json:"OpenId,omitempty" name:"OpenId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *QueryTransferDetailResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *QueryTransferDetailResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type RechargeByThirdPayRequest struct {
 	*tchttp.BaseRequest
 
@@ -6307,6 +6718,53 @@ type TransactionItem struct {
 	// STRING(300)，备注（返回交易订单号）
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Remark *string `json:"Remark,omitempty" name:"Remark"`
+}
+
+type TransferDetailRequest struct {
+
+	// 商家明细单号。
+	// 商户系统内部区分转账批次单下不同转账明细单的唯一标识，要求此参数只能由数字、大小写字母组成。
+	// 示例值：x23zy545Bd5436
+	MerchantDetailNo *string `json:"MerchantDetailNo,omitempty" name:"MerchantDetailNo"`
+
+	// 转账金额。
+	// 转账金额单位为分。
+	// 示例值：200000
+	TransferAmount *uint64 `json:"TransferAmount,omitempty" name:"TransferAmount"`
+
+	// 转账备注。
+	// 单条转账备注（微信用户会收到该备注）。UTF8编码，最多32字符。
+	// 示例值：2020年4月报销
+	TransferRemark *string `json:"TransferRemark,omitempty" name:"TransferRemark"`
+
+	// 用户在直连商户下的唯一标识。
+	// 示例值：o-MYE42l80oelYMDE34nYD456Xoy
+	OpenId *string `json:"OpenId,omitempty" name:"OpenId"`
+
+	// 收款用户姓名。
+	// 收款方姓名。
+	// 示例值：张三
+	UserName *string `json:"UserName,omitempty" name:"UserName"`
+}
+
+type TransferDetailResponse struct {
+
+	// 商家明细单号。
+	// 商户系统内部的商家明细单号
+	// 示例值：plfk2020042013
+	MerchantDetailNo *string `json:"MerchantDetailNo,omitempty" name:"MerchantDetailNo"`
+
+	// 微信明细单号。
+	// 微信区分明细单返回的唯一标识。
+	// 示例值：1030000071100999991182020050700019480001
+	DetailId *string `json:"DetailId,omitempty" name:"DetailId"`
+
+	// 明细状态。
+	// PROCESSING：转账中，正在处理，结果未明；
+	// SUCCESS：转账成功；
+	// FAIL：转账失败，需要确认失败原因以后，再决定是否重新发起地该笔明细的转账。
+	// 示例值：SUCCESS
+	DetailStatus *string `json:"DetailStatus,omitempty" name:"DetailStatus"`
 }
 
 type TransferItem struct {

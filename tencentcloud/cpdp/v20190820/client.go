@@ -551,6 +551,31 @@ func (c *Client) CreateSinglePay(request *CreateSinglePayRequest) (response *Cre
     return
 }
 
+func NewCreateTransferBatchRequest() (request *CreateTransferBatchRequest) {
+    request = &CreateTransferBatchRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cpdp", APIVersion, "CreateTransferBatch")
+    return
+}
+
+func NewCreateTransferBatchResponse() (response *CreateTransferBatchResponse) {
+    response = &CreateTransferBatchResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 微信商户发起批量转账
+func (c *Client) CreateTransferBatch(request *CreateTransferBatchRequest) (response *CreateTransferBatchResponse, err error) {
+    if request == nil {
+        request = NewCreateTransferBatchRequest()
+    }
+    response = NewCreateTransferBatchResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteAgentTaxPaymentInfoRequest() (request *DeleteAgentTaxPaymentInfoRequest) {
     request = &DeleteAgentTaxPaymentInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1498,6 +1523,56 @@ func (c *Client) QueryTrade(request *QueryTradeRequest) (response *QueryTradeRes
         request = NewQueryTradeRequest()
     }
     response = NewQueryTradeResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewQueryTransferBatchRequest() (request *QueryTransferBatchRequest) {
+    request = &QueryTransferBatchRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cpdp", APIVersion, "QueryTransferBatch")
+    return
+}
+
+func NewQueryTransferBatchResponse() (response *QueryTransferBatchResponse) {
+    response = &QueryTransferBatchResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 通过商家批次单号或者微信批次号查询批次单
+func (c *Client) QueryTransferBatch(request *QueryTransferBatchRequest) (response *QueryTransferBatchResponse, err error) {
+    if request == nil {
+        request = NewQueryTransferBatchRequest()
+    }
+    response = NewQueryTransferBatchResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewQueryTransferDetailRequest() (request *QueryTransferDetailRequest) {
+    request = &QueryTransferDetailRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cpdp", APIVersion, "QueryTransferDetail")
+    return
+}
+
+func NewQueryTransferDetailResponse() (response *QueryTransferDetailResponse) {
+    response = &QueryTransferDetailResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 通过商家或者微信批次明细单号查询明细单
+func (c *Client) QueryTransferDetail(request *QueryTransferDetailRequest) (response *QueryTransferDetailResponse, err error) {
+    if request == nil {
+        request = NewQueryTransferDetailRequest()
+    }
+    response = NewQueryTransferDetailResponse()
     err = c.Send(request, response)
     return
 }

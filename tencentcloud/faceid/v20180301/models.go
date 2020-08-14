@@ -1264,7 +1264,7 @@ func (r *MinorsVerificationResponse) FromJsonString(s string) error {
 type MobileNetworkTimeVerificationRequest struct {
 	*tchttp.BaseRequest
 
-	// 手机号码。不支持电信手机号。
+	// 手机号码
 	Mobile *string `json:"Mobile,omitempty" name:"Mobile"`
 }
 
