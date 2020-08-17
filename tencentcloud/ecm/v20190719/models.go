@@ -583,23 +583,26 @@ type CreateVpcRequest struct {
 	// vpc名称，最大长度不能超过60个字节。
 	VpcName *string `json:"VpcName,omitempty" name:"VpcName"`
 
-	// vpc的cidr，只能为10.0.0.0/16，172.16.0.0/16，192.168.0.0/16这三个内网网段内。
+	// vpc的cidr，只能为10.*.0.0/16，172.[16-31].0.0/16，192.168.0.0/16这三个内网网段内。
 	CidrBlock *string `json:"CidrBlock,omitempty" name:"CidrBlock"`
 
 	// ECM 地域
 	EcmRegion *string `json:"EcmRegion,omitempty" name:"EcmRegion"`
 
-	// 是否开启组播。true: 开启, false: 不开启。
+	// 是否开启组播。true: 开启, false: 不开启。暂不支持
 	EnableMulticast *string `json:"EnableMulticast,omitempty" name:"EnableMulticast"`
 
-	// DNS地址，最多支持4个
+	// DNS地址，最多支持4个，暂不支持
 	DnsServers []*string `json:"DnsServers,omitempty" name:"DnsServers" list`
 
-	// 域名
+	// 域名，暂不支持
 	DomainName *string `json:"DomainName,omitempty" name:"DomainName"`
 
 	// 指定绑定的标签列表，例如：[{"Key": "city", "Value": "shanghai"}]
 	Tags []*Tag `json:"Tags,omitempty" name:"Tags" list`
+
+	// 描述信息
+	Description *string `json:"Description,omitempty" name:"Description"`
 }
 
 func (r *CreateVpcRequest) ToJsonString() string {
@@ -1312,6 +1315,8 @@ type DescribeInstancesRequest struct {
 	// instance-family      String      是否必填：否      （过滤条件）按照机型family过滤。
 	// module-name      String      是否必填：否      （过滤条件）按照模块名称过滤,支持模糊匹配。
 	// image-id      String      是否必填：否      （过滤条件）按照实例的镜像ID过滤。
+	// vpc-id String      是否必填：否      （过滤条件）按照实例的vpc id过滤。
+	// subnet-id String      是否必填：否      （过滤条件）按照实例的subnet id过滤。
 	// 
 	// 若不传Filters参数则表示查询所有相关的实例信息。
 	// 单次请求的Filter.Values的上限为5。
@@ -1667,22 +1672,19 @@ func (r *DescribePeakNetworkOverviewResponse) FromJsonString(s string) error {
 type DescribeSubnetsRequest struct {
 	*tchttp.BaseRequest
 
-	// ECM 地域
-	EcmRegion *string `json:"EcmRegion,omitempty" name:"EcmRegion"`
-
 	// 子网实例ID查询。形如：subnet-pxir56ns。每次请求的实例的上限为100。参数不支持同时指定SubnetIds和Filters。
 	SubnetIds []*string `json:"SubnetIds,omitempty" name:"SubnetIds" list`
 
 	// 过滤条件，参数不支持同时指定SubnetIds和Filters。
-	// subnet-id - String - （过滤条件）Subnet实例名称。
-	// vpc-id - String - （过滤条件）VPC实例ID，形如：vpc-f49l6u0z。
-	// cidr-block - String - （过滤条件）子网网段，形如: 192.168.1.0 。
-	// is-default - Boolean - （过滤条件）是否是默认子网。
-	// is-remote-vpc-snat - Boolean - （过滤条件）是否为VPC SNAT地址池子网。
-	// subnet-name - String - （过滤条件）子网名称。
-	// zone - String - （过滤条件）可用区。
-	// tag-key - String -是否必填：否- （过滤条件）按照标签键进行过滤。
-	// tag:tag-key - String - 是否必填：否 - （过滤条件）按照标签键值对进行过滤。 tag-key使用具体的标签键进行替换。使用请参考示例
+	// subnet-id - String - Subnet实例名称。
+	// subnet-name - String - 子网名称。只支持单值的模糊查询。
+	// cidr-block - String - 子网网段，形如: 192.168.1.0 。只支持单值的模糊查询。
+	// vpc-id - String - VPC实例ID，形如：vpc-f49l6u0z。
+	// vpc-cidr-block  - String - vpc网段，形如: 192.168.1.0 。只支持单值的模糊查询。
+	// region - String - ECM地域
+	// zone - String - 可用区。
+	// tag-key - String -是否必填：否- 按照标签键进行过滤。
+	// tag:tag-key - String - 是否必填：否 - 按照标签键值对进行过滤。
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
 
 	// 偏移量
@@ -1690,6 +1692,12 @@ type DescribeSubnetsRequest struct {
 
 	// 返回数量
 	Limit *string `json:"Limit,omitempty" name:"Limit"`
+
+	// ECM 地域
+	EcmRegion *string `json:"EcmRegion,omitempty" name:"EcmRegion"`
+
+	// 排序方式：time时间倒序, default按照网络规划排序
+	Sort *string `json:"Sort,omitempty" name:"Sort"`
 }
 
 func (r *DescribeSubnetsRequest) ToJsonString() string {
@@ -1809,19 +1817,16 @@ func (r *DescribeTaskStatusResponse) FromJsonString(s string) error {
 type DescribeVpcsRequest struct {
 	*tchttp.BaseRequest
 
-	// 地域
-	EcmRegion *string `json:"EcmRegion,omitempty" name:"EcmRegion"`
-
 	// VPC实例ID。形如：vpc-f49l6u0z。每次请求的实例的上限为100。参数不支持同时指定VpcIds和Filters。
 	VpcIds []*string `json:"VpcIds,omitempty" name:"VpcIds" list`
 
 	// 过滤条件，参数不支持同时指定VpcIds和Filters。
-	// vpc-name - String - （过滤条件）VPC实例名称。
-	// is-default - String - （过滤条件）是否默认VPC。
-	// vpc-id - String - （过滤条件）VPC实例ID形如：vpc-f49l6u0z。
-	// cidr-block - String - （过滤条件）vpc的cidr。
-	// tag-key - String -是否必填：否- （过滤条件）按照标签键进行过滤。
-	// tag:tag-key - String - 是否必填：否 - （过滤条件）按照标签键值对进行过滤。 tag-key使用具体的标签键进行替换。使用请参考示例
+	// vpc-name - String - VPC实例名称，只支持单值的模糊查询。
+	// vpc-id - String - VPC实例ID形如：vpc-f49l6u0z。
+	// cidr-block - String - vpc的cidr，只支持单值的模糊查询。
+	// region - String - vpc的region。
+	// tag-key - String -是否必填：否- 按照标签键进行过滤。
+	// tag:tag-key - String - 是否必填：否 - 按照标签键值对进行过滤。
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
 
 	// 偏移量
@@ -1829,6 +1834,12 @@ type DescribeVpcsRequest struct {
 
 	// 返回数量
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 地域
+	EcmRegion *string `json:"EcmRegion,omitempty" name:"EcmRegion"`
+
+	// 排序方式：time时间倒序, default按照网络规划排序
+	Sort *string `json:"Sort,omitempty" name:"Sort"`
 }
 
 func (r *DescribeVpcsRequest) ToJsonString() string {
@@ -2324,6 +2335,10 @@ type Instance struct {
 	// 实例所属安全组。该参数可以通过调用 DescribeSecurityGroups 的返回值中的sgId字段来获取。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SecurityGroupIds []*string `json:"SecurityGroupIds,omitempty" name:"SecurityGroupIds" list`
+
+	// VPC属性
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VirtualPrivateCloud *VirtualPrivateCloud `json:"VirtualPrivateCloud,omitempty" name:"VirtualPrivateCloud"`
 }
 
 type InstanceFamilyConfig struct {
@@ -2917,6 +2932,9 @@ type ModifySubnetAttributeRequest struct {
 
 	// 子网是否开启广播。
 	EnableBroadcast *string `json:"EnableBroadcast,omitempty" name:"EnableBroadcast"`
+
+	// 子网的标签键值
+	Tags []*Tag `json:"Tags,omitempty" name:"Tags" list`
 }
 
 func (r *ModifySubnetAttributeRequest) ToJsonString() string {
@@ -2957,6 +2975,12 @@ type ModifyVpcAttributeRequest struct {
 
 	// 私有网络名称，可任意命名，但不得超过60个字符。
 	VpcName *string `json:"VpcName,omitempty" name:"VpcName"`
+
+	// 标签
+	Tags []*Tag `json:"Tags,omitempty" name:"Tags" list`
+
+	// 私有网络描述
+	Description *string `json:"Description,omitempty" name:"Description"`
 }
 
 func (r *ModifyVpcAttributeRequest) ToJsonString() string {
@@ -3938,6 +3962,26 @@ type Subnet struct {
 
 	// 所在区域
 	Zone *string `json:"Zone,omitempty" name:"Zone"`
+
+	// 可用区名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ZoneName *string `json:"ZoneName,omitempty" name:"ZoneName"`
+
+	// 实例数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceCount *uint64 `json:"InstanceCount,omitempty" name:"InstanceCount"`
+
+	// VPC的 IPv4 CIDR。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VpcCidrBlock *string `json:"VpcCidrBlock,omitempty" name:"VpcCidrBlock"`
+
+	// VPC的 IPv6 CIDR。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VpcIpv6CidrBlock *string `json:"VpcIpv6CidrBlock,omitempty" name:"VpcIpv6CidrBlock"`
+
+	// 地域
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Region *string `json:"Region,omitempty" name:"Region"`
 }
 
 type Tag struct {
@@ -4030,6 +4074,28 @@ func (r *TerminateInstancesResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type VirtualPrivateCloud struct {
+
+	// 私有网络ID，形如vpc-xxx。
+	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
+
+	// 私有网络子网ID，形如subnet-xxx。
+	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
+
+	// 是否用作公网网关。公网网关只有在实例拥有公网IP以及处于私有网络下时才能正常使用。取值范围：
+	// TRUE：表示用作公网网关
+	// FALSE：表示不用作公网网关
+	// 
+	// 默认取值：FALSE。
+	AsVpcGateway *bool `json:"AsVpcGateway,omitempty" name:"AsVpcGateway"`
+
+	// 私有网络子网 IP 数组，在创建实例、修改实例vpc属性操作中可使用此参数。
+	PrivateIpAddresses []*string `json:"PrivateIpAddresses,omitempty" name:"PrivateIpAddresses" list`
+
+	// 为弹性网卡指定随机生成的 IPv6 地址数量。
+	Ipv6AddressCount *int64 `json:"Ipv6AddressCount,omitempty" name:"Ipv6AddressCount"`
+}
+
 type VpcInfo struct {
 
 	// VPC名称。
@@ -4074,6 +4140,26 @@ type VpcInfo struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AssistantCidrSet []*AssistantCidr `json:"AssistantCidrSet,omitempty" name:"AssistantCidrSet" list`
+
+	// 地域
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Region *string `json:"Region,omitempty" name:"Region"`
+
+	// 描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Description *string `json:"Description,omitempty" name:"Description"`
+
+	// 地域中文名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RegionName *string `json:"RegionName,omitempty" name:"RegionName"`
+
+	// 包含子网数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SubnetCount *uint64 `json:"SubnetCount,omitempty" name:"SubnetCount"`
+
+	// 包含实例数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceCount *uint64 `json:"InstanceCount,omitempty" name:"InstanceCount"`
 }
 
 type ZoneInfo struct {

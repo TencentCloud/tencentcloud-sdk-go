@@ -594,6 +594,15 @@ type DescribeWhiteBoxKeyDetailsRequest struct {
 
 	// 过滤条件：密钥的状态，0：disabled，1：enabled
 	KeyStatus *int64 `json:"KeyStatus,omitempty" name:"KeyStatus"`
+
+	// 含义跟 SQL 查询的 Offset 一致，表示本次获取从按一定顺序排列数组的第 Offset 个元素开始，缺省为0
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 含义跟 SQL 查询的 Limit 一致，表示本次最多获取 Limit 个元素。缺省值为0, 表示不分页
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 标签过滤条件
+	TagFilters []*TagFilter `json:"TagFilters,omitempty" name:"TagFilters" list`
 }
 
 func (r *DescribeWhiteBoxKeyDetailsRequest) ToJsonString() string {
@@ -611,6 +620,10 @@ type DescribeWhiteBoxKeyDetailsResponse struct {
 
 		// 白盒密钥信息列表
 		KeyInfos []*WhiteboxKeyInfo `json:"KeyInfos,omitempty" name:"KeyInfos" list`
+
+		// key总数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1561,6 +1574,9 @@ type ListKeyDetailRequest struct {
 
 	// 根据CMK的KeyUsage筛选，ALL表示筛选全部，可使用的参数为：ALL 或 ENCRYPT_DECRYPT 或 ASYMMETRIC_DECRYPT_RSA_2048 或 ASYMMETRIC_DECRYPT_SM2，为空则默认筛选ENCRYPT_DECRYPT类型
 	KeyUsage *string `json:"KeyUsage,omitempty" name:"KeyUsage"`
+
+	// 标签过滤条件
+	TagFilters []*TagFilter `json:"TagFilters,omitempty" name:"TagFilters" list`
 }
 
 func (r *ListKeyDetailRequest) ToJsonString() string {
@@ -1788,6 +1804,15 @@ type Tag struct {
 	TagValue *string `json:"TagValue,omitempty" name:"TagValue"`
 }
 
+type TagFilter struct {
+
+	// 标签键
+	TagKey *string `json:"TagKey,omitempty" name:"TagKey"`
+
+	// 标签值
+	TagValue []*string `json:"TagValue,omitempty" name:"TagValue" list`
+}
+
 type UnbindCloudResourceRequest struct {
 	*tchttp.BaseRequest
 
@@ -1936,4 +1961,8 @@ type WhiteboxKeyInfo struct {
 
 	// 资源ID，格式：creatorUin/$creatorUin/$keyId
 	ResourceId *string `json:"ResourceId,omitempty" name:"ResourceId"`
+
+	// 是否有设备指纹与当前密钥绑定
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DeviceFingerprintBind *bool `json:"DeviceFingerprintBind,omitempty" name:"DeviceFingerprintBind"`
 }

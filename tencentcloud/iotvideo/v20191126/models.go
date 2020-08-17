@@ -342,9 +342,6 @@ type CreateProductRequest struct {
 	// 产器型号(APP产品,为APP包名)
 	ProductModel *string `json:"ProductModel,omitempty" name:"ProductModel"`
 
-	// 设备功能码（ypsxth:音频双向通话 ，spdxth:视频单向通话）
-	Features []*string `json:"Features,omitempty" name:"Features" list`
-
 	// 产品名称
 	// 仅支持中文、英文、数字、下划线，不超过32个字符
 	ProductName *string `json:"ProductName,omitempty" name:"ProductName"`
@@ -353,11 +350,26 @@ type CreateProductRequest struct {
 	// 不支持单引号、双引号、退格符、回车符、换行符、制表符、反斜杠、下划线、“%”、“#”、“$”，不超过128字符
 	ProductDescription *string `json:"ProductDescription,omitempty" name:"ProductDescription"`
 
+	// 设备功能码（ypsxth:音频双向通话 ，spdxth:视频单向通话）
+	Features []*string `json:"Features,omitempty" name:"Features" list`
+
 	// 主芯片产商ID
 	ChipManufactureId *string `json:"ChipManufactureId,omitempty" name:"ChipManufactureId"`
 
 	// 主芯片ID
 	ChipId *string `json:"ChipId,omitempty" name:"ChipId"`
+
+	// 地域：
+	// China-Mainland（中国大陆）
+	// China-Hong Kong, Macao and Taiwan（港澳台地区）
+	// America（美国）
+	// Europe（欧洲）
+	// India（印度）
+	// Other-Overseas（其他境外地区）
+	ProductRegion *string `json:"ProductRegion,omitempty" name:"ProductRegion"`
+
+	// 设备类型, 0-普通视频设备，1-NVR设备
+	ProductCate *uint64 `json:"ProductCate,omitempty" name:"ProductCate"`
 }
 
 func (r *CreateProductRequest) ToJsonString() string {
@@ -2097,6 +2109,30 @@ type ProductBase struct {
 
 	// 产品密钥
 	SecretKey *string `json:"SecretKey,omitempty" name:"SecretKey"`
+
+	// 设备功能码
+	// ypsxth : 音频双向通话;	
+	// spdxth : 视频单向通话(监控);
+	// NVR0824 : NVR设备,大于8路，小于等于24路;
+	// WifiKeepalive : Wifi保活(低功耗产品);
+	// Alexa : Alexa接入;
+	// Google : Google接入;
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FuncCode []*string `json:"FuncCode,omitempty" name:"FuncCode" list`
+
+	// 产品类别，0 : 普通视频设备；1 : NVR设备
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProductCate *int64 `json:"ProductCate,omitempty" name:"ProductCate"`
+
+	// 产品地域
+	// China-Mainland（中国大陆）
+	// China-Hong Kong, Macao and Taiwan（港澳台地区）
+	// America（美国）
+	// Europe（欧洲）
+	// India（印度）
+	// Other-Overseas（其他境外地区）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProductRegion *string `json:"ProductRegion,omitempty" name:"ProductRegion"`
 }
 
 type ProductData struct {
@@ -2140,6 +2176,20 @@ type ProductData struct {
 	// 主芯片型号
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ChipId *string `json:"ChipId,omitempty" name:"ChipId"`
+
+	// 产品类别，0：普通视频设备；1：NVR设备
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProductCate *int64 `json:"ProductCate,omitempty" name:"ProductCate"`
+
+	// 产品地区
+	// China-Mainland（中国大陆）
+	// China-Hong Kong, Macao and Taiwan（港澳台地区）
+	// America（美国）
+	// Europe（欧洲）
+	// India（印度）
+	// Other-Overseas（其他境外地区）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProductRegion *string `json:"ProductRegion,omitempty" name:"ProductRegion"`
 }
 
 type RegisteredStatus struct {

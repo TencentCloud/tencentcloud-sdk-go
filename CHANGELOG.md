@@ -1,10 +1,10 @@
 # 本版本更新包含以下内容：
 
-## 内容分发网络(cdn) 版本：2018-06-06
+## 边缘计算机器(ecm) 版本：2019-07-19
 
-### 第 31 次发布
+### 第 23 次发布
 
-发布时间：2020-08-14 08:07:25
+发布时间：2020-08-17 08:01:44
 
 本次发布包含了以下内容：
 
@@ -12,153 +12,116 @@
 
 修改接口：
 
-* [UpdateDomainConfig](https://cloud.tencent.com/document/api/228/41116)
+* [CreateVpc](https://cloud.tencent.com/document/api/1108/43569)
 
-	* 新增入参：AccessControl, UrlRedirect, AccessPort
+	* 新增入参：Description
+
+* [DescribeSubnets](https://cloud.tencent.com/document/api/1108/43592)
+
+	* 新增入参：Sort
+
+	* <font color="#dd0000">**修改入参**：</font>EcmRegion
+
+* [DescribeVpcs](https://cloud.tencent.com/document/api/1108/43663)
+
+	* 新增入参：Sort
+
+	* <font color="#dd0000">**修改入参**：</font>EcmRegion
+
+* [ModifySubnetAttribute](https://cloud.tencent.com/document/api/1108/43591)
+
+	* 新增入参：Tags
+
+* [ModifyVpcAttribute](https://cloud.tencent.com/document/api/1108/43567)
+
+	* 新增入参：Tags, Description
 
 
 新增数据结构：
 
-* [UrlRedirect](https://cloud.tencent.com/document/api/228/30987#UrlRedirect)
-* [UrlRedirectRule](https://cloud.tencent.com/document/api/228/30987#UrlRedirectRule)
+* [VirtualPrivateCloud](https://cloud.tencent.com/document/api/1108/42574#VirtualPrivateCloud)
 
 修改数据结构：
 
-* [DetailDomain](https://cloud.tencent.com/document/api/228/30987#DetailDomain)
+* [Instance](https://cloud.tencent.com/document/api/1108/42574#Instance)
 
-	* 新增成员：Advance, UrlRedirect, AccessPort
+	* 新增成员：VirtualPrivateCloud
+
+* [Subnet](https://cloud.tencent.com/document/api/1108/42574#Subnet)
+
+	* 新增成员：ZoneName, InstanceCount, VpcCidrBlock, VpcIpv6CidrBlock, Region
+
+* [VpcInfo](https://cloud.tencent.com/document/api/1108/42574#VpcInfo)
+
+	* 新增成员：Region, Description, RegionName, SubnetCount, InstanceCount
 
 
 
 
-## 文件存储(cfs) 版本：2019-07-19
+## 物联网智能视频服务(iotvideo) 版本：2019-11-26
 
-### 第 4 次发布
+### 第 8 次发布
 
-发布时间：2020-08-14 08:07:54
+发布时间：2020-08-17 08:02:47
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
+修改接口：
+
+* [CreateProduct](https://cloud.tencent.com/document/api/1131/42382)
+
+	* 新增入参：ProductRegion, ProductCate
+
+	* <font color="#dd0000">**修改入参**：</font>Features
+
+
 修改数据结构：
 
-* [FileSystemInfo](https://cloud.tencent.com/document/api/582/38175#FileSystemInfo)
+* [ProductBase](https://cloud.tencent.com/document/api/1131/42400#ProductBase)
 
-	* 新增成员：BandwidthLimit
+	* 新增成员：FuncCode, ProductCate, ProductRegion
+
+* [ProductData](https://cloud.tencent.com/document/api/1131/42400#ProductData)
+
+	* 新增成员：ProductCate, ProductRegion
 
 
 
 
-## 企业收付平台(cpdp) 版本：2019-08-20
+## 密钥管理系统(kms) 版本：2019-01-18
 
-### 第 28 次发布
+### 第 11 次发布
 
-发布时间：2020-08-14 08:24:18
+发布时间：2020-08-17 08:13:41
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-新增接口：
+修改接口：
 
-* [CreateTransferBatch](https://cloud.tencent.com/document/api/1122/47420)
-* [QueryTransferBatch](https://cloud.tencent.com/document/api/1122/47419)
-* [QueryTransferDetail](https://cloud.tencent.com/document/api/1122/47418)
+* [DescribeWhiteBoxKeyDetails](https://cloud.tencent.com/document/api/573/43439)
+
+	* 新增入参：Offset, Limit, TagFilters
+
+	* 新增出参：TotalCount
+
+* [ListKeyDetail](https://cloud.tencent.com/document/api/573/34416)
+
+	* 新增入参：TagFilters
+
 
 新增数据结构：
 
-* [TransferDetailRequest](https://cloud.tencent.com/document/api/1122/40683#TransferDetailRequest)
-* [TransferDetailResponse](https://cloud.tencent.com/document/api/1122/40683#TransferDetailResponse)
-
-
-
-## 数学作业批改(hcm) 版本：2018-11-06
-
-### 第 7 次发布
-
-发布时间：2020-08-14 08:12:12
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [Evaluation](https://cloud.tencent.com/document/api/1004/30616)
-
-	* 新增入参：LaTex
-
+* [TagFilter](https://cloud.tencent.com/document/api/573/34431#TagFilter)
 
 修改数据结构：
 
-* [Item](https://cloud.tencent.com/document/api/1004/30617#Item)
+* [WhiteboxKeyInfo](https://cloud.tencent.com/document/api/573/34431#WhiteboxKeyInfo)
 
-	* 新增成员：ItemConf
-
-
-
-
-## 云开发 CloudBase(tcb) 版本：2018-06-08
-
-### 第 16 次发布
-
-发布时间：2020-08-14 08:18:36
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [DestroyEnv](https://cloud.tencent.com/document/api/876/42149)
-
-	* 新增入参：BypassCheck
-
-
-
-
-## 智能钛机器学习平台(tione) 版本：2019-10-22
-
-### 第 12 次发布
-
-发布时间：2020-08-14 08:02:11
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [CreateTrainingJob](https://cloud.tencent.com/document/api/851/42518)
-
-	* 新增入参：RetryWhenResourceInsufficient
-
-
-修改数据结构：
-
-* [StoppingCondition](https://cloud.tencent.com/document/api/851/42528#StoppingCondition)
-
-	* 新增成员：MaxWaitTimeInSeconds
-
-
-
-
-## 私有网络(vpc) 版本：2017-03-12
-
-### 第 57 次发布
-
-发布时间：2020-08-14 08:20:29
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [NatGateway](https://cloud.tencent.com/document/api/215/15824#NatGateway)
-
-	* 新增成员：TagSet
+	* 新增成员：DeviceFingerprintBind
 
 
 
@@ -6010,8 +5973,8 @@
 
 新增数据结构：
 
-* [[UrlRedirect](https://cloud.tencent.com/document/api/228/30987#UrlRedirect)](https://cloud.tencent.com/document/api/228/30987#[UrlRedirect](https://cloud.tencent.com/document/api/228/30987#UrlRedirect))
-* [[UrlRedirectRule](https://cloud.tencent.com/document/api/228/30987#UrlRedirectRule)](https://cloud.tencent.com/document/api/228/30987#[UrlRedirectRule](https://cloud.tencent.com/document/api/228/30987#UrlRedirectRule))
+* [UrlRedirect](https://cloud.tencent.com/document/api/228/30987#UrlRedirect)
+* [UrlRedirectRule](https://cloud.tencent.com/document/api/228/30987#UrlRedirectRule)
 
 修改数据结构：
 
@@ -8806,14 +8769,14 @@
 
 新增接口：
 
-* [[CreateTransferBatch](https://cloud.tencent.com/document/api/1122/47420)](https://cloud.tencent.com/document/api/#/#)
-* [[QueryTransferBatch](https://cloud.tencent.com/document/api/1122/47419)](https://cloud.tencent.com/document/api/#/#)
-* [[QueryTransferDetail](https://cloud.tencent.com/document/api/1122/47418)](https://cloud.tencent.com/document/api/#/#)
+* [CreateTransferBatch](https://cloud.tencent.com/document/api/1122/47420)
+* [QueryTransferBatch](https://cloud.tencent.com/document/api/1122/47419)
+* [QueryTransferDetail](https://cloud.tencent.com/document/api/1122/47418)
 
 新增数据结构：
 
-* [[TransferDetailRequest](https://cloud.tencent.com/document/api/1122/40683#TransferDetailRequest)](https://cloud.tencent.com/document/api/1122/40683#[TransferDetailRequest](https://cloud.tencent.com/document/api/1122/40683#TransferDetailRequest))
-* [[TransferDetailResponse](https://cloud.tencent.com/document/api/1122/40683#TransferDetailResponse)](https://cloud.tencent.com/document/api/1122/40683#[TransferDetailResponse](https://cloud.tencent.com/document/api/1122/40683#TransferDetailResponse))
+* [TransferDetailRequest](https://cloud.tencent.com/document/api/1122/40683#TransferDetailRequest)
+* [TransferDetailResponse](https://cloud.tencent.com/document/api/1122/40683#TransferDetailResponse)
 
 ### 第 27 次发布
 
@@ -12496,6 +12459,60 @@
 
 
 ## 边缘计算机器(ecm) 版本：2019-07-19
+
+### 第 23 次发布
+
+发布时间：2020-08-17 08:01:44
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateVpc](https://cloud.tencent.com/document/api/1108/43569)
+
+	* 新增入参：Description
+
+* [DescribeSubnets](https://cloud.tencent.com/document/api/1108/43592)
+
+	* 新增入参：Sort
+
+	* <font color="#dd0000">**修改入参**：</font>EcmRegion
+
+* [DescribeVpcs](https://cloud.tencent.com/document/api/1108/43663)
+
+	* 新增入参：Sort
+
+	* <font color="#dd0000">**修改入参**：</font>EcmRegion
+
+* [ModifySubnetAttribute](https://cloud.tencent.com/document/api/1108/43591)
+
+	* 新增入参：Tags
+
+* [ModifyVpcAttribute](https://cloud.tencent.com/document/api/1108/43567)
+
+	* 新增入参：Tags, Description
+
+
+新增数据结构：
+
+* [[VirtualPrivateCloud](https://cloud.tencent.com/document/api/1108/42574#VirtualPrivateCloud)](https://cloud.tencent.com/document/api/1108/42574#[VirtualPrivateCloud](https://cloud.tencent.com/document/api/1108/42574#VirtualPrivateCloud))
+
+修改数据结构：
+
+* [Instance](https://cloud.tencent.com/document/api/1108/42574#Instance)
+
+	* 新增成员：VirtualPrivateCloud
+
+* [Subnet](https://cloud.tencent.com/document/api/1108/42574#Subnet)
+
+	* 新增成员：ZoneName, InstanceCount, VpcCidrBlock, VpcIpv6CidrBlock, Region
+
+* [VpcInfo](https://cloud.tencent.com/document/api/1108/42574#VpcInfo)
+
+	* 新增成员：Region, Description, RegionName, SubnetCount, InstanceCount
+
 
 ### 第 22 次发布
 
@@ -16899,6 +16916,34 @@
 
 ## 物联网智能视频服务(iotvideo) 版本：2019-11-26
 
+### 第 8 次发布
+
+发布时间：2020-08-17 08:02:47
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateProduct](https://cloud.tencent.com/document/api/1131/42382)
+
+	* 新增入参：ProductRegion, ProductCate
+
+	* <font color="#dd0000">**修改入参**：</font>Features
+
+
+修改数据结构：
+
+* [ProductBase](https://cloud.tencent.com/document/api/1131/42400#ProductBase)
+
+	* 新增成员：FuncCode, ProductCate, ProductRegion
+
+* [ProductData](https://cloud.tencent.com/document/api/1131/42400#ProductData)
+
+	* 新增成员：ProductCate, ProductRegion
+
+
 ### 第 7 次发布
 
 发布时间：2020-04-15 08:02:12
@@ -17080,6 +17125,38 @@
 
 
 ## 密钥管理系统(kms) 版本：2019-01-18
+
+### 第 11 次发布
+
+发布时间：2020-08-17 08:13:41
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeWhiteBoxKeyDetails](https://cloud.tencent.com/document/api/573/43439)
+
+	* 新增入参：Offset, Limit, TagFilters
+
+	* 新增出参：TotalCount
+
+* [ListKeyDetail](https://cloud.tencent.com/document/api/573/34416)
+
+	* 新增入参：TagFilters
+
+
+新增数据结构：
+
+* [[TagFilter](https://cloud.tencent.com/document/api/573/34431#TagFilter)](https://cloud.tencent.com/document/api/573/34431#[TagFilter](https://cloud.tencent.com/document/api/573/34431#TagFilter))
+
+修改数据结构：
+
+* [WhiteboxKeyInfo](https://cloud.tencent.com/document/api/573/34431#WhiteboxKeyInfo)
+
+	* 新增成员：DeviceFingerprintBind
+
 
 ### 第 10 次发布
 
