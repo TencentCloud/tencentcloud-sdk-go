@@ -646,6 +646,31 @@ func (c *Client) DescribeSqlLogs(request *DescribeSqlLogsRequest) (response *Des
     return
 }
 
+func NewFlushBinlogRequest() (request *FlushBinlogRequest) {
+    request = &FlushBinlogRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("dcdb", APIVersion, "FlushBinlog")
+    return
+}
+
+func NewFlushBinlogResponse() (response *FlushBinlogResponse) {
+    response = &FlushBinlogResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 相当于在所有分片的mysqld中执行flush logs，完成切分的binlog将展示在各个分片控制台binlog列表里。
+func (c *Client) FlushBinlog(request *FlushBinlogRequest) (response *FlushBinlogResponse, err error) {
+    if request == nil {
+        request = NewFlushBinlogRequest()
+    }
+    response = NewFlushBinlogResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewGrantAccountPrivilegesRequest() (request *GrantAccountPrivilegesRequest) {
     request = &GrantAccountPrivilegesRequest{
         BaseRequest: &tchttp.BaseRequest{},

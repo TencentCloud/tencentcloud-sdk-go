@@ -2795,6 +2795,9 @@ type MigrateOrderRefundRequest struct {
 
 	// 接入环境。沙箱环境填 sandbox。
 	Profile *string `json:"Profile,omitempty" name:"Profile"`
+
+	// 退款原因
+	RefundReason *string `json:"RefundReason,omitempty" name:"RefundReason"`
 }
 
 func (r *MigrateOrderRefundRequest) ToJsonString() string {

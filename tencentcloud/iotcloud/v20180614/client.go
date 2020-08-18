@@ -418,6 +418,31 @@ func (c *Client) DeleteTopicRule(request *DeleteTopicRuleRequest) (response *Del
     return
 }
 
+func NewDescribeAllDevicesRequest() (request *DescribeAllDevicesRequest) {
+    request = &DescribeAllDevicesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iotcloud", APIVersion, "DescribeAllDevices")
+    return
+}
+
+func NewDescribeAllDevicesResponse() (response *DescribeAllDevicesResponse) {
+    response = &DescribeAllDevicesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询所有设备列表
+func (c *Client) DescribeAllDevices(request *DescribeAllDevicesRequest) (response *DescribeAllDevicesResponse, err error) {
+    if request == nil {
+        request = NewDescribeAllDevicesRequest()
+    }
+    response = NewDescribeAllDevicesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeDeviceRequest() (request *DescribeDeviceRequest) {
     request = &DescribeDeviceRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -533,7 +558,7 @@ func NewDescribeLoraDeviceResponse() (response *DescribeLoraDeviceResponse) {
     return
 }
 
-// 获取lora类型设备的详细信息
+// 获取lora类型设备的详细信息 
 func (c *Client) DescribeLoraDevice(request *DescribeLoraDeviceRequest) (response *DescribeLoraDeviceResponse, err error) {
     if request == nil {
         request = NewDescribeLoraDeviceRequest()

@@ -248,6 +248,7 @@ type CheckIdCardInformationRequest struct {
 	// ReshootWarn，翻拍告警
 	// DetectPsWarn，PS检测告警
 	// TempIdWarn，临时身份证告警
+	// Quality，图片质量告警（评价图片模糊程度）
 	// 
 	// SDK 设置方式参考：
 	// Config = Json.stringify({"CopyWarn":true,"ReshootWarn":true})
@@ -307,8 +308,12 @@ type CheckIdCardInformationResponse struct {
 	// -9105 身份证框内遮挡告警，
 	// -9104 临时身份证告警，
 	// -9106 身份证 PS 告警。
+	// -8001 图片模糊告警
 	// 多个会 |  隔开如 "-9101|-9106|-9104"
 		Warnings *string `json:"Warnings,omitempty" name:"Warnings"`
+
+		// 图片质量分数，当请求Config中配置图片模糊告警该参数才有意义，取值范围（0～100），目前默认阈值是50分，低于50分会触发模糊告警。
+		Quality *float64 `json:"Quality,omitempty" name:"Quality"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`

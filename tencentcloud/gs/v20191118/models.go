@@ -56,7 +56,7 @@ type CreateSessionRequest struct {
 	// 单位Mbps，动态调整最小码率
 	MinBitrate *uint64 `json:"MinBitrate,omitempty" name:"MinBitrate"`
 
-	// 帧率，可设置为30、45或60
+	// 帧率，可设置为30、45、60、90、120、144
 	Fps *uint64 `json:"Fps,omitempty" name:"Fps"`
 
 	// 游戏用户IP，用于就近调度，例如125.127.178.228
@@ -64,6 +64,9 @@ type CreateSessionRequest struct {
 
 	// 优化项，便于客户灰度开启新的优化项，默认为0
 	Optimization *uint64 `json:"Optimization,omitempty" name:"Optimization"`
+
+	// 用于多人游戏，游戏主机用户ID
+	HostUserId *string `json:"HostUserId,omitempty" name:"HostUserId"`
 }
 
 func (r *CreateSessionRequest) ToJsonString() string {
@@ -101,6 +104,9 @@ type StopGameRequest struct {
 
 	// 游戏用户ID
 	UserId *string `json:"UserId,omitempty" name:"UserId"`
+
+	// 用于多人游戏，游戏主机用户ID
+	HostUserId *string `json:"HostUserId,omitempty" name:"HostUserId"`
 }
 
 func (r *StopGameRequest) ToJsonString() string {

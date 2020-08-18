@@ -775,6 +775,12 @@ type VideoInfo struct {
 
 	// 摄像头/屏幕分享视频所属用户的 Id（白板视频为空、混流视频tic_mixstream_房间号_混流布局类型、辅路视频tic_substream_用户Id）
 	UserId *string `json:"UserId,omitempty" name:"UserId"`
+
+	// 视频分辨率的宽
+	Width *int64 `json:"Width,omitempty" name:"Width"`
+
+	// 视频分辨率的高
+	Height *int64 `json:"Height,omitempty" name:"Height"`
 }
 
 type Whiteboard struct {

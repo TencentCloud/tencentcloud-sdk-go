@@ -743,6 +743,49 @@ func (r *DeleteTopicRuleResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeAllDevicesRequest struct {
+	*tchttp.BaseRequest
+
+	// 查询偏移量。
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 查询设备数量。最大支持250个
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+func (r *DescribeAllDevicesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeAllDevicesRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeAllDevicesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 设备总数。
+		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 查询的设备列表信息。
+		Devices []*DeviceProperty `json:"Devices,omitempty" name:"Devices" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeAllDevicesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeAllDevicesResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeDeviceClientKeyRequest struct {
 	*tchttp.BaseRequest
 
@@ -996,7 +1039,7 @@ func (r *DescribeDevicesResponse) FromJsonString(s string) error {
 type DescribeLoraDeviceRequest struct {
 	*tchttp.BaseRequest
 
-	// 产品id
+	// 产品ID
 	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
 
 	// 设备名称
@@ -1479,6 +1522,25 @@ type DeviceLabel struct {
 
 	// 标签值
 	Value *string `json:"Value,omitempty" name:"Value"`
+}
+
+type DeviceProperty struct {
+
+	// 产品ID。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
+
+	// 产品名称。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProductName *string `json:"ProductName,omitempty" name:"ProductName"`
+
+	// 设备名称。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DeviceName *string `json:"DeviceName,omitempty" name:"DeviceName"`
+
+	// 设备资源ID。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResourceId *string `json:"ResourceId,omitempty" name:"ResourceId"`
 }
 
 type DeviceTag struct {

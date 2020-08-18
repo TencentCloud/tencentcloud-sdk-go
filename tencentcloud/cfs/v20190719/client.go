@@ -243,6 +243,31 @@ func (c *Client) DescribeAvailableZoneInfo(request *DescribeAvailableZoneInfoReq
     return
 }
 
+func NewDescribeCfsFileSystemClientsRequest() (request *DescribeCfsFileSystemClientsRequest) {
+    request = &DescribeCfsFileSystemClientsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cfs", APIVersion, "DescribeCfsFileSystemClients")
+    return
+}
+
+func NewDescribeCfsFileSystemClientsResponse() (response *DescribeCfsFileSystemClientsResponse) {
+    response = &DescribeCfsFileSystemClientsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询挂载该文件系统的客户端。此功能需要客户端安装CFS监控插件。
+func (c *Client) DescribeCfsFileSystemClients(request *DescribeCfsFileSystemClientsRequest) (response *DescribeCfsFileSystemClientsResponse, err error) {
+    if request == nil {
+        request = NewDescribeCfsFileSystemClientsRequest()
+    }
+    response = NewDescribeCfsFileSystemClientsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeCfsFileSystemsRequest() (request *DescribeCfsFileSystemsRequest) {
     request = &DescribeCfsFileSystemsRequest{
         BaseRequest: &tchttp.BaseRequest{},

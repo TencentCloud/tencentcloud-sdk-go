@@ -308,6 +308,9 @@ type CreateDCDBInstanceRequest struct {
 
 	// 是否支持IPv6
 	Ipv6Flag *int64 `json:"Ipv6Flag,omitempty" name:"Ipv6Flag"`
+
+	// 标签键值对数组
+	ResourceTags []*ResourceTag `json:"ResourceTags,omitempty" name:"ResourceTags" list`
 }
 
 func (r *CreateDCDBInstanceRequest) ToJsonString() string {
@@ -387,7 +390,7 @@ type DCDBInstanceInfo struct {
 	// 实例名称
 	InstanceName *string `json:"InstanceName,omitempty" name:"InstanceName"`
 
-	// AppID
+	// 应用ID
 	AppId *int64 `json:"AppId,omitempty" name:"AppId"`
 
 	// 项目ID
@@ -438,7 +441,7 @@ type DCDBInstanceInfo struct {
 	// 隔离时间
 	IsolatedTimestamp *string `json:"IsolatedTimestamp,omitempty" name:"IsolatedTimestamp"`
 
-	// UIN
+	// 账号ID
 	Uin *string `json:"Uin,omitempty" name:"Uin"`
 
 	// 分片详情
@@ -498,6 +501,26 @@ type DCDBInstanceInfo struct {
 
 	// Cpu核数
 	Cpu *uint64 `json:"Cpu,omitempty" name:"Cpu"`
+
+	// 实例IPv6标志
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Ipv6Flag *uint64 `json:"Ipv6Flag,omitempty" name:"Ipv6Flag"`
+
+	// 内网IPv6
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Vipv6 *string `json:"Vipv6,omitempty" name:"Vipv6"`
+
+	// 外网IPv6
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WanVipv6 *string `json:"WanVipv6,omitempty" name:"WanVipv6"`
+
+	// 外网IPv6端口
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WanPortIpv6 *uint64 `json:"WanPortIpv6,omitempty" name:"WanPortIpv6"`
+
+	// 外网IPv6状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WanStatusIpv6 *uint64 `json:"WanStatusIpv6,omitempty" name:"WanStatusIpv6"`
 }
 
 type DCDBShardInfo struct {
@@ -960,6 +983,9 @@ type DescribeDCDBInstancesRequest struct {
 
 	// 独享集群ID
 	ExclusterIds []*string `json:"ExclusterIds,omitempty" name:"ExclusterIds" list`
+
+	// 按标签key查询
+	TagKeys []*string `json:"TagKeys,omitempty" name:"TagKeys" list`
 }
 
 func (r *DescribeDCDBInstancesRequest) ToJsonString() string {
@@ -1571,6 +1597,40 @@ type ExpandShardConfig struct {
 	ShardStorage *int64 `json:"ShardStorage,omitempty" name:"ShardStorage"`
 }
 
+type FlushBinlogRequest struct {
+	*tchttp.BaseRequest
+
+	// 无
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+}
+
+func (r *FlushBinlogRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *FlushBinlogRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type FlushBinlogResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *FlushBinlogResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *FlushBinlogResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type GrantAccountPrivilegesRequest struct {
 	*tchttp.BaseRequest
 
@@ -2080,6 +2140,15 @@ func (r *ResetAccountPasswordResponse) ToJsonString() string {
 
 func (r *ResetAccountPasswordResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
+}
+
+type ResourceTag struct {
+
+	// 标签键key
+	TagKey *string `json:"TagKey,omitempty" name:"TagKey"`
+
+	// 标签值value
+	TagValue *string `json:"TagValue,omitempty" name:"TagValue"`
 }
 
 type ShardInfo struct {
