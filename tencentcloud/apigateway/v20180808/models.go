@@ -3484,7 +3484,7 @@ type ReqParameter struct {
 	// API 的前端参数名称。
 	Name *string `json:"Name,omitempty" name:"Name"`
 
-	// API 的前端参数位置，如 head。目前支持 head、query、path。
+	// API 的前端参数位置，如 header。目前支持 header、query、path。
 	Position *string `json:"Position,omitempty" name:"Position"`
 
 	// API 的前端参数类型，如 String、int。

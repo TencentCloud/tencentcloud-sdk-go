@@ -1623,6 +1623,9 @@ type CreateCustomerGatewayRequest struct {
 
 	// 对端网关公网IP。
 	IpAddress *string `json:"IpAddress,omitempty" name:"IpAddress"`
+
+	// 指定绑定的标签列表，例如：[{"Key": "city", "Value": "shanghai"}]
+	Tags []*Tag `json:"Tags,omitempty" name:"Tags" list`
 }
 
 func (r *CreateCustomerGatewayRequest) ToJsonString() string {
@@ -2739,6 +2742,9 @@ type CreateVpnConnectionRequest struct {
 
 	// IPSec配置，腾讯云提供IPSec安全会话设置
 	IPSECOptionsSpecification *IPSECOptionsSpecification `json:"IPSECOptionsSpecification,omitempty" name:"IPSECOptionsSpecification"`
+
+	// 指定绑定的标签列表，例如：[{"Key": "city", "Value": "shanghai"}]
+	Tags []*Tag `json:"Tags,omitempty" name:"Tags" list`
 }
 
 func (r *CreateVpnConnectionRequest) ToJsonString() string {
@@ -2794,6 +2800,9 @@ type CreateVpnGatewayRequest struct {
 
 	// VPN网关类型。值“CCN”云联网类型VPN网关
 	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 指定绑定的标签列表，例如：[{"Key": "city", "Value": "shanghai"}]
+	Tags []*Tag `json:"Tags,omitempty" name:"Tags" list`
 }
 
 func (r *CreateVpnGatewayRequest) ToJsonString() string {

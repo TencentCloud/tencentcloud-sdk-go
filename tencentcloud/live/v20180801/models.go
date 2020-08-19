@@ -676,6 +676,10 @@ type CreateLiveCallbackTemplateRequest struct {
 	// 回调 Key，回调 URL 公用，回调签名详见事件消息通知文档。
 	// [事件消息通知](/document/product/267/32744)。
 	CallbackKey *string `json:"CallbackKey,omitempty" name:"CallbackKey"`
+
+	// 混流回调 URL，
+	// 相关协议文档：[事件消息通知](/document/product/267/32744)。
+	StreamMixNotifyUrl *string `json:"StreamMixNotifyUrl,omitempty" name:"StreamMixNotifyUrl"`
 }
 
 func (r *CreateLiveCallbackTemplateRequest) ToJsonString() string {
@@ -1031,9 +1035,15 @@ type CreateLiveSnapshotTemplateRequest struct {
 	PornFlag *int64 `json:"PornFlag,omitempty" name:"PornFlag"`
 
 	// Cos Bucket文件夹前缀。
+	// 如不传，实际按默认值
+	// /{Year}-{Month}-{Day}
+	// 生效
 	CosPrefix *string `json:"CosPrefix,omitempty" name:"CosPrefix"`
 
 	// Cos 文件名称。
+	// 如不传，实际按默认值
+	// {StreamID}-screenshot-{Hour}-{Minute}-{Second}-{Width}x{Height}{Ext}
+	// 生效
 	CosFileName *string `json:"CosFileName,omitempty" name:"CosFileName"`
 }
 

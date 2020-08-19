@@ -52,8 +52,11 @@ type AvailableType struct {
 	// 协议与售卖详情
 	Protocols []*AvailableProtoStatus `json:"Protocols,omitempty" name:"Protocols" list`
 
-	// 存储类型。可选值有 SD 标准型存储、HP性能型存储
+	// 存储类型。返回值中 SD 为标准型存储、HP 为性能型存储
 	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 是否支持预付费。返回值中 true 为支持、false 为不支持
+	Prepayment *bool `json:"Prepayment,omitempty" name:"Prepayment"`
 }
 
 type AvailableZone struct {

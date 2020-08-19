@@ -603,6 +603,13 @@ type EmrProductConfigOutter struct {
 	CbsEncrypt *int64 `json:"CbsEncrypt,omitempty" name:"CbsEncrypt"`
 }
 
+type HostVolumeContext struct {
+
+	// Pod挂载宿主机的目录。资源对宿主机的挂载点，指定的挂载点对应了宿主机的路径，该挂载点在Pod中作为数据存储目录使用
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VolumePath *string `json:"VolumePath,omitempty" name:"VolumePath"`
+}
+
 type InquiryPriceCreateInstanceRequest struct {
 	*tchttp.BaseRequest
 
@@ -1190,6 +1197,17 @@ type OutterResource struct {
 	InstanceType *string `json:"InstanceType,omitempty" name:"InstanceType"`
 }
 
+type PersistentVolumeContext struct {
+
+	// 磁盘大小，单位为GB。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DiskSize *uint64 `json:"DiskSize,omitempty" name:"DiskSize"`
+
+	// 磁盘类型。CLOUD_PREMIUM;CLOUD_SSD
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DiskType *string `json:"DiskType,omitempty" name:"DiskType"`
+}
+
 type Placement struct {
 
 	// 实例所属项目ID。该参数可以通过调用 DescribeProject 的返回值中的 projectId 字段来获取。填0为默认项目。
@@ -1216,8 +1234,29 @@ type PodSpec struct {
 	// 内存大小，单位为GB。
 	Memory *uint64 `json:"Memory,omitempty" name:"Memory"`
 
-	// 资源对宿主机的挂载点，指定的挂载点对应了宿主机的路径，该挂载点在Pod中作为数据存储目录使用。
+	// 资源对宿主机的挂载点，指定的挂载点对应了宿主机的路径，该挂载点在Pod中作为数据存储目录使用。弃用
 	DataVolumes []*string `json:"DataVolumes,omitempty" name:"DataVolumes" list`
+
+	// Eks集群-CPU类型，当前支持"intel"和"amd"
+	CpuType *string `json:"CpuType,omitempty" name:"CpuType"`
+
+	// Pod节点数据目录挂载信息。
+	PodVolumes []*PodVolume `json:"PodVolumes,omitempty" name:"PodVolumes" list`
+}
+
+type PodVolume struct {
+
+	// 存储类型，可为"pvc"，"hostpath"。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VolumeType *string `json:"VolumeType,omitempty" name:"VolumeType"`
+
+	// 当VolumeType为"pvc"时，该字段生效。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PVCVolume *PersistentVolumeContext `json:"PVCVolume,omitempty" name:"PVCVolume"`
+
+	// 当VolumeType为"hostpath"时，该字段生效。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HostVolume *HostVolumeContext `json:"HostVolume,omitempty" name:"HostVolume"`
 }
 
 type PreExecuteFileSettings struct {

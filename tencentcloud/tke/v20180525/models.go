@@ -185,6 +185,15 @@ type ClusterAdvancedSettings struct {
 
 	// 集群的网络代理模型
 	KubeProxyMode *string `json:"KubeProxyMode,omitempty" name:"KubeProxyMode"`
+
+	// 是否开启审计开关
+	AuditEnabled *bool `json:"AuditEnabled,omitempty" name:"AuditEnabled"`
+
+	// 审计日志上传到的logset日志集
+	AuditLogsetId *string `json:"AuditLogsetId,omitempty" name:"AuditLogsetId"`
+
+	// 审计日志上传到的topic
+	AuditLogTopicId *string `json:"AuditLogTopicId,omitempty" name:"AuditLogTopicId"`
 }
 
 type ClusterAsGroup struct {
@@ -330,7 +339,7 @@ type ClusterCIDRSettings struct {
 
 type ClusterExtraArgs struct {
 
-	// kube-apiserver自定义参数
+	// kube-apiserver自定义参数，参数格式为["k1=v1", "k1=v2"]， 例如["max-requests-inflight=500","feature-gates=PodShareProcessNamespace=true,DynamicKubeletConfig=true"]
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	KubeAPIServer []*string `json:"KubeAPIServer,omitempty" name:"KubeAPIServer" list`
 
@@ -1793,7 +1802,7 @@ type InstanceDataDiskMountSetting struct {
 
 type InstanceExtraArgs struct {
 
-	// kubelet自定义参数
+	// kubelet自定义参数，参数格式为["k1=v1", "k1=v2"]， 例如["root-dir=/var/lib/kubelet","feature-gates=PodShareProcessNamespace=true,DynamicKubeletConfig=true"]
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Kubelet []*string `json:"Kubelet,omitempty" name:"Kubelet" list`
 }
