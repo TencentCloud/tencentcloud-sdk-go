@@ -1634,7 +1634,7 @@ type DescribePeakNetworkOverviewRequest struct {
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 
 	// 过滤条件。
-	// region    String      是否必填：否     （过滤条件）按照region过滤,不支持模糊匹配。
+	// region    String      是否必填：否     （过滤条件）按照region过滤,不支持模糊匹配。注意 region 填上需要查询ecm region才能返回数据。
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
 }
 

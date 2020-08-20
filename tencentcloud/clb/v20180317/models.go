@@ -2525,11 +2525,11 @@ type LoadBalancer struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IPv6Mode *string `json:"IPv6Mode,omitempty" name:"IPv6Mode"`
 
-	// 是否开启SnatPro
+	// 是否开启SnatPro。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SnatPro *bool `json:"SnatPro,omitempty" name:"SnatPro"`
 
-	// 开启SnatPro负载均衡后，SnatIp列表
+	// 开启SnatPro负载均衡后，SnatIp列表。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SnatIps []*SnatIp `json:"SnatIps,omitempty" name:"SnatIps" list`
 
@@ -2548,6 +2548,14 @@ type LoadBalancer struct {
 	// IP类型是否是本地BGP
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	LocalBgp *bool `json:"LocalBgp,omitempty" name:"LocalBgp"`
+
+	// 7层独占标签。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClusterTag *string `json:"ClusterTag,omitempty" name:"ClusterTag"`
+
+	// 开启IPv6FullChain负载均衡7层监听器支持混绑IPv4/IPv6目标功能。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MixIpTarget *bool `json:"MixIpTarget,omitempty" name:"MixIpTarget"`
 }
 
 type LoadBalancerDetail struct {

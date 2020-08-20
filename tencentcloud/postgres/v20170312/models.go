@@ -168,6 +168,9 @@ type CreateDBInstancesRequest struct {
 
 	// 是否需要支持Ipv6，1：是，0：否
 	NeedSupportIpv6 *uint64 `json:"NeedSupportIpv6,omitempty" name:"NeedSupportIpv6"`
+
+	// 实例需要绑定的Tag信息，默认为空
+	TagList []*Tag `json:"TagList,omitempty" name:"TagList" list`
 }
 
 func (r *CreateDBInstancesRequest) ToJsonString() string {
@@ -229,6 +232,9 @@ type CreateServerlessDBInstanceRequest struct {
 
 	// 私有网络子网ID。
 	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
+
+	// 实例需要绑定的标签数组信息
+	TagList []*Tag `json:"TagList,omitempty" name:"TagList" list`
 }
 
 func (r *CreateServerlessDBInstanceRequest) ToJsonString() string {
@@ -379,6 +385,10 @@ type DBInstance struct {
 
 	// 实例是否支持Ipv6，1：支持，0：不支持
 	SupportIpv6 *uint64 `json:"SupportIpv6,omitempty" name:"SupportIpv6"`
+
+	// 实例绑定的标签信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TagList []*Tag `json:"TagList,omitempty" name:"TagList" list`
 }
 
 type DBInstanceNetInfo struct {
@@ -641,7 +651,7 @@ func (r *DescribeDBInstanceAttributeResponse) FromJsonString(s string) error {
 type DescribeDBInstancesRequest struct {
 	*tchttp.BaseRequest
 
-	// 过滤条件，目前支持：db-instance-id、db-instance-name、db-project-id、db-pay-mode。
+	// 过滤条件，目前支持：db-instance-id、db-instance-name、db-project-id、db-pay-mode、db-tag-key。
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
 
 	// 每页显示数量，默认返回10条。
@@ -965,6 +975,12 @@ type DescribeServerlessDBInstancesRequest struct {
 
 	// 偏移量
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 排序指标，目前支持实例创建时间CreateTime
+	OrderBy *string `json:"OrderBy,omitempty" name:"OrderBy"`
+
+	// 排序方式，包括升序、降序
+	OrderByType *string `json:"OrderByType,omitempty" name:"OrderByType"`
 }
 
 func (r *DescribeServerlessDBInstancesRequest) ToJsonString() string {
@@ -1730,11 +1746,11 @@ type ServerlessDBInstance struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Zone *string `json:"Zone,omitempty" name:"Zone"`
 
-	// projectId
+	// 项目id
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProjectId *int64 `json:"ProjectId,omitempty" name:"ProjectId"`
 
-	// VpcId
+	// 私有网络Id
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
 
@@ -1765,6 +1781,10 @@ type ServerlessDBInstance struct {
 	// 实例下的db信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DBDatabaseList []*string `json:"DBDatabaseList,omitempty" name:"DBDatabaseList" list`
+
+	// 实例绑定的标签数组
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TagList []*Tag `json:"TagList,omitempty" name:"TagList" list`
 }
 
 type ServerlessDBInstanceNetInfo struct {
@@ -1885,6 +1905,15 @@ type SpecItemInfo struct {
 
 	// 机器类型
 	Type *string `json:"Type,omitempty" name:"Type"`
+}
+
+type Tag struct {
+
+	// 标签键
+	TagKey *string `json:"TagKey,omitempty" name:"TagKey"`
+
+	// 标签值
+	TagValue *string `json:"TagValue,omitempty" name:"TagValue"`
 }
 
 type UpgradeDBInstanceRequest struct {

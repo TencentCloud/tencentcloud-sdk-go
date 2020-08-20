@@ -773,7 +773,7 @@ func NewDescribeClsLogSetResponse() (response *DescribeClsLogSetResponse) {
     return
 }
 
-// 获取用户的clb独占日志集。
+// 获取用户的clb专有日志集
 func (c *Client) DescribeClsLogSet(request *DescribeClsLogSetRequest) (response *DescribeClsLogSetResponse, err error) {
     if request == nil {
         request = NewDescribeClsLogSetRequest()

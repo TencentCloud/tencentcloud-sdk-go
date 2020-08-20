@@ -9175,39 +9175,60 @@ type SampleSnapshotTemplate struct {
 type SearchMediaRequest struct {
 	*tchttp.BaseRequest
 
-	// 搜索文本，模糊匹配媒体文件名称或描述信息，匹配项越多，匹配度越高，排序越优先。长度限制：64个字符。
-	Text *string `json:"Text,omitempty" name:"Text"`
-
 	// 标签集合，匹配集合中任意元素。
 	// <li>单个标签长度限制：8个字符。</li>
 	// <li>数组长度限制：10。</li>
 	Tags []*string `json:"Tags,omitempty" name:"Tags" list`
 
-	// 分类 ID 集合，匹配集合指定 ID 的分类及其所有子类。数组长度限制：10。
+	// 分类 ID 集合，匹配集合指定 ID 的分类及其所有子类。
+	// <li>数组长度限制：10。</li>
 	ClassIds []*int64 `json:"ClassIds,omitempty" name:"ClassIds" list`
 
-	// 创建时间的开始时间。
-	// <li>大于等于开始时间。</li>
-	// <li>格式按照 ISO 8601标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#I)。</li>
-	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+	// 推流 [直播码](https://cloud.tencent.com/document/product/267/5959) 集合。匹配集合中的任意元素。
+	// <li>数组长度限制：10。</li>
+	StreamIds []*string `json:"StreamIds,omitempty" name:"StreamIds" list`
 
-	// 创建时间的结束时间。
-	// <li>小于结束时间。</li>
-	// <li>格式按照 ISO 8601标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#I)。</li>
-	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+	// 直播录制文件的唯一标识。匹配集合中的任意元素。
+	// <li>数组长度限制：10。</li>
+	Vids []*string `json:"Vids,omitempty" name:"Vids" list`
 
-	// 媒体文件来源，来源取值参见 [SourceType](https://cloud.tencent.com/document/product/266/31773#MediaSourceData)。
-	SourceType *string `json:"SourceType,omitempty" name:"SourceType"`
+	// 媒体文件来源集合，来源取值参见 [SourceType](https://cloud.tencent.com/document/product/266/31773#MediaSourceData)。
+	// <li>数组长度限制：10。</li>
+	SourceTypes []*string `json:"SourceTypes,omitempty" name:"SourceTypes" list`
 
-	// 推流 [直播码](https://cloud.tencent.com/document/product/267/5959)。
-	StreamId *string `json:"StreamId,omitempty" name:"StreamId"`
+	// 文件类型。匹配集合中的任意元素：
+	// <li>Video: 视频文件</li>
+	// <li>Audio: 音频文件</li>
+	// <li>Image: 图片文件</li>
+	Categories []*string `json:"Categories,omitempty" name:"Categories" list`
 
-	// 直播录制文件的唯一标识。
-	Vid *string `json:"Vid,omitempty" name:"Vid"`
+	// 匹配创建时间在此时间段内的文件。
+	// <li>包含所指定的头尾时间点。</li>
+	CreateTime *TimeRange `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 文件 ID 集合，匹配集合中的任意元素。
+	// <li>数组长度限制：10。</li>
+	// <li>单个 ID 长度限制：40个字符。</li>
+	FileIds []*string `json:"FileIds,omitempty" name:"FileIds" list`
+
+	// 文件名集合，模糊匹配媒体文件的文件名，匹配度越高，排序越优先。
+	// <li>单个文件名长度限制：40个字符。</li>
+	// <li>数组长度限制：10。</li>
+	Names []*string `json:"Names,omitempty" name:"Names" list`
+
+	// 文件名前缀，前缀匹配媒体文件的文件名。
+	// <li>单个文件名前缀长度限制：20个字符。</li>
+	// <li>数组长度限制：10。</li>
+	NamePrefixes []*string `json:"NamePrefixes,omitempty" name:"NamePrefixes" list`
+
+	// 文件描述集合，匹配集合中的任意元素。
+	// <li>单个描述长度限制：100个字符。</li>
+	// <li>数组长度限制：10。</li>
+	Descriptions []*string `json:"Descriptions,omitempty" name:"Descriptions" list`
 
 	// 排序方式。
-	// <li>Sort.Field 可选值：CreateTime</li>
-	// <li>指定 Text 搜索时，将根据匹配度排序，该字段无效</li>
+	// <li>Sort.Field 可选 CreateTime 。</li>
+	// <li>当 Text、 Names 或 Descriptions 不为空时，Sort.Field 字段无效， 搜索结果将以匹配度排序。</li>
 	Sort *SortBy `json:"Sort,omitempty" name:"Sort"`
 
 	// <div id="p_offset">分页返回的起始偏移量，默认值：0。将返回第 Offset 到第 Offset+Limit-1 条。
@@ -9218,14 +9239,51 @@ type SearchMediaRequest struct {
 	// <li>取值范围：Offset + Limit 不超过5000。（参见：<a href="#maxResultsDesc">接口返回结果数限制</a>）</li></div>
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 
-	// 文件类型：
-	// <li>Video: 视频文件</li>
-	// <li>Audio: 音频文件</li>
-	// <li>Image: 图片文件</li>
-	Categories []*string `json:"Categories,omitempty" name:"Categories" list`
+	// 指定所有媒体文件需要返回的信息，可同时指定多个信息，N 从 0 开始递增。如果未填写该字段，默认返回所有信息。选项有：
+	// <li>basicInfo（视频基础信息）。</li>
+	// <li>metaData（视频元信息）。</li>
+	// <li>transcodeInfo（视频转码结果信息）。</li>
+	// <li>animatedGraphicsInfo（视频转动图结果信息）。</li>
+	// <li>imageSpriteInfo（视频雪碧图信息）。</li>
+	// <li>snapshotByTimeOffsetInfo（视频指定时间点截图信息）。</li>
+	// <li>sampleSnapshotInfo（采样截图信息）。</li>
+	// <li>keyFrameDescInfo（打点信息）。</li>
+	// <li>adaptiveDynamicStreamingInfo（转自适应码流信息）。</li>
+	// <li>miniProgramReviewInfo（小程序审核信息）。</li>
+	Filters []*string `json:"Filters,omitempty" name:"Filters" list`
 
 	// 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
 	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
+
+	// （不推荐：应使用 StreamIds 替代）
+	// 推流 [直播码](https://cloud.tencent.com/document/product/267/5959)。
+	StreamId *string `json:"StreamId,omitempty" name:"StreamId"`
+
+	// （不推荐：应使用 Vids 替代）
+	// 直播录制文件的唯一标识。
+	Vid *string `json:"Vid,omitempty" name:"Vid"`
+
+	// （不推荐：应使用 Names、NamePrefixes 或 Descriptions 替代）
+	// 搜索文本，模糊匹配媒体文件名称或描述信息，匹配项越多，匹配度越高，排序越优先。长度限制：64个字符。
+	Text *string `json:"Text,omitempty" name:"Text"`
+
+	// （不推荐：应使用 CreateTime 替代）
+	// 创建时间的开始时间。
+	// <li>大于等于开始时间。</li>
+	// <li>当 CreateTime.After 也存在时，将优先使用 CreateTime.After。</li>
+	// <li>格式按照 ISO 8601标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#I)。</li>
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// （不推荐：应使用 CreateTime 替代）
+	// 创建时间的结束时间。
+	// <li>小于结束时间。</li>
+	// <li>当 CreateTime.Before 也存在时，将优先使用 CreateTime.Before。</li>
+	// <li>格式按照 ISO 8601标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#I)。</li>
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// （不推荐：应使用 SourceTypes 替代）
+	// 媒体文件来源，来源取值参见 [SourceType](https://cloud.tencent.com/document/product/266/31773#MediaSourceData)。
+	SourceType *string `json:"SourceType,omitempty" name:"SourceType"`
 }
 
 func (r *SearchMediaRequest) ToJsonString() string {
@@ -9245,7 +9303,7 @@ type SearchMediaResponse struct {
 	// <li>最大值：5000。当命中记录数超过5000时，该字段将返回 5000，而非实际命中总数。</li>
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
-		// 媒体文件信息列表，只包含基础信息（BasicInfo）。
+		// 媒体文件信息列表。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		MediaInfoSet []*MediaInfo `json:"MediaInfoSet,omitempty" name:"MediaInfoSet" list`
 
@@ -9871,6 +9929,17 @@ type TextWatermarkTemplateInputForUpdate struct {
 	// <li>0：完全透明</li>
 	// <li>1：完全不透明</li>
 	FontAlpha *float64 `json:"FontAlpha,omitempty" name:"FontAlpha"`
+}
+
+type TimeRange struct {
+
+	// <li>大于等于此时间（起始时间）。</li>
+	// <li>格式按照 ISO 8601标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#I)。</li>
+	After *string `json:"After,omitempty" name:"After"`
+
+	// <li>小于等于此时间（结束时间）。</li>
+	// <li>格式按照 ISO 8601标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#I)。</li>
+	Before *string `json:"Before,omitempty" name:"Before"`
 }
 
 type TranscodePlayInfo2017 struct {

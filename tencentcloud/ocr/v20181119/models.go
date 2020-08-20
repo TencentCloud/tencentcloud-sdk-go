@@ -281,6 +281,9 @@ type BusinessCardInfo struct {
 
 	// 识别出的字段名称对应的值，也就是字段name对应的字符串结果。
 	Value *string `json:"Value,omitempty" name:"Value"`
+
+	// 文本行在旋转纠正之后的图像中的像素坐标，表示为（左上角x, 左上角y，宽width，高height）
+	ItemCoord *ItemCoord `json:"ItemCoord,omitempty" name:"ItemCoord"`
 }
 
 type BusinessCardOCRRequest struct {
@@ -329,6 +332,9 @@ type BusinessCardOCRResponse struct {
 
 		// 返回图像预处理后的图片，图像预处理未开启时返回内容为空。
 		RetImageBase64 *string `json:"RetImageBase64,omitempty" name:"RetImageBase64"`
+
+		// 图片旋转角度（角度制），文本的水平方向为0°；顺时针为正，逆时针为负。点击查看<a href="https://cloud.tencent.com/document/product/866/45139">如何纠正倾斜文本</a>
+		Angle *float64 `json:"Angle,omitempty" name:"Angle"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1180,13 +1186,13 @@ func (r *GeneralAccurateOCRResponse) FromJsonString(s string) error {
 type GeneralBasicOCRRequest struct {
 	*tchttp.BaseRequest
 
-	// 图片的 Base64 值。
-	// 要求图片经Base64编码后不超过 7M，分辨率建议600*800以上，支持PNG、JPG、JPEG、BMP格式。
+	// 图片/PDF的 Base64 值。
+	// 要求图片/PDF经Base64编码后不超过 7M，分辨率建议600*800以上，支持PNG、JPG、JPEG、BMP、PDF格式。
 	// 图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
 	ImageBase64 *string `json:"ImageBase64,omitempty" name:"ImageBase64"`
 
-	// 图片的 Url 地址。
-	// 要求图片经Base64编码后不超过 7M，分辨率建议600*800以上，支持PNG、JPG、JPEG、BMP格式。
+	// 图片/PDF的 Url 地址。
+	// 要求图片/PDF经Base64编码后不超过 7M，分辨率建议600*800以上，支持PNG、JPG、JPEG、BMP、PDF格式。
 	// 图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
 	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
 
@@ -1200,14 +1206,21 @@ type GeneralBasicOCRRequest struct {
 	// spa\fre\ger\por\
 	// vie\may\rus\ita\
 	// hol\swe\fin\dan\
-	// nor\hun\tha\lat
+	// nor\hun\tha\lat\ara
 	// 可选值分别表示：
 	// 中英文混合、自动识别、日语、韩语、
 	// 西班牙语、法语、德语、葡萄牙语、
 	// 越南语、马来语、俄语、意大利语、
 	// 荷兰语、瑞典语、芬兰语、丹麦语、
-	// 挪威语、匈牙利语、泰语、拉丁语系。
+	// 挪威语、匈牙利语、泰语、拉丁语系、
+	// 阿拉伯语。
 	LanguageType *string `json:"LanguageType,omitempty" name:"LanguageType"`
+
+	// 是否开启PDF识别，默认值为false，开启后可同时支持图片和PDF的识别。
+	IsPdf *bool `json:"IsPdf,omitempty" name:"IsPdf"`
+
+	// 需要识别的PDF页面的对应页码，仅支持PDF单页识别，当上传文件为PDF且IsPdf参数值为true时有效，默认值为1。
+	PdfPageNumber *uint64 `json:"PdfPageNumber,omitempty" name:"PdfPageNumber"`
 }
 
 func (r *GeneralBasicOCRRequest) ToJsonString() string {
@@ -1231,6 +1244,9 @@ type GeneralBasicOCRResponse struct {
 
 		// 图片旋转角度（角度制），文本的水平方向为0°；顺时针为正，逆时针为负。点击查看<a href="https://cloud.tencent.com/document/product/866/45139">如何纠正倾斜文本</a>
 		Angel *float64 `json:"Angel,omitempty" name:"Angel"`
+
+		// 图片为PDF时，返回PDF的总页数，默认为0
+		PdfPageSize *int64 `json:"PdfPageSize,omitempty" name:"PdfPageSize"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -2002,7 +2018,7 @@ type MLIDCardOCRResponse struct {
 		// 证件图片
 		Image *string `json:"Image,omitempty" name:"Image"`
 
-		// 扩展字段:
+		// 扩展字段：
 	// {
 	//     ID:{
 	//         Confidence:0.9999
@@ -2021,6 +2037,9 @@ type MLIDCardOCRResponse struct {
 	// POLIS  警察
 	// IKAD   劳工证
 		Type *string `json:"Type,omitempty" name:"Type"`
+
+		// 出生日期（目前该字段仅支持IKAD劳工证）
+		Birthday *string `json:"Birthday,omitempty" name:"Birthday"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`

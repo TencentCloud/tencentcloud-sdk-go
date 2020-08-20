@@ -2295,6 +2295,9 @@ type VODExportInfo struct {
 
 type VideoEditProjectOutput struct {
 
+	// 导出的云剪素材 MaterialId，仅当导出为云剪素材时有效。
+	MaterialId *string `json:"MaterialId,omitempty" name:"MaterialId"`
+
 	// 云点播媒资 FileId。
 	VodFileId *string `json:"VodFileId,omitempty" name:"VodFileId"`
 

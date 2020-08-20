@@ -1,10 +1,10 @@
 # 本版本更新包含以下内容：
 
-## 文件存储(cfs) 版本：2019-07-19
+## 负载均衡(clb) 版本：2018-03-17
 
-### 第 6 次发布
+### 第 30 次发布
 
-发布时间：2020-08-19 08:07:50
+发布时间：2020-08-20 08:09:11
 
 本次发布包含了以下内容：
 
@@ -12,45 +12,115 @@
 
 修改数据结构：
 
-* [AvailableType](https://cloud.tencent.com/document/api/582/38175#AvailableType)
+* [LoadBalancer](https://cloud.tencent.com/document/api/214/30694#LoadBalancer)
 
-	* 新增成员：Prepayment
-
-
+	* 新增成员：ClusterTag, MixIpTarget
 
 
-## 弹性 MapReduce(emr) 版本：2019-01-03
+
+
+## 腾讯云剪(cme) 版本：2019-10-29
 
 ### 第 13 次发布
 
-发布时间：2020-08-19 08:11:03
+发布时间：2020-08-20 08:04:39
 
 本次发布包含了以下内容：
 
 改善已有的文档。
+
+修改数据结构：
+
+* [VideoEditProjectOutput](https://cloud.tencent.com/document/api/1156/40360#VideoEditProjectOutput)
+
+	* 新增成员：MaterialId
+
+
+
+
+## 文字识别(ocr) 版本：2018-11-19
+
+### 第 32 次发布
+
+发布时间：2020-08-20 08:17:32
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [BusinessCardOCR](https://cloud.tencent.com/document/api/866/36214)
+
+	* 新增出参：Angle
+
+* [GeneralBasicOCR](https://cloud.tencent.com/document/api/866/33526)
+
+	* 新增入参：IsPdf, PdfPageNumber
+
+	* 新增出参：PdfPageSize
+
+* [MLIDCardOCR](https://cloud.tencent.com/document/api/866/37656)
+
+	* 新增出参：Birthday
+
+
+修改数据结构：
+
+* [BusinessCardInfo](https://cloud.tencent.com/document/api/866/33527#BusinessCardInfo)
+
+	* 新增成员：ItemCoord
+
+
+
+
+## 云数据库 PostgreSQL(postgres) 版本：2017-03-12
+
+### 第 10 次发布
+
+发布时间：2020-08-20 08:18:19
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateDBInstances](https://cloud.tencent.com/document/api/409/16771)
+
+	* 新增入参：TagList
+
+* [CreateServerlessDBInstance](https://cloud.tencent.com/document/api/409/42762)
+
+	* 新增入参：TagList
+
+* [DescribeServerlessDBInstances](https://cloud.tencent.com/document/api/409/42760)
+
+	* 新增入参：OrderBy, OrderByType
+
 
 新增数据结构：
 
-* [HostVolumeContext](https://cloud.tencent.com/document/api/589/33981#HostVolumeContext)
-* [PersistentVolumeContext](https://cloud.tencent.com/document/api/589/33981#PersistentVolumeContext)
-* [PodVolume](https://cloud.tencent.com/document/api/589/33981#PodVolume)
+* [Tag](https://cloud.tencent.com/document/api/409/16778#Tag)
 
 修改数据结构：
 
-* [PodSpec](https://cloud.tencent.com/document/api/589/33981#PodSpec)
+* [DBInstance](https://cloud.tencent.com/document/api/409/16778#DBInstance)
 
-	* 新增成员：CpuType, PodVolumes
+	* 新增成员：TagList
 
-	* <font color="#dd0000">**修改成员**：</font>DataVolumes
+* [ServerlessDBInstance](https://cloud.tencent.com/document/api/409/16778#ServerlessDBInstance)
+
+	* 新增成员：TagList
 
 
 
 
-## 云直播(live) 版本：2018-08-01
+## 云函数(scf) 版本：2018-04-16
 
-### 第 47 次发布
+### 第 18 次发布
 
-发布时间：2020-08-19 08:13:57
+发布时间：2020-08-20 08:18:57
 
 本次发布包含了以下内容：
 
@@ -58,37 +128,18 @@
 
 修改接口：
 
-* [CreateLiveCallbackTemplate](https://cloud.tencent.com/document/api/267/32637)
+* [DeleteFunction](https://cloud.tencent.com/document/api/583/18585)
 
-	* 新增入参：StreamMixNotifyUrl
-
-
-
-
-## 容器服务(tke) 版本：2018-05-25
-
-### 第 24 次发布
-
-发布时间：2020-08-19 08:19:45
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [ClusterAdvancedSettings](https://cloud.tencent.com/document/api/457/31866#ClusterAdvancedSettings)
-
-	* 新增成员：AuditEnabled, AuditLogsetId, AuditLogTopicId
+	* 新增入参：Qualifier
 
 
 
 
-## 私有网络(vpc) 版本：2017-03-12
+## 云点播(vod) 版本：2018-07-17
 
-### 第 58 次发布
+### 第 53 次发布
 
-发布时间：2020-08-19 08:20:41
+发布时间：2020-08-20 08:23:52
 
 本次发布包含了以下内容：
 
@@ -96,18 +147,14 @@
 
 修改接口：
 
-* [CreateCustomerGateway](https://cloud.tencent.com/document/api/215/17523)
+* [SearchMedia](https://cloud.tencent.com/document/api/266/31813)
 
-	* 新增入参：Tags
+	* 新增入参：StreamIds, Vids, SourceTypes, CreateTime, FileIds, Names, NamePrefixes, Descriptions, Filters
 
-* [CreateVpnConnection](https://cloud.tencent.com/document/api/215/17522)
 
-	* 新增入参：Tags
+新增数据结构：
 
-* [CreateVpnGateway](https://cloud.tencent.com/document/api/215/17521)
-
-	* 新增入参：Tags
-
+* [TimeRange](https://cloud.tencent.com/document/api/266/31773#TimeRange)
 
 
 
@@ -7156,6 +7203,21 @@
 
 ## 负载均衡(clb) 版本：2018-03-17
 
+### 第 30 次发布
+
+发布时间：2020-08-20 08:09:11
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [LoadBalancer](https://cloud.tencent.com/document/api/214/30694#LoadBalancer)
+
+	* 新增成员：ClusterTag, MixIpTarget
+
+
 ### 第 29 次发布
 
 发布时间：2020-08-13 08:08:05
@@ -8054,6 +8116,21 @@
 
 
 ## 腾讯云剪(cme) 版本：2019-10-29
+
+### 第 13 次发布
+
+发布时间：2020-08-20 08:04:39
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [VideoEditProjectOutput](https://cloud.tencent.com/document/api/1156/40360#VideoEditProjectOutput)
+
+	* 新增成员：MaterialId
+
 
 ### 第 12 次发布
 
@@ -13082,9 +13159,9 @@
 
 新增数据结构：
 
-* [[HostVolumeContext](https://cloud.tencent.com/document/api/589/33981#HostVolumeContext)](https://cloud.tencent.com/document/api/589/33981#[HostVolumeContext](https://cloud.tencent.com/document/api/589/33981#HostVolumeContext))
-* [[PersistentVolumeContext](https://cloud.tencent.com/document/api/589/33981#PersistentVolumeContext)](https://cloud.tencent.com/document/api/589/33981#[PersistentVolumeContext](https://cloud.tencent.com/document/api/589/33981#PersistentVolumeContext))
-* [[PodVolume](https://cloud.tencent.com/document/api/589/33981#PodVolume)](https://cloud.tencent.com/document/api/589/33981#[PodVolume](https://cloud.tencent.com/document/api/589/33981#PodVolume))
+* [HostVolumeContext](https://cloud.tencent.com/document/api/589/33981#HostVolumeContext)
+* [PersistentVolumeContext](https://cloud.tencent.com/document/api/589/33981#PersistentVolumeContext)
+* [PodVolume](https://cloud.tencent.com/document/api/589/33981#PodVolume)
 
 修改数据结构：
 
@@ -21030,6 +21107,38 @@
 
 ## 文字识别(ocr) 版本：2018-11-19
 
+### 第 32 次发布
+
+发布时间：2020-08-20 08:17:32
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [BusinessCardOCR](https://cloud.tencent.com/document/api/866/36214)
+
+	* 新增出参：Angle
+
+* [GeneralBasicOCR](https://cloud.tencent.com/document/api/866/33526)
+
+	* 新增入参：IsPdf, PdfPageNumber
+
+	* 新增出参：PdfPageSize
+
+* [MLIDCardOCR](https://cloud.tencent.com/document/api/866/37656)
+
+	* 新增出参：Birthday
+
+
+修改数据结构：
+
+* [BusinessCardInfo](https://cloud.tencent.com/document/api/866/33527#BusinessCardInfo)
+
+	* 新增成员：ItemCoord
+
+
 ### 第 31 次发布
 
 发布时间：2020-08-11 08:18:56
@@ -21988,6 +22097,44 @@
 
 ## 云数据库 PostgreSQL(postgres) 版本：2017-03-12
 
+### 第 10 次发布
+
+发布时间：2020-08-20 08:18:19
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateDBInstances](https://cloud.tencent.com/document/api/409/16771)
+
+	* 新增入参：TagList
+
+* [CreateServerlessDBInstance](https://cloud.tencent.com/document/api/409/42762)
+
+	* 新增入参：TagList
+
+* [DescribeServerlessDBInstances](https://cloud.tencent.com/document/api/409/42760)
+
+	* 新增入参：OrderBy, OrderByType
+
+
+新增数据结构：
+
+* [[Tag](https://cloud.tencent.com/document/api/409/16778#Tag)](https://cloud.tencent.com/document/api/409/16778#[Tag](https://cloud.tencent.com/document/api/409/16778#Tag))
+
+修改数据结构：
+
+* [DBInstance](https://cloud.tencent.com/document/api/409/16778#DBInstance)
+
+	* 新增成员：TagList
+
+* [ServerlessDBInstance](https://cloud.tencent.com/document/api/409/16778#ServerlessDBInstance)
+
+	* 新增成员：TagList
+
+
 ### 第 9 次发布
 
 发布时间：2020-07-02 08:15:16
@@ -22713,6 +22860,21 @@
 
 
 ## 云函数(scf) 版本：2018-04-16
+
+### 第 18 次发布
+
+发布时间：2020-08-20 08:18:57
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DeleteFunction](https://cloud.tencent.com/document/api/583/18585)
+
+	* 新增入参：Qualifier
+
 
 ### 第 17 次发布
 
@@ -29069,6 +29231,25 @@
 
 
 ## 云点播(vod) 版本：2018-07-17
+
+### 第 53 次发布
+
+发布时间：2020-08-20 08:23:52
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [SearchMedia](https://cloud.tencent.com/document/api/266/31813)
+
+	* 新增入参：StreamIds, Vids, SourceTypes, CreateTime, FileIds, Names, NamePrefixes, Descriptions, Filters
+
+
+新增数据结构：
+
+* [[TimeRange](https://cloud.tencent.com/document/api/266/31773#TimeRange)](https://cloud.tencent.com/document/api/266/31773#[TimeRange](https://cloud.tencent.com/document/api/266/31773#TimeRange))
 
 ### 第 52 次发布
 

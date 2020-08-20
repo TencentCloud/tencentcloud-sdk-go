@@ -493,6 +493,9 @@ type DeleteFunctionRequest struct {
 
 	// 函数所属命名空间
 	Namespace *string `json:"Namespace,omitempty" name:"Namespace"`
+
+	// 函数版本
+	Qualifier *string `json:"Qualifier,omitempty" name:"Qualifier"`
 }
 
 func (r *DeleteFunctionRequest) ToJsonString() string {
@@ -1448,10 +1451,10 @@ type ListLayersRequest struct {
 	// 适配的运行时
 	CompatibleRuntime *string `json:"CompatibleRuntime,omitempty" name:"CompatibleRuntime"`
 
-	// Offset
+	// 偏移位置
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
 
-	// Limit
+	// 查询数目限制
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 
 	// 查询key，模糊匹配名称
