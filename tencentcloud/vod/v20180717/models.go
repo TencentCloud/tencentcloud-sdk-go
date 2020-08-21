@@ -1822,6 +1822,19 @@ type Canvas struct {
 	Height *int64 `json:"Height,omitempty" name:"Height"`
 }
 
+type CdnLogInfo struct {
+
+	// 日志所属日期， 格式为：yyyy-MM-dd ，如2018-03-01。
+	Date *string `json:"Date,omitempty" name:"Date"`
+
+	// 日志名称，格式为：日期小时-域名
+	// 如 2018120101-test.vod2.mqcloud.com。
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 日志下载链接，24小时内下载有效。
+	Url *string `json:"Url,omitempty" name:"Url"`
+}
+
 type ClassificationConfigureInfo struct {
 
 	// 智能分类任务开关，可选值：
@@ -4210,6 +4223,57 @@ func (r *DescribeCDNUsageDataResponse) ToJsonString() string {
 }
 
 func (r *DescribeCDNUsageDataResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeCdnLogsRequest struct {
+	*tchttp.BaseRequest
+
+	// 域名。
+	DomainName *string `json:"DomainName,omitempty" name:"DomainName"`
+
+	// 获取日志起始时间点，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 结束时间需大于起始时间；使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
+}
+
+func (r *DescribeCdnLogsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeCdnLogsRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeCdnLogsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 国内CDN节点的日志下载列表。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		DomesticCdnLogs []*CdnLogInfo `json:"DomesticCdnLogs,omitempty" name:"DomesticCdnLogs" list`
+
+		// 海外CDN节点的日志下载列表。如果域名没有开启海外加速，忽略该参数。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		OverseaCdnLogs []*CdnLogInfo `json:"OverseaCdnLogs,omitempty" name:"OverseaCdnLogs" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeCdnLogsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeCdnLogsResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 

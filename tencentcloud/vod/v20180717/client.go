@@ -1115,6 +1115,34 @@ func (c *Client) DescribeCDNUsageData(request *DescribeCDNUsageDataRequest) (res
     return
 }
 
+func NewDescribeCdnLogsRequest() (request *DescribeCdnLogsRequest) {
+    request = &DescribeCdnLogsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vod", APIVersion, "DescribeCdnLogs")
+    return
+}
+
+func NewDescribeCdnLogsResponse() (response *DescribeCdnLogsResponse) {
+    response = &DescribeCdnLogsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询点播域名的 CDN 访问日志的下载链接。
+//     1. 可以查询最近30天内的 CDN 日志下载链接。
+//     2. 默认情况下 CDN 每小时生成一个日志文件，如果某一个小时没有 CDN 访问，不会生成日志文件。    
+//     3. CDN 日志下载链接的有效期为24小时。
+func (c *Client) DescribeCdnLogs(request *DescribeCdnLogsRequest) (response *DescribeCdnLogsResponse, err error) {
+    if request == nil {
+        request = NewDescribeCdnLogsRequest()
+    }
+    response = NewDescribeCdnLogsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeContentReviewTemplatesRequest() (request *DescribeContentReviewTemplatesRequest) {
     request = &DescribeContentReviewTemplatesRequest{
         BaseRequest: &tchttp.BaseRequest{},

@@ -43,6 +43,31 @@ func NewClient(credential *common.Credential, region string, clientProfile *prof
 }
 
 
+func NewAccountTipoffAccessRequest() (request *AccountTipoffAccessRequest) {
+    request = &AccountTipoffAccessRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tms", APIVersion, "AccountTipoffAccess")
+    return
+}
+
+func NewAccountTipoffAccessResponse() (response *AccountTipoffAccessResponse) {
+    response = &AccountTipoffAccessResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 举报恶意账号
+func (c *Client) AccountTipoffAccess(request *AccountTipoffAccessRequest) (response *AccountTipoffAccessResponse, err error) {
+    if request == nil {
+        request = NewAccountTipoffAccessRequest()
+    }
+    response = NewAccountTipoffAccessResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewTextModerationRequest() (request *TextModerationRequest) {
     request = &TextModerationRequest{
         BaseRequest: &tchttp.BaseRequest{},

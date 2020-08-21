@@ -3451,7 +3451,7 @@ type DescribeDDoSTrendResponse struct {
 		// 统计结束时间
 		EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 
-		// 值数组
+		// 值数组，攻击流量带宽单位为Mbps，包速率单位为pps
 		Data []*uint64 `json:"Data,omitempty" name:"Data" list`
 
 		// 值个数

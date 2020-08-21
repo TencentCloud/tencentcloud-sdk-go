@@ -20,6 +20,62 @@ import (
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
+type AccountTipoffAccessRequest struct {
+	*tchttp.BaseRequest
+
+	// 被举报账号，长度低于 128 个字符
+	ReportedAccount *string `json:"ReportedAccount,omitempty" name:"ReportedAccount"`
+
+	// 被举报账号类型(1-微信uin 2-QQ号 3-微信群uin 4-qq群号 5-微信openid 6-QQopenid 7-手机号 8-微信号 0-其它string)
+	ReportedAccountType *int64 `json:"ReportedAccountType,omitempty" name:"ReportedAccountType"`
+
+	// 被举报账号所属恶意类型(1-诈骗，2-骚扰，3-广告，4-违法违规，5-赌博传销，0-其他)
+	EvilType *int64 `json:"EvilType,omitempty" name:"EvilType"`
+
+	// 举报者账号，长度低于 128 个字符
+	SenderAccount *string `json:"SenderAccount,omitempty" name:"SenderAccount"`
+
+	// 举报者账号类型(1-微信uin 2-QQ号 3-微信群uin 4-qq群号 5-微信openid 6-QQopenid 7-手机号 8-微信号 0-其它string)
+	SenderAccountType *int64 `json:"SenderAccountType,omitempty" name:"SenderAccountType"`
+
+	// 举报者IP地址
+	SenderIP *string `json:"SenderIP,omitempty" name:"SenderIP"`
+
+	// 包含被举报账号的恶意内容（比如文本、图片链接，长度低于1024个字符）
+	EvilContent *string `json:"EvilContent,omitempty" name:"EvilContent"`
+}
+
+func (r *AccountTipoffAccessRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *AccountTipoffAccessRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type AccountTipoffAccessResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 举报接口响应数据
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Data *TipoffResponse `json:"Data,omitempty" name:"Data"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *AccountTipoffAccessResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *AccountTipoffAccessResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DetailResults struct {
 
 	// 恶意标签，Normal：正常，Polity：涉政，Porn：色情，Illegal：违法，Abuse：谩骂，Terror：暴恐，Ad：广告，Custom：自定义关键词
@@ -158,6 +214,15 @@ func (r *TextModerationResponse) ToJsonString() string {
 
 func (r *TextModerationResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
+}
+
+type TipoffResponse struct {
+
+	// 举报结果， "0-举报数据提交成功  99-举报数据提交失败"
+	ResultCode *int64 `json:"ResultCode,omitempty" name:"ResultCode"`
+
+	// 结果描述
+	ResultMsg *string `json:"ResultMsg,omitempty" name:"ResultMsg"`
 }
 
 type User struct {

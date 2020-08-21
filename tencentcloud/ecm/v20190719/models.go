@@ -77,6 +77,15 @@ type Address struct {
 	PayMode *string `json:"PayMode,omitempty" name:"PayMode"`
 }
 
+type AddressTemplateSpecification struct {
+
+	// IP地址ID，例如：eipm-2uw6ujo6。
+	AddressId *string `json:"AddressId,omitempty" name:"AddressId"`
+
+	// IP地址组ID，例如：eipmg-2uw6ujo6。
+	AddressGroupId *string `json:"AddressGroupId,omitempty" name:"AddressGroupId"`
+}
+
 type AllocateAddressesRequest struct {
 	*tchttp.BaseRequest
 
@@ -254,6 +263,43 @@ func (r *AssociateAddressResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type AssociateSecurityGroupsRequest struct {
+	*tchttp.BaseRequest
+
+	// 要绑定的安全组ID，类似esg-efil73jd，只支持绑定单个安全组。
+	SecurityGroupIds []*string `json:"SecurityGroupIds,omitempty" name:"SecurityGroupIds" list`
+
+	// 被绑定的实例ID，类似ein-lesecurk，支持指定多个实例，每次请求批量实例的上限为100。
+	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds" list`
+}
+
+func (r *AssociateSecurityGroupsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *AssociateSecurityGroupsRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type AssociateSecurityGroupsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *AssociateSecurityGroupsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *AssociateSecurityGroupsResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type AttachNetworkInterfaceRequest struct {
 	*tchttp.BaseRequest
 
@@ -389,6 +435,9 @@ type CreateModuleRequest struct {
 
 	// 标签列表。
 	TagSpecification []*TagSpecification `json:"TagSpecification,omitempty" name:"TagSpecification" list`
+
+	// 模块默认安全组列表
+	SecurityGroups []*string `json:"SecurityGroups,omitempty" name:"SecurityGroups" list`
 }
 
 func (r *CreateModuleRequest) ToJsonString() string {
@@ -479,6 +528,43 @@ func (r *CreateNetworkInterfaceResponse) ToJsonString() string {
 }
 
 func (r *CreateNetworkInterfaceResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateSecurityGroupPoliciesRequest struct {
+	*tchttp.BaseRequest
+
+	// 安全组实例ID，例如esg-33ocnj9n，可通过DescribeSecurityGroups获取。
+	SecurityGroupId *string `json:"SecurityGroupId,omitempty" name:"SecurityGroupId"`
+
+	// 安全组规则集合。
+	SecurityGroupPolicySet *SecurityGroupPolicySet `json:"SecurityGroupPolicySet,omitempty" name:"SecurityGroupPolicySet"`
+}
+
+func (r *CreateSecurityGroupPoliciesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateSecurityGroupPoliciesRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateSecurityGroupPoliciesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateSecurityGroupPoliciesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateSecurityGroupPoliciesResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -737,6 +823,77 @@ func (r *DeleteNetworkInterfaceResponse) ToJsonString() string {
 }
 
 func (r *DeleteNetworkInterfaceResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteSecurityGroupPoliciesRequest struct {
+	*tchttp.BaseRequest
+
+	// 安全组实例ID，例如esg-33ocnj9n，可通过DescribeSecurityGroups获取。
+	SecurityGroupId *string `json:"SecurityGroupId,omitempty" name:"SecurityGroupId"`
+
+	// 安全组规则集合。一个请求中只能删除单个方向的一条或多条规则。支持指定索引（PolicyIndex） 匹配删除和安全组规则匹配删除两种方式，一个请求中只能使用一种匹配方式。
+	SecurityGroupPolicySet *SecurityGroupPolicySet `json:"SecurityGroupPolicySet,omitempty" name:"SecurityGroupPolicySet"`
+}
+
+func (r *DeleteSecurityGroupPoliciesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteSecurityGroupPoliciesRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteSecurityGroupPoliciesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DeleteSecurityGroupPoliciesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteSecurityGroupPoliciesResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteSecurityGroupRequest struct {
+	*tchttp.BaseRequest
+
+	// 安全组实例ID，例如esg-33ocnj9n，可通过DescribeSecurityGroups获取。
+	SecurityGroupId *string `json:"SecurityGroupId,omitempty" name:"SecurityGroupId"`
+}
+
+func (r *DeleteSecurityGroupRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteSecurityGroupRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteSecurityGroupResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DeleteSecurityGroupResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteSecurityGroupResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -1669,6 +1826,167 @@ func (r *DescribePeakNetworkOverviewResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeSecurityGroupAssociationStatisticsRequest struct {
+	*tchttp.BaseRequest
+
+	// 安全实例ID，例如esg-33ocnj9n，可通过DescribeSecurityGroups获取。
+	SecurityGroupIds []*string `json:"SecurityGroupIds,omitempty" name:"SecurityGroupIds" list`
+}
+
+func (r *DescribeSecurityGroupAssociationStatisticsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeSecurityGroupAssociationStatisticsRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeSecurityGroupAssociationStatisticsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 安全组关联实例统计。
+		SecurityGroupAssociationStatisticsSet []*SecurityGroupAssociationStatistics `json:"SecurityGroupAssociationStatisticsSet,omitempty" name:"SecurityGroupAssociationStatisticsSet" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeSecurityGroupAssociationStatisticsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeSecurityGroupAssociationStatisticsResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeSecurityGroupLimitsRequest struct {
+	*tchttp.BaseRequest
+}
+
+func (r *DescribeSecurityGroupLimitsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeSecurityGroupLimitsRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeSecurityGroupLimitsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 用户安全组配额限制。
+		SecurityGroupLimitSet *SecurityGroupLimitSet `json:"SecurityGroupLimitSet,omitempty" name:"SecurityGroupLimitSet"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeSecurityGroupLimitsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeSecurityGroupLimitsResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeSecurityGroupPoliciesRequest struct {
+	*tchttp.BaseRequest
+
+	// 安全组实例ID，例如：esg-33ocnj9n，可通过DescribeSecurityGroups获取。
+	SecurityGroupId *string `json:"SecurityGroupId,omitempty" name:"SecurityGroupId"`
+}
+
+func (r *DescribeSecurityGroupPoliciesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeSecurityGroupPoliciesRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeSecurityGroupPoliciesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 安全组规则集合。
+		SecurityGroupPolicySet *SecurityGroupPolicySet `json:"SecurityGroupPolicySet,omitempty" name:"SecurityGroupPolicySet"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeSecurityGroupPoliciesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeSecurityGroupPoliciesResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeSecurityGroupsRequest struct {
+	*tchttp.BaseRequest
+
+	// 安全组实例ID，例如：esg-33ocnj9n，可通过DescribeSecurityGroups获取。每次请求的实例的上限为100。参数不支持同时指定SecurityGroupIds和Filters。
+	SecurityGroupIds []*string `json:"SecurityGroupIds,omitempty" name:"SecurityGroupIds" list`
+
+	// 过滤条件，参数不支持同时指定SecurityGroupIds和Filters。
+	// security-group-id - String - （过滤条件）安全组ID。
+	// security-group-name - String - （过滤条件）安全组名称。
+	// tag-key - String -是否必填：否- （过滤条件）按照标签键进行过滤。
+	// tag:tag-key - String - 是否必填：否 - （过滤条件）按照标签键值对进行过滤。 tag-key使用具体的标签键进行替换。
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+
+	// 偏移量，默认为0。
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 返回数量，默认为20，最大值为100。
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+func (r *DescribeSecurityGroupsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeSecurityGroupsRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeSecurityGroupsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 符合条件的实例数量。
+		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 安全组对象。
+		SecurityGroupSet []*SecurityGroup `json:"SecurityGroupSet,omitempty" name:"SecurityGroupSet" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeSecurityGroupsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeSecurityGroupsResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeSubnetsRequest struct {
 	*tchttp.BaseRequest
 
@@ -1963,6 +2281,43 @@ func (r *DisassociateAddressResponse) ToJsonString() string {
 }
 
 func (r *DisassociateAddressResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DisassociateSecurityGroupsRequest struct {
+	*tchttp.BaseRequest
+
+	// 要解绑的安全组ID，类似esg-efil73jd，只支持解绑单个安全组。
+	SecurityGroupIds []*string `json:"SecurityGroupIds,omitempty" name:"SecurityGroupIds" list`
+
+	// 被解绑的实例ID，类似ein-lesecurk，支持指定多个实例 。
+	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds" list`
+}
+
+func (r *DisassociateSecurityGroupsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DisassociateSecurityGroupsRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DisassociateSecurityGroupsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DisassociateSecurityGroupsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DisassociateSecurityGroupsResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -2369,6 +2724,15 @@ type InstanceOperator struct {
 	DeniedActions []*OperatorAction `json:"DeniedActions,omitempty" name:"DeniedActions" list`
 }
 
+type InstanceStatistic struct {
+
+	// 实例的类型
+	InstanceType *string `json:"InstanceType,omitempty" name:"InstanceType"`
+
+	// 实例的个数
+	InstanceCount *int64 `json:"InstanceCount,omitempty" name:"InstanceCount"`
+}
+
 type InstanceTypeConfig struct {
 
 	// 机型族配置信息
@@ -2699,6 +3063,9 @@ type ModifyInstancesAttributeRequest struct {
 
 	// 修改成功后显示的实例名称，不得超过60个字符，不传则名称显示为空。
 	InstanceName *string `json:"InstanceName,omitempty" name:"InstanceName"`
+
+	// 指定实例的安全组Id列表，子机将重新关联指定列表的安全组，原本关联的安全组会被解绑。限制不超过5个。
+	SecurityGroups []*string `json:"SecurityGroups,omitempty" name:"SecurityGroups" list`
 }
 
 func (r *ModifyInstancesAttributeRequest) ToJsonString() string {
@@ -2918,6 +3285,123 @@ func (r *ModifyModuleNetworkResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type ModifyModuleSecurityGroupsRequest struct {
+	*tchttp.BaseRequest
+
+	// 安全组列表。不超过5个。
+	SecurityGroupIdSet []*string `json:"SecurityGroupIdSet,omitempty" name:"SecurityGroupIdSet" list`
+
+	// 模块id。
+	ModuleId *string `json:"ModuleId,omitempty" name:"ModuleId"`
+}
+
+func (r *ModifyModuleSecurityGroupsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyModuleSecurityGroupsRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyModuleSecurityGroupsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifyModuleSecurityGroupsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyModuleSecurityGroupsResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifySecurityGroupAttributeRequest struct {
+	*tchttp.BaseRequest
+
+	// 安全组实例ID，例如esg-33ocnj9n，可通过DescribeSecurityGroups获取。
+	SecurityGroupId *string `json:"SecurityGroupId,omitempty" name:"SecurityGroupId"`
+
+	// 安全组名称，可任意命名，但不得超过60个字符。
+	GroupName *string `json:"GroupName,omitempty" name:"GroupName"`
+
+	// 安全组备注，最多100个字符。
+	GroupDescription *string `json:"GroupDescription,omitempty" name:"GroupDescription"`
+}
+
+func (r *ModifySecurityGroupAttributeRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifySecurityGroupAttributeRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifySecurityGroupAttributeResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifySecurityGroupAttributeResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifySecurityGroupAttributeResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifySecurityGroupPoliciesRequest struct {
+	*tchttp.BaseRequest
+
+	// 安全组实例ID，例如esg-33ocnj9n，可通过DescribeSecurityGroups获取。
+	SecurityGroupId *string `json:"SecurityGroupId,omitempty" name:"SecurityGroupId"`
+
+	// 安全组规则集合。 SecurityGroupPolicySet对象必须同时指定新的出（Egress）入（Ingress）站规则。 SecurityGroupPolicy对象不支持自定义索引（PolicyIndex）。
+	SecurityGroupPolicySet *SecurityGroupPolicySet `json:"SecurityGroupPolicySet,omitempty" name:"SecurityGroupPolicySet"`
+
+	// 排序安全组标识。值为True时，支持安全组排序；SortPolicys不存在或SortPolicys为False时，为修改安全组规则。
+	SortPolicys *bool `json:"SortPolicys,omitempty" name:"SortPolicys"`
+}
+
+func (r *ModifySecurityGroupPoliciesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifySecurityGroupPoliciesRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifySecurityGroupPoliciesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifySecurityGroupPoliciesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifySecurityGroupPoliciesResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type ModifySubnetAttributeRequest struct {
 	*tchttp.BaseRequest
 
@@ -3048,6 +3532,9 @@ type Module struct {
 
 	// 是否关闭IP直通
 	CloseIpDirect *int64 `json:"CloseIpDirect,omitempty" name:"CloseIpDirect"`
+
+	// 默认安全组id列表
+	SecurityGroupIds []*string `json:"SecurityGroupIds,omitempty" name:"SecurityGroupIds" list`
 }
 
 type ModuleCounter struct {
@@ -3534,6 +4021,43 @@ func (r *RemovePrivateIpAddressesResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type ReplaceSecurityGroupPolicyRequest struct {
+	*tchttp.BaseRequest
+
+	// 安全组实例ID，例如esg-33ocnj9n，可通过DescribeSecurityGroups获取
+	SecurityGroupId *string `json:"SecurityGroupId,omitempty" name:"SecurityGroupId"`
+
+	// 安全组规则集合对象。
+	SecurityGroupPolicySet *SecurityGroupPolicySet `json:"SecurityGroupPolicySet,omitempty" name:"SecurityGroupPolicySet"`
+}
+
+func (r *ReplaceSecurityGroupPolicyRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ReplaceSecurityGroupPolicyRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ReplaceSecurityGroupPolicyResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ReplaceSecurityGroupPolicyResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ReplaceSecurityGroupPolicyResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type ResetInstancesMaxBandwidthRequest struct {
 	*tchttp.BaseRequest
 
@@ -3796,6 +4320,112 @@ type SecurityGroup struct {
 
 	// 标签键值对。
 	TagSet []*Tag `json:"TagSet,omitempty" name:"TagSet" list`
+}
+
+type SecurityGroupAssociationStatistics struct {
+
+	// 安全组实例ID。
+	SecurityGroupId *string `json:"SecurityGroupId,omitempty" name:"SecurityGroupId"`
+
+	// ECM实例数。
+	ECM *int64 `json:"ECM,omitempty" name:"ECM"`
+
+	// ECM模块数。
+	Module *int64 `json:"Module,omitempty" name:"Module"`
+
+	// 弹性网卡实例数。
+	ENI *int64 `json:"ENI,omitempty" name:"ENI"`
+
+	// 被安全组引用数。
+	SG *int64 `json:"SG,omitempty" name:"SG"`
+
+	// 负载均衡实例数。
+	CLB *int64 `json:"CLB,omitempty" name:"CLB"`
+
+	// 全量实例的绑定统计。
+	InstanceStatistics []*InstanceStatistic `json:"InstanceStatistics,omitempty" name:"InstanceStatistics" list`
+
+	// 所有资源的总计数（不包含被安全组引用数）。
+	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+}
+
+type SecurityGroupLimitSet struct {
+
+	// 可创建安全组总数
+	SecurityGroupLimit *int64 `json:"SecurityGroupLimit,omitempty" name:"SecurityGroupLimit"`
+
+	// 安全组下的最大规则数
+	SecurityGroupPolicyLimit *int64 `json:"SecurityGroupPolicyLimit,omitempty" name:"SecurityGroupPolicyLimit"`
+
+	// 安全组下嵌套安全组规则数
+	ReferedSecurityGroupLimit *int64 `json:"ReferedSecurityGroupLimit,omitempty" name:"ReferedSecurityGroupLimit"`
+
+	// 单安全组关联实例数
+	SecurityGroupInstanceLimit *int64 `json:"SecurityGroupInstanceLimit,omitempty" name:"SecurityGroupInstanceLimit"`
+
+	// 实例关联安全组数
+	InstanceSecurityGroupLimit *int64 `json:"InstanceSecurityGroupLimit,omitempty" name:"InstanceSecurityGroupLimit"`
+
+	// 单安全组关联的模块数
+	SecurityGroupModuleLimit *int64 `json:"SecurityGroupModuleLimit,omitempty" name:"SecurityGroupModuleLimit"`
+
+	// 模块关联的安全组数
+	ModuleSecurityGroupLimit *int64 `json:"ModuleSecurityGroupLimit,omitempty" name:"ModuleSecurityGroupLimit"`
+}
+
+type SecurityGroupPolicy struct {
+
+	// 安全组规则索引号
+	PolicyIndex *int64 `json:"PolicyIndex,omitempty" name:"PolicyIndex"`
+
+	// 协议, 取值: TCP,UDP, ICMP。
+	Protocol *string `json:"Protocol,omitempty" name:"Protocol"`
+
+	// 端口(all, 离散port, range)。
+	Port *string `json:"Port,omitempty" name:"Port"`
+
+	// 协议端口ID或者协议端口组ID。ServiceTemplate和Protocol+Port互斥。
+	ServiceTemplate *ServiceTemplateSpecification `json:"ServiceTemplate,omitempty" name:"ServiceTemplate"`
+
+	// 网段或IP(互斥)。
+	CidrBlock *string `json:"CidrBlock,omitempty" name:"CidrBlock"`
+
+	// 安全组实例ID，例如：esg-ohuuioma。
+	SecurityGroupId *string `json:"SecurityGroupId,omitempty" name:"SecurityGroupId"`
+
+	// IP地址ID或者ID地址组ID。
+	AddressTemplate *AddressTemplateSpecification `json:"AddressTemplate,omitempty" name:"AddressTemplate"`
+
+	// ACCEPT 或 DROP。
+	Action *string `json:"Action,omitempty" name:"Action"`
+
+	// 安全组规则描述。
+	PolicyDescription *string `json:"PolicyDescription,omitempty" name:"PolicyDescription"`
+
+	// 修改时间，例如 2020-07-22 19：27：23
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ModifyTime *string `json:"ModifyTime,omitempty" name:"ModifyTime"`
+}
+
+type SecurityGroupPolicySet struct {
+
+	// 安全组规则当前版本。用户每次更新安全规则版本会自动加1，防止更新的路由规则已过期，不填不考虑冲突。
+	Version *string `json:"Version,omitempty" name:"Version"`
+
+	// 出站规则。
+	Egress []*SecurityGroupPolicy `json:"Egress,omitempty" name:"Egress" list`
+
+	// 入站规则。
+	Ingress []*SecurityGroupPolicy `json:"Ingress,omitempty" name:"Ingress" list`
+}
+
+type ServiceTemplateSpecification struct {
+
+	// 协议端口ID，例如：eppm-f5n1f8da。
+	ServiceId *string `json:"ServiceId,omitempty" name:"ServiceId"`
+
+	// 协议端口组ID，例如：eppmg-f5n1f8da。
+	ServiceGroupId *string `json:"ServiceGroupId,omitempty" name:"ServiceGroupId"`
 }
 
 type SimpleModule struct {

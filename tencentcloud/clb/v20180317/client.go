@@ -883,6 +883,31 @@ func (c *Client) DescribeLoadBalancersDetail(request *DescribeLoadBalancersDetai
     return
 }
 
+func NewDescribeQuotaRequest() (request *DescribeQuotaRequest) {
+    request = &DescribeQuotaRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("clb", APIVersion, "DescribeQuota")
+    return
+}
+
+func NewDescribeQuotaResponse() (response *DescribeQuotaResponse) {
+    response = &DescribeQuotaResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询用户当前地域下的各项配额
+func (c *Client) DescribeQuota(request *DescribeQuotaRequest) (response *DescribeQuotaResponse, err error) {
+    if request == nil {
+        request = NewDescribeQuotaRequest()
+    }
+    response = NewDescribeQuotaResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeRewriteRequest() (request *DescribeRewriteRequest) {
     request = &DescribeRewriteRequest{
         BaseRequest: &tchttp.BaseRequest{},

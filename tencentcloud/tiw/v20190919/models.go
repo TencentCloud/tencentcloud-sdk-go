@@ -435,6 +435,39 @@ func (r *PauseOnlineRecordResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type RecordControl struct {
+
+	// 设置是否开启录制控制参数，只有设置为true的时候，录制控制参数才生效。
+	Enabled *bool `json:"Enabled,omitempty" name:"Enabled"`
+
+	// 设置是否禁用录制的全局控制参数。一般与`StreamControls`参数配合使用。
+	// 
+	// true - 所有流都不录制。
+	// false - 所有流都录制。默认为false。
+	// 
+	// 这里的设置对所有流都生效，如果同时在 `StreamControls` 列表中针对指定流设置了控制参数，则优先采用`StreamControls`中设置的控制参数。
+	DisableRecord *bool `json:"DisableRecord,omitempty" name:"DisableRecord"`
+
+	// 设置是否禁用所有流的音频录制的全局控制参数。一般与`StreamControls`参数配合使用。
+	// 
+	// true - 所有流的录制都不对音频进行录制。
+	// false - 所有流的录制都需要对音频进行录制。默认为false。
+	// 
+	// 这里的设置对所有流都生效，如果同时在 `StreamControls` 列表中针对指定流设置了控制参数，则优先采用`StreamControls`中设置的控制参数。
+	DisableAudio *bool `json:"DisableAudio,omitempty" name:"DisableAudio"`
+
+	// 设置是否所有流都只录制小画面的全局控制参数。一般与`StreamControls`参数配合使用。
+	// 
+	// true - 所有流都只录制小画面。设置为true时，请确保上行端在推流的时候同时上行了小画面，否则录制视频可能是黑屏。
+	// false - 所有流都录制大画面，默认为false。
+	// 
+	// 这里的设置对所有流都生效，如果同时在 `StreamControls` 列表中针对指定流设置了控制参数，则优先采用`StreamControls`中设置的控制参数。
+	PullSmallVideo *bool `json:"PullSmallVideo,omitempty" name:"PullSmallVideo"`
+
+	// 针对具体流指定控制参数，如果列表为空，则所有流采用全局配置的控制参数进行录制。列表不为空，则列表中指定的流将优先按此列表指定的控制参数进行录制。
+	StreamControls []*StreamControl `json:"StreamControls,omitempty" name:"StreamControls" list`
+}
+
 type ResumeOnlineRecordRequest struct {
 	*tchttp.BaseRequest
 
@@ -637,7 +670,7 @@ type StartOnlineRecordRequest struct {
 	// 与RecordUserId对应的签名
 	RecordUserSig *string `json:"RecordUserSig,omitempty" name:"RecordUserSig"`
 
-	// 白板的 IM 群组 Id，默认同房间号
+	// （已废弃，设置无效）白板的 IM 群组 Id，默认同房间号
 	GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
 
 	// 实时录制视频拼接参数
@@ -659,6 +692,9 @@ type StartOnlineRecordRequest struct {
 
 	// 是否需要在结果回调中返回各路流的纯音频录制文件，文件格式为mp3
 	AudioFileNeeded *bool `json:"AudioFileNeeded,omitempty" name:"AudioFileNeeded"`
+
+	// 实时录制控制参数，用于更精细地指定需要录制哪些流，某一路流是否禁用音频，是否只录制小画面等
+	RecordControl *RecordControl `json:"RecordControl,omitempty" name:"RecordControl"`
 }
 
 func (r *StartOnlineRecordRequest) ToJsonString() string {
@@ -728,6 +764,42 @@ func (r *StopOnlineRecordResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type StreamControl struct {
+
+	// 视频流ID
+	// 视频流ID的取值含义如下：
+	// 1. tic_record_user - 表示白板视频流
+	// 2. tic_substream - 表示辅路视频流
+	// 3. 特定用户ID - 表示指定用户的视频流
+	// 
+	// 在实际录制过程中，视频流ID的匹配规则为前缀匹配，只要真实流ID的前缀与指定的流ID一致就认为匹配成功。
+	StreamId *string `json:"StreamId,omitempty" name:"StreamId"`
+
+	// 设置是否对此路流开启录制。
+	// 
+	// true - 表示不对这路流进行录制，录制结果将不包含这路流的视频。
+	// false - 表示需要对这路流进行录制，录制结果会包含这路流的视频。
+	// 
+	// 默认为 false。
+	DisableRecord *bool `json:"DisableRecord,omitempty" name:"DisableRecord"`
+
+	// 设置是否禁用这路流的音频录制。
+	// 
+	// true - 表示不对这路流的音频进行录制，录制结果里这路流的视频将会没有声音。
+	// false - 录制视频会保留音频，如果设置为true，则录制视频会丢弃这路流的音频。
+	// 
+	// 默认为 false。
+	DisableAudio *bool `json:"DisableAudio,omitempty" name:"DisableAudio"`
+
+	// 设置当前流录制视频是否只录制小画面。
+	// 
+	// true - 录制小画面。设置为true时，请确保上行端同时上行了小画面，否则录制视频可能是黑屏。
+	// false - 录制大画面。
+	// 
+	// 默认为 false。
+	PullSmallVideo *bool `json:"PullSmallVideo,omitempty" name:"PullSmallVideo"`
+}
+
 type StreamLayout struct {
 
 	// 流布局配置参数
@@ -743,6 +815,12 @@ type StreamLayout struct {
 
 	// 背景颜色，默认为黑色，格式为RGB格式，如红色为"#FF0000"
 	BackgroundColor *string `json:"BackgroundColor,omitempty" name:"BackgroundColor"`
+
+	// 视频画面填充模式。
+	// 
+	// 0 - 自适应模式，对视频画面进行等比例缩放，在指定区域内显示完整的画面。此模式可能存在黑边。
+	// 1 - 全屏模式，对视频画面进行等比例缩放，让画面填充满整个指定区域。此模式不会存在黑边，但会将超出区域的那一部分画面裁剪掉。
+	FillMode *int64 `json:"FillMode,omitempty" name:"FillMode"`
 }
 
 type VideoInfo struct {

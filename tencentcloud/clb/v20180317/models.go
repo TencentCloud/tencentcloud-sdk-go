@@ -1791,6 +1791,40 @@ func (r *DescribeLoadBalancersResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeQuotaRequest struct {
+	*tchttp.BaseRequest
+}
+
+func (r *DescribeQuotaRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeQuotaRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeQuotaResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 配额列表
+		QuotaSet []*Quota `json:"QuotaSet,omitempty" name:"QuotaSet" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeQuotaResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeQuotaResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeRewriteRequest struct {
 	*tchttp.BaseRequest
 
@@ -3283,6 +3317,24 @@ func (r *ModifyTargetWeightResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type Quota struct {
+
+	// 配额名称，取值范围：
+	// <li> TOTAL_OPEN_CLB_QUOTA: 用户当前地域下的公网LB配额 </li>
+	// <li> TOTAL_INTERNAL_CLB_QUOTA: 用户当前地域下的内网LB配额 </li>
+	// <li> TOTAL_LISTENER_QUOTA: 一个CLB下的监听器配额 </li>
+	// <li> TOTAL_LISTENER_RULE_QUOTA: 一个监听器下的转发规则配额 </li>
+	// <li> TOTAL_TARGET_BIND_QUOTA: 一条转发规则下绑定设备配额 </li>
+	QuotaId *string `json:"QuotaId,omitempty" name:"QuotaId"`
+
+	// 当前使用数量，为 null 时表示无意义。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	QuotaCurrent *int64 `json:"QuotaCurrent,omitempty" name:"QuotaCurrent"`
+
+	// 配额数量。
+	QuotaLimit *int64 `json:"QuotaLimit,omitempty" name:"QuotaLimit"`
+}
+
 type RegisterTargetGroupInstancesRequest struct {
 	*tchttp.BaseRequest
 
@@ -3515,7 +3567,7 @@ type RuleInput struct {
 	// 会话保持时间。设置为0表示关闭会话保持，开启会话保持可取值30~3600，单位：秒。
 	SessionExpireTime *int64 `json:"SessionExpireTime,omitempty" name:"SessionExpireTime"`
 
-	// 健康检查信息
+	// 健康检查信息。详情请参见：[健康检查](https://cloud.tencent.com/document/product/214/6097)
 	HealthCheck *HealthCheck `json:"HealthCheck,omitempty" name:"HealthCheck"`
 
 	// 证书信息

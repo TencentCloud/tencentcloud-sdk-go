@@ -124,6 +124,31 @@ func (c *Client) AssociateAddress(request *AssociateAddressRequest) (response *A
     return
 }
 
+func NewAssociateSecurityGroupsRequest() (request *AssociateSecurityGroupsRequest) {
+    request = &AssociateSecurityGroupsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ecm", APIVersion, "AssociateSecurityGroups")
+    return
+}
+
+func NewAssociateSecurityGroupsResponse() (response *AssociateSecurityGroupsResponse) {
+    response = &AssociateSecurityGroupsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 绑定安全组
+func (c *Client) AssociateSecurityGroups(request *AssociateSecurityGroupsRequest) (response *AssociateSecurityGroupsResponse, err error) {
+    if request == nil {
+        request = NewAssociateSecurityGroupsRequest()
+    }
+    response = NewAssociateSecurityGroupsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewAttachNetworkInterfaceRequest() (request *AttachNetworkInterfaceRequest) {
     request = &AttachNetworkInterfaceRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -249,6 +274,42 @@ func (c *Client) CreateSecurityGroup(request *CreateSecurityGroupRequest) (respo
     return
 }
 
+func NewCreateSecurityGroupPoliciesRequest() (request *CreateSecurityGroupPoliciesRequest) {
+    request = &CreateSecurityGroupPoliciesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ecm", APIVersion, "CreateSecurityGroupPolicies")
+    return
+}
+
+func NewCreateSecurityGroupPoliciesResponse() (response *CreateSecurityGroupPoliciesResponse) {
+    response = &CreateSecurityGroupPoliciesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 在 SecurityGroupPolicySet 参数中：
+// 
+// Version 安全组规则版本号，用户每次更新安全规则版本会自动加1，防止您更新的路由规则已过期，不填不考虑冲突。
+// 在创建出站和入站规则（Egress 和 Ingress）时：
+// Protocol 字段支持输入TCP, UDP, ICMP, ICMPV6, GRE, ALL。
+// CidrBlock 字段允许输入符合cidr格式标准的任意字符串。(展开)在基础网络中，如果 CidrBlock 包含您的账户内的云服务器之外的设备在腾讯云的内网 IP，并不代表此规则允许您访问这些设备，租户之间网络隔离规则优先于安全组中的内网规则。
+// Ipv6CidrBlock 字段允许输入符合IPv6 cidr格式标准的任意字符串。(展开)在基础网络中，如果Ipv6CidrBlock 包含您的账户内的云服务器之外的设备在腾讯云的内网 IPv6，并不代表此规则允许您访问这些设备，租户之间网络隔离规则优先于安全组中的内网规则。
+// SecurityGroupId 字段允许输入与待修改的安全组位于相同项目中的安全组 ID，包括这个安全组 ID 本身，代表安全组下所有云服务器的内网 IP。使用这个字段时，这条规则用来匹配网络报文的过程中会随着被使用的这个 ID 所关联的云服务器变化而变化，不需要重新修改。
+// Port 字段允许输入一个单独端口号，或者用减号分隔的两个端口号代表端口范围，例如80或8000-8010。只有当 Protocol 字段是 TCP 或 UDP 时，Port 字段才被接受，即 Protocol 字段不是 TCP 或 UDP 时，Protocol 和 Port 排他关系，不允许同时输入，否则会接口报错。
+// Action 字段只允许输入 ACCEPT 或 DROP。
+// CidrBlock, Ipv6CidrBlock, SecurityGroupId, AddressTemplate 四者是排他关系，不允许同时输入，Protocol + Port 和 ServiceTemplate 二者是排他关系，不允许同时输入。
+// 一次请求中只能创建单个方向的规则, 如果需要指定索引（PolicyIndex）参数, 多条规则的索引必须一致。
+func (c *Client) CreateSecurityGroupPolicies(request *CreateSecurityGroupPoliciesRequest) (response *CreateSecurityGroupPoliciesResponse, err error) {
+    if request == nil {
+        request = NewCreateSecurityGroupPoliciesRequest()
+    }
+    response = NewCreateSecurityGroupPoliciesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateSubnetRequest() (request *CreateSubnetRequest) {
     request = &CreateSubnetRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -370,6 +431,58 @@ func (c *Client) DeleteNetworkInterface(request *DeleteNetworkInterfaceRequest) 
         request = NewDeleteNetworkInterfaceRequest()
     }
     response = NewDeleteNetworkInterfaceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteSecurityGroupRequest() (request *DeleteSecurityGroupRequest) {
+    request = &DeleteSecurityGroupRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ecm", APIVersion, "DeleteSecurityGroup")
+    return
+}
+
+func NewDeleteSecurityGroupResponse() (response *DeleteSecurityGroupResponse) {
+    response = &DeleteSecurityGroupResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 只有当前账号下的安全组允许被删除。
+// 安全组实例ID如果在其他安全组的规则中被引用，则无法直接删除。这种情况下，需要先进行规则修改，再删除安全组。
+// 删除的安全组无法再找回，请谨慎调用。
+func (c *Client) DeleteSecurityGroup(request *DeleteSecurityGroupRequest) (response *DeleteSecurityGroupResponse, err error) {
+    if request == nil {
+        request = NewDeleteSecurityGroupRequest()
+    }
+    response = NewDeleteSecurityGroupResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteSecurityGroupPoliciesRequest() (request *DeleteSecurityGroupPoliciesRequest) {
+    request = &DeleteSecurityGroupPoliciesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ecm", APIVersion, "DeleteSecurityGroupPolicies")
+    return
+}
+
+func NewDeleteSecurityGroupPoliciesResponse() (response *DeleteSecurityGroupPoliciesResponse) {
+    response = &DeleteSecurityGroupPoliciesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// SecurityGroupPolicySet.Version 用于指定要操作的安全组的版本。传入 Version 版本号若不等于当前安全组的最新版本，将返回失败；若不传 Version 则直接删除指定PolicyIndex的规则。
+func (c *Client) DeleteSecurityGroupPolicies(request *DeleteSecurityGroupPoliciesRequest) (response *DeleteSecurityGroupPoliciesResponse, err error) {
+    if request == nil {
+        request = NewDeleteSecurityGroupPoliciesRequest()
+    }
+    response = NewDeleteSecurityGroupPoliciesResponse()
     err = c.Send(request, response)
     return
 }
@@ -874,6 +987,106 @@ func (c *Client) DescribePeakNetworkOverview(request *DescribePeakNetworkOvervie
     return
 }
 
+func NewDescribeSecurityGroupAssociationStatisticsRequest() (request *DescribeSecurityGroupAssociationStatisticsRequest) {
+    request = &DescribeSecurityGroupAssociationStatisticsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ecm", APIVersion, "DescribeSecurityGroupAssociationStatistics")
+    return
+}
+
+func NewDescribeSecurityGroupAssociationStatisticsResponse() (response *DescribeSecurityGroupAssociationStatisticsResponse) {
+    response = &DescribeSecurityGroupAssociationStatisticsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询安全组关联实例统计
+func (c *Client) DescribeSecurityGroupAssociationStatistics(request *DescribeSecurityGroupAssociationStatisticsRequest) (response *DescribeSecurityGroupAssociationStatisticsResponse, err error) {
+    if request == nil {
+        request = NewDescribeSecurityGroupAssociationStatisticsRequest()
+    }
+    response = NewDescribeSecurityGroupAssociationStatisticsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeSecurityGroupLimitsRequest() (request *DescribeSecurityGroupLimitsRequest) {
+    request = &DescribeSecurityGroupLimitsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ecm", APIVersion, "DescribeSecurityGroupLimits")
+    return
+}
+
+func NewDescribeSecurityGroupLimitsResponse() (response *DescribeSecurityGroupLimitsResponse) {
+    response = &DescribeSecurityGroupLimitsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询用户安全组配额
+func (c *Client) DescribeSecurityGroupLimits(request *DescribeSecurityGroupLimitsRequest) (response *DescribeSecurityGroupLimitsResponse, err error) {
+    if request == nil {
+        request = NewDescribeSecurityGroupLimitsRequest()
+    }
+    response = NewDescribeSecurityGroupLimitsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeSecurityGroupPoliciesRequest() (request *DescribeSecurityGroupPoliciesRequest) {
+    request = &DescribeSecurityGroupPoliciesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ecm", APIVersion, "DescribeSecurityGroupPolicies")
+    return
+}
+
+func NewDescribeSecurityGroupPoliciesResponse() (response *DescribeSecurityGroupPoliciesResponse) {
+    response = &DescribeSecurityGroupPoliciesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询安全组规则
+func (c *Client) DescribeSecurityGroupPolicies(request *DescribeSecurityGroupPoliciesRequest) (response *DescribeSecurityGroupPoliciesResponse, err error) {
+    if request == nil {
+        request = NewDescribeSecurityGroupPoliciesRequest()
+    }
+    response = NewDescribeSecurityGroupPoliciesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeSecurityGroupsRequest() (request *DescribeSecurityGroupsRequest) {
+    request = &DescribeSecurityGroupsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ecm", APIVersion, "DescribeSecurityGroups")
+    return
+}
+
+func NewDescribeSecurityGroupsResponse() (response *DescribeSecurityGroupsResponse) {
+    response = &DescribeSecurityGroupsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查看安全组
+func (c *Client) DescribeSecurityGroups(request *DescribeSecurityGroupsRequest) (response *DescribeSecurityGroupsResponse, err error) {
+    if request == nil {
+        request = NewDescribeSecurityGroupsRequest()
+    }
+    response = NewDescribeSecurityGroupsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeSubnetsRequest() (request *DescribeSubnetsRequest) {
     request = &DescribeSubnetsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1022,6 +1235,31 @@ func (c *Client) DisassociateAddress(request *DisassociateAddressRequest) (respo
         request = NewDisassociateAddressRequest()
     }
     response = NewDisassociateAddressResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDisassociateSecurityGroupsRequest() (request *DisassociateSecurityGroupsRequest) {
+    request = &DisassociateSecurityGroupsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ecm", APIVersion, "DisassociateSecurityGroups")
+    return
+}
+
+func NewDisassociateSecurityGroupsResponse() (response *DisassociateSecurityGroupsResponse) {
+    response = &DisassociateSecurityGroupsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 解绑安全组
+func (c *Client) DisassociateSecurityGroups(request *DisassociateSecurityGroupsRequest) (response *DisassociateSecurityGroupsResponse, err error) {
+    if request == nil {
+        request = NewDisassociateSecurityGroupsRequest()
+    }
+    response = NewDisassociateSecurityGroupsResponse()
     err = c.Send(request, response)
     return
 }
@@ -1378,6 +1616,81 @@ func (c *Client) ModifyModuleNetwork(request *ModifyModuleNetworkRequest) (respo
     return
 }
 
+func NewModifyModuleSecurityGroupsRequest() (request *ModifyModuleSecurityGroupsRequest) {
+    request = &ModifyModuleSecurityGroupsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ecm", APIVersion, "ModifyModuleSecurityGroups")
+    return
+}
+
+func NewModifyModuleSecurityGroupsResponse() (response *ModifyModuleSecurityGroupsResponse) {
+    response = &ModifyModuleSecurityGroupsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 修改模块默认安全组
+func (c *Client) ModifyModuleSecurityGroups(request *ModifyModuleSecurityGroupsRequest) (response *ModifyModuleSecurityGroupsResponse, err error) {
+    if request == nil {
+        request = NewModifyModuleSecurityGroupsRequest()
+    }
+    response = NewModifyModuleSecurityGroupsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifySecurityGroupAttributeRequest() (request *ModifySecurityGroupAttributeRequest) {
+    request = &ModifySecurityGroupAttributeRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ecm", APIVersion, "ModifySecurityGroupAttribute")
+    return
+}
+
+func NewModifySecurityGroupAttributeResponse() (response *ModifySecurityGroupAttributeResponse) {
+    response = &ModifySecurityGroupAttributeResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 修改安全组属性
+func (c *Client) ModifySecurityGroupAttribute(request *ModifySecurityGroupAttributeRequest) (response *ModifySecurityGroupAttributeResponse, err error) {
+    if request == nil {
+        request = NewModifySecurityGroupAttributeRequest()
+    }
+    response = NewModifySecurityGroupAttributeResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifySecurityGroupPoliciesRequest() (request *ModifySecurityGroupPoliciesRequest) {
+    request = &ModifySecurityGroupPoliciesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ecm", APIVersion, "ModifySecurityGroupPolicies")
+    return
+}
+
+func NewModifySecurityGroupPoliciesResponse() (response *ModifySecurityGroupPoliciesResponse) {
+    response = &ModifySecurityGroupPoliciesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 修改安全组出站和入站规则
+func (c *Client) ModifySecurityGroupPolicies(request *ModifySecurityGroupPoliciesRequest) (response *ModifySecurityGroupPoliciesResponse, err error) {
+    if request == nil {
+        request = NewModifySecurityGroupPoliciesRequest()
+    }
+    response = NewModifySecurityGroupPoliciesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifySubnetAttributeRequest() (request *ModifySubnetAttributeRequest) {
     request = &ModifySubnetAttributeRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1502,6 +1815,31 @@ func (c *Client) RemovePrivateIpAddresses(request *RemovePrivateIpAddressesReque
         request = NewRemovePrivateIpAddressesRequest()
     }
     response = NewRemovePrivateIpAddressesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewReplaceSecurityGroupPolicyRequest() (request *ReplaceSecurityGroupPolicyRequest) {
+    request = &ReplaceSecurityGroupPolicyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ecm", APIVersion, "ReplaceSecurityGroupPolicy")
+    return
+}
+
+func NewReplaceSecurityGroupPolicyResponse() (response *ReplaceSecurityGroupPolicyResponse) {
+    response = &ReplaceSecurityGroupPolicyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 替换单条安全组路由规则, 单个请求中只能替换单个方向的一条规则, 必须要指定索引（PolicyIndex）。
+func (c *Client) ReplaceSecurityGroupPolicy(request *ReplaceSecurityGroupPolicyRequest) (response *ReplaceSecurityGroupPolicyResponse, err error) {
+    if request == nil {
+        request = NewReplaceSecurityGroupPolicyRequest()
+    }
+    response = NewReplaceSecurityGroupPolicyResponse()
     err = c.Send(request, response)
     return
 }

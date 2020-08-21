@@ -43,6 +43,31 @@ func NewClient(credential *common.Credential, region string, clientProfile *prof
 }
 
 
+func NewDescribeBlueprintsRequest() (request *DescribeBlueprintsRequest) {
+    request = &DescribeBlueprintsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("lighthouse", APIVersion, "DescribeBlueprints")
+    return
+}
+
+func NewDescribeBlueprintsResponse() (response *DescribeBlueprintsResponse) {
+    response = &DescribeBlueprintsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（DescribeBlueprints）用于查询镜像信息。
+func (c *Client) DescribeBlueprints(request *DescribeBlueprintsRequest) (response *DescribeBlueprintsResponse, err error) {
+    if request == nil {
+        request = NewDescribeBlueprintsRequest()
+    }
+    response = NewDescribeBlueprintsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeBundlesRequest() (request *DescribeBundlesRequest) {
     request = &DescribeBundlesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -86,7 +111,7 @@ func NewDescribeInstancesResponse() (response *DescribeInstancesResponse) {
 // 本接口（DescribeInstances）用于查询一个或多个实例的详细信息。
 // 
 // * 可以根据实例 ID、实例名称或者实例的内网 IP 查询实例的详细信息。
-// * 过滤信息详细请见过滤器 Filters 。
+// * 过滤信息详细请见过滤器 [Filters](https://cloud.tencent.com/document/product/1207/47576#Filter) 。
 // * 如果参数为空，返回当前用户一定数量（Limit 所指定的数量，默认为 20）的实例。
 // * 支持查询实例的最新操作（LatestOperation）以及最新操作状态（LatestOperationState）。
 func (c *Client) DescribeInstances(request *DescribeInstancesRequest) (response *DescribeInstancesResponse, err error) {

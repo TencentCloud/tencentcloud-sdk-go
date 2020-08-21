@@ -20,6 +20,36 @@ import (
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
+type Blueprint struct {
+
+	// 镜像 ID  ，是 blueprint 的唯一标识。
+	BlueprintId *string `json:"BlueprintId,omitempty" name:"BlueprintId"`
+
+	// 镜像对外展示标题。
+	DisplayTitle *string `json:"DisplayTitle,omitempty" name:"DisplayTitle"`
+
+	// 镜像对外展示版本。
+	DisplayVersion *string `json:"DisplayVersion,omitempty" name:"DisplayVersion"`
+
+	// 镜像描述信息。
+	Description *string `json:"Description,omitempty" name:"Description"`
+
+	// 操作系统名称。
+	OsName *string `json:"OsName,omitempty" name:"OsName"`
+
+	// 操作系统平台。
+	Platform *string `json:"Platform,omitempty" name:"Platform"`
+
+	// 操作系统平台类型，如 LINUX_UNIX、WINDOWS。
+	PlatformType *string `json:"PlatformType,omitempty" name:"PlatformType"`
+
+	// 镜像类型，如 APP_OS、PURE_OS。
+	BlueprintType *string `json:"BlueprintType,omitempty" name:"BlueprintType"`
+
+	// 镜像图片 URL。
+	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
+}
+
 type Bundle struct {
 
 	// 套餐 ID。
@@ -29,6 +59,8 @@ type Bundle struct {
 	Memory *int64 `json:"Memory,omitempty" name:"Memory"`
 
 	// 系统盘类型。
+	// 取值范围： 
+	// <li> LOCAL_BASIC：本地硬盘</li><li> LOCAL_SSD：本地 SSD 硬盘</li><li> CLOUD_BASIC：普通云硬盘</li><li> CLOUD_SSD：SSD 云硬盘</li><li> CLOUD_PREMIUM：高性能云硬盘</li>
 	SystemDiskType *string `json:"SystemDiskType,omitempty" name:"SystemDiskType"`
 
 	// 系统盘大小。
@@ -57,6 +89,67 @@ type Bundle struct {
 
 	// 套餐售卖状态,取值:‘AVAILABLE’(可用) , ‘SOLD_OUT’(售罄)
 	BundleSalesState *string `json:"BundleSalesState,omitempty" name:"BundleSalesState"`
+}
+
+type DescribeBlueprintsRequest struct {
+	*tchttp.BaseRequest
+
+	// 镜像 ID 列表。
+	BlueprintIds []*string `json:"BlueprintIds,omitempty" name:"BlueprintIds" list`
+
+	// 偏移量，默认为 0。
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 返回数量，默认为 20，最大值为 100。
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 过滤器列表。
+	// <li>blueprint-id</li>按照【镜像 ID】进行过滤。
+	// 类型：String
+	// 必选：否
+	// <li>blueprint-type</li>按照【镜像类型】进行过滤。
+	// 取值： APP_OS（预置应用的系统 ）；PURE_OS（纯净的 OS 系统）。
+	// 类型：String
+	// 必选：否
+	// <li>platform-type</li>按照【镜像平台类型】进行过滤。
+	// 取值： LINUX_UNIX（Linux/Unix系统）；WINDOWS（Windows 系统）。
+	// 类型：String
+	// 必选：否
+	// 每次请求的 Filters 的上限为 10，Filter.Values 的上限为 5。参数不支持同时指定 BlueprintIds 和 Filters 。
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+}
+
+func (r *DescribeBlueprintsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeBlueprintsRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeBlueprintsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 符合条件的镜像数量。
+		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 镜像详细信息列表。
+		BlueprintSet []*Blueprint `json:"BlueprintSet,omitempty" name:"BlueprintSet" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeBlueprintsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeBlueprintsResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeBundlesRequest struct {
@@ -127,6 +220,9 @@ type DescribeInstancesRequest struct {
 	// 类型：String
 	// 必选：否
 	// <li>private-ip-address</li>按照【实例主网卡的内网 IP】进行过滤。
+	// 类型：String
+	// 必选：否
+	// <li>public-ip-address</li>按照【实例主网卡的公网 IP】进行过滤。
 	// 类型：String
 	// 必选：否
 	// 每次请求的 Filters 的上限为 10，Filter.Values 的上限为 5。参数不支持同时指定 InstanceIds 和 Filters。
@@ -315,7 +411,7 @@ type Price struct {
 type RebootInstancesRequest struct {
 	*tchttp.BaseRequest
 
-	// 实例 ID 列表。每次请求批量实例的上限为 100。
+	// 实例 ID 列表。每次请求批量实例的上限为 100。可通过[DescribeInstances](https://cloud.tencent.com/document/api/1207/47573)接口返回值中的InstanceId获取。
 	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds" list`
 }
 
@@ -349,7 +445,7 @@ func (r *RebootInstancesResponse) FromJsonString(s string) error {
 type ResetInstanceRequest struct {
 	*tchttp.BaseRequest
 
-	// 实例 ID。
+	// 实例 ID。可通过[DescribeInstances](https://cloud.tencent.com/document/api/1207/47573)接口返回值中的InstanceId获取。
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
 	// 镜像 ID。
@@ -386,7 +482,7 @@ func (r *ResetInstanceResponse) FromJsonString(s string) error {
 type StartInstancesRequest struct {
 	*tchttp.BaseRequest
 
-	// 实例 ID 列表。每次请求批量实例的上限为 100。
+	// 实例 ID 列表。每次请求批量实例的上限为 100。可通过[DescribeInstances](https://cloud.tencent.com/document/api/1207/47573)接口返回值中的InstanceId获取。
 	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds" list`
 }
 
@@ -420,7 +516,7 @@ func (r *StartInstancesResponse) FromJsonString(s string) error {
 type StopInstancesRequest struct {
 	*tchttp.BaseRequest
 
-	// 实例 ID 列表。每次请求批量实例的上限为 100。
+	// 实例 ID 列表。每次请求批量实例的上限为 100。可通过[DescribeInstances](https://cloud.tencent.com/document/api/1207/47573)接口返回值中的InstanceId获取。
 	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds" list`
 }
 
