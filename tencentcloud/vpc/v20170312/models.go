@@ -709,10 +709,10 @@ type AssociateNatGatewayAddressRequest struct {
 	// 需要申请的弹性IP个数，系统会按您的要求生产N个弹性IP, 其中AddressCount和PublicAddresses至少传递一个。
 	AddressCount *uint64 `json:"AddressCount,omitempty" name:"AddressCount"`
 
-	// 绑定NAT网关的弹性IP数组，其中AddressCount和PublicAddresses至少传递一个。。
+	// 绑定NAT网关的弹性IP数组，其中AddressCount和PublicAddresses至少传递一个。
 	PublicIpAddresses []*string `json:"PublicIpAddresses,omitempty" name:"PublicIpAddresses" list`
 
-	// 弹性IP可以区，自动分配弹性IP时传递。
+	// 弹性IP可用区，自动分配弹性IP时传递。
 	Zone *string `json:"Zone,omitempty" name:"Zone"`
 }
 
@@ -928,6 +928,46 @@ func (r *AttachNetworkInterfaceResponse) ToJsonString() string {
 }
 
 func (r *AttachNetworkInterfaceResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type AuditCrossBorderComplianceRequest struct {
+	*tchttp.BaseRequest
+
+	// 服务商, 可选值：`UNICOM`。
+	ServiceProvider *string `json:"ServiceProvider,omitempty" name:"ServiceProvider"`
+
+	// 表单唯一`ID`。
+	ComplianceId *uint64 `json:"ComplianceId,omitempty" name:"ComplianceId"`
+
+	// 通过：`APPROVED `，拒绝：`DENY`。
+	AuditBehavior *string `json:"AuditBehavior,omitempty" name:"AuditBehavior"`
+}
+
+func (r *AuditCrossBorderComplianceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *AuditCrossBorderComplianceRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type AuditCrossBorderComplianceResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *AuditCrossBorderComplianceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *AuditCrossBorderComplianceResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -2835,6 +2875,75 @@ func (r *CreateVpnGatewayResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type CrossBorderCompliance struct {
+
+	// 服务商，可选值：`UNICOM`。
+	ServiceProvider *string `json:"ServiceProvider,omitempty" name:"ServiceProvider"`
+
+	// 合规化审批单`ID`。
+	ComplianceId *uint64 `json:"ComplianceId,omitempty" name:"ComplianceId"`
+
+	// 公司全称。
+	Company *string `json:"Company,omitempty" name:"Company"`
+
+	// 统一社会信用代码。
+	UniformSocialCreditCode *string `json:"UniformSocialCreditCode,omitempty" name:"UniformSocialCreditCode"`
+
+	// 法人。
+	LegalPerson *string `json:"LegalPerson,omitempty" name:"LegalPerson"`
+
+	// 发证机关。
+	IssuingAuthority *string `json:"IssuingAuthority,omitempty" name:"IssuingAuthority"`
+
+	// 营业执照。
+	BusinessLicense *string `json:"BusinessLicense,omitempty" name:"BusinessLicense"`
+
+	// 营业执照住所。
+	BusinessAddress *string `json:"BusinessAddress,omitempty" name:"BusinessAddress"`
+
+	// 邮编。
+	PostCode *uint64 `json:"PostCode,omitempty" name:"PostCode"`
+
+	// 经办人。
+	Manager *string `json:"Manager,omitempty" name:"Manager"`
+
+	// 经办人身份证号。
+	ManagerId *string `json:"ManagerId,omitempty" name:"ManagerId"`
+
+	// 经办人身份证。
+	ManagerIdCard *string `json:"ManagerIdCard,omitempty" name:"ManagerIdCard"`
+
+	// 经办人身份证地址。
+	ManagerAddress *string `json:"ManagerAddress,omitempty" name:"ManagerAddress"`
+
+	// 经办人联系电话。
+	ManagerTelephone *string `json:"ManagerTelephone,omitempty" name:"ManagerTelephone"`
+
+	// 电子邮箱。
+	Email *string `json:"Email,omitempty" name:"Email"`
+
+	// 跨境专线服务受理单。
+	ServiceHandlingForm *string `json:"ServiceHandlingForm,omitempty" name:"ServiceHandlingForm"`
+
+	// 授权函。
+	AuthorizationLetter *string `json:"AuthorizationLetter,omitempty" name:"AuthorizationLetter"`
+
+	// 信息安全承诺书。
+	SafetyCommitment *string `json:"SafetyCommitment,omitempty" name:"SafetyCommitment"`
+
+	// 服务开始时间。
+	ServiceStartDate *string `json:"ServiceStartDate,omitempty" name:"ServiceStartDate"`
+
+	// 服务截止时间。
+	ServiceEndDate *string `json:"ServiceEndDate,omitempty" name:"ServiceEndDate"`
+
+	// 状态。待审批：`PENDING`，已通过：`APPROVED`，已拒绝：`DENY`。
+	State *string `json:"State,omitempty" name:"State"`
+
+	// 审批单创建时间。
+	CreatedTime *string `json:"CreatedTime,omitempty" name:"CreatedTime"`
+}
+
 type CustomerGateway struct {
 
 	// 用户网关唯一ID
@@ -4470,6 +4579,91 @@ func (r *DescribeClassicLinkInstancesResponse) ToJsonString() string {
 }
 
 func (r *DescribeClassicLinkInstancesResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeCrossBorderComplianceRequest struct {
+	*tchttp.BaseRequest
+
+	// （精确匹配）服务商，可选值：`UNICOM`。
+	ServiceProvider *string `json:"ServiceProvider,omitempty" name:"ServiceProvider"`
+
+	// （精确匹配）合规化审批单`ID`。
+	ComplianceId *uint64 `json:"ComplianceId,omitempty" name:"ComplianceId"`
+
+	// （模糊查询）公司名称。
+	Company *string `json:"Company,omitempty" name:"Company"`
+
+	// （精确匹配）统一社会信用代码。
+	UniformSocialCreditCode *string `json:"UniformSocialCreditCode,omitempty" name:"UniformSocialCreditCode"`
+
+	// （模糊查询）法人。
+	LegalPerson *string `json:"LegalPerson,omitempty" name:"LegalPerson"`
+
+	// （模糊查询）发证机关。
+	IssuingAuthority *string `json:"IssuingAuthority,omitempty" name:"IssuingAuthority"`
+
+	// （模糊查询）营业执照住所。
+	BusinessAddress *string `json:"BusinessAddress,omitempty" name:"BusinessAddress"`
+
+	// （精确匹配）邮编。
+	PostCode *uint64 `json:"PostCode,omitempty" name:"PostCode"`
+
+	// （模糊查询）经办人。
+	Manager *string `json:"Manager,omitempty" name:"Manager"`
+
+	// （精确查询）经办人身份证号。
+	ManagerId *string `json:"ManagerId,omitempty" name:"ManagerId"`
+
+	// （模糊查询）经办人身份证地址。
+	ManagerAddress *string `json:"ManagerAddress,omitempty" name:"ManagerAddress"`
+
+	// （精确匹配）经办人联系电话。
+	ManagerTelephone *string `json:"ManagerTelephone,omitempty" name:"ManagerTelephone"`
+
+	// （精确匹配）电子邮箱。
+	Email *string `json:"Email,omitempty" name:"Email"`
+
+	// （精确匹配）服务开始时间。
+	ServiceStartDate *string `json:"ServiceStartDate,omitempty" name:"ServiceStartDate"`
+
+	// （精确匹配）服务开始时间。
+	ServiceEndDate *string `json:"ServiceEndDate,omitempty" name:"ServiceEndDate"`
+
+	// （精确匹配）状态。待审批：`PENDING`，通过：`APPROVED `，拒绝：`DENY`。
+	State *string `json:"State,omitempty" name:"State"`
+}
+
+func (r *DescribeCrossBorderComplianceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeCrossBorderComplianceRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeCrossBorderComplianceResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 合规化审批单列表。
+		CrossBorderComplianceSet []*CrossBorderCompliance `json:"CrossBorderComplianceSet,omitempty" name:"CrossBorderComplianceSet" list`
+
+		// 合规化审批单总数。
+		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeCrossBorderComplianceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeCrossBorderComplianceResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -6934,7 +7128,7 @@ type DisassociateNatGatewayAddressRequest struct {
 	// NAT网关的ID，形如：`nat-df45454`。
 	NatGatewayId *string `json:"NatGatewayId,omitempty" name:"NatGatewayId"`
 
-	// 绑定NAT网关的弹性IP数组。
+	// 待解绑NAT网关的弹性IP数组。
 	PublicIpAddresses []*string `json:"PublicIpAddresses,omitempty" name:"PublicIpAddresses" list`
 }
 

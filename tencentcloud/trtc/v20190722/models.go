@@ -644,6 +644,9 @@ type LayoutParams struct {
 
 	// 画中画模板中有效，代表小画面的布局参数。
 	SmallVideoLayoutParams *SmallVideoLayoutParams `json:"SmallVideoLayoutParams,omitempty" name:"SmallVideoLayoutParams"`
+
+	// 屏幕分享模板有效。设置为1时代表大画面居右，小画面居左布局。默认为0。
+	MainVideoRightAlign *uint64 `json:"MainVideoRightAlign,omitempty" name:"MainVideoRightAlign"`
 }
 
 type OutputParams struct {

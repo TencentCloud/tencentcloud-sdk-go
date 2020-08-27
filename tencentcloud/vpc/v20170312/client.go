@@ -523,6 +523,34 @@ func (c *Client) AttachNetworkInterface(request *AttachNetworkInterfaceRequest) 
     return
 }
 
+func NewAuditCrossBorderComplianceRequest() (request *AuditCrossBorderComplianceRequest) {
+    request = &AuditCrossBorderComplianceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "AuditCrossBorderCompliance")
+    return
+}
+
+func NewAuditCrossBorderComplianceResponse() (response *AuditCrossBorderComplianceResponse) {
+    response = &AuditCrossBorderComplianceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口用于服务商操作跨境专线合规化资质审批。
+// * 服务商只能操作提交到本服务商的审批单，后台会校验身份。即只授权给服务商的`APPID` 调用本接口。
+// * 只有当审批单为 `PENDING` 状态时，才能审批操作。
+// * `APPROVED` 状态的审批单，可以再次操作为 `DENY`；`DENY` 状态的审批单，也可以再次操作为 `APPROVED`。
+func (c *Client) AuditCrossBorderCompliance(request *AuditCrossBorderComplianceRequest) (response *AuditCrossBorderComplianceResponse, err error) {
+    if request == nil {
+        request = NewAuditCrossBorderComplianceRequest()
+    }
+    response = NewAuditCrossBorderComplianceResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCheckAssistantCidrRequest() (request *CheckAssistantCidrRequest) {
     request = &CheckAssistantCidrRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2488,6 +2516,32 @@ func (c *Client) DescribeClassicLinkInstances(request *DescribeClassicLinkInstan
         request = NewDescribeClassicLinkInstancesRequest()
     }
     response = NewDescribeClassicLinkInstancesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeCrossBorderComplianceRequest() (request *DescribeCrossBorderComplianceRequest) {
+    request = &DescribeCrossBorderComplianceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "DescribeCrossBorderCompliance")
+    return
+}
+
+func NewDescribeCrossBorderComplianceResponse() (response *DescribeCrossBorderComplianceResponse) {
+    response = &DescribeCrossBorderComplianceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口用于查询用户创建跨境专线合规化资质审批单。
+// 服务商可以查询服务名下的任意 `APPID` 创建的审批单；非服务商，只能查询自己审批单。
+func (c *Client) DescribeCrossBorderCompliance(request *DescribeCrossBorderComplianceRequest) (response *DescribeCrossBorderComplianceResponse, err error) {
+    if request == nil {
+        request = NewDescribeCrossBorderComplianceRequest()
+    }
+    response = NewDescribeCrossBorderComplianceResponse()
     err = c.Send(request, response)
     return
 }

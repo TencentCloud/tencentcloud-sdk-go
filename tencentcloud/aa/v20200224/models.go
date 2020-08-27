@@ -109,23 +109,32 @@ type InputActivityAntiRushAdvanced struct {
 	VendorId *string `json:"VendorId,omitempty" name:"VendorId"`
 }
 
+type InputDetails struct {
+
+	// 字段名称
+	FieldName *string `json:"FieldName,omitempty" name:"FieldName"`
+
+	// 字段值
+	FieldValue *string `json:"FieldValue,omitempty" name:"FieldValue"`
+}
+
 type InputManageMarketingRisk struct {
 
 	// 账号信息。
 	Account *AccountInfo `json:"Account,omitempty" name:"Account"`
-
-	// 场景类型。
-	// 1：活动防刷
-	// 2：登录保护
-	// 3：注册保护
-	// 4：活动防刷高级版（网赚）
-	SceneType *int64 `json:"SceneType,omitempty" name:"SceneType"`
 
 	// 登录来源的外网IP
 	UserIp *string `json:"UserIp,omitempty" name:"UserIp"`
 
 	// 用户操作时间戳，单位秒（格林威治时间精确到秒，如1501590972）。
 	PostTime *uint64 `json:"PostTime,omitempty" name:"PostTime"`
+
+	// 场景类型。(后续不再支持，请使用SceneCode字段)
+	// 1：活动防刷
+	// 2：登录保护
+	// 3：注册保护
+	// 4：活动防刷高级版（网赚）
+	SceneType *int64 `json:"SceneType,omitempty" name:"SceneType"`
 
 	// 用户唯一标识。
 	UserId *string `json:"UserId,omitempty" name:"UserId"`
@@ -170,6 +179,12 @@ type InputManageMarketingRisk struct {
 
 	// 网赚防刷相关信息。SceneType为4时填写。
 	CrowdAntiRush *CrowdAntiRushInfo `json:"CrowdAntiRush,omitempty" name:"CrowdAntiRush"`
+
+	// 场景Code，控制台上获取
+	SceneCode *string `json:"SceneCode,omitempty" name:"SceneCode"`
+
+	// 详细信息
+	Details []*InputDetails `json:"Details,omitempty" name:"Details" list`
 }
 
 type ManageMarketingRiskRequest struct {

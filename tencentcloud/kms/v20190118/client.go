@@ -868,6 +868,31 @@ func (c *Client) GetPublicKey(request *GetPublicKeyRequest) (response *GetPublic
     return
 }
 
+func NewGetRegionsRequest() (request *GetRegionsRequest) {
+    request = &GetRegionsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("kms", APIVersion, "GetRegions")
+    return
+}
+
+func NewGetRegionsResponse() (response *GetRegionsResponse) {
+    response = &GetRegionsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 获取支持的地域列表
+func (c *Client) GetRegions(request *GetRegionsRequest) (response *GetRegionsResponse, err error) {
+    if request == nil {
+        request = NewGetRegionsRequest()
+    }
+    response = NewGetRegionsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewGetServiceStatusRequest() (request *GetServiceStatusRequest) {
     request = &GetServiceStatusRequest{
         BaseRequest: &tchttp.BaseRequest{},

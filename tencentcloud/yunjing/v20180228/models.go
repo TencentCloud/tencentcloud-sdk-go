@@ -3886,6 +3886,9 @@ type ExportNonlocalLoginPlacesResponse struct {
 		// 导出文件下载链接地址。
 		DownloadUrl *string `json:"DownloadUrl,omitempty" name:"DownloadUrl"`
 
+		// 导出任务ID
+		TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`

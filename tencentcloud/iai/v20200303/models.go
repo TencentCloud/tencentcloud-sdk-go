@@ -806,7 +806,7 @@ type DenseFaceShape struct {
 	// 中轴线轮廓的 XX 个点。
 	CentralAxis []*Point `json:"CentralAxis,omitempty" name:"CentralAxis" list`
 
-	// 下轮廓的 XX 个点。
+	// 下巴轮廓的 XX 个点。
 	Chin []*Point `json:"Chin,omitempty" name:"Chin" list`
 
 	// 左眼袋的 XX 个点。

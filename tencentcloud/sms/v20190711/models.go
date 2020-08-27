@@ -872,7 +872,7 @@ type SendSmsRequest struct {
 	// 例如：+8613711112222， 其中前面有一个+号 ，86为国家码，13711112222为手机号。
 	PhoneNumberSet []*string `json:"PhoneNumberSet,omitempty" name:"PhoneNumberSet" list`
 
-	// 模板 ID，必须填写已审核通过的模板 ID。模板ID可登录 [短信控制台](https://console.cloud.tencent.com/smsv2) 查看。
+	// 模板 ID，必须填写已审核通过的模板 ID。模板ID可登录 [短信控制台](https://console.cloud.tencent.com/smsv2) 查看，若向境外手机号发送短信，仅支持使用国际/港澳台短信模板。
 	TemplateID *string `json:"TemplateID,omitempty" name:"TemplateID"`
 
 	// 短信SdkAppid在 [短信控制台](https://console.cloud.tencent.com/smsv2)  添加应用后生成的实际SdkAppid，示例如1400006666。

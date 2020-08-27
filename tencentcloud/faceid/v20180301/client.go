@@ -118,6 +118,31 @@ func (c *Client) BankCardVerification(request *BankCardVerificationRequest) (res
     return
 }
 
+func NewCheckBankCardInformationRequest() (request *CheckBankCardInformationRequest) {
+    request = &CheckBankCardInformationRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("faceid", APIVersion, "CheckBankCardInformation")
+    return
+}
+
+func NewCheckBankCardInformationResponse() (response *CheckBankCardInformationResponse) {
+    response = &CheckBankCardInformationResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 银行卡基础信息查询
+func (c *Client) CheckBankCardInformation(request *CheckBankCardInformationRequest) (response *CheckBankCardInformationResponse, err error) {
+    if request == nil {
+        request = NewCheckBankCardInformationRequest()
+    }
+    response = NewCheckBankCardInformationResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCheckIdCardInformationRequest() (request *CheckIdCardInformationRequest) {
     request = &CheckIdCardInformationRequest{
         BaseRequest: &tchttp.BaseRequest{},

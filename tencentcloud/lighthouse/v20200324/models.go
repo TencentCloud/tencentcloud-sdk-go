@@ -448,7 +448,7 @@ type ResetInstanceRequest struct {
 	// 实例 ID。可通过[DescribeInstances](https://cloud.tencent.com/document/api/1207/47573)接口返回值中的InstanceId获取。
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
-	// 镜像 ID。
+	// 镜像 ID。可通过[DescribeBlueprints](https://cloud.tencent.com/document/product/1207/47689)接口返回值中的BlueprintId获取。
 	BlueprintId *string `json:"BlueprintId,omitempty" name:"BlueprintId"`
 }
 

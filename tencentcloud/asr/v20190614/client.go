@@ -89,7 +89,7 @@ func NewCreateRecTaskResponse() (response *CreateRecTaskResponse) {
 }
 
 // 本接口服务对时长5小时以内的录音文件进行识别，异步返回识别全部结果， HTTP RESTful 形式。
-// <br>• 支持中文普通话、英语、粤语和日语
+// <br>• 支持中文普通话、英语、粤语、日语和上海话方言
 // <br>• 支持通用、音视频领域
 // <br>• 支持wav、mp3、m4a的音频格式
 // <br>• 支持语音 URL 和本地语音文件两种请求方式
@@ -248,7 +248,7 @@ func NewSentenceRecognitionResponse() (response *SentenceRecognitionResponse) {
 }
 
 // 本接口用于对60秒之内的短音频文件进行识别。
-// <br>•   支持中文普通话、英语、粤语、日语。
+// <br>•   支持中文普通话、英语、粤语、日语、上海话方言。
 // <br>•   支持本地语音文件上传和语音URL上传两种请求方式，音频时长不能超过60s。
 // <br>•   音频格式支持wav、mp3；采样率支持8000Hz或者16000Hz；采样精度支持16bits；声道支持单声道。
 // <br>•   当音频文件通过请求中body内容上传时，请求大小不能超过3MB。

@@ -557,7 +557,7 @@ type CreateLifecycleHookRequest struct {
 	// 生命周期挂钩超时之前可以经过的最长时间（以秒为单位），范围从30到3600秒，默认值为300秒
 	HeartbeatTimeout *int64 `json:"HeartbeatTimeout,omitempty" name:"HeartbeatTimeout"`
 
-	// 弹性伸缩向通知目标发送的附加信息，默认值为空字符串“”。最大长度不能超过1024个字节。
+	// 弹性伸缩向通知目标发送的附加信息，默认值为空字符串""。最大长度不能超过1024个字节。
 	NotificationMetadata *string `json:"NotificationMetadata,omitempty" name:"NotificationMetadata"`
 
 	// 通知目标
@@ -2979,7 +2979,7 @@ type UpgradeLifecycleHookRequest struct {
 	// 生命周期挂钩超时之前可以经过的最长时间（以秒为单位），范围从30到3600秒，默认值为300秒
 	HeartbeatTimeout *int64 `json:"HeartbeatTimeout,omitempty" name:"HeartbeatTimeout"`
 
-	// 弹性伸缩向通知目标发送的附加信息，默认值为''
+	// 弹性伸缩向通知目标发送的附加信息，默认值为空字符串""
 	NotificationMetadata *string `json:"NotificationMetadata,omitempty" name:"NotificationMetadata"`
 
 	// 通知目标

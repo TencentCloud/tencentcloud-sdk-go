@@ -83,6 +83,132 @@ func (r *BeautifyPicResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type BeautifyVideoOutput struct {
+
+	// 视频美颜输出的url
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VideoUrl *string `json:"VideoUrl,omitempty" name:"VideoUrl"`
+
+	// 视频美颜输出的视频MD5，用于校验
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VideoMD5 *string `json:"VideoMD5,omitempty" name:"VideoMD5"`
+
+	// 美颜输出的视频封面图base64字符串
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CoverImage *string `json:"CoverImage,omitempty" name:"CoverImage"`
+
+	// 视频宽度
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Width *int64 `json:"Width,omitempty" name:"Width"`
+
+	// 视频高度
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Height *int64 `json:"Height,omitempty" name:"Height"`
+
+	// 每秒传输帧数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Fps *float64 `json:"Fps,omitempty" name:"Fps"`
+
+	// 视频播放时长，单位为秒
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DurationInSec *float64 `json:"DurationInSec,omitempty" name:"DurationInSec"`
+}
+
+type BeautifyVideoRequest struct {
+	*tchttp.BaseRequest
+
+	// 视频url地址
+	Url *string `json:"Url,omitempty" name:"Url"`
+
+	// 美颜参数 - 美白、平滑、大眼和瘦脸。参数值范围[0, 100]。参数值为0，则不做美颜。参数默认值为0。目前默认取数组第一个元素是对所有人脸美颜。
+	BeautyParam []*BeautyParam `json:"BeautyParam,omitempty" name:"BeautyParam" list`
+
+	// 目前只支持mp4
+	OutputVideoType *string `json:"OutputVideoType,omitempty" name:"OutputVideoType"`
+}
+
+func (r *BeautifyVideoRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *BeautifyVideoRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type BeautifyVideoResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 视频美颜任务的Job id
+		JobId *string `json:"JobId,omitempty" name:"JobId"`
+
+		// 预估处理时间，粒度为秒
+		EstimatedProcessTime *int64 `json:"EstimatedProcessTime,omitempty" name:"EstimatedProcessTime"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *BeautifyVideoResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *BeautifyVideoResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type BeautyParam struct {
+
+	// 美白程度，取值范围[0,100]。0不美白，100代表最高程度。默认值30。
+	WhitenLevel *uint64 `json:"WhitenLevel,omitempty" name:"WhitenLevel"`
+
+	// 磨皮程度，取值范围[0,100]。0不磨皮，100代表最高程度。默认值30。
+	SmoothingLevel *uint64 `json:"SmoothingLevel,omitempty" name:"SmoothingLevel"`
+
+	// 大眼程度，取值范围[0,100]。0不大眼，100代表最高程度。默认值70。
+	EyeEnlargeLevel *uint64 `json:"EyeEnlargeLevel,omitempty" name:"EyeEnlargeLevel"`
+
+	// 瘦脸程度，取值范围[0,100]。0不瘦脸，100代表最高程度。默认值70。
+	FaceShrinkLevel *uint64 `json:"FaceShrinkLevel,omitempty" name:"FaceShrinkLevel"`
+}
+
+type CancelBeautifyVideoJobRequest struct {
+	*tchttp.BaseRequest
+
+	// 美颜视频的Job id
+	JobId *string `json:"JobId,omitempty" name:"JobId"`
+}
+
+func (r *CancelBeautifyVideoJobRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CancelBeautifyVideoJobRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CancelBeautifyVideoJobResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CancelBeautifyVideoJobResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CancelBeautifyVideoJobResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type CreateModelRequest struct {
 	*tchttp.BaseRequest
 
@@ -243,6 +369,47 @@ type ModelInfo struct {
 
 	// 文件描述信息。
 	Description *string `json:"Description,omitempty" name:"Description"`
+}
+
+type QueryBeautifyVideoJobRequest struct {
+	*tchttp.BaseRequest
+
+	// 视频美颜Job id
+	JobId *string `json:"JobId,omitempty" name:"JobId"`
+}
+
+func (r *QueryBeautifyVideoJobRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *QueryBeautifyVideoJobRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type QueryBeautifyVideoJobResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 当前任务状态：排队中、处理中、处理失败或者处理完成
+		JobStatus *string `json:"JobStatus,omitempty" name:"JobStatus"`
+
+		// 视频美颜输出的结果信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		BeautifyVideoOutput *BeautifyVideoOutput `json:"BeautifyVideoOutput,omitempty" name:"BeautifyVideoOutput"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *QueryBeautifyVideoJobResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *QueryBeautifyVideoJobResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
 }
 
 type RGBAInfo struct {

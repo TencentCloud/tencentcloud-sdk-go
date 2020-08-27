@@ -6047,6 +6047,10 @@ type MediaAiAnalysisFrameTagItem struct {
 	// 按帧标签名称。
 	Tag *string `json:"Tag,omitempty" name:"Tag"`
 
+	// 按帧标签名称的分类列表，CategorySet.N 表示第 N+1级分类。
+	// 比如 Tag 为“塔楼”时，CategorySet 包含两个元素：CategorySet.0 为“场景”，CategorySet.1为 “建筑”，表示按帧标签为“塔楼”，且第1级分类是“场景”，第2级分类是“建筑”。
+	CategorySet []*string `json:"CategorySet,omitempty" name:"CategorySet" list`
+
 	// 按帧标签的可信度，取值范围是 0 到 100。
 	Confidence *float64 `json:"Confidence,omitempty" name:"Confidence"`
 }

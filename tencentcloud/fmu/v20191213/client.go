@@ -68,6 +68,56 @@ func (c *Client) BeautifyPic(request *BeautifyPicRequest) (response *BeautifyPic
     return
 }
 
+func NewBeautifyVideoRequest() (request *BeautifyVideoRequest) {
+    request = &BeautifyVideoRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("fmu", APIVersion, "BeautifyVideo")
+    return
+}
+
+func NewBeautifyVideoResponse() (response *BeautifyVideoResponse) {
+    response = &BeautifyVideoResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 视频美颜
+func (c *Client) BeautifyVideo(request *BeautifyVideoRequest) (response *BeautifyVideoResponse, err error) {
+    if request == nil {
+        request = NewBeautifyVideoRequest()
+    }
+    response = NewBeautifyVideoResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCancelBeautifyVideoJobRequest() (request *CancelBeautifyVideoJobRequest) {
+    request = &CancelBeautifyVideoJobRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("fmu", APIVersion, "CancelBeautifyVideoJob")
+    return
+}
+
+func NewCancelBeautifyVideoJobResponse() (response *CancelBeautifyVideoJobResponse) {
+    response = &CancelBeautifyVideoJobResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 撤销视频美颜任务请求
+func (c *Client) CancelBeautifyVideoJob(request *CancelBeautifyVideoJobRequest) (response *CancelBeautifyVideoJobResponse, err error) {
+    if request == nil {
+        request = NewCancelBeautifyVideoJobRequest()
+    }
+    response = NewCancelBeautifyVideoJobResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateModelRequest() (request *CreateModelRequest) {
     request = &CreateModelRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -141,6 +191,31 @@ func (c *Client) GetModelList(request *GetModelListRequest) (response *GetModelL
         request = NewGetModelListRequest()
     }
     response = NewGetModelListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewQueryBeautifyVideoJobRequest() (request *QueryBeautifyVideoJobRequest) {
+    request = &QueryBeautifyVideoJobRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("fmu", APIVersion, "QueryBeautifyVideoJob")
+    return
+}
+
+func NewQueryBeautifyVideoJobResponse() (response *QueryBeautifyVideoJobResponse) {
+    response = &QueryBeautifyVideoJobResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询视频美颜处理进度
+func (c *Client) QueryBeautifyVideoJob(request *QueryBeautifyVideoJobRequest) (response *QueryBeautifyVideoJobResponse, err error) {
+    if request == nil {
+        request = NewQueryBeautifyVideoJobRequest()
+    }
+    response = NewQueryBeautifyVideoJobResponse()
     err = c.Send(request, response)
     return
 }

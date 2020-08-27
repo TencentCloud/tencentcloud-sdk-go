@@ -2302,6 +2302,9 @@ type DescribeCCTrendRequest struct {
 
 	// 资源实例ID，当Business为basic时，此字段不用填写（因为基础防护没有资源实例）
 	Id *string `json:"Id,omitempty" name:"Id"`
+
+	// 域名，可选
+	Domain *string `json:"Domain,omitempty" name:"Domain"`
 }
 
 func (r *DescribeCCTrendRequest) ToJsonString() string {

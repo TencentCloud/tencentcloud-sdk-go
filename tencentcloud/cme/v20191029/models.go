@@ -270,6 +270,7 @@ type CreateProjectRequest struct {
 
 	// 项目类别，取值有：
 	// <li>VIDEO_EDIT：视频编辑。</li>
+	// <li>SWITCHER：导播台。</li>
 	Category *string `json:"Category,omitempty" name:"Category"`
 
 	// 项目名称，不可超过30个字符。
@@ -282,6 +283,12 @@ type CreateProjectRequest struct {
 
 	// 归属者。
 	Owner *Entity `json:"Owner,omitempty" name:"Owner"`
+
+	// 项目描述信息。
+	Description *string `json:"Description,omitempty" name:"Description"`
+
+	// 导播台信息，仅当项目类型为 SWITCHER 时有效。
+	SwitcherProjectInput *SwitcherProjectInput `json:"SwitcherProjectInput,omitempty" name:"SwitcherProjectInput"`
 }
 
 func (r *CreateProjectRequest) ToJsonString() string {
@@ -2210,6 +2217,36 @@ type SortBy struct {
 
 	// 排序方式，可选值：Asc（升序）、Desc（降序），默认降序。
 	Order *string `json:"Order,omitempty" name:"Order"`
+}
+
+type SwitcherPgmOutputConfig struct {
+
+	// 导播台输出模板 ID，可取值：
+	// <li>10001：分辨率为1080 P；</li>
+	// <li>10002：分辨率为720 P；</li>
+	// <li>10003：分辨率为480 P。</li>
+	TemplateId *int64 `json:"TemplateId,omitempty" name:"TemplateId"`
+
+	// 导播台输出宽。
+	Width *uint64 `json:"Width,omitempty" name:"Width"`
+
+	// 导播台输出高。
+	Height *uint64 `json:"Height,omitempty" name:"Height"`
+
+	// 导播台输出帧率。
+	Fps *uint64 `json:"Fps,omitempty" name:"Fps"`
+
+	// 导播台输出码率。
+	BitRate *uint64 `json:"BitRate,omitempty" name:"BitRate"`
+}
+
+type SwitcherProjectInput struct {
+
+	// 导播台停止时间。
+	StopTime *string `json:"StopTime,omitempty" name:"StopTime"`
+
+	// 导播台主监输出配置信息。
+	PgmOutputConfig *SwitcherPgmOutputConfig `json:"PgmOutputConfig,omitempty" name:"PgmOutputConfig"`
 }
 
 type TaskBaseInfo struct {

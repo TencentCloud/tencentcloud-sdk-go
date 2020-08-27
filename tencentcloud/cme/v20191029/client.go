@@ -135,7 +135,7 @@ func NewCreateProjectResponse() (response *CreateProjectResponse) {
     return
 }
 
-// 创建云剪的编辑项目，支持创建视频剪辑及直播剪辑两大类项目。
+// 创建云剪的编辑项目，支持创建视频剪辑、直播剪辑及导播台项目。
 func (c *Client) CreateProject(request *CreateProjectRequest) (response *CreateProjectResponse, err error) {
     if request == nil {
         request = NewCreateProjectRequest()

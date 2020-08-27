@@ -1331,6 +1331,9 @@ type DescribeInstancesRequest struct {
 
 	// 内部参数，用户可忽略
 	TypeList []*int64 `json:"TypeList,omitempty" name:"TypeList" list`
+
+	// 内部参数，用户可忽略
+	MonitorVersion *string `json:"MonitorVersion,omitempty" name:"MonitorVersion"`
 }
 
 func (r *DescribeInstancesRequest) ToJsonString() string {
@@ -2421,6 +2424,14 @@ type InstanceSet struct {
 	// 内部参数，用户可忽略
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RemainBandwidthDuration *string `json:"RemainBandwidthDuration,omitempty" name:"RemainBandwidthDuration"`
+
+	// Tendis实例的磁盘大小
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DiskSize *int64 `json:"DiskSize,omitempty" name:"DiskSize"`
+
+	// 监控版本: 1m-分钟粒度监控，5s-5秒粒度监控
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MonitorVersion *string `json:"MonitorVersion,omitempty" name:"MonitorVersion"`
 }
 
 type InstanceSlowlogDetail struct {

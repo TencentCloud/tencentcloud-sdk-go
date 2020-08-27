@@ -226,6 +226,58 @@ func (r *BankCardVerificationResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type CheckBankCardInformationRequest struct {
+	*tchttp.BaseRequest
+
+	// 银行卡号。
+	BankCard *string `json:"BankCard,omitempty" name:"BankCard"`
+}
+
+func (r *CheckBankCardInformationRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CheckBankCardInformationRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CheckBankCardInformationResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 认证结果码，收费情况如下。
+	// 收费结果码：
+	// 0: 查询成功
+	// -1: 未查到信息
+	// 不收费结果码
+	// -2：验证中心服务繁忙
+	// -3：银行卡不存在
+		Result *string `json:"Result,omitempty" name:"Result"`
+
+		// 业务结果描述
+		Description *string `json:"Description,omitempty" name:"Description"`
+
+		// 开户行
+		AccountBank *string `json:"AccountBank,omitempty" name:"AccountBank"`
+
+		// 卡性质：1. 借记卡；2. 贷记卡
+		AccountType *int64 `json:"AccountType,omitempty" name:"AccountType"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CheckBankCardInformationResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CheckBankCardInformationResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type CheckIdCardInformationRequest struct {
 	*tchttp.BaseRequest
 

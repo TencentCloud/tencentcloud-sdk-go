@@ -1540,6 +1540,10 @@ type InstanceAttributesResponse struct {
 	// 售卖类型
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Cvm *int64 `json:"Cvm,omitempty" name:"Cvm"`
+
+	// 类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceType *string `json:"InstanceType,omitempty" name:"InstanceType"`
 }
 
 type InstanceConfigDO struct {
