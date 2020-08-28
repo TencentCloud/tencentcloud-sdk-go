@@ -68,6 +68,31 @@ func (c *Client) ChangeAgePic(request *ChangeAgePicRequest) (response *ChangeAge
     return
 }
 
+func NewFaceCartoonPicRequest() (request *FaceCartoonPicRequest) {
+    request = &FaceCartoonPicRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ft", APIVersion, "FaceCartoonPic")
+    return
+}
+
+func NewFaceCartoonPicResponse() (response *FaceCartoonPicResponse) {
+    response = &FaceCartoonPicResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 人像动漫化
+func (c *Client) FaceCartoonPic(request *FaceCartoonPicRequest) (response *FaceCartoonPicResponse, err error) {
+    if request == nil {
+        request = NewFaceCartoonPicRequest()
+    }
+    response = NewFaceCartoonPicResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewSwapGenderPicRequest() (request *SwapGenderPicRequest) {
     request = &SwapGenderPicRequest{
         BaseRequest: &tchttp.BaseRequest{},

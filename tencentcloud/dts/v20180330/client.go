@@ -537,6 +537,31 @@ func (c *Client) ModifyMigrateJob(request *ModifyMigrateJobRequest) (response *M
     return
 }
 
+func NewModifySubscribeAutoRenewFlagRequest() (request *ModifySubscribeAutoRenewFlagRequest) {
+    request = &ModifySubscribeAutoRenewFlagRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("dts", APIVersion, "ModifySubscribeAutoRenewFlag")
+    return
+}
+
+func NewModifySubscribeAutoRenewFlagResponse() (response *ModifySubscribeAutoRenewFlagResponse) {
+    response = &ModifySubscribeAutoRenewFlagResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 修改订阅实例自动续费标识
+func (c *Client) ModifySubscribeAutoRenewFlag(request *ModifySubscribeAutoRenewFlagRequest) (response *ModifySubscribeAutoRenewFlagResponse, err error) {
+    if request == nil {
+        request = NewModifySubscribeAutoRenewFlagRequest()
+    }
+    response = NewModifySubscribeAutoRenewFlagResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifySubscribeConsumeTimeRequest() (request *ModifySubscribeConsumeTimeRequest) {
     request = &ModifySubscribeConsumeTimeRequest{
         BaseRequest: &tchttp.BaseRequest{},

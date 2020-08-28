@@ -1,35 +1,75 @@
 # 本版本更新包含以下内容：
 
-## 活动防刷(aa) 版本：2020-02-24
+## 消息队列 Ckafka(ckafka) 版本：2019-08-19
 
-### 第 5 次发布
+### 第 6 次发布
 
-发布时间：2020-08-27 08:00:21
+发布时间：2020-08-28 08:06:31
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
+新增接口：
+
+* [FetchMessageByOffset](https://cloud.tencent.com/document/api/597/47897)
+* [FetchMessageListByOffset](https://cloud.tencent.com/document/api/597/47896)
+* [FetchMessageListByTimestamp](https://cloud.tencent.com/document/api/597/47895)
+
 新增数据结构：
 
-* [InputDetails](https://cloud.tencent.com/document/api/1189/45888#InputDetails)
+* [ConsumerRecord](https://cloud.tencent.com/document/api/597/40861#ConsumerRecord)
+
+
+
+## 数据传输服务(dts) 版本：2018-03-30
+
+### 第 10 次发布
+
+发布时间：2020-08-28 08:03:00
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [ModifySubscribeAutoRenewFlag](https://cloud.tencent.com/document/api/571/47894)
+
+修改接口：
+
+* [CreateSubscribe](https://cloud.tencent.com/document/api/571/42719)
+
+	* 新增入参：Tags
+
+* [DescribeSubscribeConf](https://cloud.tencent.com/document/api/571/42716)
+
+	* 新增出参：Tags, AutoRenewFlag
+
+* [DescribeSubscribes](https://cloud.tencent.com/document/api/571/42715)
+
+	* 新增入参：TagFilters
+
+
+新增数据结构：
+
+* [TagFilter](https://cloud.tencent.com/document/api/571/18131#TagFilter)
+* [TagItem](https://cloud.tencent.com/document/api/571/18131#TagItem)
 
 修改数据结构：
 
-* [InputManageMarketingRisk](https://cloud.tencent.com/document/api/1189/45888#InputManageMarketingRisk)
+* [SubscribeInfo](https://cloud.tencent.com/document/api/571/18131#SubscribeInfo)
 
-	* 新增成员：SceneCode, Details
-
-	* <font color="#dd0000">**修改成员**：</font>SceneType
+	* 新增成员：Tags, AutoRenewFlag
 
 
 
 
-## 人脸核身(faceid) 版本：2018-03-01
+## 人像变换(ft) 版本：2020-03-04
 
-### 第 16 次发布
+### 第 3 次发布
 
-发布时间：2020-08-27 08:03:28
+发布时间：2020-08-28 08:00:53
 
 本次发布包含了以下内容：
 
@@ -37,46 +77,29 @@
 
 新增接口：
 
-* [CheckBankCardInformation](https://cloud.tencent.com/document/api/1007/47837)
-
-
-
-## 私有网络(vpc) 版本：2017-03-12
-
-### 第 59 次发布
-
-发布时间：2020-08-27 08:06:22
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [AuditCrossBorderCompliance](https://cloud.tencent.com/document/api/215/47839)
-* [DescribeCrossBorderCompliance](https://cloud.tencent.com/document/api/215/47838)
-
-新增数据结构：
-
-* [CrossBorderCompliance](https://cloud.tencent.com/document/api/215/15824#CrossBorderCompliance)
+* [FaceCartoonPic](https://cloud.tencent.com/document/api/1202/47891)
 
 
 
 ## 主机安全(yunjing) 版本：2018-02-28
 
-### 第 10 次发布
+### 第 11 次发布
 
-发布时间：2020-08-27 08:07:01
+发布时间：2020-08-28 08:06:11
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-修改接口：
+新增数据结构：
 
-* [ExportNonlocalLoginPlaces](https://cloud.tencent.com/document/api/296/39581)
+* [RegionInfo](https://cloud.tencent.com/document/api/296/19867#RegionInfo)
 
-	* 新增出参：TaskId
+修改数据结构：
+
+* [Machine](https://cloud.tencent.com/document/api/296/19867#Machine)
+
+	* 新增成员：RegionInfo
 
 
 
@@ -95,7 +118,7 @@
 
 新增数据结构：
 
-* [[InputDetails](https://cloud.tencent.com/document/api/1189/45888#InputDetails)](https://cloud.tencent.com/document/api/1189/45888#[InputDetails](https://cloud.tencent.com/document/api/1189/45888#InputDetails))
+* [InputDetails](https://cloud.tencent.com/document/api/1189/45888#InputDetails)
 
 修改数据结构：
 
@@ -7011,6 +7034,24 @@
 
 ## 消息队列 Ckafka(ckafka) 版本：2019-08-19
 
+### 第 6 次发布
+
+发布时间：2020-08-28 08:06:31
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[FetchMessageByOffset](https://cloud.tencent.com/document/api/597/47897)](https://cloud.tencent.com/document/api/#/#)
+* [[FetchMessageListByOffset](https://cloud.tencent.com/document/api/597/47896)](https://cloud.tencent.com/document/api/#/#)
+* [[FetchMessageListByTimestamp](https://cloud.tencent.com/document/api/597/47895)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[ConsumerRecord](https://cloud.tencent.com/document/api/597/40861#ConsumerRecord)](https://cloud.tencent.com/document/api/597/40861#[ConsumerRecord](https://cloud.tencent.com/document/api/597/40861#ConsumerRecord))
+
 ### 第 5 次发布
 
 发布时间：2020-08-26 08:07:26
@@ -12278,6 +12319,45 @@
 
 ## 数据传输服务(dts) 版本：2018-03-30
 
+### 第 10 次发布
+
+发布时间：2020-08-28 08:03:00
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[ModifySubscribeAutoRenewFlag](https://cloud.tencent.com/document/api/571/47894)](https://cloud.tencent.com/document/api/#/#)
+
+修改接口：
+
+* [CreateSubscribe](https://cloud.tencent.com/document/api/571/42719)
+
+	* 新增入参：Tags
+
+* [DescribeSubscribeConf](https://cloud.tencent.com/document/api/571/42716)
+
+	* 新增出参：Tags, AutoRenewFlag
+
+* [DescribeSubscribes](https://cloud.tencent.com/document/api/571/42715)
+
+	* 新增入参：TagFilters
+
+
+新增数据结构：
+
+* [[TagFilter](https://cloud.tencent.com/document/api/571/18131#TagFilter)](https://cloud.tencent.com/document/api/571/18131#[TagFilter](https://cloud.tencent.com/document/api/571/18131#TagFilter))
+* [[TagItem](https://cloud.tencent.com/document/api/571/18131#TagItem)](https://cloud.tencent.com/document/api/571/18131#[TagItem](https://cloud.tencent.com/document/api/571/18131#TagItem))
+
+修改数据结构：
+
+* [SubscribeInfo](https://cloud.tencent.com/document/api/571/18131#SubscribeInfo)
+
+	* 新增成员：Tags, AutoRenewFlag
+
+
 ### 第 9 次发布
 
 发布时间：2020-04-29 08:09:34
@@ -14037,7 +14117,7 @@
 
 新增接口：
 
-* [[CheckBankCardInformation](https://cloud.tencent.com/document/api/1007/47837)](https://cloud.tencent.com/document/api/#/#)
+* [CheckBankCardInformation](https://cloud.tencent.com/document/api/1007/47837)
 
 ### 第 15 次发布
 
@@ -14374,6 +14454,18 @@
 
 
 ## 人像变换(ft) 版本：2020-03-04
+
+### 第 3 次发布
+
+发布时间：2020-08-28 08:00:53
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[FaceCartoonPic](https://cloud.tencent.com/document/api/1202/47891)](https://cloud.tencent.com/document/api/#/#)
 
 ### 第 2 次发布
 
@@ -31255,12 +31347,12 @@
 
 新增接口：
 
-* [[AuditCrossBorderCompliance](https://cloud.tencent.com/document/api/215/47839)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeCrossBorderCompliance](https://cloud.tencent.com/document/api/215/47838)](https://cloud.tencent.com/document/api/#/#)
+* [AuditCrossBorderCompliance](https://cloud.tencent.com/document/api/215/47839)
+* [DescribeCrossBorderCompliance](https://cloud.tencent.com/document/api/215/47838)
 
 新增数据结构：
 
-* [[CrossBorderCompliance](https://cloud.tencent.com/document/api/215/15824#CrossBorderCompliance)](https://cloud.tencent.com/document/api/215/15824#[CrossBorderCompliance](https://cloud.tencent.com/document/api/215/15824#CrossBorderCompliance))
+* [CrossBorderCompliance](https://cloud.tencent.com/document/api/215/15824#CrossBorderCompliance)
 
 ### 第 58 次发布
 
@@ -33167,6 +33259,25 @@
 
 
 ## 主机安全(yunjing) 版本：2018-02-28
+
+### 第 11 次发布
+
+发布时间：2020-08-28 08:06:11
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增数据结构：
+
+* [[RegionInfo](https://cloud.tencent.com/document/api/296/19867#RegionInfo)](https://cloud.tencent.com/document/api/296/19867#[RegionInfo](https://cloud.tencent.com/document/api/296/19867#RegionInfo))
+
+修改数据结构：
+
+* [Machine](https://cloud.tencent.com/document/api/296/19867#Machine)
+
+	* 新增成员：RegionInfo
+
 
 ### 第 10 次发布
 

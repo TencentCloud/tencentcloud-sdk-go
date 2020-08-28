@@ -238,6 +238,9 @@ type CreateSubscribeRequest struct {
 
 	// 是否自动续费，默认为0，1表示自动续费。小时计费实例设置该标识无效。
 	AutoRenew *int64 `json:"AutoRenew,omitempty" name:"AutoRenew"`
+
+	// 实例资源标签
+	Tags []*TagItem `json:"Tags,omitempty" name:"Tags" list`
 }
 
 func (r *CreateSubscribeRequest) ToJsonString() string {
@@ -709,6 +712,14 @@ type DescribeSubscribeConfResponse struct {
 		// 地域
 		Region *string `json:"Region,omitempty" name:"Region"`
 
+		// 订阅实例的标签
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Tags []*TagItem `json:"Tags,omitempty" name:"Tags" list`
+
+		// 自动续费标识,0-不自动续费，1-自动续费
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		AutoRenewFlag *int64 `json:"AutoRenewFlag,omitempty" name:"AutoRenewFlag"`
+
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
@@ -758,6 +769,9 @@ type DescribeSubscribesRequest struct {
 
 	// 排序方向，可选的值为"DESC"和"ASC"，默认为"DESC"，按创建时间逆序排序
 	OrderDirection *string `json:"OrderDirection,omitempty" name:"OrderDirection"`
+
+	// 标签过滤条件
+	TagFilters []*TagFilter `json:"TagFilters,omitempty" name:"TagFilters" list`
 }
 
 func (r *DescribeSubscribesRequest) ToJsonString() string {
@@ -1159,6 +1173,43 @@ func (r *ModifyMigrateJobResponse) ToJsonString() string {
 }
 
 func (r *ModifyMigrateJobResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifySubscribeAutoRenewFlagRequest struct {
+	*tchttp.BaseRequest
+
+	// 订阅实例ID，例如：subs-8uey736k
+	SubscribeId *string `json:"SubscribeId,omitempty" name:"SubscribeId"`
+
+	// 自动续费标识。1-自动续费，0-不自动续费
+	AutoRenewFlag *int64 `json:"AutoRenewFlag,omitempty" name:"AutoRenewFlag"`
+}
+
+func (r *ModifySubscribeAutoRenewFlagRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifySubscribeAutoRenewFlagRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifySubscribeAutoRenewFlagResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifySubscribeAutoRenewFlagResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifySubscribeAutoRenewFlagResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -1653,6 +1704,14 @@ type SubscribeInfo struct {
 
 	// SDK最后一条确认消息的时间戳，如果SDK一直消费，也可以作为SDK当前消费时间点
 	SdkConsumedTime *string `json:"SdkConsumedTime,omitempty" name:"SdkConsumedTime"`
+
+	// 标签
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Tags []*TagItem `json:"Tags,omitempty" name:"Tags" list`
+
+	// 自动续费标识。0-不自动续费，1-自动续费
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AutoRenewFlag *int64 `json:"AutoRenewFlag,omitempty" name:"AutoRenewFlag"`
 }
 
 type SubscribeObject struct {
@@ -1857,4 +1916,23 @@ type SyncStepDetailInfo struct {
 
 	// 步骤号
 	StepId *int64 `json:"StepId,omitempty" name:"StepId"`
+}
+
+type TagFilter struct {
+
+	// 标签键值
+	TagKey *string `json:"TagKey,omitempty" name:"TagKey"`
+
+	// 标签值
+	TagValue []*string `json:"TagValue,omitempty" name:"TagValue" list`
+}
+
+type TagItem struct {
+
+	// 标签键值
+	TagKey *string `json:"TagKey,omitempty" name:"TagKey"`
+
+	// 标签值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TagValue *string `json:"TagValue,omitempty" name:"TagValue"`
 }

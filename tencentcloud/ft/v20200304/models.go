@@ -85,6 +85,57 @@ func (r *ChangeAgePicResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type FaceCartoonPicRequest struct {
+	*tchttp.BaseRequest
+
+	// 图片 base64 数据，base64 编码后大小不可超过5M。
+	// 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
+	Image *string `json:"Image,omitempty" name:"Image"`
+
+	// 图片的 Url ，对应图片 base64 编码后大小不可超过5M。
+	// 图片的 Url、Image必须提供一个，如果都提供，只使用 Url。
+	// 图片存储于腾讯云的 Url 可保障更高下载速度和稳定性，建议图片存储于腾讯云。
+	// 非腾讯云存储的Url速度和稳定性可能受一定影响。
+	// 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
+	Url *string `json:"Url,omitempty" name:"Url"`
+
+	// 返回图像方式（base64 或 url ) ，二选一。url有效期为1天。
+	RspImgType *string `json:"RspImgType,omitempty" name:"RspImgType"`
+}
+
+func (r *FaceCartoonPicRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *FaceCartoonPicRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type FaceCartoonPicResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 结果图片Base64信息。
+		ResultImage *string `json:"ResultImage,omitempty" name:"ResultImage"`
+
+		// RspImgType 为 url 时，返回处理后的图片 url 数据。(暂时不支持)
+		ResultUrl *string `json:"ResultUrl,omitempty" name:"ResultUrl"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *FaceCartoonPicResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *FaceCartoonPicResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type FaceRect struct {
 
 	// 人脸框左上角横坐标。

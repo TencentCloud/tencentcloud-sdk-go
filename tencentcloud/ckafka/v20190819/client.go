@@ -644,6 +644,81 @@ func (c *Client) DescribeUser(request *DescribeUserRequest) (response *DescribeU
     return
 }
 
+func NewFetchMessageByOffsetRequest() (request *FetchMessageByOffsetRequest) {
+    request = &FetchMessageByOffsetRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ckafka", APIVersion, "FetchMessageByOffset")
+    return
+}
+
+func NewFetchMessageByOffsetResponse() (response *FetchMessageByOffsetResponse) {
+    response = &FetchMessageByOffsetResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 根据指定offset位置的消息
+func (c *Client) FetchMessageByOffset(request *FetchMessageByOffsetRequest) (response *FetchMessageByOffsetResponse, err error) {
+    if request == nil {
+        request = NewFetchMessageByOffsetRequest()
+    }
+    response = NewFetchMessageByOffsetResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewFetchMessageListByOffsetRequest() (request *FetchMessageListByOffsetRequest) {
+    request = &FetchMessageListByOffsetRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ckafka", APIVersion, "FetchMessageListByOffset")
+    return
+}
+
+func NewFetchMessageListByOffsetResponse() (response *FetchMessageListByOffsetResponse) {
+    response = &FetchMessageListByOffsetResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 根据位点查询消息列表
+func (c *Client) FetchMessageListByOffset(request *FetchMessageListByOffsetRequest) (response *FetchMessageListByOffsetResponse, err error) {
+    if request == nil {
+        request = NewFetchMessageListByOffsetRequest()
+    }
+    response = NewFetchMessageListByOffsetResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewFetchMessageListByTimestampRequest() (request *FetchMessageListByTimestampRequest) {
+    request = &FetchMessageListByTimestampRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ckafka", APIVersion, "FetchMessageListByTimestamp")
+    return
+}
+
+func NewFetchMessageListByTimestampResponse() (response *FetchMessageListByTimestampResponse) {
+    response = &FetchMessageListByTimestampResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 根据时间戳查询消息列表
+func (c *Client) FetchMessageListByTimestamp(request *FetchMessageListByTimestampRequest) (response *FetchMessageListByTimestampResponse, err error) {
+    if request == nil {
+        request = NewFetchMessageListByTimestampRequest()
+    }
+    response = NewFetchMessageListByTimestampResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyGroupOffsetsRequest() (request *ModifyGroupOffsetsRequest) {
     request = &ModifyGroupOffsetsRequest{
         BaseRequest: &tchttp.BaseRequest{},

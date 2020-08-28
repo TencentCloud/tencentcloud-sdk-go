@@ -4412,10 +4412,10 @@ type SecurityGroupPolicySet struct {
 	// 安全组规则当前版本。用户每次更新安全规则版本会自动加1，防止更新的路由规则已过期，不填不考虑冲突。
 	Version *string `json:"Version,omitempty" name:"Version"`
 
-	// 出站规则。
+	// 出站规则。其中出站规则和入站规则必须选一个。
 	Egress []*SecurityGroupPolicy `json:"Egress,omitempty" name:"Egress" list`
 
-	// 入站规则。
+	// 入站规则。其中出站规则和入站规则必须选一个。
 	Ingress []*SecurityGroupPolicy `json:"Ingress,omitempty" name:"Ingress" list`
 }
 

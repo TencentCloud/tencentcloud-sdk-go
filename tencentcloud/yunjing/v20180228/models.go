@@ -4242,6 +4242,9 @@ type Machine struct {
 
 	// 入侵事件数
 	InvasionNum *int64 `json:"InvasionNum,omitempty" name:"InvasionNum"`
+
+	// 地域信息
+	RegionInfo *RegionInfo `json:"RegionInfo,omitempty" name:"RegionInfo"`
 }
 
 type MachineTag struct {
@@ -4896,6 +4899,21 @@ func (r *RecoverMalwaresResponse) ToJsonString() string {
 
 func (r *RecoverMalwaresResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
+}
+
+type RegionInfo struct {
+
+	// 地域标志，如 ap-guangzhou，ap-shanghai，ap-beijing
+	Region *string `json:"Region,omitempty" name:"Region"`
+
+	// 地域中文名，如华南地区（广州），华东地区（上海金融），华北地区（北京）
+	RegionName *string `json:"RegionName,omitempty" name:"RegionName"`
+
+	// 地域ID
+	RegionId *uint64 `json:"RegionId,omitempty" name:"RegionId"`
+
+	// 地域代码，如 gz，sh，bj
+	RegionCode *string `json:"RegionCode,omitempty" name:"RegionCode"`
 }
 
 type RenewProVersionRequest struct {
