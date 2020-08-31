@@ -43,6 +43,31 @@ func NewClient(credential *common.Credential, region string, clientProfile *prof
 }
 
 
+func NewCancelFaceMorphJobRequest() (request *CancelFaceMorphJobRequest) {
+    request = &CancelFaceMorphJobRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ft", APIVersion, "CancelFaceMorphJob")
+    return
+}
+
+func NewCancelFaceMorphJobResponse() (response *CancelFaceMorphJobResponse) {
+    response = &CancelFaceMorphJobResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 撤销人像渐变任务请求
+func (c *Client) CancelFaceMorphJob(request *CancelFaceMorphJobRequest) (response *CancelFaceMorphJobResponse, err error) {
+    if request == nil {
+        request = NewCancelFaceMorphJobRequest()
+    }
+    response = NewCancelFaceMorphJobResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewChangeAgePicRequest() (request *ChangeAgePicRequest) {
     request = &ChangeAgePicRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -89,6 +114,56 @@ func (c *Client) FaceCartoonPic(request *FaceCartoonPicRequest) (response *FaceC
         request = NewFaceCartoonPicRequest()
     }
     response = NewFaceCartoonPicResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewMorphFaceRequest() (request *MorphFaceRequest) {
+    request = &MorphFaceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ft", APIVersion, "MorphFace")
+    return
+}
+
+func NewMorphFaceResponse() (response *MorphFaceResponse) {
+    response = &MorphFaceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 用户上传2-5张人脸照片，输出一段人脸变换特效视频
+func (c *Client) MorphFace(request *MorphFaceRequest) (response *MorphFaceResponse, err error) {
+    if request == nil {
+        request = NewMorphFaceRequest()
+    }
+    response = NewMorphFaceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewQueryFaceMorphJobRequest() (request *QueryFaceMorphJobRequest) {
+    request = &QueryFaceMorphJobRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ft", APIVersion, "QueryFaceMorphJob")
+    return
+}
+
+func NewQueryFaceMorphJobResponse() (response *QueryFaceMorphJobResponse) {
+    response = &QueryFaceMorphJobResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询人像渐变处理进度
+func (c *Client) QueryFaceMorphJob(request *QueryFaceMorphJobRequest) (response *QueryFaceMorphJobResponse, err error) {
+    if request == nil {
+        request = NewQueryFaceMorphJobRequest()
+    }
+    response = NewQueryFaceMorphJobResponse()
     err = c.Send(request, response)
     return
 }

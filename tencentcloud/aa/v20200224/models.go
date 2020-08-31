@@ -174,9 +174,6 @@ type InputManageMarketingRisk struct {
 	// MAC地址或设备唯一标识。
 	MacAddress *string `json:"MacAddress,omitempty" name:"MacAddress"`
 
-	// 手机制造商ID，如果手机注册，请带上此信息。
-	VendorId *string `json:"VendorId,omitempty" name:"VendorId"`
-
 	// 网赚防刷相关信息。SceneType为4时填写。
 	CrowdAntiRush *CrowdAntiRushInfo `json:"CrowdAntiRush,omitempty" name:"CrowdAntiRush"`
 
@@ -185,6 +182,11 @@ type InputManageMarketingRisk struct {
 
 	// 详细信息
 	Details []*InputDetails `json:"Details,omitempty" name:"Details" list`
+
+	// 设备类型：
+	// 1：Android
+	// 2：IOS
+	DeviceType *int64 `json:"DeviceType,omitempty" name:"DeviceType"`
 }
 
 type ManageMarketingRiskRequest struct {

@@ -30,6 +30,40 @@ type AgeInfo struct {
 	FaceRect *FaceRect `json:"FaceRect,omitempty" name:"FaceRect"`
 }
 
+type CancelFaceMorphJobRequest struct {
+	*tchttp.BaseRequest
+
+	// 人像渐变任务Job id
+	JobId *string `json:"JobId,omitempty" name:"JobId"`
+}
+
+func (r *CancelFaceMorphJobRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CancelFaceMorphJobRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CancelFaceMorphJobResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CancelFaceMorphJobResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CancelFaceMorphJobResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type ChangeAgePicRequest struct {
 	*tchttp.BaseRequest
 
@@ -119,7 +153,7 @@ type FaceCartoonPicResponse struct {
 		// 结果图片Base64信息。
 		ResultImage *string `json:"ResultImage,omitempty" name:"ResultImage"`
 
-		// RspImgType 为 url 时，返回处理后的图片 url 数据。(暂时不支持)
+		// RspImgType 为 url 时，返回处理后的图片 url 数据。(默认为base64)
 		ResultUrl *string `json:"ResultUrl,omitempty" name:"ResultUrl"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -134,6 +168,21 @@ func (r *FaceCartoonPicResponse) ToJsonString() string {
 
 func (r *FaceCartoonPicResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
+}
+
+type FaceMorphOutput struct {
+
+	// 人像渐变输出的url
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MorphUrl *string `json:"MorphUrl,omitempty" name:"MorphUrl"`
+
+	// 人像渐变输出的结果MD5，用于校验
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MorphMd5 *string `json:"MorphMd5,omitempty" name:"MorphMd5"`
+
+	// 人像渐变输出的结果封面图base64字符串
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CoverImage *string `json:"CoverImage,omitempty" name:"CoverImage"`
 }
 
 type FaceRect struct {
@@ -159,6 +208,123 @@ type GenderInfo struct {
 	// 人脸框位置。若不输入则选择 Image 或 Url 中面积最大的人脸。  
 	// 您可以通过 [人脸检测与分析](https://cloud.tencent.com/document/api/867/32800)  接口获取人脸框位置信息。
 	FaceRect *FaceRect `json:"FaceRect,omitempty" name:"FaceRect"`
+}
+
+type GradientInfo struct {
+
+	// 图片的展示时长，即单张图片静止不变的时间。GIF默认每张图片0.7s，视频默认每张图片2s
+	Tempo *float64 `json:"Tempo,omitempty" name:"Tempo"`
+
+	// 人像渐变的最长时间，即单张图片使用渐变特效的时间。 GIF默认值为0.5s，视频默值认为1s
+	MorphTime *float64 `json:"MorphTime,omitempty" name:"MorphTime"`
+}
+
+type MorphFaceRequest struct {
+	*tchttp.BaseRequest
+
+	// 图片 base64 数据，base64 编码后大小不可超过5M。 
+	// jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。 
+	// 人员人脸总数量至少2张，不可超过5张。 
+	// 若图片中包含多张人脸，只选取其中人脸面积最大的人脸。 
+	// 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
+	Images []*string `json:"Images,omitempty" name:"Images" list`
+
+	// 图片的 Url 。对应图片 base64 编码后大小不可超过5M。jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。 
+	// Url、Image必须提供一个，如果都提供，只使用 Url。图片存储于腾讯云的Url可保障更高下载速度和稳定性，建议图片存储于腾讯云。 
+	// 非腾讯云存储的Url速度和稳定性可能受一定影响。 
+	// 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。 
+	// 人员人脸总数量不可超过5张。 
+	// 若图片中包含多张人脸，只选取其中人脸面积最大的人脸。
+	Urls []*string `json:"Urls,omitempty" name:"Urls" list`
+
+	// 人脸渐变参数。可调整每张图片的展示时长、人像渐变的最长时间
+	GradientInfos []*GradientInfo `json:"GradientInfos,omitempty" name:"GradientInfos" list`
+
+	// 视频帧率，取值[1,60]。默认10
+	Fps *int64 `json:"Fps,omitempty" name:"Fps"`
+
+	// 视频类型，取值[0,2]，其中0为MP4，1为GIF，2为MOV。目前仅支持MP4格式，默认为MP4格式
+	OutputType *int64 `json:"OutputType,omitempty" name:"OutputType"`
+
+	// 视频宽度，取值[128,1280]。默认值720
+	OutputWidth *int64 `json:"OutputWidth,omitempty" name:"OutputWidth"`
+
+	// 视频高度，取值[128,1280]。默认值1280
+	OutputHeight *int64 `json:"OutputHeight,omitempty" name:"OutputHeight"`
+}
+
+func (r *MorphFaceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *MorphFaceRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type MorphFaceResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 人像渐变任务的Job id
+		JobId *string `json:"JobId,omitempty" name:"JobId"`
+
+		// 预估处理时间，粒度为秒
+		EstimatedProcessTime *int64 `json:"EstimatedProcessTime,omitempty" name:"EstimatedProcessTime"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *MorphFaceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *MorphFaceResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type QueryFaceMorphJobRequest struct {
+	*tchttp.BaseRequest
+
+	// 人像渐变任务Job id
+	JobId *string `json:"JobId,omitempty" name:"JobId"`
+}
+
+func (r *QueryFaceMorphJobRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *QueryFaceMorphJobRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type QueryFaceMorphJobResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 当前任务状态：排队中、处理中、处理失败或者处理完成
+		JobStatus *string `json:"JobStatus,omitempty" name:"JobStatus"`
+
+		// 人像渐变输出的结果信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		FaceMorphOutput *FaceMorphOutput `json:"FaceMorphOutput,omitempty" name:"FaceMorphOutput"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *QueryFaceMorphJobResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *QueryFaceMorphJobResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
 }
 
 type SwapGenderPicRequest struct {

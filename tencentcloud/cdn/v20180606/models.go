@@ -757,6 +757,87 @@ func (r *CreateClsLogTopicResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type CreateScdnLogTaskRequest struct {
+	*tchttp.BaseRequest
+
+	// 防护类型
+	// Mode 映射如下：
+	//   waf = "Web攻击"
+	//   cc = "CC攻击"
+	Mode *string `json:"Mode,omitempty" name:"Mode"`
+
+	// 查询起始时间，如：2018-09-04 10:40:00，返回结果大于等于指定时间
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 查询结束时间，如：2018-09-04 10:40:00，返回结果小于等于指定时间
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 指定域名查询, 不填默认查询全部域名
+	Domain *string `json:"Domain,omitempty" name:"Domain"`
+
+	// 指定攻击类型, 不填默认查询全部攻击类型
+	// AttackType 映射如下:
+	//   other = '未知类型'
+	//   malicious_scan = "恶意扫描"
+	//   sql_inject = "SQL注入攻击"
+	//   xss = "XSS攻击"
+	//   cmd_inject = "命令注入攻击"
+	//   ldap_inject = "LDAP注入攻击"
+	//   ssi_inject = "SSI注入攻击"
+	//   xml_inject = "XML注入攻击"
+	//   web_service = "WEB服务漏洞攻击"
+	//   web_app = "WEB应用漏洞攻击"
+	//   path_traversal = "路径跨越攻击"
+	//   illegal_access_core_file = "核心文件非法访问"
+	//   trojan_horse = "木马后门攻击"
+	//   csrf = "CSRF攻击"
+	//   malicious_file_upload= '恶意文件上传'
+	AttackType *string `json:"AttackType,omitempty" name:"AttackType"`
+
+	// 指定执行动作, 不填默认查询全部执行动作
+	// DefenceMode 映射如下：
+	//   observe = '观察模式'
+	//   intercept = '拦截模式'
+	DefenceMode *string `json:"DefenceMode,omitempty" name:"DefenceMode"`
+
+	// 不填为全部ip
+	Ip *string `json:"Ip,omitempty" name:"Ip"`
+
+	// 指定域名查询, 与 Domain 参数同时有值时使用 Domains 参数，不填默认查询全部域名，指定域名查询时最多支持同时选择 5 个域名查询
+	Domains []*string `json:"Domains,omitempty" name:"Domains" list`
+}
+
+func (r *CreateScdnLogTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateScdnLogTaskRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateScdnLogTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 创建结果, 
+	// "0" -> 创建成功
+		Result *string `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateScdnLogTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateScdnLogTaskResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DeleteCdnDomainRequest struct {
 	*tchttp.BaseRequest
 
@@ -1971,6 +2052,102 @@ func (r *DescribeReportDataResponse) ToJsonString() string {
 }
 
 func (r *DescribeReportDataResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeScdnTopDataRequest struct {
+	*tchttp.BaseRequest
+
+	// 查询起始时间，如：2018-09-04 10:40:00，返回结果大于等于指定时间
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 查询结束时间，如：2018-09-04 10:40:00，返回结果小于等于指定时间
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 查询的SCDN TOP攻击数据类型：
+	// waf：Web 攻击防护TOP数据
+	Mode *string `json:"Mode,omitempty" name:"Mode"`
+
+	// 排序对象，支持以下几种形式：
+	// url：攻击目标 url 排序
+	// ip：攻击源 IP 排序
+	// attackType：攻击类型排序
+	Metric *string `json:"Metric,omitempty" name:"Metric"`
+
+	// 排序使用的指标名称：
+	// request：请求次数
+	Filter *string `json:"Filter,omitempty" name:"Filter"`
+
+	// 指定域名查询
+	Domain *string `json:"Domain,omitempty" name:"Domain"`
+
+	// 指定攻击类型, 仅 Mode=waf 时有效
+	// 不填则查询所有攻击类型的数据总和
+	// AttackType 映射如下:
+	//   other = '未知类型'
+	//   malicious_scan = "恶意扫描"
+	//   sql_inject = "SQL注入攻击"
+	//   xss = "XSS攻击"
+	//   cmd_inject = "命令注入攻击"
+	//   ldap_inject = "LDAP注入攻击"
+	//   ssi_inject = "SSI注入攻击"
+	//   xml_inject = "XML注入攻击"
+	//   web_service = "WEB服务漏洞攻击"
+	//   web_app = "WEB应用漏洞攻击"
+	//   path_traversal = "路径跨越攻击"
+	//   illegal_access_core_file = "核心文件非法访问"
+	//   trojan_horse = "木马后门攻击"
+	//   csrf = "CSRF攻击"
+	//   malicious_file_upload= '恶意文件上传'
+	AttackType *string `json:"AttackType,omitempty" name:"AttackType"`
+
+	// 指定防御模式,仅 Mode=waf 时有效
+	// 不填则查询所有防御模式的数据总和
+	// DefenceMode 映射如下：
+	//   observe = '观察模式'
+	//   intercept = '拦截模式'
+	DefenceMode *string `json:"DefenceMode,omitempty" name:"DefenceMode"`
+}
+
+func (r *DescribeScdnTopDataRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeScdnTopDataRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeScdnTopDataResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// WAF 攻击类型统计
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		TopTypeData []*ScdnTypeData `json:"TopTypeData,omitempty" name:"TopTypeData" list`
+
+		// TOP 攻击源 IP 统计
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		TopIpData []*ScdnTopData `json:"TopIpData,omitempty" name:"TopIpData" list`
+
+		// 查询的SCDN类型，当前仅支持 waf
+		Mode *string `json:"Mode,omitempty" name:"Mode"`
+
+		// TOP URL 统计
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		TopUrlData []*ScdnTopUrlData `json:"TopUrlData,omitempty" name:"TopUrlData" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeScdnTopDataResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeScdnTopDataResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -3837,6 +4014,45 @@ type Revalidate struct {
 	// 只在特定请求路径回源站校验
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Path *string `json:"Path,omitempty" name:"Path"`
+}
+
+type ScdnTopData struct {
+
+	// 时间
+	Time *string `json:"Time,omitempty" name:"Time"`
+
+	// 数值
+	Value *uint64 `json:"Value,omitempty" name:"Value"`
+
+	// 运营商
+	Isp *string `json:"Isp,omitempty" name:"Isp"`
+
+	// IP地址
+	Ip *string `json:"Ip,omitempty" name:"Ip"`
+
+	// 区域
+	District *string `json:"District,omitempty" name:"District"`
+}
+
+type ScdnTopUrlData struct {
+
+	// Top数据的URL
+	Url *string `json:"Url,omitempty" name:"Url"`
+
+	// 数值
+	Value *uint64 `json:"Value,omitempty" name:"Value"`
+
+	// 时间
+	Time *string `json:"Time,omitempty" name:"Time"`
+}
+
+type ScdnTypeData struct {
+
+	// 攻击类型
+	AttackType *string `json:"AttackType,omitempty" name:"AttackType"`
+
+	// 攻击值
+	Value *uint64 `json:"Value,omitempty" name:"Value"`
 }
 
 type SchemeKey struct {

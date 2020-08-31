@@ -1,75 +1,54 @@
 # 本版本更新包含以下内容：
 
-## 消息队列 Ckafka(ckafka) 版本：2019-08-19
+## 活动防刷(aa) 版本：2020-02-24
 
 ### 第 6 次发布
 
-发布时间：2020-08-28 08:06:31
+发布时间：2020-08-31 08:00:21
 
 本次发布包含了以下内容：
 
 改善已有的文档。
-
-新增接口：
-
-* [FetchMessageByOffset](https://cloud.tencent.com/document/api/597/47897)
-* [FetchMessageListByOffset](https://cloud.tencent.com/document/api/597/47896)
-* [FetchMessageListByTimestamp](https://cloud.tencent.com/document/api/597/47895)
-
-新增数据结构：
-
-* [ConsumerRecord](https://cloud.tencent.com/document/api/597/40861#ConsumerRecord)
-
-
-
-## 数据传输服务(dts) 版本：2018-03-30
-
-### 第 10 次发布
-
-发布时间：2020-08-28 08:03:00
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [ModifySubscribeAutoRenewFlag](https://cloud.tencent.com/document/api/571/47894)
-
-修改接口：
-
-* [CreateSubscribe](https://cloud.tencent.com/document/api/571/42719)
-
-	* 新增入参：Tags
-
-* [DescribeSubscribeConf](https://cloud.tencent.com/document/api/571/42716)
-
-	* 新增出参：Tags, AutoRenewFlag
-
-* [DescribeSubscribes](https://cloud.tencent.com/document/api/571/42715)
-
-	* 新增入参：TagFilters
-
-
-新增数据结构：
-
-* [TagFilter](https://cloud.tencent.com/document/api/571/18131#TagFilter)
-* [TagItem](https://cloud.tencent.com/document/api/571/18131#TagItem)
 
 修改数据结构：
 
-* [SubscribeInfo](https://cloud.tencent.com/document/api/571/18131#SubscribeInfo)
+* [InputManageMarketingRisk](https://cloud.tencent.com/document/api/1189/45888#InputManageMarketingRisk)
 
-	* 新增成员：Tags, AutoRenewFlag
+	* 新增成员：DeviceType
 
+	* <font color="#dd0000">**删除成员**：</font>VendorId
+
+
+
+
+## 内容分发网络(cdn) 版本：2018-06-06
+
+### 第 32 次发布
+
+发布时间：2020-08-31 08:02:28
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CreateScdnLogTask](https://cloud.tencent.com/document/api/228/47941)
+* [DescribeScdnTopData](https://cloud.tencent.com/document/api/228/47940)
+
+新增数据结构：
+
+* [ScdnTopData](https://cloud.tencent.com/document/api/228/30987#ScdnTopData)
+* [ScdnTopUrlData](https://cloud.tencent.com/document/api/228/30987#ScdnTopUrlData)
+* [ScdnTypeData](https://cloud.tencent.com/document/api/228/30987#ScdnTypeData)
 
 
 
 ## 人像变换(ft) 版本：2020-03-04
 
-### 第 3 次发布
+### 第 4 次发布
 
-发布时间：2020-08-28 08:00:53
+发布时间：2020-08-31 08:01:02
 
 本次发布包含了以下内容：
 
@@ -77,36 +56,37 @@
 
 新增接口：
 
-* [FaceCartoonPic](https://cloud.tencent.com/document/api/1202/47891)
-
-
-
-## 主机安全(yunjing) 版本：2018-02-28
-
-### 第 11 次发布
-
-发布时间：2020-08-28 08:06:11
-
-本次发布包含了以下内容：
-
-改善已有的文档。
+* [CancelFaceMorphJob](https://cloud.tencent.com/document/api/1202/47938)
+* [MorphFace](https://cloud.tencent.com/document/api/1202/47937)
+* [QueryFaceMorphJob](https://cloud.tencent.com/document/api/1202/47936)
 
 新增数据结构：
 
-* [RegionInfo](https://cloud.tencent.com/document/api/296/19867#RegionInfo)
-
-修改数据结构：
-
-* [Machine](https://cloud.tencent.com/document/api/296/19867#Machine)
-
-	* 新增成员：RegionInfo
-
+* [FaceMorphOutput](https://cloud.tencent.com/document/api/1202/41969#FaceMorphOutput)
+* [GradientInfo](https://cloud.tencent.com/document/api/1202/41969#GradientInfo)
 
 
 
 # 历次版本更新如下：
 
 ## 活动防刷(aa) 版本：2020-02-24
+
+### 第 6 次发布
+
+发布时间：2020-08-31 08:00:21
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [InputManageMarketingRisk](https://cloud.tencent.com/document/api/1189/45888#InputManageMarketingRisk)
+
+	* 新增成员：DeviceType
+
+	* <font color="#dd0000">**删除成员**：</font>VendorId
+
 
 ### 第 5 次发布
 
@@ -5977,6 +5957,25 @@
 
 ## 内容分发网络(cdn) 版本：2018-06-06
 
+### 第 32 次发布
+
+发布时间：2020-08-31 08:02:28
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[CreateScdnLogTask](https://cloud.tencent.com/document/api/228/47941)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeScdnTopData](https://cloud.tencent.com/document/api/228/47940)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[ScdnTopData](https://cloud.tencent.com/document/api/228/30987#ScdnTopData)](https://cloud.tencent.com/document/api/228/30987#[ScdnTopData](https://cloud.tencent.com/document/api/228/30987#ScdnTopData))
+* [[ScdnTopUrlData](https://cloud.tencent.com/document/api/228/30987#ScdnTopUrlData)](https://cloud.tencent.com/document/api/228/30987#[ScdnTopUrlData](https://cloud.tencent.com/document/api/228/30987#ScdnTopUrlData))
+* [[ScdnTypeData](https://cloud.tencent.com/document/api/228/30987#ScdnTypeData)](https://cloud.tencent.com/document/api/228/30987#[ScdnTypeData](https://cloud.tencent.com/document/api/228/30987#ScdnTypeData))
+
 ### 第 31 次发布
 
 发布时间：2020-08-14 08:07:25
@@ -7044,13 +7043,13 @@
 
 新增接口：
 
-* [[FetchMessageByOffset](https://cloud.tencent.com/document/api/597/47897)](https://cloud.tencent.com/document/api/#/#)
-* [[FetchMessageListByOffset](https://cloud.tencent.com/document/api/597/47896)](https://cloud.tencent.com/document/api/#/#)
-* [[FetchMessageListByTimestamp](https://cloud.tencent.com/document/api/597/47895)](https://cloud.tencent.com/document/api/#/#)
+* [FetchMessageByOffset](https://cloud.tencent.com/document/api/597/47897)
+* [FetchMessageListByOffset](https://cloud.tencent.com/document/api/597/47896)
+* [FetchMessageListByTimestamp](https://cloud.tencent.com/document/api/597/47895)
 
 新增数据结构：
 
-* [[ConsumerRecord](https://cloud.tencent.com/document/api/597/40861#ConsumerRecord)](https://cloud.tencent.com/document/api/597/40861#[ConsumerRecord](https://cloud.tencent.com/document/api/597/40861#ConsumerRecord))
+* [ConsumerRecord](https://cloud.tencent.com/document/api/597/40861#ConsumerRecord)
 
 ### 第 5 次发布
 
@@ -12329,7 +12328,7 @@
 
 新增接口：
 
-* [[ModifySubscribeAutoRenewFlag](https://cloud.tencent.com/document/api/571/47894)](https://cloud.tencent.com/document/api/#/#)
+* [ModifySubscribeAutoRenewFlag](https://cloud.tencent.com/document/api/571/47894)
 
 修改接口：
 
@@ -12348,8 +12347,8 @@
 
 新增数据结构：
 
-* [[TagFilter](https://cloud.tencent.com/document/api/571/18131#TagFilter)](https://cloud.tencent.com/document/api/571/18131#[TagFilter](https://cloud.tencent.com/document/api/571/18131#TagFilter))
-* [[TagItem](https://cloud.tencent.com/document/api/571/18131#TagItem)](https://cloud.tencent.com/document/api/571/18131#[TagItem](https://cloud.tencent.com/document/api/571/18131#TagItem))
+* [TagFilter](https://cloud.tencent.com/document/api/571/18131#TagFilter)
+* [TagItem](https://cloud.tencent.com/document/api/571/18131#TagItem)
 
 修改数据结构：
 
@@ -14455,6 +14454,25 @@
 
 ## 人像变换(ft) 版本：2020-03-04
 
+### 第 4 次发布
+
+发布时间：2020-08-31 08:01:02
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[CancelFaceMorphJob](https://cloud.tencent.com/document/api/1202/47938)](https://cloud.tencent.com/document/api/#/#)
+* [[MorphFace](https://cloud.tencent.com/document/api/1202/47937)](https://cloud.tencent.com/document/api/#/#)
+* [[QueryFaceMorphJob](https://cloud.tencent.com/document/api/1202/47936)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[FaceMorphOutput](https://cloud.tencent.com/document/api/1202/41969#FaceMorphOutput)](https://cloud.tencent.com/document/api/1202/41969#[FaceMorphOutput](https://cloud.tencent.com/document/api/1202/41969#FaceMorphOutput))
+* [[GradientInfo](https://cloud.tencent.com/document/api/1202/41969#GradientInfo)](https://cloud.tencent.com/document/api/1202/41969#[GradientInfo](https://cloud.tencent.com/document/api/1202/41969#GradientInfo))
+
 ### 第 3 次发布
 
 发布时间：2020-08-28 08:00:53
@@ -14465,7 +14483,7 @@
 
 新增接口：
 
-* [[FaceCartoonPic](https://cloud.tencent.com/document/api/1202/47891)](https://cloud.tencent.com/document/api/#/#)
+* [FaceCartoonPic](https://cloud.tencent.com/document/api/1202/47891)
 
 ### 第 2 次发布
 
@@ -33270,7 +33288,7 @@
 
 新增数据结构：
 
-* [[RegionInfo](https://cloud.tencent.com/document/api/296/19867#RegionInfo)](https://cloud.tencent.com/document/api/296/19867#[RegionInfo](https://cloud.tencent.com/document/api/296/19867#RegionInfo))
+* [RegionInfo](https://cloud.tencent.com/document/api/296/19867#RegionInfo)
 
 修改数据结构：
 

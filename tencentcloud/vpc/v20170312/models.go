@@ -2889,7 +2889,7 @@ type CrossBorderCompliance struct {
 	// 统一社会信用代码。
 	UniformSocialCreditCode *string `json:"UniformSocialCreditCode,omitempty" name:"UniformSocialCreditCode"`
 
-	// 法人。
+	// 法定代表人。
 	LegalPerson *string `json:"LegalPerson,omitempty" name:"LegalPerson"`
 
 	// 发证机关。
@@ -2922,7 +2922,7 @@ type CrossBorderCompliance struct {
 	// 电子邮箱。
 	Email *string `json:"Email,omitempty" name:"Email"`
 
-	// 跨境专线服务受理单。
+	// 服务受理单。
 	ServiceHandlingForm *string `json:"ServiceHandlingForm,omitempty" name:"ServiceHandlingForm"`
 
 	// 授权函。
@@ -4597,7 +4597,7 @@ type DescribeCrossBorderComplianceRequest struct {
 	// （精确匹配）统一社会信用代码。
 	UniformSocialCreditCode *string `json:"UniformSocialCreditCode,omitempty" name:"UniformSocialCreditCode"`
 
-	// （模糊查询）法人。
+	// （模糊查询）法定代表人。
 	LegalPerson *string `json:"LegalPerson,omitempty" name:"LegalPerson"`
 
 	// （模糊查询）发证机关。
@@ -4624,10 +4624,10 @@ type DescribeCrossBorderComplianceRequest struct {
 	// （精确匹配）电子邮箱。
 	Email *string `json:"Email,omitempty" name:"Email"`
 
-	// （精确匹配）服务开始时间。
+	// （精确匹配）服务开始日期，如：`2020-07-28`。
 	ServiceStartDate *string `json:"ServiceStartDate,omitempty" name:"ServiceStartDate"`
 
-	// （精确匹配）服务开始时间。
+	// （精确匹配）服务结束日期，如：`2021-07-28`。
 	ServiceEndDate *string `json:"ServiceEndDate,omitempty" name:"ServiceEndDate"`
 
 	// （精确匹配）状态。待审批：`PENDING`，通过：`APPROVED `，拒绝：`DENY`。

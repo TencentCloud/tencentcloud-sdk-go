@@ -97,10 +97,10 @@ type DescribeBlueprintsRequest struct {
 	// 镜像 ID 列表。
 	BlueprintIds []*string `json:"BlueprintIds,omitempty" name:"BlueprintIds" list`
 
-	// 偏移量，默认为 0。
+	// 偏移量，默认为 0。关于`Offset`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/product/1207/47578)中的相关小节。
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
 
-	// 返回数量，默认为 20，最大值为 100。
+	// 返回数量，默认为 20，最大值为 100。关于`Limit`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/product/1207/47578)中的相关小节。
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 
 	// 过滤器列表。
@@ -158,10 +158,10 @@ type DescribeBundlesRequest struct {
 	// 套餐 ID 列表。
 	BundleIds []*string `json:"BundleIds,omitempty" name:"BundleIds" list`
 
-	// 偏移量，默认为 0。
+	// 偏移量，默认为 0。关于`Offset`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/product/1207/47578)中的相关小节。
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
 
-	// 返回数量，默认为 20，最大值为 100。
+	// 返回数量，默认为 20，最大值为 100。关于`Limit`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/product/1207/47578)中的相关小节。
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 
 	// 过滤器列表。
@@ -228,10 +228,10 @@ type DescribeInstancesRequest struct {
 	// 每次请求的 Filters 的上限为 10，Filter.Values 的上限为 5。参数不支持同时指定 InstanceIds 和 Filters。
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
 
-	// 偏移量，默认为 0。
+	// 偏移量，默认为 0。关于`Offset`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/product/1207/47578)中的相关小节。
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
 
-	// 返回数量，默认为 20，最大值为 100。
+	// 返回数量，默认为 20，最大值为 100。关于`Limit`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/product/1207/47578)中的相关小节。
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 }
 

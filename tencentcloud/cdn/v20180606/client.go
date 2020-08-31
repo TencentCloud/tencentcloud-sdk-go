@@ -93,6 +93,31 @@ func (c *Client) CreateClsLogTopic(request *CreateClsLogTopicRequest) (response 
     return
 }
 
+func NewCreateScdnLogTaskRequest() (request *CreateScdnLogTaskRequest) {
+    request = &CreateScdnLogTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cdn", APIVersion, "CreateScdnLogTask")
+    return
+}
+
+func NewCreateScdnLogTaskResponse() (response *CreateScdnLogTaskResponse) {
+    response = &CreateScdnLogTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateScdnLogTask 用于创建事件日志任务
+func (c *Client) CreateScdnLogTask(request *CreateScdnLogTaskRequest) (response *CreateScdnLogTaskResponse, err error) {
+    if request == nil {
+        request = NewCreateScdnLogTaskRequest()
+    }
+    response = NewCreateScdnLogTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteCdnDomainRequest() (request *DeleteCdnDomainRequest) {
     request = &DeleteCdnDomainRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -639,6 +664,31 @@ func (c *Client) DescribeReportData(request *DescribeReportDataRequest) (respons
         request = NewDescribeReportDataRequest()
     }
     response = NewDescribeReportDataResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeScdnTopDataRequest() (request *DescribeScdnTopDataRequest) {
+    request = &DescribeScdnTopDataRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cdn", APIVersion, "DescribeScdnTopData")
+    return
+}
+
+func NewDescribeScdnTopDataResponse() (response *DescribeScdnTopDataResponse) {
+    response = &DescribeScdnTopDataResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 获取SCDN的Top数据
+func (c *Client) DescribeScdnTopData(request *DescribeScdnTopDataRequest) (response *DescribeScdnTopDataResponse, err error) {
+    if request == nil {
+        request = NewDescribeScdnTopDataRequest()
+    }
+    response = NewDescribeScdnTopDataResponse()
     err = c.Send(request, response)
     return
 }

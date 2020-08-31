@@ -1829,7 +1829,7 @@ func (r *DescribePeakNetworkOverviewResponse) FromJsonString(s string) error {
 type DescribeSecurityGroupAssociationStatisticsRequest struct {
 	*tchttp.BaseRequest
 
-	// 安全实例ID，例如esg-33ocnj9n，可通过DescribeSecurityGroups获取。
+	// 安全实例ID，例如esg-33ocnj9n，可通过[DescribeSecurityGroups](https://cloud.tencent.com/document/product/1108/47697)获取。
 	SecurityGroupIds []*string `json:"SecurityGroupIds,omitempty" name:"SecurityGroupIds" list`
 }
 
@@ -1900,7 +1900,7 @@ func (r *DescribeSecurityGroupLimitsResponse) FromJsonString(s string) error {
 type DescribeSecurityGroupPoliciesRequest struct {
 	*tchttp.BaseRequest
 
-	// 安全组实例ID，例如：esg-33ocnj9n，可通过DescribeSecurityGroups获取。
+	// 安全组实例ID，例如：esg-33ocnj9n，可通过[DescribeSecurityGroups](https://cloud.tencent.com/document/product/1108/47697)获取。
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" name:"SecurityGroupId"`
 }
 
@@ -1937,7 +1937,7 @@ func (r *DescribeSecurityGroupPoliciesResponse) FromJsonString(s string) error {
 type DescribeSecurityGroupsRequest struct {
 	*tchttp.BaseRequest
 
-	// 安全组实例ID，例如：esg-33ocnj9n，可通过DescribeSecurityGroups获取。每次请求的实例的上限为100。参数不支持同时指定SecurityGroupIds和Filters。
+	// 安全组实例ID，例如：esg-33ocnj9n，可通过[DescribeSecurityGroups](https://cloud.tencent.com/document/product/1108/47697)获取。每次请求的实例的上限为100。参数不支持同时指定SecurityGroupIds和Filters。
 	SecurityGroupIds []*string `json:"SecurityGroupIds,omitempty" name:"SecurityGroupIds" list`
 
 	// 过滤条件，参数不支持同时指定SecurityGroupIds和Filters。
@@ -3179,8 +3179,8 @@ type ModifyModuleIpDirectRequest struct {
 	ModuleId *string `json:"ModuleId,omitempty" name:"ModuleId"`
 
 	// 是否关闭IP直通。取值范围：
-	// 1：表示关闭IP直通
-	// 0：表示开通IP直通
+	// true：表示关闭IP直通
+	// false：表示开通IP直通
 	CloseIpDirect *bool `json:"CloseIpDirect,omitempty" name:"CloseIpDirect"`
 }
 
