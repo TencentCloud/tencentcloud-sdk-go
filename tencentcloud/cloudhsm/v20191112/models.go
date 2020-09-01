@@ -523,7 +523,7 @@ type ModifyVsmAttributesRequest struct {
 	// 安全组Id
 	SgIds []*string `json:"SgIds,omitempty" name:"SgIds" list`
 
-	// VpcId
+	// 虚拟专网Id
 	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
 
 	// 子网Id

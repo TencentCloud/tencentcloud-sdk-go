@@ -29,6 +29,40 @@ type AlgorithmInfo struct {
 	Algorithm *string `json:"Algorithm,omitempty" name:"Algorithm"`
 }
 
+type ArchiveKeyRequest struct {
+	*tchttp.BaseRequest
+
+	// CMK唯一标识符
+	KeyId *string `json:"KeyId,omitempty" name:"KeyId"`
+}
+
+func (r *ArchiveKeyRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ArchiveKeyRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ArchiveKeyResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ArchiveKeyResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ArchiveKeyResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type AsymmetricRsaDecryptRequest struct {
 	*tchttp.BaseRequest
 
@@ -155,6 +189,40 @@ func (r *BindCloudResourceResponse) ToJsonString() string {
 }
 
 func (r *BindCloudResourceResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CancelKeyArchiveRequest struct {
+	*tchttp.BaseRequest
+
+	// CMK唯一标识符
+	KeyId *string `json:"KeyId,omitempty" name:"KeyId"`
+}
+
+func (r *CancelKeyArchiveRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CancelKeyArchiveRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CancelKeyArchiveResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CancelKeyArchiveResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CancelKeyArchiveResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -1509,7 +1577,7 @@ type KeyMetadata struct {
 	// CMK的描述
 	Description *string `json:"Description,omitempty" name:"Description"`
 
-	// CMK的状态， 取值为：Enabled | Disabled | PendingDelete | PendingImport
+	// CMK的状态， 取值为：Enabled | Disabled | PendingDelete | PendingImport | Archived
 	KeyState *string `json:"KeyState,omitempty" name:"KeyState"`
 
 	// CMK用途，取值为: ENCRYPT_DECRYPT | ASYMMETRIC_DECRYPT_RSA_2048 | ASYMMETRIC_DECRYPT_SM2
@@ -1598,7 +1666,7 @@ type ListKeyDetailRequest struct {
 	// 根据CMK创建时间排序， 0 表示按照降序排序，1表示按照升序排序
 	OrderType *uint64 `json:"OrderType,omitempty" name:"OrderType"`
 
-	// 根据CMK状态筛选， 0表示全部CMK， 1 表示仅查询Enabled CMK， 2 表示仅查询Disabled CMK，3 表示查询PendingDelete 状态的CMK(处于计划删除状态的Key)，4 表示查询 PendingImport 状态的CMK
+	// 根据CMK状态筛选， 0表示全部CMK， 1 表示仅查询Enabled CMK， 2 表示仅查询Disabled CMK，3 表示查询PendingDelete 状态的CMK(处于计划删除状态的Key)，4 表示查询 PendingImport 状态的CMK，5 表示查询 Archived 状态的 CMK
 	KeyState *uint64 `json:"KeyState,omitempty" name:"KeyState"`
 
 	// 根据KeyId或者Alias进行模糊匹配查询

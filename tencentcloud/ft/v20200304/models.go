@@ -135,6 +135,9 @@ type FaceCartoonPicRequest struct {
 
 	// 返回图像方式（base64 或 url ) ，二选一。url有效期为1天。
 	RspImgType *string `json:"RspImgType,omitempty" name:"RspImgType"`
+
+	// 是否取消全图动漫化效果。
+	DisableGlobalEffect *string `json:"DisableGlobalEffect,omitempty" name:"DisableGlobalEffect"`
 }
 
 func (r *FaceCartoonPicRequest) ToJsonString() string {

@@ -577,6 +577,9 @@ type CreateClusterRequest struct {
 
 	// CVM类型和其对应的数据盘挂载配置信息
 	InstanceDataDiskMountSettings []*InstanceDataDiskMountSetting `json:"InstanceDataDiskMountSettings,omitempty" name:"InstanceDataDiskMountSettings" list`
+
+	// 需要安装的扩展组件信息
+	ExtensionAddons []*ExtensionAddon `json:"ExtensionAddons,omitempty" name:"ExtensionAddons" list`
 }
 
 func (r *CreateClusterRequest) ToJsonString() string {
@@ -1690,6 +1693,15 @@ type ExistedInstancesPara struct {
 
 	// 重装系统时，可以指定修改实例的HostName(集群为HostName模式时，此参数必传，规则名称除不支持大写字符外与[CVM创建实例](https://cloud.tencent.com/document/product/213/15730)接口HostName一致)
 	HostName *string `json:"HostName,omitempty" name:"HostName"`
+}
+
+type ExtensionAddon struct {
+
+	// 扩展组件名称
+	AddonName *string `json:"AddonName,omitempty" name:"AddonName"`
+
+	// 扩展组件信息(扩展组件资源对象的json字符串描述)
+	AddonParam *string `json:"AddonParam,omitempty" name:"AddonParam"`
 }
 
 type Filter struct {

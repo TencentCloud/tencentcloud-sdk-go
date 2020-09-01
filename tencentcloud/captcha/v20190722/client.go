@@ -168,6 +168,31 @@ func (c *Client) DescribeCaptchaResult(request *DescribeCaptchaResultRequest) (r
     return
 }
 
+func NewDescribeCaptchaTicketDataRequest() (request *DescribeCaptchaTicketDataRequest) {
+    request = &DescribeCaptchaTicketDataRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("captcha", APIVersion, "DescribeCaptchaTicketData")
+    return
+}
+
+func NewDescribeCaptchaTicketDataResponse() (response *DescribeCaptchaTicketDataResponse) {
+    response = &DescribeCaptchaTicketDataResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 验证码控制台票据验证信息
+func (c *Client) DescribeCaptchaTicketData(request *DescribeCaptchaTicketDataRequest) (response *DescribeCaptchaTicketDataResponse, err error) {
+    if request == nil {
+        request = NewDescribeCaptchaTicketDataRequest()
+    }
+    response = NewDescribeCaptchaTicketDataResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeCaptchaUserAllAppIdRequest() (request *DescribeCaptchaUserAllAppIdRequest) {
     request = &DescribeCaptchaUserAllAppIdRequest{
         BaseRequest: &tchttp.BaseRequest{},

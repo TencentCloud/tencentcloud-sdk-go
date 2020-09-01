@@ -96,6 +96,18 @@ type CaptchaQueryData struct {
 	Date *string `json:"Date,omitempty" name:"Date"`
 }
 
+type CaptchaTicketDataRes struct {
+
+	// 票据验证总量返回
+	TicketAmountArray []*TicketAmountUnit `json:"TicketAmountArray,omitempty" name:"TicketAmountArray" list`
+
+	// 票据验证通过量返回
+	TicketThroughArray []*TicketThroughUnit `json:"TicketThroughArray,omitempty" name:"TicketThroughArray" list`
+
+	// 票据验证拦截量返回
+	TicketInterceptArray []*TicketInterceptUnit `json:"TicketInterceptArray,omitempty" name:"TicketInterceptArray" list`
+}
+
 type CaptchaUserAllAppId struct {
 
 	// 验证码应用ID
@@ -456,6 +468,54 @@ func (r *DescribeCaptchaResultResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeCaptchaTicketDataRequest struct {
+	*tchttp.BaseRequest
+
+	// 验证码应用ID
+	CaptchaAppId *int64 `json:"CaptchaAppId,omitempty" name:"CaptchaAppId"`
+
+	// 查询开始时间
+	Start *int64 `json:"Start,omitempty" name:"Start"`
+}
+
+func (r *DescribeCaptchaTicketDataRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeCaptchaTicketDataRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeCaptchaTicketDataResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 成功返回 0 其它失败
+		CaptchaCode *int64 `json:"CaptchaCode,omitempty" name:"CaptchaCode"`
+
+		// 返回信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		CaptchaMsg *string `json:"CaptchaMsg,omitempty" name:"CaptchaMsg"`
+
+		// 验证码票据信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Data *CaptchaTicketDataRes `json:"Data,omitempty" name:"Data"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeCaptchaTicketDataResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeCaptchaTicketDataResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeCaptchaUserAllAppIdRequest struct {
 	*tchttp.BaseRequest
 }
@@ -496,6 +556,33 @@ func (r *DescribeCaptchaUserAllAppIdResponse) ToJsonString() string {
 
 func (r *DescribeCaptchaUserAllAppIdResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
+}
+
+type TicketAmountUnit struct {
+
+	// 时间
+	DateKey *string `json:"DateKey,omitempty" name:"DateKey"`
+
+	// 票据验证总量
+	Amount *int64 `json:"Amount,omitempty" name:"Amount"`
+}
+
+type TicketInterceptUnit struct {
+
+	// 时间
+	DateKey *string `json:"DateKey,omitempty" name:"DateKey"`
+
+	// 票据验证拦截量
+	Intercept *int64 `json:"Intercept,omitempty" name:"Intercept"`
+}
+
+type TicketThroughUnit struct {
+
+	// 时间
+	DateKey *string `json:"DateKey,omitempty" name:"DateKey"`
+
+	// 票据验证的通过量
+	Through *int64 `json:"Through,omitempty" name:"Through"`
 }
 
 type UpdateCaptchaAppIdInfoRequest struct {

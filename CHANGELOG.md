@@ -1,54 +1,85 @@
 # 本版本更新包含以下内容：
 
-## 活动防刷(aa) 版本：2020-02-24
+## 验证码(captcha) 版本：2019-07-22
 
-### 第 6 次发布
+### 第 4 次发布
 
-发布时间：2020-08-31 08:00:21
+发布时间：2020-09-01 08:01:58
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-修改数据结构：
+新增接口：
 
-* [InputManageMarketingRisk](https://cloud.tencent.com/document/api/1189/45888#InputManageMarketingRisk)
+* [DescribeCaptchaTicketData](https://cloud.tencent.com/document/api/1110/47983)
 
-	* 新增成员：DeviceType
+新增数据结构：
 
-	* <font color="#dd0000">**删除成员**：</font>VendorId
-
+* [CaptchaTicketDataRes](https://cloud.tencent.com/document/api/1110/40481#CaptchaTicketDataRes)
+* [TicketAmountUnit](https://cloud.tencent.com/document/api/1110/40481#TicketAmountUnit)
+* [TicketInterceptUnit](https://cloud.tencent.com/document/api/1110/40481#TicketInterceptUnit)
+* [TicketThroughUnit](https://cloud.tencent.com/document/api/1110/40481#TicketThroughUnit)
 
 
 
 ## 内容分发网络(cdn) 版本：2018-06-06
 
-### 第 32 次发布
+### 第 33 次发布
 
-发布时间：2020-08-31 08:02:28
+发布时间：2020-09-01 08:02:19
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-新增接口：
-
-* [CreateScdnLogTask](https://cloud.tencent.com/document/api/228/47941)
-* [DescribeScdnTopData](https://cloud.tencent.com/document/api/228/47940)
-
 新增数据结构：
 
-* [ScdnTopData](https://cloud.tencent.com/document/api/228/30987#ScdnTopData)
-* [ScdnTopUrlData](https://cloud.tencent.com/document/api/228/30987#ScdnTopUrlData)
-* [ScdnTypeData](https://cloud.tencent.com/document/api/228/30987#ScdnTypeData)
+* [CacheConfigCache](https://cloud.tencent.com/document/api/228/30987#CacheConfigCache)
+* [CacheConfigFollowOrigin](https://cloud.tencent.com/document/api/228/30987#CacheConfigFollowOrigin)
+* [CacheConfigNoCache](https://cloud.tencent.com/document/api/228/30987#CacheConfigNoCache)
+* [KeyRule](https://cloud.tencent.com/document/api/228/30987#KeyRule)
+* [RuleCache](https://cloud.tencent.com/document/api/228/30987#RuleCache)
+* [RuleCacheConfig](https://cloud.tencent.com/document/api/228/30987#RuleCacheConfig)
+* [RuleQueryString](https://cloud.tencent.com/document/api/228/30987#RuleQueryString)
+
+修改数据结构：
+
+* [Cache](https://cloud.tencent.com/document/api/228/30987#Cache)
+
+	* 新增成员：RuleCache
+
+* [CacheKey](https://cloud.tencent.com/document/api/228/30987#CacheKey)
+
+	* 新增成员：KeyRules
+
 
 
 
 ## 人像变换(ft) 版本：2020-03-04
 
-### 第 4 次发布
+### 第 5 次发布
 
-发布时间：2020-08-31 08:01:02
+发布时间：2020-09-01 08:00:52
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [FaceCartoonPic](https://cloud.tencent.com/document/api/1202/47891)
+
+	* 新增入参：DisableGlobalEffect
+
+
+
+
+## 密钥管理系统(kms) 版本：2019-01-18
+
+### 第 13 次发布
+
+发布时间：2020-09-01 08:04:17
 
 本次发布包含了以下内容：
 
@@ -56,14 +87,54 @@
 
 新增接口：
 
-* [CancelFaceMorphJob](https://cloud.tencent.com/document/api/1202/47938)
-* [MorphFace](https://cloud.tencent.com/document/api/1202/47937)
-* [QueryFaceMorphJob](https://cloud.tencent.com/document/api/1202/47936)
+* [ArchiveKey](https://cloud.tencent.com/document/api/573/47985)
+* [CancelKeyArchive](https://cloud.tencent.com/document/api/573/47984)
+
+
+
+## 云直播(live) 版本：2018-08-01
+
+### 第 48 次发布
+
+发布时间：2020-09-01 08:04:27
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateLiveTranscodeTemplate](https://cloud.tencent.com/document/api/267/32646)
+
+	* 新增入参：ShortEdgeAsHeight
+
+* [ModifyLiveTranscodeTemplate](https://cloud.tencent.com/document/api/267/32640)
+
+	* 新增入参：ShortEdgeAsHeight
+
+
+
+
+## 容器服务(tke) 版本：2018-05-25
+
+### 第 25 次发布
+
+发布时间：2020-09-01 08:06:22
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateCluster](https://cloud.tencent.com/document/api/457/34527)
+
+	* 新增入参：ExtensionAddons
+
 
 新增数据结构：
 
-* [FaceMorphOutput](https://cloud.tencent.com/document/api/1202/41969#FaceMorphOutput)
-* [GradientInfo](https://cloud.tencent.com/document/api/1202/41969#GradientInfo)
+* [ExtensionAddon](https://cloud.tencent.com/document/api/457/31866#ExtensionAddon)
 
 
 
@@ -4364,6 +4435,25 @@
 
 ## 验证码(captcha) 版本：2019-07-22
 
+### 第 4 次发布
+
+发布时间：2020-09-01 08:01:58
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeCaptchaTicketData](https://cloud.tencent.com/document/api/1110/47983)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[CaptchaTicketDataRes](https://cloud.tencent.com/document/api/1110/40481#CaptchaTicketDataRes)](https://cloud.tencent.com/document/api/1110/40481#[CaptchaTicketDataRes](https://cloud.tencent.com/document/api/1110/40481#CaptchaTicketDataRes))
+* [[TicketAmountUnit](https://cloud.tencent.com/document/api/1110/40481#TicketAmountUnit)](https://cloud.tencent.com/document/api/1110/40481#[TicketAmountUnit](https://cloud.tencent.com/document/api/1110/40481#TicketAmountUnit))
+* [[TicketInterceptUnit](https://cloud.tencent.com/document/api/1110/40481#TicketInterceptUnit)](https://cloud.tencent.com/document/api/1110/40481#[TicketInterceptUnit](https://cloud.tencent.com/document/api/1110/40481#TicketInterceptUnit))
+* [[TicketThroughUnit](https://cloud.tencent.com/document/api/1110/40481#TicketThroughUnit)](https://cloud.tencent.com/document/api/1110/40481#[TicketThroughUnit](https://cloud.tencent.com/document/api/1110/40481#TicketThroughUnit))
+
 ### 第 3 次发布
 
 发布时间：2020-03-10 00:49:50
@@ -5957,6 +6047,35 @@
 
 ## 内容分发网络(cdn) 版本：2018-06-06
 
+### 第 33 次发布
+
+发布时间：2020-09-01 08:02:19
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增数据结构：
+
+* [[CacheConfigCache](https://cloud.tencent.com/document/api/228/30987#CacheConfigCache)](https://cloud.tencent.com/document/api/228/30987#[CacheConfigCache](https://cloud.tencent.com/document/api/228/30987#CacheConfigCache))
+* [[CacheConfigFollowOrigin](https://cloud.tencent.com/document/api/228/30987#CacheConfigFollowOrigin)](https://cloud.tencent.com/document/api/228/30987#[CacheConfigFollowOrigin](https://cloud.tencent.com/document/api/228/30987#CacheConfigFollowOrigin))
+* [[CacheConfigNoCache](https://cloud.tencent.com/document/api/228/30987#CacheConfigNoCache)](https://cloud.tencent.com/document/api/228/30987#[CacheConfigNoCache](https://cloud.tencent.com/document/api/228/30987#CacheConfigNoCache))
+* [[KeyRule](https://cloud.tencent.com/document/api/228/30987#KeyRule)](https://cloud.tencent.com/document/api/228/30987#[KeyRule](https://cloud.tencent.com/document/api/228/30987#KeyRule))
+* [[RuleCache](https://cloud.tencent.com/document/api/228/30987#RuleCache)](https://cloud.tencent.com/document/api/228/30987#[RuleCache](https://cloud.tencent.com/document/api/228/30987#RuleCache))
+* [[RuleCacheConfig](https://cloud.tencent.com/document/api/228/30987#RuleCacheConfig)](https://cloud.tencent.com/document/api/228/30987#[RuleCacheConfig](https://cloud.tencent.com/document/api/228/30987#RuleCacheConfig))
+* [[RuleQueryString](https://cloud.tencent.com/document/api/228/30987#RuleQueryString)](https://cloud.tencent.com/document/api/228/30987#[RuleQueryString](https://cloud.tencent.com/document/api/228/30987#RuleQueryString))
+
+修改数据结构：
+
+* [Cache](https://cloud.tencent.com/document/api/228/30987#Cache)
+
+	* 新增成员：RuleCache
+
+* [CacheKey](https://cloud.tencent.com/document/api/228/30987#CacheKey)
+
+	* 新增成员：KeyRules
+
+
 ### 第 32 次发布
 
 发布时间：2020-08-31 08:02:28
@@ -5967,14 +6086,14 @@
 
 新增接口：
 
-* [[CreateScdnLogTask](https://cloud.tencent.com/document/api/228/47941)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeScdnTopData](https://cloud.tencent.com/document/api/228/47940)](https://cloud.tencent.com/document/api/#/#)
+* [CreateScdnLogTask](https://cloud.tencent.com/document/api/228/47941)
+* [DescribeScdnTopData](https://cloud.tencent.com/document/api/228/47940)
 
 新增数据结构：
 
-* [[ScdnTopData](https://cloud.tencent.com/document/api/228/30987#ScdnTopData)](https://cloud.tencent.com/document/api/228/30987#[ScdnTopData](https://cloud.tencent.com/document/api/228/30987#ScdnTopData))
-* [[ScdnTopUrlData](https://cloud.tencent.com/document/api/228/30987#ScdnTopUrlData)](https://cloud.tencent.com/document/api/228/30987#[ScdnTopUrlData](https://cloud.tencent.com/document/api/228/30987#ScdnTopUrlData))
-* [[ScdnTypeData](https://cloud.tencent.com/document/api/228/30987#ScdnTypeData)](https://cloud.tencent.com/document/api/228/30987#[ScdnTypeData](https://cloud.tencent.com/document/api/228/30987#ScdnTypeData))
+* [ScdnTopData](https://cloud.tencent.com/document/api/228/30987#ScdnTopData)
+* [ScdnTopUrlData](https://cloud.tencent.com/document/api/228/30987#ScdnTopUrlData)
+* [ScdnTypeData](https://cloud.tencent.com/document/api/228/30987#ScdnTypeData)
 
 ### 第 31 次发布
 
@@ -14454,6 +14573,21 @@
 
 ## 人像变换(ft) 版本：2020-03-04
 
+### 第 5 次发布
+
+发布时间：2020-09-01 08:00:52
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [FaceCartoonPic](https://cloud.tencent.com/document/api/1202/47891)
+
+	* 新增入参：DisableGlobalEffect
+
+
 ### 第 4 次发布
 
 发布时间：2020-08-31 08:01:02
@@ -14464,14 +14598,14 @@
 
 新增接口：
 
-* [[CancelFaceMorphJob](https://cloud.tencent.com/document/api/1202/47938)](https://cloud.tencent.com/document/api/#/#)
-* [[MorphFace](https://cloud.tencent.com/document/api/1202/47937)](https://cloud.tencent.com/document/api/#/#)
-* [[QueryFaceMorphJob](https://cloud.tencent.com/document/api/1202/47936)](https://cloud.tencent.com/document/api/#/#)
+* [CancelFaceMorphJob](https://cloud.tencent.com/document/api/1202/47938)
+* [MorphFace](https://cloud.tencent.com/document/api/1202/47937)
+* [QueryFaceMorphJob](https://cloud.tencent.com/document/api/1202/47936)
 
 新增数据结构：
 
-* [[FaceMorphOutput](https://cloud.tencent.com/document/api/1202/41969#FaceMorphOutput)](https://cloud.tencent.com/document/api/1202/41969#[FaceMorphOutput](https://cloud.tencent.com/document/api/1202/41969#FaceMorphOutput))
-* [[GradientInfo](https://cloud.tencent.com/document/api/1202/41969#GradientInfo)](https://cloud.tencent.com/document/api/1202/41969#[GradientInfo](https://cloud.tencent.com/document/api/1202/41969#GradientInfo))
+* [FaceMorphOutput](https://cloud.tencent.com/document/api/1202/41969#FaceMorphOutput)
+* [GradientInfo](https://cloud.tencent.com/document/api/1202/41969#GradientInfo)
 
 ### 第 3 次发布
 
@@ -17578,6 +17712,19 @@
 
 ## 密钥管理系统(kms) 版本：2019-01-18
 
+### 第 13 次发布
+
+发布时间：2020-09-01 08:04:17
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[ArchiveKey](https://cloud.tencent.com/document/api/573/47985)](https://cloud.tencent.com/document/api/#/#)
+* [[CancelKeyArchive](https://cloud.tencent.com/document/api/573/47984)](https://cloud.tencent.com/document/api/#/#)
+
 ### 第 12 次发布
 
 发布时间：2020-08-25 08:05:11
@@ -17905,6 +18052,25 @@
 
 
 ## 云直播(live) 版本：2018-08-01
+
+### 第 48 次发布
+
+发布时间：2020-09-01 08:04:27
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateLiveTranscodeTemplate](https://cloud.tencent.com/document/api/267/32646)
+
+	* 新增入参：ShortEdgeAsHeight
+
+* [ModifyLiveTranscodeTemplate](https://cloud.tencent.com/document/api/267/32640)
+
+	* 新增入参：ShortEdgeAsHeight
+
 
 ### 第 47 次发布
 
@@ -27815,6 +27981,25 @@
 
 
 ## 容器服务(tke) 版本：2018-05-25
+
+### 第 25 次发布
+
+发布时间：2020-09-01 08:06:22
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateCluster](https://cloud.tencent.com/document/api/457/34527)
+
+	* 新增入参：ExtensionAddons
+
+
+新增数据结构：
+
+* [[ExtensionAddon](https://cloud.tencent.com/document/api/457/31866#ExtensionAddon)](https://cloud.tencent.com/document/api/457/31866#[ExtensionAddon](https://cloud.tencent.com/document/api/457/31866#ExtensionAddon))
 
 ### 第 24 次发布
 

@@ -43,6 +43,31 @@ func NewClient(credential *common.Credential, region string, clientProfile *prof
 }
 
 
+func NewArchiveKeyRequest() (request *ArchiveKeyRequest) {
+    request = &ArchiveKeyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("kms", APIVersion, "ArchiveKey")
+    return
+}
+
+func NewArchiveKeyResponse() (response *ArchiveKeyResponse) {
+    response = &ArchiveKeyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 对密钥进行归档，被归档的密钥只能用于解密，不能加密
+func (c *Client) ArchiveKey(request *ArchiveKeyRequest) (response *ArchiveKeyResponse, err error) {
+    if request == nil {
+        request = NewArchiveKeyRequest()
+    }
+    response = NewArchiveKeyResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewAsymmetricRsaDecryptRequest() (request *AsymmetricRsaDecryptRequest) {
     request = &AsymmetricRsaDecryptRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -114,6 +139,31 @@ func (c *Client) BindCloudResource(request *BindCloudResourceRequest) (response 
         request = NewBindCloudResourceRequest()
     }
     response = NewBindCloudResourceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCancelKeyArchiveRequest() (request *CancelKeyArchiveRequest) {
+    request = &CancelKeyArchiveRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("kms", APIVersion, "CancelKeyArchive")
+    return
+}
+
+func NewCancelKeyArchiveResponse() (response *CancelKeyArchiveResponse) {
+    response = &CancelKeyArchiveResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 取消密钥归档，取消后密钥的状态变为Enabled。
+func (c *Client) CancelKeyArchive(request *CancelKeyArchiveRequest) (response *CancelKeyArchiveResponse, err error) {
+    if request == nil {
+        request = NewCancelKeyArchiveRequest()
+    }
+    response = NewCancelKeyArchiveResponse()
     err = c.Send(request, response)
     return
 }

@@ -463,6 +463,69 @@ type Cache struct {
 	// 高级缓存过期时间配置（功能灰度中，尚未全量）
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AdvancedCache *AdvancedCache `json:"AdvancedCache,omitempty" name:"AdvancedCache"`
+
+	// 高级路径缓存配置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RuleCache []*RuleCache `json:"RuleCache,omitempty" name:"RuleCache" list`
+}
+
+type CacheConfigCache struct {
+
+	// 缓存配置开关
+	// on：开启
+	// off：关闭
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Switch *string `json:"Switch,omitempty" name:"Switch"`
+
+	// 缓存过期时间设置
+	// 单位为秒，最大可设置为 365 天
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CacheTime *int64 `json:"CacheTime,omitempty" name:"CacheTime"`
+
+	// 高级缓存过期配置，开启时会对比源站返回的 max-age 值与 CacheRules 中设置的缓存过期时间，取最小值在节点进行缓存
+	// on：开启
+	// off：关闭
+	// 默认为关闭状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CompareMaxAge *string `json:"CompareMaxAge,omitempty" name:"CompareMaxAge"`
+
+	// 强制缓存
+	// on：开启
+	// off：关闭
+	// 默认为关闭状态，开启后，源站返回的 no-store、no-cache 资源，也将按照 CacheRules 规则进行缓存
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IgnoreCacheControl *string `json:"IgnoreCacheControl,omitempty" name:"IgnoreCacheControl"`
+
+	// 忽略源站的 Set-Cookie 头部
+	// on：开启
+	// off：关闭
+	// 默认为关闭状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IgnoreSetCookie *string `json:"IgnoreSetCookie,omitempty" name:"IgnoreSetCookie"`
+}
+
+type CacheConfigFollowOrigin struct {
+
+	// 遵循源站配置开关
+	// on：开启
+	// off：关闭
+	Switch *string `json:"Switch,omitempty" name:"Switch"`
+}
+
+type CacheConfigNoCache struct {
+
+	// 不缓存配置开关
+	// on：开启
+	// off：关闭
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Switch *string `json:"Switch,omitempty" name:"Switch"`
+
+	// 总是回源站校验
+	// on：开启
+	// off：关闭
+	// 默认为关闭状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Revalidate *string `json:"Revalidate,omitempty" name:"Revalidate"`
 }
 
 type CacheKey struct {
@@ -495,6 +558,10 @@ type CacheKey struct {
 	// CacheKey中包含请求协议
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Scheme *SchemeKey `json:"Scheme,omitempty" name:"Scheme"`
+
+	// 分路径缓存键配置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	KeyRules []*KeyRule `json:"KeyRules,omitempty" name:"KeyRules" list`
 }
 
 type CacheOptResult struct {
@@ -3029,6 +3096,43 @@ type Ipv6 struct {
 	Switch *string `json:"Switch,omitempty" name:"Switch"`
 }
 
+type KeyRule struct {
+
+	// CacheType 对应类型下的匹配内容：
+	// file 时填充后缀名，如 jpg、txt
+	// directory 时填充路径，如 /xxx/test
+	// path 时填充绝对路径，如 /xxx/test.html
+	// index 时填充 /
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RulePaths []*string `json:"RulePaths,omitempty" name:"RulePaths" list`
+
+	// 规则类型：
+	// file：指定文件后缀生效
+	// directory：指定路径生效
+	// path：指定绝对路径生效
+	// index：首页
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RuleType *string `json:"RuleType,omitempty" name:"RuleType"`
+
+	// 是否开启全路径缓存
+	// on：开启全路径缓存（即关闭参数过滤）
+	// off：关闭全路径缓存（即开启参数过滤）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FullUrlCache *string `json:"FullUrlCache,omitempty" name:"FullUrlCache"`
+
+	// 是否忽略大小写缓存
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IgnoreCase *string `json:"IgnoreCase,omitempty" name:"IgnoreCase"`
+
+	// CacheKey中包含请求参数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	QueryString *RuleQueryString `json:"QueryString,omitempty" name:"QueryString"`
+
+	// 路径缓存键标签，传 user
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RuleTag *string `json:"RuleTag,omitempty" name:"RuleTag"`
+}
+
 type ListClsLogTopicsRequest struct {
 	*tchttp.BaseRequest
 
@@ -4014,6 +4118,61 @@ type Revalidate struct {
 	// 只在特定请求路径回源站校验
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Path *string `json:"Path,omitempty" name:"Path"`
+}
+
+type RuleCache struct {
+
+	// CacheType 对应类型下的匹配内容：
+	// all 时填充 *
+	// file 时填充后缀名，如 jpg、txt
+	// directory 时填充路径，如 /xxx/test
+	// path 时填充绝对路径，如 /xxx/test.html
+	// index 时填充 /
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RulePaths []*string `json:"RulePaths,omitempty" name:"RulePaths" list`
+
+	// 规则类型：
+	// all：所有文件生效
+	// file：指定文件后缀生效
+	// directory：指定路径生效
+	// path：指定绝对路径生效
+	// index：首页
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RuleType *string `json:"RuleType,omitempty" name:"RuleType"`
+
+	// 缓存配置。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CacheConfig *RuleCacheConfig `json:"CacheConfig,omitempty" name:"CacheConfig"`
+}
+
+type RuleCacheConfig struct {
+
+	// 缓存配置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Cache *CacheConfigCache `json:"Cache,omitempty" name:"Cache"`
+
+	// 不缓存配置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NoCache *CacheConfigNoCache `json:"NoCache,omitempty" name:"NoCache"`
+
+	// 遵循源站配置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FollowOrigin *CacheConfigFollowOrigin `json:"FollowOrigin,omitempty" name:"FollowOrigin"`
+}
+
+type RuleQueryString struct {
+
+	// on | off CacheKey是否由QueryString组成
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Switch *string `json:"Switch,omitempty" name:"Switch"`
+
+	// includeCustom 包含部分url参数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Action *string `json:"Action,omitempty" name:"Action"`
+
+	// 使用/排除的url参数数组，';' 分割
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Value *string `json:"Value,omitempty" name:"Value"`
 }
 
 type ScdnTopData struct {
