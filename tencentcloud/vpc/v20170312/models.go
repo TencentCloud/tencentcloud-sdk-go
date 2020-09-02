@@ -201,6 +201,17 @@ type Address struct {
 
 	// 弹性公网IP的运营商信息，当前可能返回值包括"CMCC","CTCC","CUCC","BGP"
 	InternetServiceProvider *string `json:"InternetServiceProvider,omitempty" name:"InternetServiceProvider"`
+
+	// 是否本地带宽EIP
+	LocalBgp *bool `json:"LocalBgp,omitempty" name:"LocalBgp"`
+
+	// 弹性公网IP的带宽值。注意，非带宽上移账户的弹性公网IP没有带宽属性，值为空。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Bandwidth *uint64 `json:"Bandwidth,omitempty" name:"Bandwidth"`
+
+	// 弹性公网IP的网络计费模式。注意，非带宽上移账户的弹性公网IP没有网络计费模式属性，值为空。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InternetChargeType *string `json:"InternetChargeType,omitempty" name:"InternetChargeType"`
 }
 
 type AddressChargePrepaid struct {

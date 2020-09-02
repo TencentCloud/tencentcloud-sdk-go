@@ -1600,7 +1600,7 @@ type ExpandShardConfig struct {
 type FlushBinlogRequest struct {
 	*tchttp.BaseRequest
 
-	// 无
+	// 实例ID
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 }
 
