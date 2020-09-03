@@ -261,19 +261,19 @@ func (r *CreateInstanceAccountResponse) FromJsonString(s string) error {
 type CreateInstancesRequest struct {
 	*tchttp.BaseRequest
 
-	// 实例所属的可用区ID
+	// 实例所属的可用区ID，可参考[地域和可用区](https://cloud.tencent.com/document/product/239/4106)  。
 	ZoneId *uint64 `json:"ZoneId,omitempty" name:"ZoneId"`
 
-	// 实例类型：2 – Redis2.8内存版（标准架构），3 – Redis3.2内存版（标准架构），4 – CKV 3.2内存版(标准架构)，6 – Redis4.0内存版（标准架构），7 – Redis4.0内存版（集群架构），8 – Redis5.0内存版（标准架构），9 – Redis5.0内存版（集群架构），
+	// 实例类型：2 – Redis2.8内存版（标准架构），3 – CKV 3.2内存版(标准架构)，4 – CKV 3.2内存版(集群架构)，6 – Redis4.0内存版（标准架构），7 – Redis4.0内存版（集群架构），8 – Redis5.0内存版（标准架构），9 – Redis5.0内存版（集群架构）。
 	TypeId *uint64 `json:"TypeId,omitempty" name:"TypeId"`
 
-	// 实例容量，单位MB， 取值大小以 查询售卖规格接口返回的规格为准
+	// 实例容量，单位MB， 数值需为1024的整数倍，取值大小以 [查询产品售卖规格](https://cloud.tencent.com/document/api/239/30600) 返回的规格为准。
 	MemSize *uint64 `json:"MemSize,omitempty" name:"MemSize"`
 
-	// 实例数量，单次购买实例数量以 查询售卖规格接口返回的规格为准
+	// 实例数量，单次购买实例数量以 [查询产品售卖规格](https://cloud.tencent.com/document/api/239/30600) 返回的规格为准。
 	GoodsNum *uint64 `json:"GoodsNum,omitempty" name:"GoodsNum"`
 
-	// 购买时长，在创建包年包月实例的时候需要填写，按量计费实例填1即可，单位：月，取值范围 [1,2,3,4,5,6,7,8,9,10,11,12,24,36]
+	// 购买时长，在创建包年包月实例的时候需要填写，按量计费实例填1即可，单位：月，取值范围 [1,2,3,4,5,6,7,8,9,10,11,12,24,36]。
 	Period *uint64 `json:"Period,omitempty" name:"Period"`
 
 	// 付费方式:0-按量计费，1-包年包月。
@@ -282,34 +282,34 @@ type CreateInstancesRequest struct {
 	// 实例密码，8-30个字符，至少包含小写字母、大写字母、数字和字符 ()`~!@#$%^&*-+=_|{}[]:;<>,.?/ 中的2种，不能以"/"开头。
 	Password *string `json:"Password,omitempty" name:"Password"`
 
-	// 私有网络ID，如果不传则默认选择基础网络，请使用私有网络列表查询，如：vpc-sad23jfdfk
+	// 私有网络ID，如果不传则默认选择基础网络，请使用私有网络列表查询，如：vpc-sad23jfdfk。
 	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
 
-	// 基础网络下， subnetId无效； vpc子网下，取值以查询子网列表，如：subnet-fdj24n34j2
+	// 基础网络下， subnetId无效； vpc子网下，取值以查询子网列表，如：subnet-fdj24n34j2。
 	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
 
-	// 项目id，取值以用户账户>用户账户相关接口查询>项目列表返回的projectId为准
+	// 项目id，取值以用户账户>用户账户相关接口查询>项目列表返回的projectId为准。
 	ProjectId *int64 `json:"ProjectId,omitempty" name:"ProjectId"`
 
-	// 自动续费标识。0 - 默认状态（手动续费）；1 - 自动续费；2 - 明确不自动续费
+	// 自动续费标识。0 - 默认状态（手动续费）；1 - 自动续费；2 - 明确不自动续费。
 	AutoRenew *uint64 `json:"AutoRenew,omitempty" name:"AutoRenew"`
 
-	// 安全组id数组
+	// 安全组id数组。
 	SecurityGroupIdList []*string `json:"SecurityGroupIdList,omitempty" name:"SecurityGroupIdList" list`
 
-	// 用户自定义的端口 不填则默认为6379，范围[1024,65535]
+	// 用户自定义的端口 不填则默认为6379，范围[1024,65535]。
 	VPort *uint64 `json:"VPort,omitempty" name:"VPort"`
 
-	// 实例分片数量，购买标准版实例不需要填写，集群版分片数量范围[3,5,8,12,16,24,32,64,96,128]
+	// 实例分片数量，购买标准版实例不需要填写，集群版分片数量范围[3,5,8,12,16,24,32,64,96,128]。
 	RedisShardNum *int64 `json:"RedisShardNum,omitempty" name:"RedisShardNum"`
 
 	// 实例副本数量，Redis 2.8标准版、CKV标准版只支持1副本，4.0、5.0标准版和集群版支持1-5个副本。
 	RedisReplicasNum *int64 `json:"RedisReplicasNum,omitempty" name:"RedisReplicasNum"`
 
-	// 是否支持副本只读，Redis 2.8标准版、CKV标准版不支持副本只读，开启副本只读，实例将自动读写分离，写请求路由到主节点，读请求路由到副本节点，如需开启副本只读建议副本数>=2.
+	// 是否支持副本只读，Redis 2.8标准版、CKV标准版不支持副本只读，开启副本只读，实例将自动读写分离，写请求路由到主节点，读请求路由到副本节点，如需开启副本只读建议副本数>=2。
 	ReplicasReadonly *bool `json:"ReplicasReadonly,omitempty" name:"ReplicasReadonly"`
 
-	// 实例名称，长度小于60的中文/英文/数字/"-"/"_"
+	// 实例名称，长度小于60的中文/英文/数字/"-"/"_"。
 	InstanceName *string `json:"InstanceName,omitempty" name:"InstanceName"`
 
 	// 是否支持免密，true-免密实例，false-非免密实例，默认为非免密实例，仅VPC网络的实例支持免密码访问。
@@ -490,7 +490,7 @@ func (r *DescribeBackupUrlResponse) FromJsonString(s string) error {
 type DescribeDBSecurityGroupsRequest struct {
 	*tchttp.BaseRequest
 
-	// 数据库引擎名称：mariadb,cdb,cynosdb,dcdb,redis,mongodb 等。
+	// 数据库引擎名称，本接口取值：redis。
 	Product *string `json:"Product,omitempty" name:"Product"`
 
 	// 实例ID，格式如：cdb-c1nl9rpv或者cdbro-c1nl9rpv，与云数据库控制台页面中显示的实例ID相同。
@@ -734,7 +734,7 @@ type DescribeInstanceDTSInstanceInfo struct {
 type DescribeInstanceDealDetailRequest struct {
 	*tchttp.BaseRequest
 
-	// 订单ID数组
+	// 订单交易ID数组，即 [CreateInstances](https://cloud.tencent.com/document/api/239/20026) 的输出参数DealId。
 	DealIds []*string `json:"DealIds,omitempty" name:"DealIds" list`
 }
 
@@ -2328,7 +2328,7 @@ type InstanceSet struct {
 	// 该字段已废弃
 	SizeUsed *float64 `json:"SizeUsed,omitempty" name:"SizeUsed"`
 
-	// 实例类型，1：Redis2.8集群版；2：Redis2.8主从版；3：CKV主从版（Redis3.2）；4：CKV集群版（Redis3.2）；5：Redis2.8单机版；6：Redis4.0主从版；7：Redis4.0集群版；
+	// 实例类型：1 – Redis2.8内存版（集群架构），2 – Redis2.8内存版（标准架构），3 – CKV 3.2内存版(标准架构)，4 – CKV 3.2内存版(集群架构)，5 – Redis2.8内存版（单机），6 – Redis4.0内存版（标准架构），7 – Redis4.0内存版（集群架构），8 – Redis5.0内存版（标准架构），9 – Redis5.0内存版（集群架构）
 	Type *int64 `json:"Type,omitempty" name:"Type"`
 
 	// 实例是否设置自动续费标识，1：设置自动续费；0：未设置自动续费
@@ -3448,7 +3448,7 @@ func (r *UpgradeInstanceResponse) FromJsonString(s string) error {
 type UpgradeInstanceVersionRequest struct {
 	*tchttp.BaseRequest
 
-	// 目标实例类型，同CreateInstances接口的Type，即实例要变更的目标类型
+	// 目标实例类型，同 [CreateInstances](https://cloud.tencent.com/document/api/239/20026) 的Type，即实例要变更的目标类型
 	TargetInstanceType *string `json:"TargetInstanceType,omitempty" name:"TargetInstanceType"`
 
 	// 切换模式：1-维护时间窗切换，2-立即切换

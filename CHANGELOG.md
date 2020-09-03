@@ -1,21 +1,32 @@
 # 本版本更新包含以下内容：
 
-## 私有网络(vpc) 版本：2017-03-12
+## 凭据管理系统(ssm) 版本：2019-09-23
 
-### 第 60 次发布
+### 第 2 次发布
 
-发布时间：2020-09-02 08:16:44
+发布时间：2020-09-03 08:01:05
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-修改数据结构：
+修改接口：
 
-* [Address](https://cloud.tencent.com/document/api/215/15824#Address)
+* [CreateSecret](https://cloud.tencent.com/document/api/1140/40529)
 
-	* 新增成员：LocalBgp, Bandwidth, InternetChargeType
+	* 新增入参：Tags
 
+	* 新增出参：TagCode, TagMsg
+
+* [ListSecrets](https://cloud.tencent.com/document/api/1140/40519)
+
+	* 新增入参：TagFilters
+
+
+新增数据结构：
+
+* [Tag](https://cloud.tencent.com/document/api/1140/40530#Tag)
+* [TagFilter](https://cloud.tencent.com/document/api/1140/40530#TagFilter)
 
 
 
@@ -24608,6 +24619,32 @@
 
 
 ## 凭据管理系统(ssm) 版本：2019-09-23
+
+### 第 2 次发布
+
+发布时间：2020-09-03 08:01:05
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateSecret](https://cloud.tencent.com/document/api/1140/40529)
+
+	* 新增入参：Tags
+
+	* 新增出参：TagCode, TagMsg
+
+* [ListSecrets](https://cloud.tencent.com/document/api/1140/40519)
+
+	* 新增入参：TagFilters
+
+
+新增数据结构：
+
+* [[Tag](https://cloud.tencent.com/document/api/1140/40530#Tag)](https://cloud.tencent.com/document/api/1140/40530#[Tag](https://cloud.tencent.com/document/api/1140/40530#Tag))
+* [[TagFilter](https://cloud.tencent.com/document/api/1140/40530#TagFilter)](https://cloud.tencent.com/document/api/1140/40530#[TagFilter](https://cloud.tencent.com/document/api/1140/40530#TagFilter))
 
 ### 第 1 次发布
 

@@ -40,6 +40,9 @@ type CreateSecretRequest struct {
 
 	// 文本类型凭据信息明文（不需要进行base64编码）。SecretBinary 和 SecretString 必须且只能设置一个，，最大支持4096字节。
 	SecretString *string `json:"SecretString,omitempty" name:"SecretString"`
+
+	// 标签列表
+	Tags []*Tag `json:"Tags,omitempty" name:"Tags" list`
 }
 
 func (r *CreateSecretRequest) ToJsonString() string {
@@ -60,6 +63,14 @@ type CreateSecretResponse struct {
 
 		// 新创建的凭据版本。
 		VersionId *string `json:"VersionId,omitempty" name:"VersionId"`
+
+		// 标签操作的返回码. 0: 成功；1: 内部错误；2: 业务处理错误
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		TagCode *uint64 `json:"TagCode,omitempty" name:"TagCode"`
+
+		// 标签操作的返回信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		TagMsg *string `json:"TagMsg,omitempty" name:"TagMsg"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -468,6 +479,9 @@ type ListSecretsRequest struct {
 
 	// 根据凭据名称进行过滤，为空表示不过滤。
 	SearchSecretName *string `json:"SearchSecretName,omitempty" name:"SearchSecretName"`
+
+	// 标签过滤条件
+	TagFilters []*TagFilter `json:"TagFilters,omitempty" name:"TagFilters" list`
 }
 
 func (r *ListSecretsRequest) ToJsonString() string {
@@ -614,6 +628,24 @@ type SecretMetadata struct {
 
 	// 用于加密凭据的KMS CMK类型，DEFAULT 表示SecretsManager 创建的默认密钥， CUSTOMER 表示用户指定的密钥。
 	KmsKeyType *string `json:"KmsKeyType,omitempty" name:"KmsKeyType"`
+}
+
+type Tag struct {
+
+	// 标签键
+	TagKey *string `json:"TagKey,omitempty" name:"TagKey"`
+
+	// 标签值
+	TagValue *string `json:"TagValue,omitempty" name:"TagValue"`
+}
+
+type TagFilter struct {
+
+	// 标签键
+	TagKey *string `json:"TagKey,omitempty" name:"TagKey"`
+
+	// 标签值
+	TagValue []*string `json:"TagValue,omitempty" name:"TagValue" list`
 }
 
 type UpdateDescriptionRequest struct {

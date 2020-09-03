@@ -158,7 +158,7 @@ func NewCreateInstancesResponse() (response *CreateInstancesResponse) {
     return
 }
 
-// 创建redis实例
+// 本接口(CreateInstances)用于创建redis实例。
 func (c *Client) CreateInstances(request *CreateInstancesRequest) (response *CreateInstancesResponse, err error) {
     if request == nil {
         request = NewCreateInstancesRequest()
@@ -1233,7 +1233,7 @@ func NewModifyInstanceParamsResponse() (response *ModifyInstanceParamsResponse) 
     return
 }
 
-// 修改实例参数
+// 本接口(ModifyInstanceParams)用于修改实例参数。
 func (c *Client) ModifyInstanceParams(request *ModifyInstanceParamsRequest) (response *ModifyInstanceParamsResponse, err error) {
     if request == nil {
         request = NewModifyInstanceParamsRequest()

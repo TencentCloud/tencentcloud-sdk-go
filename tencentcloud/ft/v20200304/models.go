@@ -215,10 +215,10 @@ type GenderInfo struct {
 
 type GradientInfo struct {
 
-	// 图片的展示时长，即单张图片静止不变的时间。GIF默认每张图片0.7s，视频默认每张图片2s
+	// 图片的展示时长，即单张图片静止不变的时间。GIF默认每张图片0.7s，视频默认每张图片0.5s。最大取值1s。
 	Tempo *float64 `json:"Tempo,omitempty" name:"Tempo"`
 
-	// 人像渐变的最长时间，即单张图片使用渐变特效的时间。 GIF默认值为0.5s，视频默值认为1s
+	// 人像渐变的最长时间，即单张图片使用渐变特效的时间。 GIF默认值为0.5s，视频默值认为1s。最大取值1s。
 	MorphTime *float64 `json:"MorphTime,omitempty" name:"MorphTime"`
 }
 
@@ -243,7 +243,7 @@ type MorphFaceRequest struct {
 	// 人脸渐变参数。可调整每张图片的展示时长、人像渐变的最长时间
 	GradientInfos []*GradientInfo `json:"GradientInfos,omitempty" name:"GradientInfos" list`
 
-	// 视频帧率，取值[1,60]。默认10
+	// 视频帧率，取值[1,25]。默认10
 	Fps *int64 `json:"Fps,omitempty" name:"Fps"`
 
 	// 视频类型，取值[0,2]，其中0为MP4，1为GIF，2为MOV。目前仅支持MP4格式，默认为MP4格式
