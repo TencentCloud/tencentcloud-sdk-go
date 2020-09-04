@@ -582,6 +582,9 @@ type CreateMigrationRequest struct {
 
 	// 迁移DB对象 ，离线迁移不使用（SourceType=4或SourceType=5）。
 	MigrateDBSet []*MigrateDB `json:"MigrateDBSet,omitempty" name:"MigrateDBSet" list`
+
+	// 按照ReNameRestoreDatabase中的库进行恢复，并重命名，不填则按照默认方式命名恢复的库，且恢复所有的库。SourceType=5的情况下有效。
+	RenameRestore []*RenameRestoreDatabase `json:"RenameRestore,omitempty" name:"RenameRestore" list`
 }
 
 func (r *CreateMigrationRequest) ToJsonString() string {
@@ -1322,6 +1325,9 @@ type DescribeBackupsRequest struct {
 
 	// 按照备份方式筛选，0-后台自动定时备份，1-用户手动临时备份，不填则不筛选此项
 	BackupWay *int64 `json:"BackupWay,omitempty" name:"BackupWay"`
+
+	// 按照备份ID筛选，不填则不筛选此项
+	BackupId *uint64 `json:"BackupId,omitempty" name:"BackupId"`
 }
 
 func (r *DescribeBackupsRequest) ToJsonString() string {
@@ -3514,6 +3520,15 @@ func (r *RemoveBackupsResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type RenameRestoreDatabase struct {
+
+	// 库的名字，如果oldName不存在则返回失败。
+	OldName *string `json:"OldName,omitempty" name:"OldName"`
+
+	// 库的新名字，如果不填则按照系统默认方式命名恢复的库
+	NewName *string `json:"NewName,omitempty" name:"NewName"`
+}
+
 type RenewDBInstanceRequest struct {
 	*tchttp.BaseRequest
 
@@ -3679,6 +3694,12 @@ type RestoreInstanceRequest struct {
 
 	// 备份文件ID，该ID可以通过DescribeBackups接口返回数据中的Id字段获得
 	BackupId *int64 `json:"BackupId,omitempty" name:"BackupId"`
+
+	// 备份恢复到的同一个APPID下的实例ID，不填则恢复到原实例ID
+	TargetInstanceId *string `json:"TargetInstanceId,omitempty" name:"TargetInstanceId"`
+
+	// 按照ReNameRestoreDatabase中的库进行恢复，并重命名，不填则按照默认方式命名恢复的库，且恢复所有的库。
+	RenameRestore []*RenameRestoreDatabase `json:"RenameRestore,omitempty" name:"RenameRestore" list`
 }
 
 func (r *RestoreInstanceRequest) ToJsonString() string {
@@ -3725,6 +3746,12 @@ type RollbackInstanceRequest struct {
 
 	// 回档目标时间点
 	Time *string `json:"Time,omitempty" name:"Time"`
+
+	// 备份恢复到的同一个APPID下的实例ID，不填则恢复到原实例ID
+	TargetInstanceId *string `json:"TargetInstanceId,omitempty" name:"TargetInstanceId"`
+
+	// 按照ReNameRestoreDatabase中的库进行重命名，仅在Type = 1重命名回档方式有效；不填则按照默认方式命名库，DBs参数确定要恢复的库
+	RenameRestore []*RenameRestoreDatabase `json:"RenameRestore,omitempty" name:"RenameRestore" list`
 }
 
 func (r *RollbackInstanceRequest) ToJsonString() string {

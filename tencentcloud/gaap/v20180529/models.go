@@ -109,6 +109,9 @@ type BandwidthPriceGradient struct {
 
 	// 在对应带宽范围内的单宽单价，单位：元/Mbps/天。
 	BandwidthUnitPrice *float64 `json:"BandwidthUnitPrice,omitempty" name:"BandwidthUnitPrice"`
+
+	// 带宽折扣价，单位：元/Mbps/天。
+	DiscountBandwidthUnitPrice *float64 `json:"DiscountBandwidthUnitPrice,omitempty" name:"DiscountBandwidthUnitPrice"`
 }
 
 type BindListenerRealServersRequest struct {
@@ -2529,11 +2532,20 @@ type DescribeRealServerStatisticsRequest struct {
 	// 监听器ID
 	ListenerId *string `json:"ListenerId,omitempty" name:"ListenerId"`
 
+	// L7层规则ID
+	RuleId *string `json:"RuleId,omitempty" name:"RuleId"`
+
 	// 统计时长，单位：小时。仅支持最近1,3,6,12,24小时的统计查询
 	WithinTime *uint64 `json:"WithinTime,omitempty" name:"WithinTime"`
 
-	// 规则ID
-	RuleId *string `json:"RuleId,omitempty" name:"RuleId"`
+	// 统计开始时间(2020-08-19 00:00:00)
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 统计结束时间(2020-08-19 23:59:59)
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 统计的数据粒度，单位：秒，仅支持1分钟-60和5分钟-300粒度
+	Granularity *uint64 `json:"Granularity,omitempty" name:"Granularity"`
 }
 
 func (r *DescribeRealServerStatisticsRequest) ToJsonString() string {
@@ -2549,8 +2561,11 @@ type DescribeRealServerStatisticsResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 源站状态统计数据
+		// 指定监听器的源站状态统计数据
 		StatisticsData []*StatisticsDataInfo `json:"StatisticsData,omitempty" name:"StatisticsData" list`
+
+		// 多个源站状态统计数据
+		RsStatisticsData []*MetricStatisticsInfo `json:"RsStatisticsData,omitempty" name:"RsStatisticsData" list`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -4425,6 +4440,10 @@ type ProxyGroupInfo struct {
 	// 创建时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreateTime *uint64 `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 通道组是否包含微软通道
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProxyType *uint64 `json:"ProxyType,omitempty" name:"ProxyType"`
 }
 
 type ProxyIdDict struct {
@@ -4531,6 +4550,10 @@ type ProxyInfo struct {
 	// 配置变更时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ModifyConfigTime *uint64 `json:"ModifyConfigTime,omitempty" name:"ModifyConfigTime"`
+
+	// 通道类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProxyType *uint64 `json:"ProxyType,omitempty" name:"ProxyType"`
 }
 
 type ProxySimpleInfo struct {

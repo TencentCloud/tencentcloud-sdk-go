@@ -180,6 +180,16 @@ type BizLicenseOCRResponse struct {
 		// 成立日期
 		SetDate *string `json:"SetDate,omitempty" name:"SetDate"`
 
+		// Code 告警码列表和释义：
+	// -20001 非营业执照
+	// 注：告警码可以同时存在多个
+		RecognizeWarnCode []*int64 `json:"RecognizeWarnCode,omitempty" name:"RecognizeWarnCode" list`
+
+		// 告警码说明：
+	// OCR_WARNING_TPYE_NOT_MATCH 非营业执照
+	// 注：告警信息可以同时存在多个
+		RecognizeWarnMsg []*string `json:"RecognizeWarnMsg,omitempty" name:"RecognizeWarnMsg" list`
+
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
@@ -1950,6 +1960,9 @@ type LicensePlateOCRResponse struct {
 
 		// 置信度，0 - 100 之间。
 		Confidence *int64 `json:"Confidence,omitempty" name:"Confidence"`
+
+		// 文本行在原图片中的像素坐标框。
+		Rect *Rect `json:"Rect,omitempty" name:"Rect"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`

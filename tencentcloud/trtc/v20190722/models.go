@@ -193,6 +193,12 @@ type DescribeCallDetailRequest struct {
 	// bigvWidth：上/下行分辨率宽；
 	// bigvHeight：上/下行分辨率高
 	DataType []*string `json:"DataType,omitempty" name:"DataType" list`
+
+	// 只查询用户列表时，设置分页index，从0开始（PageNumber和PageSize 其中一个不填均默认返回10条数据）
+	PageNumber *string `json:"PageNumber,omitempty" name:"PageNumber"`
+
+	// 只查询用户列表时，设置分页大小（PageNumber和PageSize 其中一个不填均默认返回6条数据,最大不超过100）
+	PageSize *string `json:"PageSize,omitempty" name:"PageSize"`
 }
 
 func (r *DescribeCallDetailRequest) ToJsonString() string {

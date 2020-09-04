@@ -905,6 +905,49 @@ func (r *CreateScdnLogTaskResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type CreateVerifyRecordRequest struct {
+	*tchttp.BaseRequest
+
+	// 要取回的域名
+	Domain *string `json:"Domain,omitempty" name:"Domain"`
+}
+
+func (r *CreateVerifyRecordRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateVerifyRecordRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateVerifyRecordResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 子解析
+		SubDomain *string `json:"SubDomain,omitempty" name:"SubDomain"`
+
+		// 解析值
+		Record *string `json:"Record,omitempty" name:"Record"`
+
+		// 解析类型
+		RecordType *string `json:"RecordType,omitempty" name:"RecordType"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateVerifyRecordResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateVerifyRecordResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DeleteCdnDomainRequest struct {
 	*tchttp.BaseRequest
 
@@ -4914,6 +4957,43 @@ type UserAgentFilterRule struct {
 	// 黑名单或白名单，blacklist或whitelist
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FilterType *string `json:"FilterType,omitempty" name:"FilterType"`
+}
+
+type VerifyDomainRecordRequest struct {
+	*tchttp.BaseRequest
+
+	// 域名
+	Domain *string `json:"Domain,omitempty" name:"Domain"`
+}
+
+func (r *VerifyDomainRecordRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *VerifyDomainRecordRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type VerifyDomainRecordResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 是否验证成功
+		Result *bool `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *VerifyDomainRecordResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *VerifyDomainRecordResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
 }
 
 type VideoSeek struct {

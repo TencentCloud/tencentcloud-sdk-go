@@ -7292,7 +7292,7 @@ type VideoTemplateInfo struct {
 	// 目前 H.265 编码必须指定分辨率，并且需要在 640*480 以内。av1 编码容器目前只支持 mp4 。
 	Codec *string `json:"Codec,omitempty" name:"Codec"`
 
-	// 视频帧率，取值范围：[0, 60]，单位：Hz。
+	// 视频帧率，取值范围：[0, 100]，单位：Hz。
 	// 当取值为 0，表示帧率和原始视频保持一致。
 	Fps *uint64 `json:"Fps,omitempty" name:"Fps"`
 
@@ -7342,7 +7342,7 @@ type VideoTemplateInfoForUpdate struct {
 	// 目前 H.265 编码必须指定分辨率，并且需要在 640*480 以内。av1 编码容器目前只支持 mp4 。
 	Codec *string `json:"Codec,omitempty" name:"Codec"`
 
-	// 视频帧率，取值范围：[0, 60]，单位：Hz。
+	// 视频帧率，取值范围：[0, 100]，单位：Hz。
 	// 当取值为 0，表示帧率和原始视频保持一致。
 	Fps *uint64 `json:"Fps,omitempty" name:"Fps"`
 

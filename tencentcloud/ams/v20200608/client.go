@@ -106,10 +106,11 @@ func NewCreateBizConfigResponse() (response *CreateBizConfigResponse) {
     return
 }
 
-// 创建业务配置，1个账号最多可以创建20个配置。在创建业务配置之前，你需要以下步骤：
-// 1. 开通COS存储捅功能，新建存储桶，cms_segments
-// 2. 授权天御对 cms_segments存储桶对读写权限。
-// 这个存储桶用来存储 视频转换过程中生成对音频和图片。
+// 创建业务配置，1个账号最多可以创建20个配置，可定义音频审核的场景，如色情、谩骂等，
+// 
+// 在创建业务配置之前，你需要以下步骤：
+// 1. 开通COS存储捅功能，新建存储桶，例如 cms_segments，用来存储 视频转换过程中生成对音频和图片。
+// 2. 然后在COS控制台，授权天御内容安全主账号 对 cms_segments 存储桶对读写权限。具体授权操作，参考https://cloud.tencent.com/document/product/436/38648
 func (c *Client) CreateBizConfig(request *CreateBizConfigRequest) (response *CreateBizConfigResponse, err error) {
     if request == nil {
         request = NewCreateBizConfigRequest()

@@ -424,7 +424,7 @@ type DescribeCaptchaResultResponse struct {
 	// 8	verify timeout	验证码签名超时
 	// 9	Sequnce repeat	验证码签名重放
 	// 10	Sequnce invalid	验证码签名序列
-	// 11	Cookie invalid	验证码cooking信息不合法
+	// 11	Cookie invalid	验证码cookie信息不合法
 	// 12	sig len error	签名长度错误
 	// 13	verify ip no match	ip不匹配
 	// 15	decrypt fail	验证码签名解密失败

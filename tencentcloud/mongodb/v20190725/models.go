@@ -340,6 +340,43 @@ func (r *CreateDBInstanceResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type CurrentOp struct {
+
+	// 操作序号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OpId *int64 `json:"OpId,omitempty" name:"OpId"`
+
+	// 操作所在的命名空间，形式如db.collection
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Ns *string `json:"Ns,omitempty" name:"Ns"`
+
+	// 操作执行语句
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Query *string `json:"Query,omitempty" name:"Query"`
+
+	// 操作类型，可能的取值：aggregate、count、delete、distinct、find、findAndModify、getMore、insert、mapReduce、update和command
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Op *string `json:"Op,omitempty" name:"Op"`
+
+	// 操作所在的分片名称
+	ReplicaSetName *string `json:"ReplicaSetName,omitempty" name:"ReplicaSetName"`
+
+	// 筛选条件，节点状态，可能的取值为：Primary、Secondary
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	State *string `json:"State,omitempty" name:"State"`
+
+	// 操作详细信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Operation *string `json:"Operation,omitempty" name:"Operation"`
+
+	// 操作所在的节点名称
+	NodeName *string `json:"NodeName,omitempty" name:"NodeName"`
+
+	// 操作已执行时间（ms）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MicrosecsRunning *uint64 `json:"MicrosecsRunning,omitempty" name:"MicrosecsRunning"`
+}
+
 type DBInstanceInfo struct {
 
 	// 实例ID
@@ -491,11 +528,88 @@ func (r *DescribeClientConnectionsResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeCurrentOpRequest struct {
+	*tchttp.BaseRequest
+
+	// 实例ID，格式如：cmgo-p8vnipr5。与云数据库控制台页面中显示的实例ID相同
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 筛选条件，操作所属的命名空间namespace，格式为db.collection
+	Ns *string `json:"Ns,omitempty" name:"Ns"`
+
+	// 筛选条件，操作已经执行的时间（单位：毫秒），结果将返回超过设置时间的操作，默认值为0，取值范围为[0, 3600000]
+	MillisecondRunning *uint64 `json:"MillisecondRunning,omitempty" name:"MillisecondRunning"`
+
+	// 筛选条件，操作类型，可能的取值：none，update，insert，query，command，getmore，remove和killcursors
+	Op *string `json:"Op,omitempty" name:"Op"`
+
+	// 筛选条件，分片名称
+	ReplicaSetName *string `json:"ReplicaSetName,omitempty" name:"ReplicaSetName"`
+
+	// 筛选条件，节点状态，可能的取值为：primary
+	// secondary
+	State *string `json:"State,omitempty" name:"State"`
+
+	// 单次请求返回的数量，默认值为100，取值范围为[0,100]
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 偏移量，默认值为0，取值范围为[0,10000]
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 返回结果集排序的字段，目前支持："MicrosecsRunning"/"microsecsrunning"，默认为升序排序
+	OrderBy *string `json:"OrderBy,omitempty" name:"OrderBy"`
+
+	// 返回结果集排序方式，可能的取值："ASC"/"asc"或"DESC"/"desc"
+	OrderByType *string `json:"OrderByType,omitempty" name:"OrderByType"`
+}
+
+func (r *DescribeCurrentOpRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeCurrentOpRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeCurrentOpResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 符合查询条件的操作总数
+		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 当前操作列表
+		CurrentOps []*CurrentOp `json:"CurrentOps,omitempty" name:"CurrentOps" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeCurrentOpResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeCurrentOpResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeDBBackupsRequest struct {
 	*tchttp.BaseRequest
 
 	// 实例ID，格式如：cmgo-p8vnipr5。与云数据库控制台页面中显示的实例ID相同
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 备份方式，当前支持：0-逻辑备份，1-物理备份，2-所有备份。默认为逻辑备份。
+	BackupMethod *int64 `json:"BackupMethod,omitempty" name:"BackupMethod"`
+
+	// 分页大小，最大值为100，不设置默认查询所有。
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 分页偏移量，最小值为0，默认值为0。
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
 }
 
 func (r *DescribeDBBackupsRequest) ToJsonString() string {
@@ -1150,6 +1264,43 @@ func (r *IsolateDBInstanceResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type KillOpsRequest struct {
+	*tchttp.BaseRequest
+
+	// 实例ID，格式如：cmgo-p8vnipr5。与云数据库控制台页面中显示的实例ID相同
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 待终止的操作
+	Operations []*Operation `json:"Operations,omitempty" name:"Operations" list`
+}
+
+func (r *KillOpsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *KillOpsRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type KillOpsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *KillOpsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *KillOpsResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type ModifyDBInstanceSpecRequest struct {
 	*tchttp.BaseRequest
 
@@ -1231,6 +1382,18 @@ func (r *OfflineIsolatedDBInstanceResponse) ToJsonString() string {
 
 func (r *OfflineIsolatedDBInstanceResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
+}
+
+type Operation struct {
+
+	// 操作所在的分片名
+	ReplicaSetName *string `json:"ReplicaSetName,omitempty" name:"ReplicaSetName"`
+
+	// 操作所在的节点名
+	NodeName *string `json:"NodeName,omitempty" name:"NodeName"`
+
+	// 操作序号
+	OpId *int64 `json:"OpId,omitempty" name:"OpId"`
 }
 
 type RenameInstanceRequest struct {

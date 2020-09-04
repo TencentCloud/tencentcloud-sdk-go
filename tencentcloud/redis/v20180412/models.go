@@ -1535,6 +1535,61 @@ func (r *DescribeProjectSecurityGroupsResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeProxySlowLogRequest struct {
+	*tchttp.BaseRequest
+
+	// 实例Id
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 开始时间
+	BeginTime *string `json:"BeginTime,omitempty" name:"BeginTime"`
+
+	// 结束时间
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 慢查询阈值（单位：毫秒）
+	MinQueryTime *int64 `json:"MinQueryTime,omitempty" name:"MinQueryTime"`
+
+	// 页面大小
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 偏移量，取Limit整数倍
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+}
+
+func (r *DescribeProxySlowLogRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeProxySlowLogRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeProxySlowLogResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 慢查询总数
+		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 慢查询详情
+		InstanceProxySlowLogDetail []*InstanceProxySlowlogDetail `json:"InstanceProxySlowLogDetail,omitempty" name:"InstanceProxySlowLogDetail" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeProxySlowLogResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeProxySlowLogResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeSlowLogRequest struct {
 	*tchttp.BaseRequest
 
@@ -2273,6 +2328,24 @@ type InstanceParamHistory struct {
 
 	// 修改时间
 	ModifyTime *string `json:"ModifyTime,omitempty" name:"ModifyTime"`
+}
+
+type InstanceProxySlowlogDetail struct {
+
+	// 慢查询耗时
+	Duration *int64 `json:"Duration,omitempty" name:"Duration"`
+
+	// 客户端地址
+	Client *string `json:"Client,omitempty" name:"Client"`
+
+	// 命令
+	Command *string `json:"Command,omitempty" name:"Command"`
+
+	// 详细命令行信息
+	CommandLine *string `json:"CommandLine,omitempty" name:"CommandLine"`
+
+	// 执行时间
+	ExecuteTime *string `json:"ExecuteTime,omitempty" name:"ExecuteTime"`
 }
 
 type InstanceSecurityGroupDetail struct {

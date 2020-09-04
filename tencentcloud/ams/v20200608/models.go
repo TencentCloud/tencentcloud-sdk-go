@@ -224,13 +224,13 @@ func (r *CreateAudioModerationTaskResponse) FromJsonString(s string) error {
 type CreateBizConfigRequest struct {
 	*tchttp.BaseRequest
 
-	// 业务ID
+	// 业务类型，仅限英文字母、数字和下划线（_）组成，长度不超过8位
 	BizType *string `json:"BizType,omitempty" name:"BizType"`
 
-	// 审核分类信息
+	// 配置信息，
 	MediaModeration *MediaModerationConfig `json:"MediaModeration,omitempty" name:"MediaModeration"`
 
-	// 页面名称
+	// 业务名称，用于标识业务场景，长度不超过32位
 	BizName *string `json:"BizName,omitempty" name:"BizName"`
 
 	// 审核内容，可选：Polity (政治); Porn (色情); Illegal(违法);Abuse (谩骂); Terror (暴恐); Ad (广告);

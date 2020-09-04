@@ -118,6 +118,31 @@ func (c *Client) CreateScdnLogTask(request *CreateScdnLogTaskRequest) (response 
     return
 }
 
+func NewCreateVerifyRecordRequest() (request *CreateVerifyRecordRequest) {
+    request = &CreateVerifyRecordRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cdn", APIVersion, "CreateVerifyRecord")
+    return
+}
+
+func NewCreateVerifyRecordResponse() (response *CreateVerifyRecordResponse) {
+    response = &CreateVerifyRecordResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 生成一条子域名解析，提示客户添加到域名解析上，用于泛域名及域名取回校验归属权
+func (c *Client) CreateVerifyRecord(request *CreateVerifyRecordRequest) (response *CreateVerifyRecordResponse, err error) {
+    if request == nil {
+        request = NewCreateVerifyRecordRequest()
+    }
+    response = NewCreateVerifyRecordResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteCdnDomainRequest() (request *DeleteCdnDomainRequest) {
     request = &DeleteCdnDomainRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1204,6 +1229,31 @@ func (c *Client) UpdatePayType(request *UpdatePayTypeRequest) (response *UpdateP
         request = NewUpdatePayTypeRequest()
     }
     response = NewUpdatePayTypeResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewVerifyDomainRecordRequest() (request *VerifyDomainRecordRequest) {
+    request = &VerifyDomainRecordRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cdn", APIVersion, "VerifyDomainRecord")
+    return
+}
+
+func NewVerifyDomainRecordResponse() (response *VerifyDomainRecordResponse) {
+    response = &VerifyDomainRecordResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 验证域名解析值
+func (c *Client) VerifyDomainRecord(request *VerifyDomainRecordRequest) (response *VerifyDomainRecordResponse, err error) {
+    if request == nil {
+        request = NewVerifyDomainRecordRequest()
+    }
+    response = NewVerifyDomainRecordResponse()
     err = c.Send(request, response)
     return
 }

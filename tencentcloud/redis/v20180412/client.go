@@ -793,6 +793,31 @@ func (c *Client) DescribeProjectSecurityGroups(request *DescribeProjectSecurityG
     return
 }
 
+func NewDescribeProxySlowLogRequest() (request *DescribeProxySlowLogRequest) {
+    request = &DescribeProxySlowLogRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("redis", APIVersion, "DescribeProxySlowLog")
+    return
+}
+
+func NewDescribeProxySlowLogResponse() (response *DescribeProxySlowLogResponse) {
+    response = &DescribeProxySlowLogResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（DescribeProxySlowLog）用于查询代理慢查询。
+func (c *Client) DescribeProxySlowLog(request *DescribeProxySlowLogRequest) (response *DescribeProxySlowLogResponse, err error) {
+    if request == nil {
+        request = NewDescribeProxySlowLogRequest()
+    }
+    response = NewDescribeProxySlowLogResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeSlowLogRequest() (request *DescribeSlowLogRequest) {
     request = &DescribeSlowLogRequest{
         BaseRequest: &tchttp.BaseRequest{},

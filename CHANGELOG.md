@@ -1,10 +1,73 @@
 # 本版本更新包含以下内容：
 
-## 凭据管理系统(ssm) 版本：2019-09-23
+## 内容分发网络(cdn) 版本：2018-06-06
 
-### 第 2 次发布
+### 第 34 次发布
 
-发布时间：2020-09-03 08:01:05
+发布时间：2020-09-04 08:02:36
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CreateVerifyRecord](https://cloud.tencent.com/document/api/228/48118)
+* [VerifyDomainRecord](https://cloud.tencent.com/document/api/228/48117)
+
+
+
+## 云数据库 CynosDB(cynosdb) 版本：2019-01-07
+
+### 第 1 次发布
+
+发布时间：2020-09-03 20:28:44
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [AddInstances](https://cloud.tencent.com/document/api/1003/48088)
+* [CreateClusters](https://cloud.tencent.com/document/api/1003/48087)
+* [DescribeAccounts](https://cloud.tencent.com/document/api/1003/48075)
+* [DescribeBackupConfig](https://cloud.tencent.com/document/api/1003/48094)
+* [DescribeBackupList](https://cloud.tencent.com/document/api/1003/48093)
+* [DescribeClusterDetail](https://cloud.tencent.com/document/api/1003/48086)
+* [DescribeClusters](https://cloud.tencent.com/document/api/1003/48085)
+* [DescribeInstanceSpecs](https://cloud.tencent.com/document/api/1003/48084)
+* [DescribeMaintainPeriod](https://cloud.tencent.com/document/api/1003/48083)
+* [DescribeRollbackTimeRange](https://cloud.tencent.com/document/api/1003/48092)
+* [DescribeRollbackTimeValidity](https://cloud.tencent.com/document/api/1003/48091)
+* [IsolateCluster](https://cloud.tencent.com/document/api/1003/48082)
+* [IsolateInstance](https://cloud.tencent.com/document/api/1003/48081)
+* [ModifyBackupConfig](https://cloud.tencent.com/document/api/1003/48090)
+* [ModifyDBInstanceSecurityGroups](https://cloud.tencent.com/document/api/1003/48096)
+* [ModifyMaintainPeriodConfig](https://cloud.tencent.com/document/api/1003/48080)
+* [OfflineCluster](https://cloud.tencent.com/document/api/1003/48079)
+* [SetRenewFlag](https://cloud.tencent.com/document/api/1003/48078)
+* [UpgradeInstance](https://cloud.tencent.com/document/api/1003/48077)
+
+新增数据结构：
+
+* [Account](https://cloud.tencent.com/document/api/1003/48097#Account)
+* [Addr](https://cloud.tencent.com/document/api/1003/48097#Addr)
+* [BackupFileInfo](https://cloud.tencent.com/document/api/1003/48097#BackupFileInfo)
+* [ClusterInstanceDetail](https://cloud.tencent.com/document/api/1003/48097#ClusterInstanceDetail)
+* [CynosdbCluster](https://cloud.tencent.com/document/api/1003/48097#CynosdbCluster)
+* [CynosdbClusterDetail](https://cloud.tencent.com/document/api/1003/48097#CynosdbClusterDetail)
+* [InstanceSpec](https://cloud.tencent.com/document/api/1003/48097#InstanceSpec)
+* [ObjectTask](https://cloud.tencent.com/document/api/1003/48097#ObjectTask)
+* [QueryFilter](https://cloud.tencent.com/document/api/1003/48097#QueryFilter)
+
+
+
+## 全球应用加速(gaap) 版本：2018-05-29
+
+### 第 13 次发布
+
+发布时间：2020-09-04 08:03:55
 
 本次发布包含了以下内容：
 
@@ -12,21 +75,180 @@
 
 修改接口：
 
-* [CreateSecret](https://cloud.tencent.com/document/api/1140/40529)
+* [DescribeRealServerStatistics](https://cloud.tencent.com/document/api/608/37018)
 
-	* 新增入参：Tags
+	* 新增入参：StartTime, EndTime, Granularity
 
-	* 新增出参：TagCode, TagMsg
+	* <font color="#dd0000">**修改入参**：</font>ListenerId, WithinTime
 
-* [ListSecrets](https://cloud.tencent.com/document/api/1140/40519)
+	* 新增出参：RsStatisticsData
 
-	* 新增入参：TagFilters
+
+修改数据结构：
+
+* [BandwidthPriceGradient](https://cloud.tencent.com/document/api/608/37023#BandwidthPriceGradient)
+
+	* 新增成员：DiscountBandwidthUnitPrice
+
+* [ProxyGroupInfo](https://cloud.tencent.com/document/api/608/37023#ProxyGroupInfo)
+
+	* 新增成员：ProxyType
+
+* [ProxyInfo](https://cloud.tencent.com/document/api/608/37023#ProxyInfo)
+
+	* 新增成员：ProxyType
+
+
+
+
+## 云游戏解决方案(gs) 版本：2019-11-18
+
+### 第 11 次发布
+
+发布时间：2020-09-04 08:01:20
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateSession](https://cloud.tencent.com/document/api/1162/40740)
+
+	* 新增入参：Role
+
+	* 新增出参：RoleNumber
+
+
+
+
+## 云数据库 MongoDB(mongodb) 版本：2019-07-25
+
+### 第 7 次发布
+
+发布时间：2020-09-04 08:04:58
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeCurrentOp](https://cloud.tencent.com/document/api/240/48120)
+* [KillOps](https://cloud.tencent.com/document/api/240/48119)
+
+修改接口：
+
+* [DescribeDBBackups](https://cloud.tencent.com/document/api/240/38574)
+
+	* 新增入参：BackupMethod, Limit, Offset
 
 
 新增数据结构：
 
-* [Tag](https://cloud.tencent.com/document/api/1140/40530#Tag)
-* [TagFilter](https://cloud.tencent.com/document/api/1140/40530#TagFilter)
+* [CurrentOp](https://cloud.tencent.com/document/api/240/38576#CurrentOp)
+* [Operation](https://cloud.tencent.com/document/api/240/38576#Operation)
+
+
+
+## 云数据库 MongoDB(mongodb) 版本：2018-04-08
+
+
+
+## 文字识别(ocr) 版本：2018-11-19
+
+### 第 33 次发布
+
+发布时间：2020-09-04 08:05:33
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [BizLicenseOCR](https://cloud.tencent.com/document/api/866/36215)
+
+	* 新增出参：RecognizeWarnCode, RecognizeWarnMsg
+
+* [LicensePlateOCR](https://cloud.tencent.com/document/api/866/36211)
+
+	* 新增出参：Rect
+
+
+
+
+## 云数据库 Redis(redis) 版本：2018-04-12
+
+### 第 20 次发布
+
+发布时间：2020-09-04 08:05:55
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeProxySlowLog](https://cloud.tencent.com/document/api/239/48121)
+
+新增数据结构：
+
+* [InstanceProxySlowlogDetail](https://cloud.tencent.com/document/api/239/20022#InstanceProxySlowlogDetail)
+
+
+
+## 云数据库 SQL Server(sqlserver) 版本：2018-03-28
+
+### 第 12 次发布
+
+发布时间：2020-09-04 08:06:15
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateMigration](https://cloud.tencent.com/document/api/238/19945)
+
+	* 新增入参：RenameRestore
+
+* [DescribeBackups](https://cloud.tencent.com/document/api/238/19943)
+
+	* 新增入参：BackupId
+
+* [RestoreInstance](https://cloud.tencent.com/document/api/238/19950)
+
+	* 新增入参：TargetInstanceId, RenameRestore
+
+* [RollbackInstance](https://cloud.tencent.com/document/api/238/19949)
+
+	* 新增入参：TargetInstanceId, RenameRestore
+
+
+新增数据结构：
+
+* [RenameRestoreDatabase](https://cloud.tencent.com/document/api/238/19976#RenameRestoreDatabase)
+
+
+
+## 实时音视频(trtc) 版本：2019-07-22
+
+### 第 14 次发布
+
+发布时间：2020-09-04 08:08:11
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeCallDetail](https://cloud.tencent.com/document/api/647/44054)
+
+	* 新增入参：PageNumber, PageSize
+
 
 
 
@@ -5939,6 +6161,19 @@
 
 ## 内容分发网络(cdn) 版本：2018-06-06
 
+### 第 34 次发布
+
+发布时间：2020-09-04 08:02:36
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[CreateVerifyRecord](https://cloud.tencent.com/document/api/228/48118)](https://cloud.tencent.com/document/api/#/#)
+* [[VerifyDomainRecord](https://cloud.tencent.com/document/api/228/48117)](https://cloud.tencent.com/document/api/#/#)
+
 ### 第 33 次发布
 
 发布时间：2020-09-01 08:02:19
@@ -11026,6 +11261,53 @@
 
 
 
+## 云数据库 CynosDB(cynosdb) 版本：2019-01-07
+
+### 第 1 次发布
+
+发布时间：2020-09-03 20:28:44
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[AddInstances](https://cloud.tencent.com/document/api/1003/48088)](https://cloud.tencent.com/document/api/#/#)
+* [[CreateClusters](https://cloud.tencent.com/document/api/1003/48087)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeAccounts](https://cloud.tencent.com/document/api/1003/48075)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeBackupConfig](https://cloud.tencent.com/document/api/1003/48094)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeBackupList](https://cloud.tencent.com/document/api/1003/48093)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeClusterDetail](https://cloud.tencent.com/document/api/1003/48086)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeClusters](https://cloud.tencent.com/document/api/1003/48085)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeInstanceSpecs](https://cloud.tencent.com/document/api/1003/48084)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeMaintainPeriod](https://cloud.tencent.com/document/api/1003/48083)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeRollbackTimeRange](https://cloud.tencent.com/document/api/1003/48092)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeRollbackTimeValidity](https://cloud.tencent.com/document/api/1003/48091)](https://cloud.tencent.com/document/api/#/#)
+* [[IsolateCluster](https://cloud.tencent.com/document/api/1003/48082)](https://cloud.tencent.com/document/api/#/#)
+* [[IsolateInstance](https://cloud.tencent.com/document/api/1003/48081)](https://cloud.tencent.com/document/api/#/#)
+* [[ModifyBackupConfig](https://cloud.tencent.com/document/api/1003/48090)](https://cloud.tencent.com/document/api/#/#)
+* [[ModifyDBInstanceSecurityGroups](https://cloud.tencent.com/document/api/1003/48096)](https://cloud.tencent.com/document/api/#/#)
+* [[ModifyMaintainPeriodConfig](https://cloud.tencent.com/document/api/1003/48080)](https://cloud.tencent.com/document/api/#/#)
+* [[OfflineCluster](https://cloud.tencent.com/document/api/1003/48079)](https://cloud.tencent.com/document/api/#/#)
+* [[SetRenewFlag](https://cloud.tencent.com/document/api/1003/48078)](https://cloud.tencent.com/document/api/#/#)
+* [[UpgradeInstance](https://cloud.tencent.com/document/api/1003/48077)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[Account](https://cloud.tencent.com/document/api/1003/48097#Account)](https://cloud.tencent.com/document/api/1003/48097#[Account](https://cloud.tencent.com/document/api/1003/48097#Account))
+* [[Addr](https://cloud.tencent.com/document/api/1003/48097#Addr)](https://cloud.tencent.com/document/api/1003/48097#[Addr](https://cloud.tencent.com/document/api/1003/48097#Addr))
+* [[BackupFileInfo](https://cloud.tencent.com/document/api/1003/48097#BackupFileInfo)](https://cloud.tencent.com/document/api/1003/48097#[BackupFileInfo](https://cloud.tencent.com/document/api/1003/48097#BackupFileInfo))
+* [[ClusterInstanceDetail](https://cloud.tencent.com/document/api/1003/48097#ClusterInstanceDetail)](https://cloud.tencent.com/document/api/1003/48097#[ClusterInstanceDetail](https://cloud.tencent.com/document/api/1003/48097#ClusterInstanceDetail))
+* [[CynosdbCluster](https://cloud.tencent.com/document/api/1003/48097#CynosdbCluster)](https://cloud.tencent.com/document/api/1003/48097#[CynosdbCluster](https://cloud.tencent.com/document/api/1003/48097#CynosdbCluster))
+* [[CynosdbClusterDetail](https://cloud.tencent.com/document/api/1003/48097#CynosdbClusterDetail)](https://cloud.tencent.com/document/api/1003/48097#[CynosdbClusterDetail](https://cloud.tencent.com/document/api/1003/48097#CynosdbClusterDetail))
+* [[InstanceSpec](https://cloud.tencent.com/document/api/1003/48097#InstanceSpec)](https://cloud.tencent.com/document/api/1003/48097#[InstanceSpec](https://cloud.tencent.com/document/api/1003/48097#InstanceSpec))
+* [[ObjectTask](https://cloud.tencent.com/document/api/1003/48097#ObjectTask)](https://cloud.tencent.com/document/api/1003/48097#[ObjectTask](https://cloud.tencent.com/document/api/1003/48097#ObjectTask))
+* [[QueryFilter](https://cloud.tencent.com/document/api/1003/48097#QueryFilter)](https://cloud.tencent.com/document/api/1003/48097#[QueryFilter](https://cloud.tencent.com/document/api/1003/48097#QueryFilter))
+
+
+
+
 ## DDoS 高防包(dayu) 版本：2018-07-09
 
 ### 第 18 次发布
@@ -14558,6 +14840,40 @@
 
 ## 全球应用加速(gaap) 版本：2018-05-29
 
+### 第 13 次发布
+
+发布时间：2020-09-04 08:03:55
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeRealServerStatistics](https://cloud.tencent.com/document/api/608/37018)
+
+	* 新增入参：StartTime, EndTime, Granularity
+
+	* <font color="#dd0000">**修改入参**：</font>ListenerId, WithinTime
+
+	* 新增出参：RsStatisticsData
+
+
+修改数据结构：
+
+* [BandwidthPriceGradient](https://cloud.tencent.com/document/api/608/37023#BandwidthPriceGradient)
+
+	* 新增成员：DiscountBandwidthUnitPrice
+
+* [ProxyGroupInfo](https://cloud.tencent.com/document/api/608/37023#ProxyGroupInfo)
+
+	* 新增成员：ProxyType
+
+* [ProxyInfo](https://cloud.tencent.com/document/api/608/37023#ProxyInfo)
+
+	* 新增成员：ProxyType
+
+
 ### 第 12 次发布
 
 发布时间：2020-06-11 08:10:11
@@ -15123,6 +15439,23 @@
 
 
 ## 云游戏解决方案(gs) 版本：2019-11-18
+
+### 第 11 次发布
+
+发布时间：2020-09-04 08:01:20
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateSession](https://cloud.tencent.com/document/api/1162/40740)
+
+	* 新增入参：Role
+
+	* 新增出参：RoleNumber
+
 
 ### 第 10 次发布
 
@@ -19604,6 +19937,31 @@
 
 ## 云数据库 MongoDB(mongodb) 版本：2019-07-25
 
+### 第 7 次发布
+
+发布时间：2020-09-04 08:04:58
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeCurrentOp](https://cloud.tencent.com/document/api/240/48120)](https://cloud.tencent.com/document/api/#/#)
+* [[KillOps](https://cloud.tencent.com/document/api/240/48119)](https://cloud.tencent.com/document/api/#/#)
+
+修改接口：
+
+* [DescribeDBBackups](https://cloud.tencent.com/document/api/240/38574)
+
+	* 新增入参：BackupMethod, Limit, Offset
+
+
+新增数据结构：
+
+* [[CurrentOp](https://cloud.tencent.com/document/api/240/38576#CurrentOp)](https://cloud.tencent.com/document/api/240/38576#[CurrentOp](https://cloud.tencent.com/document/api/240/38576#CurrentOp))
+* [[Operation](https://cloud.tencent.com/document/api/240/38576#Operation)](https://cloud.tencent.com/document/api/240/38576#[Operation](https://cloud.tencent.com/document/api/240/38576#Operation))
+
 ### 第 6 次发布
 
 发布时间：2020-07-22 08:14:25
@@ -21445,6 +21803,25 @@
 
 ## 文字识别(ocr) 版本：2018-11-19
 
+### 第 33 次发布
+
+发布时间：2020-09-04 08:05:33
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [BizLicenseOCR](https://cloud.tencent.com/document/api/866/36215)
+
+	* 新增出参：RecognizeWarnCode, RecognizeWarnMsg
+
+* [LicensePlateOCR](https://cloud.tencent.com/document/api/866/36211)
+
+	* 新增出参：Rect
+
+
 ### 第 32 次发布
 
 发布时间：2020-08-20 08:17:32
@@ -22708,6 +23085,22 @@
 
 
 ## 云数据库 Redis(redis) 版本：2018-04-12
+
+### 第 20 次发布
+
+发布时间：2020-09-04 08:05:55
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeProxySlowLog](https://cloud.tencent.com/document/api/239/48121)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[InstanceProxySlowlogDetail](https://cloud.tencent.com/document/api/239/20022#InstanceProxySlowlogDetail)](https://cloud.tencent.com/document/api/239/20022#[InstanceProxySlowlogDetail](https://cloud.tencent.com/document/api/239/20022#InstanceProxySlowlogDetail))
 
 ### 第 19 次发布
 
@@ -24230,6 +24623,37 @@
 
 ## 云数据库 SQL Server(sqlserver) 版本：2018-03-28
 
+### 第 12 次发布
+
+发布时间：2020-09-04 08:06:15
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateMigration](https://cloud.tencent.com/document/api/238/19945)
+
+	* 新增入参：RenameRestore
+
+* [DescribeBackups](https://cloud.tencent.com/document/api/238/19943)
+
+	* 新增入参：BackupId
+
+* [RestoreInstance](https://cloud.tencent.com/document/api/238/19950)
+
+	* 新增入参：TargetInstanceId, RenameRestore
+
+* [RollbackInstance](https://cloud.tencent.com/document/api/238/19949)
+
+	* 新增入参：TargetInstanceId, RenameRestore
+
+
+新增数据结构：
+
+* [[RenameRestoreDatabase](https://cloud.tencent.com/document/api/238/19976#RenameRestoreDatabase)](https://cloud.tencent.com/document/api/238/19976#[RenameRestoreDatabase](https://cloud.tencent.com/document/api/238/19976#RenameRestoreDatabase))
+
 ### 第 11 次发布
 
 发布时间：2020-08-11 08:21:16
@@ -24643,8 +25067,8 @@
 
 新增数据结构：
 
-* [[Tag](https://cloud.tencent.com/document/api/1140/40530#Tag)](https://cloud.tencent.com/document/api/1140/40530#[Tag](https://cloud.tencent.com/document/api/1140/40530#Tag))
-* [[TagFilter](https://cloud.tencent.com/document/api/1140/40530#TagFilter)](https://cloud.tencent.com/document/api/1140/40530#[TagFilter](https://cloud.tencent.com/document/api/1140/40530#TagFilter))
+* [Tag](https://cloud.tencent.com/document/api/1140/40530#Tag)
+* [TagFilter](https://cloud.tencent.com/document/api/1140/40530#TagFilter)
 
 ### 第 1 次发布
 
@@ -28696,6 +29120,21 @@
 
 
 ## 实时音视频(trtc) 版本：2019-07-22
+
+### 第 14 次发布
+
+发布时间：2020-09-04 08:08:11
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeCallDetail](https://cloud.tencent.com/document/api/647/44054)
+
+	* 新增入参：PageNumber, PageSize
+
 
 ### 第 13 次发布
 

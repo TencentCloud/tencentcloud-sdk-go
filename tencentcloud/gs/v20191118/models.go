@@ -32,7 +32,7 @@ type CreateSessionRequest struct {
 	// 游戏ID
 	GameId *string `json:"GameId,omitempty" name:"GameId"`
 
-	// 游戏区域，ap-guangzhou、ap-shanghai、ap-beijing等
+	// 游戏区域，ap-guangzhou、ap-shanghai、ap-beijing、ap-chengdu、ap-chongqing、ap-nanjing等
 	GameRegion *string `json:"GameRegion,omitempty" name:"GameRegion"`
 
 	// 游戏参数
@@ -44,7 +44,7 @@ type CreateSessionRequest struct {
 	// 背景图url，格式为png或jpeg，宽高1920*1080
 	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
 
-	// 资源池编号，1表示正式，2表示测试
+	// 【将废弃】资源池编号，比如1表示正式，2表示测试
 	SetNo *uint64 `json:"SetNo,omitempty" name:"SetNo"`
 
 	// 单位Mbps，固定码率，后端不动态调整(MaxBitrate和MinBitrate将无效)
@@ -65,8 +65,11 @@ type CreateSessionRequest struct {
 	// 优化项，便于客户灰度开启新的优化项，默认为0
 	Optimization *uint64 `json:"Optimization,omitempty" name:"Optimization"`
 
-	// 用于多人游戏，游戏主机用户ID
+	// 【多人云游】游戏主机用户ID
 	HostUserId *string `json:"HostUserId,omitempty" name:"HostUserId"`
+
+	// 【多人云游】角色；Player表示玩家；Viewer表示观察者
+	Role *string `json:"Role,omitempty" name:"Role"`
 }
 
 func (r *CreateSessionRequest) ToJsonString() string {
@@ -84,6 +87,9 @@ type CreateSessionResponse struct {
 
 		// 服务端session信息，返回给JSSDK
 		ServerSession *string `json:"ServerSession,omitempty" name:"ServerSession"`
+
+		// 【多人游戏】角色编号；比如Player1、Player2、Viewer1
+		RoleNumber *string `json:"RoleNumber,omitempty" name:"RoleNumber"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`

@@ -218,6 +218,31 @@ func (c *Client) DescribeClientConnections(request *DescribeClientConnectionsReq
     return
 }
 
+func NewDescribeCurrentOpRequest() (request *DescribeCurrentOpRequest) {
+    request = &DescribeCurrentOpRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("mongodb", APIVersion, "DescribeCurrentOp")
+    return
+}
+
+func NewDescribeCurrentOpResponse() (response *DescribeCurrentOpResponse) {
+    response = &DescribeCurrentOpResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口(DescribeCurrentOp)用于查询MongoDB云数据库实例的当前正在执行的操作。
+func (c *Client) DescribeCurrentOp(request *DescribeCurrentOpRequest) (response *DescribeCurrentOpResponse, err error) {
+    if request == nil {
+        request = NewDescribeCurrentOpRequest()
+    }
+    response = NewDescribeCurrentOpResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeDBBackupsRequest() (request *DescribeDBBackupsRequest) {
     request = &DescribeDBBackupsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -233,7 +258,7 @@ func NewDescribeDBBackupsResponse() (response *DescribeDBBackupsResponse) {
     return
 }
 
-// 本接口（DescribeDBBackups）用于查询实例备份列表，目前只支持7天内的备份查询。
+// 本接口（DescribeDBBackups）用于查询实例备份列表，目前只支持查询7天内的备份记录。
 func (c *Client) DescribeDBBackups(request *DescribeDBBackupsRequest) (response *DescribeDBBackupsResponse, err error) {
     if request == nil {
         request = NewDescribeDBBackupsRequest()
@@ -489,6 +514,31 @@ func (c *Client) IsolateDBInstance(request *IsolateDBInstanceRequest) (response 
         request = NewIsolateDBInstanceRequest()
     }
     response = NewIsolateDBInstanceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewKillOpsRequest() (request *KillOpsRequest) {
+    request = &KillOpsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("mongodb", APIVersion, "KillOps")
+    return
+}
+
+func NewKillOpsResponse() (response *KillOpsResponse) {
+    response = &KillOpsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口(KillOps)用于终止MongoDB云数据库实例上执行的特定操作。
+func (c *Client) KillOps(request *KillOpsRequest) (response *KillOpsResponse, err error) {
+    if request == nil {
+        request = NewKillOpsRequest()
+    }
+    response = NewKillOpsResponse()
     err = c.Send(request, response)
     return
 }
