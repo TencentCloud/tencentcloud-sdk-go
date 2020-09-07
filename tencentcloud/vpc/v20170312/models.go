@@ -1943,6 +1943,9 @@ type CreateFlowLogRequest struct {
 
 	// 流日志实例描述
 	FlowLogDescription *string `json:"FlowLogDescription,omitempty" name:"FlowLogDescription"`
+
+	// 指定绑定的标签列表，例如：[{"Key": "city", "Value": "shanghai"}]
+	Tags []*Tag `json:"Tags,omitempty" name:"Tags" list`
 }
 
 func (r *CreateFlowLogRequest) ToJsonString() string {
