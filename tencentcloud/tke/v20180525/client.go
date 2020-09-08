@@ -543,6 +543,31 @@ func (c *Client) DescribeClusterInstances(request *DescribeClusterInstancesReque
     return
 }
 
+func NewDescribeClusterKubeconfigRequest() (request *DescribeClusterKubeconfigRequest) {
+    request = &DescribeClusterKubeconfigRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tke", APIVersion, "DescribeClusterKubeconfig")
+    return
+}
+
+func NewDescribeClusterKubeconfigResponse() (response *DescribeClusterKubeconfigResponse) {
+    response = &DescribeClusterKubeconfigResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 获取集群的kubeconfig文件，不同子账户获取自己的kubeconfig文件，该文件中有每个子账户自己的kube-apiserver的客户端证书，默认首次调此接口时候创建客户端证书，时效20年，未授予任何权限，如果是集群所有者或者主账户，则默认是cluster-admin权限。
+func (c *Client) DescribeClusterKubeconfig(request *DescribeClusterKubeconfigRequest) (response *DescribeClusterKubeconfigResponse, err error) {
+    if request == nil {
+        request = NewDescribeClusterKubeconfigRequest()
+    }
+    response = NewDescribeClusterKubeconfigResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeClusterRouteTablesRequest() (request *DescribeClusterRouteTablesRequest) {
     request = &DescribeClusterRouteTablesRequest{
         BaseRequest: &tchttp.BaseRequest{},

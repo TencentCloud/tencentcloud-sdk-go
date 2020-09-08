@@ -1,10 +1,29 @@
 # 本版本更新包含以下内容：
 
-## 云服务器(cvm) 版本：2017-03-12
+## 云数据库 SQL Server(sqlserver) 版本：2018-03-28
 
-### 第 48 次发布
+### 第 13 次发布
 
-发布时间：2020-09-07 08:03:47
+发布时间：2020-09-08 08:07:23
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [RenameRestoreDatabase](https://cloud.tencent.com/document/api/238/19976#RenameRestoreDatabase)
+
+	* <font color="#dd0000">**修改成员**：</font>OldName, NewName
+
+
+
+
+## 容器服务(tke) 版本：2018-05-25
+
+### 第 26 次发布
+
+发布时间：2020-09-08 08:08:07
 
 本次发布包含了以下内容：
 
@@ -12,49 +31,7 @@
 
 新增接口：
 
-* [DescribeReservedInstancesConfigInfos](https://cloud.tencent.com/document/api/213/48128)
-* [InquirePricePurchaseReservedInstancesOffering](https://cloud.tencent.com/document/api/213/48127)
-
-修改接口：
-
-* [PurchaseReservedInstancesOffering](https://cloud.tencent.com/document/api/213/38093)
-
-	* 新增入参：ReservedInstanceName
-
-
-新增数据结构：
-
-* [ReservedInstanceConfigInfoItem](https://cloud.tencent.com/document/api/213/15753#ReservedInstanceConfigInfoItem)
-* [ReservedInstanceFamilyItem](https://cloud.tencent.com/document/api/213/15753#ReservedInstanceFamilyItem)
-* [ReservedInstancePrice](https://cloud.tencent.com/document/api/213/15753#ReservedInstancePrice)
-* [ReservedInstancePriceItem](https://cloud.tencent.com/document/api/213/15753#ReservedInstancePriceItem)
-* [ReservedInstanceTypeItem](https://cloud.tencent.com/document/api/213/15753#ReservedInstanceTypeItem)
-
-修改数据结构：
-
-* [ReservedInstances](https://cloud.tencent.com/document/api/213/15753#ReservedInstances)
-
-	* 新增成员：InstanceFamily
-
-
-
-
-## 私有网络(vpc) 版本：2017-03-12
-
-### 第 61 次发布
-
-发布时间：2020-09-07 08:08:19
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [CreateFlowLog](https://cloud.tencent.com/document/api/215/35015)
-
-	* 新增入参：Tags
-
+* [DescribeClusterKubeconfig](https://cloud.tencent.com/document/api/457/48149)
 
 
 
@@ -9924,8 +9901,8 @@
 
 新增接口：
 
-* [[DescribeReservedInstancesConfigInfos](https://cloud.tencent.com/document/api/213/48128)](https://cloud.tencent.com/document/api/#/#)
-* [[InquirePricePurchaseReservedInstancesOffering](https://cloud.tencent.com/document/api/213/48127)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeReservedInstancesConfigInfos](https://cloud.tencent.com/document/api/213/48128)
+* [InquirePricePurchaseReservedInstancesOffering](https://cloud.tencent.com/document/api/213/48127)
 
 修改接口：
 
@@ -9936,11 +9913,11 @@
 
 新增数据结构：
 
-* [[ReservedInstanceConfigInfoItem](https://cloud.tencent.com/document/api/213/15753#ReservedInstanceConfigInfoItem)](https://cloud.tencent.com/document/api/213/15753#[ReservedInstanceConfigInfoItem](https://cloud.tencent.com/document/api/213/15753#ReservedInstanceConfigInfoItem))
-* [[ReservedInstanceFamilyItem](https://cloud.tencent.com/document/api/213/15753#ReservedInstanceFamilyItem)](https://cloud.tencent.com/document/api/213/15753#[ReservedInstanceFamilyItem](https://cloud.tencent.com/document/api/213/15753#ReservedInstanceFamilyItem))
-* [[ReservedInstancePrice](https://cloud.tencent.com/document/api/213/15753#ReservedInstancePrice)](https://cloud.tencent.com/document/api/213/15753#[ReservedInstancePrice](https://cloud.tencent.com/document/api/213/15753#ReservedInstancePrice))
-* [[ReservedInstancePriceItem](https://cloud.tencent.com/document/api/213/15753#ReservedInstancePriceItem)](https://cloud.tencent.com/document/api/213/15753#[ReservedInstancePriceItem](https://cloud.tencent.com/document/api/213/15753#ReservedInstancePriceItem))
-* [[ReservedInstanceTypeItem](https://cloud.tencent.com/document/api/213/15753#ReservedInstanceTypeItem)](https://cloud.tencent.com/document/api/213/15753#[ReservedInstanceTypeItem](https://cloud.tencent.com/document/api/213/15753#ReservedInstanceTypeItem))
+* [ReservedInstanceConfigInfoItem](https://cloud.tencent.com/document/api/213/15753#ReservedInstanceConfigInfoItem)
+* [ReservedInstanceFamilyItem](https://cloud.tencent.com/document/api/213/15753#ReservedInstanceFamilyItem)
+* [ReservedInstancePrice](https://cloud.tencent.com/document/api/213/15753#ReservedInstancePrice)
+* [ReservedInstancePriceItem](https://cloud.tencent.com/document/api/213/15753#ReservedInstancePriceItem)
+* [ReservedInstanceTypeItem](https://cloud.tencent.com/document/api/213/15753#ReservedInstanceTypeItem)
 
 修改数据结构：
 
@@ -24464,6 +24441,21 @@
 
 ## 云数据库 SQL Server(sqlserver) 版本：2018-03-28
 
+### 第 13 次发布
+
+发布时间：2020-09-08 08:07:23
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [RenameRestoreDatabase](https://cloud.tencent.com/document/api/238/19976#RenameRestoreDatabase)
+
+	* <font color="#dd0000">**修改成员**：</font>OldName, NewName
+
+
 ### 第 12 次发布
 
 发布时间：2020-09-04 08:06:15
@@ -28164,6 +28156,18 @@
 
 
 ## 容器服务(tke) 版本：2018-05-25
+
+### 第 26 次发布
+
+发布时间：2020-09-08 08:08:07
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeClusterKubeconfig](https://cloud.tencent.com/document/api/457/48149)](https://cloud.tencent.com/document/api/#/#)
 
 ### 第 25 次发布
 
