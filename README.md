@@ -6,7 +6,7 @@
 
 # 依赖环境
 
-1. Go 1.9 版本及以上，并设置好 GOPATH 等必须的环境变量。
+1. Go 1.9 版本及以上（如使用go mod需要 Go 1.14），并设置好 GOPATH 等必须的环境变量。
 2. 使用相关产品前需要在腾讯云控制台已开通相应产品。
 3. 在腾讯云控制台[访问管理](https://console.cloud.tencent.com/cam/capi)页面获取 SecretID 和 SecretKey 。
 
@@ -18,8 +18,11 @@
 
 推荐使用语言自带的工具安装 SDK ：
 
-    go get github.com/tencentcloud/tencentcloud-sdk-go@v1.0.0
+    go get github.com/tencentcloud/tencentcloud-sdk-go@latest
 
+推荐使用腾讯云镜像加速下载：
+
+    export GOPROXY=https://mirrors.tencent.com/go/
 
 ## 通过源码安装
 
