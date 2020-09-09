@@ -2030,14 +2030,14 @@ type DeployContainerGroupRequest struct {
 	// 部署组ID，分组唯一标识
 	GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
 
-	// 镜像server
-	Server *string `json:"Server,omitempty" name:"Server"`
-
 	// 镜像版本名称,如v1
 	TagName *string `json:"TagName,omitempty" name:"TagName"`
 
 	// 实例数量
 	InstanceNum *int64 `json:"InstanceNum,omitempty" name:"InstanceNum"`
+
+	// 镜像server
+	Server *string `json:"Server,omitempty" name:"Server"`
 
 	// 旧版镜像名，如/tsf/nginx
 	Reponame *string `json:"Reponame,omitempty" name:"Reponame"`

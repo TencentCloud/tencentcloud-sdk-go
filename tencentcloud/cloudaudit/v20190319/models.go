@@ -376,6 +376,15 @@ func (r *InquireAuditCreditResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type KeyMetadata struct {
+
+	// 作为密钥更容易辨识，更容易被人看懂的别名
+	Alias *string `json:"Alias,omitempty" name:"Alias"`
+
+	// CMK的全局唯一标识
+	KeyId *string `json:"KeyId,omitempty" name:"KeyId"`
+}
+
 type ListAuditsRequest struct {
 	*tchttp.BaseRequest
 }
@@ -481,6 +490,52 @@ func (r *ListCosEnableRegionResponse) ToJsonString() string {
 }
 
 func (r *ListCosEnableRegionResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ListKeyAliasByRegionRequest struct {
+	*tchttp.BaseRequest
+
+	// Kms地域
+	KmsRegion *string `json:"KmsRegion,omitempty" name:"KmsRegion"`
+
+	// 含义跟 SQL 查询的 Limit 一致，表示本次获最多获取 Limit 个元素。缺省值为10，最大值为200
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 含义跟 SQL 查询的 Offset 一致，表示本次获取从按一定顺序排列数组的第 Offset 个元素开始，缺省为0
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+}
+
+func (r *ListKeyAliasByRegionRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ListKeyAliasByRegionRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ListKeyAliasByRegionResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 密钥别名
+		KeyMetadatas []*KeyMetadata `json:"KeyMetadatas,omitempty" name:"KeyMetadatas" list`
+
+		// CMK的总数量
+		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ListKeyAliasByRegionResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ListKeyAliasByRegionResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 

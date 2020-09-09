@@ -247,6 +247,31 @@ func (c *Client) ListCosEnableRegion(request *ListCosEnableRegionRequest) (respo
     return
 }
 
+func NewListKeyAliasByRegionRequest() (request *ListKeyAliasByRegionRequest) {
+    request = &ListKeyAliasByRegionRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cloudaudit", APIVersion, "ListKeyAliasByRegion")
+    return
+}
+
+func NewListKeyAliasByRegionResponse() (response *ListKeyAliasByRegionResponse) {
+    response = &ListKeyAliasByRegionResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 根据地域获取KMS密钥别名
+func (c *Client) ListKeyAliasByRegion(request *ListKeyAliasByRegionRequest) (response *ListKeyAliasByRegionResponse, err error) {
+    if request == nil {
+        request = NewListKeyAliasByRegionRequest()
+    }
+    response = NewListKeyAliasByRegionResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewLookUpEventsRequest() (request *LookUpEventsRequest) {
     request = &LookUpEventsRequest{
         BaseRequest: &tchttp.BaseRequest{},

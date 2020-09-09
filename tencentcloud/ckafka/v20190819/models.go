@@ -1712,6 +1712,10 @@ type InstanceAttributesResponse struct {
 	// 类型
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceType *string `json:"InstanceType,omitempty" name:"InstanceType"`
+
+	// 表示该实例支持的特性。FEATURE_SUBNET_ACL:表示acl策略支持设置子网。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Features []*string `json:"Features,omitempty" name:"Features" list`
 }
 
 type InstanceConfigDO struct {

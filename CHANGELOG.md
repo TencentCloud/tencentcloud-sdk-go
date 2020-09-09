@@ -1,10 +1,10 @@
 # 本版本更新包含以下内容：
 
-## 云数据库 SQL Server(sqlserver) 版本：2018-03-28
+## 消息队列 Ckafka(ckafka) 版本：2019-08-19
 
-### 第 13 次发布
+### 第 7 次发布
 
-发布时间：2020-09-08 08:07:23
+发布时间：2020-09-09 08:12:49
 
 本次发布包含了以下内容：
 
@@ -12,18 +12,18 @@
 
 修改数据结构：
 
-* [RenameRestoreDatabase](https://cloud.tencent.com/document/api/238/19976#RenameRestoreDatabase)
+* [InstanceAttributesResponse](https://cloud.tencent.com/document/api/597/40861#InstanceAttributesResponse)
 
-	* <font color="#dd0000">**修改成员**：</font>OldName, NewName
-
-
+	* 新增成员：Features
 
 
-## 容器服务(tke) 版本：2018-05-25
 
-### 第 26 次发布
 
-发布时间：2020-09-08 08:08:07
+## 云审计(cloudaudit) 版本：2019-03-19
+
+### 第 5 次发布
+
+发布时间：2020-09-09 08:03:42
 
 本次发布包含了以下内容：
 
@@ -31,7 +31,30 @@
 
 新增接口：
 
-* [DescribeClusterKubeconfig](https://cloud.tencent.com/document/api/457/48149)
+* [ListKeyAliasByRegion](https://cloud.tencent.com/document/api/629/48173)
+
+新增数据结构：
+
+* [KeyMetadata](https://cloud.tencent.com/document/api/629/35353#KeyMetadata)
+
+
+
+## 腾讯微服务平台 TSF(tsf) 版本：2018-03-26
+
+### 第 27 次发布
+
+发布时间：2020-09-09 08:08:53
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DeployContainerGroup](https://cloud.tencent.com/document/api/649/36071)
+
+	* <font color="#dd0000">**修改入参**：</font>Server
+
 
 
 
@@ -7062,6 +7085,21 @@
 
 ## 消息队列 Ckafka(ckafka) 版本：2019-08-19
 
+### 第 7 次发布
+
+发布时间：2020-09-09 08:12:49
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [InstanceAttributesResponse](https://cloud.tencent.com/document/api/597/40861#InstanceAttributesResponse)
+
+	* 新增成员：Features
+
+
 ### 第 6 次发布
 
 发布时间：2020-08-28 08:06:31
@@ -8038,6 +8076,22 @@
 
 
 ## 云审计(cloudaudit) 版本：2019-03-19
+
+### 第 5 次发布
+
+发布时间：2020-09-09 08:03:42
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[ListKeyAliasByRegion](https://cloud.tencent.com/document/api/629/48173)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[KeyMetadata](https://cloud.tencent.com/document/api/629/35353#KeyMetadata)](https://cloud.tencent.com/document/api/629/35353#[KeyMetadata](https://cloud.tencent.com/document/api/629/35353#KeyMetadata))
 
 ### 第 4 次发布
 
@@ -28167,7 +28221,7 @@
 
 新增接口：
 
-* [[DescribeClusterKubeconfig](https://cloud.tencent.com/document/api/457/48149)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeClusterKubeconfig](https://cloud.tencent.com/document/api/457/48149)
 
 ### 第 25 次发布
 
@@ -29196,6 +29250,21 @@
 
 
 ## 腾讯微服务平台 TSF(tsf) 版本：2018-03-26
+
+### 第 27 次发布
+
+发布时间：2020-09-09 08:08:53
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DeployContainerGroup](https://cloud.tencent.com/document/api/649/36071)
+
+	* <font color="#dd0000">**修改入参**：</font>Server
+
 
 ### 第 26 次发布
 
