@@ -91,6 +91,80 @@ type Bundle struct {
 	BundleSalesState *string `json:"BundleSalesState,omitempty" name:"BundleSalesState"`
 }
 
+type CreateFirewallRulesRequest struct {
+	*tchttp.BaseRequest
+
+	// 实例 ID。
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 防火墙规则列表。
+	FirewallRules []*FirewallRule `json:"FirewallRules,omitempty" name:"FirewallRules" list`
+}
+
+func (r *CreateFirewallRulesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateFirewallRulesRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateFirewallRulesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateFirewallRulesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateFirewallRulesResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteFirewallRulesRequest struct {
+	*tchttp.BaseRequest
+
+	// 实例 ID。
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 防火墙规则列表。
+	FirewallRules []*FirewallRule `json:"FirewallRules,omitempty" name:"FirewallRules" list`
+}
+
+func (r *DeleteFirewallRulesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteFirewallRulesRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteFirewallRulesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DeleteFirewallRulesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteFirewallRulesResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeBlueprintsRequest struct {
 	*tchttp.BaseRequest
 
@@ -209,6 +283,52 @@ func (r *DescribeBundlesResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeFirewallRulesRequest struct {
+	*tchttp.BaseRequest
+
+	// 实例 ID。
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 偏移量，默认为 0。
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 返回数量，默认为 20，最大值为 100。
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+func (r *DescribeFirewallRulesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeFirewallRulesRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeFirewallRulesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 符合条件的防火墙规则数量。
+		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 防火墙规则详细信息列表。
+		FirewallRuleSet []*FirewallRuleInfo `json:"FirewallRuleSet,omitempty" name:"FirewallRuleSet" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeFirewallRulesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeFirewallRulesResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeInstancesRequest struct {
 	*tchttp.BaseRequest
 
@@ -275,6 +395,27 @@ type Filter struct {
 
 	// 字段的过滤值。
 	Values []*string `json:"Values,omitempty" name:"Values" list`
+}
+
+type FirewallRule struct {
+
+	// 协议，取值：TCP，UDP，ALL。
+	Protocol *string `json:"Protocol,omitempty" name:"Protocol"`
+
+	// 端口，取值：ALL，单独的端口，逗号分隔的离散端口，减号分隔的端口范围。
+	Port *string `json:"Port,omitempty" name:"Port"`
+}
+
+type FirewallRuleInfo struct {
+
+	// 应用类型，取值：自定义，HTTP(80)，HTTPS(443)，Linux登录(22)，Windows登录(3389)，MySQL(3306)，SQL Server(1433)，全部TCP，全部UDP，ALL。
+	AppType *string `json:"AppType,omitempty" name:"AppType"`
+
+	// 协议，取值：TCP，UDP，ALL。
+	Protocol *string `json:"Protocol,omitempty" name:"Protocol"`
+
+	// 端口，取值：ALL，单独的端口，逗号分隔的离散端口，减号分隔的端口范围。
+	Port *string `json:"Port,omitempty" name:"Port"`
 }
 
 type Instance struct {

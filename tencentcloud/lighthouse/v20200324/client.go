@@ -43,6 +43,64 @@ func NewClient(credential *common.Credential, region string, clientProfile *prof
 }
 
 
+func NewCreateFirewallRulesRequest() (request *CreateFirewallRulesRequest) {
+    request = &CreateFirewallRulesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("lighthouse", APIVersion, "CreateFirewallRules")
+    return
+}
+
+func NewCreateFirewallRulesResponse() (response *CreateFirewallRulesResponse) {
+    response = &CreateFirewallRulesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（CreateFirewallRules）用于在实例上添加防火墙规则。
+// 
+// * Protocol 字段支持输入 TCP，UDP，或 ALL。
+// 
+// * Port 字段允许输入 ALL，或者一个单独的端口号，或者用逗号分隔的离散端口号，或者用减号分隔的两个端口号代表的端口范围。当 Port 为范围时，减号分隔的第一个端口号小于第二个端口号。当 Protocol 字段不是 TCP 或 UDP 时，Port 字段只能为空或 ALL。Port 字段长度不得超过 64。
+func (c *Client) CreateFirewallRules(request *CreateFirewallRulesRequest) (response *CreateFirewallRulesResponse, err error) {
+    if request == nil {
+        request = NewCreateFirewallRulesRequest()
+    }
+    response = NewCreateFirewallRulesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteFirewallRulesRequest() (request *DeleteFirewallRulesRequest) {
+    request = &DeleteFirewallRulesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("lighthouse", APIVersion, "DeleteFirewallRules")
+    return
+}
+
+func NewDeleteFirewallRulesResponse() (response *DeleteFirewallRulesResponse) {
+    response = &DeleteFirewallRulesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（DeleteFirewallRules）用于删除实例的防火墙规则。
+// 
+// * Protocol 字段支持输入 TCP，UDP，或 ALL。
+// 
+// * Port 字段允许输入 ALL，或者一个单独的端口号，或者用逗号分隔的离散端口号，或者用减号分隔的两个端口号代表的端口范围。当 Port 为范围时，减号分隔的第一个端口号小于第二个端口号。当 Protocol 字段不是 TCP 或 UDP 时，Port 字段只能为空或 ALL。Port 字段长度不得超过 64。
+func (c *Client) DeleteFirewallRules(request *DeleteFirewallRulesRequest) (response *DeleteFirewallRulesResponse, err error) {
+    if request == nil {
+        request = NewDeleteFirewallRulesRequest()
+    }
+    response = NewDeleteFirewallRulesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeBlueprintsRequest() (request *DescribeBlueprintsRequest) {
     request = &DescribeBlueprintsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -89,6 +147,31 @@ func (c *Client) DescribeBundles(request *DescribeBundlesRequest) (response *Des
         request = NewDescribeBundlesRequest()
     }
     response = NewDescribeBundlesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeFirewallRulesRequest() (request *DescribeFirewallRulesRequest) {
+    request = &DescribeFirewallRulesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("lighthouse", APIVersion, "DescribeFirewallRules")
+    return
+}
+
+func NewDescribeFirewallRulesResponse() (response *DescribeFirewallRulesResponse) {
+    response = &DescribeFirewallRulesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（DescribeFirewallRules）用于查询实例的防火墙规则。
+func (c *Client) DescribeFirewallRules(request *DescribeFirewallRulesRequest) (response *DescribeFirewallRulesResponse, err error) {
+    if request == nil {
+        request = NewDescribeFirewallRulesRequest()
+    }
+    response = NewDescribeFirewallRulesResponse()
     err = c.Send(request, response)
     return
 }

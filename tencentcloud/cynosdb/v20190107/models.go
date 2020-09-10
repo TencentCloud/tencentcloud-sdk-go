@@ -472,6 +472,102 @@ type CynosdbClusterDetail struct {
 	Zone *string `json:"Zone,omitempty" name:"Zone"`
 }
 
+type CynosdbInstanceDetail struct {
+
+	// 用户Uin
+	Uin *string `json:"Uin,omitempty" name:"Uin"`
+
+	// 用户AppId
+	AppId *int64 `json:"AppId,omitempty" name:"AppId"`
+
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 集群名称
+	ClusterName *string `json:"ClusterName,omitempty" name:"ClusterName"`
+
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 实例名称
+	InstanceName *string `json:"InstanceName,omitempty" name:"InstanceName"`
+
+	// 项目ID
+	ProjectId *int64 `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 地域
+	Region *string `json:"Region,omitempty" name:"Region"`
+
+	// 可用区
+	Zone *string `json:"Zone,omitempty" name:"Zone"`
+
+	// 实例状态
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 实例状态中文描述
+	StatusDesc *string `json:"StatusDesc,omitempty" name:"StatusDesc"`
+
+	// 数据库类型
+	DbType *string `json:"DbType,omitempty" name:"DbType"`
+
+	// 数据库版本
+	DbVersion *string `json:"DbVersion,omitempty" name:"DbVersion"`
+
+	// Cpu，单位：核
+	Cpu *int64 `json:"Cpu,omitempty" name:"Cpu"`
+
+	// 内存，单位：GB
+	Memory *int64 `json:"Memory,omitempty" name:"Memory"`
+
+	// 存储量，单位：GB
+	Storage *int64 `json:"Storage,omitempty" name:"Storage"`
+
+	// 实例类型
+	InstanceType *string `json:"InstanceType,omitempty" name:"InstanceType"`
+
+	// 实例当前角色
+	InstanceRole *string `json:"InstanceRole,omitempty" name:"InstanceRole"`
+
+	// 更新时间
+	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
+
+	// 创建时间
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 付费模式
+	PayMode *int64 `json:"PayMode,omitempty" name:"PayMode"`
+
+	// 实例过期时间
+	PeriodEndTime *string `json:"PeriodEndTime,omitempty" name:"PeriodEndTime"`
+
+	// 网络类型
+	NetType *int64 `json:"NetType,omitempty" name:"NetType"`
+
+	// VPC网络ID
+	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
+
+	// 子网ID
+	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
+
+	// 实例内网IP
+	Vip *string `json:"Vip,omitempty" name:"Vip"`
+
+	// 实例内网端口
+	Vport *int64 `json:"Vport,omitempty" name:"Vport"`
+
+	// 实例外网域名
+	WanDomain *string `json:"WanDomain,omitempty" name:"WanDomain"`
+
+	// 字符集
+	Charset *string `json:"Charset,omitempty" name:"Charset"`
+
+	// Cynos内核版本
+	CynosVersion *string `json:"CynosVersion,omitempty" name:"CynosVersion"`
+
+	// 续费标志
+	RenewFlag *int64 `json:"RenewFlag,omitempty" name:"RenewFlag"`
+}
+
 type DescribeAccountsRequest struct {
 	*tchttp.BaseRequest
 
@@ -706,6 +802,43 @@ func (r *DescribeClustersResponse) ToJsonString() string {
 }
 
 func (r *DescribeClustersResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeInstanceDetailRequest struct {
+	*tchttp.BaseRequest
+
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+}
+
+func (r *DescribeInstanceDetailRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeInstanceDetailRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeInstanceDetailResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 实例详情
+		Detail *CynosdbInstanceDetail `json:"Detail,omitempty" name:"Detail"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeInstanceDetailResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeInstanceDetailResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -1180,6 +1313,46 @@ func (r *OfflineClusterResponse) ToJsonString() string {
 }
 
 func (r *OfflineClusterResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type OfflineInstanceRequest struct {
+	*tchttp.BaseRequest
+
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 实例ID数组
+	InstanceIdList []*string `json:"InstanceIdList,omitempty" name:"InstanceIdList" list`
+}
+
+func (r *OfflineInstanceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *OfflineInstanceRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type OfflineInstanceResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 任务流ID
+		FlowId *int64 `json:"FlowId,omitempty" name:"FlowId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *OfflineInstanceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *OfflineInstanceResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 

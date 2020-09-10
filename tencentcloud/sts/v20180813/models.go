@@ -103,7 +103,7 @@ type AssumeRoleWithSAMLRequest struct {
 	// 会话名称
 	RoleSessionName *string `json:"RoleSessionName,omitempty" name:"RoleSessionName"`
 
-	// 指定临时证书的有效期，单位：秒，默认 7200 秒，最长可设定有效期为 7200 秒
+	// 指定临时证书的有效期，单位：秒，默认 7200 秒，最长可设定有效期为 43200 秒
 	DurationSeconds *uint64 `json:"DurationSeconds,omitempty" name:"DurationSeconds"`
 }
 
@@ -145,13 +145,13 @@ func (r *AssumeRoleWithSAMLResponse) FromJsonString(s string) error {
 
 type Credentials struct {
 
-	// token
+	// token。token长度和绑定的策略有关，最长不超过4096字节。
 	Token *string `json:"Token,omitempty" name:"Token"`
 
-	// 临时证书密钥ID
+	// 临时证书密钥ID。最长不超过1024字节。
 	TmpSecretId *string `json:"TmpSecretId,omitempty" name:"TmpSecretId"`
 
-	// 临时证书密钥Key
+	// 临时证书密钥Key。最长不超过1024字节。
 	TmpSecretKey *string `json:"TmpSecretKey,omitempty" name:"TmpSecretKey"`
 }
 
@@ -168,7 +168,7 @@ type GetFederationTokenRequest struct {
 	// 3、该参数需要做urlencode。
 	Policy *string `json:"Policy,omitempty" name:"Policy"`
 
-	// 指定临时证书的有效期，单位：秒，默认1800秒，最长可设定有效期为7200秒。
+	// 指定临时证书的有效期，单位：秒，默认1800秒，主账号最长可设定有效期为7200秒，子账号最长可设定有效期为129600秒。
 	DurationSeconds *uint64 `json:"DurationSeconds,omitempty" name:"DurationSeconds"`
 }
 

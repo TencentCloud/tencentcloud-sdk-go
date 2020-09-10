@@ -1181,13 +1181,19 @@ type CreateLiveTranscodeTemplateRequest struct {
 	// baseline/main/high。默认baseline
 	Profile *string `json:"Profile,omitempty" name:"Profile"`
 
-	// 是否不超过原始码率，0：否，1：是。默认0。
+	// 当设置的码率>原始码率时，是否以原始码率为准。
+	// 0：否， 1：是
+	// 默认 0。
 	BitrateToOrig *int64 `json:"BitrateToOrig,omitempty" name:"BitrateToOrig"`
 
-	// 是否不超过原始高，0：否，1：是。默认0。
+	// 当设置的高度>原始高度时，是否以原始高度为准。
+	// 0：否， 1：是
+	// 默认 0。
 	HeightToOrig *int64 `json:"HeightToOrig,omitempty" name:"HeightToOrig"`
 
-	// 是否不超过原始帧率，0：否，1：是。默认0。
+	// 当设置的帧率>原始帧率时，是否以原始帧率为准。
+	// 0：否， 1：是
+	// 默认 0。
 	FpsToOrig *int64 `json:"FpsToOrig,omitempty" name:"FpsToOrig"`
 
 	// 是否是极速高清模板，0：否，1：是。默认0。
@@ -5359,13 +5365,19 @@ type ModifyLiveTranscodeTemplateRequest struct {
 	// baseline/main/high。
 	Profile *string `json:"Profile,omitempty" name:"Profile"`
 
-	// 是否不超过原始码率。0：否，1：是。默认0。
+	// 当设置的码率>原始码率时，是否以原始码率为准。
+	// 0：否， 1：是
+	// 默认 0。
 	BitrateToOrig *int64 `json:"BitrateToOrig,omitempty" name:"BitrateToOrig"`
 
-	// 是否不超过原始高。0：否，1：是。默认0。
+	// 当设置的高度>原始高度时，是否以原始高度为准。
+	// 0：否， 1：是
+	// 默认 0。
 	HeightToOrig *int64 `json:"HeightToOrig,omitempty" name:"HeightToOrig"`
 
-	// 是否不超过原始帧率。0：否，1：是。默认0。
+	// 当设置的帧率>原始帧率时，是否以原始帧率为准。
+	// 0：否， 1：是
+	// 默认 0。
 	FpsToOrig *int64 `json:"FpsToOrig,omitempty" name:"FpsToOrig"`
 
 	// 极速高清视频码率压缩比。

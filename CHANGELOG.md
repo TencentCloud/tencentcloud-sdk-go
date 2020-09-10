@@ -1,29 +1,10 @@
 # 本版本更新包含以下内容：
 
-## 消息队列 Ckafka(ckafka) 版本：2019-08-19
+## 云数据库 CynosDB(cynosdb) 版本：2019-01-07
 
-### 第 7 次发布
+### 第 2 次发布
 
-发布时间：2020-09-09 08:12:49
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [InstanceAttributesResponse](https://cloud.tencent.com/document/api/597/40861#InstanceAttributesResponse)
-
-	* 新增成员：Features
-
-
-
-
-## 云审计(cloudaudit) 版本：2019-03-19
-
-### 第 5 次发布
-
-发布时间：2020-09-09 08:03:42
+发布时间：2020-09-10 08:00:12
 
 本次发布包含了以下内容：
 
@@ -31,30 +12,35 @@
 
 新增接口：
 
-* [ListKeyAliasByRegion](https://cloud.tencent.com/document/api/629/48173)
+* [DescribeInstanceDetail](https://cloud.tencent.com/document/api/1003/48250)
+* [OfflineInstance](https://cloud.tencent.com/document/api/1003/48249)
 
 新增数据结构：
 
-* [KeyMetadata](https://cloud.tencent.com/document/api/629/35353#KeyMetadata)
+* [CynosdbInstanceDetail](https://cloud.tencent.com/document/api/1003/48097#CynosdbInstanceDetail)
 
 
 
-## 腾讯微服务平台 TSF(tsf) 版本：2018-03-26
+## 轻量应用服务器(lighthouse) 版本：2020-03-24
 
-### 第 27 次发布
+### 第 3 次发布
 
-发布时间：2020-09-09 08:08:53
+发布时间：2020-09-10 08:00:19
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-修改接口：
+新增接口：
 
-* [DeployContainerGroup](https://cloud.tencent.com/document/api/649/36071)
+* [CreateFirewallRules](https://cloud.tencent.com/document/api/1207/48254)
+* [DeleteFirewallRules](https://cloud.tencent.com/document/api/1207/48253)
+* [DescribeFirewallRules](https://cloud.tencent.com/document/api/1207/48252)
 
-	* <font color="#dd0000">**修改入参**：</font>Server
+新增数据结构：
 
+* [FirewallRule](https://cloud.tencent.com/document/api/1207/47576#FirewallRule)
+* [FirewallRuleInfo](https://cloud.tencent.com/document/api/1207/47576#FirewallRuleInfo)
 
 
 
@@ -8087,11 +8073,11 @@
 
 新增接口：
 
-* [[ListKeyAliasByRegion](https://cloud.tencent.com/document/api/629/48173)](https://cloud.tencent.com/document/api/#/#)
+* [ListKeyAliasByRegion](https://cloud.tencent.com/document/api/629/48173)
 
 新增数据结构：
 
-* [[KeyMetadata](https://cloud.tencent.com/document/api/629/35353#KeyMetadata)](https://cloud.tencent.com/document/api/629/35353#[KeyMetadata](https://cloud.tencent.com/document/api/629/35353#KeyMetadata))
+* [KeyMetadata](https://cloud.tencent.com/document/api/629/35353#KeyMetadata)
 
 ### 第 4 次发布
 
@@ -11134,6 +11120,23 @@
 
 
 ## 云数据库 CynosDB(cynosdb) 版本：2019-01-07
+
+### 第 2 次发布
+
+发布时间：2020-09-10 08:00:12
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeInstanceDetail](https://cloud.tencent.com/document/api/1003/48250)](https://cloud.tencent.com/document/api/#/#)
+* [[OfflineInstance](https://cloud.tencent.com/document/api/1003/48249)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[CynosdbInstanceDetail](https://cloud.tencent.com/document/api/1003/48097#CynosdbInstanceDetail)](https://cloud.tencent.com/document/api/1003/48097#[CynosdbInstanceDetail](https://cloud.tencent.com/document/api/1003/48097#CynosdbInstanceDetail))
 
 ### 第 1 次发布
 
@@ -18101,6 +18104,25 @@
 
 ## 轻量应用服务器(lighthouse) 版本：2020-03-24
 
+### 第 3 次发布
+
+发布时间：2020-09-10 08:00:19
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[CreateFirewallRules](https://cloud.tencent.com/document/api/1207/48254)](https://cloud.tencent.com/document/api/#/#)
+* [[DeleteFirewallRules](https://cloud.tencent.com/document/api/1207/48253)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeFirewallRules](https://cloud.tencent.com/document/api/1207/48252)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[FirewallRule](https://cloud.tencent.com/document/api/1207/47576#FirewallRule)](https://cloud.tencent.com/document/api/1207/47576#[FirewallRule](https://cloud.tencent.com/document/api/1207/47576#FirewallRule))
+* [[FirewallRuleInfo](https://cloud.tencent.com/document/api/1207/47576#FirewallRuleInfo)](https://cloud.tencent.com/document/api/1207/47576#[FirewallRuleInfo](https://cloud.tencent.com/document/api/1207/47576#FirewallRuleInfo))
+
 ### 第 2 次发布
 
 发布时间：2020-08-21 08:00:08
@@ -25003,7 +25025,7 @@
 
 修改接口：
 
-* [GetFederationToken](https://cloud.tencent.com/document/api/598/33416)
+* [GetFederationToken](https://cloud.tencent.com/document/api/1312/48195)
 
 	* 新增出参：Expiration
 
@@ -25018,11 +25040,11 @@
 
 新增接口：
 
-* [QueryApiKey](https://cloud.tencent.com/document/api/598/40389)
+* [QueryApiKey](https://cloud.tencent.com/document/api/1312/48194)
 
 新增数据结构：
 
-* [ApiKey](https://cloud.tencent.com/document/api/598/40390#ApiKey)
+* [ApiKey](https://cloud.tencent.com/document/api/1312/48198#ApiKey)
 
 ### 第 3 次发布
 
@@ -25034,11 +25056,11 @@
 
 新增接口：
 
-* [AssumeRoleWithSAML](https://cloud.tencent.com/document/api/598/35816)
+* [AssumeRoleWithSAML](https://cloud.tencent.com/document/api/1312/48196)
 
 修改接口：
 
-* [AssumeRole](https://cloud.tencent.com/document/api/598/33164)
+* [AssumeRole](https://cloud.tencent.com/document/api/1312/48197)
 
 	* 新增入参：Policy
 
@@ -25053,7 +25075,7 @@
 
 修改接口：
 
-* [GetFederationToken](https://cloud.tencent.com/document/api/598/33416)
+* [GetFederationToken](https://cloud.tencent.com/document/api/1312/48195)
 
 	* <font color="#dd0000">**删除入参**：</font>OpenUin, OpenOwnerUin, Ua, Mfa, InterfaceName, ExtraInfo, ThUin, ThOwnerUin, CodeMode
 
@@ -25068,12 +25090,12 @@
 
 新增接口：
 
-* [AssumeRole](https://cloud.tencent.com/document/api/598/33164)
-* [GetFederationToken](https://cloud.tencent.com/document/api/598/33416)
+* [AssumeRole](https://cloud.tencent.com/document/api/1312/48197)
+* [GetFederationToken](https://cloud.tencent.com/document/api/1312/48195)
 
 新增数据结构：
 
-* [Credentials](https://cloud.tencent.com/document/api/598/40390#Credentials)
+* [Credentials](https://cloud.tencent.com/document/api/1312/48198#Credentials)
 
 
 

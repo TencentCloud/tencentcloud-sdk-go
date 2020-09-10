@@ -218,6 +218,31 @@ func (c *Client) DescribeClusters(request *DescribeClustersRequest) (response *D
     return
 }
 
+func NewDescribeInstanceDetailRequest() (request *DescribeInstanceDetailRequest) {
+    request = &DescribeInstanceDetailRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cynosdb", APIVersion, "DescribeInstanceDetail")
+    return
+}
+
+func NewDescribeInstanceDetailResponse() (response *DescribeInstanceDetailResponse) {
+    response = &DescribeInstanceDetailResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口(DescribeInstanceDetail)用于查询实例详情。
+func (c *Client) DescribeInstanceDetail(request *DescribeInstanceDetailRequest) (response *DescribeInstanceDetailResponse, err error) {
+    if request == nil {
+        request = NewDescribeInstanceDetailRequest()
+    }
+    response = NewDescribeInstanceDetailResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeInstanceSpecsRequest() (request *DescribeInstanceSpecsRequest) {
     request = &DescribeInstanceSpecsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -358,7 +383,7 @@ func NewIsolateInstanceResponse() (response *IsolateInstanceResponse) {
     return
 }
 
-// 本接口(IsolateInstance)用于隔离实例访问。
+// 本接口(IsolateInstance)用于隔离实例。
 func (c *Client) IsolateInstance(request *IsolateInstanceRequest) (response *IsolateInstanceResponse, err error) {
     if request == nil {
         request = NewIsolateInstanceRequest()
@@ -464,6 +489,31 @@ func (c *Client) OfflineCluster(request *OfflineClusterRequest) (response *Offli
         request = NewOfflineClusterRequest()
     }
     response = NewOfflineClusterResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewOfflineInstanceRequest() (request *OfflineInstanceRequest) {
+    request = &OfflineInstanceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cynosdb", APIVersion, "OfflineInstance")
+    return
+}
+
+func NewOfflineInstanceResponse() (response *OfflineInstanceResponse) {
+    response = &OfflineInstanceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 下线实例
+func (c *Client) OfflineInstance(request *OfflineInstanceRequest) (response *OfflineInstanceResponse, err error) {
+    if request == nil {
+        request = NewOfflineInstanceRequest()
+    }
+    response = NewOfflineInstanceResponse()
     err = c.Send(request, response)
     return
 }
