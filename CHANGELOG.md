@@ -2,30 +2,9 @@
 
 ## 云数据库 CynosDB(cynosdb) 版本：2019-01-07
 
-### 第 2 次发布
-
-发布时间：2020-09-10 08:00:12
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [DescribeInstanceDetail](https://cloud.tencent.com/document/api/1003/48250)
-* [OfflineInstance](https://cloud.tencent.com/document/api/1003/48249)
-
-新增数据结构：
-
-* [CynosdbInstanceDetail](https://cloud.tencent.com/document/api/1003/48097#CynosdbInstanceDetail)
-
-
-
-## 轻量应用服务器(lighthouse) 版本：2020-03-24
-
 ### 第 3 次发布
 
-发布时间：2020-09-10 08:00:19
+发布时间：2020-09-11 08:00:04
 
 本次发布包含了以下内容：
 
@@ -33,14 +12,16 @@
 
 新增接口：
 
-* [CreateFirewallRules](https://cloud.tencent.com/document/api/1207/48254)
-* [DeleteFirewallRules](https://cloud.tencent.com/document/api/1207/48253)
-* [DescribeFirewallRules](https://cloud.tencent.com/document/api/1207/48252)
+* [DescribeClusterInstanceGrps](https://cloud.tencent.com/document/api/1003/48303)
+* [DescribeDBSecurityGroups](https://cloud.tencent.com/document/api/1003/48305)
+* [DescribeProjectSecurityGroups](https://cloud.tencent.com/document/api/1003/48304)
 
 新增数据结构：
 
-* [FirewallRule](https://cloud.tencent.com/document/api/1207/47576#FirewallRule)
-* [FirewallRuleInfo](https://cloud.tencent.com/document/api/1207/47576#FirewallRuleInfo)
+* [CynosdbInstance](https://cloud.tencent.com/document/api/1003/48097#CynosdbInstance)
+* [CynosdbInstanceGrp](https://cloud.tencent.com/document/api/1003/48097#CynosdbInstanceGrp)
+* [PolicyRule](https://cloud.tencent.com/document/api/1003/48097#PolicyRule)
+* [SecurityGroup](https://cloud.tencent.com/document/api/1003/48097#SecurityGroup)
 
 
 
@@ -11121,6 +11102,27 @@
 
 ## 云数据库 CynosDB(cynosdb) 版本：2019-01-07
 
+### 第 3 次发布
+
+发布时间：2020-09-11 08:00:04
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeClusterInstanceGrps](https://cloud.tencent.com/document/api/1003/48303)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeDBSecurityGroups](https://cloud.tencent.com/document/api/1003/48305)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeProjectSecurityGroups](https://cloud.tencent.com/document/api/1003/48304)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[CynosdbInstance](https://cloud.tencent.com/document/api/1003/48097#CynosdbInstance)](https://cloud.tencent.com/document/api/1003/48097#[CynosdbInstance](https://cloud.tencent.com/document/api/1003/48097#CynosdbInstance))
+* [[CynosdbInstanceGrp](https://cloud.tencent.com/document/api/1003/48097#CynosdbInstanceGrp)](https://cloud.tencent.com/document/api/1003/48097#[CynosdbInstanceGrp](https://cloud.tencent.com/document/api/1003/48097#CynosdbInstanceGrp))
+* [[PolicyRule](https://cloud.tencent.com/document/api/1003/48097#PolicyRule)](https://cloud.tencent.com/document/api/1003/48097#[PolicyRule](https://cloud.tencent.com/document/api/1003/48097#PolicyRule))
+* [[SecurityGroup](https://cloud.tencent.com/document/api/1003/48097#SecurityGroup)](https://cloud.tencent.com/document/api/1003/48097#[SecurityGroup](https://cloud.tencent.com/document/api/1003/48097#SecurityGroup))
+
 ### 第 2 次发布
 
 发布时间：2020-09-10 08:00:12
@@ -11131,12 +11133,12 @@
 
 新增接口：
 
-* [[DescribeInstanceDetail](https://cloud.tencent.com/document/api/1003/48250)](https://cloud.tencent.com/document/api/#/#)
-* [[OfflineInstance](https://cloud.tencent.com/document/api/1003/48249)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeInstanceDetail](https://cloud.tencent.com/document/api/1003/48250)
+* [OfflineInstance](https://cloud.tencent.com/document/api/1003/48249)
 
 新增数据结构：
 
-* [[CynosdbInstanceDetail](https://cloud.tencent.com/document/api/1003/48097#CynosdbInstanceDetail)](https://cloud.tencent.com/document/api/1003/48097#[CynosdbInstanceDetail](https://cloud.tencent.com/document/api/1003/48097#CynosdbInstanceDetail))
+* [CynosdbInstanceDetail](https://cloud.tencent.com/document/api/1003/48097#CynosdbInstanceDetail)
 
 ### 第 1 次发布
 
@@ -18114,14 +18116,14 @@
 
 新增接口：
 
-* [[CreateFirewallRules](https://cloud.tencent.com/document/api/1207/48254)](https://cloud.tencent.com/document/api/#/#)
-* [[DeleteFirewallRules](https://cloud.tencent.com/document/api/1207/48253)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeFirewallRules](https://cloud.tencent.com/document/api/1207/48252)](https://cloud.tencent.com/document/api/#/#)
+* [CreateFirewallRules](https://cloud.tencent.com/document/api/1207/48254)
+* [DeleteFirewallRules](https://cloud.tencent.com/document/api/1207/48253)
+* [DescribeFirewallRules](https://cloud.tencent.com/document/api/1207/48252)
 
 新增数据结构：
 
-* [[FirewallRule](https://cloud.tencent.com/document/api/1207/47576#FirewallRule)](https://cloud.tencent.com/document/api/1207/47576#[FirewallRule](https://cloud.tencent.com/document/api/1207/47576#FirewallRule))
-* [[FirewallRuleInfo](https://cloud.tencent.com/document/api/1207/47576#FirewallRuleInfo)](https://cloud.tencent.com/document/api/1207/47576#[FirewallRuleInfo](https://cloud.tencent.com/document/api/1207/47576#FirewallRuleInfo))
+* [FirewallRule](https://cloud.tencent.com/document/api/1207/47576#FirewallRule)
+* [FirewallRuleInfo](https://cloud.tencent.com/document/api/1207/47576#FirewallRuleInfo)
 
 ### 第 2 次发布
 

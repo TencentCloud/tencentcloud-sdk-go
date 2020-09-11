@@ -193,6 +193,31 @@ func (c *Client) DescribeClusterDetail(request *DescribeClusterDetailRequest) (r
     return
 }
 
+func NewDescribeClusterInstanceGrpsRequest() (request *DescribeClusterInstanceGrpsRequest) {
+    request = &DescribeClusterInstanceGrpsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cynosdb", APIVersion, "DescribeClusterInstanceGrps")
+    return
+}
+
+func NewDescribeClusterInstanceGrpsResponse() (response *DescribeClusterInstanceGrpsResponse) {
+    response = &DescribeClusterInstanceGrpsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（DescribeClusterInstanceGrps）用于查询实例组
+func (c *Client) DescribeClusterInstanceGrps(request *DescribeClusterInstanceGrpsRequest) (response *DescribeClusterInstanceGrpsResponse, err error) {
+    if request == nil {
+        request = NewDescribeClusterInstanceGrpsRequest()
+    }
+    response = NewDescribeClusterInstanceGrpsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeClustersRequest() (request *DescribeClustersRequest) {
     request = &DescribeClustersRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -214,6 +239,31 @@ func (c *Client) DescribeClusters(request *DescribeClustersRequest) (response *D
         request = NewDescribeClustersRequest()
     }
     response = NewDescribeClustersResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeDBSecurityGroupsRequest() (request *DescribeDBSecurityGroupsRequest) {
+    request = &DescribeDBSecurityGroupsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cynosdb", APIVersion, "DescribeDBSecurityGroups")
+    return
+}
+
+func NewDescribeDBSecurityGroupsResponse() (response *DescribeDBSecurityGroupsResponse) {
+    response = &DescribeDBSecurityGroupsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询实例安全组信息
+func (c *Client) DescribeDBSecurityGroups(request *DescribeDBSecurityGroupsRequest) (response *DescribeDBSecurityGroupsResponse, err error) {
+    if request == nil {
+        request = NewDescribeDBSecurityGroupsRequest()
+    }
+    response = NewDescribeDBSecurityGroupsResponse()
     err = c.Send(request, response)
     return
 }
@@ -289,6 +339,31 @@ func (c *Client) DescribeMaintainPeriod(request *DescribeMaintainPeriodRequest) 
         request = NewDescribeMaintainPeriodRequest()
     }
     response = NewDescribeMaintainPeriodResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeProjectSecurityGroupsRequest() (request *DescribeProjectSecurityGroupsRequest) {
+    request = &DescribeProjectSecurityGroupsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cynosdb", APIVersion, "DescribeProjectSecurityGroups")
+    return
+}
+
+func NewDescribeProjectSecurityGroupsResponse() (response *DescribeProjectSecurityGroupsResponse) {
+    response = &DescribeProjectSecurityGroupsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询项目安全组信息
+func (c *Client) DescribeProjectSecurityGroups(request *DescribeProjectSecurityGroupsRequest) (response *DescribeProjectSecurityGroupsResponse, err error) {
+    if request == nil {
+        request = NewDescribeProjectSecurityGroupsRequest()
+    }
+    response = NewDescribeProjectSecurityGroupsResponse()
     err = c.Send(request, response)
     return
 }

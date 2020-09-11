@@ -472,6 +472,120 @@ type CynosdbClusterDetail struct {
 	Zone *string `json:"Zone,omitempty" name:"Zone"`
 }
 
+type CynosdbInstance struct {
+
+	// 用户Uin
+	Uin *string `json:"Uin,omitempty" name:"Uin"`
+
+	// 用户AppId
+	AppId *int64 `json:"AppId,omitempty" name:"AppId"`
+
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 集群名称
+	ClusterName *string `json:"ClusterName,omitempty" name:"ClusterName"`
+
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 实例名称
+	InstanceName *string `json:"InstanceName,omitempty" name:"InstanceName"`
+
+	// 项目ID
+	ProjectId *int64 `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 地域
+	Region *string `json:"Region,omitempty" name:"Region"`
+
+	// 可用区
+	Zone *string `json:"Zone,omitempty" name:"Zone"`
+
+	// 实例状态
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 实例状态中文描述
+	StatusDesc *string `json:"StatusDesc,omitempty" name:"StatusDesc"`
+
+	// 数据库类型
+	DbType *string `json:"DbType,omitempty" name:"DbType"`
+
+	// 数据库版本
+	DbVersion *string `json:"DbVersion,omitempty" name:"DbVersion"`
+
+	// Cpu，单位：核
+	Cpu *int64 `json:"Cpu,omitempty" name:"Cpu"`
+
+	// 内存，单位：GB
+	Memory *int64 `json:"Memory,omitempty" name:"Memory"`
+
+	// 存储量，单位：GB
+	Storage *int64 `json:"Storage,omitempty" name:"Storage"`
+
+	// 实例类型
+	InstanceType *string `json:"InstanceType,omitempty" name:"InstanceType"`
+
+	// 实例当前角色
+	InstanceRole *string `json:"InstanceRole,omitempty" name:"InstanceRole"`
+
+	// 更新时间
+	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
+
+	// 创建时间
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// VPC网络ID
+	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
+
+	// 子网ID
+	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
+
+	// 实例内网IP
+	Vip *string `json:"Vip,omitempty" name:"Vip"`
+
+	// 实例内网端口
+	Vport *int64 `json:"Vport,omitempty" name:"Vport"`
+
+	// 付费模式
+	PayMode *int64 `json:"PayMode,omitempty" name:"PayMode"`
+
+	// 实例过期时间
+	PeriodEndTime *string `json:"PeriodEndTime,omitempty" name:"PeriodEndTime"`
+
+	// 销毁期限
+	DestroyDeadlineText *string `json:"DestroyDeadlineText,omitempty" name:"DestroyDeadlineText"`
+
+	// 隔离时间
+	IsolateTime *string `json:"IsolateTime,omitempty" name:"IsolateTime"`
+
+	// 网络类型
+	NetType *int64 `json:"NetType,omitempty" name:"NetType"`
+
+	// 外网域名
+	WanDomain *string `json:"WanDomain,omitempty" name:"WanDomain"`
+
+	// 外网IP
+	WanIP *string `json:"WanIP,omitempty" name:"WanIP"`
+
+	// 外网端口
+	WanPort *int64 `json:"WanPort,omitempty" name:"WanPort"`
+
+	// 外网状态
+	WanStatus *string `json:"WanStatus,omitempty" name:"WanStatus"`
+
+	// 实例销毁时间
+	DestroyTime *string `json:"DestroyTime,omitempty" name:"DestroyTime"`
+
+	// Cynos内核版本
+	CynosVersion *string `json:"CynosVersion,omitempty" name:"CynosVersion"`
+
+	// 正在处理的任务
+	ProcessingTask *string `json:"ProcessingTask,omitempty" name:"ProcessingTask"`
+
+	// 续费标志
+	RenewFlag *int64 `json:"RenewFlag,omitempty" name:"RenewFlag"`
+}
+
 type CynosdbInstanceDetail struct {
 
 	// 用户Uin
@@ -566,6 +680,54 @@ type CynosdbInstanceDetail struct {
 
 	// 续费标志
 	RenewFlag *int64 `json:"RenewFlag,omitempty" name:"RenewFlag"`
+}
+
+type CynosdbInstanceGrp struct {
+
+	// appId
+	AppId *int64 `json:"AppId,omitempty" name:"AppId"`
+
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 创建时间
+	CreatedTime *string `json:"CreatedTime,omitempty" name:"CreatedTime"`
+
+	// 删除时间
+	DeletedTime *string `json:"DeletedTime,omitempty" name:"DeletedTime"`
+
+	// 实例组ID
+	InstanceGrpId *string `json:"InstanceGrpId,omitempty" name:"InstanceGrpId"`
+
+	// 状态
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 实例组类型。ha-ha组；ro-只读组
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 更新时间
+	UpdatedTime *string `json:"UpdatedTime,omitempty" name:"UpdatedTime"`
+
+	// 内网IP
+	Vip *string `json:"Vip,omitempty" name:"Vip"`
+
+	// 内网端口
+	Vport *int64 `json:"Vport,omitempty" name:"Vport"`
+
+	// 外网域名
+	WanDomain *string `json:"WanDomain,omitempty" name:"WanDomain"`
+
+	// 外网ip
+	WanIP *string `json:"WanIP,omitempty" name:"WanIP"`
+
+	// 外网端口
+	WanPort *int64 `json:"WanPort,omitempty" name:"WanPort"`
+
+	// 外网状态
+	WanStatus *string `json:"WanStatus,omitempty" name:"WanStatus"`
+
+	// 实例组包含实例信息
+	InstanceSet []*CynosdbInstance `json:"InstanceSet,omitempty" name:"InstanceSet" list`
 }
 
 type DescribeAccountsRequest struct {
@@ -746,6 +908,46 @@ func (r *DescribeClusterDetailResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeClusterInstanceGrpsRequest struct {
+	*tchttp.BaseRequest
+
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+}
+
+func (r *DescribeClusterInstanceGrpsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeClusterInstanceGrpsRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeClusterInstanceGrpsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 实例组个数
+		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 实例组列表
+		InstanceGrpInfoList []*CynosdbInstanceGrp `json:"InstanceGrpInfoList,omitempty" name:"InstanceGrpInfoList" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeClusterInstanceGrpsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeClusterInstanceGrpsResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeClustersRequest struct {
 	*tchttp.BaseRequest
 
@@ -802,6 +1004,43 @@ func (r *DescribeClustersResponse) ToJsonString() string {
 }
 
 func (r *DescribeClustersResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeDBSecurityGroupsRequest struct {
+	*tchttp.BaseRequest
+
+	// 实例组ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+}
+
+func (r *DescribeDBSecurityGroupsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeDBSecurityGroupsRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeDBSecurityGroupsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 安全组信息
+		Groups []*SecurityGroup `json:"Groups,omitempty" name:"Groups" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeDBSecurityGroupsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeDBSecurityGroupsResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -920,6 +1159,43 @@ func (r *DescribeMaintainPeriodResponse) ToJsonString() string {
 }
 
 func (r *DescribeMaintainPeriodResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeProjectSecurityGroupsRequest struct {
+	*tchttp.BaseRequest
+
+	// 项目ID
+	ProjectId *int64 `json:"ProjectId,omitempty" name:"ProjectId"`
+}
+
+func (r *DescribeProjectSecurityGroupsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeProjectSecurityGroupsRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeProjectSecurityGroupsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 安全组详情
+		Groups []*SecurityGroup `json:"Groups,omitempty" name:"Groups" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeProjectSecurityGroupsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeProjectSecurityGroupsResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -1356,6 +1632,33 @@ func (r *OfflineInstanceResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type PolicyRule struct {
+
+	// 策略，ACCEPT或者DROP
+	Action *string `json:"Action,omitempty" name:"Action"`
+
+	// 来源Ip或Ip段，例如192.168.0.0/16
+	CidrIp *string `json:"CidrIp,omitempty" name:"CidrIp"`
+
+	// 端口
+	PortRange *string `json:"PortRange,omitempty" name:"PortRange"`
+
+	// 网络协议，支持udp、tcp等
+	IpProtocol *string `json:"IpProtocol,omitempty" name:"IpProtocol"`
+
+	// 协议端口ID或者协议端口组ID。
+	ServiceModule *string `json:"ServiceModule,omitempty" name:"ServiceModule"`
+
+	// IP地址ID或者ID地址组ID。
+	AddressModule *string `json:"AddressModule,omitempty" name:"AddressModule"`
+
+	// id
+	Id *string `json:"Id,omitempty" name:"Id"`
+
+	// 描述
+	Desc *string `json:"Desc,omitempty" name:"Desc"`
+}
+
 type QueryFilter struct {
 
 	// 搜索字段，目前支持："InstanceId", "ProjectId", "InstanceName", "Vip"
@@ -1369,6 +1672,30 @@ type QueryFilter struct {
 
 	// 搜索字段
 	Name *string `json:"Name,omitempty" name:"Name"`
+}
+
+type SecurityGroup struct {
+
+	// 项目ID
+	ProjectId *int64 `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 创建时间，时间格式：yyyy-mm-dd hh:mm:ss
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 入站规则
+	Inbound []*PolicyRule `json:"Inbound,omitempty" name:"Inbound" list`
+
+	// 出站规则
+	Outbound []*PolicyRule `json:"Outbound,omitempty" name:"Outbound" list`
+
+	// 安全组ID
+	SecurityGroupId *string `json:"SecurityGroupId,omitempty" name:"SecurityGroupId"`
+
+	// 安全组名称
+	SecurityGroupName *string `json:"SecurityGroupName,omitempty" name:"SecurityGroupName"`
+
+	// 安全组备注
+	SecurityGroupRemark *string `json:"SecurityGroupRemark,omitempty" name:"SecurityGroupRemark"`
 }
 
 type SetRenewFlagRequest struct {
