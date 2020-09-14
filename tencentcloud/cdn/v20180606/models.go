@@ -155,6 +155,9 @@ type AddCdnDomainRequest struct {
 
 	// 回源超时配置
 	OriginPullTimeout *OriginPullTimeout `json:"OriginPullTimeout,omitempty" name:"OriginPullTimeout"`
+
+	// 标签配置
+	Tag []*Tag `json:"Tag,omitempty" name:"Tag" list`
 }
 
 func (r *AddCdnDomainRequest) ToJsonString() string {
@@ -2561,6 +2564,10 @@ type DetailDomain struct {
 	// 访问端口配置
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AccessPort []*int64 `json:"AccessPort,omitempty" name:"AccessPort" list`
+
+	// 标签配置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Tag []*Tag `json:"Tag,omitempty" name:"Tag" list`
 }
 
 type DisableCachesRequest struct {
@@ -4566,6 +4573,17 @@ type SummarizedData struct {
 
 	// 汇总后的数据值
 	Value *float64 `json:"Value,omitempty" name:"Value"`
+}
+
+type Tag struct {
+
+	// 标签键
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TagKey *string `json:"TagKey,omitempty" name:"TagKey"`
+
+	// 标签值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TagValue *string `json:"TagValue,omitempty" name:"TagValue"`
 }
 
 type TimestampData struct {

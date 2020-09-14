@@ -215,6 +215,10 @@ type DescribeOnlineRecordResponse struct {
 		// 录制视频列表
 		VideoInfos []*VideoInfo `json:"VideoInfos,omitempty" name:"VideoInfos" list`
 
+		// 回放URL，需配合信令播放器使用。此字段仅适用于`视频生成模式`
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		ReplayUrl *string `json:"ReplayUrl,omitempty" name:"ReplayUrl"`
+
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
@@ -663,8 +667,8 @@ type StartOnlineRecordRequest struct {
 	// 需要录制的房间号，取值范围: (1, 4294967295)
 	RoomId *int64 `json:"RoomId,omitempty" name:"RoomId"`
 
-	// 用于实时录制服务进房的用户ID，格式为`tic_record_user_${RoomId}_${Random}`，其中 `${RoomId} `与录制房间号对应，`${Random}`为一个随机字符串。
-	// 该ID必须是一个单独的未在SDK中使用的ID，实时录制服务使用这个用户ID进入房间进行音视频与白板录制，若该ID和SDK中使用的ID重复，会导致SDK和录制服务互踢，影响正常录制。
+	// 用于录制服务进房的用户ID，格式为`tic_record_user_${RoomId}_${Random}`，其中 `${RoomId} `与录制房间号对应，`${Random}`为一个随机字符串。
+	// 该ID必须是一个单独的未在SDK中使用的ID，录制服务使用这个用户ID进入房间进行音视频与白板录制，若该ID和SDK中使用的ID重复，会导致SDK和录制服务互踢，影响正常录制。
 	RecordUserId *string `json:"RecordUserId,omitempty" name:"RecordUserId"`
 
 	// 与RecordUserId对应的签名
@@ -673,13 +677,13 @@ type StartOnlineRecordRequest struct {
 	// （已废弃，设置无效）白板的 IM 群组 Id，默认同房间号
 	GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
 
-	// 实时录制视频拼接参数
+	// 录制视频拼接参数
 	Concat *Concat `json:"Concat,omitempty" name:"Concat"`
 
-	// 实时录制白板参数，例如白板宽高等
+	// 录制白板参数，例如白板宽高等
 	Whiteboard *Whiteboard `json:"Whiteboard,omitempty" name:"Whiteboard"`
 
-	// 实时录制混流参数
+	// 录制混流参数
 	// 特别说明：
 	// 1. 混流功能需要根据额外开通， 请联系腾讯云互动白板客服人员
 	// 2. 使用混流功能，必须提供 Extras 参数，且 Extras 参数中必须包含 "MIX_STREAM"
@@ -693,8 +697,19 @@ type StartOnlineRecordRequest struct {
 	// 是否需要在结果回调中返回各路流的纯音频录制文件，文件格式为mp3
 	AudioFileNeeded *bool `json:"AudioFileNeeded,omitempty" name:"AudioFileNeeded"`
 
-	// 实时录制控制参数，用于更精细地指定需要录制哪些流，某一路流是否禁用音频，是否只录制小画面等
+	// 录制控制参数，用于更精细地指定需要录制哪些流，某一路流是否禁用音频，是否只录制小画面等
 	RecordControl *RecordControl `json:"RecordControl,omitempty" name:"RecordControl"`
+
+	// 录制模式
+	// 
+	// REALTIME_MODE - 实时录制模式（默认）
+	// VIDEO_GENERATION_MODE - 视频生成模式（内测中，需邮件申请开通）
+	RecordMode *string `json:"RecordMode,omitempty" name:"RecordMode"`
+
+	// 聊天群组ID，此字段仅适用于`视频生成模式`
+	// 
+	// 在`视频生成模式`下，默认会记录白板群组内的非白板信令消息，如果指定了`ChatGroupId`，则会记录指定群ID的聊天消息。
+	ChatGroupId *string `json:"ChatGroupId,omitempty" name:"ChatGroupId"`
 }
 
 func (r *StartOnlineRecordRequest) ToJsonString() string {
@@ -710,7 +725,7 @@ type StartOnlineRecordResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 实时录制的任务Id
+		// 录制任务Id
 		TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。

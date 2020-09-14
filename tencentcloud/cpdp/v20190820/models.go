@@ -7050,6 +7050,12 @@ type UnifiedOrderRequest struct {
 	// development: 开发环境
 	// 缺省: release
 	MidasEnvironment *string `json:"MidasEnvironment,omitempty" name:"MidasEnvironment"`
+
+	// 微信商户应用ID
+	WxAppId *string `json:"WxAppId,omitempty" name:"WxAppId"`
+
+	// 微信商户子应用ID
+	WxSubAppId *string `json:"WxSubAppId,omitempty" name:"WxSubAppId"`
 }
 
 func (r *UnifiedOrderRequest) ToJsonString() string {

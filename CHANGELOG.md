@@ -1,27 +1,74 @@
 # 本版本更新包含以下内容：
 
-## 云数据库 CynosDB(cynosdb) 版本：2019-01-07
+## 内容分发网络(cdn) 版本：2018-06-06
 
-### 第 3 次发布
+### 第 35 次发布
 
-发布时间：2020-09-11 08:00:04
+发布时间：2020-09-14 08:01:57
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-新增接口：
+修改接口：
 
-* [DescribeClusterInstanceGrps](https://cloud.tencent.com/document/api/1003/48303)
-* [DescribeDBSecurityGroups](https://cloud.tencent.com/document/api/1003/48305)
-* [DescribeProjectSecurityGroups](https://cloud.tencent.com/document/api/1003/48304)
+* [AddCdnDomain](https://cloud.tencent.com/document/api/228/41123)
+
+	* 新增入参：Tag
+
 
 新增数据结构：
 
-* [CynosdbInstance](https://cloud.tencent.com/document/api/1003/48097#CynosdbInstance)
-* [CynosdbInstanceGrp](https://cloud.tencent.com/document/api/1003/48097#CynosdbInstanceGrp)
-* [PolicyRule](https://cloud.tencent.com/document/api/1003/48097#PolicyRule)
-* [SecurityGroup](https://cloud.tencent.com/document/api/1003/48097#SecurityGroup)
+* [Tag](https://cloud.tencent.com/document/api/228/30987#Tag)
+
+修改数据结构：
+
+* [DetailDomain](https://cloud.tencent.com/document/api/228/30987#DetailDomain)
+
+	* 新增成员：Tag
+
+
+
+
+## 企业收付平台(cpdp) 版本：2019-08-20
+
+### 第 30 次发布
+
+发布时间：2020-09-14 08:07:06
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [UnifiedOrder](https://cloud.tencent.com/document/api/1122/40649)
+
+	* 新增入参：WxAppId, WxSubAppId
+
+
+
+
+## 互动白板(tiw) 版本：2019-09-19
+
+### 第 7 次发布
+
+发布时间：2020-09-14 08:06:39
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeOnlineRecord](https://cloud.tencent.com/document/api/1137/40067)
+
+	* 新增出参：ReplayUrl
+
+* [StartOnlineRecord](https://cloud.tencent.com/document/api/1137/40063)
+
+	* 新增入参：RecordMode, ChatGroupId
+
 
 
 
@@ -5934,6 +5981,32 @@
 
 ## 内容分发网络(cdn) 版本：2018-06-06
 
+### 第 35 次发布
+
+发布时间：2020-09-14 08:01:57
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [AddCdnDomain](https://cloud.tencent.com/document/api/228/41123)
+
+	* 新增入参：Tag
+
+
+新增数据结构：
+
+* [[Tag](https://cloud.tencent.com/document/api/228/30987#Tag)](https://cloud.tencent.com/document/api/228/30987#[Tag](https://cloud.tencent.com/document/api/228/30987#Tag))
+
+修改数据结构：
+
+* [DetailDomain](https://cloud.tencent.com/document/api/228/30987#DetailDomain)
+
+	* 新增成员：Tag
+
+
 ### 第 34 次发布
 
 发布时间：2020-09-04 08:02:36
@@ -8959,6 +9032,21 @@
 
 ## 企业收付平台(cpdp) 版本：2019-08-20
 
+### 第 30 次发布
+
+发布时间：2020-09-14 08:07:06
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [UnifiedOrder](https://cloud.tencent.com/document/api/1122/40649)
+
+	* 新增入参：WxAppId, WxSubAppId
+
+
 ### 第 29 次发布
 
 发布时间：2020-08-18 08:27:18
@@ -11112,16 +11200,16 @@
 
 新增接口：
 
-* [[DescribeClusterInstanceGrps](https://cloud.tencent.com/document/api/1003/48303)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeDBSecurityGroups](https://cloud.tencent.com/document/api/1003/48305)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeProjectSecurityGroups](https://cloud.tencent.com/document/api/1003/48304)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeClusterInstanceGrps](https://cloud.tencent.com/document/api/1003/48303)
+* [DescribeDBSecurityGroups](https://cloud.tencent.com/document/api/1003/48305)
+* [DescribeProjectSecurityGroups](https://cloud.tencent.com/document/api/1003/48304)
 
 新增数据结构：
 
-* [[CynosdbInstance](https://cloud.tencent.com/document/api/1003/48097#CynosdbInstance)](https://cloud.tencent.com/document/api/1003/48097#[CynosdbInstance](https://cloud.tencent.com/document/api/1003/48097#CynosdbInstance))
-* [[CynosdbInstanceGrp](https://cloud.tencent.com/document/api/1003/48097#CynosdbInstanceGrp)](https://cloud.tencent.com/document/api/1003/48097#[CynosdbInstanceGrp](https://cloud.tencent.com/document/api/1003/48097#CynosdbInstanceGrp))
-* [[PolicyRule](https://cloud.tencent.com/document/api/1003/48097#PolicyRule)](https://cloud.tencent.com/document/api/1003/48097#[PolicyRule](https://cloud.tencent.com/document/api/1003/48097#PolicyRule))
-* [[SecurityGroup](https://cloud.tencent.com/document/api/1003/48097#SecurityGroup)](https://cloud.tencent.com/document/api/1003/48097#[SecurityGroup](https://cloud.tencent.com/document/api/1003/48097#SecurityGroup))
+* [CynosdbInstance](https://cloud.tencent.com/document/api/1003/48097#CynosdbInstance)
+* [CynosdbInstanceGrp](https://cloud.tencent.com/document/api/1003/48097#CynosdbInstanceGrp)
+* [PolicyRule](https://cloud.tencent.com/document/api/1003/48097#PolicyRule)
+* [SecurityGroup](https://cloud.tencent.com/document/api/1003/48097#SecurityGroup)
 
 ### 第 2 次发布
 
@@ -28103,6 +28191,25 @@
 
 
 ## 互动白板(tiw) 版本：2019-09-19
+
+### 第 7 次发布
+
+发布时间：2020-09-14 08:06:39
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeOnlineRecord](https://cloud.tencent.com/document/api/1137/40067)
+
+	* 新增出参：ReplayUrl
+
+* [StartOnlineRecord](https://cloud.tencent.com/document/api/1137/40063)
+
+	* 新增入参：RecordMode, ChatGroupId
+
 
 ### 第 6 次发布
 

@@ -83,7 +83,7 @@ func NewDescribeOnlineRecordResponse() (response *DescribeOnlineRecordResponse) 
     return
 }
 
-// 查询实时录制任务状态与结果
+// 查询录制任务状态与结果
 func (c *Client) DescribeOnlineRecord(request *DescribeOnlineRecordRequest) (response *DescribeOnlineRecordResponse, err error) {
     if request == nil {
         request = NewDescribeOnlineRecordRequest()
