@@ -1129,7 +1129,8 @@ type CreateLiveTranscodeTemplateRequest struct {
 	//   极速高清转码：3-10个字符
 	TemplateName *string `json:"TemplateName,omitempty" name:"TemplateName"`
 
-	// 视频码率。范围：100-8000。
+	// 视频码率。范围：0kbps - 8000kbps。
+	// 0为保持原始码率。
 	// 注: 转码模板有码率唯一要求，最终保存的码率可能与输入码率有所差别。
 	VideoBitrate *int64 `json:"VideoBitrate,omitempty" name:"VideoBitrate"`
 
@@ -1166,10 +1167,11 @@ type CreateLiveTranscodeTemplateRequest struct {
 	Height *int64 `json:"Height,omitempty" name:"Height"`
 
 	// 帧率，默认0。
-	// 范围0-60
+	// 范围0-60fps
 	Fps *int64 `json:"Fps,omitempty" name:"Fps"`
 
-	// 关键帧间隔，单位：秒。默认原始的间隔
+	// 关键帧间隔，单位：秒。
+	// 默认原始的间隔
 	// 范围2-6
 	Gop *int64 `json:"Gop,omitempty" name:"Gop"`
 
@@ -3526,6 +3528,12 @@ func (r *DescribeLiveTranscodeDetailInfoResponse) FromJsonString(s string) error
 
 type DescribeLiveTranscodeRulesRequest struct {
 	*tchttp.BaseRequest
+
+	// 要筛选的模板ID数组。
+	TemplateIds []*int64 `json:"TemplateIds,omitempty" name:"TemplateIds" list`
+
+	// 要筛选的域名数组。
+	DomainNames []*string `json:"DomainNames,omitempty" name:"DomainNames" list`
 }
 
 func (r *DescribeLiveTranscodeRulesRequest) ToJsonString() string {
@@ -5330,7 +5338,8 @@ type ModifyLiveTranscodeTemplateRequest struct {
 	// 模板描述。
 	Description *string `json:"Description,omitempty" name:"Description"`
 
-	// 视频码率。范围：100kbps - 8000kbps。
+	// 视频码率。范围：0kbps - 8000kbps。
+	// 0为保持原始码率。
 	// 注: 转码模板有码率唯一要求，最终保存的码率可能与输入码率有所差别。
 	VideoBitrate *int64 `json:"VideoBitrate,omitempty" name:"VideoBitrate"`
 
@@ -6213,45 +6222,64 @@ type StreamOnlineInfo struct {
 
 type TemplateInfo struct {
 
-	// 视频编码：
-	// h264/h265。
+	// 视频编码：h264/h265/origin，默认h264。
+	// 
+	// origin: 保持原始编码格式
 	Vcodec *string `json:"Vcodec,omitempty" name:"Vcodec"`
 
-	// 视频码率，取值范围：100kbps - 8000kbps。
+	// 视频码率。范围：0kbps - 8000kbps。
+	// 0为保持原始码率。
+	// 注: 转码模板有码率唯一要求，最终保存的码率可能与输入码率有所差别。
 	VideoBitrate *int64 `json:"VideoBitrate,omitempty" name:"VideoBitrate"`
 
-	// 音频编码，可选 aac 或 mp3。
+	// 音频编码：aac，默认aac。
+	// 注意：当前该参数未生效，待后续支持！
 	Acodec *string `json:"Acodec,omitempty" name:"Acodec"`
 
 	// 音频码率。取值范围：0kbps - 500kbps。
+	// 默认0。
 	AudioBitrate *int64 `json:"AudioBitrate,omitempty" name:"AudioBitrate"`
 
-	// 宽，取值范围：0-3000。
+	// 宽，默认0。
+	// 范围[0-3000]
+	// 数值必须是2的倍数，0是原始宽度
 	Width *int64 `json:"Width,omitempty" name:"Width"`
 
-	// 高，取值范围：0-3000。
+	// 高，默认0。
+	// 范围[0-3000]
+	// 数值必须是2的倍数，0是原始宽度
 	Height *int64 `json:"Height,omitempty" name:"Height"`
 
-	// 帧率。取值范围：0fps - 200fps。
+	// 帧率，默认0。
+	// 范围0-60fps
 	Fps *int64 `json:"Fps,omitempty" name:"Fps"`
 
-	// 关键帧间隔，取值范围：1秒 - 50秒。
+	// 关键帧间隔，单位：秒。
+	// 默认原始的间隔
+	// 范围2-6
 	Gop *int64 `json:"Gop,omitempty" name:"Gop"`
 
-	// 旋转角度。可选择：0 90 180 270。
+	// 旋转角度，默认0。
+	// 可取值：0，90，180，270
 	Rotate *int64 `json:"Rotate,omitempty" name:"Rotate"`
 
-	// 编码质量，可选择：
-	// baseline，main，high。
+	// 编码质量：
+	// baseline/main/high。默认baseline
 	Profile *string `json:"Profile,omitempty" name:"Profile"`
 
-	// 是否不超过原始码率。0：否，1：是。
+	// 当设置的码率>原始码率时，是否以原始码率为准。
+	// 0：否， 1：是
+	// 默认 0。
 	BitrateToOrig *int64 `json:"BitrateToOrig,omitempty" name:"BitrateToOrig"`
 
-	// 是否不超过原始高度。0：否，1：是。
+	// 当设置的高度>原始高度时，是否以原始高度为准。
+	// 0：否， 1：是
+	// 默认 0。
 	HeightToOrig *int64 `json:"HeightToOrig,omitempty" name:"HeightToOrig"`
 
-	// 是否不超过原始帧率。0：否，1：是。
+	// 当设置的帧率>原始帧率时，是否以原始帧率为准。
+	// 0：否， 1：是
+	// 默认 0。
 	FpsToOrig *int64 `json:"FpsToOrig,omitempty" name:"FpsToOrig"`
 
 	// 是否保留视频。0：否，1：是。
@@ -6272,8 +6300,15 @@ type TemplateInfo struct {
 	// 是否是极速高清模板，0：否，1：是。默认0。
 	AiTransCode *int64 `json:"AiTransCode,omitempty" name:"AiTransCode"`
 
-	// 极速高清相比 VideoBitrate 少多少码率，0.1到0.5。
+	// 极速高清视频码率压缩比。
+	// 极速高清目标码率=VideoBitrate * (1-AdaptBitratePercent)
+	// 
+	// 取值范围：0.0到0.5
 	AdaptBitratePercent *float64 `json:"AdaptBitratePercent,omitempty" name:"AdaptBitratePercent"`
+
+	// 是否以短边作为高度，0：否，1：是。默认0。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ShortEdgeAsHeight *int64 `json:"ShortEdgeAsHeight,omitempty" name:"ShortEdgeAsHeight"`
 }
 
 type TimeValue struct {

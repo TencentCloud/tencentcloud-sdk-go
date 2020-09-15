@@ -1,40 +1,77 @@
 # 本版本更新包含以下内容：
 
-## 内容分发网络(cdn) 版本：2018-06-06
+## 消息队列 Ckafka(ckafka) 版本：2019-08-19
 
-### 第 35 次发布
+### 第 8 次发布
 
-发布时间：2020-09-14 08:01:57
+发布时间：2020-09-15 08:09:08
 
 本次发布包含了以下内容：
 
 改善已有的文档。
-
-修改接口：
-
-* [AddCdnDomain](https://cloud.tencent.com/document/api/228/41123)
-
-	* 新增入参：Tag
-
-
-新增数据结构：
-
-* [Tag](https://cloud.tencent.com/document/api/228/30987#Tag)
 
 修改数据结构：
 
-* [DetailDomain](https://cloud.tencent.com/document/api/228/30987#DetailDomain)
+* [SubscribedInfo](https://cloud.tencent.com/document/api/597/40861#SubscribedInfo)
 
-	* 新增成员：Tag
-
-
+	* 新增成员：TopicId
 
 
-## 企业收付平台(cpdp) 版本：2019-08-20
 
-### 第 30 次发布
 
-发布时间：2020-09-14 08:07:06
+## 云数据库 CynosDB(cynosdb) 版本：2019-01-07
+
+### 第 4 次发布
+
+发布时间：2020-09-15 08:00:04
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeInstances](https://cloud.tencent.com/document/api/1003/48334)
+
+
+
+## 物联网通信(iotcloud) 版本：2018-06-14
+
+### 第 17 次发布
+
+发布时间：2020-09-15 08:04:44
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CancelDeviceFirmwareTask](https://cloud.tencent.com/document/api/634/48344)
+* [DescribeFirmware](https://cloud.tencent.com/document/api/634/48343)
+* [DescribeFirmwareTask](https://cloud.tencent.com/document/api/634/48339)
+* [DescribeFirmwareTaskDevices](https://cloud.tencent.com/document/api/634/48342)
+* [DescribeFirmwareTaskDistribution](https://cloud.tencent.com/document/api/634/48341)
+* [DescribeFirmwareTaskStatistics](https://cloud.tencent.com/document/api/634/48340)
+* [DescribeFirmwareTasks](https://cloud.tencent.com/document/api/634/48339)
+* [EditFirmware](https://cloud.tencent.com/document/api/634/48338)
+* [RetryDeviceFirmwareTask](https://cloud.tencent.com/document/api/634/48337)
+* [UploadFirmware](https://cloud.tencent.com/document/api/634/48336)
+
+新增数据结构：
+
+* [DeviceUpdateStatus](https://cloud.tencent.com/document/api/634/19497#DeviceUpdateStatus)
+* [FirmwareTaskInfo](https://cloud.tencent.com/document/api/634/19497#FirmwareTaskInfo)
+* [SearchKeyword](https://cloud.tencent.com/document/api/634/19497#SearchKeyword)
+* [StatusStatistic](https://cloud.tencent.com/document/api/634/19497#StatusStatistic)
+
+
+
+## 云直播(live) 版本：2018-08-01
+
+### 第 49 次发布
+
+发布时间：2020-09-15 08:05:13
 
 本次发布包含了以下内容：
 
@@ -42,18 +79,45 @@
 
 修改接口：
 
-* [UnifiedOrder](https://cloud.tencent.com/document/api/1122/40649)
+* [DescribeLiveTranscodeRules](https://cloud.tencent.com/document/api/267/32643)
 
-	* 新增入参：WxAppId, WxSubAppId
-
-
+	* 新增入参：TemplateIds, DomainNames
 
 
-## 互动白板(tiw) 版本：2019-09-19
+修改数据结构：
 
-### 第 7 次发布
+* [TemplateInfo](https://cloud.tencent.com/document/api/267/20474#TemplateInfo)
 
-发布时间：2020-09-14 08:06:39
+	* 新增成员：ShortEdgeAsHeight
+
+
+
+
+## 云开发 CloudBase(tcb) 版本：2018-06-08
+
+### 第 17 次发布
+
+发布时间：2020-09-15 08:07:15
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeCloudBaseBuildService](https://cloud.tencent.com/document/api/876/48345)
+
+新增数据结构：
+
+* [KVPair](https://cloud.tencent.com/document/api/876/34822#KVPair)
+
+
+
+## 主机安全(yunjing) 版本：2018-02-28
+
+### 第 12 次发布
+
+发布时间：2020-09-15 08:08:47
 
 本次发布包含了以下内容：
 
@@ -61,13 +125,9 @@
 
 修改接口：
 
-* [DescribeOnlineRecord](https://cloud.tencent.com/document/api/1137/40067)
+* [ExportAttackLogs](https://cloud.tencent.com/document/api/296/39572)
 
-	* 新增出参：ReplayUrl
-
-* [StartOnlineRecord](https://cloud.tencent.com/document/api/1137/40063)
-
-	* 新增入参：RecordMode, ChatGroupId
+	* 新增出参：TaskId
 
 
 
@@ -5998,7 +6058,7 @@
 
 新增数据结构：
 
-* [[Tag](https://cloud.tencent.com/document/api/228/30987#Tag)](https://cloud.tencent.com/document/api/228/30987#[Tag](https://cloud.tencent.com/document/api/228/30987#Tag))
+* [Tag](https://cloud.tencent.com/document/api/228/30987#Tag)
 
 修改数据结构：
 
@@ -7124,6 +7184,21 @@
 
 
 ## 消息队列 Ckafka(ckafka) 版本：2019-08-19
+
+### 第 8 次发布
+
+发布时间：2020-09-15 08:09:08
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [SubscribedInfo](https://cloud.tencent.com/document/api/597/40861#SubscribedInfo)
+
+	* 新增成员：TopicId
+
 
 ### 第 7 次发布
 
@@ -11189,6 +11264,18 @@
 
 
 ## 云数据库 CynosDB(cynosdb) 版本：2019-01-07
+
+### 第 4 次发布
+
+发布时间：2020-09-15 08:00:04
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeInstances](https://cloud.tencent.com/document/api/1003/48334)](https://cloud.tencent.com/document/api/#/#)
 
 ### 第 3 次发布
 
@@ -16912,6 +16999,34 @@
 
 ## 物联网通信(iotcloud) 版本：2018-06-14
 
+### 第 17 次发布
+
+发布时间：2020-09-15 08:04:44
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[CancelDeviceFirmwareTask](https://cloud.tencent.com/document/api/634/48344)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeFirmware](https://cloud.tencent.com/document/api/634/48343)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeFirmwareTask](https://cloud.tencent.com/document/api/634/48339)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeFirmwareTaskDevices](https://cloud.tencent.com/document/api/634/48342)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeFirmwareTaskDistribution](https://cloud.tencent.com/document/api/634/48341)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeFirmwareTaskStatistics](https://cloud.tencent.com/document/api/634/48340)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeFirmwareTasks](https://cloud.tencent.com/document/api/634/48339)](https://cloud.tencent.com/document/api/#/#)
+* [[EditFirmware](https://cloud.tencent.com/document/api/634/48338)](https://cloud.tencent.com/document/api/#/#)
+* [[RetryDeviceFirmwareTask](https://cloud.tencent.com/document/api/634/48337)](https://cloud.tencent.com/document/api/#/#)
+* [[UploadFirmware](https://cloud.tencent.com/document/api/634/48336)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[DeviceUpdateStatus](https://cloud.tencent.com/document/api/634/19497#DeviceUpdateStatus)](https://cloud.tencent.com/document/api/634/19497#[DeviceUpdateStatus](https://cloud.tencent.com/document/api/634/19497#DeviceUpdateStatus))
+* [[FirmwareTaskInfo](https://cloud.tencent.com/document/api/634/19497#FirmwareTaskInfo)](https://cloud.tencent.com/document/api/634/19497#[FirmwareTaskInfo](https://cloud.tencent.com/document/api/634/19497#FirmwareTaskInfo))
+* [[SearchKeyword](https://cloud.tencent.com/document/api/634/19497#SearchKeyword)](https://cloud.tencent.com/document/api/634/19497#[SearchKeyword](https://cloud.tencent.com/document/api/634/19497#SearchKeyword))
+* [[StatusStatistic](https://cloud.tencent.com/document/api/634/19497#StatusStatistic)](https://cloud.tencent.com/document/api/634/19497#[StatusStatistic](https://cloud.tencent.com/document/api/634/19497#StatusStatistic))
+
 ### 第 16 次发布
 
 发布时间：2020-08-18 08:14:33
@@ -18261,6 +18376,28 @@
 
 
 ## 云直播(live) 版本：2018-08-01
+
+### 第 49 次发布
+
+发布时间：2020-09-15 08:05:13
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeLiveTranscodeRules](https://cloud.tencent.com/document/api/267/32643)
+
+	* 新增入参：TemplateIds, DomainNames
+
+
+修改数据结构：
+
+* [TemplateInfo](https://cloud.tencent.com/document/api/267/20474#TemplateInfo)
+
+	* 新增成员：ShortEdgeAsHeight
+
 
 ### 第 48 次发布
 
@@ -26183,6 +26320,22 @@
 
 ## 云开发 CloudBase(tcb) 版本：2018-06-08
 
+### 第 17 次发布
+
+发布时间：2020-09-15 08:07:15
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeCloudBaseBuildService](https://cloud.tencent.com/document/api/876/48345)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[KVPair](https://cloud.tencent.com/document/api/876/34822#KVPair)](https://cloud.tencent.com/document/api/876/34822#[KVPair](https://cloud.tencent.com/document/api/876/34822#KVPair))
+
 ### 第 16 次发布
 
 发布时间：2020-08-14 08:18:36
@@ -33894,6 +34047,21 @@
 
 
 ## 主机安全(yunjing) 版本：2018-02-28
+
+### 第 12 次发布
+
+发布时间：2020-09-15 08:08:47
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [ExportAttackLogs](https://cloud.tencent.com/document/api/296/39572)
+
+	* 新增出参：TaskId
+
 
 ### 第 11 次发布
 

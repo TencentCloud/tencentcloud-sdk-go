@@ -318,6 +318,31 @@ func (c *Client) DescribeInstanceSpecs(request *DescribeInstanceSpecsRequest) (r
     return
 }
 
+func NewDescribeInstancesRequest() (request *DescribeInstancesRequest) {
+    request = &DescribeInstancesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cynosdb", APIVersion, "DescribeInstances")
+    return
+}
+
+func NewDescribeInstancesResponse() (response *DescribeInstancesResponse) {
+    response = &DescribeInstancesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口(DescribeInstances)用于查询实例列表。
+func (c *Client) DescribeInstances(request *DescribeInstancesRequest) (response *DescribeInstancesResponse, err error) {
+    if request == nil {
+        request = NewDescribeInstancesRequest()
+    }
+    response = NewDescribeInstancesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeMaintainPeriodRequest() (request *DescribeMaintainPeriodRequest) {
     request = &DescribeMaintainPeriodRequest{
         BaseRequest: &tchttp.BaseRequest{},

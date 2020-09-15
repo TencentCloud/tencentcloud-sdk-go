@@ -1119,6 +1119,71 @@ func (r *DescribeInstanceSpecsResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeInstancesRequest struct {
+	*tchttp.BaseRequest
+
+	// 返回数量，默认为 20，最大值为 100
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 记录偏移量，默认值为0
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 排序字段，取值范围：
+	// <li> CREATETIME：创建时间</li>
+	// <li> PERIODENDTIME：过期时间</li>
+	OrderBy *string `json:"OrderBy,omitempty" name:"OrderBy"`
+
+	// 排序类型，取值范围：
+	// <li> ASC：升序排序 </li>
+	// <li> DESC：降序排序 </li>
+	OrderByType *string `json:"OrderByType,omitempty" name:"OrderByType"`
+
+	// 搜索条件，若存在多个Filter时，Filter间的关系为逻辑与（AND）关系。
+	Filters []*QueryFilter `json:"Filters,omitempty" name:"Filters" list`
+
+	// 引擎类型：目前支持“MYSQL”， “POSTGRESQL”
+	DbType *string `json:"DbType,omitempty" name:"DbType"`
+
+	// 实例状态
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 实例id列表
+	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds" list`
+}
+
+func (r *DescribeInstancesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeInstancesRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeInstancesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 实例个数
+		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 实例列表
+		InstanceSet []*CynosdbInstance `json:"InstanceSet,omitempty" name:"InstanceSet" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeInstancesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeInstancesResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeMaintainPeriodRequest struct {
 	*tchttp.BaseRequest
 

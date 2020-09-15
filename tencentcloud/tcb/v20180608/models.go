@@ -395,6 +395,58 @@ func (r *DescribeAuthDomainsResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeCloudBaseBuildServiceRequest struct {
+	*tchttp.BaseRequest
+
+	// 环境id
+	EnvId *string `json:"EnvId,omitempty" name:"EnvId"`
+
+	// 服务名
+	ServiceName *string `json:"ServiceName,omitempty" name:"ServiceName"`
+
+	// build类型,枚举值有: cloudbaserun, framework-ci
+	CIBusiness *string `json:"CIBusiness,omitempty" name:"CIBusiness"`
+}
+
+func (r *DescribeCloudBaseBuildServiceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeCloudBaseBuildServiceRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeCloudBaseBuildServiceResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 上传url
+		UploadUrl *string `json:"UploadUrl,omitempty" name:"UploadUrl"`
+
+		// heder
+		UploadHeaders []*KVPair `json:"UploadHeaders,omitempty" name:"UploadHeaders" list`
+
+		// 包名
+		PackageName *string `json:"PackageName,omitempty" name:"PackageName"`
+
+		// 包版本
+		PackageVersion *string `json:"PackageVersion,omitempty" name:"PackageVersion"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeCloudBaseBuildServiceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeCloudBaseBuildServiceResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeDatabaseACLRequest struct {
 	*tchttp.BaseRequest
 
@@ -1106,6 +1158,15 @@ type FunctionInfo struct {
 	// 所属地域。
 	// 当前支持ap-shanghai
 	Region *string `json:"Region,omitempty" name:"Region"`
+}
+
+type KVPair struct {
+
+	// 键
+	Key *string `json:"Key,omitempty" name:"Key"`
+
+	// 值
+	Value *string `json:"Value,omitempty" name:"Value"`
 }
 
 type LogServiceInfo struct {

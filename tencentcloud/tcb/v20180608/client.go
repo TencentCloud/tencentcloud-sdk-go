@@ -243,6 +243,31 @@ func (c *Client) DescribeAuthDomains(request *DescribeAuthDomainsRequest) (respo
     return
 }
 
+func NewDescribeCloudBaseBuildServiceRequest() (request *DescribeCloudBaseBuildServiceRequest) {
+    request = &DescribeCloudBaseBuildServiceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tcb", APIVersion, "DescribeCloudBaseBuildService")
+    return
+}
+
+func NewDescribeCloudBaseBuildServiceResponse() (response *DescribeCloudBaseBuildServiceResponse) {
+    response = &DescribeCloudBaseBuildServiceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 获取云托管代码上传url
+func (c *Client) DescribeCloudBaseBuildService(request *DescribeCloudBaseBuildServiceRequest) (response *DescribeCloudBaseBuildServiceResponse, err error) {
+    if request == nil {
+        request = NewDescribeCloudBaseBuildServiceRequest()
+    }
+    response = NewDescribeCloudBaseBuildServiceResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeDatabaseACLRequest() (request *DescribeDatabaseACLRequest) {
     request = &DescribeDatabaseACLRequest{
         BaseRequest: &tchttp.BaseRequest{},

@@ -68,6 +68,31 @@ func (c *Client) BindDevices(request *BindDevicesRequest) (response *BindDevices
     return
 }
 
+func NewCancelDeviceFirmwareTaskRequest() (request *CancelDeviceFirmwareTaskRequest) {
+    request = &CancelDeviceFirmwareTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iotcloud", APIVersion, "CancelDeviceFirmwareTask")
+    return
+}
+
+func NewCancelDeviceFirmwareTaskResponse() (response *CancelDeviceFirmwareTaskResponse) {
+    response = &CancelDeviceFirmwareTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 取消设备升级任务
+func (c *Client) CancelDeviceFirmwareTask(request *CancelDeviceFirmwareTaskRequest) (response *CancelDeviceFirmwareTaskResponse, err error) {
+    if request == nil {
+        request = NewCancelDeviceFirmwareTaskRequest()
+    }
+    response = NewCancelDeviceFirmwareTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCancelTaskRequest() (request *CancelTaskRequest) {
     request = &CancelTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -543,6 +568,156 @@ func (c *Client) DescribeDevices(request *DescribeDevicesRequest) (response *Des
     return
 }
 
+func NewDescribeFirmwareRequest() (request *DescribeFirmwareRequest) {
+    request = &DescribeFirmwareRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iotcloud", APIVersion, "DescribeFirmware")
+    return
+}
+
+func NewDescribeFirmwareResponse() (response *DescribeFirmwareResponse) {
+    response = &DescribeFirmwareResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询固件信息
+func (c *Client) DescribeFirmware(request *DescribeFirmwareRequest) (response *DescribeFirmwareResponse, err error) {
+    if request == nil {
+        request = NewDescribeFirmwareRequest()
+    }
+    response = NewDescribeFirmwareResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeFirmwareTaskRequest() (request *DescribeFirmwareTaskRequest) {
+    request = &DescribeFirmwareTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iotcloud", APIVersion, "DescribeFirmwareTask")
+    return
+}
+
+func NewDescribeFirmwareTaskResponse() (response *DescribeFirmwareTaskResponse) {
+    response = &DescribeFirmwareTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询固件升级任务列表
+func (c *Client) DescribeFirmwareTask(request *DescribeFirmwareTaskRequest) (response *DescribeFirmwareTaskResponse, err error) {
+    if request == nil {
+        request = NewDescribeFirmwareTaskRequest()
+    }
+    response = NewDescribeFirmwareTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeFirmwareTaskDevicesRequest() (request *DescribeFirmwareTaskDevicesRequest) {
+    request = &DescribeFirmwareTaskDevicesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iotcloud", APIVersion, "DescribeFirmwareTaskDevices")
+    return
+}
+
+func NewDescribeFirmwareTaskDevicesResponse() (response *DescribeFirmwareTaskDevicesResponse) {
+    response = &DescribeFirmwareTaskDevicesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询固件升级任务的设备列表
+func (c *Client) DescribeFirmwareTaskDevices(request *DescribeFirmwareTaskDevicesRequest) (response *DescribeFirmwareTaskDevicesResponse, err error) {
+    if request == nil {
+        request = NewDescribeFirmwareTaskDevicesRequest()
+    }
+    response = NewDescribeFirmwareTaskDevicesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeFirmwareTaskDistributionRequest() (request *DescribeFirmwareTaskDistributionRequest) {
+    request = &DescribeFirmwareTaskDistributionRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iotcloud", APIVersion, "DescribeFirmwareTaskDistribution")
+    return
+}
+
+func NewDescribeFirmwareTaskDistributionResponse() (response *DescribeFirmwareTaskDistributionResponse) {
+    response = &DescribeFirmwareTaskDistributionResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询固件升级任务状态分布
+func (c *Client) DescribeFirmwareTaskDistribution(request *DescribeFirmwareTaskDistributionRequest) (response *DescribeFirmwareTaskDistributionResponse, err error) {
+    if request == nil {
+        request = NewDescribeFirmwareTaskDistributionRequest()
+    }
+    response = NewDescribeFirmwareTaskDistributionResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeFirmwareTaskStatisticsRequest() (request *DescribeFirmwareTaskStatisticsRequest) {
+    request = &DescribeFirmwareTaskStatisticsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iotcloud", APIVersion, "DescribeFirmwareTaskStatistics")
+    return
+}
+
+func NewDescribeFirmwareTaskStatisticsResponse() (response *DescribeFirmwareTaskStatisticsResponse) {
+    response = &DescribeFirmwareTaskStatisticsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询固件升级任务统计信息
+func (c *Client) DescribeFirmwareTaskStatistics(request *DescribeFirmwareTaskStatisticsRequest) (response *DescribeFirmwareTaskStatisticsResponse, err error) {
+    if request == nil {
+        request = NewDescribeFirmwareTaskStatisticsRequest()
+    }
+    response = NewDescribeFirmwareTaskStatisticsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeFirmwareTasksRequest() (request *DescribeFirmwareTasksRequest) {
+    request = &DescribeFirmwareTasksRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iotcloud", APIVersion, "DescribeFirmwareTasks")
+    return
+}
+
+func NewDescribeFirmwareTasksResponse() (response *DescribeFirmwareTasksResponse) {
+    response = &DescribeFirmwareTasksResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询固件升级任务列表
+func (c *Client) DescribeFirmwareTasks(request *DescribeFirmwareTasksRequest) (response *DescribeFirmwareTasksResponse, err error) {
+    if request == nil {
+        request = NewDescribeFirmwareTasksRequest()
+    }
+    response = NewDescribeFirmwareTasksResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeLoraDeviceRequest() (request *DescribeLoraDeviceRequest) {
     request = &DescribeLoraDeviceRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -768,6 +943,31 @@ func (c *Client) DisableTopicRule(request *DisableTopicRuleRequest) (response *D
     return
 }
 
+func NewEditFirmwareRequest() (request *EditFirmwareRequest) {
+    request = &EditFirmwareRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iotcloud", APIVersion, "EditFirmware")
+    return
+}
+
+func NewEditFirmwareResponse() (response *EditFirmwareResponse) {
+    response = &EditFirmwareResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 编辑固件信息
+func (c *Client) EditFirmware(request *EditFirmwareRequest) (response *EditFirmwareResponse, err error) {
+    if request == nil {
+        request = NewEditFirmwareRequest()
+    }
+    response = NewEditFirmwareResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewEnableTopicRuleRequest() (request *EnableTopicRuleRequest) {
     request = &EnableTopicRuleRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -968,6 +1168,31 @@ func (c *Client) ResetDeviceState(request *ResetDeviceStateRequest) (response *R
     return
 }
 
+func NewRetryDeviceFirmwareTaskRequest() (request *RetryDeviceFirmwareTaskRequest) {
+    request = &RetryDeviceFirmwareTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iotcloud", APIVersion, "RetryDeviceFirmwareTask")
+    return
+}
+
+func NewRetryDeviceFirmwareTaskResponse() (response *RetryDeviceFirmwareTaskResponse) {
+    response = &RetryDeviceFirmwareTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 重试设备升级任务
+func (c *Client) RetryDeviceFirmwareTask(request *RetryDeviceFirmwareTaskRequest) (response *RetryDeviceFirmwareTaskResponse, err error) {
+    if request == nil {
+        request = NewRetryDeviceFirmwareTaskRequest()
+    }
+    response = NewRetryDeviceFirmwareTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewUnbindDevicesRequest() (request *UnbindDevicesRequest) {
     request = &UnbindDevicesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1064,6 +1289,31 @@ func (c *Client) UpdateTopicPolicy(request *UpdateTopicPolicyRequest) (response 
         request = NewUpdateTopicPolicyRequest()
     }
     response = NewUpdateTopicPolicyResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewUploadFirmwareRequest() (request *UploadFirmwareRequest) {
+    request = &UploadFirmwareRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iotcloud", APIVersion, "UploadFirmware")
+    return
+}
+
+func NewUploadFirmwareResponse() (response *UploadFirmwareResponse) {
+    response = &UploadFirmwareResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（UploadFirmware）用于上传设备固件信息 
+func (c *Client) UploadFirmware(request *UploadFirmwareRequest) (response *UploadFirmwareResponse, err error) {
+    if request == nil {
+        request = NewUploadFirmwareRequest()
+    }
+    response = NewUploadFirmwareResponse()
     err = c.Send(request, response)
     return
 }

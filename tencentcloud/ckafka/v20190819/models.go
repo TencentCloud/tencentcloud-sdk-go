@@ -2128,6 +2128,10 @@ type SubscribedInfo struct {
 	// 分区offset信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PartitionOffset []*PartitionOffset `json:"PartitionOffset,omitempty" name:"PartitionOffset" list`
+
+	// 订阅的主题ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TopicId *string `json:"TopicId,omitempty" name:"TopicId"`
 }
 
 type Tag struct {
