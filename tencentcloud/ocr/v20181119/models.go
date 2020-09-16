@@ -374,8 +374,13 @@ type CarInvoiceInfo struct {
 	// 识别出的字段名称对应的值，也就是字段name对应的字符串结果。
 	Value *string `json:"Value,omitempty" name:"Value"`
 
-	// 文本行在旋转纠正之后的图像中的像素坐标。
+	// 字段在旋转纠正之后的图像中的像素坐标。
 	Rect *Rect `json:"Rect,omitempty" name:"Rect"`
+
+	// 字段在原图中的中的四点坐标。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Polygon *Polygon `json:"Polygon,omitempty" name:"Polygon"`
 }
 
 type CarInvoiceOCRRequest struct {
@@ -1392,6 +1397,9 @@ type GeneralHandwritingOCRRequest struct {
 	// 场景字段，默认不用填写。
 	// 可选值:only_hw  表示只输出手写体识别结果，过滤印刷体。
 	Scene *string `json:"Scene,omitempty" name:"Scene"`
+
+	// 是否开启单字的四点定位坐标输出，默认值为false。
+	EnableWordPolygon *bool `json:"EnableWordPolygon,omitempty" name:"EnableWordPolygon"`
 }
 
 func (r *GeneralHandwritingOCRRequest) ToJsonString() string {
@@ -2314,13 +2322,13 @@ type MixedInvoiceOCRRequest struct {
 
 	// 图片的 Base64 值。
 	// 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
-	// 支持的图片大小：所下载图片经Base64编码后不超过 3M。图片下载时间不超过 3 秒。
+	// 支持的图片大小：所下载图片经Base64编码后不超过 7M。图片下载时间不超过 3 秒。
 	// 图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
 	ImageBase64 *string `json:"ImageBase64,omitempty" name:"ImageBase64"`
 
 	// 图片的 Url 地址。
 	// 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
-	// 支持的图片大小：所下载图片经 Base64 编码后不超过 3M。图片下载时间不超过 3 秒。
+	// 支持的图片大小：所下载图片经 Base64 编码后不超过 7M。图片下载时间不超过 3 秒。
 	// 图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。
 	// 非腾讯云存储的 Url 速度和稳定性可能受一定影响。
 	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
@@ -2580,6 +2588,21 @@ func (r *PermitOCRResponse) ToJsonString() string {
 
 func (r *PermitOCRResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
+}
+
+type Polygon struct {
+
+	// 左上顶点坐标
+	LeftTop *Coord `json:"LeftTop,omitempty" name:"LeftTop"`
+
+	// 右上顶点坐标
+	RightTop *Coord `json:"RightTop,omitempty" name:"RightTop"`
+
+	// 右下顶点坐标
+	RightBottom *Coord `json:"RightBottom,omitempty" name:"RightBottom"`
+
+	// 左下顶点坐标
+	LeftBottom *Coord `json:"LeftBottom,omitempty" name:"LeftBottom"`
 }
 
 type ProductDataRecord struct {
@@ -3548,6 +3571,10 @@ type TextGeneralHandwriting struct {
 	// 能返回文本行的段落信息，例如：{\"Parag\":{\"ParagNo\":2}}，
 	// 其中ParagNo为段落行，从1开始。
 	AdvancedInfo *string `json:"AdvancedInfo,omitempty" name:"AdvancedInfo"`
+
+	// 字的坐标数组，以四个顶点坐标表示
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WordPolygon []*Polygon `json:"WordPolygon,omitempty" name:"WordPolygon" list`
 }
 
 type TextTable struct {
@@ -3587,6 +3614,11 @@ type TextVatInvoice struct {
 
 	// 识别出的字段名称对应的值，也就是字段Name对应的字符串结果。
 	Value *string `json:"Value,omitempty" name:"Value"`
+
+	// 字段在原图中的中的四点坐标。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Polygon *Polygon `json:"Polygon,omitempty" name:"Polygon"`
 }
 
 type TextVehicleBack struct {
@@ -3961,18 +3993,24 @@ type VatInvoiceItem struct {
 type VatInvoiceOCRRequest struct {
 	*tchttp.BaseRequest
 
-	// 图片的 Base64 值。
-	// 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
-	// 支持的图片大小：所下载图片经Base64编码后不超过 3M。图片下载时间不超过 3 秒。
-	// 图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+	// 图片/PDF的 Base64 值。
+	// 支持的文件格式：PNG、JPG、JPEG、PDF，暂不支持 GIF 格式。
+	// 支持的图片/PDF大小：所下载文件经Base64编码后不超过 3M。文件下载时间不超过 3 秒。
+	// 输入参数 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
 	ImageBase64 *string `json:"ImageBase64,omitempty" name:"ImageBase64"`
 
-	// 图片的 Url 地址。
-	// 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
-	// 支持的图片大小：所下载图片经 Base64 编码后不超过 3M。图片下载时间不超过 3 秒。
+	// 图片/PDF的 Url 地址。
+	// 支持的文件格式：PNG、JPG、JPEG、PDF，暂不支持 GIF 格式。
+	// 支持的图片/PDF大小：所下载文件经 Base64 编码后不超过 3M。文件下载时间不超过 3 秒。
 	// 图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。
 	// 非腾讯云存储的 Url 速度和稳定性可能受一定影响。
 	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
+
+	// 是否开启PDF识别，默认值为false，开启后可同时支持图片和PDF的识别。
+	IsPdf *bool `json:"IsPdf,omitempty" name:"IsPdf"`
+
+	// 需要识别的PDF页面的对应页码，仅支持PDF单页识别，当上传文件为PDF且IsPdf参数值为true时有效，默认值为1。
+	PdfPageNumber *uint64 `json:"PdfPageNumber,omitempty" name:"PdfPageNumber"`
 }
 
 func (r *VatInvoiceOCRRequest) ToJsonString() string {
@@ -3993,6 +4031,9 @@ type VatInvoiceOCRResponse struct {
 
 		// 明细条目。VatInvoiceInfos中关于明细项的具体条目。
 		Items []*VatInvoiceItem `json:"Items,omitempty" name:"Items" list`
+
+		// 图片为PDF时，返回PDF的总页数，默认为0
+		PdfPageSize *int64 `json:"PdfPageSize,omitempty" name:"PdfPageSize"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`

@@ -703,7 +703,7 @@ type DescribeDBInstancesRequest struct {
 	// 集群类型，取值范围：0-副本集实例，1-分片实例，-1-所有实例
 	ClusterType *int64 `json:"ClusterType,omitempty" name:"ClusterType"`
 
-	// 实例状态，取值范围：0-待初始化，1-流程执行中，2-实例有效，-2-实例已过期
+	// 实例状态，取值范围：0-待初始化，1-流程执行中，2-实例有效，-2-已隔离（包年包月实例），-3-已隔离（按量计费实例）
 	Status []*int64 `json:"Status,omitempty" name:"Status" list`
 
 	// 私有网络的ID，基础网络则不传该参数
@@ -730,8 +730,11 @@ type DescribeDBInstancesRequest struct {
 	// 项目 ID
 	ProjectIds []*uint64 `json:"ProjectIds,omitempty" name:"ProjectIds" list`
 
-	// 搜索关键词，支持实例Id、实例名称、完整IP
+	// 搜索关键词，支持实例ID、实例名称、完整IP
 	SearchKey *string `json:"SearchKey,omitempty" name:"SearchKey"`
+
+	// Tag信息
+	Tags *TagInfo `json:"Tags,omitempty" name:"Tags"`
 }
 
 func (r *DescribeDBInstancesRequest) ToJsonString() string {

@@ -140,13 +140,13 @@ type Block struct {
 	// 区块编号
 	BlockNum *uint64 `json:"BlockNum,omitempty" name:"BlockNum"`
 
-	// 区块Hash数值
+	// 区块数据Hash数值
 	DataHash *string `json:"DataHash,omitempty" name:"DataHash"`
 
 	// 区块ID，与区块编号一致
 	BlockId *uint64 `json:"BlockId,omitempty" name:"BlockId"`
 
-	// 前一个区块Hash（未使用）,与区块Hash数值一致
+	// 前一个区块Hash
 	PreHash *string `json:"PreHash,omitempty" name:"PreHash"`
 
 	// 区块内的交易数量
@@ -205,7 +205,7 @@ type DeployDynamicContractHandlerRequest struct {
 	// 模块名，固定字段：contract
 	Module *string `json:"Module,omitempty" name:"Module"`
 
-	// 操作名，固定字段：deploy_by_dynamic_contract
+	// 操作名，固定字段：deploy_dynamic_contract
 	Operation *string `json:"Operation,omitempty" name:"Operation"`
 
 	// 群组编号

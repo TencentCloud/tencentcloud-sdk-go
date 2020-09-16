@@ -1765,7 +1765,10 @@ type AudioTemplateInfoForUpdate struct {
 
 type AudioTrackItem struct {
 
-	// 音频素材的媒体文件来源。可以是点播的文件 ID，也可以是其它文件的 URL。
+	// 音频片段的媒体素材来源，可以是：
+	// <li>点播的媒体文件 ID；</li>
+	// <li>其他媒体文件的下载 URL。</li>
+	// 注意：当使用其他媒体文件的下载 URL 作为素材来源，且开启了访问控制（如防盗链）时，需要在 URL 携带访问控制参数（如防盗链签名）。
 	SourceMedia *string `json:"SourceMedia,omitempty" name:"SourceMedia"`
 
 	// 音频片段取自素材文件的起始时间，单位为秒。0 表示从素材开始位置截取。默认为0。
@@ -1985,7 +1988,7 @@ type ComposeMediaRequest struct {
 	// 标识来源上下文，用于透传用户请求信息，在ComposeMediaComplete回调将返回该字段值，最长 1000个字符。
 	SessionContext *string `json:"SessionContext,omitempty" name:"SessionContext"`
 
-	// 用于任务去重的识别码，如果一天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。
+	// 用于任务去重的识别码，如果三天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。
 	SessionId *string `json:"SessionId,omitempty" name:"SessionId"`
 
 	// 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
@@ -5368,8 +5371,11 @@ type EditMediaRequest struct {
 	// 任务的优先级，数值越大优先级越高，取值范围是 -10 到 10，不填代表 0。
 	TasksPriority *int64 `json:"TasksPriority,omitempty" name:"TasksPriority"`
 
-	// 用于任务去重的识别码，如果一天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。
+	// 用于任务去重的识别码，如果三天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。
 	SessionId *string `json:"SessionId,omitempty" name:"SessionId"`
+
+	// 保留字段，特殊用途时使用。
+	ExtInfo *string `json:"ExtInfo,omitempty" name:"ExtInfo"`
 
 	// 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
 	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
@@ -8671,7 +8677,7 @@ type ProcessMediaByProcedureRequest struct {
 	// 来源上下文，用于透传用户请求信息，任务流状态变更回调将返回该字段值，最长 1000 个字符。
 	SessionContext *string `json:"SessionContext,omitempty" name:"SessionContext"`
 
-	// 用于去重的识别码，如果一天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。
+	// 用于去重的识别码，如果三天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。
 	SessionId *string `json:"SessionId,omitempty" name:"SessionId"`
 
 	// 保留字段，特殊用途时使用。
@@ -8738,7 +8744,7 @@ type ProcessMediaByUrlRequest struct {
 	// 来源上下文，用于透传用户请求信息，任务流状态变更回调将返回该字段值，最长 1000 个字符。
 	SessionContext *string `json:"SessionContext,omitempty" name:"SessionContext"`
 
-	// 用于去重的识别码，如果七天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。
+	// 用于去重的识别码，如果三天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。
 	SessionId *string `json:"SessionId,omitempty" name:"SessionId"`
 
 	// 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
@@ -8802,7 +8808,7 @@ type ProcessMediaRequest struct {
 	// 来源上下文，用于透传用户请求信息，任务流状态变更回调将返回该字段值，最长 1000 个字符。
 	SessionContext *string `json:"SessionContext,omitempty" name:"SessionContext"`
 
-	// 用于去重的识别码，如果七天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。
+	// 用于去重的识别码，如果三天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。
 	SessionId *string `json:"SessionId,omitempty" name:"SessionId"`
 
 	// 保留字段，特殊用途时使用。
@@ -8989,7 +8995,7 @@ type PullUploadRequest struct {
 	// 来源上下文，用于透传用户请求信息，当指定 Procedure 任务后，任务流状态变更回调将返回该字段值，最长 1000 个字符。
 	SessionContext *string `json:"SessionContext,omitempty" name:"SessionContext"`
 
-	// 用于去重的识别码，如果七天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。
+	// 用于去重的识别码，如果三天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。
 	SessionId *string `json:"SessionId,omitempty" name:"SessionId"`
 
 	// 保留字段，特殊用途时使用。
@@ -9591,7 +9597,10 @@ type StatDataItem struct {
 
 type StickerTrackItem struct {
 
-	// 贴图素材的媒体文件来源。可以是点播的文件 ID，也可以是其它文件的 URL。
+	// 贴图片段的媒体素材来源，可以是：
+	// <li>点播的媒体文件 ID；</li>
+	// <li>其他媒体文件的下载 URL。</li>
+	// 注意：当使用其他媒体文件的下载 URL 作为素材来源，且开启了访问控制（如防盗链）时，需要在 URL 携带访问控制参数（如防盗链签名）。
 	SourceMedia *string `json:"SourceMedia,omitempty" name:"SourceMedia"`
 
 	// 贴图的持续时间，单位为秒。
@@ -10396,7 +10405,10 @@ type VideoTemplateInfoForUpdate struct {
 
 type VideoTrackItem struct {
 
-	// 视频片段的媒体素材来源，可以是点播的文件 ID，或者是其它文件的 URL。
+	// 视频片段的媒体素材来源，可以是：
+	// <li>点播的媒体文件 ID；</li>
+	// <li>其他媒体文件的下载 URL。</li>
+	// 注意：当使用其他媒体文件的下载 URL 作为素材来源，且开启了访问控制（如防盗链）时，需要在 URL 携带访问控制参数（如防盗链签名）。
 	SourceMedia *string `json:"SourceMedia,omitempty" name:"SourceMedia"`
 
 	// 视频片段取自素材文件的起始时间，单位为秒。默认为0。

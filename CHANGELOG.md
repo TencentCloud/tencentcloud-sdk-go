@@ -1,77 +1,50 @@
 # 本版本更新包含以下内容：
 
-## 消息队列 Ckafka(ckafka) 版本：2019-08-19
+## 访问管理(cam) 版本：2019-01-16
+
+### 第 25 次发布
+
+发布时间：2020-09-16 08:01:43
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeSafeAuthFlag](https://cloud.tencent.com/document/api/598/48426)
+
+新增数据结构：
+
+* [LoginActionFlag](https://cloud.tencent.com/document/api/598/33167#LoginActionFlag)
+* [OffsiteFlag](https://cloud.tencent.com/document/api/598/33167#OffsiteFlag)
+
+
+
+## 验证码(captcha) 版本：2019-07-22
+
+### 第 5 次发布
+
+发布时间：2020-09-16 08:01:53
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [CaptchaUserAllAppId](https://cloud.tencent.com/document/api/1110/40481#CaptchaUserAllAppId)
+
+	* 新增成员：ChannelInfo
+
+
+
+
+## 云数据库 MongoDB(mongodb) 版本：2019-07-25
 
 ### 第 8 次发布
 
-发布时间：2020-09-15 08:09:08
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [SubscribedInfo](https://cloud.tencent.com/document/api/597/40861#SubscribedInfo)
-
-	* 新增成员：TopicId
-
-
-
-
-## 云数据库 CynosDB(cynosdb) 版本：2019-01-07
-
-### 第 4 次发布
-
-发布时间：2020-09-15 08:00:04
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [DescribeInstances](https://cloud.tencent.com/document/api/1003/48334)
-
-
-
-## 物联网通信(iotcloud) 版本：2018-06-14
-
-### 第 17 次发布
-
-发布时间：2020-09-15 08:04:44
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [CancelDeviceFirmwareTask](https://cloud.tencent.com/document/api/634/48344)
-* [DescribeFirmware](https://cloud.tencent.com/document/api/634/48343)
-* [DescribeFirmwareTask](https://cloud.tencent.com/document/api/634/48339)
-* [DescribeFirmwareTaskDevices](https://cloud.tencent.com/document/api/634/48342)
-* [DescribeFirmwareTaskDistribution](https://cloud.tencent.com/document/api/634/48341)
-* [DescribeFirmwareTaskStatistics](https://cloud.tencent.com/document/api/634/48340)
-* [DescribeFirmwareTasks](https://cloud.tencent.com/document/api/634/48339)
-* [EditFirmware](https://cloud.tencent.com/document/api/634/48338)
-* [RetryDeviceFirmwareTask](https://cloud.tencent.com/document/api/634/48337)
-* [UploadFirmware](https://cloud.tencent.com/document/api/634/48336)
-
-新增数据结构：
-
-* [DeviceUpdateStatus](https://cloud.tencent.com/document/api/634/19497#DeviceUpdateStatus)
-* [FirmwareTaskInfo](https://cloud.tencent.com/document/api/634/19497#FirmwareTaskInfo)
-* [SearchKeyword](https://cloud.tencent.com/document/api/634/19497#SearchKeyword)
-* [StatusStatistic](https://cloud.tencent.com/document/api/634/19497#StatusStatistic)
-
-
-
-## 云直播(live) 版本：2018-08-01
-
-### 第 49 次发布
-
-发布时间：2020-09-15 08:05:13
+发布时间：2020-09-16 08:04:22
 
 本次发布包含了以下内容：
 
@@ -79,25 +52,22 @@
 
 修改接口：
 
-* [DescribeLiveTranscodeRules](https://cloud.tencent.com/document/api/267/32643)
+* [DescribeDBInstances](https://cloud.tencent.com/document/api/240/38568)
 
-	* 新增入参：TemplateIds, DomainNames
-
-
-修改数据结构：
-
-* [TemplateInfo](https://cloud.tencent.com/document/api/267/20474#TemplateInfo)
-
-	* 新增成员：ShortEdgeAsHeight
+	* 新增入参：Tags
 
 
 
 
-## 云开发 CloudBase(tcb) 版本：2018-06-08
+## 云数据库 MongoDB(mongodb) 版本：2018-04-08
 
-### 第 17 次发布
 
-发布时间：2020-09-15 08:07:15
+
+## 视频处理(mps) 版本：2019-06-12
+
+### 第 23 次发布
+
+发布时间：2020-09-16 08:04:34
 
 本次发布包含了以下内容：
 
@@ -105,19 +75,15 @@
 
 新增接口：
 
-* [DescribeCloudBaseBuildService](https://cloud.tencent.com/document/api/876/48345)
-
-新增数据结构：
-
-* [KVPair](https://cloud.tencent.com/document/api/876/34822#KVPair)
+* [ExecuteFunction](https://cloud.tencent.com/document/api/862/48427)
 
 
 
-## 主机安全(yunjing) 版本：2018-02-28
+## 文字识别(ocr) 版本：2018-11-19
 
-### 第 12 次发布
+### 第 34 次发布
 
-发布时间：2020-09-15 08:08:47
+发布时间：2020-09-16 08:04:52
 
 本次发布包含了以下内容：
 
@@ -125,9 +91,76 @@
 
 修改接口：
 
-* [ExportAttackLogs](https://cloud.tencent.com/document/api/296/39572)
+* [GeneralHandwritingOCR](https://cloud.tencent.com/document/api/866/36212)
 
-	* 新增出参：TaskId
+	* 新增入参：EnableWordPolygon
+
+* [VatInvoiceOCR](https://cloud.tencent.com/document/api/866/36210)
+
+	* 新增入参：IsPdf, PdfPageNumber
+
+	* 新增出参：PdfPageSize
+
+
+新增数据结构：
+
+* [Polygon](https://cloud.tencent.com/document/api/866/33527#Polygon)
+
+修改数据结构：
+
+* [CarInvoiceInfo](https://cloud.tencent.com/document/api/866/33527#CarInvoiceInfo)
+
+	* 新增成员：Polygon
+
+* [TextGeneralHandwriting](https://cloud.tencent.com/document/api/866/33527#TextGeneralHandwriting)
+
+	* 新增成员：WordPolygon
+
+* [TextVatInvoice](https://cloud.tencent.com/document/api/866/33527#TextVatInvoice)
+
+	* 新增成员：Polygon
+
+
+
+
+## 云函数(scf) 版本：2018-04-16
+
+### 第 19 次发布
+
+发布时间：2020-09-16 08:05:21
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [GetFunction](https://cloud.tencent.com/document/api/583/18584)
+
+	* 新增出参：StatusReasons
+
+
+新增数据结构：
+
+* [StatusReason](https://cloud.tencent.com/document/api/583/17244#StatusReason)
+
+
+
+## 云点播(vod) 版本：2018-07-17
+
+### 第 56 次发布
+
+发布时间：2020-09-16 08:06:57
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [EditMedia](https://cloud.tencent.com/document/api/266/34783)
+
+	* 新增入参：ExtInfo
 
 
 
@@ -3915,6 +3948,23 @@
 
 ## 访问管理(cam) 版本：2019-01-16
 
+### 第 25 次发布
+
+发布时间：2020-09-16 08:01:43
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeSafeAuthFlag](https://cloud.tencent.com/document/api/598/48426)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[LoginActionFlag](https://cloud.tencent.com/document/api/598/33167#LoginActionFlag)](https://cloud.tencent.com/document/api/598/33167#[LoginActionFlag](https://cloud.tencent.com/document/api/598/33167#LoginActionFlag))
+* [[OffsiteFlag](https://cloud.tencent.com/document/api/598/33167#OffsiteFlag)](https://cloud.tencent.com/document/api/598/33167#[OffsiteFlag](https://cloud.tencent.com/document/api/598/33167#OffsiteFlag))
+
 ### 第 24 次发布
 
 发布时间：2020-07-22 08:05:59
@@ -4428,6 +4478,21 @@
 
 
 ## 验证码(captcha) 版本：2019-07-22
+
+### 第 5 次发布
+
+发布时间：2020-09-16 08:01:53
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [CaptchaUserAllAppId](https://cloud.tencent.com/document/api/1110/40481#CaptchaUserAllAppId)
+
+	* 新增成员：ChannelInfo
+
 
 ### 第 4 次发布
 
@@ -11275,7 +11340,7 @@
 
 新增接口：
 
-* [[DescribeInstances](https://cloud.tencent.com/document/api/1003/48334)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeInstances](https://cloud.tencent.com/document/api/1003/48334)
 
 ### 第 3 次发布
 
@@ -17009,23 +17074,23 @@
 
 新增接口：
 
-* [[CancelDeviceFirmwareTask](https://cloud.tencent.com/document/api/634/48344)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeFirmware](https://cloud.tencent.com/document/api/634/48343)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeFirmwareTask](https://cloud.tencent.com/document/api/634/48339)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeFirmwareTaskDevices](https://cloud.tencent.com/document/api/634/48342)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeFirmwareTaskDistribution](https://cloud.tencent.com/document/api/634/48341)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeFirmwareTaskStatistics](https://cloud.tencent.com/document/api/634/48340)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeFirmwareTasks](https://cloud.tencent.com/document/api/634/48339)](https://cloud.tencent.com/document/api/#/#)
-* [[EditFirmware](https://cloud.tencent.com/document/api/634/48338)](https://cloud.tencent.com/document/api/#/#)
-* [[RetryDeviceFirmwareTask](https://cloud.tencent.com/document/api/634/48337)](https://cloud.tencent.com/document/api/#/#)
-* [[UploadFirmware](https://cloud.tencent.com/document/api/634/48336)](https://cloud.tencent.com/document/api/#/#)
+* [CancelDeviceFirmwareTask](https://cloud.tencent.com/document/api/634/48344)
+* [DescribeFirmware](https://cloud.tencent.com/document/api/634/48343)
+* [DescribeFirmwareTask](https://cloud.tencent.com/document/api/634/48339)
+* [DescribeFirmwareTaskDevices](https://cloud.tencent.com/document/api/634/48342)
+* [DescribeFirmwareTaskDistribution](https://cloud.tencent.com/document/api/634/48341)
+* [DescribeFirmwareTaskStatistics](https://cloud.tencent.com/document/api/634/48340)
+* [DescribeFirmwareTasks](https://cloud.tencent.com/document/api/634/48339)
+* [EditFirmware](https://cloud.tencent.com/document/api/634/48338)
+* [RetryDeviceFirmwareTask](https://cloud.tencent.com/document/api/634/48337)
+* [UploadFirmware](https://cloud.tencent.com/document/api/634/48336)
 
 新增数据结构：
 
-* [[DeviceUpdateStatus](https://cloud.tencent.com/document/api/634/19497#DeviceUpdateStatus)](https://cloud.tencent.com/document/api/634/19497#[DeviceUpdateStatus](https://cloud.tencent.com/document/api/634/19497#DeviceUpdateStatus))
-* [[FirmwareTaskInfo](https://cloud.tencent.com/document/api/634/19497#FirmwareTaskInfo)](https://cloud.tencent.com/document/api/634/19497#[FirmwareTaskInfo](https://cloud.tencent.com/document/api/634/19497#FirmwareTaskInfo))
-* [[SearchKeyword](https://cloud.tencent.com/document/api/634/19497#SearchKeyword)](https://cloud.tencent.com/document/api/634/19497#[SearchKeyword](https://cloud.tencent.com/document/api/634/19497#SearchKeyword))
-* [[StatusStatistic](https://cloud.tencent.com/document/api/634/19497#StatusStatistic)](https://cloud.tencent.com/document/api/634/19497#[StatusStatistic](https://cloud.tencent.com/document/api/634/19497#StatusStatistic))
+* [DeviceUpdateStatus](https://cloud.tencent.com/document/api/634/19497#DeviceUpdateStatus)
+* [FirmwareTaskInfo](https://cloud.tencent.com/document/api/634/19497#FirmwareTaskInfo)
+* [SearchKeyword](https://cloud.tencent.com/document/api/634/19497#SearchKeyword)
+* [StatusStatistic](https://cloud.tencent.com/document/api/634/19497#StatusStatistic)
 
 ### 第 16 次发布
 
@@ -20058,6 +20123,21 @@
 
 ## 云数据库 MongoDB(mongodb) 版本：2019-07-25
 
+### 第 8 次发布
+
+发布时间：2020-09-16 08:04:22
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeDBInstances](https://cloud.tencent.com/document/api/240/38568)
+
+	* 新增入参：Tags
+
+
 ### 第 7 次发布
 
 发布时间：2020-09-04 08:04:58
@@ -20529,6 +20609,18 @@
 
 
 ## 视频处理(mps) 版本：2019-06-12
+
+### 第 23 次发布
+
+发布时间：2020-09-16 08:04:34
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[ExecuteFunction](https://cloud.tencent.com/document/api/862/48427)](https://cloud.tencent.com/document/api/#/#)
 
 ### 第 22 次发布
 
@@ -21923,6 +22015,46 @@
 
 
 ## 文字识别(ocr) 版本：2018-11-19
+
+### 第 34 次发布
+
+发布时间：2020-09-16 08:04:52
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [GeneralHandwritingOCR](https://cloud.tencent.com/document/api/866/36212)
+
+	* 新增入参：EnableWordPolygon
+
+* [VatInvoiceOCR](https://cloud.tencent.com/document/api/866/36210)
+
+	* 新增入参：IsPdf, PdfPageNumber
+
+	* 新增出参：PdfPageSize
+
+
+新增数据结构：
+
+* [[Polygon](https://cloud.tencent.com/document/api/866/33527#Polygon)](https://cloud.tencent.com/document/api/866/33527#[Polygon](https://cloud.tencent.com/document/api/866/33527#Polygon))
+
+修改数据结构：
+
+* [CarInvoiceInfo](https://cloud.tencent.com/document/api/866/33527#CarInvoiceInfo)
+
+	* 新增成员：Polygon
+
+* [TextGeneralHandwriting](https://cloud.tencent.com/document/api/866/33527#TextGeneralHandwriting)
+
+	* 新增成员：WordPolygon
+
+* [TextVatInvoice](https://cloud.tencent.com/document/api/866/33527#TextVatInvoice)
+
+	* 新增成员：Polygon
+
 
 ### 第 33 次发布
 
@@ -23734,6 +23866,25 @@
 
 
 ## 云函数(scf) 版本：2018-04-16
+
+### 第 19 次发布
+
+发布时间：2020-09-16 08:05:21
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [GetFunction](https://cloud.tencent.com/document/api/583/18584)
+
+	* 新增出参：StatusReasons
+
+
+新增数据结构：
+
+* [[StatusReason](https://cloud.tencent.com/document/api/583/17244#StatusReason)](https://cloud.tencent.com/document/api/583/17244#[StatusReason](https://cloud.tencent.com/document/api/583/17244#StatusReason))
 
 ### 第 18 次发布
 
@@ -26330,11 +26481,11 @@
 
 新增接口：
 
-* [[DescribeCloudBaseBuildService](https://cloud.tencent.com/document/api/876/48345)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeCloudBaseBuildService](https://cloud.tencent.com/document/api/876/48345)
 
 新增数据结构：
 
-* [[KVPair](https://cloud.tencent.com/document/api/876/34822#KVPair)](https://cloud.tencent.com/document/api/876/34822#[KVPair](https://cloud.tencent.com/document/api/876/34822#KVPair))
+* [KVPair](https://cloud.tencent.com/document/api/876/34822#KVPair)
 
 ### 第 16 次发布
 
@@ -30346,6 +30497,21 @@
 
 
 ## 云点播(vod) 版本：2018-07-17
+
+### 第 56 次发布
+
+发布时间：2020-09-16 08:06:57
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [EditMedia](https://cloud.tencent.com/document/api/266/34783)
+
+	* 新增入参：ExtInfo
+
 
 ### 第 55 次发布
 

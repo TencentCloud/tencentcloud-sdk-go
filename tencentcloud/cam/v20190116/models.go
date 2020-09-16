@@ -1015,6 +1015,46 @@ func (r *DescribeRoleListResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeSafeAuthFlagRequest struct {
+	*tchttp.BaseRequest
+}
+
+func (r *DescribeSafeAuthFlagRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeSafeAuthFlagRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeSafeAuthFlagResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 登录保护设置
+		LoginFlag *LoginActionFlag `json:"LoginFlag,omitempty" name:"LoginFlag"`
+
+		// 敏感操作保护设置
+		ActionFlag *LoginActionFlag `json:"ActionFlag,omitempty" name:"ActionFlag"`
+
+		// 异地登录保护设置
+		OffsiteFlag *OffsiteFlag `json:"OffsiteFlag,omitempty" name:"OffsiteFlag"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeSafeAuthFlagResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeSafeAuthFlagResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DetachGroupPolicyRequest struct {
 	*tchttp.BaseRequest
 
@@ -2171,6 +2211,24 @@ func (r *ListUsersResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type LoginActionFlag struct {
+
+	// 手机
+	Phone *uint64 `json:"Phone,omitempty" name:"Phone"`
+
+	// 硬token
+	Token *uint64 `json:"Token,omitempty" name:"Token"`
+
+	// 软token
+	Stoken *uint64 `json:"Stoken,omitempty" name:"Stoken"`
+
+	// 微信
+	Wechat *uint64 `json:"Wechat,omitempty" name:"Wechat"`
+
+	// 自定义
+	Custom *uint64 `json:"Custom,omitempty" name:"Custom"`
+}
+
 type LoginActionMfaFlag struct {
 
 	// 手机
@@ -2181,6 +2239,24 @@ type LoginActionMfaFlag struct {
 
 	// 微信
 	Wechat *uint64 `json:"Wechat,omitempty" name:"Wechat"`
+}
+
+type OffsiteFlag struct {
+
+	// 验证标识
+	VerifyFlag *uint64 `json:"VerifyFlag,omitempty" name:"VerifyFlag"`
+
+	// 手机通知
+	NotifyPhone *uint64 `json:"NotifyPhone,omitempty" name:"NotifyPhone"`
+
+	// 邮箱通知
+	NotifyEmail *int64 `json:"NotifyEmail,omitempty" name:"NotifyEmail"`
+
+	// 微信通知
+	NotifyWechat *uint64 `json:"NotifyWechat,omitempty" name:"NotifyWechat"`
+
+	// 提示
+	Tips *uint64 `json:"Tips,omitempty" name:"Tips"`
 }
 
 type PolicyVersionDetail struct {

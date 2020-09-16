@@ -3771,7 +3771,7 @@ type EditMediaRequest struct {
 	// 任务优先级，数值越大优先级越高，取值范围是-10到 10，不填代表0。
 	TasksPriority *int64 `json:"TasksPriority,omitempty" name:"TasksPriority"`
 
-	// 用于去重的识别码，如果七天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。
+	// 用于去重的识别码，如果三天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。
 	SessionId *string `json:"SessionId,omitempty" name:"SessionId"`
 
 	// 来源上下文，用于透传用户请求信息，任务流状态变更回调将返回该字段值，最长 1000 个字符。
@@ -3880,6 +3880,46 @@ func (r *EnableWorkflowResponse) ToJsonString() string {
 }
 
 func (r *EnableWorkflowResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ExecuteFunctionRequest struct {
+	*tchttp.BaseRequest
+
+	// 调用后端接口名称。
+	FunctionName *string `json:"FunctionName,omitempty" name:"FunctionName"`
+
+	// 接口参数，具体参数格式调用时与后端协调。
+	FunctionArg *string `json:"FunctionArg,omitempty" name:"FunctionArg"`
+}
+
+func (r *ExecuteFunctionRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ExecuteFunctionRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ExecuteFunctionResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 处理结果打包后的字符串，具体与后台一同协调。
+		Result *string `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ExecuteFunctionResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ExecuteFunctionResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -6380,7 +6420,7 @@ type ProcessMediaRequest struct {
 	// 任务流的优先级，数值越大优先级越高，取值范围是-10到 10，不填代表0。
 	TasksPriority *int64 `json:"TasksPriority,omitempty" name:"TasksPriority"`
 
-	// 用于去重的识别码，如果七天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。
+	// 用于去重的识别码，如果三天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。
 	SessionId *string `json:"SessionId,omitempty" name:"SessionId"`
 
 	// 来源上下文，用于透传用户请求信息，任务流状态变更回调将返回该字段值，最长 1000 个字符。

@@ -1115,6 +1115,10 @@ type GetFunctionResponse struct {
 		// 函数初始化超时时间
 		InitTimeout *int64 `json:"InitTimeout,omitempty" name:"InitTimeout"`
 
+		// 函数状态失败原因
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		StatusReasons []*StatusReason `json:"StatusReasons,omitempty" name:"StatusReasons" list`
+
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
@@ -1872,6 +1876,15 @@ type RoutingConfig struct {
 
 	// 规则路由附加版本
 	AddtionVersionMatchs []*VersionMatch `json:"AddtionVersionMatchs,omitempty" name:"AddtionVersionMatchs" list`
+}
+
+type StatusReason struct {
+
+	// 错误码
+	ErrorCode *string `json:"ErrorCode,omitempty" name:"ErrorCode"`
+
+	// 错误描述
+	ErrorMessage *string `json:"ErrorMessage,omitempty" name:"ErrorMessage"`
 }
 
 type Tag struct {

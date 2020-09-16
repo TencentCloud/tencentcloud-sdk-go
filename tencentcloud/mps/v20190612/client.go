@@ -1187,6 +1187,31 @@ func (c *Client) EnableWorkflow(request *EnableWorkflowRequest) (response *Enabl
     return
 }
 
+func NewExecuteFunctionRequest() (request *ExecuteFunctionRequest) {
+    request = &ExecuteFunctionRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("mps", APIVersion, "ExecuteFunction")
+    return
+}
+
+func NewExecuteFunctionResponse() (response *ExecuteFunctionResponse) {
+    response = &ExecuteFunctionResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口仅用于定制开发的特殊场景，除非云视频处理客服人员主动告知您需要使用本接口，其它情况请勿调用。
+func (c *Client) ExecuteFunction(request *ExecuteFunctionRequest) (response *ExecuteFunctionResponse, err error) {
+    if request == nil {
+        request = NewExecuteFunctionRequest()
+    }
+    response = NewExecuteFunctionResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewManageTaskRequest() (request *ManageTaskRequest) {
     request = &ManageTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},

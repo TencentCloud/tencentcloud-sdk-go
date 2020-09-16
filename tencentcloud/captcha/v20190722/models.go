@@ -118,6 +118,9 @@ type CaptchaUserAllAppId struct {
 
 	// 腾讯云APPID
 	TcAppId *int64 `json:"TcAppId,omitempty" name:"TcAppId"`
+
+	// 渠道信息
+	ChannelInfo *string `json:"ChannelInfo,omitempty" name:"ChannelInfo"`
 }
 
 type DescribeCaptchaAppIdInfoRequest struct {
