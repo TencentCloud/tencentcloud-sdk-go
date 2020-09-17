@@ -174,6 +174,81 @@ func (c *Client) AttachNetworkInterface(request *AttachNetworkInterfaceRequest) 
     return
 }
 
+func NewBatchDeregisterTargetsRequest() (request *BatchDeregisterTargetsRequest) {
+    request = &BatchDeregisterTargetsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ecm", APIVersion, "BatchDeregisterTargets")
+    return
+}
+
+func NewBatchDeregisterTargetsResponse() (response *BatchDeregisterTargetsResponse) {
+    response = &BatchDeregisterTargetsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 批量解绑后端服务。
+func (c *Client) BatchDeregisterTargets(request *BatchDeregisterTargetsRequest) (response *BatchDeregisterTargetsResponse, err error) {
+    if request == nil {
+        request = NewBatchDeregisterTargetsRequest()
+    }
+    response = NewBatchDeregisterTargetsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewBatchModifyTargetWeightRequest() (request *BatchModifyTargetWeightRequest) {
+    request = &BatchModifyTargetWeightRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ecm", APIVersion, "BatchModifyTargetWeight")
+    return
+}
+
+func NewBatchModifyTargetWeightResponse() (response *BatchModifyTargetWeightResponse) {
+    response = &BatchModifyTargetWeightResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 批量修改监听器绑定的后端机器的转发权重。
+func (c *Client) BatchModifyTargetWeight(request *BatchModifyTargetWeightRequest) (response *BatchModifyTargetWeightResponse, err error) {
+    if request == nil {
+        request = NewBatchModifyTargetWeightRequest()
+    }
+    response = NewBatchModifyTargetWeightResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewBatchRegisterTargetsRequest() (request *BatchRegisterTargetsRequest) {
+    request = &BatchRegisterTargetsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ecm", APIVersion, "BatchRegisterTargets")
+    return
+}
+
+func NewBatchRegisterTargetsResponse() (response *BatchRegisterTargetsResponse) {
+    response = &BatchRegisterTargetsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 批量绑定后端目标。
+func (c *Client) BatchRegisterTargets(request *BatchRegisterTargetsRequest) (response *BatchRegisterTargetsResponse, err error) {
+    if request == nil {
+        request = NewBatchRegisterTargetsRequest()
+    }
+    response = NewBatchRegisterTargetsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateImageRequest() (request *CreateImageRequest) {
     request = &CreateImageRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -195,6 +270,56 @@ func (c *Client) CreateImage(request *CreateImageRequest) (response *CreateImage
         request = NewCreateImageRequest()
     }
     response = NewCreateImageResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateListenerRequest() (request *CreateListenerRequest) {
+    request = &CreateListenerRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ecm", APIVersion, "CreateListener")
+    return
+}
+
+func NewCreateListenerResponse() (response *CreateListenerResponse) {
+    response = &CreateListenerResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 创建负载均衡监听器。
+func (c *Client) CreateListener(request *CreateListenerRequest) (response *CreateListenerResponse, err error) {
+    if request == nil {
+        request = NewCreateListenerRequest()
+    }
+    response = NewCreateListenerResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateLoadBalancerRequest() (request *CreateLoadBalancerRequest) {
+    request = &CreateLoadBalancerRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ecm", APIVersion, "CreateLoadBalancer")
+    return
+}
+
+func NewCreateLoadBalancerResponse() (response *CreateLoadBalancerResponse) {
+    response = &CreateLoadBalancerResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 购买负载均衡实例。
+func (c *Client) CreateLoadBalancer(request *CreateLoadBalancerRequest) (response *CreateLoadBalancerResponse, err error) {
+    if request == nil {
+        request = NewCreateLoadBalancerRequest()
+    }
+    response = NewCreateLoadBalancerResponse()
     err = c.Send(request, response)
     return
 }
@@ -381,6 +506,81 @@ func (c *Client) DeleteImage(request *DeleteImageRequest) (response *DeleteImage
         request = NewDeleteImageRequest()
     }
     response = NewDeleteImageResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteListenerRequest() (request *DeleteListenerRequest) {
+    request = &DeleteListenerRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ecm", APIVersion, "DeleteListener")
+    return
+}
+
+func NewDeleteListenerResponse() (response *DeleteListenerResponse) {
+    response = &DeleteListenerResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 删除负载均衡监听器。
+func (c *Client) DeleteListener(request *DeleteListenerRequest) (response *DeleteListenerResponse, err error) {
+    if request == nil {
+        request = NewDeleteListenerRequest()
+    }
+    response = NewDeleteListenerResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteLoadBalancerRequest() (request *DeleteLoadBalancerRequest) {
+    request = &DeleteLoadBalancerRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ecm", APIVersion, "DeleteLoadBalancer")
+    return
+}
+
+func NewDeleteLoadBalancerResponse() (response *DeleteLoadBalancerResponse) {
+    response = &DeleteLoadBalancerResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 删除负载均衡实例。
+func (c *Client) DeleteLoadBalancer(request *DeleteLoadBalancerRequest) (response *DeleteLoadBalancerResponse, err error) {
+    if request == nil {
+        request = NewDeleteLoadBalancerRequest()
+    }
+    response = NewDeleteLoadBalancerResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteLoadBalancerListenersRequest() (request *DeleteLoadBalancerListenersRequest) {
+    request = &DeleteLoadBalancerListenersRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ecm", APIVersion, "DeleteLoadBalancerListeners")
+    return
+}
+
+func NewDeleteLoadBalancerListenersResponse() (response *DeleteLoadBalancerListenersResponse) {
+    response = &DeleteLoadBalancerListenersResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 删除负载均衡多个监听器
+func (c *Client) DeleteLoadBalancerListeners(request *DeleteLoadBalancerListenersRequest) (response *DeleteLoadBalancerListenersResponse, err error) {
+    if request == nil {
+        request = NewDeleteLoadBalancerListenersRequest()
+    }
+    response = NewDeleteLoadBalancerListenersResponse()
     err = c.Send(request, response)
     return
 }
@@ -837,6 +1037,81 @@ func (c *Client) DescribeInstancesDeniedActions(request *DescribeInstancesDenied
     return
 }
 
+func NewDescribeListenersRequest() (request *DescribeListenersRequest) {
+    request = &DescribeListenersRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ecm", APIVersion, "DescribeListeners")
+    return
+}
+
+func NewDescribeListenersResponse() (response *DescribeListenersResponse) {
+    response = &DescribeListenersResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询负载均衡的监听器列表。
+func (c *Client) DescribeListeners(request *DescribeListenersRequest) (response *DescribeListenersResponse, err error) {
+    if request == nil {
+        request = NewDescribeListenersRequest()
+    }
+    response = NewDescribeListenersResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeLoadBalanceTaskStatusRequest() (request *DescribeLoadBalanceTaskStatusRequest) {
+    request = &DescribeLoadBalanceTaskStatusRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ecm", APIVersion, "DescribeLoadBalanceTaskStatus")
+    return
+}
+
+func NewDescribeLoadBalanceTaskStatusResponse() (response *DescribeLoadBalanceTaskStatusResponse) {
+    response = &DescribeLoadBalanceTaskStatusResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询负载均衡相关的任务状态
+func (c *Client) DescribeLoadBalanceTaskStatus(request *DescribeLoadBalanceTaskStatusRequest) (response *DescribeLoadBalanceTaskStatusResponse, err error) {
+    if request == nil {
+        request = NewDescribeLoadBalanceTaskStatusRequest()
+    }
+    response = NewDescribeLoadBalanceTaskStatusResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeLoadBalancersRequest() (request *DescribeLoadBalancersRequest) {
+    request = &DescribeLoadBalancersRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ecm", APIVersion, "DescribeLoadBalancers")
+    return
+}
+
+func NewDescribeLoadBalancersResponse() (response *DescribeLoadBalancersResponse) {
+    response = &DescribeLoadBalancersResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询负载均衡实例列表。
+func (c *Client) DescribeLoadBalancers(request *DescribeLoadBalancersRequest) (response *DescribeLoadBalancersResponse, err error) {
+    if request == nil {
+        request = NewDescribeLoadBalancersRequest()
+    }
+    response = NewDescribeLoadBalancersResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeModuleRequest() (request *DescribeModuleRequest) {
     request = &DescribeModuleRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1108,6 +1383,56 @@ func (c *Client) DescribeSubnets(request *DescribeSubnetsRequest) (response *Des
         request = NewDescribeSubnetsRequest()
     }
     response = NewDescribeSubnetsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeTargetHealthRequest() (request *DescribeTargetHealthRequest) {
+    request = &DescribeTargetHealthRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ecm", APIVersion, "DescribeTargetHealth")
+    return
+}
+
+func NewDescribeTargetHealthResponse() (response *DescribeTargetHealthResponse) {
+    response = &DescribeTargetHealthResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 获取负载均衡后端服务的健康检查状态。
+func (c *Client) DescribeTargetHealth(request *DescribeTargetHealthRequest) (response *DescribeTargetHealthResponse, err error) {
+    if request == nil {
+        request = NewDescribeTargetHealthRequest()
+    }
+    response = NewDescribeTargetHealthResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeTargetsRequest() (request *DescribeTargetsRequest) {
+    request = &DescribeTargetsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ecm", APIVersion, "DescribeTargets")
+    return
+}
+
+func NewDescribeTargetsResponse() (response *DescribeTargetsResponse) {
+    response = &DescribeTargetsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询负载均衡绑定的后端服务列表。
+func (c *Client) DescribeTargets(request *DescribeTargetsRequest) (response *DescribeTargetsResponse, err error) {
+    if request == nil {
+        request = NewDescribeTargetsRequest()
+    }
+    response = NewDescribeTargetsResponse()
     err = c.Send(request, response)
     return
 }
@@ -1491,6 +1816,56 @@ func (c *Client) ModifyInstancesAttribute(request *ModifyInstancesAttributeReque
     return
 }
 
+func NewModifyListenerRequest() (request *ModifyListenerRequest) {
+    request = &ModifyListenerRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ecm", APIVersion, "ModifyListener")
+    return
+}
+
+func NewModifyListenerResponse() (response *ModifyListenerResponse) {
+    response = &ModifyListenerResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 修改负载均衡监听器属性。
+func (c *Client) ModifyListener(request *ModifyListenerRequest) (response *ModifyListenerResponse, err error) {
+    if request == nil {
+        request = NewModifyListenerRequest()
+    }
+    response = NewModifyListenerResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyLoadBalancerAttributesRequest() (request *ModifyLoadBalancerAttributesRequest) {
+    request = &ModifyLoadBalancerAttributesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ecm", APIVersion, "ModifyLoadBalancerAttributes")
+    return
+}
+
+func NewModifyLoadBalancerAttributesResponse() (response *ModifyLoadBalancerAttributesResponse) {
+    response = &ModifyLoadBalancerAttributesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 修改负载均衡实例的属性。
+func (c *Client) ModifyLoadBalancerAttributes(request *ModifyLoadBalancerAttributesRequest) (response *ModifyLoadBalancerAttributesResponse, err error) {
+    if request == nil {
+        request = NewModifyLoadBalancerAttributesRequest()
+    }
+    response = NewModifyLoadBalancerAttributesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyModuleConfigRequest() (request *ModifyModuleConfigRequest) {
     request = &ModifyModuleConfigRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1712,6 +2087,56 @@ func (c *Client) ModifySubnetAttribute(request *ModifySubnetAttributeRequest) (r
         request = NewModifySubnetAttributeRequest()
     }
     response = NewModifySubnetAttributeResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyTargetPortRequest() (request *ModifyTargetPortRequest) {
+    request = &ModifyTargetPortRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ecm", APIVersion, "ModifyTargetPort")
+    return
+}
+
+func NewModifyTargetPortResponse() (response *ModifyTargetPortResponse) {
+    response = &ModifyTargetPortResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 修改监听器绑定的后端机器的端口。
+func (c *Client) ModifyTargetPort(request *ModifyTargetPortRequest) (response *ModifyTargetPortResponse, err error) {
+    if request == nil {
+        request = NewModifyTargetPortRequest()
+    }
+    response = NewModifyTargetPortResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyTargetWeightRequest() (request *ModifyTargetWeightRequest) {
+    request = &ModifyTargetWeightRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ecm", APIVersion, "ModifyTargetWeight")
+    return
+}
+
+func NewModifyTargetWeightResponse() (response *ModifyTargetWeightResponse) {
+    response = &ModifyTargetWeightResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 修改监听器绑定的后端机器的转发权重。
+func (c *Client) ModifyTargetWeight(request *ModifyTargetWeightRequest) (response *ModifyTargetWeightResponse, err error) {
+    if request == nil {
+        request = NewModifyTargetWeightRequest()
+    }
+    response = NewModifyTargetWeightResponse()
     err = c.Send(request, response)
     return
 }

@@ -108,7 +108,7 @@ func NewDescribeCallDetailResponse() (response *DescribeCallDetailResponse) {
     return
 }
 
-// 查询指定时间内的用户列表及用户通话质量数据，可查询14天内数据。DataType 不为null，查询实时数据时，查询起止时间不超过1个小时，查询用户不超过6个，支持跨天查询。DataType，UserIds为null时，不填PageSize，PageNumber默认查询6个用户，否则支持每页100内的用户数。
+// 查询指定时间内的用户列表及用户通话质量数据，可查询14天内数据。DataType 不为null，查询实时数据时，查询起止时间不超过1个小时，查询用户不超过6个，支持跨天查询。DataType，UserIds为null时，默认查询6个用户，同时支持每页查询100以内用户个数（PageSize不超过100）。
 func (c *Client) DescribeCallDetail(request *DescribeCallDetailRequest) (response *DescribeCallDetailResponse, err error) {
     if request == nil {
         request = NewDescribeCallDetailRequest()

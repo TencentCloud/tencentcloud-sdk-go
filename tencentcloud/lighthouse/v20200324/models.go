@@ -48,6 +48,9 @@ type Blueprint struct {
 
 	// 镜像图片 URL。
 	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
+
+	// 镜像所需系统盘大小
+	RequiredSystemDiskSize *int64 `json:"RequiredSystemDiskSize,omitempty" name:"RequiredSystemDiskSize"`
 }
 
 type Bundle struct {

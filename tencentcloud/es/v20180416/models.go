@@ -120,6 +120,9 @@ type CreateInstanceRequest struct {
 
 	// 6.8（及以上版本）基础版是否开启xpack security认证<li>1：不开启</li><li>2：开启</li>
 	BasicSecurityType *uint64 `json:"BasicSecurityType,omitempty" name:"BasicSecurityType"`
+
+	// 场景化模板类型 0：不启用 1：通用 2：日志 3：搜索
+	SceneType *int64 `json:"SceneType,omitempty" name:"SceneType"`
 }
 
 func (r *CreateInstanceRequest) ToJsonString() string {
@@ -590,6 +593,10 @@ type InstanceInfo struct {
 	// 6.8（及以上版本）基础版是否开启xpack security认证<li>1：不开启</li><li>2：开启</li>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SecurityType *uint64 `json:"SecurityType,omitempty" name:"SecurityType"`
+
+	// 场景化模板类型：0、不开启；1、通用场景；2、日志场景；3、搜索场景
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SceneType *int64 `json:"SceneType,omitempty" name:"SceneType"`
 }
 
 type InstanceLog struct {
@@ -753,6 +760,46 @@ func (r *RestartInstanceResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type RestartNodesRequest struct {
+	*tchttp.BaseRequest
+
+	// 集群实例ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 节点名称列表
+	NodeNames []*string `json:"NodeNames,omitempty" name:"NodeNames" list`
+
+	// 是否强制重启
+	ForceRestart *bool `json:"ForceRestart,omitempty" name:"ForceRestart"`
+}
+
+func (r *RestartNodesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *RestartNodesRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type RestartNodesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *RestartNodesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *RestartNodesResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type SubTaskDetail struct {
 
 	// 子任务名
@@ -875,6 +922,12 @@ type UpdateInstanceRequest struct {
 
 	// 0: 蓝绿变更方式扩容，集群不重启 （默认） 1: 磁盘解挂载扩容，集群滚动重启
 	ScaleType *int64 `json:"ScaleType,omitempty" name:"ScaleType"`
+
+	// 多可用区部署
+	MultiZoneInfo []*ZoneDetail `json:"MultiZoneInfo,omitempty" name:"MultiZoneInfo" list`
+
+	// 场景化模板类型 -1：不启用 1：通用 2：日志 3：搜索
+	SceneType *int64 `json:"SceneType,omitempty" name:"SceneType"`
 }
 
 func (r *UpdateInstanceRequest) ToJsonString() string {
@@ -964,6 +1017,9 @@ type UpgradeInstanceRequest struct {
 
 	// 6.8（及以上版本）基础版是否开启xpack security认证<li>1：不开启</li><li>2：开启</li>
 	BasicSecurityType *uint64 `json:"BasicSecurityType,omitempty" name:"BasicSecurityType"`
+
+	// 升级方式：<li>scale 蓝绿变更</li><li>restart 滚动重启</li>默认值为scale
+	UpgradeMode *string `json:"UpgradeMode,omitempty" name:"UpgradeMode"`
 }
 
 func (r *UpgradeInstanceRequest) ToJsonString() string {

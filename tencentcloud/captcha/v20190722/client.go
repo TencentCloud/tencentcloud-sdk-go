@@ -118,6 +118,81 @@ func (c *Client) DescribeCaptchaDataSum(request *DescribeCaptchaDataSumRequest) 
     return
 }
 
+func NewDescribeCaptchaMiniDataRequest() (request *DescribeCaptchaMiniDataRequest) {
+    request = &DescribeCaptchaMiniDataRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("captcha", APIVersion, "DescribeCaptchaMiniData")
+    return
+}
+
+func NewDescribeCaptchaMiniDataResponse() (response *DescribeCaptchaMiniDataResponse) {
+    response = &DescribeCaptchaMiniDataResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 安全验证码小程序插件分类查询数据接口（内测中），请求量type=0、通过量type=1、验证量type=2、拦截量type=3 小时级查询（五小时左右延迟）
+func (c *Client) DescribeCaptchaMiniData(request *DescribeCaptchaMiniDataRequest) (response *DescribeCaptchaMiniDataResponse, err error) {
+    if request == nil {
+        request = NewDescribeCaptchaMiniDataRequest()
+    }
+    response = NewDescribeCaptchaMiniDataResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeCaptchaMiniDataSumRequest() (request *DescribeCaptchaMiniDataSumRequest) {
+    request = &DescribeCaptchaMiniDataSumRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("captcha", APIVersion, "DescribeCaptchaMiniDataSum")
+    return
+}
+
+func NewDescribeCaptchaMiniDataSumResponse() (response *DescribeCaptchaMiniDataSumResponse) {
+    response = &DescribeCaptchaMiniDataSumResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 安全验证码小程序插件查询请求数据概况（内测中）
+func (c *Client) DescribeCaptchaMiniDataSum(request *DescribeCaptchaMiniDataSumRequest) (response *DescribeCaptchaMiniDataSumResponse, err error) {
+    if request == nil {
+        request = NewDescribeCaptchaMiniDataSumRequest()
+    }
+    response = NewDescribeCaptchaMiniDataSumResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeCaptchaMiniOperDataRequest() (request *DescribeCaptchaMiniOperDataRequest) {
+    request = &DescribeCaptchaMiniOperDataRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("captcha", APIVersion, "DescribeCaptchaMiniOperData")
+    return
+}
+
+func NewDescribeCaptchaMiniOperDataResponse() (response *DescribeCaptchaMiniOperDataResponse) {
+    response = &DescribeCaptchaMiniOperDataResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 安全验证码小程序插件用户操作数据查询（内测中）
+func (c *Client) DescribeCaptchaMiniOperData(request *DescribeCaptchaMiniOperDataRequest) (response *DescribeCaptchaMiniOperDataResponse, err error) {
+    if request == nil {
+        request = NewDescribeCaptchaMiniOperDataRequest()
+    }
+    response = NewDescribeCaptchaMiniOperDataResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeCaptchaOperDataRequest() (request *DescribeCaptchaOperDataRequest) {
     request = &DescribeCaptchaOperDataRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -183,7 +258,7 @@ func NewDescribeCaptchaTicketDataResponse() (response *DescribeCaptchaTicketData
     return
 }
 
-// 验证码控制台票据验证信息
+// 安全验证码用户操作票据数据查询
 func (c *Client) DescribeCaptchaTicketData(request *DescribeCaptchaTicketDataRequest) (response *DescribeCaptchaTicketDataResponse, err error) {
     if request == nil {
         request = NewDescribeCaptchaTicketDataRequest()

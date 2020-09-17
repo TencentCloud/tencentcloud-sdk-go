@@ -58,7 +58,7 @@ func NewAssociateSecurityGroupsResponse() (response *AssociateSecurityGroupsResp
     return
 }
 
-// 本接口 (AssociateSecurityGroups) 用于绑定安全组到指定实例。
+// 本接口 (AssociateSecurityGroups) 用于安全组批量绑定多个指定实例。
 func (c *Client) AssociateSecurityGroups(request *AssociateSecurityGroupsRequest) (response *AssociateSecurityGroupsResponse, err error) {
     if request == nil {
         request = NewAssociateSecurityGroupsRequest()
@@ -1183,7 +1183,7 @@ func NewModifyDBInstanceSecurityGroupsResponse() (response *ModifyDBInstanceSecu
     return
 }
 
-// 本接口(ModifyDBInstanceSecurityGroups)用于修改实例绑定的安全组
+// 本接口(ModifyDBInstanceSecurityGroups)用于修改实例绑定的安全组。
 func (c *Client) ModifyDBInstanceSecurityGroups(request *ModifyDBInstanceSecurityGroupsRequest) (response *ModifyDBInstanceSecurityGroupsResponse, err error) {
     if request == nil {
         request = NewModifyDBInstanceSecurityGroupsRequest()

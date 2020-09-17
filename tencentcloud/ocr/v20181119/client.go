@@ -1321,6 +1321,32 @@ func (c *Client) QuotaInvoiceOCR(request *QuotaInvoiceOCRRequest) (response *Quo
     return
 }
 
+func NewRecognizeThaiIDCardOCRRequest() (request *RecognizeThaiIDCardOCRRequest) {
+    request = &RecognizeThaiIDCardOCRRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ocr", APIVersion, "RecognizeThaiIDCardOCR")
+    return
+}
+
+func NewRecognizeThaiIDCardOCRResponse() (response *RecognizeThaiIDCardOCRResponse) {
+    response = &RecognizeThaiIDCardOCRResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口支持泰国身份证识别，识别字段包括泰文姓名、英文姓名、地址、出生日期、身份证号码。
+// 本接口暂未完全对外开放，如需咨询，请[联系商务](https://cloud.tencent.com/about/connect)
+func (c *Client) RecognizeThaiIDCardOCR(request *RecognizeThaiIDCardOCRRequest) (response *RecognizeThaiIDCardOCRResponse, err error) {
+    if request == nil {
+        request = NewRecognizeThaiIDCardOCRRequest()
+    }
+    response = NewRecognizeThaiIDCardOCRResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewResidenceBookletOCRRequest() (request *ResidenceBookletOCRRequest) {
     request = &ResidenceBookletOCRRequest{
         BaseRequest: &tchttp.BaseRequest{},

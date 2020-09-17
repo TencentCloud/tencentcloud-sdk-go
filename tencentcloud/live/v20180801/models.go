@@ -191,6 +191,24 @@ type BandwidthInfo struct {
 	Bandwidth *float64 `json:"Bandwidth,omitempty" name:"Bandwidth"`
 }
 
+type BillAreaInfo struct {
+
+	// 大区名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 国家明细数据
+	Countrys []*BillCountryInfo `json:"Countrys,omitempty" name:"Countrys" list`
+}
+
+type BillCountryInfo struct {
+
+	// 国家名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 带宽明细数据信息。
+	BandInfoList []*BillDataInfo `json:"BandInfoList,omitempty" name:"BandInfoList" list`
+}
+
 type BillDataInfo struct {
 
 	// 时间点，格式: yyyy-mm-dd HH:MM:SS。
@@ -2064,6 +2082,49 @@ func (r *DescribeAllStreamPlayInfoListResponse) ToJsonString() string {
 }
 
 func (r *DescribeAllStreamPlayInfoListResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeAreaBillBandwidthAndFluxListRequest struct {
+	*tchttp.BaseRequest
+
+	// 起始时间点，格式为yyyy-mm-dd HH:MM:SS。
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 结束时间点，格式为yyyy-mm-dd HH:MM:SS，起始和结束时间跨度不支持超过1天。
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 直播播放域名，若不填，表示总体数据。
+	PlayDomains []*string `json:"PlayDomains,omitempty" name:"PlayDomains" list`
+}
+
+func (r *DescribeAreaBillBandwidthAndFluxListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeAreaBillBandwidthAndFluxListRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeAreaBillBandwidthAndFluxListResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 明细数据信息。
+		DataInfoList []*BillAreaInfo `json:"DataInfoList,omitempty" name:"DataInfoList" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeAreaBillBandwidthAndFluxListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeAreaBillBandwidthAndFluxListResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 

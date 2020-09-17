@@ -320,6 +320,187 @@ func (r *DescribeCaptchaDataSumResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeCaptchaMiniDataRequest struct {
+	*tchttp.BaseRequest
+
+	// 验证码应用ID
+	CaptchaAppId *int64 `json:"CaptchaAppId,omitempty" name:"CaptchaAppId"`
+
+	// 查询开始时间
+	Start *int64 `json:"Start,omitempty" name:"Start"`
+
+	// 查询结束时间
+	End *int64 `json:"End,omitempty" name:"End"`
+
+	// 查询类型
+	Type *int64 `json:"Type,omitempty" name:"Type"`
+}
+
+func (r *DescribeCaptchaMiniDataRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeCaptchaMiniDataRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeCaptchaMiniDataResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 返回码 0 成功 其它失败
+		CaptchaCode *int64 `json:"CaptchaCode,omitempty" name:"CaptchaCode"`
+
+		// 数据数组
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Data []*CaptchaQueryData `json:"Data,omitempty" name:"Data" list`
+
+		// 返回信息描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		CaptchaMsg *string `json:"CaptchaMsg,omitempty" name:"CaptchaMsg"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeCaptchaMiniDataResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeCaptchaMiniDataResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeCaptchaMiniDataSumRequest struct {
+	*tchttp.BaseRequest
+
+	// 验证码应用ID
+	CaptchaAppId *int64 `json:"CaptchaAppId,omitempty" name:"CaptchaAppId"`
+
+	// 查询开始时间
+	Start *int64 `json:"Start,omitempty" name:"Start"`
+
+	// 查询结束时间
+	End *int64 `json:"End,omitempty" name:"End"`
+}
+
+func (r *DescribeCaptchaMiniDataSumRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeCaptchaMiniDataSumRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeCaptchaMiniDataSumResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 请求总量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		GetSum *int64 `json:"GetSum,omitempty" name:"GetSum"`
+
+		// 请求验证成功量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		VfySuccSum *int64 `json:"VfySuccSum,omitempty" name:"VfySuccSum"`
+
+		// 请求验证量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		VfySum *int64 `json:"VfySum,omitempty" name:"VfySum"`
+
+		// 拦截攻击量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		AttackSum *int64 `json:"AttackSum,omitempty" name:"AttackSum"`
+
+		// 返回信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		CaptchaMsg *string `json:"CaptchaMsg,omitempty" name:"CaptchaMsg"`
+
+		// 成功返回0  其它失败
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		CaptchaCode *int64 `json:"CaptchaCode,omitempty" name:"CaptchaCode"`
+
+		// 票据校验总量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		CheckTicketSum *int64 `json:"CheckTicketSum,omitempty" name:"CheckTicketSum"`
+
+		// 票据验证通过量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		TicketThroughputSum *int64 `json:"TicketThroughputSum,omitempty" name:"TicketThroughputSum"`
+
+		// 票据验证拦截量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		TicketInterceptSum *int64 `json:"TicketInterceptSum,omitempty" name:"TicketInterceptSum"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeCaptchaMiniDataSumResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeCaptchaMiniDataSumResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeCaptchaMiniOperDataRequest struct {
+	*tchttp.BaseRequest
+
+	// 验证码应用ID
+	CaptchaAppId *uint64 `json:"CaptchaAppId,omitempty" name:"CaptchaAppId"`
+
+	// 查询开始时间
+	Start *uint64 `json:"Start,omitempty" name:"Start"`
+
+	// 查询类型
+	Type *uint64 `json:"Type,omitempty" name:"Type"`
+}
+
+func (r *DescribeCaptchaMiniOperDataRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeCaptchaMiniOperDataRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeCaptchaMiniOperDataResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 成功返回 0 其它失败
+		CaptchaCode *int64 `json:"CaptchaCode,omitempty" name:"CaptchaCode"`
+
+		// 返回信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		CaptchaMsg *string `json:"CaptchaMsg,omitempty" name:"CaptchaMsg"`
+
+		// 用户操作数据
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Data *CaptchaOperDataRes `json:"Data,omitempty" name:"Data"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeCaptchaMiniOperDataResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeCaptchaMiniOperDataResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeCaptchaOperDataRequest struct {
 	*tchttp.BaseRequest
 

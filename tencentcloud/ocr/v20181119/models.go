@@ -2953,6 +2953,69 @@ func (r *QuotaInvoiceOCRResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type RecognizeThaiIDCardOCRRequest struct {
+	*tchttp.BaseRequest
+
+	// 图片的 Base64 值。要求图片经Base64编码后不超过 7M，分辨率建议500*800以上，支持PNG、JPG、JPEG、BMP格式。建议卡片部分占据图片2/3以上。
+	// 图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+	ImageBase64 *string `json:"ImageBase64,omitempty" name:"ImageBase64"`
+
+	// 图片的 Url 地址。要求图片经Base64编码后不超过 7M，分辨率建议500*800以上，支持PNG、JPG、JPEG、BMP格式。建议卡片部分占据图片2/3以上。
+	// 建议图片存储于腾讯云，可保障更高的下载速度和稳定性。
+	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
+}
+
+func (r *RecognizeThaiIDCardOCRRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *RecognizeThaiIDCardOCRRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type RecognizeThaiIDCardOCRResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 身份证号码
+		ID *string `json:"ID,omitempty" name:"ID"`
+
+		// 泰文姓名
+		ThaiName *string `json:"ThaiName,omitempty" name:"ThaiName"`
+
+		// 英文姓名
+		EnFirstName *string `json:"EnFirstName,omitempty" name:"EnFirstName"`
+
+		// 地址
+		Address *string `json:"Address,omitempty" name:"Address"`
+
+		// 出生日期
+		Birthday *string `json:"Birthday,omitempty" name:"Birthday"`
+
+		// 首次领用日期
+		IssueDate *string `json:"IssueDate,omitempty" name:"IssueDate"`
+
+		// 签发日期
+		ExpirationDate *string `json:"ExpirationDate,omitempty" name:"ExpirationDate"`
+
+		// 英文姓名
+		EnLastName *string `json:"EnLastName,omitempty" name:"EnLastName"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *RecognizeThaiIDCardOCRResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *RecognizeThaiIDCardOCRResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type Rect struct {
 
 	// 左上角x

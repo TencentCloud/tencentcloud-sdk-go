@@ -194,10 +194,10 @@ type DescribeCallDetailRequest struct {
 	// bigvHeight：上/下行分辨率高
 	DataType []*string `json:"DataType,omitempty" name:"DataType" list`
 
-	// 只查询用户列表时，设置分页index，从0开始（PageNumber和PageSize 其中一个不填均默认返回10条数据）
+	// 只查询用户列表时，设置分页index，从0开始（PageNumber和PageSize 其中一个不填均默认返回6条数据）
 	PageNumber *string `json:"PageNumber,omitempty" name:"PageNumber"`
 
-	// 只查询用户列表时，设置分页大小（PageNumber和PageSize 其中一个不填均默认返回6条数据,最大不超过100）
+	// 只查询用户列表时，设置分页大小（PageNumber和PageSize 其中一个不填均默认返回6条数据,PageSize最大不超过100）
 	PageSize *string `json:"PageSize,omitempty" name:"PageSize"`
 }
 
@@ -653,6 +653,9 @@ type LayoutParams struct {
 
 	// 屏幕分享模板有效。设置为1时代表大画面居右，小画面居左布局。默认为0。
 	MainVideoRightAlign *uint64 `json:"MainVideoRightAlign,omitempty" name:"MainVideoRightAlign"`
+
+	// 悬浮模板、九宫格、屏幕分享模板有效。设置此参数后，输出流混合此参数中包含用户的音视频，以及其他用户的纯音频。最多可设置16个用户。
+	MixVideoUids []*string `json:"MixVideoUids,omitempty" name:"MixVideoUids" list`
 }
 
 type OutputParams struct {

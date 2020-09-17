@@ -68,6 +68,56 @@ func (c *Client) CreateEditingTask(request *CreateEditingTaskRequest) (response 
     return
 }
 
+func NewCreateMediaQualityRestorationTaskRequest() (request *CreateMediaQualityRestorationTaskRequest) {
+    request = &CreateMediaQualityRestorationTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ie", APIVersion, "CreateMediaQualityRestorationTask")
+    return
+}
+
+func NewCreateMediaQualityRestorationTaskResponse() (response *CreateMediaQualityRestorationTaskResponse) {
+    response = &CreateMediaQualityRestorationTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 创建画质重生任务，对视频进行转码、去噪、去划痕、去毛刺、超分、细节增强和色彩增强。
+func (c *Client) CreateMediaQualityRestorationTask(request *CreateMediaQualityRestorationTaskRequest) (response *CreateMediaQualityRestorationTaskResponse, err error) {
+    if request == nil {
+        request = NewCreateMediaQualityRestorationTaskRequest()
+    }
+    response = NewCreateMediaQualityRestorationTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateQualityControlTaskRequest() (request *CreateQualityControlTaskRequest) {
+    request = &CreateQualityControlTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ie", APIVersion, "CreateQualityControlTask")
+    return
+}
+
+func NewCreateQualityControlTaskResponse() (response *CreateQualityControlTaskResponse) {
+    response = &CreateQualityControlTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 通过接口可以智能检测视频画面中抖动重影、模糊、低光照、过曝光、黑边、白边、黑屏、白屏、花屏、噪点、马赛克、二维码等在内的多个场景，还可以自动检测视频无音频异常、无声音片段。
+func (c *Client) CreateQualityControlTask(request *CreateQualityControlTaskRequest) (response *CreateQualityControlTaskResponse, err error) {
+    if request == nil {
+        request = NewCreateQualityControlTaskRequest()
+    }
+    response = NewCreateQualityControlTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeEditingTaskResultRequest() (request *DescribeEditingTaskResultRequest) {
     request = &DescribeEditingTaskResultRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -89,6 +139,81 @@ func (c *Client) DescribeEditingTaskResult(request *DescribeEditingTaskResultReq
         request = NewDescribeEditingTaskResultRequest()
     }
     response = NewDescribeEditingTaskResultResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeMediaQualityRestorationTaskRusultRequest() (request *DescribeMediaQualityRestorationTaskRusultRequest) {
+    request = &DescribeMediaQualityRestorationTaskRusultRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ie", APIVersion, "DescribeMediaQualityRestorationTaskRusult")
+    return
+}
+
+func NewDescribeMediaQualityRestorationTaskRusultResponse() (response *DescribeMediaQualityRestorationTaskRusultResponse) {
+    response = &DescribeMediaQualityRestorationTaskRusultResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 获取画质重生任务结果，查看结束后的文件信息
+func (c *Client) DescribeMediaQualityRestorationTaskRusult(request *DescribeMediaQualityRestorationTaskRusultRequest) (response *DescribeMediaQualityRestorationTaskRusultResponse, err error) {
+    if request == nil {
+        request = NewDescribeMediaQualityRestorationTaskRusultRequest()
+    }
+    response = NewDescribeMediaQualityRestorationTaskRusultResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeQualityControlTaskResultRequest() (request *DescribeQualityControlTaskResultRequest) {
+    request = &DescribeQualityControlTaskResultRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ie", APIVersion, "DescribeQualityControlTaskResult")
+    return
+}
+
+func NewDescribeQualityControlTaskResultResponse() (response *DescribeQualityControlTaskResultResponse) {
+    response = &DescribeQualityControlTaskResultResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 获取质检任务结果
+func (c *Client) DescribeQualityControlTaskResult(request *DescribeQualityControlTaskResultRequest) (response *DescribeQualityControlTaskResultResponse, err error) {
+    if request == nil {
+        request = NewDescribeQualityControlTaskResultRequest()
+    }
+    response = NewDescribeQualityControlTaskResultResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewStopMediaQualityRestorationTaskRequest() (request *StopMediaQualityRestorationTaskRequest) {
+    request = &StopMediaQualityRestorationTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ie", APIVersion, "StopMediaQualityRestorationTask")
+    return
+}
+
+func NewStopMediaQualityRestorationTaskResponse() (response *StopMediaQualityRestorationTaskResponse) {
+    response = &StopMediaQualityRestorationTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 删除正在进行的画质重生任务
+func (c *Client) StopMediaQualityRestorationTask(request *StopMediaQualityRestorationTaskRequest) (response *StopMediaQualityRestorationTaskResponse, err error) {
+    if request == nil {
+        request = NewStopMediaQualityRestorationTaskRequest()
+    }
+    response = NewStopMediaQualityRestorationTaskResponse()
     err = c.Send(request, response)
     return
 }

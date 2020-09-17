@@ -193,6 +193,31 @@ func (c *Client) RestartInstance(request *RestartInstanceRequest) (response *Res
     return
 }
 
+func NewRestartNodesRequest() (request *RestartNodesRequest) {
+    request = &RestartNodesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("es", APIVersion, "RestartNodes")
+    return
+}
+
+func NewRestartNodesResponse() (response *RestartNodesResponse) {
+    response = &RestartNodesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 用于重启集群节点
+func (c *Client) RestartNodes(request *RestartNodesRequest) (response *RestartNodesResponse, err error) {
+    if request == nil {
+        request = NewRestartNodesRequest()
+    }
+    response = NewRestartNodesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewUpdateInstanceRequest() (request *UpdateInstanceRequest) {
     request = &UpdateInstanceRequest{
         BaseRequest: &tchttp.BaseRequest{},
