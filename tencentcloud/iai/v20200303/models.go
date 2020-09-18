@@ -981,6 +981,62 @@ func (r *DetectFaceResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DetectLiveFaceAccurateRequest struct {
+	*tchttp.BaseRequest
+
+	// 图片 base64 数据，base64 编码后大小不可超过5M。
+	// jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。 
+	// 图片的宽高比请接近 3:4，手机拍摄比例最佳。
+	// 人脸尺寸大于100X100像素。
+	// 图片格式支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
+	Image *string `json:"Image,omitempty" name:"Image"`
+
+	// 图片的 Url 。对应图片 base64 编码后大小不可超过5M。
+	// jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。
+	// Url、Image必须提供一个，如果都提供，只使用 Url。 
+	// 图片的宽高比请接近 3:4，手机拍摄比例最佳。
+	// 人脸尺寸大于100X100像素。
+	// 图片存储于腾讯云的Url可保障更高下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的Url速度和稳定性可能受一定影响。
+	// 图片格式支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
+	Url *string `json:"Url,omitempty" name:"Url"`
+
+	// 人脸识别服务所用的算法模型版本。目前入参支持“3.0“。
+	FaceModelVersion *string `json:"FaceModelVersion,omitempty" name:"FaceModelVersion"`
+}
+
+func (r *DetectLiveFaceAccurateRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DetectLiveFaceAccurateRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DetectLiveFaceAccurateResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 活体打分，取值范围 [0,100]，根据活体分数对应的阈值区间来判断是否为翻拍。目前阈值可分为[5,10,40,70,90]，其中推荐阈值为40。
+		Score *float64 `json:"Score,omitempty" name:"Score"`
+
+		// 人脸识别所用的算法模型版本。
+		FaceModelVersion *string `json:"FaceModelVersion,omitempty" name:"FaceModelVersion"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DetectLiveFaceAccurateResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DetectLiveFaceAccurateResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DetectLiveFaceRequest struct {
 	*tchttp.BaseRequest
 

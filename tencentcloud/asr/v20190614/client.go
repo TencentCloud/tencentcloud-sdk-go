@@ -236,6 +236,31 @@ func (c *Client) GetAsrVocabList(request *GetAsrVocabListRequest) (response *Get
     return
 }
 
+func NewGetCustomizationListRequest() (request *GetCustomizationListRequest) {
+    request = &GetCustomizationListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("asr", APIVersion, "GetCustomizationList")
+    return
+}
+
+func NewGetCustomizationListResponse() (response *GetCustomizationListResponse) {
+    response = &GetCustomizationListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询自学习模型列表
+func (c *Client) GetCustomizationList(request *GetCustomizationListRequest) (response *GetCustomizationListResponse, err error) {
+    if request == nil {
+        request = NewGetCustomizationListRequest()
+    }
+    response = NewGetCustomizationListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewSentenceRecognitionRequest() (request *SentenceRecognitionRequest) {
     request = &SentenceRecognitionRequest{
         BaseRequest: &tchttp.BaseRequest{},

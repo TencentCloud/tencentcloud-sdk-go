@@ -273,6 +273,15 @@ func (r *DownloadAsrVocabResponse) FromJsonString(s string) error {
 
 type GetAsrVocabListRequest struct {
 	*tchttp.BaseRequest
+
+	// 标签信息，格式为“$TagKey : $TagValue ”，中间分隔符为“空格”+“:”+“空格”
+	TagInfos []*string `json:"TagInfos,omitempty" name:"TagInfos" list`
+
+	// 分页Offset
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 分页Limit
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 }
 
 func (r *GetAsrVocabListRequest) ToJsonString() string {
@@ -290,6 +299,9 @@ type GetAsrVocabListResponse struct {
 
 		// 热词表列表
 		VocabList []*Vocab `json:"VocabList,omitempty" name:"VocabList" list`
+
+		// 热词列表总数
+		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -360,6 +372,54 @@ func (r *GetAsrVocabResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type GetCustomizationListRequest struct {
+	*tchttp.BaseRequest
+
+	// 标签信息，格式为“$TagKey : $TagValue ”，中间分隔符为“空格”+“:”+“空格”
+	TagInfos []*string `json:"TagInfos,omitempty" name:"TagInfos" list`
+
+	// 分页大小
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 分页offset
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+}
+
+func (r *GetCustomizationListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *GetCustomizationListRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type GetCustomizationListResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 自学习模型数组
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Data []*Model `json:"Data,omitempty" name:"Data" list`
+
+		// 自学习模型总量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *GetCustomizationListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *GetCustomizationListResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type HotWord struct {
 
 	// 热词
@@ -367,6 +427,34 @@ type HotWord struct {
 
 	// 权重
 	Weight *int64 `json:"Weight,omitempty" name:"Weight"`
+}
+
+type Model struct {
+
+	// 模型名称
+	ModelName *string `json:"ModelName,omitempty" name:"ModelName"`
+
+	// 模型文件名称
+	DictName *string `json:"DictName,omitempty" name:"DictName"`
+
+	// 模型Id
+	ModelId *string `json:"ModelId,omitempty" name:"ModelId"`
+
+	// 模型类型，“8k”或者”16k“
+	ModelType *string `json:"ModelType,omitempty" name:"ModelType"`
+
+	// 服务类型
+	ServiceType *string `json:"ServiceType,omitempty" name:"ServiceType"`
+
+	// 模型状态，-1下线状态，1上线状态, 0训练中, -2 训练失败
+	ModelState *int64 `json:"ModelState,omitempty" name:"ModelState"`
+
+	// 最后更新时间
+	AtUpdated *string `json:"AtUpdated,omitempty" name:"AtUpdated"`
+
+	// 标签信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TagInfos []*string `json:"TagInfos,omitempty" name:"TagInfos" list`
 }
 
 type SentenceDetail struct {
@@ -407,10 +495,14 @@ type SentenceRecognitionRequest struct {
 
 	// 引擎模型类型。
 	// 电话场景：
+	// • 8k_en：电话 8k 英语；
 	// • 8k_zh：电话 8k 中文普通话通用；
 	// 非电话场景：
 	// • 16k_zh：16k 中文普通话通用；
 	// • 16k_en：16k 英语；
+	// • 16k_ca：16k 粤语；
+	// • 16k_ja：16k 日语；
+	// •16k_wuu-SH：16k 上海话方言。
 	// • 16k_ca：16k 粤语；
 	// • 16k_ja：16k 日语；
 	// •16k_wuu-SH：16k 上海话方言。
@@ -448,6 +540,9 @@ type SentenceRecognitionRequest struct {
 
 	// 是否进行阿拉伯数字智能转换。0：不转换，直接输出中文数字，1：根据场景智能转换为阿拉伯数字。默认值为1
 	ConvertNumMode *int64 `json:"ConvertNumMode,omitempty" name:"ConvertNumMode"`
+
+	// 是否显示词级别时间戳。0：不显示；1：显示，不包含标点时间戳，2：显示，包含标点时间戳。支持引擎8k_zh，16k_zh，16k_en，16k_ca，16k_ja，16k_wuu-SH
+	WordInfo *int64 `json:"WordInfo,omitempty" name:"WordInfo"`
 }
 
 func (r *SentenceRecognitionRequest) ToJsonString() string {
@@ -469,6 +564,14 @@ type SentenceRecognitionResponse struct {
 		// 请求的音频时长，单位为ms
 		AudioDuration *int64 `json:"AudioDuration,omitempty" name:"AudioDuration"`
 
+		// 词时间戳列表的长度
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		WordSize *int64 `json:"WordSize,omitempty" name:"WordSize"`
+
+		// 词时间戳列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		WordList []*SentenceWord `json:"WordList,omitempty" name:"WordList" list`
+
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
@@ -481,6 +584,18 @@ func (r *SentenceRecognitionResponse) ToJsonString() string {
 
 func (r *SentenceRecognitionResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
+}
+
+type SentenceWord struct {
+
+	// 词结果
+	Word *string `json:"Word,omitempty" name:"Word"`
+
+	// 词在音频中的开始时间
+	StartTime *int64 `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 词在音频中的结束时间
+	EndTime *int64 `json:"EndTime,omitempty" name:"EndTime"`
 }
 
 type SentenceWords struct {
@@ -638,4 +753,8 @@ type Vocab struct {
 
 	// 热词表状态，1为默认状态即在识别时默认加载该热词表进行识别，0为初始状态
 	State *int64 `json:"State,omitempty" name:"State"`
+
+	// 标签数组
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TagInfos []*string `json:"TagInfos,omitempty" name:"TagInfos" list`
 }

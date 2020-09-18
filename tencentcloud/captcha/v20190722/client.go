@@ -193,6 +193,31 @@ func (c *Client) DescribeCaptchaMiniOperData(request *DescribeCaptchaMiniOperDat
     return
 }
 
+func NewDescribeCaptchaMiniResultRequest() (request *DescribeCaptchaMiniResultRequest) {
+    request = &DescribeCaptchaMiniResultRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("captcha", APIVersion, "DescribeCaptchaMiniResult")
+    return
+}
+
+func NewDescribeCaptchaMiniResultResponse() (response *DescribeCaptchaMiniResultResponse) {
+    response = &DescribeCaptchaMiniResultResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 核查验证码小程序插件票据结果（内测中）
+func (c *Client) DescribeCaptchaMiniResult(request *DescribeCaptchaMiniResultRequest) (response *DescribeCaptchaMiniResultResponse, err error) {
+    if request == nil {
+        request = NewDescribeCaptchaMiniResultRequest()
+    }
+    response = NewDescribeCaptchaMiniResultResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeCaptchaOperDataRequest() (request *DescribeCaptchaOperDataRequest) {
     request = &DescribeCaptchaOperDataRequest{
         BaseRequest: &tchttp.BaseRequest{},

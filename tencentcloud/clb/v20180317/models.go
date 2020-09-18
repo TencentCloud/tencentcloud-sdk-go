@@ -585,6 +585,9 @@ type CreateListenerRequest struct {
 
 	// 会话保持类型。不传或传NORMAL表示默认会话保持类型。QUIC_CID 表示根据Quic Connection ID做会话保持。QUIC_CID只支持UDP协议。
 	SessionType *string `json:"SessionType,omitempty" name:"SessionType"`
+
+	// 是否开启长连接，此参数仅适用于HTTP/HTTPS监听器
+	KeepaliveEnable *int64 `json:"KeepaliveEnable,omitempty" name:"KeepaliveEnable"`
 }
 
 func (r *CreateListenerRequest) ToJsonString() string {
@@ -2955,6 +2958,9 @@ type ModifyListenerRequest struct {
 
 	// 是否开启SNI特性，此参数仅适用于HTTPS监听器。注意：未开启SNI的监听器可以开启SNI；已开启SNI的监听器不能关闭SNI
 	SniSwitch *int64 `json:"SniSwitch,omitempty" name:"SniSwitch"`
+
+	// 是否开启长连接，此参数仅适用于HTTP/HTTPS监听器
+	KeepaliveEnable *int64 `json:"KeepaliveEnable,omitempty" name:"KeepaliveEnable"`
 }
 
 func (r *ModifyListenerRequest) ToJsonString() string {

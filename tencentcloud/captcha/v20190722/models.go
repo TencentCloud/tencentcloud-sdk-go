@@ -501,6 +501,78 @@ func (r *DescribeCaptchaMiniOperDataResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeCaptchaMiniResultRequest struct {
+	*tchttp.BaseRequest
+
+	// 验证码类型，9：滑块验证码
+	CaptchaType *uint64 `json:"CaptchaType,omitempty" name:"CaptchaType"`
+
+	// 验证码返回给用户的票据
+	Ticket *string `json:"Ticket,omitempty" name:"Ticket"`
+
+	// 用户操作来源的外网 IP
+	UserIp *string `json:"UserIp,omitempty" name:"UserIp"`
+
+	// 验证码应用ID
+	CaptchaAppId *uint64 `json:"CaptchaAppId,omitempty" name:"CaptchaAppId"`
+
+	// 用于服务器端校验验证码票据的验证密钥，请妥善保密，请勿泄露给第三方
+	AppSecretKey *string `json:"AppSecretKey,omitempty" name:"AppSecretKey"`
+
+	// 业务 ID，网站或应用在多个业务中使用此服务，通过此 ID 区分统计数据
+	BusinessId *uint64 `json:"BusinessId,omitempty" name:"BusinessId"`
+
+	// 场景 ID，网站或应用的业务下有多个场景使用此服务，通过此 ID 区分统计数据
+	SceneId *uint64 `json:"SceneId,omitempty" name:"SceneId"`
+
+	// mac 地址或设备唯一标识
+	MacAddress *string `json:"MacAddress,omitempty" name:"MacAddress"`
+
+	// 手机设备号
+	Imei *string `json:"Imei,omitempty" name:"Imei"`
+}
+
+func (r *DescribeCaptchaMiniResultRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeCaptchaMiniResultRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeCaptchaMiniResultResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 1       ticket verification succeeded     票据验证成功
+	// 8       ticket expired     票据超时
+	// 10     ticket format error     票据格式不正确
+	// 15     ticket decryption failed     验证码解密失败
+	// 16     CaptchaAppId wrong format      检查CaptchaAppId错误
+	// 26     system internal error     系统内部错误
+	// 100    param err appsecretkey     参数校验错误
+	// 21      ticket error     差别，票据验证错误
+		CaptchaCode *int64 `json:"CaptchaCode,omitempty" name:"CaptchaCode"`
+
+		// 状态描述及验证错误信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		CaptchaMsg *string `json:"CaptchaMsg,omitempty" name:"CaptchaMsg"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeCaptchaMiniResultResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeCaptchaMiniResultResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeCaptchaOperDataRequest struct {
 	*tchttp.BaseRequest
 

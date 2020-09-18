@@ -172,7 +172,7 @@ type DescribeCallDetailRequest struct {
 	// 查询结束时间，本地unix时间戳（1588031999s）
 	EndTime *uint64 `json:"EndTime,omitempty" name:"EndTime"`
 
-	// 用户sdkappid（1400188366）
+	// 用户SDKAppID（1400188366）
 	SdkAppId *string `json:"SdkAppId,omitempty" name:"SdkAppId"`
 
 	// 需查询的用户数组，不填默认返回6个用户,最多可填6个用户
@@ -194,10 +194,10 @@ type DescribeCallDetailRequest struct {
 	// bigvHeight：上/下行分辨率高
 	DataType []*string `json:"DataType,omitempty" name:"DataType" list`
 
-	// 只查询用户列表时，设置分页index，从0开始（PageNumber和PageSize 其中一个不填均默认返回6条数据）
+	// 设置分页index，从0开始（PageNumber和PageSize 其中一个不填均默认返回6条数据）
 	PageNumber *string `json:"PageNumber,omitempty" name:"PageNumber"`
 
-	// 只查询用户列表时，设置分页大小（PageNumber和PageSize 其中一个不填均默认返回6条数据,PageSize最大不超过100）
+	// 设置分页大小（PageNumber和PageSize 其中一个不填均默认返回6条数据,DataType，UserIds不为null，PageSize最大不超过6，DataType，UserIds为null，PageSize最大不超过100）
 	PageSize *string `json:"PageSize,omitempty" name:"PageSize"`
 }
 
