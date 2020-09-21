@@ -79,6 +79,163 @@ func (r *CheckTcbServiceResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type CloudBaseCodeRepoDetail struct {
+
+	// repo的名字
+	Name *CloudBaseCodeRepoName `json:"Name,omitempty" name:"Name"`
+
+	// repo的url
+	Url *string `json:"Url,omitempty" name:"Url"`
+}
+
+type CloudBaseCodeRepoName struct {
+
+	// repo的名字
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// repo的完整全名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FullName *string `json:"FullName,omitempty" name:"FullName"`
+}
+
+type CloudBaseRunImageInfo struct {
+
+	// 镜像仓库名称
+	RepositoryName *string `json:"RepositoryName,omitempty" name:"RepositoryName"`
+
+	// 是否公有
+	IsPublic *bool `json:"IsPublic,omitempty" name:"IsPublic"`
+
+	// 镜像tag名称
+	TagName *string `json:"TagName,omitempty" name:"TagName"`
+
+	// 镜像server
+	ServerAddr *string `json:"ServerAddr,omitempty" name:"ServerAddr"`
+
+	// 镜像拉取地址
+	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
+}
+
+type CloudRunServiceSimpleVersionSnapshot struct {
+
+	// 版本名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VersionName *string `json:"VersionName,omitempty" name:"VersionName"`
+
+	// 版本备注
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Remark *string `json:"Remark,omitempty" name:"Remark"`
+
+	// cpu规格
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Cpu *float64 `json:"Cpu,omitempty" name:"Cpu"`
+
+	// 内存规格
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Mem *float64 `json:"Mem,omitempty" name:"Mem"`
+
+	// 最小副本数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MinNum *int64 `json:"MinNum,omitempty" name:"MinNum"`
+
+	// 最大副本数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MaxNum *int64 `json:"MaxNum,omitempty" name:"MaxNum"`
+
+	// 镜像url
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
+
+	// 扩容策略
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PolicyType *string `json:"PolicyType,omitempty" name:"PolicyType"`
+
+	// 策略阈值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PolicyThreshold *int64 `json:"PolicyThreshold,omitempty" name:"PolicyThreshold"`
+
+	// 环境参数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EnvParams *string `json:"EnvParams,omitempty" name:"EnvParams"`
+
+	// 容器端口
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ContainerPort *int64 `json:"ContainerPort,omitempty" name:"ContainerPort"`
+
+	// 创建时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 更新时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
+
+	// 更新类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UploadType *string `json:"UploadType,omitempty" name:"UploadType"`
+
+	// dockerfile路径
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DockerfilePath *string `json:"DockerfilePath,omitempty" name:"DockerfilePath"`
+
+	// 构建路径
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BuildDir *string `json:"BuildDir,omitempty" name:"BuildDir"`
+
+	// repo类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RepoType *string `json:"RepoType,omitempty" name:"RepoType"`
+
+	// 仓库
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Repo *string `json:"Repo,omitempty" name:"Repo"`
+
+	// 分支
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Branch *string `json:"Branch,omitempty" name:"Branch"`
+
+	// 环境id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EnvId *string `json:"EnvId,omitempty" name:"EnvId"`
+
+	// 服务名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ServerName *string `json:"ServerName,omitempty" name:"ServerName"`
+
+	// package名字
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PackageName *string `json:"PackageName,omitempty" name:"PackageName"`
+
+	// package版本
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PackageVersion *string `json:"PackageVersion,omitempty" name:"PackageVersion"`
+
+	// 自定义log路径
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CustomLogs *string `json:"CustomLogs,omitempty" name:"CustomLogs"`
+
+	// 延时健康检查时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InitialDelaySeconds *int64 `json:"InitialDelaySeconds,omitempty" name:"InitialDelaySeconds"`
+
+	// snapshot名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SnapshotName *string `json:"SnapshotName,omitempty" name:"SnapshotName"`
+
+	// 镜像信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ImageInfo *CloudBaseRunImageInfo `json:"ImageInfo,omitempty" name:"ImageInfo"`
+
+	// 代码仓库信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CodeDetail *CloudBaseCodeRepoDetail `json:"CodeDetail,omitempty" name:"CodeDetail"`
+
+	// 状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *string `json:"Status,omitempty" name:"Status"`
+}
+
 type CommonServiceAPIRequest struct {
 	*tchttp.BaseRequest
 
@@ -444,6 +601,59 @@ func (r *DescribeCloudBaseBuildServiceResponse) ToJsonString() string {
 }
 
 func (r *DescribeCloudBaseBuildServiceResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeCloudBaseRunVersionSnapshotRequest struct {
+	*tchttp.BaseRequest
+
+	// 服务名
+	ServerName *string `json:"ServerName,omitempty" name:"ServerName"`
+
+	// 版本名
+	VersionName *string `json:"VersionName,omitempty" name:"VersionName"`
+
+	// 环境id
+	EnvId *string `json:"EnvId,omitempty" name:"EnvId"`
+
+	// 版本历史名
+	SnapshotName *string `json:"SnapshotName,omitempty" name:"SnapshotName"`
+
+	// 偏移量
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 限制大小
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+func (r *DescribeCloudBaseRunVersionSnapshotRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeCloudBaseRunVersionSnapshotRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeCloudBaseRunVersionSnapshotResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 版本历史
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Snapshots []*CloudRunServiceSimpleVersionSnapshot `json:"Snapshots,omitempty" name:"Snapshots" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeCloudBaseRunVersionSnapshotResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeCloudBaseRunVersionSnapshotResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 

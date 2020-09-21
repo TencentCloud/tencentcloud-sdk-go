@@ -1206,6 +1206,10 @@ type PersistentVolumeContext struct {
 	// 磁盘类型。CLOUD_PREMIUM;CLOUD_SSD
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DiskType *string `json:"DiskType,omitempty" name:"DiskType"`
+
+	// 磁盘数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DiskNum *int64 `json:"DiskNum,omitempty" name:"DiskNum"`
 }
 
 type Placement struct {
@@ -1462,6 +1466,15 @@ type ScaleOutInstanceRequest struct {
 
 	// 使用Pod资源扩容时，指定的Pod规格以及来源等信息
 	PodSpec *PodSpec `json:"PodSpec,omitempty" name:"PodSpec"`
+
+	// 使用clickhouse集群扩容时，选择的机器分组名称
+	ClickHouseClusterName *string `json:"ClickHouseClusterName,omitempty" name:"ClickHouseClusterName"`
+
+	// 使用clickhouse集群扩容时，选择的机器分组类型。new为新增，old为选择旧分组
+	ClickHouseClusterType *string `json:"ClickHouseClusterType,omitempty" name:"ClickHouseClusterType"`
+
+	// 规则扩容指定 yarn node label
+	YarnNodeLabel *string `json:"YarnNodeLabel,omitempty" name:"YarnNodeLabel"`
 }
 
 func (r *ScaleOutInstanceRequest) ToJsonString() string {

@@ -268,6 +268,31 @@ func (c *Client) DescribeCloudBaseBuildService(request *DescribeCloudBaseBuildSe
     return
 }
 
+func NewDescribeCloudBaseRunVersionSnapshotRequest() (request *DescribeCloudBaseRunVersionSnapshotRequest) {
+    request = &DescribeCloudBaseRunVersionSnapshotRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tcb", APIVersion, "DescribeCloudBaseRunVersionSnapshot")
+    return
+}
+
+func NewDescribeCloudBaseRunVersionSnapshotResponse() (response *DescribeCloudBaseRunVersionSnapshotResponse) {
+    response = &DescribeCloudBaseRunVersionSnapshotResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询版本历史
+func (c *Client) DescribeCloudBaseRunVersionSnapshot(request *DescribeCloudBaseRunVersionSnapshotRequest) (response *DescribeCloudBaseRunVersionSnapshotResponse, err error) {
+    if request == nil {
+        request = NewDescribeCloudBaseRunVersionSnapshotRequest()
+    }
+    response = NewDescribeCloudBaseRunVersionSnapshotResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeDatabaseACLRequest() (request *DescribeDatabaseACLRequest) {
     request = &DescribeDatabaseACLRequest{
         BaseRequest: &tchttp.BaseRequest{},

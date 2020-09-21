@@ -1,92 +1,36 @@
 # 本版本更新包含以下内容：
 
-## 语音识别(asr) 版本：2019-06-14
+## 弹性 MapReduce(emr) 版本：2019-01-03
 
-### 第 11 次发布
+### 第 14 次发布
 
-发布时间：2020-09-18 08:00:03
+发布时间：2020-09-21 08:03:23
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-新增接口：
-
-* [GetCustomizationList](https://cloud.tencent.com/document/api/1093/48498)
-
 修改接口：
 
-* [GetAsrVocabList](https://cloud.tencent.com/document/api/1093/41484)
+* [ScaleOutInstance](https://cloud.tencent.com/document/api/589/34264)
 
-	* 新增入参：TagInfos, Offset, Limit
+	* 新增入参：ClickHouseClusterName, ClickHouseClusterType, YarnNodeLabel
 
-	* 新增出参：TotalCount
-
-* [SentenceRecognition](https://cloud.tencent.com/document/api/1093/35646)
-
-	* 新增入参：WordInfo
-
-	* 新增出参：WordSize, WordList
-
-
-新增数据结构：
-
-* [Model](https://cloud.tencent.com/document/api/1093/37824#Model)
-* [SentenceWord](https://cloud.tencent.com/document/api/1093/37824#SentenceWord)
 
 修改数据结构：
 
-* [Vocab](https://cloud.tencent.com/document/api/1093/37824#Vocab)
+* [PersistentVolumeContext](https://cloud.tencent.com/document/api/589/33981#PersistentVolumeContext)
 
-	* 新增成员：TagInfos
-
-
-
-
-## 验证码(captcha) 版本：2019-07-22
-
-### 第 7 次发布
-
-发布时间：2020-09-18 08:01:58
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [DescribeCaptchaMiniResult](https://cloud.tencent.com/document/api/1110/48499)
-
-
-
-## 负载均衡(clb) 版本：2018-03-17
-
-### 第 32 次发布
-
-发布时间：2020-09-18 08:02:34
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [CreateListener](https://cloud.tencent.com/document/api/214/30693)
-
-	* 新增入参：KeepaliveEnable
-
-* [ModifyListener](https://cloud.tencent.com/document/api/214/30681)
-
-	* 新增入参：KeepaliveEnable
+	* 新增成员：DiskNum
 
 
 
 
-## 人脸识别(iai) 版本：2020-03-03
+## 云开发 CloudBase(tcb) 版本：2018-06-08
 
-### 第 5 次发布
+### 第 18 次发布
 
-发布时间：2020-09-18 08:03:48
+发布时间：2020-09-21 08:05:50
 
 本次发布包含了以下内容：
 
@@ -94,11 +38,14 @@
 
 新增接口：
 
-* [DetectLiveFaceAccurate](https://cloud.tencent.com/document/api/867/48501)
+* [DescribeCloudBaseRunVersionSnapshot](https://cloud.tencent.com/document/api/876/48528)
 
+新增数据结构：
 
-
-## 人脸识别(iai) 版本：2018-03-01
+* [CloudBaseCodeRepoDetail](https://cloud.tencent.com/document/api/876/34822#CloudBaseCodeRepoDetail)
+* [CloudBaseCodeRepoName](https://cloud.tencent.com/document/api/876/34822#CloudBaseCodeRepoName)
+* [CloudBaseRunImageInfo](https://cloud.tencent.com/document/api/876/34822#CloudBaseRunImageInfo)
+* [CloudRunServiceSimpleVersionSnapshot](https://cloud.tencent.com/document/api/876/34822#CloudRunServiceSimpleVersionSnapshot)
 
 
 
@@ -1477,7 +1424,7 @@
 
 新增接口：
 
-* [[GetCustomizationList](https://cloud.tencent.com/document/api/1093/48498)](https://cloud.tencent.com/document/api/#/#)
+* [GetCustomizationList](https://cloud.tencent.com/document/api/1093/48498)
 
 修改接口：
 
@@ -1496,8 +1443,8 @@
 
 新增数据结构：
 
-* [[Model](https://cloud.tencent.com/document/api/1093/37824#Model)](https://cloud.tencent.com/document/api/1093/37824#[Model](https://cloud.tencent.com/document/api/1093/37824#Model))
-* [[SentenceWord](https://cloud.tencent.com/document/api/1093/37824#SentenceWord)](https://cloud.tencent.com/document/api/1093/37824#[SentenceWord](https://cloud.tencent.com/document/api/1093/37824#SentenceWord))
+* [Model](https://cloud.tencent.com/document/api/1093/37824#Model)
+* [SentenceWord](https://cloud.tencent.com/document/api/1093/37824#SentenceWord)
 
 修改数据结构：
 
@@ -4465,7 +4412,7 @@
 
 新增接口：
 
-* [[DescribeCaptchaMiniResult](https://cloud.tencent.com/document/api/1110/48499)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeCaptchaMiniResult](https://cloud.tencent.com/document/api/1110/48499)
 
 ### 第 6 次发布
 
@@ -13800,6 +13747,28 @@
 
 ## 弹性 MapReduce(emr) 版本：2019-01-03
 
+### 第 14 次发布
+
+发布时间：2020-09-21 08:03:23
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [ScaleOutInstance](https://cloud.tencent.com/document/api/589/34264)
+
+	* 新增入参：ClickHouseClusterName, ClickHouseClusterType, YarnNodeLabel
+
+
+修改数据结构：
+
+* [PersistentVolumeContext](https://cloud.tencent.com/document/api/589/33981#PersistentVolumeContext)
+
+	* 新增成员：DiskNum
+
+
 ### 第 13 次发布
 
 发布时间：2020-08-19 08:11:03
@@ -16592,7 +16561,7 @@
 
 新增接口：
 
-* [[DetectLiveFaceAccurate](https://cloud.tencent.com/document/api/867/48501)](https://cloud.tencent.com/document/api/#/#)
+* [DetectLiveFaceAccurate](https://cloud.tencent.com/document/api/867/48501)
 
 ### 第 4 次发布
 
@@ -26671,6 +26640,25 @@
 
 
 ## 云开发 CloudBase(tcb) 版本：2018-06-08
+
+### 第 18 次发布
+
+发布时间：2020-09-21 08:05:50
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeCloudBaseRunVersionSnapshot](https://cloud.tencent.com/document/api/876/48528)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[CloudBaseCodeRepoDetail](https://cloud.tencent.com/document/api/876/34822#CloudBaseCodeRepoDetail)](https://cloud.tencent.com/document/api/876/34822#[CloudBaseCodeRepoDetail](https://cloud.tencent.com/document/api/876/34822#CloudBaseCodeRepoDetail))
+* [[CloudBaseCodeRepoName](https://cloud.tencent.com/document/api/876/34822#CloudBaseCodeRepoName)](https://cloud.tencent.com/document/api/876/34822#[CloudBaseCodeRepoName](https://cloud.tencent.com/document/api/876/34822#CloudBaseCodeRepoName))
+* [[CloudBaseRunImageInfo](https://cloud.tencent.com/document/api/876/34822#CloudBaseRunImageInfo)](https://cloud.tencent.com/document/api/876/34822#[CloudBaseRunImageInfo](https://cloud.tencent.com/document/api/876/34822#CloudBaseRunImageInfo))
+* [[CloudRunServiceSimpleVersionSnapshot](https://cloud.tencent.com/document/api/876/34822#CloudRunServiceSimpleVersionSnapshot)](https://cloud.tencent.com/document/api/876/34822#[CloudRunServiceSimpleVersionSnapshot](https://cloud.tencent.com/document/api/876/34822#CloudRunServiceSimpleVersionSnapshot))
 
 ### 第 17 次发布
 

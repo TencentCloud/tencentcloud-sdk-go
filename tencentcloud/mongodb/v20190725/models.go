@@ -402,7 +402,7 @@ type DBInstancePrice struct {
 type DescribeAsyncRequestInfoRequest struct {
 	*tchttp.BaseRequest
 
-	// 异步请求Id
+	// 异步请求Id，涉及到异步流程的接口返回，如CreateBackupDBInstance
 	AsyncRequestId *string `json:"AsyncRequestId,omitempty" name:"AsyncRequestId"`
 }
 
@@ -1102,6 +1102,7 @@ func (r *InquirePriceRenewDBInstancesResponse) FromJsonString(s string) error {
 type InstanceChargePrepaid struct {
 
 	// 购买实例的时长，单位：月。取值范围：1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 24, 36。默认为1。
+	// （InquirePriceRenewDBInstances，RenewDBInstances调用时必填）
 	Period *int64 `json:"Period,omitempty" name:"Period"`
 
 	// 自动续费标识。取值范围：
@@ -1110,6 +1111,7 @@ type InstanceChargePrepaid struct {
 	// DISABLE_NOTIFY_AND_MANUAL_RENEW：不通知过期不自动续费
 	// 
 	// 默认取值：NOTIFY_AND_MANUAL_RENEW。若该参数指定为NOTIFY_AND_AUTO_RENEW，在账户余额充足的情况下，实例到期后将按月自动续费。
+	// （InquirePriceRenewDBInstances，RenewDBInstances调用时必填）
 	RenewFlag *string `json:"RenewFlag,omitempty" name:"RenewFlag"`
 }
 

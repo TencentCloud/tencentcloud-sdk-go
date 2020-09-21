@@ -95,6 +95,7 @@ func NewCreateRecTaskResponse() (response *CreateRecTaskResponse) {
 // <br>• 支持语音 URL 和本地语音文件两种请求方式
 // <br>• 语音 URL 的音频时长不能长于5小时，文件大小不超过512MB
 // <br>• 本地语音文件不能大于5MB
+// <br>• 提交录音文件识别请求后，在5小时内完成识别（半小时内发送超过1000小时录音或者2万条识别任务的除外），识别结果在服务端可保存7天
 // <br>• 支持回调或轮询的方式获取结果，结果获取请参考[ 录音文件识别结果查询](https://cloud.tencent.com/document/product/1093/37822)。
 // <br>•   请求方法为 HTTP POST , Content-Type为"application/json; charset=utf-8"
 // <br>•   签名方法参考 [公共参数](https://cloud.tencent.com/document/api/1093/35640) 中签名方法v3。
