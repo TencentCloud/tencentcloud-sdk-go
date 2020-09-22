@@ -68,6 +68,31 @@ func (c *Client) CreateTranscode(request *CreateTranscodeRequest) (response *Cre
     return
 }
 
+func NewCreateVideoGenerationTaskRequest() (request *CreateVideoGenerationTaskRequest) {
+    request = &CreateVideoGenerationTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tiw", APIVersion, "CreateVideoGenerationTask")
+    return
+}
+
+func NewCreateVideoGenerationTaskResponse() (response *CreateVideoGenerationTaskResponse) {
+    response = &CreateVideoGenerationTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 创建视频生成任务
+func (c *Client) CreateVideoGenerationTask(request *CreateVideoGenerationTaskRequest) (response *CreateVideoGenerationTaskResponse, err error) {
+    if request == nil {
+        request = NewCreateVideoGenerationTaskRequest()
+    }
+    response = NewCreateVideoGenerationTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeOnlineRecordRequest() (request *DescribeOnlineRecordRequest) {
     request = &DescribeOnlineRecordRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -164,6 +189,56 @@ func (c *Client) DescribeTranscodeCallback(request *DescribeTranscodeCallbackReq
         request = NewDescribeTranscodeCallbackRequest()
     }
     response = NewDescribeTranscodeCallbackResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeVideoGenerationTaskRequest() (request *DescribeVideoGenerationTaskRequest) {
+    request = &DescribeVideoGenerationTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tiw", APIVersion, "DescribeVideoGenerationTask")
+    return
+}
+
+func NewDescribeVideoGenerationTaskResponse() (response *DescribeVideoGenerationTaskResponse) {
+    response = &DescribeVideoGenerationTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询录制视频生成任务状态与结果
+func (c *Client) DescribeVideoGenerationTask(request *DescribeVideoGenerationTaskRequest) (response *DescribeVideoGenerationTaskResponse, err error) {
+    if request == nil {
+        request = NewDescribeVideoGenerationTaskRequest()
+    }
+    response = NewDescribeVideoGenerationTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeVideoGenerationTaskCallbackRequest() (request *DescribeVideoGenerationTaskCallbackRequest) {
+    request = &DescribeVideoGenerationTaskCallbackRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tiw", APIVersion, "DescribeVideoGenerationTaskCallback")
+    return
+}
+
+func NewDescribeVideoGenerationTaskCallbackResponse() (response *DescribeVideoGenerationTaskCallbackResponse) {
+    response = &DescribeVideoGenerationTaskCallbackResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询录制视频生成回调地址
+func (c *Client) DescribeVideoGenerationTaskCallback(request *DescribeVideoGenerationTaskCallbackRequest) (response *DescribeVideoGenerationTaskCallbackResponse, err error) {
+    if request == nil {
+        request = NewDescribeVideoGenerationTaskCallbackRequest()
+    }
+    response = NewDescribeVideoGenerationTaskCallbackResponse()
     err = c.Send(request, response)
     return
 }
@@ -314,6 +389,56 @@ func (c *Client) SetTranscodeCallbackKey(request *SetTranscodeCallbackKeyRequest
         request = NewSetTranscodeCallbackKeyRequest()
     }
     response = NewSetTranscodeCallbackKeyResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewSetVideoGenerationTaskCallbackRequest() (request *SetVideoGenerationTaskCallbackRequest) {
+    request = &SetVideoGenerationTaskCallbackRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tiw", APIVersion, "SetVideoGenerationTaskCallback")
+    return
+}
+
+func NewSetVideoGenerationTaskCallbackResponse() (response *SetVideoGenerationTaskCallbackResponse) {
+    response = &SetVideoGenerationTaskCallbackResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 设置录制视频生成回调地址
+func (c *Client) SetVideoGenerationTaskCallback(request *SetVideoGenerationTaskCallbackRequest) (response *SetVideoGenerationTaskCallbackResponse, err error) {
+    if request == nil {
+        request = NewSetVideoGenerationTaskCallbackRequest()
+    }
+    response = NewSetVideoGenerationTaskCallbackResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewSetVideoGenerationTaskCallbackKeyRequest() (request *SetVideoGenerationTaskCallbackKeyRequest) {
+    request = &SetVideoGenerationTaskCallbackKeyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tiw", APIVersion, "SetVideoGenerationTaskCallbackKey")
+    return
+}
+
+func NewSetVideoGenerationTaskCallbackKeyResponse() (response *SetVideoGenerationTaskCallbackKeyResponse) {
+    response = &SetVideoGenerationTaskCallbackKeyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 设置视频生成回调鉴权密钥
+func (c *Client) SetVideoGenerationTaskCallbackKey(request *SetVideoGenerationTaskCallbackKeyRequest) (response *SetVideoGenerationTaskCallbackKeyResponse, err error) {
+    if request == nil {
+        request = NewSetVideoGenerationTaskCallbackKeyRequest()
+    }
+    response = NewSetVideoGenerationTaskCallbackKeyResponse()
     err = c.Send(request, response)
     return
 }

@@ -99,6 +99,66 @@ func (r *CreateTranscodeResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type CreateVideoGenerationTaskRequest struct {
+	*tchttp.BaseRequest
+
+	// 录制任务的TaskId
+	OnlineRecordTaskId *string `json:"OnlineRecordTaskId,omitempty" name:"OnlineRecordTaskId"`
+
+	// 客户的SdkAppId
+	SdkAppId *int64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+
+	// 视频生成的白板参数，例如白板宽高等。
+	// 
+	// 此参数与开始录制接口提供的Whiteboard参数互斥，在本接口与开始录制接口都提供了Whiteboard参数时，优先使用本接口指定的Whiteboard参数进行视频生成，否则使用开始录制接口提供的Whiteboard参数进行视频生成。
+	Whiteboard *Whiteboard `json:"Whiteboard,omitempty" name:"Whiteboard"`
+
+	// 视频拼接参数
+	// 
+	// 此参数与开始录制接口提供的Concat参数互斥，在本接口与开始录制接口都提供了Concat参数时，优先使用本接口指定的Concat参数进行视频拼接，否则使用开始录制接口提供的Concat参数进行视频拼接。
+	Concat *Concat `json:"Concat,omitempty" name:"Concat"`
+
+	// 视频生成混流参数
+	// 
+	// 此参数与开始录制接口提供的MixStream参数互斥，在本接口与开始录制接口都提供了MixStream参数时，优先使用本接口指定的MixStream参数进行视频混流，否则使用开始录制接口提供的MixStream参数进行视频拼混流。
+	MixStream *MixStream `json:"MixStream,omitempty" name:"MixStream"`
+
+	// 视频生成控制参数，用于更精细地指定需要生成哪些流，某一路流是否禁用音频，是否只录制小画面等
+	// 
+	// 此参数与开始录制接口提供的RecordControl参数互斥，在本接口与开始录制接口都提供了RecordControl参数时，优先使用本接口指定的RecordControl参数进行视频生成控制，否则使用开始录制接口提供的RecordControl参数进行视频拼生成控制。
+	RecordControl *RecordControl `json:"RecordControl,omitempty" name:"RecordControl"`
+}
+
+func (r *CreateVideoGenerationTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateVideoGenerationTaskRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateVideoGenerationTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 视频生成的任务Id
+		TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateVideoGenerationTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateVideoGenerationTaskResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type CustomLayout struct {
 
 	// 混流画布参数
@@ -346,6 +406,107 @@ func (r *DescribeTranscodeResponse) ToJsonString() string {
 }
 
 func (r *DescribeTranscodeResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeVideoGenerationTaskCallbackRequest struct {
+	*tchttp.BaseRequest
+
+	// 应用的SdkAppId
+	SdkAppId *int64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+}
+
+func (r *DescribeVideoGenerationTaskCallbackRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeVideoGenerationTaskCallbackRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeVideoGenerationTaskCallbackResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 录制视频生成回调地址
+		Callback *string `json:"Callback,omitempty" name:"Callback"`
+
+		// 录制视频生成回调鉴权密钥
+		CallbackKey *string `json:"CallbackKey,omitempty" name:"CallbackKey"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeVideoGenerationTaskCallbackResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeVideoGenerationTaskCallbackResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeVideoGenerationTaskRequest struct {
+	*tchttp.BaseRequest
+
+	// 客户的SdkAppId
+	SdkAppId *int64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+
+	// 录制视频生成的任务Id
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+}
+
+func (r *DescribeVideoGenerationTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeVideoGenerationTaskRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeVideoGenerationTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 任务对应的群组Id
+		GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
+
+		// 任务对应的房间号
+		RoomId *int64 `json:"RoomId,omitempty" name:"RoomId"`
+
+		// 任务的Id
+		TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+		// 录制视频生成进度（0-100，100表示视频生成完成 ）
+		Progress *int64 `json:"Progress,omitempty" name:"Progress"`
+
+		// 录制视频生成任务状态
+	// - QUEUED: 正在排队
+	// - PROCESSING: 正在生成视频
+	// - FINISHED: 生成视频结束（成功完成或失败结束，可以通过错误码和错误信息进一步判断）
+		Status *string `json:"Status,omitempty" name:"Status"`
+
+		// 回放视频总时长,单位：毫秒
+		TotalTime *int64 `json:"TotalTime,omitempty" name:"TotalTime"`
+
+		// 录制视频生成列表
+		VideoInfos *VideoInfo `json:"VideoInfos,omitempty" name:"VideoInfos"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeVideoGenerationTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeVideoGenerationTaskResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -655,6 +816,80 @@ func (r *SetTranscodeCallbackResponse) ToJsonString() string {
 }
 
 func (r *SetTranscodeCallbackResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type SetVideoGenerationTaskCallbackKeyRequest struct {
+	*tchttp.BaseRequest
+
+	// 应用的SdkAppId
+	SdkAppId *int64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+
+	// 设置视频生成回调鉴权密钥，最长64字符，如果传入空字符串，那么删除现有的鉴权回调密钥
+	CallbackKey *string `json:"CallbackKey,omitempty" name:"CallbackKey"`
+}
+
+func (r *SetVideoGenerationTaskCallbackKeyRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *SetVideoGenerationTaskCallbackKeyRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type SetVideoGenerationTaskCallbackKeyResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *SetVideoGenerationTaskCallbackKeyResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *SetVideoGenerationTaskCallbackKeyResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type SetVideoGenerationTaskCallbackRequest struct {
+	*tchttp.BaseRequest
+
+	// 客户的SdkAppId
+	SdkAppId *int64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+
+	// 课后录制任务结果回调地址，如果传空字符串会删除原来的回调地址配置，回调地址仅支持 http或https协议，即回调地址以http://或https://开头
+	Callback *string `json:"Callback,omitempty" name:"Callback"`
+}
+
+func (r *SetVideoGenerationTaskCallbackRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *SetVideoGenerationTaskCallbackRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type SetVideoGenerationTaskCallbackResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *SetVideoGenerationTaskCallbackResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *SetVideoGenerationTaskCallbackResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 

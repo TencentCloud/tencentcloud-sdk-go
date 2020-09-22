@@ -1,10 +1,51 @@
 # 本版本更新包含以下内容：
 
-## 弹性 MapReduce(emr) 版本：2019-01-03
+## 访问管理(cam) 版本：2019-01-16
 
-### 第 14 次发布
+### 第 26 次发布
 
-发布时间：2020-09-21 08:03:23
+发布时间：2020-09-22 08:02:07
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [AttachEntityOfPolicy](https://cloud.tencent.com/document/api/598/33167#AttachEntityOfPolicy)
+
+	* 新增成员：AttachmentTime
+
+
+
+
+## 消息队列 Ckafka(ckafka) 版本：2019-08-19
+
+### 第 9 次发布
+
+发布时间：2020-09-22 08:08:59
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+<font color="#dd0000">**删除接口**：</font>
+
+* FetchMessageByOffset
+* FetchMessageListByOffset
+* FetchMessageListByTimestamp
+
+<font color="#dd0000">**删除数据结构**：</font>
+
+* ConsumerRecord
+
+
+
+## 云服务器(cvm) 版本：2017-03-12
+
+### 第 49 次发布
+
+发布时间：2020-09-22 08:03:09
 
 本次发布包含了以下内容：
 
@@ -12,25 +53,18 @@
 
 修改接口：
 
-* [ScaleOutInstance](https://cloud.tencent.com/document/api/589/34264)
+* [RunInstances](https://cloud.tencent.com/document/api/213/15730)
 
-	* 新增入参：ClickHouseClusterName, ClickHouseClusterType, YarnNodeLabel
-
-
-修改数据结构：
-
-* [PersistentVolumeContext](https://cloud.tencent.com/document/api/589/33981#PersistentVolumeContext)
-
-	* 新增成员：DiskNum
+	* 新增入参：CamRoleName
 
 
 
 
-## 云开发 CloudBase(tcb) 版本：2018-06-08
+## 互动白板(tiw) 版本：2019-09-19
 
-### 第 18 次发布
+### 第 8 次发布
 
-发布时间：2020-09-21 08:05:50
+发布时间：2020-09-22 08:08:51
 
 本次发布包含了以下内容：
 
@@ -38,14 +72,11 @@
 
 新增接口：
 
-* [DescribeCloudBaseRunVersionSnapshot](https://cloud.tencent.com/document/api/876/48528)
-
-新增数据结构：
-
-* [CloudBaseCodeRepoDetail](https://cloud.tencent.com/document/api/876/34822#CloudBaseCodeRepoDetail)
-* [CloudBaseCodeRepoName](https://cloud.tencent.com/document/api/876/34822#CloudBaseCodeRepoName)
-* [CloudBaseRunImageInfo](https://cloud.tencent.com/document/api/876/34822#CloudBaseRunImageInfo)
-* [CloudRunServiceSimpleVersionSnapshot](https://cloud.tencent.com/document/api/876/34822#CloudRunServiceSimpleVersionSnapshot)
+* [CreateVideoGenerationTask](https://cloud.tencent.com/document/api/1137/48571)
+* [DescribeVideoGenerationTask](https://cloud.tencent.com/document/api/1137/48570)
+* [DescribeVideoGenerationTaskCallback](https://cloud.tencent.com/document/api/1137/48569)
+* [SetVideoGenerationTaskCallback](https://cloud.tencent.com/document/api/1137/48568)
+* [SetVideoGenerationTaskCallbackKey](https://cloud.tencent.com/document/api/1137/48567)
 
 
 
@@ -3871,6 +3902,21 @@
 
 ## 访问管理(cam) 版本：2019-01-16
 
+### 第 26 次发布
+
+发布时间：2020-09-22 08:02:07
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [AttachEntityOfPolicy](https://cloud.tencent.com/document/api/598/33167#AttachEntityOfPolicy)
+
+	* 新增成员：AttachmentTime
+
+
 ### 第 25 次发布
 
 发布时间：2020-09-16 08:01:43
@@ -7199,6 +7245,24 @@
 
 ## 消息队列 Ckafka(ckafka) 版本：2019-08-19
 
+### 第 9 次发布
+
+发布时间：2020-09-22 08:08:59
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+<font color="#dd0000">**删除接口**：</font>
+
+* FetchMessageByOffset
+* FetchMessageListByOffset
+* FetchMessageListByTimestamp
+
+<font color="#dd0000">**删除数据结构**：</font>
+
+* ConsumerRecord
+
 ### 第 8 次发布
 
 发布时间：2020-09-15 08:09:08
@@ -10107,6 +10171,21 @@
 
 
 ## 云服务器(cvm) 版本：2017-03-12
+
+### 第 49 次发布
+
+发布时间：2020-09-22 08:03:09
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [RunInstances](https://cloud.tencent.com/document/api/213/15730)
+
+	* 新增入参：CamRoleName
+
 
 ### 第 48 次发布
 
@@ -26651,14 +26730,14 @@
 
 新增接口：
 
-* [[DescribeCloudBaseRunVersionSnapshot](https://cloud.tencent.com/document/api/876/48528)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeCloudBaseRunVersionSnapshot](https://cloud.tencent.com/document/api/876/48528)
 
 新增数据结构：
 
-* [[CloudBaseCodeRepoDetail](https://cloud.tencent.com/document/api/876/34822#CloudBaseCodeRepoDetail)](https://cloud.tencent.com/document/api/876/34822#[CloudBaseCodeRepoDetail](https://cloud.tencent.com/document/api/876/34822#CloudBaseCodeRepoDetail))
-* [[CloudBaseCodeRepoName](https://cloud.tencent.com/document/api/876/34822#CloudBaseCodeRepoName)](https://cloud.tencent.com/document/api/876/34822#[CloudBaseCodeRepoName](https://cloud.tencent.com/document/api/876/34822#CloudBaseCodeRepoName))
-* [[CloudBaseRunImageInfo](https://cloud.tencent.com/document/api/876/34822#CloudBaseRunImageInfo)](https://cloud.tencent.com/document/api/876/34822#[CloudBaseRunImageInfo](https://cloud.tencent.com/document/api/876/34822#CloudBaseRunImageInfo))
-* [[CloudRunServiceSimpleVersionSnapshot](https://cloud.tencent.com/document/api/876/34822#CloudRunServiceSimpleVersionSnapshot)](https://cloud.tencent.com/document/api/876/34822#[CloudRunServiceSimpleVersionSnapshot](https://cloud.tencent.com/document/api/876/34822#CloudRunServiceSimpleVersionSnapshot))
+* [CloudBaseCodeRepoDetail](https://cloud.tencent.com/document/api/876/34822#CloudBaseCodeRepoDetail)
+* [CloudBaseCodeRepoName](https://cloud.tencent.com/document/api/876/34822#CloudBaseCodeRepoName)
+* [CloudBaseRunImageInfo](https://cloud.tencent.com/document/api/876/34822#CloudBaseRunImageInfo)
+* [CloudRunServiceSimpleVersionSnapshot](https://cloud.tencent.com/document/api/876/34822#CloudRunServiceSimpleVersionSnapshot)
 
 ### 第 17 次发布
 
@@ -28684,6 +28763,22 @@
 
 
 ## 互动白板(tiw) 版本：2019-09-19
+
+### 第 8 次发布
+
+发布时间：2020-09-22 08:08:51
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[CreateVideoGenerationTask](https://cloud.tencent.com/document/api/1137/48571)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeVideoGenerationTask](https://cloud.tencent.com/document/api/1137/48570)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeVideoGenerationTaskCallback](https://cloud.tencent.com/document/api/1137/48569)](https://cloud.tencent.com/document/api/#/#)
+* [[SetVideoGenerationTaskCallback](https://cloud.tencent.com/document/api/1137/48568)](https://cloud.tencent.com/document/api/#/#)
+* [[SetVideoGenerationTaskCallbackKey](https://cloud.tencent.com/document/api/1137/48567)](https://cloud.tencent.com/document/api/#/#)
 
 ### 第 7 次发布
 
@@ -34416,7 +34511,7 @@
 
 
 
-## 主机安全(yunjing) 版本：2018-02-28
+## (yunjing) 版本：2018-02-28
 
 ### 第 12 次发布
 

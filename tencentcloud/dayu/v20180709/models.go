@@ -528,7 +528,7 @@ type CreateDDoSPolicyRequest struct {
 	// 端口禁用，当没有禁用端口时填空数组
 	PortLimits []*DDoSPolicyPortLimit `json:"PortLimits,omitempty" name:"PortLimits" list`
 
-	// IP黑白名单，当没有IP黑白名单时填空数组
+	// 请求源IP黑白名单，当没有IP黑白名单时填空数组
 	IpAllowDenys []*IpBlackWhite `json:"IpAllowDenys,omitempty" name:"IpAllowDenys" list`
 
 	// 报文过滤，当没有报文过滤时填空数组

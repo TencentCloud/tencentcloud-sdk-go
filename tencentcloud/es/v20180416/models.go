@@ -864,7 +864,7 @@ type UpdateInstanceRequest struct {
 	// 节点个数（2-50个）
 	NodeNum *uint64 `json:"NodeNum,omitempty" name:"NodeNum"`
 
-	// 配置项（JSON格式字符串）。当前仅支持以下配置项：<li>action.destructive_requires_name</li><li>indices.fielddata.cache.size</li><li>indices.query.bool.max_clause_count</li>
+	// 配置项（JSON格式字符串）
 	EsConfig *string `json:"EsConfig,omitempty" name:"EsConfig"`
 
 	// 默认用户elastic的密码（8到16位，至少包括两项（[a-z,A-Z],[0-9]和[-!@#$%&^*+=_:;,.?]的特殊符号）

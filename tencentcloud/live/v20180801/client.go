@@ -546,12 +546,13 @@ func NewCreateRecordTaskResponse() (response *CreateRecordTaskResponse) {
 // 创建一个在指定时间启动、结束的录制任务，并使用指定录制模板ID对应的配置进行录制。
 // - 使用前提
 // 1. 录制文件存放于点播平台，所以用户如需使用录制功能，需首先自行开通点播服务。
-// 2. 录制文件存放后相关费用（含存储以及下行播放流量）按照点播平台计费方式收取，具体请参考 对应文档。
+// 2. 录制文件存放后相关费用（含存储以及下行播放流量）按照点播平台计费方式收取，具体请参考 [对应文档](https://cloud.tencent.com/document/product/266/2837)。
 // - 注意事项
 // 1. 断流会结束当前录制并生成录制文件。在结束时间到达之前任务仍然有效，期间只要正常推流都会正常录制，与是否多次推、断流无关。
 // 2. 使用上避免创建时间段相互重叠的录制任务。若同一条流当前存在多个时段重叠的任务，为避免重复录制系统将启动最多3个录制任务。
 // 3. 创建的录制任务记录在平台侧只保留3个月。
 // 4. 当前录制任务管理API（CreateRecordTask/StopRecordTask/DeleteRecordTask）与旧API（CreateLiveRecord/StopLiveRecord/DeleteLiveRecord）不兼容，两套接口不能混用。
+// 5. 避免 创建录制任务 与 推流 操作同时进行，可能导致因录制任务未生效而引起任务延迟启动问题，两者操作间隔建议大于3秒。
 func (c *Client) CreateRecordTask(request *CreateRecordTaskRequest) (response *CreateRecordTaskResponse, err error) {
     if request == nil {
         request = NewCreateRecordTaskRequest()
@@ -2684,7 +2685,7 @@ func NewStopRecordTaskResponse() (response *StopRecordTaskResponse) {
     return
 }
 
-// 提前结束录制，并中止运行中的录制任务。任务被成功中止后将不再启动。
+// 提前结束录制，并中止运行中的录制任务。任务被成功终止后，本次任务将不再启动。
 func (c *Client) StopRecordTask(request *StopRecordTaskRequest) (response *StopRecordTaskResponse, err error) {
     if request == nil {
         request = NewStopRecordTaskRequest()

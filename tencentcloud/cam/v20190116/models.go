@@ -157,6 +157,10 @@ type AttachEntityOfPolicy struct {
 
 	// 关联类型。1 用户关联 ； 2 用户组关联
 	RelatedType *uint64 `json:"RelatedType,omitempty" name:"RelatedType"`
+
+	// 策略关联时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AttachmentTime *string `json:"AttachmentTime,omitempty" name:"AttachmentTime"`
 }
 
 type AttachGroupPolicyRequest struct {

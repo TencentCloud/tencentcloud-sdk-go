@@ -26,7 +26,7 @@ type AccountTipoffAccessRequest struct {
 	// 被举报账号，长度低于 128 个字符
 	ReportedAccount *string `json:"ReportedAccount,omitempty" name:"ReportedAccount"`
 
-	// 被举报账号类型(1-微信uin 2-QQ号 3-微信群uin 4-qq群号 5-微信openid 6-QQopenid 7-手机号 8-微信号 0-其它string)
+	// 被举报账号类型(1-手机号 2-QQ号 3-微信号 4-QQ群号 5-微信openid 6-QQopenid 0-其它)
 	ReportedAccountType *int64 `json:"ReportedAccountType,omitempty" name:"ReportedAccountType"`
 
 	// 被举报账号所属恶意类型(1-诈骗，2-骚扰，3-广告，4-违法违规，5-赌博传销，0-其他)
@@ -35,7 +35,7 @@ type AccountTipoffAccessRequest struct {
 	// 举报者账号，长度低于 128 个字符
 	SenderAccount *string `json:"SenderAccount,omitempty" name:"SenderAccount"`
 
-	// 举报者账号类型(1-微信uin 2-QQ号 3-微信群uin 4-qq群号 5-微信openid 6-QQopenid 7-手机号 8-微信号 0-其它string)
+	// 举报者账号类型(1-手机号 2-QQ号 3-微信号 4-QQ群号 5-微信openid 6-QQopenid 0-其它)
 	SenderAccountType *int64 `json:"SenderAccountType,omitempty" name:"SenderAccountType"`
 
 	// 举报者IP地址

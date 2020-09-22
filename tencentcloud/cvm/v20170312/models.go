@@ -3809,6 +3809,9 @@ type RunInstancesRequest struct {
 	// false（默认）：发送正常请求，通过检查后直接创建实例
 	DryRun *bool `json:"DryRun,omitempty" name:"DryRun"`
 
+	// CAM角色名称。可通过[`DescribeRoleList`](https://cloud.tencent.com/document/product/598/13887)接口返回值中的`roleName`获取。
+	CamRoleName *string `json:"CamRoleName,omitempty" name:"CamRoleName"`
+
 	// 高性能计算集群ID。若创建的实例为高性能计算实例，需指定实例放置的集群，否则不可指定。
 	HpcClusterId *string `json:"HpcClusterId,omitempty" name:"HpcClusterId"`
 }
