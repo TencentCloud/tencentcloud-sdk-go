@@ -1091,6 +1091,67 @@ func (r *DescribeInstanceMonitorTopNCmdTookResponse) FromJsonString(s string) er
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeInstanceNodeInfoRequest struct {
+	*tchttp.BaseRequest
+
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 列表大小
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 偏移量
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+}
+
+func (r *DescribeInstanceNodeInfoRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeInstanceNodeInfoRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeInstanceNodeInfoResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// proxy节点数量
+		ProxyCount *int64 `json:"ProxyCount,omitempty" name:"ProxyCount"`
+
+		// proxy节点信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Proxy []*ProxyNodes `json:"Proxy,omitempty" name:"Proxy" list`
+
+		// redis节点数量
+		RedisCount *int64 `json:"RedisCount,omitempty" name:"RedisCount"`
+
+		// redis节点信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Redis []*RedisNodes `json:"Redis,omitempty" name:"Redis" list`
+
+		// tendis节点数量
+		TendisCount *int64 `json:"TendisCount,omitempty" name:"TendisCount"`
+
+		// tendis节点信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Tendis []*TendisNodes `json:"Tendis,omitempty" name:"Tendis" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeInstanceNodeInfoResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeInstanceNodeInfoResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeInstanceParamRecordsRequest struct {
 	*tchttp.BaseRequest
 
@@ -3059,6 +3120,13 @@ type ProductConf struct {
 	EnableRepicaReadOnly *bool `json:"EnableRepicaReadOnly,omitempty" name:"EnableRepicaReadOnly"`
 }
 
+type ProxyNodes struct {
+
+	// 节点ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NodeId *string `json:"NodeId,omitempty" name:"NodeId"`
+}
+
 type RedisBackupSet struct {
 
 	// 开始备份的时间
@@ -3078,6 +3146,18 @@ type RedisBackupSet struct {
 
 	// 备份是否被锁定，0：未被锁定；1：已被锁定
 	Locked *int64 `json:"Locked,omitempty" name:"Locked"`
+}
+
+type RedisNodes struct {
+
+	// 节点ID
+	NodeId *string `json:"NodeId,omitempty" name:"NodeId"`
+
+	// 节点角色
+	NodeRole *string `json:"NodeRole,omitempty" name:"NodeRole"`
+
+	// 分片ID
+	ClusterId *int64 `json:"ClusterId,omitempty" name:"ClusterId"`
 }
 
 type RegionConf struct {
@@ -3431,6 +3511,15 @@ type TaskInfoDetail struct {
 	// 任务状态
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Result *int64 `json:"Result,omitempty" name:"Result"`
+}
+
+type TendisNodes struct {
+
+	// 节点ID
+	NodeId *string `json:"NodeId,omitempty" name:"NodeId"`
+
+	// 节点角色
+	NodeRole *string `json:"NodeRole,omitempty" name:"NodeRole"`
 }
 
 type TradeDealDetail struct {

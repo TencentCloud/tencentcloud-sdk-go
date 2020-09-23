@@ -6210,6 +6210,7 @@ type TaskDetail struct {
 	// "KILLED" - 已终止；
 	// "REMOVED" - 已删除；
 	// "PAUSED" - 已暂停。
+	// "WAITING" - 等待中（可撤销）
 	TaskStatus *string `json:"TaskStatus,omitempty" name:"TaskStatus"`
 
 	// 实例任务类型，可能的值包括：

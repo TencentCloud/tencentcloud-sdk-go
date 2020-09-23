@@ -67,6 +67,52 @@ func (r *CreateAsrVocabResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type CreateCustomizationRequest struct {
+	*tchttp.BaseRequest
+
+	// 自学习模型名称，需在1-20字符之间
+	ModelName *string `json:"ModelName,omitempty" name:"ModelName"`
+
+	// 文本文件的下载地址，服务会从该地址下载文件， 以训练模型，目前仅支持腾讯云cos
+	TextUrl *string `json:"TextUrl,omitempty" name:"TextUrl"`
+
+	// 自学习模型类型，填写8k或者16k
+	ModelType *string `json:"ModelType,omitempty" name:"ModelType"`
+
+	// 标签信息
+	TagInfos []*string `json:"TagInfos,omitempty" name:"TagInfos" list`
+}
+
+func (r *CreateCustomizationRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateCustomizationRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateCustomizationResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 模型ID
+		ModelId *string `json:"ModelId,omitempty" name:"ModelId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateCustomizationResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateCustomizationResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type CreateRecTaskRequest struct {
 	*tchttp.BaseRequest
 
@@ -195,6 +241,40 @@ func (r *DeleteAsrVocabResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DeleteCustomizationRequest struct {
+	*tchttp.BaseRequest
+
+	// 要删除的模型ID
+	ModelId *string `json:"ModelId,omitempty" name:"ModelId"`
+}
+
+func (r *DeleteCustomizationRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteCustomizationRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteCustomizationResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DeleteCustomizationResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteCustomizationResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeTaskStatusRequest struct {
 	*tchttp.BaseRequest
 
@@ -269,6 +349,43 @@ func (r *DownloadAsrVocabResponse) ToJsonString() string {
 }
 
 func (r *DownloadAsrVocabResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DownloadCustomizationRequest struct {
+	*tchttp.BaseRequest
+
+	// 自学习模型ID
+	ModelId *string `json:"ModelId,omitempty" name:"ModelId"`
+}
+
+func (r *DownloadCustomizationRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DownloadCustomizationRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DownloadCustomizationResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 下载地址
+		DownloadUrl *string `json:"DownloadUrl,omitempty" name:"DownloadUrl"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DownloadCustomizationResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DownloadCustomizationResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -456,6 +573,89 @@ type Model struct {
 	// 标签信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TagInfos []*string `json:"TagInfos,omitempty" name:"TagInfos" list`
+}
+
+type ModifyCustomizationRequest struct {
+	*tchttp.BaseRequest
+
+	// 要修改的模型ID
+	ModelId *string `json:"ModelId,omitempty" name:"ModelId"`
+
+	// 要修改的模型名称，长度需在1-20个字符之间
+	ModelName *string `json:"ModelName,omitempty" name:"ModelName"`
+
+	// 要修改的模型类型，为8k或者16k
+	ModelType *string `json:"ModelType,omitempty" name:"ModelType"`
+
+	// 要修改的模型语料的下载地址，目前仅支持腾讯云cos
+	TextUrl *string `json:"TextUrl,omitempty" name:"TextUrl"`
+}
+
+func (r *ModifyCustomizationRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyCustomizationRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyCustomizationResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifyCustomizationResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyCustomizationResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyCustomizationStateRequest struct {
+	*tchttp.BaseRequest
+
+	// 自学习模型ID
+	ModelId *string `json:"ModelId,omitempty" name:"ModelId"`
+
+	// 想要变换的模型状态，-1代表下线，1代表上线
+	ToState *int64 `json:"ToState,omitempty" name:"ToState"`
+}
+
+func (r *ModifyCustomizationStateRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyCustomizationStateRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyCustomizationStateResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 自学习模型ID
+		ModelId *string `json:"ModelId,omitempty" name:"ModelId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifyCustomizationStateResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyCustomizationStateResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
 }
 
 type SentenceDetail struct {

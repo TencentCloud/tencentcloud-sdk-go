@@ -183,6 +183,10 @@ type ComputeEnvCreateInfo struct {
 
 	// 计算节点期望个数
 	DesiredComputeNodeCount *uint64 `json:"DesiredComputeNodeCount,omitempty" name:"DesiredComputeNodeCount"`
+
+	// 计算环境标签列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Tags []*Tag `json:"Tags,omitempty" name:"Tags" list`
 }
 
 type ComputeEnvData struct {
@@ -222,6 +226,10 @@ type ComputeEnvView struct {
 
 	// 用户添加到计算环境中的计算节点个数
 	AttachedComputeNodeCount *uint64 `json:"AttachedComputeNodeCount,omitempty" name:"AttachedComputeNodeCount"`
+
+	// 计算环境绑定的标签列表。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Tags []*Tag `json:"Tags,omitempty" name:"Tags" list`
 }
 
 type ComputeNode struct {
@@ -394,6 +402,9 @@ type CreateTaskTemplateRequest struct {
 
 	// 任务模板描述
 	TaskTemplateDescription *string `json:"TaskTemplateDescription,omitempty" name:"TaskTemplateDescription"`
+
+	// 标签列表。通过指定该参数可以支持绑定标签到任务模板。每个任务模板最多绑定10个标签。
+	Tags []*Tag `json:"Tags,omitempty" name:"Tags" list`
 }
 
 func (r *CreateTaskTemplateRequest) ToJsonString() string {
@@ -715,6 +726,10 @@ type DescribeComputeEnvCreateInfoResponse struct {
 		// 计算节点期望个数
 		DesiredComputeNodeCount *int64 `json:"DesiredComputeNodeCount,omitempty" name:"DesiredComputeNodeCount"`
 
+		// 计算环境绑定的标签列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Tags []*Tag `json:"Tags,omitempty" name:"Tags" list`
+
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
@@ -835,6 +850,10 @@ type DescribeComputeEnvResponse struct {
 		// 用户添加到计算环境中的计算节点个数
 		AttachedComputeNodeCount *uint64 `json:"AttachedComputeNodeCount,omitempty" name:"AttachedComputeNodeCount"`
 
+		// 计算环境绑定的标签列表。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Tags []*Tag `json:"Tags,omitempty" name:"Tags" list`
+
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
@@ -860,6 +879,9 @@ type DescribeComputeEnvsRequest struct {
 	// <li> env-id - String - 是否必填：否 -（过滤条件）按照计算环境ID过滤。</li>
 	// <li> env-name - String - 是否必填：否 -（过滤条件）按照计算环境名称过滤。</li>
 	// <li> resource-type - String - 是否必填：否 -（过滤条件）按照计算资源类型过滤，取值CVM或者CPM(黑石)。</li>
+	// <li> tag-key - String - 是否必填：否 -（过滤条件）按照标签键进行过滤。</li>
+	// <li>tag-value - String - 是否必填：否 -（过滤条件）按照标签值进行过滤。</li>
+	// <li>tag:tag-key - String - 是否必填：否 -（过滤条件）按照标签键值对进行过滤。 tag-key使用具体的标签键进行替换。</li>
 	// 与EnvIds参数不能同时指定。
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
 
@@ -1071,6 +1093,10 @@ type DescribeJobResponse struct {
 		// 作业失败原因
 		StateReason *string `json:"StateReason,omitempty" name:"StateReason"`
 
+		// 作业绑定的标签列表。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Tags []*Tag `json:"Tags,omitempty" name:"Tags" list`
+
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
@@ -1123,6 +1149,10 @@ type DescribeJobSubmitInfoResponse struct {
 		// 依赖信息
 		Dependences []*Dependence `json:"Dependences,omitempty" name:"Dependences" list`
 
+		// 作业绑定的标签列表。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Tags []*Tag `json:"Tags,omitempty" name:"Tags" list`
+
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
@@ -1148,6 +1178,9 @@ type DescribeJobsRequest struct {
 	// <li> job-name - String - 是否必填：否 -（过滤条件）按照作业名称过滤。</li>
 	// <li> job-state - String - 是否必填：否 -（过滤条件）按照作业状态过滤。</li>
 	// <li> zone - String - 是否必填：否 -（过滤条件）按照可用区过滤。</li>
+	// <li> tag-key - String - 是否必填：否 -（过滤条件）按照标签键进行过滤。</li>
+	// <li> tag-value - String - 是否必填：否 -（过滤条件）按照标签值进行过滤。</li>
+	// <li> tag:tag-key - String - 是否必填：否 -（过滤条件）按照标签键值对进行过滤。 tag-key使用具体的标签键进行替换。</li>
 	// 与JobIds参数不能同时指定。
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
 
@@ -1322,6 +1355,9 @@ type DescribeTaskTemplatesRequest struct {
 
 	// 过滤条件
 	// <li> task-template-name - String - 是否必填：否 -（过滤条件）按照任务模板名称过滤。</li>
+	// <li> tag-key - String - 是否必填：否 -（过滤条件）按照标签键进行过滤。</li>
+	// <li> tag-value - String - 是否必填：否 -（过滤条件）按照标签值进行过滤。</li>
+	// <li> tag:tag-key - String - 是否必填：否 -（过滤条件）按照标签键值对进行过滤。 tag-key使用具体的标签键进行替换。</li>
 	// 与TaskTemplateIds参数不能同时指定。
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
 
@@ -1814,6 +1850,9 @@ type Job struct {
 
 	// 表示创建 CVM 失败按照何种策略处理。取值范围包括 FAILED，RUNNABLE。FAILED 表示创建 CVM 失败按照一次执行失败处理，RUNNABLE 表示创建 CVM 失败按照继续等待处理。默认值为FAILED。StateIfCreateCvmFailed对于提交的指定计算环境的作业无效。
 	StateIfCreateCvmFailed *string `json:"StateIfCreateCvmFailed,omitempty" name:"StateIfCreateCvmFailed"`
+
+	// 标签列表。通过指定该参数可以支持绑定标签到作业。每个作业最多绑定10个标签。
+	Tags []*Tag `json:"Tags,omitempty" name:"Tags" list`
 }
 
 type JobView struct {
@@ -1843,6 +1882,10 @@ type JobView struct {
 
 	// 任务统计指标
 	TaskMetrics *TaskMetrics `json:"TaskMetrics,omitempty" name:"TaskMetrics"`
+
+	// 作业绑定的标签列表。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Tags []*Tag `json:"Tags,omitempty" name:"Tags" list`
 }
 
 type LocalDiskType struct {
@@ -2010,6 +2053,9 @@ type NamedComputeEnv struct {
 
 	// 对于实例创建失败或异常退还的计算节点，定期重新创建实例资源的最大重试次数，最大值11，如果不设置的话，系统会设置一个默认值，当前为7
 	ResourceMaxRetryCount *int64 `json:"ResourceMaxRetryCount,omitempty" name:"ResourceMaxRetryCount"`
+
+	// 标签列表。通过指定该参数可以支持绑定标签到计算环境。每个计算环境最多绑定10个标签。
+	Tags []*Tag `json:"Tags,omitempty" name:"Tags" list`
 }
 
 type NamedCpmComputeEnv struct {
@@ -2043,6 +2089,9 @@ type NamedCpmComputeEnv struct {
 
 	// 对于实例创建失败或异常退还的计算节点，定期重新创建实例资源的最大重试次数，最大值11，如果不设置的话，系统会设置一个默认值，当前为7
 	ResourceMaxRetryCount *int64 `json:"ResourceMaxRetryCount,omitempty" name:"ResourceMaxRetryCount"`
+
+	// 标签列表。通过指定该参数可以支持绑定标签到黑石计算环境。每个黑石计算环境最多绑定10个标签。
+	Tags []*Tag `json:"Tags,omitempty" name:"Tags" list`
 }
 
 type Notification struct {
@@ -2272,6 +2321,17 @@ type SystemDisk struct {
 	DiskSize *int64 `json:"DiskSize,omitempty" name:"DiskSize"`
 }
 
+type Tag struct {
+
+	// 标签键。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Key *string `json:"Key,omitempty" name:"Key"`
+
+	// 标签值。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Value *string `json:"Value,omitempty" name:"Value"`
+}
+
 type Task struct {
 
 	// 应用程序信息
@@ -2470,6 +2530,10 @@ type TaskTemplateView struct {
 
 	// 创建时间
 	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 任务模板绑定的标签列表。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Tags []*Tag `json:"Tags,omitempty" name:"Tags" list`
 }
 
 type TaskView struct {

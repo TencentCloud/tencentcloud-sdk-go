@@ -1,70 +1,10 @@
 # 本版本更新包含以下内容：
 
-## 访问管理(cam) 版本：2019-01-16
+## 语音识别(asr) 版本：2019-06-14
 
-### 第 26 次发布
+### 第 12 次发布
 
-发布时间：2020-09-22 08:02:07
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [AttachEntityOfPolicy](https://cloud.tencent.com/document/api/598/33167#AttachEntityOfPolicy)
-
-	* 新增成员：AttachmentTime
-
-
-
-
-## 消息队列 Ckafka(ckafka) 版本：2019-08-19
-
-### 第 9 次发布
-
-发布时间：2020-09-22 08:08:59
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-<font color="#dd0000">**删除接口**：</font>
-
-* FetchMessageByOffset
-* FetchMessageListByOffset
-* FetchMessageListByTimestamp
-
-<font color="#dd0000">**删除数据结构**：</font>
-
-* ConsumerRecord
-
-
-
-## 云服务器(cvm) 版本：2017-03-12
-
-### 第 49 次发布
-
-发布时间：2020-09-22 08:03:09
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [RunInstances](https://cloud.tencent.com/document/api/213/15730)
-
-	* 新增入参：CamRoleName
-
-
-
-
-## 互动白板(tiw) 版本：2019-09-19
-
-### 第 8 次发布
-
-发布时间：2020-09-22 08:08:51
+发布时间：2020-09-23 08:00:03
 
 本次发布包含了以下内容：
 
@@ -72,11 +12,153 @@
 
 新增接口：
 
-* [CreateVideoGenerationTask](https://cloud.tencent.com/document/api/1137/48571)
-* [DescribeVideoGenerationTask](https://cloud.tencent.com/document/api/1137/48570)
-* [DescribeVideoGenerationTaskCallback](https://cloud.tencent.com/document/api/1137/48569)
-* [SetVideoGenerationTaskCallback](https://cloud.tencent.com/document/api/1137/48568)
-* [SetVideoGenerationTaskCallbackKey](https://cloud.tencent.com/document/api/1137/48567)
+* [CreateCustomization](https://cloud.tencent.com/document/api/1093/48601)
+* [DeleteCustomization](https://cloud.tencent.com/document/api/1093/48600)
+* [DownloadCustomization](https://cloud.tencent.com/document/api/1093/48599)
+* [ModifyCustomization](https://cloud.tencent.com/document/api/1093/48598)
+* [ModifyCustomizationState](https://cloud.tencent.com/document/api/1093/48597)
+
+
+
+## 批量计算(batch) 版本：2017-03-12
+
+### 第 32 次发布
+
+发布时间：2020-09-23 08:01:24
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateTaskTemplate](https://cloud.tencent.com/document/api/599/15899)
+
+	* 新增入参：Tags
+
+* [DescribeComputeEnv](https://cloud.tencent.com/document/api/599/15892)
+
+	* 新增出参：Tags
+
+* [DescribeComputeEnvCreateInfo](https://cloud.tencent.com/document/api/599/15897)
+
+	* 新增出参：Tags
+
+* [DescribeJob](https://cloud.tencent.com/document/api/599/15904)
+
+	* 新增出参：Tags
+
+* [DescribeJobSubmitInfo](https://cloud.tencent.com/document/api/599/15910)
+
+	* 新增出参：Tags
+
+
+新增数据结构：
+
+* [Tag](https://cloud.tencent.com/document/api/599/15912#Tag)
+
+修改数据结构：
+
+* [ComputeEnvCreateInfo](https://cloud.tencent.com/document/api/599/15912#ComputeEnvCreateInfo)
+
+	* 新增成员：Tags
+
+* [ComputeEnvView](https://cloud.tencent.com/document/api/599/15912#ComputeEnvView)
+
+	* 新增成员：Tags
+
+* [Job](https://cloud.tencent.com/document/api/599/15912#Job)
+
+	* 新增成员：Tags
+
+* [JobView](https://cloud.tencent.com/document/api/599/15912#JobView)
+
+	* 新增成员：Tags
+
+* [NamedComputeEnv](https://cloud.tencent.com/document/api/599/15912#NamedComputeEnv)
+
+	* 新增成员：Tags
+
+* [NamedCpmComputeEnv](https://cloud.tencent.com/document/api/599/15912#NamedCpmComputeEnv)
+
+	* 新增成员：Tags
+
+* [TaskTemplateView](https://cloud.tencent.com/document/api/599/15912#TaskTemplateView)
+
+	* 新增成员：Tags
+
+
+
+
+## 访问管理(cam) 版本：2019-01-16
+
+### 第 27 次发布
+
+发布时间：2020-09-23 08:01:59
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeSafeAuthFlagColl](https://cloud.tencent.com/document/api/598/48602)
+
+
+
+## 云数据库 CynosDB(cynosdb) 版本：2019-01-07
+
+### 第 5 次发布
+
+发布时间：2020-09-23 08:00:10
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateClusters](https://cloud.tencent.com/document/api/1003/48087)
+
+	* 新增入参：ResourceTags
+
+
+新增数据结构：
+
+* [Tag](https://cloud.tencent.com/document/api/1003/48097#Tag)
+
+修改数据结构：
+
+* [CynosdbCluster](https://cloud.tencent.com/document/api/1003/48097#CynosdbCluster)
+
+	* 新增成员：ResourceTags
+
+* [CynosdbClusterDetail](https://cloud.tencent.com/document/api/1003/48097#CynosdbClusterDetail)
+
+	* 新增成员：ResourceTags
+
+
+
+
+## 云数据库 Redis(redis) 版本：2018-04-12
+
+### 第 21 次发布
+
+发布时间：2020-09-23 08:05:27
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeInstanceNodeInfo](https://cloud.tencent.com/document/api/239/48603)
+
+新增数据结构：
+
+* [ProxyNodes](https://cloud.tencent.com/document/api/239/20022#ProxyNodes)
+* [RedisNodes](https://cloud.tencent.com/document/api/239/20022#RedisNodes)
+* [TendisNodes](https://cloud.tencent.com/document/api/239/20022#TendisNodes)
 
 
 
@@ -1445,6 +1527,22 @@
 
 ## 语音识别(asr) 版本：2019-06-14
 
+### 第 12 次发布
+
+发布时间：2020-09-23 08:00:03
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[CreateCustomization](https://cloud.tencent.com/document/api/1093/48601)](https://cloud.tencent.com/document/api/#/#)
+* [[DeleteCustomization](https://cloud.tencent.com/document/api/1093/48600)](https://cloud.tencent.com/document/api/#/#)
+* [[DownloadCustomization](https://cloud.tencent.com/document/api/1093/48599)](https://cloud.tencent.com/document/api/#/#)
+* [[ModifyCustomization](https://cloud.tencent.com/document/api/1093/48598)](https://cloud.tencent.com/document/api/#/#)
+* [[ModifyCustomizationState](https://cloud.tencent.com/document/api/1093/48597)](https://cloud.tencent.com/document/api/#/#)
+
 ### 第 11 次发布
 
 发布时间：2020-09-18 08:00:03
@@ -1687,6 +1785,72 @@
 
 
 ## 批量计算(batch) 版本：2017-03-12
+
+### 第 32 次发布
+
+发布时间：2020-09-23 08:01:24
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateTaskTemplate](https://cloud.tencent.com/document/api/599/15899)
+
+	* 新增入参：Tags
+
+* [DescribeComputeEnv](https://cloud.tencent.com/document/api/599/15892)
+
+	* 新增出参：Tags
+
+* [DescribeComputeEnvCreateInfo](https://cloud.tencent.com/document/api/599/15897)
+
+	* 新增出参：Tags
+
+* [DescribeJob](https://cloud.tencent.com/document/api/599/15904)
+
+	* 新增出参：Tags
+
+* [DescribeJobSubmitInfo](https://cloud.tencent.com/document/api/599/15910)
+
+	* 新增出参：Tags
+
+
+新增数据结构：
+
+* [[Tag](https://cloud.tencent.com/document/api/599/15912#Tag)](https://cloud.tencent.com/document/api/599/15912#[Tag](https://cloud.tencent.com/document/api/599/15912#Tag))
+
+修改数据结构：
+
+* [ComputeEnvCreateInfo](https://cloud.tencent.com/document/api/599/15912#ComputeEnvCreateInfo)
+
+	* 新增成员：Tags
+
+* [ComputeEnvView](https://cloud.tencent.com/document/api/599/15912#ComputeEnvView)
+
+	* 新增成员：Tags
+
+* [Job](https://cloud.tencent.com/document/api/599/15912#Job)
+
+	* 新增成员：Tags
+
+* [JobView](https://cloud.tencent.com/document/api/599/15912#JobView)
+
+	* 新增成员：Tags
+
+* [NamedComputeEnv](https://cloud.tencent.com/document/api/599/15912#NamedComputeEnv)
+
+	* 新增成员：Tags
+
+* [NamedCpmComputeEnv](https://cloud.tencent.com/document/api/599/15912#NamedCpmComputeEnv)
+
+	* 新增成员：Tags
+
+* [TaskTemplateView](https://cloud.tencent.com/document/api/599/15912#TaskTemplateView)
+
+	* 新增成员：Tags
+
 
 ### 第 31 次发布
 
@@ -3901,6 +4065,18 @@
 
 
 ## 访问管理(cam) 版本：2019-01-16
+
+### 第 27 次发布
+
+发布时间：2020-09-23 08:01:59
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeSafeAuthFlagColl](https://cloud.tencent.com/document/api/598/48602)](https://cloud.tencent.com/document/api/#/#)
 
 ### 第 26 次发布
 
@@ -11376,6 +11552,36 @@
 
 
 ## 云数据库 CynosDB(cynosdb) 版本：2019-01-07
+
+### 第 5 次发布
+
+发布时间：2020-09-23 08:00:10
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateClusters](https://cloud.tencent.com/document/api/1003/48087)
+
+	* 新增入参：ResourceTags
+
+
+新增数据结构：
+
+* [[Tag](https://cloud.tencent.com/document/api/1003/48097#Tag)](https://cloud.tencent.com/document/api/1003/48097#[Tag](https://cloud.tencent.com/document/api/1003/48097#Tag))
+
+修改数据结构：
+
+* [CynosdbCluster](https://cloud.tencent.com/document/api/1003/48097#CynosdbCluster)
+
+	* 新增成员：ResourceTags
+
+* [CynosdbClusterDetail](https://cloud.tencent.com/document/api/1003/48097#CynosdbClusterDetail)
+
+	* 新增成员：ResourceTags
+
 
 ### 第 4 次发布
 
@@ -23588,6 +23794,24 @@
 
 ## 云数据库 Redis(redis) 版本：2018-04-12
 
+### 第 21 次发布
+
+发布时间：2020-09-23 08:05:27
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeInstanceNodeInfo](https://cloud.tencent.com/document/api/239/48603)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[ProxyNodes](https://cloud.tencent.com/document/api/239/20022#ProxyNodes)](https://cloud.tencent.com/document/api/239/20022#[ProxyNodes](https://cloud.tencent.com/document/api/239/20022#ProxyNodes))
+* [[RedisNodes](https://cloud.tencent.com/document/api/239/20022#RedisNodes)](https://cloud.tencent.com/document/api/239/20022#[RedisNodes](https://cloud.tencent.com/document/api/239/20022#RedisNodes))
+* [[TendisNodes](https://cloud.tencent.com/document/api/239/20022#TendisNodes)](https://cloud.tencent.com/document/api/239/20022#[TendisNodes](https://cloud.tencent.com/document/api/239/20022#TendisNodes))
+
 ### 第 20 次发布
 
 发布时间：2020-09-04 08:05:55
@@ -28774,11 +28998,11 @@
 
 新增接口：
 
-* [[CreateVideoGenerationTask](https://cloud.tencent.com/document/api/1137/48571)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeVideoGenerationTask](https://cloud.tencent.com/document/api/1137/48570)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeVideoGenerationTaskCallback](https://cloud.tencent.com/document/api/1137/48569)](https://cloud.tencent.com/document/api/#/#)
-* [[SetVideoGenerationTaskCallback](https://cloud.tencent.com/document/api/1137/48568)](https://cloud.tencent.com/document/api/#/#)
-* [[SetVideoGenerationTaskCallbackKey](https://cloud.tencent.com/document/api/1137/48567)](https://cloud.tencent.com/document/api/#/#)
+* [CreateVideoGenerationTask](https://cloud.tencent.com/document/api/1137/48571)
+* [DescribeVideoGenerationTask](https://cloud.tencent.com/document/api/1137/48570)
+* [DescribeVideoGenerationTaskCallback](https://cloud.tencent.com/document/api/1137/48569)
+* [SetVideoGenerationTaskCallback](https://cloud.tencent.com/document/api/1137/48568)
+* [SetVideoGenerationTaskCallbackKey](https://cloud.tencent.com/document/api/1137/48567)
 
 ### 第 7 次发布
 

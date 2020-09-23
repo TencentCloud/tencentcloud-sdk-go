@@ -1019,6 +1019,49 @@ func (r *DescribeRoleListResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeSafeAuthFlagCollRequest struct {
+	*tchttp.BaseRequest
+
+	// 子账号
+	SubUin *uint64 `json:"SubUin,omitempty" name:"SubUin"`
+}
+
+func (r *DescribeSafeAuthFlagCollRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeSafeAuthFlagCollRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeSafeAuthFlagCollResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 登录保护设置
+		LoginFlag *LoginActionFlag `json:"LoginFlag,omitempty" name:"LoginFlag"`
+
+		// 敏感操作保护设置
+		ActionFlag *LoginActionFlag `json:"ActionFlag,omitempty" name:"ActionFlag"`
+
+		// 异地登录保护设置
+		OffsiteFlag *OffsiteFlag `json:"OffsiteFlag,omitempty" name:"OffsiteFlag"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeSafeAuthFlagCollResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeSafeAuthFlagCollResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeSafeAuthFlagRequest struct {
 	*tchttp.BaseRequest
 }

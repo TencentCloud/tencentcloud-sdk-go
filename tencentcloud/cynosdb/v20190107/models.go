@@ -276,6 +276,9 @@ type CreateClustersRequest struct {
 
 	// 订单来源
 	OrderSource *string `json:"OrderSource,omitempty" name:"OrderSource"`
+
+	// 集群创建需要绑定的tag数组信息
+	ResourceTags []*Tag `json:"ResourceTags,omitempty" name:"ResourceTags" list`
 }
 
 func (r *CreateClustersRequest) ToJsonString() string {
@@ -401,6 +404,9 @@ type CynosdbCluster struct {
 
 	// 集群的任务数组
 	Tasks []*ObjectTask `json:"Tasks,omitempty" name:"Tasks" list`
+
+	// 集群绑定的tag数组
+	ResourceTags []*Tag `json:"ResourceTags,omitempty" name:"ResourceTags" list`
 }
 
 type CynosdbClusterDetail struct {
@@ -470,6 +476,9 @@ type CynosdbClusterDetail struct {
 
 	// 可用区
 	Zone *string `json:"Zone,omitempty" name:"Zone"`
+
+	// 实例绑定的tag数组信息
+	ResourceTags []*Tag `json:"ResourceTags,omitempty" name:"ResourceTags" list`
 }
 
 type CynosdbInstance struct {
@@ -1801,6 +1810,15 @@ func (r *SetRenewFlagResponse) ToJsonString() string {
 
 func (r *SetRenewFlagResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
+}
+
+type Tag struct {
+
+	// 标签键
+	TagKey *string `json:"TagKey,omitempty" name:"TagKey"`
+
+	// 标签值
+	TagValue *string `json:"TagValue,omitempty" name:"TagValue"`
 }
 
 type UpgradeInstanceRequest struct {

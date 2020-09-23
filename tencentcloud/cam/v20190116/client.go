@@ -618,6 +618,31 @@ func (c *Client) DescribeSafeAuthFlag(request *DescribeSafeAuthFlagRequest) (res
     return
 }
 
+func NewDescribeSafeAuthFlagCollRequest() (request *DescribeSafeAuthFlagCollRequest) {
+    request = &DescribeSafeAuthFlagCollRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cam", APIVersion, "DescribeSafeAuthFlagColl")
+    return
+}
+
+func NewDescribeSafeAuthFlagCollResponse() (response *DescribeSafeAuthFlagCollResponse) {
+    response = &DescribeSafeAuthFlagCollResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询安全设置
+func (c *Client) DescribeSafeAuthFlagColl(request *DescribeSafeAuthFlagCollRequest) (response *DescribeSafeAuthFlagCollResponse, err error) {
+    if request == nil {
+        request = NewDescribeSafeAuthFlagCollRequest()
+    }
+    response = NewDescribeSafeAuthFlagCollResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDetachGroupPolicyRequest() (request *DetachGroupPolicyRequest) {
     request = &DetachGroupPolicyRequest{
         BaseRequest: &tchttp.BaseRequest{},

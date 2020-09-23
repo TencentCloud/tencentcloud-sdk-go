@@ -81,7 +81,7 @@ type DetailResults struct {
 	// 恶意标签，Normal：正常，Polity：涉政，Porn：色情，Illegal：违法，Abuse：谩骂，Terror：暴恐，Ad：广告，Custom：自定义关键词
 	Label *string `json:"Label,omitempty" name:"Label"`
 
-	// 建议值,Block：打击,Review：待复审,Normal：正常
+	// 建议值,Block：打击,Review：待复审,Pass：正常
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Suggestion *string `json:"Suggestion,omitempty" name:"Suggestion"`
 

@@ -410,7 +410,7 @@ func NewSegmentPortraitPicResponse() (response *SegmentPortraitPicResponse) {
     return
 }
 
-// 识别传入图片中人体的完整轮廓，进行抠像。
+// 即二分类人像分割，识别传入图片中人体的完整轮廓，进行抠像。
 func (c *Client) SegmentPortraitPic(request *SegmentPortraitPicRequest) (response *SegmentPortraitPicResponse, err error) {
     if request == nil {
         request = NewSegmentPortraitPicRequest()

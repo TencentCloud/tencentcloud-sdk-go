@@ -568,6 +568,31 @@ func (c *Client) DescribeInstanceMonitorTopNCmdTook(request *DescribeInstanceMon
     return
 }
 
+func NewDescribeInstanceNodeInfoRequest() (request *DescribeInstanceNodeInfoRequest) {
+    request = &DescribeInstanceNodeInfoRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("redis", APIVersion, "DescribeInstanceNodeInfo")
+    return
+}
+
+func NewDescribeInstanceNodeInfoResponse() (response *DescribeInstanceNodeInfoResponse) {
+    response = &DescribeInstanceNodeInfoResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询实例节点信息
+func (c *Client) DescribeInstanceNodeInfo(request *DescribeInstanceNodeInfoRequest) (response *DescribeInstanceNodeInfoResponse, err error) {
+    if request == nil {
+        request = NewDescribeInstanceNodeInfoRequest()
+    }
+    response = NewDescribeInstanceNodeInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeInstanceParamRecordsRequest() (request *DescribeInstanceParamRecordsRequest) {
     request = &DescribeInstanceParamRecordsRequest{
         BaseRequest: &tchttp.BaseRequest{},

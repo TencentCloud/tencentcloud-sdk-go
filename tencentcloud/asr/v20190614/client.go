@@ -73,6 +73,31 @@ func (c *Client) CreateAsrVocab(request *CreateAsrVocabRequest) (response *Creat
     return
 }
 
+func NewCreateCustomizationRequest() (request *CreateCustomizationRequest) {
+    request = &CreateCustomizationRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("asr", APIVersion, "CreateCustomization")
+    return
+}
+
+func NewCreateCustomizationResponse() (response *CreateCustomizationResponse) {
+    response = &CreateCustomizationResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 用户使用该接口可以创建自学习模型，以供识别调用
+func (c *Client) CreateCustomization(request *CreateCustomizationRequest) (response *CreateCustomizationResponse, err error) {
+    if request == nil {
+        request = NewCreateCustomizationRequest()
+    }
+    response = NewCreateCustomizationResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateRecTaskRequest() (request *CreateRecTaskRequest) {
     request = &CreateRecTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -133,6 +158,31 @@ func (c *Client) DeleteAsrVocab(request *DeleteAsrVocabRequest) (response *Delet
     return
 }
 
+func NewDeleteCustomizationRequest() (request *DeleteCustomizationRequest) {
+    request = &DeleteCustomizationRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("asr", APIVersion, "DeleteCustomization")
+    return
+}
+
+func NewDeleteCustomizationResponse() (response *DeleteCustomizationResponse) {
+    response = &DeleteCustomizationResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 用户通过该接口可以删除自学习模型
+func (c *Client) DeleteCustomization(request *DeleteCustomizationRequest) (response *DeleteCustomizationResponse, err error) {
+    if request == nil {
+        request = NewDeleteCustomizationRequest()
+    }
+    response = NewDeleteCustomizationResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeTaskStatusRequest() (request *DescribeTaskStatusRequest) {
     request = &DescribeTaskStatusRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -183,6 +233,31 @@ func (c *Client) DownloadAsrVocab(request *DownloadAsrVocabRequest) (response *D
         request = NewDownloadAsrVocabRequest()
     }
     response = NewDownloadAsrVocabResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDownloadCustomizationRequest() (request *DownloadCustomizationRequest) {
+    request = &DownloadCustomizationRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("asr", APIVersion, "DownloadCustomization")
+    return
+}
+
+func NewDownloadCustomizationResponse() (response *DownloadCustomizationResponse) {
+    response = &DownloadCustomizationResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 用户通过该接口可以下载自学习模型的语料
+func (c *Client) DownloadCustomization(request *DownloadCustomizationRequest) (response *DownloadCustomizationResponse, err error) {
+    if request == nil {
+        request = NewDownloadCustomizationRequest()
+    }
+    response = NewDownloadCustomizationResponse()
     err = c.Send(request, response)
     return
 }
@@ -258,6 +333,56 @@ func (c *Client) GetCustomizationList(request *GetCustomizationListRequest) (res
         request = NewGetCustomizationListRequest()
     }
     response = NewGetCustomizationListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyCustomizationRequest() (request *ModifyCustomizationRequest) {
+    request = &ModifyCustomizationRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("asr", APIVersion, "ModifyCustomization")
+    return
+}
+
+func NewModifyCustomizationResponse() (response *ModifyCustomizationResponse) {
+    response = &ModifyCustomizationResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 用户通过该接口可以更新自学习模型，如模型名称、模型类型、模型语料。
+func (c *Client) ModifyCustomization(request *ModifyCustomizationRequest) (response *ModifyCustomizationResponse, err error) {
+    if request == nil {
+        request = NewModifyCustomizationRequest()
+    }
+    response = NewModifyCustomizationResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyCustomizationStateRequest() (request *ModifyCustomizationStateRequest) {
+    request = &ModifyCustomizationStateRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("asr", APIVersion, "ModifyCustomizationState")
+    return
+}
+
+func NewModifyCustomizationStateResponse() (response *ModifyCustomizationStateResponse) {
+    response = &ModifyCustomizationStateResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 通过该接口，用户可以修改自学习模型状态，上下线自学习模型
+func (c *Client) ModifyCustomizationState(request *ModifyCustomizationStateRequest) (response *ModifyCustomizationStateResponse, err error) {
+    if request == nil {
+        request = NewModifyCustomizationStateRequest()
+    }
+    response = NewModifyCustomizationStateResponse()
     err = c.Send(request, response)
     return
 }
