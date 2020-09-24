@@ -683,6 +683,10 @@ type SentenceDetail struct {
 	// 单句中词详情
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Words []*SentenceWords `json:"Words,omitempty" name:"Words" list`
+
+	// 单句语速
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SpeechSpeed *float64 `json:"SpeechSpeed,omitempty" name:"SpeechSpeed"`
 }
 
 type SentenceRecognitionRequest struct {

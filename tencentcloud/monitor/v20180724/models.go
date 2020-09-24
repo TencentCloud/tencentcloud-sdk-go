@@ -20,6 +20,72 @@ import (
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
+type AlarmHistory struct {
+
+	// 告警历史Id
+	AlarmId *string `json:"AlarmId,omitempty" name:"AlarmId"`
+
+	// 监控类型
+	MonitorType *string `json:"MonitorType,omitempty" name:"MonitorType"`
+
+	// 策略类型
+	Namespace *string `json:"Namespace,omitempty" name:"Namespace"`
+
+	// 告警对象
+	AlarmObject *string `json:"AlarmObject,omitempty" name:"AlarmObject"`
+
+	// 告警内容
+	Content *string `json:"Content,omitempty" name:"Content"`
+
+	// 时间戳，首次出现时间
+	FirstOccurTime *int64 `json:"FirstOccurTime,omitempty" name:"FirstOccurTime"`
+
+	// 时间戳，最后出现时间
+	LastOccurTime *int64 `json:"LastOccurTime,omitempty" name:"LastOccurTime"`
+
+	// 告警状态，ALARM=未恢复 OK=已恢复 NO_CONF=已失效 NO_DATA=数据不足
+	AlarmStatus *string `json:"AlarmStatus,omitempty" name:"AlarmStatus"`
+
+	// 告警策略 Id
+	PolicyId *string `json:"PolicyId,omitempty" name:"PolicyId"`
+
+	// 策略名称
+	PolicyName *string `json:"PolicyName,omitempty" name:"PolicyName"`
+
+	// 基础产品告警的告警对象所属网络
+	VPC *string `json:"VPC,omitempty" name:"VPC"`
+
+	// 项目 Id
+	ProjectId *int64 `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 项目名字
+	ProjectName *string `json:"ProjectName,omitempty" name:"ProjectName"`
+
+	// 告警对象所属实例组
+	InstanceGroup []*InstanceGroups `json:"InstanceGroup,omitempty" name:"InstanceGroup" list`
+
+	// 接收人列表
+	ReceiverUids []*int64 `json:"ReceiverUids,omitempty" name:"ReceiverUids" list`
+
+	// 接收组列表
+	ReceiverGroups []*int64 `json:"ReceiverGroups,omitempty" name:"ReceiverGroups" list`
+
+	// 告警渠道列表 SMS=短信 EMAIL=邮件 CALL=电话 WECHAT=微信
+	NoticeWays []*string `json:"NoticeWays,omitempty" name:"NoticeWays" list`
+
+	// 兼容告警1.0策略组 Id
+	OriginId *string `json:"OriginId,omitempty" name:"OriginId"`
+
+	// 告警类型
+	AlarmType *string `json:"AlarmType,omitempty" name:"AlarmType"`
+
+	// 事件Id
+	EventId *int64 `json:"EventId,omitempty" name:"EventId"`
+
+	// 地域
+	Region *string `json:"Region,omitempty" name:"Region"`
+}
+
 type BindingPolicyObjectDimension struct {
 
 	// 地域名
@@ -76,6 +142,33 @@ func (r *BindingPolicyObjectResponse) ToJsonString() string {
 
 func (r *BindingPolicyObjectResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
+}
+
+type CommonNamespace struct {
+
+	// 命名空间标示
+	Id *string `json:"Id,omitempty" name:"Id"`
+
+	// 命名空间名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 命名空间值
+	Value *string `json:"Value,omitempty" name:"Value"`
+
+	// 产品名称
+	ProductName *string `json:"ProductName,omitempty" name:"ProductName"`
+
+	// 配置信息
+	Config *string `json:"Config,omitempty" name:"Config"`
+
+	// 支持地域列表
+	AvailableRegions []*string `json:"AvailableRegions,omitempty" name:"AvailableRegions" list`
+
+	// 排序Id
+	SortId *int64 `json:"SortId,omitempty" name:"SortId"`
+
+	// Dashboard中的唯一表示
+	DashboardId *string `json:"DashboardId,omitempty" name:"DashboardId"`
 }
 
 type CreatePolicyGroupCondition struct {
@@ -346,6 +439,146 @@ func (r *DescribeAccidentEventListResponse) ToJsonString() string {
 }
 
 func (r *DescribeAccidentEventListResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeAlarmHistoriesRequest struct {
+	*tchttp.BaseRequest
+
+	// 固定值，为"monitor"
+	Module *string `json:"Module,omitempty" name:"Module"`
+
+	// 页数，从 1 开始计数，默认 1
+	PageNumber *int64 `json:"PageNumber,omitempty" name:"PageNumber"`
+
+	// 每页的数量，取值1~100，默认20
+	PageSize *int64 `json:"PageSize,omitempty" name:"PageSize"`
+
+	// 默认按首次出现时间倒序排列 "ASC"=正序 "DESC"=逆序
+	Order *string `json:"Order,omitempty" name:"Order"`
+
+	// 起始时间，默认一天前的时间戳
+	StartTime *int64 `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 结束时间，默认当前时间戳
+	EndTime *int64 `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 根据监控类型过滤 不选默认查所有类型 "MT_QCE"=云产品监控 "MT_CUSTOM"=自定义监控 "MT_PROME"=prometheus监控
+	MonitorTypes []*string `json:"MonitorTypes,omitempty" name:"MonitorTypes" list`
+
+	// 根据告警对象过滤 字符串模糊搜索
+	AlarmObject *string `json:"AlarmObject,omitempty" name:"AlarmObject"`
+
+	// 根据告警状态过滤 ALARM=未恢复 OK=已恢复 NO_CONF=已失效 NO_DATA=数据不足，不选默认查所有
+	AlarmStatus []*string `json:"AlarmStatus,omitempty" name:"AlarmStatus" list`
+
+	// 根据项目ID过滤，-1=“-“项目 0=默认项目
+	ProjectIds []*int64 `json:"ProjectIds,omitempty" name:"ProjectIds" list`
+
+	// 根据实例组ID过滤
+	InstanceGroupIds []*int64 `json:"InstanceGroupIds,omitempty" name:"InstanceGroupIds" list`
+
+	// 根据策略类型过滤
+	Namespaces []*MonitorTypeNamespace `json:"Namespaces,omitempty" name:"Namespaces" list`
+
+	// 根据指标名过滤
+	MetricNames []*string `json:"MetricNames,omitempty" name:"MetricNames" list`
+
+	// 根据策略名称模糊搜索
+	PolicyName *string `json:"PolicyName,omitempty" name:"PolicyName"`
+
+	// 根据告警内容模糊搜索
+	Content *string `json:"Content,omitempty" name:"Content"`
+
+	// 根据接收人搜索
+	ReceiverUids []*int64 `json:"ReceiverUids,omitempty" name:"ReceiverUids" list`
+
+	// 根据接收组搜索
+	ReceiverGroups []*int64 `json:"ReceiverGroups,omitempty" name:"ReceiverGroups" list`
+
+	// 根据告警策略 Id 列表搜索
+	PolicyIds []*string `json:"PolicyIds,omitempty" name:"PolicyIds" list`
+}
+
+func (r *DescribeAlarmHistoriesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeAlarmHistoriesRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeAlarmHistoriesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 总数
+		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 告警历史列表
+		Histories []*AlarmHistory `json:"Histories,omitempty" name:"Histories" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeAlarmHistoriesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeAlarmHistoriesResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeAllNamespacesRequest struct {
+	*tchttp.BaseRequest
+
+	// 根据使用场景过滤 "ST_DASHBOARD"=Dashboard类型 或 "ST_ALARM"=告警类型
+	SceneType *string `json:"SceneType,omitempty" name:"SceneType"`
+
+	// 固定值，为"monitor"
+	Module *string `json:"Module,omitempty" name:"Module"`
+
+	// 根据监控类型过滤 不填默认查所有类型 "MT_QCE"=云产品监控 "MT_CUSTOM"=自定义监控
+	MonitorTypes []*string `json:"MonitorTypes,omitempty" name:"MonitorTypes" list`
+
+	// 根据namespace的Id过滤 不填默认查询所有
+	Ids []*string `json:"Ids,omitempty" name:"Ids" list`
+}
+
+func (r *DescribeAllNamespacesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeAllNamespacesRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeAllNamespacesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 云产品的名字空间
+		QceNamespaces *CommonNamespace `json:"QceNamespaces,omitempty" name:"QceNamespaces"`
+
+		// 自定义监控的命名空间
+		CustomNamespaces *CommonNamespace `json:"CustomNamespaces,omitempty" name:"CustomNamespaces"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeAllNamespacesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeAllNamespacesResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -1694,6 +1927,15 @@ type InstanceGroup struct {
 	InstanceGroupName *string `json:"InstanceGroupName,omitempty" name:"InstanceGroupName"`
 }
 
+type InstanceGroups struct {
+
+	// 实例组 Id
+	Id *int64 `json:"Id,omitempty" name:"Id"`
+
+	// 实例组名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+}
+
 type MetricDatum struct {
 
 	// 指标名称
@@ -1877,6 +2119,15 @@ func (r *ModifyPolicyGroupResponse) ToJsonString() string {
 
 func (r *ModifyPolicyGroupResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
+}
+
+type MonitorTypeNamespace struct {
+
+	// 监控类型
+	MonitorType *string `json:"MonitorType,omitempty" name:"MonitorType"`
+
+	// 策略类型值
+	Namespace *string `json:"Namespace,omitempty" name:"Namespace"`
 }
 
 type PeriodsSt struct {

@@ -377,7 +377,7 @@ type CreatePostpayPackageRequest struct {
 	// 和 Channel 参数同时传，或者同时不传；EnvId 为空时必传。
 	EnvSource *string `json:"EnvSource,omitempty" name:"EnvSource"`
 
-	// 环境别名，要以a-z开头，不能包含 a-zA-z0-9- 以外的字符
+	// 环境别名，要以a-z开头，不能包含  a-z,0-9,-  以外的字符
 	Alias *string `json:"Alias,omitempty" name:"Alias"`
 
 	// 如果envsource为miniapp, channel可以为ide或api;
@@ -387,6 +387,11 @@ type CreatePostpayPackageRequest struct {
 
 	// 扩展ID
 	ExtensionId *string `json:"ExtensionId,omitempty" name:"ExtensionId"`
+
+	// 订单标记。建议使用方统一转大小写之后再判断。
+	// <li>QuickStart：快速启动来源</li>
+	// <li>Activity：活动来源</li>
+	Flag *string `json:"Flag,omitempty" name:"Flag"`
 }
 
 func (r *CreatePostpayPackageRequest) ToJsonString() string {

@@ -504,7 +504,7 @@ func (r *DescribeCaptchaMiniOperDataResponse) FromJsonString(s string) error {
 type DescribeCaptchaMiniResultRequest struct {
 	*tchttp.BaseRequest
 
-	// 验证码类型，9：滑块验证码
+	// 固定填值：9（滑块验证码）
 	CaptchaType *uint64 `json:"CaptchaType,omitempty" name:"CaptchaType"`
 
 	// 验证码返回给用户的票据
@@ -513,7 +513,7 @@ type DescribeCaptchaMiniResultRequest struct {
 	// 用户操作来源的外网 IP
 	UserIp *string `json:"UserIp,omitempty" name:"UserIp"`
 
-	// 验证码应用ID
+	// 验证码应用APPID
 	CaptchaAppId *uint64 `json:"CaptchaAppId,omitempty" name:"CaptchaAppId"`
 
 	// 用于服务器端校验验证码票据的验证密钥，请妥善保密，请勿泄露给第三方
@@ -546,13 +546,14 @@ type DescribeCaptchaMiniResultResponse struct {
 	Response *struct {
 
 		// 1       ticket verification succeeded     票据验证成功
+	// 7       CaptchaAppId does not match     票据与验证码应用APPID不匹配
 	// 8       ticket expired     票据超时
 	// 10     ticket format error     票据格式不正确
-	// 15     ticket decryption failed     验证码解密失败
-	// 16     CaptchaAppId wrong format      检查CaptchaAppId错误
+	// 15     ticket decryption failed     票据解密失败
+	// 16     CaptchaAppId wrong format     检查验证码应用APPID错误
+	// 21     ticket error     票据验证错误
 	// 26     system internal error     系统内部错误
-	// 100    param err appsecretkey     参数校验错误
-	// 21      ticket error     差别，票据验证错误
+	// 100   param err     参数校验错误
 		CaptchaCode *int64 `json:"CaptchaCode,omitempty" name:"CaptchaCode"`
 
 		// 状态描述及验证错误信息

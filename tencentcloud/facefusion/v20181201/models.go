@@ -69,6 +69,62 @@ func (r *DescribeMaterialListResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type FaceFusionLiteRequest struct {
+	*tchttp.BaseRequest
+
+	// 活动 ID，请在人脸融合控制台查看。
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 素材 ID，请在人脸融合控制台查看。
+	ModelId *string `json:"ModelId,omitempty" name:"ModelId"`
+
+	// 用户人脸图片、素材模板图的人脸位置信息。
+	MergeInfos []*MergeInfo `json:"MergeInfos,omitempty" name:"MergeInfos" list`
+
+	// 返回图像方式（url 或 base64) ，二选一。默认url, url有效期为30天。
+	RspImgType *string `json:"RspImgType,omitempty" name:"RspImgType"`
+
+	// 请注意，鉴政服务开启后，您需要根据返回结果自行判断是否调整您的业务逻辑。例如提示您的用户图片非法，请更换图片。
+	CelebrityIdentify *int64 `json:"CelebrityIdentify,omitempty" name:"CelebrityIdentify"`
+
+	// 算法引擎参数:  1）选脸版 - youturecreat; 2）优享版 - youtu1vN； 3）畅享版 - ptu； 4）随机 - ALL;  默认为活动选择的算法
+	Engine *string `json:"Engine,omitempty" name:"Engine"`
+}
+
+func (r *FaceFusionLiteRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *FaceFusionLiteRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type FaceFusionLiteResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// RspImgType 为 url 时，返回结果的 url， RspImgType 为 base64 时返回 base64 数据。
+		Image *string `json:"Image,omitempty" name:"Image"`
+
+		// 鉴政结果
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		ReviewResultSet []*FuseFaceReviewResult `json:"ReviewResultSet,omitempty" name:"ReviewResultSet" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *FaceFusionLiteResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *FaceFusionLiteResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type FaceFusionRequest struct {
 	*tchttp.BaseRequest
 

@@ -2,149 +2,28 @@
 
 ## 语音识别(asr) 版本：2019-06-14
 
-### 第 12 次发布
+### 第 13 次发布
 
-发布时间：2020-09-23 08:00:03
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [CreateCustomization](https://cloud.tencent.com/document/api/1093/48601)
-* [DeleteCustomization](https://cloud.tencent.com/document/api/1093/48600)
-* [DownloadCustomization](https://cloud.tencent.com/document/api/1093/48599)
-* [ModifyCustomization](https://cloud.tencent.com/document/api/1093/48598)
-* [ModifyCustomizationState](https://cloud.tencent.com/document/api/1093/48597)
-
-
-
-## 批量计算(batch) 版本：2017-03-12
-
-### 第 32 次发布
-
-发布时间：2020-09-23 08:01:24
+发布时间：2020-09-24 08:00:03
 
 本次发布包含了以下内容：
 
 改善已有的文档。
-
-修改接口：
-
-* [CreateTaskTemplate](https://cloud.tencent.com/document/api/599/15899)
-
-	* 新增入参：Tags
-
-* [DescribeComputeEnv](https://cloud.tencent.com/document/api/599/15892)
-
-	* 新增出参：Tags
-
-* [DescribeComputeEnvCreateInfo](https://cloud.tencent.com/document/api/599/15897)
-
-	* 新增出参：Tags
-
-* [DescribeJob](https://cloud.tencent.com/document/api/599/15904)
-
-	* 新增出参：Tags
-
-* [DescribeJobSubmitInfo](https://cloud.tencent.com/document/api/599/15910)
-
-	* 新增出参：Tags
-
-
-新增数据结构：
-
-* [Tag](https://cloud.tencent.com/document/api/599/15912#Tag)
 
 修改数据结构：
 
-* [ComputeEnvCreateInfo](https://cloud.tencent.com/document/api/599/15912#ComputeEnvCreateInfo)
+* [SentenceDetail](https://cloud.tencent.com/document/api/1093/37824#SentenceDetail)
 
-	* 新增成员：Tags
-
-* [ComputeEnvView](https://cloud.tencent.com/document/api/599/15912#ComputeEnvView)
-
-	* 新增成员：Tags
-
-* [Job](https://cloud.tencent.com/document/api/599/15912#Job)
-
-	* 新增成员：Tags
-
-* [JobView](https://cloud.tencent.com/document/api/599/15912#JobView)
-
-	* 新增成员：Tags
-
-* [NamedComputeEnv](https://cloud.tencent.com/document/api/599/15912#NamedComputeEnv)
-
-	* 新增成员：Tags
-
-* [NamedCpmComputeEnv](https://cloud.tencent.com/document/api/599/15912#NamedCpmComputeEnv)
-
-	* 新增成员：Tags
-
-* [TaskTemplateView](https://cloud.tencent.com/document/api/599/15912#TaskTemplateView)
-
-	* 新增成员：Tags
+	* 新增成员：SpeechSpeed
 
 
 
 
-## 访问管理(cam) 版本：2019-01-16
-
-### 第 27 次发布
-
-发布时间：2020-09-23 08:01:59
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [DescribeSafeAuthFlagColl](https://cloud.tencent.com/document/api/598/48602)
-
-
-
-## 云数据库 CynosDB(cynosdb) 版本：2019-01-07
+## 人脸融合(facefusion) 版本：2018-12-01
 
 ### 第 5 次发布
 
-发布时间：2020-09-23 08:00:10
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [CreateClusters](https://cloud.tencent.com/document/api/1003/48087)
-
-	* 新增入参：ResourceTags
-
-
-新增数据结构：
-
-* [Tag](https://cloud.tencent.com/document/api/1003/48097#Tag)
-
-修改数据结构：
-
-* [CynosdbCluster](https://cloud.tencent.com/document/api/1003/48097#CynosdbCluster)
-
-	* 新增成员：ResourceTags
-
-* [CynosdbClusterDetail](https://cloud.tencent.com/document/api/1003/48097#CynosdbClusterDetail)
-
-	* 新增成员：ResourceTags
-
-
-
-
-## 云数据库 Redis(redis) 版本：2018-04-12
-
-### 第 21 次发布
-
-发布时间：2020-09-23 08:05:27
+发布时间：2020-09-24 08:03:28
 
 本次发布包含了以下内容：
 
@@ -152,13 +31,120 @@
 
 新增接口：
 
-* [DescribeInstanceNodeInfo](https://cloud.tencent.com/document/api/239/48603)
+* [FaceFusionLite](https://cloud.tencent.com/document/api/670/48682)
+
+
+
+## 轻量应用服务器(lighthouse) 版本：2020-03-24
+
+### 第 5 次发布
+
+发布时间：2020-09-24 08:00:13
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeInstancesTrafficPackages](https://cloud.tencent.com/document/api/1207/48681)
 
 新增数据结构：
 
-* [ProxyNodes](https://cloud.tencent.com/document/api/239/20022#ProxyNodes)
-* [RedisNodes](https://cloud.tencent.com/document/api/239/20022#RedisNodes)
-* [TendisNodes](https://cloud.tencent.com/document/api/239/20022#TendisNodes)
+* [InstanceTrafficPackage](https://cloud.tencent.com/document/api/1207/47576#InstanceTrafficPackage)
+* [TrafficPackage](https://cloud.tencent.com/document/api/1207/47576#TrafficPackage)
+
+
+
+## 云监控(monitor) 版本：2018-07-24
+
+### 第 15 次发布
+
+发布时间：2020-09-24 08:04:40
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeAlarmHistories](https://cloud.tencent.com/document/api/248/48684)
+* [DescribeAllNamespaces](https://cloud.tencent.com/document/api/248/48683)
+
+新增数据结构：
+
+* [AlarmHistory](https://cloud.tencent.com/document/api/248/30354#AlarmHistory)
+* [CommonNamespace](https://cloud.tencent.com/document/api/248/30354#CommonNamespace)
+* [InstanceGroups](https://cloud.tencent.com/document/api/248/30354#InstanceGroups)
+* [MonitorTypeNamespace](https://cloud.tencent.com/document/api/248/30354#MonitorTypeNamespace)
+
+
+
+## 云函数(scf) 版本：2018-04-16
+
+### 第 20 次发布
+
+发布时间：2020-09-24 08:05:31
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateFunction](https://cloud.tencent.com/document/api/583/18586)
+
+	* 新增入参：Tags
+
+
+
+
+## 云开发 CloudBase(tcb) 版本：2018-06-08
+
+### 第 19 次发布
+
+发布时间：2020-09-24 08:06:00
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreatePostpayPackage](https://cloud.tencent.com/document/api/876/45287)
+
+	* 新增入参：Flag
+
+
+
+
+## 腾讯微服务平台 TSF(tsf) 版本：2018-03-26
+
+### 第 28 次发布
+
+发布时间：2020-09-24 08:06:25
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DeployContainerGroup](https://cloud.tencent.com/document/api/649/36071)
+
+	* 新增入参：DeployAgent
+
+
+修改数据结构：
+
+* [Microservice](https://cloud.tencent.com/document/api/649/36099#Microservice)
+
+	* 新增成员：CriticalInstanceCount
+
+* [MsInstance](https://cloud.tencent.com/document/api/649/36099#MsInstance)
+
+	* 新增成员：ServiceStatus, RegistrationTime, LastHeartbeatTime, RegistrationId, HiddenStatus
+
 
 
 
@@ -1527,6 +1513,21 @@
 
 ## 语音识别(asr) 版本：2019-06-14
 
+### 第 13 次发布
+
+发布时间：2020-09-24 08:00:03
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [SentenceDetail](https://cloud.tencent.com/document/api/1093/37824#SentenceDetail)
+
+	* 新增成员：SpeechSpeed
+
+
 ### 第 12 次发布
 
 发布时间：2020-09-23 08:00:03
@@ -1537,11 +1538,11 @@
 
 新增接口：
 
-* [[CreateCustomization](https://cloud.tencent.com/document/api/1093/48601)](https://cloud.tencent.com/document/api/#/#)
-* [[DeleteCustomization](https://cloud.tencent.com/document/api/1093/48600)](https://cloud.tencent.com/document/api/#/#)
-* [[DownloadCustomization](https://cloud.tencent.com/document/api/1093/48599)](https://cloud.tencent.com/document/api/#/#)
-* [[ModifyCustomization](https://cloud.tencent.com/document/api/1093/48598)](https://cloud.tencent.com/document/api/#/#)
-* [[ModifyCustomizationState](https://cloud.tencent.com/document/api/1093/48597)](https://cloud.tencent.com/document/api/#/#)
+* [CreateCustomization](https://cloud.tencent.com/document/api/1093/48601)
+* [DeleteCustomization](https://cloud.tencent.com/document/api/1093/48600)
+* [DownloadCustomization](https://cloud.tencent.com/document/api/1093/48599)
+* [ModifyCustomization](https://cloud.tencent.com/document/api/1093/48598)
+* [ModifyCustomizationState](https://cloud.tencent.com/document/api/1093/48597)
 
 ### 第 11 次发布
 
@@ -1819,7 +1820,7 @@
 
 新增数据结构：
 
-* [[Tag](https://cloud.tencent.com/document/api/599/15912#Tag)](https://cloud.tencent.com/document/api/599/15912#[Tag](https://cloud.tencent.com/document/api/599/15912#Tag))
+* [Tag](https://cloud.tencent.com/document/api/599/15912#Tag)
 
 修改数据结构：
 
@@ -4076,7 +4077,7 @@
 
 新增接口：
 
-* [[DescribeSafeAuthFlagColl](https://cloud.tencent.com/document/api/598/48602)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeSafeAuthFlagColl](https://cloud.tencent.com/document/api/598/48602)
 
 ### 第 26 次发布
 
@@ -11570,7 +11571,7 @@
 
 新增数据结构：
 
-* [[Tag](https://cloud.tencent.com/document/api/1003/48097#Tag)](https://cloud.tencent.com/document/api/1003/48097#[Tag](https://cloud.tencent.com/document/api/1003/48097#Tag))
+* [Tag](https://cloud.tencent.com/document/api/1003/48097#Tag)
 
 修改数据结构：
 
@@ -14795,6 +14796,18 @@
 
 
 ## 人脸融合(facefusion) 版本：2018-12-01
+
+### 第 5 次发布
+
+发布时间：2020-09-24 08:03:28
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[FaceFusionLite](https://cloud.tencent.com/document/api/670/48682)](https://cloud.tencent.com/document/api/#/#)
 
 ### 第 4 次发布
 
@@ -18785,6 +18798,23 @@
 
 ## 轻量应用服务器(lighthouse) 版本：2020-03-24
 
+### 第 5 次发布
+
+发布时间：2020-09-24 08:00:13
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeInstancesTrafficPackages](https://cloud.tencent.com/document/api/1207/48681)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[InstanceTrafficPackage](https://cloud.tencent.com/document/api/1207/47576#InstanceTrafficPackage)](https://cloud.tencent.com/document/api/1207/47576#[InstanceTrafficPackage](https://cloud.tencent.com/document/api/1207/47576#InstanceTrafficPackage))
+* [[TrafficPackage](https://cloud.tencent.com/document/api/1207/47576#TrafficPackage)](https://cloud.tencent.com/document/api/1207/47576#[TrafficPackage](https://cloud.tencent.com/document/api/1207/47576#TrafficPackage))
+
 ### 第 4 次发布
 
 发布时间：2020-09-17 08:00:09
@@ -20737,6 +20767,26 @@
 
 
 ## 云监控(monitor) 版本：2018-07-24
+
+### 第 15 次发布
+
+发布时间：2020-09-24 08:04:40
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeAlarmHistories](https://cloud.tencent.com/document/api/248/48684)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeAllNamespaces](https://cloud.tencent.com/document/api/248/48683)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[AlarmHistory](https://cloud.tencent.com/document/api/248/30354#AlarmHistory)](https://cloud.tencent.com/document/api/248/30354#[AlarmHistory](https://cloud.tencent.com/document/api/248/30354#AlarmHistory))
+* [[CommonNamespace](https://cloud.tencent.com/document/api/248/30354#CommonNamespace)](https://cloud.tencent.com/document/api/248/30354#[CommonNamespace](https://cloud.tencent.com/document/api/248/30354#CommonNamespace))
+* [[InstanceGroups](https://cloud.tencent.com/document/api/248/30354#InstanceGroups)](https://cloud.tencent.com/document/api/248/30354#[InstanceGroups](https://cloud.tencent.com/document/api/248/30354#InstanceGroups))
+* [[MonitorTypeNamespace](https://cloud.tencent.com/document/api/248/30354#MonitorTypeNamespace)](https://cloud.tencent.com/document/api/248/30354#[MonitorTypeNamespace](https://cloud.tencent.com/document/api/248/30354#MonitorTypeNamespace))
 
 ### 第 14 次发布
 
@@ -23804,13 +23854,13 @@
 
 新增接口：
 
-* [[DescribeInstanceNodeInfo](https://cloud.tencent.com/document/api/239/48603)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeInstanceNodeInfo](https://cloud.tencent.com/document/api/239/48603)
 
 新增数据结构：
 
-* [[ProxyNodes](https://cloud.tencent.com/document/api/239/20022#ProxyNodes)](https://cloud.tencent.com/document/api/239/20022#[ProxyNodes](https://cloud.tencent.com/document/api/239/20022#ProxyNodes))
-* [[RedisNodes](https://cloud.tencent.com/document/api/239/20022#RedisNodes)](https://cloud.tencent.com/document/api/239/20022#[RedisNodes](https://cloud.tencent.com/document/api/239/20022#RedisNodes))
-* [[TendisNodes](https://cloud.tencent.com/document/api/239/20022#TendisNodes)](https://cloud.tencent.com/document/api/239/20022#[TendisNodes](https://cloud.tencent.com/document/api/239/20022#TendisNodes))
+* [ProxyNodes](https://cloud.tencent.com/document/api/239/20022#ProxyNodes)
+* [RedisNodes](https://cloud.tencent.com/document/api/239/20022#RedisNodes)
+* [TendisNodes](https://cloud.tencent.com/document/api/239/20022#TendisNodes)
 
 ### 第 20 次发布
 
@@ -24339,6 +24389,21 @@
 
 
 ## 云函数(scf) 版本：2018-04-16
+
+### 第 20 次发布
+
+发布时间：2020-09-24 08:05:31
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateFunction](https://cloud.tencent.com/document/api/583/18586)
+
+	* 新增入参：Tags
+
 
 ### 第 19 次发布
 
@@ -26943,6 +27008,21 @@
 
 
 ## 云开发 CloudBase(tcb) 版本：2018-06-08
+
+### 第 19 次发布
+
+发布时间：2020-09-24 08:06:00
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreatePostpayPackage](https://cloud.tencent.com/document/api/876/45287)
+
+	* 新增入参：Flag
+
 
 ### 第 18 次发布
 
@@ -30208,6 +30288,32 @@
 
 
 ## 腾讯微服务平台 TSF(tsf) 版本：2018-03-26
+
+### 第 28 次发布
+
+发布时间：2020-09-24 08:06:25
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DeployContainerGroup](https://cloud.tencent.com/document/api/649/36071)
+
+	* 新增入参：DeployAgent
+
+
+修改数据结构：
+
+* [Microservice](https://cloud.tencent.com/document/api/649/36099#Microservice)
+
+	* 新增成员：CriticalInstanceCount
+
+* [MsInstance](https://cloud.tencent.com/document/api/649/36099#MsInstance)
+
+	* 新增成员：ServiceStatus, RegistrationTime, LastHeartbeatTime, RegistrationId, HiddenStatus
+
 
 ### 第 27 次发布
 

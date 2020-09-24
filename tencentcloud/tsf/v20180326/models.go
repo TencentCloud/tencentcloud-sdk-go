@@ -2107,6 +2107,9 @@ type DeployContainerGroupRequest struct {
 
 	// 容器部署组的网络设置。
 	ServiceSetting *ServiceSetting `json:"ServiceSetting,omitempty" name:"ServiceSetting"`
+
+	// 是否部署 agent 容器。若不指定该参数，则默认不部署 agent 容器。
+	DeployAgent *bool `json:"DeployAgent,omitempty" name:"DeployAgent"`
 }
 
 func (r *DeployContainerGroupRequest) ToJsonString() string {
@@ -4770,6 +4773,10 @@ type Microservice struct {
 	// 微服务的运行实例数目
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RunInstanceCount *int64 `json:"RunInstanceCount,omitempty" name:"RunInstanceCount"`
+
+	// 微服务的离线实例数目
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CriticalInstanceCount *int64 `json:"CriticalInstanceCount,omitempty" name:"CriticalInstanceCount"`
 }
 
 type ModifyContainerGroupRequest struct {
@@ -5158,6 +5165,26 @@ type MsInstance struct {
 	// 应用类型
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ApplicationType *string `json:"ApplicationType,omitempty" name:"ApplicationType"`
+
+	// 服务状态，passing 在线，critical 离线
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ServiceStatus *string `json:"ServiceStatus,omitempty" name:"ServiceStatus"`
+
+	// 注册时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RegistrationTime *int64 `json:"RegistrationTime,omitempty" name:"RegistrationTime"`
+
+	// 上次心跳时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LastHeartbeatTime *int64 `json:"LastHeartbeatTime,omitempty" name:"LastHeartbeatTime"`
+
+	// 实例注册id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RegistrationId *int64 `json:"RegistrationId,omitempty" name:"RegistrationId"`
+
+	// 屏蔽状态，hidden 为屏蔽，unhidden 为未屏蔽
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HiddenStatus *string `json:"HiddenStatus,omitempty" name:"HiddenStatus"`
 }
 
 type Namespace struct {

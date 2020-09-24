@@ -391,6 +391,52 @@ func (r *DescribeInstancesResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeInstancesTrafficPackagesRequest struct {
+	*tchttp.BaseRequest
+
+	// 实例 ID 列表。每次请求批量实例的上限为 100。可通过[DescribeInstances](https://cloud.tencent.com/document/api/1207/47573)接口返回值中的InstanceId获取。
+	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds" list`
+
+	// 偏移量，默认为 0。
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 返回数量，默认为 20，最大值为 100。
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+func (r *DescribeInstancesTrafficPackagesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeInstancesTrafficPackagesRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeInstancesTrafficPackagesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 符合条件的实例流量包详情数量。
+		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 实例流量包详情列表。
+		InstanceTrafficPackageSet []*InstanceTrafficPackage `json:"InstanceTrafficPackageSet,omitempty" name:"InstanceTrafficPackageSet" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeInstancesTrafficPackagesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeInstancesTrafficPackagesResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type Filter struct {
 
 	// 需要过滤的字段。
@@ -526,6 +572,15 @@ type InstancePrice struct {
 
 	// 折后价。
 	DiscountPrice *float64 `json:"DiscountPrice,omitempty" name:"DiscountPrice"`
+}
+
+type InstanceTrafficPackage struct {
+
+	// 实例ID。
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 流量包详情列表。
+	TrafficPackageSet []*TrafficPackage `json:"TrafficPackageSet,omitempty" name:"TrafficPackageSet" list`
 }
 
 type InternetAccessible struct {
@@ -704,4 +759,42 @@ type SystemDisk struct {
 	// 系统盘ID。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DiskId *string `json:"DiskId,omitempty" name:"DiskId"`
+}
+
+type TrafficPackage struct {
+
+	// 流量包ID。
+	TrafficPackageId *string `json:"TrafficPackageId,omitempty" name:"TrafficPackageId"`
+
+	// 流量包生效周期内的总流量，单位字节。
+	TrafficUsed *int64 `json:"TrafficUsed,omitempty" name:"TrafficUsed"`
+
+	// 流量包生效周期内的总流量，单位字节。
+	TrafficPackageTotal *int64 `json:"TrafficPackageTotal,omitempty" name:"TrafficPackageTotal"`
+
+	// 流量包生效周期内的剩余流量，单位字节。
+	TrafficPackageRemaining *int64 `json:"TrafficPackageRemaining,omitempty" name:"TrafficPackageRemaining"`
+
+	// 流量包生效周期内超出流量包额度的流量，单位字节。
+	TrafficOverflow *int64 `json:"TrafficOverflow,omitempty" name:"TrafficOverflow"`
+
+	// 流量包生效周期开始时间。按照 ISO8601 标准表示，并且使用 UTC 时间。 
+	// 格式为： YYYY-MM-DDThh:mm:ssZ。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 流量包生效周期结束时间。按照 ISO8601 标准表示，并且使用 UTC 时间。 
+	// 格式为： YYYY-MM-DDThh:mm:ssZ。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 流量包到期时间。按照 ISO8601 标准表示，并且使用 UTC 时间。 
+	// 格式为： YYYY-MM-DDThh:mm:ssZ。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Deadline *string `json:"Deadline,omitempty" name:"Deadline"`
+
+	// 流量包状态：
+	// <li>NETWORK_NORMAL：正常</li>
+	// <li>OVERDUE_NETWORK_DISABLED：欠费断网</li>
+	Status *string `json:"Status,omitempty" name:"Status"`
 }

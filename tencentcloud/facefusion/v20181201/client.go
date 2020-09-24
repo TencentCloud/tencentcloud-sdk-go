@@ -95,6 +95,31 @@ func (c *Client) FaceFusion(request *FaceFusionRequest) (response *FaceFusionRes
     return
 }
 
+func NewFaceFusionLiteRequest() (request *FaceFusionLiteRequest) {
+    request = &FaceFusionLiteRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("facefusion", APIVersion, "FaceFusionLite")
+    return
+}
+
+func NewFaceFusionLiteResponse() (response *FaceFusionLiteResponse) {
+    response = &FaceFusionLiteResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 人脸融合活动专用版
+func (c *Client) FaceFusionLite(request *FaceFusionLiteRequest) (response *FaceFusionLiteResponse, err error) {
+    if request == nil {
+        request = NewFaceFusionLiteRequest()
+    }
+    response = NewFaceFusionLiteResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewFuseFaceRequest() (request *FuseFaceRequest) {
     request = &FuseFaceRequest{
         BaseRequest: &tchttp.BaseRequest{},

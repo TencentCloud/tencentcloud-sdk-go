@@ -312,6 +312,9 @@ type CreateFunctionRequest struct {
 
 	// 函数初始化超时时间
 	InitTimeout *int64 `json:"InitTimeout,omitempty" name:"InitTimeout"`
+
+	// 函数 Tag 参数，以键值对数组形式传入
+	Tags []*Tag `json:"Tags,omitempty" name:"Tags" list`
 }
 
 func (r *CreateFunctionRequest) ToJsonString() string {

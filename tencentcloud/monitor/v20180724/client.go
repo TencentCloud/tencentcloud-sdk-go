@@ -143,6 +143,56 @@ func (c *Client) DescribeAccidentEventList(request *DescribeAccidentEventListReq
     return
 }
 
+func NewDescribeAlarmHistoriesRequest() (request *DescribeAlarmHistoriesRequest) {
+    request = &DescribeAlarmHistoriesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("monitor", APIVersion, "DescribeAlarmHistories")
+    return
+}
+
+func NewDescribeAlarmHistoriesResponse() (response *DescribeAlarmHistoriesResponse) {
+    response = &DescribeAlarmHistoriesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 告警2.0-告警历史列表
+func (c *Client) DescribeAlarmHistories(request *DescribeAlarmHistoriesRequest) (response *DescribeAlarmHistoriesResponse, err error) {
+    if request == nil {
+        request = NewDescribeAlarmHistoriesRequest()
+    }
+    response = NewDescribeAlarmHistoriesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeAllNamespacesRequest() (request *DescribeAllNamespacesRequest) {
+    request = &DescribeAllNamespacesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("monitor", APIVersion, "DescribeAllNamespaces")
+    return
+}
+
+func NewDescribeAllNamespacesResponse() (response *DescribeAllNamespacesResponse) {
+    response = &DescribeAllNamespacesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 拉取所有名字空间
+func (c *Client) DescribeAllNamespaces(request *DescribeAllNamespacesRequest) (response *DescribeAllNamespacesResponse, err error) {
+    if request == nil {
+        request = NewDescribeAllNamespacesRequest()
+    }
+    response = NewDescribeAllNamespacesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeBaseMetricsRequest() (request *DescribeBaseMetricsRequest) {
     request = &DescribeBaseMetricsRequest{
         BaseRequest: &tchttp.BaseRequest{},

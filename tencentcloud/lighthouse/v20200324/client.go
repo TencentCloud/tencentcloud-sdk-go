@@ -206,6 +206,31 @@ func (c *Client) DescribeInstances(request *DescribeInstancesRequest) (response 
     return
 }
 
+func NewDescribeInstancesTrafficPackagesRequest() (request *DescribeInstancesTrafficPackagesRequest) {
+    request = &DescribeInstancesTrafficPackagesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("lighthouse", APIVersion, "DescribeInstancesTrafficPackages")
+    return
+}
+
+func NewDescribeInstancesTrafficPackagesResponse() (response *DescribeInstancesTrafficPackagesResponse) {
+    response = &DescribeInstancesTrafficPackagesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（DescribeInstancesTrafficPackages）用于查询一个或多个实例的流量包详情。
+func (c *Client) DescribeInstancesTrafficPackages(request *DescribeInstancesTrafficPackagesRequest) (response *DescribeInstancesTrafficPackagesResponse, err error) {
+    if request == nil {
+        request = NewDescribeInstancesTrafficPackagesRequest()
+    }
+    response = NewDescribeInstancesTrafficPackagesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewRebootInstancesRequest() (request *RebootInstancesRequest) {
     request = &RebootInstancesRequest{
         BaseRequest: &tchttp.BaseRequest{},
