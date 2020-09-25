@@ -2270,7 +2270,8 @@ func (r *RevertGroupFaceModelVersionResponse) FromJsonString(s string) error {
 type SearchFacesRequest struct {
 	*tchttp.BaseRequest
 
-	// 希望搜索的人员库列表，上限100个。数组元素取值为创建人员库接口中的GroupId
+	// 希望搜索的人员库列表，上限100个。数组元素取值为创建人员库接口中的GroupId。
+	// 不可同时搜索不同算法模型版本（FaceModelVersion）的人员库。
 	GroupIds []*string `json:"GroupIds,omitempty" name:"GroupIds" list`
 
 	// 图片 base64 数据，base64 编码后大小不可超过5M。
@@ -2358,7 +2359,8 @@ func (r *SearchFacesResponse) FromJsonString(s string) error {
 type SearchFacesReturnsByGroupRequest struct {
 	*tchttp.BaseRequest
 
-	// 希望搜索的人员库列表，上限60个。数组元素取值为创建人员库接口中的GroupId
+	// 希望搜索的人员库列表，上限60个。数组元素取值为创建人员库接口中的GroupId。
+	// 不可同时搜索不同算法模型版本（FaceModelVersion）的人员库。
 	GroupIds []*string `json:"GroupIds,omitempty" name:"GroupIds" list`
 
 	// 图片 base64 数据，base64 编码后大小不可超过5M。

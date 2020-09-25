@@ -1,45 +1,29 @@
 # 本版本更新包含以下内容：
 
-## 语音识别(asr) 版本：2019-06-14
+## 消息队列 Ckafka(ckafka) 版本：2019-08-19
 
-### 第 13 次发布
+### 第 10 次发布
 
-发布时间：2020-09-24 08:00:03
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [SentenceDetail](https://cloud.tencent.com/document/api/1093/37824#SentenceDetail)
-
-	* 新增成员：SpeechSpeed
-
-
-
-
-## 人脸融合(facefusion) 版本：2018-12-01
-
-### 第 5 次发布
-
-发布时间：2020-09-24 08:03:28
+发布时间：2020-09-25 08:08:08
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-新增接口：
+修改接口：
 
-* [FaceFusionLite](https://cloud.tencent.com/document/api/670/48682)
+* [ModifyGroupOffsets](https://cloud.tencent.com/document/api/597/40833)
+
+	* 新增入参：Partitions
 
 
 
-## 轻量应用服务器(lighthouse) 版本：2020-03-24
 
-### 第 5 次发布
+## 域名注册(domain) 版本：2018-08-08
 
-发布时间：2020-09-24 08:00:13
+### 第 4 次发布
+
+发布时间：2020-09-25 08:03:31
 
 本次发布包含了以下内容：
 
@@ -47,20 +31,19 @@
 
 新增接口：
 
-* [DescribeInstancesTrafficPackages](https://cloud.tencent.com/document/api/1207/48681)
+* [DescribeDomainBaseInfo](https://cloud.tencent.com/document/api/242/48757)
 
 新增数据结构：
 
-* [InstanceTrafficPackage](https://cloud.tencent.com/document/api/1207/47576#InstanceTrafficPackage)
-* [TrafficPackage](https://cloud.tencent.com/document/api/1207/47576#TrafficPackage)
+* [DomainBaseInfo](https://cloud.tencent.com/document/api/242/38895#DomainBaseInfo)
 
 
 
-## 云监控(monitor) 版本：2018-07-24
+## 游戏服务器引擎(gse) 版本：2019-11-12
 
-### 第 15 次发布
+### 第 7 次发布
 
-发布时间：2020-09-24 08:04:40
+发布时间：2020-09-25 08:00:48
 
 本次发布包含了以下内容：
 
@@ -68,61 +51,71 @@
 
 新增接口：
 
-* [DescribeAlarmHistories](https://cloud.tencent.com/document/api/248/48684)
-* [DescribeAllNamespaces](https://cloud.tencent.com/document/api/248/48683)
+* [AttachCcnInstances](https://cloud.tencent.com/document/api/1165/48756)
+* [CreateAlias](https://cloud.tencent.com/document/api/1165/48755)
+* [CreateAsset](https://cloud.tencent.com/document/api/1165/48731)
+* [DeleteAlias](https://cloud.tencent.com/document/api/1165/48754)
+* [DeleteAsset](https://cloud.tencent.com/document/api/1165/48730)
+* [DeleteFleet](https://cloud.tencent.com/document/api/1165/48753)
+* [DescribeAlias](https://cloud.tencent.com/document/api/1165/48752)
+* [DescribeAsset](https://cloud.tencent.com/document/api/1165/48729)
+* [DescribeAssets](https://cloud.tencent.com/document/api/1165/48728)
+* [DescribeCcnInstances](https://cloud.tencent.com/document/api/1165/48751)
+* [DescribeFleetAttributes](https://cloud.tencent.com/document/api/1165/48750)
+* [DescribeFleetEvents](https://cloud.tencent.com/document/api/1165/48749)
+* [DescribeFleetPortSettings](https://cloud.tencent.com/document/api/1165/48748)
+* [DescribeFleetUtilization](https://cloud.tencent.com/document/api/1165/48747)
+* [DescribeInstanceTypes](https://cloud.tencent.com/document/api/1165/48732)
+* [DescribeRuntimeConfiguration](https://cloud.tencent.com/document/api/1165/48746)
+* [DescribeUserQuota](https://cloud.tencent.com/document/api/1165/48745)
+* [DescribeUserQuotas](https://cloud.tencent.com/document/api/1165/48744)
+* [DetachCcnInstances](https://cloud.tencent.com/document/api/1165/48743)
+* [GetUploadCredentials](https://cloud.tencent.com/document/api/1165/48727)
+* [GetUploadFederationToken](https://cloud.tencent.com/document/api/1165/48742)
+* [ListAliases](https://cloud.tencent.com/document/api/1165/48741)
+* [ListFleets](https://cloud.tencent.com/document/api/1165/48740)
+* [ResolveAlias](https://cloud.tencent.com/document/api/1165/48739)
+* [StartFleetActions](https://cloud.tencent.com/document/api/1165/48738)
+* [StopFleetActions](https://cloud.tencent.com/document/api/1165/48737)
+* [UpdateAlias](https://cloud.tencent.com/document/api/1165/48736)
+* [UpdateAsset](https://cloud.tencent.com/document/api/1165/48726)
+* [UpdateFleetAttributes](https://cloud.tencent.com/document/api/1165/48735)
+* [UpdateFleetPortSettings](https://cloud.tencent.com/document/api/1165/48734)
+* [UpdateRuntimeConfiguration](https://cloud.tencent.com/document/api/1165/48733)
 
 新增数据结构：
 
-* [AlarmHistory](https://cloud.tencent.com/document/api/248/30354#AlarmHistory)
-* [CommonNamespace](https://cloud.tencent.com/document/api/248/30354#CommonNamespace)
-* [InstanceGroups](https://cloud.tencent.com/document/api/248/30354#InstanceGroups)
-* [MonitorTypeNamespace](https://cloud.tencent.com/document/api/248/30354#MonitorTypeNamespace)
+* [Alias](https://cloud.tencent.com/document/api/1165/42074#Alias)
+* [Asset](https://cloud.tencent.com/document/api/1165/42074#Asset)
+* [AssetCredentials](https://cloud.tencent.com/document/api/1165/42074#AssetCredentials)
+* [CcnInstanceSets](https://cloud.tencent.com/document/api/1165/42074#CcnInstanceSets)
+* [Event](https://cloud.tencent.com/document/api/1165/42074#Event)
+* [FleetAttributes](https://cloud.tencent.com/document/api/1165/42074#FleetAttributes)
+* [FleetUtilization](https://cloud.tencent.com/document/api/1165/42074#FleetUtilization)
+* [InboundPermission](https://cloud.tencent.com/document/api/1165/42074#InboundPermission)
+* [InboundPermissionAuthorization](https://cloud.tencent.com/document/api/1165/42074#InboundPermissionAuthorization)
+* [InboundPermissionRevocations](https://cloud.tencent.com/document/api/1165/42074#InboundPermissionRevocations)
+* [InstanceTypeInfo](https://cloud.tencent.com/document/api/1165/42074#InstanceTypeInfo)
+* [QuotaResource](https://cloud.tencent.com/document/api/1165/42074#QuotaResource)
+* [ResourceCreationLimitPolicy](https://cloud.tencent.com/document/api/1165/42074#ResourceCreationLimitPolicy)
+* [RoutingStrategy](https://cloud.tencent.com/document/api/1165/42074#RoutingStrategy)
+* [RuntimeConfiguration](https://cloud.tencent.com/document/api/1165/42074#RuntimeConfiguration)
+* [ServerProcesse](https://cloud.tencent.com/document/api/1165/42074#ServerProcesse)
 
+修改数据结构：
 
+* [GameServerSessionQueueDestination](https://cloud.tencent.com/document/api/1165/42074#GameServerSessionQueueDestination)
 
-## 云函数(scf) 版本：2018-04-16
-
-### 第 20 次发布
-
-发布时间：2020-09-24 08:05:31
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [CreateFunction](https://cloud.tencent.com/document/api/583/18586)
-
-	* 新增入参：Tags
-
-
-
-
-## 云开发 CloudBase(tcb) 版本：2018-06-08
-
-### 第 19 次发布
-
-发布时间：2020-09-24 08:06:00
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [CreatePostpayPackage](https://cloud.tencent.com/document/api/876/45287)
-
-	* 新增入参：Flag
+	* 新增成员：FleetStatus
 
 
 
 
-## 腾讯微服务平台 TSF(tsf) 版本：2018-03-26
+## 物联网开发平台(iotexplorer) 版本：2019-04-23
 
-### 第 28 次发布
+### 第 12 次发布
 
-发布时间：2020-09-24 08:06:25
+发布时间：2020-09-25 08:04:27
 
 本次发布包含了以下内容：
 
@@ -130,20 +123,72 @@
 
 修改接口：
 
-* [DeployContainerGroup](https://cloud.tencent.com/document/api/649/36071)
+* [GetDeviceList](https://cloud.tencent.com/document/api/1081/37653)
 
-	* 新增入参：DeployAgent
+	* 新增入参：FirmwareVersion, DeviceName
+
+
+
+
+## 互动白板(tiw) 版本：2019-09-19
+
+### 第 9 次发布
+
+发布时间：2020-09-25 08:08:01
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeVideoGenerationTask](https://cloud.tencent.com/document/api/1137/48570)
+
+	* 新增出参：VideoInfoList
+
+
+
+
+## 云点播(vod) 版本：2018-07-17
+
+### 第 57 次发布
+
+发布时间：2020-09-25 08:07:27
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeEventsState](https://cloud.tencent.com/document/api/266/48758)
+
+
+
+## 私有网络(vpc) 版本：2017-03-12
+
+### 第 62 次发布
+
+发布时间：2020-09-25 08:06:55
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [AllocateAddresses](https://cloud.tencent.com/document/api/215/16699)
+
+	* 新增入参：AddressChargePrepaid
 
 
 修改数据结构：
 
-* [Microservice](https://cloud.tencent.com/document/api/649/36099#Microservice)
+* [AddressChargePrepaid](https://cloud.tencent.com/document/api/215/15824#AddressChargePrepaid)
 
-	* 新增成员：CriticalInstanceCount
+	* 新增成员：AutoRenewFlag
 
-* [MsInstance](https://cloud.tencent.com/document/api/649/36099#MsInstance)
-
-	* 新增成员：ServiceStatus, RegistrationTime, LastHeartbeatTime, RegistrationId, HiddenStatus
+	* <font color="#dd0000">**删除成员**：</font>RenewFlag
 
 
 
@@ -7422,6 +7467,21 @@
 
 ## 消息队列 Ckafka(ckafka) 版本：2019-08-19
 
+### 第 10 次发布
+
+发布时间：2020-09-25 08:08:08
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [ModifyGroupOffsets](https://cloud.tencent.com/document/api/597/40833)
+
+	* 新增入参：Partitions
+
+
 ### 第 9 次发布
 
 发布时间：2020-09-22 08:08:59
@@ -12716,6 +12776,22 @@
 
 ## 域名注册(domain) 版本：2018-08-08
 
+### 第 4 次发布
+
+发布时间：2020-09-25 08:03:31
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeDomainBaseInfo](https://cloud.tencent.com/document/api/242/48757)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[DomainBaseInfo](https://cloud.tencent.com/document/api/242/38895#DomainBaseInfo)](https://cloud.tencent.com/document/api/242/38895#[DomainBaseInfo](https://cloud.tencent.com/document/api/242/38895#DomainBaseInfo))
+
 ### 第 3 次发布
 
 发布时间：2020-07-13 08:25:10
@@ -14807,7 +14883,7 @@
 
 新增接口：
 
-* [[FaceFusionLite](https://cloud.tencent.com/document/api/670/48682)](https://cloud.tencent.com/document/api/#/#)
+* [FaceFusionLite](https://cloud.tencent.com/document/api/670/48682)
 
 ### 第 4 次发布
 
@@ -16113,6 +16189,74 @@
 
 
 ## 游戏服务器引擎(gse) 版本：2019-11-12
+
+### 第 7 次发布
+
+发布时间：2020-09-25 08:00:48
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[AttachCcnInstances](https://cloud.tencent.com/document/api/1165/48756)](https://cloud.tencent.com/document/api/#/#)
+* [[CreateAlias](https://cloud.tencent.com/document/api/1165/48755)](https://cloud.tencent.com/document/api/#/#)
+* [[CreateAsset](https://cloud.tencent.com/document/api/1165/48731)](https://cloud.tencent.com/document/api/#/#)
+* [[DeleteAlias](https://cloud.tencent.com/document/api/1165/48754)](https://cloud.tencent.com/document/api/#/#)
+* [[DeleteAsset](https://cloud.tencent.com/document/api/1165/48730)](https://cloud.tencent.com/document/api/#/#)
+* [[DeleteFleet](https://cloud.tencent.com/document/api/1165/48753)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeAlias](https://cloud.tencent.com/document/api/1165/48752)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeAsset](https://cloud.tencent.com/document/api/1165/48729)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeAssets](https://cloud.tencent.com/document/api/1165/48728)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeCcnInstances](https://cloud.tencent.com/document/api/1165/48751)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeFleetAttributes](https://cloud.tencent.com/document/api/1165/48750)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeFleetEvents](https://cloud.tencent.com/document/api/1165/48749)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeFleetPortSettings](https://cloud.tencent.com/document/api/1165/48748)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeFleetUtilization](https://cloud.tencent.com/document/api/1165/48747)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeInstanceTypes](https://cloud.tencent.com/document/api/1165/48732)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeRuntimeConfiguration](https://cloud.tencent.com/document/api/1165/48746)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeUserQuota](https://cloud.tencent.com/document/api/1165/48745)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeUserQuotas](https://cloud.tencent.com/document/api/1165/48744)](https://cloud.tencent.com/document/api/#/#)
+* [[DetachCcnInstances](https://cloud.tencent.com/document/api/1165/48743)](https://cloud.tencent.com/document/api/#/#)
+* [[GetUploadCredentials](https://cloud.tencent.com/document/api/1165/48727)](https://cloud.tencent.com/document/api/#/#)
+* [[GetUploadFederationToken](https://cloud.tencent.com/document/api/1165/48742)](https://cloud.tencent.com/document/api/#/#)
+* [[ListAliases](https://cloud.tencent.com/document/api/1165/48741)](https://cloud.tencent.com/document/api/#/#)
+* [[ListFleets](https://cloud.tencent.com/document/api/1165/48740)](https://cloud.tencent.com/document/api/#/#)
+* [[ResolveAlias](https://cloud.tencent.com/document/api/1165/48739)](https://cloud.tencent.com/document/api/#/#)
+* [[StartFleetActions](https://cloud.tencent.com/document/api/1165/48738)](https://cloud.tencent.com/document/api/#/#)
+* [[StopFleetActions](https://cloud.tencent.com/document/api/1165/48737)](https://cloud.tencent.com/document/api/#/#)
+* [[UpdateAlias](https://cloud.tencent.com/document/api/1165/48736)](https://cloud.tencent.com/document/api/#/#)
+* [[UpdateAsset](https://cloud.tencent.com/document/api/1165/48726)](https://cloud.tencent.com/document/api/#/#)
+* [[UpdateFleetAttributes](https://cloud.tencent.com/document/api/1165/48735)](https://cloud.tencent.com/document/api/#/#)
+* [[UpdateFleetPortSettings](https://cloud.tencent.com/document/api/1165/48734)](https://cloud.tencent.com/document/api/#/#)
+* [[UpdateRuntimeConfiguration](https://cloud.tencent.com/document/api/1165/48733)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[Alias](https://cloud.tencent.com/document/api/1165/42074#Alias)](https://cloud.tencent.com/document/api/1165/42074#[Alias](https://cloud.tencent.com/document/api/1165/42074#Alias))
+* [[Asset](https://cloud.tencent.com/document/api/1165/42074#Asset)](https://cloud.tencent.com/document/api/1165/42074#[Asset](https://cloud.tencent.com/document/api/1165/42074#Asset))
+* [[AssetCredentials](https://cloud.tencent.com/document/api/1165/42074#AssetCredentials)](https://cloud.tencent.com/document/api/1165/42074#[AssetCredentials](https://cloud.tencent.com/document/api/1165/42074#AssetCredentials))
+* [[CcnInstanceSets](https://cloud.tencent.com/document/api/1165/42074#CcnInstanceSets)](https://cloud.tencent.com/document/api/1165/42074#[CcnInstanceSets](https://cloud.tencent.com/document/api/1165/42074#CcnInstanceSets))
+* [[Event](https://cloud.tencent.com/document/api/1165/42074#Event)](https://cloud.tencent.com/document/api/1165/42074#[Event](https://cloud.tencent.com/document/api/1165/42074#Event))
+* [[FleetAttributes](https://cloud.tencent.com/document/api/1165/42074#FleetAttributes)](https://cloud.tencent.com/document/api/1165/42074#[FleetAttributes](https://cloud.tencent.com/document/api/1165/42074#FleetAttributes))
+* [[FleetUtilization](https://cloud.tencent.com/document/api/1165/42074#FleetUtilization)](https://cloud.tencent.com/document/api/1165/42074#[FleetUtilization](https://cloud.tencent.com/document/api/1165/42074#FleetUtilization))
+* [[InboundPermission](https://cloud.tencent.com/document/api/1165/42074#InboundPermission)](https://cloud.tencent.com/document/api/1165/42074#[InboundPermission](https://cloud.tencent.com/document/api/1165/42074#InboundPermission))
+* [[InboundPermissionAuthorization](https://cloud.tencent.com/document/api/1165/42074#InboundPermissionAuthorization)](https://cloud.tencent.com/document/api/1165/42074#[InboundPermissionAuthorization](https://cloud.tencent.com/document/api/1165/42074#InboundPermissionAuthorization))
+* [[InboundPermissionRevocations](https://cloud.tencent.com/document/api/1165/42074#InboundPermissionRevocations)](https://cloud.tencent.com/document/api/1165/42074#[InboundPermissionRevocations](https://cloud.tencent.com/document/api/1165/42074#InboundPermissionRevocations))
+* [[InstanceTypeInfo](https://cloud.tencent.com/document/api/1165/42074#InstanceTypeInfo)](https://cloud.tencent.com/document/api/1165/42074#[InstanceTypeInfo](https://cloud.tencent.com/document/api/1165/42074#InstanceTypeInfo))
+* [[QuotaResource](https://cloud.tencent.com/document/api/1165/42074#QuotaResource)](https://cloud.tencent.com/document/api/1165/42074#[QuotaResource](https://cloud.tencent.com/document/api/1165/42074#QuotaResource))
+* [[ResourceCreationLimitPolicy](https://cloud.tencent.com/document/api/1165/42074#ResourceCreationLimitPolicy)](https://cloud.tencent.com/document/api/1165/42074#[ResourceCreationLimitPolicy](https://cloud.tencent.com/document/api/1165/42074#ResourceCreationLimitPolicy))
+* [[RoutingStrategy](https://cloud.tencent.com/document/api/1165/42074#RoutingStrategy)](https://cloud.tencent.com/document/api/1165/42074#[RoutingStrategy](https://cloud.tencent.com/document/api/1165/42074#RoutingStrategy))
+* [[RuntimeConfiguration](https://cloud.tencent.com/document/api/1165/42074#RuntimeConfiguration)](https://cloud.tencent.com/document/api/1165/42074#[RuntimeConfiguration](https://cloud.tencent.com/document/api/1165/42074#RuntimeConfiguration))
+* [[ServerProcesse](https://cloud.tencent.com/document/api/1165/42074#ServerProcesse)](https://cloud.tencent.com/document/api/1165/42074#[ServerProcesse](https://cloud.tencent.com/document/api/1165/42074#ServerProcesse))
+
+修改数据结构：
+
+* [GameServerSessionQueueDestination](https://cloud.tencent.com/document/api/1165/42074#GameServerSessionQueueDestination)
+
+	* 新增成员：FleetStatus
+
 
 ### 第 6 次发布
 
@@ -17946,6 +18090,21 @@
 
 ## 物联网开发平台(iotexplorer) 版本：2019-04-23
 
+### 第 12 次发布
+
+发布时间：2020-09-25 08:04:27
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [GetDeviceList](https://cloud.tencent.com/document/api/1081/37653)
+
+	* 新增入参：FirmwareVersion, DeviceName
+
+
 ### 第 11 次发布
 
 发布时间：2020-08-11 08:15:57
@@ -18808,12 +18967,12 @@
 
 新增接口：
 
-* [[DescribeInstancesTrafficPackages](https://cloud.tencent.com/document/api/1207/48681)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeInstancesTrafficPackages](https://cloud.tencent.com/document/api/1207/48681)
 
 新增数据结构：
 
-* [[InstanceTrafficPackage](https://cloud.tencent.com/document/api/1207/47576#InstanceTrafficPackage)](https://cloud.tencent.com/document/api/1207/47576#[InstanceTrafficPackage](https://cloud.tencent.com/document/api/1207/47576#InstanceTrafficPackage))
-* [[TrafficPackage](https://cloud.tencent.com/document/api/1207/47576#TrafficPackage)](https://cloud.tencent.com/document/api/1207/47576#[TrafficPackage](https://cloud.tencent.com/document/api/1207/47576#TrafficPackage))
+* [InstanceTrafficPackage](https://cloud.tencent.com/document/api/1207/47576#InstanceTrafficPackage)
+* [TrafficPackage](https://cloud.tencent.com/document/api/1207/47576#TrafficPackage)
 
 ### 第 4 次发布
 
@@ -20778,15 +20937,15 @@
 
 新增接口：
 
-* [[DescribeAlarmHistories](https://cloud.tencent.com/document/api/248/48684)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeAllNamespaces](https://cloud.tencent.com/document/api/248/48683)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeAlarmHistories](https://cloud.tencent.com/document/api/248/48684)
+* [DescribeAllNamespaces](https://cloud.tencent.com/document/api/248/48683)
 
 新增数据结构：
 
-* [[AlarmHistory](https://cloud.tencent.com/document/api/248/30354#AlarmHistory)](https://cloud.tencent.com/document/api/248/30354#[AlarmHistory](https://cloud.tencent.com/document/api/248/30354#AlarmHistory))
-* [[CommonNamespace](https://cloud.tencent.com/document/api/248/30354#CommonNamespace)](https://cloud.tencent.com/document/api/248/30354#[CommonNamespace](https://cloud.tencent.com/document/api/248/30354#CommonNamespace))
-* [[InstanceGroups](https://cloud.tencent.com/document/api/248/30354#InstanceGroups)](https://cloud.tencent.com/document/api/248/30354#[InstanceGroups](https://cloud.tencent.com/document/api/248/30354#InstanceGroups))
-* [[MonitorTypeNamespace](https://cloud.tencent.com/document/api/248/30354#MonitorTypeNamespace)](https://cloud.tencent.com/document/api/248/30354#[MonitorTypeNamespace](https://cloud.tencent.com/document/api/248/30354#MonitorTypeNamespace))
+* [AlarmHistory](https://cloud.tencent.com/document/api/248/30354#AlarmHistory)
+* [CommonNamespace](https://cloud.tencent.com/document/api/248/30354#CommonNamespace)
+* [InstanceGroups](https://cloud.tencent.com/document/api/248/30354#InstanceGroups)
+* [MonitorTypeNamespace](https://cloud.tencent.com/document/api/248/30354#MonitorTypeNamespace)
 
 ### 第 14 次发布
 
@@ -29068,6 +29227,21 @@
 
 ## 互动白板(tiw) 版本：2019-09-19
 
+### 第 9 次发布
+
+发布时间：2020-09-25 08:08:01
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeVideoGenerationTask](https://cloud.tencent.com/document/api/1137/48570)
+
+	* 新增出参：VideoInfoList
+
+
 ### 第 8 次发布
 
 发布时间：2020-09-22 08:08:51
@@ -31127,6 +31301,18 @@
 
 ## 云点播(vod) 版本：2018-07-17
 
+### 第 57 次发布
+
+发布时间：2020-09-25 08:07:27
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeEventsState](https://cloud.tencent.com/document/api/266/48758)](https://cloud.tencent.com/document/api/#/#)
+
 ### 第 56 次发布
 
 发布时间：2020-09-16 08:06:57
@@ -32889,6 +33075,30 @@
 
 
 ## 私有网络(vpc) 版本：2017-03-12
+
+### 第 62 次发布
+
+发布时间：2020-09-25 08:06:55
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [AllocateAddresses](https://cloud.tencent.com/document/api/215/16699)
+
+	* 新增入参：AddressChargePrepaid
+
+
+修改数据结构：
+
+* [AddressChargePrepaid](https://cloud.tencent.com/document/api/215/15824#AddressChargePrepaid)
+
+	* 新增成员：AutoRenewFlag
+
+	* <font color="#dd0000">**删除成员**：</font>RenewFlag
+
 
 ### 第 61 次发布
 

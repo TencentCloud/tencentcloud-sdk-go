@@ -100,6 +100,43 @@ func (r *CheckDomainResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeDomainBaseInfoRequest struct {
+	*tchttp.BaseRequest
+
+	// 域名
+	Domain *string `json:"Domain,omitempty" name:"Domain"`
+}
+
+func (r *DescribeDomainBaseInfoRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeDomainBaseInfoRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeDomainBaseInfoResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 域名信息
+		DomainInfo *DomainBaseInfo `json:"DomainInfo,omitempty" name:"DomainInfo"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeDomainBaseInfoResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeDomainBaseInfoResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeDomainPriceListRequest struct {
 	*tchttp.BaseRequest
 
@@ -141,6 +178,80 @@ func (r *DescribeDomainPriceListResponse) ToJsonString() string {
 
 func (r *DescribeDomainPriceListResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
+}
+
+type DomainBaseInfo struct {
+
+	// 域名资源ID。
+	DomainId *string `json:"DomainId,omitempty" name:"DomainId"`
+
+	// 域名名称。
+	DomainName *string `json:"DomainName,omitempty" name:"DomainName"`
+
+	// 域名实名认证状态。
+	// NotUpload：未实名认证
+	// InAudit：实名审核中
+	// Approved：实名审核通过
+	// Reject：实名审核失败
+	RealNameAuditStatus *string `json:"RealNameAuditStatus,omitempty" name:"RealNameAuditStatus"`
+
+	// 域名实名认证不通过原因。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RealNameAuditUnpassReason *string `json:"RealNameAuditUnpassReason,omitempty" name:"RealNameAuditUnpassReason"`
+
+	// 域名命名审核状态。
+	// NotAudit：命名审核未上传
+	// Pending：命名审核待上传
+	// Auditing：域名命名审核中
+	// Approved：域名命名审核通过
+	// Rejected：域名命名审核拒绝
+	DomainNameAuditStatus *string `json:"DomainNameAuditStatus,omitempty" name:"DomainNameAuditStatus"`
+
+	// 域名命名审核不通过原因。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DomainNameAuditUnpassReason *string `json:"DomainNameAuditUnpassReason,omitempty" name:"DomainNameAuditUnpassReason"`
+
+	// 注册时间。
+	CreationDate *string `json:"CreationDate,omitempty" name:"CreationDate"`
+
+	// 到期时间
+	ExpirationDate *string `json:"ExpirationDate,omitempty" name:"ExpirationDate"`
+
+	// 域名状态。
+	// ok：正常
+	// serverHold：注册局暂停解析 
+	// clientHold：注册商暂停解析
+	// pendingTransfer：转移中
+	// renewingPeriod：续费期
+	// redemptionPeriod：偿还期
+	// pendingDelete：删除期
+	// serverTransferProhibited：注册局禁止转移
+	// serverUpdateProhibited：注册局禁止更新
+	// serverDeleteProhibited：注册局禁止删除
+	// clientTransferProhibited：注册商禁止转移
+	// clientUpdateProhibited：注册商禁止更新
+	// clientDeleteProhibited：注册商禁止删除
+	DomainStatus []*string `json:"DomainStatus,omitempty" name:"DomainStatus" list`
+
+	// 域名购买状态。
+	// ok：正常
+	// RegisterPending：待注册
+	// RegisterDoing：注册中
+	// RegisterFailed：注册失败
+	// AboutToExpire: 即将过期
+	// RenewPending：已进入续费期，需要进行续费
+	// RenewDoing：续费中
+	// RedemptionPending：已进入赎回期，需要进行续费
+	// RedemptionDoing：赎回中
+	// TransferPending：待转入中
+	// TransferTransing：转入中
+	// TransferFailed：转入失败
+	BuyStatus *string `json:"BuyStatus,omitempty" name:"BuyStatus"`
+
+	// 注册类型
+	// epp （腾讯云自有域名）
+	// xinnet (新网域名)
+	RegistrarType *string `json:"RegistrarType,omitempty" name:"RegistrarType"`
 }
 
 type PriceInfo struct {

@@ -481,7 +481,7 @@ type DescribeVideoGenerationTaskResponse struct {
 		// 任务的Id
 		TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
 
-		// 录制视频生成进度（0-100，100表示视频生成完成 ）
+		// 已废弃
 		Progress *int64 `json:"Progress,omitempty" name:"Progress"`
 
 		// 录制视频生成任务状态
@@ -493,8 +493,11 @@ type DescribeVideoGenerationTaskResponse struct {
 		// 回放视频总时长,单位：毫秒
 		TotalTime *int64 `json:"TotalTime,omitempty" name:"TotalTime"`
 
-		// 录制视频生成列表
+		// 已废弃，请使用`VideoInfoList`参数
 		VideoInfos *VideoInfo `json:"VideoInfos,omitempty" name:"VideoInfos"`
+
+		// 录制视频生成视频列表
+		VideoInfoList []*VideoInfo `json:"VideoInfoList,omitempty" name:"VideoInfoList" list`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`

@@ -1690,6 +1690,9 @@ type ModifyGroupOffsetsRequest struct {
 
 	// 需要重新设置的offset位置。当strategy为2，必须包含该字段。
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 需要重新设置的partition的列表，如果没有指定Topics参数。则重置全部topics的对应的Partition列表里的partition。指定Topics时则重置指定的topic列表的对应的Partitions列表的partition。
+	Partitions []*int64 `json:"Partitions,omitempty" name:"Partitions" list`
 }
 
 func (r *ModifyGroupOffsetsRequest) ToJsonString() string {

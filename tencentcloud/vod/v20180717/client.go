@@ -1168,6 +1168,31 @@ func (c *Client) DescribeContentReviewTemplates(request *DescribeContentReviewTe
     return
 }
 
+func NewDescribeEventsStateRequest() (request *DescribeEventsStateRequest) {
+    request = &DescribeEventsStateRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vod", APIVersion, "DescribeEventsState")
+    return
+}
+
+func NewDescribeEventsStateResponse() (response *DescribeEventsStateResponse) {
+    response = &DescribeEventsStateResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// * 该接口用于业务服务器获取 [可靠回调](https://cloud.tencent.com/document/product/266/33779#.E5.8F.AF.E9.9D.A0.E5.9B.9E.E8.B0.83) 事件通知的状态。
+func (c *Client) DescribeEventsState(request *DescribeEventsStateRequest) (response *DescribeEventsStateResponse, err error) {
+    if request == nil {
+        request = NewDescribeEventsStateRequest()
+    }
+    response = NewDescribeEventsStateResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeImageSpriteTemplatesRequest() (request *DescribeImageSpriteTemplatesRequest) {
     request = &DescribeImageSpriteTemplatesRequest{
         BaseRequest: &tchttp.BaseRequest{},

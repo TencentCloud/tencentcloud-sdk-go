@@ -4329,6 +4329,43 @@ func (r *DescribeContentReviewTemplatesResponse) FromJsonString(s string) error 
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeEventsStateRequest struct {
+	*tchttp.BaseRequest
+
+	// 点播 [子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
+}
+
+func (r *DescribeEventsStateRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeEventsStateRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeEventsStateResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 待进行拉取的事件通知数，为近似值，约5秒延迟。
+		CountOfEventsToPull *uint64 `json:"CountOfEventsToPull,omitempty" name:"CountOfEventsToPull"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeEventsStateResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeEventsStateResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeImageSpriteTemplatesRequest struct {
 	*tchttp.BaseRequest
 

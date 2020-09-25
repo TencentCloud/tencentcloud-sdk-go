@@ -68,6 +68,33 @@ func (c *Client) CheckDomain(request *CheckDomainRequest) (response *CheckDomain
     return
 }
 
+func NewDescribeDomainBaseInfoRequest() (request *DescribeDomainBaseInfoRequest) {
+    request = &DescribeDomainBaseInfoRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("domain", APIVersion, "DescribeDomainBaseInfo")
+    return
+}
+
+func NewDescribeDomainBaseInfoResponse() (response *DescribeDomainBaseInfoResponse) {
+    response = &DescribeDomainBaseInfoResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口 (  DescribeDomainBaseInfo) 获取域名基础信息。
+// 
+// 默认接口请求频率限制：20次/秒。
+func (c *Client) DescribeDomainBaseInfo(request *DescribeDomainBaseInfoRequest) (response *DescribeDomainBaseInfoResponse, err error) {
+    if request == nil {
+        request = NewDescribeDomainBaseInfoRequest()
+    }
+    response = NewDescribeDomainBaseInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeDomainPriceListRequest() (request *DescribeDomainPriceListRequest) {
     request = &DescribeDomainPriceListRequest{
         BaseRequest: &tchttp.BaseRequest{},

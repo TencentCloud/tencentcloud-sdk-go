@@ -930,6 +930,9 @@ func NewSearchFacesResponse() (response *SearchFacesResponse) {
 // 
 // >     
 // - 公共参数中的签名方式请使用V3版本，即配置SignatureMethod参数为TC3-HMAC-SHA256。
+// 
+// >     
+// - 不可同时搜索不同算法模型版本（FaceModelVersion）的人员库。
 func (c *Client) SearchFaces(request *SearchFacesRequest) (response *SearchFacesResponse, err error) {
     if request == nil {
         request = NewSearchFacesRequest()
@@ -967,6 +970,8 @@ func NewSearchFacesReturnsByGroupResponse() (response *SearchFacesReturnsByGroup
 // >     
 // - 公共参数中的签名方式请使用V3版本，即配置SignatureMethod参数为TC3-HMAC-SHA256。
 // 
+// >     
+// - 不可同时搜索不同算法模型版本（FaceModelVersion）的人员库。
 func (c *Client) SearchFacesReturnsByGroup(request *SearchFacesReturnsByGroupRequest) (response *SearchFacesReturnsByGroupResponse, err error) {
     if request == nil {
         request = NewSearchFacesReturnsByGroupRequest()

@@ -922,6 +922,12 @@ type GetDeviceListRequest struct {
 
 	// 分页的大小，数值范围 10-100
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 设备固件版本号，若不带此参数会返回所有固件版本的设备。传"None-FirmwareVersion"查询无版本号的设备
+	FirmwareVersion *string `json:"FirmwareVersion,omitempty" name:"FirmwareVersion"`
+
+	// 需要过滤的设备名称
+	DeviceName *string `json:"DeviceName,omitempty" name:"DeviceName"`
 }
 
 func (r *GetDeviceListRequest) ToJsonString() string {
