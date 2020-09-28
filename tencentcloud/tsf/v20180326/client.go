@@ -694,6 +694,31 @@ func (c *Client) DeleteServerlessGroup(request *DeleteServerlessGroupRequest) (r
     return
 }
 
+func NewDeleteTaskRequest() (request *DeleteTaskRequest) {
+    request = &DeleteTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tsf", APIVersion, "DeleteTask")
+    return
+}
+
+func NewDeleteTaskResponse() (response *DeleteTaskResponse) {
+    response = &DeleteTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 删除任务
+func (c *Client) DeleteTask(request *DeleteTaskRequest) (response *DeleteTaskResponse, err error) {
+    if request == nil {
+        request = NewDeleteTaskRequest()
+    }
+    response = NewDeleteTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeployContainerGroupRequest() (request *DeployContainerGroupRequest) {
     request = &DeployContainerGroupRequest{
         BaseRequest: &tchttp.BaseRequest{},

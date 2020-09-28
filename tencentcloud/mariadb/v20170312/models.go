@@ -556,6 +556,18 @@ type DBInstance struct {
 	// 数据库版本
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DbVersion *string `json:"DbVersion,omitempty" name:"DbVersion"`
+
+	// DCN标志，0-无，1-主实例，2-灾备实例
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DcnFlag *int64 `json:"DcnFlag,omitempty" name:"DcnFlag"`
+
+	// DCN状态，0-无，1-创建中，2-同步中，3-已断开
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DcnStatus *int64 `json:"DcnStatus,omitempty" name:"DcnStatus"`
+
+	// DCN灾备实例数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DcnDstNum *int64 `json:"DcnDstNum,omitempty" name:"DcnDstNum"`
 }
 
 type DBParamValue struct {
@@ -864,6 +876,9 @@ type DescribeDBInstancesRequest struct {
 
 	// 按标签key查询
 	TagKeys []*string `json:"TagKeys,omitempty" name:"TagKeys" list`
+
+	// 实例类型过滤，1-独享实例，2-主实例，3-灾备实例，多个按逗号分隔
+	FilterInstanceType *string `json:"FilterInstanceType,omitempty" name:"FilterInstanceType"`
 }
 
 func (r *DescribeDBInstancesRequest) ToJsonString() string {

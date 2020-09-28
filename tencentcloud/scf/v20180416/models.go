@@ -927,7 +927,7 @@ type GetFunctionLogsRequest struct {
 	// 查询的具体日期，例如：2017-05-16 20:59:59，只能与startTime相差一天之内
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 
-	// 服务日志相关参数，第一页日志 Offset 为空字符串，后续分页按响应字段里的SearchContext填写
+	// 该字段已下线
 	SearchContext *LogSearchContext `json:"SearchContext,omitempty" name:"SearchContext"`
 }
 
@@ -950,7 +950,7 @@ type GetFunctionLogsResponse struct {
 		// 函数日志信息
 		Data []*FunctionLog `json:"Data,omitempty" name:"Data" list`
 
-		// 日志服务分页参数
+		// 该字段已下线
 		SearchContext *LogSearchContext `json:"SearchContext,omitempty" name:"SearchContext"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。

@@ -322,6 +322,12 @@ type AuthenticationTypeC struct {
 	// whitelist：白名单，表示对除了 FileExtensions 列表之外的所有类型进行鉴权
 	// blacklist：黑名单，表示仅对 FileExtensions 中的类型进行鉴权
 	FilterType *string `json:"FilterType,omitempty" name:"FilterType"`
+
+	// 时间戳进制设置
+	// dec：十进制
+	// hex：十六进制
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TimeFormat *string `json:"TimeFormat,omitempty" name:"TimeFormat"`
 }
 
 type AuthenticationTypeD struct {

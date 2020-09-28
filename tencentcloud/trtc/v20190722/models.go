@@ -593,7 +593,7 @@ type EncodeParams struct {
 	// 混流-输出流码率，音视频输出时必填。取值范围[1,10000]，单位为Kbps。
 	VideoBitrate *uint64 `json:"VideoBitrate,omitempty" name:"VideoBitrate"`
 
-	// 混流-输出流帧率，音视频输出时必填。取值为[6,12,15,24,30,48,60]，不在上述帧率值内系统会自动调整。
+	// 混流-输出流帧率，音视频输出时必填。取值范围[1,60]。
 	VideoFramerate *uint64 `json:"VideoFramerate,omitempty" name:"VideoFramerate"`
 
 	// 混流-输出流gop，音视频输出时必填。取值范围[1,5]，单位为秒。

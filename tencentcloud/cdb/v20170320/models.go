@@ -3969,6 +3969,9 @@ type DeviceDiskInfo struct {
 
 	// 磁盘平均每秒完成的写操作次数总和*100。例如：该值为30001，表示磁盘平均每秒完成写操作为：30001/100=300.01次
 	Write []*int64 `json:"Write,omitempty" name:"Write" list`
+
+	// 磁盘空间容量，每两个一组，第一个为已使用容量，第二个为磁盘总容量
+	CapacityRatio []*int64 `json:"CapacityRatio,omitempty" name:"CapacityRatio" list`
 }
 
 type DeviceMemInfo struct {

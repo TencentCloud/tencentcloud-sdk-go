@@ -1,10 +1,26 @@
 # 本版本更新包含以下内容：
 
-## 消息队列 Ckafka(ckafka) 版本：2019-08-19
+## 音频内容检测(ams) 版本：2020-06-08
 
-### 第 10 次发布
+### 第 5 次发布
 
-发布时间：2020-09-25 08:08:08
+发布时间：2020-09-28 08:00:20
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CancelTask](https://cloud.tencent.com/document/api/1219/48801)
+
+
+
+## 云硬盘(cbs) 版本：2017-03-12
+
+### 第 20 次发布
+
+发布时间：2020-09-28 08:02:56
 
 本次发布包含了以下内容：
 
@@ -12,110 +28,269 @@
 
 修改接口：
 
-* [ModifyGroupOffsets](https://cloud.tencent.com/document/api/597/40833)
+* [CreateSnapshot](https://cloud.tencent.com/document/api/362/15648)
 
-	* 新增入参：Partitions
+	* 新增入参：Deadline
 
+* [ModifySnapshotAttribute](https://cloud.tencent.com/document/api/362/15650)
 
-
-
-## 域名注册(domain) 版本：2018-08-08
-
-### 第 4 次发布
-
-发布时间：2020-09-25 08:03:31
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [DescribeDomainBaseInfo](https://cloud.tencent.com/document/api/242/48757)
-
-新增数据结构：
-
-* [DomainBaseInfo](https://cloud.tencent.com/document/api/242/38895#DomainBaseInfo)
+	* 新增入参：Deadline
 
 
 
-## 游戏服务器引擎(gse) 版本：2019-11-12
 
-### 第 7 次发布
+## 云数据库 MySQL(cdb) 版本：2017-03-20
 
-发布时间：2020-09-25 08:00:48
+### 第 46 次发布
+
+发布时间：2020-09-28 08:03:03
 
 本次发布包含了以下内容：
 
 改善已有的文档。
-
-新增接口：
-
-* [AttachCcnInstances](https://cloud.tencent.com/document/api/1165/48756)
-* [CreateAlias](https://cloud.tencent.com/document/api/1165/48755)
-* [CreateAsset](https://cloud.tencent.com/document/api/1165/48731)
-* [DeleteAlias](https://cloud.tencent.com/document/api/1165/48754)
-* [DeleteAsset](https://cloud.tencent.com/document/api/1165/48730)
-* [DeleteFleet](https://cloud.tencent.com/document/api/1165/48753)
-* [DescribeAlias](https://cloud.tencent.com/document/api/1165/48752)
-* [DescribeAsset](https://cloud.tencent.com/document/api/1165/48729)
-* [DescribeAssets](https://cloud.tencent.com/document/api/1165/48728)
-* [DescribeCcnInstances](https://cloud.tencent.com/document/api/1165/48751)
-* [DescribeFleetAttributes](https://cloud.tencent.com/document/api/1165/48750)
-* [DescribeFleetEvents](https://cloud.tencent.com/document/api/1165/48749)
-* [DescribeFleetPortSettings](https://cloud.tencent.com/document/api/1165/48748)
-* [DescribeFleetUtilization](https://cloud.tencent.com/document/api/1165/48747)
-* [DescribeInstanceTypes](https://cloud.tencent.com/document/api/1165/48732)
-* [DescribeRuntimeConfiguration](https://cloud.tencent.com/document/api/1165/48746)
-* [DescribeUserQuota](https://cloud.tencent.com/document/api/1165/48745)
-* [DescribeUserQuotas](https://cloud.tencent.com/document/api/1165/48744)
-* [DetachCcnInstances](https://cloud.tencent.com/document/api/1165/48743)
-* [GetUploadCredentials](https://cloud.tencent.com/document/api/1165/48727)
-* [GetUploadFederationToken](https://cloud.tencent.com/document/api/1165/48742)
-* [ListAliases](https://cloud.tencent.com/document/api/1165/48741)
-* [ListFleets](https://cloud.tencent.com/document/api/1165/48740)
-* [ResolveAlias](https://cloud.tencent.com/document/api/1165/48739)
-* [StartFleetActions](https://cloud.tencent.com/document/api/1165/48738)
-* [StopFleetActions](https://cloud.tencent.com/document/api/1165/48737)
-* [UpdateAlias](https://cloud.tencent.com/document/api/1165/48736)
-* [UpdateAsset](https://cloud.tencent.com/document/api/1165/48726)
-* [UpdateFleetAttributes](https://cloud.tencent.com/document/api/1165/48735)
-* [UpdateFleetPortSettings](https://cloud.tencent.com/document/api/1165/48734)
-* [UpdateRuntimeConfiguration](https://cloud.tencent.com/document/api/1165/48733)
-
-新增数据结构：
-
-* [Alias](https://cloud.tencent.com/document/api/1165/42074#Alias)
-* [Asset](https://cloud.tencent.com/document/api/1165/42074#Asset)
-* [AssetCredentials](https://cloud.tencent.com/document/api/1165/42074#AssetCredentials)
-* [CcnInstanceSets](https://cloud.tencent.com/document/api/1165/42074#CcnInstanceSets)
-* [Event](https://cloud.tencent.com/document/api/1165/42074#Event)
-* [FleetAttributes](https://cloud.tencent.com/document/api/1165/42074#FleetAttributes)
-* [FleetUtilization](https://cloud.tencent.com/document/api/1165/42074#FleetUtilization)
-* [InboundPermission](https://cloud.tencent.com/document/api/1165/42074#InboundPermission)
-* [InboundPermissionAuthorization](https://cloud.tencent.com/document/api/1165/42074#InboundPermissionAuthorization)
-* [InboundPermissionRevocations](https://cloud.tencent.com/document/api/1165/42074#InboundPermissionRevocations)
-* [InstanceTypeInfo](https://cloud.tencent.com/document/api/1165/42074#InstanceTypeInfo)
-* [QuotaResource](https://cloud.tencent.com/document/api/1165/42074#QuotaResource)
-* [ResourceCreationLimitPolicy](https://cloud.tencent.com/document/api/1165/42074#ResourceCreationLimitPolicy)
-* [RoutingStrategy](https://cloud.tencent.com/document/api/1165/42074#RoutingStrategy)
-* [RuntimeConfiguration](https://cloud.tencent.com/document/api/1165/42074#RuntimeConfiguration)
-* [ServerProcesse](https://cloud.tencent.com/document/api/1165/42074#ServerProcesse)
 
 修改数据结构：
 
-* [GameServerSessionQueueDestination](https://cloud.tencent.com/document/api/1165/42074#GameServerSessionQueueDestination)
+* [DeviceDiskInfo](https://cloud.tencent.com/document/api/236/15878#DeviceDiskInfo)
 
-	* 新增成员：FleetStatus
-
-
+	* 新增成员：CapacityRatio
 
 
-## 物联网开发平台(iotexplorer) 版本：2019-04-23
+
+
+## 内容分发网络(cdn) 版本：2018-06-06
+
+### 第 36 次发布
+
+发布时间：2020-09-28 08:03:19
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [AuthenticationTypeC](https://cloud.tencent.com/document/api/228/30987#AuthenticationTypeC)
+
+	* 新增成员：TimeFormat
+
+
+
+
+## 主机安全(cwp) 版本：2018-02-28
+
+### 第 1 次发布
+
+发布时间：2020-09-28 08:11:13
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [AddLoginWhiteList](https://cloud.tencent.com/document/api/296/39602)
+* [AddMachineTag](https://cloud.tencent.com/document/api/296/39571)
+* [CloseProVersion](https://cloud.tencent.com/document/api/296/19847)
+* [CreateBaselineStrategy](https://cloud.tencent.com/document/api/296/46372)
+* [CreateOpenPortTask](https://cloud.tencent.com/document/api/296/39570)
+* [CreateProcessTask](https://cloud.tencent.com/document/api/296/30341)
+* [CreateUsualLoginPlaces](https://cloud.tencent.com/document/api/296/19846)
+* [DeleteAttackLogs](https://cloud.tencent.com/document/api/296/39575)
+* [DeleteBashEvents](https://cloud.tencent.com/document/api/296/39601)
+* [DeleteBashRules](https://cloud.tencent.com/document/api/296/39600)
+* [DeleteBruteAttacks](https://cloud.tencent.com/document/api/296/19845)
+* [DeleteLoginWhiteList](https://cloud.tencent.com/document/api/296/39599)
+* [DeleteMachine](https://cloud.tencent.com/document/api/296/19844)
+* [DeleteMachineTag](https://cloud.tencent.com/document/api/296/39569)
+* [DeleteMaliciousRequests](https://cloud.tencent.com/document/api/296/31289)
+* [DeleteMalwares](https://cloud.tencent.com/document/api/296/19839)
+* [DeleteNonlocalLoginPlaces](https://cloud.tencent.com/document/api/296/19843)
+* [DeletePrivilegeEvents](https://cloud.tencent.com/document/api/296/39598)
+* [DeletePrivilegeRules](https://cloud.tencent.com/document/api/296/39597)
+* [DeleteReverseShellEvents](https://cloud.tencent.com/document/api/296/39596)
+* [DeleteReverseShellRules](https://cloud.tencent.com/document/api/296/39595)
+* [DeleteTags](https://cloud.tencent.com/document/api/296/39568)
+* [DeleteUsualLoginPlaces](https://cloud.tencent.com/document/api/296/19842)
+* [DescribeAccountStatistics](https://cloud.tencent.com/document/api/296/30340)
+* [DescribeAccounts](https://cloud.tencent.com/document/api/296/30339)
+* [DescribeAgentVuls](https://cloud.tencent.com/document/api/296/19861)
+* [DescribeAlarmAttribute](https://cloud.tencent.com/document/api/296/19866)
+* [DescribeAttackLogInfo](https://cloud.tencent.com/document/api/296/39574)
+* [DescribeAttackLogs](https://cloud.tencent.com/document/api/296/39573)
+* [DescribeBashEvents](https://cloud.tencent.com/document/api/296/39594)
+* [DescribeBashRules](https://cloud.tencent.com/document/api/296/39593)
+* [DescribeBruteAttacks](https://cloud.tencent.com/document/api/296/19838)
+* [DescribeComponentInfo](https://cloud.tencent.com/document/api/296/30338)
+* [DescribeComponentStatistics](https://cloud.tencent.com/document/api/296/30337)
+* [DescribeComponents](https://cloud.tencent.com/document/api/296/30336)
+* [DescribeHistoryAccounts](https://cloud.tencent.com/document/api/296/30335)
+* [DescribeImpactedHosts](https://cloud.tencent.com/document/api/296/19860)
+* [DescribeLoginWhiteList](https://cloud.tencent.com/document/api/296/39592)
+* [DescribeMachineInfo](https://cloud.tencent.com/document/api/296/19851)
+* [DescribeMachines](https://cloud.tencent.com/document/api/296/19850)
+* [DescribeMaliciousRequests](https://cloud.tencent.com/document/api/296/31288)
+* [DescribeMalwares](https://cloud.tencent.com/document/api/296/19837)
+* [DescribeNonlocalLoginPlaces](https://cloud.tencent.com/document/api/296/19836)
+* [DescribeOpenPortStatistics](https://cloud.tencent.com/document/api/296/30328)
+* [DescribeOpenPortTaskStatus](https://cloud.tencent.com/document/api/296/39567)
+* [DescribeOpenPorts](https://cloud.tencent.com/document/api/296/30327)
+* [DescribeOverviewStatistics](https://cloud.tencent.com/document/api/296/19849)
+* [DescribePrivilegeEvents](https://cloud.tencent.com/document/api/296/39591)
+* [DescribePrivilegeRules](https://cloud.tencent.com/document/api/296/39590)
+* [DescribeProVersionInfo](https://cloud.tencent.com/document/api/296/19865)
+* [DescribeProcessStatistics](https://cloud.tencent.com/document/api/296/30334)
+* [DescribeProcessTaskStatus](https://cloud.tencent.com/document/api/296/30333)
+* [DescribeProcesses](https://cloud.tencent.com/document/api/296/30332)
+* [DescribeReverseShellEvents](https://cloud.tencent.com/document/api/296/39589)
+* [DescribeReverseShellRules](https://cloud.tencent.com/document/api/296/39588)
+* [DescribeSecurityDynamics](https://cloud.tencent.com/document/api/296/30330)
+* [DescribeSecurityTrends](https://cloud.tencent.com/document/api/296/30329)
+* [DescribeTagMachines](https://cloud.tencent.com/document/api/296/39566)
+* [DescribeTags](https://cloud.tencent.com/document/api/296/39565)
+* [DescribeUsualLoginPlaces](https://cloud.tencent.com/document/api/296/19841)
+* [DescribeVulInfo](https://cloud.tencent.com/document/api/296/19859)
+* [DescribeVulScanResult](https://cloud.tencent.com/document/api/296/19858)
+* [DescribeVuls](https://cloud.tencent.com/document/api/296/19857)
+* [DescribeWeeklyReportBruteAttacks](https://cloud.tencent.com/document/api/296/30326)
+* [DescribeWeeklyReportInfo](https://cloud.tencent.com/document/api/296/30325)
+* [DescribeWeeklyReportMalwares](https://cloud.tencent.com/document/api/296/30324)
+* [DescribeWeeklyReportNonlocalLoginPlaces](https://cloud.tencent.com/document/api/296/30323)
+* [DescribeWeeklyReportVuls](https://cloud.tencent.com/document/api/296/30322)
+* [DescribeWeeklyReports](https://cloud.tencent.com/document/api/296/30321)
+* [EditBashRule](https://cloud.tencent.com/document/api/296/39587)
+* [EditPrivilegeRule](https://cloud.tencent.com/document/api/296/39586)
+* [EditReverseShellRule](https://cloud.tencent.com/document/api/296/39585)
+* [EditTags](https://cloud.tencent.com/document/api/296/39564)
+* [ExportAttackLogs](https://cloud.tencent.com/document/api/296/39572)
+* [ExportBashEvents](https://cloud.tencent.com/document/api/296/39584)
+* [ExportBruteAttacks](https://cloud.tencent.com/document/api/296/39583)
+* [ExportMaliciousRequests](https://cloud.tencent.com/document/api/296/31287)
+* [ExportMalwares](https://cloud.tencent.com/document/api/296/39582)
+* [ExportNonlocalLoginPlaces](https://cloud.tencent.com/document/api/296/39581)
+* [ExportPrivilegeEvents](https://cloud.tencent.com/document/api/296/39580)
+* [ExportReverseShellEvents](https://cloud.tencent.com/document/api/296/39579)
+* [IgnoreImpactedHosts](https://cloud.tencent.com/document/api/296/19856)
+* [InquiryPriceOpenProVersionPrepaid](https://cloud.tencent.com/document/api/296/31293)
+* [MisAlarmNonlocalLoginPlaces](https://cloud.tencent.com/document/api/296/19835)
+* [ModifyAlarmAttribute](https://cloud.tencent.com/document/api/296/19864)
+* [ModifyAutoOpenProVersionConfig](https://cloud.tencent.com/document/api/296/19863)
+* [ModifyLoginWhiteList](https://cloud.tencent.com/document/api/296/39578)
+* [ModifyProVersionRenewFlag](https://cloud.tencent.com/document/api/296/31292)
+* [OpenProVersion](https://cloud.tencent.com/document/api/296/41154)
+* [OpenProVersionPrepaid](https://cloud.tencent.com/document/api/296/31291)
+* [RecoverMalwares](https://cloud.tencent.com/document/api/296/19834)
+* [RenewProVersion](https://cloud.tencent.com/document/api/296/31290)
+* [RescanImpactedHost](https://cloud.tencent.com/document/api/296/19855)
+* [SeparateMalwares](https://cloud.tencent.com/document/api/296/30320)
+* [SetBashEventsStatus](https://cloud.tencent.com/document/api/296/39577)
+* [SwitchBashRules](https://cloud.tencent.com/document/api/296/39576)
+* [TrustMaliciousRequest](https://cloud.tencent.com/document/api/296/31286)
+* [TrustMalwares](https://cloud.tencent.com/document/api/296/19833)
+* [UntrustMaliciousRequest](https://cloud.tencent.com/document/api/296/31285)
+* [UntrustMalwares](https://cloud.tencent.com/document/api/296/30319)
+
+新增数据结构：
+
+* [Account](https://cloud.tencent.com/document/api/296/19867#Account)
+* [AccountStatistics](https://cloud.tencent.com/document/api/296/19867#AccountStatistics)
+* [AgentVul](https://cloud.tencent.com/document/api/296/19867#AgentVul)
+* [BashEvent](https://cloud.tencent.com/document/api/296/19867#BashEvent)
+* [BashRule](https://cloud.tencent.com/document/api/296/19867#BashRule)
+* [BruteAttack](https://cloud.tencent.com/document/api/296/19867#BruteAttack)
+* [ChargePrepaid](https://cloud.tencent.com/document/api/296/19867#ChargePrepaid)
+* [Component](https://cloud.tencent.com/document/api/296/19867#Component)
+* [ComponentStatistics](https://cloud.tencent.com/document/api/296/19867#ComponentStatistics)
+* [DefendAttackLog](https://cloud.tencent.com/document/api/296/19867#DefendAttackLog)
+* [Filter](https://cloud.tencent.com/document/api/296/19867#Filter)
+* [HistoryAccount](https://cloud.tencent.com/document/api/296/19867#HistoryAccount)
+* [ImpactedHost](https://cloud.tencent.com/document/api/296/19867#ImpactedHost)
+* [LoginWhiteLists](https://cloud.tencent.com/document/api/296/19867#LoginWhiteLists)
+* [LoginWhiteListsRule](https://cloud.tencent.com/document/api/296/19867#LoginWhiteListsRule)
+* [Machine](https://cloud.tencent.com/document/api/296/19867#Machine)
+* [MachineTag](https://cloud.tencent.com/document/api/296/19867#MachineTag)
+* [MaliciousRequest](https://cloud.tencent.com/document/api/296/19867#MaliciousRequest)
+* [Malware](https://cloud.tencent.com/document/api/296/19867#Malware)
+* [NonLocalLoginPlace](https://cloud.tencent.com/document/api/296/19867#NonLocalLoginPlace)
+* [OpenPort](https://cloud.tencent.com/document/api/296/19867#OpenPort)
+* [OpenPortStatistics](https://cloud.tencent.com/document/api/296/19867#OpenPortStatistics)
+* [Place](https://cloud.tencent.com/document/api/296/19867#Place)
+* [PrivilegeEscalationProcess](https://cloud.tencent.com/document/api/296/19867#PrivilegeEscalationProcess)
+* [PrivilegeRule](https://cloud.tencent.com/document/api/296/19867#PrivilegeRule)
+* [ProVersionMachine](https://cloud.tencent.com/document/api/296/19867#ProVersionMachine)
+* [Process](https://cloud.tencent.com/document/api/296/19867#Process)
+* [ProcessStatistics](https://cloud.tencent.com/document/api/296/19867#ProcessStatistics)
+* [RegionInfo](https://cloud.tencent.com/document/api/296/19867#RegionInfo)
+* [ReverseShell](https://cloud.tencent.com/document/api/296/19867#ReverseShell)
+* [ReverseShellRule](https://cloud.tencent.com/document/api/296/19867#ReverseShellRule)
+* [SecurityDynamic](https://cloud.tencent.com/document/api/296/19867#SecurityDynamic)
+* [SecurityTrend](https://cloud.tencent.com/document/api/296/19867#SecurityTrend)
+* [Tag](https://cloud.tencent.com/document/api/296/19867#Tag)
+* [TagMachine](https://cloud.tencent.com/document/api/296/19867#TagMachine)
+* [UsualPlace](https://cloud.tencent.com/document/api/296/19867#UsualPlace)
+* [Vul](https://cloud.tencent.com/document/api/296/19867#Vul)
+* [WeeklyReport](https://cloud.tencent.com/document/api/296/19867#WeeklyReport)
+* [WeeklyReportBruteAttack](https://cloud.tencent.com/document/api/296/19867#WeeklyReportBruteAttack)
+* [WeeklyReportMalware](https://cloud.tencent.com/document/api/296/19867#WeeklyReportMalware)
+* [WeeklyReportNonlocalLoginPlace](https://cloud.tencent.com/document/api/296/19867#WeeklyReportNonlocalLoginPlace)
+* [WeeklyReportVul](https://cloud.tencent.com/document/api/296/19867#WeeklyReportVul)
+
+
+
+## 分布式数据库 TDSQL(dcdb) 版本：2018-04-11
+
+### 第 13 次发布
+
+发布时间：2020-09-28 08:04:27
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeDCDBInstances](https://cloud.tencent.com/document/api/557/16140)
+
+	* 新增入参：FilterInstanceType
+
+* [DescribeDCDBShards](https://cloud.tencent.com/document/api/557/19990)
+
+	* 新增出参：DcnFlag
+
+
+修改数据结构：
+
+* [DCDBInstanceInfo](https://cloud.tencent.com/document/api/557/16142#DCDBInstanceInfo)
+
+	* 新增成员：DcnFlag, DcnStatus, DcnDstNum
+
+
+
+
+## 云直播(live) 版本：2018-08-01
+
+### 第 51 次发布
+
+发布时间：2020-09-28 08:05:59
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeLiveDomain](https://cloud.tencent.com/document/api/267/33858)
+
+	* <font color="#dd0000">**修改入参**：</font>DomainName
+
+
+
+
+## 云数据库 MariaDB(mariadb) 版本：2017-03-12
 
 ### 第 12 次发布
 
-发布时间：2020-09-25 08:04:27
+发布时间：2020-09-28 08:06:19
 
 本次发布包含了以下内容：
 
@@ -123,37 +298,25 @@
 
 修改接口：
 
-* [GetDeviceList](https://cloud.tencent.com/document/api/1081/37653)
+* [DescribeDBInstances](https://cloud.tencent.com/document/api/237/16184)
 
-	* 新增入参：FirmwareVersion, DeviceName
-
-
+	* 新增入参：FilterInstanceType
 
 
-## 互动白板(tiw) 版本：2019-09-19
+修改数据结构：
 
-### 第 9 次发布
+* [DBInstance](https://cloud.tencent.com/document/api/237/16191#DBInstance)
 
-发布时间：2020-09-25 08:08:01
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [DescribeVideoGenerationTask](https://cloud.tencent.com/document/api/1137/48570)
-
-	* 新增出参：VideoInfoList
+	* 新增成员：DcnFlag, DcnStatus, DcnDstNum
 
 
 
 
-## 云点播(vod) 版本：2018-07-17
+## 腾讯微服务平台 TSF(tsf) 版本：2018-03-26
 
-### 第 57 次发布
+### 第 29 次发布
 
-发布时间：2020-09-25 08:07:27
+发布时间：2020-09-28 08:08:47
 
 本次发布包含了以下内容：
 
@@ -161,35 +324,7 @@
 
 新增接口：
 
-* [DescribeEventsState](https://cloud.tencent.com/document/api/266/48758)
-
-
-
-## 私有网络(vpc) 版本：2017-03-12
-
-### 第 62 次发布
-
-发布时间：2020-09-25 08:06:55
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [AllocateAddresses](https://cloud.tencent.com/document/api/215/16699)
-
-	* 新增入参：AddressChargePrepaid
-
-
-修改数据结构：
-
-* [AddressChargePrepaid](https://cloud.tencent.com/document/api/215/15824#AddressChargePrepaid)
-
-	* 新增成员：AutoRenewFlag
-
-	* <font color="#dd0000">**删除成员**：</font>RenewFlag
-
+* [DeleteTask](https://cloud.tencent.com/document/api/649/48802)
 
 
 
@@ -551,6 +686,18 @@
 
 
 ## 音频内容检测(ams) 版本：2020-06-08
+
+### 第 5 次发布
+
+发布时间：2020-09-28 08:00:20
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[CancelTask](https://cloud.tencent.com/document/api/1219/48801)](https://cloud.tencent.com/document/api/#/#)
 
 ### 第 4 次发布
 
@@ -4888,6 +5035,25 @@
 
 ## 云硬盘(cbs) 版本：2017-03-12
 
+### 第 20 次发布
+
+发布时间：2020-09-28 08:02:56
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateSnapshot](https://cloud.tencent.com/document/api/362/15648)
+
+	* 新增入参：Deadline
+
+* [ModifySnapshotAttribute](https://cloud.tencent.com/document/api/362/15650)
+
+	* 新增入参：Deadline
+
+
 ### 第 19 次发布
 
 发布时间：2020-03-20 08:04:16
@@ -5346,6 +5512,21 @@
 
 
 ## 云数据库 MySQL(cdb) 版本：2017-03-20
+
+### 第 46 次发布
+
+发布时间：2020-09-28 08:03:03
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [DeviceDiskInfo](https://cloud.tencent.com/document/api/236/15878#DeviceDiskInfo)
+
+	* 新增成员：CapacityRatio
+
 
 ### 第 45 次发布
 
@@ -6322,6 +6503,21 @@
 
 
 ## 内容分发网络(cdn) 版本：2018-06-06
+
+### 第 36 次发布
+
+发布时间：2020-09-28 08:03:19
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [AuthenticationTypeC](https://cloud.tencent.com/document/api/228/30987#AuthenticationTypeC)
+
+	* 新增成员：TimeFormat
+
 
 ### 第 35 次发布
 
@@ -11445,6 +11641,167 @@
 
 
 
+## 主机安全(cwp) 版本：2018-02-28
+
+### 第 1 次发布
+
+发布时间：2020-09-28 08:11:13
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[AddLoginWhiteList](https://cloud.tencent.com/document/api/296/39602)](https://cloud.tencent.com/document/api/#/#)
+* [[AddMachineTag](https://cloud.tencent.com/document/api/296/39571)](https://cloud.tencent.com/document/api/#/#)
+* [[CloseProVersion](https://cloud.tencent.com/document/api/296/19847)](https://cloud.tencent.com/document/api/#/#)
+* [[CreateBaselineStrategy](https://cloud.tencent.com/document/api/296/46372)](https://cloud.tencent.com/document/api/#/#)
+* [[CreateOpenPortTask](https://cloud.tencent.com/document/api/296/39570)](https://cloud.tencent.com/document/api/#/#)
+* [[CreateProcessTask](https://cloud.tencent.com/document/api/296/30341)](https://cloud.tencent.com/document/api/#/#)
+* [[CreateUsualLoginPlaces](https://cloud.tencent.com/document/api/296/19846)](https://cloud.tencent.com/document/api/#/#)
+* [[DeleteAttackLogs](https://cloud.tencent.com/document/api/296/39575)](https://cloud.tencent.com/document/api/#/#)
+* [[DeleteBashEvents](https://cloud.tencent.com/document/api/296/39601)](https://cloud.tencent.com/document/api/#/#)
+* [[DeleteBashRules](https://cloud.tencent.com/document/api/296/39600)](https://cloud.tencent.com/document/api/#/#)
+* [[DeleteBruteAttacks](https://cloud.tencent.com/document/api/296/19845)](https://cloud.tencent.com/document/api/#/#)
+* [[DeleteLoginWhiteList](https://cloud.tencent.com/document/api/296/39599)](https://cloud.tencent.com/document/api/#/#)
+* [[DeleteMachine](https://cloud.tencent.com/document/api/296/19844)](https://cloud.tencent.com/document/api/#/#)
+* [[DeleteMachineTag](https://cloud.tencent.com/document/api/296/39569)](https://cloud.tencent.com/document/api/#/#)
+* [[DeleteMaliciousRequests](https://cloud.tencent.com/document/api/296/31289)](https://cloud.tencent.com/document/api/#/#)
+* [[DeleteMalwares](https://cloud.tencent.com/document/api/296/19839)](https://cloud.tencent.com/document/api/#/#)
+* [[DeleteNonlocalLoginPlaces](https://cloud.tencent.com/document/api/296/19843)](https://cloud.tencent.com/document/api/#/#)
+* [[DeletePrivilegeEvents](https://cloud.tencent.com/document/api/296/39598)](https://cloud.tencent.com/document/api/#/#)
+* [[DeletePrivilegeRules](https://cloud.tencent.com/document/api/296/39597)](https://cloud.tencent.com/document/api/#/#)
+* [[DeleteReverseShellEvents](https://cloud.tencent.com/document/api/296/39596)](https://cloud.tencent.com/document/api/#/#)
+* [[DeleteReverseShellRules](https://cloud.tencent.com/document/api/296/39595)](https://cloud.tencent.com/document/api/#/#)
+* [[DeleteTags](https://cloud.tencent.com/document/api/296/39568)](https://cloud.tencent.com/document/api/#/#)
+* [[DeleteUsualLoginPlaces](https://cloud.tencent.com/document/api/296/19842)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeAccountStatistics](https://cloud.tencent.com/document/api/296/30340)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeAccounts](https://cloud.tencent.com/document/api/296/30339)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeAgentVuls](https://cloud.tencent.com/document/api/296/19861)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeAlarmAttribute](https://cloud.tencent.com/document/api/296/19866)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeAttackLogInfo](https://cloud.tencent.com/document/api/296/39574)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeAttackLogs](https://cloud.tencent.com/document/api/296/39573)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeBashEvents](https://cloud.tencent.com/document/api/296/39594)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeBashRules](https://cloud.tencent.com/document/api/296/39593)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeBruteAttacks](https://cloud.tencent.com/document/api/296/19838)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeComponentInfo](https://cloud.tencent.com/document/api/296/30338)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeComponentStatistics](https://cloud.tencent.com/document/api/296/30337)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeComponents](https://cloud.tencent.com/document/api/296/30336)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeHistoryAccounts](https://cloud.tencent.com/document/api/296/30335)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeImpactedHosts](https://cloud.tencent.com/document/api/296/19860)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeLoginWhiteList](https://cloud.tencent.com/document/api/296/39592)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeMachineInfo](https://cloud.tencent.com/document/api/296/19851)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeMachines](https://cloud.tencent.com/document/api/296/19850)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeMaliciousRequests](https://cloud.tencent.com/document/api/296/31288)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeMalwares](https://cloud.tencent.com/document/api/296/19837)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeNonlocalLoginPlaces](https://cloud.tencent.com/document/api/296/19836)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeOpenPortStatistics](https://cloud.tencent.com/document/api/296/30328)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeOpenPortTaskStatus](https://cloud.tencent.com/document/api/296/39567)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeOpenPorts](https://cloud.tencent.com/document/api/296/30327)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeOverviewStatistics](https://cloud.tencent.com/document/api/296/19849)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribePrivilegeEvents](https://cloud.tencent.com/document/api/296/39591)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribePrivilegeRules](https://cloud.tencent.com/document/api/296/39590)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeProVersionInfo](https://cloud.tencent.com/document/api/296/19865)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeProcessStatistics](https://cloud.tencent.com/document/api/296/30334)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeProcessTaskStatus](https://cloud.tencent.com/document/api/296/30333)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeProcesses](https://cloud.tencent.com/document/api/296/30332)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeReverseShellEvents](https://cloud.tencent.com/document/api/296/39589)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeReverseShellRules](https://cloud.tencent.com/document/api/296/39588)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeSecurityDynamics](https://cloud.tencent.com/document/api/296/30330)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeSecurityTrends](https://cloud.tencent.com/document/api/296/30329)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeTagMachines](https://cloud.tencent.com/document/api/296/39566)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeTags](https://cloud.tencent.com/document/api/296/39565)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeUsualLoginPlaces](https://cloud.tencent.com/document/api/296/19841)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeVulInfo](https://cloud.tencent.com/document/api/296/19859)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeVulScanResult](https://cloud.tencent.com/document/api/296/19858)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeVuls](https://cloud.tencent.com/document/api/296/19857)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeWeeklyReportBruteAttacks](https://cloud.tencent.com/document/api/296/30326)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeWeeklyReportInfo](https://cloud.tencent.com/document/api/296/30325)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeWeeklyReportMalwares](https://cloud.tencent.com/document/api/296/30324)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeWeeklyReportNonlocalLoginPlaces](https://cloud.tencent.com/document/api/296/30323)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeWeeklyReportVuls](https://cloud.tencent.com/document/api/296/30322)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeWeeklyReports](https://cloud.tencent.com/document/api/296/30321)](https://cloud.tencent.com/document/api/#/#)
+* [[EditBashRule](https://cloud.tencent.com/document/api/296/39587)](https://cloud.tencent.com/document/api/#/#)
+* [[EditPrivilegeRule](https://cloud.tencent.com/document/api/296/39586)](https://cloud.tencent.com/document/api/#/#)
+* [[EditReverseShellRule](https://cloud.tencent.com/document/api/296/39585)](https://cloud.tencent.com/document/api/#/#)
+* [[EditTags](https://cloud.tencent.com/document/api/296/39564)](https://cloud.tencent.com/document/api/#/#)
+* [[ExportAttackLogs](https://cloud.tencent.com/document/api/296/39572)](https://cloud.tencent.com/document/api/#/#)
+* [[ExportBashEvents](https://cloud.tencent.com/document/api/296/39584)](https://cloud.tencent.com/document/api/#/#)
+* [[ExportBruteAttacks](https://cloud.tencent.com/document/api/296/39583)](https://cloud.tencent.com/document/api/#/#)
+* [[ExportMaliciousRequests](https://cloud.tencent.com/document/api/296/31287)](https://cloud.tencent.com/document/api/#/#)
+* [[ExportMalwares](https://cloud.tencent.com/document/api/296/39582)](https://cloud.tencent.com/document/api/#/#)
+* [[ExportNonlocalLoginPlaces](https://cloud.tencent.com/document/api/296/39581)](https://cloud.tencent.com/document/api/#/#)
+* [[ExportPrivilegeEvents](https://cloud.tencent.com/document/api/296/39580)](https://cloud.tencent.com/document/api/#/#)
+* [[ExportReverseShellEvents](https://cloud.tencent.com/document/api/296/39579)](https://cloud.tencent.com/document/api/#/#)
+* [[IgnoreImpactedHosts](https://cloud.tencent.com/document/api/296/19856)](https://cloud.tencent.com/document/api/#/#)
+* [[InquiryPriceOpenProVersionPrepaid](https://cloud.tencent.com/document/api/296/31293)](https://cloud.tencent.com/document/api/#/#)
+* [[MisAlarmNonlocalLoginPlaces](https://cloud.tencent.com/document/api/296/19835)](https://cloud.tencent.com/document/api/#/#)
+* [[ModifyAlarmAttribute](https://cloud.tencent.com/document/api/296/19864)](https://cloud.tencent.com/document/api/#/#)
+* [[ModifyAutoOpenProVersionConfig](https://cloud.tencent.com/document/api/296/19863)](https://cloud.tencent.com/document/api/#/#)
+* [[ModifyLoginWhiteList](https://cloud.tencent.com/document/api/296/39578)](https://cloud.tencent.com/document/api/#/#)
+* [[ModifyProVersionRenewFlag](https://cloud.tencent.com/document/api/296/31292)](https://cloud.tencent.com/document/api/#/#)
+* [[OpenProVersion](https://cloud.tencent.com/document/api/296/41154)](https://cloud.tencent.com/document/api/#/#)
+* [[OpenProVersionPrepaid](https://cloud.tencent.com/document/api/296/31291)](https://cloud.tencent.com/document/api/#/#)
+* [[RecoverMalwares](https://cloud.tencent.com/document/api/296/19834)](https://cloud.tencent.com/document/api/#/#)
+* [[RenewProVersion](https://cloud.tencent.com/document/api/296/31290)](https://cloud.tencent.com/document/api/#/#)
+* [[RescanImpactedHost](https://cloud.tencent.com/document/api/296/19855)](https://cloud.tencent.com/document/api/#/#)
+* [[SeparateMalwares](https://cloud.tencent.com/document/api/296/30320)](https://cloud.tencent.com/document/api/#/#)
+* [[SetBashEventsStatus](https://cloud.tencent.com/document/api/296/39577)](https://cloud.tencent.com/document/api/#/#)
+* [[SwitchBashRules](https://cloud.tencent.com/document/api/296/39576)](https://cloud.tencent.com/document/api/#/#)
+* [[TrustMaliciousRequest](https://cloud.tencent.com/document/api/296/31286)](https://cloud.tencent.com/document/api/#/#)
+* [[TrustMalwares](https://cloud.tencent.com/document/api/296/19833)](https://cloud.tencent.com/document/api/#/#)
+* [[UntrustMaliciousRequest](https://cloud.tencent.com/document/api/296/31285)](https://cloud.tencent.com/document/api/#/#)
+* [[UntrustMalwares](https://cloud.tencent.com/document/api/296/30319)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[Account](https://cloud.tencent.com/document/api/296/19867#Account)](https://cloud.tencent.com/document/api/296/19867#[Account](https://cloud.tencent.com/document/api/296/19867#Account))
+* [[AccountStatistics](https://cloud.tencent.com/document/api/296/19867#AccountStatistics)](https://cloud.tencent.com/document/api/296/19867#[AccountStatistics](https://cloud.tencent.com/document/api/296/19867#AccountStatistics))
+* [[AgentVul](https://cloud.tencent.com/document/api/296/19867#AgentVul)](https://cloud.tencent.com/document/api/296/19867#[AgentVul](https://cloud.tencent.com/document/api/296/19867#AgentVul))
+* [[BashEvent](https://cloud.tencent.com/document/api/296/19867#BashEvent)](https://cloud.tencent.com/document/api/296/19867#[BashEvent](https://cloud.tencent.com/document/api/296/19867#BashEvent))
+* [[BashRule](https://cloud.tencent.com/document/api/296/19867#BashRule)](https://cloud.tencent.com/document/api/296/19867#[BashRule](https://cloud.tencent.com/document/api/296/19867#BashRule))
+* [[BruteAttack](https://cloud.tencent.com/document/api/296/19867#BruteAttack)](https://cloud.tencent.com/document/api/296/19867#[BruteAttack](https://cloud.tencent.com/document/api/296/19867#BruteAttack))
+* [[ChargePrepaid](https://cloud.tencent.com/document/api/296/19867#ChargePrepaid)](https://cloud.tencent.com/document/api/296/19867#[ChargePrepaid](https://cloud.tencent.com/document/api/296/19867#ChargePrepaid))
+* [[Component](https://cloud.tencent.com/document/api/296/19867#Component)](https://cloud.tencent.com/document/api/296/19867#[Component](https://cloud.tencent.com/document/api/296/19867#Component))
+* [[ComponentStatistics](https://cloud.tencent.com/document/api/296/19867#ComponentStatistics)](https://cloud.tencent.com/document/api/296/19867#[ComponentStatistics](https://cloud.tencent.com/document/api/296/19867#ComponentStatistics))
+* [[DefendAttackLog](https://cloud.tencent.com/document/api/296/19867#DefendAttackLog)](https://cloud.tencent.com/document/api/296/19867#[DefendAttackLog](https://cloud.tencent.com/document/api/296/19867#DefendAttackLog))
+* [[Filter](https://cloud.tencent.com/document/api/296/19867#Filter)](https://cloud.tencent.com/document/api/296/19867#[Filter](https://cloud.tencent.com/document/api/296/19867#Filter))
+* [[HistoryAccount](https://cloud.tencent.com/document/api/296/19867#HistoryAccount)](https://cloud.tencent.com/document/api/296/19867#[HistoryAccount](https://cloud.tencent.com/document/api/296/19867#HistoryAccount))
+* [[ImpactedHost](https://cloud.tencent.com/document/api/296/19867#ImpactedHost)](https://cloud.tencent.com/document/api/296/19867#[ImpactedHost](https://cloud.tencent.com/document/api/296/19867#ImpactedHost))
+* [[LoginWhiteLists](https://cloud.tencent.com/document/api/296/19867#LoginWhiteLists)](https://cloud.tencent.com/document/api/296/19867#[LoginWhiteLists](https://cloud.tencent.com/document/api/296/19867#LoginWhiteLists))
+* [[LoginWhiteListsRule](https://cloud.tencent.com/document/api/296/19867#LoginWhiteListsRule)](https://cloud.tencent.com/document/api/296/19867#[LoginWhiteListsRule](https://cloud.tencent.com/document/api/296/19867#LoginWhiteListsRule))
+* [[Machine](https://cloud.tencent.com/document/api/296/19867#Machine)](https://cloud.tencent.com/document/api/296/19867#[Machine](https://cloud.tencent.com/document/api/296/19867#Machine))
+* [[MachineTag](https://cloud.tencent.com/document/api/296/19867#MachineTag)](https://cloud.tencent.com/document/api/296/19867#[MachineTag](https://cloud.tencent.com/document/api/296/19867#MachineTag))
+* [[MaliciousRequest](https://cloud.tencent.com/document/api/296/19867#MaliciousRequest)](https://cloud.tencent.com/document/api/296/19867#[MaliciousRequest](https://cloud.tencent.com/document/api/296/19867#MaliciousRequest))
+* [[Malware](https://cloud.tencent.com/document/api/296/19867#Malware)](https://cloud.tencent.com/document/api/296/19867#[Malware](https://cloud.tencent.com/document/api/296/19867#Malware))
+* [[NonLocalLoginPlace](https://cloud.tencent.com/document/api/296/19867#NonLocalLoginPlace)](https://cloud.tencent.com/document/api/296/19867#[NonLocalLoginPlace](https://cloud.tencent.com/document/api/296/19867#NonLocalLoginPlace))
+* [[OpenPort](https://cloud.tencent.com/document/api/296/19867#OpenPort)](https://cloud.tencent.com/document/api/296/19867#[OpenPort](https://cloud.tencent.com/document/api/296/19867#OpenPort))
+* [[OpenPortStatistics](https://cloud.tencent.com/document/api/296/19867#OpenPortStatistics)](https://cloud.tencent.com/document/api/296/19867#[OpenPortStatistics](https://cloud.tencent.com/document/api/296/19867#OpenPortStatistics))
+* [[Place](https://cloud.tencent.com/document/api/296/19867#Place)](https://cloud.tencent.com/document/api/296/19867#[Place](https://cloud.tencent.com/document/api/296/19867#Place))
+* [[PrivilegeEscalationProcess](https://cloud.tencent.com/document/api/296/19867#PrivilegeEscalationProcess)](https://cloud.tencent.com/document/api/296/19867#[PrivilegeEscalationProcess](https://cloud.tencent.com/document/api/296/19867#PrivilegeEscalationProcess))
+* [[PrivilegeRule](https://cloud.tencent.com/document/api/296/19867#PrivilegeRule)](https://cloud.tencent.com/document/api/296/19867#[PrivilegeRule](https://cloud.tencent.com/document/api/296/19867#PrivilegeRule))
+* [[ProVersionMachine](https://cloud.tencent.com/document/api/296/19867#ProVersionMachine)](https://cloud.tencent.com/document/api/296/19867#[ProVersionMachine](https://cloud.tencent.com/document/api/296/19867#ProVersionMachine))
+* [[Process](https://cloud.tencent.com/document/api/296/19867#Process)](https://cloud.tencent.com/document/api/296/19867#[Process](https://cloud.tencent.com/document/api/296/19867#Process))
+* [[ProcessStatistics](https://cloud.tencent.com/document/api/296/19867#ProcessStatistics)](https://cloud.tencent.com/document/api/296/19867#[ProcessStatistics](https://cloud.tencent.com/document/api/296/19867#ProcessStatistics))
+* [[RegionInfo](https://cloud.tencent.com/document/api/296/19867#RegionInfo)](https://cloud.tencent.com/document/api/296/19867#[RegionInfo](https://cloud.tencent.com/document/api/296/19867#RegionInfo))
+* [[ReverseShell](https://cloud.tencent.com/document/api/296/19867#ReverseShell)](https://cloud.tencent.com/document/api/296/19867#[ReverseShell](https://cloud.tencent.com/document/api/296/19867#ReverseShell))
+* [[ReverseShellRule](https://cloud.tencent.com/document/api/296/19867#ReverseShellRule)](https://cloud.tencent.com/document/api/296/19867#[ReverseShellRule](https://cloud.tencent.com/document/api/296/19867#ReverseShellRule))
+* [[SecurityDynamic](https://cloud.tencent.com/document/api/296/19867#SecurityDynamic)](https://cloud.tencent.com/document/api/296/19867#[SecurityDynamic](https://cloud.tencent.com/document/api/296/19867#SecurityDynamic))
+* [[SecurityTrend](https://cloud.tencent.com/document/api/296/19867#SecurityTrend)](https://cloud.tencent.com/document/api/296/19867#[SecurityTrend](https://cloud.tencent.com/document/api/296/19867#SecurityTrend))
+* [[Tag](https://cloud.tencent.com/document/api/296/19867#Tag)](https://cloud.tencent.com/document/api/296/19867#[Tag](https://cloud.tencent.com/document/api/296/19867#Tag))
+* [[TagMachine](https://cloud.tencent.com/document/api/296/19867#TagMachine)](https://cloud.tencent.com/document/api/296/19867#[TagMachine](https://cloud.tencent.com/document/api/296/19867#TagMachine))
+* [[UsualPlace](https://cloud.tencent.com/document/api/296/19867#UsualPlace)](https://cloud.tencent.com/document/api/296/19867#[UsualPlace](https://cloud.tencent.com/document/api/296/19867#UsualPlace))
+* [[Vul](https://cloud.tencent.com/document/api/296/19867#Vul)](https://cloud.tencent.com/document/api/296/19867#[Vul](https://cloud.tencent.com/document/api/296/19867#Vul))
+* [[WeeklyReport](https://cloud.tencent.com/document/api/296/19867#WeeklyReport)](https://cloud.tencent.com/document/api/296/19867#[WeeklyReport](https://cloud.tencent.com/document/api/296/19867#WeeklyReport))
+* [[WeeklyReportBruteAttack](https://cloud.tencent.com/document/api/296/19867#WeeklyReportBruteAttack)](https://cloud.tencent.com/document/api/296/19867#[WeeklyReportBruteAttack](https://cloud.tencent.com/document/api/296/19867#WeeklyReportBruteAttack))
+* [[WeeklyReportMalware](https://cloud.tencent.com/document/api/296/19867#WeeklyReportMalware)](https://cloud.tencent.com/document/api/296/19867#[WeeklyReportMalware](https://cloud.tencent.com/document/api/296/19867#WeeklyReportMalware))
+* [[WeeklyReportNonlocalLoginPlace](https://cloud.tencent.com/document/api/296/19867#WeeklyReportNonlocalLoginPlace)](https://cloud.tencent.com/document/api/296/19867#[WeeklyReportNonlocalLoginPlace](https://cloud.tencent.com/document/api/296/19867#WeeklyReportNonlocalLoginPlace))
+* [[WeeklyReportVul](https://cloud.tencent.com/document/api/296/19867#WeeklyReportVul)](https://cloud.tencent.com/document/api/296/19867#[WeeklyReportVul](https://cloud.tencent.com/document/api/296/19867#WeeklyReportVul))
+
+
+
+
 ## (cws) 版本：2018-03-12
 
 ### 第 5 次发布
@@ -12445,6 +12802,32 @@
 
 ## 分布式数据库 TDSQL(dcdb) 版本：2018-04-11
 
+### 第 13 次发布
+
+发布时间：2020-09-28 08:04:27
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeDCDBInstances](https://cloud.tencent.com/document/api/557/16140)
+
+	* 新增入参：FilterInstanceType
+
+* [DescribeDCDBShards](https://cloud.tencent.com/document/api/557/19990)
+
+	* 新增出参：DcnFlag
+
+
+修改数据结构：
+
+* [DCDBInstanceInfo](https://cloud.tencent.com/document/api/557/16142#DCDBInstanceInfo)
+
+	* 新增成员：DcnFlag, DcnStatus, DcnDstNum
+
+
 ### 第 12 次发布
 
 发布时间：2020-08-18 08:11:06
@@ -12786,11 +13169,11 @@
 
 新增接口：
 
-* [[DescribeDomainBaseInfo](https://cloud.tencent.com/document/api/242/48757)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeDomainBaseInfo](https://cloud.tencent.com/document/api/242/48757)
 
 新增数据结构：
 
-* [[DomainBaseInfo](https://cloud.tencent.com/document/api/242/38895#DomainBaseInfo)](https://cloud.tencent.com/document/api/242/38895#[DomainBaseInfo](https://cloud.tencent.com/document/api/242/38895#DomainBaseInfo))
+* [DomainBaseInfo](https://cloud.tencent.com/document/api/242/38895#DomainBaseInfo)
 
 ### 第 3 次发布
 
@@ -16200,56 +16583,56 @@
 
 新增接口：
 
-* [[AttachCcnInstances](https://cloud.tencent.com/document/api/1165/48756)](https://cloud.tencent.com/document/api/#/#)
-* [[CreateAlias](https://cloud.tencent.com/document/api/1165/48755)](https://cloud.tencent.com/document/api/#/#)
-* [[CreateAsset](https://cloud.tencent.com/document/api/1165/48731)](https://cloud.tencent.com/document/api/#/#)
-* [[DeleteAlias](https://cloud.tencent.com/document/api/1165/48754)](https://cloud.tencent.com/document/api/#/#)
-* [[DeleteAsset](https://cloud.tencent.com/document/api/1165/48730)](https://cloud.tencent.com/document/api/#/#)
-* [[DeleteFleet](https://cloud.tencent.com/document/api/1165/48753)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeAlias](https://cloud.tencent.com/document/api/1165/48752)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeAsset](https://cloud.tencent.com/document/api/1165/48729)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeAssets](https://cloud.tencent.com/document/api/1165/48728)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeCcnInstances](https://cloud.tencent.com/document/api/1165/48751)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeFleetAttributes](https://cloud.tencent.com/document/api/1165/48750)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeFleetEvents](https://cloud.tencent.com/document/api/1165/48749)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeFleetPortSettings](https://cloud.tencent.com/document/api/1165/48748)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeFleetUtilization](https://cloud.tencent.com/document/api/1165/48747)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeInstanceTypes](https://cloud.tencent.com/document/api/1165/48732)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeRuntimeConfiguration](https://cloud.tencent.com/document/api/1165/48746)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeUserQuota](https://cloud.tencent.com/document/api/1165/48745)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeUserQuotas](https://cloud.tencent.com/document/api/1165/48744)](https://cloud.tencent.com/document/api/#/#)
-* [[DetachCcnInstances](https://cloud.tencent.com/document/api/1165/48743)](https://cloud.tencent.com/document/api/#/#)
-* [[GetUploadCredentials](https://cloud.tencent.com/document/api/1165/48727)](https://cloud.tencent.com/document/api/#/#)
-* [[GetUploadFederationToken](https://cloud.tencent.com/document/api/1165/48742)](https://cloud.tencent.com/document/api/#/#)
-* [[ListAliases](https://cloud.tencent.com/document/api/1165/48741)](https://cloud.tencent.com/document/api/#/#)
-* [[ListFleets](https://cloud.tencent.com/document/api/1165/48740)](https://cloud.tencent.com/document/api/#/#)
-* [[ResolveAlias](https://cloud.tencent.com/document/api/1165/48739)](https://cloud.tencent.com/document/api/#/#)
-* [[StartFleetActions](https://cloud.tencent.com/document/api/1165/48738)](https://cloud.tencent.com/document/api/#/#)
-* [[StopFleetActions](https://cloud.tencent.com/document/api/1165/48737)](https://cloud.tencent.com/document/api/#/#)
-* [[UpdateAlias](https://cloud.tencent.com/document/api/1165/48736)](https://cloud.tencent.com/document/api/#/#)
-* [[UpdateAsset](https://cloud.tencent.com/document/api/1165/48726)](https://cloud.tencent.com/document/api/#/#)
-* [[UpdateFleetAttributes](https://cloud.tencent.com/document/api/1165/48735)](https://cloud.tencent.com/document/api/#/#)
-* [[UpdateFleetPortSettings](https://cloud.tencent.com/document/api/1165/48734)](https://cloud.tencent.com/document/api/#/#)
-* [[UpdateRuntimeConfiguration](https://cloud.tencent.com/document/api/1165/48733)](https://cloud.tencent.com/document/api/#/#)
+* [AttachCcnInstances](https://cloud.tencent.com/document/api/1165/48756)
+* [CreateAlias](https://cloud.tencent.com/document/api/1165/48755)
+* [CreateAsset](https://cloud.tencent.com/document/api/1165/48731)
+* [DeleteAlias](https://cloud.tencent.com/document/api/1165/48754)
+* [DeleteAsset](https://cloud.tencent.com/document/api/1165/48730)
+* [DeleteFleet](https://cloud.tencent.com/document/api/1165/48753)
+* [DescribeAlias](https://cloud.tencent.com/document/api/1165/48752)
+* [DescribeAsset](https://cloud.tencent.com/document/api/1165/48729)
+* [DescribeAssets](https://cloud.tencent.com/document/api/1165/48728)
+* [DescribeCcnInstances](https://cloud.tencent.com/document/api/1165/48751)
+* [DescribeFleetAttributes](https://cloud.tencent.com/document/api/1165/48750)
+* [DescribeFleetEvents](https://cloud.tencent.com/document/api/1165/48749)
+* [DescribeFleetPortSettings](https://cloud.tencent.com/document/api/1165/48748)
+* [DescribeFleetUtilization](https://cloud.tencent.com/document/api/1165/48747)
+* [DescribeInstanceTypes](https://cloud.tencent.com/document/api/1165/48732)
+* [DescribeRuntimeConfiguration](https://cloud.tencent.com/document/api/1165/48746)
+* [DescribeUserQuota](https://cloud.tencent.com/document/api/1165/48745)
+* [DescribeUserQuotas](https://cloud.tencent.com/document/api/1165/48744)
+* [DetachCcnInstances](https://cloud.tencent.com/document/api/1165/48743)
+* [GetUploadCredentials](https://cloud.tencent.com/document/api/1165/48727)
+* [GetUploadFederationToken](https://cloud.tencent.com/document/api/1165/48742)
+* [ListAliases](https://cloud.tencent.com/document/api/1165/48741)
+* [ListFleets](https://cloud.tencent.com/document/api/1165/48740)
+* [ResolveAlias](https://cloud.tencent.com/document/api/1165/48739)
+* [StartFleetActions](https://cloud.tencent.com/document/api/1165/48738)
+* [StopFleetActions](https://cloud.tencent.com/document/api/1165/48737)
+* [UpdateAlias](https://cloud.tencent.com/document/api/1165/48736)
+* [UpdateAsset](https://cloud.tencent.com/document/api/1165/48726)
+* [UpdateFleetAttributes](https://cloud.tencent.com/document/api/1165/48735)
+* [UpdateFleetPortSettings](https://cloud.tencent.com/document/api/1165/48734)
+* [UpdateRuntimeConfiguration](https://cloud.tencent.com/document/api/1165/48733)
 
 新增数据结构：
 
-* [[Alias](https://cloud.tencent.com/document/api/1165/42074#Alias)](https://cloud.tencent.com/document/api/1165/42074#[Alias](https://cloud.tencent.com/document/api/1165/42074#Alias))
-* [[Asset](https://cloud.tencent.com/document/api/1165/42074#Asset)](https://cloud.tencent.com/document/api/1165/42074#[Asset](https://cloud.tencent.com/document/api/1165/42074#Asset))
-* [[AssetCredentials](https://cloud.tencent.com/document/api/1165/42074#AssetCredentials)](https://cloud.tencent.com/document/api/1165/42074#[AssetCredentials](https://cloud.tencent.com/document/api/1165/42074#AssetCredentials))
-* [[CcnInstanceSets](https://cloud.tencent.com/document/api/1165/42074#CcnInstanceSets)](https://cloud.tencent.com/document/api/1165/42074#[CcnInstanceSets](https://cloud.tencent.com/document/api/1165/42074#CcnInstanceSets))
-* [[Event](https://cloud.tencent.com/document/api/1165/42074#Event)](https://cloud.tencent.com/document/api/1165/42074#[Event](https://cloud.tencent.com/document/api/1165/42074#Event))
-* [[FleetAttributes](https://cloud.tencent.com/document/api/1165/42074#FleetAttributes)](https://cloud.tencent.com/document/api/1165/42074#[FleetAttributes](https://cloud.tencent.com/document/api/1165/42074#FleetAttributes))
-* [[FleetUtilization](https://cloud.tencent.com/document/api/1165/42074#FleetUtilization)](https://cloud.tencent.com/document/api/1165/42074#[FleetUtilization](https://cloud.tencent.com/document/api/1165/42074#FleetUtilization))
-* [[InboundPermission](https://cloud.tencent.com/document/api/1165/42074#InboundPermission)](https://cloud.tencent.com/document/api/1165/42074#[InboundPermission](https://cloud.tencent.com/document/api/1165/42074#InboundPermission))
-* [[InboundPermissionAuthorization](https://cloud.tencent.com/document/api/1165/42074#InboundPermissionAuthorization)](https://cloud.tencent.com/document/api/1165/42074#[InboundPermissionAuthorization](https://cloud.tencent.com/document/api/1165/42074#InboundPermissionAuthorization))
-* [[InboundPermissionRevocations](https://cloud.tencent.com/document/api/1165/42074#InboundPermissionRevocations)](https://cloud.tencent.com/document/api/1165/42074#[InboundPermissionRevocations](https://cloud.tencent.com/document/api/1165/42074#InboundPermissionRevocations))
-* [[InstanceTypeInfo](https://cloud.tencent.com/document/api/1165/42074#InstanceTypeInfo)](https://cloud.tencent.com/document/api/1165/42074#[InstanceTypeInfo](https://cloud.tencent.com/document/api/1165/42074#InstanceTypeInfo))
-* [[QuotaResource](https://cloud.tencent.com/document/api/1165/42074#QuotaResource)](https://cloud.tencent.com/document/api/1165/42074#[QuotaResource](https://cloud.tencent.com/document/api/1165/42074#QuotaResource))
-* [[ResourceCreationLimitPolicy](https://cloud.tencent.com/document/api/1165/42074#ResourceCreationLimitPolicy)](https://cloud.tencent.com/document/api/1165/42074#[ResourceCreationLimitPolicy](https://cloud.tencent.com/document/api/1165/42074#ResourceCreationLimitPolicy))
-* [[RoutingStrategy](https://cloud.tencent.com/document/api/1165/42074#RoutingStrategy)](https://cloud.tencent.com/document/api/1165/42074#[RoutingStrategy](https://cloud.tencent.com/document/api/1165/42074#RoutingStrategy))
-* [[RuntimeConfiguration](https://cloud.tencent.com/document/api/1165/42074#RuntimeConfiguration)](https://cloud.tencent.com/document/api/1165/42074#[RuntimeConfiguration](https://cloud.tencent.com/document/api/1165/42074#RuntimeConfiguration))
-* [[ServerProcesse](https://cloud.tencent.com/document/api/1165/42074#ServerProcesse)](https://cloud.tencent.com/document/api/1165/42074#[ServerProcesse](https://cloud.tencent.com/document/api/1165/42074#ServerProcesse))
+* [Alias](https://cloud.tencent.com/document/api/1165/42074#Alias)
+* [Asset](https://cloud.tencent.com/document/api/1165/42074#Asset)
+* [AssetCredentials](https://cloud.tencent.com/document/api/1165/42074#AssetCredentials)
+* [CcnInstanceSets](https://cloud.tencent.com/document/api/1165/42074#CcnInstanceSets)
+* [Event](https://cloud.tencent.com/document/api/1165/42074#Event)
+* [FleetAttributes](https://cloud.tencent.com/document/api/1165/42074#FleetAttributes)
+* [FleetUtilization](https://cloud.tencent.com/document/api/1165/42074#FleetUtilization)
+* [InboundPermission](https://cloud.tencent.com/document/api/1165/42074#InboundPermission)
+* [InboundPermissionAuthorization](https://cloud.tencent.com/document/api/1165/42074#InboundPermissionAuthorization)
+* [InboundPermissionRevocations](https://cloud.tencent.com/document/api/1165/42074#InboundPermissionRevocations)
+* [InstanceTypeInfo](https://cloud.tencent.com/document/api/1165/42074#InstanceTypeInfo)
+* [QuotaResource](https://cloud.tencent.com/document/api/1165/42074#QuotaResource)
+* [ResourceCreationLimitPolicy](https://cloud.tencent.com/document/api/1165/42074#ResourceCreationLimitPolicy)
+* [RoutingStrategy](https://cloud.tencent.com/document/api/1165/42074#RoutingStrategy)
+* [RuntimeConfiguration](https://cloud.tencent.com/document/api/1165/42074#RuntimeConfiguration)
+* [ServerProcesse](https://cloud.tencent.com/document/api/1165/42074#ServerProcesse)
 
 修改数据结构：
 
@@ -19057,6 +19440,21 @@
 
 ## 云直播(live) 版本：2018-08-01
 
+### 第 51 次发布
+
+发布时间：2020-09-28 08:05:59
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeLiveDomain](https://cloud.tencent.com/document/api/267/33858)
+
+	* <font color="#dd0000">**修改入参**：</font>DomainName
+
+
 ### 第 50 次发布
 
 发布时间：2020-09-17 08:04:41
@@ -20224,6 +20622,28 @@
 
 
 ## 云数据库 MariaDB(mariadb) 版本：2017-03-12
+
+### 第 12 次发布
+
+发布时间：2020-09-28 08:06:19
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeDBInstances](https://cloud.tencent.com/document/api/237/16184)
+
+	* 新增入参：FilterInstanceType
+
+
+修改数据结构：
+
+* [DBInstance](https://cloud.tencent.com/document/api/237/16191#DBInstance)
+
+	* 新增成员：DcnFlag, DcnStatus, DcnDstNum
+
 
 ### 第 11 次发布
 
@@ -30463,6 +30883,18 @@
 
 ## 腾讯微服务平台 TSF(tsf) 版本：2018-03-26
 
+### 第 29 次发布
+
+发布时间：2020-09-28 08:08:47
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DeleteTask](https://cloud.tencent.com/document/api/649/48802)](https://cloud.tencent.com/document/api/#/#)
+
 ### 第 28 次发布
 
 发布时间：2020-09-24 08:06:25
@@ -31311,7 +31743,7 @@
 
 新增接口：
 
-* [[DescribeEventsState](https://cloud.tencent.com/document/api/266/48758)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeEventsState](https://cloud.tencent.com/document/api/266/48758)
 
 ### 第 56 次发布
 

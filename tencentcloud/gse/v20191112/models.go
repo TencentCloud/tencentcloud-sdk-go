@@ -1828,7 +1828,7 @@ func (r *GetUploadFederationTokenResponse) FromJsonString(s string) error {
 
 type InboundPermission struct {
 
-	// 起始端口号
+	// 起始端口号，最小值1025
 	FromPort *uint64 `json:"FromPort,omitempty" name:"FromPort"`
 
 	// IP 段范围，CIDR 方式划分
@@ -1837,7 +1837,7 @@ type InboundPermission struct {
 	// 协议类型：TCP或者UDP
 	Protocol *string `json:"Protocol,omitempty" name:"Protocol"`
 
-	// 终止端口号
+	// 终止端口号，最大值60000
 	ToPort *uint64 `json:"ToPort,omitempty" name:"ToPort"`
 }
 

@@ -312,6 +312,9 @@ type CreateSnapshotRequest struct {
 
 	// 快照名称，不传则新快照名称默认为“未命名”。
 	SnapshotName *string `json:"SnapshotName,omitempty" name:"SnapshotName"`
+
+	// 快照的到期时间，到期后该快照将会自动删除
+	Deadline *string `json:"Deadline,omitempty" name:"Deadline"`
 }
 
 func (r *CreateSnapshotRequest) ToJsonString() string {
@@ -1450,8 +1453,11 @@ type ModifySnapshotAttributeRequest struct {
 	// 新的快照名称。最长为60个字符。
 	SnapshotName *string `json:"SnapshotName,omitempty" name:"SnapshotName"`
 
-	// 快照的保留时间，FALSE表示非永久保留，TRUE表示永久保留。仅支持将非永久快照修改为永久快照。
+	// 快照的保留方式，FALSE表示非永久保留，TRUE表示永久保留。
 	IsPermanent *bool `json:"IsPermanent,omitempty" name:"IsPermanent"`
+
+	// 快照的到期时间；设置好快照将会被同时设置为非永久保留方式；超过到期时间后快照将会被自动删除。
+	Deadline *string `json:"Deadline,omitempty" name:"Deadline"`
 }
 
 func (r *ModifySnapshotAttributeRequest) ToJsonString() string {
