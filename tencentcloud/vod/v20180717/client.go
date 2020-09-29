@@ -306,6 +306,31 @@ func (c *Client) CreateContentReviewTemplate(request *CreateContentReviewTemplat
     return
 }
 
+func NewCreateImageProcessingTemplateRequest() (request *CreateImageProcessingTemplateRequest) {
+    request = &CreateImageProcessingTemplateRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vod", APIVersion, "CreateImageProcessingTemplate")
+    return
+}
+
+func NewCreateImageProcessingTemplateResponse() (response *CreateImageProcessingTemplateResponse) {
+    response = &CreateImageProcessingTemplateResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 创建一个用户自定义的图片处理模板，数量上限：16。最多支持三次操作，例如：裁剪-缩略-裁剪。
+func (c *Client) CreateImageProcessingTemplate(request *CreateImageProcessingTemplateRequest) (response *CreateImageProcessingTemplateResponse, err error) {
+    if request == nil {
+        request = NewCreateImageProcessingTemplateRequest()
+    }
+    response = NewCreateImageProcessingTemplateResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateImageSpriteTemplateRequest() (request *CreateImageSpriteTemplateRequest) {
     request = &CreateImageSpriteTemplateRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -705,6 +730,31 @@ func (c *Client) DeleteContentReviewTemplate(request *DeleteContentReviewTemplat
         request = NewDeleteContentReviewTemplateRequest()
     }
     response = NewDeleteContentReviewTemplateResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteImageProcessingTemplateRequest() (request *DeleteImageProcessingTemplateRequest) {
+    request = &DeleteImageProcessingTemplateRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vod", APIVersion, "DeleteImageProcessingTemplate")
+    return
+}
+
+func NewDeleteImageProcessingTemplateResponse() (response *DeleteImageProcessingTemplateResponse) {
+    response = &DeleteImageProcessingTemplateResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 删除用户自定义图片处理模板。
+func (c *Client) DeleteImageProcessingTemplate(request *DeleteImageProcessingTemplateRequest) (response *DeleteImageProcessingTemplateResponse, err error) {
+    if request == nil {
+        request = NewDeleteImageProcessingTemplateRequest()
+    }
+    response = NewDeleteImageProcessingTemplateResponse()
     err = c.Send(request, response)
     return
 }
@@ -1189,6 +1239,31 @@ func (c *Client) DescribeEventsState(request *DescribeEventsStateRequest) (respo
         request = NewDescribeEventsStateRequest()
     }
     response = NewDescribeEventsStateResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeImageProcessingTemplatesRequest() (request *DescribeImageProcessingTemplatesRequest) {
+    request = &DescribeImageProcessingTemplatesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vod", APIVersion, "DescribeImageProcessingTemplates")
+    return
+}
+
+func NewDescribeImageProcessingTemplatesResponse() (response *DescribeImageProcessingTemplatesResponse) {
+    response = &DescribeImageProcessingTemplatesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 获取图片处理模板列表，支持根据条件，分页查询。
+func (c *Client) DescribeImageProcessingTemplates(request *DescribeImageProcessingTemplatesRequest) (response *DescribeImageProcessingTemplatesResponse, err error) {
+    if request == nil {
+        request = NewDescribeImageProcessingTemplatesRequest()
+    }
+    response = NewDescribeImageProcessingTemplatesResponse()
     err = c.Send(request, response)
     return
 }

@@ -156,6 +156,12 @@ func (r *AddInstancesResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type AdvanceSettings struct {
+
+	// 子任务单机并发数限制，默认值为2
+	SubTaskConcurrency *int64 `json:"SubTaskConcurrency,omitempty" name:"SubTaskConcurrency"`
+}
+
 type ApiDefinitionDescr struct {
 
 	// 对象名称
@@ -799,6 +805,43 @@ type ContainerGroupDetail struct {
 	// kubernetes滚动更新策略的MaxUnavailable参数
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MaxUnavailable *string `json:"MaxUnavailable,omitempty" name:"MaxUnavailable"`
+}
+
+type ContinueRunFailedTaskBatchRequest struct {
+	*tchttp.BaseRequest
+
+	// 批次ID。
+	BatchId *string `json:"BatchId,omitempty" name:"BatchId"`
+}
+
+func (r *ContinueRunFailedTaskBatchRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ContinueRunFailedTaskBatchRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ContinueRunFailedTaskBatchResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 成功或失败
+		Result *bool `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ContinueRunFailedTaskBatchResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ContinueRunFailedTaskBatchResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
 }
 
 type CosCredentials struct {
@@ -1543,6 +1586,85 @@ func (r *CreateServerlessGroupResponse) ToJsonString() string {
 }
 
 func (r *CreateServerlessGroupResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateTaskRequest struct {
+	*tchttp.BaseRequest
+
+	// 任务名称，任务长度64字符
+	TaskName *string `json:"TaskName,omitempty" name:"TaskName"`
+
+	// 任务内容，长度限制65536个字节
+	TaskContent *string `json:"TaskContent,omitempty" name:"TaskContent"`
+
+	// 执行类型，UNICAST/BROADCAST
+	ExecuteType *string `json:"ExecuteType,omitempty" name:"ExecuteType"`
+
+	// 任务类型
+	TaskType *string `json:"TaskType,omitempty" name:"TaskType"`
+
+	// 任务超时时间， 时间单位 ms
+	TimeOut *uint64 `json:"TimeOut,omitempty" name:"TimeOut"`
+
+	// 部署组ID
+	GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
+
+	// 触发规则
+	TaskRule *TaskRule `json:"TaskRule,omitempty" name:"TaskRule"`
+
+	// 重试次数，0 <= RetryCount<= 10
+	RetryCount *uint64 `json:"RetryCount,omitempty" name:"RetryCount"`
+
+	// 重试间隔， 0 <= RetryInterval <= 600000， 时间单位 ms
+	RetryInterval *uint64 `json:"RetryInterval,omitempty" name:"RetryInterval"`
+
+	// 分片数量
+	ShardCount *int64 `json:"ShardCount,omitempty" name:"ShardCount"`
+
+	// 分片参数
+	ShardArguments []*ShardArgument `json:"ShardArguments,omitempty" name:"ShardArguments" list`
+
+	// 判断任务成功的操作符
+	SuccessOperator *string `json:"SuccessOperator,omitempty" name:"SuccessOperator"`
+
+	// 判断任务成功率的阈值，如99.99
+	SuccessRatio *string `json:"SuccessRatio,omitempty" name:"SuccessRatio"`
+
+	// 高级设置
+	AdvanceSettings *AdvanceSettings `json:"AdvanceSettings,omitempty" name:"AdvanceSettings"`
+
+	// 任务参数，长度限制10000个字符
+	TaskArgument *string `json:"TaskArgument,omitempty" name:"TaskArgument"`
+}
+
+func (r *CreateTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateTaskRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 任务ID
+		Result *string `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateTaskResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -2503,6 +2625,41 @@ func (r *DescribeApplicationsResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeBasicResourceUsageRequest struct {
+	*tchttp.BaseRequest
+}
+
+func (r *DescribeBasicResourceUsageRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeBasicResourceUsageRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeBasicResourceUsageResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// TSF基本资源信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Result *OverviewBasicResourceUsage `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeBasicResourceUsageResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeBasicResourceUsageResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeClusterInstancesRequest struct {
 	*tchttp.BaseRequest
 
@@ -2946,6 +3103,43 @@ func (r *DescribeDownloadInfoResponse) ToJsonString() string {
 }
 
 func (r *DescribeDownloadInfoResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeFlowLastBatchStateRequest struct {
+	*tchttp.BaseRequest
+
+	// 工作流 ID
+	FlowId *string `json:"FlowId,omitempty" name:"FlowId"`
+}
+
+func (r *DescribeFlowLastBatchStateRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeFlowLastBatchStateRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeFlowLastBatchStateResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 工作流批次最新状态
+		Result *TaskFlowLastBatchState `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeFlowLastBatchStateResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeFlowLastBatchStateResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -4167,6 +4361,43 @@ func (r *DescribeSimpleNamespacesResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeTaskLastStatusRequest struct {
+	*tchttp.BaseRequest
+
+	// 任务ID
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+}
+
+func (r *DescribeTaskLastStatusRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeTaskLastStatusRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeTaskLastStatusResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 任务上一次执行状态
+		Result *TaskLastExecuteStatus `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeTaskLastStatusResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeTaskLastStatusResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeUploadInfoRequest struct {
 	*tchttp.BaseRequest
 
@@ -4222,6 +4453,154 @@ func (r *DescribeUploadInfoResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DisableTaskFlowRequest struct {
+	*tchttp.BaseRequest
+
+	// 工作流 ID
+	FlowId *string `json:"FlowId,omitempty" name:"FlowId"`
+}
+
+func (r *DisableTaskFlowRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DisableTaskFlowRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DisableTaskFlowResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// true成功，false: 失败
+		Result *bool `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DisableTaskFlowResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DisableTaskFlowResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DisableTaskRequest struct {
+	*tchttp.BaseRequest
+
+	// 任务ID
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+}
+
+func (r *DisableTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DisableTaskRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DisableTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 操作成功 or 失败
+		Result *bool `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DisableTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DisableTaskResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type EnableTaskFlowRequest struct {
+	*tchttp.BaseRequest
+
+	// 工作流 ID
+	FlowId *string `json:"FlowId,omitempty" name:"FlowId"`
+}
+
+func (r *EnableTaskFlowRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *EnableTaskFlowRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type EnableTaskFlowResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// true成功，false: 失败
+		Result *bool `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *EnableTaskFlowResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *EnableTaskFlowResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type EnableTaskRequest struct {
+	*tchttp.BaseRequest
+
+	// 启用任务
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+}
+
+func (r *EnableTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *EnableTaskRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type EnableTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 操作成功or失败
+		Result *bool `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *EnableTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *EnableTaskResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type Env struct {
 
 	// 环境变量名称
@@ -4229,6 +4608,80 @@ type Env struct {
 
 	// 服务端口
 	Value *string `json:"Value,omitempty" name:"Value"`
+}
+
+type ExecuteTaskFlowRequest struct {
+	*tchttp.BaseRequest
+
+	// 工作流 ID
+	FlowId *string `json:"FlowId,omitempty" name:"FlowId"`
+}
+
+func (r *ExecuteTaskFlowRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ExecuteTaskFlowRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ExecuteTaskFlowResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 工作流批次ID
+		Result *string `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ExecuteTaskFlowResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ExecuteTaskFlowResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ExecuteTaskRequest struct {
+	*tchttp.BaseRequest
+
+	// 任务 ID。
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+}
+
+func (r *ExecuteTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ExecuteTaskRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ExecuteTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 成功/失败
+		Result *string `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ExecuteTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ExecuteTaskResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
 }
 
 type ExpandGroupRequest struct {
@@ -5309,6 +5762,29 @@ type OperationInfoDetail struct {
 	Supported *bool `json:"Supported,omitempty" name:"Supported"`
 }
 
+type OverviewBasicResourceUsage struct {
+
+	// 应用总数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ApplicationCount *int64 `json:"ApplicationCount,omitempty" name:"ApplicationCount"`
+
+	// 命名空间总数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NamespaceCount *int64 `json:"NamespaceCount,omitempty" name:"NamespaceCount"`
+
+	// 部署组个数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GroupCount *int64 `json:"GroupCount,omitempty" name:"GroupCount"`
+
+	// 程序包存储空间用量，单位字节
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PackageSpaceUsed *int64 `json:"PackageSpaceUsed,omitempty" name:"PackageSpaceUsed"`
+
+	// 已注册实例数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ConsulInstanceCount *int64 `json:"ConsulInstanceCount,omitempty" name:"ConsulInstanceCount"`
+}
+
 type PkgBind struct {
 
 	// 应用id
@@ -5408,6 +5884,120 @@ type ProtocolPort struct {
 	// 主机端口
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	NodePort *int64 `json:"NodePort,omitempty" name:"NodePort"`
+}
+
+type RedoTaskBatchRequest struct {
+	*tchttp.BaseRequest
+
+	// 任务ID
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 批次ID
+	BatchId *string `json:"BatchId,omitempty" name:"BatchId"`
+}
+
+func (r *RedoTaskBatchRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *RedoTaskBatchRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type RedoTaskBatchResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 批次ID
+		Result *string `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *RedoTaskBatchResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *RedoTaskBatchResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type RedoTaskFlowBatchRequest struct {
+	*tchttp.BaseRequest
+
+	// 工作流批次 ID
+	FlowBatchId *string `json:"FlowBatchId,omitempty" name:"FlowBatchId"`
+}
+
+func (r *RedoTaskFlowBatchRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *RedoTaskFlowBatchRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type RedoTaskFlowBatchResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 工作流批次历史 ID
+		Result *string `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *RedoTaskFlowBatchResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *RedoTaskFlowBatchResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type RedoTaskRequest struct {
+	*tchttp.BaseRequest
+
+	// 任务ID
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+}
+
+func (r *RedoTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *RedoTaskRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type RedoTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 操作成功or失败
+		Result *string `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *RedoTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *RedoTaskResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
 }
 
 type ReleaseConfigRequest struct {
@@ -5806,6 +6396,16 @@ type ServiceSetting struct {
 	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
 }
 
+type ShardArgument struct {
+
+	// 分片参数 KEY，整形
+	ShardKey *uint64 `json:"ShardKey,omitempty" name:"ShardKey"`
+
+	// 分片参数 VALUE
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ShardValue *string `json:"ShardValue,omitempty" name:"ShardValue"`
+}
+
 type ShrinkGroupRequest struct {
 	*tchttp.BaseRequest
 
@@ -6140,11 +6740,175 @@ func (r *StopGroupResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type StopTaskBatchRequest struct {
+	*tchttp.BaseRequest
+
+	// 批次ID
+	BatchId *string `json:"BatchId,omitempty" name:"BatchId"`
+
+	// 参数ID
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+}
+
+func (r *StopTaskBatchRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *StopTaskBatchRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type StopTaskBatchResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 操作成功 or 失败
+		Result *bool `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *StopTaskBatchResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *StopTaskBatchResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type StopTaskExecuteRequest struct {
+	*tchttp.BaseRequest
+
+	// 任务执行ID
+	ExecuteId *string `json:"ExecuteId,omitempty" name:"ExecuteId"`
+
+	// 任务批次ID
+	BatchId *string `json:"BatchId,omitempty" name:"BatchId"`
+
+	// 任务ID
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+}
+
+func (r *StopTaskExecuteRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *StopTaskExecuteRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type StopTaskExecuteResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 操作成功 or 失败
+		Result *bool `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *StopTaskExecuteResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *StopTaskExecuteResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type TaskFlowLastBatchState struct {
+
+	// 批次ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FlowBatchId *string `json:"FlowBatchId,omitempty" name:"FlowBatchId"`
+
+	// 批次历史ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FlowBatchLogId *string `json:"FlowBatchLogId,omitempty" name:"FlowBatchLogId"`
+
+	// 状态,WAITING/SUCCESS/FAILED/RUNNING/TERMINATING
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	State *string `json:"State,omitempty" name:"State"`
+}
+
 type TaskId struct {
 
 	// 任务ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+}
+
+type TaskLastExecuteStatus struct {
+
+	// 批次ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BatchId *string `json:"BatchId,omitempty" name:"BatchId"`
+
+	// 运行状态，RUNNING/SUCCESS/FAIL/HALF/TERMINATED
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	State *string `json:"State,omitempty" name:"State"`
+
+	// 批次历史ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BatchLogId *string `json:"BatchLogId,omitempty" name:"BatchLogId"`
+}
+
+type TaskRule struct {
+
+	// 触发规则类型, Cron/Repeat
+	RuleType *string `json:"RuleType,omitempty" name:"RuleType"`
+
+	// Cron类型规则，cron表达式。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Expression *string `json:"Expression,omitempty" name:"Expression"`
+
+	// 时间间隔， 单位毫秒
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RepeatInterval *uint64 `json:"RepeatInterval,omitempty" name:"RepeatInterval"`
+}
+
+type TerminateTaskFlowBatchRequest struct {
+	*tchttp.BaseRequest
+
+	// 工作流批次 ID
+	FlowBatchId *string `json:"FlowBatchId,omitempty" name:"FlowBatchId"`
+}
+
+func (r *TerminateTaskFlowBatchRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *TerminateTaskFlowBatchRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type TerminateTaskFlowBatchResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 是否停止成功
+		Result *bool `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *TerminateTaskFlowBatchResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *TerminateTaskFlowBatchResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
 }
 
 type TsfApiListResponse struct {

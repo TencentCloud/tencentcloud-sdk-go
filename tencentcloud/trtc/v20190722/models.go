@@ -575,13 +575,13 @@ func (r *DismissRoomResponse) FromJsonString(s string) error {
 
 type EncodeParams struct {
 
-	// 混流-输出流音频采样率。取值为[48000, 44100, 32000,24000,, 16000, 12000, 8000]。
+	// 混流-输出流音频采样率。取值为[48000, 44100, 32000,24000,, 16000, 12000, 8000]，单位是Hz。
 	AudioSampleRate *uint64 `json:"AudioSampleRate,omitempty" name:"AudioSampleRate"`
 
 	// 混流-输出流音频码率。取值范围[8,500]，单位为Kbps。
 	AudioBitrate *uint64 `json:"AudioBitrate,omitempty" name:"AudioBitrate"`
 
-	// 混流-输出流音频声道数，取值范围[1,2]。
+	// 混流-输出流音频声道数，取值范围[1,2]，1表示混流输出音频为单声道，2表示混流输出音频为双声道。
 	AudioChannels *uint64 `json:"AudioChannels,omitempty" name:"AudioChannels"`
 
 	// 混流-输出流宽，音视频输出时必填。取值范围[0,1920]，单位为像素值。
@@ -593,7 +593,7 @@ type EncodeParams struct {
 	// 混流-输出流码率，音视频输出时必填。取值范围[1,10000]，单位为Kbps。
 	VideoBitrate *uint64 `json:"VideoBitrate,omitempty" name:"VideoBitrate"`
 
-	// 混流-输出流帧率，音视频输出时必填。取值范围[1,60]。
+	// 混流-输出流帧率，音视频输出时必填。取值范围[1,60]，表示混流的输出帧率可选范围为1到60fps。
 	VideoFramerate *uint64 `json:"VideoFramerate,omitempty" name:"VideoFramerate"`
 
 	// 混流-输出流gop，音视频输出时必填。取值范围[1,5]，单位为秒。

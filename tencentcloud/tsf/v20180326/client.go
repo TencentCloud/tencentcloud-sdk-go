@@ -93,6 +93,31 @@ func (c *Client) AddInstances(request *AddInstancesRequest) (response *AddInstan
     return
 }
 
+func NewContinueRunFailedTaskBatchRequest() (request *ContinueRunFailedTaskBatchRequest) {
+    request = &ContinueRunFailedTaskBatchRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tsf", APIVersion, "ContinueRunFailedTaskBatch")
+    return
+}
+
+func NewContinueRunFailedTaskBatchResponse() (response *ContinueRunFailedTaskBatchResponse) {
+    response = &ContinueRunFailedTaskBatchResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 对执行失败的任务批次执行续跑
+func (c *Client) ContinueRunFailedTaskBatch(request *ContinueRunFailedTaskBatchRequest) (response *ContinueRunFailedTaskBatchResponse, err error) {
+    if request == nil {
+        request = NewContinueRunFailedTaskBatchRequest()
+    }
+    response = NewContinueRunFailedTaskBatchResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateApplicationRequest() (request *CreateApplicationRequest) {
     request = &CreateApplicationRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -389,6 +414,31 @@ func (c *Client) CreateServerlessGroup(request *CreateServerlessGroupRequest) (r
         request = NewCreateServerlessGroupRequest()
     }
     response = NewCreateServerlessGroupResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateTaskRequest() (request *CreateTaskRequest) {
+    request = &CreateTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tsf", APIVersion, "CreateTask")
+    return
+}
+
+func NewCreateTaskResponse() (response *CreateTaskResponse) {
+    response = &CreateTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 创建任务
+func (c *Client) CreateTask(request *CreateTaskRequest) (response *CreateTaskResponse, err error) {
+    if request == nil {
+        request = NewCreateTaskRequest()
+    }
+    response = NewCreateTaskResponse()
     err = c.Send(request, response)
     return
 }
@@ -919,6 +969,31 @@ func (c *Client) DescribeApplications(request *DescribeApplicationsRequest) (res
     return
 }
 
+func NewDescribeBasicResourceUsageRequest() (request *DescribeBasicResourceUsageRequest) {
+    request = &DescribeBasicResourceUsageRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tsf", APIVersion, "DescribeBasicResourceUsage")
+    return
+}
+
+func NewDescribeBasicResourceUsageResponse() (response *DescribeBasicResourceUsageResponse) {
+    response = &DescribeBasicResourceUsageResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// TSF基本资源信息概览接口
+func (c *Client) DescribeBasicResourceUsage(request *DescribeBasicResourceUsageRequest) (response *DescribeBasicResourceUsageResponse, err error) {
+    if request == nil {
+        request = NewDescribeBasicResourceUsageRequest()
+    }
+    response = NewDescribeBasicResourceUsageResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeClusterInstancesRequest() (request *DescribeClusterInstancesRequest) {
     request = &DescribeClusterInstancesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1141,6 +1216,31 @@ func (c *Client) DescribeDownloadInfo(request *DescribeDownloadInfoRequest) (res
         request = NewDescribeDownloadInfoRequest()
     }
     response = NewDescribeDownloadInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeFlowLastBatchStateRequest() (request *DescribeFlowLastBatchStateRequest) {
+    request = &DescribeFlowLastBatchStateRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tsf", APIVersion, "DescribeFlowLastBatchState")
+    return
+}
+
+func NewDescribeFlowLastBatchStateResponse() (response *DescribeFlowLastBatchStateResponse) {
+    response = &DescribeFlowLastBatchStateResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询工作流最新一个批次的状态信息
+func (c *Client) DescribeFlowLastBatchState(request *DescribeFlowLastBatchStateRequest) (response *DescribeFlowLastBatchStateResponse, err error) {
+    if request == nil {
+        request = NewDescribeFlowLastBatchStateRequest()
+    }
+    response = NewDescribeFlowLastBatchStateResponse()
     err = c.Send(request, response)
     return
 }
@@ -1770,6 +1870,31 @@ func (c *Client) DescribeSimpleNamespaces(request *DescribeSimpleNamespacesReque
     return
 }
 
+func NewDescribeTaskLastStatusRequest() (request *DescribeTaskLastStatusRequest) {
+    request = &DescribeTaskLastStatusRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tsf", APIVersion, "DescribeTaskLastStatus")
+    return
+}
+
+func NewDescribeTaskLastStatusResponse() (response *DescribeTaskLastStatusResponse) {
+    response = &DescribeTaskLastStatusResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询任务最近一次执行状态
+func (c *Client) DescribeTaskLastStatus(request *DescribeTaskLastStatusRequest) (response *DescribeTaskLastStatusResponse, err error) {
+    if request == nil {
+        request = NewDescribeTaskLastStatusRequest()
+    }
+    response = NewDescribeTaskLastStatusResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeUploadInfoRequest() (request *DescribeUploadInfoRequest) {
     request = &DescribeUploadInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1792,6 +1917,156 @@ func (c *Client) DescribeUploadInfo(request *DescribeUploadInfoRequest) (respons
         request = NewDescribeUploadInfoRequest()
     }
     response = NewDescribeUploadInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDisableTaskRequest() (request *DisableTaskRequest) {
+    request = &DisableTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tsf", APIVersion, "DisableTask")
+    return
+}
+
+func NewDisableTaskResponse() (response *DisableTaskResponse) {
+    response = &DisableTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 停用任务
+func (c *Client) DisableTask(request *DisableTaskRequest) (response *DisableTaskResponse, err error) {
+    if request == nil {
+        request = NewDisableTaskRequest()
+    }
+    response = NewDisableTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDisableTaskFlowRequest() (request *DisableTaskFlowRequest) {
+    request = &DisableTaskFlowRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tsf", APIVersion, "DisableTaskFlow")
+    return
+}
+
+func NewDisableTaskFlowResponse() (response *DisableTaskFlowResponse) {
+    response = &DisableTaskFlowResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 停用工作流
+func (c *Client) DisableTaskFlow(request *DisableTaskFlowRequest) (response *DisableTaskFlowResponse, err error) {
+    if request == nil {
+        request = NewDisableTaskFlowRequest()
+    }
+    response = NewDisableTaskFlowResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewEnableTaskRequest() (request *EnableTaskRequest) {
+    request = &EnableTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tsf", APIVersion, "EnableTask")
+    return
+}
+
+func NewEnableTaskResponse() (response *EnableTaskResponse) {
+    response = &EnableTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 启用任务
+func (c *Client) EnableTask(request *EnableTaskRequest) (response *EnableTaskResponse, err error) {
+    if request == nil {
+        request = NewEnableTaskRequest()
+    }
+    response = NewEnableTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewEnableTaskFlowRequest() (request *EnableTaskFlowRequest) {
+    request = &EnableTaskFlowRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tsf", APIVersion, "EnableTaskFlow")
+    return
+}
+
+func NewEnableTaskFlowResponse() (response *EnableTaskFlowResponse) {
+    response = &EnableTaskFlowResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 启用工作流
+func (c *Client) EnableTaskFlow(request *EnableTaskFlowRequest) (response *EnableTaskFlowResponse, err error) {
+    if request == nil {
+        request = NewEnableTaskFlowRequest()
+    }
+    response = NewEnableTaskFlowResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewExecuteTaskRequest() (request *ExecuteTaskRequest) {
+    request = &ExecuteTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tsf", APIVersion, "ExecuteTask")
+    return
+}
+
+func NewExecuteTaskResponse() (response *ExecuteTaskResponse) {
+    response = &ExecuteTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 执行一次任务。
+func (c *Client) ExecuteTask(request *ExecuteTaskRequest) (response *ExecuteTaskResponse, err error) {
+    if request == nil {
+        request = NewExecuteTaskRequest()
+    }
+    response = NewExecuteTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewExecuteTaskFlowRequest() (request *ExecuteTaskFlowRequest) {
+    request = &ExecuteTaskFlowRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tsf", APIVersion, "ExecuteTaskFlow")
+    return
+}
+
+func NewExecuteTaskFlowResponse() (response *ExecuteTaskFlowResponse) {
+    response = &ExecuteTaskFlowResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 执行一次工作流
+func (c *Client) ExecuteTaskFlow(request *ExecuteTaskFlowRequest) (response *ExecuteTaskFlowResponse, err error) {
+    if request == nil {
+        request = NewExecuteTaskFlowRequest()
+    }
+    response = NewExecuteTaskFlowResponse()
     err = c.Send(request, response)
     return
 }
@@ -1968,6 +2243,81 @@ func (c *Client) ModifyUploadInfo(request *ModifyUploadInfoRequest) (response *M
         request = NewModifyUploadInfoRequest()
     }
     response = NewModifyUploadInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewRedoTaskRequest() (request *RedoTaskRequest) {
+    request = &RedoTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tsf", APIVersion, "RedoTask")
+    return
+}
+
+func NewRedoTaskResponse() (response *RedoTaskResponse) {
+    response = &RedoTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 重新执行任务
+func (c *Client) RedoTask(request *RedoTaskRequest) (response *RedoTaskResponse, err error) {
+    if request == nil {
+        request = NewRedoTaskRequest()
+    }
+    response = NewRedoTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewRedoTaskBatchRequest() (request *RedoTaskBatchRequest) {
+    request = &RedoTaskBatchRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tsf", APIVersion, "RedoTaskBatch")
+    return
+}
+
+func NewRedoTaskBatchResponse() (response *RedoTaskBatchResponse) {
+    response = &RedoTaskBatchResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 重新执行任务批次
+func (c *Client) RedoTaskBatch(request *RedoTaskBatchRequest) (response *RedoTaskBatchResponse, err error) {
+    if request == nil {
+        request = NewRedoTaskBatchRequest()
+    }
+    response = NewRedoTaskBatchResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewRedoTaskFlowBatchRequest() (request *RedoTaskFlowBatchRequest) {
+    request = &RedoTaskFlowBatchRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tsf", APIVersion, "RedoTaskFlowBatch")
+    return
+}
+
+func NewRedoTaskFlowBatchResponse() (response *RedoTaskFlowBatchResponse) {
+    response = &RedoTaskFlowBatchResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 重新执行工作流批次
+func (c *Client) RedoTaskFlowBatch(request *RedoTaskFlowBatchRequest) (response *RedoTaskFlowBatchResponse, err error) {
+    if request == nil {
+        request = NewRedoTaskFlowBatchRequest()
+    }
+    response = NewRedoTaskFlowBatchResponse()
     err = c.Send(request, response)
     return
 }
@@ -2268,6 +2618,81 @@ func (c *Client) StopGroup(request *StopGroupRequest) (response *StopGroupRespon
         request = NewStopGroupRequest()
     }
     response = NewStopGroupResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewStopTaskBatchRequest() (request *StopTaskBatchRequest) {
+    request = &StopTaskBatchRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tsf", APIVersion, "StopTaskBatch")
+    return
+}
+
+func NewStopTaskBatchResponse() (response *StopTaskBatchResponse) {
+    response = &StopTaskBatchResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 停止执行中的任务批次， 非运行中的任务不可调用。
+func (c *Client) StopTaskBatch(request *StopTaskBatchRequest) (response *StopTaskBatchResponse, err error) {
+    if request == nil {
+        request = NewStopTaskBatchRequest()
+    }
+    response = NewStopTaskBatchResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewStopTaskExecuteRequest() (request *StopTaskExecuteRequest) {
+    request = &StopTaskExecuteRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tsf", APIVersion, "StopTaskExecute")
+    return
+}
+
+func NewStopTaskExecuteResponse() (response *StopTaskExecuteResponse) {
+    response = &StopTaskExecuteResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 停止正在某个节点上执行的任务
+func (c *Client) StopTaskExecute(request *StopTaskExecuteRequest) (response *StopTaskExecuteResponse, err error) {
+    if request == nil {
+        request = NewStopTaskExecuteRequest()
+    }
+    response = NewStopTaskExecuteResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewTerminateTaskFlowBatchRequest() (request *TerminateTaskFlowBatchRequest) {
+    request = &TerminateTaskFlowBatchRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tsf", APIVersion, "TerminateTaskFlowBatch")
+    return
+}
+
+func NewTerminateTaskFlowBatchResponse() (response *TerminateTaskFlowBatchResponse) {
+    response = &TerminateTaskFlowBatchResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 停止一个工作流批次
+func (c *Client) TerminateTaskFlowBatch(request *TerminateTaskFlowBatchRequest) (response *TerminateTaskFlowBatchResponse, err error) {
+    if request == nil {
+        request = NewTerminateTaskFlowBatchRequest()
+    }
+    response = NewTerminateTaskFlowBatchResponse()
     err = c.Send(request, response)
     return
 }

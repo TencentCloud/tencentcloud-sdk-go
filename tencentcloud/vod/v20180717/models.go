@@ -2627,6 +2627,53 @@ func (r *CreateContentReviewTemplateResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type CreateImageProcessingTemplateRequest struct {
+	*tchttp.BaseRequest
+
+	// 图片处理操作数组，操作将以其在数组中的顺序执行。
+	// <li>长度限制：3。</li>
+	Operations []*ImageOperation `json:"Operations,omitempty" name:"Operations" list`
+
+	// 图片处理模板名称，长度限制：64 个字符。
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 模板描述信息，长度限制：256 个字符。
+	Comment *string `json:"Comment,omitempty" name:"Comment"`
+
+	// 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
+}
+
+func (r *CreateImageProcessingTemplateRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateImageProcessingTemplateRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateImageProcessingTemplateResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 图片处理模板唯一标识。
+		Definition *uint64 `json:"Definition,omitempty" name:"Definition"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateImageProcessingTemplateResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateImageProcessingTemplateResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type CreateImageSpriteTask2017 struct {
 
 	// 截图雪碧图任务 ID。
@@ -3549,6 +3596,43 @@ func (r *DeleteContentReviewTemplateResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DeleteImageProcessingTemplateRequest struct {
+	*tchttp.BaseRequest
+
+	// 图片处理模板唯一标识。
+	Definition *uint64 `json:"Definition,omitempty" name:"Definition"`
+
+	// 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
+}
+
+func (r *DeleteImageProcessingTemplateRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteImageProcessingTemplateRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteImageProcessingTemplateResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DeleteImageProcessingTemplateResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteImageProcessingTemplateResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DeleteImageSpriteTemplateRequest struct {
 	*tchttp.BaseRequest
 
@@ -4363,6 +4447,60 @@ func (r *DescribeEventsStateResponse) ToJsonString() string {
 }
 
 func (r *DescribeEventsStateResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeImageProcessingTemplatesRequest struct {
+	*tchttp.BaseRequest
+
+	// 图片处理模板标识列表。长度限制：100。
+	Definitions []*uint64 `json:"Definitions,omitempty" name:"Definitions" list`
+
+	// 模板类型过滤条件，可选值：
+	// <li>Preset：系统预置模板；</li>
+	// <li>Custom：用户自定义模板。</li>
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 分页偏移量，默认值：0。
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 返回记录条数，默认值：10，最大值：100。
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
+}
+
+func (r *DescribeImageProcessingTemplatesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeImageProcessingTemplatesRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeImageProcessingTemplatesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 符合过滤条件的记录总数。
+		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 图片处理模板详情列表。
+		ImageProcessingTemplateSet []*ImageProcessingTemplate `json:"ImageProcessingTemplateSet,omitempty" name:"ImageProcessingTemplateSet" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeImageProcessingTemplatesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeImageProcessingTemplatesResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -5848,6 +5986,81 @@ type HighlightsConfigureInfoForUpdate struct {
 	// <li>ON：开启智能精彩片段任务；</li>
 	// <li>OFF：关闭智能精彩片段任务。</li>
 	Switch *string `json:"Switch,omitempty" name:"Switch"`
+}
+
+type ImageCenterCut struct {
+
+	// 图片的裁剪模式，可选 Circle 和 Rectangle。
+	// <li>Circle ： 内切圆裁剪，输出图片半径为 Radius。</li>
+	// <li>Rectangle ： 矩形裁剪，输出图片宽为 Width ， 高为 Height。</li>
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 输出图片的宽度，单位为像素，当 Type 取值为 Rectangle 时有效。
+	Width *int64 `json:"Width,omitempty" name:"Width"`
+
+	// 输出图片的高度，单位为像素，当 Type 取值为 Rectangle 时有效。
+	Height *int64 `json:"Height,omitempty" name:"Height"`
+
+	// 输出图片的半径，单位为像素，当 Type 取值为 Circle 时有效。
+	Radius *int64 `json:"Radius,omitempty" name:"Radius"`
+}
+
+type ImageOperation struct {
+
+	// 图片处理类型。可选类型有：
+	// <li>Scale : 图片缩略处理。</li>
+	// <li>CenterCut : 图片裁剪处理。</li>
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 图片缩略处理，仅当 Type 为 Scale 时有效。
+	Scale *ImageScale `json:"Scale,omitempty" name:"Scale"`
+
+	// 图片裁剪处理，仅当 Type 为 CenterCut 时有效。
+	CenterCut *ImageCenterCut `json:"CenterCut,omitempty" name:"CenterCut"`
+}
+
+type ImageProcessingTemplate struct {
+
+	// 图片处理模板唯一标识。
+	Definition *uint64 `json:"Definition,omitempty" name:"Definition"`
+
+	// 模板类型，取值范围：
+	// <li>Preset：系统预置模板；</li>
+	// <li>Custom：用户自定义模板。</li>
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 图片处理模板名称。
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 模板描述信息。
+	Comment *string `json:"Comment,omitempty" name:"Comment"`
+
+	// 图片处理操作数组，操作将以数组顺序执行。
+	// <li>长度限制：3。</li>
+	Operations []*ImageOperation `json:"Operations,omitempty" name:"Operations" list`
+}
+
+type ImageScale struct {
+
+	// 图片缩放的操作类型。可选模式有：
+	// <li>WidthFirst : 指定图片的宽为 Width ，高度等比缩放。</li>
+	// <li>HeightFirst : 指定图片的高为 Height ，宽度等比缩放。</li>
+	// <li>LongEdgeFirst : 指定图片的长边为 LongEdge ，短边等比缩放。</li>
+	// <li>ShortEdgeFirst : 指定图片的短边为 ShortEdge ，长边等比缩放。</li>
+	// <li>Force : 忽略原图宽高比例，指定图片宽度为 Width，高度为 Height ，强行缩放图片，可能导致目标图片变形。</li>
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 输出图片的高度，单位为像素。当 Type 取值为 HeightFirst 或 Force 时此字段有效。
+	Height *uint64 `json:"Height,omitempty" name:"Height"`
+
+	// 输出图片的宽度，单位为像素。当 Type 取值为 WidthFirst 或 Force 时此字段有效。
+	Width *uint64 `json:"Width,omitempty" name:"Width"`
+
+	// 输出图片的长边长度，单位为像素。当 Type 取值为 LongEdgeFirst 时此字段有效。
+	LongEdge *uint64 `json:"LongEdge,omitempty" name:"LongEdge"`
+
+	// 输出图片的短边长度，单位为像素。当 Type 取值为 ShortEdgeFirst 时此字段有效。
+	ShortEdge *uint64 `json:"ShortEdge,omitempty" name:"ShortEdge"`
 }
 
 type ImageSpriteTaskInput struct {
