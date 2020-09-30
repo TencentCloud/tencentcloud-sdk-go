@@ -129,6 +129,31 @@ func (c *Client) CreateAsset(request *CreateAssetRequest) (response *CreateAsset
     return
 }
 
+func NewCreateFleetRequest() (request *CreateFleetRequest) {
+    request = &CreateFleetRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("gse", APIVersion, "CreateFleet")
+    return
+}
+
+func NewCreateFleetResponse() (response *CreateFleetResponse) {
+    response = &CreateFleetResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（CreateFleet）用于创建服务器舰队
+func (c *Client) CreateFleet(request *CreateFleetRequest) (response *CreateFleetResponse, err error) {
+    if request == nil {
+        request = NewCreateFleetRequest()
+    }
+    response = NewCreateFleetResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateGameServerSessionRequest() (request *CreateGameServerSessionRequest) {
     request = &CreateGameServerSessionRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -150,6 +175,31 @@ func (c *Client) CreateGameServerSession(request *CreateGameServerSessionRequest
         request = NewCreateGameServerSessionRequest()
     }
     response = NewCreateGameServerSessionResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateGameServerSessionQueueRequest() (request *CreateGameServerSessionQueueRequest) {
+    request = &CreateGameServerSessionQueueRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("gse", APIVersion, "CreateGameServerSessionQueue")
+    return
+}
+
+func NewCreateGameServerSessionQueueResponse() (response *CreateGameServerSessionQueueResponse) {
+    response = &CreateGameServerSessionQueueResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（CreateGameServerSessionQueue）用于创建游戏服务器会话队列
+func (c *Client) CreateGameServerSessionQueue(request *CreateGameServerSessionQueueRequest) (response *CreateGameServerSessionQueueResponse, err error) {
+    if request == nil {
+        request = NewCreateGameServerSessionQueueRequest()
+    }
+    response = NewCreateGameServerSessionQueueResponse()
     err = c.Send(request, response)
     return
 }
@@ -225,6 +275,31 @@ func (c *Client) DeleteFleet(request *DeleteFleetRequest) (response *DeleteFleet
         request = NewDeleteFleetRequest()
     }
     response = NewDeleteFleetResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteGameServerSessionQueueRequest() (request *DeleteGameServerSessionQueueRequest) {
+    request = &DeleteGameServerSessionQueueRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("gse", APIVersion, "DeleteGameServerSessionQueue")
+    return
+}
+
+func NewDeleteGameServerSessionQueueResponse() (response *DeleteGameServerSessionQueueResponse) {
+    response = &DeleteGameServerSessionQueueResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（DeleteGameServerSessionQueue）用于删除游戏服务器会话队列
+func (c *Client) DeleteGameServerSessionQueue(request *DeleteGameServerSessionQueueRequest) (response *DeleteGameServerSessionQueueResponse, err error) {
+    if request == nil {
+        request = NewDeleteGameServerSessionQueueRequest()
+    }
+    response = NewDeleteGameServerSessionQueueResponse()
     err = c.Send(request, response)
     return
 }
@@ -379,6 +454,31 @@ func (c *Client) DescribeFleetAttributes(request *DescribeFleetAttributesRequest
     return
 }
 
+func NewDescribeFleetCapacityRequest() (request *DescribeFleetCapacityRequest) {
+    request = &DescribeFleetCapacityRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("gse", APIVersion, "DescribeFleetCapacity")
+    return
+}
+
+func NewDescribeFleetCapacityResponse() (response *DescribeFleetCapacityResponse) {
+    response = &DescribeFleetCapacityResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 用于查询服务部署容量配置
+func (c *Client) DescribeFleetCapacity(request *DescribeFleetCapacityRequest) (response *DescribeFleetCapacityResponse, err error) {
+    if request == nil {
+        request = NewDescribeFleetCapacityRequest()
+    }
+    response = NewDescribeFleetCapacityResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeFleetEventsRequest() (request *DescribeFleetEventsRequest) {
     request = &DescribeFleetEventsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -425,6 +525,81 @@ func (c *Client) DescribeFleetPortSettings(request *DescribeFleetPortSettingsReq
         request = NewDescribeFleetPortSettingsRequest()
     }
     response = NewDescribeFleetPortSettingsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeFleetStatisticDetailsRequest() (request *DescribeFleetStatisticDetailsRequest) {
+    request = &DescribeFleetStatisticDetailsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("gse", APIVersion, "DescribeFleetStatisticDetails")
+    return
+}
+
+func NewDescribeFleetStatisticDetailsResponse() (response *DescribeFleetStatisticDetailsResponse) {
+    response = &DescribeFleetStatisticDetailsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（DescribeFleetStatisticDetails）用于查询服务部署统计详情
+func (c *Client) DescribeFleetStatisticDetails(request *DescribeFleetStatisticDetailsRequest) (response *DescribeFleetStatisticDetailsResponse, err error) {
+    if request == nil {
+        request = NewDescribeFleetStatisticDetailsRequest()
+    }
+    response = NewDescribeFleetStatisticDetailsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeFleetStatisticFlowsRequest() (request *DescribeFleetStatisticFlowsRequest) {
+    request = &DescribeFleetStatisticFlowsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("gse", APIVersion, "DescribeFleetStatisticFlows")
+    return
+}
+
+func NewDescribeFleetStatisticFlowsResponse() (response *DescribeFleetStatisticFlowsResponse) {
+    response = &DescribeFleetStatisticFlowsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（DescribeFleetStatisticFlows）用于查询服务部署统计用量
+func (c *Client) DescribeFleetStatisticFlows(request *DescribeFleetStatisticFlowsRequest) (response *DescribeFleetStatisticFlowsResponse, err error) {
+    if request == nil {
+        request = NewDescribeFleetStatisticFlowsRequest()
+    }
+    response = NewDescribeFleetStatisticFlowsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeFleetStatisticSummaryRequest() (request *DescribeFleetStatisticSummaryRequest) {
+    request = &DescribeFleetStatisticSummaryRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("gse", APIVersion, "DescribeFleetStatisticSummary")
+    return
+}
+
+func NewDescribeFleetStatisticSummaryResponse() (response *DescribeFleetStatisticSummaryResponse) {
+    response = &DescribeFleetStatisticSummaryResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（DescribeFleetStatisticSummary）用于查询服务部署统计汇总信息
+func (c *Client) DescribeFleetStatisticSummary(request *DescribeFleetStatisticSummaryRequest) (response *DescribeFleetStatisticSummaryResponse, err error) {
+    if request == nil {
+        request = NewDescribeFleetStatisticSummaryRequest()
+    }
+    response = NewDescribeFleetStatisticSummaryResponse()
     err = c.Send(request, response)
     return
 }
@@ -554,6 +729,31 @@ func (c *Client) DescribeGameServerSessions(request *DescribeGameServerSessionsR
     return
 }
 
+func NewDescribeInstanceLimitRequest() (request *DescribeInstanceLimitRequest) {
+    request = &DescribeInstanceLimitRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("gse", APIVersion, "DescribeInstanceLimit")
+    return
+}
+
+func NewDescribeInstanceLimitResponse() (response *DescribeInstanceLimitResponse) {
+    response = &DescribeInstanceLimitResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询用户实例数限额
+func (c *Client) DescribeInstanceLimit(request *DescribeInstanceLimitRequest) (response *DescribeInstanceLimitResponse, err error) {
+    if request == nil {
+        request = NewDescribeInstanceLimitRequest()
+    }
+    response = NewDescribeInstanceLimitResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeInstanceTypesRequest() (request *DescribeInstanceTypesRequest) {
     request = &DescribeInstanceTypesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -600,6 +800,31 @@ func (c *Client) DescribeInstances(request *DescribeInstancesRequest) (response 
         request = NewDescribeInstancesRequest()
     }
     response = NewDescribeInstancesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeInstancesExtendRequest() (request *DescribeInstancesExtendRequest) {
+    request = &DescribeInstancesExtendRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("gse", APIVersion, "DescribeInstancesExtend")
+    return
+}
+
+func NewDescribeInstancesExtendResponse() (response *DescribeInstancesExtendResponse) {
+    response = &DescribeInstancesExtendResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（DescribeInstances）用于查询实例扩展信息列表
+func (c *Client) DescribeInstancesExtend(request *DescribeInstancesExtendRequest) (response *DescribeInstancesExtendResponse, err error) {
+    if request == nil {
+        request = NewDescribeInstancesExtendRequest()
+    }
+    response = NewDescribeInstancesExtendResponse()
     err = c.Send(request, response)
     return
 }
@@ -880,6 +1105,31 @@ func (c *Client) JoinGameServerSession(request *JoinGameServerSessionRequest) (r
     return
 }
 
+func NewJoinGameServerSessionBatchRequest() (request *JoinGameServerSessionBatchRequest) {
+    request = &JoinGameServerSessionBatchRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("gse", APIVersion, "JoinGameServerSessionBatch")
+    return
+}
+
+func NewJoinGameServerSessionBatchResponse() (response *JoinGameServerSessionBatchResponse) {
+    response = &JoinGameServerSessionBatchResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（JoinGameServerSessionBatch）用于加入游戏服务器会话
+func (c *Client) JoinGameServerSessionBatch(request *JoinGameServerSessionBatchRequest) (response *JoinGameServerSessionBatchResponse, err error) {
+    if request == nil {
+        request = NewJoinGameServerSessionBatchRequest()
+    }
+    response = NewJoinGameServerSessionBatchResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewListAliasesRequest() (request *ListAliasesRequest) {
     request = &ListAliasesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1080,31 +1330,6 @@ func (c *Client) StartGameServerSessionPlacement(request *StartGameServerSession
     return
 }
 
-func NewStartMatchPlacementRequest() (request *StartMatchPlacementRequest) {
-    request = &StartMatchPlacementRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    request.Init().WithApiInfo("gse", APIVersion, "StartMatchPlacement")
-    return
-}
-
-func NewStartMatchPlacementResponse() (response *StartMatchPlacementResponse) {
-    response = &StartMatchPlacementResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    }
-    return
-}
-
-// 本接口（StartMatchPlacement）用于开始匹配放置游戏服务器会话
-func (c *Client) StartMatchPlacement(request *StartMatchPlacementRequest) (response *StartMatchPlacementResponse, err error) {
-    if request == nil {
-        request = NewStartMatchPlacementRequest()
-    }
-    response = NewStartMatchPlacementResponse()
-    err = c.Send(request, response)
-    return
-}
-
 func NewStopFleetActionsRequest() (request *StopFleetActionsRequest) {
     request = &StopFleetActionsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1230,6 +1455,31 @@ func (c *Client) UpdateFleetAttributes(request *UpdateFleetAttributesRequest) (r
     return
 }
 
+func NewUpdateFleetCapacityRequest() (request *UpdateFleetCapacityRequest) {
+    request = &UpdateFleetCapacityRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("gse", APIVersion, "UpdateFleetCapacity")
+    return
+}
+
+func NewUpdateFleetCapacityResponse() (response *UpdateFleetCapacityResponse) {
+    response = &UpdateFleetCapacityResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 用于更新服务部署容量配置
+func (c *Client) UpdateFleetCapacity(request *UpdateFleetCapacityRequest) (response *UpdateFleetCapacityResponse, err error) {
+    if request == nil {
+        request = NewUpdateFleetCapacityRequest()
+    }
+    response = NewUpdateFleetCapacityResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewUpdateFleetPortSettingsRequest() (request *UpdateFleetPortSettingsRequest) {
     request = &UpdateFleetPortSettingsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1276,6 +1526,31 @@ func (c *Client) UpdateGameServerSession(request *UpdateGameServerSessionRequest
         request = NewUpdateGameServerSessionRequest()
     }
     response = NewUpdateGameServerSessionResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewUpdateGameServerSessionQueueRequest() (request *UpdateGameServerSessionQueueRequest) {
+    request = &UpdateGameServerSessionQueueRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("gse", APIVersion, "UpdateGameServerSessionQueue")
+    return
+}
+
+func NewUpdateGameServerSessionQueueResponse() (response *UpdateGameServerSessionQueueResponse) {
+    response = &UpdateGameServerSessionQueueResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（UpdateGameServerSessionQueue）用于修改游戏服务器会话队列
+func (c *Client) UpdateGameServerSessionQueue(request *UpdateGameServerSessionQueueRequest) (response *UpdateGameServerSessionQueueResponse, err error) {
+    if request == nil {
+        request = NewUpdateGameServerSessionQueueRequest()
+    }
+    response = NewUpdateGameServerSessionQueueResponse()
     err = c.Send(request, response)
     return
 }

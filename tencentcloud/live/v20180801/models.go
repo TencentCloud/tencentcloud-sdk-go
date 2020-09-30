@@ -2993,7 +2993,7 @@ func (r *DescribeLiveRecordRulesResponse) FromJsonString(s string) error {
 type DescribeLiveRecordTemplateRequest struct {
 	*tchttp.BaseRequest
 
-	// DescribeRecordTemplates接口获取到的模板 ID。
+	// [DescribeLiveRecordTemplates](/document/product/267/32609)接口获取到的模板 ID。
 	TemplateId *int64 `json:"TemplateId,omitempty" name:"TemplateId"`
 }
 

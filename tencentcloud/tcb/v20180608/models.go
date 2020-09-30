@@ -1363,6 +1363,20 @@ type EnvInfo struct {
 	// 环境渠道
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	EnvChannel *string `json:"EnvChannel,omitempty" name:"EnvChannel"`
+
+	// 支付方式。包含以下取值：
+	// <li> prepayment：预付费</li>
+	// <li> postpaid：后付费</li>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PayMode *string `json:"PayMode,omitempty" name:"PayMode"`
+
+	// 是否为默认环境
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsDefault *bool `json:"IsDefault,omitempty" name:"IsDefault"`
+
+	// 环境所属地域
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Region *string `json:"Region,omitempty" name:"Region"`
 }
 
 type FunctionInfo struct {

@@ -239,6 +239,123 @@ func (r *CreateAssetResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type CreateFleetRequest struct {
+	*tchttp.BaseRequest
+
+	// 生成包 Id
+	AssetId *string `json:"AssetId,omitempty" name:"AssetId"`
+
+	// 描述，最小长度0，最大长度100
+	Description *string `json:"Description,omitempty" name:"Description"`
+
+	// 网络配置
+	InboundPermissions []*InboundPermission `json:"InboundPermissions,omitempty" name:"InboundPermissions" list`
+
+	// 服务器类型，例如S5.LARGE8
+	InstanceType *string `json:"InstanceType,omitempty" name:"InstanceType"`
+
+	// 服务器舰队类型，目前只支持ON_DEMAND类型
+	FleetType *string `json:"FleetType,omitempty" name:"FleetType"`
+
+	// 服务器舰队名称，最小长度1，最大长度50
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 保护策略：不保护NoProtection、完全保护FullProtection、时限保护TimeLimitProtection
+	NewGameServerSessionProtectionPolicy *string `json:"NewGameServerSessionProtectionPolicy,omitempty" name:"NewGameServerSessionProtectionPolicy"`
+
+	// VPC 网络 Id，弃用，对等链接已不再使用
+	PeerVpcId *string `json:"PeerVpcId,omitempty" name:"PeerVpcId"`
+
+	// 资源创建限制策略
+	ResourceCreationLimitPolicy *ResourceCreationLimitPolicy `json:"ResourceCreationLimitPolicy,omitempty" name:"ResourceCreationLimitPolicy"`
+
+	// 进程配置
+	RuntimeConfiguration *RuntimeConfiguration `json:"RuntimeConfiguration,omitempty" name:"RuntimeConfiguration"`
+
+	// VPC 子网，弃用，对等链接已不再使用
+	SubNetId *string `json:"SubNetId,omitempty" name:"SubNetId"`
+
+	// 时限保护超时时间，默认60分钟，最小值5，最大值1440
+	GameServerSessionProtectionTimeLimit *int64 `json:"GameServerSessionProtectionTimeLimit,omitempty" name:"GameServerSessionProtectionTimeLimit"`
+}
+
+func (r *CreateFleetRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateFleetRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateFleetResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 服务器舰队属性
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		FleetAttributes *FleetAttributes `json:"FleetAttributes,omitempty" name:"FleetAttributes"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateFleetResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateFleetResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateGameServerSessionQueueRequest struct {
+	*tchttp.BaseRequest
+
+	// 游戏服务器会话队列名称，长度1~128
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 目的服务部署（可为别名）列表
+	Destinations []*GameServerSessionQueueDestination `json:"Destinations,omitempty" name:"Destinations" list`
+
+	// 延迟策略集合
+	PlayerLatencyPolicies []*PlayerLatencyPolicy `json:"PlayerLatencyPolicies,omitempty" name:"PlayerLatencyPolicies" list`
+
+	// 超时时间（单位秒，默认值为600秒）
+	TimeoutInSeconds *uint64 `json:"TimeoutInSeconds,omitempty" name:"TimeoutInSeconds"`
+}
+
+func (r *CreateGameServerSessionQueueRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateGameServerSessionQueueRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateGameServerSessionQueueResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 游戏服务器会话队列
+		GameServerSessionQueue *GameServerSessionQueue `json:"GameServerSessionQueue,omitempty" name:"GameServerSessionQueue"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateGameServerSessionQueueResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateGameServerSessionQueueResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type CreateGameServerSessionRequest struct {
 	*tchttp.BaseRequest
 
@@ -409,6 +526,40 @@ func (r *DeleteFleetResponse) ToJsonString() string {
 }
 
 func (r *DeleteFleetResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteGameServerSessionQueueRequest struct {
+	*tchttp.BaseRequest
+
+	// 游戏服务器会话队列名字，长度1~128
+	Name *string `json:"Name,omitempty" name:"Name"`
+}
+
+func (r *DeleteGameServerSessionQueueRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteGameServerSessionQueueRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteGameServerSessionQueueResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DeleteGameServerSessionQueueResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteGameServerSessionQueueResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -661,6 +812,54 @@ func (r *DescribeFleetAttributesResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeFleetCapacityRequest struct {
+	*tchttp.BaseRequest
+
+	// 服务部署 Id列表
+	FleetIds []*string `json:"FleetIds,omitempty" name:"FleetIds" list`
+
+	// 结果返回最大数量
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 返回结果偏移
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+}
+
+func (r *DescribeFleetCapacityRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeFleetCapacityRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeFleetCapacityResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 服务部署容量配置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		FleetCapacity []*FleetCapacity `json:"FleetCapacity,omitempty" name:"FleetCapacity" list`
+
+		// 结果返回最大数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeFleetCapacityResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeFleetCapacityResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeFleetEventsRequest struct {
 	*tchttp.BaseRequest
 
@@ -742,6 +941,174 @@ func (r *DescribeFleetPortSettingsResponse) ToJsonString() string {
 }
 
 func (r *DescribeFleetPortSettingsResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeFleetStatisticDetailsRequest struct {
+	*tchttp.BaseRequest
+
+	// 服务部署ID
+	FleetId *string `json:"FleetId,omitempty" name:"FleetId"`
+
+	// 查询开始时间
+	BeginTime *string `json:"BeginTime,omitempty" name:"BeginTime"`
+
+	// 查询结束时间
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 结果返回最大数量，最小值0，最大值100
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 返回结果偏移，最小值0
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+}
+
+func (r *DescribeFleetStatisticDetailsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeFleetStatisticDetailsRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeFleetStatisticDetailsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 服务部署统计详情列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		DetailList []*FleetStatisticDetail `json:"DetailList,omitempty" name:"DetailList" list`
+
+		// 记录总数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 统计时间类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		TimeType *string `json:"TimeType,omitempty" name:"TimeType"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeFleetStatisticDetailsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeFleetStatisticDetailsResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeFleetStatisticFlowsRequest struct {
+	*tchttp.BaseRequest
+
+	// 服务部署ID
+	FleetId *string `json:"FleetId,omitempty" name:"FleetId"`
+
+	// 查询开始时间
+	BeginTime *string `json:"BeginTime,omitempty" name:"BeginTime"`
+
+	// 查询结束时间
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 结果返回最大数量，最小值0，最大值100
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 返回结果偏移，最小值0
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+}
+
+func (r *DescribeFleetStatisticFlowsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeFleetStatisticFlowsRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeFleetStatisticFlowsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 流量统计列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		UsedFlowList []*FleetStatisticFlows `json:"UsedFlowList,omitempty" name:"UsedFlowList" list`
+
+		// 时长统计列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		UsedTimeList []*FleetStatisticTimes `json:"UsedTimeList,omitempty" name:"UsedTimeList" list`
+
+		// 记录总数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 统计时间类型，取值：小时和天
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		TimeType *string `json:"TimeType,omitempty" name:"TimeType"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeFleetStatisticFlowsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeFleetStatisticFlowsResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeFleetStatisticSummaryRequest struct {
+	*tchttp.BaseRequest
+
+	// 服务部署 Id
+	FleetId *string `json:"FleetId,omitempty" name:"FleetId"`
+
+	// 查询开始时间
+	BeginTime *string `json:"BeginTime,omitempty" name:"BeginTime"`
+
+	// 查询结束时间
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+}
+
+func (r *DescribeFleetStatisticSummaryRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeFleetStatisticSummaryRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeFleetStatisticSummaryResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 总时长，单位秒
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		TotalUsedTimeSeconds *string `json:"TotalUsedTimeSeconds,omitempty" name:"TotalUsedTimeSeconds"`
+
+		// 总流量，单位MB
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		TotalUsedFlowMegaBytes *float64 `json:"TotalUsedFlowMegaBytes,omitempty" name:"TotalUsedFlowMegaBytes"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeFleetStatisticSummaryResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeFleetStatisticSummaryResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -984,6 +1351,43 @@ func (r *DescribeGameServerSessionsResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeInstanceLimitRequest struct {
+	*tchttp.BaseRequest
+}
+
+func (r *DescribeInstanceLimitRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeInstanceLimitRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeInstanceLimitResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 限额
+		Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+		// 详细信息
+		ExtraInfos []*ExtraInfos `json:"ExtraInfos,omitempty" name:"ExtraInfos" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeInstanceLimitResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeInstanceLimitResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeInstanceTypesRequest struct {
 	*tchttp.BaseRequest
 }
@@ -1015,6 +1419,54 @@ func (r *DescribeInstanceTypesResponse) ToJsonString() string {
 }
 
 func (r *DescribeInstanceTypesResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeInstancesExtendRequest struct {
+	*tchttp.BaseRequest
+
+	// 服务部署ID
+	FleetId *string `json:"FleetId,omitempty" name:"FleetId"`
+
+	// 返回结果偏移，最小值0
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 结果返回最大数量，最小值0，最大值100
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+func (r *DescribeInstancesExtendRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeInstancesExtendRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeInstancesExtendResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 实例信息列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Instances []*InstanceExtend `json:"Instances,omitempty" name:"Instances" list`
+
+		// 梳理信息总数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeInstancesExtendResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeInstancesExtendResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -1379,6 +1831,17 @@ type Event struct {
 	ResourceId *string `json:"ResourceId,omitempty" name:"ResourceId"`
 }
 
+type ExtraInfos struct {
+
+	// 实例类型，例如S5.LARGE8
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceType *string `json:"InstanceType,omitempty" name:"InstanceType"`
+
+	// 实例限额数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalInstances *uint64 `json:"TotalInstances,omitempty" name:"TotalInstances"`
+}
+
 type FleetAttributes struct {
 
 	// 生成包 Id
@@ -1434,13 +1897,85 @@ type FleetAttributes struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TerminationTime *string `json:"TerminationTime,omitempty" name:"TerminationTime"`
 
-	// 时限保护时间
+	// 时限保护超时时间，默认60分钟，最小值5，最大值1440
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	GameServerSessionProtectionTimeLimit *uint64 `json:"GameServerSessionProtectionTimeLimit,omitempty" name:"GameServerSessionProtectionTimeLimit"`
 
-	// 计费状态
+	// 计费状态：未开通、已开通、异常、欠费隔离、销毁、解冻
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	BillingStatus *string `json:"BillingStatus,omitempty" name:"BillingStatus"`
+}
+
+type FleetCapacity struct {
+
+	// 服务部署 Id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FleetId *string `json:"FleetId,omitempty" name:"FleetId"`
+
+	// 服务器类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceType *string `json:"InstanceType,omitempty" name:"InstanceType"`
+
+	// 服务器实例统计数据
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceCounts *InstanceCounts `json:"InstanceCounts,omitempty" name:"InstanceCounts"`
+
+	// 服务器伸缩容间隔
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ScalingInterval *uint64 `json:"ScalingInterval,omitempty" name:"ScalingInterval"`
+}
+
+type FleetStatisticDetail struct {
+
+	// 舰队ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FleetId *string `json:"FleetId,omitempty" name:"FleetId"`
+
+	// 实例ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 实例IP
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceIP *string `json:"InstanceIP,omitempty" name:"InstanceIP"`
+
+	// 开始时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BeginTime *string `json:"BeginTime,omitempty" name:"BeginTime"`
+
+	// 结束时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 总时长，单位秒
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalUsedTimeSeconds *string `json:"TotalUsedTimeSeconds,omitempty" name:"TotalUsedTimeSeconds"`
+
+	// 总流量，单位MB
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalUsedFlowMegaBytes *float64 `json:"TotalUsedFlowMegaBytes,omitempty" name:"TotalUsedFlowMegaBytes"`
+}
+
+type FleetStatisticFlows struct {
+
+	// 总流量，单位MB
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalUsedFlowMegaBytes *float64 `json:"TotalUsedFlowMegaBytes,omitempty" name:"TotalUsedFlowMegaBytes"`
+
+	// 统计开始时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BeginTime *string `json:"BeginTime,omitempty" name:"BeginTime"`
+}
+
+type FleetStatisticTimes struct {
+
+	// 统计开始时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BeginTime *string `json:"BeginTime,omitempty" name:"BeginTime"`
+
+	// 统计总时长，单位秒
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalUsedTimeSeconds *string `json:"TotalUsedTimeSeconds,omitempty" name:"TotalUsedTimeSeconds"`
 }
 
 type FleetUtilization struct {
@@ -1924,6 +2459,72 @@ type InstanceAccess struct {
 	OperatingSystem *string `json:"OperatingSystem,omitempty" name:"OperatingSystem"`
 }
 
+type InstanceCounts struct {
+
+	// 活跃的服务器实例数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Active *uint64 `json:"Active,omitempty" name:"Active"`
+
+	// 期望的服务器实例数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Desired *uint64 `json:"Desired,omitempty" name:"Desired"`
+
+	// 空闲的服务器实例数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Idle *uint64 `json:"Idle,omitempty" name:"Idle"`
+
+	// 服务器实例数最大限制
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MaxiNum *uint64 `json:"MaxiNum,omitempty" name:"MaxiNum"`
+
+	// 服务器实例数最小限制
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MiniNum *uint64 `json:"MiniNum,omitempty" name:"MiniNum"`
+
+	// 已开始创建，但未激活的服务器实例数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Pending *uint64 `json:"Pending,omitempty" name:"Pending"`
+
+	// 结束中的服务器实例数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Terminating *uint64 `json:"Terminating,omitempty" name:"Terminating"`
+}
+
+type InstanceExtend struct {
+
+	// 实例信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Instance *Instance `json:"Instance,omitempty" name:"Instance"`
+
+	// 实例状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	State *string `json:"State,omitempty" name:"State"`
+
+	// 健康进程数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HealthyProcessCnt *int64 `json:"HealthyProcessCnt,omitempty" name:"HealthyProcessCnt"`
+
+	// 活跃进程数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ActiveProcessCnt *int64 `json:"ActiveProcessCnt,omitempty" name:"ActiveProcessCnt"`
+
+	// 当前游戏会话总数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GameSessionCnt *int64 `json:"GameSessionCnt,omitempty" name:"GameSessionCnt"`
+
+	// 最大游戏会话数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MaxGameSessionCnt *int64 `json:"MaxGameSessionCnt,omitempty" name:"MaxGameSessionCnt"`
+
+	// 当前玩家会话数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PlayerSessionCnt *int64 `json:"PlayerSessionCnt,omitempty" name:"PlayerSessionCnt"`
+
+	// 最大玩家会话数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MaxPlayerSessionCnt *int64 `json:"MaxPlayerSessionCnt,omitempty" name:"MaxPlayerSessionCnt"`
+}
+
 type InstanceTypeInfo struct {
 
 	// 类型名，例如“标准型SA1”
@@ -1940,6 +2541,50 @@ type InstanceTypeInfo struct {
 
 	// 网络收到包,例如25万PPS就是25
 	NetworkCard *uint64 `json:"NetworkCard,omitempty" name:"NetworkCard"`
+}
+
+type JoinGameServerSessionBatchRequest struct {
+	*tchttp.BaseRequest
+
+	// 游戏服务器会话ID，最小长度1个ASCII字符，最大长度不超过256个ASCII字符
+	GameServerSessionId *string `json:"GameServerSessionId,omitempty" name:"GameServerSessionId"`
+
+	// 玩家ID列表，最小1组，最大25组
+	PlayerIds []*string `json:"PlayerIds,omitempty" name:"PlayerIds" list`
+
+	// 玩家自定义数据
+	PlayerDataMap *PlayerDataMap `json:"PlayerDataMap,omitempty" name:"PlayerDataMap"`
+}
+
+func (r *JoinGameServerSessionBatchRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *JoinGameServerSessionBatchRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type JoinGameServerSessionBatchResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 玩家会话列表，最大25组
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		PlayerSessions []*PlayerSession `json:"PlayerSessions,omitempty" name:"PlayerSessions" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *JoinGameServerSessionBatchResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *JoinGameServerSessionBatchResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
 }
 
 type JoinGameServerSessionRequest struct {
@@ -2096,6 +2741,15 @@ type PlacedPlayerSession struct {
 
 	// 玩家会话Id
 	PlayerSessionId *string `json:"PlayerSessionId,omitempty" name:"PlayerSessionId"`
+}
+
+type PlayerDataMap struct {
+
+	// 玩家自定义数据键，最小长度不小于1个ASCII字符，最大长度不超过1024个ASCII字符
+	Key *string `json:"Key,omitempty" name:"Key"`
+
+	// 玩家自定义数据值，最小长度不小于1个ASCII字符，最大长度不超过2048个ASCII字符
+	Value *string `json:"Value,omitempty" name:"Value"`
 }
 
 type PlayerLatency struct {
@@ -2591,67 +3245,6 @@ func (r *StartGameServerSessionPlacementResponse) FromJsonString(s string) error
     return json.Unmarshal([]byte(s), &r)
 }
 
-type StartMatchPlacementRequest struct {
-	*tchttp.BaseRequest
-
-	// 开始部署游戏服务器会话的唯一标识符
-	PlacementId *string `json:"PlacementId,omitempty" name:"PlacementId"`
-
-	// 游戏服务器会话队列名称
-	GameServerSessionQueueName *string `json:"GameServerSessionQueueName,omitempty" name:"GameServerSessionQueueName"`
-
-	// 游戏服务器允许同时连接到游戏会话的最大玩家数量
-	MaximumPlayerSessionCount *uint64 `json:"MaximumPlayerSessionCount,omitempty" name:"MaximumPlayerSessionCount"`
-
-	// 玩家游戏会话信息
-	DesiredPlayerSessions []*DesiredPlayerSession `json:"DesiredPlayerSessions,omitempty" name:"DesiredPlayerSessions" list`
-
-	// 玩家游戏会话属性
-	GameProperties []*GameProperty `json:"GameProperties,omitempty" name:"GameProperties" list`
-
-	// 游戏服务器会话数据
-	GameServerSessionData *string `json:"GameServerSessionData,omitempty" name:"GameServerSessionData"`
-
-	// 游戏服务器会话名称
-	GameServerSessionName *string `json:"GameServerSessionName,omitempty" name:"GameServerSessionName"`
-
-	// 玩家延迟
-	PlayerLatencies []*PlayerLatency `json:"PlayerLatencies,omitempty" name:"PlayerLatencies" list`
-
-	// 游戏匹配数据
-	MatchmakerData *string `json:"MatchmakerData,omitempty" name:"MatchmakerData"`
-}
-
-func (r *StartMatchPlacementRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-func (r *StartMatchPlacementRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
-}
-
-type StartMatchPlacementResponse struct {
-	*tchttp.BaseResponse
-	Response *struct {
-
-		// 游戏服务器会话放置
-		GameServerSessionPlacement *GameServerSessionPlacement `json:"GameServerSessionPlacement,omitempty" name:"GameServerSessionPlacement"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
-}
-
-func (r *StartMatchPlacementResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-func (r *StartMatchPlacementResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
-}
-
 type StopFleetActionsRequest struct {
 	*tchttp.BaseRequest
 
@@ -2877,6 +3470,56 @@ func (r *UpdateFleetAttributesResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type UpdateFleetCapacityRequest struct {
+	*tchttp.BaseRequest
+
+	// 服务部署ID
+	FleetId *string `json:"FleetId,omitempty" name:"FleetId"`
+
+	// 期望的服务器实例数
+	DesiredInstances *uint64 `json:"DesiredInstances,omitempty" name:"DesiredInstances"`
+
+	// 服务器实例数最小限制
+	MinSize *uint64 `json:"MinSize,omitempty" name:"MinSize"`
+
+	// 服务器实例数最大限制
+	MaxSize *uint64 `json:"MaxSize,omitempty" name:"MaxSize"`
+
+	// 服务器伸缩容间隔
+	ScalingInterval *uint64 `json:"ScalingInterval,omitempty" name:"ScalingInterval"`
+}
+
+func (r *UpdateFleetCapacityRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *UpdateFleetCapacityRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type UpdateFleetCapacityResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 服务部署ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		FleetId *string `json:"FleetId,omitempty" name:"FleetId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *UpdateFleetCapacityResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *UpdateFleetCapacityResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type UpdateFleetPortSettingsRequest struct {
 	*tchttp.BaseRequest
 
@@ -2918,6 +3561,52 @@ func (r *UpdateFleetPortSettingsResponse) ToJsonString() string {
 }
 
 func (r *UpdateFleetPortSettingsResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type UpdateGameServerSessionQueueRequest struct {
+	*tchttp.BaseRequest
+
+	// 游戏服务器会话队列名字，长度1~128
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 目的服务部署（可为别名）列表
+	Destinations []*GameServerSessionQueueDestination `json:"Destinations,omitempty" name:"Destinations" list`
+
+	// 延迟策略集合
+	PlayerLatencyPolicies []*PlayerLatencyPolicy `json:"PlayerLatencyPolicies,omitempty" name:"PlayerLatencyPolicies" list`
+
+	// 超时时间
+	TimeoutInSeconds *uint64 `json:"TimeoutInSeconds,omitempty" name:"TimeoutInSeconds"`
+}
+
+func (r *UpdateGameServerSessionQueueRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *UpdateGameServerSessionQueueRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type UpdateGameServerSessionQueueResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 部署服务组对象
+		GameServerSessionQueue *GameServerSessionQueue `json:"GameServerSessionQueue,omitempty" name:"GameServerSessionQueue"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *UpdateGameServerSessionQueueResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *UpdateGameServerSessionQueueResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 

@@ -1605,6 +1605,12 @@ type DescribeIpStatusRequest struct {
 	// last：表示回源层节点
 	// 不填充情况下，默认返回边缘节点信息
 	Layer *string `json:"Layer,omitempty" name:"Layer"`
+
+	// 查询区域：
+	// mainland: 国内节点
+	// overseas: 海外节点
+	// global: 全球节点
+	Area *string `json:"Area,omitempty" name:"Area"`
 }
 
 func (r *DescribeIpStatusRequest) ToJsonString() string {
@@ -3110,6 +3116,41 @@ type IpFilter struct {
 	// 最多可填充 50 个白名单或 50 个黑名单
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Filters []*string `json:"Filters,omitempty" name:"Filters" list`
+
+	// IP 黑白名单分路径配置，白名单功能
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FilterRules []*IpFilterPathRule `json:"FilterRules,omitempty" name:"FilterRules" list`
+}
+
+type IpFilterPathRule struct {
+
+	// IP 黑白名单类型
+	// whitelist：白名单
+	// blacklist：黑名单
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FilterType *string `json:"FilterType,omitempty" name:"FilterType"`
+
+	// IP 黑白名单列表
+	// 支持 X.X.X.X 形式 IP，或 /8、 /16、/24 形式网段
+	// 最多可填充 50 个白名单或 50 个黑名单
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Filters []*string `json:"Filters,omitempty" name:"Filters" list`
+
+	// 规则类型：
+	// all：所有文件生效
+	// file：指定文件后缀生效
+	// directory：指定路径生效
+	// path：指定绝对路径生效
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RuleType *string `json:"RuleType,omitempty" name:"RuleType"`
+
+	// RuleType 对应类型下的匹配内容：
+	// all 时填充 *
+	// file 时填充后缀名，如 jpg、txt
+	// directory 时填充路径，如 /xxx/test/
+	// path 时填充绝对路径，如 /xxx/test.html
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RulePaths []*string `json:"RulePaths,omitempty" name:"RulePaths" list`
 }
 
 type IpFreqLimit struct {

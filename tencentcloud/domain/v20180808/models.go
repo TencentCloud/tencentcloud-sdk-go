@@ -20,6 +20,67 @@ import (
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
+type BatchStatus struct {
+
+	// 批量任务id
+	LogId *uint64 `json:"LogId,omitempty" name:"LogId"`
+
+	// 批量任务状态  doing：进行中  success：成功  failed：失败  partial_success：部分成功
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 批量任务类型
+	BatchAction *string `json:"BatchAction,omitempty" name:"BatchAction"`
+}
+
+type CertificateInfo struct {
+
+	// 证件号码。
+	CertificateCode *string `json:"CertificateCode,omitempty" name:"CertificateCode"`
+
+	// 证件类型。
+	CertificateType *string `json:"CertificateType,omitempty" name:"CertificateType"`
+
+	// 证件照片地址。
+	ImgUrl *string `json:"ImgUrl,omitempty" name:"ImgUrl"`
+}
+
+type CheckBatchStatusRequest struct {
+	*tchttp.BaseRequest
+
+	// 批量任务id数组，最多 200 个
+	LogIds []*uint64 `json:"LogIds,omitempty" name:"LogIds" list`
+}
+
+func (r *CheckBatchStatusRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CheckBatchStatusRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CheckBatchStatusResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 批量任务状态集
+		StatusSet []*BatchStatus `json:"StatusSet,omitempty" name:"StatusSet" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CheckBatchStatusResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CheckBatchStatusResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type CheckDomainRequest struct {
 	*tchttp.BaseRequest
 
@@ -100,6 +161,104 @@ func (r *CheckDomainResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type ContactInfo struct {
+
+	// 注册人（中文）
+	OrganizationNameCN *string `json:"OrganizationNameCN,omitempty" name:"OrganizationNameCN"`
+
+	// 注册人（英文）
+	OrganizationName *string `json:"OrganizationName,omitempty" name:"OrganizationName"`
+
+	// 联系人（中文）
+	RegistrantNameCN *string `json:"RegistrantNameCN,omitempty" name:"RegistrantNameCN"`
+
+	// 联系人（英文）
+	RegistrantName *string `json:"RegistrantName,omitempty" name:"RegistrantName"`
+
+	// 省份（中文）
+	ProvinceCN *string `json:"ProvinceCN,omitempty" name:"ProvinceCN"`
+
+	// 城市（中文）
+	CityCN *string `json:"CityCN,omitempty" name:"CityCN"`
+
+	// 街道（中文）
+	StreetCN *string `json:"StreetCN,omitempty" name:"StreetCN"`
+
+	// 街道（英文）
+	Street *string `json:"Street,omitempty" name:"Street"`
+
+	// 国家（中文）
+	CountryCN *string `json:"CountryCN,omitempty" name:"CountryCN"`
+
+	// 联系人手机号
+	Telephone *string `json:"Telephone,omitempty" name:"Telephone"`
+
+	// 联系人邮箱
+	Email *string `json:"Email,omitempty" name:"Email"`
+
+	// 邮编
+	ZipCode *string `json:"ZipCode,omitempty" name:"ZipCode"`
+
+	// 用户类型 E:组织， I:个人
+	RegistrantType *string `json:"RegistrantType,omitempty" name:"RegistrantType"`
+
+	// 省份（英文）。作为入参时可以不填
+	Province *string `json:"Province,omitempty" name:"Province"`
+
+	// 城市（英文）。作为入参时可以不填
+	City *string `json:"City,omitempty" name:"City"`
+
+	// 国家（英文）。作为入参时可以不填
+	Country *string `json:"Country,omitempty" name:"Country"`
+}
+
+type CreateDomainBatchRequest struct {
+	*tchttp.BaseRequest
+
+	// 模板ID
+	TemplateId *string `json:"TemplateId,omitempty" name:"TemplateId"`
+
+	// 购买域名的年限，可选值：[1-10]
+	Period *int64 `json:"Period,omitempty" name:"Period"`
+
+	// 批量购买的域名,最多为4000个
+	Domains []*string `json:"Domains,omitempty" name:"Domains" list`
+
+	// 付费模式 0手动在线付费，1使用余额付费
+	PayMode *int64 `json:"PayMode,omitempty" name:"PayMode"`
+}
+
+func (r *CreateDomainBatchRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateDomainBatchRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateDomainBatchResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 批量日志ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		LogId *int64 `json:"LogId,omitempty" name:"LogId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateDomainBatchResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateDomainBatchResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeDomainBaseInfoRequest struct {
 	*tchttp.BaseRequest
 
@@ -134,6 +293,50 @@ func (r *DescribeDomainBaseInfoResponse) ToJsonString() string {
 }
 
 func (r *DescribeDomainBaseInfoResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeDomainNameListRequest struct {
+	*tchttp.BaseRequest
+
+	// 偏移量，默认为0
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 返回数量，默认为20，取值范围[1,100]
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+func (r *DescribeDomainNameListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeDomainNameListRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeDomainNameListResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 域名信息集合
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		DomainSet []*DomainList `json:"DomainSet,omitempty" name:"DomainSet" list`
+
+		// 域名总数量
+		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeDomainNameListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeDomainNameListResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -177,6 +380,55 @@ func (r *DescribeDomainPriceListResponse) ToJsonString() string {
 }
 
 func (r *DescribeDomainPriceListResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeTemplateListRequest struct {
+	*tchttp.BaseRequest
+
+	// 偏移量，默认为0。
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 返回数量，默认为20，最大值为100。
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 用户注册类型，默认:all , 个人：I ,企业: E
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 认证状态：未实名认证:NotUpload, 实名审核中:InAudit，已实名认证:Approved，实名审核失败:Reject
+	Status *string `json:"Status,omitempty" name:"Status"`
+}
+
+func (r *DescribeTemplateListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeTemplateListRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeTemplateListResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 模板数量。
+		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 模板详细信息列表。
+		TemplateSet []*TemplateInfo `json:"TemplateSet,omitempty" name:"TemplateSet" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeTemplateListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeTemplateListResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -254,6 +506,52 @@ type DomainBaseInfo struct {
 	RegistrarType *string `json:"RegistrarType,omitempty" name:"RegistrarType"`
 }
 
+type DomainList struct {
+
+	// 是否是溢价域名：
+	// ture 是    
+	// false 不是
+	IsPremium *bool `json:"IsPremium,omitempty" name:"IsPremium"`
+
+	// 域名资源ID。
+	DomainId *string `json:"DomainId,omitempty" name:"DomainId"`
+
+	// 域名名称。
+	DomainName *string `json:"DomainName,omitempty" name:"DomainName"`
+
+	// 是否已设置自动续费 。
+	// 0：未设置 
+	// 1：已设置
+	AutoRenew *uint64 `json:"AutoRenew,omitempty" name:"AutoRenew"`
+
+	// 注册时间。
+	CreationDate *string `json:"CreationDate,omitempty" name:"CreationDate"`
+
+	// 到期时间。
+	ExpirationDate *string `json:"ExpirationDate,omitempty" name:"ExpirationDate"`
+
+	// 域名后缀
+	Tld *string `json:"Tld,omitempty" name:"Tld"`
+
+	// 编码后的后缀（中文会进行编码）
+	CodeTld *string `json:"CodeTld,omitempty" name:"CodeTld"`
+
+	// 域名购买状态。
+	// ok：正常
+	// AboutToExpire: 即将到期
+	// RegisterPending：注册中
+	// RegisterDoing：注册中
+	// RegisterFailed：注册失败
+	// RenewPending：续费期
+	// RenewDoing：续费中
+	// RedemptionPending：赎回期
+	// RedemptionDoing：赎回中
+	// TransferPending：转入中
+	// TransferTransing：转入中
+	// TransferFailed：转入失败
+	BuyStatus *string `json:"BuyStatus,omitempty" name:"BuyStatus"`
+}
+
 type PriceInfo struct {
 
 	// 域名后缀，例如.com
@@ -270,4 +568,40 @@ type PriceInfo struct {
 
 	// 商品的购买类型，新购，续费，赎回，转入，续费并转入
 	Operation *string `json:"Operation,omitempty" name:"Operation"`
+}
+
+type TemplateInfo struct {
+
+	// 模板ID
+	TemplateId *string `json:"TemplateId,omitempty" name:"TemplateId"`
+
+	// 认证状态
+	AuditStatus *string `json:"AuditStatus,omitempty" name:"AuditStatus"`
+
+	// 创建时间
+	CreatedOn *string `json:"CreatedOn,omitempty" name:"CreatedOn"`
+
+	// 更新时间
+	UpdatedOn *string `json:"UpdatedOn,omitempty" name:"UpdatedOn"`
+
+	// 用户UIN
+	UserUin *string `json:"UserUin,omitempty" name:"UserUin"`
+
+	// 是否是默认模板
+	IsDefault *string `json:"IsDefault,omitempty" name:"IsDefault"`
+
+	// 认证失败原因
+	AuditReason *string `json:"AuditReason,omitempty" name:"AuditReason"`
+
+	// 认证信息
+	CertificateInfo *CertificateInfo `json:"CertificateInfo,omitempty" name:"CertificateInfo"`
+
+	// 联系人信息
+	ContactInfo *ContactInfo `json:"ContactInfo,omitempty" name:"ContactInfo"`
+
+	// 模板是否符合规范， 1是 0 否
+	IsValidTemplate *int64 `json:"IsValidTemplate,omitempty" name:"IsValidTemplate"`
+
+	// 不符合规范原因
+	InvalidReason *string `json:"InvalidReason,omitempty" name:"InvalidReason"`
 }

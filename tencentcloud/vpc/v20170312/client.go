@@ -2344,6 +2344,31 @@ func (c *Client) DescribeAssistantCidr(request *DescribeAssistantCidrRequest) (r
     return
 }
 
+func NewDescribeBandwidthPackageBillUsageRequest() (request *DescribeBandwidthPackageBillUsageRequest) {
+    request = &DescribeBandwidthPackageBillUsageRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "DescribeBandwidthPackageBillUsage")
+    return
+}
+
+func NewDescribeBandwidthPackageBillUsageResponse() (response *DescribeBandwidthPackageBillUsageResponse) {
+    response = &DescribeBandwidthPackageBillUsageResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口 (DescribeBandwidthPackageBillUsage) 用于查询后付费共享带宽包当前的计费用量.
+func (c *Client) DescribeBandwidthPackageBillUsage(request *DescribeBandwidthPackageBillUsageRequest) (response *DescribeBandwidthPackageBillUsageResponse, err error) {
+    if request == nil {
+        request = NewDescribeBandwidthPackageBillUsageRequest()
+    }
+    response = NewDescribeBandwidthPackageBillUsageResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeBandwidthPackageQuotaRequest() (request *DescribeBandwidthPackageQuotaRequest) {
     request = &DescribeBandwidthPackageQuotaRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2365,6 +2390,31 @@ func (c *Client) DescribeBandwidthPackageQuota(request *DescribeBandwidthPackage
         request = NewDescribeBandwidthPackageQuotaRequest()
     }
     response = NewDescribeBandwidthPackageQuotaResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeBandwidthPackageResourcesRequest() (request *DescribeBandwidthPackageResourcesRequest) {
+    request = &DescribeBandwidthPackageResourcesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "DescribeBandwidthPackageResources")
+    return
+}
+
+func NewDescribeBandwidthPackageResourcesResponse() (response *DescribeBandwidthPackageResourcesResponse) {
+    response = &DescribeBandwidthPackageResourcesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口 (DescribeBandwidthPackageResources) 用于根据共享带宽包唯一ID查询共享带宽包内的资源列表，支持按条件过滤查询结果和分页查询。
+func (c *Client) DescribeBandwidthPackageResources(request *DescribeBandwidthPackageResourcesRequest) (response *DescribeBandwidthPackageResourcesResponse, err error) {
+    if request == nil {
+        request = NewDescribeBandwidthPackageResourcesRequest()
+    }
+    response = NewDescribeBandwidthPackageResourcesResponse()
     err = c.Send(request, response)
     return
 }
