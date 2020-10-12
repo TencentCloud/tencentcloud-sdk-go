@@ -193,6 +193,31 @@ func (c *Client) DeleteClsLogTopic(request *DeleteClsLogTopicRequest) (response 
     return
 }
 
+func NewDeleteScdnDomainRequest() (request *DeleteScdnDomainRequest) {
+    request = &DeleteScdnDomainRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cdn", APIVersion, "DeleteScdnDomain")
+    return
+}
+
+func NewDeleteScdnDomainResponse() (response *DeleteScdnDomainResponse) {
+    response = &DeleteScdnDomainResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 删除SCDN域名
+func (c *Client) DeleteScdnDomain(request *DeleteScdnDomainRequest) (response *DeleteScdnDomainResponse, err error) {
+    if request == nil {
+        request = NewDeleteScdnDomainRequest()
+    }
+    response = NewDeleteScdnDomainResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeBillingDataRequest() (request *DescribeBillingDataRequest) {
     request = &DescribeBillingDataRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -293,7 +318,7 @@ func NewDescribeCdnIpResponse() (response *DescribeCdnIpResponse) {
 }
 
 // DescribeCdnIp 用于查询 CDN IP 归属。
-// （注意：此接口请求频率限制以 CDN 侧限制为准：200次/10分钟）
+// （注意：此接口请求频率限制以 CDN 侧限制为准：200次/10分钟）  
 func (c *Client) DescribeCdnIp(request *DescribeCdnIpRequest) (response *DescribeCdnIpResponse, err error) {
     if request == nil {
         request = NewDescribeCdnIpRequest()
@@ -940,6 +965,31 @@ func (c *Client) ListClsTopicDomains(request *ListClsTopicDomainsRequest) (respo
         request = NewListClsTopicDomainsRequest()
     }
     response = NewListClsTopicDomainsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewListScdnLogTasksRequest() (request *ListScdnLogTasksRequest) {
+    request = &ListScdnLogTasksRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cdn", APIVersion, "ListScdnLogTasks")
+    return
+}
+
+func NewListScdnLogTasksResponse() (response *ListScdnLogTasksResponse) {
+    response = &ListScdnLogTasksResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ListScdnLogTasks 用于查询SCDN日志下载任务列表,以及展示下载任务基本信息
+func (c *Client) ListScdnLogTasks(request *ListScdnLogTasksRequest) (response *ListScdnLogTasksResponse, err error) {
+    if request == nil {
+        request = NewListScdnLogTasksRequest()
+    }
+    response = NewListScdnLogTasksResponse()
     err = c.Send(request, response)
     return
 }

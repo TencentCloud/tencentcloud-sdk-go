@@ -2257,7 +2257,7 @@ type ModifyLaunchConfigurationAttributesRequest struct {
 	// 指定有效的[镜像](https://cloud.tencent.com/document/product/213/4940)ID，格式形如`img-8toqc6s3`。镜像类型分为四种：<br/><li>公共镜像</li><li>自定义镜像</li><li>共享镜像</li><li>服务市场镜像</li><br/>可通过以下方式获取可用的镜像ID：<br/><li>`公共镜像`、`自定义镜像`、`共享镜像`的镜像ID可通过登录[控制台](https://console.cloud.tencent.com/cvm/image?rid=1&imageType=PUBLIC_IMAGE)查询；`服务镜像市场`的镜像ID可通过[云市场](https://market.cloud.tencent.com/list)查询。</li><li>通过调用接口 [DescribeImages](https://cloud.tencent.com/document/api/213/15715) ，取返回信息中的`ImageId`字段。</li>
 	ImageId *string `json:"ImageId,omitempty" name:"ImageId"`
 
-	// 实例类型列表，不同实例机型指定了不同的资源规格，最多支持5种实例机型。
+	// 实例类型列表，不同实例机型指定了不同的资源规格，最多支持10种实例机型。
 	// 启动配置，通过 InstanceType 表示单一实例类型，通过 InstanceTypes 表示多实例类型。指定 InstanceTypes 成功启动配置后，原有的 InstanceType 自动失效。
 	InstanceTypes []*string `json:"InstanceTypes,omitempty" name:"InstanceTypes" list`
 

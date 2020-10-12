@@ -8323,7 +8323,7 @@ func (r *ModifyAddressTemplateGroupAttributeResponse) FromJsonString(s string) e
 type ModifyAddressesBandwidthRequest struct {
 	*tchttp.BaseRequest
 
-	// EIP唯一标识ID，形如'eip-xxxx'
+	// EIP唯一标识ID列表，形如'eip-xxxx'
 	AddressIds []*string `json:"AddressIds,omitempty" name:"AddressIds" list`
 
 	// 调整带宽目标值
@@ -10179,6 +10179,43 @@ func (r *RemoveIp6RulesResponse) ToJsonString() string {
 }
 
 func (r *RemoveIp6RulesResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type RenewAddressesRequest struct {
+	*tchttp.BaseRequest
+
+	// EIP唯一标识ID列表，形如'eip-xxxx'
+	AddressIds []*string `json:"AddressIds,omitempty" name:"AddressIds" list`
+
+	// 续费参数
+	AddressChargePrepaid *AddressChargePrepaid `json:"AddressChargePrepaid,omitempty" name:"AddressChargePrepaid"`
+}
+
+func (r *RenewAddressesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *RenewAddressesRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type RenewAddressesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *RenewAddressesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *RenewAddressesResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 

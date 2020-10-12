@@ -43,6 +43,31 @@ func NewClient(credential *common.Credential, region string, clientProfile *prof
 }
 
 
+func NewAcquireClusterAdminRoleRequest() (request *AcquireClusterAdminRoleRequest) {
+    request = &AcquireClusterAdminRoleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tke", APIVersion, "AcquireClusterAdminRole")
+    return
+}
+
+func NewAcquireClusterAdminRoleResponse() (response *AcquireClusterAdminRoleResponse) {
+    response = &AcquireClusterAdminRoleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 通过此接口，可以获取集群的tke:admin的ClusterRole，即管理员角色，可以用于CAM侧高权限的用户，通过CAM策略给予子账户此接口权限，进而可以通过此接口直接获取到kubernetes集群内的管理员角色。
+func (c *Client) AcquireClusterAdminRole(request *AcquireClusterAdminRoleRequest) (response *AcquireClusterAdminRoleResponse, err error) {
+    if request == nil {
+        request = NewAcquireClusterAdminRoleRequest()
+    }
+    response = NewAcquireClusterAdminRoleResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewAddExistedInstancesRequest() (request *AddExistedInstancesRequest) {
     request = &AddExistedInstancesRequest{
         BaseRequest: &tchttp.BaseRequest{},

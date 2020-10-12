@@ -2,9 +2,67 @@
 
 ## 内容分发网络(cdn) 版本：2018-06-06
 
-### 第 37 次发布
+### 第 38 次发布
 
-发布时间：2020-09-30 08:02:23
+发布时间：2020-10-12 08:02:20
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DeleteScdnDomain](https://cloud.tencent.com/document/api/228/49013)
+* [ListScdnLogTasks](https://cloud.tencent.com/document/api/228/49012)
+
+新增数据结构：
+
+* [ScdnLogTaskDetail](https://cloud.tencent.com/document/api/228/30987#ScdnLogTaskDetail)
+
+
+
+## 腾讯云释义(tcex) 版本：2020-07-27
+
+### 第 1 次发布
+
+发布时间：2020-10-10 17:07:20
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeInvocationResult](https://cloud.tencent.com/document/api/1266/48991)
+* [InvokeService](https://cloud.tencent.com/document/api/1266/48990)
+
+新增数据结构：
+
+* [AlgorithmResult](https://cloud.tencent.com/document/api/1266/48992#AlgorithmResult)
+
+
+
+## 容器服务(tke) 版本：2018-05-25
+
+### 第 27 次发布
+
+发布时间：2020-10-12 08:06:24
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [AcquireClusterAdminRole](https://cloud.tencent.com/document/api/457/49014)
+
+
+
+## 腾讯微服务平台 TSF(tsf) 版本：2018-03-26
+
+### 第 31 次发布
+
+发布时间：2020-10-12 08:06:34
 
 本次发布包含了以下内容：
 
@@ -12,117 +70,18 @@
 
 修改接口：
 
-* [DescribeIpStatus](https://cloud.tencent.com/document/api/228/41954)
+* [ModifyUploadInfo](https://cloud.tencent.com/document/api/649/36077)
 
-	* 新增入参：Area
-
-
-新增数据结构：
-
-* [IpFilterPathRule](https://cloud.tencent.com/document/api/228/30987#IpFilterPathRule)
-
-修改数据结构：
-
-* [IpFilter](https://cloud.tencent.com/document/api/228/30987#IpFilter)
-
-	* 新增成员：FilterRules
-
-
-
-
-## 域名注册(domain) 版本：2018-08-08
-
-### 第 5 次发布
-
-发布时间：2020-09-30 08:03:21
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [CheckBatchStatus](https://cloud.tencent.com/document/api/242/48943)
-* [CreateDomainBatch](https://cloud.tencent.com/document/api/242/48942)
-* [DescribeDomainNameList](https://cloud.tencent.com/document/api/242/48941)
-* [DescribeTemplateList](https://cloud.tencent.com/document/api/242/48940)
-
-新增数据结构：
-
-* [BatchStatus](https://cloud.tencent.com/document/api/242/38895#BatchStatus)
-* [CertificateInfo](https://cloud.tencent.com/document/api/242/38895#CertificateInfo)
-* [ContactInfo](https://cloud.tencent.com/document/api/242/38895#ContactInfo)
-* [DomainList](https://cloud.tencent.com/document/api/242/38895#DomainList)
-* [TemplateInfo](https://cloud.tencent.com/document/api/242/38895#TemplateInfo)
-
-
-
-## 游戏服务器引擎(gse) 版本：2019-11-12
-
-### 第 8 次发布
-
-发布时间：2020-09-30 08:00:48
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [CreateFleet](https://cloud.tencent.com/document/api/1165/48938)
-* [CreateGameServerSessionQueue](https://cloud.tencent.com/document/api/1165/48937)
-* [DeleteGameServerSessionQueue](https://cloud.tencent.com/document/api/1165/48935)
-* [DescribeFleetCapacity](https://cloud.tencent.com/document/api/1165/42072)
-* [DescribeFleetStatisticDetails](https://cloud.tencent.com/document/api/1165/48934)
-* [DescribeFleetStatisticFlows](https://cloud.tencent.com/document/api/1165/48933)
-* [DescribeFleetStatisticSummary](https://cloud.tencent.com/document/api/1165/48932)
-* [DescribeInstanceLimit](https://cloud.tencent.com/document/api/1165/48931)
-* [DescribeInstancesExtend](https://cloud.tencent.com/document/api/1165/48936)
-* [JoinGameServerSessionBatch](https://cloud.tencent.com/document/api/1165/42061)
-* [UpdateFleetCapacity](https://cloud.tencent.com/document/api/1165/42069)
-* [UpdateGameServerSessionQueue](https://cloud.tencent.com/document/api/1165/48930)
-
-<font color="#dd0000">**删除接口**：</font>
-
-* StartMatchPlacement
-
-新增数据结构：
-
-* [ExtraInfos](https://cloud.tencent.com/document/api/1165/42074#ExtraInfos)
-* [FleetCapacity](https://cloud.tencent.com/document/api/1165/42074#FleetCapacity)
-* [FleetStatisticDetail](https://cloud.tencent.com/document/api/1165/42074#FleetStatisticDetail)
-* [FleetStatisticFlows](https://cloud.tencent.com/document/api/1165/42074#FleetStatisticFlows)
-* [FleetStatisticTimes](https://cloud.tencent.com/document/api/1165/42074#FleetStatisticTimes)
-* [InstanceCounts](https://cloud.tencent.com/document/api/1165/42074#InstanceCounts)
-* [InstanceExtend](https://cloud.tencent.com/document/api/1165/42074#InstanceExtend)
-* [PlayerDataMap](https://cloud.tencent.com/document/api/1165/42074#PlayerDataMap)
-
-
-
-## 云开发 CloudBase(tcb) 版本：2018-06-08
-
-### 第 20 次发布
-
-发布时间：2020-09-30 08:06:02
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [EnvInfo](https://cloud.tencent.com/document/api/876/34822#EnvInfo)
-
-	* 新增成员：PayMode, IsDefault, Region
+	* <font color="#dd0000">**修改入参**：</font>Md5
 
 
 
 
 ## 私有网络(vpc) 版本：2017-03-12
 
-### 第 63 次发布
+### 第 64 次发布
 
-发布时间：2020-09-30 08:06:41
+发布时间：2020-10-12 08:06:51
 
 本次发布包含了以下内容：
 
@@ -130,12 +89,7 @@
 
 新增接口：
 
-* [DescribeBandwidthPackageBillUsage](https://cloud.tencent.com/document/api/215/48945)
-* [DescribeBandwidthPackageResources](https://cloud.tencent.com/document/api/215/48944)
-
-新增数据结构：
-
-* [BandwidthPackageBillBandwidth](https://cloud.tencent.com/document/api/215/15824#BandwidthPackageBillBandwidth)
+* [RenewAddresses](https://cloud.tencent.com/document/api/215/49015)
 
 
 
@@ -6315,6 +6269,23 @@
 
 ## 内容分发网络(cdn) 版本：2018-06-06
 
+### 第 38 次发布
+
+发布时间：2020-10-12 08:02:20
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DeleteScdnDomain](https://cloud.tencent.com/document/api/228/49013)](https://cloud.tencent.com/document/api/#/#)
+* [[ListScdnLogTasks](https://cloud.tencent.com/document/api/228/49012)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[ScdnLogTaskDetail](https://cloud.tencent.com/document/api/228/30987#ScdnLogTaskDetail)](https://cloud.tencent.com/document/api/228/30987#[ScdnLogTaskDetail](https://cloud.tencent.com/document/api/228/30987#ScdnLogTaskDetail))
+
 ### 第 37 次发布
 
 发布时间：2020-09-30 08:02:23
@@ -6332,7 +6303,7 @@
 
 新增数据结构：
 
-* [[IpFilterPathRule](https://cloud.tencent.com/document/api/228/30987#IpFilterPathRule)](https://cloud.tencent.com/document/api/228/30987#[IpFilterPathRule](https://cloud.tencent.com/document/api/228/30987#IpFilterPathRule))
+* [IpFilterPathRule](https://cloud.tencent.com/document/api/228/30987#IpFilterPathRule)
 
 修改数据结构：
 
@@ -13006,18 +12977,18 @@
 
 新增接口：
 
-* [[CheckBatchStatus](https://cloud.tencent.com/document/api/242/48943)](https://cloud.tencent.com/document/api/#/#)
-* [[CreateDomainBatch](https://cloud.tencent.com/document/api/242/48942)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeDomainNameList](https://cloud.tencent.com/document/api/242/48941)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeTemplateList](https://cloud.tencent.com/document/api/242/48940)](https://cloud.tencent.com/document/api/#/#)
+* [CheckBatchStatus](https://cloud.tencent.com/document/api/242/48943)
+* [CreateDomainBatch](https://cloud.tencent.com/document/api/242/48942)
+* [DescribeDomainNameList](https://cloud.tencent.com/document/api/242/48941)
+* [DescribeTemplateList](https://cloud.tencent.com/document/api/242/48940)
 
 新增数据结构：
 
-* [[BatchStatus](https://cloud.tencent.com/document/api/242/38895#BatchStatus)](https://cloud.tencent.com/document/api/242/38895#[BatchStatus](https://cloud.tencent.com/document/api/242/38895#BatchStatus))
-* [[CertificateInfo](https://cloud.tencent.com/document/api/242/38895#CertificateInfo)](https://cloud.tencent.com/document/api/242/38895#[CertificateInfo](https://cloud.tencent.com/document/api/242/38895#CertificateInfo))
-* [[ContactInfo](https://cloud.tencent.com/document/api/242/38895#ContactInfo)](https://cloud.tencent.com/document/api/242/38895#[ContactInfo](https://cloud.tencent.com/document/api/242/38895#ContactInfo))
-* [[DomainList](https://cloud.tencent.com/document/api/242/38895#DomainList)](https://cloud.tencent.com/document/api/242/38895#[DomainList](https://cloud.tencent.com/document/api/242/38895#DomainList))
-* [[TemplateInfo](https://cloud.tencent.com/document/api/242/38895#TemplateInfo)](https://cloud.tencent.com/document/api/242/38895#[TemplateInfo](https://cloud.tencent.com/document/api/242/38895#TemplateInfo))
+* [BatchStatus](https://cloud.tencent.com/document/api/242/38895#BatchStatus)
+* [CertificateInfo](https://cloud.tencent.com/document/api/242/38895#CertificateInfo)
+* [ContactInfo](https://cloud.tencent.com/document/api/242/38895#ContactInfo)
+* [DomainList](https://cloud.tencent.com/document/api/242/38895#DomainList)
+* [TemplateInfo](https://cloud.tencent.com/document/api/242/38895#TemplateInfo)
 
 ### 第 4 次发布
 
@@ -16458,18 +16429,18 @@
 
 新增接口：
 
-* [[CreateFleet](https://cloud.tencent.com/document/api/1165/48938)](https://cloud.tencent.com/document/api/#/#)
-* [[CreateGameServerSessionQueue](https://cloud.tencent.com/document/api/1165/48937)](https://cloud.tencent.com/document/api/#/#)
-* [[DeleteGameServerSessionQueue](https://cloud.tencent.com/document/api/1165/48935)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeFleetCapacity](https://cloud.tencent.com/document/api/1165/42072)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeFleetStatisticDetails](https://cloud.tencent.com/document/api/1165/48934)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeFleetStatisticFlows](https://cloud.tencent.com/document/api/1165/48933)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeFleetStatisticSummary](https://cloud.tencent.com/document/api/1165/48932)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeInstanceLimit](https://cloud.tencent.com/document/api/1165/48931)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeInstancesExtend](https://cloud.tencent.com/document/api/1165/48936)](https://cloud.tencent.com/document/api/#/#)
-* [[JoinGameServerSessionBatch](https://cloud.tencent.com/document/api/1165/42061)](https://cloud.tencent.com/document/api/#/#)
-* [[UpdateFleetCapacity](https://cloud.tencent.com/document/api/1165/42069)](https://cloud.tencent.com/document/api/#/#)
-* [[UpdateGameServerSessionQueue](https://cloud.tencent.com/document/api/1165/48930)](https://cloud.tencent.com/document/api/#/#)
+* [CreateFleet](https://cloud.tencent.com/document/api/1165/48938)
+* [CreateGameServerSessionQueue](https://cloud.tencent.com/document/api/1165/48937)
+* [DeleteGameServerSessionQueue](https://cloud.tencent.com/document/api/1165/48935)
+* [DescribeFleetCapacity](https://cloud.tencent.com/document/api/1165/42072)
+* [DescribeFleetStatisticDetails](https://cloud.tencent.com/document/api/1165/48934)
+* [DescribeFleetStatisticFlows](https://cloud.tencent.com/document/api/1165/48933)
+* [DescribeFleetStatisticSummary](https://cloud.tencent.com/document/api/1165/48932)
+* [DescribeInstanceLimit](https://cloud.tencent.com/document/api/1165/48931)
+* [DescribeInstancesExtend](https://cloud.tencent.com/document/api/1165/48936)
+* [JoinGameServerSessionBatch](https://cloud.tencent.com/document/api/1165/42061)
+* [UpdateFleetCapacity](https://cloud.tencent.com/document/api/1165/42069)
+* [UpdateGameServerSessionQueue](https://cloud.tencent.com/document/api/1165/48930)
 
 <font color="#dd0000">**删除接口**：</font>
 
@@ -16477,14 +16448,14 @@
 
 新增数据结构：
 
-* [[ExtraInfos](https://cloud.tencent.com/document/api/1165/42074#ExtraInfos)](https://cloud.tencent.com/document/api/1165/42074#[ExtraInfos](https://cloud.tencent.com/document/api/1165/42074#ExtraInfos))
-* [[FleetCapacity](https://cloud.tencent.com/document/api/1165/42074#FleetCapacity)](https://cloud.tencent.com/document/api/1165/42074#[FleetCapacity](https://cloud.tencent.com/document/api/1165/42074#FleetCapacity))
-* [[FleetStatisticDetail](https://cloud.tencent.com/document/api/1165/42074#FleetStatisticDetail)](https://cloud.tencent.com/document/api/1165/42074#[FleetStatisticDetail](https://cloud.tencent.com/document/api/1165/42074#FleetStatisticDetail))
-* [[FleetStatisticFlows](https://cloud.tencent.com/document/api/1165/42074#FleetStatisticFlows)](https://cloud.tencent.com/document/api/1165/42074#[FleetStatisticFlows](https://cloud.tencent.com/document/api/1165/42074#FleetStatisticFlows))
-* [[FleetStatisticTimes](https://cloud.tencent.com/document/api/1165/42074#FleetStatisticTimes)](https://cloud.tencent.com/document/api/1165/42074#[FleetStatisticTimes](https://cloud.tencent.com/document/api/1165/42074#FleetStatisticTimes))
-* [[InstanceCounts](https://cloud.tencent.com/document/api/1165/42074#InstanceCounts)](https://cloud.tencent.com/document/api/1165/42074#[InstanceCounts](https://cloud.tencent.com/document/api/1165/42074#InstanceCounts))
-* [[InstanceExtend](https://cloud.tencent.com/document/api/1165/42074#InstanceExtend)](https://cloud.tencent.com/document/api/1165/42074#[InstanceExtend](https://cloud.tencent.com/document/api/1165/42074#InstanceExtend))
-* [[PlayerDataMap](https://cloud.tencent.com/document/api/1165/42074#PlayerDataMap)](https://cloud.tencent.com/document/api/1165/42074#[PlayerDataMap](https://cloud.tencent.com/document/api/1165/42074#PlayerDataMap))
+* [ExtraInfos](https://cloud.tencent.com/document/api/1165/42074#ExtraInfos)
+* [FleetCapacity](https://cloud.tencent.com/document/api/1165/42074#FleetCapacity)
+* [FleetStatisticDetail](https://cloud.tencent.com/document/api/1165/42074#FleetStatisticDetail)
+* [FleetStatisticFlows](https://cloud.tencent.com/document/api/1165/42074#FleetStatisticFlows)
+* [FleetStatisticTimes](https://cloud.tencent.com/document/api/1165/42074#FleetStatisticTimes)
+* [InstanceCounts](https://cloud.tencent.com/document/api/1165/42074#InstanceCounts)
+* [InstanceExtend](https://cloud.tencent.com/document/api/1165/42074#InstanceExtend)
+* [PlayerDataMap](https://cloud.tencent.com/document/api/1165/42074#PlayerDataMap)
 
 ### 第 7 次发布
 
@@ -27863,6 +27834,28 @@
 
 
 
+## 腾讯云释义(tcex) 版本：2020-07-27
+
+### 第 1 次发布
+
+发布时间：2020-10-10 17:07:20
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeInvocationResult](https://cloud.tencent.com/document/api/1266/48991)](https://cloud.tencent.com/document/api/#/#)
+* [[InvokeService](https://cloud.tencent.com/document/api/1266/48990)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[AlgorithmResult](https://cloud.tencent.com/document/api/1266/48992#AlgorithmResult)](https://cloud.tencent.com/document/api/1266/48992#[AlgorithmResult](https://cloud.tencent.com/document/api/1266/48992#AlgorithmResult))
+
+
+
+
 ## 腾讯智学课堂分析(tci) 版本：2019-03-18
 
 ### 第 8 次发布
@@ -29756,6 +29749,18 @@
 
 ## 容器服务(tke) 版本：2018-05-25
 
+### 第 27 次发布
+
+发布时间：2020-10-12 08:06:24
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[AcquireClusterAdminRole](https://cloud.tencent.com/document/api/457/49014)](https://cloud.tencent.com/document/api/#/#)
+
 ### 第 26 次发布
 
 发布时间：2020-09-08 08:08:07
@@ -30810,6 +30815,21 @@
 
 
 ## 腾讯微服务平台 TSF(tsf) 版本：2018-03-26
+
+### 第 31 次发布
+
+发布时间：2020-10-12 08:06:34
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [ModifyUploadInfo](https://cloud.tencent.com/document/api/649/36077)
+
+	* <font color="#dd0000">**修改入参**：</font>Md5
+
 
 ### 第 30 次发布
 
@@ -33494,6 +33514,18 @@
 
 ## 私有网络(vpc) 版本：2017-03-12
 
+### 第 64 次发布
+
+发布时间：2020-10-12 08:06:51
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[RenewAddresses](https://cloud.tencent.com/document/api/215/49015)](https://cloud.tencent.com/document/api/#/#)
+
 ### 第 63 次发布
 
 发布时间：2020-09-30 08:06:41
@@ -33504,12 +33536,12 @@
 
 新增接口：
 
-* [[DescribeBandwidthPackageBillUsage](https://cloud.tencent.com/document/api/215/48945)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeBandwidthPackageResources](https://cloud.tencent.com/document/api/215/48944)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeBandwidthPackageBillUsage](https://cloud.tencent.com/document/api/215/48945)
+* [DescribeBandwidthPackageResources](https://cloud.tencent.com/document/api/215/48944)
 
 新增数据结构：
 
-* [[BandwidthPackageBillBandwidth](https://cloud.tencent.com/document/api/215/15824#BandwidthPackageBillBandwidth)](https://cloud.tencent.com/document/api/215/15824#[BandwidthPackageBillBandwidth](https://cloud.tencent.com/document/api/215/15824#BandwidthPackageBillBandwidth))
+* [BandwidthPackageBillBandwidth](https://cloud.tencent.com/document/api/215/15824#BandwidthPackageBillBandwidth)
 
 ### 第 62 次发布
 

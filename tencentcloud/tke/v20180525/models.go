@@ -20,6 +20,40 @@ import (
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
+type AcquireClusterAdminRoleRequest struct {
+	*tchttp.BaseRequest
+
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+}
+
+func (r *AcquireClusterAdminRoleRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *AcquireClusterAdminRoleRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type AcquireClusterAdminRoleResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *AcquireClusterAdminRoleResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *AcquireClusterAdminRoleResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type AddExistedInstancesRequest struct {
 	*tchttp.BaseRequest
 

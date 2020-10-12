@@ -635,11 +635,11 @@ type DescribeBasicAlarmListAlarms struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProjectName *string `json:"ProjectName,omitempty" name:"ProjectName"`
 
-	// 告警状态ID
+	// 告警状态ID，0表示未恢复；1表示已恢复；2,3,5表示数据不足；4表示已失效
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *int64 `json:"Status,omitempty" name:"Status"`
 
-	// 告警状态
+	// 告警状态，ALARM表示未恢复；OK表示已恢复；NO_DATA表示数据不足；NO_CONF表示已失效
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AlarmStatus *string `json:"AlarmStatus,omitempty" name:"AlarmStatus"`
 

@@ -1249,7 +1249,7 @@ type DescribeReservedInstancesConfigInfosRequest struct {
 	// 类型：Integer
 	// 计量单位：秒
 	// 必选：否
-	// 可选项：31536000 (1年) | 94608000（3年）
+	// 可选项：31536000 (1年)
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
 }
 
@@ -3397,13 +3397,13 @@ type ReservedInstanceTypeItem struct {
 	// 内存大小。
 	Memory *uint64 `json:"Memory,omitempty" name:"Memory"`
 
-	// GPU核数。
+	// GPU数量。
 	Gpu *uint64 `json:"Gpu,omitempty" name:"Gpu"`
 
-	// FPGA核数。
+	// FPGA数量。
 	Fpga *uint64 `json:"Fpga,omitempty" name:"Fpga"`
 
-	// 存储块数。
+	// 本地存储块数量。
 	StorageBlock *uint64 `json:"StorageBlock,omitempty" name:"StorageBlock"`
 
 	// 网卡数。
