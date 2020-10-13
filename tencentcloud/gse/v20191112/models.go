@@ -70,6 +70,15 @@ type Asset struct {
 
 	// 生成包绑定的Fleet个数，最小值为0
 	BindFleetNum *int64 `json:"BindFleetNum,omitempty" name:"BindFleetNum"`
+
+	// 生成包的全局唯一资源标识符
+	AssetArn *string `json:"AssetArn,omitempty" name:"AssetArn"`
+
+	// 生成包支持的操作系统镜像id
+	ImageId *string `json:"ImageId,omitempty" name:"ImageId"`
+
+	// 生成包支持的操作系统类型
+	OsType *string `json:"OsType,omitempty" name:"OsType"`
 }
 
 type AssetCredentials struct {
@@ -207,6 +216,9 @@ type CreateAssetRequest struct {
 
 	// 生成包可运行的操作系统，暂时只有CentOS7.16
 	OperateSystem *string `json:"OperateSystem,omitempty" name:"OperateSystem"`
+
+	// 生成包支持的操作系统镜像id
+	ImageId *string `json:"ImageId,omitempty" name:"ImageId"`
 }
 
 func (r *CreateAssetRequest) ToJsonString() string {
@@ -224,6 +236,9 @@ type CreateAssetResponse struct {
 
 		// 生成包ID
 		AssetId *string `json:"AssetId,omitempty" name:"AssetId"`
+
+		// 生成包的全局唯一资源标识符
+		AssetArn *string `json:"AssetArn,omitempty" name:"AssetArn"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -687,7 +702,7 @@ type DescribeAssetsRequest struct {
 	// 前端界面每页显示的最大条数，不超过100
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 
-	// 搜索条件，支持包ID或包名字过滤
+	// 搜索条件，支持包ID或包名字过滤，该字段会逐步废弃，建议使用 Filters 字段
 	Filter *string `json:"Filter,omitempty" name:"Filter"`
 }
 

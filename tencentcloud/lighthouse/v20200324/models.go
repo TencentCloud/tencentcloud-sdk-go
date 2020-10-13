@@ -51,6 +51,9 @@ type Blueprint struct {
 
 	// 镜像所需系统盘大小
 	RequiredSystemDiskSize *int64 `json:"RequiredSystemDiskSize,omitempty" name:"RequiredSystemDiskSize"`
+
+	// 镜像状态，取值：ONLINE、OFFLINE
+	BlueprintState *string `json:"BlueprintState,omitempty" name:"BlueprintState"`
 }
 
 type Bundle struct {

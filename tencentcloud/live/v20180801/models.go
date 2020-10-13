@@ -385,9 +385,9 @@ type CertInfo struct {
 	// 证书内容。
 	HttpsCrt *string `json:"HttpsCrt,omitempty" name:"HttpsCrt"`
 
-	// 证书类型:
-	// 0：腾讯云托管证书。
-	// 1：用户添加证书。
+	// 证书类型。
+	// 0：用户添加证书，
+	// 1：腾讯云托管证书。
 	CertType *int64 `json:"CertType,omitempty" name:"CertType"`
 
 	// 证书过期时间，UTC 格式。

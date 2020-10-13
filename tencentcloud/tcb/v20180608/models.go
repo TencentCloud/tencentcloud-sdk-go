@@ -706,6 +706,52 @@ func (r *DescribeDatabaseACLResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeDownloadFileRequest struct {
+	*tchttp.BaseRequest
+
+	// 代码uri
+	CodeUri *string `json:"CodeUri,omitempty" name:"CodeUri"`
+}
+
+func (r *DescribeDownloadFileRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeDownloadFileRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeDownloadFileResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 文件路径
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		FilePath *string `json:"FilePath,omitempty" name:"FilePath"`
+
+		// 加密key
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		CustomKey *string `json:"CustomKey,omitempty" name:"CustomKey"`
+
+		// 下载链接
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		DownloadUrl *string `json:"DownloadUrl,omitempty" name:"DownloadUrl"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeDownloadFileResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeDownloadFileResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeEndUserLoginStatisticRequest struct {
 	*tchttp.BaseRequest
 

@@ -218,6 +218,31 @@ func (c *Client) DescribeEnvironmentAttributes(request *DescribeEnvironmentAttri
     return
 }
 
+func NewDescribeEnvironmentRolesRequest() (request *DescribeEnvironmentRolesRequest) {
+    request = &DescribeEnvironmentRolesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tdmq", APIVersion, "DescribeEnvironmentRoles")
+    return
+}
+
+func NewDescribeEnvironmentRolesResponse() (response *DescribeEnvironmentRolesResponse) {
+    response = &DescribeEnvironmentRolesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 获取环境角色列表
+func (c *Client) DescribeEnvironmentRoles(request *DescribeEnvironmentRolesRequest) (response *DescribeEnvironmentRolesResponse, err error) {
+    if request == nil {
+        request = NewDescribeEnvironmentRolesRequest()
+    }
+    response = NewDescribeEnvironmentRolesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeEnvironmentsRequest() (request *DescribeEnvironmentsRequest) {
     request = &DescribeEnvironmentsRequest{
         BaseRequest: &tchttp.BaseRequest{},

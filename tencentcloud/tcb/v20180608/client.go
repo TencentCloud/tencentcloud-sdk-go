@@ -318,6 +318,31 @@ func (c *Client) DescribeDatabaseACL(request *DescribeDatabaseACLRequest) (respo
     return
 }
 
+func NewDescribeDownloadFileRequest() (request *DescribeDownloadFileRequest) {
+    request = &DescribeDownloadFileRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tcb", APIVersion, "DescribeDownloadFile")
+    return
+}
+
+func NewDescribeDownloadFileResponse() (response *DescribeDownloadFileResponse) {
+    response = &DescribeDownloadFileResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 获取下载文件信息
+func (c *Client) DescribeDownloadFile(request *DescribeDownloadFileRequest) (response *DescribeDownloadFileResponse, err error) {
+    if request == nil {
+        request = NewDescribeDownloadFileRequest()
+    }
+    response = NewDescribeDownloadFileResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeEndUserLoginStatisticRequest() (request *DescribeEndUserLoginStatisticRequest) {
     request = &DescribeEndUserLoginStatisticRequest{
         BaseRequest: &tchttp.BaseRequest{},

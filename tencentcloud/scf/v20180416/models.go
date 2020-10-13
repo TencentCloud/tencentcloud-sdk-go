@@ -404,6 +404,9 @@ type CreateTriggerRequest struct {
 
 	// 触发器的初始是能状态 OPEN表示开启 CLOSE表示关闭
 	Enable *string `json:"Enable,omitempty" name:"Enable"`
+
+	// 用户自定义参数，仅支持timer触发器
+	CustomArgument *string `json:"CustomArgument,omitempty" name:"CustomArgument"`
 }
 
 func (r *CreateTriggerRequest) ToJsonString() string {

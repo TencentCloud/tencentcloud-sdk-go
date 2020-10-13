@@ -1,31 +1,10 @@
 # 本版本更新包含以下内容：
 
-## 内容分发网络(cdn) 版本：2018-06-06
-
-### 第 38 次发布
-
-发布时间：2020-10-12 08:02:20
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [DeleteScdnDomain](https://cloud.tencent.com/document/api/228/49013)
-* [ListScdnLogTasks](https://cloud.tencent.com/document/api/228/49012)
-
-新增数据结构：
-
-* [ScdnLogTaskDetail](https://cloud.tencent.com/document/api/228/30987#ScdnLogTaskDetail)
-
-
-
-## 腾讯云释义(tcex) 版本：2020-07-27
+## 云防火墙(cfw) 版本：2019-09-04
 
 ### 第 1 次发布
 
-发布时间：2020-10-10 17:07:20
+发布时间：2020-10-13 08:09:15
 
 本次发布包含了以下内容：
 
@@ -33,36 +12,38 @@
 
 新增接口：
 
-* [DescribeInvocationResult](https://cloud.tencent.com/document/api/1266/48991)
-* [InvokeService](https://cloud.tencent.com/document/api/1266/48990)
+* [CreateAcRules](https://cloud.tencent.com/document/api/1132/49070)
+* [DeleteAcRule](https://cloud.tencent.com/document/api/1132/49059)
+* [DeleteAllAccessControlRule](https://cloud.tencent.com/document/api/1132/49058)
+* [DescribeAcLists](https://cloud.tencent.com/document/api/1132/49069)
+* [DescribeNatRuleOverview](https://cloud.tencent.com/document/api/1132/49068)
+* [DescribeRuleOverview](https://cloud.tencent.com/document/api/1132/49067)
+* [DescribeSwitchLists](https://cloud.tencent.com/document/api/1132/49057)
+* [DescribeSyncAssetStatus](https://cloud.tencent.com/document/api/1132/49056)
+* [DescribeTableStatus](https://cloud.tencent.com/document/api/1132/49066)
+* [DescribeVpcRuleOverview](https://cloud.tencent.com/document/api/1132/49065)
+* [ModifyAcRule](https://cloud.tencent.com/document/api/1132/49064)
+* [ModifyAllRuleStatus](https://cloud.tencent.com/document/api/1132/49063)
+* [ModifyAllSwitchStatus](https://cloud.tencent.com/document/api/1132/49055)
+* [ModifyItemSwitchStatus](https://cloud.tencent.com/document/api/1132/49054)
+* [ModifySequenceRules](https://cloud.tencent.com/document/api/1132/49062)
+* [ModifyTableStatus](https://cloud.tencent.com/document/api/1132/49061)
+* [RunSyncAsset](https://cloud.tencent.com/document/api/1132/49053)
 
 新增数据结构：
 
-* [AlgorithmResult](https://cloud.tencent.com/document/api/1266/48992#AlgorithmResult)
+* [AcListsData](https://cloud.tencent.com/document/api/1132/49071#AcListsData)
+* [RuleInfoData](https://cloud.tencent.com/document/api/1132/49071#RuleInfoData)
+* [SequenceData](https://cloud.tencent.com/document/api/1132/49071#SequenceData)
+* [SwitchListsData](https://cloud.tencent.com/document/api/1132/49071#SwitchListsData)
 
 
 
-## 容器服务(tke) 版本：2018-05-25
+## 游戏服务器引擎(gse) 版本：2019-11-12
 
-### 第 27 次发布
+### 第 9 次发布
 
-发布时间：2020-10-12 08:06:24
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [AcquireClusterAdminRole](https://cloud.tencent.com/document/api/457/49014)
-
-
-
-## 腾讯微服务平台 TSF(tsf) 版本：2018-03-26
-
-### 第 31 次发布
-
-发布时间：2020-10-12 08:06:34
+发布时间：2020-10-13 08:00:55
 
 本次发布包含了以下内容：
 
@@ -70,18 +51,65 @@
 
 修改接口：
 
-* [ModifyUploadInfo](https://cloud.tencent.com/document/api/649/36077)
+* [CreateAsset](https://cloud.tencent.com/document/api/1165/48731)
 
-	* <font color="#dd0000">**修改入参**：</font>Md5
+	* 新增入参：ImageId
+
+	* 新增出参：AssetArn
+
+
+修改数据结构：
+
+* [Asset](https://cloud.tencent.com/document/api/1165/42074#Asset)
+
+	* 新增成员：AssetArn, ImageId, OsType
 
 
 
 
-## 私有网络(vpc) 版本：2017-03-12
+## 轻量应用服务器(lighthouse) 版本：2020-03-24
 
-### 第 64 次发布
+### 第 6 次发布
 
-发布时间：2020-10-12 08:06:51
+发布时间：2020-10-13 08:00:11
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [Blueprint](https://cloud.tencent.com/document/api/1207/47576#Blueprint)
+
+	* 新增成员：BlueprintState
+
+
+
+
+## 云函数(scf) 版本：2018-04-16
+
+### 第 21 次发布
+
+发布时间：2020-10-13 08:05:52
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateTrigger](https://cloud.tencent.com/document/api/583/18589)
+
+	* 新增入参：CustomArgument
+
+
+
+
+## 云开发 CloudBase(tcb) 版本：2018-06-08
+
+### 第 21 次发布
+
+发布时间：2020-10-13 08:06:21
 
 本次发布包含了以下内容：
 
@@ -89,7 +117,27 @@
 
 新增接口：
 
-* [RenewAddresses](https://cloud.tencent.com/document/api/215/49015)
+* [DescribeDownloadFile](https://cloud.tencent.com/document/api/876/49049)
+
+
+
+## 分布式消息队列(tdmq) 版本：2020-02-17
+
+### 第 2 次发布
+
+发布时间：2020-10-13 08:08:58
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeEnvironmentRoles](https://cloud.tencent.com/document/api/1179/49051)
+
+新增数据结构：
+
+* [EnvironmentRole](https://cloud.tencent.com/document/api/1179/46089#EnvironmentRole)
 
 
 
@@ -6279,12 +6327,12 @@
 
 新增接口：
 
-* [[DeleteScdnDomain](https://cloud.tencent.com/document/api/228/49013)](https://cloud.tencent.com/document/api/#/#)
-* [[ListScdnLogTasks](https://cloud.tencent.com/document/api/228/49012)](https://cloud.tencent.com/document/api/#/#)
+* [DeleteScdnDomain](https://cloud.tencent.com/document/api/228/49013)
+* [ListScdnLogTasks](https://cloud.tencent.com/document/api/228/49012)
 
 新增数据结构：
 
-* [[ScdnLogTaskDetail](https://cloud.tencent.com/document/api/228/30987#ScdnLogTaskDetail)](https://cloud.tencent.com/document/api/228/30987#[ScdnLogTaskDetail](https://cloud.tencent.com/document/api/228/30987#ScdnLogTaskDetail))
+* [ScdnLogTaskDetail](https://cloud.tencent.com/document/api/228/30987#ScdnLogTaskDetail)
 
 ### 第 37 次发布
 
@@ -7335,6 +7383,46 @@
 * [PGroup](https://cloud.tencent.com/document/api/582/38175#PGroup)
 * [PGroupInfo](https://cloud.tencent.com/document/api/582/38175#PGroupInfo)
 * [PGroupRuleInfo](https://cloud.tencent.com/document/api/582/38175#PGroupRuleInfo)
+
+
+
+
+## 云防火墙(cfw) 版本：2019-09-04
+
+### 第 1 次发布
+
+发布时间：2020-10-13 08:09:15
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[CreateAcRules](https://cloud.tencent.com/document/api/1132/49070)](https://cloud.tencent.com/document/api/#/#)
+* [[DeleteAcRule](https://cloud.tencent.com/document/api/1132/49059)](https://cloud.tencent.com/document/api/#/#)
+* [[DeleteAllAccessControlRule](https://cloud.tencent.com/document/api/1132/49058)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeAcLists](https://cloud.tencent.com/document/api/1132/49069)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeNatRuleOverview](https://cloud.tencent.com/document/api/1132/49068)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeRuleOverview](https://cloud.tencent.com/document/api/1132/49067)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeSwitchLists](https://cloud.tencent.com/document/api/1132/49057)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeSyncAssetStatus](https://cloud.tencent.com/document/api/1132/49056)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeTableStatus](https://cloud.tencent.com/document/api/1132/49066)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeVpcRuleOverview](https://cloud.tencent.com/document/api/1132/49065)](https://cloud.tencent.com/document/api/#/#)
+* [[ModifyAcRule](https://cloud.tencent.com/document/api/1132/49064)](https://cloud.tencent.com/document/api/#/#)
+* [[ModifyAllRuleStatus](https://cloud.tencent.com/document/api/1132/49063)](https://cloud.tencent.com/document/api/#/#)
+* [[ModifyAllSwitchStatus](https://cloud.tencent.com/document/api/1132/49055)](https://cloud.tencent.com/document/api/#/#)
+* [[ModifyItemSwitchStatus](https://cloud.tencent.com/document/api/1132/49054)](https://cloud.tencent.com/document/api/#/#)
+* [[ModifySequenceRules](https://cloud.tencent.com/document/api/1132/49062)](https://cloud.tencent.com/document/api/#/#)
+* [[ModifyTableStatus](https://cloud.tencent.com/document/api/1132/49061)](https://cloud.tencent.com/document/api/#/#)
+* [[RunSyncAsset](https://cloud.tencent.com/document/api/1132/49053)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[AcListsData](https://cloud.tencent.com/document/api/1132/49071#AcListsData)](https://cloud.tencent.com/document/api/1132/49071#[AcListsData](https://cloud.tencent.com/document/api/1132/49071#AcListsData))
+* [[RuleInfoData](https://cloud.tencent.com/document/api/1132/49071#RuleInfoData)](https://cloud.tencent.com/document/api/1132/49071#[RuleInfoData](https://cloud.tencent.com/document/api/1132/49071#RuleInfoData))
+* [[SequenceData](https://cloud.tencent.com/document/api/1132/49071#SequenceData)](https://cloud.tencent.com/document/api/1132/49071#[SequenceData](https://cloud.tencent.com/document/api/1132/49071#SequenceData))
+* [[SwitchListsData](https://cloud.tencent.com/document/api/1132/49071#SwitchListsData)](https://cloud.tencent.com/document/api/1132/49071#[SwitchListsData](https://cloud.tencent.com/document/api/1132/49071#SwitchListsData))
 
 
 
@@ -16419,6 +16507,30 @@
 
 ## 游戏服务器引擎(gse) 版本：2019-11-12
 
+### 第 9 次发布
+
+发布时间：2020-10-13 08:00:55
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateAsset](https://cloud.tencent.com/document/api/1165/48731)
+
+	* 新增入参：ImageId
+
+	* 新增出参：AssetArn
+
+
+修改数据结构：
+
+* [Asset](https://cloud.tencent.com/document/api/1165/42074#Asset)
+
+	* 新增成员：AssetArn, ImageId, OsType
+
+
 ### 第 8 次发布
 
 发布时间：2020-09-30 08:00:48
@@ -19223,6 +19335,21 @@
 
 
 ## 轻量应用服务器(lighthouse) 版本：2020-03-24
+
+### 第 6 次发布
+
+发布时间：2020-10-13 08:00:11
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [Blueprint](https://cloud.tencent.com/document/api/1207/47576#Blueprint)
+
+	* 新增成员：BlueprintState
+
 
 ### 第 5 次发布
 
@@ -24853,6 +24980,21 @@
 
 ## 云函数(scf) 版本：2018-04-16
 
+### 第 21 次发布
+
+发布时间：2020-10-13 08:05:52
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateTrigger](https://cloud.tencent.com/document/api/583/18589)
+
+	* 新增入参：CustomArgument
+
+
 ### 第 20 次发布
 
 发布时间：2020-09-24 08:05:31
@@ -27472,6 +27614,18 @@
 
 ## 云开发 CloudBase(tcb) 版本：2018-06-08
 
+### 第 21 次发布
+
+发布时间：2020-10-13 08:06:21
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeDownloadFile](https://cloud.tencent.com/document/api/876/49049)](https://cloud.tencent.com/document/api/#/#)
+
 ### 第 20 次发布
 
 发布时间：2020-09-30 08:06:02
@@ -27846,12 +28000,12 @@
 
 新增接口：
 
-* [[DescribeInvocationResult](https://cloud.tencent.com/document/api/1266/48991)](https://cloud.tencent.com/document/api/#/#)
-* [[InvokeService](https://cloud.tencent.com/document/api/1266/48990)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeInvocationResult](https://cloud.tencent.com/document/api/1266/48991)
+* [InvokeService](https://cloud.tencent.com/document/api/1266/48990)
 
 新增数据结构：
 
-* [[AlgorithmResult](https://cloud.tencent.com/document/api/1266/48992#AlgorithmResult)](https://cloud.tencent.com/document/api/1266/48992#[AlgorithmResult](https://cloud.tencent.com/document/api/1266/48992#AlgorithmResult))
+* [AlgorithmResult](https://cloud.tencent.com/document/api/1266/48992#AlgorithmResult)
 
 
 
@@ -28509,6 +28663,22 @@
 
 
 ## 分布式消息队列(tdmq) 版本：2020-02-17
+
+### 第 2 次发布
+
+发布时间：2020-10-13 08:08:58
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeEnvironmentRoles](https://cloud.tencent.com/document/api/1179/49051)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[EnvironmentRole](https://cloud.tencent.com/document/api/1179/46089#EnvironmentRole)](https://cloud.tencent.com/document/api/1179/46089#[EnvironmentRole](https://cloud.tencent.com/document/api/1179/46089#EnvironmentRole))
 
 ### 第 1 次发布
 
@@ -29759,7 +29929,7 @@
 
 新增接口：
 
-* [[AcquireClusterAdminRole](https://cloud.tencent.com/document/api/457/49014)](https://cloud.tencent.com/document/api/#/#)
+* [AcquireClusterAdminRole](https://cloud.tencent.com/document/api/457/49014)
 
 ### 第 26 次发布
 
@@ -33524,7 +33694,7 @@
 
 新增接口：
 
-* [[RenewAddresses](https://cloud.tencent.com/document/api/215/49015)](https://cloud.tencent.com/document/api/#/#)
+* [RenewAddresses](https://cloud.tencent.com/document/api/215/49015)
 
 ### 第 63 次发布
 

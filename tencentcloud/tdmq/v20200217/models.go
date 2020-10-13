@@ -436,6 +436,52 @@ func (r *DescribeEnvironmentAttributesResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeEnvironmentRolesRequest struct {
+	*tchttp.BaseRequest
+
+	// 环境（命名空间）
+	EnvironmentId *string `json:"EnvironmentId,omitempty" name:"EnvironmentId"`
+
+	// 起始下标，不填默认为0。
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 返回数量，不填则默认为10，最大值为20。
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+func (r *DescribeEnvironmentRolesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeEnvironmentRolesRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeEnvironmentRolesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 记录数。
+		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 环境角色集合。
+		EnvironmentRoleSets []*EnvironmentRole `json:"EnvironmentRoleSets,omitempty" name:"EnvironmentRoleSets" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeEnvironmentRolesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeEnvironmentRolesResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeEnvironmentsRequest struct {
 	*tchttp.BaseRequest
 
@@ -662,6 +708,27 @@ type Environment struct {
 	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
 
 	// 最近修改时间
+	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
+}
+
+type EnvironmentRole struct {
+
+	// 环境（命名空间）。
+	EnvironmentId *string `json:"EnvironmentId,omitempty" name:"EnvironmentId"`
+
+	// 角色名称。
+	RoleName *string `json:"RoleName,omitempty" name:"RoleName"`
+
+	// 授权项，最多只能包含produce、consume两项的非空字符串数组。
+	Permissions []*string `json:"Permissions,omitempty" name:"Permissions" list`
+
+	// 角色描述。
+	RoleDescribe *string `json:"RoleDescribe,omitempty" name:"RoleDescribe"`
+
+	// 创建时间。
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 更新时间。
 	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
 }
 
