@@ -197,6 +197,31 @@ func (c *Client) DescribeAccessPoints(request *DescribeAccessPointsRequest) (res
     return
 }
 
+func NewDescribeDirectConnectTunnelExtraRequest() (request *DescribeDirectConnectTunnelExtraRequest) {
+    request = &DescribeDirectConnectTunnelExtraRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("dc", APIVersion, "DescribeDirectConnectTunnelExtra")
+    return
+}
+
+func NewDescribeDirectConnectTunnelExtraResponse() (response *DescribeDirectConnectTunnelExtraResponse) {
+    response = &DescribeDirectConnectTunnelExtraResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（DescribeDirectConnectTunnelExtra）用于查询专用通道扩展信息
+func (c *Client) DescribeDirectConnectTunnelExtra(request *DescribeDirectConnectTunnelExtraRequest) (response *DescribeDirectConnectTunnelExtraResponse, err error) {
+    if request == nil {
+        request = NewDescribeDirectConnectTunnelExtraRequest()
+    }
+    response = NewDescribeDirectConnectTunnelExtraResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeDirectConnectTunnelsRequest() (request *DescribeDirectConnectTunnelsRequest) {
     request = &DescribeDirectConnectTunnelsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -247,6 +272,31 @@ func (c *Client) DescribeDirectConnects(request *DescribeDirectConnectsRequest) 
     return
 }
 
+func NewDescribePublicDirectConnectTunnelRoutesRequest() (request *DescribePublicDirectConnectTunnelRoutesRequest) {
+    request = &DescribePublicDirectConnectTunnelRoutesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("dc", APIVersion, "DescribePublicDirectConnectTunnelRoutes")
+    return
+}
+
+func NewDescribePublicDirectConnectTunnelRoutesResponse() (response *DescribePublicDirectConnectTunnelRoutesResponse) {
+    response = &DescribePublicDirectConnectTunnelRoutesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（DescribePublicDirectConnectTunnelRoutes）用于查询互联网通道路由列表
+func (c *Client) DescribePublicDirectConnectTunnelRoutes(request *DescribePublicDirectConnectTunnelRoutesRequest) (response *DescribePublicDirectConnectTunnelRoutesResponse, err error) {
+    if request == nil {
+        request = NewDescribePublicDirectConnectTunnelRoutesRequest()
+    }
+    response = NewDescribePublicDirectConnectTunnelRoutesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyDirectConnectAttributeRequest() (request *ModifyDirectConnectAttributeRequest) {
     request = &ModifyDirectConnectAttributeRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -293,6 +343,31 @@ func (c *Client) ModifyDirectConnectTunnelAttribute(request *ModifyDirectConnect
         request = NewModifyDirectConnectTunnelAttributeRequest()
     }
     response = NewModifyDirectConnectTunnelAttributeResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyDirectConnectTunnelExtraRequest() (request *ModifyDirectConnectTunnelExtraRequest) {
+    request = &ModifyDirectConnectTunnelExtraRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("dc", APIVersion, "ModifyDirectConnectTunnelExtra")
+    return
+}
+
+func NewModifyDirectConnectTunnelExtraResponse() (response *ModifyDirectConnectTunnelExtraResponse) {
+    response = &ModifyDirectConnectTunnelExtraResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（ModifyDirectConnectTunnelExtra）用于修改专用通道扩展信息
+func (c *Client) ModifyDirectConnectTunnelExtra(request *ModifyDirectConnectTunnelExtraRequest) (response *ModifyDirectConnectTunnelExtraResponse, err error) {
+    if request == nil {
+        request = NewModifyDirectConnectTunnelExtraRequest()
+    }
+    response = NewModifyDirectConnectTunnelExtraResponse()
     err = c.Send(request, response)
     return
 }

@@ -2381,7 +2381,7 @@ type InboundPermission struct {
 	// 起始端口号，最小值1025
 	FromPort *uint64 `json:"FromPort,omitempty" name:"FromPort"`
 
-	// IP 段范围，CIDR 方式划分
+	// IP 段范围，合法的 CIDR 地址类型，如所有IPv4来源：0.0.0.0/0
 	IpRange *string `json:"IpRange,omitempty" name:"IpRange"`
 
 	// 协议类型：TCP或者UDP

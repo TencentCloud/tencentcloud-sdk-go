@@ -601,11 +601,11 @@ type ApplyWithdrawalRequest struct {
 	SubAppId *string `json:"SubAppId,omitempty" name:"SubAppId"`
 
 	// 用于提现
-	// <敏感信息>加密详见《商户端接口敏感信息加密说明》
+	// <敏感信息>加密详见<a href="https://cloud.tencent.com/document/product/1122/48979" target="_blank">《商户端接口敏感信息加密说明》</a>
 	SettleAcctNo *string `json:"SettleAcctNo,omitempty" name:"SettleAcctNo"`
 
 	// 结算账户户名
-	// <敏感信息>加密详见《商户端接口敏感信息加密说明》
+	// <敏感信息>加密详见<a href="https://cloud.tencent.com/document/product/1122/48979" target="_blank">《商户端接口敏感信息加密说明》</a>
 	SettleAcctName *string `json:"SettleAcctName,omitempty" name:"SettleAcctName"`
 
 	// 币种 RMB
@@ -624,7 +624,7 @@ type ApplyWithdrawalRequest struct {
 	IdType *string `json:"IdType,omitempty" name:"IdType"`
 
 	// 会员证件号码
-	// <敏感信息>加密详见《商户端接口敏感信息加密说明》
+	// <敏感信息>加密详见<a href="https://cloud.tencent.com/document/product/1122/48979" target="_blank">《商户端接口敏感信息加密说明》</a>
 	IdCode *string `json:"IdCode,omitempty" name:"IdCode"`
 
 	// 聚鑫分配的安全ID
@@ -742,11 +742,11 @@ type BindAcctRequest struct {
 	BindType *int64 `json:"BindType,omitempty" name:"BindType"`
 
 	// 用于提现
-	// <敏感信息>加密详见《商户端接口敏感信息加密说明》
+	// <敏感信息>加密详见<a href="https://cloud.tencent.com/document/product/1122/48979" target="_blank">《商户端接口敏感信息加密说明》</a>
 	SettleAcctNo *string `json:"SettleAcctNo,omitempty" name:"SettleAcctNo"`
 
 	// 结算账户户名
-	// <敏感信息>加密详见《商户端接口敏感信息加密说明》
+	// <敏感信息>加密详见<a href="https://cloud.tencent.com/document/product/1122/48979" target="_blank">《商户端接口敏感信息加密说明》</a>
 	SettleAcctName *string `json:"SettleAcctName,omitempty" name:"SettleAcctName"`
 
 	// 1 – 本行账户
@@ -757,7 +757,7 @@ type BindAcctRequest struct {
 	IdType *string `json:"IdType,omitempty" name:"IdType"`
 
 	// 证件号码
-	// <敏感信息>加密详见《商户端接口敏感信息加密说明》
+	// <敏感信息>加密详见<a href="https://cloud.tencent.com/document/product/1122/48979" target="_blank">《商户端接口敏感信息加密说明》</a>
 	IdCode *string `json:"IdCode,omitempty" name:"IdCode"`
 
 	// 开户行名称
@@ -771,7 +771,7 @@ type BindAcctRequest struct {
 
 	// 用于短信验证
 	// BindType==2时必填
-	// <敏感信息>加密详见《商户端接口敏感信息加密说明》
+	// <敏感信息>加密详见<a href="https://cloud.tencent.com/document/product/1122/48979" target="_blank">《商户端接口敏感信息加密说明》</a>
 	Mobile *string `json:"Mobile,omitempty" name:"Mobile"`
 
 	// 大小额行号，超级网银行号和大小额行号
@@ -1070,7 +1070,7 @@ type CheckAcctRequest struct {
 	BindType *int64 `json:"BindType,omitempty" name:"BindType"`
 
 	// 结算账户账号
-	// <敏感信息>加密详见《商户端接口敏感信息加密说明》
+	// <敏感信息>加密详见<a href="https://cloud.tencent.com/document/product/1122/48979" target="_blank">《商户端接口敏感信息加密说明》</a>
 	SettleAcctNo *string `json:"SettleAcctNo,omitempty" name:"SettleAcctNo"`
 
 	// 聚鑫分配的安全ID
@@ -1310,15 +1310,15 @@ type CreateAcctRequest struct {
 	Address *string `json:"Address,omitempty" name:"Address"`
 
 	// 子商户联系人
-	// <敏感信息>加密详见《商户端接口敏感信息加密说明》
+	// <敏感信息>加密详见<a href="https://cloud.tencent.com/document/product/1122/48979" target="_blank">《商户端接口敏感信息加密说明》</a>
 	Contact *string `json:"Contact,omitempty" name:"Contact"`
 
 	// 联系人手机号
-	// <敏感信息>加密详见《商户端接口敏感信息加密说明》
+	// <敏感信息>加密详见<a href="https://cloud.tencent.com/document/product/1122/48979" target="_blank">《商户端接口敏感信息加密说明》</a>
 	Mobile *string `json:"Mobile,omitempty" name:"Mobile"`
 
 	// 邮箱 
-	// <敏感信息>加密详见《商户端接口敏感信息加密说明》
+	// <敏感信息>加密详见<a href="https://cloud.tencent.com/document/product/1122/48979" target="_blank">《商户端接口敏感信息加密说明》</a>
 	Email *string `json:"Email,omitempty" name:"Email"`
 
 	// 聚鑫分配的安全ID
@@ -1343,11 +1343,11 @@ type CreateAcctRequest struct {
 	SubMerchantMemberType *string `json:"SubMerchantMemberType,omitempty" name:"SubMerchantMemberType"`
 
 	// 子商户密钥
-	// <敏感信息>加密详见《商户端接口敏感信息加密说明》
+	// <敏感信息>加密详见<a href="https://cloud.tencent.com/document/product/1122/48979" target="_blank">《商户端接口敏感信息加密说明》</a>
 	SubMerchantKey *string `json:"SubMerchantKey,omitempty" name:"SubMerchantKey"`
 
 	// 子商户私钥
-	// <敏感信息>加密详见《商户端接口敏感信息加密说明》
+	// <敏感信息>加密详见<a href="https://cloud.tencent.com/document/product/1122/48979" target="_blank">《商户端接口敏感信息加密说明》</a>
 	SubMerchantPrivateKey *string `json:"SubMerchantPrivateKey,omitempty" name:"SubMerchantPrivateKey"`
 
 	// 敏感信息加密类型:
@@ -6827,7 +6827,7 @@ type UnBindAcctRequest struct {
 	SubAppId *string `json:"SubAppId,omitempty" name:"SubAppId"`
 
 	// 用于提现
-	// <敏感信息>加密详见《商户端接口敏感信息加密说明》
+	// <敏感信息>加密详见<a href="https://cloud.tencent.com/document/product/1122/48979" target="_blank">《商户端接口敏感信息加密说明》</a>
 	SettleAcctNo *string `json:"SettleAcctNo,omitempty" name:"SettleAcctNo"`
 
 	// 聚鑫分配的安全ID

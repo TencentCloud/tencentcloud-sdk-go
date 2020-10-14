@@ -803,6 +803,67 @@ func (r *DescribeAgentPayDealsResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeAgentSelfPayDealsRequest struct {
+	*tchttp.BaseRequest
+
+	// 下单人账号ID
+	OwnerUin *string `json:"OwnerUin,omitempty" name:"OwnerUin"`
+
+	// 偏移量
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 限制数目
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 下单时间范围起始点(不传时会默认查15天内订单，传值时需要传15天内的起始时间)
+	CreatTimeRangeStart *string `json:"CreatTimeRangeStart,omitempty" name:"CreatTimeRangeStart"`
+
+	// 下单时间范围终止点
+	CreatTimeRangeEnd *string `json:"CreatTimeRangeEnd,omitempty" name:"CreatTimeRangeEnd"`
+
+	// 0:下单时间降序；其他：下单时间升序
+	Order *uint64 `json:"Order,omitempty" name:"Order"`
+
+	// 订单的状态(1：未支付;2：已支付;3：发货中;4：已发货;5：发货失败;6：已退款;7：已关单;8：订单过期;9：订单已失效;10：产品已失效;11：代付拒绝;12：支付中)
+	Status *uint64 `json:"Status,omitempty" name:"Status"`
+
+	// 订单号列表
+	DealNames []*string `json:"DealNames,omitempty" name:"DealNames" list`
+}
+
+func (r *DescribeAgentSelfPayDealsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeAgentSelfPayDealsRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeAgentSelfPayDealsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 订单数组
+		AgentPayDealSet []*AgentDealElem `json:"AgentPayDealSet,omitempty" name:"AgentPayDealSet" list`
+
+		// 符合条件的订单总数量
+		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeAgentSelfPayDealsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeAgentSelfPayDealsResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeClientBalanceRequest struct {
 	*tchttp.BaseRequest
 

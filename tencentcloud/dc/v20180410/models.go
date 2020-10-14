@@ -79,6 +79,24 @@ type AccessPoint struct {
 	AvailablePortType []*string `json:"AvailablePortType,omitempty" name:"AvailablePortType" list`
 }
 
+type BFDInfo struct {
+
+	// 健康检查次数
+	ProbeFailedTimes *int64 `json:"ProbeFailedTimes,omitempty" name:"ProbeFailedTimes"`
+
+	// 健康检查间隔
+	Interval *int64 `json:"Interval,omitempty" name:"Interval"`
+}
+
+type BGPStatus struct {
+
+	// 腾讯侧主互联IP BGP状态
+	TencentAddressBgpState *string `json:"TencentAddressBgpState,omitempty" name:"TencentAddressBgpState"`
+
+	// 腾讯侧备互联IP BGP状态
+	TencentBackupAddressBgpState *string `json:"TencentBackupAddressBgpState,omitempty" name:"TencentBackupAddressBgpState"`
+}
+
 type BgpPeer struct {
 
 	// 用户侧，BGP Asn
@@ -378,6 +396,43 @@ func (r *DescribeAccessPointsResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeDirectConnectTunnelExtraRequest struct {
+	*tchttp.BaseRequest
+
+	// 专用通道ID
+	DirectConnectTunnelId *string `json:"DirectConnectTunnelId,omitempty" name:"DirectConnectTunnelId"`
+}
+
+func (r *DescribeDirectConnectTunnelExtraRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeDirectConnectTunnelExtraRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeDirectConnectTunnelExtraResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 专用通道扩展信息
+		DirectConnectTunnelExtra *DirectConnectTunnelExtra `json:"DirectConnectTunnelExtra,omitempty" name:"DirectConnectTunnelExtra"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeDirectConnectTunnelExtraResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeDirectConnectTunnelExtraResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeDirectConnectTunnelsRequest struct {
 	*tchttp.BaseRequest
 
@@ -481,6 +536,57 @@ func (r *DescribeDirectConnectsResponse) ToJsonString() string {
 }
 
 func (r *DescribeDirectConnectsResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribePublicDirectConnectTunnelRoutesRequest struct {
+	*tchttp.BaseRequest
+
+	// 专用通道ID
+	DirectConnectTunnelId *string `json:"DirectConnectTunnelId,omitempty" name:"DirectConnectTunnelId"`
+
+	// 过滤条件：
+	// route-type：路由类型，取值：BGP/STATIC
+	// route-subnet：路由cidr，取值如：192.68.1.0/24
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+
+	// 偏移量，默认为0
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 返回数量，默认为20，最大值为100
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+func (r *DescribePublicDirectConnectTunnelRoutesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribePublicDirectConnectTunnelRoutesRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribePublicDirectConnectTunnelRoutesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 互联网通道路由列表
+		Routes []*DirectConnectTunnelRoute `json:"Routes,omitempty" name:"Routes" list`
+
+		// 记录总数
+		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribePublicDirectConnectTunnelRoutesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribePublicDirectConnectTunnelRoutesResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -705,6 +811,139 @@ type DirectConnectTunnel struct {
 	SignLaw *bool `json:"SignLaw,omitempty" name:"SignLaw"`
 }
 
+type DirectConnectTunnelExtra struct {
+
+	// 专用通道ID
+	DirectConnectTunnelId *string `json:"DirectConnectTunnelId,omitempty" name:"DirectConnectTunnelId"`
+
+	// 物理专线ID
+	DirectConnectId *string `json:"DirectConnectId,omitempty" name:"DirectConnectId"`
+
+	// 专用通道状态
+	// AVAILABLE:就绪或者已连接
+	// PENDING:申请中
+	// ALLOCATING:配置中
+	// ALLOCATED:配置完成
+	// ALTERING:修改中
+	// DELETING:删除中
+	// DELETED:删除完成
+	// COMFIRMING:待接受
+	// REJECTED:拒绝
+	State *string `json:"State,omitempty" name:"State"`
+
+	// 物理专线的拥有者，开发商账号 ID
+	DirectConnectOwnerAccount *string `json:"DirectConnectOwnerAccount,omitempty" name:"DirectConnectOwnerAccount"`
+
+	// 专用通道的拥有者，开发商账号 ID
+	OwnerAccount *string `json:"OwnerAccount,omitempty" name:"OwnerAccount"`
+
+	// 网络类型，分别为VPC、BMVPC、CCN
+	//  VPC：私有网络 ，BMVPC：黑石网络，CCN：云联网
+	NetworkType *string `json:"NetworkType,omitempty" name:"NetworkType"`
+
+	// VPC地域对应的网络名，如ap-guangzhou
+	NetworkRegion *string `json:"NetworkRegion,omitempty" name:"NetworkRegion"`
+
+	// 私有网络统一 ID 或者黑石网络统一 ID
+	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
+
+	// 专线网关 ID
+	DirectConnectGatewayId *string `json:"DirectConnectGatewayId,omitempty" name:"DirectConnectGatewayId"`
+
+	// BGP ：BGP路由 STATIC：静态 默认为 BGP 路由
+	RouteType *string `json:"RouteType,omitempty" name:"RouteType"`
+
+	// 用户侧BGP，Asn，AuthKey
+	BgpPeer *BgpPeer `json:"BgpPeer,omitempty" name:"BgpPeer"`
+
+	// 用户侧网段地址
+	RouteFilterPrefixes []*RouteFilterPrefix `json:"RouteFilterPrefixes,omitempty" name:"RouteFilterPrefixes" list`
+
+	// 互联网通道公网网段地址
+	PublicAddresses []*RouteFilterPrefix `json:"PublicAddresses,omitempty" name:"PublicAddresses" list`
+
+	// 专用通道的Vlan
+	Vlan *int64 `json:"Vlan,omitempty" name:"Vlan"`
+
+	// 腾讯侧互联 IP
+	TencentAddress *string `json:"TencentAddress,omitempty" name:"TencentAddress"`
+
+	// 腾讯侧备用互联IP
+	TencentBackupAddress *string `json:"TencentBackupAddress,omitempty" name:"TencentBackupAddress"`
+
+	// 用户侧互联 IP
+	CustomerAddress *string `json:"CustomerAddress,omitempty" name:"CustomerAddress"`
+
+	// 专用通道名称
+	DirectConnectTunnelName *string `json:"DirectConnectTunnelName,omitempty" name:"DirectConnectTunnelName"`
+
+	// 专用通道创建时间
+	CreatedTime *string `json:"CreatedTime,omitempty" name:"CreatedTime"`
+
+	// 专用通道带宽值
+	Bandwidth *int64 `json:"Bandwidth,omitempty" name:"Bandwidth"`
+
+	// 关联的网络自定义探测ID
+	NetDetectId *string `json:"NetDetectId,omitempty" name:"NetDetectId"`
+
+	// BGP community开关
+	EnableBGPCommunity *bool `json:"EnableBGPCommunity,omitempty" name:"EnableBGPCommunity"`
+
+	// 是否为Nat通道
+	NatType *int64 `json:"NatType,omitempty" name:"NatType"`
+
+	// VPC地域简码，如gz、cd
+	VpcRegion *string `json:"VpcRegion,omitempty" name:"VpcRegion"`
+
+	// 是否开启BFD
+	BfdEnable *int64 `json:"BfdEnable,omitempty" name:"BfdEnable"`
+
+	// 是否开启NQA
+	NqaEnable *int64 `json:"NqaEnable,omitempty" name:"NqaEnable"`
+
+	// 专用通道接入点类型
+	AccessPointType *string `json:"AccessPointType,omitempty" name:"AccessPointType"`
+
+	// 专线网关名称
+	DirectConnectGatewayName *string `json:"DirectConnectGatewayName,omitempty" name:"DirectConnectGatewayName"`
+
+	// VPC名称
+	VpcName *string `json:"VpcName,omitempty" name:"VpcName"`
+
+	// 专用通道关联的物理专线是否签署了用户协议
+	SignLaw *bool `json:"SignLaw,omitempty" name:"SignLaw"`
+
+	// BFD配置信息
+	BfdInfo *BFDInfo `json:"BfdInfo,omitempty" name:"BfdInfo"`
+
+	// NQA配置信息
+	NqaInfo *NQAInfo `json:"NqaInfo,omitempty" name:"NqaInfo"`
+
+	// BGP状态
+	BgpStatus *BGPStatus `json:"BgpStatus,omitempty" name:"BgpStatus"`
+}
+
+type DirectConnectTunnelRoute struct {
+
+	// 专用通道路由ID
+	RouteId *string `json:"RouteId,omitempty" name:"RouteId"`
+
+	// 网段CIDR
+	DestinationCidrBlock *string `json:"DestinationCidrBlock,omitempty" name:"DestinationCidrBlock"`
+
+	// 路由类型：BGP/STATIC路由
+	RouteType *string `json:"RouteType,omitempty" name:"RouteType"`
+
+	// ENABLE：路由启用，DISABLE：路由禁用
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// ASPath信息
+	ASPath []*string `json:"ASPath,omitempty" name:"ASPath" list`
+
+	// 路由下一跳IP
+	NextHop *string `json:"NextHop,omitempty" name:"NextHop"`
+}
+
 type Filter struct {
 
 	// 需要过滤的字段。
@@ -834,6 +1073,88 @@ func (r *ModifyDirectConnectTunnelAttributeResponse) ToJsonString() string {
 
 func (r *ModifyDirectConnectTunnelAttributeResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyDirectConnectTunnelExtraRequest struct {
+	*tchttp.BaseRequest
+
+	// 专用通道ID
+	DirectConnectTunnelId *string `json:"DirectConnectTunnelId,omitempty" name:"DirectConnectTunnelId"`
+
+	// 专用通道的Vlan
+	Vlan *int64 `json:"Vlan,omitempty" name:"Vlan"`
+
+	// 用户侧BGP，Asn，AuthKey
+	BgpPeer *BgpPeer `json:"BgpPeer,omitempty" name:"BgpPeer"`
+
+	// 用户侧网段地址
+	RouteFilterPrefixes *RouteFilterPrefix `json:"RouteFilterPrefixes,omitempty" name:"RouteFilterPrefixes"`
+
+	// 腾讯侧互联IP
+	TencentAddress *string `json:"TencentAddress,omitempty" name:"TencentAddress"`
+
+	// 腾讯侧备用互联IP
+	TencentBackupAddress *string `json:"TencentBackupAddress,omitempty" name:"TencentBackupAddress"`
+
+	// 用户侧互联IP
+	CustomerAddress *string `json:"CustomerAddress,omitempty" name:"CustomerAddress"`
+
+	// 专用通道带宽值
+	Bandwidth *int64 `json:"Bandwidth,omitempty" name:"Bandwidth"`
+
+	// BGP community开关
+	EnableBGPCommunity *bool `json:"EnableBGPCommunity,omitempty" name:"EnableBGPCommunity"`
+
+	// 是否开启BFD
+	BfdEnable *int64 `json:"BfdEnable,omitempty" name:"BfdEnable"`
+
+	// 是否开启NQA
+	NqaEnable *int64 `json:"NqaEnable,omitempty" name:"NqaEnable"`
+
+	// BFD配置信息
+	BfdInfo *BFDInfo `json:"BfdInfo,omitempty" name:"BfdInfo"`
+
+	// NQA配置信息
+	NqaInfo *NQAInfo `json:"NqaInfo,omitempty" name:"NqaInfo"`
+}
+
+func (r *ModifyDirectConnectTunnelExtraRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyDirectConnectTunnelExtraRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyDirectConnectTunnelExtraResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifyDirectConnectTunnelExtraResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyDirectConnectTunnelExtraResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type NQAInfo struct {
+
+	// 健康检查次数
+	ProbeFailedTimes *int64 `json:"ProbeFailedTimes,omitempty" name:"ProbeFailedTimes"`
+
+	// 健康检查间隔
+	Interval *int64 `json:"Interval,omitempty" name:"Interval"`
+
+	// 健康检查地址
+	DestinationIp *string `json:"DestinationIp,omitempty" name:"DestinationIp"`
 }
 
 type RejectDirectConnectTunnelRequest struct {

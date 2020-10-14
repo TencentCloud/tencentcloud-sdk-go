@@ -293,6 +293,31 @@ func (c *Client) DescribeAgentPayDeals(request *DescribeAgentPayDealsRequest) (r
     return
 }
 
+func NewDescribeAgentSelfPayDealsRequest() (request *DescribeAgentSelfPayDealsRequest) {
+    request = &DescribeAgentSelfPayDealsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("partners", APIVersion, "DescribeAgentSelfPayDeals")
+    return
+}
+
+func NewDescribeAgentSelfPayDealsResponse() (response *DescribeAgentSelfPayDealsResponse) {
+    response = &DescribeAgentSelfPayDealsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 可以查询代理商下指定客户的自付订单
+func (c *Client) DescribeAgentSelfPayDeals(request *DescribeAgentSelfPayDealsRequest) (response *DescribeAgentSelfPayDealsResponse, err error) {
+    if request == nil {
+        request = NewDescribeAgentSelfPayDealsRequest()
+    }
+    response = NewDescribeAgentSelfPayDealsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeClientBalanceRequest() (request *DescribeClientBalanceRequest) {
     request = &DescribeClientBalanceRequest{
         BaseRequest: &tchttp.BaseRequest{},
