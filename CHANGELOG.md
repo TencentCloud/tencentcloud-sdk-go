@@ -1,10 +1,34 @@
 # 本版本更新包含以下内容：
 
-## 负载均衡(clb) 版本：2018-03-17
+## 内容分发网络(cdn) 版本：2018-06-06
 
-### 第 33 次发布
+### 第 39 次发布
 
-发布时间：2020-10-14 08:02:37
+发布时间：2020-10-15 08:02:21
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增数据结构：
+
+* [HttpHeaderRule](https://cloud.tencent.com/document/api/228/30987#HttpHeaderRule)
+* [PathRule](https://cloud.tencent.com/document/api/228/30987#PathRule)
+
+修改数据结构：
+
+* [Origin](https://cloud.tencent.com/document/api/228/30987#Origin)
+
+	* 新增成员：PathRules
+
+
+
+
+## 边缘计算机器(ecm) 版本：2019-07-19
+
+### 第 26 次发布
+
+发布时间：2020-10-15 08:00:25
 
 本次发布包含了以下内容：
 
@@ -12,44 +36,38 @@
 
 修改接口：
 
-* [CreateLoadBalancer](https://cloud.tencent.com/document/api/214/30692)
+* [DescribeNetworkInterfaces](https://cloud.tencent.com/document/api/1108/43575)
 
-	* 新增入参：ExclusiveCluster, ClusterTag
+	* <font color="#dd0000">**修改入参**：</font>EcmRegion
 
-
-
-
-## 专线接入(dc) 版本：2018-04-10
-
-### 第 12 次发布
-
-发布时间：2020-10-14 08:03:21
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [DescribeDirectConnectTunnelExtra](https://cloud.tencent.com/document/api/216/49102)
-* [DescribePublicDirectConnectTunnelRoutes](https://cloud.tencent.com/document/api/216/49101)
-* [ModifyDirectConnectTunnelExtra](https://cloud.tencent.com/document/api/216/49100)
 
 新增数据结构：
 
-* [BFDInfo](https://cloud.tencent.com/document/api/216/18418#BFDInfo)
-* [BGPStatus](https://cloud.tencent.com/document/api/216/18418#BGPStatus)
-* [DirectConnectTunnelExtra](https://cloud.tencent.com/document/api/216/18418#DirectConnectTunnelExtra)
-* [DirectConnectTunnelRoute](https://cloud.tencent.com/document/api/216/18418#DirectConnectTunnelRoute)
-* [NQAInfo](https://cloud.tencent.com/document/api/216/18418#NQAInfo)
+* [AddressInfo](https://cloud.tencent.com/document/api/1108/42574#AddressInfo)
+* [InstanceNetworkInfo](https://cloud.tencent.com/document/api/1108/42574#InstanceNetworkInfo)
+
+修改数据结构：
+
+* [Instance](https://cloud.tencent.com/document/api/1108/42574#Instance)
+
+	* 新增成员：ISP
+
+* [Internet](https://cloud.tencent.com/document/api/1108/42574#Internet)
+
+	* 新增成员：InstanceNetworkInfoSet
+
+* [NetworkInterface](https://cloud.tencent.com/document/api/1108/42574#NetworkInterface)
+
+	* 新增成员：EcmRegion
 
 
 
-## 渠道合作伙伴(partners) 版本：2018-03-21
 
-### 第 16 次发布
+## 游戏联机对战引擎(mgobe) 版本：2019-09-29
 
-发布时间：2020-10-14 08:05:26
+### 第 1 次发布
+
+发布时间：2020-10-14 14:25:07
 
 本次发布包含了以下内容：
 
@@ -57,7 +75,7 @@
 
 新增接口：
 
-* [DescribeAgentSelfPayDeals](https://cloud.tencent.com/document/api/563/49103)
+* [DismissRoom](https://cloud.tencent.com/document/api/1038/49120)
 
 
 
@@ -6236,6 +6254,26 @@
 
 
 ## 内容分发网络(cdn) 版本：2018-06-06
+
+### 第 39 次发布
+
+发布时间：2020-10-15 08:02:21
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增数据结构：
+
+* [[HttpHeaderRule](https://cloud.tencent.com/document/api/228/30987#HttpHeaderRule)](https://cloud.tencent.com/document/api/228/30987#[HttpHeaderRule](https://cloud.tencent.com/document/api/228/30987#HttpHeaderRule))
+* [[PathRule](https://cloud.tencent.com/document/api/228/30987#PathRule)](https://cloud.tencent.com/document/api/228/30987#[PathRule](https://cloud.tencent.com/document/api/228/30987#PathRule))
+
+修改数据结构：
+
+* [Origin](https://cloud.tencent.com/document/api/228/30987#Origin)
+
+	* 新增成员：PathRules
+
 
 ### 第 38 次发布
 
@@ -12435,17 +12473,17 @@
 
 新增接口：
 
-* [[DescribeDirectConnectTunnelExtra](https://cloud.tencent.com/document/api/216/49102)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribePublicDirectConnectTunnelRoutes](https://cloud.tencent.com/document/api/216/49101)](https://cloud.tencent.com/document/api/#/#)
-* [[ModifyDirectConnectTunnelExtra](https://cloud.tencent.com/document/api/216/49100)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeDirectConnectTunnelExtra](https://cloud.tencent.com/document/api/216/49102)
+* [DescribePublicDirectConnectTunnelRoutes](https://cloud.tencent.com/document/api/216/49101)
+* [ModifyDirectConnectTunnelExtra](https://cloud.tencent.com/document/api/216/49100)
 
 新增数据结构：
 
-* [[BFDInfo](https://cloud.tencent.com/document/api/216/18418#BFDInfo)](https://cloud.tencent.com/document/api/216/18418#[BFDInfo](https://cloud.tencent.com/document/api/216/18418#BFDInfo))
-* [[BGPStatus](https://cloud.tencent.com/document/api/216/18418#BGPStatus)](https://cloud.tencent.com/document/api/216/18418#[BGPStatus](https://cloud.tencent.com/document/api/216/18418#BGPStatus))
-* [[DirectConnectTunnelExtra](https://cloud.tencent.com/document/api/216/18418#DirectConnectTunnelExtra)](https://cloud.tencent.com/document/api/216/18418#[DirectConnectTunnelExtra](https://cloud.tencent.com/document/api/216/18418#DirectConnectTunnelExtra))
-* [[DirectConnectTunnelRoute](https://cloud.tencent.com/document/api/216/18418#DirectConnectTunnelRoute)](https://cloud.tencent.com/document/api/216/18418#[DirectConnectTunnelRoute](https://cloud.tencent.com/document/api/216/18418#DirectConnectTunnelRoute))
-* [[NQAInfo](https://cloud.tencent.com/document/api/216/18418#NQAInfo)](https://cloud.tencent.com/document/api/216/18418#[NQAInfo](https://cloud.tencent.com/document/api/216/18418#NQAInfo))
+* [BFDInfo](https://cloud.tencent.com/document/api/216/18418#BFDInfo)
+* [BGPStatus](https://cloud.tencent.com/document/api/216/18418#BGPStatus)
+* [DirectConnectTunnelExtra](https://cloud.tencent.com/document/api/216/18418#DirectConnectTunnelExtra)
+* [DirectConnectTunnelRoute](https://cloud.tencent.com/document/api/216/18418#DirectConnectTunnelRoute)
+* [NQAInfo](https://cloud.tencent.com/document/api/216/18418#NQAInfo)
 
 ### 第 11 次发布
 
@@ -13723,6 +13761,41 @@
 
 
 ## 边缘计算机器(ecm) 版本：2019-07-19
+
+### 第 26 次发布
+
+发布时间：2020-10-15 08:00:25
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeNetworkInterfaces](https://cloud.tencent.com/document/api/1108/43575)
+
+	* <font color="#dd0000">**修改入参**：</font>EcmRegion
+
+
+新增数据结构：
+
+* [[AddressInfo](https://cloud.tencent.com/document/api/1108/42574#AddressInfo)](https://cloud.tencent.com/document/api/1108/42574#[AddressInfo](https://cloud.tencent.com/document/api/1108/42574#AddressInfo))
+* [[InstanceNetworkInfo](https://cloud.tencent.com/document/api/1108/42574#InstanceNetworkInfo)](https://cloud.tencent.com/document/api/1108/42574#[InstanceNetworkInfo](https://cloud.tencent.com/document/api/1108/42574#InstanceNetworkInfo))
+
+修改数据结构：
+
+* [Instance](https://cloud.tencent.com/document/api/1108/42574#Instance)
+
+	* 新增成员：ISP
+
+* [Internet](https://cloud.tencent.com/document/api/1108/42574#Internet)
+
+	* 新增成员：InstanceNetworkInfoSet
+
+* [NetworkInterface](https://cloud.tencent.com/document/api/1108/42574#NetworkInterface)
+
+	* 新增成员：EcmRegion
+
 
 ### 第 25 次发布
 
@@ -21042,6 +21115,23 @@
 
 
 
+## 游戏联机对战引擎(mgobe) 版本：2019-09-29
+
+### 第 1 次发布
+
+发布时间：2020-10-14 14:25:07
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DismissRoom](https://cloud.tencent.com/document/api/1038/49120)](https://cloud.tencent.com/document/api/#/#)
+
+
+
+
 ## 云数据库 MongoDB(mongodb) 版本：2018-04-08
 
 ### 第 5 次发布
@@ -23840,7 +23930,7 @@
 
 新增接口：
 
-* [[DescribeAgentSelfPayDeals](https://cloud.tencent.com/document/api/563/49103)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeAgentSelfPayDeals](https://cloud.tencent.com/document/api/563/49103)
 
 ### 第 15 次发布
 

@@ -77,6 +77,17 @@ type Address struct {
 	PayMode *string `json:"PayMode,omitempty" name:"PayMode"`
 }
 
+type AddressInfo struct {
+
+	// 实例的外网ip相关信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PublicIPAddressInfo *PublicIPAddressInfo `json:"PublicIPAddressInfo,omitempty" name:"PublicIPAddressInfo"`
+
+	// 实例的内网ip相关信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PrivateIPAddressInfo *PrivateIPAddressInfo `json:"PrivateIPAddressInfo,omitempty" name:"PrivateIPAddressInfo"`
+}
+
 type AddressTemplateSpecification struct {
 
 	// IP地址ID，例如：eipm-2uw6ujo6。
@@ -2200,9 +2211,6 @@ func (r *DescribeModuleResponse) FromJsonString(s string) error {
 type DescribeNetworkInterfacesRequest struct {
 	*tchttp.BaseRequest
 
-	// ECM 地域
-	EcmRegion *string `json:"EcmRegion,omitempty" name:"EcmRegion"`
-
 	// 弹性网卡实例ID查询。形如：eni-pxir56ns。每次请求的实例的上限为100。参数不支持同时指定NetworkInterfaceIds和Filters。
 	NetworkInterfaceIds []*string `json:"NetworkInterfaceIds,omitempty" name:"NetworkInterfaceIds" list`
 
@@ -2225,6 +2233,9 @@ type DescribeNetworkInterfacesRequest struct {
 
 	// 返回数量，默认为20，最大值为100。
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// ECM 地域
+	EcmRegion *string `json:"EcmRegion,omitempty" name:"EcmRegion"`
 }
 
 func (r *DescribeNetworkInterfacesRequest) ToJsonString() string {
@@ -3389,6 +3400,10 @@ type Instance struct {
 	// VPC属性
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	VirtualPrivateCloud *VirtualPrivateCloud `json:"VirtualPrivateCloud,omitempty" name:"VirtualPrivateCloud"`
+
+	// 实例运营商字段。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ISP *string `json:"ISP,omitempty" name:"ISP"`
 }
 
 type InstanceFamilyConfig struct {
@@ -3407,6 +3422,23 @@ type InstanceFamilyTypeConfig struct {
 
 	// 实例机型系列类型名称
 	InstanceFamilyTypeName *string `json:"InstanceFamilyTypeName,omitempty" name:"InstanceFamilyTypeName"`
+}
+
+type InstanceNetworkInfo struct {
+
+	// 实例内外网ip相关信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AddressInfoSet []*AddressInfo `json:"AddressInfoSet,omitempty" name:"AddressInfoSet" list`
+
+	// 网卡ID。
+	NetworkInterfaceId *string `json:"NetworkInterfaceId,omitempty" name:"NetworkInterfaceId"`
+
+	// 网卡名称。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NetworkInterfaceName *string `json:"NetworkInterfaceName,omitempty" name:"NetworkInterfaceName"`
+
+	// 主网卡属性。true为主网卡，false为辅助网卡。
+	Primary *bool `json:"Primary,omitempty" name:"Primary"`
 }
 
 type InstanceOperator struct {
@@ -3465,6 +3497,10 @@ type Internet struct {
 	// 实例的公网相关信息列表。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PublicIPAddressSet []*PublicIPAddressInfo `json:"PublicIPAddressSet,omitempty" name:"PublicIPAddressSet" list`
+
+	// 实例网络相关信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceNetworkInfoSet []*InstanceNetworkInfo `json:"InstanceNetworkInfoSet,omitempty" name:"InstanceNetworkInfoSet" list`
 }
 
 type Ipv6Address struct {
@@ -4649,6 +4685,9 @@ type NetworkInterface struct {
 
 	// 网卡类型。0 - 弹性网卡；1 - evm弹性网卡。
 	EniType *uint64 `json:"EniType,omitempty" name:"EniType"`
+
+	// EcmRegion ecm区域
+	EcmRegion *string `json:"EcmRegion,omitempty" name:"EcmRegion"`
 }
 
 type NetworkInterfaceAttachment struct {
@@ -4902,7 +4941,7 @@ type PublicIPAddressInfo struct {
 	// 实例的公网ip所属的运营商。
 	ISP *ISP `json:"ISP,omitempty" name:"ISP"`
 
-	// 实例的最大出带宽上限。
+	// 实例的最大出带宽上限，单位为Mbps。
 	MaxBandwidthOut *int64 `json:"MaxBandwidthOut,omitempty" name:"MaxBandwidthOut"`
 }
 

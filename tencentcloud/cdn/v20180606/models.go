@@ -3068,6 +3068,18 @@ type HttpHeaderPathRule struct {
 	RulePaths []*string `json:"RulePaths,omitempty" name:"RulePaths" list`
 }
 
+type HttpHeaderRule struct {
+
+	// http头部设置方式，支持add，set或del，分别表示新增，设置或删除头部。
+	HeaderMode *string `json:"HeaderMode,omitempty" name:"HeaderMode"`
+
+	// http头部名称。
+	HeaderName *string `json:"HeaderName,omitempty" name:"HeaderName"`
+
+	// http头部值。
+	HeaderValue *string `json:"HeaderValue,omitempty" name:"HeaderValue"`
+}
+
 type Https struct {
 
 	// https 配置开关
@@ -3778,6 +3790,10 @@ type Origin struct {
 	// 回源路径
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	BasePath *string `json:"BasePath,omitempty" name:"BasePath"`
+
+	// 分路径回源配置规则
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PathRules []*PathRule `json:"PathRules,omitempty" name:"PathRules" list`
 }
 
 type OriginPullOptimization struct {
@@ -3902,6 +3918,37 @@ type OverseaConfig struct {
 	// 视频拖拽配置。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	VideoSeek *VideoSeek `json:"VideoSeek,omitempty" name:"VideoSeek"`
+}
+
+type PathRule struct {
+
+	// 是否是正则匹配。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Regex *bool `json:"Regex,omitempty" name:"Regex"`
+
+	// URL路径。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Path *string `json:"Path,omitempty" name:"Path"`
+
+	// 路径匹配时的回源源站。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Origin *string `json:"Origin,omitempty" name:"Origin"`
+
+	// 路径匹配时的回源Host头部。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ServerName *string `json:"ServerName,omitempty" name:"ServerName"`
+
+	// 源站所属区域，支持CN，OV。分别表示国内或海外。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OriginArea *string `json:"OriginArea,omitempty" name:"OriginArea"`
+
+	// 路径匹配时的回源URI路径。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ForwardUri *string `json:"ForwardUri,omitempty" name:"ForwardUri"`
+
+	// 路径匹配时的回源头部设置。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RequestHeaders []*HttpHeaderRule `json:"RequestHeaders,omitempty" name:"RequestHeaders" list`
 }
 
 type PurgePathCacheRequest struct {
