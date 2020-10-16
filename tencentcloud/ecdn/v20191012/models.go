@@ -459,6 +459,52 @@ func (r *DescribeEcdnStatisticsResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeIpStatusRequest struct {
+	*tchttp.BaseRequest
+
+	// 加速域名
+	Domain *string `json:"Domain,omitempty" name:"Domain"`
+
+	// 查询区域：
+	// mainland: 国内节点
+	// overseas: 海外节点
+	// global: 全球节点
+	Area *string `json:"Area,omitempty" name:"Area"`
+}
+
+func (r *DescribeIpStatusRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeIpStatusRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeIpStatusResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 节点列表
+		Ips []*IpStatus `json:"Ips,omitempty" name:"Ips" list`
+
+		// 节点总个数
+		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeIpStatusResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeIpStatusResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribePurgeQuotaRequest struct {
 	*tchttp.BaseRequest
 }
@@ -842,6 +888,26 @@ type IpFreqLimit struct {
 	// 每秒请求数。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Qps *int64 `json:"Qps,omitempty" name:"Qps"`
+}
+
+type IpStatus struct {
+
+	// 节点 IP
+	Ip *string `json:"Ip,omitempty" name:"Ip"`
+
+	// 节点所属区域
+	District *string `json:"District,omitempty" name:"District"`
+
+	// 节点所属运营商
+	Isp *string `json:"Isp,omitempty" name:"Isp"`
+
+	// 节点所在城市
+	City *string `json:"City,omitempty" name:"City"`
+
+	// 节点状态
+	// online：上线状态，正常调度服务中
+	// offline：下线状态
+	Status *string `json:"Status,omitempty" name:"Status"`
 }
 
 type Origin struct {

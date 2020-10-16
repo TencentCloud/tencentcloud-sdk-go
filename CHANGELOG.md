@@ -2,72 +2,28 @@
 
 ## 内容分发网络(cdn) 版本：2018-06-06
 
-### 第 39 次发布
+### 第 40 次发布
 
-发布时间：2020-10-15 08:02:21
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增数据结构：
-
-* [HttpHeaderRule](https://cloud.tencent.com/document/api/228/30987#HttpHeaderRule)
-* [PathRule](https://cloud.tencent.com/document/api/228/30987#PathRule)
-
-修改数据结构：
-
-* [Origin](https://cloud.tencent.com/document/api/228/30987#Origin)
-
-	* 新增成员：PathRules
-
-
-
-
-## 边缘计算机器(ecm) 版本：2019-07-19
-
-### 第 26 次发布
-
-发布时间：2020-10-15 08:00:25
+发布时间：2020-10-16 08:02:55
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-修改接口：
-
-* [DescribeNetworkInterfaces](https://cloud.tencent.com/document/api/1108/43575)
-
-	* <font color="#dd0000">**修改入参**：</font>EcmRegion
-
-
-新增数据结构：
-
-* [AddressInfo](https://cloud.tencent.com/document/api/1108/42574#AddressInfo)
-* [InstanceNetworkInfo](https://cloud.tencent.com/document/api/1108/42574#InstanceNetworkInfo)
-
 修改数据结构：
 
-* [Instance](https://cloud.tencent.com/document/api/1108/42574#Instance)
+* [CdnIp](https://cloud.tencent.com/document/api/228/30987#CdnIp)
 
-	* 新增成员：ISP
-
-* [Internet](https://cloud.tencent.com/document/api/1108/42574#Internet)
-
-	* 新增成员：InstanceNetworkInfoSet
-
-* [NetworkInterface](https://cloud.tencent.com/document/api/1108/42574#NetworkInterface)
-
-	* 新增成员：EcmRegion
+	* 新增成员：City
 
 
 
 
-## 游戏联机对战引擎(mgobe) 版本：2019-09-29
+## 域名注册(domain) 版本：2018-08-08
 
-### 第 1 次发布
+### 第 6 次发布
 
-发布时间：2020-10-14 14:25:07
+发布时间：2020-10-16 08:03:53
 
 本次发布包含了以下内容：
 
@@ -75,7 +31,95 @@
 
 新增接口：
 
-* [DismissRoom](https://cloud.tencent.com/document/api/1038/49120)
+* [BatchModifyDomainInfo](https://cloud.tencent.com/document/api/242/49197)
+* [ModifyDomainOwnerBatch](https://cloud.tencent.com/document/api/242/49196)
+* [TransferInDomainBatch](https://cloud.tencent.com/document/api/242/49195)
+* [TransferProhibitionBatch](https://cloud.tencent.com/document/api/242/49194)
+* [UpdateProhibitionBatch](https://cloud.tencent.com/document/api/242/49193)
+
+
+
+## 全站加速网络(ecdn) 版本：2019-10-12
+
+### 第 4 次发布
+
+发布时间：2020-10-16 08:00:40
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeIpStatus](https://cloud.tencent.com/document/api/570/49184)
+
+新增数据结构：
+
+* [IpStatus](https://cloud.tencent.com/document/api/570/42478#IpStatus)
+
+
+
+## 人脸核身(faceid) 版本：2018-03-01
+
+### 第 18 次发布
+
+发布时间：2020-10-16 08:04:13
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [GetFaceIdResult](https://cloud.tencent.com/document/api/1007/49199)
+* [GetFaceIdToken](https://cloud.tencent.com/document/api/1007/49198)
+
+
+
+## 物联网智能视频服务(iotvideo) 版本：2019-11-26
+
+### 第 9 次发布
+
+发布时间：2020-10-16 08:00:46
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [ClearDeviceActiveCode](https://cloud.tencent.com/document/api/1131/49190)
+* [CreateAnonymousAccessToken](https://cloud.tencent.com/document/api/1131/49189)
+* [CreateStorageService](https://cloud.tencent.com/document/api/1131/49188)
+* [DeliverStorageService](https://cloud.tencent.com/document/api/1131/49187)
+* [DescribeStorageService](https://cloud.tencent.com/document/api/1131/49186)
+* [RefundStorageService](https://cloud.tencent.com/document/api/1131/49185)
+
+新增数据结构：
+
+* [StorageOrder](https://cloud.tencent.com/document/api/1131/42400#StorageOrder)
+
+
+
+## 容器镜像服务(tcr) 版本：2019-09-24
+
+### 第 15 次发布
+
+发布时间：2020-10-16 08:07:58
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeReplicationInstanceCreateTasks](https://cloud.tencent.com/document/api/1141/49202)
+* [DescribeReplicationInstances](https://cloud.tencent.com/document/api/1141/49201)
+
+新增数据结构：
+
+* [ReplicationRegistry](https://cloud.tencent.com/document/api/1141/41603#ReplicationRegistry)
+* [TaskDetail](https://cloud.tencent.com/document/api/1141/41603#TaskDetail)
 
 
 
@@ -6255,6 +6299,21 @@
 
 ## 内容分发网络(cdn) 版本：2018-06-06
 
+### 第 40 次发布
+
+发布时间：2020-10-16 08:02:55
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [CdnIp](https://cloud.tencent.com/document/api/228/30987#CdnIp)
+
+	* 新增成员：City
+
+
 ### 第 39 次发布
 
 发布时间：2020-10-15 08:02:21
@@ -6265,8 +6324,8 @@
 
 新增数据结构：
 
-* [[HttpHeaderRule](https://cloud.tencent.com/document/api/228/30987#HttpHeaderRule)](https://cloud.tencent.com/document/api/228/30987#[HttpHeaderRule](https://cloud.tencent.com/document/api/228/30987#HttpHeaderRule))
-* [[PathRule](https://cloud.tencent.com/document/api/228/30987#PathRule)](https://cloud.tencent.com/document/api/228/30987#[PathRule](https://cloud.tencent.com/document/api/228/30987#PathRule))
+* [HttpHeaderRule](https://cloud.tencent.com/document/api/228/30987#HttpHeaderRule)
+* [PathRule](https://cloud.tencent.com/document/api/228/30987#PathRule)
 
 修改数据结构：
 
@@ -13050,6 +13109,22 @@
 
 ## 域名注册(domain) 版本：2018-08-08
 
+### 第 6 次发布
+
+发布时间：2020-10-16 08:03:53
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[BatchModifyDomainInfo](https://cloud.tencent.com/document/api/242/49197)](https://cloud.tencent.com/document/api/#/#)
+* [[ModifyDomainOwnerBatch](https://cloud.tencent.com/document/api/242/49196)](https://cloud.tencent.com/document/api/#/#)
+* [[TransferInDomainBatch](https://cloud.tencent.com/document/api/242/49195)](https://cloud.tencent.com/document/api/#/#)
+* [[TransferProhibitionBatch](https://cloud.tencent.com/document/api/242/49194)](https://cloud.tencent.com/document/api/#/#)
+* [[UpdateProhibitionBatch](https://cloud.tencent.com/document/api/242/49193)](https://cloud.tencent.com/document/api/#/#)
+
 ### 第 5 次发布
 
 发布时间：2020-09-30 08:03:21
@@ -13671,6 +13746,22 @@
 
 ## 全站加速网络(ecdn) 版本：2019-10-12
 
+### 第 4 次发布
+
+发布时间：2020-10-16 08:00:40
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeIpStatus](https://cloud.tencent.com/document/api/570/49184)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[IpStatus](https://cloud.tencent.com/document/api/570/42478#IpStatus)](https://cloud.tencent.com/document/api/570/42478#[IpStatus](https://cloud.tencent.com/document/api/570/42478#IpStatus))
+
 ### 第 3 次发布
 
 发布时间：2020-06-30 08:02:35
@@ -13779,8 +13870,8 @@
 
 新增数据结构：
 
-* [[AddressInfo](https://cloud.tencent.com/document/api/1108/42574#AddressInfo)](https://cloud.tencent.com/document/api/1108/42574#[AddressInfo](https://cloud.tencent.com/document/api/1108/42574#AddressInfo))
-* [[InstanceNetworkInfo](https://cloud.tencent.com/document/api/1108/42574#InstanceNetworkInfo)](https://cloud.tencent.com/document/api/1108/42574#[InstanceNetworkInfo](https://cloud.tencent.com/document/api/1108/42574#InstanceNetworkInfo))
+* [AddressInfo](https://cloud.tencent.com/document/api/1108/42574#AddressInfo)
+* [InstanceNetworkInfo](https://cloud.tencent.com/document/api/1108/42574#InstanceNetworkInfo)
 
 修改数据结构：
 
@@ -15290,6 +15381,19 @@
 
 
 ## 人脸核身(faceid) 版本：2018-03-01
+
+### 第 18 次发布
+
+发布时间：2020-10-16 08:04:13
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[GetFaceIdResult](https://cloud.tencent.com/document/api/1007/49199)](https://cloud.tencent.com/document/api/#/#)
+* [[GetFaceIdToken](https://cloud.tencent.com/document/api/1007/49198)](https://cloud.tencent.com/document/api/#/#)
 
 ### 第 17 次发布
 
@@ -18864,6 +18968,27 @@
 
 ## 物联网智能视频服务(iotvideo) 版本：2019-11-26
 
+### 第 9 次发布
+
+发布时间：2020-10-16 08:00:46
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[ClearDeviceActiveCode](https://cloud.tencent.com/document/api/1131/49190)](https://cloud.tencent.com/document/api/#/#)
+* [[CreateAnonymousAccessToken](https://cloud.tencent.com/document/api/1131/49189)](https://cloud.tencent.com/document/api/#/#)
+* [[CreateStorageService](https://cloud.tencent.com/document/api/1131/49188)](https://cloud.tencent.com/document/api/#/#)
+* [[DeliverStorageService](https://cloud.tencent.com/document/api/1131/49187)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeStorageService](https://cloud.tencent.com/document/api/1131/49186)](https://cloud.tencent.com/document/api/#/#)
+* [[RefundStorageService](https://cloud.tencent.com/document/api/1131/49185)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[StorageOrder](https://cloud.tencent.com/document/api/1131/42400#StorageOrder)](https://cloud.tencent.com/document/api/1131/42400#[StorageOrder](https://cloud.tencent.com/document/api/1131/42400#StorageOrder))
+
 ### 第 8 次发布
 
 发布时间：2020-08-17 08:02:47
@@ -21127,7 +21252,7 @@
 
 新增接口：
 
-* [[DismissRoom](https://cloud.tencent.com/document/api/1038/49120)](https://cloud.tencent.com/document/api/#/#)
+* [DismissRoom](https://cloud.tencent.com/document/api/1038/49120)
 
 
 
@@ -28408,6 +28533,24 @@
 
 
 ## 容器镜像服务(tcr) 版本：2019-09-24
+
+### 第 15 次发布
+
+发布时间：2020-10-16 08:07:58
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeReplicationInstanceCreateTasks](https://cloud.tencent.com/document/api/1141/49202)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeReplicationInstances](https://cloud.tencent.com/document/api/1141/49201)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[ReplicationRegistry](https://cloud.tencent.com/document/api/1141/41603#ReplicationRegistry)](https://cloud.tencent.com/document/api/1141/41603#[ReplicationRegistry](https://cloud.tencent.com/document/api/1141/41603#ReplicationRegistry))
+* [[TaskDetail](https://cloud.tencent.com/document/api/1141/41603#TaskDetail)](https://cloud.tencent.com/document/api/1141/41603#[TaskDetail](https://cloud.tencent.com/document/api/1141/41603#TaskDetail))
 
 ### 第 14 次发布
 

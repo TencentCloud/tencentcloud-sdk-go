@@ -45,6 +45,89 @@ type BindUsrInfo struct {
 	Role *string `json:"Role,omitempty" name:"Role"`
 }
 
+type ClearDeviceActiveCodeRequest struct {
+	*tchttp.BaseRequest
+
+	// 设备TID列表，0<元素数量<=100
+	Tids []*string `json:"Tids,omitempty" name:"Tids" list`
+}
+
+func (r *ClearDeviceActiveCodeRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ClearDeviceActiveCodeRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ClearDeviceActiveCodeResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ClearDeviceActiveCodeResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ClearDeviceActiveCodeResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateAnonymousAccessTokenRequest struct {
+	*tchttp.BaseRequest
+
+	// Token的TTL(time to alive)分钟数,最大值1440(即24小时)
+	TtlMinutes *int64 `json:"TtlMinutes,omitempty" name:"TtlMinutes"`
+
+	// 设备ID。创建Token时, 此参数为必须项
+	Tid *string `json:"Tid,omitempty" name:"Tid"`
+
+	// 旧的AccessToken。续期Token时，此参数为必须
+	OldAccessToken *string `json:"OldAccessToken,omitempty" name:"OldAccessToken"`
+}
+
+func (r *CreateAnonymousAccessTokenRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateAnonymousAccessTokenRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateAnonymousAccessTokenResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 终端用户在IoT Video上的唯一标识ID
+		AccessId *string `json:"AccessId,omitempty" name:"AccessId"`
+
+		// IoT Video平台的AccessToken
+		AccessToken *string `json:"AccessToken,omitempty" name:"AccessToken"`
+
+		// Token的过期时间，单位秒(UTC时间)
+		ExpireTime *int64 `json:"ExpireTime,omitempty" name:"ExpireTime"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateAnonymousAccessTokenResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateAnonymousAccessTokenResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type CreateAppUsrRequest struct {
 	*tchttp.BaseRequest
 
@@ -230,7 +313,7 @@ type CreateGencodeRequest struct {
 	// 产品ID
 	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
 
-	// 物模型发布版本号，-1代表最新编辑（未发布）的版本
+	// 物模型发布版本号,-1代表未发布的，保存的是草稿箱的版本。1代表已发布的物模型。
 	Revision *int64 `json:"Revision,omitempty" name:"Revision"`
 }
 
@@ -439,6 +522,88 @@ func (r *CreateStorageResponse) ToJsonString() string {
 }
 
 func (r *CreateStorageResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateStorageServiceRequest struct {
+	*tchttp.BaseRequest
+
+	// 云存套餐ID
+	PkgId *string `json:"PkgId,omitempty" name:"PkgId"`
+
+	// 设备TID
+	Tid *string `json:"Tid,omitempty" name:"Tid"`
+
+	// 订单数量,可一次性创建多个订单
+	OrderCount *int64 `json:"OrderCount,omitempty" name:"OrderCount"`
+
+	// 云存服务所在的区域,如ap-guangzhou,ap-singapore
+	StorageRegion *string `json:"StorageRegion,omitempty" name:"StorageRegion"`
+
+	// 视频流通道号。(对于存在多路视频流的设备，如NVR设备，与设备实际视频流通道号对应)
+	ChnNum *int64 `json:"ChnNum,omitempty" name:"ChnNum"`
+
+	// 设备主人用户在IoT Video平台的注册ID。该参数用于验证Paas/Saas平台的设备/用户关系链是否一致
+	AccessId *string `json:"AccessId,omitempty" name:"AccessId"`
+
+	// 服务生效时间,若不指定此参数，服务立即生效
+	EnableTime *int64 `json:"EnableTime,omitempty" name:"EnableTime"`
+}
+
+func (r *CreateStorageServiceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateStorageServiceRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateStorageServiceResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 标志是否为续订
+		IsRenew *bool `json:"IsRenew,omitempty" name:"IsRenew"`
+
+		// 云存服务ID
+		ServiceId *string `json:"ServiceId,omitempty" name:"ServiceId"`
+
+		// 云存服务所在的区域
+		StorageRegion *string `json:"StorageRegion,omitempty" name:"StorageRegion"`
+
+		// 设备TID
+		Tid *string `json:"Tid,omitempty" name:"Tid"`
+
+		// 视频流通道号。(对于存在多路视频流的设备，如NVR设备，与设备实际视频流通道号对应)
+		ChnNum *int64 `json:"ChnNum,omitempty" name:"ChnNum"`
+
+		// 终端用户在IoT Video平台的注册ID
+		AccessId *string `json:"AccessId,omitempty" name:"AccessId"`
+
+		// 服务开始时间
+		StartTime *int64 `json:"StartTime,omitempty" name:"StartTime"`
+
+		// 服务失效时间
+		EndTime *int64 `json:"EndTime,omitempty" name:"EndTime"`
+
+		// 服务状态
+		Status *int64 `json:"Status,omitempty" name:"Status"`
+
+		// 新增的云存定单列表
+		Data []*StorageOrder `json:"Data,omitempty" name:"Data" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateStorageServiceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateStorageServiceResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -850,6 +1015,79 @@ func (r *DeleteTraceIdsResponse) ToJsonString() string {
 }
 
 func (r *DeleteTraceIdsResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeliverStorageServiceRequest struct {
+	*tchttp.BaseRequest
+
+	// 待转移的源云存服务ID
+	SrcServiceId *string `json:"SrcServiceId,omitempty" name:"SrcServiceId"`
+
+	// 设备TID
+	Tid *string `json:"Tid,omitempty" name:"Tid"`
+
+	// 视频流通道号。(对于存在多路视频流的设备，如NVR设备，与设备实际视频流通道号对应)
+	ChnNum *int64 `json:"ChnNum,omitempty" name:"ChnNum"`
+
+	// 设备主人用户在IoT Video平台的注册ID。该参数用于验证Paas/Saas平台的设备/用户关系链是否一致
+	AccessId *string `json:"AccessId,omitempty" name:"AccessId"`
+}
+
+func (r *DeliverStorageServiceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeliverStorageServiceRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeliverStorageServiceResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 被转出的云存服务ID
+		SrcServiceId *string `json:"SrcServiceId,omitempty" name:"SrcServiceId"`
+
+		// 被转入的云存服务ID
+		ServiceId *string `json:"ServiceId,omitempty" name:"ServiceId"`
+
+		// 云存服务所在的区域
+		StorageRegion *string `json:"StorageRegion,omitempty" name:"StorageRegion"`
+
+		// 设备TID
+		Tid *string `json:"Tid,omitempty" name:"Tid"`
+
+		// 视频流通道号。(对于存在多路视频流的设备，如NVR设备，与设备实际视频流通道号对应)
+		ChnNum *int64 `json:"ChnNum,omitempty" name:"ChnNum"`
+
+		// 终端用户在IoT Video平台的注册ID
+		AccessId *string `json:"AccessId,omitempty" name:"AccessId"`
+
+		// 服务开始时间
+		StartTime *int64 `json:"StartTime,omitempty" name:"StartTime"`
+
+		// 服务失效时间
+		EndTime *int64 `json:"EndTime,omitempty" name:"EndTime"`
+
+		// 服务状态
+		Status *int64 `json:"Status,omitempty" name:"Status"`
+
+		// 新增的云存定单列表
+		Data []*StorageOrder `json:"Data,omitempty" name:"Data" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DeliverStorageServiceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeliverStorageServiceResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -1577,6 +1815,70 @@ func (r *DescribeRunLogResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeStorageServiceRequest struct {
+	*tchttp.BaseRequest
+
+	// 云存服务ID
+	ServiceId *string `json:"ServiceId,omitempty" name:"ServiceId"`
+
+	// 是否返回已结束的订单信息(已过期/已退订/已转移)
+	GetFinishedOrder *bool `json:"GetFinishedOrder,omitempty" name:"GetFinishedOrder"`
+}
+
+func (r *DescribeStorageServiceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeStorageServiceRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeStorageServiceResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 云存服务ID
+		ServiceId *string `json:"ServiceId,omitempty" name:"ServiceId"`
+
+		// 云存服务所在的区域
+		StorageRegion *string `json:"StorageRegion,omitempty" name:"StorageRegion"`
+
+		// 设备TID
+		Tid *string `json:"Tid,omitempty" name:"Tid"`
+
+		// 视频流通道号。(对于存在多路视频流的设备，如NVR设备，与设备实际视频流通道号对应)
+		ChnNum *int64 `json:"ChnNum,omitempty" name:"ChnNum"`
+
+		// 终端用户在IoT Video平台的注册ID
+		AccessId *string `json:"AccessId,omitempty" name:"AccessId"`
+
+		// 服务开始时间
+		StartTime *int64 `json:"StartTime,omitempty" name:"StartTime"`
+
+		// 服务失效时间
+		EndTime *int64 `json:"EndTime,omitempty" name:"EndTime"`
+
+		// 服务状态
+		Status *int64 `json:"Status,omitempty" name:"Status"`
+
+		// 云存定单列表
+		Data []*StorageOrder `json:"Data,omitempty" name:"Data" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeStorageServiceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeStorageServiceResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeTraceIdsRequest struct {
 	*tchttp.BaseRequest
 }
@@ -2192,6 +2494,70 @@ type ProductData struct {
 	ProductRegion *string `json:"ProductRegion,omitempty" name:"ProductRegion"`
 }
 
+type RefundStorageServiceRequest struct {
+	*tchttp.BaseRequest
+
+	// 云存服务ID
+	ServiceId *string `json:"ServiceId,omitempty" name:"ServiceId"`
+
+	// 云存子订单ID。如果指定子订单ID,则仅退订该子订单，如果未指定子定单ID，则退订所有子订单
+	OrderId *string `json:"OrderId,omitempty" name:"OrderId"`
+}
+
+func (r *RefundStorageServiceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *RefundStorageServiceRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type RefundStorageServiceResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 云存服务ID
+		ServiceId *string `json:"ServiceId,omitempty" name:"ServiceId"`
+
+		// 云存服务所在的区域
+		StorageRegion *string `json:"StorageRegion,omitempty" name:"StorageRegion"`
+
+		// 设备TID
+		Tid *string `json:"Tid,omitempty" name:"Tid"`
+
+		// 视频流通道号。(对于存在多路视频流的设备，如NVR设备，与设备实际视频流通道号对应)
+		ChnNum *int64 `json:"ChnNum,omitempty" name:"ChnNum"`
+
+		// 终端用户在IoT Video平台的注册ID
+		AccessId *string `json:"AccessId,omitempty" name:"AccessId"`
+
+		// 服务开始时间
+		StartTime *int64 `json:"StartTime,omitempty" name:"StartTime"`
+
+		// 服务失效时间
+		EndTime *int64 `json:"EndTime,omitempty" name:"EndTime"`
+
+		// 服务状态
+		Status *int64 `json:"Status,omitempty" name:"Status"`
+
+		// 有效云存定单列表
+		Data []*StorageOrder `json:"Data,omitempty" name:"Data" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *RefundStorageServiceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *RefundStorageServiceResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type RegisteredStatus struct {
 
 	// 终端用户的唯一ID
@@ -2503,6 +2869,24 @@ func (r *SetMessageQueueResponse) ToJsonString() string {
 
 func (r *SetMessageQueueResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
+}
+
+type StorageOrder struct {
+
+	// 定单唯一性ID
+	OrderId *string `json:"OrderId,omitempty" name:"OrderId"`
+
+	// 云存套餐ID
+	PkgId *string `json:"PkgId,omitempty" name:"PkgId"`
+
+	// 定单服务状态
+	Status *int64 `json:"Status,omitempty" name:"Status"`
+
+	// 定单服务生效时间
+	StartTime *int64 `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 定单服务失效时间
+	EndTime *int64 `json:"EndTime,omitempty" name:"EndTime"`
 }
 
 type TraceStatus struct {

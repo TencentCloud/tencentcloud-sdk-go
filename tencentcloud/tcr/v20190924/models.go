@@ -1602,6 +1602,96 @@ func (r *DescribeNamespacesResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeReplicationInstanceCreateTasksRequest struct {
+	*tchttp.BaseRequest
+
+	// 同步实例Id
+	ReplicationRegistryId *string `json:"ReplicationRegistryId,omitempty" name:"ReplicationRegistryId"`
+
+	// 同步实例的地域ID
+	ReplicationRegionId *uint64 `json:"ReplicationRegionId,omitempty" name:"ReplicationRegionId"`
+}
+
+func (r *DescribeReplicationInstanceCreateTasksRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeReplicationInstanceCreateTasksRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeReplicationInstanceCreateTasksResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 任务详情
+		TaskDetail []*TaskDetail `json:"TaskDetail,omitempty" name:"TaskDetail" list`
+
+		// 整体任务状态
+		Status *string `json:"Status,omitempty" name:"Status"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeReplicationInstanceCreateTasksResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeReplicationInstanceCreateTasksResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeReplicationInstancesRequest struct {
+	*tchttp.BaseRequest
+
+	// 实例Id
+	RegistryId *string `json:"RegistryId,omitempty" name:"RegistryId"`
+
+	// 偏移量,默认0
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 最大输出条数，默认20，最大为100
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+func (r *DescribeReplicationInstancesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeReplicationInstancesRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeReplicationInstancesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 总实例个数
+		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 同步实例列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		ReplicationRegistries []*ReplicationRegistry `json:"ReplicationRegistries,omitempty" name:"ReplicationRegistries" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeReplicationInstancesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeReplicationInstancesResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeRepositoriesRequest struct {
 	*tchttp.BaseRequest
 
@@ -2517,6 +2607,27 @@ type RegistryStatus struct {
 	Conditions []*RegistryCondition `json:"Conditions,omitempty" name:"Conditions" list`
 }
 
+type ReplicationRegistry struct {
+
+	// 主实例ID
+	RegistryId *string `json:"RegistryId,omitempty" name:"RegistryId"`
+
+	// 复制实例ID
+	ReplicationRegistryId *string `json:"ReplicationRegistryId,omitempty" name:"ReplicationRegistryId"`
+
+	// 复制实例的地域ID
+	ReplicationRegionId *uint64 `json:"ReplicationRegionId,omitempty" name:"ReplicationRegionId"`
+
+	// 复制实例的地域名称
+	ReplicationRegionName *string `json:"ReplicationRegionName,omitempty" name:"ReplicationRegionName"`
+
+	// 复制实例的状态
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 创建时间
+	CreatedAt *string `json:"CreatedAt,omitempty" name:"CreatedAt"`
+}
+
 type RepoInfo struct {
 
 	// 仓库名称
@@ -2712,6 +2823,29 @@ type TagSpecification struct {
 	// 云标签数组
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Tags []*Tag `json:"Tags,omitempty" name:"Tags" list`
+}
+
+type TaskDetail struct {
+
+	// 任务
+	TaskName *string `json:"TaskName,omitempty" name:"TaskName"`
+
+	// 任务UUID
+	TaskUUID *string `json:"TaskUUID,omitempty" name:"TaskUUID"`
+
+	// 任务状态
+	TaskStatus *string `json:"TaskStatus,omitempty" name:"TaskStatus"`
+
+	// 任务的状态信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskMessage *string `json:"TaskMessage,omitempty" name:"TaskMessage"`
+
+	// 任务开始时间
+	CreatedTime *string `json:"CreatedTime,omitempty" name:"CreatedTime"`
+
+	// 任务结束时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FinishedTime *string `json:"FinishedTime,omitempty" name:"FinishedTime"`
 }
 
 type TcrImageInfo struct {

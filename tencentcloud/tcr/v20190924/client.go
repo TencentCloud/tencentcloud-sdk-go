@@ -968,6 +968,56 @@ func (c *Client) DescribeNamespaces(request *DescribeNamespacesRequest) (respons
     return
 }
 
+func NewDescribeReplicationInstanceCreateTasksRequest() (request *DescribeReplicationInstanceCreateTasksRequest) {
+    request = &DescribeReplicationInstanceCreateTasksRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tcr", APIVersion, "DescribeReplicationInstanceCreateTasks")
+    return
+}
+
+func NewDescribeReplicationInstanceCreateTasksResponse() (response *DescribeReplicationInstanceCreateTasksResponse) {
+    response = &DescribeReplicationInstanceCreateTasksResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询创建从实例任务状态
+func (c *Client) DescribeReplicationInstanceCreateTasks(request *DescribeReplicationInstanceCreateTasksRequest) (response *DescribeReplicationInstanceCreateTasksResponse, err error) {
+    if request == nil {
+        request = NewDescribeReplicationInstanceCreateTasksRequest()
+    }
+    response = NewDescribeReplicationInstanceCreateTasksResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeReplicationInstancesRequest() (request *DescribeReplicationInstancesRequest) {
+    request = &DescribeReplicationInstancesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tcr", APIVersion, "DescribeReplicationInstances")
+    return
+}
+
+func NewDescribeReplicationInstancesResponse() (response *DescribeReplicationInstancesResponse) {
+    response = &DescribeReplicationInstancesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询从实例列表
+func (c *Client) DescribeReplicationInstances(request *DescribeReplicationInstancesRequest) (response *DescribeReplicationInstancesResponse, err error) {
+    if request == nil {
+        request = NewDescribeReplicationInstancesRequest()
+    }
+    response = NewDescribeReplicationInstancesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeRepositoriesRequest() (request *DescribeRepositoriesRequest) {
     request = &DescribeRepositoriesRequest{
         BaseRequest: &tchttp.BaseRequest{},

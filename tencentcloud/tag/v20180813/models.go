@@ -229,7 +229,7 @@ type DescribeResourceTagsByResourceIdsRequest struct {
 	// 资源前缀
 	ResourcePrefix *string `json:"ResourcePrefix,omitempty" name:"ResourcePrefix"`
 
-	// 资源唯一标记
+	// 资源ID数组，大小不超过50
 	ResourceIds []*string `json:"ResourceIds,omitempty" name:"ResourceIds" list`
 
 	// 资源所在地域
@@ -430,7 +430,7 @@ type DescribeResourceTagsRequest struct {
 	// 每页大小，默认为 15
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 
-	// 是否是Cos的资源id
+	// 是否是cos的资源（0或者1），输入的ResourceId为cos资源时必填
 	CosResourceId *uint64 `json:"CosResourceId,omitempty" name:"CosResourceId"`
 }
 

@@ -818,6 +818,125 @@ func (r *GetDetectInfoResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type GetFaceIdResultRequest struct {
+	*tchttp.BaseRequest
+
+	// SDK人脸核身流程的标识，调用GetFaceIdToken接口时生成。
+	FaceIdToken *string `json:"FaceIdToken,omitempty" name:"FaceIdToken"`
+
+	// 是否需要拉取视频，默认false不需要
+	IsNeedVideo *bool `json:"IsNeedVideo,omitempty" name:"IsNeedVideo"`
+
+	// 是否需要拉取截帧，默认false不需要
+	IsNeedBestFrame *bool `json:"IsNeedBestFrame,omitempty" name:"IsNeedBestFrame"`
+}
+
+func (r *GetFaceIdResultRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *GetFaceIdResultRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type GetFaceIdResultResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 身份证
+		IdCard *string `json:"IdCard,omitempty" name:"IdCard"`
+
+		// 姓名
+		Name *string `json:"Name,omitempty" name:"Name"`
+
+		// 业务核验结果，如下几个结果码会计费
+		Result *string `json:"Result,omitempty" name:"Result"`
+
+		// 业务核验描述
+		Description *string `json:"Description,omitempty" name:"Description"`
+
+		// 相似度，0-100，数值越大相似度越高
+		Similarity *float64 `json:"Similarity,omitempty" name:"Similarity"`
+
+		// 用户核验的视频
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		VideoBase64 *string `json:"VideoBase64,omitempty" name:"VideoBase64"`
+
+		// 用户核验视频的截帧
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		BestFrameBase64 *string `json:"BestFrameBase64,omitempty" name:"BestFrameBase64"`
+
+		// 获取token时透传的信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Extra *string `json:"Extra,omitempty" name:"Extra"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *GetFaceIdResultResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *GetFaceIdResultResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type GetFaceIdTokenRequest struct {
+	*tchttp.BaseRequest
+
+	// 本地上传照片(LOCAL)、商业库(BUSINESS)
+	CompareLib *string `json:"CompareLib,omitempty" name:"CompareLib"`
+
+	// CompareLib为商业库时必传。
+	IdCard *string `json:"IdCard,omitempty" name:"IdCard"`
+
+	// CompareLib为商业库库时必传。
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// CompareLib为上传照片比对时必传，base64后图片最大8MB。
+	ImageBase64 *string `json:"ImageBase64,omitempty" name:"ImageBase64"`
+
+	// SDK中生成的Meta字符串
+	Meta *string `json:"Meta,omitempty" name:"Meta"`
+
+	// 透传参数 1000长度字符串
+	Extra *string `json:"Extra,omitempty" name:"Extra"`
+}
+
+func (r *GetFaceIdTokenRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *GetFaceIdTokenRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type GetFaceIdTokenResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 有效期 10分钟。只能完成1次核身。
+		FaceIdToken *string `json:"FaceIdToken,omitempty" name:"FaceIdToken"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *GetFaceIdTokenResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *GetFaceIdTokenResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type GetLiveCodeRequest struct {
 	*tchttp.BaseRequest
 }

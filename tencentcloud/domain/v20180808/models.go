@@ -20,6 +20,46 @@ import (
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
+type BatchModifyDomainInfoRequest struct {
+	*tchttp.BaseRequest
+
+	// 批量修改的域名。
+	Domains []*string `json:"Domains,omitempty" name:"Domains" list`
+
+	// 模板ID。
+	TemplateId *string `json:"TemplateId,omitempty" name:"TemplateId"`
+}
+
+func (r *BatchModifyDomainInfoRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *BatchModifyDomainInfoRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type BatchModifyDomainInfoResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 日志ID
+		LogId *int64 `json:"LogId,omitempty" name:"LogId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *BatchModifyDomainInfoResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *BatchModifyDomainInfoResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type BatchStatus struct {
 
 	// 批量任务id
@@ -552,6 +592,46 @@ type DomainList struct {
 	BuyStatus *string `json:"BuyStatus,omitempty" name:"BuyStatus"`
 }
 
+type ModifyDomainOwnerBatchRequest struct {
+	*tchttp.BaseRequest
+
+	// 要过户的域名。
+	Domains []*string `json:"Domains,omitempty" name:"Domains" list`
+
+	// 转入账户的uin。
+	NewOwnerUin *string `json:"NewOwnerUin,omitempty" name:"NewOwnerUin"`
+}
+
+func (r *ModifyDomainOwnerBatchRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyDomainOwnerBatchRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyDomainOwnerBatchResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 日志id
+		LogId *uint64 `json:"LogId,omitempty" name:"LogId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifyDomainOwnerBatchResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyDomainOwnerBatchResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type PriceInfo struct {
 
 	// 域名后缀，例如.com
@@ -604,4 +684,134 @@ type TemplateInfo struct {
 
 	// 不符合规范原因
 	InvalidReason *string `json:"InvalidReason,omitempty" name:"InvalidReason"`
+}
+
+type TransferInDomainBatchRequest struct {
+	*tchttp.BaseRequest
+
+	// 转入的域名名称数组。
+	Domains []*string `json:"Domains,omitempty" name:"Domains" list`
+
+	// 域名转移码数组。
+	PassWords []*string `json:"PassWords,omitempty" name:"PassWords" list`
+
+	// 模板ID。
+	TemplateId *string `json:"TemplateId,omitempty" name:"TemplateId"`
+
+	// 付费模式 0手动在线付费，1使用余额付费。
+	PayMode *int64 `json:"PayMode,omitempty" name:"PayMode"`
+}
+
+func (r *TransferInDomainBatchRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *TransferInDomainBatchRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type TransferInDomainBatchResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 日志ID
+		LogId *uint64 `json:"LogId,omitempty" name:"LogId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *TransferInDomainBatchResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *TransferInDomainBatchResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type TransferProhibitionBatchRequest struct {
+	*tchttp.BaseRequest
+
+	// 批量操作的域名。
+	Domains []*string `json:"Domains,omitempty" name:"Domains" list`
+
+	// 是否开启禁止域名转移。
+	// True: 开启禁止域名转移状态。
+	// False：关闭禁止域名转移状态。
+	Status *bool `json:"Status,omitempty" name:"Status"`
+}
+
+func (r *TransferProhibitionBatchRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *TransferProhibitionBatchRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type TransferProhibitionBatchResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 日志ID
+		LogId *uint64 `json:"LogId,omitempty" name:"LogId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *TransferProhibitionBatchResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *TransferProhibitionBatchResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type UpdateProhibitionBatchRequest struct {
+	*tchttp.BaseRequest
+
+	// 批量操作的域名。
+	Domains []*string `json:"Domains,omitempty" name:"Domains" list`
+
+	// 是否开启禁止域名更新。
+	// True:开启禁止域名更新状态。
+	// False：关闭禁止域名更新状态。
+	Status *bool `json:"Status,omitempty" name:"Status"`
+}
+
+func (r *UpdateProhibitionBatchRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *UpdateProhibitionBatchRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type UpdateProhibitionBatchResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 日志ID
+		LogId *uint64 `json:"LogId,omitempty" name:"LogId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *UpdateProhibitionBatchResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *UpdateProhibitionBatchResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
 }

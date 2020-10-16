@@ -227,6 +227,31 @@ func (c *Client) DescribeEcdnStatistics(request *DescribeEcdnStatisticsRequest) 
     return
 }
 
+func NewDescribeIpStatusRequest() (request *DescribeIpStatusRequest) {
+    request = &DescribeIpStatusRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ecdn", APIVersion, "DescribeIpStatus")
+    return
+}
+
+func NewDescribeIpStatusResponse() (response *DescribeIpStatusResponse) {
+    response = &DescribeIpStatusResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeIpStatus 用于查询域名所在加速平台的所有节点明细。
+func (c *Client) DescribeIpStatus(request *DescribeIpStatusRequest) (response *DescribeIpStatusResponse, err error) {
+    if request == nil {
+        request = NewDescribeIpStatusRequest()
+    }
+    response = NewDescribeIpStatusResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribePurgeQuotaRequest() (request *DescribePurgeQuotaRequest) {
     request = &DescribePurgeQuotaRequest{
         BaseRequest: &tchttp.BaseRequest{},

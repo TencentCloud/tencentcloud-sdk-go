@@ -43,6 +43,56 @@ func NewClient(credential *common.Credential, region string, clientProfile *prof
 }
 
 
+func NewClearDeviceActiveCodeRequest() (request *ClearDeviceActiveCodeRequest) {
+    request = &ClearDeviceActiveCodeRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iotvideo", APIVersion, "ClearDeviceActiveCode")
+    return
+}
+
+func NewClearDeviceActiveCodeResponse() (response *ClearDeviceActiveCodeResponse) {
+    response = &ClearDeviceActiveCodeResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 清除设备激活码
+func (c *Client) ClearDeviceActiveCode(request *ClearDeviceActiveCodeRequest) (response *ClearDeviceActiveCodeResponse, err error) {
+    if request == nil {
+        request = NewClearDeviceActiveCodeRequest()
+    }
+    response = NewClearDeviceActiveCodeResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateAnonymousAccessTokenRequest() (request *CreateAnonymousAccessTokenRequest) {
+    request = &CreateAnonymousAccessTokenRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iotvideo", APIVersion, "CreateAnonymousAccessToken")
+    return
+}
+
+func NewCreateAnonymousAccessTokenResponse() (response *CreateAnonymousAccessTokenResponse) {
+    response = &CreateAnonymousAccessTokenResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 创建匿名访问Token
+func (c *Client) CreateAnonymousAccessToken(request *CreateAnonymousAccessTokenRequest) (response *CreateAnonymousAccessTokenResponse, err error) {
+    if request == nil {
+        request = NewCreateAnonymousAccessTokenRequest()
+    }
+    response = NewCreateAnonymousAccessTokenResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateAppUsrRequest() (request *CreateAppUsrRequest) {
     request = &CreateAppUsrRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -270,6 +320,31 @@ func (c *Client) CreateStorage(request *CreateStorageRequest) (response *CreateS
         request = NewCreateStorageRequest()
     }
     response = NewCreateStorageResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateStorageServiceRequest() (request *CreateStorageServiceRequest) {
+    request = &CreateStorageServiceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iotvideo", APIVersion, "CreateStorageService")
+    return
+}
+
+func NewCreateStorageServiceResponse() (response *CreateStorageServiceResponse) {
+    response = &CreateStorageServiceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 购买云存服务
+func (c *Client) CreateStorageService(request *CreateStorageServiceRequest) (response *CreateStorageServiceResponse, err error) {
+    if request == nil {
+        request = NewCreateStorageServiceRequest()
+    }
+    response = NewCreateStorageServiceResponse()
     err = c.Send(request, response)
     return
 }
@@ -545,6 +620,31 @@ func (c *Client) DeleteTraceIds(request *DeleteTraceIdsRequest) (response *Delet
         request = NewDeleteTraceIdsRequest()
     }
     response = NewDeleteTraceIdsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeliverStorageServiceRequest() (request *DeliverStorageServiceRequest) {
+    request = &DeliverStorageServiceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iotvideo", APIVersion, "DeliverStorageService")
+    return
+}
+
+func NewDeliverStorageServiceResponse() (response *DeliverStorageServiceResponse) {
+    response = &DeliverStorageServiceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 将已购买的云存服务转移到另一设备
+func (c *Client) DeliverStorageService(request *DeliverStorageServiceRequest) (response *DeliverStorageServiceResponse, err error) {
+    if request == nil {
+        request = NewDeliverStorageServiceRequest()
+    }
+    response = NewDeliverStorageServiceResponse()
     err = c.Send(request, response)
     return
 }
@@ -975,6 +1075,31 @@ func (c *Client) DescribeRunLog(request *DescribeRunLogRequest) (response *Descr
     return
 }
 
+func NewDescribeStorageServiceRequest() (request *DescribeStorageServiceRequest) {
+    request = &DescribeStorageServiceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iotvideo", APIVersion, "DescribeStorageService")
+    return
+}
+
+func NewDescribeStorageServiceResponse() (response *DescribeStorageServiceResponse) {
+    response = &DescribeStorageServiceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询云存服务
+func (c *Client) DescribeStorageService(request *DescribeStorageServiceRequest) (response *DescribeStorageServiceResponse, err error) {
+    if request == nil {
+        request = NewDescribeStorageServiceRequest()
+    }
+    response = NewDescribeStorageServiceResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeTraceIdsRequest() (request *DescribeTraceIdsRequest) {
     request = &DescribeTraceIdsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1183,6 +1308,31 @@ func (c *Client) ModifyProduct(request *ModifyProductRequest) (response *ModifyP
         request = NewModifyProductRequest()
     }
     response = NewModifyProductResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewRefundStorageServiceRequest() (request *RefundStorageServiceRequest) {
+    request = &RefundStorageServiceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iotvideo", APIVersion, "RefundStorageService")
+    return
+}
+
+func NewRefundStorageServiceResponse() (response *RefundStorageServiceResponse) {
+    response = &RefundStorageServiceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 退订已购买的云存服务
+func (c *Client) RefundStorageService(request *RefundStorageServiceRequest) (response *RefundStorageServiceResponse, err error) {
+    if request == nil {
+        request = NewRefundStorageServiceRequest()
+    }
+    response = NewRefundStorageServiceResponse()
     err = c.Send(request, response)
     return
 }

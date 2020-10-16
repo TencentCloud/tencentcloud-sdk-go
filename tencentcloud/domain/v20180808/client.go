@@ -43,6 +43,33 @@ func NewClient(credential *common.Credential, region string, clientProfile *prof
 }
 
 
+func NewBatchModifyDomainInfoRequest() (request *BatchModifyDomainInfoRequest) {
+    request = &BatchModifyDomainInfoRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("domain", APIVersion, "BatchModifyDomainInfo")
+    return
+}
+
+func NewBatchModifyDomainInfoResponse() (response *BatchModifyDomainInfoResponse) {
+    response = &BatchModifyDomainInfoResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口 ( BatchModifyDomainInfo ) 用于批量域名信息修改 。
+// 
+// 默认接口请求频率限制：20次/秒。
+func (c *Client) BatchModifyDomainInfo(request *BatchModifyDomainInfoRequest) (response *BatchModifyDomainInfoResponse, err error) {
+    if request == nil {
+        request = NewBatchModifyDomainInfoRequest()
+    }
+    response = NewBatchModifyDomainInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCheckBatchStatusRequest() (request *CheckBatchStatusRequest) {
     request = &CheckBatchStatusRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -224,6 +251,114 @@ func (c *Client) DescribeTemplateList(request *DescribeTemplateListRequest) (res
         request = NewDescribeTemplateListRequest()
     }
     response = NewDescribeTemplateListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyDomainOwnerBatchRequest() (request *ModifyDomainOwnerBatchRequest) {
+    request = &ModifyDomainOwnerBatchRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("domain", APIVersion, "ModifyDomainOwnerBatch")
+    return
+}
+
+func NewModifyDomainOwnerBatchResponse() (response *ModifyDomainOwnerBatchResponse) {
+    response = &ModifyDomainOwnerBatchResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口 ( ModifyDomainOwnerBatch) 用于域名批量账号间转移 。
+// 
+// 默认接口请求频率限制：20次/秒。
+func (c *Client) ModifyDomainOwnerBatch(request *ModifyDomainOwnerBatchRequest) (response *ModifyDomainOwnerBatchResponse, err error) {
+    if request == nil {
+        request = NewModifyDomainOwnerBatchRequest()
+    }
+    response = NewModifyDomainOwnerBatchResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewTransferInDomainBatchRequest() (request *TransferInDomainBatchRequest) {
+    request = &TransferInDomainBatchRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("domain", APIVersion, "TransferInDomainBatch")
+    return
+}
+
+func NewTransferInDomainBatchResponse() (response *TransferInDomainBatchResponse) {
+    response = &TransferInDomainBatchResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口 ( TransferInDomainBatch ) 用于批量转入域名 。
+// 
+// 默认接口请求频率限制：20次/秒。
+func (c *Client) TransferInDomainBatch(request *TransferInDomainBatchRequest) (response *TransferInDomainBatchResponse, err error) {
+    if request == nil {
+        request = NewTransferInDomainBatchRequest()
+    }
+    response = NewTransferInDomainBatchResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewTransferProhibitionBatchRequest() (request *TransferProhibitionBatchRequest) {
+    request = &TransferProhibitionBatchRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("domain", APIVersion, "TransferProhibitionBatch")
+    return
+}
+
+func NewTransferProhibitionBatchResponse() (response *TransferProhibitionBatchResponse) {
+    response = &TransferProhibitionBatchResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口 ( TransferInDomainBatch ) 用于批量禁止域名转移 。
+// 
+// 默认接口请求频率限制：20次/秒。
+func (c *Client) TransferProhibitionBatch(request *TransferProhibitionBatchRequest) (response *TransferProhibitionBatchResponse, err error) {
+    if request == nil {
+        request = NewTransferProhibitionBatchRequest()
+    }
+    response = NewTransferProhibitionBatchResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewUpdateProhibitionBatchRequest() (request *UpdateProhibitionBatchRequest) {
+    request = &UpdateProhibitionBatchRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("domain", APIVersion, "UpdateProhibitionBatch")
+    return
+}
+
+func NewUpdateProhibitionBatchResponse() (response *UpdateProhibitionBatchResponse) {
+    response = &UpdateProhibitionBatchResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口 ( UpdateProhibitionBatch ) 用于批量设置禁止域名更新 。
+// 
+// 默认接口请求频率限制：20次/秒。
+func (c *Client) UpdateProhibitionBatch(request *UpdateProhibitionBatchRequest) (response *UpdateProhibitionBatchResponse, err error) {
+    if request == nil {
+        request = NewUpdateProhibitionBatchRequest()
+    }
+    response = NewUpdateProhibitionBatchResponse()
     err = c.Send(request, response)
     return
 }
