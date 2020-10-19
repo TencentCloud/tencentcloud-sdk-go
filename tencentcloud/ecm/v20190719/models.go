@@ -743,6 +743,9 @@ type CreateModuleRequest struct {
 
 	// 模块默认安全组列表
 	SecurityGroups []*string `json:"SecurityGroups,omitempty" name:"SecurityGroups" list`
+
+	// 默认入带宽，单位：M。范围不得超过带宽上下限，详看DescribeConfig。
+	DefaultBandWidthIn *int64 `json:"DefaultBandWidthIn,omitempty" name:"DefaultBandWidthIn"`
 }
 
 func (r *CreateModuleRequest) ToJsonString() string {
@@ -4229,8 +4232,11 @@ type ModifyModuleNetworkRequest struct {
 	// 模块Id
 	ModuleId *string `json:"ModuleId,omitempty" name:"ModuleId"`
 
-	// 默认带宽上限
+	// 默认出带宽上限
 	DefaultBandwidth *int64 `json:"DefaultBandwidth,omitempty" name:"DefaultBandwidth"`
+
+	// 默认入带宽上限
+	DefaultBandwidthIn *int64 `json:"DefaultBandwidthIn,omitempty" name:"DefaultBandwidthIn"`
 }
 
 func (r *ModifyModuleNetworkRequest) ToJsonString() string {
@@ -4584,7 +4590,7 @@ type Module struct {
 	// 创建时间
 	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
 
-	// 默认带宽
+	// 默认出带宽
 	DefaultBandwidth *int64 `json:"DefaultBandwidth,omitempty" name:"DefaultBandwidth"`
 
 	// 标签集合
@@ -4596,6 +4602,9 @@ type Module struct {
 
 	// 默认安全组id列表
 	SecurityGroupIds []*string `json:"SecurityGroupIds,omitempty" name:"SecurityGroupIds" list`
+
+	// 默认入带宽
+	DefaultBandwidthIn *int64 `json:"DefaultBandwidthIn,omitempty" name:"DefaultBandwidthIn"`
 }
 
 type ModuleCounter struct {
@@ -4943,6 +4952,9 @@ type PublicIPAddressInfo struct {
 
 	// 实例的最大出带宽上限，单位为Mbps。
 	MaxBandwidthOut *int64 `json:"MaxBandwidthOut,omitempty" name:"MaxBandwidthOut"`
+
+	// 实例的最大入带宽上限，单位为Mbps。
+	MaxBandwidthIn *int64 `json:"MaxBandwidthIn,omitempty" name:"MaxBandwidthIn"`
 }
 
 type RebootInstancesRequest struct {
@@ -5128,8 +5140,11 @@ type ResetInstancesMaxBandwidthRequest struct {
 	// 待重置带宽上限的实例ID列表。在单次请求的过程中，单个region下的请求实例数上限为100。
 	InstanceIdSet []*string `json:"InstanceIdSet,omitempty" name:"InstanceIdSet" list`
 
-	// 修改后的最大带宽上限。
+	// 修改后的最大出带宽上限。
 	MaxBandwidthOut *int64 `json:"MaxBandwidthOut,omitempty" name:"MaxBandwidthOut"`
+
+	// 修改后的最大入带宽上限。
+	MaxBandwidthIn *int64 `json:"MaxBandwidthIn,omitempty" name:"MaxBandwidthIn"`
 }
 
 func (r *ResetInstancesMaxBandwidthRequest) ToJsonString() string {

@@ -2007,6 +2007,70 @@ func (r *DescribeBasicDeviceThresholdResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeBizTrendRequest struct {
+	*tchttp.BaseRequest
+
+	// 大禹子产品代号（bgpip表示高防IP）
+	Business *string `json:"Business,omitempty" name:"Business"`
+
+	// 资源实例ID
+	Id *string `json:"Id,omitempty" name:"Id"`
+
+	// 统计周期，可取值300，1800，3600，21600，86400，单位秒
+	Period *uint64 `json:"Period,omitempty" name:"Period"`
+
+	// 统计开始时间
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 统计结束时间
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 统计方式，可取值max, min, avg, sum, 如统计纬度是流量速率或包量速率，仅可取值max
+	Statistics *string `json:"Statistics,omitempty" name:"Statistics"`
+
+	// 统计纬度，可取值connum, new_conn, inactive_conn, intraffic, outtraffic, inpkg, outpkg, qps
+	MetricName *string `json:"MetricName,omitempty" name:"MetricName"`
+
+	// 协议及端口列表，协议可取值TCP, UDP, HTTP, HTTPS，仅统计纬度为连接数时有效
+	ProtoInfo []*ProtocolPort `json:"ProtoInfo,omitempty" name:"ProtoInfo" list`
+
+	// 统计纬度为qps时，可选特定域名查询
+	Domain *string `json:"Domain,omitempty" name:"Domain"`
+}
+
+func (r *DescribeBizTrendRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeBizTrendRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeBizTrendResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 曲线图各个时间点的值
+		DataList []*float64 `json:"DataList,omitempty" name:"DataList" list`
+
+		// 统计纬度
+		MetricName *string `json:"MetricName,omitempty" name:"MetricName"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeBizTrendResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeBizTrendResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeCCAlarmThresholdRequest struct {
 	*tchttp.BaseRequest
 

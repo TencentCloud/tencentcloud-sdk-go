@@ -78,6 +78,34 @@ type CertificateInfo struct {
 	CertificateCode *string `json:"CertificateCode,omitempty" name:"CertificateCode"`
 
 	// 证件类型。
+	// SFZ: 身份证。
+	// HZ: 护照。
+	// TXZ: 港澳居民来往内地通行证。
+	// TWSFZ: 台湾居民来往大陆通行证。
+	// GWSFZ: 外国人永久居留身份证。
+	// ORG: 组织机构代码证
+	// YYZZ: 工商营业执照。
+	// TYDMZ: 统一社会信用代码证书。
+	// BDDH: 部队代号
+	// JDXKZ: 军队单位对外有偿服务许可证。
+	// SYZS: 事业单位法人证书。
+	// GWCZDJZ: 外国企业常驻代表机构登记证。
+	// STDJZ: 社会团体法人登记证书。
+	// ZJDJZ: 宗教活动场所登记证。
+	// MBDJZ: 民办非企业单位登记证书。
+	// JJDJZ: 基金会法人登记证书。
+	// LSXKZ: 律师事务所执业许可证。
+	// GWZHDJZ: 外国在华文化中心登记证。
+	// GWLYDJZ: 外国政府旅游部门常驻代表机构批准登记证。
+	// SFXKZ: 司法鉴定许可证
+	// GWJGZJ: 外国机构证件。
+	// SHFWJGZ: 社会服务机构登记证书。
+	// MBXXXKZ: 民办学校办学许可证。
+	// YLJGXKZ: 医疗机构执业许可证。
+	// GAJZZ: 港澳居住证
+	// TWJZZ: 台湾居住证。
+	// QTTYDM: 其他-统一社会信用代码证书。
+	// GZJGZY: 公证机构执业证。
 	CertificateType *string `json:"CertificateType,omitempty" name:"CertificateType"`
 
 	// 证件照片地址。
@@ -87,7 +115,7 @@ type CertificateInfo struct {
 type CheckBatchStatusRequest struct {
 	*tchttp.BaseRequest
 
-	// 批量任务id数组，最多 200 个
+	// 操作日志 ID数组，最多 200 个
 	LogIds []*uint64 `json:"LogIds,omitempty" name:"LogIds" list`
 }
 
@@ -296,6 +324,80 @@ func (r *CreateDomainBatchResponse) ToJsonString() string {
 }
 
 func (r *CreateDomainBatchResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateTemplateRequest struct {
+	*tchttp.BaseRequest
+
+	// 联系人信息
+	ContactInfo *ContactInfo `json:"ContactInfo,omitempty" name:"ContactInfo"`
+
+	// 证件信息
+	CertificateInfo *CertificateInfo `json:"CertificateInfo,omitempty" name:"CertificateInfo"`
+}
+
+func (r *CreateTemplateRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateTemplateRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateTemplateResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 模板信息
+		Template *TemplateInfo `json:"Template,omitempty" name:"Template"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateTemplateResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateTemplateResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteTemplateRequest struct {
+	*tchttp.BaseRequest
+
+	// 模板ID
+	TemplateId *string `json:"TemplateId,omitempty" name:"TemplateId"`
+}
+
+func (r *DeleteTemplateRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteTemplateRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteTemplateResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DeleteTemplateResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteTemplateResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -592,6 +694,46 @@ type DomainList struct {
 	BuyStatus *string `json:"BuyStatus,omitempty" name:"BuyStatus"`
 }
 
+type ModifyDomainDNSBatchRequest struct {
+	*tchttp.BaseRequest
+
+	// 批量操作的域名。
+	Domains []*string `json:"Domains,omitempty" name:"Domains" list`
+
+	// 域名DNS 数组。
+	Dns []*string `json:"Dns,omitempty" name:"Dns" list`
+}
+
+func (r *ModifyDomainDNSBatchRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyDomainDNSBatchRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyDomainDNSBatchResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 日志ID。
+		LogId *uint64 `json:"LogId,omitempty" name:"LogId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifyDomainDNSBatchResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyDomainDNSBatchResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type ModifyDomainOwnerBatchRequest struct {
 	*tchttp.BaseRequest
 
@@ -648,6 +790,89 @@ type PriceInfo struct {
 
 	// 商品的购买类型，新购，续费，赎回，转入，续费并转入
 	Operation *string `json:"Operation,omitempty" name:"Operation"`
+}
+
+type RenewDomainBatchRequest struct {
+	*tchttp.BaseRequest
+
+	// 域名续费的年限。
+	Period *int64 `json:"Period,omitempty" name:"Period"`
+
+	// 批量续费的域名。
+	Domains []*string `json:"Domains,omitempty" name:"Domains" list`
+
+	// 付费模式 0手动在线付费，1使用余额付费。
+	PayMode *int64 `json:"PayMode,omitempty" name:"PayMode"`
+}
+
+func (r *RenewDomainBatchRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *RenewDomainBatchRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type RenewDomainBatchResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 操作日志ID。
+		LogId *int64 `json:"LogId,omitempty" name:"LogId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *RenewDomainBatchResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *RenewDomainBatchResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type SetDomainAutoRenewRequest struct {
+	*tchttp.BaseRequest
+
+	// 域名ID。
+	DomainId *string `json:"DomainId,omitempty" name:"DomainId"`
+
+	// AutoRenew 有三个可选值：
+	//  0：不设置自动续费
+	// 1：设置自动续费
+	// 2：设置到期后不续费
+	AutoRenew *uint64 `json:"AutoRenew,omitempty" name:"AutoRenew"`
+}
+
+func (r *SetDomainAutoRenewRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *SetDomainAutoRenewRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type SetDomainAutoRenewResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *SetDomainAutoRenewResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *SetDomainAutoRenewResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
 }
 
 type TemplateInfo struct {
@@ -813,5 +1038,42 @@ func (r *UpdateProhibitionBatchResponse) ToJsonString() string {
 }
 
 func (r *UpdateProhibitionBatchResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type UploadImageRequest struct {
+	*tchttp.BaseRequest
+
+	// 资质照片，照片的base64编码。
+	ImageFile *string `json:"ImageFile,omitempty" name:"ImageFile"`
+}
+
+func (r *UploadImageRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *UploadImageRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type UploadImageResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 资质照片地址。
+		AccessUrl *string `json:"AccessUrl,omitempty" name:"AccessUrl"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *UploadImageResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *UploadImageResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }

@@ -25,38 +25,39 @@ type BRIRequest struct {
 	// 业务名, 必须是以下六个业务名之一(bri_num,bri_dev,bri_ip_bri_apk,bri_url,bri_social)
 	Service *string `json:"Service,omitempty" name:"Service"`
 
-	// Apk证书Md5  (业务名为bri_apk时必填，除非已填FileMd5)
-	CertMd5 *string `json:"CertMd5,omitempty" name:"CertMd5"`
-
-	// Apk文件Md5 (业务名为bri_apk时必填，除非已填PackageName,CertMd5,FileSize)
-	FileMd5 *string `json:"FileMd5,omitempty" name:"FileMd5"`
-
-	// Apk文件大小  (业务名为bri_apk时必填，除非已填FileMd5)
-	FileSize *int64 `json:"FileSize,omitempty" name:"FileSize"`
-
-	// 安卓设备的Imei (业务名为bri_dev时必填)
-	Imei *string `json:"Imei,omitempty" name:"Imei"`
-
-	// 点分格式的IP (业务名为bri_ip时必填)
-	Ip *string `json:"Ip,omitempty" name:"Ip"`
-
-	// Apk安装包名 (业务名为bri_apk时必填，除非已填FileMd5)
-	PackageName *string `json:"PackageName,omitempty" name:"PackageName"`
-
-	// 电话号码 (业务名为bri_num时必填)
-	PhoneNumber *string `json:"PhoneNumber,omitempty" name:"PhoneNumber"`
-
 	// QQ号 (业务名为bri_social时必填, 除非已填Wechat)
 	QQ *string `json:"QQ,omitempty" name:"QQ"`
 
 	// QQ号的可疑标签
 	QQTag *string `json:"QQTag,omitempty" name:"QQTag"`
 
+	// 网址 (业务名为bri_url时必填)
+	Url *string `json:"Url,omitempty" name:"Url"`
+
+	// Apk证书Md5  (业务名为bri_apk时必填，除非已填FileMd5)
+	CertMd5 *string `json:"CertMd5,omitempty" name:"CertMd5"`
+
+	// Apk安装包名 (业务名为bri_apk时必填，除非已填FileMd5)
+	PackageName *string `json:"PackageName,omitempty" name:"PackageName"`
+
+	// Apk文件Md5 (业务名为bri_apk时必填，除非已填PackageName,CertMd5,FileSize)
+	FileMd5 *string `json:"FileMd5,omitempty" name:"FileMd5"`
+
 	// 业务场景 (1-注册, 2-登录, 3-发消息)
 	Scene *string `json:"Scene,omitempty" name:"Scene"`
 
-	// 网址 (业务名为bri_url时必填)
-	Url *string `json:"Url,omitempty" name:"Url"`
+	// 电话号码 (业务名为bri_num时必填)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PhoneNumber *string `json:"PhoneNumber,omitempty" name:"PhoneNumber"`
+
+	// Apk文件大小  (业务名为bri_apk时必填，除非已填FileMd5)
+	FileSize *int64 `json:"FileSize,omitempty" name:"FileSize"`
+
+	// 点分格式的IP (业务名为bri_ip时必填)
+	Ip *string `json:"Ip,omitempty" name:"Ip"`
+
+	// 安卓设备的Imei (业务名为bri_dev时必填)
+	Imei *string `json:"Imei,omitempty" name:"Imei"`
 
 	// 微信号 (业务名为bri_social时必填, 除非已填QQ)
 	Wechat *string `json:"Wechat,omitempty" name:"Wechat"`
