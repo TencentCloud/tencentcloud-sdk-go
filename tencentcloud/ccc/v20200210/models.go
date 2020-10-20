@@ -20,6 +20,49 @@ import (
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
+type CreateSDKLoginTokenRequest struct {
+	*tchttp.BaseRequest
+
+	// 应用ID。
+	SdkAppId *int64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+
+	// 坐席账号。
+	SeatUserId *string `json:"SeatUserId,omitempty" name:"SeatUserId"`
+}
+
+func (r *CreateSDKLoginTokenRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateSDKLoginTokenRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateSDKLoginTokenResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// SDK 登录 Token。
+		Token *string `json:"Token,omitempty" name:"Token"`
+
+		// 过期时间戳，Unix 时间戳。
+		ExpiredTime *int64 `json:"ExpiredTime,omitempty" name:"ExpiredTime"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateSDKLoginTokenResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateSDKLoginTokenResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeTelCdrRequest struct {
 	*tchttp.BaseRequest
 

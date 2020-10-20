@@ -1088,7 +1088,7 @@ type DescribeJobResponse struct {
 		TaskMetrics *TaskMetrics `json:"TaskMetrics,omitempty" name:"TaskMetrics"`
 
 		// 任务实例统计指标
-		TaskInstanceMetrics *TaskInstanceView `json:"TaskInstanceMetrics,omitempty" name:"TaskInstanceMetrics"`
+		TaskInstanceMetrics *TaskInstanceMetrics `json:"TaskInstanceMetrics,omitempty" name:"TaskInstanceMetrics"`
 
 		// 作业失败原因
 		StateReason *string `json:"StateReason,omitempty" name:"StateReason"`
@@ -1096,6 +1096,10 @@ type DescribeJobResponse struct {
 		// 作业绑定的标签列表。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		Tags []*Tag `json:"Tags,omitempty" name:"Tags" list`
+
+		// 下一步动作
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		NextAction *string `json:"NextAction,omitempty" name:"NextAction"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`

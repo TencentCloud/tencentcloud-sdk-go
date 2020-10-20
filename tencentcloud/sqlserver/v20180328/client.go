@@ -1493,6 +1493,31 @@ func (c *Client) QueryMigrationCheckProcess(request *QueryMigrationCheckProcessR
     return
 }
 
+func NewRecycleDBInstanceRequest() (request *RecycleDBInstanceRequest) {
+    request = &RecycleDBInstanceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("sqlserver", APIVersion, "RecycleDBInstance")
+    return
+}
+
+func NewRecycleDBInstanceResponse() (response *RecycleDBInstanceResponse) {
+    response = &RecycleDBInstanceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（RecycleDBInstance）用于主动回收已下线的SQLSERVER实例
+func (c *Client) RecycleDBInstance(request *RecycleDBInstanceRequest) (response *RecycleDBInstanceResponse, err error) {
+    if request == nil {
+        request = NewRecycleDBInstanceRequest()
+    }
+    response = NewRecycleDBInstanceResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewRemoveBackupsRequest() (request *RemoveBackupsRequest) {
     request = &RemoveBackupsRequest{
         BaseRequest: &tchttp.BaseRequest{},

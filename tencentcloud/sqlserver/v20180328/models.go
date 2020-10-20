@@ -3468,6 +3468,43 @@ type ReadOnlyInstanceWeightPair struct {
 	ReadOnlyWeight *int64 `json:"ReadOnlyWeight,omitempty" name:"ReadOnlyWeight"`
 }
 
+type RecycleDBInstanceRequest struct {
+	*tchttp.BaseRequest
+
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+}
+
+func (r *RecycleDBInstanceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *RecycleDBInstanceRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type RecycleDBInstanceResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 流程id
+		FlowId *int64 `json:"FlowId,omitempty" name:"FlowId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *RecycleDBInstanceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *RecycleDBInstanceResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type RegionInfo struct {
 
 	// 地域英文ID，类似ap-guanghou

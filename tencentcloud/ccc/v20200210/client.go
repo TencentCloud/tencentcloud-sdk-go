@@ -43,6 +43,31 @@ func NewClient(credential *common.Credential, region string, clientProfile *prof
 }
 
 
+func NewCreateSDKLoginTokenRequest() (request *CreateSDKLoginTokenRequest) {
+    request = &CreateSDKLoginTokenRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ccc", APIVersion, "CreateSDKLoginToken")
+    return
+}
+
+func NewCreateSDKLoginTokenResponse() (response *CreateSDKLoginTokenResponse) {
+    response = &CreateSDKLoginTokenResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 创建 SDK 登录 Token。
+func (c *Client) CreateSDKLoginToken(request *CreateSDKLoginTokenRequest) (response *CreateSDKLoginTokenResponse, err error) {
+    if request == nil {
+        request = NewCreateSDKLoginTokenRequest()
+    }
+    response = NewCreateSDKLoginTokenResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeTelCdrRequest() (request *DescribeTelCdrRequest) {
     request = &DescribeTelCdrRequest{
         BaseRequest: &tchttp.BaseRequest{},

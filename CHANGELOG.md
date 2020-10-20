@@ -1,66 +1,10 @@
 # 本版本更新包含以下内容：
 
-## 业务风险情报(bri) 版本：2019-03-28
+## 批量计算(batch) 版本：2017-03-12
 
-### 第 3 次发布
+### 第 33 次发布
 
-发布时间：2020-10-19 08:01:54
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [DescribeBRI](https://cloud.tencent.com/document/api/1064/35631)
-
-	* <font color="#dd0000">**修改入参**：</font>RequestData, ResourceId
-
-
-
-
-## DDoS 高防包(dayu) 版本：2018-07-09
-
-### 第 19 次发布
-
-发布时间：2020-10-19 08:02:57
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [DescribeBizTrend](https://cloud.tencent.com/document/api/1021/49205)
-
-
-
-## 域名注册(domain) 版本：2018-08-08
-
-### 第 7 次发布
-
-发布时间：2020-10-19 08:03:20
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [CreateTemplate](https://cloud.tencent.com/document/api/242/49208)
-* [DeleteTemplate](https://cloud.tencent.com/document/api/242/49207)
-* [ModifyDomainDNSBatch](https://cloud.tencent.com/document/api/242/49211)
-* [RenewDomainBatch](https://cloud.tencent.com/document/api/242/49210)
-* [SetDomainAutoRenew](https://cloud.tencent.com/document/api/242/49209)
-* [UploadImage](https://cloud.tencent.com/document/api/242/49206)
-
-
-
-## 边缘计算机器(ecm) 版本：2019-07-19
-
-### 第 27 次发布
-
-发布时间：2020-10-19 08:00:23
+发布时间：2020-10-20 08:01:43
 
 本次发布包含了以下内容：
 
@@ -68,37 +12,20 @@
 
 修改接口：
 
-* [CreateModule](https://cloud.tencent.com/document/api/1108/42557)
+* [DescribeJob](https://cloud.tencent.com/document/api/599/15904)
 
-	* 新增入参：DefaultBandWidthIn
+	* 新增出参：NextAction
 
-* [ModifyModuleNetwork](https://cloud.tencent.com/document/api/1108/42551)
-
-	* 新增入参：DefaultBandwidthIn
-
-* [ResetInstancesMaxBandwidth](https://cloud.tencent.com/document/api/1108/42560)
-
-	* 新增入参：MaxBandwidthIn
-
-
-修改数据结构：
-
-* [Module](https://cloud.tencent.com/document/api/1108/42574#Module)
-
-	* 新增成员：DefaultBandwidthIn
-
-* [PublicIPAddressInfo](https://cloud.tencent.com/document/api/1108/42574#PublicIPAddressInfo)
-
-	* 新增成员：MaxBandwidthIn
+	* <font color="#dd0000">**修改出参**：</font>TaskInstanceMetrics
 
 
 
 
-## 游戏服务器引擎(gse) 版本：2019-11-12
+## 云呼叫中心(ccc) 版本：2020-02-10
 
-### 第 10 次发布
+### 第 2 次发布
 
-发布时间：2020-10-16 17:46:44
+发布时间：2020-10-20 08:00:12
 
 本次发布包含了以下内容：
 
@@ -106,12 +33,42 @@
 
 新增接口：
 
-* [DescribeAssetSystems](https://cloud.tencent.com/document/api/1165/49191)
-* [UpdateFleetName](https://cloud.tencent.com/document/api/1165/49204)
+* [CreateSDKLoginToken](https://cloud.tencent.com/document/api/679/49227)
 
-新增数据结构：
 
-* [AssetSupportSys](https://cloud.tencent.com/document/api/1165/42074#AssetSupportSys)
+
+## 物联网开发平台(iotexplorer) 版本：2019-04-23
+
+### 第 13 次发布
+
+发布时间：2020-10-20 08:04:47
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [ListEventHistory](https://cloud.tencent.com/document/api/1081/37655)
+
+	* 新增入参：EventId
+
+
+
+
+## 云数据库 SQL Server(sqlserver) 版本：2018-03-28
+
+### 第 14 次发布
+
+发布时间：2020-10-20 08:06:26
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [RecycleDBInstance](https://cloud.tencent.com/document/api/238/49228)
 
 
 
@@ -1765,6 +1722,23 @@
 
 
 ## 批量计算(batch) 版本：2017-03-12
+
+### 第 33 次发布
+
+发布时间：2020-10-20 08:01:43
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeJob](https://cloud.tencent.com/document/api/599/15904)
+
+	* 新增出参：NextAction
+
+	* <font color="#dd0000">**修改出参**：</font>TaskInstanceMetrics
+
 
 ### 第 32 次发布
 
@@ -5292,6 +5266,18 @@
 
 
 ## 云呼叫中心(ccc) 版本：2020-02-10
+
+### 第 2 次发布
+
+发布时间：2020-10-20 08:00:12
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[CreateSDKLoginToken](https://cloud.tencent.com/document/api/679/49227)](https://cloud.tencent.com/document/api/#/#)
 
 ### 第 1 次发布
 
@@ -12043,7 +12029,7 @@
 
 新增接口：
 
-* [[DescribeBizTrend](https://cloud.tencent.com/document/api/1021/49205)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeBizTrend](https://cloud.tencent.com/document/api/1021/49205)
 
 ### 第 18 次发布
 
@@ -13138,12 +13124,12 @@
 
 新增接口：
 
-* [[CreateTemplate](https://cloud.tencent.com/document/api/242/49208)](https://cloud.tencent.com/document/api/#/#)
-* [[DeleteTemplate](https://cloud.tencent.com/document/api/242/49207)](https://cloud.tencent.com/document/api/#/#)
-* [[ModifyDomainDNSBatch](https://cloud.tencent.com/document/api/242/49211)](https://cloud.tencent.com/document/api/#/#)
-* [[RenewDomainBatch](https://cloud.tencent.com/document/api/242/49210)](https://cloud.tencent.com/document/api/#/#)
-* [[SetDomainAutoRenew](https://cloud.tencent.com/document/api/242/49209)](https://cloud.tencent.com/document/api/#/#)
-* [[UploadImage](https://cloud.tencent.com/document/api/242/49206)](https://cloud.tencent.com/document/api/#/#)
+* [CreateTemplate](https://cloud.tencent.com/document/api/242/49208)
+* [DeleteTemplate](https://cloud.tencent.com/document/api/242/49207)
+* [ModifyDomainDNSBatch](https://cloud.tencent.com/document/api/242/49211)
+* [RenewDomainBatch](https://cloud.tencent.com/document/api/242/49210)
+* [SetDomainAutoRenew](https://cloud.tencent.com/document/api/242/49209)
+* [UploadImage](https://cloud.tencent.com/document/api/242/49206)
 
 ### 第 6 次发布
 
@@ -16721,12 +16707,12 @@
 
 新增接口：
 
-* [[DescribeAssetSystems](https://cloud.tencent.com/document/api/1165/49191)](https://cloud.tencent.com/document/api/#/#)
-* [[UpdateFleetName](https://cloud.tencent.com/document/api/1165/49204)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeAssetSystems](https://cloud.tencent.com/document/api/1165/49191)
+* [UpdateFleetName](https://cloud.tencent.com/document/api/1165/49204)
 
 新增数据结构：
 
-* [[AssetSupportSys](https://cloud.tencent.com/document/api/1165/42074#AssetSupportSys)](https://cloud.tencent.com/document/api/1165/42074#[AssetSupportSys](https://cloud.tencent.com/document/api/1165/42074#AssetSupportSys))
+* [AssetSupportSys](https://cloud.tencent.com/document/api/1165/42074#AssetSupportSys)
 
 ### 第 9 次发布
 
@@ -18689,6 +18675,21 @@
 
 
 ## 物联网开发平台(iotexplorer) 版本：2019-04-23
+
+### 第 13 次发布
+
+发布时间：2020-10-20 08:04:47
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [ListEventHistory](https://cloud.tencent.com/document/api/1081/37655)
+
+	* 新增入参：EventId
+
 
 ### 第 12 次发布
 
@@ -26308,6 +26309,18 @@
 
 
 ## 云数据库 SQL Server(sqlserver) 版本：2018-03-28
+
+### 第 14 次发布
+
+发布时间：2020-10-20 08:06:26
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[RecycleDBInstance](https://cloud.tencent.com/document/api/238/49228)](https://cloud.tencent.com/document/api/#/#)
 
 ### 第 13 次发布
 
