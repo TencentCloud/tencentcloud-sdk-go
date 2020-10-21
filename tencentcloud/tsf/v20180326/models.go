@@ -416,6 +416,10 @@ type Cluster struct {
 	// 返回给前端的控制信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	OperationInfo *OperationInfo `json:"OperationInfo,omitempty" name:"OperationInfo"`
+
+	// 集群版本
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClusterVersion *string `json:"ClusterVersion,omitempty" name:"ClusterVersion"`
 }
 
 type Config struct {
@@ -1403,6 +1407,9 @@ type CreateNamespaceRequest struct {
 
 	// 命名空间ID
 	NamespaceId *string `json:"NamespaceId,omitempty" name:"NamespaceId"`
+
+	// 是否开启高可用
+	IsHaEnable *string `json:"IsHaEnable,omitempty" name:"IsHaEnable"`
 }
 
 func (r *CreateNamespaceRequest) ToJsonString() string {
@@ -2269,6 +2276,9 @@ type DeployContainerGroupRequest struct {
 
 	// 是否部署 agent 容器。若不指定该参数，则默认不部署 agent 容器。
 	DeployAgent *bool `json:"DeployAgent,omitempty" name:"DeployAgent"`
+
+	// 节点调度策略。若不指定改参数，则默认不使用节点调度策略。
+	SchedulingStrategy *SchedulingStrategy `json:"SchedulingStrategy,omitempty" name:"SchedulingStrategy"`
 }
 
 func (r *DeployContainerGroupRequest) ToJsonString() string {
@@ -2317,6 +2327,9 @@ type DeployGroupRequest struct {
 
 	// 部署应用描述信息
 	DeployDesc *string `json:"DeployDesc,omitempty" name:"DeployDesc"`
+
+	// 是否允许强制启动
+	ForceStart *bool `json:"ForceStart,omitempty" name:"ForceStart"`
 }
 
 func (r *DeployGroupRequest) ToJsonString() string {
@@ -3500,6 +3513,9 @@ type DescribeMicroservicesRequest struct {
 
 	// 分页个数
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 状态过滤，online、offline、single_online
+	Status []*string `json:"Status,omitempty" name:"Status" list`
 }
 
 func (r *DescribeMicroservicesRequest) ToJsonString() string {
@@ -5730,6 +5746,10 @@ type Namespace struct {
 	// 命名空间类型
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	NamespaceType *string `json:"NamespaceType,omitempty" name:"NamespaceType"`
+
+	// 是否开启高可用
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsHaEnable *string `json:"IsHaEnable,omitempty" name:"IsHaEnable"`
 }
 
 type OperationInfo struct {
@@ -6289,6 +6309,13 @@ func (r *RollbackConfigResponse) ToJsonString() string {
 
 func (r *RollbackConfigResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
+}
+
+type SchedulingStrategy struct {
+
+	// NONE：不使用调度策略；CROSS_AZ：跨可用区部署
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Type *string `json:"Type,omitempty" name:"Type"`
 }
 
 type ServerlessGroup struct {

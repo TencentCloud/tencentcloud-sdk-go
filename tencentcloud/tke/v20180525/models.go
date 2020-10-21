@@ -228,6 +228,9 @@ type ClusterAdvancedSettings struct {
 
 	// 审计日志上传到的topic
 	AuditLogTopicId *string `json:"AuditLogTopicId,omitempty" name:"AuditLogTopicId"`
+
+	// 区分单网卡多IP模式和独立网卡模式
+	VpcCniType *string `json:"VpcCniType,omitempty" name:"VpcCniType"`
 }
 
 type ClusterAsGroup struct {
@@ -726,6 +729,47 @@ func (r *CreateClusterRouteTableResponse) ToJsonString() string {
 }
 
 func (r *CreateClusterRouteTableResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreatePrometheusDashboardRequest struct {
+	*tchttp.BaseRequest
+
+	// 实例id
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 面板组名称
+	DashboardName *string `json:"DashboardName,omitempty" name:"DashboardName"`
+
+	// 面板列表
+	// 每一项是一个grafana dashboard的json定义
+	Contents []*string `json:"Contents,omitempty" name:"Contents" list`
+}
+
+func (r *CreatePrometheusDashboardRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreatePrometheusDashboardRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreatePrometheusDashboardResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreatePrometheusDashboardResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreatePrometheusDashboardResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -1579,6 +1623,45 @@ func (r *DescribeImagesResponse) ToJsonString() string {
 }
 
 func (r *DescribeImagesResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribePrometheusAgentInstancesRequest struct {
+	*tchttp.BaseRequest
+
+	// 集群id
+	// 可以是tke, eks, edge的集群id
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+}
+
+func (r *DescribePrometheusAgentInstancesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribePrometheusAgentInstancesRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribePrometheusAgentInstancesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 关联该集群的实例列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Instances []*string `json:"Instances,omitempty" name:"Instances" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribePrometheusAgentInstancesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribePrometheusAgentInstancesResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 

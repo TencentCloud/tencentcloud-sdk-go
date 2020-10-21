@@ -1,31 +1,10 @@
 # 本版本更新包含以下内容：
 
-## 批量计算(batch) 版本：2017-03-12
+## 负载均衡(clb) 版本：2018-03-17
 
-### 第 33 次发布
+### 第 34 次发布
 
-发布时间：2020-10-20 08:01:43
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [DescribeJob](https://cloud.tencent.com/document/api/599/15904)
-
-	* 新增出参：NextAction
-
-	* <font color="#dd0000">**修改出参**：</font>TaskInstanceMetrics
-
-
-
-
-## 云呼叫中心(ccc) 版本：2020-02-10
-
-### 第 2 次发布
-
-发布时间：2020-10-20 08:00:12
+发布时间：2020-10-21 08:02:53
 
 本次发布包含了以下内容：
 
@@ -33,15 +12,22 @@
 
 新增接口：
 
-* [CreateSDKLoginToken](https://cloud.tencent.com/document/api/679/49227)
+* [DescribeClusterResources](https://cloud.tencent.com/document/api/214/49279)
+* [DescribeExclusiveClusters](https://cloud.tencent.com/document/api/214/49278)
+
+新增数据结构：
+
+* [Cluster](https://cloud.tencent.com/document/api/214/30694#Cluster)
+* [ClusterResource](https://cloud.tencent.com/document/api/214/30694#ClusterResource)
+* [ClustersZone](https://cloud.tencent.com/document/api/214/30694#ClustersZone)
 
 
 
 ## 物联网开发平台(iotexplorer) 版本：2019-04-23
 
-### 第 13 次发布
+### 第 14 次发布
 
-发布时间：2020-10-20 08:04:47
+发布时间：2020-10-21 08:04:34
 
 本次发布包含了以下内容：
 
@@ -51,16 +37,66 @@
 
 * [ListEventHistory](https://cloud.tencent.com/document/api/1081/37655)
 
-	* 新增入参：EventId
+	* <font color="#dd0000">**修改入参**：</font>Type
 
 
 
 
-## 云数据库 SQL Server(sqlserver) 版本：2018-03-28
+## 物联网智能视频服务(iotvideo) 版本：2019-11-26
 
-### 第 14 次发布
+### 第 10 次发布
 
-发布时间：2020-10-20 08:06:26
+发布时间：2020-10-21 08:00:47
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [ProductData](https://cloud.tencent.com/document/api/1131/42400#ProductData)
+
+	* 新增成员：AccessMode
+
+
+
+
+## 视频处理(mps) 版本：2019-06-12
+
+### 第 24 次发布
+
+发布时间：2020-10-21 08:05:14
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增数据结构：
+
+* [UrlInputInfo](https://cloud.tencent.com/document/api/862/37615#UrlInputInfo)
+
+修改数据结构：
+
+* [MediaInputInfo](https://cloud.tencent.com/document/api/862/37615#MediaInputInfo)
+
+	* 新增成员：UrlInputInfo
+
+* [VideoTemplateInfo](https://cloud.tencent.com/document/api/862/37615#VideoTemplateInfo)
+
+	* 新增成员：Vcrf
+
+* [VideoTemplateInfoForUpdate](https://cloud.tencent.com/document/api/862/37615#VideoTemplateInfoForUpdate)
+
+	* 新增成员：Vcrf
+
+
+
+
+## 容器服务(tke) 版本：2018-05-25
+
+### 第 28 次发布
+
+发布时间：2020-10-21 08:06:43
 
 本次发布包含了以下内容：
 
@@ -68,7 +104,84 @@
 
 新增接口：
 
-* [RecycleDBInstance](https://cloud.tencent.com/document/api/238/49228)
+* [CreatePrometheusDashboard](https://cloud.tencent.com/document/api/457/49282)
+* [DescribePrometheusAgentInstances](https://cloud.tencent.com/document/api/457/49281)
+
+修改数据结构：
+
+* [ClusterAdvancedSettings](https://cloud.tencent.com/document/api/457/31866#ClusterAdvancedSettings)
+
+	* 新增成员：VpcCniType
+
+
+
+
+## 腾讯微服务平台 TSF(tsf) 版本：2018-03-26
+
+### 第 32 次发布
+
+发布时间：2020-10-21 08:06:55
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateNamespace](https://cloud.tencent.com/document/api/649/36098)
+
+	* 新增入参：IsHaEnable
+
+* [DeployContainerGroup](https://cloud.tencent.com/document/api/649/36071)
+
+	* 新增入参：SchedulingStrategy
+
+* [DeployGroup](https://cloud.tencent.com/document/api/649/36070)
+
+	* 新增入参：ForceStart
+
+* [DescribeMicroservices](https://cloud.tencent.com/document/api/649/36084)
+
+	* 新增入参：Status
+
+
+新增数据结构：
+
+* [SchedulingStrategy](https://cloud.tencent.com/document/api/649/36099#SchedulingStrategy)
+
+修改数据结构：
+
+* [Cluster](https://cloud.tencent.com/document/api/649/36099#Cluster)
+
+	* 新增成员：ClusterVersion
+
+* [Namespace](https://cloud.tencent.com/document/api/649/36099#Namespace)
+
+	* 新增成员：IsHaEnable
+
+
+
+
+## 云点播(vod) 版本：2018-07-17
+
+### 第 59 次发布
+
+发布时间：2020-10-21 08:07:39
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [VideoTemplateInfo](https://cloud.tencent.com/document/api/266/31773#VideoTemplateInfo)
+
+	* 新增成员：Vcrf
+
+* [VideoTemplateInfoForUpdate](https://cloud.tencent.com/document/api/266/31773#VideoTemplateInfoForUpdate)
+
+	* 新增成员：Vcrf
+
 
 
 
@@ -5277,7 +5390,7 @@
 
 新增接口：
 
-* [[CreateSDKLoginToken](https://cloud.tencent.com/document/api/679/49227)](https://cloud.tencent.com/document/api/#/#)
+* [CreateSDKLoginToken](https://cloud.tencent.com/document/api/679/49227)
 
 ### 第 1 次发布
 
@@ -7822,6 +7935,25 @@
 
 
 ## 负载均衡(clb) 版本：2018-03-17
+
+### 第 34 次发布
+
+发布时间：2020-10-21 08:02:53
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeClusterResources](https://cloud.tencent.com/document/api/214/49279)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeExclusiveClusters](https://cloud.tencent.com/document/api/214/49278)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[Cluster](https://cloud.tencent.com/document/api/214/30694#Cluster)](https://cloud.tencent.com/document/api/214/30694#[Cluster](https://cloud.tencent.com/document/api/214/30694#Cluster))
+* [[ClusterResource](https://cloud.tencent.com/document/api/214/30694#ClusterResource)](https://cloud.tencent.com/document/api/214/30694#[ClusterResource](https://cloud.tencent.com/document/api/214/30694#ClusterResource))
+* [[ClustersZone](https://cloud.tencent.com/document/api/214/30694#ClustersZone)](https://cloud.tencent.com/document/api/214/30694#[ClustersZone](https://cloud.tencent.com/document/api/214/30694#ClustersZone))
 
 ### 第 33 次发布
 
@@ -18676,6 +18808,21 @@
 
 ## 物联网开发平台(iotexplorer) 版本：2019-04-23
 
+### 第 14 次发布
+
+发布时间：2020-10-21 08:04:34
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [ListEventHistory](https://cloud.tencent.com/document/api/1081/37655)
+
+	* <font color="#dd0000">**修改入参**：</font>Type
+
+
 ### 第 13 次发布
 
 发布时间：2020-10-20 08:04:47
@@ -19055,6 +19202,21 @@
 
 
 ## 物联网智能视频服务(iotvideo) 版本：2019-11-26
+
+### 第 10 次发布
+
+发布时间：2020-10-21 08:00:47
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [ProductData](https://cloud.tencent.com/document/api/1131/42400#ProductData)
+
+	* 新增成员：AccessMode
+
 
 ### 第 9 次发布
 
@@ -21952,6 +22114,33 @@
 
 
 ## 视频处理(mps) 版本：2019-06-12
+
+### 第 24 次发布
+
+发布时间：2020-10-21 08:05:14
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增数据结构：
+
+* [[UrlInputInfo](https://cloud.tencent.com/document/api/862/37615#UrlInputInfo)](https://cloud.tencent.com/document/api/862/37615#[UrlInputInfo](https://cloud.tencent.com/document/api/862/37615#UrlInputInfo))
+
+修改数据结构：
+
+* [MediaInputInfo](https://cloud.tencent.com/document/api/862/37615#MediaInputInfo)
+
+	* 新增成员：UrlInputInfo
+
+* [VideoTemplateInfo](https://cloud.tencent.com/document/api/862/37615#VideoTemplateInfo)
+
+	* 新增成员：Vcrf
+
+* [VideoTemplateInfoForUpdate](https://cloud.tencent.com/document/api/862/37615#VideoTemplateInfoForUpdate)
+
+	* 新增成员：Vcrf
+
 
 ### 第 23 次发布
 
@@ -26320,7 +26509,7 @@
 
 新增接口：
 
-* [[RecycleDBInstance](https://cloud.tencent.com/document/api/238/49228)](https://cloud.tencent.com/document/api/#/#)
+* [RecycleDBInstance](https://cloud.tencent.com/document/api/238/49228)
 
 ### 第 13 次发布
 
@@ -30221,6 +30410,26 @@
 
 ## 容器服务(tke) 版本：2018-05-25
 
+### 第 28 次发布
+
+发布时间：2020-10-21 08:06:43
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[CreatePrometheusDashboard](https://cloud.tencent.com/document/api/457/49282)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribePrometheusAgentInstances](https://cloud.tencent.com/document/api/457/49281)](https://cloud.tencent.com/document/api/#/#)
+
+修改数据结构：
+
+* [ClusterAdvancedSettings](https://cloud.tencent.com/document/api/457/31866#ClusterAdvancedSettings)
+
+	* 新增成员：VpcCniType
+
+
 ### 第 27 次发布
 
 发布时间：2020-10-12 08:06:24
@@ -31288,6 +31497,48 @@
 
 ## 腾讯微服务平台 TSF(tsf) 版本：2018-03-26
 
+### 第 32 次发布
+
+发布时间：2020-10-21 08:06:55
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateNamespace](https://cloud.tencent.com/document/api/649/36098)
+
+	* 新增入参：IsHaEnable
+
+* [DeployContainerGroup](https://cloud.tencent.com/document/api/649/36071)
+
+	* 新增入参：SchedulingStrategy
+
+* [DeployGroup](https://cloud.tencent.com/document/api/649/36070)
+
+	* 新增入参：ForceStart
+
+* [DescribeMicroservices](https://cloud.tencent.com/document/api/649/36084)
+
+	* 新增入参：Status
+
+
+新增数据结构：
+
+* [[SchedulingStrategy](https://cloud.tencent.com/document/api/649/36099#SchedulingStrategy)](https://cloud.tencent.com/document/api/649/36099#[SchedulingStrategy](https://cloud.tencent.com/document/api/649/36099#SchedulingStrategy))
+
+修改数据结构：
+
+* [Cluster](https://cloud.tencent.com/document/api/649/36099#Cluster)
+
+	* 新增成员：ClusterVersion
+
+* [Namespace](https://cloud.tencent.com/document/api/649/36099#Namespace)
+
+	* 新增成员：IsHaEnable
+
+
 ### 第 31 次发布
 
 发布时间：2020-10-12 08:06:34
@@ -32189,6 +32440,25 @@
 
 
 ## 云点播(vod) 版本：2018-07-17
+
+### 第 59 次发布
+
+发布时间：2020-10-21 08:07:39
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [VideoTemplateInfo](https://cloud.tencent.com/document/api/266/31773#VideoTemplateInfo)
+
+	* 新增成员：Vcrf
+
+* [VideoTemplateInfoForUpdate](https://cloud.tencent.com/document/api/266/31773#VideoTemplateInfoForUpdate)
+
+	* 新增成员：Vcrf
+
 
 ### 第 58 次发布
 

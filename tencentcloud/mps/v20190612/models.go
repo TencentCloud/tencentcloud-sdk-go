@@ -4758,11 +4758,15 @@ type MediaImageSpriteItem struct {
 
 type MediaInputInfo struct {
 
-	// 输入来源对象的类型，现在仅支持 COS。
+	// 输入来源对象的类型，可以支持 COS 和 URL 两种。
 	Type *string `json:"Type,omitempty" name:"Type"`
 
 	// 当 Type 为 COS 时有效，则该项为必填，表示视频处理 COS 对象信息。
 	CosInputInfo *CosInputInfo `json:"CosInputInfo,omitempty" name:"CosInputInfo"`
+
+	// 当 Type 为 URL 时有效，则该项为必填，表示视频处理 URL 对象信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UrlInputInfo *UrlInputInfo `json:"UrlInputInfo,omitempty" name:"UrlInputInfo"`
 }
 
 type MediaMetaData struct {
@@ -7191,6 +7195,12 @@ type TranscodeTemplate struct {
 	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
 }
 
+type UrlInputInfo struct {
+
+	// 视频的 URL。
+	Url *string `json:"Url,omitempty" name:"Url"`
+}
+
 type UserDefineAsrTextReviewTemplateInfo struct {
 
 	// 用户自定语音审核任务开关，可选值：
@@ -7371,6 +7381,10 @@ type VideoTemplateInfo struct {
 	// <li>black：留黑，保持视频宽高比不变，边缘剩余部分使用黑色填充。</li>
 	// 默认值：black 。
 	FillType *string `json:"FillType,omitempty" name:"FillType"`
+
+	// 视频恒定码率控制因子，取值范围为[1, 51]。
+	// 如果指定该参数，将使用 CRF 的码率控制方式做转码。0值表示禁用 CRF 模式。
+	Vcrf *uint64 `json:"Vcrf,omitempty" name:"Vcrf"`
 }
 
 type VideoTemplateInfoForUpdate struct {
@@ -7412,6 +7426,10 @@ type VideoTemplateInfoForUpdate struct {
 	// <li> stretch：拉伸，对每一帧进行拉伸，填满整个画面，可能导致转码后的视频被“压扁“或者“拉长“；</li>
 	// <li>black：留黑，保持视频宽高比不变，边缘剩余部分使用黑色填充。</li>
 	FillType *string `json:"FillType,omitempty" name:"FillType"`
+
+	// 视频恒定码率控制因子，取值范围为[0, 51]。
+	// 如果指定该参数，将使用 CRF 的码率控制方式做转码。取0值表示禁用 CRF 模式。
+	Vcrf *uint64 `json:"Vcrf,omitempty" name:"Vcrf"`
 }
 
 type WatermarkInput struct {
@@ -7421,12 +7439,15 @@ type WatermarkInput struct {
 
 	// 水印自定义参数，当 Definition 填 0 时有效。
 	// 该参数用于高度定制场景，建议您优先使用 Definition 指定水印参数。
+	// 水印自定义参数不支持截图打水印。
 	RawParameter *RawWatermarkParameter `json:"RawParameter,omitempty" name:"RawParameter"`
 
 	// 文字内容，长度不超过100个字符。仅当水印类型为文字水印时填写。
+	// 文字水印不支持截图打水印。
 	TextContent *string `json:"TextContent,omitempty" name:"TextContent"`
 
 	// SVG 内容。长度不超过 2000000 个字符。仅当水印类型为 SVG 水印时填写。
+	// SVG 水印不支持截图打水印。
 	SvgContent *string `json:"SvgContent,omitempty" name:"SvgContent"`
 
 	// 水印的起始时间偏移，单位：秒。不填或填0，表示水印从画面出现时开始显现。

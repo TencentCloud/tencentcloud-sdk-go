@@ -360,7 +360,7 @@ func NewDescribeDeviceClassResponse() (response *DescribeDeviceClassResponse) {
     return
 }
 
-// 获取获取设备类型
+// 获取设备类型
 func (c *Client) DescribeDeviceClass(request *DescribeDeviceClassRequest) (response *DescribeDeviceClassResponse, err error) {
     if request == nil {
         request = NewDescribeDeviceClassRequest()

@@ -783,6 +783,56 @@ func (c *Client) DescribeClsLogSet(request *DescribeClsLogSetRequest) (response 
     return
 }
 
+func NewDescribeClusterResourcesRequest() (request *DescribeClusterResourcesRequest) {
+    request = &DescribeClusterResourcesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("clb", APIVersion, "DescribeClusterResources")
+    return
+}
+
+func NewDescribeClusterResourcesResponse() (response *DescribeClusterResourcesResponse) {
+    response = &DescribeClusterResourcesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询独占集群中资源列表，支持按集群ID、vip、负载均衡ID、是否闲置为过滤条件检索
+func (c *Client) DescribeClusterResources(request *DescribeClusterResourcesRequest) (response *DescribeClusterResourcesResponse, err error) {
+    if request == nil {
+        request = NewDescribeClusterResourcesRequest()
+    }
+    response = NewDescribeClusterResourcesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeExclusiveClustersRequest() (request *DescribeExclusiveClustersRequest) {
+    request = &DescribeExclusiveClustersRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("clb", APIVersion, "DescribeExclusiveClusters")
+    return
+}
+
+func NewDescribeExclusiveClustersResponse() (response *DescribeExclusiveClustersResponse) {
+    response = &DescribeExclusiveClustersResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询集群信息列表，支持以集群类型、集群唯一ID、集群名字、集群标签、集群内vip、集群内负载均衡唯一id、集群网络类型、可用区等条件进行检索
+func (c *Client) DescribeExclusiveClusters(request *DescribeExclusiveClustersRequest) (response *DescribeExclusiveClustersResponse, err error) {
+    if request == nil {
+        request = NewDescribeExclusiveClustersRequest()
+    }
+    response = NewDescribeExclusiveClustersResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeListenersRequest() (request *DescribeListenersRequest) {
     request = &DescribeListenersRequest{
         BaseRequest: &tchttp.BaseRequest{},

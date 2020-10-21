@@ -268,6 +268,31 @@ func (c *Client) CreateClusterRouteTable(request *CreateClusterRouteTableRequest
     return
 }
 
+func NewCreatePrometheusDashboardRequest() (request *CreatePrometheusDashboardRequest) {
+    request = &CreatePrometheusDashboardRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tke", APIVersion, "CreatePrometheusDashboard")
+    return
+}
+
+func NewCreatePrometheusDashboardResponse() (response *CreatePrometheusDashboardResponse) {
+    response = &CreatePrometheusDashboardResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 创建grafana监控面板
+func (c *Client) CreatePrometheusDashboard(request *CreatePrometheusDashboardRequest) (response *CreatePrometheusDashboardResponse, err error) {
+    if request == nil {
+        request = NewCreatePrometheusDashboardRequest()
+    }
+    response = NewCreatePrometheusDashboardResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteClusterRequest() (request *DeleteClusterRequest) {
     request = &DeleteClusterRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -739,6 +764,31 @@ func (c *Client) DescribeImages(request *DescribeImagesRequest) (response *Descr
         request = NewDescribeImagesRequest()
     }
     response = NewDescribeImagesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribePrometheusAgentInstancesRequest() (request *DescribePrometheusAgentInstancesRequest) {
+    request = &DescribePrometheusAgentInstancesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tke", APIVersion, "DescribePrometheusAgentInstances")
+    return
+}
+
+func NewDescribePrometheusAgentInstancesResponse() (response *DescribePrometheusAgentInstancesResponse) {
+    response = &DescribePrometheusAgentInstancesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 获取关联目标集群的实例列表
+func (c *Client) DescribePrometheusAgentInstances(request *DescribePrometheusAgentInstancesRequest) (response *DescribePrometheusAgentInstancesResponse, err error) {
+    if request == nil {
+        request = NewDescribePrometheusAgentInstancesRequest()
+    }
+    response = NewDescribePrometheusAgentInstancesResponse()
     err = c.Send(request, response)
     return
 }

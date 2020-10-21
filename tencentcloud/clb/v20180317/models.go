@@ -495,6 +495,87 @@ type ClassicalTargetInfo struct {
 	Weight *int64 `json:"Weight,omitempty" name:"Weight"`
 }
 
+type Cluster struct {
+
+	// 集群唯一ID
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 集群名称
+	ClusterName *string `json:"ClusterName,omitempty" name:"ClusterName"`
+
+	// 集群类型，如TGW，STGW，VPCGW
+	ClusterType *string `json:"ClusterType,omitempty" name:"ClusterType"`
+
+	// 集群标签，只有STGW集群有标签
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClusterTag *string `json:"ClusterTag,omitempty" name:"ClusterTag"`
+
+	// 集群所在可用区，如ap-guangzhou-1
+	Zone *string `json:"Zone,omitempty" name:"Zone"`
+
+	// 集群网络类型，如Public，Private
+	Network *string `json:"Network,omitempty" name:"Network"`
+
+	// 最大连接数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MaxConn *int64 `json:"MaxConn,omitempty" name:"MaxConn"`
+
+	// 最大入带宽
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MaxInFlow *int64 `json:"MaxInFlow,omitempty" name:"MaxInFlow"`
+
+	// 最大入包量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MaxInPkg *int64 `json:"MaxInPkg,omitempty" name:"MaxInPkg"`
+
+	// 最大出带宽
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MaxOutFlow *int64 `json:"MaxOutFlow,omitempty" name:"MaxOutFlow"`
+
+	// 最大出包量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MaxOutPkg *int64 `json:"MaxOutPkg,omitempty" name:"MaxOutPkg"`
+
+	// 最大新建连接数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MaxNewConn *int64 `json:"MaxNewConn,omitempty" name:"MaxNewConn"`
+
+	// http最大新建连接数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HTTPMaxNewConn *int64 `json:"HTTPMaxNewConn,omitempty" name:"HTTPMaxNewConn"`
+
+	// https最大新建连接数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HTTPSMaxNewConn *int64 `json:"HTTPSMaxNewConn,omitempty" name:"HTTPSMaxNewConn"`
+
+	// http QPS
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HTTPQps *int64 `json:"HTTPQps,omitempty" name:"HTTPQps"`
+
+	// https QPS
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HTTPSQps *int64 `json:"HTTPSQps,omitempty" name:"HTTPSQps"`
+
+	// 集群内资源总数目
+	ResourceCount *int64 `json:"ResourceCount,omitempty" name:"ResourceCount"`
+
+	// 集群内空闲资源数目
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IdleResourceCount *int64 `json:"IdleResourceCount,omitempty" name:"IdleResourceCount"`
+
+	// 集群内转发机的数目
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LoadBalanceDirectorCount *int64 `json:"LoadBalanceDirectorCount,omitempty" name:"LoadBalanceDirectorCount"`
+
+	// 集群的Isp属性，如："BGP","CMCC","CUCC","CTCC","INTERNAL"。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Isp *string `json:"Isp,omitempty" name:"Isp"`
+
+	// 集群所在的可用区
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClustersZone *ClustersZone `json:"ClustersZone,omitempty" name:"ClustersZone"`
+}
+
 type ClusterItem struct {
 
 	// 集群唯一ID
@@ -507,6 +588,37 @@ type ClusterItem struct {
 	// 集群所在可用区，如ap-guangzhou-1
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Zone *string `json:"Zone,omitempty" name:"Zone"`
+}
+
+type ClusterResource struct {
+
+	// 集群唯一ID，如tgw-12345678。
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// ip地址。
+	Vip *string `json:"Vip,omitempty" name:"Vip"`
+
+	// 负载均衡唯一ID，如lb-12345678。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LoadBalancerId *string `json:"LoadBalancerId,omitempty" name:"LoadBalancerId"`
+
+	// 资源是否闲置。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Idle *string `json:"Idle,omitempty" name:"Idle"`
+
+	// 集群名称。
+	ClusterName *string `json:"ClusterName,omitempty" name:"ClusterName"`
+}
+
+type ClustersZone struct {
+
+	// 集群所在的主可用区。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MasterZone []*string `json:"MasterZone,omitempty" name:"MasterZone" list`
+
+	// 集群所在的备可用区。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SlaveZone []*string `json:"SlaveZone,omitempty" name:"SlaveZone" list`
 }
 
 type CreateClsLogSetRequest struct {
@@ -1548,6 +1660,111 @@ func (r *DescribeClsLogSetResponse) ToJsonString() string {
 }
 
 func (r *DescribeClsLogSetResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeClusterResourcesRequest struct {
+	*tchttp.BaseRequest
+
+	// 返回集群中资源列表数目，默认20，最大值100
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 返回集群中资源列表起始偏移量，默认0
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 查询集群中资源列表条件，详细的过滤条件如下：
+	// <li> cluster-id - String - 是否必填：否 - （过滤条件）按照 集群 的唯一ID过滤，如 ："tgw-12345678","stgw-12345678","vpcgw-12345678"。</li>
+	// <li> vip - String - 是否必填：否 - （过滤条件）按照vip过滤。</li>
+	// <li> loadblancer-id - String - 是否必填：否 - （过滤条件）按照负载均衡唯一ID过滤。</li>
+	// <li> idle - String 是否必填：否 - （过滤条件）按照是否闲置过滤，如"True","False"。</li>
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+}
+
+func (r *DescribeClusterResourcesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeClusterResourcesRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeClusterResourcesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 集群中资源列表
+		ClusterResourceSet []*ClusterResource `json:"ClusterResourceSet,omitempty" name:"ClusterResourceSet" list`
+
+		// 集群中资源总数
+		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeClusterResourcesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeClusterResourcesResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeExclusiveClustersRequest struct {
+	*tchttp.BaseRequest
+
+	// 返回集群列表数目，默认20，最大值100
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 返回集群列表起始偏移量，默认0
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 查询集群列表条件，详细的过滤条件如下：
+	// <li> cluster-type - String - 是否必填：否 - （过滤条件）按照 集群 的类型过滤，包括"TGW","STGW","VPCGW"。</li>
+	// <li> cluster-id - String - 是否必填：否 - （过滤条件）按照 集群 的唯一ID过滤，如 ："tgw-12345678","stgw-12345678","vpcgw-12345678"。</li>
+	// <li> cluster-name - String - 是否必填：否 - （过滤条件）按照 集群 的名称过滤。</li>
+	// <li> cluster-tag - String - 是否必填：否 - （过滤条件）按照 集群 的标签过滤。（只有TGW/STGW集群有集群标签） </li>
+	// <li> vip - String - 是否必填：否 - （过滤条件）按照 集群 内的vip过滤。</li>
+	// <li> loadblancer-id - String - 是否必填：否 - （过滤条件）按照 集群 内的负载均衡唯一ID过滤。</li>
+	// <li> network - String - 是否必填：否 - （过滤条件）按照 集群 的网络类型过滤，如："Public","Private"。</li>
+	// <li> zone - String - 是否必填：否 - （过滤条件）按照 集群 所在可用区过滤，如："ap-guangzhou-1"（广州一区）。</li>
+	// <li> isp -- String - 是否必填：否 - （过滤条件）按照TGW集群的 Isp 类型过滤，如："BGP","CMCC","CUCC","CTCC","INTERNAL"。</li>
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+}
+
+func (r *DescribeExclusiveClustersRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeExclusiveClustersRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeExclusiveClustersResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 集群列表
+		ClusterSet []*Cluster `json:"ClusterSet,omitempty" name:"ClusterSet" list`
+
+		// 集群总数目
+		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeExclusiveClustersResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeExclusiveClustersResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 

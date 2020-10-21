@@ -10620,6 +10620,10 @@ type VideoTemplateInfo struct {
 	// <li>black：留黑，保持视频宽高比不变，边缘剩余部分使用黑色填充。</li>
 	// 默认值：black 。
 	FillType *string `json:"FillType,omitempty" name:"FillType"`
+
+	// 视频恒定码率控制因子，取值范围为[1, 51]。
+	// 如果指定该参数，将使用 CRF 的码率控制方式做转码。0值表示禁用 CRF 模式。
+	Vcrf *uint64 `json:"Vcrf,omitempty" name:"Vcrf"`
 }
 
 type VideoTemplateInfoForUpdate struct {
@@ -10659,6 +10663,10 @@ type VideoTemplateInfoForUpdate struct {
 	// <li>black：留黑，保持视频宽高比不变，边缘剩余部分使用黑色填充。</li>
 	// 默认值：black 。
 	FillType *string `json:"FillType,omitempty" name:"FillType"`
+
+	// 视频恒定码率控制因子，取值范围为[0, 51]。
+	// 如果指定该参数，将使用 CRF 的码率控制方式做转码。取0值表示禁用 CRF 模式。
+	Vcrf *uint64 `json:"Vcrf,omitempty" name:"Vcrf"`
 }
 
 type VideoTrackItem struct {
@@ -10734,9 +10742,11 @@ type WatermarkInput struct {
 	Definition *uint64 `json:"Definition,omitempty" name:"Definition"`
 
 	// 文字内容，长度不超过100个字符。仅当水印类型为文字水印时填写。
+	// 文字水印不支持截图打水印。
 	TextContent *string `json:"TextContent,omitempty" name:"TextContent"`
 
 	// SVG 内容。长度不超过 2000000 个字符。仅当水印类型为 SVG 水印时填写。
+	// SVG 水印不支持截图打水印。
 	SvgContent *string `json:"SvgContent,omitempty" name:"SvgContent"`
 
 	// 水印的起始时间偏移，单位：秒。不填或填0，表示水印从画面出现时开始显现。
