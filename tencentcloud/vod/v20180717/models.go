@@ -1722,6 +1722,7 @@ type AudioTemplateInfo struct {
 	// <li>1：单通道</li>
 	// <li>2：双通道</li>
 	// <li>6：立体声</li>
+	// 当媒体的封装格式是音频格式时（flac，ogg，mp3，m4a）时，声道数不允许设为立体声。
 	// 默认值：2。
 	AudioChannel *int64 `json:"AudioChannel,omitempty" name:"AudioChannel"`
 }
@@ -1760,6 +1761,7 @@ type AudioTemplateInfoForUpdate struct {
 	// <li>1：单通道</li>
 	// <li>2：双通道</li>
 	// <li>6：立体声</li>
+	// 当媒体的封装格式是音频格式时（flac，ogg，mp3，m4a）时，声道数不允许设为立体声。
 	AudioChannel *int64 `json:"AudioChannel,omitempty" name:"AudioChannel"`
 }
 
@@ -8975,7 +8977,7 @@ func (r *ProcessMediaByProcedureResponse) FromJsonString(s string) error {
 type ProcessMediaByUrlRequest struct {
 	*tchttp.BaseRequest
 
-	// 输入视频信息，包括视频 URL ， 名称、视频自定义 ID。
+	// API 已经<font color='red'>不再维护</font>。推荐使用的替代 API 请参考接口描述。
 	InputInfo *MediaInputInfo `json:"InputInfo,omitempty" name:"InputInfo"`
 
 	// 输出文件 COS 路径信息。

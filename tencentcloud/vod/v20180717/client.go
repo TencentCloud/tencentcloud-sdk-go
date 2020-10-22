@@ -2389,13 +2389,7 @@ func NewProcessMediaByUrlResponse() (response *ProcessMediaByUrlResponse) {
     return
 }
 
-// 对来源为 URL 的音视频媒体发起处理任务，功能包括：
-// 
-// 1. 智能内容审核（鉴黄、鉴恐、鉴政）；
-// 2. 智能内容分析（标签、分类、封面、按帧标签）；
-// 3. 智能内容识别（视频片头片尾、人脸、文本全文、文本关键词、语音全文、语音关键词、物体）。
-// 
-// 如使用事件通知，事件通知的类型为 [任务流状态变更](https://cloud.tencent.com/document/product/266/9636)。
+// 该 API 已经<font color='red'>不再维护</font>，请使用 MPS 产品的 [ProcessMedia](https://cloud.tencent.com/document/product/862/37578) 接口，在入参 InputInfo.UrlInputInfo.Url 中指定视频 URL。
 func (c *Client) ProcessMediaByUrl(request *ProcessMediaByUrlRequest) (response *ProcessMediaByUrlResponse, err error) {
     if request == nil {
         request = NewProcessMediaByUrlRequest()

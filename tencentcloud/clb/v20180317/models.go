@@ -777,6 +777,9 @@ type CreateLoadBalancerRequest struct {
 	// 购买负载均衡同时，给负载均衡打上标签
 	Tags []*TagInfo `json:"Tags,omitempty" name:"Tags" list`
 
+	// 指定Vip申请负载均衡
+	Vip *string `json:"Vip,omitempty" name:"Vip"`
+
 	// 独占集群信息
 	ExclusiveCluster *ExclusiveCluster `json:"ExclusiveCluster,omitempty" name:"ExclusiveCluster"`
 

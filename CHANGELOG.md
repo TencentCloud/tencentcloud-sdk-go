@@ -2,32 +2,9 @@
 
 ## 负载均衡(clb) 版本：2018-03-17
 
-### 第 34 次发布
+### 第 35 次发布
 
-发布时间：2020-10-21 08:02:53
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [DescribeClusterResources](https://cloud.tencent.com/document/api/214/49279)
-* [DescribeExclusiveClusters](https://cloud.tencent.com/document/api/214/49278)
-
-新增数据结构：
-
-* [Cluster](https://cloud.tencent.com/document/api/214/30694#Cluster)
-* [ClusterResource](https://cloud.tencent.com/document/api/214/30694#ClusterResource)
-* [ClustersZone](https://cloud.tencent.com/document/api/214/30694#ClustersZone)
-
-
-
-## 物联网开发平台(iotexplorer) 版本：2019-04-23
-
-### 第 14 次发布
-
-发布时间：2020-10-21 08:04:34
+发布时间：2020-10-22 08:02:52
 
 本次发布包含了以下内容：
 
@@ -35,18 +12,18 @@
 
 修改接口：
 
-* [ListEventHistory](https://cloud.tencent.com/document/api/1081/37655)
+* [CreateLoadBalancer](https://cloud.tencent.com/document/api/214/30692)
 
-	* <font color="#dd0000">**修改入参**：</font>Type
+	* 新增入参：Vip
 
 
 
 
 ## 物联网智能视频服务(iotvideo) 版本：2019-11-26
 
-### 第 10 次发布
+### 第 11 次发布
 
-发布时间：2020-10-21 08:00:47
+发布时间：2020-10-22 08:00:44
 
 本次发布包含了以下内容：
 
@@ -56,131 +33,7 @@
 
 * [ProductData](https://cloud.tencent.com/document/api/1131/42400#ProductData)
 
-	* 新增成员：AccessMode
-
-
-
-
-## 视频处理(mps) 版本：2019-06-12
-
-### 第 24 次发布
-
-发布时间：2020-10-21 08:05:14
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增数据结构：
-
-* [UrlInputInfo](https://cloud.tencent.com/document/api/862/37615#UrlInputInfo)
-
-修改数据结构：
-
-* [MediaInputInfo](https://cloud.tencent.com/document/api/862/37615#MediaInputInfo)
-
-	* 新增成员：UrlInputInfo
-
-* [VideoTemplateInfo](https://cloud.tencent.com/document/api/862/37615#VideoTemplateInfo)
-
-	* 新增成员：Vcrf
-
-* [VideoTemplateInfoForUpdate](https://cloud.tencent.com/document/api/862/37615#VideoTemplateInfoForUpdate)
-
-	* 新增成员：Vcrf
-
-
-
-
-## 容器服务(tke) 版本：2018-05-25
-
-### 第 28 次发布
-
-发布时间：2020-10-21 08:06:43
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [CreatePrometheusDashboard](https://cloud.tencent.com/document/api/457/49282)
-* [DescribePrometheusAgentInstances](https://cloud.tencent.com/document/api/457/49281)
-
-修改数据结构：
-
-* [ClusterAdvancedSettings](https://cloud.tencent.com/document/api/457/31866#ClusterAdvancedSettings)
-
-	* 新增成员：VpcCniType
-
-
-
-
-## 腾讯微服务平台 TSF(tsf) 版本：2018-03-26
-
-### 第 32 次发布
-
-发布时间：2020-10-21 08:06:55
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [CreateNamespace](https://cloud.tencent.com/document/api/649/36098)
-
-	* 新增入参：IsHaEnable
-
-* [DeployContainerGroup](https://cloud.tencent.com/document/api/649/36071)
-
-	* 新增入参：SchedulingStrategy
-
-* [DeployGroup](https://cloud.tencent.com/document/api/649/36070)
-
-	* 新增入参：ForceStart
-
-* [DescribeMicroservices](https://cloud.tencent.com/document/api/649/36084)
-
-	* 新增入参：Status
-
-
-新增数据结构：
-
-* [SchedulingStrategy](https://cloud.tencent.com/document/api/649/36099#SchedulingStrategy)
-
-修改数据结构：
-
-* [Cluster](https://cloud.tencent.com/document/api/649/36099#Cluster)
-
-	* 新增成员：ClusterVersion
-
-* [Namespace](https://cloud.tencent.com/document/api/649/36099#Namespace)
-
-	* 新增成员：IsHaEnable
-
-
-
-
-## 云点播(vod) 版本：2018-07-17
-
-### 第 59 次发布
-
-发布时间：2020-10-21 08:07:39
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [VideoTemplateInfo](https://cloud.tencent.com/document/api/266/31773#VideoTemplateInfo)
-
-	* 新增成员：Vcrf
-
-* [VideoTemplateInfoForUpdate](https://cloud.tencent.com/document/api/266/31773#VideoTemplateInfoForUpdate)
-
-	* 新增成员：Vcrf
+	* 新增成员：Os
 
 
 
@@ -7936,6 +7789,21 @@
 
 ## 负载均衡(clb) 版本：2018-03-17
 
+### 第 35 次发布
+
+发布时间：2020-10-22 08:02:52
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateLoadBalancer](https://cloud.tencent.com/document/api/214/30692)
+
+	* 新增入参：Vip
+
+
 ### 第 34 次发布
 
 发布时间：2020-10-21 08:02:53
@@ -7946,14 +7814,14 @@
 
 新增接口：
 
-* [[DescribeClusterResources](https://cloud.tencent.com/document/api/214/49279)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeExclusiveClusters](https://cloud.tencent.com/document/api/214/49278)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeClusterResources](https://cloud.tencent.com/document/api/214/49279)
+* [DescribeExclusiveClusters](https://cloud.tencent.com/document/api/214/49278)
 
 新增数据结构：
 
-* [[Cluster](https://cloud.tencent.com/document/api/214/30694#Cluster)](https://cloud.tencent.com/document/api/214/30694#[Cluster](https://cloud.tencent.com/document/api/214/30694#Cluster))
-* [[ClusterResource](https://cloud.tencent.com/document/api/214/30694#ClusterResource)](https://cloud.tencent.com/document/api/214/30694#[ClusterResource](https://cloud.tencent.com/document/api/214/30694#ClusterResource))
-* [[ClustersZone](https://cloud.tencent.com/document/api/214/30694#ClustersZone)](https://cloud.tencent.com/document/api/214/30694#[ClustersZone](https://cloud.tencent.com/document/api/214/30694#ClustersZone))
+* [Cluster](https://cloud.tencent.com/document/api/214/30694#Cluster)
+* [ClusterResource](https://cloud.tencent.com/document/api/214/30694#ClusterResource)
+* [ClustersZone](https://cloud.tencent.com/document/api/214/30694#ClustersZone)
 
 ### 第 33 次发布
 
@@ -19203,6 +19071,21 @@
 
 ## 物联网智能视频服务(iotvideo) 版本：2019-11-26
 
+### 第 11 次发布
+
+发布时间：2020-10-22 08:00:44
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [ProductData](https://cloud.tencent.com/document/api/1131/42400#ProductData)
+
+	* 新增成员：Os
+
+
 ### 第 10 次发布
 
 发布时间：2020-10-21 08:00:47
@@ -22125,7 +22008,7 @@
 
 新增数据结构：
 
-* [[UrlInputInfo](https://cloud.tencent.com/document/api/862/37615#UrlInputInfo)](https://cloud.tencent.com/document/api/862/37615#[UrlInputInfo](https://cloud.tencent.com/document/api/862/37615#UrlInputInfo))
+* [UrlInputInfo](https://cloud.tencent.com/document/api/862/37615#UrlInputInfo)
 
 修改数据结构：
 
@@ -30420,8 +30303,8 @@
 
 新增接口：
 
-* [[CreatePrometheusDashboard](https://cloud.tencent.com/document/api/457/49282)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribePrometheusAgentInstances](https://cloud.tencent.com/document/api/457/49281)](https://cloud.tencent.com/document/api/#/#)
+* [CreatePrometheusDashboard](https://cloud.tencent.com/document/api/457/49282)
+* [DescribePrometheusAgentInstances](https://cloud.tencent.com/document/api/457/49281)
 
 修改数据结构：
 
@@ -31526,7 +31409,7 @@
 
 新增数据结构：
 
-* [[SchedulingStrategy](https://cloud.tencent.com/document/api/649/36099#SchedulingStrategy)](https://cloud.tencent.com/document/api/649/36099#[SchedulingStrategy](https://cloud.tencent.com/document/api/649/36099#SchedulingStrategy))
+* [SchedulingStrategy](https://cloud.tencent.com/document/api/649/36099#SchedulingStrategy)
 
 修改数据结构：
 

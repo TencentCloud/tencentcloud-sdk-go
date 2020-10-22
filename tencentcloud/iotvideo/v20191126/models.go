@@ -2496,6 +2496,10 @@ type ProductData struct {
 	// 接入模型，bit0是0：公版小程序未接入，bit0是1：公版小程序已接入
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AccessMode *int64 `json:"AccessMode,omitempty" name:"AccessMode"`
+
+	// linux,android,liteos
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Os *string `json:"Os,omitempty" name:"Os"`
 }
 
 type RefundStorageServiceRequest struct {
