@@ -700,6 +700,25 @@ type ClientCert struct {
 	DeployTime *string `json:"DeployTime,omitempty" name:"DeployTime"`
 }
 
+type ClientInfo struct {
+
+	// 省份。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProvName *string `json:"ProvName,omitempty" name:"ProvName"`
+
+	// 国家。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Country *string `json:"Country,omitempty" name:"Country"`
+
+	// 运营商。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IspName *string `json:"IspName,omitempty" name:"IspName"`
+
+	// 客户端IP
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Ip *string `json:"Ip,omitempty" name:"Ip"`
+}
+
 type ClsLogObject struct {
 
 	// 主题ID
@@ -834,6 +853,43 @@ func (r *CreateClsLogTopicResponse) ToJsonString() string {
 }
 
 func (r *CreateClsLogTopicResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateDiagnoseUrlRequest struct {
+	*tchttp.BaseRequest
+
+	// 需诊断的url，形如：http://www.test.com/test.txt。
+	Url *string `json:"Url,omitempty" name:"Url"`
+}
+
+func (r *CreateDiagnoseUrlRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateDiagnoseUrlRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateDiagnoseUrlResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 系统生成的诊断链接，一个诊断链接最多可访问10次，有效期为24h。
+		DiagnoseLink *string `json:"DiagnoseLink,omitempty" name:"DiagnoseLink"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateDiagnoseUrlResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateDiagnoseUrlResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -1422,6 +1478,64 @@ func (r *DescribeCertDomainsResponse) ToJsonString() string {
 }
 
 func (r *DescribeCertDomainsResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeDiagnoseReportRequest struct {
+	*tchttp.BaseRequest
+
+	// 报告ID
+	ReportId *string `json:"ReportId,omitempty" name:"ReportId"`
+}
+
+func (r *DescribeDiagnoseReportRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeDiagnoseReportRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeDiagnoseReportResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 诊断报告基础信息
+		BaskInfo *DiagnoseData `json:"BaskInfo,omitempty" name:"BaskInfo"`
+
+		// CNAME检测信息
+		CnameInfo *DiagnoseData `json:"CnameInfo,omitempty" name:"CnameInfo"`
+
+		// 客户端检测信息
+		ClientInfo *DiagnoseData `json:"ClientInfo,omitempty" name:"ClientInfo"`
+
+		// DNS检测信息
+		DnsInfo *DiagnoseData `json:"DnsInfo,omitempty" name:"DnsInfo"`
+
+		// 网络检测信息
+		NetworkInfo *DiagnoseData `json:"NetworkInfo,omitempty" name:"NetworkInfo"`
+
+		// 边缘节点检测信息
+		OcNodeInfo *DiagnoseData `json:"OcNodeInfo,omitempty" name:"OcNodeInfo"`
+
+		// 中间源节点检测信息
+		MidNodeInfo *DiagnoseData `json:"MidNodeInfo,omitempty" name:"MidNodeInfo"`
+
+		// 源站检测信息
+		OriginInfo *DiagnoseData `json:"OriginInfo,omitempty" name:"OriginInfo"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeDiagnoseReportResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeDiagnoseReportResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -2628,6 +2742,94 @@ type DetailDomain struct {
 	Tag []*Tag `json:"Tag,omitempty" name:"Tag" list`
 }
 
+type DiagnoseData struct {
+
+	// 诊断报告内容
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Data []*DiagnoseUnit `json:"Data,omitempty" name:"Data" list`
+
+	// 当前诊断项是否正常。
+	// "ok"：正常
+	// "error"：异常
+	// "warning"："警告"
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *string `json:"Status,omitempty" name:"Status"`
+}
+
+type DiagnoseInfo struct {
+
+	// 待诊断的URL。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DiagnoseUrl *string `json:"DiagnoseUrl,omitempty" name:"DiagnoseUrl"`
+
+	// 由系统生成的诊断链接。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DiagnoseLink *string `json:"DiagnoseLink,omitempty" name:"DiagnoseLink"`
+
+	// 诊断创建时间。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 诊断链接过期时间。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExpireDate *string `json:"ExpireDate,omitempty" name:"ExpireDate"`
+
+	// 诊断链接当前访问次数，一个诊断链接最多可访问10次。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VisitCount *int64 `json:"VisitCount,omitempty" name:"VisitCount"`
+
+	// 访问诊断链接的客户端简易信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClientList []*DiagnoseList `json:"ClientList,omitempty" name:"ClientList" list`
+}
+
+type DiagnoseList struct {
+
+	// 诊断任务标签。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DiagnoseTag *string `json:"DiagnoseTag,omitempty" name:"DiagnoseTag"`
+
+	// 报告ID，用于获取详细诊断报告。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ReportId *string `json:"ReportId,omitempty" name:"ReportId"`
+
+	// 客户端信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClientInfo []*ClientInfo `json:"ClientInfo,omitempty" name:"ClientInfo" list`
+
+	// 最终诊断结果。
+	// -1：已提交
+	// 0  ：检测中
+	// 1  ：检测正常
+	// 2  ： 检测异常
+	// 3  ： 诊断页面异常关闭
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FinalDiagnose *int64 `json:"FinalDiagnose,omitempty" name:"FinalDiagnose"`
+
+	// 诊断任务创建时间。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+}
+
+type DiagnoseUnit struct {
+
+	// 内容单元英文名称。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Key *string `json:"Key,omitempty" name:"Key"`
+
+	// 内容单元中文名称。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	KeyText *string `json:"KeyText,omitempty" name:"KeyText"`
+
+	// 报告内容。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Value *string `json:"Value,omitempty" name:"Value"`
+
+	// 报告内容。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ValueText *string `json:"ValueText,omitempty" name:"ValueText"`
+}
+
 type DisableCachesRequest struct {
 	*tchttp.BaseRequest
 
@@ -3391,6 +3593,43 @@ func (r *ListClsTopicDomainsResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type ListDiagnoseReportRequest struct {
+	*tchttp.BaseRequest
+
+	// 用于搜索诊断URL的关键字，不填时返回用户所有的诊断任务。
+	KeyWords *string `json:"KeyWords,omitempty" name:"KeyWords"`
+}
+
+func (r *ListDiagnoseReportRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ListDiagnoseReportRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ListDiagnoseReportResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 诊断信息。
+		Data []*DiagnoseInfo `json:"Data,omitempty" name:"Data" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ListDiagnoseReportResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ListDiagnoseReportResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type ListScdnLogTasksRequest struct {
 	*tchttp.BaseRequest
 }
@@ -3930,15 +4169,15 @@ type PathRule struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Regex *bool `json:"Regex,omitempty" name:"Regex"`
 
-	// URL路径。
+	// 匹配的URL路径。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Path *string `json:"Path,omitempty" name:"Path"`
 
-	// 路径匹配时的回源源站。
+	// 路径匹配时的回源源站。暂不支持开了私有读写的COS源。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Origin *string `json:"Origin,omitempty" name:"Origin"`
 
-	// 路径匹配时的回源Host头部。
+	// 路径匹配时回源的Host头部。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ServerName *string `json:"ServerName,omitempty" name:"ServerName"`
 
@@ -3946,11 +4185,11 @@ type PathRule struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	OriginArea *string `json:"OriginArea,omitempty" name:"OriginArea"`
 
-	// 路径匹配时的回源URI路径。
+	// 路径匹配时回源的URI路径。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ForwardUri *string `json:"ForwardUri,omitempty" name:"ForwardUri"`
 
-	// 路径匹配时的回源头部设置。
+	// 路径匹配时回源的头部设置。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RequestHeaders []*HttpHeaderRule `json:"RequestHeaders,omitempty" name:"RequestHeaders" list`
 }

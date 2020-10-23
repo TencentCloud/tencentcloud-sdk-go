@@ -117,14 +117,14 @@ func (r *DescribeTelCdrResponse) FromJsonString(s string) error {
 
 type SeatUserInfo struct {
 
-	// 坐席电话号码
-	Phone *string `json:"Phone,omitempty" name:"Phone"`
-
 	// 坐席名称
 	Name *string `json:"Name,omitempty" name:"Name"`
 
 	// 坐席邮箱
 	Mail *string `json:"Mail,omitempty" name:"Mail"`
+
+	// 坐席电话号码
+	Phone *string `json:"Phone,omitempty" name:"Phone"`
 
 	// 坐席昵称
 	Nick *string `json:"Nick,omitempty" name:"Nick"`
@@ -135,6 +135,10 @@ type SeatUserInfo struct {
 	// 坐席关联的技能组列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SkillGroupNameList []*string `json:"SkillGroupNameList,omitempty" name:"SkillGroupNameList" list`
+
+	// 工号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StaffNumber *string `json:"StaffNumber,omitempty" name:"StaffNumber"`
 }
 
 type TelCdrInfo struct {

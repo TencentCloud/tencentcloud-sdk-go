@@ -453,6 +453,12 @@ type CreateProductRequest struct {
 
 	// 设备类型, 0-普通视频设备，1-NVR设备
 	ProductCate *uint64 `json:"ProductCate,omitempty" name:"ProductCate"`
+
+	// 接入模型，bit0是0：公版小程序未接入，bit0是1：公版小程序已接入
+	AccessMode *int64 `json:"AccessMode,omitempty" name:"AccessMode"`
+
+	// linux,android,liteos
+	Os *string `json:"Os,omitempty" name:"Os"`
 }
 
 func (r *CreateProductRequest) ToJsonString() string {

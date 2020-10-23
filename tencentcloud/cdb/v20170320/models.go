@@ -2470,6 +2470,10 @@ type DescribeDBInstanceInfoResponse struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		KeyRegion *string `json:"KeyRegion,omitempty" name:"KeyRegion"`
 
+		// 当前 CDB 后端服务使用的 KMS 服务的默认地域。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		DefaultKmsRegion *string `json:"DefaultKmsRegion,omitempty" name:"DefaultKmsRegion"`
+
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`

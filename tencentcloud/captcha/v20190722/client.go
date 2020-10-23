@@ -133,7 +133,7 @@ func NewDescribeCaptchaMiniDataResponse() (response *DescribeCaptchaMiniDataResp
     return
 }
 
-// 安全验证码小程序插件分类查询数据接口（内测中），请求量type=0、通过量type=1、验证量type=2、拦截量type=3 小时级查询（五小时左右延迟）
+// 安全验证码小程序插件分类查询数据接口，请求量type=0、通过量type=1、验证量type=2、拦截量type=3 小时级查询（五小时左右延迟）
 func (c *Client) DescribeCaptchaMiniData(request *DescribeCaptchaMiniDataRequest) (response *DescribeCaptchaMiniDataResponse, err error) {
     if request == nil {
         request = NewDescribeCaptchaMiniDataRequest()
@@ -158,7 +158,7 @@ func NewDescribeCaptchaMiniDataSumResponse() (response *DescribeCaptchaMiniDataS
     return
 }
 
-// 安全验证码小程序插件查询请求数据概况（内测中）
+// 安全验证码小程序插件查询请求数据概况
 func (c *Client) DescribeCaptchaMiniDataSum(request *DescribeCaptchaMiniDataSumRequest) (response *DescribeCaptchaMiniDataSumResponse, err error) {
     if request == nil {
         request = NewDescribeCaptchaMiniDataSumRequest()
@@ -183,7 +183,7 @@ func NewDescribeCaptchaMiniOperDataResponse() (response *DescribeCaptchaMiniOper
     return
 }
 
-// 安全验证码小程序插件用户操作数据查询（内测中）
+// 安全验证码小程序插件用户操作数据查询
 func (c *Client) DescribeCaptchaMiniOperData(request *DescribeCaptchaMiniOperDataRequest) (response *DescribeCaptchaMiniOperDataResponse, err error) {
     if request == nil {
         request = NewDescribeCaptchaMiniOperDataRequest()
@@ -208,7 +208,7 @@ func NewDescribeCaptchaMiniResultResponse() (response *DescribeCaptchaMiniResult
     return
 }
 
-// 核查验证码小程序插件票据结果（内测中）
+// 核查验证码小程序插件票据结果
 func (c *Client) DescribeCaptchaMiniResult(request *DescribeCaptchaMiniResultRequest) (response *DescribeCaptchaMiniResultResponse, err error) {
     if request == nil {
         request = NewDescribeCaptchaMiniResultRequest()

@@ -1,29 +1,10 @@
 # 本版本更新包含以下内容：
 
-## 负载均衡(clb) 版本：2018-03-17
+## 云呼叫中心(ccc) 版本：2020-02-10
 
-### 第 35 次发布
+### 第 3 次发布
 
-发布时间：2020-10-22 08:02:52
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [CreateLoadBalancer](https://cloud.tencent.com/document/api/214/30692)
-
-	* 新增入参：Vip
-
-
-
-
-## 物联网智能视频服务(iotvideo) 版本：2019-11-26
-
-### 第 11 次发布
-
-发布时间：2020-10-22 08:00:44
+发布时间：2020-10-23 08:00:22
 
 本次发布包含了以下内容：
 
@@ -31,9 +12,130 @@
 
 修改数据结构：
 
-* [ProductData](https://cloud.tencent.com/document/api/1131/42400#ProductData)
+* [SeatUserInfo](https://cloud.tencent.com/document/api/679/47715#SeatUserInfo)
 
-	* 新增成员：Os
+	* 新增成员：StaffNumber
+
+	* <font color="#dd0000">**修改成员**：</font>Phone
+
+
+
+
+## 云数据库 MySQL(cdb) 版本：2017-03-20
+
+### 第 47 次发布
+
+发布时间：2020-10-23 08:03:07
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeDBInstanceInfo](https://cloud.tencent.com/document/api/236/44160)
+
+	* 新增出参：DefaultKmsRegion
+
+
+
+
+## 内容分发网络(cdn) 版本：2018-06-06
+
+### 第 41 次发布
+
+发布时间：2020-10-23 08:03:22
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CreateDiagnoseUrl](https://cloud.tencent.com/document/api/228/49326)
+* [DescribeDiagnoseReport](https://cloud.tencent.com/document/api/228/49325)
+* [ListDiagnoseReport](https://cloud.tencent.com/document/api/228/49324)
+
+新增数据结构：
+
+* [ClientInfo](https://cloud.tencent.com/document/api/228/30987#ClientInfo)
+* [DiagnoseData](https://cloud.tencent.com/document/api/228/30987#DiagnoseData)
+* [DiagnoseInfo](https://cloud.tencent.com/document/api/228/30987#DiagnoseInfo)
+* [DiagnoseList](https://cloud.tencent.com/document/api/228/30987#DiagnoseList)
+* [DiagnoseUnit](https://cloud.tencent.com/document/api/228/30987#DiagnoseUnit)
+
+
+
+## 弹性 MapReduce(emr) 版本：2019-01-03
+
+### 第 15 次发布
+
+发布时间：2020-10-23 08:04:56
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateInstance](https://cloud.tencent.com/document/api/589/34261)
+
+	* 新增入参：ApplicationRole
+
+
+
+
+## 物联网智能视频服务(iotvideo) 版本：2019-11-26
+
+### 第 12 次发布
+
+发布时间：2020-10-23 08:01:19
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateProduct](https://cloud.tencent.com/document/api/1131/42382)
+
+	* 新增入参：AccessMode, Os
+
+
+
+
+## 证书(ssl) 版本：2019-12-05
+
+### 第 3 次发布
+
+发布时间：2020-10-23 08:01:42
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CheckCertificateChain](https://cloud.tencent.com/document/api/400/49323)
+* [CompleteCertificate](https://cloud.tencent.com/document/api/400/49322)
+
+
+
+## 语音合成(tts) 版本：2019-08-23
+
+### 第 2 次发布
+
+发布时间：2020-10-23 08:08:54
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [TextToVoice](https://cloud.tencent.com/document/api/1073/37995)
+
+	* <font color="#dd0000">**删除出参**：</font>Audio, SessionId
 
 
 
@@ -5233,6 +5335,23 @@
 
 ## 云呼叫中心(ccc) 版本：2020-02-10
 
+### 第 3 次发布
+
+发布时间：2020-10-23 08:00:22
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [SeatUserInfo](https://cloud.tencent.com/document/api/679/47715#SeatUserInfo)
+
+	* 新增成员：StaffNumber
+
+	* <font color="#dd0000">**修改成员**：</font>Phone
+
+
 ### 第 2 次发布
 
 发布时间：2020-10-20 08:00:12
@@ -5266,6 +5385,21 @@
 
 
 ## 云数据库 MySQL(cdb) 版本：2017-03-20
+
+### 第 47 次发布
+
+发布时间：2020-10-23 08:03:07
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeDBInstanceInfo](https://cloud.tencent.com/document/api/236/44160)
+
+	* 新增出参：DefaultKmsRegion
+
 
 ### 第 46 次发布
 
@@ -6257,6 +6391,28 @@
 
 
 ## 内容分发网络(cdn) 版本：2018-06-06
+
+### 第 41 次发布
+
+发布时间：2020-10-23 08:03:22
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[CreateDiagnoseUrl](https://cloud.tencent.com/document/api/228/49326)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeDiagnoseReport](https://cloud.tencent.com/document/api/228/49325)](https://cloud.tencent.com/document/api/#/#)
+* [[ListDiagnoseReport](https://cloud.tencent.com/document/api/228/49324)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[ClientInfo](https://cloud.tencent.com/document/api/228/30987#ClientInfo)](https://cloud.tencent.com/document/api/228/30987#[ClientInfo](https://cloud.tencent.com/document/api/228/30987#ClientInfo))
+* [[DiagnoseData](https://cloud.tencent.com/document/api/228/30987#DiagnoseData)](https://cloud.tencent.com/document/api/228/30987#[DiagnoseData](https://cloud.tencent.com/document/api/228/30987#DiagnoseData))
+* [[DiagnoseInfo](https://cloud.tencent.com/document/api/228/30987#DiagnoseInfo)](https://cloud.tencent.com/document/api/228/30987#[DiagnoseInfo](https://cloud.tencent.com/document/api/228/30987#DiagnoseInfo))
+* [[DiagnoseList](https://cloud.tencent.com/document/api/228/30987#DiagnoseList)](https://cloud.tencent.com/document/api/228/30987#[DiagnoseList](https://cloud.tencent.com/document/api/228/30987#DiagnoseList))
+* [[DiagnoseUnit](https://cloud.tencent.com/document/api/228/30987#DiagnoseUnit)](https://cloud.tencent.com/document/api/228/30987#[DiagnoseUnit](https://cloud.tencent.com/document/api/228/30987#DiagnoseUnit))
 
 ### 第 40 次发布
 
@@ -14588,6 +14744,21 @@
 
 ## 弹性 MapReduce(emr) 版本：2019-01-03
 
+### 第 15 次发布
+
+发布时间：2020-10-23 08:04:56
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateInstance](https://cloud.tencent.com/document/api/589/34261)
+
+	* 新增入参：ApplicationRole
+
+
 ### 第 14 次发布
 
 发布时间：2020-09-21 08:03:23
@@ -19070,6 +19241,21 @@
 
 
 ## 物联网智能视频服务(iotvideo) 版本：2019-11-26
+
+### 第 12 次发布
+
+发布时间：2020-10-23 08:01:19
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateProduct](https://cloud.tencent.com/document/api/1131/42382)
+
+	* 新增入参：AccessMode, Os
+
 
 ### 第 11 次发布
 
@@ -26775,6 +26961,19 @@
 
 ## 证书(ssl) 版本：2019-12-05
 
+### 第 3 次发布
+
+发布时间：2020-10-23 08:01:42
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[CheckCertificateChain](https://cloud.tencent.com/document/api/400/49323)](https://cloud.tencent.com/document/api/#/#)
+* [[CompleteCertificate](https://cloud.tencent.com/document/api/400/49322)](https://cloud.tencent.com/document/api/#/#)
+
 ### 第 2 次发布
 
 发布时间：2020-03-27 08:01:22
@@ -32306,6 +32505,21 @@
 
 
 ## 语音合成(tts) 版本：2019-08-23
+
+### 第 2 次发布
+
+发布时间：2020-10-23 08:08:54
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [TextToVoice](https://cloud.tencent.com/document/api/1073/37995)
+
+	* <font color="#dd0000">**删除出参**：</font>Audio, SessionId
+
 
 ### 第 1 次发布
 

@@ -348,6 +348,9 @@ type CreateInstanceRequest struct {
 
 	// 自定义MetaDB信息
 	MetaDBInfo *CustomMetaInfo `json:"MetaDBInfo,omitempty" name:"MetaDBInfo"`
+
+	// 自定义应用角色。
+	ApplicationRole *string `json:"ApplicationRole,omitempty" name:"ApplicationRole"`
 }
 
 func (r *CreateInstanceRequest) ToJsonString() string {

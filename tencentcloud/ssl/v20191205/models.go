@@ -269,6 +269,49 @@ type Certificates struct {
 	Deployable *bool `json:"Deployable,omitempty" name:"Deployable"`
 }
 
+type CheckCertificateChainRequest struct {
+	*tchttp.BaseRequest
+
+	// 待检查的证书链
+	CertificateChain *string `json:"CertificateChain,omitempty" name:"CertificateChain"`
+}
+
+func (r *CheckCertificateChainRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CheckCertificateChainRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CheckCertificateChainResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 1为通过检查，0为未通过检查。
+		IsValid *bool `json:"IsValid,omitempty" name:"IsValid"`
+
+		// 1为可信CA，0为不可信CA。
+		IsTrustedCA *bool `json:"IsTrustedCA,omitempty" name:"IsTrustedCA"`
+
+		// 包含证书链中每一段证书的通用名称。
+		Chains []*string `json:"Chains,omitempty" name:"Chains" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CheckCertificateChainResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CheckCertificateChainResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type CommitCertificateInformationRequest struct {
 	*tchttp.BaseRequest
 
@@ -306,6 +349,43 @@ func (r *CommitCertificateInformationResponse) ToJsonString() string {
 }
 
 func (r *CommitCertificateInformationResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CompleteCertificateRequest struct {
+	*tchttp.BaseRequest
+
+	// 证书ID
+	CertificateId *string `json:"CertificateId,omitempty" name:"CertificateId"`
+}
+
+func (r *CompleteCertificateRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CompleteCertificateRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CompleteCertificateResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 证书ID
+		CertificateId *string `json:"CertificateId,omitempty" name:"CertificateId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CompleteCertificateResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CompleteCertificateResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 

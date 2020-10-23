@@ -4061,7 +4061,8 @@ type TagInfo struct {
 
 type Target struct {
 
-	// 后端服务的监听端口
+	// 后端服务的监听端口。
+	// 注意：绑定CVM（云服务器）或ENI（弹性网卡）时必传此参数
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Port *int64 `json:"Port,omitempty" name:"Port"`
 
@@ -4070,14 +4071,15 @@ type Target struct {
 	Type *string `json:"Type,omitempty" name:"Type"`
 
 	// 绑定CVM时需要传入此参数，代表CVM的唯一 ID，可通过 DescribeInstances 接口返回字段中的 InstanceId 字段获取。
-	// 注意：参数 InstanceId 和 EniIp 只能传入一个且必须传入一个。
+	// 注意：参数 InstanceId、EniIp 只能传入一个且必须传入一个。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
 	// 后端服务的转发权重，取值范围：[0, 100]，默认为 10。
 	Weight *int64 `json:"Weight,omitempty" name:"Weight"`
 
-	// 绑定弹性网卡时需要传入此参数，代表弹性网卡的IP，弹性网卡必须先绑定至CVM，然后才能绑定到负载均衡实例。注意：参数 InstanceId 和 EniIp 只能传入一个且必须传入一个。注意：绑定弹性网卡需要先提交工单开白名单使用。
+	// 绑定弹性网卡时需要传入此参数，代表弹性网卡的IP，弹性网卡必须先绑定至CVM，然后才能绑定到负载均衡实例。
+	// 注意：参数 InstanceId、EniIp 只能传入一个且必须传入一个。注意：绑定弹性网卡需要先提交工单开白名单使用。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	EniIp *string `json:"EniIp,omitempty" name:"EniIp"`
 }

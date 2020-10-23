@@ -93,6 +93,31 @@ func (c *Client) CancelCertificateOrder(request *CancelCertificateOrderRequest) 
     return
 }
 
+func NewCheckCertificateChainRequest() (request *CheckCertificateChainRequest) {
+    request = &CheckCertificateChainRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ssl", APIVersion, "CheckCertificateChain")
+    return
+}
+
+func NewCheckCertificateChainResponse() (response *CheckCertificateChainResponse) {
+    response = &CheckCertificateChainResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（CheckCertificateChain）用于检查证书链是否完整。
+func (c *Client) CheckCertificateChain(request *CheckCertificateChainRequest) (response *CheckCertificateChainResponse, err error) {
+    if request == nil {
+        request = NewCheckCertificateChainRequest()
+    }
+    response = NewCheckCertificateChainResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCommitCertificateInformationRequest() (request *CommitCertificateInformationRequest) {
     request = &CommitCertificateInformationRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -114,6 +139,31 @@ func (c *Client) CommitCertificateInformation(request *CommitCertificateInformat
         request = NewCommitCertificateInformationRequest()
     }
     response = NewCommitCertificateInformationResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCompleteCertificateRequest() (request *CompleteCertificateRequest) {
+    request = &CompleteCertificateRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ssl", APIVersion, "CompleteCertificate")
+    return
+}
+
+func NewCompleteCertificateResponse() (response *CompleteCertificateResponse) {
+    response = &CompleteCertificateResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（CompleteCertificate）用于主动触发证书验证。
+func (c *Client) CompleteCertificate(request *CompleteCertificateRequest) (response *CompleteCertificateResponse, err error) {
+    if request == nil {
+        request = NewCompleteCertificateRequest()
+    }
+    response = NewCompleteCertificateResponse()
     err = c.Send(request, response)
     return
 }
