@@ -1,50 +1,10 @@
 # 本版本更新包含以下内容：
 
-## 云呼叫中心(ccc) 版本：2020-02-10
+## 域名注册(domain) 版本：2018-08-08
 
-### 第 3 次发布
+### 第 8 次发布
 
-发布时间：2020-10-23 08:00:22
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [SeatUserInfo](https://cloud.tencent.com/document/api/679/47715#SeatUserInfo)
-
-	* 新增成员：StaffNumber
-
-	* <font color="#dd0000">**修改成员**：</font>Phone
-
-
-
-
-## 云数据库 MySQL(cdb) 版本：2017-03-20
-
-### 第 47 次发布
-
-发布时间：2020-10-23 08:03:07
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [DescribeDBInstanceInfo](https://cloud.tencent.com/document/api/236/44160)
-
-	* 新增出参：DefaultKmsRegion
-
-
-
-
-## 内容分发网络(cdn) 版本：2018-06-06
-
-### 第 41 次发布
-
-发布时间：2020-10-23 08:03:22
+发布时间：2020-10-26 08:03:14
 
 本次发布包含了以下内容：
 
@@ -52,63 +12,21 @@
 
 新增接口：
 
-* [CreateDiagnoseUrl](https://cloud.tencent.com/document/api/228/49326)
-* [DescribeDiagnoseReport](https://cloud.tencent.com/document/api/228/49325)
-* [ListDiagnoseReport](https://cloud.tencent.com/document/api/228/49324)
+* [DescribeBatchOperationLogDetails](https://cloud.tencent.com/document/api/242/49357)
+* [DescribeBatchOperationLogs](https://cloud.tencent.com/document/api/242/49356)
 
 新增数据结构：
 
-* [ClientInfo](https://cloud.tencent.com/document/api/228/30987#ClientInfo)
-* [DiagnoseData](https://cloud.tencent.com/document/api/228/30987#DiagnoseData)
-* [DiagnoseInfo](https://cloud.tencent.com/document/api/228/30987#DiagnoseInfo)
-* [DiagnoseList](https://cloud.tencent.com/document/api/228/30987#DiagnoseList)
-* [DiagnoseUnit](https://cloud.tencent.com/document/api/228/30987#DiagnoseUnit)
+* [DomainBatchDetailSet](https://cloud.tencent.com/document/api/242/38895#DomainBatchDetailSet)
+* [DomainBatchLogSet](https://cloud.tencent.com/document/api/242/38895#DomainBatchLogSet)
 
 
 
-## 弹性 MapReduce(emr) 版本：2019-01-03
+## SSL 证书监控(sslpod) 版本：2019-06-05
 
-### 第 15 次发布
+### 第 1 次发布
 
-发布时间：2020-10-23 08:04:56
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [CreateInstance](https://cloud.tencent.com/document/api/589/34261)
-
-	* 新增入参：ApplicationRole
-
-
-
-
-## 物联网智能视频服务(iotvideo) 版本：2019-11-26
-
-### 第 12 次发布
-
-发布时间：2020-10-23 08:01:19
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [CreateProduct](https://cloud.tencent.com/document/api/1131/42382)
-
-	* 新增入参：AccessMode, Os
-
-
-
-
-## 证书(ssl) 版本：2019-12-05
-
-### 第 3 次发布
-
-发布时间：2020-10-23 08:01:42
+发布时间：2020-10-23 18:56:12
 
 本次发布包含了以下内容：
 
@@ -116,16 +34,35 @@
 
 新增接口：
 
-* [CheckCertificateChain](https://cloud.tencent.com/document/api/400/49323)
-* [CompleteCertificate](https://cloud.tencent.com/document/api/400/49322)
+* [CreateDomain](https://cloud.tencent.com/document/api/1084/49344)
+* [DeleteDomain](https://cloud.tencent.com/document/api/1084/49343)
+* [DescribeDashboard](https://cloud.tencent.com/document/api/1084/49342)
+* [DescribeDomainCerts](https://cloud.tencent.com/document/api/1084/49341)
+* [DescribeDomainTags](https://cloud.tencent.com/document/api/1084/49340)
+* [DescribeDomains](https://cloud.tencent.com/document/api/1084/49339)
+* [DescribeNoticeInfo](https://cloud.tencent.com/document/api/1084/49338)
+* [ModifyDomainTags](https://cloud.tencent.com/document/api/1084/49337)
+* [RefreshDomain](https://cloud.tencent.com/document/api/1084/49336)
+* [ResolveDomain](https://cloud.tencent.com/document/api/1084/49335)
+
+新增数据结构：
+
+* [CertInfo](https://cloud.tencent.com/document/api/1084/49345#CertInfo)
+* [ChartHistogram](https://cloud.tencent.com/document/api/1084/49345#ChartHistogram)
+* [ChartNameValue](https://cloud.tencent.com/document/api/1084/49345#ChartNameValue)
+* [DashboardResult](https://cloud.tencent.com/document/api/1084/49345#DashboardResult)
+* [DescribeDomains](https://cloud.tencent.com/document/api/1084/49345#DescribeDomains)
+* [DomainSiteInfo](https://cloud.tencent.com/document/api/1084/49345#DomainSiteInfo)
+* [LimitInfo](https://cloud.tencent.com/document/api/1084/49345#LimitInfo)
+* [NoticeInfoResult](https://cloud.tencent.com/document/api/1084/49345#NoticeInfoResult)
 
 
 
-## 语音合成(tts) 版本：2019-08-23
+## 容器服务(tke) 版本：2018-05-25
 
-### 第 2 次发布
+### 第 29 次发布
 
-发布时间：2020-10-23 08:08:54
+发布时间：2020-10-26 08:06:11
 
 本次发布包含了以下内容：
 
@@ -133,9 +70,9 @@
 
 修改接口：
 
-* [TextToVoice](https://cloud.tencent.com/document/api/1073/37995)
+* [AddExistedInstances](https://cloud.tencent.com/document/api/457/31865)
 
-	* <font color="#dd0000">**删除出参**：</font>Audio, SessionId
+	* 新增出参：FailedReasons
 
 
 
@@ -6402,17 +6339,17 @@
 
 新增接口：
 
-* [[CreateDiagnoseUrl](https://cloud.tencent.com/document/api/228/49326)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeDiagnoseReport](https://cloud.tencent.com/document/api/228/49325)](https://cloud.tencent.com/document/api/#/#)
-* [[ListDiagnoseReport](https://cloud.tencent.com/document/api/228/49324)](https://cloud.tencent.com/document/api/#/#)
+* [CreateDiagnoseUrl](https://cloud.tencent.com/document/api/228/49326)
+* [DescribeDiagnoseReport](https://cloud.tencent.com/document/api/228/49325)
+* [ListDiagnoseReport](https://cloud.tencent.com/document/api/228/49324)
 
 新增数据结构：
 
-* [[ClientInfo](https://cloud.tencent.com/document/api/228/30987#ClientInfo)](https://cloud.tencent.com/document/api/228/30987#[ClientInfo](https://cloud.tencent.com/document/api/228/30987#ClientInfo))
-* [[DiagnoseData](https://cloud.tencent.com/document/api/228/30987#DiagnoseData)](https://cloud.tencent.com/document/api/228/30987#[DiagnoseData](https://cloud.tencent.com/document/api/228/30987#DiagnoseData))
-* [[DiagnoseInfo](https://cloud.tencent.com/document/api/228/30987#DiagnoseInfo)](https://cloud.tencent.com/document/api/228/30987#[DiagnoseInfo](https://cloud.tencent.com/document/api/228/30987#DiagnoseInfo))
-* [[DiagnoseList](https://cloud.tencent.com/document/api/228/30987#DiagnoseList)](https://cloud.tencent.com/document/api/228/30987#[DiagnoseList](https://cloud.tencent.com/document/api/228/30987#DiagnoseList))
-* [[DiagnoseUnit](https://cloud.tencent.com/document/api/228/30987#DiagnoseUnit)](https://cloud.tencent.com/document/api/228/30987#[DiagnoseUnit](https://cloud.tencent.com/document/api/228/30987#DiagnoseUnit))
+* [ClientInfo](https://cloud.tencent.com/document/api/228/30987#ClientInfo)
+* [DiagnoseData](https://cloud.tencent.com/document/api/228/30987#DiagnoseData)
+* [DiagnoseInfo](https://cloud.tencent.com/document/api/228/30987#DiagnoseInfo)
+* [DiagnoseList](https://cloud.tencent.com/document/api/228/30987#DiagnoseList)
+* [DiagnoseUnit](https://cloud.tencent.com/document/api/228/30987#DiagnoseUnit)
 
 ### 第 40 次发布
 
@@ -13269,6 +13206,24 @@
 
 
 ## 域名注册(domain) 版本：2018-08-08
+
+### 第 8 次发布
+
+发布时间：2020-10-26 08:03:14
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeBatchOperationLogDetails](https://cloud.tencent.com/document/api/242/49357)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeBatchOperationLogs](https://cloud.tencent.com/document/api/242/49356)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[DomainBatchDetailSet](https://cloud.tencent.com/document/api/242/38895#DomainBatchDetailSet)](https://cloud.tencent.com/document/api/242/38895#[DomainBatchDetailSet](https://cloud.tencent.com/document/api/242/38895#DomainBatchDetailSet))
+* [[DomainBatchLogSet](https://cloud.tencent.com/document/api/242/38895#DomainBatchLogSet)](https://cloud.tencent.com/document/api/242/38895#[DomainBatchLogSet](https://cloud.tencent.com/document/api/242/38895#DomainBatchLogSet))
 
 ### 第 7 次发布
 
@@ -26971,8 +26926,8 @@
 
 新增接口：
 
-* [[CheckCertificateChain](https://cloud.tencent.com/document/api/400/49323)](https://cloud.tencent.com/document/api/#/#)
-* [[CompleteCertificate](https://cloud.tencent.com/document/api/400/49322)](https://cloud.tencent.com/document/api/#/#)
+* [CheckCertificateChain](https://cloud.tencent.com/document/api/400/49323)
+* [CompleteCertificate](https://cloud.tencent.com/document/api/400/49322)
 
 ### 第 2 次发布
 
@@ -27023,6 +26978,43 @@
 * [OperationLog](https://cloud.tencent.com/document/api/400/41679#OperationLog)
 * [ProjectInfo](https://cloud.tencent.com/document/api/400/41679#ProjectInfo)
 * [SubmittedData](https://cloud.tencent.com/document/api/400/41679#SubmittedData)
+
+
+
+
+## SSL 证书监控(sslpod) 版本：2019-06-05
+
+### 第 1 次发布
+
+发布时间：2020-10-23 18:56:12
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[CreateDomain](https://cloud.tencent.com/document/api/1084/49344)](https://cloud.tencent.com/document/api/#/#)
+* [[DeleteDomain](https://cloud.tencent.com/document/api/1084/49343)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeDashboard](https://cloud.tencent.com/document/api/1084/49342)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeDomainCerts](https://cloud.tencent.com/document/api/1084/49341)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeDomainTags](https://cloud.tencent.com/document/api/1084/49340)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeDomains](https://cloud.tencent.com/document/api/1084/49339)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeNoticeInfo](https://cloud.tencent.com/document/api/1084/49338)](https://cloud.tencent.com/document/api/#/#)
+* [[ModifyDomainTags](https://cloud.tencent.com/document/api/1084/49337)](https://cloud.tencent.com/document/api/#/#)
+* [[RefreshDomain](https://cloud.tencent.com/document/api/1084/49336)](https://cloud.tencent.com/document/api/#/#)
+* [[ResolveDomain](https://cloud.tencent.com/document/api/1084/49335)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[CertInfo](https://cloud.tencent.com/document/api/1084/49345#CertInfo)](https://cloud.tencent.com/document/api/1084/49345#[CertInfo](https://cloud.tencent.com/document/api/1084/49345#CertInfo))
+* [[ChartHistogram](https://cloud.tencent.com/document/api/1084/49345#ChartHistogram)](https://cloud.tencent.com/document/api/1084/49345#[ChartHistogram](https://cloud.tencent.com/document/api/1084/49345#ChartHistogram))
+* [[ChartNameValue](https://cloud.tencent.com/document/api/1084/49345#ChartNameValue)](https://cloud.tencent.com/document/api/1084/49345#[ChartNameValue](https://cloud.tencent.com/document/api/1084/49345#ChartNameValue))
+* [[DashboardResult](https://cloud.tencent.com/document/api/1084/49345#DashboardResult)](https://cloud.tencent.com/document/api/1084/49345#[DashboardResult](https://cloud.tencent.com/document/api/1084/49345#DashboardResult))
+* [[DescribeDomains](https://cloud.tencent.com/document/api/1084/49345#DescribeDomains)](https://cloud.tencent.com/document/api/1084/49345#[DescribeDomains](https://cloud.tencent.com/document/api/1084/49345#DescribeDomains))
+* [[DomainSiteInfo](https://cloud.tencent.com/document/api/1084/49345#DomainSiteInfo)](https://cloud.tencent.com/document/api/1084/49345#[DomainSiteInfo](https://cloud.tencent.com/document/api/1084/49345#DomainSiteInfo))
+* [[LimitInfo](https://cloud.tencent.com/document/api/1084/49345#LimitInfo)](https://cloud.tencent.com/document/api/1084/49345#[LimitInfo](https://cloud.tencent.com/document/api/1084/49345#LimitInfo))
+* [[NoticeInfoResult](https://cloud.tencent.com/document/api/1084/49345#NoticeInfoResult)](https://cloud.tencent.com/document/api/1084/49345#[NoticeInfoResult](https://cloud.tencent.com/document/api/1084/49345#NoticeInfoResult))
 
 
 
@@ -30491,6 +30483,21 @@
 
 
 ## 容器服务(tke) 版本：2018-05-25
+
+### 第 29 次发布
+
+发布时间：2020-10-26 08:06:11
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [AddExistedInstances](https://cloud.tencent.com/document/api/457/31865)
+
+	* 新增出参：FailedReasons
+
 
 ### 第 28 次发布
 

@@ -80,7 +80,7 @@ type CertificateInfo struct {
 	// 证件类型。
 	// SFZ: 身份证。
 	// HZ: 护照。
-	// TXZ: 港澳居民来往内地通行证。
+	// TXZ: 中国港澳居民来往内地通行证。
 	// TWSFZ: 中国台湾居民来往大陆通行证。
 	// GWSFZ: 外国人永久居留身份证。
 	// ORG: 组织机构代码证
@@ -102,7 +102,7 @@ type CertificateInfo struct {
 	// SHFWJGZ: 社会服务机构登记证书。
 	// MBXXXKZ: 民办学校办学许可证。
 	// YLJGXKZ: 医疗机构执业许可证。
-	// GAJZZ: 港澳居住证
+	// GAJZZ: 中国港澳居住证。
 	// TWJZZ: 中国台湾居住证。
 	// QTTYDM: 其他-统一社会信用代码证书。
 	// GZJGZY: 公证机构执业证。
@@ -401,6 +401,97 @@ func (r *DeleteTemplateResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeBatchOperationLogDetailsRequest struct {
+	*tchttp.BaseRequest
+
+	// 日志ID。
+	LogId *int64 `json:"LogId,omitempty" name:"LogId"`
+
+	// 偏移量，默认为0。
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 返回数量，默认为20，最大值为200。
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+func (r *DescribeBatchOperationLogDetailsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeBatchOperationLogDetailsRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeBatchOperationLogDetailsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 总数量。
+		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 日志详情列表。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		DomainBatchDetailSet []*DomainBatchDetailSet `json:"DomainBatchDetailSet,omitempty" name:"DomainBatchDetailSet" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeBatchOperationLogDetailsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeBatchOperationLogDetailsResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeBatchOperationLogsRequest struct {
+	*tchttp.BaseRequest
+
+	// 偏移量，默认为0。
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 返回数量，默认为20，最大值为200。
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+func (r *DescribeBatchOperationLogsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeBatchOperationLogsRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeBatchOperationLogsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 总数量
+		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 日志列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		DomainBatchLogSet []*DomainBatchLogSet `json:"DomainBatchLogSet,omitempty" name:"DomainBatchLogSet" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeBatchOperationLogsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeBatchOperationLogsResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeDomainBaseInfoRequest struct {
 	*tchttp.BaseRequest
 
@@ -646,6 +737,48 @@ type DomainBaseInfo struct {
 	// epp （腾讯云自有域名）
 	// xinnet (新网域名)
 	RegistrarType *string `json:"RegistrarType,omitempty" name:"RegistrarType"`
+}
+
+type DomainBatchDetailSet struct {
+
+	// 详情ID
+	Id *int64 `json:"Id,omitempty" name:"Id"`
+
+	// 域名
+	Domain *string `json:"Domain,omitempty" name:"Domain"`
+
+	// 执行状态：
+	// doing 执行中。
+	// failed 操作失败。
+	// success  操作成功。
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 失败原因
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Reason *string `json:"Reason,omitempty" name:"Reason"`
+
+	// 创建时间
+	CreatedOn *string `json:"CreatedOn,omitempty" name:"CreatedOn"`
+
+	// 更新时间
+	UpdatedOn *string `json:"UpdatedOn,omitempty" name:"UpdatedOn"`
+}
+
+type DomainBatchLogSet struct {
+
+	// 日志ID
+	LogId *int64 `json:"LogId,omitempty" name:"LogId"`
+
+	// 数量
+	Number *int64 `json:"Number,omitempty" name:"Number"`
+
+	// 执行状态：
+	// doing 执行中。
+	// done 执行完成。
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 提交时间
+	CreatedOn *string `json:"CreatedOn,omitempty" name:"CreatedOn"`
 }
 
 type DomainList struct {

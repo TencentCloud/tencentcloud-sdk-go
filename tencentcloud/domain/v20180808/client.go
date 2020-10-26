@@ -203,6 +203,56 @@ func (c *Client) DeleteTemplate(request *DeleteTemplateRequest) (response *Delet
     return
 }
 
+func NewDescribeBatchOperationLogDetailsRequest() (request *DescribeBatchOperationLogDetailsRequest) {
+    request = &DescribeBatchOperationLogDetailsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("domain", APIVersion, "DescribeBatchOperationLogDetails")
+    return
+}
+
+func NewDescribeBatchOperationLogDetailsResponse() (response *DescribeBatchOperationLogDetailsResponse) {
+    response = &DescribeBatchOperationLogDetailsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口 ( DescribeBatchOperationLogDetails ) 用于获取批量操作日志详情。
+func (c *Client) DescribeBatchOperationLogDetails(request *DescribeBatchOperationLogDetailsRequest) (response *DescribeBatchOperationLogDetailsResponse, err error) {
+    if request == nil {
+        request = NewDescribeBatchOperationLogDetailsRequest()
+    }
+    response = NewDescribeBatchOperationLogDetailsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeBatchOperationLogsRequest() (request *DescribeBatchOperationLogsRequest) {
+    request = &DescribeBatchOperationLogsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("domain", APIVersion, "DescribeBatchOperationLogs")
+    return
+}
+
+func NewDescribeBatchOperationLogsResponse() (response *DescribeBatchOperationLogsResponse) {
+    response = &DescribeBatchOperationLogsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口 ( DescribeBatchOperationLogs ) 用于获取批量操作日志 。
+func (c *Client) DescribeBatchOperationLogs(request *DescribeBatchOperationLogsRequest) (response *DescribeBatchOperationLogsResponse, err error) {
+    if request == nil {
+        request = NewDescribeBatchOperationLogsRequest()
+    }
+    response = NewDescribeBatchOperationLogsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeDomainBaseInfoRequest() (request *DescribeDomainBaseInfoRequest) {
     request = &DescribeDomainBaseInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -487,8 +537,6 @@ func NewUpdateProhibitionBatchResponse() (response *UpdateProhibitionBatchRespon
 }
 
 // 本接口 ( UpdateProhibitionBatch ) 用于批量设置禁止域名更新 。
-// 
-// 默认接口请求频率限制：20次/秒。
 func (c *Client) UpdateProhibitionBatch(request *UpdateProhibitionBatchRequest) (response *UpdateProhibitionBatchResponse, err error) {
     if request == nil {
         request = NewUpdateProhibitionBatchRequest()

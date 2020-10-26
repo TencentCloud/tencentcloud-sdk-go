@@ -104,6 +104,10 @@ type AddExistedInstancesResponse struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		TimeoutInstanceIds []*string `json:"TimeoutInstanceIds,omitempty" name:"TimeoutInstanceIds" list`
 
+		// 失败的节点的失败原因
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		FailedReasons []*string `json:"FailedReasons,omitempty" name:"FailedReasons" list`
+
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
