@@ -389,6 +389,52 @@ func (r *CompleteCertificateResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type CreateCertificateRequest struct {
+	*tchttp.BaseRequest
+
+	// 证书商品ID
+	ProductId *int64 `json:"ProductId,omitempty" name:"ProductId"`
+
+	// 证书包含的域名数量
+	DomainNum *int64 `json:"DomainNum,omitempty" name:"DomainNum"`
+
+	// 证书年限，当前只支持 1 年证书的购买
+	TimeSpan *int64 `json:"TimeSpan,omitempty" name:"TimeSpan"`
+}
+
+func (r *CreateCertificateRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateCertificateRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateCertificateResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 证书ID列表
+		CertificateIds []*string `json:"CertificateIds,omitempty" name:"CertificateIds" list`
+
+		// 子订单ID
+		DealIds []*string `json:"DealIds,omitempty" name:"DealIds" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateCertificateResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateCertificateResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DeleteCertificateRequest struct {
 	*tchttp.BaseRequest
 
@@ -1100,6 +1146,9 @@ type ReplaceCertificateRequest struct {
 
 	// KEY 密码。
 	CsrkeyPassword *string `json:"CsrkeyPassword,omitempty" name:"CsrkeyPassword"`
+
+	// 重颁发原因。
+	Reason *string `json:"Reason,omitempty" name:"Reason"`
 }
 
 func (r *ReplaceCertificateRequest) ToJsonString() string {
@@ -1130,6 +1179,66 @@ func (r *ReplaceCertificateResponse) ToJsonString() string {
 
 func (r *ReplaceCertificateResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
+}
+
+type RevokeCertificateRequest struct {
+	*tchttp.BaseRequest
+
+	// 证书 ID。
+	CertificateId *string `json:"CertificateId,omitempty" name:"CertificateId"`
+
+	// 吊销证书原因。
+	Reason *string `json:"Reason,omitempty" name:"Reason"`
+}
+
+func (r *RevokeCertificateRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *RevokeCertificateRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type RevokeCertificateResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 吊销证书域名验证信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		RevokeDomainValidateAuths []*RevokeDomainValidateAuths `json:"RevokeDomainValidateAuths,omitempty" name:"RevokeDomainValidateAuths" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *RevokeCertificateResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *RevokeCertificateResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type RevokeDomainValidateAuths struct {
+
+	// DV 认证值路径。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DomainValidateAuthPath *string `json:"DomainValidateAuthPath,omitempty" name:"DomainValidateAuthPath"`
+
+	// DV 认证 KEY。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DomainValidateAuthKey *string `json:"DomainValidateAuthKey,omitempty" name:"DomainValidateAuthKey"`
+
+	// DV 认证值。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DomainValidateAuthValue *string `json:"DomainValidateAuthValue,omitempty" name:"DomainValidateAuthValue"`
+
+	// DV 认证域名。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DomainValidateAuthDomain *string `json:"DomainValidateAuthDomain,omitempty" name:"DomainValidateAuthDomain"`
 }
 
 type SubmitCertificateInformationRequest struct {
@@ -1393,5 +1502,91 @@ func (r *UploadCertificateResponse) ToJsonString() string {
 }
 
 func (r *UploadCertificateResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type UploadConfirmLetterRequest struct {
+	*tchttp.BaseRequest
+
+	// 证书ID
+	CertificateId *string `json:"CertificateId,omitempty" name:"CertificateId"`
+
+	// base64编码后的证书确认函文件，格式应为jpg、jpeg、png、pdf，大小应在1kb与1.4M之间。
+	ConfirmLetter *string `json:"ConfirmLetter,omitempty" name:"ConfirmLetter"`
+}
+
+func (r *UploadConfirmLetterRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *UploadConfirmLetterRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type UploadConfirmLetterResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 证书ID
+		CertificateId *string `json:"CertificateId,omitempty" name:"CertificateId"`
+
+		// 是否成功
+		IsSuccess *bool `json:"IsSuccess,omitempty" name:"IsSuccess"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *UploadConfirmLetterResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *UploadConfirmLetterResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type UploadRevokeLetterRequest struct {
+	*tchttp.BaseRequest
+
+	// 证书 ID。
+	CertificateId *string `json:"CertificateId,omitempty" name:"CertificateId"`
+
+	// base64编码后的证书确认函文件，格式应为jpg、jpeg、png、pdf，大小应在1kb与1.4M之间。
+	RevokeLetter *string `json:"RevokeLetter,omitempty" name:"RevokeLetter"`
+}
+
+func (r *UploadRevokeLetterRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *UploadRevokeLetterRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type UploadRevokeLetterResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 证书 ID。
+		CertificateId *string `json:"CertificateId,omitempty" name:"CertificateId"`
+
+		// 是否成功。
+		IsSuccess *bool `json:"IsSuccess,omitempty" name:"IsSuccess"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *UploadRevokeLetterResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *UploadRevokeLetterResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }

@@ -759,6 +759,9 @@ type DescribeAssetsRequest struct {
 
 	// 搜索条件，支持包ID或包名字过滤，该字段会逐步废弃，建议使用 Filters 字段
 	Filter *string `json:"Filter,omitempty" name:"Filter"`
+
+	// 资源过滤字段，可以按照资源名称、资源ID和标签进行过滤- 资源名称过滤    - Key: 固定字符串 "resource:name"    - Values: 资源名称数组（生成包当前仅支持单个名称的过滤）- 资源ID过滤    - Key: 固定字符串 "resource:resourceId"    - Values: 生成包ID数组（生成包当前仅支持单个生成包ID的过滤）- 标签过滤    - 通过标签键过滤        - Key: 固定字符串 "tag:key"        - Values 不传    - 通过标签键值过滤        - Key: 固定字符串 "tag:key-value"        - Values: 标签键值对数组，例如 ["key1:value1", "key1:value2", "key2:value2"]
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
 }
 
 func (r *DescribeAssetsRequest) ToJsonString() string {
@@ -1328,6 +1331,9 @@ type DescribeGameServerSessionQueuesRequest struct {
 
 	// 返回结果偏移，最小值0
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 资源过滤字段，可以按照资源名称、资源ID和标签进行过滤- 资源名称过滤    - Key: 固定字符串 "resource:name"    - Values: 资源名称数组（游戏服务器会话队列支持多个名称的过滤）- 标签过滤    - 通过标签键过滤        - Key: 固定字符串 "tag:key"        - Values 不传    - 通过标签键值过滤        - Key: 固定字符串 "tag:key-value"        - Values: 标签键值对数组，例如 ["key1:value1", "key1:value2", "key2:value2"]
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
 }
 
 func (r *DescribeGameServerSessionQueuesRequest) ToJsonString() string {
@@ -1910,6 +1916,15 @@ type ExtraInfos struct {
 	// 实例限额数
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalInstances *uint64 `json:"TotalInstances,omitempty" name:"TotalInstances"`
+}
+
+type Filter struct {
+
+	// 过滤属性的 key
+	Key *string `json:"Key,omitempty" name:"Key"`
+
+	// 过滤属性的 values 值
+	Values []*string `json:"Values,omitempty" name:"Values" list`
 }
 
 type FleetAttributes struct {
@@ -2721,6 +2736,9 @@ type ListAliasesRequest struct {
 
 	// 排序方式，有效值asc|desc
 	OrderWay *string `json:"OrderWay,omitempty" name:"OrderWay"`
+
+	// 资源过滤字段，可以按照资源名称和标签进行过滤- 资源名称过滤    - Key: 固定字符串 "resource:name"    - Values: 资源名称数组（舰队当前仅支持单个名称的过滤）- 标签过滤    - 通过标签键过滤        - Key: 固定字符串 "tag:key"        - Values 不传    - 通过标签键值过滤        - Key: 固定字符串 "tag:key-value"        - Values: 标签键值对数组，例如 ["key1:value1", "key1:value2", "key2:value2"]
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
 }
 
 func (r *ListAliasesRequest) ToJsonString() string {
@@ -2768,6 +2786,9 @@ type ListFleetsRequest struct {
 
 	// 结果返回偏移，暂未使用
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 资源过滤字段，可以按照资源名称和标签进行过滤- 资源名称过滤    - Key: 固定字符串 "resource:name"    - Values: 资源名称数组（当前仅支持单个名称的过滤）- 标签过滤    - 通过标签键过滤        - Key: 固定字符串 "tag:key"        - Values 不传    - 通过标签键值过滤        - Key: 固定字符串 "tag:key-value"        - Values: 标签键值对数组，例如 ["key1:value1", "key1:value2", "key2:value2"]
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
 }
 
 func (r *ListFleetsRequest) ToJsonString() string {

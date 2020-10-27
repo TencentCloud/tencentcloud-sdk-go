@@ -168,6 +168,31 @@ func (c *Client) CompleteCertificate(request *CompleteCertificateRequest) (respo
     return
 }
 
+func NewCreateCertificateRequest() (request *CreateCertificateRequest) {
+    request = &CreateCertificateRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ssl", APIVersion, "CreateCertificate")
+    return
+}
+
+func NewCreateCertificateResponse() (response *CreateCertificateResponse) {
+    response = &CreateCertificateResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（CreateCertificate）用于创建付费证书。
+func (c *Client) CreateCertificate(request *CreateCertificateRequest) (response *CreateCertificateResponse, err error) {
+    if request == nil {
+        request = NewCreateCertificateRequest()
+    }
+    response = NewCreateCertificateResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteCertificateRequest() (request *DeleteCertificateRequest) {
     request = &DeleteCertificateRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -393,6 +418,31 @@ func (c *Client) ReplaceCertificate(request *ReplaceCertificateRequest) (respons
     return
 }
 
+func NewRevokeCertificateRequest() (request *RevokeCertificateRequest) {
+    request = &RevokeCertificateRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ssl", APIVersion, "RevokeCertificate")
+    return
+}
+
+func NewRevokeCertificateResponse() (response *RevokeCertificateResponse) {
+    response = &RevokeCertificateResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（RevokeCertificate）用于吊销证书。
+func (c *Client) RevokeCertificate(request *RevokeCertificateRequest) (response *RevokeCertificateResponse, err error) {
+    if request == nil {
+        request = NewRevokeCertificateRequest()
+    }
+    response = NewRevokeCertificateResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewSubmitCertificateInformationRequest() (request *SubmitCertificateInformationRequest) {
     request = &SubmitCertificateInformationRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -439,6 +489,56 @@ func (c *Client) UploadCertificate(request *UploadCertificateRequest) (response 
         request = NewUploadCertificateRequest()
     }
     response = NewUploadCertificateResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewUploadConfirmLetterRequest() (request *UploadConfirmLetterRequest) {
+    request = &UploadConfirmLetterRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ssl", APIVersion, "UploadConfirmLetter")
+    return
+}
+
+func NewUploadConfirmLetterResponse() (response *UploadConfirmLetterResponse) {
+    response = &UploadConfirmLetterResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（UploadConfirmLetter）用于上传证书确认函。
+func (c *Client) UploadConfirmLetter(request *UploadConfirmLetterRequest) (response *UploadConfirmLetterResponse, err error) {
+    if request == nil {
+        request = NewUploadConfirmLetterRequest()
+    }
+    response = NewUploadConfirmLetterResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewUploadRevokeLetterRequest() (request *UploadRevokeLetterRequest) {
+    request = &UploadRevokeLetterRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ssl", APIVersion, "UploadRevokeLetter")
+    return
+}
+
+func NewUploadRevokeLetterResponse() (response *UploadRevokeLetterResponse) {
+    response = &UploadRevokeLetterResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（UploadRevokeLetter）用于上传证书吊销确认函。
+func (c *Client) UploadRevokeLetter(request *UploadRevokeLetterRequest) (response *UploadRevokeLetterResponse, err error) {
+    if request == nil {
+        request = NewUploadRevokeLetterRequest()
+    }
+    response = NewUploadRevokeLetterResponse()
     err = c.Send(request, response)
     return
 }

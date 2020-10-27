@@ -375,6 +375,14 @@ type DescribeVsmAttributesResponse struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		SubnetCidrBlock *string `json:"SubnetCidrBlock,omitempty" name:"SubnetCidrBlock"`
 
+		// 资源所关联的Tag
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Tags []*Tag `json:"Tags,omitempty" name:"Tags" list`
+
+		// 资源续费标识，0表示默认状态(用户未设置，即初始状态)， 1表示自动续费，2表示明确不自动续费(用户设置)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		RenewFlag *int64 `json:"RenewFlag,omitempty" name:"RenewFlag"`
+
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
@@ -400,6 +408,9 @@ type DescribeVsmsRequest struct {
 
 	// 查询关键字
 	SearchWord *string `json:"SearchWord,omitempty" name:"SearchWord"`
+
+	// 标签过滤条件
+	TagFilters []*TagFilter `json:"TagFilters,omitempty" name:"TagFilters" list`
 }
 
 func (r *DescribeVsmsRequest) ToJsonString() string {
@@ -630,6 +641,18 @@ type ResourceInfo struct {
 	// Vpc名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	VpcName *string `json:"VpcName,omitempty" name:"VpcName"`
+
+	// 创建者Uin账号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateUin *string `json:"CreateUin,omitempty" name:"CreateUin"`
+
+	// 自动续费状态标识， 0-手动续费，1-自动续费，2-到期不续
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RenewFlag *int64 `json:"RenewFlag,omitempty" name:"RenewFlag"`
+
+	// 标签列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Tags []*Tag `json:"Tags,omitempty" name:"Tags" list`
 }
 
 type SgUnit struct {
@@ -688,6 +711,24 @@ type Subnet struct {
 	// 是否为默认Subnet
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsDefault *bool `json:"IsDefault,omitempty" name:"IsDefault"`
+}
+
+type Tag struct {
+
+	// 标签键
+	TagKey *string `json:"TagKey,omitempty" name:"TagKey"`
+
+	// 标签值
+	TagValue *string `json:"TagValue,omitempty" name:"TagValue"`
+}
+
+type TagFilter struct {
+
+	// 标签键
+	TagKey *string `json:"TagKey,omitempty" name:"TagKey"`
+
+	// 标签值
+	TagValue []*string `json:"TagValue,omitempty" name:"TagValue" list`
 }
 
 type UsgPolicy struct {

@@ -59,8 +59,6 @@ func NewBatchModifyDomainInfoResponse() (response *BatchModifyDomainInfoResponse
 }
 
 // 本接口 ( BatchModifyDomainInfo ) 用于批量域名信息修改 。
-// 
-// 默认接口请求频率限制：20次/秒。
 func (c *Client) BatchModifyDomainInfo(request *BatchModifyDomainInfoRequest) (response *BatchModifyDomainInfoResponse, err error) {
     if request == nil {
         request = NewBatchModifyDomainInfoRequest()
@@ -165,8 +163,6 @@ func NewCreateTemplateResponse() (response *CreateTemplateResponse) {
 }
 
 // 本接口 ( CreateTemplate ) 用于添加域名信息模板 。
-// 
-// 默认接口请求频率限制：20次/秒。
 func (c *Client) CreateTemplate(request *CreateTemplateRequest) (response *CreateTemplateResponse, err error) {
     if request == nil {
         request = NewCreateTemplateRequest()
@@ -192,8 +188,6 @@ func NewDeleteTemplateResponse() (response *DeleteTemplateResponse) {
 }
 
 // 本接口 ( DeleteTemplate ) 用于删除域名信息模板。
-// 
-// 默认接口请求频率限制：20次/秒。
 func (c *Client) DeleteTemplate(request *DeleteTemplateRequest) (response *DeleteTemplateResponse, err error) {
     if request == nil {
         request = NewDeleteTemplateRequest()
@@ -296,8 +290,6 @@ func NewDescribeDomainNameListResponse() (response *DescribeDomainNameListRespon
 }
 
 // 本接口 (  DescribeDomainNameList ) 获取域名列表。
-// 
-// 默认接口请求频率限制：20次/秒。
 func (c *Client) DescribeDomainNameList(request *DescribeDomainNameListRequest) (response *DescribeDomainNameListResponse, err error) {
     if request == nil {
         request = NewDescribeDomainNameListRequest()
@@ -348,8 +340,6 @@ func NewDescribeTemplateListResponse() (response *DescribeTemplateListResponse) 
 }
 
 // 本接口 (DescribeTemplateList) 用于获取模板列表。
-// 
-// 默认接口请求频率限制：20次/秒。
 func (c *Client) DescribeTemplateList(request *DescribeTemplateListRequest) (response *DescribeTemplateListResponse, err error) {
     if request == nil {
         request = NewDescribeTemplateListRequest()
@@ -402,8 +392,6 @@ func NewModifyDomainOwnerBatchResponse() (response *ModifyDomainOwnerBatchRespon
 }
 
 // 本接口 ( ModifyDomainOwnerBatch) 用于域名批量账号间转移 。
-// 
-// 默认接口请求频率限制：20次/秒。
 func (c *Client) ModifyDomainOwnerBatch(request *ModifyDomainOwnerBatchRequest) (response *ModifyDomainOwnerBatchResponse, err error) {
     if request == nil {
         request = NewModifyDomainOwnerBatchRequest()
@@ -562,8 +550,6 @@ func NewUploadImageResponse() (response *UploadImageResponse) {
 }
 
 // 本接口 ( UploadImage ) 用于上传资质照片 。
-// 
-// 默认接口请求频率限制：20次/秒。
 func (c *Client) UploadImage(request *UploadImageRequest) (response *UploadImageResponse, err error) {
     if request == nil {
         request = NewUploadImageRequest()

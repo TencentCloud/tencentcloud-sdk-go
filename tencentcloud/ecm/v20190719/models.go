@@ -3148,6 +3148,9 @@ type Image struct {
 
 	// 镜像来源类型
 	ImageSource *string `json:"ImageSource,omitempty" name:"ImageSource"`
+
+	// 中间态和失败时候的任务ID
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
 }
 
 type ImageOsList struct {

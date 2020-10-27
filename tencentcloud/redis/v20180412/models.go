@@ -267,7 +267,8 @@ type CreateInstancesRequest struct {
 	// 实例类型：2 – Redis2.8内存版（标准架构），3 – CKV 3.2内存版(标准架构)，4 – CKV 3.2内存版(集群架构)，6 – Redis4.0内存版（标准架构），7 – Redis4.0内存版（集群架构），8 – Redis5.0内存版（标准架构），9 – Redis5.0内存版（集群架构）。
 	TypeId *uint64 `json:"TypeId,omitempty" name:"TypeId"`
 
-	// 实例容量，单位MB， 数值需为1024的整数倍，取值大小以 [查询产品售卖规格](https://cloud.tencent.com/document/api/239/30600) 返回的规格为准。
+	// 内存容量，单位为MB， 数值需为1024的整数倍，具体规格以 [查询产品售卖规格](https://cloud.tencent.com/document/api/239/30600) 返回的规格为准。
+	// TypeId为标准架构时，MemSize是实例总内存容量；TypeId为集群架构时，MemSize是单分片内存容量。
 	MemSize *uint64 `json:"MemSize,omitempty" name:"MemSize"`
 
 	// 实例数量，单次购买实例数量以 [查询产品售卖规格](https://cloud.tencent.com/document/api/239/30600) 返回的规格为准。
@@ -279,7 +280,8 @@ type CreateInstancesRequest struct {
 	// 付费方式:0-按量计费，1-包年包月。
 	BillingMode *int64 `json:"BillingMode,omitempty" name:"BillingMode"`
 
-	// 实例密码，8-30个字符，至少包含小写字母、大写字母、数字和字符 ()`~!@#$%^&*-+=_|{}[]:;<>,.?/ 中的2种，不能以"/"开头。
+	// 实例密码，当输入参数NoAuth为true且使用私有网络VPC时，Password为非必填，否则Password为必填。
+	// 密码格式为：8-30个字符，至少包含小写字母、大写字母、数字和字符 ()`~!@#$%^&*-+=_|{}[]:;<>,.?/ 中的2种，不能以"/"开头。
 	Password *string `json:"Password,omitempty" name:"Password"`
 
 	// 私有网络ID，如果不传则默认选择基础网络，请使用私有网络列表查询，如：vpc-sad23jfdfk。
@@ -484,6 +486,82 @@ func (r *DescribeBackupUrlResponse) ToJsonString() string {
 }
 
 func (r *DescribeBackupUrlResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeCommonDBInstancesRequest struct {
+	*tchttp.BaseRequest
+
+	// 实例Vip信息列表
+	VpcIds []*int64 `json:"VpcIds,omitempty" name:"VpcIds" list`
+
+	// 子网id信息列表
+	SubnetIds []*int64 `json:"SubnetIds,omitempty" name:"SubnetIds" list`
+
+	// 计费类型过滤列表；0表示包年包月，1表示按量计费
+	PayMode *int64 `json:"PayMode,omitempty" name:"PayMode"`
+
+	// 实例id过滤信息列表
+	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds" list`
+
+	// 实例名称过滤信息列表
+	InstanceNames []*string `json:"InstanceNames,omitempty" name:"InstanceNames" list`
+
+	// 实例状态信息过滤列表
+	Status []*string `json:"Status,omitempty" name:"Status" list`
+
+	// 排序字段
+	OrderBy *string `json:"OrderBy,omitempty" name:"OrderBy"`
+
+	// 排序方式
+	OrderByType *string `json:"OrderByType,omitempty" name:"OrderByType"`
+
+	// 实例vip信息列表
+	Vips []*string `json:"Vips,omitempty" name:"Vips" list`
+
+	// vpc网络统一Id列表
+	UniqVpcIds []*string `json:"UniqVpcIds,omitempty" name:"UniqVpcIds" list`
+
+	// 子网统一id列表
+	UniqSubnetIds []*string `json:"UniqSubnetIds,omitempty" name:"UniqSubnetIds" list`
+
+	// 数量限制，默认推荐100
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 偏移量，默认0
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+}
+
+func (r *DescribeCommonDBInstancesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeCommonDBInstancesRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeCommonDBInstancesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 实例数
+		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 实例信息
+		InstanceDetails []*RedisCommonInstanceList `json:"InstanceDetails,omitempty" name:"InstanceDetails" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeCommonDBInstancesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeCommonDBInstancesResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -3146,6 +3224,51 @@ type RedisBackupSet struct {
 
 	// 备份是否被锁定，0：未被锁定；1：已被锁定
 	Locked *int64 `json:"Locked,omitempty" name:"Locked"`
+}
+
+type RedisCommonInstanceList struct {
+
+	// 实例名称
+	InstanceName *string `json:"InstanceName,omitempty" name:"InstanceName"`
+
+	// 实例id
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 用户id
+	AppId *int64 `json:"AppId,omitempty" name:"AppId"`
+
+	// 实例所属项目id
+	ProjectId *int64 `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 实例接入区域
+	Region *string `json:"Region,omitempty" name:"Region"`
+
+	// 实例接入zone
+	Zone *string `json:"Zone,omitempty" name:"Zone"`
+
+	// 实例网络id
+	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
+
+	// 子网id
+	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
+
+	// 实例状态信息，0-创建中，1-运行中
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 实例网络ip
+	Vips []*string `json:"Vips,omitempty" name:"Vips" list`
+
+	// 实例网络端口
+	Vport *int64 `json:"Vport,omitempty" name:"Vport"`
+
+	// 实例创建时间
+	Createtime *string `json:"Createtime,omitempty" name:"Createtime"`
+
+	// 计费类型，0-按量计费，1-包年包月
+	PayMode *int64 `json:"PayMode,omitempty" name:"PayMode"`
+
+	// 网络类型，0-基础网络，1-VPC网络
+	NetType *int64 `json:"NetType,omitempty" name:"NetType"`
 }
 
 type RedisNodes struct {

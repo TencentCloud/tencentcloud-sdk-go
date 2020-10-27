@@ -93,6 +93,31 @@ func (c *Client) AddExistedInstances(request *AddExistedInstancesRequest) (respo
     return
 }
 
+func NewAddNodeToNodePoolRequest() (request *AddNodeToNodePoolRequest) {
+    request = &AddNodeToNodePoolRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tke", APIVersion, "AddNodeToNodePool")
+    return
+}
+
+func NewAddNodeToNodePoolResponse() (response *AddNodeToNodePoolResponse) {
+    response = &AddNodeToNodePoolResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 将集群内节点移入节点池
+func (c *Client) AddNodeToNodePool(request *AddNodeToNodePoolRequest) (response *AddNodeToNodePoolResponse, err error) {
+    if request == nil {
+        request = NewAddNodeToNodePoolRequest()
+    }
+    response = NewAddNodeToNodePoolResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateClusterRequest() (request *CreateClusterRequest) {
     request = &CreateClusterRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -214,6 +239,56 @@ func (c *Client) CreateClusterInstances(request *CreateClusterInstancesRequest) 
         request = NewCreateClusterInstancesRequest()
     }
     response = NewCreateClusterInstancesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateClusterNodePoolRequest() (request *CreateClusterNodePoolRequest) {
+    request = &CreateClusterNodePoolRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tke", APIVersion, "CreateClusterNodePool")
+    return
+}
+
+func NewCreateClusterNodePoolResponse() (response *CreateClusterNodePoolResponse) {
+    response = &CreateClusterNodePoolResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 创建节点池
+func (c *Client) CreateClusterNodePool(request *CreateClusterNodePoolRequest) (response *CreateClusterNodePoolResponse, err error) {
+    if request == nil {
+        request = NewCreateClusterNodePoolRequest()
+    }
+    response = NewCreateClusterNodePoolResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateClusterNodePoolFromExistingAsgRequest() (request *CreateClusterNodePoolFromExistingAsgRequest) {
+    request = &CreateClusterNodePoolFromExistingAsgRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tke", APIVersion, "CreateClusterNodePoolFromExistingAsg")
+    return
+}
+
+func NewCreateClusterNodePoolFromExistingAsgResponse() (response *CreateClusterNodePoolFromExistingAsgResponse) {
+    response = &CreateClusterNodePoolFromExistingAsgResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 从伸缩组创建节点池
+func (c *Client) CreateClusterNodePoolFromExistingAsg(request *CreateClusterNodePoolFromExistingAsgRequest) (response *CreateClusterNodePoolFromExistingAsgResponse, err error) {
+    if request == nil {
+        request = NewCreateClusterNodePoolFromExistingAsgRequest()
+    }
+    response = NewCreateClusterNodePoolFromExistingAsgResponse()
     err = c.Send(request, response)
     return
 }
@@ -418,6 +493,31 @@ func (c *Client) DeleteClusterInstances(request *DeleteClusterInstancesRequest) 
     return
 }
 
+func NewDeleteClusterNodePoolRequest() (request *DeleteClusterNodePoolRequest) {
+    request = &DeleteClusterNodePoolRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tke", APIVersion, "DeleteClusterNodePool")
+    return
+}
+
+func NewDeleteClusterNodePoolResponse() (response *DeleteClusterNodePoolResponse) {
+    response = &DeleteClusterNodePoolResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 删除节点池
+func (c *Client) DeleteClusterNodePool(request *DeleteClusterNodePoolRequest) (response *DeleteClusterNodePoolResponse, err error) {
+    if request == nil {
+        request = NewDeleteClusterNodePoolRequest()
+    }
+    response = NewDeleteClusterNodePoolResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteClusterRouteRequest() (request *DeleteClusterRouteRequest) {
     request = &DeleteClusterRouteRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -614,6 +714,56 @@ func (c *Client) DescribeClusterKubeconfig(request *DescribeClusterKubeconfigReq
         request = NewDescribeClusterKubeconfigRequest()
     }
     response = NewDescribeClusterKubeconfigResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeClusterNodePoolDetailRequest() (request *DescribeClusterNodePoolDetailRequest) {
+    request = &DescribeClusterNodePoolDetailRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tke", APIVersion, "DescribeClusterNodePoolDetail")
+    return
+}
+
+func NewDescribeClusterNodePoolDetailResponse() (response *DescribeClusterNodePoolDetailResponse) {
+    response = &DescribeClusterNodePoolDetailResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询节点池详情
+func (c *Client) DescribeClusterNodePoolDetail(request *DescribeClusterNodePoolDetailRequest) (response *DescribeClusterNodePoolDetailResponse, err error) {
+    if request == nil {
+        request = NewDescribeClusterNodePoolDetailRequest()
+    }
+    response = NewDescribeClusterNodePoolDetailResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeClusterNodePoolsRequest() (request *DescribeClusterNodePoolsRequest) {
+    request = &DescribeClusterNodePoolsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tke", APIVersion, "DescribeClusterNodePools")
+    return
+}
+
+func NewDescribeClusterNodePoolsResponse() (response *DescribeClusterNodePoolsResponse) {
+    response = &DescribeClusterNodePoolsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询节点池列表
+func (c *Client) DescribeClusterNodePools(request *DescribeClusterNodePoolsRequest) (response *DescribeClusterNodePoolsResponse, err error) {
+    if request == nil {
+        request = NewDescribeClusterNodePoolsRequest()
+    }
+    response = NewDescribeClusterNodePoolsResponse()
     err = c.Send(request, response)
     return
 }
@@ -914,6 +1064,56 @@ func (c *Client) ModifyClusterEndpointSP(request *ModifyClusterEndpointSPRequest
         request = NewModifyClusterEndpointSPRequest()
     }
     response = NewModifyClusterEndpointSPResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyClusterNodePoolRequest() (request *ModifyClusterNodePoolRequest) {
+    request = &ModifyClusterNodePoolRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tke", APIVersion, "ModifyClusterNodePool")
+    return
+}
+
+func NewModifyClusterNodePoolResponse() (response *ModifyClusterNodePoolResponse) {
+    response = &ModifyClusterNodePoolResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 编辑节点池
+func (c *Client) ModifyClusterNodePool(request *ModifyClusterNodePoolRequest) (response *ModifyClusterNodePoolResponse, err error) {
+    if request == nil {
+        request = NewModifyClusterNodePoolRequest()
+    }
+    response = NewModifyClusterNodePoolResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewRemoveNodeFromNodePoolRequest() (request *RemoveNodeFromNodePoolRequest) {
+    request = &RemoveNodeFromNodePoolRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tke", APIVersion, "RemoveNodeFromNodePool")
+    return
+}
+
+func NewRemoveNodeFromNodePoolResponse() (response *RemoveNodeFromNodePoolResponse) {
+    response = &RemoveNodeFromNodePoolResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 移出节点池节点，但保留在集群内
+func (c *Client) RemoveNodeFromNodePool(request *RemoveNodeFromNodePoolRequest) (response *RemoveNodeFromNodePoolResponse, err error) {
+    if request == nil {
+        request = NewRemoveNodeFromNodePoolRequest()
+    }
+    response = NewRemoveNodeFromNodePoolResponse()
     err = c.Send(request, response)
     return
 }

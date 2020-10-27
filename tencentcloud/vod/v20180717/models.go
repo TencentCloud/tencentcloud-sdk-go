@@ -193,6 +193,11 @@ type AdaptiveStreamTemplate struct {
 	// <li>0：否，</li>
 	// <li>1：是。</li>
 	RemoveAudio *uint64 `json:"RemoveAudio,omitempty" name:"RemoveAudio"`
+
+	// 是否移除视频流，取值范围：
+	// <li>0：否，</li>
+	// <li>1：是。</li>
+	RemoveVideo *uint64 `json:"RemoveVideo,omitempty" name:"RemoveVideo"`
 }
 
 type AiAnalysisResult struct {
@@ -10626,7 +10631,8 @@ type VideoTemplateInfo struct {
 	FillType *string `json:"FillType,omitempty" name:"FillType"`
 
 	// 视频恒定码率控制因子，取值范围为[1, 51]。
-	// 如果指定该参数，将使用 CRF 的码率控制方式做转码。0值表示禁用 CRF 模式。
+	// 如果指定该参数，将使用 CRF 的码率控制方式做转码（视频码率将不再生效）。
+	// 如果没有特殊需求，不建议指定该参数。
 	Vcrf *uint64 `json:"Vcrf,omitempty" name:"Vcrf"`
 }
 
@@ -10669,8 +10675,8 @@ type VideoTemplateInfoForUpdate struct {
 	// <li>gauss：高斯模糊，保持视频宽高比不变，边缘剩余部分使用高斯模糊填充。</li>
 	FillType *string `json:"FillType,omitempty" name:"FillType"`
 
-	// 视频恒定码率控制因子，取值范围为[0, 51]。
-	// 如果指定该参数，将使用 CRF 的码率控制方式做转码。取0值表示禁用 CRF 模式。
+	// 视频恒定码率控制因子。取值范围为[0, 51]，填0表示禁用该参数。
+	// 如果没有特殊需求，不建议指定该参数。
 	Vcrf *uint64 `json:"Vcrf,omitempty" name:"Vcrf"`
 }
 

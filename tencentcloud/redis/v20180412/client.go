@@ -243,6 +243,31 @@ func (c *Client) DescribeBackupUrl(request *DescribeBackupUrlRequest) (response 
     return
 }
 
+func NewDescribeCommonDBInstancesRequest() (request *DescribeCommonDBInstancesRequest) {
+    request = &DescribeCommonDBInstancesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("redis", APIVersion, "DescribeCommonDBInstances")
+    return
+}
+
+func NewDescribeCommonDBInstancesResponse() (response *DescribeCommonDBInstancesResponse) {
+    response = &DescribeCommonDBInstancesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询Redis实例列表信息
+func (c *Client) DescribeCommonDBInstances(request *DescribeCommonDBInstancesRequest) (response *DescribeCommonDBInstancesResponse, err error) {
+    if request == nil {
+        request = NewDescribeCommonDBInstancesRequest()
+    }
+    response = NewDescribeCommonDBInstancesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeDBSecurityGroupsRequest() (request *DescribeDBSecurityGroupsRequest) {
     request = &DescribeDBSecurityGroupsRequest{
         BaseRequest: &tchttp.BaseRequest{},

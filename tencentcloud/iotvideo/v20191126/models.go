@@ -79,6 +79,21 @@ func (r *ClearDeviceActiveCodeResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type Contents struct {
+
+	// 英文，长度不超过300个字符
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	En *string `json:"En,omitempty" name:"En"`
+
+	// 中文简体，长度不超过300个字符
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Cn *string `json:"Cn,omitempty" name:"Cn"`
+
+	// 中文繁体(Traditional Chinese)，长度不超过300个字符
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Tc *string `json:"Tc,omitempty" name:"Tc"`
+}
+
 type CreateAnonymousAccessTokenRequest struct {
 	*tchttp.BaseRequest
 
@@ -2703,6 +2718,12 @@ type RunOtaVersionRequest struct {
 
 	// 操作人
 	Operator *string `json:"Operator,omitempty" name:"Operator"`
+
+	// 备注信息
+	Remark *string `json:"Remark,omitempty" name:"Remark"`
+
+	// 版本发布的描述信息，需要国际化，可以为空
+	Contents *Contents `json:"Contents,omitempty" name:"Contents"`
 }
 
 func (r *RunOtaVersionRequest) ToJsonString() string {
@@ -2746,6 +2767,9 @@ type RunTestOtaVersionRequest struct {
 
 	// 操作人
 	Operator *string `json:"Operator,omitempty" name:"Operator"`
+
+	// 备注信息
+	Remark *string `json:"Remark,omitempty" name:"Remark"`
 }
 
 func (r *RunTestOtaVersionRequest) ToJsonString() string {
@@ -3066,4 +3090,12 @@ type VersionData struct {
 	// 该固件版本发布的变更次数
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ModifyTimes *uint64 `json:"ModifyTimes,omitempty" name:"ModifyTimes"`
+
+	// 备注信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Remark *string `json:"Remark,omitempty" name:"Remark"`
+
+	// 版本发布的描述信息，需要国际化，可以为空
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Contents *Contents `json:"Contents,omitempty" name:"Contents"`
 }
