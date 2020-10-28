@@ -95,6 +95,11 @@ type Bundle struct {
 
 	// 套餐售卖状态,取值:‘AVAILABLE’(可用) , ‘SOLD_OUT’(售罄)
 	BundleSalesState *string `json:"BundleSalesState,omitempty" name:"BundleSalesState"`
+
+	// 套餐类型。
+	// 取值范围：
+	// <li> GENERAL_BUNDLE：通用型</li><li> STORAGE_BUNDLE：存储型 </li>
+	BundleType *string `json:"BundleType,omitempty" name:"BundleType"`
 }
 
 type CreateFirewallRulesRequest struct {

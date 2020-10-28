@@ -171,6 +171,21 @@ type AutoScalingGroupRange struct {
 	MaxSize *int64 `json:"MaxSize,omitempty" name:"MaxSize"`
 }
 
+type AutoscalingAdded struct {
+
+	// 正在加入中的节点数量
+	Joining *int64 `json:"Joining,omitempty" name:"Joining"`
+
+	// 初始化中的节点数量
+	Initializing *int64 `json:"Initializing,omitempty" name:"Initializing"`
+
+	// 正常的节点数量
+	Normal *int64 `json:"Normal,omitempty" name:"Normal"`
+
+	// 节点总数
+	Total *int64 `json:"Total,omitempty" name:"Total"`
+}
+
 type Cluster struct {
 
 	// 集群ID
@@ -1539,6 +1554,9 @@ type DescribeClusterNodePoolDetailResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
+		// 节点池详情
+		NodePool *NodePool `json:"NodePool,omitempty" name:"NodePool"`
+
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
@@ -1572,6 +1590,13 @@ func (r *DescribeClusterNodePoolsRequest) FromJsonString(s string) error {
 type DescribeClusterNodePoolsResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
+
+		// NodePools（节点池列表）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		NodePoolSet []*NodePool `json:"NodePoolSet,omitempty" name:"NodePoolSet" list`
+
+		// 资源总数
+		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -2251,6 +2276,21 @@ type LoginSettings struct {
 	KeepImageLogin *string `json:"KeepImageLogin,omitempty" name:"KeepImageLogin"`
 }
 
+type ManuallyAdded struct {
+
+	// 加入中节的点数量
+	Joining *int64 `json:"Joining,omitempty" name:"Joining"`
+
+	// 初始化中的节点数量
+	Initializing *int64 `json:"Initializing,omitempty" name:"Initializing"`
+
+	// 正常的节点数量
+	Normal *int64 `json:"Normal,omitempty" name:"Normal"`
+
+	// 节点总数
+	Total *int64 `json:"Total,omitempty" name:"Total"`
+}
+
 type ModifyClusterAsGroupAttributeRequest struct {
 	*tchttp.BaseRequest
 
@@ -2433,6 +2473,63 @@ func (r *ModifyClusterNodePoolResponse) ToJsonString() string {
 
 func (r *ModifyClusterNodePoolResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
+}
+
+type NodeCountSummary struct {
+
+	// 手动管理的节点
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ManuallyAdded *ManuallyAdded `json:"ManuallyAdded,omitempty" name:"ManuallyAdded"`
+
+	// 自动管理的节点
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AutoscalingAdded *AutoscalingAdded `json:"AutoscalingAdded,omitempty" name:"AutoscalingAdded"`
+}
+
+type NodePool struct {
+
+	// NodePoolId 资源池id
+	NodePoolId *string `json:"NodePoolId,omitempty" name:"NodePoolId"`
+
+	// Name 资源池名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// ClusterInstanceId 集群实例id
+	ClusterInstanceId *string `json:"ClusterInstanceId,omitempty" name:"ClusterInstanceId"`
+
+	// LifeState 状态
+	LifeState *string `json:"LifeState,omitempty" name:"LifeState"`
+
+	// LaunchConfigurationId 配置
+	LaunchConfigurationId *string `json:"LaunchConfigurationId,omitempty" name:"LaunchConfigurationId"`
+
+	// AutoscalingGroupId 分组id
+	AutoscalingGroupId *string `json:"AutoscalingGroupId,omitempty" name:"AutoscalingGroupId"`
+
+	// Labels 标签
+	Labels []*Label `json:"Labels,omitempty" name:"Labels" list`
+
+	// Taints 污点标记
+	Taints []*Taint `json:"Taints,omitempty" name:"Taints" list`
+
+	// NodeCountSummary 节点列表
+	NodeCountSummary *NodeCountSummary `json:"NodeCountSummary,omitempty" name:"NodeCountSummary"`
+
+	// 状态信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AutoscalingGroupStatus *string `json:"AutoscalingGroupStatus,omitempty" name:"AutoscalingGroupStatus"`
+
+	// 最大节点数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MaxNodesNum *int64 `json:"MaxNodesNum,omitempty" name:"MaxNodesNum"`
+
+	// 最小节点数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MinNodesNum *int64 `json:"MinNodesNum,omitempty" name:"MinNodesNum"`
+
+	// 期望的节点数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DesiredNodesNum *int64 `json:"DesiredNodesNum,omitempty" name:"DesiredNodesNum"`
 }
 
 type RegionInstance struct {

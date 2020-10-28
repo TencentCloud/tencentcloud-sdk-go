@@ -247,7 +247,7 @@ type CreateImageRequest struct {
 	// 取值范围：<br><li>TRUE：表示关机之后制作镜像<br><li>FALSE：表示开机状态制作镜像<br><br>默认取值：FALSE。<br><br>开机状态制作镜像，可能导致部分数据未备份，影响数据安全。
 	ForcePoweroff *string `json:"ForcePoweroff,omitempty" name:"ForcePoweroff"`
 
-	// 创建Windows镜像时是否启用Sysprep
+	// 创建Windows镜像时是否启用Sysprep，关于Sysprep的详情请参考[链接](https://cloud.tencent.com/document/product/213/43498)
 	Sysprep *string `json:"Sysprep,omitempty" name:"Sysprep"`
 
 	// 基于实例创建整机镜像时，指定包含在镜像里的数据盘Id
@@ -272,10 +272,6 @@ func (r *CreateImageRequest) FromJsonString(s string) error {
 type CreateImageResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
-
-		// 镜像ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		ImageId *string `json:"ImageId,omitempty" name:"ImageId"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`

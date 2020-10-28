@@ -1160,7 +1160,7 @@ type CreateLiveTranscodeTemplateRequest struct {
 	// 范围：0-500。
 	AudioBitrate *int64 `json:"AudioBitrate,omitempty" name:"AudioBitrate"`
 
-	// 视频编码：h264/h265/origin，默认h264。
+	// 视频编码：h264/h265/origin，默认origin。
 	// 
 	// origin: 保持原始编码格式
 	Vcodec *string `json:"Vcodec,omitempty" name:"Vcodec"`
@@ -5384,7 +5384,7 @@ type ModifyLiveTranscodeTemplateRequest struct {
 	// 模板 Id。
 	TemplateId *int64 `json:"TemplateId,omitempty" name:"TemplateId"`
 
-	// 视频编码：h264/h265/origin，默认h264。
+	// 视频编码：h264/h265/origin，默认origin。
 	// 
 	// origin: 保持原始编码格式
 	Vcodec *string `json:"Vcodec,omitempty" name:"Vcodec"`

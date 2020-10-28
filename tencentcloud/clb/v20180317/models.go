@@ -129,7 +129,7 @@ func (r *AutoRewriteResponse) FromJsonString(s string) error {
 
 type Backend struct {
 
-	// 后端服务的类型，可取：CVM、ENI（即将支持）
+	// 后端服务的类型，可取：CVM、ENI
 	Type *string `json:"Type,omitempty" name:"Type"`
 
 	// 后端服务的唯一 ID，如 ins-abcd1234
