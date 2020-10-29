@@ -39,6 +39,7 @@ type Request interface {
 	SetRootDomain(string)
 	SetDomain(string)
 	SetHttpMethod(string)
+	SetPath(string)
 }
 
 type BaseRequest struct {
@@ -125,6 +126,10 @@ func (r *BaseRequest) SetHttpMethod(method string) {
 			r.httpMethod = GET
 		}
 	}
+}
+
+func (r *BaseRequest) SetPath(path string) string {
+	r.path = path
 }
 
 func (r *BaseRequest) GetService() string {
