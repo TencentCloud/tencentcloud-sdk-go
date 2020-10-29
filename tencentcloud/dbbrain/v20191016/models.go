@@ -97,10 +97,10 @@ type DescribeDBDiagHistoryRequest struct {
 	// 实例 ID 。
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
-	// 开始时间。如“2019-09-10 12:13:14”。
+	// 开始时间，如“2019-09-10 12:13:14”。
 	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
 
-	// 结束时间。如“2019-09-11 12:13:14”。
+	// 结束时间，如“2019-09-11 12:13:14”，结束时间与开始时间的间隔最大可为2天。
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 }
 
@@ -116,9 +116,6 @@ func (r *DescribeDBDiagHistoryRequest) FromJsonString(s string) error {
 type DescribeDBDiagHistoryResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
-
-		// 事件描述。
-		Events []*DiagHistoryEventItem `json:"Events,omitempty" name:"Events" list`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -189,10 +186,10 @@ type DescribeSlowLogTimeSeriesStatsRequest struct {
 	// 实例 ID 。
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
-	// 开始时间。
+	// 开始时间，如“2019-09-10 12:13:14”。
 	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
 
-	// 结束时间。
+	// 结束时间，如“2019-09-10 12:13:14”，结束时间与开始时间的间隔最大可为7天。
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 }
 
@@ -208,15 +205,6 @@ func (r *DescribeSlowLogTimeSeriesStatsRequest) FromJsonString(s string) error {
 type DescribeSlowLogTimeSeriesStatsResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
-
-		// 柱间单位时间间隔，单位为秒。
-		Period *int64 `json:"Period,omitempty" name:"Period"`
-
-		// 单位时间间隔内慢日志数量统计。
-		TimeSeries []*TimeSlice `json:"TimeSeries,omitempty" name:"TimeSeries" list`
-
-		// 单位时间间隔内的实例 cpu 利用率监控数据。
-		SeriesData *MonitorMetricSeriesData `json:"SeriesData,omitempty" name:"SeriesData"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -238,10 +226,10 @@ type DescribeSlowLogTopSqlsRequest struct {
 	// 实例 ID 。
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
-	// 开始时间。
+	// 开始时间，如“2019-09-10 12:13:14”。
 	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
 
-	// 截止时间。
+	// 截止时间，如“2019-09-10 12:13:14”，截止时间与开始时间的间隔最大可为7天。
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 
 	// 排序键，目前支持 QueryTime,ExecTimes,RowsSent,LockTime以及RowsExamined 等排序键。
@@ -270,12 +258,6 @@ type DescribeSlowLogTopSqlsResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 符合条件的记录总数。
-		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
-
-		// 慢日志 top sql 列表
-		Rows []*SlowLogTopSqlItem `json:"Rows,omitempty" name:"Rows" list`
-
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
@@ -302,10 +284,10 @@ type DescribeTopSpaceTableTimeSeriesRequest struct {
 	// 筛选Top表所用的排序字段，可选字段包含DataLength、IndexLength、TotalLength、DataFree、FragRatio、TableRows、PhysicalFileSize，默认为 PhysicalFileSize。
 	SortBy *string `json:"SortBy,omitempty" name:"SortBy"`
 
-	// 开始日期，最早为当日的前第6天，默认为截止日期的前第6天。
+	// 开始日期，最早为当日的前第29天，默认为截止日期的前第6天。
 	StartDate *string `json:"StartDate,omitempty" name:"StartDate"`
 
-	// 截止日期，最早为当日的前第6天，默认为当日。
+	// 截止日期，最早为当日的前第29天，默认为当日。
 	EndDate *string `json:"EndDate,omitempty" name:"EndDate"`
 }
 
@@ -321,9 +303,6 @@ func (r *DescribeTopSpaceTableTimeSeriesRequest) FromJsonString(s string) error 
 type DescribeTopSpaceTableTimeSeriesResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
-
-		// 返回的Top表空间统计信息的时序数据列表。
-		TopSpaceTableTimeSeries []*TableSpaceTimeSeries `json:"TopSpaceTableTimeSeries,omitempty" name:"TopSpaceTableTimeSeries" list`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -365,9 +344,6 @@ type DescribeTopSpaceTablesResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 返回的Top表空间统计信息列表。
-		TopSpaceTables []*TableSpaceData `json:"TopSpaceTables,omitempty" name:"TopSpaceTables" list`
-
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
@@ -380,204 +356,4 @@ func (r *DescribeTopSpaceTablesResponse) ToJsonString() string {
 
 func (r *DescribeTopSpaceTablesResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
-}
-
-type DiagHistoryEventItem struct {
-
-	// 诊断类型。
-	DiagType *string `json:"DiagType,omitempty" name:"DiagType"`
-
-	// 结束时间。
-	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
-
-	// 开始时间。
-	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
-
-	// 事件 ID 。
-	EventId *int64 `json:"EventId,omitempty" name:"EventId"`
-
-	// 严重程度。严重程度分为5级，按影响程度从高至低分别为：1：致命，2：严重，3：告警，4：提示，5：健康。
-	Severity *int64 `json:"Severity,omitempty" name:"Severity"`
-
-	// 概要。
-	Outline *string `json:"Outline,omitempty" name:"Outline"`
-
-	// 诊断项。
-	DiagItem *string `json:"DiagItem,omitempty" name:"DiagItem"`
-
-	// 实例 ID 。
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
-
-	// 保留字段
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	Metric *string `json:"Metric,omitempty" name:"Metric"`
-
-	// 地域
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	Region *string `json:"Region,omitempty" name:"Region"`
-}
-
-type MonitorFloatMetric struct {
-
-	// 指标名称。
-	Metric *string `json:"Metric,omitempty" name:"Metric"`
-
-	// 指标单位。
-	Unit *string `json:"Unit,omitempty" name:"Unit"`
-
-	// 指标值。
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	Values []*float64 `json:"Values,omitempty" name:"Values" list`
-}
-
-type MonitorFloatMetricSeriesData struct {
-
-	// 监控指标。
-	Series []*MonitorFloatMetric `json:"Series,omitempty" name:"Series" list`
-
-	// 监控指标对应的时间戳。
-	Timestamp []*int64 `json:"Timestamp,omitempty" name:"Timestamp" list`
-}
-
-type MonitorMetric struct {
-
-	// 指标名称。
-	Metric *string `json:"Metric,omitempty" name:"Metric"`
-
-	// 指标单位。
-	Unit *string `json:"Unit,omitempty" name:"Unit"`
-
-	// 指标值。
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	Values []*int64 `json:"Values,omitempty" name:"Values" list`
-}
-
-type MonitorMetricSeriesData struct {
-
-	// 监控指标。
-	Series []*MonitorMetric `json:"Series,omitempty" name:"Series" list`
-
-	// 监控指标对应的时间戳。
-	Timestamp []*int64 `json:"Timestamp,omitempty" name:"Timestamp" list`
-}
-
-type SlowLogTopSqlItem struct {
-
-	// sql总锁等待时间
-	LockTime *float64 `json:"LockTime,omitempty" name:"LockTime"`
-
-	// 最大锁等待时间
-	LockTimeMax *float64 `json:"LockTimeMax,omitempty" name:"LockTimeMax"`
-
-	// 最小锁等待时间
-	LockTimeMin *float64 `json:"LockTimeMin,omitempty" name:"LockTimeMin"`
-
-	// 总扫描行数
-	RowsExamined *int64 `json:"RowsExamined,omitempty" name:"RowsExamined"`
-
-	// 最大扫描行数
-	RowsExaminedMax *int64 `json:"RowsExaminedMax,omitempty" name:"RowsExaminedMax"`
-
-	// 最小扫描行数
-	RowsExaminedMin *int64 `json:"RowsExaminedMin,omitempty" name:"RowsExaminedMin"`
-
-	// 总耗时
-	QueryTime *float64 `json:"QueryTime,omitempty" name:"QueryTime"`
-
-	// 最大执行时间
-	QueryTimeMax *float64 `json:"QueryTimeMax,omitempty" name:"QueryTimeMax"`
-
-	// 最小执行时间
-	QueryTimeMin *float64 `json:"QueryTimeMin,omitempty" name:"QueryTimeMin"`
-
-	// 总返回行数
-	RowsSent *int64 `json:"RowsSent,omitempty" name:"RowsSent"`
-
-	// 最大返回行数
-	RowsSentMax *int64 `json:"RowsSentMax,omitempty" name:"RowsSentMax"`
-
-	// 最小返回行数
-	RowsSentMin *int64 `json:"RowsSentMin,omitempty" name:"RowsSentMin"`
-
-	// 执行次数
-	ExecTimes *int64 `json:"ExecTimes,omitempty" name:"ExecTimes"`
-
-	// sql模板
-	SqlTemplate *string `json:"SqlTemplate,omitempty" name:"SqlTemplate"`
-
-	// 带参数SQL（随机）
-	SqlText *string `json:"SqlText,omitempty" name:"SqlText"`
-
-	// schema
-	Schema *string `json:"Schema,omitempty" name:"Schema"`
-
-	// 总耗时占比
-	QueryTimeRatio *float64 `json:"QueryTimeRatio,omitempty" name:"QueryTimeRatio"`
-
-	// sql总锁等待时间占比
-	LockTimeRatio *float64 `json:"LockTimeRatio,omitempty" name:"LockTimeRatio"`
-
-	// 总扫描行数占比
-	RowsExaminedRatio *float64 `json:"RowsExaminedRatio,omitempty" name:"RowsExaminedRatio"`
-
-	// 总返回行数占比
-	RowsSentRatio *float64 `json:"RowsSentRatio,omitempty" name:"RowsSentRatio"`
-}
-
-type TableSpaceData struct {
-
-	// 表名。
-	TableName *string `json:"TableName,omitempty" name:"TableName"`
-
-	// 库名。
-	TableSchema *string `json:"TableSchema,omitempty" name:"TableSchema"`
-
-	// 库表的存储引擎。
-	Engine *string `json:"Engine,omitempty" name:"Engine"`
-
-	// 数据空间（MB）。
-	DataLength *float64 `json:"DataLength,omitempty" name:"DataLength"`
-
-	// 索引空间（MB）。
-	IndexLength *float64 `json:"IndexLength,omitempty" name:"IndexLength"`
-
-	// 碎片空间（MB）。
-	DataFree *float64 `json:"DataFree,omitempty" name:"DataFree"`
-
-	// 总使用空间（MB）。
-	TotalLength *float64 `json:"TotalLength,omitempty" name:"TotalLength"`
-
-	// 碎片率（%）。
-	FragRatio *float64 `json:"FragRatio,omitempty" name:"FragRatio"`
-
-	// 行数。
-	TableRows *int64 `json:"TableRows,omitempty" name:"TableRows"`
-
-	// 表对应的独立物理文件大小（MB）。
-	PhysicalFileSize *float64 `json:"PhysicalFileSize,omitempty" name:"PhysicalFileSize"`
-}
-
-type TableSpaceTimeSeries struct {
-
-	// 表名。
-	TableName *string `json:"TableName,omitempty" name:"TableName"`
-
-	// 库名。
-	TableSchema *string `json:"TableSchema,omitempty" name:"TableSchema"`
-
-	// 库表的存储引擎。
-	Engine *string `json:"Engine,omitempty" name:"Engine"`
-
-	// 单位时间间隔内的空间指标数据。
-	SeriesData *MonitorFloatMetricSeriesData `json:"SeriesData,omitempty" name:"SeriesData"`
-}
-
-type TimeSlice struct {
-
-	// 总数
-	Count *int64 `json:"Count,omitempty" name:"Count"`
-
-	// 统计开始时间
-	Timestamp *int64 `json:"Timestamp,omitempty" name:"Timestamp"`
 }

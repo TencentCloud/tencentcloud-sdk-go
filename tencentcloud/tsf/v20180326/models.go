@@ -3309,6 +3309,46 @@ func (r *DescribeGroupsResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeImageRepositoryRequest struct {
+	*tchttp.BaseRequest
+
+	// 仓库名，搜索关键字,不带命名空间的
+	SearchWord *string `json:"SearchWord,omitempty" name:"SearchWord"`
+
+	// 偏移量，取值从0开始
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 分页个数，默认为20， 取值应为1~100
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+func (r *DescribeImageRepositoryRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeImageRepositoryRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeImageRepositoryResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeImageRepositoryResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeImageRepositoryResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeImageTagsRequest struct {
 	*tchttp.BaseRequest
 

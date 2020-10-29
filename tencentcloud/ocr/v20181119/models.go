@@ -20,6 +20,66 @@ import (
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
+type AdvertiseOCRRequest struct {
+	*tchttp.BaseRequest
+
+	// 图片的 Base64 值。
+	// 要求图片经Base64编码后不超过 7M，分辨率建议600*800以上，支持PNG、JPG、JPEG、BMP、PDF格式。
+	// 图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+	ImageBase64 *string `json:"ImageBase64,omitempty" name:"ImageBase64"`
+
+	// 图片的 Url 地址。
+	// 要求图片经Base64编码后不超过 7M，分辨率建议600*800以上，支持PNG、JPG、JPEG、BMP、PDF格式。
+	// 图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
+}
+
+func (r *AdvertiseOCRRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *AdvertiseOCRRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type AdvertiseOCRResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 检测到的文本信息，包括文本行内容、置信度、文本行坐标以及文本行旋转纠正后的坐标，具体内容请点击左侧链接。
+		TextDetections []*AdvertiseTextDetection `json:"TextDetections,omitempty" name:"TextDetections" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *AdvertiseOCRResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *AdvertiseOCRResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type AdvertiseTextDetection struct {
+
+	// 识别出的文本行内容
+	DetectedText *string `json:"DetectedText,omitempty" name:"DetectedText"`
+
+	// 置信度 0 ~100
+	Confidence *int64 `json:"Confidence,omitempty" name:"Confidence"`
+
+	// 文本行坐标，以四个顶点坐标表示
+	Polygon []*Coord `json:"Polygon,omitempty" name:"Polygon" list`
+
+	// 此字段为扩展字段。
+	// GeneralBasicOcr接口返回段落信息Parag，包含ParagNo。
+	AdvancedInfo *string `json:"AdvancedInfo,omitempty" name:"AdvancedInfo"`
+}
+
 type ArithmeticOCRRequest struct {
 	*tchttp.BaseRequest
 
@@ -428,6 +488,17 @@ func (r *CarInvoiceOCRResponse) ToJsonString() string {
 
 func (r *CarInvoiceOCRResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
+}
+
+type CellContent struct {
+
+	// 段落编号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ParagNo *int64 `json:"ParagNo,omitempty" name:"ParagNo"`
+
+	// 字体大小
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WordSize *int64 `json:"WordSize,omitempty" name:"WordSize"`
 }
 
 type ClassifyDetectInfo struct {
@@ -2882,6 +2953,62 @@ func (r *QuotaInvoiceOCRResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type RecognizeTableOCRRequest struct {
+	*tchttp.BaseRequest
+
+	// 图片/PDF的 Base64 值。
+	// 要求图片/PDF经Base64编码后不超过 7M，分辨率建议600*800以上，支持PNG、JPG、JPEG、BMP、PDF格式。
+	// 图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+	ImageBase64 *string `json:"ImageBase64,omitempty" name:"ImageBase64"`
+
+	// 图片/PDF的 Url 地址。
+	// 要求图片/PDF经Base64编码后不超过 7M，分辨率建议600*800以上，支持PNG、JPG、JPEG、BMP、PDF格式。
+	// 图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
+
+	// 是否开启PDF识别，默认值为false，开启后可同时支持图片和PDF的识别。
+	IsPdf *bool `json:"IsPdf,omitempty" name:"IsPdf"`
+
+	// 需要识别的PDF页面的对应页码，仅支持PDF单页识别，当上传文件为PDF且IsPdf参数值为true时有效，默认值为1。
+	PdfPageNumber *uint64 `json:"PdfPageNumber,omitempty" name:"PdfPageNumber"`
+}
+
+func (r *RecognizeTableOCRRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *RecognizeTableOCRRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type RecognizeTableOCRResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 检测到的文本信息，具体内容请点击左侧链接。
+		TableDetections []*TableDetectInfo `json:"TableDetections,omitempty" name:"TableDetections" list`
+
+		// Base64 编码后的 Excel 数据。
+		Data *string `json:"Data,omitempty" name:"Data"`
+
+		// 图片为PDF时，返回PDF的总页数，默认为0
+		PdfPageSize *int64 `json:"PdfPageSize,omitempty" name:"PdfPageSize"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *RecognizeTableOCRResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *RecognizeTableOCRResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type RecognizeThaiIDCardOCRRequest struct {
 	*tchttp.BaseRequest
 
@@ -3270,6 +3397,51 @@ type SingleInvoiceInfo struct {
 	Value *string `json:"Value,omitempty" name:"Value"`
 }
 
+type TableCell struct {
+
+	// 单元格左上角的列索引
+	ColTl *int64 `json:"ColTl,omitempty" name:"ColTl"`
+
+	// 单元格左上角的行索引
+	RowTl *int64 `json:"RowTl,omitempty" name:"RowTl"`
+
+	// 单元格右下角的列索引
+	ColBr *int64 `json:"ColBr,omitempty" name:"ColBr"`
+
+	// 单元格右下角的行索引
+	RowBr *int64 `json:"RowBr,omitempty" name:"RowBr"`
+
+	// 单元格内识别出的字符串文本，若文本存在多行，以换行符"\n"隔开
+	Text *string `json:"Text,omitempty" name:"Text"`
+
+	// 单元格类型
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 单元格置信度
+	Confidence *float64 `json:"Confidence,omitempty" name:"Confidence"`
+
+	// 单元格在图像中的四点坐标
+	Polygon []*Coord `json:"Polygon,omitempty" name:"Polygon" list`
+
+	// 此字段为扩展字段
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AdvancedInfo *string `json:"AdvancedInfo,omitempty" name:"AdvancedInfo"`
+
+	// 单元格文本属性
+	Contents []*CellContent `json:"Contents,omitempty" name:"Contents" list`
+}
+
+type TableDetectInfo struct {
+
+	// 单元格内容
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Cells []*TableCell `json:"Cells,omitempty" name:"Cells" list`
+
+	// 表格标题
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Titles []*TableTitle `json:"Titles,omitempty" name:"Titles" list`
+}
+
 type TableOCRRequest struct {
 	*tchttp.BaseRequest
 
@@ -3318,6 +3490,13 @@ func (r *TableOCRResponse) ToJsonString() string {
 
 func (r *TableOCRResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
+}
+
+type TableTitle struct {
+
+	// 表格名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Text *string `json:"Text,omitempty" name:"Text"`
 }
 
 type TaxiInvoiceOCRRequest struct {

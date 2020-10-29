@@ -1320,6 +1320,31 @@ func (c *Client) DescribeGroups(request *DescribeGroupsRequest) (response *Descr
     return
 }
 
+func NewDescribeImageRepositoryRequest() (request *DescribeImageRepositoryRequest) {
+    request = &DescribeImageRepositoryRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tsf", APIVersion, "DescribeImageRepository")
+    return
+}
+
+func NewDescribeImageRepositoryResponse() (response *DescribeImageRepositoryResponse) {
+    response = &DescribeImageRepositoryResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 镜像仓库列表 
+func (c *Client) DescribeImageRepository(request *DescribeImageRepositoryRequest) (response *DescribeImageRepositoryResponse, err error) {
+    if request == nil {
+        request = NewDescribeImageRepositoryRequest()
+    }
+    response = NewDescribeImageRepositoryResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeImageTagsRequest() (request *DescribeImageTagsRequest) {
     request = &DescribeImageTagsRequest{
         BaseRequest: &tchttp.BaseRequest{},

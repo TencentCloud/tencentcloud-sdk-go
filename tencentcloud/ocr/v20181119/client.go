@@ -43,6 +43,33 @@ func NewClient(credential *common.Credential, region string, clientProfile *prof
 }
 
 
+func NewAdvertiseOCRRequest() (request *AdvertiseOCRRequest) {
+    request = &AdvertiseOCRRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ocr", APIVersion, "AdvertiseOCR")
+    return
+}
+
+func NewAdvertiseOCRResponse() (response *AdvertiseOCRResponse) {
+    response = &AdvertiseOCRResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口支持广告商品图片内文字的检测和识别，返回文本框位置与文字内容。
+// 
+// 产品优势：针对广告商品图片普遍存在较多繁体字、艺术字的特点，进行了识别能力的增强。支持中英文、横排、竖排以及倾斜场景文字识别。文字识别的召回率和准确率能达到96%以上。
+func (c *Client) AdvertiseOCR(request *AdvertiseOCRRequest) (response *AdvertiseOCRResponse, err error) {
+    if request == nil {
+        request = NewAdvertiseOCRRequest()
+    }
+    response = NewAdvertiseOCRResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewArithmeticOCRRequest() (request *ArithmeticOCRRequest) {
     request = &ArithmeticOCRRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1315,6 +1342,31 @@ func (c *Client) QuotaInvoiceOCR(request *QuotaInvoiceOCRRequest) (response *Quo
         request = NewQuotaInvoiceOCRRequest()
     }
     response = NewQuotaInvoiceOCRResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewRecognizeTableOCRRequest() (request *RecognizeTableOCRRequest) {
+    request = &RecognizeTableOCRRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ocr", APIVersion, "RecognizeTableOCR")
+    return
+}
+
+func NewRecognizeTableOCRResponse() (response *RecognizeTableOCRResponse) {
+    response = &RecognizeTableOCRResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口支持图片/ PDF内常规表格、无线表格、多表格的检测和识别，返回每个单元格的文字内容，支持对0度至180度旋转的表格图片识别，且支持将识别结果保存为 Excel 格式。
+func (c *Client) RecognizeTableOCR(request *RecognizeTableOCRRequest) (response *RecognizeTableOCRResponse, err error) {
+    if request == nil {
+        request = NewRecognizeTableOCRRequest()
+    }
+    response = NewRecognizeTableOCRResponse()
     err = c.Send(request, response)
     return
 }

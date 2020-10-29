@@ -83,7 +83,7 @@ func NewCreateClsLogTopicResponse() (response *CreateClsLogTopicResponse) {
     return
 }
 
-// CreatClsLogTopic 用于创建日志主题。注意：一个日志集下至多可创建10个日志主题。
+// CreateClsLogTopic 用于创建日志主题。注意：一个日志集下至多可创建10个日志主题。
 func (c *Client) CreateClsLogTopic(request *CreateClsLogTopicRequest) (response *CreateClsLogTopicResponse, err error) {
     if request == nil {
         request = NewCreateClsLogTopicRequest()

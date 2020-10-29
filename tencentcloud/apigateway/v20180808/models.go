@@ -952,6 +952,9 @@ type CreateServiceRequest struct {
 
 	// 用户类型。保留类型，serverless用户使用。
 	AppIdType *string `json:"AppIdType,omitempty" name:"AppIdType"`
+
+	// 标签。
+	Tags []*Tag `json:"Tags,omitempty" name:"Tags" list`
 }
 
 func (r *CreateServiceRequest) ToJsonString() string {
@@ -966,31 +969,6 @@ func (r *CreateServiceRequest) FromJsonString(s string) error {
 type CreateServiceResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
-
-		// 服务唯一ID。
-		ServiceId *string `json:"ServiceId,omitempty" name:"ServiceId"`
-
-		// 用户自定义服务名称。
-		ServiceName *string `json:"ServiceName,omitempty" name:"ServiceName"`
-
-		// 用户自定义服务描述。
-		ServiceDesc *string `json:"ServiceDesc,omitempty" name:"ServiceDesc"`
-
-		// 外网默认域名。
-		OuterSubDomain *string `json:"OuterSubDomain,omitempty" name:"OuterSubDomain"`
-
-		// vpc内网默认域名。
-		InnerSubDomain *string `json:"InnerSubDomain,omitempty" name:"InnerSubDomain"`
-
-		// 服务创建时间。按照 ISO8601 标准表示，并且使用 UTC 时间。格式为：YYYY-MM-DDThh:mm:ssZ。
-		CreatedTime *string `json:"CreatedTime,omitempty" name:"CreatedTime"`
-
-		// 网络类型列表，INNER为内网访问，OUTER为外网访问。
-		NetTypes []*string `json:"NetTypes,omitempty" name:"NetTypes" list`
-
-		// IP版本号。
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		IpVersion *string `json:"IpVersion,omitempty" name:"IpVersion"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`

@@ -1500,6 +1500,21 @@ type GetServiceStatusResponse struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		InvalidType *int64 `json:"InvalidType,omitempty" name:"InvalidType"`
 
+		// 0-普通版，1-旗舰版
+		UserLevel *uint64 `json:"UserLevel,omitempty" name:"UserLevel"`
+
+		// 旗舰版到期时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		ProExpireTime *uint64 `json:"ProExpireTime,omitempty" name:"ProExpireTime"`
+
+		// 旗舰版是否自动续费：0-不自动续费，1-自动续费
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		ProRenewFlag *uint64 `json:"ProRenewFlag,omitempty" name:"ProRenewFlag"`
+
+		// 旗舰版购买记录的唯一性标识。如果为开通旗舰版，则返回值为空
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		ProResourceId *string `json:"ProResourceId,omitempty" name:"ProResourceId"`
+
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`

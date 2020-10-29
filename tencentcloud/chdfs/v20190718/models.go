@@ -173,6 +173,43 @@ func (r *CreateFileSystemResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type CreateLifeCycleRulesRequest struct {
+	*tchttp.BaseRequest
+
+	// 文件系统ID
+	FileSystemId *string `json:"FileSystemId,omitempty" name:"FileSystemId"`
+
+	// 多个生命周期规则，上限为10
+	LifeCycleRules []*LifeCycleRule `json:"LifeCycleRules,omitempty" name:"LifeCycleRules" list`
+}
+
+func (r *CreateLifeCycleRulesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateLifeCycleRulesRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateLifeCycleRulesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateLifeCycleRulesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateLifeCycleRulesResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type CreateMountPointRequest struct {
 	*tchttp.BaseRequest
 
@@ -208,9 +245,6 @@ type CreateMountPointResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 挂载点
-		MountPoint *MountPoint `json:"MountPoint,omitempty" name:"MountPoint"`
-
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
@@ -222,6 +256,43 @@ func (r *CreateMountPointResponse) ToJsonString() string {
 }
 
 func (r *CreateMountPointResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateRestoreTasksRequest struct {
+	*tchttp.BaseRequest
+
+	// 文件系统ID
+	FileSystemId *string `json:"FileSystemId,omitempty" name:"FileSystemId"`
+
+	// 多个回热任务，上限为10
+	RestoreTasks []*RestoreTask `json:"RestoreTasks,omitempty" name:"RestoreTasks" list`
+}
+
+func (r *CreateRestoreTasksRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateRestoreTasksRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateRestoreTasksResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateRestoreTasksResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateRestoreTasksResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -324,6 +395,40 @@ func (r *DeleteFileSystemResponse) ToJsonString() string {
 }
 
 func (r *DeleteFileSystemResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteLifeCycleRulesRequest struct {
+	*tchttp.BaseRequest
+
+	// 多个生命周期规则ID，上限为10
+	LifeCycleRuleIds []*uint64 `json:"LifeCycleRuleIds,omitempty" name:"LifeCycleRuleIds" list`
+}
+
+func (r *DeleteLifeCycleRulesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteLifeCycleRulesRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteLifeCycleRulesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DeleteLifeCycleRulesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteLifeCycleRulesResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -470,13 +575,17 @@ type DescribeFileSystemResponse struct {
 		// 文件系统
 		FileSystem *FileSystem `json:"FileSystem,omitempty" name:"FileSystem"`
 
-		// 文件系统已使用容量（byte）
+		// 文件系统已使用容量（已弃用）
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		FileSystemCapacityUsed *uint64 `json:"FileSystemCapacityUsed,omitempty" name:"FileSystemCapacityUsed"`
 
-		// 已使用容量（byte）
+		// 已使用容量（byte），包括标准和归档存储
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		CapacityUsed *uint64 `json:"CapacityUsed,omitempty" name:"CapacityUsed"`
+
+		// 已使用归档存储容量（byte）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		ArchiveCapacityUsed *uint64 `json:"ArchiveCapacityUsed,omitempty" name:"ArchiveCapacityUsed"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -529,6 +638,43 @@ func (r *DescribeFileSystemsResponse) ToJsonString() string {
 }
 
 func (r *DescribeFileSystemsResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeLifeCycleRulesRequest struct {
+	*tchttp.BaseRequest
+
+	// 文件系统ID
+	FileSystemId *string `json:"FileSystemId,omitempty" name:"FileSystemId"`
+}
+
+func (r *DescribeLifeCycleRulesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeLifeCycleRulesRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeLifeCycleRulesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 生命周期规则列表
+		LifeCycleRules []*LifeCycleRule `json:"LifeCycleRules,omitempty" name:"LifeCycleRules" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeLifeCycleRulesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeLifeCycleRulesResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -617,6 +763,80 @@ func (r *DescribeMountPointsResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeResourceTagsRequest struct {
+	*tchttp.BaseRequest
+
+	// 文件系统ID
+	FileSystemId *string `json:"FileSystemId,omitempty" name:"FileSystemId"`
+}
+
+func (r *DescribeResourceTagsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeResourceTagsRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeResourceTagsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 资源标签列表
+		Tags []*Tag `json:"Tags,omitempty" name:"Tags" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeResourceTagsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeResourceTagsResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeRestoreTasksRequest struct {
+	*tchttp.BaseRequest
+
+	// 文件系统ID
+	FileSystemId *string `json:"FileSystemId,omitempty" name:"FileSystemId"`
+}
+
+func (r *DescribeRestoreTasksRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeRestoreTasksRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeRestoreTasksResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 回热任务列表
+		RestoreTasks []*RestoreTask `json:"RestoreTasks,omitempty" name:"RestoreTasks" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeRestoreTasksResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeRestoreTasksResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type FileSystem struct {
 
 	// appid
@@ -654,6 +874,27 @@ type Filter struct {
 
 	// 过滤值
 	Values []*string `json:"Values,omitempty" name:"Values" list`
+}
+
+type LifeCycleRule struct {
+
+	// 生命周期规则ID
+	LifeCycleRuleId *uint64 `json:"LifeCycleRuleId,omitempty" name:"LifeCycleRuleId"`
+
+	// 生命周期规则名称
+	LifeCycleRuleName *string `json:"LifeCycleRuleName,omitempty" name:"LifeCycleRuleName"`
+
+	// 生命周期规则路径（目录或文件）
+	Path *string `json:"Path,omitempty" name:"Path"`
+
+	// 生命周期规则转换列表
+	Transitions []*Transition `json:"Transitions,omitempty" name:"Transitions" list`
+
+	// 生命周期规则状态（1：打开；2：关闭）
+	Status *uint64 `json:"Status,omitempty" name:"Status"`
+
+	// 创建时间
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
 }
 
 type ModifyAccessGroupRequest struct {
@@ -774,6 +1015,40 @@ func (r *ModifyFileSystemResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type ModifyLifeCycleRulesRequest struct {
+	*tchttp.BaseRequest
+
+	// 多个生命周期规则，上限为10
+	LifeCycleRules []*LifeCycleRule `json:"LifeCycleRules,omitempty" name:"LifeCycleRules" list`
+}
+
+func (r *ModifyLifeCycleRulesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyLifeCycleRulesRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyLifeCycleRulesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifyLifeCycleRulesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyLifeCycleRulesResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type ModifyMountPointRequest struct {
 	*tchttp.BaseRequest
 
@@ -817,6 +1092,43 @@ func (r *ModifyMountPointResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type ModifyResourceTagsRequest struct {
+	*tchttp.BaseRequest
+
+	// 文件系统ID
+	FileSystemId *string `json:"FileSystemId,omitempty" name:"FileSystemId"`
+
+	// 多个资源标签，可以为空数组
+	Tags []*Tag `json:"Tags,omitempty" name:"Tags" list`
+}
+
+func (r *ModifyResourceTagsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyResourceTagsRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyResourceTagsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifyResourceTagsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyResourceTagsResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type MountPoint struct {
 
 	// 挂载点ID
@@ -842,4 +1154,43 @@ type MountPoint struct {
 
 	// VPC网络类型
 	VpcType *uint64 `json:"VpcType,omitempty" name:"VpcType"`
+}
+
+type RestoreTask struct {
+
+	// 回热任务ID
+	RestoreTaskId *uint64 `json:"RestoreTaskId,omitempty" name:"RestoreTaskId"`
+
+	// 回热任务文件路径
+	FilePath *string `json:"FilePath,omitempty" name:"FilePath"`
+
+	// 回热任务类型（1：标准；2：极速；3：批量）
+	Type *uint64 `json:"Type,omitempty" name:"Type"`
+
+	// 指定恢复出的临时副本的有效时长（单位天）
+	Days *uint64 `json:"Days,omitempty" name:"Days"`
+
+	// 回热任务状态（1：绑定文件中；2：绑定文件完成；3：文件回热中；4：文件回热完成）
+	Status *uint64 `json:"Status,omitempty" name:"Status"`
+
+	// 创建时间
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+}
+
+type Tag struct {
+
+	// 标签键
+	Key *string `json:"Key,omitempty" name:"Key"`
+
+	// 标签值
+	Value *string `json:"Value,omitempty" name:"Value"`
+}
+
+type Transition struct {
+
+	// 触发时间（单位天）
+	Days *uint64 `json:"Days,omitempty" name:"Days"`
+
+	// 转换类型（1：归档；2：删除）
+	Type *uint64 `json:"Type,omitempty" name:"Type"`
 }

@@ -925,6 +925,31 @@ func (c *Client) DescribeModelDataRet(request *DescribeModelDataRetRequest) (res
     return
 }
 
+func NewDescribeOsListRequest() (request *DescribeOsListRequest) {
+    request = &DescribeOsListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iotvideo", APIVersion, "DescribeOsList")
+    return
+}
+
+func NewDescribeOsListResponse() (response *DescribeOsListResponse) {
+    response = &DescribeOsListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查看操作系统支持的芯片列表
+func (c *Client) DescribeOsList(request *DescribeOsListRequest) (response *DescribeOsListResponse, err error) {
+    if request == nil {
+        request = NewDescribeOsListRequest()
+    }
+    response = NewDescribeOsListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeOtaVersionsRequest() (request *DescribeOtaVersionsRequest) {
     request = &DescribeOtaVersionsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1308,6 +1333,31 @@ func (c *Client) ModifyProduct(request *ModifyProductRequest) (response *ModifyP
         request = NewModifyProductRequest()
     }
     response = NewModifyProductResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyVerContentRequest() (request *ModifyVerContentRequest) {
+    request = &ModifyVerContentRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iotvideo", APIVersion, "ModifyVerContent")
+    return
+}
+
+func NewModifyVerContentResponse() (response *ModifyVerContentResponse) {
+    response = &ModifyVerContentResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 编辑版本描述信息
+func (c *Client) ModifyVerContent(request *ModifyVerContentRequest) (response *ModifyVerContentResponse, err error) {
+    if request == nil {
+        request = NewModifyVerContentRequest()
+    }
+    response = NewModifyVerContentResponse()
     err = c.Send(request, response)
     return
 }

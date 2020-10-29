@@ -5053,6 +5053,9 @@ func (r *DescribeStorageDetailsResponse) FromJsonString(s string) error {
 
 type DescribeSubAppIdsRequest struct {
 	*tchttp.BaseRequest
+
+	// 标签信息，查询指定标签的子应用列表。
+	Tags []*ResourceTag `json:"Tags,omitempty" name:"Tags" list`
 }
 
 func (r *DescribeSubAppIdsRequest) ToJsonString() string {
@@ -8037,8 +8040,10 @@ type ModifySubAppIdStatusRequest struct {
 	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
 
 	// 子应用状态，取值范围：
-	// <li>On：启用</li>
-	// <li>Off：停用</li>
+	// <li>On：启用。</li>
+	// <li>Off：停用。</li>
+	// <li>Destroyed：销毁。</li>
+	// 当前状态如果是 Destoying ，不能进行启用操作，需要等待销毁完成后才能重新启用。
 	Status *string `json:"Status,omitempty" name:"Status"`
 }
 
@@ -9437,6 +9442,15 @@ type ResolutionNameInfo struct {
 	Name *string `json:"Name,omitempty" name:"Name"`
 }
 
+type ResourceTag struct {
+
+	// 标签键。
+	TagKey *string `json:"TagKey,omitempty" name:"TagKey"`
+
+	// 标签值。
+	TagValue *string `json:"TagValue,omitempty" name:"TagValue"`
+}
+
 type SampleSnapshotTaskInput struct {
 
 	// 采样截图模板 ID。
@@ -9924,6 +9938,8 @@ type SubAppIdInfo struct {
 	// 子应用状态，有效值：
 	// <li>On：启用；</li>
 	// <li>Off：停用。</li>
+	// <li>Destroying：销毁中。</li>
+	// <li>Destroyed：销毁完成。</li>
 	Status *string `json:"Status,omitempty" name:"Status"`
 }
 

@@ -118,6 +118,31 @@ func (c *Client) CreateFileSystem(request *CreateFileSystemRequest) (response *C
     return
 }
 
+func NewCreateLifeCycleRulesRequest() (request *CreateLifeCycleRulesRequest) {
+    request = &CreateLifeCycleRulesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("chdfs", APIVersion, "CreateLifeCycleRules")
+    return
+}
+
+func NewCreateLifeCycleRulesResponse() (response *CreateLifeCycleRulesResponse) {
+    response = &CreateLifeCycleRulesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 批量创建生命周期规则，生命周期规则ID和创建时间无需填写。
+func (c *Client) CreateLifeCycleRules(request *CreateLifeCycleRulesRequest) (response *CreateLifeCycleRulesResponse, err error) {
+    if request == nil {
+        request = NewCreateLifeCycleRulesRequest()
+    }
+    response = NewCreateLifeCycleRulesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateMountPointRequest() (request *CreateMountPointRequest) {
     request = &CreateMountPointRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -139,6 +164,31 @@ func (c *Client) CreateMountPoint(request *CreateMountPointRequest) (response *C
         request = NewCreateMountPointRequest()
     }
     response = NewCreateMountPointResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateRestoreTasksRequest() (request *CreateRestoreTasksRequest) {
+    request = &CreateRestoreTasksRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("chdfs", APIVersion, "CreateRestoreTasks")
+    return
+}
+
+func NewCreateRestoreTasksResponse() (response *CreateRestoreTasksResponse) {
+    response = &CreateRestoreTasksResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 批量创建回热任务，回热任务ID、状态和创建时间无需填写。
+func (c *Client) CreateRestoreTasks(request *CreateRestoreTasksRequest) (response *CreateRestoreTasksResponse, err error) {
+    if request == nil {
+        request = NewCreateRestoreTasksRequest()
+    }
+    response = NewCreateRestoreTasksResponse()
     err = c.Send(request, response)
     return
 }
@@ -214,6 +264,31 @@ func (c *Client) DeleteFileSystem(request *DeleteFileSystemRequest) (response *D
         request = NewDeleteFileSystemRequest()
     }
     response = NewDeleteFileSystemResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteLifeCycleRulesRequest() (request *DeleteLifeCycleRulesRequest) {
+    request = &DeleteLifeCycleRulesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("chdfs", APIVersion, "DeleteLifeCycleRules")
+    return
+}
+
+func NewDeleteLifeCycleRulesResponse() (response *DeleteLifeCycleRulesResponse) {
+    response = &DeleteLifeCycleRulesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 批量删除生命周期规则。
+func (c *Client) DeleteLifeCycleRules(request *DeleteLifeCycleRulesRequest) (response *DeleteLifeCycleRulesResponse, err error) {
+    if request == nil {
+        request = NewDeleteLifeCycleRulesRequest()
+    }
+    response = NewDeleteLifeCycleRulesResponse()
     err = c.Send(request, response)
     return
 }
@@ -343,6 +418,31 @@ func (c *Client) DescribeFileSystems(request *DescribeFileSystemsRequest) (respo
     return
 }
 
+func NewDescribeLifeCycleRulesRequest() (request *DescribeLifeCycleRulesRequest) {
+    request = &DescribeLifeCycleRulesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("chdfs", APIVersion, "DescribeLifeCycleRules")
+    return
+}
+
+func NewDescribeLifeCycleRulesResponse() (response *DescribeLifeCycleRulesResponse) {
+    response = &DescribeLifeCycleRulesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 通过文件系统ID查看生命周期规则列表。
+func (c *Client) DescribeLifeCycleRules(request *DescribeLifeCycleRulesRequest) (response *DescribeLifeCycleRulesResponse, err error) {
+    if request == nil {
+        request = NewDescribeLifeCycleRulesRequest()
+    }
+    response = NewDescribeLifeCycleRulesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeMountPointRequest() (request *DescribeMountPointRequest) {
     request = &DescribeMountPointRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -393,6 +493,56 @@ func (c *Client) DescribeMountPoints(request *DescribeMountPointsRequest) (respo
     return
 }
 
+func NewDescribeResourceTagsRequest() (request *DescribeResourceTagsRequest) {
+    request = &DescribeResourceTagsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("chdfs", APIVersion, "DescribeResourceTags")
+    return
+}
+
+func NewDescribeResourceTagsResponse() (response *DescribeResourceTagsResponse) {
+    response = &DescribeResourceTagsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 通过文件系统ID查看资源标签列表。
+func (c *Client) DescribeResourceTags(request *DescribeResourceTagsRequest) (response *DescribeResourceTagsResponse, err error) {
+    if request == nil {
+        request = NewDescribeResourceTagsRequest()
+    }
+    response = NewDescribeResourceTagsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeRestoreTasksRequest() (request *DescribeRestoreTasksRequest) {
+    request = &DescribeRestoreTasksRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("chdfs", APIVersion, "DescribeRestoreTasks")
+    return
+}
+
+func NewDescribeRestoreTasksResponse() (response *DescribeRestoreTasksResponse) {
+    response = &DescribeRestoreTasksResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 通过文件系统ID查看回热任务列表。
+func (c *Client) DescribeRestoreTasks(request *DescribeRestoreTasksRequest) (response *DescribeRestoreTasksResponse, err error) {
+    if request == nil {
+        request = NewDescribeRestoreTasksRequest()
+    }
+    response = NewDescribeRestoreTasksResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyAccessGroupRequest() (request *ModifyAccessGroupRequest) {
     request = &ModifyAccessGroupRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -433,7 +583,7 @@ func NewModifyAccessRulesResponse() (response *ModifyAccessRulesResponse) {
     return
 }
 
-// 批量修改权限规则属性，需要指定权限规则ID。
+// 批量修改权限规则属性，需要指定权限规则ID，支持修改权限规则地址、访问模式和优先级。
 func (c *Client) ModifyAccessRules(request *ModifyAccessRulesRequest) (response *ModifyAccessRulesResponse, err error) {
     if request == nil {
         request = NewModifyAccessRulesRequest()
@@ -468,6 +618,31 @@ func (c *Client) ModifyFileSystem(request *ModifyFileSystemRequest) (response *M
     return
 }
 
+func NewModifyLifeCycleRulesRequest() (request *ModifyLifeCycleRulesRequest) {
+    request = &ModifyLifeCycleRulesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("chdfs", APIVersion, "ModifyLifeCycleRules")
+    return
+}
+
+func NewModifyLifeCycleRulesResponse() (response *ModifyLifeCycleRulesResponse) {
+    response = &ModifyLifeCycleRulesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 批量修改生命周期规则属性，需要指定生命周期规则ID，支持修改生命周期规则名称、路径、转换列表和状态。
+func (c *Client) ModifyLifeCycleRules(request *ModifyLifeCycleRulesRequest) (response *ModifyLifeCycleRulesResponse, err error) {
+    if request == nil {
+        request = NewModifyLifeCycleRulesRequest()
+    }
+    response = NewModifyLifeCycleRulesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyMountPointRequest() (request *ModifyMountPointRequest) {
     request = &ModifyMountPointRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -489,6 +664,31 @@ func (c *Client) ModifyMountPoint(request *ModifyMountPointRequest) (response *M
         request = NewModifyMountPointRequest()
     }
     response = NewModifyMountPointResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyResourceTagsRequest() (request *ModifyResourceTagsRequest) {
+    request = &ModifyResourceTagsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("chdfs", APIVersion, "ModifyResourceTags")
+    return
+}
+
+func NewModifyResourceTagsResponse() (response *ModifyResourceTagsResponse) {
+    response = &ModifyResourceTagsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 修改资源标签列表，全量覆盖。
+func (c *Client) ModifyResourceTags(request *ModifyResourceTagsRequest) (response *ModifyResourceTagsResponse, err error) {
+    if request == nil {
+        request = NewModifyResourceTagsRequest()
+    }
+    response = NewModifyResourceTagsResponse()
     err = c.Send(request, response)
     return
 }

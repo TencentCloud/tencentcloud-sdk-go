@@ -1509,12 +1509,6 @@ type DescribeZonesResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 可用区数量。
-		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
-
-		// 可用区列表信息。
-		ZoneSet []*ZoneInfo `json:"ZoneSet,omitempty" name:"ZoneSet" list`
-
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
@@ -4142,62 +4136,4 @@ type VirtualPrivateCloud struct {
 
 	// 为弹性网卡指定随机生成的 IPv6 地址数量。
 	Ipv6AddressCount *uint64 `json:"Ipv6AddressCount,omitempty" name:"Ipv6AddressCount"`
-}
-
-type ZoneInfo struct {
-
-	// 可用区名称，例如，ap-guangzhou-3
-	// 全网可用区名称如下：
-	// <li> ap-chongqing-1 </li>
-	// <li> ap-seoul-1 </li>
-	// <li> ap-chengdu-1 </li>
-	// <li> ap-chengdu-2 </li>
-	// <li> ap-hongkong-1 </li>
-	// <li> ap-hongkong-2 </li>
-	// <li> ap-shenzhen-fsi-1 </li>
-	// <li> ap-shenzhen-fsi-2 </li>
-	// <li> ap-shenzhen-fsi-3 </li>
-	// <li> ap-guangzhou-1（售罄）</li>
-	// <li> ap-guangzhou-2（售罄）</li>
-	// <li> ap-guangzhou-3 </li>
-	// <li> ap-guangzhou-4 </li>
-	// <li> ap-guangzhou-6 </li>
-	// <li> ap-tokyo-1 </li>
-	// <li> ap-singapore-1 </li>
-	// <li> ap-singapore-2 </li>
-	// <li> ap-shanghai-fsi-1 </li>
-	// <li> ap-shanghai-fsi-2 </li>
-	// <li> ap-shanghai-fsi-3 </li>
-	// <li> ap-bangkok-1 </li>
-	// <li> ap-shanghai-1（售罄） </li>
-	// <li> ap-shanghai-2 </li>
-	// <li> ap-shanghai-3 </li>
-	// <li> ap-shanghai-4 </li>
-	// <li> ap-shanghai-5 </li>
-	// <li> ap-mumbai-1 </li>
-	// <li> ap-mumbai-2 </li>
-	// <li> eu-moscow-1 </li>
-	// <li> ap-beijing-1 </li>
-	// <li> ap-beijing-2 </li>
-	// <li> ap-beijing-3 </li>
-	// <li> ap-beijing-4 </li>
-	// <li> ap-beijing-5 </li>
-	// <li> na-siliconvalley-1 </li>
-	// <li> na-siliconvalley-2 </li>
-	// <li> eu-frankfurt-1 </li>
-	// <li> na-toronto-1 </li>
-	// <li> na-ashburn-1 </li>
-	// <li> na-ashburn-2 </li>
-	// <li> ap-nanjing-1 </li>
-	// <li> ap-nanjing-2 </li>
-	Zone *string `json:"Zone,omitempty" name:"Zone"`
-
-	// 可用区描述，例如，广州三区
-	ZoneName *string `json:"ZoneName,omitempty" name:"ZoneName"`
-
-	// 可用区ID
-	ZoneId *string `json:"ZoneId,omitempty" name:"ZoneId"`
-
-	// 可用区状态，包含AVAILABLE和UNAVAILABLE。AVAILABLE代表可用，UNAVAILABLE代表不可用。
-	ZoneState *string `json:"ZoneState,omitempty" name:"ZoneState"`
 }

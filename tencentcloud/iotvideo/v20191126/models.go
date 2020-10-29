@@ -1579,6 +1579,41 @@ func (r *DescribeModelDataRetResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeOsListRequest struct {
+	*tchttp.BaseRequest
+}
+
+func (r *DescribeOsListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeOsListRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeOsListResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 系统类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Data *SystemType `json:"Data,omitempty" name:"Data"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeOsListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeOsListResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeOtaVersionsRequest struct {
 	*tchttp.BaseRequest
 
@@ -2383,6 +2418,52 @@ func (r *ModifyProductResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type ModifyVerContentRequest struct {
+	*tchttp.BaseRequest
+
+	// 产品id,大于0的有符号长整型
+	ProductId *int64 `json:"ProductId,omitempty" name:"ProductId"`
+
+	// 需要修改的版本号
+	OtaVersion *string `json:"OtaVersion,omitempty" name:"OtaVersion"`
+
+	// 操作人,字符长度<=64
+	Operator *string `json:"Operator,omitempty" name:"Operator"`
+
+	// 备注信息
+	Remark *string `json:"Remark,omitempty" name:"Remark"`
+
+	// 版本发布的描述信息，需要国际化，可以为空
+	Contents *Contents `json:"Contents,omitempty" name:"Contents"`
+}
+
+func (r *ModifyVerContentRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyVerContentRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyVerContentResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifyVerContentResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyVerContentResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type MsgQueueData struct {
 
 	// 消息队列类型 1：CMQ 2：kafka
@@ -2399,6 +2480,17 @@ type MsgQueueData struct {
 
 	// 消息地域
 	MsgRegion *string `json:"MsgRegion,omitempty" name:"MsgRegion"`
+}
+
+type OsData struct {
+
+	// 芯片型号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ChipId *string `json:"ChipId,omitempty" name:"ChipId"`
+
+	// 芯片厂商
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ChipManufacture *string `json:"ChipManufacture,omitempty" name:"ChipManufacture"`
 }
 
 type OtaPubHistory struct {
@@ -2925,6 +3017,21 @@ type StorageOrder struct {
 
 	// 定单服务失效时间
 	EndTime *int64 `json:"EndTime,omitempty" name:"EndTime"`
+}
+
+type SystemType struct {
+
+	// 安卓系统
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Android []*OsData `json:"Android,omitempty" name:"Android" list`
+
+	// linux系统
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Linux []*OsData `json:"Linux,omitempty" name:"Linux" list`
+
+	// LiteOs系统
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LiteOs []*OsData `json:"LiteOs,omitempty" name:"LiteOs" list`
 }
 
 type TraceStatus struct {
