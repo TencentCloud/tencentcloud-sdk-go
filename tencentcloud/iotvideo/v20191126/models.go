@@ -148,6 +148,9 @@ type CreateAppUsrRequest struct {
 
 	// 标识用户的唯一ID，防止同一个用户多次注册
 	CunionId *string `json:"CunionId,omitempty" name:"CunionId"`
+
+	// 用于小程序关联手机号
+	Mobile *string `json:"Mobile,omitempty" name:"Mobile"`
 }
 
 func (r *CreateAppUsrRequest) ToJsonString() string {

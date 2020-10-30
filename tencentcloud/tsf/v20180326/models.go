@@ -3335,6 +3335,9 @@ type DescribeImageRepositoryResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
+		// 查询的权限数据对象
+		Result *ImageRepositoryResult `json:"Result,omitempty" name:"Result"`
+
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
@@ -4903,6 +4906,68 @@ type HealthCheckSettings struct {
 	// 就绪健康检查
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ReadinessProbe *HealthCheckSetting `json:"ReadinessProbe,omitempty" name:"ReadinessProbe"`
+}
+
+type ImageRepository struct {
+
+	// 仓库名,含命名空间,如tsf/nginx
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Reponame *string `json:"Reponame,omitempty" name:"Reponame"`
+
+	// 仓库类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Repotype *string `json:"Repotype,omitempty" name:"Repotype"`
+
+	// 镜像版本数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TagCount *int64 `json:"TagCount,omitempty" name:"TagCount"`
+
+	// 是否公共,1:公有,0:私有
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsPublic *int64 `json:"IsPublic,omitempty" name:"IsPublic"`
+
+	// 是否被用户收藏。true：是，false：否
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsUserFavor *bool `json:"IsUserFavor,omitempty" name:"IsUserFavor"`
+
+	// 是否是腾讯云官方仓库。 是否是腾讯云官方仓库。true：是，false：否
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsQcloudOfficial *bool `json:"IsQcloudOfficial,omitempty" name:"IsQcloudOfficial"`
+
+	// 被所有用户收藏次数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FavorCount *int64 `json:"FavorCount,omitempty" name:"FavorCount"`
+
+	// 拉取次数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PullCount *int64 `json:"PullCount,omitempty" name:"PullCount"`
+
+	// 描述内容
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Description *string `json:"Description,omitempty" name:"Description"`
+
+	// 创建时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreationTime *string `json:"CreationTime,omitempty" name:"CreationTime"`
+
+	// 更新时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
+}
+
+type ImageRepositoryResult struct {
+
+	// 总记录数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 镜像服务器地址
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Server *string `json:"Server,omitempty" name:"Server"`
+
+	// 列表信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Content []*ImageRepository `json:"Content,omitempty" name:"Content" list`
 }
 
 type ImageTag struct {

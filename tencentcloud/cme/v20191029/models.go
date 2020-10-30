@@ -106,6 +106,27 @@ type AudioStreamInfo struct {
 	Codec *string `json:"Codec,omitempty" name:"Codec"`
 }
 
+type AudioTrackItem struct {
+
+	// 音频素材来源类型。取值有：
+	// <ul>
+	// <li>VOD ：素材来源 VOD 。</li>
+	// <li>CME ：视频来源 CME 。</li>
+	// </ul>
+	SourceType *string `json:"SourceType,omitempty" name:"SourceType"`
+
+	// 音频片段的媒体素材来源，可以是：
+	// <li>VOD 的媒体文件 ID 。</li>
+	// <li>CME 的素材 ID 。</li>
+	SourceMedia *string `json:"SourceMedia,omitempty" name:"SourceMedia"`
+
+	// 音频片段取自素材文件的起始时间，单位为秒。0 表示从素材开始位置截取。默认为0。
+	SourceMediaStartTime *float64 `json:"SourceMediaStartTime,omitempty" name:"SourceMediaStartTime"`
+
+	// 音频片段的时长，单位为秒。默认和素材本身长度一致，表示截取全部素材。
+	Duration *float64 `json:"Duration,omitempty" name:"Duration"`
+}
+
 type AuthorizationInfo struct {
 
 	// 被授权者实体。
@@ -289,6 +310,12 @@ type CreateProjectRequest struct {
 
 	// 导播台信息，仅当项目类型为 SWITCHER 时有效。
 	SwitcherProjectInput *SwitcherProjectInput `json:"SwitcherProjectInput,omitempty" name:"SwitcherProjectInput"`
+
+	// 直播剪辑信息，暂未开放，请勿使用。
+	LiveStreamClipProjectInput *LiveStreamClipProjectInput `json:"LiveStreamClipProjectInput,omitempty" name:"LiveStreamClipProjectInput"`
+
+	// 视频编辑信息。
+	VideoEditProjectInput *VideoEditProjectInput `json:"VideoEditProjectInput,omitempty" name:"VideoEditProjectInput"`
 }
 
 func (r *CreateProjectRequest) ToJsonString() string {
@@ -1169,6 +1196,12 @@ func (r *DescribeTeamsResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type EmptyTrackItem struct {
+
+	// 持续时间，单位为秒。
+	Duration *float64 `json:"Duration,omitempty" name:"Duration"`
+}
+
 type Entity struct {
 
 	// 类型，取值有：
@@ -1663,6 +1696,15 @@ func (r *ListMediaResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type LiveStreamClipProjectInput struct {
+
+	// 直播流播放地址，目前仅支持 HLS 和 FLV 格式。
+	Url *string `json:"Url,omitempty" name:"Url"`
+
+	// 直播流录制时长，单位为秒，最大值为 7200。
+	StreamRecordDuration *uint64 `json:"StreamRecordDuration,omitempty" name:"StreamRecordDuration"`
+}
+
 type LoginStatusInfo struct {
 
 	// 用户 Id。
@@ -1795,6 +1837,38 @@ type MediaMetaData struct {
 
 	// 音频流信息。
 	AudioStreamInfoSet []*AudioStreamInfo `json:"AudioStreamInfoSet,omitempty" name:"AudioStreamInfoSet" list`
+}
+
+type MediaTrack struct {
+
+	// 轨道类型，取值有：
+	// <ul>
+	// <li>Video ：视频轨道。视频轨道由以下 Item 组成：<ul><li>VideoTrackItem</li><li>EmptyTrackItem</li></ul> </li>
+	// <li>Audio ：音频轨道。音频轨道由以下 Item 组成：<ul><li>AudioTrackItem</li><li>EmptyTrackItem</li></ul> </li>
+	// </ul>
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 轨道上的媒体片段列表。
+	TrackItems []*MediaTrackItem `json:"TrackItems,omitempty" name:"TrackItems" list`
+}
+
+type MediaTrackItem struct {
+
+	// 片段类型。取值有：
+	// <li>Video：视频片段。</li>
+	// <li>Audio：音频片段。</li>
+	// <li>Empty：空白片段。</li>
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 视频片段，当 Type = Video 时有效。
+	VideoItem *VideoTrackItem `json:"VideoItem,omitempty" name:"VideoItem"`
+
+	// 音频片段，当 Type = Audio 时有效。
+	AudioItem *AudioTrackItem `json:"AudioItem,omitempty" name:"AudioItem"`
+
+	// 空白片段，当 Type = Empty 时有效。空片段用于时间轴的占位。<li>如需要两个音频片段之间有一段时间的静音，可以用 EmptyTrackItem 来进行占位。</li>
+	// <li>使用 EmptyTrackItem 进行占位，来定位某个Item。</li>
+	EmptyItem *EmptyTrackItem `json:"EmptyItem,omitempty" name:"EmptyItem"`
 }
 
 type ModifyMaterialRequest struct {
@@ -2330,6 +2404,12 @@ type VODExportInfo struct {
 	ClassId *uint64 `json:"ClassId,omitempty" name:"ClassId"`
 }
 
+type VideoEditProjectInput struct {
+
+	// 输入的媒体轨道列表，包括视频、音频，等素材组成的多个轨道信息，其中：<li>输入的多个轨道在时间轴上和输出媒体文件的时间轴对齐；</li><li>时间轴上相同时间点的各个轨道的素材进行重叠，视频或者图片按轨道顺序进行图像的叠加，轨道顺序高的素材叠加在上面，音频素材进行混音；</li><li>视频、音频，每一种类型的轨道最多支持10个。</li>
+	InitTracks []*MediaTrack `json:"InitTracks,omitempty" name:"InitTracks" list`
+}
+
 type VideoEditProjectOutput struct {
 
 	// 导出的云剪素材 MaterialId，仅当导出为云剪素材时有效。
@@ -2390,4 +2470,58 @@ type VideoStreamInfo struct {
 
 	// 帧率，单位：hz。
 	Fps *uint64 `json:"Fps,omitempty" name:"Fps"`
+}
+
+type VideoTrackItem struct {
+
+	// 视频素材来源类型。取值有：
+	// <ul>
+	// <li>VOD ：素材来源 VOD 。</li>
+	// <li>CME ：视频来源 CME 。</li>
+	// </ul>
+	SourceType *string `json:"SourceType,omitempty" name:"SourceType"`
+
+	// 视频片段的媒体素材来源，可以是：
+	// <li>VOD 的媒体文件 ID 。</li>
+	// <li>CME 的素材 ID 。</li>
+	SourceMedia *string `json:"SourceMedia,omitempty" name:"SourceMedia"`
+
+	// 视频片段取自素材文件的起始时间，单位为秒。默认为0。
+	SourceMediaStartTime *float64 `json:"SourceMediaStartTime,omitempty" name:"SourceMediaStartTime"`
+
+	// 视频片段时长，单位为秒。默认取视频素材本身长度，表示截取全部素材。如果源文件是图片，Duration需要大于0。
+	Duration *float64 `json:"Duration,omitempty" name:"Duration"`
+
+	// 视频片段原点距离画布原点的水平位置。支持 %、px 两种格式：
+	// <li>当字符串以 % 结尾，表示视频片段 XPos 为画布宽度指定百分比的位置，如 10% 表示 XPos 为画布口宽度的 10%。</li>
+	// <li>当字符串以 px 结尾，表示视频片段 XPos 单位为像素，如 100px 表示 XPos 为100像素。</li>
+	// 默认值：0px。
+	XPos *string `json:"XPos,omitempty" name:"XPos"`
+
+	// 视频片段原点距离画布原点的垂直位置。支持 %、px 两种格式：
+	// <li>当字符串以 % 结尾，表示视频片段 YPos 为画布高度指定百分比的位置，如 10% 表示 YPos 为画布高度的 10%。</li>
+	// <li>当字符串以 px 结尾，表示视频片段 YPos 单位为像素，如 100px 表示 YPos 为100像素。</li>
+	// 默认值：0px。
+	YPos *string `json:"YPos,omitempty" name:"YPos"`
+
+	// 视频原点位置，取值有：
+	// <li>Center：坐标原点为中心位置，如画布中心。</li>
+	// 默认值 ：Center。
+	CoordinateOrigin *string `json:"CoordinateOrigin,omitempty" name:"CoordinateOrigin"`
+
+	// 视频片段的高度。支持 %、px 两种格式：
+	// <li>当字符串以 % 结尾，表示视频片段 Height 为画布高度的百分比大小，如 10% 表示 Height 为画布高度的 10%；
+	// </li><li>当字符串以 px 结尾，表示视频片段 Height 单位为像素，如 100px 表示 Height 为100像素。</li>
+	// <li>当 Width、Height 均为空，则 Width 和 Height 取视频素材本身的 Width、Height。</li>
+	// <li>当 Width 为空，Height 非空，则 Width 按比例缩放</li>
+	// <li>当 Width 非空，Height 为空，则 Height 按比例缩放。</li>
+	Height *string `json:"Height,omitempty" name:"Height"`
+
+	// 视频片段的宽度。支持 %、px 两种格式：
+	// <li>当字符串以 % 结尾，表示视频片段 Width 为画布宽度的百分比大小，如 10% 表示 Width 为画布宽度的 10%。</li>
+	// <li>当字符串以 px 结尾，表示视频片段 Width 单位为像素，如 100px 表示 Width 为100像素。</li>
+	// <li>当 Width、Height 均为空，则 Width 和 Height 取视频素材本身的 Width、Height。</li>
+	// <li>当 Width 为空，Height 非空，则 Width 按比例缩放</li>
+	// <li>当 Width 非空，Height 为空，则 Height 按比例缩放。</li>
+	Width *string `json:"Width,omitempty" name:"Width"`
 }

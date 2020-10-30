@@ -2536,51 +2536,6 @@ type PassportOCRResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 国家码
-		Country *string `json:"Country,omitempty" name:"Country"`
-
-		// 护照号
-		PassportNo *string `json:"PassportNo,omitempty" name:"PassportNo"`
-
-		// 性别
-		Sex *string `json:"Sex,omitempty" name:"Sex"`
-
-		// 国籍
-		Nationality *string `json:"Nationality,omitempty" name:"Nationality"`
-
-		// 出生日期
-		BirthDate *string `json:"BirthDate,omitempty" name:"BirthDate"`
-
-		// 出生地点
-		BirthPlace *string `json:"BirthPlace,omitempty" name:"BirthPlace"`
-
-		// 签发日期
-		IssueDate *string `json:"IssueDate,omitempty" name:"IssueDate"`
-
-		// 签发地点
-		IssuePlace *string `json:"IssuePlace,omitempty" name:"IssuePlace"`
-
-		// 有效期
-		ExpiryDate *string `json:"ExpiryDate,omitempty" name:"ExpiryDate"`
-
-		// 持证人签名
-		Signature *string `json:"Signature,omitempty" name:"Signature"`
-
-		// 最下方第一行 MRZ Code 序列
-		CodeSet *string `json:"CodeSet,omitempty" name:"CodeSet"`
-
-		// 最下方第二行 MRZ Code 序列
-		CodeCrc *string `json:"CodeCrc,omitempty" name:"CodeCrc"`
-
-		// 姓名
-		Name *string `json:"Name,omitempty" name:"Name"`
-
-		// 姓
-		FamilyName *string `json:"FamilyName,omitempty" name:"FamilyName"`
-
-		// 名
-		FirstName *string `json:"FirstName,omitempty" name:"FirstName"`
-
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
@@ -4794,6 +4749,9 @@ type WaybillOCRRequest struct {
 	// 图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。
 	// 非腾讯云存储的 Url 速度和稳定性可能受一定影响。
 	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
+
+	// 预检测开关，当待识别运单占整个输入图像的比例较小时，建议打开预检测开关。默认值为false。
+	EnablePreDetect *bool `json:"EnablePreDetect,omitempty" name:"EnablePreDetect"`
 }
 
 func (r *WaybillOCRRequest) ToJsonString() string {

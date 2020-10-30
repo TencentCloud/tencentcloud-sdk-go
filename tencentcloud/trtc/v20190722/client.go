@@ -268,6 +268,31 @@ func (c *Client) DescribeRoomInformation(request *DescribeRoomInformationRequest
     return
 }
 
+func NewDescribeUserInformationRequest() (request *DescribeUserInformationRequest) {
+    request = &DescribeUserInformationRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("trtc", APIVersion, "DescribeUserInformation")
+    return
+}
+
+func NewDescribeUserInformationResponse() (response *DescribeUserInformationResponse) {
+    response = &DescribeUserInformationResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询指定时间内的用户列表，可查询14天内数据。默认每页查询6个用户，支持每页最大查询100个用户PageSize不超过100）。
+func (c *Client) DescribeUserInformation(request *DescribeUserInformationRequest) (response *DescribeUserInformationResponse, err error) {
+    if request == nil {
+        request = NewDescribeUserInformationRequest()
+    }
+    response = NewDescribeUserInformationResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDismissRoomRequest() (request *DismissRoomRequest) {
     request = &DismissRoomRequest{
         BaseRequest: &tchttp.BaseRequest{},
