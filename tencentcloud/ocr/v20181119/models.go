@@ -3427,7 +3427,7 @@ type TableOCRResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 检测到的文本信息，具体内容请点击左侧链接。
+		// 检测到的文本信息，具体内容请点击左侧链接
 		TextDetections []*TextTable `json:"TextDetections,omitempty" name:"TextDetections" list`
 
 		// Base64 编码后的 Excel 数据。

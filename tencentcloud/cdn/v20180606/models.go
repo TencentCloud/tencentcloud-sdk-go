@@ -2980,6 +2980,43 @@ type DownstreamCapping struct {
 	CappingRules []*CappingRule `json:"CappingRules,omitempty" name:"CappingRules" list`
 }
 
+type DuplicateDomainConfigRequest struct {
+	*tchttp.BaseRequest
+
+	// 新增域名
+	Domain *string `json:"Domain,omitempty" name:"Domain"`
+
+	// 被拷贝配置的域名
+	ReferenceDomain *string `json:"ReferenceDomain,omitempty" name:"ReferenceDomain"`
+}
+
+func (r *DuplicateDomainConfigRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DuplicateDomainConfigRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DuplicateDomainConfigResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DuplicateDomainConfigResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DuplicateDomainConfigResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type EnableCachesRequest struct {
 	*tchttp.BaseRequest
 

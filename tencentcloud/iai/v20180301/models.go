@@ -2681,6 +2681,9 @@ func (r *VerifyFaceResponse) FromJsonString(s string) error {
 type VerifyPersonRequest struct {
 	*tchttp.BaseRequest
 
+	// 待验证的人员ID。人员ID具体信息请参考人员库管理相关接口。
+	PersonId *string `json:"PersonId,omitempty" name:"PersonId"`
+
 	// 图片 base64 数据。
 	// 若图片中包含多张人脸，只选取其中人脸面积最大的人脸。
 	// 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
@@ -2692,9 +2695,6 @@ type VerifyPersonRequest struct {
 	// 若图片中包含多张人脸，只选取其中人脸面积最大的人脸。
 	// 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
 	Url *string `json:"Url,omitempty" name:"Url"`
-
-	// 待验证的人员ID。人员ID具体信息请参考人员库管理相关接口。
-	PersonId *string `json:"PersonId,omitempty" name:"PersonId"`
 
 	// 图片质量控制。 
 	// 0: 不进行控制； 
@@ -2722,15 +2722,6 @@ func (r *VerifyPersonRequest) FromJsonString(s string) error {
 type VerifyPersonResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
-
-		// 给定的人脸照片与 PersonId 对应的相似度。若 PersonId 下有多张人脸（Face），会融合多张人脸信息进行验证。
-		Score *float64 `json:"Score,omitempty" name:"Score"`
-
-		// 是否为同一人的判断。
-		IsMatch *bool `json:"IsMatch,omitempty" name:"IsMatch"`
-
-		// 人脸识别所用的算法模型版本。
-		FaceModelVersion *string `json:"FaceModelVersion,omitempty" name:"FaceModelVersion"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`

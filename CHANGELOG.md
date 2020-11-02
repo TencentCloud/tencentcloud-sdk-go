@@ -1,39 +1,10 @@
 # 本版本更新包含以下内容：
 
-## 腾讯云剪(cme) 版本：2019-10-29
+## 云数据库 MySQL(cdb) 版本：2017-03-20
 
-### 第 15 次发布
+### 第 48 次发布
 
-发布时间：2020-10-30 08:01:35
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [CreateProject](https://cloud.tencent.com/document/api/1156/40350)
-
-	* 新增入参：LiveStreamClipProjectInput, VideoEditProjectInput
-
-
-新增数据结构：
-
-* [AudioTrackItem](https://cloud.tencent.com/document/api/1156/40360#AudioTrackItem)
-* [EmptyTrackItem](https://cloud.tencent.com/document/api/1156/40360#EmptyTrackItem)
-* [LiveStreamClipProjectInput](https://cloud.tencent.com/document/api/1156/40360#LiveStreamClipProjectInput)
-* [MediaTrack](https://cloud.tencent.com/document/api/1156/40360#MediaTrack)
-* [MediaTrackItem](https://cloud.tencent.com/document/api/1156/40360#MediaTrackItem)
-* [VideoEditProjectInput](https://cloud.tencent.com/document/api/1156/40360#VideoEditProjectInput)
-* [VideoTrackItem](https://cloud.tencent.com/document/api/1156/40360#VideoTrackItem)
-
-
-
-## 物联网智能视频服务(iotvideo) 版本：2019-11-26
-
-### 第 15 次发布
-
-发布时间：2020-10-30 08:00:58
+发布时间：2020-11-02 08:02:23
 
 本次发布包含了以下内容：
 
@@ -41,18 +12,26 @@
 
 修改接口：
 
-* [CreateAppUsr](https://cloud.tencent.com/document/api/1131/42370)
+* [CreateDBInstance](https://cloud.tencent.com/document/api/236/15871)
 
-	* 新增入参：Mobile
+	* 新增入参：ParamTemplateId, AlarmPolicyList
+
+* [CreateDBInstanceHour](https://cloud.tencent.com/document/api/236/15865)
+
+	* 新增入参：ParamTemplateId, AlarmPolicyList
+
+* [DescribeProjectSecurityGroups](https://cloud.tencent.com/document/api/236/15850)
+
+	* <font color="#dd0000">**修改入参**：</font>ProjectId
 
 
 
 
-## 游戏联机对战引擎(mgobe) 版本：2020-10-14
+## 内容分发网络(cdn) 版本：2018-06-06
 
-### 第 1 次发布
+### 第 43 次发布
 
-发布时间：2020-10-30 08:00:07
+发布时间：2020-11-02 08:02:41
 
 本次发布包含了以下内容：
 
@@ -60,19 +39,15 @@
 
 新增接口：
 
-* [DismissRoom](https://cloud.tencent.com/document/api/1038/49557)
+* [DuplicateDomainConfig](https://cloud.tencent.com/document/api/228/49592)
 
 
 
-## 游戏联机对战引擎(mgobe) 版本：2019-09-29
+## 人脸识别(iai) 版本：2020-03-03
 
+### 第 6 次发布
 
-
-## 文字识别(ocr) 版本：2018-11-19
-
-### 第 38 次发布
-
-发布时间：2020-10-30 08:05:20
+发布时间：2020-11-02 08:04:13
 
 本次发布包含了以下内容：
 
@@ -80,38 +55,20 @@
 
 修改接口：
 
-* [PassportOCR](https://cloud.tencent.com/document/api/866/37840)
+* [VerifyPerson](https://cloud.tencent.com/document/api/867/44982)
 
-	* <font color="#dd0000">**删除出参**：</font>Country, PassportNo, Sex, Nationality, BirthDate, BirthPlace, IssueDate, IssuePlace, ExpiryDate, Signature, CodeSet, CodeCrc, Name, FamilyName, FirstName
+	* <font color="#dd0000">**修改入参**：</font>PersonId
 
-* [WaybillOCR](https://cloud.tencent.com/document/api/866/34934)
-
-	* 新增入参：EnablePreDetect
+	* <font color="#dd0000">**删除出参**：</font>Score, IsMatch, FaceModelVersion
 
 
 
 
-## 实时音视频(trtc) 版本：2019-07-22
+## 人脸识别(iai) 版本：2018-03-01
 
-### 第 16 次发布
+### 第 18 次发布
 
-发布时间：2020-10-30 08:07:31
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [DescribeUserInformation](https://cloud.tencent.com/document/api/647/49568)
-
-
-
-## 腾讯微服务平台 TSF(tsf) 版本：2018-03-26
-
-### 第 34 次发布
-
-发布时间：2020-10-30 08:06:35
+发布时间：2020-11-02 08:04:13
 
 本次发布包含了以下内容：
 
@@ -119,15 +76,31 @@
 
 修改接口：
 
-* [DescribeImageRepository](https://cloud.tencent.com/document/api/649/49526)
+* [VerifyPerson](https://cloud.tencent.com/document/api/867/38879)
 
-	* 新增出参：Result
+	* <font color="#dd0000">**修改入参**：</font>PersonId
+
+	* <font color="#dd0000">**删除出参**：</font>Score, IsMatch, FaceModelVersion
 
 
-新增数据结构：
 
-* [ImageRepository](https://cloud.tencent.com/document/api/649/36099#ImageRepository)
-* [ImageRepositoryResult](https://cloud.tencent.com/document/api/649/36099#ImageRepositoryResult)
+
+## 语音合成(tts) 版本：2019-08-23
+
+### 第 3 次发布
+
+发布时间：2020-11-02 08:06:55
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [TextToVoice](https://cloud.tencent.com/document/api/1073/37995)
+
+	* 新增出参：Audio, SessionId
+
 
 
 
@@ -5409,6 +5382,29 @@
 
 ## 云数据库 MySQL(cdb) 版本：2017-03-20
 
+### 第 48 次发布
+
+发布时间：2020-11-02 08:02:23
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateDBInstance](https://cloud.tencent.com/document/api/236/15871)
+
+	* 新增入参：ParamTemplateId, AlarmPolicyList
+
+* [CreateDBInstanceHour](https://cloud.tencent.com/document/api/236/15865)
+
+	* 新增入参：ParamTemplateId, AlarmPolicyList
+
+* [DescribeProjectSecurityGroups](https://cloud.tencent.com/document/api/236/15850)
+
+	* <font color="#dd0000">**修改入参**：</font>ProjectId
+
+
 ### 第 47 次发布
 
 发布时间：2020-10-23 08:03:07
@@ -6414,6 +6410,18 @@
 
 
 ## 内容分发网络(cdn) 版本：2018-06-06
+
+### 第 43 次发布
+
+发布时间：2020-11-02 08:02:41
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DuplicateDomainConfig](https://cloud.tencent.com/document/api/228/49592)](https://cloud.tencent.com/document/api/#/#)
 
 ### 第 42 次发布
 
@@ -9097,13 +9105,13 @@
 
 新增数据结构：
 
-* [[AudioTrackItem](https://cloud.tencent.com/document/api/1156/40360#AudioTrackItem)](https://cloud.tencent.com/document/api/1156/40360#[AudioTrackItem](https://cloud.tencent.com/document/api/1156/40360#AudioTrackItem))
-* [[EmptyTrackItem](https://cloud.tencent.com/document/api/1156/40360#EmptyTrackItem)](https://cloud.tencent.com/document/api/1156/40360#[EmptyTrackItem](https://cloud.tencent.com/document/api/1156/40360#EmptyTrackItem))
-* [[LiveStreamClipProjectInput](https://cloud.tencent.com/document/api/1156/40360#LiveStreamClipProjectInput)](https://cloud.tencent.com/document/api/1156/40360#[LiveStreamClipProjectInput](https://cloud.tencent.com/document/api/1156/40360#LiveStreamClipProjectInput))
-* [[MediaTrack](https://cloud.tencent.com/document/api/1156/40360#MediaTrack)](https://cloud.tencent.com/document/api/1156/40360#[MediaTrack](https://cloud.tencent.com/document/api/1156/40360#MediaTrack))
-* [[MediaTrackItem](https://cloud.tencent.com/document/api/1156/40360#MediaTrackItem)](https://cloud.tencent.com/document/api/1156/40360#[MediaTrackItem](https://cloud.tencent.com/document/api/1156/40360#MediaTrackItem))
-* [[VideoEditProjectInput](https://cloud.tencent.com/document/api/1156/40360#VideoEditProjectInput)](https://cloud.tencent.com/document/api/1156/40360#[VideoEditProjectInput](https://cloud.tencent.com/document/api/1156/40360#VideoEditProjectInput))
-* [[VideoTrackItem](https://cloud.tencent.com/document/api/1156/40360#VideoTrackItem)](https://cloud.tencent.com/document/api/1156/40360#[VideoTrackItem](https://cloud.tencent.com/document/api/1156/40360#VideoTrackItem))
+* [AudioTrackItem](https://cloud.tencent.com/document/api/1156/40360#AudioTrackItem)
+* [EmptyTrackItem](https://cloud.tencent.com/document/api/1156/40360#EmptyTrackItem)
+* [LiveStreamClipProjectInput](https://cloud.tencent.com/document/api/1156/40360#LiveStreamClipProjectInput)
+* [MediaTrack](https://cloud.tencent.com/document/api/1156/40360#MediaTrack)
+* [MediaTrackItem](https://cloud.tencent.com/document/api/1156/40360#MediaTrackItem)
+* [VideoEditProjectInput](https://cloud.tencent.com/document/api/1156/40360#VideoEditProjectInput)
+* [VideoTrackItem](https://cloud.tencent.com/document/api/1156/40360#VideoTrackItem)
 
 ### 第 14 次发布
 
@@ -17656,6 +17664,23 @@
 
 ## 人脸识别(iai) 版本：2018-03-01
 
+### 第 18 次发布
+
+发布时间：2020-11-02 08:04:13
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [VerifyPerson](https://cloud.tencent.com/document/api/867/38879)
+
+	* <font color="#dd0000">**修改入参**：</font>PersonId
+
+	* <font color="#dd0000">**删除出参**：</font>Score, IsMatch, FaceModelVersion
+
+
 ### 第 17 次发布
 
 发布时间：2020-08-13 08:12:05
@@ -18099,6 +18124,23 @@
 
 
 ## 人脸识别(iai) 版本：2020-03-03
+
+### 第 6 次发布
+
+发布时间：2020-11-02 08:04:13
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [VerifyPerson](https://cloud.tencent.com/document/api/867/44982)
+
+	* <font color="#dd0000">**修改入参**：</font>PersonId
+
+	* <font color="#dd0000">**删除出参**：</font>Score, IsMatch, FaceModelVersion
+
 
 ### 第 5 次发布
 
@@ -22030,7 +22072,7 @@
 
 新增接口：
 
-* [[DismissRoom](https://cloud.tencent.com/document/api/1038/49557)](https://cloud.tencent.com/document/api/#/#)
+* [DismissRoom](https://cloud.tencent.com/document/api/1038/49557)
 
 
 
@@ -32004,7 +32046,7 @@
 
 新增接口：
 
-* [[DescribeUserInformation](https://cloud.tencent.com/document/api/647/49568)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeUserInformation](https://cloud.tencent.com/document/api/647/49568)
 
 ### 第 15 次发布
 
@@ -32269,8 +32311,8 @@
 
 新增数据结构：
 
-* [[ImageRepository](https://cloud.tencent.com/document/api/649/36099#ImageRepository)](https://cloud.tencent.com/document/api/649/36099#[ImageRepository](https://cloud.tencent.com/document/api/649/36099#ImageRepository))
-* [[ImageRepositoryResult](https://cloud.tencent.com/document/api/649/36099#ImageRepositoryResult)](https://cloud.tencent.com/document/api/649/36099#[ImageRepositoryResult](https://cloud.tencent.com/document/api/649/36099#ImageRepositoryResult))
+* [ImageRepository](https://cloud.tencent.com/document/api/649/36099#ImageRepository)
+* [ImageRepositoryResult](https://cloud.tencent.com/document/api/649/36099#ImageRepositoryResult)
 
 ### 第 33 次发布
 
@@ -33210,6 +33252,21 @@
 
 
 ## 语音合成(tts) 版本：2019-08-23
+
+### 第 3 次发布
+
+发布时间：2020-11-02 08:06:55
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [TextToVoice](https://cloud.tencent.com/document/api/1073/37995)
+
+	* 新增出参：Audio, SessionId
+
 
 ### 第 2 次发布
 

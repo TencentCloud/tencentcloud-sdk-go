@@ -894,6 +894,31 @@ func (c *Client) DisableClsLogTopic(request *DisableClsLogTopicRequest) (respons
     return
 }
 
+func NewDuplicateDomainConfigRequest() (request *DuplicateDomainConfigRequest) {
+    request = &DuplicateDomainConfigRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cdn", APIVersion, "DuplicateDomainConfig")
+    return
+}
+
+func NewDuplicateDomainConfigResponse() (response *DuplicateDomainConfigResponse) {
+    response = &DuplicateDomainConfigResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 拷贝参考域名的配置至新域名。暂不支持自有证书以及定制化配置
+func (c *Client) DuplicateDomainConfig(request *DuplicateDomainConfigRequest) (response *DuplicateDomainConfigResponse, err error) {
+    if request == nil {
+        request = NewDuplicateDomainConfigRequest()
+    }
+    response = NewDuplicateDomainConfigResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewEnableCachesRequest() (request *EnableCachesRequest) {
     request = &EnableCachesRequest{
         BaseRequest: &tchttp.BaseRequest{},

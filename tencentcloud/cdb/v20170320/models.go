@@ -885,6 +885,12 @@ type CreateDBInstanceHourRequest struct {
 
 	// 实例类型。支持值包括： "HA" - 高可用版实例， "BASIC" - 基础版实例。 不指定则默认为高可用版。
 	DeviceType *string `json:"DeviceType,omitempty" name:"DeviceType"`
+
+	// 参数模板id。
+	ParamTemplateId *int64 `json:"ParamTemplateId,omitempty" name:"ParamTemplateId"`
+
+	// 告警策略id数组。
+	AlarmPolicyList []*int64 `json:"AlarmPolicyList,omitempty" name:"AlarmPolicyList" list`
 }
 
 func (r *CreateDBInstanceHourRequest) ToJsonString() string {
@@ -1003,6 +1009,12 @@ type CreateDBInstanceRequest struct {
 
 	// 实例类型。支持值包括： "HA" - 高可用版实例， "BASIC" - 基础版实例。 不指定则默认为高可用版。
 	DeviceType *string `json:"DeviceType,omitempty" name:"DeviceType"`
+
+	// 参数模板id。
+	ParamTemplateId *int64 `json:"ParamTemplateId,omitempty" name:"ParamTemplateId"`
+
+	// 告警策略id数组。
+	AlarmPolicyList []*int64 `json:"AlarmPolicyList,omitempty" name:"AlarmPolicyList" list`
 }
 
 func (r *CreateDBInstanceRequest) ToJsonString() string {

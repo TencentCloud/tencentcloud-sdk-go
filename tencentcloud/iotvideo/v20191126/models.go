@@ -475,7 +475,7 @@ type CreateProductRequest struct {
 	// 接入模型，bit0是0：公版小程序未接入，bit0是1：公版小程序已接入
 	AccessMode *int64 `json:"AccessMode,omitempty" name:"AccessMode"`
 
-	// linux,android,liteos
+	// Linux,Android,Liteos等系统
 	Os *string `json:"Os,omitempty" name:"Os"`
 }
 
