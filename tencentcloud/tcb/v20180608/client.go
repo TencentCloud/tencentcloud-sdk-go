@@ -118,6 +118,56 @@ func (c *Client) CreateAuthDomain(request *CreateAuthDomainRequest) (response *C
     return
 }
 
+func NewCreateCloudBaseRunResourceRequest() (request *CreateCloudBaseRunResourceRequest) {
+    request = &CreateCloudBaseRunResourceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tcb", APIVersion, "CreateCloudBaseRunResource")
+    return
+}
+
+func NewCreateCloudBaseRunResourceResponse() (response *CreateCloudBaseRunResourceResponse) {
+    response = &CreateCloudBaseRunResourceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 开通容器托管的资源，包括集群创建，VPC配置，异步任务创建，镜像托管，Coding等，查看创建结果需要根据DescribeCloudBaseRunResource接口来查看
+func (c *Client) CreateCloudBaseRunResource(request *CreateCloudBaseRunResourceRequest) (response *CreateCloudBaseRunResourceResponse, err error) {
+    if request == nil {
+        request = NewCreateCloudBaseRunResourceRequest()
+    }
+    response = NewCreateCloudBaseRunResourceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateCloudBaseRunServerVersionRequest() (request *CreateCloudBaseRunServerVersionRequest) {
+    request = &CreateCloudBaseRunServerVersionRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tcb", APIVersion, "CreateCloudBaseRunServerVersion")
+    return
+}
+
+func NewCreateCloudBaseRunServerVersionResponse() (response *CreateCloudBaseRunServerVersionResponse) {
+    response = &CreateCloudBaseRunServerVersionResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 创建服务版本
+func (c *Client) CreateCloudBaseRunServerVersion(request *CreateCloudBaseRunServerVersionRequest) (response *CreateCloudBaseRunServerVersionResponse, err error) {
+    if request == nil {
+        request = NewCreateCloudBaseRunServerVersionRequest()
+    }
+    response = NewCreateCloudBaseRunServerVersionResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateHostingDomainRequest() (request *CreateHostingDomainRequest) {
     request = &CreateHostingDomainRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -614,6 +664,31 @@ func (c *Client) DestroyStaticStore(request *DestroyStaticStoreRequest) (respons
         request = NewDestroyStaticStoreRequest()
     }
     response = NewDestroyStaticStoreResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewEstablishCloudBaseRunServerRequest() (request *EstablishCloudBaseRunServerRequest) {
+    request = &EstablishCloudBaseRunServerRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tcb", APIVersion, "EstablishCloudBaseRunServer")
+    return
+}
+
+func NewEstablishCloudBaseRunServerResponse() (response *EstablishCloudBaseRunServerResponse) {
+    response = &EstablishCloudBaseRunServerResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 创建云应用服务
+func (c *Client) EstablishCloudBaseRunServer(request *EstablishCloudBaseRunServerRequest) (response *EstablishCloudBaseRunServerResponse, err error) {
+    if request == nil {
+        request = NewEstablishCloudBaseRunServerRequest()
+    }
+    response = NewEstablishCloudBaseRunServerResponse()
     err = c.Send(request, response)
     return
 }

@@ -55,6 +55,9 @@ type AddEcdnDomainRequest struct {
 
 	// 访问协议强制跳转配置。
 	ForceRedirect *ForceRedirect `json:"ForceRedirect,omitempty" name:"ForceRedirect"`
+
+	// 域名绑定的标签
+	Tag []*Tag `json:"Tag,omitempty" name:"Tag" list`
 }
 
 func (r *AddEcdnDomainRequest) ToJsonString() string {
@@ -729,6 +732,10 @@ type DomainDetailInfo struct {
 	// 域名锁定状态，normal、global 分别表示未被锁定，全球锁定。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Readonly *string `json:"Readonly,omitempty" name:"Readonly"`
+
+	// 域名标签
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Tag []*Tag `json:"Tag,omitempty" name:"Tag" list`
 }
 
 type DomainFilter struct {
@@ -1179,6 +1186,17 @@ func (r *StopEcdnDomainResponse) ToJsonString() string {
 
 func (r *StopEcdnDomainResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
+}
+
+type Tag struct {
+
+	// 标签键
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TagKey *string `json:"TagKey,omitempty" name:"TagKey"`
+
+	// 标签值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TagValue *string `json:"TagValue,omitempty" name:"TagValue"`
 }
 
 type TimestampData struct {

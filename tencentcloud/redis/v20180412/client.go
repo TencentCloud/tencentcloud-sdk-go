@@ -1218,6 +1218,31 @@ func (c *Client) ModifyAutoBackupConfig(request *ModifyAutoBackupConfigRequest) 
     return
 }
 
+func NewModifyConnectionConfigRequest() (request *ModifyConnectionConfigRequest) {
+    request = &ModifyConnectionConfigRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("redis", APIVersion, "ModifyConnectionConfig")
+    return
+}
+
+func NewModifyConnectionConfigResponse() (response *ModifyConnectionConfigResponse) {
+    response = &ModifyConnectionConfigResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 修改实例的连接配置，包括带宽和最大连接数
+func (c *Client) ModifyConnectionConfig(request *ModifyConnectionConfigRequest) (response *ModifyConnectionConfigResponse, err error) {
+    if request == nil {
+        request = NewModifyConnectionConfigRequest()
+    }
+    response = NewModifyConnectionConfigResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyDBInstanceSecurityGroupsRequest() (request *ModifyDBInstanceSecurityGroupsRequest) {
     request = &ModifyDBInstanceSecurityGroupsRequest{
         BaseRequest: &tchttp.BaseRequest{},

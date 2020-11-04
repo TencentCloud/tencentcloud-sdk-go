@@ -600,6 +600,48 @@ func (r *DescribeRulesResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeTokenRequest struct {
+	*tchttp.BaseRequest
+
+	// 匹配code
+	MatchCode *string `json:"MatchCode,omitempty" name:"MatchCode"`
+}
+
+func (r *DescribeTokenRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeTokenRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeTokenResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 当前的MatchCode对应的Token。如果当前MatchCode没有Token，该参数可能取不到有效值。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		MatchToken *string `json:"MatchToken,omitempty" name:"MatchToken"`
+
+		// 当Token被替换后，GPM将兼容推送原始Token的时间（秒）。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		CompatibleSpan *uint64 `json:"CompatibleSpan,omitempty" name:"CompatibleSpan"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeTokenResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeTokenResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type MTicket struct {
 
 	// 匹配Code
@@ -889,6 +931,53 @@ func (r *ModifyRuleResponse) ToJsonString() string {
 }
 
 func (r *ModifyRuleResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyTokenRequest struct {
+	*tchttp.BaseRequest
+
+	// 匹配Code。
+	MatchCode *string `json:"MatchCode,omitempty" name:"MatchCode"`
+
+	// 单位秒，取值0-1800。此参数表示当前Token被替换后，GPM将持续推送原Token的时间。在CompatibleSpan时间范围内，用户将在事件消息中收到当前和原始Token。
+	CompatibleSpan *uint64 `json:"CompatibleSpan,omitempty" name:"CompatibleSpan"`
+
+	// Token，[a-zA-Z0-9-_.], 长度0-64。如果为空，将由GPM随机生成。
+	MatchToken *string `json:"MatchToken,omitempty" name:"MatchToken"`
+}
+
+func (r *ModifyTokenRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyTokenRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyTokenResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 成功设置的Token。
+		MatchToken *string `json:"MatchToken,omitempty" name:"MatchToken"`
+
+		// 当前Token被替换后，GPM将持续推送原Token的时间。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		CompatibleSpan *uint64 `json:"CompatibleSpan,omitempty" name:"CompatibleSpan"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifyTokenResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyTokenResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 

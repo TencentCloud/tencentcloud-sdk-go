@@ -3573,6 +3573,9 @@ type ListDiagnoseReportRequest struct {
 
 	// 用于搜索诊断URL的关键字，不填时返回用户所有的诊断任务。
 	KeyWords *string `json:"KeyWords,omitempty" name:"KeyWords"`
+
+	// 用于搜索诊断系统返回的诊断链接，形如：http://cdn.cloud.tencent.com/self_diagnose/xxxxx
+	DiagnoseLink *string `json:"DiagnoseLink,omitempty" name:"DiagnoseLink"`
 }
 
 func (r *ListDiagnoseReportRequest) ToJsonString() string {

@@ -5974,6 +5974,31 @@ type OcrWordsConfigureInfoForUpdate struct {
 	LabelSet []*string `json:"LabelSet,omitempty" name:"LabelSet" list`
 }
 
+type OverrideTranscodeParameter struct {
+
+	// 封装格式，可选值：mp4、flv、hls、mp3、flac、ogg、m4a。其中，mp3、flac、ogg、m4a 为纯音频文件。
+	Container *string `json:"Container,omitempty" name:"Container"`
+
+	// 是否去除视频数据，取值：
+	// <li>0：保留；</li>
+	// <li>1：去除。</li>
+	RemoveVideo *uint64 `json:"RemoveVideo,omitempty" name:"RemoveVideo"`
+
+	// 是否去除音频数据，取值：
+	// <li>0：保留；</li>
+	// <li>1：去除。</li>
+	RemoveAudio *uint64 `json:"RemoveAudio,omitempty" name:"RemoveAudio"`
+
+	// 视频流配置参数。
+	VideoTemplate *VideoTemplateInfoForUpdate `json:"VideoTemplate,omitempty" name:"VideoTemplate"`
+
+	// 音频流配置参数。
+	AudioTemplate *AudioTemplateInfoForUpdate `json:"AudioTemplate,omitempty" name:"AudioTemplate"`
+
+	// 极速高清转码参数。
+	TEHDConfig *TEHDConfigForUpdate `json:"TEHDConfig,omitempty" name:"TEHDConfig"`
+}
+
 type ParseLiveStreamProcessNotificationRequest struct {
 	*tchttp.BaseRequest
 
@@ -7125,6 +7150,12 @@ type TranscodeTaskInput struct {
 	// 该参数用于高度定制场景，建议您优先使用 Definition 指定转码参数。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RawParameter *RawTranscodeParameter `json:"RawParameter,omitempty" name:"RawParameter"`
+
+	// 视频转码自定义参数，当 Definition 不填 0 时有效。
+	// 当填写了该结构中的部分转码参数时，将使用填写的参数覆盖转码模板中的参数。
+	// 该参数用于高度定制场景，建议您仅使用 Definition 指定转码参数。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OverrideParameter *OverrideTranscodeParameter `json:"OverrideParameter,omitempty" name:"OverrideParameter"`
 
 	// 水印列表，支持多张图片或文字水印，最大可支持 10 张。
 	// 注意：此字段可能返回 null，表示取不到有效值。

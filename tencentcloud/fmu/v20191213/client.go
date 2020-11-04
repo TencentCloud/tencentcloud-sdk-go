@@ -220,6 +220,56 @@ func (c *Client) QueryBeautifyVideoJob(request *QueryBeautifyVideoJobRequest) (r
     return
 }
 
+func NewStyleImageRequest() (request *StyleImageRequest) {
+    request = &StyleImageRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("fmu", APIVersion, "StyleImage")
+    return
+}
+
+func NewStyleImageResponse() (response *StyleImageResponse) {
+    response = &StyleImageResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 上传一张照片，输出滤镜处理后的图片。
+func (c *Client) StyleImage(request *StyleImageRequest) (response *StyleImageResponse, err error) {
+    if request == nil {
+        request = NewStyleImageRequest()
+    }
+    response = NewStyleImageResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewStyleImageProRequest() (request *StyleImageProRequest) {
+    request = &StyleImageProRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("fmu", APIVersion, "StyleImagePro")
+    return
+}
+
+func NewStyleImageProResponse() (response *StyleImageProResponse) {
+    response = &StyleImageProResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 上传一张照片，输出滤镜处理后的图片。
+func (c *Client) StyleImagePro(request *StyleImageProRequest) (response *StyleImageProResponse, err error) {
+    if request == nil {
+        request = NewStyleImageProRequest()
+    }
+    response = NewStyleImageProResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewTryLipstickPicRequest() (request *TryLipstickPicRequest) {
     request = &TryLipstickPicRequest{
         BaseRequest: &tchttp.BaseRequest{},

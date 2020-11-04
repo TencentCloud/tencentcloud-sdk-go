@@ -99,6 +99,37 @@ type CloudBaseCodeRepoName struct {
 	FullName *string `json:"FullName,omitempty" name:"FullName"`
 }
 
+type CloudBaseEsInfo struct {
+
+	// es的id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Id *int64 `json:"Id,omitempty" name:"Id"`
+
+	// secret名字
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SecretName *string `json:"SecretName,omitempty" name:"SecretName"`
+
+	// ip地址
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Ip *string `json:"Ip,omitempty" name:"Ip"`
+
+	// 端口
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Port *int64 `json:"Port,omitempty" name:"Port"`
+
+	// 索引
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Index *string `json:"Index,omitempty" name:"Index"`
+
+	// 用户名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Account *string `json:"Account,omitempty" name:"Account"`
+
+	// 密码
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Password *string `json:"Password,omitempty" name:"Password"`
+}
+
 type CloudBaseRunImageInfo struct {
 
 	// 镜像仓库名称
@@ -115,6 +146,48 @@ type CloudBaseRunImageInfo struct {
 
 	// 镜像拉取地址
 	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
+}
+
+type CloudBaseRunImageSecretInfo struct {
+
+	// 镜像地址
+	RegistryServer *string `json:"RegistryServer,omitempty" name:"RegistryServer"`
+
+	// 用户名
+	UserName *string `json:"UserName,omitempty" name:"UserName"`
+
+	// 仓库密码
+	Password *string `json:"Password,omitempty" name:"Password"`
+
+	// 邮箱
+	Email *string `json:"Email,omitempty" name:"Email"`
+}
+
+type CloudBaseRunNfsVolumeSource struct {
+
+	// NFS挂载Server
+	Server *string `json:"Server,omitempty" name:"Server"`
+
+	// Server路径
+	Path *string `json:"Path,omitempty" name:"Path"`
+
+	// 是否只读
+	ReadOnly *bool `json:"ReadOnly,omitempty" name:"ReadOnly"`
+}
+
+type CloudBaseRunVolumeMount struct {
+
+	// 资源名
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 挂载路径
+	MountPath *string `json:"MountPath,omitempty" name:"MountPath"`
+
+	// 是否只读
+	ReadOnly *bool `json:"ReadOnly,omitempty" name:"ReadOnly"`
+
+	// Nfs挂载信息
+	NfsVolumes []*CloudBaseRunNfsVolumeSource `json:"NfsVolumes,omitempty" name:"NfsVolumes" list`
 }
 
 type CloudRunServiceSimpleVersionSnapshot struct {
@@ -310,6 +383,179 @@ func (r *CreateAuthDomainResponse) ToJsonString() string {
 }
 
 func (r *CreateAuthDomainResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateCloudBaseRunResourceRequest struct {
+	*tchttp.BaseRequest
+
+	// 环境ID
+	EnvId *string `json:"EnvId,omitempty" name:"EnvId"`
+
+	// vpc的ID
+	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
+
+	// 子网ID列表，当VpcId不为空，SubnetIds也不能为空
+	SubnetIds []*string `json:"SubnetIds,omitempty" name:"SubnetIds" list`
+}
+
+func (r *CreateCloudBaseRunResourceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateCloudBaseRunResourceRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateCloudBaseRunResourceResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 返回集群创建是否成功 succ为成功。并且中间无err
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Result *string `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateCloudBaseRunResourceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateCloudBaseRunResourceResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateCloudBaseRunServerVersionRequest struct {
+	*tchttp.BaseRequest
+
+	// 环境ID
+	EnvId *string `json:"EnvId,omitempty" name:"EnvId"`
+
+	// 枚举（package/repository/image)
+	UploadType *string `json:"UploadType,omitempty" name:"UploadType"`
+
+	// 流量占比
+	FlowRatio *int64 `json:"FlowRatio,omitempty" name:"FlowRatio"`
+
+	// Cpu的大小，单位：核
+	Cpu *float64 `json:"Cpu,omitempty" name:"Cpu"`
+
+	// Mem的大小，单位：G
+	Mem *float64 `json:"Mem,omitempty" name:"Mem"`
+
+	// 最小副本数，最小值：0
+	MinNum *int64 `json:"MinNum,omitempty" name:"MinNum"`
+
+	// 副本最大数，最大值：50
+	MaxNum *int64 `json:"MaxNum,omitempty" name:"MaxNum"`
+
+	// 策略类型(枚举值：比如cpu)
+	PolicyType *string `json:"PolicyType,omitempty" name:"PolicyType"`
+
+	// 策略阈值
+	PolicyThreshold *int64 `json:"PolicyThreshold,omitempty" name:"PolicyThreshold"`
+
+	// 服务端口
+	ContainerPort *int64 `json:"ContainerPort,omitempty" name:"ContainerPort"`
+
+	// 服务名称
+	ServerName *string `json:"ServerName,omitempty" name:"ServerName"`
+
+	// repository的类型(coding/gitlab/github/coding)
+	RepositoryType *string `json:"RepositoryType,omitempty" name:"RepositoryType"`
+
+	// Dockerfile地址
+	DockerfilePath *string `json:"DockerfilePath,omitempty" name:"DockerfilePath"`
+
+	// 构建目录
+	BuildDir *string `json:"BuildDir,omitempty" name:"BuildDir"`
+
+	// 环境变量
+	EnvParams *string `json:"EnvParams,omitempty" name:"EnvParams"`
+
+	// repository地址
+	Repository *string `json:"Repository,omitempty" name:"Repository"`
+
+	// 分支
+	Branch *string `json:"Branch,omitempty" name:"Branch"`
+
+	// 版本备注
+	VersionRemark *string `json:"VersionRemark,omitempty" name:"VersionRemark"`
+
+	// 代码包名字
+	PackageName *string `json:"PackageName,omitempty" name:"PackageName"`
+
+	// 代码包的版本
+	PackageVersion *string `json:"PackageVersion,omitempty" name:"PackageVersion"`
+
+	// Image的详情
+	ImageInfo *CloudBaseRunImageInfo `json:"ImageInfo,omitempty" name:"ImageInfo"`
+
+	// Github等拉取代码的详情
+	CodeDetail *CloudBaseCodeRepoDetail `json:"CodeDetail,omitempty" name:"CodeDetail"`
+
+	// 私有镜像秘钥信息
+	ImageSecretInfo *CloudBaseRunImageSecretInfo `json:"ImageSecretInfo,omitempty" name:"ImageSecretInfo"`
+
+	// 私有镜像 认证名称
+	ImagePullSecret *string `json:"ImagePullSecret,omitempty" name:"ImagePullSecret"`
+
+	// 用户自定义采集日志路径
+	CustomLogs *string `json:"CustomLogs,omitempty" name:"CustomLogs"`
+
+	// 延迟多长时间开始健康检查（单位s）
+	InitialDelaySeconds *int64 `json:"InitialDelaySeconds,omitempty" name:"InitialDelaySeconds"`
+
+	// cfs挂载信息
+	MountVolumeInfo []*CloudBaseRunVolumeMount `json:"MountVolumeInfo,omitempty" name:"MountVolumeInfo" list`
+
+	// 4 代表只能微信链路访问
+	AccessType *int64 `json:"AccessType,omitempty" name:"AccessType"`
+
+	// es信息
+	EsInfo *CloudBaseEsInfo `json:"EsInfo,omitempty" name:"EsInfo"`
+
+	// 是否使用统一域名
+	EnableUnion *bool `json:"EnableUnion,omitempty" name:"EnableUnion"`
+}
+
+func (r *CreateCloudBaseRunServerVersionRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateCloudBaseRunServerVersionRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateCloudBaseRunServerVersionResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 状态(creating/succ)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Result *string `json:"Result,omitempty" name:"Result"`
+
+		// 版本名称（只有Result为succ的时候，才会返回VersionName)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		VersionName *string `json:"VersionName,omitempty" name:"VersionName"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateCloudBaseRunServerVersionResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateCloudBaseRunServerVersionResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -1423,6 +1669,58 @@ type EnvInfo struct {
 	// 环境所属地域
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Region *string `json:"Region,omitempty" name:"Region"`
+}
+
+type EstablishCloudBaseRunServerRequest struct {
+	*tchttp.BaseRequest
+
+	// 环境id
+	EnvId *string `json:"EnvId,omitempty" name:"EnvId"`
+
+	// 服务名称
+	ServiceName *string `json:"ServiceName,omitempty" name:"ServiceName"`
+
+	// 是否开通外网访问
+	IsPublic *bool `json:"IsPublic,omitempty" name:"IsPublic"`
+
+	// 镜像仓库
+	ImageRepo *string `json:"ImageRepo,omitempty" name:"ImageRepo"`
+
+	// 服务描述
+	Remark *string `json:"Remark,omitempty" name:"Remark"`
+
+	// es信息
+	EsInfo *CloudBaseEsInfo `json:"EsInfo,omitempty" name:"EsInfo"`
+
+	// 日志类型; es/cls
+	LogType *string `json:"LogType,omitempty" name:"LogType"`
+}
+
+func (r *EstablishCloudBaseRunServerRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *EstablishCloudBaseRunServerRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type EstablishCloudBaseRunServerResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *EstablishCloudBaseRunServerResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *EstablishCloudBaseRunServerResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
 }
 
 type FunctionInfo struct {

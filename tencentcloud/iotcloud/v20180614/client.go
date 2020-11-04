@@ -333,7 +333,7 @@ func NewCreateTopicRuleResponse() (response *CreateTopicRuleResponse) {
     return
 }
 
-// 本接口（CreateTopicRule）用于创建一个规则
+// 本接口（CreateTopicRule）用于创建一个规则 
 func (c *Client) CreateTopicRule(request *CreateTopicRuleRequest) (response *CreateTopicRuleResponse, err error) {
     if request == nil {
         request = NewCreateTopicRuleRequest()
@@ -1133,7 +1133,7 @@ func NewReplaceTopicRuleResponse() (response *ReplaceTopicRuleResponse) {
     return
 }
 
-// 本接口（ReplaceTopicRule）用于修改替换规则
+// 本接口（ReplaceTopicRule）用于修改替换规则 
 func (c *Client) ReplaceTopicRule(request *ReplaceTopicRuleRequest) (response *ReplaceTopicRuleResponse, err error) {
     if request == nil {
         request = NewReplaceTopicRuleRequest()

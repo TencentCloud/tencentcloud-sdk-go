@@ -317,6 +317,9 @@ type CreateInstancesRequest struct {
 
 	// 是否支持免密，true-免密实例，false-非免密实例，默认为非免密实例，仅VPC网络的实例支持免密码访问。
 	NoAuth *bool `json:"NoAuth,omitempty" name:"NoAuth"`
+
+	// 实例的节点信息，目前支持传入节点的类型（主节点或者副本节点），节点的可用区。单可用区部署不需要传递此参数。
+	NodeSet []*RedisNodeInfo `json:"NodeSet,omitempty" name:"NodeSet" list`
 }
 
 func (r *CreateInstancesRequest) ToJsonString() string {
@@ -2836,6 +2839,51 @@ func (r *ModifyAutoBackupConfigResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type ModifyConnectionConfigRequest struct {
+	*tchttp.BaseRequest
+
+	// 实例的ID，长度在12-36之间。
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 附加带宽，大于0，单位MB。
+	Bandwidth *int64 `json:"Bandwidth,omitempty" name:"Bandwidth"`
+
+	// 单分片的总连接数。
+	// 未开启副本只读时，下限为10000，上限为40000；
+	// 开启副本只读时，下限为10000，上限为10000×(只读副本数+3)。
+	ClientLimit *int64 `json:"ClientLimit,omitempty" name:"ClientLimit"`
+}
+
+func (r *ModifyConnectionConfigRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyConnectionConfigRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyConnectionConfigResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 任务ID
+		TaskId *int64 `json:"TaskId,omitempty" name:"TaskId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifyConnectionConfigResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyConnectionConfigResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type ModifyDBInstanceSecurityGroupsRequest struct {
 	*tchttp.BaseRequest
 
@@ -3270,6 +3318,18 @@ type RedisCommonInstanceList struct {
 
 	// 网络类型，0-基础网络，1-VPC网络
 	NetType *int64 `json:"NetType,omitempty" name:"NetType"`
+}
+
+type RedisNodeInfo struct {
+
+	// 节点类型，0 为主节点，1 为副本节点
+	NodeType *int64 `json:"NodeType,omitempty" name:"NodeType"`
+
+	// 主节点或者副本节点的可用区ID
+	ZoneId *uint64 `json:"ZoneId,omitempty" name:"ZoneId"`
+
+	// 主节点或者副本节点的ID，创建时不需要传递此参数。
+	NodeId *int64 `json:"NodeId,omitempty" name:"NodeId"`
 }
 
 type RedisNodes struct {

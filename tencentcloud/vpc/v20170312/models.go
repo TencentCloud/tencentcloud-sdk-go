@@ -1477,7 +1477,7 @@ type CreateAndAttachNetworkInterfaceRequest struct {
 	// 弹性网卡所在的子网实例ID，例如：subnet-0ap8nwca。
 	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
 
-	// 云主机实例ID。
+	// 云服务器实例ID。
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
 	// 指定的内网IP信息，单次最多指定10个。
@@ -1508,9 +1508,6 @@ func (r *CreateAndAttachNetworkInterfaceRequest) FromJsonString(s string) error 
 type CreateAndAttachNetworkInterfaceResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
-
-		// 弹性网卡实例。
-		NetworkInterface *NetworkInterface `json:"NetworkInterface,omitempty" name:"NetworkInterface"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -5828,6 +5825,46 @@ func (r *DescribeNetworkInterfacesResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeProductQuotaRequest struct {
+	*tchttp.BaseRequest
+
+	// 查询的网络产品名称，如vpc、ccn等
+	Product *string `json:"Product,omitempty" name:"Product"`
+}
+
+func (r *DescribeProductQuotaRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeProductQuotaRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeProductQuotaResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// ProductQuota对象数组
+		ProductQuotaSet []*ProductQuota `json:"ProductQuotaSet,omitempty" name:"ProductQuotaSet" list`
+
+		// 符合条件的产品类型个数
+		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeProductQuotaResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeProductQuotaResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeRouteConflictsRequest struct {
 	*tchttp.BaseRequest
 
@@ -7568,10 +7605,10 @@ type GatewayFlowMonitorDetail struct {
 	// 出包量。
 	OutPkg *uint64 `json:"OutPkg,omitempty" name:"OutPkg"`
 
-	// 入带宽，单位：`Byte`。
+	// 入流量，单位：`Byte`。
 	InTraffic *uint64 `json:"InTraffic,omitempty" name:"InTraffic"`
 
-	// 出带宽，单位：`Byte`。
+	// 出流量，单位：`Byte`。
 	OutTraffic *uint64 `json:"OutTraffic,omitempty" name:"OutTraffic"`
 }
 
@@ -9968,6 +10005,24 @@ type PrivateIpAddressSpecification struct {
 	// DELETING：删除中
 	// AVAILABLE：可用的
 	State *string `json:"State,omitempty" name:"State"`
+}
+
+type ProductQuota struct {
+
+	// 产品配额ID
+	QuotaId *string `json:"QuotaId,omitempty" name:"QuotaId"`
+
+	// 产品配额名称
+	QuotaName *string `json:"QuotaName,omitempty" name:"QuotaName"`
+
+	// 产品当前配额
+	QuotaCurrent *int64 `json:"QuotaCurrent,omitempty" name:"QuotaCurrent"`
+
+	// 产品配额上限
+	QuotaLimit *int64 `json:"QuotaLimit,omitempty" name:"QuotaLimit"`
+
+	// 产品配额是否有地域属性
+	QuotaRegion *bool `json:"QuotaRegion,omitempty" name:"QuotaRegion"`
 }
 
 type Quota struct {

@@ -289,10 +289,10 @@ type CheckCertificateChainResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 1为通过检查，0为未通过检查。
+		// true为通过检查，false为未通过检查。
 		IsValid *bool `json:"IsValid,omitempty" name:"IsValid"`
 
-		// 1为可信CA，0为不可信CA。
+		// true为可信CA，false为不可信CA。
 		IsTrustedCA *bool `json:"IsTrustedCA,omitempty" name:"IsTrustedCA"`
 
 		// 包含证书链中每一段证书的通用名称。

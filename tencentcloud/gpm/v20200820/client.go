@@ -343,6 +343,31 @@ func (c *Client) DescribeRules(request *DescribeRulesRequest) (response *Describ
     return
 }
 
+func NewDescribeTokenRequest() (request *DescribeTokenRequest) {
+    request = &DescribeTokenRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("gpm", APIVersion, "DescribeToken")
+    return
+}
+
+func NewDescribeTokenResponse() (response *DescribeTokenResponse) {
+    response = &DescribeTokenResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询匹配Token，Token用于push消息验证。
+func (c *Client) DescribeToken(request *DescribeTokenRequest) (response *DescribeTokenResponse, err error) {
+    if request == nil {
+        request = NewDescribeTokenRequest()
+    }
+    response = NewDescribeTokenResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyMatchRequest() (request *ModifyMatchRequest) {
     request = &ModifyMatchRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -389,6 +414,31 @@ func (c *Client) ModifyRule(request *ModifyRuleRequest) (response *ModifyRuleRes
         request = NewModifyRuleRequest()
     }
     response = NewModifyRuleResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyTokenRequest() (request *ModifyTokenRequest) {
+    request = &ModifyTokenRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("gpm", APIVersion, "ModifyToken")
+    return
+}
+
+func NewModifyTokenResponse() (response *ModifyTokenResponse) {
+    response = &ModifyTokenResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 修改匹配Token。
+func (c *Client) ModifyToken(request *ModifyTokenRequest) (response *ModifyTokenResponse, err error) {
+    if request == nil {
+        request = NewModifyTokenRequest()
+    }
+    response = NewModifyTokenResponse()
     err = c.Send(request, response)
     return
 }
