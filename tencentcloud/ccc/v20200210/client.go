@@ -68,6 +68,81 @@ func (c *Client) CreateSDKLoginToken(request *CreateSDKLoginTokenRequest) (respo
     return
 }
 
+func NewCreateStaffRequest() (request *CreateStaffRequest) {
+    request = &CreateStaffRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ccc", APIVersion, "CreateStaff")
+    return
+}
+
+func NewCreateStaffResponse() (response *CreateStaffResponse) {
+    response = &CreateStaffResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 创建客服账号。
+func (c *Client) CreateStaff(request *CreateStaffRequest) (response *CreateStaffResponse, err error) {
+    if request == nil {
+        request = NewCreateStaffRequest()
+    }
+    response = NewCreateStaffResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeChatMessagesRequest() (request *DescribeChatMessagesRequest) {
+    request = &DescribeChatMessagesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ccc", APIVersion, "DescribeChatMessages")
+    return
+}
+
+func NewDescribeChatMessagesResponse() (response *DescribeChatMessagesResponse) {
+    response = &DescribeChatMessagesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 包括具体聊天内容
+func (c *Client) DescribeChatMessages(request *DescribeChatMessagesRequest) (response *DescribeChatMessagesResponse, err error) {
+    if request == nil {
+        request = NewDescribeChatMessagesRequest()
+    }
+    response = NewDescribeChatMessagesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeIMCdrsRequest() (request *DescribeIMCdrsRequest) {
+    request = &DescribeIMCdrsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ccc", APIVersion, "DescribeIMCdrs")
+    return
+}
+
+func NewDescribeIMCdrsResponse() (response *DescribeIMCdrsResponse) {
+    response = &DescribeIMCdrsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 包括全媒体和文本两种类型
+func (c *Client) DescribeIMCdrs(request *DescribeIMCdrsRequest) (response *DescribeIMCdrsResponse, err error) {
+    if request == nil {
+        request = NewDescribeIMCdrsRequest()
+    }
+    response = NewDescribeIMCdrsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeTelCdrRequest() (request *DescribeTelCdrRequest) {
     request = &DescribeTelCdrRequest{
         BaseRequest: &tchttp.BaseRequest{},

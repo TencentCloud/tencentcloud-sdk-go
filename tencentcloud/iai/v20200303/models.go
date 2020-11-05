@@ -2810,6 +2810,15 @@ type VerifyPersonResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
+		// 给定的人脸照片与 PersonId 对应的相似度。若 PersonId 下有多张人脸（Face），会融合多张人脸信息进行验证。
+		Score *float64 `json:"Score,omitempty" name:"Score"`
+
+		// 是否为同一人的判断。
+		IsMatch *bool `json:"IsMatch,omitempty" name:"IsMatch"`
+
+		// 人脸识别所用的算法模型版本，是该 Person 所在的人员库的算法模型版本。在创建人员库时设置，详情可参考[算法模型版本](https://cloud.tencent.com/document/product/867/40042)
+		FaceModelVersion *string `json:"FaceModelVersion,omitempty" name:"FaceModelVersion"`
+
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`

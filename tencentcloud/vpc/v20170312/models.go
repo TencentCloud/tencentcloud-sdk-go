@@ -1509,6 +1509,9 @@ type CreateAndAttachNetworkInterfaceResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
+		// 弹性网卡实例。
+		NetworkInterface *NetworkInterface `json:"NetworkInterface,omitempty" name:"NetworkInterface"`
+
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`

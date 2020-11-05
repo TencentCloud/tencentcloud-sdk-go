@@ -2536,6 +2536,51 @@ type PassportOCRResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
+		// 国家码
+		Country *string `json:"Country,omitempty" name:"Country"`
+
+		// 护照号
+		PassportNo *string `json:"PassportNo,omitempty" name:"PassportNo"`
+
+		// 性别
+		Sex *string `json:"Sex,omitempty" name:"Sex"`
+
+		// 国籍
+		Nationality *string `json:"Nationality,omitempty" name:"Nationality"`
+
+		// 出生日期
+		BirthDate *string `json:"BirthDate,omitempty" name:"BirthDate"`
+
+		// 出生地点
+		BirthPlace *string `json:"BirthPlace,omitempty" name:"BirthPlace"`
+
+		// 签发日期
+		IssueDate *string `json:"IssueDate,omitempty" name:"IssueDate"`
+
+		// 签发地点
+		IssuePlace *string `json:"IssuePlace,omitempty" name:"IssuePlace"`
+
+		// 有效期
+		ExpiryDate *string `json:"ExpiryDate,omitempty" name:"ExpiryDate"`
+
+		// 持证人签名
+		Signature *string `json:"Signature,omitempty" name:"Signature"`
+
+		// 最下方第一行 MRZ Code 序列
+		CodeSet *string `json:"CodeSet,omitempty" name:"CodeSet"`
+
+		// 最下方第二行 MRZ Code 序列
+		CodeCrc *string `json:"CodeCrc,omitempty" name:"CodeCrc"`
+
+		// 姓名
+		Name *string `json:"Name,omitempty" name:"Name"`
+
+		// 姓
+		FamilyName *string `json:"FamilyName,omitempty" name:"FamilyName"`
+
+		// 名
+		FirstName *string `json:"FirstName,omitempty" name:"FirstName"`
+
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
@@ -2631,6 +2676,73 @@ type Polygon struct {
 
 	// 左下顶点坐标
 	LeftBottom *Coord `json:"LeftBottom,omitempty" name:"LeftBottom"`
+}
+
+type ProductDataRecord struct {
+
+	// 产品名称
+	ProductName *string `json:"ProductName,omitempty" name:"ProductName"`
+
+	// 产品名称(英文)
+	EnName *string `json:"EnName,omitempty" name:"EnName"`
+
+	// 品牌名称
+	BrandName *string `json:"BrandName,omitempty" name:"BrandName"`
+
+	// 规格型号
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 宽度，单位毫米
+	Width *string `json:"Width,omitempty" name:"Width"`
+
+	// 高度，单位毫米
+	Height *string `json:"Height,omitempty" name:"Height"`
+
+	// 深度，单位毫米
+	Depth *string `json:"Depth,omitempty" name:"Depth"`
+
+	// 关键字
+	KeyWord *string `json:"KeyWord,omitempty" name:"KeyWord"`
+
+	// 简短描述
+	Description *string `json:"Description,omitempty" name:"Description"`
+
+	// 图片链接
+	ImageLink []*string `json:"ImageLink,omitempty" name:"ImageLink" list`
+
+	// 厂家名称
+	ManufacturerName *string `json:"ManufacturerName,omitempty" name:"ManufacturerName"`
+
+	// 厂家地址
+	ManufacturerAddress *string `json:"ManufacturerAddress,omitempty" name:"ManufacturerAddress"`
+
+	// 企业社会信用代码
+	FirmCode *string `json:"FirmCode,omitempty" name:"FirmCode"`
+
+	// 表示数据查询状态
+	// checkResult	状态说明
+	// 1	 经查，该商品条码已在中国物品编码中心注册
+	// 2	经查，该厂商识别代码已在中国物品编码中心注册，但编码信息未按规定通报。
+	// 3	经查，该厂商识别代码已于xxxxx注销，请关注产品生产日期。
+	// 4	经查，该企业以及条码未经条码中心注册，属于违法使用
+	// -1	经查，该商品条码被冒用
+	// -2	经查，该厂商识别代码已在中国物品编码中心注册，但该产品已经下市
+	// S001                未找到该厂商识别代码的注册信息。
+	// S002		该厂商识别代码已经在GS1注册，但编码信息未通报
+	// S003		该商品条码已在GS1通报
+	// S004		该商品条码已注销
+	// S005		数字不正确。GS1前缀（3位国家/地区代码）用于特殊用途。
+	// E001		完整性失败：此GTIN的长度无效。
+	// E002		完整性失败：校验位不正确。
+	// E003		完整性失败：字符串包含字母数字字符。
+	// E004		数字不正确。GS1前缀（3位国家/地区代码）不存在。
+	// E005		数字不正确。GS1前缀（3位国家/地区代码）用于特殊用途。
+	// E006		数字不正确。尚未分配该GS1公司前缀。
+	// E008	        经查，该企业厂商识别代码以及条码尚未通报
+	CheckResult *string `json:"CheckResult,omitempty" name:"CheckResult"`
+
+	// UNSPSC分类码
+	CategoryCode *string `json:"CategoryCode,omitempty" name:"CategoryCode"`
 }
 
 type PropOwnerCertOCRRequest struct {
@@ -2795,6 +2907,12 @@ func (r *QueryBarCodeRequest) FromJsonString(s string) error {
 type QueryBarCodeResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
+
+		// 条码
+		BarCode *string `json:"BarCode,omitempty" name:"BarCode"`
+
+		// 条码信息数组
+		ProductDataRecords []*ProductDataRecord `json:"ProductDataRecords,omitempty" name:"ProductDataRecords" list`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`

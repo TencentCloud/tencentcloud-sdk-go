@@ -127,6 +127,30 @@ type CreateCfsFileSystemResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
+		// 文件系统创建时间
+		CreationTime *string `json:"CreationTime,omitempty" name:"CreationTime"`
+
+		// 用户自定义文件系统名称
+		CreationToken *string `json:"CreationToken,omitempty" name:"CreationToken"`
+
+		// 文件系统 ID
+		FileSystemId *string `json:"FileSystemId,omitempty" name:"FileSystemId"`
+
+		// 文件系统状态
+		LifeCycleState *string `json:"LifeCycleState,omitempty" name:"LifeCycleState"`
+
+		// 文件系统已使用容量大小
+		SizeByte *uint64 `json:"SizeByte,omitempty" name:"SizeByte"`
+
+		// 可用区 ID
+		ZoneId *uint64 `json:"ZoneId,omitempty" name:"ZoneId"`
+
+		// 用户自定义文件系统名称
+		FsName *string `json:"FsName,omitempty" name:"FsName"`
+
+		// 文件系统是否加密
+		Encrypted *bool `json:"Encrypted,omitempty" name:"Encrypted"`
+
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
