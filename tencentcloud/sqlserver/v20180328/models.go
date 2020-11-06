@@ -1232,7 +1232,7 @@ type DescribeBackupByFlowIdRequest struct {
 	// 实例ID，格式如：mssql-3l3fgqn7
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
-	// 创建备份流程ID
+	// 创建备份流程ID，可通过 [CreateBackup](https://cloud.tencent.com/document/product/238/19946) 接口获取
 	FlowId *string `json:"FlowId,omitempty" name:"FlowId"`
 }
 
@@ -1899,7 +1899,7 @@ func (r *DescribeProductConfigResponse) FromJsonString(s string) error {
 type DescribeProjectSecurityGroupsRequest struct {
 	*tchttp.BaseRequest
 
-	// 项目ID。
+	// 项目ID，可通过控制台项目管理中查看
 	ProjectId *int64 `json:"ProjectId,omitempty" name:"ProjectId"`
 }
 
@@ -2751,7 +2751,7 @@ type ModifyBackupNameRequest struct {
 	// 实例ID，格式如：mssql-3l3fgqn7
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
-	// 要修改名称的备份ID，可通过DescribeBackups 接口获取。
+	// 要修改名称的备份ID，可通过 [DescribeBackups](https://cloud.tencent.com/document/product/238/19943)  接口获取。
 	BackupId *uint64 `json:"BackupId,omitempty" name:"BackupId"`
 
 	// 修改的备份名称

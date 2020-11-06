@@ -269,6 +269,70 @@ func (r *CreateAssetResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type CreateAssetWithImageRequest struct {
+	*tchttp.BaseRequest
+
+	// 生成包名字，最小长度为1，最大长度为64
+	AssetName *string `json:"AssetName,omitempty" name:"AssetName"`
+
+	// 生成包版本，最小长度为1，最大长度为64
+	AssetVersion *string `json:"AssetVersion,omitempty" name:"AssetVersion"`
+
+	// 生成包所在地域，详见产品支持的 [地域列表](https://cloud.tencent.com/document/api/1165/42053#.E5.9C.B0.E5.9F.9F.E5.88.97.E8.A1.A8)
+	AssetRegion *string `json:"AssetRegion,omitempty" name:"AssetRegion"`
+
+	// 生成包支持的操作系统镜像id
+	ImageId *string `json:"ImageId,omitempty" name:"ImageId"`
+
+	// 操作系统镜像包大小，比如：40GB，支持单位 KB、MB、GB
+	ImageSize *string `json:"ImageSize,omitempty" name:"ImageSize"`
+
+	// 操作系统镜像包名称，最小长度为1，最大长度为64
+	ImageOs *string `json:"ImageOs,omitempty" name:"ImageOs"`
+
+	// 操作系统镜像包类型，CentOS 或者 Windows
+	OsType *string `json:"OsType,omitempty" name:"OsType"`
+
+	// 操作系统镜像包类型，当前只支持 SHARED_IMAGE
+	ImageType *string `json:"ImageType,omitempty" name:"ImageType"`
+
+	// 操作系统镜像包位数，32 或者 64
+	OsBit *uint64 `json:"OsBit,omitempty" name:"OsBit"`
+}
+
+func (r *CreateAssetWithImageRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateAssetWithImageRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateAssetWithImageResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 生成包ID
+		AssetId *string `json:"AssetId,omitempty" name:"AssetId"`
+
+		// 生成包的全局唯一资源标识符
+		AssetArn *string `json:"AssetArn,omitempty" name:"AssetArn"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateAssetWithImageResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateAssetWithImageResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type CreateFleetRequest struct {
 	*tchttp.BaseRequest
 

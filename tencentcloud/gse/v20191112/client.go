@@ -131,6 +131,31 @@ func (c *Client) CreateAsset(request *CreateAssetRequest) (response *CreateAsset
     return
 }
 
+func NewCreateAssetWithImageRequest() (request *CreateAssetWithImageRequest) {
+    request = &CreateAssetWithImageRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("gse", APIVersion, "CreateAssetWithImage")
+    return
+}
+
+func NewCreateAssetWithImageResponse() (response *CreateAssetWithImageResponse) {
+    response = &CreateAssetWithImageResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（CreateAssetWithImage）用于创建生成包镜像信息。
+func (c *Client) CreateAssetWithImage(request *CreateAssetWithImageRequest) (response *CreateAssetWithImageResponse, err error) {
+    if request == nil {
+        request = NewCreateAssetWithImageRequest()
+    }
+    response = NewCreateAssetWithImageResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateFleetRequest() (request *CreateFleetRequest) {
     request = &CreateFleetRequest{
         BaseRequest: &tchttp.BaseRequest{},

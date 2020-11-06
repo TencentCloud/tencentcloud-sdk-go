@@ -4760,15 +4760,13 @@ type MediaImageSpriteItem struct {
 
 type MediaInputInfo struct {
 
-	// 输入来源对象的类型，目前仅支持 COS。
+	// 输入来源对象的类型，支持 COS 和 URL 两种。
 	Type *string `json:"Type,omitempty" name:"Type"`
 
 	// 当 Type 为 COS 时有效，则该项为必填，表示视频处理 COS 对象信息。
 	CosInputInfo *CosInputInfo `json:"CosInputInfo,omitempty" name:"CosInputInfo"`
 
 	// 当 Type 为 URL 时有效，则该项为必填，表示视频处理 URL 对象信息。
-	// 
-	// 目前尚不支持 URL 输入，该能力将于近期支持。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UrlInputInfo *UrlInputInfo `json:"UrlInputInfo,omitempty" name:"UrlInputInfo"`
 }

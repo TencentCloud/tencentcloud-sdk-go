@@ -78,7 +78,7 @@ type CreateAcRulesRequest struct {
 	// 0：添加，1：覆盖
 	Overwrite *uint64 `json:"Overwrite,omitempty" name:"Overwrite"`
 
-	// NAT实例ID, Area存在的时候这个必传
+	// NAT实例ID, 参数Area存在的时候这个必传
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
 	// portScan: 来自于端口扫描, patchImport: 来自于批量导入
@@ -101,7 +101,7 @@ type CreateAcRulesResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 状态值
+		// 状态值，0:操作成功
 		Status *int64 `json:"Status,omitempty" name:"Status"`
 
 		// 返回多余的信息
@@ -178,7 +178,7 @@ type DeleteAllAccessControlRuleRequest struct {
 	// 方向，0：出站，1：入站
 	Direction *uint64 `json:"Direction,omitempty" name:"Direction"`
 
-	// 边ID
+	// VPC间防火墙开关ID
 	EdgeId *string `json:"EdgeId,omitempty" name:"EdgeId"`
 
 	// nat地域
@@ -635,7 +635,7 @@ type ModifyAcRuleResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 装填值
+		// 状态值，0:操作成功
 		Status *int64 `json:"Status,omitempty" name:"Status"`
 
 		// 返回多余的信息
@@ -735,7 +735,7 @@ type ModifyAllSwitchStatusResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 修改成功与否状态值
+		// 开启或者关闭成功与否状态值
 		Status *uint64 `json:"Status,omitempty" name:"Status"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -758,7 +758,7 @@ type ModifyItemSwitchStatusRequest struct {
 	// id值
 	Id *uint64 `json:"Id,omitempty" name:"Id"`
 
-	// 状态值
+	// 状态值，0: 关闭 ,1:开启
 	Status *int64 `json:"Status,omitempty" name:"Status"`
 
 	// 0: 边界防火墙开关，1：vpc防火墙开关
@@ -824,7 +824,7 @@ type ModifySequenceRulesResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 0: 修改成功, !0: 修改失败
+		// 0: 修改成功, 其他: 修改失败
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		Status *int64 `json:"Status,omitempty" name:"Status"`
 

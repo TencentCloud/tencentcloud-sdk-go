@@ -22,7 +22,7 @@ import (
 
 type AttributeMap struct {
 
-	// 属性字典 key
+	// 属性字典 key [a-zA-Z0-9-\.]*
 	Key *string `json:"Key,omitempty" name:"Key"`
 
 	// 属性字典 value
@@ -653,7 +653,7 @@ type MTicket struct {
 
 type MatchAttribute struct {
 
-	// 属性名 长度 128
+	// 属性名 长度 128 [a-zA-Z0-9-\.]*
 	Name *string `json:"Name,omitempty" name:"Name"`
 
 	// 属性类型: 0 数值; 1 string; 默认 0
@@ -776,7 +776,7 @@ type MatchInfo struct {
 
 type MatchTicket struct {
 
-	// MatchTicketId 长度 128
+	// MatchTicketId 长度 128 [a-zA-Z0-9-\.]*
 	Id *string `json:"Id,omitempty" name:"Id"`
 
 	// 匹配 Code
@@ -983,7 +983,7 @@ func (r *ModifyTokenResponse) FromJsonString(s string) error {
 
 type Player struct {
 
-	// 玩家 PlayerId 长度 128
+	// 玩家 PlayerId 长度 128 [a-zA-Z\d-\._]*
 	Id *string `json:"Id,omitempty" name:"Id"`
 
 	// 玩家昵称，长度 128
@@ -992,7 +992,7 @@ type Player struct {
 	// 玩家匹配属性，最多 10 条
 	MatchAttributes []*MatchAttribute `json:"MatchAttributes,omitempty" name:"MatchAttributes" list`
 
-	// 队伍名，可以传递不同队伍名，长度 128
+	// 队伍名，可以传递不同队伍名，长度 128 [a-zA-Z0-9-\.]*
 	Team *string `json:"Team,omitempty" name:"Team"`
 
 	// 自定义玩家状态 透传参数 [0, 99999]
@@ -1008,6 +1008,21 @@ type Player struct {
 type RegionLatency struct {
 
 	// 地域
+	// ap-beijing          华北地区(北京)
+	// ap-chengdu          西南地区(成都)
+	// ap-guangzhou          华南地区(广州)
+	// ap-hongkong          港澳台地区(中国香港)
+	// ap-seoul          亚太地区(首尔)
+	// ap-shanghai          华东地区(上海)
+	// ap-singapore          东南亚地区(新加坡)
+	// eu-frankfurt          欧洲地区(法兰克福)
+	// na-siliconvalley          美国西部(硅谷)
+	// na-toronto          北美地区(多伦多)
+	// ap-mumbai          亚太地区(孟买)
+	// na-ashburn          美国东部(弗吉尼亚)
+	// ap-bangkok          亚太地区(曼谷)
+	// eu-moscow          欧洲地区(莫斯科)
+	// ap-tokyo          亚太地区(东京)
 	Region *string `json:"Region,omitempty" name:"Region"`
 
 	// 毫秒延迟 0～999999
@@ -1055,7 +1070,7 @@ type ReportTrendData struct {
 
 type RuleBriefInfo struct {
 
-	// 规则名称
+	// 规则名称 [a-zA-Z\d-\.]*
 	RuleName *string `json:"RuleName,omitempty" name:"RuleName"`
 
 	// 关联匹配
@@ -1070,7 +1085,7 @@ type RuleBriefInfo struct {
 
 type RuleInfo struct {
 
-	// 规则名称
+	// 规则名称 [a-zA-Z0-9-\.]*
 	RuleName *string `json:"RuleName,omitempty" name:"RuleName"`
 
 	// 创建时间

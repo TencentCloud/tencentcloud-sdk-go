@@ -318,6 +318,31 @@ func (c *Client) DescribeCloudBaseBuildService(request *DescribeCloudBaseBuildSe
     return
 }
 
+func NewDescribeCloudBaseRunServerVersionRequest() (request *DescribeCloudBaseRunServerVersionRequest) {
+    request = &DescribeCloudBaseRunServerVersionRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tcb", APIVersion, "DescribeCloudBaseRunServerVersion")
+    return
+}
+
+func NewDescribeCloudBaseRunServerVersionResponse() (response *DescribeCloudBaseRunServerVersionResponse) {
+    response = &DescribeCloudBaseRunServerVersionResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询服务版本的详情，CPU和MEM  请使用CPUSize和MemSize
+func (c *Client) DescribeCloudBaseRunServerVersion(request *DescribeCloudBaseRunServerVersionRequest) (response *DescribeCloudBaseRunServerVersionResponse, err error) {
+    if request == nil {
+        request = NewDescribeCloudBaseRunServerVersionRequest()
+    }
+    response = NewDescribeCloudBaseRunServerVersionResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeCloudBaseRunVersionSnapshotRequest() (request *DescribeCloudBaseRunVersionSnapshotRequest) {
     request = &DescribeCloudBaseRunVersionSnapshotRequest{
         BaseRequest: &tchttp.BaseRequest{},
