@@ -255,6 +255,9 @@ type DescribeSlowLogTopSqlsRequest struct {
 
 	// 偏移量，默认为0。
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 数据库名称数组。
+	SchemaList []*SchemaItem `json:"SchemaList,omitempty" name:"SchemaList" list`
 }
 
 func (r *DescribeSlowLogTopSqlsRequest) ToJsonString() string {
@@ -463,6 +466,12 @@ type MonitorMetricSeriesData struct {
 
 	// 监控指标对应的时间戳。
 	Timestamp []*int64 `json:"Timestamp,omitempty" name:"Timestamp" list`
+}
+
+type SchemaItem struct {
+
+	// 数据库名称
+	Schema *string `json:"Schema,omitempty" name:"Schema"`
 }
 
 type SlowLogTopSqlItem struct {

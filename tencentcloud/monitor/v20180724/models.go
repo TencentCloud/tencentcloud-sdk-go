@@ -283,6 +283,58 @@ func (r *CreatePolicyGroupResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type CreateServiceDiscoveryRequest struct {
+	*tchttp.BaseRequest
+
+	// Prometheus 实例 ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// <li>类型为TKE：对应集成的腾讯云容器服务集群 ID</li>
+	KubeClusterId *string `json:"KubeClusterId,omitempty" name:"KubeClusterId"`
+
+	// 用户 Kubernetes 集群类型：
+	// <li> 1 = 容器服务集群(TKE) </li>
+	KubeType *int64 `json:"KubeType,omitempty" name:"KubeType"`
+
+	// 服务发现类型，取值如下：
+	// <li> 1 = ServiceMonitor</li>
+	// <li> 2 = PodMonitor</li>
+	Type *int64 `json:"Type,omitempty" name:"Type"`
+
+	// 服务发现配置信息
+	Yaml *string `json:"Yaml,omitempty" name:"Yaml"`
+}
+
+func (r *CreateServiceDiscoveryRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateServiceDiscoveryRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateServiceDiscoveryResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 创建成功之后，返回对应服务发现信息
+		ServiceDiscovery *ServiceDiscoveryItem `json:"ServiceDiscovery,omitempty" name:"ServiceDiscovery"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateServiceDiscoveryResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateServiceDiscoveryResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DataPoint struct {
 
 	// 实例对象维度组合
@@ -329,6 +381,55 @@ func (r *DeletePolicyGroupResponse) ToJsonString() string {
 }
 
 func (r *DeletePolicyGroupResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteServiceDiscoveryRequest struct {
+	*tchttp.BaseRequest
+
+	// Prometheus 实例 ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// <li>类型是 TKE，为对应的腾讯云容器服务集群 ID</li>
+	KubeClusterId *string `json:"KubeClusterId,omitempty" name:"KubeClusterId"`
+
+	// 用户 Kubernetes 集群类型：
+	// <li> 1 = 容器服务集群(TKE) </li>
+	KubeType *int64 `json:"KubeType,omitempty" name:"KubeType"`
+
+	// 服务发现类型，取值如下：
+	// <li> 1 = ServiceMonitor</li>
+	// <li> 2 = PodMonitor</li>
+	Type *int64 `json:"Type,omitempty" name:"Type"`
+
+	// 服务发现配置信息
+	Yaml *string `json:"Yaml,omitempty" name:"Yaml"`
+}
+
+func (r *DeleteServiceDiscoveryRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteServiceDiscoveryRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteServiceDiscoveryResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DeleteServiceDiscoveryResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteServiceDiscoveryResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -1831,6 +1932,51 @@ func (r *DescribeProductListResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeServiceDiscoveryRequest struct {
+	*tchttp.BaseRequest
+
+	// Prometheus 实例 ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// <li>类型是 TKE，为对应的腾讯云容器服务集群 ID</li>
+	KubeClusterId *string `json:"KubeClusterId,omitempty" name:"KubeClusterId"`
+
+	// 用户 Kubernetes 集群类型：
+	// <li> 1 = 容器服务集群(TKE) </li>
+	KubeType *int64 `json:"KubeType,omitempty" name:"KubeType"`
+}
+
+func (r *DescribeServiceDiscoveryRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeServiceDiscoveryRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeServiceDiscoveryResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 返回服务发现列表信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		ServiceDiscoverySet []*ServiceDiscoveryItem `json:"ServiceDiscoverySet,omitempty" name:"ServiceDiscoverySet" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeServiceDiscoveryResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeServiceDiscoveryResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type Dimension struct {
 
 	// 实例维度名称
@@ -2283,6 +2429,33 @@ func (r *SendCustomAlarmMsgResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type ServiceDiscoveryItem struct {
+
+	// 服务发现名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 服务发现属于的 Namespace
+	Namespace *string `json:"Namespace,omitempty" name:"Namespace"`
+
+	// 服务发现类型: ServiceMonitor/PodMonitor
+	Kind *string `json:"Kind,omitempty" name:"Kind"`
+
+	// Namespace 选取方式
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NamespaceSelector *string `json:"NamespaceSelector,omitempty" name:"NamespaceSelector"`
+
+	// Label 选取方式
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Selector *string `json:"Selector,omitempty" name:"Selector"`
+
+	// Endpoints 信息（PodMonitor 不含该参数）
+	Endpoints *string `json:"Endpoints,omitempty" name:"Endpoints"`
+
+	// 服务发现对应的配置信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Yaml *string `json:"Yaml,omitempty" name:"Yaml"`
+}
+
 type UnBindingAllPolicyObjectRequest struct {
 	*tchttp.BaseRequest
 
@@ -2360,5 +2533,57 @@ func (r *UnBindingPolicyObjectResponse) ToJsonString() string {
 }
 
 func (r *UnBindingPolicyObjectResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type UpdateServiceDiscoveryRequest struct {
+	*tchttp.BaseRequest
+
+	// Prometheus 实例 ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// <li>类型是 TKE，为对应的腾讯云容器服务集群 ID</li>
+	KubeClusterId *string `json:"KubeClusterId,omitempty" name:"KubeClusterId"`
+
+	// 用户 Kubernetes 集群类型：
+	// <li> 1 = 容器服务集群(TKE) </li>
+	KubeType *int64 `json:"KubeType,omitempty" name:"KubeType"`
+
+	// 服务发现类型，取值如下：
+	// <li> 1 = ServiceMonitor</li>
+	// <li> 2 = PodMonitor</li>
+	Type *int64 `json:"Type,omitempty" name:"Type"`
+
+	// 服务发现配置信息
+	Yaml *string `json:"Yaml,omitempty" name:"Yaml"`
+}
+
+func (r *UpdateServiceDiscoveryRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *UpdateServiceDiscoveryRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type UpdateServiceDiscoveryResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 更新成功之后，返回对应服务发现的信息
+		ServiceDiscovery *ServiceDiscoveryItem `json:"ServiceDiscovery,omitempty" name:"ServiceDiscovery"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *UpdateServiceDiscoveryResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *UpdateServiceDiscoveryResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }

@@ -93,6 +93,33 @@ func (c *Client) CreatePolicyGroup(request *CreatePolicyGroupRequest) (response 
     return
 }
 
+func NewCreateServiceDiscoveryRequest() (request *CreateServiceDiscoveryRequest) {
+    request = &CreateServiceDiscoveryRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("monitor", APIVersion, "CreateServiceDiscovery")
+    return
+}
+
+func NewCreateServiceDiscoveryResponse() (response *CreateServiceDiscoveryResponse) {
+    response = &CreateServiceDiscoveryResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 在腾讯云容器服务下创建 Prometheus 服务发现。
+// <p>注意：前提条件，已经通过 Prometheus 控制台集成了对应的腾讯云容器服务，具体请参考
+// <a href="https://cloud.tencent.com/document/product/248/48859" target="_blank">Agent 安装</a>。</p>
+func (c *Client) CreateServiceDiscovery(request *CreateServiceDiscoveryRequest) (response *CreateServiceDiscoveryResponse, err error) {
+    if request == nil {
+        request = NewCreateServiceDiscoveryRequest()
+    }
+    response = NewCreateServiceDiscoveryResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeletePolicyGroupRequest() (request *DeletePolicyGroupRequest) {
     request = &DeletePolicyGroupRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -114,6 +141,33 @@ func (c *Client) DeletePolicyGroup(request *DeletePolicyGroupRequest) (response 
         request = NewDeletePolicyGroupRequest()
     }
     response = NewDeletePolicyGroupResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteServiceDiscoveryRequest() (request *DeleteServiceDiscoveryRequest) {
+    request = &DeleteServiceDiscoveryRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("monitor", APIVersion, "DeleteServiceDiscovery")
+    return
+}
+
+func NewDeleteServiceDiscoveryResponse() (response *DeleteServiceDiscoveryResponse) {
+    response = &DeleteServiceDiscoveryResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 删除在腾讯云容器服务下创建的 Prometheus 服务发现。
+// <p>注意：前提条件，已经通过 Prometheus 控制台集成了对应的腾讯云容器服务，具体请参考
+// <a href="https://cloud.tencent.com/document/product/248/48859" target="_blank">Agent 安装</a>。</p>
+func (c *Client) DeleteServiceDiscovery(request *DeleteServiceDiscoveryRequest) (response *DeleteServiceDiscoveryResponse, err error) {
+    if request == nil {
+        request = NewDeleteServiceDiscoveryRequest()
+    }
+    response = NewDeleteServiceDiscoveryResponse()
     err = c.Send(request, response)
     return
 }
@@ -393,6 +447,33 @@ func (c *Client) DescribeProductList(request *DescribeProductListRequest) (respo
     return
 }
 
+func NewDescribeServiceDiscoveryRequest() (request *DescribeServiceDiscoveryRequest) {
+    request = &DescribeServiceDiscoveryRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("monitor", APIVersion, "DescribeServiceDiscovery")
+    return
+}
+
+func NewDescribeServiceDiscoveryResponse() (response *DescribeServiceDiscoveryResponse) {
+    response = &DescribeServiceDiscoveryResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 列出在腾讯云容器服务下创建的 Prometheus 服务发现。
+// <p>注意：前提条件，已经通过 Prometheus 控制台集成了对应的腾讯云容器服务，具体请参考
+// <a href="https://cloud.tencent.com/document/product/248/48859" target="_blank">Agent 安装</a>。</p>
+func (c *Client) DescribeServiceDiscovery(request *DescribeServiceDiscoveryRequest) (response *DescribeServiceDiscoveryResponse, err error) {
+    if request == nil {
+        request = NewDescribeServiceDiscoveryRequest()
+    }
+    response = NewDescribeServiceDiscoveryResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewGetMonitorDataRequest() (request *GetMonitorDataRequest) {
     request = &GetMonitorDataRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -572,6 +653,33 @@ func (c *Client) UnBindingPolicyObject(request *UnBindingPolicyObjectRequest) (r
         request = NewUnBindingPolicyObjectRequest()
     }
     response = NewUnBindingPolicyObjectResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewUpdateServiceDiscoveryRequest() (request *UpdateServiceDiscoveryRequest) {
+    request = &UpdateServiceDiscoveryRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("monitor", APIVersion, "UpdateServiceDiscovery")
+    return
+}
+
+func NewUpdateServiceDiscoveryResponse() (response *UpdateServiceDiscoveryResponse) {
+    response = &UpdateServiceDiscoveryResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 在腾讯云容器服务下更新 Prometheus 服务发现。
+// <p>注意：前提条件，已经通过 Prometheus 控制台集成了对应的腾讯云容器服务，具体请参考
+// <a href="https://cloud.tencent.com/document/product/248/48859" target="_blank">Agent 安装</a>。</p>
+func (c *Client) UpdateServiceDiscovery(request *UpdateServiceDiscoveryRequest) (response *UpdateServiceDiscoveryResponse, err error) {
+    if request == nil {
+        request = NewUpdateServiceDiscoveryRequest()
+    }
+    response = NewUpdateServiceDiscoveryResponse()
     err = c.Send(request, response)
     return
 }

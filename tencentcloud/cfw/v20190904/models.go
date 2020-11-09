@@ -685,7 +685,7 @@ type ModifyAllRuleStatusResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 0: 修改成功, !0: 修改失败
+		// 0: 修改成功, 其他: 修改失败
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		Status *int64 `json:"Status,omitempty" name:"Status"`
 

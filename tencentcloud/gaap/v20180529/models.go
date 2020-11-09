@@ -2483,7 +2483,7 @@ type DescribeProxyStatisticsRequest struct {
 	// 结束时间(2019-03-25 12:00:00)
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 
-	// 统计指标名称列表，支持: 入带宽:InBandwidth, 出带宽:OutBandwidth, 并发:Concurrent, 入包量:InPackets, 出包量:OutPackets, 丢包率:PacketLoss, 延迟:Latency
+	// 统计指标名称列表，支持: 入带宽:InBandwidth, 出带宽:OutBandwidth, 并发:Concurrent, 入包量:InPackets, 出包量:OutPackets, 丢包率:PacketLoss, 延迟:Latency，http请求量：HttpQPS, Https请求量：HttpsQPS
 	MetricNames []*string `json:"MetricNames,omitempty" name:"MetricNames" list`
 
 	// 监控粒度，目前支持60，300，3600，86400，单位：秒。

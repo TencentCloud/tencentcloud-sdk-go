@@ -1,37 +1,52 @@
 # 本版本更新包含以下内容：
 
-## 正版图库直通车(ape) 版本：2020-05-13
+## 数据库智能管家 DBbrain(dbbrain) 版本：2019-10-16
 
-### 第 1 次发布
+### 第 6 次发布
 
-发布时间：2020-11-05 10:38:34
+发布时间：2020-11-09 08:03:16
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-新增接口：
+修改接口：
 
-* [BatchDescribeOrderCertificate](https://cloud.tencent.com/document/api/1181/49683)
-* [BatchDescribeOrderImage](https://cloud.tencent.com/document/api/1181/49682)
-* [CreateOrderAndPay](https://cloud.tencent.com/document/api/1181/49681)
-* [DescribeAuthUsers](https://cloud.tencent.com/document/api/1181/49685)
-* [DescribeImage](https://cloud.tencent.com/document/api/1181/49688)
-* [DescribeImages](https://cloud.tencent.com/document/api/1181/49687)
+* [DescribeSlowLogTopSqls](https://cloud.tencent.com/document/api/1130/39556)
+
+	* 新增入参：SchemaList
+
 
 新增数据结构：
 
-* [AuthInfo](https://cloud.tencent.com/document/api/1181/49689#AuthInfo)
-* [ImageItem](https://cloud.tencent.com/document/api/1181/49689#ImageItem)
-* [ImageMarshal](https://cloud.tencent.com/document/api/1181/49689#ImageMarshal)
+* [SchemaItem](https://cloud.tencent.com/document/api/1130/39561#SchemaItem)
 
 
 
-## 应用与服务编排工作流(asw) 版本：2020-07-22
+## 物联网智能视频服务(iotvideo) 版本：2019-11-26
 
-### 第 2 次发布
+### 第 16 次发布
 
-发布时间：2020-11-06 08:00:03
+发布时间：2020-11-09 08:00:52
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [UploadOtaVersion](https://cloud.tencent.com/document/api/1131/42391)
+
+	* 新增入参：Remark, Contents
+
+
+
+
+## 云监控(monitor) 版本：2018-07-24
+
+### 第 16 次发布
+
+发布时间：2020-11-09 08:05:37
 
 本次发布包含了以下内容：
 
@@ -39,55 +54,33 @@
 
 新增接口：
 
-* [CreateFlowService](https://cloud.tencent.com/document/api/1272/49737)
-* [DescribeFlowServiceDetail](https://cloud.tencent.com/document/api/1272/49736)
-* [ModifyFlowService](https://cloud.tencent.com/document/api/1272/49735)
-* [StartExecution](https://cloud.tencent.com/document/api/1272/49734)
+* [CreateServiceDiscovery](https://cloud.tencent.com/document/api/248/49784)
+* [DeleteServiceDiscovery](https://cloud.tencent.com/document/api/248/49780)
+* [DescribeServiceDiscovery](https://cloud.tencent.com/document/api/248/49783)
+* [UpdateServiceDiscovery](https://cloud.tencent.com/document/api/248/49782)
 
-### 第 1 次发布
+新增数据结构：
 
-发布时间：2020-11-05 15:13:22
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [DescribeExecution](https://cloud.tencent.com/document/api/1272/49716)
-* [DescribeExecutions](https://cloud.tencent.com/document/api/1272/49715)
+* [ServiceDiscoveryItem](https://cloud.tencent.com/document/api/248/30354#ServiceDiscoveryItem)
 
 
 
-## 游戏服务器引擎(gse) 版本：2019-11-12
+## 云点播(vod) 版本：2018-07-17
 
-### 第 12 次发布
+### 第 62 次发布
 
-发布时间：2020-11-06 08:01:10
+发布时间：2020-11-09 08:07:54
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-新增接口：
+修改数据结构：
 
-* [CreateAssetWithImage](https://cloud.tencent.com/document/api/1165/49738)
+* [TranscodeTaskInput](https://cloud.tencent.com/document/api/266/31773#TranscodeTaskInput)
 
+	* 新增成员：StartTimeOffset, EndTimeOffset
 
-
-## 云开发 CloudBase(tcb) 版本：2018-06-08
-
-### 第 23 次发布
-
-发布时间：2020-11-06 08:06:11
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [DescribeCloudBaseRunServerVersion](https://cloud.tencent.com/document/api/876/49739)
 
 
 
@@ -566,18 +559,18 @@
 
 新增接口：
 
-* [[BatchDescribeOrderCertificate](https://cloud.tencent.com/document/api/1181/49683)](https://cloud.tencent.com/document/api/#/#)
-* [[BatchDescribeOrderImage](https://cloud.tencent.com/document/api/1181/49682)](https://cloud.tencent.com/document/api/#/#)
-* [[CreateOrderAndPay](https://cloud.tencent.com/document/api/1181/49681)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeAuthUsers](https://cloud.tencent.com/document/api/1181/49685)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeImage](https://cloud.tencent.com/document/api/1181/49688)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeImages](https://cloud.tencent.com/document/api/1181/49687)](https://cloud.tencent.com/document/api/#/#)
+* [BatchDescribeOrderCertificate](https://cloud.tencent.com/document/api/1181/49683)
+* [BatchDescribeOrderImage](https://cloud.tencent.com/document/api/1181/49682)
+* [CreateOrderAndPay](https://cloud.tencent.com/document/api/1181/49681)
+* [DescribeAuthUsers](https://cloud.tencent.com/document/api/1181/49685)
+* [DescribeImage](https://cloud.tencent.com/document/api/1181/49688)
+* [DescribeImages](https://cloud.tencent.com/document/api/1181/49687)
 
 新增数据结构：
 
-* [[AuthInfo](https://cloud.tencent.com/document/api/1181/49689#AuthInfo)](https://cloud.tencent.com/document/api/1181/49689#[AuthInfo](https://cloud.tencent.com/document/api/1181/49689#AuthInfo))
-* [[ImageItem](https://cloud.tencent.com/document/api/1181/49689#ImageItem)](https://cloud.tencent.com/document/api/1181/49689#[ImageItem](https://cloud.tencent.com/document/api/1181/49689#ImageItem))
-* [[ImageMarshal](https://cloud.tencent.com/document/api/1181/49689#ImageMarshal)](https://cloud.tencent.com/document/api/1181/49689#[ImageMarshal](https://cloud.tencent.com/document/api/1181/49689#ImageMarshal))
+* [AuthInfo](https://cloud.tencent.com/document/api/1181/49689#AuthInfo)
+* [ImageItem](https://cloud.tencent.com/document/api/1181/49689#ImageItem)
+* [ImageMarshal](https://cloud.tencent.com/document/api/1181/49689#ImageMarshal)
 
 
 
@@ -1812,10 +1805,10 @@
 
 新增接口：
 
-* [[CreateFlowService](https://cloud.tencent.com/document/api/1272/49737)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeFlowServiceDetail](https://cloud.tencent.com/document/api/1272/49736)](https://cloud.tencent.com/document/api/#/#)
-* [[ModifyFlowService](https://cloud.tencent.com/document/api/1272/49735)](https://cloud.tencent.com/document/api/#/#)
-* [[StartExecution](https://cloud.tencent.com/document/api/1272/49734)](https://cloud.tencent.com/document/api/#/#)
+* [CreateFlowService](https://cloud.tencent.com/document/api/1272/49737)
+* [DescribeFlowServiceDetail](https://cloud.tencent.com/document/api/1272/49736)
+* [ModifyFlowService](https://cloud.tencent.com/document/api/1272/49735)
+* [StartExecution](https://cloud.tencent.com/document/api/1272/49734)
 
 ### 第 1 次发布
 
@@ -1827,8 +1820,8 @@
 
 新增接口：
 
-* [[DescribeExecution](https://cloud.tencent.com/document/api/1272/49716)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeExecutions](https://cloud.tencent.com/document/api/1272/49715)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeExecution](https://cloud.tencent.com/document/api/1272/49716)
+* [DescribeExecutions](https://cloud.tencent.com/document/api/1272/49715)
 
 
 
@@ -13049,6 +13042,25 @@
 
 ## 数据库智能管家 DBbrain(dbbrain) 版本：2019-10-16
 
+### 第 6 次发布
+
+发布时间：2020-11-09 08:03:16
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeSlowLogTopSqls](https://cloud.tencent.com/document/api/1130/39556)
+
+	* 新增入参：SchemaList
+
+
+新增数据结构：
+
+* [[SchemaItem](https://cloud.tencent.com/document/api/1130/39561#SchemaItem)](https://cloud.tencent.com/document/api/1130/39561#[SchemaItem](https://cloud.tencent.com/document/api/1130/39561#SchemaItem))
+
 ### 第 5 次发布
 
 发布时间：2020-11-03 08:04:06
@@ -17556,7 +17568,7 @@
 
 新增接口：
 
-* [[CreateAssetWithImage](https://cloud.tencent.com/document/api/1165/49738)](https://cloud.tencent.com/document/api/#/#)
+* [CreateAssetWithImage](https://cloud.tencent.com/document/api/1165/49738)
 
 ### 第 11 次发布
 
@@ -20057,6 +20069,21 @@
 
 
 ## 物联网智能视频服务(iotvideo) 版本：2019-11-26
+
+### 第 16 次发布
+
+发布时间：2020-11-09 08:00:52
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [UploadOtaVersion](https://cloud.tencent.com/document/api/1131/42391)
+
+	* 新增入参：Remark, Contents
+
 
 ### 第 15 次发布
 
@@ -22773,6 +22800,25 @@
 
 
 ## 云监控(monitor) 版本：2018-07-24
+
+### 第 16 次发布
+
+发布时间：2020-11-09 08:05:37
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[CreateServiceDiscovery](https://cloud.tencent.com/document/api/248/49784)](https://cloud.tencent.com/document/api/#/#)
+* [[DeleteServiceDiscovery](https://cloud.tencent.com/document/api/248/49780)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeServiceDiscovery](https://cloud.tencent.com/document/api/248/49783)](https://cloud.tencent.com/document/api/#/#)
+* [[UpdateServiceDiscovery](https://cloud.tencent.com/document/api/248/49782)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[ServiceDiscoveryItem](https://cloud.tencent.com/document/api/248/30354#ServiceDiscoveryItem)](https://cloud.tencent.com/document/api/248/30354#[ServiceDiscoveryItem](https://cloud.tencent.com/document/api/248/30354#ServiceDiscoveryItem))
 
 ### 第 15 次发布
 
@@ -29307,7 +29353,7 @@
 
 新增接口：
 
-* [[DescribeCloudBaseRunServerVersion](https://cloud.tencent.com/document/api/876/49739)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeCloudBaseRunServerVersion](https://cloud.tencent.com/document/api/876/49739)
 
 ### 第 22 次发布
 
@@ -33875,6 +33921,21 @@
 
 
 ## 云点播(vod) 版本：2018-07-17
+
+### 第 62 次发布
+
+发布时间：2020-11-09 08:07:54
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [TranscodeTaskInput](https://cloud.tencent.com/document/api/266/31773#TranscodeTaskInput)
+
+	* 新增成员：StartTimeOffset, EndTimeOffset
+
 
 ### 第 61 次发布
 
