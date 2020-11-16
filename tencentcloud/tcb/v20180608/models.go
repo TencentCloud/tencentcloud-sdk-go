@@ -679,6 +679,9 @@ type CreateStaticStoreRequest struct {
 
 	// 环境ID
 	EnvId *string `json:"EnvId,omitempty" name:"EnvId"`
+
+	// 是否启用统一域名
+	EnableUnion *bool `json:"EnableUnion,omitempty" name:"EnableUnion"`
 }
 
 func (r *CreateStaticStoreRequest) ToJsonString() string {

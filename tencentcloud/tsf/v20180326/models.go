@@ -4895,6 +4895,10 @@ type HealthCheckSetting struct {
 	// 执行命令检查方式，执行的命令。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Command []*string `json:"Command,omitempty" name:"Command" list`
+
+	// TSF_DEFAULT：tsf 默认就绪探针。K8S_NATIVE：k8s 原生探针。不填默认为 k8s 原生探针。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Type *string `json:"Type,omitempty" name:"Type"`
 }
 
 type HealthCheckSettings struct {
@@ -7322,6 +7326,26 @@ type VmGroup struct {
 	// 部署应用描述信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DeployDesc *string `json:"DeployDesc,omitempty" name:"DeployDesc"`
+
+	// 滚动发布的更新方式
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UpdateType *uint64 `json:"UpdateType,omitempty" name:"UpdateType"`
+
+	// 发布是否启用beta批次
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DeployBetaEnable *bool `json:"DeployBetaEnable,omitempty" name:"DeployBetaEnable"`
+
+	// 滚动发布的批次比例列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DeployBatch []*float64 `json:"DeployBatch,omitempty" name:"DeployBatch" list`
+
+	// 滚动发布的批次执行方式
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DeployExeMode *string `json:"DeployExeMode,omitempty" name:"DeployExeMode"`
+
+	// 滚动发布的每个批次的等待时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DeployWaitTime *uint64 `json:"DeployWaitTime,omitempty" name:"DeployWaitTime"`
 }
 
 type VmGroupSimple struct {

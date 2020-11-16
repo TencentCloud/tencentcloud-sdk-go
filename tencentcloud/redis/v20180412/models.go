@@ -3207,10 +3207,10 @@ type Outbound struct {
 
 type ProductConf struct {
 
-	// 产品类型，2-Redis主从版，3-CKV主从版，4-CKV集群版，5-Redis单机版，7-Redis集群版
+	// 产品类型，2 – Redis2.8内存版(标准架构)，3 – CKV 3.2内存版(标准架构)，4 – CKV 3.2内存版(集群架构)，5 – Redis2.8内存版(单机版)，6 – Redis4.0内存版(标准架构)，7 – Redis4.0内存版(集群架构)，8 – Redis5.0内存版(标准架构)，9 – Redis5.0内存版(集群架构)，10 – Redis4.0混合存储版Tendis
 	Type *int64 `json:"Type,omitempty" name:"Type"`
 
-	// 产品名称，Redis主从版，CKV主从版，CKV集群版，Redis单机版，Redis集群版
+	// 产品名称，Redis主从版，CKV主从版，CKV集群版，Redis单机版，Redis集群版，混合存储版Tendis
 	TypeName *string `json:"TypeName,omitempty" name:"TypeName"`
 
 	// 购买时的最小数量

@@ -63,6 +63,9 @@ type AccountDetail struct {
 
 	// 该账户对相关db的读写权限信息
 	Dbs []*DBPrivilege `json:"Dbs,omitempty" name:"Dbs" list`
+
+	// 是否为管理员账户
+	IsAdmin *bool `json:"IsAdmin,omitempty" name:"IsAdmin"`
 }
 
 type AccountPassword struct {
@@ -855,7 +858,7 @@ type DBInstance struct {
 	// 实例续费标记，0-正常续费，1-自动续费，2-到期不续费
 	RenewFlag *int64 `json:"RenewFlag,omitempty" name:"RenewFlag"`
 
-	// 实例高可用， 1-双机高可用，2-单机
+	// 实例高可用， 1-双机高可用，2-单机，3-跨可用区，4-集群跨可用区，5-集群，9-自研机房
 	Model *int64 `json:"Model,omitempty" name:"Model"`
 
 	// 实例所在地域名称，如 ap-guangzhou

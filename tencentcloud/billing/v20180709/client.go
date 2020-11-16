@@ -418,6 +418,31 @@ func (c *Client) DescribeDealsByCond(request *DescribeDealsByCondRequest) (respo
     return
 }
 
+func NewDescribeDosageCosDetailByDateRequest() (request *DescribeDosageCosDetailByDateRequest) {
+    request = &DescribeDosageCosDetailByDateRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("billing", APIVersion, "DescribeDosageCosDetailByDate")
+    return
+}
+
+func NewDescribeDosageCosDetailByDateResponse() (response *DescribeDosageCosDetailByDateResponse) {
+    response = &DescribeDosageCosDetailByDateResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 获取COS产品用量明细
+func (c *Client) DescribeDosageCosDetailByDate(request *DescribeDosageCosDetailByDateRequest) (response *DescribeDosageCosDetailByDateResponse, err error) {
+    if request == nil {
+        request = NewDescribeDosageCosDetailByDateRequest()
+    }
+    response = NewDescribeDosageCosDetailByDateResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeDosageDetailByDateRequest() (request *DescribeDosageDetailByDateRequest) {
     request = &DescribeDosageDetailByDateRequest{
         BaseRequest: &tchttp.BaseRequest{},

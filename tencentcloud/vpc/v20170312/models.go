@@ -5458,6 +5458,46 @@ func (r *DescribeIp6TranslatorsResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeIpGeolocationDatabaseUrlRequest struct {
+	*tchttp.BaseRequest
+
+	// ip地址库协议类型，目前支持"ipv4"和"ipv6"。
+	Type *string `json:"Type,omitempty" name:"Type"`
+}
+
+func (r *DescribeIpGeolocationDatabaseUrlRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeIpGeolocationDatabaseUrlRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeIpGeolocationDatabaseUrlResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// IP地址库下载链接地址
+		DownLoadUrl *string `json:"DownLoadUrl,omitempty" name:"DownLoadUrl"`
+
+		// 链接到期时间。按照`ISO8601`标准表示，并且使用`UTC`时间。
+		ExpiredAt *string `json:"ExpiredAt,omitempty" name:"ExpiredAt"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeIpGeolocationDatabaseUrlResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeIpGeolocationDatabaseUrlResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeNatGatewayDestinationIpPortTranslationNatRulesRequest struct {
 	*tchttp.BaseRequest
 

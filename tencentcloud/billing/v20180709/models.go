@@ -598,6 +598,30 @@ type ConsumptionSummaryTrend struct {
 	Value *string `json:"Value,omitempty" name:"Value"`
 }
 
+type CosDetailSets struct {
+
+	// 存储桶名称
+	BucketName *string `json:"BucketName,omitempty" name:"BucketName"`
+
+	// 用量开始时间
+	DosageBeginTime *string `json:"DosageBeginTime,omitempty" name:"DosageBeginTime"`
+
+	// 用量结束时间
+	DosageEndTime *string `json:"DosageEndTime,omitempty" name:"DosageEndTime"`
+
+	// 一级产品类型名称
+	SubProductCodeName *string `json:"SubProductCodeName,omitempty" name:"SubProductCodeName"`
+
+	// 二级产品类型名称
+	BillingItemCodeName *string `json:"BillingItemCodeName,omitempty" name:"BillingItemCodeName"`
+
+	// 用量
+	DosageValue *string `json:"DosageValue,omitempty" name:"DosageValue"`
+
+	// 单位
+	Unit *string `json:"Unit,omitempty" name:"Unit"`
+}
+
 type CostComponentSet struct {
 
 	// 组件类型名称
@@ -925,6 +949,21 @@ type DescribeBillListResponse struct {
 
 		// 扣费总额，单位（分）
 		DeductAmount *float64 `json:"DeductAmount,omitempty" name:"DeductAmount"`
+
+		// 资金转入总额，单位（分）
+		AgentInAmount *float64 `json:"AgentInAmount,omitempty" name:"AgentInAmount"`
+
+		// 垫付充值总额，单位（分）
+		AdvanceRechargeAmount *float64 `json:"AdvanceRechargeAmount,omitempty" name:"AdvanceRechargeAmount"`
+
+		// 提现扣减总额，单位（分）
+		WithdrawAmount *float64 `json:"WithdrawAmount,omitempty" name:"WithdrawAmount"`
+
+		// 资金转出总额，单位（分）
+		AgentOutAmount *float64 `json:"AgentOutAmount,omitempty" name:"AgentOutAmount"`
+
+		// 还垫付总额，单位（分）
+		AdvancePayAmount *float64 `json:"AdvancePayAmount,omitempty" name:"AdvancePayAmount"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1633,6 +1672,49 @@ func (r *DescribeDealsByCondResponse) ToJsonString() string {
 }
 
 func (r *DescribeDealsByCondResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeDosageCosDetailByDateRequest struct {
+	*tchttp.BaseRequest
+
+	// 查询用量开始时间
+	StartDate *string `json:"StartDate,omitempty" name:"StartDate"`
+
+	// 查询用量结束时间（与开始时间同月，不支持跨月查询）
+	EndDate *string `json:"EndDate,omitempty" name:"EndDate"`
+
+	// COS 存储桶名称，可通过Get Service 接口是用来获取请求者名下的所有存储空间列表（Bucket list）https://tcloud-dev.oa.com/document/product/555/30925?!preview&!document=1
+	BucketName *string `json:"BucketName,omitempty" name:"BucketName"`
+}
+
+func (r *DescribeDosageCosDetailByDateRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeDosageCosDetailByDateRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeDosageCosDetailByDateResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 用量数组
+		DetailSets []*CosDetailSets `json:"DetailSets,omitempty" name:"DetailSets" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeDosageCosDetailByDateResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeDosageCosDetailByDateResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 

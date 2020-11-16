@@ -698,7 +698,7 @@ type EventMessage struct {
 
 type LayoutParams struct {
 
-	// 混流布局模板ID，0为悬浮模板(默认);1为九宫格模板;2为屏幕分享模板;3为画中画模板。
+	// 混流布局模板ID，0为悬浮模板(默认);1为九宫格模板;2为屏幕分享模板;3为画中画模板;4为自定义模板。
 	Template *uint64 `json:"Template,omitempty" name:"Template"`
 
 	// 屏幕分享模板、悬浮模板、画中画模板中有效，代表大画面对应的用户ID。
@@ -715,6 +715,9 @@ type LayoutParams struct {
 
 	// 悬浮模板、九宫格、屏幕分享模板有效。设置此参数后，输出流混合此参数中包含用户的音视频，以及其他用户的纯音频。最多可设置16个用户。
 	MixVideoUids []*string `json:"MixVideoUids,omitempty" name:"MixVideoUids" list`
+
+	// 自定义模板中有效，指定用户视频在混合画面中的位置。
+	PresetLayoutConfig []*PresetLayoutConfig `json:"PresetLayoutConfig,omitempty" name:"PresetLayoutConfig" list`
 }
 
 type OutputParams struct {
@@ -730,6 +733,33 @@ type OutputParams struct {
 
 	// 取值范围[0,1]，填0无实际含义; 填1：指定录制文件格式为mp3
 	RecordAudioOnly *uint64 `json:"RecordAudioOnly,omitempty" name:"RecordAudioOnly"`
+}
+
+type PresetLayoutConfig struct {
+
+	// 指定显示在该画面上的用户ID。如果不指定用户ID，会按照用户加入房间的顺序自动匹配PresetLayoutConfig中的画面设置。
+	UserId *string `json:"UserId,omitempty" name:"UserId"`
+
+	// 当该画面指定用户时，代表用户的流类型。0为摄像头，1为屏幕分享。小画面为web用户时此值填0。
+	StreamType *uint64 `json:"StreamType,omitempty" name:"StreamType"`
+
+	// 该画面在输出时的宽度，单位为像素值，不填默认为0。
+	ImageWidth *uint64 `json:"ImageWidth,omitempty" name:"ImageWidth"`
+
+	// 该画面在输出时的高度，单位为像素值，不填默认为0。
+	ImageHeight *uint64 `json:"ImageHeight,omitempty" name:"ImageHeight"`
+
+	// 该画面在输出时的X偏移，单位为像素值，LocationX与ImageWidth之和不能超过混流输出的总宽度，不填默认为0。
+	LocationX *uint64 `json:"LocationX,omitempty" name:"LocationX"`
+
+	// 该画面在输出时的Y偏移，单位为像素值，LocationY与ImageHeight之和不能超过混流输出的总高度，不填默认为0。
+	LocationY *uint64 `json:"LocationY,omitempty" name:"LocationY"`
+
+	// 该画面在输出时的层级，单位为像素值，不填默认为0。
+	ZOrder *uint64 `json:"ZOrder,omitempty" name:"ZOrder"`
+
+	// 该画面在输出时的显示模式：0为裁剪，1为缩放，不填默认为0。
+	RenderMode *uint64 `json:"RenderMode,omitempty" name:"RenderMode"`
 }
 
 type QualityData struct {

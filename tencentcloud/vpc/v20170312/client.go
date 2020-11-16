@@ -2923,6 +2923,31 @@ func (c *Client) DescribeIp6Translators(request *DescribeIp6TranslatorsRequest) 
     return
 }
 
+func NewDescribeIpGeolocationDatabaseUrlRequest() (request *DescribeIpGeolocationDatabaseUrlRequest) {
+    request = &DescribeIpGeolocationDatabaseUrlRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "DescribeIpGeolocationDatabaseUrl")
+    return
+}
+
+func NewDescribeIpGeolocationDatabaseUrlResponse() (response *DescribeIpGeolocationDatabaseUrlResponse) {
+    response = &DescribeIpGeolocationDatabaseUrlResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 该接口用于获取ip地理位置库下载链接
+func (c *Client) DescribeIpGeolocationDatabaseUrl(request *DescribeIpGeolocationDatabaseUrlRequest) (response *DescribeIpGeolocationDatabaseUrlResponse, err error) {
+    if request == nil {
+        request = NewDescribeIpGeolocationDatabaseUrlRequest()
+    }
+    response = NewDescribeIpGeolocationDatabaseUrlResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeNatGatewayDestinationIpPortTranslationNatRulesRequest() (request *DescribeNatGatewayDestinationIpPortTranslationNatRulesRequest) {
     request = &DescribeNatGatewayDestinationIpPortTranslationNatRulesRequest{
         BaseRequest: &tchttp.BaseRequest{},

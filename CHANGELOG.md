@@ -1,5 +1,170 @@
 # 本版本更新包含以下内容：
 
+## 计费相关(billing) 版本：2018-07-09
+
+### 第 22 次发布
+
+发布时间：2020-11-16 08:01:50
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeDosageCosDetailByDate](https://cloud.tencent.com/document/api/555/49897)
+
+修改接口：
+
+* [DescribeBillList](https://cloud.tencent.com/document/api/555/41874)
+
+	* 新增出参：AgentInAmount, AdvanceRechargeAmount, WithdrawAmount, AgentOutAmount, AdvancePayAmount
+
+
+新增数据结构：
+
+* [CosDetailSets](https://cloud.tencent.com/document/api/555/19183#CosDetailSets)
+
+
+
+## 云呼叫中心(ccc) 版本：2020-02-10
+
+### 第 5 次发布
+
+发布时间：2020-11-16 08:00:24
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateSDKLoginToken](https://cloud.tencent.com/document/api/679/49227)
+
+	* 新增出参：SdkURL
+
+
+
+
+## 内容分发网络(cdn) 版本：2018-06-06
+
+### 第 46 次发布
+
+发布时间：2020-11-16 08:02:49
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [PurgeUrlsCache](https://cloud.tencent.com/document/api/228/37870)
+
+	* 新增入参：UrlEncode
+
+
+
+
+## 云数据库 SQL Server(sqlserver) 版本：2018-03-28
+
+### 第 15 次发布
+
+发布时间：2020-11-16 08:06:22
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [AccountDetail](https://cloud.tencent.com/document/api/238/19976#AccountDetail)
+
+	* 新增成员：IsAdmin
+
+
+
+
+## 云开发 CloudBase(tcb) 版本：2018-06-08
+
+### 第 24 次发布
+
+发布时间：2020-11-16 08:06:45
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateStaticStore](https://cloud.tencent.com/document/api/876/42152)
+
+	* 新增入参：EnableUnion
+
+
+
+
+## 实时音视频(trtc) 版本：2019-07-22
+
+### 第 17 次发布
+
+发布时间：2020-11-16 08:08:23
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增数据结构：
+
+* [PresetLayoutConfig](https://cloud.tencent.com/document/api/647/44055#PresetLayoutConfig)
+
+修改数据结构：
+
+* [LayoutParams](https://cloud.tencent.com/document/api/647/44055#LayoutParams)
+
+	* 新增成员：PresetLayoutConfig
+
+
+
+
+## 腾讯微服务平台 TSF(tsf) 版本：2018-03-26
+
+### 第 35 次发布
+
+发布时间：2020-11-16 08:07:14
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [HealthCheckSetting](https://cloud.tencent.com/document/api/649/36099#HealthCheckSetting)
+
+	* 新增成员：Type
+
+* [VmGroup](https://cloud.tencent.com/document/api/649/36099#VmGroup)
+
+	* 新增成员：UpdateType, DeployBetaEnable, DeployBatch, DeployExeMode, DeployWaitTime
+
+
+
+
+## 私有网络(vpc) 版本：2017-03-12
+
+### 第 68 次发布
+
+发布时间：2020-11-16 08:07:32
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeIpGeolocationDatabaseUrl](https://cloud.tencent.com/document/api/215/49899)
+
+
+
 # 历次版本更新如下：
 
 ## 活动防刷(aa) 版本：2020-02-24
@@ -2653,6 +2818,29 @@
 
 ## 计费相关(billing) 版本：2018-07-09
 
+### 第 22 次发布
+
+发布时间：2020-11-16 08:01:50
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeDosageCosDetailByDate](https://cloud.tencent.com/document/api/555/49897)](https://cloud.tencent.com/document/api/#/#)
+
+修改接口：
+
+* [DescribeBillList](https://cloud.tencent.com/document/api/555/41874)
+
+	* 新增出参：AgentInAmount, AdvanceRechargeAmount, WithdrawAmount, AgentOutAmount, AdvancePayAmount
+
+
+新增数据结构：
+
+* [[CosDetailSets](https://cloud.tencent.com/document/api/555/19183#CosDetailSets)](https://cloud.tencent.com/document/api/555/19183#[CosDetailSets](https://cloud.tencent.com/document/api/555/19183#CosDetailSets))
+
 ### 第 21 次发布
 
 发布时间：2020-08-13 08:04:50
@@ -5303,6 +5491,21 @@
 
 ## 云呼叫中心(ccc) 版本：2020-02-10
 
+### 第 5 次发布
+
+发布时间：2020-11-16 08:00:24
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateSDKLoginToken](https://cloud.tencent.com/document/api/679/49227)
+
+	* 新增出参：SdkURL
+
+
 ### 第 4 次发布
 
 发布时间：2020-11-05 08:00:21
@@ -6430,6 +6633,21 @@
 
 
 ## 内容分发网络(cdn) 版本：2018-06-06
+
+### 第 46 次发布
+
+发布时间：2020-11-16 08:02:49
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [PurgeUrlsCache](https://cloud.tencent.com/document/api/228/37870)
+
+	* 新增入参：UrlEncode
+
 
 ### 第 45 次发布
 
@@ -27595,6 +27813,21 @@
 
 ## 云数据库 SQL Server(sqlserver) 版本：2018-03-28
 
+### 第 15 次发布
+
+发布时间：2020-11-16 08:06:22
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [AccountDetail](https://cloud.tencent.com/document/api/238/19976#AccountDetail)
+
+	* 新增成员：IsAdmin
+
+
 ### 第 14 次发布
 
 发布时间：2020-10-20 08:06:26
@@ -29258,6 +29491,21 @@
 
 
 ## 云开发 CloudBase(tcb) 版本：2018-06-08
+
+### 第 24 次发布
+
+发布时间：2020-11-16 08:06:45
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateStaticStore](https://cloud.tencent.com/document/api/876/42152)
+
+	* 新增入参：EnableUnion
+
 
 ### 第 23 次发布
 
@@ -32574,6 +32822,25 @@
 
 ## 实时音视频(trtc) 版本：2019-07-22
 
+### 第 17 次发布
+
+发布时间：2020-11-16 08:08:23
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增数据结构：
+
+* [[PresetLayoutConfig](https://cloud.tencent.com/document/api/647/44055#PresetLayoutConfig)](https://cloud.tencent.com/document/api/647/44055#[PresetLayoutConfig](https://cloud.tencent.com/document/api/647/44055#PresetLayoutConfig))
+
+修改数据结构：
+
+* [LayoutParams](https://cloud.tencent.com/document/api/647/44055#LayoutParams)
+
+	* 新增成员：PresetLayoutConfig
+
+
 ### 第 16 次发布
 
 发布时间：2020-10-30 08:07:31
@@ -32831,6 +33098,25 @@
 
 
 ## 腾讯微服务平台 TSF(tsf) 版本：2018-03-26
+
+### 第 35 次发布
+
+发布时间：2020-11-16 08:07:14
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [HealthCheckSetting](https://cloud.tencent.com/document/api/649/36099#HealthCheckSetting)
+
+	* 新增成员：Type
+
+* [VmGroup](https://cloud.tencent.com/document/api/649/36099#VmGroup)
+
+	* 新增成员：UpdateType, DeployBetaEnable, DeployBatch, DeployExeMode, DeployWaitTime
+
 
 ### 第 34 次发布
 
@@ -35701,6 +35987,18 @@
 
 
 ## 私有网络(vpc) 版本：2017-03-12
+
+### 第 68 次发布
+
+发布时间：2020-11-16 08:07:32
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeIpGeolocationDatabaseUrl](https://cloud.tencent.com/document/api/215/49899)](https://cloud.tencent.com/document/api/#/#)
 
 ### 第 67 次发布
 

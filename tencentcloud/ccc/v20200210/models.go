@@ -49,6 +49,9 @@ type CreateSDKLoginTokenResponse struct {
 		// 过期时间戳，Unix 时间戳。
 		ExpiredTime *int64 `json:"ExpiredTime,omitempty" name:"ExpiredTime"`
 
+		// SDK 加载路径会随着 SDK 的发布而变动。
+		SdkURL *string `json:"SdkURL,omitempty" name:"SdkURL"`
+
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
