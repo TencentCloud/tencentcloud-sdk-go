@@ -28,6 +28,9 @@ type DescribeDBDiagEventRequest struct {
 
 	// 事件 ID 。通过“获取实例诊断历史DescribeDBDiagHistory”获取。
 	EventId *int64 `json:"EventId,omitempty" name:"EventId"`
+
+	// 服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 CynosDB  for MySQL，默认为"mysql"。
+	Product *string `json:"Product,omitempty" name:"Product"`
 }
 
 func (r *DescribeDBDiagEventRequest) ToJsonString() string {
@@ -102,6 +105,9 @@ type DescribeDBDiagHistoryRequest struct {
 
 	// 结束时间，如“2019-09-11 12:13:14”，结束时间与开始时间的间隔最大可为2天。
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 CynosDB  for MySQL，默认为"mysql"。
+	Product *string `json:"Product,omitempty" name:"Product"`
 }
 
 func (r *DescribeDBDiagHistoryRequest) ToJsonString() string {
@@ -142,6 +148,9 @@ type DescribeDBSpaceStatusRequest struct {
 
 	// 时间段天数，截止日期为当日，默认为7天。
 	RangeDays *int64 `json:"RangeDays,omitempty" name:"RangeDays"`
+
+	// 服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 CynosDB  for MySQL，默认为"mysql"。
+	Product *string `json:"Product,omitempty" name:"Product"`
 }
 
 func (r *DescribeDBSpaceStatusRequest) ToJsonString() string {
@@ -194,6 +203,9 @@ type DescribeSlowLogTimeSeriesStatsRequest struct {
 
 	// 结束时间，如“2019-09-10 12:13:14”，结束时间与开始时间的间隔最大可为7天。
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 CynosDB  for MySQL，默认为"mysql"。
+	Product *string `json:"Product,omitempty" name:"Product"`
 }
 
 func (r *DescribeSlowLogTimeSeriesStatsRequest) ToJsonString() string {
@@ -258,6 +270,9 @@ type DescribeSlowLogTopSqlsRequest struct {
 
 	// 数据库名称数组。
 	SchemaList []*SchemaItem `json:"SchemaList,omitempty" name:"SchemaList" list`
+
+	// 服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 CynosDB  for MySQL，默认为"mysql"。
+	Product *string `json:"Product,omitempty" name:"Product"`
 }
 
 func (r *DescribeSlowLogTopSqlsRequest) ToJsonString() string {
@@ -310,6 +325,9 @@ type DescribeTopSpaceTableTimeSeriesRequest struct {
 
 	// 截止日期，最早为当日的前第29天，默认为当日。
 	EndDate *string `json:"EndDate,omitempty" name:"EndDate"`
+
+	// 服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 CynosDB  for MySQL，默认为"mysql"。
+	Product *string `json:"Product,omitempty" name:"Product"`
 }
 
 func (r *DescribeTopSpaceTableTimeSeriesRequest) ToJsonString() string {
@@ -353,6 +371,9 @@ type DescribeTopSpaceTablesRequest struct {
 
 	// 筛选Top表所用的排序字段，可选字段包含DataLength、IndexLength、TotalLength、DataFree、FragRatio、TableRows、PhysicalFileSize，默认为 PhysicalFileSize。
 	SortBy *string `json:"SortBy,omitempty" name:"SortBy"`
+
+	// 服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 CynosDB  for MySQL，默认为"mysql"。
+	Product *string `json:"Product,omitempty" name:"Product"`
 }
 
 func (r *DescribeTopSpaceTablesRequest) ToJsonString() string {

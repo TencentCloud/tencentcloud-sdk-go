@@ -87,7 +87,7 @@ type CreateMatchRequest struct {
 	// 匹配描述，最长1024
 	MatchDesc *string `json:"MatchDesc,omitempty" name:"MatchDesc"`
 
-	// 只支持https协议
+	// 只支持https 和 http 协议
 	NotifyUrl *string `json:"NotifyUrl,omitempty" name:"NotifyUrl"`
 
 	// 游戏服务器队列地域
@@ -310,7 +310,7 @@ func (r *DescribeDataResponse) FromJsonString(s string) error {
 type DescribeMatchCodesRequest struct {
 	*tchttp.BaseRequest
 
-	// 偏移量
+	// 偏移量，页码
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
 
 	// 每页数量
@@ -769,7 +769,7 @@ type MatchInfo struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RuleName *string `json:"RuleName,omitempty" name:"RuleName"`
 
-	// 日志状态，0表示正常，1表示日志集不存在，2表示日志主题不存在，3表示日志集和日志主题都不存在
+	// 日志状态，0表示正常，1表示日志集不存在，2表示日志主题不存在，3表示日志集和日志主题都不存在。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	LogStatus *int64 `json:"LogStatus,omitempty" name:"LogStatus"`
 }
@@ -833,7 +833,7 @@ type ModifyMatchRequest struct {
 	// 匹配描述，最长1024
 	MatchDesc *string `json:"MatchDesc,omitempty" name:"MatchDesc"`
 
-	// 只支持https协议
+	// 只支持 http 和 https 协议
 	NotifyUrl *string `json:"NotifyUrl,omitempty" name:"NotifyUrl"`
 
 	// 游戏服务器队列地域
@@ -894,7 +894,7 @@ type ModifyRuleRequest struct {
 	// 规则code
 	RuleCode *string `json:"RuleCode,omitempty" name:"RuleCode"`
 
-	// 规则名称
+	// 规则名称，只能包含数字、字母、. 和 -
 	RuleName *string `json:"RuleName,omitempty" name:"RuleName"`
 
 	// 规则描述，最长1024
@@ -1135,7 +1135,7 @@ type StartMatchingRequest struct {
 	// 玩家信息 最多 200 条。
 	Players []*Player `json:"Players,omitempty" name:"Players" list`
 
-	// 请求 Id 默认 "" 为空则由 GPM 自动生成 长度 128。
+	// 请求 Id 默认空字符串，为空则由 GPM 自动生成 长度 128，只能包含数字、字母、. 和 -
 	MatchTicketId *string `json:"MatchTicketId,omitempty" name:"MatchTicketId"`
 }
 

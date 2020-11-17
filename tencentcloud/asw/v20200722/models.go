@@ -249,6 +249,61 @@ func (r *DescribeFlowServiceDetailResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeFlowServicesRequest struct {
+	*tchttp.BaseRequest
+
+	// 偏移量，默认为0。
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 返回数量，默认为20，最大值为100。
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 过滤条件，详见下表：实例过滤条件表。每次请求的Filter.Values的上限为5。参数名字仅支持FlowServiceName， Status, Type三种情况
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+}
+
+func (r *DescribeFlowServicesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeFlowServicesRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeFlowServicesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 用户的状态机列表
+		FlowServiceSet []*StateMachine `json:"FlowServiceSet,omitempty" name:"FlowServiceSet" list`
+
+		// 用户的状态机总数
+		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeFlowServicesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeFlowServicesResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type Filter struct {
+
+	// 过滤器名字
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 过滤器值的数组
+	Values []*string `json:"Values,omitempty" name:"Values" list`
+}
+
 type ModifyFlowServiceRequest struct {
 	*tchttp.BaseRequest
 
@@ -354,4 +409,45 @@ func (r *StartExecutionResponse) ToJsonString() string {
 
 func (r *StartExecutionResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
+}
+
+type StateMachine struct {
+
+	// 状态机资源
+	FlowServiceResource *string `json:"FlowServiceResource,omitempty" name:"FlowServiceResource"`
+
+	// 状态机类型。EXPRESS，STANDARD
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 状态机名称
+	FlowServiceName *string `json:"FlowServiceName,omitempty" name:"FlowServiceName"`
+
+	// 状态机中文名
+	FlowServiceChineseName *string `json:"FlowServiceChineseName,omitempty" name:"FlowServiceChineseName"`
+
+	// 创建时间。timestamp
+	CreateDate *string `json:"CreateDate,omitempty" name:"CreateDate"`
+
+	// 修改时间。timestamp
+	ModifyDate *string `json:"ModifyDate,omitempty" name:"ModifyDate"`
+
+	// 状态机状态
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 创建者的subAccountUin
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Creator *string `json:"Creator,omitempty" name:"Creator"`
+
+	// 修改者的subAccountUin
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Modifier *string `json:"Modifier,omitempty" name:"Modifier"`
+
+	// 状态机id
+	FlowServiceId *string `json:"FlowServiceId,omitempty" name:"FlowServiceId"`
+
+	// 模板id
+	TemplateId *string `json:"TemplateId,omitempty" name:"TemplateId"`
+
+	// 备注
+	Description *string `json:"Description,omitempty" name:"Description"`
 }

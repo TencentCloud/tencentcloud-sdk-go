@@ -4485,6 +4485,55 @@ func (r *DescribeTopClientIpSumInfoListResponse) FromJsonString(s string) error 
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeUploadStreamNumsRequest struct {
+	*tchttp.BaseRequest
+
+	// 起始时间点，格式为yyyy-mm-dd HH:MM:SS。
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 结束时间点，格式为yyyy-mm-dd HH:MM:SS，起始和结束时间跨度不支持超过31天。支持最近31天的数据查询
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 直播域名，若不填，表示总体数据。
+	Domains []*string `json:"Domains,omitempty" name:"Domains" list`
+
+	// 数据粒度，支持如下粒度：
+	// 5：5分钟粒度，（跨度不支持超过1天），
+	// 1440：天粒度（跨度不支持超过一个月）。
+	// 默认值：5。
+	Granularity *uint64 `json:"Granularity,omitempty" name:"Granularity"`
+}
+
+func (r *DescribeUploadStreamNumsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeUploadStreamNumsRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeUploadStreamNumsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 明细数据信息
+		DataInfoList []*ConcurrentRecordStreamNum `json:"DataInfoList,omitempty" name:"DataInfoList" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeUploadStreamNumsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeUploadStreamNumsResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeVisitTopSumInfoListRequest struct {
 	*tchttp.BaseRequest
 

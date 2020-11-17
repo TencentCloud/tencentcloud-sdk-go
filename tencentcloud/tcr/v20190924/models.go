@@ -732,6 +732,43 @@ func (r *DeleteImageResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DeleteInstanceRequest struct {
+	*tchttp.BaseRequest
+
+	// 实例id
+	RegistryId *string `json:"RegistryId,omitempty" name:"RegistryId"`
+
+	// 是否删除存储桶，默认为false
+	DeleteBucket *bool `json:"DeleteBucket,omitempty" name:"DeleteBucket"`
+}
+
+func (r *DeleteInstanceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteInstanceRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteInstanceResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DeleteInstanceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteInstanceResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DeleteInstanceTokenRequest struct {
 	*tchttp.BaseRequest
 

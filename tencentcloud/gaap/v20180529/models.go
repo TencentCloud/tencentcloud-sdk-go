@@ -1115,6 +1115,9 @@ type CreateTCPListenersRequest struct {
 
 	// 源站端口列表，该参数仅支持v1版本监听器和通道组监听器。
 	RealServerPorts []*uint64 `json:"RealServerPorts,omitempty" name:"RealServerPorts" list`
+
+	// 监听器获取客户端 IP 的方式，0表示 TOA, 1表示Proxy Protocol
+	ClientIPMethod *int64 `json:"ClientIPMethod,omitempty" name:"ClientIPMethod"`
 }
 
 func (r *CreateTCPListenersRequest) ToJsonString() string {
@@ -4401,6 +4404,18 @@ type ProxyGroupDetail struct {
 	// 标签列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TagSet []*TagPair `json:"TagSet,omitempty" name:"TagSet" list`
+
+	// 安全策略ID，当设置了安全策略时，存在该字段。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PolicyId *string `json:"PolicyId,omitempty" name:"PolicyId"`
+
+	// 通道组版本
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Version *string `json:"Version,omitempty" name:"Version"`
+
+	// 通道获取客户端IP的方式，0表示TOA，1表示Proxy Protocol
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClientIPMethod []*int64 `json:"ClientIPMethod,omitempty" name:"ClientIPMethod" list`
 }
 
 type ProxyGroupInfo struct {
@@ -4554,6 +4569,10 @@ type ProxyInfo struct {
 	// 通道类型
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProxyType *uint64 `json:"ProxyType,omitempty" name:"ProxyType"`
+
+	// 通道获取客户端IP的方式，0表示TOA，1表示Proxy Protocol
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClientIPMethod []*int64 `json:"ClientIPMethod,omitempty" name:"ClientIPMethod" list`
 }
 
 type ProxySimpleInfo struct {
@@ -4923,6 +4942,10 @@ type TCPListener struct {
 
 	// 监听器创建时间，Unix时间戳
 	CreateTime *uint64 `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 监听器获取客户端 IP 的方式，0表示TOA, 1表示Proxy Protocol
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClientIPMethod *uint64 `json:"ClientIPMethod,omitempty" name:"ClientIPMethod"`
 }
 
 type TagPair struct {

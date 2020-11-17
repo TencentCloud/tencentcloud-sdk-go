@@ -243,6 +243,36 @@ func (c *Client) DescribeRealtimeScale(request *DescribeRealtimeScaleRequest) (r
     return
 }
 
+func NewDescribeRecordStatisticRequest() (request *DescribeRecordStatisticRequest) {
+    request = &DescribeRecordStatisticRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("trtc", APIVersion, "DescribeRecordStatistic")
+    return
+}
+
+func NewDescribeRecordStatisticResponse() (response *DescribeRecordStatisticResponse) {
+    response = &DescribeRecordStatisticResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询云端录制计费时长。
+// 
+// - 查询时间小于等于1天时，返回每5分钟粒度的数据；查询时间大于1天时，返回按天汇总的数据。
+// - 单次查询统计区间最多不能超过31天。
+// - 若查询当天用量，由于统计延迟等原因，返回数据可能不够准确。
+// - 日结后付费将于次日上午推送账单，建议次日上午9点以后再来查询前一天的用量。
+func (c *Client) DescribeRecordStatistic(request *DescribeRecordStatisticRequest) (response *DescribeRecordStatisticResponse, err error) {
+    if request == nil {
+        request = NewDescribeRecordStatisticRequest()
+    }
+    response = NewDescribeRecordStatisticResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeRoomInformationRequest() (request *DescribeRoomInformationRequest) {
     request = &DescribeRoomInformationRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -264,6 +294,64 @@ func (c *Client) DescribeRoomInformation(request *DescribeRoomInformationRequest
         request = NewDescribeRoomInformationRequest()
     }
     response = NewDescribeRoomInformationResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeTrtcInteractiveTimeRequest() (request *DescribeTrtcInteractiveTimeRequest) {
+    request = &DescribeTrtcInteractiveTimeRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("trtc", APIVersion, "DescribeTrtcInteractiveTime")
+    return
+}
+
+func NewDescribeTrtcInteractiveTimeResponse() (response *DescribeTrtcInteractiveTimeResponse) {
+    response = &DescribeTrtcInteractiveTimeResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询音视频互动计费时长。
+// - 查询时间小于等于1天时，返回每5分钟粒度的数据；查询时间大于1天时，返回按天汇总的数据。
+// - 单次查询统计区间最多不能超过31天。
+// - 若查询当天用量，由于统计延迟等原因，返回数据可能不够准确。
+// - 日结后付费将于次日上午推送账单，建议次日上午9点以后再来查询前一天的用量。
+func (c *Client) DescribeTrtcInteractiveTime(request *DescribeTrtcInteractiveTimeRequest) (response *DescribeTrtcInteractiveTimeResponse, err error) {
+    if request == nil {
+        request = NewDescribeTrtcInteractiveTimeRequest()
+    }
+    response = NewDescribeTrtcInteractiveTimeResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeTrtcMcuTranscodeTimeRequest() (request *DescribeTrtcMcuTranscodeTimeRequest) {
+    request = &DescribeTrtcMcuTranscodeTimeRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("trtc", APIVersion, "DescribeTrtcMcuTranscodeTime")
+    return
+}
+
+func NewDescribeTrtcMcuTranscodeTimeResponse() (response *DescribeTrtcMcuTranscodeTimeResponse) {
+    response = &DescribeTrtcMcuTranscodeTimeResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询旁路转码计费时长。
+// - 查询时间小于等于1天时，返回每5分钟粒度的数据；查询时间大于1天时，返回按天汇总的数据。
+// - 单次查询统计区间最多不能超过31天。
+// - 若查询当天用量，由于统计延迟等原因，返回数据可能不够准确。
+// - 日结后付费将于次日上午推送账单，建议次日上午9点以后再来查询前一天的用量。
+func (c *Client) DescribeTrtcMcuTranscodeTime(request *DescribeTrtcMcuTranscodeTimeRequest) (response *DescribeTrtcMcuTranscodeTimeResponse, err error) {
+    if request == nil {
+        request = NewDescribeTrtcMcuTranscodeTimeRequest()
+    }
+    response = NewDescribeTrtcMcuTranscodeTimeResponse()
     err = c.Send(request, response)
     return
 }
@@ -318,6 +406,31 @@ func (c *Client) DismissRoom(request *DismissRoomRequest) (response *DismissRoom
     return
 }
 
+func NewDismissRoomByStrRoomIdRequest() (request *DismissRoomByStrRoomIdRequest) {
+    request = &DismissRoomByStrRoomIdRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("trtc", APIVersion, "DismissRoomByStrRoomId")
+    return
+}
+
+func NewDismissRoomByStrRoomIdResponse() (response *DismissRoomByStrRoomIdResponse) {
+    response = &DismissRoomByStrRoomIdResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 接口说明：把房间所有用户从房间移出，解散房间。支持所有平台，Android、iOS、Windows 和 macOS 需升级到 TRTC SDK 6.6及以上版本。
+func (c *Client) DismissRoomByStrRoomId(request *DismissRoomByStrRoomIdRequest) (response *DismissRoomByStrRoomIdResponse, err error) {
+    if request == nil {
+        request = NewDismissRoomByStrRoomIdRequest()
+    }
+    response = NewDismissRoomByStrRoomIdResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewRemoveUserRequest() (request *RemoveUserRequest) {
     request = &RemoveUserRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -339,6 +452,31 @@ func (c *Client) RemoveUser(request *RemoveUserRequest) (response *RemoveUserRes
         request = NewRemoveUserRequest()
     }
     response = NewRemoveUserResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewRemoveUserByStrRoomIdRequest() (request *RemoveUserByStrRoomIdRequest) {
+    request = &RemoveUserByStrRoomIdRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("trtc", APIVersion, "RemoveUserByStrRoomId")
+    return
+}
+
+func NewRemoveUserByStrRoomIdResponse() (response *RemoveUserByStrRoomIdResponse) {
+    response = &RemoveUserByStrRoomIdResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 接口说明：将用户从房间移出，适用于主播/房主/管理员踢人等场景。支持所有平台，Android、iOS、Windows 和 macOS 需升级到 TRTC SDK 6.6及以上版本。
+func (c *Client) RemoveUserByStrRoomId(request *RemoveUserByStrRoomIdRequest) (response *RemoveUserByStrRoomIdResponse, err error) {
+    if request == nil {
+        request = NewRemoveUserByStrRoomIdRequest()
+    }
+    response = NewRemoveUserByStrRoomIdResponse()
     err = c.Send(request, response)
     return
 }

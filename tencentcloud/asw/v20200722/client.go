@@ -143,6 +143,31 @@ func (c *Client) DescribeFlowServiceDetail(request *DescribeFlowServiceDetailReq
     return
 }
 
+func NewDescribeFlowServicesRequest() (request *DescribeFlowServicesRequest) {
+    request = &DescribeFlowServicesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("asw", APIVersion, "DescribeFlowServices")
+    return
+}
+
+func NewDescribeFlowServicesResponse() (response *DescribeFlowServicesResponse) {
+    response = &DescribeFlowServicesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询指定用户下所有状态机，以列表形式返回
+func (c *Client) DescribeFlowServices(request *DescribeFlowServicesRequest) (response *DescribeFlowServicesResponse, err error) {
+    if request == nil {
+        request = NewDescribeFlowServicesRequest()
+    }
+    response = NewDescribeFlowServicesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyFlowServiceRequest() (request *ModifyFlowServiceRequest) {
     request = &ModifyFlowServiceRequest{
         BaseRequest: &tchttp.BaseRequest{},

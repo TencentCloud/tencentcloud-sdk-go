@@ -893,6 +893,49 @@ func (r *CreateDiagnoseUrlResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type CreateEdgePackTaskRequest struct {
+	*tchttp.BaseRequest
+
+	// apk 所在的 cos 存储桶, 如 edgepack-xxxxxxxx
+	CosBucket *string `json:"CosBucket,omitempty" name:"CosBucket"`
+
+	// apk 源文件的存储路径, 如 /apk/xxxx.apk
+	CosUriFrom *string `json:"CosUriFrom,omitempty" name:"CosUriFrom"`
+
+	// 拓展之后的 apk 目标存储路径,如 /out/xxxx.apk
+	CosUriTo *string `json:"CosUriTo,omitempty" name:"CosUriTo"`
+
+	// BlockID 的值, WALLE为1903654775(0x71777777)，VasDolly为2282837503(0x881155ff),传0或不传时默认为 WALLE 方案
+	BlockID *uint64 `json:"BlockID,omitempty" name:"BlockID"`
+}
+
+func (r *CreateEdgePackTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateEdgePackTaskRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateEdgePackTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateEdgePackTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateEdgePackTaskResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type CreateScdnLogTaskRequest struct {
 	*tchttp.BaseRequest
 

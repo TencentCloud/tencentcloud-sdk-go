@@ -276,7 +276,13 @@ type ClusterAdvancedSettings struct {
 	// 是否启用集群删除保护
 	DeletionProtection *bool `json:"DeletionProtection,omitempty" name:"DeletionProtection"`
 
-	// 集群的网络代理模型
+	// 集群的网络代理模型，目前tke集群支持的网络代理模式有三种：iptables,ipvs,ipvs+bpf，此参数仅在使用ipvs+bpf模式时使用，三种网络模式的参数设置关系如下：
+	// iptables模式：IPVS和KubeProxyMode都不设置
+	// ipvs模式: 设置IPVS为true, KubeProxyMode不设置
+	// ipvs-bpf模式: 设置KubeProxyMode为kube-proxy-bpf
+	// 使用ipvs-bpf的网络模式需要满足以下条件：
+	// 1. 集群版本必须为1.14及以上；
+	// 2. 系统镜像必须是tke定制的镜像如: ubuntu TKE-optimized、centos TKE-optimized；
 	KubeProxyMode *string `json:"KubeProxyMode,omitempty" name:"KubeProxyMode"`
 
 	// 是否开启审计开关
@@ -290,6 +296,9 @@ type ClusterAdvancedSettings struct {
 
 	// 区分单网卡多IP模式和独立网卡模式
 	VpcCniType *string `json:"VpcCniType,omitempty" name:"VpcCniType"`
+
+	// 运行时版本
+	RuntimeVersion *string `json:"RuntimeVersion,omitempty" name:"RuntimeVersion"`
 }
 
 type ClusterAsGroup struct {

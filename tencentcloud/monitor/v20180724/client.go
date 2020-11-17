@@ -322,6 +322,31 @@ func (c *Client) DescribeBindingPolicyObjectList(request *DescribeBindingPolicyO
     return
 }
 
+func NewDescribeMonitorTypesRequest() (request *DescribeMonitorTypesRequest) {
+    request = &DescribeMonitorTypesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("monitor", APIVersion, "DescribeMonitorTypes")
+    return
+}
+
+func NewDescribeMonitorTypesResponse() (response *DescribeMonitorTypesResponse) {
+    response = &DescribeMonitorTypesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 云监控支持多种类型的监控，此接口列出支持的所有类型
+func (c *Client) DescribeMonitorTypes(request *DescribeMonitorTypesRequest) (response *DescribeMonitorTypesResponse, err error) {
+    if request == nil {
+        request = NewDescribeMonitorTypesRequest()
+    }
+    response = NewDescribeMonitorTypesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribePolicyConditionListRequest() (request *DescribePolicyConditionListRequest) {
     request = &DescribePolicyConditionListRequest{
         BaseRequest: &tchttp.BaseRequest{},

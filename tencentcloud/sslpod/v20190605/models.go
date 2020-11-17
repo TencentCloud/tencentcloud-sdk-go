@@ -78,7 +78,7 @@ type ChartNameValue struct {
 type CreateDomainRequest struct {
 	*tchttp.BaseRequest
 
-	// 监控的服务器类型 Enums(0,1,2,3)
+	// 监控的服务器类型（0：web，1：smtp，2：imap，3：pops）
 	ServerType *int64 `json:"ServerType,omitempty" name:"ServerType"`
 
 	// 添加的域名
@@ -148,7 +148,7 @@ type DashboardResult struct {
 type DeleteDomainRequest struct {
 	*tchttp.BaseRequest
 
-	// 域名列表中的ID
+	// 域名ID，可通过搜索域名接口获得
 	DomainId *int64 `json:"DomainId,omitempty" name:"DomainId"`
 }
 
@@ -217,7 +217,7 @@ func (r *DescribeDashboardResponse) FromJsonString(s string) error {
 type DescribeDomainCertsRequest struct {
 	*tchttp.BaseRequest
 
-	// 域名ID
+	// 域名ID，可通过搜索域名接口获得
 	DomainId *int64 `json:"DomainId,omitempty" name:"DomainId"`
 }
 
@@ -319,7 +319,7 @@ type DescribeDomainsRequest struct {
 	// 搜索的类型 Enums(none,tags,grade,brand,code,hash,limit)
 	SearchType *string `json:"SearchType,omitempty" name:"SearchType"`
 
-	// 标签
+	// 标签，多个标签用逗号分隔
 	Tag *string `json:"Tag,omitempty" name:"Tag"`
 
 	// 等级
@@ -512,7 +512,7 @@ type NoticeInfoResult struct {
 type RefreshDomainRequest struct {
 	*tchttp.BaseRequest
 
-	// 域名列表中的ID
+	// 域名列表中的ID，可通过搜索域名接口获得
 	DomainId *int64 `json:"DomainId,omitempty" name:"DomainId"`
 }
 

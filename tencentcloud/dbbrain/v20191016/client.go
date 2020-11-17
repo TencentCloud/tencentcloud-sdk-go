@@ -133,7 +133,7 @@ func NewDescribeSlowLogTimeSeriesStatsResponse() (response *DescribeSlowLogTimeS
     return
 }
 
-// 获取慢日志统计柱状图
+// 获取慢日志统计柱状图。
 func (c *Client) DescribeSlowLogTimeSeriesStats(request *DescribeSlowLogTimeSeriesStatsRequest) (response *DescribeSlowLogTimeSeriesStatsResponse, err error) {
     if request == nil {
         request = NewDescribeSlowLogTimeSeriesStatsRequest()

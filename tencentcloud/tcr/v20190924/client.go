@@ -468,6 +468,31 @@ func (c *Client) DeleteImagePersonal(request *DeleteImagePersonalRequest) (respo
     return
 }
 
+func NewDeleteInstanceRequest() (request *DeleteInstanceRequest) {
+    request = &DeleteInstanceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tcr", APIVersion, "DeleteInstance")
+    return
+}
+
+func NewDeleteInstanceResponse() (response *DeleteInstanceResponse) {
+    response = &DeleteInstanceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 删除镜像仓库企业版实例
+func (c *Client) DeleteInstance(request *DeleteInstanceRequest) (response *DeleteInstanceResponse, err error) {
+    if request == nil {
+        request = NewDeleteInstanceRequest()
+    }
+    response = NewDeleteInstanceResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteInstanceTokenRequest() (request *DeleteInstanceTokenRequest) {
     request = &DeleteInstanceTokenRequest{
         BaseRequest: &tchttp.BaseRequest{},

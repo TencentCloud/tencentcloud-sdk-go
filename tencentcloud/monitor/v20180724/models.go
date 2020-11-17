@@ -1006,6 +1006,43 @@ func (r *DescribeBindingPolicyObjectListResponse) FromJsonString(s string) error
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeMonitorTypesRequest struct {
+	*tchttp.BaseRequest
+
+	// 固定值，为"monitor"
+	Module *string `json:"Module,omitempty" name:"Module"`
+}
+
+func (r *DescribeMonitorTypesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeMonitorTypesRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeMonitorTypesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 监控类型
+		MonitorTypes []*string `json:"MonitorTypes,omitempty" name:"MonitorTypes" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeMonitorTypesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeMonitorTypesResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribePolicyConditionListCondition struct {
 
 	// 策略视图名称

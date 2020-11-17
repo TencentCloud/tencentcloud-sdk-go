@@ -786,6 +786,12 @@ type CreateLoadBalancerRequest struct {
 	// 用于保证请求幂等性的字符串。该字符串由客户生成，需保证不同请求之间唯一，最大值不超过64个ASCII字符。若不指定该参数，则无法保证请求的幂等性。
 	ClientToken *string `json:"ClientToken,omitempty" name:"ClientToken"`
 
+	// 是否支持绑定跨地域/跨Vpc绑定IP的功能。
+	SnatPro *bool `json:"SnatPro,omitempty" name:"SnatPro"`
+
+	// 开启绑定跨地域/跨Vpc绑定IP的功能后，创建SnatIp。
+	SnatIps []*SnatIp `json:"SnatIps,omitempty" name:"SnatIps" list`
+
 	// Stgw独占集群的标签。
 	ClusterTag *string `json:"ClusterTag,omitempty" name:"ClusterTag"`
 }

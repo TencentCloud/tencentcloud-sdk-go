@@ -1039,14 +1039,14 @@ func (r *DescribeBillResourceSummaryResponse) FromJsonString(s string) error {
 type DescribeBillSummaryByPayModeRequest struct {
 	*tchttp.BaseRequest
 
-	// 查询账单数据的用户UIN
-	PayerUin *string `json:"PayerUin,omitempty" name:"PayerUin"`
-
-	// 目前只支持传当月开始，且必须和EndTime为相同月份，例 2018-09-01 00:00:00
+	// 目前必须和EndTime相同月份，不支持跨月查询，且查询结果是整月数据，例如 BeginTime为2018-09，EndTime 为 2018-09，查询结果是 2018 年 9 月数据。
 	BeginTime *string `json:"BeginTime,omitempty" name:"BeginTime"`
 
-	// 目前只支持传当月结束，且必须和BeginTime为相同月份，例 2018-09-30 23:59:59
+	// 目前必须和BeginTime为相同月份，不支持跨月查询，且查询结果是整月数据，例如 BeginTime为2018-09，EndTime 为 2018-09，查询结果是 2018 年 9 月数据。
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 查询账单数据的用户UIN
+	PayerUin *string `json:"PayerUin,omitempty" name:"PayerUin"`
 }
 
 func (r *DescribeBillSummaryByPayModeRequest) ToJsonString() string {
@@ -1086,14 +1086,14 @@ func (r *DescribeBillSummaryByPayModeResponse) FromJsonString(s string) error {
 type DescribeBillSummaryByProductRequest struct {
 	*tchttp.BaseRequest
 
-	// 查询账单数据的用户UIN
-	PayerUin *string `json:"PayerUin,omitempty" name:"PayerUin"`
-
-	// 目前只支持传当月开始，且必须和EndTime为相同月份，例 2018-09-01 00:00:00
+	// 目前必须和EndTime相同月份，不支持跨月查询，且查询结果是整月数据，例如 BeginTime为2018-09，EndTime 为 2018-09，查询结果是 2018 年 9 月数据。
 	BeginTime *string `json:"BeginTime,omitempty" name:"BeginTime"`
 
-	// 目前只支持传当月结束，且必须和BeginTime为相同月份，例 2018-09-30 23:59:59
+	// 目前必须和BeginTime为相同月份，不支持跨月查询，且查询结果是整月数据，例如 BeginTime为2018-09，EndTime 为 2018-09，查询结果是 2018 年 9 月数据。
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 查询账单数据的用户UIN
+	PayerUin *string `json:"PayerUin,omitempty" name:"PayerUin"`
 }
 
 func (r *DescribeBillSummaryByProductRequest) ToJsonString() string {
@@ -1137,14 +1137,14 @@ func (r *DescribeBillSummaryByProductResponse) FromJsonString(s string) error {
 type DescribeBillSummaryByProjectRequest struct {
 	*tchttp.BaseRequest
 
-	// 查询账单数据的用户UIN
-	PayerUin *string `json:"PayerUin,omitempty" name:"PayerUin"`
-
-	// 目前只支持传当月开始，且必须和EndTime为相同月份，例 2018-09-01 00:00:00
+	// 目前必须和EndTime相同月份，不支持跨月查询，且查询结果是整月数据，例如 BeginTime为2018-09，EndTime 为 2018-09，查询结果是 2018 年 9 月数据。
 	BeginTime *string `json:"BeginTime,omitempty" name:"BeginTime"`
 
-	// 目前只支持传当月结束，且必须和BeginTime为相同月份，例 2018-09-30 23:59:59
+	// 目前必须和BeginTime为相同月份，不支持跨月查询，且查询结果是整月数据，例如 BeginTime为2018-09，EndTime 为 2018-09，查询结果是 2018 年 9 月数据。
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 查询账单数据的用户UIN
+	PayerUin *string `json:"PayerUin,omitempty" name:"PayerUin"`
 }
 
 func (r *DescribeBillSummaryByProjectRequest) ToJsonString() string {
@@ -1184,14 +1184,14 @@ func (r *DescribeBillSummaryByProjectResponse) FromJsonString(s string) error {
 type DescribeBillSummaryByRegionRequest struct {
 	*tchttp.BaseRequest
 
-	// 查询账单数据的用户UIN
-	PayerUin *string `json:"PayerUin,omitempty" name:"PayerUin"`
-
-	// 目前只支持传当月开始，且必须和EndTime为相同月份，例 2018-09-01 00:00:00
+	// 目前必须和EndTime相同月份，不支持跨月查询，且查询结果是整月数据，例如 BeginTime为2018-09，EndTime 为 2018-09，查询结果是 2018 年 9 月数据。
 	BeginTime *string `json:"BeginTime,omitempty" name:"BeginTime"`
 
-	// 目前只支持传当月结束，且必须和BeginTime为相同月份，例 2018-09-30 23:59:59
+	// 目前必须和BeginTime为相同月份，不支持跨月查询，且查询结果是整月数据，例如 BeginTime为2018-09，EndTime 为 2018-09，查询结果是 2018 年 9 月数据。
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 查询账单数据的用户UIN
+	PayerUin *string `json:"PayerUin,omitempty" name:"PayerUin"`
 }
 
 func (r *DescribeBillSummaryByRegionRequest) ToJsonString() string {
@@ -1231,17 +1231,17 @@ func (r *DescribeBillSummaryByRegionResponse) FromJsonString(s string) error {
 type DescribeBillSummaryByTagRequest struct {
 	*tchttp.BaseRequest
 
-	// 查询账单数据的用户UIN
-	PayerUin *string `json:"PayerUin,omitempty" name:"PayerUin"`
-
-	// 目前只支持传当月开始，且必须和EndTime为相同月份，例 2018-09-01 00:00:00
+	// 目前必须和EndTime相同月份，不支持跨月查询，且查询结果是整月数据，例如 BeginTime为2018-09，EndTime 为 2018-09，查询结果是 2018 年 9 月数据。
 	BeginTime *string `json:"BeginTime,omitempty" name:"BeginTime"`
 
-	// 目前只支持传当月结束，且必须和BeginTime为相同月份，例 2018-09-30 23:59:59
+	// 目前必须和BeginTime为相同月份，不支持跨月查询，且查询结果是整月数据，例如 BeginTime为2018-09，EndTime 为 2018-09，查询结果是 2018 年 9 月数据。
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 
 	// 分账标签键
 	TagKey *string `json:"TagKey,omitempty" name:"TagKey"`
+
+	// 查询账单数据的用户UIN
+	PayerUin *string `json:"PayerUin,omitempty" name:"PayerUin"`
 }
 
 func (r *DescribeBillSummaryByTagRequest) ToJsonString() string {
@@ -1348,13 +1348,10 @@ func (r *DescribeCostDetailResponse) FromJsonString(s string) error {
 type DescribeCostSummaryByProductRequest struct {
 	*tchttp.BaseRequest
 
-	// 查询账单数据的用户UIN
-	PayerUin *string `json:"PayerUin,omitempty" name:"PayerUin"`
-
-	// 目前必须和EndTime相同月份，不支持跨月查询，且查询结果是整月数据，例如 BeginTime为2018-09-03 03:01:45，EndTime 为 2018-09-25 12:01:45，查询结果是 2018 年 9 月数据。
+	// 目前必须和EndTime相同月份，不支持跨月查询，且查询结果是整月数据，例如 BeginTime为2018-09，EndTime 为 2018-09，查询结果是 2018 年 9 月数据。
 	BeginTime *string `json:"BeginTime,omitempty" name:"BeginTime"`
 
-	// 目前必须和BeginTime为相同月份，不支持跨月查询，且查询结果是整月数据，例如 BeginTime为2018-09-03 03:01:45，EndTime 为 2018-09-25 12:01:45，查询结果是 2018 年 9 月数据。
+	// 目前必须和BeginTime为相同月份，不支持跨月查询，且查询结果是整月数据，例如 BeginTime为2018-09，EndTime 为 2018-09，查询结果是 2018 年 9 月数据。
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 
 	// 每次获取数据量
@@ -1362,6 +1359,9 @@ type DescribeCostSummaryByProductRequest struct {
 
 	// 偏移量
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 查询账单数据的用户UIN
+	PayerUin *string `json:"PayerUin,omitempty" name:"PayerUin"`
 
 	// 是否需要返回记录数量，0不需要，1需要，默认不需要
 	NeedRecordNum *uint64 `json:"NeedRecordNum,omitempty" name:"NeedRecordNum"`
@@ -1411,13 +1411,10 @@ func (r *DescribeCostSummaryByProductResponse) FromJsonString(s string) error {
 type DescribeCostSummaryByProjectRequest struct {
 	*tchttp.BaseRequest
 
-	// 查询账单数据的用户UIN
-	PayerUin *string `json:"PayerUin,omitempty" name:"PayerUin"`
-
-	// 目前必须和EndTime相同月份，不支持跨月查询，且查询结果是整月数据，例如 BeginTime为2018-09-03 03:01:45，EndTime 为 2018-09-25 12:01:45，查询结果是 2018 年 9 月数据。
+	// 目前必须和EndTime相同月份，不支持跨月查询，且查询结果是整月数据，例如 BeginTime为2018-09，EndTime 为 2018-09，查询结果是 2018 年 9 月数据。
 	BeginTime *string `json:"BeginTime,omitempty" name:"BeginTime"`
 
-	// 目前必须和BeginTime为相同月份，不支持跨月查询，且查询结果是整月数据，例如 BeginTime为2018-09-03 03:01:45，EndTime 为 2018-09-25 12:01:45，查询结果是 2018 年 9 月数据。
+	// 目前必须和BeginTime为相同月份，不支持跨月查询，且查询结果是整月数据，例如 BeginTime为2018-09，EndTime 为 2018-09，查询结果是 2018 年 9 月数据。
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 
 	// 每次获取数据量
@@ -1425,6 +1422,9 @@ type DescribeCostSummaryByProjectRequest struct {
 
 	// 偏移量
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 查询账单数据的用户UIN
+	PayerUin *string `json:"PayerUin,omitempty" name:"PayerUin"`
 
 	// 是否需要返回记录数量，0不需要，1需要，默认不需要
 	NeedRecordNum *uint64 `json:"NeedRecordNum,omitempty" name:"NeedRecordNum"`
@@ -1472,13 +1472,10 @@ func (r *DescribeCostSummaryByProjectResponse) FromJsonString(s string) error {
 type DescribeCostSummaryByRegionRequest struct {
 	*tchttp.BaseRequest
 
-	// 查询账单数据的用户UIN
-	PayerUin *string `json:"PayerUin,omitempty" name:"PayerUin"`
-
-	// 目前必须和EndTime相同月份，不支持跨月查询，且查询结果是整月数据，例如 BeginTime为2018-09-03 03:01:45，EndTime 为 2018-09-25 12:01:45，查询结果是 2018 年 9 月数据。
+	// 目前必须和EndTime相同月份，不支持跨月查询，且查询结果是整月数据，例如 BeginTime为2018-09，EndTime 为 2018-09，查询结果是 2018 年 9 月数据。
 	BeginTime *string `json:"BeginTime,omitempty" name:"BeginTime"`
 
-	// 目前必须和BeginTime为相同月份，不支持跨月查询，且查询结果是整月数据，例如 BeginTime为2018-09-03 03:01:45，EndTime 为 2018-09-25 12:01:45，查询结果是 2018 年 9 月数据。
+	// 目前必须和BeginTime为相同月份，不支持跨月查询，且查询结果是整月数据，例如 BeginTime为2018-09，EndTime 为 2018-09，查询结果是 2018 年 9 月数据。
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 
 	// 每次获取数据量
@@ -1486,6 +1483,9 @@ type DescribeCostSummaryByRegionRequest struct {
 
 	// 偏移量
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 查询账单数据的用户UIN
+	PayerUin *string `json:"PayerUin,omitempty" name:"PayerUin"`
 
 	// 是否需要返回记录数量，0不需要，1需要，默认不需要
 	NeedRecordNum *uint64 `json:"NeedRecordNum,omitempty" name:"NeedRecordNum"`
@@ -1534,13 +1534,10 @@ func (r *DescribeCostSummaryByRegionResponse) FromJsonString(s string) error {
 type DescribeCostSummaryByResourceRequest struct {
 	*tchttp.BaseRequest
 
-	// 查询账单数据的用户UIN
-	PayerUin *string `json:"PayerUin,omitempty" name:"PayerUin"`
-
-	// 目前必须和EndTime相同月份，不支持跨月查询，且查询结果是整月数据，例如 BeginTime为2018-09-03 03:01:45，EndTime 为 2018-09-25 12:01:45，查询结果是 2018 年 9 月数据。
+	// 目前必须和EndTime相同月份，不支持跨月查询，且查询结果是整月数据，例如 BeginTime为2018-09，EndTime 为 2018-09，查询结果是 2018 年 9 月数据。
 	BeginTime *string `json:"BeginTime,omitempty" name:"BeginTime"`
 
-	// 目前必须和BeginTime为相同月份，不支持跨月查询，且查询结果是整月数据，例如 BeginTime为2018-09-03 03:01:45，EndTime 为 2018-09-25 12:01:45，查询结果是 2018 年 9 月数据。
+	// 目前必须和BeginTime为相同月份，不支持跨月查询，且查询结果是整月数据，例如 BeginTime为2018-09，EndTime 为 2018-09，查询结果是 2018 年 9 月数据。
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 
 	// 每次获取数据量
@@ -1548,6 +1545,9 @@ type DescribeCostSummaryByResourceRequest struct {
 
 	// 偏移量
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 查询账单数据的用户UIN
+	PayerUin *string `json:"PayerUin,omitempty" name:"PayerUin"`
 
 	// 是否需要返回记录数量，0不需要，1需要，默认不需要
 	NeedRecordNum *uint64 `json:"NeedRecordNum,omitempty" name:"NeedRecordNum"`

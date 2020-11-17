@@ -118,6 +118,31 @@ func (c *Client) CreateDiagnoseUrl(request *CreateDiagnoseUrlRequest) (response 
     return
 }
 
+func NewCreateEdgePackTaskRequest() (request *CreateEdgePackTaskRequest) {
+    request = &CreateEdgePackTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cdn", APIVersion, "CreateEdgePackTask")
+    return
+}
+
+func NewCreateEdgePackTaskResponse() (response *CreateEdgePackTaskResponse) {
+    response = &CreateEdgePackTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 动态打包任务提交接口
+func (c *Client) CreateEdgePackTask(request *CreateEdgePackTaskRequest) (response *CreateEdgePackTaskResponse, err error) {
+    if request == nil {
+        request = NewCreateEdgePackTaskRequest()
+    }
+    response = NewCreateEdgePackTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateScdnLogTaskRequest() (request *CreateScdnLogTaskRequest) {
     request = &CreateScdnLogTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},

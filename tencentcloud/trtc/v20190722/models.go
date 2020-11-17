@@ -166,7 +166,7 @@ type DescribeCallDetailRequest struct {
 	// 通话 ID（唯一标识一次通话）： sdkappid_roomgString（房间号_createTime（房间创建时间，unix时间戳，单位为s）例：1400353843_218695_1590065777。通过 DescribeRoomInformation（查询房间列表）接口获取（链接：https://cloud.tencent.com/document/product/647/44050）
 	CommId *string `json:"CommId,omitempty" name:"CommId"`
 
-	// 查询开始时间，5天内。本地unix时间戳（1588031999s）
+	// 查询开始时间，14天内。本地unix时间戳（1588031999s）
 	StartTime *uint64 `json:"StartTime,omitempty" name:"StartTime"`
 
 	// 查询结束时间，本地unix时间戳（1588031999s）
@@ -245,7 +245,7 @@ type DescribeDetailEventRequest struct {
 	// 通话 ID（唯一标识一次通话）： sdkappid_roomgString（房间号_createTime（房间创建时间，unix时间戳，单位s）。通过 DescribeRoomInformation（查询房间列表）接口获取。（链接：https://cloud.tencent.com/document/product/647/44050）
 	CommId *string `json:"CommId,omitempty" name:"CommId"`
 
-	// 查询开始时间，5天内。本地unix时间戳（1588031999s）
+	// 查询开始时间，14天内。本地unix时间戳（1588031999s）
 	StartTime *uint64 `json:"StartTime,omitempty" name:"StartTime"`
 
 	// 查询结束时间，本地unix时间戳（1588031999s）
@@ -481,13 +481,56 @@ func (r *DescribeRealtimeScaleResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeRecordStatisticRequest struct {
+	*tchttp.BaseRequest
+
+	// 查询开始日期。
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 查询结束日期。
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 应用ID，可不传。传应用ID时返回的是该应用的用量，不传时返回多个应用的合计值。
+	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+}
+
+func (r *DescribeRecordStatisticRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeRecordStatisticRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeRecordStatisticResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 应用的用量信息数组。
+		SdkAppIdUsages []*SdkAppIdRecordUsage `json:"SdkAppIdUsages,omitempty" name:"SdkAppIdUsages" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeRecordStatisticResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeRecordStatisticResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeRoomInformationRequest struct {
 	*tchttp.BaseRequest
 
 	// 用户sdkappid
 	SdkAppId *string `json:"SdkAppId,omitempty" name:"SdkAppId"`
 
-	// 查询开始时间，5天内。本地unix时间戳（1588031999s）
+	// 查询开始时间，14天内。本地unix时间戳（1588031999s）
 	StartTime *uint64 `json:"StartTime,omitempty" name:"StartTime"`
 
 	// 查询结束时间，本地unix时间戳（1588031999s）
@@ -536,13 +579,101 @@ func (r *DescribeRoomInformationResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeTrtcInteractiveTimeRequest struct {
+	*tchttp.BaseRequest
+
+	// 查询开始时间，格式为YYYY-MM-DD。
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 查询结束时间，格式为YYYY-MM-DD。
+	// 单次查询统计区间最多不能超过31天。
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 应用ID，可不传。传应用ID时返回的是该应用的用量，不传时返回所有应用的合计值。
+	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+}
+
+func (r *DescribeTrtcInteractiveTimeRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeTrtcInteractiveTimeRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeTrtcInteractiveTimeResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 应用的用量信息数组。
+		Usages []*OneSdkAppIdUsagesInfo `json:"Usages,omitempty" name:"Usages" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeTrtcInteractiveTimeResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeTrtcInteractiveTimeResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeTrtcMcuTranscodeTimeRequest struct {
+	*tchttp.BaseRequest
+
+	// 查询开始时间，格式为YYYY-MM-DD。
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 查询结束时间，格式为YYYY-MM-DD。
+	// 单次查询统计区间最多不能超过31天。
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 应用ID，可不传。传应用ID时返回的是该应用的用量，不传时返回多个应用的合计值。
+	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+}
+
+func (r *DescribeTrtcMcuTranscodeTimeRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeTrtcMcuTranscodeTimeRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeTrtcMcuTranscodeTimeResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 应用的用量信息数组。
+		Usages []*OneSdkAppIdTranscodeTimeUsagesInfo `json:"Usages,omitempty" name:"Usages" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeTrtcMcuTranscodeTimeResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeTrtcMcuTranscodeTimeResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeUserInformationRequest struct {
 	*tchttp.BaseRequest
 
 	// 通话 ID（唯一标识一次通话）： sdkappid_roomgString（房间号_createTime（房间创建时间，unix时间戳，单位为s）例：1400353843_218695_1590065777。通过 DescribeRoomInformation（查询房间列表）接口获取（链接：https://cloud.tencent.com/document/product/647/44050）
 	CommId *string `json:"CommId,omitempty" name:"CommId"`
 
-	// 查询开始时间，5天内。本地unix时间戳（1588031999s）
+	// 查询开始时间，14天内。本地unix时间戳（1588031999s）
 	StartTime *uint64 `json:"StartTime,omitempty" name:"StartTime"`
 
 	// 查询结束时间，本地unix时间戳（1588031999s）
@@ -592,6 +723,43 @@ func (r *DescribeUserInformationResponse) ToJsonString() string {
 }
 
 func (r *DescribeUserInformationResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DismissRoomByStrRoomIdRequest struct {
+	*tchttp.BaseRequest
+
+	// TRTC的SDKAppId。
+	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+
+	// 房间号。
+	RoomId *string `json:"RoomId,omitempty" name:"RoomId"`
+}
+
+func (r *DismissRoomByStrRoomIdRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DismissRoomByStrRoomIdRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DismissRoomByStrRoomIdResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DismissRoomByStrRoomIdResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DismissRoomByStrRoomIdResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -720,6 +888,30 @@ type LayoutParams struct {
 	PresetLayoutConfig []*PresetLayoutConfig `json:"PresetLayoutConfig,omitempty" name:"PresetLayoutConfig" list`
 }
 
+type OneSdkAppIdTranscodeTimeUsagesInfo struct {
+
+	// 旁路转码时长查询结果数组
+	SdkAppIdTranscodeTimeUsages []*SdkAppIdTrtcMcuTranscodeTimeUsage `json:"SdkAppIdTranscodeTimeUsages,omitempty" name:"SdkAppIdTranscodeTimeUsages" list`
+
+	// 查询记录数量
+	TotalNum *uint64 `json:"TotalNum,omitempty" name:"TotalNum"`
+
+	// 所查询的应用ID，可能值为:1-应用的应用ID，2-total，显示为total则表示查询的是所有应用的用量合计值。
+	SdkAppId *string `json:"SdkAppId,omitempty" name:"SdkAppId"`
+}
+
+type OneSdkAppIdUsagesInfo struct {
+
+	// 该 SdkAppId 对应的用量记录数长度
+	TotalNum *uint64 `json:"TotalNum,omitempty" name:"TotalNum"`
+
+	// 用量数组
+	SdkAppIdTrtcTimeUsages []*SdkAppIdTrtcUsage `json:"SdkAppIdTrtcTimeUsages,omitempty" name:"SdkAppIdTrtcTimeUsages" list`
+
+	// 应用ID
+	SdkAppId *string `json:"SdkAppId,omitempty" name:"SdkAppId"`
+}
+
 type OutputParams struct {
 
 	// 直播流 ID，由用户自定义设置，该流 ID 不能与用户旁路的流 ID 相同。
@@ -786,6 +978,64 @@ type RealtimeData struct {
 
 	// 数据类型字段
 	DataType *string `json:"DataType,omitempty" name:"DataType"`
+}
+
+type RecordUsage struct {
+
+	// 本组数据对应的时间点，格式如:2020-09-07或2020-09-07 00:05:05。
+	TimeKey *string `json:"TimeKey,omitempty" name:"TimeKey"`
+
+	// 视频时长-标清SD，单位：秒。
+	Class1VideoTime *uint64 `json:"Class1VideoTime,omitempty" name:"Class1VideoTime"`
+
+	// 视频时长-高清HD，单位：秒。
+	Class2VideoTime *uint64 `json:"Class2VideoTime,omitempty" name:"Class2VideoTime"`
+
+	// 视频时长-超清HD，单位：秒。
+	Class3VideoTime *uint64 `json:"Class3VideoTime,omitempty" name:"Class3VideoTime"`
+
+	// 语音时长，单位：秒。
+	AudioTime *uint64 `json:"AudioTime,omitempty" name:"AudioTime"`
+}
+
+type RemoveUserByStrRoomIdRequest struct {
+	*tchttp.BaseRequest
+
+	// TRTC的SDKAppId。
+	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+
+	// 房间号。
+	RoomId *string `json:"RoomId,omitempty" name:"RoomId"`
+
+	// 要移出的用户列表，最多10个。
+	UserIds []*string `json:"UserIds,omitempty" name:"UserIds" list`
+}
+
+func (r *RemoveUserByStrRoomIdRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *RemoveUserByStrRoomIdRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type RemoveUserByStrRoomIdResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *RemoveUserByStrRoomIdResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *RemoveUserByStrRoomIdResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
 }
 
 type RemoveUserRequest struct {
@@ -865,6 +1115,55 @@ type ScaleInfomation struct {
 	// sdkappid下一天内的房间数
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RoomNumbers *uint64 `json:"RoomNumbers,omitempty" name:"RoomNumbers"`
+}
+
+type SdkAppIdRecordUsage struct {
+
+	// SdkAppId的值。
+	SdkAppId *string `json:"SdkAppId,omitempty" name:"SdkAppId"`
+
+	// 统计的时间点数据。
+	Usages []*RecordUsage `json:"Usages,omitempty" name:"Usages" list`
+}
+
+type SdkAppIdTrtcMcuTranscodeTimeUsage struct {
+
+	// 本组数据对应的时间点，格式如：2020-09-07或2020-09-07 00:05:05。
+	TimeKey *string `json:"TimeKey,omitempty" name:"TimeKey"`
+
+	// 语音时长，单位：秒。
+	AudioTime *uint64 `json:"AudioTime,omitempty" name:"AudioTime"`
+
+	// 视频时长-标清SD，单位：秒。
+	VideoTimeSd *uint64 `json:"VideoTimeSd,omitempty" name:"VideoTimeSd"`
+
+	// 视频时长-高清HD，单位：秒。
+	VideoTimeHd *uint64 `json:"VideoTimeHd,omitempty" name:"VideoTimeHd"`
+
+	// 视频时长-全高清FHD，单位：秒。
+	VideoTimeFhd *uint64 `json:"VideoTimeFhd,omitempty" name:"VideoTimeFhd"`
+}
+
+type SdkAppIdTrtcUsage struct {
+
+	// 本组数据对应的时间点，格式如：2020-09-07或2020-09-07 00:05:05。
+	TimeKey *string `json:"TimeKey,omitempty" name:"TimeKey"`
+
+	// 语音时长，单位：秒。
+	AudioTime *uint64 `json:"AudioTime,omitempty" name:"AudioTime"`
+
+	// 音视频时长，单位：秒。
+	// 2019年10月11日前注册，没有变更为 [新计费模式](https://cloud.tencent.com/document/product/647/17157) 的用户才会返回此值。
+	AudioVideoTime *uint64 `json:"AudioVideoTime,omitempty" name:"AudioVideoTime"`
+
+	// 视频时长-标清SD，单位：秒。
+	VideoTimeSd *uint64 `json:"VideoTimeSd,omitempty" name:"VideoTimeSd"`
+
+	// 视频时长-高清HD，单位：秒。
+	VideoTimeHd *uint64 `json:"VideoTimeHd,omitempty" name:"VideoTimeHd"`
+
+	// 视频时长-超清HD，单位：秒。
+	VideoTimeHdp *uint64 `json:"VideoTimeHdp,omitempty" name:"VideoTimeHdp"`
 }
 
 type SmallVideoLayoutParams struct {
