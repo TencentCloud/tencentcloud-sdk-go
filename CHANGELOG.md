@@ -1,309 +1,10 @@
 # 本版本更新包含以下内容：
 
-## 应用与服务编排工作流(asw) 版本：2020-07-22
-
-### 第 3 次发布
-
-发布时间：2020-11-17 08:00:03
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [DescribeFlowServices](https://cloud.tencent.com/document/api/1272/49975)
-
-新增数据结构：
-
-* [Filter](https://cloud.tencent.com/document/api/1272/49976#Filter)
-* [StateMachine](https://cloud.tencent.com/document/api/1272/49976#StateMachine)
-
-
-
-## 计费相关(billing) 版本：2018-07-09
-
-### 第 23 次发布
-
-发布时间：2020-11-17 08:02:02
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [DescribeBillSummaryByPayMode](https://cloud.tencent.com/document/api/555/35762)
-
-	* <font color="#dd0000">**修改入参**：</font>PayerUin
-
-* [DescribeBillSummaryByProduct](https://cloud.tencent.com/document/api/555/35761)
-
-	* <font color="#dd0000">**修改入参**：</font>PayerUin
-
-* [DescribeBillSummaryByProject](https://cloud.tencent.com/document/api/555/35760)
-
-	* <font color="#dd0000">**修改入参**：</font>PayerUin
-
-* [DescribeBillSummaryByRegion](https://cloud.tencent.com/document/api/555/35759)
-
-	* <font color="#dd0000">**修改入参**：</font>PayerUin
-
-* [DescribeBillSummaryByTag](https://cloud.tencent.com/document/api/555/38208)
-
-	* <font color="#dd0000">**修改入参**：</font>PayerUin
-
-* [DescribeCostSummaryByProduct](https://cloud.tencent.com/document/api/555/41009)
-
-	* <font color="#dd0000">**修改入参**：</font>PayerUin
-
-* [DescribeCostSummaryByProject](https://cloud.tencent.com/document/api/555/41008)
-
-	* <font color="#dd0000">**修改入参**：</font>PayerUin
-
-* [DescribeCostSummaryByRegion](https://cloud.tencent.com/document/api/555/41007)
-
-	* <font color="#dd0000">**修改入参**：</font>PayerUin
-
-* [DescribeCostSummaryByResource](https://cloud.tencent.com/document/api/555/41006)
-
-	* <font color="#dd0000">**修改入参**：</font>PayerUin
-
-
-
-
-## 内容分发网络(cdn) 版本：2018-06-06
-
-### 第 47 次发布
-
-发布时间：2020-11-17 08:03:08
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [CreateEdgePackTask](https://cloud.tencent.com/document/api/228/49977)
-
-
-
-## 负载均衡(clb) 版本：2018-03-17
-
-### 第 36 次发布
-
-发布时间：2020-11-17 08:03:29
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [CreateLoadBalancer](https://cloud.tencent.com/document/api/214/30692)
-
-	* 新增入参：SnatPro, SnatIps
-
-
-
-
-## 数据库智能管家 DBbrain(dbbrain) 版本：2019-10-16
-
-### 第 7 次发布
-
-发布时间：2020-11-17 08:03:56
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [DescribeDBDiagEvent](https://cloud.tencent.com/document/api/1130/39560)
-
-	* 新增入参：Product
-
-* [DescribeDBDiagHistory](https://cloud.tencent.com/document/api/1130/39559)
-
-	* 新增入参：Product
-
-* [DescribeDBSpaceStatus](https://cloud.tencent.com/document/api/1130/46047)
-
-	* 新增入参：Product
-
-* [DescribeSlowLogTimeSeriesStats](https://cloud.tencent.com/document/api/1130/39557)
-
-	* 新增入参：Product
-
-* [DescribeSlowLogTopSqls](https://cloud.tencent.com/document/api/1130/39556)
-
-	* 新增入参：Product
-
-* [DescribeTopSpaceTableTimeSeries](https://cloud.tencent.com/document/api/1130/46279)
-
-	* 新增入参：Product
-
-* [DescribeTopSpaceTables](https://cloud.tencent.com/document/api/1130/46046)
-
-	* 新增入参：Product
-
-
-
-
-## 全球应用加速(gaap) 版本：2018-05-29
-
-### 第 14 次发布
-
-发布时间：2020-11-17 08:04:34
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [CreateTCPListeners](https://cloud.tencent.com/document/api/608/37005)
-
-	* 新增入参：ClientIPMethod
-
-
-修改数据结构：
-
-* [ProxyGroupDetail](https://cloud.tencent.com/document/api/608/37023#ProxyGroupDetail)
-
-	* 新增成员：PolicyId, Version, ClientIPMethod
-
-* [ProxyInfo](https://cloud.tencent.com/document/api/608/37023#ProxyInfo)
-
-	* 新增成员：ClientIPMethod
-
-* [TCPListener](https://cloud.tencent.com/document/api/608/37023#TCPListener)
-
-	* 新增成员：ClientIPMethod
-
-
-
-
-## 游戏服务器引擎(gse) 版本：2019-11-12
-
-### 第 13 次发布
-
-发布时间：2020-11-17 08:01:20
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [Asset](https://cloud.tencent.com/document/api/1165/42074#Asset)
-
-	* 新增成员：ResourceType, SharingStatus
-
-
-
-
-## 云直播(live) 版本：2018-08-01
-
-### 第 52 次发布
-
-发布时间：2020-11-17 08:05:26
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [DescribeUploadStreamNums](https://cloud.tencent.com/document/api/267/49978)
-
-
-
-## 云监控(monitor) 版本：2018-07-24
-
-### 第 17 次发布
-
-发布时间：2020-11-17 08:05:56
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [DescribeMonitorTypes](https://cloud.tencent.com/document/api/248/49979)
-
-
-
-## 容器镜像服务(tcr) 版本：2019-09-24
-
-### 第 16 次发布
-
-发布时间：2020-11-17 08:09:54
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [DeleteInstance](https://cloud.tencent.com/document/api/1141/49983)
-
-
-
-## 容器服务(tke) 版本：2018-05-25
-
-### 第 32 次发布
-
-发布时间：2020-11-17 08:07:51
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [ClusterAdvancedSettings](https://cloud.tencent.com/document/api/457/31866#ClusterAdvancedSettings)
-
-	* 新增成员：RuntimeVersion
-
-
-
-
-## 实时音视频(trtc) 版本：2019-07-22
-
-### 第 18 次发布
-
-发布时间：2020-11-17 08:09:36
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [DescribeRecordStatistic](https://cloud.tencent.com/document/api/647/49982)
-* [DescribeTrtcInteractiveTime](https://cloud.tencent.com/document/api/647/49981)
-* [DescribeTrtcMcuTranscodeTime](https://cloud.tencent.com/document/api/647/49980)
-* [DismissRoomByStrRoomId](https://cloud.tencent.com/document/api/647/37088)
-* [RemoveUserByStrRoomId](https://cloud.tencent.com/document/api/647/40496)
-
-新增数据结构：
-
-* [OneSdkAppIdTranscodeTimeUsagesInfo](https://cloud.tencent.com/document/api/647/44055#OneSdkAppIdTranscodeTimeUsagesInfo)
-* [OneSdkAppIdUsagesInfo](https://cloud.tencent.com/document/api/647/44055#OneSdkAppIdUsagesInfo)
-* [RecordUsage](https://cloud.tencent.com/document/api/647/44055#RecordUsage)
-* [SdkAppIdRecordUsage](https://cloud.tencent.com/document/api/647/44055#SdkAppIdRecordUsage)
-* [SdkAppIdTrtcMcuTranscodeTimeUsage](https://cloud.tencent.com/document/api/647/44055#SdkAppIdTrtcMcuTranscodeTimeUsage)
-* [SdkAppIdTrtcUsage](https://cloud.tencent.com/document/api/647/44055#SdkAppIdTrtcUsage)
-
-
-
-## 珠玑(zj) 版本：2019-01-21
+## 网站备案(ba) 版本：2020-07-20
 
 ### 第 1 次发布
 
-发布时间：2020-11-17 08:10:59
+发布时间：2020-11-17 14:37:06
 
 本次发布包含了以下内容：
 
@@ -311,58 +12,57 @@
 
 新增接口：
 
-* [AddCrowdPackInfo](https://cloud.tencent.com/document/api/#/#)
-* [AddSmsSign](https://cloud.tencent.com/document/api/#/#)
-* [AddSmsTemplate](https://cloud.tencent.com/document/api/#/#)
-* [CancelCampaign](https://cloud.tencent.com/document/api/#/#)
-* [CreateCampaign](https://cloud.tencent.com/document/api/#/#)
-* [CreateMmsInstance](https://cloud.tencent.com/document/api/#/#)
-* [DelCrowdPack](https://cloud.tencent.com/document/api/#/#)
-* [DelTemplate](https://cloud.tencent.com/document/api/#/#)
-* [DeleteMmsInstance](https://cloud.tencent.com/document/api/#/#)
-* [DescribeMmsInstanceInfo](https://cloud.tencent.com/document/api/#/#)
-* [DescribeMmsInstanceList](https://cloud.tencent.com/document/api/#/#)
-* [DescribeSmsCampaignStatistics](https://cloud.tencent.com/document/api/#/#)
-* [DescribeSmsSignList](https://cloud.tencent.com/document/api/#/#)
-* [DescribeSmsTemplateList](https://cloud.tencent.com/document/api/#/#)
-* [GetCrowdPackList](https://cloud.tencent.com/document/api/#/#)
-* [GetCrowdUploadInfo](https://cloud.tencent.com/document/api/#/#)
-* [GetSmsAmountInfo](https://cloud.tencent.com/document/api/#/#)
-* [GetSmsCampaignStatus](https://cloud.tencent.com/document/api/#/#)
-* [ModifySmsTemplate](https://cloud.tencent.com/document/api/#/#)
-* [PushMmsContent](https://cloud.tencent.com/document/api/#/#)
-* [SendSms](https://cloud.tencent.com/document/api/#/#)
+* [CreateWeappQRUrl](https://cloud.tencent.com/document/api/243/49995)
 
-新增数据结构：
 
-* [AddSmsTemplateDataStruct](https://cloud.tencent.com/document/api/#/##AddSmsTemplateDataStruct)
-* [CancelActivityData](https://cloud.tencent.com/document/api/#/##CancelActivityData)
-* [CreateMmsInstanceItem](https://cloud.tencent.com/document/api/#/##CreateMmsInstanceItem)
-* [CreateMmsInstanceResp](https://cloud.tencent.com/document/api/#/##CreateMmsInstanceResp)
-* [DelMmsInstanceData](https://cloud.tencent.com/document/api/#/##DelMmsInstanceData)
-* [DescribeSmsSignListDataStruct](https://cloud.tencent.com/document/api/#/##DescribeSmsSignListDataStruct)
-* [DescribeSmsTemplateListDataStruct](https://cloud.tencent.com/document/api/#/##DescribeSmsTemplateListDataStruct)
-* [MmsInstanceInfo](https://cloud.tencent.com/document/api/#/##MmsInstanceInfo)
-* [MmsInstanceInfoList](https://cloud.tencent.com/document/api/#/##MmsInstanceInfoList)
-* [MmsInstanceStateInfo](https://cloud.tencent.com/document/api/#/##MmsInstanceStateInfo)
-* [ModifySmsTemplateDataStruct](https://cloud.tencent.com/document/api/#/##ModifySmsTemplateDataStruct)
-* [PaasCreateSignResp](https://cloud.tencent.com/document/api/#/##PaasCreateSignResp)
-* [PaasSmsCampaignStatusResp](https://cloud.tencent.com/document/api/#/##PaasSmsCampaignStatusResp)
-* [PaasStrategy](https://cloud.tencent.com/document/api/#/##PaasStrategy)
-* [PaasStrategyItem](https://cloud.tencent.com/document/api/#/##PaasStrategyItem)
-* [PushMmsContentResp](https://cloud.tencent.com/document/api/#/##PushMmsContentResp)
-* [SendSmsPaasDataStruct](https://cloud.tencent.com/document/api/#/##SendSmsPaasDataStruct)
-* [SmsAddCrowdPackInfoResponse](https://cloud.tencent.com/document/api/#/##SmsAddCrowdPackInfoResponse)
-* [SmsAmountDataStruct](https://cloud.tencent.com/document/api/#/##SmsAmountDataStruct)
-* [SmsCampaignStatisticsCrowdData](https://cloud.tencent.com/document/api/#/##SmsCampaignStatisticsCrowdData)
-* [SmsCampaignStatisticsData](https://cloud.tencent.com/document/api/#/##SmsCampaignStatisticsData)
-* [SmsCampaignStatisticsTemplateData](https://cloud.tencent.com/document/api/#/##SmsCampaignStatisticsTemplateData)
-* [SmsCreateCampaignResponse](https://cloud.tencent.com/document/api/#/##SmsCreateCampaignResponse)
-* [SmsGetCrowdPackList](https://cloud.tencent.com/document/api/#/##SmsGetCrowdPackList)
-* [SmsGetCrowdPackListResponse](https://cloud.tencent.com/document/api/#/##SmsGetCrowdPackListResponse)
-* [SmsGetCrowdUploadInfoResponse](https://cloud.tencent.com/document/api/#/##SmsGetCrowdUploadInfoResponse)
-* [SmsSuccessResponse](https://cloud.tencent.com/document/api/#/##SmsSuccessResponse)
-* [UploadFansInfoCosInfo](https://cloud.tencent.com/document/api/#/##UploadFansInfoCosInfo)
+
+## 域名注册(domain) 版本：2018-08-08
+
+### 第 9 次发布
+
+发布时间：2020-11-18 08:17:27
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeTemplate](https://cloud.tencent.com/document/api/242/50018)
+
+
+
+## 腾讯微服务平台 TSF(tsf) 版本：2018-03-26
+
+### 第 36 次发布
+
+发布时间：2020-11-18 08:34:11
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [UpdateHealthCheckSettings](https://cloud.tencent.com/document/api/649/50019)
+
+修改接口：
+
+* [DeployGroup](https://cloud.tencent.com/document/api/649/36070)
+
+	* 新增入参：EnableHealthCheck, HealthCheckSettings, UpdateType, DeployBetaEnable, DeployBatch, DeployExeMode, DeployWaitTime
+
+
+修改数据结构：
+
+* [Instance](https://cloud.tencent.com/document/api/649/36099#Instance)
+
+	* 新增成员：Reason
+
+* [VmGroup](https://cloud.tencent.com/document/api/649/36099#VmGroup)
+
+	* 新增成员：EnableHealthCheck, HealthCheckSettings
+
 
 
 
@@ -2087,12 +1787,12 @@
 
 新增接口：
 
-* [[DescribeFlowServices](https://cloud.tencent.com/document/api/1272/49975)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeFlowServices](https://cloud.tencent.com/document/api/1272/49975)
 
 新增数据结构：
 
-* [[Filter](https://cloud.tencent.com/document/api/1272/49976#Filter)](https://cloud.tencent.com/document/api/1272/49976#[Filter](https://cloud.tencent.com/document/api/1272/49976#Filter))
-* [[StateMachine](https://cloud.tencent.com/document/api/1272/49976#StateMachine)](https://cloud.tencent.com/document/api/1272/49976#[StateMachine](https://cloud.tencent.com/document/api/1272/49976#StateMachine))
+* [Filter](https://cloud.tencent.com/document/api/1272/49976#Filter)
+* [StateMachine](https://cloud.tencent.com/document/api/1272/49976#StateMachine)
 
 ### 第 2 次发布
 
@@ -2121,6 +1821,23 @@
 
 * [DescribeExecution](https://cloud.tencent.com/document/api/1272/49716)
 * [DescribeExecutions](https://cloud.tencent.com/document/api/1272/49715)
+
+
+
+
+## 网站备案(ba) 版本：2020-07-20
+
+### 第 1 次发布
+
+发布时间：2020-11-17 14:37:06
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[CreateWeappQRUrl](https://cloud.tencent.com/document/api/243/49995)](https://cloud.tencent.com/document/api/#/#)
 
 
 
@@ -6909,7 +6626,7 @@
 
 新增接口：
 
-* [[CreateEdgePackTask](https://cloud.tencent.com/document/api/228/49977)](https://cloud.tencent.com/document/api/#/#)
+* [CreateEdgePackTask](https://cloud.tencent.com/document/api/228/49977)
 
 ### 第 46 次发布
 
@@ -14262,6 +13979,18 @@
 
 ## 域名注册(domain) 版本：2018-08-08
 
+### 第 9 次发布
+
+发布时间：2020-11-18 08:17:27
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeTemplate](https://cloud.tencent.com/document/api/242/50018)](https://cloud.tencent.com/document/api/#/#)
+
 ### 第 8 次发布
 
 发布时间：2020-10-26 08:03:14
@@ -21381,7 +21110,7 @@
 
 新增接口：
 
-* [[DescribeUploadStreamNums](https://cloud.tencent.com/document/api/267/49978)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeUploadStreamNums](https://cloud.tencent.com/document/api/267/49978)
 
 ### 第 51 次发布
 
@@ -23333,7 +23062,7 @@
 
 新增接口：
 
-* [[DescribeMonitorTypes](https://cloud.tencent.com/document/api/248/49979)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeMonitorTypes](https://cloud.tencent.com/document/api/248/49979)
 
 ### 第 16 次发布
 
@@ -30686,7 +30415,7 @@
 
 新增接口：
 
-* [[DeleteInstance](https://cloud.tencent.com/document/api/1141/49983)](https://cloud.tencent.com/document/api/#/#)
+* [DeleteInstance](https://cloud.tencent.com/document/api/1141/49983)
 
 ### 第 15 次发布
 
@@ -33259,20 +32988,20 @@
 
 新增接口：
 
-* [[DescribeRecordStatistic](https://cloud.tencent.com/document/api/647/49982)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeTrtcInteractiveTime](https://cloud.tencent.com/document/api/647/49981)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeTrtcMcuTranscodeTime](https://cloud.tencent.com/document/api/647/49980)](https://cloud.tencent.com/document/api/#/#)
-* [[DismissRoomByStrRoomId](https://cloud.tencent.com/document/api/647/37088)](https://cloud.tencent.com/document/api/#/#)
-* [[RemoveUserByStrRoomId](https://cloud.tencent.com/document/api/647/40496)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeRecordStatistic](https://cloud.tencent.com/document/api/647/49982)
+* [DescribeTrtcInteractiveTime](https://cloud.tencent.com/document/api/647/49981)
+* [DescribeTrtcMcuTranscodeTime](https://cloud.tencent.com/document/api/647/49980)
+* [DismissRoomByStrRoomId](https://cloud.tencent.com/document/api/647/37088)
+* [RemoveUserByStrRoomId](https://cloud.tencent.com/document/api/647/40496)
 
 新增数据结构：
 
-* [[OneSdkAppIdTranscodeTimeUsagesInfo](https://cloud.tencent.com/document/api/647/44055#OneSdkAppIdTranscodeTimeUsagesInfo)](https://cloud.tencent.com/document/api/647/44055#[OneSdkAppIdTranscodeTimeUsagesInfo](https://cloud.tencent.com/document/api/647/44055#OneSdkAppIdTranscodeTimeUsagesInfo))
-* [[OneSdkAppIdUsagesInfo](https://cloud.tencent.com/document/api/647/44055#OneSdkAppIdUsagesInfo)](https://cloud.tencent.com/document/api/647/44055#[OneSdkAppIdUsagesInfo](https://cloud.tencent.com/document/api/647/44055#OneSdkAppIdUsagesInfo))
-* [[RecordUsage](https://cloud.tencent.com/document/api/647/44055#RecordUsage)](https://cloud.tencent.com/document/api/647/44055#[RecordUsage](https://cloud.tencent.com/document/api/647/44055#RecordUsage))
-* [[SdkAppIdRecordUsage](https://cloud.tencent.com/document/api/647/44055#SdkAppIdRecordUsage)](https://cloud.tencent.com/document/api/647/44055#[SdkAppIdRecordUsage](https://cloud.tencent.com/document/api/647/44055#SdkAppIdRecordUsage))
-* [[SdkAppIdTrtcMcuTranscodeTimeUsage](https://cloud.tencent.com/document/api/647/44055#SdkAppIdTrtcMcuTranscodeTimeUsage)](https://cloud.tencent.com/document/api/647/44055#[SdkAppIdTrtcMcuTranscodeTimeUsage](https://cloud.tencent.com/document/api/647/44055#SdkAppIdTrtcMcuTranscodeTimeUsage))
-* [[SdkAppIdTrtcUsage](https://cloud.tencent.com/document/api/647/44055#SdkAppIdTrtcUsage)](https://cloud.tencent.com/document/api/647/44055#[SdkAppIdTrtcUsage](https://cloud.tencent.com/document/api/647/44055#SdkAppIdTrtcUsage))
+* [OneSdkAppIdTranscodeTimeUsagesInfo](https://cloud.tencent.com/document/api/647/44055#OneSdkAppIdTranscodeTimeUsagesInfo)
+* [OneSdkAppIdUsagesInfo](https://cloud.tencent.com/document/api/647/44055#OneSdkAppIdUsagesInfo)
+* [RecordUsage](https://cloud.tencent.com/document/api/647/44055#RecordUsage)
+* [SdkAppIdRecordUsage](https://cloud.tencent.com/document/api/647/44055#SdkAppIdRecordUsage)
+* [SdkAppIdTrtcMcuTranscodeTimeUsage](https://cloud.tencent.com/document/api/647/44055#SdkAppIdTrtcMcuTranscodeTimeUsage)
+* [SdkAppIdTrtcUsage](https://cloud.tencent.com/document/api/647/44055#SdkAppIdTrtcUsage)
 
 ### 第 17 次发布
 
@@ -33550,6 +33279,36 @@
 
 
 ## 腾讯微服务平台 TSF(tsf) 版本：2018-03-26
+
+### 第 36 次发布
+
+发布时间：2020-11-18 08:34:11
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[UpdateHealthCheckSettings](https://cloud.tencent.com/document/api/649/50019)](https://cloud.tencent.com/document/api/#/#)
+
+修改接口：
+
+* [DeployGroup](https://cloud.tencent.com/document/api/649/36070)
+
+	* 新增入参：EnableHealthCheck, HealthCheckSettings, UpdateType, DeployBetaEnable, DeployBatch, DeployExeMode, DeployWaitTime
+
+
+修改数据结构：
+
+* [Instance](https://cloud.tencent.com/document/api/649/36099#Instance)
+
+	* 新增成员：Reason
+
+* [VmGroup](https://cloud.tencent.com/document/api/649/36099#VmGroup)
+
+	* 新增成员：EnableHealthCheck, HealthCheckSettings
+
 
 ### 第 35 次发布
 
@@ -38944,58 +38703,58 @@
 
 新增接口：
 
-* [[AddCrowdPackInfo](https://cloud.tencent.com/document/api/#/#)](https://cloud.tencent.com/document/api/#/#)
-* [[AddSmsSign](https://cloud.tencent.com/document/api/#/#)](https://cloud.tencent.com/document/api/#/#)
-* [[AddSmsTemplate](https://cloud.tencent.com/document/api/#/#)](https://cloud.tencent.com/document/api/#/#)
-* [[CancelCampaign](https://cloud.tencent.com/document/api/#/#)](https://cloud.tencent.com/document/api/#/#)
-* [[CreateCampaign](https://cloud.tencent.com/document/api/#/#)](https://cloud.tencent.com/document/api/#/#)
-* [[CreateMmsInstance](https://cloud.tencent.com/document/api/#/#)](https://cloud.tencent.com/document/api/#/#)
-* [[DelCrowdPack](https://cloud.tencent.com/document/api/#/#)](https://cloud.tencent.com/document/api/#/#)
-* [[DelTemplate](https://cloud.tencent.com/document/api/#/#)](https://cloud.tencent.com/document/api/#/#)
-* [[DeleteMmsInstance](https://cloud.tencent.com/document/api/#/#)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeMmsInstanceInfo](https://cloud.tencent.com/document/api/#/#)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeMmsInstanceList](https://cloud.tencent.com/document/api/#/#)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeSmsCampaignStatistics](https://cloud.tencent.com/document/api/#/#)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeSmsSignList](https://cloud.tencent.com/document/api/#/#)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeSmsTemplateList](https://cloud.tencent.com/document/api/#/#)](https://cloud.tencent.com/document/api/#/#)
-* [[GetCrowdPackList](https://cloud.tencent.com/document/api/#/#)](https://cloud.tencent.com/document/api/#/#)
-* [[GetCrowdUploadInfo](https://cloud.tencent.com/document/api/#/#)](https://cloud.tencent.com/document/api/#/#)
-* [[GetSmsAmountInfo](https://cloud.tencent.com/document/api/#/#)](https://cloud.tencent.com/document/api/#/#)
-* [[GetSmsCampaignStatus](https://cloud.tencent.com/document/api/#/#)](https://cloud.tencent.com/document/api/#/#)
-* [[ModifySmsTemplate](https://cloud.tencent.com/document/api/#/#)](https://cloud.tencent.com/document/api/#/#)
-* [[PushMmsContent](https://cloud.tencent.com/document/api/#/#)](https://cloud.tencent.com/document/api/#/#)
-* [[SendSms](https://cloud.tencent.com/document/api/#/#)](https://cloud.tencent.com/document/api/#/#)
+* [AddCrowdPackInfo](https://cloud.tencent.com/document/api/#/#)
+* [AddSmsSign](https://cloud.tencent.com/document/api/#/#)
+* [AddSmsTemplate](https://cloud.tencent.com/document/api/#/#)
+* [CancelCampaign](https://cloud.tencent.com/document/api/#/#)
+* [CreateCampaign](https://cloud.tencent.com/document/api/#/#)
+* [CreateMmsInstance](https://cloud.tencent.com/document/api/#/#)
+* [DelCrowdPack](https://cloud.tencent.com/document/api/#/#)
+* [DelTemplate](https://cloud.tencent.com/document/api/#/#)
+* [DeleteMmsInstance](https://cloud.tencent.com/document/api/#/#)
+* [DescribeMmsInstanceInfo](https://cloud.tencent.com/document/api/#/#)
+* [DescribeMmsInstanceList](https://cloud.tencent.com/document/api/#/#)
+* [DescribeSmsCampaignStatistics](https://cloud.tencent.com/document/api/#/#)
+* [DescribeSmsSignList](https://cloud.tencent.com/document/api/#/#)
+* [DescribeSmsTemplateList](https://cloud.tencent.com/document/api/#/#)
+* [GetCrowdPackList](https://cloud.tencent.com/document/api/#/#)
+* [GetCrowdUploadInfo](https://cloud.tencent.com/document/api/#/#)
+* [GetSmsAmountInfo](https://cloud.tencent.com/document/api/#/#)
+* [GetSmsCampaignStatus](https://cloud.tencent.com/document/api/#/#)
+* [ModifySmsTemplate](https://cloud.tencent.com/document/api/#/#)
+* [PushMmsContent](https://cloud.tencent.com/document/api/#/#)
+* [SendSms](https://cloud.tencent.com/document/api/#/#)
 
 新增数据结构：
 
-* [[AddSmsTemplateDataStruct](https://cloud.tencent.com/document/api/#/##AddSmsTemplateDataStruct)](https://cloud.tencent.com/document/api/#/##[AddSmsTemplateDataStruct](https://cloud.tencent.com/document/api/#/##AddSmsTemplateDataStruct))
-* [[CancelActivityData](https://cloud.tencent.com/document/api/#/##CancelActivityData)](https://cloud.tencent.com/document/api/#/##[CancelActivityData](https://cloud.tencent.com/document/api/#/##CancelActivityData))
-* [[CreateMmsInstanceItem](https://cloud.tencent.com/document/api/#/##CreateMmsInstanceItem)](https://cloud.tencent.com/document/api/#/##[CreateMmsInstanceItem](https://cloud.tencent.com/document/api/#/##CreateMmsInstanceItem))
-* [[CreateMmsInstanceResp](https://cloud.tencent.com/document/api/#/##CreateMmsInstanceResp)](https://cloud.tencent.com/document/api/#/##[CreateMmsInstanceResp](https://cloud.tencent.com/document/api/#/##CreateMmsInstanceResp))
-* [[DelMmsInstanceData](https://cloud.tencent.com/document/api/#/##DelMmsInstanceData)](https://cloud.tencent.com/document/api/#/##[DelMmsInstanceData](https://cloud.tencent.com/document/api/#/##DelMmsInstanceData))
-* [[DescribeSmsSignListDataStruct](https://cloud.tencent.com/document/api/#/##DescribeSmsSignListDataStruct)](https://cloud.tencent.com/document/api/#/##[DescribeSmsSignListDataStruct](https://cloud.tencent.com/document/api/#/##DescribeSmsSignListDataStruct))
-* [[DescribeSmsTemplateListDataStruct](https://cloud.tencent.com/document/api/#/##DescribeSmsTemplateListDataStruct)](https://cloud.tencent.com/document/api/#/##[DescribeSmsTemplateListDataStruct](https://cloud.tencent.com/document/api/#/##DescribeSmsTemplateListDataStruct))
-* [[MmsInstanceInfo](https://cloud.tencent.com/document/api/#/##MmsInstanceInfo)](https://cloud.tencent.com/document/api/#/##[MmsInstanceInfo](https://cloud.tencent.com/document/api/#/##MmsInstanceInfo))
-* [[MmsInstanceInfoList](https://cloud.tencent.com/document/api/#/##MmsInstanceInfoList)](https://cloud.tencent.com/document/api/#/##[MmsInstanceInfoList](https://cloud.tencent.com/document/api/#/##MmsInstanceInfoList))
-* [[MmsInstanceStateInfo](https://cloud.tencent.com/document/api/#/##MmsInstanceStateInfo)](https://cloud.tencent.com/document/api/#/##[MmsInstanceStateInfo](https://cloud.tencent.com/document/api/#/##MmsInstanceStateInfo))
-* [[ModifySmsTemplateDataStruct](https://cloud.tencent.com/document/api/#/##ModifySmsTemplateDataStruct)](https://cloud.tencent.com/document/api/#/##[ModifySmsTemplateDataStruct](https://cloud.tencent.com/document/api/#/##ModifySmsTemplateDataStruct))
-* [[PaasCreateSignResp](https://cloud.tencent.com/document/api/#/##PaasCreateSignResp)](https://cloud.tencent.com/document/api/#/##[PaasCreateSignResp](https://cloud.tencent.com/document/api/#/##PaasCreateSignResp))
-* [[PaasSmsCampaignStatusResp](https://cloud.tencent.com/document/api/#/##PaasSmsCampaignStatusResp)](https://cloud.tencent.com/document/api/#/##[PaasSmsCampaignStatusResp](https://cloud.tencent.com/document/api/#/##PaasSmsCampaignStatusResp))
-* [[PaasStrategy](https://cloud.tencent.com/document/api/#/##PaasStrategy)](https://cloud.tencent.com/document/api/#/##[PaasStrategy](https://cloud.tencent.com/document/api/#/##PaasStrategy))
-* [[PaasStrategyItem](https://cloud.tencent.com/document/api/#/##PaasStrategyItem)](https://cloud.tencent.com/document/api/#/##[PaasStrategyItem](https://cloud.tencent.com/document/api/#/##PaasStrategyItem))
-* [[PushMmsContentResp](https://cloud.tencent.com/document/api/#/##PushMmsContentResp)](https://cloud.tencent.com/document/api/#/##[PushMmsContentResp](https://cloud.tencent.com/document/api/#/##PushMmsContentResp))
-* [[SendSmsPaasDataStruct](https://cloud.tencent.com/document/api/#/##SendSmsPaasDataStruct)](https://cloud.tencent.com/document/api/#/##[SendSmsPaasDataStruct](https://cloud.tencent.com/document/api/#/##SendSmsPaasDataStruct))
-* [[SmsAddCrowdPackInfoResponse](https://cloud.tencent.com/document/api/#/##SmsAddCrowdPackInfoResponse)](https://cloud.tencent.com/document/api/#/##[SmsAddCrowdPackInfoResponse](https://cloud.tencent.com/document/api/#/##SmsAddCrowdPackInfoResponse))
-* [[SmsAmountDataStruct](https://cloud.tencent.com/document/api/#/##SmsAmountDataStruct)](https://cloud.tencent.com/document/api/#/##[SmsAmountDataStruct](https://cloud.tencent.com/document/api/#/##SmsAmountDataStruct))
-* [[SmsCampaignStatisticsCrowdData](https://cloud.tencent.com/document/api/#/##SmsCampaignStatisticsCrowdData)](https://cloud.tencent.com/document/api/#/##[SmsCampaignStatisticsCrowdData](https://cloud.tencent.com/document/api/#/##SmsCampaignStatisticsCrowdData))
-* [[SmsCampaignStatisticsData](https://cloud.tencent.com/document/api/#/##SmsCampaignStatisticsData)](https://cloud.tencent.com/document/api/#/##[SmsCampaignStatisticsData](https://cloud.tencent.com/document/api/#/##SmsCampaignStatisticsData))
-* [[SmsCampaignStatisticsTemplateData](https://cloud.tencent.com/document/api/#/##SmsCampaignStatisticsTemplateData)](https://cloud.tencent.com/document/api/#/##[SmsCampaignStatisticsTemplateData](https://cloud.tencent.com/document/api/#/##SmsCampaignStatisticsTemplateData))
-* [[SmsCreateCampaignResponse](https://cloud.tencent.com/document/api/#/##SmsCreateCampaignResponse)](https://cloud.tencent.com/document/api/#/##[SmsCreateCampaignResponse](https://cloud.tencent.com/document/api/#/##SmsCreateCampaignResponse))
-* [[SmsGetCrowdPackList](https://cloud.tencent.com/document/api/#/##SmsGetCrowdPackList)](https://cloud.tencent.com/document/api/#/##[SmsGetCrowdPackList](https://cloud.tencent.com/document/api/#/##SmsGetCrowdPackList))
-* [[SmsGetCrowdPackListResponse](https://cloud.tencent.com/document/api/#/##SmsGetCrowdPackListResponse)](https://cloud.tencent.com/document/api/#/##[SmsGetCrowdPackListResponse](https://cloud.tencent.com/document/api/#/##SmsGetCrowdPackListResponse))
-* [[SmsGetCrowdUploadInfoResponse](https://cloud.tencent.com/document/api/#/##SmsGetCrowdUploadInfoResponse)](https://cloud.tencent.com/document/api/#/##[SmsGetCrowdUploadInfoResponse](https://cloud.tencent.com/document/api/#/##SmsGetCrowdUploadInfoResponse))
-* [[SmsSuccessResponse](https://cloud.tencent.com/document/api/#/##SmsSuccessResponse)](https://cloud.tencent.com/document/api/#/##[SmsSuccessResponse](https://cloud.tencent.com/document/api/#/##SmsSuccessResponse))
-* [[UploadFansInfoCosInfo](https://cloud.tencent.com/document/api/#/##UploadFansInfoCosInfo)](https://cloud.tencent.com/document/api/#/##[UploadFansInfoCosInfo](https://cloud.tencent.com/document/api/#/##UploadFansInfoCosInfo))
+* [AddSmsTemplateDataStruct](https://cloud.tencent.com/document/api/#/##AddSmsTemplateDataStruct)
+* [CancelActivityData](https://cloud.tencent.com/document/api/#/##CancelActivityData)
+* [CreateMmsInstanceItem](https://cloud.tencent.com/document/api/#/##CreateMmsInstanceItem)
+* [CreateMmsInstanceResp](https://cloud.tencent.com/document/api/#/##CreateMmsInstanceResp)
+* [DelMmsInstanceData](https://cloud.tencent.com/document/api/#/##DelMmsInstanceData)
+* [DescribeSmsSignListDataStruct](https://cloud.tencent.com/document/api/#/##DescribeSmsSignListDataStruct)
+* [DescribeSmsTemplateListDataStruct](https://cloud.tencent.com/document/api/#/##DescribeSmsTemplateListDataStruct)
+* [MmsInstanceInfo](https://cloud.tencent.com/document/api/#/##MmsInstanceInfo)
+* [MmsInstanceInfoList](https://cloud.tencent.com/document/api/#/##MmsInstanceInfoList)
+* [MmsInstanceStateInfo](https://cloud.tencent.com/document/api/#/##MmsInstanceStateInfo)
+* [ModifySmsTemplateDataStruct](https://cloud.tencent.com/document/api/#/##ModifySmsTemplateDataStruct)
+* [PaasCreateSignResp](https://cloud.tencent.com/document/api/#/##PaasCreateSignResp)
+* [PaasSmsCampaignStatusResp](https://cloud.tencent.com/document/api/#/##PaasSmsCampaignStatusResp)
+* [PaasStrategy](https://cloud.tencent.com/document/api/#/##PaasStrategy)
+* [PaasStrategyItem](https://cloud.tencent.com/document/api/#/##PaasStrategyItem)
+* [PushMmsContentResp](https://cloud.tencent.com/document/api/#/##PushMmsContentResp)
+* [SendSmsPaasDataStruct](https://cloud.tencent.com/document/api/#/##SendSmsPaasDataStruct)
+* [SmsAddCrowdPackInfoResponse](https://cloud.tencent.com/document/api/#/##SmsAddCrowdPackInfoResponse)
+* [SmsAmountDataStruct](https://cloud.tencent.com/document/api/#/##SmsAmountDataStruct)
+* [SmsCampaignStatisticsCrowdData](https://cloud.tencent.com/document/api/#/##SmsCampaignStatisticsCrowdData)
+* [SmsCampaignStatisticsData](https://cloud.tencent.com/document/api/#/##SmsCampaignStatisticsData)
+* [SmsCampaignStatisticsTemplateData](https://cloud.tencent.com/document/api/#/##SmsCampaignStatisticsTemplateData)
+* [SmsCreateCampaignResponse](https://cloud.tencent.com/document/api/#/##SmsCreateCampaignResponse)
+* [SmsGetCrowdPackList](https://cloud.tencent.com/document/api/#/##SmsGetCrowdPackList)
+* [SmsGetCrowdPackListResponse](https://cloud.tencent.com/document/api/#/##SmsGetCrowdPackListResponse)
+* [SmsGetCrowdUploadInfoResponse](https://cloud.tencent.com/document/api/#/##SmsGetCrowdUploadInfoResponse)
+* [SmsSuccessResponse](https://cloud.tencent.com/document/api/#/##SmsSuccessResponse)
+* [UploadFansInfoCosInfo](https://cloud.tencent.com/document/api/#/##UploadFansInfoCosInfo)
 
 
 

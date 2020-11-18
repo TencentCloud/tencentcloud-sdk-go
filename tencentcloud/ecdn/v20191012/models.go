@@ -733,7 +733,7 @@ type DomainDetailInfo struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Readonly *string `json:"Readonly,omitempty" name:"Readonly"`
 
-	// 域名标签
+	// 域名标签。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Tag []*Tag `json:"Tag,omitempty" name:"Tag" list`
 }

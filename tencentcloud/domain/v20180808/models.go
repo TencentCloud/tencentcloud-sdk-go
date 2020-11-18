@@ -665,6 +665,43 @@ func (r *DescribeTemplateListResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeTemplateRequest struct {
+	*tchttp.BaseRequest
+
+	// 模板ID
+	TemplateId *string `json:"TemplateId,omitempty" name:"TemplateId"`
+}
+
+func (r *DescribeTemplateRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeTemplateRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeTemplateResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 模板信息
+		Template *TemplateInfo `json:"Template,omitempty" name:"Template"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeTemplateResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeTemplateResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DomainBaseInfo struct {
 
 	// 域名资源ID。
@@ -1013,7 +1050,7 @@ type TemplateInfo struct {
 	// 模板ID
 	TemplateId *string `json:"TemplateId,omitempty" name:"TemplateId"`
 
-	// 认证状态
+	// 认证状态：未实名认证:NotUpload, 实名审核中:InAudit，已实名认证:Approved，实名审核失败:Reject
 	AuditStatus *string `json:"AuditStatus,omitempty" name:"AuditStatus"`
 
 	// 创建时间
@@ -1025,7 +1062,7 @@ type TemplateInfo struct {
 	// 用户UIN
 	UserUin *string `json:"UserUin,omitempty" name:"UserUin"`
 
-	// 是否是默认模板
+	// 是否是默认模板: 是:yes，否:no
 	IsDefault *string `json:"IsDefault,omitempty" name:"IsDefault"`
 
 	// 认证失败原因

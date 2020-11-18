@@ -324,6 +324,31 @@ func (c *Client) DescribeDomainPriceList(request *DescribeDomainPriceListRequest
     return
 }
 
+func NewDescribeTemplateRequest() (request *DescribeTemplateRequest) {
+    request = &DescribeTemplateRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("domain", APIVersion, "DescribeTemplate")
+    return
+}
+
+func NewDescribeTemplateResponse() (response *DescribeTemplateResponse) {
+    response = &DescribeTemplateResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口 (DescribeTemplate) 用于获取模板信息。
+func (c *Client) DescribeTemplate(request *DescribeTemplateRequest) (response *DescribeTemplateResponse, err error) {
+    if request == nil {
+        request = NewDescribeTemplateRequest()
+    }
+    response = NewDescribeTemplateResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeTemplateListRequest() (request *DescribeTemplateListRequest) {
     request = &DescribeTemplateListRequest{
         BaseRequest: &tchttp.BaseRequest{},

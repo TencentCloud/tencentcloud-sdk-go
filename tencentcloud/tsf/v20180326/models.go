@@ -2330,6 +2330,27 @@ type DeployGroupRequest struct {
 
 	// 是否允许强制启动
 	ForceStart *bool `json:"ForceStart,omitempty" name:"ForceStart"`
+
+	// 是否开启健康检查
+	EnableHealthCheck *bool `json:"EnableHealthCheck,omitempty" name:"EnableHealthCheck"`
+
+	// 开启健康检查时，配置健康检查
+	HealthCheckSettings *HealthCheckSettings `json:"HealthCheckSettings,omitempty" name:"HealthCheckSettings"`
+
+	// 部署方式，0表示快速更新，1表示滚动更新
+	UpdateType *uint64 `json:"UpdateType,omitempty" name:"UpdateType"`
+
+	// 是否启用beta批次
+	DeployBetaEnable *bool `json:"DeployBetaEnable,omitempty" name:"DeployBetaEnable"`
+
+	// 滚动发布每个批次参与的实例比率
+	DeployBatch []*float64 `json:"DeployBatch,omitempty" name:"DeployBatch" list`
+
+	// 滚动发布的执行方式
+	DeployExeMode *string `json:"DeployExeMode,omitempty" name:"DeployExeMode"`
+
+	// 滚动发布每个批次的时间间隔
+	DeployWaitTime *uint64 `json:"DeployWaitTime,omitempty" name:"DeployWaitTime"`
 }
 
 func (r *DeployGroupRequest) ToJsonString() string {
@@ -5146,37 +5167,41 @@ type Instance struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	OperationState *int64 `json:"OperationState,omitempty" name:"OperationState"`
 
-	// NamespaceId
+	// NamespaceId Ns ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	NamespaceId *string `json:"NamespaceId,omitempty" name:"NamespaceId"`
 
-	// InstanceZoneId
+	// InstanceZoneId 可用区ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceZoneId *string `json:"InstanceZoneId,omitempty" name:"InstanceZoneId"`
 
-	// InstanceImportMode
+	// InstanceImportMode 导入模式
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceImportMode *string `json:"InstanceImportMode,omitempty" name:"InstanceImportMode"`
 
-	// ApplicationType
+	// ApplicationType应用类型
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ApplicationType *string `json:"ApplicationType,omitempty" name:"ApplicationType"`
 
-	// ApplicationResourceType
+	// ApplicationResourceType 资源类型
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ApplicationResourceType *string `json:"ApplicationResourceType,omitempty" name:"ApplicationResourceType"`
 
-	// ServiceSidecarStatus
+	// sidecar状态
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ServiceSidecarStatus *string `json:"ServiceSidecarStatus,omitempty" name:"ServiceSidecarStatus"`
 
-	// GroupName
+	// 部署组名
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	GroupName *string `json:"GroupName,omitempty" name:"GroupName"`
 
-	// NamespaceName
+	// NS名
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	NamespaceName *string `json:"NamespaceName,omitempty" name:"NamespaceName"`
+
+	// 健康检查原因
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Reason *string `json:"Reason,omitempty" name:"Reason"`
 }
 
 type LaneGroup struct {
@@ -7188,6 +7213,52 @@ type TsfPageVmGroup struct {
 	Content []*VmGroupSimple `json:"Content,omitempty" name:"Content" list`
 }
 
+type UpdateHealthCheckSettingsRequest struct {
+	*tchttp.BaseRequest
+
+	// 部署组ID
+	GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
+
+	// 是否能使健康检查
+	EnableHealthCheck *bool `json:"EnableHealthCheck,omitempty" name:"EnableHealthCheck"`
+
+	// 健康检查配置
+	HealthCheckSettings *HealthCheckSettings `json:"HealthCheckSettings,omitempty" name:"HealthCheckSettings"`
+}
+
+func (r *UpdateHealthCheckSettingsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *UpdateHealthCheckSettingsRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type UpdateHealthCheckSettingsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 更新健康检查配置操作是否成功。
+	// true：操作成功。
+	// false：操作失败。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Result *bool `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *UpdateHealthCheckSettingsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *UpdateHealthCheckSettingsResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type UpdateRepositoryRequest struct {
 	*tchttp.BaseRequest
 
@@ -7346,6 +7417,14 @@ type VmGroup struct {
 	// 滚动发布的每个批次的等待时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DeployWaitTime *uint64 `json:"DeployWaitTime,omitempty" name:"DeployWaitTime"`
+
+	// 是否开启了健康检查
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EnableHealthCheck *bool `json:"EnableHealthCheck,omitempty" name:"EnableHealthCheck"`
+
+	// 健康检查配置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HealthCheckSettings *HealthCheckSettings `json:"HealthCheckSettings,omitempty" name:"HealthCheckSettings"`
 }
 
 type VmGroupSimple struct {

@@ -2722,6 +2722,31 @@ func (c *Client) TerminateTaskFlowBatch(request *TerminateTaskFlowBatchRequest) 
     return
 }
 
+func NewUpdateHealthCheckSettingsRequest() (request *UpdateHealthCheckSettingsRequest) {
+    request = &UpdateHealthCheckSettingsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tsf", APIVersion, "UpdateHealthCheckSettings")
+    return
+}
+
+func NewUpdateHealthCheckSettingsResponse() (response *UpdateHealthCheckSettingsResponse) {
+    response = &UpdateHealthCheckSettingsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 更新健康检查配置
+func (c *Client) UpdateHealthCheckSettings(request *UpdateHealthCheckSettingsRequest) (response *UpdateHealthCheckSettingsResponse, err error) {
+    if request == nil {
+        request = NewUpdateHealthCheckSettingsRequest()
+    }
+    response = NewUpdateHealthCheckSettingsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewUpdateRepositoryRequest() (request *UpdateRepositoryRequest) {
     request = &UpdateRepositoryRequest{
         BaseRequest: &tchttp.BaseRequest{},

@@ -158,7 +158,7 @@ func NewCompleteCertificateResponse() (response *CompleteCertificateResponse) {
     return
 }
 
-// 本接口（CompleteCertificate）用于主动触发证书验证。
+// 本接口（CompleteCertificate）用于主动触发证书验证。仅非DNSPod和Wotrus品牌证书支持使用此接口。
 func (c *Client) CompleteCertificate(request *CompleteCertificateRequest) (response *CompleteCertificateResponse, err error) {
     if request == nil {
         request = NewCompleteCertificateRequest()
@@ -458,7 +458,7 @@ func NewSubmitCertificateInformationResponse() (response *SubmitCertificateInfor
     return
 }
 
-// 提交证书资料。
+// 提交证书资料。输入参数信息可以分多次提交，但提交的证书资料应最低限度保持完整。
 func (c *Client) SubmitCertificateInformation(request *SubmitCertificateInformationRequest) (response *SubmitCertificateInformationResponse, err error) {
     if request == nil {
         request = NewSubmitCertificateInformationRequest()

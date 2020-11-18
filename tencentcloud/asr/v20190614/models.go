@@ -132,11 +132,18 @@ type CreateRecTaskRequest struct {
 	// 语音声道数。1：单声道；2：双声道（仅支持 8k_zh 引擎模型）。
 	ChannelNum *uint64 `json:"ChannelNum,omitempty" name:"ChannelNum"`
 
-	// 识别结果返回形式。0： 识别结果文本(含分段时间戳)； 1：词级别粒度的[详细识别结果](https://cloud.tencent.com/document/api/1093/37824#SentenceDetail)(不含标点，含语速值)；2：词级别粒度的详细识别结果（包含标点）
+	// 识别结果返回形式。0： 识别结果文本(含分段时间戳)； 1：词级别粒度的[详细识别结果](https://cloud.tencent.com/document/api/1093/37824#SentenceDetail)(不含标点，含语速值)；2：词级别粒度的详细识别结果（包含标点、语速值）
 	ResTextFormat *uint64 `json:"ResTextFormat,omitempty" name:"ResTextFormat"`
 
 	// 语音数据来源。0：语音 URL；1：语音数据（post body）。
 	SourceType *uint64 `json:"SourceType,omitempty" name:"SourceType"`
+
+	// 是否开启话者分离，0：不开启，1：开启(仅支持8k_zh/16k_zh引擎模型，单声道音频)
+	SpeakerDiarization *int64 `json:"SpeakerDiarization,omitempty" name:"SpeakerDiarization"`
+
+	// 话者分离人数（需配合开启话者分离使用），支持2-10（8k_zh仅支持2， 16k_zh支持2-10）
+	// 注：话者分离目前是beta版本，请根据您的需要谨慎使用
+	SpeakerNumber *int64 `json:"SpeakerNumber,omitempty" name:"SpeakerNumber"`
 
 	// 回调 URL，用户自行搭建的用于接收识别结果的服务器地址， 长度小于2048字节。如果用户使用回调方式获取识别结果，需提交该参数；如果用户使用轮询方式获取识别结果，则无需提交该参数。
 	CallbackUrl *string `json:"CallbackUrl,omitempty" name:"CallbackUrl"`
@@ -164,13 +171,6 @@ type CreateRecTaskRequest struct {
 
 	// 附加参数
 	Extra *string `json:"Extra,omitempty" name:"Extra"`
-
-	// 是否开启话者分离，0：不开启，1：开启(仅支持8k_zh/16k_zh引擎模型，单声道音频)
-	SpeakerDiarization *int64 `json:"SpeakerDiarization,omitempty" name:"SpeakerDiarization"`
-
-	// 话者分离人数（需配合开启话者分离使用），支持2-10（8k_zh仅支持2， 16k_zh支持2-10）
-	// 注：话者分离目前是beta版本，请根据您的需要谨慎使用
-	SpeakerNumber *int64 `json:"SpeakerNumber,omitempty" name:"SpeakerNumber"`
 
 	// 是否过滤标点符号（目前支持中文普通话引擎）。 0：不过滤，1：过滤句末标点，2：过滤所有标点。默认为0。
 	FilterPunc *int64 `json:"FilterPunc,omitempty" name:"FilterPunc"`
