@@ -5295,7 +5295,9 @@ type RunInstancesRequest struct {
 	// Linux实例密码必须8到30位，至少包括两项[a-z]，[A-Z]、[0-9] 和 [( ) ` ~ ! @ # $ % ^ & - + = | { } [ ] : ; ' , . ? / ]中的特殊符。Windows实例密码必须12到30位，至少包括三项[a-z]，[A-Z]，[0-9] 和 [( ) ` ~ ! @ # $ % ^ & - + = | { } [ ] : ; ' , . ? /]中的特殊符号。
 	Password *string `json:"Password,omitempty" name:"Password"`
 
-	// 公网出带宽上限，单位：Mbps。如果未传该参数或者传的值为0，则使用模块下的默认值
+	// 公网出带宽上限，单位：Mbps。
+	// 1.如果未传该参数或者传的值为0，则使用模块下的默认值。
+	// 2.如果未传该参数或者传的值为0且未指定模块，则使用InternetMaxBandwidthIn的值
 	InternetMaxBandwidthOut *int64 `json:"InternetMaxBandwidthOut,omitempty" name:"InternetMaxBandwidthOut"`
 
 	// 模块ID。如果未传该参数，则必须传ImageId，InstanceType，DataDiskSize，InternetMaxBandwidthOut参数
@@ -5342,6 +5344,11 @@ type RunInstancesRequest struct {
 
 	// 系统盘大小，单位是G。如果未传该参数或者传的值为0，则使用模块下的默认值
 	SystemDiskSize *uint64 `json:"SystemDiskSize,omitempty" name:"SystemDiskSize"`
+
+	// 公网入带宽上限，单位：Mbps。
+	// 1.如果未传该参数或者传的值为0，则使用对应模块的默认值。
+	// 2.如果未传该参数或者传的值为0且未指定模块，则使用InternetMaxBandwidthOut
+	InternetMaxBandwidthIn *int64 `json:"InternetMaxBandwidthIn,omitempty" name:"InternetMaxBandwidthIn"`
 }
 
 func (r *RunInstancesRequest) ToJsonString() string {

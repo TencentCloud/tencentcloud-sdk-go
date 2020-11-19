@@ -443,6 +443,31 @@ func (c *Client) CreateTask(request *CreateTaskRequest) (response *CreateTaskRes
     return
 }
 
+func NewCreateTaskFlowRequest() (request *CreateTaskFlowRequest) {
+    request = &CreateTaskFlowRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tsf", APIVersion, "CreateTaskFlow")
+    return
+}
+
+func NewCreateTaskFlowResponse() (response *CreateTaskFlowResponse) {
+    response = &CreateTaskFlowResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 创建工作流
+func (c *Client) CreateTaskFlow(request *CreateTaskFlowRequest) (response *CreateTaskFlowResponse, err error) {
+    if request == nil {
+        request = NewCreateTaskFlowRequest()
+    }
+    response = NewCreateTaskFlowResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteApplicationRequest() (request *DeleteApplicationRequest) {
     request = &DeleteApplicationRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2246,6 +2271,31 @@ func (c *Client) ModifyMicroservice(request *ModifyMicroserviceRequest) (respons
     return
 }
 
+func NewModifyTaskRequest() (request *ModifyTaskRequest) {
+    request = &ModifyTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tsf", APIVersion, "ModifyTask")
+    return
+}
+
+func NewModifyTaskResponse() (response *ModifyTaskResponse) {
+    response = &ModifyTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 修改任务
+func (c *Client) ModifyTask(request *ModifyTaskRequest) (response *ModifyTaskResponse, err error) {
+    if request == nil {
+        request = NewModifyTaskRequest()
+    }
+    response = NewModifyTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyUploadInfoRequest() (request *ModifyUploadInfoRequest) {
     request = &ModifyUploadInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2318,6 +2368,31 @@ func (c *Client) RedoTaskBatch(request *RedoTaskBatchRequest) (response *RedoTas
         request = NewRedoTaskBatchRequest()
     }
     response = NewRedoTaskBatchResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewRedoTaskExecuteRequest() (request *RedoTaskExecuteRequest) {
+    request = &RedoTaskExecuteRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tsf", APIVersion, "RedoTaskExecute")
+    return
+}
+
+func NewRedoTaskExecuteResponse() (response *RedoTaskExecuteResponse) {
+    response = &RedoTaskExecuteResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 重新执行在某个节点上执行任务。
+func (c *Client) RedoTaskExecute(request *RedoTaskExecuteRequest) (response *RedoTaskExecuteResponse, err error) {
+    if request == nil {
+        request = NewRedoTaskExecuteRequest()
+    }
+    response = NewRedoTaskExecuteResponse()
     err = c.Send(request, response)
     return
 }

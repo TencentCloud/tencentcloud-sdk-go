@@ -4286,6 +4286,9 @@ type PurgePathCacheRequest struct {
 	// flush：刷新产生更新的资源
 	// delete：刷新全部资源
 	FlushType *string `json:"FlushType,omitempty" name:"FlushType"`
+
+	// 是否对中文字符进行编码后刷新
+	UrlEncode *bool `json:"UrlEncode,omitempty" name:"UrlEncode"`
 }
 
 func (r *PurgePathCacheRequest) ToJsonString() string {

@@ -1,10 +1,48 @@
 # 本版本更新包含以下内容：
 
-## 网站备案(ba) 版本：2020-07-20
+## 内容分发网络(cdn) 版本：2018-06-06
 
-### 第 1 次发布
+### 第 48 次发布
 
-发布时间：2020-11-17 14:37:06
+发布时间：2020-11-19 08:02:35
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [PurgePathCache](https://cloud.tencent.com/document/api/228/37871)
+
+	* 新增入参：UrlEncode
+
+
+
+
+## 边缘计算机器(ecm) 版本：2019-07-19
+
+### 第 31 次发布
+
+发布时间：2020-11-19 08:00:34
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [RunInstances](https://cloud.tencent.com/document/api/1108/43513)
+
+	* 新增入参：InternetMaxBandwidthIn
+
+
+
+
+## 云数据库 Redis(redis) 版本：2018-04-12
+
+### 第 24 次发布
+
+发布时间：2020-11-19 08:05:46
 
 本次发布包含了以下内容：
 
@@ -12,31 +50,19 @@
 
 新增接口：
 
-* [CreateWeappQRUrl](https://cloud.tencent.com/document/api/243/49995)
+* [DescribeTendisSlowLog](https://cloud.tencent.com/document/api/239/50085)
 
+新增数据结构：
 
-
-## 域名注册(domain) 版本：2018-08-08
-
-### 第 9 次发布
-
-发布时间：2020-11-18 08:17:27
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [DescribeTemplate](https://cloud.tencent.com/document/api/242/50018)
+* [TendisSlowLogDetail](https://cloud.tencent.com/document/api/239/20022#TendisSlowLogDetail)
 
 
 
 ## 腾讯微服务平台 TSF(tsf) 版本：2018-03-26
 
-### 第 36 次发布
+### 第 37 次发布
 
-发布时间：2020-11-18 08:34:11
+发布时间：2020-11-19 08:06:52
 
 本次发布包含了以下内容：
 
@@ -44,24 +70,19 @@
 
 新增接口：
 
-* [UpdateHealthCheckSettings](https://cloud.tencent.com/document/api/649/50019)
+* [CreateTaskFlow](https://cloud.tencent.com/document/api/649/50088)
+* [ModifyTask](https://cloud.tencent.com/document/api/649/50087)
+* [RedoTaskExecute](https://cloud.tencent.com/document/api/649/50086)
 
-修改接口：
+新增数据结构：
 
-* [DeployGroup](https://cloud.tencent.com/document/api/649/36070)
-
-	* 新增入参：EnableHealthCheck, HealthCheckSettings, UpdateType, DeployBetaEnable, DeployBatch, DeployExeMode, DeployWaitTime
-
+* [TaskFlowEdge](https://cloud.tencent.com/document/api/649/36099#TaskFlowEdge)
 
 修改数据结构：
 
-* [Instance](https://cloud.tencent.com/document/api/649/36099#Instance)
+* [ServiceSetting](https://cloud.tencent.com/document/api/649/36099#ServiceSetting)
 
-	* 新增成员：Reason
-
-* [VmGroup](https://cloud.tencent.com/document/api/649/36099#VmGroup)
-
-	* 新增成员：EnableHealthCheck, HealthCheckSettings
+	* <font color="#dd0000">**修改成员**：</font>ProtocolPorts
 
 
 
@@ -1837,7 +1858,7 @@
 
 新增接口：
 
-* [[CreateWeappQRUrl](https://cloud.tencent.com/document/api/243/49995)](https://cloud.tencent.com/document/api/#/#)
+* [CreateWeappQRUrl](https://cloud.tencent.com/document/api/243/49995)
 
 
 
@@ -6615,6 +6636,21 @@
 
 
 ## 内容分发网络(cdn) 版本：2018-06-06
+
+### 第 48 次发布
+
+发布时间：2020-11-19 08:02:35
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [PurgePathCache](https://cloud.tencent.com/document/api/228/37871)
+
+	* 新增入参：UrlEncode
+
 
 ### 第 47 次发布
 
@@ -13989,7 +14025,7 @@
 
 新增接口：
 
-* [[DescribeTemplate](https://cloud.tencent.com/document/api/242/50018)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeTemplate](https://cloud.tencent.com/document/api/242/50018)
 
 ### 第 8 次发布
 
@@ -14795,6 +14831,21 @@
 
 
 ## 边缘计算机器(ecm) 版本：2019-07-19
+
+### 第 31 次发布
+
+发布时间：2020-11-19 08:00:34
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [RunInstances](https://cloud.tencent.com/document/api/1108/43513)
+
+	* 新增入参：InternetMaxBandwidthIn
+
 
 ### 第 30 次发布
 
@@ -26299,6 +26350,22 @@
 
 ## 云数据库 Redis(redis) 版本：2018-04-12
 
+### 第 24 次发布
+
+发布时间：2020-11-19 08:05:46
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeTendisSlowLog](https://cloud.tencent.com/document/api/239/50085)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[TendisSlowLogDetail](https://cloud.tencent.com/document/api/239/20022#TendisSlowLogDetail)](https://cloud.tencent.com/document/api/239/20022#[TendisSlowLogDetail](https://cloud.tencent.com/document/api/239/20022#TendisSlowLogDetail))
+
 ### 第 23 次发布
 
 发布时间：2020-11-04 08:05:40
@@ -33280,6 +33347,31 @@
 
 ## 腾讯微服务平台 TSF(tsf) 版本：2018-03-26
 
+### 第 37 次发布
+
+发布时间：2020-11-19 08:06:52
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[CreateTaskFlow](https://cloud.tencent.com/document/api/649/50088)](https://cloud.tencent.com/document/api/#/#)
+* [[ModifyTask](https://cloud.tencent.com/document/api/649/50087)](https://cloud.tencent.com/document/api/#/#)
+* [[RedoTaskExecute](https://cloud.tencent.com/document/api/649/50086)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[TaskFlowEdge](https://cloud.tencent.com/document/api/649/36099#TaskFlowEdge)](https://cloud.tencent.com/document/api/649/36099#[TaskFlowEdge](https://cloud.tencent.com/document/api/649/36099#TaskFlowEdge))
+
+修改数据结构：
+
+* [ServiceSetting](https://cloud.tencent.com/document/api/649/36099#ServiceSetting)
+
+	* <font color="#dd0000">**修改成员**：</font>ProtocolPorts
+
+
 ### 第 36 次发布
 
 发布时间：2020-11-18 08:34:11
@@ -33290,7 +33382,7 @@
 
 新增接口：
 
-* [[UpdateHealthCheckSettings](https://cloud.tencent.com/document/api/649/50019)](https://cloud.tencent.com/document/api/#/#)
+* [UpdateHealthCheckSettings](https://cloud.tencent.com/document/api/649/50019)
 
 修改接口：
 

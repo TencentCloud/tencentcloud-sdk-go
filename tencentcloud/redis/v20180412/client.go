@@ -943,6 +943,31 @@ func (c *Client) DescribeTaskList(request *DescribeTaskListRequest) (response *D
     return
 }
 
+func NewDescribeTendisSlowLogRequest() (request *DescribeTendisSlowLogRequest) {
+    request = &DescribeTendisSlowLogRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("redis", APIVersion, "DescribeTendisSlowLog")
+    return
+}
+
+func NewDescribeTendisSlowLogResponse() (response *DescribeTendisSlowLogResponse) {
+    response = &DescribeTendisSlowLogResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询Tendis慢查询
+func (c *Client) DescribeTendisSlowLog(request *DescribeTendisSlowLogRequest) (response *DescribeTendisSlowLogResponse, err error) {
+    if request == nil {
+        request = NewDescribeTendisSlowLogRequest()
+    }
+    response = NewDescribeTendisSlowLogResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDestroyPostpaidInstanceRequest() (request *DestroyPostpaidInstanceRequest) {
     request = &DestroyPostpaidInstanceRequest{
         BaseRequest: &tchttp.BaseRequest{},

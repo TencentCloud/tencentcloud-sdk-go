@@ -1907,6 +1907,61 @@ func (r *DescribeTaskListResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeTendisSlowLogRequest struct {
+	*tchttp.BaseRequest
+
+	// 实例Id：crs-ngvou0i1
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 开始时间：2019-09-08 12:12:41
+	BeginTime *string `json:"BeginTime,omitempty" name:"BeginTime"`
+
+	// 结束时间：2019-09-09 12:12:41
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 慢查询阈值（毫秒）
+	MinQueryTime *int64 `json:"MinQueryTime,omitempty" name:"MinQueryTime"`
+
+	// 页面大小：20
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 偏移量，取Limit整数倍
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+}
+
+func (r *DescribeTendisSlowLogRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeTendisSlowLogRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeTendisSlowLogResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 慢查询总数
+		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 慢查询详情
+		TendisSlowLogDetail []*TendisSlowLogDetail `json:"TendisSlowLogDetail,omitempty" name:"TendisSlowLogDetail" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeTendisSlowLogResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeTendisSlowLogResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DestroyPostpaidInstanceRequest struct {
 	*tchttp.BaseRequest
 
@@ -2140,31 +2195,32 @@ type Inbound struct {
 type InquiryPriceCreateInstanceRequest struct {
 	*tchttp.BaseRequest
 
-	// 实例所属的可用区id
+	// 实例所属的可用区ID，可参考[地域和可用区](https://cloud.tencent.com/document/product/239/4106)  。
 	ZoneId *uint64 `json:"ZoneId,omitempty" name:"ZoneId"`
 
-	// 实例类型：2 – Redis2.8主从版，3 – Redis3.2主从版(CKV主从版)，4 – Redis3.2集群版(CKV集群版)，5-Redis2.8单机版，6 – Redis4.0主从版，7 – Redis4.0集群版，
+	// 实例类型：2 – Redis2.8内存版(标准架构)，3 – CKV 3.2内存版(标准架构)，4 – CKV 3.2内存版(集群架构)，6 – Redis4.0内存版(标准架构)，7 – Redis4.0内存版(集群架构)，8 – Redis5.0内存版(标准架构)，9 – Redis5.0内存版(集群架构)。
 	TypeId *uint64 `json:"TypeId,omitempty" name:"TypeId"`
 
-	// 实例容量，单位MB， 取值大小以 查询售卖规格接口返回的规格为准
+	// 内存容量，单位为MB， 数值需为1024的整数倍，具体规格以 [查询产品售卖规格](https://cloud.tencent.com/document/api/239/30600) 返回的规格为准。
+	// TypeId为标准架构时，MemSize是实例总内存容量；TypeId为集群架构时，MemSize是单分片内存容量。
 	MemSize *uint64 `json:"MemSize,omitempty" name:"MemSize"`
 
-	// 实例数量，单次购买实例数量以 查询售卖规格接口返回的规格为准
+	// 实例数量，单次购买实例数量以 [查询产品售卖规格](https://cloud.tencent.com/document/api/239/30600) 返回的规格为准。
 	GoodsNum *uint64 `json:"GoodsNum,omitempty" name:"GoodsNum"`
 
-	// 购买时长，在创建包年包月实例的时候需要填写，按量计费实例填1即可，单位：月，取值范围 [1,2,3,4,5,6,7,8,9,10,11,12,24,36]
+	// 购买时长，在创建包年包月实例的时候需要填写，按量计费实例填1即可，单位：月，取值范围 [1,2,3,4,5,6,7,8,9,10,11,12,24,36]。
 	Period *uint64 `json:"Period,omitempty" name:"Period"`
 
 	// 付费方式:0-按量计费，1-包年包月。
 	BillingMode *int64 `json:"BillingMode,omitempty" name:"BillingMode"`
 
-	// 实例分片数量，Redis2.8主从版、CKV主从版和Redis2.8单机版、Redis4.0主从版不需要填写
+	// 实例分片数量，Redis2.8主从版、CKV主从版和Redis2.8单机版、Redis4.0主从版不需要填写。
 	RedisShardNum *int64 `json:"RedisShardNum,omitempty" name:"RedisShardNum"`
 
-	// 实例副本数量，Redis2.8主从版、CKV主从版和Redis2.8单机版不需要填写
+	// 实例副本数量，Redis2.8主从版、CKV主从版和Redis2.8单机版不需要填写。
 	RedisReplicasNum *int64 `json:"RedisReplicasNum,omitempty" name:"RedisReplicasNum"`
 
-	// 是否支持副本只读，Redis2.8主从版、CKV主从版和Redis2.8单机版不需要填写
+	// 是否支持副本只读，Redis2.8主从版、CKV主从版和Redis2.8单机版不需要填写。
 	ReplicasReadonly *bool `json:"ReplicasReadonly,omitempty" name:"ReplicasReadonly"`
 }
 
@@ -3710,6 +3766,24 @@ type TendisNodes struct {
 
 	// 节点角色
 	NodeRole *string `json:"NodeRole,omitempty" name:"NodeRole"`
+}
+
+type TendisSlowLogDetail struct {
+
+	// 执行时间
+	ExecuteTime *string `json:"ExecuteTime,omitempty" name:"ExecuteTime"`
+
+	// 慢查询耗时（毫秒）
+	Duration *int64 `json:"Duration,omitempty" name:"Duration"`
+
+	// 命令
+	Command *string `json:"Command,omitempty" name:"Command"`
+
+	// 详细命令行信息
+	CommandLine *string `json:"CommandLine,omitempty" name:"CommandLine"`
+
+	// 节点ID
+	Node *string `json:"Node,omitempty" name:"Node"`
 }
 
 type TradeDealDetail struct {
