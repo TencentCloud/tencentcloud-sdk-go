@@ -1564,7 +1564,7 @@ type PhoneVerificationRequest struct {
 	// 手机号
 	Phone *string `json:"Phone,omitempty" name:"Phone"`
 
-	// 有加密需求的用户，接入传入kms的CiphertextBlob
+	// 有加密需求的用户，接入传入kms的CiphertextBlob，关于数据加密可查阅 <a href="https://cloud.tencent.com/document/product/1007/47180">数据加密</a> 文档。
 	CiphertextBlob *string `json:"CiphertextBlob,omitempty" name:"CiphertextBlob"`
 
 	// 在使用加密服务时，填入要被加密的字段。本接口中可填入加密后的IdCard，Name，Phone中的一个或多个

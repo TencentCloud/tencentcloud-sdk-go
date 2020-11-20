@@ -190,6 +190,37 @@ type CloudBaseRunVolumeMount struct {
 	NfsVolumes []*CloudBaseRunNfsVolumeSource `json:"NfsVolumes,omitempty" name:"NfsVolumes" list`
 }
 
+type CloudBaseRunVpcSubnet struct {
+
+	// 子网id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Id *string `json:"Id,omitempty" name:"Id"`
+
+	// 子网的ipv4
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Cidr *string `json:"Cidr,omitempty" name:"Cidr"`
+
+	// 可用区
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Zone *string `json:"Zone,omitempty" name:"Zone"`
+
+	// 类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// subnet类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Target *string `json:"Target,omitempty" name:"Target"`
+
+	// 地域
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Region *string `json:"Region,omitempty" name:"Region"`
+
+	// 名字
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Name *string `json:"Name,omitempty" name:"Name"`
+}
+
 type CloudRunServiceSimpleVersionSnapshot struct {
 
 	// 版本名
@@ -855,6 +886,60 @@ func (r *DescribeCloudBaseBuildServiceResponse) ToJsonString() string {
 }
 
 func (r *DescribeCloudBaseBuildServiceResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeCloudBaseRunResourceRequest struct {
+	*tchttp.BaseRequest
+
+	// 环境ID
+	EnvId *string `json:"EnvId,omitempty" name:"EnvId"`
+}
+
+func (r *DescribeCloudBaseRunResourceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeCloudBaseRunResourceRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeCloudBaseRunResourceResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 集群状态(creating/succ)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		ClusterStatus *string `json:"ClusterStatus,omitempty" name:"ClusterStatus"`
+
+		// 虚拟集群ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		VirtualClusterId *string `json:"VirtualClusterId,omitempty" name:"VirtualClusterId"`
+
+		// vpc id信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
+
+		// 地域信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Region *string `json:"Region,omitempty" name:"Region"`
+
+		// 子网信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		SubnetIds []*CloudBaseRunVpcSubnet `json:"SubnetIds,omitempty" name:"SubnetIds" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeCloudBaseRunResourceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeCloudBaseRunResourceResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 

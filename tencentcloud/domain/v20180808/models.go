@@ -770,9 +770,11 @@ type DomainBaseInfo struct {
 	// TransferFailed：转入失败
 	BuyStatus *string `json:"BuyStatus,omitempty" name:"BuyStatus"`
 
-	// 注册类型
-	// epp （腾讯云自有域名）
-	// xinnet (新网域名)
+	// 注册商类型
+	// epp: DNSPod, Inc.（烟台帝思普网络科技有限公司）
+	// qcloud: Tencent Cloud Computing (Beijing) Limited Liability Company（腾讯云计算（北京）有限责任公司）
+	// yunxun: Guangzhou Yunxun Information Technology Co., Ltd.（广州云讯信息科技有限公司）
+	// xinnet: Xin Net Technology Corporation（北京新网数码信息技术有限公司）
 	RegistrarType *string `json:"RegistrarType,omitempty" name:"RegistrarType"`
 }
 

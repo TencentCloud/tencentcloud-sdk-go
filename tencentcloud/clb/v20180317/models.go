@@ -2825,6 +2825,10 @@ type LoadBalancer struct {
 	// 开启IPv6FullChain负载均衡7层监听器支持混绑IPv4/IPv6目标功能。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MixIpTarget *bool `json:"MixIpTarget,omitempty" name:"MixIpTarget"`
+
+	// 私有网络内网负载均衡，就近接入模式下规则所落在的可用区
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Zones []*string `json:"Zones,omitempty" name:"Zones" list`
 }
 
 type LoadBalancerDetail struct {

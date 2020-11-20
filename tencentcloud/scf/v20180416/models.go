@@ -256,10 +256,10 @@ type CreateFunctionRequest struct {
 	// 创建的函数名称，函数名称支持26个英文字母大小写、数字、连接符和下划线，第一个字符只能以字母开头，最后一个字符不能为连接符或者下划线，名称长度2-60
 	FunctionName *string `json:"FunctionName,omitempty" name:"FunctionName"`
 
-	// 函数的代码. 注意：不能同时指定Cos与ZipFile
+	// 函数代码. 注意：不能同时指定Cos、ZipFile或 DemoId。
 	Code *Code `json:"Code,omitempty" name:"Code"`
 
-	// 函数处理方法名称，名称格式支持 "文件名称.方法名称" 形式，文件名称和函数名称之间以"."隔开，文件名称和函数名称要求以字母开始和结尾，中间允许插入字母、数字、下划线和连接符，文件名称和函数名字的长度要求是 2-60 个字符
+	// 函数处理方法名称，名称格式支持 "文件名称.方法名称" 形式（java 名称格式 包名.类名::方法名），文件名称和函数名称之间以"."隔开，文件名称和函数名称要求以字母开始和结尾，中间允许插入字母、数字、下划线和连接符，文件名称和函数名字的长度要求是 2-60 个字符
 	Handler *string `json:"Handler,omitempty" name:"Handler"`
 
 	// 函数描述,最大支持 1000 个英文字母、数字、空格、逗号、换行符和英文句号，支持中文
@@ -274,7 +274,7 @@ type CreateFunctionRequest struct {
 	// 函数的环境变量
 	Environment *Environment `json:"Environment,omitempty" name:"Environment"`
 
-	// 函数运行环境，目前仅支持 Python2.7，Python3.6，Nodejs6.10，Nodejs8.9，Nodejs10.15，Nodejs12.16， PHP5， PHP7，Golang1 ， Java8和CustomRuntime，默认Python2.7
+	// 函数运行环境，目前仅支持 Python2.7，Python3.6，Nodejs6.10，Nodejs8.9，Nodejs10.15，Nodejs12.16， PHP5， PHP7，Go1，Java8和CustomRuntime，默认Python2.7
 	Runtime *string `json:"Runtime,omitempty" name:"Runtime"`
 
 	// 函数的私有网络配置
@@ -295,7 +295,7 @@ type CreateFunctionRequest struct {
 	// 函数类型，默认值为Event，创建触发器函数请填写Event，创建HTTP函数级服务请填写HTTP
 	Type *string `json:"Type,omitempty" name:"Type"`
 
-	// CodeSource 代码来源，支持以下'ZipFile', 'Cos', 'Demo', 'TempCos', 'Git'之一，使用Git来源必须指定此字段
+	// CodeSource 代码来源，支持ZipFile, Cos, Demo 其中之一
 	CodeSource *string `json:"CodeSource,omitempty" name:"CodeSource"`
 
 	// 函数要关联的Layer版本列表，Layer会按照在列表中顺序依次覆盖。
@@ -711,7 +711,7 @@ type Function struct {
 	// 命名空间
 	Namespace *string `json:"Namespace,omitempty" name:"Namespace"`
 
-	// 函数状态
+	// 函数状态，状态值及流转[参考此处](https://cloud.tencent.com/document/product/583/47175)
 	Status *string `json:"Status,omitempty" name:"Status"`
 
 	// 函数状态详情
@@ -725,6 +725,17 @@ type Function struct {
 
 	// 函数类型，取值为 HTTP 或者 Event
 	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 函数状态失败原因
+	StatusReasons []*StatusReason `json:"StatusReasons,omitempty" name:"StatusReasons" list`
+
+	// 函数所有版本预置并发内存总和
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalProvisionedConcurrencyMem *uint64 `json:"TotalProvisionedConcurrencyMem,omitempty" name:"TotalProvisionedConcurrencyMem"`
+
+	// 函数并发保留内存
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ReservedConcurrencyMem *uint64 `json:"ReservedConcurrencyMem,omitempty" name:"ReservedConcurrencyMem"`
 }
 
 type FunctionLog struct {
@@ -1927,6 +1938,15 @@ type Trigger struct {
 
 	// 触发器状态
 	AvailableStatus *string `json:"AvailableStatus,omitempty" name:"AvailableStatus"`
+
+	// 触发器最小资源ID
+	ResourceId *string `json:"ResourceId,omitempty" name:"ResourceId"`
+
+	// 触发器和云函数绑定状态
+	BindStatus *string `json:"BindStatus,omitempty" name:"BindStatus"`
+
+	// 触发器类型，双向表示两侧控制台均可操作，单向表示SCF控制台单向创建
+	TriggerAttribute *string `json:"TriggerAttribute,omitempty" name:"TriggerAttribute"`
 }
 
 type TriggerInfo struct {
@@ -1958,6 +1978,15 @@ type TriggerInfo struct {
 
 	// 触发器最后修改时间
 	ModTime *string `json:"ModTime,omitempty" name:"ModTime"`
+
+	// 触发器最小资源ID
+	ResourceId *string `json:"ResourceId,omitempty" name:"ResourceId"`
+
+	// 触发器和云函数绑定状态
+	BindStatus *string `json:"BindStatus,omitempty" name:"BindStatus"`
+
+	// 触发器类型，双向表示两侧控制台均可操作，单向表示SCF控制台单向创建
+	TriggerAttribute *string `json:"TriggerAttribute,omitempty" name:"TriggerAttribute"`
 }
 
 type UpdateAliasRequest struct {
@@ -2042,7 +2071,7 @@ type UpdateFunctionCodeRequest struct {
 	// 函数代码
 	Code *Code `json:"Code,omitempty" name:"Code"`
 
-	// 代码来源方式，支持以下'ZipFile', 'Cos', 'Inline', 'TempCos', 'Git' 之一，使用Git来源必须指定此字段
+	// 代码来源方式，支持 ZipFile, Cos, Inline 之一
 	CodeSource *string `json:"CodeSource,omitempty" name:"CodeSource"`
 }
 
@@ -2088,7 +2117,7 @@ type UpdateFunctionConfigurationRequest struct {
 	// 函数最长执行时间，单位为秒，可选值范 1-900 秒，默认为 3 秒
 	Timeout *int64 `json:"Timeout,omitempty" name:"Timeout"`
 
-	// 函数运行环境，目前仅支持 Python2.7，Python3.6，Nodejs6.10，Nodejs8.9，Nodejs10.15，Nodejs12.16， PHP5， PHP7，Golang1 ， Java8和CustomRuntime
+	// 函数运行环境，目前仅支持 Python2.7，Python3.6，Nodejs6.10，Nodejs8.9，Nodejs10.15，Nodejs12.16， PHP5， PHP7，Go1 ， Java8和CustomRuntime
 	Runtime *string `json:"Runtime,omitempty" name:"Runtime"`
 
 	// 函数的环境变量
@@ -2109,7 +2138,7 @@ type UpdateFunctionConfigurationRequest struct {
 	// 日志投递到的cls Topic ID
 	ClsTopicId *string `json:"ClsTopicId,omitempty" name:"ClsTopicId"`
 
-	// 在更新时是否同步发布新版本，默认为：FALSE，不发布
+	// 在更新时是否同步发布新版本，默认为：FALSE，不发布新版本
 	Publish *string `json:"Publish,omitempty" name:"Publish"`
 
 	// 是否开启L5访问能力，TRUE 为开启，FALSE为关闭
@@ -2124,7 +2153,7 @@ type UpdateFunctionConfigurationRequest struct {
 	// 公网访问配置
 	PublicNetConfig *PublicNetConfigIn `json:"PublicNetConfig,omitempty" name:"PublicNetConfig"`
 
-	// 文件系统配置入参，用于云函数绑定文件系统
+	// 文件系统配置入参，用于云函数绑定CFS文件系统
 	CfsConfig *CfsConfig `json:"CfsConfig,omitempty" name:"CfsConfig"`
 
 	// 函数初始化执行超时时间，默认15秒

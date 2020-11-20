@@ -1,29 +1,29 @@
 # 本版本更新包含以下内容：
 
-## 内容分发网络(cdn) 版本：2018-06-06
+## 负载均衡(clb) 版本：2018-03-17
 
-### 第 48 次发布
+### 第 37 次发布
 
-发布时间：2020-11-19 08:02:35
+发布时间：2020-11-20 08:02:55
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-修改接口：
+修改数据结构：
 
-* [PurgePathCache](https://cloud.tencent.com/document/api/228/37871)
+* [LoadBalancer](https://cloud.tencent.com/document/api/214/30694#LoadBalancer)
 
-	* 新增入参：UrlEncode
+	* 新增成员：Zones
 
 
 
 
 ## 边缘计算机器(ecm) 版本：2019-07-19
 
-### 第 31 次发布
+### 第 32 次发布
 
-发布时间：2020-11-19 08:00:34
+发布时间：2020-11-20 08:00:35
 
 本次发布包含了以下内容：
 
@@ -31,59 +31,64 @@
 
 修改接口：
 
-* [RunInstances](https://cloud.tencent.com/document/api/1108/43513)
+* [CreateListener](https://cloud.tencent.com/document/api/1108/48466)
 
-	* 新增入参：InternetMaxBandwidthIn
+	* 新增入参：SessionType
 
-
-
-
-## 云数据库 Redis(redis) 版本：2018-04-12
-
-### 第 24 次发布
-
-发布时间：2020-11-19 08:05:46
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [DescribeTendisSlowLog](https://cloud.tencent.com/document/api/239/50085)
-
-新增数据结构：
-
-* [TendisSlowLogDetail](https://cloud.tencent.com/document/api/239/20022#TendisSlowLogDetail)
-
-
-
-## 腾讯微服务平台 TSF(tsf) 版本：2018-03-26
-
-### 第 37 次发布
-
-发布时间：2020-11-19 08:06:52
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [CreateTaskFlow](https://cloud.tencent.com/document/api/649/50088)
-* [ModifyTask](https://cloud.tencent.com/document/api/649/50087)
-* [RedoTaskExecute](https://cloud.tencent.com/document/api/649/50086)
-
-新增数据结构：
-
-* [TaskFlowEdge](https://cloud.tencent.com/document/api/649/36099#TaskFlowEdge)
 
 修改数据结构：
 
-* [ServiceSetting](https://cloud.tencent.com/document/api/649/36099#ServiceSetting)
+* [Listener](https://cloud.tencent.com/document/api/1108/42574#Listener)
 
-	* <font color="#dd0000">**修改成员**：</font>ProtocolPorts
+	* 新增成员：SessionType
 
+
+
+
+## 云函数(scf) 版本：2018-04-16
+
+### 第 22 次发布
+
+发布时间：2020-11-20 08:05:55
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [Function](https://cloud.tencent.com/document/api/583/17244#Function)
+
+	* 新增成员：StatusReasons, TotalProvisionedConcurrencyMem, ReservedConcurrencyMem
+
+* [Trigger](https://cloud.tencent.com/document/api/583/17244#Trigger)
+
+	* 新增成员：ResourceId, BindStatus, TriggerAttribute
+
+* [TriggerInfo](https://cloud.tencent.com/document/api/583/17244#TriggerInfo)
+
+	* 新增成员：ResourceId, BindStatus, TriggerAttribute
+
+
+
+
+## 云开发 CloudBase(tcb) 版本：2018-06-08
+
+### 第 25 次发布
+
+发布时间：2020-11-20 08:06:32
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeCloudBaseRunResource](https://cloud.tencent.com/document/api/876/50108)
+
+新增数据结构：
+
+* [CloudBaseRunVpcSubnet](https://cloud.tencent.com/document/api/876/34822#CloudBaseRunVpcSubnet)
 
 
 
@@ -8403,6 +8408,21 @@
 
 ## 负载均衡(clb) 版本：2018-03-17
 
+### 第 37 次发布
+
+发布时间：2020-11-20 08:02:55
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [LoadBalancer](https://cloud.tencent.com/document/api/214/30694#LoadBalancer)
+
+	* 新增成员：Zones
+
+
 ### 第 36 次发布
 
 发布时间：2020-11-17 08:03:29
@@ -14831,6 +14851,28 @@
 
 
 ## 边缘计算机器(ecm) 版本：2019-07-19
+
+### 第 32 次发布
+
+发布时间：2020-11-20 08:00:35
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateListener](https://cloud.tencent.com/document/api/1108/48466)
+
+	* 新增入参：SessionType
+
+
+修改数据结构：
+
+* [Listener](https://cloud.tencent.com/document/api/1108/42574#Listener)
+
+	* 新增成员：SessionType
+
 
 ### 第 31 次发布
 
@@ -26360,11 +26402,11 @@
 
 新增接口：
 
-* [[DescribeTendisSlowLog](https://cloud.tencent.com/document/api/239/50085)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeTendisSlowLog](https://cloud.tencent.com/document/api/239/50085)
 
 新增数据结构：
 
-* [[TendisSlowLogDetail](https://cloud.tencent.com/document/api/239/20022#TendisSlowLogDetail)](https://cloud.tencent.com/document/api/239/20022#[TendisSlowLogDetail](https://cloud.tencent.com/document/api/239/20022#TendisSlowLogDetail))
+* [TendisSlowLogDetail](https://cloud.tencent.com/document/api/239/20022#TendisSlowLogDetail)
 
 ### 第 23 次发布
 
@@ -26950,6 +26992,29 @@
 
 
 ## 云函数(scf) 版本：2018-04-16
+
+### 第 22 次发布
+
+发布时间：2020-11-20 08:05:55
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [Function](https://cloud.tencent.com/document/api/583/17244#Function)
+
+	* 新增成员：StatusReasons, TotalProvisionedConcurrencyMem, ReservedConcurrencyMem
+
+* [Trigger](https://cloud.tencent.com/document/api/583/17244#Trigger)
+
+	* 新增成员：ResourceId, BindStatus, TriggerAttribute
+
+* [TriggerInfo](https://cloud.tencent.com/document/api/583/17244#TriggerInfo)
+
+	* 新增成员：ResourceId, BindStatus, TriggerAttribute
+
 
 ### 第 21 次发布
 
@@ -29687,6 +29752,22 @@
 
 
 ## 云开发 CloudBase(tcb) 版本：2018-06-08
+
+### 第 25 次发布
+
+发布时间：2020-11-20 08:06:32
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeCloudBaseRunResource](https://cloud.tencent.com/document/api/876/50108)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[CloudBaseRunVpcSubnet](https://cloud.tencent.com/document/api/876/34822#CloudBaseRunVpcSubnet)](https://cloud.tencent.com/document/api/876/34822#[CloudBaseRunVpcSubnet](https://cloud.tencent.com/document/api/876/34822#CloudBaseRunVpcSubnet))
 
 ### 第 24 次发布
 
@@ -33357,13 +33438,13 @@
 
 新增接口：
 
-* [[CreateTaskFlow](https://cloud.tencent.com/document/api/649/50088)](https://cloud.tencent.com/document/api/#/#)
-* [[ModifyTask](https://cloud.tencent.com/document/api/649/50087)](https://cloud.tencent.com/document/api/#/#)
-* [[RedoTaskExecute](https://cloud.tencent.com/document/api/649/50086)](https://cloud.tencent.com/document/api/#/#)
+* [CreateTaskFlow](https://cloud.tencent.com/document/api/649/50088)
+* [ModifyTask](https://cloud.tencent.com/document/api/649/50087)
+* [RedoTaskExecute](https://cloud.tencent.com/document/api/649/50086)
 
 新增数据结构：
 
-* [[TaskFlowEdge](https://cloud.tencent.com/document/api/649/36099#TaskFlowEdge)](https://cloud.tencent.com/document/api/649/36099#[TaskFlowEdge](https://cloud.tencent.com/document/api/649/36099#TaskFlowEdge))
+* [TaskFlowEdge](https://cloud.tencent.com/document/api/649/36099#TaskFlowEdge)
 
 修改数据结构：
 

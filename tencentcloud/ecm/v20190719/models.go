@@ -619,6 +619,9 @@ type CreateListenerRequest struct {
 	// 监听器转发的方式。可选值：WRR、LEAST_CONN
 	// 分别表示按权重轮询、最小连接数， 默认为 WRR。
 	Scheduler *string `json:"Scheduler,omitempty" name:"Scheduler"`
+
+	// 会话保持类型。不传或传NORMAL表示默认会话保持类型。QUIC_CID 表示根据Quic Connection ID做会话保持。QUIC_CID只支持UDP协议。
+	SessionType *string `json:"SessionType,omitempty" name:"SessionType"`
 }
 
 func (r *CreateListenerRequest) ToJsonString() string {
@@ -3567,6 +3570,10 @@ type Listener struct {
 	// 监听器的创建时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 监听器的会话类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SessionType *string `json:"SessionType,omitempty" name:"SessionType"`
 }
 
 type ListenerBackend struct {
