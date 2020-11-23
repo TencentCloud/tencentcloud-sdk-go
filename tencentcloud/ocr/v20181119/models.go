@@ -283,7 +283,8 @@ type BizLicenseVerifyResult struct {
 
 type BusInvoiceInfo struct {
 
-	// 识别出的字段名称（关键字）。
+	// 识别出的字段名称(关键字)，支持以下字段：
+	// 发票代码、发票号码、日期、票价、始发地、目的地、姓名、时间、发票消费类型、身份证号、省、市。
 	Name *string `json:"Name,omitempty" name:"Name"`
 
 	// 识别出的字段名称对应的值，也就是字段Name对应的字符串结果。
@@ -428,7 +429,8 @@ type CandWord struct {
 
 type CarInvoiceInfo struct {
 
-	// 识别出的字段名称（关键字）。
+	// 识别出的字段名称(关键字)，支持以下字段：
+	// 发票代码、 机打代码、 发票号码、 发动机号码、 合格证号、 机打号码、 价税合计(小写)、 销货单位名称、 身份证号码/组织机构代码、 购买方名称、 销售方纳税人识别号、 购买方纳税人识别号、主管税务机关、 主管税务机关代码、 开票日期、 不含税价(小写)、 吨位、增值税税率或征收率、 车辆识别代号/车架号码、 增值税税额、 厂牌型号、 省、 市、 发票消费类型、 销售方电话、 销售方账号、 产地、 进口证明书号、 车辆类型、 机器编号、备注、开票人、限乘人数、商检单号、销售方地址、销售方开户银行、价税合计。
 	Name *string `json:"Name,omitempty" name:"Name"`
 
 	// 识别出的字段名称对应的值，也就是字段name对应的字符串结果。
@@ -503,7 +505,7 @@ type CellContent struct {
 
 type ClassifyDetectInfo struct {
 
-	// 分类名称
+	// 分类名称，包括：身份证、护照、名片、银行卡、行驶证、驾驶证、港澳台通行证、户口本、港澳台来往内地通行证、港澳台居住证、不动产证、营业执照
 	Name *string `json:"Name,omitempty" name:"Name"`
 
 	// 分类类型
@@ -686,7 +688,8 @@ func (r *DriverLicenseOCRResponse) FromJsonString(s string) error {
 
 type DutyPaidProofInfo struct {
 
-	// 识别出的字段名称（关键字）。
+	// 识别出的字段名称(关键字)，支持以下字段：
+	// 税号 、纳税人识别号 、纳税人名称 、金额合计大写 、金额合计小写 、填发日期 、税务机关 、填票人。
 	Name *string `json:"Name,omitempty" name:"Name"`
 
 	// 识别出的字段名称对应的值，也就是字段Name对应的字符串结果。
@@ -1006,7 +1009,13 @@ func (r *EstateCertOCRResponse) FromJsonString(s string) error {
 
 type FinanBillInfo struct {
 
-	// 识别出的字段名称。
+	// 识别出的字段名称(关键字)，支持以下字段：
+	// 【进账单】
+	// 日期、出票全称、出票账号、出票开户行、收款人全称、收款人账号、收款开户行、大写金额、小写金额、票据种类、票据张数、票据号码；
+	// 【支票】
+	// 开户银行、支票种类、凭证号码2、日期、大写金额、小写金额、付款行编号、密码、凭证号码1；
+	// 【银行承兑汇票】或【商业承兑汇票】
+	// 出票日期、行号1、行号2、出票人全称、出票人账号、付款行全称、收款人全称、收款人账号、收款人开户行、出票金额大写、出票金额小写、汇票到期日、付款行行号、付款行地址。
 	Name *string `json:"Name,omitempty" name:"Name"`
 
 	// 识别出的字段名称对应的值，也就是字段Name对应的字符串结果。
@@ -1062,7 +1071,8 @@ func (r *FinanBillOCRResponse) FromJsonString(s string) error {
 
 type FinanBillSliceInfo struct {
 
-	// 识别出的字段名称。
+	// 识别出的字段名称(关键字)，支持以下字段：
+	// 大写金额、小写金额、账号、票号1、票号2、收款人、大写日期、同城交换号、地址-省份、地址-城市、付款行全称、支票密码、支票用途。
 	Name *string `json:"Name,omitempty" name:"Name"`
 
 	// 识别出的字段名称对应的值，也就是字段Name对应的字符串结果。
@@ -1118,7 +1128,8 @@ func (r *FinanBillSliceOCRResponse) FromJsonString(s string) error {
 
 type FlightInvoiceInfo struct {
 
-	// 识别出的字段名称（关键字）。
+	// 识别出的字段名称(关键字)，支持以下字段：
+	// 票价、合计金额、填开日期、有效身份证件号码、电子客票号码、验证码、旅客姓名、填开单位、其他税费、燃油附加费、民航发展基金、保险费、销售单位代号、始发地、目的地、航班号、时间、日期、座位等级、承运人、发票消费类型、国内国际标签、印刷序号。
 	Name *string `json:"Name,omitempty" name:"Name"`
 
 	// 识别出的字段名称对应的值，也就是字段 Name 对应的字符串结果。
@@ -1931,7 +1942,8 @@ type InvoiceDetectInfo struct {
 
 type InvoiceGeneralInfo struct {
 
-	// 识别出的字段名称（关键字）。
+	// 识别出的字段名称(关键字)，支持以下字段：
+	// 发票代码、发票号码、日期、合计金额(小写)、合计金额(大写)、购买方识别号、销售方识别号、校验码、购买方名称、销售方名称、时间、种类、发票消费类型、省、市、是否有公司印章。
 	Name *string `json:"Name,omitempty" name:"Name"`
 
 	// 识别出的字段名称对应的值，也就是字段Name对应的字符串结果。
@@ -3401,7 +3413,8 @@ func (r *SealOCRResponse) FromJsonString(s string) error {
 
 type ShipInvoiceInfo struct {
 
-	// 识别出的字段名称（关键字）。
+	// 识别出的字段名称(关键字)，支持以下字段：
+	// 发票代码、发票号码、日期、票价、始发地、目的地、姓名、时间、发票消费类型、省、市、币种。
 	Name *string `json:"Name,omitempty" name:"Name"`
 
 	// 识别出的字段名称对应的值，也就是字段Name对应的字符串结果。
@@ -4348,7 +4361,8 @@ func (r *VatInvoiceVerifyResponse) FromJsonString(s string) error {
 
 type VatRollInvoiceInfo struct {
 
-	// 识别出的字段名称（关键字）。
+	// 识别出的字段名称(关键字)，支持以下字段：
+	// 发票代码、合计金额(小写)、合计金额(大写)、开票日期、发票号码、购买方识别号、销售方识别号、校验码、销售方名称、购买方名称、发票消费类型、省、市、是否有公司印章、服务类型、品名、种类。
 	Name *string `json:"Name,omitempty" name:"Name"`
 
 	// 识别出的字段名称对应的值，也就是字段Name对应的字符串结果。
@@ -4475,7 +4489,18 @@ func (r *VehicleLicenseOCRResponse) FromJsonString(s string) error {
 
 type VehicleRegCertInfo struct {
 
-	// 识别出的字段名称
+	// 识别出的字段名称(关键字)，支持以下字段：
+	// 【注册登记页】
+	// 车辆型号、车辆识别代号/车架号、发动机号、制造厂名称、轴距、轮胎数、总质量、外廓尺寸、轴数、车辆出厂日期、发证日期、使用性质、车辆获得方式、车辆类型、国产/进口、燃料种类、车身颜色、发动机型号、车辆品牌、编号、转向形式、
+	// 机动车所有人1、身份证明名称1、号码1、登记机关1、登记日期1
+	// 机动车所有人2、身份证明名称2、号码2、登记机关2、登记日期2
+	// 机动车所有人3、身份证明名称3、号码3、登记机关3、登记日期3
+	// 机动车所有人4、身份证明名称4、号码4、登记机关4、登记日期4
+	// 机动车所有人5、身份证明名称5、号码5、登记机关5、登记日期5
+	// 机动车所有人6、身份证明名称6、号码6、登记机关6、登记日期6
+	// 机动车所有人7、身份证明名称7、号码7、登记机关7、登记日期7
+	// 【抵押登记页】
+	// 机动车登记证书编号、身份证明名称/号码、抵押权人姓名/名称、抵押登记日期。
 	Name *string `json:"Name,omitempty" name:"Name"`
 
 	// 识别出的字段名称对应的值，也就是字段name对应的字符串结果。

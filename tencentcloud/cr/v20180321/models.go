@@ -468,6 +468,27 @@ func (r *DownloadReportResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type ProductQueryInfo struct {
+
+	// 产品Id
+	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
+
+	// 产品名称
+	ProductName *string `json:"ProductName,omitempty" name:"ProductName"`
+
+	// 产品编码
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProductCode *string `json:"ProductCode,omitempty" name:"ProductCode"`
+
+	// 产品状态 0 禁用 1 启用
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProductStatus *int64 `json:"ProductStatus,omitempty" name:"ProductStatus"`
+
+	// 场景类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SceneType *string `json:"SceneType,omitempty" name:"SceneType"`
+}
+
 type QueryInstantDataRequest struct {
 	*tchttp.BaseRequest
 
@@ -522,6 +543,49 @@ func (r *QueryInstantDataResponse) ToJsonString() string {
 }
 
 func (r *QueryInstantDataResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type QueryProductsRequest struct {
+	*tchttp.BaseRequest
+
+	// 模块名。默认值（固定）：Product
+	Module *string `json:"Module,omitempty" name:"Module"`
+
+	// 操作名。默认值（固定）：QueryProducts
+	Operation *string `json:"Operation,omitempty" name:"Operation"`
+
+	// 实例Id。
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+}
+
+func (r *QueryProductsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *QueryProductsRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type QueryProductsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 产品信息。
+		ProductList []*ProductQueryInfo `json:"ProductList,omitempty" name:"ProductList" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *QueryProductsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *QueryProductsResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 

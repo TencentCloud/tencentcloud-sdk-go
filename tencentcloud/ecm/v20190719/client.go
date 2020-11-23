@@ -249,6 +249,31 @@ func (c *Client) BatchRegisterTargets(request *BatchRegisterTargetsRequest) (res
     return
 }
 
+func NewCreateHaVipRequest() (request *CreateHaVipRequest) {
+    request = &CreateHaVipRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ecm", APIVersion, "CreateHaVip")
+    return
+}
+
+func NewCreateHaVipResponse() (response *CreateHaVipResponse) {
+    response = &CreateHaVipResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（CreateHaVip）用于创建高可用虚拟IP（HAVIP）
+func (c *Client) CreateHaVip(request *CreateHaVipRequest) (response *CreateHaVipResponse, err error) {
+    if request == nil {
+        request = NewCreateHaVipRequest()
+    }
+    response = NewCreateHaVipResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateImageRequest() (request *CreateImageRequest) {
     request = &CreateImageRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -374,6 +399,56 @@ func (c *Client) CreateNetworkInterface(request *CreateNetworkInterfaceRequest) 
     return
 }
 
+func NewCreateRouteTableRequest() (request *CreateRouteTableRequest) {
+    request = &CreateRouteTableRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ecm", APIVersion, "CreateRouteTable")
+    return
+}
+
+func NewCreateRouteTableResponse() (response *CreateRouteTableResponse) {
+    response = &CreateRouteTableResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 创建了VPC后，系统会创建一个默认路由表，所有新建的子网都会关联到默认路由表。默认情况下您可以直接使用默认路由表来管理您的路由策略。当您的路由策略较多时，您可以调用创建路由表接口创建更多路由表管理您的路由策略。
+func (c *Client) CreateRouteTable(request *CreateRouteTableRequest) (response *CreateRouteTableResponse, err error) {
+    if request == nil {
+        request = NewCreateRouteTableRequest()
+    }
+    response = NewCreateRouteTableResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateRoutesRequest() (request *CreateRoutesRequest) {
+    request = &CreateRoutesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ecm", APIVersion, "CreateRoutes")
+    return
+}
+
+func NewCreateRoutesResponse() (response *CreateRoutesResponse) {
+    response = &CreateRoutesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 创建路由策略
+func (c *Client) CreateRoutes(request *CreateRoutesRequest) (response *CreateRoutesResponse, err error) {
+    if request == nil {
+        request = NewCreateRoutesRequest()
+    }
+    response = NewCreateRoutesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateSecurityGroupRequest() (request *CreateSecurityGroupRequest) {
     request = &CreateSecurityGroupRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -481,6 +556,31 @@ func (c *Client) CreateVpc(request *CreateVpcRequest) (response *CreateVpcRespon
         request = NewCreateVpcRequest()
     }
     response = NewCreateVpcResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteHaVipRequest() (request *DeleteHaVipRequest) {
+    request = &DeleteHaVipRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ecm", APIVersion, "DeleteHaVip")
+    return
+}
+
+func NewDeleteHaVipResponse() (response *DeleteHaVipResponse) {
+    response = &DeleteHaVipResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 用于删除高可用虚拟IP（HAVIP）
+func (c *Client) DeleteHaVip(request *DeleteHaVipRequest) (response *DeleteHaVipResponse, err error) {
+    if request == nil {
+        request = NewDeleteHaVipRequest()
+    }
+    response = NewDeleteHaVipResponse()
     err = c.Send(request, response)
     return
 }
@@ -631,6 +731,56 @@ func (c *Client) DeleteNetworkInterface(request *DeleteNetworkInterfaceRequest) 
         request = NewDeleteNetworkInterfaceRequest()
     }
     response = NewDeleteNetworkInterfaceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteRouteTableRequest() (request *DeleteRouteTableRequest) {
+    request = &DeleteRouteTableRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ecm", APIVersion, "DeleteRouteTable")
+    return
+}
+
+func NewDeleteRouteTableResponse() (response *DeleteRouteTableResponse) {
+    response = &DeleteRouteTableResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 删除路由表
+func (c *Client) DeleteRouteTable(request *DeleteRouteTableRequest) (response *DeleteRouteTableResponse, err error) {
+    if request == nil {
+        request = NewDeleteRouteTableRequest()
+    }
+    response = NewDeleteRouteTableResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteRoutesRequest() (request *DeleteRoutesRequest) {
+    request = &DeleteRoutesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ecm", APIVersion, "DeleteRoutes")
+    return
+}
+
+func NewDeleteRoutesResponse() (response *DeleteRoutesResponse) {
+    response = &DeleteRoutesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 对某个路由表批量删除路由策略
+func (c *Client) DeleteRoutes(request *DeleteRoutesRequest) (response *DeleteRoutesResponse, err error) {
+    if request == nil {
+        request = NewDeleteRoutesRequest()
+    }
+    response = NewDeleteRoutesResponse()
     err = c.Send(request, response)
     return
 }
@@ -883,6 +1033,31 @@ func (c *Client) DescribeDefaultSubnet(request *DescribeDefaultSubnetRequest) (r
         request = NewDescribeDefaultSubnetRequest()
     }
     response = NewDescribeDefaultSubnetResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeHaVipsRequest() (request *DescribeHaVipsRequest) {
+    request = &DescribeHaVipsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ecm", APIVersion, "DescribeHaVips")
+    return
+}
+
+func NewDescribeHaVipsResponse() (response *DescribeHaVipsResponse) {
+    response = &DescribeHaVipsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 用于查询高可用虚拟IP（HAVIP）列表。
+func (c *Client) DescribeHaVips(request *DescribeHaVipsRequest) (response *DescribeHaVipsResponse, err error) {
+    if request == nil {
+        request = NewDescribeHaVipsRequest()
+    }
+    response = NewDescribeHaVipsResponse()
     err = c.Send(request, response)
     return
 }
@@ -1262,6 +1437,56 @@ func (c *Client) DescribePeakNetworkOverview(request *DescribePeakNetworkOvervie
     return
 }
 
+func NewDescribeRouteConflictsRequest() (request *DescribeRouteConflictsRequest) {
+    request = &DescribeRouteConflictsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ecm", APIVersion, "DescribeRouteConflicts")
+    return
+}
+
+func NewDescribeRouteConflictsResponse() (response *DescribeRouteConflictsResponse) {
+    response = &DescribeRouteConflictsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询自定义路由策略与云联网路由策略冲突列表
+func (c *Client) DescribeRouteConflicts(request *DescribeRouteConflictsRequest) (response *DescribeRouteConflictsResponse, err error) {
+    if request == nil {
+        request = NewDescribeRouteConflictsRequest()
+    }
+    response = NewDescribeRouteConflictsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeRouteTablesRequest() (request *DescribeRouteTablesRequest) {
+    request = &DescribeRouteTablesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ecm", APIVersion, "DescribeRouteTables")
+    return
+}
+
+func NewDescribeRouteTablesResponse() (response *DescribeRouteTablesResponse) {
+    response = &DescribeRouteTablesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询路由表对象列表
+func (c *Client) DescribeRouteTables(request *DescribeRouteTablesRequest) (response *DescribeRouteTablesResponse, err error) {
+    if request == nil {
+        request = NewDescribeRouteTablesRequest()
+    }
+    response = NewDescribeRouteTablesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeSecurityGroupAssociationStatisticsRequest() (request *DescribeSecurityGroupAssociationStatisticsRequest) {
     request = &DescribeSecurityGroupAssociationStatisticsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1537,6 +1762,31 @@ func (c *Client) DetachNetworkInterface(request *DetachNetworkInterfaceRequest) 
     return
 }
 
+func NewDisableRoutesRequest() (request *DisableRoutesRequest) {
+    request = &DisableRoutesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ecm", APIVersion, "DisableRoutes")
+    return
+}
+
+func NewDisableRoutesResponse() (response *DisableRoutesResponse) {
+    response = &DisableRoutesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 禁用已启用的子网路由
+func (c *Client) DisableRoutes(request *DisableRoutesRequest) (response *DisableRoutesResponse, err error) {
+    if request == nil {
+        request = NewDisableRoutesRequest()
+    }
+    response = NewDisableRoutesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDisassociateAddressRequest() (request *DisassociateAddressRequest) {
     request = &DisassociateAddressRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1585,6 +1835,32 @@ func (c *Client) DisassociateSecurityGroups(request *DisassociateSecurityGroupsR
         request = NewDisassociateSecurityGroupsRequest()
     }
     response = NewDisassociateSecurityGroupsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewEnableRoutesRequest() (request *EnableRoutesRequest) {
+    request = &EnableRoutesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ecm", APIVersion, "EnableRoutes")
+    return
+}
+
+func NewEnableRoutesResponse() (response *EnableRoutesResponse) {
+    response = &EnableRoutesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 启用已禁用的子网路由。
+// 本接口会校验启用后，是否与已有路由冲突，如果冲突，则无法启用，失败处理。路由冲突时，需要先禁用与之冲突的路由，才能启用该路由。
+func (c *Client) EnableRoutes(request *EnableRoutesRequest) (response *EnableRoutesResponse, err error) {
+    if request == nil {
+        request = NewEnableRoutesRequest()
+    }
+    response = NewEnableRoutesResponse()
     err = c.Send(request, response)
     return
 }
@@ -1762,6 +2038,31 @@ func (c *Client) ModifyDefaultSubnet(request *ModifyDefaultSubnetRequest) (respo
         request = NewModifyDefaultSubnetRequest()
     }
     response = NewModifyDefaultSubnetResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyHaVipAttributeRequest() (request *ModifyHaVipAttributeRequest) {
+    request = &ModifyHaVipAttributeRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ecm", APIVersion, "ModifyHaVipAttribute")
+    return
+}
+
+func NewModifyHaVipAttributeResponse() (response *ModifyHaVipAttributeResponse) {
+    response = &ModifyHaVipAttributeResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 用于修改高可用虚拟IP（HAVIP）属性
+func (c *Client) ModifyHaVipAttribute(request *ModifyHaVipAttributeRequest) (response *ModifyHaVipAttributeResponse, err error) {
+    if request == nil {
+        request = NewModifyHaVipAttributeRequest()
+    }
+    response = NewModifyHaVipAttributeResponse()
     err = c.Send(request, response)
     return
 }
@@ -2016,6 +2317,31 @@ func (c *Client) ModifyModuleSecurityGroups(request *ModifyModuleSecurityGroupsR
     return
 }
 
+func NewModifyRouteTableAttributeRequest() (request *ModifyRouteTableAttributeRequest) {
+    request = &ModifyRouteTableAttributeRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ecm", APIVersion, "ModifyRouteTableAttribute")
+    return
+}
+
+func NewModifyRouteTableAttributeResponse() (response *ModifyRouteTableAttributeResponse) {
+    response = &ModifyRouteTableAttributeResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 修改路由表属性
+func (c *Client) ModifyRouteTableAttribute(request *ModifyRouteTableAttributeRequest) (response *ModifyRouteTableAttributeResponse, err error) {
+    if request == nil {
+        request = NewModifyRouteTableAttributeRequest()
+    }
+    response = NewModifyRouteTableAttributeResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifySecurityGroupAttributeRequest() (request *ModifySecurityGroupAttributeRequest) {
     request = &ModifySecurityGroupAttributeRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2244,6 +2570,56 @@ func (c *Client) RemovePrivateIpAddresses(request *RemovePrivateIpAddressesReque
     return
 }
 
+func NewReplaceRouteTableAssociationRequest() (request *ReplaceRouteTableAssociationRequest) {
+    request = &ReplaceRouteTableAssociationRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ecm", APIVersion, "ReplaceRouteTableAssociation")
+    return
+}
+
+func NewReplaceRouteTableAssociationResponse() (response *ReplaceRouteTableAssociationResponse) {
+    response = &ReplaceRouteTableAssociationResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 修改子网关联的路由表，一个子网只能关联一个路由表。
+func (c *Client) ReplaceRouteTableAssociation(request *ReplaceRouteTableAssociationRequest) (response *ReplaceRouteTableAssociationResponse, err error) {
+    if request == nil {
+        request = NewReplaceRouteTableAssociationRequest()
+    }
+    response = NewReplaceRouteTableAssociationResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewReplaceRoutesRequest() (request *ReplaceRoutesRequest) {
+    request = &ReplaceRoutesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ecm", APIVersion, "ReplaceRoutes")
+    return
+}
+
+func NewReplaceRoutesResponse() (response *ReplaceRoutesResponse) {
+    response = &ReplaceRoutesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 替换路由策略
+func (c *Client) ReplaceRoutes(request *ReplaceRoutesRequest) (response *ReplaceRoutesResponse, err error) {
+    if request == nil {
+        request = NewReplaceRoutesRequest()
+    }
+    response = NewReplaceRoutesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewReplaceSecurityGroupPolicyRequest() (request *ReplaceSecurityGroupPolicyRequest) {
     request = &ReplaceSecurityGroupPolicyRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2340,6 +2716,31 @@ func (c *Client) ResetInstancesPassword(request *ResetInstancesPasswordRequest) 
         request = NewResetInstancesPasswordRequest()
     }
     response = NewResetInstancesPasswordResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewResetRoutesRequest() (request *ResetRoutesRequest) {
+    request = &ResetRoutesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ecm", APIVersion, "ResetRoutes")
+    return
+}
+
+func NewResetRoutesResponse() (response *ResetRoutesResponse) {
+    response = &ResetRoutesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 对某个路由表名称和所有路由策略（Route）进行重新设置
+func (c *Client) ResetRoutes(request *ResetRoutesRequest) (response *ResetRoutesResponse, err error) {
+    if request == nil {
+        request = NewResetRoutesRequest()
+    }
+    response = NewResetRoutesResponse()
     err = c.Send(request, response)
     return
 }

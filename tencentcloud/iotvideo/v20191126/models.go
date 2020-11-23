@@ -92,6 +92,10 @@ type Contents struct {
 	// 中文繁体(Traditional Chinese)，长度不超过300个字符
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Tc *string `json:"Tc,omitempty" name:"Tc"`
+
+	// 默认语言，最多不超过300个字符
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Default *string `json:"Default,omitempty" name:"Default"`
 }
 
 type CreateAnonymousAccessTokenRequest struct {

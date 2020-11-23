@@ -546,6 +546,37 @@ type Country struct {
 	CountryName *string `json:"CountryName,omitempty" name:"CountryName"`
 }
 
+type CreateHaVipRequest struct {
+	*tchttp.BaseRequest
+}
+
+func (r *CreateHaVipRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateHaVipRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateHaVipResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateHaVipResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateHaVipResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type CreateImageRequest struct {
 	*tchttp.BaseRequest
 
@@ -842,6 +873,93 @@ func (r *CreateNetworkInterfaceResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type CreateRouteTableRequest struct {
+	*tchttp.BaseRequest
+
+	// 待操作的VPC实例ID。可通过DescribeVpcs接口返回值中的VpcId获取。
+	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
+
+	// 路由表名称，最大长度不能超过60个字节。
+	RouteTableName *string `json:"RouteTableName,omitempty" name:"RouteTableName"`
+
+	// ecm地域
+	EcmRegion *string `json:"EcmRegion,omitempty" name:"EcmRegion"`
+}
+
+func (r *CreateRouteTableRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateRouteTableRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateRouteTableResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 路由表对象
+		RouteTable *RouteTable `json:"RouteTable,omitempty" name:"RouteTable"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateRouteTableResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateRouteTableResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateRoutesRequest struct {
+	*tchttp.BaseRequest
+
+	// 路由表实例ID。
+	RouteTableId *string `json:"RouteTableId,omitempty" name:"RouteTableId"`
+
+	// 要创建的路由策略对象。
+	Routes []*Route `json:"Routes,omitempty" name:"Routes" list`
+}
+
+func (r *CreateRoutesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateRoutesRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateRoutesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 新增的实例个数。
+		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 路由表对象。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		RouteTableSet []*RouteTable `json:"RouteTableSet,omitempty" name:"RouteTableSet" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateRoutesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateRoutesResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type CreateSecurityGroupPoliciesRequest struct {
 	*tchttp.BaseRequest
 
@@ -1029,6 +1147,37 @@ func (r *CreateVpcResponse) ToJsonString() string {
 }
 
 func (r *CreateVpcResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteHaVipRequest struct {
+	*tchttp.BaseRequest
+}
+
+func (r *DeleteHaVipRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteHaVipRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteHaVipResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DeleteHaVipResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteHaVipResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -1242,6 +1391,77 @@ func (r *DeleteNetworkInterfaceResponse) ToJsonString() string {
 }
 
 func (r *DeleteNetworkInterfaceResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteRouteTableRequest struct {
+	*tchttp.BaseRequest
+
+	// 路由表实例ID，例如：rtb-azd4dt1c
+	RouteTableId *string `json:"RouteTableId,omitempty" name:"RouteTableId"`
+}
+
+func (r *DeleteRouteTableRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteRouteTableRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteRouteTableResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DeleteRouteTableResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteRouteTableResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteRoutesRequest struct {
+	*tchttp.BaseRequest
+
+	// 路由表唯一ID。
+	RouteTableId *string `json:"RouteTableId,omitempty" name:"RouteTableId"`
+
+	// 路由策略对象。
+	Routes []*Route `json:"Routes,omitempty" name:"Routes" list`
+}
+
+func (r *DeleteRoutesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteRoutesRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteRoutesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DeleteRoutesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteRoutesResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -1670,6 +1890,37 @@ func (r *DescribeDefaultSubnetResponse) ToJsonString() string {
 }
 
 func (r *DescribeDefaultSubnetResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeHaVipsRequest struct {
+	*tchttp.BaseRequest
+}
+
+func (r *DescribeHaVipsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeHaVipsRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeHaVipsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeHaVipsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeHaVipsResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -2410,6 +2661,104 @@ func (r *DescribePeakNetworkOverviewResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeRouteConflictsRequest struct {
+	*tchttp.BaseRequest
+
+	// 路由表实例ID，例如：rtb-azd4dt1c。
+	RouteTableId *string `json:"RouteTableId,omitempty" name:"RouteTableId"`
+
+	// 要检查的与之冲突的目的端列表
+	DestinationCidrBlocks []*string `json:"DestinationCidrBlocks,omitempty" name:"DestinationCidrBlocks" list`
+}
+
+func (r *DescribeRouteConflictsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeRouteConflictsRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeRouteConflictsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 路由策略冲突列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		RouteConflictSet []*RouteConflict `json:"RouteConflictSet,omitempty" name:"RouteConflictSet" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeRouteConflictsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeRouteConflictsResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeRouteTablesRequest struct {
+	*tchttp.BaseRequest
+
+	// 路由表实例ID，例如：rtb-azd4dt1c。
+	RouteTableIds []*string `json:"RouteTableIds,omitempty" name:"RouteTableIds" list`
+
+	// 过滤条件，参数不支持同时指定RouteTableIds和Filters。
+	// route-table-id - String - （过滤条件）路由表实例ID。
+	// route-table-name - String - （过滤条件）路由表名称。
+	// vpc-id - String - （过滤条件）VPC实例ID，形如：vpc-f49l6u0z。
+	// association.main - String - （过滤条件）是否主路由表。
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+
+	// 偏移量
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 限数
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// ECM 地域，传空或不传表示所有区域
+	EcmRegion *string `json:"EcmRegion,omitempty" name:"EcmRegion"`
+}
+
+func (r *DescribeRouteTablesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeRouteTablesRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeRouteTablesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 符合条件的实例数量
+		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 路由表列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		RouteTableSet []*RouteTable `json:"RouteTableSet,omitempty" name:"RouteTableSet" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeRouteTablesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeRouteTablesResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeSecurityGroupAssociationStatisticsRequest struct {
 	*tchttp.BaseRequest
 
@@ -2903,6 +3252,43 @@ func (r *DetachNetworkInterfaceResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DisableRoutesRequest struct {
+	*tchttp.BaseRequest
+
+	// 路由表唯一ID。
+	RouteTableId *string `json:"RouteTableId,omitempty" name:"RouteTableId"`
+
+	// 路由策略ID。
+	RouteIds []*uint64 `json:"RouteIds,omitempty" name:"RouteIds" list`
+}
+
+func (r *DisableRoutesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DisableRoutesRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DisableRoutesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DisableRoutesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DisableRoutesResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DisassociateAddressRequest struct {
 	*tchttp.BaseRequest
 
@@ -3015,6 +3401,43 @@ type EipQuota struct {
 
 	// 配额数量
 	QuotaLimit *uint64 `json:"QuotaLimit,omitempty" name:"QuotaLimit"`
+}
+
+type EnableRoutesRequest struct {
+	*tchttp.BaseRequest
+
+	// 路由表唯一ID。
+	RouteTableId *string `json:"RouteTableId,omitempty" name:"RouteTableId"`
+
+	// 路由策略ID。
+	RouteIds []*uint64 `json:"RouteIds,omitempty" name:"RouteIds" list`
+}
+
+func (r *EnableRoutesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *EnableRoutesRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type EnableRoutesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *EnableRoutesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *EnableRoutesResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
 }
 
 type EnhancedService struct {
@@ -3910,6 +4333,37 @@ func (r *ModifyDefaultSubnetResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type ModifyHaVipAttributeRequest struct {
+	*tchttp.BaseRequest
+}
+
+func (r *ModifyHaVipAttributeRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyHaVipAttributeRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyHaVipAttributeResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifyHaVipAttributeResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyHaVipAttributeResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type ModifyImageAttributeRequest struct {
 	*tchttp.BaseRequest
 
@@ -4310,6 +4764,43 @@ func (r *ModifyModuleSecurityGroupsResponse) ToJsonString() string {
 }
 
 func (r *ModifyModuleSecurityGroupsResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyRouteTableAttributeRequest struct {
+	*tchttp.BaseRequest
+
+	// 路由表实例ID，例如：rtb-azd4dt1c
+	RouteTableId *string `json:"RouteTableId,omitempty" name:"RouteTableId"`
+
+	// 路由表名称
+	RouteTableName *string `json:"RouteTableName,omitempty" name:"RouteTableName"`
+}
+
+func (r *ModifyRouteTableAttributeRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyRouteTableAttributeRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyRouteTableAttributeResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifyRouteTableAttributeResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyRouteTableAttributeResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -5107,6 +5598,83 @@ func (r *RemovePrivateIpAddressesResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type ReplaceRouteTableAssociationRequest struct {
+	*tchttp.BaseRequest
+
+	// 子网实例ID，例如：subnet-3x5lf5q0。可通过DescribeSubnets接口查询。
+	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
+
+	// 路由表实例ID，例如：rtb-azd4dt1c。
+	RouteTableId *string `json:"RouteTableId,omitempty" name:"RouteTableId"`
+
+	// ECM 地域
+	EcmRegion *string `json:"EcmRegion,omitempty" name:"EcmRegion"`
+}
+
+func (r *ReplaceRouteTableAssociationRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ReplaceRouteTableAssociationRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ReplaceRouteTableAssociationResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ReplaceRouteTableAssociationResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ReplaceRouteTableAssociationResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ReplaceRoutesRequest struct {
+	*tchttp.BaseRequest
+
+	// 路由表实例ID。
+	RouteTableId *string `json:"RouteTableId,omitempty" name:"RouteTableId"`
+
+	// 路由策略对象。
+	Routes []*Route `json:"Routes,omitempty" name:"Routes" list`
+}
+
+func (r *ReplaceRoutesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ReplaceRoutesRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ReplaceRoutesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ReplaceRoutesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ReplaceRoutesResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type ReplaceSecurityGroupPolicyRequest struct {
 	*tchttp.BaseRequest
 
@@ -5273,6 +5841,128 @@ func (r *ResetInstancesResponse) ToJsonString() string {
 
 func (r *ResetInstancesResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
+}
+
+type ResetRoutesRequest struct {
+	*tchttp.BaseRequest
+
+	// 路由表实例ID，例如：rtb-azd4dt1c。
+	RouteTableId *string `json:"RouteTableId,omitempty" name:"RouteTableId"`
+
+	// 路由表名称，最大长度不能超过60个字节。
+	RouteTableName *string `json:"RouteTableName,omitempty" name:"RouteTableName"`
+
+	// 路由策略。
+	Routes []*Route `json:"Routes,omitempty" name:"Routes" list`
+}
+
+func (r *ResetRoutesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ResetRoutesRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ResetRoutesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ResetRoutesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ResetRoutesResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type Route struct {
+
+	// 目的IPv4网段
+	DestinationCidrBlock *string `json:"DestinationCidrBlock,omitempty" name:"DestinationCidrBlock"`
+
+	// 下一跳类型
+	// NORMAL_CVM：普通云服务器；
+	GatewayType *string `json:"GatewayType,omitempty" name:"GatewayType"`
+
+	// 下一跳地址
+	// 这里只需要指定不同下一跳类型的网关ID，系统会自动匹配到下一跳地址
+	// 当 GatewayType 为 EIP 时，GatewayId 固定值 '0'
+	GatewayId *string `json:"GatewayId,omitempty" name:"GatewayId"`
+
+	// 路由策略唯一ID
+	RouteItemId *string `json:"RouteItemId,omitempty" name:"RouteItemId"`
+
+	// 路由策略描述
+	RouteDescription *string `json:"RouteDescription,omitempty" name:"RouteDescription"`
+
+	// 是否启用
+	Enabled *bool `json:"Enabled,omitempty" name:"Enabled"`
+
+	// 路由类型，目前我们支持的类型有：
+	// USER：用户路由；
+	// NETD：网络探测路由，创建网络探测实例时，系统默认下发，不可编辑与删除；
+	// CCN：云联网路由，系统默认下发，不可编辑与删除。
+	// 用户只能添加和操作 USER 类型的路由。
+	RouteType *string `json:"RouteType,omitempty" name:"RouteType"`
+
+	// 路由策略ID。IPv4路由策略ID是有意义的值，IPv6路由策略是无意义的值0。后续建议完全使用字符串唯一ID `RouteItemId`操作路由策略
+	RouteId *uint64 `json:"RouteId,omitempty" name:"RouteId"`
+}
+
+type RouteConflict struct {
+
+	// 路由表实例ID
+	RouteTableId *string `json:"RouteTableId,omitempty" name:"RouteTableId"`
+
+	// 要检查的与之冲突的目的端
+	DestinationCidrBlock *string `json:"DestinationCidrBlock,omitempty" name:"DestinationCidrBlock"`
+
+	// 冲突的路由策略列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ConflictSet []*Route `json:"ConflictSet,omitempty" name:"ConflictSet" list`
+}
+
+type RouteTable struct {
+
+	// VPC实例ID
+	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
+
+	// 路由表实例ID
+	RouteTableId *string `json:"RouteTableId,omitempty" name:"RouteTableId"`
+
+	// 路由表名称
+	RouteTableName *string `json:"RouteTableName,omitempty" name:"RouteTableName"`
+
+	// 路由表关联关系
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AssociationSet []*RouteTableAssociation `json:"AssociationSet,omitempty" name:"AssociationSet" list`
+
+	// IPv4路由策略集合
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RouteSet []*Route `json:"RouteSet,omitempty" name:"RouteSet" list`
+
+	// 是否默认路由表
+	Main *bool `json:"Main,omitempty" name:"Main"`
+
+	// 创建时间
+	CreatedTime *string `json:"CreatedTime,omitempty" name:"CreatedTime"`
+}
+
+type RouteTableAssociation struct {
+
+	// 子网实例ID
+	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
+
+	// 路由表实例ID
+	RouteTableId *string `json:"RouteTableId,omitempty" name:"RouteTableId"`
 }
 
 type RuleHealth struct {

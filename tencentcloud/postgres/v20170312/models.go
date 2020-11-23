@@ -389,6 +389,18 @@ type DBInstance struct {
 	// 实例绑定的标签信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TagList []*Tag `json:"TagList,omitempty" name:"TagList" list`
+
+	// 主实例信息，仅在实例为只读实例时返回
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MasterDBInstanceId *string `json:"MasterDBInstanceId,omitempty" name:"MasterDBInstanceId"`
+
+	// 只读实例数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ReadOnlyInstanceNum *int64 `json:"ReadOnlyInstanceNum,omitempty" name:"ReadOnlyInstanceNum"`
+
+	// 只读实例在只读组中的状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StatusInReadonlyGroup *string `json:"StatusInReadonlyGroup,omitempty" name:"StatusInReadonlyGroup"`
 }
 
 type DBInstanceNetInfo struct {

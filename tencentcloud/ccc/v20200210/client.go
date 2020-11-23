@@ -143,6 +143,31 @@ func (c *Client) DescribeIMCdrs(request *DescribeIMCdrsRequest) (response *Descr
     return
 }
 
+func NewDescribeTelCallInfoRequest() (request *DescribeTelCallInfoRequest) {
+    request = &DescribeTelCallInfoRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ccc", APIVersion, "DescribeTelCallInfo")
+    return
+}
+
+func NewDescribeTelCallInfoResponse() (response *DescribeTelCallInfoResponse) {
+    response = &DescribeTelCallInfoResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 获取电话呼叫统计信息
+func (c *Client) DescribeTelCallInfo(request *DescribeTelCallInfoRequest) (response *DescribeTelCallInfoResponse, err error) {
+    if request == nil {
+        request = NewDescribeTelCallInfoRequest()
+    }
+    response = NewDescribeTelCallInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeTelCdrRequest() (request *DescribeTelCdrRequest) {
     request = &DescribeTelCdrRequest{
         BaseRequest: &tchttp.BaseRequest{},

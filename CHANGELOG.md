@@ -1,82 +1,10 @@
 # 本版本更新包含以下内容：
 
-## 负载均衡(clb) 版本：2018-03-17
+## 云呼叫中心(ccc) 版本：2020-02-10
 
-### 第 37 次发布
+### 第 6 次发布
 
-发布时间：2020-11-20 08:02:55
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [LoadBalancer](https://cloud.tencent.com/document/api/214/30694#LoadBalancer)
-
-	* 新增成员：Zones
-
-
-
-
-## 边缘计算机器(ecm) 版本：2019-07-19
-
-### 第 32 次发布
-
-发布时间：2020-11-20 08:00:35
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [CreateListener](https://cloud.tencent.com/document/api/1108/48466)
-
-	* 新增入参：SessionType
-
-
-修改数据结构：
-
-* [Listener](https://cloud.tencent.com/document/api/1108/42574#Listener)
-
-	* 新增成员：SessionType
-
-
-
-
-## 云函数(scf) 版本：2018-04-16
-
-### 第 22 次发布
-
-发布时间：2020-11-20 08:05:55
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [Function](https://cloud.tencent.com/document/api/583/17244#Function)
-
-	* 新增成员：StatusReasons, TotalProvisionedConcurrencyMem, ReservedConcurrencyMem
-
-* [Trigger](https://cloud.tencent.com/document/api/583/17244#Trigger)
-
-	* 新增成员：ResourceId, BindStatus, TriggerAttribute
-
-* [TriggerInfo](https://cloud.tencent.com/document/api/583/17244#TriggerInfo)
-
-	* 新增成员：ResourceId, BindStatus, TriggerAttribute
-
-
-
-
-## 云开发 CloudBase(tcb) 版本：2018-06-08
-
-### 第 25 次发布
-
-发布时间：2020-11-20 08:06:32
+发布时间：2020-11-23 08:00:28
 
 本次发布包含了以下内容：
 
@@ -84,11 +12,179 @@
 
 新增接口：
 
-* [DescribeCloudBaseRunResource](https://cloud.tencent.com/document/api/876/50108)
+* [DescribeTelCallInfo](https://cloud.tencent.com/document/api/679/50168)
+
+
+
+## 金融联络机器人(cr) 版本：2018-03-21
+
+### 第 11 次发布
+
+发布时间：2020-11-23 08:03:42
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [QueryProducts](https://cloud.tencent.com/document/api/656/50187)
 
 新增数据结构：
 
-* [CloudBaseRunVpcSubnet](https://cloud.tencent.com/document/api/876/34822#CloudBaseRunVpcSubnet)
+* [ProductQueryInfo](https://cloud.tencent.com/document/api/656/30994#ProductQueryInfo)
+
+
+
+## 全站加速网络(ecdn) 版本：2019-10-12
+
+### 第 6 次发布
+
+发布时间：2020-11-23 08:01:26
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [AddEcdnDomain](https://cloud.tencent.com/document/api/570/42472)
+
+	* 新增入参：WebSocket
+
+* [UpdateDomainConfig](https://cloud.tencent.com/document/api/570/42460)
+
+	* 新增入参：WebSocket
+
+
+新增数据结构：
+
+* [WebSocket](https://cloud.tencent.com/document/api/570/42478#WebSocket)
+
+修改数据结构：
+
+* [DomainDetailInfo](https://cloud.tencent.com/document/api/570/42478#DomainDetailInfo)
+
+	* 新增成员：WebSocket
+
+
+
+
+## 边缘计算机器(ecm) 版本：2019-07-19
+
+### 第 33 次发布
+
+发布时间：2020-11-23 08:00:45
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CreateHaVip](https://cloud.tencent.com/document/api/1108/50173)
+* [CreateRouteTable](https://cloud.tencent.com/document/api/1108/50186)
+* [CreateRoutes](https://cloud.tencent.com/document/api/1108/50185)
+* [DeleteHaVip](https://cloud.tencent.com/document/api/1108/50172)
+* [DeleteRouteTable](https://cloud.tencent.com/document/api/1108/50184)
+* [DeleteRoutes](https://cloud.tencent.com/document/api/1108/50183)
+* [DescribeHaVips](https://cloud.tencent.com/document/api/1108/50171)
+* [DescribeRouteConflicts](https://cloud.tencent.com/document/api/1108/50182)
+* [DescribeRouteTables](https://cloud.tencent.com/document/api/1108/50181)
+* [DisableRoutes](https://cloud.tencent.com/document/api/1108/50180)
+* [EnableRoutes](https://cloud.tencent.com/document/api/1108/50179)
+* [ModifyHaVipAttribute](https://cloud.tencent.com/document/api/1108/50170)
+* [ModifyRouteTableAttribute](https://cloud.tencent.com/document/api/1108/50178)
+* [ReplaceRouteTableAssociation](https://cloud.tencent.com/document/api/1108/50177)
+* [ReplaceRoutes](https://cloud.tencent.com/document/api/1108/50176)
+* [ResetRoutes](https://cloud.tencent.com/document/api/1108/50175)
+
+新增数据结构：
+
+* [Route](https://cloud.tencent.com/document/api/1108/42574#Route)
+* [RouteConflict](https://cloud.tencent.com/document/api/1108/42574#RouteConflict)
+* [RouteTable](https://cloud.tencent.com/document/api/1108/42574#RouteTable)
+* [RouteTableAssociation](https://cloud.tencent.com/document/api/1108/42574#RouteTableAssociation)
+
+
+
+## 物联网智能视频服务(iotvideo) 版本：2019-11-26
+
+### 第 17 次发布
+
+发布时间：2020-11-23 08:01:31
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [Contents](https://cloud.tencent.com/document/api/1131/42400#Contents)
+
+	* 新增成员：Default
+
+
+
+
+## 云数据库 PostgreSQL(postgres) 版本：2017-03-12
+
+### 第 11 次发布
+
+发布时间：2020-11-23 08:06:23
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [DBInstance](https://cloud.tencent.com/document/api/409/16778#DBInstance)
+
+	* 新增成员：MasterDBInstanceId, ReadOnlyInstanceNum, StatusInReadonlyGroup
+
+
+
+
+## 云开发 CloudBase(tcb) 版本：2018-06-08
+
+### 第 26 次发布
+
+发布时间：2020-11-23 08:07:05
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateCloudBaseRunServerVersion](https://cloud.tencent.com/document/api/876/49627)
+
+	* 新增入参：OperatorRemark
+
+* [EstablishCloudBaseRunServer](https://cloud.tencent.com/document/api/876/49626)
+
+	* 新增入参：OperatorRemark, Source
+
+
+
+
+## 私有网络(vpc) 版本：2017-03-12
+
+### 第 69 次发布
+
+发布时间：2020-11-23 08:07:52
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [ReplaceSecurityGroupPolicy](https://cloud.tencent.com/document/api/215/15811)
+
+	* 新增入参：OriginalSecurityGroupPolicySet
+
 
 
 
@@ -5498,6 +5594,18 @@
 
 
 ## 云呼叫中心(ccc) 版本：2020-02-10
+
+### 第 6 次发布
+
+发布时间：2020-11-23 08:00:28
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeTelCallInfo](https://cloud.tencent.com/document/api/679/50168)](https://cloud.tencent.com/document/api/#/#)
 
 ### 第 5 次发布
 
@@ -11054,6 +11162,22 @@
 
 ## 金融联络机器人(cr) 版本：2018-03-21
 
+### 第 11 次发布
+
+发布时间：2020-11-23 08:03:42
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[QueryProducts](https://cloud.tencent.com/document/api/656/50187)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[ProductQueryInfo](https://cloud.tencent.com/document/api/656/30994#ProductQueryInfo)](https://cloud.tencent.com/document/api/656/30994#[ProductQueryInfo](https://cloud.tencent.com/document/api/656/30994#ProductQueryInfo))
+
 ### 第 10 次发布
 
 发布时间：2020-04-24 08:06:49
@@ -14719,6 +14843,36 @@
 
 ## 全站加速网络(ecdn) 版本：2019-10-12
 
+### 第 6 次发布
+
+发布时间：2020-11-23 08:01:26
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [AddEcdnDomain](https://cloud.tencent.com/document/api/570/42472)
+
+	* 新增入参：WebSocket
+
+* [UpdateDomainConfig](https://cloud.tencent.com/document/api/570/42460)
+
+	* 新增入参：WebSocket
+
+
+新增数据结构：
+
+* [[WebSocket](https://cloud.tencent.com/document/api/570/42478#WebSocket)](https://cloud.tencent.com/document/api/570/42478#[WebSocket](https://cloud.tencent.com/document/api/570/42478#WebSocket))
+
+修改数据结构：
+
+* [DomainDetailInfo](https://cloud.tencent.com/document/api/570/42478#DomainDetailInfo)
+
+	* 新增成员：WebSocket
+
+
 ### 第 5 次发布
 
 发布时间：2020-11-04 08:00:52
@@ -14851,6 +15005,40 @@
 
 
 ## 边缘计算机器(ecm) 版本：2019-07-19
+
+### 第 33 次发布
+
+发布时间：2020-11-23 08:00:45
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[CreateHaVip](https://cloud.tencent.com/document/api/1108/50173)](https://cloud.tencent.com/document/api/#/#)
+* [[CreateRouteTable](https://cloud.tencent.com/document/api/1108/50186)](https://cloud.tencent.com/document/api/#/#)
+* [[CreateRoutes](https://cloud.tencent.com/document/api/1108/50185)](https://cloud.tencent.com/document/api/#/#)
+* [[DeleteHaVip](https://cloud.tencent.com/document/api/1108/50172)](https://cloud.tencent.com/document/api/#/#)
+* [[DeleteRouteTable](https://cloud.tencent.com/document/api/1108/50184)](https://cloud.tencent.com/document/api/#/#)
+* [[DeleteRoutes](https://cloud.tencent.com/document/api/1108/50183)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeHaVips](https://cloud.tencent.com/document/api/1108/50171)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeRouteConflicts](https://cloud.tencent.com/document/api/1108/50182)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeRouteTables](https://cloud.tencent.com/document/api/1108/50181)](https://cloud.tencent.com/document/api/#/#)
+* [[DisableRoutes](https://cloud.tencent.com/document/api/1108/50180)](https://cloud.tencent.com/document/api/#/#)
+* [[EnableRoutes](https://cloud.tencent.com/document/api/1108/50179)](https://cloud.tencent.com/document/api/#/#)
+* [[ModifyHaVipAttribute](https://cloud.tencent.com/document/api/1108/50170)](https://cloud.tencent.com/document/api/#/#)
+* [[ModifyRouteTableAttribute](https://cloud.tencent.com/document/api/1108/50178)](https://cloud.tencent.com/document/api/#/#)
+* [[ReplaceRouteTableAssociation](https://cloud.tencent.com/document/api/1108/50177)](https://cloud.tencent.com/document/api/#/#)
+* [[ReplaceRoutes](https://cloud.tencent.com/document/api/1108/50176)](https://cloud.tencent.com/document/api/#/#)
+* [[ResetRoutes](https://cloud.tencent.com/document/api/1108/50175)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[Route](https://cloud.tencent.com/document/api/1108/42574#Route)](https://cloud.tencent.com/document/api/1108/42574#[Route](https://cloud.tencent.com/document/api/1108/42574#Route))
+* [[RouteConflict](https://cloud.tencent.com/document/api/1108/42574#RouteConflict)](https://cloud.tencent.com/document/api/1108/42574#[RouteConflict](https://cloud.tencent.com/document/api/1108/42574#RouteConflict))
+* [[RouteTable](https://cloud.tencent.com/document/api/1108/42574#RouteTable)](https://cloud.tencent.com/document/api/1108/42574#[RouteTable](https://cloud.tencent.com/document/api/1108/42574#RouteTable))
+* [[RouteTableAssociation](https://cloud.tencent.com/document/api/1108/42574#RouteTableAssociation)](https://cloud.tencent.com/document/api/1108/42574#[RouteTableAssociation](https://cloud.tencent.com/document/api/1108/42574#RouteTableAssociation))
 
 ### 第 32 次发布
 
@@ -20401,6 +20589,21 @@
 
 
 ## 物联网智能视频服务(iotvideo) 版本：2019-11-26
+
+### 第 17 次发布
+
+发布时间：2020-11-23 08:01:31
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [Contents](https://cloud.tencent.com/document/api/1131/42400#Contents)
+
+	* 新增成员：Default
+
 
 ### 第 16 次发布
 
@@ -26118,6 +26321,21 @@
 
 ## 云数据库 PostgreSQL(postgres) 版本：2017-03-12
 
+### 第 11 次发布
+
+发布时间：2020-11-23 08:06:23
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [DBInstance](https://cloud.tencent.com/document/api/409/16778#DBInstance)
+
+	* 新增成员：MasterDBInstanceId, ReadOnlyInstanceNum, StatusInReadonlyGroup
+
+
 ### 第 10 次发布
 
 发布时间：2020-08-20 08:18:19
@@ -29753,6 +29971,25 @@
 
 ## 云开发 CloudBase(tcb) 版本：2018-06-08
 
+### 第 26 次发布
+
+发布时间：2020-11-23 08:07:05
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateCloudBaseRunServerVersion](https://cloud.tencent.com/document/api/876/49627)
+
+	* 新增入参：OperatorRemark
+
+* [EstablishCloudBaseRunServer](https://cloud.tencent.com/document/api/876/49626)
+
+	* 新增入参：OperatorRemark, Source
+
+
 ### 第 25 次发布
 
 发布时间：2020-11-20 08:06:32
@@ -29763,11 +30000,11 @@
 
 新增接口：
 
-* [[DescribeCloudBaseRunResource](https://cloud.tencent.com/document/api/876/50108)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeCloudBaseRunResource](https://cloud.tencent.com/document/api/876/50108)
 
 新增数据结构：
 
-* [[CloudBaseRunVpcSubnet](https://cloud.tencent.com/document/api/876/34822#CloudBaseRunVpcSubnet)](https://cloud.tencent.com/document/api/876/34822#[CloudBaseRunVpcSubnet](https://cloud.tencent.com/document/api/876/34822#CloudBaseRunVpcSubnet))
+* [CloudBaseRunVpcSubnet](https://cloud.tencent.com/document/api/876/34822#CloudBaseRunVpcSubnet)
 
 ### 第 24 次发布
 
@@ -36371,6 +36608,21 @@
 
 
 ## 私有网络(vpc) 版本：2017-03-12
+
+### 第 69 次发布
+
+发布时间：2020-11-23 08:07:52
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [ReplaceSecurityGroupPolicy](https://cloud.tencent.com/document/api/215/15811)
+
+	* 新增入参：OriginalSecurityGroupPolicySet
+
 
 ### 第 68 次发布
 

@@ -58,6 +58,9 @@ type AddEcdnDomainRequest struct {
 
 	// 域名绑定的标签
 	Tag []*Tag `json:"Tag,omitempty" name:"Tag" list`
+
+	// WebSocket配置
+	WebSocket *WebSocket `json:"WebSocket,omitempty" name:"WebSocket"`
 }
 
 func (r *AddEcdnDomainRequest) ToJsonString() string {
@@ -736,6 +739,10 @@ type DomainDetailInfo struct {
 	// 域名标签。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Tag []*Tag `json:"Tag,omitempty" name:"Tag" list`
+
+	// WebSocket配置。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WebSocket *WebSocket `json:"WebSocket,omitempty" name:"WebSocket"`
 }
 
 type DomainFilter struct {
@@ -1244,6 +1251,9 @@ type UpdateDomainConfigRequest struct {
 
 	// 域名加速区域，mainland，overseas或global，分别表示中国境内加速，海外加速或全球加速。
 	Area *string `json:"Area,omitempty" name:"Area"`
+
+	// WebSocket配置
+	WebSocket *WebSocket `json:"WebSocket,omitempty" name:"WebSocket"`
 }
 
 func (r *UpdateDomainConfigRequest) ToJsonString() string {
@@ -1271,4 +1281,14 @@ func (r *UpdateDomainConfigResponse) ToJsonString() string {
 
 func (r *UpdateDomainConfigResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
+}
+
+type WebSocket struct {
+
+	// WebSocket配置开关，on或off。
+	Switch *string `json:"Switch,omitempty" name:"Switch"`
+
+	// 设置超时时间，单位为秒，最大超时时间65秒。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Timeout *int64 `json:"Timeout,omitempty" name:"Timeout"`
 }

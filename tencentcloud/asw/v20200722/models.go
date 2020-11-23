@@ -38,7 +38,7 @@ type CreateFlowServiceRequest struct {
 	// 状态机所属服务中文名
 	FlowServiceChineseName *string `json:"FlowServiceChineseName,omitempty" name:"FlowServiceChineseName"`
 
-	// 角色资源名
+	// 角色资源名, 比如: qcs::cam::uin/20103392:roleName/SomeRoleForYourStateMachine
 	RoleResource *string `json:"RoleResource,omitempty" name:"RoleResource"`
 
 	// 备注

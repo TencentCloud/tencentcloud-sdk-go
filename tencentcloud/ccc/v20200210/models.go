@@ -216,6 +216,55 @@ func (r *DescribeIMCdrsResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeTelCallInfoRequest struct {
+	*tchttp.BaseRequest
+
+	// 起始时间戳，Unix 时间戳
+	StartTimeStamp *int64 `json:"StartTimeStamp,omitempty" name:"StartTimeStamp"`
+
+	// 结束时间戳，Unix 时间戳
+	EndTimeStamp *int64 `json:"EndTimeStamp,omitempty" name:"EndTimeStamp"`
+
+	// 应用ID列表，多个ID时，返回值为多个ID使用总和
+	SdkAppIdList []*int64 `json:"SdkAppIdList,omitempty" name:"SdkAppIdList" list`
+}
+
+func (r *DescribeTelCallInfoRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeTelCallInfoRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeTelCallInfoResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 电话呼出统计分钟数
+		TelCallOutCount *int64 `json:"TelCallOutCount,omitempty" name:"TelCallOutCount"`
+
+		// 电话呼入统计分钟数
+		TelCallInCount *int64 `json:"TelCallInCount,omitempty" name:"TelCallInCount"`
+
+		// 坐席使用统计个数
+		SeatUsedCount *int64 `json:"SeatUsedCount,omitempty" name:"SeatUsedCount"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeTelCallInfoResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeTelCallInfoResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeTelCdrRequest struct {
 	*tchttp.BaseRequest
 

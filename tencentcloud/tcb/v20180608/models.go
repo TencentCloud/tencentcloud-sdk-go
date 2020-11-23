@@ -553,6 +553,9 @@ type CreateCloudBaseRunServerVersionRequest struct {
 
 	// 是否使用统一域名
 	EnableUnion *bool `json:"EnableUnion,omitempty" name:"EnableUnion"`
+
+	// 操作备注
+	OperatorRemark *string `json:"OperatorRemark,omitempty" name:"OperatorRemark"`
 }
 
 func (r *CreateCloudBaseRunServerVersionRequest) ToJsonString() string {
@@ -1941,6 +1944,12 @@ type EstablishCloudBaseRunServerRequest struct {
 
 	// 日志类型; es/cls
 	LogType *string `json:"LogType,omitempty" name:"LogType"`
+
+	// 操作备注
+	OperatorRemark *string `json:"OperatorRemark,omitempty" name:"OperatorRemark"`
+
+	// 来源方（默认值：qcloud，微信侧来源miniapp)
+	Source *string `json:"Source,omitempty" name:"Source"`
 }
 
 func (r *EstablishCloudBaseRunServerRequest) ToJsonString() string {

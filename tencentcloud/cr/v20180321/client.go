@@ -269,6 +269,31 @@ func (c *Client) QueryInstantData(request *QueryInstantDataRequest) (response *Q
     return
 }
 
+func NewQueryProductsRequest() (request *QueryProductsRequest) {
+    request = &QueryProductsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cr", APIVersion, "QueryProducts")
+    return
+}
+
+func NewQueryProductsResponse() (response *QueryProductsResponse) {
+    response = &QueryProductsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询产品列表
+func (c *Client) QueryProducts(request *QueryProductsRequest) (response *QueryProductsResponse, err error) {
+    if request == nil {
+        request = NewQueryProductsRequest()
+    }
+    response = NewQueryProductsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewUploadDataFileRequest() (request *UploadDataFileRequest) {
     request = &UploadDataFileRequest{
         BaseRequest: &tchttp.BaseRequest{},
