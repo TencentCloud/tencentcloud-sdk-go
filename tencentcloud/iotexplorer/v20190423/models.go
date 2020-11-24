@@ -387,6 +387,43 @@ func (r *CreateStudioProductResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type CreateTopicRuleRequest struct {
+	*tchttp.BaseRequest
+
+	// 规则名称
+	RuleName *string `json:"RuleName,omitempty" name:"RuleName"`
+
+	// 规则内容
+	TopicRulePayload *TopicRulePayload `json:"TopicRulePayload,omitempty" name:"TopicRulePayload"`
+}
+
+func (r *CreateTopicRuleRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateTopicRuleRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateTopicRuleResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateTopicRuleResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateTopicRuleResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DeleteDeviceRequest struct {
 	*tchttp.BaseRequest
 
@@ -531,6 +568,40 @@ func (r *DeleteStudioProductResponse) ToJsonString() string {
 }
 
 func (r *DeleteStudioProductResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteTopicRuleRequest struct {
+	*tchttp.BaseRequest
+
+	// 规则名
+	RuleName *string `json:"RuleName,omitempty" name:"RuleName"`
+}
+
+func (r *DeleteTopicRuleRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteTopicRuleRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteTopicRuleResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DeleteTopicRuleResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteTopicRuleResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -799,6 +870,44 @@ func (r *DescribeStudioProductResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeTopicRuleRequest struct {
+	*tchttp.BaseRequest
+
+	// 规则名称。
+	RuleName *string `json:"RuleName,omitempty" name:"RuleName"`
+}
+
+func (r *DescribeTopicRuleRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeTopicRuleRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeTopicRuleResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 规则描述。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Rule *TopicRule `json:"Rule,omitempty" name:"Rule"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeTopicRuleResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeTopicRuleResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DeviceData struct {
 
 	// 设备证书，用于 TLS 建立链接时校验客户端身份。采用非对称加密时返回该参数。
@@ -882,6 +991,74 @@ type DeviceInfo struct {
 	// LoRaWAN 网络会话密钥
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	NwkSKey *string `json:"NwkSKey,omitempty" name:"NwkSKey"`
+}
+
+type DisableTopicRuleRequest struct {
+	*tchttp.BaseRequest
+
+	// 规则名称
+	RuleName *string `json:"RuleName,omitempty" name:"RuleName"`
+}
+
+func (r *DisableTopicRuleRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DisableTopicRuleRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DisableTopicRuleResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DisableTopicRuleResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DisableTopicRuleResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type EnableTopicRuleRequest struct {
+	*tchttp.BaseRequest
+
+	// 规则名称
+	RuleName *string `json:"RuleName,omitempty" name:"RuleName"`
+}
+
+func (r *EnableTopicRuleRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *EnableTopicRuleRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type EnableTopicRuleResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *EnableTopicRuleResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *EnableTopicRuleResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
 }
 
 type EventHistoryItem struct {
@@ -1103,6 +1280,49 @@ func (r *GetStudioProductListResponse) ToJsonString() string {
 }
 
 func (r *GetStudioProductListResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type GetTopicRuleListRequest struct {
+	*tchttp.BaseRequest
+
+	// 请求的页数
+	PageNum *int64 `json:"PageNum,omitempty" name:"PageNum"`
+
+	// 分页的大小
+	PageSize *int64 `json:"PageSize,omitempty" name:"PageSize"`
+}
+
+func (r *GetTopicRuleListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *GetTopicRuleListRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type GetTopicRuleListResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 规则总数量
+		TotalCnt *int64 `json:"TotalCnt,omitempty" name:"TotalCnt"`
+
+		// 规则列表
+		Rules []*TopicRuleInfo `json:"Rules,omitempty" name:"Rules" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *GetTopicRuleListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *GetTopicRuleListResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -1409,6 +1629,43 @@ func (r *ModifyStudioProductResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type ModifyTopicRuleRequest struct {
+	*tchttp.BaseRequest
+
+	// 规则名称
+	RuleName *string `json:"RuleName,omitempty" name:"RuleName"`
+
+	// 替换的规则包体
+	TopicRulePayload *TopicRulePayload `json:"TopicRulePayload,omitempty" name:"TopicRulePayload"`
+}
+
+func (r *ModifyTopicRuleRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyTopicRuleRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyTopicRuleResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifyTopicRuleResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyTopicRuleResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type ProductEntry struct {
 
 	// 产品ID
@@ -1609,4 +1866,143 @@ func (r *SearchStudioProductResponse) ToJsonString() string {
 
 func (r *SearchStudioProductResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
+}
+
+type SearchTopicRuleRequest struct {
+	*tchttp.BaseRequest
+
+	// 规则名
+	RuleName *string `json:"RuleName,omitempty" name:"RuleName"`
+}
+
+func (r *SearchTopicRuleRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *SearchTopicRuleRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type SearchTopicRuleResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 搜索到的规则总数
+		TotalCnt *int64 `json:"TotalCnt,omitempty" name:"TotalCnt"`
+
+		// 规则信息列表
+		Rules []*TopicRuleInfo `json:"Rules,omitempty" name:"Rules" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *SearchTopicRuleResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *SearchTopicRuleResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type TopicRule struct {
+
+	// 规则名称。
+	RuleName *string `json:"RuleName,omitempty" name:"RuleName"`
+
+	// 规则的SQL语句，如： SELECT * FROM 'pid/dname/event'，然后对其进行base64编码，得：U0VMRUNUICogRlJPTSAncGlkL2RuYW1lL2V2ZW50Jw==
+	Sql *string `json:"Sql,omitempty" name:"Sql"`
+
+	// 规则描述。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Description *string `json:"Description,omitempty" name:"Description"`
+
+	// 行为的JSON字符串。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Actions *string `json:"Actions,omitempty" name:"Actions"`
+
+	// 是否禁用规则
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RuleDisabled *bool `json:"RuleDisabled,omitempty" name:"RuleDisabled"`
+}
+
+type TopicRuleInfo struct {
+
+	// 规则名称
+	RuleName *string `json:"RuleName,omitempty" name:"RuleName"`
+
+	// 规则描述
+	Description *string `json:"Description,omitempty" name:"Description"`
+
+	// 创建时间
+	CreatedAt *int64 `json:"CreatedAt,omitempty" name:"CreatedAt"`
+
+	// 规则是否禁用
+	RuleDisabled *bool `json:"RuleDisabled,omitempty" name:"RuleDisabled"`
+}
+
+type TopicRulePayload struct {
+
+	// 规则的SQL语句，如： SELECT * FROM 'pid/dname/event'，然后对其进行base64编码，得：U0VMRUNUICogRlJPTSAncGlkL2RuYW1lL2V2ZW50Jw==
+	Sql *string `json:"Sql,omitempty" name:"Sql"`
+
+	// 行为的JSON字符串，大部分种类举例如下：
+	// [
+	// {
+	// "republish": {
+	// "topic": "TEST/test"
+	// }
+	// },
+	// {
+	// "forward": {
+	// "api": "http://127.0.0.1:8080"
+	// }
+	// },
+	// {
+	// "ckafka": {
+	// "instance": {
+	// "id": "ckafka-test",
+	// "name": ""
+	// },
+	// "topic": {
+	// "id": "topic-test",
+	// "name": "test"
+	// },
+	// "region": "gz"
+	// }
+	// },
+	// {
+	// "cmqqueue": {
+	// "queuename": "queue-test-TEST",
+	// "region": "gz"
+	// }
+	// },
+	// {
+	// "mysql": {
+	// "instanceid": "cdb-test",
+	// "region": "gz",
+	// "username": "test",
+	// "userpwd": "*****",
+	// "dbname": "d_mqtt",
+	// "tablename": "t_test",
+	// "fieldpairs": [
+	// {
+	// "field": "test",
+	// "value": "test"
+	// }
+	// ],
+	// "devicetype": "CUSTOM"
+	// }
+	// }
+	// ]
+	Actions *string `json:"Actions,omitempty" name:"Actions"`
+
+	// 规则描述
+	Description *string `json:"Description,omitempty" name:"Description"`
+
+	// 是否禁用规则
+	RuleDisabled *bool `json:"RuleDisabled,omitempty" name:"RuleDisabled"`
 }

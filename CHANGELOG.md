@@ -1,46 +1,10 @@
 # 本版本更新包含以下内容：
 
-## 云呼叫中心(ccc) 版本：2020-02-10
+## 边缘计算机器(ecm) 版本：2019-07-19
 
-### 第 6 次发布
+### 第 34 次发布
 
-发布时间：2020-11-23 08:00:28
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [DescribeTelCallInfo](https://cloud.tencent.com/document/api/679/50168)
-
-
-
-## 金融联络机器人(cr) 版本：2018-03-21
-
-### 第 11 次发布
-
-发布时间：2020-11-23 08:03:42
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [QueryProducts](https://cloud.tencent.com/document/api/656/50187)
-
-新增数据结构：
-
-* [ProductQueryInfo](https://cloud.tencent.com/document/api/656/30994#ProductQueryInfo)
-
-
-
-## 全站加速网络(ecdn) 版本：2019-10-12
-
-### 第 6 次发布
-
-发布时间：2020-11-23 08:01:26
+发布时间：2020-11-24 08:00:47
 
 本次发布包含了以下内容：
 
@@ -48,33 +12,38 @@
 
 修改接口：
 
-* [AddEcdnDomain](https://cloud.tencent.com/document/api/570/42472)
+* [CreateHaVip](https://cloud.tencent.com/document/api/1108/50173)
 
-	* 新增入参：WebSocket
+	* 新增入参：VpcId, SubnetId, HaVipName, Vip
 
-* [UpdateDomainConfig](https://cloud.tencent.com/document/api/570/42460)
+	* 新增出参：HaVip
 
-	* 新增入参：WebSocket
+* [DeleteHaVip](https://cloud.tencent.com/document/api/1108/50172)
+
+	* 新增入参：HaVipId
+
+* [DescribeHaVips](https://cloud.tencent.com/document/api/1108/50171)
+
+	* 新增入参：HaVipIds, Filters, Offset, Limit, EcmRegion
+
+	* 新增出参：TotalCount, HaVipSet
+
+* [ModifyHaVipAttribute](https://cloud.tencent.com/document/api/1108/50170)
+
+	* 新增入参：HaVipId, HaVipName
 
 
 新增数据结构：
 
-* [WebSocket](https://cloud.tencent.com/document/api/570/42478#WebSocket)
-
-修改数据结构：
-
-* [DomainDetailInfo](https://cloud.tencent.com/document/api/570/42478#DomainDetailInfo)
-
-	* 新增成员：WebSocket
+* [HaVip](https://cloud.tencent.com/document/api/1108/42574#HaVip)
 
 
 
+## Elasticsearch Service(es) 版本：2018-04-16
 
-## 边缘计算机器(ecm) 版本：2019-07-19
+### 第 12 次发布
 
-### 第 33 次发布
-
-发布时间：2020-11-23 08:00:45
+发布时间：2020-11-24 08:04:34
 
 本次发布包含了以下内容：
 
@@ -82,75 +51,51 @@
 
 新增接口：
 
-* [CreateHaVip](https://cloud.tencent.com/document/api/1108/50173)
-* [CreateRouteTable](https://cloud.tencent.com/document/api/1108/50186)
-* [CreateRoutes](https://cloud.tencent.com/document/api/1108/50185)
-* [DeleteHaVip](https://cloud.tencent.com/document/api/1108/50172)
-* [DeleteRouteTable](https://cloud.tencent.com/document/api/1108/50184)
-* [DeleteRoutes](https://cloud.tencent.com/document/api/1108/50183)
-* [DescribeHaVips](https://cloud.tencent.com/document/api/1108/50171)
-* [DescribeRouteConflicts](https://cloud.tencent.com/document/api/1108/50182)
-* [DescribeRouteTables](https://cloud.tencent.com/document/api/1108/50181)
-* [DisableRoutes](https://cloud.tencent.com/document/api/1108/50180)
-* [EnableRoutes](https://cloud.tencent.com/document/api/1108/50179)
-* [ModifyHaVipAttribute](https://cloud.tencent.com/document/api/1108/50170)
-* [ModifyRouteTableAttribute](https://cloud.tencent.com/document/api/1108/50178)
-* [ReplaceRouteTableAssociation](https://cloud.tencent.com/document/api/1108/50177)
-* [ReplaceRoutes](https://cloud.tencent.com/document/api/1108/50176)
-* [ResetRoutes](https://cloud.tencent.com/document/api/1108/50175)
+* [RestartKibana](https://cloud.tencent.com/document/api/845/50224)
+
+修改接口：
+
+* [UpdateInstance](https://cloud.tencent.com/document/api/845/30629)
+
+	* 新增入参：KibanaConfig
+
+
+
+
+## 物联网开发平台(iotexplorer) 版本：2019-04-23
+
+### 第 15 次发布
+
+发布时间：2020-11-24 08:05:27
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CreateTopicRule](https://cloud.tencent.com/document/api/1081/50233)
+* [DeleteTopicRule](https://cloud.tencent.com/document/api/1081/50232)
+* [DescribeTopicRule](https://cloud.tencent.com/document/api/1081/50231)
+* [DisableTopicRule](https://cloud.tencent.com/document/api/1081/50230)
+* [EnableTopicRule](https://cloud.tencent.com/document/api/1081/50229)
+* [GetTopicRuleList](https://cloud.tencent.com/document/api/1081/50228)
+* [ModifyTopicRule](https://cloud.tencent.com/document/api/1081/50227)
+* [SearchTopicRule](https://cloud.tencent.com/document/api/1081/50226)
 
 新增数据结构：
 
-* [Route](https://cloud.tencent.com/document/api/1108/42574#Route)
-* [RouteConflict](https://cloud.tencent.com/document/api/1108/42574#RouteConflict)
-* [RouteTable](https://cloud.tencent.com/document/api/1108/42574#RouteTable)
-* [RouteTableAssociation](https://cloud.tencent.com/document/api/1108/42574#RouteTableAssociation)
+* [TopicRule](https://cloud.tencent.com/document/api/1081/34988#TopicRule)
+* [TopicRuleInfo](https://cloud.tencent.com/document/api/1081/34988#TopicRuleInfo)
+* [TopicRulePayload](https://cloud.tencent.com/document/api/1081/34988#TopicRulePayload)
 
 
 
 ## 物联网智能视频服务(iotvideo) 版本：2019-11-26
 
-### 第 17 次发布
+### 第 18 次发布
 
-发布时间：2020-11-23 08:01:31
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [Contents](https://cloud.tencent.com/document/api/1131/42400#Contents)
-
-	* 新增成员：Default
-
-
-
-
-## 云数据库 PostgreSQL(postgres) 版本：2017-03-12
-
-### 第 11 次发布
-
-发布时间：2020-11-23 08:06:23
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [DBInstance](https://cloud.tencent.com/document/api/409/16778#DBInstance)
-
-	* 新增成员：MasterDBInstanceId, ReadOnlyInstanceNum, StatusInReadonlyGroup
-
-
-
-
-## 云开发 CloudBase(tcb) 版本：2018-06-08
-
-### 第 26 次发布
-
-发布时间：2020-11-23 08:07:05
+发布时间：2020-11-24 08:01:29
 
 本次发布包含了以下内容：
 
@@ -158,33 +103,76 @@
 
 修改接口：
 
-* [CreateCloudBaseRunServerVersion](https://cloud.tencent.com/document/api/876/49627)
+* [CreateProduct](https://cloud.tencent.com/document/api/1131/42382)
 
-	* 新增入参：OperatorRemark
+	* 新增入参：ChipArch
 
-* [EstablishCloudBaseRunServer](https://cloud.tencent.com/document/api/876/49626)
+* [ModifyVerContent](https://cloud.tencent.com/document/api/1131/49512)
 
-	* 新增入参：OperatorRemark, Source
+	* <font color="#dd0000">**修改入参**：</font>ProductId
+
+
+
+
+## 流量反欺诈(taf) 版本：2020-02-10
+
+### 第 6 次发布
+
+发布时间：2020-11-24 08:00:36
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [RecognizeEffectiveFlow](https://cloud.tencent.com/document/api/1031/50223)
+
+新增数据结构：
+
+* [InputRecognizeEffectiveFlow](https://cloud.tencent.com/document/api/1031/43310#InputRecognizeEffectiveFlow)
+* [OutputRecognizeEffectiveFlow](https://cloud.tencent.com/document/api/1031/43310#OutputRecognizeEffectiveFlow)
+* [OutputRecognizeEffectiveFlowValue](https://cloud.tencent.com/document/api/1031/43310#OutputRecognizeEffectiveFlowValue)
+
+
+
+## 容器镜像服务(tcr) 版本：2019-09-24
+
+### 第 17 次发布
+
+发布时间：2020-11-24 08:10:04
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateInstanceToken](https://cloud.tencent.com/document/api/1141/41571)
+
+	* 新增出参：TokenId
 
 
 
 
 ## 私有网络(vpc) 版本：2017-03-12
 
-### 第 69 次发布
+### 第 70 次发布
 
-发布时间：2020-11-23 08:07:52
+发布时间：2020-11-24 08:08:57
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-修改接口：
+新增接口：
 
-* [ReplaceSecurityGroupPolicy](https://cloud.tencent.com/document/api/215/15811)
+* [DescribeIpGeolocationInfos](https://cloud.tencent.com/document/api/215/50234)
 
-	* 新增入参：OriginalSecurityGroupPolicySet
+新增数据结构：
 
+* [IpField](https://cloud.tencent.com/document/api/215/15824#IpField)
+* [IpGeolocationInfo](https://cloud.tencent.com/document/api/215/15824#IpGeolocationInfo)
 
 
 
@@ -5605,7 +5593,7 @@
 
 新增接口：
 
-* [[DescribeTelCallInfo](https://cloud.tencent.com/document/api/679/50168)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeTelCallInfo](https://cloud.tencent.com/document/api/679/50168)
 
 ### 第 5 次发布
 
@@ -11172,11 +11160,11 @@
 
 新增接口：
 
-* [[QueryProducts](https://cloud.tencent.com/document/api/656/50187)](https://cloud.tencent.com/document/api/#/#)
+* [QueryProducts](https://cloud.tencent.com/document/api/656/50187)
 
 新增数据结构：
 
-* [[ProductQueryInfo](https://cloud.tencent.com/document/api/656/30994#ProductQueryInfo)](https://cloud.tencent.com/document/api/656/30994#[ProductQueryInfo](https://cloud.tencent.com/document/api/656/30994#ProductQueryInfo))
+* [ProductQueryInfo](https://cloud.tencent.com/document/api/656/30994#ProductQueryInfo)
 
 ### 第 10 次发布
 
@@ -14864,7 +14852,7 @@
 
 新增数据结构：
 
-* [[WebSocket](https://cloud.tencent.com/document/api/570/42478#WebSocket)](https://cloud.tencent.com/document/api/570/42478#[WebSocket](https://cloud.tencent.com/document/api/570/42478#WebSocket))
+* [WebSocket](https://cloud.tencent.com/document/api/570/42478#WebSocket)
 
 修改数据结构：
 
@@ -15006,6 +14994,41 @@
 
 ## 边缘计算机器(ecm) 版本：2019-07-19
 
+### 第 34 次发布
+
+发布时间：2020-11-24 08:00:47
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateHaVip](https://cloud.tencent.com/document/api/1108/50173)
+
+	* 新增入参：VpcId, SubnetId, HaVipName, Vip
+
+	* 新增出参：HaVip
+
+* [DeleteHaVip](https://cloud.tencent.com/document/api/1108/50172)
+
+	* 新增入参：HaVipId
+
+* [DescribeHaVips](https://cloud.tencent.com/document/api/1108/50171)
+
+	* 新增入参：HaVipIds, Filters, Offset, Limit, EcmRegion
+
+	* 新增出参：TotalCount, HaVipSet
+
+* [ModifyHaVipAttribute](https://cloud.tencent.com/document/api/1108/50170)
+
+	* 新增入参：HaVipId, HaVipName
+
+
+新增数据结构：
+
+* [[HaVip](https://cloud.tencent.com/document/api/1108/42574#HaVip)](https://cloud.tencent.com/document/api/1108/42574#[HaVip](https://cloud.tencent.com/document/api/1108/42574#HaVip))
+
 ### 第 33 次发布
 
 发布时间：2020-11-23 08:00:45
@@ -15016,29 +15039,29 @@
 
 新增接口：
 
-* [[CreateHaVip](https://cloud.tencent.com/document/api/1108/50173)](https://cloud.tencent.com/document/api/#/#)
-* [[CreateRouteTable](https://cloud.tencent.com/document/api/1108/50186)](https://cloud.tencent.com/document/api/#/#)
-* [[CreateRoutes](https://cloud.tencent.com/document/api/1108/50185)](https://cloud.tencent.com/document/api/#/#)
-* [[DeleteHaVip](https://cloud.tencent.com/document/api/1108/50172)](https://cloud.tencent.com/document/api/#/#)
-* [[DeleteRouteTable](https://cloud.tencent.com/document/api/1108/50184)](https://cloud.tencent.com/document/api/#/#)
-* [[DeleteRoutes](https://cloud.tencent.com/document/api/1108/50183)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeHaVips](https://cloud.tencent.com/document/api/1108/50171)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeRouteConflicts](https://cloud.tencent.com/document/api/1108/50182)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeRouteTables](https://cloud.tencent.com/document/api/1108/50181)](https://cloud.tencent.com/document/api/#/#)
-* [[DisableRoutes](https://cloud.tencent.com/document/api/1108/50180)](https://cloud.tencent.com/document/api/#/#)
-* [[EnableRoutes](https://cloud.tencent.com/document/api/1108/50179)](https://cloud.tencent.com/document/api/#/#)
-* [[ModifyHaVipAttribute](https://cloud.tencent.com/document/api/1108/50170)](https://cloud.tencent.com/document/api/#/#)
-* [[ModifyRouteTableAttribute](https://cloud.tencent.com/document/api/1108/50178)](https://cloud.tencent.com/document/api/#/#)
-* [[ReplaceRouteTableAssociation](https://cloud.tencent.com/document/api/1108/50177)](https://cloud.tencent.com/document/api/#/#)
-* [[ReplaceRoutes](https://cloud.tencent.com/document/api/1108/50176)](https://cloud.tencent.com/document/api/#/#)
-* [[ResetRoutes](https://cloud.tencent.com/document/api/1108/50175)](https://cloud.tencent.com/document/api/#/#)
+* [CreateHaVip](https://cloud.tencent.com/document/api/1108/50173)
+* [CreateRouteTable](https://cloud.tencent.com/document/api/1108/50186)
+* [CreateRoutes](https://cloud.tencent.com/document/api/1108/50185)
+* [DeleteHaVip](https://cloud.tencent.com/document/api/1108/50172)
+* [DeleteRouteTable](https://cloud.tencent.com/document/api/1108/50184)
+* [DeleteRoutes](https://cloud.tencent.com/document/api/1108/50183)
+* [DescribeHaVips](https://cloud.tencent.com/document/api/1108/50171)
+* [DescribeRouteConflicts](https://cloud.tencent.com/document/api/1108/50182)
+* [DescribeRouteTables](https://cloud.tencent.com/document/api/1108/50181)
+* [DisableRoutes](https://cloud.tencent.com/document/api/1108/50180)
+* [EnableRoutes](https://cloud.tencent.com/document/api/1108/50179)
+* [ModifyHaVipAttribute](https://cloud.tencent.com/document/api/1108/50170)
+* [ModifyRouteTableAttribute](https://cloud.tencent.com/document/api/1108/50178)
+* [ReplaceRouteTableAssociation](https://cloud.tencent.com/document/api/1108/50177)
+* [ReplaceRoutes](https://cloud.tencent.com/document/api/1108/50176)
+* [ResetRoutes](https://cloud.tencent.com/document/api/1108/50175)
 
 新增数据结构：
 
-* [[Route](https://cloud.tencent.com/document/api/1108/42574#Route)](https://cloud.tencent.com/document/api/1108/42574#[Route](https://cloud.tencent.com/document/api/1108/42574#Route))
-* [[RouteConflict](https://cloud.tencent.com/document/api/1108/42574#RouteConflict)](https://cloud.tencent.com/document/api/1108/42574#[RouteConflict](https://cloud.tencent.com/document/api/1108/42574#RouteConflict))
-* [[RouteTable](https://cloud.tencent.com/document/api/1108/42574#RouteTable)](https://cloud.tencent.com/document/api/1108/42574#[RouteTable](https://cloud.tencent.com/document/api/1108/42574#RouteTable))
-* [[RouteTableAssociation](https://cloud.tencent.com/document/api/1108/42574#RouteTableAssociation)](https://cloud.tencent.com/document/api/1108/42574#[RouteTableAssociation](https://cloud.tencent.com/document/api/1108/42574#RouteTableAssociation))
+* [Route](https://cloud.tencent.com/document/api/1108/42574#Route)
+* [RouteConflict](https://cloud.tencent.com/document/api/1108/42574#RouteConflict)
+* [RouteTable](https://cloud.tencent.com/document/api/1108/42574#RouteTable)
+* [RouteTableAssociation](https://cloud.tencent.com/document/api/1108/42574#RouteTableAssociation)
 
 ### 第 32 次发布
 
@@ -16296,6 +16319,25 @@
 
 
 ## Elasticsearch Service(es) 版本：2018-04-16
+
+### 第 12 次发布
+
+发布时间：2020-11-24 08:04:34
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[RestartKibana](https://cloud.tencent.com/document/api/845/50224)](https://cloud.tencent.com/document/api/#/#)
+
+修改接口：
+
+* [UpdateInstance](https://cloud.tencent.com/document/api/845/30629)
+
+	* 新增入参：KibanaConfig
+
 
 ### 第 11 次发布
 
@@ -20195,6 +20237,31 @@
 
 ## 物联网开发平台(iotexplorer) 版本：2019-04-23
 
+### 第 15 次发布
+
+发布时间：2020-11-24 08:05:27
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[CreateTopicRule](https://cloud.tencent.com/document/api/1081/50233)](https://cloud.tencent.com/document/api/#/#)
+* [[DeleteTopicRule](https://cloud.tencent.com/document/api/1081/50232)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeTopicRule](https://cloud.tencent.com/document/api/1081/50231)](https://cloud.tencent.com/document/api/#/#)
+* [[DisableTopicRule](https://cloud.tencent.com/document/api/1081/50230)](https://cloud.tencent.com/document/api/#/#)
+* [[EnableTopicRule](https://cloud.tencent.com/document/api/1081/50229)](https://cloud.tencent.com/document/api/#/#)
+* [[GetTopicRuleList](https://cloud.tencent.com/document/api/1081/50228)](https://cloud.tencent.com/document/api/#/#)
+* [[ModifyTopicRule](https://cloud.tencent.com/document/api/1081/50227)](https://cloud.tencent.com/document/api/#/#)
+* [[SearchTopicRule](https://cloud.tencent.com/document/api/1081/50226)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[TopicRule](https://cloud.tencent.com/document/api/1081/34988#TopicRule)](https://cloud.tencent.com/document/api/1081/34988#[TopicRule](https://cloud.tencent.com/document/api/1081/34988#TopicRule))
+* [[TopicRuleInfo](https://cloud.tencent.com/document/api/1081/34988#TopicRuleInfo)](https://cloud.tencent.com/document/api/1081/34988#[TopicRuleInfo](https://cloud.tencent.com/document/api/1081/34988#TopicRuleInfo))
+* [[TopicRulePayload](https://cloud.tencent.com/document/api/1081/34988#TopicRulePayload)](https://cloud.tencent.com/document/api/1081/34988#[TopicRulePayload](https://cloud.tencent.com/document/api/1081/34988#TopicRulePayload))
+
 ### 第 14 次发布
 
 发布时间：2020-10-21 08:04:34
@@ -20589,6 +20656,25 @@
 
 
 ## 物联网智能视频服务(iotvideo) 版本：2019-11-26
+
+### 第 18 次发布
+
+发布时间：2020-11-24 08:01:29
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateProduct](https://cloud.tencent.com/document/api/1131/42382)
+
+	* 新增入参：ChipArch
+
+* [ModifyVerContent](https://cloud.tencent.com/document/api/1131/49512)
+
+	* <font color="#dd0000">**修改入参**：</font>ProductId
+
 
 ### 第 17 次发布
 
@@ -28980,6 +29066,24 @@
 
 ## 流量反欺诈(taf) 版本：2020-02-10
 
+### 第 6 次发布
+
+发布时间：2020-11-24 08:00:36
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[RecognizeEffectiveFlow](https://cloud.tencent.com/document/api/1031/50223)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[InputRecognizeEffectiveFlow](https://cloud.tencent.com/document/api/1031/43310#InputRecognizeEffectiveFlow)](https://cloud.tencent.com/document/api/1031/43310#[InputRecognizeEffectiveFlow](https://cloud.tencent.com/document/api/1031/43310#InputRecognizeEffectiveFlow))
+* [[OutputRecognizeEffectiveFlow](https://cloud.tencent.com/document/api/1031/43310#OutputRecognizeEffectiveFlow)](https://cloud.tencent.com/document/api/1031/43310#[OutputRecognizeEffectiveFlow](https://cloud.tencent.com/document/api/1031/43310#OutputRecognizeEffectiveFlow))
+* [[OutputRecognizeEffectiveFlowValue](https://cloud.tencent.com/document/api/1031/43310#OutputRecognizeEffectiveFlowValue)](https://cloud.tencent.com/document/api/1031/43310#[OutputRecognizeEffectiveFlowValue](https://cloud.tencent.com/document/api/1031/43310#OutputRecognizeEffectiveFlowValue))
+
 ### 第 5 次发布
 
 发布时间：2020-05-26 08:00:44
@@ -30789,6 +30893,21 @@
 
 
 ## 容器镜像服务(tcr) 版本：2019-09-24
+
+### 第 17 次发布
+
+发布时间：2020-11-24 08:10:04
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateInstanceToken](https://cloud.tencent.com/document/api/1141/41571)
+
+	* 新增出参：TokenId
+
 
 ### 第 16 次发布
 
@@ -36608,6 +36727,23 @@
 
 
 ## 私有网络(vpc) 版本：2017-03-12
+
+### 第 70 次发布
+
+发布时间：2020-11-24 08:08:57
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeIpGeolocationInfos](https://cloud.tencent.com/document/api/215/50234)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[IpField](https://cloud.tencent.com/document/api/215/15824#IpField)](https://cloud.tencent.com/document/api/215/15824#[IpField](https://cloud.tencent.com/document/api/215/15824#IpField))
+* [[IpGeolocationInfo](https://cloud.tencent.com/document/api/215/15824#IpGeolocationInfo)](https://cloud.tencent.com/document/api/215/15824#[IpGeolocationInfo](https://cloud.tencent.com/document/api/215/15824#IpGeolocationInfo))
 
 ### 第 69 次发布
 

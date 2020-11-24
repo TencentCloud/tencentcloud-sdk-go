@@ -218,6 +218,31 @@ func (c *Client) CreateStudioProduct(request *CreateStudioProductRequest) (respo
     return
 }
 
+func NewCreateTopicRuleRequest() (request *CreateTopicRuleRequest) {
+    request = &CreateTopicRuleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "CreateTopicRule")
+    return
+}
+
+func NewCreateTopicRuleResponse() (response *CreateTopicRuleResponse) {
+    response = &CreateTopicRuleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 创建规则
+func (c *Client) CreateTopicRule(request *CreateTopicRuleRequest) (response *CreateTopicRuleResponse, err error) {
+    if request == nil {
+        request = NewCreateTopicRuleRequest()
+    }
+    response = NewCreateTopicRuleResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteDeviceRequest() (request *DeleteDeviceRequest) {
     request = &DeleteDeviceRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -314,6 +339,31 @@ func (c *Client) DeleteStudioProduct(request *DeleteStudioProductRequest) (respo
         request = NewDeleteStudioProductRequest()
     }
     response = NewDeleteStudioProductResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteTopicRuleRequest() (request *DeleteTopicRuleRequest) {
+    request = &DeleteTopicRuleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "DeleteTopicRule")
+    return
+}
+
+func NewDeleteTopicRuleResponse() (response *DeleteTopicRuleResponse) {
+    response = &DeleteTopicRuleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 删除规则
+func (c *Client) DeleteTopicRule(request *DeleteTopicRuleRequest) (response *DeleteTopicRuleResponse, err error) {
+    if request == nil {
+        request = NewDeleteTopicRuleRequest()
+    }
+    response = NewDeleteTopicRuleResponse()
     err = c.Send(request, response)
     return
 }
@@ -468,6 +518,81 @@ func (c *Client) DescribeStudioProduct(request *DescribeStudioProductRequest) (r
     return
 }
 
+func NewDescribeTopicRuleRequest() (request *DescribeTopicRuleRequest) {
+    request = &DescribeTopicRuleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "DescribeTopicRule")
+    return
+}
+
+func NewDescribeTopicRuleResponse() (response *DescribeTopicRuleResponse) {
+    response = &DescribeTopicRuleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 获取规则信息
+func (c *Client) DescribeTopicRule(request *DescribeTopicRuleRequest) (response *DescribeTopicRuleResponse, err error) {
+    if request == nil {
+        request = NewDescribeTopicRuleRequest()
+    }
+    response = NewDescribeTopicRuleResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDisableTopicRuleRequest() (request *DisableTopicRuleRequest) {
+    request = &DisableTopicRuleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "DisableTopicRule")
+    return
+}
+
+func NewDisableTopicRuleResponse() (response *DisableTopicRuleResponse) {
+    response = &DisableTopicRuleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 禁用规则
+func (c *Client) DisableTopicRule(request *DisableTopicRuleRequest) (response *DisableTopicRuleResponse, err error) {
+    if request == nil {
+        request = NewDisableTopicRuleRequest()
+    }
+    response = NewDisableTopicRuleResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewEnableTopicRuleRequest() (request *EnableTopicRuleRequest) {
+    request = &EnableTopicRuleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "EnableTopicRule")
+    return
+}
+
+func NewEnableTopicRuleResponse() (response *EnableTopicRuleResponse) {
+    response = &EnableTopicRuleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 启用规则
+func (c *Client) EnableTopicRule(request *EnableTopicRuleRequest) (response *EnableTopicRuleResponse, err error) {
+    if request == nil {
+        request = NewEnableTopicRuleRequest()
+    }
+    response = NewEnableTopicRuleResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewGetDeviceListRequest() (request *GetDeviceListRequest) {
     request = &GetDeviceListRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -564,6 +689,31 @@ func (c *Client) GetStudioProductList(request *GetStudioProductListRequest) (res
         request = NewGetStudioProductListRequest()
     }
     response = NewGetStudioProductListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewGetTopicRuleListRequest() (request *GetTopicRuleListRequest) {
+    request = &GetTopicRuleListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "GetTopicRuleList")
+    return
+}
+
+func NewGetTopicRuleListResponse() (response *GetTopicRuleListResponse) {
+    response = &GetTopicRuleListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 获取规则列表
+func (c *Client) GetTopicRuleList(request *GetTopicRuleListRequest) (response *GetTopicRuleListResponse, err error) {
+    if request == nil {
+        request = NewGetTopicRuleListRequest()
+    }
+    response = NewGetTopicRuleListResponse()
     err = c.Send(request, response)
     return
 }
@@ -693,6 +843,31 @@ func (c *Client) ModifyStudioProduct(request *ModifyStudioProductRequest) (respo
     return
 }
 
+func NewModifyTopicRuleRequest() (request *ModifyTopicRuleRequest) {
+    request = &ModifyTopicRuleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "ModifyTopicRule")
+    return
+}
+
+func NewModifyTopicRuleResponse() (response *ModifyTopicRuleResponse) {
+    response = &ModifyTopicRuleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 修改规则
+func (c *Client) ModifyTopicRule(request *ModifyTopicRuleRequest) (response *ModifyTopicRuleResponse, err error) {
+    if request == nil {
+        request = NewModifyTopicRuleRequest()
+    }
+    response = NewModifyTopicRuleResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewReleaseStudioProductRequest() (request *ReleaseStudioProductRequest) {
     request = &ReleaseStudioProductRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -739,6 +914,31 @@ func (c *Client) SearchStudioProduct(request *SearchStudioProductRequest) (respo
         request = NewSearchStudioProductRequest()
     }
     response = NewSearchStudioProductResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewSearchTopicRuleRequest() (request *SearchTopicRuleRequest) {
+    request = &SearchTopicRuleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "SearchTopicRule")
+    return
+}
+
+func NewSearchTopicRuleResponse() (response *SearchTopicRuleResponse) {
+    response = &SearchTopicRuleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 搜索规则
+func (c *Client) SearchTopicRule(request *SearchTopicRuleRequest) (response *SearchTopicRuleResponse, err error) {
+    if request == nil {
+        request = NewSearchTopicRuleRequest()
+    }
+    response = NewSearchTopicRuleResponse()
     err = c.Send(request, response)
     return
 }

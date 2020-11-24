@@ -193,6 +193,31 @@ func (c *Client) RestartInstance(request *RestartInstanceRequest) (response *Res
     return
 }
 
+func NewRestartKibanaRequest() (request *RestartKibanaRequest) {
+    request = &RestartKibanaRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("es", APIVersion, "RestartKibana")
+    return
+}
+
+func NewRestartKibanaResponse() (response *RestartKibanaResponse) {
+    response = &RestartKibanaResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 重启Kibana 
+func (c *Client) RestartKibana(request *RestartKibanaRequest) (response *RestartKibanaResponse, err error) {
+    if request == nil {
+        request = NewRestartKibanaRequest()
+    }
+    response = NewRestartKibanaResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewRestartNodesRequest() (request *RestartNodesRequest) {
     request = &RestartNodesRequest{
         BaseRequest: &tchttp.BaseRequest{},

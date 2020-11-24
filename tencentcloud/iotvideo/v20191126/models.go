@@ -481,6 +481,9 @@ type CreateProductRequest struct {
 
 	// Linux,Android,Liteos等系统
 	Os *string `json:"Os,omitempty" name:"Os"`
+
+	// 芯片架构，只是针对操作系统为android的
+	ChipArch *string `json:"ChipArch,omitempty" name:"ChipArch"`
 }
 
 func (r *CreateProductRequest) ToJsonString() string {
@@ -2440,8 +2443,8 @@ func (r *ModifyProductResponse) FromJsonString(s string) error {
 type ModifyVerContentRequest struct {
 	*tchttp.BaseRequest
 
-	// 产品id,大于0的有符号长整型
-	ProductId *int64 `json:"ProductId,omitempty" name:"ProductId"`
+	// 产品id
+	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
 
 	// 需要修改的版本号
 	OtaVersion *string `json:"OtaVersion,omitempty" name:"OtaVersion"`

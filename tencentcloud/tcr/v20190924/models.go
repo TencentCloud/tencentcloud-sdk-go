@@ -302,6 +302,10 @@ type CreateInstanceTokenResponse struct {
 		// 访问凭证过期时间戳
 		ExpTime *int64 `json:"ExpTime,omitempty" name:"ExpTime"`
 
+		// 长期凭证的TokenId，短期凭证没有TokenId
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		TokenId *string `json:"TokenId,omitempty" name:"TokenId"`
+
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`

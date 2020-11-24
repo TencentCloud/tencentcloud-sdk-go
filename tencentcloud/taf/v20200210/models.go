@@ -120,6 +120,9 @@ type InputKolDataList struct {
 	AgentInfo *string `json:"AgentInfo,omitempty" name:"AgentInfo"`
 }
 
+type InputRecognizeEffectiveFlow struct {
+}
+
 type InputRecognizeTargetAudience struct {
 
 	// 设备ID，AccountType指定的类型
@@ -358,6 +361,32 @@ type OutputKolValue struct {
 	EvilPScore *int64 `json:"EvilPScore,omitempty" name:"EvilPScore"`
 }
 
+type OutputRecognizeEffectiveFlow struct {
+
+	// 返回码。0表示成功，非0标识失败错误码
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Code *int64 `json:"Code,omitempty" name:"Code"`
+
+	// UTF-8编码，出错消息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Message *string `json:"Message,omitempty" name:"Message"`
+
+	// 业务入参
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Value *OutputRecognizeEffectiveFlowValue `json:"Value,omitempty" name:"Value"`
+}
+
+type OutputRecognizeEffectiveFlowValue struct {
+
+	// 返回标签
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Lable *string `json:"Lable,omitempty" name:"Lable"`
+
+	// 返回分值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Score *float64 `json:"Score,omitempty" name:"Score"`
+}
+
 type OutputRecognizeTargetAudience struct {
 
 	// 返回码（0，成功，其他失败）
@@ -461,6 +490,43 @@ func (r *RecognizeCustomizedAudienceResponse) ToJsonString() string {
 }
 
 func (r *RecognizeCustomizedAudienceResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type RecognizeEffectiveFlowRequest struct {
+	*tchttp.BaseRequest
+
+	// 业务入参
+	BusinessSecurityData *InputRecognizeEffectiveFlow `json:"BusinessSecurityData,omitempty" name:"BusinessSecurityData"`
+}
+
+func (r *RecognizeEffectiveFlowRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *RecognizeEffectiveFlowRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type RecognizeEffectiveFlowResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 业务出参
+		Data *OutputRecognizeEffectiveFlow `json:"Data,omitempty" name:"Data"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *RecognizeEffectiveFlowResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *RecognizeEffectiveFlowResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 

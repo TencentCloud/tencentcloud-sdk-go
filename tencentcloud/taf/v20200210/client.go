@@ -118,6 +118,31 @@ func (c *Client) RecognizeCustomizedAudience(request *RecognizeCustomizedAudienc
     return
 }
 
+func NewRecognizeEffectiveFlowRequest() (request *RecognizeEffectiveFlowRequest) {
+    request = &RecognizeEffectiveFlowRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("taf", APIVersion, "RecognizeEffectiveFlow")
+    return
+}
+
+func NewRecognizeEffectiveFlowResponse() (response *RecognizeEffectiveFlowResponse) {
+    response = &RecognizeEffectiveFlowResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 筛选敏感易骚扰人群
+func (c *Client) RecognizeEffectiveFlow(request *RecognizeEffectiveFlowRequest) (response *RecognizeEffectiveFlowResponse, err error) {
+    if request == nil {
+        request = NewRecognizeEffectiveFlowRequest()
+    }
+    response = NewRecognizeEffectiveFlowResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewRecognizePreciseTargetAudienceRequest() (request *RecognizePreciseTargetAudienceRequest) {
     request = &RecognizePreciseTargetAudienceRequest{
         BaseRequest: &tchttp.BaseRequest{},

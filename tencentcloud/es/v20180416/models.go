@@ -760,6 +760,40 @@ func (r *RestartInstanceResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type RestartKibanaRequest struct {
+	*tchttp.BaseRequest
+
+	// ES实例ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+}
+
+func (r *RestartKibanaRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *RestartKibanaRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type RestartKibanaResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *RestartKibanaResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *RestartKibanaResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type RestartNodesRequest struct {
 	*tchttp.BaseRequest
 
@@ -864,7 +898,7 @@ type UpdateInstanceRequest struct {
 	// 节点个数（2-50个）
 	NodeNum *uint64 `json:"NodeNum,omitempty" name:"NodeNum"`
 
-	// 配置项（JSON格式字符串）
+	// ES配置项（JSON格式字符串）
 	EsConfig *string `json:"EsConfig,omitempty" name:"EsConfig"`
 
 	// 默认用户elastic的密码（8到16位，至少包括两项（[a-z,A-Z],[0-9]和[-!@#$%&^*+=_:;,.?]的特殊符号）
@@ -928,6 +962,9 @@ type UpdateInstanceRequest struct {
 
 	// 场景化模板类型 -1：不启用 1：通用 2：日志 3：搜索
 	SceneType *int64 `json:"SceneType,omitempty" name:"SceneType"`
+
+	// Kibana配置项（JSON格式字符串）
+	KibanaConfig *string `json:"KibanaConfig,omitempty" name:"KibanaConfig"`
 }
 
 func (r *UpdateInstanceRequest) ToJsonString() string {

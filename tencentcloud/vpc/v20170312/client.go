@@ -2948,6 +2948,31 @@ func (c *Client) DescribeIpGeolocationDatabaseUrl(request *DescribeIpGeolocation
     return
 }
 
+func NewDescribeIpGeolocationInfosRequest() (request *DescribeIpGeolocationInfosRequest) {
+    request = &DescribeIpGeolocationInfosRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "DescribeIpGeolocationInfos")
+    return
+}
+
+func NewDescribeIpGeolocationInfosResponse() (response *DescribeIpGeolocationInfosResponse) {
+    response = &DescribeIpGeolocationInfosResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 该接口用于查询IP地址信息，包括地理位置信息和网络信息。
+func (c *Client) DescribeIpGeolocationInfos(request *DescribeIpGeolocationInfosRequest) (response *DescribeIpGeolocationInfosResponse, err error) {
+    if request == nil {
+        request = NewDescribeIpGeolocationInfosRequest()
+    }
+    response = NewDescribeIpGeolocationInfosResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeNatGatewayDestinationIpPortTranslationNatRulesRequest() (request *DescribeNatGatewayDestinationIpPortTranslationNatRulesRequest) {
     request = &DescribeNatGatewayDestinationIpPortTranslationNatRulesRequest{
         BaseRequest: &tchttp.BaseRequest{},

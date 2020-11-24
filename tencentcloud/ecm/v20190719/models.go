@@ -548,6 +548,18 @@ type Country struct {
 
 type CreateHaVipRequest struct {
 	*tchttp.BaseRequest
+
+	// HAVIP所在私有网络ID。
+	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
+
+	// HAVIP所在子网ID。
+	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
+
+	// HAVIP名称。
+	HaVipName *string `json:"HaVipName,omitempty" name:"HaVipName"`
+
+	// 指定虚拟IP地址，必须在VPC网段内且未被占用。不指定则自动分配。
+	Vip *string `json:"Vip,omitempty" name:"Vip"`
 }
 
 func (r *CreateHaVipRequest) ToJsonString() string {
@@ -562,6 +574,9 @@ func (r *CreateHaVipRequest) FromJsonString(s string) error {
 type CreateHaVipResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
+
+		// HAVIP对象。
+		HaVip *HaVip `json:"HaVip,omitempty" name:"HaVip"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1152,6 +1167,9 @@ func (r *CreateVpcResponse) FromJsonString(s string) error {
 
 type DeleteHaVipRequest struct {
 	*tchttp.BaseRequest
+
+	// HAVIP唯一ID，形如：havip-9o233uri。
+	HaVipId *string `json:"HaVipId,omitempty" name:"HaVipId"`
 }
 
 func (r *DeleteHaVipRequest) ToJsonString() string {
@@ -1895,6 +1913,25 @@ func (r *DescribeDefaultSubnetResponse) FromJsonString(s string) error {
 
 type DescribeHaVipsRequest struct {
 	*tchttp.BaseRequest
+
+	// HAVIP数组，HAVIP唯一ID，形如：havip-9o233uri。
+	HaVipIds []*string `json:"HaVipIds,omitempty" name:"HaVipIds" list`
+
+	// 过滤条件，参数不支持同时指定HaVipIds和Filters。
+	// havip-id - String - HAVIP唯一ID，形如：havip-9o233uri。
+	// havip-name - String - HAVIP名称。
+	// vpc-id - String - HAVIP所在私有网络ID。
+	// subnet-id - String - HAVIP所在子网ID。
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+
+	// 偏移量。
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 返回数量。
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// Ecm 区域，不填代表全部区域。
+	EcmRegion *string `json:"EcmRegion,omitempty" name:"EcmRegion"`
 }
 
 func (r *DescribeHaVipsRequest) ToJsonString() string {
@@ -1909,6 +1946,13 @@ func (r *DescribeHaVipsRequest) FromJsonString(s string) error {
 type DescribeHaVipsResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
+
+		// 符合条件的对象数。
+		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// HAVIP对象数组。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		HaVipSet []*HaVip `json:"HaVipSet,omitempty" name:"HaVipSet" list`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -3461,6 +3505,48 @@ type Filter struct {
 	Values []*string `json:"Values,omitempty" name:"Values" list`
 }
 
+type HaVip struct {
+
+	// HAVIP的ID，是HAVIP的唯一标识。
+	HaVipId *string `json:"HaVipId,omitempty" name:"HaVipId"`
+
+	// HAVIP名称。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HaVipName *string `json:"HaVipName,omitempty" name:"HaVipName"`
+
+	// 虚拟IP地址。
+	Vip *string `json:"Vip,omitempty" name:"Vip"`
+
+	// HAVIP所在私有网络ID。
+	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
+
+	// HAVIP所在子网ID。
+	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
+
+	// HAVIP关联弹性网卡ID。
+	NetworkInterfaceId *string `json:"NetworkInterfaceId,omitempty" name:"NetworkInterfaceId"`
+
+	// 被绑定的实例ID。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 绑定EIP。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AddressIp *string `json:"AddressIp,omitempty" name:"AddressIp"`
+
+	// 状态：
+	// AVAILABLE：运行中。
+	// UNBIND：未绑定。
+	State *string `json:"State,omitempty" name:"State"`
+
+	// 创建时间。
+	CreatedTime *string `json:"CreatedTime,omitempty" name:"CreatedTime"`
+
+	// 使用havip的业务标识。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Business *string `json:"Business,omitempty" name:"Business"`
+}
+
 type HealthCheck struct {
 
 	// 是否开启健康检查：1（开启）、0（关闭）
@@ -4335,6 +4421,12 @@ func (r *ModifyDefaultSubnetResponse) FromJsonString(s string) error {
 
 type ModifyHaVipAttributeRequest struct {
 	*tchttp.BaseRequest
+
+	// HAVIP唯一ID，形如：havip-9o233uri。
+	HaVipId *string `json:"HaVipId,omitempty" name:"HaVipId"`
+
+	// HAVIP名称，可任意命名，但不得超过60个字符。
+	HaVipName *string `json:"HaVipName,omitempty" name:"HaVipName"`
 }
 
 func (r *ModifyHaVipAttributeRequest) ToJsonString() string {
