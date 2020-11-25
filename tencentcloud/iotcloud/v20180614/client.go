@@ -58,7 +58,7 @@ func NewBindDevicesResponse() (response *BindDevicesResponse) {
     return
 }
 
-// 本接口（BindDevices）用于网关设备批量绑定子设备
+// 本接口（BindDevices）用于网关设备批量绑定子设备 
 func (c *Client) BindDevices(request *BindDevicesRequest) (response *BindDevicesResponse, err error) {
     if request == nil {
         request = NewBindDevicesRequest()
@@ -508,7 +508,7 @@ func NewDescribeDeviceClientKeyResponse() (response *DescribeDeviceClientKeyResp
     return
 }
 
-// 获取证书认证类型设备的私钥，刚生成或者重置设备后仅可调用一次
+// 获取证书认证类型设备的私钥，刚生成或者重置设备后仅可调用一次 
 func (c *Client) DescribeDeviceClientKey(request *DescribeDeviceClientKeyRequest) (response *DescribeDeviceClientKeyResponse, err error) {
     if request == nil {
         request = NewDescribeDeviceClientKeyRequest()
@@ -1208,7 +1208,7 @@ func NewUnbindDevicesResponse() (response *UnbindDevicesResponse) {
     return
 }
 
-// 本接口（UnbindDevices）用于网关设备批量解绑子设备
+// 本接口（UnbindDevices）用于网关设备批量解绑子设备 
 func (c *Client) UnbindDevices(request *UnbindDevicesRequest) (response *UnbindDevicesResponse, err error) {
     if request == nil {
         request = NewUnbindDevicesRequest()
@@ -1233,7 +1233,7 @@ func NewUpdateDeviceAvailableStateResponse() (response *UpdateDeviceAvailableSta
     return
 }
 
-// 启用或者禁用设备
+// 启用或者禁用设备 
 func (c *Client) UpdateDeviceAvailableState(request *UpdateDeviceAvailableStateRequest) (response *UpdateDeviceAvailableStateResponse, err error) {
     if request == nil {
         request = NewUpdateDeviceAvailableStateRequest()

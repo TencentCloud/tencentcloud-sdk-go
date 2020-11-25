@@ -1518,6 +1518,31 @@ func (c *Client) RecycleDBInstance(request *RecycleDBInstanceRequest) (response 
     return
 }
 
+func NewRecycleReadOnlyGroupRequest() (request *RecycleReadOnlyGroupRequest) {
+    request = &RecycleReadOnlyGroupRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("sqlserver", APIVersion, "RecycleReadOnlyGroup")
+    return
+}
+
+func NewRecycleReadOnlyGroupResponse() (response *RecycleReadOnlyGroupResponse) {
+    response = &RecycleReadOnlyGroupResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（RecycleReadOnlyGroup）立即回收只读组的资源，只读组占用的vip等资源将立即释放且不可找回。
+func (c *Client) RecycleReadOnlyGroup(request *RecycleReadOnlyGroupRequest) (response *RecycleReadOnlyGroupResponse, err error) {
+    if request == nil {
+        request = NewRecycleReadOnlyGroupRequest()
+    }
+    response = NewRecycleReadOnlyGroupResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewRemoveBackupsRequest() (request *RemoveBackupsRequest) {
     request = &RemoveBackupsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1783,7 +1808,7 @@ func NewTerminateDBInstanceResponse() (response *TerminateDBInstanceResponse) {
     return
 }
 
-// 本接口(TerminateDBInstance)用于主动销毁按量计费实例。
+// 本接口(TerminateDBInstance)用于主动隔离实例，使得实例进入回收站。
 func (c *Client) TerminateDBInstance(request *TerminateDBInstanceRequest) (response *TerminateDBInstanceResponse, err error) {
     if request == nil {
         request = NewTerminateDBInstanceRequest()

@@ -1187,6 +1187,52 @@ type SmallVideoLayoutParams struct {
 	LocationY *uint64 `json:"LocationY,omitempty" name:"LocationY"`
 }
 
+type StartMCUMixTranscodeByStrRoomIdRequest struct {
+	*tchttp.BaseRequest
+
+	// TRTC的SDKAppId。
+	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+
+	// 字符串房间号。
+	StrRoomId *string `json:"StrRoomId,omitempty" name:"StrRoomId"`
+
+	// 混流输出控制参数。
+	OutputParams *OutputParams `json:"OutputParams,omitempty" name:"OutputParams"`
+
+	// 混流输出编码参数。
+	EncodeParams *EncodeParams `json:"EncodeParams,omitempty" name:"EncodeParams"`
+
+	// 混流输出布局参数。
+	LayoutParams *LayoutParams `json:"LayoutParams,omitempty" name:"LayoutParams"`
+}
+
+func (r *StartMCUMixTranscodeByStrRoomIdRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *StartMCUMixTranscodeByStrRoomIdRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type StartMCUMixTranscodeByStrRoomIdResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *StartMCUMixTranscodeByStrRoomIdResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *StartMCUMixTranscodeByStrRoomIdResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type StartMCUMixTranscodeRequest struct {
 	*tchttp.BaseRequest
 
@@ -1230,6 +1276,43 @@ func (r *StartMCUMixTranscodeResponse) ToJsonString() string {
 }
 
 func (r *StartMCUMixTranscodeResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type StopMCUMixTranscodeByStrRoomIdRequest struct {
+	*tchttp.BaseRequest
+
+	// TRTC的SDKAppId。
+	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+
+	// 字符串房间号。
+	StrRoomId *string `json:"StrRoomId,omitempty" name:"StrRoomId"`
+}
+
+func (r *StopMCUMixTranscodeByStrRoomIdRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *StopMCUMixTranscodeByStrRoomIdRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type StopMCUMixTranscodeByStrRoomIdResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *StopMCUMixTranscodeByStrRoomIdResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *StopMCUMixTranscodeByStrRoomIdResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 

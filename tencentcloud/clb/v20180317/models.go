@@ -742,7 +742,7 @@ type CreateLoadBalancerRequest struct {
 	// 负载均衡实例的类型。1：通用的负载均衡实例，目前只支持传入1
 	Forward *int64 `json:"Forward,omitempty" name:"Forward"`
 
-	// 负载均衡实例的名称，只在创建一个实例的时候才会生效。规则：1-50 个英文、汉字、数字、连接线“-”或下划线“_”。
+	// 负载均衡实例的名称，只在创建一个实例的时候才会生效。规则：1-60 个英文、汉字、数字、连接线“-”或下划线“_”。
 	// 注意：如果名称与系统中已有负载均衡实例的名称相同，则系统将会自动生成此次创建的负载均衡实例的名称。
 	LoadBalancerName *string `json:"LoadBalancerName,omitempty" name:"LoadBalancerName"`
 

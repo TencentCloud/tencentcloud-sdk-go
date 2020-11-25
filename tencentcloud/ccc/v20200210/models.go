@@ -222,7 +222,7 @@ type DescribeTelCallInfoRequest struct {
 	// 起始时间戳，Unix 时间戳
 	StartTimeStamp *int64 `json:"StartTimeStamp,omitempty" name:"StartTimeStamp"`
 
-	// 结束时间戳，Unix 时间戳
+	// 结束时间戳，Unix 时间戳，查询时间范围最大为90天
 	EndTimeStamp *int64 `json:"EndTimeStamp,omitempty" name:"EndTimeStamp"`
 
 	// 应用ID列表，多个ID时，返回值为多个ID使用总和

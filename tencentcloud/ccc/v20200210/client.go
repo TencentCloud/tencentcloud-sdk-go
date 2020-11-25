@@ -158,7 +158,7 @@ func NewDescribeTelCallInfoResponse() (response *DescribeTelCallInfoResponse) {
     return
 }
 
-// 获取电话呼叫统计信息
+// 按实例获取电话消耗统计
 func (c *Client) DescribeTelCallInfo(request *DescribeTelCallInfoRequest) (response *DescribeTelCallInfoResponse, err error) {
     if request == nil {
         request = NewDescribeTelCallInfoRequest()
