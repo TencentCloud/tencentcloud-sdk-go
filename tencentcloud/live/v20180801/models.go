@@ -131,6 +131,8 @@ type AddLiveWatermarkRequest struct {
 	*tchttp.BaseRequest
 
 	// 水印图片 URL。
+	// URL中禁止包含的字符：
+	//  ;(){}$>`#"\'|
 	PictureUrl *string `json:"PictureUrl,omitempty" name:"PictureUrl"`
 
 	// 水印名称。
@@ -146,7 +148,7 @@ type AddLiveWatermarkRequest struct {
 	// 水印宽度，占直播原始画面宽度百分比，建议高宽只设置一项，另外一项会自适应缩放，避免变形。默认原始宽度。
 	Width *int64 `json:"Width,omitempty" name:"Width"`
 
-	// 水印高度，占直播原始画面宽度百分比，建议高宽只设置一项，另外一项会自适应缩放，避免变形。默认原始高度。
+	// 水印高度，占直播原始画面高度百分比，建议高宽只设置一项，另外一项会自适应缩放，避免变形。默认原始高度。
 	Height *int64 `json:"Height,omitempty" name:"Height"`
 }
 
@@ -4644,6 +4646,15 @@ type DomainCertInfo struct {
 
 	// 证书状态。
 	Status *int64 `json:"Status,omitempty" name:"Status"`
+
+	// 证书本身标识的域名列表。
+	// 比如: ["*.x.com"]
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CertDomains []*string `json:"CertDomains,omitempty" name:"CertDomains" list`
+
+	// 腾讯云ssl的证书Id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CloudCertId *string `json:"CloudCertId,omitempty" name:"CloudCertId"`
 }
 
 type DomainDetailInfo struct {
@@ -6509,6 +6520,8 @@ type UpdateLiveWatermarkRequest struct {
 	WatermarkId *int64 `json:"WatermarkId,omitempty" name:"WatermarkId"`
 
 	// 水印图片 URL。
+	// URL中禁止包含的字符：
+	//  ;(){}$>`#"\'|
 	PictureUrl *string `json:"PictureUrl,omitempty" name:"PictureUrl"`
 
 	// 显示位置，X轴偏移，单位是百分比，默认 0。

@@ -1,40 +1,48 @@
 # 本版本更新包含以下内容：
 
-## 云数据库 SQL Server(sqlserver) 版本：2018-03-28
+## 云数据库 MySQL(cdb) 版本：2017-03-20
 
-### 第 16 次发布
+### 第 50 次发布
 
-发布时间：2020-11-25 08:06:07
+发布时间：2020-11-26 08:02:19
 
 本次发布包含了以下内容：
 
 改善已有的文档。
-
-新增接口：
-
-* [RecycleReadOnlyGroup](https://cloud.tencent.com/document/api/238/50274)
-
-修改接口：
-
-* [DescribeProductConfig](https://cloud.tencent.com/document/api/238/19966)
-
-	* 新增入参：InstanceType
-
 
 修改数据结构：
 
-* [SpecInfo](https://cloud.tencent.com/document/api/238/19976#SpecInfo)
+* [Parameter](https://cloud.tencent.com/document/api/236/15878#Parameter)
 
-	* 新增成员：InstanceType, MultiZonesStatus
-
-
+	* <font color="#dd0000">**修改成员**：</font>Name, CurrentValue
 
 
-## 实时音视频(trtc) 版本：2019-07-22
 
-### 第 19 次发布
 
-发布时间：2020-11-24 12:27:28
+## 云直播(live) 版本：2018-08-01
+
+### 第 53 次发布
+
+发布时间：2020-11-26 08:04:28
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [DomainCertInfo](https://cloud.tencent.com/document/api/267/20474#DomainCertInfo)
+
+	* 新增成员：CertDomains, CloudCertId
+
+
+
+
+## 云数据库 Redis(redis) 版本：2018-04-12
+
+### 第 25 次发布
+
+发布时间：2020-11-26 08:05:36
 
 本次发布包含了以下内容：
 
@@ -42,8 +50,35 @@
 
 新增接口：
 
-* [StartMCUMixTranscodeByStrRoomId](https://cloud.tencent.com/document/api/647/50236)
-* [StopMCUMixTranscodeByStrRoomId](https://cloud.tencent.com/document/api/647/50235)
+* [DescribeInstanceZoneInfo](https://cloud.tencent.com/document/api/239/50312)
+
+新增数据结构：
+
+* [RedisNode](https://cloud.tencent.com/document/api/239/20022#RedisNode)
+* [ReplicaGroup](https://cloud.tencent.com/document/api/239/20022#ReplicaGroup)
+
+
+
+## 云开发 CloudBase(tcb) 版本：2018-06-08
+
+### 第 27 次发布
+
+发布时间：2020-11-26 08:06:15
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeCloudBaseRunResourceForExtend](https://cloud.tencent.com/document/api/876/50313)
+
+修改接口：
+
+* [CreateCloudBaseRunServerVersion](https://cloud.tencent.com/document/api/876/49627)
+
+	* 新增入参：ServerPath
+
 
 
 
@@ -5560,6 +5595,21 @@
 
 
 ## 云数据库 MySQL(cdb) 版本：2017-03-20
+
+### 第 50 次发布
+
+发布时间：2020-11-26 08:02:19
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [Parameter](https://cloud.tencent.com/document/api/236/15878#Parameter)
+
+	* <font color="#dd0000">**修改成员**：</font>Name, CurrentValue
+
 
 ### 第 49 次发布
 
@@ -21353,6 +21403,21 @@
 
 ## 云直播(live) 版本：2018-08-01
 
+### 第 53 次发布
+
+发布时间：2020-11-26 08:04:28
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [DomainCertInfo](https://cloud.tencent.com/document/api/267/20474#DomainCertInfo)
+
+	* 新增成员：CertDomains, CloudCertId
+
+
 ### 第 52 次发布
 
 发布时间：2020-11-17 08:05:26
@@ -26567,6 +26632,23 @@
 
 ## 云数据库 Redis(redis) 版本：2018-04-12
 
+### 第 25 次发布
+
+发布时间：2020-11-26 08:05:36
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeInstanceZoneInfo](https://cloud.tencent.com/document/api/239/50312)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[RedisNode](https://cloud.tencent.com/document/api/239/20022#RedisNode)](https://cloud.tencent.com/document/api/239/20022#[RedisNode](https://cloud.tencent.com/document/api/239/20022#RedisNode))
+* [[ReplicaGroup](https://cloud.tencent.com/document/api/239/20022#ReplicaGroup)](https://cloud.tencent.com/document/api/239/20022#[ReplicaGroup](https://cloud.tencent.com/document/api/239/20022#ReplicaGroup))
+
 ### 第 24 次发布
 
 发布时间：2020-11-19 08:05:46
@@ -28259,7 +28341,7 @@
 
 新增接口：
 
-* [[RecycleReadOnlyGroup](https://cloud.tencent.com/document/api/238/50274)](https://cloud.tencent.com/document/api/#/#)
+* [RecycleReadOnlyGroup](https://cloud.tencent.com/document/api/238/50274)
 
 修改接口：
 
@@ -29971,6 +30053,25 @@
 
 
 ## 云开发 CloudBase(tcb) 版本：2018-06-08
+
+### 第 27 次发布
+
+发布时间：2020-11-26 08:06:15
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeCloudBaseRunResourceForExtend](https://cloud.tencent.com/document/api/876/50313)](https://cloud.tencent.com/document/api/#/#)
+
+修改接口：
+
+* [CreateCloudBaseRunServerVersion](https://cloud.tencent.com/document/api/876/49627)
+
+	* 新增入参：ServerPath
+
 
 ### 第 26 次发布
 
@@ -33389,8 +33490,8 @@
 
 新增接口：
 
-* [[StartMCUMixTranscodeByStrRoomId](https://cloud.tencent.com/document/api/647/50236)](https://cloud.tencent.com/document/api/#/#)
-* [[StopMCUMixTranscodeByStrRoomId](https://cloud.tencent.com/document/api/647/50235)](https://cloud.tencent.com/document/api/#/#)
+* [StartMCUMixTranscodeByStrRoomId](https://cloud.tencent.com/document/api/647/50236)
+* [StopMCUMixTranscodeByStrRoomId](https://cloud.tencent.com/document/api/647/50235)
 
 ### 第 18 次发布
 

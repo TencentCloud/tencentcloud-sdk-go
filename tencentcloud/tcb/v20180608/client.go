@@ -343,6 +343,31 @@ func (c *Client) DescribeCloudBaseRunResource(request *DescribeCloudBaseRunResou
     return
 }
 
+func NewDescribeCloudBaseRunResourceForExtendRequest() (request *DescribeCloudBaseRunResourceForExtendRequest) {
+    request = &DescribeCloudBaseRunResourceForExtendRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tcb", APIVersion, "DescribeCloudBaseRunResourceForExtend")
+    return
+}
+
+func NewDescribeCloudBaseRunResourceForExtendResponse() (response *DescribeCloudBaseRunResourceForExtendResponse) {
+    response = &DescribeCloudBaseRunResourceForExtendResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查看容器托管的集群状态扩展使用
+func (c *Client) DescribeCloudBaseRunResourceForExtend(request *DescribeCloudBaseRunResourceForExtendRequest) (response *DescribeCloudBaseRunResourceForExtendResponse, err error) {
+    if request == nil {
+        request = NewDescribeCloudBaseRunResourceForExtendRequest()
+    }
+    response = NewDescribeCloudBaseRunResourceForExtendResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeCloudBaseRunServerVersionRequest() (request *DescribeCloudBaseRunServerVersionRequest) {
     request = &DescribeCloudBaseRunServerVersionRequest{
         BaseRequest: &tchttp.BaseRequest{},

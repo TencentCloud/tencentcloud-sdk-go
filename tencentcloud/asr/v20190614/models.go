@@ -138,10 +138,10 @@ type CreateRecTaskRequest struct {
 	// 语音数据来源。0：语音 URL；1：语音数据（post body）。
 	SourceType *uint64 `json:"SourceType,omitempty" name:"SourceType"`
 
-	// 是否开启话者分离，0：不开启，1：开启(仅支持8k_zh/16k_zh引擎模型，单声道音频)
+	// 是否开启说话人分离，0：不开启，1：开启(仅支持8k_zh，16k_zh，16k_zh_video引擎模型，单声道音频)
 	SpeakerDiarization *int64 `json:"SpeakerDiarization,omitempty" name:"SpeakerDiarization"`
 
-	// 话者分离人数（需配合开启话者分离使用），支持2-10（8k_zh仅支持2， 16k_zh支持2-10）
+	// 说话人分离人数（需配合开启说话人分离使用），取值范围：0-10，0代表自动分离（目前仅支持≤6个人），1-10代表指定说话人数分离。
 	// 注：话者分离目前是beta版本，请根据您的需要谨慎使用
 	SpeakerNumber *int64 `json:"SpeakerNumber,omitempty" name:"SpeakerNumber"`
 

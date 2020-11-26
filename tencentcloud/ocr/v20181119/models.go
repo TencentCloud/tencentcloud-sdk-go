@@ -870,7 +870,8 @@ func (r *EnglishOCRResponse) FromJsonString(s string) error {
 
 type EnterpriseLicenseInfo struct {
 
-	// 识别出的字段名称。
+	// 识别出的字段名称（关键字），不同证件类型可能不同，证件类型包含企业登记证书、许可证书、企业执照、三证合一类证书；
+	// 支持以下字段：统一社会信用代码、法定代表人、公司名称、公司地址、注册资金、企业关型、经营范围、成立日期、有效期、开办资金、经费来源、举办单位等；
 	Name *string `json:"Name,omitempty" name:"Name"`
 
 	// 识别出的字段名称对应的值，也就是字段Name对应的字符串结果。
@@ -1854,7 +1855,15 @@ func (r *InstitutionOCRResponse) FromJsonString(s string) error {
 
 type InsuranceBillInfo struct {
 
-	// 识别出的字段名称（关键字）。
+	// 识别出的字段名称(关键字)，支持以下字段：
+	// 【病案首页】
+	// 姓名、性别、出生日期、出院诊断、疾病编码、入院病情等。
+	// 【费用清单】
+	// 医疗参保人员类别、身份证号、入院方式、结账日期、项目、金额等。
+	// 【结算单】
+	// 名称、单价、数量、金额、医保内、医保外等。
+	// 【医疗发票】
+	// 姓名、性别、住院时间、收费项目、金额、合计等。
 	Name *string `json:"Name,omitempty" name:"Name"`
 
 	// 识别出的字段名称对应的值，也就是字段Name对应的字符串结果。
@@ -4557,16 +4566,14 @@ func (r *VehicleRegCertOCRResponse) FromJsonString(s string) error {
 type VerifyBasicBizLicenseRequest struct {
 	*tchttp.BaseRequest
 
-	// 用于入参是营业执照图片的场景，ImageBase64和ImageUrl必选一个输入。
+	// 用于入参是营业执照图片的场景，ImageBase64和ImageUrl必须提供一个，如果都提供，只使用 ImageUrl。
 	// 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
 	// 支持的图片大小：所下载图片经Base64编码后不超过 7M。图片下载时间不超过 3 秒。
-	// 图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
 	ImageBase64 *string `json:"ImageBase64,omitempty" name:"ImageBase64"`
 
-	// 用于入参是营业执照图片的场景，ImageBase64和ImageUrl必选一个输入。
+	// 用于入参是营业执照图片的场景，ImageBase64和ImageUrl必须提供一个，如果都提供，只使用 ImageUrl。
 	// 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
 	// 支持的图片大小：所下载图片经Base64编码后不超过 7M。图片下载时间不超过 3 秒。
-	// 图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
 	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
 
 	// 用于入参是营业执照图片的场景，表示需要校验的参数：RegNum（注册号或者统一社会信用代码），Name（企业名称），Address（经营地址）。选择后会返回相关参数校验结果。RegNum为必选，Name和Address可选。
@@ -4578,13 +4585,13 @@ type VerifyBasicBizLicenseRequest struct {
 	// Config = {"Name":true,"Address":true}
 	ImageConfig *string `json:"ImageConfig,omitempty" name:"ImageConfig"`
 
-	// 用于入参是文本的场景，RegNum表示注册号或者统一社会信用代码。RegNum为必选项。
+	// 用于入参是文本的场景，RegNum表示注册号或者统一社会信用代码。若没有传入营业执照图片，则RegNum为必选项，若图片和RegNum都传入，则只使用RegNum。
 	RegNum *string `json:"RegNum,omitempty" name:"RegNum"`
 
 	// 用于入参是文本的场景，Name表示企业名称。Name为可选项，填写后会返回Name的校验结果。
 	Name *string `json:"Name,omitempty" name:"Name"`
 
-	// 用于入参是文本的场景，Address表示经营地址，填写后会返回Name的校验结果。
+	// 用于入参是文本的场景，Address表示经营地址。Address为可选项，填写后会返回Address的校验结果。
 	Address *string `json:"Address,omitempty" name:"Address"`
 
 	// 1表示输出注册资本字段（单位：万元），其他值表示不输出。默认不输出。
@@ -4625,7 +4632,7 @@ type VerifyBasicBizLicenseResponse struct {
 		// 经营业务范围
 		Zsopscope *string `json:"Zsopscope,omitempty" name:"Zsopscope"`
 
-		// 状态信息
+		// 查询的状态信息
 		Reason *string `json:"Reason,omitempty" name:"Reason"`
 
 		// 原注册号
@@ -4672,16 +4679,14 @@ func (r *VerifyBasicBizLicenseResponse) FromJsonString(s string) error {
 type VerifyBizLicenseRequest struct {
 	*tchttp.BaseRequest
 
-	// 用于入参是营业执照图片的场景，ImageBase64和ImageUrl必选一个输入。
+	// 用于入参是营业执照图片的场景，ImageBase64和ImageUrl必须提供一个，如果都提供，只使用 ImageUrl。
 	// 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
 	// 支持的图片大小：所下载图片经Base64编码后不超过 7M。图片下载时间不超过 3 秒。
-	// 图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
 	ImageBase64 *string `json:"ImageBase64,omitempty" name:"ImageBase64"`
 
-	// 用于入参是营业执照图片的场景，ImageBase64和ImageUrl必选一个输入。
+	// 用于入参是营业执照图片的场景，ImageBase64和ImageUrl必须提供一个，如果都提供，只使用 ImageUrl。
 	// 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
 	// 支持的图片大小：所下载图片经Base64编码后不超过 7M。图片下载时间不超过 3 秒。
-	// 图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
 	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
 
 	// 用于入参是营业执照图片的场景，表示需要校验的参数：RegNum（注册号或者统一社会信用代码），Name（企业名称），Address（经营地址）。选择后会返回相关参数校验结果。RegNum为必选，Name和Address可选。
@@ -4693,13 +4698,13 @@ type VerifyBizLicenseRequest struct {
 	// Config = {"Name":true,"Address":true}
 	ImageConfig *string `json:"ImageConfig,omitempty" name:"ImageConfig"`
 
-	// 用于入参是文本的场景，RegNum表示注册号或者统一社会信用代码。RegNum为必选项。
+	// 用于入参是文本的场景，RegNum表示注册号或者统一社会信用代码。若没有传入营业执照图片，则RegNum为必选项，若图片和RegNum都传入，则只使用RegNum。
 	RegNum *string `json:"RegNum,omitempty" name:"RegNum"`
 
 	// 用于入参是文本的场景，Name表示企业名称。Name为可选项，填写后会返回Name的校验结果。
 	Name *string `json:"Name,omitempty" name:"Name"`
 
-	// 用于入参是文本的场景，Address表示经营地址，填写后会返回Name的校验结果。
+	// 用于入参是文本的场景，Address表示经营地址，填写后会返回Address的校验结果。
 	Address *string `json:"Address,omitempty" name:"Address"`
 }
 

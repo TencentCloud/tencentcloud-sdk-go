@@ -1415,6 +1415,46 @@ func (r *DescribeInstanceShardsResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeInstanceZoneInfoRequest struct {
+	*tchttp.BaseRequest
+
+	// 实例Id，如：crs-6ubhgouj
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+}
+
+func (r *DescribeInstanceZoneInfoRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeInstanceZoneInfoRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeInstanceZoneInfoResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 实例节点组的个数
+		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 实例节点组列表
+		ReplicaGroups []*ReplicaGroup `json:"ReplicaGroups,omitempty" name:"ReplicaGroups" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeInstanceZoneInfoResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeInstanceZoneInfoResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeInstancesRequest struct {
 	*tchttp.BaseRequest
 
@@ -3382,6 +3422,21 @@ type RedisCommonInstanceList struct {
 	NetType *int64 `json:"NetType,omitempty" name:"NetType"`
 }
 
+type RedisNode struct {
+
+	// 节点key的个数
+	Keys *int64 `json:"Keys,omitempty" name:"Keys"`
+
+	// 节点slot分布
+	Slot *string `json:"Slot,omitempty" name:"Slot"`
+
+	// 节点的序列ID
+	NodeId *string `json:"NodeId,omitempty" name:"NodeId"`
+
+	// 节点的状态
+	Status *string `json:"Status,omitempty" name:"Status"`
+}
+
 type RedisNodeInfo struct {
 
 	// 节点类型，0 为主节点，1 为副本节点
@@ -3462,6 +3517,24 @@ func (r *RenewInstanceResponse) ToJsonString() string {
 
 func (r *RenewInstanceResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
+}
+
+type ReplicaGroup struct {
+
+	// 节点组ID
+	GroupId *int64 `json:"GroupId,omitempty" name:"GroupId"`
+
+	// 节点组的名称，主节点为空
+	GroupName *string `json:"GroupName,omitempty" name:"GroupName"`
+
+	// 节点的可用区ID，比如ap-guangzhou-1
+	ZoneId *string `json:"ZoneId,omitempty" name:"ZoneId"`
+
+	// 节点组类型，master为主节点，replica为副本节点
+	Role *string `json:"Role,omitempty" name:"Role"`
+
+	// 节点组节点列表
+	RedisNodes []*RedisNode `json:"RedisNodes,omitempty" name:"RedisNodes" list`
 }
 
 type ResetPasswordRequest struct {

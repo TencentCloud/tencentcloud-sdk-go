@@ -556,6 +556,9 @@ type CreateCloudBaseRunServerVersionRequest struct {
 
 	// 操作备注
 	OperatorRemark *string `json:"OperatorRemark,omitempty" name:"OperatorRemark"`
+
+	// 服务路劲
+	ServerPath *string `json:"ServerPath,omitempty" name:"ServerPath"`
 }
 
 func (r *CreateCloudBaseRunServerVersionRequest) ToJsonString() string {
@@ -889,6 +892,60 @@ func (r *DescribeCloudBaseBuildServiceResponse) ToJsonString() string {
 }
 
 func (r *DescribeCloudBaseBuildServiceResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeCloudBaseRunResourceForExtendRequest struct {
+	*tchttp.BaseRequest
+
+	// 环境ID
+	EnvId *string `json:"EnvId,omitempty" name:"EnvId"`
+}
+
+func (r *DescribeCloudBaseRunResourceForExtendRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeCloudBaseRunResourceForExtendRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeCloudBaseRunResourceForExtendResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 集群状态(creating/succ)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		ClusterStatus *string `json:"ClusterStatus,omitempty" name:"ClusterStatus"`
+
+		// 虚拟集群ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		VirtualClusterId *string `json:"VirtualClusterId,omitempty" name:"VirtualClusterId"`
+
+		// vpc id信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
+
+		// 地域信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Region *string `json:"Region,omitempty" name:"Region"`
+
+		// 子网信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		SubnetIds []*CloudBaseRunVpcSubnet `json:"SubnetIds,omitempty" name:"SubnetIds" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeCloudBaseRunResourceForExtendResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeCloudBaseRunResourceForExtendResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 

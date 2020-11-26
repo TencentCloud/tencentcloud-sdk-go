@@ -718,6 +718,31 @@ func (c *Client) DescribeInstanceShards(request *DescribeInstanceShardsRequest) 
     return
 }
 
+func NewDescribeInstanceZoneInfoRequest() (request *DescribeInstanceZoneInfoRequest) {
+    request = &DescribeInstanceZoneInfoRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("redis", APIVersion, "DescribeInstanceZoneInfo")
+    return
+}
+
+func NewDescribeInstanceZoneInfoResponse() (response *DescribeInstanceZoneInfoResponse) {
+    response = &DescribeInstanceZoneInfoResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询Redis节点信息
+func (c *Client) DescribeInstanceZoneInfo(request *DescribeInstanceZoneInfoRequest) (response *DescribeInstanceZoneInfoResponse, err error) {
+    if request == nil {
+        request = NewDescribeInstanceZoneInfoRequest()
+    }
+    response = NewDescribeInstanceZoneInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeInstancesRequest() (request *DescribeInstancesRequest) {
     request = &DescribeInstancesRequest{
         BaseRequest: &tchttp.BaseRequest{},
