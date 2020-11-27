@@ -4213,6 +4213,31 @@ func (c *Client) HaVipDisassociateAddressIp(request *HaVipDisassociateAddressIpR
     return
 }
 
+func NewInquirePriceCreateDirectConnectGatewayRequest() (request *InquirePriceCreateDirectConnectGatewayRequest) {
+    request = &InquirePriceCreateDirectConnectGatewayRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "InquirePriceCreateDirectConnectGateway")
+    return
+}
+
+func NewInquirePriceCreateDirectConnectGatewayResponse() (response *InquirePriceCreateDirectConnectGatewayResponse) {
+    response = &InquirePriceCreateDirectConnectGatewayResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（DescribePriceCreateDirectConnectGateway）用于创建专线网关询价。
+func (c *Client) InquirePriceCreateDirectConnectGateway(request *InquirePriceCreateDirectConnectGatewayRequest) (response *InquirePriceCreateDirectConnectGatewayResponse, err error) {
+    if request == nil {
+        request = NewInquirePriceCreateDirectConnectGatewayRequest()
+    }
+    response = NewInquirePriceCreateDirectConnectGatewayResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewInquiryPriceCreateVpnGatewayRequest() (request *InquiryPriceCreateVpnGatewayRequest) {
     request = &InquiryPriceCreateVpnGatewayRequest{
         BaseRequest: &tchttp.BaseRequest{},

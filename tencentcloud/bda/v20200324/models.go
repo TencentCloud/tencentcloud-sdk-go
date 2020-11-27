@@ -270,6 +270,54 @@ func (r *CreatePersonResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type CreateSegmentationTaskRequest struct {
+	*tchttp.BaseRequest
+
+	// 需要分割的视频URL，可外网访问。
+	VideoUrl *string `json:"VideoUrl,omitempty" name:"VideoUrl"`
+
+	// 背景图片URL。 
+	// 可以将视频背景替换为输入的图片。 
+	// 如果不输入背景图片，则输出人像区域mask。
+	BackgroundImageUrl *string `json:"BackgroundImageUrl,omitempty" name:"BackgroundImageUrl"`
+
+	// 预留字段，后期用于展示更多识别信息。
+	Config *string `json:"Config,omitempty" name:"Config"`
+}
+
+func (r *CreateSegmentationTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateSegmentationTaskRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateSegmentationTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 任务标识ID,可以用与追溯任务状态，查看任务结果
+		TaskID *string `json:"TaskID,omitempty" name:"TaskID"`
+
+		// 预估处理时间，单位为秒
+		EstimatedProcessingTime *float64 `json:"EstimatedProcessingTime,omitempty" name:"EstimatedProcessingTime"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateSegmentationTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateSegmentationTaskResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type CreateTraceRequest struct {
 	*tchttp.BaseRequest
 
@@ -387,6 +435,62 @@ func (r *DeletePersonResponse) ToJsonString() string {
 }
 
 func (r *DeletePersonResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeSegmentationTaskRequest struct {
+	*tchttp.BaseRequest
+
+	// 在提交分割任务成功时返回的任务标识ID。
+	TaskID *string `json:"TaskID,omitempty" name:"TaskID"`
+}
+
+func (r *DescribeSegmentationTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeSegmentationTaskRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeSegmentationTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 当前任务状态：
+	// QUEUING 排队中
+	// PROCESSING 处理中
+	// FINISHED 处理完成
+		TaskStatus *string `json:"TaskStatus,omitempty" name:"TaskStatus"`
+
+		// 分割后视频URL, 存储于腾讯云COS
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		ResultVideoUrl *string `json:"ResultVideoUrl,omitempty" name:"ResultVideoUrl"`
+
+		// 分割后视频MD5，用于校验
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		ResultVideoMD5 *string `json:"ResultVideoMD5,omitempty" name:"ResultVideoMD5"`
+
+		// 视频基本信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		VideoBasicInformation *VideoBasicInformation `json:"VideoBasicInformation,omitempty" name:"VideoBasicInformation"`
+
+		// 分割任务错误信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		ErrorMsg *string `json:"ErrorMsg,omitempty" name:"ErrorMsg"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeSegmentationTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeSegmentationTaskResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -997,6 +1101,40 @@ type SegmentationOptions struct {
 	Belongings *bool `json:"Belongings,omitempty" name:"Belongings"`
 }
 
+type TerminateSegmentationTaskRequest struct {
+	*tchttp.BaseRequest
+
+	// 在提交分割任务成功时返回的任务标识ID。
+	TaskID *string `json:"TaskID,omitempty" name:"TaskID"`
+}
+
+func (r *TerminateSegmentationTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *TerminateSegmentationTaskRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type TerminateSegmentationTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *TerminateSegmentationTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *TerminateSegmentationTaskResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type Trace struct {
 
 	// 人体轨迹图片 Base64 数组。 
@@ -1067,4 +1205,22 @@ type UpperBodyClothTexture struct {
 
 	// Type识别概率值，[0.0,1.0], 代表判断正确的概率。如0.8则代表有Type值有80%概率正确。
 	Probability *float64 `json:"Probability,omitempty" name:"Probability"`
+}
+
+type VideoBasicInformation struct {
+
+	// 视频宽度
+	FrameWidth *int64 `json:"FrameWidth,omitempty" name:"FrameWidth"`
+
+	// 视频高度
+	FrameHeight *int64 `json:"FrameHeight,omitempty" name:"FrameHeight"`
+
+	// 视频帧速率(FPS)
+	FramesPerSecond *int64 `json:"FramesPerSecond,omitempty" name:"FramesPerSecond"`
+
+	// 视频时长
+	Duration *float64 `json:"Duration,omitempty" name:"Duration"`
+
+	// 视频帧数
+	TotalFrames *int64 `json:"TotalFrames,omitempty" name:"TotalFrames"`
 }

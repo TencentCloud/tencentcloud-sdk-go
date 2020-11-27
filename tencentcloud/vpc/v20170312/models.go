@@ -7938,6 +7938,45 @@ type IPSECOptionsSpecification struct {
 	IPSECSaLifetimeTraffic *uint64 `json:"IPSECSaLifetimeTraffic,omitempty" name:"IPSECSaLifetimeTraffic"`
 }
 
+type InquirePriceCreateDirectConnectGatewayRequest struct {
+	*tchttp.BaseRequest
+}
+
+func (r *InquirePriceCreateDirectConnectGatewayRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *InquirePriceCreateDirectConnectGatewayRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type InquirePriceCreateDirectConnectGatewayResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 专线网关标准接入费用
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		TotalCost *int64 `json:"TotalCost,omitempty" name:"TotalCost"`
+
+		// 专线网关真实接入费用
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		RealTotalCost *int64 `json:"RealTotalCost,omitempty" name:"RealTotalCost"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *InquirePriceCreateDirectConnectGatewayResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *InquirePriceCreateDirectConnectGatewayResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type InquiryPriceCreateVpnGatewayRequest struct {
 	*tchttp.BaseRequest
 

@@ -1420,37 +1420,6 @@ func (r *DescribeReservedInstancesResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
-type DescribeSpotTypeConfigRequest struct {
-	*tchttp.BaseRequest
-}
-
-func (r *DescribeSpotTypeConfigRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-func (r *DescribeSpotTypeConfigRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
-}
-
-type DescribeSpotTypeConfigResponse struct {
-	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
-}
-
-func (r *DescribeSpotTypeConfigResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-func (r *DescribeSpotTypeConfigResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
-}
-
 type DescribeZoneInstanceConfigInfosRequest struct {
 	*tchttp.BaseRequest
 
@@ -4089,7 +4058,7 @@ type Tag struct {
 
 type TagSpecification struct {
 
-	// 标签绑定的资源类型，当前支持类型："instance"和"host"
+	// 标签绑定的资源类型，云服务器为“instance”，专用宿主机为“host”
 	ResourceType *string `json:"ResourceType,omitempty" name:"ResourceType"`
 
 	// 标签对列表
@@ -4154,6 +4123,7 @@ type ZoneInfo struct {
 	// 全网可用区名称如下：
 	// <li> ap-chongqing-1 </li>
 	// <li> ap-seoul-1 </li>
+	// <li> ap-seoul-2 </li>
 	// <li> ap-chengdu-1 </li>
 	// <li> ap-chengdu-2 </li>
 	// <li> ap-hongkong-1 </li>

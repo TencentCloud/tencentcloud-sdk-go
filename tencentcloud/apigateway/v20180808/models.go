@@ -306,6 +306,10 @@ type ApiInfo struct {
 	// API绑定的tag信息。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Tags []*Tag `json:"Tags,omitempty" name:"Tags" list`
+
+	// API已发布的环境信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Environments []*string `json:"Environments,omitempty" name:"Environments" list`
 }
 
 type ApiKey struct {

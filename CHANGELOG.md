@@ -1,29 +1,10 @@
 # 本版本更新包含以下内容：
 
-## 云数据库 MySQL(cdb) 版本：2017-03-20
+## API网关(apigateway) 版本：2018-08-08
 
-### 第 50 次发布
+### 第 7 次发布
 
-发布时间：2020-11-26 08:02:19
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [Parameter](https://cloud.tencent.com/document/api/236/15878#Parameter)
-
-	* <font color="#dd0000">**修改成员**：</font>Name, CurrentValue
-
-
-
-
-## 云直播(live) 版本：2018-08-01
-
-### 第 53 次发布
-
-发布时间：2020-11-26 08:04:28
+发布时间：2020-11-27 08:08:28
 
 本次发布包含了以下内容：
 
@@ -31,18 +12,18 @@
 
 修改数据结构：
 
-* [DomainCertInfo](https://cloud.tencent.com/document/api/267/20474#DomainCertInfo)
+* [ApiInfo](https://cloud.tencent.com/document/api/628/45244#ApiInfo)
 
-	* 新增成员：CertDomains, CloudCertId
-
-
+	* 新增成员：Environments
 
 
-## 云数据库 Redis(redis) 版本：2018-04-12
 
-### 第 25 次发布
 
-发布时间：2020-11-26 08:05:36
+## 人体分析(bda) 版本：2020-03-24
+
+### 第 5 次发布
+
+发布时间：2020-11-27 08:00:29
 
 本次发布包含了以下内容：
 
@@ -50,20 +31,37 @@
 
 新增接口：
 
-* [DescribeInstanceZoneInfo](https://cloud.tencent.com/document/api/239/50312)
+* [CreateSegmentationTask](https://cloud.tencent.com/document/api/1208/50363)
+* [DescribeSegmentationTask](https://cloud.tencent.com/document/api/1208/50362)
+* [TerminateSegmentationTask](https://cloud.tencent.com/document/api/1208/50361)
 
 新增数据结构：
 
-* [RedisNode](https://cloud.tencent.com/document/api/239/20022#RedisNode)
-* [ReplicaGroup](https://cloud.tencent.com/document/api/239/20022#ReplicaGroup)
+* [VideoBasicInformation](https://cloud.tencent.com/document/api/1208/42985#VideoBasicInformation)
 
 
 
-## 云开发 CloudBase(tcb) 版本：2018-06-08
+## 云服务器(cvm) 版本：2017-03-12
 
-### 第 27 次发布
+### 第 54 次发布
 
-发布时间：2020-11-26 08:06:15
+发布时间：2020-11-26 22:19:36
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+<font color="#dd0000">**删除接口**：</font>
+
+* DescribeSpotTypeConfig
+
+
+
+## 人脸核身(faceid) 版本：2018-03-01
+
+### 第 19 次发布
+
+发布时间：2020-11-27 08:03:44
 
 本次发布包含了以下内容：
 
@@ -71,14 +69,56 @@
 
 新增接口：
 
-* [DescribeCloudBaseRunResourceForExtend](https://cloud.tencent.com/document/api/876/50313)
+* [CheckPhoneAndName](https://cloud.tencent.com/document/api/1007/50364)
 
-修改接口：
+修改数据结构：
 
-* [CreateCloudBaseRunServerVersion](https://cloud.tencent.com/document/api/876/49627)
+* [DetectDetail](https://cloud.tencent.com/document/api/1007/41958#DetectDetail)
 
-	* 新增入参：ServerPath
+	* 新增成员：CompareLibType
 
+* [DetectInfoText](https://cloud.tencent.com/document/api/1007/41958#DetectInfoText)
+
+	* 新增成员：CompareLibType
+
+
+
+
+## 容器服务(tke) 版本：2018-05-25
+
+### 第 33 次发布
+
+发布时间：2020-11-27 08:06:41
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CheckInstancesUpgradeAble](https://cloud.tencent.com/document/api/457/50366)
+* [UpgradeClusterInstances](https://cloud.tencent.com/document/api/457/50365)
+
+新增数据结构：
+
+* [UpgradeAbleInstancesItem](https://cloud.tencent.com/document/api/457/31866#UpgradeAbleInstancesItem)
+* [UpgradeNodeResetParam](https://cloud.tencent.com/document/api/457/31866#UpgradeNodeResetParam)
+
+
+
+## 私有网络(vpc) 版本：2017-03-12
+
+### 第 71 次发布
+
+发布时间：2020-11-27 08:07:07
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [InquirePriceCreateDirectConnectGateway](https://cloud.tencent.com/document/api/215/50367)
 
 
 
@@ -574,6 +614,21 @@
 
 
 ## API网关(apigateway) 版本：2018-08-08
+
+### 第 7 次发布
+
+发布时间：2020-11-27 08:08:28
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [ApiInfo](https://cloud.tencent.com/document/api/628/45244#ApiInfo)
+
+	* 新增成员：Environments
+
 
 ### 第 6 次发布
 
@@ -2657,6 +2712,24 @@
 
 
 ## 人体分析(bda) 版本：2020-03-24
+
+### 第 5 次发布
+
+发布时间：2020-11-27 08:00:29
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[CreateSegmentationTask](https://cloud.tencent.com/document/api/1208/50363)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeSegmentationTask](https://cloud.tencent.com/document/api/1208/50362)](https://cloud.tencent.com/document/api/#/#)
+* [[TerminateSegmentationTask](https://cloud.tencent.com/document/api/1208/50361)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[VideoBasicInformation](https://cloud.tencent.com/document/api/1208/42985#VideoBasicInformation)](https://cloud.tencent.com/document/api/1208/42985#[VideoBasicInformation](https://cloud.tencent.com/document/api/1208/42985#VideoBasicInformation))
 
 ### 第 4 次发布
 
@@ -11264,6 +11337,18 @@
 
 ## 云服务器(cvm) 版本：2017-03-12
 
+### 第 54 次发布
+
+发布时间：2020-11-26 22:19:36
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+<font color="#dd0000">**删除接口**：</font>
+
+* DescribeSpotTypeConfig
+
 ### 第 53 次发布
 
 发布时间：2020-11-05 08:03:10
@@ -16662,6 +16747,29 @@
 
 
 ## 人脸核身(faceid) 版本：2018-03-01
+
+### 第 19 次发布
+
+发布时间：2020-11-27 08:03:44
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[CheckPhoneAndName](https://cloud.tencent.com/document/api/1007/50364)](https://cloud.tencent.com/document/api/#/#)
+
+修改数据结构：
+
+* [DetectDetail](https://cloud.tencent.com/document/api/1007/41958#DetectDetail)
+
+	* 新增成员：CompareLibType
+
+* [DetectInfoText](https://cloud.tencent.com/document/api/1007/41958#DetectInfoText)
+
+	* 新增成员：CompareLibType
+
 
 ### 第 18 次发布
 
@@ -26642,12 +26750,12 @@
 
 新增接口：
 
-* [[DescribeInstanceZoneInfo](https://cloud.tencent.com/document/api/239/50312)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeInstanceZoneInfo](https://cloud.tencent.com/document/api/239/50312)
 
 新增数据结构：
 
-* [[RedisNode](https://cloud.tencent.com/document/api/239/20022#RedisNode)](https://cloud.tencent.com/document/api/239/20022#[RedisNode](https://cloud.tencent.com/document/api/239/20022#RedisNode))
-* [[ReplicaGroup](https://cloud.tencent.com/document/api/239/20022#ReplicaGroup)](https://cloud.tencent.com/document/api/239/20022#[ReplicaGroup](https://cloud.tencent.com/document/api/239/20022#ReplicaGroup))
+* [RedisNode](https://cloud.tencent.com/document/api/239/20022#RedisNode)
+* [ReplicaGroup](https://cloud.tencent.com/document/api/239/20022#ReplicaGroup)
 
 ### 第 24 次发布
 
@@ -30064,7 +30172,7 @@
 
 新增接口：
 
-* [[DescribeCloudBaseRunResourceForExtend](https://cloud.tencent.com/document/api/876/50313)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeCloudBaseRunResourceForExtend](https://cloud.tencent.com/document/api/876/50313)
 
 修改接口：
 
@@ -32559,6 +32667,24 @@
 
 
 ## 容器服务(tke) 版本：2018-05-25
+
+### 第 33 次发布
+
+发布时间：2020-11-27 08:06:41
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[CheckInstancesUpgradeAble](https://cloud.tencent.com/document/api/457/50366)](https://cloud.tencent.com/document/api/#/#)
+* [[UpgradeClusterInstances](https://cloud.tencent.com/document/api/457/50365)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[UpgradeAbleInstancesItem](https://cloud.tencent.com/document/api/457/31866#UpgradeAbleInstancesItem)](https://cloud.tencent.com/document/api/457/31866#[UpgradeAbleInstancesItem](https://cloud.tencent.com/document/api/457/31866#UpgradeAbleInstancesItem))
+* [[UpgradeNodeResetParam](https://cloud.tencent.com/document/api/457/31866#UpgradeNodeResetParam)](https://cloud.tencent.com/document/api/457/31866#[UpgradeNodeResetParam](https://cloud.tencent.com/document/api/457/31866#UpgradeNodeResetParam))
 
 ### 第 32 次发布
 
@@ -36738,6 +36864,18 @@
 
 
 ## 私有网络(vpc) 版本：2017-03-12
+
+### 第 71 次发布
+
+发布时间：2020-11-27 08:07:07
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[InquirePriceCreateDirectConnectGateway](https://cloud.tencent.com/document/api/215/50367)](https://cloud.tencent.com/document/api/#/#)
 
 ### 第 70 次发布
 

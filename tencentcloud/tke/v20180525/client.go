@@ -118,6 +118,31 @@ func (c *Client) AddNodeToNodePool(request *AddNodeToNodePoolRequest) (response 
     return
 }
 
+func NewCheckInstancesUpgradeAbleRequest() (request *CheckInstancesUpgradeAbleRequest) {
+    request = &CheckInstancesUpgradeAbleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tke", APIVersion, "CheckInstancesUpgradeAble")
+    return
+}
+
+func NewCheckInstancesUpgradeAbleResponse() (response *CheckInstancesUpgradeAbleResponse) {
+    response = &CheckInstancesUpgradeAbleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 检查给定节点列表中哪些是可升级的 
+func (c *Client) CheckInstancesUpgradeAble(request *CheckInstancesUpgradeAbleRequest) (response *CheckInstancesUpgradeAbleResponse, err error) {
+    if request == nil {
+        request = NewCheckInstancesUpgradeAbleRequest()
+    }
+    response = NewCheckInstancesUpgradeAbleResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateClusterRequest() (request *CreateClusterRequest) {
     request = &CreateClusterRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1114,6 +1139,31 @@ func (c *Client) RemoveNodeFromNodePool(request *RemoveNodeFromNodePoolRequest) 
         request = NewRemoveNodeFromNodePoolRequest()
     }
     response = NewRemoveNodeFromNodePoolResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewUpgradeClusterInstancesRequest() (request *UpgradeClusterInstancesRequest) {
+    request = &UpgradeClusterInstancesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tke", APIVersion, "UpgradeClusterInstances")
+    return
+}
+
+func NewUpgradeClusterInstancesResponse() (response *UpgradeClusterInstancesResponse) {
+    response = &UpgradeClusterInstancesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 给集群的一批work节点进行升级 
+func (c *Client) UpgradeClusterInstances(request *UpgradeClusterInstancesRequest) (response *UpgradeClusterInstancesResponse, err error) {
+    if request == nil {
+        request = NewUpgradeClusterInstancesRequest()
+    }
+    response = NewUpgradeClusterInstancesResponse()
     err = c.Send(request, response)
     return
 }

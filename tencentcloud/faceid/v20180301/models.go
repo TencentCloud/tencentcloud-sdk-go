@@ -382,6 +382,56 @@ func (r *CheckIdCardInformationResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type CheckPhoneAndNameRequest struct {
+	*tchttp.BaseRequest
+
+	// ⼿机号
+	Mobile *string `json:"Mobile,omitempty" name:"Mobile"`
+
+	// 姓名
+	Name *string `json:"Name,omitempty" name:"Name"`
+}
+
+func (r *CheckPhoneAndNameRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CheckPhoneAndNameRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CheckPhoneAndNameResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 认证结果码，收费情况如下。
+	// 收费结果码：
+	// 0: 验证结果一致
+	// 1: 验证结果不一致
+	// 不收费结果码：
+	// -1:查无记录
+	// -2:引擎未知错误
+	// -3:引擎服务异常
+		Result *string `json:"Result,omitempty" name:"Result"`
+
+		// 业务结果描述
+		Description *string `json:"Description,omitempty" name:"Description"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CheckPhoneAndNameResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CheckPhoneAndNameResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DetectAuthRequest struct {
 	*tchttp.BaseRequest
 
@@ -492,6 +542,14 @@ type DetectDetail struct {
 	// 本次一比一结果描述。（仅描述用，文案更新时不会通知。）
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Comparemsg *string `json:"Comparemsg,omitempty" name:"Comparemsg"`
+
+	// 比对库源类型。包括：
+	// 公安商业库；
+	// 业务方自有库（用户上传照片、客户的混合库、混合部署库）；
+	// 二次验证库；
+	// 人工审核库；
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CompareLibType *string `json:"CompareLibType,omitempty" name:"CompareLibType"`
 }
 
 type DetectInfoBestFrame struct {
@@ -613,6 +671,14 @@ type DetectInfoText struct {
 	// 手机号码。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Mobile *string `json:"Mobile,omitempty" name:"Mobile"`
+
+	// 本次流程最终比对库源类型。包括：
+	// 公安商业库；
+	// 业务方自有库（用户上传照片、客户的混合库、混合部署库）；
+	// 二次验证库；
+	// 人工审核库；
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CompareLibType *string `json:"CompareLibType,omitempty" name:"CompareLibType"`
 }
 
 type DetectInfoVideoData struct {

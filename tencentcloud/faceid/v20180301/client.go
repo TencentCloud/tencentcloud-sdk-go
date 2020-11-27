@@ -168,6 +168,31 @@ func (c *Client) CheckIdCardInformation(request *CheckIdCardInformationRequest) 
     return
 }
 
+func NewCheckPhoneAndNameRequest() (request *CheckPhoneAndNameRequest) {
+    request = &CheckPhoneAndNameRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("faceid", APIVersion, "CheckPhoneAndName")
+    return
+}
+
+func NewCheckPhoneAndNameResponse() (response *CheckPhoneAndNameResponse) {
+    response = &CheckPhoneAndNameResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口用于校验手机号和姓名的真实性和一致性。
+func (c *Client) CheckPhoneAndName(request *CheckPhoneAndNameRequest) (response *CheckPhoneAndNameResponse, err error) {
+    if request == nil {
+        request = NewCheckPhoneAndNameRequest()
+    }
+    response = NewCheckPhoneAndNameResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDetectAuthRequest() (request *DetectAuthRequest) {
     request = &DetectAuthRequest{
         BaseRequest: &tchttp.BaseRequest{},

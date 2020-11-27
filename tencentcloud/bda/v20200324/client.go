@@ -106,6 +106,31 @@ func (c *Client) CreatePerson(request *CreatePersonRequest) (response *CreatePer
     return
 }
 
+func NewCreateSegmentationTaskRequest() (request *CreateSegmentationTaskRequest) {
+    request = &CreateSegmentationTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("bda", APIVersion, "CreateSegmentationTask")
+    return
+}
+
+func NewCreateSegmentationTaskResponse() (response *CreateSegmentationTaskResponse) {
+    response = &CreateSegmentationTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口为离线人像分割处理接口组中的提交任务接口，可以对提交的资源进行处理视频流/图片流识别视频作品中的人像区域，进行一键抠像、背景替换、人像虚化等后期处理。
+func (c *Client) CreateSegmentationTask(request *CreateSegmentationTaskRequest) (response *CreateSegmentationTaskResponse, err error) {
+    if request == nil {
+        request = NewCreateSegmentationTaskRequest()
+    }
+    response = NewCreateSegmentationTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateTraceRequest() (request *CreateTraceRequest) {
     request = &CreateTraceRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -184,6 +209,31 @@ func (c *Client) DeletePerson(request *DeletePersonRequest) (response *DeletePer
         request = NewDeletePersonRequest()
     }
     response = NewDeletePersonResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeSegmentationTaskRequest() (request *DescribeSegmentationTaskRequest) {
+    request = &DescribeSegmentationTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("bda", APIVersion, "DescribeSegmentationTask")
+    return
+}
+
+func NewDescribeSegmentationTaskResponse() (response *DescribeSegmentationTaskResponse) {
+    response = &DescribeSegmentationTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 可以查看单条任务的处理情况，包括处理状态，处理结果。
+func (c *Client) DescribeSegmentationTask(request *DescribeSegmentationTaskRequest) (response *DescribeSegmentationTaskResponse, err error) {
+    if request == nil {
+        request = NewDescribeSegmentationTaskRequest()
+    }
+    response = NewDescribeSegmentationTaskResponse()
     err = c.Send(request, response)
     return
 }
@@ -416,6 +466,31 @@ func (c *Client) SegmentPortraitPic(request *SegmentPortraitPicRequest) (respons
         request = NewSegmentPortraitPicRequest()
     }
     response = NewSegmentPortraitPicResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewTerminateSegmentationTaskRequest() (request *TerminateSegmentationTaskRequest) {
+    request = &TerminateSegmentationTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("bda", APIVersion, "TerminateSegmentationTask")
+    return
+}
+
+func NewTerminateSegmentationTaskResponse() (response *TerminateSegmentationTaskResponse) {
+    response = &TerminateSegmentationTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 终止指定视频人像分割处理任务
+func (c *Client) TerminateSegmentationTask(request *TerminateSegmentationTaskRequest) (response *TerminateSegmentationTaskResponse, err error) {
+    if request == nil {
+        request = NewTerminateSegmentationTaskRequest()
+    }
+    response = NewTerminateSegmentationTaskResponse()
     err = c.Send(request, response)
     return
 }
