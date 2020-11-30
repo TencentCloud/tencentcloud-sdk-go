@@ -2023,6 +2023,12 @@ type DescribeMachineInfoResponse struct {
 		// 免费漏洞剩余检测数量。
 		FreeVulsLeft *uint64 `json:"FreeVulsLeft,omitempty" name:"FreeVulsLeft"`
 
+		// agent版本号
+		AgentVersion *string `json:"AgentVersion,omitempty" name:"AgentVersion"`
+
+		// 专业版到期时间(仅预付费)
+		ProVersionDeadline *string `json:"ProVersionDeadline,omitempty" name:"ProVersionDeadline"`
+
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
@@ -2855,6 +2861,73 @@ func (r *DescribeSecurityDynamicsResponse) ToJsonString() string {
 }
 
 func (r *DescribeSecurityDynamicsResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeSecurityEventsCntRequest struct {
+	*tchttp.BaseRequest
+}
+
+func (r *DescribeSecurityEventsCntRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeSecurityEventsCntRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeSecurityEventsCntResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 木马文件相关风险事件
+		Malware *SecurityEventInfo `json:"Malware,omitempty" name:"Malware"`
+
+		// 登录审计相关风险事件
+		HostLogin *SecurityEventInfo `json:"HostLogin,omitempty" name:"HostLogin"`
+
+		// 密码破解相关风险事件
+		BruteAttack *SecurityEventInfo `json:"BruteAttack,omitempty" name:"BruteAttack"`
+
+		// 恶意请求相关风险事件
+		RiskDns *SecurityEventInfo `json:"RiskDns,omitempty" name:"RiskDns"`
+
+		// 高危命令相关风险事件
+		Bash *SecurityEventInfo `json:"Bash,omitempty" name:"Bash"`
+
+		// 本地提权相关风险事件
+		PrivilegeRules *SecurityEventInfo `json:"PrivilegeRules,omitempty" name:"PrivilegeRules"`
+
+		// 反弹Shell相关风险事件
+		ReverseShell *SecurityEventInfo `json:"ReverseShell,omitempty" name:"ReverseShell"`
+
+		// 系统组件相关风险事件
+		SysVul *SecurityEventInfo `json:"SysVul,omitempty" name:"SysVul"`
+
+		// Web应用漏洞相关风险事件
+		WebVul *SecurityEventInfo `json:"WebVul,omitempty" name:"WebVul"`
+
+		// 应急漏洞相关风险事件
+		EmergencyVul *SecurityEventInfo `json:"EmergencyVul,omitempty" name:"EmergencyVul"`
+
+		// 安全基线相关风险事件
+		BaseLine *SecurityEventInfo `json:"BaseLine,omitempty" name:"BaseLine"`
+
+		// 攻击检测相关风险事件
+		AttackLogs *SecurityEventInfo `json:"AttackLogs,omitempty" name:"AttackLogs"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeSecurityEventsCntResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeSecurityEventsCntResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -3735,6 +3808,9 @@ func (r *ExportAttackLogsResponse) FromJsonString(s string) error {
 
 type ExportBashEventsRequest struct {
 	*tchttp.BaseRequest
+
+	// 过滤参数
+	Filters []*Filters `json:"Filters,omitempty" name:"Filters" list`
 }
 
 func (r *ExportBashEventsRequest) ToJsonString() string {
@@ -3753,6 +3829,9 @@ type ExportBashEventsResponse struct {
 		// 导出文件下载链接地址。
 		DownloadUrl *string `json:"DownloadUrl,omitempty" name:"DownloadUrl"`
 
+		// 导出任务ID
+		TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
@@ -3769,6 +3848,9 @@ func (r *ExportBashEventsResponse) FromJsonString(s string) error {
 
 type ExportBruteAttacksRequest struct {
 	*tchttp.BaseRequest
+
+	// 过滤参数
+	Filters []*Filters `json:"Filters,omitempty" name:"Filters" list`
 }
 
 func (r *ExportBruteAttacksRequest) ToJsonString() string {
@@ -3786,6 +3868,9 @@ type ExportBruteAttacksResponse struct {
 
 		// 导出文件下载链接地址。
 		DownloadUrl *string `json:"DownloadUrl,omitempty" name:"DownloadUrl"`
+
+		// 导出任务ID
+		TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -3837,6 +3922,21 @@ func (r *ExportMaliciousRequestsResponse) FromJsonString(s string) error {
 
 type ExportMalwaresRequest struct {
 	*tchttp.BaseRequest
+
+	// 限制条数,默认10
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 偏移量 默认0
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 过滤参数。
+	// <li>IpOrAlias - String - 是否必填：否 - 主机ip或别名筛选</li>
+	// <li>FilePath - String - 是否必填：否 - 路径筛选</li>
+	// <li>VirusName - String - 是否必填：否 - 描述筛选</li>
+	// <li>CreateBeginTime - String - 是否必填：否 - 创建时间筛选-开始时间</li>
+	// <li>CreateEndTime - String - 是否必填：否 - 创建时间筛选-结束时间</li>
+	// <li>Status - String - 是否必填：否 - 状态筛选</li>
+	Filters []*Filters `json:"Filters,omitempty" name:"Filters" list`
 }
 
 func (r *ExportMalwaresRequest) ToJsonString() string {
@@ -3871,6 +3971,9 @@ func (r *ExportMalwaresResponse) FromJsonString(s string) error {
 
 type ExportNonlocalLoginPlacesRequest struct {
 	*tchttp.BaseRequest
+
+	// <li>Status - int - 是否必填：否 - 状态筛选1:正常登录；2：异地登录</li>
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
 }
 
 func (r *ExportNonlocalLoginPlacesRequest) ToJsonString() string {
@@ -3942,6 +4045,9 @@ func (r *ExportPrivilegeEventsResponse) FromJsonString(s string) error {
 
 type ExportReverseShellEventsRequest struct {
 	*tchttp.BaseRequest
+
+	// 过滤参数
+	Filters []*Filters `json:"Filters,omitempty" name:"Filters" list`
 }
 
 func (r *ExportReverseShellEventsRequest) ToJsonString() string {
@@ -3960,6 +4066,9 @@ type ExportReverseShellEventsResponse struct {
 		// 导出文件下载链接地址。
 		DownloadUrl *string `json:"DownloadUrl,omitempty" name:"DownloadUrl"`
 
+		// 任务id
+		TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
@@ -3975,6 +4084,15 @@ func (r *ExportReverseShellEventsResponse) FromJsonString(s string) error {
 }
 
 type Filter struct {
+
+	// 过滤键的名称。
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 一个或者多个过滤值。
+	Values []*string `json:"Values,omitempty" name:"Values" list`
+}
+
+type Filters struct {
 
 	// 过滤键的名称。
 	Name *string `json:"Name,omitempty" name:"Name"`
@@ -4248,6 +4366,12 @@ type Machine struct {
 
 	// 地域信息
 	RegionInfo *RegionInfo `json:"RegionInfo,omitempty" name:"RegionInfo"`
+
+	// 实例状态 TERMINATED_PRO_VERSION 已销毁
+	InstanceState *string `json:"InstanceState,omitempty" name:"InstanceState"`
+
+	// 授权状态 1 授权 0 未授权
+	LicenseStatus *uint64 `json:"LicenseStatus,omitempty" name:"LicenseStatus"`
 }
 
 type MachineTag struct {
@@ -5111,6 +5235,15 @@ type SecurityDynamic struct {
 	// <li>NORMAL: 中危</li>
 	// <li>LOW: 低危</li>
 	SecurityLevel *string `json:"SecurityLevel,omitempty" name:"SecurityLevel"`
+}
+
+type SecurityEventInfo struct {
+
+	// 安全事件数
+	EventCnt *uint64 `json:"EventCnt,omitempty" name:"EventCnt"`
+
+	// 受影响机器数
+	UuidCnt *uint64 `json:"UuidCnt,omitempty" name:"UuidCnt"`
 }
 
 type SecurityTrend struct {

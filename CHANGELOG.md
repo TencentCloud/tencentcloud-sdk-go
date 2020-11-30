@@ -1,29 +1,10 @@
 # 本版本更新包含以下内容：
 
-## API网关(apigateway) 版本：2018-08-08
+## 云数据库 MySQL(cdb) 版本：2017-03-20
 
-### 第 7 次发布
+### 第 51 次发布
 
-发布时间：2020-11-27 08:08:28
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [ApiInfo](https://cloud.tencent.com/document/api/628/45244#ApiInfo)
-
-	* 新增成员：Environments
-
-
-
-
-## 人体分析(bda) 版本：2020-03-24
-
-### 第 5 次发布
-
-发布时间：2020-11-27 08:00:29
+发布时间：2020-11-30 08:09:51
 
 本次发布包含了以下内容：
 
@@ -31,37 +12,21 @@
 
 新增接口：
 
-* [CreateSegmentationTask](https://cloud.tencent.com/document/api/1208/50363)
-* [DescribeSegmentationTask](https://cloud.tencent.com/document/api/1208/50362)
-* [TerminateSegmentationTask](https://cloud.tencent.com/document/api/1208/50361)
+* [CreateCloneInstance](https://cloud.tencent.com/document/api/236/50424)
+* [DescribeCloneList](https://cloud.tencent.com/document/api/236/50423)
+* [StopRollback](https://cloud.tencent.com/document/api/236/50422)
 
 新增数据结构：
 
-* [VideoBasicInformation](https://cloud.tencent.com/document/api/1208/42985#VideoBasicInformation)
+* [CloneItem](https://cloud.tencent.com/document/api/236/15878#CloneItem)
 
 
 
-## 云服务器(cvm) 版本：2017-03-12
+## 主机安全(cwp) 版本：2018-02-28
 
-### 第 54 次发布
+### 第 2 次发布
 
-发布时间：2020-11-26 22:19:36
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-<font color="#dd0000">**删除接口**：</font>
-
-* DescribeSpotTypeConfig
-
-
-
-## 人脸核身(faceid) 版本：2018-03-01
-
-### 第 19 次发布
-
-发布时间：2020-11-27 08:03:44
+发布时间：2020-11-30 08:43:46
 
 本次发布包含了以下内容：
 
@@ -69,48 +34,60 @@
 
 新增接口：
 
-* [CheckPhoneAndName](https://cloud.tencent.com/document/api/1007/50364)
+* [DescribeSecurityEventsCnt](https://cloud.tencent.com/document/api/296/50427)
 
-修改数据结构：
+修改接口：
 
-* [DetectDetail](https://cloud.tencent.com/document/api/1007/41958#DetectDetail)
+* [DescribeMachineInfo](https://cloud.tencent.com/document/api/296/19851)
 
-	* 新增成员：CompareLibType
+	* 新增出参：AgentVersion, ProVersionDeadline
 
-* [DetectInfoText](https://cloud.tencent.com/document/api/1007/41958#DetectInfoText)
+* [ExportBashEvents](https://cloud.tencent.com/document/api/296/39584)
 
-	* 新增成员：CompareLibType
+	* 新增入参：Filters
 
+	* 新增出参：TaskId
 
+* [ExportBruteAttacks](https://cloud.tencent.com/document/api/296/39583)
 
+	* 新增入参：Filters
 
-## 容器服务(tke) 版本：2018-05-25
+	* 新增出参：TaskId
 
-### 第 33 次发布
+* [ExportMalwares](https://cloud.tencent.com/document/api/296/39582)
 
-发布时间：2020-11-27 08:06:41
+	* 新增入参：Limit, Offset, Filters
 
-本次发布包含了以下内容：
+* [ExportNonlocalLoginPlaces](https://cloud.tencent.com/document/api/296/39581)
 
-改善已有的文档。
+	* 新增入参：Filters
 
-新增接口：
+* [ExportReverseShellEvents](https://cloud.tencent.com/document/api/296/39579)
 
-* [CheckInstancesUpgradeAble](https://cloud.tencent.com/document/api/457/50366)
-* [UpgradeClusterInstances](https://cloud.tencent.com/document/api/457/50365)
+	* 新增入参：Filters
+
+	* 新增出参：TaskId
+
 
 新增数据结构：
 
-* [UpgradeAbleInstancesItem](https://cloud.tencent.com/document/api/457/31866#UpgradeAbleInstancesItem)
-* [UpgradeNodeResetParam](https://cloud.tencent.com/document/api/457/31866#UpgradeNodeResetParam)
+* [Filters](https://cloud.tencent.com/document/api/296/19867#Filters)
+* [SecurityEventInfo](https://cloud.tencent.com/document/api/296/19867#SecurityEventInfo)
+
+修改数据结构：
+
+* [Machine](https://cloud.tencent.com/document/api/296/19867#Machine)
+
+	* 新增成员：InstanceState, LicenseStatus
 
 
 
-## 私有网络(vpc) 版本：2017-03-12
 
-### 第 71 次发布
+## 人脸识别(iai) 版本：2020-03-03
 
-发布时间：2020-11-27 08:07:07
+### 第 8 次发布
+
+发布时间：2020-11-30 08:19:25
 
 本次发布包含了以下内容：
 
@@ -118,7 +95,11 @@
 
 新增接口：
 
-* [InquirePriceCreateDirectConnectGateway](https://cloud.tencent.com/document/api/215/50367)
+* [CompareMaskFace](https://cloud.tencent.com/document/api/867/50425)
+
+
+
+## 人脸识别(iai) 版本：2018-03-01
 
 
 
@@ -2723,13 +2704,13 @@
 
 新增接口：
 
-* [[CreateSegmentationTask](https://cloud.tencent.com/document/api/1208/50363)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeSegmentationTask](https://cloud.tencent.com/document/api/1208/50362)](https://cloud.tencent.com/document/api/#/#)
-* [[TerminateSegmentationTask](https://cloud.tencent.com/document/api/1208/50361)](https://cloud.tencent.com/document/api/#/#)
+* [CreateSegmentationTask](https://cloud.tencent.com/document/api/1208/50363)
+* [DescribeSegmentationTask](https://cloud.tencent.com/document/api/1208/50362)
+* [TerminateSegmentationTask](https://cloud.tencent.com/document/api/1208/50361)
 
 新增数据结构：
 
-* [[VideoBasicInformation](https://cloud.tencent.com/document/api/1208/42985#VideoBasicInformation)](https://cloud.tencent.com/document/api/1208/42985#[VideoBasicInformation](https://cloud.tencent.com/document/api/1208/42985#VideoBasicInformation))
+* [VideoBasicInformation](https://cloud.tencent.com/document/api/1208/42985#VideoBasicInformation)
 
 ### 第 4 次发布
 
@@ -5668,6 +5649,24 @@
 
 
 ## 云数据库 MySQL(cdb) 版本：2017-03-20
+
+### 第 51 次发布
+
+发布时间：2020-11-30 08:09:51
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[CreateCloneInstance](https://cloud.tencent.com/document/api/236/50424)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeCloneList](https://cloud.tencent.com/document/api/236/50423)](https://cloud.tencent.com/document/api/#/#)
+* [[StopRollback](https://cloud.tencent.com/document/api/236/50422)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[CloneItem](https://cloud.tencent.com/document/api/236/15878#CloneItem)](https://cloud.tencent.com/document/api/236/15878#[CloneItem](https://cloud.tencent.com/document/api/236/15878#CloneItem))
 
 ### 第 50 次发布
 
@@ -12459,6 +12458,63 @@
 
 ## 主机安全(cwp) 版本：2018-02-28
 
+### 第 2 次发布
+
+发布时间：2020-11-30 08:43:46
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeSecurityEventsCnt](https://cloud.tencent.com/document/api/296/50427)](https://cloud.tencent.com/document/api/#/#)
+
+修改接口：
+
+* [DescribeMachineInfo](https://cloud.tencent.com/document/api/296/19851)
+
+	* 新增出参：AgentVersion, ProVersionDeadline
+
+* [ExportBashEvents](https://cloud.tencent.com/document/api/296/39584)
+
+	* 新增入参：Filters
+
+	* 新增出参：TaskId
+
+* [ExportBruteAttacks](https://cloud.tencent.com/document/api/296/39583)
+
+	* 新增入参：Filters
+
+	* 新增出参：TaskId
+
+* [ExportMalwares](https://cloud.tencent.com/document/api/296/39582)
+
+	* 新增入参：Limit, Offset, Filters
+
+* [ExportNonlocalLoginPlaces](https://cloud.tencent.com/document/api/296/39581)
+
+	* 新增入参：Filters
+
+* [ExportReverseShellEvents](https://cloud.tencent.com/document/api/296/39579)
+
+	* 新增入参：Filters
+
+	* 新增出参：TaskId
+
+
+新增数据结构：
+
+* [[Filters](https://cloud.tencent.com/document/api/296/19867#Filters)](https://cloud.tencent.com/document/api/296/19867#[Filters](https://cloud.tencent.com/document/api/296/19867#Filters))
+* [[SecurityEventInfo](https://cloud.tencent.com/document/api/296/19867#SecurityEventInfo)](https://cloud.tencent.com/document/api/296/19867#[SecurityEventInfo](https://cloud.tencent.com/document/api/296/19867#SecurityEventInfo))
+
+修改数据结构：
+
+* [Machine](https://cloud.tencent.com/document/api/296/19867#Machine)
+
+	* 新增成员：InstanceState, LicenseStatus
+
+
 ### 第 1 次发布
 
 发布时间：2020-09-28 08:11:13
@@ -16758,7 +16814,7 @@
 
 新增接口：
 
-* [[CheckPhoneAndName](https://cloud.tencent.com/document/api/1007/50364)](https://cloud.tencent.com/document/api/#/#)
+* [CheckPhoneAndName](https://cloud.tencent.com/document/api/1007/50364)
 
 修改数据结构：
 
@@ -19105,6 +19161,18 @@
 
 
 ## 人脸识别(iai) 版本：2020-03-03
+
+### 第 8 次发布
+
+发布时间：2020-11-30 08:19:25
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[CompareMaskFace](https://cloud.tencent.com/document/api/867/50425)](https://cloud.tencent.com/document/api/#/#)
 
 ### 第 7 次发布
 
@@ -32678,13 +32746,13 @@
 
 新增接口：
 
-* [[CheckInstancesUpgradeAble](https://cloud.tencent.com/document/api/457/50366)](https://cloud.tencent.com/document/api/#/#)
-* [[UpgradeClusterInstances](https://cloud.tencent.com/document/api/457/50365)](https://cloud.tencent.com/document/api/#/#)
+* [CheckInstancesUpgradeAble](https://cloud.tencent.com/document/api/457/50366)
+* [UpgradeClusterInstances](https://cloud.tencent.com/document/api/457/50365)
 
 新增数据结构：
 
-* [[UpgradeAbleInstancesItem](https://cloud.tencent.com/document/api/457/31866#UpgradeAbleInstancesItem)](https://cloud.tencent.com/document/api/457/31866#[UpgradeAbleInstancesItem](https://cloud.tencent.com/document/api/457/31866#UpgradeAbleInstancesItem))
-* [[UpgradeNodeResetParam](https://cloud.tencent.com/document/api/457/31866#UpgradeNodeResetParam)](https://cloud.tencent.com/document/api/457/31866#[UpgradeNodeResetParam](https://cloud.tencent.com/document/api/457/31866#UpgradeNodeResetParam))
+* [UpgradeAbleInstancesItem](https://cloud.tencent.com/document/api/457/31866#UpgradeAbleInstancesItem)
+* [UpgradeNodeResetParam](https://cloud.tencent.com/document/api/457/31866#UpgradeNodeResetParam)
 
 ### 第 32 次发布
 
@@ -36875,7 +36943,7 @@
 
 新增接口：
 
-* [[InquirePriceCreateDirectConnectGateway](https://cloud.tencent.com/document/api/215/50367)](https://cloud.tencent.com/document/api/#/#)
+* [InquirePriceCreateDirectConnectGateway](https://cloud.tencent.com/document/api/215/50367)
 
 ### 第 70 次发布
 

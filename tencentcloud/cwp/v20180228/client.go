@@ -1443,6 +1443,31 @@ func (c *Client) DescribeSecurityDynamics(request *DescribeSecurityDynamicsReque
     return
 }
 
+func NewDescribeSecurityEventsCntRequest() (request *DescribeSecurityEventsCntRequest) {
+    request = &DescribeSecurityEventsCntRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cwp", APIVersion, "DescribeSecurityEventsCnt")
+    return
+}
+
+func NewDescribeSecurityEventsCntResponse() (response *DescribeSecurityEventsCntResponse) {
+    response = &DescribeSecurityEventsCntResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 概览页抽屉侧边弹窗：安全概览“立即处理”页面中的相关事件数统计接口。
+func (c *Client) DescribeSecurityEventsCnt(request *DescribeSecurityEventsCntRequest) (response *DescribeSecurityEventsCntResponse, err error) {
+    if request == nil {
+        request = NewDescribeSecurityEventsCntRequest()
+    }
+    response = NewDescribeSecurityEventsCntResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeSecurityTrendsRequest() (request *DescribeSecurityTrendsRequest) {
     request = &DescribeSecurityTrendsRequest{
         BaseRequest: &tchttp.BaseRequest{},

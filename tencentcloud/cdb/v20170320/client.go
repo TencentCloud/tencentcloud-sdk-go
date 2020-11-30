@@ -268,6 +268,31 @@ func (c *Client) CreateBackup(request *CreateBackupRequest) (response *CreateBac
     return
 }
 
+func NewCreateCloneInstanceRequest() (request *CreateCloneInstanceRequest) {
+    request = &CreateCloneInstanceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cdb", APIVersion, "CreateCloneInstance")
+    return
+}
+
+func NewCreateCloneInstanceResponse() (response *CreateCloneInstanceResponse) {
+    response = &CreateCloneInstanceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口(CreateCloneInstance) 用于从目标源实例创建一个克隆实例，可以指定克隆实例回档到源实例的指定物理备份文件或者指定的回档时间点。
+func (c *Client) CreateCloneInstance(request *CreateCloneInstanceRequest) (response *CreateCloneInstanceResponse, err error) {
+    if request == nil {
+        request = NewCreateCloneInstanceRequest()
+    }
+    response = NewCreateCloneInstanceResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateDBImportJobRequest() (request *CreateDBImportJobRequest) {
     request = &CreateDBImportJobRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1011,6 +1036,31 @@ func (c *Client) DescribeBinlogs(request *DescribeBinlogsRequest) (response *Des
         request = NewDescribeBinlogsRequest()
     }
     response = NewDescribeBinlogsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeCloneListRequest() (request *DescribeCloneListRequest) {
+    request = &DescribeCloneListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cdb", APIVersion, "DescribeCloneList")
+    return
+}
+
+func NewDescribeCloneListResponse() (response *DescribeCloneListResponse) {
+    response = &DescribeCloneListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口(DescribeCloneList) 用于查询用户实例的克隆任务列表。
+func (c *Client) DescribeCloneList(request *DescribeCloneListRequest) (response *DescribeCloneListResponse, err error) {
+    if request == nil {
+        request = NewDescribeCloneListRequest()
+    }
+    response = NewDescribeCloneListResponse()
     err = c.Send(request, response)
     return
 }
@@ -2601,6 +2651,31 @@ func (c *Client) StopDBImportJob(request *StopDBImportJobRequest) (response *Sto
         request = NewStopDBImportJobRequest()
     }
     response = NewStopDBImportJobResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewStopRollbackRequest() (request *StopRollbackRequest) {
+    request = &StopRollbackRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cdb", APIVersion, "StopRollback")
+    return
+}
+
+func NewStopRollbackResponse() (response *StopRollbackResponse) {
+    response = &StopRollbackResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口(StopRollback) 用于撤销实例正在进行的回档任务，该接口返回一个异步任务id。 撤销结果可以通过 DescribeRequestResult 查询任务的执行情况。
+func (c *Client) StopRollback(request *StopRollbackRequest) (response *StopRollbackResponse, err error) {
+    if request == nil {
+        request = NewStopRollbackRequest()
+    }
+    response = NewStopRollbackResponse()
     err = c.Send(request, response)
     return
 }

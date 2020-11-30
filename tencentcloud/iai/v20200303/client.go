@@ -161,6 +161,35 @@ func (c *Client) CompareFace(request *CompareFaceRequest) (response *CompareFace
     return
 }
 
+func NewCompareMaskFaceRequest() (request *CompareMaskFaceRequest) {
+    request = &CompareMaskFaceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iai", APIVersion, "CompareMaskFace")
+    return
+}
+
+func NewCompareMaskFaceResponse() (response *CompareMaskFaceResponse) {
+    response = &CompareMaskFaceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 对两张图片中的人脸进行相似度比对，返回人脸相似度分数。
+// 
+// 戴口罩人脸比对接口可在查询照人脸戴口罩情况下使用，口罩遮挡程度最高可以遮挡鼻尖。
+// 
+// 如图片人脸不存在戴口罩情况，建议使用人脸比对服务。
+func (c *Client) CompareMaskFace(request *CompareMaskFaceRequest) (response *CompareMaskFaceResponse, err error) {
+    if request == nil {
+        request = NewCompareMaskFaceRequest()
+    }
+    response = NewCompareMaskFaceResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCopyPersonRequest() (request *CopyPersonRequest) {
     request = &CopyPersonRequest{
         BaseRequest: &tchttp.BaseRequest{},

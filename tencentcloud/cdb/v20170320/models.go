@@ -437,6 +437,33 @@ type BinlogInfo struct {
 	BinlogFinishTime *string `json:"BinlogFinishTime,omitempty" name:"BinlogFinishTime"`
 }
 
+type CloneItem struct {
+
+	// 克隆任务的源实例Id。
+	SrcInstanceId *string `json:"SrcInstanceId,omitempty" name:"SrcInstanceId"`
+
+	// 克隆任务的新产生实例Id。
+	DstInstanceId *string `json:"DstInstanceId,omitempty" name:"DstInstanceId"`
+
+	// 克隆任务对应的任务列表Id。
+	CloneJobId *int64 `json:"CloneJobId,omitempty" name:"CloneJobId"`
+
+	// 克隆实例使用的策略， 包括以下类型：  timepoint:指定时间点回档，  backupset: 指定备份文件回档。
+	RollbackStrategy *string `json:"RollbackStrategy,omitempty" name:"RollbackStrategy"`
+
+	// 克隆实例回档的时间点。
+	RollbackTargetTime *string `json:"RollbackTargetTime,omitempty" name:"RollbackTargetTime"`
+
+	// 任务开始时间。
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 任务结束时间。
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 任务状态，包括以下状态：initial,running,wait_complete,success,failed
+	TaskStatus *string `json:"TaskStatus,omitempty" name:"TaskStatus"`
+}
+
 type CloseWanServiceRequest struct {
 	*tchttp.BaseRequest
 
@@ -753,6 +780,88 @@ func (r *CreateBackupResponse) ToJsonString() string {
 }
 
 func (r *CreateBackupResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateCloneInstanceRequest struct {
+	*tchttp.BaseRequest
+
+	// 克隆源实例Id。
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 如果需要克隆实例回档到指定时间，则指定该值。时间格式为： yyyy-mm-dd hh:mm:ss 。
+	SpecifiedRollbackTime *string `json:"SpecifiedRollbackTime,omitempty" name:"SpecifiedRollbackTime"`
+
+	// 如果需要克隆实例回档到指定备份的时间点，则指定该值为物理备份的Id。请使用 [查询数据备份文件列表](/document/api/236/15842) 。
+	SpecifiedBackupId *int64 `json:"SpecifiedBackupId,omitempty" name:"SpecifiedBackupId"`
+
+	// 私有网络 ID，如果不传则默认选择基础网络，请使用 [查询私有网络列表](/document/api/215/15778) 。
+	UniqVpcId *string `json:"UniqVpcId,omitempty" name:"UniqVpcId"`
+
+	// 私有网络下的子网 ID，如果设置了 UniqVpcId，则 UniqSubnetId 必填，请使用 [查询子网列表](/document/api/215/15784)。
+	UniqSubnetId *string `json:"UniqSubnetId,omitempty" name:"UniqSubnetId"`
+
+	// 实例内存大小，单位：MB，需要不低于克隆源实例，默认和源实例相同。
+	Memory *int64 `json:"Memory,omitempty" name:"Memory"`
+
+	// 实例硬盘大小，单位：GB，需要不低于克隆源实例，默认和源实例相同。
+	Volume *int64 `json:"Volume,omitempty" name:"Volume"`
+
+	// 新产生的克隆实例名称。
+	InstanceName *string `json:"InstanceName,omitempty" name:"InstanceName"`
+
+	// 安全组参数，可使用 [查询项目安全组信息](https://cloud.tencent.com/document/api/236/15850) 接口查询某个项目的安全组详情。
+	SecurityGroup []*string `json:"SecurityGroup,omitempty" name:"SecurityGroup" list`
+
+	// 实例标签信息。
+	ResourceTags []*TagInfo `json:"ResourceTags,omitempty" name:"ResourceTags" list`
+
+	// 实例Cpu核数，需要不低于克隆源实例。
+	Cpu *int64 `json:"Cpu,omitempty" name:"Cpu"`
+
+	// 数据复制方式，默认为 0，支持值包括：0 - 表示异步复制，1 - 表示半同步复制，2 - 表示强同步复制。
+	ProtectMode *int64 `json:"ProtectMode,omitempty" name:"ProtectMode"`
+
+	// 多可用区域，默认为 0，支持值包括：0 - 表示单可用区，1 - 表示多可用区。
+	DeployMode *int64 `json:"DeployMode,omitempty" name:"DeployMode"`
+
+	// 新产生的克隆实例备库 1 的可用区信息，默认同源实例 Zone 的值。
+	SlaveZone *string `json:"SlaveZone,omitempty" name:"SlaveZone"`
+
+	// 备库 2 的可用区信息，默认为空，克隆强同步主实例时可指定该参数。
+	BackupZone *string `json:"BackupZone,omitempty" name:"BackupZone"`
+
+	// 克隆实例类型。支持值包括： "HA" - 高可用版实例， "EXCLUSIVE" - 独享型实例。 不指定则默认为高可用版。
+	DeviceType *string `json:"DeviceType,omitempty" name:"DeviceType"`
+}
+
+func (r *CreateCloneInstanceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateCloneInstanceRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateCloneInstanceResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 异步任务的请求ID，可使用此 ID 查询异步任务的执行结果。
+		AsyncRequestId *string `json:"AsyncRequestId,omitempty" name:"AsyncRequestId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateCloneInstanceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateCloneInstanceResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -2270,6 +2379,52 @@ func (r *DescribeBinlogsResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeCloneListRequest struct {
+	*tchttp.BaseRequest
+
+	// 查询指定源实例的克隆任务列表。
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 分页查询时的偏移量。
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 分页查询时的每页条目数。
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+func (r *DescribeCloneListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeCloneListRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeCloneListResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 满足条件的条目数。
+		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 克隆任务列表。
+		Items []*CloneItem `json:"Items,omitempty" name:"Items" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeCloneListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeCloneListResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeDBImportRecordsRequest struct {
 	*tchttp.BaseRequest
 
@@ -3094,7 +3249,7 @@ type DescribeErrorLogDataRequest struct {
 	// 要匹配的关键字列表，最多支持15个关键字。
 	KeyWords []*string `json:"KeyWords,omitempty" name:"KeyWords" list`
 
-	// 分页的返回数量，最大为400。
+	// 分页的返回数量，默认为100，最大为400。
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 
 	// 偏移量，默认为0。
@@ -3544,7 +3699,7 @@ type DescribeSlowLogDataRequest struct {
 	// 偏移量，默认为0。
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
 
-	// 一次性返回的记录数量，最大为400。
+	// 一次性返回的记录数量，默认为100，最大为400。
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 }
 
@@ -6131,6 +6286,43 @@ func (r *StopDBImportJobResponse) ToJsonString() string {
 }
 
 func (r *StopDBImportJobResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type StopRollbackRequest struct {
+	*tchttp.BaseRequest
+
+	// 撤销回档任务对应的实例Id。
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+}
+
+func (r *StopRollbackRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *StopRollbackRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type StopRollbackResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 执行请求的异步任务ID
+		AsyncRequestId *string `json:"AsyncRequestId,omitempty" name:"AsyncRequestId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *StopRollbackResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *StopRollbackResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
