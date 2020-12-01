@@ -213,6 +213,185 @@ type AdvanceCacheRule struct {
 	CacheTime *int64 `json:"CacheTime,omitempty" name:"CacheTime"`
 }
 
+type AdvancedAuthentication struct {
+
+	// 防盗链配置开关，on或off，开启时必须且只能配置一种模式，其余模式为null。
+	Switch *string `json:"Switch,omitempty" name:"Switch"`
+
+	// 时间戳防盗链高级版模式A配置。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TypeA *AdvancedAuthenticationTypeA `json:"TypeA,omitempty" name:"TypeA"`
+
+	// 时间戳防盗链高级版模式B配置。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TypeB *AdvancedAuthenticationTypeB `json:"TypeB,omitempty" name:"TypeB"`
+
+	// 时间戳防盗链高级版模式C配置。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TypeC *AdvancedAuthenticationTypeC `json:"TypeC,omitempty" name:"TypeC"`
+
+	// 时间戳防盗链高级版模式D配置。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TypeD *AdvancedAuthenticationTypeD `json:"TypeD,omitempty" name:"TypeD"`
+
+	// 时间戳防盗链高级版模式E配置。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TypeE *AdvancedAuthenticationTypeE `json:"TypeE,omitempty" name:"TypeE"`
+
+	// 时间戳防盗链高级版模式F配置。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TypeF *AdvancedAuthenticationTypeF `json:"TypeF,omitempty" name:"TypeF"`
+}
+
+type AdvancedAuthenticationTypeA struct {
+
+	// 用于计算签名的密钥，只允许字母和数字，长度6-32字节。
+	SecretKey *string `json:"SecretKey,omitempty" name:"SecretKey"`
+
+	// uri串中签名的字段名，字母，数字或下划线构成，同时必须以字母开头。
+	SignParam *string `json:"SignParam,omitempty" name:"SignParam"`
+
+	// uri串中时间的字段名，字母，数字或下划线构成，同时必须以字母开头。
+	TimeParam *string `json:"TimeParam,omitempty" name:"TimeParam"`
+
+	// 过期时间，单位秒。
+	ExpireTime *int64 `json:"ExpireTime,omitempty" name:"ExpireTime"`
+
+	// 是否必须提供过期时间参数。
+	ExpireTimeRequired *bool `json:"ExpireTimeRequired,omitempty" name:"ExpireTimeRequired"`
+
+	// Url组成格式，如：${private_key}${schema}${host}${full_uri。
+	Format *string `json:"Format,omitempty" name:"Format"`
+
+	// 时间格式，dec，hex分别表示十进制，十六进制。
+	TimeFormat *string `json:"TimeFormat,omitempty" name:"TimeFormat"`
+
+	// 鉴权失败时返回的状态码。
+	FailCode *int64 `json:"FailCode,omitempty" name:"FailCode"`
+
+	// 链接过期时返回的状态码。
+	ExpireCode *int64 `json:"ExpireCode,omitempty" name:"ExpireCode"`
+
+	// 需要鉴权的url路径列表。
+	RulePaths []*string `json:"RulePaths,omitempty" name:"RulePaths" list`
+
+	// 保留字段。
+	Transformation *int64 `json:"Transformation,omitempty" name:"Transformation"`
+}
+
+type AdvancedAuthenticationTypeB struct {
+
+	// alpha键名。
+	KeyAlpha *string `json:"KeyAlpha,omitempty" name:"KeyAlpha"`
+
+	// beta键名。
+	KeyBeta *string `json:"KeyBeta,omitempty" name:"KeyBeta"`
+
+	// gamma键名。
+	KeyGamma *string `json:"KeyGamma,omitempty" name:"KeyGamma"`
+
+	// uri串中签名的字段名，字母，数字或下划线构成，同时必须以字母开头。
+	SignParam *string `json:"SignParam,omitempty" name:"SignParam"`
+
+	// uri串中时间的字段名，字母，数字或下划线构成，同时必须以字母开头。
+	TimeParam *string `json:"TimeParam,omitempty" name:"TimeParam"`
+
+	// 过期时间，单位秒。
+	ExpireTime *int64 `json:"ExpireTime,omitempty" name:"ExpireTime"`
+
+	// 时间格式，dec，hex分别表示十进制，十六进制。
+	TimeFormat *string `json:"TimeFormat,omitempty" name:"TimeFormat"`
+
+	// 鉴权失败时返回的状态码。
+	FailCode *int64 `json:"FailCode,omitempty" name:"FailCode"`
+
+	// 链接过期时返回的状态码。
+	ExpireCode *int64 `json:"ExpireCode,omitempty" name:"ExpireCode"`
+
+	// 需要鉴权的url路径列表。
+	RulePaths []*string `json:"RulePaths,omitempty" name:"RulePaths" list`
+}
+
+type AdvancedAuthenticationTypeC struct {
+
+	// 访问密钥。
+	AccessKey *string `json:"AccessKey,omitempty" name:"AccessKey"`
+
+	// 鉴权密钥。
+	SecretKey *string `json:"SecretKey,omitempty" name:"SecretKey"`
+}
+
+type AdvancedAuthenticationTypeD struct {
+
+	// 用于计算签名的密钥，只允许字母和数字，长度6-32字节。
+	SecretKey *string `json:"SecretKey,omitempty" name:"SecretKey"`
+
+	// 备份密钥，当使用SecretKey鉴权失败时会使用该密钥重新鉴权。
+	BackupSecretKey *string `json:"BackupSecretKey,omitempty" name:"BackupSecretKey"`
+
+	// uri串中签名的字段名，字母，数字或下划线构成，同时必须以字母开头。
+	SignParam *string `json:"SignParam,omitempty" name:"SignParam"`
+
+	// uri串中时间的字段名，字母，数字或下划线构成，同时必须以字母开头。
+	TimeParam *string `json:"TimeParam,omitempty" name:"TimeParam"`
+
+	// 过期时间，单位秒。
+	ExpireTime *int64 `json:"ExpireTime,omitempty" name:"ExpireTime"`
+
+	// 时间格式，dec，hex分别表示十进制，十六进制。
+	TimeFormat *string `json:"TimeFormat,omitempty" name:"TimeFormat"`
+}
+
+type AdvancedAuthenticationTypeE struct {
+
+	// 用于计算签名的密钥，只允许字母和数字，长度6-32字节。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SecretKey *string `json:"SecretKey,omitempty" name:"SecretKey"`
+
+	// uri串中签名的字段名，字母，数字或下划线构成，同时必须以字母开头。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SignParam *string `json:"SignParam,omitempty" name:"SignParam"`
+
+	// uri串中Acl签名的字段名，字母，数字或下划线构成，同时必须以字母开头。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AclSignParam *string `json:"AclSignParam,omitempty" name:"AclSignParam"`
+
+	// uri串中开始时间字段名，字母，数字或下划线构成，同时必须以字母开头。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StartTimeParam *string `json:"StartTimeParam,omitempty" name:"StartTimeParam"`
+
+	// uri串中过期时间字段名，字母，数字或下划线构成，同时必须以字母开头。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExpireTimeParam *string `json:"ExpireTimeParam,omitempty" name:"ExpireTimeParam"`
+
+	// 时间格式，dec
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TimeFormat *string `json:"TimeFormat,omitempty" name:"TimeFormat"`
+}
+
+type AdvancedAuthenticationTypeF struct {
+
+	// uri串中签名的字段名，字母，数字或下划线构成，同时必须以字母开头。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SignParam *string `json:"SignParam,omitempty" name:"SignParam"`
+
+	// uri串中时间的字段名，字母，数字或下划线构成，同时必须以字母开头。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TimeParam *string `json:"TimeParam,omitempty" name:"TimeParam"`
+
+	// uri串中Transaction字段名，字母，数字或下划线构成，同时必须以字母开头。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TransactionParam *string `json:"TransactionParam,omitempty" name:"TransactionParam"`
+
+	// 用于计算签名的主密钥，只允许字母和数字，长度6-32字节。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SecretKey *string `json:"SecretKey,omitempty" name:"SecretKey"`
+
+	// 用于计算签名的备选密钥，主密钥校验失败后再次尝试备选密钥，只允许字母和数字，长度6-32字节。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BackupSecretKey *string `json:"BackupSecretKey,omitempty" name:"BackupSecretKey"`
+}
+
 type AdvancedCache struct {
 
 	// 缓存过期规则
@@ -2715,7 +2894,7 @@ type DetailDomain struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MaxAge *MaxAge `json:"MaxAge,omitempty" name:"MaxAge"`
 
-	// Ipv6 配置（功能灰度中，敬请期待）
+	// Ipv6 回源配置（功能灰度中，敬请期待）
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Ipv6 *Ipv6 `json:"Ipv6,omitempty" name:"Ipv6"`
 
@@ -2783,6 +2962,14 @@ type DetailDomain struct {
 	// 标签配置
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Tag []*Tag `json:"Tag,omitempty" name:"Tag" list`
+
+	// 时间戳防盗链高级配置，白名单功能
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AdvancedAuthentication *AdvancedAuthentication `json:"AdvancedAuthentication,omitempty" name:"AdvancedAuthentication"`
+
+	// 回源鉴权高级配置，白名单功能
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OriginAuthentication *OriginAuthentication `json:"OriginAuthentication,omitempty" name:"OriginAuthentication"`
 }
 
 type DiagnoseData struct {
@@ -4044,6 +4231,7 @@ type MaxAgeRule struct {
 	// file：指定文件后缀生效
 	// directory：指定路径生效
 	// path：指定绝对路径生效
+	// index: 指定主页生效
 	MaxAgeType *string `json:"MaxAgeType,omitempty" name:"MaxAgeType"`
 
 	// MaxAgeType 对应类型下的匹配内容：
@@ -4051,6 +4239,7 @@ type MaxAgeRule struct {
 	// file 时填充后缀名，如 jpg、txt
 	// directory 时填充路径，如 /xxx/test/
 	// path 时填充绝对路径，如 /xxx/test.html
+	// index 时填充 /
 	MaxAgeContents []*string `json:"MaxAgeContents,omitempty" name:"MaxAgeContents" list`
 
 	// MaxAge 时间设置，单位秒
@@ -4119,6 +4308,24 @@ type Origin struct {
 	// 分路径回源配置规则
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PathRules []*PathRule `json:"PathRules,omitempty" name:"PathRules" list`
+}
+
+type OriginAuthentication struct {
+
+	// 鉴权开关，on或off
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Switch *string `json:"Switch,omitempty" name:"Switch"`
+
+	// 鉴权类型A配置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TypeA *OriginAuthenticationTypeA `json:"TypeA,omitempty" name:"TypeA"`
+}
+
+type OriginAuthenticationTypeA struct {
+
+	// 用于计算签名的密钥，只允许字母和数字，长度6-32字节。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SecretKey *string `json:"SecretKey,omitempty" name:"SecretKey"`
 }
 
 type OriginPullOptimization struct {
@@ -4251,23 +4458,23 @@ type PathRule struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Regex *bool `json:"Regex,omitempty" name:"Regex"`
 
-	// 匹配的URL路径。
+	// 匹配的URL路径，仅支持Url路径，不支持参数。默认完全匹配，正则模式下支持通配符 *，最多支持5个通配符，最大长度1024字符。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Path *string `json:"Path,omitempty" name:"Path"`
 
-	// 路径匹配时的回源源站。暂不支持开了私有读写的COS源。
+	// 路径匹配时的回源源站。暂不支持开了私有读写的COS源。不填写时沿用默认源站。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Origin *string `json:"Origin,omitempty" name:"Origin"`
 
-	// 路径匹配时回源的Host头部。
+	// 路径匹配时回源的Host头部。不填写时沿用默认ServerName。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ServerName *string `json:"ServerName,omitempty" name:"ServerName"`
 
-	// 源站所属区域，支持CN，OV。分别表示国内或海外。
+	// 源站所属区域，支持CN，OV。分别表示国内或海外。默认为CN。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	OriginArea *string `json:"OriginArea,omitempty" name:"OriginArea"`
 
-	// 路径匹配时回源的URI路径。
+	// 路径匹配时回源的URI路径，必须以“/”开头，不包含参数部分。最大长度1024字符。可使用$1, $2, $3, $4, $5分别捕获匹配路径中的通配符号，最多支持10个捕获值。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ForwardUri *string `json:"ForwardUri,omitempty" name:"ForwardUri"`
 
@@ -4682,6 +4889,7 @@ type RuleCache struct {
 	// directory 时填充路径，如 /xxx/test
 	// path 时填充绝对路径，如 /xxx/test.html
 	// index 时填充 /
+	// default 时填充 "no max-age"
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RulePaths []*string `json:"RulePaths,omitempty" name:"RulePaths" list`
 
@@ -4691,6 +4899,7 @@ type RuleCache struct {
 	// directory：指定路径生效
 	// path：指定绝对路径生效
 	// index：首页
+	// default: 源站无max-age时生效
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RuleType *string `json:"RuleType,omitempty" name:"RuleType"`
 
@@ -5357,6 +5566,12 @@ type UpdateDomainConfigRequest struct {
 
 	// 访问端口配置
 	AccessPort []*int64 `json:"AccessPort,omitempty" name:"AccessPort" list`
+
+	// 时间戳防盗链高级版配置，白名单功能
+	AdvancedAuthentication *AdvancedAuthentication `json:"AdvancedAuthentication,omitempty" name:"AdvancedAuthentication"`
+
+	// 回源鉴权高级版配置，白名单功能
+	OriginAuthentication *OriginAuthentication `json:"OriginAuthentication,omitempty" name:"OriginAuthentication"`
 }
 
 func (r *UpdateDomainConfigRequest) ToJsonString() string {
@@ -5502,10 +5717,10 @@ type UrlRedirectRule struct {
 	// 重定向状态码，301 | 302
 	RedirectStatusCode *int64 `json:"RedirectStatusCode,omitempty" name:"RedirectStatusCode"`
 
-	// 待匹配的Url模式，支持完全路径匹配和正则匹配，最大长度1024字符。
+	// 待匹配的Url，仅支持Url路径，不支持参数。默认完全匹配，支持通配符 *，最多支持5个通配符，最大长度1024字符。
 	Pattern *string `json:"Pattern,omitempty" name:"Pattern"`
 
-	// 目标URL，必须以“/”开头，最大长度1024字符。
+	// 目标URL，必须以“/”开头，不包含参数部分。最大长度1024字符。可使用$1, $2, $3, $4, $5分别捕获匹配路径中的通配符号，最多支持10个捕获值。
 	RedirectUrl *string `json:"RedirectUrl,omitempty" name:"RedirectUrl"`
 }
 

@@ -700,13 +700,13 @@ type CreateApiRequest struct {
 	// API 所在的服务唯一 ID。
 	ServiceId *string `json:"ServiceId,omitempty" name:"ServiceId"`
 
-	// API 的后端服务类型。支持HTTP、MOCK、TSF、CLB、SCF、WEBSOCKET、TARGET（内测）。
+	// API 的后端服务类型。支持HTTP、MOCK、TSF、SCF、WEBSOCKET、TARGET（内测）。
 	ServiceType *string `json:"ServiceType,omitempty" name:"ServiceType"`
 
 	// API 的后端服务超时时间，单位是秒。
 	ServiceTimeout *int64 `json:"ServiceTimeout,omitempty" name:"ServiceTimeout"`
 
-	// API 的前端请求类型，如 HTTP 或 HTTPS 或者 HTTP 和 HTTPS。
+	// API 的前端请求协议，支持HTTP和WEBSOCKET。
 	Protocol *string `json:"Protocol,omitempty" name:"Protocol"`
 
 	// 请求的前端配置。
@@ -933,7 +933,7 @@ func (r *CreateIPStrategyResponse) FromJsonString(s string) error {
 type CreateServiceRequest struct {
 	*tchttp.BaseRequest
 
-	// 用户自定义的服务名称。如果没传，则系统自动生成一个唯一名称。
+	// 用户自定义的服务名称。
 	ServiceName *string `json:"ServiceName,omitempty" name:"ServiceName"`
 
 	// 服务的前端请求类型。如 http、https、http&https。

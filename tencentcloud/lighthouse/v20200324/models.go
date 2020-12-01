@@ -250,7 +250,7 @@ type DescribeBundlesRequest struct {
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 
 	// 过滤器列表。
-	// <li>bundle-id</li>按照【镜像 ID】进行过滤。
+	// <li>bundle-id</li>按照【套餐 ID】进行过滤。
 	// 类型：String
 	// 必选：否
 	// <li>support-platform-type</li>按照【系统类型】进行过滤。

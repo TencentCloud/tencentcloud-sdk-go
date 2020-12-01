@@ -340,6 +340,61 @@ func (r *DescribeScanResultListResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeUserInAndOutTimeRequest struct {
+	*tchttp.BaseRequest
+
+	// 应用ID
+	BizId *int64 `json:"BizId,omitempty" name:"BizId"`
+
+	// 房间ID
+	RoomId *int64 `json:"RoomId,omitempty" name:"RoomId"`
+
+	// 用户ID
+	UserId *int64 `json:"UserId,omitempty" name:"UserId"`
+}
+
+func (r *DescribeUserInAndOutTimeRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeUserInAndOutTimeRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeUserInAndOutTimeResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 用户在房间得进出时间列表
+		InOutList []*InOutTimeInfo `json:"InOutList,omitempty" name:"InOutList" list`
+
+		// 用户在房间中总时长
+		Duration *int64 `json:"Duration,omitempty" name:"Duration"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeUserInAndOutTimeResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeUserInAndOutTimeResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type InOutTimeInfo struct {
+
+	// 进入房间时间
+	StartTime *int64 `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 退出房间时间
+	EndTime *int64 `json:"EndTime,omitempty" name:"EndTime"`
+}
+
 type ModifyAppStatusRequest struct {
 	*tchttp.BaseRequest
 

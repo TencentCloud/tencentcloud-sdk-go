@@ -169,6 +169,31 @@ func (c *Client) DescribeScanResultList(request *DescribeScanResultListRequest) 
     return
 }
 
+func NewDescribeUserInAndOutTimeRequest() (request *DescribeUserInAndOutTimeRequest) {
+    request = &DescribeUserInAndOutTimeRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("gme", APIVersion, "DescribeUserInAndOutTime")
+    return
+}
+
+func NewDescribeUserInAndOutTimeResponse() (response *DescribeUserInAndOutTimeResponse) {
+    response = &DescribeUserInAndOutTimeResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 拉取用户在房间得进出时间
+func (c *Client) DescribeUserInAndOutTime(request *DescribeUserInAndOutTimeRequest) (response *DescribeUserInAndOutTimeResponse, err error) {
+    if request == nil {
+        request = NewDescribeUserInAndOutTimeRequest()
+    }
+    response = NewDescribeUserInAndOutTimeResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyAppStatusRequest() (request *ModifyAppStatusRequest) {
     request = &ModifyAppStatusRequest{
         BaseRequest: &tchttp.BaseRequest{},

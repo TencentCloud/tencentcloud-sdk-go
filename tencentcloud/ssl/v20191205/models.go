@@ -1459,7 +1459,7 @@ type SubmittedData struct {
 type UploadCertificateRequest struct {
 	*tchttp.BaseRequest
 
-	// 证书公钥。
+	// 证书内容。
 	CertificatePublicKey *string `json:"CertificatePublicKey,omitempty" name:"CertificatePublicKey"`
 
 	// 私钥内容，证书类型为 SVR 时必填，为 CA 时可不填。

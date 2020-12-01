@@ -107,11 +107,11 @@ type BillDetail struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Tags []*BillTagInfo `json:"Tags,omitempty" name:"Tags" list`
 
-	// 商品名称代码（未开放的字段）
+	// 商品名称代码
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	BusinessCode *string `json:"BusinessCode,omitempty" name:"BusinessCode"`
 
-	// 子商品名称代码 （未开放的字段）
+	// 子商品名称代码
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProductCode *string `json:"ProductCode,omitempty" name:"ProductCode"`
 
@@ -174,11 +174,11 @@ type BillDetailComponent struct {
 	// 赠送账户支付金额
 	IncentivePayAmount *string `json:"IncentivePayAmount,omitempty" name:"IncentivePayAmount"`
 
-	// 组件类型代码（未开放的字段）
+	// 组件类型代码
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ItemCode *string `json:"ItemCode,omitempty" name:"ItemCode"`
 
-	// 组件名称代码（未开放的字段）
+	// 组件名称代码
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ComponentCode *string `json:"ComponentCode,omitempty" name:"ComponentCode"`
 

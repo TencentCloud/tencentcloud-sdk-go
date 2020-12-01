@@ -2086,7 +2086,7 @@ func NewExecuteTaskResponse() (response *ExecuteTaskResponse) {
     return
 }
 
-// 执行一次任务。
+// 手动执行一次任务。
 func (c *Client) ExecuteTask(request *ExecuteTaskRequest) (response *ExecuteTaskResponse, err error) {
     if request == nil {
         request = NewExecuteTaskRequest()

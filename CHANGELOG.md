@@ -1,93 +1,48 @@
 # 本版本更新包含以下内容：
 
-## 云数据库 MySQL(cdb) 版本：2017-03-20
+## 内容分发网络(cdn) 版本：2018-06-06
 
-### 第 51 次发布
+### 第 49 次发布
 
-发布时间：2020-11-30 08:09:51
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [CreateCloneInstance](https://cloud.tencent.com/document/api/236/50424)
-* [DescribeCloneList](https://cloud.tencent.com/document/api/236/50423)
-* [StopRollback](https://cloud.tencent.com/document/api/236/50422)
-
-新增数据结构：
-
-* [CloneItem](https://cloud.tencent.com/document/api/236/15878#CloneItem)
-
-
-
-## 主机安全(cwp) 版本：2018-02-28
-
-### 第 2 次发布
-
-发布时间：2020-11-30 08:43:46
+发布时间：2020-12-01 08:02:29
 
 本次发布包含了以下内容：
 
 改善已有的文档。
-
-新增接口：
-
-* [DescribeSecurityEventsCnt](https://cloud.tencent.com/document/api/296/50427)
 
 修改接口：
 
-* [DescribeMachineInfo](https://cloud.tencent.com/document/api/296/19851)
+* [UpdateDomainConfig](https://cloud.tencent.com/document/api/228/41116)
 
-	* 新增出参：AgentVersion, ProVersionDeadline
-
-* [ExportBashEvents](https://cloud.tencent.com/document/api/296/39584)
-
-	* 新增入参：Filters
-
-	* 新增出参：TaskId
-
-* [ExportBruteAttacks](https://cloud.tencent.com/document/api/296/39583)
-
-	* 新增入参：Filters
-
-	* 新增出参：TaskId
-
-* [ExportMalwares](https://cloud.tencent.com/document/api/296/39582)
-
-	* 新增入参：Limit, Offset, Filters
-
-* [ExportNonlocalLoginPlaces](https://cloud.tencent.com/document/api/296/39581)
-
-	* 新增入参：Filters
-
-* [ExportReverseShellEvents](https://cloud.tencent.com/document/api/296/39579)
-
-	* 新增入参：Filters
-
-	* 新增出参：TaskId
+	* 新增入参：AdvancedAuthentication, OriginAuthentication
 
 
 新增数据结构：
 
-* [Filters](https://cloud.tencent.com/document/api/296/19867#Filters)
-* [SecurityEventInfo](https://cloud.tencent.com/document/api/296/19867#SecurityEventInfo)
+* [AdvancedAuthentication](https://cloud.tencent.com/document/api/228/30987#AdvancedAuthentication)
+* [AdvancedAuthenticationTypeA](https://cloud.tencent.com/document/api/228/30987#AdvancedAuthenticationTypeA)
+* [AdvancedAuthenticationTypeB](https://cloud.tencent.com/document/api/228/30987#AdvancedAuthenticationTypeB)
+* [AdvancedAuthenticationTypeC](https://cloud.tencent.com/document/api/228/30987#AdvancedAuthenticationTypeC)
+* [AdvancedAuthenticationTypeD](https://cloud.tencent.com/document/api/228/30987#AdvancedAuthenticationTypeD)
+* [AdvancedAuthenticationTypeE](https://cloud.tencent.com/document/api/228/30987#AdvancedAuthenticationTypeE)
+* [AdvancedAuthenticationTypeF](https://cloud.tencent.com/document/api/228/30987#AdvancedAuthenticationTypeF)
+* [OriginAuthentication](https://cloud.tencent.com/document/api/228/30987#OriginAuthentication)
+* [OriginAuthenticationTypeA](https://cloud.tencent.com/document/api/228/30987#OriginAuthenticationTypeA)
 
 修改数据结构：
 
-* [Machine](https://cloud.tencent.com/document/api/296/19867#Machine)
+* [DetailDomain](https://cloud.tencent.com/document/api/228/30987#DetailDomain)
 
-	* 新增成员：InstanceState, LicenseStatus
-
-
+	* 新增成员：AdvancedAuthentication, OriginAuthentication
 
 
-## 人脸识别(iai) 版本：2020-03-03
+
+
+## 游戏多媒体引擎(gme) 版本：2018-07-11
 
 ### 第 8 次发布
 
-发布时间：2020-11-30 08:19:25
+发布时间：2020-12-01 08:03:50
 
 本次发布包含了以下内容：
 
@@ -95,11 +50,11 @@
 
 新增接口：
 
-* [CompareMaskFace](https://cloud.tencent.com/document/api/867/50425)
+* [DescribeUserInAndOutTime](https://cloud.tencent.com/document/api/607/50480)
 
+新增数据结构：
 
-
-## 人脸识别(iai) 版本：2018-03-01
+* [InOutTimeInfo](https://cloud.tencent.com/document/api/607/35375#InOutTimeInfo)
 
 
 
@@ -5660,13 +5615,13 @@
 
 新增接口：
 
-* [[CreateCloneInstance](https://cloud.tencent.com/document/api/236/50424)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeCloneList](https://cloud.tencent.com/document/api/236/50423)](https://cloud.tencent.com/document/api/#/#)
-* [[StopRollback](https://cloud.tencent.com/document/api/236/50422)](https://cloud.tencent.com/document/api/#/#)
+* [CreateCloneInstance](https://cloud.tencent.com/document/api/236/50424)
+* [DescribeCloneList](https://cloud.tencent.com/document/api/236/50423)
+* [StopRollback](https://cloud.tencent.com/document/api/236/50422)
 
 新增数据结构：
 
-* [[CloneItem](https://cloud.tencent.com/document/api/236/15878#CloneItem)](https://cloud.tencent.com/document/api/236/15878#[CloneItem](https://cloud.tencent.com/document/api/236/15878#CloneItem))
+* [CloneItem](https://cloud.tencent.com/document/api/236/15878#CloneItem)
 
 ### 第 50 次发布
 
@@ -6730,6 +6685,40 @@
 
 
 ## 内容分发网络(cdn) 版本：2018-06-06
+
+### 第 49 次发布
+
+发布时间：2020-12-01 08:02:29
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [UpdateDomainConfig](https://cloud.tencent.com/document/api/228/41116)
+
+	* 新增入参：AdvancedAuthentication, OriginAuthentication
+
+
+新增数据结构：
+
+* [[AdvancedAuthentication](https://cloud.tencent.com/document/api/228/30987#AdvancedAuthentication)](https://cloud.tencent.com/document/api/228/30987#[AdvancedAuthentication](https://cloud.tencent.com/document/api/228/30987#AdvancedAuthentication))
+* [[AdvancedAuthenticationTypeA](https://cloud.tencent.com/document/api/228/30987#AdvancedAuthenticationTypeA)](https://cloud.tencent.com/document/api/228/30987#[AdvancedAuthenticationTypeA](https://cloud.tencent.com/document/api/228/30987#AdvancedAuthenticationTypeA))
+* [[AdvancedAuthenticationTypeB](https://cloud.tencent.com/document/api/228/30987#AdvancedAuthenticationTypeB)](https://cloud.tencent.com/document/api/228/30987#[AdvancedAuthenticationTypeB](https://cloud.tencent.com/document/api/228/30987#AdvancedAuthenticationTypeB))
+* [[AdvancedAuthenticationTypeC](https://cloud.tencent.com/document/api/228/30987#AdvancedAuthenticationTypeC)](https://cloud.tencent.com/document/api/228/30987#[AdvancedAuthenticationTypeC](https://cloud.tencent.com/document/api/228/30987#AdvancedAuthenticationTypeC))
+* [[AdvancedAuthenticationTypeD](https://cloud.tencent.com/document/api/228/30987#AdvancedAuthenticationTypeD)](https://cloud.tencent.com/document/api/228/30987#[AdvancedAuthenticationTypeD](https://cloud.tencent.com/document/api/228/30987#AdvancedAuthenticationTypeD))
+* [[AdvancedAuthenticationTypeE](https://cloud.tencent.com/document/api/228/30987#AdvancedAuthenticationTypeE)](https://cloud.tencent.com/document/api/228/30987#[AdvancedAuthenticationTypeE](https://cloud.tencent.com/document/api/228/30987#AdvancedAuthenticationTypeE))
+* [[AdvancedAuthenticationTypeF](https://cloud.tencent.com/document/api/228/30987#AdvancedAuthenticationTypeF)](https://cloud.tencent.com/document/api/228/30987#[AdvancedAuthenticationTypeF](https://cloud.tencent.com/document/api/228/30987#AdvancedAuthenticationTypeF))
+* [[OriginAuthentication](https://cloud.tencent.com/document/api/228/30987#OriginAuthentication)](https://cloud.tencent.com/document/api/228/30987#[OriginAuthentication](https://cloud.tencent.com/document/api/228/30987#OriginAuthentication))
+* [[OriginAuthenticationTypeA](https://cloud.tencent.com/document/api/228/30987#OriginAuthenticationTypeA)](https://cloud.tencent.com/document/api/228/30987#[OriginAuthenticationTypeA](https://cloud.tencent.com/document/api/228/30987#OriginAuthenticationTypeA))
+
+修改数据结构：
+
+* [DetailDomain](https://cloud.tencent.com/document/api/228/30987#DetailDomain)
+
+	* 新增成员：AdvancedAuthentication, OriginAuthentication
+
 
 ### 第 48 次发布
 
@@ -12468,7 +12457,7 @@
 
 新增接口：
 
-* [[DescribeSecurityEventsCnt](https://cloud.tencent.com/document/api/296/50427)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeSecurityEventsCnt](https://cloud.tencent.com/document/api/296/50427)
 
 修改接口：
 
@@ -12505,8 +12494,8 @@
 
 新增数据结构：
 
-* [[Filters](https://cloud.tencent.com/document/api/296/19867#Filters)](https://cloud.tencent.com/document/api/296/19867#[Filters](https://cloud.tencent.com/document/api/296/19867#Filters))
-* [[SecurityEventInfo](https://cloud.tencent.com/document/api/296/19867#SecurityEventInfo)](https://cloud.tencent.com/document/api/296/19867#[SecurityEventInfo](https://cloud.tencent.com/document/api/296/19867#SecurityEventInfo))
+* [Filters](https://cloud.tencent.com/document/api/296/19867#Filters)
+* [SecurityEventInfo](https://cloud.tencent.com/document/api/296/19867#SecurityEventInfo)
 
 修改数据结构：
 
@@ -17795,6 +17784,22 @@
 
 ## 游戏多媒体引擎(gme) 版本：2018-07-11
 
+### 第 8 次发布
+
+发布时间：2020-12-01 08:03:50
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeUserInAndOutTime](https://cloud.tencent.com/document/api/607/50480)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[InOutTimeInfo](https://cloud.tencent.com/document/api/607/35375#InOutTimeInfo)](https://cloud.tencent.com/document/api/607/35375#[InOutTimeInfo](https://cloud.tencent.com/document/api/607/35375#InOutTimeInfo))
+
 ### 第 7 次发布
 
 发布时间：2019-11-28 22:12:22
@@ -19172,7 +19177,7 @@
 
 新增接口：
 
-* [[CompareMaskFace](https://cloud.tencent.com/document/api/867/50425)](https://cloud.tencent.com/document/api/#/#)
+* [CompareMaskFace](https://cloud.tencent.com/document/api/867/50425)
 
 ### 第 7 次发布
 
@@ -33701,7 +33706,7 @@
 * [DescribeTrtcInteractiveTime](https://cloud.tencent.com/document/api/647/49981)
 * [DescribeTrtcMcuTranscodeTime](https://cloud.tencent.com/document/api/647/49980)
 * [DismissRoomByStrRoomId](https://cloud.tencent.com/document/api/647/37088)
-* [RemoveUserByStrRoomId](https://cloud.tencent.com/document/api/647/40496)
+* [RemoveUserByStrRoomId](https://cloud.tencent.com/document/api/647/50426)
 
 新增数据结构：
 
