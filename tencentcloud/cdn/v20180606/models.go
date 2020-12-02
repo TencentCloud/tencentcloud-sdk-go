@@ -1661,6 +1661,43 @@ func (r *DescribeCdnIpResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeCdnOriginIpRequest struct {
+	*tchttp.BaseRequest
+}
+
+func (r *DescribeCdnOriginIpRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeCdnOriginIpRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeCdnOriginIpResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 回源节点IP详情。
+		Ips []*OriginIp `json:"Ips,omitempty" name:"Ips" list`
+
+		// 回源节点IP总个数。
+		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeCdnOriginIpResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeCdnOriginIpResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeCertDomainsRequest struct {
 	*tchttp.BaseRequest
 
@@ -4326,6 +4363,12 @@ type OriginAuthenticationTypeA struct {
 	// 用于计算签名的密钥，只允许字母和数字，长度6-32字节。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SecretKey *string `json:"SecretKey,omitempty" name:"SecretKey"`
+}
+
+type OriginIp struct {
+
+	// 回源IP段/回源IP，默认返回IP段信息。
+	Ip *string `json:"Ip,omitempty" name:"Ip"`
 }
 
 type OriginPullOptimization struct {

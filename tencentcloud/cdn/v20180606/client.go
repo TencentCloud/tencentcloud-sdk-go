@@ -378,6 +378,31 @@ func (c *Client) DescribeCdnIp(request *DescribeCdnIpRequest) (response *Describ
     return
 }
 
+func NewDescribeCdnOriginIpRequest() (request *DescribeCdnOriginIpRequest) {
+    request = &DescribeCdnOriginIpRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cdn", APIVersion, "DescribeCdnOriginIp")
+    return
+}
+
+func NewDescribeCdnOriginIpResponse() (response *DescribeCdnOriginIpResponse) {
+    response = &DescribeCdnOriginIpResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（DescribeCdnOriginIp）用于查询 CDN 回源节点的IP信息。（注：使用此接口需开启对应白名单）
+func (c *Client) DescribeCdnOriginIp(request *DescribeCdnOriginIpRequest) (response *DescribeCdnOriginIpResponse, err error) {
+    if request == nil {
+        request = NewDescribeCdnOriginIpRequest()
+    }
+    response = NewDescribeCdnOriginIpResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeCertDomainsRequest() (request *DescribeCertDomainsRequest) {
     request = &DescribeCertDomainsRequest{
         BaseRequest: &tchttp.BaseRequest{},

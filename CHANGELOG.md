@@ -2,47 +2,9 @@
 
 ## 内容分发网络(cdn) 版本：2018-06-06
 
-### 第 49 次发布
+### 第 50 次发布
 
-发布时间：2020-12-01 08:02:29
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [UpdateDomainConfig](https://cloud.tencent.com/document/api/228/41116)
-
-	* 新增入参：AdvancedAuthentication, OriginAuthentication
-
-
-新增数据结构：
-
-* [AdvancedAuthentication](https://cloud.tencent.com/document/api/228/30987#AdvancedAuthentication)
-* [AdvancedAuthenticationTypeA](https://cloud.tencent.com/document/api/228/30987#AdvancedAuthenticationTypeA)
-* [AdvancedAuthenticationTypeB](https://cloud.tencent.com/document/api/228/30987#AdvancedAuthenticationTypeB)
-* [AdvancedAuthenticationTypeC](https://cloud.tencent.com/document/api/228/30987#AdvancedAuthenticationTypeC)
-* [AdvancedAuthenticationTypeD](https://cloud.tencent.com/document/api/228/30987#AdvancedAuthenticationTypeD)
-* [AdvancedAuthenticationTypeE](https://cloud.tencent.com/document/api/228/30987#AdvancedAuthenticationTypeE)
-* [AdvancedAuthenticationTypeF](https://cloud.tencent.com/document/api/228/30987#AdvancedAuthenticationTypeF)
-* [OriginAuthentication](https://cloud.tencent.com/document/api/228/30987#OriginAuthentication)
-* [OriginAuthenticationTypeA](https://cloud.tencent.com/document/api/228/30987#OriginAuthenticationTypeA)
-
-修改数据结构：
-
-* [DetailDomain](https://cloud.tencent.com/document/api/228/30987#DetailDomain)
-
-	* 新增成员：AdvancedAuthentication, OriginAuthentication
-
-
-
-
-## 游戏多媒体引擎(gme) 版本：2018-07-11
-
-### 第 8 次发布
-
-发布时间：2020-12-01 08:03:50
+发布时间：2020-12-02 08:02:23
 
 本次发布包含了以下内容：
 
@@ -50,11 +12,70 @@
 
 新增接口：
 
-* [DescribeUserInAndOutTime](https://cloud.tencent.com/document/api/607/50480)
+* [DescribeCdnOriginIp](https://cloud.tencent.com/document/api/228/50513)
 
 新增数据结构：
 
-* [InOutTimeInfo](https://cloud.tencent.com/document/api/607/35375#InOutTimeInfo)
+* [OriginIp](https://cloud.tencent.com/document/api/228/30987#OriginIp)
+
+
+
+## 数据库智能管家 DBbrain(dbbrain) 版本：2019-10-16
+
+### 第 8 次发布
+
+发布时间：2020-12-02 08:03:01
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CreateDBDiagReportTask](https://cloud.tencent.com/document/api/1130/50518)
+* [CreateMailProfile](https://cloud.tencent.com/document/api/1130/50517)
+* [DescribeAllUserContact](https://cloud.tencent.com/document/api/1130/50516)
+* [DescribeAllUserGroup](https://cloud.tencent.com/document/api/1130/50515)
+* [ModifyDiagDBInstanceConf](https://cloud.tencent.com/document/api/1130/50514)
+
+新增数据结构：
+
+* [ContactItem](https://cloud.tencent.com/document/api/1130/39561#ContactItem)
+* [GroupItem](https://cloud.tencent.com/document/api/1130/39561#GroupItem)
+* [InstanceConfs](https://cloud.tencent.com/document/api/1130/39561#InstanceConfs)
+* [MailConfiguration](https://cloud.tencent.com/document/api/1130/39561#MailConfiguration)
+* [ProfileInfo](https://cloud.tencent.com/document/api/1130/39561#ProfileInfo)
+
+
+
+## 云点播(vod) 版本：2018-07-17
+
+### 第 63 次发布
+
+发布时间：2020-12-02 08:06:51
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeCDNStatDetails](https://cloud.tencent.com/document/api/266/50519)
+
+修改接口：
+
+* [DescribeStorageData](https://cloud.tencent.com/document/api/266/41463)
+
+	* 新增出参：StorageStat
+
+* [DescribeStorageDetails](https://cloud.tencent.com/document/api/266/41462)
+
+	* 新增入参：Area
+
+
+新增数据结构：
+
+* [StorageStatData](https://cloud.tencent.com/document/api/266/31773#StorageStatData)
 
 
 
@@ -6686,6 +6707,22 @@
 
 ## 内容分发网络(cdn) 版本：2018-06-06
 
+### 第 50 次发布
+
+发布时间：2020-12-02 08:02:23
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeCdnOriginIp](https://cloud.tencent.com/document/api/228/50513)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[OriginIp](https://cloud.tencent.com/document/api/228/30987#OriginIp)](https://cloud.tencent.com/document/api/228/30987#[OriginIp](https://cloud.tencent.com/document/api/228/30987#OriginIp))
+
 ### 第 49 次发布
 
 发布时间：2020-12-01 08:02:29
@@ -6703,15 +6740,15 @@
 
 新增数据结构：
 
-* [[AdvancedAuthentication](https://cloud.tencent.com/document/api/228/30987#AdvancedAuthentication)](https://cloud.tencent.com/document/api/228/30987#[AdvancedAuthentication](https://cloud.tencent.com/document/api/228/30987#AdvancedAuthentication))
-* [[AdvancedAuthenticationTypeA](https://cloud.tencent.com/document/api/228/30987#AdvancedAuthenticationTypeA)](https://cloud.tencent.com/document/api/228/30987#[AdvancedAuthenticationTypeA](https://cloud.tencent.com/document/api/228/30987#AdvancedAuthenticationTypeA))
-* [[AdvancedAuthenticationTypeB](https://cloud.tencent.com/document/api/228/30987#AdvancedAuthenticationTypeB)](https://cloud.tencent.com/document/api/228/30987#[AdvancedAuthenticationTypeB](https://cloud.tencent.com/document/api/228/30987#AdvancedAuthenticationTypeB))
-* [[AdvancedAuthenticationTypeC](https://cloud.tencent.com/document/api/228/30987#AdvancedAuthenticationTypeC)](https://cloud.tencent.com/document/api/228/30987#[AdvancedAuthenticationTypeC](https://cloud.tencent.com/document/api/228/30987#AdvancedAuthenticationTypeC))
-* [[AdvancedAuthenticationTypeD](https://cloud.tencent.com/document/api/228/30987#AdvancedAuthenticationTypeD)](https://cloud.tencent.com/document/api/228/30987#[AdvancedAuthenticationTypeD](https://cloud.tencent.com/document/api/228/30987#AdvancedAuthenticationTypeD))
-* [[AdvancedAuthenticationTypeE](https://cloud.tencent.com/document/api/228/30987#AdvancedAuthenticationTypeE)](https://cloud.tencent.com/document/api/228/30987#[AdvancedAuthenticationTypeE](https://cloud.tencent.com/document/api/228/30987#AdvancedAuthenticationTypeE))
-* [[AdvancedAuthenticationTypeF](https://cloud.tencent.com/document/api/228/30987#AdvancedAuthenticationTypeF)](https://cloud.tencent.com/document/api/228/30987#[AdvancedAuthenticationTypeF](https://cloud.tencent.com/document/api/228/30987#AdvancedAuthenticationTypeF))
-* [[OriginAuthentication](https://cloud.tencent.com/document/api/228/30987#OriginAuthentication)](https://cloud.tencent.com/document/api/228/30987#[OriginAuthentication](https://cloud.tencent.com/document/api/228/30987#OriginAuthentication))
-* [[OriginAuthenticationTypeA](https://cloud.tencent.com/document/api/228/30987#OriginAuthenticationTypeA)](https://cloud.tencent.com/document/api/228/30987#[OriginAuthenticationTypeA](https://cloud.tencent.com/document/api/228/30987#OriginAuthenticationTypeA))
+* [AdvancedAuthentication](https://cloud.tencent.com/document/api/228/30987#AdvancedAuthentication)
+* [AdvancedAuthenticationTypeA](https://cloud.tencent.com/document/api/228/30987#AdvancedAuthenticationTypeA)
+* [AdvancedAuthenticationTypeB](https://cloud.tencent.com/document/api/228/30987#AdvancedAuthenticationTypeB)
+* [AdvancedAuthenticationTypeC](https://cloud.tencent.com/document/api/228/30987#AdvancedAuthenticationTypeC)
+* [AdvancedAuthenticationTypeD](https://cloud.tencent.com/document/api/228/30987#AdvancedAuthenticationTypeD)
+* [AdvancedAuthenticationTypeE](https://cloud.tencent.com/document/api/228/30987#AdvancedAuthenticationTypeE)
+* [AdvancedAuthenticationTypeF](https://cloud.tencent.com/document/api/228/30987#AdvancedAuthenticationTypeF)
+* [OriginAuthentication](https://cloud.tencent.com/document/api/228/30987#OriginAuthentication)
+* [OriginAuthenticationTypeA](https://cloud.tencent.com/document/api/228/30987#OriginAuthenticationTypeA)
 
 修改数据结构：
 
@@ -13404,6 +13441,30 @@
 
 ## 数据库智能管家 DBbrain(dbbrain) 版本：2019-10-16
 
+### 第 8 次发布
+
+发布时间：2020-12-02 08:03:01
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[CreateDBDiagReportTask](https://cloud.tencent.com/document/api/1130/50518)](https://cloud.tencent.com/document/api/#/#)
+* [[CreateMailProfile](https://cloud.tencent.com/document/api/1130/50517)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeAllUserContact](https://cloud.tencent.com/document/api/1130/50516)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeAllUserGroup](https://cloud.tencent.com/document/api/1130/50515)](https://cloud.tencent.com/document/api/#/#)
+* [[ModifyDiagDBInstanceConf](https://cloud.tencent.com/document/api/1130/50514)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[ContactItem](https://cloud.tencent.com/document/api/1130/39561#ContactItem)](https://cloud.tencent.com/document/api/1130/39561#[ContactItem](https://cloud.tencent.com/document/api/1130/39561#ContactItem))
+* [[GroupItem](https://cloud.tencent.com/document/api/1130/39561#GroupItem)](https://cloud.tencent.com/document/api/1130/39561#[GroupItem](https://cloud.tencent.com/document/api/1130/39561#GroupItem))
+* [[InstanceConfs](https://cloud.tencent.com/document/api/1130/39561#InstanceConfs)](https://cloud.tencent.com/document/api/1130/39561#[InstanceConfs](https://cloud.tencent.com/document/api/1130/39561#InstanceConfs))
+* [[MailConfiguration](https://cloud.tencent.com/document/api/1130/39561#MailConfiguration)](https://cloud.tencent.com/document/api/1130/39561#[MailConfiguration](https://cloud.tencent.com/document/api/1130/39561#MailConfiguration))
+* [[ProfileInfo](https://cloud.tencent.com/document/api/1130/39561#ProfileInfo)](https://cloud.tencent.com/document/api/1130/39561#[ProfileInfo](https://cloud.tencent.com/document/api/1130/39561#ProfileInfo))
+
 ### 第 7 次发布
 
 发布时间：2020-11-17 08:03:56
@@ -17794,11 +17855,11 @@
 
 新增接口：
 
-* [[DescribeUserInAndOutTime](https://cloud.tencent.com/document/api/607/50480)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeUserInAndOutTime](https://cloud.tencent.com/document/api/607/50480)
 
 新增数据结构：
 
-* [[InOutTimeInfo](https://cloud.tencent.com/document/api/607/35375#InOutTimeInfo)](https://cloud.tencent.com/document/api/607/35375#[InOutTimeInfo](https://cloud.tencent.com/document/api/607/35375#InOutTimeInfo))
+* [InOutTimeInfo](https://cloud.tencent.com/document/api/607/35375#InOutTimeInfo)
 
 ### 第 7 次发布
 
@@ -35073,6 +35134,33 @@
 
 
 ## 云点播(vod) 版本：2018-07-17
+
+### 第 63 次发布
+
+发布时间：2020-12-02 08:06:51
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeCDNStatDetails](https://cloud.tencent.com/document/api/266/50519)](https://cloud.tencent.com/document/api/#/#)
+
+修改接口：
+
+* [DescribeStorageData](https://cloud.tencent.com/document/api/266/41463)
+
+	* 新增出参：StorageStat
+
+* [DescribeStorageDetails](https://cloud.tencent.com/document/api/266/41462)
+
+	* 新增入参：Area
+
+
+新增数据结构：
+
+* [[StorageStatData](https://cloud.tencent.com/document/api/266/31773#StorageStatData)](https://cloud.tencent.com/document/api/266/31773#[StorageStatData](https://cloud.tencent.com/document/api/266/31773#StorageStatData))
 
 ### 第 62 次发布
 

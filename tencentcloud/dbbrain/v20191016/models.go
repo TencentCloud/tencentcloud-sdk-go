@@ -20,6 +20,211 @@ import (
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
+type ContactItem struct {
+
+	// 联系人id。
+	Id *int64 `json:"Id,omitempty" name:"Id"`
+
+	// 联系人姓名。
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 联系人绑定的邮箱。
+	Mail *string `json:"Mail,omitempty" name:"Mail"`
+}
+
+type CreateDBDiagReportTaskRequest struct {
+	*tchttp.BaseRequest
+
+	// 实例ID。
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 开始时间，如“2020-11-08T14:00:00+08:00”。
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 结束时间，如“2020-11-09T14:00:00+08:00”。
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 是否发送邮件: 0 - 否，1 - 是。
+	SendMailFlag *int64 `json:"SendMailFlag,omitempty" name:"SendMailFlag"`
+
+	// 接收邮件的联系人ID数组。
+	ContactPerson []*int64 `json:"ContactPerson,omitempty" name:"ContactPerson" list`
+
+	// 接收邮件的联系组ID数组。
+	ContactGroup []*int64 `json:"ContactGroup,omitempty" name:"ContactGroup" list`
+
+	// 服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 CynosDB  for MySQL，默认值为"mysql"。
+	Product *string `json:"Product,omitempty" name:"Product"`
+}
+
+func (r *CreateDBDiagReportTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateDBDiagReportTaskRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateDBDiagReportTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 异步任务的请求 ID，可使用此 ID 查询异步任务的执行结果。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		AsyncRequestId *int64 `json:"AsyncRequestId,omitempty" name:"AsyncRequestId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateDBDiagReportTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateDBDiagReportTaskResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateMailProfileRequest struct {
+	*tchttp.BaseRequest
+
+	// 邮件配置内容。
+	ProfileInfo *ProfileInfo `json:"ProfileInfo,omitempty" name:"ProfileInfo"`
+
+	// 配置级别，支持值包括："User" - 用户级别，"Instance" - 实例级别，其中数据库巡检邮件配置为用户级别，定期生成邮件配置为实例级别。
+	ProfileLevel *string `json:"ProfileLevel,omitempty" name:"ProfileLevel"`
+
+	// 配置名称，需要保持唯一性，数据库巡检邮件配置名称自拟；定期生成邮件配置命名格式："scheduler_" + {instanceId}，如"schduler_cdb-test"。
+	ProfileName *string `json:"ProfileName,omitempty" name:"ProfileName"`
+
+	// 配置类型，支持值包括："dbScan_mail_configuration" - 数据库巡检邮件配置，"scheduler_mail_configuration" - 定期生成邮件配置。
+	ProfileType *string `json:"ProfileType,omitempty" name:"ProfileType"`
+
+	// 服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 CynosDB  for MySQL。
+	Product *string `json:"Product,omitempty" name:"Product"`
+
+	// 配置绑定的实例ID，当配置级别为"Instance"时需要传入。
+	BindInstanceIds []*string `json:"BindInstanceIds,omitempty" name:"BindInstanceIds" list`
+}
+
+func (r *CreateMailProfileRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateMailProfileRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateMailProfileResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateMailProfileResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateMailProfileResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeAllUserContactRequest struct {
+	*tchttp.BaseRequest
+
+	// 服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 CynosDB  for MySQL。
+	Product *string `json:"Product,omitempty" name:"Product"`
+
+	// 联系人名数组，支持模糊搜索。
+	Names []*string `json:"Names,omitempty" name:"Names" list`
+}
+
+func (r *DescribeAllUserContactRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeAllUserContactRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeAllUserContactResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 联系人的总数量。
+		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 联系人的信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Contacts []*ContactItem `json:"Contacts,omitempty" name:"Contacts" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeAllUserContactResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeAllUserContactResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeAllUserGroupRequest struct {
+	*tchttp.BaseRequest
+
+	// 服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 CynosDB  for MySQL。
+	Product *string `json:"Product,omitempty" name:"Product"`
+
+	// 联系组名称数组，支持模糊搜索。
+	Names []*string `json:"Names,omitempty" name:"Names" list`
+}
+
+func (r *DescribeAllUserGroupRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeAllUserGroupRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeAllUserGroupResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 组总数。
+		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 组信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Groups []*GroupItem `json:"Groups,omitempty" name:"Groups" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeAllUserGroupResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeAllUserGroupResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeDBDiagEventRequest struct {
 	*tchttp.BaseRequest
 
@@ -445,6 +650,85 @@ type DiagHistoryEventItem struct {
 	Region *string `json:"Region,omitempty" name:"Region"`
 }
 
+type GroupItem struct {
+
+	// 组id。
+	Id *int64 `json:"Id,omitempty" name:"Id"`
+
+	// 组名称。
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 组成员数量。
+	MemberCount *int64 `json:"MemberCount,omitempty" name:"MemberCount"`
+}
+
+type InstanceConfs struct {
+
+	// 数据库巡检开关, Yes/No。
+	DailyInspection *string `json:"DailyInspection,omitempty" name:"DailyInspection"`
+}
+
+type MailConfiguration struct {
+
+	// 是否开启邮件发送: 0, 否; 1, 是。
+	SendMail *int64 `json:"SendMail,omitempty" name:"SendMail"`
+
+	// 地域配置, 如["ap-guangzhou", "ap-shanghai"]。
+	Region []*string `json:"Region,omitempty" name:"Region" list`
+
+	// 发送指定的健康等级的报告, 如["HEALTH", "SUB_HEALTH", "RISK", "HIGH_RISK"]。
+	HealthStatus []*string `json:"HealthStatus,omitempty" name:"HealthStatus" list`
+
+	// 联系人id, 联系人/联系组不能都为空。
+	ContactPerson []*int64 `json:"ContactPerson,omitempty" name:"ContactPerson" list`
+
+	// 联系组id, 联系人/联系组不能都为空。
+	ContactGroup []*int64 `json:"ContactGroup,omitempty" name:"ContactGroup" list`
+}
+
+type ModifyDiagDBInstanceConfRequest struct {
+	*tchttp.BaseRequest
+
+	// 巡检开关。
+	InstanceConfs *InstanceConfs `json:"InstanceConfs,omitempty" name:"InstanceConfs"`
+
+	// 生效实例地域，取值为"All"，代表全地域。
+	Regions *string `json:"Regions,omitempty" name:"Regions"`
+
+	// 服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 CynosDB  for MySQL。
+	Product *string `json:"Product,omitempty" name:"Product"`
+
+	// 指定更改巡检状态的实例ID。
+	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds" list`
+}
+
+func (r *ModifyDiagDBInstanceConfRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyDiagDBInstanceConfRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyDiagDBInstanceConfResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifyDiagDBInstanceConfResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyDiagDBInstanceConfResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type MonitorFloatMetric struct {
 
 	// 指标名称。
@@ -487,6 +771,15 @@ type MonitorMetricSeriesData struct {
 
 	// 监控指标对应的时间戳。
 	Timestamp []*int64 `json:"Timestamp,omitempty" name:"Timestamp" list`
+}
+
+type ProfileInfo struct {
+
+	// 语言, 如"zh"。
+	Language *string `json:"Language,omitempty" name:"Language"`
+
+	// 邮件模板的内容。
+	MailConfiguration *MailConfiguration `json:"MailConfiguration,omitempty" name:"MailConfiguration"`
 }
 
 type SchemaItem struct {
