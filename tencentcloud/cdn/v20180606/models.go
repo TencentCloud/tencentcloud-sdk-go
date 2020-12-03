@@ -3048,6 +3048,10 @@ type DiagnoseInfo struct {
 	// 访问诊断链接的客户端简易信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ClientList []*DiagnoseList `json:"ClientList,omitempty" name:"ClientList" list`
+
+	// 域名加速区域
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Area *string `json:"Area,omitempty" name:"Area"`
 }
 
 type DiagnoseList struct {

@@ -228,7 +228,10 @@ type AiAnalysisTaskClassificationResult struct {
 	// 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
 	Status *string `json:"Status,omitempty" name:"Status"`
 
-	// 错误码，0：成功，其他值：失败。
+	// 错误码，空字符串表示成功，其他值表示失败，取值请参考 [视频处理类错误码](https://cloud.tencent.com/document/product/862/50369#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
+	ErrCodeExt *string `json:"ErrCodeExt,omitempty" name:"ErrCodeExt"`
+
+	// 错误码，0 表示成功，其他值表示失败（该字段已不推荐使用，建议使用新的错误码字段 ErrCodeExt）。
 	ErrCode *int64 `json:"ErrCode,omitempty" name:"ErrCode"`
 
 	// 错误信息。
@@ -262,7 +265,10 @@ type AiAnalysisTaskCoverResult struct {
 	// 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
 	Status *string `json:"Status,omitempty" name:"Status"`
 
-	// 错误码，0：成功，其他值：失败。
+	// 错误码，空字符串表示成功，其他值表示失败，取值请参考 [视频处理类错误码](https://cloud.tencent.com/document/product/862/50369#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
+	ErrCodeExt *string `json:"ErrCodeExt,omitempty" name:"ErrCodeExt"`
+
+	// 错误码，0 表示成功，其他值表示失败（该字段已不推荐使用，建议使用新的错误码字段 ErrCodeExt）。
 	ErrCode *int64 `json:"ErrCode,omitempty" name:"ErrCode"`
 
 	// 错误信息。
@@ -293,7 +299,10 @@ type AiAnalysisTaskFrameTagResult struct {
 	// 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
 	Status *string `json:"Status,omitempty" name:"Status"`
 
-	// 错误码，0：成功，其他值：失败。
+	// 错误码，空字符串表示成功，其他值表示失败，取值请参考 [视频处理类错误码](https://cloud.tencent.com/document/product/862/50369#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
+	ErrCodeExt *string `json:"ErrCodeExt,omitempty" name:"ErrCodeExt"`
+
+	// 错误码，0 表示成功，其他值表示失败（该字段已不推荐使用，建议使用新的错误码字段 ErrCodeExt）。
 	ErrCode *int64 `json:"ErrCode,omitempty" name:"ErrCode"`
 
 	// 错误信息。
@@ -330,7 +339,10 @@ type AiAnalysisTaskTagResult struct {
 	// 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
 	Status *string `json:"Status,omitempty" name:"Status"`
 
-	// 错误码，0：成功，其他值：失败。
+	// 错误码，空字符串表示成功，其他值表示失败，取值请参考 [视频处理类错误码](https://cloud.tencent.com/document/product/862/50369#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
+	ErrCodeExt *string `json:"ErrCodeExt,omitempty" name:"ErrCodeExt"`
+
+	// 错误码，0 表示成功，其他值表示失败（该字段已不推荐使用，建议使用新的错误码字段 ErrCodeExt）。
 	ErrCode *int64 `json:"ErrCode,omitempty" name:"ErrCode"`
 
 	// 错误信息。
@@ -453,7 +465,10 @@ type AiRecognitionTaskAsrFullTextResult struct {
 	// 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
 	Status *string `json:"Status,omitempty" name:"Status"`
 
-	// 错误码，0：成功，其他值：失败。
+	// 错误码，空字符串表示成功，其他值表示失败，取值请参考 [视频处理类错误码](https://cloud.tencent.com/document/product/862/50369#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
+	ErrCodeExt *string `json:"ErrCodeExt,omitempty" name:"ErrCodeExt"`
+
+	// 错误码，0 表示成功，其他值表示失败（该字段已不推荐使用，建议使用新的错误码字段 ErrCodeExt）。
 	ErrCode *int64 `json:"ErrCode,omitempty" name:"ErrCode"`
 
 	// 错误信息。
@@ -505,7 +520,10 @@ type AiRecognitionTaskAsrWordsResult struct {
 	// 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
 	Status *string `json:"Status,omitempty" name:"Status"`
 
-	// 错误码，0：成功，其他值：失败。
+	// 错误码，空字符串表示成功，其他值表示失败，取值请参考 [视频处理类错误码](https://cloud.tencent.com/document/product/862/50369#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
+	ErrCodeExt *string `json:"ErrCodeExt,omitempty" name:"ErrCodeExt"`
+
+	// 错误码，0 表示成功，其他值表示失败（该字段已不推荐使用，建议使用新的错误码字段 ErrCodeExt）。
 	ErrCode *int64 `json:"ErrCode,omitempty" name:"ErrCode"`
 
 	// 错误信息。
@@ -557,7 +575,10 @@ type AiRecognitionTaskFaceResult struct {
 	// 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
 	Status *string `json:"Status,omitempty" name:"Status"`
 
-	// 错误码，0：成功，其他值：失败。
+	// 错误码，空字符串表示成功，其他值表示失败，取值请参考 [视频处理类错误码](https://cloud.tencent.com/document/product/862/50369#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
+	ErrCodeExt *string `json:"ErrCodeExt,omitempty" name:"ErrCodeExt"`
+
+	// 错误码，0 表示成功，其他值表示失败（该字段已不推荐使用，建议使用新的错误码字段 ErrCodeExt）。
 	ErrCode *int64 `json:"ErrCode,omitempty" name:"ErrCode"`
 
 	// 错误信息。
@@ -626,7 +647,10 @@ type AiRecognitionTaskOcrFullTextResult struct {
 	// 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
 	Status *string `json:"Status,omitempty" name:"Status"`
 
-	// 错误码，0：成功，其他值：失败。
+	// 错误码，空字符串表示成功，其他值表示失败，取值请参考 [视频处理类错误码](https://cloud.tencent.com/document/product/862/50369#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
+	ErrCodeExt *string `json:"ErrCodeExt,omitempty" name:"ErrCodeExt"`
+
+	// 错误码，0 表示成功，其他值表示失败（该字段已不推荐使用，建议使用新的错误码字段 ErrCodeExt）。
 	ErrCode *int64 `json:"ErrCode,omitempty" name:"ErrCode"`
 
 	// 错误信息。
@@ -681,7 +705,10 @@ type AiRecognitionTaskOcrWordsResult struct {
 	// 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
 	Status *string `json:"Status,omitempty" name:"Status"`
 
-	// 错误码，0：成功，其他值：失败。
+	// 错误码，空字符串表示成功，其他值表示失败，取值请参考 [视频处理类错误码](https://cloud.tencent.com/document/product/862/50369#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
+	ErrCodeExt *string `json:"ErrCodeExt,omitempty" name:"ErrCodeExt"`
+
+	// 错误码，0 表示成功，其他值表示失败（该字段已不推荐使用，建议使用新的错误码字段 ErrCodeExt）。
 	ErrCode *int64 `json:"ErrCode,omitempty" name:"ErrCode"`
 
 	// 错误信息。
@@ -918,7 +945,10 @@ type AiReviewTaskPoliticalAsrResult struct {
 	// 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
 	Status *string `json:"Status,omitempty" name:"Status"`
 
-	// 错误码，0：成功，其他值：失败。
+	// 错误码，空字符串表示成功，其他值表示失败，取值请参考 [视频处理类错误码](https://cloud.tencent.com/document/product/862/50369#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
+	ErrCodeExt *string `json:"ErrCodeExt,omitempty" name:"ErrCodeExt"`
+
+	// 错误码，0 表示成功，其他值表示失败（该字段已不推荐使用，建议使用新的错误码字段 ErrCodeExt）。
 	ErrCode *int64 `json:"ErrCode,omitempty" name:"ErrCode"`
 
 	// 错误信息。
@@ -934,10 +964,13 @@ type AiReviewTaskPoliticalAsrResult struct {
 
 type AiReviewTaskPoliticalOcrResult struct {
 
-	// 任务状态，有 PROCESSING，SUCCESS �� FAIL 三种。
+	// 任务状态，有 PROCESSING，SUCCESS，FAIL 三种。
 	Status *string `json:"Status,omitempty" name:"Status"`
 
-	// 错误码，0：成功，其他值：失败。
+	// 错误码，空字符串表示成功，其他值表示失败，取值请参考 [视频处理类错误码](https://cloud.tencent.com/document/product/862/50369#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
+	ErrCodeExt *string `json:"ErrCodeExt,omitempty" name:"ErrCodeExt"`
+
+	// 错误码，0 表示成功，其他值表示失败（该字段已不推荐使用，建议使用新的错误码字段 ErrCodeExt）。
 	ErrCode *int64 `json:"ErrCode,omitempty" name:"ErrCode"`
 
 	// 错误信息。
@@ -956,7 +989,10 @@ type AiReviewTaskPoliticalResult struct {
 	// 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
 	Status *string `json:"Status,omitempty" name:"Status"`
 
-	// 错误码，0：成功，其他值：失败。
+	// 错误码，空字符串表示成功，其他值表示失败，取值请参考 [视频处理类错误码](https://cloud.tencent.com/document/product/862/50369#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
+	ErrCodeExt *string `json:"ErrCodeExt,omitempty" name:"ErrCodeExt"`
+
+	// 错误码，0 表示成功，其他值表示失败（该字段已不推荐使用，建议使用新的错误码字段 ErrCodeExt）。
 	ErrCode *int64 `json:"ErrCode,omitempty" name:"ErrCode"`
 
 	// 错误信息。
@@ -975,7 +1011,10 @@ type AiReviewTaskPornAsrResult struct {
 	// 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
 	Status *string `json:"Status,omitempty" name:"Status"`
 
-	// 错误码，0：成功，其他值：失败。
+	// 错误码，空字符串表示成功，其他值表示失败，取值请参考 [视频处理类错误码](https://cloud.tencent.com/document/product/862/50369#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
+	ErrCodeExt *string `json:"ErrCodeExt,omitempty" name:"ErrCodeExt"`
+
+	// 错误码，0 表示成功，其他值表示失败（该字段已不推荐使用，建议使用新的错误码字段 ErrCodeExt）。
 	ErrCode *int64 `json:"ErrCode,omitempty" name:"ErrCode"`
 
 	// 错误信息。
@@ -994,7 +1033,10 @@ type AiReviewTaskPornOcrResult struct {
 	// 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
 	Status *string `json:"Status,omitempty" name:"Status"`
 
-	// 错误码，0：成功，其他值：失败。
+	// 错误码，空字符串表示成功，其他值表示失败，取值请参考 [视频处理类错误码](https://cloud.tencent.com/document/product/862/50369#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
+	ErrCodeExt *string `json:"ErrCodeExt,omitempty" name:"ErrCodeExt"`
+
+	// 错误码，0 表示成功，其他值表示失败（该字段已不推荐使用，建议使用新的错误码字段 ErrCodeExt）。
 	ErrCode *int64 `json:"ErrCode,omitempty" name:"ErrCode"`
 
 	// 错误信息。
@@ -1013,7 +1055,10 @@ type AiReviewTaskPornResult struct {
 	// 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
 	Status *string `json:"Status,omitempty" name:"Status"`
 
-	// 错误码，0：成功，其他值：失败。
+	// 错误码，空字符串表示成功，其他值表示失败，取值请参考 [视频处理类错误码](https://cloud.tencent.com/document/product/862/50369#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
+	ErrCodeExt *string `json:"ErrCodeExt,omitempty" name:"ErrCodeExt"`
+
+	// 错误码，0 表示成功，其他值表示失败（该字段已不推荐使用，建议使用新的错误码字段 ErrCodeExt）。
 	ErrCode *int64 `json:"ErrCode,omitempty" name:"ErrCode"`
 
 	// 错误信息。
@@ -1032,10 +1077,10 @@ type AiReviewTaskProhibitedAsrResult struct {
 	// 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
 	Status *string `json:"Status,omitempty" name:"Status"`
 
-	// 错误码，0 表示成功，其他值表示失败：
-	// <li>40000：输入参数不合法，请检查输入参数；</li>
-	// <li>60000：源文件错误（如视频数据损坏），请确认源文件是否正常；</li>
-	// <li>70000：内部服务错误，建议重试。</li>
+	// 错误码，空字符串表示成功，其他值表示失败，取值请参考 [视频处理类错误码](https://cloud.tencent.com/document/product/862/50369#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
+	ErrCodeExt *string `json:"ErrCodeExt,omitempty" name:"ErrCodeExt"`
+
+	// 错误码，0 表示成功，其他值表示失败（该字段已不推荐使用，建议使用新的错误码字段 ErrCodeExt）。
 	ErrCode *int64 `json:"ErrCode,omitempty" name:"ErrCode"`
 
 	// 错误信息。
@@ -1054,10 +1099,10 @@ type AiReviewTaskProhibitedOcrResult struct {
 	// 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
 	Status *string `json:"Status,omitempty" name:"Status"`
 
-	// 错误码，0 表示成功，其他值表示失败：
-	// <li>40000：输入参数不合法，请检查输入参数；</li>
-	// <li>60000：源文件错误（如视频数据损坏），请确认源文件是否正常；</li>
-	// <li>70000：内部服务错误，建议重试。</li>
+	// 错误码，空字符串表示成功，其他值表示失败，取值请参考 [视频处理类错误码](https://cloud.tencent.com/document/product/862/50369#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
+	ErrCodeExt *string `json:"ErrCodeExt,omitempty" name:"ErrCodeExt"`
+
+	// 错误码，0 表示成功，其他值表示失败（该字段已不推荐使用，建议使用新的错误码字段 ErrCodeExt）。
 	ErrCode *int64 `json:"ErrCode,omitempty" name:"ErrCode"`
 
 	// 错误信息。
@@ -1076,10 +1121,10 @@ type AiReviewTaskTerrorismOcrResult struct {
 	// 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
 	Status *string `json:"Status,omitempty" name:"Status"`
 
-	// 错误码，0 表示成功，其他值表示失败：
-	// <li>40000：输入参数不合法，请检查输入参数；</li>
-	// <li>60000：源文件错误（如视频数据损坏），请确认源文件是否正常；</li>
-	// <li>70000：内部服务错误，建议重试。</li>
+	// 错误码，空字符串表示成功，其他值表示失败，取值请参考 [视频处理类错误码](https://cloud.tencent.com/document/product/862/50369#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
+	ErrCodeExt *string `json:"ErrCodeExt,omitempty" name:"ErrCodeExt"`
+
+	// 错误码，0 表示成功，其他值表示失败（该字段已不推荐使用，建议使用新的错误码字段 ErrCodeExt）。
 	ErrCode *int64 `json:"ErrCode,omitempty" name:"ErrCode"`
 
 	// 错误信息。
@@ -1098,7 +1143,10 @@ type AiReviewTaskTerrorismResult struct {
 	// 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
 	Status *string `json:"Status,omitempty" name:"Status"`
 
-	// 错误码，0：成功，其他值：失败。
+	// 错误码，空字符串表示成功，其他值表示失败，取值请参考 [视频处理类错误码](https://cloud.tencent.com/document/product/862/50369#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
+	ErrCodeExt *string `json:"ErrCodeExt,omitempty" name:"ErrCodeExt"`
+
+	// 错误码，0 表示成功，其他值表示失败（该字段已不推荐使用，建议使用新的错误码字段 ErrCodeExt）。
 	ErrCode *int64 `json:"ErrCode,omitempty" name:"ErrCode"`
 
 	// 错误信息。
@@ -4812,7 +4860,10 @@ type MediaProcessTaskAdaptiveDynamicStreamingResult struct {
 	// 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
 	Status *string `json:"Status,omitempty" name:"Status"`
 
-	// 错误码，0：成功，其他值：失败。
+	// 错误码，空字符串表示成功，其他值表示失败，取值请参考 [视频处理类错误码](https://cloud.tencent.com/document/product/862/50369#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
+	ErrCodeExt *string `json:"ErrCodeExt,omitempty" name:"ErrCodeExt"`
+
+	// 错误码，0 表示成功，其他值表示失败（该字段已不推荐使用，建议使用新的错误码字段 ErrCodeExt）。
 	ErrCode *int64 `json:"ErrCode,omitempty" name:"ErrCode"`
 
 	// 错误信息。
@@ -4831,10 +4882,10 @@ type MediaProcessTaskAnimatedGraphicResult struct {
 	// 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
 	Status *string `json:"Status,omitempty" name:"Status"`
 
-	// 错误码，0 表示成功，其他值表示失败：
-	// <li>40000：输入参数不合法，请检查输入参数；</li>
-	// <li>60000：源文件错误（如视频数据损坏），请确认源文件是否正常；</li>
-	// <li>70000：内部服务错误，建议重试。</li>
+	// 错误码，空字符串表示成功，其他值表示失败，取值请参考 [视频处理类错误码](https://cloud.tencent.com/document/product/862/50369#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
+	ErrCodeExt *string `json:"ErrCodeExt,omitempty" name:"ErrCodeExt"`
+
+	// 错误码，0 表示成功，其他值表示失败（该字段已不推荐使用，建议使用新的错误码字段 ErrCodeExt）。
 	ErrCode *int64 `json:"ErrCode,omitempty" name:"ErrCode"`
 
 	// 错误信息。
@@ -4853,10 +4904,10 @@ type MediaProcessTaskImageSpriteResult struct {
 	// 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
 	Status *string `json:"Status,omitempty" name:"Status"`
 
-	// 错误码，0 表示成功，其他值表示失败：
-	// <li>40000：输入参数不合法，请检查输入参数；</li>
-	// <li>60000：源文件错误（如视频数据损坏），请确认源文件是否正常；</li>
-	// <li>70000：内部服务错误，建议重试。</li>
+	// 错误码，空字符串表示成功，其他值表示失败，取值请参考 [视频处理类错误码](https://cloud.tencent.com/document/product/862/50369#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
+	ErrCodeExt *string `json:"ErrCodeExt,omitempty" name:"ErrCodeExt"`
+
+	// 错误码，0 表示成功，其他值表示失败（该字段已不推荐使用，建议使用新的错误码字段 ErrCodeExt）。
 	ErrCode *int64 `json:"ErrCode,omitempty" name:"ErrCode"`
 
 	// 错误信息。
@@ -4933,10 +4984,10 @@ type MediaProcessTaskSampleSnapshotResult struct {
 	// 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
 	Status *string `json:"Status,omitempty" name:"Status"`
 
-	// 错误码，0 表示成功，其他值表示失败：
-	// <li>40000：输入参数不合法，请检查输入参数；</li>
-	// <li>60000：源文件错误（如视频数据损坏），请确认源文件是否正常；</li>
-	// <li>70000：内部服务错误，建议重试。</li>
+	// 错误码，空字符串表示成功，其他值表示失败，取值请参考 [视频处理类错误码](https://cloud.tencent.com/document/product/862/50369#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
+	ErrCodeExt *string `json:"ErrCodeExt,omitempty" name:"ErrCodeExt"`
+
+	// 错误码，0 表示成功，其他值表示失败（该字段已不推荐使用，建议使用新的错误码字段 ErrCodeExt）。
 	ErrCode *int64 `json:"ErrCode,omitempty" name:"ErrCode"`
 
 	// 错误信息。
@@ -4955,10 +5006,10 @@ type MediaProcessTaskSnapshotByTimeOffsetResult struct {
 	// 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
 	Status *string `json:"Status,omitempty" name:"Status"`
 
-	// 错误码，0 表示成功，其他值表示失败：
-	// <li>40000：输入参数不合法，请检查输入参数；</li>
-	// <li>60000：源文件错误（如视频数据损坏），请确认源文件是否正常；</li>
-	// <li>70000：内部服务错误，建议重试。</li>
+	// 错误码，空字符串表示成功，其他值表示失败，取值请参考 [视频处理类错误码](https://cloud.tencent.com/document/product/862/50369#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
+	ErrCodeExt *string `json:"ErrCodeExt,omitempty" name:"ErrCodeExt"`
+
+	// 错误码，0 表示成功，其他值表示失败（该字段已不推荐使用，建议使用新的错误码字段 ErrCodeExt）。
 	ErrCode *int64 `json:"ErrCode,omitempty" name:"ErrCode"`
 
 	// 错误信息。
@@ -4977,10 +5028,10 @@ type MediaProcessTaskTranscodeResult struct {
 	// 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
 	Status *string `json:"Status,omitempty" name:"Status"`
 
-	// 错误码，0 表示成功，其他值表示失败：
-	// <li>40000：输入参数不合法，请检查输入参数；</li>
-	// <li>60000：源文件错误（如视频数据损坏），请确认源文件是否正常；</li>
-	// <li>70000：内部服务错误，建议重试。</li>
+	// 错误码，空字符串表示成功，其他值表示失败，取值请参考 [视频处理类错误码](https://cloud.tencent.com/document/product/862/50369#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
+	ErrCodeExt *string `json:"ErrCodeExt,omitempty" name:"ErrCodeExt"`
+
+	// 错误码，0 表示成功，其他值表示失败（该字段已不推荐使用，建议使用新的错误码字段 ErrCodeExt）。
 	ErrCode *int64 `json:"ErrCode,omitempty" name:"ErrCode"`
 
 	// 错误信息。

@@ -5363,6 +5363,86 @@ func (r *ModifyRoGroupInfoResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type ModifyRoReplicationDelayRequest struct {
+	*tchttp.BaseRequest
+
+	// 实例 ID。
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 延迟时间（s）。最小值1，最大值259200。
+	ReplicationDelay *int64 `json:"ReplicationDelay,omitempty" name:"ReplicationDelay"`
+}
+
+func (r *ModifyRoReplicationDelayRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyRoReplicationDelayRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyRoReplicationDelayResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifyRoReplicationDelayResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyRoReplicationDelayResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyRoTypeRequest struct {
+	*tchttp.BaseRequest
+
+	// 实例 ID。
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 只读实例源类型，取值 NORMAL（普通只读实例）、DELAY_REPLICATION（延迟只读实例）。
+	SrcRoInstType *string `json:"SrcRoInstType,omitempty" name:"SrcRoInstType"`
+
+	// 只读实例目标类型，取值 NORMAL（普通只读实例）、DELAY_REPLICATION（延迟只读实例）。
+	DstRoInstType *string `json:"DstRoInstType,omitempty" name:"DstRoInstType"`
+
+	// 延迟时间（s），将实例修改为延迟只读实例时必传。最小值1，最大值259200。
+	ReplicationDelay *int64 `json:"ReplicationDelay,omitempty" name:"ReplicationDelay"`
+}
+
+func (r *ModifyRoTypeRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyRoTypeRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyRoTypeResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifyRoTypeResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyRoTypeResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type ModifyTimeWindowRequest struct {
 	*tchttp.BaseRequest
 
@@ -6255,6 +6335,53 @@ func (r *StartBatchRollbackResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type StartDelayReplicationRequest struct {
+	*tchttp.BaseRequest
+
+	// 实例 ID。
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 延迟复制类型。可选值 DEFAULT（按照延迟复制时间进行复制）、GTID（回放到指定GTID）、DUE_TIME（回放到指定时间点）。
+	DelayReplicationType *string `json:"DelayReplicationType,omitempty" name:"DelayReplicationType"`
+
+	// 指定时间点，默认为0，最大值不能超过当前时间。
+	DueTime *int64 `json:"DueTime,omitempty" name:"DueTime"`
+
+	// 指定GITD。回放到指定GTID时必传。
+	Gtid *string `json:"Gtid,omitempty" name:"Gtid"`
+}
+
+func (r *StartDelayReplicationRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *StartDelayReplicationRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type StartDelayReplicationResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 延迟复制任务 ID。DelayReplicationType不为DEFAULT时返回，可用来查询回放任务状态。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		AsyncRequestId *string `json:"AsyncRequestId,omitempty" name:"AsyncRequestId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *StartDelayReplicationResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *StartDelayReplicationResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type StopDBImportJobRequest struct {
 	*tchttp.BaseRequest
 
@@ -6286,6 +6413,40 @@ func (r *StopDBImportJobResponse) ToJsonString() string {
 }
 
 func (r *StopDBImportJobResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type StopDelayReplicationRequest struct {
+	*tchttp.BaseRequest
+
+	// 实例 ID。
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+}
+
+func (r *StopDelayReplicationRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *StopDelayReplicationRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type StopDelayReplicationResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *StopDelayReplicationResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *StopDelayReplicationResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 

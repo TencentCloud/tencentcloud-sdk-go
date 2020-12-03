@@ -93,6 +93,56 @@ func (c *Client) AddInstances(request *AddInstancesRequest) (response *AddInstan
     return
 }
 
+func NewBindApiGroupRequest() (request *BindApiGroupRequest) {
+    request = &BindApiGroupRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tsf", APIVersion, "BindApiGroup")
+    return
+}
+
+func NewBindApiGroupResponse() (response *BindApiGroupResponse) {
+    response = &BindApiGroupResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 网关与API分组批量绑定
+func (c *Client) BindApiGroup(request *BindApiGroupRequest) (response *BindApiGroupResponse, err error) {
+    if request == nil {
+        request = NewBindApiGroupRequest()
+    }
+    response = NewBindApiGroupResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewChangeApiUsableStatusRequest() (request *ChangeApiUsableStatusRequest) {
+    request = &ChangeApiUsableStatusRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tsf", APIVersion, "ChangeApiUsableStatus")
+    return
+}
+
+func NewChangeApiUsableStatusResponse() (response *ChangeApiUsableStatusResponse) {
+    response = &ChangeApiUsableStatusResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 启用或禁用API
+func (c *Client) ChangeApiUsableStatus(request *ChangeApiUsableStatusRequest) (response *ChangeApiUsableStatusResponse, err error) {
+    if request == nil {
+        request = NewChangeApiUsableStatusRequest()
+    }
+    response = NewChangeApiUsableStatusResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewContinueRunFailedTaskBatchRequest() (request *ContinueRunFailedTaskBatchRequest) {
     request = &ContinueRunFailedTaskBatchRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -114,6 +164,81 @@ func (c *Client) ContinueRunFailedTaskBatch(request *ContinueRunFailedTaskBatchR
         request = NewContinueRunFailedTaskBatchRequest()
     }
     response = NewContinueRunFailedTaskBatchResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateAllGatewayApiAsyncRequest() (request *CreateAllGatewayApiAsyncRequest) {
+    request = &CreateAllGatewayApiAsyncRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tsf", APIVersion, "CreateAllGatewayApiAsync")
+    return
+}
+
+func NewCreateAllGatewayApiAsyncResponse() (response *CreateAllGatewayApiAsyncResponse) {
+    response = &CreateAllGatewayApiAsyncResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 一键导入API分组
+func (c *Client) CreateAllGatewayApiAsync(request *CreateAllGatewayApiAsyncRequest) (response *CreateAllGatewayApiAsyncResponse, err error) {
+    if request == nil {
+        request = NewCreateAllGatewayApiAsyncRequest()
+    }
+    response = NewCreateAllGatewayApiAsyncResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateApiGroupRequest() (request *CreateApiGroupRequest) {
+    request = &CreateApiGroupRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tsf", APIVersion, "CreateApiGroup")
+    return
+}
+
+func NewCreateApiGroupResponse() (response *CreateApiGroupResponse) {
+    response = &CreateApiGroupResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 创建API分组
+func (c *Client) CreateApiGroup(request *CreateApiGroupRequest) (response *CreateApiGroupResponse, err error) {
+    if request == nil {
+        request = NewCreateApiGroupRequest()
+    }
+    response = NewCreateApiGroupResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateApiRateLimitRuleRequest() (request *CreateApiRateLimitRuleRequest) {
+    request = &CreateApiRateLimitRuleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tsf", APIVersion, "CreateApiRateLimitRule")
+    return
+}
+
+func NewCreateApiRateLimitRuleResponse() (response *CreateApiRateLimitRuleResponse) {
+    response = &CreateApiRateLimitRuleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 创建API限流规则
+func (c *Client) CreateApiRateLimitRule(request *CreateApiRateLimitRuleRequest) (response *CreateApiRateLimitRuleResponse, err error) {
+    if request == nil {
+        request = NewCreateApiRateLimitRuleRequest()
+    }
+    response = NewCreateApiRateLimitRuleResponse()
     err = c.Send(request, response)
     return
 }
@@ -214,6 +339,31 @@ func (c *Client) CreateContainGroup(request *CreateContainGroupRequest) (respons
         request = NewCreateContainGroupRequest()
     }
     response = NewCreateContainGroupResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateGatewayApiRequest() (request *CreateGatewayApiRequest) {
+    request = &CreateGatewayApiRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tsf", APIVersion, "CreateGatewayApi")
+    return
+}
+
+func NewCreateGatewayApiResponse() (response *CreateGatewayApiResponse) {
+    response = &CreateGatewayApiResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 批量导入API至api分组(也支持新建API到分组)
+func (c *Client) CreateGatewayApi(request *CreateGatewayApiRequest) (response *CreateGatewayApiResponse, err error) {
+    if request == nil {
+        request = NewCreateGatewayApiRequest()
+    }
+    response = NewCreateGatewayApiResponse()
     err = c.Send(request, response)
     return
 }
@@ -464,6 +614,31 @@ func (c *Client) CreateTaskFlow(request *CreateTaskFlowRequest) (response *Creat
         request = NewCreateTaskFlowRequest()
     }
     response = NewCreateTaskFlowResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteApiGroupRequest() (request *DeleteApiGroupRequest) {
+    request = &DeleteApiGroupRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tsf", APIVersion, "DeleteApiGroup")
+    return
+}
+
+func NewDeleteApiGroupResponse() (response *DeleteApiGroupResponse) {
+    response = &DeleteApiGroupResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 删除Api分组
+func (c *Client) DeleteApiGroup(request *DeleteApiGroupRequest) (response *DeleteApiGroupResponse, err error) {
+    if request == nil {
+        request = NewDeleteApiGroupRequest()
+    }
+    response = NewDeleteApiGroupResponse()
     err = c.Send(request, response)
     return
 }
@@ -894,6 +1069,106 @@ func (c *Client) DescribeApiDetail(request *DescribeApiDetailRequest) (response 
     return
 }
 
+func NewDescribeApiGroupRequest() (request *DescribeApiGroupRequest) {
+    request = &DescribeApiGroupRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tsf", APIVersion, "DescribeApiGroup")
+    return
+}
+
+func NewDescribeApiGroupResponse() (response *DescribeApiGroupResponse) {
+    response = &DescribeApiGroupResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询API分组
+func (c *Client) DescribeApiGroup(request *DescribeApiGroupRequest) (response *DescribeApiGroupResponse, err error) {
+    if request == nil {
+        request = NewDescribeApiGroupRequest()
+    }
+    response = NewDescribeApiGroupResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeApiGroupsRequest() (request *DescribeApiGroupsRequest) {
+    request = &DescribeApiGroupsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tsf", APIVersion, "DescribeApiGroups")
+    return
+}
+
+func NewDescribeApiGroupsResponse() (response *DescribeApiGroupsResponse) {
+    response = &DescribeApiGroupsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询API 分组信息列表
+func (c *Client) DescribeApiGroups(request *DescribeApiGroupsRequest) (response *DescribeApiGroupsResponse, err error) {
+    if request == nil {
+        request = NewDescribeApiGroupsRequest()
+    }
+    response = NewDescribeApiGroupsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeApiRateLimitRulesRequest() (request *DescribeApiRateLimitRulesRequest) {
+    request = &DescribeApiRateLimitRulesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tsf", APIVersion, "DescribeApiRateLimitRules")
+    return
+}
+
+func NewDescribeApiRateLimitRulesResponse() (response *DescribeApiRateLimitRulesResponse) {
+    response = &DescribeApiRateLimitRulesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询API限流规则
+func (c *Client) DescribeApiRateLimitRules(request *DescribeApiRateLimitRulesRequest) (response *DescribeApiRateLimitRulesResponse, err error) {
+    if request == nil {
+        request = NewDescribeApiRateLimitRulesRequest()
+    }
+    response = NewDescribeApiRateLimitRulesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeApiUseDetailRequest() (request *DescribeApiUseDetailRequest) {
+    request = &DescribeApiUseDetailRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tsf", APIVersion, "DescribeApiUseDetail")
+    return
+}
+
+func NewDescribeApiUseDetailResponse() (response *DescribeApiUseDetailResponse) {
+    response = &DescribeApiUseDetailResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询网关API监控明细数据
+func (c *Client) DescribeApiUseDetail(request *DescribeApiUseDetailRequest) (response *DescribeApiUseDetailResponse, err error) {
+    if request == nil {
+        request = NewDescribeApiUseDetailRequest()
+    }
+    response = NewDescribeApiUseDetailResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeApiVersionsRequest() (request *DescribeApiVersionsRequest) {
     request = &DescribeApiVersionsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1219,6 +1494,31 @@ func (c *Client) DescribeContainerGroups(request *DescribeContainerGroupsRequest
     return
 }
 
+func NewDescribeCreateGatewayApiStatusRequest() (request *DescribeCreateGatewayApiStatusRequest) {
+    request = &DescribeCreateGatewayApiStatusRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tsf", APIVersion, "DescribeCreateGatewayApiStatus")
+    return
+}
+
+func NewDescribeCreateGatewayApiStatusResponse() (response *DescribeCreateGatewayApiStatusResponse) {
+    response = &DescribeCreateGatewayApiStatusResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询一键导入API分组任务的状态
+func (c *Client) DescribeCreateGatewayApiStatus(request *DescribeCreateGatewayApiStatusRequest) (response *DescribeCreateGatewayApiStatusResponse, err error) {
+    if request == nil {
+        request = NewDescribeCreateGatewayApiStatusRequest()
+    }
+    response = NewDescribeCreateGatewayApiStatusResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeDownloadInfoRequest() (request *DescribeDownloadInfoRequest) {
     request = &DescribeDownloadInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1270,6 +1570,56 @@ func (c *Client) DescribeFlowLastBatchState(request *DescribeFlowLastBatchStateR
     return
 }
 
+func NewDescribeGatewayAllGroupApisRequest() (request *DescribeGatewayAllGroupApisRequest) {
+    request = &DescribeGatewayAllGroupApisRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tsf", APIVersion, "DescribeGatewayAllGroupApis")
+    return
+}
+
+func NewDescribeGatewayAllGroupApisResponse() (response *DescribeGatewayAllGroupApisResponse) {
+    response = &DescribeGatewayAllGroupApisResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询网关所有分组下Api列表
+func (c *Client) DescribeGatewayAllGroupApis(request *DescribeGatewayAllGroupApisRequest) (response *DescribeGatewayAllGroupApisResponse, err error) {
+    if request == nil {
+        request = NewDescribeGatewayAllGroupApisRequest()
+    }
+    response = NewDescribeGatewayAllGroupApisResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeGatewayMonitorOverviewRequest() (request *DescribeGatewayMonitorOverviewRequest) {
+    request = &DescribeGatewayMonitorOverviewRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tsf", APIVersion, "DescribeGatewayMonitorOverview")
+    return
+}
+
+func NewDescribeGatewayMonitorOverviewResponse() (response *DescribeGatewayMonitorOverviewResponse) {
+    response = &DescribeGatewayMonitorOverviewResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询网关监控概览
+func (c *Client) DescribeGatewayMonitorOverview(request *DescribeGatewayMonitorOverviewRequest) (response *DescribeGatewayMonitorOverviewResponse, err error) {
+    if request == nil {
+        request = NewDescribeGatewayMonitorOverviewRequest()
+    }
+    response = NewDescribeGatewayMonitorOverviewResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeGroupRequest() (request *DescribeGroupRequest) {
     request = &DescribeGroupRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1295,6 +1645,56 @@ func (c *Client) DescribeGroup(request *DescribeGroupRequest) (response *Describ
     return
 }
 
+func NewDescribeGroupBindedGatewaysRequest() (request *DescribeGroupBindedGatewaysRequest) {
+    request = &DescribeGroupBindedGatewaysRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tsf", APIVersion, "DescribeGroupBindedGateways")
+    return
+}
+
+func NewDescribeGroupBindedGatewaysResponse() (response *DescribeGroupBindedGatewaysResponse) {
+    response = &DescribeGroupBindedGatewaysResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询某个API分组已绑定的网关部署组信息列表
+func (c *Client) DescribeGroupBindedGateways(request *DescribeGroupBindedGatewaysRequest) (response *DescribeGroupBindedGatewaysResponse, err error) {
+    if request == nil {
+        request = NewDescribeGroupBindedGatewaysRequest()
+    }
+    response = NewDescribeGroupBindedGatewaysResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeGroupGatewaysRequest() (request *DescribeGroupGatewaysRequest) {
+    request = &DescribeGroupGatewaysRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tsf", APIVersion, "DescribeGroupGateways")
+    return
+}
+
+func NewDescribeGroupGatewaysResponse() (response *DescribeGroupGatewaysResponse) {
+    response = &DescribeGroupGatewaysResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询某个网关绑定的API 分组信息列表
+func (c *Client) DescribeGroupGateways(request *DescribeGroupGatewaysRequest) (response *DescribeGroupGatewaysResponse, err error) {
+    if request == nil {
+        request = NewDescribeGroupGatewaysRequest()
+    }
+    response = NewDescribeGroupGatewaysResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeGroupInstancesRequest() (request *DescribeGroupInstancesRequest) {
     request = &DescribeGroupInstancesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1316,6 +1716,31 @@ func (c *Client) DescribeGroupInstances(request *DescribeGroupInstancesRequest) 
         request = NewDescribeGroupInstancesRequest()
     }
     response = NewDescribeGroupInstancesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeGroupUseDetailRequest() (request *DescribeGroupUseDetailRequest) {
+    request = &DescribeGroupUseDetailRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tsf", APIVersion, "DescribeGroupUseDetail")
+    return
+}
+
+func NewDescribeGroupUseDetailResponse() (response *DescribeGroupUseDetailResponse) {
+    response = &DescribeGroupUseDetailResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询网关分组监控明细数据
+func (c *Client) DescribeGroupUseDetail(request *DescribeGroupUseDetailRequest) (response *DescribeGroupUseDetailResponse, err error) {
+    if request == nil {
+        request = NewDescribeGroupUseDetailRequest()
+    }
+    response = NewDescribeGroupUseDetailResponse()
     err = c.Send(request, response)
     return
 }
@@ -2021,6 +2446,31 @@ func (c *Client) DisableTaskFlow(request *DisableTaskFlowRequest) (response *Dis
     return
 }
 
+func NewDraftApiGroupRequest() (request *DraftApiGroupRequest) {
+    request = &DraftApiGroupRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tsf", APIVersion, "DraftApiGroup")
+    return
+}
+
+func NewDraftApiGroupResponse() (response *DraftApiGroupResponse) {
+    response = &DraftApiGroupResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 下线Api分组
+func (c *Client) DraftApiGroup(request *DraftApiGroupRequest) (response *DraftApiGroupResponse, err error) {
+    if request == nil {
+        request = NewDraftApiGroupRequest()
+    }
+    response = NewDraftApiGroupResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewEnableTaskRequest() (request *EnableTaskRequest) {
     request = &EnableTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2422,6 +2872,31 @@ func (c *Client) RedoTaskFlowBatch(request *RedoTaskFlowBatchRequest) (response 
     return
 }
 
+func NewReleaseApiGroupRequest() (request *ReleaseApiGroupRequest) {
+    request = &ReleaseApiGroupRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tsf", APIVersion, "ReleaseApiGroup")
+    return
+}
+
+func NewReleaseApiGroupResponse() (response *ReleaseApiGroupResponse) {
+    response = &ReleaseApiGroupResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 发布Api分组
+func (c *Client) ReleaseApiGroup(request *ReleaseApiGroupRequest) (response *ReleaseApiGroupResponse, err error) {
+    if request == nil {
+        request = NewReleaseApiGroupRequest()
+    }
+    response = NewReleaseApiGroupResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewReleaseConfigRequest() (request *ReleaseConfigRequest) {
     request = &ReleaseConfigRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2793,6 +3268,131 @@ func (c *Client) TerminateTaskFlowBatch(request *TerminateTaskFlowBatchRequest) 
         request = NewTerminateTaskFlowBatchRequest()
     }
     response = NewTerminateTaskFlowBatchResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewUnbindApiGroupRequest() (request *UnbindApiGroupRequest) {
+    request = &UnbindApiGroupRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tsf", APIVersion, "UnbindApiGroup")
+    return
+}
+
+func NewUnbindApiGroupResponse() (response *UnbindApiGroupResponse) {
+    response = &UnbindApiGroupResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// API分组批量与网关解绑
+func (c *Client) UnbindApiGroup(request *UnbindApiGroupRequest) (response *UnbindApiGroupResponse, err error) {
+    if request == nil {
+        request = NewUnbindApiGroupRequest()
+    }
+    response = NewUnbindApiGroupResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewUpdateApiGroupRequest() (request *UpdateApiGroupRequest) {
+    request = &UpdateApiGroupRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tsf", APIVersion, "UpdateApiGroup")
+    return
+}
+
+func NewUpdateApiGroupResponse() (response *UpdateApiGroupResponse) {
+    response = &UpdateApiGroupResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 更新Api分组
+func (c *Client) UpdateApiGroup(request *UpdateApiGroupRequest) (response *UpdateApiGroupResponse, err error) {
+    if request == nil {
+        request = NewUpdateApiGroupRequest()
+    }
+    response = NewUpdateApiGroupResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewUpdateApiRateLimitRuleRequest() (request *UpdateApiRateLimitRuleRequest) {
+    request = &UpdateApiRateLimitRuleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tsf", APIVersion, "UpdateApiRateLimitRule")
+    return
+}
+
+func NewUpdateApiRateLimitRuleResponse() (response *UpdateApiRateLimitRuleResponse) {
+    response = &UpdateApiRateLimitRuleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 更新API限流规则
+func (c *Client) UpdateApiRateLimitRule(request *UpdateApiRateLimitRuleRequest) (response *UpdateApiRateLimitRuleResponse, err error) {
+    if request == nil {
+        request = NewUpdateApiRateLimitRuleRequest()
+    }
+    response = NewUpdateApiRateLimitRuleResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewUpdateApiRateLimitRulesRequest() (request *UpdateApiRateLimitRulesRequest) {
+    request = &UpdateApiRateLimitRulesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tsf", APIVersion, "UpdateApiRateLimitRules")
+    return
+}
+
+func NewUpdateApiRateLimitRulesResponse() (response *UpdateApiRateLimitRulesResponse) {
+    response = &UpdateApiRateLimitRulesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 批量更新API限流规则
+func (c *Client) UpdateApiRateLimitRules(request *UpdateApiRateLimitRulesRequest) (response *UpdateApiRateLimitRulesResponse, err error) {
+    if request == nil {
+        request = NewUpdateApiRateLimitRulesRequest()
+    }
+    response = NewUpdateApiRateLimitRulesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewUpdateGatewayApiRequest() (request *UpdateGatewayApiRequest) {
+    request = &UpdateGatewayApiRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tsf", APIVersion, "UpdateGatewayApi")
+    return
+}
+
+func NewUpdateGatewayApiResponse() (response *UpdateGatewayApiResponse) {
+    response = &UpdateGatewayApiResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 更新API
+func (c *Client) UpdateGatewayApi(request *UpdateGatewayApiRequest) (response *UpdateGatewayApiResponse, err error) {
+    if request == nil {
+        request = NewUpdateGatewayApiRequest()
+    }
+    response = NewUpdateGatewayApiResponse()
     err = c.Send(request, response)
     return
 }

@@ -608,7 +608,7 @@ func NewDescribeFirmwareTaskResponse() (response *DescribeFirmwareTaskResponse) 
     return
 }
 
-// 查询固件升级任务列表
+// 查询固件升级任务详情
 func (c *Client) DescribeFirmwareTask(request *DescribeFirmwareTaskRequest) (response *DescribeFirmwareTaskResponse, err error) {
     if request == nil {
         request = NewDescribeFirmwareTaskRequest()
