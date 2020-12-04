@@ -167,6 +167,9 @@ type CMEExportInfo struct {
 
 	// 导出的素材标签，单个标签不得超过10个字符。
 	TagSet []*string `json:"TagSet,omitempty" name:"TagSet" list`
+
+	// 第三方平台发布信息列表。
+	ThirdPartyPublishInfos []*ThirdPartyPublishInfo `json:"ThirdPartyPublishInfos,omitempty" name:"ThirdPartyPublishInfos" list`
 }
 
 type ClassInfo struct {
@@ -308,13 +311,13 @@ type CreateProjectRequest struct {
 	// 项目描述信息。
 	Description *string `json:"Description,omitempty" name:"Description"`
 
-	// 导播台信息，仅当项目类型为 SWITCHER 时有效。
+	// 导播台信息，仅当项目类型为 SWITCHER 时必填。
 	SwitcherProjectInput *SwitcherProjectInput `json:"SwitcherProjectInput,omitempty" name:"SwitcherProjectInput"`
 
 	// 直播剪辑信息，暂未开放，请勿使用。
 	LiveStreamClipProjectInput *LiveStreamClipProjectInput `json:"LiveStreamClipProjectInput,omitempty" name:"LiveStreamClipProjectInput"`
 
-	// 视频编辑信息。
+	// 视频编辑信息，仅当项目类型为 VIDEO_EDIT 时必填。
 	VideoEditProjectInput *VideoEditProjectInput `json:"VideoEditProjectInput,omitempty" name:"VideoEditProjectInput"`
 }
 
@@ -1599,6 +1602,12 @@ type JoinTeamInfo struct {
 	Role *string `json:"Role,omitempty" name:"Role"`
 }
 
+type KuaishouPublishInfo struct {
+
+	// 视频发布标题，限30个字符。
+	Title *string `json:"Title,omitempty" name:"Title"`
+}
+
 type LinkMaterial struct {
 
 	// 链接类型取值:
@@ -2108,6 +2117,21 @@ func (r *MoveClassResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type PenguinMediaPlatformPublishInfo struct {
+
+	// 视频发布标题。
+	Title *string `json:"Title,omitempty" name:"Title"`
+
+	// 视频发布描述信息。
+	Description *string `json:"Description,omitempty" name:"Description"`
+
+	// 视频标签。
+	Tags []*string `json:"Tags,omitempty" name:"Tags" list`
+
+	// 视频分类，详见企鹅号官网视频分类。
+	Category *int64 `json:"Category,omitempty" name:"Category"`
+}
+
 type ProjectInfo struct {
 
 	// 项目 Id。
@@ -2386,6 +2410,21 @@ type TeamMemberInfo struct {
 	Role *string `json:"Role,omitempty" name:"Role"`
 }
 
+type ThirdPartyPublishInfo struct {
+
+	// 发布通道  ID。
+	ChannelMaterialId *string `json:"ChannelMaterialId,omitempty" name:"ChannelMaterialId"`
+
+	// 企鹅号发布信息，如果使用的发布通道为企鹅号时必填。
+	PenguinMediaPlatformPublishInfo *PenguinMediaPlatformPublishInfo `json:"PenguinMediaPlatformPublishInfo,omitempty" name:"PenguinMediaPlatformPublishInfo"`
+
+	// 新浪微博发布信息，如果使用的发布通道为新浪微博时必填。
+	WeiboPublishInfo *WeiboPublishInfo `json:"WeiboPublishInfo,omitempty" name:"WeiboPublishInfo"`
+
+	// 快手发布信息，如果使用的发布通道为快手时必填。
+	KuaishouPublishInfo *KuaishouPublishInfo `json:"KuaishouPublishInfo,omitempty" name:"KuaishouPublishInfo"`
+}
+
 type TimeRange struct {
 
 	// 开始时间，使用 ISO 日期格式。
@@ -2402,11 +2441,18 @@ type VODExportInfo struct {
 
 	// 导出的媒资分类 Id。
 	ClassId *uint64 `json:"ClassId,omitempty" name:"ClassId"`
+
+	// 第三方平台发布信息列表。
+	ThirdPartyPublishInfos []*ThirdPartyPublishInfo `json:"ThirdPartyPublishInfos,omitempty" name:"ThirdPartyPublishInfos" list`
 }
 
 type VideoEditProjectInput struct {
 
-	// 输入的媒体轨道列表，包括视频、音频，等素材组成的多个轨道信息，其中：<li>输入的多个轨道在时间轴上和输出媒体文件的时间轴对齐；</li><li>时间轴上相同时间点的各个轨道的素材进行重叠，视频或者图片按轨道顺序进行图像的叠加，轨道顺序高的素材叠加在上面，音频素材进行混音；</li><li>视频、音频，每一种类型的轨道最多支持10个。</li>
+	// 视频编辑模板 ID ，通过模板导入项目时填写。
+	VideoEditTemplateId *string `json:"VideoEditTemplateId,omitempty" name:"VideoEditTemplateId"`
+
+	// 输入的媒体轨道列表，包括视频、音频，等素材组成的多个轨道信息。其中：<li>输入的多个轨道在时间轴上和输出媒体文件的时间轴对齐；</li><li>时间轴上相同时间点的各个轨道的素材进行重叠，视频或者图片按轨道顺序进行图像的叠加，轨道顺序高的素材叠加在上面，音频素材进行混音；</li><li>视频、音频，每一种类型的轨道最多支持10个。</li>
+	// 注：当从模板导入项目时（即 VideoEditTemplateId 不为空时），该参数无效。
 	InitTracks []*MediaTrack `json:"InitTracks,omitempty" name:"InitTracks" list`
 }
 
@@ -2524,4 +2570,20 @@ type VideoTrackItem struct {
 	// <li>当 Width 为空，Height 非空，则 Width 按比例缩放</li>
 	// <li>当 Width 非空，Height 为空，则 Height 按比例缩放。</li>
 	Width *string `json:"Width,omitempty" name:"Width"`
+}
+
+type WeiboPublishInfo struct {
+
+	// 视频发布标题。
+	Title *string `json:"Title,omitempty" name:"Title"`
+
+	// 视频发布描述信息。
+	Description *string `json:"Description,omitempty" name:"Description"`
+
+	// 微博可见性，可取值为：
+	// <li>Public：公开，所有人可见；</li>
+	// <li>Private：私有，仅自己可见。</li>
+	// 
+	// 默认为 Public，所有人可见。
+	Visible *string `json:"Visible,omitempty" name:"Visible"`
 }

@@ -239,6 +239,44 @@ func (r *CreateCameraAlertsResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type CreateCaptureRequest struct {
+	*tchttp.BaseRequest
+
+	// 原始抓拍报文
+	Data *string `json:"Data,omitempty" name:"Data"`
+}
+
+func (r *CreateCaptureRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateCaptureRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateCaptureResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 原始应答报文
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		RspData *string `json:"RspData,omitempty" name:"RspData"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateCaptureResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateCaptureResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type CreateMultiBizAlertRequest struct {
 	*tchttp.BaseRequest
 

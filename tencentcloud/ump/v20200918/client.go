@@ -69,6 +69,31 @@ func (c *Client) CreateCameraAlerts(request *CreateCameraAlertsRequest) (respons
     return
 }
 
+func NewCreateCaptureRequest() (request *CreateCaptureRequest) {
+    request = &CreateCaptureRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ump", APIVersion, "CreateCapture")
+    return
+}
+
+func NewCreateCaptureResponse() (response *CreateCaptureResponse) {
+    response = &CreateCaptureResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 场内抓拍上报接口
+func (c *Client) CreateCapture(request *CreateCaptureRequest) (response *CreateCaptureResponse, err error) {
+    if request == nil {
+        request = NewCreateCaptureRequest()
+    }
+    response = NewCreateCaptureResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateMultiBizAlertRequest() (request *CreateMultiBizAlertRequest) {
     request = &CreateMultiBizAlertRequest{
         BaseRequest: &tchttp.BaseRequest{},
