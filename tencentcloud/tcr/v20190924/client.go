@@ -943,6 +943,31 @@ func (c *Client) DescribeInstances(request *DescribeInstancesRequest) (response 
     return
 }
 
+func NewDescribeInternalEndpointsRequest() (request *DescribeInternalEndpointsRequest) {
+    request = &DescribeInternalEndpointsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tcr", APIVersion, "DescribeInternalEndpoints")
+    return
+}
+
+func NewDescribeInternalEndpointsResponse() (response *DescribeInternalEndpointsResponse) {
+    response = &DescribeInternalEndpointsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询实例内网访问VPC链接
+func (c *Client) DescribeInternalEndpoints(request *DescribeInternalEndpointsRequest) (response *DescribeInternalEndpointsResponse, err error) {
+    if request == nil {
+        request = NewDescribeInternalEndpointsRequest()
+    }
+    response = NewDescribeInternalEndpointsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeNamespacePersonalRequest() (request *DescribeNamespacePersonalRequest) {
     request = &DescribeNamespacePersonalRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1264,6 +1289,31 @@ func (c *Client) ManageImageLifecycleGlobalPersonal(request *ManageImageLifecycl
         request = NewManageImageLifecycleGlobalPersonalRequest()
     }
     response = NewManageImageLifecycleGlobalPersonalResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewManageInternalEndpointRequest() (request *ManageInternalEndpointRequest) {
+    request = &ManageInternalEndpointRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tcr", APIVersion, "ManageInternalEndpoint")
+    return
+}
+
+func NewManageInternalEndpointResponse() (response *ManageInternalEndpointResponse) {
+    response = &ManageInternalEndpointResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 管理实例内网访问VPC链接
+func (c *Client) ManageInternalEndpoint(request *ManageInternalEndpointRequest) (response *ManageInternalEndpointResponse, err error) {
+    if request == nil {
+        request = NewManageInternalEndpointRequest()
+    }
+    response = NewManageInternalEndpointResponse()
     err = c.Send(request, response)
     return
 }

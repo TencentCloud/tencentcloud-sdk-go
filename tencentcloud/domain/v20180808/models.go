@@ -776,6 +776,9 @@ type DomainBaseInfo struct {
 	// yunxun: Guangzhou Yunxun Information Technology Co., Ltd.（广州云讯信息科技有限公司）
 	// xinnet: Xin Net Technology Corporation（北京新网数码信息技术有限公司）
 	RegistrarType *string `json:"RegistrarType,omitempty" name:"RegistrarType"`
+
+	// 域名绑定的ns
+	NameServer []*string `json:"NameServer,omitempty" name:"NameServer" list`
 }
 
 type DomainBatchDetailSet struct {

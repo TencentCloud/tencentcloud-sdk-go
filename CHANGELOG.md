@@ -1,44 +1,10 @@
 # 本版本更新包含以下内容：
 
-## 腾讯云剪(cme) 版本：2019-10-29
+## 负载均衡(clb) 版本：2018-03-17
 
-### 第 16 次发布
+### 第 39 次发布
 
-发布时间：2020-12-04 08:01:32
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增数据结构：
-
-* [KuaishouPublishInfo](https://cloud.tencent.com/document/api/1156/40360#KuaishouPublishInfo)
-* [PenguinMediaPlatformPublishInfo](https://cloud.tencent.com/document/api/1156/40360#PenguinMediaPlatformPublishInfo)
-* [ThirdPartyPublishInfo](https://cloud.tencent.com/document/api/1156/40360#ThirdPartyPublishInfo)
-* [WeiboPublishInfo](https://cloud.tencent.com/document/api/1156/40360#WeiboPublishInfo)
-
-修改数据结构：
-
-* [CMEExportInfo](https://cloud.tencent.com/document/api/1156/40360#CMEExportInfo)
-
-	* 新增成员：ThirdPartyPublishInfos
-
-* [VODExportInfo](https://cloud.tencent.com/document/api/1156/40360#VODExportInfo)
-
-	* 新增成员：ThirdPartyPublishInfos
-
-* [VideoEditProjectInput](https://cloud.tencent.com/document/api/1156/40360#VideoEditProjectInput)
-
-	* 新增成员：VideoEditTemplateId
-
-
-
-
-## 腾讯优mall自研产品(ump) 版本：2020-09-18
-
-### 第 2 次发布
-
-发布时间：2020-12-04 08:00:04
+发布时间：2020-12-09 08:02:50
 
 本次发布包含了以下内容：
 
@@ -46,7 +12,81 @@
 
 新增接口：
 
-* [CreateCapture](https://cloud.tencent.com/document/api/1320/50684)
+* [DescribeLoadBalancerTraffic](https://cloud.tencent.com/document/api/214/50774)
+
+新增数据结构：
+
+* [LoadBalancerTraffic](https://cloud.tencent.com/document/api/214/30694#LoadBalancerTraffic)
+
+
+
+## 主机安全(cwp) 版本：2018-02-28
+
+### 第 3 次发布
+
+发布时间：2020-12-09 08:09:21
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [Filter](https://cloud.tencent.com/document/api/296/19867#Filter)
+
+	* 新增成员：ExactMatch
+
+
+
+
+## 云数据库 SQL Server(sqlserver) 版本：2018-03-28
+
+### 第 17 次发布
+
+发布时间：2020-12-09 08:06:12
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [RecycleReadOnlyGroup](https://cloud.tencent.com/document/api/238/50274)
+
+	* 新增入参：InstanceId, ReadOnlyGroupId
+
+
+
+
+## 云点播(vod) 版本：2018-07-17
+
+### 第 65 次发布
+
+发布时间：2020-12-09 08:07:43
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [SimpleHlsClip](https://cloud.tencent.com/document/api/266/33428)
+
+	* 新增入参：IsPersistence
+
+	* 新增出参：FileId
+
+
+修改数据结构：
+
+* [VideoTemplateInfo](https://cloud.tencent.com/document/api/266/31773#VideoTemplateInfo)
+
+	* 新增成员：Gop
+
+* [VideoTemplateInfoForUpdate](https://cloud.tencent.com/document/api/266/31773#VideoTemplateInfoForUpdate)
+
+	* 新增成员：Gop
+
 
 
 
@@ -4816,6 +4856,22 @@
 
 ## 验证码(captcha) 版本：2019-07-22
 
+### 第 8 次发布
+
+发布时间：2020-12-07 08:02:17
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeCaptchaMiniRiskResult](https://cloud.tencent.com/document/api/1110/50711)
+
+新增数据结构：
+
+* [OutputManageMarketingRiskValue](https://cloud.tencent.com/document/api/1110/40481#OutputManageMarketingRiskValue)
+
 ### 第 7 次发布
 
 发布时间：2020-09-18 08:01:58
@@ -6693,6 +6749,52 @@
 
 ## 内容分发网络(cdn) 版本：2018-06-06
 
+### 第 52 次发布
+
+发布时间：2020-12-07 08:02:41
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [UpdateScdnDomain](https://cloud.tencent.com/document/api/228/50712)
+
+新增数据结构：
+
+* [BotCookie](https://cloud.tencent.com/document/api/228/30987#BotCookie)
+* [BotJavaScript](https://cloud.tencent.com/document/api/228/30987#BotJavaScript)
+* [ScdnAclConfig](https://cloud.tencent.com/document/api/228/30987#ScdnAclConfig)
+* [ScdnAclGroup](https://cloud.tencent.com/document/api/228/30987#ScdnAclGroup)
+* [ScdnAclRule](https://cloud.tencent.com/document/api/228/30987#ScdnAclRule)
+* [ScdnBotConfig](https://cloud.tencent.com/document/api/228/30987#ScdnBotConfig)
+* [ScdnCCRules](https://cloud.tencent.com/document/api/228/30987#ScdnCCRules)
+* [ScdnConfig](https://cloud.tencent.com/document/api/228/30987#ScdnConfig)
+* [ScdnDdosConfig](https://cloud.tencent.com/document/api/228/30987#ScdnDdosConfig)
+* [ScdnErrorPage](https://cloud.tencent.com/document/api/228/30987#ScdnErrorPage)
+* [ScdnWafConfig](https://cloud.tencent.com/document/api/228/30987#ScdnWafConfig)
+* [ScdnWafRule](https://cloud.tencent.com/document/api/228/30987#ScdnWafRule)
+
+修改数据结构：
+
+* [Https](https://cloud.tencent.com/document/api/228/30987#Https)
+
+	* 新增成员：TlsVersion
+
+* [MaxAgeRule](https://cloud.tencent.com/document/api/228/30987#MaxAgeRule)
+
+	* 新增成员：FollowOrigin
+
+* [PathRule](https://cloud.tencent.com/document/api/228/30987#PathRule)
+
+	* <font color="#dd0000">**修改成员**：</font>Origin, ServerName, OriginArea
+
+* [UrlRedirectRule](https://cloud.tencent.com/document/api/228/30987#UrlRedirectRule)
+
+	* 新增成员：RedirectHost
+
+
 ### 第 51 次发布
 
 发布时间：2020-12-03 08:03:02
@@ -8524,6 +8626,37 @@
 
 ## 负载均衡(clb) 版本：2018-03-17
 
+### 第 39 次发布
+
+发布时间：2020-12-09 08:02:50
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeLoadBalancerTraffic](https://cloud.tencent.com/document/api/214/50774)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[LoadBalancerTraffic](https://cloud.tencent.com/document/api/214/30694#LoadBalancerTraffic)](https://cloud.tencent.com/document/api/214/30694#[LoadBalancerTraffic](https://cloud.tencent.com/document/api/214/30694#LoadBalancerTraffic))
+
+### 第 38 次发布
+
+发布时间：2020-12-08 08:03:20
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateLoadBalancer](https://cloud.tencent.com/document/api/214/30692)
+
+	* 新增入参：BandwidthPackageId
+
+
 ### 第 37 次发布
 
 发布时间：2020-11-20 08:02:55
@@ -9609,10 +9742,10 @@
 
 新增数据结构：
 
-* [[KuaishouPublishInfo](https://cloud.tencent.com/document/api/1156/40360#KuaishouPublishInfo)](https://cloud.tencent.com/document/api/1156/40360#[KuaishouPublishInfo](https://cloud.tencent.com/document/api/1156/40360#KuaishouPublishInfo))
-* [[PenguinMediaPlatformPublishInfo](https://cloud.tencent.com/document/api/1156/40360#PenguinMediaPlatformPublishInfo)](https://cloud.tencent.com/document/api/1156/40360#[PenguinMediaPlatformPublishInfo](https://cloud.tencent.com/document/api/1156/40360#PenguinMediaPlatformPublishInfo))
-* [[ThirdPartyPublishInfo](https://cloud.tencent.com/document/api/1156/40360#ThirdPartyPublishInfo)](https://cloud.tencent.com/document/api/1156/40360#[ThirdPartyPublishInfo](https://cloud.tencent.com/document/api/1156/40360#ThirdPartyPublishInfo))
-* [[WeiboPublishInfo](https://cloud.tencent.com/document/api/1156/40360#WeiboPublishInfo)](https://cloud.tencent.com/document/api/1156/40360#[WeiboPublishInfo](https://cloud.tencent.com/document/api/1156/40360#WeiboPublishInfo))
+* [KuaishouPublishInfo](https://cloud.tencent.com/document/api/1156/40360#KuaishouPublishInfo)
+* [PenguinMediaPlatformPublishInfo](https://cloud.tencent.com/document/api/1156/40360#PenguinMediaPlatformPublishInfo)
+* [ThirdPartyPublishInfo](https://cloud.tencent.com/document/api/1156/40360#ThirdPartyPublishInfo)
+* [WeiboPublishInfo](https://cloud.tencent.com/document/api/1156/40360#WeiboPublishInfo)
 
 修改数据结构：
 
@@ -12515,6 +12648,21 @@
 
 ## 主机安全(cwp) 版本：2018-02-28
 
+### 第 3 次发布
+
+发布时间：2020-12-09 08:09:21
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [Filter](https://cloud.tencent.com/document/api/296/19867#Filter)
+
+	* 新增成员：ExactMatch
+
+
 ### 第 2 次发布
 
 发布时间：2020-11-30 08:43:46
@@ -14289,6 +14437,21 @@
 
 
 ## 域名注册(domain) 版本：2018-08-08
+
+### 第 10 次发布
+
+发布时间：2020-12-07 08:03:40
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [DomainBaseInfo](https://cloud.tencent.com/document/api/242/38895#DomainBaseInfo)
+
+	* 新增成员：NameServer
+
 
 ### 第 9 次发布
 
@@ -28715,6 +28878,21 @@
 
 ## 云数据库 SQL Server(sqlserver) 版本：2018-03-28
 
+### 第 17 次发布
+
+发布时间：2020-12-09 08:06:12
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [RecycleReadOnlyGroup](https://cloud.tencent.com/document/api/238/50274)
+
+	* 新增入参：InstanceId, ReadOnlyGroupId
+
+
 ### 第 16 次发布
 
 发布时间：2020-11-25 08:06:07
@@ -30062,6 +30240,42 @@
 
 ## 游戏数据库 TcaplusDB(tcaplusdb) 版本：2019-08-23
 
+### 第 9 次发布
+
+发布时间：2020-12-08 08:07:21
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeMachine](https://cloud.tencent.com/document/api/596/50732)
+* [ModifyClusterMachine](https://cloud.tencent.com/document/api/596/50731)
+
+修改接口：
+
+* [CreateCluster](https://cloud.tencent.com/document/api/596/41491)
+
+	* 新增入参：ServerList, ProxyList, ClusterType
+
+
+新增数据结构：
+
+* [MachineInfo](https://cloud.tencent.com/document/api/596/39686#MachineInfo)
+* [PoolInfo](https://cloud.tencent.com/document/api/596/39686#PoolInfo)
+* [ProxyDetailInfo](https://cloud.tencent.com/document/api/596/39686#ProxyDetailInfo)
+* [ProxyMachineInfo](https://cloud.tencent.com/document/api/596/39686#ProxyMachineInfo)
+* [ServerDetailInfo](https://cloud.tencent.com/document/api/596/39686#ServerDetailInfo)
+* [ServerMachineInfo](https://cloud.tencent.com/document/api/596/39686#ServerMachineInfo)
+
+修改数据结构：
+
+* [ClusterInfo](https://cloud.tencent.com/document/api/596/39686#ClusterInfo)
+
+	* 新增成员：ClusterType, ClusterStatus, ReadCapacityUnit, WriteCapacityUnit, DiskVolume, ServerList, ProxyList
+
+
 ### 第 8 次发布
 
 发布时间：2020-07-07 08:16:55
@@ -30437,6 +30651,25 @@
 
 
 ## 云开发 CloudBase(tcb) 版本：2018-06-08
+
+### 第 28 次发布
+
+发布时间：2020-12-08 08:07:30
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [EstablishCloudBaseRunServer](https://cloud.tencent.com/document/api/876/49626)
+
+	* 新增入参：VpcInfo, PublicAccess
+
+
+新增数据结构：
+
+* [CloudBaseRunVpcInfo](https://cloud.tencent.com/document/api/876/34822#CloudBaseRunVpcInfo)
 
 ### 第 27 次发布
 
@@ -31275,6 +31508,23 @@
 
 
 ## 容器镜像服务(tcr) 版本：2019-09-24
+
+### 第 18 次发布
+
+发布时间：2020-12-08 08:09:55
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeInternalEndpoints](https://cloud.tencent.com/document/api/1141/50734)
+* [ManageInternalEndpoint](https://cloud.tencent.com/document/api/1141/50733)
+
+新增数据结构：
+
+* [AccessVpc](https://cloud.tencent.com/document/api/1141/41603#AccessVpc)
 
 ### 第 17 次发布
 
@@ -35385,7 +35635,7 @@
 
 新增接口：
 
-* [[CreateCapture](https://cloud.tencent.com/document/api/1320/50684)](https://cloud.tencent.com/document/api/#/#)
+* [CreateCapture](https://cloud.tencent.com/document/api/1320/50684)
 
 ### 第 1 次发布
 
@@ -35435,6 +35685,34 @@
 
 
 ## 云点播(vod) 版本：2018-07-17
+
+### 第 65 次发布
+
+发布时间：2020-12-09 08:07:43
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [SimpleHlsClip](https://cloud.tencent.com/document/api/266/33428)
+
+	* 新增入参：IsPersistence
+
+	* 新增出参：FileId
+
+
+修改数据结构：
+
+* [VideoTemplateInfo](https://cloud.tencent.com/document/api/266/31773#VideoTemplateInfo)
+
+	* 新增成员：Gop
+
+* [VideoTemplateInfoForUpdate](https://cloud.tencent.com/document/api/266/31773#VideoTemplateInfoForUpdate)
+
+	* 新增成员：Gop
+
 
 ### 第 64 次发布
 
@@ -37457,6 +37735,32 @@
 
 
 ## 私有网络(vpc) 版本：2017-03-12
+
+### 第 72 次发布
+
+发布时间：2020-12-08 08:08:38
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateDirectConnectGateway](https://cloud.tencent.com/document/api/215/19192)
+
+	* 新增入参：ModeType
+
+* [ModifyDirectConnectGatewayAttribute](https://cloud.tencent.com/document/api/215/30643)
+
+	* 新增入参：ModeType
+
+
+修改数据结构：
+
+* [DirectConnectGateway](https://cloud.tencent.com/document/api/215/15824#DirectConnectGateway)
+
+	* 新增成员：VXLANSupport, ModeType
+
 
 ### 第 71 次发布
 

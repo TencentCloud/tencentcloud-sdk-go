@@ -606,6 +606,7 @@ type DriverLicenseOCRRequest struct {
 
 	// FRONT 为驾驶证主页正面（有红色印章的一面），
 	// BACK 为驾驶证副页正面（有档案编号的一面）。
+	// 默认值为：FRONT。
 	CardSide *string `json:"CardSide,omitempty" name:"CardSide"`
 }
 
@@ -3787,14 +3788,14 @@ type TextDetectionEn struct {
 	// 置信度 0 ~100。
 	Confidence *int64 `json:"Confidence,omitempty" name:"Confidence"`
 
-	// 文本行坐标，以四个顶点坐标表示。
+	// 文本行在原图中的四点坐标。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Polygon []*Coord `json:"Polygon,omitempty" name:"Polygon" list`
 
 	// 此字段为扩展字段。目前EnglishOCR接口返回内容为空。
 	AdvancedInfo *string `json:"AdvancedInfo,omitempty" name:"AdvancedInfo"`
 
-	// 单词在原图中的四点坐标。
+	// 英文单词在原图中的四点坐标。
 	WordCoordPoint []*WordCoordPoint `json:"WordCoordPoint,omitempty" name:"WordCoordPoint" list`
 
 	// 候选字符集(包含候选字Character以及置信度Confidence)。
@@ -4444,6 +4445,7 @@ type VehicleLicenseOCRRequest struct {
 
 	// FRONT 为行驶证主页正面（有红色印章的一面），
 	// BACK 为行驶证副页正面（有号码号牌的一面）。
+	// 默认值为：FRONT。
 	CardSide *string `json:"CardSide,omitempty" name:"CardSide"`
 }
 

@@ -780,6 +780,9 @@ type CreateLoadBalancerRequest struct {
 	// 指定Vip申请负载均衡
 	Vip *string `json:"Vip,omitempty" name:"Vip"`
 
+	// 带宽包ID，指定此参数时，网络计费方式（InternetAccessible.InternetChargeType）只支持按带宽包计费（BANDWIDTH_PACKAGE）
+	BandwidthPackageId *string `json:"BandwidthPackageId,omitempty" name:"BandwidthPackageId"`
+
 	// 独占集群信息
 	ExclusiveCluster *ExclusiveCluster `json:"ExclusiveCluster,omitempty" name:"ExclusiveCluster"`
 
@@ -1864,6 +1867,44 @@ func (r *DescribeLoadBalancerListByCertIdResponse) FromJsonString(s string) erro
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeLoadBalancerTrafficRequest struct {
+	*tchttp.BaseRequest
+
+	// 负载均衡所在地域，不传默认返回所有地域负载均衡。
+	LoadBalancerRegion *string `json:"LoadBalancerRegion,omitempty" name:"LoadBalancerRegion"`
+}
+
+func (r *DescribeLoadBalancerTrafficRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeLoadBalancerTrafficRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeLoadBalancerTrafficResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 按出带宽从高到低排序后的负载均衡信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		LoadBalancerTraffic []*LoadBalancerTraffic `json:"LoadBalancerTraffic,omitempty" name:"LoadBalancerTraffic" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeLoadBalancerTrafficResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeLoadBalancerTrafficResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeLoadBalancersDetailRequest struct {
 	*tchttp.BaseRequest
 
@@ -1990,6 +2031,8 @@ type DescribeLoadBalancersRequest struct {
 	// <li> internet-charge-type - String - 是否必填：否 - （过滤条件）按照 CLB 的网络计费模式过滤，包括"BANDWIDTH_PREPAID","TRAFFIC_POSTPAID_BY_HOUR","BANDWIDTH_POSTPAID_BY_HOUR","BANDWIDTH_PACKAGE"。</li>
 	// <li> master-zone-id - String - 是否必填：否 - （过滤条件）按照 CLB 的主可用区ID过滤，如 ："100001" （对应的是广州一区）。</li>
 	// <li> tag-key - String - 是否必填：否 - （过滤条件）按照 CLB 标签的键过滤。</li>
+	// <li> tag-value - String - 是否必填：否 - （过滤条件）按照 CLB 标签的值过滤。</li>
+	// <li> function-name - String - 是否必填：否 - （过滤条件）按照 CLB 后端绑定的SCF云函数的函数名称过滤。</li>
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
 }
 
@@ -2968,6 +3011,24 @@ type LoadBalancerHealth struct {
 	Listeners []*ListenerHealth `json:"Listeners,omitempty" name:"Listeners" list`
 }
 
+type LoadBalancerTraffic struct {
+
+	// 负载均衡ID
+	LoadBalancerId *string `json:"LoadBalancerId,omitempty" name:"LoadBalancerId"`
+
+	// 负载均衡名字
+	LoadBalancerName *string `json:"LoadBalancerName,omitempty" name:"LoadBalancerName"`
+
+	// 负载均衡所在地域
+	Region *string `json:"Region,omitempty" name:"Region"`
+
+	// 负载均衡的vip
+	Vip *string `json:"Vip,omitempty" name:"Vip"`
+
+	// 最大出带宽，单位：Mbps
+	OutBandwidth *float64 `json:"OutBandwidth,omitempty" name:"OutBandwidth"`
+}
+
 type ManualRewriteRequest struct {
 	*tchttp.BaseRequest
 
@@ -3793,7 +3854,7 @@ type RuleHealth struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Url *string `json:"Url,omitempty" name:"Url"`
 
-	// 本规则上绑定的后端的健康检查状态
+	// 本规则上绑定的后端服务的健康检查状态
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Targets []*TargetHealth `json:"Targets,omitempty" name:"Targets" list`
 }

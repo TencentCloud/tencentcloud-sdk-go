@@ -2770,7 +2770,7 @@ func NewStopRollbackResponse() (response *StopRollbackResponse) {
     return
 }
 
-// 本接口(StopRollback) 用于撤销实例正在进行的回档任务，该接口返回一个异步任务id。 撤销结果可以通过 DescribeRequestResult 查询任务的执行情况。
+// 本接口(StopRollback) 用于撤销实例正在进行的回档任务，该接口返回一个异步任务id。 撤销结果可以通过 DescribeAsyncRequestInfo 查询任务的执行情况。
 func (c *Client) StopRollback(request *StopRollbackRequest) (response *StopRollbackResponse, err error) {
     if request == nil {
         request = NewStopRollbackRequest()

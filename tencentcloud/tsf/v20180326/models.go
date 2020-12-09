@@ -300,7 +300,7 @@ type ApiGroupInfo struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	GroupContext *string `json:"GroupContext,omitempty" name:"GroupContext"`
 
-	// 鉴权类型。 secret： 秘钥鉴权； none:无鉴权
+	// 鉴权类型。 secret： 密钥鉴权； none:无鉴权
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AuthType *string `json:"AuthType,omitempty" name:"AuthType"`
 
@@ -354,7 +354,7 @@ type ApiInfo struct {
 	// 请求映射
 	PathMapping *string `json:"PathMapping,omitempty" name:"PathMapping"`
 
-	// api所在服务host
+	// api所在服务host,限定外部Api填写。格式: "http://127.0.0.1:8080"
 	Host *string `json:"Host,omitempty" name:"Host"`
 
 	// api描述信息
@@ -1262,7 +1262,7 @@ type CreateApiGroupRequest struct {
 	// 分组上下文
 	GroupContext *string `json:"GroupContext,omitempty" name:"GroupContext"`
 
-	// 鉴权类型。secret： 秘钥鉴权； none:无鉴权
+	// 鉴权类型。secret： 密钥鉴权； none:无鉴权
 	AuthType *string `json:"AuthType,omitempty" name:"AuthType"`
 
 	// 备注

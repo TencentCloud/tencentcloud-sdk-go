@@ -3513,6 +3513,12 @@ func (r *RecycleDBInstanceResponse) FromJsonString(s string) error {
 
 type RecycleReadOnlyGroupRequest struct {
 	*tchttp.BaseRequest
+
+	// 主实例的ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 只读组的ID
+	ReadOnlyGroupId *string `json:"ReadOnlyGroupId,omitempty" name:"ReadOnlyGroupId"`
 }
 
 func (r *RecycleReadOnlyGroupRequest) ToJsonString() string {

@@ -1432,6 +1432,31 @@ func (c *Client) UpdatePayType(request *UpdatePayTypeRequest) (response *UpdateP
     return
 }
 
+func NewUpdateScdnDomainRequest() (request *UpdateScdnDomainRequest) {
+    request = &UpdateScdnDomainRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cdn", APIVersion, "UpdateScdnDomain")
+    return
+}
+
+func NewUpdateScdnDomainResponse() (response *UpdateScdnDomainResponse) {
+    response = &UpdateScdnDomainResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// UpdateScdnDomain 用于修改 SCDN 加速域名安全相关配置
+func (c *Client) UpdateScdnDomain(request *UpdateScdnDomainRequest) (response *UpdateScdnDomainResponse, err error) {
+    if request == nil {
+        request = NewUpdateScdnDomainRequest()
+    }
+    response = NewUpdateScdnDomainResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewVerifyDomainRecordRequest() (request *VerifyDomainRecordRequest) {
     request = &VerifyDomainRecordRequest{
         BaseRequest: &tchttp.BaseRequest{},

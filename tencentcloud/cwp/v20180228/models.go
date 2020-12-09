@@ -4090,6 +4090,9 @@ type Filter struct {
 
 	// 一个或者多个过滤值。
 	Values []*string `json:"Values,omitempty" name:"Values" list`
+
+	// 模糊搜索
+	ExactMatch *bool `json:"ExactMatch,omitempty" name:"ExactMatch"`
 }
 
 type Filters struct {

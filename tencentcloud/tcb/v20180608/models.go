@@ -190,6 +190,21 @@ type CloudBaseRunVolumeMount struct {
 	NfsVolumes []*CloudBaseRunNfsVolumeSource `json:"NfsVolumes,omitempty" name:"NfsVolumes" list`
 }
 
+type CloudBaseRunVpcInfo struct {
+
+	// vpc的id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
+
+	// 子网id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SubnetIds []*string `json:"SubnetIds,omitempty" name:"SubnetIds" list`
+
+	// 创建类型(0=继承; 1=新建; 2=指定)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateType *int64 `json:"CreateType,omitempty" name:"CreateType"`
+}
+
 type CloudBaseRunVpcSubnet struct {
 
 	// 子网id
@@ -2007,6 +2022,12 @@ type EstablishCloudBaseRunServerRequest struct {
 
 	// 来源方（默认值：qcloud，微信侧来源miniapp)
 	Source *string `json:"Source,omitempty" name:"Source"`
+
+	// vpc信息
+	VpcInfo *CloudBaseRunVpcInfo `json:"VpcInfo,omitempty" name:"VpcInfo"`
+
+	// 0/1=允许公网访问;2=关闭公网访问
+	PublicAccess *int64 `json:"PublicAccess,omitempty" name:"PublicAccess"`
 }
 
 func (r *EstablishCloudBaseRunServerRequest) ToJsonString() string {

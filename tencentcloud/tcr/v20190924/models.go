@@ -20,6 +20,21 @@ import (
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
+type AccessVpc struct {
+
+	// Vpc的Id
+	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
+
+	// 子网Id
+	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
+
+	// 内网接入状态
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 内网接入Ip
+	AccessIp *string `json:"AccessIp,omitempty" name:"AccessIp"`
+}
+
 type AutoDelStrategyInfo struct {
 
 	// 用户名
@@ -1551,6 +1566,47 @@ func (r *DescribeInstancesResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeInternalEndpointsRequest struct {
+	*tchttp.BaseRequest
+
+	// 实例Id
+	RegistryId *string `json:"RegistryId,omitempty" name:"RegistryId"`
+}
+
+func (r *DescribeInternalEndpointsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeInternalEndpointsRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeInternalEndpointsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 内网接入信息的列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		AccessVpcSet []*AccessVpc `json:"AccessVpcSet,omitempty" name:"AccessVpcSet" list`
+
+		// 内网接入总数
+		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeInternalEndpointsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeInternalEndpointsResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeNamespacePersonalRequest struct {
 	*tchttp.BaseRequest
 
@@ -2211,6 +2267,55 @@ func (r *ManageImageLifecycleGlobalPersonalResponse) ToJsonString() string {
 }
 
 func (r *ManageImageLifecycleGlobalPersonalResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ManageInternalEndpointRequest struct {
+	*tchttp.BaseRequest
+
+	// 实例Id
+	RegistryId *string `json:"RegistryId,omitempty" name:"RegistryId"`
+
+	// Create/Delete
+	Operation *string `json:"Operation,omitempty" name:"Operation"`
+
+	// 需要接入的用户vpcid
+	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
+
+	// 需要接入的用户子网id
+	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
+
+	// 请求的地域ID
+	RegionId *uint64 `json:"RegionId,omitempty" name:"RegionId"`
+}
+
+func (r *ManageInternalEndpointRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ManageInternalEndpointRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ManageInternalEndpointResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 实例Id
+		RegistryId *string `json:"RegistryId,omitempty" name:"RegistryId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ManageInternalEndpointResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ManageInternalEndpointResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 

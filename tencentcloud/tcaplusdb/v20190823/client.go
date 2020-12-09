@@ -393,6 +393,31 @@ func (c *Client) DescribeIdlFileInfos(request *DescribeIdlFileInfosRequest) (res
     return
 }
 
+func NewDescribeMachineRequest() (request *DescribeMachineRequest) {
+    request = &DescribeMachineRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tcaplusdb", APIVersion, "DescribeMachine")
+    return
+}
+
+func NewDescribeMachineResponse() (response *DescribeMachineResponse) {
+    response = &DescribeMachineResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询独占集群可以申请的剩余机器
+func (c *Client) DescribeMachine(request *DescribeMachineRequest) (response *DescribeMachineResponse, err error) {
+    if request == nil {
+        request = NewDescribeMachineRequest()
+    }
+    response = NewDescribeMachineResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeRegionsRequest() (request *DescribeRegionsRequest) {
     request = &DescribeRegionsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -589,6 +614,31 @@ func (c *Client) DescribeUinInWhitelist(request *DescribeUinInWhitelistRequest) 
         request = NewDescribeUinInWhitelistRequest()
     }
     response = NewDescribeUinInWhitelistResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyClusterMachineRequest() (request *ModifyClusterMachineRequest) {
+    request = &ModifyClusterMachineRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tcaplusdb", APIVersion, "ModifyClusterMachine")
+    return
+}
+
+func NewModifyClusterMachineResponse() (response *ModifyClusterMachineResponse) {
+    response = &ModifyClusterMachineResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 修改独占集群机器
+func (c *Client) ModifyClusterMachine(request *ModifyClusterMachineRequest) (response *ModifyClusterMachineResponse, err error) {
+    if request == nil {
+        request = NewModifyClusterMachineRequest()
+    }
+    response = NewModifyClusterMachineResponse()
     err = c.Send(request, response)
     return
 }

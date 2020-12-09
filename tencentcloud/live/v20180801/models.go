@@ -2156,7 +2156,7 @@ type DescribeBillBandwidthAndFluxListRequest struct {
 	// 默认值：5。
 	Granularity *uint64 `json:"Granularity,omitempty" name:"Granularity"`
 
-	// 服务名称，可选值包括LVB(标准直播)，LEB(快直播)，默认值是LVB。
+	// 服务名称，可选值包括LVB(标准直播)，LEB(快直播)，不填则查LVB+LEB总值。
 	ServiceName *string `json:"ServiceName,omitempty" name:"ServiceName"`
 }
 

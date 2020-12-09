@@ -111,6 +111,34 @@ type ClusterInfo struct {
 	// TcaplusDB SDK连接参数，接入ipv6地址
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ApiAccessIpv6 *string `json:"ApiAccessIpv6,omitempty" name:"ApiAccessIpv6"`
+
+	// 集群类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClusterType *int64 `json:"ClusterType,omitempty" name:"ClusterType"`
+
+	// 集群状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClusterStatus *int64 `json:"ClusterStatus,omitempty" name:"ClusterStatus"`
+
+	// 读CU
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ReadCapacityUnit *int64 `json:"ReadCapacityUnit,omitempty" name:"ReadCapacityUnit"`
+
+	// 写CU
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WriteCapacityUnit *int64 `json:"WriteCapacityUnit,omitempty" name:"WriteCapacityUnit"`
+
+	// 磁盘容量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DiskVolume *int64 `json:"DiskVolume,omitempty" name:"DiskVolume"`
+
+	// 独占server机器信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ServerList []*ServerDetailInfo `json:"ServerList,omitempty" name:"ServerList" list`
+
+	// 独占proxy机器信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProxyList []*ProxyDetailInfo `json:"ProxyList,omitempty" name:"ProxyList" list`
 }
 
 type CompareIdlFilesRequest struct {
@@ -231,6 +259,15 @@ type CreateClusterRequest struct {
 
 	// 集群是否开启IPv6功能
 	Ipv6Enable *int64 `json:"Ipv6Enable,omitempty" name:"Ipv6Enable"`
+
+	// 独占集群占用的svr机器
+	ServerList []*MachineInfo `json:"ServerList,omitempty" name:"ServerList" list`
+
+	// 独占集群占用的proxy机器
+	ProxyList []*MachineInfo `json:"ProxyList,omitempty" name:"ProxyList" list`
+
+	// 集群类型1共享2独占
+	ClusterType *int64 `json:"ClusterType,omitempty" name:"ClusterType"`
 }
 
 func (r *CreateClusterRequest) ToJsonString() string {
@@ -710,6 +747,43 @@ func (r *DescribeIdlFileInfosResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeMachineRequest struct {
+	*tchttp.BaseRequest
+
+	// 是否按ipv6过滤
+	Ipv6Enable *int64 `json:"Ipv6Enable,omitempty" name:"Ipv6Enable"`
+}
+
+func (r *DescribeMachineRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeMachineRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeMachineResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 独占机器资源列表
+		PoolList []*PoolInfo `json:"PoolList,omitempty" name:"PoolList" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeMachineResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeMachineResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeRegionsRequest struct {
 	*tchttp.BaseRequest
 }
@@ -1161,6 +1235,61 @@ type IdlFileInfoWithoutContent struct {
 	// 错误信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Error *ErrorInfo `json:"Error,omitempty" name:"Error"`
+}
+
+type MachineInfo struct {
+
+	// 机器类型
+	MachineType *string `json:"MachineType,omitempty" name:"MachineType"`
+
+	// 机器数量
+	MachineNum *int64 `json:"MachineNum,omitempty" name:"MachineNum"`
+}
+
+type ModifyClusterMachineRequest struct {
+	*tchttp.BaseRequest
+
+	// 集群id
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// svr占用的机器
+	ServerList []*MachineInfo `json:"ServerList,omitempty" name:"ServerList" list`
+
+	// proxy占用的机器
+	ProxyList []*MachineInfo `json:"ProxyList,omitempty" name:"ProxyList" list`
+
+	// 集群类型1共享集群2独占集群
+	ClusterType *int64 `json:"ClusterType,omitempty" name:"ClusterType"`
+}
+
+func (r *ModifyClusterMachineRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyClusterMachineRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyClusterMachineResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 集群id
+		ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifyClusterMachineResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyClusterMachineResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
 }
 
 type ModifyClusterNameRequest struct {
@@ -1633,6 +1762,51 @@ type ParsedTableInfoNew struct {
 	SortRule *int64 `json:"SortRule,omitempty" name:"SortRule"`
 }
 
+type PoolInfo struct {
+
+	// 唯一id
+	PoolUid *int64 `json:"PoolUid,omitempty" name:"PoolUid"`
+
+	// 是否支持ipv6
+	Ipv6Enable *int64 `json:"Ipv6Enable,omitempty" name:"Ipv6Enable"`
+
+	// 剩余可用app
+	AvailableAppCount *int64 `json:"AvailableAppCount,omitempty" name:"AvailableAppCount"`
+
+	// svr机器列表
+	ServerList []*ServerMachineInfo `json:"ServerList,omitempty" name:"ServerList" list`
+
+	// proxy机器列表
+	ProxyList []*ProxyMachineInfo `json:"ProxyList,omitempty" name:"ProxyList" list`
+}
+
+type ProxyDetailInfo struct {
+
+	// proxy的唯一id
+	ProxyUid *string `json:"ProxyUid,omitempty" name:"ProxyUid"`
+
+	// 机器类型
+	MachineType *string `json:"MachineType,omitempty" name:"MachineType"`
+
+	// 请求包速度
+	ProcessSpeed *int64 `json:"ProcessSpeed,omitempty" name:"ProcessSpeed"`
+
+	// 请求包时延
+	AverageProcessDelay *int64 `json:"AverageProcessDelay,omitempty" name:"AverageProcessDelay"`
+
+	// 慢处理包速度
+	SlowProcessSpeed *int64 `json:"SlowProcessSpeed,omitempty" name:"SlowProcessSpeed"`
+}
+
+type ProxyMachineInfo struct {
+
+	// 唯一id
+	ProxyUid *string `json:"ProxyUid,omitempty" name:"ProxyUid"`
+
+	// 机器类型
+	MachineType *string `json:"MachineType,omitempty" name:"MachineType"`
+}
+
 type RecoverRecycleTablesRequest struct {
 	*tchttp.BaseRequest
 
@@ -1807,6 +1981,36 @@ type SelectedTableWithField struct {
 
 	// 索引分片数
 	ShardNum *uint64 `json:"ShardNum,omitempty" name:"ShardNum"`
+}
+
+type ServerDetailInfo struct {
+
+	// svr唯一id
+	ServerUid *string `json:"ServerUid,omitempty" name:"ServerUid"`
+
+	// 机器类型
+	MachineType *string `json:"MachineType,omitempty" name:"MachineType"`
+
+	// 内存占用量
+	MemoryRate *int64 `json:"MemoryRate,omitempty" name:"MemoryRate"`
+
+	// 磁盘占用量
+	DiskRate *int64 `json:"DiskRate,omitempty" name:"DiskRate"`
+
+	// 读次数
+	ReadNum *int64 `json:"ReadNum,omitempty" name:"ReadNum"`
+
+	// 写次数
+	WriteNum *int64 `json:"WriteNum,omitempty" name:"WriteNum"`
+}
+
+type ServerMachineInfo struct {
+
+	// 机器唯一id
+	ServerUid *string `json:"ServerUid,omitempty" name:"ServerUid"`
+
+	// 机器类型
+	MachineType *string `json:"MachineType,omitempty" name:"MachineType"`
 }
 
 type SetTableIndexRequest struct {

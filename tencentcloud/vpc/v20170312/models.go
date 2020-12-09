@@ -1899,6 +1899,9 @@ type CreateDirectConnectGatewayRequest struct {
 	// <li>NORMAL - （默认）标准型，注：云联网只支持标准型</li>
 	// <li>NAT - NAT型</li>NAT类型支持网络地址转换配置，类型确定后不能修改；一个私有网络可以创建一个NAT类型的专线网关和一个非NAT类型的专线网关
 	GatewayType *string `json:"GatewayType,omitempty" name:"GatewayType"`
+
+	// 云联网路由发布模式，可选值：`standard`（标准模式）、`exquisite`（精细模式）。只有云联网类型专线网关才支持`ModeType`。
+	ModeType *string `json:"ModeType,omitempty" name:"ModeType"`
 }
 
 func (r *CreateDirectConnectGatewayRequest) ToJsonString() string {
@@ -7116,6 +7119,14 @@ type DirectConnectGateway struct {
 	// 绑定的NAT网关ID。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	NatGatewayId *string `json:"NatGatewayId,omitempty" name:"NatGatewayId"`
+
+	// 专线网关是否支持VXLAN架构
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VXLANSupport []*bool `json:"VXLANSupport,omitempty" name:"VXLANSupport" list`
+
+	// 云联网路由发布模式：`standard`（标准模式）、`exquisite`（精细模式）。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ModeType *string `json:"ModeType,omitempty" name:"ModeType"`
 }
 
 type DirectConnectGatewayCcnRoute struct {
@@ -8840,6 +8851,9 @@ type ModifyDirectConnectGatewayAttributeRequest struct {
 
 	// 云联网路由学习类型，可选值：`BGP`（自动学习）、`STATIC`（静态，即用户配置）。只有云联网类型专线网关且开启了BGP功能才支持修改`CcnRouteType`。
 	CcnRouteType *string `json:"CcnRouteType,omitempty" name:"CcnRouteType"`
+
+	// 云联网路由发布模式，可选值：`standard`（标准模式）、`exquisite`（精细模式）。只有云联网类型专线网关才支持修改`ModeType`。
+	ModeType *string `json:"ModeType,omitempty" name:"ModeType"`
 }
 
 func (r *ModifyDirectConnectGatewayAttributeRequest) ToJsonString() string {

@@ -883,6 +883,31 @@ func (c *Client) DescribeLoadBalancerListByCertId(request *DescribeLoadBalancerL
     return
 }
 
+func NewDescribeLoadBalancerTrafficRequest() (request *DescribeLoadBalancerTrafficRequest) {
+    request = &DescribeLoadBalancerTrafficRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("clb", APIVersion, "DescribeLoadBalancerTraffic")
+    return
+}
+
+func NewDescribeLoadBalancerTrafficResponse() (response *DescribeLoadBalancerTrafficResponse) {
+    response = &DescribeLoadBalancerTrafficResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询账号下高流量负载均衡，返回前10个负载均衡。如果是子账号登录，只返回子账号有权限的负载均衡。
+func (c *Client) DescribeLoadBalancerTraffic(request *DescribeLoadBalancerTrafficRequest) (response *DescribeLoadBalancerTrafficResponse, err error) {
+    if request == nil {
+        request = NewDescribeLoadBalancerTrafficRequest()
+    }
+    response = NewDescribeLoadBalancerTrafficResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeLoadBalancersRequest() (request *DescribeLoadBalancersRequest) {
     request = &DescribeLoadBalancersRequest{
         BaseRequest: &tchttp.BaseRequest{},
