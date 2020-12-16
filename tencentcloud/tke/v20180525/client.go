@@ -393,6 +393,31 @@ func (c *Client) CreatePrometheusDashboard(request *CreatePrometheusDashboardReq
     return
 }
 
+func NewCreatePrometheusTemplateRequest() (request *CreatePrometheusTemplateRequest) {
+    request = &CreatePrometheusTemplateRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tke", APIVersion, "CreatePrometheusTemplate")
+    return
+}
+
+func NewCreatePrometheusTemplateResponse() (response *CreatePrometheusTemplateResponse) {
+    response = &CreatePrometheusTemplateResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 创建一个云原生Prometheus模板实例
+func (c *Client) CreatePrometheusTemplate(request *CreatePrometheusTemplateRequest) (response *CreatePrometheusTemplateResponse, err error) {
+    if request == nil {
+        request = NewCreatePrometheusTemplateRequest()
+    }
+    response = NewCreatePrometheusTemplateResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteClusterRequest() (request *DeleteClusterRequest) {
     request = &DeleteClusterRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -589,6 +614,56 @@ func (c *Client) DeleteClusterRouteTable(request *DeleteClusterRouteTableRequest
         request = NewDeleteClusterRouteTableRequest()
     }
     response = NewDeleteClusterRouteTableResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeletePrometheusTemplateRequest() (request *DeletePrometheusTemplateRequest) {
+    request = &DeletePrometheusTemplateRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tke", APIVersion, "DeletePrometheusTemplate")
+    return
+}
+
+func NewDeletePrometheusTemplateResponse() (response *DeletePrometheusTemplateResponse) {
+    response = &DeletePrometheusTemplateResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 删除一个云原生Promehtheus配置模板
+func (c *Client) DeletePrometheusTemplate(request *DeletePrometheusTemplateRequest) (response *DeletePrometheusTemplateResponse, err error) {
+    if request == nil {
+        request = NewDeletePrometheusTemplateRequest()
+    }
+    response = NewDeletePrometheusTemplateResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeletePrometheusTemplateSyncRequest() (request *DeletePrometheusTemplateSyncRequest) {
+    request = &DeletePrometheusTemplateSyncRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tke", APIVersion, "DeletePrometheusTemplateSync")
+    return
+}
+
+func NewDeletePrometheusTemplateSyncResponse() (response *DeletePrometheusTemplateSyncResponse) {
+    response = &DeletePrometheusTemplateSyncResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 取消模板同步，这将会删除目标中该模板所生产的配置
+func (c *Client) DeletePrometheusTemplateSync(request *DeletePrometheusTemplateSyncRequest) (response *DeletePrometheusTemplateSyncResponse, err error) {
+    if request == nil {
+        request = NewDeletePrometheusTemplateSyncRequest()
+    }
+    response = NewDeletePrometheusTemplateSyncResponse()
     err = c.Send(request, response)
     return
 }
@@ -968,6 +1043,156 @@ func (c *Client) DescribePrometheusAgentInstances(request *DescribePrometheusAge
     return
 }
 
+func NewDescribePrometheusAgentsRequest() (request *DescribePrometheusAgentsRequest) {
+    request = &DescribePrometheusAgentsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tke", APIVersion, "DescribePrometheusAgents")
+    return
+}
+
+func NewDescribePrometheusAgentsResponse() (response *DescribePrometheusAgentsResponse) {
+    response = &DescribePrometheusAgentsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 获取被关联集群列表
+func (c *Client) DescribePrometheusAgents(request *DescribePrometheusAgentsRequest) (response *DescribePrometheusAgentsResponse, err error) {
+    if request == nil {
+        request = NewDescribePrometheusAgentsRequest()
+    }
+    response = NewDescribePrometheusAgentsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribePrometheusAlertRuleRequest() (request *DescribePrometheusAlertRuleRequest) {
+    request = &DescribePrometheusAlertRuleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tke", APIVersion, "DescribePrometheusAlertRule")
+    return
+}
+
+func NewDescribePrometheusAlertRuleResponse() (response *DescribePrometheusAlertRuleResponse) {
+    response = &DescribePrometheusAlertRuleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 获取告警规则列表
+func (c *Client) DescribePrometheusAlertRule(request *DescribePrometheusAlertRuleRequest) (response *DescribePrometheusAlertRuleResponse, err error) {
+    if request == nil {
+        request = NewDescribePrometheusAlertRuleRequest()
+    }
+    response = NewDescribePrometheusAlertRuleResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribePrometheusOverviewsRequest() (request *DescribePrometheusOverviewsRequest) {
+    request = &DescribePrometheusOverviewsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tke", APIVersion, "DescribePrometheusOverviews")
+    return
+}
+
+func NewDescribePrometheusOverviewsResponse() (response *DescribePrometheusOverviewsResponse) {
+    response = &DescribePrometheusOverviewsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 获取实例列表
+func (c *Client) DescribePrometheusOverviews(request *DescribePrometheusOverviewsRequest) (response *DescribePrometheusOverviewsResponse, err error) {
+    if request == nil {
+        request = NewDescribePrometheusOverviewsRequest()
+    }
+    response = NewDescribePrometheusOverviewsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribePrometheusTargetsRequest() (request *DescribePrometheusTargetsRequest) {
+    request = &DescribePrometheusTargetsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tke", APIVersion, "DescribePrometheusTargets")
+    return
+}
+
+func NewDescribePrometheusTargetsResponse() (response *DescribePrometheusTargetsResponse) {
+    response = &DescribePrometheusTargetsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 获取targets信息
+func (c *Client) DescribePrometheusTargets(request *DescribePrometheusTargetsRequest) (response *DescribePrometheusTargetsResponse, err error) {
+    if request == nil {
+        request = NewDescribePrometheusTargetsRequest()
+    }
+    response = NewDescribePrometheusTargetsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribePrometheusTemplateSyncRequest() (request *DescribePrometheusTemplateSyncRequest) {
+    request = &DescribePrometheusTemplateSyncRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tke", APIVersion, "DescribePrometheusTemplateSync")
+    return
+}
+
+func NewDescribePrometheusTemplateSyncResponse() (response *DescribePrometheusTemplateSyncResponse) {
+    response = &DescribePrometheusTemplateSyncResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 获取模板同步信息
+func (c *Client) DescribePrometheusTemplateSync(request *DescribePrometheusTemplateSyncRequest) (response *DescribePrometheusTemplateSyncResponse, err error) {
+    if request == nil {
+        request = NewDescribePrometheusTemplateSyncRequest()
+    }
+    response = NewDescribePrometheusTemplateSyncResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribePrometheusTemplatesRequest() (request *DescribePrometheusTemplatesRequest) {
+    request = &DescribePrometheusTemplatesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tke", APIVersion, "DescribePrometheusTemplates")
+    return
+}
+
+func NewDescribePrometheusTemplatesResponse() (response *DescribePrometheusTemplatesResponse) {
+    response = &DescribePrometheusTemplatesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 拉取模板列表，默认模板将总是在最前面
+func (c *Client) DescribePrometheusTemplates(request *DescribePrometheusTemplatesRequest) (response *DescribePrometheusTemplatesResponse, err error) {
+    if request == nil {
+        request = NewDescribePrometheusTemplatesRequest()
+    }
+    response = NewDescribePrometheusTemplatesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeRegionsRequest() (request *DescribeRegionsRequest) {
     request = &DescribeRegionsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1118,6 +1343,56 @@ func (c *Client) ModifyClusterNodePool(request *ModifyClusterNodePoolRequest) (r
     return
 }
 
+func NewModifyNodePoolDesiredCapacityAboutAsgRequest() (request *ModifyNodePoolDesiredCapacityAboutAsgRequest) {
+    request = &ModifyNodePoolDesiredCapacityAboutAsgRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tke", APIVersion, "ModifyNodePoolDesiredCapacityAboutAsg")
+    return
+}
+
+func NewModifyNodePoolDesiredCapacityAboutAsgResponse() (response *ModifyNodePoolDesiredCapacityAboutAsgResponse) {
+    response = &ModifyNodePoolDesiredCapacityAboutAsgResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 修改节点池关联伸缩组的期望实例数
+func (c *Client) ModifyNodePoolDesiredCapacityAboutAsg(request *ModifyNodePoolDesiredCapacityAboutAsgRequest) (response *ModifyNodePoolDesiredCapacityAboutAsgResponse, err error) {
+    if request == nil {
+        request = NewModifyNodePoolDesiredCapacityAboutAsgRequest()
+    }
+    response = NewModifyNodePoolDesiredCapacityAboutAsgResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyPrometheusTemplateRequest() (request *ModifyPrometheusTemplateRequest) {
+    request = &ModifyPrometheusTemplateRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tke", APIVersion, "ModifyPrometheusTemplate")
+    return
+}
+
+func NewModifyPrometheusTemplateResponse() (response *ModifyPrometheusTemplateResponse) {
+    response = &ModifyPrometheusTemplateResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 修改模板内容
+func (c *Client) ModifyPrometheusTemplate(request *ModifyPrometheusTemplateRequest) (response *ModifyPrometheusTemplateResponse, err error) {
+    if request == nil {
+        request = NewModifyPrometheusTemplateRequest()
+    }
+    response = NewModifyPrometheusTemplateResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewRemoveNodeFromNodePoolRequest() (request *RemoveNodeFromNodePoolRequest) {
     request = &RemoveNodeFromNodePoolRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1139,6 +1414,31 @@ func (c *Client) RemoveNodeFromNodePool(request *RemoveNodeFromNodePoolRequest) 
         request = NewRemoveNodeFromNodePoolRequest()
     }
     response = NewRemoveNodeFromNodePoolResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewSyncPrometheusTemplateRequest() (request *SyncPrometheusTemplateRequest) {
+    request = &SyncPrometheusTemplateRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tke", APIVersion, "SyncPrometheusTemplate")
+    return
+}
+
+func NewSyncPrometheusTemplateResponse() (response *SyncPrometheusTemplateResponse) {
+    response = &SyncPrometheusTemplateResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 同步模板到实例或者集群
+func (c *Client) SyncPrometheusTemplate(request *SyncPrometheusTemplateRequest) (response *SyncPrometheusTemplateResponse, err error) {
+    if request == nil {
+        request = NewSyncPrometheusTemplateRequest()
+    }
+    response = NewSyncPrometheusTemplateResponse()
     err = c.Send(request, response)
     return
 }

@@ -1347,7 +1347,7 @@ type ListEventHistoryRequest struct {
 	// 搜索上下文, 用作查询游标
 	Context *string `json:"Context,omitempty" name:"Context"`
 
-	// 单次获取的历史数据项目的最大数量
+	// 单次获取的历史数据项目的最大数量, 缺省10
 	Size *int64 `json:"Size,omitempty" name:"Size"`
 
 	// 事件标识符，可以用来指定查询特定的事件，如果不指定，则查询所有事件。
@@ -1777,6 +1777,55 @@ type ProjectEntryEx struct {
 
 	// WebApp数量
 	WebAppCount *uint64 `json:"WebAppCount,omitempty" name:"WebAppCount"`
+}
+
+type PublishMessageRequest struct {
+	*tchttp.BaseRequest
+
+	// 产品ID
+	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
+
+	// 设备名称
+	DeviceName *string `json:"DeviceName,omitempty" name:"DeviceName"`
+
+	// 消息发往的主题
+	Topic *string `json:"Topic,omitempty" name:"Topic"`
+
+	// 云端下发到设备的控制报文
+	Payload *string `json:"Payload,omitempty" name:"Payload"`
+
+	// 消息服务质量等级，取值为0或1
+	Qos *uint64 `json:"Qos,omitempty" name:"Qos"`
+
+	// Payload的内容编码格式，取值为base64或空。base64表示云端将接收到的base64编码后的报文再转换成二进制报文下发至设备，为空表示不作转换，透传下发至设备
+	PayloadEncoding *string `json:"PayloadEncoding,omitempty" name:"PayloadEncoding"`
+}
+
+func (r *PublishMessageRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *PublishMessageRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type PublishMessageResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *PublishMessageResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *PublishMessageResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
 }
 
 type ReleaseStudioProductRequest struct {

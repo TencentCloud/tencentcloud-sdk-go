@@ -68,6 +68,31 @@ func (c *Client) AttachCcnInstances(request *AttachCcnInstancesRequest) (respons
     return
 }
 
+func NewCopyFleetRequest() (request *CopyFleetRequest) {
+    request = &CopyFleetRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("gse", APIVersion, "CopyFleet")
+    return
+}
+
+func NewCopyFleetResponse() (response *CopyFleetResponse) {
+    response = &CopyFleetResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（CopyFleet）用于复制服务器舰队。
+func (c *Client) CopyFleet(request *CopyFleetRequest) (response *CopyFleetResponse, err error) {
+    if request == nil {
+        request = NewCopyFleetRequest()
+    }
+    response = NewCopyFleetResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateAliasRequest() (request *CreateAliasRequest) {
     request = &CreateAliasRequest{
         BaseRequest: &tchttp.BaseRequest{},

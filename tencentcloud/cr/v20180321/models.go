@@ -118,6 +118,176 @@ func (r *ApplyCreditAuditResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type BotFlow struct {
+
+	// 对话流ID
+	BotFlowId *string `json:"BotFlowId,omitempty" name:"BotFlowId"`
+
+	// 对话流名称
+	BotFlowName *string `json:"BotFlowName,omitempty" name:"BotFlowName"`
+
+	// 号码组信息列表
+	PhonePoolList []*PhonePool `json:"PhonePoolList,omitempty" name:"PhonePoolList" list`
+}
+
+type CallTimeDict struct {
+
+	// 周一
+	Monday *CallTimeInfo `json:"Monday,omitempty" name:"Monday"`
+
+	// 周二
+	Tuesday *CallTimeInfo `json:"Tuesday,omitempty" name:"Tuesday"`
+
+	// 周三
+	Wednesday *CallTimeInfo `json:"Wednesday,omitempty" name:"Wednesday"`
+
+	// 周四
+	Thursday *CallTimeInfo `json:"Thursday,omitempty" name:"Thursday"`
+
+	// 周五
+	Friday *CallTimeInfo `json:"Friday,omitempty" name:"Friday"`
+
+	// 周六
+	Saturday *CallTimeInfo `json:"Saturday,omitempty" name:"Saturday"`
+
+	// 周日
+	Sunday *CallTimeInfo `json:"Sunday,omitempty" name:"Sunday"`
+}
+
+type CallTimeInfo struct {
+
+	// 产品开始拨打时间，HHmmss格式
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 产品结束拨打时间，HHmmss格式
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+}
+
+type CreateBotTaskRequest struct {
+	*tchttp.BaseRequest
+
+	// 模块名。默认值（固定）：AiApi
+	Module *string `json:"Module,omitempty" name:"Module"`
+
+	// 操作名。默认值（固定）：CreateTask
+	Operation *string `json:"Operation,omitempty" name:"Operation"`
+
+	// 任务名称
+	BotName *string `json:"BotName,omitempty" name:"BotName"`
+
+	// 对话流ID
+	FlowId *string `json:"FlowId,omitempty" name:"FlowId"`
+
+	// 产品拨打时间集合
+	CallTimeCollection *CallTimeDict `json:"CallTimeCollection,omitempty" name:"CallTimeCollection"`
+
+	// 是否禁止拨打
+	BanCall *string `json:"BanCall,omitempty" name:"BanCall"`
+
+	// 禁止拨打起始时间
+	StartTimeBan *string `json:"StartTimeBan,omitempty" name:"StartTimeBan"`
+
+	// 禁止拨打结束时间
+	EndTimeBan *string `json:"EndTimeBan,omitempty" name:"EndTimeBan"`
+
+	// 拨打线路集合
+	PhoneCollection *string `json:"PhoneCollection,omitempty" name:"PhoneCollection"`
+
+	// 重播方式，NON：未接通、LABEL：意向分级，可多选，用竖线分隔：NON|LABEL
+	CodeType *string `json:"CodeType,omitempty" name:"CodeType"`
+
+	// 重播值集合，A：强意向、B：中意向、C：低意向、D：无意向、E：在忙、F：未接通、G：无效号码，可多选，用竖线分隔：A|B|C|D|E|F|G
+	CodeCollection *string `json:"CodeCollection,omitempty" name:"CodeCollection"`
+
+	// 继续拨打次数
+	CallCount *int64 `json:"CallCount,omitempty" name:"CallCount"`
+
+	// 拨打间隔
+	CallInterval *int64 `json:"CallInterval,omitempty" name:"CallInterval"`
+
+	// 未接通引用短信签名ID
+	SmsSignId *string `json:"SmsSignId,omitempty" name:"SmsSignId"`
+
+	// 未接通引用短信模板ID
+	SmsTemplateId *string `json:"SmsTemplateId,omitempty" name:"SmsTemplateId"`
+}
+
+func (r *CreateBotTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateBotTaskRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateBotTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateBotTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateBotTaskResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeBotFlowRequest struct {
+	*tchttp.BaseRequest
+
+	// 模块名。默认值（固定）：AiApi
+	Module *string `json:"Module,omitempty" name:"Module"`
+
+	// 操作名。默认值（固定）：GetFlow
+	Operation *string `json:"Operation,omitempty" name:"Operation"`
+}
+
+func (r *DescribeBotFlowRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeBotFlowRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeBotFlowResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 机器人对话流列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		BotFlowList []*BotFlow `json:"BotFlowList,omitempty" name:"BotFlowList" list`
+
+		// 短信签名列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		SmsSignList []*SmsSign `json:"SmsSignList,omitempty" name:"SmsSignList" list`
+
+		// 短信模板列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		SmsTemplateList []*SmsTemplate `json:"SmsTemplateList,omitempty" name:"SmsTemplateList" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeBotFlowResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeBotFlowResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeCreditResultRequest struct {
 	*tchttp.BaseRequest
 
@@ -185,6 +355,55 @@ func (r *DescribeCreditResultResponse) ToJsonString() string {
 }
 
 func (r *DescribeCreditResultResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeFileModelRequest struct {
+	*tchttp.BaseRequest
+
+	// 模块名。默认值（固定）：AiApi
+	Module *string `json:"Module,omitempty" name:"Module"`
+
+	// 操作名。默认值（固定）：DescribeFileModel
+	Operation *string `json:"Operation,omitempty" name:"Operation"`
+
+	// 模板文件类型，输入input，停拨stop
+	FileType *string `json:"FileType,omitempty" name:"FileType"`
+
+	// 任务ID，二者必填一个
+	BotId *string `json:"BotId,omitempty" name:"BotId"`
+
+	// 任务名称，二者必填一个
+	BotName *string `json:"BotName,omitempty" name:"BotName"`
+}
+
+func (r *DescribeFileModelRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeFileModelRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeFileModelResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 模板下载链接
+		CosUrl *string `json:"CosUrl,omitempty" name:"CosUrl"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeFileModelResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeFileModelResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -468,6 +687,15 @@ func (r *DownloadReportResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type PhonePool struct {
+
+	// 号码组ID
+	PoolId *string `json:"PoolId,omitempty" name:"PoolId"`
+
+	// 号码组名称
+	PoolName *string `json:"PoolName,omitempty" name:"PoolName"`
+}
+
 type ProductQueryInfo struct {
 
 	// 产品Id
@@ -634,6 +862,76 @@ type SingleRecord struct {
 	// 录音下载链接。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RecordCosUrl *string `json:"RecordCosUrl,omitempty" name:"RecordCosUrl"`
+}
+
+type SmsSign struct {
+
+	// 短信签名ID
+	SignId *string `json:"SignId,omitempty" name:"SignId"`
+
+	// 短信签名名称
+	SignName *string `json:"SignName,omitempty" name:"SignName"`
+}
+
+type SmsTemplate struct {
+
+	// 短信模板ID
+	TemplateId *string `json:"TemplateId,omitempty" name:"TemplateId"`
+
+	// 短信模板名称
+	TemplateName *string `json:"TemplateName,omitempty" name:"TemplateName"`
+}
+
+type UploadBotFileRequest struct {
+	*tchttp.BaseRequest
+
+	// 模块名。默认值（固定）：AiApi
+	Module *string `json:"Module,omitempty" name:"Module"`
+
+	// 操作名。默认值（固定）：Upload
+	Operation *string `json:"Operation,omitempty" name:"Operation"`
+
+	// 文件类型，输入input，停拨stop
+	FileType *string `json:"FileType,omitempty" name:"FileType"`
+
+	// 文件链接
+	FileUrl *string `json:"FileUrl,omitempty" name:"FileUrl"`
+
+	// 文件名
+	FileName *string `json:"FileName,omitempty" name:"FileName"`
+
+	// 任务ID，二者必填一个
+	BotId *string `json:"BotId,omitempty" name:"BotId"`
+
+	// 任务名称，二者必填一个
+	BotName *string `json:"BotName,omitempty" name:"BotName"`
+}
+
+func (r *UploadBotFileRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *UploadBotFileRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type UploadBotFileResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *UploadBotFileResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *UploadBotFileResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
 }
 
 type UploadDataFileRequest struct {

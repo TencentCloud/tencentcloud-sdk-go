@@ -1134,6 +1134,56 @@ func (r *DeliverStorageServiceResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeAccountBalanceRequest struct {
+	*tchttp.BaseRequest
+
+	// 账户类型 1:设备接入 2:云存
+	AccountType *int64 `json:"AccountType,omitempty" name:"AccountType"`
+}
+
+func (r *DescribeAccountBalanceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeAccountBalanceRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeAccountBalanceResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 账户类型 1=设备接入;2=云存
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		AccountType *int64 `json:"AccountType,omitempty" name:"AccountType"`
+
+		// 余额
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Balance *int64 `json:"Balance,omitempty" name:"Balance"`
+
+		// 账户状态，1=正常；8=冻结；9=销户
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		State *int64 `json:"State,omitempty" name:"State"`
+
+		// 最后修改时间，UTC值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		LastUpdateTime *int64 `json:"LastUpdateTime,omitempty" name:"LastUpdateTime"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeAccountBalanceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeAccountBalanceResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeBindDevRequest struct {
 	*tchttp.BaseRequest
 
@@ -1815,6 +1865,54 @@ func (r *DescribePubVersionsResponse) ToJsonString() string {
 }
 
 func (r *DescribePubVersionsResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeRechargeRecordsRequest struct {
+	*tchttp.BaseRequest
+
+	// 账户类型 1:设备接入 2:云存
+	AccountType *int64 `json:"AccountType,omitempty" name:"AccountType"`
+
+	// 从第几条记录开始显示
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 总共查询多少条记录
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+func (r *DescribeRechargeRecordsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeRechargeRecordsRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeRechargeRecordsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 账户类型 1:设备接入 2:云存
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		AccountType *int64 `json:"AccountType,omitempty" name:"AccountType"`
+
+		// 充值记录列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Records []*RechargeRecord `json:"Records,omitempty" name:"Records" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeRechargeRecordsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeRechargeRecordsResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -2635,6 +2733,25 @@ type ProductData struct {
 	// linux,android,liteos
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Os *string `json:"Os,omitempty" name:"Os"`
+}
+
+type RechargeRecord struct {
+
+	// 流水记录号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WaterId *int64 `json:"WaterId,omitempty" name:"WaterId"`
+
+	// 充值前的余额
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BalanceBeforeRecharge *int64 `json:"BalanceBeforeRecharge,omitempty" name:"BalanceBeforeRecharge"`
+
+	// 充值金额
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Money *int64 `json:"Money,omitempty" name:"Money"`
+
+	// 充值时间, UTC值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OperateTime *int64 `json:"OperateTime,omitempty" name:"OperateTime"`
 }
 
 type RefundStorageServiceRequest struct {

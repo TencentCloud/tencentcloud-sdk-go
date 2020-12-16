@@ -20,6 +20,51 @@ import (
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
+type AmsDetailInfo struct {
+
+	// 标签
+	Label []*string `json:"Label,omitempty" name:"Label" list`
+
+	// 时长(秒/s)
+	Duration *int64 `json:"Duration,omitempty" name:"Duration"`
+
+	// 任务名
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 任务ID，创建任务后返回的TaskId字段
+	TaskID *string `json:"TaskID,omitempty" name:"TaskID"`
+
+	// 插入时间
+	InsertTime *string `json:"InsertTime,omitempty" name:"InsertTime"`
+
+	// 数据来源 0机审，其他为自主审核
+	DataForm *int64 `json:"DataForm,omitempty" name:"DataForm"`
+
+	// 操作人
+	Operator *string `json:"Operator,omitempty" name:"Operator"`
+
+	// 原始命中标签
+	OriginalLabel []*string `json:"OriginalLabel,omitempty" name:"OriginalLabel" list`
+
+	// 操作时间
+	OperateTime *string `json:"OperateTime,omitempty" name:"OperateTime"`
+
+	// 视频原始地址
+	Url *string `json:"Url,omitempty" name:"Url"`
+
+	// 封面图地址
+	Thumbnail *string `json:"Thumbnail,omitempty" name:"Thumbnail"`
+
+	// 短音频内容
+	Content *string `json:"Content,omitempty" name:"Content"`
+
+	// 短音频个数
+	DetailCount *int64 `json:"DetailCount,omitempty" name:"DetailCount"`
+
+	// 音频审核的请求 id
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type AudioResult struct {
 
 	// 是否命中
@@ -298,6 +343,104 @@ func (r *CreateBizConfigResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeAmsListRequest struct {
+	*tchttp.BaseRequest
+
+	// 页码
+	PageToken *string `json:"PageToken,omitempty" name:"PageToken"`
+
+	// 过滤条件
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 查询方向
+	PageDirection *string `json:"PageDirection,omitempty" name:"PageDirection"`
+
+	// 过滤条件
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+}
+
+func (r *DescribeAmsListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeAmsListRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeAmsListResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 返回列表数据
+		AmsDetailSet []*AmsDetailInfo `json:"AmsDetailSet,omitempty" name:"AmsDetailSet" list`
+
+		// 总条数
+		Total *int64 `json:"Total,omitempty" name:"Total"`
+
+		// 分页 token
+		PageToken *string `json:"PageToken,omitempty" name:"PageToken"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeAmsListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeAmsListResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeAudioStatRequest struct {
+	*tchttp.BaseRequest
+
+	// 审核类型 1: 机器审核; 2: 人工审核
+	AuditType *int64 `json:"AuditType,omitempty" name:"AuditType"`
+
+	// 查询条件
+	Filters []*Filters `json:"Filters,omitempty" name:"Filters" list`
+}
+
+func (r *DescribeAudioStatRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeAudioStatRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeAudioStatResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 识别结果统计
+		Overview *Overview `json:"Overview,omitempty" name:"Overview"`
+
+		// 识别量统计
+		TrendCount []*TrendCount `json:"TrendCount,omitempty" name:"TrendCount" list`
+
+		// 违规数据分布
+		EvilCount []*EvilCount `json:"EvilCount,omitempty" name:"EvilCount" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeAudioStatResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeAudioStatResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeBizConfigRequest struct {
 	*tchttp.BaseRequest
 
@@ -463,6 +606,23 @@ func (r *DescribeTaskDetailResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type EvilCount struct {
+
+	// 违规类型：
+	// Terror	24001
+	// Porn	20002
+	// Polity	20001
+	// Ad	20105
+	// Abuse	20007	
+	// Illegal	20006	
+	// Spam	25001	
+	// Moan	26001
+	EvilType *string `json:"EvilType,omitempty" name:"EvilType"`
+
+	// 分布类型总量
+	Count *int64 `json:"Count,omitempty" name:"Count"`
+}
+
 type FileOutput struct {
 
 	// 存储的Bucket
@@ -473,6 +633,27 @@ type FileOutput struct {
 
 	// 对象前缀
 	ObjectPrefix *string `json:"ObjectPrefix,omitempty" name:"ObjectPrefix"`
+}
+
+type Filter struct {
+
+	// 过滤键的名称。
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 一个或者多个过滤值。
+	Values []*string `json:"Values,omitempty" name:"Values" list`
+}
+
+type Filters struct {
+
+	// 查询字段：
+	// 策略BizType
+	// 子账号SubUin
+	// 日期区间DateRange
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 查询值
+	Values []*string `json:"Values,omitempty" name:"Values" list`
 }
 
 type ImageResult struct {
@@ -690,6 +871,33 @@ type MediaModerationConfig struct {
 	UseAudio *bool `json:"UseAudio,omitempty" name:"UseAudio"`
 }
 
+type Overview struct {
+
+	// 总调用量
+	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 总调用时长
+	TotalHour *int64 `json:"TotalHour,omitempty" name:"TotalHour"`
+
+	// 通过量
+	PassCount *int64 `json:"PassCount,omitempty" name:"PassCount"`
+
+	// 通过时长
+	PassHour *int64 `json:"PassHour,omitempty" name:"PassHour"`
+
+	// 违规量
+	EvilCount *int64 `json:"EvilCount,omitempty" name:"EvilCount"`
+
+	// 违规时长
+	EvilHour *int64 `json:"EvilHour,omitempty" name:"EvilHour"`
+
+	// 疑似违规量
+	SuspectCount *int64 `json:"SuspectCount,omitempty" name:"SuspectCount"`
+
+	// 疑似违规时长
+	SuspectHour *int64 `json:"SuspectHour,omitempty" name:"SuspectHour"`
+}
+
 type StorageInfo struct {
 
 	// 类型 可选：
@@ -758,4 +966,34 @@ type TaskResult struct {
 	// 如果错误，该字段表示错误详情
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Message *string `json:"Message,omitempty" name:"Message"`
+}
+
+type TrendCount struct {
+
+	// 总调用量
+	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 总调用时长
+	TotalHour *int64 `json:"TotalHour,omitempty" name:"TotalHour"`
+
+	// 通过量
+	PassCount *int64 `json:"PassCount,omitempty" name:"PassCount"`
+
+	// 通过时长
+	PassHour *int64 `json:"PassHour,omitempty" name:"PassHour"`
+
+	// 违规量
+	EvilCount *int64 `json:"EvilCount,omitempty" name:"EvilCount"`
+
+	// 违规时长
+	EvilHour *int64 `json:"EvilHour,omitempty" name:"EvilHour"`
+
+	// 疑似违规量
+	SuspectCount *int64 `json:"SuspectCount,omitempty" name:"SuspectCount"`
+
+	// 疑似违规时长
+	SuspectHour *int64 `json:"SuspectHour,omitempty" name:"SuspectHour"`
+
+	// 日期
+	Date *string `json:"Date,omitempty" name:"Date"`
 }

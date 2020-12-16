@@ -320,6 +320,9 @@ type CreateInstancesRequest struct {
 
 	// 实例的节点信息，目前支持传入节点的类型（主节点或者副本节点），节点的可用区。单可用区部署不需要传递此参数。
 	NodeSet []*RedisNodeInfo `json:"NodeSet,omitempty" name:"NodeSet" list`
+
+	// 购买实例绑定标签
+	ResourceTags []*ResourceTag `json:"ResourceTags,omitempty" name:"ResourceTags" list`
 }
 
 func (r *CreateInstancesRequest) ToJsonString() string {
@@ -3578,6 +3581,15 @@ func (r *ResetPasswordResponse) ToJsonString() string {
 
 func (r *ResetPasswordResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
+}
+
+type ResourceTag struct {
+
+	// 标签key
+	TagKey *string `json:"TagKey,omitempty" name:"TagKey"`
+
+	// 标签value
+	TagValue *string `json:"TagValue,omitempty" name:"TagValue"`
 }
 
 type RestoreInstanceRequest struct {

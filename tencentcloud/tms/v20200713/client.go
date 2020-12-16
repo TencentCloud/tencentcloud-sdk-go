@@ -68,6 +68,56 @@ func (c *Client) AccountTipoffAccess(request *AccountTipoffAccessRequest) (respo
     return
 }
 
+func NewDescribeTextLibRequest() (request *DescribeTextLibRequest) {
+    request = &DescribeTextLibRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tms", APIVersion, "DescribeTextLib")
+    return
+}
+
+func NewDescribeTextLibResponse() (response *DescribeTextLibResponse) {
+    response = &DescribeTextLibResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 控制台获取用户词库列表
+func (c *Client) DescribeTextLib(request *DescribeTextLibRequest) (response *DescribeTextLibResponse, err error) {
+    if request == nil {
+        request = NewDescribeTextLibRequest()
+    }
+    response = NewDescribeTextLibResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeTextStatRequest() (request *DescribeTextStatRequest) {
+    request = &DescribeTextStatRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tms", APIVersion, "DescribeTextStat")
+    return
+}
+
+func NewDescribeTextStatResponse() (response *DescribeTextStatResponse) {
+    response = &DescribeTextStatResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 控制台识别统计
+func (c *Client) DescribeTextStat(request *DescribeTextStatRequest) (response *DescribeTextStatResponse, err error) {
+    if request == nil {
+        request = NewDescribeTextStatRequest()
+    }
+    response = NewDescribeTextStatResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewTextModerationRequest() (request *TextModerationRequest) {
     request = &TextModerationRequest{
         BaseRequest: &tchttp.BaseRequest{},

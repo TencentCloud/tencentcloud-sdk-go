@@ -868,6 +868,31 @@ func (c *Client) ModifyTopicRule(request *ModifyTopicRuleRequest) (response *Mod
     return
 }
 
+func NewPublishMessageRequest() (request *PublishMessageRequest) {
+    request = &PublishMessageRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "PublishMessage")
+    return
+}
+
+func NewPublishMessageResponse() (response *PublishMessageResponse) {
+    response = &PublishMessageResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（PublishMessage）用于使用自定义透传协议进行设备远控
+func (c *Client) PublishMessage(request *PublishMessageRequest) (response *PublishMessageResponse, err error) {
+    if request == nil {
+        request = NewPublishMessageRequest()
+    }
+    response = NewPublishMessageResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewReleaseStudioProductRequest() (request *ReleaseStudioProductRequest) {
     request = &ReleaseStudioProductRequest{
         BaseRequest: &tchttp.BaseRequest{},

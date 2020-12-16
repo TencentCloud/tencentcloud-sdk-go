@@ -5707,6 +5707,89 @@ func (r *QueryTransferDetailResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type QueryTransferResultData struct {
+
+	// 平台交易流水号
+	TradeSerialNo *string `json:"TradeSerialNo,omitempty" name:"TradeSerialNo"`
+
+	// 订单号
+	OrderId *string `json:"OrderId,omitempty" name:"OrderId"`
+
+	// 交易状态。
+	// 0 处理中  
+	// 1 提交成功 
+	// 2 交易成功 
+	// 3 交易失败 
+	// 4 未知渠道异常 
+	// 99 未知系统异常
+	TradeStatus *int64 `json:"TradeStatus,omitempty" name:"TradeStatus"`
+
+	// 业务备注
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Remark *string `json:"Remark,omitempty" name:"Remark"`
+}
+
+type QueryTransferResultRequest struct {
+	*tchttp.BaseRequest
+
+	// 商户号
+	MerchantId *string `json:"MerchantId,omitempty" name:"MerchantId"`
+
+	// 申请商户号的appid或者商户号绑定的appid
+	MerchantAppId *string `json:"MerchantAppId,omitempty" name:"MerchantAppId"`
+
+	// 1、 微信企业付款 
+	// 2、 支付宝转账 
+	// 3、 平安银企直联代发转账
+	TransferType *int64 `json:"TransferType,omitempty" name:"TransferType"`
+
+	// 交易流水流水号（与 OrderId 不能同时为空）
+	TradeSerialNo *string `json:"TradeSerialNo,omitempty" name:"TradeSerialNo"`
+
+	// 订单号（与 TradeSerialNo 不能同时为空）
+	OrderId *string `json:"OrderId,omitempty" name:"OrderId"`
+
+	// 接入环境。沙箱环境填sandbox。
+	Profile *string `json:"Profile,omitempty" name:"Profile"`
+}
+
+func (r *QueryTransferResultRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *QueryTransferResultRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type QueryTransferResultResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 错误码。响应成功："SUCCESS"，其他为不成功
+		ErrCode *string `json:"ErrCode,omitempty" name:"ErrCode"`
+
+		// 响应消息
+		ErrMessage *string `json:"ErrMessage,omitempty" name:"ErrMessage"`
+
+		// 返回结果
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Result *QueryTransferResultData `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *QueryTransferResultResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *QueryTransferResultResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type RechargeByThirdPayRequest struct {
 	*tchttp.BaseRequest
 
@@ -6815,6 +6898,98 @@ type TransferItem struct {
 	// STRING(52)，见证系统流水号
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FrontSeqNo *string `json:"FrontSeqNo,omitempty" name:"FrontSeqNo"`
+}
+
+type TransferSinglePayData struct {
+
+	// 平台交易流水号，唯一
+	TradeSerialNo *string `json:"TradeSerialNo,omitempty" name:"TradeSerialNo"`
+}
+
+type TransferSinglePayRequest struct {
+	*tchttp.BaseRequest
+
+	// 商户号
+	MerchantId *string `json:"MerchantId,omitempty" name:"MerchantId"`
+
+	// 微信申请商户号的appid或者商户号绑定的appid
+	// 支付宝、平安填入MerchantId
+	MerchantAppId *string `json:"MerchantAppId,omitempty" name:"MerchantAppId"`
+
+	// 1、 微信企业付款 
+	// 2、 支付宝转账 
+	// 3、 平安银企直联代发转账
+	TransferType *int64 `json:"TransferType,omitempty" name:"TransferType"`
+
+	// 订单流水号，唯一，不能包含特殊字符，长度最大限制64位，推荐使用字母，数字组合，"_","-"组合
+	OrderId *string `json:"OrderId,omitempty" name:"OrderId"`
+
+	// 转账金额，单位分
+	TransferAmount *int64 `json:"TransferAmount,omitempty" name:"TransferAmount"`
+
+	// 收款方标识。
+	// 微信为open_id；
+	// 支付宝为会员alipay_user_id;
+	// 平安为收款方银行账号
+	PayeeId *string `json:"PayeeId,omitempty" name:"PayeeId"`
+
+	// 收款方姓名，微信，支付宝可选；平安模式下必传
+	PayeeName *string `json:"PayeeName,omitempty" name:"PayeeName"`
+
+	// 收款方附加信息，平安接入使用。需要以JSON格式提供以下字段：
+	// PayeeBankName：收款人开户行名称
+	//  CcyCode：货币类型（RMB-人民币）
+	//  UnionFlag：行内跨行标志（1：行内转账，0：跨行转账）。
+	PayeeExtends *string `json:"PayeeExtends,omitempty" name:"PayeeExtends"`
+
+	// 请求预留字段，原样透传返回
+	ReqReserved *string `json:"ReqReserved,omitempty" name:"ReqReserved"`
+
+	// 业务备注
+	Remark *string `json:"Remark,omitempty" name:"Remark"`
+
+	// 转账结果回调通知URL。若不填，则不进行回调。
+	NotifyUrl *string `json:"NotifyUrl,omitempty" name:"NotifyUrl"`
+
+	// 接入环境。沙箱环境填sandbox。
+	Profile *string `json:"Profile,omitempty" name:"Profile"`
+}
+
+func (r *TransferSinglePayRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *TransferSinglePayRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type TransferSinglePayResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 错误码。响应成功："SUCCESS"，其他为不成功
+		ErrCode *string `json:"ErrCode,omitempty" name:"ErrCode"`
+
+		// 响应消息
+		ErrMessage *string `json:"ErrMessage,omitempty" name:"ErrMessage"`
+
+		// 返回结果
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Result *TransferSinglePayData `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *TransferSinglePayResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *TransferSinglePayResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
 }
 
 type UnBindAcctRequest struct {

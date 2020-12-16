@@ -649,6 +649,31 @@ func (c *Client) DeliverStorageService(request *DeliverStorageServiceRequest) (r
     return
 }
 
+func NewDescribeAccountBalanceRequest() (request *DescribeAccountBalanceRequest) {
+    request = &DescribeAccountBalanceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iotvideo", APIVersion, "DescribeAccountBalance")
+    return
+}
+
+func NewDescribeAccountBalanceResponse() (response *DescribeAccountBalanceResponse) {
+    response = &DescribeAccountBalanceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 客户可通过本接口获取账户余额信息, 默认接口请求频率限制：1次/秒
+func (c *Client) DescribeAccountBalance(request *DescribeAccountBalanceRequest) (response *DescribeAccountBalanceResponse, err error) {
+    if request == nil {
+        request = NewDescribeAccountBalanceRequest()
+    }
+    response = NewDescribeAccountBalanceResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeBindDevRequest() (request *DescribeBindDevRequest) {
     request = &DescribeBindDevRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1046,6 +1071,31 @@ func (c *Client) DescribePubVersions(request *DescribePubVersionsRequest) (respo
         request = NewDescribePubVersionsRequest()
     }
     response = NewDescribePubVersionsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeRechargeRecordsRequest() (request *DescribeRechargeRecordsRequest) {
+    request = &DescribeRechargeRecordsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iotvideo", APIVersion, "DescribeRechargeRecords")
+    return
+}
+
+func NewDescribeRechargeRecordsResponse() (response *DescribeRechargeRecordsResponse) {
+    response = &DescribeRechargeRecordsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 客户可通过本接口获取充值记录信息, 一次最多返回50条记录。
+func (c *Client) DescribeRechargeRecords(request *DescribeRechargeRecordsRequest) (response *DescribeRechargeRecordsResponse, err error) {
+    if request == nil {
+        request = NewDescribeRechargeRecordsRequest()
+    }
+    response = NewDescribeRechargeRecordsResponse()
     err = c.Send(request, response)
     return
 }

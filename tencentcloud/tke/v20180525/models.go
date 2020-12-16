@@ -1002,6 +1002,43 @@ func (r *CreatePrometheusDashboardResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type CreatePrometheusTemplateRequest struct {
+	*tchttp.BaseRequest
+
+	// 模板设置
+	Template *PrometheusTemplate `json:"Template,omitempty" name:"Template"`
+}
+
+func (r *CreatePrometheusTemplateRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreatePrometheusTemplateRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreatePrometheusTemplateResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 模板Id
+		TemplateId *string `json:"TemplateId,omitempty" name:"TemplateId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreatePrometheusTemplateResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreatePrometheusTemplateResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DataDisk struct {
 
 	// 云盘类型
@@ -1342,6 +1379,77 @@ func (r *DeleteClusterRouteTableResponse) ToJsonString() string {
 }
 
 func (r *DeleteClusterRouteTableResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeletePrometheusTemplateRequest struct {
+	*tchttp.BaseRequest
+
+	// 模板id
+	TemplateId *string `json:"TemplateId,omitempty" name:"TemplateId"`
+}
+
+func (r *DeletePrometheusTemplateRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeletePrometheusTemplateRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeletePrometheusTemplateResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DeletePrometheusTemplateResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeletePrometheusTemplateResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeletePrometheusTemplateSyncRequest struct {
+	*tchttp.BaseRequest
+
+	// 模板id
+	TemplateId *string `json:"TemplateId,omitempty" name:"TemplateId"`
+
+	// 取消同步的对象列表
+	Targets []*PrometheusTemplateSyncTarget `json:"Targets,omitempty" name:"Targets" list`
+}
+
+func (r *DeletePrometheusTemplateSyncRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeletePrometheusTemplateSyncRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeletePrometheusTemplateSyncResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DeletePrometheusTemplateSyncResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeletePrometheusTemplateSyncResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -2015,6 +2123,286 @@ func (r *DescribePrometheusAgentInstancesResponse) FromJsonString(s string) erro
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribePrometheusAgentsRequest struct {
+	*tchttp.BaseRequest
+
+	// 实例id
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 用于分页
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 用于分页
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+func (r *DescribePrometheusAgentsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribePrometheusAgentsRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribePrometheusAgentsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 被关联集群信息
+		Agents []*PrometheusAgentOverview `json:"Agents,omitempty" name:"Agents" list`
+
+		// 被关联集群总量
+		Total *uint64 `json:"Total,omitempty" name:"Total"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribePrometheusAgentsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribePrometheusAgentsResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribePrometheusAlertRuleRequest struct {
+	*tchttp.BaseRequest
+
+	// 实例id
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 分页
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 分页
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 过滤
+	// 支持ID，Name
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+}
+
+func (r *DescribePrometheusAlertRuleRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribePrometheusAlertRuleRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribePrometheusAlertRuleResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 告警详情
+		AlertRules []*PrometheusAlertRuleDetail `json:"AlertRules,omitempty" name:"AlertRules" list`
+
+		// 总数
+		Total *uint64 `json:"Total,omitempty" name:"Total"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribePrometheusAlertRuleResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribePrometheusAlertRuleResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribePrometheusOverviewsRequest struct {
+	*tchttp.BaseRequest
+
+	// 用于分页
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 用于分页
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 过滤实例，目前支持：
+	// ID: 通过实例ID来过滤 
+	// Name: 通过实例名称来过滤
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+}
+
+func (r *DescribePrometheusOverviewsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribePrometheusOverviewsRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribePrometheusOverviewsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 实例列表
+		Instances []*PrometheusInstanceOverview `json:"Instances,omitempty" name:"Instances" list`
+
+		// 实例总数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Total *uint64 `json:"Total,omitempty" name:"Total"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribePrometheusOverviewsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribePrometheusOverviewsResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribePrometheusTargetsRequest struct {
+	*tchttp.BaseRequest
+
+	// 实例id
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 集群类型
+	ClusterType *string `json:"ClusterType,omitempty" name:"ClusterType"`
+
+	// 集群id
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 过滤条件，当前支持
+	// Name=state
+	// Value=up, down, unknown
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+}
+
+func (r *DescribePrometheusTargetsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribePrometheusTargetsRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribePrometheusTargetsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 所有Job的targets信息
+		Jobs []*PrometheusJobTargets `json:"Jobs,omitempty" name:"Jobs" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribePrometheusTargetsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribePrometheusTargetsResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribePrometheusTemplateSyncRequest struct {
+	*tchttp.BaseRequest
+
+	// 模板ID
+	TemplateId *string `json:"TemplateId,omitempty" name:"TemplateId"`
+}
+
+func (r *DescribePrometheusTemplateSyncRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribePrometheusTemplateSyncRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribePrometheusTemplateSyncResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 同步目标详情
+		Targets []*PrometheusTemplateSyncTarget `json:"Targets,omitempty" name:"Targets" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribePrometheusTemplateSyncResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribePrometheusTemplateSyncResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribePrometheusTemplatesRequest struct {
+	*tchttp.BaseRequest
+
+	// 模糊过滤条件，支持
+	// Level 按模板级别过滤
+	// Name 按名称过滤
+	// Describe 按描述过滤
+	// ID 按templateId过滤
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+
+	// 分页偏移
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 总数限制
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+func (r *DescribePrometheusTemplatesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribePrometheusTemplatesRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribePrometheusTemplatesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 模板列表
+		Templates []*PrometheusTemplate `json:"Templates,omitempty" name:"Templates" list`
+
+		// 总数
+		Total *uint64 `json:"Total,omitempty" name:"Total"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribePrometheusTemplatesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribePrometheusTemplatesResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeRegionsRequest struct {
 	*tchttp.BaseRequest
 }
@@ -2547,6 +2935,83 @@ func (r *ModifyClusterNodePoolResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type ModifyNodePoolDesiredCapacityAboutAsgRequest struct {
+	*tchttp.BaseRequest
+
+	// 集群id
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 节点池id
+	NodePoolId *string `json:"NodePoolId,omitempty" name:"NodePoolId"`
+
+	// 节点池所关联的伸缩组的期望实例数
+	DesiredCapacity *int64 `json:"DesiredCapacity,omitempty" name:"DesiredCapacity"`
+}
+
+func (r *ModifyNodePoolDesiredCapacityAboutAsgRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyNodePoolDesiredCapacityAboutAsgRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyNodePoolDesiredCapacityAboutAsgResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifyNodePoolDesiredCapacityAboutAsgResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyNodePoolDesiredCapacityAboutAsgResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyPrometheusTemplateRequest struct {
+	*tchttp.BaseRequest
+
+	// 模板ID
+	TemplateId *string `json:"TemplateId,omitempty" name:"TemplateId"`
+
+	// 修改内容
+	Template *PrometheusTemplateModify `json:"Template,omitempty" name:"Template"`
+}
+
+func (r *ModifyPrometheusTemplateRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyPrometheusTemplateRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyPrometheusTemplateResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifyPrometheusTemplateResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyPrometheusTemplateResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type NodeCountSummary struct {
 
 	// 手动管理的节点
@@ -2602,6 +3067,334 @@ type NodePool struct {
 	// 期望的节点数量
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DesiredNodesNum *int64 `json:"DesiredNodesNum,omitempty" name:"DesiredNodesNum"`
+}
+
+type PrometheusAgentOverview struct {
+
+	// 集群类型
+	ClusterType *string `json:"ClusterType,omitempty" name:"ClusterType"`
+
+	// 集群id
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// agent状态
+	// normal = 正常
+	// abnormal = 异常
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 集群名称
+	ClusterName *string `json:"ClusterName,omitempty" name:"ClusterName"`
+}
+
+type PrometheusAlertRule struct {
+
+	// 规则名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// prometheus语句
+	Rule *string `json:"Rule,omitempty" name:"Rule"`
+
+	// 额外标签
+	Labels []*Label `json:"Labels,omitempty" name:"Labels" list`
+
+	// 告警发送模板
+	Template *string `json:"Template,omitempty" name:"Template"`
+
+	// 持续时间
+	For *string `json:"For,omitempty" name:"For"`
+
+	// 该条规则的描述信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Describe *string `json:"Describe,omitempty" name:"Describe"`
+}
+
+type PrometheusAlertRuleDetail struct {
+
+	// 规则名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 规则列表
+	Rules []*PrometheusAlertRule `json:"Rules,omitempty" name:"Rules" list`
+
+	// 最后修改时间
+	UpdatedAt *string `json:"UpdatedAt,omitempty" name:"UpdatedAt"`
+
+	// 告警渠道
+	Notification *PrometheusNotification `json:"Notification,omitempty" name:"Notification"`
+
+	// 告警 id
+	Id *string `json:"Id,omitempty" name:"Id"`
+
+	// 如果该告警来至模板下发，则TemplateId为模板id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TemplateId *string `json:"TemplateId,omitempty" name:"TemplateId"`
+}
+
+type PrometheusConfigItem struct {
+
+	// 名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 配置内容
+	Config *string `json:"Config,omitempty" name:"Config"`
+
+	// 用于出参，如果该配置来至模板，则为模板id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TemplateId *string `json:"TemplateId,omitempty" name:"TemplateId"`
+}
+
+type PrometheusInstanceOverview struct {
+
+	// 实例id
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 实例名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 实例vpcId
+	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
+
+	// 实例子网Id
+	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
+
+	// 实例当前的状态
+	// prepare_env = 初始化环境
+	// install_suit = 安装组件
+	// running = 运行中
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// COS桶存储
+	COSBucket *string `json:"COSBucket,omitempty" name:"COSBucket"`
+}
+
+type PrometheusJobTargets struct {
+
+	// 该Job的targets列表
+	Targets []*PrometheusTarget `json:"Targets,omitempty" name:"Targets" list`
+
+	// job的名称
+	JobName *string `json:"JobName,omitempty" name:"JobName"`
+
+	// targets总数
+	Total *uint64 `json:"Total,omitempty" name:"Total"`
+
+	// 健康的target总数
+	Up *uint64 `json:"Up,omitempty" name:"Up"`
+}
+
+type PrometheusNotification struct {
+
+	// 是否启用
+	Enabled *bool `json:"Enabled,omitempty" name:"Enabled"`
+
+	// 收敛时间
+	RepeatInterval *string `json:"RepeatInterval,omitempty" name:"RepeatInterval"`
+
+	// 生效起始时间
+	TimeRangeStart *string `json:"TimeRangeStart,omitempty" name:"TimeRangeStart"`
+
+	// 生效结束时间
+	TimeRangeEnd *string `json:"TimeRangeEnd,omitempty" name:"TimeRangeEnd"`
+
+	// 告警通知方式。目前有SMS、EMAIL、CALL、WECHAT方式。
+	// 分别代表：短信、邮件、电话、微信
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NotifyWay []*string `json:"NotifyWay,omitempty" name:"NotifyWay" list`
+
+	// 告警接收组（用户组）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ReceiverGroups []*uint64 `json:"ReceiverGroups,omitempty" name:"ReceiverGroups" list`
+
+	// 电话告警顺序。
+	// 注：NotifyWay选择CALL，采用该参数。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PhoneNotifyOrder []*uint64 `json:"PhoneNotifyOrder,omitempty" name:"PhoneNotifyOrder" list`
+
+	// 电话告警次数。
+	// 注：NotifyWay选择CALL，采用该参数。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PhoneCircleTimes *int64 `json:"PhoneCircleTimes,omitempty" name:"PhoneCircleTimes"`
+
+	// 电话告警轮内间隔。单位：秒
+	// 注：NotifyWay选择CALL，采用该参数。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PhoneInnerInterval *int64 `json:"PhoneInnerInterval,omitempty" name:"PhoneInnerInterval"`
+
+	// 电话告警轮外间隔。单位：秒
+	// 注：NotifyWay选择CALL，采用该参数。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PhoneCircleInterval *int64 `json:"PhoneCircleInterval,omitempty" name:"PhoneCircleInterval"`
+
+	// 电话告警触达通知
+	// 注：NotifyWay选择CALL，采用该参数。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PhoneArriveNotice *bool `json:"PhoneArriveNotice,omitempty" name:"PhoneArriveNotice"`
+
+	// 通道类型，默认为amp，支持以下
+	// amp
+	// webhook
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 如果Type为webhook, 则该字段为必填项
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WebHook *string `json:"WebHook,omitempty" name:"WebHook"`
+}
+
+type PrometheusTarget struct {
+
+	// 抓取目标的URL
+	Url *string `json:"Url,omitempty" name:"Url"`
+
+	// target当前状态,当前支持
+	// up = 健康
+	// down = 不健康
+	// unknown = 未知
+	State *string `json:"State,omitempty" name:"State"`
+
+	// target的元label
+	Labels []*Label `json:"Labels,omitempty" name:"Labels" list`
+
+	// 上一次抓取的时间
+	LastScrape *string `json:"LastScrape,omitempty" name:"LastScrape"`
+
+	// 上一次抓取的耗时，单位是s
+	ScrapeDuration *float64 `json:"ScrapeDuration,omitempty" name:"ScrapeDuration"`
+
+	// 上一次抓取如果错误，该字段存储错误信息
+	Error *string `json:"Error,omitempty" name:"Error"`
+}
+
+type PrometheusTemplate struct {
+
+	// 模板名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 模板维度，支持以下类型
+	// instance 实例级别
+	// cluster 集群级别
+	Level *string `json:"Level,omitempty" name:"Level"`
+
+	// 模板描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Describe *string `json:"Describe,omitempty" name:"Describe"`
+
+	// 当Level为instance时有效，
+	// 模板中的告警配置列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AlertRules []*PrometheusAlertRule `json:"AlertRules,omitempty" name:"AlertRules" list`
+
+	// 当Level为instance时有效，
+	// 模板中的聚合规则列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RecordRules []*PrometheusConfigItem `json:"RecordRules,omitempty" name:"RecordRules" list`
+
+	// 当Level为cluster时有效，
+	// 模板中的ServiceMonitor规则列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ServiceMonitors []*PrometheusConfigItem `json:"ServiceMonitors,omitempty" name:"ServiceMonitors" list`
+
+	// 当Level为cluster时有效，
+	// 模板中的PodMonitors规则列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PodMonitors []*PrometheusConfigItem `json:"PodMonitors,omitempty" name:"PodMonitors" list`
+
+	// 当Level为cluster时有效，
+	// 模板中的RawJobs规则列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RawJobs []*PrometheusConfigItem `json:"RawJobs,omitempty" name:"RawJobs" list`
+
+	// 模板的ID, 用于出参
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TemplateId *string `json:"TemplateId,omitempty" name:"TemplateId"`
+
+	// 最近更新时间，用于出参
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
+
+	// 当前版本，用于出参
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Version *string `json:"Version,omitempty" name:"Version"`
+
+	// 是否系统提供的默认模板，用于出参
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsDefault *bool `json:"IsDefault,omitempty" name:"IsDefault"`
+
+	// 当Level为instance时有效，
+	// 模板中的告警配置列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AlertDetailRules []*PrometheusAlertRuleDetail `json:"AlertDetailRules,omitempty" name:"AlertDetailRules" list`
+}
+
+type PrometheusTemplateModify struct {
+
+	// 修改名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 修改描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Describe *string `json:"Describe,omitempty" name:"Describe"`
+
+	// 修改内容，只有当模板类型是Alert时生效
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AlertRules []*PrometheusAlertRule `json:"AlertRules,omitempty" name:"AlertRules" list`
+
+	// 当Level为instance时有效，
+	// 模板中的聚合规则列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RecordRules []*PrometheusConfigItem `json:"RecordRules,omitempty" name:"RecordRules" list`
+
+	// 当Level为cluster时有效，
+	// 模板中的ServiceMonitor规则列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ServiceMonitors []*PrometheusConfigItem `json:"ServiceMonitors,omitempty" name:"ServiceMonitors" list`
+
+	// 当Level为cluster时有效，
+	// 模板中的PodMonitors规则列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PodMonitors []*PrometheusConfigItem `json:"PodMonitors,omitempty" name:"PodMonitors" list`
+
+	// 当Level为cluster时有效，
+	// 模板中的RawJobs规则列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RawJobs []*PrometheusConfigItem `json:"RawJobs,omitempty" name:"RawJobs" list`
+
+	// 修改内容，只有当模板类型是Alert时生效
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AlertDetailRules []*PrometheusAlertRuleDetail `json:"AlertDetailRules,omitempty" name:"AlertDetailRules" list`
+}
+
+type PrometheusTemplateSyncTarget struct {
+
+	// 目标所在地域
+	Region *string `json:"Region,omitempty" name:"Region"`
+
+	// 目标实例
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 集群id，只有当采集模板的Level为cluster的时候需要
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 最后一次同步时间， 用于出参
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SyncTime *string `json:"SyncTime,omitempty" name:"SyncTime"`
+
+	// 当前使用的模板版本，用于出参
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Version *string `json:"Version,omitempty" name:"Version"`
+
+	// 集群类型，只有当采集模板的Level为cluster的时候需要
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClusterType *string `json:"ClusterType,omitempty" name:"ClusterType"`
+
+	// 用于出参，实例名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceName *string `json:"InstanceName,omitempty" name:"InstanceName"`
+
+	// 用于出参，集群名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClusterName *string `json:"ClusterName,omitempty" name:"ClusterName"`
 }
 
 type RegionInstance struct {
@@ -2744,6 +3537,43 @@ type RunSecurityServiceEnabled struct {
 
 	// 是否开启[云安全](/document/product/296)服务。取值范围：<br><li>TRUE：表示开启云安全服务<br><li>FALSE：表示不开启云安全服务<br><br>默认取值：TRUE。
 	Enabled *bool `json:"Enabled,omitempty" name:"Enabled"`
+}
+
+type SyncPrometheusTemplateRequest struct {
+	*tchttp.BaseRequest
+
+	// 实例id
+	TemplateId *string `json:"TemplateId,omitempty" name:"TemplateId"`
+
+	// 同步目标
+	Targets []*PrometheusTemplateSyncTarget `json:"Targets,omitempty" name:"Targets" list`
+}
+
+func (r *SyncPrometheusTemplateRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *SyncPrometheusTemplateRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type SyncPrometheusTemplateResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *SyncPrometheusTemplateResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *SyncPrometheusTemplateResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
 }
 
 type Tag struct {

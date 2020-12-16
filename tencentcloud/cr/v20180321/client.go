@@ -93,6 +93,56 @@ func (c *Client) ApplyCreditAudit(request *ApplyCreditAuditRequest) (response *A
     return
 }
 
+func NewCreateBotTaskRequest() (request *CreateBotTaskRequest) {
+    request = &CreateBotTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cr", APIVersion, "CreateBotTask")
+    return
+}
+
+func NewCreateBotTaskResponse() (response *CreateBotTaskResponse) {
+    response = &CreateBotTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 创建机器人任务
+func (c *Client) CreateBotTask(request *CreateBotTaskRequest) (response *CreateBotTaskResponse, err error) {
+    if request == nil {
+        request = NewCreateBotTaskRequest()
+    }
+    response = NewCreateBotTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeBotFlowRequest() (request *DescribeBotFlowRequest) {
+    request = &DescribeBotFlowRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cr", APIVersion, "DescribeBotFlow")
+    return
+}
+
+func NewDescribeBotFlowResponse() (response *DescribeBotFlowResponse) {
+    response = &DescribeBotFlowResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询机器人对话流
+func (c *Client) DescribeBotFlow(request *DescribeBotFlowRequest) (response *DescribeBotFlowResponse, err error) {
+    if request == nil {
+        request = NewDescribeBotFlowRequest()
+    }
+    response = NewDescribeBotFlowResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeCreditResultRequest() (request *DescribeCreditResultRequest) {
     request = &DescribeCreditResultRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -114,6 +164,31 @@ func (c *Client) DescribeCreditResult(request *DescribeCreditResultRequest) (res
         request = NewDescribeCreditResultRequest()
     }
     response = NewDescribeCreditResultResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeFileModelRequest() (request *DescribeFileModelRequest) {
+    request = &DescribeFileModelRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cr", APIVersion, "DescribeFileModel")
+    return
+}
+
+func NewDescribeFileModelResponse() (response *DescribeFileModelResponse) {
+    response = &DescribeFileModelResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询机器人文件模板
+func (c *Client) DescribeFileModel(request *DescribeFileModelRequest) (response *DescribeFileModelResponse, err error) {
+    if request == nil {
+        request = NewDescribeFileModelRequest()
+    }
+    response = NewDescribeFileModelResponse()
     err = c.Send(request, response)
     return
 }
@@ -290,6 +365,31 @@ func (c *Client) QueryProducts(request *QueryProductsRequest) (response *QueryPr
         request = NewQueryProductsRequest()
     }
     response = NewQueryProductsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewUploadBotFileRequest() (request *UploadBotFileRequest) {
+    request = &UploadBotFileRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cr", APIVersion, "UploadBotFile")
+    return
+}
+
+func NewUploadBotFileResponse() (response *UploadBotFileResponse) {
+    response = &UploadBotFileResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 上传机器人文件
+func (c *Client) UploadBotFile(request *UploadBotFileRequest) (response *UploadBotFileResponse, err error) {
+    if request == nil {
+        request = NewUploadBotFileRequest()
+    }
+    response = NewUploadBotFileResponse()
     err = c.Send(request, response)
     return
 }

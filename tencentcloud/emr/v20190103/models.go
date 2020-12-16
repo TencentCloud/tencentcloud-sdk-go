@@ -20,6 +20,21 @@ import (
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
+type BootstrapAction struct {
+
+	// 脚本位置，支持cos上的文件，且只支持https协议。
+	Path *string `json:"Path,omitempty" name:"Path"`
+
+	// 执行时间。
+	// resourceAfter 表示在机器资源申请成功后执行。
+	// clusterBefore 表示在集群初始化前执行。
+	// clusterAfter 表示在集群初始化后执行。
+	WhenRun *string `json:"WhenRun,omitempty" name:"WhenRun"`
+
+	// 脚本参数
+	Args []*string `json:"Args,omitempty" name:"Args" list`
+}
+
 type COSSettings struct {
 
 	// COS SecretId
@@ -239,6 +254,62 @@ type ClusterInstancesInfo struct {
 	// 集群版本Id
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProductId *int64 `json:"ProductId,omitempty" name:"ProductId"`
+}
+
+type ClusterSetting struct {
+
+	// 付费方式。
+	// PREPAID 包年包月。
+	// POSTPAID_BY_HOUR 按量计费，默认方式。
+	InstanceChargeType *string `json:"InstanceChargeType,omitempty" name:"InstanceChargeType"`
+
+	// 是否为HA集群。
+	SupportHA *bool `json:"SupportHA,omitempty" name:"SupportHA"`
+
+	// 集群所使用的安全组，目前仅支持一个。
+	SecurityGroupIds []*string `json:"SecurityGroupIds,omitempty" name:"SecurityGroupIds" list`
+
+	// 实例位置。
+	Placement *Placement `json:"Placement,omitempty" name:"Placement"`
+
+	// 实例所在VPC。
+	VPCSettings *VPCSettings `json:"VPCSettings,omitempty" name:"VPCSettings"`
+
+	// 实例登陆配置。
+	LoginSettings *LoginSettings `json:"LoginSettings,omitempty" name:"LoginSettings"`
+
+	// 实例标签。
+	TagSpecification []*string `json:"TagSpecification,omitempty" name:"TagSpecification" list`
+
+	// 元数据库配置。
+	MetaDB *MetaDbInfo `json:"MetaDB,omitempty" name:"MetaDB"`
+
+	// 实例硬件配置。
+	ResourceSpec *JobFlowResourceSpec `json:"ResourceSpec,omitempty" name:"ResourceSpec"`
+
+	// 是否申请公网IP，默认为false。
+	PublicIpAssigned *bool `json:"PublicIpAssigned,omitempty" name:"PublicIpAssigned"`
+
+	// 包年包月配置，只对包年包月集群生效。
+	InstanceChargePrepaid *InstanceChargePrepaid `json:"InstanceChargePrepaid,omitempty" name:"InstanceChargePrepaid"`
+
+	// 集群置放群组。
+	DisasterRecoverGroupIds *string `json:"DisasterRecoverGroupIds,omitempty" name:"DisasterRecoverGroupIds"`
+
+	// 是否使用cbs加密。
+	CbsEncryptFlag *bool `json:"CbsEncryptFlag,omitempty" name:"CbsEncryptFlag"`
+
+	// 是否使用远程登陆，默认为false。
+	RemoteTcpDefaultPort *bool `json:"RemoteTcpDefaultPort,omitempty" name:"RemoteTcpDefaultPort"`
+}
+
+type Configuration struct {
+
+	// 配置文件名，支持SPARK、HIVE、HDFS、YARN的部分配置文件自定义。
+	Classification *string `json:"Classification,omitempty" name:"Classification"`
+
+	// 配置参数通过KV的形式传入，部分文件支持自定义，可以通过特殊的键"content"传入所有内容。
+	Properties *string `json:"Properties,omitempty" name:"Properties"`
 }
 
 type CreateInstanceRequest struct {
@@ -539,6 +610,77 @@ func (r *DescribeInstancesResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeJobFlowRequest struct {
+	*tchttp.BaseRequest
+
+	// 流程任务Id，RunJobFlow接口返回的值。
+	JobFlowId *int64 `json:"JobFlowId,omitempty" name:"JobFlowId"`
+}
+
+func (r *DescribeJobFlowRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeJobFlowRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeJobFlowResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 流程任务状态，可以为以下值：
+	// JobFlowInit，流程任务初始化。
+	// JobFlowResourceApplied，资源申请中，通常为JobFlow需要新建集群时的状态。
+	// JobFlowResourceReady，执行流程任务的资源就绪。
+	// JobFlowStepsRunning，流程任务步骤已提交。
+	// JobFlowStepsComplete，流程任务步骤已完成。
+	// JobFlowTerminating，流程任务所需资源销毁中。
+	// JobFlowFinish，流程任务已完成。
+		State *string `json:"State,omitempty" name:"State"`
+
+		// 流程任务步骤结果。
+		Details []*JobResult `json:"Details,omitempty" name:"Details" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeJobFlowResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeJobFlowResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DiskGroup struct {
+
+	// 磁盘规格。
+	Spec *DiskSpec `json:"Spec,omitempty" name:"Spec"`
+
+	// 同类型磁盘数量。
+	Count *int64 `json:"Count,omitempty" name:"Count"`
+}
+
+type DiskSpec struct {
+
+	// 磁盘类型。
+	// LOCAL_BASIC  本地盘。
+	// CLOUD_BASIC 云硬盘。
+	// LOCAL_SSD 本地SSD。
+	// CLOUD_SSD 云SSD。
+	// CLOUD_PREMIUM 高效云盘。
+	// CLOUD_HSSD 增强型云SSD。
+	DiskType *string `json:"DiskType,omitempty" name:"DiskType"`
+
+	// 磁盘大小，单位GB。
+	DiskSize *int64 `json:"DiskSize,omitempty" name:"DiskSize"`
+}
+
 type EmrProductConfigOutter struct {
 
 	// 软件信息
@@ -604,6 +746,18 @@ type EmrProductConfigOutter struct {
 	// 是否开启Cbs加密
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CbsEncrypt *int64 `json:"CbsEncrypt,omitempty" name:"CbsEncrypt"`
+}
+
+type Execution struct {
+
+	// 任务类型，目前支持以下类型。
+	// 1. “MR”，将通过hadoop jar的方式提交。
+	// 2. "HIVE"，将通过hive -f的方式提交。
+	// 3. "SPARK"，将通过spark-submit的方式提交。
+	JobType *string `json:"JobType,omitempty" name:"JobType"`
+
+	// 任务参数，提供除提交指令以外的参数。
+	Args []*string `json:"Args,omitempty" name:"Args" list`
 }
 
 type HostVolumeContext struct {
@@ -946,6 +1100,80 @@ func (r *InquiryPriceUpdateInstanceResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type InstanceChargePrepaid struct {
+
+	// 包年包月时间，默认为1，单位：月。
+	// 取值范围：1, 2, 3, 4, 5, 6, 7, 8, 9, 10,11, 12, 24, 36, 48, 60。
+	Period *int64 `json:"Period,omitempty" name:"Period"`
+
+	// 是否自动续费，默认为否。
+	RenewFlag *bool `json:"RenewFlag,omitempty" name:"RenewFlag"`
+}
+
+type JobFlowResource struct {
+
+	// 机器类型描述。
+	Spec *string `json:"Spec,omitempty" name:"Spec"`
+
+	// 机器类型描述，可参考CVM的该含义。
+	InstanceType *string `json:"InstanceType,omitempty" name:"InstanceType"`
+
+	// 标签KV对。
+	Tags []*Tag `json:"Tags,omitempty" name:"Tags" list`
+
+	// 磁盘描述列表。
+	DiskGroups []*DiskGroup `json:"DiskGroups,omitempty" name:"DiskGroups" list`
+}
+
+type JobFlowResourceSpec struct {
+
+	// 主节点数量。
+	MasterCount *int64 `json:"MasterCount,omitempty" name:"MasterCount"`
+
+	// 主节点配置。
+	MasterResourceSpec *JobFlowResource `json:"MasterResourceSpec,omitempty" name:"MasterResourceSpec"`
+
+	// Core节点数量
+	CoreCount *int64 `json:"CoreCount,omitempty" name:"CoreCount"`
+
+	// Core节点配置。
+	CoreResourceSpec *JobFlowResource `json:"CoreResourceSpec,omitempty" name:"CoreResourceSpec"`
+
+	// Task节点数量。
+	TaskCount *int64 `json:"TaskCount,omitempty" name:"TaskCount"`
+
+	// Common节点数量。
+	CommonCount *int64 `json:"CommonCount,omitempty" name:"CommonCount"`
+
+	// Task节点配置。
+	TaskResourceSpec *JobFlowResource `json:"TaskResourceSpec,omitempty" name:"TaskResourceSpec"`
+
+	// Common节点配置。
+	CommonResourceSpec *JobFlowResource `json:"CommonResourceSpec,omitempty" name:"CommonResourceSpec"`
+}
+
+type JobResult struct {
+
+	// 任务步骤名称。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 任务步骤失败时的处理策略，可以为以下值：
+	// "CONTINUE"，跳过当前失败步骤，继续后续步骤。
+	// “TERMINATE_CLUSTER”，终止当前及后续步骤，并销毁集群。
+	// “CANCEL_AND_WAIT”，取消当前步骤并阻塞等待处理。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ActionOnFailure *string `json:"ActionOnFailure,omitempty" name:"ActionOnFailure"`
+
+	// 当前步骤的状态，可以为以下值：
+	// “JobFlowStepStatusInit”，初始化状态，等待执行。
+	// “JobFlowStepStatusRunning”，任务步骤正在执行。
+	// “JobFlowStepStatusFailed”，任务步骤执行失败。
+	// “JobFlowStepStatusSucceed”，任务步骤执行成功。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	JobState *string `json:"JobState,omitempty" name:"JobState"`
+}
+
 type LoginSettings struct {
 
 	// Password
@@ -953,6 +1181,18 @@ type LoginSettings struct {
 
 	// Public Key
 	PublicKeyId *string `json:"PublicKeyId,omitempty" name:"PublicKeyId"`
+}
+
+type MetaDbInfo struct {
+
+	// 元数据类型。
+	MetaType *string `json:"MetaType,omitempty" name:"MetaType"`
+
+	// 统一元数据库实例ID。
+	UnifyMetaInstanceId *string `json:"UnifyMetaInstanceId,omitempty" name:"UnifyMetaInstanceId"`
+
+	// 自建元数据库信息。
+	MetaDBInfo *CustomMetaInfo `json:"MetaDBInfo,omitempty" name:"MetaDBInfo"`
 }
 
 type MultiDisk struct {
@@ -1411,6 +1651,88 @@ type Resource struct {
 	DiskNum *uint64 `json:"DiskNum,omitempty" name:"DiskNum"`
 }
 
+type RunJobFlowRequest struct {
+	*tchttp.BaseRequest
+
+	// 作业名称。
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 是否新创建集群。
+	// true，新创建集群，则使用Instance中的参数进行集群创建。
+	// false，使用已有集群，则通过InstanceId传入。
+	CreateCluster *bool `json:"CreateCluster,omitempty" name:"CreateCluster"`
+
+	// 作业流程执行步骤。
+	Steps []*Step `json:"Steps,omitempty" name:"Steps" list`
+
+	// 作业流程正常完成时，集群的处理方式，可选择:
+	// Terminate 销毁集群。
+	// Reserve 保留集群。
+	InstancePolicy *string `json:"InstancePolicy,omitempty" name:"InstancePolicy"`
+
+	// 只有CreateCluster为true时生效，目前只支持EMR版本，例如EMR-2.2.0，不支持ClickHouse和Druid版本。
+	ProductVersion *string `json:"ProductVersion,omitempty" name:"ProductVersion"`
+
+	// 只在CreateCluster为true时生效。
+	// true 表示安装kerberos，false表示不安装kerberos。
+	SecurityClusterFlag *bool `json:"SecurityClusterFlag,omitempty" name:"SecurityClusterFlag"`
+
+	// 只在CreateCluster为true时生效。
+	// 新建集群时，要安装的软件列表。
+	Software []*string `json:"Software,omitempty" name:"Software" list`
+
+	// 引导脚本。
+	BootstrapActions []*BootstrapAction `json:"BootstrapActions,omitempty" name:"BootstrapActions" list`
+
+	// 指定配置创建集群。
+	Configurations []*Configuration `json:"Configurations,omitempty" name:"Configurations" list`
+
+	// 作业日志保存地址。
+	LogUri *string `json:"LogUri,omitempty" name:"LogUri"`
+
+	// 只在CreateCluster为false时生效。
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 自定义应用角色，大数据应用访问外部服务时使用的角色，默认为"EME_QCSRole"。
+	ApplicationRole *string `json:"ApplicationRole,omitempty" name:"ApplicationRole"`
+
+	// 重入标签，用来可重入检查，防止在一段时间内，创建相同的流程作业。
+	ClientToken *string `json:"ClientToken,omitempty" name:"ClientToken"`
+
+	// 只在CreateCluster为true时生效，使用该配置创建集群。
+	Instance *ClusterSetting `json:"Instance,omitempty" name:"Instance"`
+}
+
+func (r *RunJobFlowRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *RunJobFlowRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type RunJobFlowResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 作业流程ID。
+		JobFlowId *int64 `json:"JobFlowId,omitempty" name:"JobFlowId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *RunJobFlowResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *RunJobFlowResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type ScaleOutInstanceRequest struct {
 	*tchttp.BaseRequest
 
@@ -1533,6 +1855,24 @@ type SearchItem struct {
 
 	// 支持搜索的值
 	SearchValue *string `json:"SearchValue,omitempty" name:"SearchValue"`
+}
+
+type Step struct {
+
+	// 执行步骤名称。
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 执行动作。
+	ExecutionStep *Execution `json:"ExecutionStep,omitempty" name:"ExecutionStep"`
+
+	// 执行失败策略。
+	// 1. TERMINATE_CLUSTER 执行失败时退出并销毁集群。
+	// 2. CANCEL_AND_WAIT 执行失败时阻塞等待。
+	// 3. CONTINUE 执行失败时跳过并执行后续步骤。
+	ActionOnFailure *string `json:"ActionOnFailure,omitempty" name:"ActionOnFailure"`
+
+	// 指定执行Step时的用户名，非必须，默认为hadoop。
+	User *string `json:"User,omitempty" name:"User"`
 }
 
 type Tag struct {

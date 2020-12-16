@@ -76,6 +76,90 @@ func (r *AccountTipoffAccessResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeTextLibRequest struct {
+	*tchttp.BaseRequest
+
+	// 内容类型 text: 1; image: 2; audio: 3; video: 4
+	StrategyType *int64 `json:"StrategyType,omitempty" name:"StrategyType"`
+}
+
+func (r *DescribeTextLibRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeTextLibRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeTextLibResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 文本库id和name列表
+		TextLib []*TextLib `json:"TextLib,omitempty" name:"TextLib" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeTextLibResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeTextLibResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeTextStatRequest struct {
+	*tchttp.BaseRequest
+
+	// 审核类型 1: 机器审核; 2: 人工审核
+	AuditType *int64 `json:"AuditType,omitempty" name:"AuditType"`
+
+	// 查询条件
+	Filters []*Filters `json:"Filters,omitempty" name:"Filters" list`
+}
+
+func (r *DescribeTextStatRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeTextStatRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeTextStatResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 识别结果统计
+		Overview *Overview `json:"Overview,omitempty" name:"Overview"`
+
+		// 识别量统计
+		TrendCount []*TrendCount `json:"TrendCount,omitempty" name:"TrendCount" list`
+
+		// 违规数据分布
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		EvilCount []*EvilCount `json:"EvilCount,omitempty" name:"EvilCount" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeTextStatResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeTextStatResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DetailResults struct {
 
 	// 恶意标签，Normal：正常，Polity：涉政，Porn：色情，Illegal：违法，Abuse：谩骂，Terror：暴恐，Ad：广告，Custom：自定义关键词
@@ -130,6 +214,62 @@ type Device struct {
 	IDFV *string `json:"IDFV,omitempty" name:"IDFV"`
 }
 
+type EvilCount struct {
+
+	// 违规类型：
+	// Terror	24001
+	// Porn	20002
+	// Polity	20001
+	// Ad	20105
+	// Abuse	20007	
+	// Illegal	20006	
+	// Spam	25001	
+	// Moan	26001
+	EvilType *string `json:"EvilType,omitempty" name:"EvilType"`
+
+	// 分布类型总量
+	Count *int64 `json:"Count,omitempty" name:"Count"`
+}
+
+type Filters struct {
+
+	// 查询字段：
+	// 策略BizType
+	// 子账号SubUin
+	// 日期区间DateRange
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 查询值
+	Values []*string `json:"Values,omitempty" name:"Values" list`
+}
+
+type Overview struct {
+
+	// 总调用量
+	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 总调用时长
+	TotalHour *int64 `json:"TotalHour,omitempty" name:"TotalHour"`
+
+	// 通过量
+	PassCount *int64 `json:"PassCount,omitempty" name:"PassCount"`
+
+	// 通过时长
+	PassHour *int64 `json:"PassHour,omitempty" name:"PassHour"`
+
+	// 违规量
+	EvilCount *int64 `json:"EvilCount,omitempty" name:"EvilCount"`
+
+	// 违规时长
+	EvilHour *int64 `json:"EvilHour,omitempty" name:"EvilHour"`
+
+	// 疑似违规量
+	SuspectCount *int64 `json:"SuspectCount,omitempty" name:"SuspectCount"`
+
+	// 疑似违规时长
+	SuspectHour *int64 `json:"SuspectHour,omitempty" name:"SuspectHour"`
+}
+
 type RiskDetails struct {
 
 	// 风险类别，RiskAccount，RiskIP, RiskIMEI
@@ -137,6 +277,15 @@ type RiskDetails struct {
 
 	// 风险等级，1:疑似，2：恶意
 	Level *int64 `json:"Level,omitempty" name:"Level"`
+}
+
+type TextLib struct {
+
+	// 库id
+	LibId *int64 `json:"LibId,omitempty" name:"LibId"`
+
+	// 库名
+	LibName *string `json:"LibName,omitempty" name:"LibName"`
 }
 
 type TextModerationRequest struct {
@@ -228,6 +377,45 @@ type TipoffResponse struct {
 
 	// 结果描述
 	ResultMsg *string `json:"ResultMsg,omitempty" name:"ResultMsg"`
+}
+
+type TrendCount struct {
+
+	// 总调用量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 总调用时长
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalHour *int64 `json:"TotalHour,omitempty" name:"TotalHour"`
+
+	// 通过量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PassCount *int64 `json:"PassCount,omitempty" name:"PassCount"`
+
+	// 通过时长
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PassHour *int64 `json:"PassHour,omitempty" name:"PassHour"`
+
+	// 违规量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EvilCount *int64 `json:"EvilCount,omitempty" name:"EvilCount"`
+
+	// 违规时长
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EvilHour *int64 `json:"EvilHour,omitempty" name:"EvilHour"`
+
+	// 疑似违规量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SuspectCount *int64 `json:"SuspectCount,omitempty" name:"SuspectCount"`
+
+	// 疑似违规时长
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SuspectHour *int64 `json:"SuspectHour,omitempty" name:"SuspectHour"`
+
+	// 日期
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Date *string `json:"Date,omitempty" name:"Date"`
 }
 
 type User struct {

@@ -4579,6 +4579,49 @@ func (r *DescribeContentReviewTemplatesResponse) FromJsonString(s string) error 
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeDailyPlayStatFileListRequest struct {
+	*tchttp.BaseRequest
+
+	// 起始日期，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 结束日期，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
+}
+
+func (r *DescribeDailyPlayStatFileListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeDailyPlayStatFileListRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeDailyPlayStatFileListResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 播放统计文件列表。
+		PlayStatFileSet []*PlayStatFileInfo `json:"PlayStatFileSet,omitempty" name:"PlayStatFileSet" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeDailyPlayStatFileListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeDailyPlayStatFileListResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeEventsStateRequest struct {
 	*tchttp.BaseRequest
 
@@ -5221,6 +5264,12 @@ func (r *DescribeStorageDetailsResponse) FromJsonString(s string) error {
 type DescribeSubAppIdsRequest struct {
 	*tchttp.BaseRequest
 
+	// 分页拉取的最大返回结果数。默认值：200；最大值：200。
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 分页拉取的起始偏移量。默认值：0。
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
 	// 标签信息，查询指定标签的子应用列表。
 	Tags []*ResourceTag `json:"Tags,omitempty" name:"Tags" list`
 }
@@ -5240,6 +5289,9 @@ type DescribeSubAppIdsResponse struct {
 
 		// 子应用信息集合。
 		SubAppIdInfoSet []*SubAppIdInfo `json:"SubAppIdInfoSet,omitempty" name:"SubAppIdInfoSet" list`
+
+		// 子应用总数量。
+		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -7227,6 +7279,9 @@ type MediaProcessTaskTranscodeResult struct {
 	// 转码任务的输出。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Output *MediaTranscodeItem `json:"Output,omitempty" name:"Output"`
+
+	// 转码进度，取值范围 [0-100] 。
+	Progress *int64 `json:"Progress,omitempty" name:"Progress"`
 }
 
 type MediaSampleSnapshotInfo struct {
@@ -8683,6 +8738,25 @@ func (r *ParseStreamingManifestResponse) ToJsonString() string {
 
 func (r *ParseStreamingManifestResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
+}
+
+type PlayStatFileInfo struct {
+
+	// 播放统计数据所属日期，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
+	Date *string `json:"Date,omitempty" name:"Date"`
+
+	// 播放统计文件的 URL 地址。播放统计文件内容为：
+	// <li> date：播放日期。</li>
+	// <li> file_id：视频文件 ID。</li>
+	// <li> ip_count：去重后的客户端 IP 数。</li>
+	// <li> flux：播放流量，单位：字节。</li>
+	// <li> play_times：总的播放次数。</li>
+	// <li> pc_play_times：PC 端播放次数。</li>
+	// <li> mobile_play_times：移动端播放次数。</li>
+	// <li> iphone_play_times：iPhone 端播放次数。</li>
+	// <li> android_play_times：Android 端播放次数。</li>
+	// <li> host_name	域名。</li>
+	Url *string `json:"Url,omitempty" name:"Url"`
 }
 
 type PlayerConfig struct {

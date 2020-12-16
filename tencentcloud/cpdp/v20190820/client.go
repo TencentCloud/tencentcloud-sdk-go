@@ -1577,6 +1577,31 @@ func (c *Client) QueryTransferDetail(request *QueryTransferDetailRequest) (respo
     return
 }
 
+func NewQueryTransferResultRequest() (request *QueryTransferResultRequest) {
+    request = &QueryTransferResultRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cpdp", APIVersion, "QueryTransferResult")
+    return
+}
+
+func NewQueryTransferResultResponse() (response *QueryTransferResultResponse) {
+    response = &QueryTransferResultResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 智能代发-单笔代发转账查询接口
+func (c *Client) QueryTransferResult(request *QueryTransferResultRequest) (response *QueryTransferResultResponse, err error) {
+    if request == nil {
+        request = NewQueryTransferResultRequest()
+    }
+    response = NewQueryTransferResultResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewRechargeByThirdPayRequest() (request *RechargeByThirdPayRequest) {
     request = &RechargeByThirdPayRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1823,6 +1848,31 @@ func (c *Client) RevokeRechargeByThirdPay(request *RevokeRechargeByThirdPayReque
         request = NewRevokeRechargeByThirdPayRequest()
     }
     response = NewRevokeRechargeByThirdPayResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewTransferSinglePayRequest() (request *TransferSinglePayRequest) {
+    request = &TransferSinglePayRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cpdp", APIVersion, "TransferSinglePay")
+    return
+}
+
+func NewTransferSinglePayResponse() (response *TransferSinglePayResponse) {
+    response = &TransferSinglePayResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 智能代发-单笔代发转账接口
+func (c *Client) TransferSinglePay(request *TransferSinglePayRequest) (response *TransferSinglePayResponse, err error) {
+    if request == nil {
+        request = NewTransferSinglePayRequest()
+    }
+    response = NewTransferSinglePayResponse()
     err = c.Send(request, response)
     return
 }

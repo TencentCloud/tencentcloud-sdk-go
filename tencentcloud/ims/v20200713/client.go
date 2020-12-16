@@ -43,6 +43,56 @@ func NewClient(credential *common.Credential, region string, clientProfile *prof
 }
 
 
+func NewDescribeImageStatRequest() (request *DescribeImageStatRequest) {
+    request = &DescribeImageStatRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ims", APIVersion, "DescribeImageStat")
+    return
+}
+
+func NewDescribeImageStatResponse() (response *DescribeImageStatResponse) {
+    response = &DescribeImageStatResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 控制台识别统计
+func (c *Client) DescribeImageStat(request *DescribeImageStatRequest) (response *DescribeImageStatResponse, err error) {
+    if request == nil {
+        request = NewDescribeImageStatRequest()
+    }
+    response = NewDescribeImageStatResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeImsListRequest() (request *DescribeImsListRequest) {
+    request = &DescribeImsListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ims", APIVersion, "DescribeImsList")
+    return
+}
+
+func NewDescribeImsListResponse() (response *DescribeImsListResponse) {
+    response = &DescribeImsListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 图片机器审核明细
+func (c *Client) DescribeImsList(request *DescribeImsListRequest) (response *DescribeImsListResponse, err error) {
+    if request == nil {
+        request = NewDescribeImsListRequest()
+    }
+    response = NewDescribeImsListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewImageModerationRequest() (request *ImageModerationRequest) {
     request = &ImageModerationRequest{
         BaseRequest: &tchttp.BaseRequest{},

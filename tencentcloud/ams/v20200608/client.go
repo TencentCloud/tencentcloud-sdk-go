@@ -145,6 +145,56 @@ func (c *Client) CreateBizConfig(request *CreateBizConfigRequest) (response *Cre
     return
 }
 
+func NewDescribeAmsListRequest() (request *DescribeAmsListRequest) {
+    request = &DescribeAmsListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ams", APIVersion, "DescribeAmsList")
+    return
+}
+
+func NewDescribeAmsListResponse() (response *DescribeAmsListResponse) {
+    response = &DescribeAmsListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 音频审核明细列表
+func (c *Client) DescribeAmsList(request *DescribeAmsListRequest) (response *DescribeAmsListResponse, err error) {
+    if request == nil {
+        request = NewDescribeAmsListRequest()
+    }
+    response = NewDescribeAmsListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeAudioStatRequest() (request *DescribeAudioStatRequest) {
+    request = &DescribeAudioStatRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ams", APIVersion, "DescribeAudioStat")
+    return
+}
+
+func NewDescribeAudioStatResponse() (response *DescribeAudioStatResponse) {
+    response = &DescribeAudioStatResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 控制台识别统计
+func (c *Client) DescribeAudioStat(request *DescribeAudioStatRequest) (response *DescribeAudioStatResponse, err error) {
+    if request == nil {
+        request = NewDescribeAudioStatRequest()
+    }
+    response = NewDescribeAudioStatResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeBizConfigRequest() (request *DescribeBizConfigRequest) {
     request = &DescribeBizConfigRequest{
         BaseRequest: &tchttp.BaseRequest{},

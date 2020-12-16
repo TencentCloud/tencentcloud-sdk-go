@@ -279,6 +279,26 @@ type CreateClustersRequest struct {
 
 	// 集群创建需要绑定的tag数组信息
 	ResourceTags []*Tag `json:"ResourceTags,omitempty" name:"ResourceTags" list`
+
+	// Db类型
+	// 当DbType为MYSQL时可选(默认NORMAL)：
+	// <li>NORMAL</li>
+	// <li>SERVERLESS</li>
+	DbMode *string `json:"DbMode,omitempty" name:"DbMode"`
+
+	// 当DbMode为SEVERLESS时的cpu最小值，可选范围参考DescribeServerlessInstanceSpecs接口返回
+	MinCpu *float64 `json:"MinCpu,omitempty" name:"MinCpu"`
+
+	// 当DbMode为SEVERLESS时的cpu最大值，可选范围参考DescribeServerlessInstanceSpecs接口返回
+	MaxCpu *float64 `json:"MaxCpu,omitempty" name:"MaxCpu"`
+
+	// 当DbMode为SEVERLESS时，指定集群是否自动暂停，可选范围
+	// <li>yes</li>
+	// <li>no</li>
+	AutoPause *string `json:"AutoPause,omitempty" name:"AutoPause"`
+
+	// 当DbMode为SEVERLESS时，指定集群自动暂停的延迟，可选范围[60,INF]
+	AutoPauseDelay *int64 `json:"AutoPauseDelay,omitempty" name:"AutoPauseDelay"`
 }
 
 func (r *CreateClustersRequest) ToJsonString() string {
@@ -407,6 +427,14 @@ type CynosdbCluster struct {
 
 	// 集群绑定的tag数组
 	ResourceTags []*Tag `json:"ResourceTags,omitempty" name:"ResourceTags" list`
+
+	// Db类型(NORMAL, SERVERLESS)
+	DbMode *string `json:"DbMode,omitempty" name:"DbMode"`
+
+	// 当Db类型为SERVERLESS时，serverless集群状态，可选值:
+	// resume
+	// pause
+	ServerlessStatus *string `json:"ServerlessStatus,omitempty" name:"ServerlessStatus"`
 }
 
 type CynosdbClusterDetail struct {
@@ -593,6 +621,17 @@ type CynosdbInstance struct {
 
 	// 续费标志
 	RenewFlag *int64 `json:"RenewFlag,omitempty" name:"RenewFlag"`
+
+	// serverless实例cpu下限
+	MinCpu *float64 `json:"MinCpu,omitempty" name:"MinCpu"`
+
+	// serverless实例cpu上限
+	MaxCpu *float64 `json:"MaxCpu,omitempty" name:"MaxCpu"`
+
+	// serverless实例状态, 可选值：
+	// resume
+	// pause
+	ServerlessStatus *string `json:"ServerlessStatus,omitempty" name:"ServerlessStatus"`
 }
 
 type CynosdbInstanceDetail struct {

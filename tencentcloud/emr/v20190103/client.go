@@ -118,6 +118,31 @@ func (c *Client) DescribeInstances(request *DescribeInstancesRequest) (response 
     return
 }
 
+func NewDescribeJobFlowRequest() (request *DescribeJobFlowRequest) {
+    request = &DescribeJobFlowRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("emr", APIVersion, "DescribeJobFlow")
+    return
+}
+
+func NewDescribeJobFlowResponse() (response *DescribeJobFlowResponse) {
+    response = &DescribeJobFlowResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询流程任务
+func (c *Client) DescribeJobFlow(request *DescribeJobFlowRequest) (response *DescribeJobFlowResponse, err error) {
+    if request == nil {
+        request = NewDescribeJobFlowRequest()
+    }
+    response = NewDescribeJobFlowResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewInquiryPriceCreateInstanceRequest() (request *InquiryPriceCreateInstanceRequest) {
     request = &InquiryPriceCreateInstanceRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -214,6 +239,31 @@ func (c *Client) InquiryPriceUpdateInstance(request *InquiryPriceUpdateInstanceR
         request = NewInquiryPriceUpdateInstanceRequest()
     }
     response = NewInquiryPriceUpdateInstanceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewRunJobFlowRequest() (request *RunJobFlowRequest) {
+    request = &RunJobFlowRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("emr", APIVersion, "RunJobFlow")
+    return
+}
+
+func NewRunJobFlowResponse() (response *RunJobFlowResponse) {
+    response = &RunJobFlowResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 创建流程作业
+func (c *Client) RunJobFlow(request *RunJobFlowRequest) (response *RunJobFlowResponse, err error) {
+    if request == nil {
+        request = NewRunJobFlowRequest()
+    }
+    response = NewRunJobFlowResponse()
     err = c.Send(request, response)
     return
 }

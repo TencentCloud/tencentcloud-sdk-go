@@ -158,6 +158,9 @@ type AddCdnDomainRequest struct {
 
 	// 标签配置
 	Tag []*Tag `json:"Tag,omitempty" name:"Tag" list`
+
+	// Ipv6 访问配置
+	Ipv6Access *Ipv6Access `json:"Ipv6Access,omitempty" name:"Ipv6Access"`
 }
 
 func (r *AddCdnDomainRequest) ToJsonString() string {
@@ -3053,6 +3056,10 @@ type DetailDomain struct {
 	// 回源鉴权高级配置，白名单功能
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	OriginAuthentication *OriginAuthentication `json:"OriginAuthentication,omitempty" name:"OriginAuthentication"`
+
+	// Ipv6访问配置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Ipv6Access *Ipv6Access `json:"Ipv6Access,omitempty" name:"Ipv6Access"`
 }
 
 type DiagnoseData struct {
@@ -3806,6 +3813,13 @@ type IpStatus struct {
 type Ipv6 struct {
 
 	// 域名是否开启ipv6功能，on或off。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Switch *string `json:"Switch,omitempty" name:"Switch"`
+}
+
+type Ipv6Access struct {
+
+	// 域名是否开启ipv6访问功能，on或off。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Switch *string `json:"Switch,omitempty" name:"Switch"`
 }
@@ -5832,6 +5846,9 @@ type UpdateDomainConfigRequest struct {
 
 	// 回源鉴权高级版配置，白名单功能
 	OriginAuthentication *OriginAuthentication `json:"OriginAuthentication,omitempty" name:"OriginAuthentication"`
+
+	// Ipv6 访问配置
+	Ipv6Access *Ipv6Access `json:"Ipv6Access,omitempty" name:"Ipv6Access"`
 }
 
 func (r *UpdateDomainConfigRequest) ToJsonString() string {

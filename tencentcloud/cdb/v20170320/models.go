@@ -2837,7 +2837,7 @@ type DescribeDBPriceRequest struct {
 	// 数据复制方式，默认为 0，支持值包括：0 - 表示异步复制，1 - 表示半同步复制，2 - 表示强同步复制。
 	ProtectMode *int64 `json:"ProtectMode,omitempty" name:"ProtectMode"`
 
-	// 部署策略，取值范围：HA-高可用版两节点，FE-金融版三节点；默认值根据数据复制方式决定，数据复制方式为强同步复制时默认值为FE，数据复制方式非强同步时默认值为HA。
+	// 部署策略，取值范围：HA-高可用版
 	DeviceType *string `json:"DeviceType,omitempty" name:"DeviceType"`
 }
 
@@ -4376,7 +4376,7 @@ type InquiryPriceUpgradeInstancesRequest struct {
 	// 数据复制方式，支持值包括：0 - 异步复制，1 - 半同步复制，2 - 强同步复制，升级主实例时可指定该参数，升级只读实例或者灾备实例时指定该参数无意义。
 	ProtectMode *uint64 `json:"ProtectMode,omitempty" name:"ProtectMode"`
 
-	// 部署策略，取值范围：HA-高可用版两节点，FE-金融版三节点；默认值根据数据复制方式决定，数据复制方式为强同步复制时默认值为FE，数据复制方式非强同步时默认值为HA。
+	// 部署策略，取值范围：HA-高可用版
 	DeviceType *string `json:"DeviceType,omitempty" name:"DeviceType"`
 }
 
@@ -4482,7 +4482,7 @@ type InstanceInfo struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MasterInfo *MasterInfo `json:"MasterInfo,omitempty" name:"MasterInfo"`
 
-	// 实例类型，可能的返回值：“HA”-高可用版；“FE”-金融版；“BASIC”-基础版
+	// 实例类型
 	DeviceType *string `json:"DeviceType,omitempty" name:"DeviceType"`
 
 	// 内核版本

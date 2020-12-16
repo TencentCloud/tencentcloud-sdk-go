@@ -20,6 +20,100 @@ import (
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
+type DescribeImageStatRequest struct {
+	*tchttp.BaseRequest
+
+	// 审核类型 1: 机器审核; 2: 人工审核
+	AuditType *int64 `json:"AuditType,omitempty" name:"AuditType"`
+
+	// 查询条件
+	Filters []*Filters `json:"Filters,omitempty" name:"Filters" list`
+}
+
+func (r *DescribeImageStatRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeImageStatRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeImageStatResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 识别结果统计
+		Overview *Overview `json:"Overview,omitempty" name:"Overview"`
+
+		// 识别量统计
+		TrendCount []*TrendCount `json:"TrendCount,omitempty" name:"TrendCount" list`
+
+		// 违规数据分布
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		EvilCount []*EvilCount `json:"EvilCount,omitempty" name:"EvilCount" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeImageStatResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeImageStatResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeImsListRequest struct {
+	*tchttp.BaseRequest
+
+	// 分页 页索引
+	PageIndex *int64 `json:"PageIndex,omitempty" name:"PageIndex"`
+
+	// 分页条数
+	PageSize *int64 `json:"PageSize,omitempty" name:"PageSize"`
+
+	// 过滤条件
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+}
+
+func (r *DescribeImsListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeImsListRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeImsListResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 返回列表数据
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		ImsDetailSet []*ImsDetail `json:"ImsDetailSet,omitempty" name:"ImsDetailSet" list`
+
+		// 总条数
+		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeImsListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeImsListResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type Device struct {
 
 	// 发表消息设备IP
@@ -45,6 +139,44 @@ type Device struct {
 
 	// IP地址类型 0 代表ipv4 1 代表ipv6
 	IpType *uint64 `json:"IpType,omitempty" name:"IpType"`
+}
+
+type EvilCount struct {
+
+	// 违规类型：
+	// Terror	24001
+	// Porn	20002
+	// Polity	20001
+	// Ad	20105
+	// Abuse	20007	
+	// Illegal	20006	
+	// Spam	25001	
+	// Moan	26001
+	EvilType *string `json:"EvilType,omitempty" name:"EvilType"`
+
+	// 分布类型总量
+	Count *int64 `json:"Count,omitempty" name:"Count"`
+}
+
+type Filter struct {
+
+	// 过滤键的名称。
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 一个或者多个过滤值。
+	Values []*string `json:"Values,omitempty" name:"Values" list`
+}
+
+type Filters struct {
+
+	// 查询字段：
+	// 策略BizType
+	// 子账号SubUin
+	// 日期区间DateRange
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 查询值
+	Values []*string `json:"Values,omitempty" name:"Values" list`
 }
 
 type ImageModerationRequest struct {
@@ -146,6 +278,33 @@ func (r *ImageModerationResponse) ToJsonString() string {
 
 func (r *ImageModerationResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
+}
+
+type ImsDetail struct {
+
+	// 文本内容
+	Content *string `json:"Content,omitempty" name:"Content"`
+
+	// 数据方式， 0：我审，1：人审
+	DataSource *int64 `json:"DataSource,omitempty" name:"DataSource"`
+
+	// 最后更新时间
+	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
+
+	// 机器审核结果code 100 正常, 20001 政治 20002 色情 20006 涉毒违法 20007 谩骂 24001 暴恐 21000 综合 20105 广告引流 20103 性感
+	EvilType *int64 `json:"EvilType,omitempty" name:"EvilType"`
+
+	// 机器审核时间
+	ModerationTime *string `json:"ModerationTime,omitempty" name:"ModerationTime"`
+
+	// 最后更新人
+	UpdateUser *string `json:"UpdateUser,omitempty" name:"UpdateUser"`
+
+	// 内容RequestId
+	ContentId *string `json:"ContentId,omitempty" name:"ContentId"`
+
+	// 自主审核结果
+	OperEvilType *int64 `json:"OperEvilType,omitempty" name:"OperEvilType"`
 }
 
 type LabelDetailItem struct {
@@ -343,6 +502,72 @@ type OcrTextDetail struct {
 
 	// OCR位置
 	Location *Location `json:"Location,omitempty" name:"Location"`
+}
+
+type Overview struct {
+
+	// 总调用量
+	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 总调用时长
+	TotalHour *int64 `json:"TotalHour,omitempty" name:"TotalHour"`
+
+	// 通过量
+	PassCount *int64 `json:"PassCount,omitempty" name:"PassCount"`
+
+	// 通过时长
+	PassHour *int64 `json:"PassHour,omitempty" name:"PassHour"`
+
+	// 违规量
+	EvilCount *int64 `json:"EvilCount,omitempty" name:"EvilCount"`
+
+	// 违规时长
+	EvilHour *int64 `json:"EvilHour,omitempty" name:"EvilHour"`
+
+	// 疑似违规量
+	SuspectCount *int64 `json:"SuspectCount,omitempty" name:"SuspectCount"`
+
+	// 疑似违规时长
+	SuspectHour *int64 `json:"SuspectHour,omitempty" name:"SuspectHour"`
+}
+
+type TrendCount struct {
+
+	// 总调用量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 总调用时长
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalHour *int64 `json:"TotalHour,omitempty" name:"TotalHour"`
+
+	// 通过量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PassCount *int64 `json:"PassCount,omitempty" name:"PassCount"`
+
+	// 通过时长
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PassHour *int64 `json:"PassHour,omitempty" name:"PassHour"`
+
+	// 违规量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EvilCount *int64 `json:"EvilCount,omitempty" name:"EvilCount"`
+
+	// 违规时长
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EvilHour *int64 `json:"EvilHour,omitempty" name:"EvilHour"`
+
+	// 疑似违规量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SuspectCount *int64 `json:"SuspectCount,omitempty" name:"SuspectCount"`
+
+	// 疑似违规时长
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SuspectHour *int64 `json:"SuspectHour,omitempty" name:"SuspectHour"`
+
+	// 日期
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Date *string `json:"Date,omitempty" name:"Date"`
 }
 
 type User struct {

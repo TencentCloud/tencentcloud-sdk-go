@@ -86,6 +86,10 @@ type AddressInfo struct {
 	// 实例的内网ip相关信息。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PrivateIPAddressInfo *PrivateIPAddressInfo `json:"PrivateIPAddressInfo,omitempty" name:"PrivateIPAddressInfo"`
+
+	// 实例的外网ipv6相关信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PublicIPv6AddressInfo *PublicIPAddressInfo `json:"PublicIPv6AddressInfo,omitempty" name:"PublicIPv6AddressInfo"`
 }
 
 type AddressTemplateSpecification struct {
@@ -3719,7 +3723,7 @@ type ImportCustomImageRequest struct {
 	// 镜像启动方式，cloudinit或nbd， 默认cloudinit
 	InitFlag *string `json:"InitFlag,omitempty" name:"InitFlag"`
 
-	// 镜像描述，多层镜像按顺序传入
+	// 镜像文件描述，多层镜像按顺序传入
 	ImageUrls []*ImageUrl `json:"ImageUrls,omitempty" name:"ImageUrls" list`
 }
 
@@ -6774,6 +6778,9 @@ type ZoneInstanceCountISP struct {
 
 	// 指定主网卡内网IP。条件：SubnetId与VpcId必须同时指定，并且IP数量与InstanceCount相同，多IP主机副网卡内网IP在相同子网内通过DHCP获取。
 	PrivateIpAddresses []*string `json:"PrivateIpAddresses,omitempty" name:"PrivateIpAddresses" list`
+
+	// 为弹性网卡指定随机生成的IPv6地址数量，目前数量不能大于1。
+	Ipv6AddressCount *int64 `json:"Ipv6AddressCount,omitempty" name:"Ipv6AddressCount"`
 }
 
 type ZoneInstanceInfo struct {

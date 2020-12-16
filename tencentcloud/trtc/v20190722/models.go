@@ -536,7 +536,7 @@ type DescribeRoomInformationRequest struct {
 	// 查询结束时间，本地unix时间戳（1588031999s）
 	EndTime *uint64 `json:"EndTime,omitempty" name:"EndTime"`
 
-	// 数字房间号
+	// 字符串房间号
 	RoomId *string `json:"RoomId,omitempty" name:"RoomId"`
 
 	// 分页index，从0开始（PageNumber和PageSize 其中一个不填均默认返回10条数据）

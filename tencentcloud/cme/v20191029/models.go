@@ -108,16 +108,20 @@ type AudioStreamInfo struct {
 
 type AudioTrackItem struct {
 
-	// 音频素材来源类型。取值有：
+	// 音频素材来源类型，取值有：
 	// <ul>
-	// <li>VOD ：素材来源 VOD 。</li>
-	// <li>CME ：视频来源 CME 。</li>
+	// <li>VOD ：素材来源于云点播文件 ；</li>
+	// <li>CME ：视频来源于制作云媒体文件 ；</li>
+	// <li>EXTERNAL ：视频来源于媒资绑定。</li>
 	// </ul>
 	SourceType *string `json:"SourceType,omitempty" name:"SourceType"`
 
 	// 音频片段的媒体素材来源，可以是：
-	// <li>VOD 的媒体文件 ID 。</li>
-	// <li>CME 的素材 ID 。</li>
+	// <ul>
+	// <li>当 SourceType 为 VOD 时，为云点播的媒体文件 ID ；</li>
+	// <li>当 SourceType 为 CME 时，为制作云的媒体 ID；</li>
+	// <li>当 SourceType 为 EXTERNAL 时，为媒资绑定的 Definition 与 MediaKey 中间用冒号分隔合并后的字符串，格式为 Definition:MediaKey 。</li>
+	// </ul>
 	SourceMedia *string `json:"SourceMedia,omitempty" name:"SourceMedia"`
 
 	// 音频片段取自素材文件的起始时间，单位为秒。0 表示从素材开始位置截取。默认为0。
@@ -295,6 +299,7 @@ type CreateProjectRequest struct {
 	// 项目类别，取值有：
 	// <li>VIDEO_EDIT：视频编辑。</li>
 	// <li>SWITCHER：导播台。</li>
+	// <li>VIDEO_SEGMENTATION：视频拆条。</li>
 	Category *string `json:"Category,omitempty" name:"Category"`
 
 	// 项目名称，不可超过30个字符。
@@ -319,6 +324,9 @@ type CreateProjectRequest struct {
 
 	// 视频编辑信息，仅当项目类型为 VIDEO_EDIT 时必填。
 	VideoEditProjectInput *VideoEditProjectInput `json:"VideoEditProjectInput,omitempty" name:"VideoEditProjectInput"`
+
+	// 视频拆条信息，仅当项目类型为 VIDEO_SEGMENTATION  时必填。
+	VideoSegmentationProjectInput *VideoSegmentationProjectInput `json:"VideoSegmentationProjectInput,omitempty" name:"VideoSegmentationProjectInput"`
 }
 
 func (r *CreateProjectRequest) ToJsonString() string {
@@ -1276,6 +1284,72 @@ func (r *ExportVideoByEditorTrackDataResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type ExportVideoByVideoSegmentationDataRequest struct {
+	*tchttp.BaseRequest
+
+	// 平台名称，指定访问的平台。
+	Platform *string `json:"Platform,omitempty" name:"Platform"`
+
+	// 视频拆条项目 Id 。
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 指定需要导出的智能拆条片段的组 Id 。
+	SegmentGroupId *string `json:"SegmentGroupId,omitempty" name:"SegmentGroupId"`
+
+	// 指定需要导出的智能拆条片段 Id  集合。
+	SegmentIds []*string `json:"SegmentIds,omitempty" name:"SegmentIds" list`
+
+	// 导出模板 Id，目前不支持自定义创建，只支持下面的预置模板 Id。
+	// <li>10：分辨率为 480P，输出视频格式为 MP4；</li>
+	// <li>11：分辨率为 720P，输出视频格式为 MP4；</li>
+	// <li>12：分辨率为 1080P，输出视频格式为 MP4。</li>
+	Definition *uint64 `json:"Definition,omitempty" name:"Definition"`
+
+	// 导出目标。
+	// <li>CME：云剪，即导出为云剪素材；</li>
+	// <li>VOD：云点播，即导出为云点播媒资。</li>
+	ExportDestination *string `json:"ExportDestination,omitempty" name:"ExportDestination"`
+
+	// 导出的云剪素材信息。指定 ExportDestination = CME 时有效。
+	CMEExportInfo *CMEExportInfo `json:"CMEExportInfo,omitempty" name:"CMEExportInfo"`
+
+	// 导出的云点播媒资信息。指定 ExportDestination = VOD 时有效。
+	VODExportInfo *VODExportInfo `json:"VODExportInfo,omitempty" name:"VODExportInfo"`
+
+	// 操作者。填写用户的 Id，用于标识调用者及校验操作权限。
+	Operator *string `json:"Operator,omitempty" name:"Operator"`
+}
+
+func (r *ExportVideoByVideoSegmentationDataRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ExportVideoByVideoSegmentationDataRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ExportVideoByVideoSegmentationDataResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 任务 Id。
+		TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ExportVideoByVideoSegmentationDataResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ExportVideoByVideoSegmentationDataResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type ExportVideoEditProjectRequest struct {
 	*tchttp.BaseRequest
 
@@ -1385,6 +1459,49 @@ func (r *FlattenListMediaResponse) ToJsonString() string {
 }
 
 func (r *FlattenListMediaResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type GenerateVideoSegmentationSchemeByAiRequest struct {
+	*tchttp.BaseRequest
+
+	// 平台名称，指定访问的平台。
+	Platform *string `json:"Platform,omitempty" name:"Platform"`
+
+	// 视频拆条项目 Id 。
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 操作者。填写用户的 Id，用于标识调用者及校验操作权限。
+	Operator *string `json:"Operator,omitempty" name:"Operator"`
+}
+
+func (r *GenerateVideoSegmentationSchemeByAiRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *GenerateVideoSegmentationSchemeByAiRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type GenerateVideoSegmentationSchemeByAiResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 视频智能拆条任务 Id 。
+		TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *GenerateVideoSegmentationSchemeByAiResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *GenerateVideoSegmentationSchemeByAiResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -2500,6 +2617,18 @@ type VideoMaterial struct {
 	VodFileId *string `json:"VodFileId,omitempty" name:"VodFileId"`
 }
 
+type VideoSegmentationProjectInput struct {
+
+	// 视频拆条处理模型，不填则默认为手工分割视频。取值 ：
+	// <li>AI.GameHighlights.PUBG：和平精英集锦 ;</li>
+	// <li>AI.GameHighlights.Honor OfKings：王者荣耀集锦 ;</li>
+	// <li>AI.SportHighlights.Football：足球集锦 </li>
+	// <li>AI.SportHighlights.Basketball：篮球集锦 ；</li>
+	// <li>AI.PersonSegmentation：人物集锦  ;</li>
+	// <li>AI.NewsSegmentation：新闻拆条。</li>
+	ProcessModel *string `json:"ProcessModel,omitempty" name:"ProcessModel"`
+}
+
 type VideoStreamInfo struct {
 
 	// 码率，单位：bps。
@@ -2520,16 +2649,20 @@ type VideoStreamInfo struct {
 
 type VideoTrackItem struct {
 
-	// 视频素材来源类型。取值有：
+	// 视频素材来源类型，取值有：
 	// <ul>
-	// <li>VOD ：素材来源 VOD 。</li>
-	// <li>CME ：视频来源 CME 。</li>
+	// <li>VOD ：素材来源于云点播文件 。</li>
+	// <li>CME ：视频来源制作云媒体文件。</li>
+	// <li>EXTERNAL ：视频来源于媒资绑定。</li>
 	// </ul>
 	SourceType *string `json:"SourceType,omitempty" name:"SourceType"`
 
-	// 视频片段的媒体素材来源，可以是：
-	// <li>VOD 的媒体文件 ID 。</li>
-	// <li>CME 的素材 ID 。</li>
+	// 视频片段的媒体素材来源，取值为：
+	// <ul>
+	// <li>当 SourceType 为 VOD 时，为云点播的媒体文件 ID；</li>
+	// <li>当 SourceType 为 CME 时，为制作云的媒体 ID；</li>
+	// <li>当 SourceType 为 EXTERNAL 时，为媒资绑定的 Definition 与 MediaKey 中间用冒号分隔合并后的字符串，格式为 Definition:MediaKey 。</li>
+	// </ul>
 	SourceMedia *string `json:"SourceMedia,omitempty" name:"SourceMedia"`
 
 	// 视频片段取自素材文件的起始时间，单位为秒。默认为0。
@@ -2556,18 +2689,18 @@ type VideoTrackItem struct {
 	CoordinateOrigin *string `json:"CoordinateOrigin,omitempty" name:"CoordinateOrigin"`
 
 	// 视频片段的高度。支持 %、px 两种格式：
-	// <li>当字符串以 % 结尾，表示视频片段 Height 为画布高度的百分比大小，如 10% 表示 Height 为画布高度的 10%；
-	// </li><li>当字符串以 px 结尾，表示视频片段 Height 单位为像素，如 100px 表示 Height 为100像素。</li>
-	// <li>当 Width、Height 均为空，则 Width 和 Height 取视频素材本身的 Width、Height。</li>
-	// <li>当 Width 为空，Height 非空，则 Width 按比例缩放</li>
+	// <li>当字符串以 % 结尾，表示视频片段 Height 为画布高度的百分比大小，如 10% 表示 Height 为画布高度的 10%；</li>
+	// <li>当字符串以 px 结尾，表示视频片段 Height 单位为像素，如 100px 表示 Height 为100像素；</li>
+	// <li>当 Width、Height 均为空，则 Width 和 Height 取视频素材本身的 Width、Height；</li>
+	// <li>当 Width 为空，Height 非空，则 Width 按比例缩放；</li>
 	// <li>当 Width 非空，Height 为空，则 Height 按比例缩放。</li>
 	Height *string `json:"Height,omitempty" name:"Height"`
 
 	// 视频片段的宽度。支持 %、px 两种格式：
-	// <li>当字符串以 % 结尾，表示视频片段 Width 为画布宽度的百分比大小，如 10% 表示 Width 为画布宽度的 10%。</li>
-	// <li>当字符串以 px 结尾，表示视频片段 Width 单位为像素，如 100px 表示 Width 为100像素。</li>
-	// <li>当 Width、Height 均为空，则 Width 和 Height 取视频素材本身的 Width、Height。</li>
-	// <li>当 Width 为空，Height 非空，则 Width 按比例缩放</li>
+	// <li>当字符串以 % 结尾，表示视频片段 Width 为画布宽度的百分比大小，如 10% 表示 Width 为画布宽度的 10%；</li>
+	// <li>当字符串以 px 结尾，表示视频片段 Width 单位为像素，如 100px 表示 Width 为100像素；</li>
+	// <li>当 Width、Height 均为空，则 Width 和 Height 取视频素材本身的 Width、Height；</li>
+	// <li>当 Width 为空，Height 非空，则 Width 按比例缩放；</li>
 	// <li>当 Width 非空，Height 为空，则 Height 按比例缩放。</li>
 	Width *string `json:"Width,omitempty" name:"Width"`
 }

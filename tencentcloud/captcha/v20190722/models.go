@@ -604,7 +604,7 @@ type DescribeCaptchaMiniRiskResultRequest struct {
 	// 手机设备号
 	Imei *string `json:"Imei,omitempty" name:"Imei"`
 
-	// 验证场景：1 活动防刷场景，2 登陆保护场景，3 注册保护场景。根据需求选择场景参数。
+	// 验证场景：1 活动防刷场景，2 登录保护场景，3 注册保护场景。根据需求选择场景参数。
 	SceneCode *int64 `json:"SceneCode,omitempty" name:"SceneCode"`
 
 	// 用户操作来源的微信开放账号

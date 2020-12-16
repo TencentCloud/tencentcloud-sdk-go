@@ -177,6 +177,86 @@ type CcnInstanceSets struct {
 	State *string `json:"State,omitempty" name:"State"`
 }
 
+type CopyFleetRequest struct {
+	*tchttp.BaseRequest
+
+	// 服务器舰队 Id
+	FleetId *string `json:"FleetId,omitempty" name:"FleetId"`
+
+	// 复制数量，最小值1，最大值为剩余配额，可以根据[获取用户配额](https://cloud.tencent.com/document/product/1165/48732)接口获取。
+	CopyNumber *int64 `json:"CopyNumber,omitempty" name:"CopyNumber"`
+
+	// 生成包 Id
+	AssetId *string `json:"AssetId,omitempty" name:"AssetId"`
+
+	// 描述，最小长度0，最大长度100
+	Description *string `json:"Description,omitempty" name:"Description"`
+
+	// 网络配置
+	InboundPermissions []*InboundPermission `json:"InboundPermissions,omitempty" name:"InboundPermissions" list`
+
+	// 服务器类型，参数根据[获取服务器实例类型列表](https://cloud.tencent.com/document/product/1165/48732)接口获取。
+	InstanceType *string `json:"InstanceType,omitempty" name:"InstanceType"`
+
+	// 服务器舰队类型，目前只支持ON_DEMAND类型
+	FleetType *string `json:"FleetType,omitempty" name:"FleetType"`
+
+	// 服务器舰队名称，最小长度1，最大长度50
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 保护策略：不保护NoProtection、完全保护FullProtection、时限保护TimeLimitProtection
+	NewGameServerSessionProtectionPolicy *string `json:"NewGameServerSessionProtectionPolicy,omitempty" name:"NewGameServerSessionProtectionPolicy"`
+
+	// 资源创建限制策略
+	ResourceCreationLimitPolicy *ResourceCreationLimitPolicy `json:"ResourceCreationLimitPolicy,omitempty" name:"ResourceCreationLimitPolicy"`
+
+	// 进程配置
+	RuntimeConfiguration *RuntimeConfiguration `json:"RuntimeConfiguration,omitempty" name:"RuntimeConfiguration"`
+
+	// 时限保护超时时间，默认60分钟，最小值5，最大值1440；当NewGameSessionProtectionPolicy为TimeLimitProtection时参数有效
+	GameServerSessionProtectionTimeLimit *int64 `json:"GameServerSessionProtectionTimeLimit,omitempty" name:"GameServerSessionProtectionTimeLimit"`
+
+	// 是否选择扩缩容：SCALING_SELECTED 或者 SCALING_UNSELECTED；默认是 SCALING_UNSELECTED
+	SelectedScalingType *string `json:"SelectedScalingType,omitempty" name:"SelectedScalingType"`
+
+	// 是否选择云联网：CCN_SELECTED 或者 CCN_UNSELECTED；默认是 CCN_UNSELECTED
+	SelectedCcnType *string `json:"SelectedCcnType,omitempty" name:"SelectedCcnType"`
+}
+
+func (r *CopyFleetRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CopyFleetRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CopyFleetResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 服务器舰队属性
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		FleetAttributes []*FleetAttributes `json:"FleetAttributes,omitempty" name:"FleetAttributes" list`
+
+		// 服务器舰队数量
+		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CopyFleetResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CopyFleetResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type CreateAliasRequest struct {
 	*tchttp.BaseRequest
 
