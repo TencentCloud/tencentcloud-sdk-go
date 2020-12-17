@@ -314,7 +314,7 @@ func NewCreateStorageResponse() (response *CreateStorageResponse) {
     return
 }
 
-// 本接口（CreateStorage）用于购买云存套餐。
+// 该接口已经停止维护，请勿使用
 func (c *Client) CreateStorage(request *CreateStorageRequest) (response *CreateStorageResponse, err error) {
     if request == nil {
         request = NewCreateStorageRequest()

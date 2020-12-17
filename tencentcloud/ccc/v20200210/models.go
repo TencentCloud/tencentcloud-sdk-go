@@ -216,6 +216,52 @@ func (r *DescribeIMCdrsResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribePSTNActiveSessionListRequest struct {
+	*tchttp.BaseRequest
+
+	// 应用 ID
+	SdkAppId *int64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+
+	// 数据偏移
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 返回的数据条数，最大 25
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+func (r *DescribePSTNActiveSessionListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribePSTNActiveSessionListRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribePSTNActiveSessionListResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 列表总条数
+		Total *int64 `json:"Total,omitempty" name:"Total"`
+
+		// 列表内容
+		Sessions []*PSTNSessionInfo `json:"Sessions,omitempty" name:"Sessions" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribePSTNActiveSessionListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribePSTNActiveSessionListResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeTelCallInfoRequest struct {
 	*tchttp.BaseRequest
 
@@ -363,6 +409,42 @@ type MessageBody struct {
 
 	// 消息列表
 	Messages []*Message `json:"Messages,omitempty" name:"Messages" list`
+}
+
+type PSTNSessionInfo struct {
+
+	// 会话 ID
+	SessionID *string `json:"SessionID,omitempty" name:"SessionID"`
+
+	// 会话临时房间 ID
+	RoomID *string `json:"RoomID,omitempty" name:"RoomID"`
+
+	// 主叫
+	Caller *string `json:"Caller,omitempty" name:"Caller"`
+
+	// 被叫
+	Callee *string `json:"Callee,omitempty" name:"Callee"`
+
+	// 开始时间，Unix 时间戳
+	StartTimestamp *string `json:"StartTimestamp,omitempty" name:"StartTimestamp"`
+
+	// 接听时间，Unix 时间戳
+	AcceptTimestamp *string `json:"AcceptTimestamp,omitempty" name:"AcceptTimestamp"`
+
+	// 坐席邮箱
+	StaffEmail *string `json:"StaffEmail,omitempty" name:"StaffEmail"`
+
+	// 坐席工号
+	StaffNumber *string `json:"StaffNumber,omitempty" name:"StaffNumber"`
+
+	// 坐席状态 inProgress 进行中
+	SessionStatus *string `json:"SessionStatus,omitempty" name:"SessionStatus"`
+
+	// 会话呼叫方向， 0 呼入 | 1 - 呼出
+	Direction *int64 `json:"Direction,omitempty" name:"Direction"`
+
+	// 振铃时间，Unix 时间戳
+	RingTimestamp *int64 `json:"RingTimestamp,omitempty" name:"RingTimestamp"`
 }
 
 type SeatUserInfo struct {

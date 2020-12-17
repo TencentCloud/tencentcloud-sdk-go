@@ -424,6 +424,33 @@ func (c *Client) DescribeMaterials(request *DescribeMaterialsRequest) (response 
     return
 }
 
+func NewDescribePlatformsRequest() (request *DescribePlatformsRequest) {
+    request = &DescribePlatformsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cme", APIVersion, "DescribePlatforms")
+    return
+}
+
+func NewDescribePlatformsResponse() (response *DescribePlatformsResponse) {
+    response = &DescribePlatformsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// <li>支持获取所创建的所有平台列表信息；</li>
+// <li>支持获取指定的平台列表信息。</li>
+// 
+func (c *Client) DescribePlatforms(request *DescribePlatformsRequest) (response *DescribePlatformsResponse, err error) {
+    if request == nil {
+        request = NewDescribePlatformsRequest()
+    }
+    response = NewDescribePlatformsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeProjectsRequest() (request *DescribeProjectsRequest) {
     request = &DescribeProjectsRequest{
         BaseRequest: &tchttp.BaseRequest{},

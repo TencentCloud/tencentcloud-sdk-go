@@ -906,16 +906,16 @@ type RuleInfoData struct {
 	// 策略
 	Strategy *string `json:"Strategy,omitempty" name:"Strategy"`
 
-	// 描述
-	Detail *string `json:"Detail,omitempty" name:"Detail"`
+	// 访问源类型，1是IP，3是域名，4是IP地址模版，5是域名地址模版
+	SourceType *uint64 `json:"SourceType,omitempty" name:"SourceType"`
 
 	// 方向，0：出站，1：入站
 	Direction *uint64 `json:"Direction,omitempty" name:"Direction"`
 
-	// 源类型,1是ip,2是域名,3是ip地址簿，4是ip组地址簿
-	SourceType *uint64 `json:"SourceType,omitempty" name:"SourceType"`
+	// 描述
+	Detail *string `json:"Detail,omitempty" name:"Detail"`
 
-	// 目的类型,1是ip,2是域名,3是ip地址簿，4是ip组地址簿
+	// 访问目的类型，1是IP，3是域名，4是IP地址模版，5是域名地址模版
 	TargetType *uint64 `json:"TargetType,omitempty" name:"TargetType"`
 
 	// 端口
@@ -924,7 +924,7 @@ type RuleInfoData struct {
 	// id值
 	Id *uint64 `json:"Id,omitempty" name:"Id"`
 
-	// log
+	// 日志id，从告警处创建必传，其它为空
 	LogId *string `json:"LogId,omitempty" name:"LogId"`
 
 	// 城市Code
@@ -933,16 +933,16 @@ type RuleInfoData struct {
 	// 国家Code
 	Country *uint64 `json:"Country,omitempty" name:"Country"`
 
-	// 云厂商，支持多个，以逗号分隔， 1:腾讯云（仅海外）,2:阿里云,3:亚马逊云,4:华为云,5:微软云
+	// 云厂商，支持多个，以逗号分隔， 1:腾讯云（仅中国香港及海外）,2:阿里云,3:亚马逊云,4:华为云,5:微软云
 	CloudCode *string `json:"CloudCode,omitempty" name:"CloudCode"`
 
 	// 是否为地域
 	IsRegion *uint64 `json:"IsRegion,omitempty" name:"IsRegion"`
 
-	// 地域名
+	// 城市名
 	CityName *string `json:"CityName,omitempty" name:"CityName"`
 
-	// 地域名
+	// 国家名
 	CountryName *string `json:"CountryName,omitempty" name:"CountryName"`
 }
 

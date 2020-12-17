@@ -784,6 +784,43 @@ type DatabasesInfo struct {
 	Region *string `json:"Region,omitempty" name:"Region"`
 }
 
+type DeleteCloudBaseProjectLatestVersionRequest struct {
+	*tchttp.BaseRequest
+
+	// 环境id
+	EnvId *string `json:"EnvId,omitempty" name:"EnvId"`
+
+	// 项目名
+	ProjectName *string `json:"ProjectName,omitempty" name:"ProjectName"`
+}
+
+func (r *DeleteCloudBaseProjectLatestVersionRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteCloudBaseProjectLatestVersionRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteCloudBaseProjectLatestVersionResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DeleteCloudBaseProjectLatestVersionResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteCloudBaseProjectLatestVersionResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DeleteEndUserRequest struct {
 	*tchttp.BaseRequest
 

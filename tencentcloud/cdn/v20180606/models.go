@@ -5271,6 +5271,10 @@ type ScdnTopUrlData struct {
 
 	// 时间
 	Time *string `json:"Time,omitempty" name:"Time"`
+
+	// 域名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Domain *string `json:"Domain,omitempty" name:"Domain"`
 }
 
 type ScdnTypeData struct {

@@ -828,6 +828,55 @@ func (r *DescribeMaterialsResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribePlatformsRequest struct {
+	*tchttp.BaseRequest
+
+	// 平台集合。
+	Platforms []*string `json:"Platforms,omitempty" name:"Platforms" list`
+
+	// 平台绑定的 license Id 集合。
+	LicenseIds []*string `json:"LicenseIds,omitempty" name:"LicenseIds" list`
+
+	// 分页返回的起始偏移量，默认值：0。
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 分页返回的记录条数，默认值：10。
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+func (r *DescribePlatformsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribePlatformsRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribePlatformsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 符合搜索条件的记录总数。
+		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 平台信息列表。
+		PlatformInfoSet []*PlatformInfo `json:"PlatformInfoSet,omitempty" name:"PlatformInfoSet" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribePlatformsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribePlatformsResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeProjectsRequest struct {
 	*tchttp.BaseRequest
 
@@ -2247,6 +2296,27 @@ type PenguinMediaPlatformPublishInfo struct {
 
 	// 视频分类，详见企鹅号官网视频分类。
 	Category *int64 `json:"Category,omitempty" name:"Category"`
+}
+
+type PlatformInfo struct {
+
+	// 平台名称。
+	Platform *string `json:"Platform,omitempty" name:"Platform"`
+
+	// 平台描述。
+	Description *string `json:"Description,omitempty" name:"Description"`
+
+	// 云点播子应用 Id。
+	VodSubAppId *uint64 `json:"VodSubAppId,omitempty" name:"VodSubAppId"`
+
+	// 平台绑定的 license Id。
+	LicenseId *string `json:"LicenseId,omitempty" name:"LicenseId"`
+
+	// 创建时间，格式按照 ISO 8601 标准表示。
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 更新时间，格式按照 ISO 8601 标准表示。
+	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
 }
 
 type ProjectInfo struct {

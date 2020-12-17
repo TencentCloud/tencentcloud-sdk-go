@@ -2668,6 +2668,31 @@ func (c *Client) SimpleHlsClip(request *SimpleHlsClipRequest) (response *SimpleH
     return
 }
 
+func NewSplitMediaRequest() (request *SplitMediaRequest) {
+    request = &SplitMediaRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vod", APIVersion, "SplitMedia")
+    return
+}
+
+func NewSplitMediaResponse() (response *SplitMediaResponse) {
+    response = &SplitMediaResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 对点播视频进行拆条，生成多个新的点播视频。
+func (c *Client) SplitMedia(request *SplitMediaRequest) (response *SplitMediaResponse, err error) {
+    if request == nil {
+        request = NewSplitMediaRequest()
+    }
+    response = NewSplitMediaResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewWeChatMiniProgramPublishRequest() (request *WeChatMiniProgramPublishRequest) {
     request = &WeChatMiniProgramPublishRequest{
         BaseRequest: &tchttp.BaseRequest{},

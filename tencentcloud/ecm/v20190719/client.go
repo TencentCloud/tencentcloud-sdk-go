@@ -68,6 +68,31 @@ func (c *Client) AllocateAddresses(request *AllocateAddressesRequest) (response 
     return
 }
 
+func NewAssignIpv6AddressesRequest() (request *AssignIpv6AddressesRequest) {
+    request = &AssignIpv6AddressesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ecm", APIVersion, "AssignIpv6Addresses")
+    return
+}
+
+func NewAssignIpv6AddressesResponse() (response *AssignIpv6AddressesResponse) {
+    response = &AssignIpv6AddressesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（AssignIpv6Addresses）用于弹性网卡申请IPv6地址。
+func (c *Client) AssignIpv6Addresses(request *AssignIpv6AddressesRequest) (response *AssignIpv6AddressesResponse, err error) {
+    if request == nil {
+        request = NewAssignIpv6AddressesRequest()
+    }
+    response = NewAssignIpv6AddressesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewAssignPrivateIpAddressesRequest() (request *AssignPrivateIpAddressesRequest) {
     request = &AssignPrivateIpAddressesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2117,6 +2142,31 @@ func (c *Client) ModifyInstancesAttribute(request *ModifyInstancesAttributeReque
     return
 }
 
+func NewModifyIpv6AddressesAttributeRequest() (request *ModifyIpv6AddressesAttributeRequest) {
+    request = &ModifyIpv6AddressesAttributeRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ecm", APIVersion, "ModifyIpv6AddressesAttribute")
+    return
+}
+
+func NewModifyIpv6AddressesAttributeResponse() (response *ModifyIpv6AddressesAttributeResponse) {
+    response = &ModifyIpv6AddressesAttributeResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（ModifyIpv6AddressesAttribute）用于修改弹性网卡IPv6地址属性。
+func (c *Client) ModifyIpv6AddressesAttribute(request *ModifyIpv6AddressesAttributeRequest) (response *ModifyIpv6AddressesAttributeResponse, err error) {
+    if request == nil {
+        request = NewModifyIpv6AddressesAttributeRequest()
+    }
+    response = NewModifyIpv6AddressesAttributeResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyListenerRequest() (request *ModifyListenerRequest) {
     request = &ModifyListenerRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2540,6 +2590,31 @@ func (c *Client) ReleaseAddresses(request *ReleaseAddressesRequest) (response *R
         request = NewReleaseAddressesRequest()
     }
     response = NewReleaseAddressesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewReleaseIpv6AddressesRequest() (request *ReleaseIpv6AddressesRequest) {
+    request = &ReleaseIpv6AddressesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ecm", APIVersion, "ReleaseIpv6Addresses")
+    return
+}
+
+func NewReleaseIpv6AddressesResponse() (response *ReleaseIpv6AddressesResponse) {
+    response = &ReleaseIpv6AddressesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（UnassignIpv6Addresses）用于释放弹性网卡IPv6地址。
+func (c *Client) ReleaseIpv6Addresses(request *ReleaseIpv6AddressesRequest) (response *ReleaseIpv6AddressesResponse, err error) {
+    if request == nil {
+        request = NewReleaseIpv6AddressesRequest()
+    }
+    response = NewReleaseIpv6AddressesResponse()
     err = c.Send(request, response)
     return
 }

@@ -294,6 +294,11 @@ type CreateDomainBatchRequest struct {
 
 	// 付费模式 0手动在线付费，1使用余额付费
 	PayMode *int64 `json:"PayMode,omitempty" name:"PayMode"`
+
+	// 自动续费开关。有两个可选值：
+	// 0 表示关闭，不自动续费（默认值）
+	// 1 表示开启，将自动续费
+	AutoRenewFlag *int64 `json:"AutoRenewFlag,omitempty" name:"AutoRenewFlag"`
 }
 
 func (r *CreateDomainBatchRequest) ToJsonString() string {
@@ -978,6 +983,12 @@ type RenewDomainBatchRequest struct {
 
 	// 付费模式 0手动在线付费，1使用余额付费。
 	PayMode *int64 `json:"PayMode,omitempty" name:"PayMode"`
+
+	// 自动续费开关。有三个可选值：
+	// 0 表示关闭，不自动续费
+	// 1 表示开启，将自动续费
+	// 2 表示不处理，保留域名原有状态（默认值）
+	AutoRenewFlag *int64 `json:"AutoRenewFlag,omitempty" name:"AutoRenewFlag"`
 }
 
 func (r *RenewDomainBatchRequest) ToJsonString() string {
@@ -1100,6 +1111,11 @@ type TransferInDomainBatchRequest struct {
 
 	// 付费模式 0手动在线付费，1使用余额付费。
 	PayMode *int64 `json:"PayMode,omitempty" name:"PayMode"`
+
+	// 自动续费开关。有两个可选值：
+	// 0 表示关闭，不自动续费（默认值）
+	// 1 表示开启，将自动续费
+	AutoRenewFlag *int64 `json:"AutoRenewFlag,omitempty" name:"AutoRenewFlag"`
 }
 
 func (r *TransferInDomainBatchRequest) ToJsonString() string {

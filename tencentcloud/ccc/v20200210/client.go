@@ -143,6 +143,31 @@ func (c *Client) DescribeIMCdrs(request *DescribeIMCdrsRequest) (response *Descr
     return
 }
 
+func NewDescribePSTNActiveSessionListRequest() (request *DescribePSTNActiveSessionListRequest) {
+    request = &DescribePSTNActiveSessionListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ccc", APIVersion, "DescribePSTNActiveSessionList")
+    return
+}
+
+func NewDescribePSTNActiveSessionListResponse() (response *DescribePSTNActiveSessionListResponse) {
+    response = &DescribePSTNActiveSessionListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 获取 PSTN 活动会话列表。
+func (c *Client) DescribePSTNActiveSessionList(request *DescribePSTNActiveSessionListRequest) (response *DescribePSTNActiveSessionListResponse, err error) {
+    if request == nil {
+        request = NewDescribePSTNActiveSessionListRequest()
+    }
+    response = NewDescribePSTNActiveSessionListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeTelCallInfoRequest() (request *DescribeTelCallInfoRequest) {
     request = &DescribeTelCallInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},

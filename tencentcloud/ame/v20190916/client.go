@@ -233,7 +233,7 @@ func NewReportDataResponse() (response *ReportDataResponse) {
     return
 }
 
-// 客户上报用户数据功能，为了更好的为用户提供优质服务
+// 客户上报用户数据功能，为了更好地为用户提供优质服务
 func (c *Client) ReportData(request *ReportDataRequest) (response *ReportDataResponse, err error) {
     if request == nil {
         request = NewReportDataRequest()

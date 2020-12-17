@@ -243,6 +243,31 @@ func (c *Client) CreateStaticStore(request *CreateStaticStoreRequest) (response 
     return
 }
 
+func NewDeleteCloudBaseProjectLatestVersionRequest() (request *DeleteCloudBaseProjectLatestVersionRequest) {
+    request = &DeleteCloudBaseProjectLatestVersionRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tcb", APIVersion, "DeleteCloudBaseProjectLatestVersion")
+    return
+}
+
+func NewDeleteCloudBaseProjectLatestVersionResponse() (response *DeleteCloudBaseProjectLatestVersionResponse) {
+    response = &DeleteCloudBaseProjectLatestVersionResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 删除云项目
+func (c *Client) DeleteCloudBaseProjectLatestVersion(request *DeleteCloudBaseProjectLatestVersionRequest) (response *DeleteCloudBaseProjectLatestVersionResponse, err error) {
+    if request == nil {
+        request = NewDeleteCloudBaseProjectLatestVersionRequest()
+    }
+    response = NewDeleteCloudBaseProjectLatestVersionResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteEndUserRequest() (request *DeleteEndUserRequest) {
     request = &DeleteEndUserRequest{
         BaseRequest: &tchttp.BaseRequest{},

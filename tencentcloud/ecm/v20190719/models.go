@@ -165,6 +165,52 @@ type Area struct {
 	AreaName *string `json:"AreaName,omitempty" name:"AreaName"`
 }
 
+type AssignIpv6AddressesRequest struct {
+	*tchttp.BaseRequest
+
+	// ECM 地域
+	EcmRegion *string `json:"EcmRegion,omitempty" name:"EcmRegion"`
+
+	// 弹性网卡实例ID，形如：eni-1snva0vd。目前只支持主网卡上分配。
+	NetworkInterfaceId *string `json:"NetworkInterfaceId,omitempty" name:"NetworkInterfaceId"`
+
+	// 指定的IPv6地址列表，单次最多指定10个。与入参Ipv6AddressCount合并计算配额。与Ipv6AddressCount必填一个。
+	Ipv6Addresses []*Ipv6Address `json:"Ipv6Addresses,omitempty" name:"Ipv6Addresses" list`
+
+	// 自动分配IPv6地址个数，内网IP地址个数总和不能超过配数。与入参Ipv6Addresses合并计算配额。与Ipv6Addresses必填一个。
+	Ipv6AddressCount *int64 `json:"Ipv6AddressCount,omitempty" name:"Ipv6AddressCount"`
+}
+
+func (r *AssignIpv6AddressesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *AssignIpv6AddressesRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type AssignIpv6AddressesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 分配给弹性网卡的IPv6地址列表。
+		Ipv6AddressSet []*Ipv6Address `json:"Ipv6AddressSet,omitempty" name:"Ipv6AddressSet" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *AssignIpv6AddressesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *AssignIpv6AddressesResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type AssignPrivateIpAddressesRequest struct {
 	*tchttp.BaseRequest
 
@@ -4543,6 +4589,46 @@ func (r *ModifyInstancesAttributeResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type ModifyIpv6AddressesAttributeRequest struct {
+	*tchttp.BaseRequest
+
+	// ECM 地域
+	EcmRegion *string `json:"EcmRegion,omitempty" name:"EcmRegion"`
+
+	// 弹性网卡实例ID，形如：eni-m6dyj72l。
+	NetworkInterfaceId *string `json:"NetworkInterfaceId,omitempty" name:"NetworkInterfaceId"`
+
+	// 指定的IPv6地址信息。
+	Ipv6Addresses []*Ipv6Address `json:"Ipv6Addresses,omitempty" name:"Ipv6Addresses" list`
+}
+
+func (r *ModifyIpv6AddressesAttributeRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyIpv6AddressesAttributeRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyIpv6AddressesAttributeResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifyIpv6AddressesAttributeResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyIpv6AddressesAttributeResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type ModifyListenerRequest struct {
 	*tchttp.BaseRequest
 
@@ -5651,6 +5737,49 @@ func (r *ReleaseAddressesResponse) ToJsonString() string {
 }
 
 func (r *ReleaseAddressesResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ReleaseIpv6AddressesRequest struct {
+	*tchttp.BaseRequest
+
+	// ECM 地域
+	EcmRegion *string `json:"EcmRegion,omitempty" name:"EcmRegion"`
+
+	// 弹性网卡实例ID，形如：eni-m6dyj72l。
+	NetworkInterfaceId *string `json:"NetworkInterfaceId,omitempty" name:"NetworkInterfaceId"`
+
+	// 指定的IPv6地址列表，单次最多指定10个。
+	Ipv6Addresses []*Ipv6Address `json:"Ipv6Addresses,omitempty" name:"Ipv6Addresses" list`
+}
+
+func (r *ReleaseIpv6AddressesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ReleaseIpv6AddressesRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ReleaseIpv6AddressesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 任务ID，可以通过DescribeTaskResult查询任务状态
+		TaskId *int64 `json:"TaskId,omitempty" name:"TaskId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ReleaseIpv6AddressesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ReleaseIpv6AddressesResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 

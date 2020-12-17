@@ -379,6 +379,9 @@ type AllocateIp6AddressesBandwidthRequest struct {
 
 	// 网络计费模式。IPV6当前对标准账户类型支持"TRAFFIC_POSTPAID_BY_HOUR"，对传统账户类型支持"BANDWIDTH_PACKAGE"。默认网络计费模式是"TRAFFIC_POSTPAID_BY_HOUR"。
 	InternetChargeType *string `json:"InternetChargeType,omitempty" name:"InternetChargeType"`
+
+	// 带宽包id，上移账号，申请带宽包计费模式的ipv6地址需要传入.
+	BandwidthPackageId *string `json:"BandwidthPackageId,omitempty" name:"BandwidthPackageId"`
 }
 
 func (r *AllocateIp6AddressesBandwidthRequest) ToJsonString() string {
