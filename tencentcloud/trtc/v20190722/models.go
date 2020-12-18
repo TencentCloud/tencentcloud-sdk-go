@@ -559,7 +559,7 @@ type DescribeRoomInformationResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 返回的数据总条数
+		// 返回当页数据总数
 		Total *int64 `json:"Total,omitempty" name:"Total"`
 
 		// 房间信息列表

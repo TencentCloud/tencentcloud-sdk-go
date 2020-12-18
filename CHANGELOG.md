@@ -1,114 +1,10 @@
 # 本版本更新包含以下内容：
 
-## 云呼叫中心(ccc) 版本：2020-02-10
-
-### 第 7 次发布
-
-发布时间：2020-12-17 08:00:22
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [DescribePSTNActiveSessionList](https://cloud.tencent.com/document/api/679/51091)
-
-新增数据结构：
-
-* [PSTNSessionInfo](https://cloud.tencent.com/document/api/679/47715#PSTNSessionInfo)
-
-
-
-## 内容分发网络(cdn) 版本：2018-06-06
-
-### 第 54 次发布
-
-发布时间：2020-12-17 08:02:55
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [ScdnTopUrlData](https://cloud.tencent.com/document/api/228/30987#ScdnTopUrlData)
-
-	* 新增成员：Domain
-
-
-
-
-## 腾讯云剪(cme) 版本：2019-10-29
-
-### 第 18 次发布
-
-发布时间：2020-12-17 08:01:45
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [DescribePlatforms](https://cloud.tencent.com/document/api/1156/51096)
-
-新增数据结构：
-
-* [PlatformInfo](https://cloud.tencent.com/document/api/1156/40360#PlatformInfo)
-
-
-
-## 域名注册(domain) 版本：2018-08-08
-
-### 第 11 次发布
-
-发布时间：2020-12-17 08:03:55
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [CreateDomainBatch](https://cloud.tencent.com/document/api/242/48942)
-
-	* 新增入参：AutoRenewFlag
-
-* [RenewDomainBatch](https://cloud.tencent.com/document/api/242/49210)
-
-	* 新增入参：AutoRenewFlag
-
-* [TransferInDomainBatch](https://cloud.tencent.com/document/api/242/49195)
-
-	* 新增入参：AutoRenewFlag
-
-
-
-
-## 边缘计算机器(ecm) 版本：2019-07-19
-
-### 第 36 次发布
-
-发布时间：2020-12-17 08:00:43
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [AssignIpv6Addresses](https://cloud.tencent.com/document/api/1108/51094)
-* [ModifyIpv6AddressesAttribute](https://cloud.tencent.com/document/api/1108/51093)
-* [ReleaseIpv6Addresses](https://cloud.tencent.com/document/api/1108/51092)
-
-
-
-## 邮件推送(ses) 版本：2020-10-02
+## 云 HDFS(chdfs) 版本：2020-11-12
 
 ### 第 1 次发布
 
-发布时间：2020-12-16 14:14:46
+发布时间：2020-12-18 08:03:19
 
 本次发布包含了以下内容：
 
@@ -116,98 +12,87 @@
 
 新增接口：
 
-* [CreateEmailAddress](https://cloud.tencent.com/document/api/1288/51052)
-* [CreateEmailIdentity](https://cloud.tencent.com/document/api/1288/51048)
-* [CreateEmailTemplate](https://cloud.tencent.com/document/api/1288/51042)
-* [DeleteBlackList](https://cloud.tencent.com/document/api/1288/51032)
-* [DeleteEmailAddress](https://cloud.tencent.com/document/api/1288/51051)
-* [DeleteEmailIdentity](https://cloud.tencent.com/document/api/1288/51047)
-* [DeleteEmailTemplate](https://cloud.tencent.com/document/api/1288/51041)
-* [GetEmailIdentity](https://cloud.tencent.com/document/api/1288/51046)
-* [GetEmailTemplate](https://cloud.tencent.com/document/api/1288/51040)
-* [GetStatisticsReport](https://cloud.tencent.com/document/api/1288/51036)
-* [ListBlackEmailAddress](https://cloud.tencent.com/document/api/1288/51031)
-* [ListEmailAddress](https://cloud.tencent.com/document/api/1288/51050)
-* [ListEmailIdentities](https://cloud.tencent.com/document/api/1288/51045)
-* [ListEmailTemplates](https://cloud.tencent.com/document/api/1288/51039)
-* [SendEmail](https://cloud.tencent.com/document/api/1288/51034)
-* [UpdateEmailIdentity](https://cloud.tencent.com/document/api/1288/51044)
-* [UpdateEmailTemplate](https://cloud.tencent.com/document/api/1288/51038)
+* [AssociateAccessGroups](https://cloud.tencent.com/document/api/1105/51155)
+* [CreateAccessGroup](https://cloud.tencent.com/document/api/1105/51143)
+* [CreateFileSystem](https://cloud.tencent.com/document/api/1105/51148)
+* [CreateMountPoint](https://cloud.tencent.com/document/api/1105/51154)
+* [DescribeAccessGroup](https://cloud.tencent.com/document/api/1105/51142)
+* [DescribeAccessGroups](https://cloud.tencent.com/document/api/1105/51141)
+* [DescribeAccessRules](https://cloud.tencent.com/document/api/1105/51138)
+* [DescribeFileSystem](https://cloud.tencent.com/document/api/1105/51147)
+* [DescribeFileSystems](https://cloud.tencent.com/document/api/1105/51146)
+* [DescribeMountPoint](https://cloud.tencent.com/document/api/1105/51153)
+* [DescribeMountPoints](https://cloud.tencent.com/document/api/1105/51152)
+* [DisassociateAccessGroups](https://cloud.tencent.com/document/api/1105/51151)
+* [ModifyAccessGroup](https://cloud.tencent.com/document/api/1105/51140)
+* [ModifyFileSystem](https://cloud.tencent.com/document/api/1105/51145)
+* [ModifyMountPoint](https://cloud.tencent.com/document/api/1105/51150)
+* [ModifyResourceTags](https://cloud.tencent.com/document/api/1105/51157)
 
 新增数据结构：
 
-* [BlackEmailAddress](https://cloud.tencent.com/document/api/1288/51053#BlackEmailAddress)
-* [DNSAttributes](https://cloud.tencent.com/document/api/1288/51053#DNSAttributes)
-* [EmailIdentity](https://cloud.tencent.com/document/api/1288/51053#EmailIdentity)
-* [EmailSender](https://cloud.tencent.com/document/api/1288/51053#EmailSender)
-* [Simple](https://cloud.tencent.com/document/api/1288/51053#Simple)
-* [Template](https://cloud.tencent.com/document/api/1288/51053#Template)
-* [TemplateContent](https://cloud.tencent.com/document/api/1288/51053#TemplateContent)
-* [TemplatesMetadata](https://cloud.tencent.com/document/api/1288/51053#TemplatesMetadata)
-* [Volume](https://cloud.tencent.com/document/api/1288/51053#Volume)
+* [AccessGroup](https://cloud.tencent.com/document/api/1105/51158#AccessGroup)
+* [AccessRule](https://cloud.tencent.com/document/api/1105/51158#AccessRule)
+* [FileSystem](https://cloud.tencent.com/document/api/1105/51158#FileSystem)
+* [MountPoint](https://cloud.tencent.com/document/api/1105/51158#MountPoint)
+* [Tag](https://cloud.tencent.com/document/api/1105/51158#Tag)
 
 
 
-## 云开发 CloudBase(tcb) 版本：2018-06-08
-
-### 第 29 次发布
-
-发布时间：2020-12-17 08:07:04
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [DeleteCloudBaseProjectLatestVersion](https://cloud.tencent.com/document/api/876/51097)
+## 云 HDFS(chdfs) 版本：2019-07-18
 
 
 
-## 云点播(vod) 版本：2018-07-17
+## 专线接入(dc) 版本：2018-04-10
 
-### 第 67 次发布
+### 第 13 次发布
 
-发布时间：2020-12-17 08:08:25
+发布时间：2020-12-18 08:04:11
 
 本次发布包含了以下内容：
 
 改善已有的文档。
-
-新增接口：
-
-* [SplitMedia](https://cloud.tencent.com/document/api/266/51098)
 
 修改接口：
 
-* [DescribeTaskDetail](https://cloud.tencent.com/document/api/266/33431)
+* [CreateDirectConnectTunnel](https://cloud.tencent.com/document/api/216/19821)
 
-	* 新增出参：SplitMediaTask
+	* 新增入参：CloudAttachId
 
-
-新增数据结构：
-
-* [SplitMediaOutputConfig](https://cloud.tencent.com/document/api/266/31773#SplitMediaOutputConfig)
-* [SplitMediaTask](https://cloud.tencent.com/document/api/266/31773#SplitMediaTask)
-* [SplitMediaTaskConfig](https://cloud.tencent.com/document/api/266/31773#SplitMediaTaskConfig)
-* [SplitMediaTaskInput](https://cloud.tencent.com/document/api/266/31773#SplitMediaTaskInput)
-* [SplitMediaTaskSegmentInfo](https://cloud.tencent.com/document/api/266/31773#SplitMediaTaskSegmentInfo)
-* [TaskOutputMediaInfo](https://cloud.tencent.com/document/api/266/31773#TaskOutputMediaInfo)
 
 修改数据结构：
 
-* [EventContent](https://cloud.tencent.com/document/api/266/31773#EventContent)
+* [DirectConnectTunnel](https://cloud.tencent.com/document/api/216/18418#DirectConnectTunnel)
 
-	* 新增成员：SplitMediaCompleteEvent
-
-
+	* 新增成员：CloudAttachId
 
 
-## 私有网络(vpc) 版本：2017-03-12
 
-### 第 74 次发布
 
-发布时间：2020-12-17 08:07:53
+## 图片内容检测(ims) 版本：2020-07-13
+
+### 第 3 次发布
+
+发布时间：2020-12-18 08:00:10
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [OcrResult](https://cloud.tencent.com/document/api/1125/49657#OcrResult)
+
+	* 新增成员：Text
+
+
+
+
+## 物联网开发平台(iotexplorer) 版本：2019-04-23
+
+### 第 17 次发布
+
+发布时间：2020-12-18 08:05:18
 
 本次发布包含了以下内容：
 
@@ -215,9 +100,39 @@
 
 修改接口：
 
-* [AllocateIp6AddressesBandwidth](https://cloud.tencent.com/document/api/215/40090)
+* [CreateLoRaGateway](https://cloud.tencent.com/document/api/1081/45745)
 
-	* 新增入参：BandwidthPackageId
+	* 新增入参：FrequencyId
+
+* [ModifyLoRaGateway](https://cloud.tencent.com/document/api/1081/46010)
+
+	* 新增入参：FrequencyId
+
+
+修改数据结构：
+
+* [LoRaGatewayItem](https://cloud.tencent.com/document/api/1081/34988#LoRaGatewayItem)
+
+	* 新增成员：FrequencyId
+
+
+
+
+## 云数据库 Redis(redis) 版本：2018-04-12
+
+### 第 27 次发布
+
+发布时间：2020-12-18 08:06:39
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [UpgradeInstance](https://cloud.tencent.com/document/api/239/20013)
+
+	* 新增入参：NodeSet
 
 
 
@@ -5710,11 +5625,11 @@
 
 新增接口：
 
-* [[DescribePSTNActiveSessionList](https://cloud.tencent.com/document/api/679/51091)](https://cloud.tencent.com/document/api/#/#)
+* [DescribePSTNActiveSessionList](https://cloud.tencent.com/document/api/679/51091)
 
 新增数据结构：
 
-* [[PSTNSessionInfo](https://cloud.tencent.com/document/api/679/47715#PSTNSessionInfo)](https://cloud.tencent.com/document/api/679/47715#[PSTNSessionInfo](https://cloud.tencent.com/document/api/679/47715#PSTNSessionInfo))
+* [PSTNSessionInfo](https://cloud.tencent.com/document/api/679/47715#PSTNSessionInfo)
 
 ### 第 6 次发布
 
@@ -8533,6 +8448,45 @@
 
 
 
+## 云 HDFS(chdfs) 版本：2020-11-12
+
+### 第 1 次发布
+
+发布时间：2020-12-18 08:03:19
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[AssociateAccessGroups](https://cloud.tencent.com/document/api/1105/51155)](https://cloud.tencent.com/document/api/#/#)
+* [[CreateAccessGroup](https://cloud.tencent.com/document/api/1105/51143)](https://cloud.tencent.com/document/api/#/#)
+* [[CreateFileSystem](https://cloud.tencent.com/document/api/1105/51148)](https://cloud.tencent.com/document/api/#/#)
+* [[CreateMountPoint](https://cloud.tencent.com/document/api/1105/51154)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeAccessGroup](https://cloud.tencent.com/document/api/1105/51142)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeAccessGroups](https://cloud.tencent.com/document/api/1105/51141)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeAccessRules](https://cloud.tencent.com/document/api/1105/51138)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeFileSystem](https://cloud.tencent.com/document/api/1105/51147)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeFileSystems](https://cloud.tencent.com/document/api/1105/51146)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeMountPoint](https://cloud.tencent.com/document/api/1105/51153)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeMountPoints](https://cloud.tencent.com/document/api/1105/51152)](https://cloud.tencent.com/document/api/#/#)
+* [[DisassociateAccessGroups](https://cloud.tencent.com/document/api/1105/51151)](https://cloud.tencent.com/document/api/#/#)
+* [[ModifyAccessGroup](https://cloud.tencent.com/document/api/1105/51140)](https://cloud.tencent.com/document/api/#/#)
+* [[ModifyFileSystem](https://cloud.tencent.com/document/api/1105/51145)](https://cloud.tencent.com/document/api/#/#)
+* [[ModifyMountPoint](https://cloud.tencent.com/document/api/1105/51150)](https://cloud.tencent.com/document/api/#/#)
+* [[ModifyResourceTags](https://cloud.tencent.com/document/api/1105/51157)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[AccessGroup](https://cloud.tencent.com/document/api/1105/51158#AccessGroup)](https://cloud.tencent.com/document/api/1105/51158#[AccessGroup](https://cloud.tencent.com/document/api/1105/51158#AccessGroup))
+* [[AccessRule](https://cloud.tencent.com/document/api/1105/51158#AccessRule)](https://cloud.tencent.com/document/api/1105/51158#[AccessRule](https://cloud.tencent.com/document/api/1105/51158#AccessRule))
+* [[FileSystem](https://cloud.tencent.com/document/api/1105/51158#FileSystem)](https://cloud.tencent.com/document/api/1105/51158#[FileSystem](https://cloud.tencent.com/document/api/1105/51158#FileSystem))
+* [[MountPoint](https://cloud.tencent.com/document/api/1105/51158#MountPoint)](https://cloud.tencent.com/document/api/1105/51158#[MountPoint](https://cloud.tencent.com/document/api/1105/51158#MountPoint))
+* [[Tag](https://cloud.tencent.com/document/api/1105/51158#Tag)](https://cloud.tencent.com/document/api/1105/51158#[Tag](https://cloud.tencent.com/document/api/1105/51158#Tag))
+
+
+
 
 ## (cim) 版本：2019-03-18
 
@@ -9957,11 +9911,11 @@
 
 新增接口：
 
-* [[DescribePlatforms](https://cloud.tencent.com/document/api/1156/51096)](https://cloud.tencent.com/document/api/#/#)
+* [DescribePlatforms](https://cloud.tencent.com/document/api/1156/51096)
 
 新增数据结构：
 
-* [[PlatformInfo](https://cloud.tencent.com/document/api/1156/40360#PlatformInfo)](https://cloud.tencent.com/document/api/1156/40360#[PlatformInfo](https://cloud.tencent.com/document/api/1156/40360#PlatformInfo))
+* [PlatformInfo](https://cloud.tencent.com/document/api/1156/40360#PlatformInfo)
 
 ### 第 17 次发布
 
@@ -14174,6 +14128,28 @@
 
 ## 专线接入(dc) 版本：2018-04-10
 
+### 第 13 次发布
+
+发布时间：2020-12-18 08:04:11
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateDirectConnectTunnel](https://cloud.tencent.com/document/api/216/19821)
+
+	* 新增入参：CloudAttachId
+
+
+修改数据结构：
+
+* [DirectConnectTunnel](https://cloud.tencent.com/document/api/216/18418#DirectConnectTunnel)
+
+	* 新增成员：CloudAttachId
+
+
 ### 第 12 次发布
 
 发布时间：2020-10-14 08:03:21
@@ -15671,9 +15647,9 @@
 
 新增接口：
 
-* [[AssignIpv6Addresses](https://cloud.tencent.com/document/api/1108/51094)](https://cloud.tencent.com/document/api/#/#)
-* [[ModifyIpv6AddressesAttribute](https://cloud.tencent.com/document/api/1108/51093)](https://cloud.tencent.com/document/api/#/#)
-* [[ReleaseIpv6Addresses](https://cloud.tencent.com/document/api/1108/51092)](https://cloud.tencent.com/document/api/#/#)
+* [AssignIpv6Addresses](https://cloud.tencent.com/document/api/1108/51094)
+* [ModifyIpv6AddressesAttribute](https://cloud.tencent.com/document/api/1108/51093)
+* [ReleaseIpv6Addresses](https://cloud.tencent.com/document/api/1108/51092)
 
 ### 第 35 次发布
 
@@ -20223,6 +20199,21 @@
 
 ## 图片内容检测(ims) 版本：2020-07-13
 
+### 第 3 次发布
+
+发布时间：2020-12-18 08:00:10
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [OcrResult](https://cloud.tencent.com/document/api/1125/49657#OcrResult)
+
+	* 新增成员：Text
+
+
 ### 第 2 次发布
 
 发布时间：2020-12-16 08:00:40
@@ -21060,6 +21051,32 @@
 
 
 ## 物联网开发平台(iotexplorer) 版本：2019-04-23
+
+### 第 17 次发布
+
+发布时间：2020-12-18 08:05:18
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateLoRaGateway](https://cloud.tencent.com/document/api/1081/45745)
+
+	* 新增入参：FrequencyId
+
+* [ModifyLoRaGateway](https://cloud.tencent.com/document/api/1081/46010)
+
+	* 新增入参：FrequencyId
+
+
+修改数据结构：
+
+* [LoRaGatewayItem](https://cloud.tencent.com/document/api/1081/34988#LoRaGatewayItem)
+
+	* 新增成员：FrequencyId
+
 
 ### 第 16 次发布
 
@@ -27690,6 +27707,21 @@
 
 ## 云数据库 Redis(redis) 版本：2018-04-12
 
+### 第 27 次发布
+
+发布时间：2020-12-18 08:06:39
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [UpgradeInstance](https://cloud.tencent.com/document/api/239/20013)
+
+	* 新增入参：NodeSet
+
+
 ### 第 26 次发布
 
 发布时间：2020-12-11 08:06:05
@@ -28920,35 +28952,35 @@
 
 新增接口：
 
-* [[CreateEmailAddress](https://cloud.tencent.com/document/api/1288/51052)](https://cloud.tencent.com/document/api/#/#)
-* [[CreateEmailIdentity](https://cloud.tencent.com/document/api/1288/51048)](https://cloud.tencent.com/document/api/#/#)
-* [[CreateEmailTemplate](https://cloud.tencent.com/document/api/1288/51042)](https://cloud.tencent.com/document/api/#/#)
-* [[DeleteBlackList](https://cloud.tencent.com/document/api/1288/51032)](https://cloud.tencent.com/document/api/#/#)
-* [[DeleteEmailAddress](https://cloud.tencent.com/document/api/1288/51051)](https://cloud.tencent.com/document/api/#/#)
-* [[DeleteEmailIdentity](https://cloud.tencent.com/document/api/1288/51047)](https://cloud.tencent.com/document/api/#/#)
-* [[DeleteEmailTemplate](https://cloud.tencent.com/document/api/1288/51041)](https://cloud.tencent.com/document/api/#/#)
-* [[GetEmailIdentity](https://cloud.tencent.com/document/api/1288/51046)](https://cloud.tencent.com/document/api/#/#)
-* [[GetEmailTemplate](https://cloud.tencent.com/document/api/1288/51040)](https://cloud.tencent.com/document/api/#/#)
-* [[GetStatisticsReport](https://cloud.tencent.com/document/api/1288/51036)](https://cloud.tencent.com/document/api/#/#)
-* [[ListBlackEmailAddress](https://cloud.tencent.com/document/api/1288/51031)](https://cloud.tencent.com/document/api/#/#)
-* [[ListEmailAddress](https://cloud.tencent.com/document/api/1288/51050)](https://cloud.tencent.com/document/api/#/#)
-* [[ListEmailIdentities](https://cloud.tencent.com/document/api/1288/51045)](https://cloud.tencent.com/document/api/#/#)
-* [[ListEmailTemplates](https://cloud.tencent.com/document/api/1288/51039)](https://cloud.tencent.com/document/api/#/#)
-* [[SendEmail](https://cloud.tencent.com/document/api/1288/51034)](https://cloud.tencent.com/document/api/#/#)
-* [[UpdateEmailIdentity](https://cloud.tencent.com/document/api/1288/51044)](https://cloud.tencent.com/document/api/#/#)
-* [[UpdateEmailTemplate](https://cloud.tencent.com/document/api/1288/51038)](https://cloud.tencent.com/document/api/#/#)
+* [CreateEmailAddress](https://cloud.tencent.com/document/api/1288/51052)
+* [CreateEmailIdentity](https://cloud.tencent.com/document/api/1288/51048)
+* [CreateEmailTemplate](https://cloud.tencent.com/document/api/1288/51042)
+* [DeleteBlackList](https://cloud.tencent.com/document/api/1288/51032)
+* [DeleteEmailAddress](https://cloud.tencent.com/document/api/1288/51051)
+* [DeleteEmailIdentity](https://cloud.tencent.com/document/api/1288/51047)
+* [DeleteEmailTemplate](https://cloud.tencent.com/document/api/1288/51041)
+* [GetEmailIdentity](https://cloud.tencent.com/document/api/1288/51046)
+* [GetEmailTemplate](https://cloud.tencent.com/document/api/1288/51040)
+* [GetStatisticsReport](https://cloud.tencent.com/document/api/1288/51036)
+* [ListBlackEmailAddress](https://cloud.tencent.com/document/api/1288/51031)
+* [ListEmailAddress](https://cloud.tencent.com/document/api/1288/51050)
+* [ListEmailIdentities](https://cloud.tencent.com/document/api/1288/51045)
+* [ListEmailTemplates](https://cloud.tencent.com/document/api/1288/51039)
+* [SendEmail](https://cloud.tencent.com/document/api/1288/51034)
+* [UpdateEmailIdentity](https://cloud.tencent.com/document/api/1288/51044)
+* [UpdateEmailTemplate](https://cloud.tencent.com/document/api/1288/51038)
 
 新增数据结构：
 
-* [[BlackEmailAddress](https://cloud.tencent.com/document/api/1288/51053#BlackEmailAddress)](https://cloud.tencent.com/document/api/1288/51053#[BlackEmailAddress](https://cloud.tencent.com/document/api/1288/51053#BlackEmailAddress))
-* [[DNSAttributes](https://cloud.tencent.com/document/api/1288/51053#DNSAttributes)](https://cloud.tencent.com/document/api/1288/51053#[DNSAttributes](https://cloud.tencent.com/document/api/1288/51053#DNSAttributes))
-* [[EmailIdentity](https://cloud.tencent.com/document/api/1288/51053#EmailIdentity)](https://cloud.tencent.com/document/api/1288/51053#[EmailIdentity](https://cloud.tencent.com/document/api/1288/51053#EmailIdentity))
-* [[EmailSender](https://cloud.tencent.com/document/api/1288/51053#EmailSender)](https://cloud.tencent.com/document/api/1288/51053#[EmailSender](https://cloud.tencent.com/document/api/1288/51053#EmailSender))
-* [[Simple](https://cloud.tencent.com/document/api/1288/51053#Simple)](https://cloud.tencent.com/document/api/1288/51053#[Simple](https://cloud.tencent.com/document/api/1288/51053#Simple))
-* [[Template](https://cloud.tencent.com/document/api/1288/51053#Template)](https://cloud.tencent.com/document/api/1288/51053#[Template](https://cloud.tencent.com/document/api/1288/51053#Template))
-* [[TemplateContent](https://cloud.tencent.com/document/api/1288/51053#TemplateContent)](https://cloud.tencent.com/document/api/1288/51053#[TemplateContent](https://cloud.tencent.com/document/api/1288/51053#TemplateContent))
-* [[TemplatesMetadata](https://cloud.tencent.com/document/api/1288/51053#TemplatesMetadata)](https://cloud.tencent.com/document/api/1288/51053#[TemplatesMetadata](https://cloud.tencent.com/document/api/1288/51053#TemplatesMetadata))
-* [[Volume](https://cloud.tencent.com/document/api/1288/51053#Volume)](https://cloud.tencent.com/document/api/1288/51053#[Volume](https://cloud.tencent.com/document/api/1288/51053#Volume))
+* [BlackEmailAddress](https://cloud.tencent.com/document/api/1288/51053#BlackEmailAddress)
+* [DNSAttributes](https://cloud.tencent.com/document/api/1288/51053#DNSAttributes)
+* [EmailIdentity](https://cloud.tencent.com/document/api/1288/51053#EmailIdentity)
+* [EmailSender](https://cloud.tencent.com/document/api/1288/51053#EmailSender)
+* [Simple](https://cloud.tencent.com/document/api/1288/51053#Simple)
+* [Template](https://cloud.tencent.com/document/api/1288/51053#Template)
+* [TemplateContent](https://cloud.tencent.com/document/api/1288/51053#TemplateContent)
+* [TemplatesMetadata](https://cloud.tencent.com/document/api/1288/51053#TemplatesMetadata)
+* [Volume](https://cloud.tencent.com/document/api/1288/51053#Volume)
 
 
 
@@ -31237,7 +31269,7 @@
 
 新增接口：
 
-* [[DeleteCloudBaseProjectLatestVersion](https://cloud.tencent.com/document/api/876/51097)](https://cloud.tencent.com/document/api/#/#)
+* [DeleteCloudBaseProjectLatestVersion](https://cloud.tencent.com/document/api/876/51097)
 
 ### 第 28 次发布
 
@@ -36341,7 +36373,7 @@
 
 新增接口：
 
-* [[SplitMedia](https://cloud.tencent.com/document/api/266/51098)](https://cloud.tencent.com/document/api/#/#)
+* [SplitMedia](https://cloud.tencent.com/document/api/266/51098)
 
 修改接口：
 
@@ -36352,12 +36384,12 @@
 
 新增数据结构：
 
-* [[SplitMediaOutputConfig](https://cloud.tencent.com/document/api/266/31773#SplitMediaOutputConfig)](https://cloud.tencent.com/document/api/266/31773#[SplitMediaOutputConfig](https://cloud.tencent.com/document/api/266/31773#SplitMediaOutputConfig))
-* [[SplitMediaTask](https://cloud.tencent.com/document/api/266/31773#SplitMediaTask)](https://cloud.tencent.com/document/api/266/31773#[SplitMediaTask](https://cloud.tencent.com/document/api/266/31773#SplitMediaTask))
-* [[SplitMediaTaskConfig](https://cloud.tencent.com/document/api/266/31773#SplitMediaTaskConfig)](https://cloud.tencent.com/document/api/266/31773#[SplitMediaTaskConfig](https://cloud.tencent.com/document/api/266/31773#SplitMediaTaskConfig))
-* [[SplitMediaTaskInput](https://cloud.tencent.com/document/api/266/31773#SplitMediaTaskInput)](https://cloud.tencent.com/document/api/266/31773#[SplitMediaTaskInput](https://cloud.tencent.com/document/api/266/31773#SplitMediaTaskInput))
-* [[SplitMediaTaskSegmentInfo](https://cloud.tencent.com/document/api/266/31773#SplitMediaTaskSegmentInfo)](https://cloud.tencent.com/document/api/266/31773#[SplitMediaTaskSegmentInfo](https://cloud.tencent.com/document/api/266/31773#SplitMediaTaskSegmentInfo))
-* [[TaskOutputMediaInfo](https://cloud.tencent.com/document/api/266/31773#TaskOutputMediaInfo)](https://cloud.tencent.com/document/api/266/31773#[TaskOutputMediaInfo](https://cloud.tencent.com/document/api/266/31773#TaskOutputMediaInfo))
+* [SplitMediaOutputConfig](https://cloud.tencent.com/document/api/266/31773#SplitMediaOutputConfig)
+* [SplitMediaTask](https://cloud.tencent.com/document/api/266/31773#SplitMediaTask)
+* [SplitMediaTaskConfig](https://cloud.tencent.com/document/api/266/31773#SplitMediaTaskConfig)
+* [SplitMediaTaskInput](https://cloud.tencent.com/document/api/266/31773#SplitMediaTaskInput)
+* [SplitMediaTaskSegmentInfo](https://cloud.tencent.com/document/api/266/31773#SplitMediaTaskSegmentInfo)
+* [TaskOutputMediaInfo](https://cloud.tencent.com/document/api/266/31773#TaskOutputMediaInfo)
 
 修改数据结构：
 

@@ -248,6 +248,9 @@ type CreateDirectConnectTunnelRequest struct {
 
 	// TencentBackupAddress，腾讯侧备用互联 IP
 	TencentBackupAddress *string `json:"TencentBackupAddress,omitempty" name:"TencentBackupAddress"`
+
+	// 高速上云服务ID
+	CloudAttachId *string `json:"CloudAttachId,omitempty" name:"CloudAttachId"`
 }
 
 func (r *CreateDirectConnectTunnelRequest) ToJsonString() string {
@@ -809,6 +812,10 @@ type DirectConnectTunnel struct {
 	// 专用通道关联的物理专线是否签署了用户协议
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SignLaw *bool `json:"SignLaw,omitempty" name:"SignLaw"`
+
+	// 高速上云服务ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CloudAttachId *string `json:"CloudAttachId,omitempty" name:"CloudAttachId"`
 }
 
 type DirectConnectTunnelExtra struct {

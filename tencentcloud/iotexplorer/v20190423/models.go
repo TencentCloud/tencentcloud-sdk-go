@@ -257,6 +257,9 @@ type CreateLoRaGatewayRequest struct {
 
 	// 是否公开
 	IsPublic *bool `json:"IsPublic,omitempty" name:"IsPublic"`
+
+	// 频点ID
+	FrequencyId *string `json:"FrequencyId,omitempty" name:"FrequencyId"`
 }
 
 func (r *CreateLoRaGatewayRequest) ToJsonString() string {
@@ -1428,6 +1431,9 @@ type LoRaGatewayItem struct {
 
 	// 最后上报时间
 	LastSeenAt *string `json:"LastSeenAt,omitempty" name:"LastSeenAt"`
+
+	// 频点ID
+	FrequencyId *string `json:"FrequencyId,omitempty" name:"FrequencyId"`
 }
 
 type LoRaGatewayLocation struct {
@@ -1468,6 +1474,9 @@ type ModifyLoRaGatewayRequest struct {
 
 	// 位置详情
 	PositionDetails *string `json:"PositionDetails,omitempty" name:"PositionDetails"`
+
+	// 频点ID
+	FrequencyId *string `json:"FrequencyId,omitempty" name:"FrequencyId"`
 }
 
 func (r *ModifyLoRaGatewayRequest) ToJsonString() string {

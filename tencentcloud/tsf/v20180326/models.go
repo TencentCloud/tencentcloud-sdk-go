@@ -5330,7 +5330,7 @@ type DescribeSimpleGroupsRequest struct {
 	// 模糊查询，部署组名称，不填写时查询全量
 	SearchWord *string `json:"SearchWord,omitempty" name:"SearchWord"`
 
-	// 部署组类型，精确过滤字段，M：service mesh, P：原生应用， M：网关应用
+	// 部署组类型，精确过滤字段，M：service mesh, P：原生应用， G：网关应用
 	AppMicroServiceType *string `json:"AppMicroServiceType,omitempty" name:"AppMicroServiceType"`
 }
 

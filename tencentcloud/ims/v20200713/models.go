@@ -228,7 +228,8 @@ type ImageModerationResponse struct {
 	// 建议值，Block：建议屏蔽，Review：建议复审，Pass：建议通过
 		Suggestion *string `json:"Suggestion,omitempty" name:"Suggestion"`
 
-		// 恶意标签，Normal：正常，Polity：涉政，Porn：色情，Illegal：违法，Abuse：谩骂，Terror：暴恐，Ad：广告，Custom：自定义图片。
+		// 恶意标签，Normal：正常，Porn：色情，Abuse：谩骂，Ad：广告，Custom：自定义图片。
+	// 以及令人反感、不安全或不适宜的内容类型。
 		Label *string `json:"Label,omitempty" name:"Label"`
 
 		// 子标签名称，如色情--性行为；当未命中子标签时，返回空字符串；
@@ -238,20 +239,20 @@ type ImageModerationResponse struct {
 	// （如：色情 99.99，则该样本属于色情的置信度非常高。）
 		Score *int64 `json:"Score,omitempty" name:"Score"`
 
-		// 识别模型的审核结果，包括涉黄、性感、涉暴、违法违规、等审核结果。
+		// 智能模型的识别结果，包括涉黄、广告等令人反感、不安全或不适宜的内容类型识别结果。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		LabelResults []*LabelResult `json:"LabelResults,omitempty" name:"LabelResults" list`
 
-		// 物体检测模型的审核结果，包括涉政实体、广告台标/二维码等物体坐标信息与内容审核信息。
+		// 物体检测模型的审核结果，包括实体、广告台标/二维码等物体坐标信息与内容审核信息。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		ObjectResults []*ObjectResult `json:"ObjectResults,omitempty" name:"ObjectResults" list`
 
-		// OCR识别后的文本审核结果，包括文本所处图片的OCR坐标信息以及图片文本的审核结果。
+		// OCR识别后的文本识别结果，包括文本所处图片的OCR坐标信息以及图片文本的识别结果。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		OcrResults []*OcrResult `json:"OcrResults,omitempty" name:"OcrResults" list`
 
 		// 基于图片风险库识别的结果。
-	// 风险库包括违规黑库与正常白库的结果。
+	// 风险库包括不安全黑库与正常白库的结果。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		LibResults []*LibResult `json:"LibResults,omitempty" name:"LibResults" list`
 
@@ -327,10 +328,12 @@ type LabelResult struct {
 	// 场景识别结果
 	Scene *string `json:"Scene,omitempty" name:"Scene"`
 
-	// 建议值，Block：打击，Review：待复审，Pass：正常
+	// 建议您拿到判断结果后的执行操作。
+	// 建议值，Block：建议屏蔽，Review：建议复审，Pass：建议通过
 	Suggestion *string `json:"Suggestion,omitempty" name:"Suggestion"`
 
-	// 恶意标签，Normal：正常，Polity：涉政，Porn：色情，Illegal：违法，Abuse：谩骂，Terror：暴恐，Ad：广告，Custom：自定义图片
+	// 恶意标签，Normal：正常，Porn：色情，Abuse：谩骂，Ad：广告，Custom：自定义图片。
+	// 以及令人反感、不安全或不适宜的内容类型。
 	Label *string `json:"Label,omitempty" name:"Label"`
 
 	// 子标签检测结果
@@ -350,17 +353,18 @@ type LibDetail struct {
 	// 序号
 	Id *int64 `json:"Id,omitempty" name:"Id"`
 
-	// 仅当Lable为Custom自定义关键词时有效，表示自定义库id
+	// 仅当Label为Custom自定义关键词时有效，表示自定义库id
 	LibId *string `json:"LibId,omitempty" name:"LibId"`
 
-	// 仅当Lable为Custom自定义关键词时有效，表示自定义库名称
+	// 仅当Label为Custom自定义关键词时有效，表示自定义库名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	LibName *string `json:"LibName,omitempty" name:"LibName"`
 
 	// 图片ID
 	ImageId *string `json:"ImageId,omitempty" name:"ImageId"`
 
-	// 恶意标签，Normal：正常，Polity：涉政，Porn：色情，Illegal：违法，Abuse：谩骂，Terror：暴恐，Ad：广告，Custom：自定义图片
+	// 恶意标签，Normal：正常，Porn：色情，Abuse：谩骂，Ad：广告，Custom：自定义词库。
+	// 以及其他令人反感、不安全或不适宜的内容类型。
 	Label *string `json:"Label,omitempty" name:"Label"`
 
 	// 自定义标签
@@ -376,10 +380,12 @@ type LibResult struct {
 	// 场景识别结果
 	Scene *string `json:"Scene,omitempty" name:"Scene"`
 
-	// 建议值，Block：打击，Review：待复审，Pass：正常
+	// 建议您拿到判断结果后的执行操作。
+	// 建议值，Block：建议屏蔽，Review：建议复审，Pass：建议通过
 	Suggestion *string `json:"Suggestion,omitempty" name:"Suggestion"`
 
-	// 恶意标签，Normal：正常，Polity：涉政，Porn：色情，Illegal：违法，Abuse：谩骂，Terror：暴恐，Ad：广告，Custom：自定义图片
+	// 恶意标签，Normal：正常，Porn：色情，Abuse：谩骂，Ad：广告，Custom：自定义词库。
+	// 以及令人反感、不安全或不适宜的内容类型。
 	Label *string `json:"Label,omitempty" name:"Label"`
 
 	// 子标签检测结果
@@ -422,7 +428,6 @@ type ObjectDetail struct {
 
 	// 标签值，
 	// 当标签为二维码时，表示URL地址，如Name为QrCode时，Value为"http//abc.com/aaa"
-	// 当标签为人脸属性，表示属性值，如Name为Age时 Value为18
 	Value *string `json:"Value,omitempty" name:"Value"`
 
 	// 分数
@@ -437,10 +442,12 @@ type ObjectResult struct {
 	// 场景识别结果
 	Scene *string `json:"Scene,omitempty" name:"Scene"`
 
-	// 建议值，Block：打击，Review：待复审，Pass：正常
+	// 建议您拿到判断结果后的执行操作。
+	// 建议值，Block：建议屏蔽，Review：建议复审，Pass：建议通过
 	Suggestion *string `json:"Suggestion,omitempty" name:"Suggestion"`
 
-	// 恶意标签，Normal：正常，Polity：涉政，Porn：色情，Illegal：违法，Abuse：谩骂，Terror：暴恐，Ad：广告，Custom：自定义图片
+	// 恶意标签，Normal：正常，Porn：色情，Abuse：谩骂，Ad：广告，Custom：自定义图片。
+	// 以及令人反感、不安全或不适宜的内容类型。
 	Label *string `json:"Label,omitempty" name:"Label"`
 
 	// 子标签检测结果
@@ -464,10 +471,12 @@ type OcrResult struct {
 	// 场景识别结果
 	Scene *string `json:"Scene,omitempty" name:"Scene"`
 
-	// 建议值，Block：打击，Review：待复审，Pass：正常
+	// 建议您拿到判断结果后的执行操作。
+	// 建议值，Block：建议屏蔽，Review：建议复审，Pass：建议通过
 	Suggestion *string `json:"Suggestion,omitempty" name:"Suggestion"`
 
-	// 恶意标签，Normal：正常，Polity：涉政，Porn：色情，Illegal：违法，Abuse：谩骂，Terror：暴恐，Ad：广告
+	// 恶意标签，Normal：正常，Porn：色情，Abuse：谩骂，Ad：广告，Custom：自定义词库。
+	// 以及令人反感、不安全或不适宜的内容类型。
 	Label *string `json:"Label,omitempty" name:"Label"`
 
 	// 子标签检测结果
@@ -478,6 +487,9 @@ type OcrResult struct {
 
 	// ocr结果详情
 	Details []*OcrTextDetail `json:"Details,omitempty" name:"Details" list`
+
+	// ocr识别出的文本结果
+	Text *string `json:"Text,omitempty" name:"Text"`
 }
 
 type OcrTextDetail struct {
@@ -485,13 +497,14 @@ type OcrTextDetail struct {
 	// OCR文本内容
 	Text *string `json:"Text,omitempty" name:"Text"`
 
-	// 恶意标签，Normal：正常，Polity：涉政，Porn：色情，Illegal：违法，Abuse：谩骂，Terror：暴恐，Ad：广告，Custom：自定义关键词
+	// 恶意标签，Normal：正常，Porn：色情，Abuse：谩骂，Ad：广告，Custom：自定义词库。
+	// 以及令人反感、不安全或不适宜的内容类型。
 	Label *string `json:"Label,omitempty" name:"Label"`
 
-	// 仅当Lable为Custom自定义关键词时有效，表示自定义库id
+	// 仅当Label为Custom自定义关键词时有效，表示自定义库id
 	LibId *string `json:"LibId,omitempty" name:"LibId"`
 
-	// 仅当Lable为Custom自定义关键词时有效，表示自定义库名称
+	// 仅当Label为Custom自定义关键词时有效，表示自定义库名称
 	LibName *string `json:"LibName,omitempty" name:"LibName"`
 
 	// 该标签下命中的关键词

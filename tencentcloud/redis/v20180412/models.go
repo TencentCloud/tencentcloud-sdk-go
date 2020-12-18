@@ -3924,6 +3924,9 @@ type UpgradeInstanceRequest struct {
 
 	// 副本数量，Redis2.8主从版、CKV主从版和Redis2.8单机版不需要填写
 	RedisReplicasNum *uint64 `json:"RedisReplicasNum,omitempty" name:"RedisReplicasNum"`
+
+	// 多AZ实例增加副本时的附带信息，非多AZ实例不需要传此参数。多AZ增加副本时此参数为必传参数，传入要增加的副本的信息，包括副本的可用区和副本的类型（NodeType为1）
+	NodeSet []*RedisNodeInfo `json:"NodeSet,omitempty" name:"NodeSet" list`
 }
 
 func (r *UpgradeInstanceRequest) ToJsonString() string {
