@@ -68,6 +68,31 @@ func (c *Client) CreateEditingTask(request *CreateEditingTaskRequest) (response 
     return
 }
 
+func NewCreateMediaProcessTaskRequest() (request *CreateMediaProcessTaskRequest) {
+    request = &CreateMediaProcessTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ie", APIVersion, "CreateMediaProcessTask")
+    return
+}
+
+func NewCreateMediaProcessTaskResponse() (response *CreateMediaProcessTaskResponse) {
+    response = &CreateMediaProcessTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 用于创建编辑处理任务，如媒体截取、媒体编辑、媒体拼接、媒体字幕。
+func (c *Client) CreateMediaProcessTask(request *CreateMediaProcessTaskRequest) (response *CreateMediaProcessTaskResponse, err error) {
+    if request == nil {
+        request = NewCreateMediaProcessTaskRequest()
+    }
+    response = NewCreateMediaProcessTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateMediaQualityRestorationTaskRequest() (request *CreateMediaQualityRestorationTaskRequest) {
     request = &CreateMediaQualityRestorationTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -143,6 +168,31 @@ func (c *Client) DescribeEditingTaskResult(request *DescribeEditingTaskResultReq
     return
 }
 
+func NewDescribeMediaProcessTaskResultRequest() (request *DescribeMediaProcessTaskResultRequest) {
+    request = &DescribeMediaProcessTaskResultRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ie", APIVersion, "DescribeMediaProcessTaskResult")
+    return
+}
+
+func NewDescribeMediaProcessTaskResultResponse() (response *DescribeMediaProcessTaskResultResponse) {
+    response = &DescribeMediaProcessTaskResultResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 用于获取编辑处理任务的结果。
+func (c *Client) DescribeMediaProcessTaskResult(request *DescribeMediaProcessTaskResultRequest) (response *DescribeMediaProcessTaskResultResponse, err error) {
+    if request == nil {
+        request = NewDescribeMediaProcessTaskResultRequest()
+    }
+    response = NewDescribeMediaProcessTaskResultResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeMediaQualityRestorationTaskRusultRequest() (request *DescribeMediaQualityRestorationTaskRusultRequest) {
     request = &DescribeMediaQualityRestorationTaskRusultRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -189,6 +239,31 @@ func (c *Client) DescribeQualityControlTaskResult(request *DescribeQualityContro
         request = NewDescribeQualityControlTaskResultRequest()
     }
     response = NewDescribeQualityControlTaskResultResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewStopMediaProcessTaskRequest() (request *StopMediaProcessTaskRequest) {
+    request = &StopMediaProcessTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ie", APIVersion, "StopMediaProcessTask")
+    return
+}
+
+func NewStopMediaProcessTaskResponse() (response *StopMediaProcessTaskResponse) {
+    response = &StopMediaProcessTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 用于停止正在进行中的编辑处理任务。
+func (c *Client) StopMediaProcessTask(request *StopMediaProcessTaskRequest) (response *StopMediaProcessTaskResponse, err error) {
+    if request == nil {
+        request = NewStopMediaProcessTaskRequest()
+    }
+    response = NewStopMediaProcessTaskResponse()
     err = c.Send(request, response)
     return
 }

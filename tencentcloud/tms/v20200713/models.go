@@ -162,10 +162,12 @@ func (r *DescribeTextStatResponse) FromJsonString(s string) error {
 
 type DetailResults struct {
 
-	// 恶意标签，Normal：正常，Polity：涉政，Porn：色情，Illegal：违法，Abuse：谩骂，Terror：暴恐，Ad：广告，Custom：自定义关键词
+	// 恶意标签，Normal：正常，Porn：色情，Abuse：谩骂，Ad：广告，Custom：自定义词库。
+	// 以及令人反感、不安全或不适宜的内容类型。
 	Label *string `json:"Label,omitempty" name:"Label"`
 
-	// 建议值,Block：打击,Review：待复审,Pass：正常
+	// 建议您拿到判断结果后的执行操作。
+	// 建议值，Block：建议屏蔽，Review：建议复审，Pass：建议通过
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Suggestion *string `json:"Suggestion,omitempty" name:"Suggestion"`
 
@@ -177,15 +179,15 @@ type DetailResults struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Score *int64 `json:"Score,omitempty" name:"Score"`
 
-	// 仅当Lable为Custom自定义关键词时有效，表示自定义关键词库类型，1:黑白库，2：自定义库
+	// 仅当Label为Custom自定义关键词时有效，表示自定义关键词库类型，1:黑白库，2：自定义库
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	LibType *int64 `json:"LibType,omitempty" name:"LibType"`
 
-	// 仅当Lable为Custom自定义关键词时有效，表示自定义库id
+	// 仅当Label为Custom自定义关键词时有效，表示自定义库id
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	LibId *string `json:"LibId,omitempty" name:"LibId"`
 
-	// 仅当Lable为Custom自定义关键词时有效，表示自定义库名称
+	// 仅当Labe为Custom自定义关键词时有效，表示自定义库名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	LibName *string `json:"LibName,omitempty" name:"LibName"`
 }
@@ -216,15 +218,7 @@ type Device struct {
 
 type EvilCount struct {
 
-	// 违规类型：
-	// Terror	24001
-	// Porn	20002
-	// Polity	20001
-	// Ad	20105
-	// Abuse	20007	
-	// Illegal	20006	
-	// Spam	25001	
-	// Moan	26001
+	// ----非必选，该参数功能暂未对外开放
 	EvilType *string `json:"EvilType,omitempty" name:"EvilType"`
 
 	// 分布类型总量
@@ -294,11 +288,11 @@ type TextModerationRequest struct {
 	// 文本内容Base64编码。原文长度需小于15000字节，即5000个汉字以内。
 	Content *string `json:"Content,omitempty" name:"Content"`
 
-	// 数据ID，英文字母、下划线、-组成，不超过64个字符
-	DataId *string `json:"DataId,omitempty" name:"DataId"`
-
 	// 该字段用于标识业务场景。您可以在内容安全控制台创建对应的ID，配置不同的内容审核策略，通过接口调用，默认不填为0，后端使用默认策略。 -- 该字段暂未开放。
 	BizType *string `json:"BizType,omitempty" name:"BizType"`
+
+	// 数据ID，英文字母、下划线、-组成，不超过64个字符
+	DataId *string `json:"DataId,omitempty" name:"DataId"`
 
 	// 账号相关信息字段，填入后可识别违规风险账号。
 	User *User `json:"User,omitempty" name:"User"`
@@ -327,12 +321,12 @@ type TextModerationResponse struct {
 	//  0：正常 1：可疑
 		EvilFlag *int64 `json:"EvilFlag,omitempty" name:"EvilFlag"`
 
-		// 机器识别后判断违规所属类型。
-	// Normal：正常，Polity：涉政，Porn：色情，Illegal：违法，Abuse：谩骂，Terror：暴恐，Ad：广告，Custom：自定义关键词
+		// 恶意标签，Normal：正常，Porn：色情，Abuse：谩骂，Ad：广告，Custom：自定义词库。
+	// 以及令人反感、不安全或不适宜的内容类型。
 		Label *string `json:"Label,omitempty" name:"Label"`
 
 		// 建议您拿到判断结果后的执行操作。
-	// Block：建议打击，Review：建议复审，Normal：建议通过。
+	// 建议值，Block：建议屏蔽，Review：建议复审，Pass：建议通过
 		Suggestion *string `json:"Suggestion,omitempty" name:"Suggestion"`
 
 		// 文本命中的关键词信息，用于提示您文本违规的具体原因，可能会返回多个命中的关键词。（如：加我微信）
@@ -355,6 +349,10 @@ type TextModerationResponse struct {
 		// 扩展字段，用于特定信息返回，不同客户/Biztype下返回信息不同。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		Extra *string `json:"Extra,omitempty" name:"Extra"`
+
+		// 请求参数中的DataId
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		DataId *string `json:"DataId,omitempty" name:"DataId"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`

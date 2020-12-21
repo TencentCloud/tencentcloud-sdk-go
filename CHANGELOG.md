@@ -1,10 +1,64 @@
 # 本版本更新包含以下内容：
 
-## 云 HDFS(chdfs) 版本：2020-11-12
+## 音频内容检测(ams) 版本：2020-06-08
 
-### 第 1 次发布
+### 第 7 次发布
 
-发布时间：2020-12-18 08:03:19
+发布时间：2020-12-18 15:18:40
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [MediaInfo](https://cloud.tencent.com/document/api/1219/46478#MediaInfo)
+
+	* 新增成员：Thumbnail
+
+
+
+
+## 内容分发网络(cdn) 版本：2018-06-06
+
+### 第 55 次发布
+
+发布时间：2020-12-21 08:03:14
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateScdnLogTask](https://cloud.tencent.com/document/api/228/47941)
+
+	* 新增入参：AttackTypes, Conditions
+
+
+新增数据结构：
+
+* [AdvanceConfig](https://cloud.tencent.com/document/api/228/30987#AdvanceConfig)
+* [ScdnEventLogConditions](https://cloud.tencent.com/document/api/228/30987#ScdnEventLogConditions)
+
+修改数据结构：
+
+* [DetailDomain](https://cloud.tencent.com/document/api/228/30987#DetailDomain)
+
+	* 新增成员：AdvanceSet
+
+* [ScdnLogTaskDetail](https://cloud.tencent.com/document/api/228/30987#ScdnLogTaskDetail)
+
+	* 新增成员：Conditions
+
+
+
+
+## 智能编辑(ie) 版本：2020-03-04
+
+### 第 3 次发布
+
+发布时间：2020-12-21 08:01:10
 
 本次发布包含了以下内容：
 
@@ -12,42 +66,60 @@
 
 新增接口：
 
-* [AssociateAccessGroups](https://cloud.tencent.com/document/api/1105/51155)
-* [CreateAccessGroup](https://cloud.tencent.com/document/api/1105/51143)
-* [CreateFileSystem](https://cloud.tencent.com/document/api/1105/51148)
-* [CreateMountPoint](https://cloud.tencent.com/document/api/1105/51154)
-* [DescribeAccessGroup](https://cloud.tencent.com/document/api/1105/51142)
-* [DescribeAccessGroups](https://cloud.tencent.com/document/api/1105/51141)
-* [DescribeAccessRules](https://cloud.tencent.com/document/api/1105/51138)
-* [DescribeFileSystem](https://cloud.tencent.com/document/api/1105/51147)
-* [DescribeFileSystems](https://cloud.tencent.com/document/api/1105/51146)
-* [DescribeMountPoint](https://cloud.tencent.com/document/api/1105/51153)
-* [DescribeMountPoints](https://cloud.tencent.com/document/api/1105/51152)
-* [DisassociateAccessGroups](https://cloud.tencent.com/document/api/1105/51151)
-* [ModifyAccessGroup](https://cloud.tencent.com/document/api/1105/51140)
-* [ModifyFileSystem](https://cloud.tencent.com/document/api/1105/51145)
-* [ModifyMountPoint](https://cloud.tencent.com/document/api/1105/51150)
-* [ModifyResourceTags](https://cloud.tencent.com/document/api/1105/51157)
+* [CreateMediaProcessTask](https://cloud.tencent.com/document/api/1186/51243)
+* [DescribeMediaProcessTaskResult](https://cloud.tencent.com/document/api/1186/51242)
+* [StopMediaProcessTask](https://cloud.tencent.com/document/api/1186/51241)
 
 新增数据结构：
 
-* [AccessGroup](https://cloud.tencent.com/document/api/1105/51158#AccessGroup)
-* [AccessRule](https://cloud.tencent.com/document/api/1105/51158#AccessRule)
-* [FileSystem](https://cloud.tencent.com/document/api/1105/51158#FileSystem)
-* [MountPoint](https://cloud.tencent.com/document/api/1105/51158#MountPoint)
-* [Tag](https://cloud.tencent.com/document/api/1105/51158#Tag)
+* [IntervalTime](https://cloud.tencent.com/document/api/1186/42824#IntervalTime)
+* [MediaCuttingInfo](https://cloud.tencent.com/document/api/1186/42824#MediaCuttingInfo)
+* [MediaCuttingOutForm](https://cloud.tencent.com/document/api/1186/42824#MediaCuttingOutForm)
+* [MediaCuttingTaskResult](https://cloud.tencent.com/document/api/1186/42824#MediaCuttingTaskResult)
+* [MediaCuttingTimeInfo](https://cloud.tencent.com/document/api/1186/42824#MediaCuttingTimeInfo)
+* [MediaJoiningInfo](https://cloud.tencent.com/document/api/1186/42824#MediaJoiningInfo)
+* [MediaJoiningTaskResult](https://cloud.tencent.com/document/api/1186/42824#MediaJoiningTaskResult)
+* [MediaProcessInfo](https://cloud.tencent.com/document/api/1186/42824#MediaProcessInfo)
+* [MediaProcessTaskResult](https://cloud.tencent.com/document/api/1186/42824#MediaProcessTaskResult)
+* [MediaSourceInfo](https://cloud.tencent.com/document/api/1186/42824#MediaSourceInfo)
+* [MediaTargetInfo](https://cloud.tencent.com/document/api/1186/42824#MediaTargetInfo)
+* [SectionTime](https://cloud.tencent.com/document/api/1186/42824#SectionTime)
+* [TargetVideoInfo](https://cloud.tencent.com/document/api/1186/42824#TargetVideoInfo)
+* [TaskResultFile](https://cloud.tencent.com/document/api/1186/42824#TaskResultFile)
 
 
 
-## 云 HDFS(chdfs) 版本：2019-07-18
+## 云函数(scf) 版本：2018-04-16
+
+### 第 23 次发布
+
+发布时间：2020-12-21 08:06:44
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DeleteProvisionedConcurrencyConfig](https://cloud.tencent.com/document/api/583/51250)
+* [DeleteReservedConcurrencyConfig](https://cloud.tencent.com/document/api/583/51249)
+* [GetProvisionedConcurrencyConfig](https://cloud.tencent.com/document/api/583/51248)
+* [GetReservedConcurrencyConfig](https://cloud.tencent.com/document/api/583/51247)
+* [PutProvisionedConcurrencyConfig](https://cloud.tencent.com/document/api/583/51246)
+* [PutReservedConcurrencyConfig](https://cloud.tencent.com/document/api/583/51245)
+* [PutTotalConcurrencyConfig](https://cloud.tencent.com/document/api/583/51244)
+
+新增数据结构：
+
+* [VersionProvisionedConcurrencyInfo](https://cloud.tencent.com/document/api/583/17244#VersionProvisionedConcurrencyInfo)
 
 
 
-## 专线接入(dc) 版本：2018-04-10
+## 文本内容检测(tms) 版本：2020-07-13
 
-### 第 13 次发布
+### 第 4 次发布
 
-发布时间：2020-12-18 08:04:11
+发布时间：2020-12-18 15:20:34
 
 本次发布包含了以下内容：
 
@@ -55,44 +127,18 @@
 
 修改接口：
 
-* [CreateDirectConnectTunnel](https://cloud.tencent.com/document/api/216/19821)
+* [TextModeration](https://cloud.tencent.com/document/api/1124/46976)
 
-	* 新增入参：CloudAttachId
-
-
-修改数据结构：
-
-* [DirectConnectTunnel](https://cloud.tencent.com/document/api/216/18418#DirectConnectTunnel)
-
-	* 新增成员：CloudAttachId
+	* 新增出参：DataId
 
 
 
 
-## 图片内容检测(ims) 版本：2020-07-13
+## 私有网络(vpc) 版本：2017-03-12
 
-### 第 3 次发布
+### 第 75 次发布
 
-发布时间：2020-12-18 08:00:10
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [OcrResult](https://cloud.tencent.com/document/api/1125/49657#OcrResult)
-
-	* 新增成员：Text
-
-
-
-
-## 物联网开发平台(iotexplorer) 版本：2019-04-23
-
-### 第 17 次发布
-
-发布时间：2020-12-18 08:05:18
+发布时间：2020-12-21 08:08:07
 
 本次发布包含了以下内容：
 
@@ -100,39 +146,16 @@
 
 修改接口：
 
-* [CreateLoRaGateway](https://cloud.tencent.com/document/api/1081/45745)
+* [ModifyNatGatewayAttribute](https://cloud.tencent.com/document/api/215/36715)
 
-	* 新增入参：FrequencyId
-
-* [ModifyLoRaGateway](https://cloud.tencent.com/document/api/1081/46010)
-
-	* 新增入参：FrequencyId
+	* 新增入参：ModifySecurityGroup, SecurityGroupIds
 
 
 修改数据结构：
 
-* [LoRaGatewayItem](https://cloud.tencent.com/document/api/1081/34988#LoRaGatewayItem)
+* [NatGateway](https://cloud.tencent.com/document/api/215/15824#NatGateway)
 
-	* 新增成员：FrequencyId
-
-
-
-
-## 云数据库 Redis(redis) 版本：2018-04-12
-
-### 第 27 次发布
-
-发布时间：2020-12-18 08:06:39
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [UpgradeInstance](https://cloud.tencent.com/document/api/239/20013)
-
-	* 新增入参：NodeSet
+	* 新增成员：SecurityGroupSet
 
 
 
@@ -495,6 +518,21 @@
 
 
 ## 音频内容检测(ams) 版本：2020-06-08
+
+### 第 7 次发布
+
+发布时间：2020-12-18 15:18:40
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [MediaInfo](https://cloud.tencent.com/document/api/1219/46478#MediaInfo)
+
+	* 新增成员：Thumbnail
+
 
 ### 第 6 次发布
 
@@ -6834,6 +6872,37 @@
 
 ## 内容分发网络(cdn) 版本：2018-06-06
 
+### 第 55 次发布
+
+发布时间：2020-12-21 08:03:14
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateScdnLogTask](https://cloud.tencent.com/document/api/228/47941)
+
+	* 新增入参：AttackTypes, Conditions
+
+
+新增数据结构：
+
+* [[AdvanceConfig](https://cloud.tencent.com/document/api/228/30987#AdvanceConfig)](https://cloud.tencent.com/document/api/228/30987#[AdvanceConfig](https://cloud.tencent.com/document/api/228/30987#AdvanceConfig))
+* [[ScdnEventLogConditions](https://cloud.tencent.com/document/api/228/30987#ScdnEventLogConditions)](https://cloud.tencent.com/document/api/228/30987#[ScdnEventLogConditions](https://cloud.tencent.com/document/api/228/30987#ScdnEventLogConditions))
+
+修改数据结构：
+
+* [DetailDomain](https://cloud.tencent.com/document/api/228/30987#DetailDomain)
+
+	* 新增成员：AdvanceSet
+
+* [ScdnLogTaskDetail](https://cloud.tencent.com/document/api/228/30987#ScdnLogTaskDetail)
+
+	* 新增成员：Conditions
+
+
 ### 第 54 次发布
 
 发布时间：2020-12-17 08:02:55
@@ -8460,30 +8529,30 @@
 
 新增接口：
 
-* [[AssociateAccessGroups](https://cloud.tencent.com/document/api/1105/51155)](https://cloud.tencent.com/document/api/#/#)
-* [[CreateAccessGroup](https://cloud.tencent.com/document/api/1105/51143)](https://cloud.tencent.com/document/api/#/#)
-* [[CreateFileSystem](https://cloud.tencent.com/document/api/1105/51148)](https://cloud.tencent.com/document/api/#/#)
-* [[CreateMountPoint](https://cloud.tencent.com/document/api/1105/51154)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeAccessGroup](https://cloud.tencent.com/document/api/1105/51142)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeAccessGroups](https://cloud.tencent.com/document/api/1105/51141)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeAccessRules](https://cloud.tencent.com/document/api/1105/51138)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeFileSystem](https://cloud.tencent.com/document/api/1105/51147)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeFileSystems](https://cloud.tencent.com/document/api/1105/51146)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeMountPoint](https://cloud.tencent.com/document/api/1105/51153)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeMountPoints](https://cloud.tencent.com/document/api/1105/51152)](https://cloud.tencent.com/document/api/#/#)
-* [[DisassociateAccessGroups](https://cloud.tencent.com/document/api/1105/51151)](https://cloud.tencent.com/document/api/#/#)
-* [[ModifyAccessGroup](https://cloud.tencent.com/document/api/1105/51140)](https://cloud.tencent.com/document/api/#/#)
-* [[ModifyFileSystem](https://cloud.tencent.com/document/api/1105/51145)](https://cloud.tencent.com/document/api/#/#)
-* [[ModifyMountPoint](https://cloud.tencent.com/document/api/1105/51150)](https://cloud.tencent.com/document/api/#/#)
-* [[ModifyResourceTags](https://cloud.tencent.com/document/api/1105/51157)](https://cloud.tencent.com/document/api/#/#)
+* [AssociateAccessGroups](https://cloud.tencent.com/document/api/1105/51155)
+* [CreateAccessGroup](https://cloud.tencent.com/document/api/1105/51143)
+* [CreateFileSystem](https://cloud.tencent.com/document/api/1105/51148)
+* [CreateMountPoint](https://cloud.tencent.com/document/api/1105/51154)
+* [DescribeAccessGroup](https://cloud.tencent.com/document/api/1105/51142)
+* [DescribeAccessGroups](https://cloud.tencent.com/document/api/1105/51141)
+* [DescribeAccessRules](https://cloud.tencent.com/document/api/1105/51138)
+* [DescribeFileSystem](https://cloud.tencent.com/document/api/1105/51147)
+* [DescribeFileSystems](https://cloud.tencent.com/document/api/1105/51146)
+* [DescribeMountPoint](https://cloud.tencent.com/document/api/1105/51153)
+* [DescribeMountPoints](https://cloud.tencent.com/document/api/1105/51152)
+* [DisassociateAccessGroups](https://cloud.tencent.com/document/api/1105/51151)
+* [ModifyAccessGroup](https://cloud.tencent.com/document/api/1105/51140)
+* [ModifyFileSystem](https://cloud.tencent.com/document/api/1105/51145)
+* [ModifyMountPoint](https://cloud.tencent.com/document/api/1105/51150)
+* [ModifyResourceTags](https://cloud.tencent.com/document/api/1105/51157)
 
 新增数据结构：
 
-* [[AccessGroup](https://cloud.tencent.com/document/api/1105/51158#AccessGroup)](https://cloud.tencent.com/document/api/1105/51158#[AccessGroup](https://cloud.tencent.com/document/api/1105/51158#AccessGroup))
-* [[AccessRule](https://cloud.tencent.com/document/api/1105/51158#AccessRule)](https://cloud.tencent.com/document/api/1105/51158#[AccessRule](https://cloud.tencent.com/document/api/1105/51158#AccessRule))
-* [[FileSystem](https://cloud.tencent.com/document/api/1105/51158#FileSystem)](https://cloud.tencent.com/document/api/1105/51158#[FileSystem](https://cloud.tencent.com/document/api/1105/51158#FileSystem))
-* [[MountPoint](https://cloud.tencent.com/document/api/1105/51158#MountPoint)](https://cloud.tencent.com/document/api/1105/51158#[MountPoint](https://cloud.tencent.com/document/api/1105/51158#MountPoint))
-* [[Tag](https://cloud.tencent.com/document/api/1105/51158#Tag)](https://cloud.tencent.com/document/api/1105/51158#[Tag](https://cloud.tencent.com/document/api/1105/51158#Tag))
+* [AccessGroup](https://cloud.tencent.com/document/api/1105/51158#AccessGroup)
+* [AccessRule](https://cloud.tencent.com/document/api/1105/51158#AccessRule)
+* [FileSystem](https://cloud.tencent.com/document/api/1105/51158#FileSystem)
+* [MountPoint](https://cloud.tencent.com/document/api/1105/51158#MountPoint)
+* [Tag](https://cloud.tencent.com/document/api/1105/51158#Tag)
 
 
 
@@ -20083,6 +20152,37 @@
 
 ## 智能编辑(ie) 版本：2020-03-04
 
+### 第 3 次发布
+
+发布时间：2020-12-21 08:01:10
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[CreateMediaProcessTask](https://cloud.tencent.com/document/api/1186/51243)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeMediaProcessTaskResult](https://cloud.tencent.com/document/api/1186/51242)](https://cloud.tencent.com/document/api/#/#)
+* [[StopMediaProcessTask](https://cloud.tencent.com/document/api/1186/51241)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[IntervalTime](https://cloud.tencent.com/document/api/1186/42824#IntervalTime)](https://cloud.tencent.com/document/api/1186/42824#[IntervalTime](https://cloud.tencent.com/document/api/1186/42824#IntervalTime))
+* [[MediaCuttingInfo](https://cloud.tencent.com/document/api/1186/42824#MediaCuttingInfo)](https://cloud.tencent.com/document/api/1186/42824#[MediaCuttingInfo](https://cloud.tencent.com/document/api/1186/42824#MediaCuttingInfo))
+* [[MediaCuttingOutForm](https://cloud.tencent.com/document/api/1186/42824#MediaCuttingOutForm)](https://cloud.tencent.com/document/api/1186/42824#[MediaCuttingOutForm](https://cloud.tencent.com/document/api/1186/42824#MediaCuttingOutForm))
+* [[MediaCuttingTaskResult](https://cloud.tencent.com/document/api/1186/42824#MediaCuttingTaskResult)](https://cloud.tencent.com/document/api/1186/42824#[MediaCuttingTaskResult](https://cloud.tencent.com/document/api/1186/42824#MediaCuttingTaskResult))
+* [[MediaCuttingTimeInfo](https://cloud.tencent.com/document/api/1186/42824#MediaCuttingTimeInfo)](https://cloud.tencent.com/document/api/1186/42824#[MediaCuttingTimeInfo](https://cloud.tencent.com/document/api/1186/42824#MediaCuttingTimeInfo))
+* [[MediaJoiningInfo](https://cloud.tencent.com/document/api/1186/42824#MediaJoiningInfo)](https://cloud.tencent.com/document/api/1186/42824#[MediaJoiningInfo](https://cloud.tencent.com/document/api/1186/42824#MediaJoiningInfo))
+* [[MediaJoiningTaskResult](https://cloud.tencent.com/document/api/1186/42824#MediaJoiningTaskResult)](https://cloud.tencent.com/document/api/1186/42824#[MediaJoiningTaskResult](https://cloud.tencent.com/document/api/1186/42824#MediaJoiningTaskResult))
+* [[MediaProcessInfo](https://cloud.tencent.com/document/api/1186/42824#MediaProcessInfo)](https://cloud.tencent.com/document/api/1186/42824#[MediaProcessInfo](https://cloud.tencent.com/document/api/1186/42824#MediaProcessInfo))
+* [[MediaProcessTaskResult](https://cloud.tencent.com/document/api/1186/42824#MediaProcessTaskResult)](https://cloud.tencent.com/document/api/1186/42824#[MediaProcessTaskResult](https://cloud.tencent.com/document/api/1186/42824#MediaProcessTaskResult))
+* [[MediaSourceInfo](https://cloud.tencent.com/document/api/1186/42824#MediaSourceInfo)](https://cloud.tencent.com/document/api/1186/42824#[MediaSourceInfo](https://cloud.tencent.com/document/api/1186/42824#MediaSourceInfo))
+* [[MediaTargetInfo](https://cloud.tencent.com/document/api/1186/42824#MediaTargetInfo)](https://cloud.tencent.com/document/api/1186/42824#[MediaTargetInfo](https://cloud.tencent.com/document/api/1186/42824#MediaTargetInfo))
+* [[SectionTime](https://cloud.tencent.com/document/api/1186/42824#SectionTime)](https://cloud.tencent.com/document/api/1186/42824#[SectionTime](https://cloud.tencent.com/document/api/1186/42824#SectionTime))
+* [[TargetVideoInfo](https://cloud.tencent.com/document/api/1186/42824#TargetVideoInfo)](https://cloud.tencent.com/document/api/1186/42824#[TargetVideoInfo](https://cloud.tencent.com/document/api/1186/42824#TargetVideoInfo))
+* [[TaskResultFile](https://cloud.tencent.com/document/api/1186/42824#TaskResultFile)](https://cloud.tencent.com/document/api/1186/42824#[TaskResultFile](https://cloud.tencent.com/document/api/1186/42824#TaskResultFile))
+
 ### 第 2 次发布
 
 发布时间：2020-09-17 08:00:24
@@ -28359,6 +28459,28 @@
 
 ## 云函数(scf) 版本：2018-04-16
 
+### 第 23 次发布
+
+发布时间：2020-12-21 08:06:44
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DeleteProvisionedConcurrencyConfig](https://cloud.tencent.com/document/api/583/51250)](https://cloud.tencent.com/document/api/#/#)
+* [[DeleteReservedConcurrencyConfig](https://cloud.tencent.com/document/api/583/51249)](https://cloud.tencent.com/document/api/#/#)
+* [[GetProvisionedConcurrencyConfig](https://cloud.tencent.com/document/api/583/51248)](https://cloud.tencent.com/document/api/#/#)
+* [[GetReservedConcurrencyConfig](https://cloud.tencent.com/document/api/583/51247)](https://cloud.tencent.com/document/api/#/#)
+* [[PutProvisionedConcurrencyConfig](https://cloud.tencent.com/document/api/583/51246)](https://cloud.tencent.com/document/api/#/#)
+* [[PutReservedConcurrencyConfig](https://cloud.tencent.com/document/api/583/51245)](https://cloud.tencent.com/document/api/#/#)
+* [[PutTotalConcurrencyConfig](https://cloud.tencent.com/document/api/583/51244)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[VersionProvisionedConcurrencyInfo](https://cloud.tencent.com/document/api/583/17244#VersionProvisionedConcurrencyInfo)](https://cloud.tencent.com/document/api/583/17244#[VersionProvisionedConcurrencyInfo](https://cloud.tencent.com/document/api/583/17244#VersionProvisionedConcurrencyInfo))
+
 ### 第 22 次发布
 
 发布时间：2020-11-20 08:05:55
@@ -34680,6 +34802,21 @@
 
 ## 文本内容检测(tms) 版本：2020-07-13
 
+### 第 4 次发布
+
+发布时间：2020-12-18 15:20:34
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [TextModeration](https://cloud.tencent.com/document/api/1124/46976)
+
+	* 新增出参：DataId
+
+
 ### 第 3 次发布
 
 发布时间：2020-12-16 08:00:58
@@ -38479,6 +38616,28 @@
 
 
 ## 私有网络(vpc) 版本：2017-03-12
+
+### 第 75 次发布
+
+发布时间：2020-12-21 08:08:07
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [ModifyNatGatewayAttribute](https://cloud.tencent.com/document/api/215/36715)
+
+	* 新增入参：ModifySecurityGroup, SecurityGroupIds
+
+
+修改数据结构：
+
+* [NatGateway](https://cloud.tencent.com/document/api/215/15824#NatGateway)
+
+	* 新增成员：SecurityGroupSet
+
 
 ### 第 74 次发布
 

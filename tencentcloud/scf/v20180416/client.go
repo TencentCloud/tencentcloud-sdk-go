@@ -275,6 +275,56 @@ func (c *Client) DeleteNamespace(request *DeleteNamespaceRequest) (response *Del
     return
 }
 
+func NewDeleteProvisionedConcurrencyConfigRequest() (request *DeleteProvisionedConcurrencyConfigRequest) {
+    request = &DeleteProvisionedConcurrencyConfigRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("scf", APIVersion, "DeleteProvisionedConcurrencyConfig")
+    return
+}
+
+func NewDeleteProvisionedConcurrencyConfigResponse() (response *DeleteProvisionedConcurrencyConfigResponse) {
+    response = &DeleteProvisionedConcurrencyConfigResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 删除函数版本的预置并发配置。
+func (c *Client) DeleteProvisionedConcurrencyConfig(request *DeleteProvisionedConcurrencyConfigRequest) (response *DeleteProvisionedConcurrencyConfigResponse, err error) {
+    if request == nil {
+        request = NewDeleteProvisionedConcurrencyConfigRequest()
+    }
+    response = NewDeleteProvisionedConcurrencyConfigResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteReservedConcurrencyConfigRequest() (request *DeleteReservedConcurrencyConfigRequest) {
+    request = &DeleteReservedConcurrencyConfigRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("scf", APIVersion, "DeleteReservedConcurrencyConfig")
+    return
+}
+
+func NewDeleteReservedConcurrencyConfigResponse() (response *DeleteReservedConcurrencyConfigResponse) {
+    response = &DeleteReservedConcurrencyConfigResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 删除函数的保留并发配置。
+func (c *Client) DeleteReservedConcurrencyConfig(request *DeleteReservedConcurrencyConfigRequest) (response *DeleteReservedConcurrencyConfigResponse, err error) {
+    if request == nil {
+        request = NewDeleteReservedConcurrencyConfigRequest()
+    }
+    response = NewDeleteReservedConcurrencyConfigResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteTriggerRequest() (request *DeleteTriggerRequest) {
     request = &DeleteTriggerRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -421,6 +471,56 @@ func (c *Client) GetLayerVersion(request *GetLayerVersionRequest) (response *Get
         request = NewGetLayerVersionRequest()
     }
     response = NewGetLayerVersionResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewGetProvisionedConcurrencyConfigRequest() (request *GetProvisionedConcurrencyConfigRequest) {
+    request = &GetProvisionedConcurrencyConfigRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("scf", APIVersion, "GetProvisionedConcurrencyConfig")
+    return
+}
+
+func NewGetProvisionedConcurrencyConfigResponse() (response *GetProvisionedConcurrencyConfigResponse) {
+    response = &GetProvisionedConcurrencyConfigResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 获取函数或函数某一版本的预置并发详情。
+func (c *Client) GetProvisionedConcurrencyConfig(request *GetProvisionedConcurrencyConfigRequest) (response *GetProvisionedConcurrencyConfigResponse, err error) {
+    if request == nil {
+        request = NewGetProvisionedConcurrencyConfigRequest()
+    }
+    response = NewGetProvisionedConcurrencyConfigResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewGetReservedConcurrencyConfigRequest() (request *GetReservedConcurrencyConfigRequest) {
+    request = &GetReservedConcurrencyConfigRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("scf", APIVersion, "GetReservedConcurrencyConfig")
+    return
+}
+
+func NewGetReservedConcurrencyConfigResponse() (response *GetReservedConcurrencyConfigResponse) {
+    response = &GetReservedConcurrencyConfigResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 获取函数的保留并发详情。
+func (c *Client) GetReservedConcurrencyConfig(request *GetReservedConcurrencyConfigRequest) (response *GetReservedConcurrencyConfigResponse, err error) {
+    if request == nil {
+        request = NewGetReservedConcurrencyConfigRequest()
+    }
+    response = NewGetReservedConcurrencyConfigResponse()
     err = c.Send(request, response)
     return
 }
@@ -671,6 +771,81 @@ func (c *Client) PublishVersion(request *PublishVersionRequest) (response *Publi
         request = NewPublishVersionRequest()
     }
     response = NewPublishVersionResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewPutProvisionedConcurrencyConfigRequest() (request *PutProvisionedConcurrencyConfigRequest) {
+    request = &PutProvisionedConcurrencyConfigRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("scf", APIVersion, "PutProvisionedConcurrencyConfig")
+    return
+}
+
+func NewPutProvisionedConcurrencyConfigResponse() (response *PutProvisionedConcurrencyConfigResponse) {
+    response = &PutProvisionedConcurrencyConfigResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 设置函数某一非$LATEST版本的预置并发。
+func (c *Client) PutProvisionedConcurrencyConfig(request *PutProvisionedConcurrencyConfigRequest) (response *PutProvisionedConcurrencyConfigResponse, err error) {
+    if request == nil {
+        request = NewPutProvisionedConcurrencyConfigRequest()
+    }
+    response = NewPutProvisionedConcurrencyConfigResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewPutReservedConcurrencyConfigRequest() (request *PutReservedConcurrencyConfigRequest) {
+    request = &PutReservedConcurrencyConfigRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("scf", APIVersion, "PutReservedConcurrencyConfig")
+    return
+}
+
+func NewPutReservedConcurrencyConfigResponse() (response *PutReservedConcurrencyConfigResponse) {
+    response = &PutReservedConcurrencyConfigResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 设置函数保留并发
+func (c *Client) PutReservedConcurrencyConfig(request *PutReservedConcurrencyConfigRequest) (response *PutReservedConcurrencyConfigResponse, err error) {
+    if request == nil {
+        request = NewPutReservedConcurrencyConfigRequest()
+    }
+    response = NewPutReservedConcurrencyConfigResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewPutTotalConcurrencyConfigRequest() (request *PutTotalConcurrencyConfigRequest) {
+    request = &PutTotalConcurrencyConfigRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("scf", APIVersion, "PutTotalConcurrencyConfig")
+    return
+}
+
+func NewPutTotalConcurrencyConfigResponse() (response *PutTotalConcurrencyConfigResponse) {
+    response = &PutTotalConcurrencyConfigResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 修改账号并发限制配额
+func (c *Client) PutTotalConcurrencyConfig(request *PutTotalConcurrencyConfigRequest) (response *PutTotalConcurrencyConfigResponse, err error) {
+    if request == nil {
+        request = NewPutTotalConcurrencyConfigRequest()
+    }
+    response = NewPutTotalConcurrencyConfigResponse()
     err = c.Send(request, response)
     return
 }

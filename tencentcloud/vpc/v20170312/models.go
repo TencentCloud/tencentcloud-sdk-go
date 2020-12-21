@@ -9230,6 +9230,12 @@ type ModifyNatGatewayAttributeRequest struct {
 
 	// NAT网关最大外网出带宽(单位:Mbps)。
 	InternetMaxBandwidthOut *uint64 `json:"InternetMaxBandwidthOut,omitempty" name:"InternetMaxBandwidthOut"`
+
+	// 是否修改NAT网关绑定的安全组。
+	ModifySecurityGroup *bool `json:"ModifySecurityGroup,omitempty" name:"ModifySecurityGroup"`
+
+	// NAT网关绑定的安全组列表，最终状态，空列表表示删除所有安全组，形如: `['sg-1n232323', 'sg-o4242424']`
+	SecurityGroupIds []*string `json:"SecurityGroupIds,omitempty" name:"SecurityGroupIds" list`
 }
 
 func (r *ModifyNatGatewayAttributeRequest) ToJsonString() string {
@@ -9968,6 +9974,10 @@ type NatGateway struct {
 
 	// 标签键值对。
 	TagSet []*Tag `json:"TagSet,omitempty" name:"TagSet" list`
+
+	// NAT网关绑定的安全组列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SecurityGroupSet []*string `json:"SecurityGroupSet,omitempty" name:"SecurityGroupSet" list`
 }
 
 type NatGatewayAddress struct {

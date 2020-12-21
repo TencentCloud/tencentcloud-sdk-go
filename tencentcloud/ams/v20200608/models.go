@@ -73,21 +73,13 @@ type AudioResult struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	HitFlag *int64 `json:"HitFlag,omitempty" name:"HitFlag"`
 
-	// 命中的标签
-	// Porn 色情
-	// Polity 政治
-	// Illegal 违法
-	// Abuse 谩骂
-	// Terror 暴恐
-	// Ad 广告
-	// Moan 呻吟
+	// 恶意标签，Normal：正常，Porn：色情，Abuse：谩骂，Ad：广告，Custom：自定义词库。
+	// 以及令人反感、不安全或不适宜的内容类型。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Label *string `json:"Label,omitempty" name:"Label"`
 
-	// 审核建议，可选值：
-	// Pass 通过，
-	// Review 建议人审，
-	// Block 确认违规
+	// 建议您拿到判断结果后的执行操作。
+	// 建议值，Block：建议屏蔽，Review：建议复审，Pass：建议通过
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Suggestion *string `json:"Suggestion,omitempty" name:"Suggestion"`
 
@@ -109,19 +101,19 @@ type AudioResult struct {
 	// 拓展字段
 	Extra *string `json:"Extra,omitempty" name:"Extra"`
 
-	// 文本审核结果
+	// 文本识别结果
 	TextResults []*AudioResultDetailTextResult `json:"TextResults,omitempty" name:"TextResults" list`
 
-	// 音频呻吟审核结果
+	// 音频呻吟检测结果
 	MoanResults []*AudioResultDetailMoanResult `json:"MoanResults,omitempty" name:"MoanResults" list`
 
-	// 音频语种检测结果
+	// 音频语言检测结果
 	LanguageResults []*AudioResultDetailLanguageResult `json:"LanguageResults,omitempty" name:"LanguageResults" list`
 }
 
 type AudioResultDetailLanguageResult struct {
 
-	// 语种
+	// 语言信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Label *string `json:"Label,omitempty" name:"Label"`
 
@@ -144,7 +136,7 @@ type AudioResultDetailLanguageResult struct {
 
 type AudioResultDetailMoanResult struct {
 
-	// 固定为Moan
+	// 固定为Moan（呻吟）
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Label *string `json:"Label,omitempty" name:"Label"`
 
@@ -372,7 +364,7 @@ type DescribeAmsListResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 返回列表数据
+		// 返回列表数据----非必选，该参数暂未对外开放
 		AmsDetailSet []*AmsDetailInfo `json:"AmsDetailSet,omitempty" name:"AmsDetailSet" list`
 
 		// 总条数
@@ -608,15 +600,7 @@ func (r *DescribeTaskDetailResponse) FromJsonString(s string) error {
 
 type EvilCount struct {
 
-	// 违规类型：
-	// Terror	24001
-	// Porn	20002
-	// Polity	20001
-	// Ad	20105
-	// Abuse	20007	
-	// Illegal	20006	
-	// Spam	25001	
-	// Moan	26001
+	// ----非必选，该参数功能暂未对外开放
 	EvilType *string `json:"EvilType,omitempty" name:"EvilType"`
 
 	// 分布类型总量
@@ -664,22 +648,14 @@ type ImageResult struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	HitFlag *int64 `json:"HitFlag,omitempty" name:"HitFlag"`
 
-	// 命中的标签
-	// Porn 色情
-	// Sexy 性感
-	// Polity 政治
-	// Illegal 违法
-	// Abuse 谩骂
-	// Terror 暴恐
-	// Ad 广告
+	// 建议您拿到判断结果后的执行操作。
+	// 建议值，Block：建议屏蔽，Review：建议复审，Pass：建议通过
+	Suggestion *string `json:"Suggestion,omitempty" name:"Suggestion"`
+
+	// 恶意标签，Normal：正常，Porn：色情，Abuse：谩骂，Ad：广告，Custom：自定义词库。
+	// 以及令人反感、不安全或不适宜的内容类型。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Label *string `json:"Label,omitempty" name:"Label"`
-
-	// 审核建议，可选值：
-	// Pass 通过，
-	// Review 建议人审，
-	// Block 确认违规
-	Suggestion *string `json:"Suggestion,omitempty" name:"Suggestion"`
 
 	// 得分
 	Score *int64 `json:"Score,omitempty" name:"Score"`
@@ -699,11 +675,9 @@ type ImageResultResult struct {
 	// 场景
 	// Porn 色情
 	// Sexy 性感
-	// Polity 政治
-	// Illegal 违法
 	// Abuse 谩骂
-	// Terror 暴恐
 	// Ad 广告
+	// 等多个识别场景
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Scene *string `json:"Scene,omitempty" name:"Scene"`
 
@@ -713,10 +687,8 @@ type ImageResultResult struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	HitFlag *int64 `json:"HitFlag,omitempty" name:"HitFlag"`
 
-	// 审核建议，可选值：
-	// Pass 通过，
-	// Review 建议人审，
-	// Block 确认违规
+	// 建议您拿到判断结果后的执行操作。
+	// 建议值，Block：建议屏蔽，Review：建议复审，Pass：建议通过
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Suggestion *string `json:"Suggestion,omitempty" name:"Suggestion"`
 
@@ -848,6 +820,9 @@ type MediaInfo struct {
 
 	// 高，单位为像素
 	Height *int64 `json:"Height,omitempty" name:"Height"`
+
+	// 缩略图
+	Thumbnail *string `json:"Thumbnail,omitempty" name:"Thumbnail"`
 }
 
 type MediaModerationConfig struct {
@@ -926,21 +901,13 @@ type TaskInput struct {
 
 type TaskLabel struct {
 
-	// 命中的标签
-	// Porn 色情
-	// Sexy 性感
-	// Polity 政治
-	// Illegal 违法
-	// Abuse 谩骂
-	// Terror 暴恐
-	// Ad 广告
+	// 恶意标签，Normal：正常，Porn：色情，Abuse：谩骂，Ad：广告，Custom：自定义词库。
+	// 以及令人反感、不安全或不适宜的内容类型。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Label *string `json:"Label,omitempty" name:"Label"`
 
-	// 审核建议，可选值：
-	// Pass 通过，
-	// Review 建议人审，
-	// Block 确认违规
+	// 建议您拿到判断结果后的执行操作。
+	// 建议值，Block：建议屏蔽，Review：建议复审，Pass：建议通过
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Suggestion *string `json:"Suggestion,omitempty" name:"Suggestion"`
 

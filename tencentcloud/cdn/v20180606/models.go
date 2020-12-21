@@ -216,6 +216,19 @@ type AdvanceCacheRule struct {
 	CacheTime *int64 `json:"CacheTime,omitempty" name:"CacheTime"`
 }
 
+type AdvanceConfig struct {
+
+	// 高级配置名称。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 是否支持高级配置，
+	// on：支持
+	// off：不支持
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Value *string `json:"Value,omitempty" name:"Value"`
+}
+
 type AdvancedAuthentication struct {
 
 	// 防盗链配置开关，on或off，开启时必须且只能配置一种模式，其余模式为null。
@@ -1217,6 +1230,12 @@ type CreateScdnLogTaskRequest struct {
 
 	// 指定域名查询, 与 Domain 参数同时有值时使用 Domains 参数，不填默认查询全部域名，指定域名查询时最多支持同时选择 5 个域名查询
 	Domains []*string `json:"Domains,omitempty" name:"Domains" list`
+
+	// 指定攻击类型查询, 与 AttackType 参数同时有值时使用 AttackTypes 参数，不填默认查询全部攻击类型
+	AttackTypes []*string `json:"AttackTypes,omitempty" name:"AttackTypes" list`
+
+	// 查询条件
+	Conditions []*ScdnEventLogConditions `json:"Conditions,omitempty" name:"Conditions" list`
 }
 
 func (r *CreateScdnLogTaskRequest) ToJsonString() string {
@@ -3060,6 +3079,10 @@ type DetailDomain struct {
 	// Ipv6访问配置
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Ipv6Access *Ipv6Access `json:"Ipv6Access,omitempty" name:"Ipv6Access"`
+
+	// 高级配置集合。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AdvanceSet []*AdvanceConfig `json:"AdvanceSet,omitempty" name:"AdvanceSet" list`
 }
 
 type DiagnoseData struct {
@@ -5181,6 +5204,18 @@ type ScdnErrorPage struct {
 	RedirectUrl *string `json:"RedirectUrl,omitempty" name:"RedirectUrl"`
 }
 
+type ScdnEventLogConditions struct {
+
+	// 匹配关键字，ip, attack_location
+	Key *string `json:"Key,omitempty" name:"Key"`
+
+	// 逻辑操作符，取值 exclude, include
+	Operator *string `json:"Operator,omitempty" name:"Operator"`
+
+	// 匹配值，允许使用通配符(*)查询，匹配零个、单个、多个字符，例如 1.2.*
+	Value *string `json:"Value,omitempty" name:"Value"`
+}
+
 type ScdnLogTaskDetail struct {
 
 	// scdn域名
@@ -5241,6 +5276,10 @@ type ScdnLogTaskDetail struct {
 	//   observe = '观察模式'
 	//   intercept = '防御模式'
 	DefenceMode *string `json:"DefenceMode,omitempty" name:"DefenceMode"`
+
+	// 查询条件
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Conditions []*ScdnEventLogConditions `json:"Conditions,omitempty" name:"Conditions" list`
 }
 
 type ScdnTopData struct {

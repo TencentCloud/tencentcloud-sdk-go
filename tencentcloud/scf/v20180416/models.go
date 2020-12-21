@@ -602,6 +602,83 @@ func (r *DeleteNamespaceResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DeleteProvisionedConcurrencyConfigRequest struct {
+	*tchttp.BaseRequest
+
+	// 需要删除预置并发的函数的名称
+	FunctionName *string `json:"FunctionName,omitempty" name:"FunctionName"`
+
+	// 函数的版本号
+	Qualifier *string `json:"Qualifier,omitempty" name:"Qualifier"`
+
+	// 函数所属命名空间，默认为default
+	Namespace *string `json:"Namespace,omitempty" name:"Namespace"`
+}
+
+func (r *DeleteProvisionedConcurrencyConfigRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteProvisionedConcurrencyConfigRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteProvisionedConcurrencyConfigResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DeleteProvisionedConcurrencyConfigResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteProvisionedConcurrencyConfigResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteReservedConcurrencyConfigRequest struct {
+	*tchttp.BaseRequest
+
+	// 需要删除预置并发的函数的名称
+	FunctionName *string `json:"FunctionName,omitempty" name:"FunctionName"`
+
+	// 函数所属命名空间，默认为default
+	Namespace *string `json:"Namespace,omitempty" name:"Namespace"`
+}
+
+func (r *DeleteReservedConcurrencyConfigRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteReservedConcurrencyConfigRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteReservedConcurrencyConfigResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DeleteReservedConcurrencyConfigResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteReservedConcurrencyConfigResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DeleteTriggerRequest struct {
 	*tchttp.BaseRequest
 
@@ -1215,6 +1292,93 @@ func (r *GetLayerVersionResponse) ToJsonString() string {
 }
 
 func (r *GetLayerVersionResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type GetProvisionedConcurrencyConfigRequest struct {
+	*tchttp.BaseRequest
+
+	// 需要获取预置并发详情的函数名称。
+	FunctionName *string `json:"FunctionName,omitempty" name:"FunctionName"`
+
+	// 函数所在的命名空间，默认为default。
+	Namespace *string `json:"Namespace,omitempty" name:"Namespace"`
+
+	// 函数版本号，不传则返回函数所有版本的预置并发信息。
+	Qualifier *string `json:"Qualifier,omitempty" name:"Qualifier"`
+}
+
+func (r *GetProvisionedConcurrencyConfigRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *GetProvisionedConcurrencyConfigRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type GetProvisionedConcurrencyConfigResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 该函数剩余可配置的预置并发数。
+		UnallocatedConcurrencyNum *uint64 `json:"UnallocatedConcurrencyNum,omitempty" name:"UnallocatedConcurrencyNum"`
+
+		// 函数已预置的并发配置详情。
+		Allocated []*VersionProvisionedConcurrencyInfo `json:"Allocated,omitempty" name:"Allocated" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *GetProvisionedConcurrencyConfigResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *GetProvisionedConcurrencyConfigResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type GetReservedConcurrencyConfigRequest struct {
+	*tchttp.BaseRequest
+
+	// 需要获取预置并发详情的函数名称。
+	FunctionName *string `json:"FunctionName,omitempty" name:"FunctionName"`
+
+	// 函数所在的命名空间，默认为default。
+	Namespace *string `json:"Namespace,omitempty" name:"Namespace"`
+}
+
+func (r *GetReservedConcurrencyConfigRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *GetReservedConcurrencyConfigRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type GetReservedConcurrencyConfigResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 该函数的保留并发内存。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		ReservedMem *uint64 `json:"ReservedMem,omitempty" name:"ReservedMem"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *GetReservedConcurrencyConfigResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *GetReservedConcurrencyConfigResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -1859,6 +2023,126 @@ func (r *PublishVersionResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type PutProvisionedConcurrencyConfigRequest struct {
+	*tchttp.BaseRequest
+
+	// 需要设置预置并发的函数的名称
+	FunctionName *string `json:"FunctionName,omitempty" name:"FunctionName"`
+
+	// 函数的版本号，注：$LATEST版本不支持预置并发
+	Qualifier *string `json:"Qualifier,omitempty" name:"Qualifier"`
+
+	// 预置并发数量，注：所有版本的预置并发数总和存在上限限制，当前的上限是：函数最大并发配额 - 100
+	VersionProvisionedConcurrencyNum *uint64 `json:"VersionProvisionedConcurrencyNum,omitempty" name:"VersionProvisionedConcurrencyNum"`
+
+	// 函数所属命名空间，默认为default
+	Namespace *string `json:"Namespace,omitempty" name:"Namespace"`
+}
+
+func (r *PutProvisionedConcurrencyConfigRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *PutProvisionedConcurrencyConfigRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type PutProvisionedConcurrencyConfigResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *PutProvisionedConcurrencyConfigResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *PutProvisionedConcurrencyConfigResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type PutReservedConcurrencyConfigRequest struct {
+	*tchttp.BaseRequest
+
+	// 需要设置预置并发的函数的名称
+	FunctionName *string `json:"FunctionName,omitempty" name:"FunctionName"`
+
+	// 函数保留并发内存，注：函数的保留并发内存总和上限：用户总并发内存配额 - 12800
+	ReservedConcurrencyMem *uint64 `json:"ReservedConcurrencyMem,omitempty" name:"ReservedConcurrencyMem"`
+
+	// 函数所属命名空间，默认为default
+	Namespace *string `json:"Namespace,omitempty" name:"Namespace"`
+}
+
+func (r *PutReservedConcurrencyConfigRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *PutReservedConcurrencyConfigRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type PutReservedConcurrencyConfigResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *PutReservedConcurrencyConfigResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *PutReservedConcurrencyConfigResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type PutTotalConcurrencyConfigRequest struct {
+	*tchttp.BaseRequest
+
+	// 账号并发内存配额，注：账号并发内存配额下限：用户已用并发内存总额 + 12800
+	TotalConcurrencyMem *uint64 `json:"TotalConcurrencyMem,omitempty" name:"TotalConcurrencyMem"`
+
+	// 命名空间，默认为default
+	Namespace *string `json:"Namespace,omitempty" name:"Namespace"`
+}
+
+func (r *PutTotalConcurrencyConfigRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *PutTotalConcurrencyConfigRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type PutTotalConcurrencyConfigResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *PutTotalConcurrencyConfigResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *PutTotalConcurrencyConfigResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type Result struct {
 
 	// 表示执行过程中的日志输出，异步调用返回为空
@@ -2253,6 +2537,24 @@ type VersionMatch struct {
 	// exact 匹配规则要求：
 	// 字符串精确匹配
 	Expression *string `json:"Expression,omitempty" name:"Expression"`
+}
+
+type VersionProvisionedConcurrencyInfo struct {
+
+	// 设置的预置并发数。
+	AllocatedProvisionedConcurrencyNum *uint64 `json:"AllocatedProvisionedConcurrencyNum,omitempty" name:"AllocatedProvisionedConcurrencyNum"`
+
+	// 当前已完成预置的并发数。
+	AvailableProvisionedConcurrencyNum *uint64 `json:"AvailableProvisionedConcurrencyNum,omitempty" name:"AvailableProvisionedConcurrencyNum"`
+
+	// 预置任务状态，Done表示已完成，InProgress表示进行中，Failed表示部分或全部失败。
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 对预置任务状态Status的说明。
+	StatusReason *string `json:"StatusReason,omitempty" name:"StatusReason"`
+
+	// 函数版本号
+	Qualifier *string `json:"Qualifier,omitempty" name:"Qualifier"`
 }
 
 type VersionWeight struct {

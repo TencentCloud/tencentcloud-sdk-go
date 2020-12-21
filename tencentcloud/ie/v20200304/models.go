@@ -253,6 +253,53 @@ func (r *CreateEditingTaskResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type CreateMediaProcessTaskRequest struct {
+	*tchttp.BaseRequest
+
+	// 编辑处理任务参数。
+	MediaProcessInfo *MediaProcessInfo `json:"MediaProcessInfo,omitempty" name:"MediaProcessInfo"`
+
+	// 编辑处理任务输入源列表。
+	SourceInfoSet []*MediaSourceInfo `json:"SourceInfoSet,omitempty" name:"SourceInfoSet" list`
+
+	// 结果存储信息，对于涉及存储的请求必选。部子任务支持数组备份写，具体以对应任务文档为准。
+	SaveInfoSet []*SaveInfo `json:"SaveInfoSet,omitempty" name:"SaveInfoSet" list`
+
+	// 任务结果回调地址信息。部子任务支持数组备份回调，具体以对应任务文档为准。
+	CallbackInfoSet []*CallbackInfo `json:"CallbackInfoSet,omitempty" name:"CallbackInfoSet" list`
+}
+
+func (r *CreateMediaProcessTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateMediaProcessTaskRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateMediaProcessTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 编辑任务 ID，可以通过该 ID 查询任务状态和结果。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateMediaProcessTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateMediaProcessTaskResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type CreateMediaQualityRestorationTaskRequest struct {
 	*tchttp.BaseRequest
 
@@ -404,6 +451,44 @@ func (r *DescribeEditingTaskResultResponse) ToJsonString() string {
 }
 
 func (r *DescribeEditingTaskResultResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeMediaProcessTaskResultRequest struct {
+	*tchttp.BaseRequest
+
+	// 编辑处理任务ID。
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+}
+
+func (r *DescribeMediaProcessTaskResultRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeMediaProcessTaskResultRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeMediaProcessTaskResultResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 任务处理结果。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		TaskResult *MediaProcessTaskResult `json:"TaskResult,omitempty" name:"TaskResult"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeMediaProcessTaskResultResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeMediaProcessTaskResultResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -655,10 +740,176 @@ type HighlightsTaskResultItemSegment struct {
 	EndTimeOffset *float64 `json:"EndTimeOffset,omitempty" name:"EndTimeOffset"`
 }
 
+type IntervalTime struct {
+
+	// 间隔周期，单位ms
+	Interval *int64 `json:"Interval,omitempty" name:"Interval"`
+
+	// 开始时间点，单位ms
+	StartTime *int64 `json:"StartTime,omitempty" name:"StartTime"`
+}
+
 type LowLightEnhance struct {
 
 	// 低光照增强类型，可选项：normal。
 	Type *string `json:"Type,omitempty" name:"Type"`
+}
+
+type MediaCuttingInfo struct {
+
+	// 截取时间信息。
+	TimeInfo *MediaCuttingTimeInfo `json:"TimeInfo,omitempty" name:"TimeInfo"`
+
+	// 输出结果信息。
+	TargetInfo *MediaTargetInfo `json:"TargetInfo,omitempty" name:"TargetInfo"`
+
+	// 截取结果形式信息。
+	OutForm *MediaCuttingOutForm `json:"OutForm,omitempty" name:"OutForm"`
+
+	// 列表文件形式，存储到用户存储服务中，可选值：
+	// UseSaveInfo：默认，结果列表和结果存储同一位置；
+	// NoListFile：不存储结果列表。
+	ResultListSaveType *string `json:"ResultListSaveType,omitempty" name:"ResultListSaveType"`
+}
+
+type MediaCuttingOutForm struct {
+
+	// 输出类型，可选值：
+	// Static：静态图；
+	// Dynamic：动态图；
+	// Sprite：雪碧图；
+	// Video：视频。
+	// 
+	// 注1：不同类型时，对应的 TargetInfo.Format 格式支持如下：
+	// Static：jpg、png；
+	// Dynamic：gif；
+	// Sprite：jpg、png；
+	// Video：mp4。
+	// 
+	// 注2：当 Type=Sprite时，TargetInfo指定的尺寸表示小图的大小，最终结果尺寸以输出为准。
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 背景填充方式，可选值：
+	// White：白色填充；
+	// Black：黑色填充；
+	// Stretch：拉伸；
+	// Gaussian：高斯模糊；
+	// 默认White。
+	FillType *string `json:"FillType,omitempty" name:"FillType"`
+
+	// Type=Sprite时有效，表示雪碧图行数，范围为 [1,200]，默认100。
+	SpriteRowCount *int64 `json:"SpriteRowCount,omitempty" name:"SpriteRowCount"`
+
+	// Type=Sprite时有效，表示雪碧图列数，范围为 [1,200]，默认100。
+	SpriteColumnCount *int64 `json:"SpriteColumnCount,omitempty" name:"SpriteColumnCount"`
+}
+
+type MediaCuttingTaskResult struct {
+
+	// 如果ResultListType不为NoListFile时，结果（TaskResultFile）列表文件的存储位置。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ListFile *TaskResultFile `json:"ListFile,omitempty" name:"ListFile"`
+
+	// 结果个数。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResultCount *int64 `json:"ResultCount,omitempty" name:"ResultCount"`
+
+	// 第一个结果文件。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FirstFile *TaskResultFile `json:"FirstFile,omitempty" name:"FirstFile"`
+
+	// 最后一个结果文件。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LastFile *TaskResultFile `json:"LastFile,omitempty" name:"LastFile"`
+}
+
+type MediaCuttingTimeInfo struct {
+
+	// 时间类型，可选值：
+	// PointSet：时间点集合；
+	// IntervalPoint：周期采样点；
+	// SectionSet：时间片段集合。
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 截取时间点集合，单位毫秒，Type=PointSet时必选。
+	PointSet []*int64 `json:"PointSet,omitempty" name:"PointSet" list`
+
+	// 周期采样点信息，Type=IntervalPoint时必选。
+	IntervalPoint *IntervalTime `json:"IntervalPoint,omitempty" name:"IntervalPoint"`
+
+	// 时间区间集合信息，Type=SectionSet时必选。
+	SectionSet []*SectionTime `json:"SectionSet,omitempty" name:"SectionSet" list`
+}
+
+type MediaJoiningInfo struct {
+
+	// 输出目标信息，拼接只采用FileName和Format，用于指定目标文件名和格式。
+	// 其中Format只支持mp4.
+	TargetInfo *MediaTargetInfo `json:"TargetInfo,omitempty" name:"TargetInfo"`
+}
+
+type MediaJoiningTaskResult struct {
+
+	// 拼接结果文件。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	File *TaskResultFile `json:"File,omitempty" name:"File"`
+}
+
+type MediaProcessInfo struct {
+
+	// 编辑处理任务类型，可选值：
+	// MediaEditing：媒体编辑（待上线）；
+	// MediaCutting：媒体剪切；
+	// MediaJoining：媒体拼接。
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 视频剪切任务参数，Type=MediaCutting时必选。
+	MediaCuttingInfo *MediaCuttingInfo `json:"MediaCuttingInfo,omitempty" name:"MediaCuttingInfo"`
+
+	// 视频拼接任务参数，Type=MediaJoining时必选。
+	MediaJoiningInfo *MediaJoiningInfo `json:"MediaJoiningInfo,omitempty" name:"MediaJoiningInfo"`
+}
+
+type MediaProcessTaskResult struct {
+
+	// 编辑处理任务ID。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 编辑处理任务类型，取值：
+	// MediaEditing：视频编辑（待上线）；
+	// MediaCutting：视频剪切；
+	// MediaJoining：视频拼接。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 处理进度，范围：[0,100]
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Progress *int64 `json:"Progress,omitempty" name:"Progress"`
+
+	// 任务状态：
+	// 1100：等待中；
+	// 1200：执行中；
+	// 2000：成功；
+	// 5000：失败。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *int64 `json:"Status,omitempty" name:"Status"`
+
+	// 任务错误码。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ErrCode *int64 `json:"ErrCode,omitempty" name:"ErrCode"`
+
+	// 任务错误信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ErrMsg *string `json:"ErrMsg,omitempty" name:"ErrMsg"`
+
+	// 剪切任务处理结果，当Type=MediaCutting时才有效。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MediaCuttingTaskResult *MediaCuttingTaskResult `json:"MediaCuttingTaskResult,omitempty" name:"MediaCuttingTaskResult"`
+
+	// 拼接任务处理结果，当Type=MediaJoining时才有效。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MediaJoiningTaskResult *MediaJoiningTaskResult `json:"MediaJoiningTaskResult,omitempty" name:"MediaJoiningTaskResult"`
 }
 
 type MediaQualityRestorationTaskResult struct {
@@ -668,6 +919,42 @@ type MediaQualityRestorationTaskResult struct {
 
 	// 画质重生处理后文件的详细信息。
 	SubTaskResult []*SubTaskResultItem `json:"SubTaskResult,omitempty" name:"SubTaskResult" list`
+}
+
+type MediaSourceInfo struct {
+
+	// 媒体源资源下载信息。
+	DownInfo *DownInfo `json:"DownInfo,omitempty" name:"DownInfo"`
+
+	// 媒体源ID标记，用于多个输入源时，请内媒体源的定位，对于多输入的任务，一般要求必选。
+	Id *string `json:"Id,omitempty" name:"Id"`
+
+	// 媒体源类型，具体类型如下：
+	// Video：视频
+	// Image：图片
+	// Audio：音频
+	Type *string `json:"Type,omitempty" name:"Type"`
+}
+
+type MediaTargetInfo struct {
+
+	// 目标文件名，不能带特殊字符（如/等），无需后缀名，最长200字符。
+	// 
+	// 注1：部分子服务支持站位符，形式为： {parameter}
+	// 预设parameter：
+	// index：序号；
+	FileName *string `json:"FileName,omitempty" name:"FileName"`
+
+	// 媒体封装格式，最长5字符，具体格式支持根据子任务确定。
+	Format *string `json:"Format,omitempty" name:"Format"`
+
+	// 视频流信息。
+	TargetVideoInfo *TargetVideoInfo `json:"TargetVideoInfo,omitempty" name:"TargetVideoInfo"`
+
+	// 【不再使用】 对于多输出任务，部分子服务推荐结果信息以列表文件形式，存储到用户存储服务中，可选值：
+	// UseSaveInfo：默认，结果列表和结果存储同一位置；
+	// NoListFile：不存储结果列表。
+	ResultListSaveType *string `json:"ResultListSaveType,omitempty" name:"ResultListSaveType"`
 }
 
 type MuxInfo struct {
@@ -912,6 +1199,15 @@ type ScratchRepair struct {
 	Ratio *float64 `json:"Ratio,omitempty" name:"Ratio"`
 }
 
+type SectionTime struct {
+
+	// 开始时间点，单位ms
+	StartTime *int64 `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 时间区间时长，单位ms
+	Duration *int64 `json:"Duration,omitempty" name:"Duration"`
+}
+
 type SegmentInfo struct {
 
 	// 每个切片平均时长，默认10s。
@@ -933,6 +1229,40 @@ type Sharp struct {
 
 	// 细节增强强度，可选项：0.0-1.0。小于0.0的默认为0.0，大于1.0的默认为1.0。
 	Ratio *float64 `json:"Ratio,omitempty" name:"Ratio"`
+}
+
+type StopMediaProcessTaskRequest struct {
+	*tchttp.BaseRequest
+
+	// 编辑处理任务ID。
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+}
+
+func (r *StopMediaProcessTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *StopMediaProcessTaskRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type StopMediaProcessTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *StopMediaProcessTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *StopMediaProcessTaskResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
 }
 
 type StopMediaQualityRestorationTaskRequest struct {
@@ -1115,6 +1445,25 @@ type TargetInfo struct {
 
 	// 目标文件切片信息
 	SegmentInfo *SegmentInfo `json:"SegmentInfo,omitempty" name:"SegmentInfo"`
+}
+
+type TargetVideoInfo struct {
+
+	// 视频宽度，单位像素
+	Width *int64 `json:"Width,omitempty" name:"Width"`
+
+	// 视频高度，单位像素
+	Height *int64 `json:"Height,omitempty" name:"Height"`
+
+	// 视频帧率，范围在1到120之间
+	FrameRate *int64 `json:"FrameRate,omitempty" name:"FrameRate"`
+}
+
+type TaskResultFile struct {
+
+	// 文件链接。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Url *string `json:"Url,omitempty" name:"Url"`
 }
 
 type UrlInfo struct {

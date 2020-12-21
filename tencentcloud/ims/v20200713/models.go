@@ -93,7 +93,7 @@ type DescribeImsListResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 返回列表数据
+		// 返回列表数据----非必选，该参数暂未对外开放
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		ImsDetailSet []*ImsDetail `json:"ImsDetailSet,omitempty" name:"ImsDetailSet" list`
 
@@ -143,15 +143,7 @@ type Device struct {
 
 type EvilCount struct {
 
-	// 违规类型：
-	// Terror	24001
-	// Porn	20002
-	// Polity	20001
-	// Ad	20105
-	// Abuse	20007	
-	// Illegal	20006	
-	// Spam	25001	
-	// Moan	26001
+	// ----非必选，该参数功能暂未对外开放
 	EvilType *string `json:"EvilType,omitempty" name:"EvilType"`
 
 	// 分布类型总量
@@ -292,7 +284,7 @@ type ImsDetail struct {
 	// 最后更新时间
 	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
 
-	// 机器审核结果code 100 正常, 20001 政治 20002 色情 20006 涉毒违法 20007 谩骂 24001 暴恐 21000 综合 20105 广告引流 20103 性感
+	// ----非必选，该参数暂未对外开放
 	EvilType *int64 `json:"EvilType,omitempty" name:"EvilType"`
 
 	// 机器审核时间

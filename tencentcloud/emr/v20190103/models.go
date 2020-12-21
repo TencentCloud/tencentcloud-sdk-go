@@ -275,7 +275,7 @@ type ClusterSetting struct {
 	// 实例所在VPC。
 	VPCSettings *VPCSettings `json:"VPCSettings,omitempty" name:"VPCSettings"`
 
-	// 实例登陆配置。
+	// 实例登录配置。
 	LoginSettings *LoginSettings `json:"LoginSettings,omitempty" name:"LoginSettings"`
 
 	// 实例标签。
@@ -299,7 +299,7 @@ type ClusterSetting struct {
 	// 是否使用cbs加密。
 	CbsEncryptFlag *bool `json:"CbsEncryptFlag,omitempty" name:"CbsEncryptFlag"`
 
-	// 是否使用远程登陆，默认为false。
+	// 是否使用远程登录，默认为false。
 	RemoteTcpDefaultPort *bool `json:"RemoteTcpDefaultPort,omitempty" name:"RemoteTcpDefaultPort"`
 }
 
