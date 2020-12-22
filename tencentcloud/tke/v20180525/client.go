@@ -1268,6 +1268,31 @@ func (c *Client) ModifyClusterAsGroupAttribute(request *ModifyClusterAsGroupAttr
     return
 }
 
+func NewModifyClusterAsGroupOptionAttributeRequest() (request *ModifyClusterAsGroupOptionAttributeRequest) {
+    request = &ModifyClusterAsGroupOptionAttributeRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tke", APIVersion, "ModifyClusterAsGroupOptionAttribute")
+    return
+}
+
+func NewModifyClusterAsGroupOptionAttributeResponse() (response *ModifyClusterAsGroupOptionAttributeResponse) {
+    response = &ModifyClusterAsGroupOptionAttributeResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 修改集群弹性伸缩属性
+func (c *Client) ModifyClusterAsGroupOptionAttribute(request *ModifyClusterAsGroupOptionAttributeRequest) (response *ModifyClusterAsGroupOptionAttributeResponse, err error) {
+    if request == nil {
+        request = NewModifyClusterAsGroupOptionAttributeRequest()
+    }
+    response = NewModifyClusterAsGroupOptionAttributeResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyClusterAttributeRequest() (request *ModifyClusterAttributeRequest) {
     request = &ModifyClusterAttributeRequest{
         BaseRequest: &tchttp.BaseRequest{},

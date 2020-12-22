@@ -60,7 +60,7 @@ type AddExistedInstancesRequest struct {
 	// 集群ID
 	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
 
-	// 实例列表
+	// 实例列表，不支持竞价实例
 	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds" list`
 
 	// 实例额外需要设置参数信息
@@ -77,6 +77,9 @@ type AddExistedInstancesRequest struct {
 
 	// 重装系统时，可以指定修改实例的HostName(集群为HostName模式时，此参数必传，规则名称除不支持大写字符外与[CVM创建实例](https://cloud.tencent.com/document/product/213/15730)接口HostName一致)
 	HostName *string `json:"HostName,omitempty" name:"HostName"`
+
+	// 节点池选项
+	NodePool *NodePoolOption `json:"NodePool,omitempty" name:"NodePool"`
 }
 
 func (r *AddExistedInstancesRequest) ToJsonString() string {
@@ -2788,6 +2791,43 @@ func (r *ModifyClusterAsGroupAttributeResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type ModifyClusterAsGroupOptionAttributeRequest struct {
+	*tchttp.BaseRequest
+
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 集群弹性伸缩属性
+	ClusterAsGroupOption *ClusterAsGroupOption `json:"ClusterAsGroupOption,omitempty" name:"ClusterAsGroupOption"`
+}
+
+func (r *ModifyClusterAsGroupOptionAttributeRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyClusterAsGroupOptionAttributeRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyClusterAsGroupOptionAttributeResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifyClusterAsGroupOptionAttributeResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyClusterAsGroupOptionAttributeResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type ModifyClusterAttributeRequest struct {
 	*tchttp.BaseRequest
 
@@ -2906,6 +2946,12 @@ type ModifyClusterNodePoolRequest struct {
 
 	// 是否开启伸缩
 	EnableAutoscale *bool `json:"EnableAutoscale,omitempty" name:"EnableAutoscale"`
+
+	// 操作系统名称
+	OsName *string `json:"OsName,omitempty" name:"OsName"`
+
+	// 镜像版本，"DOCKER_CUSTOMIZE"(容器定制版),"GENERAL"(普通版本，默认值)
+	OsCustomizeType *string `json:"OsCustomizeType,omitempty" name:"OsCustomizeType"`
 }
 
 func (r *ModifyClusterNodePoolRequest) ToJsonString() string {
@@ -3067,6 +3113,18 @@ type NodePool struct {
 	// 期望的节点数量
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DesiredNodesNum *int64 `json:"DesiredNodesNum,omitempty" name:"DesiredNodesNum"`
+}
+
+type NodePoolOption struct {
+
+	// 是否加入节点池
+	AddToNodePool *bool `json:"AddToNodePool,omitempty" name:"AddToNodePool"`
+
+	// 节点池id
+	NodePoolId *string `json:"NodePoolId,omitempty" name:"NodePoolId"`
+
+	// 是否继承节点池相关配置
+	InheritConfigurationFromNodePool *bool `json:"InheritConfigurationFromNodePool,omitempty" name:"InheritConfigurationFromNodePool"`
 }
 
 type PrometheusAgentOverview struct {

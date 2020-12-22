@@ -1154,19 +1154,19 @@ type DescribeAccountBalanceResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 账户类型 1=设备接入;2=云存
+		// 账户类型 1=设备接入;2=云存。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		AccountType *int64 `json:"AccountType,omitempty" name:"AccountType"`
 
-		// 余额
+		// 余额, 单位 : 分(人民币)。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		Balance *int64 `json:"Balance,omitempty" name:"Balance"`
 
-		// 账户状态，1=正常；8=冻结；9=销户
+		// 账户状态，1=正常；8=冻结；9=销户。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		State *int64 `json:"State,omitempty" name:"State"`
 
-		// 最后修改时间，UTC值
+		// 最后修改时间，UTC值。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		LastUpdateTime *int64 `json:"LastUpdateTime,omitempty" name:"LastUpdateTime"`
 
@@ -2737,19 +2737,19 @@ type ProductData struct {
 
 type RechargeRecord struct {
 
-	// 流水记录号
+	// 流水记录号。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	WaterId *int64 `json:"WaterId,omitempty" name:"WaterId"`
 
-	// 充值前的余额
+	// 充值前的余额，单位0.01元。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	BalanceBeforeRecharge *int64 `json:"BalanceBeforeRecharge,omitempty" name:"BalanceBeforeRecharge"`
 
-	// 充值金额
+	// 充值金额，单位0.01元。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Money *int64 `json:"Money,omitempty" name:"Money"`
 
-	// 充值时间, UTC值
+	// 充值时间, UTC值。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	OperateTime *int64 `json:"OperateTime,omitempty" name:"OperateTime"`
 }

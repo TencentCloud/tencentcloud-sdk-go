@@ -58,7 +58,7 @@ func NewCreateEmailAddressResponse() (response *CreateEmailAddressResponse) {
     return
 }
 
-// 在验证了发信域名之后，您需要一个发信地址来发送邮件。比如发信域名是mail.qcloud.com，那么发信地址可以为 service@mail.qcloud.com。如果您想要收件人在收件箱列表中显示您的别名，比如"腾讯云邮件通知"。那么发信地址为： 别名 空格 尖括号 邮箱地址。请注意中间需要有空格
+// 在验证了发信域名之后，您需要一个发信地址来发送邮件。例如发信域名是mail.qcloud.com，那么发信地址可以为 service@mail.qcloud.com。如果您想要收件人在收件箱列表中显示您的别名，例如"腾讯云邮件通知"。那么发信地址为： 别名 空格 尖括号 邮箱地址。请注意中间需要有空格
 func (c *Client) CreateEmailAddress(request *CreateEmailAddressRequest) (response *CreateEmailAddressResponse, err error) {
     if request == nil {
         request = NewCreateEmailAddressRequest()
@@ -83,7 +83,7 @@ func NewCreateEmailIdentityResponse() (response *CreateEmailIdentityResponse) {
     return
 }
 
-// 在使用身份发送电子邮件之前，您需要有一个电子邮件域名，该域名可以是你的网站或者移动应用的域名。您首先必须进行验证，证明自己是该域名的所有者，并且授权给腾讯云SES发送许可，才可以从该域名发送电子邮件。
+// 在使用身份发送电子邮件之前，您需要有一个电子邮件域名，该域名可以是您的网站或者移动应用的域名。您首先必须进行验证，证明自己是该域名的所有者，并且授权给腾讯云SES发送许可，才可以从该域名发送电子邮件。
 func (c *Client) CreateEmailIdentity(request *CreateEmailIdentityRequest) (response *CreateEmailIdentityResponse, err error) {
     if request == nil {
         request = NewCreateEmailIdentityRequest()

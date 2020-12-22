@@ -69,7 +69,7 @@ func (r *CreateEmailAddressResponse) FromJsonString(s string) error {
 type CreateEmailIdentityRequest struct {
 	*tchttp.BaseRequest
 
-	// 您的发信域名，建议使用三级以上域名。比如：mail.qcloud.com。
+	// 您的发信域名，建议使用三级以上域名。例如：mail.qcloud.com。
 	EmailIdentity *string `json:"EmailIdentity,omitempty" name:"EmailIdentity"`
 }
 
@@ -418,7 +418,7 @@ type GetStatisticsReportRequest struct {
 	// 发信域名
 	Domain *string `json:"Domain,omitempty" name:"Domain"`
 
-	// 收件方邮箱类型，比如gmail.com
+	// 收件方邮箱类型，例如gmail.com
 	ReceivingMailboxType *string `json:"ReceivingMailboxType,omitempty" name:"ReceivingMailboxType"`
 }
 
@@ -625,7 +625,7 @@ func (r *ListEmailTemplatesResponse) FromJsonString(s string) error {
 type SendEmailRequest struct {
 	*tchttp.BaseRequest
 
-	// 发信邮件地址。比如：noreply@mail.qcloud.com。
+	// 发信邮件地址。例如：noreply@mail.qcloud.com。
 	FromEmailAddress *string `json:"FromEmailAddress,omitempty" name:"FromEmailAddress"`
 
 	// 收信人邮箱地址
@@ -676,10 +676,10 @@ func (r *SendEmailResponse) FromJsonString(s string) error {
 
 type Simple struct {
 
-	// Html代码。需要包含所有的代码信息，不要包含外部css，否则会导致显示格式错乱
+	// base64之后的Html代码。需要包含所有的代码信息，不要包含外部css，否则会导致显示格式错乱
 	Html *string `json:"Html,omitempty" name:"Html"`
 
-	// 纯文本信息，如果没有Html，邮件中会直接显示纯文本；如果有Html，它代表邮件的纯文本样式
+	// base64之后的纯文本信息，如果没有Html，邮件中会直接显示纯文本；如果有Html，它代表邮件的纯文本样式
 	Text *string `json:"Text,omitempty" name:"Text"`
 }
 
@@ -709,11 +709,14 @@ type TemplatesMetadata struct {
 	// 模板名称
 	TemplateName *string `json:"TemplateName,omitempty" name:"TemplateName"`
 
-	// 模板状态。1-审核中|0-已通过|其它-不可用
+	// 模板状态。1-审核中|0-已通过|2-拒绝|其它-不可用
 	TemplateStatus *int64 `json:"TemplateStatus,omitempty" name:"TemplateStatus"`
 
 	// 模板ID
 	TemplateID *uint64 `json:"TemplateID,omitempty" name:"TemplateID"`
+
+	// 审核原因
+	ReviewReason *string `json:"ReviewReason,omitempty" name:"ReviewReason"`
 }
 
 type UpdateEmailIdentityRequest struct {

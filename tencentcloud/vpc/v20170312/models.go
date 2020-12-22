@@ -1813,10 +1813,10 @@ func (r *CreateDefaultSecurityGroupResponse) FromJsonString(s string) error {
 type CreateDefaultVpcRequest struct {
 	*tchttp.BaseRequest
 
-	// 子网所在的可用区ID，不指定将随机选择可用区
+	// 子网所在的可用区，该参数可通过[DescribeZones](https://cloud.tencent.com/document/product/213/15707)接口获取，例如ap-guangzhou-1，不指定时将随机选择可用区。
 	Zone *string `json:"Zone,omitempty" name:"Zone"`
 
-	// 是否强制返回默认VPC
+	// 是否强制返回默认VPC。
 	Force *bool `json:"Force,omitempty" name:"Force"`
 }
 
@@ -2791,19 +2791,19 @@ type CreateVpcRequest struct {
 	// vpc名称，最大长度不能超过60个字节。
 	VpcName *string `json:"VpcName,omitempty" name:"VpcName"`
 
-	// vpc的cidr，只能为10.0.0.0/16，172.16.0.0/16，192.168.0.0/16这三个内网网段内。
+	// vpc的cidr，仅能在10.0.0.0/16，172.16.0.0/16，192.168.0.0/16这三个内网网段内。
 	CidrBlock *string `json:"CidrBlock,omitempty" name:"CidrBlock"`
 
 	// 是否开启组播。true: 开启, false: 不开启。
 	EnableMulticast *string `json:"EnableMulticast,omitempty" name:"EnableMulticast"`
 
-	// DNS地址，最多支持4个
+	// DNS地址，最多支持4个。
 	DnsServers []*string `json:"DnsServers,omitempty" name:"DnsServers" list`
 
-	// 域名
+	// DHCP使用的域名。
 	DomainName *string `json:"DomainName,omitempty" name:"DomainName"`
 
-	// 指定绑定的标签列表，例如：[{"Key": "city", "Value": "shanghai"}]
+	// 指定绑定的标签列表，例如：[{"Key": "city", "Value": "shanghai"}]。
 	Tags []*Tag `json:"Tags,omitempty" name:"Tags" list`
 }
 
@@ -2901,7 +2901,7 @@ func (r *CreateVpnConnectionResponse) FromJsonString(s string) error {
 type CreateVpnGatewayRequest struct {
 	*tchttp.BaseRequest
 
-	// VPC实例ID。可通过DescribeVpcs接口返回值中的VpcId获取。
+	// VPC实例ID。可通过[DescribeVpcs](https://cloud.tencent.com/document/product/215/15778)接口返回值中的VpcId获取。
 	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
 
 	// VPN网关名称，最大长度不能超过60个字节。
@@ -5517,7 +5517,7 @@ func (r *DescribeIp6TranslatorsResponse) FromJsonString(s string) error {
 type DescribeIpGeolocationDatabaseUrlRequest struct {
 	*tchttp.BaseRequest
 
-	// ip地址库协议类型，目前支持"ipv4"和"ipv6"。
+	// IP地理位置库协议类型，目前支持"ipv4"和"ipv6"。
 	Type *string `json:"Type,omitempty" name:"Type"`
 }
 
@@ -5534,7 +5534,7 @@ type DescribeIpGeolocationDatabaseUrlResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// IP地址库下载链接地址
+		// IP地理位置库下载链接地址。
 		DownLoadUrl *string `json:"DownLoadUrl,omitempty" name:"DownLoadUrl"`
 
 		// 链接到期时间。按照`ISO8601`标准表示，并且使用`UTC`时间。
@@ -7274,10 +7274,10 @@ type DisableRoutesRequest struct {
 	// 路由表唯一ID。
 	RouteTableId *string `json:"RouteTableId,omitempty" name:"RouteTableId"`
 
-	// 路由策略ID。不能和RouteItemIds同时使用。
+	// 路由策略ID。不能和RouteItemIds同时使用，但至少输入一个。该参数取值可通过查询路由列表（[DescribeRouteTables](https://cloud.tencent.com/document/product/215/15763)）获取。
 	RouteIds []*uint64 `json:"RouteIds,omitempty" name:"RouteIds" list`
 
-	// 路由策略唯一ID。不能和RouteIds同时使用。
+	// 路由策略唯一ID。不能和RouteIds同时使用，但至少输入一个。该参数取值可通过查询路由列表（[DescribeRouteTables](https://cloud.tencent.com/document/product/215/15763)）获取。
 	RouteItemIds []*string `json:"RouteItemIds,omitempty" name:"RouteItemIds" list`
 }
 
@@ -7659,10 +7659,10 @@ type EnableRoutesRequest struct {
 	// 路由表唯一ID。
 	RouteTableId *string `json:"RouteTableId,omitempty" name:"RouteTableId"`
 
-	// 路由策略ID。不能和RouteItemIds同时使用。
+	// 路由策略ID。不能和RouteItemIds同时使用，但至少输入一个。该参数取值可通过查询路由列表（[DescribeRouteTables](https://cloud.tencent.com/document/product/215/15763)）获取。
 	RouteIds []*uint64 `json:"RouteIds,omitempty" name:"RouteIds" list`
 
-	// 路由策略唯一ID。不能和RouteIds同时使用。
+	// 路由策略唯一ID。不能和RouteIds同时使用，但至少输入一个。该参数取值可通过查询路由列表（[DescribeRouteTables](https://cloud.tencent.com/document/product/215/15763)）获取。
 	RouteItemIds []*string `json:"RouteItemIds,omitempty" name:"RouteItemIds" list`
 }
 
@@ -8664,10 +8664,10 @@ type ModifyAssistantCidrRequest struct {
 	// `VPC`实例`ID`。形如：`vpc-6v2ht8q5`
 	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
 
-	// 待添加的负载CIDR。CIDR数组，格式如["10.0.0.0/16", "172.16.0.0/16"]
+	// 待添加的负载CIDR。CIDR数组，格式如["10.0.0.0/16", "172.16.0.0/16"]，入参NewCidrBlocks和OldCidrBlocks至少需要其一。
 	NewCidrBlocks []*string `json:"NewCidrBlocks,omitempty" name:"NewCidrBlocks" list`
 
-	// 待删除的负载CIDR。CIDR数组，格式如["10.0.0.0/16", "172.16.0.0/16"]
+	// 待删除的负载CIDR。CIDR数组，格式如["10.0.0.0/16", "172.16.0.0/16"]，入参NewCidrBlocks和OldCidrBlocks至少需要其一。
 	OldCidrBlocks []*string `json:"OldCidrBlocks,omitempty" name:"OldCidrBlocks" list`
 }
 
@@ -11189,7 +11189,7 @@ type SecurityGroupAssociationStatistics struct {
 	// 云服务器实例数。
 	CVM *uint64 `json:"CVM,omitempty" name:"CVM"`
 
-	// 数据库实例数。
+	// MySQL数据库实例数。
 	CDB *uint64 `json:"CDB,omitempty" name:"CDB"`
 
 	// 弹性网卡实例数。

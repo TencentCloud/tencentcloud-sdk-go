@@ -1,29 +1,29 @@
 # 本版本更新包含以下内容：
 
-## 音频内容检测(ams) 版本：2020-06-08
-
-### 第 7 次发布
-
-发布时间：2020-12-18 15:18:40
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [MediaInfo](https://cloud.tencent.com/document/api/1219/46478#MediaInfo)
-
-	* 新增成员：Thumbnail
-
-
-
-
 ## 内容分发网络(cdn) 版本：2018-06-06
 
-### 第 55 次发布
+### 第 56 次发布
 
-发布时间：2020-12-21 08:03:14
+发布时间：2020-12-22 08:03:32
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [ForceRedirect](https://cloud.tencent.com/document/api/228/30987#ForceRedirect)
+
+	* 新增成员：CarryHeaders
+
+
+
+
+## 云直播(live) 版本：2018-08-01
+
+### 第 54 次发布
+
+发布时间：2020-12-22 08:05:51
 
 本次发布包含了以下内容：
 
@@ -31,34 +31,18 @@
 
 修改接口：
 
-* [CreateScdnLogTask](https://cloud.tencent.com/document/api/228/47941)
+* [DescribeLivePackageInfo](https://cloud.tencent.com/document/api/267/40942)
 
-	* 新增入参：AttackTypes, Conditions
-
-
-新增数据结构：
-
-* [AdvanceConfig](https://cloud.tencent.com/document/api/228/30987#AdvanceConfig)
-* [ScdnEventLogConditions](https://cloud.tencent.com/document/api/228/30987#ScdnEventLogConditions)
-
-修改数据结构：
-
-* [DetailDomain](https://cloud.tencent.com/document/api/228/30987#DetailDomain)
-
-	* 新增成员：AdvanceSet
-
-* [ScdnLogTaskDetail](https://cloud.tencent.com/document/api/228/30987#ScdnLogTaskDetail)
-
-	* 新增成员：Conditions
+	* 新增出参：PackageBillMode
 
 
 
 
-## 智能编辑(ie) 版本：2020-03-04
+## 云监控(monitor) 版本：2018-07-24
 
-### 第 3 次发布
+### 第 18 次发布
 
-发布时间：2020-12-21 08:01:10
+发布时间：2020-12-22 08:06:22
 
 本次发布包含了以下内容：
 
@@ -66,34 +50,81 @@
 
 新增接口：
 
-* [CreateMediaProcessTask](https://cloud.tencent.com/document/api/1186/51243)
-* [DescribeMediaProcessTaskResult](https://cloud.tencent.com/document/api/1186/51242)
-* [StopMediaProcessTask](https://cloud.tencent.com/document/api/1186/51241)
+* [CreateAlarmNotice](https://cloud.tencent.com/document/api/248/51288)
+* [CreateAlarmPolicy](https://cloud.tencent.com/document/api/248/51287)
+* [DeleteAlarmNotices](https://cloud.tencent.com/document/api/248/51286)
+* [DeleteAlarmPolicy](https://cloud.tencent.com/document/api/248/51285)
+* [DescribeAlarmEvents](https://cloud.tencent.com/document/api/248/51284)
+* [DescribeAlarmMetrics](https://cloud.tencent.com/document/api/248/51283)
+* [DescribeAlarmNotice](https://cloud.tencent.com/document/api/248/51282)
+* [DescribeAlarmNoticeCallbacks](https://cloud.tencent.com/document/api/248/51281)
+* [DescribeAlarmNotices](https://cloud.tencent.com/document/api/248/51280)
+* [DescribeAlarmPolicies](https://cloud.tencent.com/document/api/248/51279)
+* [DescribeAlarmPolicy](https://cloud.tencent.com/document/api/248/51278)
+* [ModifyAlarmNotice](https://cloud.tencent.com/document/api/248/51277)
+* [ModifyAlarmPolicyCondition](https://cloud.tencent.com/document/api/248/51276)
+* [ModifyAlarmPolicyInfo](https://cloud.tencent.com/document/api/248/51275)
+* [ModifyAlarmPolicyNotice](https://cloud.tencent.com/document/api/248/51274)
+* [ModifyAlarmPolicyStatus](https://cloud.tencent.com/document/api/248/51273)
+* [ModifyAlarmPolicyTasks](https://cloud.tencent.com/document/api/248/51272)
+* [SetDefaultAlarmPolicy](https://cloud.tencent.com/document/api/248/51271)
+
+修改接口：
+
+* [DescribeAllNamespaces](https://cloud.tencent.com/document/api/248/48683)
+
+	* 新增出参：QceNamespacesNew, CustomNamespacesNew
+
 
 新增数据结构：
 
-* [IntervalTime](https://cloud.tencent.com/document/api/1186/42824#IntervalTime)
-* [MediaCuttingInfo](https://cloud.tencent.com/document/api/1186/42824#MediaCuttingInfo)
-* [MediaCuttingOutForm](https://cloud.tencent.com/document/api/1186/42824#MediaCuttingOutForm)
-* [MediaCuttingTaskResult](https://cloud.tencent.com/document/api/1186/42824#MediaCuttingTaskResult)
-* [MediaCuttingTimeInfo](https://cloud.tencent.com/document/api/1186/42824#MediaCuttingTimeInfo)
-* [MediaJoiningInfo](https://cloud.tencent.com/document/api/1186/42824#MediaJoiningInfo)
-* [MediaJoiningTaskResult](https://cloud.tencent.com/document/api/1186/42824#MediaJoiningTaskResult)
-* [MediaProcessInfo](https://cloud.tencent.com/document/api/1186/42824#MediaProcessInfo)
-* [MediaProcessTaskResult](https://cloud.tencent.com/document/api/1186/42824#MediaProcessTaskResult)
-* [MediaSourceInfo](https://cloud.tencent.com/document/api/1186/42824#MediaSourceInfo)
-* [MediaTargetInfo](https://cloud.tencent.com/document/api/1186/42824#MediaTargetInfo)
-* [SectionTime](https://cloud.tencent.com/document/api/1186/42824#SectionTime)
-* [TargetVideoInfo](https://cloud.tencent.com/document/api/1186/42824#TargetVideoInfo)
-* [TaskResultFile](https://cloud.tencent.com/document/api/1186/42824#TaskResultFile)
+* [AlarmEvent](https://cloud.tencent.com/document/api/248/30354#AlarmEvent)
+* [AlarmNotice](https://cloud.tencent.com/document/api/248/30354#AlarmNotice)
+* [AlarmPolicy](https://cloud.tencent.com/document/api/248/30354#AlarmPolicy)
+* [AlarmPolicyCondition](https://cloud.tencent.com/document/api/248/30354#AlarmPolicyCondition)
+* [AlarmPolicyEventCondition](https://cloud.tencent.com/document/api/248/30354#AlarmPolicyEventCondition)
+* [AlarmPolicyFilter](https://cloud.tencent.com/document/api/248/30354#AlarmPolicyFilter)
+* [AlarmPolicyRule](https://cloud.tencent.com/document/api/248/30354#AlarmPolicyRule)
+* [AlarmPolicyTriggerTask](https://cloud.tencent.com/document/api/248/30354#AlarmPolicyTriggerTask)
+* [ConditionsTemp](https://cloud.tencent.com/document/api/248/30354#ConditionsTemp)
+* [Metric](https://cloud.tencent.com/document/api/248/30354#Metric)
+* [MetricConfig](https://cloud.tencent.com/document/api/248/30354#MetricConfig)
+* [URLNotice](https://cloud.tencent.com/document/api/248/30354#URLNotice)
+* [UserNotice](https://cloud.tencent.com/document/api/248/30354#UserNotice)
+
+修改数据结构：
+
+* [AlarmHistory](https://cloud.tencent.com/document/api/248/30354#AlarmHistory)
+
+	* 新增成员：PolicyExists
 
 
 
-## 云函数(scf) 版本：2018-04-16
 
-### 第 23 次发布
+## 邮件推送(ses) 版本：2020-10-02
 
-发布时间：2020-12-21 08:06:44
+### 第 2 次发布
+
+发布时间：2020-12-22 08:11:35
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [TemplatesMetadata](https://cloud.tencent.com/document/api/1288/51053#TemplatesMetadata)
+
+	* 新增成员：ReviewReason
+
+
+
+
+## 容器服务(tke) 版本：2018-05-25
+
+### 第 35 次发布
+
+发布时间：2020-12-22 08:08:25
 
 本次发布包含了以下内容：
 
@@ -101,62 +132,22 @@
 
 新增接口：
 
-* [DeleteProvisionedConcurrencyConfig](https://cloud.tencent.com/document/api/583/51250)
-* [DeleteReservedConcurrencyConfig](https://cloud.tencent.com/document/api/583/51249)
-* [GetProvisionedConcurrencyConfig](https://cloud.tencent.com/document/api/583/51248)
-* [GetReservedConcurrencyConfig](https://cloud.tencent.com/document/api/583/51247)
-* [PutProvisionedConcurrencyConfig](https://cloud.tencent.com/document/api/583/51246)
-* [PutReservedConcurrencyConfig](https://cloud.tencent.com/document/api/583/51245)
-* [PutTotalConcurrencyConfig](https://cloud.tencent.com/document/api/583/51244)
+* [ModifyClusterAsGroupOptionAttribute](https://cloud.tencent.com/document/api/457/51289)
+
+修改接口：
+
+* [AddExistedInstances](https://cloud.tencent.com/document/api/457/31865)
+
+	* 新增入参：NodePool
+
+* [ModifyClusterNodePool](https://cloud.tencent.com/document/api/457/49431)
+
+	* 新增入参：OsName, OsCustomizeType
+
 
 新增数据结构：
 
-* [VersionProvisionedConcurrencyInfo](https://cloud.tencent.com/document/api/583/17244#VersionProvisionedConcurrencyInfo)
-
-
-
-## 文本内容检测(tms) 版本：2020-07-13
-
-### 第 4 次发布
-
-发布时间：2020-12-18 15:20:34
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [TextModeration](https://cloud.tencent.com/document/api/1124/46976)
-
-	* 新增出参：DataId
-
-
-
-
-## 私有网络(vpc) 版本：2017-03-12
-
-### 第 75 次发布
-
-发布时间：2020-12-21 08:08:07
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [ModifyNatGatewayAttribute](https://cloud.tencent.com/document/api/215/36715)
-
-	* 新增入参：ModifySecurityGroup, SecurityGroupIds
-
-
-修改数据结构：
-
-* [NatGateway](https://cloud.tencent.com/document/api/215/15824#NatGateway)
-
-	* 新增成员：SecurityGroupSet
-
+* [NodePoolOption](https://cloud.tencent.com/document/api/457/31866#NodePoolOption)
 
 
 
@@ -6872,6 +6863,21 @@
 
 ## 内容分发网络(cdn) 版本：2018-06-06
 
+### 第 56 次发布
+
+发布时间：2020-12-22 08:03:32
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [ForceRedirect](https://cloud.tencent.com/document/api/228/30987#ForceRedirect)
+
+	* 新增成员：CarryHeaders
+
+
 ### 第 55 次发布
 
 发布时间：2020-12-21 08:03:14
@@ -6889,8 +6895,8 @@
 
 新增数据结构：
 
-* [[AdvanceConfig](https://cloud.tencent.com/document/api/228/30987#AdvanceConfig)](https://cloud.tencent.com/document/api/228/30987#[AdvanceConfig](https://cloud.tencent.com/document/api/228/30987#AdvanceConfig))
-* [[ScdnEventLogConditions](https://cloud.tencent.com/document/api/228/30987#ScdnEventLogConditions)](https://cloud.tencent.com/document/api/228/30987#[ScdnEventLogConditions](https://cloud.tencent.com/document/api/228/30987#ScdnEventLogConditions))
+* [AdvanceConfig](https://cloud.tencent.com/document/api/228/30987#AdvanceConfig)
+* [ScdnEventLogConditions](https://cloud.tencent.com/document/api/228/30987#ScdnEventLogConditions)
 
 修改数据结构：
 
@@ -20162,26 +20168,26 @@
 
 新增接口：
 
-* [[CreateMediaProcessTask](https://cloud.tencent.com/document/api/1186/51243)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeMediaProcessTaskResult](https://cloud.tencent.com/document/api/1186/51242)](https://cloud.tencent.com/document/api/#/#)
-* [[StopMediaProcessTask](https://cloud.tencent.com/document/api/1186/51241)](https://cloud.tencent.com/document/api/#/#)
+* [CreateMediaProcessTask](https://cloud.tencent.com/document/api/1186/51243)
+* [DescribeMediaProcessTaskResult](https://cloud.tencent.com/document/api/1186/51242)
+* [StopMediaProcessTask](https://cloud.tencent.com/document/api/1186/51241)
 
 新增数据结构：
 
-* [[IntervalTime](https://cloud.tencent.com/document/api/1186/42824#IntervalTime)](https://cloud.tencent.com/document/api/1186/42824#[IntervalTime](https://cloud.tencent.com/document/api/1186/42824#IntervalTime))
-* [[MediaCuttingInfo](https://cloud.tencent.com/document/api/1186/42824#MediaCuttingInfo)](https://cloud.tencent.com/document/api/1186/42824#[MediaCuttingInfo](https://cloud.tencent.com/document/api/1186/42824#MediaCuttingInfo))
-* [[MediaCuttingOutForm](https://cloud.tencent.com/document/api/1186/42824#MediaCuttingOutForm)](https://cloud.tencent.com/document/api/1186/42824#[MediaCuttingOutForm](https://cloud.tencent.com/document/api/1186/42824#MediaCuttingOutForm))
-* [[MediaCuttingTaskResult](https://cloud.tencent.com/document/api/1186/42824#MediaCuttingTaskResult)](https://cloud.tencent.com/document/api/1186/42824#[MediaCuttingTaskResult](https://cloud.tencent.com/document/api/1186/42824#MediaCuttingTaskResult))
-* [[MediaCuttingTimeInfo](https://cloud.tencent.com/document/api/1186/42824#MediaCuttingTimeInfo)](https://cloud.tencent.com/document/api/1186/42824#[MediaCuttingTimeInfo](https://cloud.tencent.com/document/api/1186/42824#MediaCuttingTimeInfo))
-* [[MediaJoiningInfo](https://cloud.tencent.com/document/api/1186/42824#MediaJoiningInfo)](https://cloud.tencent.com/document/api/1186/42824#[MediaJoiningInfo](https://cloud.tencent.com/document/api/1186/42824#MediaJoiningInfo))
-* [[MediaJoiningTaskResult](https://cloud.tencent.com/document/api/1186/42824#MediaJoiningTaskResult)](https://cloud.tencent.com/document/api/1186/42824#[MediaJoiningTaskResult](https://cloud.tencent.com/document/api/1186/42824#MediaJoiningTaskResult))
-* [[MediaProcessInfo](https://cloud.tencent.com/document/api/1186/42824#MediaProcessInfo)](https://cloud.tencent.com/document/api/1186/42824#[MediaProcessInfo](https://cloud.tencent.com/document/api/1186/42824#MediaProcessInfo))
-* [[MediaProcessTaskResult](https://cloud.tencent.com/document/api/1186/42824#MediaProcessTaskResult)](https://cloud.tencent.com/document/api/1186/42824#[MediaProcessTaskResult](https://cloud.tencent.com/document/api/1186/42824#MediaProcessTaskResult))
-* [[MediaSourceInfo](https://cloud.tencent.com/document/api/1186/42824#MediaSourceInfo)](https://cloud.tencent.com/document/api/1186/42824#[MediaSourceInfo](https://cloud.tencent.com/document/api/1186/42824#MediaSourceInfo))
-* [[MediaTargetInfo](https://cloud.tencent.com/document/api/1186/42824#MediaTargetInfo)](https://cloud.tencent.com/document/api/1186/42824#[MediaTargetInfo](https://cloud.tencent.com/document/api/1186/42824#MediaTargetInfo))
-* [[SectionTime](https://cloud.tencent.com/document/api/1186/42824#SectionTime)](https://cloud.tencent.com/document/api/1186/42824#[SectionTime](https://cloud.tencent.com/document/api/1186/42824#SectionTime))
-* [[TargetVideoInfo](https://cloud.tencent.com/document/api/1186/42824#TargetVideoInfo)](https://cloud.tencent.com/document/api/1186/42824#[TargetVideoInfo](https://cloud.tencent.com/document/api/1186/42824#TargetVideoInfo))
-* [[TaskResultFile](https://cloud.tencent.com/document/api/1186/42824#TaskResultFile)](https://cloud.tencent.com/document/api/1186/42824#[TaskResultFile](https://cloud.tencent.com/document/api/1186/42824#TaskResultFile))
+* [IntervalTime](https://cloud.tencent.com/document/api/1186/42824#IntervalTime)
+* [MediaCuttingInfo](https://cloud.tencent.com/document/api/1186/42824#MediaCuttingInfo)
+* [MediaCuttingOutForm](https://cloud.tencent.com/document/api/1186/42824#MediaCuttingOutForm)
+* [MediaCuttingTaskResult](https://cloud.tencent.com/document/api/1186/42824#MediaCuttingTaskResult)
+* [MediaCuttingTimeInfo](https://cloud.tencent.com/document/api/1186/42824#MediaCuttingTimeInfo)
+* [MediaJoiningInfo](https://cloud.tencent.com/document/api/1186/42824#MediaJoiningInfo)
+* [MediaJoiningTaskResult](https://cloud.tencent.com/document/api/1186/42824#MediaJoiningTaskResult)
+* [MediaProcessInfo](https://cloud.tencent.com/document/api/1186/42824#MediaProcessInfo)
+* [MediaProcessTaskResult](https://cloud.tencent.com/document/api/1186/42824#MediaProcessTaskResult)
+* [MediaSourceInfo](https://cloud.tencent.com/document/api/1186/42824#MediaSourceInfo)
+* [MediaTargetInfo](https://cloud.tencent.com/document/api/1186/42824#MediaTargetInfo)
+* [SectionTime](https://cloud.tencent.com/document/api/1186/42824#SectionTime)
+* [TargetVideoInfo](https://cloud.tencent.com/document/api/1186/42824#TargetVideoInfo)
+* [TaskResultFile](https://cloud.tencent.com/document/api/1186/42824#TaskResultFile)
 
 ### 第 2 次发布
 
@@ -22452,6 +22458,21 @@
 
 ## 云直播(live) 版本：2018-08-01
 
+### 第 54 次发布
+
+发布时间：2020-12-22 08:05:51
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeLivePackageInfo](https://cloud.tencent.com/document/api/267/40942)
+
+	* 新增出参：PackageBillMode
+
+
 ### 第 53 次发布
 
 发布时间：2020-11-26 08:04:28
@@ -24433,6 +24454,65 @@
 
 
 ## 云监控(monitor) 版本：2018-07-24
+
+### 第 18 次发布
+
+发布时间：2020-12-22 08:06:22
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[CreateAlarmNotice](https://cloud.tencent.com/document/api/248/51288)](https://cloud.tencent.com/document/api/#/#)
+* [[CreateAlarmPolicy](https://cloud.tencent.com/document/api/248/51287)](https://cloud.tencent.com/document/api/#/#)
+* [[DeleteAlarmNotices](https://cloud.tencent.com/document/api/248/51286)](https://cloud.tencent.com/document/api/#/#)
+* [[DeleteAlarmPolicy](https://cloud.tencent.com/document/api/248/51285)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeAlarmEvents](https://cloud.tencent.com/document/api/248/51284)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeAlarmMetrics](https://cloud.tencent.com/document/api/248/51283)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeAlarmNotice](https://cloud.tencent.com/document/api/248/51282)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeAlarmNoticeCallbacks](https://cloud.tencent.com/document/api/248/51281)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeAlarmNotices](https://cloud.tencent.com/document/api/248/51280)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeAlarmPolicies](https://cloud.tencent.com/document/api/248/51279)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeAlarmPolicy](https://cloud.tencent.com/document/api/248/51278)](https://cloud.tencent.com/document/api/#/#)
+* [[ModifyAlarmNotice](https://cloud.tencent.com/document/api/248/51277)](https://cloud.tencent.com/document/api/#/#)
+* [[ModifyAlarmPolicyCondition](https://cloud.tencent.com/document/api/248/51276)](https://cloud.tencent.com/document/api/#/#)
+* [[ModifyAlarmPolicyInfo](https://cloud.tencent.com/document/api/248/51275)](https://cloud.tencent.com/document/api/#/#)
+* [[ModifyAlarmPolicyNotice](https://cloud.tencent.com/document/api/248/51274)](https://cloud.tencent.com/document/api/#/#)
+* [[ModifyAlarmPolicyStatus](https://cloud.tencent.com/document/api/248/51273)](https://cloud.tencent.com/document/api/#/#)
+* [[ModifyAlarmPolicyTasks](https://cloud.tencent.com/document/api/248/51272)](https://cloud.tencent.com/document/api/#/#)
+* [[SetDefaultAlarmPolicy](https://cloud.tencent.com/document/api/248/51271)](https://cloud.tencent.com/document/api/#/#)
+
+修改接口：
+
+* [DescribeAllNamespaces](https://cloud.tencent.com/document/api/248/48683)
+
+	* 新增出参：QceNamespacesNew, CustomNamespacesNew
+
+
+新增数据结构：
+
+* [[AlarmEvent](https://cloud.tencent.com/document/api/248/30354#AlarmEvent)](https://cloud.tencent.com/document/api/248/30354#[AlarmEvent](https://cloud.tencent.com/document/api/248/30354#AlarmEvent))
+* [[AlarmNotice](https://cloud.tencent.com/document/api/248/30354#AlarmNotice)](https://cloud.tencent.com/document/api/248/30354#[AlarmNotice](https://cloud.tencent.com/document/api/248/30354#AlarmNotice))
+* [[AlarmPolicy](https://cloud.tencent.com/document/api/248/30354#AlarmPolicy)](https://cloud.tencent.com/document/api/248/30354#[AlarmPolicy](https://cloud.tencent.com/document/api/248/30354#AlarmPolicy))
+* [[AlarmPolicyCondition](https://cloud.tencent.com/document/api/248/30354#AlarmPolicyCondition)](https://cloud.tencent.com/document/api/248/30354#[AlarmPolicyCondition](https://cloud.tencent.com/document/api/248/30354#AlarmPolicyCondition))
+* [[AlarmPolicyEventCondition](https://cloud.tencent.com/document/api/248/30354#AlarmPolicyEventCondition)](https://cloud.tencent.com/document/api/248/30354#[AlarmPolicyEventCondition](https://cloud.tencent.com/document/api/248/30354#AlarmPolicyEventCondition))
+* [[AlarmPolicyFilter](https://cloud.tencent.com/document/api/248/30354#AlarmPolicyFilter)](https://cloud.tencent.com/document/api/248/30354#[AlarmPolicyFilter](https://cloud.tencent.com/document/api/248/30354#AlarmPolicyFilter))
+* [[AlarmPolicyRule](https://cloud.tencent.com/document/api/248/30354#AlarmPolicyRule)](https://cloud.tencent.com/document/api/248/30354#[AlarmPolicyRule](https://cloud.tencent.com/document/api/248/30354#AlarmPolicyRule))
+* [[AlarmPolicyTriggerTask](https://cloud.tencent.com/document/api/248/30354#AlarmPolicyTriggerTask)](https://cloud.tencent.com/document/api/248/30354#[AlarmPolicyTriggerTask](https://cloud.tencent.com/document/api/248/30354#AlarmPolicyTriggerTask))
+* [[ConditionsTemp](https://cloud.tencent.com/document/api/248/30354#ConditionsTemp)](https://cloud.tencent.com/document/api/248/30354#[ConditionsTemp](https://cloud.tencent.com/document/api/248/30354#ConditionsTemp))
+* [[Metric](https://cloud.tencent.com/document/api/248/30354#Metric)](https://cloud.tencent.com/document/api/248/30354#[Metric](https://cloud.tencent.com/document/api/248/30354#Metric))
+* [[MetricConfig](https://cloud.tencent.com/document/api/248/30354#MetricConfig)](https://cloud.tencent.com/document/api/248/30354#[MetricConfig](https://cloud.tencent.com/document/api/248/30354#MetricConfig))
+* [[URLNotice](https://cloud.tencent.com/document/api/248/30354#URLNotice)](https://cloud.tencent.com/document/api/248/30354#[URLNotice](https://cloud.tencent.com/document/api/248/30354#URLNotice))
+* [[UserNotice](https://cloud.tencent.com/document/api/248/30354#UserNotice)](https://cloud.tencent.com/document/api/248/30354#[UserNotice](https://cloud.tencent.com/document/api/248/30354#UserNotice))
+
+修改数据结构：
+
+* [AlarmHistory](https://cloud.tencent.com/document/api/248/30354#AlarmHistory)
+
+	* 新增成员：PolicyExists
+
 
 ### 第 17 次发布
 
@@ -28469,17 +28549,17 @@
 
 新增接口：
 
-* [[DeleteProvisionedConcurrencyConfig](https://cloud.tencent.com/document/api/583/51250)](https://cloud.tencent.com/document/api/#/#)
-* [[DeleteReservedConcurrencyConfig](https://cloud.tencent.com/document/api/583/51249)](https://cloud.tencent.com/document/api/#/#)
-* [[GetProvisionedConcurrencyConfig](https://cloud.tencent.com/document/api/583/51248)](https://cloud.tencent.com/document/api/#/#)
-* [[GetReservedConcurrencyConfig](https://cloud.tencent.com/document/api/583/51247)](https://cloud.tencent.com/document/api/#/#)
-* [[PutProvisionedConcurrencyConfig](https://cloud.tencent.com/document/api/583/51246)](https://cloud.tencent.com/document/api/#/#)
-* [[PutReservedConcurrencyConfig](https://cloud.tencent.com/document/api/583/51245)](https://cloud.tencent.com/document/api/#/#)
-* [[PutTotalConcurrencyConfig](https://cloud.tencent.com/document/api/583/51244)](https://cloud.tencent.com/document/api/#/#)
+* [DeleteProvisionedConcurrencyConfig](https://cloud.tencent.com/document/api/583/51250)
+* [DeleteReservedConcurrencyConfig](https://cloud.tencent.com/document/api/583/51249)
+* [GetProvisionedConcurrencyConfig](https://cloud.tencent.com/document/api/583/51248)
+* [GetReservedConcurrencyConfig](https://cloud.tencent.com/document/api/583/51247)
+* [PutProvisionedConcurrencyConfig](https://cloud.tencent.com/document/api/583/51246)
+* [PutReservedConcurrencyConfig](https://cloud.tencent.com/document/api/583/51245)
+* [PutTotalConcurrencyConfig](https://cloud.tencent.com/document/api/583/51244)
 
 新增数据结构：
 
-* [[VersionProvisionedConcurrencyInfo](https://cloud.tencent.com/document/api/583/17244#VersionProvisionedConcurrencyInfo)](https://cloud.tencent.com/document/api/583/17244#[VersionProvisionedConcurrencyInfo](https://cloud.tencent.com/document/api/583/17244#VersionProvisionedConcurrencyInfo))
+* [VersionProvisionedConcurrencyInfo](https://cloud.tencent.com/document/api/583/17244#VersionProvisionedConcurrencyInfo)
 
 ### 第 22 次发布
 
@@ -29063,6 +29143,21 @@
 
 
 ## 邮件推送(ses) 版本：2020-10-02
+
+### 第 2 次发布
+
+发布时间：2020-12-22 08:11:35
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [TemplatesMetadata](https://cloud.tencent.com/document/api/1288/51053#TemplatesMetadata)
+
+	* 新增成员：ReviewReason
+
 
 ### 第 1 次发布
 
@@ -33970,6 +34065,33 @@
 
 
 ## 容器服务(tke) 版本：2018-05-25
+
+### 第 35 次发布
+
+发布时间：2020-12-22 08:08:25
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[ModifyClusterAsGroupOptionAttribute](https://cloud.tencent.com/document/api/457/51289)](https://cloud.tencent.com/document/api/#/#)
+
+修改接口：
+
+* [AddExistedInstances](https://cloud.tencent.com/document/api/457/31865)
+
+	* 新增入参：NodePool
+
+* [ModifyClusterNodePool](https://cloud.tencent.com/document/api/457/49431)
+
+	* 新增入参：OsName, OsCustomizeType
+
+
+新增数据结构：
+
+* [[NodePoolOption](https://cloud.tencent.com/document/api/457/31866#NodePoolOption)](https://cloud.tencent.com/document/api/457/31866#[NodePoolOption](https://cloud.tencent.com/document/api/457/31866#NodePoolOption))
 
 ### 第 34 次发布
 

@@ -3529,6 +3529,10 @@ type ForceRedirect struct {
 	// 支持 301、302
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RedirectStatusCode *int64 `json:"RedirectStatusCode,omitempty" name:"RedirectStatusCode"`
+
+	// 强制跳转时是否返回增加的头部。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CarryHeaders *string `json:"CarryHeaders,omitempty" name:"CarryHeaders"`
 }
 
 type GetDisableRecordsRequest struct {
@@ -4439,7 +4443,7 @@ type Origin struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	BasePath *string `json:"BasePath,omitempty" name:"BasePath"`
 
-	// 分路径回源配置规则
+	// 回源路径重写规则配置
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PathRules []*PathRule `json:"PathRules,omitempty" name:"PathRules" list`
 }

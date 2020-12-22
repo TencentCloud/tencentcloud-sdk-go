@@ -68,6 +68,56 @@ func (c *Client) BindingPolicyObject(request *BindingPolicyObjectRequest) (respo
     return
 }
 
+func NewCreateAlarmNoticeRequest() (request *CreateAlarmNoticeRequest) {
+    request = &CreateAlarmNoticeRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("monitor", APIVersion, "CreateAlarmNotice")
+    return
+}
+
+func NewCreateAlarmNoticeResponse() (response *CreateAlarmNoticeResponse) {
+    response = &CreateAlarmNoticeResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 云监控告警创建告警通知模板
+func (c *Client) CreateAlarmNotice(request *CreateAlarmNoticeRequest) (response *CreateAlarmNoticeResponse, err error) {
+    if request == nil {
+        request = NewCreateAlarmNoticeRequest()
+    }
+    response = NewCreateAlarmNoticeResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateAlarmPolicyRequest() (request *CreateAlarmPolicyRequest) {
+    request = &CreateAlarmPolicyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("monitor", APIVersion, "CreateAlarmPolicy")
+    return
+}
+
+func NewCreateAlarmPolicyResponse() (response *CreateAlarmPolicyResponse) {
+    response = &CreateAlarmPolicyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 创建告警策略
+func (c *Client) CreateAlarmPolicy(request *CreateAlarmPolicyRequest) (response *CreateAlarmPolicyResponse, err error) {
+    if request == nil {
+        request = NewCreateAlarmPolicyRequest()
+    }
+    response = NewCreateAlarmPolicyResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreatePolicyGroupRequest() (request *CreatePolicyGroupRequest) {
     request = &CreatePolicyGroupRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -116,6 +166,56 @@ func (c *Client) CreateServiceDiscovery(request *CreateServiceDiscoveryRequest) 
         request = NewCreateServiceDiscoveryRequest()
     }
     response = NewCreateServiceDiscoveryResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteAlarmNoticesRequest() (request *DeleteAlarmNoticesRequest) {
+    request = &DeleteAlarmNoticesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("monitor", APIVersion, "DeleteAlarmNotices")
+    return
+}
+
+func NewDeleteAlarmNoticesResponse() (response *DeleteAlarmNoticesResponse) {
+    response = &DeleteAlarmNoticesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 云监控告警删除告警通知模板
+func (c *Client) DeleteAlarmNotices(request *DeleteAlarmNoticesRequest) (response *DeleteAlarmNoticesResponse, err error) {
+    if request == nil {
+        request = NewDeleteAlarmNoticesRequest()
+    }
+    response = NewDeleteAlarmNoticesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteAlarmPolicyRequest() (request *DeleteAlarmPolicyRequest) {
+    request = &DeleteAlarmPolicyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("monitor", APIVersion, "DeleteAlarmPolicy")
+    return
+}
+
+func NewDeleteAlarmPolicyResponse() (response *DeleteAlarmPolicyResponse) {
+    response = &DeleteAlarmPolicyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 删除告警策略
+func (c *Client) DeleteAlarmPolicy(request *DeleteAlarmPolicyRequest) (response *DeleteAlarmPolicyResponse, err error) {
+    if request == nil {
+        request = NewDeleteAlarmPolicyRequest()
+    }
+    response = NewDeleteAlarmPolicyResponse()
     err = c.Send(request, response)
     return
 }
@@ -197,6 +297,31 @@ func (c *Client) DescribeAccidentEventList(request *DescribeAccidentEventListReq
     return
 }
 
+func NewDescribeAlarmEventsRequest() (request *DescribeAlarmEventsRequest) {
+    request = &DescribeAlarmEventsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("monitor", APIVersion, "DescribeAlarmEvents")
+    return
+}
+
+func NewDescribeAlarmEventsResponse() (response *DescribeAlarmEventsResponse) {
+    response = &DescribeAlarmEventsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询告警事件列表
+func (c *Client) DescribeAlarmEvents(request *DescribeAlarmEventsRequest) (response *DescribeAlarmEventsResponse, err error) {
+    if request == nil {
+        request = NewDescribeAlarmEventsRequest()
+    }
+    response = NewDescribeAlarmEventsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeAlarmHistoriesRequest() (request *DescribeAlarmHistoriesRequest) {
     request = &DescribeAlarmHistoriesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -212,12 +337,162 @@ func NewDescribeAlarmHistoriesResponse() (response *DescribeAlarmHistoriesRespon
     return
 }
 
-// 告警2.0-告警历史列表
+// 告警历史列表
 func (c *Client) DescribeAlarmHistories(request *DescribeAlarmHistoriesRequest) (response *DescribeAlarmHistoriesResponse, err error) {
     if request == nil {
         request = NewDescribeAlarmHistoriesRequest()
     }
     response = NewDescribeAlarmHistoriesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeAlarmMetricsRequest() (request *DescribeAlarmMetricsRequest) {
+    request = &DescribeAlarmMetricsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("monitor", APIVersion, "DescribeAlarmMetrics")
+    return
+}
+
+func NewDescribeAlarmMetricsResponse() (response *DescribeAlarmMetricsResponse) {
+    response = &DescribeAlarmMetricsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询告警指标列表
+func (c *Client) DescribeAlarmMetrics(request *DescribeAlarmMetricsRequest) (response *DescribeAlarmMetricsResponse, err error) {
+    if request == nil {
+        request = NewDescribeAlarmMetricsRequest()
+    }
+    response = NewDescribeAlarmMetricsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeAlarmNoticeRequest() (request *DescribeAlarmNoticeRequest) {
+    request = &DescribeAlarmNoticeRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("monitor", APIVersion, "DescribeAlarmNotice")
+    return
+}
+
+func NewDescribeAlarmNoticeResponse() (response *DescribeAlarmNoticeResponse) {
+    response = &DescribeAlarmNoticeResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 云监控告警获取告警通知模板详情
+func (c *Client) DescribeAlarmNotice(request *DescribeAlarmNoticeRequest) (response *DescribeAlarmNoticeResponse, err error) {
+    if request == nil {
+        request = NewDescribeAlarmNoticeRequest()
+    }
+    response = NewDescribeAlarmNoticeResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeAlarmNoticeCallbacksRequest() (request *DescribeAlarmNoticeCallbacksRequest) {
+    request = &DescribeAlarmNoticeCallbacksRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("monitor", APIVersion, "DescribeAlarmNoticeCallbacks")
+    return
+}
+
+func NewDescribeAlarmNoticeCallbacksResponse() (response *DescribeAlarmNoticeCallbacksResponse) {
+    response = &DescribeAlarmNoticeCallbacksResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 云监控告警获取告警通知模板所有回调URL
+func (c *Client) DescribeAlarmNoticeCallbacks(request *DescribeAlarmNoticeCallbacksRequest) (response *DescribeAlarmNoticeCallbacksResponse, err error) {
+    if request == nil {
+        request = NewDescribeAlarmNoticeCallbacksRequest()
+    }
+    response = NewDescribeAlarmNoticeCallbacksResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeAlarmNoticesRequest() (request *DescribeAlarmNoticesRequest) {
+    request = &DescribeAlarmNoticesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("monitor", APIVersion, "DescribeAlarmNotices")
+    return
+}
+
+func NewDescribeAlarmNoticesResponse() (response *DescribeAlarmNoticesResponse) {
+    response = &DescribeAlarmNoticesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 云监控告警查询告警通知模板列表
+func (c *Client) DescribeAlarmNotices(request *DescribeAlarmNoticesRequest) (response *DescribeAlarmNoticesResponse, err error) {
+    if request == nil {
+        request = NewDescribeAlarmNoticesRequest()
+    }
+    response = NewDescribeAlarmNoticesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeAlarmPoliciesRequest() (request *DescribeAlarmPoliciesRequest) {
+    request = &DescribeAlarmPoliciesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("monitor", APIVersion, "DescribeAlarmPolicies")
+    return
+}
+
+func NewDescribeAlarmPoliciesResponse() (response *DescribeAlarmPoliciesResponse) {
+    response = &DescribeAlarmPoliciesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 告警策略列表
+func (c *Client) DescribeAlarmPolicies(request *DescribeAlarmPoliciesRequest) (response *DescribeAlarmPoliciesResponse, err error) {
+    if request == nil {
+        request = NewDescribeAlarmPoliciesRequest()
+    }
+    response = NewDescribeAlarmPoliciesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeAlarmPolicyRequest() (request *DescribeAlarmPolicyRequest) {
+    request = &DescribeAlarmPolicyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("monitor", APIVersion, "DescribeAlarmPolicy")
+    return
+}
+
+func NewDescribeAlarmPolicyResponse() (response *DescribeAlarmPolicyResponse) {
+    response = &DescribeAlarmPolicyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 告警策略详情
+func (c *Client) DescribeAlarmPolicy(request *DescribeAlarmPolicyRequest) (response *DescribeAlarmPolicyResponse, err error) {
+    if request == nil {
+        request = NewDescribeAlarmPolicyRequest()
+    }
+    response = NewDescribeAlarmPolicyResponse()
     err = c.Send(request, response)
     return
 }
@@ -526,6 +801,156 @@ func (c *Client) GetMonitorData(request *GetMonitorDataRequest) (response *GetMo
     return
 }
 
+func NewModifyAlarmNoticeRequest() (request *ModifyAlarmNoticeRequest) {
+    request = &ModifyAlarmNoticeRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("monitor", APIVersion, "ModifyAlarmNotice")
+    return
+}
+
+func NewModifyAlarmNoticeResponse() (response *ModifyAlarmNoticeResponse) {
+    response = &ModifyAlarmNoticeResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 云监控告警编辑告警通知模板
+func (c *Client) ModifyAlarmNotice(request *ModifyAlarmNoticeRequest) (response *ModifyAlarmNoticeResponse, err error) {
+    if request == nil {
+        request = NewModifyAlarmNoticeRequest()
+    }
+    response = NewModifyAlarmNoticeResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyAlarmPolicyConditionRequest() (request *ModifyAlarmPolicyConditionRequest) {
+    request = &ModifyAlarmPolicyConditionRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("monitor", APIVersion, "ModifyAlarmPolicyCondition")
+    return
+}
+
+func NewModifyAlarmPolicyConditionResponse() (response *ModifyAlarmPolicyConditionResponse) {
+    response = &ModifyAlarmPolicyConditionResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 编辑告警策略触发条件
+func (c *Client) ModifyAlarmPolicyCondition(request *ModifyAlarmPolicyConditionRequest) (response *ModifyAlarmPolicyConditionResponse, err error) {
+    if request == nil {
+        request = NewModifyAlarmPolicyConditionRequest()
+    }
+    response = NewModifyAlarmPolicyConditionResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyAlarmPolicyInfoRequest() (request *ModifyAlarmPolicyInfoRequest) {
+    request = &ModifyAlarmPolicyInfoRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("monitor", APIVersion, "ModifyAlarmPolicyInfo")
+    return
+}
+
+func NewModifyAlarmPolicyInfoResponse() (response *ModifyAlarmPolicyInfoResponse) {
+    response = &ModifyAlarmPolicyInfoResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 告警2.0编辑告警策略基本信息，包括策略名、备注
+func (c *Client) ModifyAlarmPolicyInfo(request *ModifyAlarmPolicyInfoRequest) (response *ModifyAlarmPolicyInfoResponse, err error) {
+    if request == nil {
+        request = NewModifyAlarmPolicyInfoRequest()
+    }
+    response = NewModifyAlarmPolicyInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyAlarmPolicyNoticeRequest() (request *ModifyAlarmPolicyNoticeRequest) {
+    request = &ModifyAlarmPolicyNoticeRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("monitor", APIVersion, "ModifyAlarmPolicyNotice")
+    return
+}
+
+func NewModifyAlarmPolicyNoticeResponse() (response *ModifyAlarmPolicyNoticeResponse) {
+    response = &ModifyAlarmPolicyNoticeResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 云监控告警修改告警策略绑定的告警通知模板
+func (c *Client) ModifyAlarmPolicyNotice(request *ModifyAlarmPolicyNoticeRequest) (response *ModifyAlarmPolicyNoticeResponse, err error) {
+    if request == nil {
+        request = NewModifyAlarmPolicyNoticeRequest()
+    }
+    response = NewModifyAlarmPolicyNoticeResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyAlarmPolicyStatusRequest() (request *ModifyAlarmPolicyStatusRequest) {
+    request = &ModifyAlarmPolicyStatusRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("monitor", APIVersion, "ModifyAlarmPolicyStatus")
+    return
+}
+
+func NewModifyAlarmPolicyStatusResponse() (response *ModifyAlarmPolicyStatusResponse) {
+    response = &ModifyAlarmPolicyStatusResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 修改告警策略的启停状态
+func (c *Client) ModifyAlarmPolicyStatus(request *ModifyAlarmPolicyStatusRequest) (response *ModifyAlarmPolicyStatusResponse, err error) {
+    if request == nil {
+        request = NewModifyAlarmPolicyStatusRequest()
+    }
+    response = NewModifyAlarmPolicyStatusResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyAlarmPolicyTasksRequest() (request *ModifyAlarmPolicyTasksRequest) {
+    request = &ModifyAlarmPolicyTasksRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("monitor", APIVersion, "ModifyAlarmPolicyTasks")
+    return
+}
+
+func NewModifyAlarmPolicyTasksResponse() (response *ModifyAlarmPolicyTasksResponse) {
+    response = &ModifyAlarmPolicyTasksResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 云监控告警修改告警策略的触发任务，TriggerTasks字段放触发任务列表，TriggerTasks传空数组时，代表解绑该策略的所有触发任务。
+func (c *Client) ModifyAlarmPolicyTasks(request *ModifyAlarmPolicyTasksRequest) (response *ModifyAlarmPolicyTasksResponse, err error) {
+    if request == nil {
+        request = NewModifyAlarmPolicyTasksRequest()
+    }
+    response = NewModifyAlarmPolicyTasksResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyAlarmReceiversRequest() (request *ModifyAlarmReceiversRequest) {
     request = &ModifyAlarmReceiversRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -628,6 +1053,32 @@ func (c *Client) SendCustomAlarmMsg(request *SendCustomAlarmMsgRequest) (respons
         request = NewSendCustomAlarmMsgRequest()
     }
     response = NewSendCustomAlarmMsgResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewSetDefaultAlarmPolicyRequest() (request *SetDefaultAlarmPolicyRequest) {
+    request = &SetDefaultAlarmPolicyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("monitor", APIVersion, "SetDefaultAlarmPolicy")
+    return
+}
+
+func NewSetDefaultAlarmPolicyResponse() (response *SetDefaultAlarmPolicyResponse) {
+    response = &SetDefaultAlarmPolicyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 设置一个策略为该告警策略类型、该项目的默认告警策略。
+// 同一项目下相同的告警策略类型，就会被设置为非默认。
+func (c *Client) SetDefaultAlarmPolicy(request *SetDefaultAlarmPolicyRequest) (response *SetDefaultAlarmPolicyResponse, err error) {
+    if request == nil {
+        request = NewSetDefaultAlarmPolicyRequest()
+    }
+    response = NewSetDefaultAlarmPolicyResponse()
     err = c.Send(request, response)
     return
 }
