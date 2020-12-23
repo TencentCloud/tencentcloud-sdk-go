@@ -646,6 +646,31 @@ func (c *Client) DescribeSqlLogs(request *DescribeSqlLogsRequest) (response *Des
     return
 }
 
+func NewDescribeUserTasksRequest() (request *DescribeUserTasksRequest) {
+    request = &DescribeUserTasksRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("dcdb", APIVersion, "DescribeUserTasks")
+    return
+}
+
+func NewDescribeUserTasksResponse() (response *DescribeUserTasksResponse) {
+    response = &DescribeUserTasksResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（DescribeUserTasks）用于拉取用户任务列表
+func (c *Client) DescribeUserTasks(request *DescribeUserTasksRequest) (response *DescribeUserTasksResponse, err error) {
+    if request == nil {
+        request = NewDescribeUserTasksRequest()
+    }
+    response = NewDescribeUserTasksResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewFlushBinlogRequest() (request *FlushBinlogRequest) {
     request = &FlushBinlogRequest{
         BaseRequest: &tchttp.BaseRequest{},

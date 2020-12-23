@@ -818,6 +818,31 @@ func (c *Client) DescribeReportData(request *DescribeReportDataRequest) (respons
     return
 }
 
+func NewDescribeScdnConfigRequest() (request *DescribeScdnConfigRequest) {
+    request = &DescribeScdnConfigRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cdn", APIVersion, "DescribeScdnConfig")
+    return
+}
+
+func NewDescribeScdnConfigResponse() (response *DescribeScdnConfigResponse) {
+    response = &DescribeScdnConfigResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeScdnConfig 用于查询指定 SCDN 加速域名的安全相关配置
+func (c *Client) DescribeScdnConfig(request *DescribeScdnConfigRequest) (response *DescribeScdnConfigResponse, err error) {
+    if request == nil {
+        request = NewDescribeScdnConfigRequest()
+    }
+    response = NewDescribeScdnConfigResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeScdnTopDataRequest() (request *DescribeScdnTopDataRequest) {
     request = &DescribeScdnTopDataRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1119,6 +1144,31 @@ func (c *Client) ListDiagnoseReport(request *ListDiagnoseReportRequest) (respons
     return
 }
 
+func NewListScdnDomainsRequest() (request *ListScdnDomainsRequest) {
+    request = &ListScdnDomainsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cdn", APIVersion, "ListScdnDomains")
+    return
+}
+
+func NewListScdnDomainsResponse() (response *ListScdnDomainsResponse) {
+    response = &ListScdnDomainsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ListScdnDomains 用于查询 SCDN 安全加速域名列表，及域名基本配置信息
+func (c *Client) ListScdnDomains(request *ListScdnDomainsRequest) (response *ListScdnDomainsResponse, err error) {
+    if request == nil {
+        request = NewListScdnDomainsRequest()
+    }
+    response = NewListScdnDomainsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewListScdnLogTasksRequest() (request *ListScdnLogTasksRequest) {
     request = &ListScdnLogTasksRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1330,6 +1380,31 @@ func (c *Client) StartCdnDomain(request *StartCdnDomainRequest) (response *Start
     return
 }
 
+func NewStartScdnDomainRequest() (request *StartScdnDomainRequest) {
+    request = &StartScdnDomainRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cdn", APIVersion, "StartScdnDomain")
+    return
+}
+
+func NewStartScdnDomainResponse() (response *StartScdnDomainResponse) {
+    response = &StartScdnDomainResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// StartScdnDomain 用于开启域名的安全防护配置
+func (c *Client) StartScdnDomain(request *StartScdnDomainRequest) (response *StartScdnDomainResponse, err error) {
+    if request == nil {
+        request = NewStartScdnDomainRequest()
+    }
+    response = NewStartScdnDomainResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewStopCdnDomainRequest() (request *StopCdnDomainRequest) {
     request = &StopCdnDomainRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1352,6 +1427,31 @@ func (c *Client) StopCdnDomain(request *StopCdnDomainRequest) (response *StopCdn
         request = NewStopCdnDomainRequest()
     }
     response = NewStopCdnDomainResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewStopScdnDomainRequest() (request *StopScdnDomainRequest) {
+    request = &StopScdnDomainRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cdn", APIVersion, "StopScdnDomain")
+    return
+}
+
+func NewStopScdnDomainResponse() (response *StopScdnDomainResponse) {
+    response = &StopScdnDomainResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// StopScdnDomain 用于关闭域名的安全防护配置
+func (c *Client) StopScdnDomain(request *StopScdnDomainRequest) (response *StopScdnDomainResponse, err error) {
+    if request == nil {
+        request = NewStopScdnDomainRequest()
+    }
+    response = NewStopScdnDomainResponse()
     err = c.Send(request, response)
     return
 }

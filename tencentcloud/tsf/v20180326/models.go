@@ -4286,6 +4286,9 @@ type DescribeGroupsRequest struct {
 
 	// 部署组资源类型列表
 	GroupResourceTypeList []*string `json:"GroupResourceTypeList,omitempty" name:"GroupResourceTypeList" list`
+
+	// 部署组状态过滤字段
+	Status *string `json:"Status,omitempty" name:"Status"`
 }
 
 func (r *DescribeGroupsRequest) ToJsonString() string {

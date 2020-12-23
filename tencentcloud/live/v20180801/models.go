@@ -317,6 +317,30 @@ type CallBackTemplateInfo struct {
 	CallbackKey *string `json:"CallbackKey,omitempty" name:"CallbackKey"`
 }
 
+type CallbackEventInfo struct {
+
+	// 事件时间
+	EventTime *string `json:"EventTime,omitempty" name:"EventTime"`
+
+	// 事件类型
+	EventType *uint64 `json:"EventType,omitempty" name:"EventType"`
+
+	// 回调请求
+	Request *string `json:"Request,omitempty" name:"Request"`
+
+	// 回调响应
+	Response *string `json:"Response,omitempty" name:"Response"`
+
+	// 客户接口响应时间
+	ResponseTime *string `json:"ResponseTime,omitempty" name:"ResponseTime"`
+
+	// 回调结果
+	ResultCode *uint64 `json:"ResultCode,omitempty" name:"ResultCode"`
+
+	// 流名称
+	StreamId *string `json:"StreamId,omitempty" name:"StreamId"`
+}
+
 type CancelCommonMixStreamRequest struct {
 	*tchttp.BaseRequest
 
@@ -2202,6 +2226,76 @@ func (r *DescribeBillBandwidthAndFluxListResponse) ToJsonString() string {
 }
 
 func (r *DescribeBillBandwidthAndFluxListResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeCallbackRecordsListRequest struct {
+	*tchttp.BaseRequest
+
+	// 起始时间点，格式为yyyy-mm-dd HH:MM:SS。
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 结束时间点，格式为yyyy-mm-dd HH:MM:SS，起始和结束时间跨度不支持超过1天。
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 流名称，精确匹配。
+	StreamName *string `json:"StreamName,omitempty" name:"StreamName"`
+
+	// 页码
+	PageNum *uint64 `json:"PageNum,omitempty" name:"PageNum"`
+
+	// 每页条数
+	PageSize *uint64 `json:"PageSize,omitempty" name:"PageSize"`
+
+	// 事件类型。
+	// 0: "断流",
+	// 1: "推流",
+	// 100: "录制"
+	EventType *uint64 `json:"EventType,omitempty" name:"EventType"`
+
+	// 回调结果。0为成功，其他为失败
+	ResultCode *uint64 `json:"ResultCode,omitempty" name:"ResultCode"`
+}
+
+func (r *DescribeCallbackRecordsListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeCallbackRecordsListRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeCallbackRecordsListResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 回调事件列表
+		DataInfoList []*CallbackEventInfo `json:"DataInfoList,omitempty" name:"DataInfoList" list`
+
+		// 页码
+		PageNum *uint64 `json:"PageNum,omitempty" name:"PageNum"`
+
+		// 每页条数
+		PageSize *uint64 `json:"PageSize,omitempty" name:"PageSize"`
+
+		// 总条数
+		TotalNum *uint64 `json:"TotalNum,omitempty" name:"TotalNum"`
+
+		// 总页数
+		TotalPage *uint64 `json:"TotalPage,omitempty" name:"TotalPage"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeCallbackRecordsListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeCallbackRecordsListResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 

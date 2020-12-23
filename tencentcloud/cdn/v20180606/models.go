@@ -2667,6 +2667,55 @@ func (r *DescribeReportDataResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeScdnConfigRequest struct {
+	*tchttp.BaseRequest
+
+	// 域名
+	Domain *string `json:"Domain,omitempty" name:"Domain"`
+}
+
+func (r *DescribeScdnConfigRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeScdnConfigRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeScdnConfigResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 自定义防护策略配置
+		Acl *ScdnAclConfig `json:"Acl,omitempty" name:"Acl"`
+
+		// Web 攻击防护（WAF）配置
+		Waf *ScdnWafConfig `json:"Waf,omitempty" name:"Waf"`
+
+		// CC 防护配置
+		CC *ScdnConfig `json:"CC,omitempty" name:"CC"`
+
+		// DDOS 防护配置
+		Ddos *ScdnDdosConfig `json:"Ddos,omitempty" name:"Ddos"`
+
+		// BOT 防护配置
+		Bot *ScdnBotConfig `json:"Bot,omitempty" name:"Bot"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeScdnConfigResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeScdnConfigResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeScdnTopDataRequest struct {
 	*tchttp.BaseRequest
 
@@ -4031,6 +4080,51 @@ func (r *ListDiagnoseReportResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type ListScdnDomainsRequest struct {
+	*tchttp.BaseRequest
+
+	// 分页起始地址
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 列表分页记录条数，最大1000
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+func (r *ListScdnDomainsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ListScdnDomainsRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ListScdnDomainsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 域名列表信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		DomainList []*ScdnDomain `json:"DomainList,omitempty" name:"DomainList" list`
+
+		// 域名的总条数。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ListScdnDomainsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ListScdnDomainsResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type ListScdnLogTasksRequest struct {
 	*tchttp.BaseRequest
 }
@@ -5199,6 +5293,36 @@ type ScdnDdosConfig struct {
 	Switch *string `json:"Switch,omitempty" name:"Switch"`
 }
 
+type ScdnDomain struct {
+
+	// 域名
+	Domain *string `json:"Domain,omitempty" name:"Domain"`
+
+	// 当前状态，取值online | offline | process
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// Waf 状态默认为‘/’，取值 close | intercept | observe
+	Waf *string `json:"Waf,omitempty" name:"Waf"`
+
+	// Acl 状态默认为‘/’，取值 close | open
+	Acl *string `json:"Acl,omitempty" name:"Acl"`
+
+	// CC 状态默认为‘/’，取值 close | open
+	CC *string `json:"CC,omitempty" name:"CC"`
+
+	// Ddos 状态默认为‘/’，取值 close | open
+	Ddos *string `json:"Ddos,omitempty" name:"Ddos"`
+
+	// 项目ID
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// Acl 规则数
+	AclRuleNumbers *uint64 `json:"AclRuleNumbers,omitempty" name:"AclRuleNumbers"`
+
+	// Bot 状态默认为‘/’，取值 close | open
+	Bot *string `json:"Bot,omitempty" name:"Bot"`
+}
+
 type ScdnErrorPage struct {
 
 	// 状态码
@@ -5601,6 +5725,43 @@ func (r *StartCdnDomainResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type StartScdnDomainRequest struct {
+	*tchttp.BaseRequest
+
+	// 域名
+	Domain *string `json:"Domain,omitempty" name:"Domain"`
+}
+
+func (r *StartScdnDomainRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *StartScdnDomainRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type StartScdnDomainResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 开启结果，Success表示成功
+		Result *string `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *StartScdnDomainResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *StartScdnDomainResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type StatusCodeCache struct {
 
 	// 状态码缓存过期配置开关
@@ -5656,6 +5817,43 @@ func (r *StopCdnDomainResponse) ToJsonString() string {
 }
 
 func (r *StopCdnDomainResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type StopScdnDomainRequest struct {
+	*tchttp.BaseRequest
+
+	// 域名
+	Domain *string `json:"Domain,omitempty" name:"Domain"`
+}
+
+func (r *StopScdnDomainRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *StopScdnDomainRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type StopScdnDomainResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 关闭结果，Success表示成功
+		Result *string `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *StopScdnDomainResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *StopScdnDomainResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 

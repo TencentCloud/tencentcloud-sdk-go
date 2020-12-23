@@ -1608,6 +1608,67 @@ func (r *DescribeSqlLogsResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeUserTasksRequest struct {
+	*tchttp.BaseRequest
+
+	// 任务的状态列表。0-任务启动中；1-任务运行中；2-任务成功；3-任务失败
+	Statuses []*int64 `json:"Statuses,omitempty" name:"Statuses" list`
+
+	// 实例ID列表
+	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds" list`
+
+	// 任务类型列表，当前支持的任务类型有：0-回档任务；1-创建实例任务；2-扩容任务；3-迁移任务；4-删除实例任务；5-重启任务
+	FlowTypes []*int64 `json:"FlowTypes,omitempty" name:"FlowTypes" list`
+
+	// 任务的创建时间
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 任务的结束时间
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 任务ID的数组
+	UTaskIds []*int64 `json:"UTaskIds,omitempty" name:"UTaskIds" list`
+
+	// 每次最多返回多少条任务，取值范围为(0,100]，不传的话默认值为20
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 返回任务默认是按照创建时间降序排列，从偏移值Offset处开始返回
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+}
+
+func (r *DescribeUserTasksRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeUserTasksRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeUserTasksResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 任务总数
+		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 任务列表
+		FlowSet []*UserTaskInfo `json:"FlowSet,omitempty" name:"FlowSet" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeUserTasksResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeUserTasksResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type ExpandShardConfig struct {
 
 	// 分片ID数组
@@ -2366,6 +2427,42 @@ func (r *UpgradeDCDBInstanceResponse) ToJsonString() string {
 
 func (r *UpgradeDCDBInstanceResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
+}
+
+type UserTaskInfo struct {
+
+	// 任务ID
+	Id *int64 `json:"Id,omitempty" name:"Id"`
+
+	// 用户账户ID
+	AppId *int64 `json:"AppId,omitempty" name:"AppId"`
+
+	// 任务状态，0-任务初始化中；1-任务运行中；2-任务成功；3-任务失败
+	Status *int64 `json:"Status,omitempty" name:"Status"`
+
+	// 任务类型，0-实例回档；1-实例创建；2-实例扩容；3-实例迁移；4-实例删除；5-实例重启
+	UserTaskType *int64 `json:"UserTaskType,omitempty" name:"UserTaskType"`
+
+	// 任务创建时间
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 任务结束时间
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 任务错误信息
+	ErrMsg *string `json:"ErrMsg,omitempty" name:"ErrMsg"`
+
+	// 客户端参数
+	InputData *string `json:"InputData,omitempty" name:"InputData"`
+
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 实例名称
+	InstanceName *string `json:"InstanceName,omitempty" name:"InstanceName"`
+
+	// 地域ID
+	RegionId *int64 `json:"RegionId,omitempty" name:"RegionId"`
 }
 
 type ZonesInfo struct {

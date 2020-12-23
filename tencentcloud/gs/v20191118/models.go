@@ -44,7 +44,7 @@ type CreateSessionRequest struct {
 	// 背景图url，格式为png或jpeg，宽高1920*1080
 	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
 
-	// 【将废弃】资源池编号，比如1表示正式，2表示测试
+	// 【废弃】资源池编号
 	SetNo *uint64 `json:"SetNo,omitempty" name:"SetNo"`
 
 	// 单位Mbps，固定码率，后端不动态调整(MaxBitrate和MinBitrate将无效)
@@ -88,8 +88,11 @@ type CreateSessionResponse struct {
 		// 服务端session信息，返回给JSSDK
 		ServerSession *string `json:"ServerSession,omitempty" name:"ServerSession"`
 
-		// 【多人游戏】角色编号；比如Player1、Player2、Viewer1
+		// 【多人游戏】角色编号；比如1、2、3、4
 		RoleNumber *string `json:"RoleNumber,omitempty" name:"RoleNumber"`
+
+		// 【多人云游】角色；Player表示玩家；Viewer表示观察者
+		Role *string `json:"Role,omitempty" name:"Role"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -111,7 +114,7 @@ type StopGameRequest struct {
 	// 游戏用户ID
 	UserId *string `json:"UserId,omitempty" name:"UserId"`
 
-	// 用于多人游戏，游戏主机用户ID
+	// 【多人游戏】游戏主机用户ID
 	HostUserId *string `json:"HostUserId,omitempty" name:"HostUserId"`
 }
 
@@ -151,10 +154,10 @@ type TrylockWorkerRequest struct {
 	// 游戏ID
 	GameId *string `json:"GameId,omitempty" name:"GameId"`
 
-	// 游戏区域，ap-guangzhou、ap-shanghai、ap-beijing等
+	// 游戏区域，ap-guangzhou、ap-shanghai、ap-beijing等，如果不为空，优先按照该区域进行调度分配机器
 	GameRegion *string `json:"GameRegion,omitempty" name:"GameRegion"`
 
-	// 资源池编号，1表示共用，2表示测试
+	// 【废弃】资源池编号
 	SetNo *uint64 `json:"SetNo,omitempty" name:"SetNo"`
 
 	// 游戏用户IP，用于就近调度，例如125.127.178.228

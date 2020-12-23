@@ -1013,6 +1013,31 @@ func (c *Client) DescribeBillBandwidthAndFluxList(request *DescribeBillBandwidth
     return
 }
 
+func NewDescribeCallbackRecordsListRequest() (request *DescribeCallbackRecordsListRequest) {
+    request = &DescribeCallbackRecordsListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("live", APIVersion, "DescribeCallbackRecordsList")
+    return
+}
+
+func NewDescribeCallbackRecordsListResponse() (response *DescribeCallbackRecordsListResponse) {
+    response = &DescribeCallbackRecordsListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 回调事件查询
+func (c *Client) DescribeCallbackRecordsList(request *DescribeCallbackRecordsListRequest) (response *DescribeCallbackRecordsListResponse, err error) {
+    if request == nil {
+        request = NewDescribeCallbackRecordsListRequest()
+    }
+    response = NewDescribeCallbackRecordsListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeConcurrentRecordStreamNumRequest() (request *DescribeConcurrentRecordStreamNumRequest) {
     request = &DescribeConcurrentRecordStreamNumRequest{
         BaseRequest: &tchttp.BaseRequest{},
