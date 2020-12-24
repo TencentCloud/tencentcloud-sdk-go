@@ -51,6 +51,9 @@ type AudioInfo struct {
 
 	// 采样率，单位：Hz。可选项：32000，44100,48000
 	SampleRate *int64 `json:"SampleRate,omitempty" name:"SampleRate"`
+
+	// 音频降噪信息
+	Denoise *Denoise `json:"Denoise,omitempty" name:"Denoise"`
 }
 
 type AudioInfoResultItem struct {
@@ -397,6 +400,16 @@ type DarInfo struct {
 	// 2：拉伸，对每一帧进行拉伸，填满整个画面，可能导致转码后的视频被“压扁“或者“拉长“。
 	// 默认为2。
 	FillMode *uint64 `json:"FillMode,omitempty" name:"FillMode"`
+}
+
+type Denoise struct {
+
+	// 音频降噪强度，可选项：
+	// 1. weak
+	// 2.normal，
+	// 3.strong
+	// 默认为weak
+	Type *string `json:"Type,omitempty" name:"Type"`
 }
 
 type Denoising struct {

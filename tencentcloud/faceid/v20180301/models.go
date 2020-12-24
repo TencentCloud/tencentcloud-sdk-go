@@ -1039,6 +1039,97 @@ func (r *GetLiveCodeResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type GetRealNameAuthResultRequest struct {
+	*tchttp.BaseRequest
+
+	// 实名认证凭证
+	AuthToken *string `json:"AuthToken,omitempty" name:"AuthToken"`
+}
+
+func (r *GetRealNameAuthResultRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *GetRealNameAuthResultRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type GetRealNameAuthResultResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 认证结果码，收费情况如下：
+	// 
+	// 收费码：
+	// 0:  姓名和身份证号一致
+	// -1: 姓名和身份证号不一致
+	// -2: 姓名和微信实名姓名不一致
+	// 
+	// 不收费码：
+	// -3: 微信号未实名
+		ResultType *string `json:"ResultType,omitempty" name:"ResultType"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *GetRealNameAuthResultResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *GetRealNameAuthResultResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type GetRealNameAuthTokenRequest struct {
+	*tchttp.BaseRequest
+
+	// 姓名
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 身份证号
+	IDCard *string `json:"IDCard,omitempty" name:"IDCard"`
+
+	// 回调地址。实名认证完成后，将会重定向到这个地址通知认证发起方
+	CallbackURL *string `json:"CallbackURL,omitempty" name:"CallbackURL"`
+}
+
+func (r *GetRealNameAuthTokenRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *GetRealNameAuthTokenRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type GetRealNameAuthTokenResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 查询实名认证结果的唯一凭证
+		AuthToken *string `json:"AuthToken,omitempty" name:"AuthToken"`
+
+		// 实名认证授权地址，认证发起方需要重定向到这个地址获取认证用户的授权
+		RedirectURL *string `json:"RedirectURL,omitempty" name:"RedirectURL"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *GetRealNameAuthTokenResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *GetRealNameAuthTokenResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type IdCardOCRVerificationRequest struct {
 	*tchttp.BaseRequest
 

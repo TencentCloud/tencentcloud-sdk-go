@@ -4896,6 +4896,13 @@ type PushUrlsCacheRequest struct {
 
 	// 填写"middle"或不填充时预热至中间层节点
 	Layer *string `json:"Layer,omitempty" name:"Layer"`
+
+	// 是否递归解析m3u8文件中的ts分片预热
+	// 注意事项：
+	// 1. 该功能要求m3u8索引文件能直接请求获取
+	// 2. 当前只支持递归解析一级索引和子索引中的ts分片，递归深度不超过3层
+	// 3. 解析获取的ts分片会正常累加每日预热用量，当用量超出配额时，会静默处理，不再执行预热
+	ParseM3U8 *bool `json:"ParseM3U8,omitempty" name:"ParseM3U8"`
 }
 
 func (r *PushUrlsCacheRequest) ToJsonString() string {

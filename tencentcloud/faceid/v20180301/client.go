@@ -368,6 +368,56 @@ func (c *Client) GetLiveCode(request *GetLiveCodeRequest) (response *GetLiveCode
     return
 }
 
+func NewGetRealNameAuthResultRequest() (request *GetRealNameAuthResultRequest) {
+    request = &GetRealNameAuthResultRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("faceid", APIVersion, "GetRealNameAuthResult")
+    return
+}
+
+func NewGetRealNameAuthResultResponse() (response *GetRealNameAuthResultResponse) {
+    response = &GetRealNameAuthResultResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 获取微信实名认证结果
+func (c *Client) GetRealNameAuthResult(request *GetRealNameAuthResultRequest) (response *GetRealNameAuthResultResponse, err error) {
+    if request == nil {
+        request = NewGetRealNameAuthResultRequest()
+    }
+    response = NewGetRealNameAuthResultResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewGetRealNameAuthTokenRequest() (request *GetRealNameAuthTokenRequest) {
+    request = &GetRealNameAuthTokenRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("faceid", APIVersion, "GetRealNameAuthToken")
+    return
+}
+
+func NewGetRealNameAuthTokenResponse() (response *GetRealNameAuthTokenResponse) {
+    response = &GetRealNameAuthTokenResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 微信实名认证授权
+func (c *Client) GetRealNameAuthToken(request *GetRealNameAuthTokenRequest) (response *GetRealNameAuthTokenResponse, err error) {
+    if request == nil {
+        request = NewGetRealNameAuthTokenRequest()
+    }
+    response = NewGetRealNameAuthTokenResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewIdCardOCRVerificationRequest() (request *IdCardOCRVerificationRequest) {
     request = &IdCardOCRVerificationRequest{
         BaseRequest: &tchttp.BaseRequest{},

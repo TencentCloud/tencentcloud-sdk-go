@@ -603,6 +603,9 @@ type BindSubDomainRequest struct {
 
 	// 自定义域名路径映射，最多输入三个Environment，并且只能分别取值“test”、 ”prepub“、”release“。
 	PathMappingSet []*PathMapping `json:"PathMappingSet,omitempty" name:"PathMappingSet" list`
+
+	// 是否将HTTP请求强制跳转 HTTPS，默认为false。参数为 true时，API网关会将所有使用该自定义域名的 HTTP 协议的请求重定向至 HTTPS 协议进行转发。
+	IsForcedHttps *bool `json:"IsForcedHttps,omitempty" name:"IsForcedHttps"`
 }
 
 func (r *BindSubDomainRequest) ToJsonString() string {
@@ -617,6 +620,10 @@ func (r *BindSubDomainRequest) FromJsonString(s string) error {
 type BindSubDomainResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
+
+		// 绑定操作是否成功。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Result *bool `json:"Result,omitempty" name:"Result"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -3326,6 +3333,9 @@ type ModifySubDomainRequest struct {
 
 	// 网络类型 （'INNER' 或 'OUTER'）
 	NetType *string `json:"NetType,omitempty" name:"NetType"`
+
+	// 是否将HTTP请求强制跳转 HTTPS，默认为false。参数为 true时，API网关会将所有使用该自定义域名的 HTTP 协议的请求重定向至 HTTPS 协议进行转发。
+	IsForcedHttps *bool `json:"IsForcedHttps,omitempty" name:"IsForcedHttps"`
 }
 
 func (r *ModifySubDomainRequest) ToJsonString() string {

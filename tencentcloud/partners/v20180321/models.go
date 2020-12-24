@@ -251,6 +251,10 @@ type AgentDealElem struct {
 	// 订单过期时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	OverdueTime *string `json:"OverdueTime,omitempty" name:"OverdueTime"`
+
+	// 产品详情
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProductInfo []*ProductInfoElem `json:"ProductInfo,omitempty" name:"ProductInfo" list`
 }
 
 type AgentPayDealsRequest struct {
@@ -1034,6 +1038,15 @@ func (r *ModifyClientRemarkResponse) ToJsonString() string {
 
 func (r *ModifyClientRemarkResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
+}
+
+type ProductInfoElem struct {
+
+	// 产品属性
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 产品属性值
+	Value *string `json:"Value,omitempty" name:"Value"`
 }
 
 type RebateInfoElem struct {
