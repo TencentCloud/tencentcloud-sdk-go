@@ -79,6 +79,54 @@ type AccessPoint struct {
 	AvailablePortType []*string `json:"AvailablePortType,omitempty" name:"AvailablePortType" list`
 }
 
+type ApplyInternetAddressRequest struct {
+	*tchttp.BaseRequest
+
+	// CIDR地址掩码长度
+	MaskLen *int64 `json:"MaskLen,omitempty" name:"MaskLen"`
+
+	// 0:BGP类型地址
+	// 1：中国电信
+	// 2：中国移动
+	// 3：中国联通
+	AddrType *int64 `json:"AddrType,omitempty" name:"AddrType"`
+
+	// 0：IPv4
+	// 1:IPv6
+	AddrProto *int64 `json:"AddrProto,omitempty" name:"AddrProto"`
+}
+
+func (r *ApplyInternetAddressRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ApplyInternetAddressRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ApplyInternetAddressResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 互联网公网地址ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ApplyInternetAddressResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ApplyInternetAddressResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type BFDInfo struct {
 
 	// 健康检查次数
@@ -542,6 +590,147 @@ func (r *DescribeDirectConnectsResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeInternetAddressQuotaRequest struct {
+	*tchttp.BaseRequest
+}
+
+func (r *DescribeInternetAddressQuotaRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeInternetAddressQuotaRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeInternetAddressQuotaResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// IPv6互联网公网允许的最小前缀长度
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Ipv6PrefixLen *int64 `json:"Ipv6PrefixLen,omitempty" name:"Ipv6PrefixLen"`
+
+		// BGP类型IPv4互联网地址配额
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Ipv4BgpQuota *int64 `json:"Ipv4BgpQuota,omitempty" name:"Ipv4BgpQuota"`
+
+		// 非BGP类型IPv4互联网地址配额
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Ipv4OtherQuota *int64 `json:"Ipv4OtherQuota,omitempty" name:"Ipv4OtherQuota"`
+
+		// BGP类型IPv4互联网地址已使用数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Ipv4BgpNum *int64 `json:"Ipv4BgpNum,omitempty" name:"Ipv4BgpNum"`
+
+		// 非BGP类型互联网地址已使用数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Ipv4OtherNum *int64 `json:"Ipv4OtherNum,omitempty" name:"Ipv4OtherNum"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeInternetAddressQuotaResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeInternetAddressQuotaResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeInternetAddressRequest struct {
+	*tchttp.BaseRequest
+
+	// 偏移量，默认为0
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 返回数量，默认为20，最大值100
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 过滤条件：
+	// <li>AddrType, 地址类型。0：BGP 1; 1: 电信， 2：移动， 3：联通</li>
+	// <li>AddrProto地址类型。0：IPv4 1:IPv6</li>
+	// <li>Status 地址状态。 0：使用中， 1：已停用， 2：已退还</li>
+	// <li>Subnet 互联网公网地址，数组</li>
+	// <InstanceIds>互联网公网地址ID，数组</li>
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+}
+
+func (r *DescribeInternetAddressRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeInternetAddressRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeInternetAddressResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 互联网公网地址数量
+		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 互联网公网地址列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Subnets []*InternetAddressDetail `json:"Subnets,omitempty" name:"Subnets" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeInternetAddressResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeInternetAddressResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeInternetAddressStatisticsRequest struct {
+	*tchttp.BaseRequest
+}
+
+func (r *DescribeInternetAddressStatisticsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeInternetAddressStatisticsRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeInternetAddressStatisticsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 互联网公网地址统计信息数量
+		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 互联网公网地址统计信息列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		InternetAddressStatistics []*InternetAddressStatistics `json:"InternetAddressStatistics,omitempty" name:"InternetAddressStatistics" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeInternetAddressStatisticsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeInternetAddressStatisticsResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribePublicDirectConnectTunnelRoutesRequest struct {
 	*tchttp.BaseRequest
 
@@ -928,6 +1117,26 @@ type DirectConnectTunnelExtra struct {
 
 	// BGP状态
 	BgpStatus *BGPStatus `json:"BgpStatus,omitempty" name:"BgpStatus"`
+
+	// 是否开启IPv6
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IPv6Enable *int64 `json:"IPv6Enable,omitempty" name:"IPv6Enable"`
+
+	// 腾讯侧互联IPv6地址
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TencentIPv6Address *string `json:"TencentIPv6Address,omitempty" name:"TencentIPv6Address"`
+
+	// 腾讯侧备用互联IPv6地址
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TencentBackupIPv6Address *string `json:"TencentBackupIPv6Address,omitempty" name:"TencentBackupIPv6Address"`
+
+	// BGPv6状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BgpIPv6Status *BGPStatus `json:"BgpIPv6Status,omitempty" name:"BgpIPv6Status"`
+
+	// 用户侧互联IPv6地址
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CustomerIPv6Address *string `json:"CustomerIPv6Address,omitempty" name:"CustomerIPv6Address"`
 }
 
 type DirectConnectTunnelRoute struct {
@@ -951,6 +1160,74 @@ type DirectConnectTunnelRoute struct {
 	NextHop *string `json:"NextHop,omitempty" name:"NextHop"`
 }
 
+type DisableInternetAddressRequest struct {
+	*tchttp.BaseRequest
+
+	// 公网互联网地址ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+}
+
+func (r *DisableInternetAddressRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DisableInternetAddressRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DisableInternetAddressResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DisableInternetAddressResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DisableInternetAddressResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type EnableInternetAddressRequest struct {
+	*tchttp.BaseRequest
+
+	// 互联网公网地址ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+}
+
+func (r *EnableInternetAddressRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *EnableInternetAddressRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type EnableInternetAddressResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *EnableInternetAddressResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *EnableInternetAddressResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type Filter struct {
 
 	// 需要过滤的字段。
@@ -958,6 +1235,72 @@ type Filter struct {
 
 	// 字段的过滤值。
 	Values []*string `json:"Values,omitempty" name:"Values" list`
+}
+
+type InternetAddressDetail struct {
+
+	// 互联网地址ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 互联网网络地址
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Subnet *string `json:"Subnet,omitempty" name:"Subnet"`
+
+	// 网络地址掩码长度
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MaskLen *int64 `json:"MaskLen,omitempty" name:"MaskLen"`
+
+	// 0:BGP
+	// 1:电信
+	// 2:移动
+	// 3:联通
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AddrType *int64 `json:"AddrType,omitempty" name:"AddrType"`
+
+	// 0:使用中
+	// 1:已停用
+	// 2:已退还
+	Status *int64 `json:"Status,omitempty" name:"Status"`
+
+	// 申请时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ApplyTime *string `json:"ApplyTime,omitempty" name:"ApplyTime"`
+
+	// 停用时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StopTime *string `json:"StopTime,omitempty" name:"StopTime"`
+
+	// 退还时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ReleaseTime *string `json:"ReleaseTime,omitempty" name:"ReleaseTime"`
+
+	// 地域信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Region *string `json:"Region,omitempty" name:"Region"`
+
+	// 用户ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AppId *int64 `json:"AppId,omitempty" name:"AppId"`
+
+	// 0:IPv4 1:IPv6
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AddrProto *int64 `json:"AddrProto,omitempty" name:"AddrProto"`
+
+	// 释放状态的IP地址保留的天数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ReserveTime *int64 `json:"ReserveTime,omitempty" name:"ReserveTime"`
+}
+
+type InternetAddressStatistics struct {
+
+	// 地域
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Region *string `json:"Region,omitempty" name:"Region"`
+
+	// 互联网公网地址数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SubnetNum *int64 `json:"SubnetNum,omitempty" name:"SubnetNum"`
 }
 
 type ModifyDirectConnectAttributeRequest struct {
@@ -1123,6 +1466,10 @@ type ModifyDirectConnectTunnelExtraRequest struct {
 
 	// NQA配置信息
 	NqaInfo *NQAInfo `json:"NqaInfo,omitempty" name:"NqaInfo"`
+
+	// 0：停用IPv6
+	// 1: 启用IPv6
+	IPv6Enable *int64 `json:"IPv6Enable,omitempty" name:"IPv6Enable"`
 }
 
 func (r *ModifyDirectConnectTunnelExtraRequest) ToJsonString() string {
@@ -1195,6 +1542,40 @@ func (r *RejectDirectConnectTunnelResponse) ToJsonString() string {
 }
 
 func (r *RejectDirectConnectTunnelResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ReleaseInternetAddressRequest struct {
+	*tchttp.BaseRequest
+
+	// 公网互联网地址ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+}
+
+func (r *ReleaseInternetAddressRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ReleaseInternetAddressRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ReleaseInternetAddressResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ReleaseInternetAddressResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ReleaseInternetAddressResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 

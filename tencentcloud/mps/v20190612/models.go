@@ -4511,7 +4511,11 @@ type ManageTaskRequest struct {
 	*tchttp.BaseRequest
 
 	// 操作类型，取值范围：
-	// <li>Abort：终止任务。</li>
+	// <ul>
+	// <li>Abort：终止任务。使用说明：
+	// <ul><li>若 [任务类型](/document/product/862/37614#3.-.E8.BE.93.E5.87.BA.E5.8F.82.E6.95.B0) 为直播流处理任务（LiveStreamProcessTask），支持终止 [任务状态](/document/product/862/37614#3.-.E8.BE.93.E5.87.BA.E5.8F.82.E6.95.B0) 为等待中（WAITING）或处理中（PROCESSING）的任务；</li>
+	// <li>否则，对于其他 [任务类型](/document/product/862/37614#3.-.E8.BE.93.E5.87.BA.E5.8F.82.E6.95.B0)，只支持终止 [任务状态](/document/product/862/37614#3.-.E8.BE.93.E5.87.BA.E5.8F.82.E6.95.B0) 为等待中（WAITING）的任务。</li></ul>
+	// </li></ul>
 	OperationType *string `json:"OperationType,omitempty" name:"OperationType"`
 
 	// 视频处理的任务 ID。

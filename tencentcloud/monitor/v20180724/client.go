@@ -83,7 +83,7 @@ func NewCreateAlarmNoticeResponse() (response *CreateAlarmNoticeResponse) {
     return
 }
 
-// 云监控告警创建告警通知模板
+// 创建通知模板
 func (c *Client) CreateAlarmNotice(request *CreateAlarmNoticeRequest) (response *CreateAlarmNoticeResponse, err error) {
     if request == nil {
         request = NewCreateAlarmNoticeRequest()
@@ -337,7 +337,7 @@ func NewDescribeAlarmHistoriesResponse() (response *DescribeAlarmHistoriesRespon
     return
 }
 
-// 告警历史列表
+// 查询告警历史
 func (c *Client) DescribeAlarmHistories(request *DescribeAlarmHistoriesRequest) (response *DescribeAlarmHistoriesResponse, err error) {
     if request == nil {
         request = NewDescribeAlarmHistoriesRequest()
@@ -387,7 +387,7 @@ func NewDescribeAlarmNoticeResponse() (response *DescribeAlarmNoticeResponse) {
     return
 }
 
-// 云监控告警获取告警通知模板详情
+// 查询单个通知模板的详情
 func (c *Client) DescribeAlarmNotice(request *DescribeAlarmNoticeRequest) (response *DescribeAlarmNoticeResponse, err error) {
     if request == nil {
         request = NewDescribeAlarmNoticeRequest()
@@ -437,7 +437,7 @@ func NewDescribeAlarmNoticesResponse() (response *DescribeAlarmNoticesResponse) 
     return
 }
 
-// 云监控告警查询告警通知模板列表
+// 查询通知模板列表
 func (c *Client) DescribeAlarmNotices(request *DescribeAlarmNoticesRequest) (response *DescribeAlarmNoticesResponse, err error) {
     if request == nil {
         request = NewDescribeAlarmNoticesRequest()
@@ -462,7 +462,7 @@ func NewDescribeAlarmPoliciesResponse() (response *DescribeAlarmPoliciesResponse
     return
 }
 
-// 告警策略列表
+// 查询告警策略列表
 func (c *Client) DescribeAlarmPolicies(request *DescribeAlarmPoliciesRequest) (response *DescribeAlarmPoliciesResponse, err error) {
     if request == nil {
         request = NewDescribeAlarmPoliciesRequest()
@@ -487,7 +487,7 @@ func NewDescribeAlarmPolicyResponse() (response *DescribeAlarmPolicyResponse) {
     return
 }
 
-// 告警策略详情
+// 获取单个告警策略详情
 func (c *Client) DescribeAlarmPolicy(request *DescribeAlarmPolicyRequest) (response *DescribeAlarmPolicyResponse, err error) {
     if request == nil {
         request = NewDescribeAlarmPolicyRequest()
@@ -512,7 +512,7 @@ func NewDescribeAllNamespacesResponse() (response *DescribeAllNamespacesResponse
     return
 }
 
-// 拉取所有名字空间
+// 查询所有名字空间
 func (c *Client) DescribeAllNamespaces(request *DescribeAllNamespacesRequest) (response *DescribeAllNamespacesResponse, err error) {
     if request == nil {
         request = NewDescribeAllNamespacesRequest()
@@ -916,7 +916,7 @@ func NewModifyAlarmPolicyStatusResponse() (response *ModifyAlarmPolicyStatusResp
     return
 }
 
-// 修改告警策略的启停状态
+// 启停告警策略
 func (c *Client) ModifyAlarmPolicyStatus(request *ModifyAlarmPolicyStatusRequest) (response *ModifyAlarmPolicyStatusResponse, err error) {
     if request == nil {
         request = NewModifyAlarmPolicyStatusRequest()

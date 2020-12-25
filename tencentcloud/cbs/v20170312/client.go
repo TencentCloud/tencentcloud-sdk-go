@@ -561,6 +561,31 @@ func (c *Client) GetSnapOverview(request *GetSnapOverviewRequest) (response *Get
     return
 }
 
+func NewInquirePriceModifyDiskExtraPerformanceRequest() (request *InquirePriceModifyDiskExtraPerformanceRequest) {
+    request = &InquirePriceModifyDiskExtraPerformanceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cbs", APIVersion, "InquirePriceModifyDiskExtraPerformance")
+    return
+}
+
+func NewInquirePriceModifyDiskExtraPerformanceResponse() (response *InquirePriceModifyDiskExtraPerformanceResponse) {
+    response = &InquirePriceModifyDiskExtraPerformanceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（InquirePriceModifyDiskExtraPerformance）用于调整云硬盘额外性能询价。
+func (c *Client) InquirePriceModifyDiskExtraPerformance(request *InquirePriceModifyDiskExtraPerformanceRequest) (response *InquirePriceModifyDiskExtraPerformanceResponse, err error) {
+    if request == nil {
+        request = NewInquirePriceModifyDiskExtraPerformanceRequest()
+    }
+    response = NewInquirePriceModifyDiskExtraPerformanceResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewInquiryPriceCreateDisksRequest() (request *InquiryPriceCreateDisksRequest) {
     request = &InquiryPriceCreateDisksRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -695,6 +720,33 @@ func (c *Client) ModifyDiskAttributes(request *ModifyDiskAttributesRequest) (res
         request = NewModifyDiskAttributesRequest()
     }
     response = NewModifyDiskAttributesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyDiskExtraPerformanceRequest() (request *ModifyDiskExtraPerformanceRequest) {
+    request = &ModifyDiskExtraPerformanceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cbs", APIVersion, "ModifyDiskExtraPerformance")
+    return
+}
+
+func NewModifyDiskExtraPerformanceResponse() (response *ModifyDiskExtraPerformanceResponse) {
+    response = &ModifyDiskExtraPerformanceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（ModifyDiskExtraPerformance）用于调整云硬盘额外的性能。
+// 
+// * 目前仅支持极速型SSD云硬盘（CLOUD_TSSD）和高性能SSD云硬盘(CLOUD_HSSD)。
+func (c *Client) ModifyDiskExtraPerformance(request *ModifyDiskExtraPerformanceRequest) (response *ModifyDiskExtraPerformanceResponse, err error) {
+    if request == nil {
+        request = NewModifyDiskExtraPerformanceRequest()
+    }
+    response = NewModifyDiskExtraPerformanceResponse()
     err = c.Send(request, response)
     return
 }

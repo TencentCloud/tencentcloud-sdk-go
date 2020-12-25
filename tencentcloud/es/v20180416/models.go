@@ -420,6 +420,43 @@ type EsPublicAcl struct {
 	WhiteIpList []*string `json:"WhiteIpList,omitempty" name:"WhiteIpList" list`
 }
 
+type GetRequestTargetNodeTypesRequest struct {
+	*tchttp.BaseRequest
+
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+}
+
+func (r *GetRequestTargetNodeTypesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *GetRequestTargetNodeTypesRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type GetRequestTargetNodeTypesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 接收请求的目标节点类型列表
+		TargetNodeTypes []*string `json:"TargetNodeTypes,omitempty" name:"TargetNodeTypes" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *GetRequestTargetNodeTypesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *GetRequestTargetNodeTypesResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type InstanceInfo struct {
 
 	// 实例ID
@@ -1034,6 +1071,43 @@ func (r *UpdatePluginsResponse) ToJsonString() string {
 }
 
 func (r *UpdatePluginsResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type UpdateRequestTargetNodeTypesRequest struct {
+	*tchttp.BaseRequest
+
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 接收请求的目标节点类型列表
+	TargetNodeTypes []*string `json:"TargetNodeTypes,omitempty" name:"TargetNodeTypes" list`
+}
+
+func (r *UpdateRequestTargetNodeTypesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *UpdateRequestTargetNodeTypesRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type UpdateRequestTargetNodeTypesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *UpdateRequestTargetNodeTypesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *UpdateRequestTargetNodeTypesResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 

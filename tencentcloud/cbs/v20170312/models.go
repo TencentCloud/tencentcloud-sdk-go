@@ -237,7 +237,7 @@ func (r *CreateAutoSnapshotPolicyResponse) FromJsonString(s string) error {
 type CreateDisksRequest struct {
 	*tchttp.BaseRequest
 
-	// 硬盘介质类型。取值范围：<br><li>CLOUD_BASIC：表示普通云硬盘<br><li>CLOUD_PREMIUM：表示高性能云硬盘<br><li>CLOUD_SSD：表示SSD云硬盘<br><li>CLOUD_HSSD：表示增强型SSD云硬盘。
+	// 硬盘介质类型。取值范围：<br><li>CLOUD_BASIC：表示普通云硬盘<br><li>CLOUD_PREMIUM：表示高性能云硬盘<br><li>CLOUD_SSD：表示SSD云硬盘<br><li>CLOUD_HSSD：表示增强型SSD云硬盘<br><li>CLOUD_TSSD：表示极速型SSD云硬盘。
 	DiskType *string `json:"DiskType,omitempty" name:"DiskType"`
 
 	// 云硬盘计费类型。<br><li>PREPAID：预付费，即包年包月<br><li>POSTPAID_BY_HOUR：按小时后付费<br><li>CDCPAID：独享集群付费<br>各类型价格请参考云硬盘[价格总览](/document/product/362/2413)。
@@ -272,6 +272,9 @@ type CreateDisksRequest struct {
 
 	// 可选参数，默认为False。传入True时，云盘将创建为共享型云盘。
 	Shareable *bool `json:"Shareable,omitempty" name:"Shareable"`
+
+	// 可选参数。使用此参数可给云硬盘购买额外的性能。<br>当前仅支持极速型云盘（CLOUD_TSSD）和增强型SSD云硬盘（CLOUD_HSSD）
+	ThroughputPerformance *uint64 `json:"ThroughputPerformance,omitempty" name:"ThroughputPerformance"`
 }
 
 func (r *CreateDisksRequest) ToJsonString() string {
@@ -1131,6 +1134,46 @@ type Image struct {
 	ImageName *string `json:"ImageName,omitempty" name:"ImageName"`
 }
 
+type InquirePriceModifyDiskExtraPerformanceRequest struct {
+	*tchttp.BaseRequest
+
+	// 云硬盘ID， 通过[DescribeDisks](/document/product/362/16315)接口查询。
+	DiskId *string `json:"DiskId,omitempty" name:"DiskId"`
+
+	// 额外购买的云硬盘性能值，单位MB/s。
+	ThroughputPerformance *uint64 `json:"ThroughputPerformance,omitempty" name:"ThroughputPerformance"`
+}
+
+func (r *InquirePriceModifyDiskExtraPerformanceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *InquirePriceModifyDiskExtraPerformanceRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type InquirePriceModifyDiskExtraPerformanceResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 描述了调整云盘额外性能时对应的价格。
+		DiskPrice *Price `json:"DiskPrice,omitempty" name:"DiskPrice"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *InquirePriceModifyDiskExtraPerformanceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *InquirePriceModifyDiskExtraPerformanceResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type InquiryPriceCreateDisksRequest struct {
 	*tchttp.BaseRequest
 
@@ -1370,6 +1413,43 @@ func (r *ModifyDiskAttributesResponse) ToJsonString() string {
 }
 
 func (r *ModifyDiskAttributesResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyDiskExtraPerformanceRequest struct {
+	*tchttp.BaseRequest
+
+	// 需要创建快照的云硬盘ID，可通过[DescribeDisks](/document/product/362/16315)接口查询。
+	DiskId *string `json:"DiskId,omitempty" name:"DiskId"`
+
+	// 额外购买的云硬盘性能值，单位MB/s。
+	ThroughputPerformance *uint64 `json:"ThroughputPerformance,omitempty" name:"ThroughputPerformance"`
+}
+
+func (r *ModifyDiskExtraPerformanceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyDiskExtraPerformanceRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyDiskExtraPerformanceResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifyDiskExtraPerformanceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyDiskExtraPerformanceResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 

@@ -1228,7 +1228,6 @@ func NewManageTaskResponse() (response *ManageTaskResponse) {
 }
 
 // 对已发起的任务进行管理。
-// > 注意：目前仅支持终止执行中的直播流处理任务。
 func (c *Client) ManageTask(request *ManageTaskRequest) (response *ManageTaskResponse, err error) {
     if request == nil {
         request = NewManageTaskRequest()

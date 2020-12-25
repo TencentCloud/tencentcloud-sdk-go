@@ -168,6 +168,31 @@ func (c *Client) DescribeInstances(request *DescribeInstancesRequest) (response 
     return
 }
 
+func NewGetRequestTargetNodeTypesRequest() (request *GetRequestTargetNodeTypesRequest) {
+    request = &GetRequestTargetNodeTypesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("es", APIVersion, "GetRequestTargetNodeTypes")
+    return
+}
+
+func NewGetRequestTargetNodeTypesResponse() (response *GetRequestTargetNodeTypesResponse) {
+    response = &GetRequestTargetNodeTypesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 获取接收客户端请求的节点类型
+func (c *Client) GetRequestTargetNodeTypes(request *GetRequestTargetNodeTypesRequest) (response *GetRequestTargetNodeTypesResponse, err error) {
+    if request == nil {
+        request = NewGetRequestTargetNodeTypesRequest()
+    }
+    response = NewGetRequestTargetNodeTypesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewRestartInstanceRequest() (request *RestartInstanceRequest) {
     request = &RestartInstanceRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -296,6 +321,31 @@ func (c *Client) UpdatePlugins(request *UpdatePluginsRequest) (response *UpdateP
         request = NewUpdatePluginsRequest()
     }
     response = NewUpdatePluginsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewUpdateRequestTargetNodeTypesRequest() (request *UpdateRequestTargetNodeTypesRequest) {
+    request = &UpdateRequestTargetNodeTypesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("es", APIVersion, "UpdateRequestTargetNodeTypes")
+    return
+}
+
+func NewUpdateRequestTargetNodeTypesResponse() (response *UpdateRequestTargetNodeTypesResponse) {
+    response = &UpdateRequestTargetNodeTypesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 更新接收客户端请求的节点类型
+func (c *Client) UpdateRequestTargetNodeTypes(request *UpdateRequestTargetNodeTypesRequest) (response *UpdateRequestTargetNodeTypesResponse, err error) {
+    if request == nil {
+        request = NewUpdateRequestTargetNodeTypesRequest()
+    }
+    response = NewUpdateRequestTargetNodeTypesResponse()
     err = c.Send(request, response)
     return
 }

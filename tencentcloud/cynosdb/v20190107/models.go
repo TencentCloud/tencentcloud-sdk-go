@@ -208,17 +208,14 @@ type CreateClustersRequest struct {
 	// <li> MYSQL可选值：5.7 </li>
 	DbVersion *string `json:"DbVersion,omitempty" name:"DbVersion"`
 
-	// Cpu核数
-	Cpu *int64 `json:"Cpu,omitempty" name:"Cpu"`
-
-	// 内存
-	Memory *int64 `json:"Memory,omitempty" name:"Memory"`
-
-	// 存储上限，单位GB
-	StorageLimit *int64 `json:"StorageLimit,omitempty" name:"StorageLimit"`
-
 	// 所属项目ID
 	ProjectId *int64 `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 普通实例Cpu核数
+	Cpu *int64 `json:"Cpu,omitempty" name:"Cpu"`
+
+	// 普通实例内存
+	Memory *int64 `json:"Memory,omitempty" name:"Memory"`
 
 	// 存储
 	Storage *int64 `json:"Storage,omitempty" name:"Storage"`
@@ -256,6 +253,9 @@ type CreateClustersRequest struct {
 	// 时间点回档，指定时间允许范围
 	ExpectTimeThresh *uint64 `json:"ExpectTimeThresh,omitempty" name:"ExpectTimeThresh"`
 
+	// 普通实例存储上限，单位GB
+	StorageLimit *int64 `json:"StorageLimit,omitempty" name:"StorageLimit"`
+
 	// 实例数量
 	InstanceCount *int64 `json:"InstanceCount,omitempty" name:"InstanceCount"`
 
@@ -286,18 +286,22 @@ type CreateClustersRequest struct {
 	// <li>SERVERLESS</li>
 	DbMode *string `json:"DbMode,omitempty" name:"DbMode"`
 
-	// 当DbMode为SEVERLESS时的cpu最小值，可选范围参考DescribeServerlessInstanceSpecs接口返回
+	// 当DbMode为SEVERLESS时必填
+	// cpu最小值，可选范围参考DescribeServerlessInstanceSpecs接口返回
 	MinCpu *float64 `json:"MinCpu,omitempty" name:"MinCpu"`
 
-	// 当DbMode为SEVERLESS时的cpu最大值，可选范围参考DescribeServerlessInstanceSpecs接口返回
+	// 当DbMode为SEVERLESS时必填：
+	// cpu最大值，可选范围参考DescribeServerlessInstanceSpecs接口返回
 	MaxCpu *float64 `json:"MaxCpu,omitempty" name:"MaxCpu"`
 
 	// 当DbMode为SEVERLESS时，指定集群是否自动暂停，可选范围
 	// <li>yes</li>
 	// <li>no</li>
+	// 默认值:yes
 	AutoPause *string `json:"AutoPause,omitempty" name:"AutoPause"`
 
-	// 当DbMode为SEVERLESS时，指定集群自动暂停的延迟，可选范围[60,INF]
+	// 当DbMode为SEVERLESS时，指定集群自动暂停的延迟，单位秒，可选范围[600,691200]
+	// 默认值:600
 	AutoPauseDelay *int64 `json:"AutoPauseDelay,omitempty" name:"AutoPauseDelay"`
 }
 
@@ -322,11 +326,11 @@ type CreateClustersResponse struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		DealNames []*string `json:"DealNames,omitempty" name:"DealNames" list`
 
-		// 资源ID列表
+		// 资源ID列表（异步发货可能无法返回该字段, 强烈建议使用dealNames字段查询接口DescribeResourcesByDealName获取异步发货的资源ID）
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		ResourceIds []*string `json:"ResourceIds,omitempty" name:"ResourceIds" list`
 
-		// 集群ID列表
+		// 集群ID列表（异步发货可能不返回该字段, 强烈建议使用dealNames查询接口DescribeResourcesByDealName获取异步发货的集群ID）
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		ClusterIds []*string `json:"ClusterIds,omitempty" name:"ClusterIds" list`
 

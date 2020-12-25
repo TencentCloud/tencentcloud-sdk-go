@@ -68,6 +68,31 @@ func (c *Client) AcceptDirectConnectTunnel(request *AcceptDirectConnectTunnelReq
     return
 }
 
+func NewApplyInternetAddressRequest() (request *ApplyInternetAddressRequest) {
+    request = &ApplyInternetAddressRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("dc", APIVersion, "ApplyInternetAddress")
+    return
+}
+
+func NewApplyInternetAddressResponse() (response *ApplyInternetAddressResponse) {
+    response = &ApplyInternetAddressResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 申请互联网CIDR地址
+func (c *Client) ApplyInternetAddress(request *ApplyInternetAddressRequest) (response *ApplyInternetAddressResponse, err error) {
+    if request == nil {
+        request = NewApplyInternetAddressRequest()
+    }
+    response = NewApplyInternetAddressResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateDirectConnectRequest() (request *CreateDirectConnectRequest) {
     request = &CreateDirectConnectRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -272,6 +297,81 @@ func (c *Client) DescribeDirectConnects(request *DescribeDirectConnectsRequest) 
     return
 }
 
+func NewDescribeInternetAddressRequest() (request *DescribeInternetAddressRequest) {
+    request = &DescribeInternetAddressRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("dc", APIVersion, "DescribeInternetAddress")
+    return
+}
+
+func NewDescribeInternetAddressResponse() (response *DescribeInternetAddressResponse) {
+    response = &DescribeInternetAddressResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 获取用户互联网公网地址信息
+func (c *Client) DescribeInternetAddress(request *DescribeInternetAddressRequest) (response *DescribeInternetAddressResponse, err error) {
+    if request == nil {
+        request = NewDescribeInternetAddressRequest()
+    }
+    response = NewDescribeInternetAddressResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeInternetAddressQuotaRequest() (request *DescribeInternetAddressQuotaRequest) {
+    request = &DescribeInternetAddressQuotaRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("dc", APIVersion, "DescribeInternetAddressQuota")
+    return
+}
+
+func NewDescribeInternetAddressQuotaResponse() (response *DescribeInternetAddressQuotaResponse) {
+    response = &DescribeInternetAddressQuotaResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 获取用户互联网公网地址配额
+func (c *Client) DescribeInternetAddressQuota(request *DescribeInternetAddressQuotaRequest) (response *DescribeInternetAddressQuotaResponse, err error) {
+    if request == nil {
+        request = NewDescribeInternetAddressQuotaRequest()
+    }
+    response = NewDescribeInternetAddressQuotaResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeInternetAddressStatisticsRequest() (request *DescribeInternetAddressStatisticsRequest) {
+    request = &DescribeInternetAddressStatisticsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("dc", APIVersion, "DescribeInternetAddressStatistics")
+    return
+}
+
+func NewDescribeInternetAddressStatisticsResponse() (response *DescribeInternetAddressStatisticsResponse) {
+    response = &DescribeInternetAddressStatisticsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 获取用户互联网公网地址分配统计信息
+func (c *Client) DescribeInternetAddressStatistics(request *DescribeInternetAddressStatisticsRequest) (response *DescribeInternetAddressStatisticsResponse, err error) {
+    if request == nil {
+        request = NewDescribeInternetAddressStatisticsRequest()
+    }
+    response = NewDescribeInternetAddressStatisticsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribePublicDirectConnectTunnelRoutesRequest() (request *DescribePublicDirectConnectTunnelRoutesRequest) {
     request = &DescribePublicDirectConnectTunnelRoutesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -293,6 +393,56 @@ func (c *Client) DescribePublicDirectConnectTunnelRoutes(request *DescribePublic
         request = NewDescribePublicDirectConnectTunnelRoutesRequest()
     }
     response = NewDescribePublicDirectConnectTunnelRoutesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDisableInternetAddressRequest() (request *DisableInternetAddressRequest) {
+    request = &DisableInternetAddressRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("dc", APIVersion, "DisableInternetAddress")
+    return
+}
+
+func NewDisableInternetAddressResponse() (response *DisableInternetAddressResponse) {
+    response = &DisableInternetAddressResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 停用用户申请的公网互联网地址
+func (c *Client) DisableInternetAddress(request *DisableInternetAddressRequest) (response *DisableInternetAddressResponse, err error) {
+    if request == nil {
+        request = NewDisableInternetAddressRequest()
+    }
+    response = NewDisableInternetAddressResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewEnableInternetAddressRequest() (request *EnableInternetAddressRequest) {
+    request = &EnableInternetAddressRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("dc", APIVersion, "EnableInternetAddress")
+    return
+}
+
+func NewEnableInternetAddressResponse() (response *EnableInternetAddressResponse) {
+    response = &EnableInternetAddressResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 启用已停用的互联网公网地址
+func (c *Client) EnableInternetAddress(request *EnableInternetAddressRequest) (response *EnableInternetAddressResponse, err error) {
+    if request == nil {
+        request = NewEnableInternetAddressRequest()
+    }
+    response = NewEnableInternetAddressResponse()
     err = c.Send(request, response)
     return
 }
@@ -393,6 +543,31 @@ func (c *Client) RejectDirectConnectTunnel(request *RejectDirectConnectTunnelReq
         request = NewRejectDirectConnectTunnelRequest()
     }
     response = NewRejectDirectConnectTunnelResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewReleaseInternetAddressRequest() (request *ReleaseInternetAddressRequest) {
+    request = &ReleaseInternetAddressRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("dc", APIVersion, "ReleaseInternetAddress")
+    return
+}
+
+func NewReleaseInternetAddressResponse() (response *ReleaseInternetAddressResponse) {
+    response = &ReleaseInternetAddressResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 释放已申请的互联网地址
+func (c *Client) ReleaseInternetAddress(request *ReleaseInternetAddressRequest) (response *ReleaseInternetAddressResponse, err error) {
+    if request == nil {
+        request = NewReleaseInternetAddressRequest()
+    }
+    response = NewReleaseInternetAddressResponse()
     err = c.Send(request, response)
     return
 }

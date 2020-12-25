@@ -2879,22 +2879,22 @@ type DimensionsDesc struct {
 type GetMonitorDataRequest struct {
 	*tchttp.BaseRequest
 
-	// 命名空间，各个云产品的详细命名空间说明请参阅各个产品[监控指标](https://cloud.tencent.com/document/product/248/6140)文档
+	// 命名空间，如QCE/CVM。各个云产品的详细命名空间说明请参阅各个产品[监控指标](https://cloud.tencent.com/document/product/248/6140)文档
 	Namespace *string `json:"Namespace,omitempty" name:"Namespace"`
 
-	// 指标名称，各个云产品的详细指标说明请参阅各个产品[监控指标](https://cloud.tencent.com/document/product/248/6140)文档
+	// 指标名称，如CPUUsage。各个云产品的详细指标说明请参阅各个产品[监控指标](https://cloud.tencent.com/document/product/248/6140)文档，对应的指标英文名即为MetricName
 	MetricName *string `json:"MetricName,omitempty" name:"MetricName"`
 
-	// 实例对象的维度组合
+	// 实例对象的维度组合，格式为key-value键值对形式的集合。如[{"Name":"InstanceId","Value":"ins-j0hk02zo"}]。各个云产品的维度请参阅各个产品[监控指标](https://cloud.tencent.com/document/product/248/6140)文档，对应的维度列即为维度组合的key,value为key对应的值
 	Instances []*Instance `json:"Instances,omitempty" name:"Instances" list`
 
-	// 监控统计周期。默认为取值为300，单位为s
+	// 监控统计周期，如60。默认为取值为300，单位为s。每个指标支持的统计周期不一定相同，各个云产品支持的统计周期请参阅各个产品[监控指标](https://cloud.tencent.com/document/product/248/6140)文档，对应的统计周期列即为支持的统计周期
 	Period *uint64 `json:"Period,omitempty" name:"Period"`
 
 	// 起始时间，如2018-09-22T19:51:23+08:00
 	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
 
-	// 结束时间，默认为当前时间。 EndTime不能小于StartTime
+	// 结束时间，如2018-09-22T20:51:23+08:00，默认为当前时间。 EndTime不能小于StartTime
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 }
 
