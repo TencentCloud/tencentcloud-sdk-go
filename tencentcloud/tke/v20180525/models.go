@@ -3113,6 +3113,18 @@ type NodePool struct {
 	// 期望的节点数量
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DesiredNodesNum *int64 `json:"DesiredNodesNum,omitempty" name:"DesiredNodesNum"`
+
+	// 节点池osName
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NodePoolOs *string `json:"NodePoolOs,omitempty" name:"NodePoolOs"`
+
+	// 容器的镜像版本，"DOCKER_CUSTOMIZE"(容器定制版),"GENERAL"(普通版本，默认值)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OsCustomizeType *string `json:"OsCustomizeType,omitempty" name:"OsCustomizeType"`
+
+	// 镜像id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ImageId *string `json:"ImageId,omitempty" name:"ImageId"`
 }
 
 type NodePoolOption struct {

@@ -60,6 +60,41 @@ type AcListsData struct {
 	LogId *string `json:"LogId,omitempty" name:"LogId"`
 }
 
+type AssociatedInstanceInfo struct {
+
+	// 实例ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 实例名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceName *string `json:"InstanceName,omitempty" name:"InstanceName"`
+
+	// 实例类型，3是cvm实例,4是clb实例,5是eni实例,6是云数据库
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Type *uint64 `json:"Type,omitempty" name:"Type"`
+
+	// 私有网络ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
+
+	// 私有网络名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VpcName *string `json:"VpcName,omitempty" name:"VpcName"`
+
+	// 公网IP
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PublicIp *string `json:"PublicIp,omitempty" name:"PublicIp"`
+
+	// 内网IP
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Ip *string `json:"Ip,omitempty" name:"Ip"`
+
+	// 关联安全组数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SecurityGroupCount *uint64 `json:"SecurityGroupCount,omitempty" name:"SecurityGroupCount"`
+}
+
 type CreateAcRulesRequest struct {
 	*tchttp.BaseRequest
 
@@ -119,6 +154,52 @@ func (r *CreateAcRulesResponse) ToJsonString() string {
 }
 
 func (r *CreateAcRulesResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateSecurityGroupApiRulesRequest struct {
+	*tchttp.BaseRequest
+
+	// 创建规则数据
+	Data []*SecurityGroupApiRuleData `json:"Data,omitempty" name:"Data" list`
+
+	// 方向，0：出站，1：入站
+	Direction *uint64 `json:"Direction,omitempty" name:"Direction"`
+
+	// 0：后插，1：前插，2：中插
+	Type *uint64 `json:"Type,omitempty" name:"Type"`
+
+	// 腾讯云地域的英文简写
+	Area *string `json:"Area,omitempty" name:"Area"`
+}
+
+func (r *CreateSecurityGroupApiRulesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateSecurityGroupApiRulesRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateSecurityGroupApiRulesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 状态值，0:添加成功，非0：添加失败
+		Status *int64 `json:"Status,omitempty" name:"Status"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateSecurityGroupApiRulesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateSecurityGroupApiRulesResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -219,6 +300,100 @@ func (r *DeleteAllAccessControlRuleResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DeleteSecurityGroupAllRuleRequest struct {
+	*tchttp.BaseRequest
+
+	// 方向，0：出站，1：入站
+	Direction *uint64 `json:"Direction,omitempty" name:"Direction"`
+
+	// 腾讯云地域的英文简写
+	Area *string `json:"Area,omitempty" name:"Area"`
+}
+
+func (r *DeleteSecurityGroupAllRuleRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteSecurityGroupAllRuleRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteSecurityGroupAllRuleResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 0: 操作成功，非0：操作失败
+		Status *int64 `json:"Status,omitempty" name:"Status"`
+
+		// 返回数据的json字符串
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Info *int64 `json:"Info,omitempty" name:"Info"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DeleteSecurityGroupAllRuleResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteSecurityGroupAllRuleResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteSecurityGroupRuleRequest struct {
+	*tchttp.BaseRequest
+
+	// 所需要删除规则的ID
+	Id *uint64 `json:"Id,omitempty" name:"Id"`
+
+	// 腾讯云地域的英文简写
+	Area *string `json:"Area,omitempty" name:"Area"`
+
+	// 方向，0：出站，1：入站
+	Direction *uint64 `json:"Direction,omitempty" name:"Direction"`
+
+	// 是否删除反向规则，0：否，1：是
+	IsDelReverse *uint64 `json:"IsDelReverse,omitempty" name:"IsDelReverse"`
+}
+
+func (r *DeleteSecurityGroupRuleRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteSecurityGroupRuleRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteSecurityGroupRuleResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 状态值
+		Status *int64 `json:"Status,omitempty" name:"Status"`
+
+		// 返回多余的信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Info *string `json:"Info,omitempty" name:"Info"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DeleteSecurityGroupRuleResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteSecurityGroupRuleResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeAcListsRequest struct {
 	*tchttp.BaseRequest
 
@@ -290,6 +465,69 @@ func (r *DescribeAcListsResponse) ToJsonString() string {
 }
 
 func (r *DescribeAcListsResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeAssociatedInstanceListRequest struct {
+	*tchttp.BaseRequest
+
+	// 列表偏移量
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 每页记录条数
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 地域代码（例：ap-guangzhou）,支持腾讯云全地域
+	Area *string `json:"Area,omitempty" name:"Area"`
+
+	// 额外检索条件（JSON字符串）
+	SearchValue *string `json:"SearchValue,omitempty" name:"SearchValue"`
+
+	// 排序字段
+	By *string `json:"By,omitempty" name:"By"`
+
+	// 排序方式（asc:升序,desc:降序）
+	Order *string `json:"Order,omitempty" name:"Order"`
+
+	// 安全组ID
+	SecurityGroupId *string `json:"SecurityGroupId,omitempty" name:"SecurityGroupId"`
+
+	// 实例类型,'3'是cvm实例,'4'是clb实例,'5'是eni实例,'6'是云数据库
+	Type *string `json:"Type,omitempty" name:"Type"`
+}
+
+func (r *DescribeAssociatedInstanceListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeAssociatedInstanceListRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeAssociatedInstanceListResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 实例数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Total *uint64 `json:"Total,omitempty" name:"Total"`
+
+		// 实例列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Data []*AssociatedInstanceInfo `json:"Data,omitempty" name:"Data" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeAssociatedInstanceListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeAssociatedInstanceListResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -405,6 +643,71 @@ func (r *DescribeRuleOverviewResponse) ToJsonString() string {
 }
 
 func (r *DescribeRuleOverviewResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeSecurityGroupListRequest struct {
+	*tchttp.BaseRequest
+
+	// 0: 出站规则，1：入站规则
+	Direction *uint64 `json:"Direction,omitempty" name:"Direction"`
+
+	// 腾讯云地域的英文简写
+	Area *string `json:"Area,omitempty" name:"Area"`
+
+	// 搜索值
+	SearchValue *string `json:"SearchValue,omitempty" name:"SearchValue"`
+
+	// 每页条数
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 偏移值
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// '': 全部，'0'：筛选停用规则，'1'：筛选启用规则
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 0: 不过滤，1：过滤掉正常规则，保留下发异常规则
+	Filter *uint64 `json:"Filter,omitempty" name:"Filter"`
+}
+
+func (r *DescribeSecurityGroupListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeSecurityGroupListRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeSecurityGroupListResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 总条数
+		Total *uint64 `json:"Total,omitempty" name:"Total"`
+
+		// 安全组规则列表数据
+		Data []*SecurityGroupListData `json:"Data,omitempty" name:"Data" list`
+
+		// 不算筛选条数的总条数
+		AllTotal *uint64 `json:"AllTotal,omitempty" name:"AllTotal"`
+
+		// 访问控制规则全部启用/全部停用
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Enable *uint64 `json:"Enable,omitempty" name:"Enable"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeSecurityGroupListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeSecurityGroupListResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -795,6 +1098,53 @@ func (r *ModifyItemSwitchStatusResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type ModifySecurityGroupAllRuleStatusRequest struct {
+	*tchttp.BaseRequest
+
+	// 状态，0：全部停用，1：全部启用
+	Status *uint64 `json:"Status,omitempty" name:"Status"`
+
+	// 方向，0：出站，1：入站
+	Direction *uint64 `json:"Direction,omitempty" name:"Direction"`
+
+	// Edge ID值
+	EdgeId *string `json:"EdgeId,omitempty" name:"EdgeId"`
+
+	// NAT地域
+	Area *string `json:"Area,omitempty" name:"Area"`
+}
+
+func (r *ModifySecurityGroupAllRuleStatusRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifySecurityGroupAllRuleStatusRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifySecurityGroupAllRuleStatusResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 0: 修改成功, 其他: 修改失败
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Status *int64 `json:"Status,omitempty" name:"Status"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifySecurityGroupAllRuleStatusResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifySecurityGroupAllRuleStatusResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type ModifySequenceRulesRequest struct {
 	*tchttp.BaseRequest
 
@@ -981,6 +1331,102 @@ func (r *RunSyncAssetResponse) ToJsonString() string {
 
 func (r *RunSyncAssetResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
+}
+
+type SecurityGroupApiRuleData struct {
+
+	// 访问源，入站时为Ip/Cidr，默认为0.0.0.0/0； 出站时当RuleType为1时，支持内网Ip/Cidr, 当RuleType为2时，填实例ID
+	SourceId *string `json:"SourceId,omitempty" name:"SourceId"`
+
+	// 访问目的，出站时为Ip/Cidr，默认为0.0.0.0/0；入站时当RuleType为1时，支持内网Ip/Cidr, 当RuleType为2时，填实例ID
+	TargetId *string `json:"TargetId,omitempty" name:"TargetId"`
+
+	// 协议，支持ANY/TCP/UDP/ICMP
+	Protocol *string `json:"Protocol,omitempty" name:"Protocol"`
+
+	// 端口, 当Protocol为ANY或ICMP时，Port为-1/-1
+	Port *string `json:"Port,omitempty" name:"Port"`
+
+	// 策略, 1：阻断，2：放行
+	Strategy *string `json:"Strategy,omitempty" name:"Strategy"`
+
+	// 描述
+	Detail *string `json:"Detail,omitempty" name:"Detail"`
+
+	// 规则类型，1：VpcId+Ip/Cidr, 2: 实例ID，入站时为访问目的类型，出站时为访问源类型
+	RuleType *uint64 `json:"RuleType,omitempty" name:"RuleType"`
+
+	// 执行顺序，中间插入必传，前插、后插非必传
+	OrderIndex *uint64 `json:"OrderIndex,omitempty" name:"OrderIndex"`
+
+	// 私有网络ID，当RuleType为1时必传
+	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
+}
+
+type SecurityGroupListData struct {
+
+	// 规则ID
+	Id *uint64 `json:"Id,omitempty" name:"Id"`
+
+	// 执行顺序
+	OrderIndex *uint64 `json:"OrderIndex,omitempty" name:"OrderIndex"`
+
+	// 访问源
+	SourceId *string `json:"SourceId,omitempty" name:"SourceId"`
+
+	// 访问源类型，默认为0，1: VPC, 2: SUBNET, 3: CVM, 4: CLB, 5: ENI, 6: CDB
+	SourceType *uint64 `json:"SourceType,omitempty" name:"SourceType"`
+
+	// 访问目的
+	TargetId *string `json:"TargetId,omitempty" name:"TargetId"`
+
+	// 访问目的类型，默认为0，1: VPC, 2: SUBNET, 3: CVM, 4: CLB, 5: ENI, 6: CDB
+	TargetType *uint64 `json:"TargetType,omitempty" name:"TargetType"`
+
+	// 协议
+	Protocol *string `json:"Protocol,omitempty" name:"Protocol"`
+
+	// 目的端口
+	Port *string `json:"Port,omitempty" name:"Port"`
+
+	// 策略, 1：阻断，2：放行
+	Strategy *uint64 `json:"Strategy,omitempty" name:"Strategy"`
+
+	// 描述
+	Detail *string `json:"Detail,omitempty" name:"Detail"`
+
+	// 是否开关开启，0：未开启，1：开启
+	Status *uint64 `json:"Status,omitempty" name:"Status"`
+
+	// 是否是正常规则，0：正常，1：异常
+	IsNew *uint64 `json:"IsNew,omitempty" name:"IsNew"`
+
+	// 单/双向下发，0:单向下发，1：双向下发
+	BothWay *uint64 `json:"BothWay,omitempty" name:"BothWay"`
+
+	// 私有网络ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
+
+	// 子网ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
+
+	// 实例名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceName *string `json:"InstanceName,omitempty" name:"InstanceName"`
+
+	// 公网IP，多个以英文逗号分隔
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PublicIp *string `json:"PublicIp,omitempty" name:"PublicIp"`
+
+	// 内网IP，多个以英文逗号分隔
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PrivateIp *string `json:"PrivateIp,omitempty" name:"PrivateIp"`
+
+	// 掩码地址，多个以英文逗号分隔
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Cidr *string `json:"Cidr,omitempty" name:"Cidr"`
 }
 
 type SequenceData struct {

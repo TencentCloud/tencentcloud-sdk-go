@@ -68,6 +68,31 @@ func (c *Client) CreateAcRules(request *CreateAcRulesRequest) (response *CreateA
     return
 }
 
+func NewCreateSecurityGroupApiRulesRequest() (request *CreateSecurityGroupApiRulesRequest) {
+    request = &CreateSecurityGroupApiRulesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cfw", APIVersion, "CreateSecurityGroupApiRules")
+    return
+}
+
+func NewCreateSecurityGroupApiRulesResponse() (response *CreateSecurityGroupApiRulesResponse) {
+    response = &CreateSecurityGroupApiRulesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 创建安全组API规则
+func (c *Client) CreateSecurityGroupApiRules(request *CreateSecurityGroupApiRulesRequest) (response *CreateSecurityGroupApiRulesResponse, err error) {
+    if request == nil {
+        request = NewCreateSecurityGroupApiRulesRequest()
+    }
+    response = NewCreateSecurityGroupApiRulesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteAcRuleRequest() (request *DeleteAcRuleRequest) {
     request = &DeleteAcRuleRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -118,6 +143,56 @@ func (c *Client) DeleteAllAccessControlRule(request *DeleteAllAccessControlRuleR
     return
 }
 
+func NewDeleteSecurityGroupAllRuleRequest() (request *DeleteSecurityGroupAllRuleRequest) {
+    request = &DeleteSecurityGroupAllRuleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cfw", APIVersion, "DeleteSecurityGroupAllRule")
+    return
+}
+
+func NewDeleteSecurityGroupAllRuleResponse() (response *DeleteSecurityGroupAllRuleResponse) {
+    response = &DeleteSecurityGroupAllRuleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 删除全部规则
+func (c *Client) DeleteSecurityGroupAllRule(request *DeleteSecurityGroupAllRuleRequest) (response *DeleteSecurityGroupAllRuleResponse, err error) {
+    if request == nil {
+        request = NewDeleteSecurityGroupAllRuleRequest()
+    }
+    response = NewDeleteSecurityGroupAllRuleResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteSecurityGroupRuleRequest() (request *DeleteSecurityGroupRuleRequest) {
+    request = &DeleteSecurityGroupRuleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cfw", APIVersion, "DeleteSecurityGroupRule")
+    return
+}
+
+func NewDeleteSecurityGroupRuleResponse() (response *DeleteSecurityGroupRuleResponse) {
+    response = &DeleteSecurityGroupRuleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 删除规则
+func (c *Client) DeleteSecurityGroupRule(request *DeleteSecurityGroupRuleRequest) (response *DeleteSecurityGroupRuleResponse, err error) {
+    if request == nil {
+        request = NewDeleteSecurityGroupRuleRequest()
+    }
+    response = NewDeleteSecurityGroupRuleResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeAcListsRequest() (request *DescribeAcListsRequest) {
     request = &DescribeAcListsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -139,6 +214,31 @@ func (c *Client) DescribeAcLists(request *DescribeAcListsRequest) (response *Des
         request = NewDescribeAcListsRequest()
     }
     response = NewDescribeAcListsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeAssociatedInstanceListRequest() (request *DescribeAssociatedInstanceListRequest) {
+    request = &DescribeAssociatedInstanceListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cfw", APIVersion, "DescribeAssociatedInstanceList")
+    return
+}
+
+func NewDescribeAssociatedInstanceListResponse() (response *DescribeAssociatedInstanceListResponse) {
+    response = &DescribeAssociatedInstanceListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 获取安全组关联实例列表
+func (c *Client) DescribeAssociatedInstanceList(request *DescribeAssociatedInstanceListRequest) (response *DescribeAssociatedInstanceListResponse, err error) {
+    if request == nil {
+        request = NewDescribeAssociatedInstanceListRequest()
+    }
+    response = NewDescribeAssociatedInstanceListResponse()
     err = c.Send(request, response)
     return
 }
@@ -189,6 +289,31 @@ func (c *Client) DescribeRuleOverview(request *DescribeRuleOverviewRequest) (res
         request = NewDescribeRuleOverviewRequest()
     }
     response = NewDescribeRuleOverviewResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeSecurityGroupListRequest() (request *DescribeSecurityGroupListRequest) {
+    request = &DescribeSecurityGroupListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cfw", APIVersion, "DescribeSecurityGroupList")
+    return
+}
+
+func NewDescribeSecurityGroupListResponse() (response *DescribeSecurityGroupListResponse) {
+    response = &DescribeSecurityGroupListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询安全组规则列表
+func (c *Client) DescribeSecurityGroupList(request *DescribeSecurityGroupListRequest) (response *DescribeSecurityGroupListResponse, err error) {
+    if request == nil {
+        request = NewDescribeSecurityGroupListRequest()
+    }
+    response = NewDescribeSecurityGroupListResponse()
     err = c.Send(request, response)
     return
 }
@@ -389,6 +514,31 @@ func (c *Client) ModifyItemSwitchStatus(request *ModifyItemSwitchStatusRequest) 
         request = NewModifyItemSwitchStatusRequest()
     }
     response = NewModifyItemSwitchStatusResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifySecurityGroupAllRuleStatusRequest() (request *ModifySecurityGroupAllRuleStatusRequest) {
+    request = &ModifySecurityGroupAllRuleStatusRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cfw", APIVersion, "ModifySecurityGroupAllRuleStatus")
+    return
+}
+
+func NewModifySecurityGroupAllRuleStatusResponse() (response *ModifySecurityGroupAllRuleStatusResponse) {
+    response = &ModifySecurityGroupAllRuleStatusResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 启用停用全部规则
+func (c *Client) ModifySecurityGroupAllRuleStatus(request *ModifySecurityGroupAllRuleStatusRequest) (response *ModifySecurityGroupAllRuleStatusResponse, err error) {
+    if request == nil {
+        request = NewModifySecurityGroupAllRuleStatusRequest()
+    }
+    response = NewModifySecurityGroupAllRuleStatusResponse()
     err = c.Send(request, response)
     return
 }

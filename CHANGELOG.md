@@ -1,34 +1,10 @@
 # 本版本更新包含以下内容：
 
-## 云硬盘(cbs) 版本：2017-03-12
+## 计费相关(billing) 版本：2018-07-09
 
-### 第 22 次发布
+### 第 24 次发布
 
-发布时间：2020-12-25 08:02:47
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [InquirePriceModifyDiskExtraPerformance](https://cloud.tencent.com/document/api/362/51484)
-* [ModifyDiskExtraPerformance](https://cloud.tencent.com/document/api/362/51483)
-
-修改接口：
-
-* [CreateDisks](https://cloud.tencent.com/document/api/362/16312)
-
-	* 新增入参：ThroughputPerformance
-
-
-
-
-## 云数据库 CynosDB(cynosdb) 版本：2019-01-07
-
-### 第 7 次发布
-
-发布时间：2020-12-25 08:00:23
+发布时间：2020-12-28 08:01:57
 
 本次发布包含了以下内容：
 
@@ -36,84 +12,105 @@
 
 修改接口：
 
-* [CreateClusters](https://cloud.tencent.com/document/api/1003/48087)
+* [DescribeBillDetail](https://cloud.tencent.com/document/api/555/19182)
 
-	* <font color="#dd0000">**修改入参**：</font>Cpu, Memory, StorageLimit
+	* 新增入参：ProjectId
 
-
-
-
-## 专线接入(dc) 版本：2018-04-10
-
-### 第 14 次发布
-
-发布时间：2020-12-25 08:03:57
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [ApplyInternetAddress](https://cloud.tencent.com/document/api/216/51491)
-* [DescribeInternetAddress](https://cloud.tencent.com/document/api/216/51490)
-* [DescribeInternetAddressQuota](https://cloud.tencent.com/document/api/216/51489)
-* [DescribeInternetAddressStatistics](https://cloud.tencent.com/document/api/216/51488)
-* [DisableInternetAddress](https://cloud.tencent.com/document/api/216/51487)
-* [EnableInternetAddress](https://cloud.tencent.com/document/api/216/51486)
-* [ReleaseInternetAddress](https://cloud.tencent.com/document/api/216/51485)
-
-修改接口：
-
-* [ModifyDirectConnectTunnelExtra](https://cloud.tencent.com/document/api/216/49100)
-
-	* 新增入参：IPv6Enable
-
-
-新增数据结构：
-
-* [InternetAddressDetail](https://cloud.tencent.com/document/api/216/18418#InternetAddressDetail)
-* [InternetAddressStatistics](https://cloud.tencent.com/document/api/216/18418#InternetAddressStatistics)
 
 修改数据结构：
 
-* [DirectConnectTunnelExtra](https://cloud.tencent.com/document/api/216/18418#DirectConnectTunnelExtra)
+* [BillDetail](https://cloud.tencent.com/document/api/555/19183#BillDetail)
 
-	* 新增成员：IPv6Enable, TencentIPv6Address, TencentBackupIPv6Address, BgpIPv6Status, CustomerIPv6Address
+	* 新增成员：ProjectId
 
+
+
+
+## 内容分发网络(cdn) 版本：2018-06-06
+
+### 第 59 次发布
+
+发布时间：2020-12-28 08:02:49
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeScdnConfig](https://cloud.tencent.com/document/api/228/51326)
+
+	* 新增出参：Status
+
+* [ListScdnDomains](https://cloud.tencent.com/document/api/228/51325)
+
+	* 新增入参：Domain
+
+
+
+
+## 云防火墙(cfw) 版本：2019-09-04
+
+### 第 2 次发布
+
+发布时间：2020-12-28 08:09:13
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CreateSecurityGroupApiRules](https://cloud.tencent.com/document/api/1132/51527)
+* [DeleteSecurityGroupAllRule](https://cloud.tencent.com/document/api/1132/51526)
+* [DeleteSecurityGroupRule](https://cloud.tencent.com/document/api/1132/51525)
+* [DescribeAssociatedInstanceList](https://cloud.tencent.com/document/api/1132/51524)
+* [DescribeSecurityGroupList](https://cloud.tencent.com/document/api/1132/51523)
+* [ModifySecurityGroupAllRuleStatus](https://cloud.tencent.com/document/api/1132/51522)
+
+新增数据结构：
+
+* [AssociatedInstanceInfo](https://cloud.tencent.com/document/api/1132/49071#AssociatedInstanceInfo)
+* [SecurityGroupApiRuleData](https://cloud.tencent.com/document/api/1132/49071#SecurityGroupApiRuleData)
+* [SecurityGroupListData](https://cloud.tencent.com/document/api/1132/49071#SecurityGroupListData)
 
 
 
 ## Elasticsearch Service(es) 版本：2018-04-16
 
-### 第 13 次发布
+### 第 14 次发布
 
-发布时间：2020-12-25 08:04:28
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [GetRequestTargetNodeTypes](https://cloud.tencent.com/document/api/845/51493)
-* [UpdateRequestTargetNodeTypes](https://cloud.tencent.com/document/api/845/51492)
-
-
-
-## 云点播(vod) 版本：2018-07-17
-
-### 第 68 次发布
-
-发布时间：2020-12-25 08:09:06
+发布时间：2020-12-28 08:04:02
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-新增接口：
+修改数据结构：
 
-* [ManageTask](https://cloud.tencent.com/document/api/266/51502)
+* [InstanceInfo](https://cloud.tencent.com/document/api/845/30634#InstanceInfo)
+
+	* 新增成员：KibanaConfig
+
+
+
+
+## 容器服务(tke) 版本：2018-05-25
+
+### 第 36 次发布
+
+发布时间：2020-12-28 08:07:04
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [NodePool](https://cloud.tencent.com/document/api/457/31866#NodePool)
+
+	* 新增成员：NodePoolOs, OsCustomizeType, ImageId
+
 
 
 
@@ -2895,6 +2892,28 @@
 
 ## 计费相关(billing) 版本：2018-07-09
 
+### 第 24 次发布
+
+发布时间：2020-12-28 08:01:57
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeBillDetail](https://cloud.tencent.com/document/api/555/19182)
+
+	* 新增入参：ProjectId
+
+
+修改数据结构：
+
+* [BillDetail](https://cloud.tencent.com/document/api/555/19183#BillDetail)
+
+	* 新增成员：ProjectId
+
+
 ### 第 23 次发布
 
 发布时间：2020-11-17 08:02:02
@@ -5185,8 +5204,8 @@
 
 新增接口：
 
-* [[InquirePriceModifyDiskExtraPerformance](https://cloud.tencent.com/document/api/362/51484)](https://cloud.tencent.com/document/api/#/#)
-* [[ModifyDiskExtraPerformance](https://cloud.tencent.com/document/api/362/51483)](https://cloud.tencent.com/document/api/#/#)
+* [InquirePriceModifyDiskExtraPerformance](https://cloud.tencent.com/document/api/362/51484)
+* [ModifyDiskExtraPerformance](https://cloud.tencent.com/document/api/362/51483)
 
 修改接口：
 
@@ -6892,6 +6911,25 @@
 
 ## 内容分发网络(cdn) 版本：2018-06-06
 
+### 第 59 次发布
+
+发布时间：2020-12-28 08:02:49
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeScdnConfig](https://cloud.tencent.com/document/api/228/51326)
+
+	* 新增出参：Status
+
+* [ListScdnDomains](https://cloud.tencent.com/document/api/228/51325)
+
+	* 新增入参：Domain
+
+
 ### 第 58 次发布
 
 发布时间：2020-12-24 08:03:03
@@ -8417,6 +8455,29 @@
 
 
 ## 云防火墙(cfw) 版本：2019-09-04
+
+### 第 2 次发布
+
+发布时间：2020-12-28 08:09:13
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[CreateSecurityGroupApiRules](https://cloud.tencent.com/document/api/1132/51527)](https://cloud.tencent.com/document/api/#/#)
+* [[DeleteSecurityGroupAllRule](https://cloud.tencent.com/document/api/1132/51526)](https://cloud.tencent.com/document/api/#/#)
+* [[DeleteSecurityGroupRule](https://cloud.tencent.com/document/api/1132/51525)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeAssociatedInstanceList](https://cloud.tencent.com/document/api/1132/51524)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeSecurityGroupList](https://cloud.tencent.com/document/api/1132/51523)](https://cloud.tencent.com/document/api/#/#)
+* [[ModifySecurityGroupAllRuleStatus](https://cloud.tencent.com/document/api/1132/51522)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[AssociatedInstanceInfo](https://cloud.tencent.com/document/api/1132/49071#AssociatedInstanceInfo)](https://cloud.tencent.com/document/api/1132/49071#[AssociatedInstanceInfo](https://cloud.tencent.com/document/api/1132/49071#AssociatedInstanceInfo))
+* [[SecurityGroupApiRuleData](https://cloud.tencent.com/document/api/1132/49071#SecurityGroupApiRuleData)](https://cloud.tencent.com/document/api/1132/49071#[SecurityGroupApiRuleData](https://cloud.tencent.com/document/api/1132/49071#SecurityGroupApiRuleData))
+* [[SecurityGroupListData](https://cloud.tencent.com/document/api/1132/49071#SecurityGroupListData)](https://cloud.tencent.com/document/api/1132/49071#[SecurityGroupListData](https://cloud.tencent.com/document/api/1132/49071#SecurityGroupListData))
 
 ### 第 1 次发布
 
@@ -14291,13 +14352,13 @@
 
 新增接口：
 
-* [[ApplyInternetAddress](https://cloud.tencent.com/document/api/216/51491)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeInternetAddress](https://cloud.tencent.com/document/api/216/51490)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeInternetAddressQuota](https://cloud.tencent.com/document/api/216/51489)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeInternetAddressStatistics](https://cloud.tencent.com/document/api/216/51488)](https://cloud.tencent.com/document/api/#/#)
-* [[DisableInternetAddress](https://cloud.tencent.com/document/api/216/51487)](https://cloud.tencent.com/document/api/#/#)
-* [[EnableInternetAddress](https://cloud.tencent.com/document/api/216/51486)](https://cloud.tencent.com/document/api/#/#)
-* [[ReleaseInternetAddress](https://cloud.tencent.com/document/api/216/51485)](https://cloud.tencent.com/document/api/#/#)
+* [ApplyInternetAddress](https://cloud.tencent.com/document/api/216/51491)
+* [DescribeInternetAddress](https://cloud.tencent.com/document/api/216/51490)
+* [DescribeInternetAddressQuota](https://cloud.tencent.com/document/api/216/51489)
+* [DescribeInternetAddressStatistics](https://cloud.tencent.com/document/api/216/51488)
+* [DisableInternetAddress](https://cloud.tencent.com/document/api/216/51487)
+* [EnableInternetAddress](https://cloud.tencent.com/document/api/216/51486)
+* [ReleaseInternetAddress](https://cloud.tencent.com/document/api/216/51485)
 
 修改接口：
 
@@ -14308,8 +14369,8 @@
 
 新增数据结构：
 
-* [[InternetAddressDetail](https://cloud.tencent.com/document/api/216/18418#InternetAddressDetail)](https://cloud.tencent.com/document/api/216/18418#[InternetAddressDetail](https://cloud.tencent.com/document/api/216/18418#InternetAddressDetail))
-* [[InternetAddressStatistics](https://cloud.tencent.com/document/api/216/18418#InternetAddressStatistics)](https://cloud.tencent.com/document/api/216/18418#[InternetAddressStatistics](https://cloud.tencent.com/document/api/216/18418#InternetAddressStatistics))
+* [InternetAddressDetail](https://cloud.tencent.com/document/api/216/18418#InternetAddressDetail)
+* [InternetAddressStatistics](https://cloud.tencent.com/document/api/216/18418#InternetAddressStatistics)
 
 修改数据结构：
 
@@ -17234,6 +17295,21 @@
 
 ## Elasticsearch Service(es) 版本：2018-04-16
 
+### 第 14 次发布
+
+发布时间：2020-12-28 08:04:02
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [InstanceInfo](https://cloud.tencent.com/document/api/845/30634#InstanceInfo)
+
+	* 新增成员：KibanaConfig
+
+
 ### 第 13 次发布
 
 发布时间：2020-12-25 08:04:28
@@ -17244,8 +17320,8 @@
 
 新增接口：
 
-* [[GetRequestTargetNodeTypes](https://cloud.tencent.com/document/api/845/51493)](https://cloud.tencent.com/document/api/#/#)
-* [[UpdateRequestTargetNodeTypes](https://cloud.tencent.com/document/api/845/51492)](https://cloud.tencent.com/document/api/#/#)
+* [GetRequestTargetNodeTypes](https://cloud.tencent.com/document/api/845/51493)
+* [UpdateRequestTargetNodeTypes](https://cloud.tencent.com/document/api/845/51492)
 
 ### 第 12 次发布
 
@@ -34371,6 +34447,21 @@
 
 ## 容器服务(tke) 版本：2018-05-25
 
+### 第 36 次发布
+
+发布时间：2020-12-28 08:07:04
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [NodePool](https://cloud.tencent.com/document/api/457/31866#NodePool)
+
+	* 新增成员：NodePoolOs, OsCustomizeType, ImageId
+
+
 ### 第 35 次发布
 
 发布时间：2020-12-22 08:08:25
@@ -36952,7 +37043,7 @@
 
 新增接口：
 
-* [[ManageTask](https://cloud.tencent.com/document/api/266/51502)](https://cloud.tencent.com/document/api/#/#)
+* [ManageTask](https://cloud.tencent.com/document/api/266/51502)
 
 ### 第 67 次发布
 

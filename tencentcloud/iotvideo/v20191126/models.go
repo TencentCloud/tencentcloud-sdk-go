@@ -1871,13 +1871,13 @@ func (r *DescribePubVersionsResponse) FromJsonString(s string) error {
 type DescribeRechargeRecordsRequest struct {
 	*tchttp.BaseRequest
 
-	// 账户类型 1:设备接入 2:云存
+	// 账户类型 1:设备接入 2:云存。
 	AccountType *int64 `json:"AccountType,omitempty" name:"AccountType"`
 
-	// 从第几条记录开始显示
+	// 从第几条记录开始显示, 默认值为0。
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
 
-	// 总共查询多少条记录
+	// 总共查询多少条记录，默认为值50。
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 }
 

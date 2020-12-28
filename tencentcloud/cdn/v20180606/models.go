@@ -2702,6 +2702,10 @@ type DescribeScdnConfigResponse struct {
 		// BOT 防护配置
 		Bot *ScdnBotConfig `json:"Bot,omitempty" name:"Bot"`
 
+		// 当前状态，取值online | offline
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Status *string `json:"Status,omitempty" name:"Status"`
+
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
@@ -4088,6 +4092,9 @@ type ListScdnDomainsRequest struct {
 
 	// 列表分页记录条数，最大1000
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 域名信息
+	Domain *string `json:"Domain,omitempty" name:"Domain"`
 }
 
 func (r *ListScdnDomainsRequest) ToJsonString() string {

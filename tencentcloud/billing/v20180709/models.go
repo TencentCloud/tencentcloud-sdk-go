@@ -122,6 +122,9 @@ type BillDetail struct {
 	// 区域ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RegionId *string `json:"RegionId,omitempty" name:"RegionId"`
+
+	// 项目ID:资源所属项目ID
+	ProjectId *int64 `json:"ProjectId,omitempty" name:"ProjectId"`
 }
 
 type BillDetailComponent struct {
@@ -855,6 +858,9 @@ type DescribeBillDetailRequest struct {
 
 	// 查询交易类型。如 按量计费日结，按量计费小时结 等
 	ActionType *string `json:"ActionType,omitempty" name:"ActionType"`
+
+	// 项目ID:资源所属项目ID
+	ProjectId *int64 `json:"ProjectId,omitempty" name:"ProjectId"`
 }
 
 func (r *DescribeBillDetailRequest) ToJsonString() string {

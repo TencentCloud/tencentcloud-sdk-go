@@ -634,6 +634,10 @@ type InstanceInfo struct {
 	// 场景化模板类型：0、不开启；1、通用场景；2、日志场景；3、搜索场景
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SceneType *int64 `json:"SceneType,omitempty" name:"SceneType"`
+
+	// Kibana配置项
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	KibanaConfig *string `json:"KibanaConfig,omitempty" name:"KibanaConfig"`
 }
 
 type InstanceLog struct {
