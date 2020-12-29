@@ -27,6 +27,11 @@ type AddMemberInfo struct {
 
 	// 团队成员备注。
 	Remark *string `json:"Remark,omitempty" name:"Remark"`
+
+	// 团队成员角色，不填则默认添加普通成员。可选值：
+	// <li>Admin：团队管理员；</li>
+	// <li>Member：普通成员。</li>
+	Role *string `json:"Role,omitempty" name:"Role"`
 }
 
 type AddTeamMemberRequest struct {
@@ -1224,6 +1229,12 @@ type DescribeTeamsRequest struct {
 
 	// 团队 ID 列表，限30个。
 	TeamIds []*string `json:"TeamIds,omitempty" name:"TeamIds" list`
+
+	// 分页偏移量，默认值：0。
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 返回记录条数，默认值：20，最大值：30。
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 }
 
 func (r *DescribeTeamsRequest) ToJsonString() string {
@@ -1238,6 +1249,9 @@ func (r *DescribeTeamsRequest) FromJsonString(s string) error {
 type DescribeTeamsResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
+
+		// 符合条件的记录总数。
+		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 团队列表。
 		TeamSet []*TeamInfo `json:"TeamSet,omitempty" name:"TeamSet" list`
@@ -1456,6 +1470,15 @@ func (r *ExportVideoEditProjectResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type ExternalMediaInfo struct {
+
+	// 媒资绑定模板 ID。
+	Definition *int64 `json:"Definition,omitempty" name:"Definition"`
+
+	// 媒资绑定媒体路径或文件 ID。
+	MediaKey *string `json:"MediaKey,omitempty" name:"MediaKey"`
+}
+
 type FlattenListMediaRequest struct {
 	*tchttp.BaseRequest
 
@@ -1634,19 +1657,28 @@ type ImportMaterialRequest struct {
 	// 平台名称，指定访问的平台。
 	Platform *string `json:"Platform,omitempty" name:"Platform"`
 
-	// 云点播媒资 FileId。
-	VodFileId *string `json:"VodFileId,omitempty" name:"VodFileId"`
-
-	// 素材归属者。
+	// 媒体归属者，团队或个人。
 	Owner *Entity `json:"Owner,omitempty" name:"Owner"`
 
-	// 素材名称，不能超过30个字符。
+	// 媒体名称，不能超过30个字符。
 	Name *string `json:"Name,omitempty" name:"Name"`
 
-	// 素材分类路径，形如："/a/b"，层级数不能超过10，每个层级长度不能超过15字符。若不填则默认为根路径。
+	// 导入媒资类型，取值：
+	// <li>VOD：云点播文件；</li>
+	// <li>EXTERNAL：媒资绑定。</li>
+	// 注意：如果不填默认为云点播文件。
+	SourceType *string `json:"SourceType,omitempty" name:"SourceType"`
+
+	// 云点播媒资 FileId，仅当 SourceType 为 VOD 时有效。
+	VodFileId *string `json:"VodFileId,omitempty" name:"VodFileId"`
+
+	// 原始媒资文件信息，当 SourceType 取值 EXTERNAL 的时候必填。
+	ExternalMediaInfo *ExternalMediaInfo `json:"ExternalMediaInfo,omitempty" name:"ExternalMediaInfo"`
+
+	// 媒体分类路径，形如："/a/b"，层级数不能超过10，每个层级长度不能超过15字符。若不填则默认为根路径。
 	ClassPath *string `json:"ClassPath,omitempty" name:"ClassPath"`
 
-	// 素材预处理任务模板 ID。取值：
+	// 媒体预处理任务模板 ID。取值：
 	// <li>10：进行编辑预处理。</li>
 	PreProcessDefinition *int64 `json:"PreProcessDefinition,omitempty" name:"PreProcessDefinition"`
 
@@ -1696,13 +1728,22 @@ type ImportMediaToProjectRequest struct {
 	// 项目 Id。
 	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
 
-	// 云点播媒资 FileId。
+	// 导入媒资类型，取值：
+	// <li>VOD：云点播文件；</li>
+	// <li>EXTERNAL：媒资绑定。</li>
+	// 注意：如果不填默认为云点播文件。
+	SourceType *string `json:"SourceType,omitempty" name:"SourceType"`
+
+	// 云点播媒资文件Id，当 SourceType 取值 VOD 或者缺省的时候必填。
 	VodFileId *string `json:"VodFileId,omitempty" name:"VodFileId"`
 
-	// 素材名称，不能超过30个字符。
+	// 原始媒资文件信息，当 SourceType 取值 EXTERNAL 的时候必填。
+	ExternalMediaInfo *ExternalMediaInfo `json:"ExternalMediaInfo,omitempty" name:"ExternalMediaInfo"`
+
+	// 媒体名称，不能超过30个字符。
 	Name *string `json:"Name,omitempty" name:"Name"`
 
-	// 素材预处理任务模板 ID，取值：
+	// 媒体预处理任务模板 ID，取值：
 	// <li>10：进行编辑预处理。</li>
 	// 注意：如果填0则不进行处理。
 	PreProcessDefinition *int64 `json:"PreProcessDefinition,omitempty" name:"PreProcessDefinition"`

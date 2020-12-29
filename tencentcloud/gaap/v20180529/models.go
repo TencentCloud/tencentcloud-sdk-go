@@ -2780,6 +2780,12 @@ type DescribeRuleRealServersRequest struct {
 
 	// 转发规则ID
 	RuleId *string `json:"RuleId,omitempty" name:"RuleId"`
+
+	// 偏移量，默认为0。
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 返回数量，默认为20，最大值为1000。
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 }
 
 func (r *DescribeRuleRealServersRequest) ToJsonString() string {
@@ -3307,6 +3313,13 @@ type DomainRuleSet struct {
 	// 多源站证书时，返回多个证书的id和别名
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PolyRealServerCertificateAliasInfo []*CertificateAliasInfo `json:"PolyRealServerCertificateAliasInfo,omitempty" name:"PolyRealServerCertificateAliasInfo" list`
+
+	// 域名的状态。
+	// 0表示运行中，
+	// 1表示变更中，
+	// 2表示删除中。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DomainStatus *uint64 `json:"DomainStatus,omitempty" name:"DomainStatus"`
 }
 
 type Filter struct {
@@ -4566,7 +4579,7 @@ type ProxyInfo struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ModifyConfigTime *uint64 `json:"ModifyConfigTime,omitempty" name:"ModifyConfigTime"`
 
-	// 通道类型
+	// 通道类型，104表示新的银牌质量通道类型
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProxyType *uint64 `json:"ProxyType,omitempty" name:"ProxyType"`
 
@@ -4712,6 +4725,18 @@ type RuleCheckParams struct {
 	// 健康检查的检查域名。
 	// 当调用ModifyRuleAttribute时，不支持修改该参数。
 	Domain *string `json:"Domain,omitempty" name:"Domain"`
+
+	// 源站服务失败统计频率
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FailedCountInter *uint64 `json:"FailedCountInter,omitempty" name:"FailedCountInter"`
+
+	// 源站健康性检查阀值，超过该阀值会屏蔽服务
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FailedThreshold *uint64 `json:"FailedThreshold,omitempty" name:"FailedThreshold"`
+
+	// 源站健康性检测超出阀值后，屏蔽的时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BlockInter *uint64 `json:"BlockInter,omitempty" name:"BlockInter"`
 }
 
 type RuleInfo struct {

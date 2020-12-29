@@ -845,6 +845,9 @@ type CreateModuleRequest struct {
 
 	// 默认入带宽，单位：M。范围不得超过带宽上下限，详看DescribeConfig。
 	DefaultBandWidthIn *int64 `json:"DefaultBandWidthIn,omitempty" name:"DefaultBandWidthIn"`
+
+	// 是否禁止分配外网IP
+	DisableWanIp *bool `json:"DisableWanIp,omitempty" name:"DisableWanIp"`
 }
 
 func (r *CreateModuleRequest) ToJsonString() string {
@@ -4756,6 +4759,43 @@ func (r *ModifyModuleConfigResponse) ToJsonString() string {
 }
 
 func (r *ModifyModuleConfigResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyModuleDisableWanIpRequest struct {
+	*tchttp.BaseRequest
+
+	// 模块ID
+	ModuleId *string `json:"ModuleId,omitempty" name:"ModuleId"`
+
+	// 是否禁止分配外网ip
+	DisableWanIp *bool `json:"DisableWanIp,omitempty" name:"DisableWanIp"`
+}
+
+func (r *ModifyModuleDisableWanIpRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyModuleDisableWanIpRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyModuleDisableWanIpResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifyModuleDisableWanIpResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyModuleDisableWanIpResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 

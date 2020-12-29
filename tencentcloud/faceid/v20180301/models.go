@@ -1093,7 +1093,7 @@ type GetRealNameAuthTokenRequest struct {
 	// 身份证号
 	IDCard *string `json:"IDCard,omitempty" name:"IDCard"`
 
-	// 回调地址。实名认证完成后，将会重定向到这个地址通知认证发起方
+	// 回调地址。实名认证完成后，将会重定向到这个地址通知认证发起方。仅支持http或https协议。
 	CallbackURL *string `json:"CallbackURL,omitempty" name:"CallbackURL"`
 }
 
@@ -1113,7 +1113,7 @@ type GetRealNameAuthTokenResponse struct {
 		// 查询实名认证结果的唯一凭证
 		AuthToken *string `json:"AuthToken,omitempty" name:"AuthToken"`
 
-		// 实名认证授权地址，认证发起方需要重定向到这个地址获取认证用户的授权
+		// 实名认证授权地址，认证发起方需要重定向到这个地址获取认证用户的授权，仅能在微信环境下打开。
 		RedirectURL *string `json:"RedirectURL,omitempty" name:"RedirectURL"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。

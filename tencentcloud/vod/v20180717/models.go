@@ -5264,14 +5264,17 @@ func (r *DescribeStorageDetailsResponse) FromJsonString(s string) error {
 type DescribeSubAppIdsRequest struct {
 	*tchttp.BaseRequest
 
-	// 分页拉取的最大返回结果数。默认值：200；最大值：200。
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	// 子应用名称。
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 标签信息，查询指定标签的子应用列表。
+	Tags []*ResourceTag `json:"Tags,omitempty" name:"Tags" list`
 
 	// 分页拉取的起始偏移量。默认值：0。
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
 
-	// 标签信息，查询指定标签的子应用列表。
-	Tags []*ResourceTag `json:"Tags,omitempty" name:"Tags" list`
+	// 分页拉取的最大返回结果数。默认值：200；最大值：200。
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 }
 
 func (r *DescribeSubAppIdsRequest) ToJsonString() string {

@@ -1647,6 +1647,32 @@ type PrepayPrice struct {
 
 	// 预付费云盘或快照预支费用的折扣价，单位：元。
 	DiscountPrice *float64 `json:"DiscountPrice,omitempty" name:"DiscountPrice"`
+
+	// 高精度预付费云盘或快照预支费用的原价，单位：元
+	OriginalPriceHigh *string `json:"OriginalPriceHigh,omitempty" name:"OriginalPriceHigh"`
+
+	// 高精度预付费云盘或快照预支费用的折扣价，单位：元
+	DiscountPriceHigh *string `json:"DiscountPriceHigh,omitempty" name:"DiscountPriceHigh"`
+
+	// 后付费云盘原单价，单位：元。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UnitPrice *string `json:"UnitPrice,omitempty" name:"UnitPrice"`
+
+	// 后付费云盘的计价单元，取值范围：<br><li>HOUR：表示后付费云盘的计价单元是按小时计算。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ChargeUnit *string `json:"ChargeUnit,omitempty" name:"ChargeUnit"`
+
+	// 后付费云盘折扣单价，单位：元。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UnitPriceDiscount *string `json:"UnitPriceDiscount,omitempty" name:"UnitPriceDiscount"`
+
+	// 高精度后付费云盘原单价, 单位：元
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UnitPriceHigh *string `json:"UnitPriceHigh,omitempty" name:"UnitPriceHigh"`
+
+	// 高精度后付费云盘折扣单价, 单位：元
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UnitPriceDiscountHigh *string `json:"UnitPriceDiscountHigh,omitempty" name:"UnitPriceDiscountHigh"`
 }
 
 type Price struct {

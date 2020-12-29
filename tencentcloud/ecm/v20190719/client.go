@@ -2242,6 +2242,31 @@ func (c *Client) ModifyModuleConfig(request *ModifyModuleConfigRequest) (respons
     return
 }
 
+func NewModifyModuleDisableWanIpRequest() (request *ModifyModuleDisableWanIpRequest) {
+    request = &ModifyModuleDisableWanIpRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ecm", APIVersion, "ModifyModuleDisableWanIp")
+    return
+}
+
+func NewModifyModuleDisableWanIpResponse() (response *ModifyModuleDisableWanIpResponse) {
+    response = &ModifyModuleDisableWanIpResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 修改模块是否禁止分配外网ip的属性。
+func (c *Client) ModifyModuleDisableWanIp(request *ModifyModuleDisableWanIpRequest) (response *ModifyModuleDisableWanIpResponse, err error) {
+    if request == nil {
+        request = NewModifyModuleDisableWanIpRequest()
+    }
+    response = NewModifyModuleDisableWanIpResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyModuleImageRequest() (request *ModifyModuleImageRequest) {
     request = &ModifyModuleImageRequest{
         BaseRequest: &tchttp.BaseRequest{},

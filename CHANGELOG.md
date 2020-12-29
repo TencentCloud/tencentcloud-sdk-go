@@ -1,36 +1,29 @@
 # 本版本更新包含以下内容：
 
-## 计费相关(billing) 版本：2018-07-09
+## 云硬盘(cbs) 版本：2017-03-12
 
-### 第 24 次发布
+### 第 23 次发布
 
-发布时间：2020-12-28 08:01:57
+发布时间：2020-12-29 08:02:44
 
 本次发布包含了以下内容：
 
 改善已有的文档。
-
-修改接口：
-
-* [DescribeBillDetail](https://cloud.tencent.com/document/api/555/19182)
-
-	* 新增入参：ProjectId
-
 
 修改数据结构：
 
-* [BillDetail](https://cloud.tencent.com/document/api/555/19183#BillDetail)
+* [PrepayPrice](https://cloud.tencent.com/document/api/362/15669#PrepayPrice)
 
-	* 新增成员：ProjectId
-
-
+	* 新增成员：OriginalPriceHigh, DiscountPriceHigh, UnitPrice, ChargeUnit, UnitPriceDiscount, UnitPriceHigh, UnitPriceDiscountHigh
 
 
-## 内容分发网络(cdn) 版本：2018-06-06
 
-### 第 59 次发布
 
-发布时间：2020-12-28 08:02:49
+## 腾讯云剪(cme) 版本：2019-10-29
+
+### 第 19 次发布
+
+发布时间：2020-12-29 08:01:48
 
 本次发布包含了以下内容：
 
@@ -38,22 +31,45 @@
 
 修改接口：
 
-* [DescribeScdnConfig](https://cloud.tencent.com/document/api/228/51326)
+* [DescribeTeams](https://cloud.tencent.com/document/api/1156/43255)
 
-	* 新增出参：Status
+	* 新增入参：Offset, Limit
 
-* [ListScdnDomains](https://cloud.tencent.com/document/api/228/51325)
+	* <font color="#dd0000">**修改入参**：</font>TeamIds
 
-	* 新增入参：Domain
+	* 新增出参：TotalCount
+
+* [ImportMaterial](https://cloud.tencent.com/document/api/1156/43243)
+
+	* 新增入参：SourceType, ExternalMediaInfo
+
+	* <font color="#dd0000">**修改入参**：</font>VodFileId
+
+* [ImportMediaToProject](https://cloud.tencent.com/document/api/1156/40352)
+
+	* 新增入参：SourceType, ExternalMediaInfo
+
+	* <font color="#dd0000">**修改入参**：</font>VodFileId
+
+
+新增数据结构：
+
+* [ExternalMediaInfo](https://cloud.tencent.com/document/api/1156/40360#ExternalMediaInfo)
+
+修改数据结构：
+
+* [AddMemberInfo](https://cloud.tencent.com/document/api/1156/40360#AddMemberInfo)
+
+	* 新增成员：Role
 
 
 
 
-## 云防火墙(cfw) 版本：2019-09-04
+## 边缘计算机器(ecm) 版本：2019-07-19
 
-### 第 2 次发布
+### 第 37 次发布
 
-发布时间：2020-12-28 08:09:13
+发布时间：2020-12-29 08:00:50
 
 本次发布包含了以下内容：
 
@@ -61,55 +77,83 @@
 
 新增接口：
 
-* [CreateSecurityGroupApiRules](https://cloud.tencent.com/document/api/1132/51527)
-* [DeleteSecurityGroupAllRule](https://cloud.tencent.com/document/api/1132/51526)
-* [DeleteSecurityGroupRule](https://cloud.tencent.com/document/api/1132/51525)
-* [DescribeAssociatedInstanceList](https://cloud.tencent.com/document/api/1132/51524)
-* [DescribeSecurityGroupList](https://cloud.tencent.com/document/api/1132/51523)
-* [ModifySecurityGroupAllRuleStatus](https://cloud.tencent.com/document/api/1132/51522)
+* [ModifyModuleDisableWanIp](https://cloud.tencent.com/document/api/1108/51572)
+
+修改接口：
+
+* [CreateModule](https://cloud.tencent.com/document/api/1108/42557)
+
+	* 新增入参：DisableWanIp
+
+
+
+
+## 全球应用加速(gaap) 版本：2018-05-29
+
+### 第 15 次发布
+
+发布时间：2020-12-29 08:04:44
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeRuleRealServers](https://cloud.tencent.com/document/api/608/36987)
+
+	* 新增入参：Offset, Limit
+
+
+修改数据结构：
+
+* [DomainRuleSet](https://cloud.tencent.com/document/api/608/37023#DomainRuleSet)
+
+	* 新增成员：DomainStatus
+
+* [RuleCheckParams](https://cloud.tencent.com/document/api/608/37023#RuleCheckParams)
+
+	* 新增成员：FailedCountInter, FailedThreshold, BlockInter
+
+
+
+
+## 语音消息(vms) 版本：2020-09-02
+
+### 第 1 次发布
+
+发布时间：2020-12-28 20:12:56
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [SendCodeVoice](https://cloud.tencent.com/document/api/1128/51559)
+* [SendTtsVoice](https://cloud.tencent.com/document/api/1128/51558)
 
 新增数据结构：
 
-* [AssociatedInstanceInfo](https://cloud.tencent.com/document/api/1132/49071#AssociatedInstanceInfo)
-* [SecurityGroupApiRuleData](https://cloud.tencent.com/document/api/1132/49071#SecurityGroupApiRuleData)
-* [SecurityGroupListData](https://cloud.tencent.com/document/api/1132/49071#SecurityGroupListData)
+* [SendStatus](https://cloud.tencent.com/document/api/1128/51560#SendStatus)
 
 
 
-## Elasticsearch Service(es) 版本：2018-04-16
+## 云点播(vod) 版本：2018-07-17
 
-### 第 14 次发布
+### 第 69 次发布
 
-发布时间：2020-12-28 08:04:02
+发布时间：2020-12-29 08:10:42
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-修改数据结构：
+修改接口：
 
-* [InstanceInfo](https://cloud.tencent.com/document/api/845/30634#InstanceInfo)
+* [DescribeSubAppIds](https://cloud.tencent.com/document/api/266/36304)
 
-	* 新增成员：KibanaConfig
-
-
-
-
-## 容器服务(tke) 版本：2018-05-25
-
-### 第 36 次发布
-
-发布时间：2020-12-28 08:07:04
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [NodePool](https://cloud.tencent.com/document/api/457/31866#NodePool)
-
-	* 新增成员：NodePoolOs, OsCustomizeType, ImageId
+	* 新增入参：Name
 
 
 
@@ -5194,6 +5238,21 @@
 
 ## 云硬盘(cbs) 版本：2017-03-12
 
+### 第 23 次发布
+
+发布时间：2020-12-29 08:02:44
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [PrepayPrice](https://cloud.tencent.com/document/api/362/15669#PrepayPrice)
+
+	* 新增成员：OriginalPriceHigh, DiscountPriceHigh, UnitPrice, ChargeUnit, UnitPriceDiscount, UnitPriceHigh, UnitPriceDiscountHigh
+
+
 ### 第 22 次发布
 
 发布时间：2020-12-25 08:02:47
@@ -8466,18 +8525,18 @@
 
 新增接口：
 
-* [[CreateSecurityGroupApiRules](https://cloud.tencent.com/document/api/1132/51527)](https://cloud.tencent.com/document/api/#/#)
-* [[DeleteSecurityGroupAllRule](https://cloud.tencent.com/document/api/1132/51526)](https://cloud.tencent.com/document/api/#/#)
-* [[DeleteSecurityGroupRule](https://cloud.tencent.com/document/api/1132/51525)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeAssociatedInstanceList](https://cloud.tencent.com/document/api/1132/51524)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeSecurityGroupList](https://cloud.tencent.com/document/api/1132/51523)](https://cloud.tencent.com/document/api/#/#)
-* [[ModifySecurityGroupAllRuleStatus](https://cloud.tencent.com/document/api/1132/51522)](https://cloud.tencent.com/document/api/#/#)
+* [CreateSecurityGroupApiRules](https://cloud.tencent.com/document/api/1132/51527)
+* [DeleteSecurityGroupAllRule](https://cloud.tencent.com/document/api/1132/51526)
+* [DeleteSecurityGroupRule](https://cloud.tencent.com/document/api/1132/51525)
+* [DescribeAssociatedInstanceList](https://cloud.tencent.com/document/api/1132/51524)
+* [DescribeSecurityGroupList](https://cloud.tencent.com/document/api/1132/51523)
+* [ModifySecurityGroupAllRuleStatus](https://cloud.tencent.com/document/api/1132/51522)
 
 新增数据结构：
 
-* [[AssociatedInstanceInfo](https://cloud.tencent.com/document/api/1132/49071#AssociatedInstanceInfo)](https://cloud.tencent.com/document/api/1132/49071#[AssociatedInstanceInfo](https://cloud.tencent.com/document/api/1132/49071#AssociatedInstanceInfo))
-* [[SecurityGroupApiRuleData](https://cloud.tencent.com/document/api/1132/49071#SecurityGroupApiRuleData)](https://cloud.tencent.com/document/api/1132/49071#[SecurityGroupApiRuleData](https://cloud.tencent.com/document/api/1132/49071#SecurityGroupApiRuleData))
-* [[SecurityGroupListData](https://cloud.tencent.com/document/api/1132/49071#SecurityGroupListData)](https://cloud.tencent.com/document/api/1132/49071#[SecurityGroupListData](https://cloud.tencent.com/document/api/1132/49071#SecurityGroupListData))
+* [AssociatedInstanceInfo](https://cloud.tencent.com/document/api/1132/49071#AssociatedInstanceInfo)
+* [SecurityGroupApiRuleData](https://cloud.tencent.com/document/api/1132/49071#SecurityGroupApiRuleData)
+* [SecurityGroupListData](https://cloud.tencent.com/document/api/1132/49071#SecurityGroupListData)
 
 ### 第 1 次发布
 
@@ -10099,6 +10158,48 @@
 
 
 ## 腾讯云剪(cme) 版本：2019-10-29
+
+### 第 19 次发布
+
+发布时间：2020-12-29 08:01:48
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeTeams](https://cloud.tencent.com/document/api/1156/43255)
+
+	* 新增入参：Offset, Limit
+
+	* <font color="#dd0000">**修改入参**：</font>TeamIds
+
+	* 新增出参：TotalCount
+
+* [ImportMaterial](https://cloud.tencent.com/document/api/1156/43243)
+
+	* 新增入参：SourceType, ExternalMediaInfo
+
+	* <font color="#dd0000">**修改入参**：</font>VodFileId
+
+* [ImportMediaToProject](https://cloud.tencent.com/document/api/1156/40352)
+
+	* 新增入参：SourceType, ExternalMediaInfo
+
+	* <font color="#dd0000">**修改入参**：</font>VodFileId
+
+
+新增数据结构：
+
+* [[ExternalMediaInfo](https://cloud.tencent.com/document/api/1156/40360#ExternalMediaInfo)](https://cloud.tencent.com/document/api/1156/40360#[ExternalMediaInfo](https://cloud.tencent.com/document/api/1156/40360#ExternalMediaInfo))
+
+修改数据结构：
+
+* [AddMemberInfo](https://cloud.tencent.com/document/api/1156/40360#AddMemberInfo)
+
+	* 新增成员：Role
+
 
 ### 第 18 次发布
 
@@ -15904,6 +16005,25 @@
 
 ## 边缘计算机器(ecm) 版本：2019-07-19
 
+### 第 37 次发布
+
+发布时间：2020-12-29 08:00:50
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[ModifyModuleDisableWanIp](https://cloud.tencent.com/document/api/1108/51572)](https://cloud.tencent.com/document/api/#/#)
+
+修改接口：
+
+* [CreateModule](https://cloud.tencent.com/document/api/1108/42557)
+
+	* 新增入参：DisableWanIp
+
+
 ### 第 36 次发布
 
 发布时间：2020-12-17 08:00:43
@@ -18262,6 +18382,32 @@
 
 
 ## 全球应用加速(gaap) 版本：2018-05-29
+
+### 第 15 次发布
+
+发布时间：2020-12-29 08:04:44
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeRuleRealServers](https://cloud.tencent.com/document/api/608/36987)
+
+	* 新增入参：Offset, Limit
+
+
+修改数据结构：
+
+* [DomainRuleSet](https://cloud.tencent.com/document/api/608/37023#DomainRuleSet)
+
+	* 新增成员：DomainStatus
+
+* [RuleCheckParams](https://cloud.tencent.com/document/api/608/37023#RuleCheckParams)
+
+	* 新增成员：FailedCountInter, FailedThreshold, BlockInter
+
 
 ### 第 14 次发布
 
@@ -37031,7 +37177,44 @@
 
 
 
+## 语音消息(vms) 版本：2020-09-02
+
+### 第 1 次发布
+
+发布时间：2020-12-28 20:12:56
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[SendCodeVoice](https://cloud.tencent.com/document/api/1128/51559)](https://cloud.tencent.com/document/api/#/#)
+* [[SendTtsVoice](https://cloud.tencent.com/document/api/1128/51558)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[SendStatus](https://cloud.tencent.com/document/api/1128/51560#SendStatus)](https://cloud.tencent.com/document/api/1128/51560#[SendStatus](https://cloud.tencent.com/document/api/1128/51560#SendStatus))
+
+
+
+
 ## 云点播(vod) 版本：2018-07-17
+
+### 第 69 次发布
+
+发布时间：2020-12-29 08:10:42
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeSubAppIds](https://cloud.tencent.com/document/api/266/36304)
+
+	* 新增入参：Name
+
 
 ### 第 68 次发布
 
