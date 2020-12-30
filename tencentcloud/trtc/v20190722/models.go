@@ -484,10 +484,11 @@ func (r *DescribeRealtimeScaleResponse) FromJsonString(s string) error {
 type DescribeRecordStatisticRequest struct {
 	*tchttp.BaseRequest
 
-	// 查询开始日期。
+	// 查询开始日期，格式为YYYY-MM-DD。
 	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
 
-	// 查询结束日期。
+	// 查询结束日期，格式为YYYY-MM-DD。
+	// 单次查询统计区间最多不能超过31天。
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 
 	// 应用ID，可不传。传应用ID时返回的是该应用的用量，不传时返回多个应用的合计值。
@@ -886,6 +887,9 @@ type LayoutParams struct {
 
 	// 自定义模板中有效，指定用户视频在混合画面中的位置。
 	PresetLayoutConfig []*PresetLayoutConfig `json:"PresetLayoutConfig,omitempty" name:"PresetLayoutConfig" list`
+
+	// 自定义模板中有效，设置为1时代表启用占位图功能，0时代表不启用占位图功能，默认为0。启用占位图功能时，在预设位置的用户没有上行视频时可显示对应的占位图。
+	PlaceHolderMode *uint64 `json:"PlaceHolderMode,omitempty" name:"PlaceHolderMode"`
 }
 
 type OneSdkAppIdTranscodeTimeUsagesInfo struct {
@@ -950,8 +954,14 @@ type PresetLayoutConfig struct {
 	// 该画面在输出时的层级，单位为像素值，不填默认为0。
 	ZOrder *uint64 `json:"ZOrder,omitempty" name:"ZOrder"`
 
-	// 该画面在输出时的显示模式：0为裁剪，1为缩放，不填默认为0。
+	// 该画面在输出时的显示模式：0为裁剪，1为缩放，2为缩放并显示黑底。不填默认为0。
 	RenderMode *uint64 `json:"RenderMode,omitempty" name:"RenderMode"`
+
+	// 该当前位置用户混入的流类型：0为混入音视频，1为只混入视频，2为只混入音频。默认为0，建议配合指定用户ID使用。
+	MixInputType *uint64 `json:"MixInputType,omitempty" name:"MixInputType"`
+
+	// 占位图ID。实时音视频控制台上传并生成，https://cloud.tencent.com/document/product/647/50769
+	PlaceImageId *uint64 `json:"PlaceImageId,omitempty" name:"PlaceImageId"`
 }
 
 type QualityData struct {

@@ -4547,6 +4547,10 @@ type Origin struct {
 	// 回源路径重写规则配置
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PathRules []*PathRule `json:"PathRules,omitempty" name:"PathRules" list`
+
+	// 分路径回源配置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PathBasedOrigin []*PathBasedOriginRule `json:"PathBasedOrigin,omitempty" name:"PathBasedOrigin" list`
 }
 
 type OriginAuthentication struct {
@@ -4695,6 +4699,26 @@ type OverseaConfig struct {
 	// 视频拖拽配置。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	VideoSeek *VideoSeek `json:"VideoSeek,omitempty" name:"VideoSeek"`
+}
+
+type PathBasedOriginRule struct {
+
+	// 规则类型：
+	// file：指定文件后缀生效
+	// directory：指定路径生效
+	// path：指定绝对路径生效
+	// index: 指定主页生效
+	RuleType *string `json:"RuleType,omitempty" name:"RuleType"`
+
+	// RuleType 对应类型下的匹配内容：
+	// file 时填充后缀名，如 jpg、txt
+	// directory 时填充路径，如 /xxx/test/
+	// path 时填充绝对路径，如 /xxx/test.html
+	// index 时填充 /
+	RulePaths []*string `json:"RulePaths,omitempty" name:"RulePaths" list`
+
+	// 源站列表，支持域名或ipv4地址
+	Origin []*string `json:"Origin,omitempty" name:"Origin" list`
 }
 
 type PathRule struct {

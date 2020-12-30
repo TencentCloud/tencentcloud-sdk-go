@@ -7217,6 +7217,18 @@ type TranscodeTaskInput struct {
 	// 马赛克列表，最大可支持 10 张。
 	MosaicSet []*MosaicInput `json:"MosaicSet,omitempty" name:"MosaicSet" list`
 
+	// 转码后的视频的起始时间偏移，单位：秒。
+	// <li>不填或填0，表示转码后的视频从原始视频的起始位置开始；</li>
+	// <li>当数值大于0时（假设为 n），表示转码后的视频从原始视频的第 n 秒位置开始；</li>
+	// <li>当数值小于0时（假设为 -n），表示转码后的视频从原始视频结束 n 秒前的位置开始。</li>
+	StartTimeOffset *float64 `json:"StartTimeOffset,omitempty" name:"StartTimeOffset"`
+
+	// 转码后视频的终止时间偏移，单位：秒。
+	// <li>不填或填0，表示转码后的视频持续到原始视频的末尾终止；</li>
+	// <li>当数值大于0时（假设为 n），表示转码后的视频持续到原始视频第 n 秒时终止；</li>
+	// <li>当数值小于0时（假设为 -n），表示转码后的视频持续到原始视频结束 n 秒前终止。</li>
+	EndTimeOffset *float64 `json:"EndTimeOffset,omitempty" name:"EndTimeOffset"`
+
 	// 转码后文件的目标存储，不填则继承上层的 OutputStorage 值。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	OutputStorage *TaskOutputStorage `json:"OutputStorage,omitempty" name:"OutputStorage"`

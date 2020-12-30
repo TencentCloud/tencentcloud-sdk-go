@@ -1,159 +1,66 @@
 # 本版本更新包含以下内容：
 
-## 云硬盘(cbs) 版本：2017-03-12
+## 内容分发网络(cdn) 版本：2018-06-06
 
-### 第 23 次发布
+### 第 60 次发布
 
-发布时间：2020-12-29 08:02:44
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [PrepayPrice](https://cloud.tencent.com/document/api/362/15669#PrepayPrice)
-
-	* 新增成员：OriginalPriceHigh, DiscountPriceHigh, UnitPrice, ChargeUnit, UnitPriceDiscount, UnitPriceHigh, UnitPriceDiscountHigh
-
-
-
-
-## 腾讯云剪(cme) 版本：2019-10-29
-
-### 第 19 次发布
-
-发布时间：2020-12-29 08:01:48
+发布时间：2020-12-30 08:02:56
 
 本次发布包含了以下内容：
 
 改善已有的文档。
-
-修改接口：
-
-* [DescribeTeams](https://cloud.tencent.com/document/api/1156/43255)
-
-	* 新增入参：Offset, Limit
-
-	* <font color="#dd0000">**修改入参**：</font>TeamIds
-
-	* 新增出参：TotalCount
-
-* [ImportMaterial](https://cloud.tencent.com/document/api/1156/43243)
-
-	* 新增入参：SourceType, ExternalMediaInfo
-
-	* <font color="#dd0000">**修改入参**：</font>VodFileId
-
-* [ImportMediaToProject](https://cloud.tencent.com/document/api/1156/40352)
-
-	* 新增入参：SourceType, ExternalMediaInfo
-
-	* <font color="#dd0000">**修改入参**：</font>VodFileId
-
 
 新增数据结构：
 
-* [ExternalMediaInfo](https://cloud.tencent.com/document/api/1156/40360#ExternalMediaInfo)
+* [PathBasedOriginRule](https://cloud.tencent.com/document/api/228/30987#PathBasedOriginRule)
 
 修改数据结构：
 
-* [AddMemberInfo](https://cloud.tencent.com/document/api/1156/40360#AddMemberInfo)
+* [Origin](https://cloud.tencent.com/document/api/228/30987#Origin)
 
-	* 新增成员：Role
-
-
-
-
-## 边缘计算机器(ecm) 版本：2019-07-19
-
-### 第 37 次发布
-
-发布时间：2020-12-29 08:00:50
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [ModifyModuleDisableWanIp](https://cloud.tencent.com/document/api/1108/51572)
-
-修改接口：
-
-* [CreateModule](https://cloud.tencent.com/document/api/1108/42557)
-
-	* 新增入参：DisableWanIp
+	* 新增成员：PathBasedOrigin
 
 
 
 
-## 全球应用加速(gaap) 版本：2018-05-29
+## 视频处理(mps) 版本：2019-06-12
 
-### 第 15 次发布
+### 第 27 次发布
 
-发布时间：2020-12-29 08:04:44
+发布时间：2020-12-30 08:05:36
 
 本次发布包含了以下内容：
 
 改善已有的文档。
-
-修改接口：
-
-* [DescribeRuleRealServers](https://cloud.tencent.com/document/api/608/36987)
-
-	* 新增入参：Offset, Limit
-
 
 修改数据结构：
 
-* [DomainRuleSet](https://cloud.tencent.com/document/api/608/37023#DomainRuleSet)
+* [TranscodeTaskInput](https://cloud.tencent.com/document/api/862/37615#TranscodeTaskInput)
 
-	* 新增成员：DomainStatus
-
-* [RuleCheckParams](https://cloud.tencent.com/document/api/608/37023#RuleCheckParams)
-
-	* 新增成员：FailedCountInter, FailedThreshold, BlockInter
+	* 新增成员：StartTimeOffset, EndTimeOffset
 
 
 
 
-## 语音消息(vms) 版本：2020-09-02
+## 实时音视频(trtc) 版本：2019-07-22
 
-### 第 1 次发布
+### 第 20 次发布
 
-发布时间：2020-12-28 20:12:56
+发布时间：2020-12-30 08:08:21
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-新增接口：
+修改数据结构：
 
-* [SendCodeVoice](https://cloud.tencent.com/document/api/1128/51559)
-* [SendTtsVoice](https://cloud.tencent.com/document/api/1128/51558)
+* [LayoutParams](https://cloud.tencent.com/document/api/647/44055#LayoutParams)
 
-新增数据结构：
+	* 新增成员：PlaceHolderMode
 
-* [SendStatus](https://cloud.tencent.com/document/api/1128/51560#SendStatus)
+* [PresetLayoutConfig](https://cloud.tencent.com/document/api/647/44055#PresetLayoutConfig)
 
-
-
-## 云点播(vod) 版本：2018-07-17
-
-### 第 69 次发布
-
-发布时间：2020-12-29 08:10:42
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [DescribeSubAppIds](https://cloud.tencent.com/document/api/266/36304)
-
-	* 新增入参：Name
+	* 新增成员：MixInputType, PlaceImageId
 
 
 
@@ -6970,6 +6877,25 @@
 
 ## 内容分发网络(cdn) 版本：2018-06-06
 
+### 第 60 次发布
+
+发布时间：2020-12-30 08:02:56
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增数据结构：
+
+* [[PathBasedOriginRule](https://cloud.tencent.com/document/api/228/30987#PathBasedOriginRule)](https://cloud.tencent.com/document/api/228/30987#[PathBasedOriginRule](https://cloud.tencent.com/document/api/228/30987#PathBasedOriginRule))
+
+修改数据结构：
+
+* [Origin](https://cloud.tencent.com/document/api/228/30987#Origin)
+
+	* 新增成员：PathBasedOrigin
+
+
 ### 第 59 次发布
 
 发布时间：2020-12-28 08:02:49
@@ -10192,7 +10118,7 @@
 
 新增数据结构：
 
-* [[ExternalMediaInfo](https://cloud.tencent.com/document/api/1156/40360#ExternalMediaInfo)](https://cloud.tencent.com/document/api/1156/40360#[ExternalMediaInfo](https://cloud.tencent.com/document/api/1156/40360#ExternalMediaInfo))
+* [ExternalMediaInfo](https://cloud.tencent.com/document/api/1156/40360#ExternalMediaInfo)
 
 修改数据结构：
 
@@ -16015,7 +15941,7 @@
 
 新增接口：
 
-* [[ModifyModuleDisableWanIp](https://cloud.tencent.com/document/api/1108/51572)](https://cloud.tencent.com/document/api/#/#)
+* [ModifyModuleDisableWanIp](https://cloud.tencent.com/document/api/1108/51572)
 
 修改接口：
 
@@ -25323,6 +25249,21 @@
 
 
 ## 视频处理(mps) 版本：2019-06-12
+
+### 第 27 次发布
+
+发布时间：2020-12-30 08:05:36
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [TranscodeTaskInput](https://cloud.tencent.com/document/api/862/37615#TranscodeTaskInput)
+
+	* 新增成员：StartTimeOffset, EndTimeOffset
+
 
 ### 第 26 次发布
 
@@ -35646,6 +35587,25 @@
 
 ## 实时音视频(trtc) 版本：2019-07-22
 
+### 第 20 次发布
+
+发布时间：2020-12-30 08:08:21
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [LayoutParams](https://cloud.tencent.com/document/api/647/44055#LayoutParams)
+
+	* 新增成员：PlaceHolderMode
+
+* [PresetLayoutConfig](https://cloud.tencent.com/document/api/647/44055#PresetLayoutConfig)
+
+	* 新增成员：MixInputType, PlaceImageId
+
+
 ### 第 19 次发布
 
 发布时间：2020-11-24 12:27:28
@@ -37189,12 +37149,12 @@
 
 新增接口：
 
-* [[SendCodeVoice](https://cloud.tencent.com/document/api/1128/51559)](https://cloud.tencent.com/document/api/#/#)
-* [[SendTtsVoice](https://cloud.tencent.com/document/api/1128/51558)](https://cloud.tencent.com/document/api/#/#)
+* [SendCodeVoice](https://cloud.tencent.com/document/api/1128/51559)
+* [SendTtsVoice](https://cloud.tencent.com/document/api/1128/51558)
 
 新增数据结构：
 
-* [[SendStatus](https://cloud.tencent.com/document/api/1128/51560#SendStatus)](https://cloud.tencent.com/document/api/1128/51560#[SendStatus](https://cloud.tencent.com/document/api/1128/51560#SendStatus))
+* [SendStatus](https://cloud.tencent.com/document/api/1128/51560#SendStatus)
 
 
 
