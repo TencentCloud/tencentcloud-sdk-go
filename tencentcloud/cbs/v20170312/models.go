@@ -1259,7 +1259,7 @@ type InquiryPriceRenewDisksResponse struct {
 	Response *struct {
 
 		// 描述了续费云盘的价格。
-		DiskPrice *PrepayPrice `json:"DiskPrice,omitempty" name:"DiskPrice"`
+		DiskPrice *Price `json:"DiskPrice,omitempty" name:"DiskPrice"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
