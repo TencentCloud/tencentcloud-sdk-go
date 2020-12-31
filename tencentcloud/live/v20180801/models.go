@@ -4237,6 +4237,11 @@ type DescribeProvinceIspPlayInfoListRequest struct {
 
 	// 地域，可选值：Mainland，Oversea，China，Foreign，Global（默认值）；如果为空，查询总的数据；如果为“Mainland”，查询中国大陆的数据；如果为“Oversea”，则查询中国大陆以外的数据；如果为China，查询中国的数据（包括港澳台）；如果为Foreign，查询国外的数据（不包括港澳台）。
 	MainlandOrOversea *string `json:"MainlandOrOversea,omitempty" name:"MainlandOrOversea"`
+
+	// ip类型：
+	// “Ipv6”：Ipv6数据
+	// 如果为空，查询总的数据；
+	IpType *string `json:"IpType,omitempty" name:"IpType"`
 }
 
 func (r *DescribeProvinceIspPlayInfoListRequest) ToJsonString() string {

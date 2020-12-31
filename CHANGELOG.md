@@ -1,52 +1,29 @@
 # 本版本更新包含以下内容：
 
-## 内容分发网络(cdn) 版本：2018-06-06
+## 云直播(live) 版本：2018-08-01
 
-### 第 60 次发布
+### 第 56 次发布
 
-发布时间：2020-12-30 08:02:56
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增数据结构：
-
-* [PathBasedOriginRule](https://cloud.tencent.com/document/api/228/30987#PathBasedOriginRule)
-
-修改数据结构：
-
-* [Origin](https://cloud.tencent.com/document/api/228/30987#Origin)
-
-	* 新增成员：PathBasedOrigin
-
-
-
-
-## 视频处理(mps) 版本：2019-06-12
-
-### 第 27 次发布
-
-发布时间：2020-12-30 08:05:36
+发布时间：2020-12-31 08:05:01
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-修改数据结构：
+修改接口：
 
-* [TranscodeTaskInput](https://cloud.tencent.com/document/api/862/37615#TranscodeTaskInput)
+* [DescribeProvinceIspPlayInfoList](https://cloud.tencent.com/document/api/267/33988)
 
-	* 新增成员：StartTimeOffset, EndTimeOffset
-
-
+	* 新增入参：IpType
 
 
-## 实时音视频(trtc) 版本：2019-07-22
 
-### 第 20 次发布
 
-发布时间：2020-12-30 08:08:21
+## 云函数(scf) 版本：2018-04-16
+
+### 第 24 次发布
+
+发布时间：2020-12-31 08:06:16
 
 本次发布包含了以下内容：
 
@@ -54,13 +31,9 @@
 
 修改数据结构：
 
-* [LayoutParams](https://cloud.tencent.com/document/api/647/44055#LayoutParams)
+* [Trigger](https://cloud.tencent.com/document/api/583/17244#Trigger)
 
-	* 新增成员：PlaceHolderMode
-
-* [PresetLayoutConfig](https://cloud.tencent.com/document/api/647/44055#PresetLayoutConfig)
-
-	* 新增成员：MixInputType, PlaceImageId
+	* 新增成员：Qualifier
 
 
 
@@ -6887,7 +6860,7 @@
 
 新增数据结构：
 
-* [[PathBasedOriginRule](https://cloud.tencent.com/document/api/228/30987#PathBasedOriginRule)](https://cloud.tencent.com/document/api/228/30987#[PathBasedOriginRule](https://cloud.tencent.com/document/api/228/30987#PathBasedOriginRule))
+* [PathBasedOriginRule](https://cloud.tencent.com/document/api/228/30987#PathBasedOriginRule)
 
 修改数据结构：
 
@@ -22812,6 +22785,21 @@
 
 ## 云直播(live) 版本：2018-08-01
 
+### 第 56 次发布
+
+发布时间：2020-12-31 08:05:01
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeProvinceIspPlayInfoList](https://cloud.tencent.com/document/api/267/33988)
+
+	* 新增入参：IpType
+
+
 ### 第 55 次发布
 
 发布时间：2020-12-23 08:04:51
@@ -28942,6 +28930,21 @@
 
 
 ## 云函数(scf) 版本：2018-04-16
+
+### 第 24 次发布
+
+发布时间：2020-12-31 08:06:16
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [Trigger](https://cloud.tencent.com/document/api/583/17244#Trigger)
+
+	* 新增成员：Qualifier
+
 
 ### 第 23 次发布
 

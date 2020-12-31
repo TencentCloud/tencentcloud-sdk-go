@@ -2714,7 +2714,7 @@ type DescribePeakNetworkOverviewRequest struct {
 	// 开始时间（xxxx-xx-xx）如2019-08-14，默认为一周之前的日期，不应与当前日期间隔超过30天。
 	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
 
-	// 结束时间（xxxx-xx-xx）如2019-08-14，默认为昨天，不应与当前日期间隔超过30天。当开始与结束间隔不超过2天时返回5分钟粒度的数据，否则返回1小时粒度的数据。
+	// 结束时间（xxxx-xx-xx）如2019-08-14，默认为昨天，不应与当前日期间隔超过30天。当开始与结束间隔不超过1天时会返回1分钟粒度的数据，不超过7天时返回5分钟粒度的数据，否则返回1小时粒度的数据。
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 
 	// 过滤条件。
@@ -6892,27 +6892,21 @@ type VpcInfo struct {
 
 	// 辅助CIDR
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AssistantCidrSet []*AssistantCidr `json:"AssistantCidrSet,omitempty" name:"AssistantCidrSet" list`
 
 	// 地域
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Region *string `json:"Region,omitempty" name:"Region"`
 
 	// 描述
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Description *string `json:"Description,omitempty" name:"Description"`
 
 	// 地域中文名
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RegionName *string `json:"RegionName,omitempty" name:"RegionName"`
 
 	// 包含子网数量
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SubnetCount *uint64 `json:"SubnetCount,omitempty" name:"SubnetCount"`
 
 	// 包含实例数量
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceCount *uint64 `json:"InstanceCount,omitempty" name:"InstanceCount"`
 }
 

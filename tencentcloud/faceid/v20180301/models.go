@@ -734,12 +734,12 @@ type GetDetectInfoEnhancedRequest struct {
 	// 用于细分客户使用场景，由腾讯侧在线下对接时分配。
 	RuleId *string `json:"RuleId,omitempty" name:"RuleId"`
 
-	// 指定拉取的结果信息，取值（0：全部；1：文本类；2：身份证信息；3：视频最佳截图信息；4：视频信息）。
-	// 如 134表示拉取文本类、视频最佳截图信息、视频信息。
+	// 指定拉取的结果信息，取值（0：全部；1：文本类；2：身份证信息；3：视频最佳截图信息）。
+	// 如 13表示拉取文本类、视频最佳截图信息。
 	// 默认值：0
 	InfoType *string `json:"InfoType,omitempty" name:"InfoType"`
 
-	// 从活体视频中截取一定张数的最佳帧。默认为0，最大为10，超出10的最多只给10张。（InfoType需要包含3）
+	// 从活体视频中截取一定张数的最佳帧（仅部分服务支持，若需使用请与慧眼小助手沟通）。默认为0，最大为10，超出10的最多只给10张。（InfoType需要包含3）
 	BestFramesCount *uint64 `json:"BestFramesCount,omitempty" name:"BestFramesCount"`
 
 	// 是否对身份证照片进行裁边。默认为false。（InfoType需要包含2）

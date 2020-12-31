@@ -2231,6 +2231,9 @@ type Trigger struct {
 
 	// 触发器类型，双向表示两侧控制台均可操作，单向表示SCF控制台单向创建
 	TriggerAttribute *string `json:"TriggerAttribute,omitempty" name:"TriggerAttribute"`
+
+	// 触发器绑定的别名或版本
+	Qualifier *string `json:"Qualifier,omitempty" name:"Qualifier"`
 }
 
 type TriggerInfo struct {

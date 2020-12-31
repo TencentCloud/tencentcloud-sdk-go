@@ -149,6 +149,6 @@ func (r *QueryAntiFraudResponse) FromJsonString(s string) error {
 
 type RiskDetail struct {
 
-	// 风险码
+	// 风险码 参数详细定义请加微信：TYXGJ-01
 	RiskCode *uint64 `json:"RiskCode,omitempty" name:"RiskCode"`
 }
