@@ -668,6 +668,31 @@ func (c *Client) DescribeExtraPkgBillingInfo(request *DescribeExtraPkgBillingInf
     return
 }
 
+func NewDescribePostpayFreeQuotasRequest() (request *DescribePostpayFreeQuotasRequest) {
+    request = &DescribePostpayFreeQuotasRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tcb", APIVersion, "DescribePostpayFreeQuotas")
+    return
+}
+
+func NewDescribePostpayFreeQuotasResponse() (response *DescribePostpayFreeQuotasResponse) {
+    response = &DescribePostpayFreeQuotasResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询后付费资源免费量
+func (c *Client) DescribePostpayFreeQuotas(request *DescribePostpayFreeQuotasRequest) (response *DescribePostpayFreeQuotasResponse, err error) {
+    if request == nil {
+        request = NewDescribePostpayFreeQuotasRequest()
+    }
+    response = NewDescribePostpayFreeQuotasResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribePostpayPackageFreeQuotasRequest() (request *DescribePostpayPackageFreeQuotasRequest) {
     request = &DescribePostpayPackageFreeQuotasRequest{
         BaseRequest: &tchttp.BaseRequest{},

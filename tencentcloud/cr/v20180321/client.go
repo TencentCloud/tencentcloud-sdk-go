@@ -319,6 +319,31 @@ func (c *Client) DownloadReport(request *DownloadReportRequest) (response *Downl
     return
 }
 
+func NewExportBotDataRequest() (request *ExportBotDataRequest) {
+    request = &ExportBotDataRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cr", APIVersion, "ExportBotData")
+    return
+}
+
+func NewExportBotDataResponse() (response *ExportBotDataResponse) {
+    response = &ExportBotDataResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 导出机器人数据
+func (c *Client) ExportBotData(request *ExportBotDataRequest) (response *ExportBotDataResponse, err error) {
+    if request == nil {
+        request = NewExportBotDataRequest()
+    }
+    response = NewExportBotDataResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewQueryInstantDataRequest() (request *QueryInstantDataRequest) {
     request = &QueryInstantDataRequest{
         BaseRequest: &tchttp.BaseRequest{},

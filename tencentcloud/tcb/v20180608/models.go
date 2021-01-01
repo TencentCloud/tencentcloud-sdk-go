@@ -1671,6 +1671,44 @@ func (r *DescribeExtraPkgBillingInfoResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribePostpayFreeQuotasRequest struct {
+	*tchttp.BaseRequest
+
+	// 环境ID
+	EnvId *string `json:"EnvId,omitempty" name:"EnvId"`
+}
+
+func (r *DescribePostpayFreeQuotasRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribePostpayFreeQuotasRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribePostpayFreeQuotasResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 免费量资源信息列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		FreequotaInfoList []*FreequotaInfo `json:"FreequotaInfoList,omitempty" name:"FreequotaInfoList" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribePostpayFreeQuotasResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribePostpayFreeQuotasResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribePostpayPackageFreeQuotasRequest struct {
 	*tchttp.BaseRequest
 
@@ -2092,6 +2130,37 @@ func (r *EstablishCloudBaseRunServerResponse) ToJsonString() string {
 
 func (r *EstablishCloudBaseRunServerResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
+}
+
+type FreequotaInfo struct {
+
+	// 资源类型
+	// <li>COS</li>
+	// <li>CDN</li>
+	// <li>FLEXDB</li>
+	// <li>SCF</li>
+	ResourceType *string `json:"ResourceType,omitempty" name:"ResourceType"`
+
+	// 资源指标名称
+	ResourceMetric *string `json:"ResourceMetric,omitempty" name:"ResourceMetric"`
+
+	// 资源指标免费量
+	FreeQuota *int64 `json:"FreeQuota,omitempty" name:"FreeQuota"`
+
+	// 指标单位
+	MetricUnit *string `json:"MetricUnit,omitempty" name:"MetricUnit"`
+
+	// 免费量抵扣周期
+	// <li>sum-month:以月为单位抵扣</li>
+	// <li>sum-day:以天为单位抵扣</li>
+	// <li>totalize:总容量抵扣</li>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DeductType *string `json:"DeductType,omitempty" name:"DeductType"`
+
+	// 免费量类型
+	// <li>basic:通用量抵扣</li>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FreeQuotaType *string `json:"FreeQuotaType,omitempty" name:"FreeQuotaType"`
 }
 
 type FunctionInfo struct {

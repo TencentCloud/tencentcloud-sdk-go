@@ -1,40 +1,42 @@
 # 本版本更新包含以下内容：
 
-## 云直播(live) 版本：2018-08-01
+## 金融联络机器人(cr) 版本：2018-03-21
 
-### 第 56 次发布
+### 第 13 次发布
 
-发布时间：2020-12-31 08:05:01
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [DescribeProvinceIspPlayInfoList](https://cloud.tencent.com/document/api/267/33988)
-
-	* 新增入参：IpType
-
-
-
-
-## 云函数(scf) 版本：2018-04-16
-
-### 第 24 次发布
-
-发布时间：2020-12-31 08:06:16
+发布时间：2021-01-01 08:03:08
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-修改数据结构：
+新增接口：
 
-* [Trigger](https://cloud.tencent.com/document/api/583/17244#Trigger)
+* [ExportBotData](https://cloud.tencent.com/document/api/656/51671)
 
-	* 新增成员：Qualifier
+新增数据结构：
 
+* [BotFileData](https://cloud.tencent.com/document/api/656/30994#BotFileData)
+
+
+
+## 云开发 CloudBase(tcb) 版本：2018-06-08
+
+### 第 30 次发布
+
+发布时间：2021-01-01 08:06:24
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribePostpayFreeQuotas](https://cloud.tencent.com/document/api/876/51672)
+
+新增数据结构：
+
+* [FreequotaInfo](https://cloud.tencent.com/document/api/876/34822#FreequotaInfo)
 
 
 
@@ -11758,6 +11760,22 @@
 
 
 ## 金融联络机器人(cr) 版本：2018-03-21
+
+### 第 13 次发布
+
+发布时间：2021-01-01 08:03:08
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[ExportBotData](https://cloud.tencent.com/document/api/656/51671)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[BotFileData](https://cloud.tencent.com/document/api/656/30994#BotFileData)](https://cloud.tencent.com/document/api/656/30994#[BotFileData](https://cloud.tencent.com/document/api/656/30994#BotFileData))
 
 ### 第 12 次发布
 
@@ -31946,6 +31964,22 @@
 
 
 ## 云开发 CloudBase(tcb) 版本：2018-06-08
+
+### 第 30 次发布
+
+发布时间：2021-01-01 08:06:24
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribePostpayFreeQuotas](https://cloud.tencent.com/document/api/876/51672)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[FreequotaInfo](https://cloud.tencent.com/document/api/876/34822#FreequotaInfo)](https://cloud.tencent.com/document/api/876/34822#[FreequotaInfo](https://cloud.tencent.com/document/api/876/34822#FreequotaInfo))
 
 ### 第 29 次发布
 

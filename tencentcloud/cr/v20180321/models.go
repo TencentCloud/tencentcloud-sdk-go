@@ -118,6 +118,15 @@ func (r *ApplyCreditAuditResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type BotFileData struct {
+
+	// 文件类型 A 拨打结果 T 记录详情
+	FileType *string `json:"FileType,omitempty" name:"FileType"`
+
+	// 文件地址
+	CosUrl *string `json:"CosUrl,omitempty" name:"CosUrl"`
+}
+
 type BotFlow struct {
 
 	// 对话流ID
@@ -684,6 +693,55 @@ func (r *DownloadReportResponse) ToJsonString() string {
 }
 
 func (r *DownloadReportResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ExportBotDataRequest struct {
+	*tchttp.BaseRequest
+
+	// 模块名。默认值（固定）：AiApi
+	Module *string `json:"Module,omitempty" name:"Module"`
+
+	// 操作名。默认值（固定）：ExportBotData
+	Operation *string `json:"Operation,omitempty" name:"Operation"`
+
+	// 业务日期。YYYY-MM-DD
+	BizDate *string `json:"BizDate,omitempty" name:"BizDate"`
+
+	// 任务ID，二者必填一个
+	BotId *string `json:"BotId,omitempty" name:"BotId"`
+
+	// 任务名称，二者必填一个
+	BotName *string `json:"BotName,omitempty" name:"BotName"`
+}
+
+func (r *ExportBotDataRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ExportBotDataRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ExportBotDataResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 导出文件列表
+		Data []*BotFileData `json:"Data,omitempty" name:"Data" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ExportBotDataResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ExportBotDataResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
