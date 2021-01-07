@@ -701,6 +701,44 @@ type FileInfo struct {
 	AudioInfoResult []*AudioInfoResultItem `json:"AudioInfoResult,omitempty" name:"AudioInfoResult" list`
 }
 
+type FrameTagItem struct {
+
+	// 标签起始时间戳PTS(ms)
+	StartPts *uint64 `json:"StartPts,omitempty" name:"StartPts"`
+
+	// 语句结束时间戳PTS(ms)
+	EndPts *uint64 `json:"EndPts,omitempty" name:"EndPts"`
+
+	// 字符串形式的起始结束时间
+	Period *string `json:"Period,omitempty" name:"Period"`
+
+	// 标签数组
+	TagItems []*TagItem `json:"TagItems,omitempty" name:"TagItems" list`
+}
+
+type FrameTagRec struct {
+
+	// 标签类型：
+	// "Common": 通用类型
+	// "Game":游戏类型
+	TagType *string `json:"TagType,omitempty" name:"TagType"`
+
+	// 游戏具体类型:
+	// "HonorOfKings_AnchorViews":王者荣耀主播视角
+	// "HonorOfKings_GameViews":王者荣耀比赛视角
+	// "LOL_AnchorViews":英雄联盟主播视角
+	// "LOL_GameViews":英雄联盟比赛视角
+	// "PUBG_AnchorViews":和平精英主播视角
+	// "PUBG_GameViews":和平精英比赛视角
+	GameExtendType *string `json:"GameExtendType,omitempty" name:"GameExtendType"`
+}
+
+type FrameTagResult struct {
+
+	// 帧标签结果数组
+	FrameTagItems []*FrameTagItem `json:"FrameTagItems,omitempty" name:"FrameTagItems" list`
+}
+
 type HighlightsEditingInfo struct {
 
 	// 是否开启智能集锦。0为关闭，1为开启。其他非0非1值默认为0。
@@ -879,6 +917,7 @@ type MediaProcessInfo struct {
 	// MediaEditing：媒体编辑（待上线）；
 	// MediaCutting：媒体剪切；
 	// MediaJoining：媒体拼接。
+	// MediaRecognition: 媒体识别。
 	Type *string `json:"Type,omitempty" name:"Type"`
 
 	// 视频剪切任务参数，Type=MediaCutting时必选。
@@ -886,6 +925,9 @@ type MediaProcessInfo struct {
 
 	// 视频拼接任务参数，Type=MediaJoining时必选。
 	MediaJoiningInfo *MediaJoiningInfo `json:"MediaJoiningInfo,omitempty" name:"MediaJoiningInfo"`
+
+	// 媒体识别任务参数，Type=MediaRecognition时必选
+	MediaRecognitionInfo *MediaRecognitionInfo `json:"MediaRecognitionInfo,omitempty" name:"MediaRecognitionInfo"`
 }
 
 type MediaProcessTaskResult struct {
@@ -898,6 +940,7 @@ type MediaProcessTaskResult struct {
 	// MediaEditing：视频编辑（待上线）；
 	// MediaCutting：视频剪切；
 	// MediaJoining：视频拼接。
+	// MediaRecognition：媒体识别；
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Type *string `json:"Type,omitempty" name:"Type"`
 
@@ -928,6 +971,10 @@ type MediaProcessTaskResult struct {
 	// 拼接任务处理结果，当Type=MediaJoining时才有效。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MediaJoiningTaskResult *MediaJoiningTaskResult `json:"MediaJoiningTaskResult,omitempty" name:"MediaJoiningTaskResult"`
+
+	// 媒体识别任务处理结果，当Type=MediaRecognition时才有效。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MediaRecognitionTaskResult *MediaRecognitionTaskResult `json:"MediaRecognitionTaskResult,omitempty" name:"MediaRecognitionTaskResult"`
 }
 
 type MediaQualityRestorationTaskResult struct {
@@ -937,6 +984,26 @@ type MediaQualityRestorationTaskResult struct {
 
 	// 画质重生处理后文件的详细信息。
 	SubTaskResult []*SubTaskResultItem `json:"SubTaskResult,omitempty" name:"SubTaskResult" list`
+}
+
+type MediaRecognitionInfo struct {
+
+	// 帧标签识别
+	FrameTagRec *FrameTagRec `json:"FrameTagRec,omitempty" name:"FrameTagRec"`
+
+	// 语音字幕识别
+	SubtitleRec *SubtitleRec `json:"SubtitleRec,omitempty" name:"SubtitleRec"`
+}
+
+type MediaRecognitionTaskResult struct {
+
+	// 帧标签识别结果
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FrameTagResults *FrameTagResult `json:"FrameTagResults,omitempty" name:"FrameTagResults"`
+
+	// 语音字幕识别结果
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SubtitleResults *SubtitleResult `json:"SubtitleResults,omitempty" name:"SubtitleResults"`
 }
 
 type MediaSourceInfo struct {
@@ -958,8 +1025,8 @@ type MediaTargetInfo struct {
 
 	// 目标文件名，不能带特殊字符（如/等），无需后缀名，最长200字符。
 	// 
-	// 注1：部分子服务支持站位符，形式为： {parameter}
-	// 预设parameter：
+	// 注1：部分子服务支持占位符，形式为： {parameter}
+	// 预设parameter有：
 	// index：序号；
 	FileName *string `json:"FileName,omitempty" name:"FileName"`
 
@@ -1420,6 +1487,58 @@ type SubTaskTranscodeInfo struct {
 	MuxInfo *MuxInfo `json:"MuxInfo,omitempty" name:"MuxInfo"`
 }
 
+type SubtitleItem struct {
+
+	// 语音识别结果
+	Id *string `json:"Id,omitempty" name:"Id"`
+
+	// 中文翻译结果
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Zh *string `json:"Zh,omitempty" name:"Zh"`
+
+	// 英文翻译结果
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	En *string `json:"En,omitempty" name:"En"`
+
+	// 语句起始时间戳PTS(ms)
+	StartPts *uint64 `json:"StartPts,omitempty" name:"StartPts"`
+
+	// 语句结束时间戳PTS(ms)
+	EndPts *uint64 `json:"EndPts,omitempty" name:"EndPts"`
+
+	// 字符串形式的起始结束时间
+	Period *string `json:"Period,omitempty" name:"Period"`
+
+	// 结果的置信度（百分制）
+	Confidence *int64 `json:"Confidence,omitempty" name:"Confidence"`
+
+	// 当前语句是否结束
+	EndFlag *bool `json:"EndFlag,omitempty" name:"EndFlag"`
+
+	// 语句分割时间戳
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PuncEndTs *string `json:"PuncEndTs,omitempty" name:"PuncEndTs"`
+}
+
+type SubtitleRec struct {
+
+	// 语音识别：
+	// zh：中文
+	// en：英文
+	AsrDst *string `json:"AsrDst,omitempty" name:"AsrDst"`
+
+	// 翻译识别：
+	// zh：中文
+	// en：英文
+	TransDst *string `json:"TransDst,omitempty" name:"TransDst"`
+}
+
+type SubtitleResult struct {
+
+	// 语音字幕数组
+	SubtitleItems []*SubtitleItem `json:"SubtitleItems,omitempty" name:"SubtitleItems" list`
+}
+
 type TagEditingInfo struct {
 
 	// 是否开启视频标签识别。0为关闭，1为开启。其他非0非1值默认为0。
@@ -1427,6 +1546,23 @@ type TagEditingInfo struct {
 
 	// 额外定制化服务参数。参数为序列化的Json字符串，例如：{"k1":"v1"}。
 	CustomInfo *string `json:"CustomInfo,omitempty" name:"CustomInfo"`
+}
+
+type TagItem struct {
+
+	// 标签内容
+	Id *string `json:"Id,omitempty" name:"Id"`
+
+	// 结果的置信度（百分制）
+	Confidence *int64 `json:"Confidence,omitempty" name:"Confidence"`
+
+	// 分级数组
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Categorys []*string `json:"Categorys,omitempty" name:"Categorys" list`
+
+	// 标签备注
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Ext *string `json:"Ext,omitempty" name:"Ext"`
 }
 
 type TagTaskResult struct {

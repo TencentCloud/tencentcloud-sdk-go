@@ -2258,6 +2258,49 @@ func (r *ListUsersResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type ListWeChatWorkSubAccountsRequest struct {
+	*tchttp.BaseRequest
+
+	// 偏移量
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 限制数目
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+func (r *ListWeChatWorkSubAccountsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ListWeChatWorkSubAccountsRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ListWeChatWorkSubAccountsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 企业微信子用户列表。
+		Data []*WeChatWorkSubAccount `json:"Data,omitempty" name:"Data" list`
+
+		// 总数目。
+		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ListWeChatWorkSubAccountsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ListWeChatWorkSubAccountsResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type LoginActionFlag struct {
 
 	// 手机
@@ -2650,6 +2693,10 @@ type SubAccountInfo struct {
 
 	// 邮箱
 	Email *string `json:"Email,omitempty" name:"Email"`
+
+	// 创建时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
 }
 
 type UpdateAssumeRolePolicyRequest struct {
@@ -2955,4 +3002,39 @@ func (r *UpdateUserResponse) ToJsonString() string {
 
 func (r *UpdateUserResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
+}
+
+type WeChatWorkSubAccount struct {
+
+	// 子用户用户 ID
+	Uin *uint64 `json:"Uin,omitempty" name:"Uin"`
+
+	// 子用户用户名
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 子用户 UID
+	Uid *uint64 `json:"Uid,omitempty" name:"Uid"`
+
+	// 备注
+	Remark *string `json:"Remark,omitempty" name:"Remark"`
+
+	// 子用户能否登录控制台
+	ConsoleLogin *uint64 `json:"ConsoleLogin,omitempty" name:"ConsoleLogin"`
+
+	// 手机号
+	PhoneNum *string `json:"PhoneNum,omitempty" name:"PhoneNum"`
+
+	// 区号
+	CountryCode *string `json:"CountryCode,omitempty" name:"CountryCode"`
+
+	// 邮箱
+	Email *string `json:"Email,omitempty" name:"Email"`
+
+	// 企业微信UserId
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WeChatWorkUserId *string `json:"WeChatWorkUserId,omitempty" name:"WeChatWorkUserId"`
+
+	// 创建时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
 }

@@ -1243,6 +1243,31 @@ func (c *Client) ListUsersForGroup(request *ListUsersForGroupRequest) (response 
     return
 }
 
+func NewListWeChatWorkSubAccountsRequest() (request *ListWeChatWorkSubAccountsRequest) {
+    request = &ListWeChatWorkSubAccountsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cam", APIVersion, "ListWeChatWorkSubAccounts")
+    return
+}
+
+func NewListWeChatWorkSubAccountsResponse() (response *ListWeChatWorkSubAccountsResponse) {
+    response = &ListWeChatWorkSubAccountsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 获取企业微信子用户列表
+func (c *Client) ListWeChatWorkSubAccounts(request *ListWeChatWorkSubAccountsRequest) (response *ListWeChatWorkSubAccountsResponse, err error) {
+    if request == nil {
+        request = NewListWeChatWorkSubAccountsRequest()
+    }
+    response = NewListWeChatWorkSubAccountsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewPutRolePermissionsBoundaryRequest() (request *PutRolePermissionsBoundaryRequest) {
     request = &PutRolePermissionsBoundaryRequest{
         BaseRequest: &tchttp.BaseRequest{},

@@ -101,7 +101,7 @@ type CreateAcRulesRequest struct {
 	// 创建规则数据
 	Data []*RuleInfoData `json:"Data,omitempty" name:"Data" list`
 
-	// 0：添加，1：插入
+	// 0：添加（默认），1：插入
 	Type *uint64 `json:"Type,omitempty" name:"Type"`
 
 	// 边id
@@ -206,13 +206,13 @@ func (r *CreateSecurityGroupApiRulesResponse) FromJsonString(s string) error {
 type DeleteAcRuleRequest struct {
 	*tchttp.BaseRequest
 
-	// id值
+	// 删除规则对应的id值 669872
 	Id *uint64 `json:"Id,omitempty" name:"Id"`
 
-	// 出站还是入站
+	// 方向，0：出站，1：入站
 	Direction *uint64 `json:"Direction,omitempty" name:"Direction"`
 
-	// EdgeId值
+	// EdgeId值两个vpc间的边id
 	EdgeId *string `json:"EdgeId,omitempty" name:"EdgeId"`
 
 	// NAT地域
@@ -232,7 +232,7 @@ type DeleteAcRuleResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 状态值
+		// 状态值 0: 删除成功, !0: 删除失败
 		Status *int64 `json:"Status,omitempty" name:"Status"`
 
 		// 返回多余的信息
@@ -256,13 +256,13 @@ func (r *DeleteAcRuleResponse) FromJsonString(s string) error {
 type DeleteAllAccessControlRuleRequest struct {
 	*tchttp.BaseRequest
 
-	// 方向，0：出站，1：入站
+	// 方向，0：出站，1：入站  默认值是 0
 	Direction *uint64 `json:"Direction,omitempty" name:"Direction"`
 
-	// VPC间防火墙开关ID
+	// VPC间防火墙开关ID  全部删除 EdgeId和Area只填写一个，不填写则不删除vpc间防火墙开关 ，默认值为‘’
 	EdgeId *string `json:"EdgeId,omitempty" name:"EdgeId"`
 
-	// nat地域
+	// nat地域 全部删除 EdgeId和Area只填写一个，不填写则不删除nat防火墙开关 默认值为‘’
 	Area *string `json:"Area,omitempty" name:"Area"`
 }
 
@@ -279,10 +279,10 @@ type DeleteAllAccessControlRuleResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 状态值
+		// 状态值 0: 修改成功, !0: 修改失败
 		Status *int64 `json:"Status,omitempty" name:"Status"`
 
-		// 返回多余信息
+		// 删除了几条访问控制规则
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		Info *int64 `json:"Info,omitempty" name:"Info"`
 
@@ -534,10 +534,25 @@ func (r *DescribeAssociatedInstanceListResponse) FromJsonString(s string) error 
 type DescribeNatRuleOverviewRequest struct {
 	*tchttp.BaseRequest
 
-	// 方向，0：出站，1：入站
+	// 方向，0：出站，1：入站 默认值：0
 	Direction *uint64 `json:"Direction,omitempty" name:"Direction"`
 
-	// NAT地域
+	// NAT地域  这个是必填项，填入相关的英文，'ap-beijing-fsi': '北京金融',
+	//         'ap-beijing': '北京',
+	//         'ap-changsha-ec': '长沙EC',
+	//         'ap-chengdu': '成都',
+	//         'ap-chongqing': '重庆',
+	//         'ap-fuzhou-ec': '福州EC',
+	//         'ap-guangzhou-open': '广州Open',
+	//         'ap-guangzhou': '广州',
+	//         'ap-hangzhou-ec': '杭州EC',
+	//         'ap-jinan-ec': '济南EC',
+	//         'ap-nanjing': '南京',
+	//         'ap-shanghai-fsi': '上海金融',
+	//         'ap-shanghai': '上海',
+	//         'ap-shenzhen-fsi': '深圳金融',
+	//         'ap-shenzhen': '深圳',
+	//         'ap-wuhan-ec': '武汉EC'
 	Area *string `json:"Area,omitempty" name:"Area"`
 }
 
@@ -569,7 +584,7 @@ type DescribeNatRuleOverviewResponse struct {
 		// 访问控制规则总数
 		TotalNum *int64 `json:"TotalNum,omitempty" name:"TotalNum"`
 
-		// 访问规则剩余条数
+		// 访问控制规则剩余配额
 		RemainNum *int64 `json:"RemainNum,omitempty" name:"RemainNum"`
 
 		// 阻断规则条数
@@ -652,7 +667,7 @@ type DescribeSecurityGroupListRequest struct {
 	// 0: 出站规则，1：入站规则
 	Direction *uint64 `json:"Direction,omitempty" name:"Direction"`
 
-	// 腾讯云地域的英文简写
+	// 地域代码（例: ap-guangzhou),支持腾讯云全部地域
 	Area *string `json:"Area,omitempty" name:"Area"`
 
 	// 搜索值
@@ -684,7 +699,7 @@ type DescribeSecurityGroupListResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 总条数
+		// 列表当前规则总条数
 		Total *uint64 `json:"Total,omitempty" name:"Total"`
 
 		// 安全组规则列表数据
@@ -714,28 +729,28 @@ func (r *DescribeSecurityGroupListResponse) FromJsonString(s string) error {
 type DescribeSwitchListsRequest struct {
 	*tchttp.BaseRequest
 
-	// 防火墙状态
+	// 防火墙状态  0: 关闭，1：开启
 	Status *int64 `json:"Status,omitempty" name:"Status"`
 
-	// 资产类型
+	// 资产类型 CVM/NAT/VPN/CLB/其它
 	Type *string `json:"Type,omitempty" name:"Type"`
 
-	// 地域
+	// 地域 上海/重庆/广州，等等
 	Area *string `json:"Area,omitempty" name:"Area"`
 
-	// 搜索值
+	// 搜索值  例子："{"common":"106.54.189.45"}"
 	SearchValue *string `json:"SearchValue,omitempty" name:"SearchValue"`
 
-	// 条数
+	// 条数  默认值:10
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 
-	// 偏移值
+	// 偏移值 默认值: 0
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
 
 	// 排序，desc：降序，asc：升序
 	Order *string `json:"Order,omitempty" name:"Order"`
 
-	// 排序字段
+	// 排序字段 PortTimes(风险端口数)
 	By *string `json:"By,omitempty" name:"By"`
 }
 
@@ -803,7 +818,7 @@ type DescribeSyncAssetStatusResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 0：同步成功，1：资产更新中，2：后台同步调用失败
+		// 1-更新中 2-更新完成 3、4-更新失败
 		Status *int64 `json:"Status,omitempty" name:"Status"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -823,16 +838,16 @@ func (r *DescribeSyncAssetStatusResponse) FromJsonString(s string) error {
 type DescribeTableStatusRequest struct {
 	*tchttp.BaseRequest
 
-	// EdgeId值
+	// EdgeId值两个vpc间的边id vpc填Edgeid，不要填Area；
 	EdgeId *string `json:"EdgeId,omitempty" name:"EdgeId"`
 
-	// 状态值，0：检查表的状态
+	// 状态值，0：检查表的状态 确实只有一个默认值
 	Status *uint64 `json:"Status,omitempty" name:"Status"`
 
-	// Nat所在地域
+	// Nat所在地域 NAT填Area，不要填Edgeid；
 	Area *string `json:"Area,omitempty" name:"Area"`
 
-	// 方向，0：出站，1：入站
+	// 方向，0：出站，1：入站 默认值为 0
 	Direction *uint64 `json:"Direction,omitempty" name:"Direction"`
 }
 
@@ -870,7 +885,7 @@ func (r *DescribeTableStatusResponse) FromJsonString(s string) error {
 type DescribeVpcRuleOverviewRequest struct {
 	*tchttp.BaseRequest
 
-	// 边id
+	// EdgeId值两个vpc间的边id  不是必填项可以为空，就是所有vpc间的访问控制规则
 	EdgeId *string `json:"EdgeId,omitempty" name:"EdgeId"`
 }
 
@@ -938,7 +953,7 @@ type ModifyAcRuleResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 状态值，0:操作成功
+		// 状态值，0:操作成功，非0：操作失败
 		Status *int64 `json:"Status,omitempty" name:"Status"`
 
 		// 返回多余的信息
@@ -1012,7 +1027,7 @@ type ModifyAllSwitchStatusRequest struct {
 	// 状态，0：关闭，1：开启
 	Status *int64 `json:"Status,omitempty" name:"Status"`
 
-	// 0: 边界防火墙开关，1：vpc防火墙开关
+	// 0: 互联网边界防火墙开关，1：vpc防火墙开关
 	Type *uint64 `json:"Type,omitempty" name:"Type"`
 
 	// 选中的防火墙开关Id
@@ -1038,7 +1053,7 @@ type ModifyAllSwitchStatusResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 开启或者关闭成功与否状态值
+		// 修改成功与否的状态值 0：修改成功，非 0：修改失败
 		Status *uint64 `json:"Status,omitempty" name:"Status"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -1064,7 +1079,7 @@ type ModifyItemSwitchStatusRequest struct {
 	// 状态值，0: 关闭 ,1:开启
 	Status *int64 `json:"Status,omitempty" name:"Status"`
 
-	// 0: 边界防火墙开关，1：vpc防火墙开关
+	// 0: 互联网边界边界防火墙开关，1：vpc防火墙开关
 	Type *uint64 `json:"Type,omitempty" name:"Type"`
 }
 
@@ -1081,7 +1096,7 @@ type ModifyItemSwitchStatusResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 修改成功与否状态值
+		// 修改成功与否状态值 0：修改成功，非 0：修改失败
 		Status *int64 `json:"Status,omitempty" name:"Status"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -1101,7 +1116,7 @@ func (r *ModifyItemSwitchStatusResponse) FromJsonString(s string) error {
 type ModifySecurityGroupAllRuleStatusRequest struct {
 	*tchttp.BaseRequest
 
-	// 状态，0：全部停用，1：全部启用
+	// 列表规则状态，0：全部停用，1：全部启用
 	Status *uint64 `json:"Status,omitempty" name:"Status"`
 
 	// 方向，0：出站，1：入站
@@ -1157,7 +1172,7 @@ type ModifySequenceRulesRequest struct {
 	// NAT地域
 	Area *string `json:"Area,omitempty" name:"Area"`
 
-	// 0：出向，1：入向
+	// 方向，0：出向，1：入向
 	Direction *uint64 `json:"Direction,omitempty" name:"Direction"`
 }
 
@@ -1174,7 +1189,7 @@ type ModifySequenceRulesResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 0: 修改成功, 其他: 修改失败
+		// 0: 修改成功, 非0: 修改失败
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		Status *int64 `json:"Status,omitempty" name:"Status"`
 
@@ -1195,7 +1210,7 @@ func (r *ModifySequenceRulesResponse) FromJsonString(s string) error {
 type ModifyTableStatusRequest struct {
 	*tchttp.BaseRequest
 
-	// EdgeId值
+	// EdgeId值两个vpc间的边id
 	EdgeId *string `json:"EdgeId,omitempty" name:"EdgeId"`
 
 	// 状态值，1：锁表，2：解锁表

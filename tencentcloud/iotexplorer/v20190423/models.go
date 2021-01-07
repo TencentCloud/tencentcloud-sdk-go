@@ -300,6 +300,9 @@ type CreateProjectRequest struct {
 
 	// 项目描述
 	ProjectDesc *string `json:"ProjectDesc,omitempty" name:"ProjectDesc"`
+
+	// 实例ID，不带实例ID，默认为公共实例
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 }
 
 func (r *CreateProjectRequest) ToJsonString() string {
@@ -1200,6 +1203,9 @@ type GetProjectListRequest struct {
 
 	// 个数限制
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 }
 
 func (r *GetProjectListRequest) ToJsonString() string {

@@ -341,7 +341,7 @@ type CreateInstancesResponse struct {
 		// 交易的ID
 		DealId *string `json:"DealId,omitempty" name:"DealId"`
 
-		// 实例ID(该字段灰度中，部分地域不可见)
+		// 实例ID
 		InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds" list`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。

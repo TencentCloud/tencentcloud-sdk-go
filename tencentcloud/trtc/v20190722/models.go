@@ -924,7 +924,7 @@ type OutputParams struct {
 	// 取值范围[0,1]， 填0：直播流为音视频(默认); 填1：直播流为纯音频
 	PureAudioStream *uint64 `json:"PureAudioStream,omitempty" name:"PureAudioStream"`
 
-	// 自定义录制文件名
+	// 自定义录制文件名。请先在实时音视频控制台开通录制功能，https://cloud.tencent.com/document/product/647/50768
 	RecordId *string `json:"RecordId,omitempty" name:"RecordId"`
 
 	// 取值范围[0,1]，填0无实际含义; 填1：指定录制文件格式为mp3
@@ -960,7 +960,7 @@ type PresetLayoutConfig struct {
 	// 该当前位置用户混入的流类型：0为混入音视频，1为只混入视频，2为只混入音频。默认为0，建议配合指定用户ID使用。
 	MixInputType *uint64 `json:"MixInputType,omitempty" name:"MixInputType"`
 
-	// 占位图ID。实时音视频控制台上传并生成，https://cloud.tencent.com/document/product/647/50769
+	// 占位图ID。启用占位图功能时，在当前位置的用户没有上行视频时显示占位图。占位图在实时音视频控制台上传并生成，https://cloud.tencent.com/document/product/647/50769
 	PlaceImageId *uint64 `json:"PlaceImageId,omitempty" name:"PlaceImageId"`
 }
 

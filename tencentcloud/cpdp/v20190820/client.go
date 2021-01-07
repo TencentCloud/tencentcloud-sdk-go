@@ -1101,6 +1101,31 @@ func (c *Client) QueryBankWithdrawCashDetails(request *QueryBankWithdrawCashDeta
     return
 }
 
+func NewQueryBillDownloadURLRequest() (request *QueryBillDownloadURLRequest) {
+    request = &QueryBillDownloadURLRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cpdp", APIVersion, "QueryBillDownloadURL")
+    return
+}
+
+func NewQueryBillDownloadURLResponse() (response *QueryBillDownloadURLResponse) {
+    response = &QueryBillDownloadURLResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 获取单笔代发转账对账单下载URL
+func (c *Client) QueryBillDownloadURL(request *QueryBillDownloadURLRequest) (response *QueryBillDownloadURLResponse, err error) {
+    if request == nil {
+        request = NewQueryBillDownloadURLRequest()
+    }
+    response = NewQueryBillDownloadURLResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewQueryCommonTransferRechargeRequest() (request *QueryCommonTransferRechargeRequest) {
     request = &QueryCommonTransferRechargeRequest{
         BaseRequest: &tchttp.BaseRequest{},

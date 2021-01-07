@@ -249,6 +249,9 @@ type CreateInstanceRequest struct {
 
 	// 云标签描述
 	TagSpecification *TagSpecification `json:"TagSpecification,omitempty" name:"TagSpecification"`
+
+	// 实例计费类型，0表示按量计费，1表示预付费，当前版本只支持后付费，默认为按量计费
+	RegistryChargeType *int64 `json:"RegistryChargeType,omitempty" name:"RegistryChargeType"`
 }
 
 func (r *CreateInstanceRequest) ToJsonString() string {
@@ -2725,6 +2728,27 @@ type Registry struct {
 	// 实例云标签
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TagSpecification *TagSpecification `json:"TagSpecification,omitempty" name:"TagSpecification"`
+
+	// 实例过期时间（预付费）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExpiredAt *string `json:"ExpiredAt,omitempty" name:"ExpiredAt"`
+
+	// 实例付费类型，0表示后付费，1表示预付费
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PayMod *int64 `json:"PayMod,omitempty" name:"PayMod"`
+
+	// 预付费续费标识，0表示手动续费，1表示自动续费，2不续费并且不通知
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RenewFlag *int64 `json:"RenewFlag,omitempty" name:"RenewFlag"`
+}
+
+type RegistryChargePrepaid struct {
+
+	// 购买实例的时长，单位：月
+	Period *int64 `json:"Period,omitempty" name:"Period"`
+
+	// 自动续费标识，0：手动续费，1：自动续费，2：不续费并且不通知
+	RenewFlag *int64 `json:"RenewFlag,omitempty" name:"RenewFlag"`
 }
 
 type RegistryCondition struct {
@@ -2751,6 +2775,49 @@ type RegistryStatus struct {
 	// 附加状态
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Conditions []*RegistryCondition `json:"Conditions,omitempty" name:"Conditions" list`
+}
+
+type RenewInstanceRequest struct {
+	*tchttp.BaseRequest
+
+	// 实例Id
+	RegistryId *string `json:"RegistryId,omitempty" name:"RegistryId"`
+
+	// 预付费自动续费标识和购买时长
+	RegistryChargePrepaid *RegistryChargePrepaid `json:"RegistryChargePrepaid,omitempty" name:"RegistryChargePrepaid"`
+
+	// 0 续费， 1按量转包年包月
+	Flag *int64 `json:"Flag,omitempty" name:"Flag"`
+}
+
+func (r *RenewInstanceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *RenewInstanceRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type RenewInstanceResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 企业版实例Id
+		RegistryId *string `json:"RegistryId,omitempty" name:"RegistryId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *RenewInstanceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *RenewInstanceResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
 }
 
 type ReplicationRegistry struct {

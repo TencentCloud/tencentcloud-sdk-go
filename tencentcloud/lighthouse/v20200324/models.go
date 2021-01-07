@@ -49,10 +49,10 @@ type Blueprint struct {
 	// 镜像图片 URL。
 	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
 
-	// 镜像所需系统盘大小
+	// 镜像所需系统盘大小。
 	RequiredSystemDiskSize *int64 `json:"RequiredSystemDiskSize,omitempty" name:"RequiredSystemDiskSize"`
 
-	// 镜像状态，取值：ONLINE、OFFLINE
+	// 镜像状态。
 	BlueprintState *string `json:"BlueprintState,omitempty" name:"BlueprintState"`
 }
 
@@ -100,6 +100,12 @@ type Bundle struct {
 	// 取值范围：
 	// <li> GENERAL_BUNDLE：通用型</li><li> STORAGE_BUNDLE：存储型 </li>
 	BundleType *string `json:"BundleType,omitempty" name:"BundleType"`
+
+	// 套餐展示标签.
+	// 取值范围:
+	// "ACTIVITY": 活动套餐,
+	// "NORMAL": 普通套餐
+	BundleDisplayLabel *string `json:"BundleDisplayLabel,omitempty" name:"BundleDisplayLabel"`
 }
 
 type CreateFirewallRulesRequest struct {
@@ -774,7 +780,7 @@ type TrafficPackage struct {
 	// 流量包ID。
 	TrafficPackageId *string `json:"TrafficPackageId,omitempty" name:"TrafficPackageId"`
 
-	// 流量包生效周期内的总流量，单位字节。
+	// 流量包生效周期内已使用流量，单位字节。
 	TrafficUsed *int64 `json:"TrafficUsed,omitempty" name:"TrafficUsed"`
 
 	// 流量包生效周期内的总流量，单位字节。

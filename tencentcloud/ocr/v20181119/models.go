@@ -130,18 +130,28 @@ func (r *ArithmeticOCRResponse) FromJsonString(s string) error {
 type BankCardOCRRequest struct {
 	*tchttp.BaseRequest
 
-	// 图片的 Base64 值。
-	// 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
-	// 支持的图片大小：所下载图片经Base64编码后不超过 7M。图片下载时间不超过 3 秒。
+	// 图片的 Base64 值。要求图片经Base64编码后不超过 7M，分辨率建议500*800以上，支持PNG、JPG、JPEG、BMP格式。建议卡片部分占据图片2/3以上。
 	// 图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
 	ImageBase64 *string `json:"ImageBase64,omitempty" name:"ImageBase64"`
 
-	// 图片的 Url 地址。
-	// 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
-	// 支持的图片大小：所下载图片经 Base64 编码后不超过 7M。图片下载时间不超过 3 秒。
-	// 图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。
-	// 非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+	// 图片的 Url 地址。要求图片经Base64编码后不超过 7M，分辨率建议500*800以上，支持PNG、JPG、JPEG、BMP格式。建议卡片部分占据图片2/3以上。
+	// 建议图片存储于腾讯云，可保障更高的下载速度和稳定性。
 	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
+
+	// 是否返回预处理（精确剪裁对齐）后的银行卡图片数据，默认false。
+	RetBorderCutImage *bool `json:"RetBorderCutImage,omitempty" name:"RetBorderCutImage"`
+
+	// 是否返回卡号的切图图片数据，默认false。
+	RetCardNoImage *bool `json:"RetCardNoImage,omitempty" name:"RetCardNoImage"`
+
+	// 复印件检测开关，如果输入的图片是银行卡复印件图片则返回告警，默认false。
+	EnableCopyCheck *bool `json:"EnableCopyCheck,omitempty" name:"EnableCopyCheck"`
+
+	// 翻拍检测开关，如果输入的图片是银行卡翻拍图片则返回告警，默认false。
+	EnableReshootCheck *bool `json:"EnableReshootCheck,omitempty" name:"EnableReshootCheck"`
+
+	// 边框遮挡检测开关，如果输入的图片是银行卡边框被遮挡则返回告警，默认false。
+	EnableBorderCheck *bool `json:"EnableBorderCheck,omitempty" name:"EnableBorderCheck"`
 }
 
 func (r *BankCardOCRRequest) ToJsonString() string {
@@ -163,8 +173,32 @@ type BankCardOCRResponse struct {
 		// 银行信息
 		BankInfo *string `json:"BankInfo,omitempty" name:"BankInfo"`
 
-		// 有效期
+		// 有效期，格式如：07/2023
 		ValidDate *string `json:"ValidDate,omitempty" name:"ValidDate"`
+
+		// 卡类型
+		CardType *string `json:"CardType,omitempty" name:"CardType"`
+
+		// 卡名字
+		CardName *string `json:"CardName,omitempty" name:"CardName"`
+
+		// 切片图片数据
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		BorderCutImage *string `json:"BorderCutImage,omitempty" name:"BorderCutImage"`
+
+		// 卡号图片数据
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		CardNoImage *string `json:"CardNoImage,omitempty" name:"CardNoImage"`
+
+		// WarningCode 告警码列表和释义：
+	// -9110:银行卡日期无效; 
+	// -9111:银行卡边框不完整; 
+	// -9112:银行卡图片反光;
+	// -9113:银行卡复印件;
+	// -9114:银行卡翻拍件
+	// （告警码可以同时存在多个）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		WarningCode []*int64 `json:"WarningCode,omitempty" name:"WarningCode" list`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`

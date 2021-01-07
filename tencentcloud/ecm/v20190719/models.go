@@ -3564,7 +3564,6 @@ type HaVip struct {
 	HaVipId *string `json:"HaVipId,omitempty" name:"HaVipId"`
 
 	// HAVIP名称。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	HaVipName *string `json:"HaVipName,omitempty" name:"HaVipName"`
 
 	// 虚拟IP地址。
@@ -3580,11 +3579,9 @@ type HaVip struct {
 	NetworkInterfaceId *string `json:"NetworkInterfaceId,omitempty" name:"NetworkInterfaceId"`
 
 	// 被绑定的实例ID。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
 	// 绑定EIP。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AddressIp *string `json:"AddressIp,omitempty" name:"AddressIp"`
 
 	// 状态：
@@ -3596,7 +3593,6 @@ type HaVip struct {
 	CreatedTime *string `json:"CreatedTime,omitempty" name:"CreatedTime"`
 
 	// 使用havip的业务标识。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Business *string `json:"Business,omitempty" name:"Business"`
 }
 

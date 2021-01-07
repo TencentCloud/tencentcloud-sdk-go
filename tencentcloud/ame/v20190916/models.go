@@ -36,6 +36,35 @@ type Artist struct {
 	ArtistName *string `json:"ArtistName,omitempty" name:"ArtistName"`
 }
 
+type AuthInfo struct {
+
+	// 主体名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SubjectName *string `json:"SubjectName,omitempty" name:"SubjectName"`
+
+	// 项目名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProjectName *string `json:"ProjectName,omitempty" name:"ProjectName"`
+
+	// 应用场景
+	AppScene *int64 `json:"AppScene,omitempty" name:"AppScene"`
+
+	// 应用地域
+	AppRegion *int64 `json:"AppRegion,omitempty" name:"AppRegion"`
+
+	// 授权时间
+	AuthPeriod *int64 `json:"AuthPeriod,omitempty" name:"AuthPeriod"`
+
+	// 是否可商业化
+	Commercialization *int64 `json:"Commercialization,omitempty" name:"Commercialization"`
+
+	// 是否可跨平台
+	Platform *int64 `json:"Platform,omitempty" name:"Platform"`
+
+	// 加密后Id
+	Id *string `json:"Id,omitempty" name:"Id"`
+}
+
 type DataInfo struct {
 
 	// Song Name
@@ -52,6 +81,148 @@ type DataInfo struct {
 
 	// 试听结束时间
 	AuditionEnd *uint64 `json:"AuditionEnd,omitempty" name:"AuditionEnd"`
+}
+
+type DescribeAuthInfoRequest struct {
+	*tchttp.BaseRequest
+
+	// 偏移量：Offset=Offset+Limit
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 数据条数
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 搜索关键字
+	Key *string `json:"Key,omitempty" name:"Key"`
+}
+
+func (r *DescribeAuthInfoRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeAuthInfoRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeAuthInfoResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 授权项目列表
+		AuthInfo []*AuthInfo `json:"AuthInfo,omitempty" name:"AuthInfo" list`
+
+		// 总数
+		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeAuthInfoResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeAuthInfoResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeCloudMusicPurchasedRequest struct {
+	*tchttp.BaseRequest
+
+	// 授权项目Id
+	AuthInfoId *string `json:"AuthInfoId,omitempty" name:"AuthInfoId"`
+}
+
+func (r *DescribeCloudMusicPurchasedRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeCloudMusicPurchasedRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeCloudMusicPurchasedResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 云音乐列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		MusicOpenDetail []*MusicOpenDetail `json:"MusicOpenDetail,omitempty" name:"MusicOpenDetail" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeCloudMusicPurchasedResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeCloudMusicPurchasedResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeCloudMusicRequest struct {
+	*tchttp.BaseRequest
+
+	// 歌曲Id
+	MusicId *string `json:"MusicId,omitempty" name:"MusicId"`
+
+	// 歌曲类型，请填写：MP3-320K-FTD
+	MusicType *string `json:"MusicType,omitempty" name:"MusicType"`
+}
+
+func (r *DescribeCloudMusicRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeCloudMusicRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeCloudMusicResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 歌曲Id
+		MusicId *string `json:"MusicId,omitempty" name:"MusicId"`
+
+		// 歌曲名称
+		MusicName *string `json:"MusicName,omitempty" name:"MusicName"`
+
+		// 歌曲时长
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Duration *int64 `json:"Duration,omitempty" name:"Duration"`
+
+		// 歌曲链接
+		MusicUrl *string `json:"MusicUrl,omitempty" name:"MusicUrl"`
+
+		// 歌曲图片
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		MusicImageUrl *string `json:"MusicImageUrl,omitempty" name:"MusicImageUrl"`
+
+		// 歌手列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Singers []*string `json:"Singers,omitempty" name:"Singers" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeCloudMusicResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeCloudMusicResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeItemByIdRequest struct {
@@ -202,8 +373,8 @@ type DescribeMusicRequest struct {
 	// 在应用前端播放音乐C端用户的唯一标识。无需是账户信息，用户唯一标识即可。
 	IdentityId *string `json:"IdentityId,omitempty" name:"IdentityId"`
 
-	// 基础版：入参 MP3-64K-FTD-P  获取64kbps歌曲热门片段。
-	// 高级/商用版：入参 MP3-320K-FTD 获取320kbps已核验歌曲完整资源。
+	// MP3-64K-FTD-P  为获取64kbps歌曲热门片段。
+	// MP3-320K-FTD 为获取320kbps已核验歌曲完整资源。
 	SubItemType *string `json:"SubItemType,omitempty" name:"SubItemType"`
 
 	// CDN URL Protocol:HTTP or HTTPS/SSL
@@ -245,10 +416,10 @@ func (r *DescribeMusicResponse) FromJsonString(s string) error {
 type DescribePackageItemsRequest struct {
 	*tchttp.BaseRequest
 
-	// 订单id
+	// 订单id，从获取已购曲库包列表中获取
 	OrderId *string `json:"OrderId,omitempty" name:"OrderId"`
 
-	// 默认0
+	// 默认0，Offset=Offset+Length
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
 
 	// 默认20
@@ -268,7 +439,7 @@ type DescribePackageItemsResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 歌曲信息数组
+		// 已核销歌曲信息列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		PackageItems []*PackageItem `json:"PackageItems,omitempty" name:"PackageItems" list`
 
@@ -289,7 +460,7 @@ func (r *DescribePackageItemsResponse) FromJsonString(s string) error {
 type DescribePackagesRequest struct {
 	*tchttp.BaseRequest
 
-	// 默认0
+	// 默认0，Offset=Offset+Length
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
 
 	// 默认20
@@ -309,7 +480,7 @@ type DescribePackagesResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 已购曲库包数组
+		// 已购曲库包列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		Packages []*Package `json:"Packages,omitempty" name:"Packages" list`
 
@@ -333,7 +504,7 @@ type DescribeStationsRequest struct {
 	// 条数，必须大于0
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 
-	// offset (Default = 0)，(当前页-1) * Limit
+	// offset (Default = 0)，Offset=Offset+Limit
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
 }
 
@@ -447,6 +618,45 @@ type Music struct {
 	// 音乐播放链接全路径，前提是在正版曲库直通车控制台添加过域名，否则返回空字符。
 	// 如果添加过多个域名只返回第一个添加域名的播放全路径。
 	FullUrl *string `json:"FullUrl,omitempty" name:"FullUrl"`
+}
+
+type MusicOpenDetail struct {
+
+	// 音乐Id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MusicId *string `json:"MusicId,omitempty" name:"MusicId"`
+
+	// 专辑名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AlbumName *string `json:"AlbumName,omitempty" name:"AlbumName"`
+
+	// 专辑图片路径
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AlbumImageUrl *string `json:"AlbumImageUrl,omitempty" name:"AlbumImageUrl"`
+
+	// 音乐名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MusicName *string `json:"MusicName,omitempty" name:"MusicName"`
+
+	// 音乐图片路径
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MusicImageUrl *string `json:"MusicImageUrl,omitempty" name:"MusicImageUrl"`
+
+	// 歌手
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Singers []*string `json:"Singers,omitempty" name:"Singers" list`
+
+	// 播放时长
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Duration *uint64 `json:"Duration,omitempty" name:"Duration"`
+
+	// 标签
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Tags []*string `json:"Tags,omitempty" name:"Tags" list`
+
+	// 歌词url
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LyricUrl *string `json:"LyricUrl,omitempty" name:"LyricUrl"`
 }
 
 type Package struct {

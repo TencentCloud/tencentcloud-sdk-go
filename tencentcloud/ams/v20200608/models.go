@@ -63,6 +63,9 @@ type AmsDetailInfo struct {
 
 	// 音频审核的请求 id
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+
+	// 音频机审状态
+	Status *string `json:"Status,omitempty" name:"Status"`
 }
 
 type AudioResult struct {

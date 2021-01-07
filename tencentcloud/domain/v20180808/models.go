@@ -283,7 +283,7 @@ type ContactInfo struct {
 type CreateDomainBatchRequest struct {
 	*tchttp.BaseRequest
 
-	// 模板ID
+	// 模板ID。详情请查看：[获取模板列表](https://cloud.tencent.com/document/product/242/48940)
 	TemplateId *string `json:"TemplateId,omitempty" name:"TemplateId"`
 
 	// 购买域名的年限，可选值：[1-10]

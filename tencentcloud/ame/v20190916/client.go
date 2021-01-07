@@ -43,6 +43,81 @@ func NewClient(credential *common.Credential, region string, clientProfile *prof
 }
 
 
+func NewDescribeAuthInfoRequest() (request *DescribeAuthInfoRequest) {
+    request = &DescribeAuthInfoRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ame", APIVersion, "DescribeAuthInfo")
+    return
+}
+
+func NewDescribeAuthInfoResponse() (response *DescribeAuthInfoResponse) {
+    response = &DescribeAuthInfoResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 获取授权项目信息列表
+func (c *Client) DescribeAuthInfo(request *DescribeAuthInfoRequest) (response *DescribeAuthInfoResponse, err error) {
+    if request == nil {
+        request = NewDescribeAuthInfoRequest()
+    }
+    response = NewDescribeAuthInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeCloudMusicRequest() (request *DescribeCloudMusicRequest) {
+    request = &DescribeCloudMusicRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ame", APIVersion, "DescribeCloudMusic")
+    return
+}
+
+func NewDescribeCloudMusicResponse() (response *DescribeCloudMusicResponse) {
+    response = &DescribeCloudMusicResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 获取云音乐播放信息接口
+func (c *Client) DescribeCloudMusic(request *DescribeCloudMusicRequest) (response *DescribeCloudMusicResponse, err error) {
+    if request == nil {
+        request = NewDescribeCloudMusicRequest()
+    }
+    response = NewDescribeCloudMusicResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeCloudMusicPurchasedRequest() (request *DescribeCloudMusicPurchasedRequest) {
+    request = &DescribeCloudMusicPurchasedRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ame", APIVersion, "DescribeCloudMusicPurchased")
+    return
+}
+
+func NewDescribeCloudMusicPurchasedResponse() (response *DescribeCloudMusicPurchasedResponse) {
+    response = &DescribeCloudMusicPurchasedResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 获取授权项目下已购云音乐列表
+func (c *Client) DescribeCloudMusicPurchased(request *DescribeCloudMusicPurchasedRequest) (response *DescribeCloudMusicPurchasedResponse, err error) {
+    if request == nil {
+        request = NewDescribeCloudMusicPurchasedRequest()
+    }
+    response = NewDescribeCloudMusicPurchasedResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeItemByIdRequest() (request *DescribeItemByIdRequest) {
     request = &DescribeItemByIdRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -83,7 +158,7 @@ func NewDescribeItemsResponse() (response *DescribeItemsResponse) {
     return
 }
 
-// 分类内容下歌曲列表获取，根据CategoryID或CategoryCode
+// 该服务后续会停用，不再建议使用
 func (c *Client) DescribeItems(request *DescribeItemsRequest) (response *DescribeItemsResponse, err error) {
     if request == nil {
         request = NewDescribeItemsRequest()
@@ -133,7 +208,7 @@ func NewDescribeMusicResponse() (response *DescribeMusicResponse) {
     return
 }
 
-// 根据接口的模式及歌曲ID来取得对应权限的歌曲播放地址等信息。
+// 获取曲库包歌曲播放信息接口
 func (c *Client) DescribeMusic(request *DescribeMusicRequest) (response *DescribeMusicResponse, err error) {
     if request == nil {
         request = NewDescribeMusicRequest()
@@ -158,7 +233,7 @@ func NewDescribePackageItemsResponse() (response *DescribePackageItemsResponse) 
     return
 }
 
-// 查询曲库包已核验歌曲列表接口
+// 获取曲库包下已核销歌曲列表接口
 func (c *Client) DescribePackageItems(request *DescribePackageItemsRequest) (response *DescribePackageItemsResponse, err error) {
     if request == nil {
         request = NewDescribePackageItemsRequest()
@@ -183,7 +258,7 @@ func NewDescribePackagesResponse() (response *DescribePackagesResponse) {
     return
 }
 
-// 查询已购曲库包列表接口
+// 获取已购曲库包列表接口
 func (c *Client) DescribePackages(request *DescribePackagesRequest) (response *DescribePackagesResponse, err error) {
     if request == nil {
         request = NewDescribePackagesRequest()
@@ -208,7 +283,7 @@ func NewDescribeStationsResponse() (response *DescribeStationsResponse) {
     return
 }
 
-// 获取素材库列表时使用
+// 该服务后续会停用，不再建议使用
 func (c *Client) DescribeStations(request *DescribeStationsRequest) (response *DescribeStationsResponse, err error) {
     if request == nil {
         request = NewDescribeStationsRequest()

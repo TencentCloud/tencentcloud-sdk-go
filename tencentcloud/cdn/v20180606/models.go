@@ -161,6 +161,9 @@ type AddCdnDomainRequest struct {
 
 	// Ipv6 访问配置
 	Ipv6Access *Ipv6Access `json:"Ipv6Access,omitempty" name:"Ipv6Access"`
+
+	// 离线缓存
+	OfflineCache *OfflineCache `json:"OfflineCache,omitempty" name:"OfflineCache"`
 }
 
 func (r *AddCdnDomainRequest) ToJsonString() string {
@@ -3136,6 +3139,14 @@ type DetailDomain struct {
 	// 高级配置集合。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AdvanceSet []*AdvanceConfig `json:"AdvanceSet,omitempty" name:"AdvanceSet" list`
+
+	// 离线缓存
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OfflineCache *OfflineCache `json:"OfflineCache,omitempty" name:"OfflineCache"`
+
+	// 合并回源
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OriginCombine *OriginCombine `json:"OriginCombine,omitempty" name:"OriginCombine"`
 }
 
 type DiagnoseData struct {
@@ -4485,6 +4496,12 @@ type MaxAgeRule struct {
 	FollowOrigin *string `json:"FollowOrigin,omitempty" name:"FollowOrigin"`
 }
 
+type OfflineCache struct {
+
+	// on | off, 离线缓存是否开启
+	Switch *string `json:"Switch,omitempty" name:"Switch"`
+}
+
 type Origin struct {
 
 	// 主源站列表
@@ -4569,6 +4586,12 @@ type OriginAuthenticationTypeA struct {
 	// 用于计算签名的密钥，只允许字母和数字，长度6-32字节。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SecretKey *string `json:"SecretKey,omitempty" name:"SecretKey"`
+}
+
+type OriginCombine struct {
+
+	// on|off 是否开启合并回源
+	Switch *string `json:"Switch,omitempty" name:"Switch"`
 }
 
 type OriginIp struct {
@@ -6132,6 +6155,12 @@ type UpdateDomainConfigRequest struct {
 
 	// Ipv6 访问配置
 	Ipv6Access *Ipv6Access `json:"Ipv6Access,omitempty" name:"Ipv6Access"`
+
+	// 离线缓存
+	OfflineCache *OfflineCache `json:"OfflineCache,omitempty" name:"OfflineCache"`
+
+	// 合并回源
+	OriginCombine *OriginCombine `json:"OriginCombine,omitempty" name:"OriginCombine"`
 }
 
 func (r *UpdateDomainConfigRequest) ToJsonString() string {

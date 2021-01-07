@@ -1518,6 +1518,31 @@ func (c *Client) ModifyWebhookTrigger(request *ModifyWebhookTriggerRequest) (res
     return
 }
 
+func NewRenewInstanceRequest() (request *RenewInstanceRequest) {
+    request = &RenewInstanceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tcr", APIVersion, "RenewInstance")
+    return
+}
+
+func NewRenewInstanceResponse() (response *RenewInstanceResponse) {
+    response = &RenewInstanceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 预付费实例续费，同时支持按量计费转包年包月
+func (c *Client) RenewInstance(request *RenewInstanceRequest) (response *RenewInstanceResponse, err error) {
+    if request == nil {
+        request = NewRenewInstanceRequest()
+    }
+    response = NewRenewInstanceResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewValidateNamespaceExistPersonalRequest() (request *ValidateNamespaceExistPersonalRequest) {
     request = &ValidateNamespaceExistPersonalRequest{
         BaseRequest: &tchttp.BaseRequest{},

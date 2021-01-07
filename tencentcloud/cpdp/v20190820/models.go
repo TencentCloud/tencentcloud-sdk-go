@@ -3811,6 +3811,70 @@ func (r *QueryBankWithdrawCashDetailsResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type QueryBillDownloadURLData struct {
+
+	// 统一对账单下载链接
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BillDownloadURL *string `json:"BillDownloadURL,omitempty" name:"BillDownloadURL"`
+
+	// 渠道原始对账单下载链接
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OriginalBillDownloadURL *string `json:"OriginalBillDownloadURL,omitempty" name:"OriginalBillDownloadURL"`
+}
+
+type QueryBillDownloadURLRequest struct {
+	*tchttp.BaseRequest
+
+	// 商户号
+	MerchantId *string `json:"MerchantId,omitempty" name:"MerchantId"`
+
+	// 代发类型：
+	// 1、 微信企业付款 
+	// 2、 支付宝转账 
+	// 3、 平安银企直联代发转账
+	TransferType *int64 `json:"TransferType,omitempty" name:"TransferType"`
+
+	// 账单日期，格式yyyy-MM-dd
+	BillDate *string `json:"BillDate,omitempty" name:"BillDate"`
+}
+
+func (r *QueryBillDownloadURLRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *QueryBillDownloadURLRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type QueryBillDownloadURLResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 错误码。响应成功："SUCCESS"，其他为不成功
+		ErrCode *string `json:"ErrCode,omitempty" name:"ErrCode"`
+
+		// 响应消息
+		ErrMessage *string `json:"ErrMessage,omitempty" name:"ErrMessage"`
+
+		// 返回结果
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Result *QueryBillDownloadURLData `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *QueryBillDownloadURLResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *QueryBillDownloadURLResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type QueryCommonTransferRechargeRequest struct {
 	*tchttp.BaseRequest
 

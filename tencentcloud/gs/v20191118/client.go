@@ -68,6 +68,31 @@ func (c *Client) CreateSession(request *CreateSessionRequest) (response *CreateS
     return
 }
 
+func NewSaveGameArchiveRequest() (request *SaveGameArchiveRequest) {
+    request = &SaveGameArchiveRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("gs", APIVersion, "SaveGameArchive")
+    return
+}
+
+func NewSaveGameArchiveResponse() (response *SaveGameArchiveResponse) {
+    response = &SaveGameArchiveResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 保存游戏存档
+func (c *Client) SaveGameArchive(request *SaveGameArchiveRequest) (response *SaveGameArchiveResponse, err error) {
+    if request == nil {
+        request = NewSaveGameArchiveRequest()
+    }
+    response = NewSaveGameArchiveResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewStopGameRequest() (request *StopGameRequest) {
     request = &StopGameRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -89,6 +114,31 @@ func (c *Client) StopGame(request *StopGameRequest) (response *StopGameResponse,
         request = NewStopGameRequest()
     }
     response = NewStopGameResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewSwitchGameArchiveRequest() (request *SwitchGameArchiveRequest) {
+    request = &SwitchGameArchiveRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("gs", APIVersion, "SwitchGameArchive")
+    return
+}
+
+func NewSwitchGameArchiveResponse() (response *SwitchGameArchiveResponse) {
+    response = &SwitchGameArchiveResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 切换游戏存档
+func (c *Client) SwitchGameArchive(request *SwitchGameArchiveRequest) (response *SwitchGameArchiveResponse, err error) {
+    if request == nil {
+        request = NewSwitchGameArchiveRequest()
+    }
+    response = NewSwitchGameArchiveResponse()
     err = c.Send(request, response)
     return
 }

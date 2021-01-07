@@ -108,6 +108,43 @@ func (r *CreateSessionResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type SaveGameArchiveRequest struct {
+	*tchttp.BaseRequest
+
+	// 游戏用户ID
+	UserId *string `json:"UserId,omitempty" name:"UserId"`
+
+	// 游戏ID
+	GameId *string `json:"GameId,omitempty" name:"GameId"`
+}
+
+func (r *SaveGameArchiveRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *SaveGameArchiveRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type SaveGameArchiveResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *SaveGameArchiveResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *SaveGameArchiveResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type StopGameRequest struct {
 	*tchttp.BaseRequest
 
@@ -142,6 +179,49 @@ func (r *StopGameResponse) ToJsonString() string {
 }
 
 func (r *StopGameResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type SwitchGameArchiveRequest struct {
+	*tchttp.BaseRequest
+
+	// 游戏用户ID
+	UserId *string `json:"UserId,omitempty" name:"UserId"`
+
+	// 游戏ID
+	GameId *string `json:"GameId,omitempty" name:"GameId"`
+
+	// 游戏存档Url
+	GameArchiveUrl *string `json:"GameArchiveUrl,omitempty" name:"GameArchiveUrl"`
+
+	// 游戏相关参数
+	GameContext *string `json:"GameContext,omitempty" name:"GameContext"`
+}
+
+func (r *SwitchGameArchiveRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *SwitchGameArchiveRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type SwitchGameArchiveResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *SwitchGameArchiveResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *SwitchGameArchiveResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 

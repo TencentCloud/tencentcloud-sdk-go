@@ -797,6 +797,9 @@ type CreateLoadBalancerRequest struct {
 
 	// Stgw独占集群的标签。
 	ClusterTag *string `json:"ClusterTag,omitempty" name:"ClusterTag"`
+
+	// EIP 的唯一 ID，形如：eip-11112222，仅适用于内网负载均衡绑定EIP
+	EipAddressId *string `json:"EipAddressId,omitempty" name:"EipAddressId"`
 }
 
 func (r *CreateLoadBalancerRequest) ToJsonString() string {

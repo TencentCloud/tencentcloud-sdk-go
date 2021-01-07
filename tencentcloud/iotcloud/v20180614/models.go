@@ -2327,6 +2327,9 @@ type PublishMessageRequest struct {
 
 	// 服务质量等级，取值为0或1
 	Qos *uint64 `json:"Qos,omitempty" name:"Qos"`
+
+	// Payload内容的编码格式，取值为base64或空。base64表示云端将收到的请求数据进行base64解码后下发到设备，空则直接将原始内容下发到设备
+	PayloadEncoding *string `json:"PayloadEncoding,omitempty" name:"PayloadEncoding"`
 }
 
 func (r *PublishMessageRequest) ToJsonString() string {
