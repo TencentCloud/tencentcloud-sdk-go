@@ -406,6 +406,55 @@ func (r *GetEmailTemplateResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type GetSendEmailStatusRequest struct {
+	*tchttp.BaseRequest
+
+	// 发送的日期，必填。仅支持查询某个日期，不支持范围查询。
+	RequestDate *string `json:"RequestDate,omitempty" name:"RequestDate"`
+
+	// 偏移量。默认为0
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 拉取最大条数，最多 100。
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// SendMail接口返回的MessageId字段。
+	MessageId *string `json:"MessageId,omitempty" name:"MessageId"`
+
+	// 收件人邮箱。
+	ToEmailAddress *string `json:"ToEmailAddress,omitempty" name:"ToEmailAddress"`
+}
+
+func (r *GetSendEmailStatusRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *GetSendEmailStatusRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type GetSendEmailStatusResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 邮件发送状态列表
+		EmailStatusList []*SendEmailStatus `json:"EmailStatusList,omitempty" name:"EmailStatusList" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *GetSendEmailStatusResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *GetSendEmailStatusResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type GetStatisticsReportRequest struct {
 	*tchttp.BaseRequest
 
@@ -674,6 +723,72 @@ func (r *SendEmailResponse) ToJsonString() string {
 
 func (r *SendEmailResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
+}
+
+type SendEmailStatus struct {
+
+	// SendEmail返回的MessageId
+	MessageId *string `json:"MessageId,omitempty" name:"MessageId"`
+
+	// 收件人邮箱
+	ToEmailAddress *string `json:"ToEmailAddress,omitempty" name:"ToEmailAddress"`
+
+	// 发件人邮箱
+	FromEmailAddress *string `json:"FromEmailAddress,omitempty" name:"FromEmailAddress"`
+
+	// 腾讯云处理状态
+	// 0: 处理成功
+	// 1001: 内部系统异常
+	// 1002: 内部系统异常
+	// 1003: 内部系统异常
+	// 1003: 内部系统异常
+	// 1004: 发信超时
+	// 1005: 内部系统异常
+	// 1006: 触发频率控制，短时间内对同一地址发送过多邮件
+	// 1007: 邮件地址在黑名单中
+	// 1009: 内部系统异常
+	// 1010: 超出了每日发送限制
+	// 1011: 无发送自定义内容权限，必须使用模板
+	// 2001: 找不到相关记录
+	// 3007: 模板ID无效或者不可用
+	// 3008: 模板状态异常
+	// 3009: 无权限使用该模板
+	// 3010: TemplateData字段格式不正确 
+	// 3014: 发件域名没有经过认证，无法发送
+	// 3020: 收件方邮箱类型在黑名单
+	// 3024: 邮箱地址格式预检查失败
+	// 3030: 退信率过高，临时限制发送
+	// 3033: 余额不足，账号欠费等
+	SendStatus *int64 `json:"SendStatus,omitempty" name:"SendStatus"`
+
+	// 收件方处理状态
+	// 0: 请求成功被腾讯云接受，进入发送队列
+	// 1: 邮件递送成功，DeliverTime表示递送成功的时间
+	// 2: 邮件因某种原因被丢弃，DeliverMessage表示丢弃原因
+	// 3: 收件方ESP拒信，一般原因为邮箱地址不存在，或其它原因
+	// 8: 邮件被ESP因某些原因延迟递送，DeliverMessage表示延迟原因
+	DeliverStatus *int64 `json:"DeliverStatus,omitempty" name:"DeliverStatus"`
+
+	// 收件方处理状态描述
+	DeliverMessage *string `json:"DeliverMessage,omitempty" name:"DeliverMessage"`
+
+	// 请求到达腾讯云时间戳
+	RequestTime *int64 `json:"RequestTime,omitempty" name:"RequestTime"`
+
+	// 腾讯云执行递送时间戳
+	DeliverTime *int64 `json:"DeliverTime,omitempty" name:"DeliverTime"`
+
+	// 用户是否打开该邮件
+	UserOpened *bool `json:"UserOpened,omitempty" name:"UserOpened"`
+
+	// 用户是否点击该邮件中的链接
+	UserClicked *bool `json:"UserClicked,omitempty" name:"UserClicked"`
+
+	// 用户是否取消该发送者的订阅
+	UserUnsubscribed *bool `json:"UserUnsubscribed,omitempty" name:"UserUnsubscribed"`
+
+	// 用户是否举报该发送者
+	UserComplainted *bool `json:"UserComplainted,omitempty" name:"UserComplainted"`
 }
 
 type Simple struct {

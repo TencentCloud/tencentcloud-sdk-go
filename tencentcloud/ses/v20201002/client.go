@@ -269,6 +269,31 @@ func (c *Client) GetEmailTemplate(request *GetEmailTemplateRequest) (response *G
     return
 }
 
+func NewGetSendEmailStatusRequest() (request *GetSendEmailStatusRequest) {
+    request = &GetSendEmailStatusRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ses", APIVersion, "GetSendEmailStatus")
+    return
+}
+
+func NewGetSendEmailStatusResponse() (response *GetSendEmailStatusResponse) {
+    response = &GetSendEmailStatusResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 获取邮件发送状态。仅支持查询90天之内的数据
+func (c *Client) GetSendEmailStatus(request *GetSendEmailStatusRequest) (response *GetSendEmailStatusResponse, err error) {
+    if request == nil {
+        request = NewGetSendEmailStatusRequest()
+    }
+    response = NewGetSendEmailStatusResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewGetStatisticsReportRequest() (request *GetStatisticsReportRequest) {
     request = &GetStatisticsReportRequest{
         BaseRequest: &tchttp.BaseRequest{},

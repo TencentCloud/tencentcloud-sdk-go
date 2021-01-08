@@ -70,6 +70,9 @@ type CreateSessionRequest struct {
 
 	// 【多人云游】角色；Player表示玩家；Viewer表示观察者
 	Role *string `json:"Role,omitempty" name:"Role"`
+
+	// 游戏相关参数
+	GameContext *string `json:"GameContext,omitempty" name:"GameContext"`
 }
 
 func (r *CreateSessionRequest) ToJsonString() string {
