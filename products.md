@@ -61,7 +61,7 @@
 | emr | [弹性 MapReduce](https://cloud.tencent.com/document/product/589) | 2021-01-07 08:04:42 |
 | es | [Elasticsearch Service](https://cloud.tencent.com/document/product/845) | 2021-01-07 08:04:44 |
 | facefusion | [人脸融合](https://cloud.tencent.com/document/product/670) | 2021-01-07 08:04:49 |
-| faceid | [人脸核身](https://cloud.tencent.com/document/product/1007) | 2021-01-07 08:04:50 |
+| faceid | [人脸核身](https://cloud.tencent.com/document/product/1007) | 2021-01-11 08:03:55 |
 | fmu | [人脸试妆](https://cloud.tencent.com/document/product/1172) | 2021-01-07 08:01:37 |
 | ft | [人像变换](https://cloud.tencent.com/document/product/1202) | 2021-01-07 08:01:35 |
 | gaap | [全球应用加速](https://cloud.tencent.com/document/product/608) | 2021-01-07 08:04:54 |
@@ -73,7 +73,7 @@
 | hcm | [数学作业批改](https://cloud.tencent.com/document/product/1004) | 2021-01-07 08:05:12 |
 | iai | [人脸识别](https://cloud.tencent.com/document/product/867) | 2021-01-07 08:05:13 |
 | ic | [物联卡](https://cloud.tencent.com/document/product) | 2020-07-28 08:11:46 |
-| ie | [智能编辑](https://cloud.tencent.com/document/product/1186) | 2021-01-07 08:00:44 |
+| ie | [智能编辑](https://cloud.tencent.com/document/product/1186) | 2021-01-11 08:00:37 |
 | iir | [智能识图](https://cloud.tencent.com/document/product/1217) | 2021-01-07 08:00:40 |
 | ims | [图片内容检测](https://cloud.tencent.com/document/product/1125) | 2021-01-07 08:00:14 |
 | iot | [加速物联网套件](https://cloud.tencent.com/document/product/568) | 2021-01-07 08:05:22 |
@@ -89,7 +89,7 @@
 | memcached | [云数据库 Memcached](https://cloud.tencent.com/document/product) | 2020-08-24 08:07:49 |
 | mgobe | [游戏联机对战引擎](https://cloud.tencent.com/document/product/1038) | 2021-01-07 08:00:17 |
 | mongodb | [云数据库 MongoDB](https://cloud.tencent.com/document/product/240) | 2021-01-07 08:06:25 |
-| monitor | [云监控](https://cloud.tencent.com/document/product/248) | 2021-01-07 08:06:29 |
+| monitor | [云监控](https://cloud.tencent.com/document/product/248) | 2021-01-11 08:05:09 |
 | mps | [视频处理](https://cloud.tencent.com/document/product/862) | 2021-01-07 08:06:44 |
 | ms | [移动应用安全](https://cloud.tencent.com/document/product) | 2020-06-05 08:13:52 |
 | msp | [迁移服务平台](https://cloud.tencent.com/document/product/659) | 2021-01-07 08:06:57 |
@@ -103,7 +103,7 @@
 | redis | [云数据库 Redis](https://cloud.tencent.com/document/product/239) | 2021-01-07 08:07:19 |
 | rkp | [风险探针](https://cloud.tencent.com/document/product/1169) | 2021-01-07 08:11:09 |
 | rp | [注册保护](https://cloud.tencent.com/document/product/1191) | 2021-01-07 08:00:38 |
-| scf | [云函数](https://cloud.tencent.com/document/product/583) | 2021-01-07 08:07:29 |
+| scf | [云函数](https://cloud.tencent.com/document/product/583) | 2021-01-11 08:06:02 |
 | ses | [邮件推送](https://cloud.tencent.com/document/product/1288) | 2021-01-08 08:09:07 |
 | smpn | [营销号码安全](https://cloud.tencent.com/document/product/1127) | 2021-01-07 08:01:56 |
 | sms | [短信](https://cloud.tencent.com/document/product/382) | 2021-01-07 08:07:37 |
@@ -126,7 +126,7 @@
 | tcex | [腾讯云释义](https://cloud.tencent.com/document/product/1266) | 2021-01-07 08:00:18 |
 | tci | [腾讯智学课堂分析](https://cloud.tencent.com/document/product) | 2020-08-24 08:06:03 |
 | tcr | [容器镜像服务](https://cloud.tencent.com/document/product/1141) | 2021-01-07 08:10:20 |
-| tdmq | [分布式消息队列](https://cloud.tencent.com/document/product/1179) | 2021-01-07 08:11:07 |
+| tdmq | [分布式消息队列](https://cloud.tencent.com/document/product/1179) | 2021-01-11 08:09:14 |
 | tia | [智能钛机器学习](https://cloud.tencent.com/document/product) | 2020-03-16 08:18:42 |
 | tic | [腾讯云IaC平台](https://cloud.tencent.com/document/product/1213) | 2021-01-07 08:00:07 |
 | ticm | [智能鉴黄](https://cloud.tencent.com/document/product/864) | 2021-01-07 08:08:15 |
@@ -139,7 +139,7 @@
 | tkgdq | [腾讯知识图谱数据查询](https://cloud.tencent.com/document/product) | 2020-03-10 00:51:44 |
 | tms | [文本内容检测](https://cloud.tencent.com/document/product/1124) | 2021-01-07 08:00:30 |
 | tmt | [机器翻译](https://cloud.tencent.com/document/product/551) | 2021-01-07 08:08:32 |
-| trtc | [实时音视频](https://cloud.tencent.com/document/product/647) | 2021-01-07 08:09:59 |
+| trtc | [实时音视频](https://cloud.tencent.com/document/product/647) | 2021-01-11 08:08:23 |
 | tsf | [腾讯微服务平台 TSF](https://cloud.tencent.com/document/product/649) | 2021-01-07 08:08:34 |
 | tts | [语音合成](https://cloud.tencent.com/document/product/1073) | 2021-01-07 08:08:57 |
 | ump | [客流数字化平台](https://cloud.tencent.com/document/product/1320) | 2021-01-07 08:00:09 |

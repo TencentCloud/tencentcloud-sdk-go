@@ -1,48 +1,10 @@
 # 本版本更新包含以下内容：
 
-## 云服务器(cvm) 版本：2017-03-12
+## 云监控(monitor) 版本：2018-07-24
 
-### 第 55 次发布
+### 第 19 次发布
 
-发布时间：2021-01-08 08:03:14
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [RunInstances](https://cloud.tencent.com/document/api/213/15730)
-
-	* <font color="#dd0000">**修改入参**：</font>Placement, ImageId
-
-
-
-
-## 云游戏解决方案(gs) 版本：2019-11-18
-
-### 第 14 次发布
-
-发布时间：2021-01-08 08:01:28
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [CreateSession](https://cloud.tencent.com/document/api/1162/40740)
-
-	* 新增入参：GameContext
-
-
-
-
-## 邮件推送(ses) 版本：2020-10-02
-
-### 第 3 次发布
-
-发布时间：2021-01-08 08:09:07
+发布时间：2021-01-11 08:05:09
 
 本次发布包含了以下内容：
 
@@ -50,11 +12,41 @@
 
 新增接口：
 
-* [GetSendEmailStatus](https://cloud.tencent.com/document/api/1288/51832)
+* [DescribeStatisticData](https://cloud.tencent.com/document/api/248/51845)
 
 新增数据结构：
 
-* [SendEmailStatus](https://cloud.tencent.com/document/api/1288/51053#SendEmailStatus)
+* [MetricData](https://cloud.tencent.com/document/api/248/30354#MetricData)
+* [MetricDataPoint](https://cloud.tencent.com/document/api/248/30354#MetricDataPoint)
+* [MidQueryCondition](https://cloud.tencent.com/document/api/248/30354#MidQueryCondition)
+* [Point](https://cloud.tencent.com/document/api/248/30354#Point)
+
+
+
+## 实时音视频(trtc) 版本：2019-07-22
+
+### 第 21 次发布
+
+发布时间：2021-01-11 08:08:23
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [StartMCUMixTranscode](https://cloud.tencent.com/document/api/647/44270)
+
+	* 新增入参：PublishCdnParams
+
+* [StartMCUMixTranscodeByStrRoomId](https://cloud.tencent.com/document/api/647/50236)
+
+	* 新增入参：PublishCdnParams
+
+
+新增数据结构：
+
+* [PublishCdnParams](https://cloud.tencent.com/document/api/647/44055#PublishCdnParams)
 
 
 
@@ -25133,6 +25125,25 @@
 
 ## 云监控(monitor) 版本：2018-07-24
 
+### 第 19 次发布
+
+发布时间：2021-01-11 08:05:09
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeStatisticData](https://cloud.tencent.com/document/api/248/51845)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[MetricData](https://cloud.tencent.com/document/api/248/30354#MetricData)](https://cloud.tencent.com/document/api/248/30354#[MetricData](https://cloud.tencent.com/document/api/248/30354#MetricData))
+* [[MetricDataPoint](https://cloud.tencent.com/document/api/248/30354#MetricDataPoint)](https://cloud.tencent.com/document/api/248/30354#[MetricDataPoint](https://cloud.tencent.com/document/api/248/30354#MetricDataPoint))
+* [[MidQueryCondition](https://cloud.tencent.com/document/api/248/30354#MidQueryCondition)](https://cloud.tencent.com/document/api/248/30354#[MidQueryCondition](https://cloud.tencent.com/document/api/248/30354#MidQueryCondition))
+* [[Point](https://cloud.tencent.com/document/api/248/30354#Point)](https://cloud.tencent.com/document/api/248/30354#[Point](https://cloud.tencent.com/document/api/248/30354#Point))
+
 ### 第 18 次发布
 
 发布时间：2020-12-22 08:06:22
@@ -29898,11 +29909,11 @@
 
 新增接口：
 
-* [[GetSendEmailStatus](https://cloud.tencent.com/document/api/1288/51832)](https://cloud.tencent.com/document/api/#/#)
+* [GetSendEmailStatus](https://cloud.tencent.com/document/api/1288/51832)
 
 新增数据结构：
 
-* [[SendEmailStatus](https://cloud.tencent.com/document/api/1288/51053#SendEmailStatus)](https://cloud.tencent.com/document/api/1288/51053#[SendEmailStatus](https://cloud.tencent.com/document/api/1288/51053#SendEmailStatus))
+* [SendEmailStatus](https://cloud.tencent.com/document/api/1288/51053#SendEmailStatus)
 
 ### 第 2 次发布
 
@@ -35988,6 +35999,29 @@
 
 
 ## 实时音视频(trtc) 版本：2019-07-22
+
+### 第 21 次发布
+
+发布时间：2021-01-11 08:08:23
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [StartMCUMixTranscode](https://cloud.tencent.com/document/api/647/44270)
+
+	* 新增入参：PublishCdnParams
+
+* [StartMCUMixTranscodeByStrRoomId](https://cloud.tencent.com/document/api/647/50236)
+
+	* 新增入参：PublishCdnParams
+
+
+新增数据结构：
+
+* [[PublishCdnParams](https://cloud.tencent.com/document/api/647/44055#PublishCdnParams)](https://cloud.tencent.com/document/api/647/44055#[PublishCdnParams](https://cloud.tencent.com/document/api/647/44055#PublishCdnParams))
 
 ### 第 20 次发布
 

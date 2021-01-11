@@ -774,6 +774,31 @@ func (c *Client) DescribeServiceDiscovery(request *DescribeServiceDiscoveryReque
     return
 }
 
+func NewDescribeStatisticDataRequest() (request *DescribeStatisticDataRequest) {
+    request = &DescribeStatisticDataRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("monitor", APIVersion, "DescribeStatisticData")
+    return
+}
+
+func NewDescribeStatisticDataResponse() (response *DescribeStatisticDataResponse) {
+    response = &DescribeStatisticDataResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 根据维度条件查询监控数据
+func (c *Client) DescribeStatisticData(request *DescribeStatisticDataRequest) (response *DescribeStatisticDataResponse, err error) {
+    if request == nil {
+        request = NewDescribeStatisticDataRequest()
+    }
+    response = NewDescribeStatisticDataResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewGetMonitorDataRequest() (request *GetMonitorDataRequest) {
     request = &GetMonitorDataRequest{
         BaseRequest: &tchttp.BaseRequest{},

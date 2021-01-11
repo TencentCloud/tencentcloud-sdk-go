@@ -964,6 +964,15 @@ type PresetLayoutConfig struct {
 	PlaceImageId *uint64 `json:"PlaceImageId,omitempty" name:"PlaceImageId"`
 }
 
+type PublishCdnParams struct {
+
+	// 腾讯云直播BizId。
+	BizId *uint64 `json:"BizId,omitempty" name:"BizId"`
+
+	// 第三方CDN转推的目的地址，同时只支持转推一个第三方CDN地址。
+	PublishCdnUrls []*string `json:"PublishCdnUrls,omitempty" name:"PublishCdnUrls" list`
+}
+
 type QualityData struct {
 
 	// 数据内容
@@ -1214,6 +1223,9 @@ type StartMCUMixTranscodeByStrRoomIdRequest struct {
 
 	// 混流输出布局参数。
 	LayoutParams *LayoutParams `json:"LayoutParams,omitempty" name:"LayoutParams"`
+
+	// 第三方CDN转推参数。
+	PublishCdnParams *PublishCdnParams `json:"PublishCdnParams,omitempty" name:"PublishCdnParams"`
 }
 
 func (r *StartMCUMixTranscodeByStrRoomIdRequest) ToJsonString() string {
@@ -1260,6 +1272,9 @@ type StartMCUMixTranscodeRequest struct {
 
 	// 混流输出布局参数。
 	LayoutParams *LayoutParams `json:"LayoutParams,omitempty" name:"LayoutParams"`
+
+	// 第三方CDN转推参数。
+	PublishCdnParams *PublishCdnParams `json:"PublishCdnParams,omitempty" name:"PublishCdnParams"`
 }
 
 func (r *StartMCUMixTranscodeRequest) ToJsonString() string {

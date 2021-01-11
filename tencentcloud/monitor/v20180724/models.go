@@ -2861,6 +2861,73 @@ func (r *DescribeServiceDiscoveryResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeStatisticDataRequest struct {
+	*tchttp.BaseRequest
+
+	// 所属模块，固定值，为monitor
+	Module *string `json:"Module,omitempty" name:"Module"`
+
+	// 命名空间，目前只支持QCE/TKE
+	Namespace *string `json:"Namespace,omitempty" name:"Namespace"`
+
+	// 指标名列表
+	MetricNames []*string `json:"MetricNames,omitempty" name:"MetricNames" list`
+
+	// 维度条件，操作符支持=、in
+	Conditions []*MidQueryCondition `json:"Conditions,omitempty" name:"Conditions" list`
+
+	// 统计粒度。默认取值为300，单位为s
+	Period *uint64 `json:"Period,omitempty" name:"Period"`
+
+	// 起始时间，默认为当前时间，如2020-12-08T19:51:23+08:00
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 结束时间，默认为当前时间，如2020-12-08T19:51:23+08:00
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 按指定维度groupBy
+	GroupBys []*string `json:"GroupBys,omitempty" name:"GroupBys" list`
+}
+
+func (r *DescribeStatisticDataRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeStatisticDataRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeStatisticDataResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 统计周期
+		Period *uint64 `json:"Period,omitempty" name:"Period"`
+
+		// 开始时间
+		StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+		// 结束时间
+		EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+		// 监控数据
+		Data []*MetricData `json:"Data,omitempty" name:"Data" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeStatisticDataResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeStatisticDataResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type Dimension struct {
 
 	// 实例维度名称
@@ -3006,6 +3073,24 @@ type MetricConfig struct {
 	ContinuePeriod []*int64 `json:"ContinuePeriod,omitempty" name:"ContinuePeriod" list`
 }
 
+type MetricData struct {
+
+	// 指标名
+	MetricName *string `json:"MetricName,omitempty" name:"MetricName"`
+
+	// 监控数据点
+	Points []*MetricDataPoint `json:"Points,omitempty" name:"Points" list`
+}
+
+type MetricDataPoint struct {
+
+	// 实例对象维度组合
+	Dimensions []*Dimension `json:"Dimensions,omitempty" name:"Dimensions" list`
+
+	// 数据点列表
+	Values []*Point `json:"Values,omitempty" name:"Values" list`
+}
+
 type MetricDatum struct {
 
 	// 指标名称
@@ -3049,6 +3134,18 @@ type MetricSet struct {
 
 	// 维度描述信息
 	Dimensions []*DimensionsDesc `json:"Dimensions,omitempty" name:"Dimensions" list`
+}
+
+type MidQueryCondition struct {
+
+	// 维度
+	Key *string `json:"Key,omitempty" name:"Key"`
+
+	// 操作符，支持等于(eq)、不等于(ne)，以及in
+	Operator *string `json:"Operator,omitempty" name:"Operator"`
+
+	// 维度值，当Op是eq、ne时，只使用第一个元素
+	Value []*string `json:"Value,omitempty" name:"Value" list`
 }
 
 type ModifyAlarmNoticeRequest struct {
@@ -3465,6 +3562,16 @@ type PeriodsSt struct {
 
 	// 统计方式
 	StatType []*string `json:"StatType,omitempty" name:"StatType" list`
+}
+
+type Point struct {
+
+	// 该监控数据点生成的时间点
+	Timestamp *uint64 `json:"Timestamp,omitempty" name:"Timestamp"`
+
+	// 监控数据点的值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Value *float64 `json:"Value,omitempty" name:"Value"`
 }
 
 type ProductSimple struct {
