@@ -1656,7 +1656,7 @@ type PrepayPrice struct {
 
 	// 后付费云盘原单价，单位：元。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	UnitPrice *string `json:"UnitPrice,omitempty" name:"UnitPrice"`
+	UnitPrice *float64 `json:"UnitPrice,omitempty" name:"UnitPrice"`
 
 	// 后付费云盘的计价单元，取值范围：<br><li>HOUR：表示后付费云盘的计价单元是按小时计算。
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -1664,7 +1664,7 @@ type PrepayPrice struct {
 
 	// 后付费云盘折扣单价，单位：元。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	UnitPriceDiscount *string `json:"UnitPriceDiscount,omitempty" name:"UnitPriceDiscount"`
+	UnitPriceDiscount *float64 `json:"UnitPriceDiscount,omitempty" name:"UnitPriceDiscount"`
 
 	// 高精度后付费云盘原单价, 单位：元
 	// 注意：此字段可能返回 null，表示取不到有效值。
