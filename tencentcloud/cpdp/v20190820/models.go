@@ -7295,6 +7295,9 @@ type UnifiedOrderRequest struct {
 
 	// 微信商户子应用ID
 	WxSubAppId *string `json:"WxSubAppId,omitempty" name:"WxSubAppId"`
+
+	// 支付通知地址
+	PaymentNotifyUrl *string `json:"PaymentNotifyUrl,omitempty" name:"PaymentNotifyUrl"`
 }
 
 func (r *UnifiedOrderRequest) ToJsonString() string {

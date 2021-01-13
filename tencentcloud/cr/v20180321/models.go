@@ -139,6 +139,18 @@ type BotFlow struct {
 	PhonePoolList []*PhonePool `json:"PhonePoolList,omitempty" name:"PhonePoolList" list`
 }
 
+type BotInfo struct {
+
+	// 机器人ID
+	BotId *string `json:"BotId,omitempty" name:"BotId"`
+
+	// 机器人名称
+	BotName *string `json:"BotName,omitempty" name:"BotName"`
+
+	// 机器人状态。0-停用 1-启用 2-待审核
+	BotStatus *string `json:"BotStatus,omitempty" name:"BotStatus"`
+}
+
 type CallTimeDict struct {
 
 	// 周一
@@ -775,6 +787,46 @@ type ProductQueryInfo struct {
 	SceneType *string `json:"SceneType,omitempty" name:"SceneType"`
 }
 
+type QueryBotListRequest struct {
+	*tchttp.BaseRequest
+
+	// 模块名：AiApi
+	Module *string `json:"Module,omitempty" name:"Module"`
+
+	// 操作名：QueryBotList
+	Operation *string `json:"Operation,omitempty" name:"Operation"`
+}
+
+func (r *QueryBotListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *QueryBotListRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type QueryBotListResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 任务列表。
+		BotList []*BotInfo `json:"BotList,omitempty" name:"BotList" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *QueryBotListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *QueryBotListResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type QueryInstantDataRequest struct {
 	*tchttp.BaseRequest
 
@@ -875,6 +927,97 @@ func (r *QueryProductsResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type QueryRecordListRequest struct {
+	*tchttp.BaseRequest
+
+	// 模块名。AiApi
+	Module *string `json:"Module,omitempty" name:"Module"`
+
+	// 操作名。QueryRecordList
+	Operation *string `json:"Operation,omitempty" name:"Operation"`
+
+	// 偏移值
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 偏移位移，最大20
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 任务ID，二者必填一个
+	BotId *string `json:"BotId,omitempty" name:"BotId"`
+
+	// 任务名称，二者必填一个
+	BotName *string `json:"BotName,omitempty" name:"BotName"`
+
+	// 被叫号码
+	CalledPhone *string `json:"CalledPhone,omitempty" name:"CalledPhone"`
+
+	// 开始日期
+	StartBizDate *string `json:"StartBizDate,omitempty" name:"StartBizDate"`
+
+	// 结束日期
+	EndBizDate *string `json:"EndBizDate,omitempty" name:"EndBizDate"`
+}
+
+func (r *QueryRecordListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *QueryRecordListRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type QueryRecordListResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 录音列表。
+		RecordList []*RecordInfo `json:"RecordList,omitempty" name:"RecordList" list`
+
+		// 总数
+		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *QueryRecordListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *QueryRecordListResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type RecordInfo struct {
+
+	// 任务Id
+	BotId *string `json:"BotId,omitempty" name:"BotId"`
+
+	// 任务名称
+	BotName *string `json:"BotName,omitempty" name:"BotName"`
+
+	// 任务日期
+	BizDate *string `json:"BizDate,omitempty" name:"BizDate"`
+
+	// 被叫号码
+	CalledPhone *string `json:"CalledPhone,omitempty" name:"CalledPhone"`
+
+	// 开始通话时间
+	CallStartTime *string `json:"CallStartTime,omitempty" name:"CallStartTime"`
+
+	// 通话时长
+	Duration *int64 `json:"Duration,omitempty" name:"Duration"`
+
+	// 录音文件地址
+	CosUrl *string `json:"CosUrl,omitempty" name:"CosUrl"`
+
+	// 对话日志。JSON格式
+	DialogueLog *string `json:"DialogueLog,omitempty" name:"DialogueLog"`
+}
+
 type SingleBlackApply struct {
 
 	// 黑名单类型，01代表手机号码。
@@ -938,6 +1081,52 @@ type SmsTemplate struct {
 
 	// 短信模板名称
 	TemplateName *string `json:"TemplateName,omitempty" name:"TemplateName"`
+}
+
+type UploadBotDataRequest struct {
+	*tchttp.BaseRequest
+
+	// 模块名。默认值（固定）：AiApi
+	Module *string `json:"Module,omitempty" name:"Module"`
+
+	// 操作名。默认值（固定）：UploadData
+	Operation *string `json:"Operation,omitempty" name:"Operation"`
+
+	// 任务数据。JSON格式
+	Data *string `json:"Data,omitempty" name:"Data"`
+
+	// 任务ID，二者必填一个
+	BotId *string `json:"BotId,omitempty" name:"BotId"`
+
+	// 任务名称，二者必填一个
+	BotName *string `json:"BotName,omitempty" name:"BotName"`
+}
+
+func (r *UploadBotDataRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *UploadBotDataRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type UploadBotDataResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *UploadBotDataResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *UploadBotDataResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
 }
 
 type UploadBotFileRequest struct {

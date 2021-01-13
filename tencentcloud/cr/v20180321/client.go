@@ -344,6 +344,31 @@ func (c *Client) ExportBotData(request *ExportBotDataRequest) (response *ExportB
     return
 }
 
+func NewQueryBotListRequest() (request *QueryBotListRequest) {
+    request = &QueryBotListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cr", APIVersion, "QueryBotList")
+    return
+}
+
+func NewQueryBotListResponse() (response *QueryBotListResponse) {
+    response = &QueryBotListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询机器人任务状态列表
+func (c *Client) QueryBotList(request *QueryBotListRequest) (response *QueryBotListResponse, err error) {
+    if request == nil {
+        request = NewQueryBotListRequest()
+    }
+    response = NewQueryBotListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewQueryInstantDataRequest() (request *QueryInstantDataRequest) {
     request = &QueryInstantDataRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -390,6 +415,56 @@ func (c *Client) QueryProducts(request *QueryProductsRequest) (response *QueryPr
         request = NewQueryProductsRequest()
     }
     response = NewQueryProductsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewQueryRecordListRequest() (request *QueryRecordListRequest) {
+    request = &QueryRecordListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cr", APIVersion, "QueryRecordList")
+    return
+}
+
+func NewQueryRecordListResponse() (response *QueryRecordListResponse) {
+    response = &QueryRecordListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询录音列表
+func (c *Client) QueryRecordList(request *QueryRecordListRequest) (response *QueryRecordListResponse, err error) {
+    if request == nil {
+        request = NewQueryRecordListRequest()
+    }
+    response = NewQueryRecordListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewUploadBotDataRequest() (request *UploadBotDataRequest) {
+    request = &UploadBotDataRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cr", APIVersion, "UploadBotData")
+    return
+}
+
+func NewUploadBotDataResponse() (response *UploadBotDataResponse) {
+    response = &UploadBotDataResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 上传机器人任务数据
+func (c *Client) UploadBotData(request *UploadBotDataRequest) (response *UploadBotDataResponse, err error) {
+    if request == nil {
+        request = NewUploadBotDataRequest()
+    }
+    response = NewUploadBotDataResponse()
     err = c.Send(request, response)
     return
 }

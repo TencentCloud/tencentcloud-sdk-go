@@ -679,7 +679,7 @@ type SendEmailRequest struct {
 	// 腾讯云团队 &lt;noreply@mail.qcloud.com&gt;
 	FromEmailAddress *string `json:"FromEmailAddress,omitempty" name:"FromEmailAddress"`
 
-	// 收信人邮箱地址
+	// 收信人邮箱地址，最多支持群发50人。
 	Destination []*string `json:"Destination,omitempty" name:"Destination" list`
 
 	// 邮件主题

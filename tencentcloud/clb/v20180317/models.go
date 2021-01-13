@@ -297,13 +297,13 @@ type BatchTarget struct {
 	// 绑定端口
 	Port *int64 `json:"Port,omitempty" name:"Port"`
 
-	// 子机ID
+	// 子机ID。表示绑定主网卡主IP
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
-	// 弹性网卡ip
+	// 弹性网卡ip或其他内网IP。如果是双栈IPV6子机，必须传该参数。
 	EniIp *string `json:"EniIp,omitempty" name:"EniIp"`
 
-	// 子机权重，范围[0, 100]。绑定时如果不存在，则默认为10。
+	// 子机权重，范围[0, 100]。绑定时如果不存在，则默认为10
 	Weight *int64 `json:"Weight,omitempty" name:"Weight"`
 
 	// 七层规则ID
@@ -4144,7 +4144,7 @@ type Target struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Type *string `json:"Type,omitempty" name:"Type"`
 
-	// 绑定CVM时需要传入此参数，代表CVM的唯一 ID，可通过 DescribeInstances 接口返回字段中的 InstanceId 字段获取。
+	// 绑定CVM时需要传入此参数，代表CVM的唯一 ID，可通过 DescribeInstances 接口返回字段中的 InstanceId 字段获取。表示绑定主网卡主IP。
 	// 注意：参数 InstanceId、EniIp 只能传入一个且必须传入一个。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
@@ -4152,8 +4152,8 @@ type Target struct {
 	// 后端服务的转发权重，取值范围：[0, 100]，默认为 10。
 	Weight *int64 `json:"Weight,omitempty" name:"Weight"`
 
-	// 绑定弹性网卡时需要传入此参数，代表弹性网卡的IP，弹性网卡必须先绑定至CVM，然后才能绑定到负载均衡实例。
-	// 注意：参数 InstanceId、EniIp 只能传入一个且必须传入一个。注意：绑定弹性网卡需要先提交工单开白名单使用。
+	// 绑定IP时需要传入此参数，支持弹性网卡的IP和其他内网IP，如果是弹性网卡则必须先绑定至CVM，然后才能绑定到负载均衡实例。
+	// 注意：参数 InstanceId、EniIp 只能传入一个且必须传入一个。如果绑定双栈IPV6子机，必须传该参数。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	EniIp *string `json:"EniIp,omitempty" name:"EniIp"`
 }
