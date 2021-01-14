@@ -476,6 +476,7 @@ type CreateLaunchConfigurationRequest struct {
 	// 实例计费类型，CVM默认值按照POSTPAID_BY_HOUR处理。
 	// <br><li>POSTPAID_BY_HOUR：按小时后付费
 	// <br><li>SPOTPAID：竞价付费
+	// <br><li>PREPAID：预付费，即包年包月
 	InstanceChargeType *string `json:"InstanceChargeType,omitempty" name:"InstanceChargeType"`
 
 	// 实例的市场相关选项，如竞价实例相关参数，若指定实例的付费模式为竞价付费则该参数必传。
@@ -2274,6 +2275,27 @@ type ModifyLaunchConfigurationAttributesRequest struct {
 
 	// 经过 Base64 编码后的自定义数据，最大长度不超过16KB。如果要清空UserData，则指定其为空字符串
 	UserData *string `json:"UserData,omitempty" name:"UserData"`
+
+	// 实例所属安全组。该参数可以通过调用 [DescribeSecurityGroups](https://cloud.tencent.com/document/api/215/15808) 的返回值中的`SecurityGroupId`字段来获取。
+	// 若指定该参数，请至少提供一个安全组，列表顺序有先后。
+	SecurityGroupIds []*string `json:"SecurityGroupIds,omitempty" name:"SecurityGroupIds" list`
+
+	// 公网带宽相关信息设置。
+	InternetAccessible *InternetAccessible `json:"InternetAccessible,omitempty" name:"InternetAccessible"`
+
+	// 实例计费类型。具体取值范围如下：
+	// <br><li>POSTPAID_BY_HOUR：按小时后付费
+	// <br><li>SPOTPAID：竞价付费
+	// <br><li>PREPAID：预付费，即包年包月
+	InstanceChargeType *string `json:"InstanceChargeType,omitempty" name:"InstanceChargeType"`
+
+	// 预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月实例的购买时长、是否设置自动续费等属性。
+	// 若修改实例的付费模式为预付费，则该参数必传；从预付费修改为其他付费模式时，本字段原信息会自动丢弃。
+	InstanceChargePrepaid *InstanceChargePrepaid `json:"InstanceChargePrepaid,omitempty" name:"InstanceChargePrepaid"`
+
+	// 实例的市场相关选项，如竞价实例相关参数。
+	// 若修改实例的付费模式为竞价付费，则该参数必传；从竞价付费修改为其他付费模式时，本字段原信息会自动丢弃。
+	InstanceMarketOptions *InstanceMarketOptionsRequest `json:"InstanceMarketOptions,omitempty" name:"InstanceMarketOptions"`
 }
 
 func (r *ModifyLaunchConfigurationAttributesRequest) ToJsonString() string {
@@ -2887,6 +2909,7 @@ type UpgradeLaunchConfigurationRequest struct {
 	// 实例计费类型，CVM默认值按照POSTPAID_BY_HOUR处理。
 	// <br><li>POSTPAID_BY_HOUR：按小时后付费
 	// <br><li>SPOTPAID：竞价付费
+	// <br><li>PREPAID：预付费，即包年包月
 	InstanceChargeType *string `json:"InstanceChargeType,omitempty" name:"InstanceChargeType"`
 
 	// 实例的市场相关选项，如竞价实例相关参数，若指定实例的付费模式为竞价付费则该参数必传。

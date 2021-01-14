@@ -4328,7 +4328,7 @@ type DescribeCDNStatDetailsRequest struct {
 
 	// 用户所在地区，Area 为 Chinese Mainland 时，取值为以下地区信息，当 Area 为其它值时， 忽略 Districts 参数。
 	// <li>Beijing：北京。</li>
-	// <li>Inner Mongoria：内蒙古。</li>
+	// <li>Inner Mongolia：内蒙古。</li>
 	// <li>Shanxi：山西。</li>
 	// <li>Hebei：河北。</li>
 	// <li>Tianjin：天津。</li>
@@ -4359,7 +4359,7 @@ type DescribeCDNStatDetailsRequest struct {
 	// <li>Guangxi：广西。</li>
 	// <li>Hainan：海南。</li>
 	// <li>Hong Kong, Macao and Taiwan：港澳台。</li>
-	// <li>outside Chinese Mainland：海外。</li>
+	// <li>Outside Chinese Mainland：海外。</li>
 	// <li>Other：其他 。</li>
 	Districts []*string `json:"Districts,omitempty" name:"Districts" list`
 
@@ -4369,7 +4369,7 @@ type DescribeCDNStatDetailsRequest struct {
 	// <li>CERNET：教育网。</li>
 	// <li>Great Wall Broadband Network：长城宽带。</li>
 	// <li>China Mobile：中国移动。</li>
-	// <li>China Mobile Tieton：中国铁通。</li>
+	// <li>China Mobile Tietong：中国铁通。</li>
 	// <li>ISPs outside Chinese Mainland：海外运营商。</li>
 	// <li>Other ISPs：其他运营商。</li>
 	Isps []*string `json:"Isps,omitempty" name:"Isps" list`
@@ -5226,7 +5226,7 @@ type DescribeStorageDetailsRequest struct {
 
 	// 查询的存储区域，有效值：
 	// <li>Chinese Mainland：中国境内（不包含港澳台）。</li>
-	// <li>outside Chinese Mainland：中国境外。</li>
+	// <li>Outside Chinese Mainland：中国境外。</li>
 	// 默认值为 Chinese Mainland。
 	Area *string `json:"Area,omitempty" name:"Area"`
 }
@@ -6285,6 +6285,9 @@ type ImageProcessingTemplate struct {
 	// 图片处理操作数组，操作将以数组顺序执行。
 	// <li>长度限制：3。</li>
 	Operations []*ImageOperation `json:"Operations,omitempty" name:"Operations" list`
+
+	// 模板创建时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
 }
 
 type ImageScale struct {
@@ -10381,7 +10384,7 @@ type StorageStatData struct {
 
 	// 点播存储的计费区域，可能值：
 	// <li>Chinese Mainland：中国境内（不包含港澳台）。</li>
-	// <li>outside Chinese Mainland：中国境外。</li>
+	// <li>Outside Chinese Mainland：中国境外。</li>
 	Area *string `json:"Area,omitempty" name:"Area"`
 
 	// 当前总存储量，单位是字节。

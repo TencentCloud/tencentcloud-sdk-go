@@ -366,6 +366,9 @@ type CheckAssetItem struct {
 
 	// 详情
 	Detail *string `json:"Detail,omitempty" name:"Detail"`
+
+	// 备注内容
+	Remarks *string `json:"Remarks,omitempty" name:"Remarks"`
 }
 
 type CheckConfigDetail struct {
@@ -601,6 +604,10 @@ type DataCheck struct {
 	// 总资产数
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AssetTotal *int64 `json:"AssetTotal,omitempty" name:"AssetTotal"`
+
+	// 备注内容
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Remarks *string `json:"Remarks,omitempty" name:"Remarks"`
 }
 
 type DataCompliance struct {
@@ -660,6 +667,10 @@ type DataCompliance struct {
 	// 资产总数
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AssetTotal *int64 `json:"AssetTotal,omitempty" name:"AssetTotal"`
+
+	// 忽略内容
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Remarks *string `json:"Remarks,omitempty" name:"Remarks"`
 }
 
 type DataEvent struct {
@@ -1010,6 +1021,58 @@ func (r *DescribeCheckConfigDetailResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeComplianceAssetListRequest struct {
+	*tchttp.BaseRequest
+
+	// 页码
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 每页数量
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 检查项uuid
+	Id *string `json:"Id,omitempty" name:"Id"`
+
+	// 过滤条件
+	Filter []*Filter `json:"Filter,omitempty" name:"Filter" list`
+
+	// 查询条件
+	Search []*Filter `json:"Search,omitempty" name:"Search" list`
+}
+
+func (r *DescribeComplianceAssetListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeComplianceAssetListRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeComplianceAssetListResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 资产组列表
+		CheckAssetsList []*CheckAssetItem `json:"CheckAssetsList,omitempty" name:"CheckAssetsList" list`
+
+		// 资产组列表总数
+		Total *int64 `json:"Total,omitempty" name:"Total"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeComplianceAssetListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeComplianceAssetListResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeComplianceDetailRequest struct {
 	*tchttp.BaseRequest
 
@@ -1288,6 +1351,127 @@ func (r *DescribeSafetyEventListResponse) ToJsonString() string {
 }
 
 func (r *DescribeSafetyEventListResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeVulDetailRequest struct {
+	*tchttp.BaseRequest
+
+	// 漏洞唯一标识符
+	UniqId *string `json:"UniqId,omitempty" name:"UniqId"`
+
+	// 查看详情来源
+	Source *string `json:"Source,omitempty" name:"Source"`
+}
+
+func (r *DescribeVulDetailRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeVulDetailRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeVulDetailResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 漏洞类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		VulType *int64 `json:"VulType,omitempty" name:"VulType"`
+
+		// 漏洞子类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		SubVulType *string `json:"SubVulType,omitempty" name:"SubVulType"`
+
+		// cvss分数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		CvssScore *string `json:"CvssScore,omitempty" name:"CvssScore"`
+
+		// cvss值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Cvss *string `json:"Cvss,omitempty" name:"Cvss"`
+
+		// cve编号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Cve *string `json:"Cve,omitempty" name:"Cve"`
+
+		// cnvd编号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Cnvd *string `json:"Cnvd,omitempty" name:"Cnvd"`
+
+		// cnnvd编号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Cnnvd *string `json:"Cnnvd,omitempty" name:"Cnnvd"`
+
+		// 描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Desc *string `json:"Desc,omitempty" name:"Desc"`
+
+		// 参考
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Reference *string `json:"Reference,omitempty" name:"Reference"`
+
+		// 修复意见
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Repair *string `json:"Repair,omitempty" name:"Repair"`
+
+		// 披露时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		ReleaseTime *string `json:"ReleaseTime,omitempty" name:"ReleaseTime"`
+
+		// 更新时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
+
+		// 漏洞名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Name *string `json:"Name,omitempty" name:"Name"`
+
+		// 等级
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Level *int64 `json:"Level,omitempty" name:"Level"`
+
+		// 状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Status *int64 `json:"Status,omitempty" name:"Status"`
+
+		// 受影响资产唯一标识
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		ImpactAsset *string `json:"ImpactAsset,omitempty" name:"ImpactAsset"`
+
+		// 受影响资产名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		ImpactAssetName *string `json:"ImpactAssetName,omitempty" name:"ImpactAssetName"`
+
+		// 受影响资产是否已删除
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		IsAssetDeleted *bool `json:"IsAssetDeleted,omitempty" name:"IsAssetDeleted"`
+
+		// 漏洞来源
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Source *string `json:"Source,omitempty" name:"Source"`
+
+		// 漏洞URL
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		VulUrl *string `json:"VulUrl,omitempty" name:"VulUrl"`
+
+		// 资产归属
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		SsaAssetCategory *int64 `json:"SsaAssetCategory,omitempty" name:"SsaAssetCategory"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeVulDetailResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeVulDetailResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 

@@ -3254,6 +3254,9 @@ type DescribeErrorLogDataRequest struct {
 
 	// 偏移量，默认为0。
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 仅在实例为主实例或者灾备实例时生效，可选值：slave，代表拉取从机的日志。
+	InstType *string `json:"InstType,omitempty" name:"InstType"`
 }
 
 func (r *DescribeErrorLogDataRequest) ToJsonString() string {
@@ -3701,6 +3704,9 @@ type DescribeSlowLogDataRequest struct {
 
 	// 一次性返回的记录数量，默认为100，最大为400。
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 仅在实例为主实例或者灾备实例时生效，可选值：slave，代表拉取从机的日志。
+	InstType *string `json:"InstType,omitempty" name:"InstType"`
 }
 
 func (r *DescribeSlowLogDataRequest) ToJsonString() string {

@@ -669,19 +669,19 @@ type DriverLicenseOCRResponse struct {
 		// 住址
 		Address *string `json:"Address,omitempty" name:"Address"`
 
-		// 出生日期
+		// 出生日期（YYYY-MM-DD）
 		DateOfBirth *string `json:"DateOfBirth,omitempty" name:"DateOfBirth"`
 
-		// 初次领证日期
+		// 初次领证日期（YYYY-MM-DD）
 		DateOfFirstIssue *string `json:"DateOfFirstIssue,omitempty" name:"DateOfFirstIssue"`
 
 		// 准驾车型
 		Class *string `json:"Class,omitempty" name:"Class"`
 
-		// 有效期开始时间
+		// 有效期开始时间（YYYY-MM-DD）
 		StartDate *string `json:"StartDate,omitempty" name:"StartDate"`
 
-		// 有效期截止时间
+		// 有效期截止时间（YYYY-MM-DD）
 		EndDate *string `json:"EndDate,omitempty" name:"EndDate"`
 
 		// 证号
@@ -706,6 +706,9 @@ type DriverLicenseOCRResponse struct {
 	// WARN_DRIVER_LICENSE_PS_CARD ps告警
 	// 注：告警信息可以同时存在多个
 		RecognizeWarnMsg []*string `json:"RecognizeWarnMsg,omitempty" name:"RecognizeWarnMsg" list`
+
+		// 发证单位
+		IssuingAuthority *string `json:"IssuingAuthority,omitempty" name:"IssuingAuthority"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`

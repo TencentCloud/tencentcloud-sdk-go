@@ -168,6 +168,31 @@ func (c *Client) DescribeCheckConfigDetail(request *DescribeCheckConfigDetailReq
     return
 }
 
+func NewDescribeComplianceAssetListRequest() (request *DescribeComplianceAssetListRequest) {
+    request = &DescribeComplianceAssetListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ssa", APIVersion, "DescribeComplianceAssetList")
+    return
+}
+
+func NewDescribeComplianceAssetListResponse() (response *DescribeComplianceAssetListResponse) {
+    response = &DescribeComplianceAssetListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 合规管理-资产列表
+func (c *Client) DescribeComplianceAssetList(request *DescribeComplianceAssetListRequest) (response *DescribeComplianceAssetListResponse, err error) {
+    if request == nil {
+        request = NewDescribeComplianceAssetListRequest()
+    }
+    response = NewDescribeComplianceAssetListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeComplianceDetailRequest() (request *DescribeComplianceDetailRequest) {
     request = &DescribeComplianceDetailRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -314,6 +339,31 @@ func (c *Client) DescribeSafetyEventList(request *DescribeSafetyEventListRequest
         request = NewDescribeSafetyEventListRequest()
     }
     response = NewDescribeSafetyEventListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeVulDetailRequest() (request *DescribeVulDetailRequest) {
+    request = &DescribeVulDetailRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ssa", APIVersion, "DescribeVulDetail")
+    return
+}
+
+func NewDescribeVulDetailResponse() (response *DescribeVulDetailResponse) {
+    response = &DescribeVulDetailResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 漏洞列表页，获取漏洞详情信息
+func (c *Client) DescribeVulDetail(request *DescribeVulDetailRequest) (response *DescribeVulDetailResponse, err error) {
+    if request == nil {
+        request = NewDescribeVulDetailRequest()
+    }
+    response = NewDescribeVulDetailResponse()
     err = c.Send(request, response)
     return
 }

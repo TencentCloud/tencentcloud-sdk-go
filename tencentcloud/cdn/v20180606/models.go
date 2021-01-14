@@ -6033,6 +6033,18 @@ type TrafficPackage struct {
 
 	// 流量包来源
 	Channel *string `json:"Channel,omitempty" name:"Channel"`
+
+	// 流量包生效区域，目前仅支持mainland
+	Area *string `json:"Area,omitempty" name:"Area"`
+
+	// 流量包生命周期月数
+	LifeTimeMonth *int64 `json:"LifeTimeMonth,omitempty" name:"LifeTimeMonth"`
+
+	// 流量包是否支持续订
+	ExtensionAvailable *bool `json:"ExtensionAvailable,omitempty" name:"ExtensionAvailable"`
+
+	// 流量包是否支持退费
+	RefundAvailable *bool `json:"RefundAvailable,omitempty" name:"RefundAvailable"`
 }
 
 type UpdateDomainConfigRequest struct {

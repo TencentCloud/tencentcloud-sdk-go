@@ -572,6 +572,8 @@ type CreateStorageServiceRequest struct {
 	// ye1y3d ：事件3天存储年套餐。
 	// ye1y7d ：事件7天存储年套餐。
 	// ye1y30d ：事件30天存储年套餐。
+	// yc1w7d : 全时7天存储周套餐。
+	// ye1w7d : 事件7天存储周套餐。
 	PkgId *string `json:"PkgId,omitempty" name:"PkgId"`
 
 	// 设备TID
@@ -580,7 +582,7 @@ type CreateStorageServiceRequest struct {
 	// 订单数量,可一次性创建多个订单
 	OrderCount *int64 `json:"OrderCount,omitempty" name:"OrderCount"`
 
-	// 云存服务所在的区域,如ap-guangzhou,ap-singapore
+	// 云存服务所在的区域,如ap-guangzhou,ap-singapore, na-siliconvalley, eu-frankfurt
 	StorageRegion *string `json:"StorageRegion,omitempty" name:"StorageRegion"`
 
 	// 视频流通道号。(对于存在多路视频流的设备，如NVR设备，与设备实际视频流通道号对应)

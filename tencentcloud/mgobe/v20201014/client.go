@@ -43,6 +43,56 @@ func NewClient(credential *common.Credential, region string, clientProfile *prof
 }
 
 
+func NewChangeRoomPlayerProfileRequest() (request *ChangeRoomPlayerProfileRequest) {
+    request = &ChangeRoomPlayerProfileRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("mgobe", APIVersion, "ChangeRoomPlayerProfile")
+    return
+}
+
+func NewChangeRoomPlayerProfileResponse() (response *ChangeRoomPlayerProfileResponse) {
+    response = &ChangeRoomPlayerProfileResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 修改房间玩家自定义属性
+func (c *Client) ChangeRoomPlayerProfile(request *ChangeRoomPlayerProfileRequest) (response *ChangeRoomPlayerProfileResponse, err error) {
+    if request == nil {
+        request = NewChangeRoomPlayerProfileRequest()
+    }
+    response = NewChangeRoomPlayerProfileResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewChangeRoomPlayerStatusRequest() (request *ChangeRoomPlayerStatusRequest) {
+    request = &ChangeRoomPlayerStatusRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("mgobe", APIVersion, "ChangeRoomPlayerStatus")
+    return
+}
+
+func NewChangeRoomPlayerStatusResponse() (response *ChangeRoomPlayerStatusResponse) {
+    response = &ChangeRoomPlayerStatusResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 修改玩家自定义状态
+func (c *Client) ChangeRoomPlayerStatus(request *ChangeRoomPlayerStatusRequest) (response *ChangeRoomPlayerStatusResponse, err error) {
+    if request == nil {
+        request = NewChangeRoomPlayerStatusRequest()
+    }
+    response = NewChangeRoomPlayerStatusResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDismissRoomRequest() (request *DismissRoomRequest) {
     request = &DismissRoomRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -64,6 +114,56 @@ func (c *Client) DismissRoom(request *DismissRoomRequest) (response *DismissRoom
         request = NewDismissRoomRequest()
     }
     response = NewDismissRoomResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyRoomRequest() (request *ModifyRoomRequest) {
+    request = &ModifyRoomRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("mgobe", APIVersion, "ModifyRoom")
+    return
+}
+
+func NewModifyRoomResponse() (response *ModifyRoomResponse) {
+    response = &ModifyRoomResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 修改房间
+func (c *Client) ModifyRoom(request *ModifyRoomRequest) (response *ModifyRoomResponse, err error) {
+    if request == nil {
+        request = NewModifyRoomRequest()
+    }
+    response = NewModifyRoomResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewRemoveRoomPlayerRequest() (request *RemoveRoomPlayerRequest) {
+    request = &RemoveRoomPlayerRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("mgobe", APIVersion, "RemoveRoomPlayer")
+    return
+}
+
+func NewRemoveRoomPlayerResponse() (response *RemoveRoomPlayerResponse) {
+    response = &RemoveRoomPlayerResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 踢出房间玩家
+func (c *Client) RemoveRoomPlayer(request *RemoveRoomPlayerRequest) (response *RemoveRoomPlayerResponse, err error) {
+    if request == nil {
+        request = NewRemoveRoomPlayerRequest()
+    }
+    response = NewRemoveRoomPlayerResponse()
     err = c.Send(request, response)
     return
 }
